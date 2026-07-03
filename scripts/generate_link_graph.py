@@ -10,6 +10,9 @@ generate_link_graph.py — Wiki 内链图谱生成工具
 structural / query 等均可）；latest_wiki_node 为当日列表首项（兼容旧字段）。
 若无日志命中则回退到 frontmatter / mtime 的 recency，列表仅一项。
 
+另写入 exports/wiki-activity.json（首页热力图数据源）：不限时间窗口，按同一套
+路径解析规则汇总 log.md 全量日志的每日 wiki 节点（同日去重、跨日可重复）。
+
 输出格式：
   {
     "nodes": [
@@ -49,6 +52,7 @@ REPO_ROOT = Path(__file__).parent.parent
 WIKI_DIR = REPO_ROOT / "wiki"
 OUT_PATH = REPO_ROOT / "exports" / "link-graph.json"
 STATS_PATH = REPO_ROOT / "exports" / "graph-stats.json"
+ACTIVITY_PATH = REPO_ROOT / "exports" / "wiki-activity.json"
 LOG_MD_PATH = REPO_ROOT / "log.md"
 # log.md 正文中出现的 wiki 相对路径（允许省略 .md，匹配至非标点为止）
 WIKI_PATH_IN_LOG = re.compile(r"wiki/(?:[\w./-]+/)+[\w./-]+(?:\.md)?", re.IGNORECASE)
@@ -245,6 +249,9 @@ LATEST_NODES_DEFAULT = 20
 LATEST_NODES_CAP = 30
 LATEST_NODES_WINDOW_DAYS = 30
 LATEST_NODES_ENV_VAR = "GRAPH_LATEST_NODES_MAX"
+# wiki-activity.json：单日节点列表上限（count 保留真实值；批量维护日 glob
+# 可展开出上千节点，全量导出会拖垮首页热力图筛选的加载与渲染）。
+ACTIVITY_NODES_PER_DAY_CAP = 30
 
 
 def wiki_recency_date(content: str, page: Path) -> date:
@@ -419,6 +426,68 @@ def latest_wiki_nodes_from_log(
                 log_date=log_date,
             )
     return out[:max_items]
+
+
+def wiki_activity_from_log(nodes: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """从 log.md 全量日志汇总每日出现的 wiki 节点（首页热力图按日期筛选用）。
+
+    与 latest_wiki_nodes_from_log 使用同一套路径解析与校验规则，但不限时间
+    窗口：同一日期的多个日志块合并、同日去重（跨日可重复出现），仅保留仓库
+    现存且在图谱节点中的路径。返回按日期升序的
+    ``[{date, count, nodes: [{detail_id, label, type}]}]``，无节点的日期不输出；
+    count 为当日真实节点数，nodes 仅保留出现顺序前 ACTIVITY_NODES_PER_DAY_CAP 项。
+    """
+    if not LOG_MD_PATH.is_file():
+        return []
+    sections = _log_sections(LOG_MD_PATH.read_text(encoding="utf-8"))
+    node_by_id: dict[str, dict[str, Any]] = {str(n["id"]): n for n in nodes}
+    seen_by_date: dict[str, set[str]] = {}
+    metas_by_date: dict[str, list[dict[str, Any]]] = {}
+
+    for chunk in sections:
+        date_m = re.match(r"^## \[(\d{4}-\d{2}-\d{2})\]", chunk)
+        if not date_m:
+            continue
+        log_date = date_m.group(1)
+        try:
+            date.fromisoformat(log_date)
+        except ValueError:
+            continue
+        seen = seen_by_date.setdefault(log_date, set())
+        day_out = metas_by_date.setdefault(log_date, [])
+        for m in WIKI_GLOB_IN_LOG.finditer(chunk):
+            for rel in _expand_wiki_glob(m.group(1)):
+                _append_latest_node(
+                    rel, node_by_id=node_by_id, seen=seen, out=day_out, log_date=log_date
+                )
+        for m in WIKI_PATH_IN_LOG.finditer(chunk):
+            rel = _normalize_wiki_rel_from_log_match(m.group(0))
+            if "*" in rel:
+                for expanded in _expand_wiki_glob(rel):
+                    _append_latest_node(
+                        expanded, node_by_id=node_by_id, seen=seen, out=day_out, log_date=log_date
+                    )
+                continue
+            _append_latest_node(
+                rel, node_by_id=node_by_id, seen=seen, out=day_out, log_date=log_date
+            )
+
+    days: list[dict[str, Any]] = []
+    for log_date in sorted(metas_by_date):
+        metas = metas_by_date[log_date]
+        if not metas:
+            continue
+        days.append(
+            {
+                "date": log_date,
+                "count": len(metas),
+                "nodes": [
+                    {"detail_id": m["detail_id"], "label": m["label"], "type": m["type"]}
+                    for m in metas[:ACTIVITY_NODES_PER_DAY_CAP]
+                ],
+            }
+        )
+    return days
 
 
 def resolve_latest_nodes_max(cli_value: int | None) -> int:
@@ -1163,6 +1232,17 @@ def main() -> None:
     print(
         f"✅ graph-stats.json: {len(orphans)} orphans, "
         f"top hub='{hub_list[0]['label'] if hub_list else '-'}' → {STATS_PATH.relative_to(REPO_ROOT)}"
+    )
+
+    activity_days = wiki_activity_from_log(nodes)
+    activity = {"generated_at": stats["generated_at"], "days": activity_days}
+    ACTIVITY_PATH.write_text(
+        json.dumps(activity, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
+    )
+    print(
+        f"✅ wiki-activity.json: {len(activity_days)} days, "
+        f"{sum(d['count'] for d in activity_days)} node refs "
+        f"→ {ACTIVITY_PATH.relative_to(REPO_ROOT)}"
     )
 
 

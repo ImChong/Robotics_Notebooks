@@ -268,7 +268,135 @@
     reference: '参考'
   };
 
-  function renderLatestWikiNode(homeStats) {
+  // ── 首页知识节点活跃度热力图（GitHub 风格，数据源 exports/wiki-activity.json）──
+  var HOME_HEATMAP_DAY_MS = 24 * 60 * 60 * 1000;
+  // GitHub 同款固定一年窗口：53 周列，最新周在最右，无数据日期为空格
+  var HOME_HEATMAP_WEEKS = 53;
+  // 周一为第一行，仅标注 一/三/五 三行（与 GitHub Mon/Wed/Fri 一致）
+  var HOME_HEATMAP_WEEKDAY_LABELS = ['一', '', '三', '', '五', '', ''];
+
+  function homeHeatmapParseDate(value) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(value || ''));
+    if (!m) return null;
+    var ms = Date.UTC(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
+    return isNaN(ms) ? null : ms;
+  }
+
+  function homeHeatmapIsoDate(ms) {
+    var d = new Date(ms);
+    var mm = String(d.getUTCMonth() + 1);
+    var dd = String(d.getUTCDate());
+    if (mm.length < 2) mm = '0' + mm;
+    if (dd.length < 2) dd = '0' + dd;
+    return d.getUTCFullYear() + '-' + mm + '-' + dd;
+  }
+
+  // 非零日计数的四分位阈值：档位对离群的批量维护日保持稳健
+  function homeHeatmapThresholds(counts) {
+    var sorted = counts.slice().sort(function (a, b) { return a - b; });
+    function pick(ratio) {
+      var idx = Math.min(sorted.length - 1, Math.floor(ratio * sorted.length));
+      return sorted[idx];
+    }
+    return [pick(0.25), pick(0.5), pick(0.75)];
+  }
+
+  function homeHeatmapLevel(count, thresholds) {
+    if (!count) return 0;
+    if (count <= thresholds[0]) return 1;
+    if (count <= thresholds[1]) return 2;
+    if (count <= thresholds[2]) return 3;
+    return 4;
+  }
+
+  function buildHomeWikiHeatmapHtml(days) {
+    var countByDate = {};
+    var counts = [];
+    var maxMs = -Infinity;
+    for (var i = 0; i < days.length; i++) {
+      var day = days[i];
+      var ms = homeHeatmapParseDate(day && day.date);
+      var count = day && typeof day.count === 'number' ? day.count : 0;
+      if (ms === null || count <= 0) continue;
+      countByDate[day.date] = count;
+      counts.push(count);
+      if (ms > maxMs) maxMs = ms;
+    }
+    if (!counts.length) return '';
+    var thresholds = homeHeatmapThresholds(counts);
+    // getUTCDay() 0=周日 → 周一对齐的行号 (day+6)%7；
+    // 窗口固定 53 周，以最新数据所在周为最右列
+    var lastWeekStartMs = maxMs - ((new Date(maxMs).getUTCDay() + 6) % 7) * HOME_HEATMAP_DAY_MS;
+    var startMs = lastWeekStartMs - (HOME_HEATMAP_WEEKS - 1) * 7 * HOME_HEATMAP_DAY_MS;
+    var endMs = lastWeekStartMs + 6 * HOME_HEATMAP_DAY_MS;
+
+    var cellsHtml = '';
+    var monthsHtml = '';
+    var prevMonth = -1;
+    var lastLabelWeek = -2;
+    var week = 0;
+    for (var weekMs = startMs; weekMs <= endMs; weekMs += 7 * HOME_HEATMAP_DAY_MS, week++) {
+      var month = new Date(weekMs).getUTCMonth();
+      var monthLabel = '';
+      if (month !== prevMonth) {
+        // 距上一个标签不足 2 列时跳过，避免文字重叠
+        if (week - lastLabelWeek >= 2) {
+          monthLabel = String(month + 1) + '月';
+          lastLabelWeek = week;
+        }
+        prevMonth = month;
+      }
+      monthsHtml += '<span>' + monthLabel + '</span>';
+      for (var row = 0; row < 7; row++) {
+        var dayMs = weekMs + row * HOME_HEATMAP_DAY_MS;
+        if (dayMs > maxMs) {
+          // 仅未来日期留白；历史上无节点的日期与 GitHub 一样渲染为空格
+          cellsHtml += '<span class="home-wiki-heatmap-cell is-pad" aria-hidden="true"></span>';
+          continue;
+        }
+        var iso = homeHeatmapIsoDate(dayMs);
+        var dayCount = countByDate[iso] || 0;
+        if (!dayCount) {
+          cellsHtml +=
+            '<span class="home-wiki-heatmap-cell" data-level="0" title="' +
+            iso + '：0 个节点"></span>';
+          continue;
+        }
+        var tip = iso + '：' + dayCount + ' 个节点';
+        cellsHtml +=
+          '<button type="button" class="home-wiki-heatmap-cell" data-level="' +
+          homeHeatmapLevel(dayCount, thresholds) +
+          '" data-date="' + iso + '" title="' + tip +
+          '" aria-pressed="false" aria-label="' + tip + '，点击筛选"></button>';
+      }
+    }
+
+    var weekdaysHtml = '';
+    for (var w = 0; w < 7; w++) {
+      weekdaysHtml += '<span>' + HOME_HEATMAP_WEEKDAY_LABELS[w] + '</span>';
+    }
+    var legendCells = '';
+    for (var lv = 0; lv <= 4; lv++) {
+      legendCells += '<span class="home-wiki-heatmap-cell" data-level="' + lv + '"></span>';
+    }
+    return (
+      '<div class="home-wiki-heatmap">' +
+      '<div class="home-wiki-heatmap-scroll">' +
+      '<div class="home-wiki-heatmap-inner">' +
+      '<div class="home-wiki-heatmap-months" aria-hidden="true">' + monthsHtml + '</div>' +
+      '<div class="home-wiki-heatmap-body">' +
+      '<div class="home-wiki-heatmap-weekdays" aria-hidden="true">' + weekdaysHtml + '</div>' +
+      '<div class="home-wiki-heatmap-grid" role="group" aria-label="按日期筛选知识节点">' +
+      cellsHtml +
+      '</div></div></div></div>' +
+      '<div class="home-wiki-heatmap-legend">' +
+      '<span class="home-wiki-heatmap-legend-hint">点击方格筛选当日节点</span>' +
+      '<span>少</span>' + legendCells + '<span>多</span>' +
+      '</div></div>'
+    );
+  }
+
+  function renderLatestWikiNode(homeStats, wikiActivity) {
     var mount = document.getElementById('homeLatestWikiModule');
     if (!mount) return;
     mount.classList.remove('data-loading');
@@ -278,43 +406,6 @@
     } else if (homeStats && homeStats.latest_wiki_node && homeStats.latest_wiki_node.detail_id) {
       items = [homeStats.latest_wiki_node];
     }
-    if (!items.length || !items[0].detail_id) {
-      mount.innerHTML = '<p class="data-meta">暂无「最近更新」数据。</p>';
-      return;
-    }
-    var first = items[0];
-    var fromLog = first.source === 'log.md';
-    var dateStr = first.recency ? String(first.recency) : '';
-
-    var groups = [];
-    var groupIndex = {};
-    items.forEach(function (meta) {
-      var dateKey = meta && meta.recency ? String(meta.recency) : '';
-      if (!(dateKey in groupIndex)) {
-        groupIndex[dateKey] = groups.length;
-        groups.push({ date: dateKey, items: [] });
-      }
-      groups[groupIndex[dateKey]].items.push(meta);
-    });
-
-    var introParts = [];
-    if (fromLog && groups.length > 1) {
-      var lastDate = groups[groups.length - 1].date || dateStr;
-      var dateRange = lastDate && dateStr && lastDate !== dateStr ? (lastDate + ' → ' + dateStr) : dateStr;
-      if (dateRange) introParts.push(dateRange);
-      introParts.push('维护日志时间线');
-      introParts.push(String(items.length) + ' 个节点 / ' + String(groups.length) + ' 天');
-    } else {
-      if (dateStr) introParts.push(dateStr);
-      if (fromLog) {
-        introParts.push('维护日志');
-        if (items.length > 1) introParts.push(String(items.length) + ' 个节点');
-      } else {
-        introParts.push('按页面更新时间');
-      }
-    }
-    var introHtml =
-      '<p class="data-meta home-latest-wiki-intro">' + escapeHtml(introParts.join(' · ')) + '</p>';
 
     function renderCard(meta, includeDate) {
       var typeLabel = WIKI_TYPE_LABEL_HOME[meta.type] || (meta.type ? String(meta.type) : 'Wiki');
@@ -333,36 +424,144 @@
       );
     }
 
-    var bodyHtml;
-    if (fromLog && groups.length > 1) {
-      bodyHtml = '';
-      for (var gi = 0; gi < groups.length; gi++) {
-        var group = groups[gi];
-        var groupCards = '';
-        for (var ci = 0; ci < group.items.length; ci++) {
-          groupCards += renderCard(group.items[ci], false);
-        }
-        var dateLabel = group.date
-          ? escapeHtml(group.date) + ' · ' + String(group.items.length) + ' 项'
-          : String(group.items.length) + ' 项';
-        bodyHtml += (
-          '<section class="home-latest-wiki-timeline-group">' +
-          '<h3 class="home-latest-wiki-timeline-date">' + dateLabel + '</h3>' +
-          '<div class="home-latest-wiki-cards card-grid home-latest-wiki-grid">' + groupCards + '</div>' +
-          '</section>'
-        );
-      }
-      bodyHtml = '<div class="home-latest-wiki-timeline">' + bodyHtml + '</div>';
+    var defaultBodyHtml;
+    if (!items.length || !items[0].detail_id) {
+      defaultBodyHtml = '<p class="data-meta">暂无「最近更新」数据。</p>';
     } else {
-      var itemsCards = '';
-      for (var j = 0; j < items.length; j++) {
-        itemsCards += renderCard(items[j], !fromLog);
+      var first = items[0];
+      var fromLog = first.source === 'log.md';
+      var dateStr = first.recency ? String(first.recency) : '';
+
+      var groups = [];
+      var groupIndex = {};
+      items.forEach(function (meta) {
+        var dateKey = meta && meta.recency ? String(meta.recency) : '';
+        if (!(dateKey in groupIndex)) {
+          groupIndex[dateKey] = groups.length;
+          groups.push({ date: dateKey, items: [] });
+        }
+        groups[groupIndex[dateKey]].items.push(meta);
+      });
+
+      var introParts = [];
+      if (fromLog && groups.length > 1) {
+        var lastDate = groups[groups.length - 1].date || dateStr;
+        var dateRange = lastDate && dateStr && lastDate !== dateStr ? (lastDate + ' → ' + dateStr) : dateStr;
+        if (dateRange) introParts.push(dateRange);
+        introParts.push('维护日志时间线');
+        introParts.push(String(items.length) + ' 个节点 / ' + String(groups.length) + ' 天');
+      } else {
+        if (dateStr) introParts.push(dateStr);
+        if (fromLog) {
+          introParts.push('维护日志');
+          if (items.length > 1) introParts.push(String(items.length) + ' 个节点');
+        } else {
+          introParts.push('按页面更新时间');
+        }
       }
-      var wrapClass =
-        items.length > 1 ? 'home-latest-wiki-cards card-grid home-latest-wiki-grid' : 'home-latest-wiki-cards';
-      bodyHtml = '<div class="' + wrapClass + '">' + itemsCards + '</div>';
+      var introHtml =
+        '<p class="data-meta home-latest-wiki-intro">' + escapeHtml(introParts.join(' · ')) + '</p>';
+
+      var bodyHtml;
+      if (fromLog && groups.length > 1) {
+        bodyHtml = '';
+        for (var gi = 0; gi < groups.length; gi++) {
+          var group = groups[gi];
+          var groupCards = '';
+          for (var ci = 0; ci < group.items.length; ci++) {
+            groupCards += renderCard(group.items[ci], false);
+          }
+          var dateLabel = group.date
+            ? escapeHtml(group.date) + ' · ' + String(group.items.length) + ' 项'
+            : String(group.items.length) + ' 项';
+          bodyHtml += (
+            '<section class="home-latest-wiki-timeline-group">' +
+            '<h3 class="home-latest-wiki-timeline-date">' + dateLabel + '</h3>' +
+            '<div class="home-latest-wiki-cards card-grid home-latest-wiki-grid">' + groupCards + '</div>' +
+            '</section>'
+          );
+        }
+        bodyHtml = '<div class="home-latest-wiki-timeline">' + bodyHtml + '</div>';
+      } else {
+        var itemsCards = '';
+        for (var j = 0; j < items.length; j++) {
+          itemsCards += renderCard(items[j], !fromLog);
+        }
+        var wrapClass =
+          items.length > 1 ? 'home-latest-wiki-cards card-grid home-latest-wiki-grid' : 'home-latest-wiki-cards';
+        bodyHtml = '<div class="' + wrapClass + '">' + itemsCards + '</div>';
+      }
+      defaultBodyHtml = introHtml + bodyHtml;
     }
-    mount.innerHTML = introHtml + bodyHtml;
+
+    var activityDays = wikiActivity && Array.isArray(wikiActivity.days) ? wikiActivity.days : [];
+    var heatmapHtml = activityDays.length ? buildHomeWikiHeatmapHtml(activityDays) : '';
+    mount.innerHTML = heatmapHtml + '<div class="home-latest-wiki-body">' + defaultBodyHtml + '</div>';
+    if (!heatmapHtml) return;
+
+    var bodyMount = mount.querySelector('.home-latest-wiki-body');
+    var grid = mount.querySelector('.home-wiki-heatmap-grid');
+    var scrollWrap = mount.querySelector('.home-wiki-heatmap-scroll');
+    if (scrollWrap) scrollWrap.scrollLeft = scrollWrap.scrollWidth; // 默认停在最新日期
+
+    var nodesByDate = {};
+    var totalByDate = {};
+    for (var ai = 0; ai < activityDays.length; ai++) {
+      var dayEntry = activityDays[ai];
+      if (!dayEntry || !dayEntry.date) continue;
+      nodesByDate[dayEntry.date] = Array.isArray(dayEntry.nodes) ? dayEntry.nodes : [];
+      totalByDate[dayEntry.date] = typeof dayEntry.count === 'number' ? dayEntry.count : 0;
+    }
+
+    var activeDate = '';
+
+    function setActiveCell(dateKey) {
+      var cells = grid.querySelectorAll('button.home-wiki-heatmap-cell');
+      for (var ci2 = 0; ci2 < cells.length; ci2++) {
+        var isActive = !!dateKey && cells[ci2].getAttribute('data-date') === dateKey;
+        cells[ci2].classList.toggle('is-active', isActive);
+        cells[ci2].setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      }
+    }
+
+    function clearHeatmapFilter() {
+      activeDate = '';
+      setActiveCell('');
+      bodyMount.innerHTML = defaultBodyHtml;
+    }
+
+    function applyHeatmapFilter(dateKey) {
+      var dayNodes = nodesByDate[dateKey] || [];
+      if (!dayNodes.length) return;
+      activeDate = dateKey;
+      setActiveCell(dateKey);
+      var total = totalByDate[dateKey] || dayNodes.length;
+      var filterIntro = [dateKey, '维护日志', String(total) + ' 个节点'];
+      if (dayNodes.length < total) filterIntro.push('仅展示前 ' + dayNodes.length + ' 项');
+      var cardsHtml = '';
+      for (var ni = 0; ni < dayNodes.length; ni++) {
+        cardsHtml += renderCard(dayNodes[ni], false);
+      }
+      bodyMount.innerHTML =
+        '<p class="data-meta home-latest-wiki-intro">' + escapeHtml(filterIntro.join(' · ')) +
+        ' <button type="button" class="btn-secondary btn-inline home-wiki-heatmap-clear">清除筛选</button></p>' +
+        '<div class="home-latest-wiki-cards card-grid home-latest-wiki-grid">' + cardsHtml + '</div>';
+    }
+
+    grid.addEventListener('click', function (ev) {
+      var cell = ev.target.closest('button.home-wiki-heatmap-cell');
+      if (!cell) return;
+      var dateKey = cell.getAttribute('data-date') || '';
+      if (!dateKey) return;
+      if (dateKey === activeDate) {
+        clearHeatmapFilter();
+      } else {
+        applyHeatmapFilter(dateKey);
+      }
+    });
+    bodyMount.addEventListener('click', function (ev) {
+      if (ev.target.closest('.home-wiki-heatmap-clear')) clearHeatmapFilter();
+    });
   }
 
   function moduleHref(id) {
@@ -4273,14 +4472,25 @@
   }
 
   if (homeStatsRoot) {
-    fetch('exports/home-stats.json')
+    var homeStatsFetch = fetch('exports/home-stats.json').then(function (response) {
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      return response.json();
+    });
+    // 热力图数据可缺席（本地未 make graph 时降级为无热力图，不影响时间线）
+    var wikiActivityFetch = fetch('exports/wiki-activity.json')
       .then(function (response) {
         if (!response.ok) throw new Error('HTTP ' + response.status);
         return response.json();
       })
-      .then(function (stats) {
+      .catch(function (error) {
+        console.warn('Wiki activity sync failed:', error);
+        return null;
+      });
+    Promise.all([homeStatsFetch, wikiActivityFetch])
+      .then(function (results) {
+        var stats = results[0];
         renderHomeStats(stats, stats.coverage ? (stats.coverage.covered + '/' + stats.coverage.total) : '');
-        renderLatestWikiNode(stats);
+        renderLatestWikiNode(stats, results[1]);
       })
       .catch(function (error) {
         console.warn('Home stats sync failed:', error);
