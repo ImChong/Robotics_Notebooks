@@ -416,10 +416,11 @@
       for (var cri = 0; cri < maxRows; cri++) {
         var rowMeta = items[cri];
         var rowType = WIKI_TYPE_LABEL_HOME[rowMeta.type] || (rowMeta.type ? String(rowMeta.type) : 'Wiki');
-        var rowLead = rowMeta.recency ? String(rowMeta.recency) + ' · ' + rowType : rowType;
         compactRows +=
-          '<li class="home-latest-row"><span class="home-latest-row-meta">' +
-          escapeHtml(rowLead) +
+          '<li class="home-latest-row"><span class="home-latest-row-date">' +
+          escapeHtml(rowMeta.recency ? String(rowMeta.recency) : '') +
+          '</span><span class="home-latest-row-type">' +
+          escapeHtml(rowType) +
           '</span><a href="' +
           escapeHtml(detailHref(rowMeta.detail_id)) +
           '">' +
