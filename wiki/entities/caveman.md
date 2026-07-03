@@ -8,8 +8,9 @@ tags:
   - context-compression
   - agent-infrastructure
 status: complete
-updated: 2026-05-19
+updated: 2026-07-03
 related:
+  - ./ponytail.md
   - ./mattpocock-skills.md
   - ./superpowers-obra.md
   - ./hermes-agent.md
@@ -45,6 +46,7 @@ summary: "Caveman（JuliusBrussee/caveman）是多 harness 可安装的编码代
   - [Hermes Agent](hermes-agent.md) — **怎么常驻跑**（网关、记忆/技能、cron、沙箱）
   - [Agent Reach](agent-reach.md) — **怎么读外网**（渠道脚手架）
   - **Caveman** — **怎么说更短**（输出与部分上下文压缩）
+  - [Ponytail](ponytail.md) — **写什么更少**（必要性阶梯减 LOC；上游 agentic 基准对照臂之一）
 - **对机器人研发场景的间接价值：** 仿真/真机仓库的 agent 会话往往 **长上下文 + 多轮解释**；在仍依赖人类审阅的前提下，压缩 **状态汇报、PR 评论、commit message** 可减少噪音，与 Superpowers 的「证据优先」叙事相容（仍以团队规范为准）。
 
 ## 核心结构
@@ -101,6 +103,7 @@ flowchart LR
 
 ## 关联页面
 
+- [Ponytail](ponytail.md) — **少写代码** 必要性阶梯（与「更短输出」正交；基准中常并列对照）
 - [Skills For Real Engineers（mattpocock）](mattpocock-skills.md) — 含同名 `productivity/caveman` 技能但 **不同上游**；与本页 JuliusBrussee 插件对照
 - [Superpowers（obra）](superpowers-obra.md) — 交付流程技能（与「更短输出」互补）
 - [Hermes Agent](hermes-agent.md) — 常驻代理运行时与技能/记忆系统

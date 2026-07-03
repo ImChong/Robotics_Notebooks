@@ -12,6 +12,7 @@ tags:
 status: complete
 updated: 2026-06-20
 related:
+  - ./ponytail.md
   - ./caveman.md
   - ./superpowers-obra.md
   - ./sensenova-skills.md
@@ -115,6 +116,7 @@ flowchart TB
 ## 关联页面
 
 - [SenseNova-Skills](sensenova-skills.md) — **办公生产力** Agent Skills（PPT/Excel/深度研究）；推荐安装至 `~/.hermes/skills/`
+- [Ponytail](ponytail.md) — **少写代码** 必要性阶梯（Hermes 可 `plugins install`）
 - [Superpowers（obra）](superpowers-obra.md) — 编码代理 **软件工程流程** 技能库
 - [Agent Reach](agent-reach.md) — 编码代理 **外网读搜** 脚手架
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — **持久 wiki 知识编译** 范式
