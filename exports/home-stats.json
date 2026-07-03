@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-03",
   "node_count": 1569,
-  "edge_count": 10770,
+  "edge_count": 10773,
   "coverage": {
     "covered": 1538,
     "total": 1567,
@@ -29,6 +29,14 @@
       "detail_id": "wiki-formalizations-vla-tokenization",
       "label": "Action Tokenization (动作分词)",
       "type": "formalization",
+      "recency": "2026-07-03",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/humanoid-parallel-joint-kinematics.md",
+      "detail_id": "wiki-concepts-humanoid-parallel-joint-kinematics",
+      "label": "人形机器人并联关节解算（Parallel / Closed-Chain Joint Kinematics）",
+      "type": "concept",
       "recency": "2026-07-03",
       "source": "log.md"
     },
@@ -156,14 +164,6 @@
       "path": "wiki/entities/autodl.md",
       "detail_id": "entity-autodl",
       "label": "AutoDL",
-      "type": "entity",
-      "recency": "2026-07-02",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/gpufree.md",
-      "detail_id": "entity-gpufree",
-      "label": "算力自由（GPUFree）",
       "type": "entity",
       "recency": "2026-07-02",
       "source": "log.md"
