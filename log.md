@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-03] ingest | sources/repos/ponytail.md — 接入 Ponytail 编码代理必要性阶梯技能并交叉更新 caveman/superpowers/mattpocock/llm-wiki/hermes 实体页；wiki/entities/ponytail.md
+
 ## [2026-07-03] ingest | sources/papers/simfoundry_arxiv_2606_28276.md — SimFoundry Real2Sim 场景生成与策略评测/训练闭环；wiki/entities/paper-simfoundry-real2sim-scene-generation.md；交叉更新 sim2real、manipulation、simulation-evaluation-infrastructure、nvidia-gear-lab
 
 ## [2026-07-03] ingest | sources/papers/mint_rss_2026.md — MINT RSS 2026 频域意图分词与单样本迁移；wiki/entities/paper-mint-vla.md；交叉更新 wiki/methods/vla.md、wiki/formalizations/vla-tokenization.md

@@ -6,10 +6,11 @@ sources:
   - ../../sources/blogs/karpathy_llm_wiki_gist.md
   - ../../sources/sites/karpathy-ai.md
 related:
+  - ../entities/ponytail.md
   - ../entities/andrej-karpathy.md
   - ../overview/robot-learning-overview.md
 summary: "Karpathy 提出的 LLM Wiki 模式：通过 LLM 持续维护结构化 markdown 知识库，实现知识积累而非每次重新检索。"
-updated: 2026-06-20
+updated: 2026-07-03
 ---
 
 # LLM Wiki
@@ -112,6 +113,7 @@ This document is intentionally abstract. It describes the idea, not a specific i
 - [Andrej Karpathy](../entities/andrej-karpathy.md) — 模式提出者与 Tesla / CS231n / Zero to Hero 背景
 - [Robot Learning Overview](../overview/robot-learning-overview.md) — 本知识库的三层架构（sources → wiki → schema）正是基于此方法论
 - [Ingest Workflow](../../schema/ingest-workflow.md) — Karpathy 循环在本项目中的具体实现
+- [Ponytail](../entities/ponytail.md) — **少写代码** 必要性阶梯技能，与 Superpowers（流程）、Caveman（措辞）形成代理行为文件化三角
 - [Superpowers（obra）](../entities/superpowers-obra.md) — 面向编码代理的 **技能 + 交付流程** 方法论，可与本页的「持久 wiki」对照阅读
 - [Skills For Real Engineers（mattpocock）](../entities/mattpocock-skills.md) — **轻量可组合** 的日常工程技能库（grill、CONTEXT.md、TDD），与 Superpowers 形成流程轻重对照
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 是本知识库最核心的主题，体现"好问题回写 wiki"原则

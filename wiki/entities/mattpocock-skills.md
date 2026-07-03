@@ -9,8 +9,9 @@ tags:
   - software-engineering
   - agent-infrastructure
 status: complete
-updated: 2026-05-21
+updated: 2026-07-03
 related:
+  - ./ponytail.md
   - ./superpowers-obra.md
   - ./caveman.md
   - ./hermes-agent.md
@@ -46,6 +47,7 @@ summary: "mattpocock/skills（Skills For Real Engineers）是 Matt Pocock 公开
 - **与 Superpowers 的分工：** [Superpowers（obra）](superpowers-obra.md) 强调 **brainstorm → worktree → 子代理评审 → 强制 TDD 管线**；mattpocock/skills 更强调 **保留开发者控制权**、反对 GSD/BMAD/Spec-Kit 式「流程包办」，技能可 **自选组合**（README 自述 *Hack around with them*）。
 - **对本仓库 agent 的直接价值：** 维护 Robotics_Notebooks 时大量 **ingest、派生文件同步、长 markdown 交叉引用**；`/grill-with-docs` 与 `CONTEXT.md` 可降低 **术语不一致导致的冗长解释**；`/tdd` 与 `/diagnose` 可迁移到 **脚本与 CI 工具链** 的修改场景（与 `make ci-preflight` 文化一致）。
 - **命名注意：** 本库含 `productivity/caveman` 技能，与 [Caveman（JuliusBrussee）](caveman.md) **不同上游、不同实现**；二者都追求更短输出，宜对照选用而非混为同一插件。
+- **与 Ponytail 的分工：** [Ponytail](ponytail.md) 压 **实现代码量**（必要性阶梯）；本库压 **对齐与反馈环**；可与 Superpowers 流程技能叠加选用。
 
 ## 核心结构
 
@@ -84,6 +86,7 @@ flowchart TD
 ## 关联页面
 
 - [Superpowers（obra）](superpowers-obra.md) — **重流程、可强制** 的编码交付技能库（worktree、子代理评审）
+- [Ponytail](ponytail.md) — **少写代码** 必要性阶梯（与 grill/TDD 正交）
 - [Caveman](caveman.md) — **独立上游** 的输出/上下文压缩插件（与本库同名 skill 对照）
 - [Hermes Agent](hermes-agent.md) — 常驻代理运行时与 agentskills.io 互操作
 - [SenseNova-Skills](sensenova-skills.md) — **办公产出** 向 Agent Skills（与本文 **编码工程** 技能互补）

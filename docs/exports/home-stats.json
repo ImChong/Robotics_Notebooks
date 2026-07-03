@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-07-03",
-  "node_count": 1570,
-  "edge_count": 10789,
+  "node_count": 1571,
+  "edge_count": 10800,
   "coverage": {
-    "covered": 1539,
-    "total": 1568,
+    "covered": 1540,
+    "total": 1569,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/ponytail.md",
+      "detail_id": "entity-ponytail",
+      "label": "Ponytail",
+      "type": "entity",
+      "recency": "2026-07-03",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-simfoundry-real2sim-scene-generation.md",
       "detail_id": "entity-paper-simfoundry-real2sim-scene-generation",
@@ -159,20 +167,12 @@
       "type": "comparison",
       "recency": "2026-07-02",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/comparisons/china-gpu-cloud-platforms.md",
-      "detail_id": "wiki-comparisons-china-gpu-cloud-platforms",
-      "label": "国内 GPU 云平台选型（机器人学习与仿真）",
-      "type": "comparison",
-      "recency": "2026-07-02",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-simfoundry-real2sim-scene-generation.md",
-    "detail_id": "entity-paper-simfoundry-real2sim-scene-generation",
-    "label": "SimFoundry（Modular Real2Sim Scene Generation for Policy Learning and Evaluation）",
+    "path": "wiki/entities/ponytail.md",
+    "detail_id": "entity-ponytail",
+    "label": "Ponytail",
     "type": "entity",
     "recency": "2026-07-03",
     "source": "log.md"
