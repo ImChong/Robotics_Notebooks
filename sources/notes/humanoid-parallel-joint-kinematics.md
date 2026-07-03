@@ -32,6 +32,7 @@
 
 | 资料 | 链接 | 备注 |
 |------|------|------|
+| `Parallel_Ankle_Joint`（feidedao） | https://github.com/feidedao/Parallel_Ankle_Joint | G1 / 天工踝 **解析 IK、迭代 FK、雅可比** + MuJoCo 对比；见 [`sources/repos/parallel_ankle_joint.md`](../repos/parallel_ankle_joint.md) |
 | `closed-chain-ik-js` | https://github.com/gkjohnson/closed-chain-ik-js | 浏览器侧闭链 IK 参考实现，适合理解约束迭代与可视化 |
 
 ### 产业 / 博客（语境）
