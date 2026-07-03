@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-03] ingest | sources/papers/simfoundry_arxiv_2606_28276.md — SimFoundry Real2Sim 场景生成与策略评测/训练闭环；wiki/entities/paper-simfoundry-real2sim-scene-generation.md；交叉更新 sim2real、manipulation、simulation-evaluation-infrastructure、nvidia-gear-lab
+
 ## [2026-07-03] ingest | sources/papers/mint_rss_2026.md — MINT RSS 2026 频域意图分词与单样本迁移；wiki/entities/paper-mint-vla.md；交叉更新 wiki/methods/vla.md、wiki/formalizations/vla-tokenization.md
 
 ## [2026-07-03] ingest | sources/repos/parallel_ankle_joint.md — G1/天工并联踝 IK·FK·雅可比参考实现；wiki/concepts/humanoid-parallel-joint-kinematics.md

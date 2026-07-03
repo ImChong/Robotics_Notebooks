@@ -2,7 +2,7 @@
 type: entity
 tags: [nvidia, research-lab, embodied-ai, foundation-models, humanoid, vla, simulation, gear]
 status: complete
-updated: 2026-07-02
+updated: 2026-07-03
 related:
   - ../methods/aspire.md
   - ../methods/egoscale.md
@@ -18,6 +18,7 @@ related:
   - ../concepts/foundation-policy.md
   - ../queries/real-robot-policy-autoresearch-harness.md
   - ./paper-vesta-generalist-embodied-reasoning.md
+  - ./paper-simfoundry-real2sim-scene-generation.md
 sources:
   - ../../sources/sites/nvidia-research-gear-lab.md
 summary: "NVIDIA GEAR（Generalist Embodied Agent Research）由 Jim Fan 与 Yuke Zhu 领导，公开使命是构建虚拟与物理世界的具身智能体基础模型；研究议程覆盖多模态基础模型、通用人形机器人、Foundation Agents 与仿真合成数据，并发布 GR00T、SONIC、EgoScale、ENPIRE 等代表性工作。"
@@ -96,6 +97,7 @@ flowchart TB
 | **ASPIRE** | 持续学习 code-as-policy + 可扩展技能库 | [aspire.md](../methods/aspire.md) |
 | **Vesta** | 统一定位/VLN/具身推理/记忆子任务规划的通才 planner VLM | [paper-vesta-generalist-embodied-reasoning.md](./paper-vesta-generalist-embodied-reasoning.md) |
 | **GR00T Visual Sim2Real** | VIRAL / DoorMan 等像素→动作迁移 | [gr00t-visual-sim2real.md](./gr00t-visual-sim2real.md) |
+| **SimFoundry** | 真机视频 → 数字孪生 + cousins；real-to-sim 评测与 sim-to-real 操作训练 | [paper-simfoundry-real2sim-scene-generation.md](./paper-simfoundry-real2sim-scene-generation.md) |
 | **Real-robot autoresearch** | ENPIRE 与机队 scaling 讨论 | [real-robot-policy-autoresearch-harness.md](../queries/real-robot-policy-autoresearch-harness.md) |
 
 ## 常见误区或局限
