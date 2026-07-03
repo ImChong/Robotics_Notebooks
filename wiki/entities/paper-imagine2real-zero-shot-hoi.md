@@ -49,6 +49,12 @@ sources:
 | 机构 | Zhejiang University；Shanghai AI Laboratory；CUHK 等 |
 | 论文/项目 | <https://arxiv.org/abs/2605.22272> |
 
+## 评测速览（索引级）
+
+- **部署形态：** mocap 系统上 **零样本** 物理部署人形 HOI，绕过密集重定向与 CAD 几何先验。
+- **训练协议：** 三阶段渐进训练（4D 点轨迹 → BFM 潜空间稀疏关键点 Tracker → RL 适配）。
+- 定量指标以 arXiv:2605.22272 为准，索引级页暂不展开。
+
 ## 与其他页面的关系
 
 - 分类 hub：[loco-manip-contact-category-03-generative-data.md](../overview/loco-manip-contact-category-03-generative-data.md)

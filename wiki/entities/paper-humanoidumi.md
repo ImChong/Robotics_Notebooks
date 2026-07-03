@@ -50,6 +50,12 @@ sources:
 | 机构 | BAAI |
 | 论文/项目 | <https://arxiv.org/abs/2606.27239> · <https://baai-aether.github.io/HumanoidUMI> |
 
+## 评测速览（索引级）
+
+- **真机验证：** Unitree G1 上 **五类** loco-manipulation 任务（走、弯腰、投掷等与操作耦合）。
+- **采集效率：** PICO VR + UMI 夹爪无机器人采集，较全身遥操作更高效。
+- 定量成功率与基线对比以 arXiv:2606.27239 / 项目页为准，索引级页暂不展开。
+
 ## 与其他页面的关系
 
 - 分类 hub：[loco-manip-contact-category-01-contact-data.md](../overview/loco-manip-contact-category-01-contact-data.md)

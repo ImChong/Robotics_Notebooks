@@ -47,6 +47,12 @@ sources:
 | 论文/项目 | <https://zgc-embodyai.github.io/Human-as-Humanoid/> |
 | 机构 | ZGC EmbodyAI 等 |
 
+## 评测速览（索引级）
+
+- **数据吞吐：** 示范采集较全身遥操作快 **4.8–7.2×**，转换链路约 **20 FPS** 近实时。
+- **部署形态：** PhysDex（FK 感知监督）支持无目标任务机器人示范的 **零样本部署**。
+- 定量成功率与基线对比以原论文为准，索引级页暂不展开。
+
 ## 与其他页面的关系
 
 - 分类 hub：[loco-manip-contact-category-01-contact-data.md](../overview/loco-manip-contact-category-01-contact-data.md)

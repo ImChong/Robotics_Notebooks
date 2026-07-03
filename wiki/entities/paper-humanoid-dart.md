@@ -49,6 +49,12 @@ sources:
 | 机构 | Max Planck Institute for Intelligent Systems 等 |
 | 论文/项目 | <https://arxiv.org/abs/2606.26855> |
 
+## 评测速览（索引级）
+
+- **真机验证：** Unitree G1 上完成 **推、踢、pick-and-place** 等目标条件 loco-manip 技能。
+- **方法定位：** 扩散生成器与 RL 跟踪交替自举，从稀疏示范逐步扩大可解目标分布。
+- 定量指标（目标覆盖率 / 成功率）以 arXiv:2606.26855 为准，索引级页暂不展开。
+
 ## 与其他页面的关系
 
 - 分类 hub：[loco-manip-contact-category-03-generative-data.md](../overview/loco-manip-contact-category-03-generative-data.md)
