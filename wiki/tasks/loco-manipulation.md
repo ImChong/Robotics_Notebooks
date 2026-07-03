@@ -148,7 +148,7 @@ flowchart TD
 
 ### 17. 混合数据入口周报（ego / 生成 / 仿真 / 触觉 / 跨本体 teleop）
 - **核心**：2026-06 周报将 loco-manip 数据生产拆为 **四组入口**——第一视角语义与全身动作（Ego-Pi、EgoPriMo）、生成视频与仿真 teleop（GenHOI、OASIS）、解耦命令与统一 WBC（VAIC、M3imic）、触觉与跨本体遥操作（WT-UMI、X-OP）；强调 **对齐、接触、命令接口与跨平台复用** 比单点真机采集更关键。
-- **策展地图**：[Loco-Manip 8 篇技术地图](../overview/loco-manip-8-papers-technology-map.md)（具身智能研究室微信公众号，2026-06-14）；[161 篇十方向全景](../overview/humanoid-loco-manip-161-papers-technology-map.md)（2026-06-26）。
+- **策展地图**：[Loco-Manip 8 篇技术地图](../overview/loco-manip-8-papers-technology-map.md)（具身智能研究室微信公众号，2026-06-14）；[161 篇十方向全景](../overview/humanoid-loco-manip-161-papers-technology-map.md)（2026-06-26）；[接触五段链路地图](../overview/loco-manip-contact-technology-map.md)（2026-07-03）。
 
 ### 18. 可穿戴人类数据 + 三系统耦合单策略 + 世界模型迭代环（HumanEx · Curr-0）
 - **核心**：用软可穿戴 **HumanEx** 在野外采集 **embodied + interactive + retargetable** 人类演示（含 **incidental behavior**），将缩放律从 **robot-hour** 推向 **human-task-hour**；**System 2（推理接地）→ System 1（全身平衡与可达）→ System 0（21-DoF 灵巧手物交互）** 在 **70+ DoF** 人形上 **端到端单策略** 闭环，反对「先走再手」流水线；**多模态世界模型** 作可扩展评测与 **Human-in-the-World-Model** 部署后纠正。
@@ -211,6 +211,7 @@ flowchart TD
 - [MotionWAM（论文实体）](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) — 实时 WAM + 统一全身 token 的人形 loco-manip（arXiv:2606.09215）
 - [Loco-Manip 8 篇数据入口技术地图](../overview/loco-manip-8-papers-technology-map.md) — 2026-06 周报：四组数据入口（Ego-Pi/OASIS/VAIC/WT-UMI 等 8 篇）
 - [人形 Loco-Manip 161 篇技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md) — 2026-06 长文：十类能力形成顺序（94+ 篇已挂接既有实体）
+- [Loco-Manip 接触五段链路技术地图](../overview/loco-manip-contact-technology-map.md) — 2026-07 专题：接触数据→表示→生成补数→接触后稳定→VLA/WM（复用既有论文实体，不重复建节点）
 - [Curr-0（Current Robotics）](../entities/current-robotics-curr0.md) — HumanEx 可穿戴数据 + 三系统单策略 + 世界模型评测/后训练全栈（2026-06 博客）
 - [MotionDisco（论文实体）](../entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md) — LLM 进化接触计划搜索 + TO 反馈 + G1 真机运动发现（arXiv:2606.06139）
 - [HALOMI（论文实体）](../entities/paper-halomi-humanoid-loco-manipulation.md) — UMI+egocentric 无机器人示范、BFM-Zero 流形头手 WBC、π₀.₅ VLA 与 G1 主动颈（arXiv:2606.18772）

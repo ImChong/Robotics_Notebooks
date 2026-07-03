@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-03] ingest | sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md — 具身智能研究室 Loco-Manip 接触五段链路专题；父节点 loco-manip-contact-technology-map + 五组 loco-manip-contact-category-* 子节点；复用约 30 篇既有 paper 实体，6 篇仅外链不新建节点
+
+- 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.5.0（`pip install git+...` + 手动安装 [wechat-article-for-ai](https://github.com/bzd6661/wechat-article-for-ai) 至 `~/.agent-reach/tools/`（Camoufox；`playwright==1.49.1` 规避 viewport 协议错误））
+- 原始链接：<https://mp.weixin.qq.com/s/UjShbwl8p1h9ukymfiRNaw>
+- 沉淀页面：[`wiki/overview/loco-manip-contact-technology-map.md`](wiki/overview/loco-manip-contact-technology-map.md)（**父**）、[`loco-manip-contact-category-01-contact-data.md`](wiki/overview/loco-manip-contact-category-01-contact-data.md) … [`loco-manip-contact-category-05-vla-world-models.md`](wiki/overview/loco-manip-contact-category-05-vla-world-models.md)（**子**）
+- 交叉更新：[`wiki/tasks/loco-manipulation.md`](wiki/tasks/loco-manipulation.md)、[`wiki/overview/humanoid-loco-manip-161-papers-technology-map.md`](wiki/overview/humanoid-loco-manip-161-papers-technology-map.md)、[`sources/README.md`](sources/README.md)、[`sources/repos/panniantong_agent_reach.md`](sources/repos/panniantong_agent_reach.md)
+
 ## [2026-07-02] lint | scripts/lint_wiki.py 新增 `_check_contact_control_crosslink`（V27 P0）——接触/力控/操作概念页交叉链路巡检 V1，INFO 级不阻塞 CI，回链「接触力旋量闭环」枢纽（contact-wrench-closed-loop / topic-contact-force-control）；新增 tests/test_lint_wiki_contact_control_crosslink.py（7 例）；刷新 exports/lint-report.md 基线（10 页 backlog，0 errors）
 
 ## [2026-07-02] ingest | sources/papers/flying_knots_arxiv_2602_21302.md — Flying Knots Task-Level ILC 可变形绳操作；wiki/entities/paper-flying-knots.md、wiki/entities/flying-knots-public.md；交叉更新 manipulation、contact-rich-manipulation

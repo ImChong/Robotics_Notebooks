@@ -16,6 +16,7 @@ related:
   - ./loco-manip-161-category-10-ego-video.md
   - ./humanoid-motion-cerebellum-technology-map.md
   - ./loco-manip-8-papers-technology-map.md
+  - ./loco-manip-contact-technology-map.md
   - ./humanoid-rl-motion-control-body-system-stack.md
   - ./bfm-41-papers-technology-map.md
   - ../tasks/loco-manipulation.md
@@ -121,4 +122,5 @@ flowchart TB
 ## 推荐继续阅读
 
 - [Loco-Manip 8 篇数据入口地图](./loco-manip-8-papers-technology-map.md)
+- [Loco-Manip 接触五段链路地图](./loco-manip-contact-technology-map.md)
 - [运动小脑 64 篇技术地图](./humanoid-motion-cerebellum-technology-map.md)
