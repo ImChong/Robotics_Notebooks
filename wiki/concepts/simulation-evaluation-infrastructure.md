@@ -2,12 +2,13 @@
 type: concept
 tags: [simulation, evaluation, foundation-model, closed-loop, real-to-sim, benchmarking]
 status: complete
-updated: 2026-06-18
+updated: 2026-07-03
 related:
   - ../entities/deepinsight.md
   - ../entities/genesis-world-10.md
   - ../overview/robot-training-stack-layers-technology-map.md
   - ../entities/isaac-gym-isaac-lab.md
+  - ../entities/paper-simfoundry-real2sim-scene-generation.md
   - ./sim2real.md
   - ./data-flywheel.md
   - ../methods/vla.md
@@ -95,6 +96,8 @@ flowchart TB
 - 在未做 **real-to-sim 相关性** 校验的任务上，用仿真排行榜替代真机 sign-off。
 - 将某一公司/平台的自报 Pearson/MMRV **外推**到所有机器人形态与任务分布。
 
+**操作臂实证：** [SimFoundry](../entities/paper-simfoundry-real2sim-scene-generation.md)（arXiv:2606.28276）从真机视频构建孪生场景，在 **7 任务 × 5 策略族** 上报告 **均值 Pearson r=0.911、MMRV=0.018**，并相对 PolaRiS 显著提升排序相关性——可作为「**视频孪生 + cousins 数据**」路线的 real-to-sim 评测锚点。
+
 ## 关联页面
 
 - [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — 本页所述物理/仿真要素在保真度链路（建模 ① → 数值 ② → 接触 ③ → 随机化 ④）中的定位
@@ -105,6 +108,7 @@ flowchart TB
 - [Isaac Gym / Isaac Lab](../entities/isaac-gym-isaac-lab.md) — 高并行仿真与 RL 评测生态
 - [VLA](../methods/vla.md) — 操作基础模型评测基准语境
 - [ENPIRE](../methods/enpire.md) — 真机闭环 autoresearch 与 RoboCasa 仿真 ablation 的分工样本
+- [SimFoundry](../entities/paper-simfoundry-real2sim-scene-generation.md) — 真机视频孪生 + Pearson/MMRV 操作策略评测（arXiv:2606.28276）
 - [数据飞轮](data-flywheel.md) — 评测驱动的数据采集闭环
 
 ## 推荐继续阅读

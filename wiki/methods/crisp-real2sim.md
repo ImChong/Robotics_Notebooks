@@ -2,7 +2,7 @@
 type: method
 title: CRISP（Contact-guided Real2Sim）
 tags: [real2sim, monocular-video, human-scene-interaction, reinforcement-learning, humanoid, iclr2026, planar-primitives]
-updated: 2026-06-21
+updated: 2026-07-03
 summary: "CRISP 从单目视频恢复可物理仿真的人形运动与「凸平面片」场景原语，用人–场景接触补全遮挡结构，并用 RL 人形控制做物理一致性闭环，面向 Real2Sim 资产规模化。"
 related:
   - ../concepts/sim2real.md

@@ -10,7 +10,7 @@ tags:
   - articulated-objects
   - deformable-objects
 status: complete
-updated: 2026-05-30
+updated: 2026-07-03
 arxiv: "2605.21572"
 related:
   - ./paper-physforge-physics-grounded-3d-assets.md

@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-07-03",
-  "node_count": 1569,
-  "edge_count": 10773,
+  "node_count": 1570,
+  "edge_count": 10789,
   "coverage": {
-    "covered": 1538,
-    "total": 1567,
+    "covered": 1539,
+    "total": 1568,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-simfoundry-real2sim-scene-generation.md",
+      "detail_id": "entity-paper-simfoundry-real2sim-scene-generation",
+      "label": "SimFoundry（Modular Real2Sim Scene Generation for Policy Learning and Evaluation）",
+      "type": "entity",
+      "recency": "2026-07-03",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-mint-vla.md",
       "detail_id": "entity-paper-mint-vla",
@@ -159,20 +167,12 @@
       "type": "comparison",
       "recency": "2026-07-02",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/autodl.md",
-      "detail_id": "entity-autodl",
-      "label": "AutoDL",
-      "type": "entity",
-      "recency": "2026-07-02",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-mint-vla.md",
-    "detail_id": "entity-paper-mint-vla",
-    "label": "MINT（Mimic Intent, Not Just Trajectories）",
+    "path": "wiki/entities/paper-simfoundry-real2sim-scene-generation.md",
+    "detail_id": "entity-paper-simfoundry-real2sim-scene-generation",
+    "label": "SimFoundry（Modular Real2Sim Scene Generation for Policy Learning and Evaluation）",
     "type": "entity",
     "recency": "2026-07-03",
     "source": "log.md"
