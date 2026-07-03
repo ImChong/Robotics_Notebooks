@@ -2,7 +2,7 @@
 
 ## [2026-07-03] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **8** 条信息型预警）：
+共发现 **0** 个问题（另含 **0** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -94,15 +94,8 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（8 个）
-- wiki/entities/paper-human-as-humanoid.md（缺 评测）
-- wiki/entities/paper-humanoid-dart.md（缺 评测）
-- wiki/entities/paper-humanoidumi.md（缺 评测）
-- wiki/entities/paper-imagine2real-zero-shot-hoi.md（缺 评测）
-- wiki/entities/paper-mint-vla.md（缺 方法 / 对比）
-- wiki/entities/paper-simfoundry-real2sim-scene-generation.md（缺 评测）
-- wiki/entities/paper-vlk-synthetic-loco-manipulation.md（缺 评测）
-- wiki/entities/paper-wolf-vla.md（缺 评测）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无
