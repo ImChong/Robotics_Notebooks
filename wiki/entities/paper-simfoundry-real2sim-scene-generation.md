@@ -122,6 +122,14 @@ flowchart TB
 | + scene cousins | cousin 布局 Store Marker **0%→16%** |
 | 多任务 + task cousins | π₀.₅-DROID 13 任务 **28%→46%**；7 held-out **0%→29%**（π₀.₅-base） |
 
+## 评测速览
+
+> 详见上文「核心机制 · Real-to-sim 评测协议 / Sim-to-real 训练读点」。
+
+- **Real-to-sim 排序一致性：** 7 任务 × 5 策略族（π₀、π₀.₅、GR00T、DreamZero 等）上仿真↔真机 **均值 Pearson r=0.911、MMRV=0.018**，较 PolaRiS 平均高约 0.59。
+- **Cousins 增益：** object / scene / task cousins 分别约 **+17% / +21% / +40%** 平均任务成功率；π₀.₅-base 在 7 个 held-out 任务 **0%→29%**。
+- **Sim-to-real 训练：** YAM Pot on Stove **99%**、DROID Stack Dishware **100%**；π₀.₅-DROID 13 任务 **28%→46%**。
+
 ## 常见误区或局限
 
 - **模块化 ≠ 零人工：** 全自动 F1 约 **0.81–0.92**；论文称 **每物体约 3 分钟** 微调可拉到 **0.93–0.99**——部署前应把「可接受编辑预算」算进管线 SLA。

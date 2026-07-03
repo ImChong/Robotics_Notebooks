@@ -50,6 +50,12 @@ sources:
 | 机构 | DFKI；University of Oldenburg 等 |
 | 论文/项目 | <https://arxiv.org/abs/2606.25591> |
 
+## 评测速览（索引级）
+
+- **数据合成：** OCP 求解生成 **六类** locomotion 相关、动态可行且接触一致的全身轨迹。
+- **策略验证：** 语言条件 VLA 从 ego 视觉 + 指令直接输出人形运动策略，强调最优性、安全与接触一致性。
+- 定量指标以 arXiv:2606.25591 为准，索引级页暂不展开。
+
 ## 与其他页面的关系
 
 - 分类 hub：[loco-manip-contact-category-05-vla-world-models.md](../overview/loco-manip-contact-category-05-vla-world-models.md)
