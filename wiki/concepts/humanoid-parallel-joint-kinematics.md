@@ -2,10 +2,12 @@
 type: concept
 tags: [humanoid, kinematics, closed-chain, parallel-mechanism, ankle, simulation]
 status: complete
-updated: 2026-05-12
+updated: 2026-07-03
 related:
   - ../entities/asimov-v1.md
   - ../entities/humanoid-robot.md
+  - ../entities/unitree-g1.md
+  - ../entities/tienkung-humanoid-open-source.md
   - ./dexterous-kinematics.md
   - ./armature-modeling.md
   - ../entities/modern-robotics-book.md
@@ -14,6 +16,7 @@ related:
 sources:
   - ../../sources/notes/humanoid-parallel-joint-kinematics.md
   - ../../sources/papers/humanoid_parallel_ankle_kinematics_ingest.md
+  - ../../sources/repos/parallel_ankle_joint.md
 summary: "人形上常见并联/闭链关节（如并联踝）在机构学上需闭链运动学与力分配；控制与仿真常暴露为等效串联关节，二者不可混为一谈。"
 ---
 
@@ -85,6 +88,19 @@ flowchart TB
 | GPU RL 中嵌入闭链踝动力学 | [LiPS（arXiv:2503.08349）](https://arxiv.org/abs/2503.08349) | 第 3 层：训练环境即计算并联分支动力学，缓解「开环 URDF 训练 → 串并联换算部署」缝隙 |
 | 解析驱动映射 + MPC/RL | [Kinematic Actuation Models（arXiv:2503.22459）](https://arxiv.org/abs/2503.22459) | 第 1–2 层：\(q_m=f(q_s)\)、\(J_A\) 及导数；在串联主链优化/学习中保留变传动比与电机侧限位 |
 
+## 工程参考实现（G1 / 天工）
+
+社区仓库 [Parallel_Ankle_Joint（feidedao）](https://github.com/feidedao/Parallel_Ankle_Joint) 把上述第 1–2 层落到 **两款人形踝** 的可运行 Python 上，与本库 [`sources/repos/parallel_ankle_joint.md`](../../sources/repos/parallel_ankle_joint.md) 归档对应。
+
+| 平台 | 核心模块 | 能力 | 使用注意 |
+|------|----------|------|----------|
+| **Unitree G1** | `2_g1_ankle/parallelJoint_g1.py` | 解析 **IK**、迭代 **FK**、闭链 **\(J_c\)**；`compare_g1.py` 与 MuJoCo 轨迹对照 | URDF/MJCF **非官方自组装**；作者声明**动力学参数错误**，仅宜作运动学校验 |
+| **天工（TienKung）** | `5_tiangong/parallelJoint_tg10.py` | 同上 API 结构（`ik` / `fw` / `Jac`） | 同上；与 [天工开源实体页](../entities/tienkung-humanoid-open-source.md) 的整机 URDF 需区分踝部子模型 |
+
+**变量约定（G1 左腿）**：两电机绕 **x 轴**（roll）；**y** 为右腿→左腿（pitch）；**pitch/roll = 0** 为电机零点。速度关系 \(\Delta\theta = J_c \Delta[\text{roll}, \text{pitch}]\)，力映射 \(\tau_{\text{joint}} = J_c^\top \tau_{\text{motor}}\)——与上文流程图中 \(J_A\) 角色一致，但实现层采用作者定义的 \(J_c\) 符号。
+
+配套视频：<https://www.bilibili.com/video/BV1og9VBhEPn/>。部署 G1 控制栈时另见 [Unitree G1](../entities/unitree-g1.md) 与 WBC/RL 仓库索引。
+
 ## 与人形其他闭链问题的关系
 
 - **灵巧手抓取**、**双臂共持刚体**同样形成闭链，约束方程写法相通，但接触与摩擦占主导；见 [Dexterous Kinematics](./dexterous-kinematics.md) 与 [双臂操作](../tasks/bimanual-manipulation.md)。
@@ -110,12 +126,15 @@ flowchart TB
 - [Dexterous Kinematics](./dexterous-kinematics.md)
 - [Armature Modeling](./armature-modeling.md)
 - [人形机器人](../entities/humanoid-robot.md)
+- [Unitree G1](../entities/unitree-g1.md)
+- [天工 Lite / Pro](../entities/tienkung-humanoid-open-source.md)
 - [Modern Robotics（教材实体）](../entities/modern-robotics-book.md)
 - [Sim2Real](./sim2real.md)
 - [Trajectory Optimization](../methods/trajectory-optimization.md)
 
 ## 推荐继续阅读
 
+- [Parallel_Ankle_Joint（feidedao）](https://github.com/feidedao/Parallel_Ankle_Joint) — G1 / 天工踝解析 IK、FK、雅可比与 MuJoCo 对比（本批入库）
 - [closed-chain-ik-js（Garrett Johnson）](https://github.com/gkjohnson/closed-chain-ik-js) — 闭链 IK 与约束求解的可读参考实现
 - [A Framework for Optimal Ankle Design of Humanoid Robots（arXiv:2509.16469）](https://arxiv.org/abs/2509.16469) — 人形踝设计综述语境
 - [How we built humanoid legs from the ground up in 100 days（Menlo）](https://menlo.ai/blog/humanoid-legs-100-days) — RSU 并联踝的产品与机构动机
@@ -124,6 +143,7 @@ flowchart TB
 
 ## 参考来源
 
+- [sources/repos/parallel_ankle_joint.md](../../sources/repos/parallel_ankle_joint.md) — G1 / 天工并联踝 IK·FK·雅可比参考实现（本批入库）
 - [sources/notes/humanoid-parallel-joint-kinematics.md](../../sources/notes/humanoid-parallel-joint-kinematics.md) — 本主题资料索引与 ingest 归档
 - [sources/papers/humanoid_parallel_ankle_kinematics_ingest.md](../../sources/papers/humanoid_parallel_ankle_kinematics_ingest.md) — 并联踝机构学与 arXiv 文献包（本批入库）
 - [sources/papers/modern_robotics_textbook.md](../../sources/papers/modern_robotics_textbook.md) — *Modern Robotics* 教材元数据与第 7 章指针
