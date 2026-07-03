@@ -47,6 +47,7 @@
 - [Pelican-Unified 1.0（UEI）](wiki/methods/pelican-unified-1.md)（Qwen3-VL 推理末态 \(z\) + Wan 系 UFG：同一扩散去噪联合未来视频与动作；arXiv:2605.15153）
 - [mimic-video（VAM）](wiki/methods/mimic-video.md)（互联网视频潜计划 + 流匹配动作解码；arXiv:2512.15692）
 - [DeFI（解耦前向/逆动力学 VLA）](wiki/methods/defi-decoupled-dynamics-vla.md)（GFDM + GIDM 分阶段预训练；arXiv:2604.16391）
+- [MINT（Mimic Intent, Not Just Trajectories）](wiki/entities/paper-mint-vla.md)（RSS 2026：频域意图分词 + 单样本迁移；arXiv:2602.08602）
 - [EgoScale](wiki/methods/egoscale.md)（2 万小时级 egocentric 人视频预训练 VLA + 对齐 mid-training；arXiv:2602.16710）
 - [ENPIRE](wiki/methods/enpire.md)（coding agent 真机策略自改进闭环：EN–PI–R–E 四模块 + AutoEnvBench；NVIDIA GEAR 2026）
 - [Model Predictive Control (MPC)](wiki/methods/model-predictive-control.md)
@@ -303,6 +304,7 @@ SORT type ASC
 - [MAVSDK](entities/mavsdk.md) — MAVSDK**（[mavlink/MAVSDK](https://github.com/mavlink/MAVSDK)）把 **MAVLink** 报文封装为可维护的 **插件式服务**，是伴机 `📅unknown` `[entity_page]`
 - [MetalHead](entities/metalhead.md) — MetalHead**（<https://github.com/inspirai/MetalHead>）在 **Unitree A1** 四足上实现 **walk / run / jump / r `📅unknown` `[entity_page]`
 - [MimicKit: 运动模仿与控制研究套件](entities/mimickit.md) — MimicKit** 是 [Xue Bin Peng（彭学斌）](./xue-bin-peng.md) 团队（Stanford / UC Berkeley / NVIDIA 等合作脉络）维护的  `📅unknown` `[entity_page]`
+- [MINT（Mimic Intent, Not Just Trajectories）](entities/paper-mint-vla.md) — MINT**（*Mimic Intent, Not Just Trajectories*，arXiv:2602.08602，**RSS 2026**）由上海交通大学与上海创智学院等提出：认为 VLA 走向真实场景的最大瓶颈是 **泛化**——不仅是换物体/背景/光照，更关键是 **组合泛化**（学会子技能后能自由组合）与 **小样本迁移**（几次示范而非上千条演示）。方法在 **动作表示层** 用 **频域谱分解** 把 **行为意图** 与 **执行细节** 拆开，再以 **跨尺度自回归** 推理，并支持 **单条演示的 Intent token 注入** 完成 one-shot 技能迁移。 `📅2026-07-03` `[entity_page]`
 - [Mixamo](entities/mixamo.md) — Mixamo** 是 **Adobe** 旗下的 **Web 端角色动画服务**：浏览并下载带骨骼的 3D 角色与 **大量全身动作**（站点描述为专业演员动捕后迁移到角色），也支持上传自定义人形 `📅unknown` `[entity_page]`
 - [mjlab_playground（mjlab 任务集合）](entities/mjlab-playground.md) — mjlab_playground** 是 [mjlab](./mjlab.md) 之上的 **示例任务仓库**：把 [MuJoCo Playground](https://playground.m `📅unknown` `[entity_page]`
 - [mjlab (轻量 GPU 加速 RL 框架)](entities/mjlab.md) — mjlab** 是由 mujocolab 开发的轻量机器人学习框架，核心设计是将 **Isaac Lab 的 manager-based API**（结构化环境设计）与 **MuJoCo Warp `📅unknown` `[entity_page]`

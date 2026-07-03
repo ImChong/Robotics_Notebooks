@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-07-02
+updated: 2026-07-03
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation 与 loco-manipulation 任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作。"
 related:
   - ../overview/vla-open-source-repro-landscape-2025.md
@@ -42,6 +42,7 @@ related:
   - ../entities/paper-rove-humanoid-vla-intervention.md
   - ../entities/paper-greenvla-staged-vla-humanoid.md
   - ../entities/paper-vesta-generalist-embodied-reasoning.md
+  - ../entities/paper-mint-vla.md
   - ../entities/kinetiq-ascend.md
 sources:
   - ../../sources/papers/rl_foundation_models.md
@@ -69,6 +70,9 @@ sources:
   - ../../sources/papers/legs_arxiv_2606_01458.md
   - ../../sources/papers/greenvla_arxiv_2602_00919.md
   - ../../sources/repos/greenvla.md
+  - ../../sources/papers/mint_rss_2026.md
+  - ../../sources/sites/mint-project.md
+  - ../../sources/repos/renming_huang_mint.md
   - ../../sources/blogs/thehumanoid_kinetiq_ascend.md
 ---
 
@@ -132,6 +136,7 @@ flowchart TD
 - **T-Rex**：在 EgoScale 同族 **人视频预训练** 之上，用 **100 h 触觉同步 play mid-training** 与 **变频率 MoT + 异步触觉 flow matching** 实现 **毫秒级触觉反应**；**12 项双手灵巧真机任务** 宏平均 **65%**，且 **朴素拼接触觉会损害 π₀.₅**（见 [T-Rex](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md)，arXiv:2606.17055）
 - **Green-VLA**：**L0→L1→R0→R1→R2** 五阶段课程 + **DataQA** + **64 维语义统一动作** + flow-matching 专家；**R2** 用 **IQL 轨迹优化** 与 **源噪声分布 actor** 突破 BC 饱和而不直接 RL 穿 flow；主平台 **Green 人形 32 DoF 上身**（见 [Green-VLA](../entities/paper-greenvla-staged-vla-humanoid.md)，arXiv:2602.00919）
 - **Vesta（planner VLM，非 VLA）**：在 **Qwen3-VL-8B** 上 **SFT 统一** 定位 / VLN / 具身推理 / **带 memory 的子任务规划**，作 **System-2 planner** 向 **Gr00t-N1.6** 等 actor 输出文本子任务；四轴 benchmark 平均超最强单基线 **>20 pt**，R2R-CE SR **55.5%** 逼近 navigation specialist（见 [Vesta](../entities/paper-vesta-generalist-embodied-reasoning.md)，arXiv:2606.20905）
+- **MINT（RSS 2026）**：用 **SDAT** 在 **DCT 频域** 做多尺度动作分词，**Intent token（低频全局）** 与 **Execution token（高频残差）** 显式解耦；策略以 **next-scale 自回归** 做意图→执行推理，**MINT-Zero** 支持 **单演示 Intent 注入** 的 one-shot 迁移；LIBERO / LIBERO-Plus / 真机报告强泛化与鲁棒性（见 [MINT](../entities/paper-mint-vla.md)，arXiv:2602.08602）
 
 ## VLA 与传统策略的区别
 
