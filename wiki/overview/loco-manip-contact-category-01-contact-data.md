@@ -38,10 +38,10 @@ sources:
 | HumanX | [paper-loco-manip-161-112-humanx](../entities/paper-loco-manip-161-112-humanx.md) | 人类视频 → 可学习人形交互技能 |
 | HDMI | [paper-loco-manip-161-110-hdmi](../entities/paper-loco-manip-161-110-hdmi.md) | RGB 视频恢复人-物轨迹 |
 | SUGAR | [paper-loco-manip-161-076-sugar](../entities/paper-loco-manip-161-076-sugar.md) | 运动轨迹与接触先验 → 技能优化与蒸馏 |
-| Human-as-Humanoid | —（[项目页](https://zgc-embodyai.github.io/Human-as-Humanoid/)） | Ego-Exo 人类视频 → 人形动作标签 |
-| HumanoidUMI | —（[arXiv:2606.27239](https://arxiv.org/abs/2606.27239)） | 轻量跨本体示范 → 全身控制器 |
+| Human-as-Humanoid | [paper-human-as-humanoid](../entities/paper-human-as-humanoid.md) | Ego-Exo 人类视频 → 人形动作标签 |
+| HumanoidUMI | [paper-humanoidumi](../entities/paper-humanoidumi.md) | 轻量跨本体示范 → 全身控制器 |
 | HumanoidMimicGen | [paper-humanoidmimicgen](../entities/paper-humanoidmimicgen.md) | 全身规划合成 loco-manip 示范 |
-| VLK | —（[项目页](https://vision-language-kinematics.github.io)） | 重建场景中合成视觉-语言-运动三元组 |
+| VLK | [paper-vlk-synthetic-loco-manipulation](../entities/paper-vlk-synthetic-loco-manipulation.md) | 重建场景中合成视觉-语言-运动三元组 |
 
 ## 策展判断
 

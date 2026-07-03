@@ -40,7 +40,7 @@ VLA/WM 若只输出目标点或粗动作，**接触问题仍被丢回底层**。
 | ROVE | [paper-rove-humanoid-vla-intervention](../entities/paper-rove-humanoid-vla-intervention.md) | 人工接管数据的后训练去噪 |
 | MotionWAM | [paper-motionwam-humanoid-loco-manipulation-wam](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) | WAM + motion token 实时 loco-manip |
 | HAIC | [paper-hrl-stack-38-haic](../entities/paper-hrl-stack-38-haic.md) | 动态占据、碰撞边界与接触可供性 |
-| WOLF-VLA | —（[arXiv:2606.25591](https://arxiv.org/abs/2606.25591)） | 全身最优控制生成动态一致 VLA 数据 |
+| WOLF-VLA | [paper-wolf-vla](../entities/paper-wolf-vla.md) | 全身最优控制生成动态一致 VLA 数据 |
 
 ## 策展判断
 

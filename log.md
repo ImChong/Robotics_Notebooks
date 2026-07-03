@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-03] structural | wiki/entities/paper-human-as-humanoid.md 等 6 篇 — 补全 Loco-Manip 接触专题缺失论文独立节点并挂接五组 category hub
+
+- 新建：`paper-human-as-humanoid`、`paper-humanoidumi`、`paper-vlk-synthetic-loco-manipulation`、`paper-imagine2real-zero-shot-hoi`、`paper-humanoid-dart`、`paper-wolf-vla`
+- 交叉更新：`loco-manip-contact-category-01/03/05`、`loco-manip-contact-technology-map`、`sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md`
+
 ## [2026-07-03] ingest | sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md — 具身智能研究室 Loco-Manip 接触五段链路专题；父节点 loco-manip-contact-technology-map + 五组 loco-manip-contact-category-* 子节点；复用约 30 篇既有 paper 实体，6 篇仅外链不新建节点
 
 - 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.5.0（`pip install git+...` + 手动安装 [wechat-article-for-ai](https://github.com/bzd6661/wechat-article-for-ai) 至 `~/.agent-reach/tools/`（Camoufox；`playwright==1.49.1` 规避 viewport 协议错误））

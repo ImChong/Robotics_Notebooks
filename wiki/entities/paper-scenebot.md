@@ -17,6 +17,8 @@ related:
   - ../entities/paper-loco-manip-161-114-omniretarget.md
   - ../entities/paper-loco-manip-161-005-chip.md
   - ../entities/paper-humanoid-gpt.md
+  - ../overview/loco-manip-contact-category-02-contact-representation.md
+  - ../entities/paper-vlk-synthetic-loco-manipulation.md
   - ../queries/humanoid-motion-tracking-method-selection.md
 sources:
   - ../../sources/papers/scenebot_arxiv_2606_27581.md

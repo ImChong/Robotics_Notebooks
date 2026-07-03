@@ -37,7 +37,7 @@
 
 - [loco-manip-contact-technology-map](../../wiki/overview/loco-manip-contact-technology-map.md)（**父节点** + Mermaid）
 - 子分类 hub：`wiki/overview/loco-manip-contact-category-01-contact-data.md` … `05-vla-world-models.md`
-- **论文实体复用**：文中约 30 篇已有 `wiki/entities/paper-*` 节点（含 161 篇策展、SceneBot/OmniContact 等深读页）；**6 篇**（Human-as-Humanoid、HumanoidUMI、VLK、Imagine2Real、Humanoid-DART、WOLF-VLA）仅在分类 hub 表中外链，**不新建重复论文节点**
+- **论文实体**：文中 **36 篇** 均在 `wiki/entities/paper-*` 有独立节点，并由五组 `loco-manip-contact-category-*` 分类 hub 挂接（含新建 Human-as-Humanoid、HumanoidUMI、VLK、Imagine2Real、Humanoid-DART、WOLF-VLA）
 
 ## 可信度与使用边界
 

@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-07-03",
-  "node_count": 1560,
-  "edge_count": 10697,
+  "node_count": 1566,
+  "edge_count": 10739,
   "coverage": {
-    "covered": 1529,
-    "total": 1558,
+    "covered": 1535,
+    "total": 1564,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-human-as-humanoid.md",
+      "detail_id": "entity-paper-human-as-humanoid",
+      "label": "Human-as-Humanoid",
+      "type": "entity",
+      "recency": "2026-07-03",
+      "source": "log.md"
+    },
     {
       "path": "wiki/overview/loco-manip-contact-technology-map.md",
       "detail_id": "wiki-overview-loco-manip-contact-technology-map",
@@ -159,21 +167,13 @@
       "type": "entity",
       "recency": "2026-07-02",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-hrl-stack-34-gr00t_n1.md",
-      "detail_id": "entity-paper-hrl-stack-34-gr00t_n1",
-      "label": "GR00T N1",
-      "type": "entity",
-      "recency": "2026-07-02",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/loco-manip-contact-technology-map.md",
-    "detail_id": "wiki-overview-loco-manip-contact-technology-map",
-    "label": "Loco-Manip 接触横切面：五段链路技术地图",
-    "type": "overview",
+    "path": "wiki/entities/paper-human-as-humanoid.md",
+    "detail_id": "entity-paper-human-as-humanoid",
+    "label": "Human-as-Humanoid",
+    "type": "entity",
     "recency": "2026-07-03",
     "source": "log.md"
   }

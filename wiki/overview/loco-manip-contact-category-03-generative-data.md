@@ -35,9 +35,9 @@ sources:
 | 工作 | Wiki 实体（复用） | 文内角色 |
 |------|-------------------|----------|
 | GenHOI | [paper-loco-manip-03-genhoi](../entities/paper-loco-manip-03-genhoi.md) | 生成视频 → 交互轨迹 → 零样本执行 |
-| Imagine2Real | —（[arXiv:2605.22272](https://arxiv.org/abs/2605.22272)） | 稀疏关键点 + 零样本 HOI，弱化精细重定向 |
+| Imagine2Real | [paper-imagine2real-zero-shot-hoi](../entities/paper-imagine2real-zero-shot-hoi.md) | 稀疏关键点 + 零样本 HOI，弱化精细重定向 |
 | GRAIL | [paper-grail](../entities/paper-grail.md) | 3D 资产 + 视频先验生成 loco-manip 数据 |
-| Humanoid-DART | —（[arXiv:2606.26855](https://arxiv.org/abs/2606.26855)） | 扩散生成轨迹 + RL 跟踪，扩大目标空间 |
+| Humanoid-DART | [paper-humanoid-dart](../entities/paper-humanoid-dart.md) | 扩散生成轨迹 + RL 跟踪，扩大目标空间 |
 | LEGS | [paper-legs-embodied-gaussian-splatting-vla](../entities/paper-legs-embodied-gaussian-splatting-vla.md) | 高斯场景重建 → 无遥操作 VLA 数据 |
 | OASIS | [paper-loco-manip-04-oasis](../entities/paper-loco-manip-04-oasis.md) | 仿真资产/遥操作/域随机化 → 真机部署 |
 | SIMPLE | [paper-loco-manip-161-075-simple](../entities/paper-loco-manip-161-075-simple.md) | 接触动力学 + 视觉渲染 + 任务资产一体化 |
