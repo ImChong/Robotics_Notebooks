@@ -270,6 +270,8 @@
 
   // ── 首页知识节点活跃度热力图（GitHub 风格，数据源 exports/wiki-activity.json）──
   var HOME_HEATMAP_DAY_MS = 24 * 60 * 60 * 1000;
+  // GitHub 同款固定一年窗口：53 周列，最新周在最右，无数据日期为空格
+  var HOME_HEATMAP_WEEKS = 53;
   // 周一为第一行，仅标注 一/三/五 三行（与 GitHub Mon/Wed/Fri 一致）
   var HOME_HEATMAP_WEEKDAY_LABELS = ['一', '', '三', '', '五', '', ''];
 
@@ -310,7 +312,6 @@
   function buildHomeWikiHeatmapHtml(days) {
     var countByDate = {};
     var counts = [];
-    var minMs = Infinity;
     var maxMs = -Infinity;
     for (var i = 0; i < days.length; i++) {
       var day = days[i];
@@ -319,14 +320,15 @@
       if (ms === null || count <= 0) continue;
       countByDate[day.date] = count;
       counts.push(count);
-      if (ms < minMs) minMs = ms;
       if (ms > maxMs) maxMs = ms;
     }
     if (!counts.length) return '';
     var thresholds = homeHeatmapThresholds(counts);
-    // getUTCDay() 0=周日 → 周一对齐的行号 (day+6)%7
-    var startMs = minMs - ((new Date(minMs).getUTCDay() + 6) % 7) * HOME_HEATMAP_DAY_MS;
-    var endMs = maxMs + (6 - (new Date(maxMs).getUTCDay() + 6) % 7) * HOME_HEATMAP_DAY_MS;
+    // getUTCDay() 0=周日 → 周一对齐的行号 (day+6)%7；
+    // 窗口固定 53 周，以最新数据所在周为最右列
+    var lastWeekStartMs = maxMs - ((new Date(maxMs).getUTCDay() + 6) % 7) * HOME_HEATMAP_DAY_MS;
+    var startMs = lastWeekStartMs - (HOME_HEATMAP_WEEKS - 1) * 7 * HOME_HEATMAP_DAY_MS;
+    var endMs = lastWeekStartMs + 6 * HOME_HEATMAP_DAY_MS;
 
     var cellsHtml = '';
     var monthsHtml = '';
@@ -347,7 +349,8 @@
       monthsHtml += '<span>' + monthLabel + '</span>';
       for (var row = 0; row < 7; row++) {
         var dayMs = weekMs + row * HOME_HEATMAP_DAY_MS;
-        if (dayMs < minMs || dayMs > maxMs) {
+        if (dayMs > maxMs) {
+          // 仅未来日期留白；历史上无节点的日期与 GitHub 一样渲染为空格
           cellsHtml += '<span class="home-wiki-heatmap-cell is-pad" aria-hidden="true"></span>';
           continue;
         }

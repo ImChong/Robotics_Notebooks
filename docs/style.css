@@ -457,7 +457,8 @@ body.sponsor-dialog-open {
   --hm-cell-line: rgba(27, 31, 36, 0.06);
 }
 .home-wiki-heatmap-scroll { overflow-x: auto; padding: 2px; }
-.home-wiki-heatmap-inner { width: max-content; }
+/* 容器有富余时整体贴右（最新日期对齐右缘）；溢出时由 scrollLeft 锚定最右 */
+.home-wiki-heatmap-inner { width: max-content; margin-left: auto; }
 .home-wiki-heatmap-months {
   display: grid;
   grid-auto-flow: column;
