@@ -132,12 +132,11 @@ def main():
         print("📝 更新 docs/index.html...")
         content = INDEX_HTML.read_text(encoding="utf-8")
 
-        # 匹配 <span id="heroNodeCount">...</span> 等
+        # 匹配 <span id="heroNodeCount">...</span> 等（与 docs/index.html 的中文两项格式保持一致）
         new_stats_html = (
             f'<div class="hero-stat-row-mini" aria-label="知识库当前规模">\n'
-            f'            <span id="heroNodeCount">{nodes}</span> Nodes ·\n'
-            f'            <span id="heroEdgeCount">{edges}</span> Links ·\n'
-            f'            <span id="heroCoverageCount">{cov_done}/{cov_total}</span> Sources\n'
+            f'            <span id="heroNodeCount">{nodes}</span> 个节点 ·\n'
+            f'            <span id="heroEdgeCount">{edges}</span> 条连接\n'
             f"          </div>"
         )
 
