@@ -113,6 +113,7 @@ PAGE_INSTITUTION_OVERRIDES: dict[str, list[str]] = {
     "wiki/entities/unilab.md": ["tsinghua"],
     "wiki/entities/pytorch.md": ["meta"],
     "wiki/entities/blender.md": ["blender-foundation"],
+    "wiki/entities/freecad.md": ["freecad"],
     "wiki/entities/paper-heracles-humanoid-diffusion.md": ["x-humanoid"],
     "wiki/entities/jackhan-mujoco-walke3-simulation.md": ["sdu"],
     "wiki/entities/spear-sim.md": ["nvidia"],

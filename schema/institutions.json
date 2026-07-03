@@ -318,6 +318,13 @@
         "farama-foundation"
       ]
     },
+    "freecad": {
+      "label": "自由 CAD 项目（FreeCAD）",
+      "aliases": [
+        "freecad",
+        "freecad-org"
+      ]
+    },
     "x-humanoid": {
       "label": "北京人形机器人创新中心（X-Humanoid）",
       "aliases": [

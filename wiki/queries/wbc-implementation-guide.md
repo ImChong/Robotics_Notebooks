@@ -3,7 +3,7 @@ title: WBC 工程实现指南
 type: query
 status: complete
 created: 2026-04-14
-updated: 2026-04-14
+updated: 2026-07-03
 summary: 从零实现 Whole-Body Control 的工程步骤：URDF 建模 → 动力学计算 → QP 求解 → 任务配置 → 实机调试，附工具链选型和常见问题。
 sources:
   - ../../sources/papers/whole_body_control.md
