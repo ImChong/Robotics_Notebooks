@@ -434,25 +434,26 @@ body.sponsor-dialog-open {
   letter-spacing: -.01em;
   margin: 0;
 }
-/* 首页「最新知识节点」活跃度热力图（GitHub 风格；绿阶已过顺序色板校验：
+/* 首页「最新知识节点」活跃度热力图（GitHub 风格布局；色阶取站点主题蓝
+   （--accent 同色相，暗档最亮≈--accent-hover），已过顺序色板校验：
    亮度单调、相邻 ΔL ≥ 0.06、最浅档对底色 ≥ 2:1） */
 .home-wiki-heatmap {
   --hm-cell: 12px;
   --hm-gap: 3px;
   --hm-level-0: #2c2c2e;
-  --hm-level-1: #155a36;
-  --hm-level-2: #1f8047;
-  --hm-level-3: #2aa65a;
-  --hm-level-4: #39d353;
+  --hm-level-1: #1d4f8c;
+  --hm-level-2: #2a6cb4;
+  --hm-level-3: #4b8fd9;
+  --hm-level-4: #7fb6f0;
   --hm-cell-line: rgba(255, 255, 255, 0.06);
   margin-bottom: 20px;
 }
 [data-theme="light"] .home-wiki-heatmap {
   --hm-level-0: #ebedf0;
-  --hm-level-1: #62c672;
-  --hm-level-2: #3ba14f;
-  --hm-level-3: #2a7d3e;
-  --hm-level-4: #1b5a2e;
+  --hm-level-1: #6faede;
+  --hm-level-2: #3f8ad2;
+  --hm-level-3: #1a6cbe;
+  --hm-level-4: #084d99;
   --hm-cell-line: rgba(27, 31, 36, 0.06);
 }
 .home-wiki-heatmap-scroll { overflow-x: auto; padding: 2px; }
@@ -504,8 +505,9 @@ button.home-wiki-heatmap-cell:focus-visible {
   outline: 1px solid var(--border-strong);
   outline-offset: 1px;
 }
+/* 选中描边用文本色而非 --accent：蓝阶格子上蓝描边难以分辨 */
 button.home-wiki-heatmap-cell.is-active {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--text);
   outline-offset: 1px;
 }
 .home-wiki-heatmap-legend {
