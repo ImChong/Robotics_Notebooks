@@ -8,6 +8,7 @@ sources:
   - ../../sources/papers/exoactor.md
 updated: 2026-05-29
 related:
+  - ../queries/contact-wrench-closed-loop.md
   - ./whole-body-control.md
   - ../methods/exoactor.md
   - ../tasks/loco-manipulation.md
@@ -181,6 +182,7 @@ Loco-Manipulation（边走边操作）是全身协调最复杂的场景：
 
 ## 关联页面
 
+- [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 全身协调把力旋量闭环推广到多接触点的全身力分配
 - [Whole-Body Control (WBC)](./whole-body-control.md) — 全身协调的核心实现工具
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 全身协调最复杂的应用场景
 - [Bimanual Manipulation](../tasks/bimanual-manipulation.md) — 双臂协调是全身协调的子问题

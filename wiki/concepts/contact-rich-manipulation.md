@@ -5,6 +5,7 @@ status: complete
 updated: 2026-07-02
 summary: "Contact-Rich Manipulation 指需要持续建模接触、摩擦和力约束的操作任务，难点不在于碰到物体，而在于控制接触过程本身。"
 related:
+  - ../queries/contact-wrench-closed-loop.md
   - ../entities/paper-flying-knots.md
   - ../entities/paper-scenebot.md
   - ../entities/paper-chord-contact-wrench-dexterous-manipulation.md
@@ -123,6 +124,7 @@ sources:
 
 ## 关联页面
 
+- [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 本页是四层闭环链的 **④ 接触丰富操作策略层**，感知→力旋量→控制的最终落地
 - [Manipulation](../tasks/manipulation.md)
 - [Grasp Pose Estimation](../methods/grasp-pose-estimation.md) — 上游 ① 抓取阶段的感知主线
 - [抓取策略选型 Query](../queries/grasp-policy-selection.md) — ① 阶段的方案选型

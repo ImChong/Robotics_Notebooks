@@ -10,6 +10,7 @@ sources:
   - ../../sources/papers/contact_planning.md
   - ../../sources/papers/faststair_arxiv_2601_10365.md
 related:
+  - ../queries/contact-wrench-closed-loop.md
   - ./capture-point-dcm.md
   - ./terrain-adaptation.md
   - ../tasks/stair-obstacle-perceptive-locomotion.md
@@ -134,6 +135,7 @@ related:
 
 ## 关联页面
 
+- [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 步位接触序列与接触力旋量闭环共享「接触即力约束」视角（腿式侧）
 - [Capture Point / DCM](./capture-point-dcm.md) — 步位规划的稳定性依据
 - [Locomotion](../tasks/locomotion.md) — 步位规划是 locomotion pipeline 的核心模块
 - [Model Predictive Control](../methods/model-predictive-control.md) — MPC 框架实现多步预测规划

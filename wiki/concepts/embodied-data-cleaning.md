@@ -4,6 +4,7 @@ tags: [data, machine-learning, manipulation, teleoperation, simulation]
 status: complete
 updated: 2026-05-29
 related:
+  - ../queries/contact-wrench-closed-loop.md
   - ../tasks/manipulation.md
   - ../queries/demo-data-collection-guide.md
   - ../methods/behavior-cloning.md
@@ -65,6 +66,7 @@ summary: "具身数据清洗（Embodied Data Cleaning）是指对采集到的原
 [HumanNet（arXiv:2605.06747）](../entities/humannet.md) 虽非机器人示教数据，其 **采集 → 处理 → 标注** 三阶段管线与本页概念层高度同构：**去重归一化、内容/质量过滤、场景切分、clip 化** 对应时序对齐与异常过滤；**3D 手体姿态 + SLAM + 运动重定向**（论文给出 robot-ready 子集：重定向误差 <15 mm、有效帧覆盖率 >60%）对应重定向误差修复；**LLM 辅助字幕/运动描述** 对应任务成败与语义质量判定。HumanNet 证明 **人中心互联网视频** 在固定 VLA 设定下可与小规模真机数据竞争——前提是清洗管线把异构网页视频变成 **可审计、可预训练** 的资产，而非 raw dump。
 
 ## 关联页面
+- [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 接触丰富操作示范的数据清洗质量，直接影响力控/触觉标签可用性
 - [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — 本页所述物理/仿真要素在保真度链路（建模 ① → 数值 ② → 接触 ③ → 随机化 ④）中的定位
 - [Manipulation 任务](../tasks/manipulation.md)
 - [演示数据采集指南](../queries/demo-data-collection-guide.md)

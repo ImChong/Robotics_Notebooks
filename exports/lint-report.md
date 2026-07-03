@@ -1,8 +1,8 @@
 # Wiki 健康报告
 
-## [2026-07-02] lint | health-check | 自动化 wiki 健康检查
+## [2026-07-03] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **14** 条信息型预警）：
+共发现 **0** 个问题（另含 **0** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -49,8 +49,8 @@
 ### 💡 频繁提及但缺少 wiki 页面的概念（0 个）
 - 无
 
-### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（1 个）
-- loco-manipulation（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
+### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### ⚠️ Frontmatter 缺少 type 字段（0 个）
 - 无
@@ -94,10 +94,8 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（3 个）
-- wiki/entities/paper-argus-dynamic-symmetry.md（缺 评测）
-- wiki/entities/paper-flying-knots.md（缺 评测）
-- wiki/entities/paper-robustness-robotic-manipulation-survey.md（缺 评测）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无
@@ -108,16 +106,7 @@
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 接触/力控/操作概念页缺回链「接触力旋量闭环」专题枢纽（信息型，不阻塞 CI）（10 个）
-- wiki/concepts/contact-rich-manipulation.md
-- wiki/concepts/dexterous-kinematics.md
-- wiki/concepts/embodied-data-cleaning.md
-- wiki/concepts/footstep-planning.md
-- wiki/concepts/foundation-policy.md
-- wiki/concepts/open-x-embodiment.md
-- wiki/concepts/physics-fidelity-sim2real-gap.md
-- wiki/concepts/state-estimation.md
-- wiki/concepts/tactile-sensing.md
-- wiki/concepts/whole-body-coordination.md
+### 💡 接触/力控/操作概念页缺回链「接触力旋量闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
+- 无
 
 📊 Sources 覆盖率：1523/1552 (98%) wiki/entity 页有 ingest 来源

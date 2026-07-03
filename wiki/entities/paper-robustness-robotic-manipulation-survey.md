@@ -97,7 +97,7 @@ flowchart TB
 | 策略学习 | DR、SE(3) 增广、扩散策略、层次技能、对抗训练、离线保守 RL、DAgger/在线 RL | 容忍变异 / 恢复 |
 | 硬件 | 软指/颗粒夹爪、壁虎粘附、可重构软手/模块化形态 | 容忍变异 / 恢复 |
 
-### 4）评测协议
+## 评测协议
 
 - **经验：** Eq. (8) 期望目标满足概率 → 多 trial 成功率；阶段式子目标；任务语义 rubric。
 - **解析：** 抓取质量（力/形 closure、拓扑 caging）；裕度 $\mathrm{dist}(x,\partial\mathcal{G})$ 与 safety tube；STL 鲁棒性分数；动力学收敛特征值。

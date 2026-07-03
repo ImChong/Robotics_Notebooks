@@ -4,6 +4,7 @@ tags: [dataset, scaling, cross-embodiment, manipulation, community]
 status: complete
 updated: 2026-05-10
 related:
+  - ../queries/contact-wrench-closed-loop.md
   - ./foundation-policy.md
   - ./embodied-scaling-laws.md
   - ../methods/octo-model.md
@@ -31,6 +32,7 @@ summary: "Open X-Embodiment（OXE）联合多机构把异构机器人演示数�
 
 ## 关联页面
 
+- [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 跨本体操作数据训练的策略，其接触执行环节由本链托底
 - [Octo Model](../methods/octo-model.md)
 - [Foundation Policy](./foundation-policy.md)
 
