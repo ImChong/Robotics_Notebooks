@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-03] ingest | sources/papers/mint_rss_2026.md — MINT RSS 2026 频域意图分词与单样本迁移；wiki/entities/paper-mint-vla.md；交叉更新 wiki/methods/vla.md、wiki/formalizations/vla-tokenization.md
+
 ## [2026-07-03] ingest | sources/sites/telegate-project.md — TeleGate 门控专家全身遥操作；wiki/entities/paper-telegate.md；交叉更新 wiki/tasks/teleoperation.md
 
 ## [2026-07-03] ingest | sources/repos/freecad.md — FreeCAD 开源参数化 CAD 入库；wiki/entities/freecad.md；交叉更新 blender、step2urdf、urdf-robot-description

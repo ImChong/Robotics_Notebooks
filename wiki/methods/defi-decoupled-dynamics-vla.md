@@ -2,7 +2,7 @@
 type: method
 tags: [defi, vla, forward-dynamics, inverse-dynamics, video-generation, self-supervised, manipulation, calvin, simplerenv]
 status: complete
-updated: 2026-05-20
+updated: 2026-07-03
 date: 2026-05-20
 summary: "DeFI 将机器人策略学习解耦为 GFDM（混合视频上的指令条件前向动力学预训练）与 GIDM（无动作标签视频上的自监督逆动力学预训练），再在下游用扩散适配器端到端耦合，从而同时吃尽人/Web 视频与机器人演示。"
 related:

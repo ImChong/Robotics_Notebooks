@@ -2,13 +2,15 @@
 type: formalization
 tags: [vla, machine-learning, robotics, math, tokenization]
 status: complete
-updated: 2026-04-21
+updated: 2026-07-03
 related:
   - ../methods/vla.md
   - ../methods/behavior-cloning.md
   - ../formalizations/behavior-cloning-loss.md
+  - ../entities/paper-mint-vla.md
 sources:
   - ../../sources/papers/perception.md
+  - ../../sources/papers/mint_rss_2026.md
 summary: "动作分词（Action Tokenization）是将机器人的高维连续动作空间映射为有限离散 Token 序列的过程，是使大语言模型架构能够直接预测物理动作的关键桥梁。"
 ---
 
@@ -38,6 +40,10 @@ summary: "动作分词（Action Tokenization）是将机器人的高维连续动
 - **优点**：能捕捉动作维度间的相关性，Token 序列更短。
 - **代表作**：Octo, π₀ (部分组件)。
 
+### 3. 频域多尺度解耦（Spectral / Intent–Execution）
+在动作块上施加 **DCT** 等频域变换，用 **逐尺度频域重建损失** 约束：最粗尺度 token 必须解释 **低频全局结构（意图）**，更细尺度专攻 **高频残差（执行）**。与纯时域 VQ 或均匀多尺度残差不同，监督信号直接对齐 **意图–执行** 语义。
+- **代表作**：[MINT](../entities/paper-mint-vla.md) 的 **SDAT**（RSS 2026）。
+
 ## 损失函数与量化误差
 
 分词质量通常由**重建损失 (Reconstruction Loss)** 衡量：
@@ -62,9 +68,11 @@ $$ \mathcal{L}_{recon} = \| a - D(E(a)) \|^2 $$
 
 ## 关联页面
 - [VLA (Vision-Language-Action Models)](../methods/vla.md)
+- [MINT（SDAT 频域意图分词）](../entities/paper-mint-vla.md)
 - [Behavior Cloning Loss](./behavior-cloning-loss.md)
 - [Cross-modal Attention](./cross-modal-attention.md)
 
 ## 参考来源
 - Brohan, A., et al. (2022). *RT-1: Robotics Transformer*.
 - Padalkar, A., et al. (2023). *Open X-Embodiment: Robotic Learning at Scale*.
+- [MINT 论文摘录（arXiv:2602.08602）](../../sources/papers/mint_rss_2026.md)
