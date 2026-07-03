@@ -423,12 +423,29 @@ body.sponsor-dialog-open {
   background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)), var(--bg-alt);
 }
 .section-title { font-size: 1.72rem; font-weight: 820; margin-bottom: 10px; letter-spacing: -.02em; }
-/* 首页「最新知识节点」紧凑模式：单行记录列表（完整时间线见 change-log.html） */
-.home-latest-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-.home-latest-row { display: flex; align-items: baseline; gap: 12px; }
+/* 首页「最新知识节点」紧凑模式：单行记录列表（完整时间线见 change-log.html）。
+   整表共用一个 grid（行内容 display:contents 提升为格子），日期/类型/标题三列跨行对齐 */
+.home-latest-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: max-content max-content 1fr;
+  column-gap: 16px;
+  row-gap: 10px;
+  align-items: baseline;
+}
+.home-latest-row { display: contents; }
+.home-latest-row-date, .home-latest-row-type { color: var(--text-muted); font-size: .85rem; white-space: nowrap; }
 .home-latest-row > a { min-width: 0; }
-.home-latest-row-meta { color: var(--text-muted); font-size: .85rem; white-space: nowrap; flex-shrink: 0; }
 .home-latest-more { margin-top: 18px; font-size: .9rem; }
+@media (max-width: 860px) {
+  /* 窄屏：三列并排会挤压标题，退化为「日期 · 类型」一行 + 标题一行 */
+  .home-latest-list, .home-latest-row { display: block; }
+  .home-latest-row + .home-latest-row { margin-top: 14px; }
+  .home-latest-row-type::before { content: ' · '; }
+  .home-latest-row > a { display: block; margin-top: 2px; }
+}
 .home-latest-wiki-intro { margin-bottom: 20px; }
 .home-latest-wiki-card h3 { margin-top: 4px; }
 .home-latest-wiki-timeline { display: grid; gap: 20px; }
