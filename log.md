@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-03] ingest | sources/sites/telegate-project.md — TeleGate 门控专家全身遥操作；wiki/entities/paper-telegate.md；交叉更新 wiki/tasks/teleoperation.md
+
 ## [2026-07-03] ingest | sources/repos/freecad.md — FreeCAD 开源参数化 CAD 入库；wiki/entities/freecad.md；交叉更新 blender、step2urdf、urdf-robot-description
 
 ## [2026-07-03] structural | wiki/entities/paper-human-as-humanoid.md 等 6 篇 — 补全 Loco-Manip 接触专题缺失论文独立节点并挂接五组 category hub

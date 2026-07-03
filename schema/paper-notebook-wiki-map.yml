@@ -137,6 +137,7 @@ overrides:
   STATE-NAV__Stability-Aware_Traversability_Estimation_for_Bipedal_Navigation_on_Rough_Terrain:
   - wiki/tasks/vision-language-navigation.md
   TeleGate__Whole-Body_Humanoid_Teleoperation_via_Gated_Expert_Selection_with_Motion_Prior:
+  - wiki/entities/paper-telegate.md
   - wiki/tasks/teleoperation.md
   TextOp__Real-time_Interactive_Text-Driven_Humanoid_Robot_Motion_Generation_and_C:
   - wiki/methods/genmo.md
