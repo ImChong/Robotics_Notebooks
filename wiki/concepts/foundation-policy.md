@@ -2,6 +2,7 @@
 type: concept
 tags: [foundation-policy, vla, rt1, rt2, pi0, pi07, octo, generalist, pretraining, manipulation]
 related:
+  - ../queries/contact-wrench-closed-loop.md
   - ./humanoid-policy-network-architecture.md
   - ../methods/vla.md
   - ../methods/sonic-motion-tracking.md
@@ -152,6 +153,7 @@ flowchart TD
 ---
 
 ## 关联页面
+- [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 通用策略下游的接触丰富操作，依赖本链的力旋量闭环执行保证
 - [模仿学习（Imitation Learning）](../methods/imitation-learning.md)
 - [Diffusion Policy](../methods/diffusion-policy.md)
 - [VLA](../methods/vla.md)

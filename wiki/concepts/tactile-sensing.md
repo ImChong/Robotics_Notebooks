@@ -4,6 +4,7 @@ tags: [perception, manipulation, contact-rich, hardware, sensing]
 status: complete
 updated: 2026-04-27
 related:
+  - ../queries/contact-wrench-closed-loop.md
   - ./contact-rich-manipulation.md
   - ./visuo-tactile-fusion.md
   - ../methods/humanoid-transformer-touch-dreaming.md
@@ -67,6 +68,7 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - **作为预测式辅助目标 (Predictive Auxiliary Target)**：[HTD](../methods/humanoid-transformer-touch-dreaming.md) 在人形机器人行为克隆中预测未来手部力和触觉 latent，使触觉信号不只是输入，而是塑造接触感知表示的训练目标。
 
 ## 关联页面
+- [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 触觉是四层闭环链 **① 接触感知/估计层** 的关键模态
 - [接触丰富操作 (Contact-Rich Manipulation)](./contact-rich-manipulation.md)
 - [视触觉融合 (Visuo-Tactile Fusion)](./visuo-tactile-fusion.md)
 - [Tactile Impedance Control (基于触觉的阻抗控制)](../methods/tactile-impedance-control.md)

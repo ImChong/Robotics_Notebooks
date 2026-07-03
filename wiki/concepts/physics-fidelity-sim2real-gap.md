@@ -4,6 +4,7 @@ tags: [simulation, sim2real, physics, dynamics, contact, friction, fidelity]
 status: complete
 updated: 2026-06-25
 related:
+  - ../queries/contact-wrench-closed-loop.md
   - ../queries/simulation-physics-fidelity.md
   - ./sim2real.md
   - ./contact-dynamics.md
@@ -104,6 +105,7 @@ URDF 的连杆尺寸、碰撞体形状、质量、质心与惯量张量是动力
 
 ## 关联页面
 
+- [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 接触物理保真度决定仿真中力旋量闭环控制能否 sim2real 迁移
 - 专题汇总：[仿真物理保真度（专题汇总）](../overview/topic-physics-fidelity.md)
 - 端到端决策：[仿真物理保真度链路选型](../queries/simulation-physics-fidelity.md)
 - 工程主线：[Sim2Real](./sim2real.md)

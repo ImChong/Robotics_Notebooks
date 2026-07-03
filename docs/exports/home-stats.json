@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-02",
+  "generated_at": "2026-07-03",
   "node_count": 1554,
-  "edge_count": 10607,
+  "edge_count": 10617,
   "coverage": {
     "covered": 1523,
     "total": 1552,

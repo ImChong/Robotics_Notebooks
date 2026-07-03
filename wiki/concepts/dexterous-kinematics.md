@@ -4,6 +4,7 @@ tags: [dexterity, kinematics, robot-hand, math, manipulation]
 status: complete
 updated: 2026-05-12
 related:
+  - ../queries/contact-wrench-closed-loop.md
   - ./humanoid-parallel-joint-kinematics.md
   - ./tactile-sensing.md
   - ../entities/allegro-hand.md
@@ -59,6 +60,7 @@ $$ J \dot{q} = G^T \mathcal{V}_o $$
 3. **滚动接触 (Rolling Contact)**：在重定向任务中，手指与物体的接触点在持续移动，这使得雅可比矩阵 $G$ 和 $J$ 具有时变性。
 
 ## 关联页面
+- [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 灵巧手接触点雅可比是把 6D 力旋量映回关节的运动学前提
 - [Allegro Hand 实体](../entities/allegro-hand.md)
 - [Tactile Sensing (触觉感知)](./tactile-sensing.md)
 - [手内重定向 (In-hand Reorientation)](../methods/in-hand-reorientation.md)
