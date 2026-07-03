@@ -2,13 +2,15 @@
 type: method
 tags: [imitation-learning, tracking, rl, xbpeng]
 status: complete
-updated: 2026-07-01
+updated: 2026-07-03
 related:
+  - ../overview/jason-peng-flexible-motion-skill-learning.md
   - ../entities/protomotions.md
   - ./amp-reward.md
   - ../entities/mimickit.md
 sources:
   - ../../sources/papers/deepmimic.md
+  - ../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md
 summary: "DeepMimic 是物理角色动画的基石工作，通过精确的轨迹跟踪奖励实现复杂的运动模仿。"
 ---
 
@@ -27,6 +29,10 @@ summary: "DeepMimic 是物理角色动画的基石工作，通过精确的轨迹
 ## 核心：显式跟踪 (Explicit Tracking)
 不同于后来的 AMP 靠判别器“悟”，DeepMimic 靠“盯”。它要求机器人的每一个关节在每一时刻都要尽可能贴合参考轨迹。
 
+## 局限：「发条玩具」式灵活性
+
+[Peng 在 human five 分享](../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md) 中把纯运动跟踪控制器比作 **高级发条玩具**：擅长高保真复现固定 clip，但目标位姿微变、物体变化时常需新参考；数据稀缺时更难覆盖任务变体。超越路径见 [Jason Peng 灵活运动技能学习技术地图](../overview/jason-peng-flexible-motion-skill-learning.md)（对抗分布匹配、PARC 迭代增强）。
+
 ## 主要技术路线
 | 模块 | 方案 | 作用 |
 |------|-----|------|
@@ -41,3 +47,4 @@ summary: "DeepMimic 是物理角色动画的基石工作，通过精确的轨迹
 
 ## 参考来源
 - [sources/papers/deepmimic.md](../../sources/papers/deepmimic.md)
+- [wechat_human_five_jason_peng_flexible_motion_skills.md](../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md) — 跟踪局限与超越路径（讲者自述归纳）

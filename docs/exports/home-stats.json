@@ -1,13 +1,61 @@
 {
   "generated_at": "2026-07-03",
-  "node_count": 1571,
-  "edge_count": 10800,
+  "node_count": 1572,
+  "edge_count": 10817,
   "coverage": {
-    "covered": 1540,
-    "total": 1569,
+    "covered": 1541,
+    "total": 1570,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/jason-peng-flexible-motion-skill-learning.md",
+      "detail_id": "wiki-overview-jason-peng-flexible-motion-skill-learning",
+      "label": "Jason Peng：更灵活的运动技能学习",
+      "type": "overview",
+      "recency": "2026-07-03",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/xue-bin-peng.md",
+      "detail_id": "entity-xue-bin-peng",
+      "label": "Xue Bin Peng（彭学斌）",
+      "type": "entity",
+      "recency": "2026-07-03",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/deepmimic.md",
+      "detail_id": "wiki-methods-deepmimic",
+      "label": "DeepMimic: 示例引导的技能学习",
+      "type": "method",
+      "recency": "2026-07-03",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/amp-reward.md",
+      "detail_id": "wiki-methods-amp-reward",
+      "label": "AMP & HumanX: 判别器驱动的风格学习",
+      "type": "method",
+      "recency": "2026-07-03",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
+      "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
+      "label": "人形机器人 RL 运动控制：身体系统栈视角",
+      "type": "overview",
+      "recency": "2026-07-03",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-parc-physics-based-augmentation-with-reinforceme.md",
+      "detail_id": "entity-paper-notebook-parc-physics-based-augmentation-with-reinforceme",
+      "label": "PARC",
+      "type": "entity",
+      "recency": "2026-07-03",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/ponytail.md",
       "detail_id": "entity-ponytail",
@@ -119,61 +167,13 @@
       "type": "task",
       "recency": "2026-07-03",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-loco-manip-161-papers-technology-map.md",
-      "detail_id": "wiki-overview-humanoid-loco-manip-161-papers-technology-map",
-      "label": "人形 Loco-Manip 161 篇技术地图",
-      "type": "overview",
-      "recency": "2026-07-03",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-flying-knots.md",
-      "detail_id": "entity-paper-flying-knots",
-      "label": "Flying Knots（Task-Level ILC for Deformable Rope Manipulation）",
-      "type": "entity",
-      "recency": "2026-07-02",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/flying-knots-public.md",
-      "detail_id": "entity-flying-knots-public",
-      "label": "flying_knots_public（开源仓库）",
-      "type": "entity",
-      "recency": "2026-07-02",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/robot-retargeter.md",
-      "detail_id": "entity-robot-retargeter",
-      "label": "robot_retargeter",
-      "type": "entity",
-      "recency": "2026-07-02",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-vs-graphs-visual-slam-scene-graph.md",
-      "detail_id": "entity-paper-vs-graphs-visual-slam-scene-graph",
-      "label": "vS-Graphs（视觉 SLAM + 3D 场景图）",
-      "type": "entity",
-      "recency": "2026-07-02",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/comparisons/international-gpu-cloud-platforms.md",
-      "detail_id": "wiki-comparisons-international-gpu-cloud-platforms",
-      "label": "国外 GPU 云平台选型（机器人学习与仿真）",
-      "type": "comparison",
-      "recency": "2026-07-02",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/ponytail.md",
-    "detail_id": "entity-ponytail",
-    "label": "Ponytail",
-    "type": "entity",
+    "path": "wiki/overview/jason-peng-flexible-motion-skill-learning.md",
+    "detail_id": "wiki-overview-jason-peng-flexible-motion-skill-learning",
+    "label": "Jason Peng：更灵活的运动技能学习",
+    "type": "overview",
     "recency": "2026-07-03",
     "source": "log.md"
   }

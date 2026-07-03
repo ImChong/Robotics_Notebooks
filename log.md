@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-03] ingest | sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md — human five Jason Peng 更灵活的运动技能学习；wiki/overview/jason-peng-flexible-motion-skill-learning.md；交叉更新 xue-bin-peng、deepmimic、amp-reward、humanoid-rl-motion-control-body-system-stack、PARC
+
+- 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.5.0（`pip install git+https://github.com/Panniantong/Agent-Reach.git` + [wechat-article-for-ai](https://github.com/bzd6661/wechat-article-for-ai) 至 `~/.agent-reach/tools/`（Camoufox；`playwright==1.49.1`））
+- 原始链接：<https://mp.weixin.qq.com/s/b-5UIRB1mkEDcIJlAT2jwg>
+- 沉淀页面：[`wiki/overview/jason-peng-flexible-motion-skill-learning.md`](wiki/overview/jason-peng-flexible-motion-skill-learning.md)
+- 交叉更新：[`wiki/entities/xue-bin-peng.md`](wiki/entities/xue-bin-peng.md)、[`wiki/methods/deepmimic.md`](wiki/methods/deepmimic.md)、[`wiki/methods/amp-reward.md`](wiki/methods/amp-reward.md)、[`wiki/overview/humanoid-rl-motion-control-body-system-stack.md`](wiki/overview/humanoid-rl-motion-control-body-system-stack.md)、[`wiki/entities/paper-notebook-parc-physics-based-augmentation-with-reinforceme.md`](wiki/entities/paper-notebook-parc-physics-based-augmentation-with-reinforceme.md)、[`sources/README.md`](sources/README.md)、[`sources/repos/panniantong_agent_reach.md`](sources/repos/panniantong_agent_reach.md)
+
 ## [2026-07-03] ingest | sources/repos/ponytail.md — 接入 Ponytail 编码代理必要性阶梯技能并交叉更新 caveman/superpowers/mattpocock/llm-wiki/hermes 实体页；wiki/entities/ponytail.md
 
 ## [2026-07-03] ingest | sources/papers/simfoundry_arxiv_2606_28276.md — SimFoundry Real2Sim 场景生成与策略评测/训练闭环；wiki/entities/paper-simfoundry-real2sim-scene-generation.md；交叉更新 sim2real、manipulation、simulation-evaluation-infrastructure、nvidia-gear-lab

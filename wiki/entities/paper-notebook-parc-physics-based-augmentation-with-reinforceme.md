@@ -7,14 +7,18 @@ venue: "2025 SIGGRAPH"
 related:
   - ../overview/paper-notebook-category-13-physics-based-animation.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ../overview/jason-peng-flexible-motion-skill-learning.md
 sources:
   - ../../sources/papers/humanoid_pnb_parc-physics-based-augmentation-with-reinforceme.md
+  - ../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md
 summary: "PARC：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
 ---
 
 # PARC
 
 **[PARC: Physics-based Augmentation with Reinforcement Learning for Character Controllers](https://michaelx.io/parc/index.html)** 已列入 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：13_Physics-Based_Animation）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+
+[human five 对 Jason Peng 分享的归纳](../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md) 概括其核心为 **生成器—跟踪器迭代数据增强**：14 分钟初始移动数据经多轮仿真反馈扩至 900+ 分钟，并涌现原数据集中不存在的攀爬策略；机制总览见 [灵活运动技能学习技术地图](../overview/jason-peng-flexible-motion-skill-learning.md)。
 
 ## 一句话定义
 
