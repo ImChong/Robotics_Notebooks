@@ -2,8 +2,9 @@
 type: method
 tags: [rl, imitation-learning, gan, motion-prior, humanoid]
 status: complete
-updated: 2026-07-01
+updated: 2026-07-03
 related:
+  - ../overview/jason-peng-flexible-motion-skill-learning.md
   - ../entities/mimickit.md
   - ../entities/protomotions.md
   - ../entities/paper-amp-survey-08-more.md
@@ -16,6 +17,7 @@ sources:
   - ../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md
   - ../../sources/papers/more_mixture_residual_experts_arxiv_2506_08840.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
+  - ../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md
   - ../../sources/papers/motion_control_projects.md
 summary: "AMP (Adversarial Motion Prior) 通过判别器奖励引导机器人学习自然、平滑的动作风格，而 HumanX 进一步将接触图引入 AMP 框架以解决复杂的交互任务。"
 ---
@@ -45,6 +47,7 @@ summary: "AMP (Adversarial Motion Prior) 通过判别器奖励引导机器人学
 ### 2. 优势
 - **自然度**：判别器能捕捉到人类动作中微妙的时序特征和协调性。
 - **无需繁琐调参**：减少了对关节速度惩罚、平滑惩罚等启发式奖励的依赖。
+- **任务 + 风格分解**：[Peng 归纳](../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md) 将 **task objective**（走到目标、击打等）与 **style objective**（判别器约束自然行为）并列，使策略在无「走向并击打」等组合示例时仍能组合已有行为——详见 [灵活运动技能学习技术地图](../overview/jason-peng-flexible-motion-skill-learning.md)。
 
 ### 3. 选择性 AMP (Selective AMP)
 在多步态学习 (Multi-Gait Learning) 中，AMP 的作用并非总是正面的。研究表明：
@@ -92,6 +95,7 @@ $$
 ## 参考来源
 
 - [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档《开源运动控制项目》总结。
+- [wechat_human_five_jason_peng_flexible_motion_skills.md](../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md) — Peng 对对抗 IL 任务/风格分解与组合泛化的讲者归纳
 - Peng et al., *AMP: Adversarial Motion Priors for Stylized Physics-Based Character Control*.
 - [HumanX 项目主页](https://github.com/wyhuai/human-x)
 - [sources/repos/amp_mjlab.md](../../sources/repos/amp_mjlab.md) — AMP 在 Unitree G1 + mjlab 上的统一 locomotion+recovery 实现。
