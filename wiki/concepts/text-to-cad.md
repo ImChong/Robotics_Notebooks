@@ -3,7 +3,7 @@ type: concept
 tags: [cad, generative-ai, hardware, design, api, manufacturing, llm, robotics]
 status: complete
 date: 2026-05-14
-updated: 2026-06-15
+updated: 2026-07-03
 related:
   - ../entities/urdf-studio.md
   - ../entities/atom01-hardware.md

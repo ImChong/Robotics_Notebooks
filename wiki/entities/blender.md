@@ -3,8 +3,9 @@
 type: entity
 tags: [software, dcc, 3d-creation, animation, open-source, asset-pipeline, visualization, blender-foundation]
 status: complete
-updated: 2026-06-19
+updated: 2026-07-03
 related:
+  - ./freecad.md
   - ./nvidia-omniverse.md
   - ./mixamo.md
   - ./metahuman.md
@@ -80,6 +81,7 @@ flowchart LR
 - **与商业 DCC 对照**：[Mixamo](./mixamo.md) 提供 **在线角色与动作库**；[MetaHuman](./metahuman.md) 提供 **UE 生态高保真数字人 + Animator 表演**；Blender 提供 **本地全流程编辑与 GPL 源码**——科研复现与插件二次开发通常偏向后者。
 - **与仿真底座对照**：[NVIDIA Omniverse](./nvidia-omniverse.md) 强调 **USD 协作 + GPU 物理**；Blender 强调 **authoring + 动画**——Omniverse 文档亦将 Blender 列为常见 USD 来源之一。
 - **与专用机器人编辑器对照**：[机器人关键帧与运动编辑工具](./robot-motion-keyframe-editors.md) 绑定 **URDF/MJCF/CSV/NPZ**；Blender 绑定 **通用网格与骨骼**——二者常在 pipeline 中 **串联** 而非互斥。
+- **与机械 CAD 对照**：[FreeCAD](./freecad.md) 强调 **参数化 B-rep 与 STEP 导出**；Blender 强调 **网格与动画**——硬件零件设计常走前者，场景与动捕后处理常走后者。
 
 ## 常见误区或局限
 
@@ -97,6 +99,7 @@ flowchart LR
 - [机器人关键帧与运动编辑工具](./robot-motion-keyframe-editors.md)
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md)
+- [FreeCAD（开源参数化机械 CAD）](./freecad.md)
 - [Manim（程序化数学动画，讲解层互补）](./manim.md)
 - [HomeWorld 全屋场景生成论文实体](./paper-homeworld-whole-home-scene-generation.md)
 

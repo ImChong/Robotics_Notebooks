@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-07-03",
-  "node_count": 1566,
-  "edge_count": 10739,
+  "node_count": 1567,
+  "edge_count": 10752,
   "coverage": {
-    "covered": 1535,
-    "total": 1564,
+    "covered": 1536,
+    "total": 1565,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/freecad.md",
+      "detail_id": "entity-freecad",
+      "label": "FreeCAD（开源参数化机械 CAD）",
+      "type": "entity",
+      "recency": "2026-07-03",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-human-as-humanoid.md",
       "detail_id": "entity-paper-human-as-humanoid",
@@ -159,20 +167,12 @@
       "type": "task",
       "recency": "2026-07-02",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-humanoidmimicgen.md",
-      "detail_id": "entity-paper-humanoidmimicgen",
-      "label": "HumanoidMimicGen",
-      "type": "entity",
-      "recency": "2026-07-02",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-human-as-humanoid.md",
-    "detail_id": "entity-paper-human-as-humanoid",
-    "label": "Human-as-Humanoid",
+    "path": "wiki/entities/freecad.md",
+    "detail_id": "entity-freecad",
+    "label": "FreeCAD（开源参数化机械 CAD）",
     "type": "entity",
     "recency": "2026-07-03",
     "source": "log.md"

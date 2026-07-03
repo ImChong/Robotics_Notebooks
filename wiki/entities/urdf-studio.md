@@ -3,7 +3,7 @@ type: entity
 title: URDF-Studio
 tags: [utility, design, workstation, hardware, ai]
 summary: "URDF-Studio 是专业级 Web 机器人设计与组装工作站，支持模块化设计流、硬件 BOM 管理及 AI 辅助建模。"
-updated: 2026-06-18
+updated: 2026-07-03
 related:
   - ./botworld.md
   - ./robot-viewer.md
