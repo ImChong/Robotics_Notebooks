@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-07-03",
   "node_count": 1568,
-  "edge_count": 10761,
+  "edge_count": 10764,
   "coverage": {
     "covered": 1537,
     "total": 1566,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/humanoid-parallel-joint-kinematics.md",
+      "detail_id": "wiki-concepts-humanoid-parallel-joint-kinematics",
+      "label": "人形机器人并联关节解算（Parallel / Closed-Chain Joint Kinematics）",
+      "type": "concept",
+      "recency": "2026-07-03",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-telegate.md",
       "detail_id": "entity-paper-telegate",
@@ -159,21 +167,13 @@
       "type": "query",
       "recency": "2026-07-02",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md",
-      "detail_id": "entity-paper-kungfuathlete-humanoid-martial-arts-tracking",
-      "label": "KungFuAthleteBot（KungFuAthlete Dataset + Fall-Resilient Tracking）",
-      "type": "entity",
-      "recency": "2026-07-02",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-telegate.md",
-    "detail_id": "entity-paper-telegate",
-    "label": "TeleGate",
-    "type": "entity",
+    "path": "wiki/concepts/humanoid-parallel-joint-kinematics.md",
+    "detail_id": "wiki-concepts-humanoid-parallel-joint-kinematics",
+    "label": "人形机器人并联关节解算（Parallel / Closed-Chain Joint Kinematics）",
+    "type": "concept",
     "recency": "2026-07-03",
     "source": "log.md"
   }
