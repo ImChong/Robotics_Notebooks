@@ -233,20 +233,17 @@
     return out.join('\n');
   }
 
-  function renderHomeStats(graphStats, coverageText) {
+  function renderHomeStats(graphStats) {
     var heroNodeCount = document.getElementById('heroNodeCount');
     var heroEdgeCount = document.getElementById('heroEdgeCount');
-    var heroCoverageCount = document.getElementById('heroCoverageCount');
     var wikiSearchSubtitle = document.getElementById('wikiSearchSubtitle');
-    if (!heroNodeCount && !heroEdgeCount && !heroCoverageCount && !wikiSearchSubtitle) return;
+    if (!heroNodeCount && !heroEdgeCount && !wikiSearchSubtitle) return;
 
     var nodeCount = graphStats && typeof graphStats.node_count === 'number' ? graphStats.node_count : null;
     var edgeCount = graphStats && typeof graphStats.edge_count === 'number' ? graphStats.edge_count : null;
-    var coverageCount = String(coverageText || '').trim();
 
     if (heroNodeCount && nodeCount !== null) heroNodeCount.textContent = String(nodeCount);
     if (heroEdgeCount && edgeCount !== null) heroEdgeCount.textContent = String(edgeCount);
-    if (heroCoverageCount && coverageCount) heroCoverageCount.textContent = coverageCount;
     if (wikiSearchSubtitle && nodeCount !== null) {
       wikiSearchSubtitle.textContent = '在 ' + nodeCount + ' 个知识节点中快速定位概念、方法或任务。↑↓ 键导航，Enter 打开，Esc 清空。';
     }
@@ -405,6 +402,34 @@
       items = homeStats.latest_wiki_nodes;
     } else if (homeStats && homeStats.latest_wiki_node && homeStats.latest_wiki_node.detail_id) {
       items = [homeStats.latest_wiki_node];
+    }
+
+    // 首页紧凑模式（mount 带 data-compact）：只列最近 5 条单行记录；
+    // 完整时间线与活跃度热力图迁至 change-log.html
+    if (mount.hasAttribute('data-compact')) {
+      if (!items.length || !items[0].detail_id) {
+        mount.innerHTML = '<p class="data-meta">暂无「最近更新」数据。</p>';
+        return;
+      }
+      var compactRows = '';
+      var maxRows = Math.min(items.length, 5);
+      for (var cri = 0; cri < maxRows; cri++) {
+        var rowMeta = items[cri];
+        var rowType = WIKI_TYPE_LABEL_HOME[rowMeta.type] || (rowMeta.type ? String(rowMeta.type) : 'Wiki');
+        var rowLead = rowMeta.recency ? String(rowMeta.recency) + ' · ' + rowType : rowType;
+        compactRows +=
+          '<li class="home-latest-row"><span class="home-latest-row-meta">' +
+          escapeHtml(rowLead) +
+          '</span><a href="' +
+          escapeHtml(detailHref(rowMeta.detail_id)) +
+          '">' +
+          escapeHtml(rowMeta.label || rowMeta.detail_id) +
+          '</a></li>';
+      }
+      mount.innerHTML =
+        '<ul class="home-latest-list">' + compactRows + '</ul>' +
+        '<p class="home-latest-more"><a href="change-log.html">查看全部更新 →</a></p>';
+      return;
     }
 
     function renderCard(meta, includeDate) {
@@ -4489,7 +4514,7 @@
     Promise.all([homeStatsFetch, wikiActivityFetch])
       .then(function (results) {
         var stats = results[0];
-        renderHomeStats(stats, stats.coverage ? (stats.coverage.covered + '/' + stats.coverage.total) : '');
+        renderHomeStats(stats);
         renderLatestWikiNode(stats, results[1]);
       })
       .catch(function (error) {
@@ -4506,9 +4531,7 @@
   var searchInput = document.getElementById('wikiSearchInput');
   var searchResults = document.getElementById('wikiSearchResults');
   var communityFilter = document.getElementById('wikiCommunityFilter');
-  var tagCloudEl = document.getElementById('wikiTagCloud');
   if (searchInput && searchResults) {
-    var _indexData = null;
     var _selectedIndex = -1;  // 键盘导航当前选中项
 
     var _searchIndex = null;
@@ -4572,14 +4595,6 @@
       return _communityByPathPromise;
     }
 
-    fetch('exports/index-v1.json')
-      .then(function(r) { return r.json(); })
-      .then(function(data) {
-        _indexData = data.items || [];
-        renderTagCloud(_indexData);
-      })
-      .catch(function() {});
-
     function ensureSearchIndex() {
       if (_searchIndex) return Promise.resolve(_searchIndex);
       if (_searchIndexFailed) return Promise.reject(new Error('search-index.json unavailable'));
@@ -4614,33 +4629,6 @@
         }
       }
       return out;
-    }
-
-    // ── 标签云 ──────────────────────────────────────────────────────────────
-    function renderTagCloud(items) {
-      if (!tagCloudEl) return;
-      var freq = {};
-
-      // ⚡ Bolt Optimization: Replace nested .forEach and .map().join('') with standard for loops
-      // Expected impact: Eliminates closure allocation and intermediate array manipulation overhead during tag cloud rendering.
-      for (var i = 0; i < items.length; i++) {
-        var itemTags = items[i].tags;
-        if (!itemTags) continue;
-        for (var j = 0; j < itemTags.length; j++) {
-          var tag = itemTags[j];
-          if (tag) freq[tag] = (freq[tag] || 0) + 1;
-        }
-      }
-      var sorted = Object.entries(freq).sort(function(a,b){ return b[1]-a[1]; }).slice(0,20);
-
-      var tagHtml = '';
-      for (var k = 0; k < sorted.length; k++) {
-        var entry = sorted[k];
-        var tagName = entry[0], count = entry[1];
-        tagHtml += '<button class="tag-chip" data-wiki-tag="' + escapeHtml(tagName) + '" title="' + count + ' 页面">'
-          + escapeHtml(tagName) + '</button>';
-      }
-      tagCloudEl.innerHTML = tagHtml;
     }
 
     function getResultCards() {

@@ -37,19 +37,17 @@
     <section id="hero" class="hero">
       <div class="container hero-grid">
         <div>
-          <p class="hero-kicker">Robotics Notebooks · 机器人研究与工程知识库</p>
           <h1 class="hero-title">面向人形机器人运动控制的知识入口</h1>
           <p class="hero-subtitle">把 <strong>路线、图谱、模块、论文</strong> 串成一套极简导航系统。</p>
-          
+
           <div class="hero-stat-row-mini" aria-label="知识库当前规模">
-            <span id="heroNodeCount">1571</span> Nodes ·
-            <span id="heroEdgeCount">10800</span> Links ·
-            <span id="heroCoverageCount">1540/1569</span> Sources
+            <span id="heroNodeCount">1571</span> 个节点 ·
+            <span id="heroEdgeCount">10800</span> 条连接
           </div>
 
           <div class="cta-row">
-            <a class="btn-primary" href="roadmap.html?id=roadmap-motion-control">🚀 技术路线指南</a>
-            <a class="btn-secondary" href="graph.html">🕸️ 知识图谱</a>
+            <a class="btn-primary" href="roadmap.html?id=roadmap-motion-control">技术路线指南</a>
+            <a class="btn-secondary" href="graph.html">知识图谱</a>
           </div>
         </div>
       </div>
@@ -69,7 +67,14 @@
             <option value="">全部社区</option>
           </select>
         </div>
-        <div id="wikiTagCloud" class="tag-cloud" aria-label="热门标签"></div>
+        <div class="tag-cloud" aria-label="热门搜索">
+          <button class="tag-chip" data-wiki-tag="强化学习">强化学习</button>
+          <button class="tag-chip" data-wiki-tag="运动控制">运动控制</button>
+          <button class="tag-chip" data-wiki-tag="模仿学习">模仿学习</button>
+          <button class="tag-chip" data-wiki-tag="人形机器人">人形机器人</button>
+          <button class="tag-chip" data-wiki-tag="Sim2Real">Sim2Real</button>
+          <button class="tag-chip" data-wiki-tag="MPC">MPC</button>
+        </div>
         <div id="wikiSearchResults" class="card-grid" aria-live="polite"></div>
       </div>
     </section>
@@ -89,7 +94,7 @@
     <section class="section" id="home-latest-wiki-section" aria-labelledby="home-latest-wiki-heading">
       <div class="container">
         <h2 class="section-title" id="home-latest-wiki-heading">最新知识节点</h2>
-        <div id="homeLatestWikiModule" class="home-latest-wiki-mount data-loading" aria-live="polite">
+        <div id="homeLatestWikiModule" class="home-latest-wiki-mount data-loading" data-compact aria-live="polite">
           <p class="data-meta">加载中…</p>
         </div>
       </div>
@@ -105,7 +110,7 @@
   <script src="main.js"></script>
   <script src="graph-tooltip.js"></script>
   <script src="graph-node-size.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js" defer></script>
+  <script src="vendor/d3.min.js" defer></script>
   <script src="mini-graph.js" defer></script>
   <script>
     if ('serviceWorker' in navigator) {
