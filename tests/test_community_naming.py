@@ -29,11 +29,11 @@ class CommunityHubNamePatternTest(unittest.TestCase):
     def test_valid_hub_names(self) -> None:
         valid = [
             "强化学习（Reinforcement Learning, RL）",
-            "规模化运动跟踪（SONIC）",
+            "规模化运动跟踪（Supersizing Motion Tracking for Natural Humanoid Control, SONIC）",
             "人形硬件技术地图（Humanoid Hardware 101）",
             "机器人学习（Robot Learning）",
-            "行为基础模型技术地图（BFM）",
-            "导航与 SLAM（Navigation / 自动驾驶）",
+            "行为基础模型技术地图（Behavior Foundation Model, BFM）",
+            "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM）",
         ]
         for name in valid:
             with self.subTest(name=name):
