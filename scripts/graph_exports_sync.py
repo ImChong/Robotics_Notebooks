@@ -9,7 +9,12 @@ from __future__ import annotations
 
 from pathlib import Path
 
-GRAPH_EXPORT_FILES: tuple[str, ...] = ("link-graph.json", "graph-stats.json", "home-stats.json")
+GRAPH_EXPORT_FILES: tuple[str, ...] = (
+    "link-graph.json",
+    "graph-stats.json",
+    "home-stats.json",
+    "wiki-activity.json",
+)
 
 
 def repo_root() -> Path:

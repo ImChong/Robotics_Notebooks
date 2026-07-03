@@ -11,6 +11,7 @@ const ASSETS_TO_CACHE = [
   '/Robotics_Notebooks/exports/site-data-v1.json',
   '/Robotics_Notebooks/exports/index-v1.json',
   '/Robotics_Notebooks/exports/graph-stats.json',
+  '/Robotics_Notebooks/exports/wiki-activity.json',
 ];
 
 self.addEventListener('install', (event) => {

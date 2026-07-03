@@ -25,9 +25,11 @@ docs/sitemap.xml
 docs/exports/index-v1.json
 docs/exports/site-data-v1.json
 docs/exports/link-graph.json
+docs/exports/wiki-activity.json
 exports/index-v1.json
 exports/site-data-v1.json
 exports/link-graph.json
+exports/wiki-activity.json
 
 # Cloud Agent 本地验证截图与临时 HTML（勿提交）
 .cursor-artifacts/
