@@ -452,20 +452,40 @@
       return;
     }
 
-    function renderCard(meta, includeDate) {
+    // 时间线条目 / 单日区块（参考论文笔记站 updates.html：左轨道 + 日期圆点 + 条目行 + 超量折叠）
+    var TIMELINE_FOLD_LIMIT = 14; // 超过则折叠
+    var TIMELINE_FOLD_SHOW = 12;  // 折叠时先显示的条数
+
+    function renderTimelineItem(meta, folded) {
       var typeLabel = WIKI_TYPE_LABEL_HOME[meta.type] || (meta.type ? String(meta.type) : 'Wiki');
-      var href = detailHref(meta.detail_id);
-      var cardMetaText = includeDate && meta.recency
-        ? typeLabel + ' · ' + String(meta.recency)
-        : typeLabel;
       return (
-        '<article class="card home-latest-wiki-card"><p class="card-meta">' +
-        escapeHtml(cardMetaText) +
-        '</p><h3><a href="' +
-        escapeHtml(href) +
-        '">' +
+        '<li class="updates-item' + (folded ? ' updates-item-folded' : '') + '">' +
+        '<span class="updates-item-type">' + escapeHtml(typeLabel) + '</span>' +
+        '<a class="updates-item-link" href="' + escapeHtml(detailHref(meta.detail_id)) + '">' +
         escapeHtml(meta.label || meta.detail_id) +
-        '</a></h3></article>'
+        '</a></li>'
+      );
+    }
+
+    function renderTimelineDay(dateLabel, metas, totalCount) {
+      var fold = metas.length > TIMELINE_FOLD_LIMIT;
+      var itemsHtml = '';
+      for (var ii = 0; ii < metas.length; ii++) {
+        itemsHtml += renderTimelineItem(metas[ii], fold && ii >= TIMELINE_FOLD_SHOW);
+      }
+      var total = typeof totalCount === 'number' && totalCount > metas.length ? totalCount : metas.length;
+      var dayMeta = total + ' 项';
+      if (total > metas.length) dayMeta += ' · 展示前 ' + metas.length + ' 项';
+      return (
+        '<section class="updates-day' + (fold ? ' is-folded' : '') + '">' +
+        '<h3 class="updates-day-date"><span class="updates-day-dot" aria-hidden="true"></span>' +
+        escapeHtml(dateLabel || '未标注日期') +
+        '<span class="updates-day-meta">' + escapeHtml(dayMeta) + '</span></h3>' +
+        '<ul class="updates-day-list">' + itemsHtml + '</ul>' +
+        (fold
+          ? '<button type="button" class="updates-day-more">展开全部 ' + metas.length + ' 项</button>'
+          : '') +
+        '</section>'
       );
     }
 
@@ -507,36 +527,11 @@
       var introHtml =
         '<p class="data-meta home-latest-wiki-intro">' + escapeHtml(introParts.join(' · ')) + '</p>';
 
-      var bodyHtml;
-      if (fromLog && groups.length > 1) {
-        bodyHtml = '';
-        for (var gi = 0; gi < groups.length; gi++) {
-          var group = groups[gi];
-          var groupCards = '';
-          for (var ci = 0; ci < group.items.length; ci++) {
-            groupCards += renderCard(group.items[ci], false);
-          }
-          var dateLabel = group.date
-            ? escapeHtml(group.date) + ' · ' + String(group.items.length) + ' 项'
-            : String(group.items.length) + ' 项';
-          bodyHtml += (
-            '<section class="home-latest-wiki-timeline-group">' +
-            '<h3 class="home-latest-wiki-timeline-date">' + dateLabel + '</h3>' +
-            '<div class="home-latest-wiki-cards card-grid home-latest-wiki-grid">' + groupCards + '</div>' +
-            '</section>'
-          );
-        }
-        bodyHtml = '<div class="home-latest-wiki-timeline">' + bodyHtml + '</div>';
-      } else {
-        var itemsCards = '';
-        for (var j = 0; j < items.length; j++) {
-          itemsCards += renderCard(items[j], !fromLog);
-        }
-        var wrapClass =
-          items.length > 1 ? 'home-latest-wiki-cards card-grid home-latest-wiki-grid' : 'home-latest-wiki-cards';
-        bodyHtml = '<div class="' + wrapClass + '">' + itemsCards + '</div>';
+      var daysHtml = '';
+      for (var gi = 0; gi < groups.length; gi++) {
+        daysHtml += renderTimelineDay(groups[gi].date, groups[gi].items);
       }
-      defaultBodyHtml = introHtml + bodyHtml;
+      defaultBodyHtml = introHtml + '<div class="updates-timeline-days">' + daysHtml + '</div>';
     }
 
     var activityDays = wikiActivity && Array.isArray(wikiActivity.days) ? wikiActivity.days : [];
@@ -581,16 +576,11 @@
       activeDate = dateKey;
       setActiveCell(dateKey);
       var total = totalByDate[dateKey] || dayNodes.length;
-      var filterIntro = [dateKey, '维护日志', String(total) + ' 个节点'];
-      if (dayNodes.length < total) filterIntro.push('仅展示前 ' + dayNodes.length + ' 项');
-      var cardsHtml = '';
-      for (var ni = 0; ni < dayNodes.length; ni++) {
-        cardsHtml += renderCard(dayNodes[ni], false);
-      }
+      var filterIntro = [dateKey, '维护日志'];
       bodyMount.innerHTML =
         '<p class="data-meta home-latest-wiki-intro">' + escapeHtml(filterIntro.join(' · ')) +
         ' <button type="button" class="btn-secondary btn-inline home-wiki-heatmap-clear">清除筛选</button></p>' +
-        '<div class="home-latest-wiki-cards card-grid home-latest-wiki-grid">' + cardsHtml + '</div>';
+        '<div class="updates-timeline-days">' + renderTimelineDay(dateKey, dayNodes, total) + '</div>';
     }
 
     grid.addEventListener('click', function (ev) {
@@ -605,7 +595,16 @@
       }
     });
     bodyMount.addEventListener('click', function (ev) {
-      if (ev.target.closest('.home-wiki-heatmap-clear')) clearHeatmapFilter();
+      if (ev.target.closest('.home-wiki-heatmap-clear')) {
+        clearHeatmapFilter();
+        return;
+      }
+      var moreBtn = ev.target.closest('button.updates-day-more');
+      if (moreBtn) {
+        var daySection = moreBtn.closest('.updates-day');
+        if (daySection) daySection.classList.remove('is-folded');
+        moreBtn.parentNode.removeChild(moreBtn);
+      }
     });
   }
 
