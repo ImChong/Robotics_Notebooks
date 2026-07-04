@@ -3,7 +3,7 @@ type: method
 tags: [il, diffusion, manipulation, generative-model]
 status: complete
 summary: "Diffusion Policy 用多步去噪生成动作序列，擅长处理多模态和长时序的机器人操作行为。"
-updated: 2026-06-25
+updated: 2026-07-04
 ---
 
 # Diffusion Policy
@@ -128,6 +128,7 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 
 ## 关联页面
 
+- [扩散模型（概念）](../concepts/diffusion-model.md) — 通用前向加噪/逆向降噪机制与架构演进
 - [Diffusion-based Motion Generation](./diffusion-motion-generation.md) — 扩散模型在移动任务中的应用
 - [Imitation Learning](./imitation-learning.md)
 - [Reinforcement Learning](./reinforcement-learning.md)
