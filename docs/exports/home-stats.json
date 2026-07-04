@@ -24,7 +24,7 @@
       "type": "entity",
       "recency": "2026-07-04",
       "source": "log.md",
-      "action": "maintained"
+      "action": "added"
     },
     {
       "path": "wiki/tasks/teleoperation.md",
@@ -33,7 +33,7 @@
       "type": "task",
       "recency": "2026-07-04",
       "source": "log.md",
-      "action": "maintained"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-twist2.md",
@@ -42,7 +42,7 @@
       "type": "entity",
       "recency": "2026-07-04",
       "source": "log.md",
-      "action": "maintained"
+      "action": "added"
     },
     {
       "path": "wiki/overview/jason-peng-flexible-motion-skill-learning.md",
@@ -51,7 +51,7 @@
       "type": "overview",
       "recency": "2026-07-03",
       "source": "log.md",
-      "action": "added"
+      "action": "maintained"
     },
     {
       "path": "wiki/entities/xue-bin-peng.md",
@@ -105,7 +105,7 @@
       "type": "entity",
       "recency": "2026-07-03",
       "source": "log.md",
-      "action": "added"
+      "action": "maintained"
     },
     {
       "path": "wiki/entities/paper-simfoundry-real2sim-scene-generation.md",
@@ -114,7 +114,7 @@
       "type": "entity",
       "recency": "2026-07-03",
       "source": "log.md",
-      "action": "added"
+      "action": "maintained"
     },
     {
       "path": "wiki/entities/paper-mint-vla.md",
@@ -123,7 +123,7 @@
       "type": "entity",
       "recency": "2026-07-03",
       "source": "log.md",
-      "action": "added"
+      "action": "maintained"
     },
     {
       "path": "wiki/methods/vla.md",
@@ -159,7 +159,7 @@
       "type": "entity",
       "recency": "2026-07-03",
       "source": "log.md",
-      "action": "added"
+      "action": "maintained"
     },
     {
       "path": "wiki/entities/freecad.md",
@@ -168,7 +168,7 @@
       "type": "entity",
       "recency": "2026-07-03",
       "source": "log.md",
-      "action": "added"
+      "action": "maintained"
     },
     {
       "path": "wiki/entities/paper-human-as-humanoid.md",
@@ -177,7 +177,7 @@
       "type": "entity",
       "recency": "2026-07-03",
       "source": "log.md",
-      "action": "added"
+      "action": "maintained"
     },
     {
       "path": "wiki/overview/loco-manip-contact-technology-map.md",
@@ -186,7 +186,7 @@
       "type": "overview",
       "recency": "2026-07-03",
       "source": "log.md",
-      "action": "added"
+      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
