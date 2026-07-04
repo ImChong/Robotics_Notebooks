@@ -69,7 +69,7 @@
       "type": "method",
       "recency": "2026-07-03",
       "source": "log.md",
-      "action": "maintained"
+      "action": "added"
     },
     {
       "path": "wiki/methods/amp-reward.md",
@@ -141,7 +141,7 @@
       "type": "formalization",
       "recency": "2026-07-03",
       "source": "log.md",
-      "action": "maintained"
+      "action": "added"
     },
     {
       "path": "wiki/concepts/humanoid-parallel-joint-kinematics.md",
@@ -150,7 +150,7 @@
       "type": "concept",
       "recency": "2026-07-03",
       "source": "log.md",
-      "action": "maintained"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-telegate.md",
