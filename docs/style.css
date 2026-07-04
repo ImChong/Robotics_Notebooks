@@ -458,14 +458,24 @@ body.sponsor-dialog-open {
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: max-content max-content max-content 1fr;
+  --updates-badge-col-width: 3.25rem;
+  grid-template-columns: max-content var(--updates-badge-col-width) max-content 1fr;
   column-gap: 12px;
   row-gap: 10px;
   align-items: baseline;
 }
 .home-latest-row { display: contents; }
 .home-latest-row-date, .home-latest-row-type { color: var(--text-muted); font-size: .85rem; white-space: nowrap; }
+.home-latest-row-badge,
+.updates-badge-cell {
+  display: inline-flex;
+  align-items: baseline;
+  min-width: var(--updates-badge-col-width, 3.25rem);
+  flex-shrink: 0;
+}
 .home-latest-row-badge .updates-badge { vertical-align: baseline; }
+.updates-badge-cell--empty,
+.home-latest-row-badge.updates-badge-cell--empty { min-height: 1.25em; }
 .home-latest-row > a { min-width: 0; overflow-wrap: anywhere; }
 .home-latest-more { margin-top: 18px; font-size: .9rem; }
 @media (max-width: 860px) {
@@ -500,10 +510,10 @@ body.sponsor-dialog-open {
   box-shadow: 0 0 0 3px var(--bg);
 }
 .updates-day-meta { font-size: .78rem; font-weight: 400; color: var(--text-muted); margin-left: .55rem; }
-.updates-day-list { list-style: none; margin: 8px 0 0; padding: 0; }
+.updates-day-list { list-style: none; margin: 8px 0 0; padding: 0; --updates-badge-col-width: 3.25rem; }
 .updates-item {
   display: grid;
-  grid-template-columns: max-content max-content 1fr;
+  grid-template-columns: var(--updates-badge-col-width, 3.25rem) max-content 1fr;
   column-gap: 10px;
   align-items: baseline;
   font-size: .93rem;
@@ -511,7 +521,6 @@ body.sponsor-dialog-open {
   padding: 2px 0;
 }
 .updates-badge {
-  grid-column: 1;
   font-size: .66rem;
   line-height: 1.5;
   padding: 0 .55rem;
@@ -529,11 +538,6 @@ body.sponsor-dialog-open {
 }
 [data-theme="light"] .updates-badge-added {
   background: rgba(42, 108, 180, 0.08);
-}
-.updates-item-badge-spacer {
-  grid-column: 1;
-  display: inline-block;
-  width: 2.4em;
 }
 .updates-item-type {
   grid-column: 2;
