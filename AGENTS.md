@@ -210,6 +210,23 @@ Always run `make ci-preflight` — it regenerates derived files (`index.md`, `ex
 
 **ingest 提速**：交叉更新多个 wiki 后先 `make bump-wiki-from-sources`（或 `bump_wiki_updated_for_sources.py` 指定本次 `sources/papers/...`），再 commit，最后 **只跑一轮** `make ci-preflight`（preflight 内 lint 只执行一次；图谱社区检测已改用 Louvain，全库约 2–5 分钟量级）。
 
+### 微信公众号抓取工具（Agent Reach + wechat-article-for-ai，已预装）
+
+用于 ingest `mp.weixin.qq.com` 公众号长文的工具链**已随 VM 快照预装**，无需每次重装（Jina Reader 对公众号返回 CAPTCHA，不可用）：
+
+- `agent-reach` CLI（v1.5.0）→ `~/.local/bin/agent-reach`（PyPI 无此包，装自 `https://github.com/Panniantong/agent-reach/archive/main.zip`）。
+- `wechat-article-for-ai`（[bzd6661](https://github.com/bzd6661/wechat-article-for-ai)）→ `~/.agent-reach/tools/wechat-article-for-ai/`；正文抓取实际走此工具。
+- 反检测浏览器 **Camoufox** → `~/.cache/camoufox/`（约 713MB，含 GeoIP + UBO）；依赖 **`playwright==1.49.1`**（勿升级，Camoufox 兼容性钉定版本）。
+
+抓取单篇公众号文章（`--no-images` 可跳过图片只取正文；去掉即本地化下载图片）：
+
+```bash
+cd ~/.agent-reach/tools/wechat-article-for-ai
+python3 main.py "https://mp.weixin.qq.com/s/<ARTICLE_ID>" -o /tmp/wx-out -v
+```
+
+产物为带 YAML frontmatter（title/author/date/source）的干净 Markdown，落 `<output>/<标题>/<标题>.md`。**这些工具不在 update script 里**（Camoufox 体积大、拉取有网络风险），依赖快照持久化；若快照缺失才需按上述来源重装。遇 CAPTCHA/空正文多为限流，等几分钟重试或加 `--no-headless`。
+
 ### Cursor Cloud Agent：PR 与验证截图
 
 Cloud Agent 在推送 PR 后，应在 PR 正文中附上**验证截图**：默认包含 **静态站点 `docs/detail.html?id=…` 上与本次改动对应的详情页**（本地 `cd docs && python3 -m http.server` 后 headless 截图；合并后可选附 Pages 线上 URL 截图）。可用 HTML `<img alt="..." src="<绝对路径>" />` 引用 `.cursor-artifacts/screenshots/` 等本地生成文件。详细步骤见 **[`docs/checklists/cloud-agent-pr-workflow.md`](docs/checklists/cloud-agent-pr-workflow.md)**。
