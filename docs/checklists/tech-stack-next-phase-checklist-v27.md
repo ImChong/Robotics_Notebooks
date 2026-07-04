@@ -37,8 +37,8 @@
 
 ## P2: 事实库与矛盾检测扩展 (Quantity)
 
-- [ ] **事实库扩展**：
-    - [ ] `schema/canonical-facts.json` 由 210 → **≥ 220 条**：新增 ≥10 条接触力控矛盾检测规则（力控带宽↑ 与控制刚度/稳定裕度冲突、阻抗 vs 导纳因果对偶在接触刚度未知时失稳、刚性高带宽与柔顺安全取舍、纯视觉时延致接触前过冲、触觉采样率不足致打滑漏检、混合力位控制方向选择错误致约束冲突、力旋量估计依赖准确惯量/雅可比、接触离散化致力旋量偏大、过度柔顺牺牲定位精度、域随机化不替代真机力标定等）；逐条经脚本校验对现存 wiki 页有 pos 命中且 0 误报（`make lint` 潜在矛盾 0 个）。
+- [x] **事实库扩展**：
+    - [x] `schema/canonical-facts.json` 由 210 → **220 条**：新增 10 条接触力控矛盾检测规则（力控带宽↑ 与控制刚度/稳定裕度冲突、阻抗 vs 导纳因果对偶在接触刚度未知时失稳、刚性高带宽与柔顺安全取舍、纯视觉时延致接触前过冲、触觉采样率不足致打滑漏检、混合力位控制方向选择错误致约束冲突、力旋量估计依赖准确惯量/雅可比、接触离散化致力旋量偏大、过度柔顺牺牲定位精度、域随机化不替代真机力标定）；逐条经脚本校验对现存 wiki 页有 pos 命中（10/10 命中 `contact-force-loop-bandwidth` / `impedance-control` / `visuo-tactile-fusion` / `hybrid-force-position-control` / `contact-estimation` / `contact-wrench-closed-loop` 等页）且 0 误报（`make lint` 潜在矛盾 0 个、0 errors）。
 
 ## P3: 交互层"接触力控"增强 (UX/UI)
 
@@ -53,7 +53,7 @@
 
 - [~] `make lint`: 0 errors（新引入的 `contact_control_crosslink` 为 INFO 级，不阻塞 CI）——已达成 0 errors + 14 条信息型预警。
 - [ ] 知识图谱节点数 **≥ 1525**，边数 **≥ 10260**（见 `exports/graph-stats.json`）。
-- [ ] 事实库扩展至 **≥ 220 条**（重点补 力控带宽 / 阻抗导纳 / 视触觉时延 矛盾检测规则）。
+- [x] 事实库扩展至 **220 条**（补齐 力控带宽 / 阻抗导纳 / 视触觉时延 等 10 条接触力控矛盾检测规则）。
 - [ ] `community_quality_warning` 保持 `false` 且 `largest_community_ratio ≤ 0.25`。
 - [ ] `log.md` 记录 V27 关键改动。
 

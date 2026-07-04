@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-03] structural | schema/canonical-facts.json 210 → 220（V27 P2）——新增 10 条接触力控矛盾检测规则
+
+- 覆盖：力控带宽↑ 与控制刚度/稳定裕度冲突、阻抗 vs 导纳因果对偶在接触刚度未知时失稳、刚性高带宽与柔顺安全取舍、纯视觉时延致接触前过冲、触觉采样率不足致打滑漏检、混合力位方向选择错误致约束冲突、力旋量估计依赖雅可比/惯量标定、接触离散化致力旋量高估、过度柔顺牺牲定位精度、域随机化不替代真机力标定
+- 校验：逐条 pos 命中现存 wiki 页（`contact-force-loop-bandwidth` / `impedance-control` / `visuo-tactile-fusion` / `hybrid-force-position-control` / `contact-estimation` / `contact-wrench-closed-loop`），`make lint` 潜在矛盾 0 个、0 errors；`make ci-preflight` 12/12 通过
+- 清单勾稽：[`docs/checklists/tech-stack-next-phase-checklist-v27.md`](docs/checklists/tech-stack-next-phase-checklist-v27.md) P2 事实库扩展项完成
+
 ## [2026-07-03] ingest | sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md — human five Jason Peng 更灵活的运动技能学习；wiki/overview/jason-peng-flexible-motion-skill-learning.md；交叉更新 xue-bin-peng、deepmimic、amp-reward、humanoid-rl-motion-control-body-system-stack、PARC
 
 - 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.5.0（`pip install git+https://github.com/Panniantong/Agent-Reach.git` + [wechat-article-for-ai](https://github.com/bzd6661/wechat-article-for-ai) 至 `~/.agent-reach/tools/`（Camoufox；`playwright==1.49.1`））
