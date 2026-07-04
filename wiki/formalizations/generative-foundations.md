@@ -2,7 +2,7 @@
 type: formalization
 summary: "生成式模型基础描述通过学习数据分布生成新样本的概率建模框架，是 Diffusion Policy、世界模型和轨迹生成方法的数学底座。"
 description: 通过学习数据的底层分布来生成新样本的一类概率模型，包括 GANs, VAEs, Normalizing Flows 和 Diffusion Models。
-updated: 2026-05-14
+updated: 2026-07-04
 ---
 
 # 生成式模型基础 (Generative Foundations)
@@ -44,6 +44,7 @@ $$p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t) = \mathcal{N}(\mathbf{x}_{t-1}; \mu_\t
 通过向数据添加噪声并学习逆向去噪过程来生成数据。
 - **核心**: 迭代去噪分数匹配 (Iterative Denoising Score Matching)。
 - **应用**: [Diffusion Policy](../methods/diffusion-policy.md) 已成为目前机器人操作（Manipulation）领域的主流方法。
+- **工程直觉**: [扩散模型（概念）](../concepts/diffusion-model.md) — DDPM 前向/逆向、U-Net/LDM/DiT 与采样器权衡（human five 入门长文归纳）
 
 ## 在机器人中的应用
 
@@ -52,6 +53,7 @@ $$p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t) = \mathcal{N}(\mathbf{x}_{t-1}; \mu_\t
 - **触觉模拟 (Tactile Simulation)**: 生成逼真触觉传感器数据。
 
 ## 关联页面
+- [扩散模型（概念）](../concepts/diffusion-model.md)
 - [Diffusion Policy](../methods/diffusion-policy.md)
 - [潜空间想象 (Latent Imagination)](../concepts/latent-imagination.md)
 - [生成式世界模型](../methods/generative-world-models.md)

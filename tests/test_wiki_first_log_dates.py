@@ -84,9 +84,7 @@ class WikiFirstLogDatesTest(unittest.TestCase):
             glg._wiki_node_action("wiki/tasks/locomotion.md", "2026-05-28", first_dates),
             "maintained",
         )
-        self.assertIsNone(
-            glg._wiki_node_action("wiki/tasks/unknown.md", "2026-05-28", first_dates)
-        )
+        self.assertIsNone(glg._wiki_node_action("wiki/tasks/unknown.md", "2026-05-28", first_dates))
 
 
 if __name__ == "__main__":  # pragma: no cover

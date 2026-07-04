@@ -2,6 +2,8 @@
 
 ## [2026-07-04] structural | scripts/generate_link_graph.py — 更新记录「新增/维护」改按 log.md ingest/structural 首次出现判定（修复 git 日期偏早与 lint glob 误展开）
 
+## [2026-07-04] ingest | sources/blogs/wechat_human_five_diffusion_model_intro.md — human five Diffusion Model入门；wiki/concepts/diffusion-model.md；交叉更新 generative-foundations、diffusion-policy、diffusion-motion-generation
+
 ## [2026-07-04] ingest | sources/papers/heft_arxiv_2607_02332.md — HEFT 重载全尺寸人形 VR 遥操作（PMG+WPC）；wiki/entities/paper-heft.md、wiki/entities/axellwppr-motion-tracking.md；交叉更新 wiki/tasks/teleoperation.md、wiki/entities/paper-twist2.md
 
 ## [2026-07-03] structural | schema/canonical-facts.json 210 → 220（V27 P2）——新增 10 条接触力控矛盾检测规则

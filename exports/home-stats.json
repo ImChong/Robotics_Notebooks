@@ -1,13 +1,22 @@
 {
   "generated_at": "2026-07-04",
-  "node_count": 1573,
-  "edge_count": 10829,
+  "node_count": 1574,
+  "edge_count": 10838,
   "coverage": {
-    "covered": 1542,
-    "total": 1571,
+    "covered": 1543,
+    "total": 1572,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/diffusion-model.md",
+      "detail_id": "wiki-concepts-diffusion-model",
+      "label": "Diffusion Model（扩散模型）",
+      "type": "concept",
+      "recency": "2026-07-04",
+      "source": "log.md",
+      "action": "added"
+    },
     {
       "path": "wiki/entities/paper-heft.md",
       "detail_id": "entity-paper-heft",
@@ -178,22 +187,13 @@
       "recency": "2026-07-03",
       "source": "log.md",
       "action": "added"
-    },
-    {
-      "path": "wiki/overview/loco-manip-contact-technology-map.md",
-      "detail_id": "wiki-overview-loco-manip-contact-technology-map",
-      "label": "Loco-Manip 接触横切面：五段链路技术地图",
-      "type": "overview",
-      "recency": "2026-07-03",
-      "source": "log.md",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-heft.md",
-    "detail_id": "entity-paper-heft",
-    "label": "HEFT",
-    "type": "entity",
+    "path": "wiki/concepts/diffusion-model.md",
+    "detail_id": "wiki-concepts-diffusion-model",
+    "label": "Diffusion Model（扩散模型）",
+    "type": "concept",
     "recency": "2026-07-04",
     "source": "log.md",
     "action": "added"
@@ -208,12 +208,12 @@
       "size": 215
     },
     {
-      "label": "视觉-语言-动作",
-      "size": 181
+      "label": "强化学习",
+      "size": 174
     },
     {
       "label": "全身控制",
-      "size": 102
+      "size": 101
     },
     {
       "label": "物理引擎",
@@ -221,7 +221,7 @@
     },
     {
       "label": "动作重定向",
-      "size": 73
+      "size": 71
     }
   ]
 }
