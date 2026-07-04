@@ -4652,22 +4652,6 @@
       }
     }
 
-    var HOT_QUERIES = ['强化学习', 'WBC 全身控制', 'Sim2Real', '模仿学习', '运动控制', 'MPC'];
-
-    function renderEmptyState() {
-      // ⚡ Bolt Optimization: Replace .map().join('') with string concatenation in for loop
-      // Expected impact: Eliminates closure allocation and intermediate array manipulation overhead.
-      var hotHtml = '';
-      for (var i = 0; i < HOT_QUERIES.length; i++) {
-        var q = HOT_QUERIES[i];
-        hotHtml += '<button class="tag-chip js-hot-query-btn" data-query="' + escapeHtml(q) + '" style="cursor:pointer">' + escapeHtml(q) + '</button>';
-      }
-      searchResults.innerHTML = '<div style="grid-column:1/-1;color:var(--text-muted);font-size:.85rem">'
-        + '<p style="margin-bottom:.5rem">热门查询：</p>'
-        + '<div class="chip-list">' + hotHtml + '</div>'
-        + '</div>';
-    }
-
     function renderNoResults(q) {
       searchResults.innerHTML = '<div style="grid-column:1/-1;color:var(--text-muted)">'
         + '<p>未找到 <strong>' + escapeHtml(q) + '</strong> 的匹配结果。</p>'
@@ -4873,7 +4857,8 @@
       _selectedIndex = -1;
       var q = query.trim();
       var communityVal = communityFilter ? communityFilter.value : '';
-      if (!q && !communityVal) { renderEmptyState(); return; }
+      // 空查询：结果区留白（热门词入口是搜索框下方常驻的 tag-chip 行）
+      if (!q && !communityVal) { searchResults.innerHTML = ''; return; }
       searchResults.innerHTML = '<p style="color:var(--text-muted);grid-column:1/-1">加载离线搜索索引中…</p>';
       Promise.all([ensureSearchIndex(), ensureCommunityByPath()])
         .then(function(results) {
@@ -5012,19 +4997,6 @@
     }
 
     searchResults.addEventListener('click', function(e) {
-      var hotBtn = e.target.closest('.js-hot-query-btn');
-      if (hotBtn) {
-        var query = hotBtn.getAttribute('data-query');
-        if (query) {
-          var inputEl = document.getElementById('wikiSearchInput');
-          if (inputEl) {
-            inputEl.value = query;
-            triggerSearch();
-          }
-        }
-        return;
-      }
-
       var graphBtn = e.target.closest('.js-graph-btn');
       if (graphBtn) {
         e.stopPropagation();
