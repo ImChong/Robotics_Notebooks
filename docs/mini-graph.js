@@ -295,6 +295,33 @@
     var wrap3d = document.getElementById('mini-graph-3d');
     var graph3d = null;
     var loading3d = false;
+    var lastPointer3d = { clientX: 0, clientY: 0 };
+
+    function trackPointer3d(ev) {
+      lastPointer3d.clientX = ev.clientX;
+      lastPointer3d.clientY = ev.clientY;
+    }
+
+    function showTooltip3d(d) {
+      showTooltip(lastPointer3d, d, nodeFill, communityLabelMap);
+    }
+
+    function bindMiniGraph3dTooltipDismiss() {
+      if (!window.RNGraphTooltip || !wrap3d) return;
+      var tooltipApi = {
+        isMobile: isMobile,
+        getPinned: function() { return pinnedNode; },
+        clearPin: function() { pinnedNode = null; },
+        hide: hideTooltip
+      };
+      window.RNGraphTooltip.bindBlankDismiss(wrap3d, tooltipApi, {
+        tooltipEl: tooltip
+      });
+      window.RNGraphTooltip.bindOutsideDismiss(wrap3d, tooltipApi, {
+        tooltipEl: tooltip,
+        dismissRootEl: document.querySelector('main')
+      });
+    }
 
     function applyMode3dTheme() {
       if (!graph3d) return;
@@ -320,7 +347,14 @@
       // 独立节点/边副本：2D d3 力模拟已把 edges 的端点替换为节点对象引用，
       // 且节点带 x/y/vx/vy 等模拟状态，直接共享会与 3D 力模拟争用
       var nodes3d = nodes.map(function (n) {
-        return { id: n.id, label: n.label, type: n.type, community: n.community, _degree: n._degree };
+        return {
+          id: n.id,
+          label: n.label,
+          type: n.type,
+          community: n.community,
+          summary: n.summary || '',
+          _degree: n._degree
+        };
       });
       var links3d = edges.map(function (e) {
         return {
@@ -338,13 +372,28 @@
         .cooldownTime(4000)
         .nodeColor(function (d) { return nodeFill(d); })
         .nodeVal(function (d) { return Math.max(1, d._degree); })
-        .nodeLabel(function (d) { return escapeHtml(d.label || d.id); })
         .linkColor(function () { return miniGraphTheme().edge3d; })
         .linkOpacity(0.35)
+        .onNodeHover(function (node) {
+          if (isMobile) return;
+          if (node) showTooltip3d(node);
+          else hideTooltip();
+        })
         .onNodeClick(function (d) {
+          if (isMobile) {
+            if (pinnedNode === d) {
+              pinnedNode = null;
+              hideTooltip();
+            } else {
+              showTooltip3d(d);
+            }
+            return;
+          }
           window.location.href = 'graph.html?focus=' + encodeURIComponent(d.id);
         })
         .graphData({ nodes: nodes3d, links: links3d });
+      wrap3d.addEventListener('mousemove', trackPointer3d);
+      bindMiniGraph3dTooltipDismiss();
       // 力模拟稳定后一次性取景填满容器（与 2D sim.on('end') 的自动 fit 对齐）；
       // 只做首次，避免用户拖拽节点触发的后续 engineStop 抢走相机
       var fitted3d = false;
@@ -392,6 +441,8 @@
     }
 
     function show2d() {
+      hideTooltip();
+      pinnedNode = null;
       wrap3d.hidden = true;
       miniSvg.style.display = '';
       setModeButtons('2d');

@@ -503,15 +503,26 @@ body.sponsor-dialog-open {
 .updates-day-meta { font-size: .78rem; font-weight: 400; color: var(--text-muted); margin-left: .55rem; }
 .updates-day-list { list-style: none; margin: 8px 0 0; padding: 0; }
 .updates-item {
-  display: flex;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 10px;
   align-items: baseline;
-  gap: 10px;
   font-size: .93rem;
   line-height: 1.6;
   padding: 2px 0;
 }
-.updates-item-type { flex: none; font-size: .72rem; color: var(--text-muted); white-space: nowrap; min-width: 4.5em; }
-.updates-item-link { min-width: 0; }
+.updates-item-type {
+  grid-column: 1;
+  font-size: .72rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  min-width: 4.5em;
+}
+.updates-item-link {
+  grid-column: 2;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
 .updates-day.is-folded .updates-item-folded { display: none; }
 .updates-day-more {
   display: inline-block;
@@ -525,8 +536,12 @@ body.sponsor-dialog-open {
   cursor: pointer;
 }
 .updates-day-more:hover { color: var(--accent-hover); border-color: var(--accent-hover); }
-@media (max-width: 860px) {
-  .updates-item { flex-wrap: wrap; row-gap: 2px; }
+.updates-timeline-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+  padding-left: 18px;
 }
 /* 首页「最新知识节点」活跃度热力图（GitHub 风格布局；色阶取站点主题蓝
    （--accent 同色相，暗档最亮≈--accent-hover），已过顺序色板校验：

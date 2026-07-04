@@ -249,9 +249,8 @@ LATEST_NODES_DEFAULT = 20
 LATEST_NODES_CAP = 30
 LATEST_NODES_WINDOW_DAYS = 30
 LATEST_NODES_ENV_VAR = "GRAPH_LATEST_NODES_MAX"
-# wiki-activity.json：单日节点列表上限（count 保留真实值；批量维护日 glob
-# 可展开出上千节点，全量导出会拖垮首页热力图筛选的加载与渲染）。
-ACTIVITY_NODES_PER_DAY_CAP = 30
+# wiki-activity.json：按日导出全部节点（count 与 nodes 长度一致）。
+# 更新记录页与热力图筛选依赖全量日志时间线；单日条目过多时由前端折叠展示。
 
 
 def wiki_recency_date(content: str, page: Path) -> date:
@@ -435,7 +434,7 @@ def wiki_activity_from_log(nodes: list[dict[str, Any]]) -> list[dict[str, Any]]:
     窗口：同一日期的多个日志块合并、同日去重（跨日可重复出现），仅保留仓库
     现存且在图谱节点中的路径。返回按日期升序的
     ``[{date, count, nodes: [{detail_id, label, type}]}]``，无节点的日期不输出；
-    count 为当日真实节点数，nodes 仅保留出现顺序前 ACTIVITY_NODES_PER_DAY_CAP 项。
+    count 为当日节点数，nodes 为当日全部节点（出现顺序）。
     """
     if not LOG_MD_PATH.is_file():
         return []
@@ -483,7 +482,7 @@ def wiki_activity_from_log(nodes: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 "count": len(metas),
                 "nodes": [
                     {"detail_id": m["detail_id"], "label": m["label"], "type": m["type"]}
-                    for m in metas[:ACTIVITY_NODES_PER_DAY_CAP]
+                    for m in metas
                 ],
             }
         )
