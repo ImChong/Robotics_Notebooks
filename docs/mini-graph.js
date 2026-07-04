@@ -328,11 +328,14 @@
           target: typeof e.target === 'object' ? e.target.id : e.target
         };
       });
-      graph3d = window.ForceGraph3D()(wrap3d)
+      // controlType: orbit —— trackball 不支持 autoRotate（设了会静默无效）
+      graph3d = window.ForceGraph3D({ controlType: 'orbit' })(wrap3d)
         .width(miniWrap.clientWidth || 700)
         .height(miniWrap.clientHeight || 480)
         .backgroundColor(theme.background)
         .showNavInfo(false)
+        // 40 节点几秒即稳定；默认 cooldownTime 15s 会让 engineStop 的取景来得太晚
+        .cooldownTime(4000)
         .nodeColor(function (d) { return nodeFill(d); })
         .nodeVal(function (d) { return Math.max(1, d._degree); })
         .nodeLabel(function (d) { return escapeHtml(d.label || d.id); })
@@ -342,6 +345,14 @@
           window.location.href = 'graph.html?focus=' + encodeURIComponent(d.id);
         })
         .graphData({ nodes: nodes3d, links: links3d });
+      // 力模拟稳定后一次性取景填满容器（与 2D sim.on('end') 的自动 fit 对齐）；
+      // 只做首次，避免用户拖拽节点触发的后续 engineStop 抢走相机
+      var fitted3d = false;
+      graph3d.onEngineStop(function () {
+        if (fitted3d) return;
+        fitted3d = true;
+        graph3d.zoomToFit(600, 40);
+      });
       var controls3d = graph3d.controls();
       if (controls3d) {
         controls3d.autoRotate = true;
@@ -390,6 +401,13 @@
     if (btn2d && btn3d && wrap3d) {
       btn3d.addEventListener('click', show3d);
       btn2d.addEventListener('click', show2d);
+      // 视口尺寸变化（手机横竖屏 / 窗口缩放）时同步 3D 画布尺寸
+      window.addEventListener('resize', function () {
+        if (!graph3d) return;
+        graph3d
+          .width(miniWrap.clientWidth || 700)
+          .height(miniWrap.clientHeight || 480);
+      });
     }
 
     statsEl.textContent = '预览：全站连接度 Top-' + PREVIEW_TOP_N + ' 枢纽节点';
