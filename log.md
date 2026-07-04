@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-04] structural | scripts/generate_link_graph.py、docs/main.js、docs/style.css — 更新记录对齐论文笔记站「（新增）/（维护）」标签（git 首次入库日 vs log 维护日）
+
 ## [2026-07-04] ingest | sources/papers/heft_arxiv_2607_02332.md — HEFT 重载全尺寸人形 VR 遥操作（PMG+WPC）；wiki/entities/paper-heft.md、wiki/entities/axellwppr-motion-tracking.md；交叉更新 wiki/tasks/teleoperation.md、wiki/entities/paper-twist2.md
 
 ## [2026-07-03] structural | schema/canonical-facts.json 210 → 220（V27 P2）——新增 10 条接触力控矛盾检测规则

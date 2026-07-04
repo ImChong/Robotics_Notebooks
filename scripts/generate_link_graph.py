@@ -40,6 +40,7 @@ import argparse
 import json
 import os
 import re
+import subprocess
 from collections import Counter, defaultdict
 from datetime import date, timedelta
 from pathlib import Path
@@ -251,6 +252,111 @@ LATEST_NODES_WINDOW_DAYS = 30
 LATEST_NODES_ENV_VAR = "GRAPH_LATEST_NODES_MAX"
 # wiki-activity.json：按日导出全部节点（count 与 nodes 长度一致）。
 # 更新记录页与热力图筛选依赖全量日志时间线；单日条目过多时由前端折叠展示。
+_GIT_LOG_BOUNDARY = "\x01"
+_WIKI_ADDED_DATES_CACHE: dict[str, str] | None = None
+
+
+def _iter_wiki_md_paths() -> list[str]:
+    return sorted(
+        str(p.relative_to(REPO_ROOT)).replace("\\", "/")
+        for p in WIKI_DIR.rglob("*.md")
+        if p.is_file()
+    )
+
+
+def wiki_git_added_dates(*, force_refresh: bool = False) -> dict[str, str]:
+    """Map ``wiki/...md`` → ISO date (committer) of first git add.
+
+    Mirrors Humanoid_Robot_Learning_Paper_Notebooks ``generate_updates_data.py``:
+    scan ``git log --name-status`` newest→oldest with rename aliasing so history
+    under a previous path still counts toward the current file.
+    """
+    global _WIKI_ADDED_DATES_CACHE
+    if not force_refresh and _WIKI_ADDED_DATES_CACHE is not None:
+        return _WIKI_ADDED_DATES_CACHE
+
+    current_paths = _iter_wiki_md_paths()
+    if not current_paths:
+        _WIKI_ADDED_DATES_CACHE = {}
+        return _WIKI_ADDED_DATES_CACHE
+
+    try:
+        result = subprocess.run(
+            [
+                "git",
+                "-C",
+                str(REPO_ROOT),
+                "-c",
+                "core.quotepath=false",
+                "log",
+                "--topo-order",
+                "--no-merges",
+                f"--format={_GIT_LOG_BOUNDARY}%cs",
+                "--name-status",
+                "--",
+                "wiki",
+            ],
+            capture_output=True,
+            text=True,
+            check=False,
+            timeout=120,
+        )
+        if result.returncode != 0:
+            _WIKI_ADDED_DATES_CACHE = {}
+            return _WIKI_ADDED_DATES_CACHE
+    except (subprocess.SubprocessError, OSError):
+        _WIKI_ADDED_DATES_CACHE = {}
+        return _WIKI_ADDED_DATES_CACHE
+
+    alias = {p: p for p in current_paths}
+    added_date: dict[str, str] = {}
+    date_str: str | None = None
+
+    for line in result.stdout.splitlines():
+        if line.startswith(_GIT_LOG_BOUNDARY):
+            date_str = line[1:].strip() or None
+            continue
+        if not date_str or "\t" not in line:
+            continue
+        parts = line.split("\t")
+        status = parts[0]
+        if not status:
+            continue
+        kind = status[0]
+
+        if kind in ("R", "C") and len(parts) >= 3:
+            old, new = parts[1], parts[2]
+            cur = alias.get(new)
+            if cur is None:
+                continue
+            if kind == "R":
+                if new != old:
+                    del alias[new]
+                alias[old] = cur
+            else:
+                added_date[cur] = date_str
+                del alias[new]
+        elif len(parts) >= 2:
+            path = parts[1]
+            cur = alias.get(path)
+            if cur is None:
+                continue
+            if kind == "D":
+                del alias[path]
+                continue
+            if kind == "A":
+                added_date[cur] = date_str
+
+    _WIKI_ADDED_DATES_CACHE = added_date
+    return added_date
+
+
+def _wiki_node_action(rel: str, log_date: str, added_dates: dict[str, str]) -> str | None:
+    """Classify a log-day wiki touch as ``added`` or ``maintained``."""
+    first_day = added_dates.get(rel)
+    if not first_day:
+        return None
+    return "added" if first_day == log_date else "maintained"
 
 
 def wiki_recency_date(content: str, page: Path) -> date:
@@ -318,6 +424,7 @@ def _append_latest_node(
     seen: set[str],
     out: list[dict[str, Any]],
     log_date: str,
+    added_dates: dict[str, str] | None = None,
 ) -> None:
     if not rel.startswith("wiki/") or rel in seen or "*" in rel:
         return
@@ -328,16 +435,19 @@ def _append_latest_node(
     if not base:
         return
     seen.add(rel)
-    out.append(
-        {
-            "path": rel,
-            "detail_id": _wiki_node_detail_id(rel),
-            "label": str(base.get("label") or Path(rel).stem),
-            "type": str(base.get("type") or ""),
-            "recency": log_date,
-            "source": "log.md",
-        }
-    )
+    entry: dict[str, Any] = {
+        "path": rel,
+        "detail_id": _wiki_node_detail_id(rel),
+        "label": str(base.get("label") or Path(rel).stem),
+        "type": str(base.get("type") or ""),
+        "recency": log_date,
+        "source": "log.md",
+    }
+    if added_dates is not None:
+        action = _wiki_node_action(rel, log_date, added_dates)
+        if action:
+            entry["action"] = action
+    out.append(entry)
 
 
 def _log_sections(text: str) -> list[str]:
@@ -380,6 +490,7 @@ def latest_wiki_nodes_from_log(
         return []
     cutoff_date = target_date - timedelta(days=max(window_days - 1, 0))
     node_by_id: dict[str, dict[str, Any]] = {str(n["id"]): n for n in nodes}
+    added_dates = wiki_git_added_dates()
     seen: set[str] = set()
     out: list[dict[str, Any]] = []
 
@@ -404,6 +515,7 @@ def latest_wiki_nodes_from_log(
                     seen=seen,
                     out=out,
                     log_date=log_date,
+                    added_dates=added_dates,
                 )
         for m in WIKI_PATH_IN_LOG.finditer(chunk):
             rel = _normalize_wiki_rel_from_log_match(m.group(0))
@@ -415,6 +527,7 @@ def latest_wiki_nodes_from_log(
                         seen=seen,
                         out=out,
                         log_date=log_date,
+                        added_dates=added_dates,
                     )
                 continue
             _append_latest_node(
@@ -423,6 +536,7 @@ def latest_wiki_nodes_from_log(
                 seen=seen,
                 out=out,
                 log_date=log_date,
+                added_dates=added_dates,
             )
     return out[:max_items]
 
@@ -440,6 +554,7 @@ def wiki_activity_from_log(nodes: list[dict[str, Any]]) -> list[dict[str, Any]]:
         return []
     sections = _log_sections(LOG_MD_PATH.read_text(encoding="utf-8"))
     node_by_id: dict[str, dict[str, Any]] = {str(n["id"]): n for n in nodes}
+    added_dates = wiki_git_added_dates()
     seen_by_date: dict[str, set[str]] = {}
     metas_by_date: dict[str, list[dict[str, Any]]] = {}
 
@@ -457,18 +572,33 @@ def wiki_activity_from_log(nodes: list[dict[str, Any]]) -> list[dict[str, Any]]:
         for m in WIKI_GLOB_IN_LOG.finditer(chunk):
             for rel in _expand_wiki_glob(m.group(1)):
                 _append_latest_node(
-                    rel, node_by_id=node_by_id, seen=seen, out=day_out, log_date=log_date
+                    rel,
+                    node_by_id=node_by_id,
+                    seen=seen,
+                    out=day_out,
+                    log_date=log_date,
+                    added_dates=added_dates,
                 )
         for m in WIKI_PATH_IN_LOG.finditer(chunk):
             rel = _normalize_wiki_rel_from_log_match(m.group(0))
             if "*" in rel:
                 for expanded in _expand_wiki_glob(rel):
                     _append_latest_node(
-                        expanded, node_by_id=node_by_id, seen=seen, out=day_out, log_date=log_date
+                        expanded,
+                        node_by_id=node_by_id,
+                        seen=seen,
+                        out=day_out,
+                        log_date=log_date,
+                        added_dates=added_dates,
                     )
                 continue
             _append_latest_node(
-                rel, node_by_id=node_by_id, seen=seen, out=day_out, log_date=log_date
+                rel,
+                node_by_id=node_by_id,
+                seen=seen,
+                out=day_out,
+                log_date=log_date,
+                added_dates=added_dates,
             )
 
     days: list[dict[str, Any]] = []
@@ -476,16 +606,33 @@ def wiki_activity_from_log(nodes: list[dict[str, Any]]) -> list[dict[str, Any]]:
         metas = metas_by_date[log_date]
         if not metas:
             continue
-        days.append(
-            {
-                "date": log_date,
-                "count": len(metas),
-                "nodes": [
-                    {"detail_id": m["detail_id"], "label": m["label"], "type": m["type"]}
-                    for m in metas
-                ],
+        nodes_out: list[dict[str, Any]] = []
+        added_count = 0
+        maintained_count = 0
+        for meta in metas:
+            node_entry: dict[str, Any] = {
+                "detail_id": meta["detail_id"],
+                "label": meta["label"],
+                "type": meta["type"],
             }
-        )
+            action = meta.get("action")
+            if action:
+                node_entry["action"] = action
+                if action == "added":
+                    added_count += 1
+                else:
+                    maintained_count += 1
+            nodes_out.append(node_entry)
+        day_entry: dict[str, Any] = {
+            "date": log_date,
+            "count": len(metas),
+            "nodes": nodes_out,
+        }
+        if added_count:
+            day_entry["added_count"] = added_count
+        if maintained_count:
+            day_entry["maintained_count"] = maintained_count
+        days.append(day_entry)
     return days
 
 
