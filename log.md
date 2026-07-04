@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-04] structural | docs/topic-filters.js + docs/graph.html + wiki/overview/topic-contact-force-control.md（V27 P3）——新增「🤝 接触力控」图谱专题视图（第 17 项）
+
+- 单一事实源 `docs/topic-filters.js` 新增 `contact-force-control` 专题：干净片段并集 `impedance/admittance/wrench/force/compliance/forcecontrol`（刻意剔除过宽的 `contact`、易误命中的 `hybrid`，与 `physics-fidelity`/`tactile`/`grasp` 保持最小重叠），并用 `ids` 显式纳入四层闭环感知/操作页（`contact-wrench-closed-loop`/`contact-rich-manipulation-guide`/`contact-force-loop-bandwidth`/`contact-estimation`/`visuo-tactile-fusion`/`contact-rich-manipulation`）
+- `docs/graph.html` `#filter-topic-chips` 增加对应 chip；新建汇总枢纽页 [`wiki/overview/topic-contact-force-control.md`](wiki/overview/topic-contact-force-control.md)，从 query（`contact-wrench-closed-loop`）/concept（`contact-force-loop-bandwidth`）双向回链
+- 校验：`make lint` 0 errors（仅 1 条既有陈旧页预警，与本次无关）；重跑 `generate_link_graph` → 1575 节点 / 10853 边 / 0 orphans、枢纽页 15 条边、`largest_community_ratio` 0.196、`community_quality_warning` false；专题视图筛出 18 个节点，Puppeteer 截图归档 `.cursor-artifacts/screenshots/graph-topic-contact-force-control.png`
+- 清单勾稽：[`docs/checklists/tech-stack-next-phase-checklist-v27.md`](docs/checklists/tech-stack-next-phase-checklist-v27.md) P3「图谱页专题视图」项完成，DoD 节点/边数、社区均衡三项一并达标
+
 ## [2026-07-04] structural | scripts/generate_link_graph.py — 更新记录「新增/维护」改按 log.md ingest/structural 首次出现判定（修复 git 日期偏早与 lint glob 误展开）
 
 ## [2026-07-04] ingest | sources/blogs/wechat_human_five_diffusion_model_intro.md — human five Diffusion Model入门；wiki/concepts/diffusion-model.md；交叉更新 generative-foundations、diffusion-policy、diffusion-motion-generation
