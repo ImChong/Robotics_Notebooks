@@ -44,10 +44,7 @@ def top_communities(
         ),
         key=lambda item: (-item[1], item[0]),
     )
-    return [
-        {"label": community_short_label(label), "size": size}
-        for label, size in ranked[:limit]
-    ]
+    return [{"label": community_short_label(label), "size": size} for label, size in ranked[:limit]]
 
 
 def build_payload(
