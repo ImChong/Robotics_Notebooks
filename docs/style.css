@@ -423,6 +423,34 @@ body.sponsor-dialog-open {
   background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)), var(--bg-alt);
 }
 .section-title { font-size: 1.72rem; font-weight: 820; margin-bottom: 10px; letter-spacing: -.02em; }
+/* 首页图谱预览 2D / 3D 切换（3D 画布懒加载，容器与 SVG 同位叠放） */
+#mini-graph-3d { position: absolute; inset: 0; }
+#mini-graph-3d[hidden] { display: none; }
+.mini-graph-mode { position: absolute; top: 12px; right: 16px; display: flex; gap: 4px; z-index: 3; }
+.mini-graph-mode-btn {
+  font-size: .72rem;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-muted);
+  cursor: pointer;
+}
+.mini-graph-mode-btn.is-active {
+  color: var(--text);
+  border-color: var(--border-strong);
+  font-weight: 600;
+}
+.mini-graph-3d-hint {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .8rem;
+  color: var(--text-muted);
+  pointer-events: none;
+}
 /* 首页「最新知识节点」紧凑模式：单行记录列表（完整时间线见 change-log.html）。
    整表共用一个 grid（行内容 display:contents 提升为格子），日期/类型/标题三列跨行对齐 */
 .home-latest-list {

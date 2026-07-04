@@ -28,6 +28,7 @@
     return {
       background: dark ? '#0d1117' : '#eef2f7',
       edge: dark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.10)',
+      edge3d: dark ? '#aab6c4' : '#3c4756',
       label: dark ? 'rgba(255,255,255,0.75)' : 'rgba(0,0,0,0.70)',
       stats: dark ? 'rgba(255,255,255,0.55)' : 'rgba(0,0,0,0.62)',
       link: dark ? '#60a5fa' : '#2563eb',
@@ -181,6 +182,7 @@
       }
       if (line) line.attr('stroke', theme.edge);
       if (label) label.attr('fill', theme.label);
+      applyMode3dTheme();
     }
 
     var zoom = d3.zoom().scaleExtent([0.3,4]).on('zoom',function(ev){ g.attr('transform',ev.transform); });
@@ -284,6 +286,110 @@
         tooltipEl: tooltip,
         dismissRootEl: document.querySelector('main')
       });
+    }
+
+    // ── 2D / 3D 预览切换：3D 库（vendor/3d-force-graph.min.js，1.3MB）懒加载，
+    //    仅在首次切到 3D 时注入；实例常驻，来回切换只 pause/resume 动画 ──
+    var btn2d = document.getElementById('miniGraphMode2d');
+    var btn3d = document.getElementById('miniGraphMode3d');
+    var wrap3d = document.getElementById('mini-graph-3d');
+    var graph3d = null;
+    var loading3d = false;
+
+    function applyMode3dTheme() {
+      if (!graph3d) return;
+      var theme = miniGraphTheme();
+      graph3d.backgroundColor(theme.background);
+      graph3d.linkColor(function () { return miniGraphTheme().edge3d; });
+    }
+
+    function setModeButtons(mode) {
+      var in3d = mode === '3d';
+      if (btn2d) {
+        btn2d.classList.toggle('is-active', !in3d);
+        btn2d.setAttribute('aria-pressed', in3d ? 'false' : 'true');
+      }
+      if (btn3d) {
+        btn3d.classList.toggle('is-active', in3d);
+        btn3d.setAttribute('aria-pressed', in3d ? 'true' : 'false');
+      }
+    }
+
+    function init3d() {
+      var theme = miniGraphTheme();
+      // 独立节点/边副本：2D d3 力模拟已把 edges 的端点替换为节点对象引用，
+      // 且节点带 x/y/vx/vy 等模拟状态，直接共享会与 3D 力模拟争用
+      var nodes3d = nodes.map(function (n) {
+        return { id: n.id, label: n.label, type: n.type, community: n.community, _degree: n._degree };
+      });
+      var links3d = edges.map(function (e) {
+        return {
+          source: typeof e.source === 'object' ? e.source.id : e.source,
+          target: typeof e.target === 'object' ? e.target.id : e.target
+        };
+      });
+      graph3d = window.ForceGraph3D()(wrap3d)
+        .width(miniWrap.clientWidth || 700)
+        .height(miniWrap.clientHeight || 480)
+        .backgroundColor(theme.background)
+        .showNavInfo(false)
+        .nodeColor(function (d) { return nodeFill(d); })
+        .nodeVal(function (d) { return Math.max(1, d._degree); })
+        .nodeLabel(function (d) { return escapeHtml(d.label || d.id); })
+        .linkColor(function () { return miniGraphTheme().edge3d; })
+        .linkOpacity(0.35)
+        .onNodeClick(function (d) {
+          window.location.href = 'graph.html?focus=' + encodeURIComponent(d.id);
+        })
+        .graphData({ nodes: nodes3d, links: links3d });
+      var controls3d = graph3d.controls();
+      if (controls3d) {
+        controls3d.autoRotate = true;
+        controls3d.autoRotateSpeed = 0.9;
+      }
+    }
+
+    function show3d() {
+      hideTooltip();
+      pinnedNode = null;
+      miniSvg.style.display = 'none';
+      wrap3d.hidden = false;
+      setModeButtons('3d');
+      if (graph3d) {
+        graph3d.resumeAnimation();
+        return;
+      }
+      if (typeof window.ForceGraph3D === 'function') {
+        init3d();
+        return;
+      }
+      if (loading3d) return;
+      loading3d = true;
+      wrap3d.innerHTML = '<div class="mini-graph-3d-hint">正在加载 3D 组件…</div>';
+      var script = document.createElement('script');
+      script.src = 'vendor/3d-force-graph.min.js';
+      script.onload = function () {
+        loading3d = false;
+        wrap3d.innerHTML = '';
+        if (!wrap3d.hidden) init3d();
+      };
+      script.onerror = function () {
+        loading3d = false;
+        wrap3d.innerHTML = '<div class="mini-graph-3d-hint">3D 组件加载失败，请刷新重试</div>';
+      };
+      document.head.appendChild(script);
+    }
+
+    function show2d() {
+      wrap3d.hidden = true;
+      miniSvg.style.display = '';
+      setModeButtons('2d');
+      if (graph3d) graph3d.pauseAnimation();
+    }
+
+    if (btn2d && btn3d && wrap3d) {
+      btn3d.addEventListener('click', show3d);
+      btn2d.addEventListener('click', show2d);
     }
 
     statsEl.textContent = '预览：全站连接度 Top-' + PREVIEW_TOP_N + ' 枢纽节点';

@@ -86,6 +86,11 @@
         <h2 class="section-title">知识图谱预览</h2>
         <div id="mini-graph-wrap" style="position:relative;width:100%;height:480px;border-radius:12px;overflow:hidden;">
           <svg id="mini-graph-svg" style="width:100%;height:100%"></svg>
+          <div id="mini-graph-3d" hidden></div>
+          <div class="mini-graph-mode" role="group" aria-label="预览 2D / 3D 切换">
+            <button type="button" id="miniGraphMode2d" class="mini-graph-mode-btn is-active" aria-pressed="true">2D</button>
+            <button type="button" id="miniGraphMode3d" class="mini-graph-mode-btn" aria-pressed="false">3D</button>
+          </div>
           <div id="mini-graph-stats" style="position:absolute;bottom:12px;left:16px;font-size:.72rem;line-height:1.8;pointer-events:none"></div>
           <a href="graph.html" id="mini-graph-expand" style="position:absolute;bottom:12px;right:16px;font-size:.72rem;text-decoration:none;">打开完整图谱 →</a>
         </div>
