@@ -518,84 +518,150 @@
       return { groups: groups, totalNodes: totalNodes };
     }
 
-    var defaultBodyHtml;
-    var timelineFromActivity = buildTimelineGroupsFromActivity(activityDays);
-    if (timelineFromActivity.groups.length) {
-      var activityGroups = timelineFromActivity.groups;
-      var oldestDate = activityDays[0] && activityDays[0].date ? activityDays[0].date : '';
-      var newestDate = activityDays[activityDays.length - 1] && activityDays[activityDays.length - 1].date
-        ? activityDays[activityDays.length - 1].date
-        : '';
-      var activityIntroParts = [];
-      if (oldestDate && newestDate && oldestDate !== newestDate) {
-        activityIntroParts.push(oldestDate + ' → ' + newestDate);
-      } else if (newestDate) {
-        activityIntroParts.push(newestDate);
+    function subtractCalendarDays(dateStr, days) {
+      var parts = String(dateStr || '').split('-');
+      if (parts.length !== 3) return dateStr;
+      var d = new Date(Date.UTC(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2])));
+      d.setUTCDate(d.getUTCDate() - days);
+      return d.toISOString().slice(0, 10);
+    }
+
+    function countTimelineGroupNodes(groups) {
+      var sum = 0;
+      for (var cgi = 0; cgi < groups.length; cgi++) {
+        var g = groups[cgi];
+        sum += typeof g.totalCount === 'number' ? g.totalCount : (g.items ? g.items.length : 0);
       }
-      activityIntroParts.push('维护日志时间线');
-      activityIntroParts.push(
-        String(timelineFromActivity.totalNodes) + ' 个节点 / ' + String(activityGroups.length) + ' 天'
-      );
-      var activityIntroHtml =
-        '<p class="data-meta home-latest-wiki-intro">' + escapeHtml(activityIntroParts.join(' · ')) + '</p>';
-      var activityDaysHtml = '';
-      for (var agi = 0; agi < activityGroups.length; agi++) {
-        var activityGroup = activityGroups[agi];
-        activityDaysHtml += renderTimelineDay(
-          activityGroup.date,
-          activityGroup.items,
-          activityGroup.totalCount
+      return sum;
+    }
+
+    function filterTimelineGroupsByWindow(groups, windowDays, showAll) {
+      if (!groups.length || showAll) return groups.slice();
+      var newest = groups[0].date;
+      if (!newest) return groups.slice();
+      var cutoff = subtractCalendarDays(newest, Math.max(windowDays - 1, 0));
+      var filtered = [];
+      for (var fgi = 0; fgi < groups.length; fgi++) {
+        if (groups[fgi].date >= cutoff) filtered.push(groups[fgi]);
+      }
+      return filtered;
+    }
+
+    function buildTimelineIntro(visibleGroups, allGroups, windowDays, showAll) {
+      if (!visibleGroups.length) {
+        return '<p class="data-meta">暂无「最近更新」数据。</p>';
+      }
+      var newest = visibleGroups[0].date || '';
+      var oldestVisible = visibleGroups[visibleGroups.length - 1].date || newest;
+      var introParts = [];
+      if (oldestVisible && newest && oldestVisible !== newest) {
+        introParts.push(oldestVisible + ' → ' + newest);
+      } else if (newest) {
+        introParts.push(newest);
+      }
+      introParts.push('维护日志时间线');
+      var visibleNodes = countTimelineGroupNodes(visibleGroups);
+      if (showAll || visibleGroups.length >= allGroups.length) {
+        introParts.push(String(visibleNodes) + ' 个节点 / ' + String(allGroups.length) + ' 天');
+      } else {
+        introParts.push(
+          '显示最近 ' + String(windowDays) + ' 天 · ' +
+          String(visibleNodes) + ' 个节点 / ' + String(visibleGroups.length) + ' 天' +
+          '（共 ' + String(allGroups.length) + ' 天）'
         );
       }
-      defaultBodyHtml = activityIntroHtml + '<div class="updates-timeline-days">' + activityDaysHtml + '</div>';
-    } else if (!items.length || !items[0].detail_id) {
-      defaultBodyHtml = '<p class="data-meta">暂无「最近更新」数据。</p>';
-    } else {
-      var first = items[0];
-      var fromLog = first.source === 'log.md';
-      var dateStr = first.recency ? String(first.recency) : '';
+      return '<p class="data-meta home-latest-wiki-intro">' + escapeHtml(introParts.join(' · ')) + '</p>';
+    }
 
-      var groups = [];
-      var groupIndex = {};
+    function renderTimelineActions(visibleGroups, allGroups, showAll) {
+      if (!allGroups.length || showAll || visibleGroups.length >= allGroups.length) return '';
+      return (
+        '<div class="updates-timeline-actions" role="group" aria-label="展开更多更新记录">' +
+        '<button type="button" class="btn-secondary updates-timeline-more-days">再展开 30 天</button>' +
+        '<button type="button" class="btn-secondary updates-timeline-show-all">展开全部记录</button>' +
+        '</div>'
+      );
+    }
+
+    function renderTimelineBody(allGroups, windowDays, showAll) {
+      if (!allGroups.length) {
+        return '<p class="data-meta">暂无「最近更新」数据。</p>';
+      }
+      var visibleGroups = filterTimelineGroupsByWindow(allGroups, windowDays, showAll);
+      var introHtml = buildTimelineIntro(visibleGroups, allGroups, windowDays, showAll);
+      var daysHtml = '';
+      for (var tgi = 0; tgi < visibleGroups.length; tgi++) {
+        var tg = visibleGroups[tgi];
+        daysHtml += renderTimelineDay(tg.date, tg.items, tg.totalCount);
+      }
+      var actionsHtml = renderTimelineActions(visibleGroups, allGroups, showAll);
+      return introHtml + '<div class="updates-timeline-days">' + daysHtml + '</div>' + actionsHtml;
+    }
+
+    var TIMELINE_WINDOW_DAYS = 30;
+    var TIMELINE_WINDOW_STEP = 30;
+    var timelineFromActivity = buildTimelineGroupsFromActivity(activityDays);
+    var allTimelineGroups = [];
+    if (timelineFromActivity.groups.length) {
+      allTimelineGroups = timelineFromActivity.groups;
+    } else if (items.length && items[0].detail_id) {
+      var fallbackGroups = [];
+      var fallbackIndex = {};
       items.forEach(function (meta) {
         var dateKey = meta && meta.recency ? String(meta.recency) : '';
-        if (!(dateKey in groupIndex)) {
-          groupIndex[dateKey] = groups.length;
-          groups.push({ date: dateKey, items: [] });
+        if (!(dateKey in fallbackIndex)) {
+          fallbackIndex[dateKey] = fallbackGroups.length;
+          fallbackGroups.push({ date: dateKey, items: [], totalCount: 0 });
         }
-        groups[groupIndex[dateKey]].items.push(meta);
+        fallbackGroups[fallbackIndex[dateKey]].items.push(meta);
+        fallbackGroups[fallbackIndex[dateKey]].totalCount = fallbackGroups[fallbackIndex[dateKey]].items.length;
       });
-
-      var introParts = [];
-      if (fromLog && groups.length > 1) {
-        var lastDate = groups[groups.length - 1].date || dateStr;
-        var dateRange = lastDate && dateStr && lastDate !== dateStr ? (lastDate + ' → ' + dateStr) : dateStr;
-        if (dateRange) introParts.push(dateRange);
-        introParts.push('维护日志时间线');
-        introParts.push(String(items.length) + ' 个节点 / ' + String(groups.length) + ' 天');
-      } else {
-        if (dateStr) introParts.push(dateStr);
-        if (fromLog) {
-          introParts.push('维护日志');
-          if (items.length > 1) introParts.push(String(items.length) + ' 个节点');
-        } else {
-          introParts.push('按页面更新时间');
-        }
-      }
-      var introHtml =
-        '<p class="data-meta home-latest-wiki-intro">' + escapeHtml(introParts.join(' · ')) + '</p>';
-
-      var daysHtml = '';
-      for (var gi = 0; gi < groups.length; gi++) {
-        daysHtml += renderTimelineDay(groups[gi].date, groups[gi].items);
-      }
-      defaultBodyHtml = introHtml + '<div class="updates-timeline-days">' + daysHtml + '</div>';
+      allTimelineGroups = fallbackGroups;
     }
+
+    var currentWindowDays = TIMELINE_WINDOW_DAYS;
+    var timelineShowAll = false;
+    var defaultBodyHtml = renderTimelineBody(allTimelineGroups, currentWindowDays, timelineShowAll);
     var heatmapHtml = activityDays.length ? buildHomeWikiHeatmapHtml(activityDays) : '';
     mount.innerHTML = heatmapHtml + '<div class="home-latest-wiki-body">' + defaultBodyHtml + '</div>';
-    if (!heatmapHtml) return;
 
     var bodyMount = mount.querySelector('.home-latest-wiki-body');
+    var activeDate = '';
+    var clearHeatmapFilter = null;
+
+    function refreshTimelineBody() {
+      if (activeDate) return;
+      defaultBodyHtml = renderTimelineBody(allTimelineGroups, currentWindowDays, timelineShowAll);
+      bodyMount.innerHTML = defaultBodyHtml;
+    }
+
+    bodyMount.addEventListener('click', function (ev) {
+      if (ev.target.closest('.home-wiki-heatmap-clear')) {
+        if (clearHeatmapFilter) clearHeatmapFilter();
+        return;
+      }
+      var moreDaysBtn = ev.target.closest('button.updates-timeline-more-days');
+      if (moreDaysBtn) {
+        if (!timelineShowAll) currentWindowDays += TIMELINE_WINDOW_STEP;
+        refreshTimelineBody();
+        return;
+      }
+      var showAllBtn = ev.target.closest('button.updates-timeline-show-all');
+      if (showAllBtn) {
+        timelineShowAll = true;
+        refreshTimelineBody();
+        return;
+      }
+      var moreBtn = ev.target.closest('button.updates-day-more');
+      if (moreBtn) {
+        var daySection = moreBtn.closest('.updates-day');
+        if (daySection) daySection.classList.remove('is-folded');
+        moreBtn.parentNode.removeChild(moreBtn);
+      }
+    });
+
+    if (!heatmapHtml) return;
+
     var grid = mount.querySelector('.home-wiki-heatmap-grid');
     var scrollWrap = mount.querySelector('.home-wiki-heatmap-scroll');
     if (scrollWrap) scrollWrap.scrollLeft = scrollWrap.scrollWidth; // 默认停在最新日期
@@ -609,8 +675,6 @@
       totalByDate[dayEntry.date] = typeof dayEntry.count === 'number' ? dayEntry.count : 0;
     }
 
-    var activeDate = '';
-
     function setActiveCell(dateKey) {
       var cells = grid.querySelectorAll('button.home-wiki-heatmap-cell');
       for (var ci2 = 0; ci2 < cells.length; ci2++) {
@@ -620,11 +684,12 @@
       }
     }
 
-    function clearHeatmapFilter() {
+    function clearHeatmapFilterImpl() {
       activeDate = '';
       setActiveCell('');
       bodyMount.innerHTML = defaultBodyHtml;
     }
+    clearHeatmapFilter = clearHeatmapFilterImpl;
 
     function applyHeatmapFilter(dateKey) {
       var dayNodes = nodesByDate[dateKey] || [];
@@ -645,21 +710,9 @@
       var dateKey = cell.getAttribute('data-date') || '';
       if (!dateKey) return;
       if (dateKey === activeDate) {
-        clearHeatmapFilter();
+        clearHeatmapFilterImpl();
       } else {
         applyHeatmapFilter(dateKey);
-      }
-    });
-    bodyMount.addEventListener('click', function (ev) {
-      if (ev.target.closest('.home-wiki-heatmap-clear')) {
-        clearHeatmapFilter();
-        return;
-      }
-      var moreBtn = ev.target.closest('button.updates-day-more');
-      if (moreBtn) {
-        var daySection = moreBtn.closest('.updates-day');
-        if (daySection) daySection.classList.remove('is-folded');
-        moreBtn.parentNode.removeChild(moreBtn);
       }
     });
   }
