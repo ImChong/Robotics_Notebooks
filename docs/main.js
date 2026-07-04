@@ -423,6 +423,24 @@
       items = [homeStats.latest_wiki_node];
     }
 
+    function renderActionBadge(action) {
+      if (action === 'added') {
+        return '<span class="updates-badge updates-badge-added">新增</span>';
+      }
+      if (action === 'maintained') {
+        return '<span class="updates-badge">维护</span>';
+      }
+      return '';
+    }
+
+    function renderActionBadgeCell(action, cellClass) {
+      var badge = renderActionBadge(action);
+      if (badge) {
+        return '<span class="' + cellClass + '">' + badge + '</span>';
+      }
+      return '<span class="' + cellClass + ' updates-badge-cell--empty" aria-hidden="true"></span>';
+    }
+
     // 首页紧凑模式（mount 带 data-compact）：只列最近 5 条单行记录；
     // 完整时间线与活跃度热力图迁至 change-log.html
     if (mount.hasAttribute('data-compact')) {
@@ -435,17 +453,11 @@
       for (var cri = 0; cri < maxRows; cri++) {
         var rowMeta = items[cri];
         var rowType = WIKI_TYPE_LABEL_HOME[rowMeta.type] || (rowMeta.type ? String(rowMeta.type) : 'Wiki');
-        var rowBadge = '';
-        if (rowMeta.action === 'added') {
-          rowBadge = '<span class="updates-badge updates-badge-added">新增</span>';
-        } else if (rowMeta.action === 'maintained') {
-          rowBadge = '<span class="updates-badge">维护</span>';
-        }
         compactRows +=
           '<li class="home-latest-row"><span class="home-latest-row-date">' +
           escapeHtml(rowMeta.recency ? String(rowMeta.recency) : '') +
           '</span>' +
-          (rowBadge ? '<span class="home-latest-row-badge">' + rowBadge + '</span>' : '') +
+          renderActionBadgeCell(rowMeta.action, 'home-latest-row-badge') +
           '<span class="home-latest-row-type">' +
           escapeHtml(rowType) +
           '</span><a href="' +
@@ -464,16 +476,6 @@
     var TIMELINE_FOLD_LIMIT = 14; // 超过则折叠
     var TIMELINE_FOLD_SHOW = 12;  // 折叠时先显示的条数
     var activityDays = wikiActivity && Array.isArray(wikiActivity.days) ? wikiActivity.days : [];
-
-    function renderActionBadge(action) {
-      if (action === 'added') {
-        return '<span class="updates-badge updates-badge-added">新增</span>';
-      }
-      if (action === 'maintained') {
-        return '<span class="updates-badge">维护</span>';
-      }
-      return '';
-    }
 
     function countActionStats(metas) {
       var added = 0;
@@ -498,10 +500,9 @@
 
     function renderTimelineItem(meta, folded) {
       var typeLabel = WIKI_TYPE_LABEL_HOME[meta.type] || (meta.type ? String(meta.type) : 'Wiki');
-      var badgeHtml = renderActionBadge(meta.action);
       return (
         '<li class="updates-item' + (folded ? ' updates-item-folded' : '') + '">' +
-        (badgeHtml || '<span class="updates-item-badge-spacer" aria-hidden="true"></span>') +
+        renderActionBadgeCell(meta.action, 'updates-badge-cell') +
         '<span class="updates-item-type">' + escapeHtml(typeLabel) + '</span>' +
         '<a class="updates-item-link" href="' + escapeHtml(detailHref(meta.detail_id)) + '">' +
         escapeHtml(meta.label || meta.detail_id) +
