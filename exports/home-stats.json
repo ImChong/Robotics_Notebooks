@@ -14,7 +14,8 @@
       "label": "Diffusion Model（扩散模型）",
       "type": "concept",
       "recency": "2026-07-04",
-      "source": "log.md"
+      "source": "log.md",
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-heft.md",
@@ -194,7 +195,8 @@
     "label": "Diffusion Model（扩散模型）",
     "type": "concept",
     "recency": "2026-07-04",
-    "source": "log.md"
+    "source": "log.md",
+    "action": "added"
   },
   "top_communities": [
     {
