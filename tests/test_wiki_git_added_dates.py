@@ -43,9 +43,7 @@ class WikiGitAddedDatesTest(unittest.TestCase):
             glg._wiki_node_action("wiki/tasks/locomotion.md", "2026-05-28", added),
             "maintained",
         )
-        self.assertIsNone(
-            glg._wiki_node_action("wiki/tasks/unknown.md", "2026-05-28", added)
-        )
+        self.assertIsNone(glg._wiki_node_action("wiki/tasks/unknown.md", "2026-05-28", added))
 
 
 if __name__ == "__main__":  # pragma: no cover

@@ -106,8 +106,9 @@ class WikiActivityFromLogTest(unittest.TestCase):
             ]
         )
         fake_added = {rel: "2026-05-28", self.existing_paths[1]: "2026-05-01"}
-        with self._patched_log(), mock.patch.object(
-            glg, "wiki_git_added_dates", return_value=fake_added
+        with (
+            self._patched_log(),
+            mock.patch.object(glg, "wiki_git_added_dates", return_value=fake_added),
         ):
             out = glg.wiki_activity_from_log(self.nodes)
         by_date = {d["date"]: d for d in out}

@@ -351,9 +351,7 @@ def wiki_git_added_dates(*, force_refresh: bool = False) -> dict[str, str]:
     return added_date
 
 
-def _wiki_node_action(
-    rel: str, log_date: str, added_dates: dict[str, str]
-) -> str | None:
+def _wiki_node_action(rel: str, log_date: str, added_dates: dict[str, str]) -> str | None:
     """Classify a log-day wiki touch as ``added`` or ``maintained``."""
     first_day = added_dates.get(rel)
     if not first_day:
@@ -611,20 +609,20 @@ def wiki_activity_from_log(nodes: list[dict[str, Any]]) -> list[dict[str, Any]]:
         nodes_out: list[dict[str, Any]] = []
         added_count = 0
         maintained_count = 0
-        for m in metas:
-            node: dict[str, Any] = {
-                "detail_id": m["detail_id"],
-                "label": m["label"],
-                "type": m["type"],
+        for meta in metas:
+            node_entry: dict[str, Any] = {
+                "detail_id": meta["detail_id"],
+                "label": meta["label"],
+                "type": meta["type"],
             }
-            action = m.get("action")
+            action = meta.get("action")
             if action:
-                node["action"] = action
+                node_entry["action"] = action
                 if action == "added":
                     added_count += 1
                 else:
                     maintained_count += 1
-            nodes_out.append(node)
+            nodes_out.append(node_entry)
         day_entry: dict[str, Any] = {
             "date": log_date,
             "count": len(metas),
