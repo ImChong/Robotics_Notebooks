@@ -13,6 +13,42 @@ REPO_ROOT = Path(__file__).parent.parent
 GRAPH_STATS_PATH = REPO_ROOT / "exports" / "graph-stats.json"
 OUT_PATH = REPO_ROOT / "exports" / "home-stats.json"
 
+# 首页热门主题 chips：取图谱社区规模 Top-N（排除“其他”兜底社区）
+OTHER_COMMUNITY_LABEL = "其他（Other） 社区"
+COMMUNITY_LABEL_SUFFIX = " 社区"
+TOP_COMMUNITIES_LIMIT = 6
+
+
+def community_short_label(full_label: str) -> str:
+    """「中文（English） 社区」→「中文」；不合模式时返回去掉后缀的原文。"""
+    base = str(full_label)
+    if base.endswith(COMMUNITY_LABEL_SUFFIX):
+        base = base[: -len(COMMUNITY_LABEL_SUFFIX)]
+    head = base.split("（", 1)[0].strip()
+    return head or base
+
+
+def top_communities(
+    graph_stats: dict[str, Any],
+    limit: int = TOP_COMMUNITIES_LIMIT,
+) -> list[dict[str, Any]]:
+    """从 community_distribution（label→size）取规模 Top-N，供首页热门主题 chips 消费。"""
+    dist = graph_stats.get("community_distribution")
+    if not isinstance(dist, dict):
+        return []
+    ranked = sorted(
+        (
+            (str(label), int(size))
+            for label, size in dist.items()
+            if str(label) != OTHER_COMMUNITY_LABEL
+        ),
+        key=lambda item: (-item[1], item[0]),
+    )
+    return [
+        {"label": community_short_label(label), "size": size}
+        for label, size in ranked[:limit]
+    ]
+
 
 def build_payload(
     graph_stats: dict[str, Any],
@@ -34,6 +70,9 @@ def build_payload(
         payload["latest_wiki_nodes"] = latest_nodes
     if latest:
         payload["latest_wiki_node"] = latest
+    communities = top_communities(graph_stats)
+    if communities:
+        payload["top_communities"] = communities
     return payload
 
 

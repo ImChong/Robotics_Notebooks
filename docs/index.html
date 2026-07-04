@@ -67,13 +67,15 @@
             <option value="">全部社区</option>
           </select>
         </div>
-        <div class="tag-cloud" aria-label="热门搜索">
+        <!-- 热门主题：main.js 用 home-stats.json 的 top_communities 覆盖为实时 Top 社区；
+             以下静态 chips 仅为 JS/数据失败时的兜底快照 -->
+        <div id="wikiHotTopics" class="tag-cloud" aria-label="热门主题">
+          <button class="tag-chip" data-wiki-tag="移动操作">移动操作</button>
+          <button class="tag-chip" data-wiki-tag="人形论文深读笔记">人形论文深读笔记</button>
           <button class="tag-chip" data-wiki-tag="强化学习">强化学习</button>
-          <button class="tag-chip" data-wiki-tag="运动控制">运动控制</button>
-          <button class="tag-chip" data-wiki-tag="模仿学习">模仿学习</button>
-          <button class="tag-chip" data-wiki-tag="人形机器人">人形机器人</button>
-          <button class="tag-chip" data-wiki-tag="Sim2Real">Sim2Real</button>
-          <button class="tag-chip" data-wiki-tag="MPC">MPC</button>
+          <button class="tag-chip" data-wiki-tag="全身控制">全身控制</button>
+          <button class="tag-chip" data-wiki-tag="物理引擎">物理引擎</button>
+          <button class="tag-chip" data-wiki-tag="动作重定向">动作重定向</button>
         </div>
         <div id="wikiSearchResults" class="card-grid" aria-live="polite"></div>
       </div>

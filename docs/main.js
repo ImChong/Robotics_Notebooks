@@ -253,6 +253,25 @@
     return 'detail.html?id=' + encodeURIComponent(id);
   }
 
+  // 首页热门主题 chips：数据来自 home-stats.json 的 top_communities（图谱社区规模 Top-N，
+  // 随 make graph 演化）；数据缺席时保留 index.html 内的静态兜底 chips 不动
+  function renderHotTopics(homeStats) {
+    var mount = document.getElementById('wikiHotTopics');
+    if (!mount) return;
+    var list = homeStats && Array.isArray(homeStats.top_communities) ? homeStats.top_communities : [];
+    var html = '';
+    for (var i = 0; i < list.length && i < 6; i++) {
+      var item = list[i];
+      if (!item || !item.label) continue;
+      var label = String(item.label);
+      var tip = typeof item.size === 'number' ? label + ' 社区 · ' + item.size + ' 个节点' : label;
+      html +=
+        '<button class="tag-chip" data-wiki-tag="' + escapeHtml(label) +
+        '" title="' + escapeHtml(tip) + '">' + escapeHtml(label) + '</button>';
+    }
+    if (html) mount.innerHTML = html;
+  }
+
   var WIKI_TYPE_LABEL_HOME = {
     concept: '概念',
     method: '方法',
@@ -4516,6 +4535,7 @@
       .then(function (results) {
         var stats = results[0];
         renderHomeStats(stats);
+        renderHotTopics(stats);
         renderLatestWikiNode(stats, results[1]);
       })
       .catch(function (error) {
