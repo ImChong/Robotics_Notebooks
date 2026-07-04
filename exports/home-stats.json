@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-03",
+  "generated_at": "2026-07-04",
   "node_count": 1572,
   "edge_count": 10817,
   "coverage": {
@@ -176,5 +176,31 @@
     "type": "overview",
     "recency": "2026-07-03",
     "source": "log.md"
-  }
+  },
+  "top_communities": [
+    {
+      "label": "移动操作",
+      "size": 314
+    },
+    {
+      "label": "人形论文深读笔记",
+      "size": 215
+    },
+    {
+      "label": "强化学习",
+      "size": 172
+    },
+    {
+      "label": "全身控制",
+      "size": 102
+    },
+    {
+      "label": "物理引擎",
+      "size": 79
+    },
+    {
+      "label": "动作重定向",
+      "size": 70
+    }
+  ]
 }
