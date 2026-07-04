@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-07-04",
-  "node_count": 1572,
-  "edge_count": 10817,
+  "node_count": 1573,
+  "edge_count": 10829,
   "coverage": {
-    "covered": 1541,
-    "total": 1570,
+    "covered": 1542,
+    "total": 1571,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-heft.md",
+      "detail_id": "entity-paper-heft",
+      "label": "HEFT",
+      "type": "entity",
+      "recency": "2026-07-04",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/axellwppr-motion-tracking.md",
+      "detail_id": "entity-axellwppr-motion-tracking",
+      "label": "Axellwppr / motion_tracking",
+      "type": "entity",
+      "recency": "2026-07-04",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/teleoperation.md",
+      "detail_id": "wiki-tasks-teleoperation",
+      "label": "Teleoperation（遥操作）",
+      "type": "task",
+      "recency": "2026-07-04",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-twist2.md",
+      "detail_id": "entity-paper-twist2",
+      "label": "TWIST2",
+      "type": "entity",
+      "recency": "2026-07-04",
+      "source": "log.md"
+    },
     {
       "path": "wiki/overview/jason-peng-flexible-motion-skill-learning.md",
       "detail_id": "wiki-overview-jason-peng-flexible-motion-skill-learning",
@@ -113,14 +145,6 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/tasks/teleoperation.md",
-      "detail_id": "wiki-tasks-teleoperation",
-      "label": "Teleoperation（遥操作）",
-      "type": "task",
-      "recency": "2026-07-03",
-      "source": "log.md"
-    },
-    {
       "path": "wiki/entities/freecad.md",
       "detail_id": "entity-freecad",
       "label": "FreeCAD（开源参数化机械 CAD）",
@@ -143,52 +167,28 @@
       "type": "overview",
       "recency": "2026-07-03",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/loco-manip-contact-category-01-contact-data.md",
-      "detail_id": "wiki-overview-loco-manip-contact-category-01-contact-data",
-      "label": "Loco-Manip 接触分类 01：接触数据从哪来",
-      "type": "overview",
-      "recency": "2026-07-03",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/loco-manip-contact-category-05-vla-world-models.md",
-      "detail_id": "wiki-overview-loco-manip-contact-category-05-vla-world-models",
-      "label": "Loco-Manip 接触分类 05：VLA 与世界模型调用",
-      "type": "overview",
-      "recency": "2026-07-03",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/loco-manipulation.md",
-      "detail_id": "wiki-tasks-loco-manipulation",
-      "label": "Loco-Manipulation (移动操作)",
-      "type": "task",
-      "recency": "2026-07-03",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/jason-peng-flexible-motion-skill-learning.md",
-    "detail_id": "wiki-overview-jason-peng-flexible-motion-skill-learning",
-    "label": "Jason Peng：更灵活的运动技能学习",
-    "type": "overview",
-    "recency": "2026-07-03",
+    "path": "wiki/entities/paper-heft.md",
+    "detail_id": "entity-paper-heft",
+    "label": "HEFT",
+    "type": "entity",
+    "recency": "2026-07-04",
     "source": "log.md"
   },
   "top_communities": [
     {
       "label": "移动操作",
-      "size": 314
+      "size": 308
     },
     {
       "label": "人形论文深读笔记",
       "size": 215
     },
     {
-      "label": "强化学习",
-      "size": 172
+      "label": "视觉-语言-动作",
+      "size": 181
     },
     {
       "label": "全身控制",
@@ -200,7 +200,7 @@
     },
     {
       "label": "动作重定向",
-      "size": 70
+      "size": 73
     }
   ]
 }

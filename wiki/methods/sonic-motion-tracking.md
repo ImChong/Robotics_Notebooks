@@ -3,7 +3,7 @@ type: method
 tags: [humanoid, imitation-learning, motion-tracking, foundation-model, nvidia, vla, teleoperation]
 status: complete
 date: 2026-05-14
-updated: 2026-07-03
+updated: 2026-07-04
 related:
   - ../entities/paper-scenebot.md
   - ../entities/paper-motionwam-humanoid-loco-manipulation-wam.md
