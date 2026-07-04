@@ -96,19 +96,18 @@ class WikiActivityFromLogTest(unittest.TestCase):
         node = out[0]["nodes"][0]
         self.assertEqual(set(node), {"detail_id", "label", "type"})
 
-    def test_nodes_capped_per_day_but_count_stays_real(self) -> None:
-        cap = glg.ACTIVITY_NODES_PER_DAY_CAP
+    def test_nodes_export_all_entries_and_count_matches(self) -> None:
         many = sorted(
             str(p.relative_to(glg.REPO_ROOT)).replace("\\", "/") for p in glg.WIKI_DIR.rglob("*.md")
-        )[: cap + 5]
-        if len(many) <= cap:
-            self.skipTest("仓库 wiki 页面数不足以覆盖单日上限")
+        )[:35]
+        if len(many) < 10:
+            self.skipTest("仓库 wiki 页面数不足以覆盖多日节点导出")
         nodes = [_node(rel) for rel in many]
         self._write_log([("2026-05-28", many)])
         with self._patched_log():
             out = glg.wiki_activity_from_log(nodes)
         self.assertEqual(out[0]["count"], len(many))
-        self.assertEqual(len(out[0]["nodes"]), cap)
+        self.assertEqual(len(out[0]["nodes"]), len(many))
 
     def test_unknown_paths_and_empty_days_are_dropped(self) -> None:
         self._write_log(

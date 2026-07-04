@@ -455,6 +455,7 @@
     // 时间线条目 / 单日区块（参考论文笔记站 updates.html：左轨道 + 日期圆点 + 条目行 + 超量折叠）
     var TIMELINE_FOLD_LIMIT = 14; // 超过则折叠
     var TIMELINE_FOLD_SHOW = 12;  // 折叠时先显示的条数
+    var activityDays = wikiActivity && Array.isArray(wikiActivity.days) ? wikiActivity.days : [];
 
     function renderTimelineItem(meta, folded) {
       var typeLabel = WIKI_TYPE_LABEL_HOME[meta.type] || (meta.type ? String(meta.type) : 'Wiki');
@@ -489,8 +490,65 @@
       );
     }
 
+    function buildTimelineGroupsFromActivity(days) {
+      var groups = [];
+      var totalNodes = 0;
+      for (var ai = days.length - 1; ai >= 0; ai--) {
+        var dayEntry = days[ai];
+        if (!dayEntry || !dayEntry.date) continue;
+        var dayNodes = Array.isArray(dayEntry.nodes) ? dayEntry.nodes : [];
+        if (!dayNodes.length) continue;
+        var metas = [];
+        for (var ni = 0; ni < dayNodes.length; ni++) {
+          var nodeMeta = dayNodes[ni];
+          if (!nodeMeta || !nodeMeta.detail_id) continue;
+          metas.push({
+            detail_id: nodeMeta.detail_id,
+            label: nodeMeta.label || nodeMeta.detail_id,
+            type: nodeMeta.type || '',
+            recency: dayEntry.date,
+            source: 'log.md'
+          });
+        }
+        if (!metas.length) continue;
+        var dayCount = typeof dayEntry.count === 'number' ? dayEntry.count : metas.length;
+        totalNodes += dayCount;
+        groups.push({ date: dayEntry.date, items: metas, totalCount: dayCount });
+      }
+      return { groups: groups, totalNodes: totalNodes };
+    }
+
     var defaultBodyHtml;
-    if (!items.length || !items[0].detail_id) {
+    var timelineFromActivity = buildTimelineGroupsFromActivity(activityDays);
+    if (timelineFromActivity.groups.length) {
+      var activityGroups = timelineFromActivity.groups;
+      var oldestDate = activityDays[0] && activityDays[0].date ? activityDays[0].date : '';
+      var newestDate = activityDays[activityDays.length - 1] && activityDays[activityDays.length - 1].date
+        ? activityDays[activityDays.length - 1].date
+        : '';
+      var activityIntroParts = [];
+      if (oldestDate && newestDate && oldestDate !== newestDate) {
+        activityIntroParts.push(oldestDate + ' → ' + newestDate);
+      } else if (newestDate) {
+        activityIntroParts.push(newestDate);
+      }
+      activityIntroParts.push('维护日志时间线');
+      activityIntroParts.push(
+        String(timelineFromActivity.totalNodes) + ' 个节点 / ' + String(activityGroups.length) + ' 天'
+      );
+      var activityIntroHtml =
+        '<p class="data-meta home-latest-wiki-intro">' + escapeHtml(activityIntroParts.join(' · ')) + '</p>';
+      var activityDaysHtml = '';
+      for (var agi = 0; agi < activityGroups.length; agi++) {
+        var activityGroup = activityGroups[agi];
+        activityDaysHtml += renderTimelineDay(
+          activityGroup.date,
+          activityGroup.items,
+          activityGroup.totalCount
+        );
+      }
+      defaultBodyHtml = activityIntroHtml + '<div class="updates-timeline-days">' + activityDaysHtml + '</div>';
+    } else if (!items.length || !items[0].detail_id) {
       defaultBodyHtml = '<p class="data-meta">暂无「最近更新」数据。</p>';
     } else {
       var first = items[0];
@@ -533,8 +591,6 @@
       }
       defaultBodyHtml = introHtml + '<div class="updates-timeline-days">' + daysHtml + '</div>';
     }
-
-    var activityDays = wikiActivity && Array.isArray(wikiActivity.days) ? wikiActivity.days : [];
     var heatmapHtml = activityDays.length ? buildHomeWikiHeatmapHtml(activityDays) : '';
     mount.innerHTML = heatmapHtml + '<div class="home-latest-wiki-body">' + defaultBodyHtml + '</div>';
     if (!heatmapHtml) return;
