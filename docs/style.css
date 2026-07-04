@@ -465,14 +465,12 @@ body.sponsor-dialog-open {
 }
 .home-latest-row { display: contents; }
 .home-latest-row-date, .home-latest-row-type { color: var(--text-muted); font-size: .85rem; white-space: nowrap; }
-.home-latest-row > a { min-width: 0; }
+.home-latest-row > a { min-width: 0; overflow-wrap: anywhere; }
 .home-latest-more { margin-top: 18px; font-size: .9rem; }
 @media (max-width: 860px) {
-  /* 窄屏：三列并排会挤压标题，退化为「日期 · 类型」一行 + 标题一行 */
-  .home-latest-list, .home-latest-row { display: block; }
-  .home-latest-row + .home-latest-row { margin-top: 14px; }
-  .home-latest-row-type::before { content: ' · '; }
-  .home-latest-row > a { display: block; margin-top: 2px; }
+  /* 窄屏：保持三列 grid 跨行对齐，仅收紧间距与字号 */
+  .home-latest-list { column-gap: 10px; row-gap: 8px; }
+  .home-latest-row-date, .home-latest-row-type { font-size: .78rem; }
 }
 .home-latest-wiki-intro { margin-bottom: 20px; }
 /* change-log 更新时间线（参考论文笔记站 updates.html：左轨道 + 日期圆点 + 条目行 + 超量折叠） */
