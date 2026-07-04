@@ -14,7 +14,8 @@
       "label": "HEFT",
       "type": "entity",
       "recency": "2026-07-04",
-      "source": "log.md"
+      "source": "log.md",
+      "action": "added"
     },
     {
       "path": "wiki/entities/axellwppr-motion-tracking.md",
@@ -22,7 +23,8 @@
       "label": "Axellwppr / motion_tracking",
       "type": "entity",
       "recency": "2026-07-04",
-      "source": "log.md"
+      "source": "log.md",
+      "action": "maintained"
     },
     {
       "path": "wiki/tasks/teleoperation.md",
@@ -30,7 +32,8 @@
       "label": "Teleoperation（遥操作）",
       "type": "task",
       "recency": "2026-07-04",
-      "source": "log.md"
+      "source": "log.md",
+      "action": "maintained"
     },
     {
       "path": "wiki/entities/paper-twist2.md",
@@ -38,7 +41,8 @@
       "label": "TWIST2",
       "type": "entity",
       "recency": "2026-07-04",
-      "source": "log.md"
+      "source": "log.md",
+      "action": "maintained"
     },
     {
       "path": "wiki/overview/jason-peng-flexible-motion-skill-learning.md",
@@ -46,7 +50,8 @@
       "label": "Jason Peng：更灵活的运动技能学习",
       "type": "overview",
       "recency": "2026-07-03",
-      "source": "log.md"
+      "source": "log.md",
+      "action": "added"
     },
     {
       "path": "wiki/entities/xue-bin-peng.md",
@@ -54,7 +59,8 @@
       "label": "Xue Bin Peng（彭学斌）",
       "type": "entity",
       "recency": "2026-07-03",
-      "source": "log.md"
+      "source": "log.md",
+      "action": "maintained"
     },
     {
       "path": "wiki/methods/deepmimic.md",
@@ -62,7 +68,8 @@
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
       "recency": "2026-07-03",
-      "source": "log.md"
+      "source": "log.md",
+      "action": "maintained"
     },
     {
       "path": "wiki/methods/amp-reward.md",
@@ -70,7 +77,8 @@
       "label": "AMP & HumanX: 判别器驱动的风格学习",
       "type": "method",
       "recency": "2026-07-03",
-      "source": "log.md"
+      "source": "log.md",
+      "action": "maintained"
     },
     {
       "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
@@ -78,7 +86,8 @@
       "label": "人形机器人 RL 运动控制：身体系统栈视角",
       "type": "overview",
       "recency": "2026-07-03",
-      "source": "log.md"
+      "source": "log.md",
+      "action": "maintained"
     },
     {
       "path": "wiki/entities/paper-notebook-parc-physics-based-augmentation-with-reinforceme.md",
@@ -86,7 +95,8 @@
       "label": "PARC",
       "type": "entity",
       "recency": "2026-07-03",
-      "source": "log.md"
+      "source": "log.md",
+      "action": "maintained"
     },
     {
       "path": "wiki/entities/ponytail.md",
@@ -94,7 +104,8 @@
       "label": "Ponytail",
       "type": "entity",
       "recency": "2026-07-03",
-      "source": "log.md"
+      "source": "log.md",
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-simfoundry-real2sim-scene-generation.md",
@@ -102,7 +113,8 @@
       "label": "SimFoundry（Modular Real2Sim Scene Generation for Policy Learning and Evaluation）",
       "type": "entity",
       "recency": "2026-07-03",
-      "source": "log.md"
+      "source": "log.md",
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-mint-vla.md",
@@ -110,7 +122,8 @@
       "label": "MINT（Mimic Intent, Not Just Trajectories）",
       "type": "entity",
       "recency": "2026-07-03",
-      "source": "log.md"
+      "source": "log.md",
+      "action": "added"
     },
     {
       "path": "wiki/methods/vla.md",
@@ -118,7 +131,8 @@
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
       "recency": "2026-07-03",
-      "source": "log.md"
+      "source": "log.md",
+      "action": "maintained"
     },
     {
       "path": "wiki/formalizations/vla-tokenization.md",
@@ -126,7 +140,8 @@
       "label": "Action Tokenization (动作分词)",
       "type": "formalization",
       "recency": "2026-07-03",
-      "source": "log.md"
+      "source": "log.md",
+      "action": "maintained"
     },
     {
       "path": "wiki/concepts/humanoid-parallel-joint-kinematics.md",
@@ -134,7 +149,8 @@
       "label": "人形机器人并联关节解算（Parallel / Closed-Chain Joint Kinematics）",
       "type": "concept",
       "recency": "2026-07-03",
-      "source": "log.md"
+      "source": "log.md",
+      "action": "maintained"
     },
     {
       "path": "wiki/entities/paper-telegate.md",
@@ -142,7 +158,8 @@
       "label": "TeleGate",
       "type": "entity",
       "recency": "2026-07-03",
-      "source": "log.md"
+      "source": "log.md",
+      "action": "added"
     },
     {
       "path": "wiki/entities/freecad.md",
@@ -150,7 +167,8 @@
       "label": "FreeCAD（开源参数化机械 CAD）",
       "type": "entity",
       "recency": "2026-07-03",
-      "source": "log.md"
+      "source": "log.md",
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-human-as-humanoid.md",
@@ -158,7 +176,8 @@
       "label": "Human-as-Humanoid",
       "type": "entity",
       "recency": "2026-07-03",
-      "source": "log.md"
+      "source": "log.md",
+      "action": "added"
     },
     {
       "path": "wiki/overview/loco-manip-contact-technology-map.md",
@@ -166,7 +185,8 @@
       "label": "Loco-Manip 接触横切面：五段链路技术地图",
       "type": "overview",
       "recency": "2026-07-03",
-      "source": "log.md"
+      "source": "log.md",
+      "action": "added"
     }
   ],
   "latest_wiki_node": {
@@ -175,7 +195,8 @@
     "label": "HEFT",
     "type": "entity",
     "recency": "2026-07-04",
-    "source": "log.md"
+    "source": "log.md",
+    "action": "added"
   },
   "top_communities": [
     {

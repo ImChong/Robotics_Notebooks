@@ -94,7 +94,27 @@ class WikiActivityFromLogTest(unittest.TestCase):
         with self._patched_log():
             out = glg.wiki_activity_from_log(self.nodes)
         node = out[0]["nodes"][0]
-        self.assertEqual(set(node), {"detail_id", "label", "type"})
+        allowed = {"detail_id", "label", "type", "action"}
+        self.assertTrue(set(node).issubset(allowed))
+
+    def test_action_added_vs_maintained(self) -> None:
+        rel = self.existing_paths[0]
+        self._write_log(
+            [
+                ("2026-05-28", [rel]),
+                ("2026-05-27", self.existing_paths[1:2]),
+            ]
+        )
+        fake_added = {rel: "2026-05-28", self.existing_paths[1]: "2026-05-01"}
+        with self._patched_log(), mock.patch.object(
+            glg, "wiki_git_added_dates", return_value=fake_added
+        ):
+            out = glg.wiki_activity_from_log(self.nodes)
+        by_date = {d["date"]: d for d in out}
+        self.assertEqual(by_date["2026-05-28"]["nodes"][0]["action"], "added")
+        self.assertEqual(by_date["2026-05-28"]["added_count"], 1)
+        self.assertEqual(by_date["2026-05-27"]["nodes"][0]["action"], "maintained")
+        self.assertEqual(by_date["2026-05-27"]["maintained_count"], 1)
 
     def test_nodes_export_all_entries_and_count_matches(self) -> None:
         many = sorted(

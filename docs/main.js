@@ -435,10 +435,18 @@
       for (var cri = 0; cri < maxRows; cri++) {
         var rowMeta = items[cri];
         var rowType = WIKI_TYPE_LABEL_HOME[rowMeta.type] || (rowMeta.type ? String(rowMeta.type) : 'Wiki');
+        var rowBadge = '';
+        if (rowMeta.action === 'added') {
+          rowBadge = '<span class="updates-badge updates-badge-added">新增</span>';
+        } else if (rowMeta.action === 'maintained') {
+          rowBadge = '<span class="updates-badge">维护</span>';
+        }
         compactRows +=
           '<li class="home-latest-row"><span class="home-latest-row-date">' +
           escapeHtml(rowMeta.recency ? String(rowMeta.recency) : '') +
-          '</span><span class="home-latest-row-type">' +
+          '</span>' +
+          (rowBadge ? '<span class="home-latest-row-badge">' + rowBadge + '</span>' : '') +
+          '<span class="home-latest-row-type">' +
           escapeHtml(rowType) +
           '</span><a href="' +
           escapeHtml(detailHref(rowMeta.detail_id)) +
@@ -457,10 +465,43 @@
     var TIMELINE_FOLD_SHOW = 12;  // 折叠时先显示的条数
     var activityDays = wikiActivity && Array.isArray(wikiActivity.days) ? wikiActivity.days : [];
 
+    function renderActionBadge(action) {
+      if (action === 'added') {
+        return '<span class="updates-badge updates-badge-added">新增</span>';
+      }
+      if (action === 'maintained') {
+        return '<span class="updates-badge">维护</span>';
+      }
+      return '';
+    }
+
+    function countActionStats(metas) {
+      var added = 0;
+      var maintained = 0;
+      for (var ci = 0; ci < metas.length; ci++) {
+        if (metas[ci].action === 'added') added += 1;
+        else if (metas[ci].action === 'maintained') maintained += 1;
+      }
+      return { added: added, maintained: maintained };
+    }
+
+    function formatDayMeta(metas, totalCount, dayStats) {
+      var total = typeof totalCount === 'number' && totalCount > metas.length ? totalCount : metas.length;
+      var stats = dayStats || countActionStats(metas);
+      var metaParts = [];
+      if (stats.added) metaParts.push(stats.added + ' 新增');
+      if (stats.maintained) metaParts.push(stats.maintained + ' 维护');
+      if (!metaParts.length) metaParts.push(total + ' 项');
+      if (total > metas.length) metaParts.push('展示前 ' + metas.length + ' 项');
+      return metaParts.join(' · ');
+    }
+
     function renderTimelineItem(meta, folded) {
       var typeLabel = WIKI_TYPE_LABEL_HOME[meta.type] || (meta.type ? String(meta.type) : 'Wiki');
+      var badgeHtml = renderActionBadge(meta.action);
       return (
         '<li class="updates-item' + (folded ? ' updates-item-folded' : '') + '">' +
+        (badgeHtml || '<span class="updates-item-badge-spacer" aria-hidden="true"></span>') +
         '<span class="updates-item-type">' + escapeHtml(typeLabel) + '</span>' +
         '<a class="updates-item-link" href="' + escapeHtml(detailHref(meta.detail_id)) + '">' +
         escapeHtml(meta.label || meta.detail_id) +
@@ -468,15 +509,13 @@
       );
     }
 
-    function renderTimelineDay(dateLabel, metas, totalCount) {
+    function renderTimelineDay(dateLabel, metas, totalCount, dayStats) {
       var fold = metas.length > TIMELINE_FOLD_LIMIT;
       var itemsHtml = '';
       for (var ii = 0; ii < metas.length; ii++) {
         itemsHtml += renderTimelineItem(metas[ii], fold && ii >= TIMELINE_FOLD_SHOW);
       }
-      var total = typeof totalCount === 'number' && totalCount > metas.length ? totalCount : metas.length;
-      var dayMeta = total + ' 项';
-      if (total > metas.length) dayMeta += ' · 展示前 ' + metas.length + ' 项';
+      var dayMeta = formatDayMeta(metas, totalCount, dayStats);
       return (
         '<section class="updates-day' + (fold ? ' is-folded' : '') + '">' +
         '<h3 class="updates-day-date"><span class="updates-day-dot" aria-hidden="true"></span>' +
@@ -506,6 +545,7 @@
             detail_id: nodeMeta.detail_id,
             label: nodeMeta.label || nodeMeta.detail_id,
             type: nodeMeta.type || '',
+            action: nodeMeta.action || '',
             recency: dayEntry.date,
             source: 'log.md'
           });
@@ -513,7 +553,13 @@
         if (!metas.length) continue;
         var dayCount = typeof dayEntry.count === 'number' ? dayEntry.count : metas.length;
         totalNodes += dayCount;
-        groups.push({ date: dayEntry.date, items: metas, totalCount: dayCount });
+        groups.push({
+          date: dayEntry.date,
+          items: metas,
+          totalCount: dayCount,
+          addedCount: typeof dayEntry.added_count === 'number' ? dayEntry.added_count : 0,
+          maintainedCount: typeof dayEntry.maintained_count === 'number' ? dayEntry.maintained_count : 0
+        });
       }
       return { groups: groups, totalNodes: totalNodes };
     }
@@ -592,7 +638,12 @@
       var daysHtml = '';
       for (var tgi = 0; tgi < visibleGroups.length; tgi++) {
         var tg = visibleGroups[tgi];
-        daysHtml += renderTimelineDay(tg.date, tg.items, tg.totalCount);
+        daysHtml += renderTimelineDay(
+          tg.date,
+          tg.items,
+          tg.totalCount,
+          { added: tg.addedCount || 0, maintained: tg.maintainedCount || 0 }
+        );
       }
       var actionsHtml = renderTimelineActions(visibleGroups, allGroups, showAll);
       return introHtml + '<div class="updates-timeline-days">' + daysHtml + '</div>' + actionsHtml;
@@ -698,10 +749,13 @@
       setActiveCell(dateKey);
       var total = totalByDate[dateKey] || dayNodes.length;
       var filterIntro = [dateKey, '维护日志'];
+      var filterStats = countActionStats(dayNodes);
       bodyMount.innerHTML =
         '<p class="data-meta home-latest-wiki-intro">' + escapeHtml(filterIntro.join(' · ')) +
         ' <button type="button" class="btn-secondary btn-inline home-wiki-heatmap-clear">清除筛选</button></p>' +
-        '<div class="updates-timeline-days">' + renderTimelineDay(dateKey, dayNodes, total) + '</div>';
+        '<div class="updates-timeline-days">' +
+        renderTimelineDay(dateKey, dayNodes, total, filterStats) +
+        '</div>';
     }
 
     grid.addEventListener('click', function (ev) {
