@@ -9,14 +9,16 @@ tags:
   - deep-learning
   - robotics
 status: complete
-updated: 2026-06-07
+updated: 2026-07-05
 related:
+  - ../concepts/vision-transformer.md
   - ../concepts/vision-backbones.md
   - ../methods/object-detection.md
   - ../queries/perception-backbone-selection.md
   - ../entities/paper-resnet-deep-residual-learning.md
   - ../entities/paper-yolo-unified-realtime-detection.md
 sources:
+  - ../../sources/blogs/wechat_human_five_vit_intro.md
   - ../../sources/papers/resnet_arxiv_1512_03385.md
   - ../../sources/papers/vision_backbone_detection_classics.md
 summary: "CNN（ResNet 系）以卷积归纳偏置在小数据/边缘部署占优，ViT 系靠大数据与全局注意力在规模化时反超；机器人感知按数据量、分辨率/吞吐与下游迁移需求在两者间取舍。"
@@ -82,6 +84,7 @@ flowchart TB
 
 ## 关联页面
 
+- [Vision Transformer（概念）](../concepts/vision-transformer.md)
 - [视觉骨干（概念）](../concepts/vision-backbones.md)
 - [目标检测（方法）](../methods/object-detection.md)
 - [感知骨干/表征选型 Query](../queries/perception-backbone-selection.md)
@@ -90,6 +93,7 @@ flowchart TB
 
 ## 参考来源
 
+- [wechat_human_five_vit_intro.md](../../sources/blogs/wechat_human_five_vit_intro.md) — human five《ViT入门》机制与微调实操归纳
 - [ResNet 论文摘录（arXiv:1512.03385）](../../sources/papers/resnet_arxiv_1512_03385.md)
 - [经典视觉骨干与检测文献簇](../../sources/papers/vision_backbone_detection_classics.md)
 

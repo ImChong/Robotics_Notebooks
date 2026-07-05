@@ -2,7 +2,7 @@
 type: overview
 tags: [topic, topic-vla, vision-language-action, foundation, manipulation]
 status: complete
-updated: 2026-06-17
+updated: 2026-07-05
 summary: "VLA 与基础策略专题汇总：视觉-语言-动作统一建模、OpenVLA/π0/GR00T 等开源谱系，以及 BFM 身体接口与 loco-manip 任务接口。"
 ---
 
@@ -34,6 +34,7 @@ summary: "VLA 与基础策略专题汇总：视觉-语言-动作统一建模、O
 
 | 层次 | 典型问题 | 站内入口 |
 |------|----------|----------|
+| 对比 | 五大模型分类 | [VLM/VLN/VLA/VLX/WM 分类](../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md) |
 | 方法 | VLA 定义与路线 | [VLA](../methods/vla.md) |
 | 概念 | 行为基础模型 | [Behavior Foundation Model](../concepts/behavior-foundation-model.md) |
 | 概念 | Foundation Policy | [Foundation Policy](../concepts/foundation-policy.md) |

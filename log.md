@@ -1,5 +1,9 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-05] ingest | sources/blogs/wechat_human_five_vit_intro.md — human five ViT入门；wiki/concepts/vision-transformer.md；交叉更新 cnn-vs-vit、vision-backbones、topic-vision-backbone
+
+## [2026-07-05] ingest | sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md — 深蓝五大具身模型分类；wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md；交叉更新 vla、vln、topic-vla
+
 ## [2026-07-05] ingest | sources/patents/boston_dynamics_legged_robot_patents.md + sources/patents/tesla_robot_knee_joint_wo2024073135.md + sources/papers/autonomous_spot_arxiv_2010_09259.md + sources/papers/spot_rl_distributional_sim2real_arxiv_2504_17857.md — Spot/BD 专利栈、Tesla 膝部专利、NeBula 自主探索与 Spot RL Sim2Real；wiki/entities/paper-autonomous-spot-nebula-exploration.md、wiki/entities/paper-spot-rl-distributional-sim2real.md、wiki/entities/patent-boston-dynamics-legged-control-stack.md、wiki/entities/patent-tesla-robot-knee-joint-assembly.md；交叉更新 boston-dynamics、quadruped-robot
 
 ## [2026-07-04] structural | docs/topic-filters.js + docs/graph.html + wiki/overview/topic-contact-force-control.md（V27 P3）——新增「🤝 接触力控」图谱专题视图（第 17 项）
