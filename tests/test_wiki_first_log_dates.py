@@ -86,6 +86,39 @@ class WikiFirstLogDatesTest(unittest.TestCase):
         )
         self.assertIsNone(glg._wiki_node_action("wiki/tasks/unknown.md", "2026-05-28", first_dates))
 
+    def test_git_fallback_when_log_has_no_first_date(self) -> None:
+        git_dates = {"wiki/concepts/sim2real.md": "2026-04-10"}
+        rel = "wiki/concepts/sim2real.md"
+        self.assertEqual(
+            glg._wiki_node_action(rel, "2026-04-10", {}, git_dates),
+            "added",
+        )
+        self.assertEqual(
+            glg._wiki_node_action(rel, "2026-05-01", {}, git_dates),
+            "maintained",
+        )
+
+    def test_log_first_date_takes_priority_over_git(self) -> None:
+        rel = self.existing_paths[0]
+        self.assertEqual(
+            glg._wiki_node_action(
+                rel,
+                "2026-05-28",
+                {rel: "2026-05-28"},
+                {rel: "2026-04-01"},
+            ),
+            "added",
+        )
+        self.assertEqual(
+            glg._wiki_node_action(
+                rel,
+                "2026-05-28",
+                {rel: "2026-05-01"},
+                {rel: "2026-05-28"},
+            ),
+            "maintained",
+        )
+
 
 if __name__ == "__main__":  # pragma: no cover
     unittest.main()
