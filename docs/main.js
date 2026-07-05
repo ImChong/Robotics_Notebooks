@@ -272,17 +272,12 @@
     if (html) mount.innerHTML = html;
   }
 
-  var WIKI_TYPE_LABEL_HOME = {
-    concept: '概念',
-    method: '方法',
-    task: '任务',
-    comparison: '对比',
-    entity: '工具/平台',
-    query: 'Query',
-    formalization: '形式化',
-    overview: '总览',
-    reference: '参考'
-  };
+  function wikiTypeLabel(type, context) {
+    var api = window.RNWikiTypeLabels;
+    if (!api) return type ? String(type) : '知识页';
+    if (context === 'updates') return api.formatChinese(type);
+    return api.formatBilingual(type);
+  }
 
   // ── 首页知识节点活跃度热力图（GitHub 风格，数据源 exports/wiki-activity.json）──
   var HOME_HEATMAP_DAY_MS = 24 * 60 * 60 * 1000;
@@ -452,7 +447,7 @@
       var maxRows = Math.min(items.length, 5);
       for (var cri = 0; cri < maxRows; cri++) {
         var rowMeta = items[cri];
-        var rowType = WIKI_TYPE_LABEL_HOME[rowMeta.type] || (rowMeta.type ? String(rowMeta.type) : 'Wiki');
+        var rowType = wikiTypeLabel(rowMeta.type, mount.hasAttribute('data-compact') ? 'node' : 'updates');
         compactRows +=
           '<li class="home-latest-row"><span class="home-latest-row-date">' +
           escapeHtml(rowMeta.recency ? String(rowMeta.recency) : '') +
@@ -499,7 +494,7 @@
     }
 
     function renderTimelineItem(meta, folded) {
-      var typeLabel = WIKI_TYPE_LABEL_HOME[meta.type] || (meta.type ? String(meta.type) : 'Wiki');
+      var typeLabel = wikiTypeLabel(meta.type, 'updates');
       return (
         '<li class="updates-item' + (folded ? ' updates-item-folded' : '') + '">' +
         renderActionBadgeCell(meta.action, 'updates-badge-cell') +
@@ -2739,7 +2734,7 @@
   }
 
   function buildInternalLinkCardMeta(page, id, options) {
-    var typeLabel = (page && page.type) || (options && options.defaultType) || 'detail_page';
+    var typeLabel = wikiTypeLabel((page && page.type) || (options && options.defaultType) || 'detail_page', 'node');
     var extra = options && typeof options.metaExtra === 'function' ? options.metaExtra(id, page) : '';
     return extra ? typeLabel + ' · ' + extra : typeLabel;
   }
@@ -3124,7 +3119,7 @@
       if (!items.length) { section.hidden = true; return; }
       section.hidden = false;
       listEl.innerHTML = items.map(function (n) {
-        var typeLabel = WIKI_TYPE_LABEL_HOME[n.type] || (n.type ? String(n.type) : 'Wiki');
+        var typeLabel = wikiTypeLabel(n.type, 'node');
         return (
           '<a class="detail-recent-ingest-item" href="' + escapeHtml(detailHref(n.detail_id)) + '">' +
           '<span class="detail-recent-ingest-date">' + escapeHtml(String(n.recency)) + '</span>' +
@@ -4500,7 +4495,7 @@
         detailCardsHtml += '<article class="card data-card">' +
             '  <div>' +
             '    <h3><a href="' + escapeHtml(detailHref(detailPage.id)) + '">' + escapeHtml(detailPage.title || detailPage.id) + '</a></h3>' +
-            '    <p class="card-meta">' + escapeHtml(detailPage.type || 'detail_page') + '</p>' +
+            '    <p class="card-meta">' + escapeHtml(wikiTypeLabel(detailPage.type || 'detail_page', 'node')) + '</p>' +
             '    <p>' + escapeHtml(detailPage.summary || '暂无摘要') + '</p>' +
             '    <p class="data-submeta"><code>' + escapeHtml(detailPage.path || detailPage.id || '') + '</code></p>' +
             '  </div>' +
@@ -4895,7 +4890,10 @@
     function buildResultCardHtml(item, queryTokens) {
       var detailUrl = 'detail.html?id=' + encodeURIComponent(item.id);
       var graphUrl = 'graph.html?focus=' + encodeURIComponent(item.id);
-      var typeLabel = item.page_type || (item.path ? item.path.split('/').slice(1, 3).join(' / ') : '');
+      var typeLabel = wikiTypeLabel(item.page_type, 'node');
+      if (!typeLabel && item.path) {
+        typeLabel = item.path.split('/').slice(1, 3).join(' / ');
+      }
 
       var tagLine = '';
       var itemTags = item.tags || [];

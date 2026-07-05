@@ -1810,6 +1810,7 @@
   <!-- ── D3.js + 3D 图谱 ── -->
   <script src="vendor/d3.min.js"></script>
   <script src="vendor/3d-force-graph.min.js"></script>
+  <script src="wiki-type-labels.js"></script>
   <script src="main.js"></script>
   <script src="graph-tooltip.js"></script>
   <script src="graph-node-size.js"></script>
@@ -1832,27 +1833,14 @@
       roadmap_page:  '#22d3ee',
       '':            '#64748b',
     };
-    const TYPE_LABEL = {
-      concept: '概念', method: '方法', task: '任务',
-      entity: '工具', comparison: '对比', query: 'Query',
-      formalization: '形式化', overview: '总览', reference: '参考',
-      roadmap: '路线', roadmap_page: '路线',
-      '': 'Wiki',
-    };
     const TYPE_LEGEND_ORDER = [
       'concept', 'method', 'task', 'formalization', 'comparison',
       'entity', 'query', 'overview', 'reference', 'roadmap_page',
     ];
-    const TYPE_LEGEND_EN = {
-      concept: 'Concept', method: 'Method', task: 'Task',
-      formalization: 'Formalization', comparison: 'Comparison',
-      entity: 'Entity', query: 'Query', overview: 'Overview',
-      reference: 'Reference', roadmap_page: 'Roadmap',
-    };
     function formatTypeLegendLabel(type) {
-      const zh = TYPE_LABEL[type] || type;
-      const en = TYPE_LEGEND_EN[type] || type;
-      return zh + ' (' + en + ')';
+      const api = window.RNWikiTypeLabels;
+      if (api && api.formatBilingual) return api.formatBilingual(type);
+      return type || '知识页';
     }
     const TYPE_FILTER_OPTIONS = TYPE_LEGEND_ORDER.map((type) => ({
       value: type,
@@ -2389,7 +2377,6 @@
       if (!window.RNGraphTooltip?.buildMetaBadgesHtml) return '';
       return window.RNGraphTooltip.buildMetaBadgesHtml({
         type: d.type || '',
-        typeLabels: TYPE_LABEL,
         typeColors: TYPE_COLOR,
         badgeColor: metaBadgeColor(d),
       });
@@ -3027,7 +3014,6 @@
       if (window.RNGraphTooltip?.buildNodeTooltipHtml) {
         return window.RNGraphTooltip.buildNodeTooltipHtml({
           type: d.type || '',
-          typeLabels: TYPE_LABEL,
           typeColors: TYPE_COLOR,
           badgeColor: metaBadgeColor(d),
           title: info.title || d.label,
