@@ -141,3 +141,4 @@ flowchart TD
 - [Visuo-Tactile Fusion（视触觉融合）](../concepts/visuo-tactile-fusion.md) — ① 感知层视触觉证据
 - [Contact-Rich Manipulation（接触丰富操作）](../concepts/contact-rich-manipulation.md) — ④ 策略层
 - [Query：接触丰富操作实践指南](./contact-rich-manipulation-guide.md) — 任务视角的执行层选型姊妹篇
+- 专题汇总：[接触力控（专题汇总）](../overview/topic-contact-force-control.md) — 本链在「🤝 接触力控」[图谱专题视图](../../docs/graph.html?topic=contact-force-control)的统一入口

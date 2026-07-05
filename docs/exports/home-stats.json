@@ -1,13 +1,22 @@
 {
   "generated_at": "2026-07-04",
-  "node_count": 1574,
-  "edge_count": 10838,
+  "node_count": 1575,
+  "edge_count": 10853,
   "coverage": {
     "covered": 1543,
-    "total": 1572,
+    "total": 1573,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/topic-contact-force-control.md",
+      "detail_id": "wiki-overview-topic-contact-force-control",
+      "label": "接触力控（专题汇总）",
+      "type": "overview",
+      "recency": "2026-07-04",
+      "source": "log.md",
+      "action": "added"
+    },
     {
       "path": "wiki/concepts/diffusion-model.md",
       "detail_id": "wiki-concepts-diffusion-model",
@@ -178,22 +187,13 @@
       "recency": "2026-07-03",
       "source": "log.md",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-human-as-humanoid.md",
-      "detail_id": "entity-paper-human-as-humanoid",
-      "label": "Human-as-Humanoid",
-      "type": "entity",
-      "recency": "2026-07-03",
-      "source": "log.md",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/diffusion-model.md",
-    "detail_id": "wiki-concepts-diffusion-model",
-    "label": "Diffusion Model（扩散模型）",
-    "type": "concept",
+    "path": "wiki/overview/topic-contact-force-control.md",
+    "detail_id": "wiki-overview-topic-contact-force-control",
+    "label": "接触力控（专题汇总）",
+    "type": "overview",
     "recency": "2026-07-04",
     "source": "log.md",
     "action": "added"

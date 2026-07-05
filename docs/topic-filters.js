@@ -29,7 +29,8 @@
     'safe-fine-tuning': 'wiki/overview/topic-safe-fine-tuning.md',
     'vision-backbone': 'wiki/overview/topic-vision-backbone.md',
     'data-pipeline': 'wiki/overview/topic-data-pipeline.md',
-    'physics-fidelity': 'wiki/overview/topic-physics-fidelity.md'
+    'physics-fidelity': 'wiki/overview/topic-physics-fidelity.md',
+    'contact-force-control': 'wiki/overview/topic-contact-force-control.md'
   };
 
   function hubIdSet(key) {
@@ -169,6 +170,22 @@
         'wiki/concepts/physics-fidelity-sim2real-gap.md',
         'wiki/formalizations/articulated-body-algorithms.md'
       ]))
+    },
+    'contact-force-control': {
+      /* 与 tactile / physics-fidelity 刻意保持最小重叠：仅取「力控」专有片段
+         （impedance/admittance/wrench/force/compliance），不并入宽泛的 'contact'
+         （归 physics-fidelity）；四层闭环里未被片段命中的感知/操作页用 ids 显式纳入。 */
+      segments: new Set([
+        'impedance', 'admittance', 'wrench', 'force', 'compliance', 'forcecontrol'
+      ]),
+      ids: mergeIds('contact-force-control', new Set([
+        'wiki/queries/contact-wrench-closed-loop.md',
+        'wiki/queries/contact-rich-manipulation-guide.md',
+        'wiki/concepts/contact-force-loop-bandwidth.md',
+        'wiki/concepts/contact-estimation.md',
+        'wiki/concepts/visuo-tactile-fusion.md',
+        'wiki/concepts/contact-rich-manipulation.md'
+      ]))
     }
   };
 
@@ -269,6 +286,12 @@
       label: '物理保真度 (Physics Fidelity)',
       wikiPath: TOPIC_HUB_IDS['physics-fidelity'],
       description: '几何/URDF→刚体动力学→接触/摩擦→执行器四层仿真物理保真度与各层 sim2real gap 取舍。'
+    },
+    'contact-force-control': {
+      emoji: '🤝',
+      label: '接触力控 (Contact Force Control)',
+      wikiPath: TOPIC_HUB_IDS['contact-force-control'],
+      description: '接触感知/估计→力旋量表示→阻抗/导纳/混合力位控制→接触丰富操作四层力控闭环与带宽/刚度/时延取舍。'
     }
   };
 
