@@ -170,6 +170,22 @@
     var resolveSourceNode = opts.resolveSourceNode || function (id) {
       return sourceNodes.find(function (n) { return n.id === id; });
     };
+    var getNodeLabelText = opts.getNodeLabelText || function (d) {
+      return d.label || d.id;
+    };
+    var getNodeLabelFontSize = opts.getNodeLabelFontSize || function () { return 10; };
+    var getNodeLabelColor = opts.getNodeLabelColor || function () {
+      return isDark() ? 'rgba(255,255,255,0.55)' : 'rgba(0,0,0,0.5)';
+    };
+    var getNodeLabelOpacity = opts.getNodeLabelOpacity || function () { return 0.85; };
+    var isNodeLabelHub = opts.isNodeLabelHub || function () { return false; };
+
+    var labelLayer = null;
+    var labelEls = new Map();
+    var labelTickBound = false;
+    var labelsLayoutReady = false;
+    var baselineCameraDist = null;
+    var cameraZoomInteracted = false;
 
     var nodes3d = sourceNodes.map(cloneNodeFor3D);
     var sidebarNodeId = null;
@@ -214,6 +230,148 @@
 
     function backgroundColor() {
       return isDark() ? '#0d1117' : '#eef2f7';
+    }
+
+    function getCameraDistance() {
+      if (!graph || typeof graph.cameraPosition !== 'function') return null;
+      var cam = graph.cameraPosition();
+      if (!cam || !cam.lookAt) return null;
+      var dx = cam.x - cam.lookAt.x;
+      var dy = cam.y - cam.lookAt.y;
+      var dz = cam.z - cam.lookAt.z;
+      return Math.sqrt(dx * dx + dy * dy + dz * dz);
+    }
+
+    function getLabelZoomFactor() {
+      var dist = getCameraDistance();
+      if (!dist || !baselineCameraDist) return 1;
+      return baselineCameraDist / dist;
+    }
+
+    function captureBaselineCameraDist() {
+      var dist = getCameraDistance();
+      if (dist && isFinite(dist)) baselineCameraDist = dist;
+    }
+
+    function ensureLabelLayer() {
+      if (labelLayer) return labelLayer;
+      labelLayer = document.createElement('div');
+      labelLayer.className = 'graph-3d-labels';
+      labelLayer.setAttribute('aria-hidden', 'true');
+      container.appendChild(labelLayer);
+      return labelLayer;
+    }
+
+    function buildLabelEls() {
+      var layer = ensureLabelLayer();
+      if (!layer) return;
+      labelEls.clear();
+      layer.innerHTML = '';
+      sourceNodes.forEach(function (src) {
+        var el = document.createElement('div');
+        el.className = 'graph-3d-label';
+        el.textContent = getNodeLabelText(src);
+        layer.appendChild(el);
+        labelEls.set(src.id, el);
+      });
+      syncLabelStyles();
+    }
+
+    function effectiveLabelOpacity(d) {
+      if (container.hidden || timelineActive() || nodeHiddenByFilter(d)) return 0;
+      if (!labelsLayoutReady) return 0;
+      var src = resolveSourceNode(d.id) || d;
+      var base = getNodeLabelOpacity(src, getLabelZoomFactor(), labelsLayoutReady, cameraZoomInteracted);
+      if (base <= 0) return 0;
+      return base * nodeOpacityFor(d);
+    }
+
+    function syncLabelStyles() {
+      if (!labelLayer) return;
+      var color = getNodeLabelColor();
+      labelEls.forEach(function (el, id) {
+        var d = nodeById.get(id);
+        if (!d) return;
+        var src = resolveSourceNode(id) || d;
+        el.textContent = getNodeLabelText(src);
+        el.style.color = color;
+        el.style.fontSize = getNodeLabelFontSize(src) + 'px';
+        el.classList.toggle('is-topic-hub', !!isNodeLabelHub(src));
+        var opacity = effectiveLabelOpacity(d);
+        el.style.opacity = String(opacity);
+        el.style.visibility = opacity > 0.02 ? 'visible' : 'hidden';
+      });
+    }
+
+    function syncLabelPositions() {
+      if (!graph || container.hidden || !labelLayer) return;
+      var dist = getCameraDistance();
+      if (baselineCameraDist && dist && Math.abs(dist - baselineCameraDist) > baselineCameraDist * 0.04) {
+        cameraZoomInteracted = true;
+      }
+      var graphNodes = graph.graphData().nodes || [];
+      graphNodes.forEach(function (d) {
+        var el = labelEls.get(d.id);
+        if (!el || d.x == null || d.y == null) return;
+        var z = d.z != null ? d.z : 0;
+        var src = resolveSourceNode(d.id) || d;
+        var center = graph.graph2ScreenCoords(d.x, d.y, z);
+        if (!center || !isFinite(center.x) || !isFinite(center.y)) {
+          el.style.visibility = 'hidden';
+          return;
+        }
+        var rimY = getNodeRadius(src) + 13;
+        var bottom = graph.graph2ScreenCoords(d.x, d.y + rimY, z);
+        var topY = bottom && isFinite(bottom.y) ? bottom.y : center.y + 12;
+        el.style.left = center.x + 'px';
+        el.style.top = topY + 'px';
+        var opacity = effectiveLabelOpacity(d);
+        el.style.opacity = String(opacity);
+        el.style.visibility = opacity > 0.02 ? 'visible' : 'hidden';
+      });
+    }
+
+    function bindLabelTick() {
+      if (labelTickBound || !graph) return;
+      labelTickBound = true;
+      graph.onEngineTick(function () {
+        maybeMarkLabelsLayoutReady();
+        syncLabelPositions();
+        syncLabelStyles();
+      });
+    }
+
+    function resetLabelsLayoutState() {
+      labelsLayoutReady = false;
+      baselineCameraDist = null;
+      cameraZoomInteracted = false;
+      syncLabelStyles();
+    }
+
+    function markLabelsLayoutReady() {
+      labelsLayoutReady = true;
+      captureBaselineCameraDist();
+      syncLabelPositions();
+      syncLabelStyles();
+    }
+
+    function maybeMarkLabelsLayoutReady() {
+      if (labelsLayoutReady || !graph) return;
+      if (typeof graph.d3Alpha === 'function' && graph.d3Alpha() > 0.02) return;
+      markLabelsLayoutReady();
+    }
+
+    function showLabelLayer() {
+      if (labelLayer) labelLayer.style.display = '';
+    }
+
+    function hideLabelLayer() {
+      if (labelLayer) labelLayer.style.display = 'none';
+    }
+
+    function syncLabels() {
+      syncLabelPositions();
+      syncLabelStyles();
     }
 
     function buildLinks() {
@@ -473,6 +631,7 @@
         .linkOpacity(function (l) { return linkOpacityFor(l); })
         .linkVisibility(function (l) { return linkVisibleFor(l); });
       updateNodeMeshes();
+      syncLabels();
     }
 
     // pop-in 期间逐帧刷新节点 mesh 缩放，让「激活」放大过程平滑（由 3d-force-graph 的渲染环负责出图）。
@@ -788,6 +947,7 @@
         // 用基于节点数据坐标的安全 fit：库自带 zoomToFit 在场景对象尚未生成时
         // （getGraphBbox 返回 null）会静默 no-op，首次切换易停在未取景的相机上。
         zoomFitToNodes(duration);
+        markLabelsLayoutReady();
       }
       if (typeof graph.onEngineStop === 'function') {
         graph.onEngineStop(function () { runFit(); });
@@ -922,8 +1082,11 @@
     return {
       show: function () {
         container.hidden = false;
+        showLabelLayer();
         syncPositionsFromSource();
         ensureGraph();
+        buildLabelEls();
+        bindLabelTick();
         syncViewport();
         graph.backgroundColor(backgroundColor());
         refreshAppearance();
@@ -945,11 +1108,13 @@
           });
           scheduleInitialFit(650);
           firstShowKick();
+          syncLabels();
         });
       },
 
       hide: function () {
         pauseRenderLoop();
+        hideLabelLayer();
         container.hidden = true;
       },
 
@@ -964,6 +1129,7 @@
       resize: function () {
         if (container.hidden) return;
         syncViewport();
+        syncLabels();
       },
 
       syncFilters: function () {
@@ -974,6 +1140,7 @@
       // timelineBegin：进入时序模式，按时间顺序的 node id 列表初始化；先清空力模拟子集（0 个节点）。
       timelineBegin: function (orderedIds) {
         if (!graph) return;
+        resetLabelsLayoutState();
         timelineSnapshot = nodes3d.map(function (n) {
           return { n: n, x: n.x, y: n.y, z: n.z };
         });
@@ -1016,6 +1183,8 @@
       timelineFit: function (ms) {
         if (timelineRevealedIds === null) return;
         zoomFitToNodes(ms == null ? 500 : ms, function (n) { return timelineRevealedIds.has(n.id); });
+        captureBaselineCameraDist();
+        syncLabels();
       },
 
       // timelineEnd：退出时序模式 —— 还原进入前全图位置，恢复完整 graphData 并重排收敛。
@@ -1037,11 +1206,13 @@
         graph.graphData({ nodes: nodes3d, links: buildLinks() });
         refreshAppearance();
         reheatAfterGraphData();
+        markLabelsLayoutReady();
       },
 
       refreshColors: function () {
         graph.backgroundColor(backgroundColor());
         refreshAppearance();
+        syncLabels();
       },
 
       updateForces: function () {
@@ -1058,6 +1229,7 @@
       },
 
       restartSimulation: function () {
+        resetLabelsLayoutState();
         if (customMeshesInstalled) {
           resetNodePositionsInPlace();
           this.updateForces();
@@ -1071,11 +1243,17 @@
 
       fitToScreen: function (ms) {
         zoomFitToNodes(ms == null ? 650 : ms);
+        captureBaselineCameraDist();
+        cameraZoomInteracted = false;
+        syncLabels();
       },
 
       fitToVisible: function (ms) {
         var visible = getVisibleNodeIds();
         zoomFitToNodes(ms == null ? 650 : ms, function (n) { return visible.has(n.id); });
+        captureBaselineCameraDist();
+        cameraZoomInteracted = false;
+        syncLabels();
       },
 
       focusNode: function (node, ms) {
@@ -1088,6 +1266,10 @@
           n3,
           ms == null ? 700 : ms
         );
+        window.setTimeout(function () {
+          cameraZoomInteracted = true;
+          syncLabels();
+        }, (ms == null ? 700 : ms) + 40);
       },
 
       applySidebarHighlight: function (d, direct, secondary) {
@@ -1111,6 +1293,9 @@
         window.removeEventListener('error', reviveRenderLoopOnError);
         if (graph && graph._destructor) graph._destructor();
         graph = null;
+        labelLayer = null;
+        labelEls.clear();
+        labelTickBound = false;
         container.replaceChildren();
       },
     };
