@@ -107,13 +107,16 @@
     return s;
   }
 
-  var GRAPH_NODE_TYPE_LABEL = {
-    concept: '概念', method: '方法', task: '任务',
-    entity: '工具', comparison: '对比', query: 'Query',
-    formalization: '形式化', overview: '总览', reference: '参考',
-    roadmap: '路线', roadmap_page: '路线',
-    '': 'Wiki'
-  };
+  function formatNodeTypeLabel(typeKey, typeLabels) {
+    if (typeLabels) {
+      return typeLabels[typeKey] || typeKey || '知识页';
+    }
+    var api = window.RNWikiTypeLabels;
+    if (api && api.formatBilingual) {
+      return api.formatBilingual(typeKey);
+    }
+    return typeKey || '知识页';
+  }
 
   var GRAPH_NODE_TYPE_COLOR = {
     concept: '#60a5fa', method: '#34d399', task: '#f472b6',
@@ -206,9 +209,8 @@
     var html = '';
     if (opts.showType !== false) {
       var typeKey = opts.type != null ? opts.type : '';
-      var typeLabels = opts.typeLabels || GRAPH_NODE_TYPE_LABEL;
       var typeColors = opts.typeColors || GRAPH_NODE_TYPE_COLOR;
-      var typeLabel = typeLabels[typeKey] || typeKey || 'Wiki';
+      var typeLabel = formatNodeTypeLabel(typeKey, opts.typeLabels);
       var badgeColor = opts.badgeColor != null ? opts.badgeColor
         : (opts.communityColor
           || typeColors[typeKey] || typeColors[''] || '#64748b');
@@ -249,7 +251,7 @@
     bindOutsideDismiss: bindGraphTooltipOutsideDismiss,
     isMetadataOnlySummary: isMetadataOnlySummary,
     formatTooltipSummary: formatTooltipSummary,
-    GRAPH_NODE_TYPE_LABEL: GRAPH_NODE_TYPE_LABEL,
+    formatNodeTypeLabel: formatNodeTypeLabel,
     GRAPH_NODE_TYPE_COLOR: GRAPH_NODE_TYPE_COLOR,
     shortenCommunityLabel: shortenCommunityLabel,
     COMMUNITY_COLORS_FALLBACK: COMMUNITY_COLORS_FALLBACK,
