@@ -1,5 +1,19 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-05] structural | 执行清单换版 v27 → v28 —— V27（接触力旋量闭环链）P0–P3 全数交付、DoD 逐项达标后新建 V28（具身大模型分类学选型闭环）
+
+- V27 收尾：P3 详情页专题徽标端到端验证通过、DoD lint 0 errors / 节点边数 / 事实库 220 / 社区均衡 / log 记录 五项全绿，清单 0 未勾项
+- 换版动作（对齐 [`docs/checklists/README.md`](docs/checklists/README.md) 维护规则）：`git mv` V27 至 [`archive/`](archive/tech-stack-next-phase-checklist-v27.md)；新建 [`tech-stack-next-phase-checklist-v28.md`](docs/checklists/tech-stack-next-phase-checklist-v28.md)；README「当前入口」更新为 v28、「历史执行清单」补 v27
+- V28 主题：把近周密集 ingest 的 VLM/VLN/VLA/VLX/World-Model 五大具身模型家族沉淀为「感知理解→空间导航→动作执行→一体化扩展→世界模型推演」贯通选型链；起点基线 1581 节点 / 10909 边 / 220 事实 / 17 专题，目标 ≥1595 / ≥10970 / ≥230 / 第 18 专题「具身大模型」
+- P0 lint 巡检 / P1 选型链 query+concept / P2 事实库 +10 矛盾规则 / P3 图谱专题视图+详情徽标，均为 `[ ]` 待后续每日推进
+
+## [2026-07-05] structural | 详情页「所属专题」徽标端到端验证（V27 P3 收尾）——`docs/main.js renderMetaTopicBadges` 对「接触力控」专题命中页自动渲染徽标
+
+- 验证目标：V27 P3「详情页"同专题相关页"提示」项——`renderMetaTopicBadges` → `TF.topicsForNode` 已是单一事实源数据驱动，无需改代码，本次做端到端行为验证并归档证据
+- 结果：`detail.html?id=wiki-concepts-contact-force-loop-bandwidth` 的「所属专题」行渲染出 `🤝 接触力控 (Contact Force Control)` 徽标，`href=graph.html?topic=contact-force-control`；同页并列渲染 `✋ 触觉` / `🛡️ 安全微调` / `⚙️ 物理保真度` 徽标，多专题命中互不干扰；空态由 `renderDetailMetaItemRow` 隐藏（对齐 2026-07-05 hidden 行 grid gap 修复）
+- 截图归档：`.cursor-artifacts/screenshots/detail-topic-contact-force-control.png`（Playwright/Chromium headless，等待 `data-detailMetaReady=true` 后截图）
+- 清单勾稽：[`docs/checklists/tech-stack-next-phase-checklist-v27.md`](docs/checklists/tech-stack-next-phase-checklist-v27.md) P3「详情页同专题相关页提示」项完成，至此 V27 P0–P3 全数交付、DoD 逐项达标
+
 ## [2026-07-05] ingest | sources/blogs/wechat_human_five_vit_intro.md — human five ViT入门；wiki/concepts/vision-transformer.md；交叉更新 cnn-vs-vit、vision-backbones、topic-vision-backbone
 
 ## [2026-07-05] ingest | sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md — 深蓝五大具身模型分类；wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md；交叉更新 vla、vln、topic-vla
