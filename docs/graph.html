@@ -282,6 +282,25 @@
     }
     #graph-canvas-3d[hidden] { display: none !important; }
     #graph-canvas-3d .scene-nav-info { display: none !important; }
+    .graph-3d-labels {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 3;
+    }
+    .graph-3d-label {
+      position: absolute;
+      text-align: center;
+      white-space: nowrap;
+      transform: translate(-50%, 0);
+      user-select: none;
+      transition: opacity .15s;
+      pointer-events: none;
+    }
+    .graph-3d-label.is-topic-hub {
+      font-weight: 700;
+    }
 
     /* dot-grid overlay (CSS only) */
     #graph-wrap::before {
@@ -720,6 +739,7 @@
     [data-theme="light"] .topic-intro-text { color: rgba(15, 23, 42, 0.68); }
     [data-theme="light"] .topic-intro-link { color: #1659b4; }
     [data-theme="light"] .node-topic-hub .node-label { fill: rgba(15, 23, 42, 0.88) !important; }
+    [data-theme="light"] .graph-3d-label.is-topic-hub { color: rgba(15, 23, 42, 0.88) !important; }
     [data-theme="light"] .toolbar-sep { background: rgba(0,0,0,0.1); }
     [data-theme="light"] #graph-node-count { color: rgba(0,0,0,0.38); }
     [data-theme="light"] #graph-back {
@@ -2222,6 +2242,11 @@
         edgeHighlightsWithNode,
         getChargeStrength: () => chargeStrength,
         getMagneticConfig: getMagneticConfig3D,
+        getNodeLabelText: (d) => d._info.title || d.label,
+        getNodeLabelFontSize: scaledFontSize,
+        getNodeLabelColor: labelFill,
+        getNodeLabelOpacity: computeNodeLabelOpacity,
+        isNodeLabelHub: isCurrentTopicHub,
         onNodeClick: (d, ev) => {
           if (timelinePlaying) return;
           if (isMobile) {
@@ -2358,6 +2383,21 @@
     }
     function labelFill() {
       return isDark() ? 'rgba(255,255,255,0.55)' : 'rgba(0,0,0,0.5)';
+    }
+
+    function nodeLabelVisible(d) {
+      return nodeMatchesDegreeTop(d) && nodeMatchesCurrentFilter(d)
+        && nodeMatchesSearch(d) && nodeMatchesTopic(d) && nodeMatchesInstitutionFilter(d);
+    }
+
+    function computeNodeLabelOpacity(d, zoomK, labelsReady, cameraMoved) {
+      if (!labelsReady || timelineAnimating) return 0;
+      if (!nodeLabelVisible(d)) return 0;
+      const hub = isCurrentTopicHub(d);
+      if (searchQuery || hub) return 0.92;
+      if (!cameraMoved) return 0.85;
+      const k = zoomK != null ? zoomK : 1;
+      return k > 0.6 ? Math.min(1, (k - 0.6) * 2.5) : 0;
     }
 
     const HEALTH_COLORS = ['#f87171', '#fb923c', '#facc15', '#4ade80'];
