@@ -90,6 +90,7 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     "md",
     "http",
     "https",
+    "main",
 }
 
 # 高频术语但「已在 entities/ 或非同名 stem 的 methods 页有恰当归属」，
@@ -103,6 +104,7 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
 #   locomotion → tasks/locomotion.md（+ humanoid-/hybrid-locomotion，任务域，归 tasks）
 #   loco-manipulation → tasks/loco-manipulation.md（移动操作，任务域，归 tasks）
 #   step       → entities/step2urdf.md（CAD 交换格式，已在 concepts/text-to-cad.md 引介）
+#   twist2     → entities/paper-twist2.md（具体系统/论文，归 entities）
 MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "amp",
     "g1",
@@ -113,6 +115,7 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "locomotion",
     "loco-manipulation",
     "step",
+    "twist2",
 }
 
 # 仅用于信息提示、不计入 lint 失败总数的检查 key
