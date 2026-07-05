@@ -426,22 +426,6 @@ body.sponsor-dialog-open {
 /* 首页图谱预览 2D / 3D 切换（3D 画布懒加载，容器与 SVG 同位叠放） */
 #mini-graph-3d { position: absolute; inset: 0; }
 #mini-graph-3d[hidden] { display: none; }
-.mini-graph-3d-labels {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 2;
-}
-.mini-graph-3d-label {
-  position: absolute;
-  font-size: 10px;
-  line-height: 1.2;
-  text-align: center;
-  white-space: nowrap;
-  transform: translate(-50%, 10px);
-  user-select: none;
-}
 .mini-graph-mode { position: absolute; top: 12px; right: 16px; display: flex; gap: 4px; z-index: 3; }
 .mini-graph-mode-btn {
   font-size: .72rem;

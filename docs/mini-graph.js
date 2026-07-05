@@ -36,11 +36,6 @@
     };
   }
 
-  function miniNodeLabelText(d) {
-    var text = String(d.label || d.id);
-    return text.length > 12 ? text.slice(0, 12) + '…' : text;
-  }
-
   function tooltipSummary(raw) {
     return window.RNGraphTooltip && window.RNGraphTooltip.formatTooltipSummary
       ? window.RNGraphTooltip.formatTooltipSummary(raw, 100)
@@ -301,9 +296,6 @@
     var graph3d = null;
     var loading3d = false;
     var lastPointer3d = { clientX: 0, clientY: 0 };
-    var labelLayer3d = null;
-    var labelEls3d = new Map();
-    var labelTickBound = false;
 
     function trackPointer3d(ev) {
       lastPointer3d.clientX = ev.clientX;
@@ -331,77 +323,11 @@
       });
     }
 
-    function ensureLabelLayer3d() {
-      if (!wrap3d) return null;
-      if (labelLayer3d) return labelLayer3d;
-      labelLayer3d = document.createElement('div');
-      labelLayer3d.className = 'mini-graph-3d-labels';
-      labelLayer3d.setAttribute('aria-hidden', 'true');
-      wrap3d.appendChild(labelLayer3d);
-      return labelLayer3d;
-    }
-
-    function buildLabelEls3d() {
-      var layer = ensureLabelLayer3d();
-      if (!layer) return;
-      labelEls3d.clear();
-      layer.innerHTML = '';
-      var theme = miniGraphTheme();
-      nodes.forEach(function (d) {
-        var el = document.createElement('div');
-        el.className = 'mini-graph-3d-label';
-        el.textContent = miniNodeLabelText(d);
-        el.style.color = theme.label;
-        layer.appendChild(el);
-        labelEls3d.set(d.id, el);
-      });
-    }
-
-    function syncLabelPositions3d() {
-      if (!graph3d || wrap3d.hidden || !labelLayer3d) return;
-      var graphNodes = graph3d.graphData().nodes || [];
-      graphNodes.forEach(function (d) {
-        var el = labelEls3d.get(d.id);
-        if (!el || d.x == null || d.y == null) return;
-        var coords = graph3d.graph2ScreenCoords(d.x, d.y, d.z != null ? d.z : 0);
-        if (!coords || !isFinite(coords.x) || !isFinite(coords.y)) {
-          el.style.visibility = 'hidden';
-          return;
-        }
-        el.style.visibility = 'visible';
-        el.style.left = coords.x + 'px';
-        el.style.top = coords.y + 'px';
-      });
-    }
-
-    function bindLabelTick3d() {
-      if (labelTickBound || !graph3d) return;
-      labelTickBound = true;
-      graph3d.onEngineTick(syncLabelPositions3d);
-    }
-
-    function refreshMiniGraph3dLabels() {
-      if (!labelLayer3d) return;
-      var theme = miniGraphTheme();
-      labelEls3d.forEach(function (el) {
-        el.style.color = theme.label;
-      });
-    }
-
-    function hideLabelLayer3d() {
-      if (labelLayer3d) labelLayer3d.style.display = 'none';
-    }
-
-    function showLabelLayer3d() {
-      if (labelLayer3d) labelLayer3d.style.display = '';
-    }
-
     function applyMode3dTheme() {
       if (!graph3d) return;
       var theme = miniGraphTheme();
       graph3d.backgroundColor(theme.background);
       graph3d.linkColor(function () { return miniGraphTheme().edge3d; });
-      refreshMiniGraph3dLabels();
     }
 
     function setModeButtons(mode) {
@@ -466,9 +392,6 @@
           window.location.href = 'graph.html?focus=' + encodeURIComponent(d.id);
         })
         .graphData({ nodes: nodes3d, links: links3d });
-      buildLabelEls3d();
-      bindLabelTick3d();
-      syncLabelPositions3d();
       wrap3d.addEventListener('mousemove', trackPointer3d);
       bindMiniGraph3dTooltipDismiss();
       // 力模拟稳定后一次性取景填满容器（与 2D sim.on('end') 的自动 fit 对齐）；
@@ -478,9 +401,7 @@
         if (fitted3d) return;
         fitted3d = true;
         graph3d.zoomToFit(600, 40);
-        syncLabelPositions3d();
       });
-      window.requestAnimationFrame(syncLabelPositions3d);
       var controls3d = graph3d.controls();
       if (controls3d) {
         controls3d.autoRotate = true;
@@ -495,9 +416,7 @@
       wrap3d.hidden = false;
       setModeButtons('3d');
       if (graph3d) {
-        showLabelLayer3d();
         graph3d.resumeAnimation();
-        syncLabelPositions3d();
         return;
       }
       if (typeof window.ForceGraph3D === 'function') {
@@ -524,7 +443,6 @@
     function show2d() {
       hideTooltip();
       pinnedNode = null;
-      hideLabelLayer3d();
       wrap3d.hidden = true;
       miniSvg.style.display = '';
       setModeButtons('2d');
@@ -540,7 +458,6 @@
         graph3d
           .width(miniWrap.clientWidth || 700)
           .height(miniWrap.clientHeight || 480);
-        syncLabelPositions3d();
       });
     }
 
