@@ -907,6 +907,10 @@ button.home-wiki-heatmap-cell.is-active {
   align-items: center;
   gap: 6px 8px;
 }
+/* hidden 行若仍参与 grid/flex 布局会多占一行 gap（如「所属专题」未命中时） */
+.detail-meta-item[hidden] {
+  display: none !important;
+}
 .detail-meta-item strong {
   font-weight: 650;
 }
