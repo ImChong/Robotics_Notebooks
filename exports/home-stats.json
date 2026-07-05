@@ -1,13 +1,31 @@
 {
   "generated_at": "2026-07-05",
-  "node_count": 1579,
-  "edge_count": 10883,
+  "node_count": 1581,
+  "edge_count": 10909,
   "coverage": {
-    "covered": 1547,
-    "total": 1577,
+    "covered": 1549,
+    "total": 1579,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/vision-transformer.md",
+      "detail_id": "wiki-concepts-vision-transformer",
+      "label": "Vision Transformer（ViT，视觉 Transformer）",
+      "type": "concept",
+      "recency": "2026-07-05",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md",
+      "detail_id": "wiki-comparisons-vlm-vln-vla-vlx-world-model-taxonomy",
+      "label": "五大具身模型分类：VLM、VLN、VLA、VLX 与世界模型",
+      "type": "comparison",
+      "recency": "2026-07-05",
+      "source": "log.md",
+      "action": "maintained"
+    },
     {
       "path": "wiki/entities/paper-autonomous-spot-nebula-exploration.md",
       "detail_id": "entity-paper-autonomous-spot-nebula-exploration",
@@ -169,31 +187,13 @@
       "recency": "2026-07-03",
       "source": "log.md",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-mint-vla.md",
-      "detail_id": "entity-paper-mint-vla",
-      "label": "MINT（Mimic Intent, Not Just Trajectories）",
-      "type": "entity",
-      "recency": "2026-07-03",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-07-03",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-autonomous-spot-nebula-exploration.md",
-    "detail_id": "entity-paper-autonomous-spot-nebula-exploration",
-    "label": "Autonomous Spot（NeBula 长程探索）",
-    "type": "entity",
+    "path": "wiki/concepts/vision-transformer.md",
+    "detail_id": "wiki-concepts-vision-transformer",
+    "label": "Vision Transformer（ViT，视觉 Transformer）",
+    "type": "concept",
     "recency": "2026-07-05",
     "source": "log.md",
     "action": "added"
@@ -209,7 +209,7 @@
     },
     {
       "label": "强化学习",
-      "size": 174
+      "size": 176
     },
     {
       "label": "全身控制",

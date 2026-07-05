@@ -2,7 +2,7 @@
 type: overview
 tags: [world-models, open-source, survey, embodied-ai, video-generation, model-based-rl, shenlan]
 status: complete
-updated: 2026-06-03
+updated: 2026-07-05
 related:
   - ./world-models-route-01-cascade.md
   - ./world-models-route-02-joint.md

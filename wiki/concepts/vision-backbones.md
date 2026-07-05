@@ -7,8 +7,9 @@ tags:
   - backbone
   - deep-learning
 status: complete
-updated: 2026-06-22
+updated: 2026-07-05
 related:
+  - ./vision-transformer.md
   - ./deep-learning-foundations.md
   - ./generative-vision-pretraining.md
   - ../methods/object-detection.md
@@ -93,6 +94,7 @@ flowchart TB
 
 ## 关联页面
 
+- [Vision Transformer（概念）](./vision-transformer.md)
 - [深度学习基础](./deep-learning-foundations.md)
 - [目标检测（方法）](../methods/object-detection.md)
 - [视觉表征作为策略输入（概念）](./visual-representation-for-policy.md)
