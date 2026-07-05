@@ -2,7 +2,7 @@
 type: method
 tags: [control, mpc, optimization, locomotion, humanoid]
 status: complete
-updated: 2026-06-10
+updated: 2026-07-05
 summary: "MPC（模型预测控制）通过在线滚动优化未来轨迹，在约束控制与人形/腿足运动规划中广泛使用。"
 ---
 

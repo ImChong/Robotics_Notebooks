@@ -1,13 +1,49 @@
 {
   "generated_at": "2026-07-05",
-  "node_count": 1575,
-  "edge_count": 10853,
+  "node_count": 1579,
+  "edge_count": 10883,
   "coverage": {
-    "covered": 1543,
-    "total": 1573,
+    "covered": 1547,
+    "total": 1577,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-autonomous-spot-nebula-exploration.md",
+      "detail_id": "entity-paper-autonomous-spot-nebula-exploration",
+      "label": "Autonomous Spot（NeBula 长程探索）",
+      "type": "entity",
+      "recency": "2026-07-05",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-spot-rl-distributional-sim2real.md",
+      "detail_id": "entity-paper-spot-rl-distributional-sim2real",
+      "label": "Spot 高性能 RL（分布距离 Sim2Real 标定）",
+      "type": "entity",
+      "recency": "2026-07-05",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/patent-boston-dynamics-legged-control-stack.md",
+      "detail_id": "entity-patent-boston-dynamics-legged-control-stack",
+      "label": "Boston Dynamics 足式控制与硬件专利栈",
+      "type": "entity",
+      "recency": "2026-07-05",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/patent-tesla-robot-knee-joint-assembly.md",
+      "detail_id": "entity-patent-tesla-robot-knee-joint-assembly",
+      "label": "Tesla 人形机器人膝关节机构（WO2024073135）",
+      "type": "entity",
+      "recency": "2026-07-05",
+      "source": "log.md",
+      "action": "added"
+    },
     {
       "path": "wiki/overview/topic-contact-force-control.md",
       "detail_id": "wiki-overview-topic-contact-force-control",
@@ -151,50 +187,14 @@
       "recency": "2026-07-03",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/formalizations/vla-tokenization.md",
-      "detail_id": "wiki-formalizations-vla-tokenization",
-      "label": "Action Tokenization (动作分词)",
-      "type": "formalization",
-      "recency": "2026-07-03",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/concepts/humanoid-parallel-joint-kinematics.md",
-      "detail_id": "wiki-concepts-humanoid-parallel-joint-kinematics",
-      "label": "人形机器人并联关节解算（Parallel / Closed-Chain Joint Kinematics）",
-      "type": "concept",
-      "recency": "2026-07-03",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-telegate.md",
-      "detail_id": "entity-paper-telegate",
-      "label": "TeleGate",
-      "type": "entity",
-      "recency": "2026-07-03",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/freecad.md",
-      "detail_id": "entity-freecad",
-      "label": "FreeCAD（开源参数化机械 CAD）",
-      "type": "entity",
-      "recency": "2026-07-03",
-      "source": "log.md",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/topic-contact-force-control.md",
-    "detail_id": "wiki-overview-topic-contact-force-control",
-    "label": "接触力控（专题汇总）",
-    "type": "overview",
-    "recency": "2026-07-04",
+    "path": "wiki/entities/paper-autonomous-spot-nebula-exploration.md",
+    "detail_id": "entity-paper-autonomous-spot-nebula-exploration",
+    "label": "Autonomous Spot（NeBula 长程探索）",
+    "type": "entity",
+    "recency": "2026-07-05",
     "source": "log.md",
     "action": "added"
   },
