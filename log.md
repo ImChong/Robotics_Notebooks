@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-05] ingest | sources/patents/boston_dynamics_legged_robot_patents.md + sources/patents/tesla_robot_knee_joint_wo2024073135.md + sources/papers/autonomous_spot_arxiv_2010_09259.md + sources/papers/spot_rl_distributional_sim2real_arxiv_2504_17857.md — Spot/BD 专利栈、Tesla 膝部专利、NeBula 自主探索与 Spot RL Sim2Real；wiki/entities/paper-autonomous-spot-nebula-exploration.md、wiki/entities/paper-spot-rl-distributional-sim2real.md、wiki/entities/patent-boston-dynamics-legged-control-stack.md、wiki/entities/patent-tesla-robot-knee-joint-assembly.md；交叉更新 boston-dynamics、quadruped-robot
+
 ## [2026-07-04] structural | docs/topic-filters.js + docs/graph.html + wiki/overview/topic-contact-force-control.md（V27 P3）——新增「🤝 接触力控」图谱专题视图（第 17 项）
 
 - 单一事实源 `docs/topic-filters.js` 新增 `contact-force-control` 专题：干净片段并集 `impedance/admittance/wrench/force/compliance/forcecontrol`（刻意剔除过宽的 `contact`、易误命中的 `hybrid`，与 `physics-fidelity`/`tactile`/`grasp` 保持最小重叠），并用 `ids` 显式纳入四层闭环感知/操作页（`contact-wrench-closed-loop`/`contact-rich-manipulation-guide`/`contact-force-loop-bandwidth`/`contact-estimation`/`visuo-tactile-fusion`/`contact-rich-manipulation`）

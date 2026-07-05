@@ -2,11 +2,14 @@
 type: entity
 tags: [quadruped, legged, hardware, platform, locomotion]
 status: complete
-updated: 2026-05-28
+updated: 2026-07-05
 related:
   - ./humanoid-robot.md
   - ./anymal.md
   - ./boston-dynamics.md
+  - ./paper-autonomous-spot-nebula-exploration.md
+  - ./paper-spot-rl-distributional-sim2real.md
+  - ./patent-boston-dynamics-legged-control-stack.md
   - ./unitree.md
   - ./paper-barkour-quadruped-agility-benchmark.md
   - ./legged-gym.md
@@ -48,7 +51,7 @@ summary: "四足机器人是以四条腿与环境间歇接触的腿足平台，�
 
 | 平台 | 组织 | 典型定位 | 本库延伸阅读 |
 |------|------|-----------|----------------|
-| **Spot** | Boston Dynamics | 工业巡检与商业化四足标杆 | [Boston Dynamics](./boston-dynamics.md) |
+| **Spot** | Boston Dynamics | 工业巡检与商业化四足标杆 | [Boston Dynamics](./boston-dynamics.md)；研究侧见 [NeBula 探索](./paper-autonomous-spot-nebula-exploration.md)、[RL Sim2Real](./paper-spot-rl-distributional-sim2real.md)、[控制专利栈](./patent-boston-dynamics-legged-control-stack.md) |
 | **ANYmal** | ANYbotics / ETH | 高端工业与顶尖学术 RL 载体 | [ANYmal](./anymal.md) |
 | **Go2 / B2** | Unitree | 科研与量产带宽大、生态活跃 | [Unitree](./unitree.md) |
 
@@ -82,6 +85,9 @@ summary: "四足机器人是以四条腿与环境间歇接触的腿足平台，�
 
 - [人形机器人](./humanoid-robot.md)
 - [Boston Dynamics](./boston-dynamics.md)
+- [Autonomous Spot / NeBula](./paper-autonomous-spot-nebula-exploration.md)
+- [Spot RL Sim2Real](./paper-spot-rl-distributional-sim2real.md)
+- [BD 足式控制专利栈](./patent-boston-dynamics-legged-control-stack.md)
 - [ANYmal](./anymal.md)
 - [Unitree](./unitree.md)
 - [Legged Gym](./legged-gym.md)
@@ -98,3 +104,6 @@ summary: "四足机器人是以四条腿与环境间歇接触的腿足平台，�
 
 - [notable-commercial-robot-platforms](../../sources/repos/notable-commercial-robot-platforms.md)
 - [locomotion_rl](../../sources/papers/locomotion_rl.md)
+- [Autonomous Spot 论文摘录（arXiv:2010.09259）](../../sources/papers/autonomous_spot_arxiv_2010_09259.md)
+- [Spot RL 论文摘录（arXiv:2504.17857）](../../sources/papers/spot_rl_distributional_sim2real_arxiv_2504_17857.md)
+- [Boston Dynamics 足式专利摘录](../../sources/patents/boston_dynamics_legged_robot_patents.md)
