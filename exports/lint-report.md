@@ -2,7 +2,7 @@
 
 ## [2026-07-06] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **2** 条信息型预警）：
+共发现 **0** 个问题（另含 **4** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -49,8 +49,8 @@
 ### 💡 频繁提及但缺少 wiki 页面的概念（0 个）
 - 无
 
-### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（1 个）
+- GMR（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 
 ### ⚠️ Frontmatter 缺少 type 字段（0 个）
 - 无
@@ -94,8 +94,9 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（2 个）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（3 个）
 - wiki/entities/paper-abot-m05-mobile-manipulation-wam.md（缺 方法）
+- wiki/entities/paper-humanoidarena.md（缺 对比）
 - wiki/entities/paper-last-hd-latent-physical-reasoning.md（缺 对比）
 
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
@@ -110,4 +111,4 @@
 ### 💡 接触/力控/操作概念页缺回链「接触力旋量闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：1476/1506 (98%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1477/1507 (98%) wiki/entity 页有 ingest 来源

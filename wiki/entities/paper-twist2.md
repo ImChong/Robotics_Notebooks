@@ -120,6 +120,7 @@ flowchart TB
 - 前作：[paper-twist.md](./paper-twist.md)
 - 无机器人采集对照：[paper-bifrost-umi.md](./paper-bifrost-umi.md)
 - 全局闭环遥操作：[paper-amp-survey-16-clot.md](./paper-amp-survey-16-clot.md)（论文仿真以 TWIST2 为基线）
+- 分层 benchmark 后端：[paper-humanoidarena.md](./paper-humanoidarena.md) — 与 SONIC 并列作双 GMT 评测（arXiv:2606.17833）
 - RL 身体系统栈：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - BFM 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - 任务：[teleoperation.md](../tasks/teleoperation.md)、[loco-manipulation.md](../tasks/loco-manipulation.md)
