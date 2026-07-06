@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-110-hdmi](../../wiki/entities/paper-loco-manip-161-110-hdmi.md)
+- [paper-hrl-stack-06-hdmi](../../wiki/entities/paper-hrl-stack-06-hdmi.md)
 - [loco-manip-161-category-05-mocap-human-video](../../wiki/overview/loco-manip-161-category-05-mocap-human-video.md)
 
 ## 参考来源（原始）

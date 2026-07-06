@@ -43,6 +43,7 @@ PRIOR_WIKI: dict[int, str] = {}
 CANONICAL_ENTITY_BY_NUM: dict[int, str] = {
     19: "paper-sonic",
     103: "paper-sonic",
+    110: "paper-hrl-stack-06-hdmi",
     148: "paper-hrl-stack-34-gr00t_n1",
 }
 

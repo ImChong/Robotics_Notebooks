@@ -151,7 +151,7 @@
 | # | 工作 | Wiki 实体 |
 |---|------|-----------|
 | 109 | FALCON | [paper-loco-manip-161-109-falcon](../../wiki/entities/paper-loco-manip-161-109-falcon.md) |
-| 110 | HDMI | [paper-loco-manip-161-110-hdmi](../../wiki/entities/paper-loco-manip-161-110-hdmi.md) |
+| 110 | HDMI | [paper-hrl-stack-06-hdmi](../../wiki/entities/paper-hrl-stack-06-hdmi.md) |
 | 111 | HITTER | [paper-loco-manip-161-111-hitter](../../wiki/entities/paper-loco-manip-161-111-hitter.md) |
 | 112 | HumanX | [paper-loco-manip-161-112-humanx](../../wiki/entities/paper-loco-manip-161-112-humanx.md) |
 | 113 | Humanoid | [paper-loco-manip-161-113-humanoid](../../wiki/entities/paper-loco-manip-161-113-humanoid.md) |

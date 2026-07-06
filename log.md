@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-06] structural | wiki/entities/paper-hrl-stack-06-hdmi.md — 合并 HDMI 重复实体页（原 paper-loco-manip-161-110-hdmi 与 paper-hrl-stack-06-hdmi）；更新 Loco-Manip 161 catalog、category-05 hub、接触数据 hub 与 bootstrap_loco_manip_161_entities CANONICAL_ENTITY_BY_NUM
+
+- 删除：`wiki/entities/paper-loco-manip-161-110-hdmi.md`
+- 保留 canonical：`wiki/entities/paper-hrl-stack-06-hdmi.md`（双 survey 坐标：42 篇栈 #06 + Loco-Manip 161 #110）
+- 相关：`wiki/overview/loco-manip-161-category-05-mocap-human-video.md`、`wiki/overview/loco-manip-contact-category-01-contact-data.md`、`sources/papers/humanoid_loco_manip_161_catalog.md`、`sources/papers/loco_manip_161_survey_110_hdmi.md`
+
 ## [2026-07-05] structural | 执行清单换版 v27 → v28 —— V27（接触力旋量闭环链）P0–P3 全数交付、DoD 逐项达标后新建 V28（具身大模型分类学选型闭环）
 
 - V27 收尾：P3 详情页专题徽标端到端验证通过、DoD lint 0 errors / 节点边数 / 事实库 220 / 社区均衡 / log 记录 五项全绿，清单 0 未勾项

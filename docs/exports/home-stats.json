@@ -1,13 +1,40 @@
 {
   "generated_at": "2026-07-06",
-  "node_count": 1581,
+  "node_count": 1580,
   "edge_count": 10909,
   "coverage": {
-    "covered": 1549,
-    "total": 1579,
+    "covered": 1548,
+    "total": 1578,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-hrl-stack-06-hdmi.md",
+      "detail_id": "entity-paper-hrl-stack-06-hdmi",
+      "label": "HDMI",
+      "type": "entity",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/overview/loco-manip-161-category-05-mocap-human-video.md",
+      "detail_id": "wiki-overview-loco-manip-161-category-05-mocap-human-video",
+      "label": "Loco-Manip 161 分类 05：动捕、人类视频与交互动作规划",
+      "type": "overview",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/overview/loco-manip-contact-category-01-contact-data.md",
+      "detail_id": "wiki-overview-loco-manip-contact-category-01-contact-data",
+      "label": "Loco-Manip 接触分类 01：接触数据从哪来",
+      "type": "overview",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
     {
       "path": "wiki/concepts/vision-transformer.md",
       "detail_id": "wiki-concepts-vision-transformer",
@@ -160,48 +187,21 @@
       "recency": "2026-07-03",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-parc-physics-based-augmentation-with-reinforceme.md",
-      "detail_id": "entity-paper-notebook-parc-physics-based-augmentation-with-reinforceme",
-      "label": "PARC",
-      "type": "entity",
-      "recency": "2026-07-03",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/ponytail.md",
-      "detail_id": "entity-ponytail",
-      "label": "Ponytail",
-      "type": "entity",
-      "recency": "2026-07-03",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-simfoundry-real2sim-scene-generation.md",
-      "detail_id": "entity-paper-simfoundry-real2sim-scene-generation",
-      "label": "SimFoundry（Modular Real2Sim Scene Generation for Policy Learning and Evaluation）",
-      "type": "entity",
-      "recency": "2026-07-03",
-      "source": "log.md",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/vision-transformer.md",
-    "detail_id": "wiki-concepts-vision-transformer",
-    "label": "Vision Transformer（ViT，视觉 Transformer）",
-    "type": "concept",
-    "recency": "2026-07-05",
+    "path": "wiki/entities/paper-hrl-stack-06-hdmi.md",
+    "detail_id": "entity-paper-hrl-stack-06-hdmi",
+    "label": "HDMI",
+    "type": "entity",
+    "recency": "2026-07-06",
     "source": "log.md",
-    "action": "added"
+    "action": "maintained"
   },
   "top_communities": [
     {
       "label": "移动操作",
-      "size": 308
+      "size": 306
     },
     {
       "label": "人形论文深读笔记",
@@ -221,7 +221,7 @@
     },
     {
       "label": "动作重定向",
-      "size": 71
+      "size": 70
     }
   ]
 }
