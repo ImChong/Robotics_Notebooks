@@ -714,11 +714,6 @@
         currentWindowDays = TIMELINE_WINDOW_DAYS;
         timelineShowAll = false;
         refreshTimelineBody();
-        var collapseScrollTarget = document.getElementById('change-log-heading') ||
-          document.getElementById('change-log-section');
-        if (collapseScrollTarget && collapseScrollTarget.scrollIntoView) {
-          collapseScrollTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
         return;
       }
       var backTopBtn = ev.target.closest('button.updates-timeline-back-top');
