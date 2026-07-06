@@ -83,6 +83,8 @@ async function waitChangeLogReady(page) {
         dayCount: document.querySelectorAll('.updates-day').length,
         hasMoreBtn: !!document.querySelector('.updates-timeline-more-days'),
         hasAllBtn: !!document.querySelector('.updates-timeline-show-all'),
+        hasCollapseBtn: !!document.querySelector('.updates-timeline-collapse-days'),
+        hasBackTopBtn: !!document.querySelector('.updates-timeline-back-top'),
       }));
       const out = path.join(outDir, 'change-log-default-30d.png');
       await page.screenshot({ path: out, fullPage: true });
@@ -102,6 +104,8 @@ async function waitChangeLogReady(page) {
         intro: document.querySelector('.home-latest-wiki-intro')?.textContent?.trim() || '',
         dayCount: document.querySelectorAll('.updates-day').length,
         hasActions: !!document.querySelector('.updates-timeline-actions'),
+        hasCollapseBtn: !!document.querySelector('.updates-timeline-collapse-days'),
+        hasBackTopBtn: !!document.querySelector('.updates-timeline-back-top'),
       }));
       const out = path.join(outDir, 'change-log-expanded-all.png');
       await page.screenshot({ path: out, fullPage: true });
