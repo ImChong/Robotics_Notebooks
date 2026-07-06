@@ -1,13 +1,22 @@
 {
   "generated_at": "2026-07-06",
-  "node_count": 1581,
-  "edge_count": 10909,
+  "node_count": 1582,
+  "edge_count": 10918,
   "coverage": {
-    "covered": 1549,
-    "total": 1579,
+    "covered": 1550,
+    "total": 1580,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-last-hd-latent-physical-reasoning.md",
+      "detail_id": "entity-paper-last-hd-latent-physical-reasoning",
+      "label": "LaST-HD（Learning Latent Physical Reasoning from Scalable Human Data）",
+      "type": "entity",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "added"
+    },
     {
       "path": "wiki/concepts/vision-transformer.md",
       "detail_id": "wiki-concepts-vision-transformer",
@@ -178,42 +187,33 @@
       "recency": "2026-07-03",
       "source": "log.md",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-simfoundry-real2sim-scene-generation.md",
-      "detail_id": "entity-paper-simfoundry-real2sim-scene-generation",
-      "label": "SimFoundry（Modular Real2Sim Scene Generation for Policy Learning and Evaluation）",
-      "type": "entity",
-      "recency": "2026-07-03",
-      "source": "log.md",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/vision-transformer.md",
-    "detail_id": "wiki-concepts-vision-transformer",
-    "label": "Vision Transformer（ViT，视觉 Transformer）",
-    "type": "concept",
-    "recency": "2026-07-05",
+    "path": "wiki/entities/paper-last-hd-latent-physical-reasoning.md",
+    "detail_id": "entity-paper-last-hd-latent-physical-reasoning",
+    "label": "LaST-HD（Learning Latent Physical Reasoning from Scalable Human Data）",
+    "type": "entity",
+    "recency": "2026-07-06",
     "source": "log.md",
     "action": "added"
   },
   "top_communities": [
     {
       "label": "移动操作",
-      "size": 308
+      "size": 296
     },
     {
       "label": "人形论文深读笔记",
       "size": 215
     },
     {
-      "label": "强化学习",
-      "size": 176
+      "label": "视觉-语言-动作",
+      "size": 185
     },
     {
       "label": "全身控制",
-      "size": 101
+      "size": 102
     },
     {
       "label": "物理引擎",

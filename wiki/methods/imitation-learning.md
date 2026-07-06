@@ -2,7 +2,7 @@
 type: method
 tags: [il, behavior-cloning, diffusion-policy, sim2real]
 status: complete
-updated: 2026-07-03
+updated: 2026-07-06
 related:
   - ../concepts/humanoid-policy-network-architecture.md
   - ./bc-z.md
@@ -17,6 +17,7 @@ related:
   - ../entities/paper-tsil-temporal-self-imitation-learning.md
   - ./mimic-video.md
   - ./egoscale.md
+  - ../entities/paper-last-hd-latent-physical-reasoning.md
   - ./amp-reward.md
   - ./smp.md
   - ./disney-olaf-character-robot.md
@@ -28,6 +29,7 @@ sources:
   - ../../sources/papers/mimic_video_arxiv_2512_15692.md
   - ../../sources/papers/egoscale_arxiv_2602_16710.md
   - ../../sources/sites/nvidia-research-egoscale.md
+  - ../../sources/papers/last_hd_arxiv_2606_23685.md
   - ../../sources/repos/robot_lab.md
 summary: "Imitation Learning 通过专家演示学习策略，以 DAgger 和行为克隆 (Behavior Cloning, BC) 为核心支柱，是奖励难定义任务中最直接的数据驱动路线。"
 ---
@@ -139,6 +141,7 @@ flowchart TD
 - HTD：在人形接触丰富型移动操作中，把未来手部力与触觉 latent 预测作为行为克隆辅助目标，解决“有触觉输入但策略未必会用触觉”的问题
 - [HumanNet](../entities/humannet.md)：互联网级 **人中心** 视频语料（论文宣称约百万小时）与交互导向标注管线，可作为「人类侧大规模演示」与 VLA 持续预训练的数据基础设施参照（与真机日志互补，不等价替代物理闭环）
 - [EgoScale](./egoscale.md)：在 **两万小时量级** egocentric 人视频上做 **显式腕–手动作** 预训练，并系统测量 **数据规模–离线验证–真机灵巧** 的缩放关系；用 **对齐人–机 mid-training** 把表示锚到机器人（arXiv:2602.16710）
+- [LaST-HD](../entities/paper-last-hd-latent-physical-reasoning.md)：用 **动作条件世界模型** 在 **共享潜式物理推理空间** 对齐人手与机器人轨迹，配套 **OOL Glove** 与 **mixed-to-human**（混合共训 + 人手 DAgger 纠偏），在真机操作任务上报告 **人类数据缩放与快速适应**（arXiv:2606.23685）
 
 ## 常见问题
 
@@ -157,6 +160,7 @@ flowchart TD
 - [sources/papers/interprior_arxiv_2602_06035.md](../../sources/papers/interprior_arxiv_2602_06035.md) — InterPrior：物理 HOI 变分蒸馏 + RL 微调 ingest 摘要
 - [sources/papers/mimic_video_arxiv_2512_15692.md](../../sources/papers/mimic_video_arxiv_2512_15692.md) — mimic-video：Video-Action Model 与 VLA 对照（arXiv:2512.15692）摘录
 - [sources/papers/egoscale_arxiv_2602_16710.md](../../sources/papers/egoscale_arxiv_2602_16710.md) — EgoScale：人视频规模预训练 VLA + 对齐 mid-training（arXiv:2602.16710）摘录
+- [sources/papers/last_hd_arxiv_2606_23685.md](../../sources/papers/last_hd_arxiv_2606_23685.md) — LaST-HD：潜式物理推理 + OOL Glove 人手→机器人 VLA（arXiv:2606.23685）摘录
 - [sources/sites/nvidia-research-egoscale.md](../../sources/sites/nvidia-research-egoscale.md) — NVIDIA Research EgoScale 官方项目页索引
 - [sources/papers/learn_weightlessness.md](../../sources/papers/learn_weightlessness.md) — Learn Weightlessness (WM) ingest 摘要
 - [sources/papers/holomotion_arxiv_2605_15336.md](../../sources/papers/holomotion_arxiv_2605_15336.md) — HoloMotion-1：野外视频重建 + MoCap 混合语料，稀疏 MoE Transformer + 序列级 PPO 的零样本全身跟踪

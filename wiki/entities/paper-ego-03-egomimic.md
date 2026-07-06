@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, egocentric, ego-survey, embodied-ai, georgia-tech, stanford]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-06
 arxiv: "2410.24221"
 code: https://egomimic.github.io/
 summary: "Aria 第一视角 + 3D 手部轨迹与机器人遥操数据共训 IL；人类数据缩放效率高于等量机器人数据。"
