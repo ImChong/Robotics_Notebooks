@@ -1,6 +1,6 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
-## [2026-07-06] structural | scripts/dedupe_loco_manip_161_entities.py — 全量合并 Loco-Manip 161 与其它 survey 重叠的重复实体（74 stub 删除，72 catalog 槽位指向 canonical）
+## [2026-07-06] structural | scripts/dedupe_loco_manip_161_entities.py — 全量合并 Loco-Manip 161 与其它 survey 重叠的重复实体（74 stub 删除，69 catalog 槽位指向 canonical）
 
 - 新增工具：`scripts/dedupe_loco_manip_161_entities.py`（按 `同题深读`、项目 URL 与姊妹篇映射批量删除 stub、重定向 catalog / category hub / survey source）
 - 删除 74 个重复实体（含 `paper-motion-cerebellum-humanoidmimicgen`）；保留 hrl-stack / bfm / amp / loco-manip-8 / methods 等 canonical 页
@@ -12,6 +12,8 @@
 - 删除：`wiki/entities/paper-loco-manip-161-110-hdmi.md`
 - 保留 canonical：`wiki/entities/paper-hrl-stack-06-hdmi.md`（双 survey 坐标：42 篇栈 #06 + Loco-Manip 161 #110）
 - 相关：`wiki/overview/loco-manip-161-category-05-mocap-human-video.md`、`wiki/overview/loco-manip-contact-category-01-contact-data.md`、`sources/papers/humanoid_loco_manip_161_catalog.md`、`sources/papers/loco_manip_161_survey_110_hdmi.md`
+
+## [2026-07-06] ingest | sources/papers/last_hd_arxiv_2606_23685.md — LaST-HD 潜式物理推理 VLA + OOL Glove；wiki/entities/paper-last-hd-latent-physical-reasoning.md；交叉更新 vla / imitation-learning / topic-cross-embodiment
 
 ## [2026-07-05] structural | 执行清单换版 v27 → v28 —— V27（接触力旋量闭环链）P0–P3 全数交付、DoD 逐项达标后新建 V28（具身大模型分类学选型闭环）
 

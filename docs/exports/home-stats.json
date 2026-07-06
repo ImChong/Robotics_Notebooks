@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-06",
-  "node_count": 1506,
-  "edge_count": 10621,
+  "node_count": 1507,
+  "edge_count": 10630,
   "coverage": {
-    "covered": 1474,
-    "total": 1504,
+    "covered": 1475,
+    "total": 1505,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -34,6 +34,15 @@
       "recency": "2026-07-06",
       "source": "log.md",
       "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-last-hd-latent-physical-reasoning.md",
+      "detail_id": "entity-paper-last-hd-latent-physical-reasoning",
+      "label": "LaST-HD（Learning Latent Physical Reasoning from Scalable Human Data）",
+      "type": "entity",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "added"
     },
     {
       "path": "wiki/concepts/vision-transformer.md",
@@ -178,15 +187,6 @@
       "recency": "2026-07-03",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
-      "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
-      "label": "人形机器人 RL 运动控制：身体系统栈视角",
-      "type": "overview",
-      "recency": "2026-07-03",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
@@ -205,7 +205,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 196
+      "size": 208
     },
     {
       "label": "人形论文深读笔记",
