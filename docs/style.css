@@ -567,9 +567,22 @@ body.sponsor-dialog-open {
 .updates-timeline-actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 10px;
   margin-top: 18px;
   padding-left: 18px;
+  padding-right: 18px;
+}
+.updates-timeline-actions-start {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.updates-timeline-back-top {
+  margin-left: auto;
+  flex-shrink: 0;
 }
 /* 首页「最新知识节点」活跃度热力图（GitHub 风格布局；色阶取站点主题蓝
    （--accent 同色相，暗档最亮≈--accent-hover），已过顺序色板校验：
