@@ -33,19 +33,19 @@ sources:
 
 | # | 工作 | Wiki 实体 |
 |---|------|-----------|
-| 146 | AgiBot World Colosseo | [paper-loco-manip-161-146-agibot-world-colosseo](../entities/paper-loco-manip-161-146-agibot-world-colosseo.md) |
-| 147 | DIAL | [paper-loco-manip-161-147-dial](../entities/paper-loco-manip-161-147-dial.md) |
+| 146 | AgiBot World Colosseo | [paper-loco-manip-161-146-agibot-world-colosseo](../entities/agibot-world-2026.md) |
+| 147 | DIAL | [paper-loco-manip-161-147-dial](../methods/dial-instruction-augmentation.md) |
 | 148 | GR00T N1 | [paper-hrl-stack-34-gr00t_n1](../entities/paper-hrl-stack-34-gr00t_n1.md) |
-| 149 | Gemini Robotics | [paper-loco-manip-161-149-gemini-robotics](../entities/paper-loco-manip-161-149-gemini-robotics.md) |
-| 150 | Genie Envisioner | [paper-loco-manip-161-150-genie-envisioner](../entities/paper-loco-manip-161-150-genie-envisioner.md) |
-| 151 | LEGS | [paper-loco-manip-161-151-legs](../entities/paper-loco-manip-161-151-legs.md) |
-| 152 | LingBot-VLA | [paper-loco-manip-161-152-lingbot-vla](../entities/paper-loco-manip-161-152-lingbot-vla.md) |
-| 153 | MetaWorld-X | [paper-loco-manip-161-153-metaworld-x](../entities/paper-loco-manip-161-153-metaworld-x.md) |
+| 149 | Gemini Robotics | [paper-loco-manip-161-149-gemini-robotics](../entities/gemini-robotics.md) |
+| 150 | Genie Envisioner | [paper-loco-manip-161-150-genie-envisioner](../entities/ge-sim-2.md) |
+| 151 | LEGS | [paper-loco-manip-161-151-legs](../entities/paper-legs-embodied-gaussian-splatting-vla.md) |
+| 152 | LingBot-VLA | [paper-loco-manip-161-152-lingbot-vla](../methods/lingbot-map.md) |
+| 153 | MetaWorld-X | [paper-loco-manip-161-153-metaworld-x](../entities/paper-hrl-stack-32-metaworld.md) |
 | 154 | OpenHLM | [paper-loco-manip-161-154-openhlm](../entities/paper-loco-manip-161-154-openhlm.md) |
 | 155 | PhysiFlow | [paper-loco-manip-161-155-physiflow](../entities/paper-loco-manip-161-155-physiflow.md) |
 | 156 | Psi0 | [paper-loco-manip-161-156-psi0](../entities/paper-loco-manip-161-156-psi0.md) |
 | 157 | REFINE-DP | [paper-loco-manip-161-157-refine-dp](../entities/paper-loco-manip-161-157-refine-dp.md) |
-| 158 | ROVE | [paper-loco-manip-161-158-rove](../entities/paper-loco-manip-161-158-rove.md) |
+| 158 | ROVE | [paper-loco-manip-161-158-rove](../entities/paper-rove-humanoid-vla-intervention.md) |
 | 159 | 世界行动模型是零样本策略 | [paper-loco-manip-161-159-n159](../entities/paper-loco-manip-161-159-n159.md) |
 | 160 | 通过主动空间大脑和通用动作小脑进行人形全身操作 | [paper-loco-manip-161-160-n160](../entities/paper-loco-manip-161-160-n160.md) |
 

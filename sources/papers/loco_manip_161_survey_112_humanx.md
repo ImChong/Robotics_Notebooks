@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-112-humanx](../../wiki/entities/paper-loco-manip-161-112-humanx.md)
+- [paper-loco-manip-161-112-humanx](../../wiki/entities/paper-hrl-stack-05-humanx.md)
 - [loco-manip-161-category-05-mocap-human-video](../../wiki/overview/loco-manip-161-category-05-mocap-human-video.md)
 
 ## 参考来源（原始）

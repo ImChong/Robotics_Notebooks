@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-073-physhsi](../../wiki/entities/paper-loco-manip-161-073-physhsi.md)
+- [paper-loco-manip-161-073-physhsi](../../wiki/entities/paper-amp-survey-15-physhsi.md)
 - [loco-manip-161-category-03-visuomotor](../../wiki/overview/loco-manip-161-category-03-visuomotor.md)
 
 ## 参考来源（原始）

@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-004-beyondmimic](../../wiki/entities/paper-loco-manip-161-004-beyondmimic.md)
+- [paper-loco-manip-161-004-beyondmimic](../../wiki/entities/paper-beyondmimic.md)
 - [loco-manip-161-category-01-motion-base-wbt](../../wiki/overview/loco-manip-161-category-01-motion-base-wbt.md)
 
 ## 参考来源（原始）

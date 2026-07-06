@@ -37,7 +37,7 @@ overrides:
   CALM_Conditional_Adversarial_Latent_Models_for_Directable_Virtual_Characters:
   - wiki/entities/paper-bfm-19-calm.md
   CLONE__Holistic_Closed-Loop_Whole-Body_Teleoperation_for_Long-Horizon_Humanoid_C:
-  - wiki/entities/paper-loco-manip-161-006-clone.md
+  - wiki/entities/paper-bfm-12-clone.md
   CLOT__Closed-Loop_Global_Motion_Tracking_for_Whole-Body_Humanoid_Teleoperation:
   - wiki/entities/paper-amp-survey-16-clot.md
   CMR__Contractive_Mapping_Embeddings_for_Robust_Humanoid_Locomotion:
@@ -414,7 +414,7 @@ overrides:
   ame-2-agile-and-generalized-legged-locomotion-vi:
   - wiki/entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md
   amo-adaptive-motion-optimization-for-hyper-dexte:
-  - wiki/entities/paper-loco-manip-161-032-amo.md
+  - wiki/entities/paper-loco-manip-161-135-amo.md
   amor-adaptive-character-control-through-multi-ob:
   - wiki/entities/paper-notebook-amor-adaptive-character-control-through-multi-ob.md
   architecture-is-all-you-need-diversity-enabled-s:
@@ -492,7 +492,7 @@ overrides:
   deep-whole-body-parkour:
   - wiki/entities/project-instinct.md
   demohlm-from-one-demonstration-to-generalizable:
-  - wiki/entities/paper-loco-manip-161-059-demohlm.md
+  - wiki/entities/paper-loco-manip-161-136-demohlm.md
   design-and-control-of-a-bipedal-robotic-characte:
   - wiki/entities/paper-notebook-design-and-control-of-a-bipedal-robotic-characte.md
   dexcap-scalable-and-portable-mocap-data-collecti:
@@ -574,7 +574,7 @@ overrides:
   explosive-output-to-enhance-jumping-ability-a-va:
   - wiki/entities/paper-notebook-explosive-output-to-enhance-jumping-ability-a-va.md
   falcon-learning-force-adaptive-humanoid-loco-man:
-  - wiki/entities/paper-loco-manip-161-036-falcon.md
+  - wiki/entities/paper-loco-manip-161-109-falcon.md
   fame-force-adaptive-rl-for-expanding-the-manipul:
   - wiki/entities/paper-notebook-fame.md
   farm-frame-accelerated-augmentation-and-residual:
@@ -598,7 +598,7 @@ overrides:
   from-motion-to-behavior-hierarchical-modeling-of:
   - wiki/entities/paper-notebook-from-motion-to-behavior.md
   from-w1-towards-general-humanoid-whole-body-cont:
-  - wiki/entities/paper-loco-manip-161-008-from-w1.md
+  - wiki/entities/paper-loco-manip-161-096-from-w1.md
   full-order-sampling-based-mpc-for-torque-level-l:
   - wiki/entities/paper-notebook-full-order-sampling-based-mpc-for-torque-level-l.md
   gait-adaptive-perceptive-humanoid-locomotion-wit:
@@ -862,7 +862,7 @@ overrides:
   omnicontrol-control-any-joint-at-any-time-for-hu:
   - wiki/entities/paper-notebook-omnicontrol-control-any-joint-at-any-time-for-hu.md
   omnih2o-universal-and-dexterous-human-to-humanoi:
-  - wiki/entities/paper-loco-manip-161-016-omnih2o.md
+  - wiki/entities/paper-hrl-stack-08-omnih2o.md
   omniretarget-interaction-preserving-data-generat:
   - wiki/entities/holosoma.md
   one-policy-but-many-worlds-a-scalable-unified-po:

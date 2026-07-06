@@ -19,7 +19,7 @@
 ## 对 wiki 的映射
 
 - [paper-humanoidmimicgen](../../wiki/entities/paper-humanoidmimicgen.md) — arXiv 深读实体
-- [paper-loco-manip-161-068-humanoidmimicgen](../../wiki/entities/paper-loco-manip-161-068-humanoidmimicgen.md) — 161 篇策展索引
+- [paper-loco-manip-161-068-humanoidmimicgen](../../wiki/entities/paper-humanoidmimicgen.md) — 161 篇策展索引
 - [loco-manip-161-category-03-visuomotor](../../wiki/overview/loco-manip-161-category-03-visuomotor.md)
 
 ## 参考来源（原始）

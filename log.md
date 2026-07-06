@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-06] structural | scripts/dedupe_loco_manip_161_entities.py — 全量合并 Loco-Manip 161 与其它 survey 重叠的重复实体（74 stub 删除，72 catalog 槽位指向 canonical）
+
+- 新增工具：`scripts/dedupe_loco_manip_161_entities.py`（按 `同题深读`、项目 URL 与姊妹篇映射批量删除 stub、重定向 catalog / category hub / survey source）
+- 删除 74 个重复实体（含 `paper-motion-cerebellum-humanoidmimicgen`）；保留 hrl-stack / bfm / amp / loco-manip-8 / methods 等 canonical 页
+- 未合并：`paper-loco-manip-161-157-refine-dp`（与 monocular HMR 非同题，保留独立槽位）
+- 更新：`sources/papers/humanoid_loco_manip_161_catalog.md`、`scripts/bootstrap_loco_manip_161_entities.py`（`CANONICAL_ENTITY_BY_NUM` 扩至 69 槽位）
+
 ## [2026-07-06] structural | wiki/entities/paper-hrl-stack-06-hdmi.md — 合并 HDMI 重复实体页（原 paper-loco-manip-161-110-hdmi 与 paper-hrl-stack-06-hdmi）；更新 Loco-Manip 161 catalog、category-05 hub、接触数据 hub 与 bootstrap_loco_manip_161_entities CANONICAL_ENTITY_BY_NUM
 
 - 删除：`wiki/entities/paper-loco-manip-161-110-hdmi.md`

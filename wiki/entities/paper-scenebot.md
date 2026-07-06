@@ -14,8 +14,8 @@ related:
   - ../concepts/motion-retargeting.md
   - ../tasks/loco-manipulation.md
   - ../tasks/locomotion.md
-  - ../entities/paper-loco-manip-161-114-omniretarget.md
-  - ../entities/paper-loco-manip-161-005-chip.md
+  - ../entities/paper-hrl-stack-03-omniretarget.md
+  - ../entities/paper-hrl-stack-36-chip.md
   - ../entities/paper-humanoid-gpt.md
   - ../overview/loco-manip-contact-category-02-contact-representation.md
   - ../entities/paper-vlk-synthetic-loco-manipulation.md
@@ -44,7 +44,7 @@ sources:
 
 - **填补「通才 tracker 的接触鸿沟」：** 规模化 motion tracker（如 [SONIC](../methods/sonic-motion-tracking.md)、[Humanoid-GPT](./paper-humanoid-gpt.md)）主要在 **自由空间** 证明 scaling；SceneBot 指出纯运动学跟踪在 **物体/地形接触** 下存在物理歧义，并用 **per-link contact label** 作为轻量高层接口消解歧义。
 - **单策略统一三类行为：** 论文 Table 1 对比声称，SceneBot 是首个在 **多样参考跟踪 + 地形 + 物体** 三维同时打勾的 **单策略** whole-body controller（相对 BeyondMimic、SONIC、TWIST、OmniRetarget、CHIP 等组合能力）。
-- **数据引擎可复用：** **Hindsight reconstruction** 把 AMASS / OMOMO / Bones / LAFAN 等 **无场景上下文** 的人体运动变成 contact-rich 机器人-场景配对数据（约 **7.5 小时**），为「缺交互标注」提供可扩展路线，并与 [OmniRetarget](./paper-loco-manip-161-114-omniretarget.md) 的 **scene-aware retarget** 形成对照（论文：重建场景更利于 RL 收敛、抓取失败更少）。
+- **数据引擎可复用：** **Hindsight reconstruction** 把 AMASS / OMOMO / Bones / LAFAN 等 **无场景上下文** 的人体运动变成 contact-rich 机器人-场景配对数据（约 **7.5 小时**），为「缺交互标注」提供可扩展路线，并与 [OmniRetarget](./paper-hrl-stack-03-omniretarget.md) 的 **scene-aware retarget** 形成对照（论文：重建场景更利于 RL 收敛、抓取失败更少）。
 - **工程闭环完整：** 真机 **SuperOdometry + 骨盆 IMU** 融合根状态（200 Hz）；项目页提供 **浏览器 MuJoCo 交互 demo** 与搬箱上楼等长时程真机视频，且强调 **全部 demo 单策略**。
 
 ## 流程总览
@@ -125,8 +125,8 @@ flowchart TB
 ## 与其他页面的关系
 
 - [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md) — 自由空间强基线；SceneBot 在相同跟踪范式上扩展 **contact conditioning** 与 **场景重建数据**。
-- [OmniRetarget](./paper-loco-manip-161-114-omniretarget.md) — **scene-aware retarget** 对照；SceneBot 主张 **reconstruction-first** 更利于训练稳定性。
-- [CHIP](./paper-loco-manip-161-005-chip.md) — 同属接触相关人形控制，CHIP 强调 compliance hindsight；SceneBot 强调 **显式 contact label + 统一 tracker**。
+- [OmniRetarget](./paper-hrl-stack-03-omniretarget.md) — **scene-aware retarget** 对照；SceneBot 主张 **reconstruction-first** 更利于训练稳定性。
+- [CHIP](./paper-hrl-stack-36-chip.md) — 同属接触相关人形控制，CHIP 强调 compliance hindsight；SceneBot 强调 **显式 contact label + 统一 tracker**。
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 搬箱上楼、地形+物体长时程任务的应用坐标。
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md) — 接触丰富操作的概念层；SceneBot 提供 **全身 tracker 侧** 的 contact 接口实例。
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md) — 将 SceneBot 纳入「接触丰富场景 tracking」分支。
@@ -150,5 +150,5 @@ flowchart TB
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
-- [OmniRetarget](./paper-loco-manip-161-114-omniretarget.md)
+- [OmniRetarget](./paper-hrl-stack-03-omniretarget.md)
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)

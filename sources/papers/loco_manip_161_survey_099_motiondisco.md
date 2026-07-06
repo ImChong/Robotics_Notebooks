@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-099-motiondisco](../../wiki/entities/paper-loco-manip-161-099-motiondisco.md)
+- [paper-loco-manip-161-099-motiondisco](../../wiki/entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md)
 - [loco-manip-161-category-04-generative-language-trajectory](../../wiki/overview/loco-manip-161-category-04-generative-language-trajectory.md)
 
 ## 参考来源（原始）

@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-06",
-  "node_count": 1580,
-  "edge_count": 10909,
+  "node_count": 1506,
+  "edge_count": 10621,
   "coverage": {
-    "covered": 1548,
-    "total": 1578,
+    "covered": 1474,
+    "total": 1504,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -201,27 +201,27 @@
   "top_communities": [
     {
       "label": "移动操作",
-      "size": 306
+      "size": 211
+    },
+    {
+      "label": "视觉-语言-动作",
+      "size": 196
     },
     {
       "label": "人形论文深读笔记",
-      "size": 215
+      "size": 181
     },
     {
       "label": "强化学习",
-      "size": 176
+      "size": 154
     },
     {
       "label": "全身控制",
-      "size": 101
-    },
-    {
-      "label": "物理引擎",
-      "size": 79
+      "size": 104
     },
     {
       "label": "动作重定向",
-      "size": 70
+      "size": 64
     }
   ]
 }

@@ -36,10 +36,10 @@ sources:
 | 109 | FALCON | [paper-loco-manip-161-109-falcon](../entities/paper-loco-manip-161-109-falcon.md) |
 | 110 | HDMI | [paper-hrl-stack-06-hdmi](../entities/paper-hrl-stack-06-hdmi.md) |
 | 111 | HITTER | [paper-loco-manip-161-111-hitter](../entities/paper-loco-manip-161-111-hitter.md) |
-| 112 | HumanX | [paper-loco-manip-161-112-humanx](../entities/paper-loco-manip-161-112-humanx.md) |
-| 113 | Humanoid | [paper-loco-manip-161-113-humanoid](../entities/paper-loco-manip-161-113-humanoid.md) |
-| 114 | OmniRetarget | [paper-loco-manip-161-114-omniretarget](../entities/paper-loco-manip-161-114-omniretarget.md) |
-| 115 | ResMimic | [paper-loco-manip-161-115-resmimic](../entities/paper-loco-manip-161-115-resmimic.md) |
+| 112 | HumanX | [paper-loco-manip-161-112-humanx](../entities/paper-hrl-stack-05-humanx.md) |
+| 113 | Humanoid | [paper-loco-manip-161-113-humanoid](../entities/paper-amp-survey-13-humanoid_goalkeeper.md) |
+| 114 | OmniRetarget | [paper-loco-manip-161-114-omniretarget](../entities/paper-hrl-stack-03-omniretarget.md) |
+| 115 | ResMimic | [paper-loco-manip-161-115-resmimic](../entities/paper-resmimic.md) |
 | 116 | WoCoCo | [paper-loco-manip-161-116-wococo](../entities/paper-loco-manip-161-116-wococo.md) |
 | 117 | 多阶段强化学习的人形全身羽毛球 | [paper-loco-manip-161-117-n117](../entities/paper-loco-manip-161-117-n117.md) |
 | 118 | 腿式机械手全身动态投掷 | [paper-loco-manip-161-118-n118](../entities/paper-loco-manip-161-118-n118.md) |

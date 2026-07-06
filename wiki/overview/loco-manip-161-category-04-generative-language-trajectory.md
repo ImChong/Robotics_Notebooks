@@ -35,13 +35,13 @@ sources:
 |---|------|-----------|
 | 093 | DreamControl | [paper-loco-manip-161-093-dreamcontrol](../entities/paper-loco-manip-161-093-dreamcontrol.md) |
 | 094 | EMOTION | [paper-loco-manip-161-094-emotion](../entities/paper-loco-manip-161-094-emotion.md) |
-| 095 | EgoPriMo | [paper-loco-manip-161-095-egoprimo](../entities/paper-loco-manip-161-095-egoprimo.md) |
+| 095 | EgoPriMo | [paper-loco-manip-161-095-egoprimo](../entities/paper-loco-manip-02-egoprimo.md) |
 | 096 | FRoM-W1 | [paper-loco-manip-161-096-from-w1](../entities/paper-loco-manip-161-096-from-w1.md) |
 | 097 | Harmon | [paper-loco-manip-161-097-harmon](../entities/paper-loco-manip-161-097-harmon.md) |
-| 098 | LangWBC | [paper-loco-manip-161-098-langwbc](../entities/paper-loco-manip-161-098-langwbc.md) |
-| 099 | MotionDisco | [paper-loco-manip-161-099-motiondisco](../entities/paper-loco-manip-161-099-motiondisco.md) |
-| 100 | MotionWAM | [paper-loco-manip-161-100-motionwam](../entities/paper-loco-manip-161-100-motionwam.md) |
-| 101 | OMG | [paper-loco-manip-161-101-omg](../entities/paper-loco-manip-161-101-omg.md) |
+| 098 | LangWBC | [paper-loco-manip-161-098-langwbc](../entities/paper-bfm-37-langwbc.md) |
+| 099 | MotionDisco | [paper-loco-manip-161-099-motiondisco](../entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md) |
+| 100 | MotionWAM | [paper-loco-manip-161-100-motionwam](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) |
+| 101 | OMG | [paper-loco-manip-161-101-omg](../entities/paper-omg-omni-modal-humanoid-control.md) |
 | 102 | Robot Motion Diffusion Model | [paper-loco-manip-161-102-robot-motion-diffusion-model](../entities/paper-loco-manip-161-102-robot-motion-diffusion-model.md) |
 | 103 | SONIC | [paper-sonic](../entities/paper-sonic.md) |
 | 104 | SafeFlow | [paper-loco-manip-161-104-safeflow](../entities/paper-loco-manip-161-104-safeflow.md) |

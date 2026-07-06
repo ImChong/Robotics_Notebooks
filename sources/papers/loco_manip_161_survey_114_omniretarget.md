@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-114-omniretarget](../../wiki/entities/paper-loco-manip-161-114-omniretarget.md)
+- [paper-loco-manip-161-114-omniretarget](../../wiki/entities/paper-hrl-stack-03-omniretarget.md)
 - [loco-manip-161-category-05-mocap-human-video](../../wiki/overview/loco-manip-161-category-05-mocap-human-video.md)
 
 ## 参考来源（原始）

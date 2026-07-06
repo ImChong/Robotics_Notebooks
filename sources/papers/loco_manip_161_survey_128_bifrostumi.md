@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-128-bifrostumi](../../wiki/entities/paper-loco-manip-161-128-bifrostumi.md)
+- [paper-loco-manip-161-128-bifrostumi](../../wiki/entities/paper-bifrost-umi.md)
 - [loco-manip-161-category-07-data-teleop](../../wiki/overview/loco-manip-161-category-07-data-teleop.md)
 
 ## 参考来源（原始）

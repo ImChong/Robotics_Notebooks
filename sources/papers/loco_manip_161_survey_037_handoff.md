@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-037-handoff](../../wiki/entities/paper-loco-manip-161-037-handoff.md)
+- [paper-loco-manip-161-037-handoff](../../wiki/entities/paper-motion-cerebellum-handoff.md)
 - [loco-manip-161-category-02-upper-body-interface](../../wiki/overview/loco-manip-161-category-02-upper-body-interface.md)
 
 ## 参考来源（原始）

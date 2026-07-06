@@ -34,8 +34,8 @@ sources:
 
 | 工作 | Wiki 实体（复用） | 文内角色 |
 |------|-------------------|----------|
-| OmniRetarget | [paper-loco-manip-161-114-omniretarget](../entities/paper-loco-manip-161-114-omniretarget.md) | 重定向时保持脚底支撑、手物接触与场景约束 |
-| HumanX | [paper-loco-manip-161-112-humanx](../entities/paper-loco-manip-161-112-humanx.md) | 人类视频 → 可学习人形交互技能 |
+| OmniRetarget | [paper-loco-manip-161-114-omniretarget](../entities/paper-hrl-stack-03-omniretarget.md) | 重定向时保持脚底支撑、手物接触与场景约束 |
+| HumanX | [paper-loco-manip-161-112-humanx](../entities/paper-hrl-stack-05-humanx.md) | 人类视频 → 可学习人形交互技能 |
 | HDMI | [paper-hrl-stack-06-hdmi](../entities/paper-hrl-stack-06-hdmi.md) | RGB 视频恢复人-物轨迹 |
 | SUGAR | [paper-loco-manip-161-076-sugar](../entities/paper-loco-manip-161-076-sugar.md) | 运动轨迹与接触先验 → 技能优化与蒸馏 |
 | Human-as-Humanoid | [paper-human-as-humanoid](../entities/paper-human-as-humanoid.md) | Ego-Exo 人类视频 → 人形动作标签 |

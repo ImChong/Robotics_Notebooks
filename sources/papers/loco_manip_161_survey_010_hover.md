@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-010-hover](../../wiki/entities/paper-loco-manip-161-010-hover.md)
+- [paper-loco-manip-161-010-hover](../../wiki/entities/paper-bfm-14-hover.md)
 - [loco-manip-161-category-01-motion-base-wbt](../../wiki/overview/loco-manip-161-category-01-motion-base-wbt.md)
 
 ## 参考来源（原始）

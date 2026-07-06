@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-015-make-tracking-easy](../../wiki/entities/paper-loco-manip-161-015-make-tracking-easy.md)
+- [paper-loco-manip-161-015-make-tracking-easy](../../wiki/entities/paper-hrl-stack-02-make_tracking_easy.md)
 - [loco-manip-161-category-01-motion-base-wbt](../../wiki/overview/loco-manip-161-category-01-motion-base-wbt.md)
 
 ## 参考来源（原始）
