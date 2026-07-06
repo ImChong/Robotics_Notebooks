@@ -44,18 +44,18 @@
 
 - [x] **图谱页"接触力控"专题视图**：
     - [x] `docs/topic-filters.js` 单一事实源新增「接触力控」专题（`contact-force-control`，🤝 emoji），复用 path 片段并集机制（`impedance` / `admittance` / `wrench` / `force` / `compliance` / `forcecontrol` 干净片段——刻意剔除过宽的 `contact`（归 `physics-fidelity`）与 `hybrid`（会误命中 locomotion/lidar），与 `physics-fidelity` / `tactile` / `grasp` 保持最小重叠）并用 `ids` 显式纳入四层闭环里未被片段命中的感知/操作页（`contact-wrench-closed-loop` / `contact-rich-manipulation-guide` / `contact-force-loop-bandwidth` / `contact-estimation` / `visuo-tactile-fusion` / `contact-rich-manipulation`）；同步在 `docs/graph.html` `#filter-topic-chips` 增加对应 chip。新建专题汇总枢纽页 `wiki/overview/topic-contact-force-control.md` 并从 query（`contact-wrench-closed-loop`）/concept（`contact-force-loop-bandwidth`）双向回链，`graph-stats.json` 0 orphans（枢纽页 15 条边）。专题视图筛出 18 个节点，Puppeteer 截图归档至 `.cursor-artifacts/screenshots/graph-topic-contact-force-control.png`。
-- [ ] **详情页"同专题相关页"提示**：
-    - [ ] 复用 `docs/topic-filters.js` 单一事实源（`renderMetaTopicBadges` → `topicsForNode` 已数据驱动），接触/力控/新建页命中「接触力控」专题时自动渲染对应轻量徽标 + 跳转 `graph.html?topic=contact-force-control`（空态降级隐藏）。端到端验证截图归档至 `.cursor-artifacts/screenshots/detail-topic-contact-force-control.png`。
+- [x] **详情页"同专题相关页"提示**：
+    - [x] 复用 `docs/topic-filters.js` 单一事实源（`renderMetaTopicBadges` → `topicsForNode` 已数据驱动），接触/力控/新建页命中「接触力控」专题时自动渲染对应轻量徽标 + 跳转 `graph.html?topic=contact-force-control`（空态降级隐藏）。端到端验证：`detail.html?id=wiki-concepts-contact-force-loop-bandwidth` 的「所属专题」行渲染出 `🤝 接触力控 (Contact Force Control)` 徽标且 `href=graph.html?topic=contact-force-control`（同页并列渲染 触觉/安全微调/物理保真度 徽标，多专题命中互不干扰），空态由 `renderDetailMetaItemRow` 隐藏；截图归档至 `.cursor-artifacts/screenshots/detail-topic-contact-force-control.png`。
 
 ---
 
 ## 验收标准 (Definition of DoD)
 
-- [~] `make lint`: 0 errors（新引入的 `contact_control_crosslink` 为 INFO 级，不阻塞 CI）——已达成 0 errors + 14 条信息型预警。
+- [x] `make lint`: 0 errors（新引入的 `contact_control_crosslink` 为 INFO 级，不阻塞 CI）——已达成 0 errors（当前仅 2 条信息型预警，均为 paper-* 三段式建议，与 V27 无关）。
 - [x] 知识图谱节点数 **≥ 1525**，边数 **≥ 10260**（当前 1575 节点 / 10853 边，见 `exports/graph-stats.json`）。
 - [x] 事实库扩展至 **220 条**（补齐 力控带宽 / 阻抗导纳 / 视触觉时延 等 10 条接触力控矛盾检测规则）。
 - [x] `community_quality_warning` 保持 `false` 且 `largest_community_ratio ≤ 0.25`（当前 `false` / 0.196）。
-- [ ] `log.md` 记录 V27 关键改动。
+- [x] `log.md` 记录 V27 关键改动（P0 lint 巡检 / P1 接触力旋量闭环链 / P2 事实库 220 条 / P3 图谱专题视图与详情页徽标验证 均已逐条记录）。
 
 ---
 
