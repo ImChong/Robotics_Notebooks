@@ -1881,6 +1881,40 @@
     }
   }
 
+  /**
+   * 路线正文：把 wrapRoadmapCollapsibleMajorHeadings 产出的章节折叠块包进竖向时间线容器
+   * （左侧轨道 + 章节节点：L−1…L7 显示层级徽标、其余章节为圆点，视觉对齐 change-log 更新时间线），
+   * details 展开/收起交互保持不变。须在 wrapRoadmapCollapsibleMajorHeadings 之后调用，
+   * 此时全部章节 details 已是相邻兄弟节点。
+   */
+  function wrapRoadmapTimelineSections(container) {
+    if (!container) return;
+    var sections = Array.from(container.querySelectorAll(':scope > details.roadmap-major-section'));
+    if (!sections.length) return;
+    var wrap = document.createElement('div');
+    wrap.className = 'roadmap-timeline';
+    sections[0].parentNode.insertBefore(wrap, sections[0]);
+    var i;
+    for (i = 0; i < sections.length; i++) {
+      var item = document.createElement('div');
+      item.className = 'roadmap-timeline-item';
+      var node = document.createElement('span');
+      node.className = 'roadmap-timeline-node';
+      node.setAttribute('aria-hidden', 'true');
+      var h2 = sections[i].querySelector(':scope > summary > h2');
+      var stageMatch = /^\s*(L\s*[−–-]?\s*\d+(?:\.\d+)?)/.exec((h2 && h2.textContent) || '');
+      if (stageMatch) {
+        node.classList.add('roadmap-timeline-node-stage');
+        node.textContent = stageMatch[1].replace(/\s+/g, '');
+      } else {
+        node.classList.add('roadmap-timeline-node-dot');
+      }
+      item.appendChild(node);
+      item.appendChild(sections[i]);
+      wrap.appendChild(item);
+    }
+  }
+
   /** 路线章节折叠展开后，对刚打开的 section 内未渲染/失败的 Mermaid 再跑一次。 */
   function bindRoadmapSectionMermaidRerender(container) {
     if (!container || container.getAttribute('data-roadmap-mermaid-toggle-bound') === '1') return;
@@ -4043,6 +4077,7 @@
         clearRoadmapStandaloneFlowSection();
       }
       wrapRoadmapCollapsibleMajorHeadings(contentEl);
+      wrapRoadmapTimelineSections(contentEl);
       bindRoadmapSectionMermaidRerender(contentEl);
       bindSelftestMermaidRerender(contentEl);
       renderDetailMermaid(contentEl);
