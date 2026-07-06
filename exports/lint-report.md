@@ -1,6 +1,6 @@
 # Wiki 健康报告
 
-## [2026-07-05] lint | health-check | 自动化 wiki 健康检查
+## [2026-07-06] lint | health-check | 自动化 wiki 健康检查
 
 共发现 **0** 个问题（另含 **0** 条信息型预警）：
 
