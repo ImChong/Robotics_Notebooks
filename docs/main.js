@@ -1234,14 +1234,19 @@
     }
     const rawCode = String(code || '').endsWith('\n') ? String(code || '').slice(0, -1) : String(code || '');
     const lines = rawCode.split('\n');
-    const rows = lines.map(function (line, index) {
-      return '<div class="code-row">'
-        + '<span class="code-ln">' + (index + 1) + '</span>'
-        + '<span class="code-cell">' + highlightCodeLine(line, normalizedLang) + '</span>'
+
+    // ⚡ Bolt Optimization: Replace .map().join('') with a standard for loop and string concatenation
+    // Expected impact: Eliminates closure creation and array allocation during code block rendering, reducing memory GC pauses on large snippets.
+    var rowsHtml = '';
+    for (var idx = 0; idx < lines.length; idx++) {
+      rowsHtml += '<div class="code-row">'
+        + '<span class="code-ln">' + (idx + 1) + '</span>'
+        + '<span class="code-cell">' + highlightCodeLine(lines[idx], normalizedLang) + '</span>'
         + '</div>';
-    }).join('');
+    }
+
     return '<div class="detail-code-block highlight language-' + escapeHtml(normalizedLang) + '">'
-      + rows
+      + rowsHtml
       + '</div>';
   }
 

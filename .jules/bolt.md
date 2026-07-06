@@ -105,3 +105,6 @@
 ## 2026-07-01 - Python YAML Parsing Optimization
 **Learning:** PyYAML's `yaml.safe_load` in Python without `CSafeLoader` uses a pure Python scanner/parser, which is extremely slow when processing thousands of small markdown files with frontmatter (e.g., `search_indexing.py` where parsing takes ~2.5s for ~1500 files).
 **Action:** Always prefer `yaml.load(content, Loader=yaml.CSafeLoader)` when `yaml.CSafeLoader` is available. Add a `hasattr(yaml, "CSafeLoader")` check to safely fallback to `yaml.safe_load` for environments missing the C extension.
+## 2026-07-05 - Avoid .map().join('') in HTML Code Block Rendering
+**Learning:** In frontend JavaScript processing, chaining array operations like `.map(...).join('')` inside layout rendering (e.g., `renderCodeBlock` generating HTML for code snippets) creates multiple intermediate arrays and forces function closures on every line of text. This causes garbage collection pauses during large or numerous code block renders on the page.
+**Action:** When mapping string arrays into dynamic HTML strings, especially for potentially large datasets like code block lines, replace the `.map().join('')` pattern with a standard `for` loop that concatenates strings directly into an accumulator. This eliminates memory closure and array overhead entirely.
