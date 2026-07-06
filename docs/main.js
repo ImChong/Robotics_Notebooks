@@ -615,12 +615,23 @@
       return '<p class="data-meta home-latest-wiki-intro">' + escapeHtml(introParts.join(' · ')) + '</p>';
     }
 
-    function renderTimelineActions(visibleGroups, allGroups, showAll) {
-      if (!allGroups.length || showAll || visibleGroups.length >= allGroups.length) return '';
+    function renderTimelineActions(visibleGroups, allGroups, windowDays, showAll) {
+      if (!allGroups.length) return '';
+      var isExpanded = showAll || windowDays > TIMELINE_WINDOW_DAYS;
+      var canExpandMore = !showAll && visibleGroups.length < allGroups.length;
+      if (!canExpandMore && !isExpanded) return '';
+      var buttons = [];
+      if (canExpandMore) {
+        buttons.push('<button type="button" class="btn-secondary updates-timeline-more-days">再展开 30 天</button>');
+        buttons.push('<button type="button" class="btn-secondary updates-timeline-show-all">展开全部记录</button>');
+      }
+      if (isExpanded) {
+        buttons.push('<button type="button" class="btn-secondary updates-timeline-collapse-days">收起至 30 天</button>');
+        buttons.push('<button type="button" class="btn-secondary updates-timeline-back-top">回到顶部</button>');
+      }
       return (
-        '<div class="updates-timeline-actions" role="group" aria-label="展开更多更新记录">' +
-        '<button type="button" class="btn-secondary updates-timeline-more-days">再展开 30 天</button>' +
-        '<button type="button" class="btn-secondary updates-timeline-show-all">展开全部记录</button>' +
+        '<div class="updates-timeline-actions" role="group" aria-label="更新记录导航">' +
+        buttons.join('') +
         '</div>'
       );
     }
@@ -641,7 +652,7 @@
           { added: tg.addedCount || 0, maintained: tg.maintainedCount || 0 }
         );
       }
-      var actionsHtml = renderTimelineActions(visibleGroups, allGroups, showAll);
+      var actionsHtml = renderTimelineActions(visibleGroups, allGroups, windowDays, showAll);
       return introHtml + '<div class="updates-timeline-days">' + daysHtml + '</div>' + actionsHtml;
     }
 
@@ -697,6 +708,30 @@
       if (showAllBtn) {
         timelineShowAll = true;
         refreshTimelineBody();
+        return;
+      }
+      var collapseDaysBtn = ev.target.closest('button.updates-timeline-collapse-days');
+      if (collapseDaysBtn) {
+        currentWindowDays = TIMELINE_WINDOW_DAYS;
+        timelineShowAll = false;
+        refreshTimelineBody();
+        var collapseScrollTarget = document.getElementById('change-log-heading') ||
+          document.getElementById('change-log-section');
+        if (collapseScrollTarget && collapseScrollTarget.scrollIntoView) {
+          collapseScrollTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        return;
+      }
+      var backTopBtn = ev.target.closest('button.updates-timeline-back-top');
+      if (backTopBtn) {
+        var scrollTarget = document.getElementById('change-log-heading') ||
+          document.getElementById('change-log-section') ||
+          document.querySelector('.site-header');
+        if (scrollTarget && scrollTarget.scrollIntoView) {
+          scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
         return;
       }
       var moreBtn = ev.target.closest('button.updates-day-more');
