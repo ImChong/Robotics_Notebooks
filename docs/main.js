@@ -619,19 +619,18 @@
       if (!allGroups.length) return '';
       var isExpanded = showAll || windowDays > TIMELINE_WINDOW_DAYS;
       var canExpandMore = !showAll && visibleGroups.length < allGroups.length;
-      if (!canExpandMore && !isExpanded) return '';
-      var buttons = [];
+      var leftButtons = [];
       if (canExpandMore) {
-        buttons.push('<button type="button" class="btn-secondary updates-timeline-more-days">再展开 30 天</button>');
-        buttons.push('<button type="button" class="btn-secondary updates-timeline-show-all">展开全部记录</button>');
+        leftButtons.push('<button type="button" class="btn-secondary updates-timeline-more-days">再展开 30 天</button>');
+        leftButtons.push('<button type="button" class="btn-secondary updates-timeline-show-all">展开全部记录</button>');
       }
       if (isExpanded) {
-        buttons.push('<button type="button" class="btn-secondary updates-timeline-collapse-days">收起至 30 天</button>');
-        buttons.push('<button type="button" class="btn-secondary updates-timeline-back-top">回到顶部</button>');
+        leftButtons.push('<button type="button" class="btn-secondary updates-timeline-collapse-days">收起至 30 天</button>');
       }
       return (
         '<div class="updates-timeline-actions" role="group" aria-label="更新记录导航">' +
-        buttons.join('') +
+        '<div class="updates-timeline-actions-start">' + leftButtons.join('') + '</div>' +
+        '<button type="button" class="btn-secondary updates-timeline-back-top">回到顶部</button>' +
         '</div>'
       );
     }
@@ -786,6 +785,10 @@
         ' <button type="button" class="btn-secondary btn-inline home-wiki-heatmap-clear">清除筛选</button></p>' +
         '<div class="updates-timeline-days">' +
         renderTimelineDay(dateKey, dayNodes, total, filterStats) +
+        '</div>' +
+        '<div class="updates-timeline-actions" role="group" aria-label="更新记录导航">' +
+        '<div class="updates-timeline-actions-start"></div>' +
+        '<button type="button" class="btn-secondary updates-timeline-back-top">回到顶部</button>' +
         '</div>';
     }
 
