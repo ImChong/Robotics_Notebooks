@@ -2,7 +2,7 @@
 
 ## [2026-07-06] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **4** 条信息型预警）：
+共发现 **0** 个问题（另含 **14** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -110,5 +110,17 @@
 
 ### 💡 接触/力控/操作概念页缺回链「接触力旋量闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
+
+### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」专题枢纽（信息型，不阻塞 CI）（10 个）
+- wiki/comparisons/humannet-table1-human-video-corpora.md
+- wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md
+- wiki/concepts/3d-spatial-vqa.md
+- wiki/concepts/behavior-tree-vla-orchestration.md
+- wiki/concepts/foundation-policy.md
+- wiki/concepts/hierarchical-quadruped-navigation-stack.md
+- wiki/concepts/humanoid-policy-network-architecture.md
+- wiki/concepts/latent-imagination.md
+- wiki/concepts/visual-representation-for-policy.md
+- wiki/concepts/world-action-models.md
 
 📊 Sources 覆盖率：1479/1509 (98%) wiki/entity 页有 ingest 来源
