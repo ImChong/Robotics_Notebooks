@@ -2,7 +2,7 @@
 type: entity
 tags: [agibot, dataset, imitation-learning, teleoperation, open-source]
 status: complete
-updated: 2026-06-26
+updated: 2026-07-06
 related:
   - ../overview/agibot-june-2026-release-technology-map.md
   - ../overview/agibot-release-category-01-data-entry.md

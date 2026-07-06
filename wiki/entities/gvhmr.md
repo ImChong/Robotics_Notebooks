@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, paper, human-pose, hmr, monocular-video, smpl, world-grounded, motion-retargeting, upstream, siggraph-asia-2024, tsinghua, zju]
 status: complete
-updated: 2026-06-30
+updated: 2026-07-06
 arxiv: "2409.06662"
 venue: SIGGRAPH Asia 2024
 summary: "GVHMR 用 Gravity-View 坐标逐帧估计单目视频人体姿态，再经相机运动恢复 world-grounded SMPL 全局轨迹，是人形「视频→重定向」链路最常见的上游 HMR 模块之一。"

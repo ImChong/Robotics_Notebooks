@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, motion-cerebellum-survey, humanoid, motion-control]
 status: complete
-updated: 2026-06-30
+updated: 2026-07-06
 venue: curated
 summary: "接口：EE-root 命令连接高层和全身控制。输入是根部运动目标、末端执行器目标和柔顺控制参数；实现上把根部控制与柔顺末端执行器解耦，再通过层级接口协调移动和操作；重点是降低手、脚、腰之间的强耦合，让上层更容易调用。"
 related:

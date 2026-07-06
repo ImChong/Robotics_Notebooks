@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation, berkeley, sjtu, siggraph]
 status: complete
-updated: 2026-06-30
+updated: 2026-07-06
 venue: SIGGRAPH 2021
 summary: "AMP（SIGGRAPH 2021）用对抗判别器约束状态转移接近 MoCap 分布，而非逐帧跟踪参考 clip，奠定人形/角色 physics-based 风格先验范式。"
 related:

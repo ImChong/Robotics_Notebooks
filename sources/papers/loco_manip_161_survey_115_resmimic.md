@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-115-resmimic](../../wiki/entities/paper-loco-manip-161-115-resmimic.md)
+- [paper-loco-manip-161-115-resmimic](../../wiki/entities/paper-resmimic.md)
 - [loco-manip-161-category-05-mocap-human-video](../../wiki/overview/loco-manip-161-category-05-mocap-human-video.md)
 
 ## 参考来源（原始）

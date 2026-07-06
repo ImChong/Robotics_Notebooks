@@ -2268,6 +2268,8 @@ button.home-wiki-heatmap-cell.is-active {
   border-radius: 12px;
   background: var(--surface-strong, var(--bg-alt));
   overflow: hidden;
+  /* 底部「收起本章」收起后 scrollIntoView 回到标题行，与全站锚点跳转同款头部避让 */
+  scroll-margin-top: 96px;
 }
 .roadmap-major-section-summary {
   display: flex;
@@ -2312,6 +2314,28 @@ button.home-wiki-heatmap-cell.is-active {
 }
 .roadmap-major-section-body > :first-child {
   margin-top: 0.85rem;
+}
+/* 章节正文末尾「收起本章」按钮（视觉对齐 change-log 的 .updates-day-more 胶囊按钮） */
+.roadmap-major-section-foot {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.roadmap-major-section-collapse {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 4px 16px;
+  font-size: 0.8rem;
+  color: var(--accent);
+  background: transparent;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.roadmap-major-section-collapse:hover {
+  color: var(--accent-hover);
+  border-color: var(--accent-hover);
 }
 /* 路线正文时间线（wrapRoadmapTimelineSections）：左侧轨道 + 章节节点，
    视觉对齐 change-log 更新时间线；章节 details 展开/收起不受影响 */

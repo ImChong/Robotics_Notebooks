@@ -33,13 +33,13 @@ sources:
 
 | # | 工作 | Wiki 实体 |
 |---|------|-----------|
-| 128 | BifrostUMI | [paper-loco-manip-161-128-bifrostumi](../entities/paper-loco-manip-161-128-bifrostumi.md) |
+| 128 | BifrostUMI | [paper-loco-manip-161-128-bifrostumi](../entities/paper-bifrost-umi.md) |
 | 129 | HOMIE | [paper-loco-manip-161-129-homie](../entities/paper-loco-manip-161-129-homie.md) |
-| 130 | HumanoidExo | [paper-loco-manip-161-130-humanoidexo](../entities/paper-loco-manip-161-130-humanoidexo.md) |
+| 130 | HumanoidExo | [paper-loco-manip-161-130-humanoidexo](../entities/paper-loco-manip-161-067-humanoidexo.md) |
 | 131 | Open-TeleVision | [paper-loco-manip-161-131-open-television](../entities/paper-loco-manip-161-131-open-television.md) |
-| 132 | TWIST2 | [paper-loco-manip-161-132-twist2](../entities/paper-loco-manip-161-132-twist2.md) |
-| 133 | TWIST | [paper-loco-manip-161-133-twist](../entities/paper-loco-manip-161-133-twist.md) |
-| 134 | WT-UMI | [paper-loco-manip-161-134-wt-umi](../entities/paper-loco-manip-161-134-wt-umi.md) |
+| 132 | TWIST2 | [paper-loco-manip-161-132-twist2](../entities/paper-twist2.md) |
+| 133 | TWIST | [paper-loco-manip-161-133-twist](../entities/paper-twist.md) |
+| 134 | WT-UMI | [paper-loco-manip-161-134-wt-umi](../entities/paper-loco-manip-07-wt-umi.md) |
 
 ## 关联页面
 

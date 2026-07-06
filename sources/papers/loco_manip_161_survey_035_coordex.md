@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-035-coordex](../../wiki/entities/paper-loco-manip-161-035-coordex.md)
+- [paper-loco-manip-161-035-coordex](../../wiki/entities/paper-coordex-dexterous-humanoid-loco-manipulation.md)
 - [loco-manip-161-category-02-upper-body-interface](../../wiki/overview/loco-manip-161-category-02-upper-body-interface.md)
 
 ## 参考来源（原始）

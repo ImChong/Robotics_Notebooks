@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-063-halomi](../../wiki/entities/paper-loco-manip-161-063-halomi.md)
+- [paper-loco-manip-161-063-halomi](../../wiki/entities/paper-halomi-humanoid-loco-manipulation.md)
 - [loco-manip-161-category-03-visuomotor](../../wiki/overview/loco-manip-161-category-03-visuomotor.md)
 
 ## 参考来源（原始）

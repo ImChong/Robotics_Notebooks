@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-095-egoprimo](../../wiki/entities/paper-loco-manip-161-095-egoprimo.md)
+- [paper-loco-manip-161-095-egoprimo](../../wiki/entities/paper-loco-manip-02-egoprimo.md)
 - [loco-manip-161-category-04-generative-language-trajectory](../../wiki/overview/loco-manip-161-category-04-generative-language-trajectory.md)
 
 ## 参考来源（原始）

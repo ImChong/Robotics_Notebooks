@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-134-wt-umi](../../wiki/entities/paper-loco-manip-161-134-wt-umi.md)
+- [paper-loco-manip-161-134-wt-umi](../../wiki/entities/paper-loco-manip-07-wt-umi.md)
 - [loco-manip-161-category-07-data-teleop](../../wiki/overview/loco-manip-161-category-07-data-teleop.md)
 
 ## 参考来源（原始）

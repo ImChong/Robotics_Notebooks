@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, berkeley]
 status: complete
-updated: 2026-06-30
+updated: 2026-07-06
 arxiv: "2305.06456"
 venue: "2023 · ICCV"
 code: https://github.com/ZhengyiLuo/PHC

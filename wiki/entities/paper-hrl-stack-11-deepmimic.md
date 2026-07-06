@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, ubc, berkeley]
 status: complete
-updated: 2026-06-30
+updated: 2026-07-06
 venue: curated
 summary: "DeepMimic 是这批论文里最经典的一篇。它来自物理角色动画领域，但今天再看，它仍然是很多 humanoid motion tracking 工作的起点。"
 related:

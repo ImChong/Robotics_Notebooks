@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-031-n031](../../wiki/entities/paper-loco-manip-161-031-n031.md)
+- [paper-loco-manip-161-031-n031](../../wiki/entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md)
 - [loco-manip-161-category-01-motion-base-wbt](../../wiki/overview/loco-manip-161-category-01-motion-base-wbt.md)
 
 ## 参考来源（原始）

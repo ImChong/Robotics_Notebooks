@@ -39,7 +39,7 @@ sources:
 | 53 | HOIST | [paper-motion-cerebellum-hoist.md](../entities/paper-motion-cerebellum-hoist.md) | [catalog](../../sources/papers/motion_cerebellum_survey_53_hoist.md) |
 | 54 | SplitAdapter | [paper-splitadapter-load-aware-loco-manipulation.md](../entities/paper-splitadapter-load-aware-loco-manipulation.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 55 | HALO | [paper-hrl-stack-39-closing_sim_to_real_gap_for_heavy_lo.md](../entities/paper-hrl-stack-39-closing_sim_to_real_gap_for_heavy_lo.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
-| 56 | HumanoidMimicGen | [paper-motion-cerebellum-humanoidmimicgen.md](../entities/paper-motion-cerebellum-humanoidmimicgen.md) | [catalog](../../sources/papers/motion_cerebellum_survey_56_humanoidmimicgen.md) |
+| 56 | HumanoidMimicGen | [paper-humanoidmimicgen](../entities/paper-humanoidmimicgen.md) | [catalog](../../sources/papers/motion_cerebellum_survey_56_humanoidmimicgen.md) |
 | 57 | GRAIL | [paper-grail.md](../entities/paper-grail.md) | [catalog](../../sources/papers/motion_cerebellum_survey_57_grail.md) |
 | 58 | OASIS | [paper-loco-manip-04-oasis.md](../entities/paper-loco-manip-04-oasis.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 59 | LadderMan | [paper-ladderman-humanoid-perceptive-ladder-climbing.md](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |

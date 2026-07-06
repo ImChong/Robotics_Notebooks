@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, motion-cerebellum-survey, humanoid, motion-control, fall-recovery, reinforcement-learning, unitree]
 status: complete
-updated: 2026-06-30
+updated: 2026-07-06
 venue: arXiv:2606.12814
 summary: "Stubborn（SUSTech ACT Lab）用单一 RL 策略统一鲁棒全身运动跟踪与跌倒恢复：yaw-aligned 跟踪表征、Bernoulli 概率终止（PT）与跟踪误差驱动自适应采样（AdpS），在 LAFAN1 全库与 Unitree G1 真机上验证。"
 related:

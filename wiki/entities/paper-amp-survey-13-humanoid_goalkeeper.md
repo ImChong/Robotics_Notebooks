@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation, dynamic-interaction, goalkeeper, sim2real, unitree-g1, hku, shanghai-ai-lab]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-06
 arxiv: "2510.18002"
 venue: arXiv
 code: https://github.com/InternRobotics/Humanoid-Goalkeeper

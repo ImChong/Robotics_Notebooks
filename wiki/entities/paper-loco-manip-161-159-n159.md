@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-07-02
+updated: 2026-07-06
 venue: curated
 summary: "这篇工作先把语言指令、相机图像/多视角观测、本体状态与关节序列编码成多模态表征，再用ACT/行为克隆模仿学习、扩散策略/流匹配、VLA 多模态动作模型预测动作 chunk/token。关键点是让视频/世界模型提供可预测的物理先验，再由动作头把语义目标变成连续控制。"
 related:

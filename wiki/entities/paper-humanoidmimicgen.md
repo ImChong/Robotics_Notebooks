@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, imitation-learning, data-generation, mimicgen, whole-body-planning, vla, sim2real, synthetic-data, nvidia, ut-austin, unitree-g1, icra2026]
 status: complete
-updated: 2026-07-02
+updated: 2026-07-06
 arxiv: "2605.27724"
 openreview: "ekzk7TSLKr"
 venue: "ICRA 2026 Workshop on Synthetic Data for Robot Learning (Best Workshop Paper Finalist)"
@@ -14,8 +14,8 @@ related:
   - ./paper-notebook-dexmimicgen-automated-data-generation-for-bimanu.md
   - ./paper-loco-manip-161-129-homie.md
   - ./paper-hrl-stack-34-gr00t_n1.md
-  - ./paper-motion-cerebellum-humanoidmimicgen.md
-  - ./paper-loco-manip-161-068-humanoidmimicgen.md
+  - ./paper-humanoidmimicgen.md
+  - ./paper-humanoidmimicgen.md
   - ./gr00t-visual-sim2real.md
 sources:
   - ../../sources/papers/humanoidmimicgen_arxiv_2605_27724.md
@@ -183,8 +183,8 @@ flowchart TB
 - [DexMimicGen](./paper-notebook-dexmimicgen-automated-data-generation-for-bimanu.md)
 - [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md)
 - [GR00T Visual Sim2Real](./gr00t-visual-sim2real.md)
-- [运动小脑 survey 索引](./paper-motion-cerebellum-humanoidmimicgen.md)
-- [161 篇 survey 索引](./paper-loco-manip-161-068-humanoidmimicgen.md)
+- [运动小脑 survey 索引](./paper-humanoidmimicgen.md)
+- [161 篇 survey 索引](./paper-humanoidmimicgen.md)
 
 ## 推荐继续阅读
 

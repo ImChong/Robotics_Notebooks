@@ -81,7 +81,7 @@ SceneBot 声称是首个在 **单策略** 下同时满足：**多样参考跟踪
 ## 对 wiki 的映射
 
 - 沉淀实体页：[SceneBot（arXiv:2606.27581）](../../wiki/entities/paper-scenebot.md)
-- 交叉更新：[sonic-motion-tracking.md](../../wiki/methods/sonic-motion-tracking.md)、[humanoid-motion-tracking-method-selection.md](../../wiki/queries/humanoid-motion-tracking-method-selection.md)、[loco-manipulation.md](../../wiki/tasks/loco-manipulation.md)、[paper-loco-manip-161-114-omniretarget.md](../../wiki/entities/paper-loco-manip-161-114-omniretarget.md)
+- 交叉更新：[sonic-motion-tracking.md](../../wiki/methods/sonic-motion-tracking.md)、[humanoid-motion-tracking-method-selection.md](../../wiki/queries/humanoid-motion-tracking-method-selection.md)、[loco-manipulation.md](../../wiki/tasks/loco-manipulation.md)、[paper-loco-manip-161-114-omniretarget.md](../../wiki/entities/paper-hrl-stack-03-omniretarget.md)
 
 ## 引用（arXiv）
 

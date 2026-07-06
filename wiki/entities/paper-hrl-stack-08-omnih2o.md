@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, sjtu, cmu]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-06
 venue: curated
 summary: "如果说 H2O 证明了实时 whole-body teleoperation 这条路能走，OmniH2O 就是在问：这条路能不能变成一个更通用的身体接口？"
 related:

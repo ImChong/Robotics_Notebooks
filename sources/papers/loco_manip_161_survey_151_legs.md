@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-151-legs](../../wiki/entities/paper-loco-manip-161-151-legs.md)
+- [paper-loco-manip-161-151-legs](../../wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md)
 - [loco-manip-161-category-09-vla-world-models](../../wiki/overview/loco-manip-161-category-09-vla-world-models.md)
 
 ## 参考来源（原始）

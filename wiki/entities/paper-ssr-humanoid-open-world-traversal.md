@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, locomotion, perception, depth, foothold-guidance, symmetry, amp, open-world, stairs, parkour, sim2real, agibot, zju]
 status: complete
-updated: 2026-06-30
+updated: 2026-07-06
 arxiv: "2605.30770"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md

@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-survey, humanoid, hkust-gz, xiaomi-robotics, hkust, tsinghua]
 status: complete
-updated: 2026-06-30
+updated: 2026-07-06
 arxiv: "2606.09286"
 summary: "解耦命令（速度/阶段/物体状态）+ 视觉，敏捷搬推拉滑板交互。"
 related:

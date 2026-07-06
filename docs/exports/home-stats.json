@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-06",
-  "node_count": 1582,
-  "edge_count": 10922,
+  "node_count": 1508,
+  "edge_count": 10643,
   "coverage": {
-    "covered": 1550,
-    "total": 1580,
+    "covered": 1476,
+    "total": 1506,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -43,6 +43,42 @@
       "recency": "2026-07-06",
       "source": "log.md",
       "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-hrl-stack-06-hdmi.md",
+      "detail_id": "entity-paper-hrl-stack-06-hdmi",
+      "label": "HDMI",
+      "type": "entity",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/overview/loco-manip-161-category-05-mocap-human-video.md",
+      "detail_id": "wiki-overview-loco-manip-161-category-05-mocap-human-video",
+      "label": "Loco-Manip 161 分类 05：动捕、人类视频与交互动作规划",
+      "type": "overview",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/overview/loco-manip-contact-category-01-contact-data.md",
+      "detail_id": "wiki-overview-loco-manip-contact-category-01-contact-data",
+      "label": "Loco-Manip 接触分类 01：接触数据从哪来",
+      "type": "overview",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-last-hd-latent-physical-reasoning.md",
+      "detail_id": "entity-paper-last-hd-latent-physical-reasoning",
+      "label": "LaST-HD（Learning Latent Physical Reasoning from Scalable Human Data）",
+      "type": "entity",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "added"
     },
     {
       "path": "wiki/concepts/vision-transformer.md",
@@ -151,42 +187,6 @@
       "recency": "2026-07-04",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/overview/jason-peng-flexible-motion-skill-learning.md",
-      "detail_id": "wiki-overview-jason-peng-flexible-motion-skill-learning",
-      "label": "Jason Peng：更灵活的运动技能学习",
-      "type": "overview",
-      "recency": "2026-07-03",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/xue-bin-peng.md",
-      "detail_id": "entity-xue-bin-peng",
-      "label": "Xue Bin Peng（彭学斌）",
-      "type": "entity",
-      "recency": "2026-07-03",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/deepmimic.md",
-      "detail_id": "wiki-methods-deepmimic",
-      "label": "DeepMimic: 示例引导的技能学习",
-      "type": "method",
-      "recency": "2026-07-03",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/methods/amp-reward.md",
-      "detail_id": "wiki-methods-amp-reward",
-      "label": "AMP & HumanX: 判别器驱动的风格学习",
-      "type": "method",
-      "recency": "2026-07-03",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
@@ -200,28 +200,28 @@
   },
   "top_communities": [
     {
-      "label": "移动操作",
-      "size": 306
+      "label": "视觉-语言-动作",
+      "size": 204
     },
     {
       "label": "人形论文深读笔记",
-      "size": 215
+      "size": 181
+    },
+    {
+      "label": "移动操作",
+      "size": 174
     },
     {
       "label": "强化学习",
-      "size": 176
+      "size": 155
     },
     {
       "label": "全身控制",
-      "size": 101
-    },
-    {
-      "label": "物理引擎",
-      "size": 79
+      "size": 105
     },
     {
       "label": "动作重定向",
-      "size": 71
+      "size": 100
     }
   ]
 }

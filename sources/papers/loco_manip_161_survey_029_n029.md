@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-029-n029](../../wiki/entities/paper-loco-manip-161-029-n029.md)
+- [paper-loco-manip-161-029-n029](../../wiki/entities/paper-hrl-stack-07-learning_human_to_humanoid_real_time.md)
 - [loco-manip-161-category-01-motion-base-wbt](../../wiki/overview/loco-manip-161-category-01-motion-base-wbt.md)
 
 ## 参考来源（原始）
