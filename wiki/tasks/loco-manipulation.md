@@ -176,6 +176,10 @@ flowchart TD
 - **核心**：**Wan2.2** 视频骨干预测未来 **video latent**；**帧级 latent action**（ALAM encoder）桥接粗粒度视觉与细控制；**双层 MoT** 将动作拆为 **移动 $a^{\mathrm{move}}$** 与 **操作 $a^{\mathrm{manip}}$**；**Dream Forcing** 在 **自生成 $\hat{z}, \hat{m}$** 上训逆动力学，对齐自回归部署；渐进 **世界模型预训练 → latent action 预训练 → SFT1/SFT2**。
 - **代表作**：[ABot-M0.5](../entities/paper-abot-m05-mobile-manipulation-wam.md) (AMAP CV Lab / 阿里巴巴, 2026, arXiv:2607.00678) — **RoboCasa365** +Condensed Memory **46.6%**、Target 100% **54.2%**；**RoboTwin 2.0** **94.1%**；**LIBERO-Plus** 零样本 WAM 对照 **83.4%**；真机 Agilex Piper 长程摆盘/摆花等；[代码仓库](https://github.com/amap-cvlab/ABot-Manipulation)（M0.5 权重 coming soon）。
 
+### 24. 分层 policy–GMT 接口基准（HumanoidArena · 双 tracker 扰动诊断）
+- **核心**：将 egocentric 全身学习表述为 **高层策略 → 40D 中间全身动作 → 低层 GMT**；在 **7 项下肢关键 HOI/HSI** 上，从 **视觉/语义/执行扰动** 与 **TWIST2↔SONIC 跨 GMT** 两轴诊断 **policy–tracker 接口**——而非只报端到端成功率。
+- **代表作**：[HumanoidArena](../entities/paper-humanoidarena.md) (HKUST-GZ 等, 2026, arXiv:2606.17833) — PICO+GMR 采集 → Isaac Lab NPZ → LeRobot 训练；实验显示分层控制能解多样腿关键交互，但 **性能强 tracker 条件化**、**跨 GMT 迁移脆弱**。
+
 ## 重点应用领域
 
 | 领域 | 典型任务 | 代表研究 |
@@ -227,6 +231,7 @@ flowchart TD
 - [OmniContact（论文实体）](../entities/paper-omnicontact-humanoid-loco-manipulation.md) — Contact Flow 分层 meta-skill 链式组合、50 Hz 重规划与 VLM 语义任务（arXiv:2606.26201）
 - [Flexion Reflect v1.0](../entities/flexion-reflect-v1.md) — 产业长程自主栈：Reflect-VLM mission + VLA/RL 运动 + Reflex WBC + FlexComm（2026-06 博客）
 - [HumanoidMimicGen（论文实体）](../entities/paper-humanoidmimicgen.md) — MimicGen 式全身规划合成 loco-manip 示范 + G1 九任务基准 + co-training（arXiv:2605.27724）
+- [HumanoidArena（论文实体）](../entities/paper-humanoidarena.md) — egocentric 分层全身 benchmark：7 项腿关键 HOI/HSI + 双 GMT 扰动/迁移诊断（arXiv:2606.17833）
 
 ## 参考来源
 - [awesome-humanoid-robot-learning](../../sources/repos/awesome-humanoid-robot-learning.md) — 持续更新的人形机器人学习论文集
@@ -256,6 +261,7 @@ flowchart TD
 - **ingest 档案：** [sources/papers/cwi_arxiv_2606_27676.md](../../sources/papers/cwi_arxiv_2606_27676.md) — CWI：复合全身模仿 loco-manipulation（arXiv:2606.27676）
 - **ingest 档案：** [sources/papers/omnicontact_arxiv_2606_26201.md](../../sources/papers/omnicontact_arxiv_2606_26201.md) — OmniContact：Contact Flow meta-skill 链式 loco-manipulation（arXiv:2606.26201）
 - **ingest 档案：** [sources/papers/humanoidmimicgen_arxiv_2605_27724.md](../../sources/papers/humanoidmimicgen_arxiv_2605_27724.md) — HumanoidMimicGen：全身规划驱动 loco-manip 合成示范（arXiv:2605.27724）
+- **ingest 档案：** [sources/papers/humanoidarena_arxiv_2606_17833.md](../../sources/papers/humanoidarena_arxiv_2606_17833.md) — HumanoidArena：egocentric 分层全身 benchmark + 双 GMT 接口诊断（arXiv:2606.17833）
 - **ingest 档案：** [sources/blogs/flexion_reflect_v1_0.md](../../sources/blogs/flexion_reflect_v1_0.md) — Flexion Reflect v1.0：长程 NL mission 跨楼层 loco-manip 产业演示（2026-06）
 
 ## 一句话记忆

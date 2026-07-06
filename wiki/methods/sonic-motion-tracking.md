@@ -158,6 +158,7 @@ flowchart LR
 - [GentleHumanoid](./gentlehumanoid-motion-tracking.md)：同属 motion tracking 族，但显式优化 **上半身柔顺与可调接触力**，可与 SONIC 的规模化刚性跟踪对照阅读。
 - [Humanoid-GPT](../entities/paper-humanoid-gpt.md)：2B 帧 + Transformer 蒸馏路线；站点直接与 SONIC 对比 daily/dance/高动态/平衡四类行为。
 - [SceneBot](../entities/paper-scenebot.md)：contact-prompted 单策略 tracker；论文以 SONIC 为自由空间强基线，在 **地形+物体** 交互上展示 contact label 与场景重建数据的必要性。
+- [HumanoidArena](../entities/paper-humanoidarena.md)：将 SONIC 与 TWIST2 并列为 **分层全身学习的双 GMT 后端**，在 7 项腿关键 HOI/HSI 上评测 **跨 GMT 迁移** 与扰动泛化（arXiv:2606.17833）。
 
 ## 推荐继续阅读
 
@@ -180,5 +181,6 @@ flowchart LR
 - [LEGS（论文实体）](../entities/paper-legs-embodied-gaussian-splatting-vla.md) — G1 loco-manip VLA 数据合成以 SONIC 为低层 WBC（arXiv:2606.01458）
 - [MotionWAM（论文实体）](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) — WAM 预测 SONIC 统一 motion token 的实时人形 loco-manip（arXiv:2606.09215）
 - [SceneBot（论文实体）](../entities/paper-scenebot.md) — contact label + hindsight 场景重建；自由空间媲美 SONIC、场景交互显著领先（arXiv:2606.27581）
+- [HumanoidArena（论文实体）](../entities/paper-humanoidarena.md) — SONIC 作为 GMT 后端的分层 egocentric benchmark（arXiv:2606.17833）
 - [Teleoperation（遥操作）](../tasks/teleoperation.md)
 - [Zhengyi Luo（罗正宜）](../entities/zhengyi-luo.md)
