@@ -102,6 +102,15 @@ flowchart TB
 - **局限：** 仍依赖 **目标本体部分机器人数据** 做域内共训；世界模型与 MoT 骨干 **训练与部署栈较重**；Simplexity / 特定 Marvin+WUJI 平台 **复现门槛** 需对照附录。
 - **边界：** 与 **纯视频 egocentric IL**（EgoMimic）不同，LaST-HD 强调 **带精确手–腕动作标签** 的 OOL 模态与 **物理潜对齐**。
 
+## 与其他工作对比
+
+| 工作 | 关系 |
+|------|------|
+| **[EgoMimic](./paper-ego-03-egomimic.md)** | 同为「第一视角人数据进 IL」路线；EgoMimic 走 **动作/视觉级共训**，LaST-HD 转到 **动作条件前向动力学潜空间对齐**，并强调 OOL 手套的 **精确手–腕动作标签**。 |
+| **EgoScale** | 同属大规模 egocentric 人视频预训练 VLA；对照 **表征级共训**，LaST-HD 用世界模型把「动作→物理后果」嵌入共享潜空间监督推理专家。 |
+| **LaST0** | 论文潜式 CoT VLA 基线；LaST-HD 在其上加 **动作条件 WM 潜监督**，域内 SR **73% > 63%**、去掉潜式推理回落 **73%→60%**。 |
+| **π₀.₅ / Cosmos-Policy** | 强 VLA / 世界–动作模型 baseline；域内 LaST-HD **73%** > π₀.₅ **62%** > Cosmos-Policy **52%**，泛化场景差距进一步拉大。 |
+
 ## 关联页面
 
 - [VLA（Vision-Language-Action）](../methods/vla.md) — reasoning-before-acting 与人数据缩放语境。

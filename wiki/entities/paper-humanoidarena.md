@@ -142,6 +142,15 @@ flowchart TB
 - **局限：** **仿真优先**；真机闭环与 sim2real 未作为主叙事；结果表在项目页部分仍为占位，定量对比以 **论文 PDF** 为准。
 - **边界：** 与 [HumanoidMimicGen](./paper-humanoidmimicgen.md)（合成示范 + 九任务 IL 基准）互补——HumanoidArena 聚焦 **分层 policy–GMT 接口诊断**，而非纯数据缩放。
 
+## 与其他工作对比
+
+| 工作 | 关系 |
+|------|------|
+| **[HumanoidMimicGen](./paper-humanoidmimicgen.md)** | 同为 G1 仿真 loco-manip 基准，互补：HumanoidMimicGen 走 **合成示范 + 九任务 IL 数据缩放**，HumanoidArena 走 **分层 policy–GMT 接口诊断**，把「中间全身动作是否可执行/可迁移」当一等公民。 |
+| **[TWIST2](./paper-twist2.md) / [SONIC](../methods/sonic-motion-tracking.md)** | 二者作为 HumanoidArena 的 **两套可互换低层 GMT 后端**（同一 35D 上游参考、不同低层动力学），构成 cross-GMT 迁移 stress-test 的对照轴，而非竞争基准。 |
+| **[GMT](./paper-loco-manip-161-009-gmt.md)** | 提供 General Motion Tracking 概念锚点；HumanoidArena 复用其「高层中间动作 → 低层跟踪」分层，转而评测该接口的可执行性与可转移性。 |
+| **端到端 loco-manip / 纯 tracking 评测** | 多数既有工作只评 **端到端任务成功率** 或 **纯 motion tracking**；HumanoidArena 用共享中间动作接口 + 四扰动轴 + cross-GMT，显式暴露 policy–tracker 接口瓶颈。 |
+
 ## 关联页面
 
 - [Loco-Manipulation（任务）](../tasks/loco-manipulation.md) — 全身 loco-manip 与分层控制语境。
