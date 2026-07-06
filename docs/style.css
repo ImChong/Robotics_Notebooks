@@ -2313,6 +2313,71 @@ button.home-wiki-heatmap-cell.is-active {
 .roadmap-major-section-body > :first-child {
   margin-top: 0.85rem;
 }
+/* 路线正文时间线（wrapRoadmapTimelineSections）：左侧轨道 + 章节节点，
+   视觉对齐 change-log 更新时间线；章节 details 展开/收起不受影响 */
+.roadmap-timeline {
+  position: relative;
+  padding-left: 46px;
+}
+.roadmap-timeline::before {
+  content: '';
+  position: absolute;
+  left: 16px;
+  top: 14px;
+  bottom: 20px;
+  width: 2px;
+  background: var(--border);
+  border-radius: 1px;
+}
+.roadmap-timeline-item {
+  position: relative;
+}
+.roadmap-timeline-node {
+  position: absolute;
+  left: -29px;
+  transform: translateX(-50%);
+  z-index: 1;
+  box-shadow: 0 0 0 3px var(--bg);
+}
+.roadmap-timeline-node-stage {
+  top: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 21px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+.roadmap-timeline-node-dot {
+  top: 0.85rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+@media (max-width: 640px) {
+  .roadmap-timeline {
+    padding-left: 38px;
+  }
+  .roadmap-timeline::before {
+    left: 12px;
+  }
+  .roadmap-timeline-node {
+    left: -25px;
+  }
+  .roadmap-timeline-node-stage {
+    min-width: 28px;
+    height: 19px;
+    font-size: 0.62rem;
+  }
+}
 .roadmap-flow-details,
 .roadmap-stage-flow-details {
   margin-bottom: 1rem;
