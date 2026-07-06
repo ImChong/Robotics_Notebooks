@@ -39,6 +39,8 @@ summary: "VLA 与基础策略专题汇总：视觉-语言-动作统一建模、O
 | 概念 | 行为基础模型 | [Behavior Foundation Model](../concepts/behavior-foundation-model.md) |
 | 概念 | Foundation Policy | [Foundation Policy](../concepts/foundation-policy.md) |
 | 地图 | BFM 41 篇技术地图 | [BFM 技术地图](./bfm-41-papers-technology-map.md) |
+| 概念 | BT 编排 VLA 部署 | [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md) |
+| 实体 | ROBOTIS Physical AI 栈 | [Cyclo Intelligence](../entities/cyclo-intelligence.md) |
 | 数据 | 跨具身数据倡议 | [Open X-Embodiment](../concepts/open-x-embodiment.md) |
 
 ## 与其他专题的关系
