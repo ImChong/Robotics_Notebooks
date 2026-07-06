@@ -55,7 +55,7 @@ summary: "ABot-M0.5（arXiv:2607.00678）：移动操作专用 WAM——帧级 l
 - **Dream Forcing 针对 WAM 特有 exposure bias：** 相对 Teacher Forcing / Diffusion Forcing，在 **自生成 $\hat{z}, \hat{m}$** 上训动作，**5k 步** 即可把 RoboCasa365 Target atomic-seen 从 **67.55%** 拉到 **70.56%**，而继续 Teacher Forcing 同期 **降至 66.78%**。
 - **评测覆盖面广：** 同时报告 **移动操作（RoboCasa365）**、**双臂操纵（RoboTwin 2.0）**、**桌面组合（LIBERO / LIBERO-Plus 零样本）** 与 **真机长程**，说明改进不只绑定单一 benchmark。
 
-## 核心结构
+## 核心结构与方法
 
 | 模块 | 作用 |
 |------|------|
