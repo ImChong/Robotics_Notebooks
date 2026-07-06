@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-016-omnih2o](../../wiki/entities/paper-loco-manip-161-016-omnih2o.md)
+- [paper-loco-manip-161-016-omnih2o](../../wiki/entities/paper-hrl-stack-08-omnih2o.md)
 - [loco-manip-161-category-01-motion-base-wbt](../../wiki/overview/loco-manip-161-category-01-motion-base-wbt.md)
 
 ## 参考来源（原始）

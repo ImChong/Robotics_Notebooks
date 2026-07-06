@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-133-twist](../../wiki/entities/paper-loco-manip-161-133-twist.md)
+- [paper-loco-manip-161-133-twist](../../wiki/entities/paper-twist.md)
 - [loco-manip-161-category-07-data-teleop](../../wiki/overview/loco-manip-161-category-07-data-teleop.md)
 
 ## 参考来源（原始）

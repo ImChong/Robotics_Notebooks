@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-008-from-w1](../../wiki/entities/paper-loco-manip-161-008-from-w1.md)
+- [paper-loco-manip-161-008-from-w1](../../wiki/entities/paper-loco-manip-161-096-from-w1.md)
 - [loco-manip-161-category-01-motion-base-wbt](../../wiki/overview/loco-manip-161-category-01-motion-base-wbt.md)
 
 ## 参考来源（原始）

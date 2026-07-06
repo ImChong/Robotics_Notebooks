@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-113-humanoid](../../wiki/entities/paper-loco-manip-161-113-humanoid.md)
+- [paper-loco-manip-161-113-humanoid](../../wiki/entities/paper-amp-survey-13-humanoid_goalkeeper.md)
 - [loco-manip-161-category-05-mocap-human-video](../../wiki/overview/loco-manip-161-category-05-mocap-human-video.md)
 
 ## 参考来源（原始）

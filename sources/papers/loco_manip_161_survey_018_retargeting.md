@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-018-retargeting](../../wiki/entities/paper-loco-manip-161-018-retargeting.md)
+- [paper-loco-manip-161-018-retargeting](../../wiki/entities/paper-hrl-stack-01-retargeting_matters.md)
 - [loco-manip-161-category-01-motion-base-wbt](../../wiki/overview/loco-manip-161-category-01-motion-base-wbt.md)
 
 ## 参考来源（原始）

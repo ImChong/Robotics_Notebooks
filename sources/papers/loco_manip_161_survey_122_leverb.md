@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-122-leverb](../../wiki/entities/paper-loco-manip-161-122-leverb.md)
+- [paper-loco-manip-161-122-leverb](../../wiki/entities/paper-bfm-36-leverb.md)
 - [loco-manip-161-category-06-contact-tasks](../../wiki/overview/loco-manip-161-category-06-contact-tasks.md)
 
 ## 参考来源（原始）

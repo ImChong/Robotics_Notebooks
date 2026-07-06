@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-070-oasis](../../wiki/entities/paper-loco-manip-161-070-oasis.md)
+- [paper-loco-manip-161-070-oasis](../../wiki/entities/paper-loco-manip-04-oasis.md)
 - [loco-manip-161-category-03-visuomotor](../../wiki/overview/loco-manip-161-category-03-visuomotor.md)
 
 ## 参考来源（原始）

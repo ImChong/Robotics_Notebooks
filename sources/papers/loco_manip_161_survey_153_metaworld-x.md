@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-153-metaworld-x](../../wiki/entities/paper-loco-manip-161-153-metaworld-x.md)
+- [paper-loco-manip-161-153-metaworld-x](../../wiki/entities/paper-hrl-stack-32-metaworld.md)
 - [loco-manip-161-category-09-vla-world-models](../../wiki/overview/loco-manip-161-category-09-vla-world-models.md)
 
 ## 参考来源（原始）

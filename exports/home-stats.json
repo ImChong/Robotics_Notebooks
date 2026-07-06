@@ -1,13 +1,40 @@
 {
   "generated_at": "2026-07-06",
-  "node_count": 1582,
-  "edge_count": 10918,
+  "node_count": 1507,
+  "edge_count": 10630,
   "coverage": {
-    "covered": 1550,
-    "total": 1580,
+    "covered": 1475,
+    "total": 1505,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-hrl-stack-06-hdmi.md",
+      "detail_id": "entity-paper-hrl-stack-06-hdmi",
+      "label": "HDMI",
+      "type": "entity",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/overview/loco-manip-161-category-05-mocap-human-video.md",
+      "detail_id": "wiki-overview-loco-manip-161-category-05-mocap-human-video",
+      "label": "Loco-Manip 161 分类 05：动捕、人类视频与交互动作规划",
+      "type": "overview",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/overview/loco-manip-contact-category-01-contact-data.md",
+      "detail_id": "wiki-overview-loco-manip-contact-category-01-contact-data",
+      "label": "Loco-Manip 接触分类 01：接触数据从哪来",
+      "type": "overview",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
     {
       "path": "wiki/entities/paper-last-hd-latent-physical-reasoning.md",
       "detail_id": "entity-paper-last-hd-latent-physical-reasoning",
@@ -160,68 +187,41 @@
       "recency": "2026-07-03",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
-      "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
-      "label": "人形机器人 RL 运动控制：身体系统栈视角",
-      "type": "overview",
-      "recency": "2026-07-03",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-parc-physics-based-augmentation-with-reinforceme.md",
-      "detail_id": "entity-paper-notebook-parc-physics-based-augmentation-with-reinforceme",
-      "label": "PARC",
-      "type": "entity",
-      "recency": "2026-07-03",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/ponytail.md",
-      "detail_id": "entity-ponytail",
-      "label": "Ponytail",
-      "type": "entity",
-      "recency": "2026-07-03",
-      "source": "log.md",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-last-hd-latent-physical-reasoning.md",
-    "detail_id": "entity-paper-last-hd-latent-physical-reasoning",
-    "label": "LaST-HD（Learning Latent Physical Reasoning from Scalable Human Data）",
+    "path": "wiki/entities/paper-hrl-stack-06-hdmi.md",
+    "detail_id": "entity-paper-hrl-stack-06-hdmi",
+    "label": "HDMI",
     "type": "entity",
     "recency": "2026-07-06",
     "source": "log.md",
-    "action": "added"
+    "action": "maintained"
   },
   "top_communities": [
     {
       "label": "移动操作",
-      "size": 296
-    },
-    {
-      "label": "人形论文深读笔记",
-      "size": 215
+      "size": 211
     },
     {
       "label": "视觉-语言-动作",
-      "size": 185
+      "size": 208
+    },
+    {
+      "label": "人形论文深读笔记",
+      "size": 181
+    },
+    {
+      "label": "强化学习",
+      "size": 154
     },
     {
       "label": "全身控制",
-      "size": 102
-    },
-    {
-      "label": "物理引擎",
-      "size": 79
+      "size": 104
     },
     {
       "label": "动作重定向",
-      "size": 71
+      "size": 64
     }
   ]
 }

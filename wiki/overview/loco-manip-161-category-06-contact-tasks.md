@@ -33,14 +33,14 @@ sources:
 
 | # | 工作 | Wiki 实体 |
 |---|------|-----------|
-| 120 | GentleHumanoid | [paper-loco-manip-161-120-gentlehumanoid](../entities/paper-loco-manip-161-120-gentlehumanoid.md) |
+| 120 | GentleHumanoid | [paper-loco-manip-161-120-gentlehumanoid](../entities/paper-hrl-stack-37-gentlehumanoid.md) |
 | 121 | Humanoid-VLA | [paper-loco-manip-161-121-humanoid-vla](../entities/paper-loco-manip-161-121-humanoid-vla.md) |
-| 122 | LeVERB | [paper-loco-manip-161-122-leverb](../entities/paper-loco-manip-161-122-leverb.md) |
+| 122 | LeVERB | [paper-loco-manip-161-122-leverb](../entities/paper-bfm-36-leverb.md) |
 | 123 | 从嘈杂的感官输入中学习人形足球机器人的敏捷前锋技能 | [paper-loco-manip-161-123-n123](../entities/paper-loco-manip-161-123-n123.md) |
 | 124 | 学习人形机器人的足球技能：渐进式感知-行动框架 | [paper-loco-manip-161-124-n124](../entities/paper-loco-manip-161-124-n124.md) |
 | 125 | 学习人形机器人视觉驱动的反应式足球技能 | [paper-loco-manip-161-125-n125](../entities/paper-loco-manip-161-125-n125.md) |
 | 126 | 手眼自主配送 | [paper-loco-manip-161-126-n126](../entities/paper-loco-manip-161-126-n126.md) |
-| 127 | 用于人形接触规划的自我视觉世界模型 | [paper-loco-manip-161-127-n127](../entities/paper-loco-manip-161-127-n127.md) |
+| 127 | 用于人形接触规划的自我视觉世界模型 | [paper-loco-manip-161-127-n127](../entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md) |
 
 ## 关联页面
 

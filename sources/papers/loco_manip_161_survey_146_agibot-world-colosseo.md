@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-146-agibot-world-colosseo](../../wiki/entities/paper-loco-manip-161-146-agibot-world-colosseo.md)
+- [paper-loco-manip-161-146-agibot-world-colosseo](../../wiki/entities/agibot-world-2026.md)
 - [loco-manip-161-category-09-vla-world-models](../../wiki/overview/loco-manip-161-category-09-vla-world-models.md)
 
 ## 参考来源（原始）

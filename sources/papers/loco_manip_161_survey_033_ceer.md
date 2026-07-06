@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-033-ceer](../../wiki/entities/paper-loco-manip-161-033-ceer.md)
+- [paper-loco-manip-161-033-ceer](../../wiki/entities/paper-motion-cerebellum-ceer.md)
 - [loco-manip-161-category-02-upper-body-interface](../../wiki/overview/loco-manip-161-category-02-upper-body-interface.md)
 
 ## 参考来源（原始）

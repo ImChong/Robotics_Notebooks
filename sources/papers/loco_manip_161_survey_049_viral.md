@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-049-viral](../../wiki/entities/paper-loco-manip-161-049-viral.md)
+- [paper-loco-manip-161-049-viral](../../wiki/entities/paper-hrl-stack-28-viral.md)
 - [loco-manip-161-category-02-upper-body-interface](../../wiki/overview/loco-manip-161-category-02-upper-body-interface.md)
 
 ## 参考来源（原始）

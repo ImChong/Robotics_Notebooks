@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-120-gentlehumanoid](../../wiki/entities/paper-loco-manip-161-120-gentlehumanoid.md)
+- [paper-loco-manip-161-120-gentlehumanoid](../../wiki/entities/paper-hrl-stack-37-gentlehumanoid.md)
 - [loco-manip-161-category-06-contact-tasks](../../wiki/overview/loco-manip-161-category-06-contact-tasks.md)
 
 ## 参考来源（原始）

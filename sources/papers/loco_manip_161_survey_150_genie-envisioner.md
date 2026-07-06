@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-150-genie-envisioner](../../wiki/entities/paper-loco-manip-161-150-genie-envisioner.md)
+- [paper-loco-manip-161-150-genie-envisioner](../../wiki/entities/ge-sim-2.md)
 - [loco-manip-161-category-09-vla-world-models](../../wiki/overview/loco-manip-161-category-09-vla-world-models.md)
 
 ## 参考来源（原始）

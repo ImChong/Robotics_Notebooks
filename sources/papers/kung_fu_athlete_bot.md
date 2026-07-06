@@ -62,7 +62,7 @@
   - **FastSAC** off-policy 并行仿真训练；域随机化沿用 FastSAC 协议（质量、摩擦、CoM、PD、延迟、在线 push）。
 - **对 wiki 的映射：**
   - [Balance Recovery](../../wiki/tasks/balance-recovery.md)、[Reinforcement Learning](../../wiki/methods/reinforcement-learning.md)
-  - [SafeFall](../../wiki/entities/paper-hrl-stack-41-safefall.md)、[BeyondMimic](../../wiki/entities/paper-loco-manip-161-013-kungfubot2.md) 对照语境
+  - [SafeFall](../../wiki/entities/paper-hrl-stack-41-safefall.md)、[BeyondMimic](../../wiki/entities/paper-notebook-kungfubot-2.md) 对照语境
 
 ### 4) 奖励与终止（§4.3–4.4）
 

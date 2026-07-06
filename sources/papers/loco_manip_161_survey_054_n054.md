@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-054-n054](../../wiki/entities/paper-loco-manip-161-054-n054.md)
+- [paper-loco-manip-161-054-n054](../../wiki/entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md)
 - [loco-manip-161-category-02-upper-body-interface](../../wiki/overview/loco-manip-161-category-02-upper-body-interface.md)
 
 ## 参考来源（原始）

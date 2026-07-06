@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-101-omg](../../wiki/entities/paper-loco-manip-161-101-omg.md)
+- [paper-loco-manip-161-101-omg](../../wiki/entities/paper-omg-omni-modal-humanoid-control.md)
 - [loco-manip-161-category-04-generative-language-trajectory](../../wiki/overview/loco-manip-161-category-04-generative-language-trajectory.md)
 
 ## 参考来源（原始）

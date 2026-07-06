@@ -38,10 +38,10 @@ sources:
 | 137 | Gallant | [paper-loco-manip-161-137-gallant](../entities/paper-loco-manip-161-137-gallant.md) |
 | 138 | Mobile-TeleVision | [paper-loco-manip-161-138-mobile-television](../entities/paper-loco-manip-161-138-mobile-television.md) |
 | 139 | Open-TeleVision | [paper-loco-manip-161-139-open-television](../entities/paper-loco-manip-161-139-open-television.md) |
-| 140 | TWIST2 | [paper-loco-manip-161-140-twist2](../entities/paper-loco-manip-161-140-twist2.md) |
+| 140 | TWIST2 | [paper-loco-manip-161-140-twist2](../entities/paper-twist2.md) |
 | 141 | ToddlerBot | [paper-loco-manip-161-141-toddlerbot](../entities/paper-loco-manip-161-141-toddlerbot.md) |
 | 142 | 具有实时基础地形重建的步态自适应感知人形运动 | [paper-loco-manip-161-142-n142](../entities/paper-loco-manip-161-142-n142.md) |
-| 143 | 在人形操作的ACT模仿学习中，主动立体相机的性能优于多传感器设置 | [paper-loco-manip-161-143-act](../entities/paper-loco-manip-161-143-act.md) |
+| 143 | 在人形操作的ACT模仿学习中，主动立体相机的性能优于多传感器设置 | [paper-loco-manip-161-143-act](../entities/paper-loco-manip-161-131-open-television.md) |
 | 144 | 学习人对人的实时全身远程操作。 | [paper-loco-manip-161-144-n144](../entities/paper-loco-manip-161-144-n144.md) |
 | 145 | 手眼自主配送 | [paper-loco-manip-161-145-n145](../entities/paper-loco-manip-161-145-n145.md) |
 

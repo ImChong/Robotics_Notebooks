@@ -65,7 +65,7 @@ summary: "Paper Notebooks 分类 03：高影响力精选（31 篇深读笔记索
 - [Gait-Adaptive Perceptive Humanoid Locomotion with Real-Time Under-Base Terrain Reconstruction](../entities/paper-notebook-gait-adaptive-perceptive-humanoid-locomotion-wit.md) — 待深读
 - [Gait-Conditioned RL with Multi-Phase Curriculum for Humanoid Locomotion](../entities/paper-notebook-gait-conditioned-rl-with-multi-phase-curriculum.md) — 待深读
 - [Learning a Vision-Based Footstep Planner for Hierarchical Walking Control](../entities/paper-notebook-learning-a-vision-based-footstep-planner-for-hie.md) — 待深读
-- [OmniH2O](../entities/paper-loco-manip-161-016-omnih2o.md) — 见 wiki 实体页
+- [OmniH2O](../entities/paper-hrl-stack-08-omnih2o.md) — 见 wiki 实体页
 - [PHUMA](../entities/dataset-bfm-phuma.md) — 见 wiki 实体页
 - [Reference-Free Sampling-Based Model Predictive Control](../entities/paper-notebook-reference-free-sampling-based-model-predictive-c.md) — 待深读
 - [Sampling-Based System Identification with Active Exploration for Legged Robot Sim2Real Learning](../entities/paper-notebook-sampling-based-system-identification-with-active.md) — 待深读

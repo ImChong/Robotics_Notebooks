@@ -102,7 +102,7 @@
 | 53 | HOIST | 任务：悬挂负载操作考验后果建模 | [HOIST](../../wiki/entities/paper-motion-cerebellum-hoist.md) |
 | 54 | SplitAdapter | 任务：负载变化下的分解式适配 | [SplitAdapter](../../wiki/entities/paper-splitadapter-load-aware-loco-manipulation.md) |
 | 55 | HALO | 任务：重载技能里的可微仿真和物理对齐 | [HALO](../../wiki/entities/paper-hrl-stack-39-closing_sim_to_real_gap_for_heavy_lo.md) |
-| 56 | HumanoidMimicGen | 任务数据：全身规划驱动移动操作数据生成 | [HumanoidMimicGen](../../wiki/entities/paper-motion-cerebellum-humanoidmimicgen.md) |
+| 56 | HumanoidMimicGen | 任务数据：全身规划驱动移动操作数据生成 | [HumanoidMimicGen](../../wiki/entities/paper-humanoidmimicgen.md) |
 | 57 | GRAIL | 任务数据：3D 资产和视频先验生成 Loco-Manip 数据 | [GRAIL](../../wiki/entities/paper-grail.md) |
 | 58 | OASIS | 任务数据：仿真数据驱动真实 Loco-Manip 部署 | [OASIS](../../wiki/entities/paper-loco-manip-04-oasis.md) |
 | 59 | LadderMan | 任务：爬梯和梯上操作暴露手脚协同难题 | [LadderMan](../../wiki/entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) |

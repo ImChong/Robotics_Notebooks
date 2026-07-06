@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-143-act](../../wiki/entities/paper-loco-manip-161-143-act.md)
+- [paper-loco-manip-161-143-act](../../wiki/entities/paper-loco-manip-161-131-open-television.md)
 - [loco-manip-161-category-08-hardware-deployment](../../wiki/overview/loco-manip-161-category-08-hardware-deployment.md)
 
 ## 参考来源（原始）

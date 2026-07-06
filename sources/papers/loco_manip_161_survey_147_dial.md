@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-147-dial](../../wiki/entities/paper-loco-manip-161-147-dial.md)
+- [paper-loco-manip-161-147-dial](../../wiki/methods/dial-instruction-augmentation.md)
 - [loco-manip-161-category-09-vla-world-models](../../wiki/overview/loco-manip-161-category-09-vla-world-models.md)
 
 ## 参考来源（原始）
