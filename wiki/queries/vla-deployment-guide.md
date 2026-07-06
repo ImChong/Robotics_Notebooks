@@ -2,7 +2,7 @@
 type: query
 tags: [vla, deployment, latency, manipulation, foundation-policy, real-robot, tensorrt]
 status: complete
-updated: 2026-04-21
+updated: 2026-07-06
 summary: "面向真机部署的 VLA 指南：深入探讨了如何利用 TensorRT 加速、异步推理架构、Action Chunking 以及安全回退机制解决大模型部署中的延迟与抖动问题。"
 related:
   - ../methods/vla.md
@@ -75,12 +75,23 @@ VLA 应当预测未来的一段轨迹（如未来 2 秒内的 16 步动作），
 - [ ] **静态 Profiling**：在不启动电机的情况下，模拟跑 1000 轮推理，统计 P99 延迟，确保其低于 Action Chunk 覆盖的时间窗口。
 - [ ] **动作反归一化**：检查 VLA 输出的归一化动作与真实关节物理弧度之间的映射关系。
 
+## 5. 长程任务：行为树编排（可选）
+
+当部署不仅是「单指令连续 chunk」，而是 **加载模型 → 复位姿态 → 多轮 pick-and-place → 卸载** 时，可在 VLA 外层加 **行为树（BT）** 显式调度推理生命周期：
+
+- **`LOAD`**：加载 checkpoint 后常 **暂停在内存**（`PAUSED`），先跑确定性关节/底盘复位，再 **`RESUME`** 开始 chunk 推理。
+- **相位同步**：BT 节点应轮询 `inference_status`，等策略到达目标相位再 tick 下一节点，避免半加载状态开跑。
+- **开源参考**：[Cyclo Intelligence](../entities/cyclo-intelligence.md) 的 `SendCommand` BT 动作 + [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md)。
+
 ## 关联页面
 - [VLA (Vision-Language-Action Models)](../methods/vla.md)
 - [Action Chunking](../methods/action-chunking.md)
 - [实时运控中间件配置指南](./real-time-control-middleware-guide.md)
 - [VLA 与低级控制器融合架构](./vla-with-low-level-controller.md)
+- [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md)
+- [Cyclo Intelligence（实体）](../entities/cyclo-intelligence.md)
 
 ## 参考来源
 - [sources/papers/rl_foundation_models.md](../../sources/papers/rl_foundation_models.md)
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md)
+- [sources/repos/cyclo_intelligence.md](../../sources/repos/cyclo_intelligence.md) — BT 编排 VLA 推理相位的工程参考

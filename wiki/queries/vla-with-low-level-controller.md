@@ -199,6 +199,7 @@ class ActionBuffer:
 | EE 绝对位姿 | RT-2、π₀ | 阻抗控制、IK | 直观，适合演示数据 | 需要 IK，接近奇异点时不稳定 |
 | EE 增量位姿 $\Delta x$ | Octo、ACT-delta | 阻抗控制 | 更平滑，隐式安全（小步长） | 累积误差，长时序漂移 |
 | 技能 token | 分层 VLA | WBC 技能原语 | 高层抽象，延迟容忍最高 | 技能库设计复杂，覆盖不全 |
+| BT 生命周期 + checkpoint | Cyclo `SendCommand` | LOAD/RESUME/STOP + 宏动作 BT | 长程可组合、相位可同步 | XML/状态机维护；语义仍靠 VLA |
 | action chunk 序列 | π₀、Diffusion | 任意低层控制器 + buffer | 延迟容忍，动作平滑 | Chunk 边界处可能有跳变 |
 
 ---
@@ -275,6 +276,7 @@ VLA 是黑盒模型，直接驱动执行器存在输出异常的风险：
 - Black et al., *π₀: A Vision-Language-Action Flow Model for General Robot Control* (2024) — Action chunk + 低层控制器结合
 - [sources/papers/rl_foundation_models.md](../../sources/papers/rl_foundation_models.md) — RT-1/RT-2/π₀/Octo 综述
 - Zhao et al., *Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware* (ACT, 2023) — Action chunking 缓冲机制
+- [sources/repos/cyclo_intelligence.md](../../sources/repos/cyclo_intelligence.md) — BT `SendCommand` 与推理相位同步
 
 ## 关联页面
 
@@ -282,3 +284,5 @@ VLA 是黑盒模型，直接驱动执行器存在输出异常的风险：
 - [Whole-Body Control](../concepts/whole-body-control.md) — WBC 框架、TSID/HQP 实现细节
 - [Model Predictive Control](../methods/model-predictive-control.md) — MPC 与 VLA 的组合模式
 - [Query：VLA 真机部署指南](../queries/vla-deployment-guide.md) — 部署 checklist 与延迟管理实践
+- [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md) — 任务层 LOAD/RESUME/STOP 与宏动作组合
+- [Cyclo Intelligence（实体）](../entities/cyclo-intelligence.md) — ROBOTIS 开源 BT+VLA 栈

@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-06] ingest | sources/repos/cyclo_intelligence.md — ROBOTIS Cyclo Intelligence 行为树×VLA；wiki/entities/cyclo-intelligence.md、wiki/concepts/behavior-tree-vla-orchestration.md；交叉更新 vla / lerobot / topic-vla / vla-deployment-guide / vla-with-low-level-controller
+
 ## [2026-07-06] ingest | sources/papers/abot_m05_arxiv_2607_00678.md — ABot-M0.5 移动操作 WAM；wiki/entities/paper-abot-m05-mobile-manipulation-wam.md；交叉更新 wiki/concepts/world-action-models.md、wiki/tasks/loco-manipulation.md、wiki/overview/loco-manip-contact-category-05-vla-world-models.md
 
 ## [2026-07-06] structural | scripts/dedupe_loco_manip_161_entities.py — 全量合并 Loco-Manip 161 与其它 survey 重叠的重复实体（74 stub 删除，69 catalog 槽位指向 canonical）
