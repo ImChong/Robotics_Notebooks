@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-06-20
+updated: 2026-07-06
 related:
   - ../entities/paper-motionwam-humanoid-loco-manipulation-wam.md
   - ../overview/robot-world-models-training-loop-taxonomy.md

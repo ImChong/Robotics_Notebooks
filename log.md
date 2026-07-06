@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-06] ingest | sources/papers/abot_m05_arxiv_2607_00678.md — ABot-M0.5 移动操作 WAM；wiki/entities/paper-abot-m05-mobile-manipulation-wam.md；交叉更新 wiki/concepts/world-action-models.md、wiki/tasks/loco-manipulation.md、wiki/overview/loco-manip-contact-category-05-vla-world-models.md
+
 ## [2026-07-05] structural | 执行清单换版 v27 → v28 —— V27（接触力旋量闭环链）P0–P3 全数交付、DoD 逐项达标后新建 V28（具身大模型分类学选型闭环）
 
 - V27 收尾：P3 详情页专题徽标端到端验证通过、DoD lint 0 errors / 节点边数 / 事实库 220 / 社区均衡 / log 记录 五项全绿，清单 0 未勾项

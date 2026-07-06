@@ -1,13 +1,49 @@
 {
   "generated_at": "2026-07-06",
-  "node_count": 1581,
-  "edge_count": 10909,
+  "node_count": 1582,
+  "edge_count": 10922,
   "coverage": {
-    "covered": 1549,
-    "total": 1579,
+    "covered": 1550,
+    "total": 1580,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-abot-m05-mobile-manipulation-wam.md",
+      "detail_id": "entity-paper-abot-m05-mobile-manipulation-wam",
+      "label": "ABot-M0.5（Unified Mobility-and-Manipulation · World Action Model）",
+      "type": "entity",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/concepts/world-action-models.md",
+      "detail_id": "wiki-concepts-world-action-models",
+      "label": "World Action Models（WAM，世界–动作模型）",
+      "type": "concept",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/tasks/loco-manipulation.md",
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/overview/loco-manip-contact-category-05-vla-world-models.md",
+      "detail_id": "wiki-overview-loco-manip-contact-category-05-vla-world-models",
+      "label": "Loco-Manip 接触分类 05：VLA 与世界模型调用",
+      "type": "overview",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
     {
       "path": "wiki/concepts/vision-transformer.md",
       "detail_id": "wiki-concepts-vision-transformer",
@@ -151,57 +187,21 @@
       "recency": "2026-07-03",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
-      "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
-      "label": "人形机器人 RL 运动控制：身体系统栈视角",
-      "type": "overview",
-      "recency": "2026-07-03",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-parc-physics-based-augmentation-with-reinforceme.md",
-      "detail_id": "entity-paper-notebook-parc-physics-based-augmentation-with-reinforceme",
-      "label": "PARC",
-      "type": "entity",
-      "recency": "2026-07-03",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/ponytail.md",
-      "detail_id": "entity-ponytail",
-      "label": "Ponytail",
-      "type": "entity",
-      "recency": "2026-07-03",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-simfoundry-real2sim-scene-generation.md",
-      "detail_id": "entity-paper-simfoundry-real2sim-scene-generation",
-      "label": "SimFoundry（Modular Real2Sim Scene Generation for Policy Learning and Evaluation）",
-      "type": "entity",
-      "recency": "2026-07-03",
-      "source": "log.md",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/vision-transformer.md",
-    "detail_id": "wiki-concepts-vision-transformer",
-    "label": "Vision Transformer（ViT，视觉 Transformer）",
-    "type": "concept",
-    "recency": "2026-07-05",
+    "path": "wiki/entities/paper-abot-m05-mobile-manipulation-wam.md",
+    "detail_id": "entity-paper-abot-m05-mobile-manipulation-wam",
+    "label": "ABot-M0.5（Unified Mobility-and-Manipulation · World Action Model）",
+    "type": "entity",
+    "recency": "2026-07-06",
     "source": "log.md",
     "action": "added"
   },
   "top_communities": [
     {
       "label": "移动操作",
-      "size": 308
+      "size": 306
     },
     {
       "label": "人形论文深读笔记",

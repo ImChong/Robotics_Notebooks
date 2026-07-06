@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-07-02
+updated: 2026-07-06
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md
   - ../../sources/papers/loco_manip_8_papers_catalog.md
@@ -29,6 +29,7 @@ sources:
   - ../../sources/papers/visualmimic_arxiv_2509_20322.md
   - ../../sources/papers/cwi_arxiv_2606_27676.md
   - ../../sources/papers/omnicontact_arxiv_2606_26201.md
+  - ../../sources/papers/abot_m05_arxiv_2607_00678.md
   - ../../sources/blogs/flexion_reflect_v1_0.md
   - ../../sources/papers/humanoidmimicgen_arxiv_2605_27724.md
 ---
@@ -171,6 +172,10 @@ flowchart TD
 - **核心**：将 **object-centric 技能片段适配**（MimicGen / SkillGen / DexMimicGen 谱系）扩展到 **双足 G1 loco-manipulation**；**Homie RL 下肢 + 上身关节** 混合控制，**静态操作 / 动态行走** 解耦规划，**cuRobo 全身 IK + 碰撞规划** 交织技能 DAG 执行；**motion noise + init randomization** 提升 IL 鲁棒性。
 - **代表作**：[HumanoidMimicGen](../entities/paper-humanoidmimicgen.md) (NVIDIA / UT Austin, 2026, arXiv:2605.27724) — **九任务 G1 仿真基准**；单 VR 示范 → **1000** 轨迹，VLA（GR00T N1.6）平均 PSR **0.89** vs DexMimicGen+ **0.33**；真机 **sim-and-real co-training +20%**。
 
+### 23. 移动操作 WAM：latent action 桥接 + D-MoT 解耦 + Dream Forcing（ABot-M0.5）
+- **核心**：**Wan2.2** 视频骨干预测未来 **video latent**；**帧级 latent action**（ALAM encoder）桥接粗粒度视觉与细控制；**双层 MoT** 将动作拆为 **移动 $a^{\mathrm{move}}$** 与 **操作 $a^{\mathrm{manip}}$**；**Dream Forcing** 在 **自生成 $\hat{z}, \hat{m}$** 上训逆动力学，对齐自回归部署；渐进 **世界模型预训练 → latent action 预训练 → SFT1/SFT2**。
+- **代表作**：[ABot-M0.5](../entities/paper-abot-m05-mobile-manipulation-wam.md) (AMAP CV Lab / 阿里巴巴, 2026, arXiv:2607.00678) — **RoboCasa365** +Condensed Memory **46.6%**、Target 100% **54.2%**；**RoboTwin 2.0** **94.1%**；**LIBERO-Plus** 零样本 WAM 对照 **83.4%**；真机 Agilex Piper 长程摆盘/摆花等；[代码仓库](https://github.com/amap-cvlab/ABot-Manipulation)（M0.5 权重 coming soon）。
+
 ## 重点应用领域
 
 | 领域 | 典型任务 | 代表研究 |
@@ -209,6 +214,7 @@ flowchart TD
 - [Motion Retargeting](../concepts/motion-retargeting.md) — 人形搬运/攀台等技能的上游映射层
 - [DiT4DiT（论文实体）](../entities/paper-dit4dit-video-action-model.md) — 双 DiT 联合 VAM，G1 全身 loco-manip 前序（arXiv:2603.10448）
 - [MotionWAM（论文实体）](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) — 实时 WAM + 统一全身 token 的人形 loco-manip（arXiv:2606.09215）
+- [ABot-M0.5（论文实体）](../entities/paper-abot-m05-mobile-manipulation-wam.md) — 移动操作 WAM：latent action + D-MoT + Dream Forcing（arXiv:2607.00678）
 - [Loco-Manip 8 篇数据入口技术地图](../overview/loco-manip-8-papers-technology-map.md) — 2026-06 周报：四组数据入口（Ego-Pi/OASIS/VAIC/WT-UMI 等 8 篇）
 - [人形 Loco-Manip 161 篇技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md) — 2026-06 长文：十类能力形成顺序（94+ 篇已挂接既有实体）
 - [Loco-Manip 接触五段链路技术地图](../overview/loco-manip-contact-technology-map.md) — 2026-07 专题：接触数据→表示→生成补数→接触后稳定→VLA/WM（复用既有论文实体，不重复建节点）
@@ -242,6 +248,7 @@ flowchart TD
 - **ingest 档案：** [sources/papers/visualmimic_arxiv_2509_20322.md](../../sources/papers/visualmimic_arxiv_2509_20322.md) — VisualMimic：视觉分层 sim2real + 关键点 tracker loco-manipulation（arXiv:2509.20322）
 - **ingest 档案：** [sources/papers/dit4dit_arxiv_2603_10448.md](../../sources/papers/dit4dit_arxiv_2603_10448.md) — DiT4DiT：双 DiT 联合 VAM 与 G1 全身 loco-manip（arXiv:2603.10448）
 - **ingest 档案：** [sources/papers/motionwam_arxiv_2606_09215.md](../../sources/papers/motionwam_arxiv_2606_09215.md) — MotionWAM：实时 WAM 人形全身 loco-manipulation（arXiv:2606.09215）
+- **ingest 档案：** [sources/papers/abot_m05_arxiv_2607_00678.md](../../sources/papers/abot_m05_arxiv_2607_00678.md) — ABot-M0.5：移动操作 WAM（latent action + Dream Forcing，arXiv:2607.00678）
 - **ingest 档案：** [sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md) — Loco-Manip 8 篇数据入口周报（`Ez87ljBYmCyIpLKjMjEyaQ`）
 - **ingest 档案：** [sources/papers/motiondisco_arxiv_2606_06139.md](../../sources/papers/motiondisco_arxiv_2606_06139.md) — MotionDisco：LLM 引导运动发现与人形 loco-manipulation（arXiv:2606.06139）
 - **ingest 档案：** [sources/papers/halomi_arxiv_2606_18772.md](../../sources/papers/halomi_arxiv_2606_18772.md) — HALOMI：主动感知无机器人示范→人形 loco-manipulation（arXiv:2606.18772）
