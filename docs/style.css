@@ -479,9 +479,30 @@ body.sponsor-dialog-open {
 .home-latest-row > a { min-width: 0; overflow-wrap: anywhere; }
 .home-latest-more { margin-top: 18px; font-size: .9rem; }
 @media (max-width: 860px) {
-  /* 窄屏：保持三列 grid 跨行对齐，仅收紧间距与字号 */
-  .home-latest-list { column-gap: 10px; row-gap: 8px; }
+  /* 窄屏：每条记录独立换行，不再跨行列对齐 */
+  .home-latest-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .home-latest-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 8px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .home-latest-row:last-child { border-bottom: none; padding-bottom: 0; }
   .home-latest-row-date, .home-latest-row-type { font-size: .78rem; }
+  .home-latest-row-badge,
+  .updates-badge-cell { min-width: 0; }
+  .home-latest-row-badge.updates-badge-cell--empty,
+  .updates-badge-cell--empty { display: none; }
+  .home-latest-row > a {
+    flex: 1 1 100%;
+    width: 100%;
+  }
 }
 .home-latest-wiki-intro { margin-bottom: 20px; }
 /* change-log 更新时间线（参考论文笔记站 updates.html：左轨道 + 日期圆点 + 条目行 + 超量折叠） */
@@ -550,6 +571,25 @@ body.sponsor-dialog-open {
   grid-column: 3;
   min-width: 0;
   overflow-wrap: anywhere;
+}
+@media (max-width: 860px) {
+  /* 窄屏：标签/类型与标题分行，取消跨条目列对齐 */
+  .updates-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 8px;
+    padding: 4px 0;
+  }
+  .updates-badge-cell,
+  .updates-item-type,
+  .updates-item-link { grid-column: unset; }
+  .updates-badge-cell { min-width: 0; }
+  .updates-badge-cell--empty { display: none; }
+  .updates-item-link {
+    flex: 1 1 100%;
+    width: 100%;
+  }
 }
 .updates-day.is-folded .updates-item-folded { display: none; }
 .updates-day-more {
