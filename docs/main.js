@@ -1878,6 +1878,25 @@
       while (body.lastChild && body.lastChild.nodeType === 1 && body.lastChild.tagName === 'HR') {
         body.removeChild(body.lastChild);
       }
+      // 长章节读到底后不必滑回标题：正文末尾提供「收起本章」，收起并把视口带回章节标题行。
+      var foot = document.createElement('div');
+      foot.className = 'roadmap-major-section-foot';
+      var collapseBtn = document.createElement('button');
+      collapseBtn.type = 'button';
+      collapseBtn.className = 'roadmap-major-section-collapse';
+      collapseBtn.textContent = '↑ 收起本章';
+      collapseBtn.addEventListener('click', function () {
+        var section = this.closest('details.roadmap-major-section');
+        if (!section) return;
+        section.open = false;
+        var summaryEl = section.querySelector(':scope > summary');
+        if (summaryEl) summaryEl.focus({ preventScroll: true });
+        // 收起后正文大幅塌缩，全局 scroll-behavior:smooth 的动画会与 scroll anchoring
+        // 相互干扰导致落点漂移，这里强制瞬时定位回章节标题行。
+        section.scrollIntoView({ block: 'start', behavior: 'instant' });
+      });
+      foot.appendChild(collapseBtn);
+      body.appendChild(foot);
     }
   }
 
