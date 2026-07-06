@@ -584,6 +584,28 @@ body.sponsor-dialog-open {
   margin-left: auto;
   flex-shrink: 0;
 }
+@media (max-width: 640px) {
+  .updates-timeline-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .updates-timeline-actions-start {
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+  .updates-timeline-actions .btn-secondary {
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 0.88rem;
+  }
+  .updates-timeline-back-top {
+    margin-left: 0;
+  }
+}
 /* 首页「最新知识节点」活跃度热力图（GitHub 风格布局；色阶取站点主题蓝
    （--accent 同色相，暗档最亮≈--accent-hover），已过顺序色板校验：
    亮度单调、相邻 ΔL ≥ 0.06、最浅档对底色 ≥ 2:1） */
