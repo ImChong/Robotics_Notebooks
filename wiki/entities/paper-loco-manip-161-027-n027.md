@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-07-02
+updated: 2026-07-06
 venue: curated
 summary: "这篇工作主要解决数据闭环：用本体状态与关节序列、遥操作/外骨骼数据、仿真交互数据采集人类操作和机器人状态，再通过教师-学生知识迁移、扩散策略/流匹配、全身控制器/WBC/MPC转成可训练、可复用的全身轨迹/动作序列、低层控制器目标。关键点是用特权信息训练教师策略，再把能力蒸馏到只能使用部署观测的学生策略。"
 related:

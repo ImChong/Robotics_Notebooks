@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, opendrivelab, agibot, hku, fudan]
 status: complete
-updated: 2026-06-26
+updated: 2026-07-06
 venue: curated
 summary: "WholeBodyVLA 讨论的是全身 loco-manipulation VLA。它关注的问题是：人形机器人在大空间里完成抓取、搬运、推车等任务时，locomotion 和 manipulation 不能被简单拆开。"
 related:

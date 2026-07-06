@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, jku, nyu, berkeley]
 status: complete
-updated: 2026-06-30
+updated: 2026-07-06
 venue: curated
 summary: "这篇论文关注一个很值得追踪的问题：视频生成模型越来越强，可以生成各种人类动作视频，那机器人能不能直接执行生成视频里的动作？"
 related:

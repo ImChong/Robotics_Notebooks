@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, motion-cerebellum-survey, humanoid, motion-control, uf]
 status: complete
-updated: 2026-06-30
+updated: 2026-07-06
 arxiv: "2606.00252"
 summary: "任务：悬挂负载操作考验后果建模。输入是 VR 示教、悬挂负载状态和机器人本体状态；实现上先训练高层任务策略，再用 batched RL 对自主 rollout 做样本高效微调；核心是处理负载摆动、滞后和反作用力对全身平衡的影响。"
 related:

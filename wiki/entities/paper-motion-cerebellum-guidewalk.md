@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, motion-cerebellum-survey, humanoid, motion-control, hit, leju]
 status: complete
-updated: 2026-06-30
+updated: 2026-07-06
 venue: curated
 summary: "底座：把导航接口接到地形自适应步态。输入是导航速度/路径参考、地形几何和机器人状态；实现上把参考轨迹投到可落脚地形上，再训练低层策略跟踪 SE(2) 速度接口；这样标准导航栈可以调用人形步态。"
 related:

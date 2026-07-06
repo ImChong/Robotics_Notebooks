@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-07-03
+updated: 2026-07-06
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 

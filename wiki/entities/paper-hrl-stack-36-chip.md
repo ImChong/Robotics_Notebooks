@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, ut-austin, nvidia, stanford]
 status: complete
-updated: 2026-06-30
+updated: 2026-07-06
 venue: curated
 summary: "CHIP 的题目是 Adaptive Compliance for Humanoid Control through Hindsight Perturbation。它想让已有 motion tracking controller 获得可调 end-effector compliance。"
 related:

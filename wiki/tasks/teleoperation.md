@@ -3,7 +3,7 @@ type: task
 tags: [teleoperation, manipulation, loco-manipulation, data-collection, humanoid]
 status: complete
 summary: "Teleoperation 让人类通过远程接口直接操作机器人，是数据采集和复杂任务执行的重要桥梁。"
-updated: 2026-07-04
+updated: 2026-07-06
 sources:
   - ../../sources/sites/rek-com.md
   - ../../sources/sites/hiw-500-dataset.md

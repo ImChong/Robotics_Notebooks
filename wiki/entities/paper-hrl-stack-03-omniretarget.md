@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-retargeting, motion-control, interaction-mesh, loco-manipulation, data-generation, amazon-far, body-system-stack, icra-2026]
 status: complete
-updated: 2026-06-30
+updated: 2026-07-06
 arxiv: "2509.26633"
 venue: ICRA 2026
 summary: "OmniRetarget 用 interaction mesh + Sequential SOCP 硬约束生成交互保留的人形运动学参考，支持单演示增广与 holosoma 开源管线；下游 5 reward + 4 DR 无 curriculum 即可 G1 零样本实机 30 s parkour/loco-manipulation；PHP 等论文的原子技能重定向上游。"

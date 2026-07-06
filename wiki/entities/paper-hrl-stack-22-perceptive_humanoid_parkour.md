@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, locomotion, parkour, motion-matching, depth, teacher-student, dagger, ppo, unitree-g1, perception, skill-chaining, amazon-far, body-system-stack]
 status: complete
-updated: 2026-06-30
+updated: 2026-07-06
 arxiv: "2602.15827"
 venue: "RSS 2026"
 related:

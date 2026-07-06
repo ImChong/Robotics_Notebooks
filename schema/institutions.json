@@ -749,7 +749,9 @@
       "label": "阿里巴巴（Alibaba）",
       "aliases": [
         "alibaba",
-        "qwen"
+        "qwen",
+        "amap-cvlab",
+        "amap"
       ]
     },
     "autodesk": {

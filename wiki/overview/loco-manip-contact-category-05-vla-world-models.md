@@ -2,8 +2,8 @@
 type: overview
 tags: [loco-manipulation, contact-rich, category-hub, survey, vla, world-models]
 status: complete
-updated: 2026-07-03
-summary: "Loco-Manip 接触专题 · 05 VLA/WM（6 篇）— 上层模型能否调用带接触结构的全身动作接口？"
+updated: 2026-07-06
+summary: "Loco-Manip 接触专题 · 05 VLA/WM（7 篇）— 上层模型能否调用带接触结构的全身动作接口？"
 related:
   - ./loco-manip-contact-technology-map.md
   - ./loco-manip-contact-category-04-post-contact-stability.md
@@ -31,7 +31,7 @@ sources:
 
 VLA/WM 若只输出目标点或粗动作，**接触问题仍被丢回底层**。关键在于上层能否调用 **带接触结构的全身动作接口**；若底层无力/接触接口，预测再合理也难上真机。
 
-## 本组工作（6 篇）
+## 本组工作（7 篇）
 
 | 工作 | Wiki 实体（复用） | 文内角色 |
 |------|-------------------|----------|
@@ -39,6 +39,7 @@ VLA/WM 若只输出目标点或粗动作，**接触问题仍被丢回底层**。
 | WholeBodyVLA | [paper-hrl-stack-30-wholebodyvla](../entities/paper-hrl-stack-30-wholebodyvla.md) | 移动+操作统一潜变量 |
 | ROVE | [paper-rove-humanoid-vla-intervention](../entities/paper-rove-humanoid-vla-intervention.md) | 人工接管数据的后训练去噪 |
 | MotionWAM | [paper-motionwam-humanoid-loco-manipulation-wam](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) | WAM + motion token 实时 loco-manip |
+| ABot-M0.5 | [paper-abot-m05-mobile-manipulation-wam](../entities/paper-abot-m05-mobile-manipulation-wam.md) | 移动操作 WAM：latent action + Dream Forcing |
 | HAIC | [paper-hrl-stack-38-haic](../entities/paper-hrl-stack-38-haic.md) | 动态占据、碰撞边界与接触可供性 |
 | WOLF-VLA | [paper-wolf-vla](../entities/paper-wolf-vla.md) | 全身最优控制生成动态一致 VLA 数据 |
 
@@ -46,7 +47,7 @@ VLA/WM 若只输出目标点或粗动作，**接触问题仍被丢回底层**。
 
 - **OpenHLM / WholeBodyVLA：** 避免上肢与下肢 **割裂** 的全身任务模型。
 - **ROVE：** 接管数据含犹豫与错误，直接模仿会 **污染** 策略。
-- **MotionWAM / HAIC / WOLF-VLA：** 把问题推向 **世界模型、动力学感知与最优控制数据工厂**。
+- **MotionWAM / ABot-M0.5 / HAIC / WOLF-VLA：** 把问题推向 **世界模型、动力学感知与最优控制数据工厂**。
 - **共同结论：** VLA/WM 负责理解、预测与调度，但最终须落到 **带接触结构的身体接口**。
 
 ## 关联页面

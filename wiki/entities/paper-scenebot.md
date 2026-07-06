@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, contact-rich, loco-manipulation, scene-interaction, reinforcement-learning, unitree-g1, amazon-far, stanford, cmu]
 status: complete
-updated: 2026-06-29
+updated: 2026-07-06
 arxiv: "2606.27581"
 venue: "2026 · arXiv"
 summary: "SceneBot（arXiv:2606.27581）以 per-link contact label 将自由空间、地形与全身物体操作统一到单一 PPO motion tracker；hindsight scene reconstruction 从 retarget 运动反推交互图并合成场景资产，7.5 小时数据上自由空间媲美 SONIC、场景交互显著领先。"

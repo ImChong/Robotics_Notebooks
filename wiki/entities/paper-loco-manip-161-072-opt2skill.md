@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-07-02
+updated: 2026-07-06
 venue: curated
 summary: "Opt2Skill 先从相机图像/多视角观测、仿真交互数据、接触力/触觉信号恢复场景、目标或运动表征，再用PPO/RL 策略训练、ACT/行为克隆模仿学习、IK/动作重定向生成关节位置/力矩命令、全身轨迹/动作序列。关键点是把任务拆成可路由的技能或专家策略，再用高层模块在执行中选择和组合。"
 related:

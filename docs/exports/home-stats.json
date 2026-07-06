@@ -1,13 +1,49 @@
 {
   "generated_at": "2026-07-06",
-  "node_count": 1507,
-  "edge_count": 10630,
+  "node_count": 1508,
+  "edge_count": 10643,
   "coverage": {
-    "covered": 1475,
-    "total": 1505,
+    "covered": 1476,
+    "total": 1506,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-abot-m05-mobile-manipulation-wam.md",
+      "detail_id": "entity-paper-abot-m05-mobile-manipulation-wam",
+      "label": "ABot-M0.5（Unified Mobility-and-Manipulation · World Action Model）",
+      "type": "entity",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/concepts/world-action-models.md",
+      "detail_id": "wiki-concepts-world-action-models",
+      "label": "World Action Models（WAM，世界–动作模型）",
+      "type": "concept",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/tasks/loco-manipulation.md",
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/overview/loco-manip-contact-category-05-vla-world-models.md",
+      "detail_id": "wiki-overview-loco-manip-contact-category-05-vla-world-models",
+      "label": "Loco-Manip 接触分类 05：VLA 与世界模型调用",
+      "type": "overview",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
     {
       "path": "wiki/entities/paper-hrl-stack-06-hdmi.md",
       "detail_id": "entity-paper-hrl-stack-06-hdmi",
@@ -151,77 +187,41 @@
       "recency": "2026-07-04",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/overview/jason-peng-flexible-motion-skill-learning.md",
-      "detail_id": "wiki-overview-jason-peng-flexible-motion-skill-learning",
-      "label": "Jason Peng：更灵活的运动技能学习",
-      "type": "overview",
-      "recency": "2026-07-03",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/xue-bin-peng.md",
-      "detail_id": "entity-xue-bin-peng",
-      "label": "Xue Bin Peng（彭学斌）",
-      "type": "entity",
-      "recency": "2026-07-03",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/deepmimic.md",
-      "detail_id": "wiki-methods-deepmimic",
-      "label": "DeepMimic: 示例引导的技能学习",
-      "type": "method",
-      "recency": "2026-07-03",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/methods/amp-reward.md",
-      "detail_id": "wiki-methods-amp-reward",
-      "label": "AMP & HumanX: 判别器驱动的风格学习",
-      "type": "method",
-      "recency": "2026-07-03",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-hrl-stack-06-hdmi.md",
-    "detail_id": "entity-paper-hrl-stack-06-hdmi",
-    "label": "HDMI",
+    "path": "wiki/entities/paper-abot-m05-mobile-manipulation-wam.md",
+    "detail_id": "entity-paper-abot-m05-mobile-manipulation-wam",
+    "label": "ABot-M0.5（Unified Mobility-and-Manipulation · World Action Model）",
     "type": "entity",
     "recency": "2026-07-06",
     "source": "log.md",
-    "action": "maintained"
+    "action": "added"
   },
   "top_communities": [
     {
-      "label": "移动操作",
-      "size": 211
-    },
-    {
       "label": "视觉-语言-动作",
-      "size": 208
+      "size": 204
     },
     {
       "label": "人形论文深读笔记",
       "size": 181
     },
     {
+      "label": "移动操作",
+      "size": 174
+    },
+    {
       "label": "强化学习",
-      "size": 154
+      "size": 155
     },
     {
       "label": "全身控制",
-      "size": 104
+      "size": 105
     },
     {
       "label": "动作重定向",
-      "size": 64
+      "size": 100
     }
   ]
 }

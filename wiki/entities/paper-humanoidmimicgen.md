@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, imitation-learning, data-generation, mimicgen, whole-body-planning, vla, sim2real, synthetic-data, nvidia, ut-austin, unitree-g1, icra2026]
 status: complete
-updated: 2026-07-02
+updated: 2026-07-06
 arxiv: "2605.27724"
 openreview: "ekzk7TSLKr"
 venue: "ICRA 2026 Workshop on Synthetic Data for Robot Learning (Best Workshop Paper Finalist)"
