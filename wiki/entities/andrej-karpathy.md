@@ -3,7 +3,7 @@
 type: entity
 tags: [deep-learning, education, tesla, openai, llm, methodology, computer-vision, reinforcement-learning, stanford]
 status: complete
-updated: 2026-06-20
+updated: 2026-07-07
 related:
   - ../references/llm-wiki-karpathy.md
   - ./karpathy-autoresearch.md

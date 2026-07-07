@@ -12,6 +12,9 @@ status: complete
 updated: 2026-07-03
 related:
   - ./ponytail.md
+  - ./nuwa-skill.md
+  - ./cangjie-skill.md
+  - ./darwin-skill.md
   - ./superpowers-obra.md
   - ./caveman.md
   - ./hermes-agent.md
@@ -94,6 +97,7 @@ flowchart TD
 - [Agent Reach](agent-reach.md) — 外网读搜工具链脚手架
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 持久 wiki 知识编译范式
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库 ingest / query / lint 规范
+- [Nuwa Skill](nuwa-skill.md) / [Cangjie Skill](cangjie-skill.md) / [Darwin Skill](darwin-skill.md) — 通用 skill 蒸馏/进化（与本库 **编码工程** 技能互补）
 
 ## 参考来源
 

@@ -8,9 +8,12 @@ tags:
   - software-engineering
   - methodology
 status: complete
-updated: 2026-07-03
+updated: 2026-07-07
 related:
   - ./ponytail.md
+  - ./nuwa-skill.md
+  - ./cangjie-skill.md
+  - ./darwin-skill.md
   - ./mattpocock-skills.md
   - ./hermes-agent.md
   - ./agent-reach.md
@@ -88,6 +91,7 @@ flowchart TD
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — **持久结构化知识** 与 **人类策展** 的范式说明
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库 **ingest / query / lint** 操作规范
 - [Articraft](./articraft.md) — 另一类 **agent + 规约文件 + harness** 的闭环（面向 3D 资产生成，与编码技能栈问题域不同但可类比）
+- [Nuwa Skill](nuwa-skill.md) / [Cangjie Skill](cangjie-skill.md) — **蒸馏** 人与方法论为 skill；[Darwin Skill](darwin-skill.md) 可 **优化** 本类流程 skill 的 rubric
 
 ## 参考来源
 

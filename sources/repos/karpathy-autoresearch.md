@@ -36,6 +36,7 @@
   - [Andrej Karpathy](../../wiki/entities/andrej-karpathy.md) — nanochat 教育栈延伸与 LLM 时代实验自动化。
   - [LLM Wiki（Karpathy 模式）](../../wiki/references/llm-wiki-karpathy.md) — `program.md` 作为可版本化「组织上下文」与 ingest 文件契约同构。
   - [Superpowers（obra）](../../wiki/entities/superpowers-obra.md) — `program.md` ≈ 单文件 skill；本仓偏 **ML 实验搜索** 而非软件交付 TDD。
+  - [Darwin Skill](../../wiki/entities/darwin-skill.md) — 将 keep/revert 棘轮映射到 `SKILL.md` 优化；与 [Nuwa](../../wiki/entities/nuwa-skill.md) / [Cangjie](../../wiki/entities/cangjie-skill.md) 造 skill 闭环。
 
 ## 参考来源（原始）
 

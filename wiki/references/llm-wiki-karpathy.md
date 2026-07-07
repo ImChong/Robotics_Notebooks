@@ -7,10 +7,13 @@ sources:
   - ../../sources/sites/karpathy-ai.md
 related:
   - ../entities/ponytail.md
+  - ../entities/nuwa-skill.md
+  - ../entities/cangjie-skill.md
+  - ../entities/darwin-skill.md
   - ../entities/andrej-karpathy.md
   - ../overview/robot-learning-overview.md
 summary: "Karpathy 提出的 LLM Wiki 模式：通过 LLM 持续维护结构化 markdown 知识库，实现知识积累而非每次重新检索。"
-updated: 2026-07-03
+updated: 2026-07-07
 ---
 
 # LLM Wiki
