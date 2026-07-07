@@ -12,6 +12,9 @@ status: complete
 updated: 2026-07-03
 related:
   - ./caveman.md
+  - ./nuwa-skill.md
+  - ./cangjie-skill.md
+  - ./darwin-skill.md
   - ./superpowers-obra.md
   - ./mattpocock-skills.md
   - ./hermes-agent.md
@@ -44,10 +47,11 @@ summary: "Ponytail（DietrichGebert/ponytail）是多 harness 可安装的编码
 ## 为什么重要（对本知识库读者）
 
 - **与本仓库维护场景直接相关：** Robotics_Notebooks 的 ingest 常改 **Python 脚本、Makefile 派生链与长 markdown**；代理容易「为一个小功能加一层抽象或新依赖」。ponytail 针对 **实现选择**（stdlib / 原生 HTML / 复用现有模块），与 [Karpathy LLM Wiki](../references/llm-wiki-karpathy.md) 的「知识编译进文件」互补。
-- **生态位清晰 — 代码量 vs 措辞 vs 流程：**
+- **生态位清晰 — 代码量 vs 措辞 vs 流程 vs 知识编译：**
   - [Caveman](caveman.md) — **怎么说更短**（输出与部分上下文 token）
   - [Superpowers（obra）](superpowers-obra.md) — **怎么做对流程**（TDD、worktree、子代理评审）
   - **Ponytail** — **写什么更少**（必要性阶梯、anti over-engineering）
+  - [Nuwa](nuwa-skill.md) / [Cangjie](cangjie-skill.md) / [Darwin](darwin-skill.md) — **造与进化 skill**（人 / 书 / 棘轮优化），与 LLM Wiki 的 wiki 编译互补
 - **有可复现 agentic 基准：** 上游在真实 Claude Code 会话中编辑 FastAPI+React 模板，对照无 skill、[Caveman](caveman.md) 与裸 YAGNI 提示词；对本站读者评估「装技能是否真省 token/LOC」有参考值（仍以自家仓库与 CI 为准）。
 
 ## 核心结构
@@ -110,6 +114,7 @@ flowchart TD
 - [Agent Reach](agent-reach.md) — 外网读搜脚手架
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 本仓库知识编译范式
 - [Ingest Workflow](../../schema/ingest-workflow.md) — ingest / query / lint 操作规范
+- [Nuwa Skill](nuwa-skill.md) / [Cangjie Skill](cangjie-skill.md) / [Darwin Skill](darwin-skill.md) — skill 蒸馏与进化生态
 
 ## 参考来源
 

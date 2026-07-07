@@ -1,13 +1,40 @@
 {
   "generated_at": "2026-07-07",
-  "node_count": 1511,
-  "edge_count": 10682,
+  "node_count": 1514,
+  "edge_count": 10717,
   "coverage": {
-    "covered": 1479,
-    "total": 1509,
+    "covered": 1482,
+    "total": 1512,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/cangjie-skill.md",
+      "detail_id": "entity-cangjie-skill",
+      "label": "Cangjie Skill",
+      "type": "entity",
+      "recency": "2026-07-07",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/nuwa-skill.md",
+      "detail_id": "entity-nuwa-skill",
+      "label": "Nuwa Skill（女娲.skill）",
+      "type": "entity",
+      "recency": "2026-07-07",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/darwin-skill.md",
+      "detail_id": "entity-darwin-skill",
+      "label": "Darwin Skill（达尔文.skill）",
+      "type": "entity",
+      "recency": "2026-07-07",
+      "source": "log.md",
+      "action": "added"
+    },
     {
       "path": "wiki/concepts/3d-spatial-vqa.md",
       "detail_id": "wiki-concepts-3d-spatial-vqa",
@@ -160,43 +187,16 @@
       "recency": "2026-07-06",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/concepts/contact-rich-manipulation.md",
-      "detail_id": "wiki-concepts-contact-rich-manipulation",
-      "label": "Contact-Rich Manipulation（接触丰富型操作）",
-      "type": "concept",
-      "recency": "2026-07-06",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/concepts/control-allocation.md",
-      "detail_id": "wiki-concepts-control-allocation",
-      "label": "Control Allocation（控制分配）",
-      "type": "concept",
-      "recency": "2026-07-06",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/concepts/control-barrier-function.md",
-      "detail_id": "wiki-concepts-control-barrier-function",
-      "label": "Control Barrier Function（控制屏障函数）",
-      "type": "concept",
-      "recency": "2026-07-06",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/3d-spatial-vqa.md",
-    "detail_id": "wiki-concepts-3d-spatial-vqa",
-    "label": "3D 空间 VQA（3D Spatial Visual Question Answering）",
-    "type": "concept",
-    "recency": "2026-07-06",
+    "path": "wiki/entities/cangjie-skill.md",
+    "detail_id": "entity-cangjie-skill",
+    "label": "Cangjie Skill",
+    "type": "entity",
+    "recency": "2026-07-07",
     "source": "log.md",
-    "action": "maintained"
+    "action": "added"
   },
   "top_communities": [
     {
@@ -213,7 +213,7 @@
     },
     {
       "label": "强化学习",
-      "size": 155
+      "size": 158
     },
     {
       "label": "全身控制",

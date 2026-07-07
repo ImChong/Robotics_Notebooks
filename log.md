@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-07] ingest | sources/repos/cangjie-skill.md + sources/repos/nuwa-skill.md + sources/repos/darwin-skill.md — 仓颉/女娲/达尔文 skill 生态；wiki/entities/cangjie-skill.md、wiki/entities/nuwa-skill.md、wiki/entities/darwin-skill.md；交叉更新 karpathy-autoresearch / ponytail / superpowers / mattpocock / llm-wiki-karpathy
+
 ## [2026-07-06] lint | scripts/lint_wiki.py — V28 P0 具身大模型家族概念页交叉链路巡检 V1（信息型，不阻塞 CI）
 
 - 新增 `_check_embodied_fm_crosslink`：对 `tags` 含 `vlm` / `vln` / `vla` / `vlx` / `world-model`（子串匹配派生标签）的 `wiki/concepts/*`、`wiki/comparisons/*` 页，检查正文是否回链专题枢纽 `embodied-fm-taxonomy-loop` / `topic-embodied-foundation-model`，缺失给 INFO 级 `embodied_fm_crosslink` 提示，枢纽页自身豁免
