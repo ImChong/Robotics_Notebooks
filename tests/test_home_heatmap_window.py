@@ -8,17 +8,23 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MAIN_JS = ROOT / "docs" / "main.js"
-WIKI_ACTIVITY = ROOT / "docs" / "exports" / "wiki-activity.json"
+
+# CI 不生成 gitignore 的 wiki-activity.json；用合成日数据验证窗口逻辑。
+_SAMPLE_DAYS = [
+    {"date": "2026-04-24", "count": 3},
+    {"date": "2026-06-01", "count": 5},
+    {"date": "2026-07-07", "count": 2},
+]
 
 _NODE_SNIPPET = r"""
 const fs = require('fs');
 const code = fs.readFileSync(process.argv[1], 'utf8');
+const days = JSON.parse(process.argv[2]);
 const start = code.indexOf('var HOME_HEATMAP_DAY_MS');
 const end = code.indexOf('function renderLatestWikiNode');
 const vm = require('vm');
 const sandbox = {};
 vm.runInNewContext(code.slice(start, end), sandbox);
-const days = JSON.parse(fs.readFileSync(process.argv[2], 'utf8')).days;
 const html = sandbox.buildHomeWikiHeatmapHtml(days);
 const gridMatch = html.match(/home-wiki-heatmap-grid[^>]*>([\s\S]*?)<\/div><\/div><\/div><\/div>/);
 const gridHtml = gridMatch ? gridMatch[1] : '';
@@ -32,19 +38,17 @@ console.log(JSON.stringify({
   gridCells,
   weekAttr: weekAttr ? Number(weekAttr[1]) : null,
   weeks: weekMs.length,
+  today: new Date(todayMs).toISOString().slice(0, 10),
   start: new Date(bounds.startMs).toISOString().slice(0, 10),
   end: new Date(bounds.endMs).toISOString().slice(0, 10),
 }));
 """
 
 
-def _run_node() -> dict:
-    if not WIKI_ACTIVITY.is_file():
-        raise FileNotFoundError(
-            "docs/exports/wiki-activity.json missing; run `make export graph` first"
-        )
+def _run_node(days: list[dict[str, object]] | None = None) -> dict:
+    payload = json.dumps(days if days is not None else _SAMPLE_DAYS)
     proc = subprocess.run(
-        ["node", "-e", _NODE_SNIPPET, str(MAIN_JS), str(WIKI_ACTIVITY)],
+        ["node", "-e", _NODE_SNIPPET, str(MAIN_JS), payload],
         check=True,
         capture_output=True,
         text=True,
@@ -61,11 +65,11 @@ def test_home_heatmap_fixed_53_week_window() -> None:
 
 def test_home_heatmap_window_ends_on_today_week() -> None:
     out = _run_node()
-    proc = subprocess.run(
-        ["node", "-e", "const n=new Date(); console.log(n.toISOString().slice(0,10));"],
-        check=True,
-        capture_output=True,
-        text=True,
-    )
-    today = proc.stdout.strip()
-    assert today <= out["end"]
+    assert out["today"] <= out["end"]
+
+
+def test_home_heatmap_window_not_data_span() -> None:
+    """短跨度合成数据也不应退化为 min→max 全量列数（旧版约 12 周）。"""
+    out = _run_node(_SAMPLE_DAYS)
+    assert out["weeks"] == 53
+    assert out["gridCells"] == 53 * 7
