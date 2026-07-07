@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-06",
+  "generated_at": "2026-07-07",
   "node_count": 1511,
   "edge_count": 10682,
   "coverage": {
@@ -9,13 +9,49 @@
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/cyclo-intelligence.md",
-      "detail_id": "entity-cyclo-intelligence",
-      "label": "Cyclo Intelligence",
-      "type": "entity",
+      "path": "wiki/concepts/3d-spatial-vqa.md",
+      "detail_id": "wiki-concepts-3d-spatial-vqa",
+      "label": "3D 空间 VQA（3D Spatial Visual Question Answering）",
+      "type": "concept",
       "recency": "2026-07-06",
       "source": "log.md",
-      "action": "added"
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/ai-auto-research.md",
+      "detail_id": "wiki-concepts-ai-auto-research",
+      "label": "AI Auto-Research（学术研究自动化）",
+      "type": "concept",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/armature-modeling.md",
+      "detail_id": "wiki-concepts-armature-modeling",
+      "label": "Armature Modeling（电枢惯量建模）",
+      "type": "concept",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/backpropagation.md",
+      "detail_id": "wiki-concepts-backpropagation",
+      "label": "反向传播算法 (Backpropagation)",
+      "type": "concept",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/behavior-foundation-model.md",
+      "detail_id": "wiki-concepts-behavior-foundation-model",
+      "label": "Behavior Foundation Model（行为基础模型，BFM）",
+      "type": "concept",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "maintained"
     },
     {
       "path": "wiki/concepts/behavior-tree-vla-orchestration.md",
@@ -27,176 +63,140 @@
       "action": "added"
     },
     {
-      "path": "wiki/entities/paper-humanoidarena.md",
-      "detail_id": "entity-paper-humanoidarena",
-      "label": "HumanoidArena（Egocentric Hierarchical Whole-body Benchmark）",
-      "type": "entity",
-      "recency": "2026-07-06",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/tasks/loco-manipulation.md",
-      "detail_id": "wiki-tasks-loco-manipulation",
-      "label": "Loco-Manipulation (移动操作)",
-      "type": "task",
-      "recency": "2026-07-06",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/tasks/teleoperation.md",
-      "detail_id": "wiki-tasks-teleoperation",
-      "label": "Teleoperation（遥操作）",
-      "type": "task",
-      "recency": "2026-07-06",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-twist2.md",
-      "detail_id": "entity-paper-twist2",
-      "label": "TWIST2",
-      "type": "entity",
-      "recency": "2026-07-06",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/sonic-motion-tracking.md",
-      "detail_id": "wiki-methods-sonic-motion-tracking",
-      "label": "SONIC（规模化运动跟踪人形控制）",
-      "type": "method",
-      "recency": "2026-07-06",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-abot-m05-mobile-manipulation-wam.md",
-      "detail_id": "entity-paper-abot-m05-mobile-manipulation-wam",
-      "label": "ABot-M0.5（Unified Mobility-and-Manipulation · World Action Model）",
-      "type": "entity",
-      "recency": "2026-07-06",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/concepts/world-action-models.md",
-      "detail_id": "wiki-concepts-world-action-models",
-      "label": "World Action Models（WAM，世界–动作模型）",
+      "path": "wiki/concepts/can-bus-protocol.md",
+      "detail_id": "wiki-concepts-can-bus-protocol",
+      "label": "CAN 总线（经典 CAN / CAN 2.0）",
       "type": "concept",
       "recency": "2026-07-06",
       "source": "log.md",
       "action": "maintained"
     },
     {
-      "path": "wiki/overview/loco-manip-contact-category-05-vla-world-models.md",
-      "detail_id": "wiki-overview-loco-manip-contact-category-05-vla-world-models",
-      "label": "Loco-Manip 接触分类 05：VLA 与世界模型调用",
-      "type": "overview",
-      "recency": "2026-07-06",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-hrl-stack-06-hdmi.md",
-      "detail_id": "entity-paper-hrl-stack-06-hdmi",
-      "label": "HDMI",
-      "type": "entity",
-      "recency": "2026-07-06",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/overview/loco-manip-161-category-05-mocap-human-video.md",
-      "detail_id": "wiki-overview-loco-manip-161-category-05-mocap-human-video",
-      "label": "Loco-Manip 161 分类 05：动捕、人类视频与交互动作规划",
-      "type": "overview",
-      "recency": "2026-07-06",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/overview/loco-manip-contact-category-01-contact-data.md",
-      "detail_id": "wiki-overview-loco-manip-contact-category-01-contact-data",
-      "label": "Loco-Manip 接触分类 01：接触数据从哪来",
-      "type": "overview",
-      "recency": "2026-07-06",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-last-hd-latent-physical-reasoning.md",
-      "detail_id": "entity-paper-last-hd-latent-physical-reasoning",
-      "label": "LaST-HD（Learning Latent Physical Reasoning from Scalable Human Data）",
-      "type": "entity",
-      "recency": "2026-07-06",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/concepts/vision-transformer.md",
-      "detail_id": "wiki-concepts-vision-transformer",
-      "label": "Vision Transformer（ViT，视觉 Transformer）",
+      "path": "wiki/concepts/can-fd.md",
+      "detail_id": "wiki-concepts-can-fd",
+      "label": "CAN FD（Flexible Data Rate）",
       "type": "concept",
-      "recency": "2026-07-05",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md",
-      "detail_id": "wiki-comparisons-vlm-vln-vla-vlx-world-model-taxonomy",
-      "label": "五大具身模型分类：VLM、VLN、VLA、VLX 与世界模型",
-      "type": "comparison",
-      "recency": "2026-07-05",
+      "recency": "2026-07-06",
       "source": "log.md",
       "action": "maintained"
     },
     {
-      "path": "wiki/entities/paper-autonomous-spot-nebula-exploration.md",
-      "detail_id": "entity-paper-autonomous-spot-nebula-exploration",
-      "label": "Autonomous Spot（NeBula 长程探索）",
-      "type": "entity",
-      "recency": "2026-07-05",
+      "path": "wiki/concepts/capture-point-dcm.md",
+      "detail_id": "wiki-concepts-capture-point-dcm",
+      "label": "Capture Point / DCM",
+      "type": "concept",
+      "recency": "2026-07-06",
       "source": "log.md",
-      "action": "added"
+      "action": "maintained"
     },
     {
-      "path": "wiki/entities/paper-spot-rl-distributional-sim2real.md",
-      "detail_id": "entity-paper-spot-rl-distributional-sim2real",
-      "label": "Spot 高性能 RL（分布距离 Sim2Real 标定）",
-      "type": "entity",
-      "recency": "2026-07-05",
+      "path": "wiki/concepts/centroidal-dynamics.md",
+      "detail_id": "wiki-concepts-centroidal-dynamics",
+      "label": "Centroidal Dynamics",
+      "type": "concept",
+      "recency": "2026-07-06",
       "source": "log.md",
-      "action": "added"
+      "action": "maintained"
     },
     {
-      "path": "wiki/entities/patent-boston-dynamics-legged-control-stack.md",
-      "detail_id": "entity-patent-boston-dynamics-legged-control-stack",
-      "label": "Boston Dynamics 足式控制与硬件专利栈",
-      "type": "entity",
-      "recency": "2026-07-05",
+      "path": "wiki/concepts/character-animation-vs-robotics.md",
+      "detail_id": "wiki-concepts-character-animation-vs-robotics",
+      "label": "Character Animation vs Robotics（角色动画与机器人控制的边界）",
+      "type": "concept",
+      "recency": "2026-07-06",
       "source": "log.md",
-      "action": "added"
+      "action": "maintained"
     },
     {
-      "path": "wiki/entities/patent-tesla-robot-knee-joint-assembly.md",
-      "detail_id": "entity-patent-tesla-robot-knee-joint-assembly",
-      "label": "Tesla 人形机器人膝关节机构（WO2024073135）",
-      "type": "entity",
-      "recency": "2026-07-05",
+      "path": "wiki/concepts/clock-synchronization-algorithms.md",
+      "detail_id": "wiki-concepts-clock-synchronization-algorithms",
+      "label": "时钟同步算法 (Clock Synchronization Algorithms)",
+      "type": "concept",
+      "recency": "2026-07-06",
       "source": "log.md",
-      "action": "added"
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/collision-distance-optimization.md",
+      "detail_id": "wiki-concepts-collision-distance-optimization",
+      "label": "Collision Distance Optimization（碰撞距离优化）",
+      "type": "concept",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/constrained-optimization.md",
+      "detail_id": "wiki-concepts-constrained-optimization",
+      "label": "Constrained Optimization（约束优化）",
+      "type": "concept",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/contact-dynamics.md",
+      "detail_id": "wiki-concepts-contact-dynamics",
+      "label": "Contact Dynamics",
+      "type": "concept",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/contact-estimation.md",
+      "detail_id": "wiki-concepts-contact-estimation",
+      "label": "Contact Estimation（接触估计）",
+      "type": "concept",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/contact-force-loop-bandwidth.md",
+      "detail_id": "wiki-concepts-contact-force-loop-bandwidth",
+      "label": "Contact-Force-Loop Bandwidth（力控闭环带宽 ↔ 接触稳定性）",
+      "type": "concept",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/contact-rich-manipulation.md",
+      "detail_id": "wiki-concepts-contact-rich-manipulation",
+      "label": "Contact-Rich Manipulation（接触丰富型操作）",
+      "type": "concept",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/control-allocation.md",
+      "detail_id": "wiki-concepts-control-allocation",
+      "label": "Control Allocation（控制分配）",
+      "type": "concept",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/control-barrier-function.md",
+      "detail_id": "wiki-concepts-control-barrier-function",
+      "label": "Control Barrier Function（控制屏障函数）",
+      "type": "concept",
+      "recency": "2026-07-06",
+      "source": "log.md",
+      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/cyclo-intelligence.md",
-    "detail_id": "entity-cyclo-intelligence",
-    "label": "Cyclo Intelligence",
-    "type": "entity",
+    "path": "wiki/concepts/3d-spatial-vqa.md",
+    "detail_id": "wiki-concepts-3d-spatial-vqa",
+    "label": "3D 空间 VQA（3D Spatial Visual Question Answering）",
+    "type": "concept",
     "recency": "2026-07-06",
     "source": "log.md",
-    "action": "added"
+    "action": "maintained"
   },
   "top_communities": [
     {

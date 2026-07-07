@@ -97,6 +97,7 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
 # 不应再按裸 token 误报为「缺独立 concepts/methods 页」。映射到既有页：
 #   amp        → methods/amp-reward.md + overview/humanoid-amp-motion-prior-survey.md
 #   g1         → entities/unitree-g1.md（硬件，归 entities）
+#   gmr        → methods/motion-retargeting-gmr.md（General Motion Retargeting，方法页）
 #   heracles   → entities/paper-heracles-humanoid-diffusion.md（具体系统）
 #   mjlab      → entities/mjlab.md（库/工具）
 #   mujoco     → entities/mujoco.md（仿真器/工具）
@@ -108,6 +109,7 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
 MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "amp",
     "g1",
+    "gmr",
     "heracles",
     "mjlab",
     "mujoco",
