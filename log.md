@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-07] ingest | sources/papers/quietwalk_arxiv_2604_23702.md — QuietWalk PINN-GRF 低噪人形行走；wiki/entities/paper-quietwalk-humanoid-locomotion.md；交叉更新 humanoid-locomotion / locomotion-reward-design-guide / unitree-g1
+
 ## [2026-07-07] ingest | sources/repos/cangjie-skill.md + sources/repos/nuwa-skill.md + sources/repos/darwin-skill.md — 仓颉/女娲/达尔文 skill 生态；wiki/entities/cangjie-skill.md、wiki/entities/nuwa-skill.md、wiki/entities/darwin-skill.md；交叉更新 karpathy-autoresearch / ponytail / superpowers / mattpocock / llm-wiki-karpathy
 
 ## [2026-07-06] lint | scripts/lint_wiki.py — V28 P0 具身大模型家族概念页交叉链路巡检 V1（信息型，不阻塞 CI）

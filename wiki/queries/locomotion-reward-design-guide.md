@@ -3,7 +3,7 @@ title: Locomotion 奖励函数设计指南
 type: query
 status: complete
 created: 2026-04-14
-updated: 2026-04-14
+updated: 2026-07-07
 summary: 系统整理 RL 训练足式/人形机器人 locomotion 的奖励函数设计原则、常用奖励项分类、调参策略和常见失败模式。
 sources:
   - ../../sources/papers/reward_design.md
@@ -66,6 +66,9 @@ sources:
 | 摆动脚高度 | 摆动相时足端离地 > 阈值 | 0.1 |
 | 双支撑时长 | 限制双支撑比例（行走） | 0.05 |
 | 接触冲击 | 惩罚大的接触力变化率 | 0.1 |
+| **预测竖直 GRF 平方和**（[QuietWalk](../entities/paper-quietwalk-humanoid-locomotion.md)） | $r_{\mathrm{impact}}=-\alpha\big((f_z^{(L)})^2+(f_z^{(R)})^2\big)$，$f_z$ 由 **冻结 PINN** 从本体感知估计 | $\alpha$ 课程渐增 |
+
+> **力感知低噪行走：** [QuietWalk](../entities/paper-quietwalk-humanoid-locomotion.md)（arXiv:2604.23702）用 **逆动力学约束 PINN** 替代仿真特权力传感或足端速度代理，在 **无部署力传感器** 时仍可对 **冲击瞬态** 塑形；$\alpha$ 过小则降噪不足，过大易牺牲速度跟踪与稳定性，宜分阶段课程。
 
 ### E. 安全约束（Safety Reward）
 防止关节过载和硬件损坏
