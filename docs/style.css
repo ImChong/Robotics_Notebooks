@@ -650,6 +650,7 @@ body.sponsor-dialog-open {
    （--accent 同色相，暗档最亮≈--accent-hover），已过顺序色板校验：
    亮度单调、相邻 ΔL ≥ 0.06、最浅档对底色 ≥ 2:1） */
 .home-wiki-heatmap {
+  --hm-weeks: 53;
   --hm-cell-min: 8px; /* 格子宽度下限：低于则容器横向滚动 */
   --hm-gap: 3px;
   --hm-level-0: #2c2c2e;
@@ -674,8 +675,7 @@ body.sponsor-dialog-open {
 .home-wiki-heatmap-inner { min-width: max-content; }
 .home-wiki-heatmap-months {
   display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(var(--hm-cell-min), 1fr);
+  grid-template-columns: repeat(var(--hm-weeks), minmax(var(--hm-cell-min), 1fr));
   gap: var(--hm-gap);
   margin-left: calc(24px + var(--hm-gap));
   height: 18px;
@@ -701,7 +701,7 @@ body.sponsor-dialog-open {
   display: grid;
   grid-auto-flow: column;
   grid-template-rows: repeat(7, auto);
-  grid-auto-columns: minmax(var(--hm-cell-min), 1fr);
+  grid-template-columns: repeat(var(--hm-weeks), minmax(var(--hm-cell-min), 1fr));
   gap: var(--hm-gap);
 }
 .home-wiki-heatmap-cell {

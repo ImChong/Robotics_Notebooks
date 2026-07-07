@@ -302,6 +302,24 @@
     return d.getUTCFullYear() + '-' + mm + '-' + dd;
   }
 
+  function homeHeatmapTodayUtcMs() {
+    var now = new Date();
+    return Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+  }
+
+  function homeHeatmapWeekStartMs(ms) {
+    return ms - ((new Date(ms).getUTCDay() + 6) % 7) * HOME_HEATMAP_DAY_MS;
+  }
+
+  // 固定 53 周窗口：右缘对齐「今天」所在周（GitHub 同款），左缘随日历推进同步滑出
+  function homeHeatmapWindowBounds(anchorMs) {
+    var lastWeekStartMs = homeHeatmapWeekStartMs(anchorMs);
+    return {
+      startMs: lastWeekStartMs - (HOME_HEATMAP_WEEKS - 1) * 7 * HOME_HEATMAP_DAY_MS,
+      endMs: lastWeekStartMs + 6 * HOME_HEATMAP_DAY_MS
+    };
+  }
+
   // 非零日计数的四分位阈值：档位对离群的批量维护日保持稳健
   function homeHeatmapThresholds(counts) {
     var sorted = counts.slice().sort(function (a, b) { return a - b; });
@@ -322,24 +340,25 @@
 
   function buildHomeWikiHeatmapHtml(days) {
     var countByDate = {};
-    var counts = [];
-    var maxMs = -Infinity;
+    var hasActivity = false;
+    var todayMs = homeHeatmapTodayUtcMs();
+    var bounds = homeHeatmapWindowBounds(todayMs);
+    var startMs = bounds.startMs;
+    var endMs = bounds.endMs;
+    var windowCounts = [];
     for (var i = 0; i < days.length; i++) {
       var day = days[i];
       var ms = homeHeatmapParseDate(day && day.date);
       var count = day && typeof day.count === 'number' ? day.count : 0;
       if (ms === null || count <= 0) continue;
-      countByDate[day.date] = count;
-      counts.push(count);
-      if (ms > maxMs) maxMs = ms;
+      hasActivity = true;
+      if (ms >= startMs && ms <= endMs) {
+        countByDate[day.date] = count;
+        windowCounts.push(count);
+      }
     }
-    if (!counts.length) return '';
-    var thresholds = homeHeatmapThresholds(counts);
-    // getUTCDay() 0=周日 → 周一对齐的行号 (day+6)%7；
-    // 窗口固定 53 周，以最新数据所在周为最右列
-    var lastWeekStartMs = maxMs - ((new Date(maxMs).getUTCDay() + 6) % 7) * HOME_HEATMAP_DAY_MS;
-    var startMs = lastWeekStartMs - (HOME_HEATMAP_WEEKS - 1) * 7 * HOME_HEATMAP_DAY_MS;
-    var endMs = lastWeekStartMs + 6 * HOME_HEATMAP_DAY_MS;
+    if (!hasActivity) return '';
+    var thresholds = homeHeatmapThresholds(windowCounts.length ? windowCounts : [1]);
 
     var cellsHtml = '';
     var monthsHtml = '';
@@ -360,7 +379,7 @@
       monthsHtml += '<span>' + monthLabel + '</span>';
       for (var row = 0; row < 7; row++) {
         var dayMs = weekMs + row * HOME_HEATMAP_DAY_MS;
-        if (dayMs > maxMs) {
+        if (dayMs > todayMs) {
           // 仅未来日期留白；历史上无节点的日期与 GitHub 一样渲染为空格
           cellsHtml += '<span class="home-wiki-heatmap-cell is-pad" aria-hidden="true"></span>';
           continue;
@@ -397,7 +416,8 @@
       '<div class="home-wiki-heatmap-months" aria-hidden="true">' + monthsHtml + '</div>' +
       '<div class="home-wiki-heatmap-body">' +
       '<div class="home-wiki-heatmap-weekdays" aria-hidden="true">' + weekdaysHtml + '</div>' +
-      '<div class="home-wiki-heatmap-grid" role="group" aria-label="按日期筛选知识节点">' +
+      '<div class="home-wiki-heatmap-grid" data-week-count="' + HOME_HEATMAP_WEEKS +
+      '" role="group" aria-label="按日期筛选知识节点">' +
       cellsHtml +
       '</div></div></div></div>' +
       '<div class="home-wiki-heatmap-legend">' +
