@@ -99,6 +99,7 @@ flowchart TB
 - [ResNet（论文实体）](../entities/paper-resnet-deep-residual-learning.md)
 - [生成式视觉预训练（概念）](./generative-vision-pretraining.md)
 - [Vision Banana（实体）](../entities/vision-banana.md)
+- [具身大模型分类学选型闭环（专题枢纽）](../overview/topic-embodied-foundation-model.md) — 策略视觉表征支撑五层闭环的 VLM 感知理解层
 
 ## 参考来源
 

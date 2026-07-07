@@ -67,6 +67,7 @@ sources:
 - [ESI-Bench（具身空间智能基准）](../entities/esi-bench.md)
 - [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md)
 - [VLA](../methods/vla.md)
+- [具身大模型分类学选型闭环（专题枢纽）](../overview/topic-embodied-foundation-model.md) — 3D 空间 VQA 属五层闭环的 VLM 感知理解层
 
 ## 推荐继续阅读
 
