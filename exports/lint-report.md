@@ -121,4 +121,4 @@
 - wiki/concepts/visual-representation-for-policy.md
 - wiki/concepts/world-action-models.md
 
-📊 Sources 覆盖率：1482/1512 (98%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1483/1513 (98%) wiki/entity 页有 ingest 来源
