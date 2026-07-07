@@ -2677,3 +2677,9 @@
 - 详情页「所属专题」徽标行（`docs/main.js renderMetaTopicBadges`）本就以 `docs/topic-filters.js` 为单一事实源、`topicsForNode` 数据驱动：命中 `data-pipeline` 即渲染「📦 训练数据」徽标并跳 `graph.html?topic=data-pipeline`，空态降级隐藏整行——P3 第①项把 `data-pipeline` 写入单一事实源后，详情页徽标已自动联动，无需二次实现。
 - 本次补强 `data-pipeline.segments` +5（`retarget`/`retargeter`/`omniretarget`/`mocap`/`freemocap`），修正纯分词粒度导致的漏匹配（`mocap-retarget`/`soma-retargeter`/`paper-...-omniretarget`/`freemocap` 等重定向与动捕实体此前只命中 `motion-retargeting`）；node 逐页校验后数据集 + 重定向 + mocap 实体 46/46 候选页全部稳定命中专题（全库 47 节点）。
 - `make lint` 0 errors（另含 4 条信息型预警，不阻塞 CI）；勾选 v25 P3「详情页『同专题相关页』提示」条目。截图待带 Chrome 的环境补归档。
+
+## [2026-07-07] structural | checklist-v28 P1 具身大模型分类学选型闭环知识链 —— 新建端到端选型 Query
+
+- `wiki/queries/embodied-fm-taxonomy-loop.md`：把 VLM 感知理解 → VLN 空间导航 → VLA 动作执行 → VLX 一体化扩展 → WM 世界模型推演五大家族，从分散的实体/方法/对比页沉淀为一条端到端选型决策链；逐层给出 I/O 边界、数据需求、泛化能力、实时性/控制带宽与闭环稳定性取舍，配「五层选型闭环决策树」Mermaid、家族选型矛盾速查表与按层归因的失败模式速查表。
+- `wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md` 新增回链本 Query，消除新页孤儿并同步消除一条 `embodied_fm_crosslink` INFO 预警（10 → 9）。
+- `make lint` 0 errors（另含 9 条信息型预警，不阻塞 CI）；勾选 v28 P1「具身大模型分类学选型闭环知识链」第①项（Query 页），概念页 `embodied-fm-latency-generalization-tradeoff` 待后续推进。

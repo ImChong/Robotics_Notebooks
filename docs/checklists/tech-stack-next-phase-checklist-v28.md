@@ -29,8 +29,8 @@
 
 ## P1: 具身大模型分类学选型闭环知识链专题 (Quality)
 
-- [ ] **具身大模型分类学选型闭环知识链 (+2)**：
-    - [ ] `wiki/queries/embodied-fm-taxonomy-loop.md`（端到端 Query：VLM 感知理解 → VLN 空间导航 → VLA 动作执行 → VLX 一体化扩展 → WM 世界模型推演 五层选型的取舍决策树，覆盖每层 I/O 边界、数据需求、泛化能力、实时性/控制带宽、闭环稳定性成本与典型失败模式，配 Mermaid 流程图）。
+- [~] **具身大模型分类学选型闭环知识链 (+2)**：
+    - [x] `wiki/queries/embodied-fm-taxonomy-loop.md`（端到端 Query：VLM 感知理解 → VLN 空间导航 → VLA 动作执行 → VLX 一体化扩展 → WM 世界模型推演 五层选型的取舍决策树，覆盖每层 I/O 边界、数据需求、泛化能力、实时性/控制带宽、闭环稳定性成本与典型失败模式，配 Mermaid 流程图）。已建页并从 `comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md` 回链（消孤儿、同步消一条 `embodied_fm_crosslink` INFO 预警）。
     - [ ] `wiki/concepts/embodied-fm-latency-generalization-tradeoff.md`（具身大模型实时性 ↔ 泛化能力取舍概念页：明示模型规模、多模态跨度、世界模型推演步长如何共同决定推理时延与控制带宽的可达边界，以及与分层/端到端选型的关系）。
 - [ ] **具身大模型家族层专题交叉补强**：
     - [ ] 在 `wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md`、`wiki/methods/vla.md`、`wiki/tasks/vision-language-navigation.md`、`wiki/concepts/world-action-models.md`、`wiki/methods/generative-world-models.md` 五页与 P1 新页形成双向回链，明示「感知 → 导航 → 执行 → 扩展 → 推演」五层在选型闭环中的定位，消除孤儿页。
