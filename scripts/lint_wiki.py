@@ -132,6 +132,7 @@ INFO_ONLY_KEYS: set[str] = {
     "stale_claims",
     "physics_concept_crosslink",
     "contact_control_crosslink",
+    "embodied_fm_crosslink",
 }
 
 
@@ -290,6 +291,7 @@ def _empty_results() -> dict[str, Any]:
         "stale_claims": [],
         "physics_concept_crosslink": [],
         "contact_control_crosslink": [],
+        "embodied_fm_crosslink": [],
         "_ingest_covered": 0,
         "_ingest_total": 0,
     }
@@ -1231,6 +1233,57 @@ def _check_contact_control_crosslink(pages: list[Path], results: dict[str, Any])
             results["contact_control_crosslink"].append(str(rel))
 
 
+# 具身大模型分类学选型闭环专题枢纽页：VLM/VLN/VLA/VLX/World-Model 家族概念/对比页
+# 应回链至少一个，形成「感知 → 导航 → 执行 → 扩展 → 推演」五层选型闭环链路
+EMBODIED_FM_HUBS: tuple[str, ...] = (
+    "embodied-fm-taxonomy-loop",
+    "topic-embodied-foundation-model",
+)
+
+# 关键词以子串方式匹配 tag，覆盖 vla-model / vision-language-navigation /
+# world-model-* 等派生标签，避免精确匹配漏掉常见变体
+EMBODIED_FM_TAG_KEYWORDS: tuple[str, ...] = (
+    "vlm",
+    "vln",
+    "vla",
+    "vlx",
+    "world-model",
+)
+
+
+def _check_embodied_fm_crosslink(pages: list[Path], results: dict[str, Any]) -> None:
+    """V28: 具身大模型家族概念页交叉链路巡检 V1（信息型，不阻塞 CI）。
+
+    对 frontmatter ``tags`` 含 ``vlm`` / ``vln`` / ``vla`` / ``vlx`` /
+    ``world-model``（以子串方式匹配派生标签）的 ``wiki/concepts/*`` 与
+    ``wiki/comparisons/*`` 页，检查正文是否回链到「具身大模型分类学选型闭环」
+    专题枢纽页（``embodied-fm-taxonomy-loop`` / ``topic-embodied-foundation-model``）。
+    缺失回链作为 INFO 级提示写入 lint 报告，沉淀具身大模型选型闭环知识链的交叉
+    链路基线，不计入 lint 失败总数。枢纽页自身豁免。
+    """
+    for page in pages:
+        rel = page.relative_to(REPO_ROOT)
+        parts = rel.parts
+        if len(parts) < 3 or parts[0] != "wiki" or parts[1] not in ("concepts", "comparisons"):
+            continue
+        if page.stem in EMBODIED_FM_HUBS:
+            continue
+
+        content = page.read_text(encoding="utf-8")
+        fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
+        fm_block = fm_match.group(1) if fm_match else ""
+        # tags 既支持列表式（- vla），也支持内联式 [vla, ...]
+        tags = _frontmatter_tags(fm_block)
+        inline = re.search(r"^tags:\s*\[([^\]]*)\]", fm_block, re.MULTILINE)
+        if inline:
+            tags |= {t.strip().lower() for t in inline.group(1).split(",")}
+        if not any(kw in tag for tag in tags for kw in EMBODIED_FM_TAG_KEYWORDS):
+            continue
+
+        if not any(hub in content for hub in EMBODIED_FM_HUBS):
+            results["embodied_fm_crosslink"].append(str(rel))
+
+
 def _check_tool_institutions(pages: list[Path], results: dict[str, Any]) -> None:
     """entities/ 软件工具页须能派生至少一个所属机构（见 schema/institutions.json）。"""
     from bump_institution_tags import (
@@ -1321,6 +1374,7 @@ def lint() -> dict[str, Any]:
     _check_stale_claims(pages, results)
     _check_physics_concept_crosslink(pages, results)
     _check_contact_control_crosslink(pages, results)
+    _check_embodied_fm_crosslink(pages, results)
     _check_tool_institutions(pages, results)
 
     return results
@@ -1425,6 +1479,11 @@ def format_report(results: dict[str, Any]) -> str:
         (
             "contact_control_crosslink",
             "接触/力控/操作概念页缺回链「接触力旋量闭环」专题枢纽（信息型，不阻塞 CI）",
+            "💡",
+        ),
+        (
+            "embodied_fm_crosslink",
+            "VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」专题枢纽（信息型，不阻塞 CI）",
             "💡",
         ),
     ]

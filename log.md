@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-06] lint | scripts/lint_wiki.py — V28 P0 具身大模型家族概念页交叉链路巡检 V1（信息型，不阻塞 CI）
+
+- 新增 `_check_embodied_fm_crosslink`：对 `tags` 含 `vlm` / `vln` / `vla` / `vlx` / `world-model`（子串匹配派生标签）的 `wiki/concepts/*`、`wiki/comparisons/*` 页，检查正文是否回链专题枢纽 `embodied-fm-taxonomy-loop` / `topic-embodied-foundation-model`，缺失给 INFO 级 `embodied_fm_crosslink` 提示，枢纽页自身豁免
+- 注册 `embodied_fm_crosslink` 至 `INFO_ONLY_KEYS` / `_empty_results` / 报告分节；`make lint` 0 errors，基线快照 `exports/lint-report.md` 首批命中 10 页
+- 新增 `tests/test_lint_wiki_embodied_fm_crosslink.py` 8 用例（列表式/内联式 tag、comparisons 页、有/无回链、双枢纽、枢纽豁免、INFO 不计失败），lint_wiki 测试 72 passed
+- 勾选 [`tech-stack-next-phase-checklist-v28.md`](docs/checklists/tech-stack-next-phase-checklist-v28.md) P0 项
+
 ## [2026-07-06] ingest | sources/repos/cyclo_intelligence.md — ROBOTIS Cyclo Intelligence 行为树×VLA；wiki/entities/cyclo-intelligence.md、wiki/concepts/behavior-tree-vla-orchestration.md；交叉更新 vla / lerobot / topic-vla / vla-deployment-guide / vla-with-low-level-controller
 
 ## [2026-07-06] ingest | sources/papers/humanoidarena_arxiv_2606_17833.md — HumanoidArena egocentric 分层全身 benchmark；wiki/entities/paper-humanoidarena.md；交叉更新 wiki/tasks/loco-manipulation.md、wiki/tasks/teleoperation.md、wiki/entities/paper-twist2.md、wiki/methods/sonic-motion-tracking.md

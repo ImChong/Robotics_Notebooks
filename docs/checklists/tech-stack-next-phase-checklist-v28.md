@@ -24,8 +24,8 @@
 
 ## P0: 自动化与工具链深度强化 (Engineering)
 
-- [ ] **具身大模型家族概念页交叉链路巡检 V1**：
-    - [ ] `scripts/lint_wiki.py` 新增 `_check_embodied_fm_crosslink`：对 `tags` 含 `vlm` / `vln` / `vla` / `vlx` / `world-model`（子串匹配派生标签）的 `concepts/` / `comparisons/` 页，检查正文是否回链到「具身大模型分类学选型闭环」专题枢纽（`embodied-fm-taxonomy-loop` / `topic-embodied-foundation-model`，缺失给 INFO 级 `embodied_fm_crosslink` 提示，不阻塞 CI），枢纽页自身豁免；写入 lint 报告基线快照（`exports/lint-report.md`）；新增 `tests/test_lint_wiki_embodied_fm_crosslink.py` 用例覆盖（列表式/内联式 tag、有/无回链、双枢纽、枢纽豁免、INFO 不计失败）。
+- [x] **具身大模型家族概念页交叉链路巡检 V1**：
+    - [x] `scripts/lint_wiki.py` 新增 `_check_embodied_fm_crosslink`：对 `tags` 含 `vlm` / `vln` / `vla` / `vlx` / `world-model`（子串匹配派生标签）的 `concepts/` / `comparisons/` 页，检查正文是否回链到「具身大模型分类学选型闭环」专题枢纽（`embodied-fm-taxonomy-loop` / `topic-embodied-foundation-model`，缺失给 INFO 级 `embodied_fm_crosslink` 提示，不阻塞 CI），枢纽页自身豁免；写入 lint 报告基线快照（`exports/lint-report.md`，首批命中 10 页）；新增 `tests/test_lint_wiki_embodied_fm_crosslink.py` 用例覆盖（列表式/内联式 tag、有/无回链、双枢纽、枢纽豁免、INFO 不计失败）。
 
 ## P1: 具身大模型分类学选型闭环知识链专题 (Quality)
 
