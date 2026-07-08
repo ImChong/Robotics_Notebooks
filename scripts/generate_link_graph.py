@@ -100,10 +100,7 @@ OTHER_COMMUNITY_LABEL = "其他（Other） 社区"
 
 
 def _community_label_map(community_meta: dict[str, dict[str, Any]]) -> dict[str, str]:
-    return {
-        str(cid): str(meta.get("label") or cid)
-        for cid, meta in community_meta.items()
-    }
+    return {str(cid): str(meta.get("label") or cid) for cid, meta in community_meta.items()}
 
 
 def _community_label_for_node(
@@ -116,6 +113,7 @@ def _community_label_for_node(
     if not community_id or community_id == OTHER_COMMUNITY_ID:
         return ""
     return community_labels.get(community_id, "")
+
 
 # 与同社区邻居的边占比低于此值的非枢纽节点归入「其他社区」（避免强行贴标签）。
 COMMUNITY_MEMBERSHIP_THRESHOLD = 0.5
