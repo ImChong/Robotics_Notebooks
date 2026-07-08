@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-07-08",
-  "node_count": 1518,
-  "edge_count": 10772,
+  "node_count": 1519,
+  "edge_count": 10787,
   "coverage": {
-    "covered": 1486,
-    "total": 1516,
+    "covered": 1487,
+    "total": 1517,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-omnitactune-tactile-residual-adaptation.md",
+      "detail_id": "entity-paper-omnitactune-tactile-residual-adaptation",
+      "label": "OmniTacTune：视觉策略的触觉残差真机适应",
+      "type": "entity",
+      "recency": "2026-07-08",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-athena-wbc-humanoid-longtail.md",
       "detail_id": "entity-paper-athena-wbc-humanoid-longtail",
@@ -204,26 +214,17 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/concepts/contact-dynamics.md",
-      "detail_id": "wiki-concepts-contact-dynamics",
-      "label": "Contact Dynamics",
-      "type": "concept",
-      "recency": "2026-07-06",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-athena-wbc-humanoid-longtail.md",
-    "detail_id": "entity-paper-athena-wbc-humanoid-longtail",
-    "label": "Athena-WBC：面向人形全身控制长尾的能力对齐策略专家",
+    "path": "wiki/entities/paper-omnitactune-tactile-residual-adaptation.md",
+    "detail_id": "entity-paper-omnitactune-tactile-residual-adaptation",
+    "label": "OmniTacTune：视觉策略的触觉残差真机适应",
     "type": "entity",
     "recency": "2026-07-08",
     "source": "log.md",
     "action": "added",
-    "community_label": "动作重定向（Motion Retargeting） 社区"
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
@@ -236,7 +237,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 170
+      "size": 171
     },
     {
       "label": "动作重定向",

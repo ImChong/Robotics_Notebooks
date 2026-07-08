@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, vla, tactile-sensing, dexterous-manipulation, flow-matching, bimanual, contact-rich, imitation-learning, egocentric-video, dataset, berkeley, nvidia, stanford, nvidia-gear]
 status: complete
-updated: 2026-07-01
+updated: 2026-07-08
 arxiv: "2606.17055"
 related:
   - ../methods/vla.md

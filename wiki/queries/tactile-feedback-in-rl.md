@@ -2,14 +2,16 @@
 type: query
 tags: [rl, manipulation, tactile-sensing, sim2real, multimodal]
 status: complete
-updated: 2026-07-01
+updated: 2026-07-08
 related:
   - ../concepts/tactile-sensing.md
   - ../concepts/contact-rich-manipulation.md
   - ../concepts/visuo-tactile-fusion.md
+  - ../entities/paper-omnitactune-tactile-residual-adaptation.md
   - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/contact_dynamics.md
+  - ../../sources/papers/omnitactune_arxiv_2607_03723.md
 summary: "如何在 RL 中利用触觉反馈提升操作鲁棒性：介绍了多模态状态表征融合、作为稠密奖励塑形以及处理触觉 Sim2Real Gap 的关键技巧。"
 ---
 
@@ -65,13 +67,34 @@ summary: "如何在 RL 中利用触觉反馈提升操作鲁棒性：介绍了多
 3. **隐式表征学习 (Implicit Representation)**：
    将真实世界采集的触觉图像，通过自监督对比学习（如 BYOL 或 MAE），压缩成与仿真环境中的几何特征对齐的低维隐变量。RL 策略只针对这些低维隐变量进行训练，从而绕过“生成逼真触觉图像”的难题。
 
+## 4. 真机残差 RL：冻结视觉 + 在线触觉修正
+
+当团队 **已有视觉模仿/VLA 基策略**，但接触段（插装、开盖、杠杆）在真机上失败率高，且 **没有大规模离线触觉演示** 时，可考虑 **残差适应** 而非端到端重训 visuo-tactile 策略。
+
+代表：[OmniTacTune](../entities/paper-omnitactune-tactile-residual-adaptation.md)（arXiv:2607.03723）的两阶段真机 RL：
+
+| 阶段 | 作用 |
+|------|------|
+| **Warm-start** | 冻结基策略自主 rollout → 填 replay buffer；**同时** bootstrap flow-tactile critic 与微调触觉编码器；**ControlTac** 轨迹级增广扩接触样本 |
+| **在线残差 RL** | 轻量残差 actor 预测有界修正 $\mathbf{a}=\mathbf{a}^b+s\mathbf{a}^r$；**多感官稠密奖励**（到达、flow 匹配、触觉稳定、安全惩罚） |
+
+**关键设计点：**
+
+- **策略无关接口：** 残差只读 **物体关键点子目标 + 基策略 action chunk + 触觉**，不读 ACT/DP/π₀.₅ 内部表示——同一残差头可挂多种视觉栈。
+- **绕过触觉 Sim2Real：** 全程 **真机交互**，不依赖仿真触觉图像；适合 GelSight 等难仿真传感器。
+- **数据效率：** 四接触丰富任务 **40–80 min** 把基策略 **5–40% → 85–100%**；即使给 IL 基线 **额外 50 min 遥操**，仍落后 **20–30 pt**——说明 **接触修正更适合试错**。
+
+与 [视触觉融合](../concepts/visuo-tactile-fusion.md) 中「残差适应」范式、[T-Rex](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md)「100 h 触觉 mid-training 端到端 VLA」形成 **部署预算二维选型**。
+
 ## 关联页面
 - [Tactile Sensing (触觉感知)](../concepts/tactile-sensing.md)
 - [Contact-Rich Manipulation (接触丰富操作)](../concepts/contact-rich-manipulation.md)
 - [视触觉融合 (Visuo-Tactile Fusion)](../concepts/visuo-tactile-fusion.md)
+- [OmniTacTune（论文实体）](../entities/paper-omnitactune-tactile-residual-adaptation.md) — 冻结视觉 + 触觉残差真机 RL
 - [Manipulation 任务](../tasks/manipulation.md)
 - [Behavior Cloning Loss](../formalizations/behavior-cloning-loss.md)
 
 ## 参考来源
 - Yuan, W., et al. (2017). *GelSight: High-resolution robot tactile sensors for estimating geometry and force*.
 - [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md)
+- [sources/papers/omnitactune_arxiv_2607_03723.md](../../sources/papers/omnitactune_arxiv_2607_03723.md)
