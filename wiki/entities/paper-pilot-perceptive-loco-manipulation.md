@@ -13,7 +13,7 @@ tags:
   - isaac-lab
   - teleoperation
 status: complete
-updated: 2026-07-06
+updated: 2026-07-08
 arxiv: "2601.17440"
 related:
   - ../tasks/loco-manipulation.md

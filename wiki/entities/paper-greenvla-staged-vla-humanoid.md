@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, vla, humanoid, multi-embodiment, flow-matching, behavior-cloning, reinforcement-learning, manipulation, bimanual, data-curation, sber-robotics, google]
 status: complete
-updated: 2026-06-18
+updated: 2026-07-08
 arxiv: "2602.00919"
 related:
   - ../methods/vla.md

@@ -2,7 +2,7 @@
 type: method
 tags: [rl, sampling, data-generation, humanoid, physics-feasibility]
 status: complete
-updated: 2026-07-06
+updated: 2026-07-08
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-01-locomotion-base.md

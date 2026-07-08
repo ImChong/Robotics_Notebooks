@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, umich, cuhk, berkeley]
 status: complete
-updated: 2026-07-06
+updated: 2026-07-08
 venue: curated
 summary: "这篇论文把 world model 用于 humanoid contact planning。它不是预测图像未来，而是预测接触相关任务结果，服务 sampling-based MPC。"
 related:

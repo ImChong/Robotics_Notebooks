@@ -3,7 +3,7 @@ type: entity
 title: HumanNet（百万小时人中心视频语料）
 tags: [dataset, egocentric-video, exocentric-video, vla, imitation-learning, embodied-pretraining, pku, dagroup]
 summary: "HumanNet 是面向具身学习的大规模人中心视频语料（论文宣称约一百万小时），一三人称混合并配套交互导向标注与可扩展策展管线；适合作为 VLA/表示学习的人类侧数据基础设施参照。"
-updated: 2026-05-14
+updated: 2026-07-08
 status: complete
 related:
   - ../methods/vla.md

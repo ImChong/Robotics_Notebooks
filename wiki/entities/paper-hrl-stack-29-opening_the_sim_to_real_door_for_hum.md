@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, nvidia]
 status: complete
-updated: 2026-07-06
+updated: 2026-07-08
 arxiv: "2512.01061"
 venue: "arXiv"
 summary: "DoorMan 解决的是纯 RGB pixel-to-action 的人形开门任务。开门听起来简单，但对人形机器人来说非常复杂。"

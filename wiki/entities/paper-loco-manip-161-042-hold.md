@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-07-06
+updated: 2026-07-08
 venue: curated
 summary: "Hold 先从相机图像/多视角观测恢复场景、目标或运动表征，再用ACT/行为克隆模仿学习生成全身轨迹/动作序列、末端执行器/腕手目标、低层控制器目标。关键点是把示范轨迹压成可监督的动作预测问题，再通过动作 chunk 或闭环执行降低时序抖动。"
 related:

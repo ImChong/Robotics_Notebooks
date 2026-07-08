@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, berkeley, cmu]
 status: complete
-updated: 2026-07-06
+updated: 2026-07-08
 arxiv: "2506.13751"
 venue: "2025 · arXiv"
 summary: "视觉-语言指令压成适合全身的 latent；语义到身体接口。"

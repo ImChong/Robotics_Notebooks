@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model, nvidia, loco-manipulation, loco-manip-161-survey]
 status: complete
-updated: 2026-07-06
+updated: 2026-07-08
 arxiv: "2511.07820"
 venue: "2025 · arXiv"
 summary: "SONIC：规模化运动跟踪人形全身控制；在 RL 身体系统栈属参考跟踪层，在 BFM 谱系强调 goal-conditioned 与运控基座覆盖面。"
