@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-07-06
+updated: 2026-07-08
 venue: curated
 summary: "这篇工作先把语言指令、相机图像/多视角观测编码成多模态表征，再用策略网络和控制模块预测全身轨迹/动作序列。关键点是把策略网络和控制模块放在同一条训练/部署链路里，减少高层目标到低层动作之间的断点。"
 related:

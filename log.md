@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-08] ingest | sources/papers/lingbot_vla_v2_tech_report.md — LingBot-VLA 2.0 技术报告入库；wiki/entities/lingbot-vla-v2.md、wiki/methods/vla.md 交叉更新；修正 161 综述 LingBot-VLA 误链至 lingbot-map
+
 ## [2026-07-08] ingest | sources/repos/plfm_radar.md — AERIS-10 开源 PLFM 相控阵雷达；wiki/entities/aeris-10-plfm-radar.md；交叉更新 navigation-slam-autonomy-stack / multirotor-simulation-planning-control-stack / topic-state-estimation / field-robotics-troubleshooting
 
 ## [2026-07-08] ingest | sources/blogs/wechat_shenlan_tro_manip_5_papers_survey.md — T-RO 2026 操作学习 5 篇精选；wiki/overview/tro-manip-5-papers-technology-map.md、wiki/overview/tro-manip-category-01-data-scaling.md … category-04、wiki/entities/paper-tro-manip-01-diversity-scaling.md … 05、wiki/tasks/manipulation.md

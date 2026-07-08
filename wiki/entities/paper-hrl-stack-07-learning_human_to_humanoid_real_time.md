@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, cmu]
 status: complete
-updated: 2026-07-06
+updated: 2026-07-08
 venue: curated
 summary: "H2O 的完整名字是 Human-to-Humanoid。它要解决的问题很直接：能不能让一个人通过自己的身体动作，实时驱动一个人形机器人做全身动作，而不是只控制手臂或轮式底盘。"
 related:

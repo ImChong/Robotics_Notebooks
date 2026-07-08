@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-07-06
+updated: 2026-07-08
 venue: curated
 summary: "FALCON 主要解决数据闭环：用本体状态与关节序列、人类视频/动捕轨迹、遥操作/外骨骼数据采集人类操作和机器人状态，再通过全身控制器/WBC/MPC转成可训练、可复用的关节位置/力矩命令、末端执行器/腕手目标。关键点是把全身控制器/WBC/MPC放在同一条训练/部署链路里，减少高层目标到低层动作之间的断点。"
 related:

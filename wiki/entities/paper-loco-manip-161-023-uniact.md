@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-07-06
+updated: 2026-07-08
 venue: curated
 summary: "UniAct 把语言指令转成可跟踪的身体目标，并通过策略网络和控制模块训练或组合全身策略，最终输出全身轨迹/动作序列、低层控制器目标。关键点是把策略网络和控制模块放在同一条训练/部署链路里，减少高层目标到低层动作之间的断点。"
 related:

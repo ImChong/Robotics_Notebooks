@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, humanoid, survey, embodied-ai, whole-body-control, vla]
 status: complete
-updated: 2026-07-06
+updated: 2026-07-08
 related:
   - ./loco-manip-161-category-01-motion-base-wbt.md
   - ./loco-manip-161-category-02-upper-body-interface.md

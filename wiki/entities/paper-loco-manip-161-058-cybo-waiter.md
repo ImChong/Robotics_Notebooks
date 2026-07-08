@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-07-06
+updated: 2026-07-08
 venue: curated
 summary: "Cybo-Waiter 先从语言指令、相机图像/多视角观测恢复场景、目标或运动表征，再用扩散策略/流匹配、VLM 语义规划/路由、闭环纠错/人类干预生成全身轨迹/动作序列。关键点是把动作生成看成条件生成问题，用扩散或流匹配在多模态动作分布里采样可执行轨迹。"
 related:

@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, berkeley]
 status: complete
-updated: 2026-07-06
+updated: 2026-07-08
 arxiv: "2504.21738"
 venue: "2025 · arXiv"
 summary: "语言直接进入端到端 WBC；难在语义进入身体后不打散稳定性。"

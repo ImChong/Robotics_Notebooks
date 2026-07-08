@@ -3,7 +3,7 @@ type: entity
 title: HumanNet（百万小时人中心视频语料）
 tags: [dataset, egocentric-video, exocentric-video, vla, imitation-learning, embodied-pretraining, pku, dagroup]
 summary: "HumanNet 是面向具身学习的大规模人中心视频语料（论文宣称约一百万小时），一三人称混合并配套交互导向标注与可扩展策展管线；适合作为 VLA/表示学习的人类侧数据基础设施参照。"
-updated: 2026-05-14
+updated: 2026-07-08
 status: complete
 related:
   - ../methods/vla.md
@@ -15,6 +15,7 @@ related:
   - ../concepts/embodied-data-cleaning.md
   - ../comparisons/humannet-table1-human-video-corpora.md
   - ./humanoid-robot.md
+  - ./lingbot-vla-v2.md
 sources:
   - ../../sources/papers/humannet.md
   - ../../sources/papers/humannet_table1_benchmark_corpora.md
@@ -103,4 +104,4 @@ flowchart LR
 ## 推荐继续阅读
 
 - [EgoScale](../methods/egoscale.md)（arXiv:2602.16710，NVIDIA GEAR 项目页）、Ego4D / Ego-Exo4D / EgoVerse 等项目页与数据卡（对比视点设计与下游任务）
-- LingBot-VLA 相关公开材料（论文中作为受控 VLA 后训练协议参照架构）
+- [LingBot-VLA 2.0](./lingbot-vla-v2.md) — HumanNet 论文中 LingBot-VLA 架构的受控后训练对照在 2.0 中扩展为 **6 万小时** 产品与开源链

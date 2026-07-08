@@ -86,6 +86,7 @@
 | [x] [daji_arxiv_2605_14417.md](papers/daji_arxiv_2605_14417.md) | DAJI：语言条件人形控制的预期关节意图接口（DAJI-Flow + DAJI-Act，arXiv:2605.14417）摘录与 wiki 映射 |
 | [x] [dit4dit_arxiv_2603_10448.md](papers/dit4dit_arxiv_2603_10448.md) | DiT4DiT：双 DiT 联合 flow matching VAM，LIBERO/RoboCasa/G1 真机（arXiv:2603.10448，Mondo Robotics / HKUST）摘录与 wiki 映射 |
 | [x] [lingbot_map_arxiv_2604_14141.md](papers/lingbot_map_arxiv_2604_14141.md) | LingBot-Map：GCA 流式 3D 重建 + Paged KV（arXiv:2604.14141）摘录与 wiki 映射 |
+| [x] [lingbot_vla_v2_tech_report.md](papers/lingbot_vla_v2_tech_report.md) | LingBot-VLA 2.0：6 万小时数据管线 + MoE + Dual-Query 蒸馏（arXiv:2607.06403）摘录与 wiki 映射 |
 | [x] [mamma_arxiv_2506_13040.md](papers/mamma_arxiv_2506_13040.md) | MAMMA：多视角 markerless 双人 SMPL-X 采集 + MammaNet 稠密 landmark（CVPR 2026 Oral，arXiv:2506.13040，MPI-IS）摘录与 wiki 映射 |
 | [x] [mimic_video_arxiv_2512_15692.md](papers/mimic_video_arxiv_2512_15692.md) | mimic-video：Video-Action Model（VAM），互联网视频潜计划 + 流匹配动作解码器（arXiv:2512.15692）摘录与 wiki 映射 |
 | [x] [defi_arxiv_2604_16391.md](papers/defi_arxiv_2604_16391.md) | DeFI：解耦 GFDM/GIDM 前向与逆动力学预训练 + 下游扩散耦合 VLA（arXiv:2604.16391）摘录与 wiki 映射 |
@@ -134,6 +135,7 @@
 | [x] [leggedrobotics_robotic_world_model.md](repos/leggedrobotics_robotic_world_model.md) | robotic_world_model：ETH RSL 的 RWM / RWM-U Isaac Lab 扩展（在线 + 离线想象管线） |
 | [x] [leggedrobotics_robotic_world_model_lite.md](repos/leggedrobotics_robotic_world_model_lite.md) | robotic_world_model_lite：无仿真器依赖的 RWM / RWM-U 离线训练精简仓 |
 | [x] [lingbot-map.md](repos/lingbot-map.md) | LingBot-Map：Robbyant 流式 3D 重建官方仓（GCT/GCA、FlashInfer、误链勘误） |
+| [x] [lingbot-vla-v2.md](repos/lingbot-vla-v2.md) | LingBot-VLA 2.0：Robbyant 务实 VLA 基础模型官方仓（6B 权重、LeRobot 后训练、真机部署） |
 | [x] [lucidrains_mimic_video.md](repos/lucidrains_mimic_video.md) | lucidrains/mimic-video：mimic-video / VAM 论文的非官方 PyTorch 实现索引 |
 | [x] [defi-logos-robotics.md](repos/defi-logos-robotics.md) | LogosRoboticsGroup/DeFi：解耦前向/逆动力学 VLA 官方实现（arXiv:2604.16391） |
 | [x] [easy_quadruped.md](repos/easy_quadruped.md) | Xzgz718/easy_quadruped：StanfordQuadruped 二次开发，Pupper 步态控制 + MuJoCo 浮动机身闭环仿真 |
@@ -384,6 +386,7 @@
 | [x] [legsvla-github-io.md](sites/legsvla-github-io.md) | LEGS 项目页 legsvla.github.io（3DGS loco-manip VLA 数据管线、真机 demo；arXiv:2606.01458） |
 | [x] [splitadapter-github-io.md](sites/splitadapter-github-io.md) | SplitAdapter 项目页 splitadapter.github.io（负载感知因子化适配、G1 真机 demo；arXiv:2606.03297） |
 | [x] [lingbot-map-technology-robbant.md](sites/lingbot-map-technology-robbant.md) | LingBot-Map 官方项目页 technology.robbyant.com/lingbot-map（与论文/仓库交叉索引） |
+| [x] [lingbot-vla-v2-technology-robbant.md](sites/lingbot-vla-v2-technology-robbant.md) | LingBot-VLA 2.0 官方项目页 technology.robbyant.com/lingbot-vla-v2（数据管线、MoE、真机 benchmark 可视化） |
 | [x] [mamma-tue-mpg-de.md](sites/mamma-tue-mpg-de.md) | MAMMA 项目页 mamma.is.tue.mpg.de（MammaNet、MAMMASyn、Vicon 对比、iPhone demo；配套 arXiv:2506.13040） |
 | [x] [mimic-video-github-io.md](sites/mimic-video-github-io.md) | mimic-video 项目页 mimic-video.github.io（VAM 摘要、Cosmos-Predict2 方法叙述、真机与仿真结果、BibTeX） |
 | [x] [motion-tracking-axell-top.md](sites/motion-tracking-axell-top.md) | motion-tracking.axell.top：Axellwppr/motion_tracking 预训练策略浏览器演示 |
