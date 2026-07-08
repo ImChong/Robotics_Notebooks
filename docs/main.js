@@ -456,6 +456,11 @@
       return '<span class="' + cellClass + ' updates-badge-cell--empty" aria-hidden="true"></span>';
     }
 
+    function renderRepoStar(meta) {
+      if (!meta || !meta.has_repo) return '';
+      return '<span class="updates-repo-star" aria-label="含源码" title="含开源仓库">⭐️</span> ';
+    }
+
     // 首页紧凑模式（mount 带 data-compact）：只列最近 5 条单行记录；
     // 完整时间线与活跃度热力图迁至 change-log.html
     if (mount.hasAttribute('data-compact')) {
@@ -478,6 +483,7 @@
           '</span><a href="' +
           escapeHtml(detailHref(rowMeta.detail_id)) +
           '">' +
+          renderRepoStar(rowMeta) +
           escapeHtml(rowMeta.label || rowMeta.detail_id) +
           '</a></li>';
       }
@@ -520,6 +526,7 @@
         renderActionBadgeCell(meta.action, 'updates-badge-cell') +
         '<span class="updates-item-type">' + escapeHtml(typeLabel) + '</span>' +
         '<a class="updates-item-link" href="' + escapeHtml(detailHref(meta.detail_id)) + '">' +
+        renderRepoStar(meta) +
         escapeHtml(meta.label || meta.detail_id) +
         '</a></li>'
       );
@@ -563,7 +570,8 @@
             type: nodeMeta.type || '',
             action: nodeMeta.action || '',
             recency: dayEntry.date,
-            source: 'log.md'
+            source: 'log.md',
+            has_repo: !!nodeMeta.has_repo
           });
         }
         if (!metas.length) continue;

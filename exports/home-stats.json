@@ -24,7 +24,8 @@
       "type": "entity",
       "recency": "2026-07-07",
       "source": "log.md",
-      "action": "added"
+      "action": "added",
+      "has_repo": true
     },
     {
       "path": "wiki/entities/nuwa-skill.md",
@@ -33,7 +34,8 @@
       "type": "entity",
       "recency": "2026-07-07",
       "source": "log.md",
-      "action": "added"
+      "action": "added",
+      "has_repo": true
     },
     {
       "path": "wiki/entities/darwin-skill.md",
@@ -42,7 +44,8 @@
       "type": "entity",
       "recency": "2026-07-07",
       "source": "log.md",
-      "action": "added"
+      "action": "added",
+      "has_repo": true
     },
     {
       "path": "wiki/concepts/3d-spatial-vqa.md",
@@ -51,7 +54,8 @@
       "type": "concept",
       "recency": "2026-07-06",
       "source": "log.md",
-      "action": "maintained"
+      "action": "maintained",
+      "has_repo": true
     },
     {
       "path": "wiki/concepts/ai-auto-research.md",
@@ -60,7 +64,8 @@
       "type": "concept",
       "recency": "2026-07-06",
       "source": "log.md",
-      "action": "maintained"
+      "action": "maintained",
+      "has_repo": true
     },
     {
       "path": "wiki/concepts/armature-modeling.md",
@@ -87,7 +92,8 @@
       "type": "concept",
       "recency": "2026-07-06",
       "source": "log.md",
-      "action": "maintained"
+      "action": "maintained",
+      "has_repo": true
     },
     {
       "path": "wiki/concepts/behavior-tree-vla-orchestration.md",
@@ -96,7 +102,8 @@
       "type": "concept",
       "recency": "2026-07-06",
       "source": "log.md",
-      "action": "added"
+      "action": "added",
+      "has_repo": true
     },
     {
       "path": "wiki/concepts/can-bus-protocol.md",
@@ -141,7 +148,8 @@
       "type": "concept",
       "recency": "2026-07-06",
       "source": "log.md",
-      "action": "maintained"
+      "action": "maintained",
+      "has_repo": true
     },
     {
       "path": "wiki/concepts/clock-synchronization-algorithms.md",

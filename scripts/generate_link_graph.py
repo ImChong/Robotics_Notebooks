@@ -343,6 +343,14 @@ def _append_latest_node(
         action = _wiki_node_action(rel, log_date, first_log_dates, git_added_dates)
         if action:
             entry["action"] = action
+    has_repo = bool(base.get("_has_repo_source"))
+    if not has_repo:
+        try:
+            has_repo = wiki_has_repo_source(p.read_text(encoding="utf-8"))
+        except OSError:
+            pass
+    if has_repo:
+        entry["has_repo"] = True
     out.append(entry)
 
 
@@ -746,6 +754,8 @@ def wiki_activity_from_log(nodes: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     added_count += 1
                 else:
                     maintained_count += 1
+            if meta.get("has_repo"):
+                node_entry["has_repo"] = True
             nodes_out.append(node_entry)
         day_entry: dict[str, Any] = {
             "date": log_date,
@@ -773,6 +783,11 @@ def resolve_latest_nodes_max(cli_value: int | None) -> int:
     if candidate is None:
         return LATEST_NODES_DEFAULT
     return max(1, min(candidate, LATEST_NODES_CAP))
+
+
+def wiki_has_repo_source(content: str) -> bool:
+    """Wiki 页是否关联开源仓库源码归档（``sources/repos/``）。"""
+    return bool(re.search(r"(?:\.\./)*sources/repos/[^)\s]+\.md\b", content))
 
 
 def compute_health_score(content: str) -> int:
@@ -1326,6 +1341,8 @@ def _build_graph_data() -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
             "_recency": wiki_recency_date(content, page).isoformat(),
             # 论文节点：type=entity 且 frontmatter tags 含 paper（私有标记，写出前剔除）
             "_is_paper": node_type == "entity" and "paper" in node_tags,
+            # 更新记录 ⭐️：关联 sources/repos/ 源码归档（私有标记，写出前剔除）
+            "_has_repo_source": wiki_has_repo_source(content),
         }
         institutions = derive_node_institutions(content)
         if institutions:

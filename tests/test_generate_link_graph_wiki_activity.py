@@ -94,8 +94,35 @@ class WikiActivityFromLogTest(unittest.TestCase):
         with self._patched_log():
             out = glg.wiki_activity_from_log(self.nodes)
         node = out[0]["nodes"][0]
-        allowed = {"detail_id", "label", "type", "action"}
+        allowed = {"detail_id", "label", "type", "action", "has_repo"}
         self.assertTrue(set(node).issubset(allowed))
+
+    def test_has_repo_flag_when_wiki_links_sources_repos(self) -> None:
+        repo_rel = "wiki/entities/caveman.md"
+        if not _wiki_path_for(repo_rel).is_file():
+            self.skipTest("caveman 实体页不存在")
+        nodes = [_node(repo_rel)]
+        self._write_log([("2026-05-28", [repo_rel])])
+        with self._patched_log():
+            out = glg.wiki_activity_from_log(nodes)
+        self.assertTrue(out[0]["nodes"][0].get("has_repo"))
+
+    def test_has_repo_omitted_when_no_repo_source(self) -> None:
+        rel = next(
+            (
+                p
+                for p in self.existing_paths
+                if not glg.wiki_has_repo_source(_wiki_path_for(p).read_text(encoding="utf-8"))
+            ),
+            None,
+        )
+        if not rel:
+            self.skipTest("无不含 sources/repos 引用的测试用 wiki 页")
+        self._write_log([("2026-05-28", [rel])])
+        nodes = [_node(rel)]
+        with self._patched_log():
+            out = glg.wiki_activity_from_log(nodes)
+        self.assertNotIn("has_repo", out[0]["nodes"][0])
 
     def test_action_added_vs_maintained(self) -> None:
         rel = self.existing_paths[0]

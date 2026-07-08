@@ -572,6 +572,11 @@ body.sponsor-dialog-open {
   min-width: 0;
   overflow-wrap: anywhere;
 }
+.updates-repo-star {
+  display: inline;
+  font-size: .9em;
+  line-height: 1;
+}
 @media (max-width: 860px) {
   /* 窄屏：标签/类型与标题分行，取消跨条目列对齐 */
   .updates-item {
