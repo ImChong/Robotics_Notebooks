@@ -2,8 +2,9 @@
 type: task
 tags: [locomotion, stairs, obstacle, perception, blind-locomotion, parkour, humanoid, quadruped, hub]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-08
 related:
+  - ../entities/paper-discrete-terrain-minimal-proximity-sensing.md
   - ./locomotion.md
   - ./humanoid-locomotion.md
   - ../concepts/terrain-adaptation.md
@@ -38,6 +39,7 @@ sources:
   - ../../sources/papers/e_sds_arxiv_2512_16446.md
   - ../../sources/papers/dreamwaq_plus_arxiv_2409_19709.md
   - ../../sources/papers/extreme_parkour_arxiv_2309_14341.md
+  - ../../sources/papers/discrete_terrain_minimal_proximity_sensing_arxiv_2606_31912.md
   - ../../sources/papers/swap_parkour_arxiv_2606_19928.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
 summary: "楼梯、台阶与离散障碍上的腿式/人形运动中心节点：按「是否显式地形感知」「上/下楼梯」「越障/跑酷」组织文献与概念，后续 ingest 默认挂接本页。"
@@ -117,6 +119,7 @@ flowchart TB
 | 感知 | 场景 | 页面 | 要点 |
 |------|------|------|------|
 | **有**（点云 + 本体） | 楼梯 / 陡坡 / OOD | [DreamWaQ++](../entities/dreamwaq-plus.md) | 相对盲走 DreamWaQ 在困难楼梯显著领先 |
+| **有**（足底 4×4 ToF，无相机/LiDAR） | 踏石 / 沟 / 平衡木 / 楼梯 | [离散地形最小感知](../entities/paper-discrete-terrain-minimal-proximity-sensing.md) | ETH RSL ANYmal-D；接触前局部几何 + LSTM-PPO；60 cm 沟、错落踏石 |
 | **弱 / 试参** | 楼梯等 OOD | [Walk These Ways](../entities/paper-walk-these-ways-quadruped-mob.md) | 人类调节行为参数 \(b\) 在楼梯、滑地等场景快速试错 |
 | **仿真演示** | 楼梯模式 | [JackHan MuJoCo WalkE3](../entities/jackhan-mujoco-walke3-simulation.md) | 预训练策略含楼梯与扰动模式（仿真边界见页内说明） |
 
@@ -146,6 +149,7 @@ flowchart TB
 | 人形 **高速上楼梯** + 规划引导 RL | [FastStair](../entities/paper-faststair-humanoid-stair-ascent.md) |
 | **下楼** 或自动奖励设计 | [E-SDS](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) |
 | 四足 **点云前瞻** 楼梯 | [DreamWaQ++](../entities/dreamwaq-plus.md) |
+| 四足 **足底 ToF** 踏石/沟（无视觉栈） | [离散地形最小感知](../entities/paper-discrete-terrain-minimal-proximity-sensing.md) |
 | 人形 **跑酷技能链** + 机载深度 | [PHP](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) |
 | 人形 **开放世界长程** + 想象落脚 | [SSR](../entities/paper-ssr-humanoid-open-world-traversal.md) |
 | 人形 **立体深度 sim2real** + 特权蒸馏 + 跑酷/长楼梯 | [Now You See That](../entities/paper-now-you-see-that-humanoid-vision-locomotion.md) |
@@ -183,4 +187,5 @@ flowchart TB
 - [E-SDS 论文摘录（arXiv:2512.16446）](../../sources/papers/e_sds_arxiv_2512_16446.md)
 - [DreamWaQ++ 论文摘录（arXiv:2409.19709）](../../sources/papers/dreamwaq_plus_arxiv_2409_19709.md)
 - [Extreme Parkour 论文摘录（arXiv:2309.14341）](../../sources/papers/extreme_parkour_arxiv_2309_14341.md)
+- [离散地形最小感知论文摘录（arXiv:2606.31912）](../../sources/papers/discrete_terrain_minimal_proximity_sensing_arxiv_2606_31912.md)
 - [42 篇人形 RL 运动控制目录摘录](../../sources/papers/humanoid_rl_stack_42_catalog.md)

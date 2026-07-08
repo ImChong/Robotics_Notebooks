@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-08] ingest | sources/papers/discrete_terrain_minimal_proximity_sensing_arxiv_2606_31912.md — ETH RSL 四足足底 ToF 最小感知离散地形；wiki/entities/paper-discrete-terrain-minimal-proximity-sensing.md；交叉更新 quadruped-robot / terrain-adaptation / stair-obstacle-perceptive-locomotion
+
 ## [2026-07-08] ingest | sources/sites/unitree-unistore.md — UniStore 宇树应用平台；wiki/entities/unitree-unistore.md；交叉更新 unitree / unitree-g1
 
 ## [2026-07-08] ingest | sources/sites/stackforce-workbench.md、stackforce-cad2urdf.md — StackForce 工作台与 CAD2URDF；wiki/entities/stackforce.md；交叉 step2urdf / urdf-studio / isaac-lab / gpufree

@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-07-08",
-  "node_count": 1542,
-  "edge_count": 11075,
+  "node_count": 1543,
+  "edge_count": 11091,
   "coverage": {
-    "covered": 1505,
-    "total": 1535,
+    "covered": 1506,
+    "total": 1536,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-discrete-terrain-minimal-proximity-sensing.md",
+      "detail_id": "entity-paper-discrete-terrain-minimal-proximity-sensing",
+      "label": "Learning Locomotion on Discrete Terrain via Minimal Proximity Sensing",
+      "type": "entity",
+      "recency": "2026-07-08",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "运动控制（Locomotion） 社区"
+    },
     {
       "path": "wiki/entities/unitree-unistore.md",
       "detail_id": "entity-unitree-unistore",
@@ -201,28 +211,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/darwin-skill.md",
-      "detail_id": "entity-darwin-skill",
-      "label": "Darwin Skill（达尔文.skill）",
-      "type": "entity",
-      "recency": "2026-07-07",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/unitree-unistore.md",
-    "detail_id": "entity-unitree-unistore",
-    "label": "UniStore（宇树应用平台）",
+    "path": "wiki/entities/paper-discrete-terrain-minimal-proximity-sensing.md",
+    "detail_id": "entity-paper-discrete-terrain-minimal-proximity-sensing",
+    "label": "Learning Locomotion on Discrete Terrain via Minimal Proximity Sensing",
     "type": "entity",
     "recency": "2026-07-08",
     "source": "log.md",
     "action": "added",
-    "has_repo": true
+    "community_label": "运动控制（Locomotion） 社区"
   },
   "top_communities": [
     {
@@ -239,14 +238,14 @@
     },
     {
       "label": "仿真训练",
-      "size": 113
-    },
-    {
-      "label": "移动操作",
-      "size": 103
+      "size": 109
     },
     {
       "label": "运动控制",
+      "size": 106
+    },
+    {
+      "label": "移动操作",
       "size": 103
     }
   ]
