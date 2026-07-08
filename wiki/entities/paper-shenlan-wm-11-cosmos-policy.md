@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, world-models, shenlan-survey, open-source, nvidia, stanford]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-08
 arxiv: "2601.16163"
 venue: —
 summary: "微调 Cosmos-Predict2 视频基础模型实现视觉运动控制与规划。"
@@ -13,6 +13,7 @@ related:
   - ../overview/robot-world-models-training-loop-taxonomy.md
   - ../methods/generative-world-models.md
   - ../concepts/world-action-models.md
+  - ./paper-navwam-goal-conditioned-visual-navigation-wam.md
 sources:
   - ../../sources/papers/shenlan_wm_survey_11_cosmos-policy.md
   - ../../sources/papers/shenlan_world_models_15_reference_catalog.md

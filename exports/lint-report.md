@@ -114,4 +114,4 @@
 ### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」专题枢纽（信息型，不阻塞 CI）（1 个）
 - wiki/concepts/variational-automation.md
 
-📊 Sources 覆盖率：1502/1532 (98%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1503/1533 (98%) wiki/entity 页有 ingest 来源
