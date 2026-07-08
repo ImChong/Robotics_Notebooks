@@ -458,7 +458,20 @@
 
     function renderRepoStar(meta) {
       if (!meta || !meta.has_repo) return '';
-      return '<span class="updates-repo-star" aria-label="含源码" title="含开源仓库">⭐️</span> ';
+      return '<span class="updates-item-opensource" aria-label="含开源仓库" title="含开源仓库">⭐️</span>';
+    }
+
+    function renderCommunityCat(meta) {
+      if (!meta || !meta.community_label) return '';
+      var label = typeof shortenCommunityLabel === 'function'
+        ? shortenCommunityLabel(meta.community_label)
+        : String(meta.community_label).replace(/\s*社区\s*$/, '').trim();
+      if (!label) return '';
+      return '<span class="updates-item-cat">' + escapeHtml(label) + '</span>';
+    }
+
+    function renderItemSuffix(meta) {
+      return renderRepoStar(meta) + renderCommunityCat(meta);
     }
 
     // 首页紧凑模式（mount 带 data-compact）：只列最近 5 条单行记录；
@@ -483,9 +496,10 @@
           '</span><a href="' +
           escapeHtml(detailHref(rowMeta.detail_id)) +
           '">' +
-          renderRepoStar(rowMeta) +
           escapeHtml(rowMeta.label || rowMeta.detail_id) +
-          '</a></li>';
+          '</a>' +
+          renderItemSuffix(rowMeta) +
+          '</li>';
       }
       mount.innerHTML =
         '<ul class="home-latest-list">' + compactRows + '</ul>' +
@@ -525,10 +539,12 @@
         '<li class="updates-item' + (folded ? ' updates-item-folded' : '') + '">' +
         renderActionBadgeCell(meta.action, 'updates-badge-cell') +
         '<span class="updates-item-type">' + escapeHtml(typeLabel) + '</span>' +
+        '<span class="updates-item-main">' +
         '<a class="updates-item-link" href="' + escapeHtml(detailHref(meta.detail_id)) + '">' +
-        renderRepoStar(meta) +
         escapeHtml(meta.label || meta.detail_id) +
-        '</a></li>'
+        '</a>' +
+        renderItemSuffix(meta) +
+        '</span></li>'
       );
     }
 
@@ -571,7 +587,8 @@
             action: nodeMeta.action || '',
             recency: dayEntry.date,
             source: 'log.md',
-            has_repo: !!nodeMeta.has_repo
+            has_repo: !!nodeMeta.has_repo,
+            community_label: nodeMeta.community_label || ''
           });
         }
         if (!metas.length) continue;

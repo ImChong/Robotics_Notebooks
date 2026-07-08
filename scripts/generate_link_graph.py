@@ -97,6 +97,26 @@ PRIMARY_COMMUNITY_CAP = 16
 MAX_COMMUNITIES = 16
 OTHER_COMMUNITY_ID = "community-other"
 OTHER_COMMUNITY_LABEL = "其他（Other） 社区"
+
+
+def _community_label_map(community_meta: dict[str, dict[str, Any]]) -> dict[str, str]:
+    return {
+        str(cid): str(meta.get("label") or cid)
+        for cid, meta in community_meta.items()
+    }
+
+
+def _community_label_for_node(
+    base: dict[str, Any],
+    community_labels: dict[str, str] | None,
+) -> str:
+    if not community_labels:
+        return ""
+    community_id = str(base.get("community") or "")
+    if not community_id or community_id == OTHER_COMMUNITY_ID:
+        return ""
+    return community_labels.get(community_id, "")
+
 # 与同社区邻居的边占比低于此值的非枢纽节点归入「其他社区」（避免强行贴标签）。
 COMMUNITY_MEMBERSHIP_THRESHOLD = 0.5
 # 社区展示名格式：「中文（English） 社区」。规范见 schema/naming.md § 图谱社区命名。
@@ -321,6 +341,7 @@ def _append_latest_node(
     log_date: str,
     first_log_dates: dict[str, str] | None = None,
     git_added_dates: dict[str, str] | None = None,
+    community_labels: dict[str, str] | None = None,
 ) -> None:
     if not rel.startswith("wiki/") or rel in seen or "*" in rel:
         return
@@ -351,6 +372,9 @@ def _append_latest_node(
             pass
     if has_repo:
         entry["has_repo"] = True
+    community_label = _community_label_for_node(base, community_labels)
+    if community_label:
+        entry["community_label"] = community_label
     out.append(entry)
 
 
@@ -590,6 +614,7 @@ def latest_wiki_nodes_from_log(
     *,
     max_items: int = LATEST_NODES_DEFAULT,
     window_days: int = LATEST_NODES_WINDOW_DAYS,
+    community_labels: dict[str, str] | None = None,
 ) -> list[dict[str, Any]]:
     """从 log.md 解析最近若干日维护日志中出现的 wiki 节点（去重保序）。
 
@@ -642,6 +667,7 @@ def latest_wiki_nodes_from_log(
                     log_date=log_date,
                     first_log_dates=first_log_dates,
                     git_added_dates=git_added_dates,
+                    community_labels=community_labels,
                 )
         for m in WIKI_PATH_IN_LOG.finditer(chunk):
             rel = _normalize_wiki_rel_from_log_match(m.group(0))
@@ -655,6 +681,7 @@ def latest_wiki_nodes_from_log(
                         log_date=log_date,
                         first_log_dates=first_log_dates,
                         git_added_dates=git_added_dates,
+                        community_labels=community_labels,
                     )
                 continue
             _append_latest_node(
@@ -665,11 +692,16 @@ def latest_wiki_nodes_from_log(
                 log_date=log_date,
                 first_log_dates=first_log_dates,
                 git_added_dates=git_added_dates,
+                community_labels=community_labels,
             )
     return out[:max_items]
 
 
-def wiki_activity_from_log(nodes: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def wiki_activity_from_log(
+    nodes: list[dict[str, Any]],
+    *,
+    community_labels: dict[str, str] | None = None,
+) -> list[dict[str, Any]]:
     """从 log.md 全量日志汇总每日出现的 wiki 节点（首页热力图按日期筛选用）。
 
     与 latest_wiki_nodes_from_log 使用同一套路径解析与校验规则，但不限时间
@@ -708,6 +740,7 @@ def wiki_activity_from_log(nodes: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     log_date=log_date,
                     first_log_dates=first_log_dates,
                     git_added_dates=git_added_dates,
+                    community_labels=community_labels,
                 )
         for m in WIKI_PATH_IN_LOG.finditer(chunk):
             rel = _normalize_wiki_rel_from_log_match(m.group(0))
@@ -721,6 +754,7 @@ def wiki_activity_from_log(nodes: list[dict[str, Any]]) -> list[dict[str, Any]]:
                         log_date=log_date,
                         first_log_dates=first_log_dates,
                         git_added_dates=git_added_dates,
+                        community_labels=community_labels,
                     )
                 continue
             _append_latest_node(
@@ -731,6 +765,7 @@ def wiki_activity_from_log(nodes: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 log_date=log_date,
                 first_log_dates=first_log_dates,
                 git_added_dates=git_added_dates,
+                community_labels=community_labels,
             )
 
     days: list[dict[str, Any]] = []
@@ -756,6 +791,9 @@ def wiki_activity_from_log(nodes: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     maintained_count += 1
             if meta.get("has_repo"):
                 node_entry["has_repo"] = True
+            community_label = meta.get("community_label")
+            if community_label:
+                node_entry["community_label"] = community_label
             nodes_out.append(node_entry)
         day_entry: dict[str, Any] = {
             "date": log_date,
@@ -1423,7 +1461,9 @@ def _compute_graph_stats(
     largest_ratio = round(largest_size / max(len(nodes), 1), 3)
 
     latest_wiki_nodes: list[dict[str, Any]] = latest_wiki_nodes_from_log(
-        nodes, max_items=latest_nodes_max
+        nodes,
+        max_items=latest_nodes_max,
+        community_labels=_community_label_map(community_meta),
     )
     if not latest_wiki_nodes and nodes:
         best = max(
@@ -1489,6 +1529,7 @@ def main() -> None:
 
     for node in nodes:
         node.pop("_is_paper", None)
+        node.pop("_has_repo_source", None)
         recency = node.pop("_recency", None)
         if recency:
             node["recency"] = recency
@@ -1521,7 +1562,9 @@ def main() -> None:
         f"top hub='{hub_list[0]['label'] if hub_list else '-'}' → {STATS_PATH.relative_to(REPO_ROOT)}"
     )
 
-    activity_days = wiki_activity_from_log(nodes)
+    activity_days = wiki_activity_from_log(
+        nodes, community_labels=_community_label_map(community_meta)
+    )
     activity = {"generated_at": stats["generated_at"], "days": activity_days}
     ACTIVITY_PATH.write_text(
         json.dumps(activity, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"

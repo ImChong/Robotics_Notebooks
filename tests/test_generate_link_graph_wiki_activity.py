@@ -94,18 +94,32 @@ class WikiActivityFromLogTest(unittest.TestCase):
         with self._patched_log():
             out = glg.wiki_activity_from_log(self.nodes)
         node = out[0]["nodes"][0]
-        allowed = {"detail_id", "label", "type", "action", "has_repo"}
+        allowed = {"detail_id", "label", "type", "action", "has_repo", "community_label"}
         self.assertTrue(set(node).issubset(allowed))
 
     def test_has_repo_flag_when_wiki_links_sources_repos(self) -> None:
         repo_rel = "wiki/entities/caveman.md"
         if not _wiki_path_for(repo_rel).is_file():
             self.skipTest("caveman 实体页不存在")
-        nodes = [_node(repo_rel)]
+        nodes = [_node(repo_rel, type_="entity")]
+        nodes[0]["community"] = "community-0"
+        community_labels = {"community-0": "编码代理（Coding Agents） 社区"}
         self._write_log([("2026-05-28", [repo_rel])])
         with self._patched_log():
-            out = glg.wiki_activity_from_log(nodes)
-        self.assertTrue(out[0]["nodes"][0].get("has_repo"))
+            out = glg.wiki_activity_from_log(nodes, community_labels=community_labels)
+        node = out[0]["nodes"][0]
+        self.assertTrue(node.get("has_repo"))
+        self.assertEqual(node.get("community_label"), "编码代理（Coding Agents） 社区")
+
+    def test_community_label_omitted_for_other_bucket(self) -> None:
+        rel = self.existing_paths[0]
+        nodes = [_node(rel)]
+        nodes[0]["community"] = glg.OTHER_COMMUNITY_ID
+        community_labels = {glg.OTHER_COMMUNITY_ID: glg.OTHER_COMMUNITY_LABEL}
+        self._write_log([("2026-05-28", [rel])])
+        with self._patched_log():
+            out = glg.wiki_activity_from_log(nodes, community_labels=community_labels)
+        self.assertNotIn("community_label", out[0]["nodes"][0])
 
     def test_has_repo_omitted_when_no_repo_source(self) -> None:
         rel = next(
