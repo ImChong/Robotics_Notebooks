@@ -2472,7 +2472,8 @@ button.home-wiki-heatmap-cell.is-active {
   height: 1.3rem;
   padding: 0 0.4rem;
   border-radius: 6px;
-  background: var(--kmap-lvl-color, var(--accent));
+  /* 各 L 等级统一强调色：靠 L0…L7 数字区分层级，让类型色圆点成为唯一语义色 */
+  background: hsl(205, 66%, 48%);
   color: #fff;
   font-size: 0.72rem;
   font-weight: 700;

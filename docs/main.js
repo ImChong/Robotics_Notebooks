@@ -2193,17 +2193,6 @@
     return '';
   }
 
-  /** L 等级徽标与配色：L0（冷蓝）→ L7（暖橙）的连续色阶，凸显不同 L 等级。 */
-  function roadmapKmapLevelMeta(stageId) {
-    var badge = String(stageId || '').toUpperCase() || '·';
-    var match = /(-?\d+)/.exec(String(stageId || ''));
-    if (match == null) return { badge: badge, color: 'var(--accent)' };
-    var lvl = parseInt(match[1], 10);
-    var t = Math.max(0, Math.min(7, lvl)) / 7;
-    var hue = Math.round(205 - t * 190);
-    return { badge: badge, color: 'hsl(' + hue + ', 66%, 52%)' };
-  }
-
   /**
    * 路线页「知识地图」：把各 L 阶段与其相关知识节点串成 tree 指令式竖向流程图。
    * 不用力导向节点图，风格对齐详情页知识地图面板；仅在含 ≥2 个阶段的路线（如主路线）出现。
@@ -2237,11 +2226,11 @@
       var title = String(stage.title || '');
       var related = Array.isArray(stage.related_items) ? stage.related_items : [];
       totalNodes += related.length;
-      var lvl = roadmapKmapLevelMeta(stage.id);
-      var chapterHref = '#' + slugifyHeading(lvl.badge + ' ' + title);
-      parts.push('<li class="roadmap-kmap-stage" style="--kmap-lvl-color:' + lvl.color + ';">');
+      var badge = String(stage.id || '').toUpperCase() || '·';
+      var chapterHref = '#' + slugifyHeading(badge + ' ' + title);
+      parts.push('<li class="roadmap-kmap-stage">');
       parts.push('<a class="roadmap-kmap-stage-head" href="' + escapeHtml(chapterHref) + '">');
-      parts.push('<span class="roadmap-kmap-badge">' + escapeHtml(lvl.badge) + '</span>');
+      parts.push('<span class="roadmap-kmap-badge">' + escapeHtml(badge) + '</span>');
       parts.push('<span class="roadmap-kmap-stage-title">' + escapeHtml(title) + '</span>');
       parts.push('<span class="roadmap-kmap-stage-count">' + escapeHtml(String(related.length)) + '</span>');
       parts.push('</a>');
