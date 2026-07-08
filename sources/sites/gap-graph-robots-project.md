@@ -16,7 +16,7 @@
 - **8 VA benchmark：** VA-I 杂货履约、VA-II 杂货打包、VA-III 做爆米花、VA-IV USB-C 插线（UR5+力反馈）、VA-V 工业洗箱（双臂）；前六项 Franka + LIBERO 衍生场景。
 - **MORSL：** 51 项初始技能；混合 ROS 过程与 GraspGen 等 model-free 原语。
 - **结果亮点：** 大位姿变化列 GaP **0.93–0.99**；VLA 降至 **~0.20**；**π₀.₅ w/ GaP** staging **>2×** 裸 VLA；无图单 agent CaP **0%**。
-- **代码/数据：** 论文注明将发布于项目页（ingest 时以站点与 arXiv 为准）。
+- **代码/数据：** [graph-as-policy](https://github.com/graph-robots/graph-as-policy) Beta 已发布；项目页 <https://graph-robots.github.io/gap/> 为静态站（`graph-robots/gap`）。
 
 ## 对 wiki 的映射
 

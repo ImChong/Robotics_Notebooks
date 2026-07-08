@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-gap-graph-as-policy.md",
+      "detail_id": "entity-paper-gap-graph-as-policy",
+      "label": "GaP（Graph-as-Policy）",
+      "type": "entity",
+      "recency": "2026-07-08",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "path": "wiki/entities/paper-kemo-event-driven-keyframe-memory-vla.md",
       "detail_id": "entity-paper-kemo-event-driven-keyframe-memory-vla",
       "label": "KEMO（Event-Driven Keyframe Memory for Long-Horizon Robot Manipulation with VLA Policies）",
@@ -47,16 +58,6 @@
       "recency": "2026-07-08",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-gap-graph-as-policy.md",
-      "detail_id": "entity-paper-gap-graph-as-policy",
-      "label": "GaP（Graph-as-Policy）",
-      "type": "entity",
-      "recency": "2026-07-08",
-      "source": "log.md",
-      "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -217,13 +218,14 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-kemo-event-driven-keyframe-memory-vla.md",
-    "detail_id": "entity-paper-kemo-event-driven-keyframe-memory-vla",
-    "label": "KEMO（Event-Driven Keyframe Memory for Long-Horizon Robot Manipulation with VLA Policies）",
+    "path": "wiki/entities/paper-gap-graph-as-policy.md",
+    "detail_id": "entity-paper-gap-graph-as-policy",
+    "label": "GaP（Graph-as-Policy）",
     "type": "entity",
     "recency": "2026-07-08",
     "source": "log.md",
     "action": "added",
+    "has_repo": true,
     "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
