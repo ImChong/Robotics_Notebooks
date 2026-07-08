@@ -992,6 +992,13 @@
         "universidad-de-zaragoza",
         "university-of-zaragoza"
       ]
+    },
+    "abac-industry": {
+      "label": "ABAC工业（ABAC INDUSTRY）",
+      "aliases": [
+        "abac-industry",
+        "abac"
+      ]
     }
   }
 }
