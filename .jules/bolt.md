@@ -108,3 +108,6 @@
 ## 2026-07-05 - Avoid .map().join('') in HTML Code Block Rendering
 **Learning:** In frontend JavaScript processing, chaining array operations like `.map(...).join('')` inside layout rendering (e.g., `renderCodeBlock` generating HTML for code snippets) creates multiple intermediate arrays and forces function closures on every line of text. This causes garbage collection pauses during large or numerous code block renders on the page.
 **Action:** When mapping string arrays into dynamic HTML strings, especially for potentially large datasets like code block lines, replace the `.map().join('')` pattern with a standard `for` loop that concatenates strings directly into an accumulator. This eliminates memory closure and array overhead entirely.
+## 2024-05-18 - Early Exit in Dynamic Programming for Fuzzy String Matching
+**Learning:** Computing the full Levenshtein matrix for heavily mismatched strings (which is the majority of cases when checking a query against a large dictionary) wastes significant CPU cycles.
+**Action:** When filtering fuzzy matches within a threshold (e.g. `max_dist`), pass the threshold into the distance function. Check absolute length differences immediately, and abort the DP matrix calculation early if the minimum cost of the current row exceeds the threshold.
