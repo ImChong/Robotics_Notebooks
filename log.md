@@ -2707,3 +2707,9 @@
 - `wiki/queries/embodied-fm-taxonomy-loop.md`：把 VLM 感知理解 → VLN 空间导航 → VLA 动作执行 → VLX 一体化扩展 → WM 世界模型推演五大家族，从分散的实体/方法/对比页沉淀为一条端到端选型决策链；逐层给出 I/O 边界、数据需求、泛化能力、实时性/控制带宽与闭环稳定性取舍，配「五层选型闭环决策树」Mermaid、家族选型矛盾速查表与按层归因的失败模式速查表。
 - `wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md` 新增回链本 Query，消除新页孤儿并同步消除一条 `embodied_fm_crosslink` INFO 预警（10 → 9）。
 - `make lint` 0 errors（另含 9 条信息型预警，不阻塞 CI）；勾选 v28 P1「具身大模型分类学选型闭环知识链」第①项（Query 页），概念页 `embodied-fm-latency-generalization-tradeoff` 待后续推进。
+
+## [2026-07-08] structural | checklist-v28 P1 具身大模型分类学选型闭环知识链 —— 新建「实时性↔泛化取舍」姊妹概念页
+
+- `wiki/concepts/embodied-fm-latency-generalization-tradeoff.md`：把[五层选型闭环 Query] ③ 执行层「泛化↔实时」的工程判据，沉淀为独立概念页；明示**模型规模 / 多模态跨度 / 世界模型推演步长**三个泛化旋钮如何共同推高推理时延 `τ`、压缩可用控制带宽，给出可稳定闭环的充要条件 `τ_total ≤ 1/f_ctrl`，并把这条「可达边界」讲成端到端 vs 分层选型分界的物理根因（分层=频段解耦）；配三旋钮代价表、破边界三条工程路线（动作分块 / 频域意图分词 / 异步双频）与常见误判速查表。
+- `wiki/queries/embodied-fm-taxonomy-loop.md` ③ 执行层判据注脚补链新页、`related` 纳入新页，形成双向回链；新页 `tags` 含 vla/world-model，正文回链专题枢纽，不新增 `embodied_fm_crosslink` INFO 预警。
+- `make lint` 0 errors（另含 7 条既有信息型预警，均与本次改动无关，不阻塞 CI）；勾选 v28 P1「具身大模型分类学选型闭环知识链」第②项（概念页），该父条目两个子项全部完成。
