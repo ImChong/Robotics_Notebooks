@@ -55,7 +55,7 @@
 | 部分 | 规则 | 示例 |
 |------|------|------|
 | 中文主名 | 放在最前，用简体中文概括主题 | `强化学习`、`人形硬件技术地图` |
-| 英文副名 | 放在**全角括号** `（）` 内；有通用缩写时优先 **全称, 缩写**（如 `Reinforcement Learning, RL`）；产品名或专有名可仅写全称 | `（Reinforcement Learning, RL）`、`（MuJoCo）` |
+| 英文副名 | 放在**全角括号** `（）` 内；有通用缩写时优先 **全称, 缩写**（如 `Reinforcement Learning, RL`）；产品名或专有名可仅写全称 | `（Reinforcement Learning, RL）`、`（Simulation and Platform Ecosystem）` |
 | 后缀 | 固定为半角空格 + `社区` | ` 社区` |
 
 完整示例：`强化学习（Reinforcement Learning, RL） 社区`、`规模化运动跟踪（Supersizing Motion Tracking for Natural Humanoid Control, SONIC） 社区`。

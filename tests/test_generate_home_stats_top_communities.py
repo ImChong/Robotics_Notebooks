@@ -20,7 +20,10 @@ class CommunityShortLabelTest(unittest.TestCase):
         self.assertEqual(ghs.community_short_label("强化学习 社区"), "强化学习")
 
     def test_label_without_suffix(self) -> None:
-        self.assertEqual(ghs.community_short_label("物理引擎（MuJoCo）"), "物理引擎")
+        self.assertEqual(
+            ghs.community_short_label("仿真与平台生态（Simulation and Platform Ecosystem）"),
+            "仿真与平台生态",
+        )
 
 
 class TopCommunitiesTest(unittest.TestCase):
@@ -33,7 +36,7 @@ class TopCommunitiesTest(unittest.TestCase):
                 "移动操作（Loco-Manipulation） 社区": 314,
                 "强化学习（Reinforcement Learning, RL） 社区": 172,
                 "全身控制（Whole-Body Control, WBC） 社区": 102,
-                "物理引擎（MuJoCo） 社区": 79,
+                "仿真与平台生态（Simulation and Platform Ecosystem） 社区": 79,
                 "动作重定向（Motion Retargeting） 社区": 70,
                 "人形论文深读笔记（Humanoid Paper Notebooks） 社区": 215,
                 "操作（Manipulation） 社区": 48,
@@ -44,7 +47,14 @@ class TopCommunitiesTest(unittest.TestCase):
         result = ghs.top_communities(self.graph_stats)
         self.assertEqual(
             [item["label"] for item in result],
-            ["移动操作", "人形论文深读笔记", "强化学习", "全身控制", "物理引擎", "动作重定向"],
+            [
+                "移动操作",
+                "人形论文深读笔记",
+                "强化学习",
+                "全身控制",
+                "仿真与平台生态",
+                "动作重定向",
+            ],
         )
         self.assertEqual(result[0]["size"], 314)
 

@@ -135,7 +135,7 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "wiki/concepts/sim2real.md": "仿真到现实（Simulation to Reality, Sim2Real）",
     "wiki/methods/generative-world-models.md": "生成式世界模型（Generative World Models）",
     "wiki/overview/navigation-slam-autonomy-stack.md": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM）",
-    "wiki/entities/mujoco.md": "物理引擎（MuJoCo）",
+    "wiki/entities/mujoco.md": "仿真与平台生态（Simulation and Platform Ecosystem）",
     "wiki/methods/reinforcement-learning.md": "强化学习（Reinforcement Learning, RL）",
     "wiki/queries/real-time-control-middleware-guide.md": "实时运控中间件（Real-Time Control Middleware）",
     "wiki/concepts/ros2-basics.md": "机器人操作系统 2 基础（Robot Operating System 2, ROS 2）",
