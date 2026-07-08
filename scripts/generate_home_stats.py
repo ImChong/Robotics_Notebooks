@@ -13,19 +13,11 @@ REPO_ROOT = Path(__file__).parent.parent
 GRAPH_STATS_PATH = REPO_ROOT / "exports" / "graph-stats.json"
 OUT_PATH = REPO_ROOT / "exports" / "home-stats.json"
 
+from utils.community_labels import COMMUNITY_LABEL_SUFFIX, community_short_label
+
 # 首页热门主题 chips：取图谱社区规模 Top-N（排除“其他”兜底社区）
 OTHER_COMMUNITY_LABEL = "其他（Other） 社区"
-COMMUNITY_LABEL_SUFFIX = " 社区"
 TOP_COMMUNITIES_LIMIT = 6
-
-
-def community_short_label(full_label: str) -> str:
-    """「中文（English） 社区」→「中文」；不合模式时返回去掉后缀的原文。"""
-    base = str(full_label)
-    if base.endswith(COMMUNITY_LABEL_SUFFIX):
-        base = base[: -len(COMMUNITY_LABEL_SUFFIX)]
-    head = base.split("（", 1)[0].strip()
-    return head or base
 
 
 def top_communities(

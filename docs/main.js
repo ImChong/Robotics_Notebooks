@@ -4982,6 +4982,16 @@
       var title = (item.title || '').toLowerCase();
       var summary = (item.summary || '').toLowerCase();
       var itemTags = item.tags || [];
+      var itemAliases = item.search_aliases || [];
+
+      for (var a = 0; a < itemAliases.length; a++) {
+        var aliasLower = String(itemAliases[a] || '').toLowerCase();
+        for (var m = 0; m < queryTokens.length; m++) {
+          if (aliasLower.indexOf(queryTokens[m]) >= 0) {
+            return escapeHtml('别名命中: ' + itemAliases[a]);
+          }
+        }
+      }
 
       // 检查标签命中 (V20 增强)
       for (var k = 0; k < itemTags.length; k++) {
@@ -5005,11 +5015,18 @@
 
 
     function classifyTier(item, queryTokens) {
-      // V21 P3：精确匹配 = 命中标签 / 标题 / 路径；其它（仅摘要或正文 token 命中）为潜在关联
+      // V21 P3：精确匹配 = 命中别名 / 标签 / 标题 / 路径；其它（仅摘要或正文 token 命中）为潜在关联
       if (!queryTokens || !queryTokens.length) return 'exact';
       var title = String(item.title || '').toLowerCase();
       var path = String(item.path || '').toLowerCase();
       var itemTags = item.tags || [];
+      var itemAliases = item.search_aliases || [];
+      for (var a = 0; a < itemAliases.length; a++) {
+        var aliasLower = String(itemAliases[a] || '').toLowerCase();
+        for (var m = 0; m < queryTokens.length; m++) {
+          if (aliasLower.indexOf(queryTokens[m]) >= 0) return 'exact';
+        }
+      }
       for (var k = 0; k < itemTags.length; k++) {
         var tagLower = String(itemTags[k] || '').toLowerCase();
         for (var l = 0; l < queryTokens.length; l++) {
@@ -5118,11 +5135,30 @@
 
       // ⚡ Bolt Optimization: Hoist lazily-initialized string properties to local variables
       // Expected impact: Drastically reduces object property lookups and initialization checks on `doc` inside the hot `queryTokens` iteration loop.
-      var tl = doc._title_l, pl = doc._path_l, ts = doc._tagsStr, sl = doc._summary_l, tk = doc._tokenKeysStr;
+      var tl = doc._title_l, pl = doc._path_l, ts = doc._tagsStr, als = doc._aliasesStr, sl = doc._summary_l, tk = doc._tokenKeysStr;
 
       for (var i = 0; i < queryTokens.length; i++) {
         var token = queryTokens[i];
         if (!token || token.length < 2) continue;
+
+        if (als === undefined) {
+          var _aliases = doc.search_aliases;
+          if (_aliases && _aliases.length > 0) {
+            var _alsStr = '\n';
+            for (var _a = 0; _a < _aliases.length; _a++) {
+              _alsStr += _aliases[_a] + '\n';
+            }
+            als = doc._aliasesStr = _alsStr.toLowerCase();
+          } else {
+            als = doc._aliasesStr = '\n';
+          }
+        }
+        var aliasIdx = als.indexOf('\n' + token + '\n');
+        if (aliasIdx >= 0) {
+          score += 9;
+        } else if (als.indexOf(token) >= 0) {
+          score += 7;
+        }
 
         if (tl === undefined) { tl = doc._title_l = String(doc.title || '').toLowerCase(); }
         var titleIdx = tl.indexOf(token);
