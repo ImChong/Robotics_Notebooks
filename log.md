@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-08] ingest | sources/blogs/wechat_shenlan_tro_manip_5_papers_survey.md — T-RO 2026 操作学习 5 篇精选；wiki/overview/tro-manip-5-papers-technology-map.md、wiki/overview/tro-manip-category-01-data-scaling.md … category-04、wiki/entities/paper-tro-manip-01-diversity-scaling.md … 05、wiki/tasks/manipulation.md
+
 ## [2026-07-08] ingest | sources/repos/graph_robots_graph_as_policy.md — 补录 GaP 官方 graph-as-policy 仓库；wiki/entities/paper-gap-graph-as-policy.md 关联 sources/repos 以启用更新记录 ⭐️
 
 ## [2026-07-08] ingest | sources/papers/kemo_arxiv_2606_23589.md — 事件驱动关键帧记忆 VLA；wiki/entities/paper-kemo-event-driven-keyframe-memory-vla.md、wiki/tasks/manipulation.md、wiki/methods/vla.md、wiki/methods/pi07-policy.md

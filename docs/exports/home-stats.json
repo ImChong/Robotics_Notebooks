@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-07-08",
-  "node_count": 1522,
-  "edge_count": 10817,
+  "node_count": 1532,
+  "edge_count": 10893,
   "coverage": {
-    "covered": 1490,
-    "total": 1520,
+    "covered": 1500,
+    "total": 1530,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/tro-manip-5-papers-technology-map.md",
+      "detail_id": "wiki-overview-tro-manip-5-papers-technology-map",
+      "label": "T-RO 2026 操作学习：5 篇论文技术地图",
+      "type": "overview",
+      "recency": "2026-07-08",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/tro-manip-category-01-data-scaling.md",
+      "detail_id": "wiki-overview-tro-manip-category-01-data-scaling",
+      "label": "T-RO 分类 01：数据规模化",
+      "type": "overview",
+      "recency": "2026-07-08",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-tro-manip-01-diversity-scaling.md",
+      "detail_id": "entity-paper-tro-manip-01-diversity-scaling",
+      "label": "Is Diversity All You Need for Scalable Robotic Manipulation?",
+      "type": "entity",
+      "recency": "2026-07-08",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-07-08",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-gap-graph-as-policy.md",
       "detail_id": "entity-paper-gap-graph-as-policy",
@@ -27,16 +67,6 @@
       "recency": "2026-07-08",
       "source": "log.md",
       "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-07-08",
-      "source": "log.md",
-      "action": "maintained",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -77,8 +107,7 @@
       "type": "entity",
       "recency": "2026-07-08",
       "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-athena-wbc-humanoid-longtail.md",
@@ -184,48 +213,16 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "行为基础模型技术地图（Behavior Foundation Model, BFM） 社区"
-    },
-    {
-      "path": "wiki/concepts/behavior-tree-vla-orchestration.md",
-      "detail_id": "wiki-concepts-behavior-tree-vla-orchestration",
-      "label": "行为树 × VLA 编排",
-      "type": "concept",
-      "recency": "2026-07-06",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/can-bus-protocol.md",
-      "detail_id": "wiki-concepts-can-bus-protocol",
-      "label": "CAN 总线（经典 CAN / CAN 2.0）",
-      "type": "concept",
-      "recency": "2026-07-06",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "电机驱动器底软通信协议（Motor Drive Firmware Bus Protocols） 社区"
-    },
-    {
-      "path": "wiki/concepts/can-fd.md",
-      "detail_id": "wiki-concepts-can-fd",
-      "label": "CAN FD（Flexible Data Rate）",
-      "type": "concept",
-      "recency": "2026-07-06",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "电机驱动器底软通信协议（Motor Drive Firmware Bus Protocols） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-gap-graph-as-policy.md",
-    "detail_id": "entity-paper-gap-graph-as-policy",
-    "label": "GaP（Graph-as-Policy）",
-    "type": "entity",
+    "path": "wiki/overview/tro-manip-5-papers-technology-map.md",
+    "detail_id": "wiki-overview-tro-manip-5-papers-technology-map",
+    "label": "T-RO 2026 操作学习：5 篇论文技术地图",
+    "type": "overview",
     "recency": "2026-07-08",
     "source": "log.md",
     "action": "added",
-    "has_repo": true,
     "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
@@ -234,12 +231,12 @@
       "size": 250
     },
     {
-      "label": "移动操作",
-      "size": 173
+      "label": "视觉-语言-动作",
+      "size": 181
     },
     {
-      "label": "视觉-语言-动作",
-      "size": 171
+      "label": "移动操作",
+      "size": 163
     },
     {
       "label": "仿真与平台生态",
@@ -247,7 +244,7 @@
     },
     {
       "label": "动作重定向",
-      "size": 106
+      "size": 104
     },
     {
       "label": "全身控制",

@@ -314,6 +314,7 @@
 | [x] [wechat_human_five_diffusion_model_intro.md](blogs/wechat_human_five_diffusion_model_intro.md) | 微信公众号 human five：《Diffusion Model入门》（`P4SxYSBnxDjX5De1jxMxfA`；Agent Reach + wechat-article-for-ai；`wiki/concepts/diffusion-model.md`） |
 | [x] [wechat_human_five_vit_intro.md](blogs/wechat_human_five_vit_intro.md) | 微信公众号 human five：《ViT入门》（`ugiOirWHrSgEefG8W1-o6Q`；Agent Reach + wechat-article-for-ai；`wiki/concepts/vision-transformer.md`） |
 | [x] [wechat_shenlan_five_embodied_model_taxonomy.md](blogs/wechat_shenlan_five_embodied_model_taxonomy.md) | 微信公众号 深蓝具身智能：《五大具身模型详解：VLM、VLA、VLN、VLX、世界模型》（`xj-rc6v64Ge6onoUPvkHLg`；Agent Reach + wechat-article-for-ai；`wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md`） |
+| [x] [wechat_shenlan_tro_manip_5_papers_survey.md](blogs/wechat_shenlan_tro_manip_5_papers_survey.md) | 微信公众号 深蓝具身智能：《顶刊 T-RO 精选：2026上半年机器人操作学习的五项核心突破》（`nswA-jCGC3kr9iQjhRRuXQ`；Agent Reach + wechat-article-for-ai；`wiki/overview/tro-manip-5-papers-technology-map.md` + 5 论文实体） |
 | [x] [fsck_superpowers_announcement_2025-10-09.md](blogs/fsck_superpowers_announcement_2025-10-09.md) | Jesse Vincent：Superpowers 发布文（skills、插件启动 hook、worktree / 子代理 / 技能压力测试叙事） |
 | [x] [google-research-barkour-quadruped-agility-2023-05-26.md](blogs/google-research-barkour-quadruped-agility-2023-05-26.md) | Google Research 官方博客：Barkour 四足敏捷基准与 Locomotion-Transformer 叙事（2023-05-26） |
 | [x] [worldlabs_spark_2_0_streaming_3dgs.md](blogs/worldlabs_spark_2_0_streaming_3dgs.md) | World Labs：Spark 2.0 流式 3DGS（LoD splat 树、.RAD、虚拟 splat 分页）技术博客归档 |
