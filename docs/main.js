@@ -4133,7 +4133,8 @@
 
     var graphLink = document.getElementById('roadmapGraphLink');
     if (graphLink) {
-      graphLink.href = 'graph.html?focus=' + encodeURIComponent(roadmapPage.id || roadmapId);
+      var graphFocus = (detail && detail.path) || roadmapPage.path || roadmapPage.id || roadmapId;
+      graphLink.href = 'graph.html?focus=' + encodeURIComponent(graphFocus);
     }
   }
 

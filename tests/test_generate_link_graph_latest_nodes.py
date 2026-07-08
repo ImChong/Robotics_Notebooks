@@ -154,5 +154,35 @@ class PaperHubStatsTest(unittest.TestCase):
             self.assertIn(hub["id"], paper_ids)
 
 
+class RoadmapGraphNodesTest(unittest.TestCase):
+    """roadmap/ 页面应作为 roadmap_page 节点进入 link-graph。"""
+
+    def test_build_graph_data_includes_roadmap_nodes(self) -> None:
+        nodes, edges = glg._build_graph_data()
+        by_id = {n["id"]: n for n in nodes}
+        motion = by_id.get("roadmap/motion-control.md")
+        self.assertIsNotNone(motion)
+        self.assertEqual(motion.get("type"), "roadmap_page")
+        self.assertEqual(motion.get("detail_id"), "roadmap-motion-control")
+
+    def test_roadmap_links_to_wiki_create_edges(self) -> None:
+        nodes, edges = glg._build_graph_data()
+        node_ids = {n["id"] for n in nodes}
+        motion_edges = [
+            e for e in edges if e["source"] == "roadmap/motion-control.md"
+        ]
+        self.assertTrue(motion_edges)
+        for edge in motion_edges:
+            self.assertIn(edge["target"], node_ids)
+
+    def test_wiki_links_to_roadmap_create_edges(self) -> None:
+        _, edges = glg._build_graph_data()
+        wiki_to_roadmap = [
+            e for e in edges
+            if e["target"] == "roadmap/motion-control.md" and e["source"].startswith("wiki/")
+        ]
+        self.assertTrue(wiki_to_roadmap)
+
+
 if __name__ == "__main__":  # pragma: no cover
     unittest.main()

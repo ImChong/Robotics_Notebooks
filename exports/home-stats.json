@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-08",
-  "node_count": 1537,
-  "edge_count": 10956,
+  "node_count": 1542,
+  "edge_count": 11075,
   "coverage": {
     "covered": 1505,
     "total": 1535,
@@ -26,7 +26,7 @@
       "recency": "2026-07-08",
       "source": "log.md",
       "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
     },
     {
       "path": "wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md",
@@ -238,16 +238,16 @@
       "size": 119
     },
     {
+      "label": "仿真训练",
+      "size": 113
+    },
+    {
       "label": "移动操作",
       "size": 103
     },
     {
       "label": "运动控制",
       "size": 103
-    },
-    {
-      "label": "仿真与平台生态",
-      "size": 98
     }
   ]
 }
