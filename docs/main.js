@@ -2157,6 +2157,123 @@
     syncRoadmapStagesMetaHref(roadmapPage);
   }
 
+  // 节点类型配色兜底：roadmap.html 未加载 graph-tooltip.js，需自带一份与图谱一致的类型色。
+  var ROADMAP_KMAP_TYPE_COLOR = {
+    concept: '#60a5fa', method: '#34d399', task: '#f472b6',
+    entity: '#fbbf24', comparison: '#c084fc', query: '#94a3b8',
+    formalization: '#fb923c', overview: '#64748b', reference: '#64748b',
+    roadmap: '#22d3ee', roadmap_page: '#22d3ee', '': '#64748b'
+  };
+
+  // 站内 path 前缀 → 图谱细粒度节点类型（与知识图谱 / 详情页知识地图同一套配色）。
+  var ROADMAP_KMAP_PATH_TYPE = [
+    ['wiki/concepts/', 'concept'],
+    ['wiki/methods/', 'method'],
+    ['wiki/tasks/', 'task'],
+    ['wiki/comparisons/', 'comparison'],
+    ['wiki/formalizations/', 'formalization'],
+    ['wiki/overviews/', 'overview'],
+    ['wiki/queries/', 'query'],
+    ['wiki/entities/', 'entity'],
+    ['roadmap/', 'roadmap']
+  ];
+
+  /** 从相关项的 path（回退到 id / 粗类型）推断细粒度节点类型，用于知识地图节点配色。 */
+  function roadmapKmapNodeType(page, id) {
+    var path = String((page && page.path) || '');
+    for (var i = 0; i < ROADMAP_KMAP_PATH_TYPE.length; i++) {
+      if (path.indexOf(ROADMAP_KMAP_PATH_TYPE[i][0]) !== -1) return ROADMAP_KMAP_PATH_TYPE[i][1];
+    }
+    var sid = String(id || '');
+    if (path.indexOf('references/') !== -1 || sid.indexOf('reference-') === 0) return 'reference';
+    if (sid.indexOf('entity-') === 0) return 'entity';
+    var coarse = (page && page.type) || '';
+    if (coarse === 'entity_page') return 'entity';
+    if (coarse === 'roadmap_page') return 'roadmap';
+    return '';
+  }
+
+  /**
+   * 路线页「知识地图」：把各 L 阶段与其相关知识节点串成 tree 指令式竖向流程图。
+   * 不用力导向节点图，风格对齐详情页知识地图面板；仅在含 ≥2 个阶段的路线（如主路线）出现。
+   */
+  function renderRoadmapKnowledgeMap(roadmapPage, roadmapId, detailPages) {
+    var wrap = document.getElementById('roadmapKnowledgeMapWrap');
+    var treeEl = document.getElementById('roadmapKnowledgeMapTree');
+    var metaEl = document.getElementById('roadmapKnowledgeMapMeta');
+    var graphLink = document.getElementById('roadmapKnowledgeMapGraphLink');
+    if (!wrap || !treeEl) return;
+    var stages = Array.isArray(roadmapPage.stages) ? roadmapPage.stages : [];
+    if (stages.length < 2) {
+      wrap.hidden = true;
+      treeEl.innerHTML = '';
+      return;
+    }
+    var typeColors =
+      (window.RNGraphTooltip && window.RNGraphTooltip.GRAPH_NODE_TYPE_COLOR) || ROADMAP_KMAP_TYPE_COLOR;
+    var typeLabelOf =
+      (window.RNWikiTypeLabels && window.RNWikiTypeLabels.formatChinese) || function () { return ''; };
+
+    var totalNodes = 0;
+    var parts = [];
+    parts.push('<div class="roadmap-kmap-root">');
+    parts.push('<span class="roadmap-kmap-root-icon" aria-hidden="true">🚀</span>');
+    parts.push('<span class="roadmap-kmap-root-label">' + escapeHtml(roadmapPage.title || roadmapId) + '</span>');
+    parts.push('</div>');
+    parts.push('<ul class="roadmap-kmap-tree">');
+    for (var s = 0; s < stages.length; s++) {
+      var stage = stages[s];
+      var title = String(stage.title || '');
+      var related = Array.isArray(stage.related_items) ? stage.related_items : [];
+      totalNodes += related.length;
+      var badge = String(stage.id || '').toUpperCase() || '·';
+      var chapterHref = '#' + slugifyHeading(badge + ' ' + title);
+      parts.push('<li class="roadmap-kmap-stage">');
+      parts.push('<a class="roadmap-kmap-stage-head" href="' + escapeHtml(chapterHref) + '">');
+      parts.push('<span class="roadmap-kmap-badge">' + escapeHtml(badge) + '</span>');
+      parts.push('<span class="roadmap-kmap-stage-title">' + escapeHtml(title) + '</span>');
+      parts.push('<span class="roadmap-kmap-stage-count">' + escapeHtml(String(related.length)) + '</span>');
+      parts.push('</a>');
+      if (related.length) {
+        parts.push('<ul class="roadmap-kmap-leaves">');
+        for (var k = 0; k < related.length; k++) {
+          var rid = related[k];
+          var page = detailPages[rid] || {};
+          var href = page.type === 'roadmap_page' ? roadmapHref(rid) : detailHref(rid);
+          var nodeType = roadmapKmapNodeType(page, rid);
+          var color = typeColors[nodeType] || typeColors[''] || '#64748b';
+          var typeLabel = typeLabelOf(nodeType);
+          var tip = typeLabel + (page.summary ? ' · ' + page.summary : '');
+          parts.push('<li class="roadmap-kmap-leaf">');
+          parts.push(
+            '<a class="roadmap-kmap-leaf-a" href="' + escapeHtml(href) + '"' +
+              (tip ? ' title="' + escapeHtml(tip) + '"' : '') + '>'
+          );
+          parts.push('<span class="roadmap-kmap-dot" style="background:' + color + ';" aria-hidden="true"></span>');
+          parts.push('<span class="roadmap-kmap-leaf-label">' + escapeHtml(page.title || rid) + '</span>');
+          if (typeLabel) {
+            parts.push('<span class="roadmap-kmap-leaf-type">' + escapeHtml(typeLabel) + '</span>');
+          }
+          parts.push('</a>');
+          parts.push('</li>');
+        }
+        parts.push('</ul>');
+      }
+      parts.push('</li>');
+    }
+    parts.push('</ul>');
+    treeEl.innerHTML = parts.join('');
+
+    if (metaEl) metaEl.textContent = stages.length + ' 个阶段 · ' + totalNodes + ' 个知识节点';
+    if (graphLink) {
+      var roadmapDetail = detailPages[roadmapId] || {};
+      var focus = roadmapDetail.path || roadmapPage.path || roadmapPage.id || roadmapId;
+      graphLink.href = 'graph.html?focus=' + encodeURIComponent(focus);
+      graphLink.hidden = false;
+    }
+    wrap.hidden = false;
+  }
+
   function renderDetailMath(container) {
     if (!container || typeof window.renderMathInElement !== 'function') return;
     window.renderMathInElement(container, {
@@ -4129,6 +4246,7 @@
         renderInternalLinks(paperRelatedEl, [], detailPages, hubErr);
       });
     renderRoadmapFlowSection(roadmapPage, roadmapId, detailPages);
+    renderRoadmapKnowledgeMap(roadmapPage, roadmapId, detailPages);
     renderRoadmapMarkdownBody(roadmapPage, roadmapId, siteData, detailPages);
 
     var graphLink = document.getElementById('roadmapGraphLink');
