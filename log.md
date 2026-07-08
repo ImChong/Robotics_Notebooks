@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-08] ingest | sources/papers/gap_arxiv_2607_05369.md — GaP Graph-as-Policy 变体自动化；wiki/entities/paper-gap-graph-as-policy.md、wiki/concepts/variational-automation.md；交叉更新 manipulation / aspire / vla / nvidia-gear-lab
+
 ## [2026-07-08] ingest | sources/papers/omnitactune_arxiv_2607_03723.md — OmniTacTune 策略无关触觉残差真机 RL；wiki/entities/paper-omnitactune-tactile-residual-adaptation.md；交叉更新 visuo-tactile-fusion / tactile-feedback-in-rl / manipulation / contact-rich-manipulation
 
 ## [2026-07-08] ingest | sources/papers/athena_wbc_arxiv_2607_04837.md — Athena-WBC 能力对齐专家蒸馏与人形 WBC 训练集长尾；wiki/entities/paper-athena-wbc-humanoid-longtail.md；交叉更新 SONIC / 选型 query / DeepInsight
