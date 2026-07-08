@@ -2236,13 +2236,9 @@
           if (timelinePlaying) return;
           if (isMobile) {
             if (pinnedNode === d) {
-              pinnedNode = null;
-              hideTooltip();
-              clearGraph3DMobileHighlight();
+              dismissMobilePinnedTooltip();
             } else {
-              pinnedNode = d;
-              showTooltip(ev, d);
-              syncGraph3DMobileHighlight(d);
+              presentNodeDetail(d, ev);
             }
           } else {
             openSidebar(d);
@@ -2251,8 +2247,8 @@
         onNodeHover: (d, pointer) => {
           graph3dHoverNode = d || null;
           if (timelineAnimating || isMobile) return;
-          if (sidebar.classList.contains('open')) {
-            if (d && sidebarFocusIds && sidebarFocusIds.has(d.id)) showTooltip(pointer, d);
+        if (sidebarFocusIds) {
+          if (d && sidebarFocusIds.has(d.id)) showTooltip(pointer, d);
             else hideTooltip();
             return;
           }
@@ -2266,8 +2262,8 @@
         onPointerMove: (ev) => {
           if (!is3DView() || timelineAnimating || isMobile) return;
           if (!graph3dHoverNode) return;
-          if (sidebar.classList.contains('open')) {
-            if (sidebarFocusIds && sidebarFocusIds.has(graph3dHoverNode.id)) showTooltip(ev, graph3dHoverNode);
+          if (sidebarFocusIds) {
+            if (sidebarFocusIds.has(graph3dHoverNode.id)) showTooltip(ev, graph3dHoverNode);
             return;
           }
           if (hasActiveGraphFilter() && !visibleNodeIds.has(graph3dHoverNode.id)) return;
@@ -2325,7 +2321,7 @@
         }
         graph3dView.show();
         graph3dView.syncFilters();
-        if (isMobile && pinnedNode) syncGraph3DMobileHighlight(pinnedNode);
+        if (isMobile && pinnedNode) applyNodeNeighborHighlight(pinnedNode);
         // 不在切换时自动适配：仅首次力布局结束后由 graph-3d 自动适配一次，
         // 之后只有用户点「适配屏幕」按钮才适配。
       } else {
@@ -3106,9 +3102,8 @@
           window.location.href = href;
           // 然后异步关闭 tooltip（确保导航已开始）
           setTimeout(() => {
-            pinnedNode = null;
             hideTooltip();
-            clearGraph3DMobileHighlight();
+            clearNodeNeighborHighlight();
           }, 100);
         }
       }
@@ -3236,8 +3231,8 @@
         if (timelineAnimating) return;
         // V21 修复：如果当前已经点击聚焦了某个节点（侧边栏打开），跳过 hover 高亮逻辑；
         // 但选中节点及其直连邻居仍可悬停显示浮窗卡片
-        if (sidebar.classList.contains('open')) {
-          if (sidebarFocusIds && sidebarFocusIds.has(d.id)) showTooltip(ev, d);
+        if (sidebarFocusIds) {
+          if (sidebarFocusIds.has(d.id)) showTooltip(ev, d);
           return;
         }
         // 筛选态下灰色节点不响应悬停（pointer-events 已关，此处作兜底）
@@ -3276,7 +3271,7 @@
         if (timelineAnimating) return;
         // V21 修复：如果当前已经点击聚焦了某个节点（侧边栏打开），不执行 mouseleave 的样式重置逻辑，
         // 只收起悬停浮窗
-        if (sidebar.classList.contains('open')) {
+        if (sidebarFocusIds) {
           if (!isMobile || !pinnedNode) hideTooltip();
           return;
         }
@@ -3343,8 +3338,7 @@
         setFilterPanelOpen(false);
         closeLegendDrawer();
         if (isMobile && pinnedNode) {
-          pinnedNode = null;
-          hideTooltip();
+          dismissMobilePinnedTooltip();
         }
       }
     });
@@ -4366,26 +4360,12 @@
       return { direct, secondary };
     }
 
-    /** 触屏 3D：固定卡片选中态写入持久高亮（不依赖 hover，旋转视角不会丢） */
-    function syncGraph3DMobileHighlight(d) {
-      if (!isMobile || !graph3dView || !is3DView() || !d) return;
-      const { direct, secondary } = buildSidebarNeighborSets(d);
-      graph3dView.applySidebarHighlight(d, direct, secondary);
-    }
-
-    function clearGraph3DMobileHighlight() {
-      if (!graph3dView || !is3DView()) return;
-      if (sidebar.classList.contains('open')) return;
-      graph3dView.clearSidebarHighlight();
-    }
-
-    function openSidebar(d) {
-      // V19: 高亮当前节点及 2-hop 邻居
+    /** 2D/3D 邻居聚焦高亮（侧栏与移动端底部浮窗共用） */
+    function applyNodeNeighborHighlight(d) {
       const { direct, secondary } = buildSidebarNeighborSets(d);
       sidebarFocusIds = new Set([d.id, ...direct]);
+      sidebarNode = d;
 
-      hideTooltip();
-      // 时序动画期间：未显现的节点/连线必须保持隐藏，高亮只在「已显现子集」内进行
       const tlShown = id => !timelineAnimating || timelineRevealedIds.has(id);
       node.select('.node-glow').attr('fill-opacity', n => (n.id === d.id && tlShown(n.id)) ? 0.2 : 0);
       node.select('.node-circle').attr('fill-opacity', n => tlShown(n.id) ? 1 : 0);
@@ -4396,20 +4376,59 @@
       link
         .style('opacity', null)
         .style('stroke-width', null)
-        .attr('stroke', e => {
-          const { sourceId: sId, targetId: tId } = edgeNodeIds(e);
-          return edgeHighlightsWithNode(e, d.id) ? nodeColor(d) : edgeBaseColor();
-        })
+        .attr('stroke', e => edgeHighlightsWithNode(e, d.id) ? nodeColor(d) : edgeBaseColor())
         .attr('stroke-opacity', e => {
           const { sourceId: sId, targetId: tId } = edgeNodeIds(e);
-          if (!tlShown(sId) || !tlShown(tId)) return 0;   // 任一端未显现 → 连线隐藏
+          if (!tlShown(sId) || !tlShown(tId)) return 0;
           return edgeHighlightsWithNode(e, d.id) ? 0.85 : 0.18;
         })
-        .attr('stroke-width', e => {
-          return edgeHighlightsWithNode(e, d.id) ? linkWidthBase * 1.5 : linkWidthBase;
-        });
+        .attr('stroke-width', e => edgeHighlightsWithNode(e, d.id) ? linkWidthBase * 1.5 : linkWidthBase);
 
-      const info  = d._info;
+      if (graph3dView && is3DView()) {
+        graph3dView.applySidebarHighlight(d, direct, secondary);
+      }
+      return { direct, secondary };
+    }
+
+    function clearNodeNeighborHighlight(options) {
+      const opts = options || {};
+      sidebarFocusIds = null;
+      sidebarNode = null;
+      if (!opts.keepPinned) pinnedNode = null;
+      if (graph3dView && is3DView()) graph3dView.clearSidebarHighlight();
+
+      if (timelineAnimating) {
+        renderTimelineStatic();
+        link.style('opacity', null).style('stroke-width', null)
+            .attr('stroke', edgeBaseColor()).attr('stroke-width', linkWidthBase);
+        updateTimelineLinks(timelineRevealedIds);
+        return;
+      }
+      node.select('.node-glow').attr('fill-opacity', 0);
+      node.style('opacity', null);
+      link
+        .style('opacity', null)
+        .style('stroke-width', null)
+        .attr('stroke', edgeBaseColor());
+      applyFilters();
+      if (opts.relayout && !is3DView()) {
+        updateGraphViewport();
+        const cx = (wrap.clientWidth || W) / 2;
+        const cy = (wrap.clientHeight || H) / 2;
+        simulation.force('center', d3.forceCenter(cx, cy).strength(0.05));
+        simulation.alpha(0.1).restart();
+        simulation.on('end.sidebar', () => {
+          simulation.on('end.sidebar', null);
+          fitToScreen();
+        });
+      }
+    }
+
+    function openSidebar(d) {
+      const { direct } = applyNodeNeighborHighlight(d);
+
+      hideTooltip();
+      const info = d._info;
       const detailUrl = pageUrlForNode(d);
       const summary = window.RNGraphTooltip?.formatTooltipSummary
         ? window.RNGraphTooltip.formatTooltipSummary(info.summary || '', 150)
@@ -4417,7 +4436,6 @@
 
       const communityLabel = communityLabelMap.get(d.community);
       const communityColor = communityColorMap.get(d.community) || COMMUNITY_COLORS[9];
-      sidebarNode = d;
       if (sbMetaBadges) {
         sbMetaBadges.innerHTML = buildNodeMetaBadges(d);
       }
@@ -4492,46 +4510,14 @@
 
       sidebar.classList.add('open');
       wrap.classList.add('sidebar-open');
-      if (graph3dView && is3DView()) {
-        graph3dView.applySidebarHighlight(d, direct, secondary);
-      }
       scheduleSidebarViewportSync();
     }
     function closeSidebar() {
       sidebar.classList.remove('open');
-      scheduleSidebarViewportSync();
-      sidebarFocusIds = null;
-      sidebarNode = null;
-      pinnedNode = null;
-      if (graph3dView && is3DView()) graph3dView.clearSidebarHighlight();
-      if (isMobile) hideTooltip();
-      if (timelineAnimating) {
-        // 时序模式：只恢复「已显现子集」的渲染，不触发 applyFilters 重建全图，也不重启力模拟/相机
-        renderTimelineStatic();
-        link.style('opacity', null).style('stroke-width', null)
-            .attr('stroke', edgeBaseColor()).attr('stroke-width', linkWidthBase);
-        updateTimelineLinks(timelineRevealedIds);
-        wrap.classList.remove('sidebar-open');
-        return;
-      }
-      node.select('.node-glow').attr('fill-opacity', 0);
-      link
-        .style('opacity', null)
-        .style('stroke-width', null)
-        .attr('stroke', edgeBaseColor());
-      applyFilters(); // 恢复筛选/搜索状态下的透明度
       wrap.classList.remove('sidebar-open');
-      updateGraphViewport();
-      const cx = (wrap.clientWidth || W) / 2;
-      const cy = (wrap.clientHeight || H) / 2;
-      simulation.force('center', d3.forceCenter(cx, cy).strength(0.05));
-      if (!is3DView()) {
-        simulation.alpha(0.1).restart();
-        simulation.on('end.sidebar', () => {
-          simulation.on('end.sidebar', null);
-          fitToScreen();
-        });
-      }
+      scheduleSidebarViewportSync();
+      if (isMobile) hideTooltip();
+      clearNodeNeighborHighlight({ relayout: true });
     }
 
     sbClose.addEventListener('click', closeSidebar);
@@ -4540,9 +4526,9 @@
     function presentNodeDetail(d, ev) {
       if (!d) return;
       if (isMobile) {
+        applyNodeNeighborHighlight(d);
         pinnedNode = d;
         showTooltip(ev || null, d);
-        syncGraph3DMobileHighlight(d);
         return;
       }
       openSidebar(d);
@@ -4550,9 +4536,8 @@
 
     function dismissMobilePinnedTooltip() {
       if (!isMobile || !pinnedNode) return false;
-      pinnedNode = null;
       hideTooltip();
-      clearGraph3DMobileHighlight();
+      clearNodeNeighborHighlight();
       return true;
     }
 
@@ -4573,7 +4558,7 @@
         {
           isMobile,
           getPinned: () => pinnedNode,
-          clearPin: () => { pinnedNode = null; },
+          clearPin: () => { clearNodeNeighborHighlight(); },
           hide: hideTooltip
         },
         { nodeSelector: '.node-g', tooltipEl: tooltip }
@@ -4588,11 +4573,9 @@
       if (timelinePlaying) return;
       if (isMobile) {
         if (pinnedNode === d) {
-          pinnedNode = null;
-          hideTooltip();
+          dismissMobilePinnedTooltip();
         } else {
-          pinnedNode = d;
-          showTooltip(ev, d);
+          presentNodeDetail(d, ev);
         }
       } else {
         openSidebar(d);
