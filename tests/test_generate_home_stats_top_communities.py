@@ -20,7 +20,7 @@ class CommunityShortLabelTest(unittest.TestCase):
         self.assertEqual(ghs.community_short_label("强化学习 社区"), "强化学习")
 
     def test_label_without_suffix(self) -> None:
-        self.assertEqual(ghs.community_short_label("物理引擎（MuJoCo）"), "物理引擎")
+        self.assertEqual(ghs.community_short_label("物理引擎（Physics Engine）"), "物理引擎")
 
 
 class TopCommunitiesTest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TopCommunitiesTest(unittest.TestCase):
                 "移动操作（Loco-Manipulation） 社区": 314,
                 "强化学习（Reinforcement Learning, RL） 社区": 172,
                 "全身控制（Whole-Body Control, WBC） 社区": 102,
-                "物理引擎（MuJoCo） 社区": 79,
+                "物理引擎（Physics Engine） 社区": 79,
                 "动作重定向（Motion Retargeting） 社区": 70,
                 "人形论文深读笔记（Humanoid Paper Notebooks） 社区": 215,
                 "操作（Manipulation） 社区": 48,
