@@ -691,10 +691,19 @@ body.sponsor-dialog-open {
   --hm-level-4: #084d99;
   --hm-cell-line: rgba(27, 31, 36, 0.06);
 }
-.home-wiki-heatmap-scroll { overflow-x: auto; padding: 2px; }
+.home-wiki-heatmap-scroll {
+  width: 100%;
+  overflow-x: auto;
+  padding: 2px;
+  box-sizing: border-box;
+}
 /* 流式适配容器宽度：53 列 minmax(下限, 1fr) 均分整行；
    窄屏格子到下限后由 min-width 撑开、scrollLeft 锚定最右 */
-.home-wiki-heatmap-inner { min-width: max-content; }
+.home-wiki-heatmap-inner {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
 .home-wiki-heatmap-months {
   display: grid;
   grid-template-columns: repeat(var(--hm-weeks), minmax(var(--hm-cell-min), 1fr));
@@ -761,6 +770,24 @@ button.home-wiki-heatmap-cell.is-active {
 .home-wiki-heatmap-legend .home-wiki-heatmap-cell { width: 12px; height: 12px; flex-shrink: 0; }
 .home-wiki-heatmap-legend-hint { margin-right: auto; }
 .home-wiki-heatmap-clear { margin-left: 8px; vertical-align: middle; }
+/* PC：热力图在内容区内完整放下，隐藏横向滚动；列宽用 calc 均分避免 fr 子像素溢出 */
+@media (min-width: 680px) {
+  .home-wiki-heatmap-scroll { overflow-x: hidden; }
+  .home-wiki-heatmap-months,
+  .home-wiki-heatmap-grid {
+    --hm-col-width: calc((100% - (var(--hm-weeks) - 1) * var(--hm-gap)) / var(--hm-weeks));
+    grid-template-columns: repeat(var(--hm-weeks), var(--hm-col-width));
+  }
+  .home-wiki-heatmap-cell {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+}
+/* 极窄屏：格子到下限后恢复横向滚动，默认锚定最右（最新日期） */
+@media (max-width: 679px) {
+  .home-wiki-heatmap-inner { min-width: max-content; }
+}
 .section-subtitle {
   color: var(--text-muted);
   font-size: .97rem;
