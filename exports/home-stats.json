@@ -24,7 +24,9 @@
       "type": "entity",
       "recency": "2026-07-07",
       "source": "log.md",
-      "action": "added"
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/nuwa-skill.md",
@@ -33,7 +35,9 @@
       "type": "entity",
       "recency": "2026-07-07",
       "source": "log.md",
-      "action": "added"
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/darwin-skill.md",
@@ -42,7 +46,9 @@
       "type": "entity",
       "recency": "2026-07-07",
       "source": "log.md",
-      "action": "added"
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/concepts/3d-spatial-vqa.md",
@@ -51,7 +57,9 @@
       "type": "concept",
       "recency": "2026-07-06",
       "source": "log.md",
-      "action": "maintained"
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/concepts/ai-auto-research.md",
@@ -60,7 +68,9 @@
       "type": "concept",
       "recency": "2026-07-06",
       "source": "log.md",
-      "action": "maintained"
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/concepts/armature-modeling.md",
@@ -69,7 +79,8 @@
       "type": "concept",
       "recency": "2026-07-06",
       "source": "log.md",
-      "action": "maintained"
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/concepts/backpropagation.md",
@@ -78,7 +89,8 @@
       "type": "concept",
       "recency": "2026-07-06",
       "source": "log.md",
-      "action": "maintained"
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/concepts/behavior-foundation-model.md",
@@ -87,7 +99,9 @@
       "type": "concept",
       "recency": "2026-07-06",
       "source": "log.md",
-      "action": "maintained"
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "行为基础模型技术地图（Behavior Foundation Model, BFM） 社区"
     },
     {
       "path": "wiki/concepts/behavior-tree-vla-orchestration.md",
@@ -96,7 +110,9 @@
       "type": "concept",
       "recency": "2026-07-06",
       "source": "log.md",
-      "action": "added"
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/concepts/can-bus-protocol.md",
@@ -105,7 +121,8 @@
       "type": "concept",
       "recency": "2026-07-06",
       "source": "log.md",
-      "action": "maintained"
+      "action": "maintained",
+      "community_label": "电机驱动器底软通信协议（Motor Drive Firmware Bus Protocols） 社区"
     },
     {
       "path": "wiki/concepts/can-fd.md",
@@ -114,7 +131,8 @@
       "type": "concept",
       "recency": "2026-07-06",
       "source": "log.md",
-      "action": "maintained"
+      "action": "maintained",
+      "community_label": "电机驱动器底软通信协议（Motor Drive Firmware Bus Protocols） 社区"
     },
     {
       "path": "wiki/concepts/capture-point-dcm.md",
@@ -123,7 +141,8 @@
       "type": "concept",
       "recency": "2026-07-06",
       "source": "log.md",
-      "action": "maintained"
+      "action": "maintained",
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "path": "wiki/concepts/centroidal-dynamics.md",
@@ -132,7 +151,8 @@
       "type": "concept",
       "recency": "2026-07-06",
       "source": "log.md",
-      "action": "maintained"
+      "action": "maintained",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
       "path": "wiki/concepts/character-animation-vs-robotics.md",
@@ -141,7 +161,9 @@
       "type": "concept",
       "recency": "2026-07-06",
       "source": "log.md",
-      "action": "maintained"
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
     },
     {
       "path": "wiki/concepts/clock-synchronization-algorithms.md",
@@ -150,7 +172,8 @@
       "type": "concept",
       "recency": "2026-07-06",
       "source": "log.md",
-      "action": "maintained"
+      "action": "maintained",
+      "community_label": "电机驱动器底软通信协议（Motor Drive Firmware Bus Protocols） 社区"
     },
     {
       "path": "wiki/concepts/collision-distance-optimization.md",
@@ -159,7 +182,8 @@
       "type": "concept",
       "recency": "2026-07-06",
       "source": "log.md",
-      "action": "maintained"
+      "action": "maintained",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
       "path": "wiki/concepts/constrained-optimization.md",
@@ -168,7 +192,8 @@
       "type": "concept",
       "recency": "2026-07-06",
       "source": "log.md",
-      "action": "maintained"
+      "action": "maintained",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
       "path": "wiki/concepts/contact-dynamics.md",

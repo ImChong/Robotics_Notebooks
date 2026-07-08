@@ -456,6 +456,24 @@
       return '<span class="' + cellClass + ' updates-badge-cell--empty" aria-hidden="true"></span>';
     }
 
+    function renderRepoStar(meta) {
+      if (!meta || !meta.has_repo) return '';
+      return '<span class="updates-item-opensource" aria-label="含开源仓库" title="含开源仓库">⭐️</span>';
+    }
+
+    function renderCommunityCat(meta) {
+      if (!meta || !meta.community_label) return '';
+      var label = typeof shortenCommunityLabel === 'function'
+        ? shortenCommunityLabel(meta.community_label)
+        : String(meta.community_label).replace(/\s*社区\s*$/, '').trim();
+      if (!label) return '';
+      return '<span class="updates-item-cat">' + escapeHtml(label) + '</span>';
+    }
+
+    function renderItemSuffix(meta) {
+      return renderRepoStar(meta) + renderCommunityCat(meta);
+    }
+
     // 首页紧凑模式（mount 带 data-compact）：只列最近 5 条单行记录；
     // 完整时间线与活跃度热力图迁至 change-log.html
     if (mount.hasAttribute('data-compact')) {
@@ -479,7 +497,9 @@
           escapeHtml(detailHref(rowMeta.detail_id)) +
           '">' +
           escapeHtml(rowMeta.label || rowMeta.detail_id) +
-          '</a></li>';
+          '</a>' +
+          renderItemSuffix(rowMeta) +
+          '</li>';
       }
       mount.innerHTML =
         '<ul class="home-latest-list">' + compactRows + '</ul>' +
@@ -519,9 +539,12 @@
         '<li class="updates-item' + (folded ? ' updates-item-folded' : '') + '">' +
         renderActionBadgeCell(meta.action, 'updates-badge-cell') +
         '<span class="updates-item-type">' + escapeHtml(typeLabel) + '</span>' +
+        '<span class="updates-item-main">' +
         '<a class="updates-item-link" href="' + escapeHtml(detailHref(meta.detail_id)) + '">' +
         escapeHtml(meta.label || meta.detail_id) +
-        '</a></li>'
+        '</a>' +
+        renderItemSuffix(meta) +
+        '</span></li>'
       );
     }
 
@@ -563,7 +586,9 @@
             type: nodeMeta.type || '',
             action: nodeMeta.action || '',
             recency: dayEntry.date,
-            source: 'log.md'
+            source: 'log.md',
+            has_repo: !!nodeMeta.has_repo,
+            community_label: nodeMeta.community_label || ''
           });
         }
         if (!metas.length) continue;
