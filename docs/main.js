@@ -2166,69 +2166,65 @@
     return 'rmStageExit';
   }
 
-  function mermaidSafeNodeId(raw) {
-    return String(raw || '').replace(/[^a-zA-Z0-9_]/g, '_');
-  }
-
-  function escapeMermaidLabelText(text) {
-    return String(text || '')
-      .replace(/&/g, '&amp;')
-      .replace(/"/g, '&quot;');
-  }
-
-  function buildRoadmapKnowledgeMapMermaidSource(stages, detailPages, contentEl) {
+  function buildRoadmapKnowledgeMapTreeHTML(stages, detailPages, contentEl, roadmapTitle) {
     if (!stages || stages.length < 2) return null;
-    var lines = ['flowchart TB'];
-    lines.push('  classDef rmStageIntro fill:#0d4f5c,stroke:#00d4ff,stroke-width:2px,color:#fff');
-    lines.push('  classDef rmStageFoundation fill:#14291f,stroke:#4ade80,color:#e8ffe8');
-    lines.push('  classDef rmStageControl fill:#2b2614,stroke:#fbbf24,color:#fff8e6');
-    lines.push('  classDef rmStageLearning fill:#241a2e,stroke:#c084fc,color:#f3e8ff');
-    lines.push('  classDef rmStageDeploy fill:#142433,stroke:#38bdf8,color:#e0f2fe');
-    lines.push('  classDef rmStageExit fill:#2a1515,stroke:#f87171,color:#ffe4e6');
-    lines.push('  classDef rmStageDefault fill:#1a1a1a,stroke:#64748b,color:#ddd');
-    lines.push('  classDef rmWikiNode fill:#12171c,stroke:#475569,color:#cbd5e1');
-
-    var prevTailId = '';
+    var maxWikiPerStage = 3;
     var wikiCount = 0;
-    var maxWikiPerStage = 2;
+    var parts = [];
+    var rootLabel = String(roadmapTitle || '技术路线').trim();
+    if (rootLabel.length > 56) rootLabel = rootLabel.slice(0, 54) + '…';
+    parts.push('<div class="rm-kmtree" role="tree">');
+    parts.push('<div class="rm-kmtree-row rm-kmtree-row--root" role="treeitem" aria-level="1">');
+    parts.push('<span class="rm-kmtree-prefix" aria-hidden="true"></span>');
+    parts.push('<span class="rm-kmtree-label">' + escapeHtml(rootLabel) + '</span>');
+    parts.push('</div>');
+
     var i;
     for (i = 0; i < stages.length; i++) {
       var stage = stages[i];
-      var sid = normalizeRoadmapStageId(stage.id);
-      var stageNodeId = 'rm_st_' + mermaidSafeNodeId(sid);
+      var isLastStage = i === stages.length - 1;
+      var stageBranch = isLastStage ? '└── ' : '├── ';
+      var childIndent = isLastStage ? '    ' : '│   ';
       var stageLabel = formatRoadmapStageDisplayId(stage.id) + ' · ' + String(stage.title || '').trim();
-      if (stageLabel.length > 44) stageLabel = stageLabel.slice(0, 42) + '…';
+      if (stageLabel.length > 52) stageLabel = stageLabel.slice(0, 50) + '…';
       var stageHref = findRoadmapStageHeadingId(stage, contentEl);
       stageHref = stageHref ? ('#' + stageHref) : '#roadmap-content';
       var stageBand = roadmapStageColorBand(stage.id);
-      var stageMermaidLabel = '"<a href=\'' + stageHref + '\'><b>' +
-        escapeMermaidLabelText(stageLabel) + '</b></a>"';
-      lines.push('  ' + stageNodeId + '[' + stageMermaidLabel + ']:::' + stageBand);
 
-      if (prevTailId) {
-        lines.push('  ' + prevTailId + ' --> ' + stageNodeId);
-      }
-      prevTailId = stageNodeId;
+      parts.push('<div class="rm-kmtree-row rm-kmtree-row--stage" role="treeitem" aria-level="2" data-band="' +
+        escapeHtml(stageBand.replace('rmStage', '').toLowerCase()) + '">');
+      parts.push('<span class="rm-kmtree-prefix" aria-hidden="true">' + stageBranch + '</span>');
+      parts.push('<a class="rm-kmtree-label" href="' + escapeHtml(stageHref) + '">' + escapeHtml(stageLabel) + '</a>');
+      parts.push('</div>');
 
       var related = Array.isArray(stage.related_items) ? stage.related_items.slice(0, maxWikiPerStage) : [];
+      if (!related.length) {
+        parts.push('<div class="rm-kmtree-row rm-kmtree-row--empty" role="treeitem" aria-level="3">');
+        parts.push('<span class="rm-kmtree-prefix" aria-hidden="true">' + childIndent + '└── </span>');
+        parts.push('<span class="rm-kmtree-label">（本阶段暂无抽取链接）</span>');
+        parts.push('</div>');
+        continue;
+      }
       var k;
       for (k = 0; k < related.length; k++) {
         var rid = related[k];
         var page = detailPages[rid] || {};
-        var wikiId = 'rm_w_' + mermaidSafeNodeId(sid) + '_' + k;
         var wikiTitle = page.title || rid;
-        if (wikiTitle.length > 24) wikiTitle = wikiTitle.slice(0, 22) + '…';
+        if (wikiTitle.length > 42) wikiTitle = wikiTitle.slice(0, 40) + '…';
         var wikiHref = page.type === 'roadmap_page' ? roadmapHref(rid) : detailHref(rid);
-        var wikiLabel = '"<a href=\'' + wikiHref + '\'>' + escapeMermaidLabelText(wikiTitle) + '</a>"';
-        lines.push('  ' + wikiId + '[' + wikiLabel + ']:::rmWikiNode');
-        lines.push('  ' + prevTailId + ' --> ' + wikiId);
-        prevTailId = wikiId;
+        var isLastChild = k === related.length - 1;
+        var wikiBranch = childIndent + (isLastChild ? '└── ' : '├── ');
+        parts.push('<div class="rm-kmtree-row rm-kmtree-row--wiki" role="treeitem" aria-level="3">');
+        parts.push('<span class="rm-kmtree-prefix" aria-hidden="true">' + wikiBranch + '</span>');
+        parts.push('<a class="rm-kmtree-label" href="' + escapeHtml(wikiHref) + '">' + escapeHtml(wikiTitle) + '</a>');
+        parts.push('</div>');
         wikiCount += 1;
       }
     }
 
+    parts.push('</div>');
     return {
-      source: lines.join('\n'),
+      html: parts.join(''),
       stageCount: stages.length,
       wikiCount: wikiCount
     };
@@ -2236,25 +2232,29 @@
 
   function renderRoadmapKnowledgeMap(roadmapPage, detailPages, contentEl) {
     var wrap = document.getElementById('roadmapKnowledgeMapWrap');
-    var host = document.getElementById('roadmapKnowledgeMapMermaid');
+    var host = document.getElementById('roadmapKnowledgeMapTree');
     var metaEl = document.getElementById('roadmapKnowledgeMapMeta');
     var flowLink = document.getElementById('roadmapKnowledgeMapFlowLink');
-    if (!wrap || !host) return Promise.resolve();
+    if (!wrap || !host) return;
     var stages = Array.isArray(roadmapPage && roadmapPage.stages) ? roadmapPage.stages : [];
     if (stages.length < 2) {
       wrap.hidden = true;
       host.innerHTML = '';
-      return Promise.resolve();
+      return;
     }
-    var built = buildRoadmapKnowledgeMapMermaidSource(stages, detailPages, contentEl);
-    if (!built || !built.source) {
+    var built = buildRoadmapKnowledgeMapTreeHTML(
+      stages,
+      detailPages,
+      contentEl,
+      (roadmapPage && roadmapPage.title) || ''
+    );
+    if (!built || !built.html) {
       wrap.hidden = true;
       host.innerHTML = '';
-      return Promise.resolve();
+      return;
     }
     wrap.hidden = false;
-    host.className = 'mermaid roadmap-knowledge-map-mermaid';
-    host.textContent = built.source;
+    host.innerHTML = built.html;
     if (metaEl) {
       metaEl.textContent = built.stageCount + ' 个 L 阶段 · ' + built.wikiCount + ' 个知识节点';
     }
@@ -2272,11 +2272,6 @@
         flowLink.textContent = '展开阶段详情 →';
       }
     }
-    return renderDetailMermaid(wrap).then(function () {
-      patchMermaidSvgLabelOverflow(wrap);
-      enhanceMermaidZoomTargets(wrap);
-      bindMermaidZoom(wrap);
-    });
   }
 
   function renderRoadmapFlowSection(roadmapPage, roadmapId, detailPages) {

@@ -2233,30 +2233,72 @@ button.home-wiki-heatmap-cell.is-active {
 .search-tier-heading.search-tier-exact { color:var(--accent, #1659b4); }
 .search-tier-heading .data-meta { font-weight:400; opacity:.75; margin-left:4px; }
 
-/* --- Roadmap hero: L-stage knowledge map (Mermaid flowchart) --- */
+/* --- Roadmap hero: L-stage knowledge map (tree / ubuntu tree style) --- */
 .roadmap-knowledge-map {
   margin-top: 0.25rem;
 }
-.roadmap-knowledge-map-mermaid-host {
+.roadmap-knowledge-map-tree-host {
   overflow-x: auto;
-  padding: 4px 0 8px;
-  min-height: 120px;
+  padding: 6px 4px 10px;
+  max-height: min(72vh, 640px);
+  overflow-y: auto;
 }
-.roadmap-knowledge-map-mermaid-host .mermaid {
+.rm-kmtree {
+  font-family: var(--font-mono, ui-monospace, "Cascadia Code", "Fira Code", Menlo, Consolas, monospace);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  min-width: min-content;
+}
+.rm-kmtree-row {
   display: flex;
-  justify-content: center;
-  margin: 0;
+  align-items: baseline;
+  gap: 0;
+  white-space: nowrap;
 }
-.roadmap-knowledge-map-mermaid-host svg {
-  max-width: none;
+.rm-kmtree-prefix {
+  flex: 0 0 auto;
+  color: var(--text-muted);
+  opacity: 0.72;
+  user-select: none;
 }
-.roadmap-knowledge-map-mermaid-host .node a {
-  color: inherit;
+.rm-kmtree-label {
+  flex: 0 0 auto;
+  min-width: 0;
   text-decoration: none;
 }
-.roadmap-knowledge-map-mermaid-host .node a:hover {
+.rm-kmtree-row--root .rm-kmtree-label {
+  font-weight: 600;
+  color: var(--text);
+}
+.rm-kmtree-row--stage .rm-kmtree-label {
+  font-weight: 600;
+}
+.rm-kmtree-row--stage[data-band="intro"] .rm-kmtree-label { color: #00d4ff; }
+.rm-kmtree-row--stage[data-band="foundation"] .rm-kmtree-label { color: #4ade80; }
+.rm-kmtree-row--stage[data-band="control"] .rm-kmtree-label { color: #fbbf24; }
+.rm-kmtree-row--stage[data-band="learning"] .rm-kmtree-label { color: #c084fc; }
+.rm-kmtree-row--stage[data-band="deploy"] .rm-kmtree-label { color: #38bdf8; }
+.rm-kmtree-row--stage[data-band="exit"] .rm-kmtree-label { color: #f87171; }
+.rm-kmtree-row--stage[data-band="default"] .rm-kmtree-label { color: var(--text); }
+.rm-kmtree-row--stage .rm-kmtree-label:hover,
+.rm-kmtree-row--wiki .rm-kmtree-label:hover {
   text-decoration: underline;
 }
+.rm-kmtree-row--wiki .rm-kmtree-label {
+  font-weight: 400;
+  color: var(--accent);
+}
+.rm-kmtree-row--empty .rm-kmtree-label {
+  font-weight: 400;
+  color: var(--text-muted);
+  font-style: italic;
+}
+[data-theme="light"] .rm-kmtree-row--stage[data-band="intro"] .rm-kmtree-label { color: #0e7490; }
+[data-theme="light"] .rm-kmtree-row--stage[data-band="foundation"] .rm-kmtree-label { color: #15803d; }
+[data-theme="light"] .rm-kmtree-row--stage[data-band="control"] .rm-kmtree-label { color: #b45309; }
+[data-theme="light"] .rm-kmtree-row--stage[data-band="learning"] .rm-kmtree-label { color: #7e22ce; }
+[data-theme="light"] .rm-kmtree-row--stage[data-band="deploy"] .rm-kmtree-label { color: #0369a1; }
+[data-theme="light"] .rm-kmtree-row--stage[data-band="exit"] .rm-kmtree-label { color: #b91c1c; }
 
 /* --- Roadmap page: vertical tree --- */
 .roadmap-flow-section {
