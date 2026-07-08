@@ -90,7 +90,7 @@ MERGE_MAP: dict[str, tuple[str, str]] = {
     # cross-survey via 同题深读 (methods)
     "paper-loco-manip-161-046-sumo": ("methods", "sumo"),
     "paper-loco-manip-161-147-dial": ("methods", "dial-instruction-augmentation"),
-    "paper-loco-manip-161-152-lingbot-vla": ("methods", "lingbot-map"),
+    "paper-loco-manip-161-152-lingbot-vla": ("entities", "lingbot-vla-v2"),
     # intra-161 duplicate slots → keeper stub (still loco-manip entity)
     "paper-loco-manip-161-008-from-w1": ("entities", "paper-loco-manip-161-096-from-w1"),
     "paper-loco-manip-161-032-amo": ("entities", "paper-loco-manip-161-135-amo"),

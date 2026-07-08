@@ -221,7 +221,7 @@
 | 149 | Gemini Robotics | [paper-loco-manip-161-149-gemini-robotics](../../wiki/entities/gemini-robotics.md) |
 | 150 | Genie Envisioner | [paper-loco-manip-161-150-genie-envisioner](../../wiki/entities/ge-sim-2.md) |
 | 151 | LEGS | [paper-loco-manip-161-151-legs](../../wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md) |
-| 152 | LingBot-VLA | [paper-loco-manip-161-152-lingbot-vla](../../wiki/methods/lingbot-map.md) |
+| 152 | LingBot-VLA | [LingBot-VLA 2.0](../../wiki/entities/lingbot-vla-v2.md) |
 | 153 | MetaWorld-X | [paper-loco-manip-161-153-metaworld-x](../../wiki/entities/paper-hrl-stack-32-metaworld.md) |
 | 154 | OpenHLM | [paper-loco-manip-161-154-openhlm](../../wiki/entities/paper-loco-manip-161-154-openhlm.md) |
 | 155 | PhysiFlow | [paper-loco-manip-161-155-physiflow](../../wiki/entities/paper-loco-manip-161-155-physiflow.md) |

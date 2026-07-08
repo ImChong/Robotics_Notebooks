@@ -39,7 +39,7 @@ sources:
 | 149 | Gemini Robotics | [paper-loco-manip-161-149-gemini-robotics](../entities/gemini-robotics.md) |
 | 150 | Genie Envisioner | [paper-loco-manip-161-150-genie-envisioner](../entities/ge-sim-2.md) |
 | 151 | LEGS | [paper-loco-manip-161-151-legs](../entities/paper-legs-embodied-gaussian-splatting-vla.md) |
-| 152 | LingBot-VLA | [paper-loco-manip-161-152-lingbot-vla](../methods/lingbot-map.md) |
+| 152 | LingBot-VLA | [LingBot-VLA 2.0](../entities/lingbot-vla-v2.md) |
 | 153 | MetaWorld-X | [paper-loco-manip-161-153-metaworld-x](../entities/paper-hrl-stack-32-metaworld.md) |
 | 154 | OpenHLM | [paper-loco-manip-161-154-openhlm](../entities/paper-loco-manip-161-154-openhlm.md) |
 | 155 | PhysiFlow | [paper-loco-manip-161-155-physiflow](../entities/paper-loco-manip-161-155-physiflow.md) |

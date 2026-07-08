@@ -15,6 +15,7 @@ related:
   - ../concepts/embodied-data-cleaning.md
   - ../comparisons/humannet-table1-human-video-corpora.md
   - ./humanoid-robot.md
+  - ./lingbot-vla-v2.md
 sources:
   - ../../sources/papers/humannet.md
   - ../../sources/papers/humannet_table1_benchmark_corpora.md
@@ -103,4 +104,4 @@ flowchart LR
 ## 推荐继续阅读
 
 - [EgoScale](../methods/egoscale.md)（arXiv:2602.16710，NVIDIA GEAR 项目页）、Ego4D / Ego-Exo4D / EgoVerse 等项目页与数据卡（对比视点设计与下游任务）
-- LingBot-VLA 相关公开材料（论文中作为受控 VLA 后训练协议参照架构）
+- [LingBot-VLA 2.0](./lingbot-vla-v2.md) — HumanNet 论文中 LingBot-VLA 架构的受控后训练对照在 2.0 中扩展为 **6 万小时** 产品与开源链
