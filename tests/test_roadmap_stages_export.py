@@ -1,5 +1,4 @@
 import unittest
-from pathlib import Path
 
 from export_minimal import ROOT, parse_roadmap_stages
 
