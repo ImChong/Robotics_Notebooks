@@ -3,7 +3,7 @@ title: 人形运动跟踪方法选型指南
 type: query
 status: complete
 created: 2026-05-21
-updated: 2026-07-06
+updated: 2026-07-08
 summary: 在人形 RL 运动控制栈中，如何按任务阶段在 DeepMimic / BeyondMimic / AMP 家族 / 通用 tracker / 接触丰富场景 tracking / 生成式动作先验之间选型。
 sources:
   - ../../sources/papers/scenebot_arxiv_2606_27581.md
@@ -53,6 +53,7 @@ flowchart TD
 | 证明「能跟参考跑起来」 | 显式 tracking reward | [DeepMimic](../methods/deepmimic.md)、[BeyondMimic](../methods/beyondmimic.md) |
 | 任务完成后仍像「人」 | 对抗式 motion prior | [AMP](../methods/amp-reward.md)、[ADD](../methods/add.md)、[SMP](../methods/smp.md) |
 | 多动作通用 tracker | 规模化 tracking policy | [Any2Track](../methods/any2track.md)、[AMS](../methods/ams.md)、[MotionBricks](../methods/motionbricks.md)、[EGM](../methods/egm-efficient-general-mimic.md)、[SONIC](../methods/sonic-motion-tracking.md)、[Humanoid-GPT](../entities/paper-humanoid-gpt.md) |
+| 高覆盖率下训练集长尾 | 能力对齐 expert + 路由蒸馏 | [Athena-WBC](../entities/paper-athena-wbc-humanoid-longtail.md)（改奖励/重力课程，非仅重采样；STC/TIS/MPJPE-W） |
 | 动画参考 + latent 上下文跟踪 | 两阶段 VAE prior + 显式 PPO | [VMP](../entities/paper-notebook-vmp.md)（SCA 2024；LIME 真机） |
 | 接触丰富场景 tracking | 参考运动 + per-link contact label | [SceneBot](../entities/paper-scenebot.md)（hindsight 场景重建 + 单策略 terrain/object） |
 | 数据稀缺、要合成参考 | 生成式动作 | [ASE](../methods/ase.md)、[GenMo](../methods/genmo.md)、[扩散动作生成](../methods/diffusion-motion-generation.md) |
@@ -80,6 +81,8 @@ flowchart TD
 当瓶颈不在网络结构而在**数据不平衡与高动态精度**时，看 [EGM](../methods/egm-efficient-general-mimic.md)：它用 **bin 级误差驱动的跨动作采样课程** + **上下身分组 CDMoE**，论证「小而高质量的精选 MoCap 子集优于大规则筛集」，把选型轴从「堆更多小时数据」转向「数据策展 + 采样调度」。
 
 若已有 **AMASS 级大库** 且 tracker 已选定（如 Any2Track / TWIST2），优先评估 **[LIMMT / GQS](../methods/limmt-gqs-motion-curation.md)**：**离线** 三阶段策展（仿真可行性 → HME 多样性 → 复杂度加权 FPS）可在 **≈3% 数据** 上击败全量训练，且 **plug-and-play** 不改动算法——适合作为 WBT **阶段 3 前置数据模块**。
+
+当 **全训练集 SR 已 >98%** 但仍有 **高动态/平衡关键** 片段反复失败，且 **对失败子集加训仍学不会** 时，问题往往不在曝光而在 **acquisition capability**（保守 effort/temporal 奖励、名义重力冷启动等）。此时优先评估 **[Athena-WBC](../entities/paper-athena-wbc-humanoid-longtail.md)**：**dynamic expert**（去保守奖励 + Grad-CAPS 辅助平滑）与 **balance expert**（重力课程）并行于同一残余集，再 **按 rollout 路由 DAgger 蒸馏 + RL 微调**；评测除单阈值 SR 外应看 **STC/TIS/MPJPE-W**，避免「高 SR 掩盖长尾」。
 
 ### 4. 接触柔顺、场景交互与生成式补充
 

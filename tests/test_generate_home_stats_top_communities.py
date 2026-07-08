@@ -47,7 +47,14 @@ class TopCommunitiesTest(unittest.TestCase):
         result = ghs.top_communities(self.graph_stats)
         self.assertEqual(
             [item["label"] for item in result],
-            ["移动操作", "人形论文深读笔记", "强化学习", "全身控制", "仿真与平台生态", "动作重定向"],
+            [
+                "移动操作",
+                "人形论文深读笔记",
+                "强化学习",
+                "全身控制",
+                "仿真与平台生态",
+                "动作重定向",
+            ],
         )
         self.assertEqual(result[0]["size"], 314)
 
