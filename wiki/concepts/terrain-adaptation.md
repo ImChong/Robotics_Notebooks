@@ -2,9 +2,10 @@
 type: concept
 tags: [locomotion, terrain, perception, footstep-planning, sim2real]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-08
 summary: "Terrain Adaptation 指机器人根据地形感知结果调整步位、身体姿态和接触策略，以在不平整环境中保持稳定移动。"
 related:
+  - ../entities/paper-discrete-terrain-minimal-proximity-sensing.md
   - ../tasks/locomotion.md
   - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ./footstep-planning.md
@@ -26,6 +27,7 @@ sources:
   - ../../sources/papers/contact_planning.md
   - ../../sources/papers/e_sds_arxiv_2512_16446.md
   - ../../sources/papers/rpl_arxiv_2602_03002.md
+  - ../../sources/papers/discrete_terrain_minimal_proximity_sensing_arxiv_2606_31912.md
 ---
 
 # Terrain Adaptation（地形适应）
@@ -87,6 +89,9 @@ sources:
 ### 3. 接触反馈
 足端是否滑动、接触是否建立、法向力是否异常，都是补救感知误差的重要信号。
 
+### 4. 足底接近传感（Proximity / ToF）
+在 **摆动相** 用足端 **短距 ToF** 获取 **接触前** 局部几何，绕开机身深度/LiDAR 的 **自遮挡与地图延迟**；ETH RSL 在 ANYmal-D 上验证踏石/沟/平衡木场景（见 [离散地形最小感知](../entities/paper-discrete-terrain-minimal-proximity-sensing.md)）。
+
 ## 主要策略路线
 
 | 路线 | 做法 | 优点 | 局限 |
@@ -96,10 +101,15 @@ sources:
 | 端到端 RL | 直接输入高度图/点云预测动作 | 反应式强 | 对训练分布依赖高 |
 | 多模态点云 RL（DreamWaQ++） | 分层 $SE(3)$ 点云记忆 + PointNet + 本体 Mixer，单阶段非对称 AC | 障碍前瞻、传感器无关、OOD 本体回退 | 训练重、公开页暂无同署官方代码仓 |
 | 环境感知自动奖励（E-SDS） | VLM 读地形统计 + 行为分解生成调用高度图/LiDAR 的 Python 奖励 | 跨四类地形少手工调参；楼梯下降为分水岭 | 每地形专用策略、仅仿真、首轮仍依赖 prompt 工程 |
+| 足底最小感知（Foot-ToF） | 四足足底 4×4 ToF 直接进 LSTM-PPO，无高程图栈 | 低算力/低延迟、抗腿自遮挡、仿真 ray cast 易建模 | 近场落脚专用；材质/泥污敏感；不等价全局导航 |
 
 ### 近期案例：E-SDS 的环境感知奖励合成
 
 [E-SDS（arXiv:2512.16446）](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) 把 **地形适应** 从「控制器读传感器」前移到 **奖励设计阶段**：Environment Analysis Agent 在目标地形上跑千机短 rollout，统计 **缺口率、障碍密度、崎岖度**，与 SUS 行为分解一并喂给 VLM，生成显式调用 **27×21 高度栅格 + 144 线 LiDAR** 的奖励代码；再经双候选 PPO + 反馈迭代精炼。在 Isaac Lab + Unitree G1 上，相对手工 13 项感知基线 **速度跟踪误差降 51.9–82.6%**，且 **仅该方法完成 12 cm 台阶下降**。
+
+### 近期案例：四足足底 ToF 最小感知（arXiv:2606.31912）
+
+[离散地形最小感知](../entities/paper-discrete-terrain-minimal-proximity-sensing.md) 把 **地形适应** 的传感重心下移到 **足端接触点**：ANYmal-D 每足 **VL53L5CX** 4×4 网格（60 Hz）在 **触地前** 扫描落脚区；策略 **不建图**，仅用 proximity + 本体在 Isaac Gym 两阶段课程学 **统一离散地形策略**。仿真对照表明，相对从 **机载理想高程图/六相机融合图** 运动学投影到足端的读数，足端直连传感对 **关节偏置、连杆误差、里程计噪声** 更稳健；实机完成 **60 cm 沟** 与错落踏石，平均约 **0.52 m/s**。
 
 ### 近期案例：显式楼梯几何 token（arXiv:2605.09944）
 
@@ -112,6 +122,7 @@ sources:
 - [楼梯与障碍 Locomotion（中心节点）](../tasks/stair-obstacle-perceptive-locomotion.md) 汇总楼梯/越障上的感知 vs 盲走文献索引。
 - [Privileged Training](./privileged-training.md) 展示了复杂地形上 teacher 用高度图、student 用本体感知的经典方案。
 - [DreamWaQ++](../entities/dreamwaq-plus.md) 把 **3D 点云** 与 **本体历史** 在单阶段 RL 中融合，是四足 **点云地形适应** 的代表实现。
+- [离散地形最小感知](../entities/paper-discrete-terrain-minimal-proximity-sensing.md) 展示四足 **足底 ToF** 在垫脚石/沟上的 **任务对齐最小传感** 路线。
 - [RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) 用 **多视角深度** 做 **双向/多向** 地形适应，并以 **DFSV/RSM** 处理非对称视野与未见窄地形宽度。
 - [LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) 把 **稀疏踏棍梯子** 当作极端薄结构地形：端到端 **深度 + VFM** 适应，配合 **RFM** 聚焦踏棍几何。
 - [Sim2Real](./sim2real.md) 强调地形感知和真实传感器偏差是迁移痛点。
@@ -133,6 +144,7 @@ sources:
 - [sources/papers/e_sds_arxiv_2512_16446.md](../../sources/papers/e_sds_arxiv_2512_16446.md) — E-SDS 环境感知 VLM 奖励合成
 - [sources/papers/dreamwaq_plus_arxiv_2409_19709.md](../../sources/papers/dreamwaq_plus_arxiv_2409_19709.md) — DreamWaQ++ 多模态点云四足 loco
 - [sources/papers/explicit_stair_geometry_arxiv_2605_09944.md](../../sources/papers/explicit_stair_geometry_arxiv_2605_09944.md) — 显式楼梯几何条件化人形爬梯
+- [sources/papers/discrete_terrain_minimal_proximity_sensing_arxiv_2606_31912.md](../../sources/papers/discrete_terrain_minimal_proximity_sensing_arxiv_2606_31912.md) — ETH RSL 四足足底 ToF 离散地形
 
 ## 关联页面
 
