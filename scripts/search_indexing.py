@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any, Dict, Iterable, List
 
 import yaml
+from utils.community_labels import community_search_aliases_for_path
 from utils.paths import path_to_id
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -213,6 +214,28 @@ def infer_path_tags(path: Path, fm: dict) -> List[str]:
     return out
 
 
+def infer_search_aliases(path: Path, fm: dict) -> List[str]:
+    path_str = "/".join(path.parts[REPO_PARTS_LEN:])
+    seen: set[str] = set()
+    out: List[str] = []
+
+    def add(value: str) -> None:
+        text = str(value).strip()
+        if text and text not in seen:
+            seen.add(text)
+            out.append(text)
+
+    raw_aliases = fm.get("search_aliases", [])
+    if isinstance(raw_aliases, str):
+        raw_aliases = [raw_aliases]
+    for alias in raw_aliases or []:
+        add(str(alias))
+
+    for alias in community_search_aliases_for_path(path_str):
+        add(alias)
+    return out
+
+
 def iter_searchable_paths() -> List[Path]:
     patterns = [
         "wiki/**/*.md",
@@ -240,6 +263,7 @@ def iter_wiki_documents() -> List[Dict]:
         title = extract_title(body, path.stem)
         summary = extract_summary(body, fm)
         tags = infer_path_tags(path, fm)
+        search_aliases = infer_search_aliases(path, fm)
         docs.append(
             {
                 "id": path_to_id(path, REPO_ROOT),
@@ -250,6 +274,7 @@ def iter_wiki_documents() -> List[Dict]:
                 "frontmatter": fm,
                 "page_type": page_type_for_path(path, fm),
                 "tags": tags,
+                "search_aliases": search_aliases,
             }
         )
     return docs

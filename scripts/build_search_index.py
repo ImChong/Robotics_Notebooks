@@ -24,6 +24,7 @@ def generate_search_index(output_path: Path = OUTPUT) -> dict:
                 doc["summary"],
                 doc["path"],
                 " ".join(doc.get("tags", [])),
+                " ".join(doc.get("search_aliases", [])),
                 doc["body"],
             ]
         )
@@ -40,6 +41,7 @@ def generate_search_index(output_path: Path = OUTPUT) -> dict:
                 "summary": doc["summary"],
                 "page_type": doc["page_type"],
                 "tags": doc.get("tags", []),
+                "search_aliases": doc.get("search_aliases", []),
                 "dl": dl,
                 "tokens": dict(sorted(counts.items())),
             }
