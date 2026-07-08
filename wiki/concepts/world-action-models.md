@@ -161,6 +161,7 @@ flowchart TB
 - [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md)
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [Model-Based RL](../methods/model-based-rl.md)
+- [具身大模型分类学选型闭环（专题枢纽）](../overview/topic-embodied-foundation-model.md) — WAM 对应五层闭环的世界模型推演层
 
 ## 推荐继续阅读
 

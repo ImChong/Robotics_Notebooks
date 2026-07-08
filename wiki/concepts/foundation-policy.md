@@ -168,6 +168,7 @@ flowchart TD
 - [操作任务（Manipulation）](../tasks/manipulation.md)
 - [Behavior Foundation Model（BFM 概念）](./behavior-foundation-model.md) — 人形 WBC 行为基础模型 taxonomy 与 VLA 分工
 - [BFM（Behavior Foundation Model 论文实体）](../entities/paper-behavior-foundation-model-humanoid.md) — humanoid WBC 系基础策略（CVAE + 掩码控制接口）
+- [具身大模型分类学选型闭环（专题枢纽）](../overview/topic-embodied-foundation-model.md) — 基础策略是五层闭环的 VLA 动作执行层基座
 
 ## 参考来源
 - [rl_foundation_models.md](../../sources/papers/rl_foundation_models.md)
