@@ -3,11 +3,12 @@ type: entity
 title: URDF-Studio
 tags: [utility, design, workstation, hardware, ai]
 summary: "URDF-Studio 是专业级 Web 机器人设计与组装工作站，支持模块化设计流、硬件 BOM 管理及 AI 辅助建模。"
-updated: 2026-07-03
+updated: 2026-07-08
 related:
   - ./botworld.md
   - ./robot-viewer.md
   - ./step2urdf.md
+  - ./stackforce.md
 ---
 
 # URDF-Studio
@@ -42,7 +43,7 @@ related:
 - **团队协作**：提供项目级的工作区管理，方便分享和复用机器人资产。
 - **广场分发入口**：[BotWorld](./botworld.md) 将 URDF Studio 作为内置工作区，支持从资产广场 **Import to Workspace** 并经由 **BotPilot** 审核后公开发布模型包。
 - **与整机协作平台对照：** [Tnkr](./tnkr.md) 从 **Onshape/GitHub 接入 + CAD 装配说明 + 线束标注** 组织开源整机项目；URDF-Studio 则专注 **URDF/MJCF/USD 描述文件与 BOM** 编辑，二者可上下游衔接而非互替。
-- **与 STEP 转换对照：** [step2urdf](./step2urdf.md) 从 **已有 STEP 装配体** 一键推断关节并导出 URDF（OpenCascade.js 本地处理）；URDF-Studio 更适合 **从零设计或深度编辑** 描述文件与硬件元数据，二者可 **STEP→step2urdf→URDF-Studio** 串联。
+- **与 STEP 转换对照：** [step2urdf](./step2urdf.md) 从 **已有 STEP 装配体** 一键推断关节并导出 URDF（OpenCascade.js 本地处理）；[StackForce](./stackforce.md) 提供 **CAD2URDF + 工作台 SimReady→Isaac** 教育向一条龙；URDF-Studio 更适合 **从零设计或深度编辑** 描述文件与硬件元数据，二者可 **STEP→step2urdf→URDF-Studio** 串联。
 
 ## 技术架构
 
@@ -62,6 +63,7 @@ related:
 - [GenCAD](./gencad.md) / [GenCAD-3D](./gencad-3d.md)（图像 / 点云 / 网格 → CAD program 的逆向工程上游，输出可推入 Part Studio，再经 URDF-Studio 转 URDF/MJCF/USD）
 - [Tnkr](./tnkr.md)（开源整机项目仓库：CAD 装配流、电气文档与部署数据闭环）
 - [step2urdf](./step2urdf.md)（STEP→URDF 浏览器转换，CAD 导入上游）
+- [StackForce](./stackforce.md)（URDF 网页建模 / CAD2URDF / Isaac 训练工程向导）
 - [BotWorld](./botworld.md)（机器人资产广场与 URDF Studio 统一 Web 入口）
 
 ## 参考来源

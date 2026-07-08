@@ -3,7 +3,7 @@
 type: entity
 tags: [entity, simulator, isaac, isaac-sim, gpu-simulation, reinforcement-learning, sim2real, nvidia]
 status: stable
-updated: 2026-07-02
+updated: 2026-07-08
 related:
   - ./isaac-gym-isaac-lab.md
   - ./isaac-gym.md
@@ -19,6 +19,7 @@ related:
   - ../concepts/sim2real.md
   - ./autodl.md
   - ./gpufree.md
+  - ./stackforce.md
   - ./matpool.md
   - ./featurize.md
   - ./gpushare.md
@@ -175,7 +176,7 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 
 ### 和云 GPU 算力的关系
 
-本地工作站缺多卡或大显存时，可用 GPU 云租开发机跑 Lab 训练；须区分 **headless 训练** 与 **带 GUI 的 Omniverse 仿真**（后者需要带 **RT 核心** 的 GPU 与桌面/Vulkan 镜像）。国内选型见 [国内 GPU 云平台对比](../comparisons/china-gpu-cloud-platforms.md)，国外见 [国外 GPU 云平台对比](../comparisons/international-gpu-cloud-platforms.md)。
+本地工作站缺多卡或大显存时，可用 GPU 云租开发机跑 Lab 训练；须区分 **headless 训练** 与 **带 GUI 的 Omniverse 仿真**（后者需要带 **RT 核心** 的 GPU 与桌面/Vulkan 镜像）。国内选型见 [国内 GPU 云平台对比](../comparisons/china-gpu-cloud-platforms.md)，国外见 [国外 GPU 云平台对比](../comparisons/international-gpu-cloud-platforms.md)。教育与小整机场景下，[StackForce 工作台](./stackforce.md) 从 URDF/STEP 资产 **导出 SimReady Isaac 训练工程**，并内链 [GPUFree](./gpufree.md) 作为云训练入口之一。
 
 ## 常见误区
 
@@ -218,6 +219,7 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Locomotion](../tasks/locomotion.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [StackForce](./stackforce.md) — CAD/URDF→SimReady Isaac 工程导出与训练向导
 
 ## 一句话记忆
 
