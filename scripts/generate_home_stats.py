@@ -9,11 +9,11 @@ import sys
 from pathlib import Path
 from typing import Any
 
+from utils.community_labels import community_short_label
+
 REPO_ROOT = Path(__file__).parent.parent
 GRAPH_STATS_PATH = REPO_ROOT / "exports" / "graph-stats.json"
 OUT_PATH = REPO_ROOT / "exports" / "home-stats.json"
-
-from utils.community_labels import COMMUNITY_LABEL_SUFFIX, community_short_label
 
 # 首页热门主题 chips：取图谱社区规模 Top-N（排除“其他”兜底社区）
 OTHER_COMMUNITY_LABEL = "其他（Other） 社区"
