@@ -168,9 +168,7 @@ class RoadmapGraphNodesTest(unittest.TestCase):
     def test_roadmap_links_to_wiki_create_edges(self) -> None:
         nodes, edges = glg._build_graph_data()
         node_ids = {n["id"] for n in nodes}
-        motion_edges = [
-            e for e in edges if e["source"] == "roadmap/motion-control.md"
-        ]
+        motion_edges = [e for e in edges if e["source"] == "roadmap/motion-control.md"]
         self.assertTrue(motion_edges)
         for edge in motion_edges:
             self.assertIn(edge["target"], node_ids)
@@ -178,7 +176,8 @@ class RoadmapGraphNodesTest(unittest.TestCase):
     def test_wiki_links_to_roadmap_create_edges(self) -> None:
         _, edges = glg._build_graph_data()
         wiki_to_roadmap = [
-            e for e in edges
+            e
+            for e in edges
             if e["target"] == "roadmap/motion-control.md" and e["source"].startswith("wiki/")
         ]
         self.assertTrue(wiki_to_roadmap)
