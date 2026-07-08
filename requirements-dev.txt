@@ -3,10 +3,10 @@
 pytest>=9.1.1
 pytest-cov>=7.1.0
 ruff>=0.15.20
-mypy>=2.1.0
+mypy>=2.2.0
 types-PyYAML>=6.0.12.20260518
 pyyaml>=6.0.3
-numpy>=2.5.0
+numpy>=2.5.1
 radon>=6.0.1
 pip-audit>=2.10.1
 pre-commit>=4.6.0
