@@ -4,11 +4,12 @@ type: entity
 sources:
   - ../../sources/papers/humanoid_hardware.md
 summary: "Unitree"
-updated: 2026-06-28
+updated: 2026-07-08
 related:
   - ./humanoid-robot.md
   - ./quadruped-robot.md
   - ./unitree-ros.md
+  - ./unitree-unistore.md
   - ../concepts/wheel-legged-quadruped.md
   - ./dreamwaq-plus.md
 tags: [unitree]
@@ -113,6 +114,9 @@ Unitree 现在已经明显不只是四足公司。
 这一点非常关键，因为它说明：
 
 > Unitree 已经从“腿式机器人硬件公司”进一步变成“人形机器人研究与应用平台的重要提供者”。
+
+### 3. 软件生态：UniStore 应用平台
+2025-12 内测、**2026-05-07 全面开放** 的 **[UniStore](./unitree-unistore.md)** 是宇树官方 **机器人动作与应用商店**：用户通过 **Unitree Explore** 手机 App，像安装手机应用一样向 **G1 / H1 / B2 / Go2** 一键下发舞蹈、武术与任务类技能包；平台含 **用户广场、动作库、数据集、开发者中心**，并开放 SDK 上架与收益分成。它与 GitHub 研发栈互补——前者面向 **成品技能分发**，后者面向 **自研训练与部署管线**。
 
 ## Unitree 为什么对当前项目主线很重要
 
@@ -228,6 +232,7 @@ Unitree 之所以重要，不只是因为它火，而是因为它让人形控制
 
 - 官方网站：<https://www.unitree.com/>
 - 官方 GitHub：<https://github.com/unitreerobotics>
+- UniStore 应用平台：<https://unistore.unitree.com/>
 - G1 页面：<https://www.unitree.com/g1/>
 - H1 页面：<https://www.unitree.com/h1/>
 
@@ -235,10 +240,12 @@ Unitree 之所以重要，不只是因为它火，而是因为它让人形控制
 
 - 官方网站：<https://www.unitree.com/>
 - 官方 GitHub：<https://github.com/unitreerobotics>
+- [UniStore 官方门户归档](../../sources/sites/unitree-unistore.md)
 - Kumar et al., *RMA: Rapid Motor Adaptation for Legged Robots* (2021) — 基于 Unitree 的 sim2real 代表工作
 
 ## 关联页面
 
+- [UniStore（宇树应用平台）](./unitree-unistore.md)
 - [unitree_ros（ROS1 / Gazebo）](./unitree-ros.md)
 - [四足机器人](./quadruped-robot.md)
 - [人形机器人](./humanoid-robot.md)
