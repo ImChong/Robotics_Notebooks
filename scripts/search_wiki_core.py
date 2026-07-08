@@ -312,20 +312,29 @@ def compute_score(
     return score
 
 
-def levenshtein_distance(a: str, b: str) -> int:
-    """计算两个字符串的 Levenshtein 编辑距离（迭代版本，O(len(a)*len(b))）。"""
+def levenshtein_distance(a: str, b: str, max_dist: int = -1) -> int:
+    """计算两个字符串的 Levenshtein 编辑距离（带提前终止优化）。"""
     if a == b:
         return 0
     if not a:
         return len(b)
     if not b:
         return len(a)
+    if max_dist >= 0 and abs(len(a) - len(b)) > max_dist:
+        return max_dist + 1
+
     prev = list(range(len(b) + 1))
     for i, ca in enumerate(a, 1):
         curr = [i]
+        min_cost = i
         for j, cb in enumerate(b, 1):
             cost = 0 if ca == cb else 1
-            curr.append(min(prev[j] + 1, curr[j - 1] + 1, prev[j - 1] + cost))
+            val = min(prev[j] + 1, curr[j - 1] + 1, prev[j - 1] + cost)
+            curr.append(val)
+            if val < min_cost:
+                min_cost = val
+        if max_dist >= 0 and min_cost > max_dist:
+            return max_dist + 1
         prev = curr
     return prev[-1]
 
@@ -355,7 +364,9 @@ def suggest_terms(query: str, terms: dict[str, str], top_k: int = 5) -> list[tup
     max_dist = max(2, (len(query_norm) + 1) // 2)
     candidates: list[tuple[str, int]] = []
     for key, display in terms.items():
-        d = levenshtein_distance(query_norm, key)
+        if abs(len(query_norm) - len(key)) > max_dist:
+            continue
+        d = levenshtein_distance(query_norm, key, max_dist)
         if d == 0 or d > max_dist:
             continue
         candidates.append((display, d))
