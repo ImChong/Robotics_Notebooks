@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-08",
-  "node_count": 1521,
-  "edge_count": 10808,
+  "node_count": 1522,
+  "edge_count": 10817,
   "coverage": {
-    "covered": 1489,
-    "total": 1519,
+    "covered": 1490,
+    "total": 1520,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -17,6 +17,47 @@
       "source": "log.md",
       "action": "added",
       "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-kemo-event-driven-keyframe-memory-vla.md",
+      "detail_id": "entity-paper-kemo-event-driven-keyframe-memory-vla",
+      "label": "KEMO（Event-Driven Keyframe Memory for Long-Horizon Robot Manipulation with VLA Policies）",
+      "type": "entity",
+      "recency": "2026-07-08",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-07-08",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-07-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/pi07-policy.md",
+      "detail_id": "wiki-methods-pi07-policy",
+      "label": "π₀.7（Pi-zero 0.7）通才 VLA",
+      "type": "method",
+      "recency": "2026-07-08",
+      "source": "log.md",
+      "action": "maintained",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -169,47 +210,6 @@
       "path": "wiki/concepts/can-fd.md",
       "detail_id": "wiki-concepts-can-fd",
       "label": "CAN FD（Flexible Data Rate）",
-      "type": "concept",
-      "recency": "2026-07-06",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "电机驱动器底软通信协议（Motor Drive Firmware Bus Protocols） 社区"
-    },
-    {
-      "path": "wiki/concepts/capture-point-dcm.md",
-      "detail_id": "wiki-concepts-capture-point-dcm",
-      "label": "Capture Point / DCM",
-      "type": "concept",
-      "recency": "2026-07-06",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/concepts/centroidal-dynamics.md",
-      "detail_id": "wiki-concepts-centroidal-dynamics",
-      "label": "Centroidal Dynamics",
-      "type": "concept",
-      "recency": "2026-07-06",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/concepts/character-animation-vs-robotics.md",
-      "detail_id": "wiki-concepts-character-animation-vs-robotics",
-      "label": "Character Animation vs Robotics（角色动画与机器人控制的边界）",
-      "type": "concept",
-      "recency": "2026-07-06",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/concepts/clock-synchronization-algorithms.md",
-      "detail_id": "wiki-concepts-clock-synchronization-algorithms",
-      "label": "时钟同步算法 (Clock Synchronization Algorithms)",
       "type": "concept",
       "recency": "2026-07-06",
       "source": "log.md",

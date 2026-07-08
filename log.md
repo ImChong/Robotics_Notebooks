@@ -2,6 +2,8 @@
 
 ## [2026-07-08] ingest | sources/repos/graph_robots_graph_as_policy.md — 补录 GaP 官方 graph-as-policy 仓库；wiki/entities/paper-gap-graph-as-policy.md 关联 sources/repos 以启用更新记录 ⭐️
 
+## [2026-07-08] ingest | sources/papers/kemo_arxiv_2606_23589.md — 事件驱动关键帧记忆 VLA；wiki/entities/paper-kemo-event-driven-keyframe-memory-vla.md、wiki/tasks/manipulation.md、wiki/methods/vla.md、wiki/methods/pi07-policy.md
+
 ## [2026-07-08] ingest | sources/papers/gap_arxiv_2607_05369.md — GaP Graph-as-Policy 变体自动化；wiki/entities/paper-gap-graph-as-policy.md、wiki/concepts/variational-automation.md；交叉更新 manipulation / aspire / vla / nvidia-gear-lab
 
 ## [2026-07-08] ingest | sources/papers/omnitactune_arxiv_2607_03723.md — OmniTacTune 策略无关触觉残差真机 RL；wiki/entities/paper-omnitactune-tactile-residual-adaptation.md；交叉更新 visuo-tactile-fusion / tactile-feedback-in-rl / manipulation / contact-rich-manipulation

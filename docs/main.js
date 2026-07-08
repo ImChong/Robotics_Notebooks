@@ -493,13 +493,13 @@
           renderActionBadgeCell(rowMeta.action, 'home-latest-row-badge') +
           '<span class="home-latest-row-type">' +
           escapeHtml(rowType) +
-          '</span><a href="' +
+          '</span><span class="home-latest-row-main"><a href="' +
           escapeHtml(detailHref(rowMeta.detail_id)) +
           '">' +
           escapeHtml(rowMeta.label || rowMeta.detail_id) +
           '</a>' +
           renderItemSuffix(rowMeta) +
-          '</li>';
+          '</span></li>';
       }
       mount.innerHTML =
         '<ul class="home-latest-list">' + compactRows + '</ul>' +
