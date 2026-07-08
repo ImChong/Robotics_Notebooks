@@ -2,8 +2,9 @@
 type: entity
 tags: [evaluation, physical-ai, humanoid, infrastructure, benchmarking, foundation-model, whole-body-control, xpeng]
 status: complete
-updated: 2026-06-18
+updated: 2026-07-08
 related:
+  - ./paper-athena-wbc-humanoid-longtail.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../overview/robot-training-stack-layers-technology-map.md
   - ../concepts/data-flywheel.md
@@ -164,6 +165,7 @@ flowchart TB
 - [loco-manipulation](../tasks/loco-manipulation.md) — 本库内 System 2/1/0 端到端任务语境
 - [VLA](../methods/vla.md) — System 1 策略形态
 - [Whole-Body Control](../concepts/whole-body-control.md) — System 0 控制层
+- [Athena-WBC](./paper-athena-wbc-humanoid-longtail.md) — 同机构 System 0 训练集长尾与能力对齐专家蒸馏（arXiv:2607.04837）
 - [数据飞轮](../concepts/data-flywheel.md) — 评测驱动采集闭环
 
 ## 推荐继续阅读

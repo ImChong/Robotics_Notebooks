@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-08] ingest | sources/papers/athena_wbc_arxiv_2607_04837.md — Athena-WBC 能力对齐专家蒸馏与人形 WBC 训练集长尾；wiki/entities/paper-athena-wbc-humanoid-longtail.md；交叉更新 SONIC / 选型 query / DeepInsight
+
 ## [2026-07-07] ingest | sources/papers/quietwalk_arxiv_2604_23702.md — QuietWalk PINN-GRF 低噪人形行走；wiki/entities/paper-quietwalk-humanoid-locomotion.md；交叉更新 humanoid-locomotion / locomotion-reward-design-guide / unitree-g1
 
 ## [2026-07-07] ingest | sources/repos/cangjie-skill.md + sources/repos/nuwa-skill.md + sources/repos/darwin-skill.md — 仓颉/女娲/达尔文 skill 生态；wiki/entities/cangjie-skill.md、wiki/entities/nuwa-skill.md、wiki/entities/darwin-skill.md；交叉更新 karpathy-autoresearch / ponytail / superpowers / mattpocock / llm-wiki-karpathy
