@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-07-03
+updated: 2026-07-08
 related:
   - ../entities/paper-flying-knots.md
   - ../entities/paper-robustness-robotic-manipulation-survey.md
@@ -89,6 +89,7 @@ flowchart TD
 - **DeFI**：**GFDM + GIDM** 分阶段预训练解耦前向/逆动力学，再用扩散适配器耦合微调；强调无动作标签人视频与 CALVIN / SimplerEnv 长程表现；入口见 [DeFI](../methods/defi-decoupled-dynamics-vla.md)
 - **EgoScale**：在 **海量 egocentric 人视频** 上对 **流式 VLA** 做 **腕 + 重定向灵巧手** 显式预训练，并以 **对齐人–机 mid-training** 承接 embodiment gap，面向 **高 DoF 长程灵巧** 任务；入口见 [EgoScale](../methods/egoscale.md)
 - **T-Rex**（[实体页](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md)，arXiv:2606.17055）：**触觉反应式灵巧操作**——人视频预训练 + **100 h 触觉 play mid-training** + 变频率 MoT；开源触觉数据集与 **12 任务** 双手真机基准
+- **OmniTacTune**（[实体页](../entities/paper-omnitactune-tactile-residual-adaptation.md)，arXiv:2607.03723）：**策略无关触觉残差真机 RL**——冻结 Flow/ACT/DP/π₀.₅ 视觉基策略，**40–80 min** 在线练习把接触丰富任务 **5–40% → 85–100%**；**无需离线触觉演示**
 
 ## 在人形机器人中的特殊性
 
@@ -119,6 +120,7 @@ flowchart TD
 - [DeFI（解耦前向/逆动力学 VLA）](../methods/defi-decoupled-dynamics-vla.md) — 混合视频前向 + 自监督逆向预训练的操作策略
 - [EgoScale](../methods/egoscale.md) — 人视频规模预训练 VLA + 对齐 mid-training 的灵巧操作迁移
 - [T-Rex](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md) — 触觉反应式灵巧 VLA + 开源触觉数据集与 12 任务基准
+- [OmniTacTune](../entities/paper-omnitactune-tactile-residual-adaptation.md) — 冻结视觉策略 + 触觉残差真机 RL 的快速接触适应（arXiv:2607.03723）
 - [Flying Knots](../entities/paper-flying-knots.md) — 绳索动态打结的 Task-Level ILC + 单示教真机迭代（arXiv:2602.21302）
 - [ENPIRE](../methods/enpire.md) — coding agent 驱动的真机策略自改进闭环（自动 reset/verify + 多 PI 范式 + 机队 scaling）
 - [ASPIRE](../methods/aspire.md) — 持续学习 code-as-policy：逐原语 trace 调试 + 技能库复利 + 进化搜索（LIBERO-Pro / Robosuite / BEHAVIOR-1K）
@@ -142,6 +144,7 @@ flowchart TD
 - [MolmoMotion](../entities/molmo-motion.md) — 语言条件 3D 点轨迹预测与 DROID 微调规划先验（arXiv:2606.18558）
 - [EN02-OP](../entities/en02-op.md) — Westwood 开源三指 7-DoF 夹爪（Dynamixel + 3D 打印，DIY 约 $200 量级）
 - [HRDexDB](../entities/hrdexdb-dataset.md) — 同物体配对的人–灵巧机器人抓取序列集（100+ 物体 · 23 相机 · 3D + 触觉）
+- [OmniTacTune](../entities/paper-omnitactune-tactile-residual-adaptation.md) — 冻结视觉基策略 + 触觉残差真机 RL（arXiv:2607.03723）
 
 ## 关联任务
 
