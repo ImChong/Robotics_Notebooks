@@ -1884,6 +1884,13 @@
    * One roadmap stage row (li > details): related wiki / roadmap links.
    * Used by the vertical tree and by per-L–chapter embeds on roadmap pages.
    */
+  function formatRoadmapStageBadge(stageId) {
+    var sid = String(stageId || '').toLowerCase();
+    var stageNum = /^stage-(\d+)$/.exec(sid);
+    if (stageNum) return 'S' + stageNum[1];
+    return sid.toUpperCase();
+  }
+
   function buildRoadmapStageRowHTML(stage, index, roadmapId, detailPages, options) {
     var opts = options || {};
     var related = Array.isArray(stage.related_items) ? stage.related_items.slice(0, 8) : [];
@@ -1902,7 +1909,7 @@
       parts.push('<span class="roadmap-vtree-step" aria-hidden="true">' + escapeHtml(String(index + 1)) + '</span>');
     }
     parts.push(
-      '<span class="roadmap-vtree-heading">' + escapeHtml(sid.toUpperCase() + ' · ' + title) + '</span>'
+      '<span class="roadmap-vtree-heading">' + escapeHtml(formatRoadmapStageBadge(sid) + ' · ' + title) + '</span>'
     );
     parts.push('<span class="roadmap-vtree-count">' + escapeHtml(String(related.length)) + ' 条</span>');
     parts.push('</summary>');
@@ -2244,8 +2251,8 @@
       var title = String(stage.title || '');
       var related = Array.isArray(stage.related_items) ? stage.related_items : [];
       totalNodes += related.length;
-      var badge = String(stage.id || '').toUpperCase() || '·';
-      var chapterHref = '#' + slugifyHeading(badge + ' ' + title);
+      var badge = formatRoadmapStageBadge(stage.id) || '·';
+      var chapterHref = '#' + slugifyHeading(stage.heading || (badge + ' ' + title));
       parts.push('<li class="roadmap-kmap-stage">');
       parts.push('<a class="roadmap-kmap-stage-head" href="' + escapeHtml(chapterHref) + '">');
       parts.push('<span class="roadmap-kmap-badge">' + escapeHtml(badge) + '</span>');
