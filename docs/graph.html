@@ -633,6 +633,16 @@
       }
     }
 
+    /* 触屏设备：节点详情用底部固定浮窗，不展示右侧侧边栏 */
+    @media (hover: none) and (pointer: coarse) {
+      #graph-sidebar {
+        display: none !important;
+      }
+      #graph-wrap.sidebar-open {
+        right: 0 !important;
+      }
+    }
+
     @media (max-width: 480px) {
       #graph-search {
         width: 90px;
@@ -4526,6 +4536,18 @@
 
     sbClose.addEventListener('click', closeSidebar);
 
+    /** 展示节点详情：PC 用右侧侧栏，触屏用底部固定浮窗 */
+    function presentNodeDetail(d, ev) {
+      if (!d) return;
+      if (isMobile) {
+        pinnedNode = d;
+        showTooltip(ev || null, d);
+        syncGraph3DMobileHighlight(d);
+        return;
+      }
+      openSidebar(d);
+    }
+
     function dismissMobilePinnedTooltip() {
       if (!isMobile || !pinnedNode) return false;
       pinnedNode = null;
@@ -4630,7 +4652,7 @@
         const flyToFocus = () => {
           if (is3DView() && graph3dView) {
             graph3dView.focusNode(focusNode);
-            openSidebar(focusNode);
+            presentNodeDetail(focusNode);
             return;
           }
           if (focusNode.x == null) return;
@@ -4641,7 +4663,7 @@
               .translate(W / 2 - scale * focusNode.x, H / 2 - scale * focusNode.y)
               .scale(scale)
           );
-          openSidebar(focusNode);
+          presentNodeDetail(focusNode);
         };
         simulation.on('end.focus', () => { flyToFocus(); simulation.on('end.focus', null); });
         setTimeout(flyToFocus, 1400);
