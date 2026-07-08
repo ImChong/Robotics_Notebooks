@@ -5264,6 +5264,7 @@
               summary: doc.summary,
               page_type: doc.page_type,
               tags: doc.tags || [],
+              search_aliases: doc.search_aliases || [],
               _score: bm25 + partial
             });
           }
