@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-07-08",
-  "node_count": 1532,
-  "edge_count": 10893,
+  "node_count": 1533,
+  "edge_count": 10904,
   "coverage": {
-    "covered": 1500,
-    "total": 1530,
+    "covered": 1501,
+    "total": 1531,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/aeris-10-plfm-radar.md",
+      "detail_id": "entity-aeris-10-plfm-radar",
+      "label": "AERIS-10（PLFM_RADAR）",
+      "type": "entity",
+      "recency": "2026-07-08",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
     {
       "path": "wiki/overview/tro-manip-5-papers-technology-map.md",
       "detail_id": "wiki-overview-tro-manip-5-papers-technology-map",
@@ -202,28 +213,18 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/behavior-foundation-model.md",
-      "detail_id": "wiki-concepts-behavior-foundation-model",
-      "label": "Behavior Foundation Model（行为基础模型，BFM）",
-      "type": "concept",
-      "recency": "2026-07-06",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "行为基础模型技术地图（Behavior Foundation Model, BFM） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/tro-manip-5-papers-technology-map.md",
-    "detail_id": "wiki-overview-tro-manip-5-papers-technology-map",
-    "label": "T-RO 2026 操作学习：5 篇论文技术地图",
-    "type": "overview",
+    "path": "wiki/entities/aeris-10-plfm-radar.md",
+    "detail_id": "entity-aeris-10-plfm-radar",
+    "label": "AERIS-10（PLFM_RADAR）",
+    "type": "entity",
     "recency": "2026-07-08",
     "source": "log.md",
     "action": "added",
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "has_repo": true,
+    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
   },
   "top_communities": [
     {
@@ -248,7 +249,7 @@
     },
     {
       "label": "全身控制",
-      "size": 102
+      "size": 103
     }
   ]
 }
