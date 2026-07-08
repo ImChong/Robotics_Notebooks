@@ -479,10 +479,12 @@ body.sponsor-dialog-open {
 .home-latest-row-main {
   min-width: 0;
 }
-.home-latest-row-main > a { overflow-wrap: anywhere; }
-.home-latest-row-main > .updates-item-opensource,
-.home-latest-row-main > .updates-item-cat {
-  margin-left: 0.55rem;
+.home-latest-row-main > a {
+  overflow-wrap: anywhere;
+  padding-right: 0.55rem;
+}
+.home-latest-row-main > .updates-item-opensource {
+  padding-right: 0.55rem;
 }
 .home-latest-more { margin-top: 18px; font-size: .9rem; }
 @media (max-width: 860px) {
@@ -580,17 +582,17 @@ body.sponsor-dialog-open {
 }
 .updates-item-link {
   overflow-wrap: anywhere;
+  padding-right: 0.55rem;
 }
 .updates-item-opensource {
   line-height: 1;
-  margin-left: 0.55rem;
+  padding-right: 0.55rem;
 }
 .updates-item-cat {
   font-size: .72rem;
   color: var(--text-muted);
   opacity: .85;
   white-space: nowrap;
-  margin-left: 0.55rem;
 }
 @media (max-width: 860px) {
   /* 窄屏：标签/类型与标题分行，取消跨条目列对齐 */
