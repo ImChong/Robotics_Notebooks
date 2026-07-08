@@ -189,6 +189,10 @@ flowchart TB
 - 项目页（含 40 min 一镜到底训练视频）：<https://colinyu1.github.io/omnitactune-site/>
 - PLD（残差真机 RL 前身）：<https://arxiv.org/abs/2303.03381>（对比引用 [57]）
 
+## 与其他工作对比
+
+- 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
+
 ## 参考来源
 
 - [OmniTacTune 论文归档](../../sources/papers/omnitactune_arxiv_2607_03723.md)
