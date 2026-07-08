@@ -477,13 +477,13 @@ body.sponsor-dialog-open {
 .updates-badge-cell--empty,
 .home-latest-row-badge.updates-badge-cell--empty { min-height: 1.25em; }
 .home-latest-row-main {
-  display: flex;
-  align-items: baseline;
-  gap: 0.55rem;
   min-width: 0;
-  flex-wrap: wrap;
 }
-.home-latest-row-main > a { min-width: 0; overflow-wrap: anywhere; }
+.home-latest-row-main > a { overflow-wrap: anywhere; }
+.home-latest-row-main > .updates-item-opensource,
+.home-latest-row-main > .updates-item-cat {
+  margin-left: 0.55rem;
+}
 .home-latest-more { margin-top: 18px; font-size: .9rem; }
 @media (max-width: 860px) {
   /* 窄屏：每条记录独立换行，不再跨行列对齐 */
@@ -576,26 +576,21 @@ body.sponsor-dialog-open {
 }
 .updates-item-main {
   grid-column: 3;
-  display: flex;
-  align-items: baseline;
-  gap: 0.55rem;
   min-width: 0;
-  flex-wrap: wrap;
 }
 .updates-item-link {
-  min-width: 0;
   overflow-wrap: anywhere;
 }
 .updates-item-opensource {
-  flex: none;
   line-height: 1;
+  margin-left: 0.55rem;
 }
 .updates-item-cat {
-  flex: none;
   font-size: .72rem;
   color: var(--text-muted);
   opacity: .85;
   white-space: nowrap;
+  margin-left: 0.55rem;
 }
 @media (max-width: 860px) {
   /* 窄屏：标签/类型与标题分行，取消跨条目列对齐 */
