@@ -13,7 +13,8 @@ tags:
 status: complete
 updated: 2026-07-08
 arxiv: "2607.05369"
-code: https://graph-robots.github.io/gap/
+code: https://github.com/graph-robots/graph-as-policy
+project: https://graph-robots.github.io/gap/
 related:
   - ../concepts/variational-automation.md
   - ../methods/aspire.md
@@ -25,6 +26,7 @@ related:
 sources:
   - ../../sources/papers/gap_arxiv_2607_05369.md
   - ../../sources/sites/gap-graph-robots-project.md
+  - ../../sources/repos/graph_robots_graph_as_policy.md
 summary: "GaP（arXiv:2607.05369，NVIDIA / UC Berkeley 等）：多 agent harness 将 VA 任务编译为有向计算图（MORSL 技能 + 静态类型检查），在 Isaac 仿真中排练自学习优化图，再以 edge 解释器持久执行；8 项 VA benchmark 上显著优于 VLA/TAMP/单 agent CaP，并可 staging VLA 获 >2× 增益。"
 ---
 
@@ -58,7 +60,7 @@ summary: "GaP（arXiv:2607.05369，NVIDIA / UC Berkeley 等）：多 agent harne
 | Berkeley PI | Ken Goldberg、S. Shankar Sastry |
 | 仿真 | NVIDIA Isaac / Isaac Lab |
 | 硬件 | Franka（LIBERO 衍生，任务 I–III）、UR5+力反馈（VA-IV）、双臂 Franka 洗箱（VA-V） |
-| 开源 | 论文承诺代码与数据发布于 [项目页](https://graph-robots.github.io/gap/) |
+| 开源 | [graph-as-policy](https://github.com/graph-robots/graph-as-policy)（Beta，Apache-2.0）+ [open-robot-skills](https://github.com/graph-robots/open-robot-skills)；[项目页](https://graph-robots.github.io/gap/) |
 
 ## 为什么重要
 
@@ -172,7 +174,7 @@ flowchart TB
 
 - Benchmark 以 **准静态 pick-and-place** 为主；除线缆插入外少用力控/可变形体
 - Harness 与 MORSL 规模增长后，需更强 **组合验证与维护** 工具
-- 代码/数据以项目页发布为准；ingest 时以论文与站点互证
+- Beta 代码已发布（2026-07-01）；API / workflow schema 在 2026-08-01 前可能变动
 
 ## 关联页面
 
@@ -193,3 +195,4 @@ flowchart TB
 
 - [GaP 论文归档](../../sources/papers/gap_arxiv_2607_05369.md)
 - [GaP 项目页归档](../../sources/sites/gap-graph-robots-project.md)
+- [graph-as-policy 代码索引](../../sources/repos/graph_robots_graph_as_policy.md)

@@ -16,6 +16,7 @@
       "recency": "2026-07-08",
       "source": "log.md",
       "action": "added",
+      "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -224,6 +225,7 @@
     "recency": "2026-07-08",
     "source": "log.md",
     "action": "added",
+    "has_repo": true,
     "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
