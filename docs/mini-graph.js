@@ -23,6 +23,14 @@
     return String(path).replace(/\//g, '-').replace('.md', '');
   }
 
+  function pageUrlForNode(d) {
+    var detailId = d.detail_id || toDetailId(d.id);
+    if (d.type === 'roadmap_page' || (d.id && String(d.id).indexOf('roadmap/') === 0)) {
+      return 'roadmap.html?id=' + encodeURIComponent(detailId);
+    }
+    return 'detail.html?id=' + encodeURIComponent(detailId);
+  }
+
   function miniGraphTheme() {
     var dark = document.documentElement.getAttribute('data-theme') !== 'light';
     return {
@@ -44,15 +52,17 @@
 
   function tooltipHtml(d, nodeFill, communityLabelMap) {
     var summary = tooltipSummary(d.summary);
-    var detailUrl = 'detail.html?id=' + encodeURIComponent(toDetailId(d.id));
+    var detailUrl = pageUrlForNode(d);
     var communityColor = d.community ? nodeFill(d) : '';
+    var linkLabel = (d.type === 'roadmap_page' || (d.id && String(d.id).indexOf('roadmap/') === 0))
+      ? '打开路线页 →' : '打开详情页 →';
     if (window.RNGraphTooltip && window.RNGraphTooltip.buildNodeTooltipHtml) {
       return window.RNGraphTooltip.buildNodeTooltipHtml({
         type: d.type || '',
         title: d.label || d.id,
         summary: summary,
         communityColor: communityColor,
-        linkHtml: '<a class="tt-link" href="' + escapeHtml(detailUrl) + '">打开详情页 →</a>'
+        linkHtml: '<a class="tt-link" href="' + escapeHtml(detailUrl) + '">' + linkLabel + '</a>'
       });
     }
     return '';

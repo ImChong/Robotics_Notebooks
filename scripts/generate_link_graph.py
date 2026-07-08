@@ -2,7 +2,7 @@
 """
 generate_link_graph.py — Wiki 内链图谱生成工具
 
-扫描所有 wiki 页面的内链，生成 exports/link-graph.json，
+扫描 wiki/ 与 roadmap/ 页面的内链，生成 exports/link-graph.json，
 供 docs/graph.html 的 D3.js 渲染使用。
 
 同时写入 exports/graph-stats.json（含 latest_wiki_nodes：按 log.md 最新日历日
@@ -48,10 +48,13 @@ from typing import Any
 
 from export_minimal import extract_summary
 from utils.community_labels import COMMUNITY_NAME_OVERRIDES
+from utils.paths import path_to_id
 from utils.wiki_cache import wiki_stem_to_path
 
 REPO_ROOT = Path(__file__).parent.parent
 WIKI_DIR = REPO_ROOT / "wiki"
+ROADMAP_DIR = REPO_ROOT / "roadmap"
+GRAPH_CONTENT_DIRS = (WIKI_DIR, ROADMAP_DIR)
 OUT_PATH = REPO_ROOT / "exports" / "link-graph.json"
 STATS_PATH = REPO_ROOT / "exports" / "graph-stats.json"
 ACTIVITY_PATH = REPO_ROOT / "exports" / "wiki-activity.json"
@@ -244,15 +247,8 @@ def wiki_recency_date(content: str, page: Path) -> date:
 
 
 def _wiki_node_detail_id(page_id: str) -> str:
-    """将 wiki 下的 .md 路径映射为 detail.html 的 id（与 scripts/utils/paths.path_to_id 一致）。"""
-    rel = Path(page_id)
-    parts = rel.parts
-    stem = rel.stem
-    if len(parts) >= 2 and parts[0] == "wiki":
-        if parts[1] == "entities":
-            return f"entity-{stem}"
-        return f"wiki-{parts[1]}-{stem}"
-    return stem
+    """将仓库内 .md 路径映射为站点页 id（与 scripts/utils/paths.path_to_id 一致）。"""
+    return path_to_id(REPO_ROOT / page_id, REPO_ROOT)
 
 
 def _normalize_wiki_rel_from_log_match(raw: str) -> str:
@@ -888,7 +884,7 @@ def build_institutions_summary(
 
 
 def extract_internal_links(content: str, source_path: Path) -> list[Path]:
-    """提取页面中所有指向 wiki/ 目录内部的相对链接。
+    """提取页面中所有指向 wiki/ 或 roadmap/ 的相对链接。
     支持：
     1. 标准 Markdown: [label](path.md)
     2. Frontmatter related: - path.md
@@ -896,12 +892,16 @@ def extract_internal_links(content: str, source_path: Path) -> list[Path]:
     """
     targets = []
 
-    def is_wiki_path(p: Path) -> bool:
-        try:
-            p.relative_to(WIKI_DIR)
-            return p.exists()
-        except ValueError:
+    def is_graph_path(p: Path) -> bool:
+        if not p.exists():
             return False
+        for root in GRAPH_CONTENT_DIRS:
+            try:
+                p.relative_to(root)
+                return True
+            except ValueError:
+                continue
+        return False
 
     # 1. 标准 Markdown 链接
     for match in re.finditer(r"\]\(([^)]+\.md)\)", content):
@@ -909,7 +909,7 @@ def extract_internal_links(content: str, source_path: Path) -> list[Path]:
         if href.startswith("http"):
             continue
         resolved = (source_path.parent / href).resolve()
-        if is_wiki_path(resolved):
+        if is_graph_path(resolved):
             targets.append(resolved)
 
     # 2. Frontmatter 'related' 列表
@@ -923,7 +923,7 @@ def extract_internal_links(content: str, source_path: Path) -> list[Path]:
                     line = line.strip().strip("- ")
                     if line.endswith(".md"):
                         resolved = (source_path.parent / line).resolve()
-                        if is_wiki_path(resolved):
+                        if is_graph_path(resolved):
                             targets.append(resolved)
 
     # 3. Wikilinks [[name]]
@@ -1303,21 +1303,38 @@ def assign_communities(
     return community_list, community_meta
 
 
+def _iter_graph_pages() -> list[Path]:
+    pages: list[Path] = []
+    for root in GRAPH_CONTENT_DIRS:
+        if not root.is_dir():
+            continue
+        for page in sorted(root.rglob("*.md")):
+            if page.name != "README.md":
+                pages.append(page)
+    return pages
+
+
+def _node_type_for_page(page: Path, content: str) -> str:
+    rel_parts = page.relative_to(REPO_ROOT).parts
+    if rel_parts[0] == "roadmap":
+        return "roadmap_page"
+    return parse_frontmatter_type(content)
+
+
 def _build_graph_data() -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
-    """扫描所有 wiki 页面，构建节点和边列表。"""
+    """扫描 wiki/ 与 roadmap/ 页面，构建节点和边列表。"""
     nodes: list[dict[str, Any]] = []
     edges: list[dict[str, str]] = []
     seen_edges: set[tuple[str, str]] = set()
 
-    for page in sorted(WIKI_DIR.rglob("*.md")):
-        if page.name == "README.md":
-            continue
+    for page in _iter_graph_pages():
         content = page.read_text(encoding="utf-8")
         page_id = str(page.relative_to(REPO_ROOT))
-        node_type = parse_frontmatter_type(content)
+        node_type = _node_type_for_page(page, content)
         node_tags = [str(t).strip().lower() for t in parse_frontmatter_list(content, "tags")]
         node: dict[str, Any] = {
             "id": page_id,
+            "detail_id": path_to_id(page, REPO_ROOT),
             "label": extract_title(content) or page.stem,
             "type": node_type,
             "health_score": compute_health_score(content),

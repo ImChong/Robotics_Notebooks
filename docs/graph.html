@@ -2403,6 +2403,32 @@
       const item = indexItems && indexItems.find(it => it.path === path || it.id === path);
       return item?.id || path.replace(/\//g, '-').replace('.md', '');
     }
+    function pageUrlForNode(d) {
+      const detailId = d.detail_id || toDetailId(d.id);
+      if (d.type === 'roadmap_page' || (d.id && String(d.id).startsWith('roadmap/'))) {
+        return 'roadmap.html?id=' + encodeURIComponent(detailId);
+      }
+      return 'detail.html?id=' + encodeURIComponent(detailId);
+    }
+    function pageUrlForPath(path, nodeHint) {
+      const n = nodeHint || nodes.find(nd => nd.id === path);
+      if (n) return pageUrlForNode(n);
+      const detailId = toDetailId(path);
+      if (String(path).startsWith('roadmap/')) {
+        return 'roadmap.html?id=' + encodeURIComponent(detailId);
+      }
+      return 'detail.html?id=' + encodeURIComponent(detailId);
+    }
+    function pageLinkLabelForNode(d) {
+      return (d.type === 'roadmap_page' || (d.id && String(d.id).startsWith('roadmap/')))
+        ? '打开路线页 →' : '打开详情页 →';
+    }
+    function findFocusNode(focusId) {
+      if (!focusId) return null;
+      const decoded = decodeURIComponent(focusId);
+      return nodes.find(n => n.id === focusId || n.id === decoded
+        || n.detail_id === focusId || n.detail_id === decoded) || null;
+    }
     function renderLegend() {
       const rows = [];
       if (colorMode === 'community') {
@@ -3010,7 +3036,7 @@
     function tooltipHtml(d) {
       const info = d._info;
       const summary = tooltipSummary(info.summary);
-      const detailUrl = 'detail.html?id=' + encodeURIComponent(toDetailId(d.id));
+      const detailUrl = pageUrlForNode(d);
       if (window.RNGraphTooltip?.buildNodeTooltipHtml) {
         return window.RNGraphTooltip.buildNodeTooltipHtml({
           type: d.type || '',
@@ -3018,7 +3044,7 @@
           badgeColor: metaBadgeColor(d),
           title: info.title || d.label,
           summary,
-          linkHtml: `<a class="tt-link" href="${escapeHtml(detailUrl)}" target="_self">打开详情页 →</a>`
+          linkHtml: `<a class="tt-link" href="${escapeHtml(detailUrl)}" target="_self">${escapeHtml(pageLinkLabelForNode(d))}</a>`
         });
       }
       return '';
@@ -3265,8 +3291,8 @@
             showTooltip(ev, d);
           }
         } else {
-          // PC：直接跳转详情页
-          window.location.href = 'detail.html?id=' + encodeURIComponent(toDetailId(d.id));
+          // PC：直接跳转详情页 / 路线页
+          window.location.href = pageUrlForNode(d);
         }
       });
 
@@ -4374,7 +4400,7 @@
         });
 
       const info  = d._info;
-      const detailUrl = 'detail.html?id=' + encodeURIComponent(toDetailId(d.id));
+      const detailUrl = pageUrlForNode(d);
       const summary = window.RNGraphTooltip?.formatTooltipSummary
         ? window.RNGraphTooltip.formatTooltipSummary(info.summary || '', 150)
         : (info.summary || '').slice(0, 150) + (info.summary?.length > 150 ? '…' : '');
@@ -4421,8 +4447,7 @@
         sbNeighborsList.innerHTML = neighborIds.map(id => {
           const n = nodes.find(nd => nd.id === id);
           const label = n?.label || n?._info?.title || id.split('/').pop().replace('.md', '');
-          const detailId = toDetailId(id);
-          return `<li><a href="detail.html?id=${encodeURIComponent(detailId)}">${escapeHtml(label)}</a></li>`;
+          return `<li><a href="${escapeHtml(pageUrlForNode(n || { id }))}">${escapeHtml(label)}</a></li>`;
         }).join('');
         sbNeighborsSec.hidden = false;
       } else {
@@ -4433,10 +4458,10 @@
       const related = item?.related || [];
       if (related.length) {
         sbRelList.innerHTML = related.slice(0, 8).map(r => {
-          const relId = toDetailId(r);
-          const relItem = indexItems.find(it => it.path === r || it.id === relId);
+          const relNode = nodes.find(nd => nd.id === r);
+          const relItem = indexItems.find(it => it.path === r || it.id === toDetailId(r));
           const relTitle = relItem?.title || r.split('/').pop().replace('.md','');
-          return `<li><a href="detail.html?id=${encodeURIComponent(relId)}">${escapeHtml(relTitle)}</a></li>`;
+          return `<li><a href="${escapeHtml(pageUrlForPath(r, relNode))}">${escapeHtml(relTitle)}</a></li>`;
         }).join('');
         sbRelSec.hidden = false;
       } else {
@@ -4600,8 +4625,7 @@
 
     const focusId = new URLSearchParams(location.search).get('focus');
     if (focusId) {
-      const focusNode = nodes.find(n => n.id === focusId ||
-        n.id === decodeURIComponent(focusId));
+      const focusNode = findFocusNode(focusId);
       if (focusNode) {
         const flyToFocus = () => {
           if (is3DView() && graph3dView) {
