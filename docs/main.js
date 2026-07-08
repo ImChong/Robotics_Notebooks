@@ -253,6 +253,24 @@
     return 'detail.html?id=' + encodeURIComponent(id);
   }
 
+  function pageHref(id, detailPages) {
+    if (!id) return '';
+    var page = detailPages && detailPages[id];
+    if (page && page.type === 'roadmap_page') return roadmapHref(id);
+    return detailHref(id);
+  }
+
+  function isRoadmapPageId(id, detailPages, hints) {
+    if (!id) return false;
+    var page = detailPages && detailPages[id];
+    if (page && page.type === 'roadmap_page') return true;
+    var hint = hints || {};
+    if (hint.type === 'roadmap_page') return true;
+    if (hint.page_type === 'roadmap') return true;
+    var path = hint.path || id;
+    return String(path).indexOf('roadmap/') === 0 || String(id).indexOf('roadmap-') === 0;
+  }
+
   // 首页热门主题 chips：数据来自 home-stats.json 的 top_communities（图谱社区规模 Top-N，
   // 随 make graph 演化）；数据缺席时保留 index.html 内的静态兜底 chips 不动
   function renderHotTopics(homeStats) {
@@ -3193,16 +3211,24 @@
     return raw || '';
   }
 
-  function buildGraphNodeTooltipHtml(d, nodeFill, communityLabelMap, pathToId) {
+  function buildGraphNodeTooltipHtml(d, nodeFill, communityLabelMap, pathToId, detailPages) {
     var summary = formatGraphTooltipSummary(d.summary);
     var communityColor = d.community ? nodeFill(d) : '';
     var linkHtml;
     if (d.isCurrent) {
       linkHtml = '<div class="tt-summary">当前页面</div>';
     } else {
-      var pid = pathToId[d.id];
-      var href = pid ? detailHref(pid) : ('graph.html?focus=' + encodeURIComponent(d.id));
-      var linkText = pid ? '打开详情页 →' : '在完整图谱中查看 →';
+      var pid = pathToId[d.id] || d.detail_id;
+      var href;
+      var linkText;
+      if (pid) {
+        var roadmapNode = isRoadmapPageId(pid, detailPages, { type: d.type, path: d.id });
+        href = roadmapNode ? roadmapHref(pid) : detailHref(pid);
+        linkText = roadmapNode ? '打开路线页 →' : '打开详情页 →';
+      } else {
+        href = 'graph.html?focus=' + encodeURIComponent(d.id);
+        linkText = '在完整图谱中查看 →';
+      }
       linkHtml = '<a class="tt-link" href="' + escapeHtml(href) + '">' + escapeHtml(linkText) + '</a>';
     }
     if (window.RNGraphTooltip && window.RNGraphTooltip.buildNodeTooltipHtml) {
@@ -3710,20 +3736,20 @@
               hoverTip.clearPin();
               hoverTip.hide();
             } else {
-              hoverTip.show(ev, d, buildGraphNodeTooltipHtml(d, nodeFill, communityLabelMap, pathToId));
+              hoverTip.show(ev, d, buildGraphNodeTooltipHtml(d, nodeFill, communityLabelMap, pathToId, detailPages));
             }
             return;
           }
           if (d.isCurrent) return;
-          var pid = pathToId[d.id];
-          if (pid) window.location.href = detailHref(pid);
+          var pid = pathToId[d.id] || d.detail_id;
+          if (pid) window.location.href = pageHref(pid, detailPages);
         })
         .on('mouseenter', function (ev, d) {
           if (hoverTip.isMobile) return;
           window.d3.select(this).select('circle')
             .attr('fill-opacity', 1)
             .attr('r', function (node) { return detailMiniNodeRadius(node, 1.3); });
-          hoverTip.show(ev, d, buildGraphNodeTooltipHtml(d, nodeFill, communityLabelMap, pathToId));
+          hoverTip.show(ev, d, buildGraphNodeTooltipHtml(d, nodeFill, communityLabelMap, pathToId, detailPages));
         })
         .on('mousemove', function (ev) {
           if (hoverTip.isMobile && hoverTip.getPinned()) return;
@@ -3802,6 +3828,13 @@
     const params = new URLSearchParams(window.location.search);
     const detailId = params.get('id') || '';
     const detailPage = resolveDetailPage(detailId, detailPages);
+
+    if (detailPage && detailPage.type === 'roadmap_page') {
+      var roadmapTarget = roadmapHref(detailId);
+      if (window.location.hash) roadmapTarget += window.location.hash;
+      window.location.replace(roadmapTarget);
+      return;
+    }
 
     const titleEl = document.getElementById('detailTitle');
     const summaryEl = document.getElementById('detailSummary');
@@ -5162,7 +5195,10 @@
     }
 
     function buildResultCardHtml(item, queryTokens) {
-      var detailUrl = 'detail.html?id=' + encodeURIComponent(item.id);
+      var resultId = item.id;
+      var detailUrl = isRoadmapPageId(resultId, null, item)
+        ? roadmapHref(resultId)
+        : ('detail.html?id=' + encodeURIComponent(resultId));
       var graphUrl = 'graph.html?focus=' + encodeURIComponent(item.id);
       var typeLabel = wikiTypeLabel(item.page_type, 'node');
       if (!typeLabel && item.path) {

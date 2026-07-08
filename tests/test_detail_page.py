@@ -36,6 +36,12 @@ class DetailPageScaffoldTests(unittest.TestCase):
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
 
+    def test_detail_page_redirects_roadmap_pages_to_roadmap_html(self):
+        content = MAIN_JS.read_text(encoding="utf-8")
+        self.assertIn("detailPage.type === 'roadmap_page'", content)
+        self.assertIn("window.location.replace(roadmapTarget)", content)
+        self.assertIn("function pageHref", content)
+
     def test_institution_badges_link_to_graph_institution_filter(self):
         content = MAIN_JS.read_text(encoding="utf-8")
         self.assertIn("graph.html?institution=", content)

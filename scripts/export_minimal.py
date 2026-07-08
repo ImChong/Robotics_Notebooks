@@ -961,6 +961,17 @@ def generate_sitemap(
             }
         )
 
+    roadmap_page_items = [item for item in items if item.get("type") == "roadmap_page"]
+    for item in roadmap_page_items:
+        item_id = item.get("id", "")
+        urls.append(
+            {
+                "loc": f"{base_url}/docs/roadmap.html?id={item_id}",
+                "priority": "0.8",
+                "changefreq": "monthly",
+            }
+        )
+
     sitemap_lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',

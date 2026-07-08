@@ -43,6 +43,11 @@ class RoadmapPageTests(unittest.TestCase):
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
 
+    def test_search_results_link_roadmap_pages_to_roadmap_html(self):
+        content = MAIN_JS.read_text(encoding="utf-8")
+        self.assertIn("isRoadmapPageId(resultId, null, item)", content)
+        self.assertIn("roadmapHref(resultId)", content)
+
 
 if __name__ == "__main__":
     unittest.main()
