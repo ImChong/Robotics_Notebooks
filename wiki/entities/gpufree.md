@@ -2,7 +2,7 @@
 type: entity
 tags: [infrastructure, gpu-cloud, training, china, docker, jupyter, embodied-ai]
 status: complete
-updated: 2026-07-02
+updated: 2026-07-08
 related:
   - ./autodl.md
   - ./matpool.md
@@ -11,6 +11,7 @@ related:
   - ./ai-galaxy.md
   - ../comparisons/china-gpu-cloud-platforms.md
   - ./isaac-lab.md
+  - ./stackforce.md
   - ./isaac-gym-isaac-lab.md
   - ../methods/reinforcement-learning.md
   - ../queries/simulator-selection-guide.md
@@ -95,6 +96,7 @@ flowchart TB
 - [AutoDL](./autodl.md) — 同类国内 GPU 云；社区文档与镜像生态更成熟
 - [国内 GPU 云平台选型](../comparisons/china-gpu-cloud-platforms.md) — 六平台并列对比
 - [Isaac Lab](./isaac-lab.md) — 常见高算力 + 图形仿真栈
+- [StackForce](./stackforce.md) — 工作台第三步列出的云训练入口之一（SimReady→Isaac 工程）
 - [Isaac Gym / Isaac Lab 总览](./isaac-gym-isaac-lab.md) — GPU 并行仿真背景
 - [仿真选型指南](../queries/simulator-selection-guide.md) — 框架与算力协同决策
 

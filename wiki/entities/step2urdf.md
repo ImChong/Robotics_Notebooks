@@ -3,10 +3,11 @@ type: entity
 title: step2urdf
 tags: [utility, cad, urdf, step, web, opencascade, ros]
 status: complete
-updated: 2026-07-03
+updated: 2026-07-08
 related:
   - ./freecad.md
   - ./urdf-studio.md
+  - ./stackforce.md
   - ./cad-skills.md
   - ./robot-viewer.md
   - ./robot-explorer.md
@@ -71,6 +72,7 @@ flowchart LR
 | 工具 | 起点 | 强项 | 局限 |
 |------|------|------|------|
 | **step2urdf** | 已有 **STEP** | 浏览器即用、几何驱动关节、本地处理 | 关节类型限于 revolute/prismatic；复杂闭链/柔性体需人工后处理 |
+| [StackForce CAD2URDF](./stackforce.md) | STEP/STP | 国内访问、本地解析、与工作台 **SimReady→Isaac** 一条龙 | Link/Joint **人工配置**为主；非开源 |
 | [URDF-Studio](./urdf-studio.md) | 设计阶段 / 已有 URDF | Skeleton/Detail/Hardware 全流程、MJCF/USD/BOM、AI 辅助 | 不是 STEP 专用转换器；CAD 导入能力与本工具互补 |
 | [CAD Skills](./cad-skills.md) | 自然语言 → **build123d** | Agent CLI、`gen_urdf()` 与制造链 skill | 依赖 Python/OCP 环境，非「拖 STEP 即转」 |
 | [robot-viewer](./robot-viewer.md) | 已有 URDF/MJCF | 多格式预览、MuJoCo WASM 轻仿真 | 不负责从 STEP 生成模型 |
@@ -92,6 +94,7 @@ flowchart LR
 - [MoveIt2](./moveit2.md) — URDF/SRDF 下游运动规划
 - [文字生成 CAD（Text-to-CAD）](../concepts/text-to-cad.md) — STEP 上游生成路线
 - [BotWorld](./botworld.md) — 插件中心外链入口与资产发布广场
+- [StackForce](./stackforce.md) — 工作台向导 + CAD2URDF，可导出 Isaac RL 工程
 
 ## 推荐继续阅读
 

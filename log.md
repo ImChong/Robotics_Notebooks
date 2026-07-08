@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-08] ingest | sources/sites/stackforce-workbench.md、stackforce-cad2urdf.md — StackForce 工作台与 CAD2URDF；wiki/entities/stackforce.md；交叉 step2urdf / urdf-studio / isaac-lab / gpufree
+
 ## [2026-07-08] ingest | sources/papers/navwam_arxiv_2606_13494.md — NavWAM 目标条件视觉导航 WAM；wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md；交叉更新 world-action-models / cosmos-policy / vision-language-navigation
 
 ## [2026-07-08] ingest | sources/papers/lingbot_vla_v2_tech_report.md — LingBot-VLA 2.0 技术报告入库；wiki/entities/lingbot-vla-v2.md、wiki/methods/vla.md 交叉更新；修正 161 综述 LingBot-VLA 误链至 lingbot-map
