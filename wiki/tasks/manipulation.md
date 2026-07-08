@@ -10,6 +10,12 @@ related:
   - ../entities/paper-physforge-physics-grounded-3d-assets.md
   - ../entities/paper-simfoundry-real2sim-scene-generation.md
   - ../entities/paper-chord-contact-wrench-dexterous-manipulation.md
+  - ../overview/tro-manip-5-papers-technology-map.md
+  - ../entities/paper-tro-manip-01-diversity-scaling.md
+  - ../entities/paper-tro-manip-02-canonical-policy.md
+  - ../entities/paper-tro-manip-03-dexrepnet-plus-plus.md
+  - ../entities/paper-tro-manip-04-g3m.md
+  - ../entities/paper-tro-manip-05-dgm-robot-learning-survey.md
   - ../entities/moveit2.md
   - ../entities/curobo.md
   - ../entities/kinetiq-ascend.md
@@ -17,6 +23,7 @@ sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/survey_papers.md
   - ../../sources/papers/physx_omni_arxiv_2605_21572.md
+  - ../../sources/blogs/wechat_shenlan_tro_manip_5_papers_survey.md
 summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核心难点是感知、接触和全身协同。"
 ---
 
@@ -177,6 +184,12 @@ flowchart TD
 - [Query：灵巧操作数据管线与 RL 基建](../queries/dexterous-manipulation-data-pipeline.md) — 自动标注、WiLoR、GAE、Actuator Network
 - [AnyGrasp vs GraspNet：抓取检测家族选型对比](../comparisons/anygrasp-vs-graspnet.md) — 检测式抓取路线内部的 SDK vs 白盒基线选型坐标
 - [Query：在 RL 中利用触觉反馈提升操作鲁棒性](../queries/tactile-feedback-in-rl.md) — 处理视觉遮挡的进阶方法
+- [T-RO 2026 操作学习 5 篇技术地图](../overview/tro-manip-5-papers-technology-map.md) — 数据 scaling / SE(3) 等变 / DexRep / G3M 视频预训练 / 生成模型综述（深蓝具身智能策展）
+- [Is Diversity All You Need（T-RO 2026）](../entities/paper-tro-manip-01-diversity-scaling.md) — 任务/本体/演示者三维数据多样性 scaling 与 GO-1-Pro 分布去偏
+- [Canonical Policy（T-RO 2026）](../entities/paper-tro-manip-02-canonical-policy.md) — 规范化 3D 点云 SE(3) 等变模仿学习策略
+- [DexRepNet++（T-RO 2026）](../entities/paper-tro-manip-03-dexrepnet-plus-plus.md) — DexRep 手物几何表征 + 灵巧操作 DRL
+- [G3M（T-RO 2026）](../entities/paper-tro-manip-04-g3m.md) — 图到图生成视频预训练 → 操作策略（GraphMimic 期刊版）
+- [DGM Robot Learning Survey（T-RO 2026）](../entities/paper-tro-manip-05-dgm-robot-learning-survey.md) — 深度生成模型在 LfD 中的模型族、应用与 OOD 设计
 - [操作鲁棒性综述（Dong et al., arXiv:2606.31494）](../entities/paper-robustness-robotic-manipulation-survey.md) — 不确定性与失败管理双原则、五模块机制与评测协议的系统框架
 - [Impedance Control](../concepts/impedance-control.md) — 接触任务最常见的柔顺执行层
 - [PhysX-Omni](../entities/physx-omni.md) — 统一刚体/可变形/关节体 sim-ready 3D 生成与 PhysXVerse 数据引擎
