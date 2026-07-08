@@ -3,7 +3,7 @@
 type: overview
 tags: [navigation, slam, ros2, autoware, lidar, vio, mobile-robot, autonomous-driving, openloong]
 status: complete
-updated: 2026-07-02
+updated: 2026-07-08
 related:
   - ../entities/python-robotics.md
   - ../entities/navigation2.md
@@ -23,6 +23,7 @@ related:
   - ../entities/lerobot.md
   - ../entities/openvla.md
   - ../entities/mushr.md
+  - ../entities/aeris-10-plfm-radar.md
   - ../comparisons/lidar-slam-lio-vio-selection.md
   - ../concepts/ros2-basics.md
   - ../methods/vla.md
@@ -37,6 +38,7 @@ sources:
   - ../../sources/repos/autoware.md
   - ../../sources/repos/isaac_ros_visual_slam.md
   - ../../sources/repos/isaac_ros_nvblox.md
+  - ../../sources/repos/plfm_radar.md
 summary: "移动机器人导航与 SLAM 开源栈总览：Nav2 + 2D SLAM、LiDAR/VIO 里程计、Autoware 自动驾驶、Isaac ROS 加速感知建图，并与 OpenLoong 动力学、LeRobot/OpenVLA 具身学习对照分层选型。"
 ---
 
@@ -118,6 +120,7 @@ flowchart TB
 | 算法预习 / 无 ROS 环境 | PythonRobotics | MuSHR 课程 | 直接上 Autoware 却不理解 DWA/A* |
 | 导航课 / 非完整小车 | MuSHR | TurtleBot3（既有资料） | 当人形 WBC 教程 |
 | 机械臂抓取策略 | LeRobot / OpenVLA | — | 用 Nav2 输出关节力矩 |
+| 开源相控阵雷达 / 主动测距原型 | [AERIS-10](../entities/aeris-10-plfm-radar.md) | 商用毫米波雷达模组 | 无 ROS 驱动时直接接 Nav2；或当稠密 LiDAR SLAM 用 |
 
 ## 各层角色摘要
 
@@ -148,6 +151,10 @@ flowchart TB
 - **[OpenVSLAM](../entities/openvslam.md)** → 社区多迁移至 **stella_vslam** 分支维护。
 - **[Kimera](../entities/kimera.md)**：Kimera-VIO + RPGO + Semantics 模块化 **语义 SLAM**。
 - **[RTAB-Map](../entities/rtabmap.md)**：RGB-D/激光多模态建图与记忆管理。
+
+### 主动雷达（补充，非 ROS 原生）
+
+- **[AERIS-10（PLFM_RADAR）](../entities/aeris-10-plfm-radar.md)**：开源 **10.5 GHz** 脉冲 LFM **相控阵**（3 km / 20 km 双版本），FPGA 脉冲压缩 + CFAR，Python 地图 GUI；面向 **无人机/野外主动测距** 实验。与 LiDAR SLAM **互补**：擅长远距离动目标与全天候测距，**不提供** 现成 `sensor_msgs`/Nav2 插件，接入本栈需自建驱动与时间同步。
 
 ### 自动驾驶与 NVIDIA 栈
 

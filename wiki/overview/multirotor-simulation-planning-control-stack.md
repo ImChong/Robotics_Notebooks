@@ -2,7 +2,7 @@
 type: overview
 tags: [uav, multirotor, px4, simulation, planning, swarm, mavlink, reinforcement-learning]
 status: complete
-updated: 2026-06-28
+updated: 2026-07-08
 related:
   - ../entities/betaflight.md
   - ../entities/wtfos.md
@@ -23,6 +23,7 @@ related:
   - ../queries/simulator-selection-guide.md
   - ../tasks/vision-language-navigation.md
   - ../entities/paper-worldvln-aerial-vln-wam.md
+  - ../entities/aeris-10-plfm-radar.md
   - ../concepts/can-bus-protocol.md
 sources:
   - ../../sources/repos/multirotor_uav_stack_catalog.md
@@ -44,6 +45,7 @@ sources:
   - ../../sources/repos/wtfos.md
   - ../../sources/sites/fpv-wtf.md
   - ../../sources/sites/cia_dronecan_uavcan.md
+  - ../../sources/repos/plfm_radar.md
 summary: "多旋翼开源栈总览：PX4/MAVSDK 飞控与协议、EGO-Planner 局部规划、AirSim/Flightmare/XTDrone 仿真、PyBullet Gym 与群体 RL、Crazyflie+Crazyswarm 微四轴真机编队——按「飞控—规划—仿真—RL—真机 swarm」分层选型。"
 ---
 
@@ -139,6 +141,7 @@ flowchart TB
 | 课程/论文标准 UAV RL 基准 | [gym-pybullet-drones](../entities/gym-pybullet-drones.md) | [quad-swarm-rl](../entities/quad-swarm-rl.md) | 与 Isaac Lab 腿式环境混为一谈 |
 | 室内 50+ 微四轴灯光秀 | [Crazyswarm2](../entities/crazyswarm2.md) | — | 无动捕硬飞 swarm |
 | ESC/电池 DroneCAN 外设 | DroneCAN 规范 | — | 与 CiA 402 关节伺服混淆 |
+| 机载开源相控阵雷达 / 低成本主动测距 | [AERIS-10](../entities/aeris-10-plfm-radar.md) | 商用毫米波模组 | 无伴机桥接时直接接 PX4 内环 |
 
 ## Wiki 实体节点（10 仓）
 
@@ -184,6 +187,10 @@ flowchart TB
 ### 真机群体
 
 - **[Crazyswarm2](../entities/crazyswarm2.md)**：Crazyflie 大规模编队，ROS2 + 动捕/UWB。
+
+### 机载感知硬件（补充）
+
+- **[AERIS-10（PLFM_RADAR）](../entities/aeris-10-plfm-radar.md)**：开源 **相控阵雷达** 全栈（非本批 10 仓之一）；README 面向 **drone developers**，可与 [MAVSDK](../entities/mavsdk.md) 伴机或地面站融合点迹，但 **无** PX4 官方驱动，亦不在 AirSim/PyBullet 仿真链内。
 
 ## 与腿式机器人栈的对照
 

@@ -2,7 +2,7 @@
 type: overview
 tags: [topic, topic-state-estimation, slam, odometry, ekf, perception]
 status: complete
-updated: 2026-07-01
+updated: 2026-07-08
 summary: "状态估计专题汇总：本体感知融合、SLAM/VIO/LIO 选型与 Kalman/优化估计框架，服务 locomotion 与导航中的位姿与速度估计。"
 ---
 
@@ -12,7 +12,7 @@ summary: "状态估计专题汇总：本体感知融合、SLAM/VIO/LIO 选型与
 
 ## 一句话定义
 
-**状态估计** 从 **IMU、关节编码器、相机、LiDAR 等传感器** 融合出机器人位姿、速度与接触/地形状态，是感知式 locomotion 与导航的控制输入基础。
+**状态估计** 从 **IMU、关节编码器、相机、LiDAR、雷达等传感器** 融合出机器人位姿、速度与接触/地形状态，是感知式 locomotion 与导航的控制输入基础。
 
 ## 英文缩写速查
 
@@ -23,6 +23,7 @@ summary: "状态估计专题汇总：本体感知融合、SLAM/VIO/LIO 选型与
 | VIO | Visual-Inertial Odometry | 视觉-惯性里程计 |
 | LIO | LiDAR-Inertial Odometry | 激光-惯性里程计 |
 | SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
+| CFAR | Constant False Alarm Rate | 雷达恒虚警率检测，抑制杂波虚警 |
 
 ## 为什么重要
 
@@ -48,6 +49,7 @@ summary: "状态估计专题汇总：本体感知融合、SLAM/VIO/LIO 选型与
 
 ## 关联页面
 
+- [AERIS-10（开源相控阵雷达）](../entities/aeris-10-plfm-radar.md) — 10.5 GHz PLFM 主动测距 + GPS/IMU 点迹修正；非 SLAM 栈，可作 **雷达测距** 硬件参考
 - [Ultra-Fusion（多传感器 SLAM）](../entities/paper-ultra-fusion-multi-sensor-slam.md) — 统一滑窗 LVIO/LVWIO、退化调度与在线时空标定（arXiv:2606.21223）
 - [X-IONet（跨平台惯性里程计）](../entities/paper-x-ionet-cross-platform-inertial-odometry.md) — 单 IMU 行人/四足 IO + EKF（IEEE RA-L 2026）
 - [Contact Estimation](../concepts/contact-estimation.md)
