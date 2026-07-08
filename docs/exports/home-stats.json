@@ -1,13 +1,33 @@
 {
   "generated_at": "2026-07-08",
-  "node_count": 1519,
-  "edge_count": 10787,
+  "node_count": 1521,
+  "edge_count": 10808,
   "coverage": {
-    "covered": 1487,
-    "total": 1517,
+    "covered": 1489,
+    "total": 1519,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-gap-graph-as-policy.md",
+      "detail_id": "entity-paper-gap-graph-as-policy",
+      "label": "GaP（Graph-as-Policy）",
+      "type": "entity",
+      "recency": "2026-07-08",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/variational-automation.md",
+      "detail_id": "wiki-concepts-variational-automation",
+      "label": "变体自动化（Variational Automation, VA）",
+      "type": "concept",
+      "recency": "2026-07-08",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-omnitactune-tactile-residual-adaptation.md",
       "detail_id": "entity-paper-omnitactune-tactile-residual-adaptation",
@@ -194,32 +214,12 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "电机驱动器底软通信协议（Motor Drive Firmware Bus Protocols） 社区"
-    },
-    {
-      "path": "wiki/concepts/collision-distance-optimization.md",
-      "detail_id": "wiki-concepts-collision-distance-optimization",
-      "label": "Collision Distance Optimization（碰撞距离优化）",
-      "type": "concept",
-      "recency": "2026-07-06",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/concepts/constrained-optimization.md",
-      "detail_id": "wiki-concepts-constrained-optimization",
-      "label": "Constrained Optimization（约束优化）",
-      "type": "concept",
-      "recency": "2026-07-06",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-omnitactune-tactile-residual-adaptation.md",
-    "detail_id": "entity-paper-omnitactune-tactile-residual-adaptation",
-    "label": "OmniTacTune：视觉策略的触觉残差真机适应",
+    "path": "wiki/entities/paper-gap-graph-as-policy.md",
+    "detail_id": "entity-paper-gap-graph-as-policy",
+    "label": "GaP（Graph-as-Policy）",
     "type": "entity",
     "recency": "2026-07-08",
     "source": "log.md",
@@ -240,12 +240,12 @@
       "size": 171
     },
     {
-      "label": "动作重定向",
-      "size": 111
-    },
-    {
       "label": "仿真与平台生态",
       "size": 107
+    },
+    {
+      "label": "动作重定向",
+      "size": 106
     },
     {
       "label": "全身控制",

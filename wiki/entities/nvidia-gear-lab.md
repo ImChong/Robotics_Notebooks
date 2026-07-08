@@ -2,7 +2,7 @@
 type: entity
 tags: [nvidia, research-lab, embodied-ai, foundation-models, humanoid, vla, simulation, gear]
 status: complete
-updated: 2026-07-03
+updated: 2026-07-08
 related:
   - ../methods/aspire.md
   - ../methods/egoscale.md
@@ -95,6 +95,7 @@ flowchart TB
 | **SONIC** | 规模化人形 motion tracking / 统一低层接口 | [sonic-motion-tracking.md](../methods/sonic-motion-tracking.md) |
 | **ENPIRE** | 真机 coding-agent 策略自改进 harness | [enpire.md](../methods/enpire.md) |
 | **ASPIRE** | 持续学习 code-as-policy + 可扩展技能库 | [aspire.md](../methods/aspire.md) |
+| **GaP** | Graph-as-Policy 多 agent harness + 变体自动化 benchmark | [paper-gap-graph-as-policy.md](./paper-gap-graph-as-policy.md) |
 | **Vesta** | 统一定位/VLN/具身推理/记忆子任务规划的通才 planner VLM | [paper-vesta-generalist-embodied-reasoning.md](./paper-vesta-generalist-embodied-reasoning.md) |
 | **GR00T Visual Sim2Real** | VIRAL / DoorMan 等像素→动作迁移 | [gr00t-visual-sim2real.md](./gr00t-visual-sim2real.md) |
 | **SimFoundry** | 真机视频 → 数字孪生 + cousins；real-to-sim 评测与 sim-to-real 操作训练 | [paper-simfoundry-real2sim-scene-generation.md](./paper-simfoundry-real2sim-scene-generation.md) |
@@ -112,6 +113,7 @@ flowchart TB
 - [EgoScale](../methods/egoscale.md) — GEAR **人视频 → 灵巧 VLA** scaling 叙事
 - [ENPIRE](../methods/enpire.md) — GEAR **真机 autoresearch** 闭环
 - [ASPIRE](../methods/aspire.md) — GEAR **程序技能库持续学习**（code-as-policy + 进化搜索）
+- [GaP](./paper-gap-graph-as-policy.md) — **Graph-as-Policy** + VA 任务类（Jim Fan / Yuke Zhu 署名网络）
 - [Jim Fan（范林熹）](./jim-fan.md) — GEAR 共同 PI、AI Agents Initiative 负责人
 - [Zhengyi Luo](./zhengyi-luo.md) / [Tairan He](./tairan-he.md) — GEAR–CMU 合作作者网络节点
 - [Foundation Policy](../concepts/foundation-policy.md) — 通才策略抽象层
@@ -135,4 +137,5 @@ flowchart TB
 - [EgoScale](../methods/egoscale.md)
 - [ENPIRE](../methods/enpire.md)
 - [ASPIRE](../methods/aspire.md)
+- [GaP（Graph-as-Policy）](./paper-gap-graph-as-policy.md)
 - [GR00T-WholeBodyControl](./gr00t-wholebodycontrol.md)

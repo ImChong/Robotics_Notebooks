@@ -2,7 +2,7 @@
 type: method
 tags: [coding-agents, skill-library, continual-learning, code-as-policy, nvidia-gear, manipulation, sim2real, evolutionary-search, nvidia]
 status: complete
-updated: 2026-07-01
+updated: 2026-07-08
 date: 2026-06-30
 summary: "ASPIRE 是 NVIDIA GEAR 等的持续学习 code-as-policy 系统：闭环执行引擎暴露逐原语多模态 trace 供 coding agent 诊断修补，进化搜索探索多样控制程序，并把验证修复蒸馏进可扩展技能库——让后续任务以 in-context 技能加速适应，并在 LIBERO-Pro / Robosuite / BEHAVIOR-1K 上大幅超越 CaP-Agent0 与 VLA 基线，初步证明仿真技能可降低真机跨具身编程 token 成本。"
 related:
@@ -141,6 +141,18 @@ flowchart TB
 
 二者同属 GEAR **agent 驱动机器人研发自动化** 谱系，宜与 [真机策略 autoresearch 闭环搭建指南](../queries/real-robot-policy-autoresearch-harness.md) 一并阅读。
 
+## 与 GaP 的分工（agentic 谱系对照）
+
+| 维度 | **ASPIRE** | **[GaP](../entities/paper-gap-graph-as-policy.md)** |
+|------|-----------|------------------------------------------------------|
+| 策略表示 | **Python 控制程序**（CaP） | **有向计算图**（Graph-as-Policy，类 ROS） |
+| 经验/优化 | **技能库复利** + 进化搜索 + trace 调试 | **仿真排练** 改图拓扑/参数 |
+| 任务靶心 | LIBERO-Pro / Robosuite / BEHAVIOR-1K | **[变体自动化（VA）](../concepts/variational-automation.md)** 8 benchmark |
+| 运行形态 | 程序解释执行 | **edge 图解释器** 持久执行（编译期用 agent） |
+| VLA 关系 | 主评测 **对抗** 端到端 VLA | 可将 VLA **staging** 进分布（>2× 增益） |
+
+二者均依赖 frontier coding agent，但 ASPIRE 强调 **失败修复知识沉淀**，GaP 强调 **模块化图 + 工业可解释性**。
+
 ## 常见误区或局限
 
 - **误区：「技能库 = 预定义原语表」。** ASPIRE 技能是 agent **发现并验证的修复知识**（如 multi-angle approach、碰撞缓冲绕行），类别可扩展，但受 **预定义 primitive API** 边界约束。
@@ -158,6 +170,7 @@ flowchart TB
 - 与 [MuJoCo Playground](../entities/mujoco-playground.md)：CaP-X 仿真栈与 ASPIRE 学习环的基础设施。
 - 与 [Data Flywheel](../concepts/data-flywheel.md)：技能库是 **失败修复 → 可复用知识** 的飞轮，而非演示数据飞轮。
 - 与 [NVIDIA GEAR Lab](../entities/nvidia-gear-lab.md)：研究组锚点与姊妹工作索引。
+- 与 [GaP](../entities/paper-gap-graph-as-policy.md)：同属 agentic 编程谱；**程序技能库** vs **ROS 式计算图 + VA benchmark**。
 
 ## 推荐继续阅读
 
