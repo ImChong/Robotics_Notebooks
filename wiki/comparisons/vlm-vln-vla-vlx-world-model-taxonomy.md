@@ -111,6 +111,7 @@ flowchart TB
 - 深蓝具身智能原文（微信公众号）：<https://mp.weixin.qq.com/s/xj-rc6v64Ge6onoUPvkHLg>
 - [VLA Open-Source Landscape 2025](../overview/vla-open-source-repro-landscape-2025.md)
 - [世界模型 15 项开源技术地图](../overview/world-models-15-open-source-technology-map.md)
+- [具身大模型分类学选型闭环（专题枢纽）](../overview/topic-embodied-foundation-model.md) — 把本页五大家族沉淀为一条贯通的选型链
 
 ## 参考来源
 
