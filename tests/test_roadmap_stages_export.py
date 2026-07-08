@@ -16,14 +16,18 @@ class RoadmapStagesExportTests(unittest.TestCase):
         self.assertIn("数学与编程基础", stages[0]["heading"])
 
     def test_depth_safe_control_parses_stage_sections(self) -> None:
-        stages = parse_roadmap_stages(DEPTH_SAFE_CONTROL.read_text(encoding="utf-8"), DEPTH_SAFE_CONTROL)
+        stages = parse_roadmap_stages(
+            DEPTH_SAFE_CONTROL.read_text(encoding="utf-8"), DEPTH_SAFE_CONTROL
+        )
         self.assertEqual(len(stages), 4)
         self.assertEqual(stages[0]["id"], "stage-0")
         self.assertEqual(stages[-1]["id"], "stage-3")
         self.assertGreater(len(stages[1].get("related_items", [])), 0)
 
     def test_depth_rl_locomotion_parses_six_stages(self) -> None:
-        stages = parse_roadmap_stages(DEPTH_RL_LOCOMOTION.read_text(encoding="utf-8"), DEPTH_RL_LOCOMOTION)
+        stages = parse_roadmap_stages(
+            DEPTH_RL_LOCOMOTION.read_text(encoding="utf-8"), DEPTH_RL_LOCOMOTION
+        )
         self.assertEqual(len(stages), 6)
         self.assertEqual(stages[0]["id"], "stage-0")
         self.assertEqual(stages[-1]["id"], "stage-5")
