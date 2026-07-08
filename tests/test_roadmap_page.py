@@ -16,6 +16,8 @@ class RoadmapPageTests(unittest.TestCase):
             'id="roadmapMetaUpdated"',
             'id="roadmapMetaStages"',
             'id="roadmapFlowMermaidRoot"',
+            'id="roadmapKnowledgeMapWrap"',
+            'id="roadmapKnowledgeMapMermaid"',
             'id="roadmapRelatedList"',
             'id="roadmapPaperRelatedList"',
             'id="roadmapContent"',
@@ -39,6 +41,8 @@ class RoadmapPageTests(unittest.TestCase):
             "findRoadmapStageEntryAnchor",
             "bindSelftestMermaidRerender",
             "roadmap-stage-entry-embed",
+            "renderRoadmapKnowledgeMap",
+            "buildRoadmapKnowledgeMapMermaidSource",
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, content)

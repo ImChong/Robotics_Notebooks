@@ -506,10 +506,11 @@ def parse_roadmap_stages(text: str, current_path: Path) -> List[Dict[str, Any]]:
         stages.append(current)
 
     for line in text.splitlines():
-        m = re.match(r"##\s+(L\d+(?:\.\d+)?)\s+(.+)", line.strip())
+        m = re.match(r"##\s+(L(?:[−\-]\d+|\d+(?:\.\d+)?))\s+(.+)", line.strip())
         if m:
             flush_current()
-            current = {"id": m.group(1).lower(), "title": m.group(2).strip()}
+            stage_id = m.group(1).lower().replace("−", "-")
+            current = {"id": stage_id, "title": m.group(2).strip()}
             section_lines = []
             continue
         if current:

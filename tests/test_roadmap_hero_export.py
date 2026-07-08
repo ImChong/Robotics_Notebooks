@@ -7,6 +7,7 @@ from export_minimal import (
     extract_labeled_bullets,
     extract_roadmap_hero,
     extract_summary,
+    parse_roadmap_stages,
     strip_labeled_section,
 )
 
@@ -47,6 +48,14 @@ class RoadmapHeroExportTests(unittest.TestCase):
         out = strip_labeled_section(sample.split("\n", 1)[1], ROADMAP_HERO_LABEL)
         self.assertNotIn("首屏导读", out)
         self.assertIn("**摘要**", out)
+
+    def test_parse_roadmap_stages_includes_l_minus_one(self) -> None:
+        stages = parse_roadmap_stages(self.text, MOTION_CONTROL)
+        ids = [stage["id"] for stage in stages]
+        self.assertEqual(ids[0], "l-1")
+        self.assertIn("l0", ids)
+        self.assertIn("l7", ids)
+        self.assertGreaterEqual(len(ids), 9)
 
 
 if __name__ == "__main__":

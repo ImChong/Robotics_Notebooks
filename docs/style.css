@@ -2233,6 +2233,31 @@ button.home-wiki-heatmap-cell.is-active {
 .search-tier-heading.search-tier-exact { color:var(--accent, #1659b4); }
 .search-tier-heading .data-meta { font-weight:400; opacity:.75; margin-left:4px; }
 
+/* --- Roadmap hero: L-stage knowledge map (Mermaid flowchart) --- */
+.roadmap-knowledge-map {
+  margin-top: 0.25rem;
+}
+.roadmap-knowledge-map-mermaid-host {
+  overflow-x: auto;
+  padding: 4px 0 8px;
+  min-height: 120px;
+}
+.roadmap-knowledge-map-mermaid-host .mermaid {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+.roadmap-knowledge-map-mermaid-host svg {
+  max-width: none;
+}
+.roadmap-knowledge-map-mermaid-host .node a {
+  color: inherit;
+  text-decoration: none;
+}
+.roadmap-knowledge-map-mermaid-host .node a:hover {
+  text-decoration: underline;
+}
+
 /* --- Roadmap page: vertical tree --- */
 .roadmap-flow-section {
   padding-bottom: 0;
