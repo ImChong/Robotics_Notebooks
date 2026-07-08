@@ -506,10 +506,27 @@ def parse_roadmap_stages(text: str, current_path: Path) -> List[Dict[str, Any]]:
         stages.append(current)
 
     for line in text.splitlines():
-        m = re.match(r"##\s+(L\d+(?:\.\d+)?)\s+(.+)", line.strip())
-        if m:
+        stripped = line.strip()
+        stage_match = re.match(r"##\s+Stage\s+(\d+)\s+(.+)", stripped, re.IGNORECASE)
+        layer_match = re.match(r"##\s+(L\d+(?:\.\d+)?)\s+(.+)", stripped)
+        if stage_match:
             flush_current()
-            current = {"id": m.group(1).lower(), "title": m.group(2).strip()}
+            stage_num = stage_match.group(1)
+            title = stage_match.group(2).strip()
+            current = {
+                "id": f"stage-{stage_num}",
+                "title": title,
+                "heading": stripped[3:].strip(),
+            }
+            section_lines = []
+            continue
+        if layer_match:
+            flush_current()
+            current = {
+                "id": layer_match.group(1).lower(),
+                "title": layer_match.group(2).strip(),
+                "heading": stripped[3:].strip(),
+            }
             section_lines = []
             continue
         if current:
@@ -957,6 +974,17 @@ def generate_sitemap(
             {
                 "loc": f"{base_url}/docs/detail.html?id={item_id}",
                 "priority": priority,
+                "changefreq": "monthly",
+            }
+        )
+
+    roadmap_page_items = [item for item in items if item.get("type") == "roadmap_page"]
+    for item in roadmap_page_items:
+        item_id = item.get("id", "")
+        urls.append(
+            {
+                "loc": f"{base_url}/docs/roadmap.html?id={item_id}",
+                "priority": "0.8",
                 "changefreq": "monthly",
             }
         )
