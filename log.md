@@ -1,6 +1,6 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
-## [2026-07-09] fix(ux) | docs/style.css — TOC 浮窗封顶调高为 min(76vh, 680px)
+## [2026-07-09] fix(ux) | docs/style.css — TOC 浮窗封顶仅桌面端 min(76vh, 680px)，移动端抽屉恢复原样
 
 ## [2026-07-08] ingest | sources/papers/discrete_terrain_minimal_proximity_sensing_arxiv_2606_31912.md — ETH RSL 四足足底 ToF 最小感知离散地形；wiki/entities/paper-discrete-terrain-minimal-proximity-sensing.md；交叉更新 quadruped-robot / terrain-adaptation / stair-obstacle-perceptive-locomotion
 
