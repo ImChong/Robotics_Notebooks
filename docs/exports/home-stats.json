@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-09",
-  "node_count": 1546,
-  "edge_count": 11126,
+  "node_count": 1547,
+  "edge_count": 11138,
   "coverage": {
-    "covered": 1509,
-    "total": 1539,
+    "covered": 1510,
+    "total": 1540,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -17,6 +17,17 @@
       "source": "log.md",
       "action": "added",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/hightorque-robotics.md",
+      "detail_id": "entity-hightorque-robotics",
+      "label": "高擎机电（HighTorque Robotics）",
+      "type": "entity",
+      "recency": "2026-07-09",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "path": "wiki/entities/paper-humanoid-surgeon-in-vivo-laparoscopy.md",
@@ -201,15 +212,6 @@
       "source": "log.md",
       "action": "added",
       "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-quietwalk-humanoid-locomotion.md",
-      "detail_id": "entity-paper-quietwalk-humanoid-locomotion",
-      "label": "QuietWalk：面向多样鞋型的物理感知低噪人形行走",
-      "type": "entity",
-      "recency": "2026-07-07",
-      "source": "log.md",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
@@ -229,7 +231,7 @@
     },
     {
       "label": "运动控制",
-      "size": 156
+      "size": 157
     },
     {
       "label": "视觉-语言-动作",
@@ -245,7 +247,7 @@
     },
     {
       "label": "动作重定向",
-      "size": 104
+      "size": 103
     }
   ],
   "top_hubs": [
@@ -260,7 +262,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 265,
+      "degree": 266,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -276,7 +278,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 224,
+      "degree": 225,
       "community_label": "运动控制（Locomotion） 社区"
     },
     {
@@ -298,7 +300,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 203,
+      "degree": 204,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },

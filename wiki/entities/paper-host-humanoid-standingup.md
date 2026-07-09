@@ -2,13 +2,14 @@
 type: entity
 tags: [paper, humanoid, standing-up, fall-recovery, unitree-g1, ppo, sim2real, whole-body-control, isaac-gym, multi-critic]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-09
 arxiv: "2502.08378"
 related:
   - ../tasks/balance-recovery.md
   - ../tasks/locomotion.md
   - ../concepts/sim2real.md
   - ./unitree-g1.md
+  - ./hightorque-robotics.md
   - ./paper-unified-walk-run-recovery-sdamp.md
   - ../methods/reinforcement-learning.md
 sources:
@@ -110,7 +111,7 @@ flowchart TB
 | 仿真指标 | 成功率 $E_{\mathrm{succ}}$、脚移动 $E_{\mathrm{feet}}$、平滑 $E_{\mathrm{smth}}$、能耗 $E_{\mathrm{engy}}$ |
 | 真机 | 室内外多场景；抗推、绊脚、重载荷；项目页与论文 Fig.1 |
 | 代码 | `legged_gym/scripts/train.py|play.py|eval/`；[仓库 README](https://github.com/InternRobotics/HoST) |
-| 扩展平台 | H1、Mini Pi、DroidUp（部分代码陆续发布） |
+| 扩展平台 | H1、[Mini Pi（HighTorque）](./hightorque-robotics.md)、DroidUp（部分代码陆续发布） |
 
 ## 与其他工作对比
 
@@ -132,7 +133,7 @@ flowchart TB
 ## 关联页面
 
 - [Balance Recovery](../tasks/balance-recovery.md)、[Locomotion](../tasks/locomotion.md)、[Sim2Real](../concepts/sim2real.md)
-- [Unitree G1](./unitree-g1.md)、[SD-AMP 统一走跑起身](./paper-unified-walk-run-recovery-sdamp.md)
+- [Unitree G1](./unitree-g1.md)、[高擎机电 Mini Pi Plus](./hightorque-robotics.md)、[SD-AMP 统一走跑起身](./paper-unified-walk-run-recovery-sdamp.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 
 ## 推荐继续阅读

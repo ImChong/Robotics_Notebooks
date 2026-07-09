@@ -2,6 +2,8 @@
 
 ## [2026-07-09] ingest | sources/courses/isaac_lab_implicit_explicit_actuators.md — Isaac Lab/mjlab Implicit vs Explicit 执行器；wiki/concepts/implicit-explicit-actuator-modeling.md；交叉更新 sim2real / armature / actuator-network / legged-humanoid-rl-pd-gain-setting / isaac-lab
 
+## [2026-07-09] ingest | sources/repos/hightorque_robotics.md — 高擎机电 GitHub 组织入库；wiki/entities/hightorque-robotics.md；交叉更新 paper-host-humanoid-standingup / open-source-humanoid-hardware / humanoid-robot
+
 ## [2026-07-09] ingest | sources/papers/humanoid_surgeon_nature_2026.md — UCSD Humanoid Surgeon Nature 2026 活体腹腔镜可行性；wiki/entities/paper-humanoid-surgeon-in-vivo-laparoscopy.md；交叉更新 teleoperation / paper-notebook-lapsurgie / paper-notebook-humanoids-in-hospitals
 
 ## [2026-07-09] fix(ux) | docs/style.css — TOC 浮窗封顶仅桌面端 min(76vh, 680px)，移动端抽屉恢复原样
