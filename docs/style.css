@@ -630,6 +630,7 @@ body.sponsor-dialog-open {
     flex: 1 1 100%;
     width: 100%;
   }
+  .detail-compact-main .updates-item-cat { white-space: normal; }
 }
 .hubs-meta { margin: 0 0 16px; }
 .hubs-list-actions { padding-left: 0; padding-right: 0; }
@@ -761,6 +762,7 @@ body.sponsor-dialog-open {
     flex: 1 1 100%;
     width: 100%;
   }
+  .updates-item-main .updates-item-cat { white-space: normal; }
 }
 .updates-day.is-folded .updates-item-folded { display: none; }
 .updates-day-more {
