@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, hardware, platform, actuator]
 status: complete
-updated: 2026-07-05
+updated: 2026-07-09
 related:
   - ./motioncode.md
   - ./project-instinct.md
@@ -13,6 +13,7 @@ related:
   - ../concepts/whole-body-control.md
   - ../comparisons/wbc-vs-rl.md
   - ./unitree.md
+  - ./hightorque-robotics.md
   - ./anymal.md
   - ./boston-dynamics.md
   - ./asimov-v1.md
@@ -141,6 +142,7 @@ flowchart TD
 - [全身运动控制](../concepts/whole-body-control.md)
 - [WBC vs RL 对比](../comparisons/wbc-vs-rl.md)
 - [Unitree](./unitree.md)
+- [高擎机电（HighTorque Robotics）](./hightorque-robotics.md)
 - [四足机器人](./quadruped-robot.md)
 - [ANYmal](./anymal.md)（高性能四足机器人，足式 RL 研究标杆）
 - [Boston Dynamics](./boston-dynamics.md)（足式机器人技术巅峰，Atlas 与 Spot 开发商）
