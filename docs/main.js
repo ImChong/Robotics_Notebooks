@@ -407,8 +407,9 @@
         '<span class="home-hub-row-rank">' + rank + '</span>' +
         '<span class="home-hub-row-type">' + escapeHtml(wikiTypeLabel(hub.type, 'updates')) + '</span>' +
         '<span class="home-hub-row-main"><a href="' + escapeHtml(href) + '">' +
-        escapeHtml(hub.label || hub.detail_id) + '</a>' +
-        renderUpdatesItemSuffix(hub) +
+        escapeHtml(hub.label || hub.detail_id) +
+        renderUpdatesItemRepoStar(hub) + '</a>' +
+        renderUpdatesItemCommunityCat(hub) +
         '</span>' +
         '<span class="home-hub-row-degree" title="无向边总数（入链+出链）">互链 ' +
         escapeHtml(String(hub.degree != null ? hub.degree : 0)) + '</span>' +
@@ -766,8 +767,8 @@
           escapeHtml(detailHref(rowMeta.detail_id)) +
           '">' +
           escapeHtml(rowMeta.label || rowMeta.detail_id) +
-          '</a>' +
-          renderUpdatesItemSuffix(rowMeta) +
+          renderUpdatesItemRepoStar(rowMeta) + '</a>' +
+          renderUpdatesItemCommunityCat(rowMeta) +
           '</span></li>';
       }
       mount.innerHTML =
