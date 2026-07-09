@@ -109,18 +109,14 @@ SIM2REAL_GAP_PAGE = "wiki/queries/sim2real-gap-reduction.md"
 SIM2REAL_DEBUG_PAGE = "wiki/queries/robot-policy-debug-playbook.md"
 
 
-def _query_has_comparison_intent(query_tokens: list[str]) -> bool:
-    joined = " ".join(query_tokens).lower()
-    return any(marker in joined for marker in COMPARISON_INTENT_MARKERS)
+def _query_has_comparison_intent(query_joined: str) -> bool:
+    return any(marker in query_joined for marker in COMPARISON_INTENT_MARKERS)
 
 
-def _query_joined(query_tokens: list[str]) -> str:
-    return " ".join(query_tokens).lower()
-
-
-def _query_has_sim2real_topic(query_tokens: list[str]) -> bool:
-    joined = _query_joined(query_tokens)
-    return "sim2real" in joined or "sim-to-real" in joined or "sim to real" in joined
+def _query_has_sim2real_topic(query_joined: str) -> bool:
+    return (
+        "sim2real" in query_joined or "sim-to-real" in query_joined or "sim to real" in query_joined
+    )
 
 
 def _page_status_downrank(fm: dict) -> float:
@@ -135,16 +131,16 @@ def _page_status_downrank(fm: dict) -> float:
     return boost
 
 
-def _sim2real_intent_boost(doc_path: str, query_tokens: list[str]) -> float:
+def _sim2real_intent_boost(doc_path_l: str, query_joined: str) -> float:
     """Sim2Real 查询族：按部署 / gap 诊断 / 真机调试意图提权对应 query 页。"""
-    rel = doc_path.replace("\\", "/").lower()
-    joined = _query_joined(query_tokens)
+    rel = doc_path_l
+    joined = query_joined
     boost = 1.0
 
     has_deploy = any(m in joined for m in DEPLOYMENT_INTENT_MARKERS)
     has_gap = any(m in joined for m in GAP_INTENT_MARKERS)
     has_debug = any(m in joined for m in DEBUG_INTENT_MARKERS)
-    has_sim2real = _query_has_sim2real_topic(query_tokens)
+    has_sim2real = _query_has_sim2real_topic(query_joined)
 
     if not (has_sim2real or has_deploy or has_gap or has_debug):
         return boost
@@ -164,10 +160,10 @@ def _sim2real_intent_boost(doc_path: str, query_tokens: list[str]) -> float:
     return boost
 
 
-def _canonical_topic_boost(doc_path: str, query_tokens: list[str]) -> float:
+def _canonical_topic_boost(doc_path_l: str, query_joined: str) -> float:
     """当查询命中 WBC/MPC 等核心缩写且当前页为对应定义页时提权。"""
-    rel = doc_path.replace("\\", "/").lower()
-    qjoin = " ".join(query_tokens).lower()
+    rel = doc_path_l
+    qjoin = query_joined
     for key, canon in CANONICAL_TOPIC_PAGES.items():
         if rel != canon:
             continue
@@ -254,9 +250,11 @@ def compute_score(
     fm: dict | None = None,
     page_type: str = "",
     dl: int = 1,
-    doc_path: str = "",
+    doc_path_l: str = "",
     today_date: date | None = None,
     summary_l: str = "",
+    query_joined: str = "",
+    status_boost: float = 1.0,
 ) -> float:
     if not query_tokens:
         return 0.0
@@ -301,13 +299,13 @@ def compute_score(
         score *= 0.7
 
     # V16: 提权 comparison；仅当查询含「对比/选型」等意图时生效，避免盖过定义页
-    if page_type == "comparison" and _query_has_comparison_intent(query_tokens):
+    if page_type == "comparison" and _query_has_comparison_intent(query_joined):
         score *= 1.3
 
-    if doc_path:
-        score *= _canonical_topic_boost(doc_path, query_tokens)
-        score *= _page_status_downrank(fm)
-        score *= _sim2real_intent_boost(doc_path, query_tokens)
+    if doc_path_l:
+        score *= _canonical_topic_boost(doc_path_l, query_joined)
+        score *= status_boost
+        score *= _sim2real_intent_boost(doc_path_l, query_joined)
 
     return score
 
@@ -416,12 +414,13 @@ def encode_query_vector(query: str, meta: dict[str, Any]) -> Any:
     return None
 
 
-def _filter_doc(doc: dict, type_filter: str | None, tag_filters: list[str] | None) -> bool:
-    if type_filter and str(doc["page_type"]).lower() != type_filter.lower():
+def _filter_doc(doc: dict, type_filter_l: str | None, tag_filters_l: list[str] | None) -> bool:
+    if type_filter_l and doc.get("page_type_l") != type_filter_l:
         return False
-    page_tags = [str(tag).lower() for tag in doc.get("tags", [])]
-    if tag_filters and not all(tag.lower() in page_tags for tag in tag_filters):
-        return False
+    if tag_filters_l:
+        page_tags_l = doc.get("page_tags_l", [])
+        if not all(tag in page_tags_l for tag in tag_filters_l):
+            return False
     return True
 
 
@@ -500,6 +499,14 @@ def search(
             fm = doc.get("frontmatter") or {}
             doc["summary_l"] = str(fm.get("summary", fm.get("description", ""))).lower()
 
+            # ⚡ Bolt Optimization: Cache document-level invariant string transformations and math
+            # Expected impact: Eliminates redundant `.lower()`, `.replace()`, and status downrank
+            # floating-point math calls per query inside the hot `search` processing loops.
+            doc["page_type_l"] = str(doc.get("page_type", "")).lower()
+            doc["page_tags_l"] = [str(t).lower() for t in doc.get("tags", [])]
+            doc["status_boost"] = _page_status_downrank(fm)
+            doc["path_l"] = str(doc.get("path", "")).replace("\\", "/").lower()
+
             # ⚡ Bolt Optimization: Pre-split and pre-lower lines for context matching
             doc["lines"] = doc["body"].splitlines()
             doc["lines_lower"] = [line.lower() for line in doc["lines"]]
@@ -531,9 +538,13 @@ def search(
     # Expected impact: Eliminates redundant calls to `date.today()` across thousands of documents.
     today_date = date.today()
 
+    query_joined = " ".join(query_tokens).lower() if query_tokens else ""
+    type_filter_l = type_filter.lower() if type_filter else None
+    tag_filters_l = [tag.lower() for tag in tag_filters] if tag_filters else []
+
     prepared = []
     for doc in docs:
-        if not _filter_doc(doc, type_filter, tag_filters):
+        if not _filter_doc(doc, type_filter_l, tag_filters_l):
             continue
 
         body = doc["body"]
@@ -548,9 +559,11 @@ def search(
             fm=fm,
             page_type=doc["page_type"],
             dl=doc.get("dl", 1),
-            doc_path=doc["path"],
+            doc_path_l=doc.get("path_l", ""),
             today_date=today_date,
             summary_l=doc["summary_l"],
+            query_joined=query_joined,
+            status_boost=doc.get("status_boost", 1.0),
         )
         if query_tokens and not semantic and score <= 0:
             continue
