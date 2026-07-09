@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-09] ingest | sources/papers/face_anything_arxiv_2604_19702.md — Face Anything 4D 人脸重建与跟踪；wiki/entities/paper-face-anything-4d-face-reconstruction.md；交叉更新 gvhmr / humanoid-training-data-pipeline / visual-representation-for-policy
+
 ## [2026-07-09] ingest | sources/repos/dimensionalos_dimos.md — DimOS agent-native 物理空间 OS 入库；wiki/entities/dimensionalos-dimos.md；交叉更新 ros2-basics / ros2-vs-lcm / unitree / unitree-g1 / lerobot / navigation-slam-autonomy-stack
 
 ## [2026-07-09] ingest | sources/papers/egowam.md — 新增 EgoWAM 论文实体并交叉更新 WAM/IL/Manipulation；wiki/entities/paper-egowam-egocentric-human-wam-co-training.md

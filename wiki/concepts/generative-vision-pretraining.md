@@ -8,7 +8,7 @@ tags:
   - perception
   - deep-learning
 status: complete
-updated: 2026-06-09
+updated: 2026-07-09
 related:
   - ./vision-backbones.md
   - ./visual-representation-for-policy.md
