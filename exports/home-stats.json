@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-07-09",
-  "node_count": 1547,
-  "edge_count": 11161,
+  "node_count": 1548,
+  "edge_count": 11172,
   "coverage": {
-    "covered": 1512,
-    "total": 1540,
+    "covered": 1513,
+    "total": 1541,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/dexmal-dm05.md",
+      "detail_id": "entity-dexmal-dm05",
+      "label": "Dexmal DM0.5",
+      "type": "entity",
+      "recency": "2026-07-09",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md",
       "detail_id": "entity-paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont",
@@ -107,7 +117,8 @@
       "recency": "2026-07-08",
       "source": "log.md",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/methods/vla.md",
@@ -190,7 +201,7 @@
       "recency": "2026-07-08",
       "source": "log.md",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/methods/pi07-policy.md",
@@ -199,53 +210,44 @@
       "type": "method",
       "recency": "2026-07-08",
       "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/concepts/variational-automation.md",
-      "detail_id": "wiki-concepts-variational-automation",
-      "label": "变体自动化（Variational Automation, VA）",
-      "type": "concept",
-      "recency": "2026-07-08",
-      "source": "log.md",
-      "action": "added",
+      "action": "maintained",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md",
-    "detail_id": "entity-paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont",
-    "label": "KungfuBot（Physics-Based Highly-Dynamic WBT）",
+    "path": "wiki/entities/dexmal-dm05.md",
+    "detail_id": "entity-dexmal-dm05",
+    "label": "Dexmal DM0.5",
     "type": "entity",
     "recency": "2026-07-09",
     "source": "log.md",
-    "action": "maintained",
-    "has_repo": true
+    "action": "added",
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "人形论文深读笔记",
-      "size": 253
+      "size": 252
     },
     {
       "label": "移动操作",
       "size": 173
     },
     {
-      "label": "操作",
-      "size": 159
+      "label": "模仿学习",
+      "size": 124
     },
     {
-      "label": "模仿学习",
-      "size": 123
+      "label": "视觉-语言-动作",
+      "size": 117
+    },
+    {
+      "label": "操作",
+      "size": 111
     },
     {
       "label": "全身控制",
-      "size": 102
-    },
-    {
-      "label": "运动控制",
-      "size": 83
+      "size": 96
     }
   ],
   "top_hubs": [
@@ -280,19 +282,19 @@
       "community_label": "运动控制（Locomotion） 社区"
     },
     {
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "degree": 218,
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",
       "label": "Paper Notebooks · Loco-Manipulation and WBC",
       "type": "overview",
       "degree": 218,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "degree": 216,
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
@@ -306,7 +308,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 195,
+      "degree": 196,
       "community_label": "操作（Manipulation） 社区"
     },
     {

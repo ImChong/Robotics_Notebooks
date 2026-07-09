@@ -1007,6 +1007,13 @@
         "abac-industry",
         "abac"
       ]
+    },
+    "dexmal": {
+      "label": "大晓智能（Dexmal）",
+      "aliases": [
+        "dexmal",
+        "dexmal-robotics"
+      ]
     }
   }
 }
