@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-09] ingest | sources/papers/egowam.md — 新增 EgoWAM 论文实体并交叉更新 WAM/IL/Manipulation；wiki/entities/paper-egowam-egocentric-human-wam-co-training.md
+
 ## [2026-07-09] ingest | sources/blogs/dexmal_dm05.md — 接入 Dexmal DM0.5 开放世界 VLA 博客；新建 wiki/entities/dexmal-dm05.md；互链 vla.md
 
 ## [2026-07-09] ingest | sources/repos/pbhc.md + kungfubot 项目页 — PBHC 仓库与 KungfuBot/KungfuBot2 实体页升格；wiki/entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md、wiki/entities/paper-notebook-kungfubot-2.md
