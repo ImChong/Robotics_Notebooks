@@ -191,6 +191,10 @@ flowchart TB
 - [ASPIRE](../methods/aspire.md) — 持续学习 code-as-policy 对照
 - [Real-robot policy autoresearch harness](../queries/real-robot-policy-autoresearch-harness.md) — agentic 真机开发环
 
+## 与其他工作对比
+
+- 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
+
 ## 参考来源
 
 - [GaP 论文归档](../../sources/papers/gap_arxiv_2607_05369.md)

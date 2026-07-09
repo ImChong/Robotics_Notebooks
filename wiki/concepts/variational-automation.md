@@ -98,6 +98,8 @@ VA 任务可写为 tuple $\mathcal{T}=\langle\mathcal{L},\mathcal{E},\mathcal{R}
 - [VLA](../methods/vla.md) — GR 方向代表；VA 上常作基线或 **被 GaP staging 的末端策略**
 - [ASPIRE](../methods/aspire.md) — 同属 agentic code-as-policy，侧重 **技能库复利** 而非 **ROS 式图 + 仿真排练**
 - [Foundation Policy](../concepts/foundation-policy.md) — GR 的通才策略抽象；VA 更偏 **结构化可部署策略**
+- [具身大模型分类学选型闭环（专题枢纽）](../overview/topic-embodied-foundation-model.md) — VA 是 VLA/GR 选型谱里「工位已知、变化有界」的中间地带，对应五层闭环的 VLA 动作执行层可靠性讨论
+- [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — VA-IV USB-C 插线等接触丰富任务依赖力反馈闭环，与接触力旋量的感知→控制链路相通
 
 ## 推荐继续阅读
 
