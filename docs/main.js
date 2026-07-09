@@ -3507,15 +3507,34 @@
     return '';
   }
 
+  function decodeBasicHtmlEntities(text) {
+    return String(text || '')
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .replace(/&amp;/g, '&')
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'");
+  }
+
+  function stripAngleBracketAutolinks(text) {
+    var cleaned = String(text || '');
+    cleaned = cleaned.replace(/<\s*https?:\/\/[^>\s]+\s*>/gi, '');
+    cleaned = cleaned.replace(/([—–\-:：])\s*<\s*(?=$|[；;])/g, '$1');
+    cleaned = cleaned.replace(/<\s*$/g, '');
+    return cleaned;
+  }
+
   function cleanReferenceLabelText(text) {
     if (!text) return '';
-    var cleaned = String(text).trim();
+    var cleaned = decodeBasicHtmlEntities(String(text).trim());
     cleaned = cleaned.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
     cleaned = cleaned.replace(/\*\*/g, '');
+    cleaned = stripAngleBracketAutolinks(cleaned);
+    cleaned = cleaned.replace(/[（(]\s*[）)]/g, '');
     cleaned = cleaned.replace(/[（(]\s*\[source\][^）)]*[）)]/gi, '');
     cleaned = cleaned.replace(/[（(]\s*source\s*[）)]/gi, '');
     cleaned = cleaned.replace(/\s+/g, ' ').trim();
-    return cleaned.replace(/^[：:，,。\s]+|[：:，,。\s]+$/g, '');
+    return cleaned.replace(/^[：:，,。;；—–\-\s]+|[：:，,。;；—–\-\s]+$/g, '');
   }
 
   function looksLikeRepoPath(text) {
