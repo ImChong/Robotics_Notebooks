@@ -14,6 +14,7 @@ GRAPH_EXPORT_FILES: tuple[str, ...] = (
     "graph-stats.json",
     "home-stats.json",
     "wiki-activity.json",
+    "hub-rankings.json",
 )
 
 

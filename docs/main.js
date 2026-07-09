@@ -349,6 +349,44 @@
     tabPaper.addEventListener('click', function () { activateHubTab(true); });
   }
 
+  // 完整互链榜单页 hubs.html：数据来自 hub-rankings.json（全站 / 论文全量排序）
+  function renderHubsPage(rankings) {
+    var panelAll = document.getElementById('hubsPanelAll');
+    var panelPaper = document.getElementById('hubsPanelPaper');
+    if (!panelAll && !panelPaper) return;
+    var allHubs = rankings && rankings.all;
+    var paperHubs = rankings && rankings.paper;
+    renderHomeHubList(panelAll, allHubs, '暂无互链统计数据。');
+    renderHomeHubList(panelPaper, paperHubs, '暂无论文互链统计数据。');
+
+    var meta = document.getElementById('hubsMeta');
+    if (meta) {
+      var allCount = Array.isArray(allHubs) ? allHubs.length : 0;
+      var paperCount = Array.isArray(paperHubs) ? paperHubs.length : 0;
+      var parts = [];
+      if (allCount) parts.push('全站 ' + allCount + ' 个节点');
+      if (paperCount) parts.push('论文 ' + paperCount + ' 篇');
+      if (rankings && rankings.edge_count != null) {
+        parts.push(String(rankings.edge_count) + ' 条互链');
+      }
+      meta.textContent = parts.length ? parts.join(' · ') : '';
+    }
+
+    var tabAll = document.getElementById('hubsTabAll');
+    var tabPaper = document.getElementById('hubsTabPaper');
+    if (!tabAll || !tabPaper || !panelAll || !panelPaper) return;
+    function activateHubsTab(showPaper) {
+      tabAll.classList.toggle('is-active', !showPaper);
+      tabPaper.classList.toggle('is-active', showPaper);
+      tabAll.setAttribute('aria-pressed', String(!showPaper));
+      tabPaper.setAttribute('aria-pressed', String(showPaper));
+      panelAll.hidden = showPaper;
+      panelPaper.hidden = !showPaper;
+    }
+    tabAll.addEventListener('click', function () { activateHubsTab(false); });
+    tabPaper.addEventListener('click', function () { activateHubsTab(true); });
+  }
+
   // ── 首页知识节点活跃度热力图（GitHub 风格，数据源 exports/wiki-activity.json）──
   var HOME_HEATMAP_DAY_MS = 24 * 60 * 60 * 1000;
   // GitHub 同款固定一年窗口：53 周列，最新周在最右，无数据日期为空格
@@ -5053,6 +5091,24 @@
           mount.classList.remove('data-loading');
           mount.innerHTML = '<p class="data-meta">统计加载失败，请稍后刷新。</p>';
         }
+      });
+  }
+
+  // 完整互链榜单页：独立拉取 hub-rankings.json（全量，不塞进 home-stats）
+  var hubsPageRoot = document.getElementById('hubsPanelAll');
+  if (hubsPageRoot) {
+    fetch('exports/hub-rankings.json')
+      .then(function (response) {
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        return response.json();
+      })
+      .then(function (rankings) {
+        renderHubsPage(rankings);
+      })
+      .catch(function (error) {
+        console.warn('Hub rankings sync failed:', error);
+        hubsPageRoot.classList.remove('data-loading');
+        hubsPageRoot.innerHTML = '<p class="data-meta">互链榜单加载失败，请稍后刷新。</p>';
       });
   }
 

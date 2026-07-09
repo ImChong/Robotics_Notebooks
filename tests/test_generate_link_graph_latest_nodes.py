@@ -163,6 +163,28 @@ class PaperHubStatsTest(unittest.TestCase):
             self.assertNotIn("/", hub["detail_id"])
             self.assertIn("type", hub)
 
+    def test_hub_rankings_cover_all_nodes_sorted_desc(self) -> None:
+        """完整榜单：全站 / 论文按互链度降序，供 hubs.html 消费。"""
+        nodes, edges = glg._build_graph_data()
+        communities, community_meta = glg.assign_communities(nodes, edges)
+        stats = glg._compute_graph_stats(nodes, edges, communities, community_meta)
+        rankings = stats["_hub_rankings"]
+        self.assertEqual(len(rankings["all"]), len(nodes))
+        paper_ids = {n["id"] for n in nodes if n.get("_is_paper")}
+        self.assertEqual(len(rankings["paper"]), len(paper_ids))
+        all_degrees = [h["degree"] for h in rankings["all"]]
+        self.assertEqual(all_degrees, sorted(all_degrees, reverse=True))
+        paper_degrees = [h["degree"] for h in rankings["paper"]]
+        self.assertEqual(paper_degrees, sorted(paper_degrees, reverse=True))
+        self.assertEqual(
+            [h["detail_id"] for h in rankings["all"][:10]],
+            [h["detail_id"] for h in stats["top_hubs"]],
+        )
+        self.assertEqual(
+            [h["detail_id"] for h in rankings["paper"][:10]],
+            [h["detail_id"] for h in stats["top_paper_hubs"]],
+        )
+
 
 class RoadmapGraphNodesTest(unittest.TestCase):
     """roadmap/ 页面应作为 roadmap_page 节点进入 link-graph。"""
