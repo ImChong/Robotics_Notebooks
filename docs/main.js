@@ -2458,6 +2458,7 @@
     ['wiki/tasks/', 'task'],
     ['wiki/comparisons/', 'comparison'],
     ['wiki/formalizations/', 'formalization'],
+    ['wiki/overview/', 'overview'],
     ['wiki/overviews/', 'overview'],
     ['wiki/queries/', 'query'],
     ['wiki/entities/', 'entity'],
@@ -3231,17 +3232,30 @@
   var _detailCommunityIndex = null;
   var _detailCommunityIndexPromise = null;
 
-  function buildHasRepoIndex(rankings) {
+  function buildHubRankingsIndex(rankings) {
     var pathToHasRepo = new Map();
     var detailIdToHasRepo = new Map();
+    var pathToNodeType = new Map();
+    var detailIdToNodeType = new Map();
     var all = rankings && Array.isArray(rankings.all) ? rankings.all : [];
     for (var hi = 0; hi < all.length; hi++) {
       var hub = all[hi];
-      if (!hub || !hub.has_repo) continue;
-      if (hub.id) pathToHasRepo.set(hub.id, true);
-      if (hub.detail_id) detailIdToHasRepo.set(hub.detail_id, true);
+      if (!hub) continue;
+      if (hub.id) {
+        if (hub.has_repo) pathToHasRepo.set(hub.id, true);
+        if (hub.type) pathToNodeType.set(hub.id, hub.type);
+      }
+      if (hub.detail_id) {
+        if (hub.has_repo) detailIdToHasRepo.set(hub.detail_id, true);
+        if (hub.type) detailIdToNodeType.set(hub.detail_id, hub.type);
+      }
     }
-    return { pathToHasRepo: pathToHasRepo, detailIdToHasRepo: detailIdToHasRepo };
+    return {
+      pathToHasRepo: pathToHasRepo,
+      detailIdToHasRepo: detailIdToHasRepo,
+      pathToNodeType: pathToNodeType,
+      detailIdToNodeType: detailIdToNodeType
+    };
   }
 
   function ensureDetailCommunityIndex() {
@@ -3273,12 +3287,14 @@
         var c = communities[ci];
         if (c && c.id) communityLabel[c.id] = c.label || c.id;
       }
-      var repoIndex = buildHasRepoIndex(rankings);
+      var hubIndex = buildHubRankingsIndex(rankings);
       _detailCommunityIndex = {
         pathToCommunity: pathToCommunity,
         communityLabel: communityLabel,
-        pathToHasRepo: repoIndex.pathToHasRepo,
-        detailIdToHasRepo: repoIndex.detailIdToHasRepo
+        pathToHasRepo: hubIndex.pathToHasRepo,
+        detailIdToHasRepo: hubIndex.detailIdToHasRepo,
+        pathToNodeType: hubIndex.pathToNodeType,
+        detailIdToNodeType: hubIndex.detailIdToNodeType
       };
       return _detailCommunityIndex;
     }).catch(function () {
@@ -3286,7 +3302,9 @@
         pathToCommunity: new Map(),
         communityLabel: {},
         pathToHasRepo: new Map(),
-        detailIdToHasRepo: new Map()
+        detailIdToHasRepo: new Map(),
+        pathToNodeType: new Map(),
+        detailIdToNodeType: new Map()
       };
       return _detailCommunityIndex;
     });
@@ -3296,6 +3314,26 @@
   function shortenCommunityLabel(label) {
     if (!label) return '未分类';
     return String(label).replace(/\s*社区\s*$/, '').trim() || '未分类';
+  }
+
+  function resolveCompactRowDisplayType(page, detailId, communityIndex) {
+    if (communityIndex && detailId && communityIndex.detailIdToNodeType) {
+      var byId = communityIndex.detailIdToNodeType.get(detailId);
+      if (byId) return byId;
+    }
+    var path = (page && page.path) || '';
+    if (communityIndex && path && communityIndex.pathToNodeType) {
+      var byPath = communityIndex.pathToNodeType.get(path);
+      if (byPath) return byPath;
+    }
+    var inferred = roadmapKmapNodeType(page, detailId);
+    if (inferred) return inferred;
+    var coarse = (page && page.type) || '';
+    if (coarse === 'entity_page') return 'entity';
+    if (coarse === 'roadmap_page') return 'roadmap_page';
+    if (coarse === 'reference_page') return 'reference';
+    if (coarse === 'wiki_page') return 'wiki_page';
+    return coarse;
   }
 
   function buildCompactPageRowMeta(page, detailId, communityIndex) {
@@ -3318,7 +3356,7 @@
     return {
       id: detailId,
       detail_id: detailId,
-      type: safePage.type,
+      type: resolveCompactRowDisplayType(safePage, detailId, communityIndex),
       title: buildInternalLinkTitle(detailId, safePage),
       community_label: communityLabel,
       has_repo: hasRepo

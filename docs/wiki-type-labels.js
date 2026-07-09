@@ -16,6 +16,10 @@
     reference: '参考',
     roadmap: '路线',
     roadmap_page: '路线',
+    wiki_page: '知识页',
+    entity_page: '实体',
+    reference_page: '参考',
+    tech_map_node: '技术节点',
     detail_page: '详情页',
     '': '知识页'
   };
@@ -32,6 +36,10 @@
     reference: 'Reference',
     roadmap: 'Roadmap',
     roadmap_page: 'Roadmap',
+    wiki_page: 'Wiki',
+    entity_page: 'Entity',
+    reference_page: 'Reference',
+    tech_map_node: 'Tech Node',
     detail_page: 'Detail Page',
     '': 'Wiki'
   };
