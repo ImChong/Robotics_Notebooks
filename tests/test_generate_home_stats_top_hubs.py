@@ -52,6 +52,26 @@ class HubEntriesTest(unittest.TestCase):
             ],
         )
 
+    def test_passes_through_repo_and_community_fields(self) -> None:
+        """与「最新知识节点」行一致：透传 has_repo / community_label。"""
+        stats = {
+            "top_hubs": [
+                {
+                    "id": "wiki/methods/vla.md",
+                    "detail_id": "wiki-methods-vla",
+                    "label": "VLA",
+                    "type": "method",
+                    "degree": 216,
+                    "has_repo": True,
+                    "community_label": "VLA（Vision-Language-Action） 社区",
+                }
+            ]
+        }
+        result = ghs.hub_entries(stats, "top_hubs")
+        self.assertEqual(result[0]["has_repo"], True)
+        self.assertEqual(result[0]["community_label"], "VLA（Vision-Language-Action） 社区")
+        self.assertNotIn("id", result[0])
+
     def test_missing_or_invalid_key(self) -> None:
         self.assertEqual(ghs.hub_entries({}, "top_hubs"), [])
         self.assertEqual(ghs.hub_entries({"top_hubs": None}, "top_hubs"), [])

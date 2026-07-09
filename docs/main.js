@@ -297,6 +297,25 @@
     return api.formatBilingual(type);
   }
 
+  // 与「最新知识节点」行后缀一致：开源 ⭐️ + 社区短标签
+  function renderUpdatesItemRepoStar(meta) {
+    if (!meta || !meta.has_repo) return '';
+    return '<span class="updates-item-opensource" aria-label="含开源仓库" title="含开源仓库">⭐️</span>';
+  }
+
+  function renderUpdatesItemCommunityCat(meta) {
+    if (!meta || !meta.community_label) return '';
+    var label = typeof shortenCommunityLabel === 'function'
+      ? shortenCommunityLabel(meta.community_label)
+      : String(meta.community_label).replace(/\s*社区\s*$/, '').trim();
+    if (!label) return '';
+    return '<span class="updates-item-cat">' + escapeHtml(label) + '</span>';
+  }
+
+  function renderUpdatesItemSuffix(meta) {
+    return renderUpdatesItemRepoStar(meta) + renderUpdatesItemCommunityCat(meta);
+  }
+
   // 首页「互链枢纽 · Top 10」：数据来自 home-stats.json 的 top_hubs / top_paper_hubs
   //（graph-stats.json 全站互链度 Top-10 的轻量投影），全站 / 论文两个 tab 共用一套紧凑行渲染
   function renderHomeHubList(mount, hubs, emptyText) {
@@ -317,7 +336,9 @@
         '<span class="home-hub-row-rank">' + rank + '</span>' +
         '<span class="home-hub-row-type">' + escapeHtml(wikiTypeLabel(hub.type, 'updates')) + '</span>' +
         '<span class="home-hub-row-main"><a href="' + escapeHtml(href) + '">' +
-        escapeHtml(hub.label || hub.detail_id) + '</a></span>' +
+        escapeHtml(hub.label || hub.detail_id) + '</a>' +
+        renderUpdatesItemSuffix(hub) +
+        '</span>' +
         '<span class="home-hub-row-degree" title="无向边总数（入链+出链）">互链 ' +
         escapeHtml(String(hub.degree != null ? hub.degree : 0)) + '</span>' +
         '</li>';
@@ -347,6 +368,44 @@
     }
     tabAll.addEventListener('click', function () { activateHubTab(false); });
     tabPaper.addEventListener('click', function () { activateHubTab(true); });
+  }
+
+  // 完整互链榜单页 hubs.html：数据来自 hub-rankings.json（全站 / 论文全量排序）
+  function renderHubsPage(rankings) {
+    var panelAll = document.getElementById('hubsPanelAll');
+    var panelPaper = document.getElementById('hubsPanelPaper');
+    if (!panelAll && !panelPaper) return;
+    var allHubs = rankings && rankings.all;
+    var paperHubs = rankings && rankings.paper;
+    renderHomeHubList(panelAll, allHubs, '暂无互链统计数据。');
+    renderHomeHubList(panelPaper, paperHubs, '暂无论文互链统计数据。');
+
+    var meta = document.getElementById('hubsMeta');
+    if (meta) {
+      var allCount = Array.isArray(allHubs) ? allHubs.length : 0;
+      var paperCount = Array.isArray(paperHubs) ? paperHubs.length : 0;
+      var parts = [];
+      if (allCount) parts.push('全站 ' + allCount + ' 个节点');
+      if (paperCount) parts.push('论文 ' + paperCount + ' 篇');
+      if (rankings && rankings.edge_count != null) {
+        parts.push(String(rankings.edge_count) + ' 条互链');
+      }
+      meta.textContent = parts.length ? parts.join(' · ') : '';
+    }
+
+    var tabAll = document.getElementById('hubsTabAll');
+    var tabPaper = document.getElementById('hubsTabPaper');
+    if (!tabAll || !tabPaper || !panelAll || !panelPaper) return;
+    function activateHubsTab(showPaper) {
+      tabAll.classList.toggle('is-active', !showPaper);
+      tabPaper.classList.toggle('is-active', showPaper);
+      tabAll.setAttribute('aria-pressed', String(!showPaper));
+      tabPaper.setAttribute('aria-pressed', String(showPaper));
+      panelAll.hidden = showPaper;
+      panelPaper.hidden = !showPaper;
+    }
+    tabAll.addEventListener('click', function () { activateHubsTab(false); });
+    tabPaper.addEventListener('click', function () { activateHubsTab(true); });
   }
 
   // ── 首页知识节点活跃度热力图（GitHub 风格，数据源 exports/wiki-activity.json）──
@@ -526,24 +585,6 @@
       return '<span class="' + cellClass + ' updates-badge-cell--empty" aria-hidden="true"></span>';
     }
 
-    function renderRepoStar(meta) {
-      if (!meta || !meta.has_repo) return '';
-      return '<span class="updates-item-opensource" aria-label="含开源仓库" title="含开源仓库">⭐️</span>';
-    }
-
-    function renderCommunityCat(meta) {
-      if (!meta || !meta.community_label) return '';
-      var label = typeof shortenCommunityLabel === 'function'
-        ? shortenCommunityLabel(meta.community_label)
-        : String(meta.community_label).replace(/\s*社区\s*$/, '').trim();
-      if (!label) return '';
-      return '<span class="updates-item-cat">' + escapeHtml(label) + '</span>';
-    }
-
-    function renderItemSuffix(meta) {
-      return renderRepoStar(meta) + renderCommunityCat(meta);
-    }
-
     // 首页紧凑模式（mount 带 data-compact）：只列最近 5 条单行记录；
     // 完整时间线与活跃度热力图迁至 change-log.html
     if (mount.hasAttribute('data-compact')) {
@@ -568,7 +609,7 @@
           '">' +
           escapeHtml(rowMeta.label || rowMeta.detail_id) +
           '</a>' +
-          renderItemSuffix(rowMeta) +
+          renderUpdatesItemSuffix(rowMeta) +
           '</span></li>';
       }
       mount.innerHTML =
@@ -613,7 +654,7 @@
         '<a class="updates-item-link" href="' + escapeHtml(detailHref(meta.detail_id)) + '">' +
         escapeHtml(meta.label || meta.detail_id) +
         '</a>' +
-        renderItemSuffix(meta) +
+        renderUpdatesItemSuffix(meta) +
         '</span></li>'
       );
     }
@@ -5053,6 +5094,24 @@
           mount.classList.remove('data-loading');
           mount.innerHTML = '<p class="data-meta">统计加载失败，请稍后刷新。</p>';
         }
+      });
+  }
+
+  // 完整互链榜单页：独立拉取 hub-rankings.json（全量，不塞进 home-stats）
+  var hubsPageRoot = document.getElementById('hubsPanelAll');
+  if (hubsPageRoot) {
+    fetch('exports/hub-rankings.json')
+      .then(function (response) {
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        return response.json();
+      })
+      .then(function (rankings) {
+        renderHubsPage(rankings);
+      })
+      .catch(function (error) {
+        console.warn('Hub rankings sync failed:', error);
+        hubsPageRoot.classList.remove('data-loading');
+        hubsPageRoot.innerHTML = '<p class="data-meta">互链榜单加载失败，请稍后刷新。</p>';
       });
   }
 

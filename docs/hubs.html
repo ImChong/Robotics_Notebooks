@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="description" content="Robotics Notebooks 互链枢纽完整榜单 - 按站内互链总数（无向度数）排序的全站与论文核心页。" />
+  <title>互链枢纽完整榜单 | Robotics Notebooks</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>" />
+  <script src="theme-init.js"></script>
+  <script id="sponsor-js" src="sponsor.js?v=2"></script>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1c1c1e" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-title" aria-label="机器人技术栈地图首页">🗺️ Robotics Notebooks | 机器人技术栈地图</a>
+      <div class="header-spacer"></div>
+      <div class="header-right">
+        <a href="https://github.com/ImChong/Robotics_Notebooks" class="github-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <button id="themeToggle" class="theme-toggle" aria-label="切换白天黑夜模式" title="切换白天黑夜模式">
+          <span class="icon-sun">☀️</span>
+          <span class="icon-moon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="hubs-section" aria-labelledby="hubs-heading">
+      <div class="container">
+        <div class="home-hub-head">
+          <h1 class="section-title" id="hubs-heading">互链枢纽完整榜单</h1>
+          <div class="home-hub-tabs" role="group" aria-label="切换全站 / 论文互链枢纽">
+            <button type="button" id="hubsTabAll" class="home-hub-tab is-active" aria-pressed="true">全站</button>
+            <button type="button" id="hubsTabPaper" class="home-hub-tab" aria-pressed="false">论文</button>
+          </div>
+        </div>
+        <p class="section-subtitle">按站内互链总数（无向度数）排序。首页仅展示 Top 10；本页列出全部节点。</p>
+        <p id="hubsMeta" class="data-meta hubs-meta" aria-live="polite"></p>
+        <div id="hubsPanelAll" class="home-hub-panel data-loading" aria-live="polite">
+          <p class="data-meta">正在加载互链统计…</p>
+        </div>
+        <div id="hubsPanelPaper" class="home-hub-panel" aria-live="polite" hidden></div>
+        <p class="home-hub-more"><a href="graph.html">在知识图谱中查看全站结构 →</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© Chong Liu 2026 · Robotics Notebooks</p>
+    </div>
+  </footer>
+
+  <script src="wiki-type-labels.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

@@ -957,6 +957,7 @@ def generate_sitemap(
         {"loc": base_url + "/", "priority": "1.0", "changefreq": "weekly"},
         {"loc": base_url + "/docs/index.html", "priority": "0.9", "changefreq": "weekly"},
         {"loc": base_url + "/docs/tech-map.html", "priority": "0.8", "changefreq": "weekly"},
+        {"loc": base_url + "/docs/hubs.html", "priority": "0.7", "changefreq": "weekly"},
     ]
 
     detail_pages = [item for item in items if item.get("type") in ("wiki_page", "entity_page")]
