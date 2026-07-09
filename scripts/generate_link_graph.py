@@ -1400,9 +1400,7 @@ def _compute_graph_stats(
             entry["community_label"] = community_label
         return entry
 
-    ranked_all = sorted(
-        nodes, key=lambda node: (-total_degree.get(node["id"], 0), str(node["id"]))
-    )
+    ranked_all = sorted(nodes, key=lambda node: (-total_degree.get(node["id"], 0), str(node["id"])))
     hub_list = [_hub_entry(node) for node in ranked_all[:10]]
 
     paper_nodes = [node for node in nodes if node.get("_is_paper")]
