@@ -559,7 +559,8 @@ body.sponsor-dialog-open {
 }
 .home-hub-row-type { color: var(--text-muted); font-size: .85rem; white-space: nowrap; }
 .home-hub-row-main { min-width: 0; }
-.home-hub-row-main > a { overflow-wrap: anywhere; }
+.home-hub-row-main > a { overflow-wrap: anywhere; padding-right: 0.55rem; }
+.home-hub-row-main > .updates-item-opensource { padding-right: 0.55rem; }
 .home-hub-row-degree {
   color: var(--text-muted);
   font-size: .8rem;
@@ -568,6 +569,7 @@ body.sponsor-dialog-open {
   justify-self: end;
 }
 .home-hub-more { margin-top: 18px; font-size: .9rem; }
+.hubs-meta { margin: 0 0 16px; }
 @media (max-width: 860px) {
   /* 窄屏：每条记录独立换行，不再跨行列对齐 */
   .home-hub-list {

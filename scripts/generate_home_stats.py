@@ -48,14 +48,19 @@ def hub_entries(graph_stats: dict[str, Any], key: str) -> list[dict[str, Any]]:
     for hub in hubs:
         if not isinstance(hub, dict) or not hub.get("detail_id"):
             continue
-        out.append(
-            {
-                "detail_id": str(hub["detail_id"]),
-                "label": str(hub.get("label") or hub["detail_id"]),
-                "type": str(hub.get("type") or ""),
-                "degree": int(hub.get("degree") or 0),
-            }
-        )
+        entry: dict[str, Any] = {
+            "detail_id": str(hub["detail_id"]),
+            "label": str(hub.get("label") or hub["detail_id"]),
+            "type": str(hub.get("type") or ""),
+            "degree": int(hub.get("degree") or 0),
+        }
+        # 与「最新知识节点」行一致：开源星标 + 社区标签
+        if hub.get("has_repo"):
+            entry["has_repo"] = True
+        community_label = hub.get("community_label")
+        if community_label:
+            entry["community_label"] = str(community_label)
+        out.append(entry)
     return out
 
 

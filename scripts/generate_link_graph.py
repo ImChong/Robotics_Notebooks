@@ -58,6 +58,7 @@ GRAPH_CONTENT_DIRS = (WIKI_DIR, ROADMAP_DIR)
 OUT_PATH = REPO_ROOT / "exports" / "link-graph.json"
 STATS_PATH = REPO_ROOT / "exports" / "graph-stats.json"
 ACTIVITY_PATH = REPO_ROOT / "exports" / "wiki-activity.json"
+HUB_RANKINGS_PATH = REPO_ROOT / "exports" / "hub-rankings.json"
 LOG_MD_PATH = REPO_ROOT / "log.md"
 # log.md 正文中出现的 wiki 相对路径（允许省略 .md，匹配至非标点为止）
 WIKI_PATH_IN_LOG = re.compile(r"wiki/(?:[\w./-]+/)+[\w./-]+(?:\.md)?", re.IGNORECASE)
@@ -1381,24 +1382,37 @@ def _compute_graph_stats(
         node["id"]: in_degree.get(node["id"], 0) + out_degree.get(node["id"], 0) for node in nodes
     }
 
+    community_labels = _community_label_map(community_meta)
+
     def _hub_entry(node: dict[str, Any]) -> dict[str, Any]:
-        # detail_id / type 供首页等无 site-data 上下文的消费方直接构造站内链接
-        return {
+        # detail_id / type / community_label / has_repo：与「最新知识节点」行格式对齐
+        entry: dict[str, Any] = {
             "id": node["id"],
             "detail_id": _wiki_node_detail_id(node["id"]),
             "label": node["label"],
             "type": node.get("type") or "",
             "degree": total_degree[node["id"]],
         }
+        if node.get("_has_repo_source"):
+            entry["has_repo"] = True
+        community_label = _community_label_for_node(node, community_labels)
+        if community_label:
+            entry["community_label"] = community_label
+        return entry
 
-    top_hubs = sorted(nodes, key=lambda node: total_degree.get(node["id"], 0), reverse=True)[:10]
-    hub_list = [_hub_entry(node) for node in top_hubs]
+    ranked_all = sorted(nodes, key=lambda node: (-total_degree.get(node["id"], 0), str(node["id"])))
+    hub_list = [_hub_entry(node) for node in ranked_all[:10]]
 
     paper_nodes = [node for node in nodes if node.get("_is_paper")]
-    top_paper_hubs = sorted(
-        paper_nodes, key=lambda node: total_degree.get(node["id"], 0), reverse=True
-    )[:10]
-    paper_hub_list = [_hub_entry(node) for node in top_paper_hubs]
+    ranked_papers = sorted(
+        paper_nodes, key=lambda node: (-total_degree.get(node["id"], 0), str(node["id"]))
+    )
+    paper_hub_list = [_hub_entry(node) for node in ranked_papers[:10]]
+    # 完整榜单供 hubs.html；graph-stats 仍只保留 Top-10 以控制入库体积
+    stats_hub_rankings = {
+        "all": [_hub_entry(node) for node in ranked_all],
+        "paper": [_hub_entry(node) for node in ranked_papers],
+    }
 
     orphans = [
         {"id": node["id"], "label": node["label"], "out_degree": out_degree.get(node["id"], 0)}
@@ -1466,6 +1480,7 @@ def _compute_graph_stats(
         },
         "latest_wiki_nodes": latest_wiki_nodes,
         "latest_wiki_node": latest_wiki_node,
+        "_hub_rankings": stats_hub_rankings,
     }
     return stats
 
@@ -1493,6 +1508,7 @@ def main() -> None:
     stats = _compute_graph_stats(
         nodes, edges, communities, community_meta, latest_nodes_max=latest_nodes_max
     )
+    hub_rankings = stats.pop("_hub_rankings")
 
     for node in nodes:
         node.pop("_is_paper", None)
@@ -1527,6 +1543,22 @@ def main() -> None:
     print(
         f"✅ graph-stats.json: {len(orphans)} orphans, "
         f"top hub='{hub_list[0]['label'] if hub_list else '-'}' → {STATS_PATH.relative_to(REPO_ROOT)}"
+    )
+
+    hub_rankings_payload = {
+        "generated_at": stats["generated_at"],
+        "node_count": stats["node_count"],
+        "edge_count": stats["edge_count"],
+        "all": hub_rankings["all"],
+        "paper": hub_rankings["paper"],
+    }
+    HUB_RANKINGS_PATH.write_text(
+        json.dumps(hub_rankings_payload, ensure_ascii=False, separators=(",", ":")),
+        encoding="utf-8",
+    )
+    print(
+        f"✅ hub-rankings.json: {len(hub_rankings['all'])} all / "
+        f"{len(hub_rankings['paper'])} paper → {HUB_RANKINGS_PATH.relative_to(REPO_ROOT)}"
     )
 
     activity_days = wiki_activity_from_log(

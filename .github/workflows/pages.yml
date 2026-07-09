@@ -31,8 +31,8 @@ jobs:
       - name: Install lightweight dependencies
         run: pip install -r requirements-ci-lite.txt
 
-      # 站点大 JSON（search-index / index-v1 / site-data-v1 / link-graph）与 sitemap
-      # 不入库，部署时现场生成（等价 make export graph，约 40s）
+      # 站点大 JSON（search-index / index-v1 / site-data-v1 / link-graph /
+      # hub-rankings）与 sitemap 不入库，部署时现场生成（等价 make export graph，约 40s）
       - name: Generate site data
         run: |
           python3 scripts/export_minimal.py
