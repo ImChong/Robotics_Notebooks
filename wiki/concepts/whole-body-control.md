@@ -2,7 +2,7 @@
 type: concept
 tags: [control, wbc, humanoid, optimization]
 status: complete
-updated: 2026-07-08
+updated: 2026-07-09
 related:
   - ../tasks/locomotion.md
   - ../methods/imitation-learning.md
@@ -180,6 +180,8 @@ print("joint acceleration command:", qdd_star)
 - [ReactiveBFM（论文实体）](../entities/paper-reactivebfm.md) — BFM 类 tracker + 闭环 AR-MDM 规划，缓解开环级联 exposure bias（arXiv:2606.30362）
 - [GentleHumanoid（上半身柔顺运动跟踪）](../methods/gentlehumanoid-motion-tracking.md) — 在 motion tracking 中集成阻抗参考动力学与可调力阈值
 - [PILOT（论文实体）](../entities/paper-pilot-perceptive-loco-manipulation.md) — 学习型 **单阶段 MoE 全身 LLC**：LiDAR 高程图 + 跨模态编码，作 loco-manipulation 上层 API（arXiv:2601.17440）
+- [KungfuBot 2 / VMS](../entities/paper-notebook-kungfubot-2.md) — OMoE 单策略多技能低层全身控制器，可作 text-to-motion 执行层（[PBHC](../../sources/repos/pbhc.md)）
+- [KungfuBot](../entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) — 高动态武术/舞蹈 physics-based WBT 真机案例
 
 ## 继续深挖入口
 

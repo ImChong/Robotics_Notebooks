@@ -13,12 +13,15 @@
 
 ## 核心摘录（策展，非全文）
 
-- 本文件锚定 **待深读** 论文在姊妹仓库 `progress.json` 中的条目；笔记完成后应改用笔记页链接并深化 wiki 归纳。
+- 本文件锚定 **待深读** 论文在姊妹仓库 `progress.json` 中的条目；**知识归纳已升格** 至 wiki 实体页（2026-07-09 ingest：项目页 + PBHC）。
+- 策展档案：[kungfubot2_vms_icra2026.md](./kungfubot2_vms_icra2026.md)、[pbhc.md](../repos/pbhc.md)
 - 知识归纳见 wiki 实体页：[paper-notebook-kungfubot-2](../../wiki/entities/paper-notebook-kungfubot-2.md).
 
 ## 对 wiki 的映射
 
 - [paper-notebook-kungfubot-2](../../wiki/entities/paper-notebook-kungfubot-2.md)
+- [pbhc.md](../repos/pbhc.md)
+- [kungfubot2_vms_icra2026.md](./kungfubot2_vms_icra2026.md)
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../../wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 
 ## 参考来源（原始）
