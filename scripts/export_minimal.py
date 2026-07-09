@@ -573,6 +573,8 @@ def _clean_paper_notebook_label(label: str, url: str, fallback_title: str = "") 
     text = re.sub(r"^机器人论文阅读笔记[:：]\s*", "", text)
     text = re.sub(r"^[深读笔记论]+[:：<\s]+", "", text)
     text = text.strip("<> ").strip()
+    if re.fullmatch(r"(?:机器人)?(?:深读)?(?:论文)?(?:阅读)?笔记", text):
+        text = ""
     if not text or len(text) < 3:
         stem = url.rsplit("/", 1)[-1].removesuffix(".html")
         text = stem.replace("__", ": ").replace("_", " ").strip()
