@@ -3231,39 +3231,65 @@
   var _detailCommunityIndex = null;
   var _detailCommunityIndexPromise = null;
 
+  function buildHasRepoIndex(rankings) {
+    var pathToHasRepo = new Map();
+    var detailIdToHasRepo = new Map();
+    var all = rankings && Array.isArray(rankings.all) ? rankings.all : [];
+    for (var hi = 0; hi < all.length; hi++) {
+      var hub = all[hi];
+      if (!hub || !hub.has_repo) continue;
+      if (hub.id) pathToHasRepo.set(hub.id, true);
+      if (hub.detail_id) detailIdToHasRepo.set(hub.detail_id, true);
+    }
+    return { pathToHasRepo: pathToHasRepo, detailIdToHasRepo: detailIdToHasRepo };
+  }
+
   function ensureDetailCommunityIndex() {
     if (_detailCommunityIndex) return Promise.resolve(_detailCommunityIndex);
     if (_detailCommunityIndexPromise) return _detailCommunityIndexPromise;
-    _detailCommunityIndexPromise = fetch('exports/link-graph.json')
-      .then(function (r) {
+    _detailCommunityIndexPromise = Promise.all([
+      fetch('exports/link-graph.json').then(function (r) {
         if (!r.ok) throw new Error('HTTP ' + r.status);
         return r.json();
-      })
-      .then(function (data) {
-        var pathToCommunity = new Map();
-        var nodes = data && data.nodes ? data.nodes : [];
-        for (var ni = 0; ni < nodes.length; ni++) {
-          var node = nodes[ni];
-          if (node && node.id && node.community) {
-            pathToCommunity.set(node.id, node.community);
-          }
+      }),
+      fetch('exports/hub-rankings.json').then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      }).catch(function () { return { all: [] }; })
+    ]).then(function (res) {
+      var data = res[0];
+      var rankings = res[1];
+      var pathToCommunity = new Map();
+      var nodes = data && data.nodes ? data.nodes : [];
+      for (var ni = 0; ni < nodes.length; ni++) {
+        var node = nodes[ni];
+        if (node && node.id && node.community) {
+          pathToCommunity.set(node.id, node.community);
         }
-        var communityLabel = {};
-        var communities = data && data.communities ? data.communities : [];
-        for (var ci = 0; ci < communities.length; ci++) {
-          var c = communities[ci];
-          if (c && c.id) communityLabel[c.id] = c.label || c.id;
-        }
-        _detailCommunityIndex = {
-          pathToCommunity: pathToCommunity,
-          communityLabel: communityLabel
-        };
-        return _detailCommunityIndex;
-      })
-      .catch(function () {
-        _detailCommunityIndex = { pathToCommunity: new Map(), communityLabel: {} };
-        return _detailCommunityIndex;
-      });
+      }
+      var communityLabel = {};
+      var communities = data && data.communities ? data.communities : [];
+      for (var ci = 0; ci < communities.length; ci++) {
+        var c = communities[ci];
+        if (c && c.id) communityLabel[c.id] = c.label || c.id;
+      }
+      var repoIndex = buildHasRepoIndex(rankings);
+      _detailCommunityIndex = {
+        pathToCommunity: pathToCommunity,
+        communityLabel: communityLabel,
+        pathToHasRepo: repoIndex.pathToHasRepo,
+        detailIdToHasRepo: repoIndex.detailIdToHasRepo
+      };
+      return _detailCommunityIndex;
+    }).catch(function () {
+      _detailCommunityIndex = {
+        pathToCommunity: new Map(),
+        communityLabel: {},
+        pathToHasRepo: new Map(),
+        detailIdToHasRepo: new Map()
+      };
+      return _detailCommunityIndex;
+    });
     return _detailCommunityIndexPromise;
   }
 
@@ -3276,11 +3302,18 @@
     var safePage = page || {};
     var communityLabel = safePage.community_label || '';
     var path = safePage.path || '';
+    var hasRepo = !!safePage.has_repo;
     if (communityIndex && path) {
       var cid = communityIndex.pathToCommunity.get(path);
       if (cid && communityIndex.communityLabel[cid]) {
         communityLabel = communityIndex.communityLabel[cid];
       }
+      if (!hasRepo && communityIndex.pathToHasRepo && communityIndex.pathToHasRepo.get(path)) {
+        hasRepo = true;
+      }
+    }
+    if (communityIndex && !hasRepo && detailId && communityIndex.detailIdToHasRepo) {
+      hasRepo = !!communityIndex.detailIdToHasRepo.get(detailId);
     }
     return {
       id: detailId,
@@ -3288,7 +3321,7 @@
       type: safePage.type,
       title: buildInternalLinkTitle(detailId, safePage),
       community_label: communityLabel,
-      has_repo: !!safePage.has_repo
+      has_repo: hasRepo
     };
   }
 
