@@ -570,6 +570,7 @@ body.sponsor-dialog-open {
 }
 .home-hub-more { margin-top: 18px; font-size: .9rem; }
 .hubs-meta { margin: 0 0 16px; }
+.hubs-list-actions { padding-left: 0; padding-right: 0; }
 @media (max-width: 860px) {
   /* 窄屏：每条记录独立换行，不再跨行列对齐 */
   .home-hub-list {
