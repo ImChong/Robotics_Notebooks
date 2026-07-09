@@ -1,13 +1,33 @@
 {
   "generated_at": "2026-07-09",
   "node_count": 1546,
-  "edge_count": 11120,
+  "edge_count": 11143,
   "coverage": {
-    "covered": 1509,
+    "covered": 1511,
     "total": 1539,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md",
+      "detail_id": "entity-paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont",
+      "label": "KungfuBot（Physics-Based Highly-Dynamic WBT）",
+      "type": "entity",
+      "recency": "2026-07-09",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-notebook-kungfubot-2.md",
+      "detail_id": "entity-paper-notebook-kungfubot-2",
+      "label": "KungfuBot 2（VMS — Versatile Motion Skills）",
+      "type": "entity",
+      "recency": "2026-07-09",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/hightorque-robotics.md",
       "detail_id": "entity-hightorque-robotics",
@@ -36,8 +56,7 @@
       "type": "entity",
       "recency": "2026-07-08",
       "source": "log.md",
-      "action": "added",
-      "community_label": "运动控制（Locomotion） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/unitree-unistore.md",
@@ -191,46 +210,30 @@
       "recency": "2026-07-08",
       "source": "log.md",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-athena-wbc-humanoid-longtail.md",
-      "detail_id": "entity-paper-athena-wbc-humanoid-longtail",
-      "label": "Athena-WBC：面向人形全身控制长尾的能力对齐策略专家",
-      "type": "entity",
-      "recency": "2026-07-08",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-quietwalk-humanoid-locomotion.md",
-      "detail_id": "entity-paper-quietwalk-humanoid-locomotion",
-      "label": "QuietWalk：面向多样鞋型的物理感知低噪人形行走",
-      "type": "entity",
-      "recency": "2026-07-07",
-      "source": "log.md",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/hightorque-robotics.md",
-    "detail_id": "entity-hightorque-robotics",
-    "label": "高擎机电（HighTorque Robotics）",
+    "path": "wiki/entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md",
+    "detail_id": "entity-paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont",
+    "label": "KungfuBot（Physics-Based Highly-Dynamic WBT）",
     "type": "entity",
     "recency": "2026-07-09",
     "source": "log.md",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+    "action": "maintained",
+    "has_repo": true
   },
   "top_communities": [
     {
       "label": "人形论文深读笔记",
-      "size": 258
+      "size": 251
     },
     {
       "label": "视觉-语言-动作",
-      "size": 179
+      "size": 180
+    },
+    {
+      "label": "移动操作",
+      "size": 172
     },
     {
       "label": "模仿学习",
@@ -241,12 +244,8 @@
       "size": 110
     },
     {
-      "label": "运动控制",
-      "size": 106
-    },
-    {
-      "label": "移动操作",
-      "size": 103
+      "label": "全身控制",
+      "size": 96
     }
   ],
   "top_hubs": [
@@ -254,14 +253,14 @@
       "detail_id": "wiki-overview-humanoid-paper-notebooks-index",
       "label": "Humanoid Paper Notebooks 知识库索引",
       "type": "overview",
-      "degree": 400,
+      "degree": 398,
       "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
     },
     {
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 263,
+      "degree": 266,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -269,7 +268,7 @@
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
-      "degree": 258,
+      "degree": 260,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
@@ -284,8 +283,8 @@
       "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",
       "label": "Paper Notebooks · Loco-Manipulation and WBC",
       "type": "overview",
-      "degree": 219,
-      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
+      "degree": 218,
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
       "detail_id": "wiki-methods-vla",
@@ -299,7 +298,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 204,
+      "degree": 207,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
@@ -321,7 +320,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 160,
+      "degree": 162,
       "has_repo": true,
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
     }

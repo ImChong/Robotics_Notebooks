@@ -175,6 +175,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 
 ## 参考来源
 - [KungFuAthleteBot](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — G1 真机高动态武术 tracking（[source](../../sources/papers/kung_fu_athlete_bot.md)）
+- [KungfuBot](../entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) — IsaacGym→MuJoCo→G1 高动态 WBT sim2real（[PBHC](../../sources/repos/pbhc.md)）
 
 - Tobin et al. 2017, *Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World* — domain randomization 奠基论文
 - Peng et al. 2018, *Sim-to-Real Transfer of Robotic Control with Dynamics Randomization* — locomotion 控制迁移基线

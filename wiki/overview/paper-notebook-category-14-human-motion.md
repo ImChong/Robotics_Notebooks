@@ -44,7 +44,7 @@ summary: "Paper Notebooks 分类 14：人体动作分析与生成（40 篇深读
 - [Humanoid Hanoi](../entities/paper-notebook-humanoid-hanoi-investigating-shared-whole-body-c.md) — 待深读
 - [Implicit Bézier Motion Model for Precise Spatial and Temporal Control](../entities/paper-notebook-implicit-b-zier-motion-model-for-precise-spatial.md) — 待深读
 - [Kimodo](../entities/kimodo.md) — 见 wiki 实体页
-- [KungfuBot](../entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) — 待深读
+- [KungfuBot](../entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) — NeurIPS 2025 高动态 WBT + PBHC 管线（[ingest](../../sources/repos/pbhc.md)）
 - [Learned Motion Matching](../methods/diffusion-motion-generation.md) — 见 wiki 实体页
 - [Learning Differentiable Reachability Maps for Optimization-based Humanoid Motion Generation](../entities/paper-notebook-learning-differentiable-reachability-maps-for-op.md) — 待深读
 - [Learning Humanoid End-Effector Control for Open-Vocabulary Visual Loco-Manipulation](../entities/paper-notebook-learning-humanoid-end-effector-control-for-open.md) — 待深读
