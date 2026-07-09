@@ -3413,6 +3413,65 @@
     return '';
   }
 
+  function cleanReferenceLabelText(text) {
+    if (!text) return '';
+    var cleaned = String(text).trim();
+    cleaned = cleaned.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+    cleaned = cleaned.replace(/\*\*/g, '');
+    cleaned = cleaned.replace(/[（(]\s*\[source\][^）)]*[）)]/gi, '');
+    cleaned = cleaned.replace(/[（(]\s*source\s*[）)]/gi, '');
+    cleaned = cleaned.replace(/\s+/g, ' ').trim();
+    return cleaned.replace(/^[：:，,。\s]+|[：:，,。\s]+$/g, '');
+  }
+
+  function looksLikeRepoPath(text) {
+    return /^(?:sources\/|\.\.\/|wiki\/|references\/)/i.test(text) || /\.md$/i.test(text);
+  }
+
+  function extractTitleAfterPathPrefix(label) {
+    var text = String(label || '');
+    var parts = text.split(/\s*[—–-]\s+/);
+    if (parts.length >= 2 && looksLikeRepoPath(parts[0])) {
+      return parts.slice(1).join(' — ').trim();
+    }
+    return '';
+  }
+
+  function titleFromSourceUrl(url) {
+    if (!url) return '';
+    try {
+      var parsed = new URL(url);
+      var base = parsed.pathname.split('/').pop() || '';
+      base = base.replace(/\.(md|html?)$/i, '');
+      if (!base || /^(source|sources|link|ref)$/i.test(base)) return '';
+      return base.replace(/[_-]+/g, ' ').replace(/\s+/g, ' ').trim();
+    } catch (err) {
+      return '';
+    }
+  }
+
+  function isGenericSourceLabel(label) {
+    return /^(source|sources|link|ref)$/i.test(String(label || '').trim());
+  }
+
+  function formatSourceLinkDisplayLabel(item, detailPages) {
+    if (!item) return '参考条目';
+    if (item.detail_id && detailPages && detailPages[item.detail_id] && detailPages[item.detail_id].title) {
+      return detailPages[item.detail_id].title;
+    }
+    var label = cleanReferenceLabelText(item.label || '');
+    var fromPath = extractTitleAfterPathPrefix(label);
+    if (fromPath) label = fromPath;
+    if (isGenericSourceLabel(label) && item.url) {
+      var fromUrl = titleFromSourceUrl(item.url);
+      if (fromUrl) label = fromUrl;
+    }
+    if (!label && item.url) label = titleFromSourceUrl(item.url);
+    if (!label) label = item.detail_id || '参考条目';
+    if (/^https?:\/\//i.test(label)) label = titleFromSourceUrl(label) || label;
+    return label;
+  }
+
   function renderSourceCards(container, links, emptyText, options) {
     if (!container) return;
     if (!Array.isArray(links) || !links.length) {
@@ -3427,13 +3486,22 @@
 
     if (options && options.compact) {
       var compactRows = '';
+      var detailPages = (options && options.detailPages) || {};
+      var seenSourceHrefs = {};
       for (var si = 0; si < links.length; si++) {
         var entry = links[si];
         var item = normalizeSourceLink(entry);
         var href = sourceLinkHref(entry);
+        if (href) {
+          if (seenSourceHrefs[href]) continue;
+          seenSourceHrefs[href] = true;
+        }
+        if (isGenericSourceLabel(item.label) && /github\.com\/[^/]+\/[^/]+\/blob\/main\/sources\//i.test(item.url || '')) {
+          continue;
+        }
         var isExternal = href && /^https?:/i.test(href);
         var typeLabel = item.detail_id ? '站内' : (isExternal ? '外链' : '来源');
-        var linkLabel = item.label || href || '参考条目';
+        var linkLabel = formatSourceLinkDisplayLabel(item, detailPages);
         var metaHtml = isExternal
           ? '<span title="' + escapeHtml(href) + '">↗</span>'
           : (item.detail_id ? '详情' : '');
@@ -3460,17 +3528,18 @@
       const item = normalizeSourceLink(entry);
       const href = sourceLinkHref(entry);
       const isExternal = href && /^https?:/i.test(href);
+      const displayLabel = formatSourceLinkDisplayLabel(item, (options && options.detailPages) || {});
       const linkHtml = href
         ? (isExternal
-          ? '<a href="' + escapeHtml(href) + '" target="_blank" rel="noopener noreferrer">打开来源</a>'
-          : '<a href="' + escapeHtml(href) + '">打开详情</a>')
+          ? '<a href="' + escapeHtml(href) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(displayLabel) + '</a>'
+          : '<a href="' + escapeHtml(href) + '">' + escapeHtml(displayLabel) + '</a>')
         : '';
       const titleHtml = linkHtml
         ? '<h3>' + linkHtml + '</h3>'
-        : '<h3>' + escapeHtml(item.label || '参考条目') + '</h3>';
+        : '<h3>' + escapeHtml(displayLabel || '参考条目') + '</h3>';
       const metaHtml = href
-        ? '<p class="data-submeta detail-source-url" title="' + escapeHtml(href) + '"><code>' + escapeHtml(item.label || href) + '</code></p>'
-        : '<p class="data-submeta">' + escapeHtml(item.label || '') + '</p>';
+        ? '<p class="data-submeta detail-source-url" title="' + escapeHtml(href) + '"><code>' + escapeHtml(href) + '</code></p>'
+        : '<p class="data-submeta">' + escapeHtml(displayLabel || '') + '</p>';
       html += '<article class="card data-card">' +
         '  <div>' +
         '    ' + titleHtml +
@@ -4357,7 +4426,10 @@
       }
     }
 
-    renderSourceCards(sourceEl, detailPage.source_links, '当前 detail page 暂无来源链接。', { compact: true });
+    renderSourceCards(sourceEl, detailPage.source_links, '当前 detail page 暂无来源链接。', {
+      compact: true,
+      detailPages: detailPages
+    });
 
     renderDetailMiniMap(detailPage, detailPages);
     renderDetailRecentIngestTimeline(detailPage);
