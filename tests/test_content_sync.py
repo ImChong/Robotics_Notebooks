@@ -490,9 +490,44 @@ console.log('ok');
             "stripLinkedReferenceSourceLines(",
             "function stripDetailContentSections(markdown, sectionLabels)",
             "stripDetailContentSections(detailPage.content_markdown || '', DETAIL_CONTENT_SKIP_SECTIONS)",
+            "function decodeBasicHtmlEntities(text)",
+            "function stripAngleBracketAutolinks(text)",
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
+
+    def test_main_js_clean_reference_label_strips_angle_bracket_autolinks(self):
+        node = r"""
+const fs = require('fs');
+const content = fs.readFileSync(process.argv[2], 'utf8');
+const start = content.indexOf('function decodeBasicHtmlEntities');
+const end = content.indexOf('function looksLikeRepoPath', start);
+eval(content.slice(start, end));
+const samples = [
+  ['FastStair 论文 HTML：<', 'FastStair 论文 HTML'],
+  ['wechat.md — <https://mp.weixin.qq.com/s/example>', 'wechat.md'],
+  ['BOM &lt;$400', 'BOM <$400'],
+];
+for (const [input, expected] of samples) {
+  const got = cleanReferenceLabelText(input);
+  if (got !== expected) throw new Error('expected ' + JSON.stringify(expected) + ' got ' + JSON.stringify(got));
+}
+console.log('ok');
+"""
+        import subprocess
+        import tempfile
+
+        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tmp:
+            tmp.write(node)
+            tmp_path = tmp.name
+        result = subprocess.run(
+            ["node", tmp_path, str(MAIN_JS)],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
+        self.assertIn("ok", result.stdout)
 
     def test_strip_detail_content_sections_removes_related_heading_block(self):
         node = r"""

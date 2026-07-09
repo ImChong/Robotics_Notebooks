@@ -46,6 +46,34 @@ class ReferenceSourcesExportTests(unittest.TestCase):
         labels = [entry["label"] for entry in sources]
         self.assertFalse(any("Tobin" in label for label in labels))
 
+    def test_clean_reference_label_strips_angle_bracket_autolinks(self) -> None:
+        from export_minimal import clean_reference_label, parse_reference_line
+
+        path = ROOT / "wiki" / "concepts" / "sample.md"
+        samples = [
+            (
+                "- FastStair 论文 HTML：<https://arxiv.org/html/2601.10365v1>",
+                "FastStair 论文 HTML",
+            ),
+            (
+                "- [wechat.md](../../sources/blogs/wechat.md) — <https://mp.weixin.qq.com/s/example>",
+                "wechat.md",
+            ),
+            (
+                "- 论文 PDF：<https://arxiv.org/pdf/2602.08602>",
+                "论文 PDF",
+            ),
+            (
+                "- sources/papers/barkour.md — Barkour：>1m/s 敏捷动作",
+                "sources/papers/barkour.md — Barkour：>1m/s 敏捷动作",
+            ),
+        ]
+        for line, expected in samples:
+            entries = parse_reference_line(line, path)
+            self.assertEqual(entries[0]["label"], expected, msg=line)
+            self.assertNotIn("<", entries[0]["label"])
+        self.assertEqual(clean_reference_label("BOM &lt;$400"), "BOM <$400")
+
 
 if __name__ == "__main__":
     unittest.main()

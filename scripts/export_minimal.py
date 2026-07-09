@@ -387,12 +387,33 @@ def collect_external_links(text: str) -> List[str]:
 GITHUB_BLOB_BASE = "https://github.com/ImChong/Robotics_Notebooks/blob/main/"
 
 
+def decode_basic_html_entities(text: str) -> str:
+    return (
+        text.replace("&lt;", "<")
+        .replace("&gt;", ">")
+        .replace("&amp;", "&")
+        .replace("&quot;", '"')
+        .replace("&#39;", "'")
+    )
+
+
+def strip_angle_bracket_autolinks(text: str) -> str:
+    """Remove <https://...> autolinks and orphan '<' left after URL extraction."""
+    text = re.sub(r"<\s*https?://[^>\s]+\s*>", "", text, flags=re.IGNORECASE)
+    text = re.sub(r"([—–\-:：])\s*<\s*(?=$|[；;])", r"\1", text)
+    text = re.sub(r"<\s*$", "", text)
+    return text
+
+
 def clean_reference_label(text: str) -> str:
-    text = text.strip()
+    text = decode_basic_html_entities(text.strip())
     text = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", text)
     text = text.replace("**", "")
+    text = strip_angle_bracket_autolinks(text)
+    text = re.sub(r"[（(]\s*[）)]", "", text)
     text = re.sub(r"\s+", " ", text)
-    return text.strip(" ：:，,。")
+    text = text.strip(" ：:，,。;；—–-")
+    return text
 
 
 def extract_section_body(text: str, heading_labels: List[str]) -> str:
@@ -453,6 +474,7 @@ def parse_reference_line(line: str, current_path: Path) -> List[Dict[str, str]]:
                 tail = tail.lstrip("—-").strip()
                 if tail:
                     label = f"{label} — {tail}"
+            label = clean_reference_label(label)
             entry: Dict[str, str] = {"label": label}
             entry.update(resolve_reference_target(target, current_path))
             entries.append(entry)
@@ -461,8 +483,8 @@ def parse_reference_line(line: str, current_path: Path) -> List[Dict[str, str]]:
     urls = re.findall(r"https?://[^)\s>]+", stripped)
     if urls:
         url = urls[0].rstrip(".,")
-        label = clean_reference_label(re.sub(r"https?://\S+", "", stripped))
-        if not label:
+        label = clean_reference_label(stripped)
+        if not label or label in {"<", ">"}:
             label = url
         return [{"label": label, "url": url}]
 
@@ -551,6 +573,8 @@ def _clean_paper_notebook_label(label: str, url: str, fallback_title: str = "") 
     text = re.sub(r"^机器人论文阅读笔记[:：]\s*", "", text)
     text = re.sub(r"^[深读笔记论]+[:：<\s]+", "", text)
     text = text.strip("<> ").strip()
+    if re.fullmatch(r"(?:机器人)?(?:深读)?(?:论文)?(?:阅读)?笔记", text):
+        text = ""
     if not text or len(text) < 3:
         stem = url.rsplit("/", 1)[-1].removesuffix(".html")
         text = stem.replace("__", ": ").replace("_", " ").strip()
