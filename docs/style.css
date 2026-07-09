@@ -23,7 +23,7 @@
   /* 负边距 TOC 完整露出： (vw - content-max) / 2 + container-padding - (toc宽+gap) ≥ 0 → vw ≥ 1632 */
   --detail-toc-desktop-min: 1632px;
   /* 侧栏 / 抽屉 TOC 卡片封顶高度（列表区内部滚动，避免浮窗几乎铺满视口） */
-  --detail-toc-panel-max-height: min(60vh, 460px);
+  --detail-toc-panel-max-height: min(76vh, 680px);
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Noto Sans SC", sans-serif;
   --transition: 0.3s ease;
 }
