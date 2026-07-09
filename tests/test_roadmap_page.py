@@ -36,6 +36,7 @@ class RoadmapPageTests(unittest.TestCase):
             "findRoadmapStageEntryAnchor",
             "bindSelftestMermaidRerender",
             "roadmap-stage-entry-embed",
+            "renderDetailToc(tocEl, headings, roadmapMarkdownContext, { maxLevel: 2 })",
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, content)

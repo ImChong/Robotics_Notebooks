@@ -2661,7 +2661,15 @@
     return html;
   }
 
-  function renderDetailToc(container, headings, markdownContext) {
+  function filterHeadingsForToc(headings, options) {
+    const maxLevel = options && options.maxLevel;
+    if (!maxLevel) return headings;
+    return headings.filter(function (heading) {
+      return heading.level <= maxLevel;
+    });
+  }
+
+  function renderDetailToc(container, headings, markdownContext, options) {
     if (!container) return;
     if (!Array.isArray(headings) || !headings.length) {
       container.innerHTML = '<p class="data-meta">当前正文较短，暂不生成目录。</p>';
@@ -2669,8 +2677,41 @@
       return;
     }
 
-    container.innerHTML = renderDetailTocList(buildDetailTocTree(headings), markdownContext);
+    const tocHeadings = filterHeadingsForToc(headings, options);
+    if (!tocHeadings.length) {
+      container.innerHTML = '<p class="data-meta">当前正文较短，暂不生成目录。</p>';
+      removeLoadingState(container);
+      return;
+    }
+
+    container.innerHTML = renderDetailTocList(buildDetailTocTree(tocHeadings), markdownContext);
     removeLoadingState(container);
+  }
+
+  function resolveTocActiveHref(activeId, navItems, headings) {
+    const directHref = '#' + activeId;
+    const navHrefs = new Set();
+    navItems.forEach(function (item) {
+      const href = item.getAttribute('href') || item.getAttribute('data-href') || '';
+      if (href) navHrefs.add(href);
+    });
+    if (navHrefs.has(directHref)) return directHref;
+
+    let activeIdx = -1;
+    for (let i = 0; i < headings.length; i++) {
+      if (headings[i].id === activeId) {
+        activeIdx = i;
+        break;
+      }
+    }
+    for (let j = activeIdx; j >= 0; j--) {
+      const href = '#' + headings[j].id;
+      if (navHrefs.has(href)) return href;
+    }
+
+    const firstItem = navItems[0];
+    if (!firstItem) return directHref;
+    return firstItem.getAttribute('href') || firstItem.getAttribute('data-href') || directHref;
   }
 
   function bindDetailTocEntryNavigation(tocContainer) {
@@ -2753,7 +2794,7 @@
       headings.forEach(function (heading) {
         if (heading.getBoundingClientRect().top <= 140) activeId = heading.id;
       });
-      const activeHref = '#' + activeId;
+      const activeHref = resolveTocActiveHref(activeId, navItems, headings);
       navItems.forEach(function (item) {
         const itemHref = item.getAttribute('href') || item.getAttribute('data-href') || '';
         item.classList.toggle('active', itemHref === activeHref);
@@ -4522,7 +4563,7 @@
       routeIndex: markdownRouteIndex
     };
     if (tocEl) {
-      renderDetailToc(tocEl, headings, roadmapMarkdownContext);
+      renderDetailToc(tocEl, headings, roadmapMarkdownContext, { maxLevel: 2 });
     }
     renderDetailMetaSource(detail, 'roadmapContentSourceLink');
     if (contentEl) {
