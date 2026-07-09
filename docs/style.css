@@ -569,6 +569,62 @@ body.sponsor-dialog-open {
   justify-self: end;
 }
 .home-hub-more { margin-top: 18px; font-size: .9rem; }
+/* 详情页关联区块：复用互链枢纽紧凑行（类型 / 标题+后缀 / 尾列元信息） */
+.detail-compact-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+  column-gap: 12px;
+  row-gap: 10px;
+  align-items: baseline;
+}
+.detail-compact-row { display: contents; }
+.detail-compact-type {
+  color: var(--text-muted);
+  font-size: .85rem;
+  white-space: nowrap;
+}
+.detail-compact-main { min-width: 0; }
+.detail-compact-main > a {
+  overflow-wrap: anywhere;
+  padding-right: 0.55rem;
+}
+.detail-compact-main > .updates-item-opensource {
+  padding-right: 0.55rem;
+}
+.detail-compact-meta {
+  color: var(--text-muted);
+  font-size: .8rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  justify-self: end;
+}
+.detail-compact-meta--empty { visibility: hidden; }
+.detail-compact-mount { min-width: 0; }
+@media (max-width: 860px) {
+  .detail-compact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .detail-compact-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 8px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .detail-compact-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .detail-compact-type, .detail-compact-meta { font-size: .78rem; }
+  .detail-compact-meta--empty { display: none; }
+  .detail-compact-main {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
 .hubs-meta { margin: 0 0 16px; }
 .hubs-list-actions { padding-left: 0; padding-right: 0; }
 @media (max-width: 860px) {
@@ -876,34 +932,6 @@ button.home-wiki-heatmap-cell.is-active {
   word-break: keep-all;
   line-break: strict;
 }
-.detail-recent-ingest-timeline { display: grid; gap: 10px; }
-.detail-recent-ingest-item {
-  display: flex;
-  align-items: baseline;
-  gap: 14px;
-  padding: 12px 16px;
-  border: 1px solid var(--border);
-  border-left: 3px solid rgba(45,116,218,.45);
-  border-radius: 10px;
-  text-decoration: none;
-  color: var(--text);
-  transition: border-color var(--transition), background var(--transition), transform var(--transition);
-}
-.detail-recent-ingest-item:hover {
-  border-color: rgba(45,116,218,.5);
-  background: rgba(45,116,218,.06);
-  transform: translateX(2px);
-}
-.detail-recent-ingest-date {
-  flex: 0 0 auto;
-  font-size: .82rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  font-variant-numeric: tabular-nums;
-}
-.detail-recent-ingest-body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.detail-recent-ingest-type { font-size: .76rem; color: var(--text-muted); }
-.detail-recent-ingest-label { font-weight: 650; letter-spacing: -.01em; }
 .card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .card {
   padding: 20px;
@@ -1265,31 +1293,6 @@ button.home-wiki-heatmap-cell.is-active {
 /* 详情/路线主栏已由 flex 限宽，勿再叠 72ch 导致副标题提前换行 */
 .detail-content-main .section-subtitle {
   max-width: none;
-}
-/* Detail page — 来源链接：超长 URL 单行省略，悬停 title 显示完整地址 */
-#detailSourceList > article.card {
-  min-width: 0;
-}
-/* .data-card 为 grid，子 div 默认 min-width:auto 会被长 URL 撑破省略号容器 */
-#detailSourceList article.data-card > div {
-  min-width: 0;
-  max-width: 100%;
-  overflow: hidden;
-}
-.detail-source-url {
-  min-width: 0;
-  max-width: 100%;
-  overflow: hidden;
-}
-.detail-source-url code {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  box-sizing: border-box;
 }
 .detail-toc-panel {
   width: 320px;
