@@ -67,9 +67,52 @@ async function waitForDetailPageReady(page) {
           const root = document.getElementById('detailSourceList');
           if (!root) return false;
           return (
+            root.querySelector('.detail-compact-list') !== null ||
             root.querySelector('.detail-source-url') !== null ||
             /暂无来源|无可展示/.test(root.textContent || '')
           );
+        },
+        { timeout: 90000 }
+      );
+    }
+
+    if (anchorId === 'detail-related') {
+      await page.waitForSelector('#detailRelatedList:not(.data-loading)', { timeout: 90000 });
+      await page.waitForFunction(
+        function () {
+          const root = document.getElementById('detailRelatedList');
+          if (!root) return false;
+          return (
+            root.querySelector('.detail-compact-list') !== null ||
+            /暂无关联|无可展示/.test(root.textContent || '')
+          );
+        },
+        { timeout: 90000 }
+      );
+    }
+
+    if (anchorId === 'detail-recommended') {
+      await page.waitForSelector('#detailRecommendedList:not(.data-loading)', { timeout: 90000 });
+      await page.waitForFunction(
+        function () {
+          const root = document.getElementById('detailRecommendedList');
+          if (!root) return false;
+          return (
+            root.querySelector('.detail-compact-list') !== null ||
+            /暂无.*推荐|无可展示/.test(root.textContent || '')
+          );
+        },
+        { timeout: 90000 }
+      );
+    }
+
+    if (anchorId === 'detail-recent-ingest-section') {
+      await page.waitForSelector('#detail-recent-ingest-section:not([hidden])', { timeout: 90000 });
+      await page.waitForFunction(
+        function () {
+          const root = document.getElementById('detailRecentIngestTimeline');
+          if (!root) return false;
+          return root.querySelector('.home-latest-list') !== null;
         },
         { timeout: 90000 }
       );
