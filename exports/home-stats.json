@@ -254,61 +254,76 @@
       "detail_id": "wiki-overview-humanoid-paper-notebooks-index",
       "label": "Humanoid Paper Notebooks 知识库索引",
       "type": "overview",
-      "degree": 400
+      "degree": 400,
+      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
     },
     {
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 262
+      "degree": 262,
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
-      "degree": 258
+      "degree": 258,
+      "has_repo": true,
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 224
+      "degree": 224,
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",
       "label": "Paper Notebooks · Loco-Manipulation and WBC",
       "type": "overview",
-      "degree": 219
+      "degree": 219,
+      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
     },
     {
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 216
+      "degree": 216,
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 203
+      "degree": 203,
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
     {
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 194
+      "degree": 194,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
       "label": "人形机器人 RL 运动控制：身体系统栈视角",
       "type": "overview",
-      "degree": 182
+      "degree": 182,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 160
+      "degree": 160,
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     }
   ],
   "top_paper_hubs": [
@@ -316,13 +331,16 @@
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",
       "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
       "type": "entity",
-      "degree": 42
+      "degree": 42,
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",
       "label": "OmniRetarget",
       "type": "entity",
-      "degree": 42
+      "degree": 42,
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
@@ -340,7 +358,8 @@
       "detail_id": "entity-paper-twist2",
       "label": "TWIST2",
       "type": "entity",
-      "degree": 34
+      "degree": 34,
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
@@ -352,13 +371,15 @@
       "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",
       "label": "SD-AMP：统一走、跑与起身的对抗运动先验",
       "type": "entity",
-      "degree": 29
+      "degree": 29,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "detail_id": "entity-paper-loco-manip-04-oasis",
       "label": "OASIS（From Simulation Data Collection to Real-World Humanoid Loco-Manipulation）",
       "type": "entity",
-      "degree": 27
+      "degree": 27,
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-perceptive-bfm",

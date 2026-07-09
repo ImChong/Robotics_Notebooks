@@ -163,6 +163,21 @@ class PaperHubStatsTest(unittest.TestCase):
             self.assertNotIn("/", hub["detail_id"])
             self.assertIn("type", hub)
 
+    def test_hub_entries_include_community_and_optional_repo(self) -> None:
+        """互链枢纽行与最新知识节点对齐：带 community_label，开源页带 has_repo。"""
+        nodes, edges = glg._build_graph_data()
+        communities, community_meta = glg.assign_communities(nodes, edges)
+        stats = glg._compute_graph_stats(nodes, edges, communities, community_meta)
+        hubs = stats["top_hubs"]
+        self.assertTrue(hubs)
+        labeled = [h for h in hubs if h.get("community_label")]
+        self.assertTrue(labeled, "Top hubs should usually carry community_label")
+        for hub in hubs:
+            if hub.get("has_repo"):
+                self.assertIs(hub["has_repo"], True)
+            else:
+                self.assertNotIn("has_repo", hub)
+
     def test_hub_rankings_cover_all_nodes_sorted_desc(self) -> None:
         """完整榜单：全站 / 论文按互链度降序，供 hubs.html 消费。"""
         nodes, edges = glg._build_graph_data()

@@ -559,7 +559,8 @@ body.sponsor-dialog-open {
 }
 .home-hub-row-type { color: var(--text-muted); font-size: .85rem; white-space: nowrap; }
 .home-hub-row-main { min-width: 0; }
-.home-hub-row-main > a { overflow-wrap: anywhere; }
+.home-hub-row-main > a { overflow-wrap: anywhere; padding-right: 0.55rem; }
+.home-hub-row-main > .updates-item-opensource { padding-right: 0.55rem; }
 .home-hub-row-degree {
   color: var(--text-muted);
   font-size: .8rem;

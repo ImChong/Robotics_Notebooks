@@ -1382,15 +1382,23 @@ def _compute_graph_stats(
         node["id"]: in_degree.get(node["id"], 0) + out_degree.get(node["id"], 0) for node in nodes
     }
 
+    community_labels = _community_label_map(community_meta)
+
     def _hub_entry(node: dict[str, Any]) -> dict[str, Any]:
-        # detail_id / type 供首页等无 site-data 上下文的消费方直接构造站内链接
-        return {
+        # detail_id / type / community_label / has_repo：与「最新知识节点」行格式对齐
+        entry: dict[str, Any] = {
             "id": node["id"],
             "detail_id": _wiki_node_detail_id(node["id"]),
             "label": node["label"],
             "type": node.get("type") or "",
             "degree": total_degree[node["id"]],
         }
+        if node.get("_has_repo_source"):
+            entry["has_repo"] = True
+        community_label = _community_label_for_node(node, community_labels)
+        if community_label:
+            entry["community_label"] = community_label
+        return entry
 
     ranked_all = sorted(
         nodes, key=lambda node: (-total_degree.get(node["id"], 0), str(node["id"]))
