@@ -3272,6 +3272,26 @@
     return String(label).replace(/\s*社区\s*$/, '').trim() || '未分类';
   }
 
+  function buildCompactPageRowMeta(page, detailId, communityIndex) {
+    var safePage = page || {};
+    var communityLabel = safePage.community_label || '';
+    var path = safePage.path || '';
+    if (communityIndex && path) {
+      var cid = communityIndex.pathToCommunity.get(path);
+      if (cid && communityIndex.communityLabel[cid]) {
+        communityLabel = communityIndex.communityLabel[cid];
+      }
+    }
+    return {
+      id: detailId,
+      detail_id: detailId,
+      type: safePage.type,
+      title: buildInternalLinkTitle(detailId, safePage),
+      community_label: communityLabel,
+      has_repo: !!safePage.has_repo
+    };
+  }
+
   function renderRelatedCommunityDistribution(wrapperEl, ids, detailPages) {
     if (!wrapperEl) return;
     var barsEl = document.getElementById('detailRelatedCommunityDistBars');
@@ -3351,23 +3371,26 @@
     }
 
     if (options && options.compact) {
-      var compactRows = '';
-      for (var ci = 0; ci < ids.length; ci++) {
-        var compactId = ids[ci];
-        var compactPage = detailPages[compactId] || {};
-        compactRows += renderCompactHubStyleRow({
-          id: compactId,
-          detail_id: compactId,
-          type: compactPage.type,
-          title: buildInternalLinkTitle(compactId, compactPage),
-          community_label: compactPage.community_label || '',
-          has_repo: !!compactPage.has_repo
-        }, {
-          href: compactPage.type === 'roadmap_page' ? roadmapHref(compactId) : detailHref(compactId),
-          metaHtml: options.metaExtra ? escapeHtml(options.metaExtra(compactId, compactPage) || '') : ''
-        });
+      function renderCompactRows(communityIndex) {
+        var compactRows = '';
+        for (var ci = 0; ci < ids.length; ci++) {
+          var compactId = ids[ci];
+          var compactPage = detailPages[compactId] || {};
+          var rowMeta = buildCompactPageRowMeta(compactPage, compactId, communityIndex);
+          compactRows += renderCompactHubStyleRow(rowMeta, {
+            href: compactPage.type === 'roadmap_page' ? roadmapHref(compactId) : detailHref(compactId),
+            metaHtml: options.metaExtra ? escapeHtml(options.metaExtra(compactId, compactPage) || '') : ''
+          });
+        }
+        renderCompactHubStyleList(container, compactRows, emptyText);
       }
-      renderCompactHubStyleList(container, compactRows, emptyText);
+      if (options.enrichCommunity !== false) {
+        ensureDetailCommunityIndex()
+          .then(renderCompactRows)
+          .catch(function () { renderCompactRows(null); });
+        return;
+      }
+      renderCompactRows(null);
       return;
     }
 
@@ -4403,27 +4426,26 @@
 
     if (recommendedEl) {
       var recommendedItems = findRelatedByTags(detailId, detailPage.tags, detailPages, 5);
-      if (recommendedItems.length) {
+      function renderRecommendedRows(communityIndex) {
+        if (!recommendedItems.length) {
+          renderCompactHubStyleList(recommendedEl, '', '暂无 tag 匹配的相关推荐。');
+          return;
+        }
         var recommendedRows = '';
         for (var ri = 0; ri < recommendedItems.length; ri++) {
           var rec = recommendedItems[ri];
           var recPage = rec.page || detailPages[rec.id] || {};
-          recommendedRows += renderCompactHubStyleRow({
-            id: rec.id,
-            detail_id: rec.id,
-            type: recPage.type,
-            title: recPage.title || rec.id,
-            community_label: recPage.community_label || '',
-            has_repo: !!recPage.has_repo
-          }, {
+          var rowMeta = buildCompactPageRowMeta(recPage, rec.id, communityIndex);
+          recommendedRows += renderCompactHubStyleRow(rowMeta, {
             href: detailHref(rec.id),
             metaHtml: escapeHtml(rec.score + ' 标签')
           });
         }
         renderCompactHubStyleList(recommendedEl, recommendedRows, '暂无 tag 匹配的相关推荐。');
-      } else {
-        renderCompactHubStyleList(recommendedEl, '', '暂无 tag 匹配的相关推荐。');
       }
+      ensureDetailCommunityIndex()
+        .then(renderRecommendedRows)
+        .catch(function () { renderRecommendedRows(null); });
     }
 
     renderSourceCards(sourceEl, detailPage.source_links, '当前 detail page 暂无来源链接。', {
