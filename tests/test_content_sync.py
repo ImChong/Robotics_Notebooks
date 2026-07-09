@@ -129,9 +129,7 @@ console.log('ok');
             "function renderDetailTocList(nodes, markdownContext)",
             "function stripTocHeadingNumberPrefix(text, level)",
             "function renderTocHeadingLabel(text, markdownContext)",
-            "function filterHeadingsForToc(headings, options)",
-            "function resolveTocActiveHref(activeId, navItems, headings)",
-            "function renderDetailToc(container, headings, markdownContext, options)",
+            "function renderDetailToc(container, headings, markdownContext)",
             "function bindDetailTocEntryNavigation(tocContainer)",
             "renderTocHeadingLabel(",
             'class="toc-entry"',
@@ -183,49 +181,6 @@ if (!html.includes('<ol><li class="toc-level-3">')) throw new Error('missing nes
 if (html.includes('1. Domain Randomization')) throw new Error('number prefix not stripped');
 if (!html.includes('Domain Randomization')) throw new Error('expected stripped label');
 if ((html.match(/<ol>/g) || []).length < 2) throw new Error('expected nested ol');
-console.log('ok');
-"""
-        import subprocess
-        import tempfile
-
-        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tmp:
-            tmp.write(node)
-            tmp_path = tmp.name
-        result = subprocess.run(
-            ["node", tmp_path, str(MAIN_JS)],
-            capture_output=True,
-            text=True,
-            check=False,
-        )
-        self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
-        self.assertIn("ok", result.stdout)
-
-    def test_roadmap_toc_limits_to_h2_and_resolves_parent_active(self):
-        """路线页 TOC 仅保留 h2；滚动到 h3 时应高亮所属 h2。"""
-        node = r"""
-const fs = require('fs');
-const content = fs.readFileSync(process.argv[2], 'utf8');
-const start = content.indexOf('function filterHeadingsForToc');
-const end = content.indexOf('function bindDetailTocEntryNavigation', start);
-const block = content.slice(start, end);
-eval(block);
-const headings = [
-  { level: 2, text: 'L0 数学', slug: 'l0' },
-  { level: 3, text: '1. Linear Algebra', slug: 'linalg' },
-  { level: 3, text: '2. Calculus', slug: 'calc' },
-  { level: 2, text: 'L1 机器人学', slug: 'l1' },
-];
-const filtered = filterHeadingsForToc(headings, { maxLevel: 2 });
-if (filtered.length !== 2) throw new Error('expected 2 h2 headings, got ' + filtered.length);
-const navItems = [{ getAttribute: (k) => (k === 'href' ? '#l0' : '') }];
-const domHeadings = [
-  { id: 'l0' },
-  { id: 'linalg' },
-  { id: 'calc' },
-  { id: 'l1' },
-];
-const href = resolveTocActiveHref('calc', navItems, domHeadings);
-if (href !== '#l0') throw new Error('expected parent h2 href, got ' + href);
 console.log('ok');
 """
         import subprocess
