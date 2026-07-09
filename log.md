@@ -1,6 +1,6 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
-## [2026-07-09] ingest | sources/papers/humanoid_surgeon_nature_2026.md — UCSD Humanoid Surgeon Nature 2026 活体腹腔镜可行性；wiki/entities/paper-humanoid-surgeon-in-vivo-laparoscopy.md；交叉更新 teleoperation / paper-notebook-lapsurgie / paper-notebook-humanoids-in-hospitals
+## [2026-07-09] fix(ux) | docs/style.css — 路线/详情页 TOC 浮窗封顶 min(60vh, 460px)，列表区内滚动
 
 ## [2026-07-08] ingest | sources/papers/discrete_terrain_minimal_proximity_sensing_arxiv_2606_31912.md — ETH RSL 四足足底 ToF 最小感知离散地形；wiki/entities/paper-discrete-terrain-minimal-proximity-sensing.md；交叉更新 quadruped-robot / terrain-adaptation / stair-obstacle-perceptive-locomotion
 

@@ -22,6 +22,8 @@
   --content-max-width: 960px;
   /* 负边距 TOC 完整露出： (vw - content-max) / 2 + container-padding - (toc宽+gap) ≥ 0 → vw ≥ 1632 */
   --detail-toc-desktop-min: 1632px;
+  /* 侧栏 / 抽屉 TOC 卡片封顶高度（列表区内部滚动，避免浮窗几乎铺满视口） */
+  --detail-toc-panel-max-height: min(60vh, 460px);
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Noto Sans SC", sans-serif;
   --transition: 0.3s ease;
 }
@@ -1304,36 +1306,36 @@ button.home-wiki-heatmap-cell.is-active {
   border: 1px solid var(--border);
   background: var(--surface);
   box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  max-height: var(--detail-toc-panel-max-height);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.detail-toc-panel .detail-toc-list {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--text-muted) 48%, transparent) transparent;
+}
+.detail-toc-panel .detail-toc-list::-webkit-scrollbar {
+  width: 10px;
+}
+.detail-toc-panel .detail-toc-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.detail-toc-panel .detail-toc-list::-webkit-scrollbar-thumb {
+  background-color: color-mix(in srgb, var(--text-muted) 48%, transparent);
+  border-radius: 999px;
 }
 @media (min-width: 1632px) {
   .detail-toc-panel {
     /* width(320) + .detail-content-layout gap(40) — 与主栏对齐且不占横向滚动 */
     margin-left: -360px;
-    display: flex;
-    flex-direction: column;
-    /* 长目录超出视口时：卡片高度封顶，仅目录列表区域滚动 */
-    max-height: calc(100vh - 92px - 20px);
-    box-sizing: border-box;
-    overflow-x: hidden;
-  }
-  .detail-toc-panel .detail-toc-list {
-    min-height: 0;
-    min-width: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    scrollbar-width: thin;
-    scrollbar-color: color-mix(in srgb, var(--text-muted) 48%, transparent) transparent;
-  }
-  .detail-toc-panel .detail-toc-list::-webkit-scrollbar {
-    width: 10px;
-  }
-  .detail-toc-panel .detail-toc-list::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  .detail-toc-panel .detail-toc-list::-webkit-scrollbar-thumb {
-    background-color: color-mix(in srgb, var(--text-muted) 48%, transparent);
-    border-radius: 999px;
   }
 }
 .detail-toc-panel[hidden] {
@@ -1987,44 +1989,32 @@ button.home-wiki-heatmap-cell.is-active {
 @media (max-width: 1631px) {
   .detail-toc-panel {
     position: fixed;
-    top: 16px;
-    bottom: 96px; /* Avoid overlapping sidebar-toggle button */
+    top: 72px;
+    bottom: auto;
     left: -300px;
     width: 300px;
     height: auto;
+    max-height: var(--detail-toc-panel-max-height);
     margin: 0;
     padding: 20px;
     background: var(--bg);
     box-shadow: 2px 0 12px rgba(0,0,0,0.15);
     border-radius: 0 16px 16px 0;
     z-index: 1000;
-    overflow-x: hidden;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: color-mix(in srgb, var(--text-muted) 48%, transparent) transparent;
+    overflow: hidden;
     transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    display: block;
-    max-height: none;
-  }
-  .detail-toc-panel::-webkit-scrollbar {
-    width: 10px;
-  }
-  .detail-toc-panel::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  .detail-toc-panel::-webkit-scrollbar-thumb {
-    background-color: color-mix(in srgb, var(--text-muted) 48%, transparent);
-    border-radius: 999px;
-  }
-  .detail-toc-panel .detail-toc-list {
-    overflow-y: visible;
-    min-height: 0;
+    display: flex;
+    flex-direction: column;
   }
   .detail-toc-panel[hidden] {
     display: none;
   }
   .detail-toc-panel.open {
     left: 0;
+  }
+  .detail-toc-panel .detail-toc-list {
+    overflow-y: auto;
+    min-height: 0;
   }
   .sidebar-toggle {
     display: flex;
