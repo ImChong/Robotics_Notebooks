@@ -2,11 +2,12 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
 status: planned
-updated: 2026-06-26
+updated: 2026-07-09
 arxiv: "2503.12725"
 related:
   - ../overview/paper-notebook-category-06-manipulation.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ./paper-humanoid-surgeon-in-vivo-laparoscopy.md
 sources:
   - ../../sources/papers/humanoid_pnb_humanoids-in-hospitals-a-technical-study-of-huma.md
 summary: "Humanoids in Hospitals：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
@@ -50,6 +51,7 @@ Humanoids in Hospitals 的人形机器人学习论文条目，当前处于 Paper
 
 - 分类父节点：[paper-notebook-category-06-manipulation](../overview/paper-notebook-category-06-manipulation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- **姊妹活体路线：** 同 UCSD 团队的 [Humanoid Surgeon（Nature 2026）](./paper-humanoid-surgeon-in-vivo-laparoscopy.md) 将人形医院/手术路线推进至 **in vivo 腹腔镜** 系统评估
 
 ## 参考来源
 
