@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-09",
-  "node_count": 1546,
-  "edge_count": 11143,
+  "node_count": 1547,
+  "edge_count": 11161,
   "coverage": {
-    "covered": 1511,
-    "total": 1539,
+    "covered": 1512,
+    "total": 1540,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -29,6 +29,16 @@
       "has_repo": true
     },
     {
+      "path": "wiki/concepts/implicit-explicit-actuator-modeling.md",
+      "detail_id": "wiki-concepts-implicit-explicit-actuator-modeling",
+      "label": "Implicit / Explicit 执行器建模",
+      "type": "concept",
+      "recency": "2026-07-09",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/hightorque-robotics.md",
       "detail_id": "entity-hightorque-robotics",
       "label": "高擎机电（HighTorque Robotics）",
@@ -37,7 +47,7 @@
       "source": "log.md",
       "action": "added",
       "has_repo": true,
-      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "path": "wiki/entities/paper-humanoid-surgeon-in-vivo-laparoscopy.md",
@@ -56,7 +66,8 @@
       "type": "entity",
       "recency": "2026-07-08",
       "source": "log.md",
-      "action": "added"
+      "action": "added",
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "path": "wiki/entities/unitree-unistore.md",
@@ -76,7 +87,7 @@
       "recency": "2026-07-08",
       "source": "log.md",
       "action": "added",
-      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md",
@@ -96,8 +107,7 @@
       "recency": "2026-07-08",
       "source": "log.md",
       "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/methods/vla.md",
@@ -129,7 +139,7 @@
       "recency": "2026-07-08",
       "source": "log.md",
       "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/overview/tro-manip-category-01-data-scaling.md",
@@ -139,7 +149,7 @@
       "recency": "2026-07-08",
       "source": "log.md",
       "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/entities/paper-tro-manip-01-diversity-scaling.md",
@@ -149,7 +159,7 @@
       "recency": "2026-07-08",
       "source": "log.md",
       "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/tasks/manipulation.md",
@@ -159,7 +169,7 @@
       "recency": "2026-07-08",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/entities/paper-gap-graph-as-policy.md",
@@ -180,7 +190,7 @@
       "recency": "2026-07-08",
       "source": "log.md",
       "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/methods/pi07-policy.md",
@@ -189,8 +199,7 @@
       "type": "method",
       "recency": "2026-07-08",
       "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "action": "maintained"
     },
     {
       "path": "wiki/concepts/variational-automation.md",
@@ -201,15 +210,6 @@
       "source": "log.md",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-omnitactune-tactile-residual-adaptation.md",
-      "detail_id": "entity-paper-omnitactune-tactile-residual-adaptation",
-      "label": "OmniTacTune：视觉策略的触觉残差真机适应",
-      "type": "entity",
-      "recency": "2026-07-08",
-      "source": "log.md",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
@@ -225,27 +225,27 @@
   "top_communities": [
     {
       "label": "人形论文深读笔记",
-      "size": 251
-    },
-    {
-      "label": "视觉-语言-动作",
-      "size": 180
+      "size": 253
     },
     {
       "label": "移动操作",
-      "size": 172
+      "size": 173
+    },
+    {
+      "label": "操作",
+      "size": 159
     },
     {
       "label": "模仿学习",
-      "size": 119
-    },
-    {
-      "label": "仿真训练",
-      "size": 110
+      "size": 123
     },
     {
       "label": "全身控制",
-      "size": 96
+      "size": 102
+    },
+    {
+      "label": "运动控制",
+      "size": 83
     }
   ],
   "top_hubs": [
@@ -260,7 +260,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 266,
+      "degree": 269,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -307,7 +307,7 @@
       "label": "Manipulation",
       "type": "task",
       "degree": 195,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",

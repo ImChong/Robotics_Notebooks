@@ -3,9 +3,10 @@ type: query
 tags: [rl, locomotion, humanoid, legged, sim2real, actuator, pd-control]
 status: stable
 summary: "腿足与人形 RL 中如何把 Kp/Kd（刚度/阻尼）与仿真步长、控制频率及 sim2real 对齐的工程要点与决策流程。"
-updated: 2026-05-21
+updated: 2026-07-09
 related:
   - ../entities/paper-digit-humanoid-locomotion-rl.md
+  - ../concepts/implicit-explicit-actuator-modeling.md
   - ../entities/paper-cassie-biped-versatile-locomotion-rl.md
   - ../entities/paper-variable-stiffness-locomotion-rl.md
   - ../entities/paper-cassie-iterative-locomotion-sim2real.md
@@ -61,8 +62,11 @@ sources:
 | 栈 | 配置名 | 典型单位（关节空间） |
 |----|--------|----------------------|
 | legged_gym | `control.stiffness` / `control.damping` | N·m/rad，N·m·s/rad |
-| Isaac Lab `IdealPDActuator` | `stiffness` / `damping` | 与上类似，对应文档与实现中的 kp/kd |
+| Isaac Lab `ImplicitActuator` | `stiffness` / `damping`（引擎内积分 PD） | 数值更稳；偏理想电机 |
+| Isaac Lab `IdealPDActuator` | `stiffness` / `damping` | **explicit**：用户侧算 τ 再限幅写入仿真 |
 | MuJoCo `<position>` 执行器 | `kp`（及力矩相关属性） | 见 MuJoCo XML 参考中 actuator 章节 |
+
+**Implicit vs Explicit：** 上表中的 `ImplicitActuator` 与 `IdealPDActuator` 差别不在 Kp/Kd 符号，而在 **PD 由引擎算还是用户算**——会影响收敛与 Sim2Real。详见 [Implicit / Explicit 执行器建模](../concepts/implicit-explicit-actuator-modeling.md)。
 
 具体代码锚点与链接见 [原始资料索引](../../sources/notes/legged_humanoid_rl_pd_gains.md)。
 
