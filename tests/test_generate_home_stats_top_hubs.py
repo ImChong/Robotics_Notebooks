@@ -21,7 +21,11 @@ class HubEntriesTest(unittest.TestCase):
                     "degree": 262,
                 },
                 # 旧格式条目（无 detail_id）：跳过，避免首页渲染出断链
-                {"id": "wiki/tasks/loco-manipulation.md", "label": "Loco-Manipulation", "degree": 258},
+                {
+                    "id": "wiki/tasks/loco-manipulation.md",
+                    "label": "Loco-Manipulation",
+                    "degree": 258,
+                },
             ],
             "top_paper_hubs": [
                 {

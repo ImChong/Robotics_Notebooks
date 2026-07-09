@@ -555,7 +555,7 @@
       var maxRows = Math.min(items.length, 5);
       for (var cri = 0; cri < maxRows; cri++) {
         var rowMeta = items[cri];
-        var rowType = wikiTypeLabel(rowMeta.type, mount.hasAttribute('data-compact') ? 'node' : 'updates');
+        var rowType = wikiTypeLabel(rowMeta.type, 'updates');
         compactRows +=
           '<li class="home-latest-row"><span class="home-latest-row-date">' +
           escapeHtml(rowMeta.recency ? String(rowMeta.recency) : '') +
