@@ -2,7 +2,7 @@
 type: method
 tags: [il, behavior-cloning, diffusion-policy, sim2real]
 status: complete
-updated: 2026-07-08
+updated: 2026-07-09
 related:
   - ../concepts/humanoid-policy-network-architecture.md
   - ./bc-z.md
@@ -151,6 +151,7 @@ flowchart TD
 
 ## 参考来源
 - [KungFuAthleteBot](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — 高动态武术参考与 tracking+recovery（[source](../../sources/papers/kung_fu_athlete_bot.md)）
+- [KungfuBot 2 / VMS](../entities/paper-notebook-kungfubot-2.md) — 混合局部/全局跟踪 + 段级奖励的单策略多技能模仿（[ingest](../../sources/papers/kungfubot2_vms_icra2026.md)）
 
 - Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning* — DAgger 原论文
 - Chi et al., *Diffusion Policy: Visuomotor Policy Learning via Action Diffusion* — 生成式 IL 代表工作

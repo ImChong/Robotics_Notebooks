@@ -3,7 +3,7 @@ title: Curriculum Learning（课程学习）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-07-01
+updated: 2026-07-09
 summary: 从简单到复杂的渐进式训练策略，在机器人 RL 中用于解决稀疏奖励、地形多样性和任务复杂度梯度问题。
 ---
 
@@ -132,6 +132,7 @@ terrain_level = clip(terrain_level + delta, 0, max_level)
 - [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — Beyondmimic 的失败驱动采样说明了课程不只体现在地形难度，也体现在 reset 片段分布
 - **ingest 档案：** [sources/sites/kleiyn-efgcl.md](../../sources/sites/kleiyn-efgcl.md) — EFGCL：外部力引导课程（体操 spotting 隐喻）
 - **ingest 档案：** [sources/papers/bfm_humanoid_arxiv_2509_13780.md](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md) — BFM：mask curriculum 让条件生成策略覆盖多种位级掩码（关节 / 根 / 关键点等接口）
+- **ingest 档案：** [sources/papers/kungfubot_pbhc_neurips2025.md](../../sources/papers/kungfubot_pbhc_neurips2025.md) — KungfuBot：双层优化 **自适应跟踪容差** 课程（按当前误差动态调节，优于固定 factor）
 
 ---
 
@@ -145,3 +146,4 @@ terrain_level = clip(terrain_level + delta, 0, max_level)
 - [Privileged Training](./privileged-training.md) — teacher-student 框架常与课程学习结合
 - [HiPAN](../methods/hipan.md) — Path-Guided Curriculum Learning：用路径子目标做导航视界课程
 - [EFGCL](../methods/efgcl.md) — 外部辅助力幅度作为连续课程变量，服务高动态全身 RL
+- [KungfuBot](../entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) — 跟踪精度容差的双层优化自适应课程

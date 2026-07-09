@@ -3,7 +3,7 @@ type: comparison
 title: 人形参考运动与操作数据集选型（AMASS / LAFAN1 / OMOMO / PHUMA / Humanoid Everyday / KungFuAthlete）
 tags: [dataset, comparison, motion-retargeting, humanoid, mocap, unitree-g1, martial-arts]
 summary: "常用人形数据源的表示、任务域、是否预重定向与典型下游对照；含 KungFuAthlete 高动态武术扩展。"
-updated: 2026-07-06
+updated: 2026-07-09
 status: complete
 related:
   - ../concepts/motion-retargeting.md
@@ -139,6 +139,7 @@ flowchart TD
 - [OmniRetarget 数据集](../entities/omniretarget-dataset.md)
 - [GRAIL Loco-Manipulation Dataset](../entities/grail-locomanipulation-dataset.md)
 - [KungFuAthleteBot](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — 武术高动态 + tracking∪recovery
+- [KungfuBot / PBHC](../entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) — LAFAN/AMASS/视频 → SMPL 训练输入（[repo](../../sources/repos/pbhc.md)）
 - [Unitree G1](../entities/unitree-g1.md)
 
 ## 推荐继续阅读

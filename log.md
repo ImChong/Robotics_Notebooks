@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-09] ingest | sources/repos/pbhc.md + kungfubot 项目页 — PBHC 仓库与 KungfuBot/KungfuBot2 实体页升格；wiki/entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md、wiki/entities/paper-notebook-kungfubot-2.md
+
 ## [2026-07-09] ingest | sources/courses/isaac_lab_implicit_explicit_actuators.md — Isaac Lab/mjlab Implicit vs Explicit 执行器；wiki/concepts/implicit-explicit-actuator-modeling.md；交叉更新 sim2real / armature / actuator-network / legged-humanoid-rl-pd-gain-setting / isaac-lab
 
 ## [2026-07-09] ingest | sources/repos/hightorque_robotics.md — 高擎机电 GitHub 组织入库；wiki/entities/hightorque-robotics.md；交叉更新 paper-host-humanoid-standingup / open-source-humanoid-hardware / humanoid-robot

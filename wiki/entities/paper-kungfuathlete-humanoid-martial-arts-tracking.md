@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, martial-arts, dataset, balance-recovery, unitree-g1, reinforcement-learning, bit, gvhmr, gmr]
 status: complete
-updated: 2026-07-06
+updated: 2026-07-09
 arxiv: "2602.13656"
 venue: "arXiv 2026"
 related:
