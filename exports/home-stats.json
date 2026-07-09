@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-07-09",
-  "node_count": 1544,
-  "edge_count": 11100,
+  "node_count": 1545,
+  "edge_count": 11108,
   "coverage": {
-    "covered": 1507,
-    "total": 1537,
+    "covered": 1508,
+    "total": 1538,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-humanoid-surgeon-in-vivo-laparoscopy.md",
+      "detail_id": "entity-paper-humanoid-surgeon-in-vivo-laparoscopy",
+      "label": "Humanoid Surgeon（In Vivo Laparoscopic Feasibility）",
+      "type": "entity",
+      "recency": "2026-07-09",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
+    },
     {
       "path": "wiki/entities/paper-discrete-terrain-minimal-proximity-sensing.md",
       "detail_id": "entity-paper-discrete-terrain-minimal-proximity-sensing",
@@ -200,33 +210,22 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/nuwa-skill.md",
-      "detail_id": "entity-nuwa-skill",
-      "label": "Nuwa Skill（女娲.skill）",
-      "type": "entity",
-      "recency": "2026-07-07",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-discrete-terrain-minimal-proximity-sensing.md",
-    "detail_id": "entity-paper-discrete-terrain-minimal-proximity-sensing",
-    "label": "Learning Locomotion on Discrete Terrain via Minimal Proximity Sensing",
+    "path": "wiki/entities/paper-humanoid-surgeon-in-vivo-laparoscopy.md",
+    "detail_id": "entity-paper-humanoid-surgeon-in-vivo-laparoscopy",
+    "label": "Humanoid Surgeon（In Vivo Laparoscopic Feasibility）",
     "type": "entity",
-    "recency": "2026-07-08",
+    "recency": "2026-07-09",
     "source": "log.md",
     "action": "added",
-    "community_label": "运动控制（Locomotion） 社区"
+    "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
   },
   "top_communities": [
     {
       "label": "人形论文深读笔记",
-      "size": 256
+      "size": 258
     },
     {
       "label": "视觉-语言-动作",
@@ -307,7 +306,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 194,
+      "degree": 195,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
