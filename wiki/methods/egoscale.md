@@ -3,7 +3,7 @@
 type: method
 tags: [vla, egocentric-video, dexterous-manipulation, flow-matching, human-robot-transfer, imitation-learning, nvidia-gear, scaling-laws, nvidia]
 status: complete
-updated: 2026-07-01
+updated: 2026-07-09
 date: 2026-05-17
 summary: "EgoScale 用超两万小时、带腕与重定向高 DoF 手部标签的第一人称人视频预训练流式 VLA，实证人数据规模与验证损失近 log-linear 缩放且与真机灵巧表现强相关，再以小规模视点对齐的人–机 mid-training 把表示锚到机器人，从而在极少机端演示下获得高灵巧长程操作与 one-shot 迹象。"
 related:
