@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-07-09",
-  "node_count": 1549,
-  "edge_count": 11184,
+  "node_count": 1550,
+  "edge_count": 11201,
   "coverage": {
-    "covered": 1514,
-    "total": 1542,
+    "covered": 1515,
+    "total": 1543,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/dimensionalos-dimos.md",
+      "detail_id": "entity-dimensionalos-dimos",
+      "label": "DimOS（Dimensional 物理空间 Agent OS）",
+      "type": "entity",
+      "recency": "2026-07-09",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/paper-egowam-egocentric-human-wam-co-training.md",
       "detail_id": "entity-paper-egowam-egocentric-human-wam-co-training",
@@ -201,43 +211,34 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-kemo-event-driven-keyframe-memory-vla.md",
-      "detail_id": "entity-paper-kemo-event-driven-keyframe-memory-vla",
-      "label": "KEMO（Event-Driven Keyframe Memory for Long-Horizon Robot Manipulation with VLA Policies）",
-      "type": "entity",
-      "recency": "2026-07-08",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-egowam-egocentric-human-wam-co-training.md",
-    "detail_id": "entity-paper-egowam-egocentric-human-wam-co-training",
-    "label": "EgoWAM（野外 Egocentric 人数据 · World Action Model 协同训练）",
+    "path": "wiki/entities/dimensionalos-dimos.md",
+    "detail_id": "entity-dimensionalos-dimos",
+    "label": "DimOS（Dimensional 物理空间 Agent OS）",
     "type": "entity",
     "recency": "2026-07-09",
     "source": "log.md",
-    "action": "added"
+    "action": "added",
+    "has_repo": true
   },
   "top_communities": [
     {
       "label": "人形论文深读笔记",
-      "size": 252
+      "size": 251
     },
     {
       "label": "移动操作",
-      "size": 173
+      "size": 174
     },
     {
       "label": "模仿学习",
-      "size": 124
+      "size": 122
     },
     {
       "label": "视觉-语言-动作",
-      "size": 117
+      "size": 114
     },
     {
       "label": "操作",
