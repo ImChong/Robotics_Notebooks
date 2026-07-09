@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-07-09",
-  "node_count": 1545,
-  "edge_count": 11108,
+  "node_count": 1546,
+  "edge_count": 11120,
   "coverage": {
-    "covered": 1508,
-    "total": 1538,
+    "covered": 1509,
+    "total": 1539,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/hightorque-robotics.md",
+      "detail_id": "entity-hightorque-robotics",
+      "label": "高擎机电（HighTorque Robotics）",
+      "type": "entity",
+      "recency": "2026-07-09",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+    },
     {
       "path": "wiki/entities/paper-humanoid-surgeon-in-vivo-laparoscopy.md",
       "detail_id": "entity-paper-humanoid-surgeon-in-vivo-laparoscopy",
@@ -199,28 +210,18 @@
       "recency": "2026-07-07",
       "source": "log.md",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/cangjie-skill.md",
-      "detail_id": "entity-cangjie-skill",
-      "label": "Cangjie Skill",
-      "type": "entity",
-      "recency": "2026-07-07",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-humanoid-surgeon-in-vivo-laparoscopy.md",
-    "detail_id": "entity-paper-humanoid-surgeon-in-vivo-laparoscopy",
-    "label": "Humanoid Surgeon（In Vivo Laparoscopic Feasibility）",
+    "path": "wiki/entities/hightorque-robotics.md",
+    "detail_id": "entity-hightorque-robotics",
+    "label": "高擎机电（HighTorque Robotics）",
     "type": "entity",
     "recency": "2026-07-09",
     "source": "log.md",
     "action": "added",
-    "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
+    "has_repo": true,
+    "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
   },
   "top_communities": [
     {
@@ -233,11 +234,11 @@
     },
     {
       "label": "模仿学习",
-      "size": 120
+      "size": 119
     },
     {
       "label": "仿真训练",
-      "size": 109
+      "size": 110
     },
     {
       "label": "运动控制",
@@ -260,7 +261,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 262,
+      "degree": 263,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -276,7 +277,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 224,
+      "degree": 225,
       "community_label": "运动控制（Locomotion） 社区"
     },
     {
@@ -298,7 +299,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 203,
+      "degree": 204,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },

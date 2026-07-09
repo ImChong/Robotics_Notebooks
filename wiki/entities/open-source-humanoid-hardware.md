@@ -3,7 +3,7 @@
 type: entity
 tags: [humanoid, hardware, open-source, robotics, research, berkeley]
 status: complete
-updated: 2026-06-01
+updated: 2026-07-09
 related:
   - ../overview/humanoid-hardware-101-technology-map.md
   - ./humanoid-robot.md
@@ -18,6 +18,7 @@ related:
   - ./agibot-lingxi-x1.md
   - ./openloong.md
   - ./open-duck-mini.md
+  - ./hightorque-robotics.md
   - ../queries/humanoid-hardware-selection.md
   - ../roadmaps/humanoid-control-roadmap.md
 sources:
@@ -100,6 +101,13 @@ summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humano
 - **优点：** 社区活跃、文档与预训练 ONNX 公开；适合学习 **BAM 执行器辨识 + 模仿奖励** 在廉价硬件上的 sim2real。
 - **局限：** 舵机扭矩与背隙限制动态性能；与 Berkeley / 青龙等全尺寸研究平台不可直接类比。
 - **详情：** [Open Duck Mini](./open-duck-mini.md)
+
+## 2e. HighTorque Mini Pi Plus（桌面级小型人形 + 竞赛）
+
+- **特点：** ~65 cm、26–27 DoF、自研集成伺服关节；官方 GitHub 组织覆盖 **Isaac Lab BeyondMimic 全身跟踪**、**Isaac Gym PPO**、**OCS2 MPC+WBC** 与 **ROS sim2real**。
+- **优点：** RoboCup 人形小尺寸官方生态、ICRA 2026 发布；与 [HoST](./paper-host-humanoid-standingup.md) 起身扩展、Panthera-HT 机械臂同源关节模组。
+- **局限：** 小型平台动态与载荷能力与全尺寸人形不可直接类比；多软件栈环境依赖需自行对齐。
+- **详情：** [高擎机电（HighTorque Robotics）](./hightorque-robotics.md)
 
 ## 关联页面
 - [人形机器人 (Humanoid Robot)](./humanoid-robot.md)
