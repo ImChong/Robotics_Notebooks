@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, computer-vision, foundation-model, image-generation, segmentation, depth-estimation, deepmind, instruction-tuning, zero-shot]
 status: complete
-updated: 2026-06-09
+updated: 2026-07-09
 related:
   - ../concepts/generative-vision-pretraining.md
   - ../concepts/vision-backbones.md

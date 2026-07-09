@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, paper, human-pose, hmr, monocular-video, smpl, world-grounded, motion-retargeting, upstream, siggraph-asia-2024, tsinghua, zju]
 status: complete
-updated: 2026-07-06
+updated: 2026-07-09
 arxiv: "2409.06662"
 venue: SIGGRAPH Asia 2024
 summary: "GVHMR 用 Gravity-View 坐标逐帧估计单目视频人体姿态，再经相机运动恢复 world-grounded SMPL 全局轨迹，是人形「视频→重定向」链路最常见的上游 HMR 模块之一。"
@@ -19,6 +19,7 @@ related:
   - ./paper-htd-refine-monocular-hmr.md
   - ./paper-motion-cerebellum-tram.md
   - ./paper-opencap-monocular.md
+  - ./paper-face-anything-4d-face-reconstruction.md
 sources:
   - ../../sources/papers/gvhmr_arxiv_2409_06662.md
   - ../../sources/sites/gvhmr-zju3dv-github-io.md
@@ -142,6 +143,7 @@ flowchart LR
 - [HTD-Refine](./paper-htd-refine-monocular-hmr.md)
 - [TRAM](./paper-motion-cerebellum-tram.md)
 - [OpenCap Monocular](./paper-opencap-monocular.md) — 单手机生物力学运动学/动力学（WHAM 上游 + OpenSim），机器人重定向非默认路径
+- [Face Anything](./paper-face-anything-4d-face-reconstruction.md) — **面部** 4D 重建与密集跟踪（canonical coordinates）；与全身 SMPL 恢复互补
 
 ## 参考来源
 
