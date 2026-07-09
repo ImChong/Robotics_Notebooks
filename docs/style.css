@@ -2619,6 +2619,11 @@ button.home-wiki-heatmap-cell.is-active {
   .roadmap-kmap-leaf-type {
     display: none;
   }
+  /* 窄屏：叶子标签允许换行，避免省略号截断（悬停 title 在触屏上不可用） */
+  .roadmap-kmap-leaf-label {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
 }
 
 /* 嵌入正文各 L 章节下的单阶段「速览」块（与顶部整块二选一） */
@@ -2941,10 +2946,17 @@ button.home-wiki-heatmap-cell.is-active {
   font-variant-numeric: tabular-nums;
 }
 @media (max-width: 540px) {
+  /* 窄屏：标签独占首行并允许换行，进度条 + 计数移至次行，避免固定窄列截断长标签 */
   .related-community-bar-row {
-    grid-template-columns: 110px 1fr 46px;
-    gap: 8px;
+    grid-template-columns: 1fr 46px;
+    gap: 2px 8px;
     font-size: .78rem;
+  }
+  .related-community-bar-label {
+    grid-column: 1 / -1;
+    text-align: left;
+    white-space: normal;
+    overflow: visible;
   }
 }
 
