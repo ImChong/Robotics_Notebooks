@@ -9,16 +9,6 @@
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-humanoid-surgeon-in-vivo-laparoscopy.md",
-      "detail_id": "entity-paper-humanoid-surgeon-in-vivo-laparoscopy",
-      "label": "Humanoid Surgeon（In Vivo Laparoscopic Feasibility）",
-      "type": "entity",
-      "recency": "2026-07-09",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
-    },
-    {
       "path": "wiki/entities/paper-discrete-terrain-minimal-proximity-sensing.md",
       "detail_id": "entity-paper-discrete-terrain-minimal-proximity-sensing",
       "label": "Learning Locomotion on Discrete Terrain via Minimal Proximity Sensing",
@@ -210,17 +200,28 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/nuwa-skill.md",
+      "detail_id": "entity-nuwa-skill",
+      "label": "Nuwa Skill（女娲.skill）",
+      "type": "entity",
+      "recency": "2026-07-07",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-humanoid-surgeon-in-vivo-laparoscopy.md",
-    "detail_id": "entity-paper-humanoid-surgeon-in-vivo-laparoscopy",
-    "label": "Humanoid Surgeon（In Vivo Laparoscopic Feasibility）",
+    "path": "wiki/entities/paper-discrete-terrain-minimal-proximity-sensing.md",
+    "detail_id": "entity-paper-discrete-terrain-minimal-proximity-sensing",
+    "label": "Learning Locomotion on Discrete Terrain via Minimal Proximity Sensing",
     "type": "entity",
-    "recency": "2026-07-09",
+    "recency": "2026-07-08",
     "source": "log.md",
     "action": "added",
-    "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
+    "community_label": "运动控制（Locomotion） 社区"
   },
   "top_communities": [
     {
