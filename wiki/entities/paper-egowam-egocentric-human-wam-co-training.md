@@ -11,6 +11,7 @@ tags:
   - flow-matching
   - georgia-tech
 status: complete
+venue: curated
 updated: 2026-07-09
 related:
   - ../concepts/world-action-models.md
@@ -53,7 +54,7 @@ summary: "EgoWAM（Georgia Tech RL²）：固定 HPT 骨干与数据混合、仅
 - **misalignment 鲁棒性有真机数字：** **故意未对齐** 人数据时，**BC** 可跌至 **robot-only 以下**（例：**40% → 20%**），**3D-Flow WAM** 仍 **75%**；对齐数据上 **3D Flow** 达 **85%** 且稳定——支持「**动力学共训** 抵抗错误动作监督、**对齐人数据** 作缩放飞轮」的判断。
 - **与 VLA 人视频路线互补对照：** [EgoScale](../methods/egoscale.md) 走 **显式腕–手动作预训练 + 对齐 mid-training**；EgoWAM 走 **Joint WAM + 可替换世界目标**，不依赖把人动作直接当机器人监督，而靠 **未来状态预测** 对齐跨具身表征（UMAP 显示人机嵌入由分簇变为共享）。
 
-## 核心结构
+## 核心结构与方法
 
 | 模块 | 作用 |
 |------|------|

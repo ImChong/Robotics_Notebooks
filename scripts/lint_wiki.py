@@ -91,11 +91,15 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     "http",
     "https",
     "main",
+    # clip：正文里既指 CLIP 视觉-语言模型，又指力矩「限幅」动词（torque clip），
+    # 两义被小写 slug 合并，非单一可成页概念，作停用词不再误报为「缺独立页」。
+    "clip",
 }
 
 # 高频术语但「已在 entities/ 或非同名 stem 的 methods 页有恰当归属」，
 # 不应再按裸 token 误报为「缺独立 concepts/methods 页」。映射到既有页：
 #   amp        → methods/amp-reward.md + overview/humanoid-amp-motion-prior-survey.md
+#   armature   → concepts/armature-modeling.md（电枢惯量建模，概念页）
 #   g1         → entities/unitree-g1.md（硬件，归 entities）
 #   gmr        → methods/motion-retargeting-gmr.md（General Motion Retargeting，方法页）
 #   heracles   → entities/paper-heracles-humanoid-diffusion.md（具体系统）
@@ -108,6 +112,7 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
 #   twist2     → entities/paper-twist2.md（具体系统/论文，归 entities）
 MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "amp",
+    "armature",
     "g1",
     "gmr",
     "heracles",
