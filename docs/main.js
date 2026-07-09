@@ -371,41 +371,146 @@
   }
 
   // 完整互链榜单页 hubs.html：数据来自 hub-rankings.json（全站 / 论文全量排序）
+  // 交互对齐 change-log：默认前 30、再展开 30、展开全部、收起至 30
   function renderHubsPage(rankings) {
     var panelAll = document.getElementById('hubsPanelAll');
     var panelPaper = document.getElementById('hubsPanelPaper');
     if (!panelAll && !panelPaper) return;
-    var allHubs = rankings && rankings.all;
-    var paperHubs = rankings && rankings.paper;
-    renderHomeHubList(panelAll, allHubs, '暂无互链统计数据。');
-    renderHomeHubList(panelPaper, paperHubs, '暂无论文互链统计数据。');
+    var HUBS_WINDOW = 30;
+    var HUBS_STEP = 30;
+    var allHubs = Array.isArray(rankings && rankings.all) ? rankings.all : [];
+    var paperHubs = Array.isArray(rankings && rankings.paper) ? rankings.paper : [];
+    var state = {
+      all: { limit: HUBS_WINDOW, showAll: false },
+      paper: { limit: HUBS_WINDOW, showAll: false }
+    };
+    var showingPaper = false;
 
-    var meta = document.getElementById('hubsMeta');
-    if (meta) {
-      var allCount = Array.isArray(allHubs) ? allHubs.length : 0;
-      var paperCount = Array.isArray(paperHubs) ? paperHubs.length : 0;
+    function visibleSlice(list, st) {
+      if (!list.length) return [];
+      if (st.showAll || list.length <= st.limit) return list;
+      return list.slice(0, st.limit);
+    }
+
+    function buildHubsActions(list, st) {
+      if (!list.length) return '';
+      var visibleCount = visibleSlice(list, st).length;
+      var isExpanded = st.showAll || st.limit > HUBS_WINDOW;
+      var canExpandMore = !st.showAll && visibleCount < list.length;
+      var leftButtons = [];
+      if (canExpandMore) {
+        leftButtons.push(
+          '<button type="button" class="btn-secondary hubs-list-more">再展开 ' +
+          HUBS_STEP + ' 个</button>'
+        );
+        leftButtons.push(
+          '<button type="button" class="btn-secondary hubs-list-show-all">展开全部</button>'
+        );
+      }
+      if (isExpanded) {
+        leftButtons.push(
+          '<button type="button" class="btn-secondary hubs-list-collapse">收起至 ' +
+          HUBS_WINDOW + ' 个</button>'
+        );
+      }
+      return (
+        '<div class="updates-timeline-actions hubs-list-actions" role="group" aria-label="榜单展开导航">' +
+        '<div class="updates-timeline-actions-start">' + leftButtons.join('') + '</div>' +
+        '<button type="button" class="btn-secondary hubs-list-back-top">回到顶部</button>' +
+        '</div>'
+      );
+    }
+
+    function updateHubsMeta() {
+      var meta = document.getElementById('hubsMeta');
+      if (!meta) return;
+      var activeList = showingPaper ? paperHubs : allHubs;
+      var activeState = showingPaper ? state.paper : state.all;
+      var visibleCount = visibleSlice(activeList, activeState).length;
       var parts = [];
-      if (allCount) parts.push('全站 ' + allCount + ' 个节点');
-      if (paperCount) parts.push('论文 ' + paperCount + ' 篇');
+      if (allHubs.length) parts.push('全站 ' + allHubs.length + ' 个节点');
+      if (paperHubs.length) parts.push('论文 ' + paperHubs.length + ' 篇');
       if (rankings && rankings.edge_count != null) {
         parts.push(String(rankings.edge_count) + ' 条互链');
+      }
+      if (activeList.length) {
+        if (activeState.showAll || visibleCount >= activeList.length) {
+          parts.push('当前显示全部 ' + visibleCount + ' 名');
+        } else {
+          parts.push('当前显示前 ' + visibleCount + ' 名');
+        }
       }
       meta.textContent = parts.length ? parts.join(' · ') : '';
     }
 
+    function renderPanel(panel, list, st, emptyText) {
+      if (!panel) return;
+      renderHomeHubList(panel, visibleSlice(list, st), emptyText);
+      if (list.length) {
+        panel.insertAdjacentHTML('beforeend', buildHubsActions(list, st));
+      }
+    }
+
+    function refreshHubsPanels() {
+      renderPanel(panelAll, allHubs, state.all, '暂无互链统计数据。');
+      renderPanel(panelPaper, paperHubs, state.paper, '暂无论文互链统计数据。');
+      updateHubsMeta();
+    }
+
+    refreshHubsPanels();
+
     var tabAll = document.getElementById('hubsTabAll');
     var tabPaper = document.getElementById('hubsTabPaper');
     if (!tabAll || !tabPaper || !panelAll || !panelPaper) return;
+
     function activateHubsTab(showPaper) {
+      showingPaper = showPaper;
       tabAll.classList.toggle('is-active', !showPaper);
       tabPaper.classList.toggle('is-active', showPaper);
       tabAll.setAttribute('aria-pressed', String(!showPaper));
       tabPaper.setAttribute('aria-pressed', String(showPaper));
       panelAll.hidden = showPaper;
       panelPaper.hidden = !showPaper;
+      updateHubsMeta();
     }
     tabAll.addEventListener('click', function () { activateHubsTab(false); });
     tabPaper.addEventListener('click', function () { activateHubsTab(true); });
+
+    var hubsSection = document.getElementById('hubs-section');
+    if (!hubsSection) return;
+    hubsSection.addEventListener('click', function (ev) {
+      var activeState = showingPaper ? state.paper : state.all;
+      var moreBtn = ev.target.closest('button.hubs-list-more');
+      if (moreBtn) {
+        if (!activeState.showAll) activeState.limit += HUBS_STEP;
+        refreshHubsPanels();
+        return;
+      }
+      var showAllBtn = ev.target.closest('button.hubs-list-show-all');
+      if (showAllBtn) {
+        activeState.showAll = true;
+        refreshHubsPanels();
+        return;
+      }
+      var collapseBtn = ev.target.closest('button.hubs-list-collapse');
+      if (collapseBtn) {
+        activeState.limit = HUBS_WINDOW;
+        activeState.showAll = false;
+        refreshHubsPanels();
+        return;
+      }
+      var backTopBtn = ev.target.closest('button.hubs-list-back-top');
+      if (backTopBtn) {
+        var scrollTarget = document.getElementById('hubs-heading') ||
+          document.getElementById('hubs-section') ||
+          document.querySelector('.site-header');
+        if (scrollTarget && scrollTarget.scrollIntoView) {
+          scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }
+    });
   }
 
   // ── 首页知识节点活跃度热力图（GitHub 风格，数据源 exports/wiki-activity.json）──
