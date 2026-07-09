@@ -297,6 +297,58 @@
     return api.formatBilingual(type);
   }
 
+  // 首页「互链枢纽 · Top 10」：数据来自 home-stats.json 的 top_hubs / top_paper_hubs
+  //（graph-stats.json 全站互链度 Top-10 的轻量投影），全站 / 论文两个 tab 共用一套紧凑行渲染
+  function renderHomeHubList(mount, hubs, emptyText) {
+    if (!mount) return;
+    mount.classList.remove('data-loading');
+    var list = Array.isArray(hubs) ? hubs : [];
+    var html = '';
+    var rank = 0;
+    for (var i = 0; i < list.length; i++) {
+      var hub = list[i];
+      if (!hub || !hub.detail_id) continue;
+      rank += 1;
+      var href = isRoadmapPageId(hub.detail_id, null, hub)
+        ? roadmapHref(hub.detail_id)
+        : detailHref(hub.detail_id);
+      html +=
+        '<li class="home-hub-row">' +
+        '<span class="home-hub-row-rank">' + rank + '</span>' +
+        '<span class="home-hub-row-type">' + escapeHtml(wikiTypeLabel(hub.type, 'updates')) + '</span>' +
+        '<span class="home-hub-row-main"><a href="' + escapeHtml(href) + '">' +
+        escapeHtml(hub.label || hub.detail_id) + '</a></span>' +
+        '<span class="home-hub-row-degree" title="无向边总数（入链+出链）">互链 ' +
+        escapeHtml(String(hub.degree != null ? hub.degree : 0)) + '</span>' +
+        '</li>';
+    }
+    mount.innerHTML = html
+      ? '<ol class="home-hub-list">' + html + '</ol>'
+      : '<p class="data-meta">' + escapeHtml(emptyText) + '</p>';
+  }
+
+  function renderHomeHubs(homeStats) {
+    var panelAll = document.getElementById('homeHubPanelAll');
+    var panelPaper = document.getElementById('homeHubPanelPaper');
+    if (!panelAll && !panelPaper) return;
+    renderHomeHubList(panelAll, homeStats && homeStats.top_hubs, '暂无互链统计数据。');
+    renderHomeHubList(panelPaper, homeStats && homeStats.top_paper_hubs, '暂无论文互链统计数据。');
+
+    var tabAll = document.getElementById('homeHubTabAll');
+    var tabPaper = document.getElementById('homeHubTabPaper');
+    if (!tabAll || !tabPaper || !panelAll || !panelPaper) return;
+    function activateHubTab(showPaper) {
+      tabAll.classList.toggle('is-active', !showPaper);
+      tabPaper.classList.toggle('is-active', showPaper);
+      tabAll.setAttribute('aria-pressed', String(!showPaper));
+      tabPaper.setAttribute('aria-pressed', String(showPaper));
+      panelAll.hidden = showPaper;
+      panelPaper.hidden = !showPaper;
+    }
+    tabAll.addEventListener('click', function () { activateHubTab(false); });
+    tabPaper.addEventListener('click', function () { activateHubTab(true); });
+  }
+
   // ── 首页知识节点活跃度热力图（GitHub 风格，数据源 exports/wiki-activity.json）──
   var HOME_HEATMAP_DAY_MS = 24 * 60 * 60 * 1000;
   // GitHub 同款固定一年窗口：53 周列，最新周在最右，无数据日期为空格
@@ -503,7 +555,7 @@
       var maxRows = Math.min(items.length, 5);
       for (var cri = 0; cri < maxRows; cri++) {
         var rowMeta = items[cri];
-        var rowType = wikiTypeLabel(rowMeta.type, mount.hasAttribute('data-compact') ? 'node' : 'updates');
+        var rowType = wikiTypeLabel(rowMeta.type, 'updates');
         compactRows +=
           '<li class="home-latest-row"><span class="home-latest-row-date">' +
           escapeHtml(rowMeta.recency ? String(rowMeta.recency) : '') +
@@ -3077,15 +3129,12 @@
   }
 
   function buildInternalLinkCardMeta(page, id, options) {
-    var typeLabel = wikiTypeLabel((page && page.type) || (options && options.defaultType) || 'detail_page', 'node');
+    var typeLabel = wikiTypeLabel((page && page.type) || 'detail_page', 'node');
     var extra = options && typeof options.metaExtra === 'function' ? options.metaExtra(id, page) : '';
     return extra ? typeLabel + ' · ' + extra : typeLabel;
   }
 
-  function buildInternalLinkTitle(id, page, options) {
-    if (options && typeof options.getTitle === 'function') {
-      return options.getTitle(id, page) || id;
-    }
+  function buildInternalLinkTitle(id, page) {
     return (page && page.title) || id;
   }
 
@@ -3106,66 +3155,19 @@
       const page = detailPages[id] || {};
       const href = page.type === 'roadmap_page' ? roadmapHref(id) : detailHref(id);
       const buttonText = page.type === 'roadmap_page' ? '打开路线页' : '打开详情页';
-      const summaryFallback = (options && options.summaryFallback) || '当前关联项暂无摘要';
-      const chipExtra = options && typeof options.chipExtra === 'function' ? options.chipExtra(id, page) : '';
       html += '<article class="card data-card">' +
         '  <div>' +
-        '    <h3><a href="' + escapeHtml(href) + '">' + escapeHtml(buildInternalLinkTitle(id, page, options)) + '</a></h3>' +
+        '    <h3><a href="' + escapeHtml(href) + '">' + escapeHtml(buildInternalLinkTitle(id, page)) + '</a></h3>' +
         '    <p class="card-meta">' + escapeHtml(buildInternalLinkCardMeta(page, id, options)) + '</p>' +
-        '    <p>' + escapeHtml(page.summary || summaryFallback) + '</p>' +
+        '    <p>' + escapeHtml(page.summary || '当前关联项暂无摘要') + '</p>' +
         '  </div>' +
         '  <div class="chip-list">' +
-        chipExtra +
         '    <a class="btn-secondary btn-inline" href="' + escapeHtml(href) + '">' + buttonText + '</a>' +
         '  </div>' +
         '</article>';
     }
     container.innerHTML = html;
     removeLoadingState(container);
-  }
-
-  /** 路线图页：展示 graph-stats.json 中全站 wiki 互链度数最高的条目（top_hubs）。 */
-  function renderRoadmapGraphHubs(container, topHubs, detailPages) {
-    if (!container) return;
-    var pathToId = buildPathToDetailIdIndex(detailPages);
-    var hubs = Array.isArray(topHubs) ? topHubs : [];
-    var ids = [];
-    var hubMeta = {};
-    for (var i = 0; i < hubs.length; i++) {
-      var hub = hubs[i];
-      var path = hub && hub.id;
-      if (!path) continue;
-      var detailId = pathToId[path];
-      if (!detailId) continue;
-      ids.push(detailId);
-      hubMeta[detailId] = {
-        label: hub.label || '',
-        degree: hub.degree != null ? Number(hub.degree) : 0
-      };
-    }
-    if (!ids.length) {
-      container.innerHTML = [
-        '<article class="card"><p>',
-        '无法从链接图统计中匹配到详情页条目。请稍后再试，或前往 ',
-        '<a href="graph.html">知识图谱</a> 浏览全站结构。',
-        '</p></article>'
-      ].join('');
-      removeLoadingState(container);
-      return;
-    }
-    renderInternalLinks(container, ids, detailPages, {
-      defaultType: 'wiki_page',
-      summaryFallback: '当前页面暂无摘要',
-      getTitle: function (id, page) {
-        var meta = hubMeta[id] || {};
-        return (page && page.title) || meta.label || id;
-      },
-      chipExtra: function (id) {
-        var meta = hubMeta[id] || {};
-        if (meta.degree == null) return '';
-        return '    <span class="data-chip" title="无向边总数（入链+出链）">互链度 ' + escapeHtml(String(meta.degree)) + '</span>\n';
-      }
-    });
   }
 
   function normalizeSourceLink(entry) {
@@ -4258,8 +4260,6 @@
     const titleEl = document.getElementById('roadmapTitle');
     const summaryEl = document.getElementById('roadmapSummary');
     const metaEl = document.getElementById('roadmapMeta');
-    const relatedEl = document.getElementById('roadmapRelatedList');
-    const paperRelatedEl = document.getElementById('roadmapPaperRelatedList');
     const emptyState = document.getElementById('roadmapEmptyState');
     const breadcrumb = document.getElementById('roadmapBreadcrumb');
 
@@ -4274,8 +4274,6 @@
         metaEl.innerHTML = '<p class="data-meta">当前没有匹配到 roadmap_pages 项。</p>';
         removeLoadingState(metaEl);
       }
-      renderInternalLinks(relatedEl, [], detailPages, { emptyText: '当前无可展示的相关项。' });
-      renderInternalLinks(paperRelatedEl, [], detailPages, { emptyText: '当前无可展示的相关项。' });
       if (breadcrumb) removeLoadingState(breadcrumb);
       setRoadmapFlowChromeVisible(false);
       setRoadmapContentChromeVisible(false);
@@ -4335,21 +4333,6 @@
       ].join('');
       removeLoadingState(breadcrumb);
     }
-    fetch('exports/graph-stats.json')
-      .then(function (r) {
-        return r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status));
-      })
-      .then(function (stats) {
-        renderRoadmapGraphHubs(relatedEl, (stats && stats.top_hubs) || [], detailPages);
-        renderRoadmapGraphHubs(paperRelatedEl, (stats && stats.top_paper_hubs) || [], detailPages);
-      })
-      .catch(function () {
-        var hubErr = {
-          emptyText: '暂时无法加载链接图统计。请刷新页面，或在本地确认已生成 docs/exports/graph-stats.json。'
-        };
-        renderInternalLinks(relatedEl, [], detailPages, hubErr);
-        renderInternalLinks(paperRelatedEl, [], detailPages, hubErr);
-      });
     renderRoadmapFlowSection(roadmapPage, roadmapId, detailPages);
     renderRoadmapKnowledgeMap(roadmapPage, roadmapId, detailPages);
     renderRoadmapMarkdownBody(roadmapPage, roadmapId, siteData, detailPages);
@@ -5029,8 +5012,7 @@
           handlePageDataError(error, [
             'roadmapBreadcrumb',
             'roadmapSummary',
-            'roadmapMeta',
-            'roadmapRelatedList'
+            'roadmapMeta'
           ]);
         }
       });
@@ -5056,12 +5038,18 @@
         var stats = results[0];
         renderHomeStats(stats);
         renderHotTopics(stats);
+        renderHomeHubs(stats);
         renderLatestWikiNode(stats, results[1]);
       })
       .catch(function (error) {
         console.warn('Home stats sync failed:', error);
-        var mount = document.getElementById('homeLatestWikiModule');
-        if (mount) {
+        var failedMounts = [
+          document.getElementById('homeLatestWikiModule'),
+          document.getElementById('homeHubPanelAll')
+        ];
+        for (var fmi = 0; fmi < failedMounts.length; fmi++) {
+          var mount = failedMounts[fmi];
+          if (!mount) continue;
           mount.classList.remove('data-loading');
           mount.innerHTML = '<p class="data-meta">统计加载失败，请稍后刷新。</p>';
         }

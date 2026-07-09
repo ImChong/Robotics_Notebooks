@@ -39,6 +39,26 @@ def top_communities(
     return [{"label": community_short_label(label), "size": size} for label, size in ranked[:limit]]
 
 
+def hub_entries(graph_stats: dict[str, Any], key: str) -> list[dict[str, Any]]:
+    """从 graph-stats 的 top_hubs / top_paper_hubs 提取首页互链枢纽所需字段。"""
+    hubs = graph_stats.get(key)
+    if not isinstance(hubs, list):
+        return []
+    out: list[dict[str, Any]] = []
+    for hub in hubs:
+        if not isinstance(hub, dict) or not hub.get("detail_id"):
+            continue
+        out.append(
+            {
+                "detail_id": str(hub["detail_id"]),
+                "label": str(hub.get("label") or hub["detail_id"]),
+                "type": str(hub.get("type") or ""),
+                "degree": int(hub.get("degree") or 0),
+            }
+        )
+    return out
+
+
 def build_payload(
     graph_stats: dict[str, Any],
     coverage: dict[str, int],
@@ -62,6 +82,12 @@ def build_payload(
     communities = top_communities(graph_stats)
     if communities:
         payload["top_communities"] = communities
+    top_hubs = hub_entries(graph_stats, "top_hubs")
+    if top_hubs:
+        payload["top_hubs"] = top_hubs
+    top_paper_hubs = hub_entries(graph_stats, "top_paper_hubs")
+    if top_paper_hubs:
+        payload["top_paper_hubs"] = top_paper_hubs
     return payload
 
 

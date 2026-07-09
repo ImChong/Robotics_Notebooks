@@ -153,6 +153,16 @@ class PaperHubStatsTest(unittest.TestCase):
         for hub in hubs:
             self.assertIn(hub["id"], paper_ids)
 
+    def test_hub_entries_carry_detail_id_and_type_for_site_links(self) -> None:
+        """首页互链枢纽直接消费 hub 条目构造站内链接，须带 detail_id / type。"""
+        nodes, edges = glg._build_graph_data()
+        communities, community_meta = glg.assign_communities(nodes, edges)
+        stats = glg._compute_graph_stats(nodes, edges, communities, community_meta)
+        for hub in stats["top_hubs"] + stats["top_paper_hubs"]:
+            self.assertEqual(hub["detail_id"], glg._wiki_node_detail_id(hub["id"]))
+            self.assertNotIn("/", hub["detail_id"])
+            self.assertIn("type", hub)
+
 
 class RoadmapGraphNodesTest(unittest.TestCase):
     """roadmap/ 页面应作为 roadmap_page 节点进入 link-graph。"""

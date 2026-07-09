@@ -41,8 +41,8 @@
           <p class="hero-subtitle">把 <strong>路线、图谱、模块、论文</strong> 串成一套极简导航系统。</p>
 
           <div class="hero-stat-row-mini" aria-label="知识库当前规模">
-            <span id="heroNodeCount">1543</span> 个节点 ·
-            <span id="heroEdgeCount">11091</span> 条连接
+            <span id="heroNodeCount">1544</span> 个节点 ·
+            <span id="heroEdgeCount">11100</span> 条连接
           </div>
 
           <div class="cta-row">
@@ -104,6 +104,24 @@
         <div id="homeLatestWikiModule" class="home-latest-wiki-mount data-loading" data-compact aria-live="polite">
           <p class="data-meta">加载中…</p>
         </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="home-hub-section" aria-labelledby="home-hub-heading">
+      <div class="container">
+        <div class="home-hub-head">
+          <h2 class="section-title" id="home-hub-heading">互链枢纽 · Top 10</h2>
+          <div class="home-hub-tabs" role="group" aria-label="切换全站 / 论文互链枢纽">
+            <button type="button" id="homeHubTabAll" class="home-hub-tab is-active" aria-pressed="true">全站</button>
+            <button type="button" id="homeHubTabPaper" class="home-hub-tab" aria-pressed="false">论文</button>
+          </div>
+        </div>
+        <p class="section-subtitle">按站内互链总数（无向度数）排序，从与其他条目连接最多的核心页开始探索。</p>
+        <div id="homeHubPanelAll" class="home-hub-panel data-loading" aria-live="polite">
+          <p class="data-meta">正在加载互链统计…</p>
+        </div>
+        <div id="homeHubPanelPaper" class="home-hub-panel" aria-live="polite" hidden></div>
+        <p class="home-hub-more"><a href="graph.html">在知识图谱中查看全站结构 →</a></p>
       </div>
     </section>
   </main>
