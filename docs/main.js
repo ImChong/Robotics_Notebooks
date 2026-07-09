@@ -316,6 +316,77 @@
     return renderUpdatesItemRepoStar(meta) + renderUpdatesItemCommunityCat(meta);
   }
 
+  function renderActionBadge(action) {
+    if (action === 'added') {
+      return '<span class="updates-badge updates-badge-added">新增</span>';
+    }
+    if (action === 'maintained') {
+      return '<span class="updates-badge">维护</span>';
+    }
+    return '';
+  }
+
+  function renderActionBadgeCell(action, cellClass) {
+    var badge = renderActionBadge(action);
+    if (badge) {
+      return '<span class="' + cellClass + '">' + badge + '</span>';
+    }
+    return '<span class="' + cellClass + ' updates-badge-cell--empty" aria-hidden="true"></span>';
+  }
+
+  // 详情页关联区块复用首页「最新知识节点 / 互链枢纽」紧凑行列表
+  function renderCompactLatestRow(item, options) {
+    var opts = options || {};
+    var href = opts.href || detailHref(item.detail_id || item.id);
+    var rowType = wikiTypeLabel(item.type, opts.typeContext || 'updates');
+    return '<li class="home-latest-row">' +
+      '<span class="home-latest-row-date">' + escapeHtml(item.recency ? String(item.recency) : '') + '</span>' +
+      renderActionBadgeCell(item.action, 'home-latest-row-badge') +
+      '<span class="home-latest-row-type">' + escapeHtml(rowType) + '</span>' +
+      '<span class="home-latest-row-main"><a href="' + escapeHtml(href) + '">' +
+      escapeHtml(item.label || item.title || item.detail_id || item.id || '') + '</a>' +
+      renderUpdatesItemSuffix(item) +
+      '</span></li>';
+  }
+
+  function renderCompactHubStyleRow(item, options) {
+    var opts = options || {};
+    var id = item.detail_id || item.id || '';
+    var href = opts.href;
+    if (!href) {
+      href = item.type === 'roadmap_page' ? roadmapHref(id) : detailHref(id);
+    }
+    var typeLabel = opts.typeLabel || wikiTypeLabel(item.type, opts.typeContext || 'updates');
+    var metaHtml = opts.metaHtml || '';
+    var linkAttrs = opts.external
+      ? ' target="_blank" rel="noopener noreferrer"'
+      : '';
+    var mainHtml = href && href !== '#'
+      ? '<a href="' + escapeHtml(href) + '"' + linkAttrs + '>' +
+        escapeHtml(item.label || item.title || id) + '</a>'
+      : '<span>' + escapeHtml(item.label || item.title || id) + '</span>';
+    return '<li class="detail-compact-row">' +
+      '<span class="detail-compact-type">' + escapeHtml(typeLabel) + '</span>' +
+      '<span class="detail-compact-main">' + mainHtml +
+      renderUpdatesItemSuffix(item) +
+      '</span>' +
+      (metaHtml
+        ? '<span class="detail-compact-meta">' + metaHtml + '</span>'
+        : '<span class="detail-compact-meta detail-compact-meta--empty" aria-hidden="true"></span>') +
+      '</li>';
+  }
+
+  function renderCompactHubStyleList(container, rowsHtml, emptyText) {
+    if (!container) return;
+    if (!rowsHtml) {
+      container.innerHTML = '<p class="data-meta">' + escapeHtml(emptyText || '暂无数据') + '</p>';
+      removeLoadingState(container);
+      return;
+    }
+    container.innerHTML = '<ol class="detail-compact-list">' + rowsHtml + '</ol>';
+    removeLoadingState(container);
+  }
+
   // 首页「互链枢纽 · Top 10」：数据来自 home-stats.json 的 top_hubs / top_paper_hubs
   //（graph-stats.json 全站互链度 Top-10 的轻量投影），全站 / 论文两个 tab 共用一套紧凑行渲染
   function renderHomeHubList(mount, hubs, emptyText) {
@@ -670,24 +741,6 @@
       items = homeStats.latest_wiki_nodes;
     } else if (homeStats && homeStats.latest_wiki_node && homeStats.latest_wiki_node.detail_id) {
       items = [homeStats.latest_wiki_node];
-    }
-
-    function renderActionBadge(action) {
-      if (action === 'added') {
-        return '<span class="updates-badge updates-badge-added">新增</span>';
-      }
-      if (action === 'maintained') {
-        return '<span class="updates-badge">维护</span>';
-      }
-      return '';
-    }
-
-    function renderActionBadgeCell(action, cellClass) {
-      var badge = renderActionBadge(action);
-      if (badge) {
-        return '<span class="' + cellClass + '">' + badge + '</span>';
-      }
-      return '<span class="' + cellClass + ' updates-badge-cell--empty" aria-hidden="true"></span>';
     }
 
     // 首页紧凑模式（mount 带 data-compact）：只列最近 5 条单行记录；
@@ -3219,6 +3272,26 @@
     return String(label).replace(/\s*社区\s*$/, '').trim() || '未分类';
   }
 
+  function buildCompactPageRowMeta(page, detailId, communityIndex) {
+    var safePage = page || {};
+    var communityLabel = safePage.community_label || '';
+    var path = safePage.path || '';
+    if (communityIndex && path) {
+      var cid = communityIndex.pathToCommunity.get(path);
+      if (cid && communityIndex.communityLabel[cid]) {
+        communityLabel = communityIndex.communityLabel[cid];
+      }
+    }
+    return {
+      id: detailId,
+      detail_id: detailId,
+      type: safePage.type,
+      title: buildInternalLinkTitle(detailId, safePage),
+      community_label: communityLabel,
+      has_repo: !!safePage.has_repo
+    };
+  }
+
   function renderRelatedCommunityDistribution(wrapperEl, ids, detailPages) {
     if (!wrapperEl) return;
     var barsEl = document.getElementById('detailRelatedCommunityDistBars');
@@ -3288,8 +3361,36 @@
     if (!container) return;
     const emptyText = (options && options.emptyText) || '暂无内部关联项';
     if (!Array.isArray(ids) || !ids.length) {
-      container.innerHTML = '<article class="card"><p>' + escapeHtml(emptyText) + '</p></article>';
-      removeLoadingState(container);
+      if (options && options.compact) {
+        renderCompactHubStyleList(container, '', emptyText);
+      } else {
+        container.innerHTML = '<article class="card"><p>' + escapeHtml(emptyText) + '</p></article>';
+        removeLoadingState(container);
+      }
+      return;
+    }
+
+    if (options && options.compact) {
+      function renderCompactRows(communityIndex) {
+        var compactRows = '';
+        for (var ci = 0; ci < ids.length; ci++) {
+          var compactId = ids[ci];
+          var compactPage = detailPages[compactId] || {};
+          var rowMeta = buildCompactPageRowMeta(compactPage, compactId, communityIndex);
+          compactRows += renderCompactHubStyleRow(rowMeta, {
+            href: compactPage.type === 'roadmap_page' ? roadmapHref(compactId) : detailHref(compactId),
+            metaHtml: options.metaExtra ? escapeHtml(options.metaExtra(compactId, compactPage) || '') : ''
+          });
+        }
+        renderCompactHubStyleList(container, compactRows, emptyText);
+      }
+      if (options.enrichCommunity !== false) {
+        ensureDetailCommunityIndex()
+          .then(renderCompactRows)
+          .catch(function () { renderCompactRows(null); });
+        return;
+      }
+      renderCompactRows(null);
       return;
     }
 
@@ -3335,11 +3436,110 @@
     return '';
   }
 
-  function renderSourceCards(container, links, emptyText) {
+  function cleanReferenceLabelText(text) {
+    if (!text) return '';
+    var cleaned = String(text).trim();
+    cleaned = cleaned.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+    cleaned = cleaned.replace(/\*\*/g, '');
+    cleaned = cleaned.replace(/[（(]\s*\[source\][^）)]*[）)]/gi, '');
+    cleaned = cleaned.replace(/[（(]\s*source\s*[）)]/gi, '');
+    cleaned = cleaned.replace(/\s+/g, ' ').trim();
+    return cleaned.replace(/^[：:，,。\s]+|[：:，,。\s]+$/g, '');
+  }
+
+  function looksLikeRepoPath(text) {
+    return /^(?:sources\/|\.\.\/|wiki\/|references\/)/i.test(text) || /\.md$/i.test(text);
+  }
+
+  function extractTitleAfterPathPrefix(label) {
+    var text = String(label || '');
+    var parts = text.split(/\s*[—–-]\s+/);
+    if (parts.length >= 2 && looksLikeRepoPath(parts[0])) {
+      return parts.slice(1).join(' — ').trim();
+    }
+    return '';
+  }
+
+  function titleFromSourceUrl(url) {
+    if (!url) return '';
+    try {
+      var parsed = new URL(url);
+      var base = parsed.pathname.split('/').pop() || '';
+      base = base.replace(/\.(md|html?)$/i, '');
+      if (!base || /^(source|sources|link|ref)$/i.test(base)) return '';
+      return base.replace(/[_-]+/g, ' ').replace(/\s+/g, ' ').trim();
+    } catch (err) {
+      return '';
+    }
+  }
+
+  function isGenericSourceLabel(label) {
+    return /^(source|sources|link|ref)$/i.test(String(label || '').trim());
+  }
+
+  function formatSourceLinkDisplayLabel(item, detailPages) {
+    if (!item) return '参考条目';
+    if (item.detail_id && detailPages && detailPages[item.detail_id] && detailPages[item.detail_id].title) {
+      return detailPages[item.detail_id].title;
+    }
+    var label = cleanReferenceLabelText(item.label || '');
+    var fromPath = extractTitleAfterPathPrefix(label);
+    if (fromPath) label = fromPath;
+    if (isGenericSourceLabel(label) && item.url) {
+      var fromUrl = titleFromSourceUrl(item.url);
+      if (fromUrl) label = fromUrl;
+    }
+    if (!label && item.url) label = titleFromSourceUrl(item.url);
+    if (!label) label = item.detail_id || '参考条目';
+    if (/^https?:\/\//i.test(label)) label = titleFromSourceUrl(label) || label;
+    return label;
+  }
+
+  function renderSourceCards(container, links, emptyText, options) {
     if (!container) return;
     if (!Array.isArray(links) || !links.length) {
-      container.innerHTML = '<article class="card"><p>' + escapeHtml(emptyText || '暂无来源链接') + '</p></article>';
-      removeLoadingState(container);
+      if (options && options.compact) {
+        renderCompactHubStyleList(container, '', emptyText || '暂无来源链接');
+      } else {
+        container.innerHTML = '<article class="card"><p>' + escapeHtml(emptyText || '暂无来源链接') + '</p></article>';
+        removeLoadingState(container);
+      }
+      return;
+    }
+
+    if (options && options.compact) {
+      var compactRows = '';
+      var detailPages = (options && options.detailPages) || {};
+      var seenSourceHrefs = {};
+      for (var si = 0; si < links.length; si++) {
+        var entry = links[si];
+        var item = normalizeSourceLink(entry);
+        var href = sourceLinkHref(entry);
+        if (href) {
+          if (seenSourceHrefs[href]) continue;
+          seenSourceHrefs[href] = true;
+        }
+        if (isGenericSourceLabel(item.label) && /github\.com\/[^/]+\/[^/]+\/blob\/main\/sources\//i.test(item.url || '')) {
+          continue;
+        }
+        var isExternal = href && /^https?:/i.test(href);
+        var typeLabel = item.detail_id ? '站内' : (isExternal ? '外链' : '来源');
+        var linkLabel = formatSourceLinkDisplayLabel(item, detailPages);
+        var metaHtml = isExternal
+          ? '<span title="' + escapeHtml(href) + '">↗</span>'
+          : (item.detail_id ? '详情' : '');
+        compactRows += renderCompactHubStyleRow({
+          id: item.detail_id || item.url || linkLabel,
+          detail_id: item.detail_id,
+          label: linkLabel
+        }, {
+          href: href || '',
+          typeLabel: typeLabel,
+          metaHtml: metaHtml,
+          external: isExternal
+        });
+      }
+      renderCompactHubStyleList(container, compactRows, emptyText || '暂无来源链接');
       return;
     }
 
@@ -3351,17 +3551,18 @@
       const item = normalizeSourceLink(entry);
       const href = sourceLinkHref(entry);
       const isExternal = href && /^https?:/i.test(href);
+      const displayLabel = formatSourceLinkDisplayLabel(item, (options && options.detailPages) || {});
       const linkHtml = href
         ? (isExternal
-          ? '<a href="' + escapeHtml(href) + '" target="_blank" rel="noopener noreferrer">打开来源</a>'
-          : '<a href="' + escapeHtml(href) + '">打开详情</a>')
+          ? '<a href="' + escapeHtml(href) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(displayLabel) + '</a>'
+          : '<a href="' + escapeHtml(href) + '">' + escapeHtml(displayLabel) + '</a>')
         : '';
       const titleHtml = linkHtml
         ? '<h3>' + linkHtml + '</h3>'
-        : '<h3>' + escapeHtml(item.label || '参考条目') + '</h3>';
+        : '<h3>' + escapeHtml(displayLabel || '参考条目') + '</h3>';
       const metaHtml = href
-        ? '<p class="data-submeta detail-source-url" title="' + escapeHtml(href) + '"><code>' + escapeHtml(item.label || href) + '</code></p>'
-        : '<p class="data-submeta">' + escapeHtml(item.label || '') + '</p>';
+        ? '<p class="data-submeta detail-source-url" title="' + escapeHtml(href) + '"><code>' + escapeHtml(href) + '</code></p>'
+        : '<p class="data-submeta">' + escapeHtml(displayLabel || '') + '</p>';
       html += '<article class="card data-card">' +
         '  <div>' +
         '    ' + titleHtml +
@@ -3408,7 +3609,7 @@
     var result = [];
     var limit = Math.min(scored.length, maxResults);
     for (var k = 0; k < limit; k++) {
-      result.push(scored[k].id);
+      result.push({ id: scored[k].id, score: scored[k].score, page: scored[k].page });
     }
     return result;
   }
@@ -3617,17 +3818,11 @@
 
       if (!items.length) { section.hidden = true; return; }
       section.hidden = false;
-      listEl.innerHTML = items.map(function (n) {
-        var typeLabel = wikiTypeLabel(n.type, 'node');
-        return (
-          '<a class="detail-recent-ingest-item" href="' + escapeHtml(detailHref(n.detail_id)) + '">' +
-          '<span class="detail-recent-ingest-date">' + escapeHtml(String(n.recency)) + '</span>' +
-          '<span class="detail-recent-ingest-body">' +
-          '<span class="detail-recent-ingest-type">' + escapeHtml(typeLabel) + '</span>' +
-          '<span class="detail-recent-ingest-label">' + escapeHtml(n.label || n.detail_id) + '</span>' +
-          '</span></a>'
-        );
-      }).join('');
+      var ingestRows = '';
+      for (var ii = 0; ii < items.length; ii++) {
+        ingestRows += renderCompactLatestRow(items[ii]);
+      }
+      listEl.innerHTML = '<ul class="home-latest-list">' + ingestRows + '</ul>';
     }).catch(function () {
       section.hidden = true;
     });
@@ -4100,12 +4295,11 @@
       }
       renderChipList(tagEl, [], {});
       renderRelatedCommunityDistribution(document.getElementById('detailRelatedCommunityDist'), [], detailPages);
-      renderInternalLinks(relatedEl, [], detailPages, { emptyText: '当前无可展示的关联项。' });
+      renderInternalLinks(relatedEl, [], detailPages, { emptyText: '当前无可展示的关联项。', compact: true });
       if (recommendedEl) {
-        recommendedEl.innerHTML = '<article class="card"><p>当前无可展示的相关推荐。</p></article>';
-        removeLoadingState(recommendedEl);
+        renderCompactHubStyleList(recommendedEl, '', '当前无可展示的相关推荐。');
       }
-      renderSourceCards(sourceEl, [], '当前无可展示的来源链接。');
+      renderSourceCards(sourceEl, [], '当前无可展示的来源链接。', { compact: true });
       if (breadcrumb) removeLoadingState(breadcrumb);
       return;
     }
@@ -4219,40 +4413,45 @@
       }
     });
     renderRelatedCommunityDistribution(document.getElementById('detailRelatedCommunityDist'), detailPage.related, detailPages);
-    renderInternalLinks(relatedEl, detailPage.related, detailPages, { emptyText: '当前 detail page 暂无 related。' });
+    renderInternalLinks(relatedEl, detailPage.related, detailPages, {
+      emptyText: '当前 detail page 暂无 related。',
+      compact: true,
+      metaExtra: function (id, page) {
+        return page && page.updated ? String(page.updated) : '';
+      }
+    });
 
     // V17: 记录并渲染阅读足迹
     updateRecentVisits(detailPage);
 
     if (recommendedEl) {
-      var recommendedIds = findRelatedByTags(detailId, detailPage.tags, detailPages, 5);
-      if (recommendedIds.length) {
-        recommendedEl.innerHTML = recommendedIds.map(function (id) {
-          var page = detailPages[id] || {};
-          var pageTags = Array.isArray(page.tags) ? page.tags : [];
-          return [
-            '<article class="card data-card">',
-            '  <div>',
-            '    <h3><a href="' + escapeHtml(detailHref(id)) + '">' + escapeHtml(page.title || id) + '</a></h3>',
-            '    <p class="card-meta">tag 匹配推荐</p>',
-            '    <p>' + escapeHtml(page.summary || '暂无摘要') + '</p>',
-            '  </div>',
-            '  <div class="chip-list">',
-            pageTags.slice(0, 3).map(function (tag) {
-              return '<span class="data-chip">' + escapeHtml(tag) + '</span>';
-            }).join(''),
-            '    <a class="btn-secondary btn-inline" href="' + escapeHtml(detailHref(id)) + '">打开详情页</a>',
-            '  </div>',
-            '</article>'
-          ].join('');
-        }).join('');
-      } else {
-        recommendedEl.innerHTML = '<article class="card"><p>暂无 tag 匹配的相关推荐。</p></article>';
+      var recommendedItems = findRelatedByTags(detailId, detailPage.tags, detailPages, 5);
+      function renderRecommendedRows(communityIndex) {
+        if (!recommendedItems.length) {
+          renderCompactHubStyleList(recommendedEl, '', '暂无 tag 匹配的相关推荐。');
+          return;
+        }
+        var recommendedRows = '';
+        for (var ri = 0; ri < recommendedItems.length; ri++) {
+          var rec = recommendedItems[ri];
+          var recPage = rec.page || detailPages[rec.id] || {};
+          var rowMeta = buildCompactPageRowMeta(recPage, rec.id, communityIndex);
+          recommendedRows += renderCompactHubStyleRow(rowMeta, {
+            href: detailHref(rec.id),
+            metaHtml: escapeHtml(rec.score + ' 标签')
+          });
+        }
+        renderCompactHubStyleList(recommendedEl, recommendedRows, '暂无 tag 匹配的相关推荐。');
       }
-      removeLoadingState(recommendedEl);
+      ensureDetailCommunityIndex()
+        .then(renderRecommendedRows)
+        .catch(function () { renderRecommendedRows(null); });
     }
 
-    renderSourceCards(sourceEl, detailPage.source_links, '当前 detail page 暂无来源链接。');
+    renderSourceCards(sourceEl, detailPage.source_links, '当前 detail page 暂无来源链接。', {
+      compact: true,
+      detailPages: detailPages
+    });
 
     renderDetailMiniMap(detailPage, detailPages);
     renderDetailRecentIngestTimeline(detailPage);
