@@ -3,10 +3,11 @@
 type: entity
 tags: [entity, simulator, isaac, isaac-sim, gpu-simulation, reinforcement-learning, sim2real, nvidia]
 status: stable
-updated: 2026-07-08
+updated: 2026-07-09
 related:
   - ./isaac-gym-isaac-lab.md
   - ./isaac-gym.md
+  - ../concepts/implicit-explicit-actuator-modeling.md
   - ./robotic-world-model-eth-rsl.md
   - ./newton-physics.md
   - ./mujoco-playground.md
@@ -31,6 +32,7 @@ sources:
   - ../../sources/papers/simulation_tools.md
   - ../../sources/papers/policy_optimization.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
+  - ../../sources/courses/isaac_lab_implicit_explicit_actuators.md
 summary: "NVIDIA 当前官方主推的 robot learning 框架，建立在 Isaac Sim 之上，承接 IsaacGymEnvs/Orbit 用户；locomotion、manipulation 与 sim2real 新实验的首选仿真栈。"
 ---
 
@@ -170,7 +172,7 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 
 ### 和 Sim2Real 的关系
 
-它提供仿真训练和 domain randomization 的主要工作台，但 sim2real 成功与否还取决于状态估计、系统辨识、执行器建模、观测延迟等。
+它提供仿真训练和 domain randomization 的主要工作台，但 sim2real 成功与否还取决于状态估计、系统辨识、执行器建模、观测延迟等。执行器层需区分 **implicit**（引擎内 PD，好训但偏理想）与 **explicit**（用户侧算力矩，更贴近真机）；见 [Implicit / Explicit 执行器建模](../concepts/implicit-explicit-actuator-modeling.md)。
 
 见：[Sim2Real](../concepts/sim2real.md)
 
@@ -203,6 +205,7 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 - Ao et al., *Bounded Ratio Reinforcement Learning* (2026) — 在 Isaac Lab 中验证新算法
 - **ingest 档案：** [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — PPO/BRRL 与 Isaac Lab 的结合应用
 - **ingest 档案：** [sources/courses/nvidia_sim_to_real_so101_isaac.md](../../sources/courses/nvidia_sim_to_real_so101_isaac.md) — SO-101 课：仿真 DR 遥操作采数、策略评测与 sim2real 对照实验
+- **ingest 档案：** [sources/courses/isaac_lab_implicit_explicit_actuators.md](../../sources/courses/isaac_lab_implicit_explicit_actuators.md) — Implicit / Explicit 执行器官方文档索引
 - **ingest 档案：** [具身智能研究室训练栈分层解读](../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md) — OpenUSD / PhysX / Lab Views 统一场景–物理–学习接口的策展归纳
 
 ## 关联页面
@@ -218,6 +221,7 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 - [legged_gym](./legged-gym.md) — 旧一代足式 RL 训练栈，工程经验可迁移
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Locomotion](../tasks/locomotion.md)
+- [Implicit / Explicit 执行器建模](../concepts/implicit-explicit-actuator-modeling.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [StackForce](./stackforce.md) — CAD/URDF→SimReady Isaac 工程导出与训练向导
 

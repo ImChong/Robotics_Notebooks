@@ -2,16 +2,18 @@
 type: concept
 tags: [robotics, dynamics, simulation, sim2real, actuator]
 status: complete
-updated: 2026-05-20
+updated: 2026-07-09
 related:
   - ./robot-link-and-rotor-inertia.md
   - ./humanoid-parallel-joint-kinematics.md
+  - ./implicit-explicit-actuator-modeling.md
   - ../methods/beyondmimic.md
   - ../methods/actuator-network.md
   - ./system-identification.md
 sources:
   - ../../sources/papers/robot_link_rotor_inertia_primary_refs.md
   - ../../sources/papers/motion_control_projects.md
+  - ../../sources/courses/isaac_lab_implicit_explicit_actuators.md
 summary: "Armature（电枢惯量 / 反射惯量）是电机转子经过减速器反射到关节侧的等效转动惯量，是机器人高频动态特性建模中不可忽视的项。"
 ---
 
@@ -73,7 +75,7 @@ $$
 ```
 
 ### Isaac Gym / Isaac Lab
-在 `ArticulatedView` 或机器人描述配置中，可以手动计算并补偿到关节的动态参数中，或者在 `SimConfig` 中通过 `armature` 属性全局或局部设置。
+在 `ArticulatedView` 或机器人描述配置中，可以手动计算并补偿到关节的动态参数中，或者在 `SimConfig` 中通过 `armature` 属性全局或局部设置。Isaac Lab 文档指出：使用 **explicit** 执行器（用户侧算力矩）时若数值不稳定，可 **增大 `armature`** 阻尼关节响应；这与 [Implicit / Explicit 执行器建模](./implicit-explicit-actuator-modeling.md) 中的稳定性建议一致。
 
 ## BeyondMimic 的工程实践
 
@@ -89,6 +91,7 @@ $$
 - [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — 本页所述物理/仿真要素在保真度链路（建模 ① → 数值 ② → 接触 ③ → 随机化 ④）中的定位
 - [连杆惯量与转子惯量](./robot-link-and-rotor-inertia.md) — URDF link 惯量 vs 关节 `armature` 的分工与一手来源索引
 - [BeyondMimic](../methods/beyondmimic.md) — 强调 armature 精确建模的代表性模仿学习框架。
+- [Implicit / Explicit 执行器建模](./implicit-explicit-actuator-modeling.md) — explicit 执行器不稳定时的 `armature` 调参语境。
 - [Actuator Network (执行器网络)](../methods/actuator-network.md) — 更复杂的执行器建模方式（如神经网络模拟）。
 - [System Identification (系统辨识)](./system-identification.md) — Armature 是系统辨识中的关键物理参数。
 - [人形机器人并联关节解算](./humanoid-parallel-joint-kinematics.md) — 双驱动并联路径上的几何/力映射与惯量建模分工
