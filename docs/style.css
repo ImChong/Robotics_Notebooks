@@ -514,6 +514,82 @@ body.sponsor-dialog-open {
   }
 }
 .home-latest-wiki-intro { margin-bottom: 20px; }
+/* 首页「互链枢纽 · Top 10」：全站 / 论文双 tab + 紧凑行列表（排名/类型/标题/互链度四列跨行对齐） */
+.home-hub-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+.home-hub-tabs {
+  display: inline-flex;
+  gap: 6px;
+}
+.home-hub-tab {
+  font-size: .78rem;
+  padding: 4px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-muted);
+  cursor: pointer;
+}
+.home-hub-tab.is-active {
+  color: var(--text);
+  border-color: var(--border-strong);
+  font-weight: 600;
+}
+.home-hub-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: max-content max-content 1fr max-content;
+  column-gap: 12px;
+  row-gap: 10px;
+  align-items: baseline;
+}
+.home-hub-row { display: contents; }
+.home-hub-row-rank {
+  color: var(--text-muted);
+  font-size: .85rem;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.home-hub-row-type { color: var(--text-muted); font-size: .85rem; white-space: nowrap; }
+.home-hub-row-main { min-width: 0; }
+.home-hub-row-main > a { overflow-wrap: anywhere; }
+.home-hub-row-degree {
+  color: var(--text-muted);
+  font-size: .8rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  justify-self: end;
+}
+.home-hub-more { margin-top: 18px; font-size: .9rem; }
+@media (max-width: 860px) {
+  /* 窄屏：每条记录独立换行，不再跨行列对齐 */
+  .home-hub-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .home-hub-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 8px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .home-hub-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .home-hub-row-rank, .home-hub-row-type, .home-hub-row-degree { font-size: .78rem; }
+  .home-hub-row-main {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
 /* change-log 更新时间线（参考论文笔记站 updates.html：左轨道 + 日期圆点 + 条目行 + 超量折叠） */
 .updates-timeline-days { position: relative; padding-left: 18px; }
 .updates-timeline-days::before {

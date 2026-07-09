@@ -1381,20 +1381,24 @@ def _compute_graph_stats(
         node["id"]: in_degree.get(node["id"], 0) + out_degree.get(node["id"], 0) for node in nodes
     }
 
+    def _hub_entry(node: dict[str, Any]) -> dict[str, Any]:
+        # detail_id / type 供首页等无 site-data 上下文的消费方直接构造站内链接
+        return {
+            "id": node["id"],
+            "detail_id": _wiki_node_detail_id(node["id"]),
+            "label": node["label"],
+            "type": node.get("type") or "",
+            "degree": total_degree[node["id"]],
+        }
+
     top_hubs = sorted(nodes, key=lambda node: total_degree.get(node["id"], 0), reverse=True)[:10]
-    hub_list = [
-        {"id": node["id"], "label": node["label"], "degree": total_degree[node["id"]]}
-        for node in top_hubs
-    ]
+    hub_list = [_hub_entry(node) for node in top_hubs]
 
     paper_nodes = [node for node in nodes if node.get("_is_paper")]
     top_paper_hubs = sorted(
         paper_nodes, key=lambda node: total_degree.get(node["id"], 0), reverse=True
     )[:10]
-    paper_hub_list = [
-        {"id": node["id"], "label": node["label"], "degree": total_degree[node["id"]]}
-        for node in top_paper_hubs
-    ]
+    paper_hub_list = [_hub_entry(node) for node in top_paper_hubs]
 
     orphans = [
         {"id": node["id"], "label": node["label"], "out_degree": out_degree.get(node["id"], 0)}
