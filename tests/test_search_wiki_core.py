@@ -114,7 +114,8 @@ class TestComputeScore(unittest.TestCase):
             fm={"summary": "WBC 全身控制 QP"},
             summary_l="wbc 全身控制 qp",
             page_type="concept",
-            doc_path="wiki/concepts/whole-body-control.md",
+            doc_path_l="wiki/concepts/whole-body-control.md",
+            query_joined="wbc 全身控制",
         )
         entity = compute_score(
             tc,
@@ -124,7 +125,8 @@ class TestComputeScore(unittest.TestCase):
             fm={"summary": "全身控制部署"},
             summary_l="全身控制部署",
             page_type="entity",
-            doc_path="wiki/entities/wbc-fsm.md",
+            doc_path_l="wiki/entities/wbc-fsm.md",
+            query_joined="wbc 全身控制",
         )
         self.assertGreater(boosted, entity)
 
@@ -153,7 +155,9 @@ class TestComputeScore(unittest.TestCase):
             avgdl=5.0,
             fm={"status": "complete"},
             page_type="entity",
-            doc_path="wiki/entities/paper-rma-rapid-motor-adaptation.md",
+            doc_path_l="wiki/entities/paper-rma-rapid-motor-adaptation.md",
+            query_joined="sim2real",
+            status_boost=1.0,
         )
         stub = compute_score(
             tc,
@@ -162,7 +166,9 @@ class TestComputeScore(unittest.TestCase):
             avgdl=5.0,
             fm={"status": "stub", "tags": ["paper-notebook-stub"]},
             page_type="entity",
-            doc_path="wiki/entities/paper-notebook-domain-randomization-understanding-sim-to-real-t.md",
+            doc_path_l="wiki/entities/paper-notebook-domain-randomization-understanding-sim-to-real-t.md",
+            query_joined="sim2real",
+            status_boost=0.35,
         )
         self.assertGreater(normal, stub)
 
@@ -175,7 +181,8 @@ class TestComputeScore(unittest.TestCase):
             avgdl=5.0,
             fm={"status": "complete"},
             page_type="query",
-            doc_path="wiki/queries/sim2real-checklist.md",
+            doc_path_l="wiki/queries/sim2real-checklist.md",
+            query_joined="sim2real 部署",
         )
         entity = compute_score(
             tc,
@@ -184,7 +191,8 @@ class TestComputeScore(unittest.TestCase):
             avgdl=5.0,
             fm={"status": "complete"},
             page_type="entity",
-            doc_path="wiki/entities/humanoid-gym.md",
+            doc_path_l="wiki/entities/humanoid-gym.md",
+            query_joined="sim2real 部署",
         )
         self.assertGreater(checklist, entity)
 

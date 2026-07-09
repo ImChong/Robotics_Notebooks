@@ -111,3 +111,7 @@
 ## 2024-05-18 - Early Exit in Dynamic Programming for Fuzzy String Matching
 **Learning:** Computing the full Levenshtein matrix for heavily mismatched strings (which is the majority of cases when checking a query against a large dictionary) wastes significant CPU cycles.
 **Action:** When filtering fuzzy matches within a threshold (e.g. `max_dist`), pass the threshold into the distance function. Check absolute length differences immediately, and abort the DP matrix calculation early if the minimum cost of the current row exceeds the threshold.
+
+## 2026-07-15 - Python Document Processing Performance: Hoist invariant transformations
+**Learning:** In the backend Python text search ranking (`scripts/search_wiki_core.py`), extracting and processing derived document properties (like `.lower()` on strings, array `.lower()` comprehensions, or dynamic string replacements like `.replace("\\", "/")`) inside hot execution loops (like the `compute_score` filter path) generates unnecessary strings, allocations, and GC cycles for every document on every query.
+**Action:** Always pre-compute and cache derived strings (like lowercased tokens, transformed paths, or page status float multipliers) on the static `doc` instances during the initial parsing pass. Pass these cached and primitive strings down to functions like `compute_score`, `_sim2real_intent_boost`, etc. to completely bypass hot-loop string allocations and redundant calls to list comprehensions.

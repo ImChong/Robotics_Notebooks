@@ -92,21 +92,56 @@ class TestSearchIndexingText(unittest.TestCase):
 
 class TestSearchWikiHelpers(unittest.TestCase):
     def test_filter_doc_type(self):
-        doc = {"page_type": "concept", "tags": ["rl"]}
-        self.assertTrue(_filter_doc(doc, type_filter="concept", tag_filters=None))
-        self.assertFalse(_filter_doc(doc, type_filter="method", tag_filters=None))
+        self.assertTrue(
+            _filter_doc({"page_type_l": "concept"}, type_filter_l="concept", tag_filters_l=None)
+        )
+        self.assertFalse(
+            _filter_doc({"page_type_l": "concept"}, type_filter_l="method", tag_filters_l=None)
+        )
 
     def test_filter_doc_tags(self):
-        doc = {"page_type": "concept", "tags": ["rl", "control"]}
-        self.assertTrue(_filter_doc(doc, type_filter=None, tag_filters=["rl"]))
-        self.assertTrue(_filter_doc(doc, type_filter=None, tag_filters=["rl", "control"]))
-        self.assertFalse(_filter_doc(doc, type_filter=None, tag_filters=["rl", "missing"]))
+        self.assertTrue(
+            _filter_doc(
+                {"page_tags_l": ["rl", "control"]}, type_filter_l=None, tag_filters_l=["rl"]
+            )
+        )
+        self.assertTrue(
+            _filter_doc(
+                {"page_tags_l": ["rl", "control"]},
+                type_filter_l=None,
+                tag_filters_l=["rl", "control"],
+            )
+        )
+        self.assertFalse(
+            _filter_doc(
+                {"page_tags_l": ["rl", "control"]},
+                type_filter_l=None,
+                tag_filters_l=["rl", "missing"],
+            )
+        )
 
     def test_filter_doc_both(self):
-        doc = {"page_type": "concept", "tags": ["rl"]}
-        self.assertTrue(_filter_doc(doc, type_filter="concept", tag_filters=["rl"]))
-        self.assertFalse(_filter_doc(doc, type_filter="method", tag_filters=["rl"]))
-        self.assertFalse(_filter_doc(doc, type_filter="concept", tag_filters=["missing"]))
+        self.assertTrue(
+            _filter_doc(
+                {"page_type_l": "concept", "page_tags_l": ["rl"]},
+                type_filter_l="concept",
+                tag_filters_l=["rl"],
+            )
+        )
+        self.assertFalse(
+            _filter_doc(
+                {"page_type_l": "concept", "page_tags_l": ["rl"]},
+                type_filter_l="method",
+                tag_filters_l=["rl"],
+            )
+        )
+        self.assertFalse(
+            _filter_doc(
+                {"page_type_l": "concept", "page_tags_l": ["rl"]},
+                type_filter_l="concept",
+                tag_filters_l=["missing"],
+            )
+        )
 
     def test_find_matched_lines_no_words(self):
         lines = ["hello world", "test line"]
