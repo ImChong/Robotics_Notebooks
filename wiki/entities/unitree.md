@@ -4,7 +4,7 @@ type: entity
 sources:
   - ../../sources/papers/humanoid_hardware.md
 summary: "Unitree"
-updated: 2026-07-08
+updated: 2026-07-09
 related:
   - ./humanoid-robot.md
   - ./quadruped-robot.md
@@ -117,6 +117,8 @@ Unitree 现在已经明显不只是四足公司。
 
 ### 3. 软件生态：UniStore 应用平台
 2025-12 内测、**2026-05-07 全面开放** 的 **[UniStore](./unitree-unistore.md)** 是宇树官方 **机器人动作与应用商店**：用户通过 **Unitree Explore** 手机 App，像安装手机应用一样向 **G1 / H1 / B2 / Go2** 一键下发舞蹈、武术与任务类技能包；平台含 **用户广场、动作库、数据集、开发者中心**，并开放 SDK 上架与收益分成。它与 GitHub 研发栈互补——前者面向 **成品技能分发**，后者面向 **自研训练与部署管线**。
+
+第三方 **ROS-optional 集成栈** 如 **[DimOS（Dimensional）](./dimensionalos-dimos.md)** 亦提供 Go2（stable）/ G1（beta）的 Python Blueprint + MCP agent 导航演示，与官方 SDK2 / [unitree_ros](./unitree-ros.md) 形成并行路线。
 
 ## Unitree 为什么对当前项目主线很重要
 

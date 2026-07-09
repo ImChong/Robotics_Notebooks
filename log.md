@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-09] ingest | sources/repos/dimensionalos_dimos.md — DimOS agent-native 物理空间 OS 入库；wiki/entities/dimensionalos-dimos.md；交叉更新 ros2-basics / ros2-vs-lcm / unitree / unitree-g1 / lerobot / navigation-slam-autonomy-stack
+
 ## [2026-07-09] ingest | sources/papers/egowam.md — 新增 EgoWAM 论文实体并交叉更新 WAM/IL/Manipulation；wiki/entities/paper-egowam-egocentric-human-wam-co-training.md
 
 ## [2026-07-09] ingest | sources/blogs/dexmal_dm05.md — 接入 Dexmal DM0.5 开放世界 VLA 博客；新建 wiki/entities/dexmal-dm05.md；互链 vla.md
