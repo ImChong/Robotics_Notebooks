@@ -23,10 +23,10 @@ CATALOG_HEADER = """# Robotics Notebooks Page Catalog
 def extract_frontmatter_date(path: Path) -> str:
     try:
         content = path.read_text(encoding="utf-8")
-        match = re.search(r"^date:\\s*(\\d{4}-\\d{2}-\\d{2})", content, re.MULTILINE)
+        match = re.search(r"^date:\s*(\d{4}-\d{2}-\d{2})", content, re.MULTILINE)
         if match:
             return match.group(1)
-        match = re.search(r"📅(\\d{4}-\\d{2}-\\d{2})", content)
+        match = re.search(r"📅(\d{4}-\d{2}-\d{2})", content)
         if match:
             return match.group(1)
     except Exception:
@@ -38,7 +38,7 @@ def strip_frontmatter(content: str) -> str:
     """去除 YAML frontmatter（--- ... ---）。"""
     if not content.startswith("---"):
         return content
-    end = content.find("\\n---", 3)
+    end = content.find("\n---", 3)
     if end == -1:
         return content
     return content[end + 4 :].lstrip()
@@ -89,11 +89,11 @@ def collect_pages(dir_path: Path) -> list[dict[str, Any]]:
     for md in sorted(dir_path.rglob("*.md")):
         relative = md.relative_to(ROOT)
         content = md.read_text(encoding="utf-8", errors="ignore")
-        title_match = re.search(r"^#\\s+(.+)$", content, re.MULTILINE)
+        title_match = re.search(r"^#\s+(.+)$", content, re.MULTILINE)
         pages.append(
             {
                 "title": title_match.group(1).strip() if title_match else relative.stem,
-                "path": str(relative).replace("\\\\", "/"),
+                "path": str(relative).replace("\\", "/"),
                 "summary": extract_first_sentence(content),
                 "date": extract_frontmatter_date(md),
                 "page_type": get_type(relative),
@@ -126,7 +126,7 @@ def render_catalog() -> str:
             f"`📅{page['date']}` `{page['page_type']}`"
             for page in pages
         )
-    return "\\n".join(chunks).rstrip() + "\\n"
+    return "\n".join(chunks).rstrip() + "\n"
 
 
 def write_catalog(path: Path | None = None) -> Path:
