@@ -79,6 +79,7 @@ flowchart LR
 - Safety filter 和 MPC safety constraint 有什么区别
 
 ### 推荐读什么
+- [Safety Filter](../wiki/concepts/safety-filter.md)
 - [Whole-Body Control](../wiki/concepts/whole-body-control.md)
 - [Query：CLF+CBF 在 WBC/MPC 中联合使用](../wiki/queries/clf-cbf-in-wbc.md)
 - Zeng et al., *Safety-Critical Model Predictive Control* (2021)
@@ -99,6 +100,9 @@ flowchart LR
 - 如何用 Lagrangian 方法或 barrier 方法训练安全策略
 
 ### 推荐读什么
+- [Safe RL](../wiki/methods/safe-rl.md)
+- [CMDP 形式化](../wiki/formalizations/cmdp.md)
+- [安全的真机 RL 微调](../wiki/concepts/safe-real-world-rl-fine-tuning.md)
 - Garcia & Fernandez, *A Comprehensive Survey on Safe RL* (2015)
 - [Reinforcement Learning](../wiki/methods/reinforcement-learning.md)
 
@@ -125,6 +129,8 @@ flowchart LR
   - [Control Lyapunov Function](../wiki/formalizations/control-lyapunov-function.md)
   - [Control Barrier Function](../wiki/concepts/control-barrier-function.md)
   - [CLF vs CBF 对比](../wiki/comparisons/clf-vs-cbf.md)
+  - [Safety Filter](../wiki/concepts/safety-filter.md)
+  - [Safe RL](../wiki/methods/safe-rl.md) 与 [CMDP 形式化](../wiki/formalizations/cmdp.md)
   - [Whole-Body Control](../wiki/concepts/whole-body-control.md)
   - [Query：CLF+CBF 在 WBC/MPC 中联合使用](../wiki/queries/clf-cbf-in-wbc.md)
 

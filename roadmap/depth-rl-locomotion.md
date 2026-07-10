@@ -53,6 +53,8 @@ flowchart LR
 - [动手学强化学习（蘑菇书）](../wiki/entities/hands-on-rl-book.md) — 中文：MDP → PPO/SAC 章节 + [hrl.boyuai.com](https://hrl.boyuai.com/chapter) 在线 notebook；配套 [伯禹免费视频课](https://www.boyuai.com/elites/course/xVqhU42F5IDky94x)
 - Spinning Up (OpenAI) — Part 1: Key Concepts
 - [Reinforcement Learning](../wiki/methods/reinforcement-learning.md)（本仓库）
+- [PPO](../wiki/methods/ppo.md) · [SAC](../wiki/methods/sac.md)（本仓库）
+- [Query：机器人任务里 PPO 与 SAC 怎么选](../wiki/queries/ppo-vs-sac-for-robots.md)
 
 ### 学完输出什么
 - 能解释什么是 MDP、policy、value function、return
@@ -106,8 +108,10 @@ flowchart LR
 
 ### 推荐读什么
 - "Emergence of Locomotion Behaviours in Rich Environments" (Heess et al., 2017)
-- legged_gym README 和代码
-- [Reinforcement Learning](../wiki/methods/reinforcement-learning.md)（本仓库）
+- [legged_gym](../wiki/entities/legged-gym.md) 与 [Isaac Lab](../wiki/entities/isaac-lab.md)（本仓库实体页 + 官方代码）
+- [Reward Design](../wiki/concepts/reward-design.md)（本仓库）
+- [Query：locomotion reward 设计指南](../wiki/queries/locomotion-reward-design-guide.md)
+- [Query：Humanoid RL Cookbook](../wiki/queries/humanoid-rl-cookbook.md) — 观测/动作空间、超参与训练技巧速查
 
 ### 学完输出什么
 - 一个能在平地上稳定行走的人形 RL 策略（仿真内）
@@ -133,9 +137,10 @@ flowchart LR
 - 理解"RL 提供动作 prior，QP/WBC 负责实时跟踪"这个模式
 
 ### 推荐读什么
-- "AMP: Adversarial Motion Priors" (Peng et al., 2021)
+- "AMP: Adversarial Motion Priors" (Peng et al., 2021) — 配合 [AMP Reward](../wiki/methods/amp-reward.md)、[DeepMimic](../wiki/methods/deepmimic.md)（本仓库）
 - [Whole-Body Control](../wiki/concepts/whole-body-control.md)（本仓库）
 - [Model Predictive Control (MPC)](../wiki/methods/model-predictive-control.md)（本仓库）
+- [Query：什么时候用 WBC、什么时候用 RL](../wiki/queries/when-to-use-wbc-vs-rl.md)
 
 ### 学完输出什么
 - 能解释 RL 和 MPC / WBC 各自的适用场景
@@ -165,6 +170,9 @@ flowchart LR
 - [Sim2Real](../wiki/concepts/sim2real.md)（本仓库）
 - [Domain Randomization](../wiki/concepts/domain-randomization.md)（本仓库）
 - [System Identification](../wiki/concepts/system-identification.md)（本仓库）
+- [Actuator Network](../wiki/methods/actuator-network.md) 与 [Implicit vs Explicit 执行器建模](../wiki/concepts/implicit-explicit-actuator-modeling.md)（本仓库）— 执行器 gap 是 sim2real 的第一大坑
+- [Query：Sim2Real 部署检查清单](../wiki/queries/sim2real-checklist.md)
+- [Query：腿式/人形 RL 的 PD 增益设置](../wiki/queries/legged-humanoid-rl-pd-gain-setting.md)
 
 ### 学完输出什么
 - 一次 sim2real 实验记录（哪怕只是仿真内不同地形的迁移）
@@ -179,21 +187,24 @@ flowchart LR
 
 根据研究方向选一个深入：
 
-**方向 A：更复杂的 locomotion**
-- 跑、跳、楼梯、崎岖地形
-- 关键词：CPI、NMPC、WBC、RL + sim2real
+**方向 A：更复杂的 locomotion / 感知越障**
+- 跑、跳、楼梯、崎岖地形；带深度相机/LiDAR 的感知策略
+- 关键词：[Extreme Parkour](../wiki/entities/extreme-parkour.md)、[DreamWaQ++](../wiki/entities/dreamwaq-plus.md)、teacher-student
+- 独立路线页：[感知越障纵深路线](depth-perceptive-locomotion.md)
 
-**方向 B：模仿学习初始化**
-- 用 MoCap 数据初始化 RL 策略
-- 关键词：ASE、CALM、DeepMimic
+**方向 B：模仿学习初始化 / 动作跟踪**
+- 用 MoCap 数据初始化 RL 策略，或全身动作跟踪
+- 关键词：ASE、CALM、[DeepMimic](../wiki/methods/deepmimic.md)、[BeyondMimic](../wiki/methods/beyondmimic.md)、[Sonic](../wiki/methods/sonic-motion-tracking.md)
+- 独立路线页：[模仿学习纵深路线](depth-imitation-learning.md)
 
 **方向 C：视觉 + locomotion**
 - 端到端视觉策略
 - 关键词：perception、terrain mapping、learning-based navigation
 
-**方向 D：单位置适配**
+**方向 D：跨形态适配（cross-embodiment）**
 - 一个策略迁移到不同机器人形态
 - 关键词：domain randomization、meta-learning、multi-task RL
+- 选型参考：[Query：跨形态迁移策略](../wiki/queries/cross-embodiment-transfer-strategy.md)
 
 ### 推荐读什么
 - 参考 [Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md) 的进阶专题部分

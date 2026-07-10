@@ -49,6 +49,7 @@ flowchart LR
 - [Optimal Control](../wiki/concepts/optimal-control.md)
 - [LQR](../wiki/formalizations/lqr.md)
 - [Modern Robotics 教材](../wiki/entities/modern-robotics-book.md) — Chapter 8（动力学）
+- [Query：Pinocchio 快速上手](../wiki/queries/pinocchio-quick-start.md)
 
 ### 推荐做什么
 - 用 [Pinocchio](../wiki/entities/pinocchio.md) 加载一个人形 URDF，计算质心、惯量矩阵和重力项
@@ -120,6 +121,7 @@ flowchart LR
 - [Nonlinear MPC](../wiki/methods/nonlinear-model-predictive-control.md)
 - [LQR / iLQR](../wiki/methods/lqr-ilqr.md)
 - [MPC vs RL](../wiki/comparisons/mpc-vs-rl.md)
+- [Query：MPC 求解器选型](../wiki/queries/mpc-solver-selection.md) 与 [Query：MPC 调参指南](../wiki/queries/mpc-tuning-guide.md)
 - Di Carlo et al., *Dynamic Locomotion in the MIT Cheetah 3 Through Convex Model-Predictive Control* (2018)
 
 ### 推荐做什么
@@ -145,6 +147,7 @@ flowchart LR
 - [HQP](../wiki/concepts/hqp.md)
 - [MPC-WBC 集成](../wiki/concepts/mpc-wbc-integration.md)
 - [State Estimation](../wiki/concepts/state-estimation.md) 与 [Contact Estimation](../wiki/concepts/contact-estimation.md)
+- [Query：WBC 实现指南](../wiki/queries/wbc-implementation-guide.md) 与 [Query：WBC 调参指南](../wiki/queries/wbc-tuning-guide.md)
 
 ### 推荐做什么
 - 用 TSID（或 [Drake](../wiki/entities/drake.md) / 自研 QP）实现一个站立平衡 WBC，接上 Stage 3 的 MPC 输出

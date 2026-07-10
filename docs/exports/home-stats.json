@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-10",
   "node_count": 1556,
-  "edge_count": 11317,
+  "edge_count": 11380,
   "coverage": {
     "covered": 1519,
     "total": 1547,
@@ -89,7 +89,7 @@
       "recency": "2026-07-09",
       "source": "log.md",
       "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/dimensionalos-dimos.md",
@@ -190,8 +190,7 @@
       "recency": "2026-07-08",
       "source": "log.md",
       "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/stackforce.md",
@@ -227,27 +226,27 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 283
-    },
-    {
-      "label": "视觉-语言-动作",
-      "size": 200
+      "size": 404
     },
     {
       "label": "人形论文深读笔记",
-      "size": 178
+      "size": 186
+    },
+    {
+      "label": "视觉-语言-动作",
+      "size": 185
     },
     {
       "label": "移动操作",
-      "size": 176
+      "size": 92
     },
     {
-      "label": "全身控制",
-      "size": 73
+      "label": "运动控制",
+      "size": 68
     },
     {
-      "label": "动作重定向",
-      "size": 72
+      "label": "人形强化学习运动控制",
+      "size": 67
     }
   ],
   "top_hubs": [
@@ -285,7 +284,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 222,
+      "degree": 223,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -294,7 +293,7 @@
       "label": "Paper Notebooks · Loco-Manipulation and WBC",
       "type": "overview",
       "degree": 218,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
@@ -390,7 +389,8 @@
       "detail_id": "entity-paper-amp-survey-08-more",
       "label": "MoRE：复杂地形上的人形多步态残差专家混合",
       "type": "entity",
-      "degree": 26
+      "degree": 26,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     }
   ]
 }
