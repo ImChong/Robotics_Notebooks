@@ -45,31 +45,6 @@
             <span id="heroEdgeCount">11753</span> 条连接
           </div>
         </div>
-        <div id="wiki-search" class="hero-search">
-          <div class="search-bar-wrap">
-            <input
-              id="wikiSearchInput"
-              type="search"
-              placeholder="搜索概念、方法或任务：MPC、PPO、Diffusion Policy…"
-              aria-label="搜索知识页面"
-              autocomplete="off"
-            />
-            <select id="wikiCommunityFilter" aria-label="按社区过滤">
-              <option value="">全部社区</option>
-            </select>
-          </div>
-          <!-- 热门主题：main.js 用 home-stats.json 的 top_communities 覆盖为实时 Top 社区；
-               以下静态 chips 仅为 JS/数据失败时的兜底快照 -->
-          <div id="wikiHotTopics" class="tag-cloud" aria-label="热门主题">
-            <button class="tag-chip" data-wiki-tag="移动操作">移动操作</button>
-            <button class="tag-chip" data-wiki-tag="人形论文深读笔记">人形论文深读笔记</button>
-            <button class="tag-chip" data-wiki-tag="强化学习">强化学习</button>
-            <button class="tag-chip" data-wiki-tag="全身控制">全身控制</button>
-            <button class="tag-chip" data-wiki-tag="物理引擎">物理引擎</button>
-            <button class="tag-chip" data-wiki-tag="动作重定向">动作重定向</button>
-          </div>
-          <div id="wikiSearchResults" class="card-grid" aria-live="polite"></div>
-        </div>
       </div>
     </section>
 
@@ -83,6 +58,12 @@
             <h3>建立运动控制全局认识</h3>
             <p>从机器人基础、动力学到控制与 Sim2Real，按主路线逐步学习。</p>
             <span class="home-entry-link">进入主路线 →</span>
+          </a>
+          <a class="card home-entry-card" href="#wiki-search" data-focus-search>
+            <span class="home-entry-label">项目查询</span>
+            <h3>查找框架、论文与机器人平台</h3>
+            <p>直接搜索项目名称、算法缩写或具体工程问题。</p>
+            <span class="home-entry-link">搜索知识库 →</span>
           </a>
           <div class="card home-entry-card home-entry-card-more">
             <span class="home-entry-label">更多路线</span>
@@ -111,6 +92,35 @@
             <button type="button" id="homeRouteToggle" class="home-entry-link home-route-toggle" aria-expanded="false" aria-controls="homeRouteLinks">展开全部 12 条纵深路线 ↓</button>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="wiki-search">
+      <div class="container">
+        <h2 class="section-title">搜索知识库</h2>
+        <div class="search-bar-wrap">
+          <input
+            id="wikiSearchInput"
+            type="search"
+            placeholder="搜索概念、方法或任务：MPC、PPO、Diffusion Policy…"
+            aria-label="搜索知识页面"
+            autocomplete="off"
+          />
+          <select id="wikiCommunityFilter" aria-label="按社区过滤">
+            <option value="">全部社区</option>
+          </select>
+        </div>
+        <!-- 热门主题：main.js 用 home-stats.json 的 top_communities 覆盖为实时 Top 社区；
+             以下静态 chips 仅为 JS/数据失败时的兜底快照 -->
+        <div id="wikiHotTopics" class="tag-cloud" aria-label="热门主题">
+          <button class="tag-chip" data-wiki-tag="移动操作">移动操作</button>
+          <button class="tag-chip" data-wiki-tag="人形论文深读笔记">人形论文深读笔记</button>
+          <button class="tag-chip" data-wiki-tag="强化学习">强化学习</button>
+          <button class="tag-chip" data-wiki-tag="全身控制">全身控制</button>
+          <button class="tag-chip" data-wiki-tag="物理引擎">物理引擎</button>
+          <button class="tag-chip" data-wiki-tag="动作重定向">动作重定向</button>
+        </div>
+        <div id="wikiSearchResults" class="card-grid" aria-live="polite"></div>
       </div>
     </section>
 
