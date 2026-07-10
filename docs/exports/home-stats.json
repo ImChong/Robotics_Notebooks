@@ -1,13 +1,64 @@
 {
   "generated_at": "2026-07-10",
-  "node_count": 1561,
-  "edge_count": 11622,
+  "node_count": 1563,
+  "edge_count": 11742,
   "coverage": {
     "covered": 1518,
     "total": 1548,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/motion-retargeting.md",
+      "detail_id": "wiki-concepts-motion-retargeting",
+      "label": "Motion Retargeting（动作重定向）",
+      "type": "concept",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/comparisons/gmr-vs-nmr-vs-reactor.md",
+      "detail_id": "wiki-comparisons-gmr-vs-nmr-vs-reactor",
+      "label": "GMR vs NMR vs ReActor：动作重定向方法谱系对比",
+      "type": "comparison",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/methods/diffusion-motion-generation.md",
+      "detail_id": "wiki-methods-diffusion-motion-generation",
+      "label": "Diffusion-based Motion Generation (基于扩散模型的运动生成)",
+      "type": "method",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/comparisons/hy-motion-vs-genmo-vs-kimodo.md",
+      "detail_id": "wiki-comparisons-hy-motion-vs-genmo-vs-kimodo",
+      "label": "HY-Motion vs GENMO/GEM vs Kimodo：三条「文本/多模态 → 人体运动」生成式骨干对比",
+      "type": "comparison",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/overview/topic-motion-retargeting.md",
+      "detail_id": "wiki-overview-topic-motion-retargeting",
+      "label": "动作重定向（专题汇总）",
+      "type": "overview",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "maintained"
+    },
     {
       "path": "wiki/methods/vla.md",
       "detail_id": "wiki-methods-vla",
@@ -163,70 +214,18 @@
       "source": "log.md",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-evo1-lightweight-vla.md",
-      "detail_id": "entity-paper-evo1-lightweight-vla",
-      "label": "Evo-1：轻量 VLA 与语义对齐保持",
-      "type": "entity",
-      "recency": "2026-07-10",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/freecad-mcp.md",
-      "detail_id": "entity-freecad-mcp",
-      "label": "FreeCAD MCP",
-      "type": "entity",
-      "recency": "2026-07-10",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-face-anything-4d-face-reconstruction.md",
-      "detail_id": "entity-paper-face-anything-4d-face-reconstruction",
-      "label": "Face Anything",
-      "type": "entity",
-      "recency": "2026-07-09",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/dimensionalos-dimos.md",
-      "detail_id": "entity-dimensionalos-dimos",
-      "label": "DimOS（Dimensional 物理空间 Agent OS）",
-      "type": "entity",
-      "recency": "2026-07-09",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-egowam-egocentric-human-wam-co-training.md",
-      "detail_id": "entity-paper-egowam-egocentric-human-wam-co-training",
-      "label": "EgoWAM（野外 Egocentric 人数据 · World Action Model 协同训练）",
-      "type": "entity",
-      "recency": "2026-07-09",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/methods/vla.md",
-    "detail_id": "wiki-methods-vla",
-    "label": "VLA（Vision-Language-Action）",
-    "type": "method",
+    "path": "wiki/concepts/motion-retargeting.md",
+    "detail_id": "wiki-concepts-motion-retargeting",
+    "label": "Motion Retargeting（动作重定向）",
+    "type": "concept",
     "recency": "2026-07-10",
     "source": "log.md",
     "action": "maintained",
     "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "community_label": "动作重定向（Motion Retargeting） 社区"
   },
   "top_communities": [
     {
@@ -235,23 +234,23 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 184
-    },
-    {
-      "label": "人形论文深读笔记",
-      "size": 182
+      "size": 178
     },
     {
       "label": "移动操作",
-      "size": 161
+      "size": 166
+    },
+    {
+      "label": "人形论文深读笔记",
+      "size": 160
     },
     {
       "label": "运动控制",
       "size": 69
     },
     {
-      "label": "仿真训练",
-      "size": 56
+      "label": "行为基础模型技术地图",
+      "size": 61
     }
   ],
   "top_hubs": [
@@ -274,7 +273,7 @@
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
-      "degree": 265,
+      "degree": 266,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
@@ -341,8 +340,9 @@
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",
       "label": "OmniRetarget",
       "type": "entity",
-      "degree": 42,
-      "has_repo": true
+      "degree": 43,
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
     },
     {
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
@@ -361,7 +361,8 @@
       "label": "TWIST2",
       "type": "entity",
       "degree": 34,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
@@ -386,7 +387,8 @@
       "label": "OASIS（From Simulation Data Collection to Real-World Humanoid Loco-Manipulation）",
       "type": "entity",
       "degree": 27,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
       "detail_id": "entity-paper-amp-survey-08-more",
