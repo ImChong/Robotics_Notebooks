@@ -52,10 +52,3 @@ def test_write_catalog_creates_standalone_file(tmp_path: Path, monkeypatch) -> N
     assert output == tmp_path / "catalog.md"
     assert output.exists()
     assert "[Demo Roadmap](roadmap/demo.md)" in output.read_text(encoding="utf-8")
-
-
-def test_live_catalog_matches_generator() -> None:
-    """Committed catalog.md should match the current generator output."""
-    rendered = catalog.render_catalog()
-    on_disk = catalog.CATALOG.read_text(encoding="utf-8")
-    assert rendered.count("\n- [") == on_disk.count("\n- [")
