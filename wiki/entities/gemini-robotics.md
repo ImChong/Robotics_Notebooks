@@ -3,10 +3,11 @@ type: entity
 tags: [google-deepmind, vla, gemini, embodied-ai, product]
 title: Gemini Robotics
 summary: "Gemini Robotics 是 Google DeepMind 基于 Gemini 多模态栈发布的机器人视觉–语言–动作与具身推理模型族（含 ER / 1.5 等迭代），强调泛化、交互与自然语言指令。"
-updated: 2026-07-08
+updated: 2026-07-10
 related:
   - ../methods/vla.md
   - ../methods/robotics-transformer-rt-series.md
+  - ./perceptron-egocentric.md
 sources:
   - ../../sources/blogs/ted_xiao_embodied_three_eras_primary_refs.md
 ---
@@ -27,11 +28,13 @@ sources:
 
 - 能力边界与数值应以 **官方博客 + 技术报告 PDF** 为准，并与开源通用策略（如 [Octo](../methods/octo-model.md)）区分评测设定。
 - 概念上与 [VLA](../methods/vla.md)、[Robotics Transformer](../methods/robotics-transformer-rt-series.md) 同属「多模态大模型接入控制」谱系。
+- **自动标注对照：** Macrodata **WGO-Bench** 以 **Gemini 3.5 Flash + Gemini Robotics ER-1.6** 构建机器人子任务分段管线；Perceptron Egocentric（2026-07 博客）在同一基准报告更高 **semantic end-to-end F1** 与更低标注成本——见 [Perceptron Egocentric](./perceptron-egocentric.md) 与 [Auto-labeling Pipelines](../methods/auto-labeling-pipelines.md)。
 
 ## 关联页面
 
 - [VLA](../methods/vla.md)
 - [Foundation Policy](../concepts/foundation-policy.md)
+- [Perceptron Egocentric（WGO 自动标注对照）](./perceptron-egocentric.md)
 
 ## 参考来源
 
