@@ -1007,6 +1007,45 @@ button.home-wiki-heatmap-cell.is-active {
 .route-list, .structure-list, .boundary-list { display: grid; gap: 14px; }
 .route-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .route-card { min-height: 100%; }
+.home-entry-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 176px;
+  color: var(--text);
+}
+.home-entry-card:hover {
+  color: var(--text);
+  text-decoration: none;
+  opacity: 1;
+}
+.home-entry-card p {
+  color: var(--text-muted);
+}
+.home-entry-label {
+  width: fit-content;
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-alt);
+  color: var(--text-muted);
+  font-size: .78rem;
+  font-weight: 650;
+}
+.home-entry-link {
+  margin-top: auto;
+  padding-top: 16px;
+  color: var(--accent);
+  font-size: .86rem;
+  font-weight: 650;
+}
+.learning-route-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.learning-route-links .btn-secondary {
+  border: 1px solid var(--border);
+}
 .simple-card {
   padding: 18px 20px;
   background: linear-gradient(180deg, rgba(255,255,255,.8), rgba(255,255,255,.94));
