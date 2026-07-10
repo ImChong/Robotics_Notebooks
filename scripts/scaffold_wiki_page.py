@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """scaffold_wiki_page.py — 按全库 frontmatter 规范生成 wiki 页面骨架。
 
-把 query 答案 / 选题候选沉淀回 wiki 时，手工拼 frontmatter、速查区块、三段式
+把 query 答案 / 选题候选沉淀回 wiki 时，手工拼 frontmatter、速查区块与统一
 正文骨架成本不低。本脚本给定 type 与标题，输出符合 lint 结构要求的骨架：
-含「英文缩写速查」锚点（落在规范位置）、`related`/`sources` 占位与三段式正文。
+定义 → 英文缩写 → 重要性 → 核心原理 → 工程实践 → 局限 → 关联与来源。
 
 用法：
     python3 scripts/scaffold_wiki_page.py concept "视觉伺服" --slug visual-servoing-intro
@@ -85,6 +85,19 @@ _TAIL_BLOCK = (
 )
 
 
+STANDARD_SECTION_ORDER = (
+    "## 一句话定义",
+    "## 英文缩写速查",
+    "## 为什么重要",
+    "## 核心原理",
+    "## 工程实践",
+    "## 局限与风险",
+    "## 关联页面",
+    "## 参考来源",
+    "## 推荐继续阅读",
+)
+
+
 # 数据集实体速查块：五维度覆盖 lint `dataset_metadata_check` 全部关键词命中，
 # 新建数据集页即满足元数据巡检（0 缺失），降低后续 ingest 手工拼写成本。
 _DATASET_QUICK_BLOCK = (
@@ -109,11 +122,13 @@ def _body_dataset(title: str) -> str:
         "## 为什么重要\n\n"
         "- **TODO 要点一：** 待补全。\n"
         "- **TODO 要点二：** 待补全。\n\n"
-        "## 核心内容\n\n"
-        "TODO 三段式骨架：**采集与构成 → 处理与标注 → 适用范式与边界**，逐段补全。\n\n"
-        "## 常见误区或局限\n\n"
-        "- **误区：「TODO」** TODO 纠正。\n"
-        "- **局限：** TODO 待补全。\n\n"
+        "## 核心原理\n\n"
+        "TODO 说明数据的**采集方式 → 数据构成 → 标注与处理流程**。\n\n"
+        "## 工程实践\n\n"
+        "TODO 说明下载、清洗、重定向、训练接入与评测方式。\n\n"
+        "## 局限与风险\n\n"
+        "- **适用边界：** TODO 说明数据覆盖不到的场景或形态。\n"
+        "- **工程风险：** TODO 说明许可证、数据偏差或部署差距。\n\n"
         f"{_TAIL_BLOCK}"
     )
 
@@ -127,11 +142,13 @@ def _body_standard(title: str) -> str:
         "## 为什么重要\n\n"
         "- **TODO 要点一：** 待补全。\n"
         "- **TODO 要点二：** 待补全。\n\n"
-        "## 核心内容\n\n"
-        "TODO 三段式骨架：**是什么 → 怎么做 → 取舍与边界**，逐段补全。\n\n"
-        "## 常见误区或局限\n\n"
-        "- **误区：「TODO」** TODO 纠正。\n"
-        "- **局限：** TODO 待补全。\n\n"
+        "## 核心原理\n\n"
+        "TODO 说明**输入 → 关键机制 → 输出**，必要时补公式、流程图或伪代码。\n\n"
+        "## 工程实践\n\n"
+        "TODO 说明实现步骤、关键参数、调试指标与机器人应用示例。\n\n"
+        "## 局限与风险\n\n"
+        "- **适用边界：** TODO 说明什么情况下不适用。\n"
+        "- **工程风险：** TODO 说明稳定性、实时性、数据或部署风险。\n\n"
         f"{_TAIL_BLOCK}"
     )
 
@@ -180,6 +197,16 @@ def self_check(content: str, page_type: str) -> list[str]:
         problems.append("缺「关联页面」区块")
     if not has_section(content, ["参考来源", "sources"]):
         problems.append("缺「参考来源」区块")
+
+    if page_type != "query":
+        positions: list[int] = []
+        for heading in STANDARD_SECTION_ORDER:
+            pos = content.find(heading)
+            if pos == -1:
+                problems.append(f"缺「{heading.removeprefix('## ')}」区块")
+            positions.append(pos)
+        if all(pos >= 0 for pos in positions) and positions != sorted(positions):
+            problems.append("统一阅读骨架顺序不规范")
 
     if page_type == "query":
         for needle, label in (

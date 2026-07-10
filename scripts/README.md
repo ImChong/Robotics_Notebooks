@@ -26,6 +26,7 @@
 | `ingest_paper.py` | 生成 `sources/papers/` 论文 ingest 模板 | `make ingest` |
 | `lint_wiki.py` | Wiki 健康检查（断链、孤儿页、frontmatter 等） | `make lint`；`make ci-preflight`（`--report`） |
 | `migrate_wikilinks.py` | 将 `[[wikilink]]` 迁移为标准 `[text](path)` | 一次性维护时直接运行 |
+| `scaffold_wiki_page.py` | 按统一阅读骨架生成 wiki 页面并做结构自检 | `python3 scripts/scaffold_wiki_page.py concept "标题" --slug page-slug` |
 | `search_wiki.py` | 终端搜索 wiki 内容 | `make search` |
 | `sync_all_stats.py` | 图谱、首页统计、README 徽章、`docs/index.html` 等同步 | `make sync-stats`；`make ci-preflight` |
 | `update_badge.py` | 更新 `README.md` 顶部徽章区 | `make badge` |
