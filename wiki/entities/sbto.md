@@ -102,6 +102,7 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：DynaRetarget](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/DynaRetarget__Dynamically-Feasible_Retargeting_using_Sampling-Based_Trajectory_Optimization/DynaRetarget__Dynamically-Feasible_Retargeting_using_Sampling-Based_Trajectory_Optimization.html)
 - 代码：<https://github.com/Atarilab/sbto>
 - 项目页：<https://atarilab.github.io/dynaretarget.io/>
 - 论文：<https://arxiv.org/abs/2602.06827>

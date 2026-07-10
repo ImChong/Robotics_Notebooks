@@ -156,7 +156,7 @@ def parse_progress_md(text: str) -> list[dict]:
         if not re.match(r"^(\d+|H\d+)$", num):
             continue
         paper_col = cols[1]
-        link = re.search(r"\[([^\]]+)\]\((https://arxiv\.org/abs/[^)]+)\)", paper_col)
+        link = re.search(r"\[([^\]]+)\]\((https://arxiv\.org/(?:abs|pdf)/[^)]+)\)", paper_col)
         if link:
             title = clean_display_title(link.group(1))
             arxiv = normalize_arxiv(link.group(2).rsplit("/", 1)[-1])

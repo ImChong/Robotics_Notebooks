@@ -145,6 +145,8 @@ flowchart TB
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：LapSurgie](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/LapSurgie__Humanoid_Robots_Performing_Surgery_via_Teleoperated_Handheld_Laparoscopy/LapSurgie__Humanoid_Robots_Performing_Surgery_via_Teleoperated_Handheld_Laparoscopy.html)
+- [机器人论文阅读笔记：Humanoids in Hospitals](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Humanoids_in_Hospitals__Humanoid_Surrogates_for_Dexterous_Medical_Interventions/Humanoids_in_Hospitals__Humanoid_Surrogates_for_Dexterous_Medical_Interventions.html)
 - [LapSurgie arXiv:2510.03529](https://arxiv.org/abs/2510.03529) — 同团队腹腔镜人形遥操作框架前序
 - [Humanoids in Hospitals arXiv:2503.12725](https://arxiv.org/abs/2503.12725) — 医院场景人形替代体技术路线
 - [UCSD ARCLAB · Humanoid Robots for Medicine](https://ucsdarclab.com/projects/humanoid-robots-for-medicine/)

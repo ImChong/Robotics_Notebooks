@@ -84,5 +84,6 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Humanoid Everyday](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/Humanoid_Everyday__Comprehensive_Robotic_Dataset_for_Open-World_Humanoid_Manipulation/Humanoid_Everyday__Comprehensive_Robotic_Dataset_for_Open-World_Humanoid_Manipulation.html)
 - [Humanoid Everyday 项目页](https://humanoideveryday.github.io/) — 任务分布、技术摘要视频与云端评测入口
 - [RoboCasa 大规模日常任务仿真](https://arxiv.org/abs/2406.02545) — 仿真侧日常操作基准对照

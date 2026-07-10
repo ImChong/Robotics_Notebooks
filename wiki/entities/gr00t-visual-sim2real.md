@@ -207,6 +207,8 @@ Teacher 训练时使用 RSI：环境 reset 从 demo buffer 中随机采样中间
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：VIRAL](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/VIRAL__Visual_Sim-to-Real_at_Scale_for_Humanoid_Loco-Manipulation/VIRAL__Visual_Sim-to-Real_at_Scale_for_Humanoid_Loco-Manipulation.html)
+- [机器人论文阅读笔记：Opening the Sim-to-Real Door for Humanoid Pixel-to-Action Policy Transfer](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Opening_the_Sim-to-Real_Door_for_Humanoid_Pixel-to-Action_Policy_Transfer/Opening_the_Sim-to-Real_Door_for_Humanoid_Pixel-to-Action_Policy_Transfer.html)
 - [VIRAL 项目页](https://viral-humanoid.github.io/)
 - [DoorMan 项目页](https://doorman-humanoid.github.io/)
 - [Isaac Lab 文档](https://isaac-sim.github.io/IsaacLab/)

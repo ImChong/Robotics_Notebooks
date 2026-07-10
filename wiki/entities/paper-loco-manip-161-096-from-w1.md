@@ -78,5 +78,6 @@ FRoM-W1 先从语言指令、本体状态与关节序列、仿真交互数据恢
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：FRoM-W1](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/FRoM-W1__Towards_General_Humanoid_Whole-Body_Control_with_Language_Instructions/FRoM-W1__Towards_General_Humanoid_Whole-Body_Control_with_Language_Instructions.html)
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
 - 同题深读/既有实体：[paper-loco-manip-161-096-from-w1](../entities/paper-loco-manip-161-096-from-w1.md)

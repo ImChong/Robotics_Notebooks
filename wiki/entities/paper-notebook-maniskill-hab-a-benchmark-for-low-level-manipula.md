@@ -1,50 +1,72 @@
 ---
 type: entity
-tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
-status: planned
-updated: 2026-06-26
+tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
+status: stub
+updated: 2026-07-10
 arxiv: "2412.13211"
 related:
   - ../overview/paper-notebook-category-11-simulation-benchmark.md
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
-  - ../../sources/papers/humanoid_pnb_maniskill-hab-a-benchmark-for-low-level-manipula.md
-summary: "ManiSkill-HAB：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+  - ../../sources/papers/humanoid_pnb_maniskill-hab.md
+summary: "高质量基准是具身 AI 的基础，能推动长时程导航、操作与重排的进展。本文提出 MS-HAB（ManiSkill-HAB）：一个 GPU 加速的家庭助理基准（Home Assistant Benchmark, HAB）实现，提供真实的低层控制，相比此前\"魔法抓取（magical grasp）\"实现取得 3 倍以上提速且显存更省。作者训练了 RL 与 IL 基线，并开发一个基于规则的轨迹过滤系统，以大规模生成可控的演示数据。这把以往偏抽象/魔法抓取的家务重排基准，落到真实低层操作与高效仿真上。"
 ---
 
 # ManiSkill-HAB
 
-**ManiSkill-HAB: A Benchmark for Low-Level Manipulation in Home Rearrangement Tasks** 已列入 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：11_Simulation_Benchmark）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**ManiSkill-HAB: A Benchmark for Low-Level Manipulation in Home Rearrangement Tasks** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：11_Simulation_Benchmark），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
 
 ## 一句话定义
 
-ManiSkill-HAB 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读进度（待深读）阶段。
+高质量基准是具身 AI 的基础，能推动长时程导航、操作与重排的进展。本文提出 MS-HAB（ManiSkill-HAB）：一个 GPU 加速的家庭助理基准（Home Assistant Benchmark, HAB）实现，提供真实的低层控制，相比此前"魔法抓取（magical grasp）"实现取得 3 倍以上提速且显存更省。作者训练了 RL 与 IL 基线，并开发一个基于规则的轨迹过滤系统，以大规模生成可控的演示数据。这把以往偏抽象/魔法抓取的家务重排基准，落到真实低层操作与高效仿真上。
 
 ## 英文缩写速查
 
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| 缩写 | 含义 |
+|---|---|
+| MS-HAB | ManiSkill-HAB，本文基准 |
+| HAB | Home Assistant Benchmark，家庭助理基准 |
+| Low-Level Control | 低层控制（真实物理操作，非魔法抓取） |
+| Magical Grasp | 魔法抓取，抽象的瞬时抓取 |
+| Trajectory Filtering | 轨迹过滤，筛选高质量演示 |
+| RL / IL | 强化学习 / 模仿学习 |
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- **"真实低层 vs 魔法抓取"很关键**：抽象抓取会高估能力，真实操作才有迁移价值；
+- **GPU 加速仿真**是规模化训练/采集的前提；
+- **规则过滤生成可控演示**是低成本扩数据的实用手段；
+- 虽以移动机械臂为主，重排/低层操作经验对人形家务同样适用。
+
+## 解决什么问题
+
+家务**重排**基准常用"**魔法抓取**"（抽象抓取），与真实**低层操作**脱节，且**仿真慢**： - 缺**真实低层控制**的家居重排基准； - 仿真**效率低**，难规模化训练/采集。
+
+ManiSkill-HAB 要：一个 **GPU 加速、真实低层、可大规模生成演示**的家居重排基准。
+
+## 核心机制
+
+1. **真实低层家居重排基准**：取代魔法抓取，落到真实操作；
+2. **GPU 加速 >3x、显存更省**：高效仿真；
+3. **RL/IL 基线**：提供可比较参考；
+4. **规则轨迹过滤大规模生成演示**：支撑模仿学习。
+
+方法拆解（深读笔记小节）：GPU 加速 + 真实低层控制；RL / IL 基线；规则化轨迹过滤生成演示；🧭 整体流程（mermaid）。
 
 ## 核心信息
 
 | 字段 | 内容 |
 |------|------|
 | 分类 | 11_Simulation_Benchmark |
-| 深读状态 | 待撰写（[PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)） |
-| 计划文件夹 | `papers/11_Simulation_Benchmark/maniskill-hab-a-benchmark-for-low-level-manipula` |
+| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/ManiSkill-HAB__A_Benchmark_for_Low-Level_Manipulation_in_Home_Rearrangement_Tasks/ManiSkill-HAB__A_Benchmark_for_Low-Level_Manipulation_in_Home_Rearrangement_Tasks.html> |
 | arXiv | <https://arxiv.org/abs/2412.13211> |
+| 作者 | Arth Shukla、Stone Tao、Hao Su（UC San Diego） |
+| 发表 | 2024 年 12 月 |
+| 笔记阅读日期 | 2026-06-21 |
 
 ## 实验与评测
 
-- 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
+- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
 ## 与其他页面的关系
 
@@ -53,10 +75,10 @@ ManiSkill-HAB 的人形机器人学习论文条目，当前处于 Paper Notebook
 
 ## 参考来源
 
-- [humanoid_pnb_maniskill-hab-a-benchmark-for-low-level-manipula.md](../../sources/papers/humanoid_pnb_maniskill-hab-a-benchmark-for-low-level-manipula.md)
-- [Humanoid Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [humanoid_pnb_maniskill-hab.md](../../sources/papers/humanoid_pnb_maniskill-hab.md)
+- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/ManiSkill-HAB__A_Benchmark_for_Low-Level_Manipulation_in_Home_Rearrangement_Tasks/ManiSkill-HAB__A_Benchmark_for_Low-Level_Manipulation_in_Home_Rearrangement_Tasks.html>
 - 论文：<https://arxiv.org/abs/2412.13211>
 
 ## 推荐继续阅读
 
-- [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [机器人论文阅读笔记：ManiSkill-HAB](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/ManiSkill-HAB__A_Benchmark_for_Low-Level_Manipulation_in_Home_Rearrangement_Tasks/ManiSkill-HAB__A_Benchmark_for_Low-Level_Manipulation_in_Home_Rearrangement_Tasks.html)

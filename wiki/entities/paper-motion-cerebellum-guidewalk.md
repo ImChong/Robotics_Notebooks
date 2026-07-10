@@ -77,5 +77,6 @@ sources:
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：GuideWalk](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/GuideWalk__Learning_Unified_Autonomous_Navigation_and_Locomotion_for_Humanoid/GuideWalk__Learning_Unified_Autonomous_Navigation_and_Locomotion_for_Humanoid.html)
 - [运动小脑技术地图](../overview/humanoid-motion-cerebellum-technology-map.md)
 - [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)
