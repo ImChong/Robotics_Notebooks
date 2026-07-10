@@ -60,6 +60,8 @@ flowchart LR
 
 ### 推荐读什么
 - [Contact Dynamics](../wiki/concepts/contact-dynamics.md)
+- [Force Control 基础](../wiki/concepts/force-control-basics.md)
+- [Impedance Control](../wiki/concepts/impedance-control.md) 与 [力位混合控制](../wiki/concepts/hybrid-force-position-control.md)
 - [Whole-Body Control](../wiki/concepts/whole-body-control.md)
 - Hogan, *Impedance Control* (1985)
 
@@ -82,7 +84,10 @@ flowchart LR
 ### 推荐读什么
 - [Imitation Learning](../wiki/methods/imitation-learning.md)
 - [Behavior Cloning](../wiki/methods/behavior-cloning.md)
+- [Diffusion Policy](../wiki/methods/diffusion-policy.md) 与 [Action Chunking](../wiki/methods/action-chunking.md)
 - [Bimanual Manipulation](../wiki/tasks/bimanual-manipulation.md)
+- [Query：操作任务里的模仿学习](../wiki/queries/il-for-manipulation.md)
+- [数据手套 vs 视觉遥操作](../wiki/comparisons/data-gloves-vs-vision-teleop.md) — 采集方案选型
 - Zhao et al., *Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware* (ACT, 2023)
 
 ### 推荐做什么
@@ -104,6 +109,9 @@ flowchart LR
 ### 推荐读什么
 - [Query：接触丰富操作实践指南](../wiki/queries/contact-rich-manipulation-guide.md)
 - [Demo Data Collection Guide](../wiki/queries/demo-data-collection-guide.md)
+- [Tactile Sensing](../wiki/concepts/tactile-sensing.md) 与 [视触融合](../wiki/concepts/visuo-tactile-fusion.md)
+- [触觉阻抗控制](../wiki/methods/tactile-impedance-control.md) 与 [In-Hand Reorientation](../wiki/methods/in-hand-reorientation.md)
+- [Query：RL 中的触觉反馈](../wiki/queries/tactile-feedback-in-rl.md)
 - Luo et al., *DEFT: Dexterous Fine-Grained Manipulation Transformer* (2024)
 
 ### 推荐做什么
@@ -121,8 +129,10 @@ flowchart LR
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
 - 其它纵深路径：
   - [人形 RL 运动控制](depth-rl-locomotion.md)
+  - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
   - [模仿学习与技能迁移](depth-imitation-learning.md)
   - [安全控制（CLF/CBF）](depth-safe-control.md)
+  - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
 - 关联知识页：
   - [Manipulation](../wiki/tasks/manipulation.md)
   - [Contact-Rich Manipulation](../wiki/concepts/contact-rich-manipulation.md)

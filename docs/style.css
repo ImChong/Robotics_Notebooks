@@ -1062,7 +1062,8 @@ button.home-wiki-heatmap-cell.is-active {
 }
 .home-entry-route-links {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+  /* 118px 让 6 个路线按钮在 >860px（移动端断点）任意宽度下保持单行，避免末项孤行 */
+  grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
   gap: 10px;
   margin-top: auto;
   padding-top: 2px;

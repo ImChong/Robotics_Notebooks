@@ -58,6 +58,7 @@
 - [x] 技术路线页侧栏 TOC（桌面 ≥1632px）：卡片封顶 `min(76vh, 680px)`，列表区内滚动；移动端抽屉保持原样全高滚动。
 - [x] 详情页 Mermaid：正文 14px / 移动端 12px，增大节点 `padding` 与 `wrappingWidth`，减轻大字贴边与单行裁切；灯箱仍按 1.75× 离屏高清重绘。
 - [x] 详情页 Mermaid 标签裁切：`htmlLabels` 下 `foreignObject` 比 `nodeLabel` 略窄时 post-render 扩框 + CSS `overflow: visible`，修复如 world-models-15 技术地图等长标签贴边裁切。
+- [x] 首页「更多路线」六按钮排版：`home-entry-route-links` 最小列宽 132px → 118px，861–940px 窗口宽度下不再出现 5+1 孤行；≤860px 移动端保持 2×3 网格。
   - [x] 详情页 Mermaid 灯箱：加载态文案 + `stage-pending` 在 `fit` 完成前隐藏，消除「空面板 / 先大后缩」闪烁。
   - [x] 首页「互链枢纽 · Top 10」底部入口改为「查看完整榜单 →」，新增 `docs/hubs.html` 全量互链榜单页（数据源 `exports/hub-rankings.json`，全站 / 论文双 tab）。
 ---

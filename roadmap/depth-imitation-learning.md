@@ -53,6 +53,7 @@ flowchart LR
 
 ### 推荐读什么
 - "Illustrated Guide to LSTM" (Google Blog)
+- [Transformer](../wiki/concepts/transformer.md) 与 [Diffusion Model](../wiki/concepts/diffusion-model.md)（本仓库）
 - 跑通一个 Motion Transformer 官方 Demo（如果能访问）
 
 ### 学完输出什么
@@ -69,7 +70,7 @@ flowchart LR
 
 ### 核心问题
 - Behavior Cloning 的核心思想是什么
-- 为什么 BC 会有 compounding error（协奏曲错误）
+- 为什么 BC 会有 compounding error（复合累积误差）
 - DAgger 为什么能缓解 compounding error
 - 模仿学习和强化学习的根本区别是什么
 
@@ -80,6 +81,8 @@ flowchart LR
 ### 推荐读什么
 - "A Reduction of Imitation Learning and Stochastic Gradient Descent to Online Learning" (Ross & Bagnell, 2010)
 - [Imitation Learning](../wiki/methods/imitation-learning.md)（本仓库）
+- [Behavior Cloning](../wiki/methods/behavior-cloning.md) 与 [DAgger](../wiki/methods/dagger.md)（本仓库）
+- [RL vs IL 对比](../wiki/comparisons/rl-vs-il.md)（本仓库）
 
 ### 学完输出什么
 - 能解释 compounding error 是什么、为什么出现
@@ -106,7 +109,9 @@ flowchart LR
 - 观察迁移后动作的可行性（关节限位、自碰撞、地面穿透）
 
 ### 推荐读什么
-- "SFV: Surveillance from Videos" / "DensePose" 相关 retargeting 工作
+- [Motion Retargeting](../wiki/concepts/motion-retargeting.md) 与 [Motion Retargeting Pipeline](../wiki/concepts/motion-retargeting-pipeline.md)（本仓库）
+- [GMR vs NMR vs ReACTOR 重定向方案对比](../wiki/comparisons/gmr-vs-nmr-vs-reactor.md)（本仓库）
+- [人形参考动作数据集对比](../wiki/comparisons/humanoid-reference-motion-datasets.md)（本仓库）
 - "ASE: Adversarial Skill Embeddings" (Peng et al., 2022) — 有 retargeting pipeline 描述
 
 ### 学完输出什么
@@ -135,7 +140,8 @@ flowchart LR
 
 ### 推荐读什么
 - "Diffusion Policy: Visuomotor Policy Learning via Action Diffusion" (Chi et al., 2023)
-- [Imitation Learning](../wiki/methods/imitation-learning.md)（本仓库）
+- [Diffusion Policy](../wiki/methods/diffusion-policy.md)（本仓库）
+- [Action Chunking](../wiki/methods/action-chunking.md) 与 [BC with Transformer](../wiki/methods/bc-with-transformer.md)（本仓库）— ACT 一系的核心机制
 
 ### 学完输出什么
 - 一个用 Diffusion Policy 训练的动作策略
@@ -161,7 +167,9 @@ flowchart LR
 - 在能找到的开源代码上跑一个 two-skill interpolation 实验
 
 ### 推荐读什么
-- "ASE: Adversarial Skill Embeddings for Hierarchical Reinforcement Learning" (Peng et al., 2022)
+- [ASE](../wiki/methods/ase.md) 与 [AMP Reward](../wiki/methods/amp-reward.md)（本仓库）
+- [Learning from Play (LMP)](../wiki/methods/learning-from-play-lmp.md)（本仓库）
+- [人形 AMP / Motion Prior 综述地图](../wiki/overview/humanoid-amp-motion-prior-survey.md)（本仓库）— AMP 家族全景
 - "Learning Latent Plans from Play" (Lynch et al., 2020)
 
 ### 学完输出什么
@@ -205,19 +213,20 @@ flowchart LR
 
 **方向 A：Video-based IL**
 - 用 RGB 视频而非 MoCap 做动作迁移
-- 关键词：Pose estimation、Video imitation、DensePose
+- 关键词：Pose estimation、Video imitation、[Mimic-Video](../wiki/methods/mimic-video.md)、[WiLoR](../wiki/methods/wilor.md)
 
 **方向 B：Multi-modal IL**
 - 结合视觉、触觉、力传感器做多模态技能学习
-- 关键词：multimodal、haptic、force feedback
+- 关键词：multimodal、haptic、[视触融合](../wiki/concepts/visuo-tactile-fusion.md)
 
-**方向 C：Long-horizon 任务**
-- 把多个技能串成一个长序列
-- 关键词：task planning、skill chaining、HTN
+**方向 C：Long-horizon 任务 / VLA**
+- 把多个技能串成一个长序列；用语言指令驱动技能组合
+- 关键词：task planning、skill chaining、[VLA](../wiki/methods/vla.md)、[π0](../wiki/methods/π0-policy.md)
 
-**方向 D：Humanoid 特有技能**
-- 走路、跑步、跳跃、平衡
-- 关键词：locomotion IL、motion retargeting for humanoid
+**方向 D：Humanoid 全身动作跟踪**
+- 走路、跑步、跳跃、平衡等全身技能跟踪
+- 关键词：[Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md)、[BeyondMimic](../wiki/methods/beyondmimic.md)、[Sonic](../wiki/methods/sonic-motion-tracking.md)
+- 选型参考：[Query：人形动作跟踪方法选型](../wiki/queries/humanoid-motion-tracking-method-selection.md)
 
 ---
 
@@ -225,11 +234,11 @@ flowchart LR
 
 | 阶段 | 核心问题 | 本仓库入口 |
 |------|---------|-----------|
-| Stage 0 | 时序建模基础 | [Imitation Learning](../wiki/methods/imitation-learning.md) |
-| Stage 1 | BC / DAgger | [Imitation Learning](../wiki/methods/imitation-learning.md) |
-| Stage 2 | Motion Retargeting | [Imitation Learning](../wiki/methods/imitation-learning.md) |
-| Stage 3 | Diffusion Policy | [Imitation Learning](../wiki/methods/imitation-learning.md) |
-| Stage 4 | Skill Embedding | [Imitation Learning](../wiki/methods/imitation-learning.md) |
+| Stage 0 | 时序建模基础 | [Transformer](../wiki/concepts/transformer.md) |
+| Stage 1 | BC / DAgger | [Behavior Cloning](../wiki/methods/behavior-cloning.md) |
+| Stage 2 | Motion Retargeting | [Motion Retargeting Pipeline](../wiki/concepts/motion-retargeting-pipeline.md) |
+| Stage 3 | Diffusion Policy | [Diffusion Policy](../wiki/methods/diffusion-policy.md) |
+| Stage 4 | Skill Embedding | [ASE](../wiki/methods/ase.md) |
 | Stage 5 | Sim2Real | [Sim2Real](../wiki/concepts/sim2real.md) |
 
 ## 和其他页面的关系
@@ -237,8 +246,10 @@ flowchart LR
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
 - 其它纵深路径：
   - [人形 RL 运动控制](depth-rl-locomotion.md)
+  - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
   - [安全控制（CLF/CBF）](depth-safe-control.md)
   - [接触丰富的操作任务](depth-contact-manipulation.md)
+  - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
 - 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
 - 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 

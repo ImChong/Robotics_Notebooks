@@ -15,11 +15,13 @@
 
 ## 纵深路线（按目标选其一深入）
 
-主路线偏"先打通主干"，下列四条纵深路线**各自独立**，从主路线某个阶段衔接出去，可单独阅读：
+主路线偏"先打通主干"，下列六条纵深路线**各自独立**，从主路线某个阶段衔接出去，可单独阅读：
 
 - [如果目标是 RL 运动控制](depth-rl-locomotion.md) —— 想用强化学习驱动人形 locomotion
+- [如果目标是传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md) —— 想系统掌握 model-based 人形控制主干
 - [如果目标是模仿学习与技能迁移](depth-imitation-learning.md) —— 想从人类演示数据学习技能
 - [如果目标是安全控制（CLF / CBF / Safe RL）](depth-safe-control.md) —— 想加可证明的安全约束
 - [如果目标是接触丰富的操作任务](depth-contact-manipulation.md) —— 想做装配、插拔、双臂协同等精细接触
+- [如果目标是感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md) —— 想让机器人看着地形上楼梯、跨障碍、跑酷
 
 说明：感知、规划、系统、部署等更广的全栈知识在主路线的 **L−1 全景层** 和 **L7 出口层** 集中扫盲，提供进入对应子专题的入口，而不在本目录维护并列的独立路线图文件。

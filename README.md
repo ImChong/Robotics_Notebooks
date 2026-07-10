@@ -2,13 +2,13 @@
 
 机器人技术栈知识库 / Robotics research and engineering wiki.
 
-<!-- Last updated: 2026-07-10 (V28 自动更新：图谱 1554 节点 11244 边) -->
+<!-- Last updated: 2026-07-10 (V28 自动更新：图谱 1556 节点 11380 边) -->
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen?logo=github)](https://imchong.github.io/Robotics_Notebooks/)
 [![Deploy GitHub Pages](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml)
 [![Wiki Lint](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/lint.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/lint.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
-[![Knowledge Graph](https://img.shields.io/badge/知识图谱-1554节点_11244边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
+[![Knowledge Graph](https://img.shields.io/badge/知识图谱-1556节点_11380边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
 [![Sources Coverage](https://img.shields.io/badge/sources覆盖率-98%25-green)](docs/checklists/tech-stack-next-phase-checklist-v28.md)
 
 
@@ -38,9 +38,11 @@
 | 可视化探索知识图谱 | [知识图谱](https://imchong.github.io/Robotics_Notebooks/graph.html) |
 | 有一条路线照着走 | [运动控制成长路线](roadmap/motion-control.md) |
 | 用强化学习做运动控制 | [RL 纵深路线](roadmap/depth-rl-locomotion.md) |
+| 学传统模型控制（MPC/WBC）| [传统控制纵深路线](roadmap/depth-classical-control.md) |
 | 学模仿学习与技能迁移 | [模仿学习纵深路线](roadmap/depth-imitation-learning.md) |
 | 学安全控制（CLF/CBF）| [安全控制纵深路线](roadmap/depth-safe-control.md) |
 | 做接触丰富的操作任务 | [接触操作纵深路线](roadmap/depth-contact-manipulation.md) |
+| 让机器人看地形越障 | [感知越障纵深路线](roadmap/depth-perceptive-locomotion.md) |
 | 浏览所有知识页 | [完整页面目录](catalog.md) |
 | 搜索特定概念 | `python3 scripts/search_wiki.py <关键词>` |
 
