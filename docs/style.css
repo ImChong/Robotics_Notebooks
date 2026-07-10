@@ -240,14 +240,13 @@ body.sponsor-dialog-open {
 .hero-subtitle { 
   font-size: 1.25rem; 
   color: var(--text-muted); 
-  margin-bottom: 32px; 
+  margin-bottom: 20px; 
   max-width: 62ch;
   line-height: 1.4;
 }
 .hero-stat-row-mini {
   font-size: 0.85rem;
   color: var(--text-muted);
-  margin-bottom: 32px;
   display: flex;
   gap: 20px;
 }
@@ -262,13 +261,6 @@ body.sponsor-dialog-open {
   margin-top: 16px;
 }
 
-/* 首页：技术路线/图谱按钮与下方搜索区更紧凑 */
-#hero.hero {
-  padding-bottom: 18px;
-}
-#wiki-search.section {
-  padding-top: 22px;
-}
 .btn-primary, .btn-secondary {
   display: inline-flex;
   align-items: center;
@@ -425,6 +417,12 @@ body.sponsor-dialog-open {
   background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)), var(--bg-alt);
 }
 .section-title { font-size: 1.72rem; font-weight: 820; margin-bottom: 10px; letter-spacing: -.02em; }
+/* 首页无副标题区块：标题与内容之间保持统一间距 */
+#wiki-search .search-bar-wrap,
+#home-latest-wiki-section .home-latest-wiki-mount,
+#mini-graph-section #mini-graph-wrap {
+  margin-top: 18px;
+}
 /* 首页图谱预览 2D / 3D 切换（3D 画布懒加载，容器与 SVG 同位叠放） */
 #mini-graph-3d { position: absolute; inset: 0; }
 #mini-graph-3d[hidden] { display: none; }
@@ -2174,9 +2172,6 @@ button.home-wiki-heatmap-cell.is-active {
   .hero {
     padding: 28px 0 28px;
   }
-  #hero.hero {
-    padding-bottom: 12px;
-  }
   .page-hero {
     padding: 34px 0 12px;
   }
@@ -2200,9 +2195,6 @@ button.home-wiki-heatmap-cell.is-active {
   }
   .section {
     padding: 30px 0;
-  }
-  #wiki-search.section {
-    padding-top: 16px;
   }
   .hero-grid, .card-grid, .preview-home-layout, .preview-split-grid, .detail-hero-top, .route-card-grid { grid-template-columns: 1fr; }
   .hero-title { font-size: 2.15rem; }
@@ -2241,7 +2233,7 @@ button.home-wiki-heatmap-cell.is-active {
   background: var(--bg-alt);
   border-radius: 14px;
   padding: 6px;
-  margin-bottom: 32px;
+  margin-bottom: 14px;
   min-width: 0;
 }
 .search-bar-wrap input[type="search"] {
