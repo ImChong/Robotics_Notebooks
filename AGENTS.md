@@ -206,7 +206,7 @@ This is a **pure content + tooling** repo — no backend services, databases, or
 
 ### Before committing wiki changes
 
-Always run `make ci-preflight` — it regenerates derived files (`catalog.md`, `exports/`, `docs/exports/`, search index, sitemap, README stats, `docs/index.html`) and then runs lint + export checks. Committing without this causes CI failures from stale derived data. Note: the large site JSONs and sitemap are gitignored (generated at Pages deploy time) — only the small derived files (stats, badges, `index.md`) still need to be committed.
+Always run `make ci-preflight` — it regenerates derived files (`catalog.md`, `exports/`, `docs/exports/`, search index, sitemap, README stats, `docs/index.html`) and then runs lint + export checks. Committing without this causes CI failures from stale derived data. Note: the large site JSONs and sitemap are gitignored (generated at Pages deploy time) — only the small derived files (stats, badges, `catalog.md`) still need to be committed.
 
 **ingest 提速**：交叉更新多个 wiki 后先 `make bump-wiki-from-sources`（或 `bump_wiki_updated_for_sources.py` 指定本次 `sources/papers/...`），再 commit，最后 **只跑一轮** `make ci-preflight`（preflight 内 lint 只执行一次；图谱社区检测已改用 Louvain，全库约 2–5 分钟量级）。
 

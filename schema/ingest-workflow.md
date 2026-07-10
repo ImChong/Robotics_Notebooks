@@ -311,5 +311,5 @@ make log OP=ingest DESC="sources/papers/xxx.md — 简述覆盖的 wiki 页面"
 - 不要把 wiki 页写成纯外链列表 — 要有知识归纳
 - 不要为了收集而收集 — 优先服务学习与研究主线
 - 不要在 ingest 时一次性做太多事 — 一次一条资料，深度到位再推进
-- 每次 ingest 都要更新 index.md 和 log.md，不要遗漏
+- 每次 ingest 都要运行 `make catalog` 更新 `catalog.md`，并追加 `log.md`，不要遗漏
 - 子网页优化、纯 wiki 扩写等 **structural** 记录若在当日 `log.md` 正文中写明 `wiki/...`，首页「最新知识节点」会与其他同日条目一并列出；提交前务必 `make ci-preflight` 刷新派生 JSON

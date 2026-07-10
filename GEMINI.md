@@ -38,7 +38,7 @@ Every interaction must adhere to the workflows defined in `schema/ingest-workflo
 2. **Distill to Wiki:** Create or update a `wiki/` page. **Do not copy-paste**; synthesize and提炼 (distill).
 3. **Link Everything:** Add at least 2 cross-references (`related`) to other wiki pages.
 4. **Mandatory Section:** Every wiki page **MUST** have a `## 参考来源` (References) section linking back to `sources/`.
-5. **Update Index:** Run `make catalog` to refresh `index.md`.
+5. **Update Catalog:** Run `make catalog` to refresh `catalog.md`.
 6. **Log Change:** Run `make log OP=ingest DESC="..."`.
 
 ### 2. Query (Answering & Synthesis)
@@ -74,7 +74,7 @@ Example: `chore: 更新主页统计数据与图谱 (172 nodes, 955 edges)`
 | Command | Action |
 |---------|--------|
 | `make lint` | Runs wiki linter and search quality evaluation. |
-| `make catalog` | Updates `index.md` based on current `wiki/` files. |
+| `make catalog` | Regenerates `catalog.md` from current `wiki/` files. |
 | `make export` | Generates JSON data for the frontend graph and search. |
 | `make search Q=...` | Performs a keyword search across the wiki. |
 | `make ingest NAME=... TITLE="..."` | Generates a new paper source template. |
