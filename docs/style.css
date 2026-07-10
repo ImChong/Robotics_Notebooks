@@ -408,6 +408,8 @@ body.sponsor-dialog-open {
   justify-items: center;
 }
 .section { padding: 44px 0; }
+/* 首页入口区与 Hero 同底色、语义相连：去掉自身顶距，只保留 Hero 底部留白 */
+#home-start.section { padding-top: 0; }
 .section-alt {
   background: linear-gradient(180deg, rgba(255,255,255,.25), rgba(255,255,255,.1)), var(--bg-alt);
   border-top: 1px solid var(--border);
