@@ -53,8 +53,57 @@
       </div>
     </section>
 
+    <section class="section" id="home-start" aria-labelledby="home-start-heading">
+      <div class="container">
+        <h2 class="section-title" id="home-start-heading">选择你的入口</h2>
+        <p class="section-subtitle">按当前目标进入最短路径，不必先理解整个知识图谱。</p>
+        <div class="card-grid home-entry-grid">
+          <a class="card home-entry-card" href="roadmap.html?id=roadmap-motion-control">
+            <span class="home-entry-label">从零开始</span>
+            <h3>建立运动控制全局认识</h3>
+            <p>从机器人基础、动力学到控制与 Sim2Real，按主路线逐步学习。</p>
+            <span class="home-entry-link">进入主路线 →</span>
+          </a>
+          <a class="card home-entry-card" href="roadmap.html?id=roadmap-depth-rl-locomotion">
+            <span class="home-entry-label">强化学习</span>
+            <h3>训练足式与人形运动策略</h3>
+            <p>围绕 PPO、奖励设计、并行仿真和策略部署建立完整训练链路。</p>
+            <span class="home-entry-link">进入 RL 路线 →</span>
+          </a>
+          <a class="card home-entry-card" href="detail.html?id=wiki-concepts-optimal-control">
+            <span class="home-entry-label">传统控制</span>
+            <h3>理解模型、优化与全身控制</h3>
+            <p>从最优控制切入，继续探索 MPC、TSID、WBC 与状态估计。</p>
+            <span class="home-entry-link">从最优控制开始 →</span>
+          </a>
+          <a class="card home-entry-card" href="#wiki-search">
+            <span class="home-entry-label">项目查询</span>
+            <h3>查找框架、论文与机器人平台</h3>
+            <p>直接搜索项目名称、算法缩写或具体工程问题。</p>
+            <span class="home-entry-link">搜索知识库 →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="learning-routes" aria-labelledby="learning-routes-heading">
+      <div class="container">
+        <h2 class="section-title" id="learning-routes-heading">学习路线</h2>
+        <p class="section-subtitle">先走一条主干，再按研究方向进入纵深路线。</p>
+        <div class="learning-route-links">
+          <a class="btn-secondary" href="roadmap.html?id=roadmap-motion-control">运动控制主路线</a>
+          <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-rl-locomotion">RL 运动控制</a>
+          <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-imitation-learning">模仿学习</a>
+          <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-safe-control">安全控制</a>
+          <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-contact-manipulation">接触操作</a>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="wiki-search">
       <div class="container">
+        <h2 class="section-title">搜索知识库</h2>
+        <p class="section-subtitle">输入概念、方法、任务、论文或项目名称。</p>
         <div class="search-bar-wrap">
           <input
             id="wikiSearchInput"
@@ -81,7 +130,16 @@
       </div>
     </section>
 
-    <section class="section section-alt" id="mini-graph-section">
+    <section class="section section-alt" id="home-latest-wiki-section" aria-labelledby="home-latest-wiki-heading">
+      <div class="container">
+        <h2 class="section-title" id="home-latest-wiki-heading">最新知识节点</h2>
+        <div id="homeLatestWikiModule" class="home-latest-wiki-mount data-loading" data-compact aria-live="polite">
+          <p class="data-meta">加载中…</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="mini-graph-section">
       <div class="container">
         <h2 class="section-title">知识图谱预览</h2>
         <div id="mini-graph-wrap" style="position:relative;width:100%;height:480px;border-radius:12px;overflow:hidden;">
@@ -98,7 +156,7 @@
       </div>
     </section>
 
-    <section class="section" id="home-hub-section" aria-labelledby="home-hub-heading">
+    <section class="section section-alt" id="home-hub-section" aria-labelledby="home-hub-heading">
       <div class="container">
         <div class="home-hub-head">
           <h2 class="section-title" id="home-hub-heading">互链枢纽 · Top 10</h2>
@@ -113,15 +171,6 @@
         </div>
         <div id="homeHubPanelPaper" class="home-hub-panel" aria-live="polite" hidden></div>
         <p class="home-hub-more"><a href="hubs.html">查看完整榜单 →</a></p>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="home-latest-wiki-section" aria-labelledby="home-latest-wiki-heading">
-      <div class="container">
-        <h2 class="section-title" id="home-latest-wiki-heading">最新知识节点</h2>
-        <div id="homeLatestWikiModule" class="home-latest-wiki-mount data-loading" data-compact aria-live="polite">
-          <p class="data-meta">加载中…</p>
-        </div>
       </div>
     </section>
   </main>
