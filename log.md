@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-10] structural | docs/style.css — 修复首页「更多路线」六按钮在 861–940px 宽度下 5+1 孤行的排版问题（auto-fit 最小列宽 132px → 118px）；同步 frontend-optimization-v1 checklist
+
 ## [2026-07-10] structural | roadmap/depth-*.md 全量刷新 — 依据当前知识图谱把六条纵深路线的推荐阅读升级为已有 wiki 页：RL 路线接 ppo/sac/reward-design/actuator-network/sim2real-checklist 与感知越障、动作跟踪出口；IL 路线接 diffusion-policy/action-chunking/GMR-NMR 对比/AMP 综述地图/VLA 出口；安全控制补 safety-filter/safe-rl/cmdp；接触操作补 force-control/tactile 系列；传统控制补 MPC/WBC 调参与 Pinocchio 上手 query
 
 ## [2026-07-10] structural | roadmap/depth-perceptive-locomotion.md — 新增感知越障（Perceptive Locomotion）纵深路线（盲走基线 → 地形表征 → Teacher-Student → 楼梯/跑酷 → 导航栈整合）；主页「更多路线」新增感知越障按钮，README/index/主路线与五条兄弟纵深页互链；链接 wiki/tasks/stair-obstacle-perceptive-locomotion.md 等枢纽页
