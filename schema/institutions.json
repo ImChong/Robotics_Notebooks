@@ -1035,6 +1035,13 @@
         "dexmal",
         "dexmal-robotics"
       ]
+    },
+    "perceptron": {
+      "label": "感知器（Perceptron）",
+      "aliases": [
+        "perceptron",
+        "perceptron-inc"
+      ]
     }
   }
 }

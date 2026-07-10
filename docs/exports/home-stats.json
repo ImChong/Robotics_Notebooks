@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-10",
-  "node_count": 1563,
-  "edge_count": 11742,
+  "node_count": 1564,
+  "edge_count": 11753,
   "coverage": {
-    "covered": 1518,
-    "total": 1548,
+    "covered": 1519,
+    "total": 1549,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -58,6 +58,37 @@
       "recency": "2026-07-10",
       "source": "log.md",
       "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/perceptron-egocentric.md",
+      "detail_id": "entity-perceptron-egocentric",
+      "label": "Perceptron Egocentric",
+      "type": "entity",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/auto-labeling-pipelines.md",
+      "detail_id": "wiki-methods-auto-labeling-pipelines",
+      "label": "Auto-labeling Pipelines (自动化标注流水线)",
+      "type": "method",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/gemini-robotics.md",
+      "detail_id": "entity-gemini-robotics",
+      "label": "Gemini Robotics",
+      "type": "entity",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/methods/vla.md",
@@ -184,36 +215,6 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-realm-last-3-meter-vln-grounding.md",
-      "detail_id": "entity-paper-realm-last-3-meter-vln-grounding",
-      "label": "REALM（Last-3-Meter VLN · 实例级接地）",
-      "type": "entity",
-      "recency": "2026-07-10",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-vln-03-reverie.md",
-      "detail_id": "entity-paper-vln-03-reverie",
-      "label": "REVERIE",
-      "type": "entity",
-      "recency": "2026-07-10",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-vln-09-etpnav.md",
-      "detail_id": "entity-paper-vln-09-etpnav",
-      "label": "ETPNav",
-      "type": "entity",
-      "recency": "2026-07-10",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -230,11 +231,11 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 362
+      "size": 356
     },
     {
       "label": "视觉-语言-动作",
-      "size": 178
+      "size": 177
     },
     {
       "label": "移动操作",
@@ -281,7 +282,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 226,
+      "degree": 227,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -324,7 +325,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 165,
+      "degree": 166,
       "has_repo": true
     }
   ],
