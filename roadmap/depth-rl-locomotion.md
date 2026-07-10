@@ -230,7 +230,10 @@ flowchart LR
   - [安全控制（CLF/CBF）](depth-safe-control.md)
   - [接触丰富的操作任务](depth-contact-manipulation.md)
   - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
-  - [VLA 与 BFM（具身基础模型）](depth-vla-bfm.md)
+  - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md)
+  - [移动操作（Loco-Manipulation）](depth-mobile-manipulation.md)
+  - [VLA（视觉-语言-动作模型）](depth-vla.md)
+  - [BFM（人形行为基础模型）](depth-bfm.md)
 - 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
 - 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 

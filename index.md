@@ -14,10 +14,13 @@
 | 想学传统模型控制（MPC/WBC）| [传统控制纵深路线](roadmap/depth-classical-control.md) |
 | 想学安全控制（CLF/CBF）| [安全控制纵深路线](roadmap/depth-safe-control.md) |
 | 想做接触丰富的操作任务 | [接触操作纵深路线](roadmap/depth-contact-manipulation.md) |
+| 想让机器人自主从 A 到 B | [导航纵深路线](roadmap/depth-navigation.md) |
 | 想学模仿学习与技能迁移 | [模仿学习纵深路线](roadmap/depth-imitation-learning.md) |
 | 想用强化学习做 locomotion | [RL 纵深路线](roadmap/depth-rl-locomotion.md) |
+| 想让机器人边走边动手 | [移动操作纵深路线](roadmap/depth-mobile-manipulation.md) |
+| 想做人形全身行为基础模型 | [BFM 纵深路线](roadmap/depth-bfm.md) |
 | 想让机器人看地形越障 | [感知越障纵深路线](roadmap/depth-perceptive-locomotion.md) |
-| 想做 VLA 与 BFM（具身基础模型）| [VLA 与 BFM 纵深路线](roadmap/depth-vla-bfm.md) |
+| 想让机器人听懂指令干活 | [VLA 纵深路线](roadmap/depth-vla.md) |
 | 想看知识概念和方法 | [浏览完整页面目录](catalog.md) |
 | 想看模块关系和依赖 | [tech-map 总览](tech-map/overview.md) |
 

@@ -15,16 +15,19 @@
 
 ## 纵深路线（按目标选其一深入）
 
-主路线偏"先打通主干"，下列七条纵深路线**各自独立**，从主路线某个阶段衔接出去，可单独阅读。
+主路线偏"先打通主干"，下列十条纵深路线**各自独立**，从主路线某个阶段衔接出去，可单独阅读。
 
 排序说明：按各方向**起点里程碑的历史顺序**排列（与首页按钮、README 一致）——越靠前的方向理论积淀越深，越靠后的方向越依赖学习方法与算力：
 
 - [如果目标是传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md) —— 想系统掌握 model-based 人形控制主干（起点：ZMP 判据，1972）
 - [如果目标是安全控制（CLF / CBF / Safe RL）](depth-safe-control.md) —— 想加可证明的安全约束（起点：CLF，1983）
 - [如果目标是接触丰富的操作任务](depth-contact-manipulation.md) —— 想做装配、插拔、双臂协同等精细接触（起点：阻抗控制，1985）
+- [如果目标是导航（SLAM → Nav2 → VLN → 导航 VLA）](depth-navigation.md) —— 想让机器人知道自己在哪、该往哪走（起点：概率 SLAM，1986）
 - [如果目标是模仿学习与技能迁移](depth-imitation-learning.md) —— 想从人类演示数据学习技能（起点：行为克隆，1988）
 - [如果目标是 RL 运动控制](depth-rl-locomotion.md) —— 想用强化学习驱动人形 locomotion（起点：Q-learning，1989）
+- [如果目标是移动操作（Loco-Manipulation）](depth-mobile-manipulation.md) —— 想让机器人边走边动手（起点：移动操作臂协调控制，1994）
+- [如果目标是 BFM（人形行为基础模型）](depth-bfm.md) —— 想用一个 checkpoint 控住人形全身（起点：DeepMimic 动作跟踪谱系，2018）
 - [如果目标是感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md) —— 想让机器人看着地形上楼梯、跨障碍、跑酷（起点：2020s 感知策略浪潮）
-- [如果目标是 VLA 与 BFM（具身基础模型）](depth-vla-bfm.md) —— 想让机器人听懂指令干活、用一个 checkpoint 控住人形全身（起点：RT-2 确立 VLA，2023）
+- [如果目标是 VLA（视觉-语言-动作模型）](depth-vla.md) —— 想让机器人听懂指令干活（起点：RT-2 确立 VLA，2023）
 
 说明：感知、规划、系统、部署等更广的全栈知识在主路线的 **L−1 全景层** 和 **L7 出口层** 集中扫盲，提供进入对应子专题的入口，而不在本目录维护并列的独立路线图文件。

@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-10",
-  "node_count": 1558,
-  "edge_count": 11475,
+  "node_count": 1561,
+  "edge_count": 11622,
   "coverage": {
     "covered": 1518,
     "total": 1548,
@@ -31,17 +31,6 @@
       "community_label": "行为基础模型技术地图（Behavior Foundation Model, BFM） 社区"
     },
     {
-      "path": "wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md",
-      "detail_id": "entity-paper-3d-ic-joint-navigation-manipulation-planning",
-      "label": "3D-IC（3D Interaction Chains · Joint Navigation and Manipulation Planning）",
-      "type": "entity",
-      "recency": "2026-07-10",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
       "path": "wiki/tasks/loco-manipulation.md",
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
@@ -60,6 +49,28 @@
       "recency": "2026-07-10",
       "source": "log.md",
       "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/navigation-slam-autonomy-stack.md",
+      "detail_id": "wiki-overview-navigation-slam-autonomy-stack",
+      "label": "导航·SLAM·自动驾驶开源栈总览",
+      "type": "overview",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md",
+      "detail_id": "entity-paper-3d-ic-joint-navigation-manipulation-planning",
+      "label": "3D-IC（3D Interaction Chains · Joint Navigation and Manipulation Planning）",
+      "type": "entity",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -204,16 +215,6 @@
       "source": "log.md",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/dexmal-dm05.md",
-      "detail_id": "entity-dexmal-dm05",
-      "label": "Dexmal DM0.5",
-      "type": "entity",
-      "recency": "2026-07-09",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -233,23 +234,23 @@
       "size": 362
     },
     {
-      "label": "人形论文深读笔记",
-      "size": 185
-    },
-    {
       "label": "视觉-语言-动作",
       "size": 184
     },
     {
+      "label": "人形论文深读笔记",
+      "size": 182
+    },
+    {
       "label": "移动操作",
-      "size": 160
+      "size": 161
     },
     {
       "label": "运动控制",
       "size": 69
     },
     {
-      "label": "行为基础模型技术地图",
+      "label": "仿真训练",
       "size": 56
     }
   ],
@@ -273,9 +274,17 @@
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
-      "degree": 264,
+      "degree": 265,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    },
+    {
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "degree": 226,
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "detail_id": "wiki-tasks-locomotion",
@@ -283,14 +292,6 @@
       "type": "task",
       "degree": 226,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "degree": 225,
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",
@@ -303,7 +304,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 207,
+      "degree": 208,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -311,7 +312,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 201,
+      "degree": 202,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -341,20 +342,19 @@
       "label": "OmniRetarget",
       "type": "entity",
       "degree": 42,
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
       "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
       "type": "entity",
-      "degree": 37
+      "degree": 38
     },
     {
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
       "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
       "type": "entity",
-      "degree": 35
+      "degree": 36
     },
     {
       "detail_id": "entity-paper-twist2",
