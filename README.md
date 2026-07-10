@@ -41,7 +41,7 @@
 | 学模仿学习与技能迁移 | [模仿学习纵深路线](roadmap/depth-imitation-learning.md) |
 | 学安全控制（CLF/CBF）| [安全控制纵深路线](roadmap/depth-safe-control.md) |
 | 做接触丰富的操作任务 | [接触操作纵深路线](roadmap/depth-contact-manipulation.md) |
-| 浏览所有知识页 | [知识页导航总入口](index.md) |
+| 浏览所有知识页 | [完整页面目录](catalog.md) |
 | 搜索特定概念 | `python3 scripts/search_wiki.py <关键词>` |
 
 ---
