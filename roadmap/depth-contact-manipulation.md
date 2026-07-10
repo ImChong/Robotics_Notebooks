@@ -121,6 +121,7 @@ flowchart LR
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
 - 其它纵深路径：
   - [人形 RL 运动控制](depth-rl-locomotion.md)
+  - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
   - [模仿学习与技能迁移](depth-imitation-learning.md)
   - [安全控制（CLF/CBF）](depth-safe-control.md)
 - 关联知识页：

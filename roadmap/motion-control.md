@@ -31,6 +31,7 @@
 - 想 **完整路线**：按 L−1 → L0 → … → L7 依次阅读。
 - 想 **走纵深**（各自独立路线页）：
   - [如果目标是 RL 运动控制](depth-rl-locomotion.md)
+  - [如果目标是传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
   - [如果目标是模仿学习与技能迁移](depth-imitation-learning.md)
   - [如果目标是安全控制](depth-safe-control.md)
   - [如果目标是接触丰富的操作任务](depth-contact-manipulation.md)
@@ -1362,11 +1363,12 @@ flowchart TD
 
 ## 可选纵深（独立路线页）
 
-主路线偏向"先稳住一条主干"，但实际研究方向往往要继续深入某一个子专题。下面四条纵深路径**各自是独立的 roadmap 页面**，从主路线的某个阶段衔接出去：
+主路线偏向"先稳住一条主干"，但实际研究方向往往要继续深入某一个子专题。下面五条纵深路径**各自是独立的 roadmap 页面**，从主路线的某个阶段衔接出去：
 
 | 纵深路径 | 适合谁 | 主线衔接点 |
 |---------|------|-----------|
 | [如果目标是 RL 运动控制](depth-rl-locomotion.md) | 想用 RL 让人形走起来、不愿从头啃控制理论 | L3 → L5.2 |
+| [如果目标是传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md) | 想把 model-based 主干写成可运行的控制器 | L2 → L4 |
 | [如果目标是模仿学习与技能迁移](depth-imitation-learning.md) | 想从人类演示数据驱动机器人技能 | L5.3 之后 |
 | [如果目标是安全控制（CLF / CBF / Safe RL）](depth-safe-control.md) | 想给 WBC / MPC / RL 加可证明的安全约束 | L4.4 / L5 任意 |
 | [如果目标是接触丰富的操作任务](depth-contact-manipulation.md) | 想做装配、插拔、双臂协同等精细接触 | L4.4 / L5.3 之后 |
@@ -1401,6 +1403,7 @@ flowchart TD
 - 实战经验补充：[Query：人形机器人运动控制 Know-How](../wiki/queries/humanoid-motion-control-know-how.md)
 - 可选纵深路线页：
   - [如果目标是 RL 运动控制](depth-rl-locomotion.md)
+  - [如果目标是传统模型控制](depth-classical-control.md)
   - [如果目标是模仿学习与技能迁移](depth-imitation-learning.md)
   - [如果目标是安全控制](depth-safe-control.md)
   - [如果目标是接触丰富的操作任务](depth-contact-manipulation.md)

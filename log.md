@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-10] structural | roadmap/depth-classical-control.md — 新增传统模型控制（LIP/ZMP → MPC → WBC）纵深路线；主页「传统控制」按钮改指该路线，README/index/主路线与四条兄弟纵深页交叉互链
+
 ## [2026-07-10] ingest | sources/papers/realm_last_3_meter_vln_arxiv_2607_03792.md — REALM Last-3-Meter VLN 实例接地；wiki/entities/paper-realm-last-3-meter-vln-grounding.md、wiki/tasks/vision-language-navigation.md、wiki/entities/paper-vln-03-reverie.md、wiki/entities/paper-vln-09-etpnav.md
 
 ## [2026-07-10] ingest | sources/papers/evo1_arxiv_2511_04555.md — Evo-1 轻量 VLA（CVPR 2026）；wiki/entities/paper-evo1-lightweight-vla.md；交叉更新 vla.md、lerobot.md

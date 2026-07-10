@@ -12,6 +12,7 @@
 |---------|-----------|
 | 想有一条学习路线照着走 | [主路线：运动控制成长路线](roadmap/motion-control.md) |
 | 想用强化学习做 locomotion | [RL 纵深路线](roadmap/depth-rl-locomotion.md) |
+| 想学传统模型控制（MPC/WBC）| [传统控制纵深路线](roadmap/depth-classical-control.md) |
 | 想学模仿学习与技能迁移 | [模仿学习纵深路线](roadmap/depth-imitation-learning.md) |
 | 想学安全控制（CLF/CBF）| [安全控制纵深路线](roadmap/depth-safe-control.md) |
 | 想做接触丰富的操作任务 | [接触操作纵深路线](roadmap/depth-contact-manipulation.md) |
