@@ -174,6 +174,7 @@ flowchart LR
   - [模仿学习与技能迁移](depth-imitation-learning.md)
   - [安全控制（CLF/CBF）](depth-safe-control.md)
   - [接触丰富的操作任务](depth-contact-manipulation.md)
+  - [VLA 与 BFM（具身基础模型）](depth-vla-bfm.md)
 - 关联知识页：
   - [楼梯与障碍感知 locomotion 任务枢纽](../wiki/tasks/stair-obstacle-perceptive-locomotion.md)
   - [Terrain Adaptation](../wiki/concepts/terrain-adaptation.md)

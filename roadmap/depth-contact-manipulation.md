@@ -133,6 +133,7 @@ flowchart LR
   - [模仿学习与技能迁移](depth-imitation-learning.md)
   - [安全控制（CLF/CBF）](depth-safe-control.md)
   - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
+  - [VLA 与 BFM（具身基础模型）](depth-vla-bfm.md)
 - 关联知识页：
   - [Manipulation](../wiki/tasks/manipulation.md)
   - [Contact-Rich Manipulation](../wiki/concepts/contact-rich-manipulation.md)

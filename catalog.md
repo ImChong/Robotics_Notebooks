@@ -1523,6 +1523,7 @@
 - [路线（纵深）：如果目标是感知越障（Perceptive Locomotion）](roadmap/depth-perceptive-locomotion.md) — 摘要**：面向"让机器人看着地形上楼梯、跨障碍、跑酷"的纵深路线，从本体感知盲走基线到地形表征、感知策略训练，再到楼梯/跑酷进阶与导航栈整合，按 Stage 0–4 串通核心方法；本路线是 [运动 `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是人形 RL 运动控制](roadmap/depth-rl-locomotion.md) — 摘要**：面向"想用强化学习做人形 locomotion"的快速纵深路线，从 RL 基础到 sim2real，按 Stage 0–5 串通核心方法；本路线是 [运动控制主路线](motion-co `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是安全控制（CLF / CBF / Safe RL）](roadmap/depth-safe-control.md) — 摘要**：面向"在满足安全约束的前提下控制机器人"的纵深路线，从 Lyapunov 稳定性到 CBF-QP、再到 Safe RL，按 Stage 0–3 串通核心方法；本路线是 [运动控制主路线 `📅unknown` `[roadmap_page]`
+- [路线（纵深）：如果目标是 VLA 与 BFM（具身基础模型）](roadmap/depth-vla-bfm.md) — 摘要**：面向"想让机器人听懂指令干活（VLA）、想用一个 checkpoint 控住人形全身（BFM）"的纵深路线，从模仿学习策略基座到 VLA 语义策略主线、BFM 行为先验主线，再到高层 V `📅unknown` `[roadmap_page]`
 - [主路线：运动控制算法工程师成长路线](roadmap/motion-control.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
 
 ### Tech-map Nodes（技术栈节点）

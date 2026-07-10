@@ -1,13 +1,35 @@
 {
   "generated_at": "2026-07-10",
-  "node_count": 1557,
-  "edge_count": 11399,
+  "node_count": 1558,
+  "edge_count": 11475,
   "coverage": {
     "covered": 1518,
     "total": 1548,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/behavior-foundation-model.md",
+      "detail_id": "wiki-concepts-behavior-foundation-model",
+      "label": "Behavior Foundation Model（行为基础模型，BFM）",
+      "type": "concept",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "行为基础模型技术地图（Behavior Foundation Model, BFM） 社区"
+    },
     {
       "path": "wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md",
       "detail_id": "entity-paper-3d-ic-joint-navigation-manipulation-planning",
@@ -192,63 +214,43 @@
       "source": "log.md",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md",
-      "detail_id": "entity-paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont",
-      "label": "KungfuBot（Physics-Based Highly-Dynamic WBT）",
-      "type": "entity",
-      "recency": "2026-07-09",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-notebook-kungfubot-2.md",
-      "detail_id": "entity-paper-notebook-kungfubot-2",
-      "label": "KungfuBot 2（VMS — Versatile Motion Skills）",
-      "type": "entity",
-      "recency": "2026-07-09",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md",
-    "detail_id": "entity-paper-3d-ic-joint-navigation-manipulation-planning",
-    "label": "3D-IC（3D Interaction Chains · Joint Navigation and Manipulation Planning）",
-    "type": "entity",
+    "path": "wiki/methods/vla.md",
+    "detail_id": "wiki-methods-vla",
+    "label": "VLA（Vision-Language-Action）",
+    "type": "method",
     "recency": "2026-07-10",
     "source": "log.md",
-    "action": "added",
+    "action": "maintained",
     "has_repo": true,
     "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 404
-    },
-    {
-      "label": "视觉-语言-动作",
-      "size": 186
+      "size": 362
     },
     {
       "label": "人形论文深读笔记",
       "size": 185
     },
     {
-      "label": "移动操作",
-      "size": 92
+      "label": "视觉-语言-动作",
+      "size": 184
     },
     {
-      "label": "人形强化学习运动控制",
-      "size": 69
+      "label": "移动操作",
+      "size": 160
     },
     {
       "label": "运动控制",
       "size": 69
+    },
+    {
+      "label": "行为基础模型技术地图",
+      "size": 56
     }
   ],
   "top_hubs": [
@@ -271,7 +273,7 @@
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
-      "degree": 263,
+      "degree": 264,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
@@ -286,7 +288,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 224,
+      "degree": 225,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -316,14 +318,13 @@
       "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
       "label": "人形机器人 RL 运动控制：身体系统栈视角",
       "type": "overview",
-      "degree": 182,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "degree": 182
     },
     {
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 164,
+      "degree": 165,
       "has_repo": true
     }
   ],
@@ -332,7 +333,7 @@
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",
       "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
       "type": "entity",
-      "degree": 42,
+      "degree": 43,
       "has_repo": true
     },
     {
@@ -375,6 +376,12 @@
       "degree": 29
     },
     {
+      "detail_id": "entity-paper-perceptive-bfm",
+      "label": "Perceptive BFM：Adapting Human Motion Priors to Robot-Centric Terrain",
+      "type": "entity",
+      "degree": 28
+    },
+    {
       "detail_id": "entity-paper-loco-manip-04-oasis",
       "label": "OASIS（From Simulation Data Collection to Real-World Humanoid Loco-Manipulation）",
       "type": "entity",
@@ -382,17 +389,11 @@
       "has_repo": true
     },
     {
-      "detail_id": "entity-paper-perceptive-bfm",
-      "label": "Perceptive BFM：Adapting Human Motion Priors to Robot-Centric Terrain",
-      "type": "entity",
-      "degree": 27
-    },
-    {
       "detail_id": "entity-paper-amp-survey-08-more",
       "label": "MoRE：复杂地形上的人形多步态残差专家混合",
       "type": "entity",
       "degree": 26,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "community_label": "人形对抗式运动先验（Humanoid Adversarial Motion Prior, AMP） 社区"
     }
   ]
 }

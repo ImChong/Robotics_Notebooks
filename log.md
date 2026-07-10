@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-10] structural | roadmap/depth-vla-bfm.md — 新增 VLA 与 BFM（具身基础模型）纵深路线（分类学前置 → IL 策略基座 → VLA 主线 RT→π0 → 数据与 Scaling → BFM 行为先验 → 高层 VLA + 低层 BFM 层次化整合 → 进阶方向）；主页「更多路线」新增 VLA·BFM 按钮（起点：RT-2 确立 VLA，2023，排历史序末位），README/index/主路线与六条兄弟纵深页互链；链接 wiki/methods/vla.md、wiki/concepts/behavior-foundation-model.md 等枢纽页
+
 ## [2026-07-10] ingest | sources/papers/3d_ic_icml_2026.md — 3D-IC OVMM 联合导航操作规划；wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md、wiki/tasks/loco-manipulation.md、wiki/tasks/vision-language-navigation.md、wiki/tasks/manipulation.md
 
 ## [2026-07-10] ingest | Paper Notebooks 深读升格批次 — 113 个 paper-notebook 实体页升格为深读索引并补详情

@@ -124,6 +124,7 @@ flowchart LR
   - [模仿学习与技能迁移](depth-imitation-learning.md)
   - [接触丰富的操作任务](depth-contact-manipulation.md)
   - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
+  - [VLA 与 BFM（具身基础模型）](depth-vla-bfm.md)
 - 关联知识页：
   - [Lyapunov 稳定性](../wiki/formalizations/lyapunov.md)
   - [Control Lyapunov Function](../wiki/formalizations/control-lyapunov-function.md)

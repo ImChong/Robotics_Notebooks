@@ -178,6 +178,7 @@ flowchart LR
   - [安全控制（CLF/CBF）](depth-safe-control.md)
   - [接触丰富的操作任务](depth-contact-manipulation.md)
   - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
+  - [VLA 与 BFM（具身基础模型）](depth-vla-bfm.md)
 - 关联知识页：
   - [Optimal Control](../wiki/concepts/optimal-control.md)
   - [LIP / ZMP](../wiki/concepts/lip-zmp.md)
