@@ -2,12 +2,13 @@
 type: entity
 tags: [software, cad, parametric-modeling, open-source, hardware, urdf, opencascade, manufacturing, freecad]
 status: complete
-updated: 2026-07-03
+updated: 2026-07-10
 related:
   - ./blender.md
   - ./step2urdf.md
   - ./urdf-studio.md
   - ./cad-skills.md
+  - ./freecad-mcp.md
   - ./moveit2.md
   - ../concepts/urdf-robot-description.md
   - ../concepts/text-to-cad.md
@@ -15,6 +16,7 @@ related:
   - ../queries/simulation-physics-fidelity.md
 sources:
   - ../../sources/repos/freecad.md
+  - ../../sources/repos/freecad-mcp.md
 summary: "FreeCAD 是 LGPL 开源的参数化机械 CAD：以 OpenCASCADE 为 B-rep 内核，在机器人栈中常作硬件设计上游——导出 STEP/STL 供 URDF 转换，或通过 Robot/CROSS/RobotCAD 等插件直达 ROS 描述包。"
 ---
 
@@ -41,6 +43,7 @@ summary: "FreeCAD 是 LGPL 开源的参数化机械 CAD：以 OpenCASCADE 为 B-
 2. **CAD→仿真桥接**：官方 **Robot 工作台** 支持连杆-关节建模与运动学预览；社区 **CROSS**、**RobotCAD**、**RobotCreator** 等插件可从装配体生成 **URDF/xacro**、碰撞网格与 ROS2 启动文件——[ROS 2 文档](https://docs.ros.org/en/rolling/Tutorials/Intermediate/URDF/Exporting-an-URDF-File.html) 将 FreeCAD 生态列为常见 URDF 导出来源之一。
 3. **与 STEP 工具链同族**：FreeCAD 与 [step2urdf](./step2urdf.md) 均基于 **OpenCASCADE** 语义处理 STEP；典型流程为 **FreeCAD 精修装配 → 导出 STEP → step2urdf / URDF-Studio 微调关节与惯量**。
 4. **Python 脚本层**：宏与 **FreeCAD Python API** 可批量改尺寸、导出网格、驱动装配约束——适合 **夹具族系、参数化支架、数据集硬件变体** 的科研复现（与 [Text-to-CAD](../concepts/text-to-cad.md) 中的 **CadQuery/OpenSCAD 脚本 CAD** 路线可串联：LLM 生成脚本 → FreeCAD 审图 → STEP 下游）。
+5. **MCP 代理桥接**：[FreeCAD MCP](./freecad-mcp.md) 通过 Addon RPC + PyPI MCP server 把上述 API 暴露给 Claude 等宿主，支持自然语言建模、`get_view` 审图与 CalculiX FEM——适合本机已装 FreeCAD、希望对话式改模型的硬件迭代。
 
 ## 核心工作台（与机器人管线的映射）
 
@@ -94,6 +97,7 @@ flowchart LR
 - [step2urdf（STEP→URDF 浏览器转换）](./step2urdf.md)
 - [URDF-Studio（URDF/MJCF 设计工作站）](./urdf-studio.md)
 - [CAD Skills（LLM 驱动 CAD 技能）](./cad-skills.md)
+- [FreeCAD MCP（MCP 驱动桌面 CAD）](./freecad-mcp.md)
 - [MoveIt 2（ROS 2 运动规划）](./moveit2.md)
 - [URDF（统一机器人描述格式）](../concepts/urdf-robot-description.md)
 - [文字生成 CAD（Text-to-CAD）](../concepts/text-to-cad.md)
@@ -103,6 +107,7 @@ flowchart LR
 ## 参考来源
 
 - [FreeCAD 官方源码仓库归档](../../sources/repos/freecad.md)
+- [freecad-mcp 仓库源归档](../../sources/repos/freecad-mcp.md)
 - [FreeCAD 用户 Wiki](https://wiki.freecad.org)
 - [FreeCAD 开发者手册](https://freecad.github.io/DevelopersHandbook/)
 - [ROS 2 — Generating an URDF File（CAD 导出工具列表）](https://docs.ros.org/en/rolling/Tutorials/Intermediate/URDF/Exporting-an-URDF-File.html)

@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-07-10",
-  "node_count": 1551,
-  "edge_count": 11215,
+  "node_count": 1552,
+  "edge_count": 11226,
   "coverage": {
-    "covered": 1516,
-    "total": 1544,
+    "covered": 1517,
+    "total": 1545,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/freecad-mcp.md",
+      "detail_id": "entity-freecad-mcp",
+      "label": "FreeCAD MCP",
+      "type": "entity",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/paper-face-anything-4d-face-reconstruction.md",
       "detail_id": "entity-paper-face-anything-4d-face-reconstruction",
@@ -86,7 +97,7 @@
       "source": "log.md",
       "action": "added",
       "has_repo": true,
-      "community_label": "运动控制（Locomotion） 社区"
+      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
     },
     {
       "path": "wiki/entities/paper-humanoid-surgeon-in-vivo-laparoscopy.md",
@@ -105,8 +116,7 @@
       "type": "entity",
       "recency": "2026-07-08",
       "source": "log.md",
-      "action": "added",
-      "community_label": "运动控制（Locomotion） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/unitree-unistore.md",
@@ -200,27 +210,18 @@
       "source": "log.md",
       "action": "added",
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-07-08",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-face-anything-4d-face-reconstruction.md",
-    "detail_id": "entity-paper-face-anything-4d-face-reconstruction",
-    "label": "Face Anything",
+    "path": "wiki/entities/freecad-mcp.md",
+    "detail_id": "entity-freecad-mcp",
+    "label": "FreeCAD MCP",
     "type": "entity",
-    "recency": "2026-07-09",
+    "recency": "2026-07-10",
     "source": "log.md",
     "action": "added",
-    "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    "has_repo": true,
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
@@ -229,11 +230,15 @@
     },
     {
       "label": "移动操作",
-      "size": 173
+      "size": 174
     },
     {
       "label": "模仿学习",
-      "size": 158
+      "size": 142
+    },
+    {
+      "label": "仿真训练",
+      "size": 122
     },
     {
       "label": "操作",
@@ -242,10 +247,6 @@
     {
       "label": "全身控制",
       "size": 96
-    },
-    {
-      "label": "运动控制",
-      "size": 85
     }
   ],
   "top_hubs": [
