@@ -218,6 +218,8 @@ flowchart LR
 - 其它纵深路径：
   - [VLA（视觉-语言-动作模型）](depth-vla.md) — 姊妹路线：BFM 管身体级协调，VLA 管任务级语义
   - [人形 RL 运动控制](depth-rl-locomotion.md) — 本路线的训练侧前置
+  - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md) — Stage 1 动捕数据基座的展开版
+  - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md) — 行为先验的显式轨迹层表达
   - [模仿学习与技能迁移](depth-imitation-learning.md) — 动作数据与 retargeting 的展开版
   - [移动操作（Loco-Manipulation）](depth-mobile-manipulation.md) — Stage 5 方向 C 的展开版
   - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md) — Stage 5 方向 A 的邻接路线

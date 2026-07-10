@@ -224,6 +224,8 @@ flowchart LR
   - [VLA（视觉-语言-动作模型）](depth-vla.md) — Stage 4 语义接口的展开版
   - [BFM（人形行为基础模型）](depth-bfm.md) — 全身行为先验的展开版
   - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md) — Stage 5 方向 B 的邻接路线
+  - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md)
+  - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
   - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
   - [安全控制（CLF/CBF）](depth-safe-control.md)
   - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)

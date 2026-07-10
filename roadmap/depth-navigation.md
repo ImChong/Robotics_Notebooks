@@ -224,6 +224,8 @@ flowchart LR
   - [BFM（人形行为基础模型）](depth-bfm.md)
   - [人形 RL 运动控制](depth-rl-locomotion.md)
   - [模仿学习与技能迁移](depth-imitation-learning.md)
+  - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md)
+  - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
   - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
   - [安全控制（CLF/CBF）](depth-safe-control.md)
   - [接触丰富的操作任务](depth-contact-manipulation.md)

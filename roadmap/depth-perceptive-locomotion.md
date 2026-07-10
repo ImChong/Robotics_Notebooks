@@ -176,6 +176,8 @@ flowchart LR
   - [接触丰富的操作任务](depth-contact-manipulation.md)
   - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md) — Stage 4 导航栈整合的全局侧展开版
   - [移动操作（Loco-Manipulation）](depth-mobile-manipulation.md)
+  - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md)
+  - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
   - [VLA（视觉-语言-动作模型）](depth-vla.md)
   - [BFM（人形行为基础模型）](depth-bfm.md)
 - 关联知识页：
