@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-10",
-  "node_count": 1554,
-  "edge_count": 11252,
+  "node_count": 1556,
+  "edge_count": 11388,
   "coverage": {
     "covered": 1517,
     "total": 1547,
@@ -45,7 +45,18 @@
       "type": "method",
       "recency": "2026-07-10",
       "source": "log.md",
-      "action": "added"
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/stair-obstacle-perceptive-locomotion.md",
+      "detail_id": "wiki-tasks-stair-obstacle-perceptive-locomotion",
+      "label": "楼梯与障碍 Locomotion（感知 / 盲走中心节点）",
+      "type": "task",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/paper-realm-last-3-meter-vln-grounding.md",
@@ -118,7 +129,7 @@
       "recency": "2026-07-09",
       "source": "log.md",
       "action": "added",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/dimensionalos-dimos.md",
@@ -137,7 +148,8 @@
       "type": "entity",
       "recency": "2026-07-09",
       "source": "log.md",
-      "action": "added"
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/dexmal-dm05.md",
@@ -188,7 +200,7 @@
       "source": "log.md",
       "action": "added",
       "has_repo": true,
-      "community_label": "运动控制（Locomotion） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/paper-humanoid-surgeon-in-vivo-laparoscopy.md",
@@ -198,17 +210,7 @@
       "recency": "2026-07-09",
       "source": "log.md",
       "action": "added",
-      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-discrete-terrain-minimal-proximity-sensing.md",
-      "detail_id": "entity-paper-discrete-terrain-minimal-proximity-sensing",
-      "label": "Learning Locomotion on Discrete Terrain via Minimal Proximity Sensing",
-      "type": "entity",
-      "recency": "2026-07-08",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "运动控制（Locomotion） 社区"
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -223,28 +225,28 @@
   },
   "top_communities": [
     {
+      "label": "仿真到现实",
+      "size": 404
+    },
+    {
       "label": "人形论文深读笔记",
-      "size": 257
-    },
-    {
-      "label": "运动控制",
-      "size": 151
-    },
-    {
-      "label": "模仿学习",
-      "size": 149
-    },
-    {
-      "label": "移动操作",
-      "size": 104
-    },
-    {
-      "label": "全身控制",
-      "size": 96
+      "size": 185
     },
     {
       "label": "视觉-语言-动作",
-      "size": 96
+      "size": 185
+    },
+    {
+      "label": "移动操作",
+      "size": 92
+    },
+    {
+      "label": "人形强化学习运动控制",
+      "size": 69
+    },
+    {
+      "label": "运动控制",
+      "size": 69
     }
   ],
   "top_hubs": [
@@ -259,7 +261,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 269,
+      "degree": 270,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -275,14 +277,14 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 225,
-      "community_label": "运动控制（Locomotion） 社区"
+      "degree": 226,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 222,
+      "degree": 223,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -299,14 +301,14 @@
       "type": "method",
       "degree": 207,
       "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
       "degree": 199,
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
@@ -320,8 +322,7 @@
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
       "degree": 164,
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "has_repo": true
     }
   ],
   "top_paper_hubs": [
@@ -338,7 +339,7 @@
       "type": "entity",
       "degree": 42,
       "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "community_label": "动作重定向（Motion Retargeting） 社区"
     },
     {
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
@@ -369,8 +370,7 @@
       "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",
       "label": "SD-AMP：统一走、跑与起身的对抗运动先验",
       "type": "entity",
-      "degree": 29,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "degree": 29
     },
     {
       "detail_id": "entity-paper-loco-manip-04-oasis",
@@ -389,7 +389,8 @@
       "detail_id": "entity-paper-amp-survey-08-more",
       "label": "MoRE：复杂地形上的人形多步态残差专家混合",
       "type": "entity",
-      "degree": 26
+      "degree": 26,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     }
   ]
 }

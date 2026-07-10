@@ -10,6 +10,18 @@
 - 映射钉扎：[`schema/paper-notebook-wiki-overrides.yml`](schema/paper-notebook-wiki-overrides.yml) 新增 EgoDex / Visual-Tactile(HTD) / LapSurgie / Humanoids-in-Hospitals 4 条，避免论文节点被引用其 arXiv 的相邻页面吸附错绑
 - 门禁：`make ci-preflight` 全过（lint 0 问题、搜索回归通过、导出检查 12/12）；pytest 303 passed
 
+## [2026-07-10] structural | README.md / index.md / roadmap/README.md / roadmap/motion-control.md — 纵深路线列表统一按方向起点里程碑历史排序（与首页按钮一致），README 与 roadmap 总览向读者说明排序方法（ZMP 1972 → CLF 1983 → 阻抗控制 1985 → 行为克隆 1988 → Q-learning 1989 → 感知越障 2020s）
+
+## [2026-07-10] structural | docs/index.html — 主页「更多路线」六按钮改按方向起点里程碑历史排序（传统控制 ZMP 1972 → 安全控制 CLF 1983 → 接触操作 阻抗控制 1985 → 模仿学习 行为克隆 1988 → 强化学习 Q-learning 1989 → 感知越障 2020s）；同步 frontend-optimization-v1 checklist
+
+## [2026-07-10] structural | docs/style.css — 修复首页「更多路线」六按钮在 861–940px 宽度下 5+1 孤行的排版问题（auto-fit 最小列宽 132px → 118px）；同步 frontend-optimization-v1 checklist
+
+## [2026-07-10] structural | roadmap/depth-*.md 全量刷新 — 依据当前知识图谱把六条纵深路线的推荐阅读升级为已有 wiki 页：RL 路线接 ppo/sac/reward-design/actuator-network/sim2real-checklist 与感知越障、动作跟踪出口；IL 路线接 diffusion-policy/action-chunking/GMR-NMR 对比/AMP 综述地图/VLA 出口；安全控制补 safety-filter/safe-rl/cmdp；接触操作补 force-control/tactile 系列；传统控制补 MPC/WBC 调参与 Pinocchio 上手 query
+
+## [2026-07-10] structural | roadmap/depth-perceptive-locomotion.md — 新增感知越障（Perceptive Locomotion）纵深路线（盲走基线 → 地形表征 → Teacher-Student → 楼梯/跑酷 → 导航栈整合）；主页「更多路线」新增感知越障按钮，README/index/主路线与五条兄弟纵深页互链；链接 wiki/tasks/stair-obstacle-perceptive-locomotion.md 等枢纽页
+
+## [2026-07-10] structural | roadmap/depth-classical-control.md — 新增传统模型控制（LIP/ZMP → MPC → WBC）纵深路线；主页「传统控制」按钮改指该路线，README/index/主路线与四条兄弟纵深页交叉互链
+
 ## [2026-07-10] ingest | sources/papers/realm_last_3_meter_vln_arxiv_2607_03792.md — REALM Last-3-Meter VLN 实例接地；wiki/entities/paper-realm-last-3-meter-vln-grounding.md、wiki/tasks/vision-language-navigation.md、wiki/entities/paper-vln-03-reverie.md、wiki/entities/paper-vln-09-etpnav.md
 
 ## [2026-07-10] ingest | sources/papers/evo1_arxiv_2511_04555.md — Evo-1 轻量 VLA（CVPR 2026）；wiki/entities/paper-evo1-lightweight-vla.md；交叉更新 vla.md、lerobot.md
