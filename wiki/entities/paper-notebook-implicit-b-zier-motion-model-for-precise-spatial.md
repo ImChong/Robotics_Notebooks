@@ -3,6 +3,7 @@ type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
 updated: 2026-07-10
+venue: "SIGGRAPH MIG 2025"
 related:
   - ../overview/paper-notebook-category-14-human-motion.md
   - ../overview/humanoid-paper-notebooks-index.md
