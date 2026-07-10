@@ -3,17 +3,19 @@
 type: entity
 tags: [paper, vln, vln-survey, navigation, embodied-ai, adelaide, georgia-tech]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-10
 arxiv: "1904.10151"
 summary: "高层指令（目标物体 + 大致位置）下的远程导航与目标定位；结合路径标注与物体边界框。"
 related:
   - ../overview/vln-10-papers-technology-map.md
   - ../overview/vln-category-01-datasets-platforms.md
   - ../tasks/vision-language-navigation.md
+  - ../entities/paper-realm-last-3-meter-vln-grounding.md
 sources:
   - ../../sources/papers/vln_survey_03_reverie.md
   - ../../sources/blogs/wechat_shenlan_vln_10_papers_survey.md
   - ../../sources/papers/vln_10_papers_catalog.md
+  - ../../sources/papers/realm_last_3_meter_vln_arxiv_2607_03792.md
 ---
 
 # REVERIE
@@ -63,6 +65,7 @@ sources:
 ## 常见误区
 
 1. VLN benchmark 提升不等于真机部署；连续环境 (VLN-CE) 与离散图设定不可直接混比。
+2. **REVERIE-CE 的 3 m SR 不等于看清目标实例：** [REALM](../entities/paper-realm-last-3-meter-vln-grounding.md) 表明多数高 SR 轨迹在 **ONS@0.1m / OracleGS** 下仍失败；评测应区分 **区域 waypoint 到达** 与 **实例可见接地**（REVERIE-AIM 数据集为此提供实例中心终点与末段训练样本）。
 
 ## 实验与评测
 
@@ -74,6 +77,7 @@ sources:
 - 技术地图：[vln-10-papers-technology-map.md](../overview/vln-10-papers-technology-map.md)
 - 分类 hub：[vln-category-01-datasets-platforms.md](../overview/vln-category-01-datasets-platforms.md)
 - 任务页：[vision-language-navigation.md](../tasks/vision-language-navigation.md)
+- **末段接地延伸：** [REALM · Last-3-Meter VLN 实例接地](../entities/paper-realm-last-3-meter-vln-grounding.md) — REVERIE-AIM 与 ONS/GS/OracleGS 指标（arXiv:2607.03792）
 - 原始 source：[vln_survey_03_reverie.md](../../sources/papers/vln_survey_03_reverie.md)
 
 ## 参考来源

@@ -1,13 +1,54 @@
 {
   "generated_at": "2026-07-10",
-  "node_count": 1553,
-  "edge_count": 11235,
+  "node_count": 1554,
+  "edge_count": 11244,
   "coverage": {
-    "covered": 1518,
-    "total": 1546,
+    "covered": 1519,
+    "total": 1547,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-realm-last-3-meter-vln-grounding.md",
+      "detail_id": "entity-paper-realm-last-3-meter-vln-grounding",
+      "label": "REALM（Last-3-Meter VLN · 实例级接地）",
+      "type": "entity",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/vision-language-navigation.md",
+      "detail_id": "wiki-tasks-vision-language-navigation",
+      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
+      "type": "task",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-vln-03-reverie.md",
+      "detail_id": "entity-paper-vln-03-reverie",
+      "label": "REVERIE",
+      "type": "entity",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-vln-09-etpnav.md",
+      "detail_id": "entity-paper-vln-09-etpnav",
+      "label": "ETPNav",
+      "type": "entity",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-evo1-lightweight-vla.md",
       "detail_id": "entity-paper-evo1-lightweight-vla",
@@ -109,7 +150,7 @@
       "source": "log.md",
       "action": "added",
       "has_repo": true,
-      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "path": "wiki/entities/paper-humanoid-surgeon-in-vivo-laparoscopy.md",
@@ -128,7 +169,8 @@
       "type": "entity",
       "recency": "2026-07-08",
       "source": "log.md",
-      "action": "added"
+      "action": "added",
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "path": "wiki/entities/unitree-unistore.md",
@@ -170,59 +212,16 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-07-08",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/aeris-10-plfm-radar.md",
-      "detail_id": "entity-aeris-10-plfm-radar",
-      "label": "AERIS-10（PLFM_RADAR）",
-      "type": "entity",
-      "recency": "2026-07-08",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/overview/tro-manip-5-papers-technology-map.md",
-      "detail_id": "wiki-overview-tro-manip-5-papers-technology-map",
-      "label": "T-RO 2026 操作学习：5 篇论文技术地图",
-      "type": "overview",
-      "recency": "2026-07-08",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/tro-manip-category-01-data-scaling.md",
-      "detail_id": "wiki-overview-tro-manip-category-01-data-scaling",
-      "label": "T-RO 分类 01：数据规模化",
-      "type": "overview",
-      "recency": "2026-07-08",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-evo1-lightweight-vla.md",
-    "detail_id": "entity-paper-evo1-lightweight-vla",
-    "label": "Evo-1：轻量 VLA 与语义对齐保持",
+    "path": "wiki/entities/paper-realm-last-3-meter-vln-grounding.md",
+    "detail_id": "entity-paper-realm-last-3-meter-vln-grounding",
+    "label": "REALM（Last-3-Meter VLN · 实例级接地）",
     "type": "entity",
     "recency": "2026-07-10",
     "source": "log.md",
     "action": "added",
-    "has_repo": true,
     "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
@@ -236,19 +235,19 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 159
+      "size": 152
     },
     {
       "label": "模仿学习",
-      "size": 128
-    },
-    {
-      "label": "仿真训练",
-      "size": 110
+      "size": 140
     },
     {
       "label": "全身控制",
       "size": 96
+    },
+    {
+      "label": "运动控制",
+      "size": 76
     }
   ],
   "top_hubs": [

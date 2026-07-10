@@ -3,17 +3,19 @@
 type: entity
 tags: [paper, vln, vln-survey, navigation, embodied-ai, ucas]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-10
 arxiv: "2304.03047"
 summary: "连续环境 VLN-CE 下拓扑建图、跨模态规划与底层控制（含避障）三模块串联的端到端框架。"
 related:
   - ../overview/vln-10-papers-technology-map.md
   - ../overview/vln-category-02-algorithm-frameworks.md
   - ../tasks/vision-language-navigation.md
+  - ../entities/paper-realm-last-3-meter-vln-grounding.md
 sources:
   - ../../sources/papers/vln_survey_09_etpnav.md
   - ../../sources/blogs/wechat_shenlan_vln_10_papers_survey.md
   - ../../sources/papers/vln_10_papers_catalog.md
+  - ../../sources/papers/realm_last_3_meter_vln_arxiv_2607_03792.md
 ---
 
 # ETPNav
@@ -35,6 +37,7 @@ sources:
 ## 为什么重要
 
 - 连续环境拓扑规划代表基线，在 R2R-CE、RxR-CE 上报告大幅性能提升。
+- **末段精修上游：** [REALM](../entities/paper-realm-last-3-meter-vln-grounding.md) 将 ETPNav-ZS/FT 作为四类 plug-and-play 骨干之一，在 REVERIE-AIM 上 ONS@0.1m 相对无精修基线约 **翻倍**（arXiv:2607.03792）。
 - 连续环境 VLN-CE 下拓扑建图、跨模态规划与底层控制（含避障）三模块串联的端到端框架。
 
 ## 核心信息（索引级）
@@ -74,6 +77,7 @@ sources:
 - 技术地图：[vln-10-papers-technology-map.md](../overview/vln-10-papers-technology-map.md)
 - 分类 hub：[vln-category-02-algorithm-frameworks.md](../overview/vln-category-02-algorithm-frameworks.md)
 - 任务页：[vision-language-navigation.md](../tasks/vision-language-navigation.md)
+- 末段精修：[REALM](../entities/paper-realm-last-3-meter-vln-grounding.md) — ETPNav 为 REALM 主要上游骨干
 - 原始 source：[vln_survey_09_etpnav.md](../../sources/papers/vln_survey_09_etpnav.md)
 
 ## 参考来源
