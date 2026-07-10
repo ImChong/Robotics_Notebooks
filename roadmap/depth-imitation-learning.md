@@ -240,6 +240,7 @@ flowchart LR
   - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
   - [安全控制（CLF/CBF）](depth-safe-control.md)
   - [接触丰富的操作任务](depth-contact-manipulation.md)
+  - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
 - 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
 - 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 

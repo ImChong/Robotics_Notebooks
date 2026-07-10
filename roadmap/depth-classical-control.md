@@ -174,6 +174,7 @@ flowchart LR
   - [模仿学习与技能迁移](depth-imitation-learning.md)
   - [安全控制（CLF/CBF）](depth-safe-control.md)
   - [接触丰富的操作任务](depth-contact-manipulation.md)
+  - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
 - 关联知识页：
   - [Optimal Control](../wiki/concepts/optimal-control.md)
   - [LIP / ZMP](../wiki/concepts/lip-zmp.md)

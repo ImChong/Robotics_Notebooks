@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-10] structural | roadmap/depth-perceptive-locomotion.md — 新增感知越障（Perceptive Locomotion）纵深路线（盲走基线 → 地形表征 → Teacher-Student → 楼梯/跑酷 → 导航栈整合）；主页「更多路线」新增感知越障按钮，README/index/主路线与五条兄弟纵深页互链；链接 wiki/tasks/stair-obstacle-perceptive-locomotion.md 等枢纽页
+
 ## [2026-07-10] structural | roadmap/depth-classical-control.md — 新增传统模型控制（LIP/ZMP → MPC → WBC）纵深路线；主页「传统控制」按钮改指该路线，README/index/主路线与四条兄弟纵深页交叉互链
 
 ## [2026-07-10] ingest | sources/papers/realm_last_3_meter_vln_arxiv_2607_03792.md — REALM Last-3-Meter VLN 实例接地；wiki/entities/paper-realm-last-3-meter-vln-grounding.md、wiki/tasks/vision-language-navigation.md、wiki/entities/paper-vln-03-reverie.md、wiki/entities/paper-vln-09-etpnav.md

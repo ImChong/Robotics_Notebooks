@@ -16,6 +16,7 @@
 | 想学模仿学习与技能迁移 | [模仿学习纵深路线](roadmap/depth-imitation-learning.md) |
 | 想学安全控制（CLF/CBF）| [安全控制纵深路线](roadmap/depth-safe-control.md) |
 | 想做接触丰富的操作任务 | [接触操作纵深路线](roadmap/depth-contact-manipulation.md) |
+| 想让机器人看地形越障 | [感知越障纵深路线](roadmap/depth-perceptive-locomotion.md) |
 | 想看知识概念和方法 | [浏览完整页面目录](catalog.md) |
 | 想看模块关系和依赖 | [tech-map 总览](tech-map/overview.md) |
 
