@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" id="metaDescription" content="Robotics Notebooks 通用详情页：直接消费 site-data-v1.json，展示知识页、实体页、reference 页和 tech-map 节点的统一元信息。" />
-  <meta name="keywords" content="Robotics Notebooks, detail page, site-data-v1.json, 通用详情页" />
+  <meta name="description" id="metaDescription" content="Robotics Notebooks 知识详情页：阅读机器人概念、方法、项目、论文与技术路线的结构化内容。" />
+  <meta name="keywords" content="Robotics Notebooks, 机器人知识库, 人形机器人, 运动控制, 强化学习" />
   <meta name="author" content="Chong Liu" />
-  <meta property="og:title" content="Robotics Notebooks | 通用详情页" id="ogTitleMeta" />
-  <meta property="og:description" content="基于页面级聚合导出渲染的 metadata-first detail page。" id="ogDescMeta" />
+  <meta property="og:title" content="Robotics Notebooks | 知识详情" id="ogTitleMeta" />
+  <meta property="og:description" content="查看机器人技术主题的摘要、正文、关联内容与参考来源。" id="ogDescMeta" />
   <meta property="og:type" content="website" />
-  <title>Robotics Notebooks | 通用详情页</title>
+  <title>Robotics Notebooks | 知识详情</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧩</text></svg>" />
   <meta name="color-scheme" content="dark light" />
   <script src="theme-init.js"></script>
@@ -22,7 +22,7 @@
 <body>
   <header class="site-header">
     <div class="header-inner">
-      <a href="index.html" class="site-title" aria-label="机器人技术栈地图首页">🧩 Robotics Notebooks | 通用详情页</a>
+      <a href="index.html" class="site-title" aria-label="机器人技术栈地图首页">🗺️ Robotics Notebooks</a>
       <div class="header-spacer"></div>
       <div class="header-right">
         <a href="https://github.com/ImChong/Robotics_Notebooks" class="github-link" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -40,17 +40,17 @@
         <nav id="detailBreadcrumb" class="detail-breadcrumb data-loading" aria-label="面包屑导航">
           <a href="index.html">首页</a>
           <span>/</span>
-          <span>详情页</span>
+          <span>知识详情</span>
         </nav>
         <div class="detail-hero-top">
           <div>
-            <h1 id="detailTitle">正在读取详情页…</h1>
-            <p id="detailSummary" class="detail-summary data-loading">当前页面直接消费 <code>exports/site-data-v1.json</code>，展示 detail page 元信息、正文与站内跳转。</p>
+            <h1 id="detailTitle">正在加载内容…</h1>
+            <p id="detailSummary" class="detail-summary data-loading">正在加载页面摘要…</p>
           </div>
           <aside id="detailMetaPanel" class="hero-panel detail-meta-panel">
-            <h3>页面元信息</h3>
+            <h3>页面信息</h3>
             <div id="detailMeta" class="detail-meta-list data-loading">
-              <p id="detailMetaUpdated" class="detail-meta-item data-meta">正在读取更新时间…</p>
+              <p id="detailMetaUpdated" class="detail-meta-item data-meta">正在加载更新时间…</p>
               <p id="detailMetaCommunity" class="detail-meta-item" hidden></p>
               <p id="detailMetaTopic" class="detail-meta-item" hidden></p>
               <p id="detailMetaInstitution" class="detail-meta-item" hidden></p>
@@ -59,12 +59,12 @@
         </div>
         <aside id="detailMiniMapWrap" class="detail-mini-map" aria-label="知识地图局部视图" hidden>
           <div class="detail-mini-map-head">
-            <h3>知识地图（1-hop 邻居）</h3>
-            <span id="detailMiniMapMeta" class="detail-mini-map-meta">正在读取邻居关系…</span>
+            <h3>关联知识图谱</h3>
+            <span id="detailMiniMapMeta" class="detail-mini-map-meta">正在加载关联关系…</span>
           </div>
           <svg id="detailMiniMapSvg" class="detail-mini-map-svg" role="img" aria-label="当前节点 1-hop 邻居图"></svg>
           <div class="detail-mini-map-foot">
-            <a id="detailMiniMapAllNeighbors" class="detail-mini-map-all-link" href="graph.html" hidden>查看全部邻居 →</a>
+            <a id="detailMiniMapAllNeighbors" class="detail-mini-map-all-link" href="graph.html" hidden>查看全部关联节点 →</a>
           </div>
           <div id="detail-mini-map-tooltip" class="graph-hover-tooltip hidden" role="tooltip" aria-hidden="true"></div>
         </aside>
@@ -73,8 +73,8 @@
 
     <section class="page-subnav-wrap">
       <div class="container page-subnav">
-        <a href="#detail-content">正文同步内容</a>
-        <a href="#detail-toc">目录导航</a>
+        <a href="#detail-content">正文</a>
+        <a href="#detail-toc">目录</a>
         <a href="#detail-tags">标签</a>
         <a href="#detail-related">关联项</a>
         <a href="#detail-recommended">相关推荐</a>
@@ -85,8 +85,8 @@
     <section class="section" id="detail-empty-section">
       <div class="container">
         <article id="detailEmptyState" class="card empty-state" hidden>
-          <h2>未找到对应 detail page</h2>
-          <p>请在 URL 里传入合法的 <code>?id=...</code>。例如：<code>detail.html?id=wiki-concepts-centroidal-dynamics</code></p>
+          <h2>未找到对应内容</h2>
+          <p>链接可能无效或内容已迁移，请返回首页重新查找。</p>
           <div class="cta-row">
             <a class="btn-secondary" href="index.html">回到首页</a>
           </div>
@@ -97,22 +97,22 @@
     <section class="section" id="detailContentSection">
       <div class="container detail-content-layout">
         <aside id="detailTocSection" class="detail-toc-panel" aria-labelledby="detail-toc" hidden>
-          <h2 class="section-title" id="detail-toc">目录导航</h2>
-          <p class="section-subtitle">快速导航</p>
+          <h2 class="section-title" id="detail-toc">目录</h2>
+          <p class="section-subtitle">快速跳转</p>
           <div style="margin-bottom: 1.2rem;">
             <a id="detailGraphLink" href="graph.html" class="btn-secondary" style="display:flex; align-items:center; gap:6px; justify-content:center; padding:8px; border-color:rgba(0,212,255,0.3); color:var(--text);">
-              <span>🕸️</span> 关联图谱节点
+              <span>🕸️</span> 查看关联图谱
             </a>
           </div>
-          <nav id="detailTocList" class="detail-toc-list data-loading" aria-label="正文目录导航"></nav>
+          <nav id="detailTocList" class="detail-toc-list data-loading" aria-label="正文目录"></nav>
         </aside>
         <div class="detail-content-main">
           <section id="detail-content-body">
-            <h2 class="section-title">正文同步内容</h2>
+            <h2 class="section-title">正文</h2>
             <div class="detail-content-sync">
-              <article id="detailContent" class="detail-markdown-body data-loading">正在读取正文同步内容…</article>
+              <article id="detailContent" class="detail-markdown-body data-loading">正在加载正文…</article>
               <div class="detail-content-sync-foot">
-                <a id="detailContentSourceLink" class="detail-mini-map-all-link" href="#" target="_blank" rel="noopener noreferrer" hidden>在 GitHub 查看源文件 →</a>
+                <a id="detailContentSourceLink" class="detail-mini-map-all-link" href="#" target="_blank" rel="noopener noreferrer" hidden>在 GitHub 查看原文 →</a>
               </div>
             </div>
           </section>
@@ -132,27 +132,27 @@
               <div id="detailRelatedCommunityDistBars" class="related-community-dist-bars"></div>
             </div>
             <div id="detailRelatedList" class="detail-compact-mount data-loading">
-              <p class="data-meta">正在读取关联项…</p>
+              <p class="data-meta">正在加载关联项…</p>
             </div>
           </section>
 
           <section class="section" id="detail-recent-ingest-section" style="padding: 40px 0;" hidden>
-            <h2 class="section-title">最近相关 ingest</h2>
-            <p class="section-subtitle">与本页相关、最近 30 天内入库的页面（按入库时间倒序，最多 6 项）。</p>
+            <h2 class="section-title">近期相关内容</h2>
+            <p class="section-subtitle">最近 30 天内与本页相关的内容，按更新时间倒序显示。</p>
             <div id="detailRecentIngestTimeline" class="detail-compact-mount"></div>
           </section>
 
           <section class="section" id="detail-recommended" style="padding: 40px 0;">
             <h2 class="section-title">相关推荐</h2>
             <div id="detailRecommendedList" class="detail-compact-mount data-loading">
-              <p class="data-meta">正在计算相关推荐…</p>
+              <p class="data-meta">正在加载相关推荐…</p>
             </div>
           </section>
 
           <section class="section" id="detail-sources" style="padding: 40px 0;">
             <h2 class="section-title">来源链接</h2>
             <div id="detailSourceList" class="detail-compact-mount data-loading">
-              <p class="data-meta">正在读取来源链接…</p>
+              <p class="data-meta">正在加载来源链接…</p>
             </div>
           </section>
 
