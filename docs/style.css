@@ -1038,12 +1038,18 @@ button.home-wiki-heatmap-cell.is-active {
   font-size: .86rem;
   font-weight: 650;
 }
-.learning-route-links {
+.home-entry-card-more {
+  grid-column: 1 / -1;
+  min-height: 0;
+}
+.home-entry-route-links {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  margin-top: auto;
+  padding-top: 16px;
 }
-.learning-route-links .btn-secondary {
+.home-entry-route-links .btn-secondary {
   border: 1px solid var(--border);
 }
 .simple-card {
