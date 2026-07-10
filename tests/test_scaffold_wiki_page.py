@@ -13,16 +13,18 @@ def test_standard_skeleton_passes_self_check() -> None:
     # 关键结构锚点
     assert "## 一句话定义" in content
     assert "## 英文缩写速查" in content
+    assert "## 核心原理" in content
+    assert "## 工程实践" in content
+    assert "## 局限与风险" in content
     assert "## 关联页面" in content
     assert "## 参考来源" in content
 
 
-def test_abbrev_after_definition_before_why() -> None:
+def test_standard_skeleton_uses_unified_reading_order() -> None:
     content = scaf.build_skeleton("method", "示例方法")
-    pos_def = content.find("## 一句话定义")
-    pos_abbrev = content.find("## 英文缩写速查")
-    pos_why = content.find("## 为什么重要")
-    assert pos_def < pos_abbrev < pos_why
+    positions = [content.find(heading) for heading in scaf.STANDARD_SECTION_ORDER]
+    assert all(pos >= 0 for pos in positions)
+    assert positions == sorted(positions)
 
 
 def test_query_skeleton_has_query_markers() -> None:
@@ -55,11 +57,14 @@ def test_dataset_skeleton_has_quick_block_and_tag() -> None:
     # 五维度速查行齐全
     for dim in ("规模", "模态", "许可证", "适配形态", "重定向就绪度"):
         assert dim in content
-    # 速查块在「英文缩写速查」之后、「为什么重要」之前
+    # 数据集速查是统一骨架中的类型专属补充，不改变主标题顺序
     assert (
         content.find("## 英文缩写速查")
         < content.find("## 数据集速查")
         < content.find("## 为什么重要")
+        < content.find("## 核心原理")
+        < content.find("## 工程实践")
+        < content.find("## 局限与风险")
     )
 
 
