@@ -2,7 +2,7 @@
 type: task
 tags: [vln, navigation, embodied-ai, vision-language, matterport]
 summary: "视觉–语言导航（VLN）要求智能体在三维环境中依据自然语言指令执行一系列离散或连续动作到达目标，是连接语言理解与空间运动规划的基准任务。"
-updated: 2026-07-08
+updated: 2026-07-10
 status: complete
 related:
   - ../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md
@@ -18,12 +18,14 @@ related:
   - ../methods/vla.md
   - ../entities/paper-homeworld-whole-home-scene-generation.md
   - ../entities/paper-vesta-generalist-embodied-reasoning.md
+  - ../entities/paper-realm-last-3-meter-vln-grounding.md
   - locomotion.md
 sources:
   - ../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md
   - ../../sources/blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md
   - ../../sources/repos/sceneverse-pp.md
   - ../../sources/papers/worldvln_arxiv_2605_15964.md
+  - ../../sources/papers/realm_last_3_meter_vln_arxiv_2607_03792.md
 ---
 
 # 视觉–语言导航（Vision-and-Language Navigation, VLN）
@@ -48,6 +50,7 @@ sources:
 - **与 image-goal 视觉导航的对照**：[NavWAM](../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md) 研究 **目标图像**（非自然语言）条件下的 egocentric 闭环导航，用 **Cosmos Predict 2 系 WAM** 联合预测未来观测、value 与 action，在 **go stanford** 与真机上相对 **OmniVLA** 与 **NWM+CEM** 报告增益——说明「导航」任务族内 **语言接地** 与 **视觉目标接地** 可走不同基础模型路线。
 - **Agentic 导航基座**：[Qwen-RobotNav](../entities/qwen-robot-nav.md) 以 **可控观测协议 + 任务 mode** 统一 VLN / ObjNav / 跟踪 / NAVSIM 驾驶，并作为 **Qwen3.7-Plus** 等 planner 的导航原语；与 [Qwen-Robot Suite](../entities/qwen-robot-suite.md) 长时程 **EQA / 开放世界寻物** demo 一并阅读。
 - **通才 planner 统一导航 + 推理**：[Vesta](../entities/paper-vesta-generalist-embodied-reasoning.md) 在同一 **Qwen3-VL-8B** checkpoint 上同时 SFT **VLN-CE（R2R/RxR/ScaleVLN）** 与具身 cognition/localization；R2R-CE **SR 55.5%** 与 InternVLA-N1 specialist 持平，而 **Nav-only finetune 的 generalist 竞品在 R2R 上 SR=0**（灾难性遗忘）——说明 VLN 是否应并入 **更大 planner mix** 时需评估 **域外遗忘** 而不仅是导航榜分数。
+- **REVERIE 末段接地鸿沟**：[REALM](../entities/paper-realm-last-3-meter-vln-grounding.md)（arXiv:2607.03792）指出 REVERIE-CE 等任务虽要求框出目标实例，但主流 **3 m SR** 不评 **最终朝向与可见性**——ETPNav-FT SR=34.67% 时 **ONS@0.1m 仅 6.32%**；作者提出 **plug-and-play 末段精修** 与 **REVERIE-AIM** 实例中心评测集。
 
 ## 核心要素
 
@@ -81,11 +84,13 @@ sources:
 - **运动基础**：[Locomotion](locomotion.md) 提供低层移动能力；VLN 更多占据 **任务规划与语义接地** 层，可与 VLA 分层结合。
 - **模型**：[VLA](../methods/vla.md) 可作为统一骨架，在导航子任务上接入离散动作头或目标点输出。
 - **通才 embodied planner**：[Vesta](../entities/paper-vesta-generalist-embodied-reasoning.md) — 导航与具身推理、长时程子任务规划 **单模型 SFT**；R2R-CE 与 offline planning / 真机 memory 任务一并报告（arXiv:2606.20905）。
+- **REVERIE 实例接地**：[REALM](../entities/paper-realm-last-3-meter-vln-grounding.md) — Last-3-Meter Grounding Gap、ONS/GS/OracleGS 指标与 REVERIE-AIM（arXiv:2607.03792）。
 
 ## 参考来源
 
 - [深蓝具身智能：VLN 四范式新手复现推荐](../../sources/blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md) — Habitat/R2R 可跑通开源栈策展
 - [WorldVLN 论文摘录（arXiv:2605.15964）](../../sources/papers/worldvln_arxiv_2605_15964.md) — 空中 VLN · 自回归 WAM
+- [REALM 论文摘录（arXiv:2607.03792）](../../sources/papers/realm_last_3_meter_vln_arxiv_2607_03792.md) — REVERIE 末段实例接地与评测鸿沟
 - [SceneVerse++ 原始资料归档](../../sources/repos/sceneverse-pp.md)
 - Chen et al., *Lifting Unlabeled Internet-level Data for 3D Scene Understanding* (arXiv:2604.01907) — VLN 数据生成与 R2R 实验
 - Anderson et al., *Vision-and-Language Navigation* — R2R 任务经典定义（如需溯源基准起源可查阅原文）
@@ -102,6 +107,7 @@ sources:
 - [3D 空间 VQA](../concepts/3d-spatial-vqa.md)
 - [Locomotion](locomotion.md)
 - [VLA](../methods/vla.md)
+- [REALM（Last-3-Meter VLN 实例接地）](../entities/paper-realm-last-3-meter-vln-grounding.md) — REVERIE 末段评测鸿沟与 plug-and-play 精修
 
 ## 推荐继续阅读
 

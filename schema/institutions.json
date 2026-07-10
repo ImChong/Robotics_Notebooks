@@ -598,6 +598,20 @@
         "adelaide"
       ]
     },
+    "epfl": {
+      "label": "洛桑联邦理工学院（EPFL）",
+      "aliases": [
+        "epfl",
+        "swiss-federal-institute-of-technology-lausanne"
+      ]
+    },
+    "ruyi-dynamics": {
+      "label": "如一动力（Ruyi Dynamics）",
+      "aliases": [
+        "ruyi-dynamics",
+        "ruyi"
+      ]
+    },
     "oregon-state": {
       "label": "俄勒冈州立大学（Oregon State）",
       "aliases": [
