@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-07-10",
-  "node_count": 1552,
-  "edge_count": 11226,
+  "node_count": 1553,
+  "edge_count": 11235,
   "coverage": {
-    "covered": 1517,
-    "total": 1545,
+    "covered": 1518,
+    "total": 1546,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-evo1-lightweight-vla.md",
+      "detail_id": "entity-paper-evo1-lightweight-vla",
+      "label": "Evo-1：轻量 VLA 与语义对齐保持",
+      "type": "entity",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/freecad-mcp.md",
       "detail_id": "entity-freecad-mcp",
@@ -27,7 +38,7 @@
       "recency": "2026-07-09",
       "source": "log.md",
       "action": "added",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/dimensionalos-dimos.md",
@@ -46,7 +57,8 @@
       "type": "entity",
       "recency": "2026-07-09",
       "source": "log.md",
-      "action": "added"
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/dexmal-dm05.md",
@@ -189,7 +201,7 @@
       "recency": "2026-07-08",
       "source": "log.md",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/overview/tro-manip-category-01-data-scaling.md",
@@ -199,29 +211,19 @@
       "recency": "2026-07-08",
       "source": "log.md",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-tro-manip-01-diversity-scaling.md",
-      "detail_id": "entity-paper-tro-manip-01-diversity-scaling",
-      "label": "Is Diversity All You Need for Scalable Robotic Manipulation?",
-      "type": "entity",
-      "recency": "2026-07-08",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/freecad-mcp.md",
-    "detail_id": "entity-freecad-mcp",
-    "label": "FreeCAD MCP",
+    "path": "wiki/entities/paper-evo1-lightweight-vla.md",
+    "detail_id": "entity-paper-evo1-lightweight-vla",
+    "label": "Evo-1：轻量 VLA 与语义对齐保持",
     "type": "entity",
     "recency": "2026-07-10",
     "source": "log.md",
     "action": "added",
     "has_repo": true,
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
@@ -233,16 +235,16 @@
       "size": 174
     },
     {
+      "label": "视觉-语言-动作",
+      "size": 159
+    },
+    {
       "label": "模仿学习",
-      "size": 142
+      "size": 128
     },
     {
       "label": "仿真训练",
-      "size": 122
-    },
-    {
-      "label": "操作",
-      "size": 111
+      "size": 110
     },
     {
       "label": "全身控制",
@@ -284,7 +286,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 220,
+      "degree": 222,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -307,8 +309,8 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 198,
-      "community_label": "操作（Manipulation） 社区"
+      "degree": 199,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
