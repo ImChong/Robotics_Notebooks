@@ -78,4 +78,5 @@ SIMPLE 的实现路径是先把相机图像/多视角观测、本体状态与关
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：SIMPLE](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/SIMPLE__Simulation-Based_Policy_Learning_and_Evaluation_for_Humanoid_Loco-manipulation/SIMPLE__Simulation-Based_Policy_Learning_and_Evaluation_for_Humanoid_Loco-manipulation.html)
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)

@@ -72,5 +72,6 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：GENMO](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/GENMO__A_Generalist_Model_for_Human_Motion/GENMO__A_Generalist_Model_for_Human_Motion.html)
 - GitHub：<https://github.com/NVIDIA/soma-retargeter>
 - SEED 数据集：<https://huggingface.co/datasets/bones-studio/seed>

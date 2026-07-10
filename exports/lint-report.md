@@ -2,7 +2,7 @@
 
 ## [2026-07-10] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **2** 条信息型预警）：
+共发现 **0** 个问题（另含 **6** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -91,8 +91,11 @@
 ### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（4 个）
+- wiki/entities/paper-notebook-climber-force-and-motion-estimation-from-video.md
+- wiki/entities/paper-notebook-implicit-b-zier-motion-model-for-precise-spatial.md
+- wiki/entities/paper-notebook-manikin-biomechanically-accurate-neural-inverse.md
+- wiki/entities/paper-notebook-spatial-relationship-preserving-character-motion.md
 
 ### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（2 个）
 - wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md（缺 方法 / 评测）
@@ -113,4 +116,4 @@
 ### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：1520/1548 (98%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1518/1548 (98%) wiki/entity 页有 ingest 来源

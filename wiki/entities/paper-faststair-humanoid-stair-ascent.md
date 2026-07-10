@@ -150,5 +150,6 @@ flowchart TB
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：FastStair](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/FastStair__Learning_to_Run_Up_Stairs_with_Humanoid_Robots/FastStair__Learning_to_Run_Up_Stairs_with_Humanoid_Robots.html)
 - 论文 HTML（公式与图表）：<https://arxiv.org/html/2601.10365v1>
 - 项目页（视频与 BibTeX）：<https://npcliu.github.io/FastStair>

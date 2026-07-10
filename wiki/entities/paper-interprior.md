@@ -115,6 +115,7 @@ flowchart TB
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：InterPrior](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/InterPrior__Scaling_Generative_Control_for_Physics-Based_Human-Object_Inter/InterPrior__Scaling_Generative_Control_for_Physics-Based_Human-Object_Inter.html)
 - InterMimic 项目页：<https://sirui-xu.github.io/InterMimic/>
 - InterAct 数据集：<https://sirui-xu.github.io/InterAct/>
 - ULTRA（多模态人形 loco-manipulation）：<https://ultra-humanoid.github.io/>

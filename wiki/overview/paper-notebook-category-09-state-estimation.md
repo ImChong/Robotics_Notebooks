@@ -2,10 +2,10 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-06-07
+updated: 2026-07-10
 related:
   - ./humanoid-paper-notebooks-index.md
-summary: "Paper Notebooks 分类 09：状态估计（13 篇深读笔记索引）。"
+summary: "Paper Notebooks 分类 09：状态估计（14 篇深读笔记索引）。"
 ---
 
 # Paper Notebooks · State Estimation
@@ -26,6 +26,7 @@ summary: "Paper Notebooks 分类 09：状态估计（13 篇深读笔记索引）
 - [An Empirical Evaluation of Four Off-the-Shelf Proprietary Visual-Inertial Odometry Systems](../entities/paper-notebook-an-empirical-evaluation-of-four-off-the-shelf-pr.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/An_Empirical_Evaluation_of_Four_Off-the-Shelf_Proprietary_VIO_Systems/An_Empirical_Evaluation_of_Four_Off-the-Shelf_Proprietary_VIO_Systems.html)
 - [AutoOdom](../entities/paper-notebook-autoodom.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/AutoOdom__Learning_Auto-regressive_Proprioceptive_Odometry_for_Legged_Locomotio/AutoOdom__Learning_Auto-regressive_Proprioceptive_Odometry_for_Legged_Locomotio.html)
 - [Contact-Aided Invariant Extended Kalman Filtering for Legged Robot State Estimation](../entities/paper-notebook-contact-aided-invariant-ekf-for-legged-robots.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/Contact-Aided_Invariant_EKF_for_Legged_Robots/Contact-Aided_Invariant_EKF_for_Legged_Robots.html)
+- [GAIT](../entities/paper-notebook-gait.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/GAIT__Legged_Robot_Proprioceptive_State_Estimation_with_Attention_over_Inertia/GAIT__Legged_Robot_Proprioceptive_State_Estimation_with_Attention_over_Inertia.html)
 - [GTSAM](../entities/paper-notebook-gtsam-factor-graphs-for-sensor-fusion-in-robotic.md) — 待深读
 - [InEKFormer](../entities/paper-notebook-inekformer.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/InEKFormer__A_Hybrid_State_Estimator_for_Humanoid_Robots/InEKFormer__A_Hybrid_State_Estimator_for_Humanoid_Robots.html)
 - [Kimera](../entities/kimera.md) — 见 wiki 实体页
@@ -33,7 +34,7 @@ summary: "Paper Notebooks 分类 09：状态估计（13 篇深读笔记索引）
 - [Legged Robot State-Estimation Through Combined Forward Kinematic and Preintegrated Contact Factors](../concepts/state-estimation.md) — 见 wiki 实体页
 - [ORB-SLAM3](../entities/orb-slam3.md) — 见 wiki 实体页
 - [Physics-Informed Neural Networks with Unscented Kalman Filter for Sensorless Joint Torque Estimation in Humanoid Robots](../entities/paper-notebook-physics-informed-neural-networks-with-ukf-for-se.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/Physics-Informed_Neural_Networks_with_UKF_for_Sensorless_Joint_Torque_Estimation/Physics-Informed_Neural_Networks_with_UKF_for_Sensorless_Joint_Torque_Estimation.html)
-- [The invariant extended Kalman filter as a stable observer](../entities/paper-notebook-the-invariant-extended-kalman-filter-as-a-stable.md) — 待深读
+- [The Invariant Extended Kalman Filter as a Stable Observer](../entities/paper-notebook-the-invariant-extended-kalman-filter-as-a-stable.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/The_Invariant_Extended_Kalman_Filter_as_a_Stable_Observer/The_Invariant_Extended_Kalman_Filter_as_a_Stable_Observer.html)
 - [VINS-Fusion](../entities/vins-fusion.md) — 见 wiki 实体页
 
 ## 与其他页面的关系

@@ -133,6 +133,7 @@ flowchart TB
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：CHIP](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/CHIP__Adaptive_Compliance_for_Humanoid_Control_through_Hindsight_Perturbation/CHIP__Adaptive_Compliance_for_Humanoid_Control_through_Hindsight_Perturbation.html)
 - 论文：<https://arxiv.org/abs/2606.27581>
 - 项目页（含浏览器 demo）：<https://ericcsr.github.io/scenebot/>
 - 对照：[SONIC 项目页](https://nvlabs.github.io/GEAR-SONIC/)

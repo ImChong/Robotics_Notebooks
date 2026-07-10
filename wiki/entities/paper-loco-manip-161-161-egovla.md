@@ -78,5 +78,6 @@ EgoVLA 的实现路径是先把语言指令、相机图像/多视角观测、本
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：EgoVLA](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/EgoVLA__Learning_Vision-Language-Action_Models_from_Egocentric_Human_Videos/EgoVLA__Learning_Vision-Language-Action_Models_from_Egocentric_Human_Videos.html)
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
 - 同题深读/既有实体：[paper-loco-manip-161-161-egovla](../entities/paper-loco-manip-161-161-egovla.md)

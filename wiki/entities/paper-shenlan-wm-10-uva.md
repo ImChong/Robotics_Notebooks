@@ -81,5 +81,6 @@ sources:
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Unified Video Action Model](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Unified_Video_Action_Model/Unified_Video_Action_Model.html)
 - [arXiv:2503.00200](https://arxiv.org/abs/2503.00200) — 论文全文
 - [深蓝具身智能原文](https://mp.weixin.qq.com/s/KZT8sI4n7GvHWyM20wN3gg)

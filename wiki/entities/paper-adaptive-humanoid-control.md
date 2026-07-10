@@ -138,6 +138,7 @@ flowchart TB
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Towards Adaptive Humanoid Control via Multi-Behavior Distillation and Reinforced Fine-Tuning](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Towards_Adaptive_Humanoid_Control_via_Multi-Behavior_Distillation_and_Reinforced_Fine-Tuning/Towards_Adaptive_Humanoid_Control_via_Multi-Behavior_Distillation_and_Reinforced_Fine-Tuning.html)
 - [AHC 项目页](https://ahc-humanoid.github.io) — 视频与 BibTeX
 - [arXiv:2511.06371](https://arxiv.org/abs/2511.06371) — AAAI 2026 Oral 正文
 - [AMP 专题长文（微信公众号）](https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w)

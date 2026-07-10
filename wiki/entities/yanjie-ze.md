@@ -86,6 +86,7 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：TWIST](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/TWIST__Teleoperated_Whole-Body_Imitation_System/TWIST__Teleoperated_Whole-Body_Imitation_System.html)
 - [TWIST2 项目页](https://yanjieze.com/projects/TWIST2/)
 - [GMR 官方仓库](https://github.com/YanjieZe/GMR)
 - [Awesome Humanoid Robot Learning](https://github.com/YanjieZe/awesome-humanoid-robot-learning)

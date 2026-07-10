@@ -61,4 +61,7 @@ summary: "BFM-2 是智元公开的运动小脑运控基座：二阶段 Motion-Be
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：TWIST2](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/TWIST2__Scalable_Portable_and_Holistic_Humanoid_Data_Collection_System/TWIST2__Scalable_Portable_and_Holistic_Humanoid_Data_Collection_System.html)
+- [机器人论文阅读笔记：SENTINEL](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/SENTINEL__A_Fully_End-to-End_Language-Action_Model_for_Humanoid_Whole_Body_Control/SENTINEL__A_Fully_End-to-End_Language-Action_Model_for_Humanoid_Whole_Body_Control.html)
+- [机器人论文阅读笔记：Agility Meets Stability](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Agility_Meets_Stability__Versatile_Humanoid_Control_with_Heterogeneous_Data/Agility_Meets_Stability__Versatile_Humanoid_Control_with_Heterogeneous_Data.html)
 - [BFM-2 公开视频](https://www.bilibili.com/video/BV1ZzGe6oEmk/)

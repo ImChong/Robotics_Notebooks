@@ -2,10 +2,10 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-06-07
+updated: 2026-07-10
 related:
   - ./humanoid-paper-notebooks-index.md
-summary: "Paper Notebooks 分类 13：物理动画（28 篇深读笔记索引）。"
+summary: "Paper Notebooks 分类 13：物理动画（27 篇深读笔记索引）。"
 ---
 
 # Paper Notebooks · Physics-Based Animation
@@ -39,17 +39,16 @@ summary: "Paper Notebooks 分类 13：物理动画（28 篇深读笔记索引）
 - [Learning Symmetric and Low-energy Locomotion](../entities/paper-notebook-learning-symmetric-and-low-energy-locomotion.md) — 待深读
 - [Learning to Ball](../entities/paper-notebook-learning-to-ball.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Learning_to_Ball__Composing_Policies_for_Long-Horizon_Basketball_Moves/Learning_to_Ball__Composing_Policies_for_Long-Horizon_Basketball_Moves.html)
 - [MaskedManipulator](../entities/paper-notebook-maskedmanipulator-versatile-whole-body-control-f.md) — 待深读
-- [MaskedMimic](../entities/paper-bfm-17-maskedmimic.md) — 见 wiki 实体页
 - [Mimic2DM](../entities/paper-notebook-mimic2dm.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Mimic2DM__Generating_and_Mimicking_2D_Motions_for_3D_Character_Control/Mimic2DM__Generating_and_Mimicking_2D_Motions_for_3D_Character_Control.html)
 - [Multi-task Deep Reinforcement Learning with PopArt](../entities/paper-notebook-multi-task-deep-reinforcement-learning-with-popa.md) — 待深读
 - [PARC](../entities/paper-notebook-parc-physics-based-augmentation-with-reinforceme.md) — 待深读
 - [PhysHMR](../entities/paper-notebook-physhmr.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/PhysHMR__Learning_Humanoid_Control_Policies_from_Vision_for_Physical_HMR/PhysHMR__Learning_Humanoid_Control_Policies_from_Vision_for_Physical_HMR.html)
 - [Physics-Based Motion Tracking of Contact-Rich Interacting Characters](../entities/paper-notebook-physics-based-motion-tracking-of-contact-rich-in.md) — 待深读
 - [RL from Physical Feedback](../entities/paper-notebook-rl-from-physical-feedback-aligning-large-motion.md) — 待深读
-- [RobotDancing](../entities/paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md) — 待深读
+- [RobotDancing](../entities/paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/RobotDancing__Residual-Action_RL_Enables_Robust_Long-Horizon_Motion_Tracking/RobotDancing__Residual-Action_RL_Enables_Robust_Long-Horizon_Motion_Tracking.html)
 - [SimGenHOI](../entities/paper-notebook-simgenhoi-physically-realistic-whole-body-humano.md) — 待深读
 - [SkillMimic](../entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md) — 待深读
-- [Spatial relationship preserving character motion adaptation](../entities/paper-notebook-spatial-relationship-preserving-character-motion.md) — 待深读
+- [Spatial Relationship Preserving Character Motion Adaptation](../entities/paper-notebook-spatial-relationship-preserving-character-motion.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Spatial_Relationship_Preserving_Character_Motion_Adaptation/Spatial_Relationship_Preserving_Character_Motion_Adaptation.html)
 
 ## 与其他页面的关系
 

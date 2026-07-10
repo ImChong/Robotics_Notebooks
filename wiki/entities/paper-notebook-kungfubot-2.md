@@ -6,6 +6,8 @@ updated: 2026-07-09
 arxiv: "2509.16638"
 venue: "ICRA 2026"
 related:
+  - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
+  - ../overview/humanoid-paper-notebooks-index.md
   - ../tasks/loco-manipulation.md
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md

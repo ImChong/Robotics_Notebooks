@@ -1,9 +1,9 @@
 {
   "generated_at": "2026-07-10",
   "node_count": 1557,
-  "edge_count": 11391,
+  "edge_count": 11399,
   "coverage": {
-    "covered": 1520,
+    "covered": 1518,
     "total": 1548,
     "percent": 98
   },
@@ -49,6 +49,46 @@
       "recency": "2026-07-10",
       "source": "log.md",
       "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-egonav.md",
+      "detail_id": "entity-paper-notebook-egonav",
+      "label": "EgoNav",
+      "type": "entity",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-gait.md",
+      "detail_id": "entity-paper-notebook-gait",
+      "label": "GAIT",
+      "type": "entity",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
+    },
+    {
+      "path": "wiki/overview/humanoid-paper-notebooks-index.md",
+      "detail_id": "wiki-overview-humanoid-paper-notebooks-index",
+      "label": "Humanoid Paper Notebooks 知识库索引",
+      "type": "overview",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
+    },
+    {
+      "path": "wiki/methods/humanoid-transformer-touch-dreaming.md",
+      "detail_id": "wiki-methods-humanoid-transformer-touch-dreaming",
+      "label": "Humanoid Transformer with Touch Dreaming (HTD)",
+      "type": "method",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -172,47 +212,6 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/concepts/implicit-explicit-actuator-modeling.md",
-      "detail_id": "wiki-concepts-implicit-explicit-actuator-modeling",
-      "label": "Implicit / Explicit 执行器建模",
-      "type": "concept",
-      "recency": "2026-07-09",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/hightorque-robotics.md",
-      "detail_id": "entity-hightorque-robotics",
-      "label": "高擎机电（HighTorque Robotics）",
-      "type": "entity",
-      "recency": "2026-07-09",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-humanoid-surgeon-in-vivo-laparoscopy.md",
-      "detail_id": "entity-paper-humanoid-surgeon-in-vivo-laparoscopy",
-      "label": "Humanoid Surgeon（In Vivo Laparoscopic Feasibility）",
-      "type": "entity",
-      "recency": "2026-07-09",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-discrete-terrain-minimal-proximity-sensing.md",
-      "detail_id": "entity-paper-discrete-terrain-minimal-proximity-sensing",
-      "label": "Learning Locomotion on Discrete Terrain via Minimal Proximity Sensing",
-      "type": "entity",
-      "recency": "2026-07-08",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -232,24 +231,24 @@
       "size": 404
     },
     {
-      "label": "人形论文深读笔记",
+      "label": "视觉-语言-动作",
       "size": 186
     },
     {
-      "label": "视觉-语言-动作",
-      "size": 186
+      "label": "人形论文深读笔记",
+      "size": 185
     },
     {
       "label": "移动操作",
       "size": 92
     },
     {
-      "label": "运动控制",
-      "size": 68
+      "label": "人形强化学习运动控制",
+      "size": 69
     },
     {
-      "label": "人形强化学习运动控制",
-      "size": 67
+      "label": "运动控制",
+      "size": 69
     }
   ],
   "top_hubs": [
@@ -257,7 +256,7 @@
       "detail_id": "wiki-overview-humanoid-paper-notebooks-index",
       "label": "Humanoid Paper Notebooks 知识库索引",
       "type": "overview",
-      "degree": 398,
+      "degree": 400,
       "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
     },
     {
@@ -295,7 +294,7 @@
       "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",
       "label": "Paper Notebooks · Loco-Manipulation and WBC",
       "type": "overview",
-      "degree": 218,
+      "degree": 222,
       "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
     },
     {
