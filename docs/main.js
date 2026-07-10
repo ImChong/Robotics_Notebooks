@@ -36,12 +36,14 @@
   function updateActive() {
     const scrollPos = window.scrollY + 100;
     let currentId = sections.length ? '#' + sections[0].id : '';
-    sections.forEach(function (section) {
-      if (section.offsetTop <= scrollPos) currentId = '#' + section.id;
-    });
-    links.forEach(function (link) {
-      link.classList.toggle('active', link.getAttribute('href') === currentId);
-    });
+    // ⚡ Bolt Optimization: Replace .forEach with standard for loop
+    // Expected impact: Eliminates closure allocation during hot scroll events.
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].offsetTop <= scrollPos) currentId = '#' + sections[i].id;
+    }
+    for (var j = 0; j < links.length; j++) {
+      links[j].classList.toggle('active', links[j].getAttribute('href') === currentId);
+    }
   }
 
   if (sections.length) {
@@ -2805,14 +2807,16 @@
 
     function updateActiveTocLink() {
       let activeId = headings[0].id;
-      headings.forEach(function (heading) {
-        if (heading.getBoundingClientRect().top <= 140) activeId = heading.id;
-      });
+      // ⚡ Bolt Optimization: Replace .forEach with standard for loop
+      // Expected impact: Eliminates closure allocation during hot scroll events.
+      for (var i = 0; i < headings.length; i++) {
+        if (headings[i].getBoundingClientRect().top <= 140) activeId = headings[i].id;
+      }
       const activeHref = '#' + activeId;
-      navItems.forEach(function (item) {
-        const itemHref = item.getAttribute('href') || item.getAttribute('data-href') || '';
-        item.classList.toggle('active', itemHref === activeHref);
-      });
+      for (var j = 0; j < navItems.length; j++) {
+        const itemHref = navItems[j].getAttribute('href') || navItems[j].getAttribute('data-href') || '';
+        navItems[j].classList.toggle('active', itemHref === activeHref);
+      }
       if (activeHref !== lastActiveHref) {
         lastActiveHref = activeHref;
         scrollTocActiveIntoView();
@@ -3388,9 +3392,12 @@
           labelByKey[cid] = cid === '__unbinned__' ? '未分类' : shortenCommunityLabel(communityLabel[cid] || cid);
         }
       }
-      var entries = Object.keys(counts).map(function (key) {
-        return { key: key, label: labelByKey[key], count: counts[key] };
-      });
+      var countsKeys = Object.keys(counts);
+      var entries = [];
+      for (var ci = 0; ci < countsKeys.length; ci++) {
+        var key = countsKeys[ci];
+        entries.push({ key: key, label: labelByKey[key], count: counts[key] });
+      }
       entries.sort(function (a, b) {
         if (a.key === '__unbinned__' && b.key !== '__unbinned__') return 1;
         if (b.key === '__unbinned__' && a.key !== '__unbinned__') return -1;
@@ -3398,10 +3405,15 @@
         return a.label.localeCompare(b.label);
       });
       var maxCount = entries.reduce(function (m, e) { return e.count > m ? e.count : m; }, 0) || 1;
-      barsEl.innerHTML = entries.map(function (entry) {
+
+      // ⚡ Bolt Optimization: Replace .map().join('') with string concatenation in for loop
+      // Expected impact: Eliminates closure creation and array allocation during layout generation.
+      var barsHtml = '';
+      for (var ei = 0; ei < entries.length; ei++) {
+        var entry = entries[ei];
         var pct = Math.max(6, Math.round((entry.count / maxCount) * 100));
         var safeLabel = escapeHtml(entry.label);
-        return [
+        barsHtml += [
           '<div class="related-community-bar-row" title="' + safeLabel + '">',
           '  <span class="related-community-bar-label">' + safeLabel + '</span>',
           '  <span class="related-community-bar-track" aria-hidden="true">',
@@ -3410,7 +3422,9 @@
           '  <span class="related-community-bar-count">' + entry.count + '</span>',
           '</div>'
         ].join('');
-      }).join('');
+      }
+      barsEl.innerHTML = barsHtml;
+
       if (metaEl) {
         metaEl.textContent = '共 ' + validIds.length + ' 项 · ' + entries.length + ' 个社区';
       }
@@ -3969,12 +3983,18 @@
       if (!node) { renderDetailMetaItemRow(topicRowId, '所属专题', ''); return; }
       var topics = TF.topicsForNode({ id: node.id, community: node.community });
       if (!topics.length) { renderDetailMetaItemRow(topicRowId, '所属专题', ''); return; }
-      var html = topics.map(function (key) {
+
+      // ⚡ Bolt Optimization: Replace .map().join('') with string concatenation in for loop
+      // Expected impact: Eliminates closure creation and array allocation during layout generation.
+      var html = '';
+      for (var i = 0; i < topics.length; i++) {
+        var key = topics[i];
         var meta = TF.TOPIC_META[key] || { emoji: '🏷️', label: key };
-        return '<a class="detail-meta-badge" href="graph.html?topic=' + encodeURIComponent(key) +
+        html += '<a class="detail-meta-badge" href="graph.html?topic=' + encodeURIComponent(key) +
           '" title="在知识图谱中查看「' + escapeHtml(meta.label) + '」专题视图">' +
           '<span>' + meta.emoji + '</span><span>' + escapeHtml(meta.label) + '</span></a>';
-      }).join('');
+      }
+
       renderDetailMetaItemRow(topicRowId, '所属专题', html);
     }).catch(function () { renderDetailMetaItemRow(topicRowId, '所属专题', ''); });
   }
@@ -4024,13 +4044,22 @@
       var ids = (node && node.institutions) || [];
       if (!ids.length) { renderDetailMetaItemRow(instRowId, '所属机构', ''); return; }
       var labelById = {};
-      (gd.institutions || []).forEach(function (it) { labelById[it.id] = it.label; });
-      var html = ids.map(function (id) {
+      var insts = gd.institutions || [];
+      for (var ii = 0; ii < insts.length; ii++) {
+        labelById[insts[ii].id] = insts[ii].label;
+      }
+
+      // ⚡ Bolt Optimization: Replace .map().join('') with string concatenation in for loop
+      // Expected impact: Eliminates closure creation and array allocation during layout generation.
+      var html = '';
+      for (var j = 0; j < ids.length; j++) {
+        var id = ids[j];
         var label = labelById[id] || id;
-        return '<a class="detail-meta-badge" href="graph.html?institution=' + encodeURIComponent(id) +
+        html += '<a class="detail-meta-badge" href="graph.html?institution=' + encodeURIComponent(id) +
           '" title="在知识图谱中查看「' + escapeHtml(label) + '」机构视图">' +
           '<span>🏛️</span><span>' + escapeHtml(label) + '</span></a>';
-      }).join('');
+      }
+
       renderDetailMetaItemRow(instRowId, '所属机构', html);
     }).catch(function () { renderDetailMetaItemRow(instRowId, '所属机构', ''); });
   }
@@ -4942,22 +4971,32 @@
     }
 
     // 渲染 layer chips 到浮窗
-    chipList.innerHTML = layers.map(function (layer) {
-      const count = layer === 'all'
-        ? Object.keys(layerCounts).reduce(function (sum, key) { return sum + layerCounts[key]; }, 0)
-        : layerCounts[layer];
-      const activeClass = layer === activeLayer ? ' data-chip-active' : '';
-      return '<button type="button" class="data-chip data-chip-button' + activeClass + '" data-layer="' + escapeHtml(layer) + '">' + escapeHtml(layer) + ' · ' + escapeHtml(count) + '</button>';
-    }).join('');
+    // ⚡ Bolt Optimization: Replace .map().join('') with string concatenation in for loop
+    // Expected impact: Eliminates closure creation and array allocation during layout generation.
+    var totalCount = 0;
+    var layerCountsKeys = Object.keys(layerCounts);
+    for (var k = 0; k < layerCountsKeys.length; k++) {
+      totalCount += layerCounts[layerCountsKeys[k]];
+    }
 
-    Array.from(chipList.querySelectorAll('[data-layer]')).forEach(function (button) {
-      button.addEventListener('click', function () {
-        onSelect(button.getAttribute('data-layer'));
+    var chipsHtml = '';
+    for (var i = 0; i < layers.length; i++) {
+      var layer = layers[i];
+      var count = layer === 'all' ? totalCount : layerCounts[layer];
+      var activeClass = layer === activeLayer ? ' data-chip-active' : '';
+      chipsHtml += '<button type="button" class="data-chip data-chip-button' + activeClass + '" data-layer="' + escapeHtml(layer) + '">' + escapeHtml(layer) + ' · ' + escapeHtml(count) + '</button>';
+    }
+    chipList.innerHTML = chipsHtml;
+
+    var buttons = chipList.querySelectorAll('[data-layer]');
+    for (var j = 0; j < buttons.length; j++) {
+      buttons[j].addEventListener('click', function () {
+        onSelect(this.getAttribute('data-layer'));
         // 选完后关闭浮窗
         var panel = document.getElementById('filter-panel');
         if (panel) panel.hidden = true;
       });
-    });
+    }
   }
 
   function renderTechMapPage(siteData) {
@@ -5363,13 +5402,15 @@
   }
 
   function handlePageDataError(error, ids) {
-    ids
-      .map(function (id) { return document.getElementById(id); })
-      .filter(Boolean)
-      .forEach(function (element) {
+    // ⚡ Bolt Optimization: Replace chained array operations (.map, .filter, .forEach) with a standard for loop
+    // Expected impact: Eliminates closure creation and intermediate array allocations during error handling.
+    for (var i = 0; i < ids.length; i++) {
+      var element = document.getElementById(ids[i]);
+      if (element) {
         element.innerHTML = '<p class="data-meta">读取 <code>exports/site-data-v1.json</code> 失败：' + escapeHtml(error.message) + '</p>';
         removeLoadingState(element);
-      });
+      }
+    }
   }
 
   const previewRoot = document.getElementById('previewSummary');

@@ -428,7 +428,7 @@ console.log('ok');
             "navigator.clipboard.writeText",
             "function bindDetailTocSpy(container, tocContainer)",
             "tocContainer.querySelectorAll('a[href^=\"#\"], .toc-entry[data-href]')",
-            "item.classList.toggle('active',",
+            "navItems[j].classList.toggle('active',",
             "enhanceDetailHeadings(contentEl);",
             "bindDetailTocSpy(contentEl, tocEl);",
         ]
