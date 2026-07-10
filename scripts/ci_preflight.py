@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Run the local preflight sequence used to avoid GitHub Actions drift.
 
-The repository has several derived outputs: page catalog, JSON exports, search
+The repository has several derived outputs: catalog.md, JSON exports, search
 index, graph exports, home stats, README badges, and docs hero stats. Running
 only part of the chain is the common cause of Actions failures, so this script
 keeps the order in one place.
@@ -21,7 +21,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 # 仅含仍入库的派生文件；大体积站点 JSON 与 sitemap 已 gitignore，
 # 由 pages.yml 部署时生成（docs/exports、exports 目录内被 ignore 的文件不会出现在 git diff）
 GENERATED_PATHS = [
-    "index.md",
+    "catalog.md",
     "README.md",
     "docs/index.html",
     "docs/exports",
