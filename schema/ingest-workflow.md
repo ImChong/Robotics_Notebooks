@@ -101,9 +101,9 @@ python3 scripts/ingest_paper.py my_topic --title "..." --desc "..."
 > **为什么要在 wiki 页面内标注来源**：log.md 记录了操作时间线，但页面本身也应能追溯知识来源，
 > 这样读者不依赖 log.md 就能知道这个 wiki 页的知识是从哪里编译来的。
 
-### 步骤 6：更新 index.md Page Catalog
+### 步骤 6：更新 catalog.md Page Catalog
 
-每次新增 wiki 页面后，必须重新生成 Page Catalog 更新 index.md：
+每次新增 wiki 页面后，必须重新生成完整目录 `catalog.md`：
 
 ```bash
 make catalog  # 等价于 python3 scripts/generate_page_catalog.py
@@ -265,7 +265,7 @@ make log OP=ingest DESC="sources/papers/xxx.md — 简述覆盖的 wiki 页面"
 
 ---
 
-## Op 4：Index — 维护 index.md
+## Op 4：Catalog — 维护完整页面目录
 
 ### 触发条件
 
@@ -275,12 +275,12 @@ make log OP=ingest DESC="sources/papers/xxx.md — 简述覆盖的 wiki 页面"
 
 ### 维护原则
 
-`index.md` 是知识库的总入口，每次新增页面必须同步更新，不允许页面存在于 wiki 目录但不在 index.md 中。
+`index.md` 只保留核心导航与推荐阅读顺序；`catalog.md` 是自动生成的全量页面目录。每次新增页面必须重新生成目录，不允许知识页缺席于 `catalog.md`。
 
 更新内容：
-- 在对应的 `### Wiki Pages` / `### Formalizations` / `### Comparisons` 等区块下追加新页面
-- 格式：`[<页面名>](<路径>) — <一句话摘要>`
-- 一句话摘要从页面顶部的"**一句话定义**"字段提取
+- 运行 `make catalog`，由脚本扫描 `wiki/`、`roadmap/`、`tech-map/` 与 `references/`
+- 不要手工编辑 `catalog.md`
+- 只有核心入口、推荐顺序或主线变化时才手工更新 `index.md`
 
 ---
 
@@ -291,7 +291,7 @@ make log OP=ingest DESC="sources/papers/xxx.md — 简述覆盖的 wiki 页面"
 | `ingest` | 新资料进入知识库 |
 | `query` | 向知识库提问并将结果写回 |
 | `lint` | 定期健康检查 |
-| `index` | 维护 index.md 索引 |
+| `catalog` | 重新生成 `catalog.md` 完整页面目录 |
 | `structural` | 结构性变更（新增页面类型、路由调整等） |
 
 ---
