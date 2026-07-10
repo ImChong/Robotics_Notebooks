@@ -6,7 +6,7 @@
   var tooltip  = document.getElementById('mini-graph-tooltip');
   if (!miniWrap || !miniSvg) return;
 
-  var PREVIEW_TOP_N = 40;
+  var PREVIEW_TOP_N = 50;
   var isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
   var pinnedNode = null;
 
@@ -378,7 +378,7 @@
         .height(miniWrap.clientHeight || 480)
         .backgroundColor(theme.background)
         .showNavInfo(false)
-        // 40 节点几秒即稳定；默认 cooldownTime 15s 会让 engineStop 的取景来得太晚
+        // 50 节点几秒即稳定；默认 cooldownTime 15s 会让 engineStop 的取景来得太晚
         .cooldownTime(4000)
         .nodeColor(function (d) { return nodeFill(d); })
         .nodeVal(function (d) { return Math.max(1, d._degree); })
