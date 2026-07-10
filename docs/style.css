@@ -1007,9 +1007,17 @@ button.home-wiki-heatmap-cell.is-active {
 .route-list, .structure-list, .boundary-list { display: grid; gap: 14px; }
 .route-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .route-card { min-height: 100%; }
+.home-entry-grid {
+  align-items: stretch;
+  gap: 16px;
+}
+.home-entry-grid > .home-entry-card {
+  height: 100%;
+}
 .home-entry-card {
   display: flex;
   flex-direction: column;
+  gap: 10px;
   min-height: 176px;
   color: var(--text);
 }
@@ -1018,10 +1026,18 @@ button.home-wiki-heatmap-cell.is-active {
   text-decoration: none;
   opacity: 1;
 }
+.home-entry-card h3 {
+  margin: 0;
+  line-height: 1.35;
+}
 .home-entry-card p {
+  margin: 0;
+  flex: 1;
   color: var(--text-muted);
+  line-height: 1.5;
 }
 .home-entry-label {
+  align-self: flex-start;
   width: fit-content;
   padding: 4px 10px;
   border: 1px solid var(--border);
@@ -1030,27 +1046,39 @@ button.home-wiki-heatmap-cell.is-active {
   color: var(--text-muted);
   font-size: .78rem;
   font-weight: 650;
+  line-height: 1.3;
 }
 .home-entry-link {
   margin-top: auto;
-  padding-top: 16px;
+  padding-top: 2px;
   color: var(--accent);
   font-size: .86rem;
   font-weight: 650;
+  line-height: 1.3;
 }
 .home-entry-card-more {
   grid-column: 1 / -1;
   min-height: 0;
 }
 .home-entry-route-links {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
   gap: 10px;
   margin-top: auto;
-  padding-top: 16px;
+  padding-top: 2px;
 }
 .home-entry-route-links .btn-secondary {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  font-size: .86rem;
+  line-height: 1.25;
   border: 1px solid var(--border);
+  text-align: center;
+  white-space: nowrap;
+}
+#home-start .section-subtitle {
+  margin-bottom: 20px;
 }
 .simple-card {
   padding: 18px 20px;
@@ -2199,6 +2227,18 @@ button.home-wiki-heatmap-cell.is-active {
     padding: 30px 0;
   }
   .hero-grid, .card-grid, .preview-home-layout, .preview-split-grid, .detail-hero-top, .route-card-grid { grid-template-columns: 1fr; }
+  .home-entry-card {
+    min-height: 0;
+  }
+  .home-entry-route-links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  /* 奇数个路线按钮时，末行单独一项通栏居中，避免左列悬空 */
+  .home-entry-route-links .btn-secondary:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    justify-self: center;
+  }
   .hero-title { font-size: 2.15rem; }
   .hero-stat-row { gap: 10px; }
   .hero-stat-card { flex: 1 1 calc(50% - 10px); min-width: 0; }
