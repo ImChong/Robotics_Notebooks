@@ -19,6 +19,7 @@ related:
   - ../entities/paper-homeworld-whole-home-scene-generation.md
   - ../entities/paper-vesta-generalist-embodied-reasoning.md
   - ../entities/paper-realm-last-3-meter-vln-grounding.md
+  - ../entities/paper-3d-ic-joint-navigation-manipulation-planning.md
   - locomotion.md
 sources:
   - ../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md
@@ -26,6 +27,7 @@ sources:
   - ../../sources/repos/sceneverse-pp.md
   - ../../sources/papers/worldvln_arxiv_2605_15964.md
   - ../../sources/papers/realm_last_3_meter_vln_arxiv_2607_03792.md
+  - ../../sources/papers/3d_ic_icml_2026.md
 ---
 
 # 视觉–语言导航（Vision-and-Language Navigation, VLN）
@@ -51,6 +53,7 @@ sources:
 - **Agentic 导航基座**：[Qwen-RobotNav](../entities/qwen-robot-nav.md) 以 **可控观测协议 + 任务 mode** 统一 VLN / ObjNav / 跟踪 / NAVSIM 驾驶，并作为 **Qwen3.7-Plus** 等 planner 的导航原语；与 [Qwen-Robot Suite](../entities/qwen-robot-suite.md) 长时程 **EQA / 开放世界寻物** demo 一并阅读。
 - **通才 planner 统一导航 + 推理**：[Vesta](../entities/paper-vesta-generalist-embodied-reasoning.md) 在同一 **Qwen3-VL-8B** checkpoint 上同时 SFT **VLN-CE（R2R/RxR/ScaleVLN）** 与具身 cognition/localization；R2R-CE **SR 55.5%** 与 InternVLA-N1 specialist 持平，而 **Nav-only finetune 的 generalist 竞品在 R2R 上 SR=0**（灾难性遗忘）——说明 VLN 是否应并入 **更大 planner mix** 时需评估 **域外遗忘** 而不仅是导航榜分数。
 - **REVERIE 末段接地鸿沟**：[REALM](../entities/paper-realm-last-3-meter-vln-grounding.md)（arXiv:2607.03792）指出 REVERIE-CE 等任务虽要求框出目标实例，但主流 **3 m SR** 不评 **最终朝向与可见性**——ETPNav-FT SR=34.67% 时 **ONS@0.1m 仅 6.32%**；作者提出 **plug-and-play 末段精修** 与 **REVERIE-AIM** 实例中心评测集。
+- **OVMM 导航–操作联合规划**：[3D-IC](../entities/paper-3d-ic-joint-navigation-manipulation-planning.md)（ICML 2026）在 **共享 3D 特征图** 上为开放词汇移动操作生成 **多阶段交互路点链**，用 **VLM 路点可行性 + 转移代价** 选链，避免「导航到了但操作姿态差」的分阶段错配；真机 **Stretch 3** 验证。
 
 ## 核心要素
 

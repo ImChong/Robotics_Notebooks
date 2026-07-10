@@ -656,6 +656,13 @@
         "ucas"
       ]
     },
+    "ict": {
+      "label": "中国科学院计算技术研究所（ICT）",
+      "aliases": [
+        "ict",
+        "ict-cas"
+      ]
+    },
     "sea-ai-lab": {
       "label": "东南亚人工智能实验室（Sea AI Lab）",
       "aliases": [

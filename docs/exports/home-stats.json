@@ -1,13 +1,56 @@
 {
   "generated_at": "2026-07-10",
-  "node_count": 1556,
-  "edge_count": 11380,
+  "node_count": 1557,
+  "edge_count": 11391,
   "coverage": {
-    "covered": 1519,
-    "total": 1547,
+    "covered": 1520,
+    "total": 1548,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md",
+      "detail_id": "entity-paper-3d-ic-joint-navigation-manipulation-planning",
+      "label": "3D-IC（3D Interaction Chains · Joint Navigation and Manipulation Planning）",
+      "type": "entity",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/loco-manipulation.md",
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    },
+    {
+      "path": "wiki/tasks/vision-language-navigation.md",
+      "detail_id": "wiki-tasks-vision-language-navigation",
+      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
+      "type": "task",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/tasks/stair-obstacle-perceptive-locomotion.md",
       "detail_id": "wiki-tasks-stair-obstacle-perceptive-locomotion",
@@ -26,17 +69,6 @@
       "recency": "2026-07-10",
       "source": "log.md",
       "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/tasks/vision-language-navigation.md",
-      "detail_id": "wiki-tasks-vision-language-navigation",
-      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
-      "type": "task",
-      "recency": "2026-07-10",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -181,47 +213,18 @@
       "source": "log.md",
       "action": "added",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/unitree-unistore.md",
-      "detail_id": "entity-unitree-unistore",
-      "label": "UniStore（宇树应用平台）",
-      "type": "entity",
-      "recency": "2026-07-08",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/stackforce.md",
-      "detail_id": "entity-stackforce",
-      "label": "StackForce",
-      "type": "entity",
-      "recency": "2026-07-08",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md",
-      "detail_id": "entity-paper-navwam-goal-conditioned-visual-navigation-wam",
-      "label": "NavWAM（目标条件视觉导航 · Navigation World Action Model）",
-      "type": "entity",
-      "recency": "2026-07-08",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "生成式世界模型（Generative World Models） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/tasks/stair-obstacle-perceptive-locomotion.md",
-    "detail_id": "wiki-tasks-stair-obstacle-perceptive-locomotion",
-    "label": "楼梯与障碍 Locomotion（感知 / 盲走中心节点）",
-    "type": "task",
+    "path": "wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md",
+    "detail_id": "entity-paper-3d-ic-joint-navigation-manipulation-planning",
+    "label": "3D-IC（3D Interaction Chains · Joint Navigation and Manipulation Planning）",
+    "type": "entity",
     "recency": "2026-07-10",
     "source": "log.md",
-    "action": "maintained",
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
@@ -234,7 +237,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 185
+      "size": 186
     },
     {
       "label": "移动操作",
@@ -269,7 +272,7 @@
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
-      "degree": 260,
+      "degree": 263,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
@@ -284,7 +287,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 223,
+      "degree": 224,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -307,7 +310,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 199,
+      "degree": 201,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {

@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-10] ingest | sources/papers/3d_ic_icml_2026.md — 3D-IC OVMM 联合导航操作规划；wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md、wiki/tasks/loco-manipulation.md、wiki/tasks/vision-language-navigation.md、wiki/tasks/manipulation.md
+
 ## [2026-07-10] structural | README.md / index.md / roadmap/README.md / roadmap/motion-control.md — 纵深路线列表统一按方向起点里程碑历史排序（与首页按钮一致），README 与 roadmap 总览向读者说明排序方法（ZMP 1972 → CLF 1983 → 阻抗控制 1985 → 行为克隆 1988 → Q-learning 1989 → 感知越障 2020s）
 
 ## [2026-07-10] structural | docs/index.html — 主页「更多路线」六按钮改按方向起点里程碑历史排序（传统控制 ZMP 1972 → 安全控制 CLF 1983 → 接触操作 阻抗控制 1985 → 模仿学习 行为克隆 1988 → 强化学习 Q-learning 1989 → 感知越障 2020s）；同步 frontend-optimization-v1 checklist
