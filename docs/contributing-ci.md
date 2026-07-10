@@ -17,7 +17,7 @@ make ci-test
 
 ## 派生文件与 `exports/`、`docs/` 下的副本
 
-- 维护脚本写入的导出与统计，以仓库根目录为主（例如 **`exports/`** 下的 JSON、以及 **`index.md`**、**`README.md`** 中带自动更新标记的区块等）。[`scripts/ci_preflight.py`](../scripts/ci_preflight.py) 文件内的 **`GENERATED_PATHS`** 列表，是「跑完 `make ci-preflight` 后若仍有 diff，就应提交」的权威清单。
+- 维护脚本写入的导出与统计，以仓库根目录为主（例如 **`exports/`** 下的 JSON、自动生成的 **`catalog.md`**、以及 **`README.md`** 中带自动更新标记的区块等）。[`scripts/ci_preflight.py`](../scripts/ci_preflight.py) 文件内的 **`GENERATED_PATHS`** 列表，是「跑完 `make ci-preflight` 后若仍有 diff，就应提交」的权威清单。
 - **GitHub Pages** 以 [`docs/`](../docs/) 为站点根，因此同一条生成链会把搜索索引、sitemap、部分导出等写到 **`docs/search-index.json`**、**`docs/sitemap.xml`**、**`docs/exports/`** 等路径；它们是供站点读取的派生物，与根目录 `exports/` 等对应，不是第二套手写正文。
 - **实务**：只跑 `make graph` 或 `make export` 之一容易漏掉链上其它步骤；修改 `wiki/` 或导出相关脚本后，请优先 **`make ci-preflight`**，并对照 `GENERATED_PATHS` 把仍有变更的文件全部 stage，避免 Actions 因索引或统计不同步失败。
 

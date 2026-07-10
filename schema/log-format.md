@@ -30,7 +30,8 @@
 | `ingest` | 新资料进入知识库 | 新增 sources/papers/*.md、更新 wiki 页参考来源 |
 | `query` | 查询并将结论写回 wiki | 新建 wiki/queries/*.md |
 | `lint` | 健康检查运行记录 | make lint 结果，0 issues 或问题列表 |
-| `index` | 索引更新操作 | make catalog / make export 运行 |
+| `catalog` | 完整页面目录重新生成 | `make catalog` 更新 `catalog.md` |
+| `index` | （遗留别名）同 `catalog` | 旧日志兼容，新记录请用 `catalog` |
 | `structural` | 结构性变更 | 新增页面类型、重构目录、添加工具脚本、升级路由 |
 
 ---

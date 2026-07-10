@@ -5,7 +5,7 @@ append_log.py — 向 log.md 顶部插入一条操作记录（新记录在上，
 用法:
     python3 scripts/append_log.py <op> "<描述>"
 
-    <op>: ingest | query | lint | index | structural
+    <op>: ingest | query | lint | catalog | index | structural
 
 示例:
     python3 scripts/append_log.py ingest "sources/papers/mpc.md — Mayne 2000 等 5 篇"
@@ -18,7 +18,7 @@ from datetime import date
 
 from log_md import DEFAULT_LOG_PATH, write_log_prepend
 
-VALID_OPS = {"ingest", "query", "lint", "index", "structural"}
+VALID_OPS = {"ingest", "query", "lint", "catalog", "index", "structural"}
 
 
 def main() -> None:

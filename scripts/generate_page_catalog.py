@@ -1,10 +1,7 @@
 #!/usr/bin/env python3
-"""
-generate_page_catalog.py
-从 wiki/、roadmap/、tech-map/ 目录自动收集所有 .md 文件，
-生成符合 index.md Page Catalog 格式的 markdown，输出到 stdout。
-用法：python generate_page_catalog.py >> ../index.md
-"""
+"""生成 Robotics Notebooks 的完整页面目录 catalog.md。"""
+
+from __future__ import annotations
 
 import re
 from pathlib import Path
@@ -14,26 +11,24 @@ ROOT = Path(__file__).parent.parent
 WIKI = ROOT / "wiki"
 ROADMAP = ROOT / "roadmap"
 TECHMAP = ROOT / "tech-map"
+CATALOG = ROOT / "catalog.md"
 
-SECTION_TEMPLATE = """### {section_name}（{count}页）
+CATALOG_HEADER = """# Robotics Notebooks Page Catalog
 
-"""
-
-PAGE_TEMPLATE = """- [{title}]({path}) — {summary} `📅{date}` `{page_type}`
+> 本文件由 `python3 scripts/generate_page_catalog.py` 自动生成，请勿手工编辑。
+> 返回 [核心导航](index.md)。
 """
 
 
 def extract_frontmatter_date(path: Path) -> str:
     try:
         content = path.read_text(encoding="utf-8")
-        # 优先找 frontmatter date:
-        m = re.search(r"^date:\s*(\d{4}-\d{2}-\d{2})", content, re.MULTILINE)
-        if m:
-            return m.group(1)
-        # 其次找 📅 格式
-        m = re.search(r"📅(\d{4}-\d{2}-\d{2})", content)
-        if m:
-            return m.group(1)
+        match = re.search(r"^date:\s*(\d{4}-\d{2}-\d{2})", content, re.MULTILINE)
+        if match:
+            return match.group(1)
+        match = re.search(r"📅(\d{4}-\d{2}-\d{2})", content)
+        if match:
+            return match.group(1)
     except Exception:
         pass
     return "unknown"
@@ -50,96 +45,99 @@ def strip_frontmatter(content: str) -> str:
 
 
 def extract_first_sentence(content: str) -> str:
-    """取第一段非空、非标题的正文句子作为 summary。"""
-    content = strip_frontmatter(content)
-    lines = content.splitlines()
-    for line in lines:
-        line = line.strip()
+    """取第一段正文作为纯文本摘要，避免目录中的相对链接失效。"""
+    for raw_line in strip_frontmatter(content).splitlines():
+        line = raw_line.strip()
         if not line or line.startswith("#") or line.startswith(">") or line == "---":
             continue
-        # 截断到 100 字符
-        s = line[:100].strip("[]()#*`|")
-        if s:
-            return s
+        summary = line[:100].strip("[]()#*`|")
+        summary = re.sub(r"\[([^]]+)]\([^)]+\)", r"\1", summary)
+        if summary:
+            return summary
     return "—"
 
 
-def get_type(path: Path, relative: Path) -> tuple:
+def get_type(relative: Path) -> str:
     rel_str = str(relative)
     if "entities/" in rel_str:
-        return "[entity_page]", "entity"
+        return "[entity_page]"
     if "references/" in rel_str:
-        return "[reference_page]", "reference"
+        return "[reference_page]"
     if "roadmap/" in rel_str or "learning-paths/" in rel_str:
-        return "[roadmap_page]", "roadmap"
-    if "tech-map/" in rel_str and rel_str != "tech-map/":
-        return "[tech_map_node]", "tech-map"
+        return "[roadmap_page]"
+    if "tech-map/" in rel_str:
+        return "[tech_map_node]"
     if "concepts/" in rel_str:
-        return "[wiki_page]", "concept"
+        return "[wiki_page]"
     if "methods/" in rel_str:
-        return "[method_page]", "method"
+        return "[method_page]"
     if "tasks/" in rel_str:
-        return "[task_page]", "task"
+        return "[task_page]"
     if "formalizations/" in rel_str:
-        return "[formalization_page]", "formalization"
+        return "[formalization_page]"
     if "comparisons/" in rel_str:
-        return "[comparison_page]", "comparison"
+        return "[comparison_page]"
     if "overview/" in rel_str:
-        return "[overview_page]", "overview"
-    return "[wiki_page]", "unknown"
+        return "[overview_page]"
+    return "[wiki_page]"
 
 
-def collect_pages(dir_path: Path, base_path: Path) -> list[dict[str, Any]]:
+def collect_pages(dir_path: Path) -> list[dict[str, Any]]:
     pages: list[dict[str, Any]] = []
     if not dir_path.exists():
         return pages
     for md in sorted(dir_path.rglob("*.md")):
-        rel = md.relative_to(base_path)
+        relative = md.relative_to(ROOT)
         content = md.read_text(encoding="utf-8", errors="ignore")
-
-        title_m = re.search(r"^#\s+(.+)$", content, re.MULTILINE)
-        title = title_m.group(1).strip() if title_m else rel.stem
-
-        summary = extract_first_sentence(content)
-        date = extract_frontmatter_date(md)
-        page_type, _ = get_type(md, rel)
-
+        title_match = re.search(r"^#\s+(.+)$", content, re.MULTILINE)
         pages.append(
             {
-                "title": title,
-                "path": str(rel).replace("\\", "/"),
-                "summary": summary,
-                "date": date,
-                "page_type": page_type,
+                "title": title_match.group(1).strip() if title_match else relative.stem,
+                "path": str(relative).replace("\\", "/"),
+                "summary": extract_first_sentence(content),
+                "date": extract_frontmatter_date(md),
+                "page_type": get_type(relative),
             }
         )
     return pages
 
 
-def main():
+def render_catalog() -> str:
     sections = [
-        ("Entities（实体页）", WIKI / "entities", WIKI),
-        ("Wiki Concepts（概念页）", WIKI / "concepts", WIKI),
-        ("Wiki Methods（方法页）", WIKI / "methods", WIKI),
-        ("Wiki Tasks（任务页）", WIKI / "tasks", WIKI),
-        ("Wiki Formalizations（形式化基础）", WIKI / "formalizations", WIKI),
-        ("Wiki Comparisons（对比页）", WIKI / "comparisons", WIKI),
-        ("Wiki Overview（总览）", WIKI / "overview", WIKI),
-        ("Roadmaps（路线页）", ROADMAP, ROADMAP),
-        ("Tech-map Nodes（技术栈节点）", TECHMAP, TECHMAP),
-        ("References（参考资料页）", ROOT / "references", ROOT),
+        ("Entities（实体页）", WIKI / "entities"),
+        ("Wiki Concepts（概念页）", WIKI / "concepts"),
+        ("Wiki Methods（方法页）", WIKI / "methods"),
+        ("Wiki Tasks（任务页）", WIKI / "tasks"),
+        ("Wiki Formalizations（形式化基础）", WIKI / "formalizations"),
+        ("Wiki Comparisons（对比页）", WIKI / "comparisons"),
+        ("Wiki Overview（总览）", WIKI / "overview"),
+        ("Roadmaps（路线页）", ROADMAP),
+        ("Tech-map Nodes（技术栈节点）", TECHMAP),
+        ("References（参考资料页）", ROOT / "references"),
     ]
-
-    for sec_name, dir_path, base_path in sections:
-        pages = collect_pages(dir_path, base_path)
+    chunks = [CATALOG_HEADER.rstrip()]
+    for section_name, dir_path in sections:
+        pages = collect_pages(dir_path)
         if not pages:
             continue
-        print(f"\n### {sec_name}")
-        print()
-        for p in pages:
-            print(
-                f"- [{p['title']}]({p['path']}) — {p['summary']} `📅{p['date']}` `{p['page_type']}`"
-            )
+        chunks.extend(["", f"### {section_name}", ""])
+        chunks.extend(
+            f"- [{page['title']}]({page['path']}) — {page['summary']} "
+            f"`📅{page['date']}` `{page['page_type']}`"
+            for page in pages
+        )
+    return "\n".join(chunks).rstrip() + "\n"
+
+
+def write_catalog(path: Path | None = None) -> Path:
+    target = path or CATALOG
+    target.write_text(render_catalog(), encoding="utf-8")
+    return target
+
+
+def main() -> None:
+    target = write_catalog()
+    print(f"✓ 已生成 {target.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":

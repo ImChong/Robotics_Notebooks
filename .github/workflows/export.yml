@@ -51,7 +51,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           # 大体积站点 JSON 与 sitemap 已改为 pages.yml 部署时生成（见 .gitignore），
           # 此处仅提交仍入库的小型派生文件（统计、徽章、目录等）
-          git add exports/ docs/exports/ index.md README.md
+          git add exports/ docs/exports/ catalog.md README.md docs/index.html
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
