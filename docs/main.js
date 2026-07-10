@@ -5510,6 +5510,20 @@
       });
   }
 
+  // ── 首页「更多路线」折叠：默认只展示里程碑最新的 4 条纵深路线 ──────────────
+  var routeToggle = document.getElementById('homeRouteToggle');
+  if (routeToggle) {
+    routeToggle.addEventListener('click', function () {
+      var expanded = routeToggle.getAttribute('aria-expanded') === 'true';
+      var extras = document.querySelectorAll('#homeRouteLinks [data-route-extra]');
+      for (var rti = 0; rti < extras.length; rti++) {
+        extras[rti].hidden = expanded;
+      }
+      routeToggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      routeToggle.textContent = expanded ? '展开全部 12 条纵深路线 ↓' : '收起纵深路线 ↑';
+    });
+  }
+
   // ── Wiki 全文搜索（index.html 搜索框） ────────────────────────────────────
   var searchInput = document.getElementById('wikiSearchInput');
   var searchResults = document.getElementById('wikiSearchResults');

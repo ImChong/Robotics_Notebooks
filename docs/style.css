@@ -1078,6 +1078,17 @@ button.home-wiki-heatmap-cell.is-active {
   text-align: center;
   white-space: nowrap;
 }
+/* 折叠态的路线按钮必须真正隐藏（btn-secondary 的 display 会覆盖 UA 的 [hidden] 样式） */
+.home-entry-route-links a[hidden] { display: none; }
+/* 展开/收起按钮：复用 home-entry-link 的文字样式，去掉 button 默认外观 */
+.home-route-toggle {
+  background: none;
+  border: none;
+  padding: 2px 0 0;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+}
 #home-start .section-subtitle {
   margin-bottom: 20px;
 }

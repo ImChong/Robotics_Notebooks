@@ -72,21 +72,24 @@
                  传统控制（ZMP 1972）→ 安全控制（CLF 1983）→ 接触操作（阻抗控制 1985）
                  → 导航（概率 SLAM 1986）→ 模仿学习（行为克隆 1988）→ 强化学习（Q-learning 1989）
                  → 移动操作（移动操作臂协调 1994）→ 动作重定向（Gleicher 1998）→ BFM（DeepMimic 2018）
-                 → 感知越障（2020s）→ 动作生成（MDM 2022）→ VLA（RT-2 确立 VLA，2023） -->
-            <div class="home-entry-route-links">
-              <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-classical-control">传统控制</a>
-              <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-safe-control">安全控制</a>
-              <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-contact-manipulation">接触操作</a>
-              <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-navigation">导航</a>
-              <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-imitation-learning">模仿学习</a>
-              <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-rl-locomotion">强化学习</a>
-              <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-mobile-manipulation">移动操作</a>
-              <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-motion-retargeting">动作重定向</a>
+                 → 感知越障（2020s）→ 动作生成（MDM 2022）→ VLA（RT-2 确立 VLA，2023）
+                 默认折叠：只展示里程碑最新的 4 条，其余 8 条标记 data-route-extra + hidden，
+                 由 main.js 的展开按钮（#homeRouteToggle）控制显隐 -->
+            <div class="home-entry-route-links" id="homeRouteLinks">
+              <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-classical-control" data-route-extra hidden>传统控制</a>
+              <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-safe-control" data-route-extra hidden>安全控制</a>
+              <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-contact-manipulation" data-route-extra hidden>接触操作</a>
+              <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-navigation" data-route-extra hidden>导航</a>
+              <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-imitation-learning" data-route-extra hidden>模仿学习</a>
+              <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-rl-locomotion" data-route-extra hidden>强化学习</a>
+              <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-mobile-manipulation" data-route-extra hidden>移动操作</a>
+              <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-motion-retargeting" data-route-extra hidden>动作重定向</a>
               <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-bfm">BFM</a>
               <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-perceptive-locomotion">感知越障</a>
               <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-motion-generation">动作生成</a>
               <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-vla">VLA</a>
             </div>
+            <button type="button" id="homeRouteToggle" class="home-entry-link home-route-toggle" aria-expanded="false" aria-controls="homeRouteLinks">展开全部 12 条纵深路线 ↓</button>
           </div>
         </div>
       </div>
