@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-10] ingest | sources/repos/freecad-mcp.md — 接入 FreeCAD MCP 桥接栈；新增 wiki/entities/freecad-mcp.md，交叉更新 freecad 与 text-to-cad
+
 ## [2026-07-09] structural | 清单 v28 P1 具身大模型家族层专题交叉补强 — vla / vision-language-navigation / world-action-models / generative-world-models 四页与 `queries/embodied-fm-taxonomy-loop.md` 双向回链并标注所在层（③执行 / ②导航 / ⑤推演联合建模 / ⑤推演级联预演），消孤儿；lint 0 errors、embodied_fm_crosslink 0
 
 ## [2026-07-09] ingest | sources/papers/face_anything_arxiv_2604_19702.md — Face Anything 4D 人脸重建与跟踪；wiki/entities/paper-face-anything-4d-face-reconstruction.md；交叉更新 gvhmr / humanoid-training-data-pipeline / visual-representation-for-policy
