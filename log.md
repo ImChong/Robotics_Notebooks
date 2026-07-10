@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-10] structural | roadmap/depth-vla.md + depth-bfm.md + depth-mobile-manipulation.md + depth-navigation.md — 纵深路线扩容至十条：将原「VLA 与 BFM」合并路线拆分为 VLA 纵深（分类学 → IL 策略基座 → RT→π0 主线 → 数据与 Scaling → 部署整合，起点 RT-2 2023）与 BFM 纵深（训练基座 → DeepMimic→HOVER 跟踪谱系 → 预训练三线 → 适应与双栈整合，起点 DeepMimic 2018）两条姊妹路线，另新增移动操作纵深（全身耦合 → 上下身解耦基座 → 数据入口 → 技能学习 → 统一模型，起点移动操作臂协调 1994）与导航纵深（SLAM/状态估计 → Nav2 → 学习型导航 → VLN → 导航 VLA，起点概率 SLAM 1986）；主页「更多路线」按钮扩为十个并按历史序重排，README/index/主路线与全部纵深页互链；链接 wiki/methods/vla.md、wiki/concepts/behavior-foundation-model.md、wiki/tasks/loco-manipulation.md、wiki/tasks/vision-language-navigation.md、wiki/overview/navigation-slam-autonomy-stack.md 等枢纽页
+
 ## [2026-07-10] ingest | sources/papers/3d_ic_icml_2026.md — 3D-IC OVMM 联合导航操作规划；wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md、wiki/tasks/loco-manipulation.md、wiki/tasks/vision-language-navigation.md、wiki/tasks/manipulation.md
 
 ## [2026-07-10] ingest | Paper Notebooks 深读升格批次 — 113 个 paper-notebook 实体页升格为深读索引并补详情

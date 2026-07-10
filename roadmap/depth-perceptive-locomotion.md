@@ -174,6 +174,10 @@ flowchart LR
   - [模仿学习与技能迁移](depth-imitation-learning.md)
   - [安全控制（CLF/CBF）](depth-safe-control.md)
   - [接触丰富的操作任务](depth-contact-manipulation.md)
+  - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md) — Stage 4 导航栈整合的全局侧展开版
+  - [移动操作（Loco-Manipulation）](depth-mobile-manipulation.md)
+  - [VLA（视觉-语言-动作模型）](depth-vla.md)
+  - [BFM（人形行为基础模型）](depth-bfm.md)
 - 关联知识页：
   - [楼梯与障碍感知 locomotion 任务枢纽](../wiki/tasks/stair-obstacle-perceptive-locomotion.md)
   - [Terrain Adaptation](../wiki/concepts/terrain-adaptation.md)
