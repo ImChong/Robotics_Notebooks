@@ -1,13 +1,56 @@
 {
   "generated_at": "2026-07-10",
-  "node_count": 1556,
-  "edge_count": 11388,
+  "node_count": 1557,
+  "edge_count": 11399,
   "coverage": {
-    "covered": 1517,
-    "total": 1547,
+    "covered": 1518,
+    "total": 1548,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md",
+      "detail_id": "entity-paper-3d-ic-joint-navigation-manipulation-planning",
+      "label": "3D-IC（3D Interaction Chains · Joint Navigation and Manipulation Planning）",
+      "type": "entity",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/loco-manipulation.md",
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    },
+    {
+      "path": "wiki/tasks/vision-language-navigation.md",
+      "detail_id": "wiki-tasks-vision-language-navigation",
+      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
+      "type": "task",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-notebook-egonav.md",
       "detail_id": "entity-paper-notebook-egonav",
@@ -66,17 +109,6 @@
       "recency": "2026-07-10",
       "source": "log.md",
       "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/tasks/vision-language-navigation.md",
-      "detail_id": "wiki-tasks-vision-language-navigation",
-      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
-      "type": "task",
-      "recency": "2026-07-10",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -180,48 +212,18 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/concepts/implicit-explicit-actuator-modeling.md",
-      "detail_id": "wiki-concepts-implicit-explicit-actuator-modeling",
-      "label": "Implicit / Explicit 执行器建模",
-      "type": "concept",
-      "recency": "2026-07-09",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/hightorque-robotics.md",
-      "detail_id": "entity-hightorque-robotics",
-      "label": "高擎机电（HighTorque Robotics）",
-      "type": "entity",
-      "recency": "2026-07-09",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-humanoid-surgeon-in-vivo-laparoscopy.md",
-      "detail_id": "entity-paper-humanoid-surgeon-in-vivo-laparoscopy",
-      "label": "Humanoid Surgeon（In Vivo Laparoscopic Feasibility）",
-      "type": "entity",
-      "recency": "2026-07-09",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-notebook-egonav.md",
-    "detail_id": "entity-paper-notebook-egonav",
-    "label": "EgoNav",
+    "path": "wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md",
+    "detail_id": "entity-paper-3d-ic-joint-navigation-manipulation-planning",
+    "label": "3D-IC（3D Interaction Chains · Joint Navigation and Manipulation Planning）",
     "type": "entity",
     "recency": "2026-07-10",
     "source": "log.md",
-    "action": "maintained",
-    "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
@@ -229,11 +231,11 @@
       "size": 404
     },
     {
-      "label": "人形论文深读笔记",
-      "size": 185
+      "label": "视觉-语言-动作",
+      "size": 186
     },
     {
-      "label": "视觉-语言-动作",
+      "label": "人形论文深读笔记",
       "size": 185
     },
     {
@@ -269,7 +271,7 @@
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
-      "degree": 260,
+      "degree": 263,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
@@ -284,7 +286,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 223,
+      "degree": 224,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -307,7 +309,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 199,
+      "degree": 201,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {

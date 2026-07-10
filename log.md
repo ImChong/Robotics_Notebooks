@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-10] ingest | sources/papers/3d_ic_icml_2026.md — 3D-IC OVMM 联合导航操作规划；wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md、wiki/tasks/loco-manipulation.md、wiki/tasks/vision-language-navigation.md、wiki/tasks/manipulation.md
+
 ## [2026-07-10] ingest | Paper Notebooks 深读升格批次 — 113 个 paper-notebook 实体页升格为深读索引并补详情
 
 - 索引重建：[`schema/paper-notebook-index.json`](schema/paper-notebook-index.json) 137 → 289 篇（`_data/papers.json` 286 + progress.json done 补 RMA / Unitree H1 Whitepaper / MotionVAE 3 篇）；重生成 `paper-notebook-wiki-full-map.yml`（548 篇）与 `paper-notebook-categories.json`
