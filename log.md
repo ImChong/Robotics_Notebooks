@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-10] structural | schema/canonical-facts.json — 清单 v28 P2 事实库扩展：220 → 230 条，新增 10 条具身大模型选型矛盾检测规则（端到端 VLA 泛化 vs 分层 VLN 可解释可调、显式世界模型前瞻 vs 反应式省算力、大模型参数量 vs 控制带宽/推理时延、统一 VLX 通用性 vs 专精分立精度、多模态跨度 vs 注意力开销、世界模型推演步长 vs 累积误差、VLM 语义理解 ≠ 可执行动作接口、VLN 仅底盘移动无力控/操作分支、共享 Transformer 底座不免真机数据、模型规模不替代真机动作数据）；逐条经脚本校验对现存 wiki 页有 pos 命中且 0 误报，`make lint` 潜在矛盾 0 个、0 errors；同步勾选 checklist v28 P2 与 DoD 事实库项
+
 ## [2026-07-10] structural | roadmap/depth-motion-retargeting.md + depth-motion-generation.md — 纵深路线扩容至十二条：新增动作重定向纵深（问题定义与管线定位 → IK/优化工具箱 → 数据源与质量 → GMR→NMR→物理感知方法谱系 → WBT/遥操作下游闭环，起点 Gleicher 动作重定向 1998）与动作生成纵深（扩散/流匹配基础 → 表示与数据集 → MDM→可控生成→HY-Motion/GENMO/Kimodo 规模化三线 → PhysDiff/PhyGile/Gen2Humanoid 物理化落地 → 控制环内生成器，起点 MDM 扩散动作生成 2022）两条姊妹路线；主页「更多路线」按钮扩为十二个并按历史序插入，README/index/主路线与全部纵深页互链；链接 wiki/concepts/motion-retargeting.md、wiki/comparisons/gmr-vs-nmr-vs-reactor.md、wiki/methods/diffusion-motion-generation.md、wiki/comparisons/hy-motion-vs-genmo-vs-kimodo.md、wiki/overview/topic-motion-retargeting.md 等枢纽页
 
 ## [2026-07-10] ingest | sources/blogs/perceptron_egocentric_api.md — Perceptron Egocentric 子任务自动标注 API；wiki/entities/perceptron-egocentric.md、wiki/methods/auto-labeling-pipelines.md、wiki/entities/gemini-robotics.md
