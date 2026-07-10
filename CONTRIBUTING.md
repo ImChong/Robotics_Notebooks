@@ -28,6 +28,15 @@
 - Python：`ruff check` / `ruff format`（配置见 `pyproject.toml`）。
 - `docs/main.js`：`npx eslint docs/main.js`（配置见 `eslint.config.mjs`）。
 
+## 新建知识页
+
+优先使用统一脚手架生成页面骨架，再补充正文与交叉引用：
+
+```bash
+python3 scripts/scaffold_wiki_page.py concept "页面标题" --slug page-slug
+```
+
+页面主干顺序与各类型要求见 [Page Types](schema/page-types.md)。
 ## 提交前钩子（可选）
 
 安装：`pip install -r requirements-dev.txt`，然后 **`make install-hooks`**（即 `pre-commit install`）。提交时将自动运行 **Ruff**（与 CI 对齐）。
