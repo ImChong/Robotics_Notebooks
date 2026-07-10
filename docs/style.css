@@ -254,6 +254,8 @@ body.sponsor-dialog-open {
   color: var(--text);
   font-weight: 600;
 }
+/* Hero 内嵌搜索：搜索栏与统计行留白，结果卡片直接在 Hero 内展开 */
+.hero-search { margin-top: 26px; }
 .cta-row {
   display: flex;
   flex-wrap: wrap;
@@ -420,7 +422,6 @@ body.sponsor-dialog-open {
 }
 .section-title { font-size: 1.72rem; font-weight: 820; margin-bottom: 10px; letter-spacing: -.02em; }
 /* 首页无副标题区块：标题与内容之间保持统一间距 */
-#wiki-search .search-bar-wrap,
 #home-latest-wiki-section .home-latest-wiki-mount,
 #mini-graph-section #mini-graph-wrap {
   margin-top: 18px;
@@ -1010,6 +1011,8 @@ button.home-wiki-heatmap-cell.is-active {
 .home-entry-grid {
   align-items: stretch;
   gap: 16px;
+  /* 搜索入口卡并入 Hero 后仅剩两张通栏卡，单列堆叠 */
+  grid-template-columns: 1fr;
 }
 .home-entry-grid > .home-entry-card {
   height: 100%;
@@ -1077,6 +1080,17 @@ button.home-wiki-heatmap-cell.is-active {
   border: 1px solid var(--border);
   text-align: center;
   white-space: nowrap;
+}
+/* 折叠态的路线按钮必须真正隐藏（btn-secondary 的 display 会覆盖 UA 的 [hidden] 样式） */
+.home-entry-route-links a[hidden] { display: none; }
+/* 展开/收起按钮：复用 home-entry-link 的文字样式，去掉 button 默认外观 */
+.home-route-toggle {
+  background: none;
+  border: none;
+  padding: 2px 0 0;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
 }
 #home-start .section-subtitle {
   margin-bottom: 20px;
@@ -2315,15 +2329,6 @@ button.home-wiki-heatmap-cell.is-active {
   background-repeat: no-repeat;
   background-position: right 10px center;
   background-size: 12px;
-}
-/* 模块背景与搜索栏反色：section-alt 底色为 --bg-alt，搜索区用 --bg、下拉用 --bg-alt（同主题内深浅，不跨昼夜配色） */
-.section-alt .search-bar-wrap {
-  background: var(--bg);
-  border: 1px solid var(--border);
-}
-.section-alt #wikiCommunityFilter {
-  background-color: var(--bg-alt);
-  border: 1px solid var(--border);
 }
 .ingest-badge {
   display: inline-block;

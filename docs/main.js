@@ -5510,21 +5510,25 @@
       });
   }
 
+  // ── 首页「更多路线」折叠：默认只展示里程碑最新的 4 条纵深路线 ──────────────
+  var routeToggle = document.getElementById('homeRouteToggle');
+  if (routeToggle) {
+    routeToggle.addEventListener('click', function () {
+      var expanded = routeToggle.getAttribute('aria-expanded') === 'true';
+      var extras = document.querySelectorAll('#homeRouteLinks [data-route-extra]');
+      for (var rti = 0; rti < extras.length; rti++) {
+        extras[rti].hidden = expanded;
+      }
+      routeToggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      routeToggle.textContent = expanded ? '展开全部 12 条纵深路线 ↓' : '收起纵深路线 ↑';
+    });
+  }
+
   // ── Wiki 全文搜索（index.html 搜索框） ────────────────────────────────────
   var searchInput = document.getElementById('wikiSearchInput');
   var searchResults = document.getElementById('wikiSearchResults');
   var communityFilter = document.getElementById('wikiCommunityFilter');
   if (searchInput && searchResults) {
-    // 首页「项目查询」入口卡：锚点跳转到搜索区后直接聚焦输入框
-    var focusSearchTriggers = document.querySelectorAll('[data-focus-search]');
-    for (var fsti = 0; fsti < focusSearchTriggers.length; fsti++) {
-      focusSearchTriggers[fsti].addEventListener('click', function () {
-        window.setTimeout(function () {
-          searchInput.focus({ preventScroll: true });
-        }, 0);
-      });
-    }
-
     var _selectedIndex = -1;  // 键盘导航当前选中项
 
     var _searchIndex = null;
