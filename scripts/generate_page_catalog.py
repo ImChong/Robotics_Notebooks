@@ -51,7 +51,7 @@ def extract_first_sentence(content: str) -> str:
         if not line or line.startswith("#") or line.startswith(">") or line == "---":
             continue
         summary = line[:100].strip("[]()#*`|")
-        summary = re.sub(r"\\[([^]]+)]\\([^)]+\\)", r"\\1", summary)
+        summary = re.sub(r"\[([^]]+)]\([^)]+\)", r"\1", summary)
         if summary:
             return summary
     return "—"
