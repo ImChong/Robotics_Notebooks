@@ -5515,6 +5515,16 @@
   var searchResults = document.getElementById('wikiSearchResults');
   var communityFilter = document.getElementById('wikiCommunityFilter');
   if (searchInput && searchResults) {
+    // 首页「项目查询」入口卡：锚点跳转到搜索区后直接聚焦输入框
+    var focusSearchTriggers = document.querySelectorAll('[data-focus-search]');
+    for (var fsti = 0; fsti < focusSearchTriggers.length; fsti++) {
+      focusSearchTriggers[fsti].addEventListener('click', function () {
+        window.setTimeout(function () {
+          searchInput.focus({ preventScroll: true });
+        }, 0);
+      });
+    }
+
     var _selectedIndex = -1;  // 键盘导航当前选中项
 
     var _searchIndex = null;

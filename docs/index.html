@@ -38,23 +38,51 @@
       <div class="container hero-grid">
         <div>
           <h1 class="hero-title">面向人形机器人运动控制的知识入口</h1>
-          <p class="hero-subtitle">把 <strong>路线、图谱、模块、论文</strong> 串成一套极简导航系统。</p>
+          <p class="hero-subtitle">先选一个入口，沿 <strong>路线、图谱、模块、论文</strong> 逐步深入。</p>
 
           <div class="hero-stat-row-mini" aria-label="知识库当前规模">
             <span id="heroNodeCount">1554</span> 个节点 ·
             <span id="heroEdgeCount">11244</span> 条连接
           </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="cta-row">
-            <a class="btn-primary" href="roadmap.html?id=roadmap-motion-control">技术路线指南</a>
-            <a class="btn-secondary" href="graph.html">知识图谱</a>
+    <section class="section" id="home-start" aria-labelledby="home-start-heading">
+      <div class="container">
+        <h2 class="section-title" id="home-start-heading">选择你的入口</h2>
+        <p class="section-subtitle">按当前目标进入最短路径，不必先理解整个知识图谱。</p>
+        <div class="card-grid home-entry-grid">
+          <a class="card home-entry-card" href="roadmap.html?id=roadmap-motion-control">
+            <span class="home-entry-label">从零开始</span>
+            <h3>建立运动控制全局认识</h3>
+            <p>从机器人基础、动力学到控制与 Sim2Real，按主路线逐步学习。</p>
+            <span class="home-entry-link">进入主路线 →</span>
+          </a>
+          <a class="card home-entry-card" href="#wiki-search" data-focus-search>
+            <span class="home-entry-label">项目查询</span>
+            <h3>查找框架、论文与机器人平台</h3>
+            <p>直接搜索项目名称、算法缩写或具体工程问题。</p>
+            <span class="home-entry-link">搜索知识库 →</span>
+          </a>
+          <div class="card home-entry-card home-entry-card-more">
+            <span class="home-entry-label">更多路线</span>
+            <h3>按研究方向进入纵深路线</h3>
+            <div class="home-entry-route-links">
+              <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-rl-locomotion">强化学习</a>
+              <a class="btn-secondary" href="detail.html?id=wiki-concepts-optimal-control">传统控制</a>
+              <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-imitation-learning">模仿学习</a>
+              <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-safe-control">安全控制</a>
+              <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-contact-manipulation">接触操作</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="wiki-search">
+    <section class="section section-alt" id="wiki-search">
       <div class="container">
+        <h2 class="section-title">搜索知识库</h2>
         <div class="search-bar-wrap">
           <input
             id="wikiSearchInput"
@@ -78,6 +106,15 @@
           <button class="tag-chip" data-wiki-tag="动作重定向">动作重定向</button>
         </div>
         <div id="wikiSearchResults" class="card-grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section" id="home-latest-wiki-section" aria-labelledby="home-latest-wiki-heading">
+      <div class="container">
+        <h2 class="section-title" id="home-latest-wiki-heading">最新知识节点</h2>
+        <div id="homeLatestWikiModule" class="home-latest-wiki-mount data-loading" data-compact aria-live="polite">
+          <p class="data-meta">加载中…</p>
+        </div>
       </div>
     </section>
 
@@ -113,15 +150,6 @@
         </div>
         <div id="homeHubPanelPaper" class="home-hub-panel" aria-live="polite" hidden></div>
         <p class="home-hub-more"><a href="hubs.html">查看完整榜单 →</a></p>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="home-latest-wiki-section" aria-labelledby="home-latest-wiki-heading">
-      <div class="container">
-        <h2 class="section-title" id="home-latest-wiki-heading">最新知识节点</h2>
-        <div id="homeLatestWikiModule" class="home-latest-wiki-mount data-loading" data-compact aria-live="polite">
-          <p class="data-meta">加载中…</p>
-        </div>
       </div>
     </section>
   </main>
