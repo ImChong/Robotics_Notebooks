@@ -2275,6 +2275,15 @@ button.home-wiki-heatmap-cell.is-active {
   background-position: right 10px center;
   background-size: 12px;
 }
+/* 模块背景与搜索栏反色：section-alt 底色为 --bg-alt，搜索区用 --bg、下拉用 --bg-alt（同主题内深浅，不跨昼夜配色） */
+.section-alt .search-bar-wrap {
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+.section-alt #wikiCommunityFilter {
+  background-color: var(--bg-alt);
+  border: 1px solid var(--border);
+}
 .ingest-badge {
   display: inline-block;
   font-size: .7rem;
