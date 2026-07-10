@@ -170,6 +170,7 @@ flowchart TB
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：RPL](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/RPL__Learning_Robust_Humanoid_Perceptive_Locomotion_on_Challenging_Terrains/RPL__Learning_Robust_Humanoid_Perceptive_Locomotion_on_Challenging_Terrains.html)
 - 论文 HTML：<https://arxiv.org/html/2602.03002>
 - 论文 PDF：<https://arxiv.org/pdf/2602.03002>
 - 项目页（演示视频）：<https://rpl-humanoid.github.io/>

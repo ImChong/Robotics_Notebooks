@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-07-10",
   "node_count": 1556,
-  "edge_count": 11380,
+  "edge_count": 11388,
   "coverage": {
-    "covered": 1519,
+    "covered": 1517,
     "total": 1547,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-notebook-egonav.md",
+      "detail_id": "entity-paper-notebook-egonav",
+      "label": "EgoNav",
+      "type": "entity",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-gait.md",
+      "detail_id": "entity-paper-notebook-gait",
+      "label": "GAIT",
+      "type": "entity",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
+    },
+    {
+      "path": "wiki/overview/humanoid-paper-notebooks-index.md",
+      "detail_id": "wiki-overview-humanoid-paper-notebooks-index",
+      "label": "Humanoid Paper Notebooks 知识库索引",
+      "type": "overview",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
+    },
+    {
+      "path": "wiki/methods/humanoid-transformer-touch-dreaming.md",
+      "detail_id": "wiki-methods-humanoid-transformer-touch-dreaming",
+      "label": "Humanoid Transformer with Touch Dreaming (HTD)",
+      "type": "method",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/tasks/stair-obstacle-perceptive-locomotion.md",
       "detail_id": "wiki-tasks-stair-obstacle-perceptive-locomotion",
@@ -171,57 +211,17 @@
       "source": "log.md",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-discrete-terrain-minimal-proximity-sensing.md",
-      "detail_id": "entity-paper-discrete-terrain-minimal-proximity-sensing",
-      "label": "Learning Locomotion on Discrete Terrain via Minimal Proximity Sensing",
-      "type": "entity",
-      "recency": "2026-07-08",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/unitree-unistore.md",
-      "detail_id": "entity-unitree-unistore",
-      "label": "UniStore（宇树应用平台）",
-      "type": "entity",
-      "recency": "2026-07-08",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/stackforce.md",
-      "detail_id": "entity-stackforce",
-      "label": "StackForce",
-      "type": "entity",
-      "recency": "2026-07-08",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md",
-      "detail_id": "entity-paper-navwam-goal-conditioned-visual-navigation-wam",
-      "label": "NavWAM（目标条件视觉导航 · Navigation World Action Model）",
-      "type": "entity",
-      "recency": "2026-07-08",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "生成式世界模型（Generative World Models） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/tasks/stair-obstacle-perceptive-locomotion.md",
-    "detail_id": "wiki-tasks-stair-obstacle-perceptive-locomotion",
-    "label": "楼梯与障碍 Locomotion（感知 / 盲走中心节点）",
-    "type": "task",
+    "path": "wiki/entities/paper-notebook-egonav.md",
+    "detail_id": "entity-paper-notebook-egonav",
+    "label": "EgoNav",
+    "type": "entity",
     "recency": "2026-07-10",
     "source": "log.md",
     "action": "maintained",
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
   },
   "top_communities": [
     {
@@ -230,7 +230,7 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 186
+      "size": 185
     },
     {
       "label": "视觉-语言-动作",
@@ -241,12 +241,12 @@
       "size": 92
     },
     {
-      "label": "运动控制",
-      "size": 68
+      "label": "人形强化学习运动控制",
+      "size": 69
     },
     {
-      "label": "人形强化学习运动控制",
-      "size": 67
+      "label": "运动控制",
+      "size": 69
     }
   ],
   "top_hubs": [
@@ -254,7 +254,7 @@
       "detail_id": "wiki-overview-humanoid-paper-notebooks-index",
       "label": "Humanoid Paper Notebooks 知识库索引",
       "type": "overview",
-      "degree": 398,
+      "degree": 400,
       "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
     },
     {
@@ -292,7 +292,7 @@
       "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",
       "label": "Paper Notebooks · Loco-Manipulation and WBC",
       "type": "overview",
-      "degree": 218,
+      "degree": 222,
       "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
     },
     {

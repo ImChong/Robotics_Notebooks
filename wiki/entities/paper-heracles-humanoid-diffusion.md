@@ -118,6 +118,7 @@ flowchart TB
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Heracles](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Heracles__Bridging_Precise_Tracking_and_Generative_Synthesis_for_General_Humanoid_Control/Heracles__Bridging_Precise_Tracking_and_Generative_Synthesis_for_General_Humanoid_Control.html)
 - [Heracles 项目页](https://heracles-humanoid-control.github.io/) — 演示视频与 BibTeX
 - [arXiv:2603.27756](https://arxiv.org/abs/2603.27756) — 完整方法与 tracker 细节
 - Lipman et al., *Flow Matching for Generative Modeling* — 中间件训练目标背景

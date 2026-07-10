@@ -137,6 +137,8 @@ flowchart TD
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Hiking in the Wild](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Hiking_in_the_Wild__A_Scalable_Perceptive_Parkour_Framework_for_Humanoids/Hiking_in_the_Wild__A_Scalable_Perceptive_Parkour_Framework_for_Humanoids.html)
+- [机器人论文阅读笔记：Deep Whole-body Parkour](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Deep_Whole-body_Parkour/Deep_Whole-body_Parkour.html)
 - [Project Instinct 主页](https://project-instinct.github.io/) — 总览与视频入口
 - [Embrace Collisions（arXiv:2502.01465）](https://arxiv.org/abs/2502.01465) — 接触丰富全身 Shadowing 全文入口
 - [Deep Whole-Body Parkour（arXiv:2601.07701）](https://arxiv.org/abs/2601.07701) — 感知 + 全身跟踪跑酷全文入口

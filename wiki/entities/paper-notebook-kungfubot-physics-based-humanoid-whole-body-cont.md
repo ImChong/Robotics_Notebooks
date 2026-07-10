@@ -6,6 +6,8 @@ updated: 2026-07-09
 arxiv: "2506.12851"
 venue: "NeurIPS 2025"
 related:
+  - ../overview/paper-notebook-category-14-human-motion.md
+  - ../overview/humanoid-paper-notebooks-index.md
   - ../tasks/loco-manipulation.md
   - ../concepts/motion-retargeting.md
   - ../concepts/whole-body-control.md

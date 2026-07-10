@@ -14,6 +14,9 @@ overrides:
   - wiki/methods/crisp-real2sim.md
   Collision-Free_Humanoid_Traversal_in_Cluttered_Indoor_Scenes:
   - wiki/tasks/stair-obstacle-perceptive-locomotion.md
+  EgoDex__Learning_Dexterous_Manipulation_from_Large-Scale_Egocentric_Video:
+  - wiki/entities/paper-notebook-egodex-learning-dexterous-manipulation-from-larg.md
+  - wiki/entities/humannet.md
   EgoHumanoid__Unlocking_In-the-Wild_Loco-Manipulation_with_Robot-Free_Egocentric_:
   - wiki/overview/ego-category-02-human-to-robot.md
   EmbodMocap__In-the-Wild_4D_Human-Scene_Reconstruction_for_Embodied_Agents:
@@ -54,6 +57,12 @@ overrides:
   - wiki/entities/isaac-gym-isaac-lab.md
   Learned_Motion_Matching:
   - wiki/methods/diffusion-motion-generation.md
+  Humanoids_in_Hospitals__Humanoid_Surrogates_for_Dexterous_Medical_Interventions:
+  - wiki/entities/paper-notebook-humanoids-in-hospitals-a-technical-study-of-huma.md
+  - wiki/entities/paper-humanoid-surgeon-in-vivo-laparoscopy.md
+  LapSurgie__Humanoid_Robots_Performing_Surgery_via_Teleoperated_Handheld_Laparoscopy:
+  - wiki/entities/paper-notebook-lapsurgie-humanoid-robots-performing-surgery-via.md
+  - wiki/entities/paper-humanoid-surgeon-in-vivo-laparoscopy.md
   Learning_Adaptive_Neural_Teleoperation_for_Humanoid_Robots:
   - wiki/tasks/teleoperation.md
   Legged_Robot_State-Estimation_via_Forward_Kinematic_and_Preintegrated_Contact_Factors:
@@ -103,6 +112,9 @@ overrides:
   - wiki/tasks/vision-language-navigation.md
   UH-1_Learning_from_Massive_Human_Videos_for_Universal_Humanoid_Pose_Control:
   - wiki/entities/dataset-bfm-humanoid-x.md
+  Visual-Tactile_Pretraining_and_Online_Multitask_Learning_for_Humanlike_Manipulation_Dexterity:
+  - wiki/methods/humanoid-transformer-touch-dreaming.md
+  - wiki/entities/gel-slim.md
   XHugWBC__Scalable_and_General_Whole-Body_Control_for_Cross-Humanoid_Locomotion:
   - wiki/concepts/whole-body-control.md
   iDP3_Generalizable_Humanoid_Manipulation_with_3D_Diffusion_Policies:

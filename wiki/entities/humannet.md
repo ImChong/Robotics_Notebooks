@@ -103,5 +103,6 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：EgoDex](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/EgoDex__Learning_Dexterous_Manipulation_from_Large-Scale_Egocentric_Video/EgoDex__Learning_Dexterous_Manipulation_from_Large-Scale_Egocentric_Video.html)
 - [EgoScale](../methods/egoscale.md)（arXiv:2602.16710，NVIDIA GEAR 项目页）、Ego4D / Ego-Exo4D / EgoVerse 等项目页与数据卡（对比视点设计与下游任务）
 - [LingBot-VLA 2.0](./lingbot-vla-v2.md) — HumanNet 论文中 LingBot-VLA 架构的受控后训练对照在 2.0 中扩展为 **6 万小时** 产品与开源链

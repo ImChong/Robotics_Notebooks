@@ -158,6 +158,7 @@ flowchart TB
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：SplitAdapter](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/SplitAdapter__Load-Aware_Humanoid_Loco-Manipulation_via_Factorized_Adaptation/SplitAdapter__Load-Aware_Humanoid_Loco-Manipulation_via_Factorized_Adaptation.html)
 - 论文 HTML：<https://arxiv.org/html/2606.03297>
 - 项目页：<https://splitadapter.github.io/>
 - PhysHSI 原文：<https://arxiv.org/abs/2510.11072>

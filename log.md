@@ -1,5 +1,15 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-10] ingest | Paper Notebooks 深读升格批次 — 113 个 paper-notebook 实体页升格为深读索引并补详情
+
+- 索引重建：[`schema/paper-notebook-index.json`](schema/paper-notebook-index.json) 137 → 289 篇（`_data/papers.json` 286 + progress.json done 补 RMA / Unitree H1 Whitepaper / MotionVAE 3 篇）；重生成 `paper-notebook-wiki-full-map.yml`（548 篇）与 `paper-notebook-categories.json`
+- 升格补详情：111 个 `status: planned` 实体页升格 + 新建 2 页（[EgoNav](wiki/entities/paper-notebook-egonav.md)、[GAIT](wiki/entities/paper-notebook-gait.md)）——每页从深读笔记编译 `一句话定义`、论文专属英文缩写速查、为什么重要（领域意义）、解决什么问题、核心机制（核心贡献 + 方法拆解）、核心信息（机构/作者/发表/项目页/源码/笔记阅读日期）
+- 溯源锚点：对应 `sources/papers/humanoid_pnb_*` 改写为深读笔记锚点（真实笔记 URL + 一句话总结）；69 个旧标题 slug 源文件更名为目录规范名
+- 分类树：14 个 `paper-notebook-category-*` 父节点与 [总索引](wiki/overview/humanoid-paper-notebooks-index.md) 重生成，待深读 → 深读笔记链接翻转；`make paper-notebook-links` 向 45 个既有深读实体页注入笔记链接
+- 数据纠错：footstep-planner 占位页误挂 arXiv 2510.12215（实为 Learning Social Navigation，已升格独立实体）→ 删除占位；PROGRESS.md `arxiv.org/pdf/` 链接解析修复（[bootstrap_paper_notebook_knowledge.py](scripts/bootstrap_paper_notebook_knowledge.py) 兼容 abs|pdf，消 EgoPoser 待读/深读双行）；删除与 [HTD 方法页](wiki/methods/humanoid-transformer-touch-dreaming.md) 重复的 visual-tactile 占位
+- 映射钉扎：[`schema/paper-notebook-wiki-overrides.yml`](schema/paper-notebook-wiki-overrides.yml) 新增 EgoDex / Visual-Tactile(HTD) / LapSurgie / Humanoids-in-Hospitals 4 条，避免论文节点被引用其 arXiv 的相邻页面吸附错绑
+- 门禁：`make ci-preflight` 全过（lint 0 问题、搜索回归通过、导出检查 12/12）；pytest 303 passed
+
 ## [2026-07-10] structural | README.md / index.md / roadmap/README.md / roadmap/motion-control.md — 纵深路线列表统一按方向起点里程碑历史排序（与首页按钮一致），README 与 roadmap 总览向读者说明排序方法（ZMP 1972 → CLF 1983 → 阻抗控制 1985 → 行为克隆 1988 → Q-learning 1989 → 感知越障 2020s）
 
 ## [2026-07-10] structural | docs/index.html — 主页「更多路线」六按钮改按方向起点里程碑历史排序（传统控制 ZMP 1972 → 安全控制 CLF 1983 → 接触操作 阻抗控制 1985 → 模仿学习 行为克隆 1988 → 强化学习 Q-learning 1989 → 感知越障 2020s）；同步 frontend-optimization-v1 checklist

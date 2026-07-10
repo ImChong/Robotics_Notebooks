@@ -117,6 +117,7 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Kimodo](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Kimodo__Scaling_Controllable_Human_Motion_Generation/Kimodo__Scaling_Controllable_Human_Motion_Generation.html)
 - [Kimodo 技术报告 PDF](https://research.nvidia.com/labs/sil/projects/kimodo/assets/kimodo_tech_report.pdf)
 - [Kimodo 官方文档](https://research.nvidia.com/labs/sil/projects/kimodo/docs)
 - [arXiv:2603.15546](https://arxiv.org/abs/2603.15546) — *Kimodo: Scaling Controllable Human Motion Generation*
