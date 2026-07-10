@@ -1,13 +1,44 @@
 {
   "generated_at": "2026-07-10",
-  "node_count": 1561,
-  "edge_count": 11622,
+  "node_count": 1562,
+  "edge_count": 11633,
   "coverage": {
-    "covered": 1518,
-    "total": 1548,
+    "covered": 1519,
+    "total": 1549,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/perceptron-egocentric.md",
+      "detail_id": "entity-perceptron-egocentric",
+      "label": "Perceptron Egocentric",
+      "type": "entity",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/auto-labeling-pipelines.md",
+      "detail_id": "wiki-methods-auto-labeling-pipelines",
+      "label": "Auto-labeling Pipelines (自动化标注流水线)",
+      "type": "method",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/gemini-robotics.md",
+      "detail_id": "entity-gemini-robotics",
+      "label": "Gemini Robotics",
+      "type": "entity",
+      "recency": "2026-07-10",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/methods/vla.md",
       "detail_id": "wiki-methods-vla",
@@ -121,8 +152,7 @@
       "type": "method",
       "recency": "2026-07-10",
       "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/tasks/stair-obstacle-perceptive-locomotion.md",
@@ -185,65 +215,34 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-face-anything-4d-face-reconstruction.md",
-      "detail_id": "entity-paper-face-anything-4d-face-reconstruction",
-      "label": "Face Anything",
-      "type": "entity",
-      "recency": "2026-07-09",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/dimensionalos-dimos.md",
-      "detail_id": "entity-dimensionalos-dimos",
-      "label": "DimOS（Dimensional 物理空间 Agent OS）",
-      "type": "entity",
-      "recency": "2026-07-09",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-egowam-egocentric-human-wam-co-training.md",
-      "detail_id": "entity-paper-egowam-egocentric-human-wam-co-training",
-      "label": "EgoWAM（野外 Egocentric 人数据 · World Action Model 协同训练）",
-      "type": "entity",
-      "recency": "2026-07-09",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/methods/vla.md",
-    "detail_id": "wiki-methods-vla",
-    "label": "VLA（Vision-Language-Action）",
-    "type": "method",
+    "path": "wiki/entities/perceptron-egocentric.md",
+    "detail_id": "entity-perceptron-egocentric",
+    "label": "Perceptron Egocentric",
+    "type": "entity",
     "recency": "2026-07-10",
     "source": "log.md",
-    "action": "maintained",
-    "has_repo": true,
+    "action": "added",
     "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 362
-    },
-    {
-      "label": "视觉-语言-动作",
-      "size": 184
+      "size": 378
     },
     {
       "label": "人形论文深读笔记",
-      "size": 182
+      "size": 185
     },
     {
       "label": "移动操作",
-      "size": 161
+      "size": 178
+    },
+    {
+      "label": "视觉-语言-动作",
+      "size": 156
     },
     {
       "label": "运动控制",
@@ -251,7 +250,7 @@
     },
     {
       "label": "仿真训练",
-      "size": 56
+      "size": 60
     }
   ],
   "top_hubs": [
@@ -282,7 +281,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 226,
+      "degree": 227,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -325,7 +324,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 165,
+      "degree": 166,
       "has_repo": true
     }
   ],
@@ -342,7 +341,8 @@
       "label": "OmniRetarget",
       "type": "entity",
       "degree": 42,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
     },
     {
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
@@ -392,8 +392,7 @@
       "detail_id": "entity-paper-amp-survey-08-more",
       "label": "MoRE：复杂地形上的人形多步态残差专家混合",
       "type": "entity",
-      "degree": 26,
-      "community_label": "人形对抗式运动先验（Humanoid Adversarial Motion Prior, AMP） 社区"
+      "degree": 26
     }
   ]
 }
