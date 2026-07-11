@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-11] ingest | sources/repos/awesome_bfm_papers.md、sources/papers/bfm_survey_arxiv_2506_20487.md — 刷新 awesome-bfm-papers（42 篇 + Any2Any）与 BFM 综述；新增 wiki/entities/paper-bfm-survey-tpami-2025.md；交叉更新 behavior-foundation-model、bfm-category-04-adaptation、bfm-41-papers-technology-map
+
+- wiki/entities/paper-bfm-survey-tpami-2025.md
+- wiki/concepts/behavior-foundation-model.md
+- wiki/overview/bfm-category-04-adaptation.md
+- wiki/overview/bfm-41-papers-technology-map.md
+
 ## [2026-07-11] ingest | sources/papers/ardy_siggraph_2026.md — ARDY 交互式自回归扩散人体运动生成（SIGGRAPH 2026）；wiki/entities/ardy.md，交叉更新 kimodo、diffusion-motion-generation、sonic-motion-tracking、motionbricks、depth-motion-generation
 
 ## [2026-07-11] ingest | sources/papers/uhas_arxiv_2607_03570.md — UHAS 统一手部动作空间：sources + wiki/methods/uhas-unified-hand-action-space.md，交叉更新 in-hand-reorientation 与 cross-embodiment-transfer-strategy

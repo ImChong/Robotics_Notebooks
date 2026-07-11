@@ -288,6 +288,7 @@
 - [CloSD](wiki/entities/paper-bfm-39-closd.md) — CloSD** 收录于 awesome-bfm-papers **第 39/41**  `📅unknown` `[entity_page]`
 - [UniPhys](wiki/entities/paper-bfm-40-uniphys.md) — UniPhys** 收录于 awesome-bfm-papers **第 40/41 `📅unknown` `[entity_page]`
 - [Unified Human-Scene Interaction via Prompted Chain-of-Contacts](wiki/entities/paper-bfm-41-unihsi.md) — Unified Human-Scene Interaction via Prompted Chain-of-Contacts** 收录于 [awesome-bfm-papers](https:// `📅unknown` `[entity_page]`
+- [A Survey of Behavior Foundation Model（TPAMI 2025）](wiki/entities/paper-bfm-survey-tpami-2025.md) — A Survey of Behavior Foundation Model: Next-Generation Whole-Body Control System of Humanoid Robot `📅unknown` `[entity_page]`
 - [BFM-Zero](wiki/entities/paper-bfm-zero.md) — BFM-Zero**（*A Promptable Behavioral Foundation Model for Humanoid Control*，arXiv:2511.04131）训练可提示的 `📅unknown` `[entity_page]`
 - [BifrostUMI（Bridging Robot-Free Demonstrations and Humanoid Whole-Body Manipulation）](wiki/entities/paper-bifrost-umi.md) — BifrostUMI** 是 BAAI Aether 团队提出的人形 **全身 visuomotor** 数据采集与部署框架（arXiv:2605.03452，[项目页](https://baai `📅unknown` `[entity_page]`
 - [CapVector（VLA 参数空间可迁移能力向量）](wiki/entities/paper-capvector-capability-vectors-vla.md) — CapVector** 是 HKUST（广州）、浙江大学、西湖大学、清华大学与北京智源等合作者的论文工作（arXiv:2605.10903，项目页 [capvector.github.io](ht `📅unknown` `[entity_page]`

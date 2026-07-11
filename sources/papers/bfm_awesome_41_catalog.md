@@ -6,9 +6,10 @@
 - **微信公众号导读：** [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)
 - **wiki 技术地图：** [bfm-41-papers-technology-map.md](../../wiki/overview/bfm-41-papers-technology-map.md)
 - **入库日期：** 2026-05-26
-- **一句话说明：** 将 awesome-bfm-papers 所列 **41 篇 BFM 论文** 与 **10 个数据集** 分别落成独立 `sources/papers/bfm_awesome_*` 归档，便于 ingest 溯源与 lint 入链统计。
+- **最近刷新：** 2026-07-11（awesome 列表增至 **42 篇**；#42 Any2Any 归入 04 Adaptation）
+- **一句话说明：** 将 awesome-bfm-papers 所列 BFM 论文与 **10 个数据集** 分别落成独立 `sources/papers/bfm_awesome_*` 归档，便于 ingest 溯源与 lint 入链统计。
 
-## 论文（41）
+## 论文（42）
 
 | # | 分组 | Source |
 |---|------|--------|
@@ -45,6 +46,7 @@
 | 31 | 04 Adaptation | [bfm_awesome_task_tokens_arxiv_2503_22886.md](bfm_awesome_task_tokens_arxiv_2503_22886.md) |
 | 32 | 04 Adaptation | [bfm_awesome_unseen_dynamics_arxiv_2505_13150.md](bfm_awesome_unseen_dynamics_arxiv_2505_13150.md) |
 | 33 | 04 Adaptation | [bfm_awesome_fast_adaptation_bfm_corl_2025.md](bfm_awesome_fast_adaptation_bfm_corl_2025.md) |
+| 42 | 04 Adaptation | [bfm_awesome_any2any_arxiv_2605_23733.md](bfm_awesome_any2any_arxiv_2605_23733.md) |
 | 34 | 05 Hierarchical control | [bfm_awesome_sentinel_arxiv_2511_19236.md](bfm_awesome_sentinel_arxiv_2511_19236.md) |
 | 35 | 05 Hierarchical control | [bfm_awesome_beyondmimic_arxiv_2508_08241.md](bfm_awesome_beyondmimic_arxiv_2508_08241.md) |
 | 36 | 05 Hierarchical control | [bfm_awesome_leverb_arxiv_2506_13751.md](bfm_awesome_leverb_arxiv_2506_13751.md) |
@@ -72,4 +74,5 @@
 ## 对 wiki 的映射
 
 - [behavior-foundation-model.md](../../wiki/concepts/behavior-foundation-model.md)
+- [paper-bfm-survey-tpami-2025.md](../../wiki/entities/paper-bfm-survey-tpami-2025.md)
 - [bfm-41-papers-technology-map.md](../../wiki/overview/bfm-41-papers-technology-map.md)

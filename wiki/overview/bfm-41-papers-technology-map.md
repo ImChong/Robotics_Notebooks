@@ -2,9 +2,10 @@
 type: overview
 tags: [bfm, behavior-foundation-model, humanoid, whole-body-control, survey, motion-tracking, foundation-model]
 status: complete
-updated: 2026-06-18
+updated: 2026-07-11
 related:
   - ../concepts/behavior-foundation-model.md
+  - ../entities/paper-bfm-survey-tpami-2025.md
   - ../entities/paper-behavior-foundation-model-humanoid.md
   - ./humanoid-rl-motion-control-body-system-stack.md
   - ./humanoid-amp-motion-prior-survey.md
@@ -13,6 +14,7 @@ related:
   - ./bfm-category-03-intrinsic-reward-pretraining.md
   - ./bfm-category-02-goal-conditioned-learning.md
   - ./bfm-category-01-forward-backward-representation.md
+  - ../entities/paper-any2any-cross-embodiment-wbt.md
   - ../methods/sonic-motion-tracking.md
   - ../methods/beyondmimic.md
   - ../methods/ams.md
@@ -71,8 +73,8 @@ flowchart TB
   subgraph G3["03 Intrinsic reward（5）"]
     EXP["APS / Proto-RL / RE3 / RND / DIAYN\n无任务预探索"]
   end
-  subgraph G4["04 Adaptation（3）"]
-    ADP["Task Tokens / Unseen Dynamics\nFast Adaptation"]
+  subgraph G4["04 Adaptation（4）"]
+    ADP["Task Tokens / Unseen Dynamics\nFast Adaptation / Any2Any"]
   end
   subgraph G5["05 Hierarchical（8）"]
     LANG["SENTINEL / LangWBC / LeVerb\n语言–身体"]
@@ -99,7 +101,7 @@ flowchart TB
 |------|----------|------------|
 | **智元** | 公开把 **BFM-2** 推为「运控基座模型」，预告 BFM-3 | 与 **01 FB 线 + 02 跟踪覆盖面** 叙事直接对齐 |
 | **众擎** | 年度 demo：多动作拼接、长时程、倒地起身、抗扰 | 文内视为「运控基座需求侧验证」，**不写成已官方冠名 BFM** |
-| **学术索引** | [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) + [综述 arXiv:2506.20487](https://arxiv.org/abs/2506.20487) | 41 篇编号与分组以仓库 README 为准 |
+| **学术索引** | [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) + [综述 arXiv:2506.20487](https://arxiv.org/abs/2506.20487) | 公众号 41 篇编号不变；awesome 列表 2026-07 已增至 **42 篇**（+Any2Any） |
 
 ## 五类问题分类节点（图谱 hub）
 
@@ -110,12 +112,12 @@ flowchart TB
 | 01 Forward-backward 表征 | [Forward-backward 表征](./bfm-category-01-forward-backward-representation.md) | 6 |
 | 02 Goal-conditioned 学习 | [Goal-conditioned 学习](./bfm-category-02-goal-conditioned-learning.md) | 19 |
 | 03 Intrinsic reward 预训练 | [Intrinsic reward 预训练](./bfm-category-03-intrinsic-reward-pretraining.md) | 5 |
-| 04 Adaptation | [Adaptation](./bfm-category-04-adaptation.md) | 3 |
+| 04 Adaptation | [Adaptation](./bfm-category-04-adaptation.md) | 4（awesome 42 篇） |
 | 05 Hierarchical control | [Hierarchical control](./bfm-category-05-hierarchical-control.md) | 8 |
 
-## 原始资料索引（41 论文 + 10 数据集）
+## 原始资料索引（42 论文 + 10 数据集）
 
-- **总表：** [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 每篇/每项对应独立 `sources/papers/bfm_awesome_<slug>.md`（策展摘录 + 公众号导读要点，非 PDF 全文）。
+- **总表：** [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 每篇/每项对应独立 `sources/papers/bfm_awesome_<slug>.md`（策展摘录 + 公众号导读要点，非 PDF 全文）。文件名保留「41」为历史批次；2026-07 awesome 列表已 **42 篇**。
 - **Wiki 实体：** 每篇/每项均有站内详情页，见下节 [Wiki 实体索引](#wiki-实体索引站内详情页)；图谱与搜索已收录。
 - **编译导读：** [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)
 - **深读已有：** #13 → [bfm_humanoid_arxiv_2509_13780.md](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md)；AMASS → [amass-dataset.md](../../sources/sites/amass-dataset.md)
@@ -161,6 +163,7 @@ flowchart TB
 | 31 | Task Tokens | [paper-bfm-31-task-tokens](../entities/paper-bfm-31-task-tokens.md) | [source](../../sources/papers/bfm_awesome_task_tokens_arxiv_2503_22886.md) |
 | 32 | Zero-Shot Adaptation of Behavioral Foundation Models to Unseen Dynamics | [paper-bfm-32-unseen-dynamics](../entities/paper-bfm-32-unseen-dynamics.md) | [source](../../sources/papers/bfm_awesome_unseen_dynamics_arxiv_2505_13150.md) |
 | 33 | Fast Adaptation With Behavioral Foundation Models | [paper-bfm-33-fast-adaptation-bfm](../entities/paper-bfm-33-fast-adaptation-bfm.md) | [source](../../sources/papers/bfm_awesome_fast_adaptation_bfm_corl_2025.md) |
+| 42 | Any2Any | [paper-any2any-cross-embodiment-wbt](../entities/paper-any2any-cross-embodiment-wbt.md) | [source](../../sources/papers/bfm_awesome_any2any_arxiv_2605_23733.md) |
 | 34 | SENTINEL | [paper-sentinel](../entities/paper-sentinel.md) | [source](../../sources/papers/bfm_awesome_sentinel_arxiv_2511_19236.md) |
 | 35 | BeyondMimic | [paper-beyondmimic](../entities/paper-beyondmimic.md) | [source](../../sources/papers/bfm_awesome_beyondmimic_arxiv_2508_08241.md) |
 | 36 | LeVerb | [paper-bfm-36-leverb](../entities/paper-bfm-36-leverb.md) | [source](../../sources/papers/bfm_awesome_leverb_arxiv_2506_13751.md) |
@@ -219,13 +222,14 @@ flowchart TB
 |---|------|------|------|
 | 26–30 | **APS / Proto-RL / RE3 / RND / DIAYN** | 任务到来前的探索与技能分化 | [behavior-foundation-model](../concepts/behavior-foundation-model.md) § intrinsic 线 |
 
-### 04 — Adaptation（3 篇）
+### 04 — Adaptation（4 篇，awesome 列表）
 
 | # | 工作 | 要点 | 本库 |
 |---|------|------|------|
 | 31 | **Task Tokens** | 轻量 task 条件适配 | — |
 | 32 | **Unseen Dynamics** | 负载/地面/参数变化 | [sim2real](../concepts/sim2real.md) |
 | 33 | **Fast Adaptation** | 下游样本与工程成本 | — |
+| 42 | **Any2Any** | 跨具身 WBT：运动学对齐 + LoRA 动力学 PEFT | [paper-any2any](../entities/paper-any2any-cross-embodiment-wbt.md) |
 
 ### 05 — Hierarchical control（8 篇）
 
@@ -271,9 +275,10 @@ flowchart TB
 - [具身智能研究室 · BFM 41 篇微信公众号编译稿](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)
 - [awesome-bfm-papers 精选列表](../../sources/repos/awesome_bfm_papers.md)
 - [BFM 综述（arXiv:2506.20487）](../../sources/papers/bfm_survey_arxiv_2506_20487.md)
+- [BFM 综述实体页](../entities/paper-bfm-survey-tpami-2025.md)
 
 ## 推荐继续阅读
 
-- [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) — 41 篇完整表与数据集表
+- [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) — 42 篇完整表与数据集表
 - [A Survey of Behavior Foundation Model](https://arxiv.org/abs/2506.20487) — TPAMI 2025 全文
 - [BFM-Zero 项目页](https://lecar-lab.github.io/BFM-Zero/) — promptable 身体基座对照
