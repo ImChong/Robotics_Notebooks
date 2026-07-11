@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-11",
   "node_count": 1584,
-  "edge_count": 11927,
+  "edge_count": 11943,
   "coverage": {
     "covered": 1539,
     "total": 1569,
@@ -31,7 +31,7 @@
     {
       "path": "wiki/entities/paper-dswam-dual-system-wam.md",
       "detail_id": "entity-paper-dswam-dual-system-wam",
-      "label": "DSWAM（Dual-System World Action Foundation Model）",
+      "label": "DSWAM（Dual-System World Action Foundation Model · arXiv:2607.04927）",
       "type": "entity",
       "recency": "2026-07-11",
       "source": "log.md",
@@ -311,7 +311,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 203,
+      "degree": 205,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {

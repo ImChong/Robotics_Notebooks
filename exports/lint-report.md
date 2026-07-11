@@ -2,7 +2,7 @@
 
 ## [2026-07-11] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **14** 条信息型预警）：
+共发现 **0** 个问题（另含 **2** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -94,23 +94,11 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（13 个）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（1 个）
 - wiki/entities/paper-bfm-survey-tpami-2025.md（缺 评测 / 对比）
-- wiki/entities/paper-current-as-touch-proprioceptive-contact.md（缺 方法）
-- wiki/entities/paper-deform360-deformable-visuotactile-dataset.md（缺 方法）
-- wiki/entities/paper-dreamsteer-vla-deployment-steering.md（缺 方法）
-- wiki/entities/paper-dswam-dual-system-wam.md（缺 方法）
-- wiki/entities/paper-dynawm-vla-online-correction.md（缺 方法）
-- wiki/entities/paper-embodiedgen-v2-sim-ready-world-engine.md（缺 方法）
-- wiki/entities/paper-gigaworld-1-policy-evaluation.md（缺 方法）
-- wiki/entities/paper-meco-wam-4d-geometry-cotraining.md（缺 方法）
-- wiki/entities/paper-rynnworld-4d-rgb-depth-flow.md（缺 方法）
-- wiki/entities/paper-taco-tactile-wm-vla-posttrain.md（缺 方法）
-- wiki/entities/paper-vt-wam-visuotactile-contact-rich.md（缺 方法）
-- wiki/entities/paper-worldscape-moe-heterogeneous-action.md（缺 方法）
 
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（1 个）
-- wiki/entities/paper-deform360-deformable-visuotactile-dataset.md（缺 许可证 / 重定向就绪度）
+- wiki/entities/paper-deform360-deformable-visuotactile-dataset.md（缺 重定向就绪度）
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
 - 无

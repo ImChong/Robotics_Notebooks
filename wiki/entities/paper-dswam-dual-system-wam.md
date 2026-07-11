@@ -50,7 +50,7 @@ summary: "DSWAM（arXiv:2607.04927）：双系统 WAM——System 1 执行器视
 - **填补 WAM「缺语言规划接口」的空白：** 现有 WAM 多聚焦物理执行，而 VLM-VLA 擅长粗指令语义分解；DSWAM 把 **System 2 设为可选模块**，原子指令或执行器已可靠的任务 **不强制走规划路径**，避免为已会做的动作引入额外延迟。
 - **训练–部署解耦的清晰范例：** 与 [Fast-WAM](../methods/generative-world-models.md) / GigaWorld-Policy 同脉——**视频协同训练提供时序监督，推理接口仍为动作块**；策展文指出这是 WAM 能否上真机的关键工程分水岭。
 - **首个匹配协议下的 WAM–VLA 真机对照：** 在 [DeMaVLA 设定](https://arxiv.org/abs/2607.04927) 下对齐 **同一机器人、预训练/后训练数据、任务协议与成功判据**，折叠 benchmark **禁用 System 2**，使增益可归因于 **执行器建模** 而非数据或平台差异。
-- **与 [DynaWM](./paper-dynawm-vla-online-correction.md)、[DreamSteer](./paper-dreamsteer-vla-deployment-steering.md) 构成 WAM 职责三角：** 直接执行 / 在线修正 / 部署筛选；DSWAM 代表 **第一类「接管动作后果预测并直出控制」** 的 foundation 路线。
+- **与 [DynaWM](./paper-dynawm-vla-online-correction.md)、[DreamSteer](./paper-dreamsteer-vla-deployment-steering.md) 构成 WAM 职责三角**：直接执行 / 在线修正 / 部署筛选；DSWAM 代表 **第一类「接管动作后果预测并直出控制」** 的 foundation 路线。
 
 ## 核心结构与方法
 

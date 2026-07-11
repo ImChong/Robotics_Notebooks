@@ -47,7 +47,7 @@ summary: "VT-WAM（arXiv:2607.02503）：统一流匹配联合预测未来视觉
 
 - **接触丰富任务的「时序稀疏性」：** 触觉只在 **短接触窗口** 高信息；视觉帧帧稠密 → 联合训练易 **视觉主导**；VT-WAM 用 **触觉形变预测 + AVTAG** 把因果关键信号 **绑进动作生成**。
 - **相对纯视觉 WAM 的大幅增益：** 六任务平均 **71.67%**，较 [Fast-WAM](../methods/generative-world-models.md) **+26.67pp**、较 OmniVTLA **+35.84pp**——说明 **建模触觉动力学** 而非仅 conditioning。
-- **与 [TACO](./paper-taco-tactile-wm-vla-posttrain.md)、[Current as Touch](./paper-current-as-touch-proprioceptive-contact.md) 构成接触三角：** VT-WAM **闭环策略**；TACO **失败→纠错数据**；Current as Touch **本体电流替代外置触觉**。
+- **与 [TACO](./paper-taco-tactile-wm-vla-posttrain.md)、[Current as Touch](./paper-current-as-touch-proprioceptive-contact.md) 构成接触三角**：VT-WAM **闭环策略**；TACO **失败→纠错数据**；Current as Touch **本体电流替代外置触觉**。
 - **Visual-cache 推理模式：** 非对称注意力允许 **首帧视觉锚 + 全触觉序列**，部署时可 **缓存视觉** 而不丢接触动力学（见论文 inference 设定）。
 
 ## 核心结构与方法
