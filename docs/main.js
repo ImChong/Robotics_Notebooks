@@ -2647,18 +2647,23 @@
     const source = String(markdown || '').replace(/\r\n/g, '\n').trim();
     if (!source) return [];
     const counts = {};
-    return source.split('\n').map(function (line) {
-      const match = line.trim().match(/^(#{2,4})\s+(.*)$/);
-      if (!match) return null;
+    const lines = source.split('\n');
+    const results = [];
+    // ⚡ Bolt Optimization: Replace .map().filter(Boolean) with a standard for loop
+    // Expected impact: Eliminates intermediate array allocations and closure overhead during heading extraction, reducing memory pressure and GC pauses when parsing large markdown documents.
+    for (var i = 0; i < lines.length; i++) {
+      const match = lines[i].trim().match(/^(#{2,4})\s+(.*)$/);
+      if (!match) continue;
       const text = match[2].trim();
       const baseSlug = slugifyHeading(text);
       counts[baseSlug] = (counts[baseSlug] || 0) + 1;
-      return {
+      results.push({
         level: Math.min(match[1].length, 4),
         text: text,
         slug: counts[baseSlug] === 1 ? baseSlug : baseSlug + '-' + counts[baseSlug]
-      };
-    }).filter(Boolean);
+      });
+    }
+    return results;
   }
 
   /** 去掉 h3/h4 标题里自带的「1. 」式小节编号，避免与嵌套 <ol> 序号叠成「6. 1. …」。 */
