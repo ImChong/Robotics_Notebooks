@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-11] ingest | sources/papers/ardy_siggraph_2026.md — ARDY 交互式自回归扩散人体运动生成（SIGGRAPH 2026）；wiki/entities/ardy.md，交叉更新 kimodo、diffusion-motion-generation、sonic-motion-tracking、motionbricks、depth-motion-generation
+
 ## [2026-07-11] ingest | sources/papers/uhas_arxiv_2607_03570.md — UHAS 统一手部动作空间：sources + wiki/methods/uhas-unified-hand-action-space.md，交叉更新 in-hand-reorientation 与 cross-embodiment-transfer-strategy
 
 ## [2026-07-11] ingest | arXiv 摘要与项目页细节补强 — BeyondMimic（arXiv:2508.08241 v4）与 SONIC（arXiv:2511.07820 v3）四个知识节点补论文信息（作者/机构/版本）、BeyondMimic 两阶段机制（LAFAN1 单一设置跟踪 → 统一潜空间扩散 + classifier guidance 零样本下游）与 SONIC 三轴 scaling / 统一 token 接口细节，并修复实体页策展占位与截断文本；wiki/methods/beyondmimic.md、wiki/methods/sonic-motion-tracking.md、wiki/entities/paper-beyondmimic.md、wiki/entities/paper-sonic.md

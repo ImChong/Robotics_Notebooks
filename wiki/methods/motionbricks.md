@@ -96,6 +96,7 @@ MotionBricks 的顶层接口通过「Smart Primitives」实现了极高的任务
 - [Whole-Body Control (WBC)](../concepts/whole-body-control.md) — MotionBricks 为其提供参考轨迹。
 - [GR00T-WholeBodyControl](../entities/gr00t-wholebodycontrol.md) — 官方单仓中 `motionbricks/` 子项目与一体化文档。
 - [Kimodo](../entities/kimodo.md) — 同生态文生运动与约束式生成（GEAR-SONIC Demo 等场景常与之并列出现）。
+- [ARDY](../entities/ardy.md) — 交互式自回归扩散 + 长时域约束（SIGGRAPH 2026；项目页与 Kimodo 并列）。
 - [Motion Retargeting](../concepts/motion-retargeting.md) — 利用 SOMA Retargeter 处理跨骨骼转换。
 - [Isaac Lab](../entities/isaac-gym-isaac-lab.md) — 训练与验证环境。
 - [Unitree G1](../entities/unitree-g1.md) — 部署验证硬件。

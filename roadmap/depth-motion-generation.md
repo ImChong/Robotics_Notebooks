@@ -101,7 +101,7 @@ flowchart LR
 ### 核心问题
 - MDM 式动作扩散怎么把去噪过程用在骨架序列上
 - 可控生成的机制族：GMD 的引导式扩散、OmniControl 的任意关节时空约束、in-betweening 的关键帧补全
-- 规模化三线的取舍：HY-Motion（十亿级流匹配 DiT + DPO/Flow-GRPO 对齐）、GENMO（估计与生成 dual-mode 统一）、Kimodo（两阶段 root/body 去噪 + 强约束可控）
+- 规模化三线的取舍：HY-Motion（十亿级流匹配 DiT + DPO/Flow-GRPO 对齐）、GENMO（估计与生成 dual-mode 统一）、Kimodo（两阶段 root/body 去噪 + 强约束可控）；**交互实时档** 另见 [ARDY](../wiki/entities/ardy.md)（自回归混合表示扩散 + 流式文本与长时域路点）
 - 对齐与后训练（DPO / Flow-GRPO）在动作生成里解决什么问题
 
 ### 推荐做什么
@@ -110,6 +110,7 @@ flowchart LR
 
 ### 推荐读什么
 - [HY-Motion 1.0](../wiki/methods/hy-motion-1.md)、[GENMO](../wiki/methods/genmo.md)、[Kimodo](../wiki/entities/kimodo.md)（本仓库）— 规模化三线
+- [ARDY](../wiki/entities/ardy.md)（本仓库）— 交互式自回归扩散 + 长时域约束（SIGGRAPH 2026）
 - [HY-Motion vs GENMO vs Kimodo 选型对比](../wiki/comparisons/hy-motion-vs-genmo-vs-kimodo.md)（本仓库）— 谱系主入口
 - [Guided Motion Diffusion](../wiki/entities/paper-notebook-guided-motion-diffusion-for-controllable-human-m.md) 与 [OmniControl](../wiki/entities/paper-notebook-omnicontrol-control-any-joint-at-any-time-for-hu.md)（本仓库）— 可控生成机制
 - [Flexible Motion In-betweening](../wiki/entities/paper-notebook-flexible-motion-in-betweening-with-diffusion-mod.md)（本仓库）— 关键帧补全
