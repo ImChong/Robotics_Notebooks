@@ -188,8 +188,8 @@ flowchart LR
 - 关键词：[ENPIRE](../wiki/methods/enpire.md)、[安全真机 RL 微调](../wiki/concepts/safe-real-world-rl-fine-tuning.md)
 
 **方向 B：世界模型融合**
-- 把"预测未来"并入策略训练或推理时预演
-- 关键词：[Generative World Models](../wiki/methods/generative-world-models.md)、[World Action Models](../wiki/concepts/world-action-models.md)
+- 把"预测未来"并入策略训练或推理时预演——完整 Stage 路径见 [WAM 纵深路线](depth-wam.md)
+- 关键词：[Generative World Models](../wiki/methods/generative-world-models.md)、[World Action Models](../wiki/concepts/world-action-models.md)、[WAM 纵深](depth-wam.md)
 
 **方向 C：全身与移动操作扩展**
 - 把 VLA 从桌面机械臂扩展到全身移动操作
@@ -217,6 +217,7 @@ flowchart LR
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
 - 其它纵深路径：
   - [BFM（人形行为基础模型）](depth-bfm.md) — 姊妹路线：VLA 管任务级语义，BFM 管身体级协调
+  - [WAM（世界–动作模型）](depth-wam.md) — 姊妹路线：VLA 管反应式语义策略，WAM 管前向后果耦合
   - [模仿学习与技能迁移](depth-imitation-learning.md) — 本路线 Stage 1 的展开版
   - [移动操作（Loco-Manipulation）](depth-mobile-manipulation.md) — Stage 5 方向 C 的展开版
   - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md) — Stage 5 方向 D 的展开版

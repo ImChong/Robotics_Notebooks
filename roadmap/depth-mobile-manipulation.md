@@ -222,6 +222,7 @@ flowchart LR
   - [人形 RL 运动控制](depth-rl-locomotion.md) — 下身基座的训练侧前置
   - [模仿学习与技能迁移](depth-imitation-learning.md) — 数据与技能学习的前置
   - [VLA（视觉-语言-动作模型）](depth-vla.md) — Stage 4 语义接口的展开版
+  - [WAM（世界–动作模型）](depth-wam.md)
   - [BFM（人形行为基础模型）](depth-bfm.md) — 全身行为先验的展开版
   - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md) — Stage 5 方向 B 的邻接路线
   - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md)

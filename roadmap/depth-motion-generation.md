@@ -223,6 +223,7 @@ flowchart LR
   - [BFM（人形行为基础模型）](depth-bfm.md) — 行为先验的策略权重侧表达
   - [模仿学习与技能迁移](depth-imitation-learning.md) — Diffusion Policy 一系与本路线共享生成式建模基础
   - [VLA（视觉-语言-动作模型）](depth-vla.md) — 语义接口与分层设计的邻接路线
+  - [WAM（世界–动作模型）](depth-wam.md)
   - [人形 RL 运动控制](depth-rl-locomotion.md) — 跟踪器训练的训练侧前置
   - [移动操作（Loco-Manipulation）](depth-mobile-manipulation.md) — Stage 5 方向 D 的展开版
   - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)

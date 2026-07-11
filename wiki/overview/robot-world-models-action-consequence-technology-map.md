@@ -85,6 +85,7 @@ flowchart TB
 ## 关联页面
 
 - [World Action Models](../concepts/world-action-models.md)
+- [WAM 纵深路线](../../roadmap/depth-wam.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [VLA](../methods/vla.md)
 - [训练闭环 taxonomy](./robot-world-models-training-loop-taxonomy.md)

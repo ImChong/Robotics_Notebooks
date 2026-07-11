@@ -2,13 +2,13 @@
 
 机器人技术栈知识库 / Robotics research and engineering wiki.
 
-<!-- Last updated: 2026-07-11 (V28 自动更新：图谱 1584 节点 11943 边) -->
+<!-- Last updated: 2026-07-11 (V28 自动更新：图谱 1585 节点 11998 边) -->
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen?logo=github)](https://imchong.github.io/Robotics_Notebooks/)
 [![Deploy GitHub Pages](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml)
 [![Wiki Lint](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/lint.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/lint.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
-[![Knowledge Graph](https://img.shields.io/badge/知识图谱-1584节点_11943边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
+[![Knowledge Graph](https://img.shields.io/badge/知识图谱-1585节点_11998边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
 [![Sources Coverage](https://img.shields.io/badge/sources覆盖率-98%25-green)](docs/checklists/tech-stack-next-phase-checklist-v28.md)
 
 ---
@@ -55,10 +55,11 @@
 | 让机器人看地形越障 | [感知越障纵深路线](roadmap/depth-perceptive-locomotion.md) |
 | 用生成模型造人形动作 | [动作生成纵深路线](roadmap/depth-motion-generation.md) |
 | 让机器人听懂指令干活 | [VLA 纵深路线](roadmap/depth-vla.md) |
+| 让策略预知动作如何改变世界 | [WAM 纵深路线](roadmap/depth-wam.md) |
 | 浏览所有知识页 | [完整页面目录](catalog.md) |
 | 搜索特定概念 | `python3 scripts/search_wiki.py <关键词>` |
 
-> 十二条纵深路线按各方向**起点里程碑的历史顺序**排列（与首页按钮一致）：传统控制（ZMP 判据，1972）→ 安全控制（CLF，1983）→ 接触操作（阻抗控制，1985）→ 导航（概率 SLAM，1986）→ 模仿学习（行为克隆，1988）→ 强化学习（Q-learning，1989）→ 移动操作（移动操作臂协调控制，1994）→ 动作重定向（Gleicher 动作重定向，1998）→ BFM（DeepMimic 动作跟踪谱系，2018）→ 感知越障（2020s 感知策略浪潮）→ 动作生成（MDM 扩散动作生成，2022）→ VLA（RT-2 确立 VLA，2023）。越靠前的方向理论积淀越深，越靠后的方向越依赖学习方法与算力。
+> 十三条纵深路线按各方向**起点里程碑的历史顺序**排列（与首页按钮一致）：传统控制（ZMP 判据，1972）→ 安全控制（CLF，1983）→ 接触操作（阻抗控制，1985）→ 导航（概率 SLAM，1986）→ 模仿学习（行为克隆，1988）→ 强化学习（Q-learning，1989）→ 移动操作（移动操作臂协调控制，1994）→ 动作重定向（Gleicher 动作重定向，1998）→ BFM（DeepMimic 动作跟踪谱系，2018）→ 感知越障（2020s 感知策略浪潮）→ 动作生成（MDM 扩散动作生成，2022）→ VLA（RT-2 确立 VLA，2023）→ WAM（World Action Models 综述形式化，2026）。越靠前的方向理论积淀越深，越靠后的方向越依赖学习方法与算力。
 
 ---
 

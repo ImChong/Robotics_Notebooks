@@ -235,6 +235,7 @@ flowchart LR
   - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md)
   - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
   - [VLA（视觉-语言-动作模型）](depth-vla.md)
+  - [WAM（世界–动作模型）](depth-wam.md)
   - [BFM（人形行为基础模型）](depth-bfm.md)
 - 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
 - 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)

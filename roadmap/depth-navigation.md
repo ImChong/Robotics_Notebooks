@@ -221,6 +221,7 @@ flowchart LR
   - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md) — 腿式平台局部越障的展开版
   - [移动操作（Loco-Manipulation）](depth-mobile-manipulation.md) — Stage 5 方向 C 的邻接路线
   - [VLA（视觉-语言-动作模型）](depth-vla.md) — Stage 4 语义接地的模型侧展开版
+  - [WAM（世界–动作模型）](depth-wam.md)
   - [BFM（人形行为基础模型）](depth-bfm.md)
   - [人形 RL 运动控制](depth-rl-locomotion.md)
   - [模仿学习与技能迁移](depth-imitation-learning.md)

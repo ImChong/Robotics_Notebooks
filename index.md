@@ -23,6 +23,7 @@
 | 想让机器人看地形越障 | [感知越障纵深路线](roadmap/depth-perceptive-locomotion.md) |
 | 想用生成模型造人形动作 | [动作生成纵深路线](roadmap/depth-motion-generation.md) |
 | 想让机器人听懂指令干活 | [VLA 纵深路线](roadmap/depth-vla.md) |
+| 想让策略预知动作如何改变世界 | [WAM 纵深路线](roadmap/depth-wam.md) |
 | 想看知识概念和方法 | [浏览完整页面目录](catalog.md) |
 | 想看模块关系和依赖 | [tech-map 总览](tech-map/overview.md) |
 

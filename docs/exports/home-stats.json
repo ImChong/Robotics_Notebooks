@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-07-11",
-  "node_count": 1584,
-  "edge_count": 11943,
+  "node_count": 1585,
+  "edge_count": 11998,
   "coverage": {
     "covered": 1539,
     "total": 1569,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/world-action-models.md",
+      "detail_id": "wiki-concepts-world-action-models",
+      "label": "World Action Models（WAM，世界–动作模型）",
+      "type": "concept",
+      "recency": "2026-07-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
     {
       "path": "wiki/overview/robot-world-models-action-consequence-technology-map.md",
       "detail_id": "wiki-overview-robot-world-models-action-consequence-technology-map",
@@ -204,49 +215,39 @@
       "source": "log.md",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/auto-labeling-pipelines.md",
-      "detail_id": "wiki-methods-auto-labeling-pipelines",
-      "label": "Auto-labeling Pipelines (自动化标注流水线)",
-      "type": "method",
-      "recency": "2026-07-10",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/robot-world-models-action-consequence-technology-map.md",
-    "detail_id": "wiki-overview-robot-world-models-action-consequence-technology-map",
-    "label": "机器人世界模型：动作后果预测技术地图",
-    "type": "overview",
+    "path": "wiki/concepts/world-action-models.md",
+    "detail_id": "wiki-concepts-world-action-models",
+    "label": "World Action Models（WAM，世界–动作模型）",
+    "type": "concept",
     "recency": "2026-07-11",
     "source": "log.md",
-    "action": "added",
+    "action": "maintained",
+    "has_repo": true,
     "community_label": "生成式世界模型（Generative World Models） 社区"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 366
+      "size": 370
     },
     {
       "label": "人形论文深读笔记",
-      "size": 182
+      "size": 185
     },
     {
       "label": "视觉-语言-动作",
       "size": 156
     },
     {
-      "label": "人形强化学习运动控制",
+      "label": "移动操作",
       "size": 116
     },
     {
-      "label": "移动操作",
-      "size": 109
+      "label": "人形强化学习运动控制",
+      "size": 103
     },
     {
       "label": "运动控制",
@@ -355,7 +356,7 @@
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
       "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
       "type": "entity",
-      "degree": 37
+      "degree": 38
     },
     {
       "detail_id": "entity-paper-twist2",

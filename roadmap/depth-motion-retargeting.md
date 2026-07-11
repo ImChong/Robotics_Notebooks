@@ -227,6 +227,7 @@ flowchart LR
   - [移动操作（Loco-Manipulation）](depth-mobile-manipulation.md)
   - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
   - [VLA（视觉-语言-动作模型）](depth-vla.md)
+  - [WAM（世界–动作模型）](depth-wam.md)
 - 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
 - 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
 
