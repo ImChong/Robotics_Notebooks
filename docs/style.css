@@ -2245,8 +2245,10 @@ button.home-wiki-heatmap-cell.is-active {
   .home-entry-route-links {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  /* 奇数个路线按钮时，末行单独一项通栏居中，避免左列悬空 */
-  .home-entry-route-links .btn-secondary:last-child:nth-child(odd) {
+  /* 展开态且总数为奇数时，末行单独一项通栏居中，避免左列悬空。
+     必须挂在 .is-expanded 上：折叠态有 hidden 节点，:nth-child 仍计入它们，
+     会导致可见末项（如第 13 个 WAM）被误判为奇数孤行。 */
+  .home-entry-route-links.is-expanded .btn-secondary:last-child:nth-child(odd) {
     grid-column: 1 / -1;
     max-width: 50%;
     justify-self: center;
