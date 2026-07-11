@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-07-11",
   "node_count": 1564,
-  "edge_count": 11754,
+  "edge_count": 11757,
   "coverage": {
     "covered": 1519,
     "total": 1549,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/methods/beyondmimic.md",
+      "detail_id": "wiki-methods-beyondmimic",
+      "label": "BeyondMimic",
+      "type": "method",
+      "recency": "2026-07-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/methods/sonic-motion-tracking.md",
+      "detail_id": "wiki-methods-sonic-motion-tracking",
+      "label": "SONIC（规模化运动跟踪人形控制）",
+      "type": "method",
+      "recency": "2026-07-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-beyondmimic.md",
+      "detail_id": "entity-paper-beyondmimic",
+      "label": "BeyondMimic",
+      "type": "entity",
+      "recency": "2026-07-11",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-sonic.md",
+      "detail_id": "entity-paper-sonic",
+      "label": "SONIC",
+      "type": "entity",
+      "recency": "2026-07-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    },
     {
       "path": "wiki/concepts/motion-retargeting.md",
       "detail_id": "wiki-concepts-motion-retargeting",
@@ -175,58 +215,17 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-gait.md",
-      "detail_id": "entity-paper-notebook-gait",
-      "label": "GAIT",
-      "type": "entity",
-      "recency": "2026-07-10",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
-    },
-    {
-      "path": "wiki/overview/humanoid-paper-notebooks-index.md",
-      "detail_id": "wiki-overview-humanoid-paper-notebooks-index",
-      "label": "Humanoid Paper Notebooks 知识库索引",
-      "type": "overview",
-      "recency": "2026-07-10",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
-    },
-    {
-      "path": "wiki/methods/humanoid-transformer-touch-dreaming.md",
-      "detail_id": "wiki-methods-humanoid-transformer-touch-dreaming",
-      "label": "Humanoid Transformer with Touch Dreaming (HTD)",
-      "type": "method",
-      "recency": "2026-07-10",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/tasks/stair-obstacle-perceptive-locomotion.md",
-      "detail_id": "wiki-tasks-stair-obstacle-perceptive-locomotion",
-      "label": "楼梯与障碍 Locomotion（感知 / 盲走中心节点）",
-      "type": "task",
-      "recency": "2026-07-10",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/motion-retargeting.md",
-    "detail_id": "wiki-concepts-motion-retargeting",
-    "label": "Motion Retargeting（动作重定向）",
-    "type": "concept",
-    "recency": "2026-07-10",
+    "path": "wiki/methods/beyondmimic.md",
+    "detail_id": "wiki-methods-beyondmimic",
+    "label": "BeyondMimic",
+    "type": "method",
+    "recency": "2026-07-11",
     "source": "log.md",
     "action": "maintained",
-    "has_repo": true,
-    "community_label": "动作重定向（Motion Retargeting） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {

@@ -3,8 +3,9 @@ type: method
 tags: [humanoid, imitation-learning, motion-tracking, foundation-model, nvidia, vla, teleoperation]
 status: complete
 date: 2026-05-14
-updated: 2026-07-08
+updated: 2026-07-11
 related:
+  - ../entities/paper-sonic.md
   - ../entities/paper-athena-wbc-humanoid-longtail.md
   - ../entities/paper-scenebot.md
   - ../entities/paper-motionwam-humanoid-loco-manipulation-wam.md
@@ -46,6 +47,18 @@ SONIC（*Supersizing Motion Tracking for Natural Humanoid Whole-Body Control*）
 | WBC | Whole-Body Control | 全身协调跟踪的执行层问题 |
 | VLA | Vision-Language-Action | 经统一 token 接入的高层接口 |
 | VR | Virtual Reality | 遥操作与实时参考生成入口之一 |
+
+## 论文信息（arXiv:2511.07820）
+
+| 字段 | 内容 |
+|------|------|
+| 完整标题 | *SONIC: Supersizing Motion Tracking for Natural Humanoid Whole-Body Control* |
+| 作者 | Zhengyi Luo、Ye Yuan、Tingwu Wang 等 **28 人**；含 Tairan He、Jan Kautz、Umar Iqbal、Linxi "Jim" Fan、Yuke Zhu（完整名单见 arXiv） |
+| 机构 | NVIDIA（GEAR Lab 等）；CMU 等合作者 |
+| arXiv 版本 | v1 2025-11-11 → v2 2025-12-04 → v3 2026-05-21 |
+| 项目页 | <https://nvlabs.github.io/GEAR-SONIC/>（别名 <https://nvlabs.github.io/SONIC/>） |
+
+论文摘要口径的三个关键量：**1 亿+ MoCap 帧（约 700 小时）** 的密集轨迹监督、网络容量 **1.2M→42M 参数** 的扩展区间、约 **2.1 万 GPU 小时** 训练算力；结论是性能随算力与数据多样性 **稳步改善**，且学到的策略 **泛化到未见动作**。接口侧的一个具体细节：单一策略经 **专用编码器 → 统一 token 空间**，同时处理 **机器人运动、人体运动与混合运动** 三类指令的 **共享潜表征**——这也是 VR / 视频 / 文本 / 音乐 / VLA 能共用同一低层的原因。
 
 ## 为什么重要？
 
@@ -174,9 +187,11 @@ flowchart LR
 
 - [SONIC（规模化人体运动跟踪驱动的人形全身控制）](../../sources/repos/sonic-humanoid-motion-tracking.md)
 - NVIDIA SONIC 项目页 — <https://nvlabs.github.io/GEAR-SONIC/>（页面内摘要、方法段落与演示分区，2026-05-14 抓取对照）
+- arXiv 摘要与版本页 — <https://arxiv.org/abs/2511.07820>（v3，2026-05-21；作者名单、规模量级与统一潜表征叙述，2026-07-11 对照）
 
 ## 关联页面
 
+- [SONIC（论文实体页）](../entities/paper-sonic.md) — survey 坐标（RL 身体系统栈 #17/42、BFM 地图 #07/41、Loco-Manip 161 #019/#103）与交叉引用。
 - [BeyondMimic](./beyondmimic.md)
 - [ExoActor (视频生成驱动的交互式人形控制)](./exoactor.md)
 - [GENMO（统一人体运动估计与生成）](./genmo.md)
