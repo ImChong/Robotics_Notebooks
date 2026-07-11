@@ -1,13 +1,57 @@
 {
   "generated_at": "2026-07-11",
-  "node_count": 1566,
-  "edge_count": 11780,
+  "node_count": 1567,
+  "edge_count": 11795,
   "coverage": {
-    "covered": 1521,
-    "total": 1551,
+    "covered": 1522,
+    "total": 1552,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-bfm-survey-tpami-2025.md",
+      "detail_id": "entity-paper-bfm-survey-tpami-2025",
+      "label": "A Survey of Behavior Foundation Model（TPAMI 2025）",
+      "type": "entity",
+      "recency": "2026-07-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/concepts/behavior-foundation-model.md",
+      "detail_id": "wiki-concepts-behavior-foundation-model",
+      "label": "Behavior Foundation Model（行为基础模型，BFM）",
+      "type": "concept",
+      "recency": "2026-07-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/overview/bfm-category-04-adaptation.md",
+      "detail_id": "wiki-overview-bfm-category-04-adaptation",
+      "label": "BFM 分类 04：Adaptation",
+      "type": "overview",
+      "recency": "2026-07-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/overview/bfm-41-papers-technology-map.md",
+      "detail_id": "wiki-overview-bfm-41-papers-technology-map",
+      "label": "BFM 技术地图：41 篇论文的五类问题视角",
+      "type": "overview",
+      "recency": "2026-07-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
     {
       "path": "wiki/entities/ardy.md",
       "detail_id": "entity-ardy",
@@ -164,17 +208,6 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
-      "path": "wiki/concepts/behavior-foundation-model.md",
-      "detail_id": "wiki-concepts-behavior-foundation-model",
-      "label": "Behavior Foundation Model（行为基础模型，BFM）",
-      "type": "concept",
-      "recency": "2026-07-10",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
       "path": "wiki/tasks/loco-manipulation.md",
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
@@ -184,71 +217,39 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/tasks/vision-language-navigation.md",
-      "detail_id": "wiki-tasks-vision-language-navigation",
-      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
-      "type": "task",
-      "recency": "2026-07-10",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/navigation-slam-autonomy-stack.md",
-      "detail_id": "wiki-overview-navigation-slam-autonomy-stack",
-      "label": "导航·SLAM·自动驾驶开源栈总览",
-      "type": "overview",
-      "recency": "2026-07-10",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md",
-      "detail_id": "entity-paper-3d-ic-joint-navigation-manipulation-planning",
-      "label": "3D-IC（3D Interaction Chains · Joint Navigation and Manipulation Planning）",
-      "type": "entity",
-      "recency": "2026-07-10",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/ardy.md",
-    "detail_id": "entity-ardy",
-    "label": "ARDY：交互式可控 3D 人体运动生成",
+    "path": "wiki/entities/paper-bfm-survey-tpami-2025.md",
+    "detail_id": "entity-paper-bfm-survey-tpami-2025",
+    "label": "A Survey of Behavior Foundation Model（TPAMI 2025）",
     "type": "entity",
     "recency": "2026-07-11",
     "source": "log.md",
-    "action": "added",
-    "community_label": "动作重定向（Motion Retargeting） 社区"
+    "action": "maintained",
+    "has_repo": true,
+    "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 364
+      "size": 366
     },
     {
       "label": "人形论文深读笔记",
-      "size": 185
+      "size": 182
     },
     {
       "label": "视觉-语言-动作",
-      "size": 152
-    },
-    {
-      "label": "移动操作",
-      "size": 116
+      "size": 156
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 102
+      "size": 116
+    },
+    {
+      "label": "移动操作",
+      "size": 109
     },
     {
       "label": "运动控制",
@@ -320,7 +321,7 @@
       "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
       "label": "人形机器人 RL 运动控制：身体系统栈视角",
       "type": "overview",
-      "degree": 182,
+      "degree": 183,
       "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
@@ -336,7 +337,7 @@
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",
       "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
       "type": "entity",
-      "degree": 43,
+      "degree": 44,
       "has_repo": true
     },
     {

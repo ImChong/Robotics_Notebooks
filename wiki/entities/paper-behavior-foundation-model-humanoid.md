@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, foundation-policy, cvae, generative-policy, masked-control, dagger, privileged-training, ppo, unitree-g1, isaac-gym, amass, shanghai-ai-lab, pku, motion-tracking, teleoperation, locomotion]
 status: complete
-updated: 2026-07-01
+updated: 2026-07-11
 arxiv: "2509.13780"
 venue: "TPAMI 2025"
 related:

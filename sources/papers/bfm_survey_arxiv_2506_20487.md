@@ -10,6 +10,7 @@
 - **作者：** Mingqi Yuan, Tao Yu, Wenqi Ge 等（LimX Dynamics、东方理工、港大、EPFL、南科大、浙大等）
 - **配套精选列表：** <https://github.com/yuanmingqi/awesome-bfm-papers>（用户给定镜像：<https://github.com/friedrichyuan/awesome-bfm-papers>）
 - **入库日期：** 2026-05-26
+- **最近刷新：** 2026-07-11（对照 awesome 列表 42 篇；升格 wiki 实体页）
 - **一句话说明：** 首篇系统梳理 **人形 WBC 行为基础模型（BFM）** 的综述：从传统模型法 / 任务专用学习法演进到 **大规模预训练行为先验 + 零样本或快速适应**；按 **goal-conditioned、intrinsic-reward、forward-backward** 三线预训练与 **微调、层次化控制** 两线适应组织文献，并讨论数据集、真机部署与开放问题。
 
 ## 摘要级要点
@@ -57,6 +58,7 @@
 ## 对 wiki 的映射
 
 - 沉淀：[`wiki/concepts/behavior-foundation-model.md`](../../wiki/concepts/behavior-foundation-model.md)
+- 综述实体：[`wiki/entities/paper-bfm-survey-tpami-2025.md`](../../wiki/entities/paper-bfm-survey-tpami-2025.md)
 - 原始列表：[`sources/repos/awesome_bfm_papers.md`](../repos/awesome_bfm_papers.md)
 - 互链升级：foundation-policy、whole-body-control、paper-behavior-foundation-model-humanoid、humanoid-rl-motion-control-body-system-stack
 
@@ -64,4 +66,5 @@
 
 - [x] 摘要、BFM 定义、双 taxonomy、与 VLA 分工
 - [x] 与本库已有 BFM / SONIC 页的对照指针
+- [x] 升格 wiki 实体页 `paper-bfm-survey-tpami-2025.md`（2026-07-11）
 - [ ] 单篇深读 BFM-Zero / MetaMotivo（留待后续 ingest）

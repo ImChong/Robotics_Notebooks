@@ -6,6 +6,7 @@
 - **类型：** repo / curated list
 - **关联论文：** [A Survey of Behavior Foundation Model](https://arxiv.org/abs/2506.20487)（IEEE TPAMI 2025）
 - **入库日期：** 2026-05-26
+- **最近刷新：** 2026-07-11（列表增至 **42 篇**；Adaptation 微调组新增 Any2Any arXiv:2605.23733）
 - **Tags：** #bfm #behavior-foundation-model #humanoid #whole-body-control #survey #curated-list
 
 ## 一句话说明
@@ -32,7 +33,7 @@ BFM 从 **大规模、多样化行为数据** 学习 **广义行为先验（broa
 
 | 子类 | 要点 | 列表代表 |
 |------|------|----------|
-| **微调技术** | FFT、LoRA、潜空间 / task token 适应 | Task Tokens、Fast Adaptation with BFM、Zero-Shot Dynamics Adaptation |
+| **微调技术** | FFT、LoRA、潜空间 / task token、跨具身 PEFT 适应 | Task Tokens、Fast Adaptation with BFM、Zero-Shot Dynamics Adaptation、**Any2Any**（arXiv:2605.23733） |
 | **层次化控制** | 高层规划器（LLM / 扩散）→ BFM 低层执行 | SENTINEL、BeyondMimic、LangWBC、LeVERB、CloSD、UniPhys、TokenHSI |
 
 ### 数据集表（README § Datasets）
@@ -57,6 +58,7 @@ BFM 从 **大规模、多样化行为数据** 学习 **广义行为先验（broa
 ## 对 wiki 的映射
 
 - 沉淀概念页：[`wiki/concepts/behavior-foundation-model.md`](../../wiki/concepts/behavior-foundation-model.md) — BFM 定义、三线预训练 + 两线适应 taxonomy、与本库实体互链
+- 综述实体页：[`wiki/entities/paper-bfm-survey-tpami-2025.md`](../../wiki/entities/paper-bfm-survey-tpami-2025.md) — TPAMI 2025 综述归纳（arXiv:2506.20487）
 - 公众号五类问题导读：[`wiki/overview/bfm-41-papers-technology-map.md`](../../wiki/overview/bfm-41-papers-technology-map.md)（源：[`wechat_embodied_ai_lab_bfm_41_papers_survey.md`](../blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)）
 - **分篇 source 索引（2026-05-27）：** [`bfm_awesome_41_catalog.md`](../papers/bfm_awesome_41_catalog.md) — 41 论文 + 10 数据集各对应 `papers/bfm_awesome_*.md`
 - 交叉更新：
@@ -66,5 +68,5 @@ BFM 从 **大规模、多样化行为数据** 学习 **广义行为先验（broa
 
 ## 参考来源（原始）
 
-- 仓库 README：<https://github.com/friedrichyuan/awesome-bfm-papers/blob/main/README.md>（2026-05-26 抓取）
+- 仓库 README：<https://github.com/friedrichyuan/awesome-bfm-papers/blob/main/README.md>（2026-07-11 抓取）
 - 配套综述 PDF：<https://arxiv.org/pdf/2506.20487>

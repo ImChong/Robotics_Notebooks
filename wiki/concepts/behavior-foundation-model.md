@@ -2,11 +2,12 @@
 type: concept
 tags: [bfm, behavior-foundation-model, humanoid, whole-body-control, foundation-policy, pretraining, survey]
 status: complete
-updated: 2026-07-01
+updated: 2026-07-11
 related:
   - ./foundation-policy.md
   - ./whole-body-control.md
   - ../overview/bfm-41-papers-technology-map.md
+  - ../entities/paper-bfm-survey-tpami-2025.md
   - ../entities/paper-behavior-foundation-model-humanoid.md
   - ../entities/paper-perceptive-bfm.md
   - ../entities/paper-reactivebfm.md
@@ -96,7 +97,7 @@ flowchart TB
 
 | 路线 | 做法 | 代表（awesome 列表） |
 |------|------|----------------------|
-| **微调** | 全参 / LoRA / 修改潜任务向量、Task Tokens | Fast Adaptation with BFM、Zero-Shot Dynamics Adaptation |
+| **微调** | 全参 / LoRA / 修改潜任务向量、Task Tokens、跨具身 PEFT | Fast Adaptation with BFM、Zero-Shot Dynamics Adaptation、[Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md) |
 | **层次化** | 高层生成子目标或 motion token，BFM 作低层 tracker | SENTINEL、BeyondMimic、LangWBC、LeVERB、CloSD、[ReactiveBFM](../entities/paper-reactivebfm.md)（闭环 AR 规划 + BFM 跟踪，真机 reactive WBC）、[GPC](../entities/paper-gpc-generative-pretrained-controllers.md)（离散 token 自回归生成式控制器 + PEFT，物理角色动画） |
 
 与 [GR00T-WholeBodyControl](../entities/gr00t-wholebodycontrol.md) 叙事一致：**VLA / 语言 / 扩散规划** 与 **运动跟踪执行器** 分层的工程趋势。
@@ -120,6 +121,7 @@ flowchart TB
 
 ## 关联页面
 
+- [BFM 综述（TPAMI 2025）](../entities/paper-bfm-survey-tpami-2025.md) — taxonomy 与活索引权威来源
 - [Foundation Policy](./foundation-policy.md) — 操作向基础策略母概念
 - [Whole-Body Control](./whole-body-control.md) — WBC 问题定义与 QP/学习法谱系
 - [BFM（Behavior Foundation Model for Humanoid Robots）](../entities/paper-behavior-foundation-model-humanoid.md) — CVAE+掩码人形 WBC 单篇深读
