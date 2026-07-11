@@ -24,6 +24,7 @@ related:
   - ../entities/nvidia-gear-lab.md
   - ../entities/holomotion.md
   - ../entities/paper-legs-embodied-gaussian-splatting-vla.md
+  - ../entities/ardy.md
   - ./gentlehumanoid-motion-tracking.md
 sources:
   - ../../sources/repos/sonic-humanoid-motion-tracking.md
@@ -66,6 +67,7 @@ SONIC（*Supersizing Motion Tracking for Natural Humanoid Whole-Body Control*）
 - **与 BeyondMimic  lineage**：同属高质量仿真里的模仿 / 跟踪路线；SONIC 强调 **scaling** 式的数据与网络扩展（参见 [BeyondMimic](./beyondmimic.md) 中的物理建模与采样细节对照阅读）。
 - **与「少数据高效 tracking」对照**：[EGM（Efficient General Mimic）](./egm-efficient-general-mimic.md) 用 **小时级精选 MoCap + bin 级课程采样 + CDMoE** 追求高动态泛化，可与本文的 **大规模预训练** 路线并列阅读。
 - **视频驱动现实的落脚点**：人体运动估计（如 [GENMO](./genmo.md)、[WiLoR](./wilor.md)）给出参考轨迹后，需要动力学可行的跟踪策略；SONIC 在 [ExoActor](./exoactor.md) 中被用作「物理过滤器」，直接把人体运动喂入策略而省略部分经典重定向步骤（该结论具有任务与平台依赖性）。
+- **交互式生成上游**：[ARDY](../entities/ardy.md)（SIGGRAPH 2026）演示 **实时自回归扩散人体运动 + SONIC 跟踪 → G1**，与 Kimodo 离线生成→SONIC 形成 **同生态不同延迟档位** 的参考供给路径。
 - **与 VLA 的分工示例**：公开演示把 **GR00T N1.5** 与 SONIC 经同一接口串联，体现「慢推理 / 快反射」式 **分层控制** 的一种工程形态（参见 [VLA](./vla.md)）。
 - **跨具身后训练：** [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md)（arXiv:2605.23733）以 **Gear-SONIC 为源骨干**，经运动学对齐 + 解码器侧 LoRA，用约 **1%** 全量训练成本将 WBT 迁到 LimX Oli/Luna 等新机——与本文「单平台 scaling」形成 **预训练 vs 迁移** 对照阅读。
 - **结构 + 数据再 scaling：** [Humanoid-GPT](../entities/paper-humanoid-gpt.md)（arXiv:2606.03985）在 **~2B 帧 + 因果 Transformer + expert DAgger** 上继续推进零样本敏捷跟踪，项目页提供与 SONIC 的 **四类真机并排对比**；可与本文 **~100M + MLP** 路线并列阅读「通才 tracker 前沿」。
@@ -195,6 +197,7 @@ flowchart LR
 - [BeyondMimic](./beyondmimic.md)
 - [ExoActor (视频生成驱动的交互式人形控制)](./exoactor.md)
 - [GENMO（统一人体运动估计与生成）](./genmo.md)
+- [ARDY（交互式人体运动生成）](../entities/ardy.md) — 实时扩散生成 + SONIC→G1 闭环演示
 - [VLA（Vision-Language-Action）](./vla.md)
 - [LEGS（论文实体）](../entities/paper-legs-embodied-gaussian-splatting-vla.md) — G1 loco-manip VLA 数据合成以 SONIC 为低层 WBC（arXiv:2606.01458）
 - [MotionWAM（论文实体）](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) — WAM 预测 SONIC 统一 motion token 的实时人形 loco-manip（arXiv:2606.09215）

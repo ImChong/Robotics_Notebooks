@@ -26,6 +26,7 @@
 - [AnyGrasp（抓取感知 SDK）](wiki/entities/anygrasp.md) — AnyGrasp** 是上海交通大学 MVIG 团队提出的 **通用抓取感知** 系统：在 **平行夹爪** 设定下，从 **单目深度得到的场景点云** 中 **一次性** 预测 **稠密 7-D `📅unknown` `[entity_page]`
 - [ANYmal 四足机器人](wiki/entities/anymal.md) — ANYmal** 是由苏黎世联邦理工学院（ETH Zurich）的机器人系统实验室（Robotic Systems Lab, RSL）研发，并随后由衍生公司 ANYbotics 成功商业化的高性能 `📅unknown` `[entity_page]`
 - [AprilTag（视觉 fiducial 与检测库）](wiki/entities/april-tag.md) — AprilTag** 是一类为**机器人、相机标定与 AR** 设计的**视觉基准标记（visual fiducial）**系统：标记可用普通打印机制作，软件从图像中恢复每个标记的 **ID**  `📅unknown` `[entity_page]`
+- [ARDY：交互式可控 3D 人体运动生成](wiki/entities/ardy.md) — ARDY**（*Autoregressive Diffusion with Hybrid Representation for Interactive Human Motion Generatio `📅unknown` `[entity_page]`
 - [Articraft](wiki/entities/articraft.md) — Articraft** 是一套面向 **可扩展可关节 3D 资产生成** 的 **agentic** 管线：在**受限工作区**（如单一可写 `model.py`、只读 SDK 文档与小动作空间） `📅2026-05-16` `[entity_page]`
 - [Asimov v1（开源人形机器人仓库）](wiki/entities/asimov-v1.md) — Asimov v1 由 asimovinc 在单仓内开放机械与电气 CAD、MuJoCo 模型及板载软件，配套 DIY Kit 与自采 BOM，适合作为全栈对齐与 Sim2Real 研究的硬件参考平台 `📅unknown` `[entity_page]`
 - [Atom01 Deploy](wiki/entities/atom01-deploy.md) — atom01_deploy** 负责 Atom01 的真机部署链路，连接训练策略与机器人执行系统，是 Sim2Real 落地关键环节。 `📅unknown` `[entity_page]`

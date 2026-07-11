@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, diffusion, motion-generation, humanoid, nvidia, unitree-g1, soma, smpl-x, text-to-motion]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-11
 related:
   - ../methods/diffusion-motion-generation.md
   - ../methods/motionbricks.md
@@ -13,6 +13,7 @@ related:
   - ../entities/gr00t-wholebodycontrol.md
   - ../entities/unitree-g1.md
   - ../concepts/motion-retargeting.md
+  - ./ardy.md
 sources:
   - ../../sources/repos/kimodo.md
   - ../../sources/sites/kimodo-project.md
@@ -95,6 +96,7 @@ flowchart LR
 ## 常见误区或局限
 
 - **勿与 GEM/GENMO 混为一谈**：[GENMO](../methods/genmo.md) 侧重 **单目视频 → SMPL 估计/生成**；Kimodo 侧重 **文本 + 运动学约束 → 骨架轨迹合成**，二者在 NVIDIA 栈中互补（项目页将 GEM 列为相邻工作）。
+- **与 ARDY 分工**：同 SIL 生态的 [ARDY](./ardy.md) 押 **自回归流式 + 交互实时**（SIGGRAPH 2026）；Kimodo 押 **离线 scaling + Benchmark + 多骨架变体**——需要导演式离线编辑选 Kimodo，需要游戏/仿真式在线路点与 prompt streaming 选 ARDY。
 - **SEED 变体能力弱于 Rigplay 全量**：仅 288h 公开数据的 SEED 模型主要用于 **基准对比**，不等同于 RP 全量模型的上限。
 - **运动学轨迹 ≠ 物理可行**：导入 ProtoMotions / SONIC 前仍需接触、平衡与跟踪策略；勿把生成 NPZ 直接当真机指令。
 
@@ -108,6 +110,7 @@ flowchart LR
 - [GR00T WholeBodyControl](./gr00t-wholebodycontrol.md) — SONIC 训练与推理代码仓
 - [Unitree G1](./unitree-g1.md) — Kimodo-G1 目标平台
 - [HY-Motion vs GENMO vs Kimodo](../comparisons/hy-motion-vs-genmo-vs-kimodo.md) — 三条「文本/多模态 → 人体运动」生成式骨干选型对比
+- [ARDY](./ardy.md) — 交互式自回归扩散姊妹（实时流式文本 + 长时域约束）
 
 ## 参考来源
 
