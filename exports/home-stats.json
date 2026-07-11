@@ -1,21 +1,22 @@
 {
   "generated_at": "2026-07-11",
-  "node_count": 1587,
-  "edge_count": 12021,
+  "node_count": 1588,
+  "edge_count": 12035,
   "coverage": {
-    "covered": 1541,
-    "total": 1571,
+    "covered": 1542,
+    "total": 1572,
     "percent": 98
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-internvla-a15-unified-vla.md",
-      "detail_id": "entity-paper-internvla-a15-unified-vla",
-      "label": "InternVLA-A1.5：理解、潜式前瞻与动作的统一 VLA",
+      "path": "wiki/entities/paper-steam-advantage-modeling.md",
+      "detail_id": "entity-paper-steam-advantage-modeling",
+      "label": "STEAM：自监督时序 Ensemble Advantage 建模",
       "type": "entity",
       "recency": "2026-07-11",
       "source": "log.md",
       "action": "added",
+      "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -27,6 +28,36 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
+      "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
+      "label": "VLA 开源复现景观（2025 策展）",
+      "type": "overview",
+      "recency": "2026-07-11",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-rove-humanoid-vla-intervention.md",
+      "detail_id": "entity-paper-rove-humanoid-vla-intervention",
+      "label": "ROVE（Unlocking Human Interventions for Humanoid Manipulation via RL）",
+      "type": "entity",
+      "recency": "2026-07-11",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-internvla-a15-unified-vla.md",
+      "detail_id": "entity-paper-internvla-a15-unified-vla",
+      "label": "InternVLA-A1.5：理解、潜式前瞻与动作的统一 VLA",
+      "type": "entity",
+      "recency": "2026-07-11",
+      "source": "log.md",
+      "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -186,73 +217,43 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/methods/sonic-motion-tracking.md",
-      "detail_id": "wiki-methods-sonic-motion-tracking",
-      "label": "SONIC（规模化运动跟踪人形控制）",
-      "type": "method",
-      "recency": "2026-07-11",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-beyondmimic.md",
-      "detail_id": "entity-paper-beyondmimic",
-      "label": "BeyondMimic",
-      "type": "entity",
-      "recency": "2026-07-11",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-sonic.md",
-      "detail_id": "entity-paper-sonic",
-      "label": "SONIC",
-      "type": "entity",
-      "recency": "2026-07-11",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-internvla-a15-unified-vla.md",
-    "detail_id": "entity-paper-internvla-a15-unified-vla",
-    "label": "InternVLA-A1.5：理解、潜式前瞻与动作的统一 VLA",
+    "path": "wiki/entities/paper-steam-advantage-modeling.md",
+    "detail_id": "entity-paper-steam-advantage-modeling",
+    "label": "STEAM：自监督时序 Ensemble Advantage 建模",
     "type": "entity",
     "recency": "2026-07-11",
     "source": "log.md",
     "action": "added",
+    "has_repo": true,
     "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 372
+      "size": 370
     },
     {
       "label": "人形论文深读笔记",
-      "size": 185
+      "size": 182
     },
     {
       "label": "视觉-语言-动作",
-      "size": 157
-    },
-    {
-      "label": "移动操作",
-      "size": 113
+      "size": 165
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 103
+      "size": 113
     },
     {
-      "label": "动作重定向",
-      "size": 73
+      "label": "移动操作",
+      "size": 112
+    },
+    {
+      "label": "运动控制",
+      "size": 69
     }
   ],
   "top_hubs": [
@@ -283,7 +284,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 242,
+      "degree": 244,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -305,7 +306,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 208,
+      "degree": 209,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -313,7 +314,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 206,
+      "degree": 207,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {

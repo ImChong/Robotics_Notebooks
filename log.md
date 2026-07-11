@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-11] ingest | sources/papers/steam_arxiv_2606_29834.md — STEAM 自监督 ensemble advantage + CFGRL；wiki/entities/paper-steam-advantage-modeling.md
+
+- wiki/entities/paper-steam-advantage-modeling.md
+- wiki/methods/vla.md
+- wiki/overview/vla-open-source-repro-landscape-2025.md
+- wiki/entities/paper-rove-humanoid-vla-intervention.md
+
 ## [2026-07-11] ingest | sources/papers/internvla_a15_arxiv_2607_04988.md — InternVLA-A1.5 统一理解/潜式前瞻/动作 VLA；wiki/entities/paper-internvla-a15-unified-vla.md
 
 - wiki/entities/paper-internvla-a15-unified-vla.md
