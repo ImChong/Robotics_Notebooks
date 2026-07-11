@@ -53,7 +53,7 @@ sources:
 - **架构无关的末段模块：** REALM 不改上游 **ETPNav / UniNaVid / SmartWay** 等范式，适合快速叠加到现有 VLN 栈——与 [VLN 四范式复现路径](../overview/vln-open-source-repro-paradigms.md) 中 **UniNaVid** 路线直接相关（精修骨干即 UniNaVid + LoRA）。
 - **真机信号：** Hello Robot Stretch 上 ONS@0.5m 8.33%→33.33%，表明末段 **可见性感知停车** 对物理噪声与分布偏移有实际价值。
 
-## 核心结构
+## 核心结构与方法栈
 
 | 模块 | 作用 |
 |------|------|
@@ -101,6 +101,18 @@ flowchart LR
 - **误区：** REVERIE / REVERIE-CE 的 **SR** 可直接代表「找到并看清目标」；本文表明应并列报告 **ONS / OracleGS**。
 - **误区：** 末段精修必须重训整条 VLN；REALM 设计为 **stop 后接管**，上游可冻结。
 - **局限：** 绝对性能仍远低于 Human 上界；开放检测与短语抽取错误会传导到 GS；真机评测 episode 较少；未覆盖室外或 manipulator 级后续交互。
+
+## 与其他工作对比
+
+| 路线 | 关注阶段 | 是否改上游 | 接地/评测重点 | 典型平台 |
+|------|----------|-----------|--------------|----------|
+| **标准 VLN-CE（ETPNav / UniNaVid / SmartWay）** | 长视界区域到达 | — | 主看 SR / 3 m 距离 | 仿真为主 |
+| **GroundingMate（WACV 2025）** | 离散 REVERIE 接地辅助 | 需接入接地模块 | 离散图上目标接地 | 仿真 |
+| **3D-IC（ICML 2026）** | 全链导航–操作联合规划 | 重构规划 | 交互路点级可行性 | Stretch 3 |
+| **REALM（本文）** | **stop 后末段精修** | **上游冻结、可插拔** | **实例中心 ONS / GS / OracleGS** | Stretch |
+
+- **相对标准 VLN-CE：** REALM 不追求更强的长视界规划，而是把「区域到达」与「走近并对准可见实例」**解耦**，用实例中心指标暴露高 SR 下的接地缺口。
+- **相对 [3D-IC](./paper-3d-ic-joint-navigation-manipulation-planning.md)：** 同在 Stretch 平台，但 3D-IC 做 **全链导航–操作联合规划**，REALM 只接管 **VLN 末段数米**，二者关注互补、可组合叠加。
 
 ## 关联页面
 

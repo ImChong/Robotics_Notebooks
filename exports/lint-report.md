@@ -2,7 +2,7 @@
 
 ## [2026-07-10] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **6** 条信息型预警）：
+共发现 **0** 个问题（另含 **0** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -91,15 +91,11 @@
 ### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（4 个）
-- wiki/entities/paper-notebook-climber-force-and-motion-estimation-from-video.md
-- wiki/entities/paper-notebook-implicit-b-zier-motion-model-for-precise-spatial.md
-- wiki/entities/paper-notebook-manikin-biomechanically-accurate-neural-inverse.md
-- wiki/entities/paper-notebook-spatial-relationship-preserving-character-motion.md
+### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
+- 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（2 个）
-- wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md（缺 方法 / 评测）
-- wiki/entities/paper-realm-last-3-meter-vln-grounding.md（缺 方法 / 对比）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无
