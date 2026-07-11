@@ -9,7 +9,7 @@ tags:
   - action-chunking
   - humanoid-manipulation
 status: complete
-updated: 2026-05-16
+updated: 2026-07-11
 summary: "Being-H0.7 用大规模第一人称视频与机器人演示，在潜空间对齐未来感知监督，得到可部署的「世界–动作」先验；推理不滚未来像素，直接输出动作 chunk。"
 related:
   - ../methods/vla.md
