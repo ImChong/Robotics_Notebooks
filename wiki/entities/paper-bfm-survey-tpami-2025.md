@@ -105,6 +105,24 @@ flowchart TB
 - **层次栈接口：** 语言/子目标 → 低层 BFM 的标准化协议尚未成熟。
 - **评测统一：** locomotion 向「基础模型」与操作向 VLA 的 **统一 benchmark** 仍缺位。
 
+## 评测现状（综述归纳）
+
+综述并未提出统一榜单，而是梳理各路线沿用的评测口径与其割裂之处：
+
+| 路线 | 常见评测口径 | 综述指出的问题 |
+|------|--------------|----------------|
+| **Goal-conditioned 跟踪** | 参考运动跟踪误差（MPJPE/关键点）、成功率、真机稳定性 | 数据集与动作库不统一，跨工作难横比 |
+| **Intrinsic-reward** | 技能覆盖度、下游 zero/few-shot 回报 | 缺 WBC 场景下的标准探索指标 |
+| **Forward–backward** | 测试时 reward 组合的 zero-shot 回报、适应速度 | 与 goal-conditioned 线口径不互通 |
+
+- **核心结论：** locomotion 向「基础模型」与操作向 VLA 各自沿用局部 benchmark，**统一 WBC 评测协议仍缺位**，是综述反复强调的开放问题。
+
+## 与相关工作对比
+
+- **与 VLA/操作向基础策略：** VLA 整合视觉–语言–动作、多面向操作与相对稳定平台；BFM 主攻 **locomotion / 操作 / 交互的全身低层控制**，二者常 **分层组合**（高层 VLA/LLM → 低层 BFM 执行）。
+- **与既有 WBC 综述：** 早期综述多按 **控制方法（MPC/WBC 优化/RL）** 组织；本文首次以 **预训练三线 + 适应两线** 的 **基础模型** 视角重排文献，形成社区共识坐标。
+- **与本库其他入口分工：** [BFM 技术地图](../overview/bfm-41-papers-technology-map.md) 按五类问题导读、[Behavior Foundation Model 概念页](../concepts/behavior-foundation-model.md) 做机制归纳，本页保留 **综述元信息与 taxonomy 原貌**。
+
 ## 关联页面
 
 - [Behavior Foundation Model](../concepts/behavior-foundation-model.md) — 本库 BFM 概念归纳（编译自本综述）
