@@ -1042,6 +1042,13 @@
         "perceptron",
         "perceptron-inc"
       ]
+    },
+    "idea": {
+      "label": "国际数字经济学院（International Digital Economy Academy）",
+      "aliases": [
+        "idea",
+        "idea-research"
+      ]
     }
   }
 }

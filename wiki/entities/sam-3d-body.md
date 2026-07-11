@@ -2,7 +2,7 @@
 type: entity
 tags: [perception, human-mesh-recovery, mhr, foundation-model, meta, single-image, promptable, open-source, motion-capture]
 status: complete
-updated: 2026-05-30
+updated: 2026-07-11
 related:
   - ./sam3dbody-cpp.md
   - ../methods/wilor.md
@@ -77,11 +77,12 @@ flowchart LR
 
 ## 与 WiLoR、GENMO 的关系
 
-| 维度 | SAM 3D Body | [WiLoR](../methods/wilor.md) | [GENMO](../methods/genmo.md) |
-|------|-------------|------------------------------|------------------------------|
-| 覆盖 | 全身 + 手脚（MHR） | 双手 MANO 级细节 | 时序 SMPL 估计/生成 |
-| 输入 | 单图（可提示） | 单图/逐帧视频 | 视频/2D/文本/音乐等多模态 |
-| 典型下游 | 动捕 BVH、重定向 | 灵巧操作、ExoActor 双手支路 | 长序列运动合成、跟踪参考 |
+| 维度 | SAM 3D Body | [PEAR](./paper-pear-pixel-aligned-expressive-hmr.md) | [WiLoR](../methods/wilor.md) | [GENMO](../methods/genmo.md) |
+|------|-------------|------------------------------------------------------|------------------------------|------------------------------|
+| 覆盖 | 全身 + 手脚（MHR） | 全身 + 脸手（EHM-s / SMPL-X+FLAME） | 双手 MANO 级细节 | 时序 SMPL 估计/生成 |
+| 输入 | 单图（可提示） | 单图 256²，无裁剪 | 单图/逐帧视频 | 视频/2D/文本/音乐等多模态 |
+| 速度 | 重型基础模型 | **>100 FPS**（论文） | 逐帧手部 | 时序模型 |
+| 典型下游 | 动捕 BVH、重定向 | 实时虚拟人 / 低延迟动捕 | 灵巧操作、ExoActor 双手支路 | 长序列运动合成、跟踪参考 |
 
 **实践建议**：需要 **手指精细语义** 时仍可用 WiLoR 补强；需要 **长时一致轨迹** 时在 3DB 逐帧输出上加时序滤波（见 [SAM3DBody-cpp](./sam3dbody-cpp.md)）或接 GENMO 类模型。
 
