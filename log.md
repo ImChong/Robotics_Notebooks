@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-11] ingest | sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md — 世界模型动作后果专题：12 篇独立论文节点 + 四线技术地图；wiki/overview/robot-world-models-action-consequence-technology-map.md wiki/overview/wm-action-consequence-category-01-wam-action-prediction.md … 04 wiki/entities/paper-dswam-dual-system-wam.md … paper-gigaworld-1-policy-evaluation.md
+
 ## [2026-07-11] ingest | sources/repos/awesome_bfm_papers.md、sources/papers/bfm_survey_arxiv_2506_20487.md — 刷新 awesome-bfm-papers（42 篇 + Any2Any）与 BFM 综述；新增 wiki/entities/paper-bfm-survey-tpami-2025.md；交叉更新 behavior-foundation-model、bfm-category-04-adaptation、bfm-41-papers-technology-map
 
 - wiki/entities/paper-bfm-survey-tpami-2025.md

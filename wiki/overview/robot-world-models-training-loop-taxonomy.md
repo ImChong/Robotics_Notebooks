@@ -2,8 +2,9 @@
 type: overview
 tags: [world-models, robot-learning, survey, vla, video-generation, model-based-rl, training-loop]
 status: complete
-updated: 2026-06-20
+updated: 2026-07-11
 related:
+  - ./robot-world-models-action-consequence-technology-map.md
   - ./world-models-15-open-source-technology-map.md
   - ./world-models-route-01-cascade.md
   - ./world-models-route-02-joint.md
@@ -24,11 +25,14 @@ related:
   - ../entities/paper-gamma-world-multi-agent.md
   - ../entities/paper-worldvln-aerial-vln-wam.md
   - ../entities/paper-oscar.md
+  - ../entities/paper-gigaworld-1-policy-evaluation.md
+  - ../entities/paper-embodiedgen-v2-sim-ready-world-engine.md
   - ../tasks/vision-language-navigation.md
 sources:
   - ../../sources/papers/wm_robot_survey_arxiv_2605_00080.md
   - ../../sources/sites/wm-robot-survey-ntumars.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_model_training_loop.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
   - ../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md
   - ../../sources/papers/worldvln_arxiv_2605_15964.md
 summary: "依据 arXiv:2605.00080 与策展解读，把机器人世界模型整理为策略内预测、学习型模拟器、可控视频生成三线，并强调评价应从开环视频逼真转向物理/动作一致性与训练闭环增益。"
@@ -124,10 +128,15 @@ flowchart TB
 - 预测未来是否 **帮助少犯错**？
 - 是否在 **闭环任务** 中提高成功率？
 
-若三者答不好，世界模型容易退化为 Demo。本库 [EWMBench](../entities/ewmbench.md) 讨论 **操纵场景守恒** 类指标；[GE-Sim 2.0](../entities/ge-sim-2.md) 把 **任务成功判定与奖励** 内置进模拟器并报告真机策略增益；[WEM / HTEWorld](../entities/paper-wem-world-ego-modeling.md) 进一步覆盖 **导航–操作交错、多轮长程** rollout；[OSCAR](../entities/paper-oscar.md) 在 [RoboArena](../methods/roboarena.md) 上验证 **开环 WM rollout 与真机策略排名相关性**，可与上述口径对照阅读。
+若三者答不好，世界模型容易退化为 Demo。本库 [EWMBench](../entities/ewmbench.md) 讨论 **操纵场景守恒** 类指标；[GE-Sim 2.0](../entities/ge-sim-2.md) 把 **任务成功判定与奖励** 内置进模拟器并报告真机策略增益；[WEM / HTEWorld](../entities/paper-wem-world-ego-modeling.md) 进一步覆盖 **导航–操作交错、多轮长程** rollout；[OSCAR](../entities/paper-oscar.md) 在 [RoboArena](../methods/roboarena.md) 上验证 **开环 WM rollout 与真机策略排名相关性**；[GigaWorld-1](../entities/paper-gigaworld-1-policy-evaluation.md) 系统论证 **长时序动作忠实 rollout** 比短时视觉逼真更决定策略评估质量，可与上述口径对照阅读。
+
+## 姊妹篇：2026-07 动作后果横切面
+
+[动作后果技术地图](./robot-world-models-action-consequence-technology-map.md) 按 **WAM 执行/修正/筛选、接触建模、3D/4D 几何、评估闭环** 四线串读 12 篇近期工作，与本文 **三线 taxonomy** 交叉覆盖、视角不同：本文锚定 arXiv:2605.00080 综述框架；姊妹篇锚定 **「动作发出去前，世界会怎样变」** 的 2026-07 密集论文策展。
 
 ## 关联页面
 
+- [动作后果技术地图（2026-07 策展）](./robot-world-models-action-consequence-technology-map.md) — WAM 执行/修正/筛选与接触、几何、评估四线
 - [世界模型 15 开源项目技术地图](./world-models-15-open-source-technology-map.md) — 深蓝具身智能 **级联/联合/沙盒** 三线开源基线策展（15 项目）
 - [Generative World Models](../methods/generative-world-models.md) — 像素/Token 视频 rollout 与工程折中（DWM、Being-H0.7、mimic-video 等）
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 未来与动作联合建模的平行综述（arXiv:2605.12090）
@@ -140,6 +149,7 @@ flowchart TB
 - [World Model for Robot Learning 综述（arXiv:2605.00080）](../../sources/papers/wm_robot_survey_arxiv_2605_00080.md)
 - [NTUMARS 综述项目站](../../sources/sites/wm-robot-survey-ntumars.md)
 - [具身智能研究室 · 训练闭环解读（微信公众号）](../../sources/blogs/wechat_embodied_ai_lab_robot_world_model_training_loop.md)
+- [具身智能研究室 · 动作后果专题（微信公众号）](../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md)
 - [WorldVLN 归档（arXiv:2605.15964）](../../sources/papers/worldvln_arxiv_2605_15964.md)
 
 ## 推荐继续阅读
