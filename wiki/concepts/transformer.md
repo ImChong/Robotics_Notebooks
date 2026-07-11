@@ -2,16 +2,18 @@
 type: concept
 summary: "Transformer 用自注意力替代循环与卷积，凭可并行与长程依赖成为现代序列建模与机器人基础策略（VLA、ACT、扩散策略骨干）的通用架构底座。"
 description: Transformer 架构的核心机制（缩放点积注意力、多头注意力、位置编码）及其在机器人具身学习中的角色。
-updated: 2026-06-14
+updated: 2026-07-11
 related:
   - ./deep-learning-foundations.md
   - ./humanoid-policy-network-architecture.md
   - ../methods/bc-with-transformer.md
   - ../methods/robotics-transformer-rt-series.md
   - ../methods/action-chunking.md
+  - ../entities/llms-from-scratch-raschka.md
 sources:
   - ../../sources/papers/attention_is_all_you_need.md
   - ../../sources/books/udl_book.md
+  - ../../sources/repos/rasbt_llms_from_scratch.md
 ---
 
 # Transformer
@@ -66,8 +68,13 @@ $$
 - [BC with Transformer](../methods/bc-with-transformer.md)
 - [Robotics Transformer（RT 系列）](../methods/robotics-transformer-rt-series.md)
 - [动作分块（Action Chunking）](../methods/action-chunking.md)
+- [LLMs-from-scratch（Raschka）](../entities/llms-from-scratch-raschka.md)
 
 ## 参考来源
 - [Attention Is All You Need 来源归档（arXiv:1706.03762）](../../sources/papers/attention_is_all_you_need.md)
 - [Understanding Deep Learning (Prince, 2023)](../../sources/books/udl_book.md)
+- [rasbt/LLMs-from-scratch 仓库归档](../../sources/repos/rasbt_llms_from_scratch.md)
 - Vaswani, A., et al. (2017). *Attention Is All You Need*. NeurIPS. <https://arxiv.org/abs/1706.03762>
+
+## 推荐继续阅读
+- [LLMs-from-scratch（Raschka 实体页）](../entities/llms-from-scratch-raschka.md) — 纯 PyTorch 实现 MHA/GPT 的系统教程

@@ -3,10 +3,11 @@
 type: entity
 tags: [deep-learning, education, tesla, openai, llm, methodology, computer-vision, reinforcement-learning, stanford]
 status: complete
-updated: 2026-07-07
+updated: 2026-07-11
 related:
   - ../references/llm-wiki-karpathy.md
   - ./karpathy-autoresearch.md
+  - ./llms-from-scratch-raschka.md
   - ../methods/reinforcement-learning.md
   - ../concepts/deep-learning-foundations.md
   - ../concepts/ai-auto-research.md
@@ -109,4 +110,5 @@ flowchart LR
 - [LLM Wiki Gist](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) — 方法论原文
 - [karpathy/autoresearch](https://github.com/karpathy/autoresearch) — 自主 LLM 训练实验环
 - [Neural Networks: Zero to Hero（YouTube）](https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI02v7cF6wEh4s0lAKSPLl) — 从零实现 micrograd / makemore / nanoGPT
+- [LLMs-from-scratch（Raschka）](./llms-from-scratch-raschka.md) — 结构化书+notebook 路线，与 Zero to Hero 互补
 - [Software 2.0（2017 博文）](https://karpathy.github.io/2018/09/06/software2/) — 学习即编程与端到端栈讨论
