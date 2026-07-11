@@ -2,7 +2,7 @@
 type: comparison
 tags: [rl, offline-rl, online-rl, data-efficiency, distribution-shift, locomotion]
 status: complete
-updated: 2026-06-18
+updated: 2026-07-11
 related:
   - ../methods/intentional-updates-streaming-rl.md
   - ../methods/reinforcement-learning.md

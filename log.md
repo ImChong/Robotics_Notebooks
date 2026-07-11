@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-11] ingest | sources/papers/steam_arxiv_2606_29834.md — STEAM 自监督 ensemble advantage + CFGRL；wiki/entities/paper-steam-advantage-modeling.md
+
+- wiki/entities/paper-steam-advantage-modeling.md
+- wiki/methods/vla.md
+- wiki/overview/vla-open-source-repro-landscape-2025.md
+- wiki/entities/paper-rove-humanoid-vla-intervention.md
+
 ## [2026-07-11] ingest | sources/papers/pear_arxiv_2601_22693.md — PEAR 像素对齐表意 HMR（SIGGRAPH 2026）；wiki/entities/paper-pear-pixel-aligned-expressive-hmr.md
 
 - wiki/entities/paper-pear-pixel-aligned-expressive-hmr.md

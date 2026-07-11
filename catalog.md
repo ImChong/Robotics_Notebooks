@@ -924,6 +924,7 @@
 - [Spot 高性能 RL（分布距离 Sim2Real 标定）](wiki/entities/paper-spot-rl-distributional-sim2real.md) — 本工作（arXiv:2504.17857）公开 **Boston Dynamics Spot** 在 **Spot RL Researcher Development Kit** 低层电机接口上的  `📅unknown` `[entity_page]`
 - [SPRINT：人形竞技冲刺的高效频谱先验](wiki/entities/paper-sprint-humanoid-athletic-sprints.md) — SPRINT**（*Efficient Spectral Priors for Humanoid Athletic Sprints*，国防科大 / 湖南大学，arXiv:2605.28549）针对 `📅unknown` `[entity_page]`
 - [SSR：开放世界人形安全对称穿越](wiki/entities/paper-ssr-humanoid-open-world-traversal.md) — SSR**（*Scaling Surefooted and Symmetric Humanoid Traversal to the Open World*，浙江大学，arXiv:2605.3077 `📅unknown` `[entity_page]`
+- [STEAM：自监督时序 Ensemble Advantage 建模](wiki/entities/paper-steam-advantage-modeling.md) — STEAM**（*Self-Supervised Temporal Ensemble Advantage Modeling for Real-World Robot Learning*，[arXi `📅unknown` `[entity_page]`
 - [SWAP：对称等变世界模型四足跑酷](wiki/entities/paper-swap-parkour.md) — SWAP**（*Symmetric Equivariant World-Model for Agile Robot Parkour*，Lan et al., [arXiv:2606.19928 `📅unknown` `[entity_page]`
 - [TACO（TActile World Model as a Self-COrrector · arXiv:2607.02840）](wiki/entities/paper-taco-tactile-wm-vla-posttrain.md) — TACO**（*TACO: TActile World Model as a Self-COrrector for Scalable VLA Post-Training*，[arXiv:2607. `📅unknown` `[entity_page]`
 - [TeleGate](wiki/entities/paper-telegate.md) — TeleGate**（*Whole-Body Humanoid Teleoperation via Gated Expert Selection with Motion Prior*，USTC 等 `📅unknown` `[entity_page]`

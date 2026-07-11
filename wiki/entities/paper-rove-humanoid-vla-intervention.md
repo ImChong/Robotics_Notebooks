@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, vla, reinforcement-learning, post-training, human-in-the-loop, teleoperation, dexterous-manipulation, advantage-conditioning, offline-rl, experience-learning, xpeng-robotics, contact-rich-manipulation, xpeng]
 status: complete
-updated: 2026-07-08
+updated: 2026-07-11
 arxiv: "2606.17011"
 venue: "arXiv 2026"
 related:
@@ -105,7 +105,7 @@ flowchart TB
 - **硬件：** IRON-R01-1.11 人形 + 灵巧手。
 - **主任务：** 擦白板（接触丰富）、面包入吐司机（精细对齐）。
 - **附加：** 螺丝安装（毫米级装配，项目页 One More Thing）。
-- **基线：** 演示 SFT、HG-DAgger、Filtered BC、RECAP（VLA 经验学习代表）。
+- **基线：** 演示 SFT、HG-DAgger、Filtered BC、RECAP（VLA 经验学习代表）；同族 **[STEAM](../entities/paper-steam-advantage-modeling.md)**（arXiv:2606.29834）在臂部桌面任务上用 **自监督时序 ensemble advantage + CFGRL** 进一步超越 RECAP（见该页真机四任务表）。
 - **主要结论：**
   - 仅演示数据上 ROVE 已优于 SFT——说明 **人形遥操作示范本身次优**，value-guided 提取优于均匀模仿。
   - 经验学习平均成功率 **ROVE 最佳**；HG-DAgger 策略犹豫、一任务低于演示策略。
