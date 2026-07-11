@@ -2,7 +2,7 @@
 
 ## [2026-07-11] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **1** 条信息型预警）：
+共发现 **0** 个问题（另含 **2** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -97,8 +97,8 @@
 ### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（1 个）
 - wiki/entities/paper-bfm-survey-tpami-2025.md（缺 评测 / 对比）
 
-### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（1 个）
+- wiki/entities/paper-deform360-deformable-visuotactile-dataset.md（缺 重定向就绪度）
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
 - 无
@@ -112,4 +112,4 @@
 ### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：1522/1552 (98%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1539/1569 (98%) wiki/entity 页有 ingest 来源

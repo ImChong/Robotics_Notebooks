@@ -1,13 +1,43 @@
 {
   "generated_at": "2026-07-11",
-  "node_count": 1567,
-  "edge_count": 11795,
+  "node_count": 1584,
+  "edge_count": 11943,
   "coverage": {
-    "covered": 1522,
-    "total": 1552,
+    "covered": 1539,
+    "total": 1569,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/robot-world-models-action-consequence-technology-map.md",
+      "detail_id": "wiki-overview-robot-world-models-action-consequence-technology-map",
+      "label": "机器人世界模型：动作后果预测技术地图",
+      "type": "overview",
+      "recency": "2026-07-11",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/overview/wm-action-consequence-category-01-wam-action-prediction.md",
+      "detail_id": "wiki-overview-wm-action-consequence-category-01-wam-action-prediction",
+      "label": "世界模型动作后果分类 01：WAM 动作后果预测",
+      "type": "overview",
+      "recency": "2026-07-11",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-dswam-dual-system-wam.md",
+      "detail_id": "entity-paper-dswam-dual-system-wam",
+      "label": "DSWAM（Dual-System World Action Foundation Model · arXiv:2607.04927）",
+      "type": "entity",
+      "recency": "2026-07-11",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
     {
       "path": "wiki/entities/paper-bfm-survey-tpami-2025.md",
       "detail_id": "entity-paper-bfm-survey-tpami-2025",
@@ -185,50 +215,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/gemini-robotics.md",
-      "detail_id": "entity-gemini-robotics",
-      "label": "Gemini Robotics",
-      "type": "entity",
-      "recency": "2026-07-10",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-07-10",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/tasks/loco-manipulation.md",
-      "detail_id": "wiki-tasks-loco-manipulation",
-      "label": "Loco-Manipulation (移动操作)",
-      "type": "task",
-      "recency": "2026-07-10",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-bfm-survey-tpami-2025.md",
-    "detail_id": "entity-paper-bfm-survey-tpami-2025",
-    "label": "A Survey of Behavior Foundation Model（TPAMI 2025）",
-    "type": "entity",
+    "path": "wiki/overview/robot-world-models-action-consequence-technology-map.md",
+    "detail_id": "wiki-overview-robot-world-models-action-consequence-technology-map",
+    "label": "机器人世界模型：动作后果预测技术地图",
+    "type": "overview",
     "recency": "2026-07-11",
     "source": "log.md",
-    "action": "maintained",
-    "has_repo": true,
-    "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    "action": "added",
+    "community_label": "生成式世界模型（Generative World Models） 社区"
   },
   "top_communities": [
     {
@@ -284,7 +281,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 227,
+      "degree": 240,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -314,7 +311,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 203,
+      "degree": 205,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -358,7 +355,7 @@
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
       "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
       "type": "entity",
-      "degree": 36
+      "degree": 37
     },
     {
       "detail_id": "entity-paper-twist2",
