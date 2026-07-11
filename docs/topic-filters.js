@@ -30,7 +30,8 @@
     'vision-backbone': 'wiki/overview/topic-vision-backbone.md',
     'data-pipeline': 'wiki/overview/topic-data-pipeline.md',
     'physics-fidelity': 'wiki/overview/topic-physics-fidelity.md',
-    'contact-force-control': 'wiki/overview/topic-contact-force-control.md'
+    'contact-force-control': 'wiki/overview/topic-contact-force-control.md',
+    'embodied-foundation-model': 'wiki/overview/topic-embodied-foundation-model.md'
   };
 
   function hubIdSet(key) {
@@ -186,6 +187,28 @@
         'wiki/concepts/visuo-tactile-fusion.md',
         'wiki/concepts/contact-rich-manipulation.md'
       ]))
+    },
+    'embodied-foundation-model': {
+      /* 五大具身模型家族选型闭环（VLM→VLN→VLA→VLX→WM）。刻意剔除过宽的 `vla`
+         片段（归 topic-vla），改用 `ids` 精选纳入执行层与世界模型层家族页，
+         与 vla / vision-backbone 保持最小重叠；`vlm`/`vln`/`vlx` 为干净片段。 */
+      segments: new Set([
+        'vlm', 'vln', 'vlx', 'worldmodel', 'worldaction'
+      ]),
+      ids: mergeIds('embodied-foundation-model', new Set([
+        'wiki/queries/embodied-fm-taxonomy-loop.md',
+        'wiki/concepts/embodied-fm-latency-generalization-tradeoff.md',
+        'wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md',
+        'wiki/concepts/behavior-foundation-model.md',
+        'wiki/methods/unified-multimodal-tokens.md',
+        'wiki/methods/vla.md',
+        'wiki/tasks/vision-language-navigation.md',
+        'wiki/concepts/world-action-models.md',
+        'wiki/methods/generative-world-models.md',
+        'wiki/concepts/foundation-policy.md',
+        'wiki/concepts/behavior-tree-vla-orchestration.md',
+        'wiki/concepts/3d-spatial-vqa.md'
+      ]))
     }
   };
 
@@ -292,6 +315,12 @@
       label: '接触力控 (Contact Force Control)',
       wikiPath: TOPIC_HUB_IDS['contact-force-control'],
       description: '接触感知/估计→力旋量表示→阻抗/导纳/混合力位控制→接触丰富操作四层力控闭环与带宽/刚度/时延取舍。'
+    },
+    'embodied-foundation-model': {
+      emoji: '🧠',
+      label: '具身大模型 (Embodied Foundation Model)',
+      wikiPath: TOPIC_HUB_IDS['embodied-foundation-model'],
+      description: 'VLM 感知理解→VLN 空间导航→VLA 动作执行→VLX 一体化扩展→世界模型时序推演五层家族选型闭环与泛化/实时性取舍。'
     }
   };
 

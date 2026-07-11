@@ -42,8 +42,8 @@
 
 ## P3: 交互层"具身大模型"增强 (UX/UI)
 
-- [ ] **图谱页"具身大模型"专题视图**：
-    - [ ] `docs/topic-filters.js` 单一事实源新增「具身大模型」专题（`embodied-foundation-model`，🧠 emoji），复用 path 片段并集机制（`vlm` / `vln` / `vlx` / `worldmodel` / `worldaction` 等干净片段——刻意剔除过宽的 `vla`（归 `topic-vla`，改用 `ids` 精选纳入），与 `vla` / `vision-backbone` 保持最小重叠）并用 `ids` 显式纳入五层闭环里未被片段命中的家族页（`embodied-fm-taxonomy-loop` / `vlm-vln-vla-vlx-world-model-taxonomy` / `behavior-foundation-model` / `unified-multimodal-tokens` 等）；同步在 `docs/graph.html` `#filter-topic-chips` 增加对应 chip。新建专题汇总枢纽页 `wiki/overview/topic-embodied-foundation-model.md` 并从 query（`embodied-fm-taxonomy-loop`）/concept（`embodied-fm-latency-generalization-tradeoff`）双向回链，`graph-stats.json` 0 orphans。专题视图筛出节点数落稳后 Puppeteer/Playwright 截图归档至 `.cursor-artifacts/screenshots/graph-topic-embodied-foundation-model.png`。
+- [x] **图谱页"具身大模型"专题视图**：
+    - [x] `docs/topic-filters.js` 单一事实源新增「具身大模型」专题（`embodied-foundation-model`，🧠 emoji），复用 path 片段并集机制（`vlm` / `vln` / `vlx` / `worldmodel` / `worldaction` 等干净片段——刻意剔除过宽的 `vla`（归 `topic-vla`，改用 `ids` 精选纳入），与 `vla` / `vision-backbone` 保持最小重叠）并用 `ids` 显式纳入五层闭环里未被片段命中的家族页（`embodied-fm-taxonomy-loop` / `vlm-vln-vla-vlx-world-model-taxonomy` / `behavior-foundation-model` / `unified-multimodal-tokens` / `methods/vla` / `tasks/vision-language-navigation` / `world-action-models` / `generative-world-models` / `foundation-policy` / `behavior-tree-vla-orchestration` / `3d-spatial-vqa` 等）；同步在 `docs/graph.html` `#filter-topic-chips` 增加对应 chip。专题汇总枢纽页 `wiki/overview/topic-embodied-foundation-model.md` 已建（已从 comparisons/query 家族页交叉回链），`graph-stats.json` 0 orphans。专题视图筛出 30 节点落稳后截图归档至 `.cursor-artifacts/screenshots/graph-topic-embodied-foundation-model.png`（因 `excludeSegments` 优先级高于 `ids`，`vla` 仅从 `segments` 剔除、未加入 `excludeSegments`，避免误伤含 `vla` 词元的分类对比页）。
 - [ ] **详情页"同专题相关页"提示**：
     - [ ] 复用 `docs/topic-filters.js` 单一事实源（`renderMetaTopicBadges` → `topicsForNode` 已数据驱动），家族/新建页命中「具身大模型」专题时自动渲染对应轻量徽标 + 跳转 `graph.html?topic=embodied-foundation-model`（空态降级隐藏）。端到端验证截图归档至 `.cursor-artifacts/screenshots/detail-topic-embodied-foundation-model.png`。
 
