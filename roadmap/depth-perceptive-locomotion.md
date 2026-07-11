@@ -179,6 +179,7 @@ flowchart LR
   - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md)
   - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
   - [VLA（视觉-语言-动作模型）](depth-vla.md)
+  - [WAM（世界–动作模型）](depth-wam.md)
   - [BFM（人形行为基础模型）](depth-bfm.md)
 - 关联知识页：
   - [楼梯与障碍感知 locomotion 任务枢纽](../wiki/tasks/stair-obstacle-perceptive-locomotion.md)

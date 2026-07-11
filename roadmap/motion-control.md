@@ -42,6 +42,7 @@
   - [如果目标是感知越障](depth-perceptive-locomotion.md)
   - [如果目标是动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
   - [如果目标是 VLA（视觉-语言-动作模型）](depth-vla.md)
+  - [如果目标是 WAM（世界–动作模型）](depth-wam.md)
 
 ---
 
@@ -1370,7 +1371,7 @@ flowchart TD
 
 ## 可选纵深（独立路线页）
 
-主路线偏向"先稳住一条主干"，但实际研究方向往往要继续深入某一个子专题。下面十二条纵深路径**各自是独立的 roadmap 页面**，从主路线的某个阶段衔接出去（按各方向起点里程碑的历史顺序排列，与首页、README 一致）：
+主路线偏向"先稳住一条主干"，但实际研究方向往往要继续深入某一个子专题。下面十三条纵深路径**各自是独立的 roadmap 页面**，从主路线的某个阶段衔接出去（按各方向起点里程碑的历史顺序排列，与首页、README 一致）：
 
 | 纵深路径 | 适合谁 | 主线衔接点 |
 |---------|------|-----------|
@@ -1386,6 +1387,7 @@ flowchart TD
 | [如果目标是感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md) | 想让机器人看着地形上楼梯、跨障碍、跑酷 | L5 之后 |
 | [如果目标是动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md) | 想用生成模型造出人体/人形动作 | L5.3 之后 |
 | [如果目标是 VLA（视觉-语言-动作模型）](depth-vla.md) | 想让机器人听懂指令干活 | L5.3 之后 |
+| [如果目标是 WAM（世界–动作模型）](depth-wam.md) | 想让策略在出动作前显式预知世界会怎么变 | L5.3 之后 |
 
 每条纵深页都有自己的 Stage 0–N 划分，可以独立阅读；遇到理论卡点再回主路线对应章节补。
 
@@ -1428,4 +1430,5 @@ flowchart TD
   - [如果目标是感知越障](depth-perceptive-locomotion.md)
   - [如果目标是动作生成](depth-motion-generation.md)
   - [如果目标是 VLA（视觉-语言-动作模型）](depth-vla.md)
+  - [如果目标是 WAM（世界–动作模型）](depth-wam.md)
 - 技术栈地图参考：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)

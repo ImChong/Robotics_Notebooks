@@ -5,6 +5,7 @@ status: complete
 updated: 2026-07-11
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型。"
 related:
+  - ../../roadmap/depth-wam.md
   - ../queries/embodied-fm-taxonomy-loop.md
   - ../overview/robot-world-models-action-consequence-technology-map.md
   - ../entities/paper-dswam-dual-system-wam.md
@@ -146,6 +147,7 @@ flowchart TB
 
 ## 与其他页面的关系
 
+- [WAM 纵深路线](../../roadmap/depth-wam.md) — Stage 0–5 学习路径（边界族谱 → Cascaded / Joint → 部署职责三分）
 - [VLA](../methods/vla.md) — 语言条件视觉策略的主线；WAM 可视为在目标分布与训练接口上的延伸讨论。
 - [Generative World Models](../methods/generative-world-models.md) — 像素/潜空间动态预测工具箱；WAM 强调 **与控制头的耦合位置**。
 - [Model-Based RL](../methods/model-based-rl.md) — 经典 **模型 + 规划/策略** 分解；对照理解 Cascaded WAM 的历史渊源。
@@ -168,6 +170,7 @@ flowchart TB
 
 ## 关联页面
 
+- [WAM 纵深路线](../../roadmap/depth-wam.md)
 - [VLA](../methods/vla.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [Being-H0.7](../methods/being-h07.md)

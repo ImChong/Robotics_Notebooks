@@ -45,4 +45,5 @@
 ## 对 wiki 的映射
 
 - 升格页面：[World Action Models（WAM）](../../wiki/concepts/world-action-models.md) — 概念定义、与 VLA/生成式世界模型的边界、架构族谱与阅读入口。
+- 纵深路线：[WAM 纵深路线](../../roadmap/depth-wam.md) — Stage 0–5（边界族谱 → Cascaded / Joint → 部署职责三分）。
 - 交叉补强：[VLA](../../wiki/methods/vla.md)、[Generative World Models](../../wiki/methods/generative-world-models.md)、[Loco-Manipulation](../../wiki/tasks/loco-manipulation.md)、[Being-H0.7](../../wiki/methods/being-h07.md)（潜空间世界–动作先验的先行实例）。

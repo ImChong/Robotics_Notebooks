@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-11] structural | roadmap/depth-wam.md — 纵深路线扩容至十三条：新增 WAM（世界–动作模型）纵深（边界与族谱 → 世界模型基座 → Cascaded → Joint → 部署职责三分 → 数据评测进阶，起点 World Action Models 综述形式化 2026）；主页「更多路线」按钮扩为十三个并按历史序插入，默认展示最新四条（感知越障 / 动作生成 / VLA / WAM）；README/index/主路线与全部纵深页互链；链接 wiki/concepts/world-action-models.md、动作后果技术地图、DiT4DiT/MotionWAM/DSWAM 等枢纽页
+
 ## [2026-07-11] ingest | sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md — 世界模型动作后果专题：12 篇独立论文节点 + 四线技术地图；wiki/overview/robot-world-models-action-consequence-technology-map.md wiki/overview/wm-action-consequence-category-01-wam-action-prediction.md … 04 wiki/entities/paper-dswam-dual-system-wam.md … paper-gigaworld-1-policy-evaluation.md
 
 ## [2026-07-11] ingest | sources/repos/awesome_bfm_papers.md、sources/papers/bfm_survey_arxiv_2506_20487.md — 刷新 awesome-bfm-papers（42 篇 + Any2Any）与 BFM 综述；新增 wiki/entities/paper-bfm-survey-tpami-2025.md；交叉更新 behavior-foundation-model、bfm-category-04-adaptation、bfm-41-papers-technology-map
