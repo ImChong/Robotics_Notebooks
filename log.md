@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-11] ingest | sources/papers/internvla_a15_arxiv_2607_04988.md — InternVLA-A1.5 统一理解/潜式前瞻/动作 VLA；wiki/entities/paper-internvla-a15-unified-vla.md
+
+- wiki/entities/paper-internvla-a15-unified-vla.md
+- wiki/methods/vla.md
+- wiki/concepts/world-action-models.md
+
 ## [2026-07-11] ingest | sources/papers/pear_arxiv_2601_22693.md — PEAR 像素对齐表意 HMR（SIGGRAPH 2026）；wiki/entities/paper-pear-pixel-aligned-expressive-hmr.md
 
 - wiki/entities/paper-pear-pixel-aligned-expressive-hmr.md
