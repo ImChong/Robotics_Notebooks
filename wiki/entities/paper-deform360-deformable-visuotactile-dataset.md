@@ -89,6 +89,7 @@ flowchart TB
 | **规模** | 198 obj · 1980 seq · 215.7 h · 23.3M frames · 13 action primitives |
 | **模态** | 多视角 RGB 720p、相机标定、**双手触觉压力**、dense 3D particles/mesh、3DGS |
 | **许可证 / 获取** | 项目页 **Fully open**；代码 + pipeline 与 **Hugging Face 数据集** 发布（具体条款以 [deform360.lhy.xyz](https://deform360.lhy.xyz) 与 HF 仓库为准） |
+| **训练输入 / 可部署就绪度** | dense 3D 粒子 + mesh 可直接作 **3D 粒子 WM 策略输入**；2D 多视角视频供 **video WM 训练输入**；PhysTwin + MPC 已示范 **零微调可部署** 到未见 xArm 真机（属 offline benchmark，非在线控制指令流） |
 | **对比 prior** | 唯一同时具备 **Mesh+Calib+Markerless+Tactile+360°+41 Views** 的大规模 real deformable 集（Table 1） |
 
 ## 实验要点（索引级）
