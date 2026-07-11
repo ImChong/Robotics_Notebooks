@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-07-11",
-  "node_count": 1586,
-  "edge_count": 12009,
+  "node_count": 1587,
+  "edge_count": 12021,
   "coverage": {
-    "covered": 1540,
-    "total": 1570,
+    "covered": 1541,
+    "total": 1571,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-internvla-a15-unified-vla.md",
+      "detail_id": "entity-paper-internvla-a15-unified-vla",
+      "label": "InternVLA-A1.5：理解、潜式前瞻与动作的统一 VLA",
+      "type": "entity",
+      "recency": "2026-07-11",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-07-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/world-action-models.md",
+      "detail_id": "wiki-concepts-world-action-models",
+      "label": "World Action Models（WAM，世界–动作模型）",
+      "type": "concept",
+      "recency": "2026-07-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
     {
       "path": "wiki/entities/paper-pear-pixel-aligned-expressive-hmr.md",
       "detail_id": "entity-paper-pear-pixel-aligned-expressive-hmr",
@@ -50,17 +82,6 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/concepts/world-action-models.md",
-      "detail_id": "wiki-concepts-world-action-models",
-      "label": "World Action Models（WAM，世界–动作模型）",
-      "type": "concept",
-      "recency": "2026-07-11",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "生成式世界模型（Generative World Models） 社区"
     },
     {
       "path": "wiki/overview/robot-world-models-action-consequence-technology-map.md",
@@ -196,39 +217,17 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/concepts/motion-retargeting.md",
-      "detail_id": "wiki-concepts-motion-retargeting",
-      "label": "Motion Retargeting（动作重定向）",
-      "type": "concept",
-      "recency": "2026-07-10",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/comparisons/gmr-vs-nmr-vs-reactor.md",
-      "detail_id": "wiki-comparisons-gmr-vs-nmr-vs-reactor",
-      "label": "GMR vs NMR vs ReActor：动作重定向方法谱系对比",
-      "type": "comparison",
-      "recency": "2026-07-10",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "动作重定向（Motion Retargeting） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-pear-pixel-aligned-expressive-hmr.md",
-    "detail_id": "entity-paper-pear-pixel-aligned-expressive-hmr",
-    "label": "PEAR：像素对齐的表意人体网格恢复",
+    "path": "wiki/entities/paper-internvla-a15-unified-vla.md",
+    "detail_id": "entity-paper-internvla-a15-unified-vla",
+    "label": "InternVLA-A1.5：理解、潜式前瞻与动作的统一 VLA",
     "type": "entity",
     "recency": "2026-07-11",
     "source": "log.md",
     "action": "added",
-    "has_repo": true,
-    "community_label": "动作重定向（Motion Retargeting） 社区"
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
@@ -241,7 +240,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 156
+      "size": 157
     },
     {
       "label": "移动操作",
@@ -284,7 +283,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 240,
+      "degree": 242,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -314,7 +313,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 205,
+      "degree": 206,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
