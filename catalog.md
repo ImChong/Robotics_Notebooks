@@ -1275,6 +1275,7 @@
 - [TopoRetarget（交互保留灵巧重定向）](wiki/methods/toporetarget-interaction-preserving-dexterous-retargeting.md) — TopoRetarget**（Wu 等，arXiv:2606.16272，清华大学 IIIS / MARS Lab）把灵巧手 **hand–object 演示** 转成机器人可跟踪的参考轨迹时，不 `📅2026-06-17` `[method_page]`
 - [Trajectory Optimization（轨迹优化）](wiki/methods/trajectory-optimization.md) — 轨迹优化 (Trajectory Optimization, TO)** 是一种基于动力学模型和约束条件，通过数值非线性规划（NLP）技术来自动搜索最优运动序列的计算方法。在足式机器人领域，不论是 `📅unknown` `[method_page]`
 - [Truncated Newton（截断牛顿 / Newton-CG）](wiki/methods/truncated-newton.md) — 截断牛顿（Truncated Newton）**：每步不求解精确 Newton 方程 $Hp = -g$，而用 [共轭梯度（CG）](./conjugate-gradient-method.md `📅unknown` `[method_page]`
+- [UHAS（Unified Hand Action Space，统一手部动作空间）](wiki/methods/uhas-unified-hand-action-space.md) — UHAS**（Casas 等，arXiv:2607.03570，UT Dallas IRVL / ASU IRIS，RSS 2026 灵巧操作研讨会）提出一种 **球面几何统一动作空间**：策略不 `📅2026-07-11` `[method_page]`
 - [Unified Multimodal Tokens (统一多模态 Token)](wiki/methods/unified-multimodal-tokens.md) — 统一多模态 Token** 是一种先进的具身智能架构设计。它摒弃了为每种感官模态设计专用神经网络分支的传统做法，转而将所有输入（图像、语言、状态、动作）全部转换为格式一致的 Token 序列，并在 `📅unknown` `[method_page]`
 - [Visual Servoing（视觉伺服控制）](wiki/methods/visual-servoing.md) — 视觉伺服 (Visual Servoing)** 是一门将计算机视觉（Computer Vision）与经典控制理论（Control Theory）深度融合的技术。它不依赖于将图像构建为复杂的 3 `📅unknown` `[method_page]`
 - [VLA（Vision-Language-Action）](wiki/methods/vla.md) — VLA**：把视觉、语言和机器人动作统一到同一个模型里，让策略不只“看见状态后输出动作”，还能够显式理解任务指令和语义约束。 `📅unknown` `[method_page]`

@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-07-11",
-  "node_count": 1564,
-  "edge_count": 11757,
+  "node_count": 1565,
+  "edge_count": 11767,
   "coverage": {
-    "covered": 1519,
-    "total": 1549,
+    "covered": 1520,
+    "total": 1550,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/methods/uhas-unified-hand-action-space.md",
+      "detail_id": "wiki-methods-uhas-unified-hand-action-space",
+      "label": "UHAS（Unified Hand Action Space，统一手部动作空间）",
+      "type": "method",
+      "recency": "2026-07-11",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/methods/beyondmimic.md",
       "detail_id": "wiki-methods-beyondmimic",
@@ -35,7 +45,8 @@
       "type": "entity",
       "recency": "2026-07-11",
       "source": "log.md",
-      "action": "maintained"
+      "action": "maintained",
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "path": "wiki/entities/paper-sonic.md",
@@ -46,7 +57,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "path": "wiki/concepts/motion-retargeting.md",
@@ -97,7 +108,8 @@
       "type": "overview",
       "recency": "2026-07-10",
       "source": "log.md",
-      "action": "maintained"
+      "action": "maintained",
+      "community_label": "动作重定向（Motion Retargeting） 社区"
     },
     {
       "path": "wiki/entities/perceptron-egocentric.md",
@@ -150,7 +162,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "行为基础模型技术地图（Behavior Foundation Model, BFM） 社区"
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "path": "wiki/tasks/loco-manipulation.md",
@@ -205,52 +217,42 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-egonav.md",
-      "detail_id": "entity-paper-notebook-egonav",
-      "label": "EgoNav",
-      "type": "entity",
-      "recency": "2026-07-10",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/methods/beyondmimic.md",
-    "detail_id": "wiki-methods-beyondmimic",
-    "label": "BeyondMimic",
+    "path": "wiki/methods/uhas-unified-hand-action-space.md",
+    "detail_id": "wiki-methods-uhas-unified-hand-action-space",
+    "label": "UHAS（Unified Hand Action Space，统一手部动作空间）",
     "type": "method",
     "recency": "2026-07-11",
     "source": "log.md",
-    "action": "maintained",
-    "has_repo": true
+    "action": "added",
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 356
-    },
-    {
-      "label": "视觉-语言-动作",
-      "size": 177
-    },
-    {
-      "label": "移动操作",
-      "size": 166
+      "size": 359
     },
     {
       "label": "人形论文深读笔记",
-      "size": 160
+      "size": 182
+    },
+    {
+      "label": "视觉-语言-动作",
+      "size": 156
+    },
+    {
+      "label": "人形强化学习运动控制",
+      "size": 115
+    },
+    {
+      "label": "移动操作",
+      "size": 109
     },
     {
       "label": "运动控制",
       "size": 69
-    },
-    {
-      "label": "行为基础模型技术地图",
-      "size": 61
     }
   ],
   "top_hubs": [
@@ -311,14 +313,15 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 202,
+      "degree": 203,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
       "label": "人形机器人 RL 运动控制：身体系统栈视角",
       "type": "overview",
-      "degree": 182
+      "degree": 182,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "wiki-methods-imitation-learning",
@@ -361,8 +364,7 @@
       "label": "TWIST2",
       "type": "entity",
       "degree": 34,
-      "has_repo": true,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
@@ -387,15 +389,13 @@
       "label": "OASIS（From Simulation Data Collection to Real-World Humanoid Loco-Manipulation）",
       "type": "entity",
       "degree": 27,
-      "has_repo": true,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-amp-survey-08-more",
       "label": "MoRE：复杂地形上的人形多步态残差专家混合",
       "type": "entity",
-      "degree": 26,
-      "community_label": "人形对抗式运动先验（Humanoid Adversarial Motion Prior, AMP） 社区"
+      "degree": 26
     }
   ]
 }

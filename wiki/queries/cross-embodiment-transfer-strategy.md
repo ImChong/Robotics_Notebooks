@@ -3,12 +3,13 @@ title: 跨具身策略迁移选型指南
 type: query
 status: complete
 created: 2026-05-31
-updated: 2026-05-31
-summary: 在人形 WBT 栈中，把一份运动控制策略搬到新机体的三条主流路径——单具身重训 + 重定向迁移 vs Any2Any 高效后训练 vs 多具身联合训练——的成本/数据/泛化三维选型决策树与典型故障模式。
+updated: 2026-07-11
+summary: 在人形 WBT 栈中，把一份运动控制策略搬到新机体的三条主流路径——单具身重训 + 重定向迁移 vs Any2Any 高效后训练 vs 多具身联合训练——的成本/数据/泛化三维选型决策树与典型故障模式；灵巧手层可对照 UHAS 球面统一动作空间路线。
 sources:
   - ../../sources/papers/any2any_arxiv_2605_23733.md
   - ../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md
   - ../../sources/papers/humanoid_rl_stack_17_sonic_supersizing_motion_tracking_for_natural_hu.md
+  - ../../sources/papers/uhas_arxiv_2607_03570.md
 related:
   - ../concepts/whole-body-tracking-pipeline.md
   - ../concepts/motion-retargeting-pipeline.md
@@ -17,6 +18,7 @@ related:
   - ../concepts/behavior-foundation-model.md
   - ../entities/paper-any2any-cross-embodiment-wbt.md
   - ../methods/sonic-motion-tracking.md
+  - ../methods/uhas-unified-hand-action-space.md
   - ../comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md
   - ./humanoid-motion-tracking-method-selection.md
 ---
@@ -39,6 +41,8 @@ related:
 | **单具身重训 + 重定向迁移** | 目标机重新跑一遍参考池 → 重定向 → 训练全链路；只复用**数据与配方**，不复用策略权重。 | [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) + [BeyondMimic](../methods/beyondmimic.md) |
 | **Any2Any 高效后训练** | 冻结源机 WBT 专家，差距拆成**无梯度运动学对齐** + **动力学敏感层 LoRA**，约 1% 全量算力迁到新机。 | [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md) |
 | **多具身联合训练** | 从一开始就把多台机器人塞进同一训练，用统一观测/动作编码吸收差异，训出一个 generalist 骨干。 | [SONIC](../methods/sonic-motion-tracking.md) 多具身路线 / [BFM](../concepts/behavior-foundation-model.md) |
+
+**灵巧手子栈（与上表正交）：** 若迁移对象是 **多指灵巧手** 而非整身人形，[UHAS](../methods/uhas-unified-hand-action-space.md) 用 **规范球面形变 + 级联 IK** 定义共享动作空间，在 [手内重定向](../methods/in-hand-reorientation.md) 上实证 **四手单策略、零样本与 500 iter 微调**（Allegro / LEAP / Shadow / MANO）。选型时勿把人形 WBT 的 token/LoRA 经验直接套到手指关节层。
 
 **正交维度（机体参数，而非策略权重）：** 若问题从「搬策略」变成「在固定拓扑下改质量、几何、PD、执行器限位等连续设计变量」，见 [Shape Your Body（VGDS 价值梯度共设计）](../entities/paper-shape-your-body-value-gradient-design.md)——先多具身训 URMA critic，再冻结沿 $\nabla_f V$ 搜索，边际约 1–2 min/设计。
 

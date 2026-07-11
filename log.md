@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-11] ingest | sources/papers/uhas_arxiv_2607_03570.md — UHAS 统一手部动作空间：sources + wiki/methods/uhas-unified-hand-action-space.md，交叉更新 in-hand-reorientation 与 cross-embodiment-transfer-strategy
+
 ## [2026-07-11] ingest | arXiv 摘要与项目页细节补强 — BeyondMimic（arXiv:2508.08241 v4）与 SONIC（arXiv:2511.07820 v3）四个知识节点补论文信息（作者/机构/版本）、BeyondMimic 两阶段机制（LAFAN1 单一设置跟踪 → 统一潜空间扩散 + classifier guidance 零样本下游）与 SONIC 三轴 scaling / 统一 token 接口细节，并修复实体页策展占位与截断文本；wiki/methods/beyondmimic.md、wiki/methods/sonic-motion-tracking.md、wiki/entities/paper-beyondmimic.md、wiki/entities/paper-sonic.md
 
 ## [2026-07-10] structural | schema/canonical-facts.json — 清单 v28 P2 事实库扩展：220 → 230 条，新增 10 条具身大模型选型矛盾检测规则（端到端 VLA 泛化 vs 分层 VLN 可解释可调、显式世界模型前瞻 vs 反应式省算力、大模型参数量 vs 控制带宽/推理时延、统一 VLX 通用性 vs 专精分立精度、多模态跨度 vs 注意力开销、世界模型推演步长 vs 累积误差、VLM 语义理解 ≠ 可执行动作接口、VLN 仅底盘移动无力控/操作分支、共享 Transformer 底座不免真机数据、模型规模不替代真机动作数据）；逐条经脚本校验对现存 wiki 页有 pos 命中且 0 误报，`make lint` 潜在矛盾 0 个、0 errors；同步勾选 checklist v28 P2 与 DoD 事实库项
