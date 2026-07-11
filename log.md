@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-11] structural(topic) | docs/topic-filters.js + docs/graph.html — V28 P3① 图谱页「🧠 具身大模型」专题视图落地
+
+- docs/topic-filters.js：新增 `embodied-foundation-model` 专题（TOPIC_HUB_IDS / TOPIC_FILTERS / TOPIC_META 三处），干净片段 `vlm`/`vln`/`vlx`，`vla` 仅从 segments 剔除（不入 excludeSegments，避免误伤含 `vla` 词元的 `vlm-vln-vla-vlx-world-model-taxonomy` 等 ids 页），`ids` 精选纳入五层闭环家族页（embodied-fm-taxonomy-loop / behavior-foundation-model / unified-multimodal-tokens / methods-vla / vision-language-navigation / world-action-models / generative-world-models / foundation-policy / behavior-tree-vla-orchestration / 3d-spatial-vqa）
+- docs/graph.html：`#filter-topic-chips` 增加对应 🧠 chip（接 contact-force-control 之后）
+- 枢纽页 wiki/overview/topic-embodied-foundation-model.md 早前已建并交叉回链；专题视图筛出 30 节点，graph-stats 0 orphans；截图归档 .cursor-artifacts/screenshots/graph-topic-embodied-foundation-model.png
+- make lint 0 errors；docs/checklists/tech-stack-next-phase-checklist-v28.md P3① 打勾
+
 ## [2026-07-11] ingest | sources/papers/steam_arxiv_2606_29834.md — STEAM 自监督 ensemble advantage + CFGRL；wiki/entities/paper-steam-advantage-modeling.md
 
 - wiki/entities/paper-steam-advantage-modeling.md
