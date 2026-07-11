@@ -5553,6 +5553,7 @@
 
   // ── 首页「更多路线」折叠：默认只展示里程碑最新的 4 条纵深路线 ──────────────
   var routeToggle = document.getElementById('homeRouteToggle');
+  var routeLinks = document.getElementById('homeRouteLinks');
   if (routeToggle) {
     routeToggle.addEventListener('click', function () {
       var expanded = routeToggle.getAttribute('aria-expanded') === 'true';
@@ -5562,6 +5563,9 @@
       }
       routeToggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
       routeToggle.textContent = expanded ? '展开全部 13 条纵深路线 ↓' : '收起纵深路线 ↑';
+      if (routeLinks) {
+        routeLinks.classList.toggle('is-expanded', !expanded);
+      }
     });
   }
 
