@@ -7,6 +7,12 @@
 - wiki/overview/vla-open-source-repro-landscape-2025.md
 - wiki/entities/paper-rove-humanoid-vla-intervention.md
 
+## [2026-07-11] ingest | sources/papers/internvla_a15_arxiv_2607_04988.md — InternVLA-A1.5 统一理解/潜式前瞻/动作 VLA；wiki/entities/paper-internvla-a15-unified-vla.md
+
+- wiki/entities/paper-internvla-a15-unified-vla.md
+- wiki/methods/vla.md
+- wiki/concepts/world-action-models.md
+
 ## [2026-07-11] ingest | sources/papers/pear_arxiv_2601_22693.md — PEAR 像素对齐表意 HMR（SIGGRAPH 2026）；wiki/entities/paper-pear-pixel-aligned-expressive-hmr.md
 
 - wiki/entities/paper-pear-pixel-aligned-expressive-hmr.md

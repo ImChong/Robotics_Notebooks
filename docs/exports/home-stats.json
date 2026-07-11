@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-11",
-  "node_count": 1587,
-  "edge_count": 12023,
+  "node_count": 1588,
+  "edge_count": 12035,
   "coverage": {
-    "covered": 1541,
-    "total": 1571,
+    "covered": 1542,
+    "total": 1572,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -51,6 +51,27 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
+      "path": "wiki/entities/paper-internvla-a15-unified-vla.md",
+      "detail_id": "entity-paper-internvla-a15-unified-vla",
+      "label": "InternVLA-A1.5：理解、潜式前瞻与动作的统一 VLA",
+      "type": "entity",
+      "recency": "2026-07-11",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/world-action-models.md",
+      "detail_id": "wiki-concepts-world-action-models",
+      "label": "World Action Models（WAM，世界–动作模型）",
+      "type": "concept",
+      "recency": "2026-07-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
       "path": "wiki/entities/paper-pear-pixel-aligned-expressive-hmr.md",
       "detail_id": "entity-paper-pear-pixel-aligned-expressive-hmr",
       "label": "PEAR：像素对齐的表意人体网格恢复",
@@ -92,17 +113,6 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/concepts/world-action-models.md",
-      "detail_id": "wiki-concepts-world-action-models",
-      "label": "World Action Models（WAM，世界–动作模型）",
-      "type": "concept",
-      "recency": "2026-07-11",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "生成式世界模型（Generative World Models） 社区"
     },
     {
       "path": "wiki/overview/robot-world-models-action-consequence-technology-map.md",
@@ -207,16 +217,6 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/methods/sonic-motion-tracking.md",
-      "detail_id": "wiki-methods-sonic-motion-tracking",
-      "label": "SONIC（规模化运动跟踪人形控制）",
-      "type": "method",
-      "recency": "2026-07-11",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
@@ -241,7 +241,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 164
+      "size": 165
     },
     {
       "label": "人形强化学习运动控制",
@@ -284,7 +284,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 242,
+      "degree": 244,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -314,7 +314,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 206,
+      "degree": 207,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
