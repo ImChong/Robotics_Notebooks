@@ -56,6 +56,7 @@ flowchart LR
 - [具身基础模型专题](../wiki/overview/topic-embodied-foundation-model.md)（本仓库）
 - [Query：具身大模型家族分类学闭环](../wiki/queries/embodied-fm-taxonomy-loop.md)（本仓库）
 - [LLMs-from-scratch（Raschka）](../wiki/entities/llms-from-scratch-raschka.md)（本仓库）— **可选前置**：Transformer/GPT 从零实现；配套 [YouTube 播放列表](https://www.youtube.com/playlist?list=PLTKMiZHVd_2IIEsoJrWACkIxLRdfMlw11)
+- [Andrej Karpathy LLM 科普（YouTube）](../wiki/entities/andrej-karpathy.md)（本仓库）— **可选前置（偏直觉）**：[Intro to LLMs（~1 h）](https://www.youtube.com/watch?v=zjkBMFhNj_g) → [Deep Dive into LLMs（~3.5 h）](https://www.youtube.com/watch?v=7xTGNNLPyMI)；建立 pretrain/SFT/RLHF、工具调用与上下文窗口心智模型，再读 VLA 论文更省力
 
 ### 学完输出什么
 - 能一句话说清 VLA 是什么、不是什么
