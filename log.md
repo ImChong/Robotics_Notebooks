@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-11] ingest | sources/repos/rasbt_llms_from_scratch.md、sources/courses/rasbt_llms_from_scratch_youtube.md — Raschka LLMs-from-scratch 书/仓/YouTube 三角入库
+
+- wiki/entities/llms-from-scratch-raschka.md
+- wiki/concepts/transformer.md
+- wiki/concepts/deep-learning-foundations.md
+- wiki/entities/andrej-karpathy.md
+- roadmap/depth-vla.md
+
 ## [2026-07-11] structural(topic) | docs/topic-filters.js + docs/graph.html — V28 P3① 图谱页「🧠 具身大模型」专题视图落地
 
 - docs/topic-filters.js：新增 `embodied-foundation-model` 专题（TOPIC_HUB_IDS / TOPIC_FILTERS / TOPIC_META 三处），干净片段 `vlm`/`vln`/`vlx`，`vla` 仅从 segments 剔除（不入 excludeSegments，避免误伤含 `vla` 词元的 `vlm-vln-vla-vlx-world-model-taxonomy` 等 ids 页），`ids` 精选纳入五层闭环家族页（embodied-fm-taxonomy-loop / behavior-foundation-model / unified-multimodal-tokens / methods-vla / vision-language-navigation / world-action-models / generative-world-models / foundation-policy / behavior-tree-vla-orchestration / 3d-spatial-vqa）

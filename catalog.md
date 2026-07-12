@@ -168,6 +168,7 @@
 - [线性代数学习策展（机器人 L0）](wiki/entities/linear-algebra-curriculum.md) — 一句话：** 机器人运动控制把位姿、速度、力都写成向量和矩阵；本页把 Georgia Tech ILA、[Axl `📅unknown` `[entity_page]`
 - [LingBot-VLA 2.0](wiki/entities/lingbot-vla-v2.md) — LingBot-VLA 2.0**（*From Foundation to Application: Improving VLA Models in Practice*，[arXiv:2607.0 `📅unknown` `[entity_page]`
 - [LIO-SAM](wiki/entities/lio-sam.md) — LIO-SAM** 将 **IMU 预积分、scan-to-map 与回环** 纳入统一因子图优化。 `📅unknown` `[entity_page]`
+- [Build a Large Language Model (From Scratch)（Raschka / LLMs-from-scratch）](wiki/entities/llms-from-scratch-raschka.md) — 《Build a Large Language Model (From Scratch)》** 是 Sebastian Raschka 的 Manning 2024 教材，官方代码在 [rasbt `📅unknown` `[entity_page]`
 - [Manim（程序化数学动画引擎）](wiki/entities/manim.md) — Manim** 是一套用 **Python 代码精确描述动画时间线** 的开源引擎，最初由 **Grant Sanderson（3Blue1Brown）** 为教育数学视频而编写。当前存在两个  `📅unknown` `[entity_page]`
 - [ManiSkill2](wiki/entities/maniskill2.md) — ManiSkill2** 是 2023 年发布的 **通用可泛化操作技能（Generalizable Manipulation Skills）统一基准**，构建于 [SAPIEN](./sapie `📅unknown` `[entity_page]`
 - [矩池云（Matpool）](wiki/entities/matpool.md) — 矩池云**（matpool.com）是专注人工智能领域的 **GPU 云服务商**，以算力市场租用主机为核心，并提供专有云、私有云与高校 A `📅unknown` `[entity_page]`

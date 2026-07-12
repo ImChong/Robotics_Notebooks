@@ -1,13 +1,57 @@
 {
   "generated_at": "2026-07-11",
-  "node_count": 1588,
-  "edge_count": 12035,
+  "node_count": 1589,
+  "edge_count": 12051,
   "coverage": {
-    "covered": 1542,
-    "total": 1572,
+    "covered": 1543,
+    "total": 1573,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/llms-from-scratch-raschka.md",
+      "detail_id": "entity-llms-from-scratch-raschka",
+      "label": "Build a Large Language Model (From Scratch)（Raschka / LLMs-from-scratch）",
+      "type": "entity",
+      "recency": "2026-07-11",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/transformer.md",
+      "detail_id": "wiki-concepts-transformer",
+      "label": "Transformer",
+      "type": "concept",
+      "recency": "2026-07-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/deep-learning-foundations.md",
+      "detail_id": "wiki-concepts-deep-learning-foundations",
+      "label": "深度学习基础 (Deep Learning Foundations)",
+      "type": "concept",
+      "recency": "2026-07-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/andrej-karpathy.md",
+      "detail_id": "entity-andrej-karpathy",
+      "label": "Andrej Karpathy",
+      "type": "entity",
+      "recency": "2026-07-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/overview/topic-embodied-foundation-model.md",
       "detail_id": "wiki-overview-topic-embodied-foundation-model",
@@ -175,58 +219,17 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/overview/bfm-category-04-adaptation.md",
-      "detail_id": "wiki-overview-bfm-category-04-adaptation",
-      "label": "BFM 分类 04：Adaptation",
-      "type": "overview",
-      "recency": "2026-07-11",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/overview/bfm-41-papers-technology-map.md",
-      "detail_id": "wiki-overview-bfm-41-papers-technology-map",
-      "label": "BFM 技术地图：41 篇论文的五类问题视角",
-      "type": "overview",
-      "recency": "2026-07-11",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/ardy.md",
-      "detail_id": "entity-ardy",
-      "label": "ARDY：交互式可控 3D 人体运动生成",
-      "type": "entity",
-      "recency": "2026-07-11",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/methods/uhas-unified-hand-action-space.md",
-      "detail_id": "wiki-methods-uhas-unified-hand-action-space",
-      "label": "UHAS（Unified Hand Action Space，统一手部动作空间）",
-      "type": "method",
-      "recency": "2026-07-11",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/topic-embodied-foundation-model.md",
-    "detail_id": "wiki-overview-topic-embodied-foundation-model",
-    "label": "具身大模型分类学选型闭环（专题汇总）",
-    "type": "overview",
+    "path": "wiki/entities/llms-from-scratch-raschka.md",
+    "detail_id": "entity-llms-from-scratch-raschka",
+    "label": "Build a Large Language Model (From Scratch)（Raschka / LLMs-from-scratch）",
+    "type": "entity",
     "recency": "2026-07-11",
     "source": "log.md",
-    "action": "maintained",
+    "action": "added",
+    "has_repo": true,
     "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
@@ -240,19 +243,19 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 165
+      "size": 166
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 113
+      "size": 114
     },
     {
       "label": "移动操作",
       "size": 112
     },
     {
-      "label": "运动控制",
-      "size": 69
+      "label": "动作重定向",
+      "size": 70
     }
   ],
   "top_hubs": [
@@ -283,7 +286,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 244,
+      "degree": 245,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

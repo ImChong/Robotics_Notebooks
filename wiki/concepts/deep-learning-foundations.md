@@ -2,7 +2,7 @@
 type: concept
 summary: "深度学习基础是现代机器人感知、控制与生成式策略的函数逼近底座，涵盖神经网络表示、优化训练和泛化机制。"
 description: 深度学习的基础理论体系，涵盖了从监督学习、神经网络架构到优化算法与泛化理论的核心概念。
-updated: 2026-06-27
+updated: 2026-07-11
 related:
   - ./backpropagation.md
   - ./vision-backbones.md
@@ -13,12 +13,14 @@ related:
   - ../methods/adamw.md
   - ../comparisons/deep-learning-optimizers.md
   - ../entities/paper-resnet-deep-residual-learning.md
+  - ../entities/llms-from-scratch-raschka.md
 sources:
   - ../../sources/books/udl_book.md
   - ../../sources/papers/deep_learning_optimizers.md
   - ../../sources/repos/pytorch-official.md
   - ../../sources/repos/tensorflow-official.md
   - ../../sources/papers/resnet_arxiv_1512_03385.md
+  - ../../sources/repos/rasbt_llms_from_scratch.md
 ---
 
 # 深度学习基础 (Deep Learning Foundations)
@@ -75,6 +77,7 @@ sources:
 - [Sim2Real](../concepts/sim2real.md)
 - [PyTorch](../entities/pytorch.md)
 - [TensorFlow](../entities/tensorflow.md)
+- [LLMs-from-scratch（Raschka）](../entities/llms-from-scratch-raschka.md)
 
 ## 参考来源
 - [Understanding Deep Learning (Prince, 2023)](../../sources/books/udl_book.md)
@@ -82,6 +85,7 @@ sources:
 - [PyTorch 官方站点与文档索引](../../sources/repos/pytorch-official.md)
 - [TensorFlow 官方站点与文档索引](../../sources/repos/tensorflow-official.md)
 - [ResNet 论文摘录（arXiv:1512.03385）](../../sources/papers/resnet_arxiv_1512_03385.md)
+- [rasbt/LLMs-from-scratch 仓库归档](../../sources/repos/rasbt_llms_from_scratch.md)
 
 ## 推荐继续阅读
 - [Deep Learning Book (Goodfellow et al.)](https://www.deeplearningbook.org/)
