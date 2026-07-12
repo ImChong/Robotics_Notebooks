@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-12] ingest | sources/courses/karpathy_zero_to_hero_youtube.md、sources/repos/nn-zero-to-hero.md — Karpathy Zero to Hero 播放列表（10 集）与配套仓；wiki/entities/andrej-karpathy.md、wiki/concepts/backpropagation.md、wiki/concepts/transformer.md、wiki/entities/llms-from-scratch-raschka.md、roadmap/depth-vla.md
+
+- wiki/entities/andrej-karpathy.md
+- wiki/concepts/backpropagation.md
+- wiki/concepts/transformer.md
+- wiki/entities/llms-from-scratch-raschka.md
+- roadmap/depth-vla.md
+
 ## [2026-07-11] ingest | sources/repos/rasbt_llms_from_scratch.md、sources/courses/rasbt_llms_from_scratch_youtube.md — Raschka LLMs-from-scratch 书/仓/YouTube 三角入库
 
 - wiki/entities/llms-from-scratch-raschka.md

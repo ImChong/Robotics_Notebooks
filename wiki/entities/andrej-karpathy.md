@@ -3,20 +3,25 @@
 type: entity
 tags: [deep-learning, education, tesla, openai, llm, methodology, computer-vision, reinforcement-learning, stanford]
 status: complete
-updated: 2026-07-11
+updated: 2026-07-12
 related:
   - ../references/llm-wiki-karpathy.md
   - ./karpathy-autoresearch.md
   - ./llms-from-scratch-raschka.md
   - ../methods/reinforcement-learning.md
   - ../concepts/deep-learning-foundations.md
+  - ../concepts/backpropagation.md
+  - ../concepts/transformer.md
   - ../concepts/ai-auto-research.md
   - ../overview/robot-learning-overview.md
   - ../methods/imitation-learning.md
+  - ../../roadmap/depth-vla.md
 sources:
   - ../../sources/sites/karpathy-ai.md
   - ../../sources/blogs/karpathy_llm_wiki_gist.md
   - ../../sources/repos/karpathy-autoresearch.md
+  - ../../sources/courses/karpathy_zero_to_hero_youtube.md
+  - ../../sources/repos/nn-zero-to-hero.md
 summary: "Andrej Karpathy：OpenAI 创始成员、前 Tesla AI 总监（Autopilot 视觉全栈）、Stanford CS231n 创始讲师；现以 Zero to Hero 等教育内容为主，其 LLM Wiki Gist 是本知识库维护范式的思想来源。"
 ---
 
@@ -65,7 +70,8 @@ summary: "Andrej Karpathy：OpenAI 创始成员、前 Tesla AI 总监（Autopilo
 
 ### 5. 2024–：教育与 LLM 知识工程
 
-- YouTube：**Neural Networks: Zero to Hero**；大众向 LLM 深度科普（*Deep Dive into LLMs* 等）。
+- YouTube **技术轨 — [Neural Networks: Zero to Hero](../../sources/courses/karpathy_zero_to_hero_youtube.md)**（10 集 ~19 h）：micrograd → makemore → GPT → Tokenizer → GPT-2 124M；配套 [`nn-zero-to-hero`](../../sources/repos/nn-zero-to-hero.md) notebook 与 micrograd / makemore / nanoGPT 仓库。走 [VLA 纵深](../../roadmap/depth-vla.md) 者可作 **动手前置**，与 [LLMs-from-scratch（Raschka）](./llms-from-scratch-raschka.md) 二选一或交叉。
+- **大众轨 — LLM 科普**：*Intro to LLMs*、*Deep Dive into LLMs* 等（见推荐继续阅读）。
 - **LLM Wiki Gist**：持久 markdown wiki + ingest/query/lint —— 见 [LLM Wiki 方法论页](../references/llm-wiki-karpathy.md)。
 - **autoresearch（2026）**：[karpathy/autoresearch](./karpathy-autoresearch.md) — 在 nanochat 单 GPU 栈上让编码代理通宵改 `train.py`、以 **val_bpb** 与固定 5 分钟预算循环实验；人类迭代 `program.md` 作为「研究组织技能」。与 [AI Auto-Research](../concepts/ai-auto-research.md) S3 阶段直接同构。
 
@@ -95,12 +101,17 @@ flowchart LR
 - [Robot Learning Overview](../overview/robot-learning-overview.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Deep Learning Foundations](../concepts/deep-learning-foundations.md)
+- [Backpropagation](../concepts/backpropagation.md)
+- [Transformer](../concepts/transformer.md)
+- [VLA 纵深路线](../../roadmap/depth-vla.md)
 - [Humanoid Robot](./humanoid-robot.md)
 - [Ingest Workflow](../../schema/ingest-workflow.md)
 
 ## 参考来源
 
 - [Karpathy 个人站点原始资料](../../sources/sites/karpathy-ai.md)
+- [Zero to Hero 播放列表（YouTube）](../../sources/courses/karpathy_zero_to_hero_youtube.md)
+- [nn-zero-to-hero 配套仓库](../../sources/repos/nn-zero-to-hero.md)
 - [LLM Wiki Gist 原始资料](../../sources/blogs/karpathy_llm_wiki_gist.md)
 - [autoresearch 仓库原始资料](../../sources/repos/karpathy-autoresearch.md)
 
@@ -109,6 +120,7 @@ flowchart LR
 - [karpathy.ai](https://karpathy.ai/) — 职业时间线、演讲与项目总索引
 - [LLM Wiki Gist](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) — 方法论原文
 - [karpathy/autoresearch](https://github.com/karpathy/autoresearch) — 自主 LLM 训练实验环
-- [Neural Networks: Zero to Hero（YouTube）](https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI02v7cF6wEh4s0lAKSPLl) — 从零实现 micrograd / makemore / nanoGPT
+- [Neural Networks: Zero to Hero（YouTube，10 集）](https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ) — micrograd → makemore → GPT → GPT-2 124M
+- [nn-zero-to-hero（GitHub）](https://github.com/karpathy/nn-zero-to-hero) — 各讲 notebook 归档
 - [LLMs-from-scratch（Raschka）](./llms-from-scratch-raschka.md) — 结构化书+notebook 路线，与 Zero to Hero 互补
 - [Software 2.0（2017 博文）](https://karpathy.github.io/2018/09/06/software2/) — 学习即编程与端到端栈讨论

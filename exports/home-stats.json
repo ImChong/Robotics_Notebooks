@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-12",
   "node_count": 1589,
-  "edge_count": 12051,
+  "edge_count": 12056,
   "coverage": {
     "covered": 1543,
     "total": 1573,
@@ -9,26 +9,45 @@
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/llms-from-scratch-raschka.md",
-      "detail_id": "entity-llms-from-scratch-raschka",
-      "label": "Build a Large Language Model (From Scratch)（Raschka / LLMs-from-scratch）",
+      "path": "wiki/entities/andrej-karpathy.md",
+      "detail_id": "entity-andrej-karpathy",
+      "label": "Andrej Karpathy",
       "type": "entity",
-      "recency": "2026-07-11",
+      "recency": "2026-07-12",
       "source": "log.md",
-      "action": "added",
+      "action": "maintained",
       "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "运动控制（Locomotion） 社区"
+    },
+    {
+      "path": "wiki/concepts/backpropagation.md",
+      "detail_id": "wiki-concepts-backpropagation",
+      "label": "反向传播算法 (Backpropagation)",
+      "type": "concept",
+      "recency": "2026-07-12",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "path": "wiki/concepts/transformer.md",
       "detail_id": "wiki-concepts-transformer",
       "label": "Transformer",
       "type": "concept",
-      "recency": "2026-07-11",
+      "recency": "2026-07-12",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/llms-from-scratch-raschka.md",
+      "detail_id": "entity-llms-from-scratch-raschka",
+      "label": "Build a Large Language Model (From Scratch)（Raschka / LLMs-from-scratch）",
+      "type": "entity",
+      "recency": "2026-07-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
     },
     {
       "path": "wiki/concepts/deep-learning-foundations.md",
@@ -39,18 +58,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/andrej-karpathy.md",
-      "detail_id": "entity-andrej-karpathy",
-      "label": "Andrej Karpathy",
-      "type": "entity",
-      "recency": "2026-07-11",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "path": "wiki/overview/topic-embodied-foundation-model.md",
@@ -70,8 +78,7 @@
       "recency": "2026-07-11",
       "source": "log.md",
       "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/methods/vla.md",
@@ -91,8 +98,7 @@
       "type": "overview",
       "recency": "2026-07-11",
       "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "action": "maintained"
     },
     {
       "path": "wiki/entities/paper-rove-humanoid-vla-intervention.md",
@@ -101,8 +107,7 @@
       "type": "entity",
       "recency": "2026-07-11",
       "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "action": "maintained"
     },
     {
       "path": "wiki/entities/paper-internvla-a15-unified-vla.md",
@@ -111,8 +116,7 @@
       "type": "entity",
       "recency": "2026-07-11",
       "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/concepts/world-action-models.md",
@@ -208,54 +212,43 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/concepts/behavior-foundation-model.md",
-      "detail_id": "wiki-concepts-behavior-foundation-model",
-      "label": "Behavior Foundation Model（行为基础模型，BFM）",
-      "type": "concept",
-      "recency": "2026-07-11",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/llms-from-scratch-raschka.md",
-    "detail_id": "entity-llms-from-scratch-raschka",
-    "label": "Build a Large Language Model (From Scratch)（Raschka / LLMs-from-scratch）",
+    "path": "wiki/entities/andrej-karpathy.md",
+    "detail_id": "entity-andrej-karpathy",
+    "label": "Andrej Karpathy",
     "type": "entity",
-    "recency": "2026-07-11",
+    "recency": "2026-07-12",
     "source": "log.md",
-    "action": "added",
+    "action": "maintained",
     "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "community_label": "运动控制（Locomotion） 社区"
   },
   "top_communities": [
     {
-      "label": "仿真到现实",
-      "size": 370
+      "label": "运动控制",
+      "size": 418
     },
     {
       "label": "人形论文深读笔记",
-      "size": 182
-    },
-    {
-      "label": "视觉-语言-动作",
-      "size": 166
+      "size": 185
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 114
-    },
-    {
-      "label": "移动操作",
-      "size": 112
+      "size": 127
     },
     {
       "label": "动作重定向",
-      "size": 70
+      "size": 106
+    },
+    {
+      "label": "移动操作",
+      "size": 103
+    },
+    {
+      "label": "操作",
+      "size": 84
     }
   ],
   "top_hubs": [
@@ -295,7 +288,7 @@
       "label": "Locomotion",
       "type": "task",
       "degree": 226,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",
@@ -310,14 +303,14 @@
       "type": "method",
       "degree": 209,
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
       "degree": 207,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
@@ -379,7 +372,8 @@
       "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",
       "label": "SD-AMP：统一走、跑与起身的对抗运动先验",
       "type": "entity",
-      "degree": 29
+      "degree": 29,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
     },
     {
       "detail_id": "entity-paper-perceptive-bfm",

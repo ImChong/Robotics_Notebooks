@@ -83,12 +83,12 @@ flowchart LR
 
 | 维度 | LLMs-from-scratch（本书） | Zero to Hero（Karpathy） |
 |------|---------------------------|--------------------------|
-| 载体 | 书 + 长 notebook + 可选视频 | YouTube 短课 + 小仓库 |
-| 深度 | 七章 + 大量 bonus（Llama/Qwen/DPO…） | micrograd → makemore → nanoGPT 渐进 |
+| 载体 | 书 + 长 notebook + 可选视频 | [10 集 YouTube](https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ) + [`nn-zero-to-hero`](../../sources/repos/nn-zero-to-hero.md) |
+| 深度 | 七章 + 大量 bonus（Llama/Qwen/DPO…） | micrograd → makemore → GPT → Tokenizer → GPT-2 124M（~19 h） |
 | 依赖 | 纯 PyTorch 主线 | 同样偏手写、极简依赖 |
-| 机器人读者 | 更适合作 **VLA 前置系统课** | 更适合作 **快速建立 NN/LLM 直觉** |
+| 机器人读者 | 更适合作 **VLA 前置系统课** | 更适合作 **视频驱动建立 NN/Transformer 直觉** |
 
-二者可并行：Zero to Hero 建立「张量→反向传播→小 GPT」速度感，本书补齐 **分词、预训练环、微调与对齐** 的工程完整度。
+二者可并行：Zero to Hero 建立「张量→反向传播→小 GPT」速度感，本书补齐 **分词、预训练环、微调与对齐** 的工程完整度。课程归档见 [`karpathy_zero_to_hero_youtube.md`](../../sources/courses/karpathy_zero_to_hero_youtube.md)。
 
 ## 局限（相对机器人研究）
 
@@ -122,4 +122,5 @@ flowchart LR
 - [rasbt/LLMs-from-scratch（GitHub）](https://github.com/rasbt/LLMs-from-scratch)
 - [Build a Large Language Model (From Scratch) — Manning](http://mng.bz/orYv)
 - [reasoning-from-scratch 续作仓库](https://github.com/rasbt/reasoning-from-scratch) — 推理时 scaling、GRPO 等
-- [Karpathy Zero to Hero 播放列表](https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI02v7cF6wEh4s0lAKSPLl)
+- [Karpathy Zero to Hero 播放列表](https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ)
+- [nn-zero-to-hero 配套仓库](https://github.com/karpathy/nn-zero-to-hero)

@@ -2,7 +2,7 @@
 type: concept
 summary: "Transformer 用自注意力替代循环与卷积，凭可并行与长程依赖成为现代序列建模与机器人基础策略（VLA、ACT、扩散策略骨干）的通用架构底座。"
 description: Transformer 架构的核心机制（缩放点积注意力、多头注意力、位置编码）及其在机器人具身学习中的角色。
-updated: 2026-07-11
+updated: 2026-07-12
 related:
   - ./deep-learning-foundations.md
   - ./humanoid-policy-network-architecture.md
@@ -10,10 +10,12 @@ related:
   - ../methods/robotics-transformer-rt-series.md
   - ../methods/action-chunking.md
   - ../entities/llms-from-scratch-raschka.md
+  - ../entities/andrej-karpathy.md
 sources:
   - ../../sources/papers/attention_is_all_you_need.md
   - ../../sources/books/udl_book.md
   - ../../sources/repos/rasbt_llms_from_scratch.md
+  - ../../sources/courses/karpathy_zero_to_hero_youtube.md
 ---
 
 # Transformer
@@ -69,12 +71,15 @@ $$
 - [Robotics Transformer（RT 系列）](../methods/robotics-transformer-rt-series.md)
 - [动作分块（Action Chunking）](../methods/action-chunking.md)
 - [LLMs-from-scratch（Raschka）](../entities/llms-from-scratch-raschka.md)
+- [Andrej Karpathy](../entities/andrej-karpathy.md)
 
 ## 参考来源
 - [Attention Is All You Need 来源归档（arXiv:1706.03762）](../../sources/papers/attention_is_all_you_need.md)
 - [Understanding Deep Learning (Prince, 2023)](../../sources/books/udl_book.md)
 - [rasbt/LLMs-from-scratch 仓库归档](../../sources/repos/rasbt_llms_from_scratch.md)
+- [Zero to Hero 播放列表（#7 GPT）](../../sources/courses/karpathy_zero_to_hero_youtube.md)
 - Vaswani, A., et al. (2017). *Attention Is All You Need*. NeurIPS. <https://arxiv.org/abs/1706.03762>
 
 ## 推荐继续阅读
 - [LLMs-from-scratch（Raschka 实体页）](../entities/llms-from-scratch-raschka.md) — 纯 PyTorch 实现 MHA/GPT 的系统教程
+- [Karpathy Zero to Hero #7 Let's build GPT](https://www.youtube.com/watch?v=kCc8FmEb1nY) — 视频驱动从零实现
