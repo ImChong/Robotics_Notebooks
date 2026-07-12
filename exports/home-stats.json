@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-07-12",
   "node_count": 1589,
-  "edge_count": 12057,
+  "edge_count": 12059,
   "coverage": {
     "covered": 1543,
     "total": 1573,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/lerobot.md",
+      "detail_id": "entity-lerobot",
+      "label": "LeRobot (Hugging Face)",
+      "type": "entity",
+      "recency": "2026-07-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/andrej-karpathy.md",
       "detail_id": "entity-andrej-karpathy",
@@ -201,29 +211,17 @@
       "source": "log.md",
       "action": "added",
       "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-bfm-survey-tpami-2025.md",
-      "detail_id": "entity-paper-bfm-survey-tpami-2025",
-      "label": "A Survey of Behavior Foundation Model（TPAMI 2025）",
-      "type": "entity",
-      "recency": "2026-07-11",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/andrej-karpathy.md",
-    "detail_id": "entity-andrej-karpathy",
-    "label": "Andrej Karpathy",
+    "path": "wiki/entities/lerobot.md",
+    "detail_id": "entity-lerobot",
+    "label": "LeRobot (Hugging Face)",
     "type": "entity",
     "recency": "2026-07-12",
     "source": "log.md",
     "action": "maintained",
-    "has_repo": true,
-    "community_label": "运动控制（Locomotion） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
@@ -323,7 +321,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 166,
+      "degree": 167,
       "has_repo": true
     }
   ],
