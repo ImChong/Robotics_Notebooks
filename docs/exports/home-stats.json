@@ -1,13 +1,46 @@
 {
   "generated_at": "2026-07-12",
-  "node_count": 1590,
-  "edge_count": 12077,
+  "node_count": 1591,
+  "edge_count": 12086,
   "coverage": {
-    "covered": 1544,
-    "total": 1574,
+    "covered": 1545,
+    "total": 1575,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/robo-bench.md",
+      "detail_id": "entity-robo-bench",
+      "label": "RoboBench（MLLM 具身大脑综合评测）",
+      "type": "entity",
+      "recency": "2026-07-12",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-07-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/esi-bench.md",
+      "detail_id": "entity-esi-bench",
+      "label": "ESI-Bench（具身空间智能基准）",
+      "type": "entity",
+      "recency": "2026-07-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-contactmimic.md",
       "detail_id": "entity-paper-contactmimic",
@@ -101,17 +134,6 @@
       "has_repo": true
     },
     {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-07-11",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
       "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
       "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
       "label": "VLA 开源复现景观（2025 策展）",
@@ -191,37 +213,18 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/overview/robot-world-models-action-consequence-technology-map.md",
-      "detail_id": "wiki-overview-robot-world-models-action-consequence-technology-map",
-      "label": "机器人世界模型：动作后果预测技术地图",
-      "type": "overview",
-      "recency": "2026-07-11",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/overview/wm-action-consequence-category-01-wam-action-prediction.md",
-      "detail_id": "wiki-overview-wm-action-consequence-category-01-wam-action-prediction",
-      "label": "世界模型动作后果分类 01：WAM 动作后果预测",
-      "type": "overview",
-      "recency": "2026-07-11",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "生成式世界模型（Generative World Models） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-contactmimic.md",
-    "detail_id": "entity-paper-contactmimic",
-    "label": "ContactMimic（Humanoid Object Interaction via Contact Control）",
+    "path": "wiki/entities/robo-bench.md",
+    "detail_id": "entity-robo-bench",
+    "label": "RoboBench（MLLM 具身大脑综合评测）",
     "type": "entity",
     "recency": "2026-07-12",
     "source": "log.md",
     "action": "added",
-    "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    "has_repo": true,
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
@@ -277,7 +280,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 245,
+      "degree": 247,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -307,7 +310,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 207,
+      "degree": 208,
       "community_label": "操作（Manipulation） 社区"
     },
     {
