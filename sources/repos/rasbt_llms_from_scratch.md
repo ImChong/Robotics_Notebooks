@@ -58,4 +58,4 @@
 ## 推荐继续阅读（外部）
 
 - [Build A Reasoning Model (From Scratch)](https://github.com/rasbt/reasoning-from-scratch) — 续作：推理时 scaling、RLVR/GRPO 等
-- [Karpathy Neural Networks: Zero to Hero](https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI02v7cF6wEh4s0lAKSPLl) — 更短、更视频驱动的从零 NN/LLM 路线
+- [Karpathy Neural Networks: Zero to Hero](https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ) — 更短、更视频驱动的从零 NN/LLM 路线

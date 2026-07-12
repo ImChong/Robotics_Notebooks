@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-12",
   "node_count": 1589,
-  "edge_count": 12055,
+  "edge_count": 12057,
   "coverage": {
     "covered": 1543,
     "total": 1573,
@@ -20,15 +20,24 @@
       "community_label": "运动控制（Locomotion） 社区"
     },
     {
-      "path": "wiki/concepts/deep-learning-foundations.md",
-      "detail_id": "wiki-concepts-deep-learning-foundations",
-      "label": "深度学习基础 (Deep Learning Foundations)",
+      "path": "wiki/concepts/backpropagation.md",
+      "detail_id": "wiki-concepts-backpropagation",
+      "label": "反向传播算法 (Backpropagation)",
       "type": "concept",
       "recency": "2026-07-12",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true,
       "community_label": "运动控制（Locomotion） 社区"
+    },
+    {
+      "path": "wiki/concepts/transformer.md",
+      "detail_id": "wiki-concepts-transformer",
+      "label": "Transformer",
+      "type": "concept",
+      "recency": "2026-07-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
     },
     {
       "path": "wiki/entities/llms-from-scratch-raschka.md",
@@ -41,14 +50,15 @@
       "has_repo": true
     },
     {
-      "path": "wiki/concepts/transformer.md",
-      "detail_id": "wiki-concepts-transformer",
-      "label": "Transformer",
+      "path": "wiki/concepts/deep-learning-foundations.md",
+      "detail_id": "wiki-concepts-deep-learning-foundations",
+      "label": "深度学习基础 (Deep Learning Foundations)",
       "type": "concept",
-      "recency": "2026-07-11",
+      "recency": "2026-07-12",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "path": "wiki/overview/topic-embodied-foundation-model.md",
@@ -197,17 +207,6 @@
       "detail_id": "entity-paper-bfm-survey-tpami-2025",
       "label": "A Survey of Behavior Foundation Model（TPAMI 2025）",
       "type": "entity",
-      "recency": "2026-07-11",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/concepts/behavior-foundation-model.md",
-      "detail_id": "wiki-concepts-behavior-foundation-model",
-      "label": "Behavior Foundation Model（行为基础模型，BFM）",
-      "type": "concept",
       "recency": "2026-07-11",
       "source": "log.md",
       "action": "maintained",

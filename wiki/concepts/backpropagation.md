@@ -2,7 +2,7 @@
 type: concept
 summary: "反向传播是在分层可微计算图上高效应用链式法则、逐层回传损失梯度以训练神经网络权重的核心算法，是现代机器人端到端感知与策略学习的优化底座。"
 description: 反向传播（Backpropagation）算法：链式法则、前向/反向两趟、与自动微分及机器人策略训练的关系。
-updated: 2026-06-27
+updated: 2026-07-12
 related:
   - ./deep-learning-foundations.md
   - ./transformer.md
@@ -11,10 +11,12 @@ related:
   - ../comparisons/deep-learning-optimizers.md
   - ../entities/pytorch.md
   - ../methods/reinforcement-learning.md
+  - ../entities/andrej-karpathy.md
 sources:
   - ../../sources/papers/rumelhart_backprop_learning_representations_nature_1986.md
   - ../../sources/papers/deep_learning_optimizers.md
   - ../../sources/books/udl_book.md
+  - ../../sources/courses/karpathy_zero_to_hero_youtube.md
 ---
 
 # 反向传播算法 (Backpropagation)
@@ -93,10 +95,11 @@ BP **只负责算梯度**；[SGD](../methods/sgd.md)、[Adam](../methods/adam.md
 - [Learning representations by back-propagating errors（Nature, 1986）](../../sources/papers/rumelhart_backprop_learning_representations_nature_1986.md)
 - [Deep Learning Optimizers 论文摘录](../../sources/papers/deep_learning_optimizers.md)
 - [Understanding Deep Learning (Prince, 2023) — 第 7 章 Gradients and Initialization](../../sources/books/udl_book.md)
+- [Zero to Hero 播放列表（micrograd / 手推 BP）](../../sources/courses/karpathy_zero_to_hero_youtube.md)
 - Rumelhart, D. E., Hinton, G. E. & Williams, R. J. (1986). *Learning representations by back-propagating errors*. Nature 323, 533–536. <https://doi.org/10.1038/323533a0>
 
 ## 推荐继续阅读
 
 - Goodfellow, I., Bengio, Y. & Courville, A. — [Deep Learning Book, Ch. 6: Deep Feedforward Networks](https://www.deeplearningbook.org/contents/mlp.html)
 - Andrej Karpathy — [micrograd](https://github.com/karpathy/micrograd)（极简 autograd 实现，适合手推 BP）
-- [Andrej Karpathy](../entities/andrej-karpathy.md) — *Neural Networks: Zero to Hero* 系列
+- [Zero to Hero 播放列表](https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ) — #1 micrograd、#5 手推整图反向传播

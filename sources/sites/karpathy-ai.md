@@ -41,7 +41,7 @@ AI 研究者与教育者：OpenAI 创始成员、Tesla AI 总监（Autopilot 视
 
 ### 教学
 
-- **YouTube — Neural Networks: Zero to Hero**（micrograd → makemore → nanoGPT 等）
+- **YouTube — Neural Networks: Zero to Hero**（[播放列表](../courses/karpathy_zero_to_hero_youtube.md)：micrograd → makemore → GPT → GPT-2；配套 [nn-zero-to-hero](../repos/nn-zero-to-hero.md)）
 - **YouTube — LLM 大众科普（成对）**：[Intro to LLMs（~1 h）](../courses/karpathy_intro_llms_youtube.md)、[Deep Dive into LLMs（~3.5 h）](../courses/karpathy_deep_dive_llms_youtube.md)
 - **Stanford CS231n**（2016 录像、syllabus、notes；r/cs231n）
 
@@ -72,6 +72,7 @@ AI 研究者与教育者：OpenAI 创始成员、Tesla AI 总监（Autopilot 视
 ## 对 wiki 的映射
 
 - 升格页面：[wiki/entities/andrej-karpathy.md](../../wiki/entities/andrej-karpathy.md)
+- 课程归档：[karpathy_zero_to_hero_youtube.md](../courses/karpathy_zero_to_hero_youtube.md) · [nn-zero-to-hero.md](../repos/nn-zero-to-hero.md) · [karpathy_intro_llms_youtube.md](../courses/karpathy_intro_llms_youtube.md) · [karpathy_deep_dive_llms_youtube.md](../courses/karpathy_deep_dive_llms_youtube.md)
 - 方法论姊妹资料：[karpathy_llm_wiki_gist.md](../blogs/karpathy_llm_wiki_gist.md) → [wiki/references/llm-wiki-karpathy.md](../../wiki/references/llm-wiki-karpathy.md)
 
 ## 参考链接
