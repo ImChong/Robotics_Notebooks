@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-07-12",
-  "node_count": 1589,
-  "edge_count": 12059,
+  "node_count": 1590,
+  "edge_count": 12077,
   "coverage": {
-    "covered": 1543,
-    "total": 1573,
+    "covered": 1544,
+    "total": 1574,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-contactmimic.md",
+      "detail_id": "entity-paper-contactmimic",
+      "label": "ContactMimic（Humanoid Object Interaction via Contact Control）",
+      "type": "entity",
+      "recency": "2026-07-12",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
     {
       "path": "wiki/entities/lerobot.md",
       "detail_id": "entity-lerobot",
@@ -148,7 +158,7 @@
       "source": "log.md",
       "action": "added",
       "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "path": "wiki/entities/sam-3d-body.md",
@@ -159,7 +169,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "path": "wiki/entities/gvhmr.md",
@@ -170,7 +180,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "path": "wiki/concepts/motion-retargeting-pipeline.md",
@@ -180,7 +190,7 @@
       "recency": "2026-07-11",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "动作重定向（Motion Retargeting） 社区"
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "path": "wiki/overview/robot-world-models-action-consequence-technology-map.md",
@@ -201,32 +211,22 @@
       "source": "log.md",
       "action": "added",
       "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dswam-dual-system-wam.md",
-      "detail_id": "entity-paper-dswam-dual-system-wam",
-      "label": "DSWAM（Dual-System World Action Foundation Model · arXiv:2607.04927）",
-      "type": "entity",
-      "recency": "2026-07-11",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "生成式世界模型（Generative World Models） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/lerobot.md",
-    "detail_id": "entity-lerobot",
-    "label": "LeRobot (Hugging Face)",
+    "path": "wiki/entities/paper-contactmimic.md",
+    "detail_id": "entity-paper-contactmimic",
+    "label": "ContactMimic（Humanoid Object Interaction via Contact Control）",
     "type": "entity",
     "recency": "2026-07-12",
     "source": "log.md",
-    "action": "maintained",
-    "has_repo": true
+    "action": "added",
+    "community_label": "模仿学习（Imitation Learning, IL） 社区"
   },
   "top_communities": [
     {
       "label": "运动控制",
-      "size": 418
+      "size": 416
     },
     {
       "label": "人形论文深读笔记",
@@ -234,15 +234,15 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 127
+      "size": 141
     },
     {
-      "label": "动作重定向",
-      "size": 106
+      "label": "模仿学习",
+      "size": 124
     },
     {
       "label": "移动操作",
-      "size": 103
+      "size": 90
     },
     {
       "label": "操作",
@@ -269,7 +269,7 @@
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
-      "degree": 266,
+      "degree": 268,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
@@ -299,7 +299,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 209,
+      "degree": 210,
       "has_repo": true,
       "community_label": "运动控制（Locomotion） 社区"
     },
@@ -322,7 +322,8 @@
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
       "degree": 167,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     }
   ],
   "top_paper_hubs": [
@@ -337,9 +338,9 @@
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",
       "label": "OmniRetarget",
       "type": "entity",
-      "degree": 43,
+      "degree": 44,
       "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
@@ -371,7 +372,7 @@
       "label": "SD-AMP：统一走、跑与起身的对抗运动先验",
       "type": "entity",
       "degree": 29,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "detail_id": "entity-paper-perceptive-bfm",
@@ -390,7 +391,8 @@
       "detail_id": "entity-paper-amp-survey-08-more",
       "label": "MoRE：复杂地形上的人形多步态残差专家混合",
       "type": "entity",
-      "degree": 26
+      "degree": 26,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     }
   ]
 }

@@ -3,7 +3,7 @@ type: concept
 tags: [robotics, humanoid, whole-body-tracking, wbt, pipeline, motion-tracking, cross-embodiment, sim2real]
 status: complete
 created: 2026-05-29
-updated: 2026-07-11
+updated: 2026-07-12
 summary: "Whole-Body Tracking（WBT）端到端流水线：参考采集 → 重定向 → 训练数据 → 策略学习 → 跨具身迁移 → 真机部署的统一视图，对比 SONIC / BeyondMimic / SD-AMP / Heracles / Any2Any / GMT(RGMT) 等 6 条主流落地路径在每一阶段的取舍。"
 related:
   - ./motion-retargeting-pipeline.md
@@ -231,6 +231,10 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 ### 扩展：双机真机社交交互（Rhythm）
 
 当伙伴也是 **主动 humanoid** 且目标为 **拥抱、共舞、问候** 等 **对称物理交互** 时，重定向需同时解决 **个体运动保真** 与 **跨体几何一致** 的 kinematic conflict，策略还需在 **部分可观、异步执行** 下维持耦合动力学。[Rhythm](../entities/paper-rhythm-dual-humanoid-interaction.md)（arXiv:2603.02856）用 **IAMR** 解耦 $E_{self}$ / $E_{inter}$ 并导出交互图/接触图，再以 **IGRL（MAPPO + 图奖励）** 训练，配合 LiDAR 融合定位与 **相位软同步** 在 **双 Unitree G1** 真机落地——把 WBT 流水线的 partner-aware 分支从「仿真 assistive」推进到 **「双机真机富接触交互」**，并发布 **MAGIC** 双人数据集。
+
+### 扩展：contact-conditioned HOI tracking（ContactMimic）
+
+当 WBT 目标从 **自由空间姿态模仿** 延伸到 **人–物交互** 时，纯 keypoint 参考存在 **物理歧义**：机器人可到达正确几何却 **不建立任务相关接触**（擦板、坐椅、搬箱）。[ContactMimic](../entities/paper-contactmimic.md)（arXiv:2607.08742，UIUC）在阶段 2–4 用 **OmniRetarget** 从 **HUMOTO** 提取 keypoint 与 **per-body 二值接触标签**，并以 **三种轨迹增广**（label 翻转、去物体、膨胀碰撞几何）打破 keypoint–contact 相关；阶段 4 训练 **contact-conditioned PPO tracker**，部署时可在 **同一 keypoint** 下用 $\bar{\mathbf{c}}_t$ **开启或抑制** 接触。论文在 G1 真机 5 条 HOI 上验证 contact ✔/✘ controllability，并报告 **无任务专用奖励** 的搬箱 loco-manipulation——为 WBT 流水线补充了「**keypoint + 显式 contact 指令**」的物体交互分支，与 [SceneBot](../entities/paper-scenebot.md) 的通才单策略、[ResMimic](../entities/paper-resmimic.md) 的 GMT+残差路线形成对照。
 
 ### 扩展：GMT 先验 + 残差物体交互（ResMimic）
 

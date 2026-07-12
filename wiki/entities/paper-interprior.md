@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, hoi, loco-manipulation, imitation-learning, reinforcement-learning, ppo, variational-policy, unitree-g1, physics-simulation, uiuc, amazon, cvpr2026]
 status: complete
-updated: 2026-05-17
+updated: 2026-07-12
 arxiv: "2602.06035"
 venue: "CVPR 2026"
 related:
@@ -15,6 +15,7 @@ related:
   - ../concepts/sim2real.md
   - ../concepts/whole-body-control.md
   - ./unitree-g1.md
+  - ./paper-contactmimic.md
 sources:
   - ../../sources/papers/interprior_arxiv_2602_06035.md
   - ../../sources/sites/sirui-xu-interprior-github-io.md
@@ -112,6 +113,7 @@ flowchart TB
 - [Domain Randomization](../concepts/domain-randomization.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [Unitree G1](./unitree-g1.md)
+- [ContactMimic](./paper-contactmimic.md) — 同 UIUC HOI 线；稠密 keypoint+contact 跟踪与运行时 contact 开关，与 InterPrior 的稀疏生成式控制互补
 
 ## 推荐继续阅读
 

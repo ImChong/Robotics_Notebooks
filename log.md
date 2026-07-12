@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-12] ingest | sources/papers/contactmimic_arxiv_2607_08742.md — ContactMimic 人形 HOI contact 条件跟踪；wiki/entities/paper-contactmimic.md 及选型/流水线交叉引用
+
 ## [2026-07-12] ingest | sources/sites/lerobot-huggingface-org.md — LeRobot HF Hub 组织页；wiki/entities/lerobot.md
 
 - wiki/entities/lerobot.md

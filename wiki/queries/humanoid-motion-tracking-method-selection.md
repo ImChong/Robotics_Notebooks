@@ -3,7 +3,7 @@ title: 人形运动跟踪方法选型指南
 type: query
 status: complete
 created: 2026-05-21
-updated: 2026-07-11
+updated: 2026-07-12
 summary: 在人形 RL 运动控制栈中，如何按任务阶段在 DeepMimic / BeyondMimic / AMP 家族 / 通用 tracker / 接触丰富场景 tracking / 生成式动作先验之间选型。
 sources:
   - ../../sources/papers/scenebot_arxiv_2606_27581.md
@@ -88,6 +88,8 @@ flowchart TD
 
 [GentleHumanoid](../methods/gentlehumanoid-motion-tracking.md) 把力/柔顺约束写进跟踪目标，适合接触丰富场景。当已有 **通用 tracker（如 SONIC）** 但需在 **楼梯、搬箱、坐椅** 等 **terrain + object** 组合任务上零样本执行时，优先评估 **[SceneBot](../entities/paper-scenebot.md)**：在参考运动外增加 **per-link contact label**（link 应对 terrain/object 施力），并用 **hindsight scene reconstruction** 从无场景动捕合成训练配对数据；论文报告自由空间与 SONIC 同级，而 object/terrain 成功率 **95–100% vs 5–15%**。高层可用规则/遥操作生成 label，部署时 **$c_t=0$** 可回退平地跟踪。
 
+当任务语义由 **「是否真正接触物体」** 定义（擦板 vs 挥手贴近、坐椅承重 vs 悬空蹲姿、搬箱 vs 手路过箱子），且需要 **同一 keypoint 下运行时开关接触** 时，优先评估 **[ContactMimic](../entities/paper-contactmimic.md)**（arXiv:2607.08742）：在 keypoint 外增加 **per-body 二值 contact 指令**，并用 **label 翻转 / 去物体 / 膨胀几何** 增广打破 keypoint–contact 相关；论文在 HUMOTO 10 条仿真与 G1 真机 5 条上验证 contact ✔/✘ controllability，MPJPE 与 BeyondMimic 相当但接触与物体位移显著更高，且搬箱 **无需任务专用奖励**。当前为 **per-motion 策略**，与 SceneBot 的通才单策略形成粒度对照。
+
 参考不足时，[ASE](../methods/ase.md)、[GenMo](../methods/genmo.md)、[扩散动作生成](../methods/diffusion-motion-generation.md) 用于扩充或平滑参考分布。场景资产生成还可对照 [OmniRetarget](../entities/paper-hrl-stack-03-omniretarget.md) 的 **interaction-preserving retarget** vs SceneBot 的 **reconstruction-first**（论文：后者 OMOMO 上抓取失败更少）。
 
 当入口是 **自然语言** 且目标是 **机器人可执行的高动态全身**（而非人体 SMPL 再 retarget）时，优先评估 **[PhyGile](../entities/paper-phygile.md)**：**262D robot-native 扩散 + physics-prefix + GMT 验证/微调闭环**；与 [Harmon](../entities/paper-loco-manip-161-097-harmon.md) 同族但强调 **物理前缀与跟踪器共训**，避免人体 T2M 先验的推理期重定向鸿沟。
@@ -140,6 +142,7 @@ flowchart TD
 | **跨具身 WBT** | 源机 Sonic/Oli-WBT → Any2Any 对齐+LoRA | 新机少量数据、保留源先验 |
 | **接触任务** | GentleHumanoid + 下游操作/搬运 | 推、扶、柔顺交互 |
 | **场景交互 tracking** | SONIC/通用 tracker + contact label 或 SceneBot 单策略 | 搬箱上楼、楼梯、坐椅；需 global root 与 hand contact label |
+| **接触开关 tracking** | HUMOTO/OmniRetarget + ContactMimic 增广 + contact-conditioned PPO | 同 keypoint 下擦板/坐椅/搬箱 contact on/off；per-motion 策略 |
 | **竞技冲刺** | LAFAN1→GMR 五周期 → 频谱先验 → 残差 PPO | G1 零样本 0–6 m/s（[SPRINT](../entities/paper-sprint-humanoid-athletic-sprints.md)） |
 
 ---
@@ -155,6 +158,7 @@ flowchart TD
 ## 参考来源
 
 - [SceneBot（arXiv:2606.27581）](../../sources/papers/scenebot_arxiv_2606_27581.md)
+- [ContactMimic（arXiv:2607.08742）](../../sources/papers/contactmimic_arxiv_2607_08742.md)
 - [VMP（SCA 2024 PDF）](../../sources/papers/humanoid_pnb_vmp.md)
 - [DeepMimic 论文摘要](../../sources/papers/deepmimic.md)
 - [AMP 论文摘要](../../sources/papers/amp.md)
@@ -176,6 +180,7 @@ flowchart TD
 - [Heracles](../entities/paper-heracles-humanoid-diffusion.md)、[PhyGile](../entities/paper-phygile.md)、[SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md)、[SPRINT](../entities/paper-sprint-humanoid-athletic-sprints.md)
 - [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md)
 - [SceneBot](../entities/paper-scenebot.md)
+- [ContactMimic](../entities/paper-contactmimic.md)
 - [VMP](../entities/paper-notebook-vmp.md)
 
 ## 一句话记忆
