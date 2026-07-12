@@ -999,6 +999,7 @@
 - [RF-DETR（Roboflow Detection Transformer）](wiki/entities/rf-detr.md) — RF-DETR** 是 Roboflow 与 CMU 联合提出的 **实时 closed-vocabulary 检测 Transformer**（ICLR 2026，[arXiv:2511.095 `📅unknown` `[entity_page]`
 - [RLDX-1](wiki/entities/rldx-1.md) — RLDX-1** 是面向类人**灵巧操作**的 **Vision-Language-Action（VLA）** 开源模型与代码库（技术报告见 arXiv:2605.03269）。在继承大规模 VL `📅unknown` `[entity_page]`
 - [RoamerX（智身四足导航栈）](wiki/entities/roamerx-navigation.md) — RoamerX**（社区开源版 **RoamerX Lite**）是智身科技（GENISOM AI）面向四足机器人的 **ROS 2 导航栈**：在 **Nav2** 基础上增强 **SLAM、全 `📅unknown` `[entity_page]`
+- [RoboBench（MLLM 具身大脑综合评测）](wiki/entities/robo-bench.md) — RoboBench**（*A Comprehensive Evaluation Benchmark for Multimodal Large Language Models as Embodied `📅unknown` `[entity_page]`
 - [RoboGen](wiki/entities/robogen.md) — RoboGen** 是面向 **机器人学习数据扩展** 的 **自动生成框架**，利用大语言模型与仿真器联动 **程序化生成任务、场景与演示轨迹**。 `📅unknown` `[entity_page]`
 - [Robot Explorer](wiki/entities/robot-explorer.md) — Robot Explorer** 是一个基于 Web 的交互式 3D 机器人探索工具，专注于机器人动力学分析、运动学可视化与教育演示。它由开发者 `ferrolho` 维护，支持在浏览器中直接操控 `📅unknown` `[entity_page]`
 - [RIO（Robot I/O）](wiki/entities/robot-io-rio.md) — RIO（Robot I/O）** 是一套面向**真实机器人**的 **Python 实时 I/O** 与编排框架，目标是把「换一套机械臂 / 人形 / 相机 / 遥操作设备就要重写控制栈」的摩擦降 `📅unknown` `[entity_page]`

@@ -1,13 +1,46 @@
 {
   "generated_at": "2026-07-12",
-  "node_count": 1591,
-  "edge_count": 12091,
+  "node_count": 1592,
+  "edge_count": 12100,
   "coverage": {
-    "covered": 1545,
-    "total": 1575,
+    "covered": 1546,
+    "total": 1576,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/robo-bench.md",
+      "detail_id": "entity-robo-bench",
+      "label": "RoboBench（MLLM 具身大脑综合评测）",
+      "type": "entity",
+      "recency": "2026-07-12",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-07-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/esi-bench.md",
+      "detail_id": "entity-esi-bench",
+      "label": "ESI-Bench（具身空间智能基准）",
+      "type": "entity",
+      "recency": "2026-07-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-fastgrasp-mobile-dexterous-grasping.md",
       "detail_id": "entity-paper-fastgrasp-mobile-dexterous-grasping",
@@ -146,17 +179,6 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-07-11",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
       "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
       "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
       "label": "VLA 开源复现景观（2025 策展）",
@@ -196,39 +218,18 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-pear-pixel-aligned-expressive-hmr.md",
-      "detail_id": "entity-paper-pear-pixel-aligned-expressive-hmr",
-      "label": "PEAR：像素对齐的表意人体网格恢复",
-      "type": "entity",
-      "recency": "2026-07-11",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/entities/sam-3d-body.md",
-      "detail_id": "entity-sam-3d-body",
-      "label": "SAM 3D Body（3DB）",
-      "type": "entity",
-      "recency": "2026-07-11",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-fastgrasp-mobile-dexterous-grasping.md",
-    "detail_id": "entity-paper-fastgrasp-mobile-dexterous-grasping",
-    "label": "FastGrasp：移动操作器上的学习式全身快速灵巧抓取",
+    "path": "wiki/entities/robo-bench.md",
+    "detail_id": "entity-robo-bench",
+    "label": "RoboBench（MLLM 具身大脑综合评测）",
     "type": "entity",
     "recency": "2026-07-12",
     "source": "log.md",
     "action": "added",
-    "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    "has_repo": true,
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
@@ -241,7 +242,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 169
+      "size": 170
     },
     {
       "label": "人形强化学习运动控制",
@@ -284,7 +285,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 245,
+      "degree": 247,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -313,7 +314,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 209,
+      "degree": 210,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
