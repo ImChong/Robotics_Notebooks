@@ -19,7 +19,7 @@ AI 研究者与教育者：OpenAI 创始成员、Tesla AI 总监（Autopilot 视
 
 | 时段 | 角色 / 机构 | 要点 |
 |------|-------------|------|
-| 2024– | 独立教育者 | YouTube AI 教程；技术轨 Zero to Hero；大众轨 LLM 科普（*Deep Dive into LLMs*、*How I use LLMs* 等） |
+| 2024– | 独立教育者 | YouTube AI 教程；技术轨 Zero to Hero；大众轨 LLM 科普 — [Intro to LLMs（2023）](../courses/karpathy_intro_llms_youtube.md)、[Deep Dive into LLMs（2025）](../courses/karpathy_deep_dive_llms_youtube.md)；另有 *How I use LLMs* 等 |
 | 2023–2024 | OpenAI | 组建 midtraining 与 synthetic data generation 团队 |
 | 2017–2022 | Tesla Director of AI | 统领 Autopilot **计算机视觉**：车内标注、训练、定制芯片部署； briefly Optimus |
 | 2015–2017 | OpenAI | 研究科学家、创始成员 |
@@ -42,6 +42,7 @@ AI 研究者与教育者：OpenAI 创始成员、Tesla AI 总监（Autopilot 视
 ### 教学
 
 - **YouTube — Neural Networks: Zero to Hero**（[播放列表](../courses/karpathy_zero_to_hero_youtube.md)：micrograd → makemore → GPT → GPT-2；配套 [nn-zero-to-hero](../repos/nn-zero-to-hero.md)）
+- **YouTube — LLM 大众科普（成对）**：[Intro to LLMs（~1 h）](../courses/karpathy_intro_llms_youtube.md)、[Deep Dive into LLMs（~3.5 h）](../courses/karpathy_deep_dive_llms_youtube.md)
 - **Stanford CS231n**（2016 录像、syllabus、notes；r/cs231n）
 
 ### 代表写作（主页 *featured writing* 摘录）
@@ -71,7 +72,7 @@ AI 研究者与教育者：OpenAI 创始成员、Tesla AI 总监（Autopilot 视
 ## 对 wiki 的映射
 
 - 升格页面：[wiki/entities/andrej-karpathy.md](../../wiki/entities/andrej-karpathy.md)
-- 课程归档：[karpathy_zero_to_hero_youtube.md](../courses/karpathy_zero_to_hero_youtube.md) · [nn-zero-to-hero.md](../repos/nn-zero-to-hero.md)
+- 课程归档：[karpathy_zero_to_hero_youtube.md](../courses/karpathy_zero_to_hero_youtube.md) · [nn-zero-to-hero.md](../repos/nn-zero-to-hero.md) · [karpathy_intro_llms_youtube.md](../courses/karpathy_intro_llms_youtube.md) · [karpathy_deep_dive_llms_youtube.md](../courses/karpathy_deep_dive_llms_youtube.md)
 - 方法论姊妹资料：[karpathy_llm_wiki_gist.md](../blogs/karpathy_llm_wiki_gist.md) → [wiki/references/llm-wiki-karpathy.md](../../wiki/references/llm-wiki-karpathy.md)
 
 ## 参考链接

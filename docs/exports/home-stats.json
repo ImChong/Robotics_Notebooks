@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-12",
   "node_count": 1589,
-  "edge_count": 12056,
+  "edge_count": 12057,
   "coverage": {
     "covered": 1543,
     "total": 1573,
@@ -54,7 +54,7 @@
       "detail_id": "wiki-concepts-deep-learning-foundations",
       "label": "深度学习基础 (Deep Learning Foundations)",
       "type": "concept",
-      "recency": "2026-07-11",
+      "recency": "2026-07-12",
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,

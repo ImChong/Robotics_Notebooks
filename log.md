@@ -8,6 +8,13 @@
 - wiki/entities/llms-from-scratch-raschka.md
 - roadmap/depth-vla.md
 
+## [2026-07-12] ingest | sources/courses/karpathy_intro_llms_youtube.md、sources/courses/karpathy_deep_dive_llms_youtube.md — Karpathy LLM 科普双视频（Intro 1h + Deep Dive 3.5h）；wiki/entities/andrej-karpathy.md、wiki/concepts/deep-learning-foundations.md、wiki/entities/llms-from-scratch-raschka.md、roadmap/depth-vla.md
+
+- wiki/entities/andrej-karpathy.md
+- wiki/concepts/deep-learning-foundations.md
+- wiki/entities/llms-from-scratch-raschka.md
+- roadmap/depth-vla.md
+
 ## [2026-07-11] ingest | sources/repos/rasbt_llms_from_scratch.md、sources/courses/rasbt_llms_from_scratch_youtube.md — Raschka LLMs-from-scratch 书/仓/YouTube 三角入库
 
 - wiki/entities/llms-from-scratch-raschka.md
