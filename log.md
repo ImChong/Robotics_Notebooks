@@ -6,6 +6,13 @@
 - wiki/methods/vla.md
 - wiki/entities/esi-bench.md
 
+## [2026-07-12] ingest | sources/papers/fastgrasp_arxiv_2604_12879.md — FastGrasp 移动全身快速灵巧抓取；wiki/entities/paper-fastgrasp-mobile-dexterous-grasping.md、wiki/tasks/manipulation.md、wiki/tasks/loco-manipulation.md、wiki/overview/topic-grasp.md
+
+- wiki/entities/paper-fastgrasp-mobile-dexterous-grasping.md
+- wiki/tasks/manipulation.md
+- wiki/tasks/loco-manipulation.md
+- wiki/overview/topic-grasp.md
+
 ## [2026-07-12] ingest | sources/papers/contactmimic_arxiv_2607_08742.md — ContactMimic 人形 HOI contact 条件跟踪；wiki/entities/paper-contactmimic.md 及选型/流水线交叉引用
 
 ## [2026-07-12] ingest | sources/sites/lerobot-huggingface-org.md — LeRobot HF Hub 组织页；wiki/entities/lerobot.md
