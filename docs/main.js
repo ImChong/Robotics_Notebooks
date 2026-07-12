@@ -1337,13 +1337,24 @@
       mermaidTokens.push(match);
       return token;
     });
-    var rendered = withMermaidTokens.split(/(<[^>]+>)/g).map(function (part) {
-      if (part.startsWith('<') && part.endsWith('>')) return part;
-      return renderMathBlocks(part);
-    }).join('');
-    mermaidTokens.forEach(function (entry, index) {
-      rendered = rendered.replace(mermaidPrefix + index + '@@', function () { return entry; });
-    });
+
+    // ⚡ Bolt Optimization: Replace .map().join('') with a standard for loop and string concatenation
+    // Expected impact: Eliminates intermediate array allocations and closure overhead during markdown rendering.
+    var splitParts = withMermaidTokens.split(/(<[^>]+>)/g);
+    var rendered = '';
+    for (var i = 0; i < splitParts.length; i++) {
+      var part = splitParts[i];
+      if (part.startsWith('<') && part.endsWith('>')) {
+        rendered += part;
+      } else {
+        rendered += renderMathBlocks(part);
+      }
+    }
+
+    // ⚡ Bolt Optimization: Replace .forEach with a standard for loop
+    for (var j = 0; j < mermaidTokens.length; j++) {
+      rendered = rendered.replace(mermaidPrefix + j + '@@', function () { return mermaidTokens[j]; });
+    }
     return rendered;
   }
 
