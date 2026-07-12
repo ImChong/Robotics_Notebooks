@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, vla, manipulation, open-source, vision-language-action, stanford]
 status: complete
-updated: 2026-05-27
+updated: 2026-07-12
 related:
   - ../methods/vla.md
   - ../entities/lerobot.md

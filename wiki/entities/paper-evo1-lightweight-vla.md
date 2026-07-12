@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, lightweight-vla, flow-matching, behavior-cloning, manipulation, lerobot, internvl, sjtu, cvpr-2026]
 status: complete
-updated: 2026-07-10
+updated: 2026-07-12
 arxiv: "2511.04555"
 venue: CVPR 2026
 code: https://github.com/MINT-SJTU/Evo-1
