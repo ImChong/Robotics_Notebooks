@@ -5,6 +5,7 @@ status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
 updated: 2026-07-12
 sources:
+  - ../../sources/papers/fastgrasp_arxiv_2604_12879.md
   - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md
   - ../../sources/papers/loco_manip_8_papers_catalog.md
   - ../../sources/papers/dit4dit_arxiv_2603_10448.md
@@ -181,7 +182,11 @@ flowchart TD
 - **核心**：将 egocentric 全身学习表述为 **高层策略 → 40D 中间全身动作 → 低层 GMT**；在 **7 项下肢关键 HOI/HSI** 上，从 **视觉/语义/执行扰动** 与 **TWIST2↔SONIC 跨 GMT** 两轴诊断 **policy–tracker 接口**——而非只报端到端成功率。
 - **代表作**：[HumanoidArena](../entities/paper-humanoidarena.md) (HKUST-GZ 等, 2026, arXiv:2606.17833) — PICO+GMR 采集 → Isaac Lab NPZ → LeRobot 训练；实验显示分层控制能解多样腿关键交互，但 **性能强 tracker 条件化**、**跨 GMT 迁移脆弱**。
 
-### 25. 共享 3D 地图的导航–操作联合路点链（3D-IC · OVMM 规划）
+### 25. 轮式移动全身 RL + 点云抓取引导 + 二值触觉（FastGrasp · 高速灵巧抓取）
+- **核心**：**两阶段**——预训练 **CVAE** 从腕摄点云生成多样抓取候选，经 **GWC/GDC 包络度** 选最优引导；**PPO** 同步控制 **移动底盘、臂与 16-DoF 手**；**二值压力触觉** 观测与奖励支撑冲击接触下的实时收紧；**15 Hz** 控制与 **DR + LPF + 触觉适应** 完成 sim2real。
+- **代表作**：[FastGrasp](../entities/paper-fastgrasp-mobile-dexterous-grasping.md) (上海科技大学, 2026, arXiv:2604.12879) — Agilex Bunker Mini + Dobot CR5 + LeapHand；仿真 unseen **50.09%** S.R.（全点云）/ **38.51%**（部分点云）；真机高速 **32%**、半速 **34.62%**；相对反应式移动操作 [3] 与单阶段 PointNet 基线显著领先。
+
+### 26. 共享 3D 地图的导航–操作联合路点链（3D-IC · OVMM 规划）
 - **核心**：面向 **开放词汇移动操作（OVMM）**，在 **共享 3D 特征图** 上为导航与操作生成 **阶段对齐交互路点**，串联为 **候选交互链**；**分层策略** 用 **VLM 路点级可行性** + **转移代价** 选链，**下一路点执行 + 观测重规划** 闭环。
 - **代表作**：[3D-IC](../entities/paper-3d-ic-joint-navigation-manipulation-planning.md) (ICT CAS / UCAS, 2026, ICML) — 仿真与 **Stretch 3** 真机；相对分阶段 OVMM 提升 **任务成功率与轨迹效率**；与 [REALM](../entities/paper-realm-last-3-meter-vln-grounding.md) 等同平台、互补 **VLN 末段接地** 问题。
 
@@ -238,6 +243,7 @@ flowchart TD
 - [Flexion Reflect v1.0](../entities/flexion-reflect-v1.md) — 产业长程自主栈：Reflect-VLM mission + VLA/RL 运动 + Reflex WBC + FlexComm（2026-06 博客）
 - [HumanoidMimicGen（论文实体）](../entities/paper-humanoidmimicgen.md) — MimicGen 式全身规划合成 loco-manip 示范 + G1 九任务基准 + co-training（arXiv:2605.27724）
 - [HumanoidArena（论文实体）](../entities/paper-humanoidarena.md) — egocentric 分层全身 benchmark：7 项腿关键 HOI/HSI + 双 GMT 扰动/迁移诊断（arXiv:2606.17833）
+- [FastGrasp（论文实体）](../entities/paper-fastgrasp-mobile-dexterous-grasping.md) — 轮式移动全身 RL + CVAE 抓取引导 + 二值触觉高速灵巧抓取（arXiv:2604.12879）
 - [3D-IC（论文实体）](../entities/paper-3d-ic-joint-navigation-manipulation-planning.md) — 共享 3D 地图的 OVMM 交互路点链联合规划（ICML 2026，Stretch 3）
 
 ## 参考来源
