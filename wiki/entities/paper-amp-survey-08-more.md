@@ -2,9 +2,10 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation, locomotion, mixture-of-experts, terrain-adaptation, unitree-g1, sim2real, teleai, heu, shanghaitech, ustc]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-13
 arxiv: "2506.08840"
 venue: arXiv
+code: https://github.com/TeleHuman/MoRE
 summary: "MoRE（arXiv:2506.08840）两阶段训练：深度相机 base locomotion + latent residual MoE 与多判别器 AMP，在 gait command 下于复杂地形切换 Walk-Run / High-Knees / Squat，G1 真机部署。"
 related:
   - ../overview/humanoid-amp-motion-prior-survey.md
@@ -19,6 +20,7 @@ related:
   - ./paper-amp-survey-10-unified_walking_running_and_recovery.md
   - ./paper-explicit-stair-geometry-humanoid-locomotion.md
 sources:
+  - ../../sources/repos/more.md
   - ../../sources/papers/more_mixture_residual_experts_arxiv_2506_08840.md
   - ../../sources/papers/humanoid_amp_survey_08_more_mixture_of_residual_experts_for_humanoid_li.md
   - ../../sources/papers/humanoid_amp_survey_19_catalog.md
@@ -116,6 +118,21 @@ flowchart TB
 | 域随机化 | 摩擦、质量、PD、动作延迟、深度噪声/偏差/遮挡等（Table II） |
 | 真机 | G1 + D435i；640×480 → RealSense 滤波 → 64×64；策略 **50 Hz** |
 
+## 官方代码（TeleHuman/MoRE）
+
+[GitHub 仓库](https://github.com/TeleHuman/MoRE) 将论文两阶段拆为两个 `legged_gym` 任务，便于分步复现：
+
+| 阶段 | Task | 要点 |
+|------|------|------|
+| Stage 1 | `g1_16dof_loco` | ≥40k iter、≥3000 env；深度 base 穿越 |
+| Stage 2 | `g1_16dof_resi_moe` | 加载 Stage 1 checkpoint；40k iter（末 10k 启用 **body mask**）；≥6000 env；支持 `torchrun` 多 GPU |
+
+- **body mask 数据：** Stage 2 需从 README 提供的 OneDrive 链接下载至 `./body_mask_data`。
+- **可视化：** `play.py` 中 `Z/X/C` 切换 Walk-Run / High-Knees / Squat gait command。
+- **MuJoCo：** `deploy_mujoco_with_resi.py` 提供 Roughness / Pit / Stairs / Gap 四类 sim2sim 场景。
+
+详见 [sources/repos/more.md](../../sources/repos/more.md)。
+
 ## 常见误区
 
 1. **MoRE = 部署期 FSM 切策略：** 仍是 **单一网络**；步态由 **gait command**（及 Stage 2 训练时的采样）选择判别器分支与 gait reward，不是多个独立 checkpoint 硬切换。
@@ -141,6 +158,7 @@ flowchart TB
 
 ## 参考来源
 
+- [MoRE 官方仓库](../../sources/repos/more.md)
 - [MoRE（arXiv:2506.08840）](../../sources/papers/more_mixture_residual_experts_arxiv_2506_08840.md)
 - [humanoid_amp_survey_08_more_mixture_of_residual_experts_for_humanoid_li.md](../../sources/papers/humanoid_amp_survey_08_more_mixture_of_residual_experts_for_humanoid_li.md) — AMP 19 篇策展索引
 - [humanoid_amp_survey_19_catalog.md](../../sources/papers/humanoid_amp_survey_19_catalog.md)
@@ -149,6 +167,7 @@ flowchart TB
 
 ## 推荐继续阅读
 
+- [TeleHuman/MoRE](https://github.com/TeleHuman/MoRE) — 官方 PyTorch 实现与训练脚本
 - [MoRE 项目页](https://more-humanoid.github.io/) — 视频与 BibTeX
 - [arXiv:2506.08840](https://arxiv.org/abs/2506.08840) — 方法 Fig.2、奖励表与 benchmark
 - [AMP 专题长文（微信公众号）](https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w) — 策展导读「复杂地形上步态不能只有一种」

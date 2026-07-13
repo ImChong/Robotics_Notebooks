@@ -12,7 +12,7 @@ tags:
   - isaac-lab
   - sim2real
 status: complete
-updated: 2026-06-25
+updated: 2026-07-13
 arxiv: "2605.09944"
 related:
   - ../tasks/locomotion.md

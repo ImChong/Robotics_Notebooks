@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, perceptive-locomotion, depth, parkour, tsinghua, amp]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-13
 arxiv: "2601.07718"
 venue: arXiv
 summary: "Hiking in the Wild（arXiv:2601.07718）单阶段 E2E 深度+本体 RL，用地形边缘与足端体积点软约束实现野外 2.5 m/s 感知跑酷，含 AMP-style 自然性项与开源栈。"
