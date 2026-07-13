@@ -1,13 +1,33 @@
 {
   "generated_at": "2026-07-13",
-  "node_count": 1594,
-  "edge_count": 12122,
+  "node_count": 1595,
+  "edge_count": 12148,
   "coverage": {
-    "covered": 1548,
-    "total": 1578,
+    "covered": 1549,
+    "total": 1579,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-ame-attention-based-map-encoding.md",
+      "detail_id": "entity-paper-ame-attention-based-map-encoding",
+      "label": "AME — Attention-Based Map Encoding",
+      "type": "entity",
+      "recency": "2026-07-13",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "运动控制（Locomotion） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md",
+      "detail_id": "entity-paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi",
+      "label": "AME-2 — Agile and Generalized Legged Locomotion",
+      "type": "entity",
+      "recency": "2026-07-13",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "运动控制（Locomotion） 社区"
+    },
     {
       "path": "wiki/overview/jason-peng-flexible-motion-skill-learning.md",
       "detail_id": "wiki-overview-jason-peng-flexible-motion-skill-learning",
@@ -194,46 +214,26 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/concepts/backpropagation.md",
-      "detail_id": "wiki-concepts-backpropagation",
-      "label": "反向传播算法 (Backpropagation)",
-      "type": "concept",
-      "recency": "2026-07-12",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/concepts/transformer.md",
-      "detail_id": "wiki-concepts-transformer",
-      "label": "Transformer",
-      "type": "concept",
-      "recency": "2026-07-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/jason-peng-flexible-motion-skill-learning.md",
-    "detail_id": "wiki-overview-jason-peng-flexible-motion-skill-learning",
-    "label": "Jason Peng：更灵活的运动技能学习",
-    "type": "overview",
+    "path": "wiki/entities/paper-ame-attention-based-map-encoding.md",
+    "detail_id": "entity-paper-ame-attention-based-map-encoding",
+    "label": "AME — Attention-Based Map Encoding",
+    "type": "entity",
     "recency": "2026-07-13",
     "source": "log.md",
-    "action": "maintained"
+    "action": "added",
+    "community_label": "运动控制（Locomotion） 社区"
   },
   "top_communities": [
     {
       "label": "运动控制",
-      "size": 326
+      "size": 320
     },
     {
       "label": "人形论文深读笔记",
-      "size": 180
+      "size": 179
     },
     {
       "label": "移动操作",
@@ -257,8 +257,16 @@
       "detail_id": "wiki-overview-humanoid-paper-notebooks-index",
       "label": "Humanoid Paper Notebooks 知识库索引",
       "type": "overview",
-      "degree": 400,
+      "degree": 399,
       "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
+    },
+    {
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "degree": 272,
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "detail_id": "wiki-tasks-loco-manipulation",
@@ -267,14 +275,6 @@
       "degree": 271,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "degree": 270,
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "detail_id": "wiki-methods-vla",
@@ -288,7 +288,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 226,
+      "degree": 228,
       "community_label": "运动控制（Locomotion） 社区"
     },
     {
@@ -303,8 +303,7 @@
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
       "degree": 211,
-      "has_repo": true,
-      "community_label": "运动控制（Locomotion） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "wiki-tasks-manipulation",

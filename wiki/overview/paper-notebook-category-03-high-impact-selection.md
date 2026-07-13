@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-07-10
+updated: 2026-07-13
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 03：高影响力精选（26 篇深读笔记索引）。"
@@ -58,7 +58,7 @@ summary: "Paper Notebooks 分类 03：高影响力精选（26 篇深读笔记索
 
 ### 其他
 
-- [AME-2](../entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md) — 待深读
+- [AME-2](../entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md) — ETH RSL 敏捷+泛化感知 loco（arXiv 归纳）
 - [Adapting Humanoid Locomotion over Challenging Terrain via Two-Phase Training](../entities/paper-notebook-adapting-humanoid-locomotion-over-challenging-te.md) — 待深读
 - [Distillation-PPO](../entities/paper-notebook-distillation-ppo-a-novel-two-stage-rl-framework.md) — 待深读
 - [Gait-Adaptive Perceptive Humanoid Locomotion with Real-Time Under-Base Terrain Reconstruction](../entities/paper-notebook-gait-adaptive-perceptive-humanoid-locomotion-wit.md) — 待深读
