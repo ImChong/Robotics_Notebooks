@@ -109,7 +109,9 @@ flowchart TB
 | **Object removal** | 移除交互物体，标签强制为零，keypoint 保持 |
 | **Inflated geometry** | 膨胀目标部件碰撞 mesh，重定向绕开 → **远 keypoint + 零标签**；可与 flipping 组合成「远姿态 + 应接触」 |
 
-### 实验协议与主要结果
+## 实验评测与主要结果
+
+### 仿真协议与消融
 
 - **仿真：** HUMOTO **10** 条动作（擦板、椅桌交互、坐/蹲、踢椅、搬箱等）；测试 **near/far keypoints × contact ✔/✘** 四组轨迹；contact 指标与关键关节力矩随指令单调变化。
 - **vs BeyondMimic：** Table 3 — MPJPE **相当**，但 contact bodies / impulse 与 **pick-up box 物体位移**（0.03 m vs **0.49 m**）显著优于 keypoint-only。
