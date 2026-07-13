@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, whole-body-control, humanoid, nvidia, sonic, motionbricks, isaac-lab, vla]
 status: complete
-updated: 2026-07-02
+updated: 2026-07-13
 related:
   - ../methods/motionbricks.md
   - ../methods/sonic-motion-tracking.md
@@ -12,8 +12,10 @@ related:
   - ./gr00t-visual-sim2real.md
   - ./isaac-gym-isaac-lab.md
   - ./nvidia-gear-lab.md
+  - ./isaac-gr00t.md
 sources:
   - ../../sources/repos/gr00t_wholebodycontrol.md
+  - ../../sources/repos/isaac_gr00t.md
 summary: "GR00T-WholeBodyControl 是 NVlabs 的人形全身控制单仓：托管解耦 WBC（GR00T N1.5/N1.6）、GEAR-SONIC（SONIC 训练/部署/C++ 推理/VR 采集）与 MotionBricks 预览子项目，并提供 Isaac Lab 对齐文档与 VLA 数据链教程。"
 ---
 
@@ -55,6 +57,7 @@ summary: "GR00T-WholeBodyControl 是 NVlabs 的人形全身控制单仓：托管
 - [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md) — GEAR-SONIC 的方法与接口总览
 - [Foundation Policy](../concepts/foundation-policy.md) — GR00T 系基础策略与分层控制叙事
 - [Whole-Body Control](../concepts/whole-body-control.md) — WBC 概念层与 QP / 分层控制主线
+- [Isaac GR00T](./isaac-gr00t.md) — N1.7 VLA 主仓；G1 全身路径经 `UNITREE_G1_SONIC` 调用本仓 SONIC
 - [GR00T-VisualSim2Real](./gr00t-visual-sim2real.md) — 同品牌视觉 Sim2Real 仓库，任务侧重不同
 - [Kimodo](./kimodo.md) — 文生人体/人形运动学轨迹的上游；GEAR-SONIC 在线 Demo 集成「Kimodo 生成轨迹 → SONIC 仿真跟踪」工作流
 

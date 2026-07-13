@@ -1,23 +1,43 @@
 {
-  "generated_at": "2026-07-12",
-  "node_count": 1592,
-  "edge_count": 12100,
+  "generated_at": "2026-07-13",
+  "node_count": 1593,
+  "edge_count": 12113,
   "coverage": {
-    "covered": 1546,
-    "total": 1576,
+    "covered": 1547,
+    "total": 1577,
     "percent": 98
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/robo-bench.md",
-      "detail_id": "entity-robo-bench",
-      "label": "RoboBench（MLLM 具身大脑综合评测）",
+      "path": "wiki/entities/isaac-gr00t.md",
+      "detail_id": "entity-isaac-gr00t",
+      "label": "Isaac GR00T（人形 VLA 开发平台）",
       "type": "entity",
-      "recency": "2026-07-12",
+      "recency": "2026-07-13",
       "source": "log.md",
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-hrl-stack-34-gr00t_n1.md",
+      "detail_id": "entity-paper-hrl-stack-34-gr00t_n1",
+      "label": "GR00T N1",
+      "type": "entity",
+      "recency": "2026-07-13",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/gr00t-wholebodycontrol.md",
+      "detail_id": "entity-gr00t-wholebodycontrol",
+      "label": "GR00T-WholeBodyControl（人形全身控制统一平台）",
+      "type": "entity",
+      "recency": "2026-07-13",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true
     },
     {
       "path": "wiki/methods/vla.md",
@@ -27,6 +47,17 @@
       "recency": "2026-07-12",
       "source": "log.md",
       "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/robo-bench.md",
+      "detail_id": "entity-robo-bench",
+      "label": "RoboBench（MLLM 具身大脑综合评测）",
+      "type": "entity",
+      "recency": "2026-07-12",
+      "source": "log.md",
+      "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -187,45 +218,14 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rove-humanoid-vla-intervention.md",
-      "detail_id": "entity-paper-rove-humanoid-vla-intervention",
-      "label": "ROVE（Unlocking Human Interventions for Humanoid Manipulation via RL）",
-      "type": "entity",
-      "recency": "2026-07-11",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-internvla-a15-unified-vla.md",
-      "detail_id": "entity-paper-internvla-a15-unified-vla",
-      "label": "InternVLA-A1.5：理解、潜式前瞻与动作的统一 VLA",
-      "type": "entity",
-      "recency": "2026-07-11",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/world-action-models.md",
-      "detail_id": "wiki-concepts-world-action-models",
-      "label": "World Action Models（WAM，世界–动作模型）",
-      "type": "concept",
-      "recency": "2026-07-11",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "生成式世界模型（Generative World Models） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/robo-bench.md",
-    "detail_id": "entity-robo-bench",
-    "label": "RoboBench（MLLM 具身大脑综合评测）",
+    "path": "wiki/entities/isaac-gr00t.md",
+    "detail_id": "entity-isaac-gr00t",
+    "label": "Isaac GR00T（人形 VLA 开发平台）",
     "type": "entity",
-    "recency": "2026-07-12",
+    "recency": "2026-07-13",
     "source": "log.md",
     "action": "added",
     "has_repo": true,
@@ -234,27 +234,27 @@
   "top_communities": [
     {
       "label": "运动控制",
-      "size": 399
+      "size": 304
     },
     {
       "label": "人形论文深读笔记",
-      "size": 182
-    },
-    {
-      "label": "视觉-语言-动作",
-      "size": 170
-    },
-    {
-      "label": "人形强化学习运动控制",
-      "size": 129
+      "size": 180
     },
     {
       "label": "移动操作",
-      "size": 91
+      "size": 176
+    },
+    {
+      "label": "视觉-语言-动作",
+      "size": 171
+    },
+    {
+      "label": "人形强化学习运动控制",
+      "size": 117
     },
     {
       "label": "动作重定向",
-      "size": 75
+      "size": 102
     }
   ],
   "top_hubs": [
@@ -266,6 +266,14 @@
       "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
     },
     {
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "degree": 271,
+      "has_repo": true,
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    },
+    {
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
@@ -274,18 +282,10 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "detail_id": "wiki-tasks-loco-manipulation",
-      "label": "Loco-Manipulation (移动操作)",
-      "type": "task",
-      "degree": 270,
-      "has_repo": true,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 247,
+      "degree": 248,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -301,7 +301,7 @@
       "label": "Paper Notebooks · Loco-Manipulation and WBC",
       "type": "overview",
       "degree": 222,
-      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
@@ -377,7 +377,8 @@
       "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",
       "label": "SD-AMP：统一走、跑与起身的对抗运动先验",
       "type": "entity",
-      "degree": 29
+      "degree": 29,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
     },
     {
       "detail_id": "entity-paper-perceptive-bfm",
@@ -396,7 +397,8 @@
       "detail_id": "entity-paper-amp-survey-08-more",
       "label": "MoRE：复杂地形上的人形多步态残差专家混合",
       "type": "entity",
-      "degree": 26
+      "degree": 26,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
     }
   ]
 }
