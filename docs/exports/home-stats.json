@@ -1,13 +1,35 @@
 {
   "generated_at": "2026-07-13",
-  "node_count": 1593,
-  "edge_count": 12113,
+  "node_count": 1594,
+  "edge_count": 12122,
   "coverage": {
-    "covered": 1547,
-    "total": 1577,
+    "covered": 1548,
+    "total": 1578,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/gsap-skills.md",
+      "detail_id": "entity-gsap-skills",
+      "label": "GSAP AI Skills（greensock/gsap-skills）",
+      "type": "entity",
+      "recency": "2026-07-13",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "运动控制（Locomotion） 社区"
+    },
+    {
+      "path": "wiki/entities/mattpocock-skills.md",
+      "detail_id": "entity-mattpocock-skills",
+      "label": "Skills For Real Engineers（mattpocock）",
+      "type": "entity",
+      "recency": "2026-07-13",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "运动控制（Locomotion） 社区"
+    },
     {
       "path": "wiki/entities/isaac-gr00t.md",
       "detail_id": "entity-isaac-gr00t",
@@ -143,7 +165,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "path": "wiki/concepts/backpropagation.md",
@@ -197,44 +219,23 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-steam-advantage-modeling.md",
-      "detail_id": "entity-paper-steam-advantage-modeling",
-      "label": "STEAM：自监督时序 Ensemble Advantage 建模",
-      "type": "entity",
-      "recency": "2026-07-11",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
-      "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
-      "label": "VLA 开源复现景观（2025 策展）",
-      "type": "overview",
-      "recency": "2026-07-11",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/isaac-gr00t.md",
-    "detail_id": "entity-isaac-gr00t",
-    "label": "Isaac GR00T（人形 VLA 开发平台）",
+    "path": "wiki/entities/gsap-skills.md",
+    "detail_id": "entity-gsap-skills",
+    "label": "GSAP AI Skills（greensock/gsap-skills）",
     "type": "entity",
     "recency": "2026-07-13",
     "source": "log.md",
     "action": "added",
     "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "community_label": "运动控制（Locomotion） 社区"
   },
   "top_communities": [
     {
       "label": "运动控制",
-      "size": 304
+      "size": 326
     },
     {
       "label": "人形论文深读笔记",
@@ -246,7 +247,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 171
+      "size": 157
     },
     {
       "label": "人形强化学习运动控制",
@@ -308,7 +309,8 @@
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
       "degree": 211,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "detail_id": "wiki-tasks-manipulation",
