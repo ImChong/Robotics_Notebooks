@@ -72,6 +72,20 @@ def test_claim_inside_code_block_is_ignored(tmp_path, monkeypatch) -> None:
     assert results["stale_claims"] == []
 
 
+def test_sota_substring_in_word_is_not_flagged(tmp_path, monkeypatch) -> None:
+    # 「SOTA」出现在 Minnesota 等词内不应误报（需词边界匹配）。
+    claim = _page(
+        wiki := _setup_wiki(tmp_path, monkeypatch),
+        "a.md",
+        "2025-01-01",
+        ["vla"],
+        "作者来自 University of Minnesota。",
+    )
+    newer = _page(wiki, "b.md", "2026-01-01", ["vla"], "更晚的同主题页。")
+    results = _run([claim, newer])
+    assert results["stale_claims"] == []
+
+
 def test_stale_claims_is_info_only(tmp_path, monkeypatch) -> None:
     results = lw._empty_results()
     results["stale_claims"].append("wiki/concepts/old.md（含绝对化措辞「SOTA」...）")

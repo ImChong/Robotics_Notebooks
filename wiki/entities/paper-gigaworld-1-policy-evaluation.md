@@ -9,7 +9,7 @@ tags:
   - simulation
   - gigaai
 status: complete
-updated: 2026-07-11
+updated: 2026-07-13
 arxiv: "2607.02642"
 related:
   - ../overview/wm-action-consequence-category-04-eval-posttrain.md
