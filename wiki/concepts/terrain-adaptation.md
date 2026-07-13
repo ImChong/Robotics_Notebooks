@@ -2,9 +2,11 @@
 type: concept
 tags: [locomotion, terrain, perception, footstep-planning, sim2real]
 status: complete
-updated: 2026-07-08
+updated: 2026-07-13
 summary: "Terrain Adaptation 指机器人根据地形感知结果调整步位、身体姿态和接触策略，以在不平整环境中保持稳定移动。"
 related:
+  - ../entities/paper-ame-attention-based-map-encoding.md
+  - ../entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md
   - ../entities/paper-discrete-terrain-minimal-proximity-sensing.md
   - ../tasks/locomotion.md
   - ../tasks/stair-obstacle-perceptive-locomotion.md
@@ -28,6 +30,8 @@ sources:
   - ../../sources/papers/e_sds_arxiv_2512_16446.md
   - ../../sources/papers/rpl_arxiv_2602_03002.md
   - ../../sources/papers/discrete_terrain_minimal_proximity_sensing_arxiv_2606_31912.md
+  - ../../sources/papers/ame_arxiv_2506_09588.md
+  - ../../sources/papers/humanoid_pnb_ame-2-agile-and-generalized-legged-locomotion-vi.md
 ---
 
 # Terrain Adaptation（地形适应）

@@ -2,8 +2,10 @@
 type: task
 tags: [locomotion, stairs, obstacle, perception, blind-locomotion, parkour, humanoid, quadruped, hub]
 status: complete
-updated: 2026-07-08
+updated: 2026-07-13
 related:
+  - ../entities/paper-ame-attention-based-map-encoding.md
+  - ../entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md
   - ../entities/paper-discrete-terrain-minimal-proximity-sensing.md
   - ./locomotion.md
   - ./humanoid-locomotion.md
@@ -40,6 +42,8 @@ sources:
   - ../../sources/papers/dreamwaq_plus_arxiv_2409_19709.md
   - ../../sources/papers/extreme_parkour_arxiv_2309_14341.md
   - ../../sources/papers/discrete_terrain_minimal_proximity_sensing_arxiv_2606_31912.md
+  - ../../sources/papers/ame_arxiv_2506_09588.md
+  - ../../sources/papers/humanoid_pnb_ame-2-agile-and-generalized-legged-locomotion-vi.md
   - ../../sources/papers/swap_parkour_arxiv_2606_19928.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
 summary: "楼梯、台阶与离散障碍上的腿式/人形运动中心节点：按「是否显式地形感知」「上/下楼梯」「越障/跑酷」组织文献与概念，后续 ingest 默认挂接本页。"
@@ -119,6 +123,8 @@ flowchart TB
 | 感知 | 场景 | 页面 | 要点 |
 |------|------|------|------|
 | **有**（点云 + 本体） | 楼梯 / 陡坡 / OOD | [DreamWaQ++](../entities/dreamwaq-plus.md) | 相对盲走 DreamWaQ 在困难楼梯显著领先 |
+| **有**（机器人中心高程 + 注意力编码） | **稀疏垫脚石/梁/沟 · 四足+人形** | [AME](../entities/paper-ame-attention-based-map-encoding.md) | CNN+MHA 2.5D 地图；两阶段 PPO；ANYmal-D/GR-1 零样本泛化；可解释 foothold 注意力 |
+| **有**（学习映射+不确定性 + AME-2） | **parkour + 稀疏/未见组合** | [AME-2](../entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md) | Teacher–Student；ANYmal **~2 m/s** 跑酷；TRON1 0.48/0.88 m 攀台；Probabilistic WTA 融合 |
 | **有**（足底 4×4 ToF，无相机/LiDAR） | 踏石 / 沟 / 平衡木 / 楼梯 | [离散地形最小感知](../entities/paper-discrete-terrain-minimal-proximity-sensing.md) | ETH RSL ANYmal-D；接触前局部几何 + LSTM-PPO；60 cm 沟、错落踏石 |
 | **弱 / 试参** | 楼梯等 OOD | [Walk These Ways](../entities/paper-walk-these-ways-quadruped-mob.md) | 人类调节行为参数 \(b\) 在楼梯、滑地等场景快速试错 |
 | **仿真演示** | 楼梯模式 | [JackHan MuJoCo WalkE3](../entities/jackhan-mujoco-walke3-simulation.md) | 预训练策略含楼梯与扰动模式（仿真边界见页内说明） |
@@ -149,6 +155,8 @@ flowchart TB
 | 人形 **高速上楼梯** + 规划引导 RL | [FastStair](../entities/paper-faststair-humanoid-stair-ascent.md) |
 | **下楼** 或自动奖励设计 | [E-SDS](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) |
 | 四足 **点云前瞻** 楼梯 | [DreamWaQ++](../entities/dreamwaq-plus.md) |
+| 四足 **稀疏地形泛化** + 可解释地图注意力 | [AME](../entities/paper-ame-attention-based-map-encoding.md) |
+| 四足/双足 **parkour 敏捷 + 未见稀疏组合** + 神经映射 | [AME-2](../entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md) |
 | 四足 **足底 ToF** 踏石/沟（无视觉栈） | [离散地形最小感知](../entities/paper-discrete-terrain-minimal-proximity-sensing.md) |
 | 人形 **跑酷技能链** + 机载深度 | [PHP](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) |
 | 人形 **开放世界长程** + 想象落脚 | [SSR](../entities/paper-ssr-humanoid-open-world-traversal.md) |
