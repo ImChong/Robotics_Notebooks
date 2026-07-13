@@ -393,6 +393,7 @@
       "label": "MoRE：复杂地形上的人形多步态残差专家混合",
       "type": "entity",
       "degree": 26,
+      "has_repo": true,
       "community_label": "动作重定向（Motion Retargeting） 社区"
     }
   ]

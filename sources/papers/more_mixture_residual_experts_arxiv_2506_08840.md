@@ -8,6 +8,7 @@
 - **arXiv HTML：** <https://arxiv.org/html/2506.08840v1>
 - **PDF：** <https://arxiv.org/pdf/2506.08840>
 - **项目页：** <https://more-humanoid.github.io/>
+- **代码：** <https://github.com/TeleHuman/MoRE>
 - **机构：** 中国科学技术大学（USTC）、中国电信人工智能研究院（TeleAI）、哈尔滨工程大学（HEU）、上海科技大学（ShanghaiTech）；通讯作者 Chenjia Bai
 - **硬件：** Unitree G1 + Intel RealSense D435i 深度相机
 - **入库日期：** 2026-06-25
@@ -54,6 +55,7 @@
 
 ## 参考来源（原始）
 
+- 代码仓库：<https://github.com/TeleHuman/MoRE> — 见 [more.md](../repos/more.md)
 - arXiv:2506.08840 — 论文正文
 - [humanoid_amp_survey_08_more_mixture_of_residual_experts_for_humanoid_li.md](humanoid_amp_survey_08_more_mixture_of_residual_experts_for_humanoid_li.md) — AMP 19 篇策展索引
 - [wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md](../blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md) — 微信公众号编译导读
