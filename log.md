@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-12] structural | checklist-v28 P3② 详情页「同专题相关页」提示 —— 具身大模型徽标端到端验证与截图归档
+
+- 详情页「所属专题」徽标行（`docs/main.js renderMetaTopicBadges`）本就以 `docs/topic-filters.js` 为单一事实源、`topicsForNode` 数据驱动：P3① 把 `embodied-foundation-model` 写入单一事实源后，详情页徽标已自动联动，无需二次实现——命中即渲染「🧠 具身大模型」徽标并跳 `graph.html?topic=embodied-foundation-model`，空态降级隐藏整行。
+- 端到端验证：`wiki/methods/vla.md` 详情页（`detail.html?id=wiki-methods-vla`）「所属专题」行同渲「👀 视觉-语言-动作 (VLA)」+「🧠 具身大模型 (Embodied Foundation Model)」双徽标；node 逐页校验 `topicsForNode` 对 methods/vla、tasks/vision-language-navigation、concepts/world-action-models、queries/embodied-fm-taxonomy-loop、methods/generative-world-models 五页均稳定命中 `embodied-foundation-model` 专题。截图归档 `.cursor-artifacts/screenshots/detail-topic-embodied-foundation-model.png`。
+- `make lint` 0 errors（另含 1 条信息型预警，不阻塞 CI）；勾选 v28 P3「详情页『同专题相关页』提示」第②项，P3 两个子项全部完成。
+
 ## [2026-07-12] ingest | sources/papers/robo_bench_arxiv_2510_17801.md — RoboBench MLLM 具身大脑五维评测；wiki/entities/robo-bench.md 及 VLA/ESI-Bench 交叉引用
 
 - wiki/entities/robo-bench.md
