@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-13] ingest | sources/repos/greensock-gsap-skills.md — GSAP 官方 Agent Skills；新增 wiki/entities/gsap-skills.md 并交叉 mattpocock-skills / 前端清单
+
+- wiki/entities/gsap-skills.md
+- wiki/entities/mattpocock-skills.md
+- sources/repos/greensock-gsap-skills.md
+
 ## [2026-07-13] ingest | sources/blogs/wechat_embodied_ai_lab_isaac_gr00t_n17_g1_e2e.md — 具身智能研究室 GR00T 1.7 G1 端到端中文策展；增补 wiki/entities/isaac-gr00t.md G1 仿真教程节
 
 - wiki/entities/isaac-gr00t.md
