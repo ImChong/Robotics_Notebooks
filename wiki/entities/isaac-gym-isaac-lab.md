@@ -5,7 +5,7 @@ sources:
   - ../../sources/courses/nvidia_sim_to_real_so101_isaac.md
   - ../../sources/papers/simulation_tools.md
 summary: "Isaac Gym / Isaac Lab"
-updated: 2026-07-05
+updated: 2026-07-13
 tags: [nvidia]
 
 ---

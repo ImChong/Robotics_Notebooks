@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-13] ingest | sources/repos/isaac_gr00t.md — 接入 Isaac-GR00T 仓库与 NVIDIA 端到端博客，新增 wiki/entities/isaac-gr00t.md 并交叉 GR00T N1 / WBC / LeRobot
+
+- wiki/entities/isaac-gr00t.md
+- wiki/entities/paper-hrl-stack-34-gr00t_n1.md
+- wiki/entities/gr00t-wholebodycontrol.md
+- sources/repos/isaac_gr00t.md
+- sources/blogs/nvidia_develop_humanoid_robot_policies_isaac_gr00t.md
+
 ## [2026-07-12] structural | checklist-v28 P3② 详情页「同专题相关页」提示 —— 具身大模型徽标端到端验证与截图归档
 
 - 详情页「所属专题」徽标行（`docs/main.js renderMetaTopicBadges`）本就以 `docs/topic-filters.js` 为单一事实源、`topicsForNode` 数据驱动：P3① 把 `embodied-foundation-model` 写入单一事实源后，详情页徽标已自动联动，无需二次实现——命中即渲染「🧠 具身大模型」徽标并跳 `graph.html?topic=embodied-foundation-model`，空态降级隐藏整行。

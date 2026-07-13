@@ -7,6 +7,7 @@ related:
   - ../methods/vla.md
   - ../methods/sonic-motion-tracking.md
   - ../entities/gr00t-wholebodycontrol.md
+  - ../entities/isaac-gr00t.md
   - ./open-x-embodiment.md
   - ../methods/octo-model.md
   - ../methods/robotics-transformer-rt-series.md
@@ -29,7 +30,7 @@ sources:
   - ../../sources/papers/star_vla.md
   - ../../sources/repos/gr00t_wholebodycontrol.md
 summary: "Foundation Policy 指在大规模多任务机器人数据上预训练的通用策略模型，是 VLA 和通用操作策略的抽象母类。"
-updated: 2026-07-11
+updated: 2026-07-13
 ---
 
 # Foundation Policy（基础策略模型）

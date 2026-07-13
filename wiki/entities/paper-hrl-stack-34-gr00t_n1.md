@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, loco-manipulation, loco-manip-161-survey, nvidia, vla]
 status: complete
-updated: 2026-07-08
+updated: 2026-07-13
 arxiv: "2503.14734"
 venue: "2025 · arXiv"
 code: https://github.com/NVIDIA/Isaac-GR00T
@@ -16,8 +16,10 @@ related:
   - ../methods/vla.md
   - ../methods/diffusion-policy.md
   - ../entities/gr00t-wholebodycontrol.md
+  - ../entities/isaac-gr00t.md
 sources:
   - ../../sources/papers/gr00t_n1_arxiv_2503_14734.md
+  - ../../sources/repos/isaac_gr00t.md
   - ../../sources/papers/humanoid_rl_stack_34_gr00t_n1_an_open_foundation_model_for_generalist.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/papers/loco_manip_161_survey_148_gr00t-n1.md
@@ -30,6 +32,7 @@ sources:
 
 **GR00T N1**（*An Open Foundation Model for Generalist Humanoid Robots*，[arXiv:2503.14734](https://arxiv.org/abs/2503.14734)，[NVIDIA 白皮书](https://d1qx31qr3h6wln.cloudfront.net/publications/GR00T_1_Whitepaper.pdf)，[Isaac-GR00T](https://github.com/NVIDIA/Isaac-GR00T)）是 NVIDIA GEAR 提出的 **开源人形通才基础模型**，面向语言条件的跨具身操作（单臂、双臂、人形）。
 
+> **工程平台：** [Isaac GR00T](../entities/isaac-gr00t.md) — N1.7 GA 代码、LeRobot 数据管线、后训练与部署入口（[Isaac-GR00T](https://github.com/NVIDIA/Isaac-GR00T)）。  
 > **深读页：** [gr00t-wholebodycontrol](../entities/gr00t-wholebodycontrol.md) — N1.5/N1.6/N1.7 工程栈、WBC 与部署细节见链接页；本页以 N1 论文机制与评测为主。
 
 ## 一句话定义
@@ -163,12 +166,14 @@ flowchart TB
 
 - 概念层：[foundation-policy.md](../concepts/foundation-policy.md)、[vla.md](../methods/vla.md)
 - 方法对照：[diffusion-policy.md](../methods/diffusion-policy.md)
+- 工程平台：[isaac-gr00t.md](../entities/isaac-gr00t.md)
 - 工程深读：[gr00t-wholebodycontrol.md](../entities/gr00t-wholebodycontrol.md)
 - RL 身体系统栈：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - Loco-Manip 161 篇：[humanoid-loco-manip-161-papers-technology-map.md](../overview/humanoid-loco-manip-161-papers-technology-map.md)
 
 ## 参考来源
 
+- [isaac_gr00t.md](../../sources/repos/isaac_gr00t.md) — Isaac-GR00T 仓库与 N1.7 GA 工程摘录
 - [gr00t_n1_arxiv_2503_14734.md](../../sources/papers/gr00t_n1_arxiv_2503_14734.md) — arXiv:2503.14734 + NVIDIA 白皮书策展摘录
 - [humanoid_rl_stack_34_gr00t_n1_an_open_foundation_model_for_generalist.md](../../sources/papers/humanoid_rl_stack_34_gr00t_n1_an_open_foundation_model_for_generalist.md) — 42 篇栈策展摘录
 - [loco_manip_161_survey_148_gr00t-n1.md](../../sources/papers/loco_manip_161_survey_148_gr00t-n1.md) — Loco-Manip 161 #148 策展摘录
