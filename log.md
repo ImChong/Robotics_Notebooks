@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-13] ingest | sources/papers/vidihand_arxiv_2606_30308.md — ViDiHand 视频扩散双手 4D 重建；wiki/entities/paper-vidihand.md
+
 ## [2026-07-13] ingest | sources/repos/more.md — 接入 TeleHuman/MoRE 官方仓库；wiki/entities/paper-amp-survey-08-more.md 增补代码复现节
 
 ## [2026-07-13] ingest | sources/papers/ame_arxiv_2506_09588.md、sources/papers/humanoid_pnb_ame-2-agile-and-generalized-legged-locomotion-vi.md — AME/AME-2 ETH RSL 注意力地图编码感知 loco；wiki/entities/paper-ame-attention-based-map-encoding.md、wiki/entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md；交叉 stair-obstacle-perceptive-locomotion、terrain-adaptation

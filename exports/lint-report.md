@@ -101,9 +101,9 @@
 - 无
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（3 个）
-- wiki/entities/paper-dreamsteer-vla-deployment-steering.md（含绝对化措辞「sota」，updated=2026-07-11；同主题更新页 wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md updated=2026-07-13）
-- wiki/entities/paper-gigaworld-1-policy-evaluation.md（含绝对化措辞「SOTA」，updated=2026-07-11；同主题更新页 wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md updated=2026-07-13）
-- wiki/entities/paper-rynnworld-4d-rgb-depth-flow.md（含绝对化措辞「SOTA」，updated=2026-07-11；同主题更新页 wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md updated=2026-07-13）
+- wiki/entities/paper-dreamsteer-vla-deployment-steering.md（含绝对化措辞「sota」，updated=2026-07-11；同主题更新页 wiki/entities/paper-egowam-egocentric-human-wam-co-training.md updated=2026-07-13）
+- wiki/entities/paper-gigaworld-1-policy-evaluation.md（含绝对化措辞「SOTA」，updated=2026-07-11；同主题更新页 wiki/entities/paper-egowam-egocentric-human-wam-co-training.md updated=2026-07-13）
+- wiki/entities/paper-rynnworld-4d-rgb-depth-flow.md（含绝对化措辞「SOTA」，updated=2026-07-11；同主题更新页 wiki/entities/paper-egowam-egocentric-human-wam-co-training.md updated=2026-07-13）
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -114,4 +114,4 @@
 ### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：1549/1579 (98%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1550/1580 (98%) wiki/entity 页有 ingest 来源
