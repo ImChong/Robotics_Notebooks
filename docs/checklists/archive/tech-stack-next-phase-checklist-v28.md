@@ -51,11 +51,11 @@
 
 ## 验收标准 (Definition of DoD)
 
-- [ ] `make lint`: 0 errors（新引入的 `embodied_fm_crosslink` 为 INFO 级，不阻塞 CI）。
-- [ ] 知识图谱节点数 **≥ 1595**，边数 **≥ 10970**（见 `exports/graph-stats.json`）。
+- [x] `make lint`: 0 errors（新引入的 `embodied_fm_crosslink` 为 INFO 级，不阻塞 CI）。实测 0 errors，另含 4 条信息型预警。
+- [x] 知识图谱节点数 **≥ 1595**，边数 **≥ 10970**（见 `exports/graph-stats.json`）。实测 node_count=1597、edge_count=12168、orphan_nodes=0。
 - [x] 事实库扩展至 **230 条**（补齐 端到端 vs 分层 / 世界模型 vs 反应式 / 泛化 vs 实时性 等 10 条具身大模型选型矛盾检测规则）。
-- [ ] `community_quality_warning` 保持 `false` 且 `largest_community_ratio ≤ 0.25`。
-- [ ] `log.md` 记录 V28 关键改动。
+- [x] `community_quality_warning` 保持 `false` 且 `largest_community_ratio ≤ 0.25`。实测 `largest_community_ratio=0.199`、`community_quality_warning=false`。
+- [x] `log.md` 记录 V28 关键改动。P0–P3 各项换版/落地记录已入库（2026-07-05 换版、2026-07-06 P0、2026-07-09 P1、2026-07-10 P2、2026-07-11/12 P3）。
 
 ---
 
