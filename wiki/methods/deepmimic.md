@@ -2,7 +2,7 @@
 type: method
 tags: [imitation-learning, tracking, rl, xbpeng]
 status: complete
-updated: 2026-07-03
+updated: 2026-07-13
 related:
   - ../overview/jason-peng-flexible-motion-skill-learning.md
   - ../entities/protomotions.md

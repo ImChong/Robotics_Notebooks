@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, reinforcement-learning, motion-imitation, sim2real, character-animation, sfu, nvidia, berkeley]
 status: complete
-updated: 2026-07-03
+updated: 2026-07-13
 related:
   - ../overview/jason-peng-flexible-motion-skill-learning.md
   - ./paper-deeprl-locomotion-action-space-sca2017.md
@@ -17,6 +17,7 @@ related:
   - ./yanjie-ze.md
 sources:
   - ../../sources/sites/xue-bin-peng.md
+  - ../../sources/courses/jason_peng_synthetic_motion_humanoid_youtube.md
   - ../../sources/papers/deeprl_locomotion_action_space_sca2017.md
   - ../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md
 summary: "彭学斌（Xue Bin Peng）为 SFU 助理教授兼 NVIDIA 研究科学家，博士师从 Levine / Abbeel；以 DeepMimic、AMP、ASE、动力学随机化 Sim2Real 等工作定义了物理角色与腿式机器人 RL 运动控制的一条主干研究线，并通过 MimicKit 统一开源实现。"
@@ -58,7 +59,7 @@ summary: "彭学斌（Xue Bin Peng）为 SFU 助理教授兼 NVIDIA 研究科学
 
 ## 关联页面
 
-- [Jason Peng：更灵活的运动技能学习](../overview/jason-peng-flexible-motion-skill-learning.md) — human five 对 Peng 分享的方法学归纳（跟踪局限、对抗 IL、PARC）
+- [Jason Peng：更灵活的运动技能学习](../overview/jason-peng-flexible-motion-skill-learning.md) — 合成数据与 PARC 迭代增强技术地图（含 [NUS 研讨会一手视频](../../sources/courses/jason_peng_synthetic_motion_humanoid_youtube.md)）
 - [MimicKit](./mimickit.md)
 - [ProtoMotions](./protomotions.md)
 - [DeepMimic](../methods/deepmimic.md)
@@ -72,6 +73,7 @@ summary: "彭学斌（Xue Bin Peng）为 SFU 助理教授兼 NVIDIA 研究科学
 ## 参考来源
 
 - [Xue Bin Peng 个人主页原始资料](../../sources/sites/xue-bin-peng.md)
+- [jason_peng_synthetic_motion_humanoid_youtube.md](../../sources/courses/jason_peng_synthetic_motion_humanoid_youtube.md) — NUS 研讨会讲者原声（<https://www.youtube.com/watch?v=2looxieN53o>）
 - [DeepRL 动作空间 SCA 2017 原始资料](../../sources/papers/deeprl_locomotion_action_space_sca2017.md)
 - [wechat_human_five_jason_peng_flexible_motion_skills.md](../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md) — human five 微信公众号编译（<https://mp.weixin.qq.com/s/b-5UIRB1mkEDcIJlAT2jwg>）
 

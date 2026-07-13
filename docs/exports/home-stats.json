@@ -9,6 +9,34 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/overview/jason-peng-flexible-motion-skill-learning.md",
+      "detail_id": "wiki-overview-jason-peng-flexible-motion-skill-learning",
+      "label": "Jason Peng：更灵活的运动技能学习",
+      "type": "overview",
+      "recency": "2026-07-13",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/xue-bin-peng.md",
+      "detail_id": "entity-xue-bin-peng",
+      "label": "Xue Bin Peng（彭学斌）",
+      "type": "entity",
+      "recency": "2026-07-13",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-parc-physics-based-augmentation-with-reinforceme.md",
+      "detail_id": "entity-paper-notebook-parc-physics-based-augmentation-with-reinforceme",
+      "label": "PARC",
+      "type": "entity",
+      "recency": "2026-07-13",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
+    },
+    {
       "path": "wiki/entities/gsap-skills.md",
       "detail_id": "entity-gsap-skills",
       "label": "GSAP AI Skills（greensock/gsap-skills）",
@@ -187,50 +215,16 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/llms-from-scratch-raschka.md",
-      "detail_id": "entity-llms-from-scratch-raschka",
-      "label": "Build a Large Language Model (From Scratch)（Raschka / LLMs-from-scratch）",
-      "type": "entity",
-      "recency": "2026-07-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/deep-learning-foundations.md",
-      "detail_id": "wiki-concepts-deep-learning-foundations",
-      "label": "深度学习基础 (Deep Learning Foundations)",
-      "type": "concept",
-      "recency": "2026-07-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/overview/topic-embodied-foundation-model.md",
-      "detail_id": "wiki-overview-topic-embodied-foundation-model",
-      "label": "具身大模型分类学选型闭环（专题汇总）",
-      "type": "overview",
-      "recency": "2026-07-11",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/gsap-skills.md",
-    "detail_id": "entity-gsap-skills",
-    "label": "GSAP AI Skills（greensock/gsap-skills）",
-    "type": "entity",
+    "path": "wiki/overview/jason-peng-flexible-motion-skill-learning.md",
+    "detail_id": "wiki-overview-jason-peng-flexible-motion-skill-learning",
+    "label": "Jason Peng：更灵活的运动技能学习",
+    "type": "overview",
     "recency": "2026-07-13",
     "source": "log.md",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "运动控制（Locomotion） 社区"
+    "action": "maintained"
   },
   "top_communities": [
     {
