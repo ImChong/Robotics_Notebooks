@@ -10,7 +10,7 @@ tags:
   - wam
   - open-source
 status: complete
-updated: 2026-06-20
+updated: 2026-07-13
 arxiv: "2606.02800"
 related:
   - ../concepts/world-action-models.md
@@ -24,6 +24,7 @@ related:
   - ../entities/nvidia-so101-sim2real-lab-workflow.md
   - ../entities/ewmbench.md
   - ../entities/ge-sim-2.md
+  - ../entities/paper-physisforcing.md
 sources:
   - ../../sources/papers/cosmos3_arxiv_2606_02800.md
   - ../../sources/sites/cosmos3-project.md
@@ -57,6 +58,7 @@ summary: "Cosmos 3 是 NVIDIA 第三代全模态 Physical AI 世界模型：MoT 
 - **Physical AI 闭环语义完整：** 项目页与 README 明确覆盖 **policy、forward dynamics、inverse dynamics**，并与 **2D 轨迹 CoT + 视频再生** 串联——对齐 [World Action Models（WAM）](../concepts/world-action-models.md) 对「预测 + 控制」联合范式的讨论。
 - **开源榜单叙事强：** 技术报告撰写时，后训练模型在 **Artificial Analysis** 开源 T2I/I2V 与 **RoboArena** policy 榜位居首（见 [参考来源](#参考来源)）；与 [EWMBench](../entities/ewmbench.md) 等 **操纵向** 专用基准形成互补——前者偏平台综合能力，后者偏场景/运动/语义三维量。
 - **生态承接：** 前序 **Cosmos-Predict2** 已是 [mimic-video](../methods/mimic-video.md) VAM 骨干与 [Cosmos Policy](./paper-shenlan-wm-11-cosmos-policy.md) 微调基底；Cosmos 3 把「视频先验 + 动作头」路线升级为 **原生五模态单栈**，并进入 [NVIDIA SO-101 Sim2Real](./nvidia-so101-sim2real-lab-workflow.md) 等课程的 **合成演示增广** 语境。
+- **物理对齐后训练：** [PhysisForcing](./paper-physisforcing.md)（arXiv:2606.28128）在 **Cosmos3-Nano LoRA** 上叠加 **区域聚焦分层物理损失**（**PF-Cosmos**），R-Bench 整体 **63.8** 领先同期 Wan/商业基线——可作为 **平台权重之上的操纵向物理正则配方**，推理不增开销。
 
 ## 核心结构
 
