@@ -2,13 +2,14 @@
 type: overview
 tags: [egocentric, ego-survey, category-hub, data-collection, dataset]
 status: complete
-updated: 2026-06-01
+updated: 2026-07-13
 summary: "Ego 9 篇专题 · 01 数据采集（2 篇）— 机器人数据贵，Ego 让人类成为分布式采集者；核心是把「日常第一视角」做成可过滤、可规模化的训练素材。"
 related:
   - ./ego-9-papers-technology-map.md
   - ./ego-category-02-human-to-robot.md
   - ../entities/paper-ego-01-aoe.md
   - ../entities/paper-ego-02-egolive.md
+  - ../entities/paper-vidihand.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md
   - ../../sources/papers/ego_9_papers_catalog.md
@@ -39,6 +40,7 @@ sources:
 
 - [Ego 9 篇技术地图](./ego-9-papers-technology-map.md)
 - [人→机器人](./ego-category-02-human-to-robot.md)
+- [ViDiHand](../entities/paper-vidihand.md) — 采集后的 **双手 4D 标注** 可用 video diffusion 先验 **无 detector** 规模化重建，支撑模仿/策略监督
 
 ## 参考来源
 

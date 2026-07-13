@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-07-13",
-  "node_count": 1595,
-  "edge_count": 12148,
+  "node_count": 1596,
+  "edge_count": 12156,
   "coverage": {
-    "covered": 1549,
-    "total": 1579,
+    "covered": 1550,
+    "total": 1580,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-vidihand.md",
+      "detail_id": "entity-paper-vidihand",
+      "label": "ViDiHand — Video Diffusion for 4D Hand Motion Reconstruction",
+      "type": "entity",
+      "recency": "2026-07-13",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-amp-survey-08-more.md",
       "detail_id": "entity-paper-amp-survey-08-more",
@@ -203,29 +213,17 @@
       "source": "log.md",
       "action": "added",
       "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/entities/lerobot.md",
-      "detail_id": "entity-lerobot",
-      "label": "LeRobot (Hugging Face)",
-      "type": "entity",
-      "recency": "2026-07-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-amp-survey-08-more.md",
-    "detail_id": "entity-paper-amp-survey-08-more",
-    "label": "MoRE：复杂地形上的人形多步态残差专家混合",
+    "path": "wiki/entities/paper-vidihand.md",
+    "detail_id": "entity-paper-vidihand",
+    "label": "ViDiHand — Video Diffusion for 4D Hand Motion Reconstruction",
     "type": "entity",
     "recency": "2026-07-13",
     "source": "log.md",
-    "action": "maintained",
-    "has_repo": true,
-    "community_label": "动作重定向（Motion Retargeting） 社区"
+    "action": "added",
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
@@ -242,7 +240,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 157
+      "size": 161
     },
     {
       "label": "人形强化学习运动控制",
@@ -250,7 +248,7 @@
     },
     {
       "label": "动作重定向",
-      "size": 102
+      "size": 103
     }
   ],
   "top_hubs": [
@@ -310,7 +308,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 210,
+      "degree": 211,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
