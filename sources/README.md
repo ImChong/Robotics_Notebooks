@@ -286,6 +286,7 @@
 | [x] [claw_unitree_g1_language_annotated_motion_data.md](blogs/claw_unitree_g1_language_annotated_motion_data.md) | 微信公众号文章：CLAW 为宇树 G1 生成带语言标签的物理仿真全身运动数据 |
 | [x] [ted_xiao_embodied_three_eras_primary_refs.md](blogs/ted_xiao_embodied_three_eras_primary_refs.md) | Ted Xiao 访谈编译稿涉及话题的一手文献索引（论文 / 官方博客 / 技术报告） |
 | [x] [nvidia_develop_humanoid_robot_policies_isaac_gr00t.md](blogs/nvidia_develop_humanoid_robot_policies_isaac_gr00t.md) | NVIDIA Developer Blog：Isaac GR00T 端到端人形策略开发平台与 GR00T 1.7 GA（2026-07-07） |
+| [x] [wechat_embodied_ai_lab_isaac_gr00t_n17_g1_e2e.md](blogs/wechat_embodied_ai_lab_isaac_gr00t_n17_g1_e2e.md) | 具身智能研究室：GR00T 1.7 + G1 VR/LeRobot 端到端工作流中文策展（转载 NVIDIA Blog，2026-07-13） |
 | [x] [wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md](blogs/wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md) | 微信公众号：Zane Zhang，特斯拉 Optimus 腿部行星滚柱丝杠（PRS）选型叙事与路线对比（入库归纳） |
 | [x] [wechat_jixie_robot_open_source_treasury_issue01_10_robots.md](blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md) | 微信公众号「机械Robot」：机器人开源宝库第01期 10 个全开源网址（策展索引 + 10 实体页） |
 | [x] [wechat_jixie_robot_open_source_treasury_issue02_10_robots.md](blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md) | 微信公众号「机械Robot」：机器人开源宝库第02期 10 个全开源网址（Reachy2、Poppy、InMoov、Doggo/Pupper 等） |
