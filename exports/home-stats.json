@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-amp-survey-08-more.md",
+      "detail_id": "entity-paper-amp-survey-08-more",
+      "label": "MoRE：复杂地形上的人形多步态残差专家混合",
+      "type": "entity",
+      "recency": "2026-07-13",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
       "path": "wiki/entities/paper-ame-attention-based-map-encoding.md",
       "detail_id": "entity-paper-ame-attention-based-map-encoding",
       "label": "AME — Attention-Based Map Encoding",
@@ -203,28 +214,18 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/andrej-karpathy.md",
-      "detail_id": "entity-andrej-karpathy",
-      "label": "Andrej Karpathy",
-      "type": "entity",
-      "recency": "2026-07-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "运动控制（Locomotion） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-ame-attention-based-map-encoding.md",
-    "detail_id": "entity-paper-ame-attention-based-map-encoding",
-    "label": "AME — Attention-Based Map Encoding",
+    "path": "wiki/entities/paper-amp-survey-08-more.md",
+    "detail_id": "entity-paper-amp-survey-08-more",
+    "label": "MoRE：复杂地形上的人形多步态残差专家混合",
     "type": "entity",
     "recency": "2026-07-13",
     "source": "log.md",
-    "action": "added",
-    "community_label": "运动控制（Locomotion） 社区"
+    "action": "maintained",
+    "has_repo": true,
+    "community_label": "动作重定向（Motion Retargeting） 社区"
   },
   "top_communities": [
     {
