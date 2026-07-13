@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-13] ingest | sources/papers/physisforcing_arxiv_2606_28128.md — PhysisForcing 训练期分层物理对齐世界模拟器；wiki/entities/paper-physisforcing.md；交叉 generative-world-models / cosmos-3 / manipulation
+
 ## [2026-07-13] ingest | sources/papers/vidihand_arxiv_2606_30308.md — ViDiHand 视频扩散双手 4D 重建；wiki/entities/paper-vidihand.md
 
 ## [2026-07-13] ingest | sources/repos/more.md — 接入 TeleHuman/MoRE 官方仓库；wiki/entities/paper-amp-survey-08-more.md 增补代码复现节
