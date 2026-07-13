@@ -2659,7 +2659,14 @@
     /* ── 初始化搜索自动联想 ── */
     const searchList = document.getElementById('graph-search-list');
     if (searchList) {
-      searchList.innerHTML = nodes.map(n => '<option value="' + escapeHtml(n._info.title || n.label) + '"></option>').join('');
+      // ⚡ Bolt Optimization: Replace .map().join('') with a standard for loop and string concatenation
+      // Expected impact: Eliminates intermediate array allocations and closure overhead during auto-complete list generation, reducing GC pauses on large graphs.
+      let searchOptionsHtml = '';
+      for (let i = 0; i < nodes.length; i++) {
+        const n = nodes[i];
+        searchOptionsHtml += '<option value="' + escapeHtml(n._info.title || n.label) + '"></option>';
+      }
+      searchList.innerHTML = searchOptionsHtml;
     }
 
     /* ── SVG 尺寸（移动端首屏 clientHeight 可能为 0，需延后 fit）── */
@@ -4464,7 +4471,13 @@
       // tags from index
       const item = indexItems.find(it => it.path === d.id);
       const tags = item?.tags || [];
-      sbTags.innerHTML = tags.map(t => `<span class="sb-tag">${escapeHtml(t)}</span>`).join('');
+      // ⚡ Bolt Optimization: Replace .map().join('') with string concatenation in for loop
+      // Expected impact: Eliminates closure creation and array allocation when generating tag HTML.
+      let tagsHtml = '';
+      for (let i = 0; i < tags.length; i++) {
+        tagsHtml += `<span class="sb-tag">${escapeHtml(tags[i])}</span>`;
+      }
+      sbTags.innerHTML = tagsHtml;
 
       // 1-hop graph neighbors (full list)
       const neighborIds = Array.from(direct).sort((a, b) => {
@@ -4475,11 +4488,16 @@
       });
       if (neighborIds.length) {
         if (sbNeighborsCount) sbNeighborsCount.textContent = '(' + neighborIds.length + ')';
-        sbNeighborsList.innerHTML = neighborIds.map(id => {
+        // ⚡ Bolt Optimization: Replace .map().join('') with string concatenation in for loop
+        // Expected impact: Eliminates closure creation and array allocation when generating neighbors HTML.
+        let neighborsHtml = '';
+        for (let i = 0; i < neighborIds.length; i++) {
+          const id = neighborIds[i];
           const n = nodes.find(nd => nd.id === id);
           const label = n?.label || n?._info?.title || id.split('/').pop().replace('.md', '');
-          return `<li><a href="${escapeHtml(pageUrlForNode(n || { id }))}">${escapeHtml(label)}</a></li>`;
-        }).join('');
+          neighborsHtml += `<li><a href="${escapeHtml(pageUrlForNode(n || { id }))}">${escapeHtml(label)}</a></li>`;
+        }
+        sbNeighborsList.innerHTML = neighborsHtml;
         sbNeighborsSec.hidden = false;
       } else {
         sbNeighborsSec.hidden = true;
@@ -4488,12 +4506,18 @@
       // related from index
       const related = item?.related || [];
       if (related.length) {
-        sbRelList.innerHTML = related.slice(0, 8).map(r => {
+        // ⚡ Bolt Optimization: Replace .slice().map().join('') with string concatenation in for loop
+        // Expected impact: Eliminates intermediate arrays and closure allocation.
+        const limit = Math.min(related.length, 8);
+        let relHtml = '';
+        for (let i = 0; i < limit; i++) {
+          const r = related[i];
           const relNode = nodes.find(nd => nd.id === r);
           const relItem = indexItems.find(it => it.path === r || it.id === toDetailId(r));
           const relTitle = relItem?.title || r.split('/').pop().replace('.md','');
-          return `<li><a href="${escapeHtml(pageUrlForPath(r, relNode))}">${escapeHtml(relTitle)}</a></li>`;
-        }).join('');
+          relHtml += `<li><a href="${escapeHtml(pageUrlForPath(r, relNode))}">${escapeHtml(relTitle)}</a></li>`;
+        }
+        sbRelList.innerHTML = relHtml;
         sbRelSec.hidden = false;
       } else {
         sbRelSec.hidden = true;
@@ -4501,9 +4525,14 @@
 
       const paperLinks = collectPaperNotebookLinks(item);
       if (paperLinks.length) {
-        sbPaperList.innerHTML = paperLinks.map(link => {
-          return `<li><a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.label)}</a></li>`;
-        }).join('');
+        // ⚡ Bolt Optimization: Replace .map().join('') with string concatenation in for loop
+        // Expected impact: Eliminates closure creation and array allocation when generating paper links HTML.
+        let paperHtml = '';
+        for (let i = 0; i < paperLinks.length; i++) {
+          const link = paperLinks[i];
+          paperHtml += `<li><a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.label)}</a></li>`;
+        }
+        sbPaperList.innerHTML = paperHtml;
         sbPaperSec.hidden = false;
       } else {
         sbPaperSec.hidden = true;
