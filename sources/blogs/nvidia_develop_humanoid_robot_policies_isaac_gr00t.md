@@ -10,6 +10,7 @@
 - **关联代码仓：** https://github.com/NVIDIA/Isaac-GR00T
 - **入库日期：** 2026-07-13
 - **一句话说明：** 介绍 **Isaac GR00T Development Platform** 如何把 Isaac Lab-Arena、Teleop、GR00T 1.7 后训练与 Isaac ROS 部署串成模块化端到端人形策略流水线，并以 G1 静态 pick-and-place 仿真教程示范五阶段 artifact 衔接。
+- **中文策展转载：** [wechat_embodied_ai_lab_isaac_gr00t_n17_g1_e2e.md](./wechat_embodied_ai_lab_isaac_gr00t_n17_g1_e2e.md)（具身智能研究室，2026-07-13）
 
 ## 核心摘录（归纳，非全文）
 

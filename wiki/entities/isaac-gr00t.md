@@ -16,6 +16,7 @@ related:
 sources:
   - ../../sources/repos/isaac_gr00t.md
   - ../../sources/blogs/nvidia_develop_humanoid_robot_policies_isaac_gr00t.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_isaac_gr00t_n17_g1_e2e.md
   - ../../sources/papers/gr00t_n1_arxiv_2503_14734.md
 ---
 
@@ -69,6 +70,20 @@ flowchart LR
 
 **工程提示：** 遥操作阶段选用的 **WBC**（如 AGILE WBC vs stand/walk 分解）会改变 joint-space 训练分布；应在采数前固定控制器，与目标部署栈一致。
 
+## G1 仿真教程（Isaac Lab-Arena · 静态 pick-and-place）
+
+NVIDIA 与 [具身智能研究室](https://mp.weixin.qq.com/s/Y2mlKtd-dGGdA33Sx_sDCw) 均以 **Unitree G1** 在货架前 **apple → plate** 任务示范完整链路（`galileo_g1_static_pick_and_place`）：
+
+| 步骤 | 命令/产物 | 备注 |
+|------|-----------|------|
+| 搭环境 | Isaac Lab-Arena asset registry + `PickAndPlaceTask` | 静态任务用 **AGILE WBC**；完整代码见 [G1 仿真环境 GitLab Pages](https://unitree-g1-physical-ai-workflow-b42650.gitlab-master-pages.nvidia.com/simulation-workflow/sim-environment-code-review.html) |
+| VR 采数 | `record_demos.py` + `--teleop_device openxr` | CloudXR + VR 头显；示例 400 条 HDF5（可多 session） |
+| 转 LeRobot | `convert_hdf5_to_lerobot.py` + `g1_static_apple_config.yaml` | 映射 `robot_joint_pos` / `processed_actions` / `robot_head_cam_rgb` |
+| 后训练 | `launch_finetune.py` + `g1_sim_wbc_data_gr00t_n_1_7_config.py` | `--embodiment-tag new_embodiment`；Arena 外单独 checkout Isaac-GR00T |
+| 闭环评测 | `policy_runner.py` + 远端 GR00T server | ZMQ；冒烟 `--num_steps 600`；统计 `--num_episodes 100` + `--num_envs 5` |
+
+真机 G1 部署见 [Isaac ROS GR00T Reference Workflow](https://nvidia-isaac-ros.github.io/reference_workflows/isaac_for_physical_ai/tutorials/tutorials.html)（MCAP → LeRobot → LEAPP）。
+
 ## GR00T N1.7（当前 GA 主线）
 
 | 字段 | 内容 |
@@ -114,6 +129,7 @@ flowchart LR
 
 - [isaac_gr00t.md](../../sources/repos/isaac_gr00t.md) — Isaac-GR00T 仓库 README 策展摘录  
 - [nvidia_develop_humanoid_robot_policies_isaac_gr00t.md](../../sources/blogs/nvidia_develop_humanoid_robot_policies_isaac_gr00t.md) — NVIDIA Developer Blog 端到端平台介绍（2026-07-07）  
+- [wechat_embodied_ai_lab_isaac_gr00t_n17_g1_e2e.md](../../sources/blogs/wechat_embodied_ai_lab_isaac_gr00t_n17_g1_e2e.md) — 具身智能研究室中文策展转载（G1 + VR/LeRobot 链路，2026-07-13）  
 - [gr00t_n1_arxiv_2503_14734.md](../../sources/papers/gr00t_n1_arxiv_2503_14734.md) — GR00T N1 论文与白皮书  
 - 代码：<https://github.com/NVIDIA/Isaac-GR00T>  
 - 平台页：<https://developer.nvidia.com/isaac/gr00t>
@@ -121,6 +137,8 @@ flowchart LR
 ## 推荐继续阅读
 
 - [Develop Humanoid Robot Policies End-to-End with NVIDIA Isaac GR00T](https://developer.nvidia.com/blog/develop-humanoid-robot-policies-end-to-end-with-nvidia-isaac-gr00t/) — 官方端到端博客  
+- [NVIDIA Learning：GR00T 端到端工作流](https://docs.nvidia.com/learning/physical-ai/gr00t-e2e-workflow/latest/index.html) — 官方动手教程  
+- [Isaac Teleop + GR00T 1.7 LeRobot 集成（HF Blog）](https://huggingface.co/blog/nvidia/nvidia-isaac-teleop-and-gr00t17-in-lerobot)  
 - [GR00T Reference Workflow for Unitree G1（Isaac ROS）](https://nvidia-isaac-ros.github.io/reference_workflows/isaac_for_physical_ai/tutorials/tutorials.html) — 真机 MCAP → LeRobot → LEAPP 部署  
 - [LeRobot GR00T 文档](https://github.com/huggingface/lerobot/blob/main/docs/source/groot.mdx) — HF 侧 `groot` policy 工作流  
 - [GR00T N1 论文阅读笔记（Humanoid_Robot_Learning_Paper_Notebooks）](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/GR00T_N1_Humanoid_Foundation_Model/GR00T_N1_Humanoid_Foundation_Model.html)

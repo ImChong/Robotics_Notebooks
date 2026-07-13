@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-13] ingest | sources/blogs/wechat_embodied_ai_lab_isaac_gr00t_n17_g1_e2e.md — 具身智能研究室 GR00T 1.7 G1 端到端中文策展；增补 wiki/entities/isaac-gr00t.md G1 仿真教程节
+
+- wiki/entities/isaac-gr00t.md
+- sources/blogs/wechat_embodied_ai_lab_isaac_gr00t_n17_g1_e2e.md
+
 ## [2026-07-13] ingest | sources/repos/isaac_gr00t.md — 接入 Isaac-GR00T 仓库与 NVIDIA 端到端博客，新增 wiki/entities/isaac-gr00t.md 并交叉 GR00T N1 / WBC / LeRobot
 
 - wiki/entities/isaac-gr00t.md
