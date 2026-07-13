@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-13] ingest | sources/courses/jason_peng_synthetic_motion_humanoid_youtube.md — Jason Peng NUS 研讨会合成运动数据与通用人形控制（2looxieN53o）；wiki/overview/jason-peng-flexible-motion-skill-learning.md、wiki/entities/xue-bin-peng.md、wiki/entities/paper-notebook-parc-physics-based-augmentation-with-reinforceme.md
+
 ## [2026-07-13] ingest | sources/repos/greensock-gsap-skills.md — GSAP 官方 Agent Skills；新增 wiki/entities/gsap-skills.md 并交叉 mattpocock-skills / 前端清单
 
 - wiki/entities/gsap-skills.md

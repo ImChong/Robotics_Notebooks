@@ -55,7 +55,7 @@
 
 | 主题 | 关系 |
 |------|------|
-| [Jason Peng 灵活运动技能学习技术地图](../../wiki/overview/jason-peng-flexible-motion-skill-learning.md) | **父节点**（本 ingest 新建） |
+| [Jason Peng 灵活运动技能学习技术地图](../../wiki/overview/jason-peng-flexible-motion-skill-learning.md) | **父节点**（本 ingest 新建；姊妹一手视频见 [`jason_peng_synthetic_motion_humanoid_youtube.md`](../courses/jason_peng_synthetic_motion_humanoid_youtube.md)） |
 | [Xue Bin Peng（彭学斌）](../../wiki/entities/xue-bin-peng.md) | 讲者实体页 |
 | [DeepMimic](../../wiki/methods/deepmimic.md) | 逐帧跟踪基线与其局限 |
 | [AMP](../../wiki/methods/amp-reward.md) | 对抗性模仿 / 分布匹配演进 |

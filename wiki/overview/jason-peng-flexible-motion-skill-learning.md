@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, motion-imitation, reinforcement-learning, adversarial-imitation, data-augmentation, xbpeng, survey]
 status: complete
-updated: 2026-07-03
+updated: 2026-07-13
 related:
   - ../entities/xue-bin-peng.md
   - ../methods/deepmimic.md
@@ -15,14 +15,15 @@ related:
   - ../entities/mimickit.md
   - ../entities/paper-notebook-parc-physics-based-augmentation-with-reinforceme.md
 sources:
+  - ../../sources/courses/jason_peng_synthetic_motion_humanoid_youtube.md
   - ../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md
   - ../../sources/raw/wechat_jason_peng_flexible_motion_2026-07-03.md
-summary: "human five 对 Jason Peng 分享的归纳：RL 运动跟踪擅长复现 clip 但像发条玩具缺乏任务灵活性；超越路径为对抗性模仿（任务/风格分解）与 PARC 式生成器-跟踪器迭代数据增强；并讨论 G1 sim2real 与数据稀缺瓶颈。"
+summary: "Jason Peng 一手研讨会视频 + human five 编译：RL 运动跟踪擅长复现 clip 但像发条玩具缺乏任务灵活性；超越路径为对抗性模仿（任务/风格分解）与 PARC 式生成器-跟踪器迭代数据增强；并讨论 G1 sim2real 与数据稀缺瓶颈。"
 ---
 
 # Jason Peng：更灵活的运动技能学习
 
-> **本页定位**：为 [human five · Jason Peng 分享](https://mp.weixin.qq.com/s/b-5UIRB1mkEDcIJlAT2jwg) 提供 **按问题—方法—部署组织的阅读坐标**；讲者方法学细节见 [Xue Bin Peng](../entities/xue-bin-peng.md) 与 `wiki/methods/` 各页，本页不复述每篇论文公式。
+> **本页定位**：为 Jason Peng 关于「合成运动数据 → 通用人形控制」的分享提供 **按问题—方法—部署组织的阅读坐标**。**一手讲者视频**见 [NUS 研讨会录像](../../sources/courses/jason_peng_synthetic_motion_humanoid_youtube.md)；[human five 微信编译](https://mp.weixin.qq.com/s/b-5UIRB1mkEDcIJlAT2jwg) 额外覆盖对抗性模仿路径。方法学细节见 [Xue Bin Peng](../entities/xue-bin-peng.md) 与 `wiki/methods/` 各页，本页不复述每篇论文公式。
 
 ## 一句话观点
 
@@ -125,11 +126,13 @@ flowchart TB
 
 ## 参考来源
 
-- [wechat_human_five_jason_peng_flexible_motion_skills.md](../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md) — 微信公众号编译（<https://mp.weixin.qq.com/s/b-5UIRB1mkEDcIJlAT2jwg>）
+- [jason_peng_synthetic_motion_humanoid_youtube.md](../../sources/courses/jason_peng_synthetic_motion_humanoid_youtube.md) — **一手讲者视频**（NUS Human-Centered Robotic Lab；<https://www.youtube.com/watch?v=2looxieN53o>）
+- [wechat_human_five_jason_peng_flexible_motion_skills.md](../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md) — 微信公众号编译（<https://mp.weixin.qq.com/s/b-5UIRB1mkEDcIJlAT2jwg>；含对抗 IL 路径）
 - [wechat_jason_peng_flexible_motion_2026-07-03.md](../../sources/raw/wechat_jason_peng_flexible_motion_2026-07-03.md) — Agent Reach 正文落盘
 
 ## 推荐继续阅读
 
 - [DeepMimic 项目页](https://xbpeng.github.io/projects/DeepMimic/index.html)
 - [AMP 项目页](https://xbpeng.github.io/projects/AMP/index.html)
+- [Synthetic Motion Data for Versatile Humanoid Control（YouTube，~28 min）](https://www.youtube.com/watch?v=2looxieN53o) — 讲者原声与 Q&A
 - [PARC 项目页](https://michaelx.io/parc/index.html)
