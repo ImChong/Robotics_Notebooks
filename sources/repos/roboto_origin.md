@@ -7,7 +7,7 @@
 - **来源：** Roboparty（GitHub 组织）
 - **链接：** https://github.com/Roboparty/roboto_origin
 - **入库日期：** 2026-04-25
-- **一句话说明：** Roboparty 发布的人形机器人开源基线仓库，聚合硬件、部署、训练、描述、固件五个子仓库，目标是可复现的 DIY 人形机器人研发链路。
+- **一句话说明：** Roboparty 发布的萝博头原型机（RPO / Roboto Origin）开源聚合入口，快照汇总硬件、部署、训练、描述、固件等子仓库，目标是可复现的 DIY 人形机器人研发链路。
 - **沉淀到 wiki：** 是（`wiki/entities/roboto-origin.md`）
 
 ---
@@ -25,19 +25,35 @@
 
 ## 关联仓库（官方模块）
 
-| 模块 | 主要职责 | 仓库链接 |
-|------|---------|---------|
-| Atom01_hardware | 机械结构、CAD、PCB、BOM | https://github.com/Roboparty/Atom01_hardware |
-| atom01_deploy | ROS2 驱动、中间件、部署配置、IMU/电机集成 | https://github.com/Roboparty/atom01_deploy |
-| atom01_train | IsaacLab 训练、仿真配置、Sim2Sim（含 MuJoCo） | https://github.com/Roboparty/atom01_train |
-| atom01_description | URDF 运动学/动力学模型与网格资源 | https://github.com/Roboparty/atom01_description |
-| atom01_firmware | 固件、USB2CAN、OrangePi 构建与守护进程 | https://github.com/Roboparty/atom01_firmware |
+> **命名说明（2026 README_cn）：** 对外主名已统一为 **RPO / roboparty_***；下表「当前仓名」为 GitHub 主开发入口。历史 **Atom01 / atom01_*** 与本仓库 `sources/repos/atom01_*.md` 仍作兼容索引；快照 `modules/...` 内可能保留旧路径。
+
+| 模块 | 主要职责 | 当前仓名 | 仓库链接 |
+|------|---------|---------|---------|
+| 硬件 | 机械结构、CAD、PCB、BOM | rpo_hardware | https://github.com/Roboparty/rpo_hardware |
+| 部署 | ROS2 驱动、中间件、部署配置、IMU/电机集成 | roboparty_deploy | https://github.com/Roboparty/roboparty_deploy |
+| 训练 | IsaacLab 训练、仿真配置、Sim2Sim（含 MuJoCo） | roboparty_train | https://github.com/Roboparty/roboparty_train |
+| 描述 | URDF/MJCF 运动学/动力学模型与网格 | rpo_description | https://github.com/Roboparty/rpo_description |
+| 固件 | 固件、USB2CAN、OrangePi/RDK 构建与守护进程 | roboparty_firmware | https://github.com/Roboparty/roboparty_firmware |
+| 外观 | 外壳与视觉参考（静态展示，不建议打印） | rpo_appearance | https://github.com/Roboparty/rpo_appearance |
+| 导航 | 实验性导航与定位 | roboparty_navigation | https://github.com/Roboparty/roboparty_navigation |
+| XR 遥操作 | 实验性 XR 遥操作 | roboparty_xr_teleop | https://github.com/Roboparty/roboparty_xr_teleop |
+
+### 历史仓名（兼容）
+
+| 历史模块 | 仓库链接 |
+|---------|---------|
+| Atom01_hardware | https://github.com/Roboparty/Atom01_hardware |
+| atom01_deploy | https://github.com/Roboparty/atom01_deploy |
+| atom01_train | https://github.com/Roboparty/atom01_train |
+| atom01_description | https://github.com/Roboparty/atom01_description |
+| atom01_firmware | https://github.com/Roboparty/atom01_firmware |
 
 ---
 
 ## 关联资料（文档与知识库）
 
-- 官方文档：<https://roboparty.com/roboto_origin/doc>
+- 公司门户：<https://roboparty.com>（见 [roboparty_com.md](../sites/roboparty_com.md)）
+- 官方文档：<https://roboparty.com/roboto_origin/doc>（见 [roboparty_com_roboto_origin_doc.md](../sites/roboparty_com_roboto_origin_doc.md)）
 - 中文 README：<https://github.com/Roboparty/roboto_origin/blob/main/README_cn.md>
 - 中文贡献指南：<https://github.com/Roboparty/roboto_origin/blob/main/CONTRIBUTING_CN.md>
 - 人形机器人运动控制 Know-How（飞书）：<https://roboparty.feishu.cn/wiki/GvUxwKVeNiGa7kku6vEcvqfKn87>

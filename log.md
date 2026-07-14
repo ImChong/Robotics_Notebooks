@@ -1,5 +1,17 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-14] ingest | sources/sites/roboparty_com.md — RoboParty 官网与文档站一手资料；公司实体页与 Roboto Origin 参数/仓库名同步
+
+- wiki/entities/roboparty.md
+- wiki/entities/roboto-origin.md
+- wiki/entities/party-os.md
+- wiki/overview/roboparty-lab-party-os-technology-map.md
+- wiki/entities/open-source-humanoid-hardware.md
+- sources/sites/roboparty_com.md
+- sources/sites/roboparty_com_roboto_origin_doc.md
+- sources/sites/lab_roboparty_com.md
+- sources/repos/roboto_origin.md
+
 ## [2026-07-14] ingest | sources/sites/roboparty_lab_tech_humanoid_control.md — TeCH 无监督人形全身控制实体页与 UFO/Party OS 交叉更新
 
 - wiki/entities/paper-tech-humanoid-control.md
