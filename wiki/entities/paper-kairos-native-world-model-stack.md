@@ -12,7 +12,7 @@ tags:
   - deployment
   - manipulation
 status: complete
-updated: 2026-06-18
+updated: 2026-07-14
 arxiv: "2606.16533"
 related:
   - ../concepts/world-action-models.md
