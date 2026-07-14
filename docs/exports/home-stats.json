@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-07-14",
   "node_count": 1599,
-  "edge_count": 12197,
+  "edge_count": 12198,
   "coverage": {
     "covered": 1553,
     "total": 1583,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/tasks/loco-manipulation.md",
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    },
     {
       "path": "wiki/entities/paper-infinite-diffusion-terrain-diffusion.md",
       "detail_id": "entity-paper-infinite-diffusion-terrain-diffusion",
@@ -196,28 +207,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-hrl-stack-34-gr00t_n1.md",
-      "detail_id": "entity-paper-hrl-stack-34-gr00t_n1",
-      "label": "GR00T N1",
-      "type": "entity",
-      "recency": "2026-07-13",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-infinite-diffusion-terrain-diffusion.md",
-    "detail_id": "entity-paper-infinite-diffusion-terrain-diffusion",
-    "label": "InfiniteDiffusion / Terrain Diffusion（学习式无限地形生成）",
-    "type": "entity",
+    "path": "wiki/tasks/loco-manipulation.md",
+    "detail_id": "wiki-tasks-loco-manipulation",
+    "label": "Loco-Manipulation (移动操作)",
+    "type": "task",
     "recency": "2026-07-14",
     "source": "log.md",
-    "action": "added",
-    "has_repo": true
+    "action": "maintained",
+    "has_repo": true,
+    "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
   },
   "top_communities": [
     {
@@ -265,7 +266,7 @@
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
-      "degree": 271,
+      "degree": 272,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },

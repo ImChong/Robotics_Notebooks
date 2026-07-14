@@ -28,7 +28,7 @@ flowchart LR
 **和主路线的关系：**
 - 本路线是主路线 L5（RL 与模仿学习）之后偏"世界模型 × 策略"的进阶方向；Stage 0–1 与 [VLA 纵深](depth-vla.md) Stage 0 / Stage 5 方向 B、以及 [Generative World Models](../wiki/methods/generative-world-models.md) 高度重叠
 - 若目标是"听懂指令的桌面 VLA"，先走完 [VLA 纵深](depth-vla.md) Stage 0–2，再从本路线 Stage 0 切入即可
-- 若目标是人形 loco-manip 上的实时 Joint WAM，读完 Stage 3 后接 [移动操作纵深](depth-mobile-manipulation.md) 与 [BFM 纵深](depth-bfm.md) 的低层接口
+- 若目标是人形 loco-manip 上的实时 Joint WAM，读完 Stage 3 后接 [Loco-Manipulation 纵深](depth-loco-manipulation.md) 与 [BFM 纵深](depth-bfm.md) 的低层接口
 
 ---
 
@@ -197,7 +197,7 @@ flowchart LR
 
 **方向 D：与 VLA / BFM / 移动操作整机栈汇合**
 - 高层语义仍可走 VLA；全身协调走 BFM；WAM 提供后果耦合或部署筛选层
-- 关键词：[VLA 纵深](depth-vla.md)、[BFM 纵深](depth-bfm.md)、[移动操作纵深](depth-mobile-manipulation.md)
+- 关键词：[VLA 纵深](depth-vla.md)、[BFM 纵深](depth-bfm.md)、[Loco-Manipulation 纵深](depth-loco-manipulation.md)
 
 ---
 
@@ -219,7 +219,7 @@ flowchart LR
   - [VLA（视觉-语言-动作模型）](depth-vla.md) — 姊妹路线：VLA 管反应式语义策略，WAM 管前向后果耦合
   - [BFM（人形行为基础模型）](depth-bfm.md) — 身体级协调；可与 WAM / VLA 分层叠用
   - [模仿学习与技能迁移](depth-imitation-learning.md) — 动作头与人数据共训的展开版
-  - [移动操作（Loco-Manipulation）](depth-mobile-manipulation.md) — Joint WAM 在全身任务上的主战场之一
+  - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md) — Joint WAM 在全身任务上的主战场之一
   - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md) — Stage 5 方向 B 的展开版
   - [接触丰富的操作任务](depth-contact-manipulation.md) — Stage 4 触觉 / 力控工程侧
   - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)

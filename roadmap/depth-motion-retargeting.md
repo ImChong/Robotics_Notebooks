@@ -224,7 +224,7 @@ flowchart LR
   - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
   - [安全控制（CLF/CBF）](depth-safe-control.md)
   - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md)
-  - [移动操作（Loco-Manipulation）](depth-mobile-manipulation.md)
+  - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md)
   - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
   - [VLA（视觉-语言-动作模型）](depth-vla.md)
   - [WAM（世界–动作模型）](depth-wam.md)

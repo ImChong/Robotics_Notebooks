@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-14] structural | wiki/tasks/loco-manipulation.md + roadmap/depth-loco-manipulation.md — 任务页新增「术语辨析：Loco-Manipulation vs Mobile Manipulation」小节（轮式底座/腿式全身耦合分界、本库中文「移动操作」统一指 Loco-Manipulation 的约定、mobile-manipulation tag 专标轮式工作）；纵深路线更名 depth-mobile-manipulation.md → depth-loco-manipulation.md，README/index/主路线/12 条纵深页共 28 处链接与主页路线按钮统一为「Loco-Manipulation（移动操作）」
+
 ## [2026-07-14] ingest | sources/papers/infinite_diffusion_terrain_diffusion_siggraph_2026.md、sources/repos/terrain-diffusion.md — InfiniteDiffusion/Terrain Diffusion（SIGGRAPH 2026）；wiki/entities/paper-infinite-diffusion-terrain-diffusion.md；交叉 procedural-terrain-generation、generative-world-models
 
 - wiki/entities/paper-infinite-diffusion-terrain-diffusion.md

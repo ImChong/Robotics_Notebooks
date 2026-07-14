@@ -2,13 +2,13 @@
 
 机器人技术栈知识库 / Robotics research and engineering wiki.
 
-<!-- Last updated: 2026-07-14 (V29 自动更新：图谱 1599 节点 12197 边) -->
+<!-- Last updated: 2026-07-14 (V29 自动更新：图谱 1599 节点 12198 边) -->
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen?logo=github)](https://imchong.github.io/Robotics_Notebooks/)
 [![Deploy GitHub Pages](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml)
 [![Wiki Lint](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/lint.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/lint.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
-[![Knowledge Graph](https://img.shields.io/badge/知识图谱-1599节点_12197边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
+[![Knowledge Graph](https://img.shields.io/badge/知识图谱-1599节点_12198边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
 [![Sources Coverage](https://img.shields.io/badge/sources覆盖率-98%25-green)](docs/checklists/tech-stack-next-phase-checklist-v29.md)
 
 ---
@@ -49,7 +49,7 @@
 | 让机器人自主从 A 到 B | [导航纵深路线](roadmap/depth-navigation.md) |
 | 学模仿学习与技能迁移 | [模仿学习纵深路线](roadmap/depth-imitation-learning.md) |
 | 用强化学习做运动控制 | [RL 纵深路线](roadmap/depth-rl-locomotion.md) |
-| 让机器人边走边动手 | [移动操作纵深路线](roadmap/depth-mobile-manipulation.md) |
+| 让机器人边走边动手 | [Loco-Manipulation 纵深路线](roadmap/depth-loco-manipulation.md) |
 | 把人体动作变成机器人参考轨迹 | [动作重定向纵深路线](roadmap/depth-motion-retargeting.md) |
 | 做人形全身行为基础模型 | [BFM 纵深路线](roadmap/depth-bfm.md) |
 | 让机器人看地形越障 | [感知越障纵深路线](roadmap/depth-perceptive-locomotion.md) |

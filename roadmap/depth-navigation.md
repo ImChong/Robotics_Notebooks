@@ -28,7 +28,7 @@ flowchart LR
 **和主路线的关系：**
 - 主路线聚焦关节层运动控制；本路线占据其上的 **任务规划与空间智能层**，输出速度命令或路点给低层执行
 - 腿式平台的局部越障在 [感知越障纵深](depth-perceptive-locomotion.md) 展开，本路线聚焦全局导航与语义接地
-- "导航到了怎么动手"是 [移动操作纵深](depth-mobile-manipulation.md) 的主题，Stage 5 的 OVMM 方向是两条路线的交汇点
+- "导航到了怎么动手"是 [Loco-Manipulation 纵深](depth-loco-manipulation.md) 的主题，Stage 5 的 OVMM 方向是两条路线的交汇点
 
 ---
 
@@ -195,7 +195,7 @@ flowchart LR
 
 **方向 C：导航–操作联合（OVMM）**
 - 导航终点姿态直接决定操作成败，分阶段流水线的错配怎么闭环
-- 关键词：[3D-IC](../wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md)、[REALM](../wiki/entities/paper-realm-last-3-meter-vln-grounding.md)、[移动操作纵深路线](depth-mobile-manipulation.md)
+- 关键词：[3D-IC](../wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md)、[REALM](../wiki/entities/paper-realm-last-3-meter-vln-grounding.md)、[Loco-Manipulation 纵深路线](depth-loco-manipulation.md)
 
 **方向 D：导航世界模型与新载体**
 - 用 WAM 联合预测未来观测与动作；空中 VLN 等新设定
@@ -219,7 +219,7 @@ flowchart LR
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
 - 其它纵深路径：
   - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md) — 腿式平台局部越障的展开版
-  - [移动操作（Loco-Manipulation）](depth-mobile-manipulation.md) — Stage 5 方向 C 的邻接路线
+  - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md) — Stage 5 方向 C 的邻接路线
   - [VLA（视觉-语言-动作模型）](depth-vla.md) — Stage 4 语义接地的模型侧展开版
   - [WAM（世界–动作模型）](depth-wam.md)
   - [BFM（人形行为基础模型）](depth-bfm.md)
