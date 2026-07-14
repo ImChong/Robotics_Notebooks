@@ -1,5 +1,14 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-14] ingest | sources/sites/roboparty_lab_tech_humanoid_control.md — TeCH 无监督人形全身控制实体页与 UFO/Party OS 交叉更新
+
+- wiki/entities/paper-tech-humanoid-control.md
+- wiki/entities/roboparty-ufo.md
+- wiki/overview/roboparty-lab-party-os-technology-map.md
+- wiki/entities/party-os.md
+- wiki/entities/paper-bfm-zero.md
+- sources/sites/roboparty_lab_tech_humanoid_control.md
+
 ## [2026-07-14] ingest | sources/blogs/wechat_roboparty_lab_party_os_3_tools.md — RoboParty Lab / Party OS 技术地图与 MimicLite、UFO、hhtools 子实体页
 
 - wiki/overview/roboparty-lab-party-os-technology-map.md

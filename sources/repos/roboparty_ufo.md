@@ -18,7 +18,7 @@
 |------|------|
 | Fast Training | MJLab backend；8×4090 <12h 完成 BFM-Zero；8×H200 6–8h |
 | 通用可扩展 | 无缝适配不同机器人形态；多来源数据混合训练与调度 |
-| 表征集成 | BFM-Zero（FB Representation）；探索 TeCH 等新表征 |
+| 表征集成 | BFM-Zero（FB Representation）；[TeCH](https://lab.roboparty.com/outputs/tech)（TLDR 时间距离表征） |
 | 真机遥操 | 首次开源无监督 RL 控制遥操作代码与完整验证方案 |
 
 ---
@@ -34,4 +34,5 @@
 
 - [roboparty-ufo](../../wiki/entities/roboparty-ufo.md)
 - 父级：[party-os](../../wiki/entities/party-os.md)
-- 交叉：[mjlab](../../wiki/entities/mjlab.md)、[paper-bfm-zero](../../wiki/entities/paper-bfm-zero.md)
+- 交叉：[mjlab](../../wiki/entities/mjlab.md)、[paper-bfm-zero](../../wiki/entities/paper-bfm-zero.md)、[paper-tech-humanoid-control](../../wiki/entities/paper-tech-humanoid-control.md)
+- 成果页：[roboparty_lab_tech_humanoid_control.md](../sites/roboparty_lab_tech_humanoid_control.md)
