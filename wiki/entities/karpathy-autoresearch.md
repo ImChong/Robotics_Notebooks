@@ -9,7 +9,7 @@ tags:
   - autonomous-experimentation
   - research-automation
 status: complete
-updated: 2026-07-07
+updated: 2026-07-14
 related:
   - ./andrej-karpathy.md
   - ./darwin-skill.md
@@ -17,6 +17,7 @@ related:
   - ./cangjie-skill.md
   - ../concepts/ai-auto-research.md
   - ../references/llm-wiki-karpathy.md
+  - ../methods/muon.md
   - ./superpowers-obra.md
   - ./hermes-agent.md
   - ../../schema/ingest-workflow.md
@@ -102,6 +103,7 @@ flowchart LR
 - [Superpowers（obra）](./superpowers-obra.md) — 另一类 agent 技能与交付纪律。
 - [Hermes Agent](./hermes-agent.md) — 常驻代理运行时；可与 autoresearch 组合为「长驻代理 + 夜间实验环」。
 - [ENPIRE](../methods/enpire.md) — 机器人领域的物理 autoresearch 对照（真机 reset + 策略改进）。
+- [Muon](../methods/muon.md) — `train.py` 默认隐藏层优化器；与 [AdamW](../methods/adamw.md) 混用。
 - [Darwin Skill](./darwin-skill.md) — autoresearch 机制在 Agent Skill 优化域的映射。
 - [Nuwa Skill](./nuwa-skill.md) / [Cangjie Skill](./cangjie-skill.md) — 造 skill 上游，与达尔文「进化」闭合。
 
@@ -117,6 +119,7 @@ flowchart LR
 - [Superpowers（obra）](./superpowers-obra.md)
 - [Hermes Agent](./hermes-agent.md)
 - [ENPIRE](../methods/enpire.md)
+- [Muon](../methods/muon.md)
 - [Darwin Skill](./darwin-skill.md)
 - [Nuwa Skill](./nuwa-skill.md)
 - [Cangjie Skill](./cangjie-skill.md)

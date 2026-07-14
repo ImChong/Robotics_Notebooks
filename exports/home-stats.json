@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-07-14",
-  "node_count": 1613,
-  "edge_count": 12430,
+  "node_count": 1615,
+  "edge_count": 12446,
   "coverage": {
-    "covered": 1566,
-    "total": 1596,
+    "covered": 1568,
+    "total": 1598,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/methods/muon.md",
+      "detail_id": "wiki-methods-muon",
+      "label": "Muon（MomentUm Orthogonalized by Newton–Schulz）",
+      "type": "method",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-muon-scalable-llm-training.md",
+      "detail_id": "entity-paper-muon-scalable-llm-training",
+      "label": "Muon is Scalable for LLM Training（arXiv:2502.16982）",
+      "type": "entity",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/comparisons/deep-learning-optimizers.md",
+      "detail_id": "wiki-comparisons-deep-learning-optimizers",
+      "label": "Deep Learning Optimizers：选型对比",
+      "type": "comparison",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/overview/motor-design-workflow.md",
       "detail_id": "wiki-overview-motor-design-workflow",
@@ -182,48 +214,18 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/methods/uhas-unified-hand-action-space.md",
-      "detail_id": "wiki-methods-uhas-unified-hand-action-space",
-      "label": "UHAS（Unified Hand Action Space，统一手部动作空间）",
-      "type": "method",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-fastgrasp-mobile-dexterous-grasping.md",
-      "detail_id": "entity-paper-fastgrasp-mobile-dexterous-grasping",
-      "label": "FastGrasp：移动操作器上的学习式全身快速灵巧抓取",
-      "type": "entity",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-pear-pixel-aligned-expressive-hmr.md",
-      "detail_id": "entity-paper-pear-pixel-aligned-expressive-hmr",
-      "label": "PEAR：像素对齐的表意人体网格恢复",
-      "type": "entity",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/motor-design-workflow.md",
-    "detail_id": "wiki-overview-motor-design-workflow",
-    "label": "电机设计流程（规格 → 仿真 → 样机 → 控制）",
-    "type": "overview",
+    "path": "wiki/methods/muon.md",
+    "detail_id": "wiki-methods-muon",
+    "label": "Muon（MomentUm Orthogonalized by Newton–Schulz）",
+    "type": "method",
     "recency": "2026-07-14",
     "source": "log.md",
-    "action": "maintained",
-    "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
@@ -232,7 +234,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 282
+      "size": 284
     },
     {
       "label": "人形论文深读笔记",

@@ -515,6 +515,7 @@
 - [MotionWAM（实时人形 Loco-Manipulation · World Action Model）](wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md) — MotionWAM**（*Towards Foundation World Action Models for Real-Time Humanoid Loco-Manipulation*，arXi `📅unknown` `[entity_page]`
 - [MPC-RL（人形 Locomotion 与 Loco-Manipulation 的训练期 MPC 指导）](wiki/entities/paper-mpc-rl-humanoid-locomotion-manipulation.md) — MPC-RL**（*Accelerating and Scaling MPC-Guided Reinforcement Learning for Humanoid Locomotion and M `📅unknown` `[entity_page]`
 - [MUJICA：轮足多技能统一本体控制架构](wiki/entities/paper-mujica-wheel-legged-multi-skill.md) — MUJICA**（*Multi-skill Unified Joint Integration of Control Architecture*，arXiv:2605.13058，**ICRA 2 `📅unknown` `[entity_page]`
+- [Muon is Scalable for LLM Training（arXiv:2502.16982）](wiki/entities/paper-muon-scalable-llm-training.md) — Muon is Scalable for LLM Training** 是 **月之暗面（Moonshot AI）** 发表的 Muon **第一篇大规模验证论文**（arXiv:2502.169 `📅unknown` `[entity_page]`
 - [NavWAM（目标条件视觉导航 · Navigation World Action Model）](wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md) — NavWAM**（*A Navigation World Action Model for Goal-Conditioned Visual Navigation*，arXiv:2606.13494 `📅unknown` `[entity_page]`
 - [A 21-DOF Humanoid Dexterous Hand with Hybrid SMA-Motor Actuation](wiki/entities/paper-notebook-a-21-dof-humanoid-dexterous-hand-with-hybrid-sma.md) — A 21-DOF Humanoid Dexterous Hand with Hybrid SMA-Motor Actuation: CYJ Hand-0** 已列入 [Humanoid Robot `📅unknown` `[entity_page]`
 - [A Behavior Architecture for Fast Humanoid Robot Door Traversals](wiki/entities/paper-notebook-a-behavior-architecture-for-fast-humanoid-robot.md) — A Behavior Architecture for Fast Humanoid Robot Door Traversals** 已列入 [Humanoid Robot Learning Pap `📅unknown` `[entity_page]`
@@ -1275,6 +1276,7 @@
 - [Model Predictive Path Integral (MPPI)](wiki/methods/mppi.md) — MPPI** 是一种基于采样（Sampling-based）的随机最优控制算法。它不依赖于对动力学方程进行求导（与 DDP/iLQR 不同），而是通过在 GPU 上并行生成成千上万条随机轨迹，并根 `📅unknown` `[method_page]`
 - [MT-Opt](wiki/methods/mt-opt.md) — MT-Opt**：在多机器人并行采集框架下，同时学习多项操控技能的连续动作多任务深度强化学习系统；强调任务规范、成功检测器与跨任务表示共享。 `📅unknown` `[method_page]`
 - [MTRG / GfR: Multi-Task Reference and Goal-Driven RL](wiki/methods/mtrg-reference-goal-driven-rl.md) — GfR**（Generalizing from References，**RSS 2026**）提出多任务 RL 范式， `📅unknown` `[method_page]`
+- [Muon（MomentUm Orthogonalized by Newton–Schulz）](wiki/methods/muon.md) — Muon** 是面向神经网络 **隐藏层 2D 权重矩阵** 的优化器：对 SGD-momentum 产生的更新矩阵 $G$，用 **Newton–Schulz 迭代**（`newtonschul `📅unknown` `[method_page]`
 - [Nesterov Momentum（Nesterov 加速梯度）](wiki/methods/nesterov-momentum.md) — Nesterov Accelerated Gradient（NAG）**：在施加动量更新 **之前**，先沿当前速度方向做一步「前瞻」，在 **前瞻点** 计算梯度。相比经典 [SGD Momen `📅unknown` `[method_page]`
 - [NMR（神经运动重定向与人形全身控制）](wiki/methods/neural-motion-retargeting-nmr.md) — NMR（Neural Motion Retargeting）** 面向「人体 SMPL（或同类）序列 → 人形机器人可执行全身轨迹」：不把重定向当成孤立的逐帧几何优化，而是用**可扩展的监督数据  `📅unknown` `[method_page]`
 - [Newton's Method（牛顿法）](wiki/methods/newtons-method.md) — 牛顿法（Newton's method）**：在当前点用 **Hessian** $\nabla^2 f(x_k)$ 构造二次模型，搜索方向 $p_k = -(\nabla^2 f(x_k))^{ `📅unknown` `[method_page]`

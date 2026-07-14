@@ -544,6 +544,14 @@
         "bytedance-seed"
       ]
     },
+    "moonshot": {
+      "label": "月之暗面（Moonshot AI）",
+      "aliases": [
+        "moonshot",
+        "moonshot-ai",
+        "kimi"
+      ]
+    },
     "sysu": {
       "label": "中山大学（SYSU）",
       "aliases": [
