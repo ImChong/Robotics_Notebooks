@@ -2166,6 +2166,35 @@
     return '';
   }
 
+  /** 路线侧栏 TOC 副标题：按正文 h2 层级前缀（L / Stage）推导，否则回退通用文案。 */
+  function deriveRoadmapTocSubtitle(headings) {
+    var h2s = (headings || []).filter(function (h) { return h.level === 2; });
+    if (!h2s.length) return '章节快速导航';
+    var stageH2s = h2s.filter(function (h) {
+      return !!parseRoadmapTimelineNodeLabel(h.text || '');
+    });
+    var target = stageH2s.length >= 2 ? stageH2s : h2s;
+    if (target.length < 2) return '章节快速导航';
+    var firstLabel = parseRoadmapTimelineNodeLabel(target[0].text || '');
+    var lastLabel = parseRoadmapTimelineNodeLabel(target[target.length - 1].text || '');
+    if (firstLabel && lastLabel) {
+      if (firstLabel.charAt(0) === 'L' && lastLabel.charAt(0) === 'L') {
+        return '从 ' + firstLabel + ' 到 ' + lastLabel + ' 的全程导航';
+      }
+      if (firstLabel.charAt(0) === 'S' && lastLabel.charAt(0) === 'S') {
+        return '从 ' + firstLabel + ' 到 ' + lastLabel + ' 的阶段导航';
+      }
+    }
+    if (h2s.length >= 2) return '共 ' + h2s.length + ' 个章节的快速导航';
+    return '章节快速导航';
+  }
+
+  function renderRoadmapTocSubtitle(headings) {
+    var el = document.getElementById('roadmapTocSubtitle');
+    if (!el) return;
+    el.textContent = deriveRoadmapTocSubtitle(headings);
+  }
+
   function buildRoadmapStageRowHTML(stage, index, roadmapId, detailPages, options) {
     var opts = options || {};
     var related = Array.isArray(stage.related_items) ? stage.related_items.slice(0, 8) : [];
@@ -4768,6 +4797,7 @@
       renderDetailMetaSource(null, 'roadmapContentSourceLink');
       var tocRootEmpty = document.getElementById('roadmapTocList');
       if (tocRootEmpty) removeLoadingState(tocRootEmpty);
+      renderRoadmapTocSubtitle(null);
       return;
     }
 
@@ -4843,6 +4873,7 @@
         removeLoadingState(contentEl);
       }
       if (tocEl) removeLoadingState(tocEl);
+      renderRoadmapTocSubtitle(null);
       return;
     }
 
@@ -4859,6 +4890,7 @@
     if (tocEl) {
       renderDetailToc(tocEl, headings, roadmapMarkdownContext);
     }
+    renderRoadmapTocSubtitle(headings);
     renderDetailMetaSource(detail, 'roadmapContentSourceLink');
     if (contentEl) {
       contentEl.innerHTML = renderMarkdownContent(contentMarkdown, headings, roadmapMarkdownContext);

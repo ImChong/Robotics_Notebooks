@@ -19,6 +19,7 @@ class RoadmapPageTests(unittest.TestCase):
             'id="roadmapContent"',
             'id="roadmapContentSourceLink"',
             'id="roadmapTocList"',
+            'id="roadmapTocSubtitle"',
         ]
         for marker in required_ids:
             self.assertIn(marker, content)
@@ -49,6 +50,15 @@ class RoadmapPageTests(unittest.TestCase):
         content = MAIN_JS.read_text(encoding="utf-8")
         self.assertIn("function parseRoadmapTimelineNodeLabel", content)
         self.assertIn("Stage\\s+(\\d+)", content)
+
+    def test_roadmap_toc_subtitle_is_derived_from_headings(self):
+        content = MAIN_JS.read_text(encoding="utf-8")
+        self.assertIn("function deriveRoadmapTocSubtitle", content)
+        self.assertIn("function renderRoadmapTocSubtitle", content)
+        self.assertIn("roadmapTocSubtitle", content)
+        self.assertNotIn(
+            "从 L−1 序言到 L7 出口的全程导航", ROADMAP_HTML.read_text(encoding="utf-8")
+        )
 
     def test_main_roadmap_knowledge_map_includes_depth_branches(self):
         content = MAIN_JS.read_text(encoding="utf-8")
