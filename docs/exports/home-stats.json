@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-14",
-  "node_count": 1611,
-  "edge_count": 12344,
+  "node_count": 1612,
+  "edge_count": 12361,
   "coverage": {
-    "covered": 1565,
-    "total": 1595,
+    "covered": 1566,
+    "total": 1596,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -154,9 +154,30 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
-      "path": "wiki/entities/roboparty-ufo.md",
-      "detail_id": "entity-roboparty-ufo",
-      "label": "UFO（Roboparty 无监督 RL 控制框架）",
+      "path": "wiki/entities/roboparty.md",
+      "detail_id": "entity-roboparty",
+      "label": "RoboParty（萝博派对）",
+      "type": "entity",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/roboto-origin.md",
+      "detail_id": "entity-roboto-origin",
+      "label": "Roboto Origin（开源人形机器人基线）",
+      "type": "entity",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "运动控制（Locomotion） 社区"
+    },
+    {
+      "path": "wiki/entities/party-os.md",
+      "detail_id": "entity-party-os",
+      "label": "Party OS（RoboParty 人形研发底座）",
       "type": "entity",
       "recency": "2026-07-14",
       "source": "log.md",
@@ -176,41 +197,20 @@
       "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
-      "path": "wiki/entities/party-os.md",
-      "detail_id": "entity-party-os",
-      "label": "Party OS（RoboParty 人形研发底座）",
-      "type": "entity",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-bfm-zero.md",
-      "detail_id": "entity-paper-bfm-zero",
-      "label": "BFM-Zero",
+      "path": "wiki/entities/open-source-humanoid-hardware.md",
+      "detail_id": "entity-open-source-humanoid-hardware",
+      "label": "开源人形机器人硬件方案对比",
       "type": "entity",
       "recency": "2026-07-14",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/mimiclite.md",
-      "detail_id": "entity-mimiclite",
-      "label": "MimicLite（监督运动跟踪基础设施）",
-      "type": "entity",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added",
       "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
-      "path": "wiki/entities/human-humanoid-tools.md",
-      "detail_id": "entity-human-humanoid-tools",
-      "label": "human-humanoid-tools（hhtools）",
+      "path": "wiki/entities/roboparty-ufo.md",
+      "detail_id": "entity-roboparty-ufo",
+      "label": "UFO（Roboparty 无监督 RL 控制框架）",
       "type": "entity",
       "recency": "2026-07-14",
       "source": "log.md",
@@ -233,11 +233,11 @@
   "top_communities": [
     {
       "label": "运动控制",
-      "size": 321
+      "size": 325
     },
     {
       "label": "视觉-语言-动作",
-      "size": 287
+      "size": 282
     },
     {
       "label": "人形论文深读笔记",

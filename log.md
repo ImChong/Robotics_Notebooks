@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-14] fix | scripts/utils/community_labels.py — 补 roadmap/depth-navigation.md 社区名 override，修复 CI 社区命名测试
+
+- 六条纵深路线补链 +15 边后社区结构变化，community-14 枢纽变为 roadmap/depth-navigation.md，其 H1 不符合「中文（English） 社区」命名模式，`tests/test_community_naming.py` 失败
+- 按 schema/naming.md § 图谱社区命名的维护方式，在 `COMMUNITY_NAME_OVERRIDES` 补「导航纵深路线（Navigation Deep-Dive Roadmap）」；`make ci-preflight` 12/12 通过、WARNING 消除，`pytest` 全量通过
+
 ## [2026-07-14] structural | roadmap/depth-*.md 增量刷新 — 依据 07-10 全量刷新后新入库知识节点补链六条纵深路线
 
 - roadmap/depth-bfm.md：Stage 3 预训练三线补 [TeCH](wiki/entities/paper-tech-humanoid-control.md)（TLDR 对比时间距离无监督预训练，G1 上对标 SONIC 且 GPU 时长降近两个数量级）
@@ -8,6 +13,18 @@
 - roadmap/depth-wam.md：Stage 1 世界模型基座补 [PhysisForcing](wiki/entities/paper-physisforcing.md)（训练期分层物理对齐）与 [PhysMani](wiki/entities/paper-physmani-dynamic-manipulation-world-model.md)（3D Gaussian 速度场动态操作世界模型）
 - roadmap/depth-contact-manipulation.md：Stage 2 补 [DexVerse](wiki/entities/paper-dexverse.md)（100 任务多具身灵巧 benchmark），Stage 3 补 [ContactMimic](wiki/entities/paper-contactmimic.md)、[UHAS](wiki/methods/uhas-unified-hand-action-space.md)、[FastGrasp](wiki/entities/paper-fastgrasp-mobile-dexterous-grasping.md)
 - roadmap/depth-motion-retargeting.md：Stage 2 数据源补 [PEAR](wiki/entities/paper-pear-pixel-aligned-expressive-hmr.md) 与 [ViDiHand](wiki/entities/paper-vidihand.md)（表达级单图 SMPL-X 实时恢复 / egocentric 双手 4D 估计）
+
+## [2026-07-14] ingest | sources/sites/roboparty_com.md — RoboParty 官网与文档站一手资料；公司实体页与 Roboto Origin 参数/仓库名同步
+
+- wiki/entities/roboparty.md
+- wiki/entities/roboto-origin.md
+- wiki/entities/party-os.md
+- wiki/overview/roboparty-lab-party-os-technology-map.md
+- wiki/entities/open-source-humanoid-hardware.md
+- sources/sites/roboparty_com.md
+- sources/sites/roboparty_com_roboto_origin_doc.md
+- sources/sites/lab_roboparty_com.md
+- sources/repos/roboto_origin.md
 
 ## [2026-07-14] ingest | sources/sites/roboparty_lab_tech_humanoid_control.md — TeCH 无监督人形全身控制实体页与 UFO/Party OS 交叉更新
 

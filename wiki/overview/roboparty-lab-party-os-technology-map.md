@@ -4,6 +4,7 @@ tags: [roboparty, humanoid, open-source, infrastructure, motion-tracking, unsupe
 status: complete
 updated: 2026-07-14
 related:
+  - ../entities/roboparty.md
   - ../entities/party-os.md
   - ../entities/mimiclite.md
   - ../entities/roboparty-ufo.md
@@ -18,6 +19,8 @@ related:
   - ../entities/paper-bfm-zero.md
 sources:
   - ../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md
+  - ../../sources/sites/roboparty_com.md
+  - ../../sources/sites/lab_roboparty_com.md
   - ../../sources/repos/party_os.md
   - ../../sources/repos/mimiclite.md
   - ../../sources/repos/roboparty_ufo.md
@@ -124,6 +127,8 @@ flowchart LR
 ## 参考来源
 
 - [wechat_roboparty_lab_party_os_3_tools.md](../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md)
+- [roboparty_com.md](../../sources/sites/roboparty_com.md)
+- [lab_roboparty_com.md](../../sources/sites/lab_roboparty_com.md)
 - [party_os.md](../../sources/repos/party_os.md)
 - [mimiclite.md](../../sources/repos/mimiclite.md)
 - [roboparty_ufo.md](../../sources/repos/roboparty_ufo.md)
@@ -136,3 +141,4 @@ flowchart LR
 - [TeCH 成果页（RoboParty Lab）](https://lab.roboparty.com/outputs/tech)
 - [Party OS GitHub](https://github.com/Roboparty/Party_OS)
 - [Roboto Origin 实体页](../entities/roboto-origin.md)
+- [RoboParty 公司实体页](../entities/roboparty.md)
