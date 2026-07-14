@@ -115,10 +115,14 @@ flowchart LR
 ### 核心问题
 - 楼梯与离散地形（梅花桩、缝隙）为什么比坡地难一个量级（落脚点是硬约束）
 - 跑酷类工作怎么把"选落脚点"隐式塞进端到端策略（Extreme Parkour 的内积 reward、waypoint 引导）
+- **规划引导型**（DCM/落脚点监督进奖励）与 **端到端感知策略** 各解决什么问题、部署侧各保留什么
 - 人形和四足在感知越障上的差异（质心高、视野盲区、双足支撑域小）
 
 ### 推荐读什么
 - [楼梯与障碍感知 locomotion 任务枢纽](../wiki/tasks/stair-obstacle-perceptive-locomotion.md) — 本方向论文全景入口
+- [FastStair](../wiki/entities/paper-faststair-humanoid-stair-ascent.md) — 机载高程图 + GPU 并行 DCM 落脚点作训练监督；人形 **高速上楼梯**（LimX Oli ~1.65 m/s）；规划引导 + 分速专家 LoRA 融合
+- [Explicit Stair Geometry](../wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md) — 与 FastStair 对照：BEV 点云 → 低维几何 token 条件化 PPO，强调 OOD 踢面与 G1 户外长楼梯
+- [Capture Point / DCM](../wiki/concepts/capture-point-dcm.md) — FastStair 等规划引导路线的动力学与离散搜索直觉
 - [Extreme Parkour](../wiki/entities/extreme-parkour.md)
 - [ANYmal Parkour 深读笔记](../wiki/entities/paper-notebook-anymal-parkour-robust-perceptive-locomotion.md)
 - [Humanoid Parkour Learning 深读笔记](../wiki/entities/paper-notebook-humanoid-parkour-learning.md)
@@ -126,6 +130,7 @@ flowchart LR
 
 ### 推荐做什么
 - 复现一个开源 parkour 工作（Extreme Parkour / humanoid parkour）在仿真里的训练
+- 对照 **端到端深度策略** 与 **规划引导 RL**（如 FastStair 的 foothold-tracking 预训练）：消融去掉高程图输入、去掉规划监督、去掉分速专家，看哪一环在楼梯上掉点最狠
 - 逐项消融：去掉深度输入、去掉课程、去掉 waypoint 引导，记录哪个环节掉点最狠
 
 ### 学完输出什么
@@ -164,7 +169,7 @@ flowchart LR
 | Stage 0 | 盲走基线 | [Terrain Adaptation](../wiki/concepts/terrain-adaptation.md) |
 | Stage 1 | 地形表征 | [Terrain Latent Representation](../wiki/concepts/terrain-latent-representation.md) |
 | Stage 2 | 感知策略训练 | [Privileged Training](../wiki/concepts/privileged-training.md) |
-| Stage 3 | 楼梯 / 跑酷 | [楼梯与障碍感知 locomotion 枢纽](../wiki/tasks/stair-obstacle-perceptive-locomotion.md) |
+| Stage 3 | 楼梯 / 跑酷 | [楼梯与障碍感知 locomotion 枢纽](../wiki/tasks/stair-obstacle-perceptive-locomotion.md)；人形高速上楼见 [FastStair](../wiki/entities/paper-faststair-humanoid-stair-ascent.md) |
 | Stage 4 | 导航栈整合 | [分层四足导航栈](../wiki/concepts/hierarchical-quadruped-navigation-stack.md) |
 
 ## 和其他页面的关系
@@ -185,10 +190,13 @@ flowchart LR
   - [BFM（人形行为基础模型）](depth-bfm.md)
 - 关联知识页：
   - [楼梯与障碍感知 locomotion 任务枢纽](../wiki/tasks/stair-obstacle-perceptive-locomotion.md)
+  - [FastStair](../wiki/entities/paper-faststair-humanoid-stair-ascent.md) — Stage 3 人形高速上楼 · 规划引导 RL
   - [Terrain Adaptation](../wiki/concepts/terrain-adaptation.md)
   - [Terrain Latent Representation](../wiki/concepts/terrain-latent-representation.md)
   - [Privileged Training](../wiki/concepts/privileged-training.md)
   - [Procedural Terrain Generation](../wiki/concepts/procedural-terrain-generation.md)
+  - [Capture Point / DCM](../wiki/concepts/capture-point-dcm.md)
+  - [Footstep Planning](../wiki/concepts/footstep-planning.md)
   - [Extreme Parkour](../wiki/entities/extreme-parkour.md)
 
 ## 参考来源
@@ -196,6 +204,7 @@ flowchart LR
 本路线基于以下原始资料的归纳：
 
 - [楼梯与障碍感知 locomotion 任务枢纽](../wiki/tasks/stair-obstacle-perceptive-locomotion.md)
+- [FastStair 论文摘录（arXiv:2601.10365）](../sources/papers/faststair_arxiv_2601_10365.md)
 - [Terrain Adaptation](../wiki/concepts/terrain-adaptation.md)
 - [Privileged Training](../wiki/concepts/privileged-training.md)
 - [ANYmal Parkour 深读笔记](../wiki/entities/paper-notebook-anymal-parkour-robust-perceptive-locomotion.md)
