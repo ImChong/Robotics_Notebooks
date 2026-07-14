@@ -9,7 +9,7 @@ tags:
   - manipulation
   - alibaba
 status: complete
-updated: 2026-07-11
+updated: 2026-07-13
 arxiv: "2607.06559"
 related:
   - ../overview/wm-action-consequence-category-03-geometry-4d.md

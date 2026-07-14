@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-13] structural | scripts/lint_wiki.py — 修复全量 lint 信息型预警：SOTA 匹配加词边界（消除 Minnesota 误报，补回归单测）；wbc 归入 COVERED_ELSEWHERE（已由 concepts/whole-body-control.md 覆盖）；复核并 bump paper-gigaworld-1/paper-rynnworld updated=2026-07-13；lint 全绿 0 问题 0 信息型
+
 ## [2026-07-13] ingest | sources/papers/physisforcing_arxiv_2606_28128.md — PhysisForcing 训练期分层物理对齐世界模拟器；wiki/entities/paper-physisforcing.md；交叉 generative-world-models / cosmos-3 / manipulation
 
 ## [2026-07-13] ingest | sources/papers/vidihand_arxiv_2606_30308.md — ViDiHand 视频扩散双手 4D 重建；wiki/entities/paper-vidihand.md

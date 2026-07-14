@@ -53,7 +53,7 @@ METHOD_PRACTITIONER_INBOUND_THRESHOLD = 3
 # 绝对化/时效性措辞（stale claim 巡检 V1）：正文出现这些词，但该页 frontmatter
 # updated 早于库内共享 tag 的更晚页面时，给出 INFO 级提示，提示复核断言时效性。
 STALE_CLAIM_PATTERNS = [
-    r"SOTA",
+    r"\bSOTA\b",
     r"state[- ]of[- ]the[- ]art",
     r"当前最强",
     r"目前最强",
@@ -119,6 +119,7 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "mjlab",
     "mujoco",
     "sonic",
+    "wbc",  # 已由 concepts/whole-body-control.md 覆盖（slug 与页面 stem 不同名）
     "locomotion",
     "loco-manipulation",
     "step",
