@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-14] ingest | sources/repos/embodiedgen.md、sources/datasets/embodiedgen-data.md — 接入 EmbodiedGen 官方仓库/文档/数据集；wiki/entities/paper-embodiedgen-v2-sim-ready-world-engine.md 增补工程实践节
+
+- wiki/entities/paper-embodiedgen-v2-sim-ready-world-engine.md
+- sources/repos/embodiedgen.md
+- sources/datasets/embodiedgen-data.md
+
 ## [2026-07-13] structural | 执行清单换版 v28 → v29 —— V28（具身大模型分类学选型闭环）P0–P3 全数交付、DoD 逐项达标后新建 V29（具身大模型评测基准选型闭环）
 
 - V28 收尾：P0 lint 巡检 / P1 选型链 query+concept / P2 事实库 +10 矛盾规则 / P3 图谱专题视图+详情徽标 五档全绿；DoD 逐项复核达标——`make lint` 0 errors（另含 4 条信息型预警）、node_count=1597（≥1595）/ edge_count=12168（≥10970）/ orphan_nodes=0、事实库 230 条、`largest_community_ratio=0.199`/`community_quality_warning=false`、log 记录齐全，清单 0 未勾项
