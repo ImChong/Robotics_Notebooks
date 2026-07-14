@@ -2,7 +2,7 @@
 type: overview
 tags: [world-models, world-action-models, category-hub, survey]
 status: complete
-updated: 2026-07-11
+updated: 2026-07-14
 summary: "世界模型动作后果专题 · 03（3 篇）— RGB 之外补深度、光流与可仿真世界"
 related:
   - ./robot-world-models-action-consequence-technology-map.md

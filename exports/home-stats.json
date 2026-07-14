@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-embodiedgen-v2-sim-ready-world-engine.md",
+      "detail_id": "entity-paper-embodiedgen-v2-sim-ready-world-engine",
+      "label": "EmbodiedGen V2（Simulation-Ready 3D World Engine · arXiv:2607.07459）",
+      "type": "entity",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
       "path": "wiki/entities/paper-physisforcing.md",
       "detail_id": "entity-paper-physisforcing",
       "label": "PhysisForcing（Physics Reinforced World Simulator）",
@@ -203,26 +214,18 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/overview/topic-grasp.md",
-      "detail_id": "wiki-overview-topic-grasp",
-      "label": "抓取与操作（专题汇总）",
-      "type": "overview",
-      "recency": "2026-07-12",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-physisforcing.md",
-    "detail_id": "entity-paper-physisforcing",
-    "label": "PhysisForcing（Physics Reinforced World Simulator）",
+    "path": "wiki/entities/paper-embodiedgen-v2-sim-ready-world-engine.md",
+    "detail_id": "entity-paper-embodiedgen-v2-sim-ready-world-engine",
+    "label": "EmbodiedGen V2（Simulation-Ready 3D World Engine · arXiv:2607.07459）",
     "type": "entity",
-    "recency": "2026-07-13",
+    "recency": "2026-07-14",
     "source": "log.md",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "生成式世界模型（Generative World Models） 社区"
   },
   "top_communities": [
     {

@@ -6,9 +6,9 @@ tags:
   - simulation
   - 3d-generation
   - embodied-ai
-  - horizon
+  - horizon-robotics
 status: complete
-updated: 2026-07-11
+updated: 2026-07-14
 arxiv: "2607.07459"
 related:
   - ../overview/wm-action-consequence-category-03-geometry-4d.md
@@ -19,8 +19,10 @@ related:
   - ../entities/paper-gigaworld-1-policy-evaluation.md
   - ../entities/paper-deform360-deformable-visuotactile-dataset.md
 sources:
+  - ../../sources/repos/embodiedgen.md
+  - ../../sources/datasets/embodiedgen-data.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
-summary: "EmbodiedGen V2（arXiv:2607.07459）：统一 sim-ready 表征生成带碰撞/物理/可供性/模拟器接口的 3D 任务世界；83.3% 任务世界免改可用；在线 RL 仿真 9.7%→79.8%、真机 21.7%→75.0%。"
+summary: "EmbodiedGen V2（arXiv:2607.07459）：开源 sim-ready 3D 世界引擎；统一表征生成带碰撞/物理/affordance/模拟器接口的任务世界；83.3% 免改可用；RL 仿真 9.7%→79.8%、真机 21.7%→75.0%；配套 EmbodiedGenData（~4.1K 资产 / 346 GB）。"
 ---
 
 # EmbodiedGen V2（Simulation-Ready 3D World Engine · arXiv:2607.07459）
@@ -99,7 +101,27 @@ flowchart TB
 | **Online RL（生成环境）** | **9.7% → 79.8%** 仿真 SR |
 | **Sim-to-real** | **21.7% → 75.0%** 真机 SR |
 | **场景类型** | 操作 / 导航 / 移动操作 / **多房间大场景** |
-| **开源** | [github.com/HorizonRobotics/EmbodiedGen](https://github.com/HorizonRobotics/EmbodiedGen) |
+| **开源** | [GitHub](https://github.com/HorizonRobotics/EmbodiedGen) · [文档](https://horizonrobotics.github.io/EmbodiedGen/docs/) · [数据集](https://huggingface.co/datasets/HorizonRobotics/EmbodiedGenData) |
+
+## 工程实践
+
+| 入口 | 用途 |
+|------|------|
+| **安装** | `git clone` → `git checkout v2.0.0` → `conda` + `bash install.sh basic`（可选 `affordance` / `room` / `scene3d` profile） |
+| **`img3d-cli` / `text3d-cli`** | 图/文 → sim-ready URDF + mesh + 3DGS；`--image3d_model` 切换 SAM3D / TRELLIS / Hunyuan3D |
+| **`texture-cli`** | 已有 mesh 重纹理（中英文 prompt） |
+| **`affordance-cli`** | 部件级 affordance + 仿真验证 6-DoF 抓取 |
+| **`room-cli` / `scene3d-cli`** | 多房间可编辑房屋；3DGS 背景场景 |
+| **`layout-cli` + `sim-cli`** | NL 任务 → `layout.json` → SAPIEN 渲染/仿真 |
+| **`/embodiedgen:*`** | Claude Code 插件：Vibe Coding 有状态编辑（`gen_assets` / `gen_layout` / `vibe3d` 等） |
+| **`parallel_sim.py`** | 从 layout 启动并行 `gym` 环境做在线 RL |
+| **`eval_collision_success.py`** | ManiSkill + SAPIEN 抓取/碰撞成功率评测 |
+
+**跨模拟器导出：** 生成 URDF 可直接用于 SAPIEN / Isaac Gym / PyBullet；经 `MeshtoMJCFConverter` / `MeshtoUSDConverter` 转 MuJoCo / Genesis / Isaac Sim。
+
+**公开资产库 [EmbodiedGenData](https://huggingface.co/datasets/HorizonRobotics/EmbodiedGenData)：** `dataset_index.csv` 索引约 **4.1K** 条资产（URDF / MJCF / mesh / affordance / 预览视频），总体量 **~346 GB**；可用 [Gallery Explorer](https://huggingface.co/spaces/HorizonRobotics/EmbodiedGen-Gallery-Explorer) 浏览。多数管线需配置 `embodied_gen/utils/gpt_config.yaml`。
+
+**在线 demo（HF Spaces）：** Image-to-3D、Text-to-3D、Texture-Gen 等，索引见[文档 Services](https://horizonrobotics.github.io/EmbodiedGen/docs/)。
 
 ## 与其他工作对比
 
@@ -129,10 +151,14 @@ flowchart TB
 
 - [EmbodiedGen V2 论文（arXiv:2607.07459）](https://arxiv.org/abs/2607.07459)
 - [EmbodiedGen 项目页](https://horizonrobotics.github.io/EmbodiedGen/)
+- [EmbodiedGen 文档](https://horizonrobotics.github.io/EmbodiedGen/docs/)
 - [GitHub 仓库](https://github.com/HorizonRobotics/EmbodiedGen)
+- [EmbodiedGenData 数据集](https://huggingface.co/datasets/HorizonRobotics/EmbodiedGenData)
 - [GigaWorld-1 论文实体](./paper-gigaworld-1-policy-evaluation.md)
 
 ## 参考来源
 
+- [EmbodiedGen 官方仓库](../../sources/repos/embodiedgen.md)
+- [EmbodiedGenData 数据集](../../sources/datasets/embodiedgen-data.md)
 - [具身智能研究室 · 世界模型动作后果专题导读（2026-07）](../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md)
 - [EmbodiedGen V2 论文（arXiv:2607.07459）](https://arxiv.org/abs/2607.07459)
