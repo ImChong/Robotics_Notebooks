@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, imitation-learning, action-tokenization, generalization, one-shot, libero, sjtu, rss-2026]
 status: complete
-updated: 2026-07-10
+updated: 2026-07-14
 arxiv: "2602.08602"
 venue: RSS 2026
 code: https://github.com/RenMing-Huang/MINT

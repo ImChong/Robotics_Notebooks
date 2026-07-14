@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-07-14",
-  "node_count": 1599,
-  "edge_count": 12198,
+  "node_count": 1600,
+  "edge_count": 12208,
   "coverage": {
-    "covered": 1553,
-    "total": 1583,
+    "covered": 1554,
+    "total": 1584,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-physmani-dynamic-manipulation-world-model.md",
+      "detail_id": "entity-paper-physmani-dynamic-manipulation-world-model",
+      "label": "PhysMani（Physics-principled 3D World Model for Dynamic Manipulation）",
+      "type": "entity",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true
+    },
     {
       "path": "wiki/tasks/loco-manipulation.md",
       "detail_id": "wiki-tasks-loco-manipulation",
@@ -196,29 +206,17 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/isaac-gr00t.md",
-      "detail_id": "entity-isaac-gr00t",
-      "label": "Isaac GR00T（人形 VLA 开发平台）",
-      "type": "entity",
-      "recency": "2026-07-13",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/tasks/loco-manipulation.md",
-    "detail_id": "wiki-tasks-loco-manipulation",
-    "label": "Loco-Manipulation (移动操作)",
-    "type": "task",
+    "path": "wiki/entities/paper-physmani-dynamic-manipulation-world-model.md",
+    "detail_id": "entity-paper-physmani-dynamic-manipulation-world-model",
+    "label": "PhysMani（Physics-principled 3D World Model for Dynamic Manipulation）",
+    "type": "entity",
     "recency": "2026-07-14",
     "source": "log.md",
-    "action": "maintained",
-    "has_repo": true,
-    "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    "action": "added",
+    "has_repo": true
   },
   "top_communities": [
     {
@@ -296,7 +294,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 215,
+      "degree": 217,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
