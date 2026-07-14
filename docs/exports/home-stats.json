@@ -1,13 +1,51 @@
 {
   "generated_at": "2026-07-14",
-  "node_count": 1597,
-  "edge_count": 12168,
+  "node_count": 1598,
+  "edge_count": 12180,
   "coverage": {
-    "covered": 1551,
-    "total": 1581,
+    "covered": 1552,
+    "total": 1582,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-dexverse.md",
+      "detail_id": "entity-paper-dexverse",
+      "label": "DexVerse（Multi-Task, Multi-Embodiment Dexterous Manipulation Benchmark）",
+      "type": "entity",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/isaac-lab.md",
+      "detail_id": "entity-isaac-lab",
+      "label": "Isaac Lab",
+      "type": "entity",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+    },
+    {
+      "path": "wiki/queries/dexterous-manipulation-data-pipeline.md",
+      "detail_id": "wiki-queries-dexterous-manipulation-data-pipeline",
+      "label": "灵巧操作数据管线与 RL 训练基建指南",
+      "type": "query",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "maintained"
+    },
     {
       "path": "wiki/entities/paper-embodiedgen-v2-sim-ready-world-engine.md",
       "detail_id": "entity-paper-embodiedgen-v2-sim-ready-world-engine",
@@ -172,60 +210,16 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/esi-bench.md",
-      "detail_id": "entity-esi-bench",
-      "label": "ESI-Bench（具身空间智能基准）",
-      "type": "entity",
-      "recency": "2026-07-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-fastgrasp-mobile-dexterous-grasping.md",
-      "detail_id": "entity-paper-fastgrasp-mobile-dexterous-grasping",
-      "label": "FastGrasp：移动操作器上的学习式全身快速灵巧抓取",
-      "type": "entity",
-      "recency": "2026-07-12",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-07-12",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/tasks/loco-manipulation.md",
-      "detail_id": "wiki-tasks-loco-manipulation",
-      "label": "Loco-Manipulation (移动操作)",
-      "type": "task",
-      "recency": "2026-07-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-embodiedgen-v2-sim-ready-world-engine.md",
-    "detail_id": "entity-paper-embodiedgen-v2-sim-ready-world-engine",
-    "label": "EmbodiedGen V2（Simulation-Ready 3D World Engine · arXiv:2607.07459）",
+    "path": "wiki/entities/paper-dexverse.md",
+    "detail_id": "entity-paper-dexverse",
+    "label": "DexVerse（Multi-Task, Multi-Embodiment Dexterous Manipulation Benchmark）",
     "type": "entity",
     "recency": "2026-07-14",
     "source": "log.md",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "生成式世界模型（Generative World Models） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
@@ -303,7 +297,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 213,
+      "degree": 215,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {

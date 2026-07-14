@@ -3,7 +3,7 @@
 type: entity
 tags: [entity, simulator, isaac, isaac-sim, gpu-simulation, reinforcement-learning, sim2real, nvidia]
 status: stable
-updated: 2026-07-09
+updated: 2026-07-14
 related:
   - ./isaac-gym-isaac-lab.md
   - ./isaac-gym.md
@@ -166,7 +166,7 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 
 ### 和 Manipulation 的关系
 
-灵巧操作与大规模式仿 benchmark 亦在 Isaac Lab 上落地；NVIDIA [CHORD](./paper-chord-contact-wrench-dexterous-manipulation.md) 在 Lab 上发布 **4,739** 项双手任务库并用 **接触力旋量（CWS）** RL 奖励做 Robotic Grounding，是 [Video to Data](https://nvidia-isaac.github.io/video_to_data/) 管线的训练后端实例。
+灵巧操作与大规模式仿 benchmark 亦在 Isaac Lab 上落地；NVIDIA [CHORD](./paper-chord-contact-wrench-dexterous-manipulation.md) 在 Lab 上发布 **4,739** 项双手任务库并用 **接触力旋量（CWS）** RL 奖励做 Robotic Grounding，是 [Video to Data](https://nvidia-isaac.github.io/video_to_data/) 管线的训练后端实例。[DexVerse](./paper-dexverse.md)（UNC/HKU/Berkeley，arXiv:2607.08751）则在同一栈上提供 **100** 项模块化 dexterous 任务、**3** 臂 × **6** 手多具身与 **3,180** 条 VR 遥操作多模态示范，用于 IL/VLA 跨任务与视觉泛化评测。
 
 见：[Manipulation](../tasks/manipulation.md)
 

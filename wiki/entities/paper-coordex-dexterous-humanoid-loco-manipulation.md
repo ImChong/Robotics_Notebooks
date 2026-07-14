@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, dexterous-manipulation, reinforcement-learning, ppo, motion-prior, residual-learning, latent-space, whole-body, unitree-g1, wuji-robotics, isaac-lab, berkeley]
 status: complete
-updated: 2026-07-08
+updated: 2026-07-14
 arxiv: "2606.23680"
 venue: "arXiv 2026"
 related:

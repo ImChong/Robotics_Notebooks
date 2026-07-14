@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-14] ingest | sources/papers/dexverse_arxiv_2607_08751.md — DexVerse 多任务多具身灵巧 benchmark；wiki/entities/paper-dexverse.md
+
+- wiki/entities/paper-dexverse.md
+- wiki/tasks/manipulation.md
+- wiki/entities/isaac-lab.md
+- wiki/queries/dexterous-manipulation-data-pipeline.md
+- sources/papers/dexverse_arxiv_2607_08751.md
 ## [2026-07-14] ingest | sources/repos/embodiedgen.md、sources/datasets/embodiedgen-data.md — 接入 EmbodiedGen 官方仓库/文档/数据集；wiki/entities/paper-embodiedgen-v2-sim-ready-world-engine.md 增补工程实践节
 
 - wiki/entities/paper-embodiedgen-v2-sim-ready-world-engine.md
