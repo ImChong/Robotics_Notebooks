@@ -2,13 +2,16 @@
 type: formalization
 tags: [rl, math, decision-making, perception, uncertainty]
 status: complete
-updated: 2026-04-21
+updated: 2026-07-14
 related:
   - ./mdp.md
   - ../concepts/state-estimation.md
+  - ../concepts/bayesian-belief-analysis.md
 sources:
+  - ../../sources/papers/bayesian_analysis_rl_primary_refs.md
   - ../../sources/papers/rl_foundation_models.md
 summary: "部分可观测马尔可夫决策过程（POMDP）描述了机器人无法获取完整状态信息，只能通过嘈杂观测进行概率推理的决策框架，是状态估计与鲁棒控制的理论基石。"
+updated: 2026-07-14
 ---
 
 # Partially Observable MDP (POMDP)
@@ -41,8 +44,10 @@ $$ b_t(s) = P(s_t = s | o_{1:t}, a_{1:t-1}) $$
 
 ## 关联页面
 - [MDP 形式化](./mdp.md)
+- [Bayesian Belief Analysis（贝叶斯信念分析）](../concepts/bayesian-belief-analysis.md) — belief 更新、Bayes 滤波与 BRL 总览
 - [State Estimation (状态估计)](../concepts/state-estimation.md)
 - [具身 RL 最小闭环](../concepts/embodied-rl-minimal-closed-loop.md) — 真机部署为何几乎总是 POMDP
 
 ## 参考来源
-- Kaelbling, L. P., et al. (1998). *Planning and learning in partially observable stochastic domains*.
+- [贝叶斯分析一手资料索引](../../sources/papers/bayesian_analysis_rl_primary_refs.md)
+- Kaelbling, L. P., Littman, M. L., Cassandra, A. R. (1998). *Planning and Acting in Partially Observable Stochastic Domains*.

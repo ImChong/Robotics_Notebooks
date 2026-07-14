@@ -36,6 +36,8 @@
 ## 对 wiki 的映射
 
 - [wiki/entities/richard-sutton.md](../../wiki/entities/richard-sutton.md)
+- [wiki/concepts/generalized-value-functions.md](../../wiki/concepts/generalized-value-functions.md)
+- [wiki/concepts/bayesian-belief-analysis.md](../../wiki/concepts/bayesian-belief-analysis.md)
 - 交叉：[wiki/methods/model-based-rl.md](../../wiki/methods/model-based-rl.md)
 
 ## 参考链接

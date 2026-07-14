@@ -1,13 +1,33 @@
 {
   "generated_at": "2026-07-14",
-  "node_count": 1603,
-  "edge_count": 12238,
+  "node_count": 1605,
+  "edge_count": 12259,
   "coverage": {
-    "covered": 1557,
-    "total": 1587,
+    "covered": 1559,
+    "total": 1589,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/generalized-value-functions.md",
+      "detail_id": "wiki-concepts-generalized-value-functions",
+      "label": "Generalized Value Functions (GVFs)",
+      "type": "concept",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/concepts/bayesian-belief-analysis.md",
+      "detail_id": "wiki-concepts-bayesian-belief-analysis",
+      "label": "Bayesian Belief Analysis（贝叶斯信念分析）",
+      "type": "concept",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
     {
       "path": "wiki/entities/richard-sutton.md",
       "detail_id": "entity-richard-sutton",
@@ -17,6 +37,26 @@
       "source": "log.md",
       "action": "added",
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/formalizations/pomdp.md",
+      "detail_id": "wiki-formalizations-pomdp",
+      "label": "Partially Observable MDP (POMDP)",
+      "type": "formalization",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/methods/model-based-rl.md",
+      "detail_id": "wiki-methods-model-based-rl",
+      "label": "Model-Based RL（基于模型的强化学习）",
+      "type": "method",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
     },
     {
       "path": "wiki/entities/sutton-barto-rl-book.md",
@@ -48,16 +88,6 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "path": "wiki/methods/model-based-rl.md",
-      "detail_id": "wiki-methods-model-based-rl",
-      "label": "Model-Based RL（基于模型的强化学习）",
-      "type": "method",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     },
     {
       "path": "wiki/concepts/embodied-scaling-laws.md",
@@ -177,43 +207,13 @@
       "recency": "2026-07-13",
       "source": "log.md",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-vidihand.md",
-      "detail_id": "entity-paper-vidihand",
-      "label": "ViDiHand — Video Diffusion for 4D Hand Motion Reconstruction",
-      "type": "entity",
-      "recency": "2026-07-13",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-08-more.md",
-      "detail_id": "entity-paper-amp-survey-08-more",
-      "label": "MoRE：复杂地形上的人形多步态残差专家混合",
-      "type": "entity",
-      "recency": "2026-07-13",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-ame-attention-based-map-encoding.md",
-      "detail_id": "entity-paper-ame-attention-based-map-encoding",
-      "label": "AME — Attention-Based Map Encoding",
-      "type": "entity",
-      "recency": "2026-07-13",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "运动控制（Locomotion） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/richard-sutton.md",
-    "detail_id": "entity-richard-sutton",
-    "label": "Richard Sutton",
-    "type": "entity",
+    "path": "wiki/concepts/generalized-value-functions.md",
+    "detail_id": "wiki-concepts-generalized-value-functions",
+    "label": "Generalized Value Functions (GVFs)",
+    "type": "concept",
     "recency": "2026-07-14",
     "source": "log.md",
     "action": "added",
@@ -238,7 +238,7 @@
     },
     {
       "label": "动作重定向",
-      "size": 122
+      "size": 130
     },
     {
       "label": "人形强化学习运动控制",
@@ -295,7 +295,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 217,
+      "degree": 219,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
@@ -387,7 +387,8 @@
       "label": "MoRE：复杂地形上的人形多步态残差专家混合",
       "type": "entity",
       "degree": 26,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
     }
   ]
 }

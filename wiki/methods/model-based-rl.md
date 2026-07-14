@@ -206,7 +206,7 @@ Phase 2：Actor-Critic 在潜空间训练（想象数据）
 
 ### Sutton「一步陷阱」视角（一手批判）
 
-[Richard Sutton](../entities/richard-sutton.md) 在 [*The One-Step Trap*](../../sources/blogs/sutton_one_step_trap.md)（2024）中批评：学 **单步转移模型** 再迭代 rollout 得长期预测，在单步误差非零时 **误差复合** 且随机环境下计算复杂度 **对 horizon 指数级**。他主张用 **options + GVFs** 构建时序抽象模型，而非 naive 物理式一步模拟器。读当代「世界模型 + 想象 rollout」管线时，应区分：**短 horizon MBPO 式混合** vs **长 horizon 单步模型 rollout** 的可行边界。
+[Richard Sutton](../entities/richard-sutton.md) 在 [*The One-Step Trap*](../../sources/blogs/sutton_one_step_trap.md)（2024）中批评：学 **单步转移模型** 再迭代 rollout 得长期预测，在单步误差非零时 **误差复合** 且随机环境下计算复杂度 **对 horizon 指数级**；**POMDP / 贝叶斯 belief 展开** 亦面临同类指数分支（见 [Bayesian Belief Analysis](../concepts/bayesian-belief-analysis.md)）。他主张用 **options + [GVFs](../concepts/generalized-value-functions.md)** 构建时序抽象模型，而非 naive 物理式一步模拟器。读当代「世界模型 + 想象 rollout」管线时，应区分：**短 horizon MBPO 式混合** vs **长 horizon 单步模型 rollout** 的可行边界。
 
 ---
 
@@ -229,6 +229,8 @@ Phase 2：Actor-Critic 在潜空间训练（想象数据）
 ## 关联页面
 
 - [Richard Sutton](../entities/richard-sutton.md) — Options/GVF 与一步陷阱一手论述
+- [Generalized Value Functions (GVFs)](../concepts/generalized-value-functions.md) — Horde 与 span-independent 长期预测
+- [Bayesian Belief Analysis](../concepts/bayesian-belief-analysis.md) — belief 展开与一步陷阱对照
 - [Robotic World Model（ETH RSL，RWM / RWM-U）](../entities/robotic-world-model-eth-rsl.md) — Isaac Lab 扩展与 Lite 离线管线
 - [Reinforcement Learning](./reinforcement-learning.md) — MBRL 是 RL 大类下的子方向，与 Model-Free 并列
 - [Model Predictive Control (MPC)](./model-predictive-control.md) — 基于模型规划的经典控制方法，MBRL 的"控制论版"

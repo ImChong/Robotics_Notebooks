@@ -2,7 +2,7 @@
 type: concept
 tags: [state-estimation, ekf, kalman, imu, contact]
 status: complete
-updated: 2026-06-22
+updated: 2026-07-14
 summary: "State Estimation 负责从传感器中恢复机器人姿态、速度和接触状态，是控制闭环的前提。"
 related:
   - ../queries/contact-wrench-closed-loop.md
