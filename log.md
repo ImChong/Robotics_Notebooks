@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-14] ingest | sources/sites/unreal-engine-5-com.md、sources/sites/unreal-engine-5-8-docs.md、sources/repos/epicgames-github-org.md、sources/repos/unrealengine-github.md — 接入 UE5 官网/5.8 文档/Epic GitHub 与引擎私有仓说明，新建 wiki/entities/unreal-engine-5.md 并交叉更新 MetaHuman/AirSim/CARLA/SPEAR/MATRiX
+
+- wiki/entities/unreal-engine-5.md
+- sources/sites/unreal-engine-5-com.md
+- sources/sites/unreal-engine-5-8-docs.md
+- sources/repos/epicgames-github-org.md
+- sources/repos/unrealengine-github.md
+
 ## [2026-07-14] ingest | sources/raw/feishu_humanoid_motion_control_know_how_full_2026-07-14.md — 飞书 Know-How 全文（2260 行）再 ingest；补技术框架路线展望与方法论要点
 
 - wiki/overview/humanoid-motion-control-framework-outlook.md

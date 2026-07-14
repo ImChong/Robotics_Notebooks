@@ -167,7 +167,7 @@ related:
 
 ### 补充：UE 光真实感可编程后端（[SPEAR](../entities/spear-sim.md)）
 
-本页主对比仍为 **MuJoCo / Isaac Lab / Genesis**（locomotion RL 训练）。若目标是 **绑定任意 Unreal Engine 项目**、需要 **14K+ 反射 API**、**56 FPS 级 1080p GT 渲染**（深度/法线/语义/内禀分解等），或 **MuJoCo↔UE 协同仿真**，应单独评估 **SPEAR**——它与 Isaac Lab 竞争的是「视觉与场景可编程性」，而非默认的万环境 PPO 并行。对照 [AirSim](../entities/airsim.md)（UAV 视觉、维护期）与 [MetaHuman](../entities/metahuman.md)（数字人资产）。
+本页主对比仍为 **MuJoCo / Isaac Lab / Genesis**（locomotion RL 训练）。若目标是 **绑定任意 Unreal Engine 项目**、需要 **14K+ 反射 API**、**56 FPS 级 1080p GT 渲染**（深度/法线/语义/内禀分解等），或 **MuJoCo↔UE 协同仿真**，应单独评估 **[SPEAR](../entities/spear-sim.md)**——它与 Isaac Lab 竞争的是「视觉与场景可编程性」，而非默认的万环境 PPO 并行。引擎宿主见 **[Unreal Engine 5](../entities/unreal-engine-5.md)**；对照 [AirSim](../entities/airsim.md)（UAV 视觉、维护期）与 [MetaHuman](../entities/metahuman.md)（数字人资产）。
 
 ### 补充：[Newton Physics](../entities/newton-physics.md) 与 [mjlab](../entities/mjlab.md)
 

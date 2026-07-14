@@ -5,6 +5,7 @@ tags: [simulation, quadruped, differentiable-physics, mujoco, unreal-engine, gen
 status: complete
 updated: 2026-06-23
 related:
+  - ./unreal-engine-5.md
   - ./quadruped-control-curriculum.md
   - ./roamerx-navigation.md
   - ./mujoco.md
