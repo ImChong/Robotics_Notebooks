@@ -184,6 +184,8 @@ Adaptation Module（学生）：
 - [RL Algorithm Selection](./rl-algorithm-selection.md) — PPO vs SAC vs TD3 选型指南
 - [Locomotion Reward Design Guide](./locomotion-reward-design-guide.md) — 奖励函数详细设计
 - [Privileged Training](../concepts/privileged-training.md) — Teacher-Student 蒸馏理论
+- [DreamWaQ](../methods/dreamwaq.md) — 盲走一阶段：本体历史隐式估计地形/体速的 obs 设计范例
+- [PIE 感知一阶段鲁棒行走](../methods/pie-perceptive-locomotion.md) — 深度+本体多头估计器的显式/隐式 obs 设计范例
 - [Curriculum Learning](../concepts/curriculum-learning.md) — 课程式训练加速收敛
 - [GAE（广义优势估计）](../formalizations/gae.md) — PPO 标准实现使用 GAE 计算优势函数
 - [Bellman 方程](../formalizations/bellman-equation.md) — RL 所有值函数估计的数学基础

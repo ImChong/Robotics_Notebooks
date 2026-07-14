@@ -108,6 +108,8 @@ Centroidal MPC（1~50Hz）
 
 **适用**：工业级人形机器人、需要精确任务执行、有充足调参工程资源。
 
+> 完整栈拆解（CD+NMPC+WBC 分层、跟踪频率、调参入口）见 [Centroidal NMPC + WBC 栈](../methods/centroidal-nmpc-wbc-stack.md)。
+
 ---
 
 ## B1/B2. 端到端 RL
@@ -265,6 +267,7 @@ MoCap 数据 → 训练判别器 D（区分真实/生成动作）
 
 - [WBC vs RL](../comparisons/wbc-vs-rl.md) — 两条路线详细对比和融合架构
 - [MPC 与 WBC 集成](../concepts/mpc-wbc-integration.md) — A2 架构详解
+- [Centroidal NMPC + WBC 栈](../methods/centroidal-nmpc-wbc-stack.md) — A2 架构的完整方法栈落地
 - [TSID](../concepts/tsid.md) — WBC 低层执行器
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 方法全景
 - [Imitation Learning](../methods/imitation-learning.md) — IL 方法全景

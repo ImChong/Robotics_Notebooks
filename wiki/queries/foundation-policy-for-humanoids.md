@@ -164,6 +164,7 @@ Foundation Policy 的泛化能力仍受训练数据分布约束：
 ## 关联页面
 
 - [Foundation Policy](../concepts/foundation-policy.md) — 技术详解
+- [Teacher-Student 多动作 BFM 学习](../methods/teacher-student-multi-skill-bfm.md) — 用特权教师蒸馏多技能可部署策略的 BFM 工程路径
 - [VLA](../methods/vla.md) — Vision-Language-Action 模型架构
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — foundation policy 的前沿挑战场景
 - [Manipulation](../tasks/manipulation.md) — foundation policy 当前的主战场

@@ -133,6 +133,22 @@ python -m terrain_diffusion explore xandergos/terrain-diffusion-30m
 - **必要配套：** 碰撞体与视觉对齐、摩擦/接触参数随机化、课程调度——参见 [Procedural Terrain Generation](../concepts/procedural-terrain-generation.md) 与 [Extreme Parkour](./extreme-parkour.md) 的工程教训。
 - **当前缺口：** 官方栈面向 **游戏/地形态势**；无 Isaac Lab / MuJoCo 一键插件，需自行导出高度场并接入仿真器 terrain importer。
 
+## 实验与评测
+
+- **本页为策展编译；量化基准、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。论文的评测围绕 **生成质量 × 尺度 × 吞吐**，而非机器人任务成功率。
+- **质量（论文叙事）：** InfiniteDiffusion 将 MultiDiffusion 推广到 **无限 / 超内存域**，作者主张相对全图 eager 扩散 **质量几乎不降级**，同时保持 **O(1) 随机访问** 与 **顺序不变确定性**。
+- **尺度与吞吐（论文叙事）：** 单张 1024×1024 relief 约 **100 km** 宽、大陆可达 **百万 km²**；消费级 GPU **~9× 轨道速度** 流式，Unity 演示 **~3× 轨道速度** 舒适飞行；Minecraft mod 峰值 VRAM **~1.5 GB**。
+- **机器人迁移未评测：** 论文 **未报告** 腿式/人形在生成地形上的 sim2real 迁移实验；将其用作 sim 资产源属 **合理假设**，需单独 benchmark（见 [局限与风险](#局限与风险)）。
+
+## 与其他工作对比
+
+| 对照对象 | 关系 |
+|----------|------|
+| **Perlin / 高度场噪声**（见 [Procedural Terrain Generation](../concepts/procedural-terrain-generation.md)） | 噪声无限、确定、O(1) 但 **不可学习**；Terrain Diffusion **学习式** 逼近，提供大陆尺度气候耦合高度场 |
+| **自回归外绘（outpainting）** | 可学习无界但 **O(n) 随机访问、顺序依赖、误差复合**；InfiniteDiffusion **O(1)、顺序不变、误差不复合、可并行**（详见上「核心机制」对照表） |
+| **视频世界模型**（[Generative World Models](../methods/generative-world-models.md)、[Cosmos 3](./cosmos-3.md)、[DWM](../methods/dwm.md)） | 预测 **未来像素 rollout**；本工作产出 **静态/准静态环境几何**，二者 **正交** |
+| **LLM 驱动 PCG**（[RoboGen](./robogen.md)） | 用 LLM 编排任务/场景；本工作专注 **连续户外高程场** 的学习式采样 |
+
 ## 局限与风险
 
 - **动力学无关：** 输出是 **高程/气候场**，不含可微接触模型；不能替代 MuJoCo/PhysX 物理引擎。

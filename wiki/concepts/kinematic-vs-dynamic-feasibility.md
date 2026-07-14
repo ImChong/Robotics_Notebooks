@@ -64,6 +64,8 @@ sources:
 - [Motion Retargeting](./motion-retargeting.md)
 - [人形 vs 其他机器人](./humanoid-vs-other-robots.md)
 - [Know-How 技术地图](../overview/humanoid-motion-control-know-how-technology-map.md)
+- [物理保真度与 Sim2Real 差距](./physics-fidelity-sim2real-gap.md) — 动力学可行性在仿真里能否复现，取决于物理保真度
+- [仿真物理保真度选型](../queries/simulation-physics-fidelity.md) — 保真度层级与选型闭环
 
 ## 参考来源
 
