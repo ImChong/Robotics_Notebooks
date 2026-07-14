@@ -1008,6 +1008,8 @@ button.home-wiki-heatmap-cell.is-active {
 .route-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .route-card { min-height: 100%; }
 .home-entry-grid {
+  /* 3 张入口卡（从零开始 / 项目查询 / 知识图谱）同排，「更多路线」卡通栏在下 */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: stretch;
   gap: 16px;
 }
