@@ -1,13 +1,74 @@
 {
   "generated_at": "2026-07-14",
-  "node_count": 1600,
-  "edge_count": 12208,
+  "node_count": 1603,
+  "edge_count": 12238,
   "coverage": {
-    "covered": 1554,
-    "total": 1584,
+    "covered": 1557,
+    "total": 1587,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/richard-sutton.md",
+      "detail_id": "entity-richard-sutton",
+      "label": "Richard Sutton",
+      "type": "entity",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/sutton-barto-rl-book.md",
+      "detail_id": "entity-sutton-barto-rl-book",
+      "label": "Sutton & Barto RL 教材",
+      "type": "entity",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/concepts/bitter-lesson.md",
+      "detail_id": "wiki-concepts-bitter-lesson",
+      "label": "The Bitter Lesson（惨痛教训）",
+      "type": "concept",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/methods/reinforcement-learning.md",
+      "detail_id": "wiki-methods-reinforcement-learning",
+      "label": "Reinforcement Learning (RL, 强化学习)",
+      "type": "method",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/methods/model-based-rl.md",
+      "detail_id": "wiki-methods-model-based-rl",
+      "label": "Model-Based RL（基于模型的强化学习）",
+      "type": "method",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/concepts/embodied-scaling-laws.md",
+      "detail_id": "wiki-concepts-embodied-scaling-laws",
+      "label": "Embodied Scaling Laws (具身规模法则)",
+      "type": "concept",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-physmani-dynamic-manipulation-world-model.md",
       "detail_id": "entity-paper-physmani-dynamic-manipulation-world-model",
@@ -146,82 +207,26 @@
       "source": "log.md",
       "action": "added",
       "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md",
-      "detail_id": "entity-paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi",
-      "label": "AME-2 — Agile and Generalized Legged Locomotion",
-      "type": "entity",
-      "recency": "2026-07-13",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/overview/jason-peng-flexible-motion-skill-learning.md",
-      "detail_id": "wiki-overview-jason-peng-flexible-motion-skill-learning",
-      "label": "Jason Peng：更灵活的运动技能学习",
-      "type": "overview",
-      "recency": "2026-07-13",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/xue-bin-peng.md",
-      "detail_id": "entity-xue-bin-peng",
-      "label": "Xue Bin Peng（彭学斌）",
-      "type": "entity",
-      "recency": "2026-07-13",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-parc-physics-based-augmentation-with-reinforceme.md",
-      "detail_id": "entity-paper-notebook-parc-physics-based-augmentation-with-reinforceme",
-      "label": "PARC",
-      "type": "entity",
-      "recency": "2026-07-13",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
-    },
-    {
-      "path": "wiki/entities/gsap-skills.md",
-      "detail_id": "entity-gsap-skills",
-      "label": "GSAP AI Skills（greensock/gsap-skills）",
-      "type": "entity",
-      "recency": "2026-07-13",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/mattpocock-skills.md",
-      "detail_id": "entity-mattpocock-skills",
-      "label": "Skills For Real Engineers（mattpocock）",
-      "type": "entity",
-      "recency": "2026-07-13",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "运动控制（Locomotion） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-physmani-dynamic-manipulation-world-model.md",
-    "detail_id": "entity-paper-physmani-dynamic-manipulation-world-model",
-    "label": "PhysMani（Physics-principled 3D World Model for Dynamic Manipulation）",
+    "path": "wiki/entities/richard-sutton.md",
+    "detail_id": "entity-richard-sutton",
+    "label": "Richard Sutton",
     "type": "entity",
     "recency": "2026-07-14",
     "source": "log.md",
     "action": "added",
-    "has_repo": true
+    "community_label": "强化学习（Reinforcement Learning, RL） 社区"
   },
   "top_communities": [
     {
       "label": "运动控制",
-      "size": 318
+      "size": 230
+    },
+    {
+      "label": "视觉-语言-动作",
+      "size": 210
     },
     {
       "label": "人形论文深读笔记",
@@ -232,16 +237,12 @@
       "size": 178
     },
     {
-      "label": "视觉-语言-动作",
-      "size": 169
+      "label": "动作重定向",
+      "size": 122
     },
     {
       "label": "人形强化学习运动控制",
       "size": 117
-    },
-    {
-      "label": "动作重定向",
-      "size": 97
     }
   ],
   "top_hubs": [
@@ -291,18 +292,19 @@
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
+      "detail_id": "wiki-methods-reinforcement-learning",
+      "label": "Reinforcement Learning (RL, 强化学习)",
+      "type": "method",
+      "degree": 217,
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
       "degree": 217,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "detail_id": "wiki-methods-reinforcement-learning",
-      "label": "Reinforcement Learning (RL, 强化学习)",
-      "type": "method",
-      "degree": 211,
-      "has_repo": true
     },
     {
       "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",

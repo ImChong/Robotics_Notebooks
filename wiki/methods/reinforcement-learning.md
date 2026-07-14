@@ -2,8 +2,11 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-07-11
+updated: 2026-07-14
 related:
+  - ../entities/richard-sutton.md
+  - ../entities/sutton-barto-rl-book.md
+  - ../concepts/bitter-lesson.md
   - ../concepts/humanoid-policy-network-architecture.md
   - ../concepts/deep-rl-game-milestones.md
   - ./qt-opt.md
@@ -26,6 +29,7 @@ related:
   - ../entities/paper-tsil-temporal-self-imitation-learning.md
   - ../entities/gymnasium.md
 sources:
+  - ../../sources/sites/incompleteideas-net-rich-sutton.md
   - ../../sources/papers/intentional_streaming_rl.md
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/locomotion_rl.md
@@ -200,7 +204,8 @@ flowchart LR
 - [KungFuAthleteBot](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — 高动态武术 tracking+recovery（[source](../../sources/papers/kung_fu_athlete_bot.md)）
 - [KungfuBot](../entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) — 自适应跟踪容差课程 + 非对称 actor-critic（[PBHC](../../sources/repos/pbhc.md)）
 
-- Sutton & Barto, *Reinforcement Learning: An Introduction* — RL 标准教材，MDP 框架基础
+- [Sutton & Barto RL 教材](../entities/sutton-barto-rl-book.md) — RL 标准教材，MDP 框架基础（[一手资料](../../sources/sites/incompleteideas-net-rich-sutton.md)）
+- [Richard Sutton](../entities/richard-sutton.md) — RL 奠基人与 incompleteideas.net 一手资料索引
 - Schulman et al., *Proximal Policy Optimization Algorithms* — 机器人领域最常用的 policy gradient 算法
 - Ao et al., *Bounded Ratio Reinforcement Learning* (2026) — BRRL / BPO，策略优化新进展
 - [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — 策略优化（PPO/SAC/BRRL）ingest 档案
@@ -219,6 +224,9 @@ flowchart LR
 ## 关联页面
 - [深度学习基础](../concepts/deep-learning-foundations.md)
 
+- [Richard Sutton](../entities/richard-sutton.md) — RL 奠基人与一手资料总入口
+- [Sutton & Barto RL 教材](../entities/sutton-barto-rl-book.md) — 理论标准教材
+- [The Bitter Lesson](../concepts/bitter-lesson.md) — scaling 方法论（search + learning）
 - [动手学强化学习（蘑菇书）](../entities/hands-on-rl-book.md) — 中文 RL 教材与 PPO/SAC 章节，适合 Stage 0 打底
 - [Intentional Updates for Streaming RL](./intentional-updates-streaming-rl.md) — batch=1、无 replay 时的步长与稳定跟踪
 - [Imitation Learning](./imitation-learning.md)

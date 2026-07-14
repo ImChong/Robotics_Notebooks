@@ -4,10 +4,14 @@ type: method
 tags: [rl, model-based, planning, locomotion, sample-efficiency, horizon-robotics]
 status: complete
 summary: "Model-Based RL 借助环境模型提升样本效率，在机器人控制中常与规划和世界模型结合。"
-updated: 2026-07-08
+updated: 2026-07-14
 related:
+  - ../entities/richard-sutton.md
   - ../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md
   - ../concepts/world-action-models.md
+sources:
+  - ../../sources/blogs/sutton_one_step_trap.md
+  - ../../sources/sites/incompleteideas-net-rich-sutton.md
 
 # Model-Based RL（基于模型的强化学习）
 
@@ -200,6 +204,10 @@ Phase 2：Actor-Critic 在潜空间训练（想象数据）
 - **高维视觉输入 + 接触丰富**：模型难以精确，误差在 rollout 中爆炸
 - **需要极高渐近性能**：模型误差有上界，Model-Free 可以做到更好
 
+### Sutton「一步陷阱」视角（一手批判）
+
+[Richard Sutton](../entities/richard-sutton.md) 在 [*The One-Step Trap*](../../sources/blogs/sutton_one_step_trap.md)（2024）中批评：学 **单步转移模型** 再迭代 rollout 得长期预测，在单步误差非零时 **误差复合** 且随机环境下计算复杂度 **对 horizon 指数级**。他主张用 **options + GVFs** 构建时序抽象模型，而非 naive 物理式一步模拟器。读当代「世界模型 + 想象 rollout」管线时，应区分：**短 horizon MBPO 式混合** vs **长 horizon 单步模型 rollout** 的可行边界。
+
 ---
 
 ## 参考来源
@@ -209,6 +217,8 @@ Phase 2：Actor-Critic 在潜空间训练（想象数据）
 - Chua et al., *Deep Reinforcement Learning in a Handful of Trials using Probabilistic Dynamics Models* (PETS, 2018) — 集成模型 + CEM 规划
 - Hansen et al., *TD-MPC2: Scalable, Robust World Models for Continuous Control* (2023) — 潜空间规划 + TD 价值
 - Sutton, *Integrated architectures for learning, planning, and reacting* (Dyna, 1990) — MBRL 经典框架
+- [The One-Step Trap 原始资料](../../sources/blogs/sutton_one_step_trap.md) — Sutton 对单步模型 rollout 的一手批判
+- [incompleteideas.net 一手资料索引](../../sources/sites/incompleteideas-net-rich-sutton.md)
 - **ingest 档案：** [sources/papers/model_based_rl.md](../../sources/papers/model_based_rl.md)
 - [robotic_world_model（Isaac Lab 扩展）](../../sources/repos/leggedrobotics_robotic_world_model.md)
 - [robotic_world_model_lite](../../sources/repos/leggedrobotics_robotic_world_model_lite.md)
@@ -218,6 +228,7 @@ Phase 2：Actor-Critic 在潜空间训练（想象数据）
 
 ## 关联页面
 
+- [Richard Sutton](../entities/richard-sutton.md) — Options/GVF 与一步陷阱一手论述
 - [Robotic World Model（ETH RSL，RWM / RWM-U）](../entities/robotic-world-model-eth-rsl.md) — Isaac Lab 扩展与 Lite 离线管线
 - [Reinforcement Learning](./reinforcement-learning.md) — MBRL 是 RL 大类下的子方向，与 Model-Free 并列
 - [Model Predictive Control (MPC)](./model-predictive-control.md) — 基于模型规划的经典控制方法，MBRL 的"控制论版"
