@@ -15,6 +15,7 @@ related:
   - ../entities/roboparty.md
   - ../entities/roboto-origin.md
 sources:
+  - ../../sources/raw/feishu_humanoid_motion_control_know_how_full_2026-07-14.md
   - ../../sources/papers/humanoid_motion_control_know_how.md
   - ../../sources/raw/feishu_humanoid_motion_control_know_how_2026-07-14.md
   - ../../sources/notes/know-how.md
@@ -79,7 +80,7 @@ flowchart TB
 | 人形机器人运动控制学习路线 | [运动控制主路线](../../roadmap/motion-control.md)、[传统纵深](../../roadmap/depth-classical-control.md)、[RL 纵深](../../roadmap/depth-rl-locomotion.md) |
 | 传统运动控制学习路线 | [depth-classical-control](../../roadmap/depth-classical-control.md) |
 | 强化学习运动控制学习路线 | [depth-rl-locomotion](../../roadmap/depth-rl-locomotion.md) |
-| 人形机器人技术框架路线展望 | [控制架构对比](../queries/control-architecture-comparison.md)、[WBC vs RL](../comparisons/wbc-vs-rl.md) |
+| 人形机器人技术框架路线展望 | [技术框架路线展望](./humanoid-motion-control-framework-outlook.md)、[控制架构对比](../queries/control-architecture-comparison.md) |
 
 ### 问题解决思路
 

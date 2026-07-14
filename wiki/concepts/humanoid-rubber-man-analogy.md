@@ -10,8 +10,8 @@ related:
   - ../entities/humanoid-robot.md
   - ../overview/humanoid-motion-control-know-how-technology-map.md
 sources:
+  - ../../sources/raw/feishu_humanoid_motion_control_know_how_full_2026-07-14.md
   - ../../sources/papers/humanoid_motion_control_know_how.md
-  - ../../sources/notes/know-how.md
 ---
 
 # 人形机器人和橡皮人（教学类比）
@@ -41,11 +41,13 @@ sources:
 
 ## 核心原理
 
-类比要点：
+仿真橡皮人三优势（全文）：
 
-1. **橡皮人**：关节可任意弯曲、质量可忽略分布 → 运动学演示容易。
-2. **工程人形**：有限力矩、真实惯量、接触非弹性 → 必须模型化或数据驱动。
-3. **结论**：控制算法应服务于**真实机体**，而非服务于视觉相似度。
+1. **状态完全可知**：无 GPS/IMU/编码器噪声；速度可直接读取而非积分估计。
+2. **构型更接近人**：球关节三 DoF/关节；真机多为串联解耦 + 力矩限。
+3. **无 Sim2Real gap**：浪潮前硬件差，仿真里传统方法也能后空翻。
+
+**谱系（全文）：** [PHC](https://openaccess.thecvf.com/content/ICCV2023/papers/Luo_Perpetual_Humanoid_Control_for_Real-time_Simulated_Avatars_ICCV_2023_paper.pdf) 橡皮人 → [BFM-Zero](https://arxiv.org/pdf/2511.04131) / Meta Motivo；橡皮人研究仍常领先真机，但 Physical AI 需在橡皮人算法上迭代**更懂物理**的范式。
 
 ## 工程实践
 

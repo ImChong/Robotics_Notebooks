@@ -13,7 +13,7 @@ related:
   - ../overview/humanoid-rl-motion-control-methods.md
 sources:
   - ../../sources/papers/dreamwaq_arxiv_2301_10602.md
-  - ../../sources/papers/privileged_training.md
+  - ../../sources/raw/feishu_humanoid_motion_control_know_how_full_2026-07-14.md
   - ../../sources/papers/humanoid_motion_control_know_how.md
 ---
 
@@ -60,6 +60,12 @@ sources:
 
 - 在 Isaac Gym / Legged Gym 生态复现时，对齐 **历史帧长、控制频率、域随机** 与 critic 特权观测列表。
 - 评估时区分 **平地盲走** vs **楼梯/缺口**：后者通常需 [DreamWaQ++](../entities/dreamwaq-plus.md) 或 [PIE](./pie-perceptive-locomotion.md)。
+
+## 工程实践
+
+- 全文结论：**鲁棒行走任务中，估计质心速度提升最大**，可仅速度估计也获显著增益（高度图/地形次之）；用于**模仿跟踪**时提升不如行走明显。
+- 一阶段曾受限于 **SEA 关节弹性** 与 QDD 直驱成熟度；硬件进步后 gap 缩小。
+- 作者团队 2023 将 DreamWaQ 扩展至人形鲁棒行走（IROS 2024 文；B 站演示链见全文）。
 
 ## 局限与风险
 

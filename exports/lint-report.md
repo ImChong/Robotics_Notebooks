@@ -89,7 +89,7 @@
 - 无
 
 ### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（4 个）
-- wiki/methods/centroidal-nmpc-wbc-stack.md（被 4 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/centroidal-nmpc-wbc-stack.md（被 5 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/dreamwaq.md（被 4 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/pie-perceptive-locomotion.md（被 6 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/teacher-student-multi-skill-bfm.md（被 4 个页面引用，无 queries/comparisons 落地）
@@ -116,4 +116,4 @@
 ### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：1584/1614 (98%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1585/1615 (98%) wiki/entity 页有 ingest 来源

@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-07-14",
-  "node_count": 1631,
-  "edge_count": 12609,
+  "node_count": 1632,
+  "edge_count": 12619,
   "coverage": {
-    "covered": 1584,
-    "total": 1614,
+    "covered": 1585,
+    "total": 1615,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/humanoid-motion-control-framework-outlook.md",
+      "detail_id": "wiki-overview-humanoid-motion-control-framework-outlook",
+      "label": "人形机器人技术框架路线展望",
+      "type": "overview",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
     {
       "path": "wiki/overview/humanoid-motion-control-know-how-technology-map.md",
       "detail_id": "wiki-overview-humanoid-motion-control-know-how-technology-map",
@@ -18,14 +28,92 @@
       "action": "added"
     },
     {
+      "path": "wiki/concepts/modeling-and-solving-for-control.md",
+      "detail_id": "wiki-concepts-modeling-and-solving-for-control",
+      "label": "建模与求解（控制问题框架）",
+      "type": "concept",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/concepts/humanoid-vs-other-robots.md",
+      "detail_id": "wiki-concepts-humanoid-vs-other-robots",
+      "label": "人形机器人与其他机器人的区别",
+      "type": "concept",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/concepts/humanoid-rubber-man-analogy.md",
+      "detail_id": "wiki-concepts-humanoid-rubber-man-analogy",
+      "label": "人形机器人和橡皮人（教学类比）",
+      "type": "concept",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/concepts/kinematic-vs-dynamic-feasibility.md",
+      "detail_id": "wiki-concepts-kinematic-vs-dynamic-feasibility",
+      "label": "运动学可行与动力学可行",
+      "type": "concept",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/methods/slip-vmc.md",
+      "detail_id": "wiki-methods-slip-vmc",
+      "label": "SLIP + VMC（弹簧负载倒立摆与虚拟模型控制）",
+      "type": "method",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/methods/dreamwaq.md",
+      "detail_id": "wiki-methods-dreamwaq",
+      "label": "DreamWaQ：盲走一阶段鲁棒行走",
+      "type": "method",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "运动控制（Locomotion） 社区"
+    },
+    {
+      "path": "wiki/methods/teacher-student-multi-skill-bfm.md",
+      "detail_id": "wiki-methods-teacher-student-multi-skill-bfm",
+      "label": "Teacher-Student 多动作 BFM 学习",
+      "type": "method",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/queries/humanoid-motion-control-know-how.md",
+      "detail_id": "wiki-queries-humanoid-motion-control-know-how",
+      "label": "人形机器人运动控制 Know-How 结构化摘要",
+      "type": "query",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
       "path": "wiki/overview/humanoid-motion-control-trends.md",
       "detail_id": "wiki-overview-humanoid-motion-control-trends",
       "label": "人形机器人运动控制发展趋势",
       "type": "overview",
       "recency": "2026-07-14",
       "source": "log.md",
-      "action": "added",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/overview/humanoid-model-based-control-stack.md",
@@ -47,29 +135,9 @@
       "action": "added"
     },
     {
-      "path": "wiki/methods/slip-vmc.md",
-      "detail_id": "wiki-methods-slip-vmc",
-      "label": "SLIP + VMC（弹簧负载倒立摆与虚拟模型控制）",
-      "type": "method",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
       "path": "wiki/methods/pie-perceptive-locomotion.md",
       "detail_id": "wiki-methods-pie-perceptive-locomotion",
       "label": "PIE：感知一阶段鲁棒行走（隐式–显式学习）",
-      "type": "method",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/methods/dreamwaq.md",
-      "detail_id": "wiki-methods-dreamwaq",
-      "label": "DreamWaQ：盲走一阶段鲁棒行走",
       "type": "method",
       "recency": "2026-07-14",
       "source": "log.md",
@@ -96,59 +164,10 @@
       "action": "added"
     },
     {
-      "path": "wiki/methods/teacher-student-multi-skill-bfm.md",
-      "detail_id": "wiki-methods-teacher-student-multi-skill-bfm",
-      "label": "Teacher-Student 多动作 BFM 学习",
-      "type": "method",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
       "path": "wiki/methods/centroidal-nmpc-wbc-stack.md",
       "detail_id": "wiki-methods-centroidal-nmpc-wbc-stack",
       "label": "Centroidal NMPC + WBC 栈",
       "type": "method",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/concepts/humanoid-vs-other-robots.md",
-      "detail_id": "wiki-concepts-humanoid-vs-other-robots",
-      "label": "人形机器人与其他机器人的区别",
-      "type": "concept",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/concepts/kinematic-vs-dynamic-feasibility.md",
-      "detail_id": "wiki-concepts-kinematic-vs-dynamic-feasibility",
-      "label": "运动学可行与动力学可行",
-      "type": "concept",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/concepts/humanoid-rubber-man-analogy.md",
-      "detail_id": "wiki-concepts-humanoid-rubber-man-analogy",
-      "label": "人形机器人和橡皮人（教学类比）",
-      "type": "concept",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/concepts/modeling-and-solving-for-control.md",
-      "detail_id": "wiki-concepts-modeling-and-solving-for-control",
-      "label": "建模与求解（控制问题框架）",
-      "type": "concept",
       "recency": "2026-07-14",
       "source": "log.md",
       "action": "added",
@@ -162,16 +181,6 @@
       "recency": "2026-07-14",
       "source": "log.md",
       "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/queries/humanoid-motion-control-know-how.md",
-      "detail_id": "wiki-queries-humanoid-motion-control-know-how",
-      "label": "人形机器人运动控制 Know-How 结构化摘要",
-      "type": "query",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "maintained",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
@@ -194,27 +203,17 @@
       "source": "log.md",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/comparisons/deep-learning-optimizers.md",
-      "detail_id": "wiki-comparisons-deep-learning-optimizers",
-      "label": "Deep Learning Optimizers：选型对比",
-      "type": "comparison",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/humanoid-motion-control-know-how-technology-map.md",
-    "detail_id": "wiki-overview-humanoid-motion-control-know-how-technology-map",
-    "label": "人形机器人运动控制 Know-How 技术地图",
+    "path": "wiki/overview/humanoid-motion-control-framework-outlook.md",
+    "detail_id": "wiki-overview-humanoid-motion-control-framework-outlook",
+    "label": "人形机器人技术框架路线展望",
     "type": "overview",
     "recency": "2026-07-14",
     "source": "log.md",
-    "action": "added"
+    "action": "added",
+    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
   },
   "top_communities": [
     {
@@ -230,16 +229,16 @@
       "size": 163
     },
     {
-      "label": "人形强化学习运动控制",
-      "size": 126
-    },
-    {
       "label": "动作重定向",
       "size": 126
     },
     {
+      "label": "人形强化学习运动控制",
+      "size": 125
+    },
+    {
       "label": "全身控制",
-      "size": 83
+      "size": 85
     }
   ],
   "top_hubs": [

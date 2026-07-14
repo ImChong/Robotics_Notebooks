@@ -11,6 +11,7 @@ related:
   - ../overview/humanoid-motion-control-know-how-technology-map.md
   - ../../roadmap/depth-classical-control.md
 sources:
+  - ../../sources/raw/feishu_humanoid_motion_control_know_how_full_2026-07-14.md
   - ../../sources/papers/humanoid_motion_control_know_how.md
 ---
 
@@ -65,9 +66,10 @@ sources:
 
 ## 局限与风险
 
-- **不适用复杂接触**：多足同时接触、大幅躯干转动时 SLIP 假设弱。
-- **VMC 非约束感知**：不保证摩擦锥、力矩限、自碰撞；需外层 WBC/QP 或仿真验证。
-- **人形全身耦合**：单腿 SLIP 直觉需扩展到左右脚交替与上身惯性。
+- **历史局限（LIP 时代遗留对比）：** SLIP+VMC 相对 LIP 已能动态稳定，但仍为启发式合外力/落脚点，非全刚体 OCP。
+- **不适用复杂接触**：多足同时接触、大幅躯干转动时假设弱。
+- **VMC 非约束感知**：摩擦锥、力矩限需外层 WBC/QP；接触检测可用力传感或关节力矩虚功估计。
+- **点足时代产物**：首次实现人形**动态**控制，是点足系统稳定算法来源（Raibert Leg Lab → 波士顿动力谱系）。
 
 ## 关联页面
 

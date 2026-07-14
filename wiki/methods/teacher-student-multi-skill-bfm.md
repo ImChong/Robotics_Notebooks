@@ -12,6 +12,7 @@ related:
   - ../concepts/privileged-training.md
   - ../../roadmap/depth-bfm.md
 sources:
+  - ../../sources/raw/feishu_humanoid_motion_control_know_how_full_2026-07-14.md
   - ../../sources/papers/humanoid_motion_control_know_how.md
 ---
 
@@ -63,9 +64,10 @@ sources:
 
 ## 局限与风险
 
-- **蒸馏瓶颈**：学生容量不足时多技能互相干扰（灾难性遗忘）。
-- **特权依赖**：真机无对应观测时，需额外估计器（与 PIE/CENet 谱系衔接）。
-- **评测不统一**：飞书指出 benchmark 缺失，多动作成功率定义需自建。
+- **蒸馏瓶颈**：学生容量不足时多技能互相干扰。
+- **BFM-Zero / FB 无监督（全文）：** 动力学连续、动作「友好」，但 FB 对观测动力学未来占据取平均 → **难泛化到动力学突变**（如 in-the-air 动作）；网络容量限制覆盖度。
+- **特权依赖**：真机无对应观测时需额外估计器。
+- **评测不统一**：飞书指出 benchmark 缺失。
 
 ## 关联页面
 

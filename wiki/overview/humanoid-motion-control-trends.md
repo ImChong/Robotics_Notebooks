@@ -4,6 +4,7 @@ tags: [humanoid, motion-control, trends, bfm, mpc, reinforcement-learning]
 status: complete
 updated: 2026-07-14
 related:
+  - ./humanoid-motion-control-framework-outlook.md
   - ./humanoid-motion-control-know-how-technology-map.md
   - ./humanoid-rl-motion-control-body-system-stack.md
   - ../concepts/behavior-foundation-model.md

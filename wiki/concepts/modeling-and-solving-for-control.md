@@ -42,12 +42,14 @@ sources:
 
 ## 核心原理
 
-典型闭环：
+飞书全文用**四轮小车**四步类比人形控制（见 [建模与求解](../concepts/modeling-and-solving-for-control.md)）：
 
-1. **建模：** $M(q)\ddot q + h(q,\dot q) = S^\top \tau + J_c^\top f_c$，接触约束、摩擦锥、力矩限。
-2. **离散化 / 简化：** LIP、SRBD、Centroidal 等。
-3. **求解：** 每周期 QP（WBC）或 NMPC 或 policy $\pi(a|s)$。
-4. **验证：** 仿真 → 台架 → 真机，记录失效模式回修模型。
+1. 确定状态 $X$ 与控制输入 $U$（人形：质心 7 维 + 关节 29 维；输入为关节力矩/位置）。
+2. 建立动力学 $X_{t+1}=F(X_t,U_t)$：传统用浮动基方程；RL 用 `env.step()` 隐式替代。
+3. 构造 OCP：目标（如跟踪 $V_{cmd}$）+ 等式/不等式约束（摩擦、触地速度、力矩限）。
+4. 选择求解器：MPC/LQR/DDP（传统）或 MDP+RL（分布意义下的 OCP）。
+
+**Gap 来源：** 传统来自模型简化与参数误差；RL 来自仿真接触/碰撞简化（spring-damper vs time-stepping、隐式/显式积分等）。
 
 ## 工程实践
 
@@ -69,6 +71,7 @@ sources:
 
 ## 参考来源
 
+- [飞书 Know-How 全文](../../sources/raw/feishu_humanoid_motion_control_know_how_full_2026-07-14.md) — §建模+求解
 - [humanoid_motion_control_know_how.md](../../sources/papers/humanoid_motion_control_know_how.md)
 
 ## 推荐继续阅读

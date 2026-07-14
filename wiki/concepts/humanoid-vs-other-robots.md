@@ -11,6 +11,7 @@ related:
   - ../entities/humanoid-robot.md
   - ../overview/humanoid-motion-control-know-how-technology-map.md
 sources:
+  - ../../sources/raw/feishu_humanoid_motion_control_know_how_full_2026-07-14.md
   - ../../sources/papers/humanoid_motion_control_know_how.md
 ---
 
@@ -41,12 +42,16 @@ sources:
 
 ## 核心对比
 
-| 维度 | 固定基机械臂 | 轮式移动机器人 | 四足 | 人形双足 |
-|------|-------------|----------------|------|----------|
-| 基座 | 固定 | 连续驱动 | 多足接触 | 浮动基 + 双足切换 |
-| 稳定主矛盾 | 精度/奇异 | 导航 | 地形适应 | 平衡 + 上身任务 |
-| 典型控制 | 轨迹跟踪 | MPC/规划 | RL/WBC 混合 | WBC+MPC+RL 全家桶 |
-| 状态估计 | 较低 | 中等 | 足端接触关键 | 接触+浮动基关键 |
+飞书全文「一句话」：**高维度非线性、动力学突变、低静态稳定裕度的浮动基系统。**
+
+| 对比对象 | 人形难点（全文归纳） |
+|----------|---------------------|
+| **无人车** | 车可近似 2D、低维低耦合、推一把不翻；人形高维串联、强非线性耦合 |
+| **无人机** | 旋翼动力学无接触突变、微分平坦；人形靠接触反力、接触切换突变 |
+| **四足** | 同为浮动基+突变；人形双足稳定裕度更低，且需兼顾操作与全身协调 |
+| **机械臂** | 固定基、稳定裕度满；IK 即可 oftentimes 够用；人形必须处理倾倒与浮动基 |
+
+**传统 MPC 瓶颈（作者观点）：** 不简化模型则难用现有求解器处理多接触；波士顿动力靠极致工程（离线规划+在线优化）才 demo，产出比低。
 
 ## 工程实践
 
@@ -68,6 +73,7 @@ sources:
 
 ## 参考来源
 
+- [飞书 Know-How 全文](../../sources/raw/feishu_humanoid_motion_control_know_how_full_2026-07-14.md) — §人形机器人与其他机器人的区别
 - [humanoid_motion_control_know_how.md](../../sources/papers/humanoid_motion_control_know_how.md)
 
 ## 推荐继续阅读

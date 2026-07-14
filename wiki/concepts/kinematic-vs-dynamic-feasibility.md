@@ -11,6 +11,7 @@ related:
   - ../queries/humanoid-motion-control-know-how.md
   - ../overview/humanoid-motion-control-know-how-technology-map.md
 sources:
+  - ../../sources/raw/feishu_humanoid_motion_control_know_how_full_2026-07-14.md
   - ../../sources/papers/humanoid_motion_control_know_how.md
 ---
 
@@ -55,8 +56,8 @@ sources:
 
 ## 局限与风险
 
+- **作者经验链：** 重定向改进（PHC → GMR 硬 IK → OmniRetarget SQP）越好，后续 RL **越省奖励调参**；最终效果 **人形本体 > 重定向轨迹 > RL 算法**。
 - **完全动力学验证昂贵**：高 DoF 人形全轨迹 ID+仿真仍耗时。
-- **软约束近似**：QP 摩擦锥线性化等带来保守或乐观偏差。
 
 ## 关联页面
 
