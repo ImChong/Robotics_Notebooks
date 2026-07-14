@@ -280,7 +280,8 @@ body.sponsor-dialog-open {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow-sm);
-  backdrop-filter: blur(10px);
+  /* 不加 backdrop-filter：这些是文档流内面板，背后只有纯色区块背景，blur 无视觉作用，
+     反而触发 Chromium 合成层滚动重绘 bug（向上滚动时卡片偶发整块空白） */
 }
 .hero-panel { padding: 20px 20px 18px; }
 .hero-panel h3 { font-size: 1rem; margin-bottom: 12px; }
