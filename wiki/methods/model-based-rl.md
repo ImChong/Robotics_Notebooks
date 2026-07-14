@@ -1,9 +1,7 @@
 ---
-
 type: method
 tags: [rl, model-based, planning, locomotion, sample-efficiency, horizon-robotics]
 status: complete
-summary: "Model-Based RL 借助环境模型提升样本效率，在机器人控制中常与规划和世界模型结合。"
 updated: 2026-07-14
 related:
   - ../entities/richard-sutton.md
@@ -12,6 +10,8 @@ related:
 sources:
   - ../../sources/blogs/sutton_one_step_trap.md
   - ../../sources/sites/incompleteideas-net-rich-sutton.md
+summary: "Model-Based RL 借助环境模型提升样本效率，在机器人控制中常与规划和世界模型结合。"
+---
 
 # Model-Based RL（基于模型的强化学习）
 
