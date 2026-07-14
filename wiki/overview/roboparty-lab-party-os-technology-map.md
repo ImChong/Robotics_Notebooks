@@ -7,6 +7,7 @@ related:
   - ../entities/party-os.md
   - ../entities/mimiclite.md
   - ../entities/roboparty-ufo.md
+  - ../entities/paper-tech-humanoid-control.md
   - ../entities/human-humanoid-tools.md
   - ../entities/roboto-origin.md
   - ./bfm-41-papers-technology-map.md
@@ -20,6 +21,7 @@ sources:
   - ../../sources/repos/party_os.md
   - ../../sources/repos/mimiclite.md
   - ../../sources/repos/roboparty_ufo.md
+  - ../../sources/sites/roboparty_lab_tech_humanoid_control.md
   - ../../sources/repos/human_humanoid_tools.md
 summary: "依据 RoboParty 2026-07 Lab 成立公众号，把 Party OS 首批三项开源工具整理为「数据/重定向 → 监督跟踪 → 无监督控制 → 跨 codebase 部署」技术地图；核心判断：从 ROBOTO Origin 单机开源走向可复用人形研发基础设施。"
 ---
@@ -105,7 +107,7 @@ flowchart LR
 |------|------|
 | 基建 > 单点 demo | 三项工具覆盖 **数据准备 → 训练 → 部署** 中最耗时的重复建设 |
 | MimicLite 双重角色 | 既是 **自有跟踪训练器**，也是 **跨 codebase 统一评测/部署 runtime** |
-| UFO 补无监督线 | 与 MimicLite 监督跟踪形成 **互补**；集成 BFM-Zero 并探索 TeCH |
+| UFO 补无监督线 | 与 MimicLite 监督跟踪形成 **互补**；集成 BFM-Zero 与 [TeCH](../entities/paper-tech-humanoid-control.md)（TLDR 时间距离表征） |
 | hhtools 降上游摩擦 | Any Motion / Any URDF / R2R 把 retarget 从「每机型定制脚本」推向 **工作台** |
 | 演进叙事 | ROBOTO Origin → RoboParty Lab：从单机开源到 **持续生长的开放技术系统** |
 
@@ -125,10 +127,12 @@ flowchart LR
 - [party_os.md](../../sources/repos/party_os.md)
 - [mimiclite.md](../../sources/repos/mimiclite.md)
 - [roboparty_ufo.md](../../sources/repos/roboparty_ufo.md)
+- [roboparty_lab_tech_humanoid_control.md](../../sources/sites/roboparty_lab_tech_humanoid_control.md)
 - [human_humanoid_tools.md](../../sources/repos/human_humanoid_tools.md)
 
 ## 推荐继续阅读
 
 - [RoboParty Lab 官网](https://lab.roboparty.com)
+- [TeCH 成果页（RoboParty Lab）](https://lab.roboparty.com/outputs/tech)
 - [Party OS GitHub](https://github.com/Roboparty/Party_OS)
 - [Roboto Origin 实体页](../entities/roboto-origin.md)

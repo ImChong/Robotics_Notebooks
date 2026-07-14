@@ -1,13 +1,35 @@
 {
   "generated_at": "2026-07-14",
-  "node_count": 1610,
-  "edge_count": 12314,
+  "node_count": 1611,
+  "edge_count": 12329,
   "coverage": {
-    "covered": 1564,
-    "total": 1594,
+    "covered": 1565,
+    "total": 1595,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-tech-humanoid-control.md",
+      "detail_id": "entity-paper-tech-humanoid-control",
+      "label": "TeCH：基于对比表征学习的时间距离建模，用于人形机器人全身控制",
+      "type": "entity",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/roboparty-ufo.md",
+      "detail_id": "entity-roboparty-ufo",
+      "label": "UFO（Roboparty 无监督 RL 控制框架）",
+      "type": "entity",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
     {
       "path": "wiki/overview/roboparty-lab-party-os-technology-map.md",
       "detail_id": "wiki-overview-roboparty-lab-party-os-technology-map",
@@ -31,20 +53,19 @@
       "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
-      "path": "wiki/entities/mimiclite.md",
-      "detail_id": "entity-mimiclite",
-      "label": "MimicLite（监督运动跟踪基础设施）",
+      "path": "wiki/entities/paper-bfm-zero.md",
+      "detail_id": "entity-paper-bfm-zero",
+      "label": "BFM-Zero",
       "type": "entity",
       "recency": "2026-07-14",
       "source": "log.md",
-      "action": "added",
-      "has_repo": true,
+      "action": "maintained",
       "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
-      "path": "wiki/entities/roboparty-ufo.md",
-      "detail_id": "entity-roboparty-ufo",
-      "label": "UFO（Roboparty 无监督 RL 控制框架）",
+      "path": "wiki/entities/mimiclite.md",
+      "detail_id": "entity-mimiclite",
+      "label": "MimicLite（监督运动跟踪基础设施）",
       "type": "entity",
       "recency": "2026-07-14",
       "source": "log.md",
@@ -196,33 +217,13 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-infinite-diffusion-terrain-diffusion.md",
-      "detail_id": "entity-paper-infinite-diffusion-terrain-diffusion",
-      "label": "InfiniteDiffusion / Terrain Diffusion（学习式无限地形生成）",
-      "type": "entity",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/concepts/procedural-terrain-generation.md",
-      "detail_id": "wiki-concepts-procedural-terrain-generation",
-      "label": "Procedural Terrain Generation（程序化地形生成）",
-      "type": "concept",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "运动控制（Locomotion） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/roboparty-lab-party-os-technology-map.md",
-    "detail_id": "wiki-overview-roboparty-lab-party-os-technology-map",
-    "label": "RoboParty Lab / Party OS 技术地图",
-    "type": "overview",
+    "path": "wiki/entities/paper-tech-humanoid-control.md",
+    "detail_id": "entity-paper-tech-humanoid-control",
+    "label": "TeCH：基于对比表征学习的时间距离建模，用于人形机器人全身控制",
+    "type": "entity",
     "recency": "2026-07-14",
     "source": "log.md",
     "action": "added",
@@ -252,7 +253,7 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 126
+      "size": 127
     }
   ],
   "top_hubs": [
