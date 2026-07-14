@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-14",
-  "node_count": 1605,
-  "edge_count": 12259,
+  "node_count": 1610,
+  "edge_count": 12314,
   "coverage": {
-    "covered": 1559,
-    "total": 1589,
+    "covered": 1564,
+    "total": 1594,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -226,11 +226,11 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 210
+      "size": 205
     },
     {
       "label": "人形论文深读笔记",
-      "size": 179
+      "size": 182
     },
     {
       "label": "移动操作",
@@ -238,11 +238,11 @@
     },
     {
       "label": "动作重定向",
-      "size": 130
+      "size": 128
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 117
+      "size": 126
     }
   ],
   "top_hubs": [
@@ -257,7 +257,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 272,
+      "degree": 273,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -353,8 +353,9 @@
       "detail_id": "entity-paper-twist2",
       "label": "TWIST2",
       "type": "entity",
-      "degree": 34,
-      "has_repo": true
+      "degree": 35,
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
@@ -387,8 +388,7 @@
       "label": "MoRE：复杂地形上的人形多步态残差专家混合",
       "type": "entity",
       "degree": 26,
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
+      "has_repo": true
     }
   ]
 }

@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, framework, mujoco, mujoco-warp, isaac-lab-api, reinforcement-learning, gpu-simulation, nvidia, unitree]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-14
 related:
   - ./mujoco.md
   - ./mujoco-playground.md

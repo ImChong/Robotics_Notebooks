@@ -132,6 +132,7 @@
 - [HoloMotion（HoloMotion-1）](wiki/entities/holomotion.md) — HoloMotion-1** 是 **Horizon Robotics（地平线）** 发布的 **人形全身运动跟踪** 路线：把跟踪策略建成可在 **大规模异质运动语料** 上训练的 **高容量时 `📅unknown` `[entity_page]`
 - [holosoma（Amazon FAR 人形 RL + 重定向框架）](wiki/entities/holosoma.md) — holosoma**（<https://github.com/amazon-far/holosoma>，Apache-2.0）是 Amazon FAR 发布的 **人形机器人全身强化学习** 开源 `📅unknown` `[entity_page]`
 - [HRDexDB（人–机器人配对灵巧抓取数据集）](wiki/entities/hrdexdb-dataset.md) — HRDexDB**（Lim et al., arXiv:2604.14944，2026；<https://snuvclab. `📅unknown` `[entity_page]`
+- [human-humanoid-tools（hhtools）](wiki/entities/human-humanoid-tools.md) — human-humanoid-tools**（简称 **hhtools**）是 Party OS 首批开源的 **Human-to-Humanoid 动作重定向与 `📅unknown` `[entity_page]`
 - [human2humanoid（LeCAR-Lab）](wiki/entities/human2humanoid.md) — human2humanoid**（<https://github.com/LeCAR-Lab/human2humanoid>）是 CMU **LECAR Lab** 的 **人形全身实时遥操作（h `📅unknown` `[entity_page]`
 - [HumanNet](wiki/entities/humannet.md) — HumanNet** 是一套把 **互联网级人中心视频** 加工成「可喂给大规模模型」的具身向语料：强调 **第一人称与第三人称并存**、**物理相关行为** 的策展、以及 **手体几何 + 语言 `📅unknown` `[entity_page]`
 - [Humanoid Everyday](wiki/entities/humanoid-everyday-dataset.md) — Humanoid Everyday**（Zhao et al., arXiv:2510.08807，2025）是 USC 与 `📅unknown` `[entity_page]`
@@ -181,6 +182,7 @@
 - [MetaHuman（Epic 数字人平台）](wiki/entities/metahuman.md) — MetaHuman** 是 **Epic Games** 在 **Unreal Engine** 生态内提供的 **高保真数字人（digital human）** 创作与动画平台：通过 **Met `📅unknown` `[entity_page]`
 - [MetalHead](wiki/entities/metalhead.md) — MetalHead**（<https://github.com/inspirai/MetalHead>）在 **Unitree A1** 四足上实现 **walk / run / jump / r `📅unknown` `[entity_page]`
 - [MimicKit: 运动模仿与控制研究套件](wiki/entities/mimickit.md) — MimicKit** 是 Xue Bin Peng（彭学斌） 团队（Stanford / UC Berkeley / NVIDIA 等合作脉络）维护的  `📅unknown` `[entity_page]`
+- [MimicLite（监督运动跟踪基础设施）](wiki/entities/mimiclite.md) — MimicLite** 是 Party OS 首批开源的 **监督学习运动跟踪基础设施**，贯通数据组织、策略训练、统一评测与真机部署，使研究者能以更低算力快速迭 `📅unknown` `[entity_page]`
 - [Mixamo](wiki/entities/mixamo.md) — Mixamo** 是 **Adobe** 旗下的 **Web 端角色动画服务**：浏览并下载带骨骼的 3D 角色与 **大量全身动作**（站点描述为专业演员动捕后迁移到角色），也支持上传自定义人形 `📅unknown` `[entity_page]`
 - [mjlab_playground（mjlab 任务集合）](wiki/entities/mjlab-playground.md) — mjlab_playground** 是 mjlab 之上的 **示例任务仓库**：把 [MuJoCo Playground](https://playground.m `📅unknown` `[entity_page]`
 - [mjlab (轻量 GPU 加速 RL 框架)](wiki/entities/mjlab.md) — mjlab** 是由 mujocolab 开发的轻量机器人学习框架，核心设计是将 **Isaac Lab 的 manager-based API**（结构化环境设计）与 **MuJoCo Warp `📅unknown` `[entity_page]`
@@ -978,6 +980,7 @@
 - [X-IONet（跨平台惯性里程计网络）](wiki/entities/paper-x-ionet-cross-platform-inertial-odometry.md) — X-IONet**（Cross-Platform Inertial Odometry Network）是 Shen & Chen 提出的 **仅用单 IMU** 的跨平台惯性里程计框架（IEEE  `📅unknown` `[entity_page]`
 - [YOLO v1（You Only Look Once）](wiki/entities/paper-yolo-unified-realtime-detection.md) — YOLO**（You Only Look Once）是 Joseph Redmon 等提出的 **统一实时目标检测** 方法（arXiv:1506.02640，CVPR 2016）。它将检测从「区 `📅unknown` `[entity_page]`
 - [PAROL6（Source Robotics）](wiki/entities/parol6-source-robotics.md) — PAROL6** 是 **Source Robotics** 推出的 **开源桌面六轴机械臂**：强调 **低成本、可 DIY、ROS 控制**；产品介绍在 **[source-robotics. `📅unknown` `[entity_page]`
+- [Party OS（RoboParty 人形研发底座）](wiki/entities/party-os.md) — Party OS** 是 RoboParty Lab 对外沉淀的 **开放研发基础设施**，目标是把人形机器人研发中最耗时、最分散、最难复 `📅unknown` `[entity_page]`
 - [Boston Dynamics 足式控制与硬件专利栈](wiki/entities/patent-boston-dynamics-legged-control-stack.md) — 本页归纳 **Boston Dynamics** 五件与 **Spot / Atlas 类足式平台** 相关的授权或公开专利（见 [`sources/patents/boston_dynamics_l `📅unknown` `[entity_page]`
 - [Tesla 人形机器人膝关节机构（WO2024073135）](wiki/entities/patent-tesla-robot-knee-joint-assembly.md) — 专利 **WO2024073135A1**（*Systems and methods for a robot knee joint assembly*，权利人 **Tesla Inc.**）公开一种  `📅unknown` `[entity_page]`
 - [Perceptron Egocentric](wiki/entities/perceptron-egocentric.md) — Perceptron Egocentric**（[官方博客](https://www.perceptron.inc/blog/introducing-perceptron-egocentric-a `📅unknown` `[entity_page]`
@@ -1010,6 +1013,7 @@
 - [RoamerX（智身四足导航栈）](wiki/entities/roamerx-navigation.md) — RoamerX**（社区开源版 **RoamerX Lite**）是智身科技（GENISOM AI）面向四足机器人的 **ROS 2 导航栈**：在 **Nav2** 基础上增强 **SLAM、全 `📅unknown` `[entity_page]`
 - [RoboBench（MLLM 具身大脑综合评测）](wiki/entities/robo-bench.md) — RoboBench**（*A Comprehensive Evaluation Benchmark for Multimodal Large Language Models as Embodied `📅unknown` `[entity_page]`
 - [RoboGen](wiki/entities/robogen.md) — RoboGen** 是面向 **机器人学习数据扩展** 的 **自动生成框架**，利用大语言模型与仿真器联动 **程序化生成任务、场景与演示轨迹**。 `📅unknown` `[entity_page]`
+- [UFO（Roboparty 无监督 RL 控制框架）](wiki/entities/roboparty-ufo.md) — UFO**（*Unsupervised RL Control Development Framework*）是 Party OS 首批开源的 **无监督强化学习控 `📅unknown` `[entity_page]`
 - [Robot Explorer](wiki/entities/robot-explorer.md) — Robot Explorer** 是一个基于 Web 的交互式 3D 机器人探索工具，专注于机器人动力学分析、运动学可视化与教育演示。它由开发者 `ferrolho` 维护，支持在浏览器中直接操控 `📅unknown` `[entity_page]`
 - [RIO（Robot I/O）](wiki/entities/robot-io-rio.md) — RIO（Robot I/O）** 是一套面向**真实机器人**的 **Python 实时 I/O** 与编排框架，目标是把「换一套机械臂 / 人形 / 相机 / 遥操作设备就要重写控制栈」的摩擦降 `📅unknown` `[entity_page]`
 - [robot_lab (IsaacLab 扩展框架)](wiki/entities/robot-lab.md) — robot_lab** 是由 `fan-ziqi` 维护的 **IsaacLab 生态扩展库**：在核心仓库外独立开发机器人资产、Gym 环境与训练脚本，避免 fork 上游 Isaac Lab。 `📅unknown` `[entity_page]`
@@ -1510,6 +1514,7 @@
 - [Paper Notebooks · Hardware Design](wiki/overview/paper-notebook-category-12-hardware-design.md) — Hardware Design**（`12_Hardware_Design`）是 [Humanoid Robot Learning Paper Notebooks](https://imchong `📅unknown` `[overview_page]`
 - [Paper Notebooks · Physics-Based Animation](wiki/overview/paper-notebook-category-13-physics-based-animation.md) — Physics-Based Animation**（`13_Physics-Based_Animation`）是 [Humanoid Robot Learning Paper Notebooks `📅unknown` `[overview_page]`
 - [Paper Notebooks · Human Motion](wiki/overview/paper-notebook-category-14-human-motion.md) — Human Motion**（`14_Human_Motion`）是 [Humanoid Robot Learning Paper Notebooks](https://imchong.githu `📅unknown` `[overview_page]`
+- [RoboParty Lab / Party OS 技术地图](wiki/overview/roboparty-lab-party-os-technology-map.md) — RoboParty Lab 把「好 idea 输在基建」的问题显式产品化：**Party OS** 作为研发底座，首批开源 **hhtools（动作重定向）→ MimicLite（监督跟踪 infra `📅unknown` `[overview_page]`
 - [Robot Learning Overview](wiki/overview/robot-learning-overview.md) — 机器人学习**：让机器人通过数据学会完成复杂任务的方法集合，核心是把”如何做”从人工编程转向从经验中学习。 `📅unknown` `[overview_page]`
 - [机器人开源宝库（微信策展第01期）— 索引](wiki/overview/robot-open-source-wechat-issue01-curator.md) — 本页把第三方微信清单中的 **10 个开源机器人/平台**拆成独立实体节点，并在此集中列出**官方文档与组织级 GitHub**入口，避免把网盘短链当作唯一分发源。 `📅unknown` `[overview_page]`
 - [机器人开源宝库（微信策展第02期）— 索引](wiki/overview/robot-open-source-wechat-issue02-curator.md) — 本页对应转载清单 **第 11–20 号**共 **10** 条开源机器人/平台入口，拆成独立实体节点，并集中指向 **官方文档、GitHub 组织与论文/数据集页**；个人网盘与 360 共享链不作 `📅unknown` `[overview_page]`
