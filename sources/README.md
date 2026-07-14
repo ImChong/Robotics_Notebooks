@@ -374,6 +374,10 @@
 | [x] [npcliu-faststair-github-io.md](sites/npcliu-faststair-github-io.md) | FastStair 项目页 npcliu.github.io/FastStair（摘要、视频区、BibTeX） |
 | [x] [physx-omni-github-io.md](sites/physx-omni-github-io.md) | PhysX-Omni 项目页 physx-omni.github.io（PhysXVerse / PhysX-Bench / 实验对比，arXiv:2605.21572） |
 | [x] [robotics-venues-primary-refs.md](sites/robotics-venues-primary-refs.md) | ICRA、IROS、CoRL、RSS、T-RO、IJRR、Science Robotics 官方介绍与投稿入口一手索引 |
+| [x] [roboparty_com.md](sites/roboparty_com.md) | RoboParty 官网：公司叙事、里程碑、Roboto Origin 与 Lab 入口 |
+| [x] [roboparty_com_roboto_origin_doc.md](sites/roboparty_com_roboto_origin_doc.md) | Roboto Origin 官方文档站：参数表、系统架构与开源范围 |
+| [x] [lab_roboparty_com.md](sites/lab_roboparty_com.md) | RoboParty Lab 官网：Party OS 四方向、开源项目与荣誉列表 |
+| [x] [roboparty_lab_tech_humanoid_control.md](sites/roboparty_lab_tech_humanoid_control.md) | TeCH 成果页（lab.roboparty.com/outputs/tech）：无监督人形全身控制 |
 | [x] [ros2-official-documentation.md](sites/ros2-official-documentation.md) | ROS 2 Humble 官方文档、ros2_control / Nav2 / Design 一手索引 |
 | [x] [sirui-xu-interprior-github-io.md](sites/sirui-xu-interprior-github-io.md) | InterPrior 项目页 sirui-xu.github.io/InterPrior（能力演示、BibTeX、Inter-line 姊妹链） |
 | [x] [simplefoc_documentation.md](sites/simplefoc_documentation.md) | docs.simplefoc.com：Arduino SimpleFOC 官方文档（理论、运动/扭矩环、硬件与 v2.4 发布说明） |

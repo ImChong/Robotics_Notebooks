@@ -4,6 +4,7 @@ tags: [humanoid, open-source, infrastructure, roboparty, motion-tracking, reinfo
 status: complete
 updated: 2026-07-14
 related:
+  - ./roboparty.md
   - ../overview/roboparty-lab-party-os-technology-map.md
   - ./mimiclite.md
   - ./roboparty-ufo.md
@@ -16,13 +17,15 @@ related:
   - ../entities/paper-bfm-zero.md
 sources:
   - ../../sources/repos/party_os.md
+  - ../../sources/sites/lab_roboparty_com.md
+  - ../../sources/sites/roboparty_com.md
   - ../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md
 summary: "Party OS 是 RoboParty Lab 的人形机器人研发基础设施聚合层，连接本体、数据、训练、动作工具链、Sim2Real 与开源发布；首批开源 MimicLite、UFO、hhtools 三项工具链。"
 ---
 
 # Party OS（RoboParty 人形研发底座）
 
-**Party OS** 是 [RoboParty Lab](https://lab.roboparty.com) 对外沉淀的 **开放研发基础设施**，目标是把人形机器人研发中最耗时、最分散、最难复现的底层能力做成可复用模块，让开发者把时间花在真正前沿的问题上，而非反复从零搭建基建。
+**Party OS** 是 [RoboParty](./roboparty.md) 旗下 [RoboParty Lab](https://lab.roboparty.com) 对外沉淀的 **开放研发基础设施**，目标是把人形机器人研发中最耗时、最分散、最难复现的底层能力做成可复用模块，让开发者把时间花在真正前沿的问题上，而非反复从零搭建基建。
 
 ## 英文缩写速查
 
@@ -97,6 +100,8 @@ flowchart TB
 ## 参考来源
 
 - [party_os.md](../../sources/repos/party_os.md)
+- [lab_roboparty_com.md](../../sources/sites/lab_roboparty_com.md)
+- [roboparty_com.md](../../sources/sites/roboparty_com.md)
 - [wechat_roboparty_lab_party_os_3_tools.md](../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md)
 
 ## 推荐继续阅读

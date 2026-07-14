@@ -3,7 +3,7 @@
 type: entity
 tags: [humanoid, hardware, open-source, robotics, research, berkeley]
 status: complete
-updated: 2026-07-09
+updated: 2026-07-14
 related:
   - ../overview/humanoid-hardware-101-technology-map.md
   - ./humanoid-robot.md
@@ -57,7 +57,7 @@ summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humano
 | 方案名称 | 主导机构 | 自由度 (DOF) | 核心执行器 | 成本估算 | 软件生态 |
 |------|------|-----|-----------|---------|---------|
 | **Berkeley Humanoid** | UC Berkeley | 12-14 | 准直接驱动 (QDD) | < 5,000 USD | 基于 Python/C++ 的简易控制框架 |
-| **Roboto Origin** | Roboparty | 20+ | QDD + 舵机混合 | < 3,000 USD | ROS2 支持，兼容简单平衡算法 |
+| **Roboto Origin** | [RoboParty](./roboparty.md) / [RPO](./roboto-origin.md) | 23 | QDD + 舵机混合 | < 3,000 USD | ROS2 支持，兼容简单平衡算法 |
 | **ODRI (Bolt/Solo)** | Max Planck | 6-12 (双腿/四足) | 基于 T-Motor 改造 | 中等 | OCS2 / Pinocchio 深度支持 |
 | **Unitree H1 (SDK版)** | Unitree | 19 | 商业级 QDD | > 50,000 USD | Isaac Gym (legged_gym) 生态极强 |
 | **Asimov v1** | Asimov Inc. | 25 主动 + 2 被动（公开 README） | 铝结构 + MJF 尼龙；关节驱动以官方设计为准 | DIY Kit 目标价量级约 **1.5 万 USD**（以官网为准） | 单仓含 CAD/电气/**MuJoCo**；运控 API/策略仍在路线图 |
@@ -68,8 +68,8 @@ summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humano
 - **优点**：动力学透明度高，非常适合做强化学习的 Sim2Real 验证。
 
 ## 2. Roboto Origin (科普与原型派)
-- **特点**：由国内开源社区驱动，旨在打造人人都能拥有的“第一台人形机器人”。
-- **优点**：文档详尽，组装门槛低。
+- **特点**：由 [RoboParty](./roboparty.md) 开源社区驱动，旨在打造人人都能拥有的“第一台人形机器人”（[RPO 文档站](https://roboparty.com/roboto_origin/doc) 约 1.25 m / 23 DOF）。
+- **优点**：文档详尽，淘宝 + 嘉立创可复刻，组装门槛相对可控。
 
 ## 2b. Asimov v1（全栈单仓 + 手册/BOM 外链）
 
