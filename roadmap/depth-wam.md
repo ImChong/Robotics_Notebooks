@@ -84,6 +84,8 @@ flowchart LR
 - [Model-Based RL](../wiki/methods/model-based-rl.md)（本仓库）
 - [机器人世界模型训练闭环 taxonomy](../wiki/overview/robot-world-models-training-loop-taxonomy.md)（本仓库）
 - [τ₀-World Model（τ0-WM）](../wiki/entities/tau0-world-model.md)（本仓库）— 联合预测 + 测试时修订的对照实例
+- [PhysisForcing](../wiki/entities/paper-physisforcing.md)（本仓库）— 训练期分层物理对齐（像素级轨迹 + 语义级 token 关系），推理零额外开销："视频保真 ≠ 物理可信"的正面解法
+- [PhysMani](../wiki/entities/paper-physmani-dynamic-manipulation-world-model.md)（本仓库）— 在线学习的无散度 3D Gaussian 速度场世界模型与 future-aware 策略并行耦合，面向快速动态目标操作（ECCV 2026）
 
 ### 学完输出什么
 - 能解释"视频保真度高"为何不等于"动作可推断 / 可闭环"

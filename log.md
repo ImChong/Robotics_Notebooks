@@ -1,5 +1,19 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-14] fix | scripts/utils/community_labels.py — 补 roadmap/depth-navigation.md 社区名 override，修复 CI 社区命名测试
+
+- 六条纵深路线补链 +15 边后社区结构变化，community-14 枢纽变为 roadmap/depth-navigation.md，其 H1 不符合「中文（English） 社区」命名模式，`tests/test_community_naming.py` 失败
+- 按 schema/naming.md § 图谱社区命名的维护方式，在 `COMMUNITY_NAME_OVERRIDES` 补「导航纵深路线（Navigation Deep-Dive Roadmap）」；`make ci-preflight` 12/12 通过、WARNING 消除，`pytest` 全量通过
+
+## [2026-07-14] structural | roadmap/depth-*.md 增量刷新 — 依据 07-10 全量刷新后新入库知识节点补链六条纵深路线
+
+- roadmap/depth-bfm.md：Stage 3 预训练三线补 [TeCH](wiki/entities/paper-tech-humanoid-control.md)（TLDR 对比时间距离无监督预训练，G1 上对标 SONIC 且 GPU 时长降近两个数量级）
+- roadmap/depth-vla.md：Stage 2 主线补 [InternVLA-A1.5](wiki/entities/paper-internvla-a15-unified-vla.md)（统一理解 + 潜式前瞻 MoT），Stage 4 部署补 [Evo-1](wiki/entities/paper-evo1-lightweight-vla.md)（0.77B 轻量边缘侧样本），Stage 5 方向 A 补 [STEAM](wiki/entities/paper-steam-advantage-modeling.md)（自监督时序 advantage 离线提纯 π₀）
+- roadmap/depth-perceptive-locomotion.md：Stage 1 补 [AME](wiki/entities/paper-ame-attention-based-map-encoding.md) 与 AME-2 深读笔记（注意力高程图编码），Stage 2 补 [InfiniteDiffusion / Terrain Diffusion](wiki/entities/paper-infinite-diffusion-terrain-diffusion.md)（学习式程序化地形）
+- roadmap/depth-wam.md：Stage 1 世界模型基座补 [PhysisForcing](wiki/entities/paper-physisforcing.md)（训练期分层物理对齐）与 [PhysMani](wiki/entities/paper-physmani-dynamic-manipulation-world-model.md)（3D Gaussian 速度场动态操作世界模型）
+- roadmap/depth-contact-manipulation.md：Stage 2 补 [DexVerse](wiki/entities/paper-dexverse.md)（100 任务多具身灵巧 benchmark），Stage 3 补 [ContactMimic](wiki/entities/paper-contactmimic.md)、[UHAS](wiki/methods/uhas-unified-hand-action-space.md)、[FastGrasp](wiki/entities/paper-fastgrasp-mobile-dexterous-grasping.md)
+- roadmap/depth-motion-retargeting.md：Stage 2 数据源补 [PEAR](wiki/entities/paper-pear-pixel-aligned-expressive-hmr.md) 与 [ViDiHand](wiki/entities/paper-vidihand.md)（表达级单图 SMPL-X 实时恢复 / egocentric 双手 4D 估计）
+
 ## [2026-07-14] ingest | sources/sites/roboparty_com.md — RoboParty 官网与文档站一手资料；公司实体页与 Roboto Origin 参数/仓库名同步
 
 - wiki/entities/roboparty.md
