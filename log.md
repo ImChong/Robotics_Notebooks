@@ -1,5 +1,17 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-14] ingest | sources/sites/incompleteideas-net-rich-sutton.md — Richard Sutton / incompleteideas.net 一手资料；wiki/entities/richard-sutton.md、wiki/entities/sutton-barto-rl-book.md、wiki/concepts/bitter-lesson.md
+
+- wiki/entities/richard-sutton.md
+- wiki/entities/sutton-barto-rl-book.md
+- wiki/concepts/bitter-lesson.md
+- wiki/methods/reinforcement-learning.md
+- wiki/methods/model-based-rl.md
+- wiki/concepts/embodied-scaling-laws.md
+- sources/sites/incompleteideas-net-rich-sutton.md
+- sources/blogs/sutton_bitter_lesson.md
+- sources/blogs/sutton_one_step_trap.md
+
 ## [2026-07-14] ingest | sources/papers/physmani_arxiv_2607_01938.md — PhysMani ECCV 2026 动态操作 3D Gaussian 世界模型；wiki/entities/paper-physmani-dynamic-manipulation-world-model.md
 
 ## [2026-07-14] structural | wiki/tasks/loco-manipulation.md + roadmap/depth-loco-manipulation.md — 任务页新增「术语辨析：Loco-Manipulation vs Mobile Manipulation」小节（轮式底座/腿式全身耦合分界、本库中文「移动操作」统一指 Loco-Manipulation 的约定、mobile-manipulation tag 专标轮式工作）；纵深路线更名 depth-mobile-manipulation.md → depth-loco-manipulation.md，README/index/主路线/12 条纵深页共 28 处链接与主页路线按钮统一为「Loco-Manipulation（移动操作）」
