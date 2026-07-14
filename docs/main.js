@@ -2170,8 +2170,13 @@
   function deriveRoadmapTocSubtitle(headings) {
     var h2s = (headings || []).filter(function (h) { return h.level === 2; });
     if (!h2s.length) return '章节快速导航';
-    var firstLabel = parseRoadmapTimelineNodeLabel(h2s[0].text || '');
-    var lastLabel = parseRoadmapTimelineNodeLabel(h2s[h2s.length - 1].text || '');
+    var stageH2s = h2s.filter(function (h) {
+      return !!parseRoadmapTimelineNodeLabel(h.text || '');
+    });
+    var target = stageH2s.length >= 2 ? stageH2s : h2s;
+    if (target.length < 2) return '章节快速导航';
+    var firstLabel = parseRoadmapTimelineNodeLabel(target[0].text || '');
+    var lastLabel = parseRoadmapTimelineNodeLabel(target[target.length - 1].text || '');
     if (firstLabel && lastLabel) {
       if (firstLabel.charAt(0) === 'L' && lastLabel.charAt(0) === 'L') {
         return '从 ' + firstLabel + ' 到 ' + lastLabel + ' 的全程导航';
