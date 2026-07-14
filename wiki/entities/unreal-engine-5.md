@@ -4,6 +4,7 @@ tags: [software, unreal-engine, epic-games, simulation, rendering, game-engine, 
 status: complete
 updated: 2026-07-14
 related:
+  - ./unity-engine.md
   - ./metahuman.md
   - ./airsim.md
   - ./carla.md
@@ -113,6 +114,7 @@ flowchart TB
 
 ## 关联页面
 
+- [Unity Engine](./unity-engine.md) — 另一主流实时 3D 宿主（C# / 跨平台 / Flightmare 等）
 - [MetaHuman](./metahuman.md) — UE 生态内数字人创作与表演捕捉
 - [SPEAR](./spear-sim.md) — 任意 UE 项目的 Python 可编程仿真与 GT
 - [AirSim](./airsim.md) — 经典 UE 无人机/AD 视觉仿真

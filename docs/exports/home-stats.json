@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-14",
-  "node_count": 1633,
-  "edge_count": 12636,
+  "node_count": 1634,
+  "edge_count": 12649,
   "coverage": {
-    "covered": 1586,
-    "total": 1616,
+    "covered": 1587,
+    "total": 1617,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -255,7 +255,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 277,
+      "degree": 278,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

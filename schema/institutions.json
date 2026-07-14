@@ -157,6 +157,13 @@
         "unitree-a1"
       ]
     },
+    "unity-technologies": {
+      "label": "实时三维引擎商（Unity Technologies）",
+      "aliases": [
+        "unity-technologies",
+        "unity"
+      ]
+    },
     "agibot": {
       "label": "智元机器人（AgiBot）",
       "aliases": [

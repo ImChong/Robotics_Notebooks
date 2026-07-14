@@ -423,6 +423,8 @@
 | [x] [text-to-cad-tools.md](sites/text-to-cad-tools.md) | Zoo / KittyCAD 与文字生成 CAD、同类 API 与 AEC 工具公开链接索引 |
 | [x] [tnkr-open-duck-mini-v2.md](sites/tnkr-open-duck-mini-v2.md) | Tnkr Open Duck Mini V2 项目文档（Print/BOM/装配/线束/Runtime/部署/训练） |
 | [x] [twist2-project.md](sites/twist2-project.md) | TWIST2 项目页 yanjieze.com/projects/TWIST2（颈增广、PICO 遥操作、分层 visuomotor、开源数据；ICRA 2026） |
+| [x] [unity-com.md](sites/unity-com.md) | Unity 官网与 Unity Engine 产品页（Unity 6/6.5、AI、多平台与 Industry） |
+| [x] [unity-manual-6-5.md](sites/unity-manual-6-5.md) | Unity 6.5 User Manual 与 docs.unity.com 文档门户（含中文） |
 | [x] [wuji_robotics.md](sites/wuji_robotics.md) | 舞肌科技：官网 wuji.tech + F 系列 / Pan Motor 电机资料 + Wuji Hand 灵巧手（docs.wuji.tech / 招聘与媒体锚点） |
 
 ### courses/ — 课程与协议入门归档
