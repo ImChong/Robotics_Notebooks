@@ -196,7 +196,7 @@ flowchart LR
 
 **方向 C：全身与移动操作扩展**
 - 把 VLA 从桌面机械臂扩展到全身移动操作
-- 关键词：[VLA 与世界模型（loco-manip 161 分类）](../wiki/overview/loco-manip-161-category-09-vla-world-models.md)、[移动操作纵深路线](depth-mobile-manipulation.md)、[BFM 纵深路线](depth-bfm.md)
+- 关键词：[VLA 与世界模型（loco-manip 161 分类）](../wiki/overview/loco-manip-161-category-09-vla-world-models.md)、[Loco-Manipulation 纵深路线](depth-loco-manipulation.md)、[BFM 纵深路线](depth-bfm.md)
 
 **方向 D：导航 VLA**
 - 把语言接地从"怎么动手"扩展到"往哪里走"
@@ -222,7 +222,7 @@ flowchart LR
   - [BFM（人形行为基础模型）](depth-bfm.md) — 姊妹路线：VLA 管任务级语义，BFM 管身体级协调
   - [WAM（世界–动作模型）](depth-wam.md) — 姊妹路线：VLA 管反应式语义策略，WAM 管前向后果耦合
   - [模仿学习与技能迁移](depth-imitation-learning.md) — 本路线 Stage 1 的展开版
-  - [移动操作（Loco-Manipulation）](depth-mobile-manipulation.md) — Stage 5 方向 C 的展开版
+  - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md) — Stage 5 方向 C 的展开版
   - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md) — Stage 5 方向 D 的展开版
   - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md) — 语义接口与分层设计的邻接路线
   - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md)

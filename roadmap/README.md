@@ -25,7 +25,7 @@
 - [如果目标是导航（SLAM → Nav2 → VLN → 导航 VLA）](depth-navigation.md) —— 想让机器人知道自己在哪、该往哪走（起点：概率 SLAM，1986）
 - [如果目标是模仿学习与技能迁移](depth-imitation-learning.md) —— 想从人类演示数据学习技能（起点：行为克隆，1988）
 - [如果目标是 RL 运动控制](depth-rl-locomotion.md) —— 想用强化学习驱动人形 locomotion（起点：Q-learning，1989）
-- [如果目标是移动操作（Loco-Manipulation）](depth-mobile-manipulation.md) —— 想让机器人边走边动手（起点：移动操作臂协调控制，1994）
+- [如果目标是 Loco-Manipulation（移动操作）](depth-loco-manipulation.md) —— 想让机器人边走边动手（起点：移动操作臂协调控制，1994）
 - [如果目标是动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md) —— 想把人体动捕/视频动作变成机器人可执行参考（起点：Gleicher 动作重定向，1998）
 - [如果目标是 BFM（人形行为基础模型）](depth-bfm.md) —— 想用一个 checkpoint 控住人形全身（起点：DeepMimic 动作跟踪谱系，2018）
 - [如果目标是感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md) —— 想让机器人看着地形上楼梯、跨障碍、跑酷（起点：2020s 感知策略浪潮）

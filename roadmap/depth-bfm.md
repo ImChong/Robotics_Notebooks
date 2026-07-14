@@ -193,7 +193,7 @@ flowchart LR
 
 **方向 C：移动操作扩展**
 - 把行为先验从"跟踪动作"扩展到"边走边操作"
-- 关键词：[Loco-Manipulation](../wiki/tasks/loco-manipulation.md)、[移动操作纵深路线](depth-mobile-manipulation.md)
+- 关键词：[Loco-Manipulation](../wiki/tasks/loco-manipulation.md)、[Loco-Manipulation 纵深路线](depth-loco-manipulation.md)
 
 **方向 D：评测、选型与工业级案例**
 - 建立自己的评测基线，跟踪工业界的整机方案
@@ -222,7 +222,7 @@ flowchart LR
   - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md) — Stage 1 动捕数据基座的展开版
   - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md) — 行为先验的显式轨迹层表达
   - [模仿学习与技能迁移](depth-imitation-learning.md) — 动作数据与 retargeting 的展开版
-  - [移动操作（Loco-Manipulation）](depth-mobile-manipulation.md) — Stage 5 方向 C 的展开版
+  - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md) — Stage 5 方向 C 的展开版
   - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md) — Stage 5 方向 A 的邻接路线
   - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
   - [安全控制（CLF/CBF）](depth-safe-control.md)

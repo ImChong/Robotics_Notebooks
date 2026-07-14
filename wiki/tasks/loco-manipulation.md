@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-07-13
+updated: 2026-07-14
 sources:
   - ../../sources/papers/fastgrasp_arxiv_2604_12879.md
   - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md
@@ -43,6 +43,24 @@ sources:
 ## 一句话定义
 
 让机器人**边走边动手**——不是先停下来再操作，而是行走和操作在动力学层面高度耦合、在控制层面完全协调。
+
+## 术语辨析：Loco-Manipulation vs Mobile Manipulation
+
+两个术语在中文里常被同译为"移动操作"，但学术社区的默认所指不同：
+
+| | Mobile Manipulation | Loco-Manipulation |
+|------|---------------------|-------------------|
+| 移动方式 | 通常为**轮式底座** + 机械臂（Stretch / Fetch / Mobile ALOHA / TidyBot） | **腿式**平台（人形 / 四足），行走本身就是不稳定的动力学控制问题 |
+| 动力学耦合 | 底座与臂基本解耦，底座不会摔倒 | 手臂用力扰动质心平衡、步态振动扰动末端精度，**全身强耦合** |
+| 核心问题 | 导航–操作协调、底座停靠位姿、OVMM、长时程任务规划 | 全身控制（WBC）、足端 + 末端并发接触管理、平衡 |
+| 所属社区 | 具身智能 / 导航规划 | 腿足运动控制 / RL / WBC |
+
+二者关系：loco-manipulation 可视为 mobile manipulation 在腿式平台上的特化——移动能力从"底盘导航"换成"动态行走"后，问题重心从任务规划下沉到全身动力学协调。
+
+**本知识库约定**：
+- 中文"移动操作"作为 **Loco-Manipulation** 的译名与统称使用；本页以腿式（人形）loco-manipulation 为主线。
+- 少量轮式 / 移动底座工作（[ABot-M0.5](../entities/paper-abot-m05-mobile-manipulation-wam.md)、[FastGrasp](../entities/paper-fastgrasp-mobile-dexterous-grasping.md)、[3D-IC](../entities/paper-3d-ic-joint-navigation-manipulation-planning.md) 等）按学术定义属 mobile manipulation，因方法论相通收录进本页对应技术路线（§23 / §25 / §26），小节内已标注"轮式 / 移动底座"；实体层用 `mobile-manipulation` tag 区分。
+- 系统学习路径见 [Loco-Manipulation 纵深路线](../../roadmap/depth-loco-manipulation.md)。
 
 ## 英文缩写速查
 

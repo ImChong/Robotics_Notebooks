@@ -134,7 +134,7 @@ flowchart LR
   - [安全控制（CLF/CBF）](depth-safe-control.md)
   - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)
   - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md)
-  - [移动操作（Loco-Manipulation）](depth-mobile-manipulation.md) — 本路线向"移动中操作"的扩展版
+  - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md) — 本路线向"移动中操作"的扩展版
   - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md) — 灵巧手交互重定向的邻接路线
   - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
   - [VLA（视觉-语言-动作模型）](depth-vla.md)

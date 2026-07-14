@@ -17,7 +17,7 @@
 | 想让机器人自主从 A 到 B | [导航纵深路线](roadmap/depth-navigation.md) |
 | 想学模仿学习与技能迁移 | [模仿学习纵深路线](roadmap/depth-imitation-learning.md) |
 | 想用强化学习做 locomotion | [RL 纵深路线](roadmap/depth-rl-locomotion.md) |
-| 想让机器人边走边动手 | [移动操作纵深路线](roadmap/depth-mobile-manipulation.md) |
+| 想让机器人边走边动手 | [Loco-Manipulation 纵深路线](roadmap/depth-loco-manipulation.md) |
 | 想把人体动作变成机器人参考轨迹 | [动作重定向纵深路线](roadmap/depth-motion-retargeting.md) |
 | 想做人形全身行为基础模型 | [BFM 纵深路线](roadmap/depth-bfm.md) |
 | 想让机器人看地形越障 | [感知越障纵深路线](roadmap/depth-perceptive-locomotion.md) |

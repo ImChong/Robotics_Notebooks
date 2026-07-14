@@ -200,7 +200,7 @@ flowchart LR
 
 **方向 D：场景与交互感知生成**
 - 从"空场地生成"走向"贴着场景与物体生成"
-- 关键词：[DIMOS](../wiki/entities/paper-dimos-human-scene-motion-synthesis.md)、[Loco-Manipulation](../wiki/tasks/loco-manipulation.md)、[移动操作纵深路线](depth-mobile-manipulation.md)
+- 关键词：[DIMOS](../wiki/entities/paper-dimos-human-scene-motion-synthesis.md)、[Loco-Manipulation](../wiki/tasks/loco-manipulation.md)、[Loco-Manipulation 纵深路线](depth-loco-manipulation.md)
 
 ---
 
@@ -225,7 +225,7 @@ flowchart LR
   - [VLA（视觉-语言-动作模型）](depth-vla.md) — 语义接口与分层设计的邻接路线
   - [WAM（世界–动作模型）](depth-wam.md)
   - [人形 RL 运动控制](depth-rl-locomotion.md) — 跟踪器训练的训练侧前置
-  - [移动操作（Loco-Manipulation）](depth-mobile-manipulation.md) — Stage 5 方向 D 的展开版
+  - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md) — Stage 5 方向 D 的展开版
   - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
   - [安全控制（CLF/CBF）](depth-safe-control.md)
   - [接触丰富的操作任务](depth-contact-manipulation.md)
