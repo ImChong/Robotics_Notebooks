@@ -1210,7 +1210,7 @@
       position: absolute;
       top: 12px; left: 20px;
       z-index: 30;
-      width: 300px;
+      width: 450px;
       height: min(680px, calc(100dvh - var(--header-h) - 46px - 32px));
       max-height: min(680px, calc(100dvh - var(--header-h) - 46px - 32px));
       display: flex;
@@ -3364,9 +3364,9 @@
 
     /* ── 筛选面板尺寸（可拖拽缩放，尺寸写入 localStorage）── */
     const FILTER_PANEL_SIZE_KEY = 'graph-filter-panel-size';
-    const FILTER_PANEL_DEFAULT_WIDTH = 300;
+    const FILTER_PANEL_DEFAULT_WIDTH = 450;
     const FILTER_PANEL_DEFAULT_HEIGHT_CAP = 680;
-    const FILTER_PANEL_MIN_SIZE = { width: 240, height: 280 };
+    const FILTER_PANEL_MIN_SIZE = { width: 280, height: 280 };
 
     function getFilterPanelDefaultSize() {
       const max = getFilterPanelMaxSize();
