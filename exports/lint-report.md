@@ -2,7 +2,7 @@
 
 ## [2026-07-14] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **1** 条信息型预警）：
+共发现 **0** 个问题（另含 **2** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -94,8 +94,8 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（1 个）
+- wiki/entities/paper-infinite-diffusion-terrain-diffusion.md（缺 评测 / 对比）
 
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无
@@ -112,4 +112,4 @@
 ### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：1551/1581 (98%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1553/1583 (98%) wiki/entity 页有 ingest 来源
