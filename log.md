@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-13] structural | 执行清单换版 v28 → v29 —— V28（具身大模型分类学选型闭环）P0–P3 全数交付、DoD 逐项达标后新建 V29（具身大模型评测基准选型闭环）
+
+- V28 收尾：P0 lint 巡检 / P1 选型链 query+concept / P2 事实库 +10 矛盾规则 / P3 图谱专题视图+详情徽标 五档全绿；DoD 逐项复核达标——`make lint` 0 errors（另含 4 条信息型预警）、node_count=1597（≥1595）/ edge_count=12168（≥10970）/ orphan_nodes=0、事实库 230 条、`largest_community_ratio=0.199`/`community_quality_warning=false`、log 记录齐全，清单 0 未勾项
+- 换版动作（对齐 [`docs/checklists/README.md`](docs/checklists/README.md) 维护规则）：`git mv` V28 至 [`archive/`](docs/checklists/archive/tech-stack-next-phase-checklist-v28.md)；新建 [`tech-stack-next-phase-checklist-v29.md`](docs/checklists/tech-stack-next-phase-checklist-v29.md)；README「当前入口」更新为 v29、「历史执行清单」补 v28
+- V29 主题：承接 V28「选哪一类具身大模型」，回答「怎么评测/证明它」——把近周密集 ingest 的评测基准（RoboBench / EWMBench / ESI-Bench / GigaWorld-1 policy evaluation / MimickingBench / ManiSkill-HAB / Barkour 等）沉淀为「具身大脑/MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准」贯通选型链；起点基线 1597 节点 / 12168 边 / 230 事实 / 18 专题，目标 ≥1610 / ≥12230 / ≥240 / 第 19 专题「具身评测基准」
+- P0 lint 巡检 / P1 评测选型链 query+concept / P2 事实库 +10 评测矛盾规则 / P3 图谱专题视图+详情徽标，均为 `[ ]` 待后续每日推进
+
 ## [2026-07-13] structural | scripts/lint_wiki.py — 修复全量 lint 信息型预警：SOTA 匹配加词边界（消除 Minnesota 误报，补回归单测）；wbc 归入 COVERED_ELSEWHERE（已由 concepts/whole-body-control.md 覆盖）；复核并 bump paper-gigaworld-1/paper-rynnworld updated=2026-07-13；lint 全绿 0 问题 0 信息型
 
 ## [2026-07-13] ingest | sources/papers/physisforcing_arxiv_2606_28128.md — PhysisForcing 训练期分层物理对齐世界模拟器；wiki/entities/paper-physisforcing.md；交叉 generative-world-models / cosmos-3 / manipulation
