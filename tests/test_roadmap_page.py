@@ -56,7 +56,9 @@ class RoadmapPageTests(unittest.TestCase):
         self.assertIn("function deriveRoadmapTocSubtitle", content)
         self.assertIn("function renderRoadmapTocSubtitle", content)
         self.assertIn("roadmapTocSubtitle", content)
-        self.assertNotIn("从 L−1 序言到 L7 出口的全程导航", ROADMAP_HTML.read_text(encoding="utf-8"))
+        self.assertNotIn(
+            "从 L−1 序言到 L7 出口的全程导航", ROADMAP_HTML.read_text(encoding="utf-8")
+        )
 
     def test_main_roadmap_knowledge_map_includes_depth_branches(self):
         content = MAIN_JS.read_text(encoding="utf-8")
