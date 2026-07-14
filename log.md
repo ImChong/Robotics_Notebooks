@@ -1,5 +1,14 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-14] ingest | sources/papers/muon_optimizer_primary_refs.md、sources/blogs/muon_keller_jordan_2024.md — Muon 优化器博客提出、LLM 规模化论文与理论文献入库
+
+- wiki/methods/muon.md
+- wiki/entities/paper-muon-scalable-llm-training.md
+- wiki/comparisons/deep-learning-optimizers.md
+- sources/papers/muon_optimizer_primary_refs.md
+- sources/blogs/muon_keller_jordan_2024.md
+- sources/repos/kellerjordan-muon.md
+
 ## [2026-07-14] structural | roadmap/depth-torque-motor-design.md — 新增力矩控制电机设计全流程纵深路线（Stage 0–5），十四条纵深入口全站同步
 
 - roadmap/depth-torque-motor-design.md：新建「力矩控制电机设计」纵深路线（起点：磁场定向控制 FOC，1971），Stage 0 电机学地基与 TN/TI 读图 → Stage 1 关节指标与执行器架构选型 → Stage 2 电磁热设计 → Stage 3 驱动硬件与电流环 → Stage 4 FOC 力矩闭环标定补偿 → Stage 5 台架验收与关节模组交付；是 [电机设计流程](wiki/overview/motor-design-workflow.md) 工序页的学习顺序展开版
