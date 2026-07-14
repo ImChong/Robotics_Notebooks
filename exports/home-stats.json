@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/unity-engine.md",
+      "detail_id": "entity-unity-engine",
+      "label": "Unity Engine（Unity Technologies 实时 3D 引擎）",
+      "type": "entity",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+    },
+    {
       "path": "wiki/entities/unreal-engine-5.md",
       "detail_id": "entity-unreal-engine-5",
       "label": "Unreal Engine 5（Epic 实时 3D 引擎）",
@@ -193,28 +203,16 @@
       "source": "log.md",
       "action": "added",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/methods/muon.md",
-      "detail_id": "wiki-methods-muon",
-      "label": "Muon（MomentUm Orthogonalized by Newton–Schulz）",
-      "type": "method",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/unreal-engine-5.md",
-    "detail_id": "entity-unreal-engine-5",
-    "label": "Unreal Engine 5（Epic 实时 3D 引擎）",
+    "path": "wiki/entities/unity-engine.md",
+    "detail_id": "entity-unity-engine",
+    "label": "Unity Engine（Unity Technologies 实时 3D 引擎）",
     "type": "entity",
     "recency": "2026-07-14",
     "source": "log.md",
     "action": "added",
-    "has_repo": true,
     "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
   },
   "top_communities": [
