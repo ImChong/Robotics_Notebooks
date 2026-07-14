@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-07-14",
   "node_count": 1612,
-  "edge_count": 12361,
+  "edge_count": 12366,
   "coverage": {
     "covered": 1566,
     "total": 1596,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-faststair-humanoid-stair-ascent.md",
+      "detail_id": "entity-paper-faststair-humanoid-stair-ascent",
+      "label": "FastStair（Learning to Run Up Stairs with Humanoid Robots）",
+      "type": "entity",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "运动控制（Locomotion） 社区"
+    },
+    {
+      "path": "wiki/tasks/stair-obstacle-perceptive-locomotion.md",
+      "detail_id": "wiki-tasks-stair-obstacle-perceptive-locomotion",
+      "label": "楼梯与障碍 Locomotion（感知 / 盲走中心节点）",
+      "type": "task",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "运动控制（Locomotion） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md",
+      "detail_id": "entity-paper-explicit-stair-geometry-humanoid-locomotion",
+      "label": "显式楼梯几何条件化人形运动（Explicit Stair Geometry Conditioning）",
+      "type": "entity",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "运动控制（Locomotion） 社区"
+    },
+    {
+      "path": "wiki/concepts/capture-point-dcm.md",
+      "detail_id": "wiki-concepts-capture-point-dcm",
+      "label": "Capture Point / DCM",
+      "type": "concept",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "运动控制（Locomotion） 社区"
+    },
     {
       "path": "wiki/entities/paper-tech-humanoid-control.md",
       "detail_id": "entity-paper-tech-humanoid-control",
@@ -173,62 +213,17 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/party-os.md",
-      "detail_id": "entity-party-os",
-      "label": "Party OS（RoboParty 人形研发底座）",
-      "type": "entity",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/overview/roboparty-lab-party-os-technology-map.md",
-      "detail_id": "wiki-overview-roboparty-lab-party-os-technology-map",
-      "label": "RoboParty Lab / Party OS 技术地图",
-      "type": "overview",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/open-source-humanoid-hardware.md",
-      "detail_id": "entity-open-source-humanoid-hardware",
-      "label": "开源人形机器人硬件方案对比",
-      "type": "entity",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/roboparty-ufo.md",
-      "detail_id": "entity-roboparty-ufo",
-      "label": "UFO（Roboparty 无监督 RL 控制框架）",
-      "type": "entity",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-tech-humanoid-control.md",
-    "detail_id": "entity-paper-tech-humanoid-control",
-    "label": "TeCH：基于对比表征学习的时间距离建模，用于人形机器人全身控制",
+    "path": "wiki/entities/paper-faststair-humanoid-stair-ascent.md",
+    "detail_id": "entity-paper-faststair-humanoid-stair-ascent",
+    "label": "FastStair（Learning to Run Up Stairs with Humanoid Robots）",
     "type": "entity",
     "recency": "2026-07-14",
     "source": "log.md",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    "action": "maintained",
+    "community_label": "运动控制（Locomotion） 社区"
   },
   "top_communities": [
     {
@@ -387,17 +382,17 @@
       "degree": 28
     },
     {
+      "detail_id": "entity-paper-faststair-humanoid-stair-ascent",
+      "label": "FastStair（Learning to Run Up Stairs with Humanoid Robots）",
+      "type": "entity",
+      "degree": 27,
+      "community_label": "运动控制（Locomotion） 社区"
+    },
+    {
       "detail_id": "entity-paper-loco-manip-04-oasis",
       "label": "OASIS（From Simulation Data Collection to Real-World Humanoid Loco-Manipulation）",
       "type": "entity",
       "degree": 27,
-      "has_repo": true
-    },
-    {
-      "detail_id": "entity-paper-amp-survey-08-more",
-      "label": "MoRE：复杂地形上的人形多步态残差专家混合",
-      "type": "entity",
-      "degree": 26,
       "has_repo": true
     }
   ]

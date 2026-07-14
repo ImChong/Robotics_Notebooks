@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-14] structural | roadmap/depth-perceptive-locomotion.md、wiki/entities/paper-faststair-humanoid-stair-ascent.md、wiki/tasks/stair-obstacle-perceptive-locomotion.md — FastStair 补链感知越障纵深 Stage 3
+
+- roadmap/depth-perceptive-locomotion.md：Stage 3 补 [FastStair](wiki/entities/paper-faststair-humanoid-stair-ascent.md)、[Explicit Stair Geometry](wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md)、[Capture Point / DCM](wiki/concepts/capture-point-dcm.md)；快速入口与关联知识页同步
+- wiki/entities/paper-faststair-humanoid-stair-ascent.md：related 与正文链回感知越障纵深路线
+- wiki/tasks/stair-obstacle-perceptive-locomotion.md：关联页面补纵深路线入口
+
 ## [2026-07-14] fix | scripts/utils/community_labels.py — 补 roadmap/depth-navigation.md 社区名 override，修复 CI 社区命名测试
 
 - 六条纵深路线补链 +15 边后社区结构变化，community-14 枢纽变为 roadmap/depth-navigation.md，其 H1 不符合「中文（English） 社区」命名模式，`tests/test_community_naming.py` 失败

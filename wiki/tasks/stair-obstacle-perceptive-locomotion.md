@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, stairs, obstacle, perception, blind-locomotion, parkour, humanoid, quadruped, hub]
 status: complete
-updated: 2026-07-13
+updated: 2026-07-14
 related:
   - ../entities/paper-ame-attention-based-map-encoding.md
   - ../entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md
@@ -178,6 +178,7 @@ flowchart TB
 
 ## 关联页面
 
+- [感知越障纵深路线](../../roadmap/depth-perceptive-locomotion.md) — Stage 3 楼梯/跑酷系统学习路径；本页为论文全景挂接枢纽
 - [Locomotion](./locomotion.md) — 运动任务层总览
 - [Humanoid Locomotion](./humanoid-locomotion.md) — 人形高程图与障碍反应
 - [Terrain Adaptation](../concepts/terrain-adaptation.md) — 感知到动作的通用闭环

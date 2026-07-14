@@ -13,9 +13,10 @@ tags:
   - limx-dynamics
   - stairs
 status: complete
-updated: 2026-06-30
+updated: 2026-07-14
 arxiv: "2601.10365"
 related:
+  - ../../roadmap/depth-perceptive-locomotion.md
   - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ../tasks/locomotion.md
   - ../methods/reinforcement-learning.md
@@ -120,6 +121,7 @@ flowchart TB
 
 ## 关联页面
 
+- [感知越障纵深路线（Stage 3：楼梯 / 离散地形）](../../roadmap/depth-perceptive-locomotion.md) — 本页在感知越障纵深中的 **人形高速上楼 · 规划引导 RL** 代表作
 - [楼梯与障碍 Locomotion（感知/盲走中心节点）](../tasks/stair-obstacle-perceptive-locomotion.md) — 本页在「带感知 · 人形 · 高速上楼」轴上的索引位
 - [Locomotion（运动任务）](../tasks/locomotion.md) — 楼梯与离散地形在任务层的总览
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — PPO 类 actor-critic 与奖励工程坐标
