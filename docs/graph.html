@@ -126,6 +126,13 @@
       color: #e6edf3;
     }
     .filter-topic-chip span:first-child { font-size: .9rem; line-height: 1; }
+    /* PC：展开专题 chip 区限高滚动，避免挤占社区/类型列表 */
+    .filter-topic-section[open] .filter-topic-chips {
+      max-height: 128px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.28) transparent;
+    }
     /* 专题汇总导读条（画布右下角、操作提示条上方，选中非「全量」专题时显示；
        左上角会被筛选浮窗遮挡、左下有图例、右上有参数面板，故固定右下；
        bottom 抬高 72px 避开操作提示条（约 61px），也天然高于移动端图例 FAB（60px） */
@@ -1203,7 +1210,9 @@
       position: absolute;
       top: 12px; left: 20px;
       z-index: 30;
-      width: 260px;
+      width: 450px;
+      height: min(680px, calc(100dvh - var(--header-h) - 46px - 32px));
+      max-height: min(680px, calc(100dvh - var(--header-h) - 46px - 32px));
       display: flex;
       flex-direction: column;
       background: rgba(13,17,23,0.97);
@@ -1264,7 +1273,7 @@
       flex-direction: column;
       gap: 1px;
       flex: 1 1 auto;
-      min-height: 72px;
+      min-height: 160px;
       overflow-y: auto;
       scrollbar-width: thin;
       scrollbar-color: rgba(255,255,255,0.28) transparent;
@@ -3355,8 +3364,17 @@
 
     /* ── 筛选面板尺寸（可拖拽缩放，尺寸写入 localStorage）── */
     const FILTER_PANEL_SIZE_KEY = 'graph-filter-panel-size';
-    const FILTER_PANEL_DEFAULT_SIZE = { width: 260, height: 520 };
-    const FILTER_PANEL_MIN_SIZE = { width: 220, height: 280 };
+    const FILTER_PANEL_DEFAULT_WIDTH = 450;
+    const FILTER_PANEL_DEFAULT_HEIGHT_CAP = 680;
+    const FILTER_PANEL_MIN_SIZE = { width: 280, height: 280 };
+
+    function getFilterPanelDefaultSize() {
+      const max = getFilterPanelMaxSize();
+      return {
+        width: FILTER_PANEL_DEFAULT_WIDTH,
+        height: Math.min(FILTER_PANEL_DEFAULT_HEIGHT_CAP, max.height)
+      };
+    }
 
     function isFilterPanelResizeEnabled() {
       return !window.matchMedia('(max-width: 768px)').matches;
@@ -3382,18 +3400,19 @@
 
     function loadFilterPanelSize() {
       if (!isFilterPanelResizeEnabled()) {
-        return { ...FILTER_PANEL_DEFAULT_SIZE };
+        return getFilterPanelDefaultSize();
       }
       try {
         const raw = localStorage.getItem(FILTER_PANEL_SIZE_KEY);
-        if (!raw) return { ...FILTER_PANEL_DEFAULT_SIZE };
+        if (!raw) return getFilterPanelDefaultSize();
         const parsed = JSON.parse(raw);
+        const defaults = getFilterPanelDefaultSize();
         return clampFilterPanelSize(
-          parsed.width ?? FILTER_PANEL_DEFAULT_SIZE.width,
-          parsed.height ?? FILTER_PANEL_DEFAULT_SIZE.height
+          parsed.width ?? defaults.width,
+          parsed.height ?? defaults.height
         );
       } catch {
-        return { ...FILTER_PANEL_DEFAULT_SIZE };
+        return getFilterPanelDefaultSize();
       }
     }
 
