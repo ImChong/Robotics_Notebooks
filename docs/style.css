@@ -1008,6 +1008,8 @@ button.home-wiki-heatmap-cell.is-active {
 .route-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .route-card { min-height: 100%; }
 .home-entry-grid {
+  /* 3 张入口卡（从零开始 / 项目查询 / 知识图谱）同排，「更多路线」卡通栏在下 */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: stretch;
   gap: 16px;
 }
@@ -1018,7 +1020,6 @@ button.home-wiki-heatmap-cell.is-active {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  min-height: 176px;
   color: var(--text);
 }
 .home-entry-card:hover {
@@ -1029,12 +1030,6 @@ button.home-wiki-heatmap-cell.is-active {
 .home-entry-card h3 {
   margin: 0;
   line-height: 1.35;
-}
-.home-entry-card p {
-  margin: 0;
-  flex: 1;
-  color: var(--text-muted);
-  line-height: 1.5;
 }
 .home-entry-label {
   align-self: flex-start;
@@ -2239,9 +2234,6 @@ button.home-wiki-heatmap-cell.is-active {
     padding: 30px 0;
   }
   .hero-grid, .card-grid, .preview-home-layout, .preview-split-grid, .detail-hero-top, .route-card-grid { grid-template-columns: 1fr; }
-  .home-entry-card {
-    min-height: 0;
-  }
   .home-entry-route-links {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
