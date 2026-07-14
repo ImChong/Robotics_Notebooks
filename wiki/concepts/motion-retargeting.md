@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-07-09
+updated: 2026-07-14
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 
@@ -181,6 +181,7 @@ subject to: FK(θ) = p_target (末端位置约束)
 | [STMR 四足重定向](../entities/stmr-quadruped-retargeting.md) | 空间+时间重定向 + legged_gym RL |
 | [Go2 Motion Imitation](../entities/go2-motion-imitation.md) | Go2 专用 retarget_motion + Genesis 训练 |
 | [MotionCode](../entities/motioncode.md) | 产业侧人体运动采集与标注（官网宣称可进 Isaac / MuJoCo 等；多作原始运动源，仍需重定向） |
+| [human-humanoid-tools（hhtools）](../entities/human-humanoid-tools.md) | RoboParty 开源 Web 工作台：Newton IK + Interaction-Mesh、~30s 全身 retarget、Any URDF、R2R 与数据质检可视化 |
 | [FreeMoCap](../entities/freemocap.md) | 开源多相机 USB 动捕与 GUI 平台，适合作为低成本原始人体轨迹来源（AGPL，集成前需合规评估） |
 | [fairmotion](../entities/fairmotion.md) | Meta 通用动捕数据处理库（BVH/AMASS IO、3D 变换、FK，已归档）；重定向上游数据层，本身不做机器人重定向 |
 

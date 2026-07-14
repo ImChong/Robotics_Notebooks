@@ -1,5 +1,16 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-14] ingest | sources/blogs/wechat_roboparty_lab_party_os_3_tools.md — RoboParty Lab / Party OS 技术地图与 MimicLite、UFO、hhtools 子实体页
+
+- wiki/overview/roboparty-lab-party-os-technology-map.md
+- wiki/entities/party-os.md
+- wiki/entities/mimiclite.md
+- wiki/entities/roboparty-ufo.md
+- wiki/entities/human-humanoid-tools.md
+- wiki/entities/roboto-origin.md
+- wiki/concepts/motion-retargeting.md
+- sources/blogs/wechat_roboparty_lab_party_os_3_tools.md
+
 ## [2026-07-14] ingest | sources/papers/generalized_value_functions_gvf_primary_refs.md、sources/papers/bayesian_analysis_rl_primary_refs.md — GVF 与贝叶斯信念分析一手资料；wiki/concepts/generalized-value-functions.md、wiki/concepts/bayesian-belief-analysis.md
 
 - wiki/concepts/generalized-value-functions.md

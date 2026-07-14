@@ -3,8 +3,10 @@
 type: entity
 tags: [humanoid, hardware, open-source, ros2, isaac-lab, roboparty]
 status: complete
-updated: 2026-04-25
+updated: 2026-07-14
 related:
+  - ./party-os.md
+  - ../overview/roboparty-lab-party-os-technology-map.md
   - ./open-source-humanoid-hardware.md
   - ./humanoid-robot.md
   - ./robot-lab.md
@@ -17,6 +19,7 @@ related:
   - ../concepts/character-animation-vs-robotics.md
 sources:
   - ../../sources/repos/roboto_origin.md
+  - ../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md
   - ../../sources/repos/atom01_hardware.md
   - ../../sources/repos/atom01_deploy.md
   - ../../sources/repos/atom01_train.md
@@ -58,6 +61,10 @@ Roboto Origin 的仓库体系可理解为“五段流水线”：
 
 这种拆分方式适合把“研究迭代”和“工程落地”分离维护。
 
+### 与 Party OS 的演进关系（2026-07）
+
+Roboto Origin 解决「**开源一台人形**」；[RoboParty Lab / Party OS](./party-os.md) 进一步沉淀 **训练、控制与数据工具链基础设施**（[MimicLite](./mimiclite.md)、[UFO](./roboparty-ufo.md)、[hhtools](./human-humanoid-tools.md)）。详见 [技术地图](../overview/roboparty-lab-party-os-technology-map.md)。
+
 ## 常见误区 / 局限
 
 - **误区 1：把 `roboto_origin` 当成可直接开发主仓库。**
@@ -72,6 +79,8 @@ Roboto Origin 的仓库体系可理解为“五段流水线”：
 - [人形机器人（Humanoid Robot）](./humanoid-robot.md)
 - [robot_lab (IsaacLab 扩展框架)](./robot-lab.md)
 - [Unitree](./unitree.md)
+- [Party OS（研发底座）](./party-os.md)
+- [RoboParty Lab / Party OS 技术地图](../overview/roboparty-lab-party-os-technology-map.md)
 - [Atom01 Hardware](./atom01-hardware.md)
 - [Atom01 Description](./atom01-description.md)
 - [Atom01 Train](./atom01-train.md)
