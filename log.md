@@ -1,5 +1,43 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-14] ingest | sources/raw/feishu_humanoid_motion_control_know_how_full_2026-07-14.md — 飞书 Know-How 全文（2260 行）再 ingest；补技术框架路线展望与方法论要点
+
+- wiki/overview/humanoid-motion-control-framework-outlook.md
+- sources/raw/feishu_humanoid_motion_control_know_how_full_2026-07-14.md
+- sources/papers/humanoid_motion_control_know_how.md
+- wiki/overview/humanoid-motion-control-know-how-technology-map.md
+- wiki/concepts/modeling-and-solving-for-control.md
+- wiki/concepts/humanoid-vs-other-robots.md
+- wiki/concepts/humanoid-rubber-man-analogy.md
+- wiki/concepts/kinematic-vs-dynamic-feasibility.md
+- wiki/methods/slip-vmc.md
+- wiki/methods/dreamwaq.md
+- wiki/methods/teacher-student-multi-skill-bfm.md
+- wiki/queries/humanoid-motion-control-know-how.md
+
+## [2026-07-14] ingest | sources/papers/humanoid_motion_control_know_how.md、sources/raw/feishu_humanoid_motion_control_know_how_2026-07-14.md — RoboParty 飞书 Know-How 全主题独立节点与技术地图
+
+- wiki/overview/humanoid-motion-control-know-how-technology-map.md
+- wiki/overview/humanoid-motion-control-trends.md
+- wiki/overview/humanoid-model-based-control-stack.md
+- wiki/overview/humanoid-rl-motion-control-methods.md
+- wiki/methods/slip-vmc.md
+- wiki/methods/pie-perceptive-locomotion.md
+- wiki/methods/dreamwaq.md
+- wiki/methods/attention-foot-placement.md
+- wiki/methods/teacher-student-dagger-training.md
+- wiki/methods/teacher-student-multi-skill-bfm.md
+- wiki/methods/centroidal-nmpc-wbc-stack.md
+- wiki/concepts/humanoid-vs-other-robots.md
+- wiki/concepts/kinematic-vs-dynamic-feasibility.md
+- wiki/concepts/humanoid-rubber-man-analogy.md
+- wiki/concepts/modeling-and-solving-for-control.md
+- wiki/concepts/srbd-convex-mpc-wbc.md
+- wiki/queries/humanoid-motion-control-know-how.md
+- sources/papers/pie_arxiv_2408_13740.md
+- sources/papers/dreamwaq_arxiv_2301_10602.md
+- 工具：Agent Reach v1.5.0（`~/.local/bin/agent-reach`）+ Jina Reader 抓取飞书公开页
+
 ## [2026-07-14] ingest | sources/papers/muon_optimizer_primary_refs.md、sources/blogs/muon_keller_jordan_2024.md — Muon 优化器博客提出、LLM 规模化论文与理论文献入库
 
 - wiki/methods/muon.md
