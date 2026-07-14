@@ -806,6 +806,30 @@ def compute_health_score(content: str) -> int:
     return score
 
 
+# roadmap/ 路线页站内链接达到该阈值视为「已接入交叉引用网络」
+ROADMAP_HEALTH_MIN_INTERNAL_LINKS = 5
+
+
+def compute_roadmap_health_score(content: str, internal_link_count: int) -> int:
+    """计算 roadmap/ 路线页健康度（0-3）。
+
+    路线页按仓库约定不带 frontmatter（见 lint_wiki 的豁免目录），
+    frontmatter 规则会恒判 0 分，故改用正文自身的质量信号：
+
+    +1: 首屏有 **摘要** / **首屏导读** 导读行
+    +1: 站内链接数达到阈值（已接入 wiki 交叉引用网络）
+    +1: 有阶段化结构标题（纵深页 ``## Stage N`` / 主路线 ``## L−1``…``## L7``）
+    """
+    score = 0
+    if re.search(r"^\*\*(摘要|首屏导读)\*\*", content, re.MULTILINE):
+        score += 1
+    if internal_link_count >= ROADMAP_HEALTH_MIN_INTERNAL_LINKS:
+        score += 1
+    if re.search(r"^##+\s*(?:Stage\s|L[−-]?\d)", content, re.MULTILINE):
+        score += 1
+    return score
+
+
 def parse_frontmatter_type(content: str) -> str:
     if not content.startswith("---"):
         return ""
@@ -1333,12 +1357,18 @@ def _build_graph_data() -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
         page_id = str(page.relative_to(REPO_ROOT))
         node_type = _node_type_for_page(page, content)
         node_tags = [str(t).strip().lower() for t in parse_frontmatter_list(content, "tags")]
+        internal_links = extract_internal_links(content, page)
+        # roadmap/ 路线页无 frontmatter，健康度走正文信号规则
+        if page.relative_to(REPO_ROOT).parts[0] == "roadmap":
+            health_score = compute_roadmap_health_score(content, len(internal_links))
+        else:
+            health_score = compute_health_score(content)
         node: dict[str, Any] = {
             "id": page_id,
             "detail_id": path_to_id(page, REPO_ROOT),
             "label": extract_title(content) or page.stem,
             "type": node_type,
-            "health_score": compute_health_score(content),
+            "health_score": health_score,
             "summary": extract_summary(content),
             "_recency": wiki_recency_date(content, page).isoformat(),
             # 论文节点：type=entity 且 frontmatter tags 含 paper（私有标记，写出前剔除）
@@ -1351,7 +1381,7 @@ def _build_graph_data() -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
             node["institutions"] = institutions
         nodes.append(node)
 
-        for target in extract_internal_links(content, page):
+        for target in internal_links:
             target_id = str(target.relative_to(REPO_ROOT))
             if page_id == target_id:
                 continue
