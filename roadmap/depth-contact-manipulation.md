@@ -88,6 +88,7 @@ flowchart LR
 - [Bimanual Manipulation](../wiki/tasks/bimanual-manipulation.md)
 - [Query：操作任务里的模仿学习](../wiki/queries/il-for-manipulation.md)
 - [数据手套 vs 视觉遥操作](../wiki/comparisons/data-gloves-vs-vision-teleop.md) — 采集方案选型
+- [DexVerse](../wiki/entities/paper-dexverse.md) — 100 任务 × 3 臂 × 6 手灵巧操作 benchmark；π₀.₅ / DP3 均值成功率仅 34%，暴露跨技能泛化与亚厘米接触对齐瓶颈
 - Zhao et al., *Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware* (ACT, 2023)
 
 ### 推荐做什么
@@ -112,6 +113,9 @@ flowchart LR
 - [Tactile Sensing](../wiki/concepts/tactile-sensing.md) 与 [视触融合](../wiki/concepts/visuo-tactile-fusion.md)
 - [触觉阻抗控制](../wiki/methods/tactile-impedance-control.md) 与 [In-Hand Reorientation](../wiki/methods/in-hand-reorientation.md)
 - [Query：RL 中的触觉反馈](../wiki/queries/tactile-feedback-in-rl.md)
+- [ContactMimic](../wiki/entities/paper-contactmimic.md) — 在 keypoint tracking 外显式跟踪 per-body 接触指令，G1 真机验证 contact controllability，无需任务专用奖励即可搬箱
+- [UHAS 统一手部动作空间](../wiki/methods/uhas-unified-hand-action-space.md) — 规范球几何形变动作表示 + 级联 IK，单一 PPO 策略跨 Allegro / LEAP / Shadow 零样本迁移
+- [FastGrasp](../wiki/entities/paper-fastgrasp-mobile-dexterous-grasping.md) — CVAE 点云抓取引导 + 全身 RL + 二值触觉反馈的移动高速灵巧抓取 sim2real
 - Luo et al., *DEFT: Dexterous Fine-Grained Manipulation Transformer* (2024)
 
 ### 推荐做什么

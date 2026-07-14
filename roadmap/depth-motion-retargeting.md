@@ -110,6 +110,7 @@ flowchart LR
 - [AMASS](../wiki/entities/amass.md) 与 [LAFAN1](../wiki/entities/lafan1-dataset.md)（本仓库）— 动捕数据基座
 - [人形参考动作数据集对比](../wiki/comparisons/humanoid-reference-motion-datasets.md)（本仓库）— 选型主入口
 - [GVHMR](../wiki/entities/gvhmr.md)、[SAM 3D Body](../wiki/entities/sam-3d-body.md)、[FreeMoCap](../wiki/entities/freemocap.md)（本仓库）— 视频/低成本采集
+- [PEAR](../wiki/entities/paper-pear-pixel-aligned-expressive-hmr.md) 与 [ViDiHand](../wiki/entities/paper-vidihand.md)（本仓库）— 表达级数据源前沿：单图 SMPL-X 身/脸/手 >100 FPS 实时恢复（SIGGRAPH 2026）与 egocentric 双手 4D 视频扩散估计
 - [Motion Data Quality](../wiki/concepts/motion-data-quality.md) 与 [LiMMT / GQS 动作数据整编](../wiki/methods/limmt-gqs-motion-curation.md)（本仓库）— 质量量化
 
 ### 学完输出什么

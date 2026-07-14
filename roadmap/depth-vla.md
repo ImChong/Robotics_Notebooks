@@ -116,6 +116,7 @@ flowchart LR
 - [Robotics Transformer（RT 系列）](../wiki/methods/robotics-transformer-rt-series.md)、[OpenVLA](../wiki/entities/openvla.md)、[Octo](../wiki/methods/octo-model.md)（本仓库）
 - [π0](../wiki/methods/π0-policy.md) 与 [π0.7](../wiki/methods/pi07-policy.md)（本仓库）
 - [SayCan](../wiki/methods/saycan.md) 与 [DIAL 指令增强](../wiki/methods/dial-instruction-augmentation.md)（本仓库）
+- [InternVLA-A1.5](../wiki/entities/paper-internvla-a15-unified-vla.md)（本仓库）— 2026 主线前沿对照：统一理解 + 潜式前瞻 + flow matching 动作的单一 MoT 框架，组合泛化与长程执行显著超 π₀.₅
 
 ### 学完输出什么
 - 能画出典型 VLA 的三段式结构（视觉编码 → 语义 backbone → 动作专家）并说清各家差异
@@ -172,6 +173,7 @@ flowchart LR
 ### 推荐读什么
 - [Xiaomi-Robotics-0](../wiki/entities/xiaomi-robotics-0.md)（本仓库）— 异步 action chunk 部署
 - [具身模型延迟–泛化权衡](../wiki/concepts/embodied-fm-latency-generalization-tradeoff.md)（本仓库）
+- [Evo-1](../wiki/entities/paper-evo1-lightweight-vla.md)（本仓库）— 0.77B 轻量 VLA：两阶段训练保持 VLM 语义对齐，消费级 GPU 2.3 GB / 16.4 Hz，边缘侧选型的代表样本
 - [行为树 VLA 编排](../wiki/concepts/behavior-tree-vla-orchestration.md)（本仓库）
 - [Query：操作 VLA 架构选型](../wiki/queries/manipulation-vla-architecture-selection.md)（本仓库）
 
@@ -188,7 +190,7 @@ flowchart LR
 
 **方向 A：RL 微调与自改进**
 - 用 RL / 真机数据闭环继续改进预训练策略
-- 关键词：[ENPIRE](../wiki/methods/enpire.md)、[安全真机 RL 微调](../wiki/concepts/safe-real-world-rl-fine-tuning.md)
+- 关键词：[ENPIRE](../wiki/methods/enpire.md)、[安全真机 RL 微调](../wiki/concepts/safe-real-world-rl-fine-tuning.md)、[STEAM](../wiki/entities/paper-steam-advantage-modeling.md)（自监督时序 advantage 离线提纯 π₀，无需在线 rollout 与人工标注）
 
 **方向 B：世界模型融合**
 - 把"预测未来"并入策略训练或推理时预演——完整 Stage 路径见 [WAM 纵深路线](depth-wam.md)

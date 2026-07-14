@@ -140,6 +140,7 @@ flowchart LR
 ### 推荐读什么
 - 三线分类页：[FB 表征](../wiki/overview/bfm-category-01-forward-backward-representation.md)、[Goal-conditioned](../wiki/overview/bfm-category-02-goal-conditioned-learning.md)、[Intrinsic-reward](../wiki/overview/bfm-category-03-intrinsic-reward-pretraining.md)（本仓库）
 - 代表工作：[BFM4Humanoid](../wiki/entities/paper-behavior-foundation-model-humanoid.md)、[BFM-Zero](../wiki/entities/paper-bfm-zero.md)、[MetaMotivo](../wiki/entities/paper-bfm-02-metamotivo.md)、[DIAYN](../wiki/entities/paper-bfm-30-diayn.md)（本仓库）
+- [TeCH](../wiki/entities/paper-tech-humanoid-control.md)（本仓库）— 基于 TLDR 对比时间距离表征的无监督预训练：隐空间密集进度奖励 + off-policy，零样本跟踪/目标到达；G1 上跟踪精度对标 SONIC 且 GPU 时长降近两个数量级
 
 ### 学完输出什么
 - 能向同事讲清三条预训练线的信号来源、适用场景与代价
