@@ -3,80 +3,45 @@
 > 来源归档（ingest）
 
 - **标题：** 人形机器人运动控制 Know-How（飞书公开文档）
-- **类型：** paper
-- **来源：** 飞书公开文档
+- **类型：** paper / course-map
+- **来源：** 飞书公开文档 <https://roboparty.feishu.cn/wiki/GvUxwKVeNiGa7kku6vEcvqfKn87>
 - **入库日期：** 2026-04-18
-- **最后更新：** 2026-04-18
-- **一句话说明：** 一份围绕人形机器人运动控制的系统化知识地图，覆盖发展趋势、学习路线、传统 model-based 方法、强化学习路线、控制问题拆解与状态估计。
+- **最后更新：** 2026-07-14
+- **一句话说明：** RoboParty 系统化人形运动控制课程地图：趋势、双学习路线、问题框架、Model-based 七段主链、Learning-based 方法族与 BFM 三线；每法「原理 / 代码 / 局限性」。
 
 ## 来源上下文
-- **原始入口：** 飞书公开文档《人形机器人运动控制Know-How》
-- **文档风格：** 更像课程地图 / 方法总纲，而不是单篇论文笔记
-- **核心组织方式：** 先讲趋势与学习路线，再把传统控制与强化学习两条路线拆成可学习的模块，并为每个方法配“原理 / 代码 / 局限性”框架
 
-## 文档结构提要
+- **文档风格：** 课程地图 / 方法总纲，非单篇论文
+- **抓取：** 2026-07-14 经 Agent Reach v1.5.0 + Jina Reader 部分正文 → [raw 摘录](../raw/feishu_humanoid_motion_control_know_how_2026-07-14.md)
+- **完整目录：** [know-how.md](../notes/know-how.md)、[resources/knowhow](../../resources/knowhow/人形机器人运动控制Know-How.md)
 
-### 1. 宏观层：趋势、学习路线、问题分解
-- 人形机器人运动控制发展趋势
-- 人形机器人运动控制学习路线
-  - 传统运动控制学习路线
-  - 强化学习运动控制学习路线
-- 人形机器人控制问题解决思路
-  - 建模 + 求解
-  - Sim2Real 问题
-  - 人形机器人与其他机器人的区别
-  - 运动学可行 vs 动力学可行
+## 文档结构（与 wiki 一一对应）
 
-### 2. 方法层：传统 model-based 控制主线
-- 最优化控制问题理论基础（OCP）
-- 线性倒立摆模型 + 零力矩点（LIP + ZMP）
-- 弹簧负载倒立摆 + 虚拟模型控制（SLIP + VMC）
-- 全身动力学 + 全身运动控制 / 任务空间逆动力学（WBD + WBC / TSID）
-- 单刚体动力学 + 凸 MPC + WBC（SRBD + Convex MPC + WBC）
-- 质心动力学 + 非线性 MPC + WBC（CD + NMPC + WBC）
-- 人形机器人的状态估计
+详见 **[humanoid-motion-control-know-how-technology-map](../../wiki/overview/humanoid-motion-control-know-how-technology-map.md)** 全主题索引表。
 
-### 3. 课程化组织方式
-文档中多种控制方法都统一拆成三类子块：
-- **方法原理（建模 + 约束 + 损失函数）**
-- **基本代码**
-- **方法局限性**
+### 宏观
 
-这说明作者并不只是想做概念罗列，而是在强调一种工程学习法：
-**原理 → 最小实现 → 失败边界。**
+- 发展趋势 → `wiki/overview/humanoid-motion-control-trends.md`
+- 学习路线（传统 / RL）→ `roadmap/depth-classical-control.md`、`roadmap/depth-rl-locomotion.md`
+- 问题解决思路 → `wiki/concepts/modeling-and-solving-for-control.md` 等
 
-## 核心提炼
+### Model-based 主链
 
-### A. 这份文档本质上在回答什么
-它试图回答的不是“某个算法怎么推导”，而是：
-1. **人形机器人运动控制这条线该怎么学？**
-2. **传统控制与强化学习分别落在什么位置？**
-3. **面对真实人形机器人时，哪些问题是通用而且绕不过去的？**
+OCP → LIP/ZMP → SLIP/VMC → WBD+WBC/TSID → SRBD+Convex MPC+WBC → CD+NMPC+WBC → 状态估计
 
-### B. 对 Robotics_Notebooks 最有价值的三点
-1. **把学习路线显式化**：先有总路线，再分传统 / RL 两条支线
-2. **把方法放回问题背景里**：不是孤立讲 WBC、MPC、TSID，而是放进“建模+求解+Sim2Real+状态估计”的闭环里
-3. **强调“局限性”与“代码”并列**：这很适合技术栈项目，不容易把页面写成纯理论摘要
+### Learning-based
 
-### C. 从目录就能看出的作者视角
-- 把 **人形机器人** 当成一个比普通机器人更强调**动力学一致性、接触、状态估计、Sim2Real** 的系统
-- 认为 **传统控制** 仍然是主干知识，不是被 RL 取代的旧时代遗产
-- 把 **强化学习路线** 看成与传统控制并行、互补的一支，而非唯一方向
-- 默认人形机器人学习不能只停留在“会调 PPO”或“会调 MPC”，而需要把**建模、求解、感知、实现、局限性**串起来
+RL、Teacher-Student+DAgger、DreamWaQ、PIE、Attention 落足、Retarget、DeepMimic、AMP、BFM（Zero / SONIC / 多技能 TS）
 
 ## 对 wiki 的映射
-- [Optimal Control (OCP)](../../wiki/concepts/optimal-control.md)
-- [LIP / ZMP](../../wiki/concepts/lip-zmp.md)
-- [Whole-Body Control (WBC)](../../wiki/concepts/whole-body-control.md)
-- [TSID](../../wiki/concepts/tsid.md)
-- [MPC 与 WBC 集成](../../wiki/concepts/mpc-wbc-integration.md)
-- [State Estimation](../../wiki/concepts/state-estimation.md)
-- [Sim2Real](../../wiki/concepts/sim2real.md)
-- [Reinforcement Learning](../../wiki/methods/reinforcement-learning.md)
-- [Locomotion](../../wiki/tasks/locomotion.md)
+
+- **图谱父节点：** [humanoid-motion-control-know-how-technology-map.md](../../wiki/overview/humanoid-motion-control-know-how-technology-map.md)
+- **Query 摘要：** [humanoid-motion-control-know-how.md](../../wiki/queries/humanoid-motion-control-know-how.md)
+- **工程 Know-How（部署）：** [overview/humanoid-motion-control-know-how.md](../../wiki/overview/humanoid-motion-control-know-how.md)（IMU/热管理等，与飞书课程图不同页）
 
 ## 当前提炼状态
-- [x] 基于飞书公开页可见目录完成结构归档
-- [x] 识别出文档的核心组织逻辑：趋势 / 路线 / 问题 / 方法 / 实现 / 局限性
-- [~] 当前还没有逐节展开正文细节，后续若能读取更多章节正文，可继续补充各方法的小结与代表代码入口
-- [~] 可进一步转化为 roadmap / query 页面，用于服务 `Robotics_Notebooks` 的学习路径与控制架构对比
+
+- [x] 全主题树 → 独立 wiki 节点（2026-07-14）
+- [x] 飞书部分正文抓取归档
+- [x] PIE、DreamWaQ 一手论文 source 补链
+- [~] 飞书逐节伪代码与完整正文待作者公开 API 或手动补充

@@ -1,13 +1,179 @@
 {
   "generated_at": "2026-07-14",
-  "node_count": 1615,
-  "edge_count": 12446,
+  "node_count": 1631,
+  "edge_count": 12609,
   "coverage": {
-    "covered": 1568,
-    "total": 1598,
+    "covered": 1584,
+    "total": 1614,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/humanoid-motion-control-know-how-technology-map.md",
+      "detail_id": "wiki-overview-humanoid-motion-control-know-how-technology-map",
+      "label": "人形机器人运动控制 Know-How 技术地图",
+      "type": "overview",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/overview/humanoid-motion-control-trends.md",
+      "detail_id": "wiki-overview-humanoid-motion-control-trends",
+      "label": "人形机器人运动控制发展趋势",
+      "type": "overview",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/overview/humanoid-model-based-control-stack.md",
+      "detail_id": "wiki-overview-humanoid-model-based-control-stack",
+      "label": "传统运动控制方法栈（Model-based）",
+      "type": "overview",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/overview/humanoid-rl-motion-control-methods.md",
+      "detail_id": "wiki-overview-humanoid-rl-motion-control-methods",
+      "label": "深度强化学习运动控制方法（Learning-based）",
+      "type": "overview",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/methods/slip-vmc.md",
+      "detail_id": "wiki-methods-slip-vmc",
+      "label": "SLIP + VMC（弹簧负载倒立摆与虚拟模型控制）",
+      "type": "method",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/methods/pie-perceptive-locomotion.md",
+      "detail_id": "wiki-methods-pie-perceptive-locomotion",
+      "label": "PIE：感知一阶段鲁棒行走（隐式–显式学习）",
+      "type": "method",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "运动控制（Locomotion） 社区"
+    },
+    {
+      "path": "wiki/methods/dreamwaq.md",
+      "detail_id": "wiki-methods-dreamwaq",
+      "label": "DreamWaQ：盲走一阶段鲁棒行走",
+      "type": "method",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "运动控制（Locomotion） 社区"
+    },
+    {
+      "path": "wiki/methods/attention-foot-placement.md",
+      "detail_id": "wiki-methods-attention-foot-placement",
+      "label": "Attention 落足点优化",
+      "type": "method",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "运动控制（Locomotion） 社区"
+    },
+    {
+      "path": "wiki/methods/teacher-student-dagger-training.md",
+      "detail_id": "wiki-methods-teacher-student-dagger-training",
+      "label": "Teacher-Student 与 DAgger 训练",
+      "type": "method",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/methods/teacher-student-multi-skill-bfm.md",
+      "detail_id": "wiki-methods-teacher-student-multi-skill-bfm",
+      "label": "Teacher-Student 多动作 BFM 学习",
+      "type": "method",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/methods/centroidal-nmpc-wbc-stack.md",
+      "detail_id": "wiki-methods-centroidal-nmpc-wbc-stack",
+      "label": "Centroidal NMPC + WBC 栈",
+      "type": "method",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/concepts/humanoid-vs-other-robots.md",
+      "detail_id": "wiki-concepts-humanoid-vs-other-robots",
+      "label": "人形机器人与其他机器人的区别",
+      "type": "concept",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/concepts/kinematic-vs-dynamic-feasibility.md",
+      "detail_id": "wiki-concepts-kinematic-vs-dynamic-feasibility",
+      "label": "运动学可行与动力学可行",
+      "type": "concept",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/concepts/humanoid-rubber-man-analogy.md",
+      "detail_id": "wiki-concepts-humanoid-rubber-man-analogy",
+      "label": "人形机器人和橡皮人（教学类比）",
+      "type": "concept",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/concepts/modeling-and-solving-for-control.md",
+      "detail_id": "wiki-concepts-modeling-and-solving-for-control",
+      "label": "建模与求解（控制问题框架）",
+      "type": "concept",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/concepts/srbd-convex-mpc-wbc.md",
+      "detail_id": "wiki-concepts-srbd-convex-mpc-wbc",
+      "label": "SRBD + 凸 MPC + WBC",
+      "type": "concept",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/queries/humanoid-motion-control-know-how.md",
+      "detail_id": "wiki-queries-humanoid-motion-control-know-how",
+      "label": "人形机器人运动控制 Know-How 结构化摘要",
+      "type": "query",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
     {
       "path": "wiki/methods/muon.md",
       "detail_id": "wiki-methods-muon",
@@ -39,218 +205,41 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/motor-design-workflow.md",
-      "detail_id": "wiki-overview-motor-design-workflow",
-      "label": "电机设计流程（规格 → 仿真 → 样机 → 控制）",
-      "type": "overview",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/overview/humanoid-actuator-102-technology-map.md",
-      "detail_id": "wiki-overview-humanoid-actuator-102-technology-map",
-      "label": "Humanoid 执行器 102：八章技术地图",
-      "type": "overview",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/concepts/field-oriented-control.md",
-      "detail_id": "wiki-concepts-field-oriented-control",
-      "label": "磁场定向控制（Field Oriented Control, FOC）",
-      "type": "concept",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-faststair-humanoid-stair-ascent.md",
-      "detail_id": "entity-paper-faststair-humanoid-stair-ascent",
-      "label": "FastStair（Learning to Run Up Stairs with Humanoid Robots）",
-      "type": "entity",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/tasks/stair-obstacle-perceptive-locomotion.md",
-      "detail_id": "wiki-tasks-stair-obstacle-perceptive-locomotion",
-      "label": "楼梯与障碍 Locomotion（感知 / 盲走中心节点）",
-      "type": "task",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md",
-      "detail_id": "entity-paper-explicit-stair-geometry-humanoid-locomotion",
-      "label": "显式楼梯几何条件化人形运动（Explicit Stair Geometry Conditioning）",
-      "type": "entity",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/concepts/capture-point-dcm.md",
-      "detail_id": "wiki-concepts-capture-point-dcm",
-      "label": "Capture Point / DCM",
-      "type": "concept",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-tech-humanoid-control.md",
-      "detail_id": "entity-paper-tech-humanoid-control",
-      "label": "TeCH：基于对比表征学习的时间距离建模，用于人形机器人全身控制",
-      "type": "entity",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-internvla-a15-unified-vla.md",
-      "detail_id": "entity-paper-internvla-a15-unified-vla",
-      "label": "InternVLA-A1.5：理解、潜式前瞻与动作的统一 VLA",
-      "type": "entity",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-evo1-lightweight-vla.md",
-      "detail_id": "entity-paper-evo1-lightweight-vla",
-      "label": "Evo-1：轻量 VLA 与语义对齐保持",
-      "type": "entity",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-steam-advantage-modeling.md",
-      "detail_id": "entity-paper-steam-advantage-modeling",
-      "label": "STEAM：自监督时序 Ensemble Advantage 建模",
-      "type": "entity",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-ame-attention-based-map-encoding.md",
-      "detail_id": "entity-paper-ame-attention-based-map-encoding",
-      "label": "AME — Attention-Based Map Encoding",
-      "type": "entity",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-infinite-diffusion-terrain-diffusion.md",
-      "detail_id": "entity-paper-infinite-diffusion-terrain-diffusion",
-      "label": "InfiniteDiffusion / Terrain Diffusion（学习式无限地形生成）",
-      "type": "entity",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-physisforcing.md",
-      "detail_id": "entity-paper-physisforcing",
-      "label": "PhysisForcing（Physics Reinforced World Simulator）",
-      "type": "entity",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-physmani-dynamic-manipulation-world-model.md",
-      "detail_id": "entity-paper-physmani-dynamic-manipulation-world-model",
-      "label": "PhysMani（Physics-principled 3D World Model for Dynamic Manipulation）",
-      "type": "entity",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dexverse.md",
-      "detail_id": "entity-paper-dexverse",
-      "label": "DexVerse（Multi-Task, Multi-Embodiment Dexterous Manipulation Benchmark）",
-      "type": "entity",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-contactmimic.md",
-      "detail_id": "entity-paper-contactmimic",
-      "label": "ContactMimic（Humanoid Object Interaction via Contact Control）",
-      "type": "entity",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "动作重定向（Motion Retargeting） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/methods/muon.md",
-    "detail_id": "wiki-methods-muon",
-    "label": "Muon（MomentUm Orthogonalized by Newton–Schulz）",
-    "type": "method",
+    "path": "wiki/overview/humanoid-motion-control-know-how-technology-map.md",
+    "detail_id": "wiki-overview-humanoid-motion-control-know-how-technology-map",
+    "label": "人形机器人运动控制 Know-How 技术地图",
+    "type": "overview",
     "recency": "2026-07-14",
     "source": "log.md",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
-      "label": "运动控制",
-      "size": 325
-    },
-    {
       "label": "视觉-语言-动作",
-      "size": 284
+      "size": 314
     },
     {
       "label": "人形论文深读笔记",
-      "size": 184
-    },
-    {
-      "label": "人形强化学习运动控制",
-      "size": 115
+      "size": 174
     },
     {
       "label": "移动操作",
-      "size": 104
+      "size": 163
+    },
+    {
+      "label": "人形强化学习运动控制",
+      "size": 126
     },
     {
       "label": "动作重定向",
-      "size": 84
+      "size": 126
+    },
+    {
+      "label": "全身控制",
+      "size": 83
     }
   ],
   "top_hubs": [
@@ -265,7 +254,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 273,
+      "degree": 276,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -297,13 +286,13 @@
       "label": "Paper Notebooks · Loco-Manipulation and WBC",
       "type": "overview",
       "degree": 222,
-      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 219,
+      "degree": 221,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
@@ -318,14 +307,14 @@
       "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
       "label": "人形机器人 RL 运动控制：身体系统栈视角",
       "type": "overview",
-      "degree": 183,
+      "degree": 186,
       "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 167,
+      "degree": 168,
       "has_repo": true
     }
   ],
@@ -355,15 +344,15 @@
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
       "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
       "type": "entity",
-      "degree": 38
+      "degree": 38,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "detail_id": "entity-paper-twist2",
       "label": "TWIST2",
       "type": "entity",
       "degree": 35,
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
@@ -375,7 +364,15 @@
       "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",
       "label": "SD-AMP：统一走、跑与起身的对抗运动先验",
       "type": "entity",
-      "degree": 29
+      "degree": 29,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "detail_id": "entity-paper-bfm-zero",
+      "label": "BFM-Zero",
+      "type": "entity",
+      "degree": 28,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "entity-paper-perceptive-bfm",
@@ -389,13 +386,6 @@
       "type": "entity",
       "degree": 27,
       "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "detail_id": "entity-paper-loco-manip-04-oasis",
-      "label": "OASIS（From Simulation Data Collection to Real-World Humanoid Loco-Manipulation）",
-      "type": "entity",
-      "degree": 27,
-      "has_repo": true
     }
   ]
 }

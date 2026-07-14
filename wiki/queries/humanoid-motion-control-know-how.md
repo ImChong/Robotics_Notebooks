@@ -3,10 +3,11 @@ title: 人形机器人运动控制 Know-How 结构化摘要
 type: query
 status: complete
 created: 2026-04-18
-updated: 2026-04-18
-summary: 将飞书公开文档《人形机器人运动控制 Know-How》提炼为适合 Robotics_Notebooks 的结构化摘要，聚焦学习路线、问题框架与传统控制主干。
+updated: 2026-07-14
+summary: 将飞书公开文档《人形机器人运动控制 Know-How》提炼为适合 Robotics_Notebooks 的结构化摘要，聚焦学习路线、问题框架与传统控制主干；全主题独立节点见技术地图。
 sources:
   - ../../sources/papers/humanoid_motion_control_know_how.md
+  - ../../sources/raw/feishu_humanoid_motion_control_know_how_2026-07-14.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「把飞书链接《人形机器人运动控制 Know-How》提炼成适合 Robotics_Notebooks 的结构化摘要。」
@@ -23,6 +24,8 @@ sources:
 3. **每种方法该怎么学**：原理、代码、局限性三件套
 
 对 `Robotics_Notebooks` 来说，这份材料最适合承担**“路线与方法总览层”**，而不是直接替代某个具体 concept page。
+
+**2026-07-14 更新：** 飞书文档中每个主题已映射为图谱独立节点，见 [人形机器人运动控制 Know-How 技术地图](../overview/humanoid-motion-control-know-how-technology-map.md)（含 Model-based 七段链与 Learning-based 方法族完整索引）。
 
 ---
 
@@ -250,6 +253,7 @@ OCP
 
 ## 关联页面
 
+- [人形机器人运动控制 Know-How 技术地图](../overview/humanoid-motion-control-know-how-technology-map.md) — 飞书全主题 → wiki 节点索引（2026-07）
 - [主路线：运动控制成长路线](../../roadmap/motion-control.md) — 这份文档最接近的仓库内对应物
 - [控制架构综合对比](./control-architecture-comparison.md) — 传统控制、RL、融合架构的横向对比
 - [WBC vs RL](../comparisons/wbc-vs-rl.md) — 两条主线的典型分叉点

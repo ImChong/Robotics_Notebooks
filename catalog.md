@@ -1141,13 +1141,17 @@
 - [人形多机协调（Humanoid Multi-Robot Coordination）](wiki/concepts/humanoid-multi-robot-coordination.md) — 人形多机协调**（常被口语称为「群控」）指 **多台人形机器人在共享动态环境**（典型为 RoboCup 足球）中，协同完成 **角色分配、站位/编队、传球与防守** 等战术，而不仅是单机 loc `📅unknown` `[wiki_page]`
 - [人形机器人并联关节解算（Parallel / Closed-Chain Joint Kinematics）](wiki/concepts/humanoid-parallel-joint-kinematics.md) — 并联关节解算**在这里指：当多个驱动分支通过刚性闭链耦合到同一末端（或同一等效自由度）时，在**机构空间**建立「驱动变量 ↔ 末端位姿/速度/力」映射，并处理**冗余与约束一致性**的一整套问题 `📅unknown` `[wiki_page]`
 - [人形与腿式策略的网络架构（Policy Network Architecture）](wiki/concepts/humanoid-policy-network-architecture.md) — 人形与腿式策略的网络架构**：在模仿学习、对抗式运动先验与强化学习论文的 Method 里，作者通常会写明 **策略网有几层、每层多少隐藏单元、判别器或 critic 是否共享骨干、是否用 Tra `📅unknown` `[wiki_page]`
+- [人形机器人和橡皮人（教学类比）](wiki/concepts/humanoid-rubber-man-analogy.md) — 飞书 Know-How 子主题 **「人形机器人和橡皮人」** 用直观类比说明：仅在外形上模仿人类的机器人，可能在**质量分布、关节驱动、接触模型**上与真实人体相差甚远，行为更像「可扭曲的橡皮人」— `📅unknown` `[wiki_page]`
+- [人形机器人与其他机器人的区别](wiki/concepts/humanoid-vs-other-robots.md) — 飞书 Know-How「人形机器人与其他机器人的区别」强调：人形不是「自由度更多的机械臂」或「双足版四足」，而是**浮动基 + 间歇接触 + 上身–下肢强耦合** 带来的独特控制问题集合。 `📅unknown` `[wiki_page]`
 - [Hybrid Force-Position Control（力位混合控制）](wiki/concepts/hybrid-force-position-control.md) — 力位混合控制**：把任务空间拆成“该控位置的方向”和“该控力的方向”，让机器人在一个子空间内严格跟踪几何目标，在另一个子空间内稳定施加期望接触力。 `📅unknown` `[wiki_page]`
 - [Impedance Control（阻抗控制）](wiki/concepts/impedance-control.md) — 阻抗控制**：不直接要求机器人“精确走到某个位姿”，而是规定当机器人与环境之间出现位置误差或接触力时，系统应该表现出怎样的 **质量-弹簧-阻尼（Mass-Spring-Damper）** 响应。 `📅unknown` `[wiki_page]`
 - [Implicit / Explicit 执行器建模](wiki/concepts/implicit-explicit-actuator-modeling.md) — 在机器人强化学习里，**implicit** 与 **explicit** 通常指 **仿真执行器（actuator）模型** 如何把策略的高层指令变成关节力矩，而不是指「策略隐式学电机」或「显式地形 `📅unknown` `[wiki_page]`
 - [Joint Friction Models（关节摩擦模型）](wiki/concepts/joint-friction-models.md) — 关节摩擦模型** 描述传动与轴承中 **与速度、负载相关的非线性阻力**，是 URDF 默认参数往往缺失、却强烈影响 **力矩跟踪与 Sim2Real** 的关键项。 `📅unknown` `[wiki_page]`
+- [运动学可行与动力学可行](wiki/concepts/kinematic-vs-dynamic-feasibility.md) — 飞书 Know-How 将 **运动学可行和动力学可行** 列为控制问题框架的核心分叉：前者回答「关节角度/末端轨迹是否存在」，后者回答「在给定力矩、摩擦与接触下是否稳定可执行」。 `📅unknown` `[wiki_page]`
 - [Latent Imagination (潜空间想象)](wiki/concepts/latent-imagination.md) — 潜空间想象 (Latent Imagination)** 是现代 Model-Based 强化学习（尤其是 **Dreamer** 系列）的灵魂。它彻底改变了机器人学习的范式：不再是在真实世界或沉 `📅unknown` `[wiki_page]`
 - [LCM (Lightweight Communications and Marshalling) 基础](wiki/concepts/lcm-basics.md) — LCM** 是一款由 MIT 团队开发的通信库，专门针对**高频、低延迟、高带宽**的机器人控制场景设计。在人形机器人和四足机器人的“脊髓级”控制中，LCM 是优于 ROS 2 的首选方案。 `📅unknown` `[wiki_page]`
 - [LIP / ZMP](wiki/concepts/lip-zmp.md) — LIP（Linear Inverted Pendulum, 线性倒立摆）** 和 **ZMP（Zero Moment Point, 零力矩点）** 是双足机器人行走控制里最经典的一对基础模型与稳定 `📅unknown` `[wiki_page]`
+- [建模与求解（控制问题框架）](wiki/concepts/modeling-and-solving-for-control.md) — 飞书 Know-How「**建模 + 求解**」是人形控制问题拆解的第一轴：**建模**确定状态、输入、动力学与约束；**求解**选择能否实时、能否保证约束的算法（QP、MPC、iLQR、RL 等）。 `📅unknown` `[wiki_page]`
 - [Motion Data Quality（动作数据质量维度）](wiki/concepts/motion-data-quality.md) — 把一段参考运动 / 演示数据「能不能直接喂给人形策略训练」拆成**四个可独立评估的质量轴**。它回答的不是「数据多不多」，而是「数据**像不像**机器人能物理执行的东西」——这正是 [Motion R `📅unknown` `[wiki_page]`
 - [Motion Retargeting Pipeline（动作重定向流水线）](wiki/concepts/motion-retargeting-pipeline.md) — Motion Retargeting Pipeline** 关注的不是「某一个重定向算法」，而是把**异构来源的人体动作**（MoCap、单目视频估计、生成模型、遥操作流）落到**机器人可执行参考 `📅unknown` `[wiki_page]`
 - [Motion Retargeting（动作重定向）](wiki/concepts/motion-retargeting.md) — Motion Retargeting 是将一个运动序列（通常来自人类或动物）**转换为适合目标机器人执行的动作序列**的过程。 `📅unknown` `[wiki_page]`
@@ -1172,6 +1176,7 @@
 - [传感器融合（Sensor Fusion）](wiki/concepts/sensor-fusion.md) — 传感器融合**：将来自多个传感器（IMU、摄像头、激光雷达、腿部运动学）的测量值在概率框架下统一融合，估计机器人的位姿、速度和接触状态，为上层控制（MPC / WBC）提供实时、精确的状态输入。 `📅unknown` `[wiki_page]`
 - [Sim2Real](wiki/concepts/sim2real.md) — Sim2Real**（仿真到现实迁移）：在仿真环境训练控制策略，然后部署到真实机器人上。 `📅unknown` `[wiki_page]`
 - [仿真评测基础设施（Simulation as Evaluation Infrastructure）](wiki/concepts/simulation-evaluation-infrastructure.md) — 仿真评测基础设施**指：在机器人学习与基础模型开发中，把仿真主要用作**可扩展、可复现的闭环评测与 recipe 迭代引擎**，而不是默认等同于「仿真数据生成器」。当评测与真机 rollout  `📅unknown` `[wiki_page]`
+- [SRBD + 凸 MPC + WBC](wiki/concepts/srbd-convex-mpc-wbc.md) — 飞书 Know-How 条目 **「单刚体动力学模型 + 凸模型预测控制 + WBC」** 指：用 **SRBD（Single Rigid Body Dynamics）** 近似整机质心运动，在  `📅unknown` `[wiki_page]`
 - [State Estimation](wiki/concepts/state-estimation.md) — State Estimation（状态估计）**：根据传感器观测、机器人模型和历史信息，估计机器人当前最可能真实状态的过程。 `📅unknown` `[wiki_page]`
 - [System Identification](wiki/concepts/system-identification.md) — System Identification（系统辨识 / SysID）**：通过实验数据估计机器人动力学、执行器、摩擦、延迟等模型参数，使模型更接近真实系统的过程。 `📅unknown` `[wiki_page]`
 - [Tactile Sensing（触觉感知）](wiki/concepts/tactile-sensing.md) — 触觉感知 (Tactile Sensing)** 是机器人感知系统中的重要组成部分。如果说视觉（Vision）赋予了机器人远距离和全局的场景理解能力，那么触觉则是机器人与物理世界发生**直接物理交 `📅unknown` `[wiki_page]`
@@ -1209,6 +1214,7 @@
 - [Any2Track & RGMT: 增强型自适应与时序建模](wiki/methods/any2track.md) — 在复杂的人形机器人控制任务（如多步动作模仿或动态越障）中，传统的单帧马尔可夫决策过程 (MDP) 往往不足以捕捉环境的非平稳性（如地面滑移、外力扰动）。**Any2Track** 与 **RGMT `📅unknown` `[method_page]`
 - [ASE: 对抗性技能嵌入](wiki/methods/ase.md) — ASE** 将生成对抗思想与层次化强化学习相结合，旨在从大规模无标注运动数据中学习通用的技能表示。 `📅unknown` `[method_page]`
 - [ASPIRE](wiki/methods/aspire.md) — ASPIRE**（NVIDIA GEAR Lab 等，2026；*Agentic Skill Programming throu `📅2026-06-30` `[method_page]`
+- [Attention 落足点优化](wiki/methods/attention-foot-placement.md) — 飞书 Know-How 中的 **Attention 落足点优化算法** 指：在**感知地形表示**（高程图、垫脚石候选、射线高度采样等）上用 **注意力机制** 选择下一步落脚点或 foothold `📅unknown` `[method_page]`
 - [Auto-labeling Pipelines (自动化标注流水线)](wiki/methods/auto-labeling-pipelines.md) — 自动化标注流水线** 是构建具身基础模型（Foundation Models）的关键基础设施。它解决了具身智能中最昂贵的环节：**让数据具备语义（Semantic Grounding）**。 `📅unknown` `[method_page]`
 - [AWR: 优势加权回归](wiki/methods/awr.md) — Advantage-Weighted Regression (AWR)** 提供了一种不同于 PPO 的 RL 路径，它完全基于回归分析。 `📅unknown` `[method_page]`
 - [Behavior Cloning with Transformer](wiki/methods/bc-with-transformer.md) — 在模仿学习（IL）中，传统的基于 MLP 或 CNN 的行为克隆往往难以处理**多模态动作**（例如专家有时左绕，有时右绕）和**长时间依赖**。将 **Transformer** 引入 BC 架构， `📅unknown` `[method_page]`
@@ -1217,6 +1223,7 @@
 - [Being-H0.7（潜空间世界–动作模型）](wiki/methods/being-h07.md) — Being-H0.7** 是 BeingBeyond 提出的机器人策略：把「世界建模带来的未来结构」压缩进**紧凑潜空间**，用**可学习 latent queries** 作为多模态上下文与低层 `📅unknown` `[method_page]`
 - [BeyondMimic](wiki/methods/beyondmimic.md) — BeyondMimic** 是由 Hybrid Robotics 等团队开发的高性能机器人动作模仿框架。相比早期的 DeepMimic 或 AMP，BeyondMimic 更侧重于从仿真到真实物理 `📅unknown` `[method_page]`
 - [BFGS（Broyden–Fletcher–Goldfarb–Shanno）](wiki/methods/bfgs.md) — BFGS**：**拟牛顿法** 中最常用的秩-2 更新，维护近似 Hessian 逆 $H_k \approx (\nabla^2 f)^{-1}$，每步方向 $p_k = -H_k \nabla `📅unknown` `[method_page]`
+- [Centroidal NMPC + WBC 栈](wiki/methods/centroidal-nmpc-wbc-stack.md) — 飞书 Know-How 将 **质心动力学模型 + 非线性模型预测控制 + WBC（CD+NMPC+WBC）** 列为传统控制主链的**高保真层**：NMPC 在质心动量/接触力变量上滚动优化，WBC `📅unknown` `[method_page]`
 - [Chasing Autonomy Pipeline](wiki/methods/chasing-autonomy-pipeline.md) — Chasing Autonomy Pipeline** 是由加州理工学院和 Unitree 团队（Olkin et al., 2026）提出的一套使人形机器人能够高性能奔跑的系统框架。它有效衔接了 `📅unknown` `[method_page]`
 - [CLAW (宇树 G1 全身动作数据生成管线)](wiki/methods/claw.md) — CLAW** (Composable Language-Annotated Whole-Body Motion Data Generation) 是一种面向人形机器人的模块化数据生成方案。它通过将 `📅unknown` `[method_page]`
 - [Conjugate Gradient Method（共轭梯度法）](wiki/methods/conjugate-gradient-method.md) — 共轭梯度（CG）**：在 $n$ 维空间构造 $A$-共轭方向，至多 $n$ 步解精确线性系统 $Ax=b$（精确算术）；对大型稀疏 SPD 矩阵，截断 CG 是求解凸 QP 牛顿步、弹性力学与  `📅unknown` `[method_page]`
@@ -1233,6 +1240,7 @@
 - [Diffusion Policy](wiki/methods/diffusion-policy.md) — Diffusion Policy**：将扩散生成模型（Diffusion Model）用于机器人模仿学习，通过逆扩散过程从噪声中生成动作序列的策略学习方法。 `📅unknown` `[method_page]`
 - [Disney Olaf 角色机器人（实机动画角色）](wiki/methods/disney-olaf-character-robot.md) — 一句话定义：** 面向「高角色保真 + 紧凑机电包络」的娱乐型双足平台：用**动画参考 + RL** 解决非物理比例与风格化步态，用**机构设计**解决「看不见腿」与**热/声学**等实演约束。 `📅unknown` `[method_page]`
 - [Dynamic Movement Primitives (DMP)](wiki/methods/dmp.md) — DMP** 是一种用于轨迹建模和控制的方法。它将复杂的运动路径表示为一个非线性动力学系统，其核心是一个受迫振荡器，可以通过调整参数来改变运动的速度和目标位置，而不需要重新规划。 `📅unknown` `[method_page]`
+- [DreamWaQ：盲走一阶段鲁棒行走](wiki/methods/dreamwaq.md) — DreamWaQ**（*Learning Robust Quadrupedal Locomotion With Implicit Terrain Imagination*，ICRA 2023，[a `📅unknown` `[method_page]`
 - [DWM（Dexterous World Models，灵巧世界模型）](wiki/methods/dwm.md) — DWM**（Kim 等，CVPR 2026）研究的是：当环境的**静态几何**已经可用（典型来自重建得到的数字孪生），如何用**视频扩散**去预测**灵巧手操作**会在第一人称视频里诱发哪些**物 `📅unknown` `[method_page]`
 - [DynaRetarget / SBTO（增量采样式动力学重定向）](wiki/methods/dynaretarget-sbto-motion-retargeting.md) — DynaRetarget**（Dhédin 等，arXiv:2602.06827，[项目页](https://atarila `📅2026-06-17` `[method_page]`
 - [EFGCL（External Force-Guided Curriculum Learning）](wiki/methods/efgcl.md) — EFGCL** 是一种面向腿足机器人**高动态全身动作**的 **guided RL / 物理引导探索** 训练范式：在仿真里对机器人施加**外部辅助力**，使其在课程早期就能反复完成目标动作；再 `📅2026-05-13` `[method_page]`
@@ -1289,6 +1297,7 @@
 - [π MPC（Parallel-in-horizon、Construction-free NMPC）](wiki/methods/pi-mpc.md) — π MPC**（*π MPC: A Parallel-in-horizon and Construction-free NMPC Solver*，arXiv:2601.14414，JHU · Ts `📅unknown` `[method_page]`
 - [π₀.7（Pi-zero 0.7）通才 VLA](wiki/methods/pi07-policy.md) — π₀.7** 是 Physical Intelligence 在 2026 年公开的**通才机器人基础策略（VLA）**：在保留 π 系 **flow matching 动作头**与 **MEM  `📅unknown` `[method_page]`
 - [PID Control（比例-积分-微分控制）](wiki/methods/pid-control.md) — PID 控制**：根据误差 $e$ 及其积分、微分，输出控制量 $u$ 的经典 **线性反馈** 方法，仍是机器人 **关节伺服、姿态稳定** 的默认底层。 `📅unknown` `[method_page]`
+- [PIE：感知一阶段鲁棒行走（隐式–显式学习）](wiki/methods/pie-perceptive-locomotion.md) — PIE**（*Parkour with Implicit-Explicit Learning Framework for Legged Robots*，ZJU，IEEE RA-L 2024，[ar `📅unknown` `[method_page]`
 - [Policy Optimization](wiki/methods/policy-optimization.md) — 策略优化**：通过直接对策略参数做梯度上升或近似优化，使期望累积奖励最大化的一类强化学习方法。 `📅unknown` `[method_page]`
 - [PPO（Proximal Policy Optimization）](wiki/methods/ppo.md) — PPO（近端策略优化）**：用 **clip 代理目标** 限制每次策略更新中新旧策略概率比的偏离幅度，在保持 TRPO 级别更新稳定性的同时，把实现复杂度降到一阶优化器即可训练，是机器人 RL  `📅unknown` `[method_page]`
 - [QT-Opt](wiki/methods/qt-opt.md) — QT-Opt**：面向视觉输入机械臂抓取的异策深度强化学习框架，用交叉熵方法等近似在连续动作空间上做 Q 学习，并结合长时间运行的真实机器人数据采集闭环。 `📅unknown` `[method_page]`
@@ -1304,6 +1313,7 @@
 - [SGD Momentum（动量随机梯度下降）](wiki/methods/sgd-momentum.md) — SGD Momentum**：在 SGD 基础上维护速度向量 $v_t$，将当前梯度与历史速度加权叠加，使参数更新在 **一致梯度方向** 上加速、在 **振荡方向** 上 `📅unknown` `[method_page]`
 - [SGD（Stochastic Gradient Descent）](wiki/methods/sgd.md) — SGD（随机梯度下降）**：用训练集 mini-batch 上估计的梯度 $\hat{g}_t$ 替代全数据精确梯度，按 $\theta_{t+1} = \theta_t - \eta \hat{ `📅unknown` `[method_page]`
 - [骨架动作识别（Skeleton-Based Action Recognition）](wiki/methods/skeleton-action-recognition.md) — 骨架动作识别**：以关节坐标序列（3D/2D 骨架）为输入，识别或描述人体 / 机器人正在执行的动作类别，是模仿学习数据质量和跨形态泛化的重要支撑技术。 `📅unknown` `[method_page]`
+- [SLIP + VMC（弹簧负载倒立摆与虚拟模型控制）](wiki/methods/slip-vmc.md) — SLIP（Spring-Loaded Inverted Pendulum）** 把支撑腿近似为质心与足端之间的弹簧；**VMC（Virtual Model Control）** 在任务空间定义虚拟 `📅unknown` `[method_page]`
 - [Smooth Navigation Path Generation（平滑导航路径生成）](wiki/methods/smooth-navigation-path-generation.md) — 平滑导航路径生成**：在已知或采样的几何路径基础上，通过 **无约束或软约束优化** 最小化 jerk/曲率/能量，得到 **曲率连续、可跟踪** 的导航轨迹——课程 2.4–2.5 的无约束优化 `📅unknown` `[method_page]`
 - [SMP: 基于得分匹配的可复用运动先验](wiki/methods/smp.md) — SMP** 代表了从对抗模仿学习（如 AMP）向生成式先验引导学习的范式演进。它将复杂的运动分布建模为一个连续的得分场（Score Field），并以此指导  `📅unknown` `[method_page]`
 - [SONIC（规模化运动跟踪人形控制）](wiki/methods/sonic-motion-tracking.md) — SONIC 将规模化运动跟踪作为人形低层控制的统一预训练目标；论文主张网络容量、MoCap 数据与算力三轴 scaling，并以统一 token 接口接入 VR、视频、VLA 等上游。 `📅2026-05-14` `[method_page]`
@@ -1313,6 +1323,8 @@
 - [Switch: 敏捷技能切换框架](wiki/methods/switch-framework.md) — Switch** 是由香港科技大学等机构提出的一种针对人形机器人的技能切换方案。它解决了传统运动模仿方法在处理非连续、大跨度动作转换时容易失稳的问题，通过将高层图规划与底层强化学习（RL）控制相结 `📅unknown` `[method_page]`
 - [Table Tennis Strategy & Skill Learning（PhysicsPingPong）](wiki/methods/table-tennis-strategy-skill-learning.md) — PhysicsPingPong**（Wang et al., SIGGRAPH 2024, [arXiv:2407.16210](https://arxiv.org/abs/2407.16210 `📅unknown` `[method_page]`
 - [Tactile Impedance Control（基于触觉反馈的阻抗控制）](wiki/methods/tactile-impedance-control.md) — Tactile Impedance Control** 在标准 阻抗控制 的「质量-弹簧-阻尼」框架之上，把指尖触觉传感器（ `📅unknown` `[method_page]`
+- [Teacher-Student 与 DAgger 训练](wiki/methods/teacher-student-dagger-training.md) — RoboParty 飞书 Know-How 将 **Teacher-Student 模型** 与 **DAgger（Dataset Aggregation）** 列为同一教学模块：在仿真中用**特权观 `📅unknown` `[method_page]`
+- [Teacher-Student 多动作 BFM 学习](wiki/methods/teacher-student-multi-skill-bfm.md) — 飞书 Know-How 在 **BFM 行为基础模型** 下分三线：**BFM-Zero（FB 无监督）**、**SONIC（DeepMimic 规模化跟踪）**、**基于 Teacher-Stude `📅unknown` `[method_page]`
 - [Time-Optimal Path Parameterization（TOPP）](wiki/methods/time-optimal-path-parameterization.md) — TOPP（时间最优路径参数化）**：给定关节空间或任务空间 **几何路径** $q(s)$（$s$ 为路径参数），求速度 $\dot{s}(t)$ 或 $\dot{s}(s)$ 曲线，使 **总时 `📅unknown` `[method_page]`
 - [TopoRetarget（交互保留灵巧重定向）](wiki/methods/toporetarget-interaction-preserving-dexterous-retargeting.md) — TopoRetarget**（Wu 等，arXiv:2606.16272，清华大学 IIIS / MARS Lab）把灵巧手 **hand–object 演示** 转成机器人可跟踪的参考轨迹时，不 `📅2026-06-17` `[method_page]`
 - [Trajectory Optimization（轨迹优化）](wiki/methods/trajectory-optimization.md) — 轨迹优化 (Trajectory Optimization, TO)** 是一种基于动力学模型和约束条件，通过数值非线性规划（NLP）技术来自动搜索最优运动序列的计算方法。在足式机器人领域，不论是 `📅unknown` `[method_page]`
@@ -1464,10 +1476,14 @@
 - [Humanoid Hardware 101 · 07：产业与成本地缘](wiki/overview/humanoid-hardware-101-supply-chain-economics.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [Humanoid Hardware 101：七类子系统技术地图](wiki/overview/humanoid-hardware-101-technology-map.md) — 人形硬件最难降本的不是「多买几个便宜电机」，而是 **关节级耦合执行器**（电机×减速器×丝杠×轴承×编码器×热与公差）——在 RL 与可消耗件思维下，**扭矩透明、减自由度、简化手部** 比单纯压供 `📅unknown` `[overview_page]`
 - [人形 Loco-Manip 161 篇技术地图](wiki/overview/humanoid-loco-manip-161-papers-technology-map.md) — 人形 loco-manip 的 161 篇工作可按 **能力形成顺序** 读：先 **运控底座与全身跟踪** 稳住身体，再建 **上半身移动操作接口**；随后接入 **视觉、生成式语言/轨迹、人类动捕 `📅unknown` `[overview_page]`
+- [传统运动控制方法栈（Model-based）](wiki/overview/humanoid-model-based-control-stack.md) — 飞书 Know-How **「传统运动控制方法（Model Base）」** 的图谱父节点：按保真度与实时性递进组织 **七段主链**，每段在 wiki 中有独立方法/概念页，并统一遵循 **原理 → `📅unknown` `[overview_page]`
 - [运动小脑技术地图：64 篇论文的九组视角](wiki/overview/humanoid-motion-cerebellum-technology-map.md) — 走路是底座，全身跟踪是身体接口，Loco-Manip 是任务形态**——VLA 与世界模型 demo 再一致，也绕不开一层能把稀疏意图翻译成 **可执行、可恢复、可迁移** 全身运动的 **动作小 `📅unknown` `[overview_page]`
+- [人形机器人运动控制 Know-How 技术地图](wiki/overview/humanoid-motion-control-know-how-technology-map.md) — 把 RoboParty Know-How 从「飞书目录树」映射为可检索、可交叉引用的 **wiki 知识图**：宏观趋势与学习路线在上层，**Model-based 七段主链** 与 **Learni `📅unknown` `[overview_page]`
 - [人形机器人运动控制 Know-How](wiki/overview/humanoid-motion-control-know-how.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
+- [人形机器人运动控制发展趋势](wiki/overview/humanoid-motion-control-trends.md) — 基于 RoboParty 飞书 Know-How 开篇与 [2026-0 `📅unknown` `[overview_page]`
 - [Humanoid Paper Notebooks 知识库索引](wiki/overview/humanoid-paper-notebooks-index.md) — 本页把 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Pape `📅unknown` `[overview_page]`
 - [人形机器人 RL 运动控制：身体系统栈视角](wiki/overview/humanoid-rl-motion-control-body-system-stack.md) — 人形机器人真正难的不是「让动作做出来」，而是让动作进入真实世界的**精细交互闭环**——视觉、接触、力、负载、失败恢复都参与控制；VLA / 世界模型对身体的稳定调用，是这层能力成熟之后的下一阶段，不 `📅unknown` `[overview_page]`
+- [深度强化学习运动控制方法（Learning-based）](wiki/overview/humanoid-rl-motion-control-methods.md) — 飞书 Know-How **「深度强化学习运动控制方法（Learning Base）」** 的图谱父节点：覆盖 **RL 基础 → 特权/模仿训练 → 感知 loco → 重定向与跟踪 → BFM 三 `📅unknown` `[overview_page]`
 - [Jason Peng：更灵活的运动技能学习](wiki/overview/jason-peng-flexible-motion-skill-learning.md) — 人形运动控制的下一关不是「把更多 clip 跟踪得更像」，而是让控制器在 **数据稀缺** 下仍能 **组合行为、适应新目标与物体**——对抗性分布匹配与生成式迭代数据增强是 Peng 组给出的两条互 `📅unknown` `[overview_page]`
 - [Loco-Manip 161 分类 01：运控基座与通用全身跟踪](wiki/overview/loco-manip-161-category-01-motion-base-wbt.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [Loco-Manip 161 分类 02：上半身中心控制与移动操作接口](wiki/overview/loco-manip-161-category-02-upper-body-interface.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`

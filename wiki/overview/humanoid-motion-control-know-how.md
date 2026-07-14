@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, control, know-how, engineering, deployment]
 status: complete
-updated: 2026-04-21
+updated: 2026-07-14
 summary: "人形机器人运动控制工程实践经验汇总：涵盖了从传感器噪声处理、电机热管理到非结构化地形适应的闭坑指南。"
 ---
 
