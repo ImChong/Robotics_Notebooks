@@ -9,6 +9,83 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/overview/roboparty-lab-party-os-technology-map.md",
+      "detail_id": "wiki-overview-roboparty-lab-party-os-technology-map",
+      "label": "RoboParty Lab / Party OS 技术地图",
+      "type": "overview",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/party-os.md",
+      "detail_id": "entity-party-os",
+      "label": "Party OS（RoboParty 人形研发底座）",
+      "type": "entity",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/mimiclite.md",
+      "detail_id": "entity-mimiclite",
+      "label": "MimicLite（监督运动跟踪基础设施）",
+      "type": "entity",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/roboparty-ufo.md",
+      "detail_id": "entity-roboparty-ufo",
+      "label": "UFO（Roboparty 无监督 RL 控制框架）",
+      "type": "entity",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/human-humanoid-tools.md",
+      "detail_id": "entity-human-humanoid-tools",
+      "label": "human-humanoid-tools（hhtools）",
+      "type": "entity",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/roboto-origin.md",
+      "detail_id": "entity-roboto-origin",
+      "label": "Roboto Origin（开源人形机器人基线）",
+      "type": "entity",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "运动控制（Locomotion） 社区"
+    },
+    {
+      "path": "wiki/concepts/motion-retargeting.md",
+      "detail_id": "wiki-concepts-motion-retargeting",
+      "label": "Motion Retargeting（动作重定向）",
+      "type": "concept",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
       "path": "wiki/concepts/generalized-value-functions.md",
       "detail_id": "wiki-concepts-generalized-value-functions",
       "label": "Generalized Value Functions (GVFs)",
@@ -139,85 +216,18 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/methods/generative-world-models.md",
-      "detail_id": "wiki-methods-generative-world-models",
-      "label": "Generative World Models (生成式世界模型)",
-      "type": "method",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dexverse.md",
-      "detail_id": "entity-paper-dexverse",
-      "label": "DexVerse（Multi-Task, Multi-Embodiment Dexterous Manipulation Benchmark）",
-      "type": "entity",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/isaac-lab.md",
-      "detail_id": "entity-isaac-lab",
-      "label": "Isaac Lab",
-      "type": "entity",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
-    },
-    {
-      "path": "wiki/queries/dexterous-manipulation-data-pipeline.md",
-      "detail_id": "wiki-queries-dexterous-manipulation-data-pipeline",
-      "label": "灵巧操作数据管线与 RL 训练基建指南",
-      "type": "query",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-embodiedgen-v2-sim-ready-world-engine.md",
-      "detail_id": "entity-paper-embodiedgen-v2-sim-ready-world-engine",
-      "label": "EmbodiedGen V2（Simulation-Ready 3D World Engine · arXiv:2607.07459）",
-      "type": "entity",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-physisforcing.md",
-      "detail_id": "entity-paper-physisforcing",
-      "label": "PhysisForcing（Physics Reinforced World Simulator）",
-      "type": "entity",
-      "recency": "2026-07-13",
-      "source": "log.md",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/generalized-value-functions.md",
-    "detail_id": "wiki-concepts-generalized-value-functions",
-    "label": "Generalized Value Functions (GVFs)",
-    "type": "concept",
+    "path": "wiki/overview/roboparty-lab-party-os-technology-map.md",
+    "detail_id": "wiki-overview-roboparty-lab-party-os-technology-map",
+    "label": "RoboParty Lab / Party OS 技术地图",
+    "type": "overview",
     "recency": "2026-07-14",
     "source": "log.md",
     "action": "added",
-    "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    "has_repo": true,
+    "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
   },
   "top_communities": [
     {
