@@ -1089,6 +1089,7 @@
 - [AI Auto-Research（学术研究自动化）](wiki/concepts/ai-auto-research.md) — AI Auto-Research**：用大语言模型及其 **agentic 扩展**，在学术研究 **全生命周期** — 从假设与文献、代码与实验、图表与写作，到同行评议、答辩修订与 Paper2 `📅unknown` `[wiki_page]`
 - [Armature Modeling（电枢惯量建模）](wiki/concepts/armature-modeling.md) — 在机器人动力学和仿真中，**Armature** 指的是电机内部旋转部件（转子）的转动惯量，经过减速比放大后，对关节端产生的等效惯性效应。 `📅unknown` `[wiki_page]`
 - [反向传播算法 (Backpropagation)](wiki/concepts/backpropagation.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[wiki_page]`
+- [Bayesian Belief Analysis（贝叶斯信念分析）](wiki/concepts/bayesian-belief-analysis.md) — 贝叶斯信念分析**：在 **部分可观测** 或 **模型不确定** 的序贯决策中，用 **概率分布 $b_t$** 表示对隐状态（或参数）的信念，并按 **Bayes 规则** 随观测递推更新，再 `📅unknown` `[wiki_page]`
 - [Behavior Foundation Model（行为基础模型，BFM）](wiki/concepts/behavior-foundation-model.md) — Behavior Foundation Model（BFM）**：从 **大规模、多样化行为数据**（动捕、遥操作、自博弈交互等）学习 **可复用的全身行为先验**，使人形 **whole-bod `📅unknown` `[wiki_page]`
 - [行为树 × VLA 编排](wiki/concepts/behavior-tree-vla-orchestration.md) — 行为树（Behaviour Tree, BT）与 VLA 结合**：把 **宏任务流程**（加载策略、复位姿态、移动底盘、循环 pick-and-place）交给 **可组合、可恢复** 的行为树 `📅unknown` `[wiki_page]`
 - [The Bitter Lesson（惨痛教训）](wiki/concepts/bitter-lesson.md) — The Bitter Lesson**：Richard Sutton 2019 年提出的 AI 方法论观察——**通用、可随算力规模扩展的方法（search 与 learning）长期压倒内置人类 `📅unknown` `[wiki_page]`
@@ -1126,6 +1127,7 @@
 - [Foundation Policy（基础策略模型）](wiki/concepts/foundation-policy.md) — Foundation Policy（基础策略模型）**：在大规模多任务、多机器人形态演示数据上预训练的通用机器人策略，通过"规模化预训练 + 任务微调"范式，将跨任务泛化能力迁移到新场景——是 N `📅unknown` `[wiki_page]`
 - [Friction Compensation（摩擦补偿）](wiki/concepts/friction-compensation.md) — 摩擦补偿**：根据关节速度（及可选负载）估计摩擦矩 $\hat{\tau}_f$，在 **前馈通道** 叠加到 PD/RL 输出，使 **净关节力矩** 更接近仿真假设。 `📅unknown` `[wiki_page]`
 - [Gait Generation（步态生成）](wiki/concepts/gait-generation.md) — Gait Generation** 是腿式机器人运动控制中负责**决定步态模式（gait pattern）的模块**：确定各腿的支撑/摆动相时序、步频、步幅范围，为步位规划和质心轨迹优化提供时序框 `📅unknown` `[wiki_page]`
+- [Generalized Value Functions (GVFs)](wiki/concepts/generalized-value-functions.md) — 广义价值函数（GVF）**：在标准 value function 框架下，把「奖励折扣和」推广为「**任意 cumulant 信号** 在 **策略 π** 与 **终止/折扣 γ** 下的期望累 `📅unknown` `[wiki_page]`
 - [生成式视觉预训练（Generative Vision Pretraining）](wiki/concepts/generative-vision-pretraining.md) — 生成式视觉预训练**是以 **合成视觉内容**（图像、编辑、视频帧等）为训练目标的表征学习范式；与 ImageNet 分类、对比学习、MAE 等 **非生成** 路线不同，它假设 **「能按语义与 `📅unknown` `[wiki_page]`
 - [Hierarchical Quadruped Navigation Stack（四足分层导航栈）](wiki/concepts/hierarchical-quadruped-navigation-stack.md) — 四足分层导航栈** 将 **语义/语言目标、全局路径、局部运动、关节力矩** 拆成多层模块，避免「一个端到端网络从像素直接到电机」的工程不可控性。 `📅unknown` `[wiki_page]`
 - [HQP（Hierarchical QP）](wiki/concepts/hqp.md) — 分层二次规划（Hierarchical Quadratic Programming，HQP）**：全身控制（WBC）中处理多任务优先级冲突的优化框架，通过将任务按优先级分层求解，确保高优先级任务精 `📅unknown` `[wiki_page]`

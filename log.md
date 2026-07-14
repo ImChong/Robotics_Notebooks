@@ -1,5 +1,15 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-14] ingest | sources/papers/generalized_value_functions_gvf_primary_refs.md、sources/papers/bayesian_analysis_rl_primary_refs.md — GVF 与贝叶斯信念分析一手资料；wiki/concepts/generalized-value-functions.md、wiki/concepts/bayesian-belief-analysis.md
+
+- wiki/concepts/generalized-value-functions.md
+- wiki/concepts/bayesian-belief-analysis.md
+- wiki/entities/richard-sutton.md
+- wiki/formalizations/pomdp.md
+- wiki/methods/model-based-rl.md
+- sources/papers/generalized_value_functions_gvf_primary_refs.md
+- sources/papers/bayesian_analysis_rl_primary_refs.md
+
 ## [2026-07-14] ingest | sources/sites/incompleteideas-net-rich-sutton.md — Richard Sutton / incompleteideas.net 一手资料；wiki/entities/richard-sutton.md、wiki/entities/sutton-barto-rl-book.md、wiki/concepts/bitter-lesson.md
 
 - wiki/entities/richard-sutton.md

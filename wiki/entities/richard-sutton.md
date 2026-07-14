@@ -6,6 +6,8 @@ updated: 2026-07-14
 related:
   - ./sutton-barto-rl-book.md
   - ../concepts/bitter-lesson.md
+  - ../concepts/generalized-value-functions.md
+  - ../concepts/bayesian-belief-analysis.md
   - ../methods/reinforcement-learning.md
   - ../methods/model-based-rl.md
   - ../formalizations/mdp.md
@@ -17,6 +19,8 @@ sources:
   - ../../sources/sites/incompleteideas-net-rich-sutton.md
   - ../../sources/blogs/sutton_bitter_lesson.md
   - ../../sources/blogs/sutton_one_step_trap.md
+  - ../../sources/papers/generalized_value_functions_gvf_primary_refs.md
+  - ../../sources/papers/bayesian_analysis_rl_primary_refs.md
 summary: "Richard Sutton：RL 奠基人、2019 图灵奖得主；incompleteideas.net 托管 Sutton & Barto 教材、Alberta RL MOOC、Incomplete Ideas 博文与 RL 研究一手资料。"
 ---
 
@@ -53,7 +57,7 @@ summary: "Richard Sutton：RL 奠基人、2019 图灵奖得主；incompleteideas
 ### 2. 时序抽象：Options 与 Horde/GVF
 
 - **Options framework**（1999）：在 MDP 与 semi-MDP 之间建立 temporal abstraction。
-- **Horde**（2011）：无监督 sensorimotor 交互中并行学习大量 GVFs。
+- **Horde**（2011）：无监督 sensorimotor 交互中并行学习大量 GVFs——详见 [Generalized Value Functions](../concepts/generalized-value-functions.md)。
 - **Reward-respecting subtasks**（2023）：为 MBRL 提供时序抽象子任务——Sutton 眼中「一步陷阱」的解药方向。
 
 ### 3. 研究哲学（RLAI slogans 摘录）
@@ -79,6 +83,8 @@ summary: "Richard Sutton：RL 奠基人、2019 图灵奖得主；incompleteideas
 ## 关联页面
 
 - [Sutton & Barto RL 教材](./sutton-barto-rl-book.md)
+- [Generalized Value Functions (GVFs)](../concepts/generalized-value-functions.md)
+- [Bayesian Belief Analysis](../concepts/bayesian-belief-analysis.md)
 - [The Bitter Lesson](../concepts/bitter-lesson.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Model-Based RL](../methods/model-based-rl.md)
@@ -90,6 +96,8 @@ summary: "Richard Sutton：RL 奠基人、2019 图灵奖得主；incompleteideas
 ## 参考来源
 
 - [incompleteideas.net 一手资料索引](../../sources/sites/incompleteideas-net-rich-sutton.md)
+- [GVF 一手资料索引](../../sources/papers/generalized_value_functions_gvf_primary_refs.md)
+- [贝叶斯分析一手资料索引](../../sources/papers/bayesian_analysis_rl_primary_refs.md)
 - [The Bitter Lesson 原始资料](../../sources/blogs/sutton_bitter_lesson.md)
 - [The One-Step Trap 原始资料](../../sources/blogs/sutton_one_step_trap.md)
 
