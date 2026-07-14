@@ -222,6 +222,7 @@ flowchart LR
   - [BFM（人形行为基础模型）](depth-bfm.md) — Stage 5 方向 D 的主要数据消费者
   - [人形 RL 运动控制](depth-rl-locomotion.md) — 跟踪训练的训练侧前置
   - [接触丰富的操作任务](depth-contact-manipulation.md) — 方向 B 灵巧手接触的邻接路线
+  - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md)
   - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
   - [安全控制（CLF/CBF）](depth-safe-control.md)
   - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md)
