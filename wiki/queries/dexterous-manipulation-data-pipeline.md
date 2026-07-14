@@ -3,13 +3,14 @@ title: 灵巧操作数据管线与 RL 训练基建指南
 type: query
 status: complete
 created: 2026-05-21
-updated: 2026-06-29
+updated: 2026-07-14
 related:
   - ../methods/auto-labeling-pipelines.md
   - ../methods/wilor.md
   - ../methods/gae.md
   - ../methods/actuator-network.md
   - ../entities/paper-chord-contact-wrench-dexterous-manipulation.md
+  - ../entities/paper-dexverse.md
 summary: 灵巧操作从自动标注、手部重建到 RL 优势估计与执行器建模的数据与训练基建选型。
 sources:
   - ../../sources/papers/policy_optimization.md
@@ -77,6 +78,10 @@ sources:
 ## 5. 端到端视频→策略：Video to Data / CHORD
 
 NVIDIA [Video to Data (V2D)](https://nvidia-isaac.github.io/video_to_data/) 把 **视频 ingest → 重建 → Robotic Grounding** 拆成三阶段可缓存管线；[CHORD](../entities/paper-chord-contact-wrench-dexterous-manipulation.md) 是 Grounding 阶段的 **接触力旋量（CWS）RL 奖励** 与 **4,739** 项双手 benchmark 载体，在 [Isaac Lab](../entities/isaac-lab.md) 上训练。与本文 §1–4 的「单点工具」互补：当演示来自 **动捕或自研视频重建** 且目标是 **接触丰富双手 RL** 时，可把 V2D 当作上游数据工厂，CHORD 当作接触监督与规模化评测入口。
+
+## 6. VR 遥操作示范 + IL/VLA 评测：DexVerse
+
+[DexVerse](../entities/paper-dexverse.md)（arXiv:2607.08751）提供 **Vision Pro + CloudXR** 采集的 **3,180** 条多模态示范（action–state + state replay 再生 RGB/深度/点云），覆盖 **100** 任务与 **3** 臂 × **6** 手具身。当目标是 **跨任务/跨视觉条件的模仿学习或 VLA 微调**（而非 CHORD 式 CWS-RL）时，可把 DexVerse 当作 **未饱和排行榜**：论文报告 π₀.₅/DP3 均值成功率仅 **34%**，PushT/InsertPen 等精密任务全线 **0%**——适合检验新观测模态或接触修正模块是否带来 **category-level** 增益。
 
 ---
 
