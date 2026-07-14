@@ -677,7 +677,7 @@ def build_item(path: Path) -> dict[str, Any]:
         "title": title,
         "path": rel(path),
         "summary": extract_summary(body_text, fm),
-        "content_markdown": extract_body_markdown(text),
+        "content_markdown": extract_body_markdown(body_text),
         "tags": infer_tags(path, title, text),
         "related": collect_markdown_links(text, path),
         "source_links": collect_reference_sources(body_text, path),
