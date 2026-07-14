@@ -2,10 +2,12 @@
 
 type: entity
 summary: "legged_gym"
-updated: 2026-07-08
+updated: 2026-07-14
 related:
   - ../entities/extreme-parkour.md
   - ../entities/humanoid-gym.md
+  - ../entities/paper-infinite-diffusion-terrain-diffusion.md
+  - ../concepts/procedural-terrain-generation.md
 sources:
   - ../../sources/papers/simulation_tools.md
   - ../../sources/papers/policy_optimization.md
@@ -276,6 +278,7 @@ tags: [eth]
 - [Legged / Humanoid RL 中 Kp/Kd 设置](../queries/legged-humanoid-rl-pd-gain-setting.md)
 - [ANYmal 分钟级并行 DRL（原论文实体）](./paper-anymal-walk-minutes-parallel-drl.md)
 - [Humanoid-Gym](./humanoid-gym.md) — 人形步态相位奖励 + MuJoCo sim2sim + XBot 真机验证
+- [InfiniteDiffusion / Terrain Diffusion](./paper-infinite-diffusion-terrain-diffusion.md) — 学习式无限地形生成（`terrain.py` 经典程序化噪声的对照后继）
 - [Extreme Parkour（感知跑酷 fork）](./extreme-parkour.md) — ICRA 2024；legged_gym 生态上的两阶段深度跑酷扩展
 - [Walk These Ways（MoB）](./paper-walk-these-ways-quadruped-mob.md)
 

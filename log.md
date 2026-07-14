@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-14] ingest | sources/papers/infinite_diffusion_terrain_diffusion_siggraph_2026.md、sources/repos/terrain-diffusion.md — InfiniteDiffusion/Terrain Diffusion（SIGGRAPH 2026）；wiki/entities/paper-infinite-diffusion-terrain-diffusion.md；交叉 procedural-terrain-generation、generative-world-models
+
+- wiki/entities/paper-infinite-diffusion-terrain-diffusion.md
+- wiki/concepts/procedural-terrain-generation.md
+- wiki/methods/generative-world-models.md
+- sources/papers/infinite_diffusion_terrain_diffusion_siggraph_2026.md
+- sources/repos/terrain-diffusion.md
+
 ## [2026-07-14] ingest | sources/papers/dexverse_arxiv_2607_08751.md — DexVerse 多任务多具身灵巧 benchmark；wiki/entities/paper-dexverse.md
 
 - wiki/entities/paper-dexverse.md

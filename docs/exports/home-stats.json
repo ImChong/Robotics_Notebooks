@@ -1,13 +1,43 @@
 {
   "generated_at": "2026-07-14",
-  "node_count": 1598,
-  "edge_count": 12180,
+  "node_count": 1599,
+  "edge_count": 12197,
   "coverage": {
-    "covered": 1552,
-    "total": 1582,
+    "covered": 1553,
+    "total": 1583,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-infinite-diffusion-terrain-diffusion.md",
+      "detail_id": "entity-paper-infinite-diffusion-terrain-diffusion",
+      "label": "InfiniteDiffusion / Terrain Diffusion（学习式无限地形生成）",
+      "type": "entity",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/concepts/procedural-terrain-generation.md",
+      "detail_id": "wiki-concepts-procedural-terrain-generation",
+      "label": "Procedural Terrain Generation（程序化地形生成）",
+      "type": "concept",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "运动控制（Locomotion） 社区"
+    },
+    {
+      "path": "wiki/methods/generative-world-models.md",
+      "detail_id": "wiki-methods-generative-world-models",
+      "label": "Generative World Models (生成式世界模型)",
+      "type": "method",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
     {
       "path": "wiki/entities/paper-dexverse.md",
       "detail_id": "entity-paper-dexverse",
@@ -84,8 +114,7 @@
       "recency": "2026-07-13",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-ame-attention-based-map-encoding.md",
@@ -178,48 +207,17 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/gr00t-wholebodycontrol.md",
-      "detail_id": "entity-gr00t-wholebodycontrol",
-      "label": "GR00T-WholeBodyControl（人形全身控制统一平台）",
-      "type": "entity",
-      "recency": "2026-07-13",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-07-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/robo-bench.md",
-      "detail_id": "entity-robo-bench",
-      "label": "RoboBench（MLLM 具身大脑综合评测）",
-      "type": "entity",
-      "recency": "2026-07-12",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-dexverse.md",
-    "detail_id": "entity-paper-dexverse",
-    "label": "DexVerse（Multi-Task, Multi-Embodiment Dexterous Manipulation Benchmark）",
+    "path": "wiki/entities/paper-infinite-diffusion-terrain-diffusion.md",
+    "detail_id": "entity-paper-infinite-diffusion-terrain-diffusion",
+    "label": "InfiniteDiffusion / Terrain Diffusion（学习式无限地形生成）",
     "type": "entity",
     "recency": "2026-07-14",
     "source": "log.md",
-    "action": "added"
+    "action": "added",
+    "has_repo": true
   },
   "top_communities": [
     {
@@ -236,7 +234,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 170
+      "size": 169
     },
     {
       "label": "人形强化学习运动控制",
@@ -244,7 +242,7 @@
     },
     {
       "label": "动作重定向",
-      "size": 103
+      "size": 97
     }
   ],
   "top_hubs": [
@@ -283,7 +281,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 228,
+      "degree": 229,
       "community_label": "运动控制（Locomotion） 社区"
     },
     {
@@ -388,8 +386,7 @@
       "label": "MoRE：复杂地形上的人形多步态残差专家混合",
       "type": "entity",
       "degree": 26,
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
+      "has_repo": true
     }
   ]
 }
