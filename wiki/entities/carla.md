@@ -5,6 +5,7 @@ tags: [entity, simulator, autonomous-driving, carla, urban, sensor-simulation, m
 status: complete
 updated: 2026-06-22
 related:
+  - ./unreal-engine-5.md
   - ./airsim.md
   - ../concepts/sim2real.md
   - ../overview/sim-platforms-decade-technology-map.md

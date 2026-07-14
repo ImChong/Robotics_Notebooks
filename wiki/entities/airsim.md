@@ -4,6 +4,7 @@ tags: [repo, simulation, uav, computer-vision, unreal-engine, microsoft]
 status: complete
 updated: 2026-06-21
 related:
+  - ./unreal-engine-5.md
   - ../overview/multirotor-simulation-planning-control-stack.md
   - ./px4-autopilot.md
   - ./flightmare.md

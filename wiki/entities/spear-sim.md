@@ -5,6 +5,7 @@ tags: [repo, simulation, unreal-engine, photorealistic, embodied-ai, synthetic-d
 status: complete
 updated: 2026-06-21
 related:
+  - ./unreal-engine-5.md
   - ./airsim.md
   - ./metahuman.md
   - ./mujoco.md

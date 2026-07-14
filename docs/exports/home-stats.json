@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-07-14",
-  "node_count": 1632,
-  "edge_count": 12619,
+  "node_count": 1633,
+  "edge_count": 12636,
   "coverage": {
-    "covered": 1585,
-    "total": 1615,
+    "covered": 1586,
+    "total": 1616,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/unreal-engine-5.md",
+      "detail_id": "entity-unreal-engine-5",
+      "label": "Unreal Engine 5（Epic 实时 3D 引擎）",
+      "type": "entity",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+    },
     {
       "path": "wiki/overview/humanoid-motion-control-framework-outlook.md",
       "detail_id": "wiki-overview-humanoid-motion-control-framework-outlook",
@@ -193,52 +204,43 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-muon-scalable-llm-training.md",
-      "detail_id": "entity-paper-muon-scalable-llm-training",
-      "label": "Muon is Scalable for LLM Training（arXiv:2502.16982）",
-      "type": "entity",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/humanoid-motion-control-framework-outlook.md",
-    "detail_id": "wiki-overview-humanoid-motion-control-framework-outlook",
-    "label": "人形机器人技术框架路线展望",
-    "type": "overview",
+    "path": "wiki/entities/unreal-engine-5.md",
+    "detail_id": "entity-unreal-engine-5",
+    "label": "Unreal Engine 5（Epic 实时 3D 引擎）",
+    "type": "entity",
     "recency": "2026-07-14",
     "source": "log.md",
     "action": "added",
-    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    "has_repo": true,
+    "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 314
+      "size": 290
     },
     {
       "label": "人形论文深读笔记",
-      "size": 174
+      "size": 213
     },
     {
       "label": "移动操作",
-      "size": 163
-    },
-    {
-      "label": "动作重定向",
-      "size": 126
+      "size": 160
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 125
+      "size": 127
+    },
+    {
+      "label": "动作重定向",
+      "size": 91
     },
     {
       "label": "全身控制",
-      "size": 85
+      "size": 82
     }
   ],
   "top_hubs": [
@@ -253,7 +255,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 276,
+      "degree": 277,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -314,7 +316,8 @@
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
       "degree": 168,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     }
   ],
   "top_paper_hubs": [
@@ -363,8 +366,7 @@
       "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",
       "label": "SD-AMP：统一走、跑与起身的对抗运动先验",
       "type": "entity",
-      "degree": 29,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
+      "degree": 29
     },
     {
       "detail_id": "entity-paper-bfm-zero",
