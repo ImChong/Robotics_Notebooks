@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-15",
-  "node_count": 1635,
-  "edge_count": 12673,
+  "node_count": 1637,
+  "edge_count": 12692,
   "coverage": {
-    "covered": 1588,
-    "total": 1618,
+    "covered": 1590,
+    "total": 1620,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -69,6 +69,35 @@
       "source": "log.md",
       "action": "added",
       "community_label": "运动控制（Locomotion） 社区"
+    },
+    {
+      "path": "wiki/queries/embodied-eval-benchmark-selection-loop.md",
+      "detail_id": "wiki-queries-embodied-eval-benchmark-selection-loop",
+      "label": "Query：具身大模型评测基准选型闭环知识链",
+      "type": "query",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/sim-vs-real-eval-gap.md",
+      "detail_id": "wiki-concepts-sim-vs-real-eval-gap",
+      "label": "概念：仿真评测可复现性 ↔ 真实世界代表性取舍（sim↔real 评测 gap）",
+      "type": "concept",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/simulation-evaluation-infrastructure.md",
+      "detail_id": "wiki-concepts-simulation-evaluation-infrastructure",
+      "label": "仿真评测基础设施（Simulation as Evaluation Infrastructure）",
+      "type": "concept",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "maintained"
     },
     {
       "path": "wiki/entities/unity-engine.md",
@@ -176,35 +205,6 @@
       "recency": "2026-07-14",
       "source": "log.md",
       "action": "added"
-    },
-    {
-      "path": "wiki/queries/humanoid-motion-control-know-how.md",
-      "detail_id": "wiki-queries-humanoid-motion-control-know-how",
-      "label": "人形机器人运动控制 Know-How 结构化摘要",
-      "type": "query",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/overview/humanoid-motion-control-trends.md",
-      "detail_id": "wiki-overview-humanoid-motion-control-trends",
-      "label": "人形机器人运动控制发展趋势",
-      "type": "overview",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/overview/humanoid-model-based-control-stack.md",
-      "detail_id": "wiki-overview-humanoid-model-based-control-stack",
-      "label": "传统运动控制方法栈（Model-based）",
-      "type": "overview",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -221,11 +221,11 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 258
+      "size": 261
     },
     {
       "label": "人形论文深读笔记",
-      "size": 211
+      "size": 210
     },
     {
       "label": "移动操作",
@@ -256,7 +256,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 280,
+      "degree": 282,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

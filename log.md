@@ -12,6 +12,13 @@
 - sources/repos/pace-sim2real.md
 - sources/sites/pace-filipbjelonic-com.md
 
+## [2026-07-14] structural | wiki/queries/embodied-eval-benchmark-selection-loop.md、wiki/concepts/sim-vs-real-eval-gap.md — 沉淀「具身大模型评测基准选型闭环知识链」（V29 P1①）
+
+- wiki/queries/embodied-eval-benchmark-selection-loop.md（端到端 Query：MLLM 认知评测 → 世界模型预测保真度 → 策略成功率 → sim↔real gap 校准 四层评测选型决策树 + Mermaid，含矛盾/失败模式速查）
+- wiki/concepts/sim-vs-real-eval-gap.md（仿真可复现性 ↔ 真实代表性取舍概念页，双向回链 Query）
+- wiki/concepts/simulation-evaluation-infrastructure.md（关联页面补入评测选型闭环回链，消孤儿）
+- 图谱见本次自动重算的 graph-stats.json（已并入 main 新增页）；largest_community_ratio 健康；`make lint` 0 errors
+
 ## [2026-07-14] ingest | sources/sites/unity-com.md — 接入 Unity Engine 官网与文档并升格 wiki/entities/unity-engine.md
 
 ## [2026-07-14] ingest | sources/sites/unreal-engine-5-com.md、sources/sites/unreal-engine-5-8-docs.md、sources/repos/epicgames-github-org.md、sources/repos/unrealengine-github.md — 接入 UE5 官网/5.8 文档/Epic GitHub 与引擎私有仓说明，新建 wiki/entities/unreal-engine-5.md 并交叉更新 MetaHuman/AirSim/CARLA/SPEAR/MATRiX
