@@ -227,6 +227,7 @@ flowchart LR
   - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
   - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md)
   - [人形 RL 运动控制](depth-rl-locomotion.md)
+  - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md)
   - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
   - [安全控制（CLF/CBF）](depth-safe-control.md)
   - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)

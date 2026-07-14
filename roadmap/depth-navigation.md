@@ -227,6 +227,7 @@ flowchart LR
   - [模仿学习与技能迁移](depth-imitation-learning.md)
   - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md)
   - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
+  - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md)
   - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
   - [安全控制（CLF/CBF）](depth-safe-control.md)
   - [接触丰富的操作任务](depth-contact-manipulation.md)

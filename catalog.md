@@ -1576,6 +1576,7 @@
 - [路线（纵深）：如果目标是感知越障（Perceptive Locomotion）](roadmap/depth-perceptive-locomotion.md) — 摘要**：面向"让机器人看着地形上楼梯、跨障碍、跑酷"的纵深路线，从本体感知盲走基线到地形表征、感知策略训练，再到楼梯/跑酷进阶与导航栈整合，按 Stage 0–4 串通核心方法；本路线是 [运动 `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是人形 RL 运动控制](roadmap/depth-rl-locomotion.md) — 摘要**：面向"想用强化学习做人形 locomotion"的快速纵深路线，从 RL 基础到 sim2real，按 Stage 0–5 串通核心方法；本路线是 [运动控制主路线](motion-co `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是安全控制（CLF / CBF / Safe RL）](roadmap/depth-safe-control.md) — 摘要**：面向"在满足安全约束的前提下控制机器人"的纵深路线，从 Lyapunov 稳定性到 CBF-QP、再到 Safe RL，按 Stage 0–3 串通核心方法；本路线是 [运动控制主路线 `📅unknown` `[roadmap_page]`
+- [路线（纵深）：如果目标是力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环 → 关节模组）](roadmap/depth-torque-motor-design.md) — 摘要**：面向"想把关节电机从任务指标一路做到可验收力矩闭环模组"的纵深路线，从电机学地基与 TN/TI 读图，到关节指标定义与执行器架构选型、电磁热设计、驱动硬件与电流环，再到 FOC 力矩闭环 `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是 VLA（视觉-语言-动作模型）](roadmap/depth-vla.md) — 摘要**：面向"想让机器人听懂指令干活"的纵深路线，从具身模型分类学、模仿学习策略基座，到 VLA 语义策略主线（RT 系列 → OpenVLA → π0）、数据与 Scaling，再到部署整合与 `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是 WAM（世界–动作模型）](roadmap/depth-wam.md) — 摘要**：面向"想让策略在出动作前显式预知世界会怎么变"的纵深路线，从 VLA / 世界模型 / WAM 的边界与 Cascaded–Joint 族谱，到生成式世界模型与动力学基座，再到 Casc `📅unknown` `[roadmap_page]`
 - [主路线：运动控制算法工程师成长路线](roadmap/motion-control.md) — 首屏导读**： `📅unknown` `[roadmap_page]`

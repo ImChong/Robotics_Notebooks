@@ -1,13 +1,44 @@
 {
   "generated_at": "2026-07-14",
-  "node_count": 1612,
-  "edge_count": 12366,
+  "node_count": 1613,
+  "edge_count": 12430,
   "coverage": {
     "covered": 1566,
     "total": 1596,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/motor-design-workflow.md",
+      "detail_id": "wiki-overview-motor-design-workflow",
+      "label": "电机设计流程（规格 → 仿真 → 样机 → 控制）",
+      "type": "overview",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/overview/humanoid-actuator-102-technology-map.md",
+      "detail_id": "wiki-overview-humanoid-actuator-102-technology-map",
+      "label": "Humanoid 执行器 102：八章技术地图",
+      "type": "overview",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/concepts/field-oriented-control.md",
+      "detail_id": "wiki-concepts-field-oriented-control",
+      "label": "磁场定向控制（Field Oriented Control, FOC）",
+      "type": "concept",
+      "recency": "2026-07-14",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
     {
       "path": "wiki/entities/paper-faststair-humanoid-stair-ascent.md",
       "detail_id": "entity-paper-faststair-humanoid-stair-ascent",
@@ -182,48 +213,17 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-vidihand.md",
-      "detail_id": "entity-paper-vidihand",
-      "label": "ViDiHand — Video Diffusion for 4D Hand Motion Reconstruction",
-      "type": "entity",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/roboparty.md",
-      "detail_id": "entity-roboparty",
-      "label": "RoboParty（萝博派对）",
-      "type": "entity",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/roboto-origin.md",
-      "detail_id": "entity-roboto-origin",
-      "label": "Roboto Origin（开源人形机器人基线）",
-      "type": "entity",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "运动控制（Locomotion） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-faststair-humanoid-stair-ascent.md",
-    "detail_id": "entity-paper-faststair-humanoid-stair-ascent",
-    "label": "FastStair（Learning to Run Up Stairs with Humanoid Robots）",
-    "type": "entity",
+    "path": "wiki/overview/motor-design-workflow.md",
+    "detail_id": "wiki-overview-motor-design-workflow",
+    "label": "电机设计流程（规格 → 仿真 → 样机 → 控制）",
+    "type": "overview",
     "recency": "2026-07-14",
     "source": "log.md",
     "action": "maintained",
-    "community_label": "运动控制（Locomotion） 社区"
+    "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
   },
   "top_communities": [
     {
@@ -248,7 +248,7 @@
     },
     {
       "label": "动作重定向",
-      "size": 78
+      "size": 84
     }
   ],
   "top_hubs": [

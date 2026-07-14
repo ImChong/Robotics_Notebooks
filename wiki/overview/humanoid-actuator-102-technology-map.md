@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, actuator, backdrivability, reflected-inertia, qdd, sea, survey]
 status: complete
-updated: 2026-06-02
+updated: 2026-07-14
 related:
   - ./humanoid-actuator-102-load-and-mass-spiral.md
   - ./humanoid-actuator-102-split-architecture.md
@@ -93,6 +93,7 @@ flowchart LR
 
 ## 关联页面
 
+- [力矩电机设计纵深路线（Stage 0–5 学习顺序展开版）](../../roadmap/depth-torque-motor-design.md)
 - [电机设计流程（规格 → 仿真 → 样机 → 控制）](./motor-design-workflow.md)
 - [电机转矩-转速曲线（TN 曲线）](../concepts/motor-torque-speed-curve.md) — 关节模组 datasheet 读图
 - [电机转矩-电流曲线（TI 曲线）](../concepts/motor-torque-current-curve.md)

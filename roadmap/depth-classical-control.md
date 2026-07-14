@@ -173,6 +173,7 @@ flowchart LR
 
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
 - 其它纵深路径：
+  - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md) — Stage 4 WBC 输出的关节力矩由这条路线的力矩闭环兑现
   - [人形 RL 运动控制](depth-rl-locomotion.md)
   - [模仿学习与技能迁移](depth-imitation-learning.md)
   - [安全控制（CLF/CBF）](depth-safe-control.md)
