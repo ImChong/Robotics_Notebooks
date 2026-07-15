@@ -41,7 +41,7 @@ sources:
 ## 为什么重要
 
 - **全景 WM 的专属几何：** 多数记忆增强视频生成（3D 点、KV cache、显式重建）继承 **透视相机假设**，在 ERP **极区畸变与旋转视点** 下检索错位；PanoWorld 把 **rotation-equivariance** 写进建模假设，而非后处理补丁。
-- **轨迹可控 + 长程一致：** 相对 **Matrix-3D**（显式 3D 重建 + inpainting，高延迟、高度变化易 void）与 **OmniRoam**（固定高度训练、竖向指令 ghosting），PanoWorld 在 **multi-altitude 户外** PSNR 与 FID 上 **全面领先**（480p PSNR$_{75-80}$ **20.92 vs 18.02/17.02**）。
+- **轨迹可控 + 长程一致：** 相对 **Matrix-3D**（显式 3D 重建 + inpainting，高延迟、高度变化易 void）与 **OmniRoam**（固定高度训练、竖向指令 ghosting），PanoWorld 在 **multi-altitude 户外** PSNR 与 FID 上 **全面领先**（480p $\mathrm{PSNR}_{75\text{-}80}$ **20.92 vs 18.02/17.02**）。
 - **World360 填补 benchmark 空白：** 相对 360-1M / PanoWan 等 **平面街景**，World360 强调 **多高度 aerial 3D 轨迹 + 真实光照变化 + 仿真 pose/depth**，更适合评 **物理一致性与大尺度空间变化**。
 - **机器人/UAV 语境：** 论文明确面向 **自动驾驶与 UAV** 等需 **环视一致预测** 的应用；与 [Generative World Models](../methods/generative-world-models.md) 中 **像素 rollout** 路线互补，但 **输入/输出为 360° ERP** 而非窄 FOV pinhole。
 - **工程可部署路径：** **Causal Forcing** 蒸馏 + Rolling Forcing 推理，161 帧 **8 s**（单 H20），为 **交互式全景探索**（键盘控制 demo）提供数量级加速。
@@ -126,7 +126,7 @@ flowchart TB
 
 - **骨干：** Wan2.2-5B + LoRA；评测 **480p / 720p**，81 帧协议。
 - **基线：** Imagine360、Matrix-3D、OmniRoam；统一 **de-rotated GT 轨迹** 条件（CamPVG / OmniRoam 协议）。
-- **视觉质量（480p）：** FID **27.64**，FID$_{pole}$ **47.21**，QA$_{qual.}$ **4.0202** — 全面优于 Matrix-3D / OmniRoam。
+- **视觉质量（480p）：** FID **27.64**，$\mathrm{FID}_{\mathrm{pole}}$ **47.21**，$\mathrm{QA}_{\mathrm{qual.}}$ **4.0202** — 全面优于 Matrix-3D / OmniRoam。
 - **轨迹控制：** PSNR 全窗口领先；**ViPE** 从生成视频重建 pose，与 GT 对齐最紧。
 - **实时：** Causal Forcing 蒸馏后 **~8 s / 161 帧** vs 完整模型 **~4 min 48 s**。
 
