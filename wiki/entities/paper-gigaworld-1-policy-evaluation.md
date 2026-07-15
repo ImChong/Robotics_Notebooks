@@ -20,6 +20,7 @@ related:
   - ../entities/paper-dreamsteer-vla-deployment-steering.md
   - ../entities/paper-embodiedgen-v2-sim-ready-world-engine.md
   - ../entities/paper-worldscape-moe-heterogeneous-action.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
 summary: "GigaWorld-1（arXiv:2607.02642）：WMBench + 7 类视频 WM、4 种动作编码、32.4 万+ rollout 系统研究；结论：长时序动作忠实 rollout 比短时视觉逼真更决定评估质量；发布 GigaWorld-1 评估器（+14.9% WMES）。"
@@ -122,6 +123,7 @@ flowchart TB
 - [World Action Models](../concepts/world-action-models.md) — 被评估 WAM/VLA 语境
 - [DreamSteer](./paper-dreamsteer-vla-deployment-steering.md) — WM 预演选动作
 - [EmbodiedGen V2](./paper-embodiedgen-v2-sim-ready-world-engine.md) — 环境扩展
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是其「② 世界模型作策略评估器层」的代表工作（长时序动作忠实 > 短时视觉逼真），双向回链
 
 ## 推荐继续阅读
 

@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-15] structural | V29 P1「评测基准家族层专题交叉补强」——robo-bench / ewmbench / gigaworld-1 三页与「具身大模型评测基准选型闭环」Query 页双向回链，标注各自评测层
+
+- wiki/entities/robo-bench.md（① 具身大脑/MLLM 认知评测层，related + 关联页面双向回链）
+- wiki/entities/ewmbench.md（② 世界模型预测保真度评测层，related + 关联页面双向回链）
+- wiki/entities/paper-gigaworld-1-policy-evaluation.md（② 世界模型作策略评估器层，related + 关联页面双向回链）
+- 结果：`ci-preflight` 12/12 通过，graph 边数 12775→12778（+3），0 孤儿，`community_quality_warning: false`
+
 ## [2026-07-15] ingest | sources/papers/sru_spatially_enhanced_recurrent_memory_ijrr_2025.md、sources/repos/sru_odin.md — SRU 无地图循环导航（IJRR 2025）与 SRU-Odin Go2+Odin1 部署；wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md、wiki/entities/sru-odin.md；交叉更新 sim2real、vision-language-navigation
 
 - wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md
