@@ -9,6 +9,47 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md",
+      "detail_id": "entity-paper-sru-spatially-enhanced-recurrent-memory",
+      "label": "SRU（Spatially-Enhanced Recurrent Memory）",
+      "type": "entity",
+      "recency": "2026-07-15",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/sru-odin.md",
+      "detail_id": "entity-sru-odin",
+      "label": "SRU-Odin（SRU × Odin1 部署套件）",
+      "type": "entity",
+      "recency": "2026-07-15",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-07-15",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/tasks/vision-language-navigation.md",
+      "detail_id": "wiki-tasks-vision-language-navigation",
+      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
+      "type": "task",
+      "recency": "2026-07-15",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "path": "wiki/entities/paper-eventvla-visual-evidence-memory.md",
       "detail_id": "entity-paper-eventvla-visual-evidence-memory",
       "label": "EventVLA（Event-Driven Visual Evidence Memory for Long-Horizon VLA）",
@@ -144,17 +185,6 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "recency": "2026-07-15",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
       "path": "wiki/concepts/system-identification.md",
       "detail_id": "wiki-concepts-system-identification",
       "label": "System Identification",
@@ -183,47 +213,16 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/anymal.md",
-      "detail_id": "entity-anymal",
-      "label": "ANYmal 四足机器人",
-      "type": "entity",
-      "recency": "2026-07-15",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/queries/embodied-eval-benchmark-selection-loop.md",
-      "detail_id": "wiki-queries-embodied-eval-benchmark-selection-loop",
-      "label": "Query：具身大模型评测基准选型闭环知识链",
-      "type": "query",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/sim-vs-real-eval-gap.md",
-      "detail_id": "wiki-concepts-sim-vs-real-eval-gap",
-      "label": "概念：仿真评测可复现性 ↔ 真实世界代表性取舍（sim↔real 评测 gap）",
-      "type": "concept",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-eventvla-visual-evidence-memory.md",
-    "detail_id": "entity-paper-eventvla-visual-evidence-memory",
-    "label": "EventVLA（Event-Driven Visual Evidence Memory for Long-Horizon VLA）",
+    "path": "wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md",
+    "detail_id": "entity-paper-sru-spatially-enhanced-recurrent-memory",
+    "label": "SRU（Spatially-Enhanced Recurrent Memory）",
     "type": "entity",
     "recency": "2026-07-15",
     "source": "log.md",
-    "action": "added",
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
