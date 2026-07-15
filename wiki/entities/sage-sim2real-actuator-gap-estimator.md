@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, sim2real, isaac-lab, isaac-sim, actuator, system-identification, humanoid, unitree, dataset]
 status: complete
-updated: 2026-05-17
+updated: 2026-07-15
 related:
   - ../concepts/sim2real.md
   - ../concepts/system-identification.md
@@ -12,6 +12,7 @@ related:
   - ./gr00t-visual-sim2real.md
   - ./nvidia-so101-sim2real-lab-workflow.md
   - ../queries/sim2real-gap-reduction.md
+  - ./paper-pace-sim2real-legged-robots.md
 sources:
   - ../../sources/repos/sage-sim2real-actuator-gap.md
   - ../../sources/courses/nvidia_sim_to_real_so101_isaac.md
@@ -105,6 +106,7 @@ flowchart LR
 
 - 与 **[Sim2Real](../concepts/sim2real.md)**：SAGE 聚焦执行器与关节轨迹层；视觉、地形、感知 gap 不在默认管线内。
 - 与 **[System Identification](../concepts/system-identification.md)** 与 **[Actuator Network](../methods/actuator-network.md)**：SAGE 提供数据与指标接口；SysID / 学习式执行器模型是下游消 gap 手段。
+- 与 **[PACE](./paper-pace-sim2real-legged-robots.md)**：SAGE 偏 **gap 度量与成对数据**；PACE 偏 **参数辨识 + RL 训练闭环**（同为执行器层，栈与目标不同）。
 
 ## 推荐继续阅读
 

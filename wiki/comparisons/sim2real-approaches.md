@@ -11,7 +11,7 @@ sources:
   - ../../sources/papers/sim2real.md
   - ../../sources/papers/locomotion_rl.md
 summary: "Sim2Real 方法横向对比"
-updated: 2026-07-01
+updated: 2026-07-15
 ---
 
 # Sim2Real 方法横向对比
@@ -28,7 +28,7 @@ Sim2Real gap 的应对策略有三大类：**Domain Randomization（仿真端随
 | **计算成本** | 高（更多仿真变体） | 中（对抗或统计对齐） | 低（仿真训练已完成） |
 | **泛化性** | 高（见过多种变体） | 中（对齐目标分布） | 低（过拟合真实环境） |
 | **适用 gap 大小** | 中等 gap | 中等 gap | 小 gap（策略已较好） |
-| **代表工作** | OpenAI Dactyl, AnyDrive | SimOpt, RCAN | RMA fine-tune, Walk These Ways, [FADA](../entities/paper-fada-humanoid.md)（Planner–IDM + LoRA IDM） |
+| **代表工作** | OpenAI Dactyl, AnyDrive | SimOpt, RCAN, [PACE](../entities/paper-pace-sim2real-legged-robots.md)（CMA-ES 关节动力学 + 物理能量 reward） | RMA fine-tune, Walk These Ways, [FADA](../entities/paper-fada-humanoid.md)（Planner–IDM + LoRA IDM） |
 
 ## Domain Randomization（DR）
 

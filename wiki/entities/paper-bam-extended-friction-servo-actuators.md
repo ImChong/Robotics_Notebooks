@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, sim2real, actuator, friction, mujoco, system-identification, servo, dynamixel, icra-2025, google]
 status: complete
-updated: 2026-05-28
+updated: 2026-07-15
 arxiv: "2410.08650"
 venue: ICRA 2025
 code: https://github.com/Rhoban/bam

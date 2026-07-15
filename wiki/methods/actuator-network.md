@@ -2,7 +2,7 @@
 type: method
 tags: [simulation, sim2real, hardware, control, deep-learning]
 status: complete
-updated: 2026-07-09
+updated: 2026-07-15
 related:
   - ../concepts/implicit-explicit-actuator-modeling.md
   - ../concepts/sim2real.md
@@ -92,7 +92,7 @@ flowchart LR
 
 ## 与解析摩擦模型（BAM）的关系
 
-执行器网络用 **黑箱 MLP** 拟合 $(q,\dot q,\text{历史指令})\rightarrow\tau$；[BAM 扩展摩擦](../entities/paper-bam-extended-friction-servo-actuators.md) 则用 **M1–M6 物理参数**（Stribeck、负载相关等）在 MuJoCo 中 **在线更新** 摩擦上界，数据需求为摆锤台架轨迹而非大规模悬空激励。二者可串联：先 BAM 缩小可解释误差，再对残差训练小型网络。
+执行器网络用 **黑箱 MLP** 拟合 $(q,\dot q,\text{历史指令})\rightarrow\tau$；[BAM 扩展摩擦](../entities/paper-bam-extended-friction-servo-actuators.md) 则用 **M1–M6 物理参数**（Stribeck、负载相关等）在 MuJoCo 中 **在线更新** 摩擦上界，数据需求为摆锤台架轨迹而非大规模悬空激励。[PACE](../entities/paper-pace-sim2real-legged-robots.md) 在论文中将 ActuatorNet 作为悬空轨迹对齐的 **黑盒对照**，自身用 **$4n+1$ 可解释关节参数 + CMA-ES** 达到更接近真机的相位图。三者可串联：先 BAM/PACE 缩小可解释误差，再对残差训练小型网络。
 
 ## 关联页面
 - [Implicit / Explicit 执行器建模](../concepts/implicit-explicit-actuator-modeling.md)
@@ -100,6 +100,7 @@ flowchart LR
 - [ANYmal 实体页](../entities/anymal.md) — 广泛使用执行器网络的代表
 - [System Identification (系统辨识)](../concepts/system-identification.md)
 - [BAM 论文实体](../entities/paper-bam-extended-friction-servo-actuators.md)、[BAM 仓库](../entities/bam-better-actuator-models.md)
+- [PACE（足式系统化 Sim2Real）](../entities/paper-pace-sim2real-legged-robots.md) — 论文对比基线；可解释参数辨识路线
 
 ## 参考来源
 
