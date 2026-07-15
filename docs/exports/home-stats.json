@@ -1,13 +1,33 @@
 {
   "generated_at": "2026-07-15",
-  "node_count": 1641,
-  "edge_count": 12741,
+  "node_count": 1642,
+  "edge_count": 12747,
   "coverage": {
-    "covered": 1594,
-    "total": 1624,
+    "covered": 1595,
+    "total": 1625,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-panoworld-real-world-panoramic-generation.md",
+      "detail_id": "entity-paper-panoworld-real-world-panoramic-generation",
+      "label": "PanoWorld：真实世界全景可控生成",
+      "type": "entity",
+      "recency": "2026-07-15",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/generative-world-models.md",
+      "detail_id": "wiki-methods-generative-world-models",
+      "label": "Generative World Models (生成式世界模型)",
+      "type": "method",
+      "recency": "2026-07-15",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/genception.md",
       "detail_id": "entity-genception",
@@ -38,16 +58,6 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/generative-world-models.md",
-      "detail_id": "wiki-methods-generative-world-models",
-      "label": "Generative World Models (生成式世界模型)",
-      "type": "method",
-      "recency": "2026-07-15",
-      "source": "log.md",
-      "action": "maintained",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -201,21 +211,12 @@
       "source": "log.md",
       "action": "added",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/overview/humanoid-motion-control-know-how-technology-map.md",
-      "detail_id": "wiki-overview-humanoid-motion-control-know-how-technology-map",
-      "label": "人形机器人运动控制 Know-How 技术地图",
-      "type": "overview",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/genception.md",
-    "detail_id": "entity-genception",
-    "label": "GenCeption",
+    "path": "wiki/entities/paper-panoworld-real-world-panoramic-generation.md",
+    "detail_id": "entity-paper-panoworld-real-world-panoramic-generation",
+    "label": "PanoWorld：真实世界全景可控生成",
     "type": "entity",
     "recency": "2026-07-15",
     "source": "log.md",
@@ -225,7 +226,7 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 296
+      "size": 297
     },
     {
       "label": "人形论文深读笔记",
