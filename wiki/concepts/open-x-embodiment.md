@@ -2,7 +2,7 @@
 type: concept
 tags: [dataset, scaling, cross-embodiment, manipulation, community]
 status: complete
-updated: 2026-05-10
+updated: 2026-07-15
 related:
   - ../queries/contact-wrench-closed-loop.md
   - ./foundation-policy.md

@@ -238,6 +238,7 @@ SYNC_PAGE_OVERRIDES: dict[str, list[str]] = {
     "wiki/entities/turtlebot3.md": ["robotis"],
     "wiki/entities/wuji-robotics.md": ["wuji-robotics"],
     "wiki/entities/xiaomi-robotics-0.md": ["xiaomi-robotics"],
+    "wiki/entities/xiaomi-robotics-u0.md": ["xiaomi-robotics"],
     "wiki/entities/karpathy-autoresearch.md": ["karpathy"],
     "wiki/entities/sensenova-skills.md": ["sensenova"],
     "wiki/entities/dataset-bfm-amass.md": ["max-planck"],

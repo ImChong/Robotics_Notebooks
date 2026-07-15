@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-15] ingest | sources/repos/xiaomi-robotics-u0.md、sources/papers/xiaomi_robotics_u0_arxiv_2607_11643.md — Xiaomi-Robotics-U0 38B 统一具身合成 WM；wiki/entities/xiaomi-robotics-u0.md；交叉更新 generative-world-models / xiaomi-robotics-0
+
+- wiki/entities/xiaomi-robotics-u0.md
+- wiki/entities/xiaomi-robotics-0.md
+- wiki/methods/generative-world-models.md
+- sources/repos/xiaomi-robotics-u0.md
+- sources/papers/xiaomi_robotics_u0_arxiv_2607_11643.md
+
 ## [2026-07-15] ingest | sources/papers/being_m07.md — Being-M0.7 人形潜空间 WAM；wiki/entities/paper-being-m07-humanoid-latent-wam.md；交叉更新 world-action-models / loco-manipulation / being-h07 / teleoperation
 
 ## [2026-07-15] ingest | sources/courses/learn_robotics_qqfly_guide.md — 接入 qqfly 开源机器人学学习指南并新建 wiki/entities/learn-robotics-qqfly-guide.md

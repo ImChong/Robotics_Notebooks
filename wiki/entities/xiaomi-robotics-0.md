@@ -2,14 +2,16 @@
 type: entity
 tags: [vla, open-source, diffusion, flow-matching, real-time, bimanual, cross-embodiment, xiaomi]
 status: complete
-updated: 2026-05-30
+updated: 2026-07-15
 related:
   - ../methods/vla.md
   - ../methods/action-chunking.md
   - ../methods/diffusion-policy.md
+  - ../methods/generative-world-models.md
   - ../tasks/teleoperation.md
   - ../tasks/manipulation.md
   - ./robot-io-rio.md
+  - ./xiaomi-robotics-u0.md
 sources:
   - ../../sources/repos/xiaomi-robotics-0.md
 summary: "Xiaomi-Robotics-0 是小米开源的约 4.7B 参数 VLA：Qwen3-VL-4B 作视觉–语言骨干，DiT 以 flow matching 生成动作 chunk；大规模跨本体数据与 VL 共训后，通过后训练与异步执行策略在仿真与双臂真机上追求高吞吐、低卡顿的实时 rollout。"
@@ -38,6 +40,7 @@ summary: "Xiaomi-Robotics-0 是小米开源的约 4.7B 参数 VLA：Qwen3-VL-4B 
 
 - **把「VLA 延迟」写进训练目标**：同步执行时机器人需等推理结束，异步执行则引入 **跨 chunk 一致性** 与 **模型抄近路模仿前缀** 等新问题；该工作把相关对策与部署对齐（时间戳、Δtc、Te 等）写清楚，便于和通用 I/O 栈（如 [RIO（Robot I/O）](./robot-io-rio.md)）对照阅读。
 - **开源权重 + 推理代码 + 后训练管线**：降低复现「从论文到可跑推理」的摩擦；官网亦宣传完整后训练链路（如耳塞入盒等案例）。
+- **与同实验室 [Xiaomi-Robotics-U0](./xiaomi-robotics-u0.md) 互补：** **4.7B VLA** 负责实时控制，**38B 世界基础模型** 可用 **结构化场景迁移** 合成 OOD 视觉增广（论文报告 **π₀.₅** 干扰场景完成度 **36.9%→63.2%**）。
 - **数据叙事可对照行业路线**：**~200M** 机器人步 + **>80M** VL 样本、房内 **数百小时** 遥操作与公开数据集混用，代表 **「防 VLM 遗忘 + 机器人-centric 视觉」** 的典型配方。
 
 ## 核心结构
@@ -107,6 +110,7 @@ flowchart LR
 - [Teleoperation（遥操作）](../tasks/teleoperation.md) — 房内大规模示教采集的工程参照
 - [Manipulation（操作）](../tasks/manipulation.md) — 桌面与 deformable 物体操作任务语境
 - [RIO（Robot I/O）](./robot-io-rio.md) — 跨形态实时 I/O 与异步策略节点的另一种抽象
+- [Xiaomi-Robotics-U0](./xiaomi-robotics-u0.md) — 同实验室 **38B 统一具身合成 WM**，作策略训练数据引擎
 
 ## 参考来源
 
