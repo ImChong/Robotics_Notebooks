@@ -2,7 +2,7 @@
 type: task
 tags: [vln, navigation, embodied-ai, vision-language, matterport]
 summary: "视觉–语言导航（VLN）要求智能体在三维环境中依据自然语言指令执行一系列离散或连续动作到达目标，是连接语言理解与空间运动规划的基准任务。"
-updated: 2026-07-10
+updated: 2026-07-15
 status: complete
 related:
   - ../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md
@@ -13,6 +13,7 @@ related:
   - ../entities/esi-bench.md
   - ../entities/paper-worldvln-aerial-vln-wam.md
   - ../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md
+  - ../entities/paper-sru-spatially-enhanced-recurrent-memory.md
   - ../concepts/3d-spatial-vqa.md
   - ../concepts/world-action-models.md
   - ../methods/vla.md
@@ -50,6 +51,7 @@ sources:
 - **与纯导航的区别**：传统导航多依赖地图与坐标目标；VLN 强调 **语义描述**（地标、相对运动），更贴近人类口头指路。
 - **与 VLA 的衔接**：高层策略可将 VLN 视作「语言条件下的路径生成」子问题；仿真基准（如 Matterport3D 上的 **R2R / RxR**）与真实视频蒸馏数据（如室内 tour）常混合使用以缓解 **sim–real** 与 **轨迹分布** 差异。通才 VLA 如 [Qwen-VLA](../entities/qwen-vla.md) 在官方 README 中把 **操作与 VLN 基准** 放进 **同一 checkpoint** 联合评测，可作为「导航是否应并入统一 VLA」的工程参照。
 - **与 image-goal 视觉导航的对照**：[NavWAM](../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md) 研究 **目标图像**（非自然语言）条件下的 egocentric 闭环导航，用 **Cosmos Predict 2 系 WAM** 联合预测未来观测、value 与 action，在 **go stanford** 与真机上相对 **OmniVLA** 与 **NWM+CEM** 报告增益——说明「导航」任务族内 **语言接地** 与 **视觉目标接地** 可走不同基础模型路线。
+- **与坐标目标无地图循环导航的对照**：[SRU](../entities/paper-sru-spatially-enhanced-recurrent-memory.md)（IJRR 2025）用 **相对目标向量 + 单目前向深度 + SRU 隐式空间记忆** 做 **50–120 m 级** 无地图 RL 导航（非语言、非 image-goal），真机 **B2W 零样本**；部署移植见 [SRU-Odin](../entities/sru-odin.md)。与 VLN 共享「部分可观测 + 长程」难点，但 **监督与目标接口** 完全不同，不宜混用 R2R 等语言基准。
 - **Agentic 导航基座**：[Qwen-RobotNav](../entities/qwen-robot-nav.md) 以 **可控观测协议 + 任务 mode** 统一 VLN / ObjNav / 跟踪 / NAVSIM 驾驶，并作为 **Qwen3.7-Plus** 等 planner 的导航原语；与 [Qwen-Robot Suite](../entities/qwen-robot-suite.md) 长时程 **EQA / 开放世界寻物** demo 一并阅读。
 - **通才 planner 统一导航 + 推理**：[Vesta](../entities/paper-vesta-generalist-embodied-reasoning.md) 在同一 **Qwen3-VL-8B** checkpoint 上同时 SFT **VLN-CE（R2R/RxR/ScaleVLN）** 与具身 cognition/localization；R2R-CE **SR 55.5%** 与 InternVLA-N1 specialist 持平，而 **Nav-only finetune 的 generalist 竞品在 R2R 上 SR=0**（灾难性遗忘）——说明 VLN 是否应并入 **更大 planner mix** 时需评估 **域外遗忘** 而不仅是导航榜分数。
 - **REVERIE 末段接地鸿沟**：[REALM](../entities/paper-realm-last-3-meter-vln-grounding.md)（arXiv:2607.03792）指出 REVERIE-CE 等任务虽要求框出目标实例，但主流 **3 m SR** 不评 **最终朝向与可见性**——ETPNav-FT SR=34.67% 时 **ONS@0.1m 仅 6.32%**；作者提出 **plug-and-play 末段精修** 与 **REVERIE-AIM** 实例中心评测集。

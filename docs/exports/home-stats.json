@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-15",
-  "node_count": 1643,
-  "edge_count": 12759,
+  "node_count": 1645,
+  "edge_count": 12775,
   "coverage": {
-    "covered": 1596,
-    "total": 1626,
+    "covered": 1598,
+    "total": 1628,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -232,15 +232,11 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 216
-    },
-    {
-      "label": "运动控制",
-      "size": 130
+      "size": 210
     },
     {
       "label": "移动操作",
-      "size": 112
+      "size": 184
     },
     {
       "label": "动作重定向",
@@ -249,6 +245,10 @@
     {
       "label": "人形强化学习运动控制",
       "size": 91
+    },
+    {
+      "label": "全身控制",
+      "size": 88
     }
   ],
   "top_hubs": [
@@ -263,7 +263,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 282,
+      "degree": 286,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -294,7 +294,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 223,
+      "degree": 224,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
@@ -303,7 +303,7 @@
       "label": "Paper Notebooks · Loco-Manipulation and WBC",
       "type": "overview",
       "degree": 222,
-      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
       "detail_id": "wiki-tasks-manipulation",

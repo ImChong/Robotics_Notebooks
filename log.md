@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-15] ingest | sources/papers/sru_spatially_enhanced_recurrent_memory_ijrr_2025.md、sources/repos/sru_odin.md — SRU 无地图循环导航（IJRR 2025）与 SRU-Odin Go2+Odin1 部署；wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md、wiki/entities/sru-odin.md；交叉更新 sim2real、vision-language-navigation
+
+- wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md
+- wiki/entities/sru-odin.md
+- wiki/concepts/sim2real.md
+- wiki/tasks/vision-language-navigation.md
+- sources/papers/sru_spatially_enhanced_recurrent_memory_ijrr_2025.md
+- sources/repos/sru_odin.md
 ## [2026-07-15] ingest | sources/papers/eventvla_arxiv_2606_20092.md — EventVLA 稀疏视觉证据记忆 VLA + RoboTwin-MeM；wiki/entities/paper-eventvla-visual-evidence-memory.md；交叉更新 vla / robotwin / KEMO
 
 - wiki/entities/paper-eventvla-visual-evidence-memory.md
