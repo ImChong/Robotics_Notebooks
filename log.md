@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-15] ingest | sources/papers/eventvla_arxiv_2606_20092.md — EventVLA 稀疏视觉证据记忆 VLA + RoboTwin-MeM；wiki/entities/paper-eventvla-visual-evidence-memory.md；交叉更新 vla / robotwin / KEMO
+
+- wiki/entities/paper-eventvla-visual-evidence-memory.md
+- wiki/methods/vla.md
+- wiki/entities/robotwin.md
+- wiki/entities/paper-kemo-event-driven-keyframe-memory-vla.md
+- sources/papers/eventvla_arxiv_2606_20092.md
+
 ## [2026-07-15] ingest | sources/papers/panoworld_arxiv_2607_09661.md — PanoWorld 真实世界全景可控生成 WM + World360；wiki/entities/paper-panoworld-real-world-panoramic-generation.md；交叉更新 generative-world-models
 
 - wiki/entities/paper-panoworld-real-world-panoramic-generation.md

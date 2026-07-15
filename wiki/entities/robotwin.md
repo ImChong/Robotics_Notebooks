@@ -4,7 +4,7 @@ type: entity
 title: RoboTwin 2.0
 tags: [simulation, data-generation, dual-arm, dataset, hku, shanghai-ai-lab, sjtu]
 summary: "RoboTwin 2.0 是专为双臂机器人设计的自动数据生成与仿真平台，基于 SAPIEN 引擎，支持大规模高质量专家数据合成。"
-updated: 2026-07-11
+updated: 2026-07-15
 ---
 
 # RoboTwin 2.0
@@ -38,6 +38,7 @@ updated: 2026-07-11
 - **任务目标**：通常用于生成 [behavior-cloning](../methods/behavior-cloning.md) 或 [action-chunking](../methods/action-chunking.md) (ACT) 所需的训练数据。
 - **硬件对应**：其仿真场景常模拟 [ALOHA](./aloha.md) 或类似的双臂遥操作设备。
 - **资产生成研究**：近期工作如 [PhysForge（论文实体）](./paper-physforge-physics-grounded-3d-assets.md) 将 **物理接地、可关节 3D 资产** 作为具身与游戏管线的数据引擎，并在论文演示中引用 **RoboTwin** 作为操作仿真导入场景之一（细节以原论文为准）。
+- **记忆诊断基准**：**RoboTwin-MeM**（[EventVLA](./paper-eventvla-visual-evidence-memory.md)，arXiv:2606.20092）在 RoboTwin 2.0 上构建 8 项 **非马尔可夫** 双臂任务，用参数 $n$（须动态保留的中间关键帧数，1–5）分层评测 VLA 的 **瞬态证据记忆** 能力，区别于 RMBench 等可被静态初始帧/短期历史「取巧」解决的套件。
 
 ## 数据速查
 
