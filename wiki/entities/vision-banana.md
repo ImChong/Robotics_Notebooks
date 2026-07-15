@@ -2,11 +2,12 @@
 type: entity
 tags: [paper, computer-vision, foundation-model, image-generation, segmentation, depth-estimation, deepmind, instruction-tuning, zero-shot]
 status: complete
-updated: 2026-07-09
+updated: 2026-07-15
 related:
   - ../concepts/generative-vision-pretraining.md
   - ../concepts/vision-backbones.md
   - ../concepts/visual-representation-for-policy.md
+  - ../entities/genception.md
   - ../methods/object-detection.md
   - ../methods/vla.md
 sources:
@@ -109,7 +110,8 @@ flowchart LR
 
 ## 与其他页面的关系
 
-- [生成式视觉预训练](../concepts/generative-vision-pretraining.md) — 范式背景与三条技术谱系
+- [生成式视觉预训练](../concepts/generative-vision-pretraining.md) — 范式背景与四条技术谱系
+- [GenCeption](../entities/genception.md) — **视频域** 姊妹工作：WAN 2.1 + feed-forward 统一感知；本文聚焦 **图像域** NBP + instruction-tuning
 - [视觉骨干](../concepts/vision-backbones.md) — 传统 CNN/ViT 判别预训练对照
 - [视觉表征作为策略输入](../concepts/visual-representation-for-policy.md) — 机器人策略如何选择上游感知
 - [目标检测](../methods/object-detection.md) — 2D 感知管线中的物体锚点任务

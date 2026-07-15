@@ -9,7 +9,7 @@ tags:
   - vla
   - deep-learning
 status: complete
-updated: 2026-07-09
+updated: 2026-07-15
 related:
   - ./vision-backbones.md
   - ./generative-vision-pretraining.md
