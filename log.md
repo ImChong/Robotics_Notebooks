@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-15] ingest | sources/papers/panoworld_arxiv_2607_09661.md — PanoWorld 真实世界全景可控生成 WM + World360；wiki/entities/paper-panoworld-real-world-panoramic-generation.md；交叉更新 generative-world-models
+
+- wiki/entities/paper-panoworld-real-world-panoramic-generation.md
+- wiki/methods/generative-world-models.md
+- sources/papers/panoworld_arxiv_2607_09661.md
+
 ## [2026-07-15] ingest | sources/repos/xiaomi-robotics-u0.md、sources/papers/xiaomi_robotics_u0_arxiv_2607_11643.md — Xiaomi-Robotics-U0 38B 统一具身合成 WM；wiki/entities/xiaomi-robotics-u0.md；交叉更新 generative-world-models / xiaomi-robotics-0
 
 - wiki/entities/xiaomi-robotics-u0.md
