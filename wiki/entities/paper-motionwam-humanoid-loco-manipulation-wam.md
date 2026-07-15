@@ -12,7 +12,7 @@ tags:
   - real-time-control
   - unified-action-space
 status: complete
-updated: 2026-07-08
+updated: 2026-07-15
 arxiv: "2606.09215"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md

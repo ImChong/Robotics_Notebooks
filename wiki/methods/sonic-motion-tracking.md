@@ -3,7 +3,7 @@ type: method
 tags: [humanoid, imitation-learning, motion-tracking, foundation-model, nvidia, vla, teleoperation]
 status: complete
 date: 2026-05-14
-updated: 2026-07-14
+updated: 2026-07-15
 related:
   - ../entities/paper-sonic.md
   - ../entities/paper-athena-wbc-humanoid-longtail.md

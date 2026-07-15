@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-07-15",
-  "node_count": 1638,
-  "edge_count": 12705,
+  "node_count": 1639,
+  "edge_count": 12721,
   "coverage": {
-    "covered": 1591,
-    "total": 1621,
+    "covered": 1592,
+    "total": 1622,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-being-m07-humanoid-latent-wam.md",
+      "detail_id": "entity-paper-being-m07-humanoid-latent-wam",
+      "label": "Being-M0.7（人形潜空间 World–Action Model）",
+      "type": "entity",
+      "recency": "2026-07-15",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/learn-robotics-qqfly-guide.md",
       "detail_id": "entity-learn-robotics-qqfly-guide",
@@ -197,32 +207,22 @@
       "recency": "2026-07-14",
       "source": "log.md",
       "action": "added"
-    },
-    {
-      "path": "wiki/methods/slip-vmc.md",
-      "detail_id": "wiki-methods-slip-vmc",
-      "label": "SLIP + VMC（弹簧负载倒立摆与虚拟模型控制）",
-      "type": "method",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/learn-robotics-qqfly-guide.md",
-    "detail_id": "entity-learn-robotics-qqfly-guide",
-    "label": "开源机器人学学习指南（qqfly）",
+    "path": "wiki/entities/paper-being-m07-humanoid-latent-wam.md",
+    "detail_id": "entity-paper-being-m07-humanoid-latent-wam",
+    "label": "Being-M0.7（人形潜空间 World–Action Model）",
     "type": "entity",
     "recency": "2026-07-15",
     "source": "log.md",
     "action": "added",
-    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 241
+      "size": 242
     },
     {
       "label": "人形论文深读笔记",
@@ -265,7 +265,7 @@
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
-      "degree": 272,
+      "degree": 275,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
@@ -273,7 +273,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 248,
+      "degree": 249,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -338,17 +338,17 @@
       "community_label": "动作重定向（Motion Retargeting） 社区"
     },
     {
+      "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
+      "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
+      "type": "entity",
+      "degree": 39,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
       "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
       "type": "entity",
       "degree": 38
-    },
-    {
-      "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
-      "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
-      "type": "entity",
-      "degree": 38,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "detail_id": "entity-paper-twist2",
