@@ -6,6 +6,7 @@ status: complete
 updated: 2026-04-30
 related:
   - ./python-robotics.md
+  - ./learn-robotics-qqfly-guide.md
   - ../formalizations/lie-group-rigid-body-motions.md
   - ../formalizations/se3-representation.md
   - ../concepts/floating-base-dynamics.md
@@ -101,6 +102,7 @@ Lynch-Park 将下面这些贯穿全书：
 - [线性代数学习策展](./linear-algebra-curriculum.md) — L0 通用矩阵语言，再接本教材 Ch 2–3
 - [Trajectory Optimization](../methods/trajectory-optimization.md) — 教材 Ch 9 的现代化版本
 - [PythonRobotics](./python-robotics.md) — Ch 10/13 移动机器人算法的 Python 实现与动画演示
+- [开源机器人学学习指南（qqfly）](./learn-robotics-qqfly-guide.md) — 中文自学路线：Craig 工业臂打底后再接本教材 PoE/李群章
 
 ## 参考来源
 

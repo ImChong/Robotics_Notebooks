@@ -1,13 +1,33 @@
 {
   "generated_at": "2026-07-15",
-  "node_count": 1637,
-  "edge_count": 12692,
+  "node_count": 1638,
+  "edge_count": 12705,
   "coverage": {
-    "covered": 1590,
-    "total": 1620,
+    "covered": 1591,
+    "total": 1621,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/learn-robotics-qqfly-guide.md",
+      "detail_id": "entity-learn-robotics-qqfly-guide",
+      "label": "开源机器人学学习指南（qqfly）",
+      "type": "entity",
+      "recency": "2026-07-15",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/entities/modern-robotics-book.md",
+      "detail_id": "entity-modern-robotics-book",
+      "label": "Modern Robotics (Lynch-Park 教材)",
+      "type": "entity",
+      "recency": "2026-07-15",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
     {
       "path": "wiki/entities/paper-pace-sim2real-legged-robots.md",
       "detail_id": "entity-paper-pace-sim2real-legged-robots",
@@ -187,57 +207,38 @@
       "source": "log.md",
       "action": "added",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/methods/dreamwaq.md",
-      "detail_id": "wiki-methods-dreamwaq",
-      "label": "DreamWaQ：盲走一阶段鲁棒行走",
-      "type": "method",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/methods/teacher-student-multi-skill-bfm.md",
-      "detail_id": "wiki-methods-teacher-student-multi-skill-bfm",
-      "label": "Teacher-Student 多动作 BFM 学习",
-      "type": "method",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-pace-sim2real-legged-robots.md",
-    "detail_id": "entity-paper-pace-sim2real-legged-robots",
-    "label": "PACE（足式系统化 Sim2Real）",
+    "path": "wiki/entities/learn-robotics-qqfly-guide.md",
+    "detail_id": "entity-learn-robotics-qqfly-guide",
+    "label": "开源机器人学学习指南（qqfly）",
     "type": "entity",
     "recency": "2026-07-15",
     "source": "log.md",
     "action": "added",
-    "has_repo": true,
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 261
+      "size": 241
     },
     {
       "label": "人形论文深读笔记",
-      "size": 210
-    },
-    {
-      "label": "移动操作",
-      "size": 163
-    },
-    {
-      "label": "人形强化学习运动控制",
-      "size": 126
+      "size": 181
     },
     {
       "label": "动作重定向",
-      "size": 105
+      "size": 161
+    },
+    {
+      "label": "移动操作",
+      "size": 160
+    },
+    {
+      "label": "人形强化学习运动控制",
+      "size": 127
     },
     {
       "label": "操作",
@@ -287,7 +288,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 222,
+      "degree": 223,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
@@ -366,7 +367,8 @@
       "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",
       "label": "SD-AMP：统一走、跑与起身的对抗运动先验",
       "type": "entity",
-      "degree": 29
+      "degree": 29,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
     },
     {
       "detail_id": "entity-paper-bfm-zero",
