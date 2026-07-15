@@ -185,6 +185,8 @@
     var meshInstallScheduled = false;
     var pendingFirstShowKick = false;
     var initialFitDone = false;
+    // 拖拽手势期间是否已 reheat：见 bindGraphInstance 里 onNodeDrag 注释。
+    var nodeDragReheated = false;
     // 时序激活动画：null = 关闭（正常渲染）；Set = 「已激活」节点集合（= 进入力模拟的子集）。
     // 仿 2D：每激活一个节点就把它种在已激活邻居附近、加入力模拟子集并重排，整图随时间生长。
     var timelineRevealedIds = null;
@@ -840,6 +842,11 @@
         // alphaMin 再停（≈270 tick）。三方库默认 cooldownTicks=∞ 且 d3AlphaMin=0
         // （永不因 alpha 停，只会跑满 cooldownTime），故显式开启 alpha 收敛阈值并对齐
         // 2D 的 alphaDecay(0.025)；warmup 设 0 以便从第一帧就能看到力模拟过程。
+        //
+        // 注意：three-forcegraph 的 tickFrame 在 layout.tick() 之前就判断
+        // alpha < d3AlphaMin；引擎冷却后库内拖拽只做 d3AlphaTarget(0.3).resetCountdown()，
+        // 无法把 alpha 抬过阈值，下一帧会立刻再次停机 → 松手后节点钉在落点不回弹。
+        // 因此下方 onNodeDrag / onNodeDragEnd 需在手势期间 d3ReheatSimulation()。
         .warmupTicks(0)
         .cooldownTicks(Infinity)
         .d3AlphaDecay(0.025)
@@ -859,6 +866,19 @@
         .linkOpacity(function (l) { return linkOpacityFor(l); })
         .linkVisibility(function (l) { return linkVisibleFor(l); })
         .enableNodeDrag(true)
+        .onNodeDrag(function () {
+          // 每个拖拽手势只 reheat 一次，避免拖动过程中反复 alpha=1 导致整图狂抖。
+          if (nodeDragReheated) return;
+          nodeDragReheated = true;
+          if (typeof graph.d3ReheatSimulation === 'function') graph.d3ReheatSimulation();
+        })
+        .onNodeDragEnd(function () {
+          nodeDragReheated = false;
+          // 松手后再抬一次 alpha：确保回弹力模拟能跨过 alphaMin 判停门槛。
+          // （库在 onNodeDragEnd 回调之后才会 alphaTarget(0).resetCountdown()，
+          // 因此这里 reheat 后仍会以 target=0 自然收敛。）
+          if (typeof graph.d3ReheatSimulation === 'function') graph.d3ReheatSimulation();
+        })
         .onNodeClick(function (node, ev) {
           var src = resolveSourceNode(node.id) || node;
           if (onNodeClick) onNodeClick(src, ev || lastPointer);
