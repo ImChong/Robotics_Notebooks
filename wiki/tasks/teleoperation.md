@@ -3,7 +3,7 @@ type: task
 tags: [teleoperation, manipulation, loco-manipulation, data-collection, humanoid]
 status: complete
 summary: "Teleoperation 让人类通过远程接口直接操作机器人，是数据采集和复杂任务执行的重要桥梁。"
-updated: 2026-07-13
+updated: 2026-07-15
 sources:
   - ../../sources/sites/rek-com.md
   - ../../sources/sites/hiw-500-dataset.md
@@ -96,6 +96,7 @@ sources:
 | CLOT（上交 / 上海 AI Lab 2026） | Adam Pro | OptiTrack 全局反馈 | 闭环全局遥操作 | Observation Pre-shift + Transformer + AMP；长时程无漂移；见 [论文实体](../entities/paper-amp-survey-16-clot.md) |
 | PILOT（上海交大 2026） | Unitree G1 | VR 头显 + 手柄 | 长程 loco-manip | 感知 **MoE 全身 LLC** 作底层；楼梯/高台等非结构化场景遥操作；见 [论文实体](../entities/paper-pilot-perceptive-loco-manipulation.md) |
 | MotionWAM（Mondo / HKUST 2026） | Unitree G1 | **PICO VR 三点追踪** + SMPL→G1 重定向 | 九项全身 loco-manip | Stage 3 **200 episodes/任务** 全身遥操作演示，供 **WAM** 微调；见 [论文实体](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) |
+| Being-M0.7（BeingBeyond 2026） | Unitree G1 | **PICO VR** 头显 + 手柄 + 踝 tracker；XRoboToolkit→SMPL→**SONIC** | 四项全身 loco-manip 后训练 | **>1 万 h** 人数据预训练 **latent video-motion 先验** 后接地；见 [论文实体](../entities/paper-being-m07-humanoid-latent-wam.md) |
 | CWI（LimX / HKU 等 2026） | LimX Oli | **Meta Quest VR** + 手柄 | 全身 loco-manip | **双手 9D keypoint + 速度/身高** 蒸馏接口，无需全身 MoCap；见 [论文实体](../entities/paper-cwi-composite-humanoid-whole-body-imitation.md) |
 | HIW-500（BitRobot / Unitree / HF 2026） | Unitree G1 | 全身遥操作 | **500+ h / 23K+ 集** | 东南亚 **12** 个真实家庭、**10+** 家务任务；开源最大规模人形遥操作集之一；见 [数据集实体](../entities/hiw-500-dataset.md) |
 | TeleGate（USTC / AnyWit 2026） | Unitree G1 | **惯性动捕** 全身关节跟踪 | **2.5 h** 自采六类 | **门控选冻结专家** + VAE 历史→未来先验；避免蒸馏统一策略；跑跳/跌倒恢复；见 [论文实体](../entities/paper-telegate.md) |

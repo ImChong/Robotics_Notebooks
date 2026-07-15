@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-07-14
+updated: 2026-07-15
 sources:
   - ../../sources/papers/fastgrasp_arxiv_2604_12879.md
   - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md
@@ -196,15 +196,20 @@ flowchart TD
 - **核心**：**Wan2.2** 视频骨干预测未来 **video latent**；**帧级 latent action**（ALAM encoder）桥接粗粒度视觉与细控制；**双层 MoT** 将动作拆为 **移动 $a^{\mathrm{move}}$** 与 **操作 $a^{\mathrm{manip}}$**；**Dream Forcing** 在 **自生成 $\hat{z}, \hat{m}$** 上训逆动力学，对齐自回归部署；渐进 **世界模型预训练 → latent action 预训练 → SFT1/SFT2**。
 - **代表作**：[ABot-M0.5](../entities/paper-abot-m05-mobile-manipulation-wam.md) (AMAP CV Lab / 阿里巴巴, 2026, arXiv:2607.00678) — **RoboCasa365** +Condensed Memory **46.6%**、Target 100% **54.2%**；**RoboTwin 2.0** **94.1%**；**LIBERO-Plus** 零样本 WAM 对照 **83.4%**；真机 Agilex Piper 长程摆盘/摆花等；[代码仓库](https://github.com/amap-cvlab/ABot-Manipulation)（M0.5 权重 coming soon）。
 
-### 24. 分层 policy–GMT 接口基准（HumanoidArena · 双 tracker 扰动诊断）
+### 24. 潜空间 video-motion 先验 + action expert 接地（Being-M0.7）
+
+- **核心：** **>1 万小时** 人中心三流数据（配对 video–motion / 仅视频 / 仅动作）预训练 **video-motion MoT**；视觉用 **冻结 DINO latent**（非像素）；motion 为 **head-root 紧凑头/双手/双脚** 表示，可与人形 FK 轨迹对齐；**future-conditioned action expert** 单向读取 prior 多层隐状态 + 当前观测，输出 **action chunk**；推理 **低频 prior 刷新 + 高频 expert**。
+- **代表作**：[Being-M0.7](../entities/paper-being-m07-humanoid-latent-wam.md) (BeingBeyond, 2026-07) — **G1** + Linker O6 + **PICO VR** 全身遥操作后训练；真机 Mirror/Fish 等 **7/15** vs GR00T-N1.6 **2/15**、Ψ0 **3/15**；与 [Being-H0.7](../methods/being-h07.md) 同机构潜空间 WAM，与 [MotionWAM](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) 的 Joint 双 DiT 路线对照。
+
+### 25. 分层 policy–GMT 接口基准（HumanoidArena · 双 tracker 扰动诊断）
 - **核心**：将 egocentric 全身学习表述为 **高层策略 → 40D 中间全身动作 → 低层 GMT**；在 **7 项下肢关键 HOI/HSI** 上，从 **视觉/语义/执行扰动** 与 **TWIST2↔SONIC 跨 GMT** 两轴诊断 **policy–tracker 接口**——而非只报端到端成功率。
 - **代表作**：[HumanoidArena](../entities/paper-humanoidarena.md) (HKUST-GZ 等, 2026, arXiv:2606.17833) — PICO+GMR 采集 → Isaac Lab NPZ → LeRobot 训练；实验显示分层控制能解多样腿关键交互，但 **性能强 tracker 条件化**、**跨 GMT 迁移脆弱**。
 
-### 25. 轮式移动全身 RL + 点云抓取引导 + 二值触觉（FastGrasp · 高速灵巧抓取）
+### 26. 轮式移动全身 RL + 点云抓取引导 + 二值触觉（FastGrasp · 高速灵巧抓取）
 - **核心**：**两阶段**——预训练 **CVAE** 从腕摄点云生成多样抓取候选，经 **GWC/GDC 包络度** 选最优引导；**PPO** 同步控制 **移动底盘、臂与 16-DoF 手**；**二值压力触觉** 观测与奖励支撑冲击接触下的实时收紧；**15 Hz** 控制与 **DR + LPF + 触觉适应** 完成 sim2real。
 - **代表作**：[FastGrasp](../entities/paper-fastgrasp-mobile-dexterous-grasping.md) (上海科技大学, 2026, arXiv:2604.12879) — Agilex Bunker Mini + Dobot CR5 + LeapHand；仿真 unseen **50.09%** S.R.（全点云）/ **38.51%**（部分点云）；真机高速 **32%**、半速 **34.62%**；相对反应式移动操作 [3] 与单阶段 PointNet 基线显著领先。
 
-### 26. 共享 3D 地图的导航–操作联合路点链（3D-IC · OVMM 规划）
+### 27. 共享 3D 地图的导航–操作联合路点链（3D-IC · OVMM 规划）
 - **核心**：面向 **开放词汇移动操作（OVMM）**，在 **共享 3D 特征图** 上为导航与操作生成 **阶段对齐交互路点**，串联为 **候选交互链**；**分层策略** 用 **VLM 路点级可行性** + **转移代价** 选链，**下一路点执行 + 观测重规划** 闭环。
 - **代表作**：[3D-IC](../entities/paper-3d-ic-joint-navigation-manipulation-planning.md) (ICT CAS / UCAS, 2026, ICML) — 仿真与 **Stretch 3** 真机；相对分阶段 OVMM 提升 **任务成功率与轨迹效率**；与 [REALM](../entities/paper-realm-last-3-meter-vln-grounding.md) 等同平台、互补 **VLN 末段接地** 问题。
 
@@ -246,6 +251,7 @@ flowchart TD
 - [Motion Retargeting](../concepts/motion-retargeting.md) — 人形搬运/攀台等技能的上游映射层
 - [DiT4DiT（论文实体）](../entities/paper-dit4dit-video-action-model.md) — 双 DiT 联合 VAM，G1 全身 loco-manip 前序（arXiv:2603.10448）
 - [MotionWAM（论文实体）](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) — 实时 WAM + 统一全身 token 的人形 loco-manip（arXiv:2606.09215）
+- [Being-M0.7（论文实体）](../entities/paper-being-m07-humanoid-latent-wam.md) — 潜空间 video-motion 先验 + action expert 人形 loco-manip（BeingBeyond, 2026-07）
 - [ABot-M0.5（论文实体）](../entities/paper-abot-m05-mobile-manipulation-wam.md) — 移动操作 WAM：latent action + D-MoT + Dream Forcing（arXiv:2607.00678）
 - [Loco-Manip 8 篇数据入口技术地图](../overview/loco-manip-8-papers-technology-map.md) — 2026-06 周报：四组数据入口（Ego-Pi/OASIS/VAIC/WT-UMI 等 8 篇）
 - [人形 Loco-Manip 161 篇技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md) — 2026-06 长文：十类能力形成顺序（94+ 篇已挂接既有实体）
@@ -284,6 +290,7 @@ flowchart TD
 - **ingest 档案：** [sources/papers/visualmimic_arxiv_2509_20322.md](../../sources/papers/visualmimic_arxiv_2509_20322.md) — VisualMimic：视觉分层 sim2real + 关键点 tracker loco-manipulation（arXiv:2509.20322）
 - **ingest 档案：** [sources/papers/dit4dit_arxiv_2603_10448.md](../../sources/papers/dit4dit_arxiv_2603_10448.md) — DiT4DiT：双 DiT 联合 VAM 与 G1 全身 loco-manip（arXiv:2603.10448）
 - **ingest 档案：** [sources/papers/motionwam_arxiv_2606_09215.md](../../sources/papers/motionwam_arxiv_2606_09215.md) — MotionWAM：实时 WAM 人形全身 loco-manipulation（arXiv:2606.09215）
+- **ingest 档案：** [sources/papers/being_m07.md](../../sources/papers/being_m07.md) — Being-M0.7：潜空间 video-motion 先验 + G1 action expert 人形 loco-manipulation（BeingBeyond, 2026-07）
 - **ingest 档案：** [sources/papers/abot_m05_arxiv_2607_00678.md](../../sources/papers/abot_m05_arxiv_2607_00678.md) — ABot-M0.5：移动操作 WAM（latent action + Dream Forcing，arXiv:2607.00678）
 - **ingest 档案：** [sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md) — Loco-Manip 8 篇数据入口周报（`Ez87ljBYmCyIpLKjMjEyaQ`）
 - **ingest 档案：** [sources/papers/motiondisco_arxiv_2606_06139.md](../../sources/papers/motiondisco_arxiv_2606_06139.md) — MotionDisco：LLM 引导运动发现与人形 loco-manipulation（arXiv:2606.06139）

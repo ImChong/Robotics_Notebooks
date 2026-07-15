@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-07-13
+updated: 2026-07-15
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型。"
 related:
   - ../../roadmap/depth-wam.md
@@ -26,6 +26,7 @@ related:
   - ../methods/generative-world-models.md
   - ../methods/model-based-rl.md
   - ../methods/being-h07.md
+  - ../entities/paper-being-m07-humanoid-latent-wam.md
   - ../methods/pelican-unified-1.md
   - ../methods/defi-decoupled-dynamics-vla.md
   - ../entities/tau0-world-model.md
@@ -40,6 +41,7 @@ sources:
   - ../../sources/papers/abot_m05_arxiv_2607_00678.md
   - ../../sources/papers/navwam_arxiv_2606_13494.md
   - ../../sources/papers/egowam.md
+  - ../../sources/papers/being_m07.md
   - ../../sources/papers/pelican_unified_uei_arxiv_2605_15153.md
   - ../../sources/papers/defi_arxiv_2604_16391.md
   - ../../sources/repos/awesome-wam-openmoss.md
@@ -112,6 +114,8 @@ sources:
 
 **文献实例（Joint 族 + 双 DiT 实时闭环 · 人形 loco-manip）**：[MotionWAM](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) 以 **Cosmos-Predict2.5 系 Video DiT** 在 **固定 flow 步单次前向** 的隐状态条件 **Motion DiT**，在 **SONIC 统一全身 motion token** 上联合预测行走、躯干、身高、足端交互与双手操作；三阶段 **egocentric 视频 → 跨具身动作 → 全身遥操作** 微调，在 **宇树 G1** 九项真机任务上相对同演示微调的 VLA 基线 **整体成功率 +32% 绝对值**，并报告 **任务驱动足部行为**（arXiv:2606.09215，Mondo Robotics / HKUST）。
 
+**文献实例（Cascaded 族 + latent video-motion 先验 · 人形 loco-manip）**：[Being-M0.7](../entities/paper-being-m07-humanoid-latent-wam.md) 在 **>1 万小时** 人中心混合模态（配对 video–motion / 仅视频 / 仅动作）上预训练 **DINO 视觉 latent + head-root 紧凑 motion** 的 **video-motion MoT** 先验，再以 **future-conditioned action expert** 在 **G1 VR 全身遥操作** 轨迹上接地；推理 **低频刷新 prior 计划、高频复用 KV cache** 输出 action chunk，真机四任务定量 **7/15** vs GR00T-N1.6 **2/15**、Ψ0 **3/15**（BeingBeyond Technical Report，2026-07-14）。与 [Being-H0.7](../methods/being-h07.md) 同族「潜空间 WAM」，M0.7 显式面向 **全身 loco-manipulation** 与 **SONIC** 栈。
+
 **文献实例（Joint 族 + 移动操作三层对齐 · latent action + Dream Forcing）**：[ABot-M0.5](../entities/paper-abot-m05-mobile-manipulation-wam.md) 以 **Wan2.2** 视频骨干建立 **Video → 帧级 latent action → 可执行动作** 级联，用 **双层 D-MoT** 解耦 **移动/操作** 子空间，并以 **Dream Forcing** 在 **自生成视频 latent** 上训练逆动力学以对齐自回归 rollout；在 **RoboCasa365**（+Condensed Memory **46.6%**）、**RoboTwin 2.0**（**94.1%**）、**LIBERO-Plus 零样本 WAM 对照**（**83.4%**）与真机长程任务上报告领先表现（arXiv:2607.00678，AMAP CV Lab / 阿里巴巴）。
 
 **2026-07 动作后果横切面（策展）**：[动作后果技术地图](../overview/robot-world-models-action-consequence-technology-map.md) 将近期 WAM 按 **执行 / 修正 / 筛选** 三类接口归纳——[DSWAM](../entities/paper-dswam-dual-system-wam.md)（双系统直出动作块）、[DynaWM](../entities/paper-dynawm-vla-online-correction.md)（冻结 VLA + 在线流匹配修正）、[DreamSteer](../entities/paper-dreamsteer-vla-deployment-steering.md)（潜变量 WM 部署筛选）；接触与几何支路见 [VT-WAM](../entities/paper-vt-wam-visuotactile-contact-rich.md)、[MECo-WAM](../entities/paper-meco-wam-4d-geometry-cotraining.md)、[RynnWorld-4D](../entities/paper-rynnworld-4d-rgb-depth-flow.md)。
@@ -166,6 +170,7 @@ flowchart TB
 - [sources/papers/abot_m05_arxiv_2607_00678.md](../../sources/papers/abot_m05_arxiv_2607_00678.md)
 - [sources/papers/navwam_arxiv_2606_13494.md](../../sources/papers/navwam_arxiv_2606_13494.md)
 - [sources/papers/egowam.md](../../sources/papers/egowam.md)
+- [sources/papers/being_m07.md](../../sources/papers/being_m07.md)
 - [sources/papers/worldvln_arxiv_2605_15964.md](../../sources/papers/worldvln_arxiv_2605_15964.md)
 - [sources/papers/pelican_unified_uei_arxiv_2605_15153.md](../../sources/papers/pelican_unified_uei_arxiv_2605_15153.md)
 - [sources/repos/awesome-wam-openmoss.md](../../sources/repos/awesome-wam-openmoss.md)
@@ -177,6 +182,7 @@ flowchart TB
 - [VLA](../methods/vla.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [Being-H0.7](../methods/being-h07.md)
+- [Being-M0.7（人形潜空间 WAM）](../entities/paper-being-m07-humanoid-latent-wam.md)
 - [Pelican-Unified 1.0（UEI）](../methods/pelican-unified-1.md)
 - [DiT4DiT（双 DiT 联合 VAM）](../entities/paper-dit4dit-video-action-model.md)
 - [MotionWAM（人形 loco-manip · 实时 WAM）](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md)
