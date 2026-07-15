@@ -3,7 +3,7 @@
 type: entity
 tags: [world-models, model-based-rl, isaac-lab, anymal, eth-rsl, open-source, dynamics-model, offline-rl, eth]
 status: complete
-updated: 2026-05-17
+updated: 2026-07-15
 related:
   - ../methods/model-based-rl.md
   - ../methods/generative-world-models.md

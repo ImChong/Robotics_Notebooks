@@ -1,5 +1,17 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-15] ingest | sources/papers/pace_sim2real_arxiv_2509_06342.md、sources/repos/pace-sim2real.md、sources/sites/pace-filipbjelonic-com.md — PACE 足式系统化 sim2real（arXiv:2509.06342）
+
+- wiki/entities/paper-pace-sim2real-legged-robots.md
+- wiki/concepts/sim2real.md
+- wiki/concepts/system-identification.md
+- wiki/comparisons/sim2real-approaches.md
+- wiki/methods/actuator-network.md
+- wiki/entities/anymal.md
+- sources/papers/pace_sim2real_arxiv_2509_06342.md
+- sources/repos/pace-sim2real.md
+- sources/sites/pace-filipbjelonic-com.md
+
 ## [2026-07-14] ingest | sources/sites/unity-com.md — 接入 Unity Engine 官网与文档并升格 wiki/entities/unity-engine.md
 
 ## [2026-07-14] ingest | sources/sites/unreal-engine-5-com.md、sources/sites/unreal-engine-5-8-docs.md、sources/repos/epicgames-github-org.md、sources/repos/unrealengine-github.md — 接入 UE5 官网/5.8 文档/Epic GitHub 与引擎私有仓说明，新建 wiki/entities/unreal-engine-5.md 并交叉更新 MetaHuman/AirSim/CARLA/SPEAR/MATRiX

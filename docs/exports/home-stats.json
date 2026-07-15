@@ -1,13 +1,75 @@
 {
-  "generated_at": "2026-07-14",
-  "node_count": 1634,
-  "edge_count": 12649,
+  "generated_at": "2026-07-15",
+  "node_count": 1635,
+  "edge_count": 12666,
   "coverage": {
-    "covered": 1587,
-    "total": 1617,
+    "covered": 1588,
+    "total": 1618,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-pace-sim2real-legged-robots.md",
+      "detail_id": "entity-paper-pace-sim2real-legged-robots",
+      "label": "PACE（足式系统化 Sim2Real）",
+      "type": "entity",
+      "recency": "2026-07-15",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-07-15",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/concepts/system-identification.md",
+      "detail_id": "wiki-concepts-system-identification",
+      "label": "System Identification",
+      "type": "concept",
+      "recency": "2026-07-15",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/comparisons/sim2real-approaches.md",
+      "detail_id": "wiki-comparisons-sim2real-approaches",
+      "label": "Sim2Real 方法横向对比",
+      "type": "comparison",
+      "recency": "2026-07-15",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/methods/actuator-network.md",
+      "detail_id": "wiki-methods-actuator-network",
+      "label": "Actuator Network (执行器网络)",
+      "type": "method",
+      "recency": "2026-07-15",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/anymal.md",
+      "detail_id": "entity-anymal",
+      "label": "ANYmal 四足机器人",
+      "type": "entity",
+      "recency": "2026-07-15",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "运动控制（Locomotion） 社区"
+    },
     {
       "path": "wiki/entities/unity-engine.md",
       "detail_id": "entity-unity-engine",
@@ -145,100 +207,43 @@
       "source": "log.md",
       "action": "added",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/overview/humanoid-rl-motion-control-methods.md",
-      "detail_id": "wiki-overview-humanoid-rl-motion-control-methods",
-      "label": "深度强化学习运动控制方法（Learning-based）",
-      "type": "overview",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/methods/pie-perceptive-locomotion.md",
-      "detail_id": "wiki-methods-pie-perceptive-locomotion",
-      "label": "PIE：感知一阶段鲁棒行走（隐式–显式学习）",
-      "type": "method",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/methods/attention-foot-placement.md",
-      "detail_id": "wiki-methods-attention-foot-placement",
-      "label": "Attention 落足点优化",
-      "type": "method",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/methods/teacher-student-dagger-training.md",
-      "detail_id": "wiki-methods-teacher-student-dagger-training",
-      "label": "Teacher-Student 与 DAgger 训练",
-      "type": "method",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/methods/centroidal-nmpc-wbc-stack.md",
-      "detail_id": "wiki-methods-centroidal-nmpc-wbc-stack",
-      "label": "Centroidal NMPC + WBC 栈",
-      "type": "method",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/concepts/srbd-convex-mpc-wbc.md",
-      "detail_id": "wiki-concepts-srbd-convex-mpc-wbc",
-      "label": "SRBD + 凸 MPC + WBC",
-      "type": "concept",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/unity-engine.md",
-    "detail_id": "entity-unity-engine",
-    "label": "Unity Engine（Unity Technologies 实时 3D 引擎）",
+    "path": "wiki/entities/paper-pace-sim2real-legged-robots.md",
+    "detail_id": "entity-paper-pace-sim2real-legged-robots",
+    "label": "PACE（足式系统化 Sim2Real）",
     "type": "entity",
-    "recency": "2026-07-14",
+    "recency": "2026-07-15",
     "source": "log.md",
     "action": "added",
-    "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+    "has_repo": true,
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 290
+      "size": 311
     },
     {
       "label": "人形论文深读笔记",
-      "size": 213
+      "size": 214
     },
     {
-      "label": "移动操作",
-      "size": 160
+      "label": "运动控制",
+      "size": 134
     },
     {
       "label": "人形强化学习运动控制",
       "size": 127
     },
     {
-      "label": "动作重定向",
+      "label": "移动操作",
       "size": 91
     },
     {
       "label": "全身控制",
-      "size": 82
+      "size": 85
     }
   ],
   "top_hubs": [
@@ -253,7 +258,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 278,
+      "degree": 280,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -281,19 +286,19 @@
       "community_label": "运动控制（Locomotion） 社区"
     },
     {
+      "detail_id": "wiki-methods-reinforcement-learning",
+      "label": "Reinforcement Learning (RL, 强化学习)",
+      "type": "method",
+      "degree": 222,
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
       "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",
       "label": "Paper Notebooks · Loco-Manipulation and WBC",
       "type": "overview",
       "degree": 222,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "detail_id": "wiki-methods-reinforcement-learning",
-      "label": "Reinforcement Learning (RL, 强化学习)",
-      "type": "method",
-      "degree": 221,
-      "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
     },
     {
       "detail_id": "wiki-tasks-manipulation",
@@ -314,8 +319,7 @@
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
       "degree": 168,
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "has_repo": true
     }
   ],
   "top_paper_hubs": [
