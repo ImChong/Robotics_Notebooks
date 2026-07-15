@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-15] ingest | sources/courses/learn_robotics_qqfly_guide.md — 接入 qqfly 开源机器人学学习指南并新建 wiki/entities/learn-robotics-qqfly-guide.md
+
+- wiki/entities/learn-robotics-qqfly-guide.md
+- wiki/entities/modern-robotics-book.md
+- roadmap/motion-control.md
+- sources/courses/learn_robotics_qqfly_guide.md
+
 ## [2026-07-15] ingest | sources/papers/pace_sim2real_arxiv_2509_06342.md、sources/repos/pace-sim2real.md、sources/sites/pace-filipbjelonic-com.md — PACE 足式系统化 sim2real（arXiv:2509.06342）
 
 - wiki/entities/paper-pace-sim2real-legged-robots.md

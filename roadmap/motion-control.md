@@ -188,7 +188,7 @@ flowchart LR
 
 > **这一层为什么存在：** 之后每一层的公式都把"位姿 / 速度 / 力"当作黑话。没有 L0，每读一行公式都要现场查。
 
-**本阶段入口：** [线性代数学习策展（L0）](../wiki/entities/linear-algebra-curriculum.md)、[SE(3) 表示](../wiki/formalizations/se3-representation.md)、[Pinocchio](../wiki/entities/pinocchio.md)、[Crocoddyl](../wiki/entities/crocoddyl.md)（Modern Robotics 在 L−1 已介绍，下方"推荐读什么"会指出具体章节）。
+**本阶段入口：** [线性代数学习策展（L0）](../wiki/entities/linear-algebra-curriculum.md)、[SE(3) 表示](../wiki/formalizations/se3-representation.md)、[Pinocchio](../wiki/entities/pinocchio.md)、[Crocoddyl](../wiki/entities/crocoddyl.md)（Modern Robotics 在 L−1 已介绍，下方"推荐读什么"会指出具体章节）。若背景偏 **工业臂 / 非科班自学**，可并行 [开源机器人学学习指南（qqfly）](../wiki/entities/learn-robotics-qqfly-guide.md) 的 Craig 入门与编程实践清单。
 
 ### 英文缩写速查（L0）
 

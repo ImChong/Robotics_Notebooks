@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-15",
-  "node_count": 1637,
-  "edge_count": 12692,
+  "node_count": 1638,
+  "edge_count": 12705,
   "coverage": {
-    "covered": 1590,
-    "total": 1620,
+    "covered": 1591,
+    "total": 1621,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -221,23 +221,23 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 261
+      "size": 241
     },
     {
       "label": "人形论文深读笔记",
-      "size": 210
-    },
-    {
-      "label": "移动操作",
-      "size": 163
-    },
-    {
-      "label": "人形强化学习运动控制",
-      "size": 126
+      "size": 181
     },
     {
       "label": "动作重定向",
-      "size": 105
+      "size": 161
+    },
+    {
+      "label": "移动操作",
+      "size": 160
+    },
+    {
+      "label": "人形强化学习运动控制",
+      "size": 127
     },
     {
       "label": "操作",
@@ -287,7 +287,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 222,
+      "degree": 223,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
@@ -366,7 +366,8 @@
       "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",
       "label": "SD-AMP：统一走、跑与起身的对抗运动先验",
       "type": "entity",
-      "degree": 29
+      "degree": 29,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
     },
     {
       "detail_id": "entity-paper-bfm-zero",
