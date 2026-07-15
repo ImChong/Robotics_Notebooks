@@ -1,13 +1,55 @@
 {
   "generated_at": "2026-07-15",
-  "node_count": 1642,
-  "edge_count": 12749,
+  "node_count": 1643,
+  "edge_count": 12759,
   "coverage": {
-    "covered": 1595,
-    "total": 1625,
+    "covered": 1596,
+    "total": 1626,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-eventvla-visual-evidence-memory.md",
+      "detail_id": "entity-paper-eventvla-visual-evidence-memory",
+      "label": "EventVLA（Event-Driven Visual Evidence Memory for Long-Horizon VLA）",
+      "type": "entity",
+      "recency": "2026-07-15",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-07-15",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/robotwin.md",
+      "detail_id": "entity-robotwin",
+      "label": "RoboTwin 2.0",
+      "type": "entity",
+      "recency": "2026-07-15",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-kemo-event-driven-keyframe-memory-vla.md",
+      "detail_id": "entity-paper-kemo-event-driven-keyframe-memory-vla",
+      "label": "KEMO（Event-Driven Keyframe Memory for Long-Horizon Robot Manipulation with VLA Policies）",
+      "type": "entity",
+      "recency": "2026-07-15",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-panoworld-real-world-panoramic-generation.md",
       "detail_id": "entity-paper-panoworld-real-world-panoramic-generation",
@@ -171,52 +213,12 @@
       "source": "log.md",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/simulation-evaluation-infrastructure.md",
-      "detail_id": "wiki-concepts-simulation-evaluation-infrastructure",
-      "label": "仿真评测基础设施（Simulation as Evaluation Infrastructure）",
-      "type": "concept",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/unity-engine.md",
-      "detail_id": "entity-unity-engine",
-      "label": "Unity Engine（Unity Technologies 实时 3D 引擎）",
-      "type": "entity",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
-    },
-    {
-      "path": "wiki/entities/unreal-engine-5.md",
-      "detail_id": "entity-unreal-engine-5",
-      "label": "Unreal Engine 5（Epic 实时 3D 引擎）",
-      "type": "entity",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
-    },
-    {
-      "path": "wiki/overview/humanoid-motion-control-framework-outlook.md",
-      "detail_id": "wiki-overview-humanoid-motion-control-framework-outlook",
-      "label": "人形机器人技术框架路线展望",
-      "type": "overview",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-panoworld-real-world-panoramic-generation.md",
-    "detail_id": "entity-paper-panoworld-real-world-panoramic-generation",
-    "label": "PanoWorld：真实世界全景可控生成",
+    "path": "wiki/entities/paper-eventvla-visual-evidence-memory.md",
+    "detail_id": "entity-paper-eventvla-visual-evidence-memory",
+    "label": "EventVLA（Event-Driven Visual Evidence Memory for Long-Horizon VLA）",
     "type": "entity",
     "recency": "2026-07-15",
     "source": "log.md",
@@ -226,27 +228,27 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 297
+      "size": 302
     },
     {
       "label": "人形论文深读笔记",
-      "size": 210
+      "size": 216
+    },
+    {
+      "label": "运动控制",
+      "size": 130
     },
     {
       "label": "移动操作",
-      "size": 184
+      "size": 112
+    },
+    {
+      "label": "动作重定向",
+      "size": 111
     },
     {
       "label": "人形强化学习运动控制",
       "size": 91
-    },
-    {
-      "label": "动作重定向",
-      "size": 89
-    },
-    {
-      "label": "全身控制",
-      "size": 88
     }
   ],
   "top_hubs": [
@@ -277,7 +279,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 250,
+      "degree": 252,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -301,13 +303,13 @@
       "label": "Paper Notebooks · Loco-Manipulation and WBC",
       "type": "overview",
       "degree": 222,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
     },
     {
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 218,
+      "degree": 219,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
