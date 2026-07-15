@@ -136,6 +136,17 @@ flowchart TB
 
 - 隐维度 **D=256**；编码器 **lr=8×10⁻⁷**；**update-z-every=10**。
 
+## 与其他工作对比
+
+| 对照工作 | 表征 / 训练 | 与 TeCH 的关系 |
+|----------|-------------|----------------|
+| **[BFM-Zero](./paper-bfm-zero.md)** | FB（forward–backward）无监督 RL | **同框架不同表征** 姊妹线；FB 依赖 linear MDP 假设，TeCH 直接优化时间距离，**根部旋转漂移** 更小、目标到达更高效 |
+| **[SONIC](./paper-sonic.md)** | DeepMimic 式规模化监督跟踪 | TeCH 全轨迹 $E_{mae}$ **优于 SONIC 全轨迹**、与 SONIC (TER.) 相当；GPU 小时降近 **两个数量级**；SONIC 难从跌倒恢复 |
+| **[TLDR](https://arxiv.org/abs/2407.08464)** | 对比时间距离表征（原范式） | TeCH 是 TLDR 在 **真实人形全身控制** 上的首套系统落地与评测 |
+| **[Teacher-Student 多技能 BFM](../methods/teacher-student-multi-skill-bfm.md)** | 特权教师蒸馏多技能 | 另一条 BFM 工程路径；TeCH 走 **无监督表征**，无需多任务特权教师 |
+
+> 跨论文比较须注明条件：SONIC 用 128 GPU 与更大数据，硬件与 early-termination 设定不同，直接比 wall-clock 不严谨。
+
 ## 局限与风险
 
 - **运动平滑性：** 时间距离目标优先 **最少转移步数**，真机响应可能比 BFM-Zero（风格判别器）更 **激进、略不平滑**。

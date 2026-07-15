@@ -2,7 +2,7 @@
 
 ## [2026-07-15] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **9** 条信息型预警）：
+共发现 **0** 个问题（另含 **0** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -88,28 +88,23 @@
 ### ❌ 工具实体缺少可派生的所属机构（0 个）
 - 无
 
-### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（4 个）
-- wiki/methods/centroidal-nmpc-wbc-stack.md（被 5 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/dreamwaq.md（被 4 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/pie-perceptive-locomotion.md（被 6 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/teacher-student-multi-skill-bfm.md（被 4 个页面引用，无 queries/comparisons 落地）
+### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（3 个）
-- wiki/entities/paper-infinite-diffusion-terrain-diffusion.md（缺 评测 / 对比）
-- wiki/entities/paper-pace-sim2real-legged-robots.md（缺 评测）
-- wiki/entities/paper-tech-humanoid-control.md（缺 对比）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（1 个）
-- wiki/entities/paper-rynnworld-4d-rgb-depth-flow.md（含绝对化措辞「SOTA」，updated=2026-07-13；同主题更新页 wiki/entities/paper-embodiedgen-v2-sim-ready-world-engine.md updated=2026-07-14）
+### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
+- 无
 
-### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」专题枢纽（信息型，不阻塞 CI）（1 个）
-- wiki/concepts/kinematic-vs-dynamic-feasibility.md
+### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」专题枢纽（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 接触/力控/操作概念页缺回链「接触力旋量闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
