@@ -110,6 +110,7 @@ flowchart TB
 - [ENPIRE](../methods/enpire.md) — 真机闭环 autoresearch 与 RoboCasa 仿真 ablation 的分工样本
 - [SimFoundry](../entities/paper-simfoundry-real2sim-scene-generation.md) — 真机视频孪生 + Pearson/MMRV 操作策略评测（arXiv:2606.28276）
 - [数据飞轮](data-flywheel.md) — 评测驱动的数据采集闭环
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是其「④ sim↔real 校准层」的评测基建前提
 
 ## 推荐继续阅读
 

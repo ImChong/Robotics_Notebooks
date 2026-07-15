@@ -29,9 +29,9 @@
 
 ## P1: 具身大模型评测基准选型闭环知识链专题 (Quality)
 
-- [ ] **具身大模型评测基准选型闭环知识链 (+2)**：
-    - [ ] `wiki/queries/embodied-eval-benchmark-selection-loop.md`（端到端 Query：具身大脑/MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准 四层评测选型的取舍决策树，覆盖每层测什么、用什么代表性基准、指标的可复现性/真实代表性/过程 vs 结果/成本取舍与典型误判，配 Mermaid 决策流程图）。已建页并从相关评测实体/对比页回链（消孤儿）。
-    - [ ] `wiki/concepts/sim-vs-real-eval-gap.md`（仿真评测可复现性 ↔ 真实世界代表性 取舍概念页：明示仿真基准在可复现性/吞吐/可控性上的优势为何以牺牲真实接触/感知噪声/长尾分布的代表性为代价，并把这条 gap 讲成「评测结论能否外推到真机」的物理根因；配可复现性 vs 代表性代价表、缩小评测 gap 的三条工程路线与常见误判速查）。已与 Query 页双向回链。
+- [x] **具身大模型评测基准选型闭环知识链 (+2)**：
+    - [x] `wiki/queries/embodied-eval-benchmark-selection-loop.md`（端到端 Query：具身大脑/MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准 四层评测选型的取舍决策树，覆盖每层测什么、用什么代表性基准、指标的可复现性/真实代表性/过程 vs 结果/成本取舍与典型误判，配 Mermaid 决策流程图）。已建页并从 `simulation-evaluation-infrastructure` 概念页回链（消孤儿，`graph-stats.json` 0 orphans）。
+    - [x] `wiki/concepts/sim-vs-real-eval-gap.md`（仿真评测可复现性 ↔ 真实世界代表性 取舍概念页：明示仿真基准在可复现性/吞吐/可控性上的优势为何以牺牲真实接触/感知噪声/长尾分布的代表性为代价，并把这条 gap 讲成「评测结论能否外推到真机」的物理根因；配可复现性 vs 代表性代价表、缩小评测 gap 的三条工程路线与常见误判速查）。已与 Query 页双向回链。
 
 - [ ] **评测基准家族层专题交叉补强**：
     - [ ] 在 `wiki/entities/robo-bench.md`（MLLM 认知层）、`wiki/entities/ewmbench.md`（世界模型评测层）、`wiki/entities/paper-gigaworld-1-policy-evaluation.md`（策略评测层）、`wiki/concepts/simulation-evaluation-infrastructure.md`（评测基建）等页与 P1 新页（`queries/embodied-eval-benchmark-selection-loop.md`）形成双向回链：各页在 `related` 与「关联页面」补入评测选型闭环 Query 页并标注本页所在评测层；Query 页 `related` 含全部相关评测页，双向闭合，消除孤儿页。
