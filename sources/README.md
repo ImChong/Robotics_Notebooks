@@ -98,6 +98,7 @@
 | [x] [ge_sim_2_arxiv_2605_27491.md](papers/ge_sim_2_arxiv_2605_27491.md) | GE-Sim 2.0：闭环操纵视频世界模拟器（本体状态专家 + World Judge + 加速，arXiv:2605.27491，AgibotTech）摘录与 wiki 映射 |
 | [x] [tau0_wm_tech_report.md](papers/tau0_wm_tech_report.md) | τ₀-WM：统一视频–动作世界模型（5B VAM、异构掩码预训练、测试时 propose–evaluate–revise，Agibot Finch 技术报告 2026-05-31）摘录与 wiki 映射 |
 | [x] [worldvln_arxiv_2605_15964.md](papers/worldvln_arxiv_2605_15964.md) | WorldVLN：空中 VLN 自回归 World Action Model + Action-aware GRPO（arXiv:2605.15964，EmbodiedCity）摘录与 wiki 映射 |
+| [x] [xiaomi_robotics_u0_arxiv_2607_11643.md](papers/xiaomi_robotics_u0_arxiv_2607_11643.md) | Xiaomi-Robotics-U0：38B 统一具身合成世界基础模型（T2I/X2I/多视角场景/迁移/视频共训 + FlashAR+，arXiv:2607.11643，小米）摘录与 wiki 映射 |
 | [x] [unified_walk_run_recovery_sdamp_arxiv_2605_18611.md](papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md) | SD-AMP：投影重力门控双判别器 AMP，G1 单策略走跑起身（arXiv:2605.18611，HKU）摘录与 wiki 映射 |
 | [x] [sprint_arxiv_2605_28549.md](papers/sprint_arxiv_2605_28549.md) | SPRINT：5 条参考 + 频率自适应频谱先验 + 残差 PPO，G1 真机冲刺 6 m/s（arXiv:2605.28549，NUDT / 湖南大学）摘录与 wiki 映射 |
 | [x] [ssr_arxiv_2605_30770.md](papers/ssr_arxiv_2605_30770.md) | SSR：想象落脚点 + 潜空间对称 + 分地形 AMP，AgiBot X2 开放世界 1.3 km 穿越（arXiv:2605.30770，浙江大学）摘录与 wiki 映射 |
@@ -234,6 +235,7 @@
 | [x] [ego_planner_swarm.md](repos/ego_planner_swarm.md) | ego-planner-swarm：ESDF + B-spline 单/多机局部规划 |
 | [x] [airsim.md](repos/airsim.md) | Microsoft AirSim：UE/Unity 视觉无人机仿真 |
 | [x] [xtdrone.md](repos/xtdrone.md) | XTDrone：PX4 + ROS + Gazebo 教学仿真平台 |
+| [x] [xiaomi-robotics-u0.md](repos/xiaomi-robotics-u0.md) | Xiaomi-Robotics-U0：38B 统一具身合成世界基础模型（官网/GitHub/arXiv:2607.11643） |
 | [x] [flightmare.md](repos/flightmare.md) | Flightmare：RPG 灵活四旋翼研究仿真器 |
 | [x] [gamma_world.md](repos/gamma_world.md) | nv-tlabs/Gamma-World：多智能体生成式交互世界模型官方实现（arXiv:2605.28816） |
 | [x] [gym_pybullet_drones.md](repos/gym_pybullet_drones.md) | gym-pybullet-drones：Gymnasium 四旋翼 RL 环境 |

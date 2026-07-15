@@ -92,6 +92,7 @@
 - [MotionCode™](wiki/entities/motioncode.md)（人体运动数据与 Mind 线人形训练叙事）
 - [HumanNet](wiki/entities/humannet.md)（百万小时级人中心视频语料；VLA/IL 人类侧预训练参照）
 - [Xiaomi-Robotics-0](wiki/entities/xiaomi-robotics-0.md)（小米开源 VLA；Qwen3-VL + DiT flow matching，异步 action chunk 部署）
+- [Xiaomi-Robotics-U0](wiki/entities/xiaomi-robotics-u0.md)（小米 38B 统一具身合成世界基础模型；多视角场景/迁移/视频 + 策略数据增广）
 - [Project Instinct](wiki/entities/project-instinct.md)（人形全身动态控制研究站群：接触丰富 Shadowing、感知跑酷、野外徒步）
 - [人形腿部行星滚柱丝杠直线驱动（PRS）](wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md)（Optimus 类腿部直线执行器 + 连杆：负载/自锁/力控 vs 动态带宽的权衡）
 - [人形机器人并联关节解算](wiki/concepts/humanoid-parallel-joint-kinematics.md)（闭链踝、力分配与仿真接口分层）
