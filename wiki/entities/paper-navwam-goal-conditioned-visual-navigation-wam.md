@@ -11,7 +11,7 @@ tags:
   - mobile-robot
   - goal-conditioned
 status: complete
-updated: 2026-07-08
+updated: 2026-07-15
 arxiv: "2606.13494"
 related:
   - ../concepts/world-action-models.md
