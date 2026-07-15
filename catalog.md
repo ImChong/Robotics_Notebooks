@@ -103,6 +103,7 @@
 - [Gen2Humanoid（文本→人形运动端到端管线）](wiki/entities/gen2humanoid.md) — Gen2Humanoid**（RavenLeeANU/Gen2Humanoid）把两条成熟开源能力—— `📅unknown` `[entity_page]`
 - [GenCAD-3D（Multimodal Geometry → CAD Program）](wiki/entities/gencad-3d.md) — GenCAD-3D** 是 MIT **Nomi Yu、Md Ferdous Alam、A John Hart、Faez Ahmed** 的工作（arXiv:2509.15246，[JMD](ht `📅2026-05-21` `[entity_page]`
 - [GenCAD（Image-Conditioned CAD Program Generation）](wiki/entities/gencad.md) — GenCAD** 是 MIT **Md Ferdous Alam** 与 **Faez Ahmed** 的工作（arXiv:2409.16294，[项目页](https://gencad.gith `📅2026-05-21` `[entity_page]`
+- [GenCeption](wiki/entities/genception.md) — GenCeption**（*Video Generation Models are General-Purpose Vision Learners*，arXiv:2607.09024，**ECCV `📅unknown` `[entity_page]`
 - [GENE-26.5（Genesis AI 操作基础模型）](wiki/entities/gene-26-5-genesis-ai.md) — GENE-26.5** 指 **Genesis AI**（全栈机器人公司，官网域名 genesis-ai.company）在 2026 年前后对外发布的 **机器人操作基础模型** 品牌，与开源物 `📅unknown` `[entity_page]`
 - [Generalist AI（机器人方向）](wiki/entities/generalist-ai-robotics.md) — Generalist AI**：聚焦具身智能与通用机器人策略的商业实体之一；对外叙事强调 **海量人类 / 机器人交互数据** 上的预训练与规模化定律验证（产品线名称与版本随发布更新）。 `📅unknown` `[entity_page]`
 - [Genesis (仿真器)](wiki/entities/genesis-sim.md) — Genesis** 是具身智能领域新兴的高性能**物理仿真与数据生成平台**。它通常与 isaac-gym-isaac-lab 并列，作为新一代 `📅unknown` `[entity_page]`
