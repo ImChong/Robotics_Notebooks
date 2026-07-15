@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-07-15",
-  "node_count": 1640,
-  "edge_count": 12733,
+  "node_count": 1641,
+  "edge_count": 12741,
   "coverage": {
-    "covered": 1593,
-    "total": 1623,
+    "covered": 1594,
+    "total": 1624,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/genception.md",
+      "detail_id": "entity-genception",
+      "label": "GenCeption",
+      "type": "entity",
+      "recency": "2026-07-15",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/xiaomi-robotics-u0.md",
       "detail_id": "entity-xiaomi-robotics-u0",
@@ -200,33 +210,22 @@
       "recency": "2026-07-14",
       "source": "log.md",
       "action": "added"
-    },
-    {
-      "path": "wiki/concepts/modeling-and-solving-for-control.md",
-      "detail_id": "wiki-concepts-modeling-and-solving-for-control",
-      "label": "建模与求解（控制问题框架）",
-      "type": "concept",
-      "recency": "2026-07-14",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/xiaomi-robotics-u0.md",
-    "detail_id": "entity-xiaomi-robotics-u0",
-    "label": "Xiaomi-Robotics-U0",
+    "path": "wiki/entities/genception.md",
+    "detail_id": "entity-genception",
+    "label": "GenCeption",
     "type": "entity",
     "recency": "2026-07-15",
     "source": "log.md",
     "action": "added",
-    "has_repo": true,
     "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 295
+      "size": 296
     },
     {
       "label": "人形论文深读笔记",
@@ -277,7 +276,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 249,
+      "degree": 250,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

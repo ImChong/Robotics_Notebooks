@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-15] ingest | sources/papers/genception_arxiv_2607_09024.md — GenCeption ECCV 2026 视频生成统一视觉感知；wiki/entities/genception.md；交叉更新 generative-vision-pretraining / vision-banana
+
 ## [2026-07-15] ingest | sources/repos/xiaomi-robotics-u0.md、sources/papers/xiaomi_robotics_u0_arxiv_2607_11643.md — Xiaomi-Robotics-U0 38B 统一具身合成 WM；wiki/entities/xiaomi-robotics-u0.md；交叉更新 generative-world-models / xiaomi-robotics-0
 
 - wiki/entities/xiaomi-robotics-u0.md
