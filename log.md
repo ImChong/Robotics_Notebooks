@@ -1,5 +1,18 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-16] ingest | sources/papers/lumo2_arxiv_2607_11270.md + sources/papers/philia_arxiv_2607_11377.md — Astribot Lumo-2 latent WAM 与 Philia 多机器人助手；项目页全量演示视频归档
+
+- wiki/entities/lumo-2.md
+- wiki/entities/philia.md
+- wiki/concepts/world-action-models.md
+- wiki/methods/vla.md
+- wiki/tasks/manipulation.md
+- wiki/entities/hermes-agent.md
+- sources/papers/lumo2_arxiv_2607_11270.md
+- sources/papers/philia_arxiv_2607_11377.md
+- sources/sites/astribot-lumo2-project-page.md
+- sources/sites/astribot-philia-project-page.md
+- schema/institutions.json
 ## [2026-07-16] ingest | sources/papers/robottt_nvidia_gear.md — RoboTTT：GR00T N1.7 内嵌 TTT fast weights，8K visuomotor 上下文与部署后在线学习
 
 - wiki/entities/paper-robottt-test-time-training-vla-context.md

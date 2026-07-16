@@ -171,6 +171,8 @@ flowchart TD
 - [PhysisForcing](../entities/paper-physisforcing.md) — 操纵视频 DiT 训练期分层物理对齐；R-Bench / WorldArena / Fast-WAM 下游增益（arXiv:2606.28128）
 - [GaP](../entities/paper-gap-graph-as-policy.md) — 变体自动化计算图策略；可 staging VLA 提升工业位姿鲁棒性（arXiv:2607.05369）
 - [PhysMani](../entities/paper-physmani-dynamic-manipulation-world-model.md) — 3D Gaussian 物理世界模型 + future-aware 3DFA，动态操作 Benchmark 与 Astribot 真机（ECCV 2026，arXiv:2607.01938）
+- [Lumo-2](../entities/lumo-2.md) — Astribot latent WAM：三阶段模态预对齐、22 项 S1 真机 benchmark、32 段项目页演示视频（arXiv:2607.11270）
+- [Philia](../entities/philia.md) — Astribot 多机器人物理 AI 助手运行时（OpenClaw + Robot Gateway，arXiv:2607.11377）
 
 ## 关联任务
 

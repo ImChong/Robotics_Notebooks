@@ -1,21 +1,42 @@
 {
   "generated_at": "2026-07-16",
-  "node_count": 1654,
-  "edge_count": 12881,
+  "node_count": 1656,
+  "edge_count": 12906,
   "coverage": {
-    "covered": 1607,
-    "total": 1637,
+    "covered": 1609,
+    "total": 1639,
     "percent": 98
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-robottt-test-time-training-vla-context.md",
-      "detail_id": "entity-paper-robottt-test-time-training-vla-context",
-      "label": "RoboTTT（Test-Time-Training Robot Policies）",
+      "path": "wiki/entities/lumo-2.md",
+      "detail_id": "entity-lumo-2",
+      "label": "Lumo-2（Latent World-Action Model）",
       "type": "entity",
       "recency": "2026-07-16",
       "source": "log.md",
       "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/philia.md",
+      "detail_id": "entity-philia",
+      "label": "Philia（Physical AI Symbiotic Agent）",
+      "type": "entity",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/world-action-models.md",
+      "detail_id": "wiki-concepts-world-action-models",
+      "label": "World Action Models（WAM，世界–动作模型）",
+      "type": "concept",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -30,9 +51,19 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
-      "path": "wiki/entities/paper-hrl-stack-34-gr00t_n1.md",
-      "detail_id": "entity-paper-hrl-stack-34-gr00t_n1",
-      "label": "GR00T N1",
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/hermes-agent.md",
+      "detail_id": "entity-hermes-agent",
+      "label": "Hermes Agent（Nous Research）",
       "type": "entity",
       "recency": "2026-07-16",
       "source": "log.md",
@@ -41,13 +72,24 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
+      "path": "wiki/entities/paper-robottt-test-time-training-vla-context.md",
+      "detail_id": "entity-paper-robottt-test-time-training-vla-context",
+      "label": "RoboTTT（Test-Time-Training Robot Policies）",
+      "type": "entity",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-hrl-stack-34-gr00t_n1.md",
+      "detail_id": "entity-paper-hrl-stack-34-gr00t_n1",
+      "label": "GR00T N1",
+      "type": "entity",
       "recency": "2026-07-16",
       "source": "log.md",
       "action": "maintained",
+      "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -80,7 +122,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "生成式世界模型（Generative World Models） 社区"
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/methods/regrind-retargeting-guided-rl.md",
@@ -172,56 +214,13 @@
       "source": "log.md",
       "action": "added",
       "has_repo": true,
-      "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/concepts/world-action-models.md",
-      "detail_id": "wiki-concepts-world-action-models",
-      "label": "World Action Models（WAM，世界–动作模型）",
-      "type": "concept",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/dexmal-dm05.md",
-      "detail_id": "entity-dexmal-dm05",
-      "label": "Dexmal DM0.5",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/robotwin.md",
-      "detail_id": "entity-robotwin",
-      "label": "RoboTwin 2.0",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-co-calib-multi-fisheye-calibration.md",
-      "detail_id": "entity-paper-co-calib-multi-fisheye-calibration",
-      "label": "CO-Calib（多鱼眼标定 · 观测质量）",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-robottt-test-time-training-vla-context.md",
-    "detail_id": "entity-paper-robottt-test-time-training-vla-context",
-    "label": "RoboTTT（Test-Time-Training Robot Policies）",
+    "path": "wiki/entities/lumo-2.md",
+    "detail_id": "entity-lumo-2",
+    "label": "Lumo-2（Latent World-Action Model）",
     "type": "entity",
     "recency": "2026-07-16",
     "source": "log.md",
@@ -231,23 +230,23 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 209
-    },
-    {
-      "label": "全身控制",
-      "size": 186
+      "size": 293
     },
     {
       "label": "人形论文深读笔记",
       "size": 179
     },
     {
+      "label": "全身控制",
+      "size": 160
+    },
+    {
       "label": "人形强化学习运动控制",
-      "size": 130
+      "size": 118
     },
     {
       "label": "移动操作",
-      "size": 103
+      "size": 104
     },
     {
       "label": "仿真到现实",
@@ -274,7 +273,7 @@
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
-      "degree": 278,
+      "degree": 280,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
@@ -282,8 +281,15 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 262,
+      "degree": 266,
       "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "degree": 231,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -292,13 +298,6 @@
       "type": "task",
       "degree": 230,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "degree": 227,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
@@ -350,7 +349,8 @@
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
       "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
       "type": "entity",
-      "degree": 39
+      "degree": 39,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
