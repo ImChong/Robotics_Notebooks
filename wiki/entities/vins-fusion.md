@@ -3,9 +3,10 @@
 type: entity
 tags: [repo, vio, visual-inertial, optimization, uav, hku]
 status: complete
-updated: 2026-05-27
+updated: 2026-07-16
 related:
   - ../entities/open-vins.md
+  - ../entities/paper-co-calib-multi-fisheye-calibration.md
   - ../entities/orb-slam3.md
   - ../comparisons/lidar-slam-lio-vio-selection.md
 sources:
@@ -52,6 +53,7 @@ summary: "VINS-Fusion 是优化式多传感器状态估计器：单目/双目+IM
 ## 关联页面
 
 - [OpenVINS](../entities/open-vins.md)
+- [CO-Calib](../entities/paper-co-calib-multi-fisheye-calibration.md) — 同 HKUST Aerial Robotics 组的多鱼眼标定 plug-in
 - [ORB-SLAM3](../entities/orb-slam3.md)
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)
 

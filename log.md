@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-16] ingest | sources/papers/co_calib_observation_quality_fisheye_arxiv_2607_05777.md — CO-Calib 多鱼眼标定 failure-oriented 分析；wiki/entities/paper-co-calib-multi-fisheye-calibration.md
+
+- wiki/entities/paper-co-calib-multi-fisheye-calibration.md
+- wiki/formalizations/3d-coordinate-transforms-vision-robotics.md
+- wiki/entities/vins-fusion.md
+- sources/papers/co_calib_observation_quality_fisheye_arxiv_2607_05777.md
+- sources/repos/co_calib.md
+
 ## [2026-07-16] ingest | sources/repos/graphify-labs_graphify.md — Graphify 多模态知识图 Agent Skill；wiki/entities/graphify.md；交叉更新 llm-wiki-karpathy / superpowers / agent-reach / caveman
 
 - wiki/entities/graphify.md

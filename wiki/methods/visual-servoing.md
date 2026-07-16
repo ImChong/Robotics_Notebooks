@@ -2,7 +2,7 @@
 type: method
 tags: [perception, control, visual-servoing, manipulation, camera]
 status: complete
-updated: 2026-04-21
+updated: 2026-07-16
 related:
   - ../concepts/tactile-sensing.md
   - ../tasks/manipulation.md

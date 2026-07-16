@@ -3,7 +3,7 @@
 type: entity
 tags: [perception, computer-vision, calibration, fiducial, c, software, mit]
 status: complete
-updated: 2026-05-12
+updated: 2026-07-16
 related:
   - ../methods/visual-servoing.md
   - ../tasks/manipulation.md

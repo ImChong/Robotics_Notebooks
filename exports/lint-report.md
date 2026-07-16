@@ -112,4 +112,4 @@
 ### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：1600/1630 (98%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1601/1631 (98%) wiki/entity 页有 ingest 来源
