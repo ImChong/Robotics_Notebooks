@@ -438,7 +438,7 @@
 - [OmniDP](wiki/entities/paper-loco-manip-161-071-omnidp.md) — OmniDP** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
 - [Opt2Skill](wiki/entities/paper-loco-manip-161-072-opt2skill.md) — Opt2Skill** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3 `📅unknown` `[entity_page]`
 - [Pro-HOI](wiki/entities/paper-loco-manip-161-074-pro-hoi.md) — Pro-HOI** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A `📅unknown` `[entity_page]`
-- [SIMPLE](wiki/entities/paper-loco-manip-161-075-simple.md) — SIMPLE** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
+- [SIMPLE（Simulation-Based Policy Learning and Evaluation for Humanoid Loco-manipulation）](wiki/entities/paper-loco-manip-161-075-simple.md) — SIMPLE** 是 USC Physical Superintelligence (PSI) Lab 提出的 **人形全身 loco-manipul `📅unknown` `[entity_page]`
 - [SUGAR](wiki/entities/paper-loco-manip-161-076-sugar.md) — SUGAR** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
 - [SkillBlender](wiki/entities/paper-loco-manip-161-077-skillblender.md) — SkillBlender** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR `📅unknown` `[entity_page]`
 - [StageACT](wiki/entities/paper-loco-manip-161-078-stageact.md) — StageACT** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A `📅unknown` `[entity_page]`
