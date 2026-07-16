@@ -1,27 +1,28 @@
 ---
 type: method
-tags: [robotics, motion-retargeting, dexterous-manipulation, reinforcement-learning, contact-rich-manipulation, sim2real, mocap]
+tags: [robotics, motion-retargeting, dexterous-manipulation, reinforcement-learning, contact-rich-manipulation, sim2real, mocap, cornell, amazon-far]
 status: complete
 date: 2026-07-16
 updated: 2026-07-16
+arxiv: "2607.11874"
 related:
   - ../concepts/motion-retargeting.md
   - ../concepts/motion-retargeting-pipeline.md
   - ./toporetarget-interaction-preserving-dexterous-retargeting.md
   - ./spider-physics-informed-dexterous-retargeting.md
   - ../entities/paper-hrl-stack-03-omniretarget.md
-  - ../entities/paper-regrind-dexterous-manipulation.md
+  - ../entities/wuji-robotics.md
   - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/regrind_arxiv_2607_11874.md
   - ../../sources/sites/regrind-project-yunhaifeng.md
   - ../../sources/repos/regrind.md
-summary: "REGRIND：光学 MoCap 单次人手–物体演示 → OmniRetarget 同族 interaction mesh 重定向 → 残差 RL 跟踪物体关键点 + RSI/增广 → 系统辨识后零样本部署 LEAP/WUJI 剪刀与螺丝刀；强调 contact-rich 灵巧操作比 loco 更依赖交互保留重定向与 sim2real 设计。"
+summary: "REGRIND（arXiv:2607.11874）：光学 MoCap 单次人手–物体演示 → OmniRetarget 同族 interaction mesh 重定向 → 残差 RL 跟踪物体关键点 + RSI/增广 → 系统辨识后零样本部署 LEAP/WUJI 剪刀与螺丝刀。"
 ---
 
 # REGRIND（重定向引导灵巧操作 RL）
 
-**REGRIND**（*REtargeting-Guided ReINforcement learning for Dexterous manipulation*，Feng 等，arXiv:[2607.11874](https://arxiv.org/abs/2607.11874)，Cornell + Amazon FAR）把人形 WBT 上已验证的 **「重定向参考 + RL 跟踪」** 极简配方扩展到 **contact-rich 灵巧工具操作**（论文索引见 [REGRIND 论文实体页](../entities/paper-regrind-dexterous-manipulation.md)）。从 **单次光学动捕** 人手–物体演示出发，先做 **交互保留重定向**，再在仿真中用 **残差 RL** 跟踪 **物体-centric 关键点**，经 **系统辨识** 后 **零样本** 部署到 **LEAP / WUJI** 手，完成剪刀开合、螺丝刀旋转等任务。
+**REGRIND**（*A Minimalist Retargeting-Guided Reinforcement Learning Recipe for Dexterous Manipulation* / *REtargeting-Guided ReINforcement learning for Dexterous manipulation*，Feng 等，arXiv:[2607.11874](https://arxiv.org/abs/2607.11874)，[项目页](https://www.yunhaifeng.com/REGRIND/)，[GitHub](https://github.com/yunhaif/regrind)，Cornell + Amazon FAR）把人形 WBT 上已验证的 **「重定向参考 + RL 跟踪」** 极简配方扩展到 **contact-rich 灵巧工具操作**。从 **单次光学动捕** 人手–物体演示出发，先做 **交互保留重定向**，再在仿真中用 **残差 RL** 跟踪 **物体-centric 关键点**，经 **系统辨识** 后 **零样本** 部署到 **LEAP / WUJI** 手，完成剪刀开合、螺丝刀旋转等任务。
 
 ## 英文缩写速查
 
@@ -91,6 +92,25 @@ flowchart LR
 | 真机（演示初态） | LEAP 剪刀 **9/10**，螺丝刀 **10/10**；WUJI 螺丝刀 **9/10** | WUJI-Scissors **0/10** |
 | 初态泛化（±5 cm / ±30°） | 与演示初态性能接近（Table 3） | 增广在 RL 训练时动态生成 |
 
+### 与基线对比（论文）
+
+| 方法 | 重定向 | 下游 | 剪刀/螺丝刀真机 |
+|------|--------|------|-----------------|
+| Mink IK + RL | 纯 IK | 同配方 RL | 多数失败 |
+| DexMachina | functional IK + 仿真投影 | RL | scissors 真机 **0/10** |
+| SPIDER | 物理采样 MPC | 开环/MPC | SR **0%**（论文设置） |
+| **REGRIND** | **interaction mesh** | **残差 RL + 增广** | **9–10/10**（除 WUJI-Scissors） |
+
+## 核心信息
+
+| 字段 | 内容 |
+|------|------|
+| 机构 | 康奈尔大学（Cornell University）；亚马逊 FAR（Amazon FAR） |
+| 作者 | Yunhai Feng, Natalie Leung, Jiaxuan Wang, Lujie Yang, Haozhi Qi, Preston Culbertson |
+| arXiv | [2607.11874](https://arxiv.org/abs/2607.11874) |
+| 项目页 | <https://www.yunhaifeng.com/REGRIND/> |
+| 代码 | <https://github.com/yunhaif/regrind>（MIT） |
+
 ## 局限与风险
 
 - **部署依赖 MoCap 物体状态：** 论文明确下一步需蒸馏为 **vision-based** 策略。
@@ -105,10 +125,12 @@ flowchart LR
 - [OmniRetarget](../entities/paper-hrl-stack-03-omniretarget.md) — interaction mesh  formulation 来源。
 - [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) — 本方法在「人类演示 → 参考 → RL」段的落点。
 - [Manipulation（操作）](../tasks/manipulation.md) — contact-rich 工具操作任务背景。
+- [舞肌科技 / Wuji Hand](../entities/wuji-robotics.md) — 论文主真机平台之一。
 
 ## 推荐继续阅读
 
 - 论文摘要页：<https://arxiv.org/abs/2607.11874>
+- arXiv HTML 全文：<https://arxiv.org/html/2607.11874>
 - 项目首页（视频）：<https://www.yunhaifeng.com/REGRIND/>
 - 官方代码：<https://github.com/yunhaif/regrind>
 

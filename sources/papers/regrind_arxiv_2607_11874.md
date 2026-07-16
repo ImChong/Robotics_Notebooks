@@ -31,12 +31,11 @@
 - **局限：** 部署依赖 **MoCap 物体状态**；仍需仔细系统辨识；单演示 + 增广覆盖有限。
 - **代码：** MIT；仓库含预计算重定向轨迹，重定向模块依赖 **Drake/MOSEK**（可选安装）。
 - **对 wiki 的映射：**
-  - 新建 [REGRIND（重定向引导灵巧操作 RL）](../../wiki/methods/regrind-retargeting-guided-rl.md)
-  - 新建 [REGRIND 论文实体页](../../wiki/entities/paper-regrind-dexterous-manipulation.md)
+  - [REGRIND（重定向引导灵巧操作 RL）](../../wiki/methods/regrind-retargeting-guided-rl.md)（方法页兼论文索引）
   - 在 [TopoRetarget](../../wiki/methods/toporetarget-interaction-preserving-dexterous-retargeting.md)、[SPIDER](../../wiki/methods/spider-physics-informed-dexterous-retargeting.md)、[Motion Retargeting Pipeline](../../wiki/concepts/motion-retargeting-pipeline.md)、[Manipulation](../../wiki/tasks/manipulation.md) 中补充交叉引用
 
 ## 当前提炼状态
 
 - [x] 摘要 + 方法主线（重定向 / RL / 增广 / sim2real）已摘录
 - [x] 四任务仿真与真机数字已摘录
-- [x] wiki 方法页与论文实体页待落盘
+- [x] wiki 方法页（兼论文索引）与流程图已落盘

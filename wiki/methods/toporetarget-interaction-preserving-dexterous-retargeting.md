@@ -10,7 +10,7 @@ related:
   - ./spider-physics-informed-dexterous-retargeting.md
   - ./motion-retargeting-gmr.md
   - ../entities/paper-hrl-stack-03-omniretarget.md
-  - ../entities/paper-regrind-dexterous-manipulation.md
+  - ./regrind-retargeting-guided-rl.md
   - ../tasks/manipulation.md
   - ../entities/wuji-robotics.md
 sources:
@@ -116,7 +116,7 @@ flowchart LR
 - [Motion Retargeting Pipeline（动作重定向流水线）](../concepts/motion-retargeting-pipeline.md) — 「演示 → 参考 → RL 跟踪」段的一种 Laplacian mesh 落点。
 - [SPIDER（物理感知采样式灵巧重定向）](./spider-physics-informed-dexterous-retargeting.md) — 仿真采样动力学 refinement 对照。
 - [OmniRetarget（人形交互保留重定向）](../entities/paper-hrl-stack-03-omniretarget.md) — 同人族 interaction mesh，全身 loco-manipulation 尺度。
-- [REGRIND（重定向引导灵巧操作 RL）](./regrind-retargeting-guided-rl.md) / [论文实体](../entities/paper-regrind-dexterous-manipulation.md) — 同族 mesh 重定向 + 残差 RL，剪刀/螺丝刀真机。
+- [REGRIND（重定向引导灵巧操作 RL）](./regrind-retargeting-guided-rl.md) — 同族 mesh 重定向 + 残差 RL，剪刀/螺丝刀真机。
 - [Manipulation（操作）](../tasks/manipulation.md) — contact-rich 灵巧技能任务背景。
 - [舞肌科技 / Wuji Hand](../entities/wuji-robotics.md) — 论文主真机平台。
 - [DynaRetarget vs TopoRetarget（接触保真重定向对比）](../comparisons/dynaretarget-vs-toporetarget-retargeting.md) — 运动学层 vs 动力学层接触保真选型对比。

@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-16] structural | wiki — 合并 REGRIND 方法页与论文实体页为单页 wiki/methods/regrind-retargeting-guided-rl.md
+
+- wiki/methods/regrind-retargeting-guided-rl.md
+- wiki/tasks/manipulation.md
+- wiki/methods/toporetarget-interaction-preserving-dexterous-retargeting.md
+
 ## [2026-07-16] ingest | sources/papers/regrind_arxiv_2607_11874.md — REGRIND MoCap+交互保留重定向+残差 RL 灵巧工具操作；wiki/methods/regrind-retargeting-guided-rl.md、wiki/entities/paper-regrind-dexterous-manipulation.md
 
 - wiki/methods/regrind-retargeting-guided-rl.md
