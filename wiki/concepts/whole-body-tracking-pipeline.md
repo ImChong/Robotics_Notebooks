@@ -3,7 +3,7 @@ type: concept
 tags: [robotics, humanoid, whole-body-tracking, wbt, pipeline, motion-tracking, cross-embodiment, sim2real]
 status: complete
 created: 2026-05-29
-updated: 2026-07-12
+updated: 2026-07-16
 summary: "Whole-Body Tracking（WBT）端到端流水线：参考采集 → 重定向 → 训练数据 → 策略学习 → 跨具身迁移 → 真机部署的统一视图，对比 SONIC / BeyondMimic / SD-AMP / Heracles / Any2Any / GMT(RGMT) 等 6 条主流落地路径在每一阶段的取舍。"
 related:
   - ./motion-retargeting-pipeline.md
@@ -25,6 +25,7 @@ related:
   - ../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md
   - ../entities/paper-resmimic.md
   - ../entities/paper-notebook-vmp.md
+  - ../entities/limx-cosa.md
   - ../queries/humanoid-motion-tracking-method-selection.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../entities/sam-3d-body.md

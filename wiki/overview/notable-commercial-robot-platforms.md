@@ -1,6 +1,6 @@
 ---
 type: overview
-updated: 2026-06-25
+updated: 2026-07-16
 summary: "按人形、四足与腿足梳理当前知名度高、常被产业与媒体报道的商业机器人平台，并指向本库已有实体页与深度对比页。"
 sources:
   - ../../sources/repos/notable-commercial-robot-platforms.md
@@ -64,7 +64,7 @@ related:
 | Unitree | H1、G1；Go2、B2 | [Unitree](../entities/unitree.md)、[G1](../entities/unitree-g1.md) |
 | Fourier Intelligence | GR-1 等全身人形 | [硬件对比](../queries/hardware-comparison.md) |
 | UBTECH | Walker 系列 | 同上 |
-| LimX Dynamics、Booster Robotics 等 | 融资与赛事曝光高 | [Booster RoboCup Demo](../entities/booster-robocup-demo.md)（Booster 相关） |
+| LimX Dynamics、Booster Robotics 等 | 融资与赛事曝光高 | [LimX COSA](../entities/limx-cosa.md)（逐际大脑 OS + Oli）；[Booster RoboCup Demo](../entities/booster-robocup-demo.md)（Booster 相关） |
 
 更多官网入口见 [原始资料：平台链接索引](../../sources/repos/notable-commercial-robot-platforms.md)。
 
