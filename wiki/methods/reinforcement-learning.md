@@ -2,7 +2,7 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-07-14
+updated: 2026-07-16
 related:
   - ../entities/richard-sutton.md
   - ../entities/sutton-barto-rl-book.md

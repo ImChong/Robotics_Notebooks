@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-16] ingest | sources/papers/gaitspan_arxiv_2607_12114.md — GaitSpan 行走种子技能生长；wiki/entities/paper-gaitspan-humanoid-locomotion-walking-running.md、wiki/tasks/humanoid-locomotion.md
+
 ## [2026-07-15] structural | V29 P1「评测基准家族层专题交叉补强」——robo-bench / ewmbench / gigaworld-1 三页与「具身大模型评测基准选型闭环」Query 页双向回链，标注各自评测层
 
 - wiki/entities/robo-bench.md（① 具身大脑/MLLM 认知评测层，related + 关联页面双向回链）
