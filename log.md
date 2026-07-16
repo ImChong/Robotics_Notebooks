@@ -1,5 +1,19 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-16] ingest | sources/papers/flashsac_arxiv_2604_04539.md + sources/sites/flashsac-project.md — FlashSAC 高维 off-policy RL；wiki/methods/flashsac.md 与 SAC/PPO 对比、locomotion 交叉更新
+
+- wiki/entities/paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m.md
+- wiki/methods/flashsac.md
+- wiki/methods/sac.md
+- wiki/methods/ppo.md
+- wiki/methods/policy-optimization.md
+- wiki/comparisons/ppo-vs-sac.md
+- wiki/tasks/locomotion.md
+- wiki/entities/unilab.md
+- sources/papers/flashsac_arxiv_2604_04539.md
+- sources/sites/flashsac-project.md
+- sources/papers/unilab_arxiv_2605_30313.md
+
 ## [2026-07-16] ingest | sources/papers/lumo2_arxiv_2607_11270.md + sources/papers/philia_arxiv_2607_11377.md — Astribot Lumo-2 latent WAM 与 Philia 多机器人助手；项目页全量演示视频归档
 
 - wiki/entities/lumo-2.md

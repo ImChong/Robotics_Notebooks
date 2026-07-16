@@ -2,12 +2,14 @@
 type: comparison
 tags: [ppo, sac, rl, policy-optimization, locomotion, manipulation, on-policy, off-policy]
 status: complete
-updated: 2026-05-29
-summary: "PPO 与 SAC 在机器人 RL 任务中的系统性对比：on-policy vs off-policy 权衡、样本效率、稳定性、超参数敏感度与适用场景。"
+updated: 2026-07-16
+summary: "PPO 与 SAC 在机器人 RL 任务中的系统性对比：on-policy vs off-policy 权衡、样本效率、稳定性、超参数敏感度与适用场景；含 FlashSAC 高维 scaling 选型。"
 sources:
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/intentional_streaming_rl.md
+  - ../../sources/papers/flashsac_arxiv_2604_04539.md
 related:
+  - ../methods/flashsac.md
   - ../methods/ppo.md
   - ../methods/policy-optimization.md
   - ../methods/reinforcement-learning.md
@@ -178,6 +180,27 @@ $$J(\pi) = \sum_t \mathbb{E}_{(s_t, a_t) \sim \rho_\pi} \left[ r(s_t, a_t) + \al
 
 ---
 
+## 何时选 FlashSAC
+
+**适合场景**（Kim et al., 2026；详见 [FlashSAC 方法页](../methods/flashsac.md)）：
+
+1. **高 DoF 状态控制**：人形（G1/H1）、灵巧手（Shadow/Allegro）等 PPO 渐近与墙钟均落后的任务
+2. **高并行仿真 + 追墙钟 sim-to-real**：G1 盲行走平地约 **20 min** vs PPO **~3 h**（同 sim-to-real 管线）
+3. **希望 off-policy 复用 replay 且要渐近性能**：相对 [FastSAC](../entities/paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m.md) 小网络配方，FlashSAC 用 2.5M 参数 + 稳定机制兼顾上限
+4. **视觉 DMControl 等低吞吐环境**：论文在 1M steps 设定下墙钟与渐近优于 DrQ-v2
+
+**不太适合**：
+
+- 低 DoF 四足/夹爪且仅需成熟 PPO baseline、对墙钟不敏感
+- 极低并行、极小 buffer 且不愿调低 batch/UTD 的设定
+
+**代表工作**：
+
+- Kim et al., *FlashSAC* (2026) — <https://arxiv.org/abs/2604.04539>
+- 项目页：<https://holiday-robot.github.io/FlashSAC/>
+
+---
+
 ## 决策规则
 
 ```
@@ -185,13 +208,16 @@ $$J(\pi) = \sum_t \mathbb{E}_{(s_t, a_t) \sim \rho_\pi} \left[ r(s_t, a_t) + \al
 │
 ├── 仿真 + 大规模 GPU 并行（>1000 个环境）
 │     ├── 追求成熟生态与快速 Baseline → PPO
+│     ├── 高 DoF 人形/灵巧手且追墙钟与渐近 → FlashSAC
 │     └── 追求最高稳定性与平滑收敛 → BRRL / BPO
 │
 ├── 真实机器人 / 样本成本高（<10K 次交互预算）
-│     └── → SAC（off-policy 样本效率高 10–100x）
+│     ├── 经典 off-policy 微调 → SAC
+│     └── 高维 sim-to-real 端到端训练 → FlashSAC（G1 行走等已验证）
 │
 ├── 任务类型是 locomotion（行走 / 奔跑 / 跳跃）
-│     └── → PPO 或 BPO（社区标准，收敛稳定）
+│     ├── 社区默认 / 成熟生态 → PPO 或 BPO
+│     └── 高 DoF 人形盲行走、楼梯等 → FlashSAC（论文 ~10× 墙钟 vs PPO）
 │
 ├── 任务类型是操作（抓取 / 装配 / 灵巧手）
 │     └── → SAC（最大熵框架对精细操作探索更充分）
@@ -229,6 +255,7 @@ $$J(\pi) = \sum_t \mathbb{E}_{(s_t, a_t) \sim \rho_\pi} \left[ r(s_t, a_t) + \al
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
+| FlashSAC | Fast and Stable Soft Actor-Critic | 高维机器人 scaling 式 off-policy SAC（2026） |
 | PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
 | SAC | Soft Actor-Critic | 连续控制常用的 off-policy 最大熵算法 |
 | RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
@@ -247,6 +274,7 @@ $$J(\pi) = \sum_t \mathbb{E}_{(s_t, a_t) \sim \rho_\pi} \left[ r(s_t, a_t) + \al
 
 - [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — PPO / SAC 核心论文档案
 - [sources/papers/intentional_streaming_rl.md](../../sources/papers/intentional_streaming_rl.md) — 流式 intentional PG
+- [sources/papers/flashsac_arxiv_2604_04539.md](../../sources/papers/flashsac_arxiv_2604_04539.md) — FlashSAC 论文档案
 - Schulman et al., *Proximal Policy Optimization Algorithms* (2017) — PPO 原论文
 - Haarnoja et al., *Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic Actor* (2018) — SAC 原论文
 - Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning* (2022) — PPO locomotion 代表
@@ -258,6 +286,7 @@ $$J(\pi) = \sum_t \mathbb{E}_{(s_t, a_t) \sim \rho_\pi} \left[ r(s_t, a_t) + \al
 
 - [Policy Optimization](../methods/policy-optimization.md) — PPO / SAC 算法详细展开
 - [PPO（近端策略优化）](../methods/ppo.md) — PPO 方法专页（clip 代理目标 / on-policy）
+- [FlashSAC（快速稳定 SAC）](../methods/flashsac.md) — 高维 off-policy scaling（2026）
 - [SAC（软演员-评论家）](../methods/sac.md) — SAC 方法专页（最大熵 / off-policy / 自动调温度）
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 方法全局视角
 - [Locomotion](../tasks/locomotion.md) — PPO 主要应用场景

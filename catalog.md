@@ -1270,6 +1270,7 @@
 - [EgoScale](wiki/methods/egoscale.md) — EgoScale**（NVIDIA GEAR Lab 等，arXiv:2602.16710）研究的是：能否把 **互联网尺度的第 `📅2026-05-17` `[method_page]`
 - [ENPIRE](wiki/methods/enpire.md) — ENPIRE**（NVIDIA GEAR Lab 等，2026）研究的是：能否把 **真机机器人策略开发** 从「人类盯实验 + `📅2026-06-18` `[method_page]`
 - [ExoActor (视频生成驱动的交互式人形控制)](wiki/methods/exoactor.md) — ExoActor** 把"第三人称（exocentric）视频生成"作为人形机器人 **交互动力学的统一接口**：给定任务指令与场景观测，先让大型视频生成模型"想象"出一段任务执行视频，再把视频翻 `📅unknown` `[method_page]`
+- [FlashSAC](wiki/methods/flashsac.md) — FlashSAC**（arXiv:2604.04539，[项目页](https://holiday-robot.github `📅unknown` `[method_page]`
 - [Generalized Advantage Estimation (GAE)](wiki/methods/gae.md) — GAE** 解决了强化学习中一个核心痛点：如何准确估计一个动作比平均水平“好多少”（即优势函数 $A(s, a)$），同时保持低方差。 `📅unknown` `[method_page]`
 - [Gauss-Newton（高斯-牛顿法）](wiki/methods/gauss-newton.md) — Gauss-Newton（GN）**：最小化 $\|r(x)\|^2$ 时，用残差 Jacobian $J(x) = \partial r / \partial x$ 构造 Hessian 近似  `📅unknown` `[method_page]`
 - [Generative Data Augmentation (生成式数据增强)](wiki/methods/generative-data-augmentation.md) — 在具身智能训练中，**生成式数据增强** 是解决“长尾效应 (Long-tail Distribution)”的关键。虽然我们可以轻易采集到成千上万条成功的“拿杯子”演示，但“杯子滑落”、“手部剧烈抖 `📅unknown` `[method_page]`

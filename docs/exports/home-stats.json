@@ -1,13 +1,93 @@
 {
   "generated_at": "2026-07-16",
-  "node_count": 1656,
-  "edge_count": 12906,
+  "node_count": 1657,
+  "edge_count": 12926,
   "coverage": {
-    "covered": 1609,
-    "total": 1639,
+    "covered": 1610,
+    "total": 1640,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/methods/flashsac.md",
+      "detail_id": "wiki-methods-flashsac",
+      "label": "FlashSAC",
+      "type": "method",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m.md",
+      "detail_id": "entity-paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m",
+      "label": "Learning Sim-to-Real Humanoid Locomotion in 15 Minutes",
+      "type": "entity",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/methods/sac.md",
+      "detail_id": "wiki-methods-sac",
+      "label": "SAC（Soft Actor-Critic）",
+      "type": "method",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/methods/ppo.md",
+      "detail_id": "wiki-methods-ppo",
+      "label": "PPO（Proximal Policy Optimization）",
+      "type": "method",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/methods/policy-optimization.md",
+      "detail_id": "wiki-methods-policy-optimization",
+      "label": "Policy Optimization",
+      "type": "method",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/comparisons/ppo-vs-sac.md",
+      "detail_id": "wiki-comparisons-ppo-vs-sac",
+      "label": "PPO vs SAC (vs BRRL/BPO)：机器人 RL 算法选型",
+      "type": "comparison",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/tasks/locomotion.md",
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/unilab.md",
+      "detail_id": "entity-unilab",
+      "label": "UniLab：异构 CPU 仿真 / GPU 学习的机器人 RL 训练系统",
+      "type": "entity",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+    },
     {
       "path": "wiki/entities/lumo-2.md",
       "detail_id": "entity-lumo-2",
@@ -134,98 +214,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/methods/toporetarget-interaction-preserving-dexterous-retargeting.md",
-      "detail_id": "wiki-methods-toporetarget-interaction-preserving-dexterous-retargeting",
-      "label": "TopoRetarget（交互保留灵巧重定向）",
-      "type": "method",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/methods/spider-physics-informed-dexterous-retargeting.md",
-      "detail_id": "wiki-methods-spider-physics-informed-dexterous-retargeting",
-      "label": "SPIDER（物理感知采样式灵巧重定向）",
-      "type": "method",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/concepts/motion-retargeting-pipeline.md",
-      "detail_id": "wiki-concepts-motion-retargeting-pipeline",
-      "label": "Motion Retargeting Pipeline（动作重定向流水线）",
-      "type": "concept",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/entities/limx-cosa.md",
-      "detail_id": "entity-limx-cosa",
-      "label": "LimX COSA（人形大脑操作系统）",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/fluxvla-engine.md",
-      "detail_id": "entity-fluxvla-engine",
-      "label": "Humanoid FluxVLA Engine",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/tasks/loco-manipulation.md",
-      "detail_id": "wiki-tasks-loco-manipulation",
-      "label": "Loco-Manipulation (移动操作)",
-      "type": "task",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md",
-      "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
-      "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/dexmal-dw05.md",
-      "detail_id": "entity-dexmal-dw05",
-      "label": "Dexmal DW05（OpenDW）",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/lumo-2.md",
-    "detail_id": "entity-lumo-2",
-    "label": "Lumo-2（Latent World-Action Model）",
-    "type": "entity",
+    "path": "wiki/methods/flashsac.md",
+    "detail_id": "wiki-methods-flashsac",
+    "label": "FlashSAC",
+    "type": "method",
     "recency": "2026-07-16",
     "source": "log.md",
     "action": "added",
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "community_label": "强化学习（Reinforcement Learning, RL） 社区"
   },
   "top_communities": [
     {
@@ -234,7 +233,7 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 179
+      "size": 178
     },
     {
       "label": "全身控制",
@@ -265,7 +264,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 287,
+      "degree": 288,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -286,6 +285,13 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "degree": 232,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
@@ -293,17 +299,10 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
-      "degree": 230,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 225,
+      "degree": 226,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
