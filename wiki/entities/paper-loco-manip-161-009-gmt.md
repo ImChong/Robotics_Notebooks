@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-07-08
+updated: 2026-07-16
 venue: curated
 summary: "GMT 把本体状态与关节序列、仿真交互数据转成可跟踪的身体目标，并通过扩散策略/流匹配、分层技能/专家策略训练或组合全身策略，最终输出全身轨迹/动作序列、低层控制器目标。关键点是把动作生成看成条件生成问题，用扩散或流匹配在多模态动作分布里采样可执行轨迹。"
 related:

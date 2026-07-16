@@ -38,7 +38,7 @@ sources:
 | FALCON | [paper-loco-manip-161-109-falcon](../entities/paper-loco-manip-161-109-falcon.md) | 下肢稳定 + 上肢任务分工；3D 力课程 |
 | HMC | [paper-loco-manip-161-039-hmc](../entities/paper-loco-manip-161-039-hmc.md) | 位置/阻抗/力位混合的异构元控制 |
 | WoCoCo | [paper-loco-manip-161-116-wococo](../entities/paper-loco-manip-161-116-wococo.md) | 顺序接触分阶段全身控制 |
-| GentleHumanoid | [paper-hrl-stack-37-gentlehumanoid](../entities/paper-hrl-stack-37-gentlehumanoid.md) | 上肢柔顺接入全身跟踪 |
+| GentleHumanoid | [gentlehumanoid-motion-tracking](../methods/gentlehumanoid-motion-tracking.md) | 上肢柔顺接入全身跟踪 |
 | CHIP | [paper-hrl-stack-36-chip](../entities/paper-hrl-stack-36-chip.md) | 事后扰动学习自适应柔顺 |
 | HOIST | [paper-motion-cerebellum-hoist](../entities/paper-motion-cerebellum-hoist.md) | 悬挂负载摆动；欠驱动间接全身控制 |
 | Thor | [paper-hrl-stack-42-thor](../entities/paper-hrl-stack-42-thor.md) | 强接触环境受力后全身反应 |

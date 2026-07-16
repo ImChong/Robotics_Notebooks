@@ -12,7 +12,7 @@ related:
   - ../methods/dagger.md
   - ../concepts/whole-body-tracking-pipeline.md
   - ../concepts/whole-body-control.md
-  - ./paper-bfm-22-phc.md
+  - ./phc.md
   - ./paper-interprior.md
   - ./paper-bfm-15-intermimic.md
   - ./paper-rhythm-dual-humanoid-interaction.md
@@ -126,7 +126,7 @@ flowchart TB
 
 - [Multi-Agent Reinforcement Learning (MARL)](../methods/marl.md)
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md)
-- [PHC](./paper-bfm-22-phc.md)
+- [PHC](./phc.md)
 - [Imitation Learning](../methods/imitation-learning.md)
 - [DAgger](../methods/dagger.md)
 - [InterMimic](./paper-bfm-15-intermimic.md)

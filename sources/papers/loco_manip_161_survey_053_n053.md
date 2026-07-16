@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-053-n053](../../wiki/entities/paper-hrl-stack-29-opening_the_sim_to_real_door_for_hum.md)
+- [paper-loco-manip-161-053-n053](../../wiki/entities/paper-doorman-opening-sim2real-door.md)
 - [loco-manip-161-category-02-upper-body-interface](../../wiki/overview/loco-manip-161-category-02-upper-body-interface.md)
 
 ## 参考来源（原始）

@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, smp, score-matching, diffusion, mjlab, unitree, humanoid, locomotion, tsinghua]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-16
 related:
   - ../methods/smp.md
   - ./mjlab.md

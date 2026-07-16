@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, bfm, behavior-foundation-model, motion-tracking, perceptive-locomotion, terrain-adaptation, privileged-training, distillation, transformer, unitree-g1, mocap, teleoperation, parkour, miaodong, hkust, cas-ai]
 status: complete
-updated: 2026-07-06
+updated: 2026-07-16
 venue: "CoRL 2026 · submission"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md

@@ -2,9 +2,10 @@
 type: method
 tags: [rl, policy-optimization, ppo, on-policy, locomotion]
 status: complete
-updated: 2026-06-14
+updated: 2026-07-16
 summary: "PPO 用 clip 代理目标约束策略更新幅度，兼顾稳定性与实现简单，是人形/足式机器人大规模并行 RL 训练的事实标准算法。"
 related:
+  - ./flashsac.md
   - ./policy-optimization.md
   - ./reinforcement-learning.md
   - ./sac.md
@@ -41,6 +42,7 @@ sources:
 - 机器人控制是**连续高维**动作空间（30+ 关节力矩），PPO 直接输出连续动作分布，天然适配。
 - 相比 TRPO 的二阶 KL 约束，PPO 只需一阶 SGD/Adam + 简单 clip，**工程实现门槛低**，是 [Isaac Gym / Isaac Lab](../entities/isaac-gym-isaac-lab.md)、legged_gym 等仿真栈的默认算法。
 - 在 [大规模并行仿真](../tasks/locomotion.md) 下样本利用率虽不如 off-policy，但凭海量并行环境把"低样本效率"换成"墙钟时间短"，成为人形/足式 locomotion 训练的事实标准。
+- 高维人形/灵巧手任务上，[FlashSAC](./flashsac.md) 等 scaling 式 off-policy 方法已在墙钟与渐近性能上挑战 PPO 默认地位（项目页 TL;DR：「If you're using PPO, try FlashSAC!」）。
 
 ## 主要技术路线
 
@@ -90,6 +92,7 @@ $$
 ## 关联页面
 - [Policy Optimization（算法族总览）](./policy-optimization.md)
 - [Reinforcement Learning（强化学习基础）](./reinforcement-learning.md)
+- [FlashSAC（快速稳定 SAC）](./flashsac.md)
 - [SAC（软演员-评论家）](./sac.md)
 - [GAE（广义优势估计）](./gae.md)
 - [PPO vs SAC（对比）](../comparisons/ppo-vs-sac.md)

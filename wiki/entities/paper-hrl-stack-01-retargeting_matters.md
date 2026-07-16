@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, stanford]
 status: complete
-updated: 2026-07-08
+updated: 2026-07-16
 venue: curated
 summary: "GMR 的核心命题很直接：**retargeting matters**。论文指出，humanoid motion tracking policies 依赖人类动作重定向，但人和机器人之间存在 **embodiment gap**。重定向阶段留下的脚滑、不可行姿态、起始姿态不合理等问题，会直接影响后面的 **RL 控制器**。"
 related:
@@ -24,7 +24,7 @@ sources:
 
 **Retargeting Matters** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) **第 01/42** 篇，归类为 **01 数据 · 重定向 · 遥操作**。
 
-> **深读页：** [motion-retargeting-gmr](../methods/motion-retargeting-gmr.md) — 方法机制与实验细节见链接页；本页保留 survey 坐标与交叉引用。
+> **方法深读：** [motion-retargeting-gmr](../methods/motion-retargeting-gmr.md) — GMR 工具页（覆盖本文与后续工作）；论文实体以本页为 canonical，保留 survey 坐标与交叉引用。
 
 ## 一句话定义
 

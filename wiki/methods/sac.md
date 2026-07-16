@@ -2,9 +2,10 @@
 type: method
 tags: [rl, policy-optimization, sac, off-policy, maximum-entropy, manipulation]
 status: complete
-updated: 2026-06-16
+updated: 2026-07-16
 summary: "SAC 是连续控制中最主流的 off-policy 最大熵算法：用 Replay Buffer 反复利用经验、双 Q 抑制高估、自动调温度平衡探索与利用，样本效率远高于 PPO，是真机 RL 与精细操作的首选。"
 related:
+  - ./flashsac.md
   - ./policy-optimization.md
   - ./reinforcement-learning.md
   - ./ppo.md
@@ -46,6 +47,7 @@ sources:
 - **最大熵框架** 鼓励充分探索、防止策略过早坍缩到单一模式，在 contact-rich 的精细操作、灵巧手任务上通常优于确定性方法。
 - **温度自动调节** 把"探索强度"这一原本最难调的超参数变成自适应量，显著降低调参负担。
 - 是 [Policy Optimization](./policy-optimization.md) 家族中 off-policy 的代表，与 PPO 形成"仿真大规模 vs 真机高效"的互补组合（详见 [PPO vs SAC](../comparisons/ppo-vs-sac.md)）。
+- **[FlashSAC](./flashsac.md)**（2026）在 SAC 上引入 scaling 式少更新 + 大网络 + 范数约束，面向高维机器人 sim-to-real，在 G1 盲行走等任务上墙钟可较 PPO 缩短约一个数量级。
 
 ## 主要技术路线
 
@@ -108,6 +110,7 @@ $$
 ## 关联页面
 - [Policy Optimization（算法族总览）](./policy-optimization.md)
 - [Reinforcement Learning（强化学习基础）](./reinforcement-learning.md)
+- [FlashSAC（快速稳定 SAC）](./flashsac.md)
 - [PPO（近端策略优化）](./ppo.md)
 - [PPO vs SAC（对比）](../comparisons/ppo-vs-sac.md)
 - [Online vs Offline RL（对比）](../comparisons/online-vs-offline-rl.md)

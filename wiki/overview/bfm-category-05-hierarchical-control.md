@@ -14,7 +14,7 @@ related:
   - ./bfm-category-03-intrinsic-reward-pretraining.md
   - ./bfm-category-04-adaptation.md
   - ../entities/paper-sentinel.md
-  - ../entities/paper-beyondmimic.md
+  - ../methods/beyondmimic.md
   - ../entities/paper-bfm-36-leverb.md
   - ../entities/paper-bfm-37-langwbc.md
   - ../entities/paper-bfm-38-tokenhsi.md
@@ -50,7 +50,7 @@ sources:
 | # | 工作 | Wiki 实体 | Source |
 |---|------|-----------|--------|
 | 34 | SENTINEL | [paper-sentinel.md](../entities/paper-sentinel.md) | [source](../../sources/papers/bfm_awesome_sentinel_arxiv_2511_19236.md) |
-| 35 | BeyondMimic | [paper-beyondmimic.md](../entities/paper-beyondmimic.md) | [source](../../sources/papers/bfm_awesome_beyondmimic_arxiv_2508_08241.md) |
+| 35 | BeyondMimic | [beyondmimic.md](../methods/beyondmimic.md) | [source](../../sources/papers/bfm_awesome_beyondmimic_arxiv_2508_08241.md) |
 | 36 | LeVerb | [paper-bfm-36-leverb.md](../entities/paper-bfm-36-leverb.md) | [source](../../sources/papers/bfm_awesome_leverb_arxiv_2506_13751.md) |
 | 37 | LangWBC | [paper-bfm-37-langwbc.md](../entities/paper-bfm-37-langwbc.md) | [source](../../sources/papers/bfm_awesome_langwbc_arxiv_2504_21738.md) |
 | 38 | Tokenhsi | [paper-bfm-38-tokenhsi.md](../entities/paper-bfm-38-tokenhsi.md) | [source](../../sources/papers/bfm_awesome_tokenhsi_arxiv_2503_19901.md) |

@@ -22,7 +22,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-amp-survey-05-motionbricks](../../wiki/entities/paper-amp-survey-05-motionbricks.md) — AMP 专题策展页
+- [motionbricks](../../wiki/methods/motionbricks.md) — AMP 专题策展页
 - [motionbricks](../../wiki/methods/motionbricks.md) — 主方法页（Smart Primitives 细节）
 - [kimodo](../../wiki/entities/kimodo.md) — 同段生成先验对照
 

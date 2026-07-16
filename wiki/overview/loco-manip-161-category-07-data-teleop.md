@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, humanoid, category-hub, survey]
 status: complete
-updated: 2026-06-26
+updated: 2026-07-16
 summary: "人形 Loco-Manip 161 篇 · 07 数据采集与遥操作系统（7 篇）— 训练数据如何高效采集。"
 related:
   - ./humanoid-loco-manip-161-papers-technology-map.md
@@ -34,7 +34,7 @@ sources:
 | # | 工作 | Wiki 实体 |
 |---|------|-----------|
 | 128 | BifrostUMI | [paper-loco-manip-161-128-bifrostumi](../entities/paper-bifrost-umi.md) |
-| 129 | HOMIE | [paper-loco-manip-161-129-homie](../entities/paper-loco-manip-161-129-homie.md) |
+| 129 | HOMIE | [paper-loco-manip-161-040-homie](../entities/paper-loco-manip-161-040-homie.md) |
 | 130 | HumanoidExo | [paper-loco-manip-161-130-humanoidexo](../entities/paper-loco-manip-161-067-humanoidexo.md) |
 | 131 | Open-TeleVision | [paper-loco-manip-161-131-open-television](../entities/paper-loco-manip-161-131-open-television.md) |
 | 132 | TWIST2 | [paper-loco-manip-161-132-twist2](../entities/paper-twist2.md) |

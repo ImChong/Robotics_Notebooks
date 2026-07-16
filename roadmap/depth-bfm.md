@@ -109,7 +109,7 @@ flowchart LR
 - 对比"单片段模仿"与"全库跟踪"策略在未见动作上的表现
 
 ### 推荐读什么
-- 谱系锚点：[DeepMimic](../wiki/entities/paper-hrl-stack-11-deepmimic.md)、[ASE](../wiki/entities/paper-bfm-25-ase.md)、[PHC](../wiki/entities/paper-bfm-22-phc.md)、[MaskedMimic](../wiki/entities/paper-bfm-17-maskedmimic.md)、[HOVER](../wiki/entities/paper-bfm-14-hover.md)（本仓库）
+- 谱系锚点：[DeepMimic](../wiki/methods/deepmimic.md)、[ASE](../wiki/methods/ase.md)、[PHC](../wiki/entities/phc.md)、[MaskedMimic](../wiki/entities/paper-bfm-17-maskedmimic.md)、[HOVER](../wiki/entities/paper-bfm-14-hover.md)（本仓库）
 - [SONIC](../wiki/methods/sonic-motion-tracking.md) 与 [BeyondMimic](../wiki/methods/beyondmimic.md)（本仓库）— 工程可用的跟踪基座
 - [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md)（本仓库）
 - [Query：人形动作跟踪方法选型](../wiki/queries/humanoid-motion-tracking-method-selection.md)（本仓库）

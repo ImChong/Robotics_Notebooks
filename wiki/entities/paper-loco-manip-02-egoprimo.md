@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-survey, humanoid, zgca, buaa, deepcybo, tju]
 status: complete
-updated: 2026-07-08
+updated: 2026-07-16
 arxiv: "2606.08495"
 summary: "ego 观察 + 文本 → SMPL 全身动作 → 人形控制器。"
 related:

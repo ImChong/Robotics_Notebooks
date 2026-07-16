@@ -8,7 +8,7 @@ related:
   - ./humanoid-motion-cerebellum-technology-map.md
   - ../entities/paper-notebook-softmimic-learning-compliant-whole-body-control.md
   - ../entities/paper-hrl-stack-36-chip.md
-  - ../entities/paper-hrl-stack-37-gentlehumanoid.md
+  - ../methods/gentlehumanoid-motion-tracking.md
   - ../entities/paper-hrl-stack-42-thor.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
@@ -37,7 +37,7 @@ sources:
 |---|------|-----------|--------|
 | 60 | SoftMimic | [paper-notebook-softmimic-learning-compliant-whole-body-control.md](../entities/paper-notebook-softmimic-learning-compliant-whole-body-control.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 61 | CHIP | [paper-hrl-stack-36-chip.md](../entities/paper-hrl-stack-36-chip.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
-| 62 | GentleHumanoid | [paper-hrl-stack-37-gentlehumanoid.md](../entities/paper-hrl-stack-37-gentlehumanoid.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
+| 62 | GentleHumanoid | [gentlehumanoid-motion-tracking.md](../methods/gentlehumanoid-motion-tracking.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 63 | Thor | [paper-hrl-stack-42-thor.md](../entities/paper-hrl-stack-42-thor.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 64 | WT-UMI | [paper-loco-manip-07-wt-umi.md](../entities/paper-loco-manip-07-wt-umi.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 

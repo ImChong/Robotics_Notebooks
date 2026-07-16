@@ -5,6 +5,7 @@ status: complete
 related:
   - ./ppo.md
   - ./sac.md
+  - ./flashsac.md
   - ./intentional-updates-streaming-rl.md
   - ./reinforcement-learning.md
   - ./imitation-learning.md
@@ -14,7 +15,7 @@ related:
   - ../formalizations/bellman-equation.md
   - ../queries/rl-hyperparameter-guide.md
 summary: "Policy Optimization 汇总 PPO、SAC、TD3 等主流策略更新方法，是机器人 RL 的算法核心。"
-updated: 2026-05-10
+updated: 2026-07-16
 ---
 
 # Policy Optimization
@@ -73,6 +74,7 @@ $$A(s,a) = Q(s,a) - V(s)$$
 |------|------|------|--------------|
 | **PPO** | On-policy | 稳定、易调参、clip 约束防止更新过猛 | locomotion 训练主流 |
 | **SAC** | Off-policy | 最大熵、样本效率高、自动调温度 | 操作类任务、样本受限场景 |
+| **FlashSAC** | Off-policy | SAC + scaling 少更新 + 范数约束；高 DoF sim-to-real 墙钟领先 PPO | 人形/灵巧手高维控制、G1 盲行走 |
 | **TRPO** | On-policy | 用 KL 约束保证策略更新安全 | 理论意义大，工程不常用 |
 | **AWR** | Off-policy | 用 advantage 加权行为克隆 | IL 与 RL 混合场景 |
 
@@ -97,6 +99,10 @@ $$J(\pi) = \sum_t \mathbb{E}_{(s_t,a_t)\sim\rho_\pi} [r(s_t,a_t) + \alpha \mathc
 - $\alpha$：温度参数（可自动调节）
 
 SAC 优势：Off-policy，样本效率高；熵正则化鼓励探索；适合精细操作任务。
+
+### FlashSAC（2026）
+
+[FlashSAC](./flashsac.md) 在 SAC 上针对 **高维机器人控制** 做工程化 scaling：1024 并行 env、10M replay、2.5M 参数网络、极低 UTD，并联合 weight/feature/gradient 范数约束与统一熵探索。在 60+ 仿真任务与 **Unitree G1** sim-to-real 盲行走上，墙钟可较 PPO 缩短约一个数量级，同时保持真机稳定——适合「高并行仿真 + 高 DoF + 追墙钟」场景，详见 [PPO vs SAC](../comparisons/ppo-vs-sac.md)。
 
 ## 在人形机器人中的典型应用
 
@@ -173,6 +179,8 @@ SAC 常用于：
 ## 关联页面
 
 - [PPO（Proximal Policy Optimization）](./ppo.md) — clip 代理目标的 on-policy 主力算法
+- [SAC（软演员-评论家）](./sac.md) — 最大熵 off-policy 主力
+- [FlashSAC](./flashsac.md) — 高维机器人 scaling 式 off-policy（2026）
 - [Reinforcement Learning](./reinforcement-learning.md)
 - [Imitation Learning](./imitation-learning.md)
 - [Locomotion](../tasks/locomotion.md)

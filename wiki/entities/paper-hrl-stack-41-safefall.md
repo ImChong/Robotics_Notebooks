@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bigai, sdu, tsinghua]
 status: complete
-updated: 2026-07-06
+updated: 2026-07-16
 venue: curated
 summary: "SafeFall 做的是 protective control for humanoid robots。它的出发点非常现实：双足机器人不可避免会摔倒，而摔倒会损伤传感器、执行器和结构件。"
 related:

@@ -22,13 +22,13 @@ summary: "Paper Notebooks 分类 01：基础强化学习（15 篇深读笔记索
 
 ## 本类论文索引
 
-- [ADD](../entities/paper-amp-survey-02-physics_based_motion_imitation_with.md) — 见 wiki 实体页
+- [ADD](../methods/add.md) — 见 wiki 实体页
 - [AMP](../entities/paper-amp-survey-01-amp.md) — 见 wiki 实体页
-- [ASE](../entities/paper-bfm-25-ase.md) — 见 wiki 实体页
+- [ASE](../methods/ase.md) — 见 wiki 实体页
 - [Advantage Weighted Regression](../methods/awr.md) — 见 wiki 实体页
-- [BeyondMimic](../entities/paper-beyondmimic.md) — 见 wiki 实体页
+- [BeyondMimic](../methods/beyondmimic.md) — 见 wiki 实体页
 - [CALM](../entities/paper-bfm-19-calm.md) — 见 wiki 实体页
-- [DeepMimic](../entities/paper-hrl-stack-11-deepmimic.md) — 见 wiki 实体页
+- [DeepMimic](../methods/deepmimic.md) — 见 wiki 实体页
 - [Diffusion Policy](../entities/oculust-quest-teleop.md) — 见 wiki 实体页
 - [Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World](../entities/paper-notebook-domain-randomization-for-transferring-deep-neura.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Domain_Randomization_for_Transferring_Deep_Neural_Networks_from_Simulation_to_the_Real_World/Domain_Randomization_for_Transferring_Deep_Neural_Networks_from_Simulation_to_the_Real_World.html)
 - [Learning Smooth Humanoid Locomotion through Lipschitz-Constrained Policies](../entities/paper-notebook-lcp-sim-to-real-action-smoothing.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/LCP_Sim-to-Real_Action_Smoothing/LCP_Sim-to-Real_Action_Smoothing.html)

@@ -1,9 +1,14 @@
 ---
 type: method
-tags: [imitation-learning, tracking, rl, xbpeng]
+tags: [imitation-learning, tracking, rl, xbpeng, paper, humanoid, motion-control, body-system-stack, ubc, berkeley]
 status: complete
-updated: 2026-07-13
+updated: 2026-07-16
+venue: curated
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-02-motion-imitation.md
+  - ../overview/humanoid-rl-motion-control-body-system-stack.md
+  - ../overview/humanoid-amp-motion-prior-survey.md
   - ../overview/jason-peng-flexible-motion-skill-learning.md
   - ../entities/protomotions.md
   - ./amp-reward.md
@@ -11,6 +16,11 @@ related:
 sources:
   - ../../sources/papers/deepmimic.md
   - ../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md
+  - ../../sources/papers/humanoid_rl_stack_11_deepmimic_example_guided_deep_reinforcement_lear.md
+  - ../../sources/papers/humanoid_rl_stack_42_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 summary: "DeepMimic 是物理角色动画的基石工作，通过精确的轨迹跟踪奖励实现复杂的运动模仿。"
 ---
 
@@ -25,6 +35,17 @@ summary: "DeepMimic 是物理角色动画的基石工作，通过精确的轨迹
 | RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
 | AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
 | Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+
+## Survey 坐标（策展索引）
+
+### 在 具身智能研究室 · 42 篇 humanoid RL 运动控制长文 中
+
+| 字段 | 内容 |
+|------|------|
+| 编号 | 11/42 |
+| 系统栈层 | 02 参考跟踪 · 通用控制 |
+| 出处 | curated |
+| 索引来源 | [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) |
 
 ## 核心：显式跟踪 (Explicit Tracking)
 不同于后来的 AMP 靠判别器“悟”，DeepMimic 靠“盯”。它要求机器人的每一个关节在每一时刻都要尽可能贴合参考轨迹。
@@ -48,3 +69,5 @@ summary: "DeepMimic 是物理角色动画的基石工作，通过精确的轨迹
 ## 参考来源
 - [sources/papers/deepmimic.md](../../sources/papers/deepmimic.md)
 - [wechat_human_five_jason_peng_flexible_motion_skills.md](../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md) — 跟踪局限与超越路径（讲者自述归纳）
+- 原始抓取：[wechat_humanoid_rl_42_survey_2026-05-26.md](../../sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md)
+

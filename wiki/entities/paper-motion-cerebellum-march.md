@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, motion-cerebellum-survey, humanoid, motion-control, tufts]
 status: complete
-updated: 2026-07-06
+updated: 2026-07-16
 arxiv: "2606.10288"
 summary: "底座：模型辅助稀疏落脚控制。输入是稀疏落脚目标、机器人状态和模型预测信息；实现上用模型辅助强化学习指导足端放置和身体运动，让策略在复杂地形上减少盲目探索；它把模型知识放进感知落脚控制。"
 related:

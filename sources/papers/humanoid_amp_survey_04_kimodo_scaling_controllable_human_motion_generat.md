@@ -22,7 +22,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-amp-survey-04-kimodo](../../wiki/entities/paper-amp-survey-04-kimodo.md) — AMP 专题策展页
+- [kimodo](../../wiki/entities/kimodo.md) — AMP 专题策展页
 - [kimodo](../../wiki/entities/kimodo.md) — 主实体页（完整架构与 Benchmark）
 - [motionbricks](../../wiki/methods/motionbricks.md) — 同段实时姊妹对照
 

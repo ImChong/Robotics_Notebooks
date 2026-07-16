@@ -1,14 +1,16 @@
 ---
 type: entity
-tags: [paper, humanoid, sim2real, visual-rl, loco-manipulation, teacher-student, dagger, grpo, ppo, unitree-g1, isaac-lab, door-opening, cvpr2026, nvidia, gear]
+tags: [paper, humanoid, sim2real, visual-rl, loco-manipulation, teacher-student, dagger, grpo, ppo, unitree-g1, isaac-lab, door-opening, cvpr2026, nvidia, gear, body-system-stack]
 status: complete
-updated: 2026-07-06
+updated: 2026-07-16
 arxiv: "2512.01061"
 venue: "CVPR 2026"
 code: https://github.com/NVlabs/GR00T-VisualSim2Real
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-08-real-tasks.md
+  - ../overview/humanoid-rl-motion-control-body-system-stack.md
+  - ../overview/humanoid-amp-motion-prior-survey.md
   - ./gr00t-visual-sim2real.md
   - ./paper-viral-humanoid-visual-sim2real.md
   - ./tairan-he.md
@@ -26,6 +28,9 @@ sources:
   - ../../sources/sites/doorman-humanoid-github-io.md
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
+  - ../../sources/papers/humanoid_rl_stack_29_opening_the_sim_to_real_door_for_humanoid_pixel.md
+  - ../../sources/papers/humanoid_rl_stack_42_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
 summary: "DoorMan（arXiv:2512.01061，CVPR 2026）以人形纯 RGB 开门为 loco-manipulation 基准：Isaac Lab 中特权教师 PPO 配合分阶段重置探索，经 DAgger 蒸馏到视觉学生，再用 GRPO 微调缓解部分可观测性；大规模物理与 PBR/光照随机化支撑真机零样本泛化，并在同 WBC 栈上报告相对人类遥操作的成功率与耗时优势。"
 ---
 
@@ -55,6 +60,24 @@ summary: "DoorMan（arXiv:2512.01061，CVPR 2026）以人形纯 RGB 开门为 lo
 - **任务对准日常难点**：门把手弹簧负载、铰链约束力与 **全身平衡** 强耦合，是「看似简单、实则难」的 **接触丰富 loco-manipulation** 代表。
 - **算法配方可复用**：**分阶段重置** 解决教师 RL 在长桥接转移上的探索不足；**DAgger → GRPO** 把「模仿特权教师」与「在自身观测分布上自举」拆成可插拔两阶段。
 - **视觉 Sim2Real 证据链完整**：系统消融 **PBR 纹理 / 穹顶光 / 相机参数** 对 RGB 策略泛化的影响，量化 **无强视觉随机化时性能崩塌** 的现象。
+
+## Survey 坐标（策展索引）
+
+### 在 42 篇 RL 运动控制身体系统栈中
+
+| 字段 | 内容 |
+|------|------|
+| 编号 | 29/42 |
+| 系统栈层 | 04 视觉闭环 · 任务接口 · 世界模型 |
+| 索引来源 | [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) |
+
+### 在运动小脑 64 篇技术地图中
+
+| 字段 | 内容 |
+|------|------|
+| 编号 | 52/64 |
+| 分组 | H 真实任务 |
+| 分类 hub | [motion-cerebellum-category-08-real-tasks](../overview/motion-cerebellum-category-08-real-tasks.md) |
 
 ## 流程总览
 
@@ -129,6 +152,8 @@ flowchart TB
 - [Unitree G1](./unitree-g1.md)
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
 - [Tairan He](./tairan-he.md)
+- [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) — 42 篇栈总框架（本文 #29/42）
+- [AMP 运动先验专题](../overview/humanoid-amp-motion-prior-survey.md) — 姊妹篇总览
 
 ## 实验与评测
 
@@ -143,6 +168,9 @@ flowchart TB
 - [sources/papers/doorman_opening_sim2real_arxiv_2512_01061.md](../../sources/papers/doorman_opening_sim2real_arxiv_2512_01061.md)
 - [sources/sites/doorman-humanoid-github-io.md](../../sources/sites/doorman-humanoid-github-io.md)
 - Xue, He, Wang, Ben, Xiao, Luo, Da, Castañeda, Shi, Sastry, Fan, Zhu, *Opening the Sim-to-Real Door for Humanoid Pixel-to-Action Policy Transfer*, arXiv:2512.01061, 2025. <https://arxiv.org/abs/2512.01061>
+- [humanoid_rl_stack_29_opening_the_sim_to_real_door_for_humanoid_pixel.md](../../sources/papers/humanoid_rl_stack_29_opening_the_sim_to_real_door_for_humanoid_pixel.md) — 42 篇栈策展摘录
+- [humanoid_rl_stack_42_catalog.md](../../sources/papers/humanoid_rl_stack_42_catalog.md) — 42 篇总表
+- [wechat_embodied_ai_lab_humanoid_rl_motion_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md) — 微信公众号编译导读
 
 ## 推荐继续阅读
 

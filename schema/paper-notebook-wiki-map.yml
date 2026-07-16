@@ -4,13 +4,13 @@ overrides:
   AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Character_Control:
   - wiki/entities/paper-amp-survey-01-amp.md
   ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control:
-  - wiki/entities/paper-bfm-25-ase.md
+  - wiki/methods/ase.md
   AWR_Advantage_Weighted_Regression:
   - wiki/methods/awr.md
   BEHAVIOR_Robot_Suite_Streamlining_Real-World_Whole-Body_Manipulation:
   - wiki/tasks/loco-manipulation.md
   BeyondMimic:
-  - wiki/entities/paper-beyondmimic.md
+  - wiki/methods/beyondmimic.md
   - wiki/methods/beyondmimic.md
   CALM_Conditional_Adversarial_Latent_Models_for_Directable_Virtual_Characters:
   - wiki/entities/paper-bfm-19-calm.md
@@ -21,7 +21,7 @@ overrides:
   Collision-Free_Humanoid_Traversal_in_Cluttered_Indoor_Scenes:
   - wiki/tasks/stair-obstacle-perceptive-locomotion.md
   DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills:
-  - wiki/entities/paper-hrl-stack-11-deepmimic.md
+  - wiki/methods/deepmimic.md
   Diffusion_Policy:
   - wiki/methods/diffusion-policy.md
   DreamDojo_A_Generalist_Robot_World_Model_from_Large-Scale_Human_Videos:
@@ -50,7 +50,7 @@ overrides:
   GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object:
   - wiki/methods/gentlehumanoid-motion-tracking.md
   HAIC__Humanoid_Agile_Object_Interaction_Control_via_Dynamics-Aware_World_Model:
-  - wiki/entities/paper-hrl-stack-38-haic.md
+  - wiki/methods/haic.md
   HOMIE_Humanoid_Loco-Manipulation_with_Isomorphic_Exoskeleton_Cockpit:
   - wiki/tasks/loco-manipulation.md
   - wiki/tasks/teleoperation.md
@@ -105,7 +105,7 @@ overrides:
   PACE_Systematic_Sim-to-Real_Transfer_for_Diverse_Legged_Robots:
   - wiki/concepts/sim2real.md
   PHC_Perpetual_Humanoid_Control:
-  - wiki/entities/paper-bfm-22-phc.md
+  - wiki/entities/phc.md
   PILOT__A_Perceptive_Integrated_Low-level_Controller_for_Loco-manipulation:
   - wiki/entities/paper-pilot-perceptive-loco-manipulation.md
   PPO_Proximal_Policy_Optimization:
@@ -132,8 +132,8 @@ overrides:
   - wiki/tasks/teleoperation.md
   SONIC_Supersizing_Motion_Tracking_for_Natural_Humanoid_Control:
   - wiki/methods/sonic-motion-tracking.md
-  - wiki/entities/paper-sonic.md
-  - wiki/entities/paper-sonic.md
+  - wiki/methods/sonic-motion-tracking.md
+  - wiki/methods/sonic-motion-tracking.md
   STATE-NAV__Stability-Aware_Traversability_Estimation_for_Bipedal_Navigation_on_Rough_Terrain:
   - wiki/tasks/vision-language-navigation.md
   TeleGate__Whole-Body_Humanoid_Teleoperation_via_Gated_Expert_Selection_with_Motion_Prior:

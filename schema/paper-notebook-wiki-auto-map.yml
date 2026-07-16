@@ -6,7 +6,7 @@ overrides:
   CLOT__Closed-Loop_Global_Motion_Tracking_for_Whole-Body_Humanoid_Teleoperation:
   - wiki/entities/paper-amp-survey-16-clot.md
   DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills:
-  - wiki/entities/paper-hrl-stack-11-deepmimic.md
+  - wiki/methods/deepmimic.md
   Diffusion_Policy:
   - wiki/methods/diffusion-policy.md
   DreamDojo_A_Generalist_Robot_World_Model_from_Large-Scale_Human_Videos:
@@ -16,7 +16,7 @@ overrides:
   GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object:
   - wiki/methods/gentlehumanoid-motion-tracking.md
   HAIC__Humanoid_Agile_Object_Interaction_Control_via_Dynamics-Aware_World_Model:
-  - wiki/entities/paper-hrl-stack-38-haic.md
+  - wiki/methods/haic.md
   HUSKY__Humanoid_Skateboarding_System_via_Physics-Aware_Whole-Body_Control:
   - wiki/entities/paper-amp-survey-14-husky.md
   HumanX__Toward_Agile_and_Generalizable_Humanoid_Interaction_Skills_from_Human_Vi:
@@ -32,7 +32,7 @@ overrides:
   OmniXtreme_Breaking_the_Generality_Barrier_in_High-Dynamic_Humanoid_Control:
   - wiki/entities/paper-hrl-stack-16-omnixtreme.md
   PHC_Perpetual_Humanoid_Control:
-  - wiki/entities/paper-bfm-22-phc.md
+  - wiki/entities/phc.md
   PILOT__A_Perceptive_Integrated_Low-level_Controller_for_Loco-manipulation:
   - wiki/entities/paper-pilot-perceptive-loco-manipulation.md
   Perceptive_Humanoid_Parkour__Chaining_Dynamic_Human_Skills_via_Motion_Matching:
