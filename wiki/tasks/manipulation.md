@@ -161,6 +161,7 @@ flowchart TD
 - [RLDX-1](../entities/rldx-1.md) — 灵巧操作向 VLA，可选触觉/力矩条件与低延迟推理栈
 - [Green-VLA](../entities/paper-greenvla-staged-vla-humanoid.md) — Sber Green 人形双手操作与电商货架 JPM 引导（arXiv:2602.00919）
 - [KEMO](../entities/paper-kemo-event-driven-keyframe-memory-vla.md) — 事件驱动关键帧记忆插拔 π₀.₅，真机双臂长程记忆依赖任务 TSR +23.6 pt（arXiv:2606.23589）
+- [RoboTTT](../entities/paper-robottt-test-time-training-vla-context.md) — GR00T N1.7 内嵌 TTT fast weights，8K 步 visuomotor 上下文 + 部署后在线学习（NVIDIA GEAR 项目页）
 - [KinetIQ Ascend](../entities/kinetiq-ascend.md) — 产线 CFM-VLA 真机 PPO 后训练（Humanoid, 2026）
 - [MolmoMotion](../entities/molmo-motion.md) — 语言条件 3D 点轨迹预测与 DROID 微调规划先验（arXiv:2606.18558）
 - [EN02-OP](../entities/en02-op.md) — Westwood 开源三指 7-DoF 夹爪（Dynamixel + 3D 打印，DIY 约 $200 量级）
@@ -170,6 +171,8 @@ flowchart TD
 - [PhysisForcing](../entities/paper-physisforcing.md) — 操纵视频 DiT 训练期分层物理对齐；R-Bench / WorldArena / Fast-WAM 下游增益（arXiv:2606.28128）
 - [GaP](../entities/paper-gap-graph-as-policy.md) — 变体自动化计算图策略；可 staging VLA 提升工业位姿鲁棒性（arXiv:2607.05369）
 - [PhysMani](../entities/paper-physmani-dynamic-manipulation-world-model.md) — 3D Gaussian 物理世界模型 + future-aware 3DFA，动态操作 Benchmark 与 Astribot 真机（ECCV 2026，arXiv:2607.01938）
+- [Lumo-2](../entities/lumo-2.md) — Astribot latent WAM：三阶段模态预对齐、22 项 S1 真机 benchmark、32 段项目页演示视频（arXiv:2607.11270）
+- [Philia](../entities/philia.md) — Astribot 多机器人物理 AI 助手运行时（OpenClaw + Robot Gateway，arXiv:2607.11377）
 
 ## 关联任务
 

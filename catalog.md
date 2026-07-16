@@ -178,6 +178,7 @@
 - [LingBot-VLA 2.0](wiki/entities/lingbot-vla-v2.md) — LingBot-VLA 2.0**（*From Foundation to Application: Improving VLA Models in Practice*，[arXiv:2607.0 `📅unknown` `[entity_page]`
 - [LIO-SAM](wiki/entities/lio-sam.md) — LIO-SAM** 将 **IMU 预积分、scan-to-map 与回环** 纳入统一因子图优化。 `📅unknown` `[entity_page]`
 - [Build a Large Language Model (From Scratch)（Raschka / LLMs-from-scratch）](wiki/entities/llms-from-scratch-raschka.md) — 《Build a Large Language Model (From Scratch)》** 是 Sebastian Raschka 的 Manning 2024 教材，官方代码在 [rasbt `📅unknown` `[entity_page]`
+- [Lumo-2（Latent World-Action Model）](wiki/entities/lumo-2.md) — Lumo-2**（*Towards Predictive, Aligned, and Scalable Robot Learning*，[arXiv:2607.11270](https://arx `📅unknown` `[entity_page]`
 - [Manim（程序化数学动画引擎）](wiki/entities/manim.md) — Manim** 是一套用 **Python 代码精确描述动画时间线** 的开源引擎，最初由 **Grant Sanderson（3Blue1Brown）** 为教育数学视频而编写。当前存在两个  `📅unknown` `[entity_page]`
 - [ManiSkill2](wiki/entities/maniskill2.md) — ManiSkill2** 是 2023 年发布的 **通用可泛化操作技能（Generalizable Manipulation Skills）统一基准**，构建于 [SAPIEN](./sapie `📅unknown` `[entity_page]`
 - [矩池云（Matpool）](wiki/entities/matpool.md) — 矩池云**（matpool.com）是专注人工智能领域的 **GPU 云服务商**，以算力市场租用主机为核心，并提供专有云、私有云与高校 A `📅unknown` `[entity_page]`
@@ -901,6 +902,7 @@
 - [Rhythm（Learning Interactive Whole-Body Control for Dual Humanoids）](wiki/entities/paper-rhythm-dual-humanoid-interaction.md) — Rhythm** 是面向 **双 humanoid 物理耦合全身交互** 的系统论文（arXiv:2603.02856）：在 **两台 Unitree G1** 真机上首次报告 **拥抱、共舞、问 `📅unknown` `[entity_page]`
 - [RMA: Rapid Motor Adaptation for Legged Robots](wiki/entities/paper-rma-rapid-motor-adaptation.md) — RMA**（Kumar et al., arXiv:2107.04034，**RSS 2021**）提出 **快速运动自适应 `📅unknown` `[entity_page]`
 - [RoboNaldo（人形足球射门 · Motion-Guided Curriculum RL）](wiki/entities/paper-robonaldo-humanoid-soccer-shooting.md) — RoboNaldo**（*Accurate, Stable and Powerful Humanoid Soccer Shooting via Motion-Guided Curriculum R `📅unknown` `[entity_page]`
+- [RoboTTT（Test-Time-Training Robot Policies）](wiki/entities/paper-robottt-test-time-training-vla-context.md) — RoboTTT**（*Context Scaling for Robot Policies*，[NVIDIA GEAR 项目页](https://research.nvidia.com/labs/ `📅unknown` `[entity_page]`
 - [Robustness of Robotic Manipulation](wiki/entities/paper-robustness-robotic-manipulation-survey.md) — Robustness of Robotic Manipulation: Foundations and Frontiers**（Dong et al., arXiv:2606.31494）是面向  `📅unknown` `[entity_page]`
 - [ROVE（Unlocking Human Interventions for Humanoid Manipulation via RL）](wiki/entities/paper-rove-humanoid-vla-intervention.md) — ROVE** 是 XPENG Robotics 与复旦、港中文、上交等团队提出的 **人形 VLA 后训练 RL 框架**（arXiv:2606.17011，[项目页](https://xpeng `📅unknown` `[entity_page]`
 - [RPL：复杂地形上的鲁棒人形多向感知行走](wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) — RPL**（*Learning Robust Humanoid Perceptive Locomotion on Challenging Terrains*，Amazon FAR 等，arXiv: `📅unknown` `[entity_page]`
@@ -978,6 +980,7 @@
 - [Tesla 人形机器人膝关节机构（WO2024073135）](wiki/entities/patent-tesla-robot-knee-joint-assembly.md) — 专利 **WO2024073135A1**（*Systems and methods for a robot knee joint assembly*，权利人 **Tesla Inc.**）公开一种  `📅unknown` `[entity_page]`
 - [Perceptron Egocentric](wiki/entities/perceptron-egocentric.md) — Perceptron Egocentric**（[官方博客](https://www.perceptron.inc/blog/introducing-perceptron-egocentric-a `📅unknown` `[entity_page]`
 - [PHC（Perpetual Humanoid Control）](wiki/entities/phc.md) — PHC**（<https://github.com/ZhengyiLuo/PHC>，ICCV 2023）是 Zhengyi Luo 团队的 **物理仿真人形 `📅unknown` `[entity_page]`
+- [Philia（Physical AI Symbiotic Agent）](wiki/entities/philia.md) — PHILIA**（*A Glimpse into Long-term Physical Coexistence with Intelligent Robots*，[arXiv:2607.11377 `📅unknown` `[entity_page]`
 - [PhysX-Omni（统一仿真就绪物理 3D 生成）](wiki/entities/physx-omni.md) — PhysX-Omni**（S-Lab NTU / ACE Robotics，arXiv:2605.21572）是面向 **具身 AI、游戏与物理仿真** 的 **统一 sim-ready 3D 生 `📅unknown` `[entity_page]`
 - [Pinocchio (刚体动力学库)](wiki/entities/pinocchio.md) — Pinocchio** 是一个由法国国家信息与自动化研究所（INRIA）开源的，专注于**高计算效率**和**分析导数 (Analytical Derivatives)** 的刚体动力学（Rigi `📅unknown` `[entity_page]`
 - [PlotJuggler](wiki/entities/plotjuggler.md) — PlotJuggler**（PlotJuggler/PlotJuggler）是面向工程师的 **时序数据 `📅unknown` `[entity_page]`
@@ -1078,6 +1081,7 @@
 - [wtfOS](wiki/entities/wtfos.md) — wtfOS**（fpv-wtf/wtfos）是在 [margerine](https://github.com/fpv-wt `📅unknown` `[entity_page]`
 - [舞肌科技（上海舞肌科技有限公司）](wiki/entities/wuji-robotics.md) — 舞肌科技** 面向 **具身 AI 机器人** 提供两类常被并列讨论的硬件叙事：**关节级电机方案**（**F 系列** 内转子永磁无刷、「**Pan Motor**」品牌报道）与 **五指灵巧手 `📅unknown` `[entity_page]`
 - [Xiaomi-Robotics-0](wiki/entities/xiaomi-robotics-0.md) — Xiaomi-Robotics-0** 将 **预训练 VLM（Qwen3-VL-4B-Instruct）** 与 **扩散式 Transformer 动作头（DiT）** 组合成端到端 **VL `📅unknown` `[entity_page]`
+- [Xiaomi-Robotics-1](wiki/entities/xiaomi-robotics-1.md) — Xiaomi-Robotics-1**（官网代号 **XR-1**）是小米机器人实验室 2026 年 7 月发布的 **大规模具身基座 VLA**：用 **embodiment-free UMI  `📅unknown` `[entity_page]`
 - [Xiaomi-Robotics-U0](wiki/entities/xiaomi-robotics-u0.md) — Xiaomi-Robotics-U0**（arXiv:2607.11643，[官网](https://robotics.xi `📅unknown` `[entity_page]`
 - [xpad（Linux Xbox 手柄驱动）](wiki/entities/xpad.md) — xpad**（paroj/xpad）维护主线 Linux 内核中的 **Xbox 游戏手柄 USB 驱动**，并在上游基础上合并更 `📅unknown` `[entity_page]`
 - [XTDrone](wiki/entities/xtdrone.md) — XTDrone**（robin-shaun/XTDrone）把 **[PX4](./px4-autopilot. `📅unknown` `[entity_page]`

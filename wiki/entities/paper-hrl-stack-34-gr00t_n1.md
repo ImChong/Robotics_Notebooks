@@ -166,6 +166,7 @@ flowchart TB
 
 - 概念层：[foundation-policy.md](../concepts/foundation-policy.md)、[vla.md](../methods/vla.md)
 - 方法对照：[diffusion-policy.md](../methods/diffusion-policy.md)
+- **长程上下文 / 部署后学习：** [RoboTTT](./paper-robottt-test-time-training-vla-context.md) — 在 **GR00T N1.7** 上内嵌 TTT fast-weight 层，把 visuomotor 上下文扩到 8K 步（项目页，2026）
 - 工程平台：[isaac-gr00t.md](../entities/isaac-gr00t.md)
 - 工程深读：[gr00t-wholebodycontrol.md](../entities/gr00t-wholebodycontrol.md)
 - RL 身体系统栈：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)

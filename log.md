@@ -34,6 +34,35 @@
 - wiki/entities/paper-loco-manip-161-131-open-television.md
 - wiki/entities/berkeley-humanoid-lite.md
 
+## [2026-07-16] ingest | sources/papers/lumo2_arxiv_2607_11270.md + sources/papers/philia_arxiv_2607_11377.md — Astribot Lumo-2 latent WAM 与 Philia 多机器人助手；项目页全量演示视频归档
+
+- wiki/entities/lumo-2.md
+- wiki/entities/philia.md
+- wiki/concepts/world-action-models.md
+- wiki/methods/vla.md
+- wiki/tasks/manipulation.md
+- wiki/entities/hermes-agent.md
+- sources/papers/lumo2_arxiv_2607_11270.md
+- sources/papers/philia_arxiv_2607_11377.md
+- sources/sites/astribot-lumo2-project-page.md
+- sources/sites/astribot-philia-project-page.md
+- schema/institutions.json
+## [2026-07-16] ingest | sources/papers/robottt_nvidia_gear.md — RoboTTT：GR00T N1.7 内嵌 TTT fast weights，8K visuomotor 上下文与部署后在线学习
+
+- wiki/entities/paper-robottt-test-time-training-vla-context.md
+- wiki/methods/vla.md
+- wiki/entities/paper-hrl-stack-34-gr00t_n1.md
+- wiki/tasks/manipulation.md
+- sources/papers/robottt_nvidia_gear.md
+- sources/sites/nvidia-research-robottt.md
+## [2026-07-16] ingest | sources/sites/xiaomi-robotics-1.md — Xiaomi-Robotics-1 100k h UMI 预训练具身基座 VLA；wiki/entities/xiaomi-robotics-1.md、wiki/methods/vla.md、wiki/entities/xiaomi-robotics-0.md、wiki/entities/xiaomi-robotics-u0.md
+
+- wiki/entities/xiaomi-robotics-1.md
+- wiki/methods/vla.md
+- wiki/entities/xiaomi-robotics-0.md
+- wiki/entities/xiaomi-robotics-u0.md
+- sources/sites/xiaomi-robotics-1.md
+
 ## [2026-07-16] structural | wiki — 合并 REGRIND 方法页与论文实体页为单页 wiki/methods/regrind-retargeting-guided-rl.md
 
 - wiki/methods/regrind-retargeting-guided-rl.md

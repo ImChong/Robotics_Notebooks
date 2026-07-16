@@ -1085,6 +1085,13 @@
         "idea",
         "idea-research"
       ]
+    },
+    "astribot": {
+      "label": "星尘智能（Astribot）",
+      "aliases": [
+        "astribot",
+        "astribot-robotics"
+      ]
     }
   }
 }

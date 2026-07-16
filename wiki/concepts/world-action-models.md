@@ -2,12 +2,14 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-07-15
+updated: 2026-07-16
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型。"
 related:
   - ../../roadmap/depth-wam.md
   - ../queries/embodied-fm-taxonomy-loop.md
   - ../overview/robot-world-models-action-consequence-technology-map.md
+  - ../entities/lumo-2.md
+  - ../entities/philia.md
   - ../entities/paper-dswam-dual-system-wam.md
   - ../entities/paper-dynawm-vla-online-correction.md
   - ../entities/paper-dreamsteer-vla-deployment-steering.md
@@ -131,6 +133,8 @@ sources:
 **文献实例（Joint 族 + 原生 CEDC · 4B 部署导向）**：[Kairos](../entities/paper-kairos-native-world-model-stack.md) 以 **Video DiT + Action DiT（MoT）** 联合 flow matching，**Stage I–II 仅训 VideoDiT、Stage III 联合 ActionDiT**；推理支持 **action-only**（不滚未来视频）与 **Kairos-joint**（联合去噪，LIBERO-Plus **89.0→90.8**）。原生 **跨具身数据课程** 与 **仅训 ActionDiT** 消融（**−23.2** LIBERO-Plus）强调：世界生成监督是控制相关表征的必要来源（arXiv:2606.16533，Kairos Team / kairos-agi）。
 
 **文献实例（Joint 族 + latent foresight 查询冻结生成器 · 部署纯 VLA）**：[InternVLA-A1.5](../entities/paper-internvla-a15-unified-vla.md) 在 **Qwen3.5-2B MoT** 上持续 **VQA/子任务** 共训，用 **50 个 foresight token** 读出紧凑潜码条件化 **冻结 WAN2.2-5B**，以 video flow loss **蒸馏动力学先验** 至 unified expert，再以 **flow matching** 输出连续 action chunk；**推理丢弃视频分支**（~0.1s/步），在 LIBERO-Plus / DOMINO 零样本与真机 **组合指令 OOD** 上报告最强组合泛化（arXiv:2607.04988，上海 AI Lab Physical Intelligence Team）。
+
+**文献实例（Joint 族 + 三阶段动作–动力学–语言预对齐 · Astribot S1 22 任务）**：[Lumo-2](../entities/lumo-2.md) 以 **Qwen3.5-4B** 联合建模 **潜空间世界动力学 φ** 与 **VQ 动作 chunk**，经 **Stage1 动力学↔动作、Stage2 视觉–语言语义、Stage3 VLWA 共训** 缓解「重建好但不好控」；推理用 **BAR 块解码 2.71×** 加速与历史动作记忆；在 **22 项** 真机挑战任务上全面超 **π₀.₅/Fast-WAM**，并展示 VisionPro / egocentric 人视频 **无专用迁移** 的共训增益（arXiv:2607.11270）。系统部署语境见同团队 [Philia](../entities/philia.md) agent 运行时。
 
 ```mermaid
 flowchart TB

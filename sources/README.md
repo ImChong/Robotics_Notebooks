@@ -9,7 +9,7 @@
 ### papers/ — 论文来源归档
 | 文件 | 内容 |
 |------|------|
-| [x] [locomotion_rl.md](papers/locomotion_rl.md) | 人形/腿足机器人 RL 论文 ingest 摘要（AMP/ASE/locomotion） |
+| [x] [robottt_nvidia_gear.md](papers/robottt_nvidia_gear.md) | RoboTTT：NVIDIA GEAR 在 GR00T N1.7 VLA 内嵌 TTT fast weights，visuomotor 上下文扩至 8K 步（项目页 research.nvidia.com/labs/gear/robottt/） |
 | [x] [rl_pd_action_interface_locomotion.md](papers/rl_pd_action_interface_locomotion.md) | RL+PD 动作接口与增益设计：Digit / Cassie / 四足经典 / 可变刚度 / 扭矩控制等 10 篇索引 |
 | [x] [sds_quadruped_arxiv_2410_11571.md](papers/sds_quadruped_arxiv_2410_11571.md) | SDS：四足单视频 VLM→奖励 + IsaacGym 闭环进化（arXiv:2410.11571），E-SDS 前序方法摘录 |
 | [x] [smp.md](papers/smp.md) | SMP：可复用 score-matching 运动先验（arXiv:2512.03028，SDS/ESM/GSI、100 风格组合、G1 真机）完整摘录 |
@@ -393,6 +393,7 @@
 | [x] [lift-humanoid-github-io.md](sites/lift-humanoid-github-io.md) | LIFT 项目页 lift-humanoid.github.io（三阶段框架、MuJoCo Playground/Brax 视频、真机微调与零样本户外片段） |
 | [x] [limmt-giraffeguan-github-io.md](sites/limmt-giraffeguan-github-io.md) | LIMMT 项目页 giraffeguan.github.io/limmt（GQS 管线、AMASS/PHUMA 实验、G1 真机视频；配套 arXiv:2606.06953） |
 | [x] [legsvla-github-io.md](sites/legsvla-github-io.md) | LEGS 项目页 legsvla.github.io（3DGS loco-manip VLA 数据管线、真机 demo；arXiv:2606.01458） |
+| [x] [xiaomi-robotics-1.md](sites/xiaomi-robotics-1.md) | Xiaomi-Robotics-1 品牌站 + PDF 技术报告（100k h UMI 预训练具身基座 VLA；代码/权重待发布） |
 | [x] [splitadapter-github-io.md](sites/splitadapter-github-io.md) | SplitAdapter 项目页 splitadapter.github.io（负载感知因子化适配、G1 真机 demo；arXiv:2606.03297） |
 | [x] [lingbot-map-technology-robbant.md](sites/lingbot-map-technology-robbant.md) | LingBot-Map 官方项目页 technology.robbyant.com/lingbot-map（与论文/仓库交叉索引） |
 | [x] [lingbot-vla-v2-technology-robbant.md](sites/lingbot-vla-v2-technology-robbant.md) | LingBot-VLA 2.0 官方项目页 technology.robbyant.com/lingbot-vla-v2（数据管线、MoE、真机 benchmark 可视化） |
@@ -404,6 +405,7 @@
 | [x] [moveit1-noetic-tutorials.md](sites/moveit1-noetic-tutorials.md) | MoveIt 1 Noetic 官方教程（moveit.github.io/moveit_tutorials） |
 | [x] [moveit2-picknik-documentation.md](sites/moveit2-picknik-documentation.md) | MoveIt 2 官方文档 moveit.picknik.ai（概念/教程/API） |
 | [x] [cosmos3-project.md](sites/cosmos3-project.md) | Cosmos 3 项目页 research.nvidia.com/labs/cosmos-lab/cosmos3（全模态 Physical AI 能力 demo 与榜单摘要，arXiv:2606.02800） |
+| [x] [nvidia-research-robottt.md](sites/nvidia-research-robottt.md) | NVIDIA Research GEAR：RoboTTT 项目页 research.nvidia.com/labs/gear/robottt/（TTT 层、8K 上下文 scaling、长程双臂装配演示） |
 | [x] [nvidia-research-egoscale.md](sites/nvidia-research-egoscale.md) | NVIDIA Research GEAR：EgoScale 项目页 research.nvidia.com/labs/gear/egoscale（演示、管线叙述、BibTeX；GitHub 标注 Coming Soon） |
 | [x] [mixamo.md](sites/mixamo.md) | Mixamo：Adobe 在线角色绑定与动画库（商业服务说明） |
 | [x] [mujoco-mjx-readthedocs.md](sites/mujoco-mjx-readthedocs.md) | MuJoCo 官方文档：MJX（readthedocs） |
