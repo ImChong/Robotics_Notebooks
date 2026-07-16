@@ -1,17 +1,17 @@
 {
   "generated_at": "2026-07-16",
-  "node_count": 1653,
-  "edge_count": 12869,
+  "node_count": 1654,
+  "edge_count": 12881,
   "coverage": {
-    "covered": 1606,
-    "total": 1636,
+    "covered": 1607,
+    "total": 1637,
     "percent": 98
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/xiaomi-robotics-1.md",
-      "detail_id": "entity-xiaomi-robotics-1",
-      "label": "Xiaomi-Robotics-1",
+      "path": "wiki/entities/paper-robottt-test-time-training-vla-context.md",
+      "detail_id": "entity-paper-robottt-test-time-training-vla-context",
+      "label": "RoboTTT（Test-Time-Training Robot Policies）",
       "type": "entity",
       "recency": "2026-07-16",
       "source": "log.md",
@@ -27,6 +27,37 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-hrl-stack-34-gr00t_n1.md",
+      "detail_id": "entity-paper-hrl-stack-34-gr00t_n1",
+      "label": "GR00T N1",
+      "type": "entity",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/xiaomi-robotics-1.md",
+      "detail_id": "entity-xiaomi-robotics-1",
+      "label": "Xiaomi-Robotics-1",
+      "type": "entity",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -61,16 +92,6 @@
       "action": "added",
       "has_repo": true,
       "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/methods/toporetarget-interaction-preserving-dexterous-retargeting.md",
@@ -195,33 +216,12 @@
       "action": "added",
       "has_repo": true,
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/formalizations/3d-coordinate-transforms-vision-robotics.md",
-      "detail_id": "wiki-formalizations-3d-coordinate-transforms-vision-robotics",
-      "label": "三维坐标变换（视觉–机器人对齐）",
-      "type": "formalization",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/vins-fusion.md",
-      "detail_id": "entity-vins-fusion",
-      "label": "VINS-Fusion",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/xiaomi-robotics-1.md",
-    "detail_id": "entity-xiaomi-robotics-1",
-    "label": "Xiaomi-Robotics-1",
+    "path": "wiki/entities/paper-robottt-test-time-training-vla-context.md",
+    "detail_id": "entity-paper-robottt-test-time-training-vla-context",
+    "label": "RoboTTT（Test-Time-Training Robot Policies）",
     "type": "entity",
     "recency": "2026-07-16",
     "source": "log.md",
@@ -231,7 +231,7 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 208
+      "size": 209
     },
     {
       "label": "全身控制",
@@ -282,7 +282,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 259,
+      "degree": 262,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -294,19 +294,19 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "degree": 227,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
       "degree": 225,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "degree": 225,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",

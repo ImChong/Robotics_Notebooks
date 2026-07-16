@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-16] ingest | sources/papers/robottt_nvidia_gear.md — RoboTTT：GR00T N1.7 内嵌 TTT fast weights，8K visuomotor 上下文与部署后在线学习
+
+- wiki/entities/paper-robottt-test-time-training-vla-context.md
+- wiki/methods/vla.md
+- wiki/entities/paper-hrl-stack-34-gr00t_n1.md
+- wiki/tasks/manipulation.md
+- sources/papers/robottt_nvidia_gear.md
+- sources/sites/nvidia-research-robottt.md
 ## [2026-07-16] ingest | sources/sites/xiaomi-robotics-1.md — Xiaomi-Robotics-1 100k h UMI 预训练具身基座 VLA；wiki/entities/xiaomi-robotics-1.md、wiki/methods/vla.md、wiki/entities/xiaomi-robotics-0.md、wiki/entities/xiaomi-robotics-u0.md
 
 - wiki/entities/xiaomi-robotics-1.md
