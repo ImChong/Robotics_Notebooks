@@ -10,6 +10,7 @@ related:
   - ../methods/model-based-rl.md
   - ./paper-wem-world-ego-modeling.md
   - ./ge-sim-2.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/ewmbench.md
   - ../../sources/repos/ewmbench.md
@@ -93,6 +94,7 @@ flowchart LR
 - [Manipulation（操作任务）](../tasks/manipulation.md) — 任务域：双臂/抓取等工程注意点与本基准当前子集范围对照
 - [GE-Sim 2.0](./ge-sim-2.md) — 同 Genie Envisioner 生态的 **闭环** 视频世界模拟器（内置 World Judge；EWMBench 偏开环生成质量）
 - [Model-Based RL（基于模型的强化学习）](../methods/model-based-rl.md) — 世界模型学习与规划文献脉络（EWMBench 评的是「生成式视频世界模型」子类）
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是其「② 世界模型预测保真度评测层」的代表基准，双向回链
 
 ## 参考来源
 

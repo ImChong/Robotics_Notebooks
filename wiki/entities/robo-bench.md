@@ -11,6 +11,7 @@ related:
   - ./paper-vesta-generalist-embodied-reasoning.md
   - ./paper-hrl-stack-34-gr00t_n1.md
   - ../queries/manipulation-vla-architecture-selection.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/robo_bench_arxiv_2510_17801.md
   - ../../sources/repos/robo-bench.md
@@ -135,6 +136,7 @@ flowchart TB
 - [EWMBench（具身世界模型生成评测）](./ewmbench.md) — 像素域世界模型质量评测对照
 - [Vesta（通用具身推理）](./paper-vesta-generalist-embodied-reasoning.md) — 同类「高层 cognition + 低层 actor」分层路线
 - [Manipulation VLA 架构选型](../queries/manipulation-vla-architecture-selection.md) — VLM 骨干选型时可参考 RoboBench 维度分数
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是其「① 具身大脑/MLLM 认知评测层」的代表基准，双向回链
 
 ## 参考来源
 
