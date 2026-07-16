@@ -30,6 +30,7 @@ related:
   - ../methods/pelican-unified-1.md
   - ../methods/defi-decoupled-dynamics-vla.md
   - ../entities/tau0-world-model.md
+  - ../entities/dexmal-dw05.md
   - ../entities/paper-kairos-native-world-model-stack.md
   - ../entities/paper-internvla-a15-unified-vla.md
   - ../tasks/loco-manipulation.md
@@ -46,6 +47,7 @@ sources:
   - ../../sources/papers/defi_arxiv_2604_16391.md
   - ../../sources/repos/awesome-wam-openmoss.md
   - ../../sources/sites/awesome-wam-openmoss.md
+  - ../../sources/repos/dexmal_opendw.md
 ---
 
 # World Action Models（WAM，世界–动作模型）
@@ -107,6 +109,8 @@ sources:
 **文献实例（Joint 族 + 潜自回归闭环 · 空中 VLN）**：[WorldVLN](../entities/paper-worldvln-aerial-vln-wam.md) 在 **无人机 VLN** 上将 **预训练视频潜自回归骨干** 用于 **短视界世界转移预测**，经解码器输出 **waypoint 段**，执行后把新观测写回上下文；Stage 2 使用作者所称首个面向 **自回归 WAM** 的 **Action-aware GRPO**（arXiv:2605.15964）。与 Pelican 的扩散联合去噪不同，WorldVLN 强调 **因果 observe–act–update** 与 **导航后果优化**，而非整段双向 clip 生成。
 
 **文献实例（Joint 族 + 操纵测试时仿真 · Agibot）**：[τ₀-World Model（τ0-WM）](../entities/tau0-world-model.md) 在 **Wan-2.2 级视频扩散骨干** 上 **联合** 预测未来多视角 latent 与 **action chunk**，并用 **动作条件 rollout + 任务进度轨迹** 在执行前做 **propose–evaluate–revise**；异构 **~2.73 万小时** 数据通过 **模态掩码** 分监督（人视频不伪标机器人动作）。
+
+**开源实例（Joint 族 + Wan MoT 三专家 · Dexmal）**：[Dexmal DW05（OpenDW）](../entities/dexmal-dw05.md) 在 **Wan 骨干 + MoT** 上分出 **video / action / value** 专家，联合 **未来视频、32D 动作与状态–价值**；发布 **DW05-Base** 与 **RoboTwin 2.0 SFT** 权重及 **RobotWin-style JSONL** 训练/推理栈（2026-07 GitHub + Hugging Face）。
 
 **平台实例（Joint 族 + 全模态单栈 · NVIDIA）**：[Cosmos 3](../entities/cosmos-3.md) 在 **MoT** 内用 **Generator** 同时暴露 **policy、forward dynamics、inverse dynamics**，用 **Reasoner** 做具身 CoT 与 2D 轨迹规划，并支持 **Reasoning + Generation**（先文本轨迹再视频再生）；与 Cascaded「先完整视频计划再解码动作」相比，更强调 **同一 checkpoint 多任务 I/O 配置** 与 **开源 serving 栈**（arXiv:2606.02800）。
 
@@ -196,6 +200,7 @@ flowchart TB
 - [NavWAM（image-goal 视觉导航 · WAM）](../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md)
 - [EgoWAM（野外 egocentric 人数据 · WAM 协同训练）](../entities/paper-egowam-egocentric-human-wam-co-training.md)
 - [τ₀-World Model（τ0-WM）](../entities/tau0-world-model.md)
+- [Dexmal DW05（OpenDW）](../entities/dexmal-dw05.md)
 - [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md)
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [Model-Based RL](../methods/model-based-rl.md)
