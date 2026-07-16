@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-16] ingest | sources/repos/flashsac.md — 补全 FlashSAC 官方 GitHub 仓库链接与训练框架要点
+
+- wiki/methods/flashsac.md
+- wiki/comparisons/ppo-vs-sac.md
+- sources/repos/flashsac.md
+- sources/papers/flashsac_arxiv_2604_04539.md
+- sources/sites/flashsac-project.md
+
 ## [2026-07-16] ingest | sources/papers/flashsac_arxiv_2604_04539.md + sources/sites/flashsac-project.md — FlashSAC 高维 off-policy RL；wiki/methods/flashsac.md 与 SAC/PPO 对比、locomotion 交叉更新
 
 - wiki/entities/paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m.md

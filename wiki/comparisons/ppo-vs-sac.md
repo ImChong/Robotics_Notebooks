@@ -198,6 +198,7 @@ $$J(\pi) = \sum_t \mathbb{E}_{(s_t, a_t) \sim \rho_\pi} \left[ r(s_t, a_t) + \al
 
 - Kim et al., *FlashSAC* (2026) — <https://arxiv.org/abs/2604.04539>
 - 项目页：<https://holiday-robot.github.io/FlashSAC/>
+- 代码：<https://github.com/Holiday-Robot/FlashSAC>
 
 ---
 
