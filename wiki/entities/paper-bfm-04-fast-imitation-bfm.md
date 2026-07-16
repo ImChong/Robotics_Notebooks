@@ -21,7 +21,7 @@ sources:
 
 **Fast Imitation via Behavior Foundation Models** 收录于 [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) **第 04/41** 篇，归类为 **01 Forward-backward 表征**（2024 · NeurIPS）。
 
-> **深读页：** [imitation-learning](../methods/imitation-learning.md) — 方法机制与实验细节见链接页；本页保留 survey 坐标与交叉引用。
+> **方法背景：** [imitation-learning](../methods/imitation-learning.md) — 通用方法页（非本文专属深读）；本文机制与实验以原文为准，本页保留 survey 坐标与交叉引用。
 
 ## 一句话定义
 

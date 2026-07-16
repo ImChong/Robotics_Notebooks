@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, imitation-learning, data-generation, mimicgen, whole-body-planning, vla, sim2real, synthetic-data, nvidia, ut-austin, unitree-g1, icra2026]
 status: complete
-updated: 2026-07-08
+updated: 2026-07-16
 arxiv: "2605.27724"
 openreview: "ekzk7TSLKr"
 venue: "ICRA 2026 Workshop on Synthetic Data for Robot Learning (Best Workshop Paper Finalist)"
@@ -12,7 +12,7 @@ related:
   - ../methods/vla.md
   - ../concepts/whole-body-control.md
   - ./paper-notebook-dexmimicgen-automated-data-generation-for-bimanu.md
-  - ./paper-loco-manip-161-129-homie.md
+  - ./paper-loco-manip-161-040-homie.md
   - ./paper-hrl-stack-34-gr00t_n1.md
   - ./paper-humanoidmimicgen.md
   - ./paper-humanoidmimicgen.md
@@ -173,7 +173,7 @@ flowchart TB
 
 与 [LEGS](./paper-legs-embodied-gaussian-splatting-vla.md)、[OASIS](./paper-loco-manip-04-oasis.md) 等 **合成视觉演示** 路线互补：HumanoidMimicGen 强调 **物理可执行轨迹 + 规划闭环**，而非纯渲染增广。
 
-与 [Homie](./paper-loco-manip-161-129-homie.md)：**Homie** 提供 **下肢 RL 控制器**；HumanoidMimicGen 在其上构建 **数据生成与 IL 基准**。
+与 [Homie](./paper-loco-manip-161-040-homie.md)：**Homie** 提供 **下肢 RL 控制器**；HumanoidMimicGen 在其上构建 **数据生成与 IL 基准**。
 
 ## 关联页面
 

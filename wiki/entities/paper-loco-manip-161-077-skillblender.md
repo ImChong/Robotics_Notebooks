@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-07-08
+updated: 2026-07-16
 venue: curated
 summary: "SkillBlender 先从相机图像/多视角观测、本体状态与关节序列、接触力/触觉信号恢复场景、目标或运动表征，再用PPO/RL 策略训练、扩散策略/流匹配、全身控制器/WBC/MPC生成全身轨迹/动作序列。关键点是把动作生成看成条件生成问题，用扩散或流匹配在多模态动作分布里采样可执行轨迹。"
 related:

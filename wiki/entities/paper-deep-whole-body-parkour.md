@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, whole-body-tracking, perceptive-locomotion, parkour, sim2real, unitree-g1, tsinghua, shanghai-pil]
 status: complete
-updated: 2026-07-06
+updated: 2026-07-16
 arxiv: "2601.07701"
 venue: arXiv
 summary: "Deep Whole-body Parkour（arXiv:2601.07701）：深度感知 + 全身运动跟踪统一框架，单策略在多障碍几何上完成 vault、dive-roll 等多接触跑酷；Isaac Lab + 自定义分组 Warp 射线投射。"

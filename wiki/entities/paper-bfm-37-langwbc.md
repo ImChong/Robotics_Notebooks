@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, berkeley]
 status: complete
-updated: 2026-07-08
+updated: 2026-07-16
 arxiv: "2504.21738"
 venue: "2025 · arXiv"
 summary: "语言直接进入端到端 WBC；难在语义进入身体后不打散稳定性。"
@@ -22,7 +22,7 @@ sources:
 
 **LangWBC** 收录于 [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) **第 37/41** 篇，归类为 **05 Hierarchical control**（2025 · arXiv）。
 
-> **深读页：** [vla](../methods/vla.md) — 方法机制与实验细节见链接页；本页保留 survey 坐标与交叉引用。
+> **方法背景：** [vla](../methods/vla.md) — 通用方法页（非本文专属深读）；本文机制与实验以原文为准，本页保留 survey 坐标与交叉引用。
 
 ## 一句话定义
 

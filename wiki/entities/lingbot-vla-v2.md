@@ -2,7 +2,7 @@
 type: entity
 tags: [vla, open-source, moe, flow-matching, multi-embodiment, humanoid, qwen, manipulation, loco-manipulation, depth-distillation, robbyant]
 status: complete
-updated: 2026-07-12
+updated: 2026-07-16
 arxiv: "2607.06403"
 code: https://github.com/robbyant/lingbot-vla-v2
 related:

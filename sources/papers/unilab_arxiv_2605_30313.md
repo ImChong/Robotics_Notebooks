@@ -48,3 +48,4 @@
 ## 对 wiki 的映射
 
 - 沉淀实体页：[UniLab](../../wiki/entities/unilab.md)（交叉补强见该页「关联页面」：Isaac Lab、mjlab、Motrix、MuJoCo、仿真器选型、MuJoCo vs Isaac Lab）
+- off-policy 算法专页：[FlashSAC](../../wiki/methods/flashsac.md)

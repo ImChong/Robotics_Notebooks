@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, amp, motion-prior, adversarial-imitation, locomotion, survey, rl]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-16
 related:
   - ./humanoid-rl-motion-control-body-system-stack.md
   - ../methods/amp-reward.md
@@ -150,15 +150,15 @@ flowchart TB
 | # | 论文 | 实体页 |
 |---|------|--------|
 | 01 | AMP | [paper-amp-survey-01-amp.md](../entities/paper-amp-survey-01-amp.md) |
-| 02 | Physics-Based Motion Imitation with Adversarial Differential Discriminators | [paper-amp-survey-02-physics_based_motion_imitation_with.md](../entities/paper-amp-survey-02-physics_based_motion_imitation_with.md) |
-| 03 | SMP | [paper-amp-survey-03-smp.md](../entities/paper-amp-survey-03-smp.md) |
-| 04 | Kimodo | [paper-amp-survey-04-kimodo.md](../entities/paper-amp-survey-04-kimodo.md) |
-| 05 | MotionBricks | [paper-amp-survey-05-motionbricks.md](../entities/paper-amp-survey-05-motionbricks.md) |
+| 02 | Physics-Based Motion Imitation with Adversarial Differential Discriminators | [add.md](../methods/add.md) |
+| 03 | SMP | [smp.md](../methods/smp.md) |
+| 04 | Kimodo | [kimodo.md](../entities/kimodo.md) |
+| 05 | MotionBricks | [motionbricks.md](../methods/motionbricks.md) |
 | 06 | Natural Humanoid Robot Locomotion with Generative Motion Prior | [paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md](../entities/paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md) |
 | 07 | Adversarial Locomotion and Motion Imitation for Humanoid Policy Learning | [paper-amp-survey-07-adversarial_locomotion_and_motion_im.md](../entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md) |
 | 08 | MoRE | [paper-amp-survey-08-more.md](../entities/paper-amp-survey-08-more.md) |
 | 09 | Hiking in the Wild | [paper-hiking-in-the-wild.md](../entities/paper-hiking-in-the-wild.md) |
-| 10 | Unified Walking, Running, and Recovery for Humanoids via State-Dependent Adversarial Motion Priors | [paper-amp-survey-10-unified_walking_running_and_recovery.md](../entities/paper-amp-survey-10-unified_walking_running_and_recovery.md) |
+| 10 | Unified Walking, Running, and Recovery for Humanoids via State-Dependent Adversarial Motion Priors | [paper-unified-walk-run-recovery-sdamp.md](../entities/paper-unified-walk-run-recovery-sdamp.md) |
 | 11 | Towards Adaptive Humanoid Control via Multi-Behavior Distillation and Reinforced Fine-Tuning | [paper-adaptive-humanoid-control.md](../entities/paper-adaptive-humanoid-control.md) |
 | 12 | HAML | [paper-amp-survey-12-haml.md](../entities/paper-amp-survey-12-haml.md) |
 | 13 | Humanoid Goalkeeper | [paper-amp-survey-13-humanoid_goalkeeper.md](../entities/paper-amp-survey-13-humanoid_goalkeeper.md) |

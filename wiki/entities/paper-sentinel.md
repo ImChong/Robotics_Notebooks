@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model, vla, beingbeyond, pku]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-16
 arxiv: "2511.19236"
 venue: "2025 · arXiv"
 summary: "SENTINEL：语言–全身动作端到端映射；在 RL 身体系统栈属视觉闭环/任务接口层，在 BFM 谱系属 hierarchical control。"

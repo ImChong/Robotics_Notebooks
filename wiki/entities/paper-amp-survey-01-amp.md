@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation, berkeley, sjtu, siggraph]
 status: complete
-updated: 2026-07-06
+updated: 2026-07-16
 venue: SIGGRAPH 2021
 summary: "AMP（SIGGRAPH 2021）用对抗判别器约束状态转移接近 MoCap 分布，而非逐帧跟踪参考 clip，奠定人形/角色 physics-based 风格先验范式。"
 related:
@@ -12,8 +12,8 @@ related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../methods/amp-reward.md
   - ../methods/add.md
-  - ./paper-amp-survey-02-physics_based_motion_imitation_with.md
-  - ./paper-amp-survey-03-smp.md
+  - ../methods/add.md
+  - ../methods/smp.md
 sources:
   - ../../sources/papers/amp.md
   - ../../sources/papers/humanoid_amp_survey_01_amp_adversarial_motion_priors_for_stylized_physi.md
@@ -44,7 +44,7 @@ sources:
 ## 为什么重要
 
 - **范式转折：** 相对 DeepMimic 类逐帧跟踪，AMP 允许策略在完成**新任务**（速度命令、转向、障碍）时仍保持「像人」——判别的是**动力学片段**而非绝对姿态序列。
-- **AMP 19 篇专题起点：** 后续 [ADD #02](./paper-amp-survey-02-physics_based_motion_imitation_with.md)（差分判别）、[SMP #03](./paper-amp-survey-03-smp.md)（冻结扩散先验）、人形走跑与多技能扩展均在此框架上讨论「先验如何**组件化**」。
+- **AMP 19 篇专题起点：** 后续 [ADD #02](../methods/add.md)（差分判别）、[SMP #03](../methods/smp.md)（冻结扩散先验）、人形走跑与多技能扩展均在此框架上讨论「先验如何**组件化**」。
 - **运动小脑地图（12/64）：** 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **B 动作模仿源流**。
 - **工程可复现：** MimicKit / ProtoMotions 等栈将 AMP 奖励模块标准化，直接服务 [Unitree G1](../entities/unitree-g1.md) 等人形部署。
 
@@ -95,8 +95,8 @@ flowchart TB
 ## 常见误区
 
 1. **AMP = 动作克隆：** 核心是**分布匹配**，不是 replay 某条参考；同一策略可完成参考库中未出现的任务（如 dodge、新速度）。
-2. **判别器可永久冻结：** 经典 AMP 中判别器与策略**共训**；与 [SMP #03](./paper-amp-survey-03-smp.md)「预训练冻结先验」是不同工程路线。
-3. **任何任务都该加满 AMP：** [Selective AMP](../methods/amp-reward.md) 与 [SD-AMP #10](./paper-amp-survey-10-unified_walking_running_and_recovery.md) 表明高动态 recovery 与稳态 walk 可能需要**不同先验或门控**，而非单一全局判别器硬套全身。
+2. **判别器可永久冻结：** 经典 AMP 中判别器与策略**共训**；与 [SMP #03](../methods/smp.md)「预训练冻结先验」是不同工程路线。
+3. **任何任务都该加满 AMP：** [Selective AMP](../methods/amp-reward.md) 与 [SD-AMP #10](./paper-unified-walk-run-recovery-sdamp.md) 表明高动态 recovery 与稳态 walk 可能需要**不同先验或门控**，而非单一全局判别器硬套全身。
 4. **只做人形才需要读 AMP：** 原文为 **physics-based character**；人形只是 AMP 专题把该范式推到机器人平台的策展主线。
 
 ## 实验与评测
@@ -108,7 +108,7 @@ flowchart TB
 ## 与其他页面的关系
 
 - 方法归纳（主阅读）：[amp-reward.md](../methods/amp-reward.md)
-- 作者线演进：[ADD #02](./paper-amp-survey-02-physics_based_motion_imitation_with.md)、[SMP #03](./paper-amp-survey-03-smp.md)
+- 作者线演进：[ADD #02](../methods/add.md)、[SMP #03](../methods/smp.md)
 - AMP 专题总览：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)（#01/19）
 - 身体系统栈：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 

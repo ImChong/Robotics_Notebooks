@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, motion-cerebellum-survey, humanoid, motion-control, caltech]
 status: complete
-updated: 2026-07-08
+updated: 2026-07-16
 arxiv: "2606.06493"
 summary: "接口：任务空间命令 + 多教师蒸馏。输入是任务空间命令、本体状态和不同教师策略输出；实现上把移动、恢复、全身跟踪等互补教师蒸馏到一个学生控制器，并用门控/条件机制融合专家能力；上层只需给速度、手部目标、身体高度等紧凑命令。"
 related:

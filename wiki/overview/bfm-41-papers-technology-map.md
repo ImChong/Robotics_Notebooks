@@ -136,9 +136,9 @@ flowchart TB
 | 04 | Fast Imitation via Behavior Foundation Models | [paper-bfm-04-fast-imitation-bfm](../entities/paper-bfm-04-fast-imitation-bfm.md) | [source](../../sources/papers/bfm_awesome_fast_imitation_bfm_neurips_2024.md) |
 | 05 | Learning One Representation to Optimize All Rewards | [paper-bfm-05-learning-one-representation](../entities/paper-bfm-05-learning-one-representation.md) | [source](../../sources/papers/bfm_awesome_learning_one_representation_neurips_2021.md) |
 | 06 | Learning Successor States and Goal-Dependent Values | [paper-bfm-06-successor-states](../entities/paper-bfm-06-successor-states.md) | [source](../../sources/papers/bfm_awesome_successor_states_arxiv_2101_07123.md) |
-| 07 | Sonic | [paper-sonic](../entities/paper-sonic.md) | [source](../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md) |
+| 07 | Sonic | [sonic-motion-tracking](../methods/sonic-motion-tracking.md) | [source](../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md) |
 | 08 | Track Any Motions under Any Disturbances | [paper-opentrack](../entities/paper-opentrack.md) | [source](../../sources/papers/bfm_awesome_opentrack_arxiv_2509_13833.md) |
-| 09 | Agility Meets Stability | [paper-ams](../entities/paper-ams.md) | [source](../../sources/papers/bfm_awesome_ams_arxiv_2511_17373.md) |
+| 09 | Agility Meets Stability | [ams](../methods/ams.md) | [source](../../sources/papers/bfm_awesome_ams_arxiv_2511_17373.md) |
 | 10 | TWIST2 | [paper-twist2](../entities/paper-twist2.md) | [source](../../sources/papers/bfm_awesome_twist2_arxiv_2505_02833.md) |
 | 11 | TWIST | [paper-twist](../entities/paper-twist.md) | [source](../../sources/papers/bfm_awesome_twist_corl_2025.md) |
 | 12 | CLONE | [paper-bfm-12-clone](../entities/paper-bfm-12-clone.md) | [source](../../sources/papers/bfm_awesome_clone_corl_2025.md) |
@@ -151,10 +151,10 @@ flowchart TB
 | 19 | CALM | [paper-bfm-19-calm](../entities/paper-bfm-19-calm.md) | [source](../../sources/papers/bfm_awesome_calm_siggraph_2024.md) |
 | 20 | MoConVQ | [paper-bfm-20-moconvq](../entities/paper-bfm-20-moconvq.md) | [source](../../sources/papers/bfm_awesome_moconvq_tog_2023.md) |
 | 21 | CASE | [paper-bfm-21-case](../entities/paper-bfm-21-case.md) | [source](../../sources/papers/bfm_awesome_case_arxiv_2309_11351.md) |
-| 22 | PHC | [paper-bfm-22-phc](../entities/paper-bfm-22-phc.md) | [source](../../sources/papers/bfm_awesome_phc_arxiv_2305_06456.md) |
+| 22 | PHC | [phc](../entities/phc.md) | [source](../../sources/papers/bfm_awesome_phc_arxiv_2305_06456.md) |
 | 23 | TeamPlay | [paper-bfm-23-teamplay](../entities/paper-bfm-23-teamplay.md) | [source](../../sources/papers/bfm_awesome_teamplay_arxiv_2105_12196.md) |
 | 24 | MTM | [paper-bfm-24-mtm](../entities/paper-bfm-24-mtm.md) | [source](../../sources/papers/bfm_awesome_mtm_arxiv_2305_02968.md) |
-| 25 | ASE | [paper-bfm-25-ase](../entities/paper-bfm-25-ase.md) | [source](../../sources/papers/bfm_awesome_ase_arxiv_2205_01906.md) |
+| 25 | ASE | [ase](../methods/ase.md) | [source](../../sources/papers/bfm_awesome_ase_arxiv_2205_01906.md) |
 | 26 | Active Pretraining with Successor Features | [paper-bfm-26-aps](../entities/paper-bfm-26-aps.md) | [source](../../sources/papers/bfm_awesome_aps_icml_2021.md) |
 | 27 | Reinforcement Learning with Prototypical Representations | [paper-bfm-27-proto-rl](../entities/paper-bfm-27-proto-rl.md) | [source](../../sources/papers/bfm_awesome_proto_rl_icml_2021.md) |
 | 28 | State Entropy Maximization with Random Encoders for Efficient Exploration | [paper-bfm-28-re3](../entities/paper-bfm-28-re3.md) | [source](../../sources/papers/bfm_awesome_re3_icml_2020.md) |
@@ -165,7 +165,7 @@ flowchart TB
 | 33 | Fast Adaptation With Behavioral Foundation Models | [paper-bfm-33-fast-adaptation-bfm](../entities/paper-bfm-33-fast-adaptation-bfm.md) | [source](../../sources/papers/bfm_awesome_fast_adaptation_bfm_corl_2025.md) |
 | 42 | Any2Any | [paper-any2any-cross-embodiment-wbt](../entities/paper-any2any-cross-embodiment-wbt.md) | [source](../../sources/papers/bfm_awesome_any2any_arxiv_2605_23733.md) |
 | 34 | SENTINEL | [paper-sentinel](../entities/paper-sentinel.md) | [source](../../sources/papers/bfm_awesome_sentinel_arxiv_2511_19236.md) |
-| 35 | BeyondMimic | [paper-beyondmimic](../entities/paper-beyondmimic.md) | [source](../../sources/papers/bfm_awesome_beyondmimic_arxiv_2508_08241.md) |
+| 35 | BeyondMimic | [beyondmimic](../methods/beyondmimic.md) | [source](../../sources/papers/bfm_awesome_beyondmimic_arxiv_2508_08241.md) |
 | 36 | LeVerb | [paper-bfm-36-leverb](../entities/paper-bfm-36-leverb.md) | [source](../../sources/papers/bfm_awesome_leverb_arxiv_2506_13751.md) |
 | 37 | LangWBC | [paper-bfm-37-langwbc](../entities/paper-bfm-37-langwbc.md) | [source](../../sources/papers/bfm_awesome_langwbc_arxiv_2504_21738.md) |
 | 38 | Tokenhsi | [paper-bfm-38-tokenhsi](../entities/paper-bfm-38-tokenhsi.md) | [source](../../sources/papers/bfm_awesome_tokenhsi_arxiv_2503_19901.md) |

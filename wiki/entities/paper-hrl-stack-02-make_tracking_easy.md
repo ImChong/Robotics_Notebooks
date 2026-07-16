@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, nju, huawei]
 status: complete
-updated: 2026-07-08
+updated: 2026-07-16
 venue: curated
 summary: "NMR，也就是 Neural Motion Retargeting，进一步推进了 GMR 的问题。它认为传统优化式 retargeting 是非凸的，容易出现局部最优，从而带来 self-penetration、foot sliding、物理不可行等伪影。"
 related:
@@ -24,7 +24,7 @@ sources:
 
 **Make Tracking Easy** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) **第 02/42** 篇，归类为 **01 数据 · 重定向 · 遥操作**。
 
-> **深读页：** [neural-motion-retargeting-nmr](../methods/neural-motion-retargeting-nmr.md) — 方法机制与实验细节见链接页；本页保留 survey 坐标与交叉引用。
+> **方法深读：** [neural-motion-retargeting-nmr](../methods/neural-motion-retargeting-nmr.md) — NMR 方法族技术页；论文实体以本页为 canonical，保留 survey 坐标与交叉引用。
 
 ## 一句话定义
 

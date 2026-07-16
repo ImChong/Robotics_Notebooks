@@ -4,6 +4,7 @@ tags: [repo, whole-body-control, humanoid, nvidia, sonic, motionbricks, isaac-la
 status: complete
 updated: 2026-07-13
 related:
+  - ./paper-hrl-stack-34-gr00t_n1.md
   - ../methods/motionbricks.md
   - ../methods/sonic-motion-tracking.md
   - ./kimodo.md
@@ -52,6 +53,8 @@ summary: "GR00T-WholeBodyControl 是 NVlabs 的人形全身控制单仓：托管
 | MotionBricks | 实时潜空间生成式运动控制（与 [MotionBricks 方法页](../methods/motionbricks.md) 及项目页一致） |
 
 ## 关联页面
+
+- [GR00T N1（论文实体）](./paper-hrl-stack-34-gr00t_n1.md) — N1 论文机制与 42 篇栈坐标；本页聚焦 N1.5+ 工程栈与 WBC 部署
 
 - [MotionBricks](../methods/motionbricks.md) — 生成式运动子项目与论文级方法归纳
 - [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md) — GEAR-SONIC 的方法与接口总览

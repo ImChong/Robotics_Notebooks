@@ -1,10 +1,14 @@
 ---
 type: entity
-tags: [paper, humanoid, amp, locomotion, fall-recovery, unitree-g1, isaac-lab, ppo, sim2real, lafan1]
+tags: [paper, humanoid, amp, locomotion, fall-recovery, unitree-g1, isaac-lab, ppo, sim2real, lafan1, hku]
 status: complete
 updated: 2026-07-16
 arxiv: "2605.18611"
 related:
+  - ../overview/humanoid-amp-motion-prior-survey.md
+  - ../overview/humanoid-rl-motion-control-body-system-stack.md
+  - ./paper-amp-survey-08-more.md
+  - ./paper-adaptive-humanoid-control.md
   - ../methods/amp-reward.md
   - ../tasks/locomotion.md
   - ../tasks/balance-recovery.md
@@ -16,6 +20,9 @@ related:
   - ../queries/humanoid-motion-tracking-method-selection.md
 sources:
   - ../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md
+  - ../../sources/papers/humanoid_amp_survey_10_unified_walking_running_and_recovery_for_humanoi.md
+  - ../../sources/papers/humanoid_amp_survey_19_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
 summary: "SD-AMP（arXiv:2605.18611）用投影重力门控在训练期切换 recovery 与速度条件 locomotion 两个 AMP 判别器，三条 LAFAN1 参考即让 Unitree G1 单策略统一走、跑与俯卧/仰卧起身，真机 50 Hz ONNX 无运行时模式切换。"
 ---
 
@@ -44,6 +51,18 @@ summary: "SD-AMP（arXiv:2605.18611）用投影重力门控在训练期切换 re
 - **消灭部署 FSM：** 与模块化「走控 + 跑控 + 起身控 + 手调切换」相比，硬件 rollout 展示 **recovery → walk → run** 连续序列，同一冻结 ONNX（50 Hz）。
 - **与工程线对照：** [AMP_mjlab](./amp-mjlab.md) 在 mjlab 上用统一判别器 + 分区参考；本文用**双判别器 + 固定重力阈值**，理论化「何时用哪种 prior」。
 - **与 Heracles 互补：** [Heracles](./paper-heracles-humanoid-diffusion.md) 用扩散中间件改参考；本文在 **单策略 AMP+RL** 内解决问题——选型见 [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)。
+
+## Survey 坐标（策展索引）
+
+### 在 AMP 运动先验专题 19 篇中
+
+| 字段 | 内容 |
+|------|------|
+| 编号 | 10/19 |
+| 分组 | 02 人形走跑 |
+| 索引来源 | [具身智能研究室 · AMP 运动先验专题长文](https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w) |
+
+策展导读称此文 **「最贴近人形 AMP 未来」** 之一。同专题对照：[MoRE #08](./paper-amp-survey-08-more.md) 按 **gait command** 路由多判别器 + 深度地形，SD-AMP 按 **倾角** 路由 recovery/loco、**无步态命令**；多技能姊妹篇见 [AHC #11](./paper-adaptive-humanoid-control.md)。
 
 ## 流程总览
 
@@ -116,12 +135,16 @@ $g_z$ 为投影重力 $z$ 分量；阈值落在经验分布低占用区，作者
 - Peng et al., *AMP: Adversarial Motion Priors* (2021) — 方法基线
 - Harvey et al., *LAFAN1* (2020) — 三条参考动作来源
 - [SPRINT（arXiv:2605.28549）](../../sources/papers/sprint_arxiv_2605_28549.md) — 五条 LAFAN1 参考 + 频谱先验，G1 冲刺 6 m/s
+- [humanoid_amp_survey_10_unified_walking_running_and_recovery_for_humanoi.md](../../sources/papers/humanoid_amp_survey_10_unified_walking_running_and_recovery_for_humanoi.md) — AMP 专题策展摘录
+- [humanoid_amp_survey_19_catalog.md](../../sources/papers/humanoid_amp_survey_19_catalog.md) — AMP 专题总表
+- [wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md) — 微信公众号编译导读
 
 ## 关联页面
 
 - [AMP & HumanX](../methods/amp-reward.md)、[Locomotion](../tasks/locomotion.md)、[Balance Recovery](../tasks/balance-recovery.md)
 - [Unitree G1](./unitree-g1.md)、[AMP_mjlab](./amp-mjlab.md)、[LAFAN1](./lafan1-dataset.md)
 - [Heracles](./paper-heracles-humanoid-diffusion.md)、[SPRINT](./paper-sprint-humanoid-athletic-sprints.md)、[人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
+- [AMP 运动先验专题](../overview/humanoid-amp-motion-prior-survey.md)（本文 #10/19）、[MoRE #08](./paper-amp-survey-08-more.md)、[AHC #11](./paper-adaptive-humanoid-control.md)
 
 ## 推荐继续阅读
 

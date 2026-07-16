@@ -6,10 +6,10 @@ updated: 2026-06-18
 summary: "运动小脑 64 篇长文 · B 动作模仿源流（5 篇）— 源流等站位。"
 related:
   - ./humanoid-motion-cerebellum-technology-map.md
-  - ../entities/paper-hrl-stack-11-deepmimic.md
+  - ../methods/deepmimic.md
   - ../entities/paper-amp-survey-01-amp.md
-  - ../entities/paper-amp-survey-03-smp.md
-  - ../entities/paper-bfm-22-phc.md
+  - ../methods/smp.md
+  - ../entities/phc.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
   - ../../sources/papers/motion_cerebellum_64_catalog.md
@@ -35,10 +35,10 @@ sources:
 
 | # | 工作 | Wiki 实体 | Source |
 |---|------|-----------|--------|
-| 11 | DeepMimic | [paper-hrl-stack-11-deepmimic.md](../entities/paper-hrl-stack-11-deepmimic.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
+| 11 | DeepMimic | [deepmimic.md](../methods/deepmimic.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 12 | AMP | [paper-amp-survey-01-amp.md](../entities/paper-amp-survey-01-amp.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
-| 13 | SMP | [paper-amp-survey-03-smp.md](../entities/paper-amp-survey-03-smp.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
-| 14 | PHC | [paper-bfm-22-phc.md](../entities/paper-bfm-22-phc.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
+| 13 | SMP | [smp.md](../methods/smp.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
+| 14 | PHC | [phc.md](../entities/phc.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 15 | MaskedMimic | [paper-bfm-17-maskedmimic.md](../entities/paper-bfm-17-maskedmimic.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 
 ## 关联页面

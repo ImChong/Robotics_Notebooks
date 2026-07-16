@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, humanoid, category-hub, survey]
 status: complete
-updated: 2026-06-26
+updated: 2026-07-16
 summary: "人形 Loco-Manip 161 篇 · 02 上半身中心控制与移动操作接口（24 篇）— 手臂、躯干、根部和末端执行器之间的协同控制。"
 related:
   - ./humanoid-loco-manip-161-papers-technology-map.md
@@ -50,11 +50,11 @@ sources:
 | 046 | Sumo | [paper-loco-manip-161-046-sumo](../methods/sumo.md) |
 | 047 | Thor | [paper-loco-manip-161-047-thor](../entities/paper-hrl-stack-42-thor.md) |
 | 048 | ULC | [paper-loco-manip-161-048-ulc](../entities/paper-loco-manip-161-048-ulc.md) |
-| 049 | VIRAL | [paper-loco-manip-161-049-viral](../entities/paper-hrl-stack-28-viral.md) |
+| 049 | VIRAL | [paper-loco-manip-161-049-viral](../entities/paper-viral-humanoid-visual-sim2real.md) |
 | 050 | VOFA | [paper-loco-manip-161-050-vofa](../entities/paper-loco-manip-161-050-vofa.md) |
 | 051 | WholeBodyVLA | [paper-loco-manip-161-051-wholebodyvla](../entities/paper-hrl-stack-30-wholebodyvla.md) |
 | 052 | 价值网络结构很重要 | [paper-loco-manip-161-052-n052](../entities/paper-loco-manip-161-052-n052.md) |
-| 053 | 打开仿真到现实世界的人形像素到动作策略传输之门 | [paper-loco-manip-161-053-n053](../entities/paper-hrl-stack-29-opening_the_sim_to_real_door_for_hum.md) |
+| 053 | 打开仿真到现实世界的人形像素到动作策略传输之门 | [paper-loco-manip-161-053-n053](../entities/paper-doorman-opening-sim2real-door.md) |
 | 054 | 用于人形策略学习的对抗性运动和运动模仿 | [paper-loco-manip-161-054-n054](../entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md) |
 | 055 | 用于跨人形运动的可扩展和通用全身控制 | [paper-loco-manip-161-055-n055](../entities/paper-loco-manip-161-055-n055.md) |
 

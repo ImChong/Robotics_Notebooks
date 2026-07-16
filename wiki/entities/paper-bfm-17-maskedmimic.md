@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, nvidia]
 status: complete
-updated: 2026-07-06
+updated: 2026-07-16
 venue: "2024 · TOG"
 code: https://github.com/NVlabs/ProtoMotions
 summary: "稀疏/遮蔽条件下补全全身轨迹；贴近语言只给部分约束的现实。"
