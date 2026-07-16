@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-16",
-  "node_count": 1653,
-  "edge_count": 12869,
+  "node_count": 1654,
+  "edge_count": 12881,
   "coverage": {
-    "covered": 1606,
-    "total": 1636,
+    "covered": 1607,
+    "total": 1637,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -231,7 +231,7 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 208
+      "size": 209
     },
     {
       "label": "全身控制",
@@ -282,7 +282,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 259,
+      "degree": 262,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -294,19 +294,19 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "degree": 227,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
       "degree": 225,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "degree": 225,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",
