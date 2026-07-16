@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-07-15
+updated: 2026-07-16
 related:
   - ../entities/paper-flying-knots.md
   - ../entities/paper-robustness-robotic-manipulation-survey.md
@@ -10,6 +10,7 @@ related:
   - ../entities/paper-physforge-physics-grounded-3d-assets.md
   - ../entities/paper-simfoundry-real2sim-scene-generation.md
   - ../entities/paper-chord-contact-wrench-dexterous-manipulation.md
+  - ../entities/paper-regrind-dexterous-manipulation.md
   - ../entities/paper-dexverse.md
   - ../entities/paper-physmani-dynamic-manipulation-world-model.md
   - ../overview/tro-manip-5-papers-technology-map.md
@@ -147,6 +148,8 @@ flowchart TD
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
 - [In-hand Reorientation (手内重定向)](../methods/in-hand-reorientation.md) — 极致的灵巧操作
 - [TopoRetarget（交互保留灵巧重定向）](../methods/toporetarget-interaction-preserving-dexterous-retargeting.md) — 人手演示 → 接触保真参考 → PPO 跟踪，Pen-Spin / 魔方重定向
+- [REGRIND（重定向引导灵巧操作 RL）](../methods/regrind-retargeting-guided-rl.md) — MoCap 单次演示 → interaction mesh 重定向 → 残差 RL；LEAP/WUJI 剪刀与螺丝刀真机
+- [REGRIND 论文](../entities/paper-regrind-dexterous-manipulation.md) — arXiv:2607.11874；Cornell + Amazon FAR；真机 sim2real 系统实验
 - [CHORD（接触力旋量引导灵巧操作）](../entities/paper-chord-contact-wrench-dexterous-manipulation.md) — 人类演示 → CWS 奖励 + RL；4,739 项双手 benchmark 与 DexMachina/ManipTrans/SPIDER 对照
 - [DexVerse](../entities/paper-dexverse.md) — 100 项多任务多具身灵巧 benchmark + 3,180 VR 示范；IL/VLA 基线均值成功率 34%（arXiv:2607.08751，UNC/HKU/Berkeley）
 - [Grasp Pose Estimation (抓取位姿估计)](../methods/grasp-pose-estimation.md) — RGBD/点云 → 6-DoF 抓取候选；GraspNet → Contact-GraspNet → GSNet/AnyGrasp 方法谱系

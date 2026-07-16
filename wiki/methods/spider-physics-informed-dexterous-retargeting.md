@@ -3,7 +3,7 @@ type: method
 tags: [robotics, motion-retargeting, dexterous-manipulation, humanoid, physics-simulation, imitation-learning, contact-rich-manipulation]
 status: complete
 date: 2026-05-17
-updated: 2026-06-29
+updated: 2026-07-16
 related:
   - ../concepts/motion-retargeting.md
   - ../concepts/motion-retargeting-pipeline.md
@@ -12,6 +12,7 @@ related:
   - ./reactor-physics-aware-motion-retargeting.md
   - ./dynaretarget-sbto-motion-retargeting.md
   - ./toporetarget-interaction-preserving-dexterous-retargeting.md
+  - ./regrind-retargeting-guided-rl.md
   - ../entities/paper-notebook-dynaretarget-dynamically-feasible-retargeting-us.md
   - ../entities/paper-chord-contact-wrench-dexterous-manipulation.md
   - ../tasks/manipulation.md
@@ -110,6 +111,7 @@ flowchart LR
 - [ReActor（物理感知 RL 运动重定向）](./reactor-physics-aware-motion-retargeting.md) — 双层 RL 式物理一致参考生成，对照采样优化路径。
 - [DynaRetarget / SBTO（增量采样式动力学重定向）](./dynaretarget-sbto-motion-retargeting.md) — SBMPC 对照：incremental full-horizon refinement。
 - [TopoRetarget（交互保留灵巧重定向）](./toporetarget-interaction-preserving-dexterous-retargeting.md) — 运动学 interaction mesh 对照：实时 Laplacian 灵巧重定向。
+- [REGRIND（重定向引导灵巧操作 RL）](./regrind-retargeting-guided-rl.md) — 同族 mesh 重定向 + 残差 RL；论文以 SPIDER 为对照，四任务 residual RL 初始化 SR **0%**。
 - [CHORD（接触力旋量引导灵巧操作）](../entities/paper-chord-contact-wrench-dexterous-manipulation.md) — 共享虚拟接触/VOC 叙事；CHORD 在 RL 奖励层用 wrench 空间替代位置匹配。
 - [Manipulation（操作）](../tasks/manipulation.md) — 灵巧接触丰富任务的需求背景。
 

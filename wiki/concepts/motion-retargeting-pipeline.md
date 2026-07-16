@@ -3,7 +3,7 @@ type: concept
 tags: [robotics, motion-retargeting, humanoid, pipeline, mocap, imitation-learning]
 status: complete
 created: 2026-05-16
-updated: 2026-07-15
+updated: 2026-07-16
 summary: "Motion Retargeting Pipeline：把 MoCap / 视频估计 / 生成式动作等异构人体序列，经过骨架对齐 → IK/约束求解 → 物理可行性筛选 → 配对监督，落到可作为模仿学习与跟踪策略输入的机器人参考轨迹的端到端流水线。"
 related:
   - ./motion-retargeting.md
@@ -145,6 +145,7 @@ flowchart TD
 - **仿真内 RL tracking rollout**：用跟踪策略在仿真里复现参考动作，记录的真实仿真状态作为「物理一致版本」，即 [NMR](../methods/neural-motion-retargeting-nmr.md) 中 CEPR、[ReActor](../methods/reactor-physics-aware-motion-retargeting.md) 中下层策略所做的事。
 - **并行仿真采样优化（SPIDER）**：在可并行的接触动力学仿真里，对**整条控制序列**做带退火噪声的采样更新，并可用**虚拟接触力**做课程式引导；输出可直接作为机器人 rollout 数据或经域随机化后用于 RL（见 [SPIDER](../methods/spider-physics-informed-dexterous-retargeting.md)）。
 - **增量时域 SBTO（DynaRetarget）**：在 MuJoCo 中对 **PD 目标 knot** 做 **CEM 采样优化**，**外环增量扩展优化时域**以克服 SBMPC 短视距；把 [OmniRetarget](../entities/paper-hrl-stack-03-omniretarget.md) 等 **kinematic 参考** refinement 为长时域动力学可行轨迹，再供 PPO tracking（见 [DynaRetarget / SBTO](../methods/dynaretarget-sbto-motion-retargeting.md)）。
+- **交互 mesh + 残差 RL（REGRIND）**：单次 MoCap 人手–物体演示 → **Laplacian interaction mesh 重定向**（OmniRetarget 同族）→ **物体关键点跟踪 + RSI + 训练时 SE(3) 增广** 的残差 RL，面向剪刀/螺丝刀等 contact-rich 工具操作真机部署（见 [REGRIND](../methods/regrind-retargeting-guided-rl.md)）。
 
 ### 8. 产物落地（Outputs）
 - **离线参考轨迹库**：`.pkl` / `.csv` / 自定义二进制，供 [BeyondMimic](../methods/beyondmimic.md) / [DeepMimic](../methods/deepmimic.md) 等模仿学习直接使用。
