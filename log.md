@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-16] ingest | sources/papers/neuralactuator_arxiv_2607_11734.md — 新增 NeuralActuator 论文实体；交叉更新 actuator-network / BAM
+
 ## [2026-07-16] ingest | sources/papers/lumo2_arxiv_2607_11270.md + sources/papers/philia_arxiv_2607_11377.md — Astribot Lumo-2 latent WAM 与 Philia 多机器人助手；项目页全量演示视频归档
 
 - wiki/entities/lumo-2.md
