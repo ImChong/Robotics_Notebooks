@@ -139,6 +139,7 @@ INFO_ONLY_KEYS: set[str] = {
     "physics_concept_crosslink",
     "contact_control_crosslink",
     "embodied_fm_crosslink",
+    "eval_benchmark_crosslink",
 }
 
 
@@ -299,6 +300,7 @@ def _empty_results() -> dict[str, Any]:
         "physics_concept_crosslink": [],
         "contact_control_crosslink": [],
         "embodied_fm_crosslink": [],
+        "eval_benchmark_crosslink": [],
         "_ingest_covered": 0,
         "_ingest_total": 0,
     }
@@ -1317,6 +1319,56 @@ def _check_embodied_fm_crosslink(pages: list[Path], results: dict[str, Any]) -> 
             results["embodied_fm_crosslink"].append(str(rel))
 
 
+EVAL_BENCHMARK_HUBS: tuple[str, ...] = (
+    "embodied-eval-benchmark-selection-loop",
+    "topic-embodied-eval-benchmark",
+)
+
+# 关键词以子串方式匹配 tag，覆盖 benchmark-suite / policy-evaluation /
+# eval-* 等派生标签，避免精确匹配漏掉常见变体
+EVAL_BENCHMARK_TAG_KEYWORDS: tuple[str, ...] = (
+    "benchmark",
+    "evaluation",
+)
+
+
+def _check_eval_benchmark_crosslink(pages: list[Path], results: dict[str, Any]) -> None:
+    """V29: 具身大模型评测基准页交叉链路巡检 V1（信息型，不阻塞 CI）。
+
+    对 frontmatter ``tags`` 含 ``benchmark`` / ``evaluation``（以子串方式匹配
+    派生标签）的 ``wiki/entities/*`` / ``wiki/comparisons/*`` / ``wiki/concepts/*``
+    页，检查正文是否回链到「具身大模型评测基准选型闭环」专题枢纽页
+    （``embodied-eval-benchmark-selection-loop`` / ``topic-embodied-eval-benchmark``）。
+    缺失回链作为 INFO 级提示写入 lint 报告，沉淀评测基准选型闭环知识链的交叉
+    链路基线，不计入 lint 失败总数。枢纽页自身豁免。
+    """
+    for page in pages:
+        rel = page.relative_to(REPO_ROOT)
+        parts = rel.parts
+        if (
+            len(parts) < 3
+            or parts[0] != "wiki"
+            or parts[1] not in ("entities", "comparisons", "concepts")
+        ):
+            continue
+        if page.stem in EVAL_BENCHMARK_HUBS:
+            continue
+
+        content = page.read_text(encoding="utf-8")
+        fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
+        fm_block = fm_match.group(1) if fm_match else ""
+        # tags 既支持列表式（- benchmark），也支持内联式 [benchmark, ...]
+        tags = _frontmatter_tags(fm_block)
+        inline = re.search(r"^tags:\s*\[([^\]]*)\]", fm_block, re.MULTILINE)
+        if inline:
+            tags |= {t.strip().lower() for t in inline.group(1).split(",")}
+        if not any(kw in tag for tag in tags for kw in EVAL_BENCHMARK_TAG_KEYWORDS):
+            continue
+
+        if not any(hub in content for hub in EVAL_BENCHMARK_HUBS):
+            results["eval_benchmark_crosslink"].append(str(rel))
+
+
 def _check_tool_institutions(pages: list[Path], results: dict[str, Any]) -> None:
     """entities/ 软件工具页须能派生至少一个所属机构（见 schema/institutions.json）。"""
     from bump_institution_tags import (
@@ -1409,6 +1461,7 @@ def lint() -> dict[str, Any]:
     _check_physics_concept_crosslink(pages, results)
     _check_contact_control_crosslink(pages, results)
     _check_embodied_fm_crosslink(pages, results)
+    _check_eval_benchmark_crosslink(pages, results)
     _check_tool_institutions(pages, results)
 
     return results
@@ -1523,6 +1576,11 @@ def format_report(results: dict[str, Any]) -> str:
         (
             "embodied_fm_crosslink",
             "VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」专题枢纽（信息型，不阻塞 CI）",
+            "💡",
+        ),
+        (
+            "eval_benchmark_crosslink",
+            "benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」专题枢纽（信息型，不阻塞 CI）",
             "💡",
         ),
     ]

@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-16] lint | V29 P0 评测基准页交叉链路巡检 V1 — scripts/lint_wiki.py 新增 `_check_eval_benchmark_crosslink`（INFO 级，不阻塞 CI）
+
+- scripts/lint_wiki.py（新增 `EVAL_BENCHMARK_HUBS` / `EVAL_BENCHMARK_TAG_KEYWORDS` / `_check_eval_benchmark_crosslink`；接入 `INFO_ONLY_KEYS`、`_empty_results`、runner 与报告段）
+- tests/test_lint_wiki_eval_benchmark_crosslink.py（9 条用例：entities/comparisons/concepts 三目录、列表式/内联式 tag、有/无回链、双枢纽、枢纽豁免、INFO 不计失败）
+- exports/lint-report.md（新增基线段：benchmark/evaluation 页缺回链专题枢纽 20 页）
+
 ## [2026-07-16] ingest | sources/papers/simple_arxiv_2606_08278.md — SIMPLE 人形 loco-manip 仿真 testbed 深读；升格 wiki/entities/paper-loco-manip-161-075-simple.md
 
 ## [2026-07-16] ingest | sources/repos/flashsac.md — 补全 FlashSAC 官方 GitHub 仓库链接与训练框架要点
