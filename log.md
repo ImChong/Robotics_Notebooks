@@ -1,5 +1,19 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-16] ingest | sources/papers/flashsac_arxiv_2604_04539.md + sources/sites/flashsac-project.md — FlashSAC 高维 off-policy RL；wiki/methods/flashsac.md 与 SAC/PPO 对比、locomotion 交叉更新
+
+- wiki/entities/paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m.md
+- wiki/methods/flashsac.md
+- wiki/methods/sac.md
+- wiki/methods/ppo.md
+- wiki/methods/policy-optimization.md
+- wiki/comparisons/ppo-vs-sac.md
+- wiki/tasks/locomotion.md
+- wiki/entities/unilab.md
+- sources/papers/flashsac_arxiv_2604_04539.md
+- sources/sites/flashsac-project.md
+- sources/papers/unilab_arxiv_2605_30313.md
+
 ## [2026-07-16] structural | wiki — 重复节点合并第二批（12 组 A 类）+ C 类互链补全 + 深读页模板措辞修正
 
 延续同日第一批：BeyondMimic / DeepMimic / GentleHumanoid / HAIC / ASE / ADD / SMP / MotionBricks / AMS（survey 槽位实体并入 methods 深读页）、ReActor / SPIDER（论文笔记 stub 并入 methods 页）、PHC（BFM 槽位并入代码库实体页）；旧 URL 全部登记 schema/page-aliases.json 重定向。核实并保留：Muon（论文页 vs 优化器方法页，合理分层）、PAiD ≠ RoboNaldo（并发不同工作）、OpenTrack / Retargeting Matters / Make Tracking Easy（methods 页为多工作技术页，不合并）。补全 project-instinct ↔ Embrace Collisions、gr00t-wholebodycontrol ↔ GR00T N1 互链；修正 10 处「深读页」模板误用（不同论文改「同主题深读」，通用方法页改「方法背景」）。

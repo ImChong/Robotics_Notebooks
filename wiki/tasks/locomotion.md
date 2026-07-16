@@ -165,6 +165,7 @@ flowchart TD
 - **RL from scratch**：直接在仿真里训，不需要人工步态设计。
   - 代表：PPO 训四足/双足行走（Legged Gym, IsaacGymEnvs）。
   - 新趋势：**BRRL / BPO (2026)** 在 IsaacLab 环境下报告了比 PPO 更稳健的 locomotion 训练表现。
+  - **FlashSAC（arXiv:2604.04539）**：高 DoF 人形盲行走 sim-to-real 墙钟可较 PPO 缩短约一个数量级（见 [FlashSAC 方法页](../methods/flashsac.md)）。
 - **IL + RL**：用 MoCap 数据初始化，再用 RL 提升。
   - 代表：DeepMimic, AMP
 - **Multi-Gait Learning (多步态学习)**：在一个统一的 RL 框架下训练多种步态。
