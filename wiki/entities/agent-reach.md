@@ -14,13 +14,13 @@ related:
   - ./superpowers-obra.md
   - ./hermes-agent.md
   - ./articraft.md
+  - ./graphify.md
   - ../references/llm-wiki-karpathy.md
   - ../concepts/ai-auto-research.md
 sources:
   - ../../sources/repos/panniantong_agent_reach.md
 summary: "Agent Reach（Panniantong/Agent-Reach）是面向编码代理的「安装 + 环境诊断 + SKILL 注册」脚手架：把网页/社媒/视频/GitHub/RSS/语义搜索等能力拆成可插拔渠道，聚合上游开源 CLI 与 MCP（如 twitter-cli、rdt-cli、yt-dlp、Jina Reader、gh、mcporter+Exa），凭据默认落本地；代理实际读写仍直接调用上游工具而非强制经本仓转发。"
-updated: 2026-06-20
-
+updated: 2026-07-16
 ---
 
 # Agent Reach（Panniantong）
@@ -82,6 +82,7 @@ flowchart LR
 - [Superpowers（obra）](superpowers-obra.md) — 编码代理 **交付流程** 技能库（与本页「外网工具链」互补）
 - [Hermes Agent](hermes-agent.md) — **完整代理运行时**（内置 web/MCP/终端与网关；与本页「读搜脚手架」互补）
 - [Articraft](articraft.md) — 另一类 **harness + SDK** 型代理外围（3D 资产域）
+- [graphify（Graphify Labs）](graphify.md) — **本地/仓库内** 多模态知识图（与本页「外网读搜」互补）
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 持久化知识结构与 **人类策展** 范式
 
 ## 参考来源

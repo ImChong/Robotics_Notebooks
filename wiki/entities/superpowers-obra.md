@@ -8,7 +8,7 @@ tags:
   - software-engineering
   - methodology
 status: complete
-updated: 2026-07-07
+updated: 2026-07-16
 related:
   - ./ponytail.md
   - ./nuwa-skill.md
@@ -17,6 +17,7 @@ related:
   - ./mattpocock-skills.md
   - ./hermes-agent.md
   - ./agent-reach.md
+  - ./graphify.md
   - ../references/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
   - ../../AGENTS.md
@@ -85,6 +86,7 @@ flowchart TD
 
 - [Skills For Real Engineers（mattpocock）](mattpocock-skills.md) — **轻量可组合** 的日常工程技能（grill、CONTEXT.md、TDD）；与本页「重流程交付」对照
 - [Agent Reach](agent-reach.md) — 面向编码代理的 **外网读搜工具链脚手架**（与本页「软件工程流程技能」互补）
+- [graphify（Graphify Labs）](graphify.md) — **本地/仓库内** 多模态知识图技能（与本页「交付流程」互补）
 - [Caveman](caveman.md) — **输出与记忆文件 token 压缩**技能（与本页「交付流程」互补）
 - [Ponytail](ponytail.md) — **必要性阶梯减 LOC**（与本页「流程对」与 Caveman「措辞对」形成三角）
 - [Hermes Agent](hermes-agent.md) — **常驻代理运行时**（网关、记忆/技能、cron；与本页「流程技能」互补）
