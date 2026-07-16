@@ -1,13 +1,56 @@
 {
   "generated_at": "2026-07-16",
-  "node_count": 1652,
-  "edge_count": 12858,
+  "node_count": 1653,
+  "edge_count": 12869,
   "coverage": {
-    "covered": 1605,
-    "total": 1635,
+    "covered": 1606,
+    "total": 1636,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/xiaomi-robotics-1.md",
+      "detail_id": "entity-xiaomi-robotics-1",
+      "label": "Xiaomi-Robotics-1",
+      "type": "entity",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/xiaomi-robotics-0.md",
+      "detail_id": "entity-xiaomi-robotics-0",
+      "label": "Xiaomi-Robotics-0",
+      "type": "entity",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/xiaomi-robotics-u0.md",
+      "detail_id": "entity-xiaomi-robotics-u0",
+      "label": "Xiaomi-Robotics-U0",
+      "type": "entity",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
     {
       "path": "wiki/methods/regrind-retargeting-guided-rl.md",
       "detail_id": "wiki-methods-regrind-retargeting-guided-rl",
@@ -77,17 +120,6 @@
       "recency": "2026-07-16",
       "source": "log.md",
       "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -184,55 +216,22 @@
       "action": "added",
       "has_repo": true,
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/graphify.md",
-      "detail_id": "entity-graphify",
-      "label": "graphify（Graphify Labs）",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/references/llm-wiki-karpathy.md",
-      "detail_id": "wiki-references-llm-wiki-karpathy",
-      "label": "LLM Wiki",
-      "type": "reference",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/superpowers-obra.md",
-      "detail_id": "entity-superpowers-obra",
-      "label": "Superpowers（obra）",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/methods/regrind-retargeting-guided-rl.md",
-    "detail_id": "wiki-methods-regrind-retargeting-guided-rl",
-    "label": "REGRIND（重定向引导灵巧操作 RL）",
-    "type": "method",
+    "path": "wiki/entities/xiaomi-robotics-1.md",
+    "detail_id": "entity-xiaomi-robotics-1",
+    "label": "Xiaomi-Robotics-1",
+    "type": "entity",
     "recency": "2026-07-16",
     "source": "log.md",
     "action": "added",
-    "has_repo": true,
-    "community_label": "动作重定向（Motion Retargeting） 社区"
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 207
+      "size": 208
     },
     {
       "label": "全身控制",
@@ -275,7 +274,7 @@
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
-      "degree": 277,
+      "degree": 278,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
@@ -283,7 +282,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 257,
+      "degree": 259,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -306,7 +305,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 224,
+      "degree": 225,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {

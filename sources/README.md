@@ -393,6 +393,7 @@
 | [x] [lift-humanoid-github-io.md](sites/lift-humanoid-github-io.md) | LIFT 项目页 lift-humanoid.github.io（三阶段框架、MuJoCo Playground/Brax 视频、真机微调与零样本户外片段） |
 | [x] [limmt-giraffeguan-github-io.md](sites/limmt-giraffeguan-github-io.md) | LIMMT 项目页 giraffeguan.github.io/limmt（GQS 管线、AMASS/PHUMA 实验、G1 真机视频；配套 arXiv:2606.06953） |
 | [x] [legsvla-github-io.md](sites/legsvla-github-io.md) | LEGS 项目页 legsvla.github.io（3DGS loco-manip VLA 数据管线、真机 demo；arXiv:2606.01458） |
+| [x] [xiaomi-robotics-1.md](sites/xiaomi-robotics-1.md) | Xiaomi-Robotics-1 品牌站 + PDF 技术报告（100k h UMI 预训练具身基座 VLA；代码/权重待发布） |
 | [x] [splitadapter-github-io.md](sites/splitadapter-github-io.md) | SplitAdapter 项目页 splitadapter.github.io（负载感知因子化适配、G1 真机 demo；arXiv:2606.03297） |
 | [x] [lingbot-map-technology-robbant.md](sites/lingbot-map-technology-robbant.md) | LingBot-Map 官方项目页 technology.robbyant.com/lingbot-map（与论文/仓库交叉索引） |
 | [x] [lingbot-vla-v2-technology-robbant.md](sites/lingbot-vla-v2-technology-robbant.md) | LingBot-VLA 2.0 官方项目页 technology.robbyant.com/lingbot-vla-v2（数据管线、MoE、真机 benchmark 可视化） |
