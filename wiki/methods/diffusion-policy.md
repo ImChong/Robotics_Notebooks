@@ -3,7 +3,7 @@ type: method
 tags: [il, diffusion, manipulation, generative-model]
 status: complete
 summary: "Diffusion Policy 用多步去噪生成动作序列，擅长处理多模态和长时序的机器人操作行为。"
-updated: 2026-07-10
+updated: 2026-07-16
 ---
 
 # Diffusion Policy
@@ -110,6 +110,8 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 标准 DDPM 推理需要 100 步，在 50Hz 控制频率下不可行。
 解决方案：DDIM（10 步以内）、Consistency Models、Flow Matching。
 
+**免训练缓存加速（Muninn，RSS 2026）**：[Muninn](../entities/paper-muninn-trajectory-diffusion-acceleration.md) 把逐步 denoiser 当作可预算复用：用廉价 **probe** + 采样器 **解析灵敏度** 经 conformal 标定，在可证轨迹偏离界下跳过冗余 forward；论文在 RLBench / Meta-World / DP3 上报告约 **40%** 推理延迟下降且成功率接近 Full，且可与蒸馏少步模型叠加。
+
 ### Sim2Real 挑战
 扩散策略对观测分布非常敏感，从仿真迁移到真实时视觉 gap 尤为明显。
 常见做法：真实数据微调、领域随机化、sim2real 感知适配。
@@ -125,6 +127,7 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 - **ingest 档案：** [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — Chi 2023 / π₀ / BESO / ACT / Consistency Policy
 - **ingest 档案：** [sources/papers/defi_arxiv_2604_16391.md](../../sources/papers/defi_arxiv_2604_16391.md) — DeFI：GFDM 前向 + GIDM 逆动力学解耦预训练后再用扩散适配器端到端耦合微调
 - **ingest 档案：** [sources/papers/bifrost_umi_arxiv_2605_03452.md](../../sources/papers/bifrost_umi_arxiv_2605_03452.md) — BifrostUMI：全身 47-D 稀疏关键点 + DINOv2 条件的扩散高层（arXiv:2605.03452）
+- **ingest 档案：** [sources/papers/muninn_arxiv_2605_09999.md](../../sources/papers/muninn_arxiv_2605_09999.md) — Muninn：免训练轨迹扩散缓存包装器，visuomotor DP 推理加速与可证偏差预算（RSS 2026）
 
 ## 关联页面
 
@@ -136,6 +139,7 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 - [Manipulation](../tasks/manipulation.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [BifrostUMI（论文实体）](../entities/paper-bifrost-umi.md) — 人形全身 visuomotor 的扩散高层实例
+- [Muninn（论文实体）](../entities/paper-muninn-trajectory-diffusion-acceleration.md) — 扩散策略/轨迹扩散的免训练推理加速与 conformal 偏差证书
 
 ## 推荐继续阅读
 

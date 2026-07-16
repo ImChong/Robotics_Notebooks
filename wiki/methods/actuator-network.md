@@ -2,13 +2,14 @@
 type: method
 tags: [simulation, sim2real, hardware, control, deep-learning]
 status: complete
-updated: 2026-07-15
+updated: 2026-07-16
 related:
   - ../concepts/implicit-explicit-actuator-modeling.md
   - ../concepts/sim2real.md
   - ../entities/anymal.md
   - ../entities/sage-sim2real-actuator-gap-estimator.md
   - ../entities/paper-bam-extended-friction-servo-actuators.md
+  - ../entities/paper-neuralactuator-neural-actuation-modeling.md
   - ../entities/bam-better-actuator-models.md
   - ../concepts/system-identification.md
 sources:
@@ -90,9 +91,11 @@ flowchart LR
 
 执行器网络属于 **explicit 执行器** 的数据驱动形态：在用户代码中由网络算 $\tau$，再写入物理仿真，而非由引擎隐式积分 PD。Isaac Lab 的 `LearnedMlpActuator`、mjlab 的 `LearnedMlpActuator` 与之同类。与 **implicit**（引擎内置 PD）相比，explicit 更贴近真机非线性，但数值上更挑步长与 `armature`；概念总览见 [Implicit / Explicit 执行器建模](../concepts/implicit-explicit-actuator-modeling.md)。
 
-## 与解析摩擦模型（BAM）的关系
+## 与解析摩擦模型（BAM）及 NeuralActuator 的关系
 
 执行器网络用 **黑箱 MLP** 拟合 $(q,\dot q,\text{历史指令})\rightarrow\tau$；[BAM 扩展摩擦](../entities/paper-bam-extended-friction-servo-actuators.md) 则用 **M1–M6 物理参数**（Stribeck、负载相关等）在 MuJoCo 中 **在线更新** 摩擦上界，数据需求为摆锤台架轨迹而非大规模悬空激励。[PACE](../entities/paper-pace-sim2real-legged-robots.md) 在论文中将 ActuatorNet 作为悬空轨迹对齐的 **黑盒对照**，自身用 **$4n+1$ 可解释关节参数 + CMA-ES** 达到更接近真机的相位图。三者可串联：先 BAM/PACE 缩小可解释误差，再对残差训练小型网络。
+
+[NeuralActuator](../entities/paper-neuralactuator-neural-actuation-modeling.md)（arXiv:2607.11734）进一步把 **Transformer + 可微仿真 pose 监督** 用于 **低成本舵机操作臂**：无需直接 $\tau$ 标签即可学 **simulator-equivalent surrogate**，并 **并联** 外力/接触/工况头——与经典 ActuatorNet「只拟合力矩映射」不同，也更贴近 manipulation 上的 **sensorless 力反馈 + BC 下游**。
 
 ## 关联页面
 - [Implicit / Explicit 执行器建模](../concepts/implicit-explicit-actuator-modeling.md)
@@ -100,6 +103,7 @@ flowchart LR
 - [ANYmal 实体页](../entities/anymal.md) — 广泛使用执行器网络的代表
 - [System Identification (系统辨识)](../concepts/system-identification.md)
 - [BAM 论文实体](../entities/paper-bam-extended-friction-servo-actuators.md)、[BAM 仓库](../entities/bam-better-actuator-models.md)
+- [NeuralActuator（可微仿真 + 力感知）](../entities/paper-neuralactuator-neural-actuation-modeling.md) — 低成本操作臂多任务执行器建模
 - [PACE（足式系统化 Sim2Real）](../entities/paper-pace-sim2real-legged-robots.md) — 论文对比基线；可解释参数辨识路线
 
 ## 参考来源
