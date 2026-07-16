@@ -1,13 +1,66 @@
 {
   "generated_at": "2026-07-16",
-  "node_count": 1648,
-  "edge_count": 12809,
+  "node_count": 1649,
+  "edge_count": 12823,
   "coverage": {
-    "covered": 1601,
-    "total": 1631,
+    "covered": 1602,
+    "total": 1632,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/dexmal-dw05.md",
+      "detail_id": "entity-dexmal-dw05",
+      "label": "Dexmal DW05（OpenDW）",
+      "type": "entity",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/concepts/world-action-models.md",
+      "detail_id": "wiki-concepts-world-action-models",
+      "label": "World Action Models（WAM，世界–动作模型）",
+      "type": "concept",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/entities/dexmal-dm05.md",
+      "detail_id": "entity-dexmal-dm05",
+      "label": "Dexmal DM0.5",
+      "type": "entity",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/robotwin.md",
+      "detail_id": "entity-robotwin",
+      "label": "RoboTwin 2.0",
+      "type": "entity",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-co-calib-multi-fisheye-calibration.md",
       "detail_id": "entity-paper-co-calib-multi-fisheye-calibration",
@@ -16,7 +69,8 @@
       "recency": "2026-07-16",
       "source": "log.md",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
       "path": "wiki/formalizations/3d-coordinate-transforms-vision-robotics.md",
@@ -37,7 +91,7 @@
       "source": "log.md",
       "action": "added",
       "has_repo": true,
-      "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
       "path": "wiki/entities/graphify.md",
@@ -131,7 +185,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "生成式世界模型（Generative World Models） 社区"
     },
     {
       "path": "wiki/entities/paper-gigaworld-1-policy-evaluation.md",
@@ -141,7 +195,7 @@
       "recency": "2026-07-15",
       "source": "log.md",
       "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "生成式世界模型（Generative World Models） 社区"
     },
     {
       "path": "wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md",
@@ -160,97 +214,45 @@
       "recency": "2026-07-15",
       "source": "log.md",
       "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "recency": "2026-07-15",
-      "source": "log.md",
-      "action": "maintained",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/tasks/vision-language-navigation.md",
-      "detail_id": "wiki-tasks-vision-language-navigation",
-      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
-      "type": "task",
-      "recency": "2026-07-15",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-eventvla-visual-evidence-memory.md",
-      "detail_id": "entity-paper-eventvla-visual-evidence-memory",
-      "label": "EventVLA（Event-Driven Visual Evidence Memory for Long-Horizon VLA）",
-      "type": "entity",
-      "recency": "2026-07-15",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-07-15",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/robotwin.md",
-      "detail_id": "entity-robotwin",
-      "label": "RoboTwin 2.0",
-      "type": "entity",
-      "recency": "2026-07-15",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-co-calib-multi-fisheye-calibration.md",
-    "detail_id": "entity-paper-co-calib-multi-fisheye-calibration",
-    "label": "CO-Calib（多鱼眼标定 · 观测质量）",
+    "path": "wiki/entities/dexmal-dw05.md",
+    "detail_id": "entity-dexmal-dw05",
+    "label": "Dexmal DW05（OpenDW）",
     "type": "entity",
     "recency": "2026-07-16",
     "source": "log.md",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "生成式世界模型（Generative World Models） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 281
-    },
-    {
-      "label": "人形论文深读笔记",
-      "size": 181
-    },
-    {
-      "label": "移动操作",
-      "size": 176
+      "size": 206
     },
     {
       "label": "全身控制",
-      "size": 160
+      "size": 186
+    },
+    {
+      "label": "人形论文深读笔记",
+      "size": 179
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 119
+      "size": 130
+    },
+    {
+      "label": "移动操作",
+      "size": 103
     },
     {
       "label": "仿真到现实",
-      "size": 95
+      "size": 98
     }
   ],
   "top_hubs": [
@@ -281,7 +283,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 252,
+      "degree": 253,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -289,7 +291,8 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 230
+      "degree": 230,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
@@ -304,13 +307,13 @@
       "label": "Paper Notebooks · Loco-Manipulation and WBC",
       "type": "overview",
       "degree": 222,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
     },
     {
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 219,
+      "degree": 221,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -325,8 +328,7 @@
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
       "degree": 168,
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "has_repo": true
     }
   ],
   "top_paper_hubs": [
@@ -349,8 +351,7 @@
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
       "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
       "type": "entity",
-      "degree": 39,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "degree": 39
     },
     {
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
@@ -363,8 +364,7 @@
       "label": "TWIST2",
       "type": "entity",
       "degree": 35,
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",

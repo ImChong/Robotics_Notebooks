@@ -39,6 +39,7 @@ updated: 2026-07-15
 - **硬件对应**：其仿真场景常模拟 [ALOHA](./aloha.md) 或类似的双臂遥操作设备。
 - **资产生成研究**：近期工作如 [PhysForge（论文实体）](./paper-physforge-physics-grounded-3d-assets.md) 将 **物理接地、可关节 3D 资产** 作为具身与游戏管线的数据引擎，并在论文演示中引用 **RoboTwin** 作为操作仿真导入场景之一（细节以原论文为准）。
 - **记忆诊断基准**：**RoboTwin-MeM**（[EventVLA](./paper-eventvla-visual-evidence-memory.md)，arXiv:2606.20092）在 RoboTwin 2.0 上构建 8 项 **非马尔可夫** 双臂任务，用参数 $n$（须动态保留的中间关键帧数，1–5）分层评测 VLA 的 **瞬态证据记忆** 能力，区别于 RMBench 等可被静态初始帧/短期历史「取巧」解决的套件。
+- **世界模型下游栈**：[Dexmal DW05](./dexmal-dw05.md) 以 **RobotWin-style JSONL** 为一等数据接口，发布 **DW05-Robotwin** SFT 权重（含 `norm_stats.json`）与动作条件在线 demo；通用 **DW05-Base** 不含 RobotWin policy 归一化统计。
 
 ## 数据速查
 

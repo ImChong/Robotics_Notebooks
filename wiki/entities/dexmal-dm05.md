@@ -13,6 +13,7 @@ related:
   - ./qwen-vla.md
   - ./qwen-robot-manip.md
   - ./lingbot-vla-v2.md
+  - ./dexmal-dw05.md
 sources:
   - ../../sources/blogs/dexmal_dm05.md
 summary: "Dexmal DM0.5 是面向开放世界的 VLA 基础模型：Gemma3-4B VLM + 680M Flow-Matching Action Expert，以约 60s 历史上下文、11 类具身 CoT 与动态轨迹对齐强化长程记忆与指令遵循，在 zero-shot、Table30 v2、LIBERO、RoboTwin2.0 与 R2R/RxR 等基准报告领先 DM0 与 π0.5-Droid。"
@@ -111,6 +112,7 @@ flowchart TB
 - **相对 DM0：** 同一机构的代际升级，重点在 **开放 zero-shot、历史记忆、CoT 监督与轨迹对齐**，而非单纯扩模扩数据。
 - **相对 [π₀.₇](../methods/pi07-policy.md) / OpenPI 系：** 同属 **VLM + flow/chunk 动作** 族；DM0.5 更突出 **长历史 token 抽象** 与 **具身 CoT 多任务监督**，博客在 Franka 上与 **π0.5-Droid** 直接对比 zero-shot。
 - **相对 [Qwen-VLA](./qwen-vla.md) / [Qwen-RobotManip](./qwen-robot-manip.md)：** 均为 **~4B 级 VLM + flow 动作专家** 与 **多源混合预训练**；Qwen 系强调 **开源权重与 embodiment prompt**，Dexmal 博文当前以 **能力与基准叙事** 为主，权重与训练细节需跟踪后续发布。
+- **相对 [Dexmal DW05](./dexmal-dw05.md)：** 同机构 **具身基础模型** 的另一主线——DM0.5 偏 **开放世界 VLA（语言→动作）**；DW05 偏 **Wan + MoT 世界–动作联合** 与 **动作条件未来视频**，并开源 **RoboTwin 对齐** 训练/推理栈。
 - **相对 [LingBot-VLA 2.0](./lingbot-vla-v2.md)：** 均报告 **LIBERO / RoboTwin / 真机 generalist** 高位分数；LingBot 公开 **6B 权重与 6 万小时** 规模叙事，DM0.5 侧重 **开放世界 zero-shot 与 60s 记忆** 案例。
 
 ## 常见误区或局限
@@ -132,6 +134,7 @@ flowchart TB
 - [Vision-Language Navigation](../tasks/vision-language-navigation.md) — DM0.5-Nav 与 R2R/RxR
 - [Qwen-VLA](./qwen-vla.md) — 操作+导航通才对照
 - [π₀.₇ Policy](../methods/pi07-policy.md) — zero-shot 对比基准 π0.5-Droid 所属路线
+- [Dexmal DW05](./dexmal-dw05.md) — 同机构 Wan+MoT 世界–动作联合开源线
 
 ## 推荐继续阅读
 
