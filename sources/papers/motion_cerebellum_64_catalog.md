@@ -27,10 +27,10 @@
 
 | # | 工作 | 角色 | Wiki 实体 |
 |---|------|------|-----------|
-| 11 | DeepMimic | 源流：参考动作 + 强化学习 | [DeepMimic](../../wiki/entities/paper-hrl-stack-11-deepmimic.md) |
+| 11 | DeepMimic | 源流：参考动作 + 强化学习 | [DeepMimic](../../wiki/methods/deepmimic.md) |
 | 12 | AMP | 源流：用对抗运动先验让动作像人 | [AMP](../../wiki/entities/paper-amp-survey-01-amp.md) |
-| 13 | SMP | 源流：用 score-matching 学可复用运动先验 | [SMP](../../wiki/entities/paper-amp-survey-03-smp.md) |
-| 14 | PHC | 跟踪：大规模动作模仿与失败恢复 | [PHC](../../wiki/entities/paper-bfm-22-phc.md) |
+| 13 | SMP | 源流：用 score-matching 学可复用运动先验 | [SMP](../../wiki/methods/smp.md) |
+| 14 | PHC | 跟踪：大规模动作模仿与失败恢复 | [PHC](../../wiki/entities/phc.md) |
 | 15 | MaskedMimic | 跟踪：用遮蔽补全把稀疏目标变成全身动作 | [MaskedMimic](../../wiki/entities/paper-bfm-17-maskedmimic.md) |
 
 ## C. 数据入口（9）
@@ -52,7 +52,7 @@
 | # | 工作 | 角色 | Wiki 实体 |
 |---|------|------|-----------|
 | 25 | OmniTrack | 跟踪策略：物理一致参考让 tracking 更稳 | [OmniTrack](../../wiki/entities/paper-hrl-stack-12-omnitrack.md) |
-| 26 | BeyondMimic | 跟踪策略：从动作跟踪到多功能人形控制 | [BeyondMimic](../../wiki/entities/paper-beyondmimic.md) |
+| 26 | BeyondMimic | 跟踪策略：从动作跟踪到多功能人形控制 | [BeyondMimic](../../wiki/methods/beyondmimic.md) |
 | 27 | SONIC | 跟踪策略：把 motion tracking 规模化成控制基座 | [SONIC](../../wiki/methods/sonic-motion-tracking.md) |
 | 28 | HoloMotion-1 | 跟踪策略：视频动作也进入运动基座训练 | [HoloMotion-1](../../wiki/entities/holomotion.md) |
 | 29 | HumanoidGPT | 跟踪策略：海量动作帧和 Transformer 化 | [HumanoidGPT](../../wiki/entities/paper-humanoid-gpt.md) |
@@ -113,6 +113,6 @@
 |---|------|------|-----------|
 | 60 | SoftMimic | 接触：柔顺全身控制也在成为 tracking 条件 | [SoftMimic](../../wiki/entities/paper-notebook-softmimic-learning-compliant-whole-body-control.md) |
 | 61 | CHIP | 接触：通过 hindsight perturbation 学自适应柔顺 | [CHIP](../../wiki/entities/paper-hrl-stack-36-chip.md) |
-| 62 | GentleHumanoid | 接触：人和物体接触里的上半身分寸感 | [GentleHumanoid](../../wiki/entities/paper-hrl-stack-37-gentlehumanoid.md) |
+| 62 | GentleHumanoid | 接触：人和物体接触里的上半身分寸感 | [GentleHumanoid](../../wiki/methods/gentlehumanoid-motion-tracking.md) |
 | 63 | Thor | 接触：强接触环境里的全身反应 | [Thor](../../wiki/entities/paper-hrl-stack-42-thor.md) |
 | 64 | WT-UMI | 接触数据：触觉和力监督进入数据链路 | [WT-UMI](../../wiki/entities/paper-loco-manip-07-wt-umi.md) |

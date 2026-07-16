@@ -17,7 +17,7 @@
 | 001 | Agility Meets Stability | [paper-loco-manip-161-001-agility-meets-stability](../../wiki/methods/ams.md) |
 | 002 | Any2Any | [paper-loco-manip-161-002-any2any](../../wiki/entities/paper-any2any-cross-embodiment-wbt.md) |
 | 003 | BFM-Zero | [paper-loco-manip-161-003-bfm-zero](../../wiki/entities/paper-bfm-zero.md) |
-| 004 | BeyondMimic | [paper-loco-manip-161-004-beyondmimic](../../wiki/entities/paper-beyondmimic.md) |
+| 004 | BeyondMimic | [paper-loco-manip-161-004-beyondmimic](../../wiki/methods/beyondmimic.md) |
 | 005 | CHIP | [paper-loco-manip-161-005-chip](../../wiki/entities/paper-hrl-stack-36-chip.md) |
 | 006 | CLONE | [paper-loco-manip-161-006-clone](../../wiki/entities/paper-bfm-12-clone.md) |
 | 007 | ExBody2 | [paper-loco-manip-161-007-exbody2](../../wiki/entities/paper-loco-manip-161-007-exbody2.md) |
@@ -168,7 +168,7 @@
 
 | # | 工作 | Wiki 实体 |
 |---|------|-----------|
-| 120 | GentleHumanoid | [paper-loco-manip-161-120-gentlehumanoid](../../wiki/entities/paper-hrl-stack-37-gentlehumanoid.md) |
+| 120 | GentleHumanoid | [paper-loco-manip-161-120-gentlehumanoid](../../wiki/methods/gentlehumanoid-motion-tracking.md) |
 | 121 | Humanoid-VLA | [paper-loco-manip-161-121-humanoid-vla](../../wiki/entities/paper-loco-manip-161-121-humanoid-vla.md) |
 | 122 | LeVERB | [paper-loco-manip-161-122-leverb](../../wiki/entities/paper-bfm-36-leverb.md) |
 | 123 | 从嘈杂的感官输入中学习人形足球机器人的敏捷前锋技能 | [paper-loco-manip-161-123-n123](../../wiki/entities/paper-loco-manip-161-123-n123.md) |

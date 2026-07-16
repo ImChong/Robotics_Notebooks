@@ -24,7 +24,7 @@ sources:
 
 **Retargeting Matters** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) **第 01/42** 篇，归类为 **01 数据 · 重定向 · 遥操作**。
 
-> **深读页：** [motion-retargeting-gmr](../methods/motion-retargeting-gmr.md) — 方法机制与实验细节见链接页；本页保留 survey 坐标与交叉引用。
+> **方法深读：** [motion-retargeting-gmr](../methods/motion-retargeting-gmr.md) — GMR 工具页（覆盖本文与后续工作）；论文实体以本页为 canonical，保留 survey 坐标与交叉引用。
 
 ## 一句话定义
 

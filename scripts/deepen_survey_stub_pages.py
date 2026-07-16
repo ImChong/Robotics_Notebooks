@@ -67,16 +67,12 @@ HRL_LAYER_MISCON = {
 }
 
 DEEP_READ_LINKS: dict[str, str] = {
-    "paper-beyondmimic.md": "../methods/beyondmimic.md",
     "paper-opentrack.md": "../methods/any2track.md",
-    "paper-ams.md": "../methods/ams.md",
     "paper-bfm-zero.md": "../entities/paper-behavior-foundation-model-humanoid.md",
     "paper-twist2.md": "../entities/paper-twist2.md",
-    "paper-hrl-stack-11-deepmimic.md": "../methods/deepmimic.md",
     "paper-hrl-stack-01-retargeting_matters.md": "../methods/motion-retargeting-gmr.md",
     "paper-hrl-stack-02-make_tracking_easy.md": "../methods/neural-motion-retargeting-nmr.md",
     "paper-hrl-stack-34-gr00t_n1.md": "../entities/gr00t-wholebodycontrol.md",
-    "paper-hrl-stack-37-gentlehumanoid.md": "../methods/gentlehumanoid-motion-tracking.md",
     "paper-hrl-stack-21-adaptive-humanoid-control.md": "../entities/paper-adaptive-humanoid-control.md",
     "paper-adaptive-humanoid-control.md": "../entities/paper-adaptive-humanoid-control.md",
     "paper-hrl-stack-23-deep_whole_body_parkour.md": "../entities/paper-deep-whole-body-parkour.md",

@@ -1,14 +1,20 @@
 ---
 type: method
-tags: [rl, world-model, teacher-student, imitation-learning, sim2real]
+tags: [rl, world-model, teacher-student, imitation-learning, sim2real, paper, humanoid, motion-control, body-system-stack, hkust-gz, xiaomi-robotics, eth, hkust, tsinghua]
 status: complete
-updated: 2026-04-27
+updated: 2026-07-16
+venue: curated
 related:
+  - ../overview/humanoid-rl-motion-control-body-system-stack.md
+  - ../overview/humanoid-amp-motion-prior-survey.md
   - ./model-based-rl.md
   - ./amp-reward.md
   - ../concepts/privileged-training.md
 sources:
   - ../../sources/papers/motion_control_projects.md
+  - ../../sources/papers/humanoid_rl_stack_38_haic_humanoid_agile_object_interaction_control_v.md
+  - ../../sources/papers/humanoid_rl_stack_42_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
 summary: "HAIC (Hierarchical AI Controller) 提出了一种结合世界模型的两阶段教师-学生训练范式，用于解决物体交互任务中的感知-动作协调难题。"
 ---
 
@@ -61,10 +67,22 @@ HAIC 的核心在于如何平滑地从“全知全能”的教师过渡到“仅
 | Privileged Info | Privileged Information | 训练时可访问、部署时不可见的额外状态 |
 | RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
 
+## Survey 坐标（策展索引）
+
+### 在 具身智能研究室 · 42 篇 humanoid RL 运动控制长文 中
+
+| 字段 | 内容 |
+|------|------|
+| 编号 | 38/42 |
+| 系统栈层 | 05 接触 · 柔顺 · 安全恢复 |
+| 出处 | curated |
+| 索引来源 | [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) |
+
 ## 参考来源
 
 - [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档《开源运动控制项目》总结。
 - [HAIC 技术报告相关 PDF](../../sources/papers/motion_control_projects.md)
+- 原始抓取：[wechat_humanoid_rl_42_survey_2026-05-26.md](../../sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md)
 
 ## 关联页面
 

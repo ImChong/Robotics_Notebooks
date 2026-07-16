@@ -24,7 +24,7 @@ sources:
 
 **Make Tracking Easy** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) **第 02/42** 篇，归类为 **01 数据 · 重定向 · 遥操作**。
 
-> **深读页：** [neural-motion-retargeting-nmr](../methods/neural-motion-retargeting-nmr.md) — 方法机制与实验细节见链接页；本页保留 survey 坐标与交叉引用。
+> **方法深读：** [neural-motion-retargeting-nmr](../methods/neural-motion-retargeting-nmr.md) — NMR 方法族技术页；论文实体以本页为 canonical，保留 survey 坐标与交叉引用。
 
 ## 一句话定义
 

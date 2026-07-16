@@ -23,7 +23,7 @@ sources:
 
 **LeVerb** 收录于 [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) **第 36/41** 篇，归类为 **05 Hierarchical control**（2025 · arXiv）。
 
-> **深读页：** [vla](../methods/vla.md) — 方法机制与实验细节见链接页；本页保留 survey 坐标与交叉引用。
+> **方法背景：** [vla](../methods/vla.md) — 通用方法页（非本文专属深读）；本文机制与实验以原文为准，本页保留 survey 坐标与交叉引用。
 
 ## 一句话定义
 

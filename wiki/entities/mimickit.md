@@ -3,7 +3,7 @@
 type: entity
 tags: [framework, rl, motion-imitation, isaac-gym, isaac-lab, newton, xbpeng, nvidia, berkeley, stanford]
 status: complete
-updated: 2026-07-13
+updated: 2026-07-16
 related:
   - ../methods/deepmimic.md
   - ../methods/amp-reward.md

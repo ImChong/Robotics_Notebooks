@@ -42,7 +42,7 @@ summary: "BFM-2 是智元公开的运动小脑运控基座：二阶段 Motion-Be
 | 名称 | 含义 |
 |------|------|
 | **BFM-2（本页）** | 智元 **产品/基座** 代号 |
-| [paper-bfm-*](./paper-bfm-22-phc.md) 等 | [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) **学术论文索引实体** |
+| [paper-bfm-*](./phc.md) 等 | [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) **学术论文索引实体** |
 | [行为基础模型](../concepts/behavior-foundation-model.md) | 跨机构 **概念** 页 |
 
 ## 信息边界

@@ -15,7 +15,7 @@ related:
   - ./bfm-category-05-hierarchical-control.md
   - ../methods/sonic-motion-tracking.md
   - ../entities/paper-opentrack.md
-  - ../entities/paper-ams.md
+  - ../methods/ams.md
   - ../entities/paper-twist2.md
   - ../entities/paper-twist.md
   - ../entities/paper-bfm-12-clone.md
@@ -51,7 +51,7 @@ sources:
 |---|------|-----------|--------|
 | 07 | Sonic | [sonic-motion-tracking.md](../methods/sonic-motion-tracking.md) | [source](../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md) |
 | 08 | Track Any Motions under Any Disturbances | [paper-opentrack.md](../entities/paper-opentrack.md) | [source](../../sources/papers/bfm_awesome_opentrack_arxiv_2509_13833.md) |
-| 09 | Agility Meets Stability | [paper-ams.md](../entities/paper-ams.md) | [source](../../sources/papers/bfm_awesome_ams_arxiv_2511_17373.md) |
+| 09 | Agility Meets Stability | [ams.md](../methods/ams.md) | [source](../../sources/papers/bfm_awesome_ams_arxiv_2511_17373.md) |
 | 10 | TWIST2 | [paper-twist2.md](../entities/paper-twist2.md) | [source](../../sources/papers/bfm_awesome_twist2_arxiv_2505_02833.md) |
 | 11 | TWIST | [paper-twist.md](../entities/paper-twist.md) | [source](../../sources/papers/bfm_awesome_twist_corl_2025.md) |
 | 12 | CLONE | [paper-bfm-12-clone.md](../entities/paper-bfm-12-clone.md) | [source](../../sources/papers/bfm_awesome_clone_corl_2025.md) |
@@ -64,10 +64,10 @@ sources:
 | 19 | CALM | [paper-bfm-19-calm.md](../entities/paper-bfm-19-calm.md) | [source](../../sources/papers/bfm_awesome_calm_siggraph_2024.md) |
 | 20 | MoConVQ | [paper-bfm-20-moconvq.md](../entities/paper-bfm-20-moconvq.md) | [source](../../sources/papers/bfm_awesome_moconvq_tog_2023.md) |
 | 21 | CASE | [paper-bfm-21-case.md](../entities/paper-bfm-21-case.md) | [source](../../sources/papers/bfm_awesome_case_arxiv_2309_11351.md) |
-| 22 | PHC | [paper-bfm-22-phc.md](../entities/paper-bfm-22-phc.md) | [source](../../sources/papers/bfm_awesome_phc_arxiv_2305_06456.md) |
+| 22 | PHC | [phc.md](../entities/phc.md) | [source](../../sources/papers/bfm_awesome_phc_arxiv_2305_06456.md) |
 | 23 | TeamPlay | [paper-bfm-23-teamplay.md](../entities/paper-bfm-23-teamplay.md) | [source](../../sources/papers/bfm_awesome_teamplay_arxiv_2105_12196.md) |
 | 24 | MTM | [paper-bfm-24-mtm.md](../entities/paper-bfm-24-mtm.md) | [source](../../sources/papers/bfm_awesome_mtm_arxiv_2305_02968.md) |
-| 25 | ASE | [paper-bfm-25-ase.md](../entities/paper-bfm-25-ase.md) | [source](../../sources/papers/bfm_awesome_ase_arxiv_2205_01906.md) |
+| 25 | ASE | [ase.md](../methods/ase.md) | [source](../../sources/papers/bfm_awesome_ase_arxiv_2205_01906.md) |
 
 ## 在 BFM taxonomy 中的位置
 

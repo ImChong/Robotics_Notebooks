@@ -122,7 +122,7 @@ r^{\mathrm{smp}} = \exp\left(- w_s \|\hat{\epsilon} - \epsilon\|_2^2 \right)
 | G1 + mjlab 课程复现 | [wiki/entities/smp-g1-mjlab.md](../../wiki/entities/smp-g1-mjlab.md) |
 | AMP 对照 | [wiki/methods/amp-reward.md](../../wiki/methods/amp-reward.md)、[wiki/entities/amp-mjlab.md](../../wiki/entities/amp-mjlab.md) |
 | 先验变体选型 | [wiki/comparisons/amp-add-smp-motion-prior-variants.md](../../wiki/comparisons/amp-add-smp-motion-prior-variants.md) |
-| AMP 综述策展（03/19） | [wiki/entities/paper-amp-survey-03-smp.md](../../wiki/entities/paper-amp-survey-03-smp.md) |
+| AMP 综述策展（03/19） | [wiki/methods/smp.md](../../wiki/methods/smp.md) |
 | 人形 AMP 总览 | [wiki/overview/humanoid-amp-motion-prior-survey.md](../../wiki/overview/humanoid-amp-motion-prior-survey.md) |
 | 方法选型 query | [wiki/queries/humanoid-motion-tracking-method-selection.md](../../wiki/queries/humanoid-motion-tracking-method-selection.md) |
 

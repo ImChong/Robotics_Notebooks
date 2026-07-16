@@ -150,10 +150,10 @@ flowchart TB
 | # | 论文 | 实体页 |
 |---|------|--------|
 | 01 | AMP | [paper-amp-survey-01-amp.md](../entities/paper-amp-survey-01-amp.md) |
-| 02 | Physics-Based Motion Imitation with Adversarial Differential Discriminators | [paper-amp-survey-02-physics_based_motion_imitation_with.md](../entities/paper-amp-survey-02-physics_based_motion_imitation_with.md) |
-| 03 | SMP | [paper-amp-survey-03-smp.md](../entities/paper-amp-survey-03-smp.md) |
+| 02 | Physics-Based Motion Imitation with Adversarial Differential Discriminators | [add.md](../methods/add.md) |
+| 03 | SMP | [smp.md](../methods/smp.md) |
 | 04 | Kimodo | [kimodo.md](../entities/kimodo.md) |
-| 05 | MotionBricks | [paper-amp-survey-05-motionbricks.md](../entities/paper-amp-survey-05-motionbricks.md) |
+| 05 | MotionBricks | [motionbricks.md](../methods/motionbricks.md) |
 | 06 | Natural Humanoid Robot Locomotion with Generative Motion Prior | [paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md](../entities/paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md) |
 | 07 | Adversarial Locomotion and Motion Imitation for Humanoid Policy Learning | [paper-amp-survey-07-adversarial_locomotion_and_motion_im.md](../entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md) |
 | 08 | MoRE | [paper-amp-survey-08-more.md](../entities/paper-amp-survey-08-more.md) |

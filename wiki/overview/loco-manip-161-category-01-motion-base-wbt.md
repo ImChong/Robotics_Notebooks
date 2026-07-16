@@ -36,7 +36,7 @@ sources:
 | 001 | Agility Meets Stability | [paper-loco-manip-161-001-agility-meets-stability](../methods/ams.md) |
 | 002 | Any2Any | [paper-loco-manip-161-002-any2any](../entities/paper-any2any-cross-embodiment-wbt.md) |
 | 003 | BFM-Zero | [paper-loco-manip-161-003-bfm-zero](../entities/paper-bfm-zero.md) |
-| 004 | BeyondMimic | [paper-loco-manip-161-004-beyondmimic](../entities/paper-beyondmimic.md) |
+| 004 | BeyondMimic | [paper-loco-manip-161-004-beyondmimic](../methods/beyondmimic.md) |
 | 005 | CHIP | [paper-loco-manip-161-005-chip](../entities/paper-hrl-stack-36-chip.md) |
 | 006 | CLONE | [paper-loco-manip-161-006-clone](../entities/paper-bfm-12-clone.md) |
 | 007 | ExBody2 | [paper-loco-manip-161-007-exbody2](../entities/paper-loco-manip-161-007-exbody2.md) |

@@ -1,5 +1,24 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-16] structural | wiki — 重复节点合并第二批（12 组 A 类）+ C 类互链补全 + 深读页模板措辞修正
+
+延续同日第一批：BeyondMimic / DeepMimic / GentleHumanoid / HAIC / ASE / ADD / SMP / MotionBricks / AMS（survey 槽位实体并入 methods 深读页）、ReActor / SPIDER（论文笔记 stub 并入 methods 页）、PHC（BFM 槽位并入代码库实体页）；旧 URL 全部登记 schema/page-aliases.json 重定向。核实并保留：Muon（论文页 vs 优化器方法页，合理分层）、PAiD ≠ RoboNaldo（并发不同工作）、OpenTrack / Retargeting Matters / Make Tracking Easy（methods 页为多工作技术页，不合并）。补全 project-instinct ↔ Embrace Collisions、gr00t-wholebodycontrol ↔ GR00T N1 互链；修正 10 处「深读页」模板误用（不同论文改「同主题深读」，通用方法页改「方法背景」）。
+
+- wiki/methods/beyondmimic.md
+- wiki/methods/deepmimic.md
+- wiki/methods/gentlehumanoid-motion-tracking.md
+- wiki/methods/haic.md
+- wiki/methods/ase.md
+- wiki/methods/add.md
+- wiki/methods/smp.md
+- wiki/methods/motionbricks.md
+- wiki/methods/ams.md
+- wiki/methods/reactor-physics-aware-motion-retargeting.md
+- wiki/methods/spider-physics-informed-dexterous-retargeting.md
+- wiki/entities/phc.md
+- wiki/entities/project-instinct.md
+- wiki/entities/gr00t-wholebodycontrol.md
+
 ## [2026-07-16] structural | wiki — 同论文重复节点合并（10 组）+ 站点 alias 重定向 + arxiv 唯一性 lint 护栏
 
 一篇论文只保留一个 canonical 节点：合并 SONIC（entity+method 双页 → 方法页）、VIRAL / DoorMan / Heracles（42 栈槽位 → 深读实体）、SD-AMP / Kimodo（AMP 专题槽位 → 深读实体）、HOMIE / TextOp / Open-TeleVision（161 双槽位 → 单页双坐标）、Berkeley Humanoid Lite（论文笔记 stub → 硬件实体）。删除页旧 URL 经 schema/page-aliases.json + docs/main.js 重定向到合并后页面；lint 新增 frontmatter arxiv 全站唯一性检查（阻塞 CI）。AGILE（161 #056 = NVIDIA WBC-AGILE ≠ 智元 AGILE）确认为同名不同工作，不合并。

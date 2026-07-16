@@ -14,11 +14,11 @@
 ## 核心摘录（策展，非全文）
 
 - 本文件锚定 **待深读** 论文在姊妹仓库 `progress.json` 中的条目；笔记完成后应改用笔记页链接并深化 wiki 归纳。
-- 知识归纳见 wiki 实体页：[paper-notebook-reactor](../../wiki/entities/paper-notebook-reactor.md).
+- 知识归纳见 wiki 实体页：[reactor-physics-aware-motion-retargeting](../../wiki/methods/reactor-physics-aware-motion-retargeting.md).
 
 ## 对 wiki 的映射
 
-- [paper-notebook-reactor](../../wiki/entities/paper-notebook-reactor.md)
+- [reactor-physics-aware-motion-retargeting](../../wiki/methods/reactor-physics-aware-motion-retargeting.md)
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../../wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 
 ## 参考来源（原始）

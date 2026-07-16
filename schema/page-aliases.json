@@ -10,6 +10,18 @@
     "entity-paper-loco-manip-161-105-textop": "entity-paper-loco-manip-161-022-textop",
     "entity-paper-loco-manip-161-139-open-television": "entity-paper-loco-manip-161-131-open-television",
     "entity-paper-notebook-berkeley-humanoid-lite-an-open-source-accessible": "entity-berkeley-humanoid-lite",
-    "entity-paper-sonic": "wiki-methods-sonic-motion-tracking"
+    "entity-paper-sonic": "wiki-methods-sonic-motion-tracking",
+    "entity-paper-beyondmimic": "wiki-methods-beyondmimic",
+    "entity-paper-hrl-stack-11-deepmimic": "wiki-methods-deepmimic",
+    "entity-paper-hrl-stack-37-gentlehumanoid": "wiki-methods-gentlehumanoid-motion-tracking",
+    "entity-paper-hrl-stack-38-haic": "wiki-methods-haic",
+    "entity-paper-bfm-25-ase": "wiki-methods-ase",
+    "entity-paper-amp-survey-02-physics_based_motion_imitation_with": "wiki-methods-add",
+    "entity-paper-amp-survey-03-smp": "wiki-methods-smp",
+    "entity-paper-amp-survey-05-motionbricks": "wiki-methods-motionbricks",
+    "entity-paper-ams": "wiki-methods-ams",
+    "entity-paper-notebook-reactor": "wiki-methods-reactor-physics-aware-motion-retargeting",
+    "entity-paper-notebook-spider": "wiki-methods-spider-physics-informed-dexterous-retargeting",
+    "entity-paper-bfm-22-phc": "entity-phc"
   }
 }

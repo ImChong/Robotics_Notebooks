@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, humanoid, category-hub, survey]
 status: complete
-updated: 2026-06-26
+updated: 2026-07-16
 summary: "人形 Loco-Manip 161 篇 · 06 特殊任务、接触规划与视觉闭环（8 篇）— 开门、推物、搬运、触碰等具体接触任务。"
 related:
   - ./humanoid-loco-manip-161-papers-technology-map.md
@@ -33,7 +33,7 @@ sources:
 
 | # | 工作 | Wiki 实体 |
 |---|------|-----------|
-| 120 | GentleHumanoid | [paper-loco-manip-161-120-gentlehumanoid](../entities/paper-hrl-stack-37-gentlehumanoid.md) |
+| 120 | GentleHumanoid | [paper-loco-manip-161-120-gentlehumanoid](../methods/gentlehumanoid-motion-tracking.md) |
 | 121 | Humanoid-VLA | [paper-loco-manip-161-121-humanoid-vla](../entities/paper-loco-manip-161-121-humanoid-vla.md) |
 | 122 | LeVERB | [paper-loco-manip-161-122-leverb](../entities/paper-bfm-36-leverb.md) |
 | 123 | 从嘈杂的感官输入中学习人形足球机器人的敏捷前锋技能 | [paper-loco-manip-161-123-n123](../entities/paper-loco-manip-161-123-n123.md) |

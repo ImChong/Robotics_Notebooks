@@ -2,12 +2,12 @@
 type: overview
 tags: [motion-cerebellum, humanoid, category-hub, survey, wbt-base]
 status: complete
-updated: 2026-06-23
+updated: 2026-07-16
 summary: "运动小脑 64 篇长文 · D 全身跟踪基座（13 篇）— 跟踪策略等站位。"
 related:
   - ./humanoid-motion-cerebellum-technology-map.md
   - ../entities/paper-hrl-stack-12-omnitrack.md
-  - ../entities/paper-beyondmimic.md
+  - ../methods/beyondmimic.md
   - ../methods/sonic-motion-tracking.md
   - ../entities/holomotion.md
 sources:
@@ -36,7 +36,7 @@ sources:
 | # | 工作 | Wiki 实体 | Source |
 |---|------|-----------|--------|
 | 25 | OmniTrack | [paper-hrl-stack-12-omnitrack.md](../entities/paper-hrl-stack-12-omnitrack.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
-| 26 | BeyondMimic | [paper-beyondmimic.md](../entities/paper-beyondmimic.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
+| 26 | BeyondMimic | [beyondmimic.md](../methods/beyondmimic.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 27 | SONIC | [sonic-motion-tracking.md](../methods/sonic-motion-tracking.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 28 | HoloMotion-1 | [holomotion.md](../entities/holomotion.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 29 | HumanoidGPT | [paper-humanoid-gpt.md](../entities/paper-humanoid-gpt.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |

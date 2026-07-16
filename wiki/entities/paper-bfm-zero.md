@@ -33,7 +33,7 @@ sources:
 
 **BFM-Zero**（*A Promptable Behavioral Foundation Model for Humanoid Control*，arXiv:2511.04131）训练可提示的行为基础模型，用 latent prompt 统一目标姿态、奖励优化、恢复与少样本适配。
 
-> **深读页：** [paper-behavior-foundation-model-humanoid](../entities/paper-behavior-foundation-model-humanoid.md) — 方法机制与实验细节见链接页；本页保留 survey 坐标与交叉引用。
+> **同主题深读：** [paper-behavior-foundation-model-humanoid](../entities/paper-behavior-foundation-model-humanoid.md) — 同题材（人形 BFM）的另一篇论文深读页，两者并非同一工作；本页保留本文的 survey 坐标与交叉引用。
 
 ## 一句话定义
 

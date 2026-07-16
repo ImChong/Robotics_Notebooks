@@ -2,13 +2,13 @@ overrides:
   AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Character_Control:
   - wiki/entities/paper-amp-survey-01-amp.md
   ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control:
-  - wiki/entities/paper-bfm-25-ase.md
+  - wiki/methods/ase.md
   AWR_Advantage_Weighted_Regression:
   - wiki/methods/awr.md
   BEHAVIOR_Robot_Suite_Streamlining_Real-World_Whole-Body_Manipulation:
   - wiki/tasks/loco-manipulation.md
   BeyondMimic:
-  - wiki/entities/paper-beyondmimic.md
+  - wiki/methods/beyondmimic.md
   - wiki/methods/beyondmimic.md
   CRISP__Contact-Guided_Real2Sim_from_Monocular_Video_with_Planar_Scene_Primit:
   - wiki/methods/crisp-real2sim.md

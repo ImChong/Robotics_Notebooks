@@ -242,9 +242,6 @@
 - [AHC：多行为蒸馏与强化微调的自适应人形控制](wiki/entities/paper-adaptive-humanoid-control.md) — AHC**（*Towards Adaptive Humanoid Control via Multi-Behavior Distillation and Reinforced Fine-Tunin `📅unknown` `[entity_page]`
 - [AME — Attention-Based Map Encoding](wiki/entities/paper-ame-attention-based-map-encoding.md) — 一句话定义**：用 **CNN 提取机器人中心高程图逐点局部特征**，再以 **本体与速度指令条件化的 multi-head attention** 聚焦 **下一落脚可行区域**，与 propr `📅unknown` `[entity_page]`
 - [AMP：对抗运动先验与风格化物理角色控制](wiki/entities/paper-amp-survey-01-amp.md) — AMP**（*Adversarial Motion Priors for Stylized Physics-Based Character Control*，SIGGRAPH 2021）由 Xue `📅unknown` `[entity_page]`
-- [ADD：对抗微分判别器与物理运动模仿](wiki/entities/paper-amp-survey-02-physics_based_motion_imitation_with.md) — ADD**（*Physics-Based Motion Imitation with Adversarial Differential Discriminators* / *Adversarial `📅unknown` `[entity_page]`
-- [SMP：可复用 Score-Matching 运动先验](wiki/entities/paper-amp-survey-03-smp.md) — SMP**（*Reusable Score-Matching Motion Priors for Physics-Based Character Control*，arXiv:2512.03028 `📅unknown` `[entity_page]`
-- [MotionBricks：模块化实时运动生成（AMP 专题 #05）](wiki/entities/paper-amp-survey-05-motionbricks.md) — MotionBricks**（*Scalable Real-Time Motions with Modular Latent Generative Model and Smart Primitiv `📅unknown` `[entity_page]`
 - [GMP：生成式运动先验与自然人形走跑](wiki/entities/paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md) — GMP**（*Natural Humanoid Robot Locomotion with Generative Motion Prior*，arXiv:2503.09015）收录于 [AMP 运 `📅unknown` `[entity_page]`
 - [ALMI：对抗 locomotion 与运动模仿的人形策略学习](wiki/entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md) — ALMI**（*Adversarial Locomotion and Motion Imitation for Humanoid Policy Learning*，arXiv:2504.14305 `📅unknown` `[entity_page]`
 - [MoRE：复杂地形上的人形多步态残差专家混合](wiki/entities/paper-amp-survey-08-more.md) — MoRE（Mixture of latent Residual Experts）** 收录于 [具身智能研究室 · AMP 运动先验专题](https://mp.weixin.qq.com/s/Y `📅unknown` `[entity_page]`
@@ -255,7 +252,6 @@
 - [CLOT](wiki/entities/paper-amp-survey-16-clot.md) — CLOT**（*Closed-Loop Global Motion Tracking for Whole-Body Humanoid Teleoperation*，arXiv:2602.15060 `📅unknown` `[entity_page]`
 - [TeamHOI：任意队形的协作人–物交互统一策略](wiki/entities/paper-amp-survey-17-teamhoi.md) — TeamHOI**（*Learning a Unified Policy for Cooperative Human-Object Interactions with Any Team Size `📅unknown` `[entity_page]`
 - [Embrace Collisions：可部署的接触无关人形 Shadowing](wiki/entities/paper-amp-survey-19-embrace_collisions.md) — Embrace Collisions**（*Humanoid Shadowing for Deployable Contact-Agnostics Motions*，arXiv:2502.0146 `📅unknown` `[entity_page]`
-- [Agility Meets Stability](wiki/entities/paper-ams.md) — Agility Meets Stability**（AMS，arXiv:2511.17373）讨论高动态敏捷动作与稳定恢复能力在同一控制器中的权衡；MoCap/仿真/视频等异构混合是 BFM 数据 `📅unknown` `[entity_page]`
 - [Any2Any：跨具身高效全身跟踪迁移](wiki/entities/paper-any2any-cross-embodiment-wbt.md) — Any2Any**（arXiv:2605.23733，LimX Dynamics）研究 **已有 whole-body tracking（WBT）专家如何迁到新的人形**：不从头重训亿级 MoCa `📅unknown` `[entity_page]`
 - [Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning](wiki/entities/paper-anymal-walk-minutes-parallel-drl.md) — 一句话定义**：用 **Isaac Gym 大规模并行** 与 **游戏式课程地形**，在 **数分钟（平地）/ 约二十分钟（粗糙地形）** 内为 ANYmal 训出可迁移策略，并开源 **leg `📅unknown` `[entity_page]`
 - [Argus（Dynamic Symmetry / Dynamic Isotropy）](wiki/entities/paper-argus-dynamic-symmetry.md) — Argus**（*Extreme dynamic symmetry enables omnidirectional and multifunctional robots*，Jiaxun Liu / `📅unknown` `[entity_page]`
@@ -266,7 +262,6 @@
 - [Barkour（四足敏捷评测基准与开源生态）](wiki/entities/paper-barkour-quadruped-agility-benchmark.md) — Barkour** 是 Google DeepMind 提出的 **四足敏捷 locomotion 基准**：把 **犬敏捷赛** 中的障碍序列与 **时间型评分** 压缩进 **约 5 m ×  `📅unknown` `[entity_page]`
 - [BFM（Behavior Foundation Model for Humanoid Robots）](wiki/entities/paper-behavior-foundation-model-humanoid.md) — BFM** 是北大、港中大（深圳）、上交、复旦与 **上海人工智能实验室** 合作的人形 **whole-body control（WBC）基础模型** 论文（arXiv:2509.13780， `📅unknown` `[entity_page]`
 - [Being-M0.7（人形潜空间 World–Action Model）](wiki/entities/paper-being-m07-humanoid-latent-wam.md) — Being-M0.7**（*Being-M0.7: A Latent World-Action Model for Humanoid Robots*，BeingBeyond Technical R `📅unknown` `[entity_page]`
-- [BeyondMimic](wiki/entities/paper-beyondmimic.md) — BeyondMimic**（*From Motion Tracking to Versatile Humanoid Control via Guided Diffusion*，arXiv:2508 `📅unknown` `[entity_page]`
 - [Zero-shot Whole-body Humanoid Control via Behavioral Foundation Models](wiki/entities/paper-bfm-02-metamotivo.md) — Zero-shot Whole-body Humanoid Control via Behavioral Foundation Models** 收录于 [awesome-bfm-papers `📅unknown` `[entity_page]`
 - [Finer Behavioral Foundation Models via Auto-regressive Features and Advantage Weighting](wiki/entities/paper-bfm-03-fb-aw.md) — Finer Behavioral Foundation Models via Auto-regressive Features and Advantage Weighting** 收录于 [awe `📅unknown` `[entity_page]`
 - [Fast Imitation via Behavior Foundation Models](wiki/entities/paper-bfm-04-fast-imitation-bfm.md) — Fast Imitation via Behavior Foundation Models** 收录于 [awesome-bfm-papers](https://github.com/friedr `📅unknown` `[entity_page]`
@@ -281,10 +276,8 @@
 - [CALM](wiki/entities/paper-bfm-19-calm.md) — CALM** 收录于 awesome-bfm-papers **第 19/41** 篇 `📅unknown` `[entity_page]`
 - [MoConVQ](wiki/entities/paper-bfm-20-moconvq.md) — MoConVQ** 收录于 awesome-bfm-papers **第 20/41 `📅unknown` `[entity_page]`
 - [CASE](wiki/entities/paper-bfm-21-case.md) — CASE** 收录于 awesome-bfm-papers **第 21/41** 篇 `📅unknown` `[entity_page]`
-- [PHC](wiki/entities/paper-bfm-22-phc.md) — PHC** 收录于 awesome-bfm-papers **第 22/41** 篇， `📅unknown` `[entity_page]`
 - [TeamPlay](wiki/entities/paper-bfm-23-teamplay.md) — TeamPlay** 收录于 awesome-bfm-papers **第 23/41 `📅unknown` `[entity_page]`
 - [MTM](wiki/entities/paper-bfm-24-mtm.md) — MTM** 收录于 awesome-bfm-papers **第 24/41** 篇， `📅unknown` `[entity_page]`
-- [ASE](wiki/entities/paper-bfm-25-ase.md) — ASE** 收录于 awesome-bfm-papers **第 25/41** 篇， `📅unknown` `[entity_page]`
 - [Active Pretraining with Successor Features](wiki/entities/paper-bfm-26-aps.md) — Active Pretraining with Successor Features** 收录于 [awesome-bfm-papers](https://github.com/friedrich `📅unknown` `[entity_page]`
 - [Reinforcement Learning with Prototypical Representations](wiki/entities/paper-bfm-27-proto-rl.md) — Reinforcement Learning with Prototypical Representations** 收录于 [awesome-bfm-papers](https://github `📅unknown` `[entity_page]`
 - [State Entropy Maximization with Random Encoders for Efficient Exploration](wiki/entities/paper-bfm-28-re3.md) — State Entropy Maximization with Random Encoders for Efficient Exploration** 收录于 [awesome-bfm-paper `📅unknown` `[entity_page]`
@@ -368,7 +361,6 @@
 - [HDMI](wiki/entities/paper-hrl-stack-06-hdmi.md) — HDMI**（*HDMI: Learning Interactive Humanoid Whole-Body Control from Human Videos*，<https://hdmi-hu `📅unknown` `[entity_page]`
 - [Learning Human-to-Humanoid Real-Time Whole-Body Teleoperation](wiki/entities/paper-hrl-stack-07-learning_human_to_humanoid_real_time.md) — Learning Human-to-Humanoid Real-Time Whole-Body Teleoperation** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动 `📅unknown` `[entity_page]`
 - [OmniH2O](wiki/entities/paper-hrl-stack-08-omnih2o.md) — OmniH2O** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZu `📅unknown` `[entity_page]`
-- [DeepMimic](wiki/entities/paper-hrl-stack-11-deepmimic.md) — DeepMimic** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-p `📅unknown` `[entity_page]`
 - [OmniTrack](wiki/entities/paper-hrl-stack-12-omnitrack.md) — OmniTrack** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-p `📅unknown` `[entity_page]`
 - [Robust and Generalized Humanoid Motion Tracking](wiki/entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md) — Robust and Generalized Humanoid Motion Tracking** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https:// `📅unknown` `[entity_page]`
 - [OmniXtreme](wiki/entities/paper-hrl-stack-16-omnixtreme.md) — OmniXtreme** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD- `📅unknown` `[entity_page]`
@@ -383,8 +375,6 @@
 - [GR00T N1](wiki/entities/paper-hrl-stack-34-gr00t_n1.md) — GR00T N1**（*An Open Foundation Model for Generalist Humanoid Robots*，[arXiv:2503.14734](https://ar `📅unknown` `[entity_page]`
 - [DreamDojo](wiki/entities/paper-hrl-stack-35-dreamdojo.md) — DreamDojo** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-p `📅unknown` `[entity_page]`
 - [CHIP](wiki/entities/paper-hrl-stack-36-chip.md) — CHIP** 收录于 具身智能研究室 · 42 篇 humanoid RL 运动控制长文  `📅unknown` `[entity_page]`
-- [GentleHumanoid](wiki/entities/paper-hrl-stack-37-gentlehumanoid.md) — GentleHumanoid** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUG `📅unknown` `[entity_page]`
-- [HAIC](wiki/entities/paper-hrl-stack-38-haic.md) — HAIC** 收录于 具身智能研究室 · 42 篇 humanoid RL 运动控制长文  `📅unknown` `[entity_page]`
 - [Closing Sim-to-Real Gap for Heavy-loaded Humanoid Agile Motion Skills via Differentiable Simulation](wiki/entities/paper-hrl-stack-39-closing_sim_to_real_gap_for_heavy_lo.md) — Closing Sim-to-Real Gap for Heavy-loaded Humanoid Agile Motion Skills via Differentiable Simulatio `📅unknown` `[entity_page]`
 - [SafeFall](wiki/entities/paper-hrl-stack-41-safefall.md) — SafeFall** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZ `📅unknown` `[entity_page]`
 - [Thor](wiki/entities/paper-hrl-stack-42-thor.md) — Thor** 收录于 具身智能研究室 · 42 篇 humanoid RL 运动控制长文  `📅unknown` `[entity_page]`
@@ -795,7 +785,6 @@
 - [Quantum deep reinforcement learning for humanoid robot navigation task](wiki/entities/paper-notebook-quantum-deep-rl-for-humanoid-robot-navigation.md) — Quantum deep reinforcement learning for humanoid robot navigation task** 收录于 [Humanoid Robot Learn `📅unknown` `[entity_page]`
 - [Quasi-Direct Drive for Low-Cost Compliant Robotic Manipulation](wiki/entities/paper-notebook-quasi-direct-drive-for-low-cost-compliant-roboti.md) — Quasi-Direct Drive for Low-Cost Compliant Robotic Manipulation** 已列入 [Humanoid Robot Learning Pape `📅unknown` `[entity_page]`
 - [RAPID Hand](wiki/entities/paper-notebook-rapid-hand-a-robust-affordable-perception-integr.md) — RAPID Hand: A Robust, Affordable, Perception-Integrated, Dexterous Manipulation Platform for Gener `📅unknown` `[entity_page]`
-- [ReActor](wiki/entities/paper-notebook-reactor.md) — ReActor: Reinforcement Learning for Physics-Aware Motion Retargeting** 收录于 [Humanoid Robot Learnin `📅unknown` `[entity_page]`
 - [Real-Time Polygonal Semantic Mapping for Humanoid Robot Stair Climbing](wiki/entities/paper-notebook-real-time-polygonal-semantic-mapping-for-humanoi.md) — Real-Time Polygonal Semantic Mapping for Humanoid Robot Stair Climbing** 已列入 [Humanoid Robot Learn `📅unknown` `[entity_page]`
 - [Reduced-Order Model-Guided RL for Demonstration-Free Humanoid Locomotion](wiki/entities/paper-notebook-reduced-order-model-guided-rl-for-demonstration.md) — Reduced-Order Model-Guided RL for Demonstration-Free Humanoid Locomotion** 已列入 [Humanoid Robot Lea `📅unknown` `[entity_page]`
 - [Reference-Free Sampling-Based Model Predictive Control](wiki/entities/paper-notebook-reference-free-sampling-based-model-predictive-c.md) — Reference-Free Sampling-Based Model Predictive Control** 已列入 [Humanoid Robot Learning Paper Notebo `📅unknown` `[entity_page]`
@@ -838,7 +827,6 @@
 - [SPARK](wiki/entities/paper-notebook-spark.md) — SPARK: A Toolbox for Safe Humanoid Autonomy and Teleoperation** 已列入 [Humanoid Robot Learning Paper `📅unknown` `[entity_page]`
 - [Spatial Relationship Preserving Character Motion Adaptation](wiki/entities/paper-notebook-spatial-relationship-preserving-character-motion.md) — Spatial Relationship Preserving Character Motion Adaptation** 收录于 [Humanoid Robot Learning Paper N `📅unknown` `[entity_page]`
 - [Spectral Normalization for Lipschitz-Constrained Policies on Learning Humanoid Locomotion](wiki/entities/paper-notebook-spectral-normalization-for-lipschitz-constrained.md) — Spectral Normalization for Lipschitz-Constrained Policies on Learning Humanoid Locomotion** 已列入 [H `📅unknown` `[entity_page]`
-- [SPIDER](wiki/entities/paper-notebook-spider.md) — SPIDER: Scalable Physics-Informed DExterous Retargeting** 已列入 [Humanoid Robot Learning Paper Noteb `📅unknown` `[entity_page]`
 - [Stability-Aware Retargeting for Humanoid Multi-Contact Teleoperation](wiki/entities/paper-notebook-stability-aware-retargeting-for-humanoid-multi-c.md) — Stability-Aware Retargeting for Humanoid Multi-Contact Teleoperation** 收录于 [Humanoid Robot Learnin `📅unknown` `[entity_page]`
 - [Stabilizing Humanoid Robot Trajectory Generation via Physics-Informed Learning](wiki/entities/paper-notebook-stabilizing-humanoid-robot-trajectory-generation.md) — Stabilizing Humanoid Robot Trajectory Generation via Physics-Informed Learning** 已列入 [Humanoid Rob `📅unknown` `[entity_page]`
 - [SteadyTray](wiki/entities/paper-notebook-steadytray.md) — SteadyTray: Learning Object Balancing Tasks in Humanoid Tray Transport via Residual Reinforcement  `📅unknown` `[entity_page]`

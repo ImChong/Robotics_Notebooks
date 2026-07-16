@@ -6,7 +6,7 @@ updated: 2026-07-16
 arxiv: "2603.15546"
 related:
   - ../overview/humanoid-amp-motion-prior-survey.md
-  - ./paper-amp-survey-05-motionbricks.md
+  - ../methods/motionbricks.md
   - ../methods/diffusion-motion-generation.md
   - ../methods/motionbricks.md
   - ../methods/genmo.md
@@ -59,7 +59,7 @@ summary: "Kimodo 是 NVIDIA 开源的运动学扩散模型：在约 700 小时 R
 | 分组 | 01 分布约束与先验组件化 |
 | 索引来源 | [具身智能研究室 · AMP 运动先验专题长文](https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w) |
 
-策展导读直言：**不是机器人控制论文，但应该放在这里**——它代表「先验」在 **运动学生成层** 的 scaling 路线，回答「**参考从哪来**」；产出经 retarget + 跟踪/AMP 进真机，与 [AMP #01](./paper-amp-survey-01-amp.md) 的 **RL 风格奖励** 互补而非替代。同段姊妹 [MotionBricks #05](./paper-amp-survey-05-motionbricks.md) 更靠近 **实时机器人 WBC API**，Kimodo 偏 **离线高质量扩散 + 导演式编辑**。
+策展导读直言：**不是机器人控制论文，但应该放在这里**——它代表「先验」在 **运动学生成层** 的 scaling 路线，回答「**参考从哪来**」；产出经 retarget + 跟踪/AMP 进真机，与 [AMP #01](./paper-amp-survey-01-amp.md) 的 **RL 风格奖励** 互补而非替代。同段姊妹 [MotionBricks #05](../methods/motionbricks.md) 更靠近 **实时机器人 WBC API**，Kimodo 偏 **离线高质量扩散 + 导演式编辑**。
 
 ## 核心结构 / 机制
 

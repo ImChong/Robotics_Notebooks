@@ -11,7 +11,7 @@ related:
   - ../overview/motion-cerebellum-category-04-wbt-base.md
   - ../methods/any2track.md
   - ../entities/holomotion.md
-  - ../entities/paper-beyondmimic.md
+  - ../methods/beyondmimic.md
   - ../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md
   - ../entities/paper-unified-walk-run-recovery-sdamp.md
   - ../entities/lafan1-dataset.md
@@ -52,7 +52,7 @@ sources:
 
 1. **Yaw-aligned 跟踪表征：** 在 **yaw 对齐根坐标系** 下编码身体相对位姿误差，削弱 **全局平移/航向漂移** 敏感度，保留 **俯仰/横滚** 等与平衡相关的重力信息；根部仍保留世界系位姿供控制。
 2. **Bernoulli 概率终止（PT）：** 当根部高度或姿态误差超阈值（实验 $\theta_{pos}=0.25$ m、$\theta_{quat}=\pi/2$）时，以概率 $p_{term}=0.005$ **软终止**而非硬截断——期望额外存活 **200 步**（50 Hz × 4 s），为倒地恢复提供探索窗口并缓解 time-limit 截断带来的 value bias。
-3. **跟踪误差驱动自适应采样（AdpS）：** PT 下终止统计不再可靠反映片段难度；用 episode 内 **平均关键点跟踪误差** $\bar{e}$ 在线更新参考轨迹各帧采样权重——难段增权、已成功段衰减（$\theta_{success}=0.06$），与 [BeyondMimic](./paper-beyondmimic.md) 类自适应采样互补但 **显式面向 PT 场景**。
+3. **跟踪误差驱动自适应采样（AdpS）：** PT 下终止统计不再可靠反映片段难度；用 episode 内 **平均关键点跟踪误差** $\bar{e}$ 在线更新参考轨迹各帧采样权重——难段增权、已成功段衰减（$\theta_{success}=0.06$），与 [BeyondMimic](../methods/beyondmimic.md) 类自适应采样互补但 **显式面向 PT 场景**。
 4. **训练与部署：** 非对称 Actor-Critic；仿真 **IsaacLab/MuJoCo**，数据 **LAFAN1**（跟踪评测）+ **AMASS 重定向**（真机演示）；**29-DoF Unitree G1** 闭环部署。
 
 ## 流程总览
@@ -105,7 +105,7 @@ flowchart TB
 - 分类 hub：[运动小脑 D 组 · 全身跟踪基座](../overview/motion-cerebellum-category-04-wbt-base.md)
 - 鲁棒跟踪姊妹篇：[RGMT](./paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md)、[Any2Track](../methods/any2track.md)
 - 统一「走/跑/起身」对照：[SD-AMP](./paper-unified-walk-run-recovery-sdamp.md)
-- 规模化跟踪基线：[HoloMotion](./holomotion.md)、[BeyondMimic](./paper-beyondmimic.md)
+- 规模化跟踪基线：[HoloMotion](./holomotion.md)、[BeyondMimic](../methods/beyondmimic.md)
 - 数据与平台：[LaFAN1](./lafan1-dataset.md)、[Unitree G1](./unitree-g1.md)
 
 ## 推荐继续阅读

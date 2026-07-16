@@ -1,9 +1,16 @@
 ---
 type: method
-tags: [rl, sampling, data-generation, humanoid, physics-feasibility]
+tags: [rl, sampling, data-generation, humanoid, physics-feasibility, paper, motion-control, body-system-stack, bfm, behavior-foundation-model, nvidia, hku, tsinghua]
 status: complete
 updated: 2026-07-16
+code: https://github.com/OpenDriveLab/AMS
+venue: "2025 · arXiv"
+arxiv: "2511.17373"
 related:
+  - ../overview/humanoid-rl-motion-control-body-system-stack.md
+  - ../overview/humanoid-amp-motion-prior-survey.md
+  - ../overview/bfm-41-papers-technology-map.md
+  - ../overview/bfm-category-02-goal-conditioned-learning.md
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-01-locomotion-base.md
   - ./imitation-learning.md
@@ -13,6 +20,12 @@ sources:
   - ../../sources/papers/motion_control_projects.md
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
+  - ../../sources/papers/humanoid_rl_stack_18_agility_meets_stability_versatile_humanoid_contr.md
+  - ../../sources/papers/humanoid_rl_stack_42_catalog.md
+  - ../../sources/papers/bfm_awesome_ams_arxiv_2511_17373.md
+  - ../../sources/papers/bfm_awesome_41_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
 summary: "AMS (Adaptive Motion Synthesis) 提出了一种物理可行性过滤与混合奖励机制，通过在极端动作处引入先验来提升复杂平衡任务的训练成功率。"
 ---
 
@@ -64,10 +77,30 @@ AMS 实际上定义了一个自动化的合成数据生成流程：
 | CoM | Center of Mass | 质心，平衡与 locomotion 规划的核心状态量 |
 | Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
 
+## Survey 坐标（策展索引）
+
+### 在 42 篇 RL 运动控制身体系统栈中
+
+| 字段 | 内容 |
+|------|------|
+| 编号 | 18/42 |
+| 系统栈层 | 02 参考跟踪 · 通用控制 |
+| 索引来源 | [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) |
+
+### 在 BFM 41 篇技术地图中
+
+| 字段 | 内容 |
+|------|------|
+| 编号 | 09/41 |
+| 分组 | 02 Goal-conditioned 学习 |
+| 索引来源 | [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) |
+
 ## 参考来源
 
 - [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档《开源运动控制项目》总结。
 - [AMS 项目主页 (OpenDriveLab)](https://opendrivelab.com/AMS/)
+- 原始抓取：[wechat_humanoid_rl_42_survey_2026-05-26.md](../../sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md)
+- 论文：<https://arxiv.org/abs/2511.17373>
 
 ## 关联页面
 

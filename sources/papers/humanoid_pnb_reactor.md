@@ -13,11 +13,11 @@
 ## 核心摘录（策展，非全文）
 
 - 本文件为 **Paper Notebooks → 本库 wiki** 的溯源锚点；方法细节请读笔记页与论文 PDF。
-- 知识归纳见 wiki 实体页：[paper-notebook-reactor](../../wiki/entities/paper-notebook-reactor.md).
+- 知识归纳见 wiki 实体页：[reactor-physics-aware-motion-retargeting](../../wiki/methods/reactor-physics-aware-motion-retargeting.md).
 
 ## 对 wiki 的映射
 
-- [paper-notebook-reactor](../../wiki/entities/paper-notebook-reactor.md)
+- [reactor-physics-aware-motion-retargeting](../../wiki/methods/reactor-physics-aware-motion-retargeting.md)
 - 分类父节点：[paper-notebook-category-02-motion-retargeting](../../wiki/overview/paper-notebook-category-02-motion-retargeting.md)
 
 ## 参考来源（原始）

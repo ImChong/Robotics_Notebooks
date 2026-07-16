@@ -43,7 +43,7 @@ sources:
 ## 为什么重要
 
 - **监督粒度对照：** [AMP #01](./paper-amp-survey-01-amp.md) 给「像不像」的**标量**；GMP 给「该往哪靠近」的**轨迹级**关节/关键点目标——策展称「不只告诉你不像，还告诉你该往哪靠近」。
-- **训练稳定性：** 先验 **离线训练、RL 阶段冻结**，避免策略–判别器共训不稳定；与 [SMP #03](./paper-amp-survey-03-smp.md) 同属「模块化先验」但机制为 **生成式参考** 而非 SDS。
+- **训练稳定性：** 先验 **离线训练、RL 阶段冻结**，避免策略–判别器共训不稳定；与 [SMP #03](../methods/smp.md) 同属「模块化先验」但机制为 **生成式参考** 而非 SDS。
 - **人形走跑段锚点：** 与 [ALMI #07](./paper-amp-survey-07-adversarial_locomotion_and_motion_im.md)（分部位对抗）、[MoRE #08](./paper-amp-survey-08-more.md)（多判别器+地形）构成「自然性从哪来」的多路线对照。
 - **量化优势：** JFID **0.931** vs PBRS+AMP **2.088** 等（论文 Table）；MELV、JDTW/KDTW 全面优于 SaW、PBRS、HumanMimic 及 +AMP 基线。
 

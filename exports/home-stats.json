@@ -1,13 +1,155 @@
 {
   "generated_at": "2026-07-16",
-  "node_count": 1642,
-  "edge_count": 12823,
+  "node_count": 1630,
+  "edge_count": 12780,
   "coverage": {
-    "covered": 1595,
-    "total": 1625,
+    "covered": 1583,
+    "total": 1613,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/methods/beyondmimic.md",
+      "detail_id": "wiki-methods-beyondmimic",
+      "label": "BeyondMimic",
+      "type": "method",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/methods/deepmimic.md",
+      "detail_id": "wiki-methods-deepmimic",
+      "label": "DeepMimic: 示例引导的技能学习",
+      "type": "method",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/methods/gentlehumanoid-motion-tracking.md",
+      "detail_id": "wiki-methods-gentlehumanoid-motion-tracking",
+      "label": "GentleHumanoid（上半身柔顺全身运动跟踪）",
+      "type": "method",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/methods/haic.md",
+      "detail_id": "wiki-methods-haic",
+      "label": "HAIC: 基于世界模型的教师-学生训练",
+      "type": "method",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/methods/ase.md",
+      "detail_id": "wiki-methods-ase",
+      "label": "ASE: 对抗性技能嵌入",
+      "type": "method",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/methods/add.md",
+      "detail_id": "wiki-methods-add",
+      "label": "ADD: 对抗性微分判别器",
+      "type": "method",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/methods/smp.md",
+      "detail_id": "wiki-methods-smp",
+      "label": "SMP: 基于得分匹配的可复用运动先验",
+      "type": "method",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/methods/motionbricks.md",
+      "detail_id": "wiki-methods-motionbricks",
+      "label": "MotionBricks: 模块化生成式运动合成框架",
+      "type": "method",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/methods/ams.md",
+      "detail_id": "wiki-methods-ams",
+      "label": "AMS: 物理可行性过滤与混合奖励",
+      "type": "method",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/methods/reactor-physics-aware-motion-retargeting.md",
+      "detail_id": "wiki-methods-reactor-physics-aware-motion-retargeting",
+      "label": "ReActor（物理感知 RL 运动重定向）",
+      "type": "method",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/methods/spider-physics-informed-dexterous-retargeting.md",
+      "detail_id": "wiki-methods-spider-physics-informed-dexterous-retargeting",
+      "label": "SPIDER（物理感知采样式灵巧重定向）",
+      "type": "method",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/entities/phc.md",
+      "detail_id": "entity-phc",
+      "label": "PHC（Perpetual Humanoid Control）",
+      "type": "entity",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/project-instinct.md",
+      "detail_id": "entity-project-instinct",
+      "label": "Project Instinct",
+      "type": "entity",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/gr00t-wholebodycontrol.md",
+      "detail_id": "entity-gr00t-wholebodycontrol",
+      "label": "GR00T-WholeBodyControl（人形全身控制统一平台）",
+      "type": "entity",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
     {
       "path": "wiki/methods/sonic-motion-tracking.md",
       "detail_id": "wiki-methods-sonic-motion-tracking",
@@ -66,183 +208,43 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-loco-manip-161-040-homie.md",
-      "detail_id": "entity-paper-loco-manip-161-040-homie",
-      "label": "HOMIE",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-loco-manip-161-022-textop.md",
-      "detail_id": "entity-paper-loco-manip-161-022-textop",
-      "label": "TextOp",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-loco-manip-161-131-open-television.md",
-      "detail_id": "entity-paper-loco-manip-161-131-open-television",
-      "label": "Open-TeleVision",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/entities/berkeley-humanoid-lite.md",
-      "detail_id": "entity-berkeley-humanoid-lite",
-      "label": "Berkeley Humanoid Lite（BHL）",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/regrind-retargeting-guided-rl.md",
-      "detail_id": "wiki-methods-regrind-retargeting-guided-rl",
-      "label": "REGRIND（重定向引导灵巧操作 RL）",
-      "type": "method",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/toporetarget-interaction-preserving-dexterous-retargeting.md",
-      "detail_id": "wiki-methods-toporetarget-interaction-preserving-dexterous-retargeting",
-      "label": "TopoRetarget（交互保留灵巧重定向）",
-      "type": "method",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/methods/spider-physics-informed-dexterous-retargeting.md",
-      "detail_id": "wiki-methods-spider-physics-informed-dexterous-retargeting",
-      "label": "SPIDER（物理感知采样式灵巧重定向）",
-      "type": "method",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/concepts/motion-retargeting-pipeline.md",
-      "detail_id": "wiki-concepts-motion-retargeting-pipeline",
-      "label": "Motion Retargeting Pipeline（动作重定向流水线）",
-      "type": "concept",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/entities/limx-cosa.md",
-      "detail_id": "entity-limx-cosa",
-      "label": "LimX COSA（人形大脑操作系统）",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/fluxvla-engine.md",
-      "detail_id": "entity-fluxvla-engine",
-      "label": "Humanoid FluxVLA Engine",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/tasks/loco-manipulation.md",
-      "detail_id": "wiki-tasks-loco-manipulation",
-      "label": "Loco-Manipulation (移动操作)",
-      "type": "task",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md",
-      "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
-      "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/methods/sonic-motion-tracking.md",
-    "detail_id": "wiki-methods-sonic-motion-tracking",
-    "label": "SONIC（规模化运动跟踪人形控制）",
+    "path": "wiki/methods/beyondmimic.md",
+    "detail_id": "wiki-methods-beyondmimic",
+    "label": "BeyondMimic",
     "type": "method",
     "recency": "2026-07-16",
     "source": "log.md",
     "action": "maintained",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 205
-    },
-    {
-      "label": "仿真到现实",
-      "size": 197
-    },
-    {
-      "label": "人形强化学习运动控制",
-      "size": 191
-    },
-    {
-      "label": "人形论文深读笔记",
-      "size": 182
+      "size": 207
     },
     {
       "label": "移动操作",
-      "size": 108
+      "size": 179
     },
     {
-      "label": "运动控制",
-      "size": 105
+      "label": "人形论文深读笔记",
+      "size": 177
+    },
+    {
+      "label": "全身控制",
+      "size": 165
+    },
+    {
+      "label": "人形强化学习运动控制",
+      "size": 157
+    },
+    {
+      "label": "仿真到现实",
+      "size": 117
     }
   ],
   "top_hubs": [
@@ -281,8 +283,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 230,
-      "community_label": "运动控制（Locomotion） 社区"
+      "degree": 230
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
@@ -304,13 +305,13 @@
       "label": "Paper Notebooks · Loco-Manipulation and WBC",
       "type": "overview",
       "degree": 222,
-      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
       "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
       "label": "人形机器人 RL 运动控制：身体系统栈视角",
       "type": "overview",
-      "degree": 182,
+      "degree": 178,
       "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
@@ -371,14 +372,6 @@
       "degree": 31
     },
     {
-      "detail_id": "entity-kimodo",
-      "label": "Kimodo（可控人体与人形运动扩散）",
-      "type": "entity",
-      "degree": 28,
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
       "detail_id": "entity-paper-bfm-zero",
       "label": "BFM-Zero",
       "type": "entity",
@@ -390,7 +383,13 @@
       "label": "FastStair（Learning to Run Up Stairs with Humanoid Robots）",
       "type": "entity",
       "degree": 28,
-      "community_label": "运动控制（Locomotion） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "detail_id": "entity-paper-perceptive-bfm",
+      "label": "Perceptive BFM：Adapting Human Motion Priors to Robot-Centric Terrain",
+      "type": "entity",
+      "degree": 28
     }
   ]
 }
