@@ -9,6 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md",
+      "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
+      "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
+      "type": "entity",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
       "path": "wiki/entities/dexmal-dw05.md",
       "detail_id": "entity-dexmal-dw05",
       "label": "Dexmal DW05（OpenDW）",
@@ -205,29 +214,16 @@
       "recency": "2026-07-15",
       "source": "log.md",
       "action": "added"
-    },
-    {
-      "path": "wiki/entities/sru-odin.md",
-      "detail_id": "entity-sru-odin",
-      "label": "SRU-Odin（SRU × Odin1 部署套件）",
-      "type": "entity",
-      "recency": "2026-07-15",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/dexmal-dw05.md",
-    "detail_id": "entity-dexmal-dw05",
-    "label": "Dexmal DW05（OpenDW）",
+    "path": "wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md",
+    "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
+    "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
     "type": "entity",
     "recency": "2026-07-16",
     "source": "log.md",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "生成式世界模型（Generative World Models） 社区"
+    "action": "maintained"
   },
   "top_communities": [
     {

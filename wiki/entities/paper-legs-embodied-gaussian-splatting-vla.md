@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, vla, loco-manipulation, 3dgs, gaussian-splatting, sim2real, teleoperation-free, unitree-g1, stanford, sam3d, mujoco]
 status: complete
-updated: 2026-07-08
+updated: 2026-07-16
 arxiv: "2606.01458"
 related:
   - ../tasks/loco-manipulation.md
@@ -21,12 +21,12 @@ sources:
   - ../../sources/papers/legs_arxiv_2606_01458.md
   - ../../sources/blogs/wechat_embodied_ai_lab_legs_vla_3dgs_loco_manip.md
   - ../../sources/sites/legsvla-github-io.md
-summary: "LEGS（arXiv:2606.01458）用 3DGS 背景 + SAM3D mesh 前景 + MuJoCo/Sonic 合成无遥操作人形 loco-manip 演示，motion 与外观解耦可 GPU 重渲染；在 G1 上微调 ψ0/π0.5/GR00T N1.6 匹配或超过 50-demo teleop，并优于 mesh-only 合成基线。"
+summary: "LEGS（arXiv:2606.01458）用 3DGS 背景 + SAM3D mesh 前景 + MuJoCo/Sonic 合成无遥操作人形 loco-manip 演示，motion 与外观解耦可 GPU 重渲染；G1 上 1,110 次真机试验、9/9 (backbone×task) 匹配或超越 teleop，光真实感相对 mesh-only 约 1.6×–3.25×，新外观适应约 15× 低于重采 teleop。"
 ---
 
 # LEGS（Loco-manipulation via Embodied Gaussian Splatting）
 
-**LEGS** 是斯坦福团队提出的 **人形 loco-manipulation VLA 数据工厂**（arXiv:2606.01458，2026-05）：在 **无真人遥操作、无种子演示、无人视频** 的前提下，用 **程序化仿真** 生成带标签演示，并通过 **3D Gaussian Splatting（3DGS）背景 + mesh 前景合成 + 两阶段颜色校准**，使合成图像接近 **Unitree G1 头载 RealSense** 的真机分布。论文在三个递难 pick-place 与 **ψ0、π0.5、GR00T N1.6** 上报告：**纯 LEGS 数据微调** 的策略 **匹配或超过 50 条 teleop**，且全面优于 **SAM3D mesh-only** 消融。
+**LEGS** 是斯坦福团队提出的 **人形 loco-manipulation VLA 数据工厂**（arXiv:2606.01458，2026-05）：在 **无真人遥操作、无种子演示、无人视频** 的前提下，用 **程序化仿真** 生成带标签演示，并通过 **3D Gaussian Splatting（3DGS）背景 + mesh 前景合成 + 两阶段颜色校准**，使合成图像接近 **Unitree G1 头载 RealSense** 的真机分布。论文与 [项目页](https://legsvla.github.io/) 在三个递难 pick-place 与 **ψ0、π0.5、GR00T N1.6** 上报告：**1,110 次真机试验**、**9/9 (backbone×task)** 上 LEGS(200) **匹配或超过** 50-demo teleop；**LEGS(50)** 在同预算下仍 ≥ teleop；全面优于 **SAM3D mesh-only** 消融，且 **LEGS-aug** 在最难外观偏移下可达 **100% / 80% / 40%**（Task 1–3）。
 
 ## 英文缩写速查
 
@@ -49,7 +49,8 @@ summary: "LEGS（arXiv:2606.01458）用 3DGS 背景 + SAM3D mesh 前景 + MuJoCo
 
 - **对准 VLA 数据瓶颈：** 人形 loco-manip 需要同时覆盖 **行走与操作**；teleop 绑定操作员与机时，换场景/物体/语言提示往往要 **重采整条轨迹**。
 - **双通道可信：** 仅物理对不够（mesh 渲染域差）；仅视觉像不够（动作不可执行）。LEGS 把 **MuJoCo 接触物理** 与 **3DGS 光真实感** 放在同一条可扩展管线里。
-- **motion–appearance 解耦：** 18-D 命令流与渲染输入分离 → **同一段 motion 可 GPU 重渲染** 到新桌面/物体/提示词（论文 Table 1：新条件 teleop **>1.5 h** vs LEGS **~0.1 h**）。
+- **motion–appearance 解耦：** 18-D 命令流与渲染输入分离 → **同一段 motion 可 GPU 重渲染** 到新桌面/物体/提示词（论文 Table 1 / 项目页：**~15×** 更便宜——新条件 teleop **>1.5 operator-hr** vs LEGS **~0.1 GPU-hr**）。
+- **光真实感是主增益之一：** 固定管线下，3DGS+校准相对 mesh-only 将端到端成功率提升约 **1.6×–3.25×**（跨三 VLA backbone）；不是单纯堆数据规模。
 - **与姊妹路线对照：** [VIRAL](./paper-viral-humanoid-visual-sim2real.md) / [DoorMan](./paper-doorman-opening-sim2real-door.md) 走 **特权 RL + 视觉蒸馏**；LEGS 走 **预训练 VLA 微调 + 合成模仿数据**，互补阅读 [Loco-Manipulation](../tasks/loco-manipulation.md) 数据面。
 
 ## 流程总览
@@ -107,7 +108,9 @@ flowchart TB
 | 3 | 走–拿–转身–到低桌 **蹲放**（长时程 loco-manip） |
 
 - **对比数据：** Teleop(50)、SAM3D(200)（无 3DGS/校准）、LEGS(200)、LEGS(50)。
-- **报告指标：** 每 (backbone, task) **10 次** 端到端成功率；Task 3 上 teleop **全线 0/10** 而 LEGS(200) 仍有个位数到 **6/10** 成功。
+- **报告指标：** 合计 **1,110** 次真机试验；每 (backbone, task) **10 次** 端到端成功率；**9/9** 格子上 LEGS(200) best or tied；Task 3 上 teleop **全线 0/10** 而 LEGS(200) 为 **5 / 2 / 6**（ψ0 / π0.5 / GR00T N1.6）。
+- **LEGS-aug（外观随机化）：** default-only LEGS(200) 在偏移下可跌至 **0–10%**；**LEGS-aug(50)** 在 objects+scene 最难 shift 上达 **100% / 80% / 40%**（T1–T3），优于同规模 **SAM3D-aug(200)**（60% / 50% / 20%）。
+- **OOD 位姿：** Task 3 上将训练分布外的物体左右摆放仍可做探测性成功（项目页视频叙事；正式协议见论文附录）。
 
 ## 常见误区或局限
 
