@@ -137,7 +137,7 @@ flowchart TB
 - **显式 3D：** 不做 Matrix-3D 式全局 mesh/GS 重建，**持久 editable 3D 资产** 非目标；偏 **视频级 world rollout**。
 - **开源状态：** 论文承诺公开模型/代码/World360；以项目页与仓库实际上线为准。
 
-## 关联页面
+## 关联页面与对比
 
 - [Generative World Models](../methods/generative-world-models.md) — 生成式 WM 总览；PanoWorld 为 **轨迹可控全景** 实例
 - [Video-as-Simulation](../concepts/video-as-simulation.md) — 视频 rollout 作仿真代理的适用边界

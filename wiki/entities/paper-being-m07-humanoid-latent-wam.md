@@ -12,6 +12,7 @@ tags:
   - beingbeyond
 status: complete
 updated: 2026-07-15
+venue: "BeingBeyond Technical Report 2026"
 related:
   - ../concepts/world-action-models.md
   - ../tasks/loco-manipulation.md
@@ -55,7 +56,7 @@ summary: "Being-M0.7（BeingBeyond, 2026-07）：人形 loco-manipulation 潜空
 - **统一人–机 motion 接口：** **head-root** 紧凑表示（头、双手、双脚）既可来自人动作也可经 **FK** 来自机器人轨迹，后训练除 action 标签外还提供 **vision + motion** 监督，推理时还有 **motion 级反馈路径**。
 - **BeingBeyond 谱系延伸：** 与 [Being-H0.7](../methods/being-h07.md)（操作向潜空间 WAM + latent queries）同机构；M0.7 把同一「**不滚像素、用未来结构**」动机推到 **全身 loco-manipulation** 与 **SONIC/G1** 栈。
 
-## 核心结构
+## 核心方法与结构
 
 | 模块 | 作用 |
 |------|------|

@@ -13,6 +13,7 @@ related:
   - ../concepts/sim2real.md
   - ../concepts/physics-fidelity-sim2real-gap.md
   - ../entities/paper-gigaworld-1-policy-evaluation.md
+  - ../queries/embodied-fm-taxonomy-loop.md
 ---
 
 # 概念：仿真评测可复现性 ↔ 真实世界代表性取舍（sim↔real 评测 gap）
@@ -79,6 +80,7 @@ related:
 - [Sim2Real](../concepts/sim2real.md) — 策略迁移 gap，本页评测 gap 与其同源不同落点
 - [物理保真度 sim2real gap](../concepts/physics-fidelity-sim2real-gap.md) — 接触/物理层面 gap 的物理根因
 - [GigaWorld-1（世界模型策略评估器）](../entities/paper-gigaworld-1-policy-evaluation.md) — 「动作忠实 > 视觉逼真」是评测代表性的直接证据
+- [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — WM 世界模型家族被当作策略评估器时，这条评测 gap 是其「世界模型推演层」选型可信度的前提
 
 ## 参考来源
 

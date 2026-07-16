@@ -1,8 +1,8 @@
 # Wiki 健康报告
 
-## [2026-07-15] lint | health-check | 自动化 wiki 健康检查
+## [2026-07-16] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **7** 条信息型预警）：
+共发现 **0** 个问题（另含 **0** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -91,20 +91,17 @@
 ### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（1 个）
-- wiki/entities/paper-being-m07-humanoid-latent-wam.md
+### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
+- 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（4 个）
-- wiki/entities/paper-being-m07-humanoid-latent-wam.md（缺 方法）
-- wiki/entities/paper-eventvla-visual-evidence-memory.md（缺 评测）
-- wiki/entities/paper-panoworld-real-world-panoramic-generation.md（缺 对比）
-- wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md（缺 方法 / 对比）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（1 个）
-- wiki/entities/paper-gigaworld-1-policy-evaluation.md（含绝对化措辞「SOTA」，updated=2026-07-14；同主题更新页 wiki/entities/paper-being-m07-humanoid-latent-wam.md updated=2026-07-15）
+### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -112,7 +109,7 @@
 ### 💡 接触/力控/操作概念页缺回链「接触力旋量闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」专题枢纽（信息型，不阻塞 CI）（1 个）
-- wiki/concepts/sim-vs-real-eval-gap.md
+### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
+- 无
 
 📊 Sources 覆盖率：1598/1628 (98%) wiki/entity 页有 ingest 来源
