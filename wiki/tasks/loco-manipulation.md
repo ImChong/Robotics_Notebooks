@@ -302,6 +302,7 @@ flowchart TD
 - **ingest 档案：** [sources/papers/humanoidarena_arxiv_2606_17833.md](../../sources/papers/humanoidarena_arxiv_2606_17833.md) — HumanoidArena：egocentric 分层全身 benchmark + 双 GMT 接口诊断（arXiv:2606.17833）
 - **ingest 档案：** [sources/papers/contactmimic_arxiv_2607_08742.md](../../sources/papers/contactmimic_arxiv_2607_08742.md) — ContactMimic：keypoint + per-body contact 指令与 G1 真机 contact controllability（arXiv:2607.08742）
 - **ingest 档案：** [sources/blogs/flexion_reflect_v1_0.md](../../sources/blogs/flexion_reflect_v1_0.md) — Flexion Reflect v1.0：长程 NL mission 跨楼层 loco-manip 产业演示（2026-06）
+- **ingest 档案：** [sources/blogs/limx_cosa_05_release_2026-07-15.md](../../sources/blogs/limx_cosa_05_release_2026-07-15.md) — LimX COSA 0.5：S2/S1/S0 调度 V³-0 VLA + WBT，Oli 一镜到底家务 Demo（2026-07）
 
 ## 一句话记忆
 

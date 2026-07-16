@@ -1,13 +1,54 @@
 {
   "generated_at": "2026-07-16",
-  "node_count": 1649,
-  "edge_count": 12823,
+  "node_count": 1651,
+  "edge_count": 12847,
   "coverage": {
-    "covered": 1602,
-    "total": 1632,
+    "covered": 1604,
+    "total": 1634,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/limx-cosa.md",
+      "detail_id": "entity-limx-cosa",
+      "label": "LimX COSA（人形大脑操作系统）",
+      "type": "entity",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/fluxvla-engine.md",
+      "detail_id": "entity-fluxvla-engine",
+      "label": "Humanoid FluxVLA Engine",
+      "type": "entity",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/loco-manipulation.md",
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    },
     {
       "path": "wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md",
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
@@ -173,62 +214,21 @@
       "recency": "2026-07-16",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/robo-bench.md",
-      "detail_id": "entity-robo-bench",
-      "label": "RoboBench（MLLM 具身大脑综合评测）",
-      "type": "entity",
-      "recency": "2026-07-15",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/ewmbench.md",
-      "detail_id": "entity-ewmbench",
-      "label": "EWMBench（具身世界模型生成评测）",
-      "type": "entity",
-      "recency": "2026-07-15",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-gigaworld-1-policy-evaluation.md",
-      "detail_id": "entity-paper-gigaworld-1-policy-evaluation",
-      "label": "GigaWorld-1（World Models for Robot Policy Evaluation · arXiv:2607.02642）",
-      "type": "entity",
-      "recency": "2026-07-15",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md",
-      "detail_id": "entity-paper-sru-spatially-enhanced-recurrent-memory",
-      "label": "SRU（Spatially-Enhanced Recurrent Memory）",
-      "type": "entity",
-      "recency": "2026-07-15",
-      "source": "log.md",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md",
-    "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
-    "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
+    "path": "wiki/entities/limx-cosa.md",
+    "detail_id": "entity-limx-cosa",
+    "label": "LimX COSA（人形大脑操作系统）",
     "type": "entity",
     "recency": "2026-07-16",
     "source": "log.md",
-    "action": "maintained"
+    "action": "added"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 206
+      "size": 207
     },
     {
       "label": "全身控制",
@@ -271,7 +271,7 @@
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
-      "degree": 275,
+      "degree": 277,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
@@ -279,7 +279,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 253,
+      "degree": 257,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -309,7 +309,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 221,
+      "degree": 222,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -382,17 +382,17 @@
       "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
+      "detail_id": "entity-paper-faststair-humanoid-stair-ascent",
+      "label": "FastStair（Learning to Run Up Stairs with Humanoid Robots）",
+      "type": "entity",
+      "degree": 28,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "detail_id": "entity-paper-perceptive-bfm",
       "label": "Perceptive BFM：Adapting Human Motion Priors to Robot-Centric Terrain",
       "type": "entity",
       "degree": 28
-    },
-    {
-      "detail_id": "entity-paper-faststair-humanoid-stair-ascent",
-      "label": "FastStair（Learning to Run Up Stairs with Humanoid Robots）",
-      "type": "entity",
-      "degree": 27,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ]
 }

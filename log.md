@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-16] ingest | sources/blogs/limx_cosa_05_release_2026-07-15.md — LimX COSA 0.5 / FluxVLA Engine 实体页与 VLA、loco-manipulation 交叉更新
+
+- wiki/entities/limx-cosa.md
+- wiki/entities/fluxvla-engine.md
+- wiki/methods/vla.md
+- wiki/tasks/loco-manipulation.md
+- sources/blogs/limx_cosa_05_release_2026-07-15.md
+
 ## [2026-07-16] ingest | sources/sites/legsvla-github-io.md — 刷新 LEGS 项目页摘录（1,110 trials、9/9、LEGS-AUG、~15× 成本）；wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md
 
 - wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md

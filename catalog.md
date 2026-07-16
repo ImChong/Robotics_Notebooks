@@ -92,6 +92,7 @@
 - [Figure AI](wiki/entities/figure-ai.md) — Figure AI** 构建「全栈人形」：**Figure 系列硬件** + **Helix 系列 VLA 模型**，目标是在真实家庭与物流场景中完成语言条件下的全身操作与移动。 `📅unknown` `[entity_page]`
 - [Flexion Reflect v1.0（长程人形自主平台）](wiki/entities/flexion-reflect-v1.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [Flightmare](wiki/entities/flightmare.md) — Flightmare**（uzh-rpg/flightmare）是苏黎世大学 **Robotics and Per `📅unknown` `[entity_page]`
+- [Humanoid FluxVLA Engine](wiki/entities/fluxvla-engine.md) — Humanoid FluxVLA Engine** 是 **逐际动力（LimX Dynamics）** 随 **COSA 0.5**（2026-07）同步开源的 **人形 VLA 全栈工程框架 `📅unknown` `[entity_page]`
 - [flying_knots_public（开源仓库）](wiki/entities/flying-knots-public.md) — flying_knots_public** 是 CMU Flying Knots 论文的 **MIT 许可研究代码快照**，实现 **示教采集 → 清洗标注 → IK 初始命令 → Task-Le `📅unknown` `[entity_page]`
 - [傅利叶 GRX N1（开源人形）](wiki/entities/fourier-grx-n1.md) — Fourier GRX N1** 是傅利叶智能在 GitHub 组织 **FFTAI** 下维护的开源人形软硬件栈之一；公开资料以  `📅unknown` `[entity_page]`
 - [Franka Research 3](wiki/entities/franka-research-3.md) — Franka Research 3** 是 **Franka Robotics** 面向 **科研与教育** 的 **七轴力控协作臂**：技术文档在 **[frankarobotics.githu `📅unknown` `[entity_page]`
@@ -172,6 +173,7 @@
 - [LeGO-LOAM](wiki/entities/lego-loam.md) — LeGO-LOAM** 在 LOAM 基础上增加 **地面分割与地面优化**，降低起伏地形的漂移。 `📅unknown` `[entity_page]`
 - [LeRobot (Hugging Face)](wiki/entities/lerobot.md) — LeRobot** 是由 Hugging Face 开发并维护的一个**具身智能全栈框架**。它旨在将自然语言处理（NLP）领域的成熟生态（如 `transformers` 库和模型 Hub）迁移 `📅unknown` `[entity_page]`
 - [LIFT（人形大规模预训练 + 高效微调）](wiki/entities/lift-humanoid.md) — LIFT**（论文缩写：**L**arge-scale pretra**I**ning and efficient **F**ine**T**uning）是面向 **人形机器人 locomotio `📅unknown` `[entity_page]`
+- [LimX COSA（人形大脑操作系统）](wiki/entities/limx-cosa.md) — LimX COSA**（**C**ognitive **OS** of **A**gents）是 **逐际动力（LimX Dynamics）** 面向全尺寸人形的 **物理世界原生 Agent 操 `📅unknown` `[entity_page]`
 - [线性代数学习策展（机器人 L0）](wiki/entities/linear-algebra-curriculum.md) — 一句话：** 机器人运动控制把位姿、速度、力都写成向量和矩阵；本页把 Georgia Tech ILA、[Axl `📅unknown` `[entity_page]`
 - [LingBot-VLA 2.0](wiki/entities/lingbot-vla-v2.md) — LingBot-VLA 2.0**（*From Foundation to Application: Improving VLA Models in Practice*，[arXiv:2607.0 `📅unknown` `[entity_page]`
 - [LIO-SAM](wiki/entities/lio-sam.md) — LIO-SAM** 将 **IMU 预积分、scan-to-map 与回环** 纳入统一因子图优化。 `📅unknown` `[entity_page]`

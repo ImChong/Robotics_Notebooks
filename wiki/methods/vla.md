@@ -47,6 +47,8 @@ related:
   - ../entities/paper-mint-vla.md
   - ../entities/paper-evo1-lightweight-vla.md
   - ../entities/lingbot-vla-v2.md
+  - ../entities/limx-cosa.md
+  - ../entities/fluxvla-engine.md
   - ../entities/paper-steam-advantage-modeling.md
   - ../entities/paper-internvla-a15-unified-vla.md
   - ../entities/dexmal-dm05.md
@@ -64,6 +66,7 @@ sources:
   - ../../sources/repos/sceneverse-pp.md
   - ../../sources/repos/rldx-1.md
   - ../../sources/repos/robot-io-rio.md
+  - ../../sources/blogs/limx_cosa_05_release_2026-07-15.md
   - ../../sources/repos/xiaomi-robotics-0.md
   - ../../sources/papers/being_h07.md
   - ../../sources/papers/humannet.md
@@ -336,6 +339,8 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [LaST-HD（潜式物理推理 + 人手数据）](../entities/paper-last-hd-latent-physical-reasoning.md) — 世界模型对齐跨具身潜空间与 mixed-to-human 训练（arXiv:2606.23685）
 - [Cyclo Intelligence（ROBOTIS Physical AI 栈）](../entities/cyclo-intelligence.md) — Docker 化数据/训练/推理 + BT 任务机
 - [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md) — BT 生命周期与 VLA chunk 分层模式
+- [LimX COSA（人形大脑 OS）](../entities/limx-cosa.md) — S2/S1/S0 调度 V³-0 VLA + LimX WBT 的产业长程 loco-manipulation 栈（2026-07）
+- [FluxVLA Engine](../entities/fluxvla-engine.md) — 逐际开源人形 VLA 训练/推理工程底座（π0.5/GR00T/OpenVLA 等）
 
 ## 推荐继续阅读
 
