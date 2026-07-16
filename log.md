@@ -1,5 +1,14 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-16] ingest | sources/repos/graphify-labs_graphify.md — Graphify 多模态知识图 Agent Skill；wiki/entities/graphify.md；交叉更新 llm-wiki-karpathy / superpowers / agent-reach / caveman
+
+- wiki/entities/graphify.md
+- wiki/references/llm-wiki-karpathy.md
+- wiki/entities/superpowers-obra.md
+- wiki/entities/agent-reach.md
+- wiki/entities/caveman.md
+- sources/repos/graphify-labs_graphify.md
+
 ## [2026-07-16] ingest | sources/papers/gaitspan_arxiv_2607_12114.md — GaitSpan 行走种子技能生长；wiki/entities/paper-gaitspan-humanoid-locomotion-walking-running.md、wiki/tasks/humanoid-locomotion.md
 
 ## [2026-07-15] structural | V29 P1「评测基准家族层专题交叉补强」——robo-bench / ewmbench / gigaworld-1 三页与「具身大模型评测基准选型闭环」Query 页双向回链，标注各自评测层

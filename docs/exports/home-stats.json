@@ -1,13 +1,67 @@
 {
   "generated_at": "2026-07-16",
-  "node_count": 1646,
-  "edge_count": 12789,
+  "node_count": 1647,
+  "edge_count": 12799,
   "coverage": {
-    "covered": 1599,
-    "total": 1629,
+    "covered": 1600,
+    "total": 1630,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/graphify.md",
+      "detail_id": "entity-graphify",
+      "label": "graphify（Graphify Labs）",
+      "type": "entity",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/references/llm-wiki-karpathy.md",
+      "detail_id": "wiki-references-llm-wiki-karpathy",
+      "label": "LLM Wiki",
+      "type": "reference",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/superpowers-obra.md",
+      "detail_id": "entity-superpowers-obra",
+      "label": "Superpowers（obra）",
+      "type": "entity",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/agent-reach.md",
+      "detail_id": "entity-agent-reach",
+      "label": "Agent Reach（Panniantong）",
+      "type": "entity",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/caveman.md",
+      "detail_id": "entity-caveman",
+      "label": "Caveman",
+      "type": "entity",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-gaitspan-humanoid-locomotion-walking-running.md",
       "detail_id": "entity-paper-gaitspan-humanoid-locomotion-walking-running",
@@ -160,73 +214,23 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/genception.md",
-      "detail_id": "entity-genception",
-      "label": "GenCeption",
-      "type": "entity",
-      "recency": "2026-07-15",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/xiaomi-robotics-u0.md",
-      "detail_id": "entity-xiaomi-robotics-u0",
-      "label": "Xiaomi-Robotics-U0",
-      "type": "entity",
-      "recency": "2026-07-15",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/xiaomi-robotics-0.md",
-      "detail_id": "entity-xiaomi-robotics-0",
-      "label": "Xiaomi-Robotics-0",
-      "type": "entity",
-      "recency": "2026-07-15",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-being-m07-humanoid-latent-wam.md",
-      "detail_id": "entity-paper-being-m07-humanoid-latent-wam",
-      "label": "Being-M0.7（人形潜空间 World–Action Model）",
-      "type": "entity",
-      "recency": "2026-07-15",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/learn-robotics-qqfly-guide.md",
-      "detail_id": "entity-learn-robotics-qqfly-guide",
-      "label": "开源机器人学学习指南（qqfly）",
-      "type": "entity",
-      "recency": "2026-07-15",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-gaitspan-humanoid-locomotion-walking-running.md",
-    "detail_id": "entity-paper-gaitspan-humanoid-locomotion-walking-running",
-    "label": "GaitSpan：从行走到跑步的人形技能生长",
+    "path": "wiki/entities/graphify.md",
+    "detail_id": "entity-graphify",
+    "label": "graphify（Graphify Labs）",
     "type": "entity",
     "recency": "2026-07-16",
     "source": "log.md",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 280
+      "size": 281
     },
     {
       "label": "人形论文深读笔记",
