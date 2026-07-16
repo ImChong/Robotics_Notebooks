@@ -1022,7 +1022,9 @@ def _check_duplicate_arxiv(pages: list[Path], results: dict[str, Any]) -> None:
         arxiv_pages.setdefault(m.group(1), []).append(str(page.relative_to(REPO_ROOT)))
     for arxiv_id, page_list in sorted(arxiv_pages.items()):
         if len(page_list) > 1:
-            results["duplicate_arxiv"].append(f"arXiv:{arxiv_id} → {' 与 '.join(sorted(page_list))}")
+            results["duplicate_arxiv"].append(
+                f"arXiv:{arxiv_id} → {' 与 '.join(sorted(page_list))}"
+            )
 
 
 def _check_paper_entity_metadata(pages: list[Path], results: dict[str, Any]) -> None:
