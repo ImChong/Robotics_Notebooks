@@ -1,13 +1,44 @@
 {
   "generated_at": "2026-07-16",
-  "node_count": 1637,
-  "edge_count": 12871,
+  "node_count": 1638,
+  "edge_count": 12877,
   "coverage": {
-    "covered": 1590,
-    "total": 1620,
+    "covered": 1591,
+    "total": 1621,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-muninn-trajectory-diffusion-acceleration.md",
+      "detail_id": "entity-paper-muninn-trajectory-diffusion-acceleration",
+      "label": "Muninn（轨迹扩散免训练加速）",
+      "type": "entity",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/diffusion-policy.md",
+      "detail_id": "wiki-methods-diffusion-policy",
+      "label": "Diffusion Policy",
+      "type": "method",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/diffusion-motion-generation.md",
+      "detail_id": "wiki-methods-diffusion-motion-generation",
+      "label": "Diffusion-based Motion Generation (基于扩散模型的运动生成)",
+      "type": "method",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/paper-neuralactuator-neural-actuation-modeling.md",
       "detail_id": "entity-paper-neuralactuator-neural-actuation-modeling",
@@ -172,52 +203,23 @@
       "source": "log.md",
       "action": "added",
       "community_label": "人形对抗式运动先验（Humanoid Adversarial Motion Prior, AMP） 社区"
-    },
-    {
-      "path": "wiki/methods/smp.md",
-      "detail_id": "wiki-methods-smp",
-      "label": "SMP: 基于得分匹配的可复用运动先验",
-      "type": "method",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/methods/motionbricks.md",
-      "detail_id": "wiki-methods-motionbricks",
-      "label": "MotionBricks: 模块化生成式运动合成框架",
-      "type": "method",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/methods/ams.md",
-      "detail_id": "wiki-methods-ams",
-      "label": "AMS: 物理可行性过滤与混合奖励",
-      "type": "method",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-neuralactuator-neural-actuation-modeling.md",
-    "detail_id": "entity-paper-neuralactuator-neural-actuation-modeling",
-    "label": "NeuralActuator（Neural Actuation Modeling · arXiv:2607.11734）",
+    "path": "wiki/entities/paper-muninn-trajectory-diffusion-acceleration.md",
+    "detail_id": "entity-paper-muninn-trajectory-diffusion-acceleration",
+    "label": "Muninn（轨迹扩散免训练加速）",
     "type": "entity",
     "recency": "2026-07-16",
     "source": "log.md",
     "action": "added",
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "has_repo": true,
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 278
+      "size": 279
     },
     {
       "label": "人形论文深读笔记",
@@ -276,7 +278,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 233,
+      "degree": 234,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -289,7 +291,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 226,
+      "degree": 227,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },

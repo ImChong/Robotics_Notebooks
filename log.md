@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-16] ingest | sources/papers/muninn_arxiv_2605_09999.md + sources/repos/muninn.md — Muninn 轨迹扩散免训练缓存加速（RSS 2026）；wiki/entities/paper-muninn-trajectory-diffusion-acceleration.md
+
+- wiki/entities/paper-muninn-trajectory-diffusion-acceleration.md
+- wiki/methods/diffusion-policy.md
+- wiki/methods/diffusion-motion-generation.md
+- sources/papers/muninn_arxiv_2605_09999.md
+- sources/repos/muninn.md
+
 ## [2026-07-16] ingest | sources/papers/neuralactuator_arxiv_2607_11734.md — 新增 NeuralActuator 论文实体；交叉更新 actuator-network / BAM
 
 - wiki/entities/paper-neuralactuator-neural-actuation-modeling.md
