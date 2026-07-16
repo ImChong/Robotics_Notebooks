@@ -4,6 +4,7 @@ tags: [paper, sim2real, actuator, differentiable-simulation, force-estimation, t
 status: complete
 updated: 2026-07-16
 arxiv: "2607.11734"
+code: https://github.com/Frank-ZY-Dou/Dynamics-Modeling/tree/main/NeuralActuator
 related:
   - ../concepts/sim2real.md
   - ../concepts/system-identification.md
@@ -20,7 +21,7 @@ summary: "MIT CDFG：Transformer 执行器模型联合预测可微仿真 torque 
 
 # NeuralActuator（Neural Actuation Modeling · arXiv:2607.11734）
 
-**NeuralActuator**（*Neural Actuation Modeling for Robot Dynamics and External Force Perception*，[arXiv:2607.11734](https://arxiv.org/abs/2607.11734)，MIT CDFG 等，[项目页](https://frank-zy-dou.github.io/projects/NeuralActuator/index.html)）面向 **低成本舵机操作臂**，用 **历史相关的 Transformer** 同时学习：(i) **可微仿真所需的广义力矩 surrogate**（无需直接 effort 标签）；(ii) **部署时无 F/T 传感器的外力估计 + 接触概率门控**；(iii) **电机工况分数**。配套发布 **Neural Actuation Dataset（NAD）** 与 **双臂 leader–follower 遥操作采集系统**。
+**NeuralActuator**（*Neural Actuation Modeling for Robot Dynamics and External Force Perception*，[arXiv:2607.11734](https://arxiv.org/abs/2607.11734)，MIT CDFG 等，[项目页](https://frank-zy-dou.github.io/projects/NeuralActuator/index.html)，[代码](https://github.com/Frank-ZY-Dou/Dynamics-Modeling/tree/main/NeuralActuator)）面向 **低成本舵机操作臂**，用 **历史相关的 Transformer** 同时学习：(i) **可微仿真所需的广义力矩 surrogate**（无需直接 effort 标签）；(ii) **部署时无 F/T 传感器的外力估计 + 接触概率门控**；(iii) **电机工况分数**。配套发布 **Neural Actuation Dataset（NAD）** 与 **双臂 leader–follower 遥操作采集系统**。
 
 ## 一句话定义
 
@@ -139,6 +140,7 @@ flowchart TB
 
 - [NeuralActuator 论文（arXiv:2607.11734）](https://arxiv.org/abs/2607.11734)
 - [项目页与定量结果表](https://frank-zy-dou.github.io/projects/NeuralActuator/index.html)
+- [官方代码（Dynamics-Modeling/NeuralActuator）](https://github.com/Frank-ZY-Dou/Dynamics-Modeling/tree/main/NeuralActuator)
 - [Actuator Network（ANYmal 经典路线）](../methods/actuator-network.md)
 - [BAM：舵机解析摩擦 sim2real](./paper-bam-extended-friction-servo-actuators.md)
 
@@ -147,3 +149,4 @@ flowchart TB
 - [NeuralActuator 论文归档](../../sources/papers/neuralactuator_arxiv_2607_11734.md)
 - Dou et al., *NeuralActuator: Neural Actuation Modeling for Robot Dynamics and External Force Perception*, arXiv:2607.11734
 - [项目页](https://frank-zy-dou.github.io/projects/NeuralActuator/index.html)
+- [Frank-ZY-Dou/Dynamics-Modeling（NeuralActuator 子目录）](https://github.com/Frank-ZY-Dou/Dynamics-Modeling/tree/main/NeuralActuator)

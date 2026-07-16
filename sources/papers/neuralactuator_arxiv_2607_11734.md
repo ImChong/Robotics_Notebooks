@@ -9,6 +9,7 @@
 - **PDF：** <https://arxiv.org/pdf/2607.11734>
 - **HTML：** <https://arxiv.org/html/2607.11734>
 - **项目页：** <https://frank-zy-dou.github.io/projects/NeuralActuator/index.html>
+- **代码：** <https://github.com/Frank-ZY-Dou/Dynamics-Modeling/tree/main/NeuralActuator>（`Dynamics-Modeling` 仓库子目录）
 - **入库日期：** 2026-07-16
 - **一句话说明：** 面向低成本舵机平台的 **Transformer 执行器模型**：联合预测 **可微仿真用广义力矩 surrogate**、**无 F/T 传感器的外力与接触门控** 与 **电机工况分数**；发布 **NAD** 双臂遥操作数据集；在 OpenManipulator-X / SO-101 / Franka 上验证动力学 rollout、力估计与 BC 下游增益。
 
