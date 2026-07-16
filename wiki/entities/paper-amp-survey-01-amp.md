@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation, berkeley, sjtu, siggraph]
 status: complete
-updated: 2026-07-06
+updated: 2026-07-16
 venue: SIGGRAPH 2021
 summary: "AMP（SIGGRAPH 2021）用对抗判别器约束状态转移接近 MoCap 分布，而非逐帧跟踪参考 clip，奠定人形/角色 physics-based 风格先验范式。"
 related:
@@ -96,7 +96,7 @@ flowchart TB
 
 1. **AMP = 动作克隆：** 核心是**分布匹配**，不是 replay 某条参考；同一策略可完成参考库中未出现的任务（如 dodge、新速度）。
 2. **判别器可永久冻结：** 经典 AMP 中判别器与策略**共训**；与 [SMP #03](./paper-amp-survey-03-smp.md)「预训练冻结先验」是不同工程路线。
-3. **任何任务都该加满 AMP：** [Selective AMP](../methods/amp-reward.md) 与 [SD-AMP #10](./paper-amp-survey-10-unified_walking_running_and_recovery.md) 表明高动态 recovery 与稳态 walk 可能需要**不同先验或门控**，而非单一全局判别器硬套全身。
+3. **任何任务都该加满 AMP：** [Selective AMP](../methods/amp-reward.md) 与 [SD-AMP #10](./paper-unified-walk-run-recovery-sdamp.md) 表明高动态 recovery 与稳态 walk 可能需要**不同先验或门控**，而非单一全局判别器硬套全身。
 4. **只做人形才需要读 AMP：** 原文为 **physics-based character**；人形只是 AMP 专题把该范式推到机器人平台的策展主线。
 
 ## 实验与评测

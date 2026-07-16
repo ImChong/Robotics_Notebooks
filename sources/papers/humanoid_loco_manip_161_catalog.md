@@ -32,7 +32,7 @@
 | 016 | OmniH2O | [paper-loco-manip-161-016-omnih2o](../../wiki/entities/paper-hrl-stack-08-omnih2o.md) |
 | 017 | OmniRetarget | [paper-loco-manip-161-017-omniretarget](../../wiki/entities/paper-hrl-stack-03-omniretarget.md) |
 | 018 | Retargeting | [paper-loco-manip-161-018-retargeting](../../wiki/entities/paper-hrl-stack-01-retargeting_matters.md) |
-| 019 | SONIC | [paper-sonic](../../wiki/entities/paper-sonic.md) |
+| 019 | SONIC | [sonic-motion-tracking](../../wiki/methods/sonic-motion-tracking.md) |
 | 020 | TWIST2 | [paper-loco-manip-161-020-twist2](../../wiki/entities/paper-twist2.md) |
 | 021 | TWIST | [paper-loco-manip-161-021-twist](../../wiki/entities/paper-twist.md) |
 | 022 | TextOp | [paper-loco-manip-161-022-textop](../../wiki/entities/paper-loco-manip-161-022-textop.md) |
@@ -69,11 +69,11 @@
 | 046 | Sumo | [paper-loco-manip-161-046-sumo](../../wiki/methods/sumo.md) |
 | 047 | Thor | [paper-loco-manip-161-047-thor](../../wiki/entities/paper-hrl-stack-42-thor.md) |
 | 048 | ULC | [paper-loco-manip-161-048-ulc](../../wiki/entities/paper-loco-manip-161-048-ulc.md) |
-| 049 | VIRAL | [paper-loco-manip-161-049-viral](../../wiki/entities/paper-hrl-stack-28-viral.md) |
+| 049 | VIRAL | [paper-loco-manip-161-049-viral](../../wiki/entities/paper-viral-humanoid-visual-sim2real.md) |
 | 050 | VOFA | [paper-loco-manip-161-050-vofa](../../wiki/entities/paper-loco-manip-161-050-vofa.md) |
 | 051 | WholeBodyVLA | [paper-loco-manip-161-051-wholebodyvla](../../wiki/entities/paper-hrl-stack-30-wholebodyvla.md) |
 | 052 | 价值网络结构很重要 | [paper-loco-manip-161-052-n052](../../wiki/entities/paper-loco-manip-161-052-n052.md) |
-| 053 | 打开仿真到现实世界的人形像素到动作策略传输之门 | [paper-loco-manip-161-053-n053](../../wiki/entities/paper-hrl-stack-29-opening_the_sim_to_real_door_for_hum.md) |
+| 053 | 打开仿真到现实世界的人形像素到动作策略传输之门 | [paper-loco-manip-161-053-n053](../../wiki/entities/paper-doorman-opening-sim2real-door.md) |
 | 054 | 用于人形策略学习的对抗性运动和运动模仿 | [paper-loco-manip-161-054-n054](../../wiki/entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md) |
 | 055 | 用于跨人形运动的可扩展和通用全身控制 | [paper-loco-manip-161-055-n055](../../wiki/entities/paper-loco-manip-161-055-n055.md) |
 
@@ -108,7 +108,7 @@
 | 078 | StageACT | [paper-loco-manip-161-078-stageact](../../wiki/entities/paper-loco-manip-161-078-stageact.md) |
 | 079 | SynAgent | [paper-loco-manip-161-079-synagent](../../wiki/entities/paper-loco-manip-161-079-synagent.md) |
 | 080 | TrajBooster | [paper-loco-manip-161-080-trajbooster](../../wiki/entities/paper-loco-manip-161-080-trajbooster.md) |
-| 081 | VIRAL | [paper-loco-manip-161-081-viral](../../wiki/entities/paper-hrl-stack-28-viral.md) |
+| 081 | VIRAL | [paper-loco-manip-161-081-viral](../../wiki/entities/paper-viral-humanoid-visual-sim2real.md) |
 | 082 | VisualMimic | [paper-loco-manip-161-082-visualmimic](../../wiki/entities/paper-notebook-visualmimic.md) |
 | 083 | WholeBodyVLA | [paper-loco-manip-161-083-wholebodyvla](../../wiki/entities/paper-hrl-stack-30-wholebodyvla.md) |
 | 084 | 人形操作接口 | [paper-loco-manip-161-084-n084](../../wiki/entities/paper-loco-manip-161-084-n084.md) |
@@ -116,7 +116,7 @@
 | 086 | 使用3D扩散策略的通用人形操作 | [paper-loco-manip-161-086-n086](../../wiki/entities/paper-loco-manip-161-086-n086.md) |
 | 087 | 具有选择策略的协调人形操作 | [paper-loco-manip-161-087-n087](../../wiki/entities/paper-loco-manip-161-087-n087.md) |
 | 088 | 基于基础模型的自主人形抓取快速部署管道 | [paper-loco-manip-161-088-n088](../../wiki/entities/paper-loco-manip-161-088-n088.md) |
-| 089 | 打开仿真到现实世界的人形像素到动作策略传输之门 | [paper-loco-manip-161-089-n089](../../wiki/entities/paper-hrl-stack-29-opening_the_sim_to_real_door_for_hum.md) |
+| 089 | 打开仿真到现实世界的人形像素到动作策略传输之门 | [paper-loco-manip-161-089-n089](../../wiki/entities/paper-doorman-opening-sim2real-door.md) |
 | 090 | 通过带有多模态基础模型的具体行动链推理的人形智能体用于零样本移动操作 | [paper-loco-manip-161-090-n090](../../wiki/entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md) |
 | 091 | 通过真实部署就绪的技能空间释放人形机器人的潜力 | [paper-loco-manip-161-091-n091](../../wiki/entities/paper-loco-manip-161-091-n091.md) |
 | 092 | 通过触摸梦学习多样化人形操作 | [paper-loco-manip-161-092-n092](../../wiki/entities/paper-loco-manip-161-092-n092.md) |
@@ -137,9 +137,9 @@
 | 100 | MotionWAM | [paper-loco-manip-161-100-motionwam](../../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md) |
 | 101 | OMG | [paper-loco-manip-161-101-omg](../../wiki/entities/paper-omg-omni-modal-humanoid-control.md) |
 | 102 | Robot Motion Diffusion Model | [paper-loco-manip-161-102-robot-motion-diffusion-model](../../wiki/entities/paper-loco-manip-161-102-robot-motion-diffusion-model.md) |
-| 103 | SONIC | [paper-sonic](../../wiki/entities/paper-sonic.md) |
+| 103 | SONIC | [sonic-motion-tracking](../../wiki/methods/sonic-motion-tracking.md) |
 | 104 | SafeFlow | [paper-loco-manip-161-104-safeflow](../../wiki/entities/paper-loco-manip-161-104-safeflow.md) |
-| 105 | TextOp | [paper-loco-manip-161-105-textop](../../wiki/entities/paper-loco-manip-161-105-textop.md) |
+| 105 | TextOp | [paper-loco-manip-161-022-textop](../../wiki/entities/paper-loco-manip-161-022-textop.md) |
 | 106 | 从语言到运动 | [paper-loco-manip-161-106-n106](../../wiki/entities/paper-loco-manip-161-106-n106.md) |
 | 107 | 使用潜在扩散模型进行物理一致的人形移动操作 | [paper-loco-manip-161-107-n107](../../wiki/entities/paper-loco-manip-161-107-n107.md) |
 | 108 | 揭示数据和模型扩展对人形机器人高级控制的影响 | [paper-loco-manip-161-108-n108](../../wiki/entities/paper-loco-manip-161-108-n108.md) |
@@ -184,7 +184,7 @@
 | # | 工作 | Wiki 实体 |
 |---|------|-----------|
 | 128 | BifrostUMI | [paper-loco-manip-161-128-bifrostumi](../../wiki/entities/paper-bifrost-umi.md) |
-| 129 | HOMIE | [paper-loco-manip-161-129-homie](../../wiki/entities/paper-loco-manip-161-129-homie.md) |
+| 129 | HOMIE | [paper-loco-manip-161-040-homie](../../wiki/entities/paper-loco-manip-161-040-homie.md) |
 | 130 | HumanoidExo | [paper-loco-manip-161-130-humanoidexo](../../wiki/entities/paper-loco-manip-161-067-humanoidexo.md) |
 | 131 | Open-TeleVision | [paper-loco-manip-161-131-open-television](../../wiki/entities/paper-loco-manip-161-131-open-television.md) |
 | 132 | TWIST2 | [paper-loco-manip-161-132-twist2](../../wiki/entities/paper-twist2.md) |
@@ -201,7 +201,7 @@
 | 136 | DemoHLM | [paper-loco-manip-161-136-demohlm](../../wiki/entities/paper-loco-manip-161-136-demohlm.md) |
 | 137 | Gallant | [paper-loco-manip-161-137-gallant](../../wiki/entities/paper-loco-manip-161-137-gallant.md) |
 | 138 | Mobile-TeleVision | [paper-loco-manip-161-138-mobile-television](../../wiki/entities/paper-loco-manip-161-138-mobile-television.md) |
-| 139 | Open-TeleVision | [paper-loco-manip-161-139-open-television](../../wiki/entities/paper-loco-manip-161-139-open-television.md) |
+| 139 | Open-TeleVision | [paper-loco-manip-161-131-open-television](../../wiki/entities/paper-loco-manip-161-131-open-television.md) |
 | 140 | TWIST2 | [paper-loco-manip-161-140-twist2](../../wiki/entities/paper-twist2.md) |
 | 141 | ToddlerBot | [paper-loco-manip-161-141-toddlerbot](../../wiki/entities/paper-loco-manip-161-141-toddlerbot.md) |
 | 142 | 具有实时基础地形重建的步态自适应感知人形运动 | [paper-loco-manip-161-142-n142](../../wiki/entities/paper-loco-manip-161-142-n142.md) |

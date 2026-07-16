@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, loco-manip-survey, sim2real, teleoperation, flow-matching, domain-randomization, unitree-g1, isaac-sim, teleai]
 status: complete
-updated: 2026-07-08
+updated: 2026-07-16
 arxiv: "2606.08548"
 code: https://github.com/TeleHuman/OASIS
 project: https://oasis-humanoid.github.io/

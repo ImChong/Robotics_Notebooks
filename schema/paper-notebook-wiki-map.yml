@@ -132,8 +132,8 @@ overrides:
   - wiki/tasks/teleoperation.md
   SONIC_Supersizing_Motion_Tracking_for_Natural_Humanoid_Control:
   - wiki/methods/sonic-motion-tracking.md
-  - wiki/entities/paper-sonic.md
-  - wiki/entities/paper-sonic.md
+  - wiki/methods/sonic-motion-tracking.md
+  - wiki/methods/sonic-motion-tracking.md
   STATE-NAV__Stability-Aware_Traversability_Estimation_for_Bipedal_Navigation_on_Rough_Terrain:
   - wiki/tasks/vision-language-navigation.md
   TeleGate__Whole-Body_Humanoid_Teleoperation_via_Gated_Expert_Selection_with_Motion_Prior:

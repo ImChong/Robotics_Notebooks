@@ -1,5 +1,20 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-16] structural | wiki — 同论文重复节点合并（10 组）+ 站点 alias 重定向 + arxiv 唯一性 lint 护栏
+
+一篇论文只保留一个 canonical 节点：合并 SONIC（entity+method 双页 → 方法页）、VIRAL / DoorMan / Heracles（42 栈槽位 → 深读实体）、SD-AMP / Kimodo（AMP 专题槽位 → 深读实体）、HOMIE / TextOp / Open-TeleVision（161 双槽位 → 单页双坐标）、Berkeley Humanoid Lite（论文笔记 stub → 硬件实体）。删除页旧 URL 经 schema/page-aliases.json + docs/main.js 重定向到合并后页面；lint 新增 frontmatter arxiv 全站唯一性检查（阻塞 CI）。AGILE（161 #056 = NVIDIA WBC-AGILE ≠ 智元 AGILE）确认为同名不同工作，不合并。
+
+- wiki/methods/sonic-motion-tracking.md
+- wiki/entities/paper-viral-humanoid-visual-sim2real.md
+- wiki/entities/paper-doorman-opening-sim2real-door.md
+- wiki/entities/paper-heracles-humanoid-diffusion.md
+- wiki/entities/paper-unified-walk-run-recovery-sdamp.md
+- wiki/entities/kimodo.md
+- wiki/entities/paper-loco-manip-161-040-homie.md
+- wiki/entities/paper-loco-manip-161-022-textop.md
+- wiki/entities/paper-loco-manip-161-131-open-television.md
+- wiki/entities/berkeley-humanoid-lite.md
+
 ## [2026-07-16] structural | wiki — 合并 REGRIND 方法页与论文实体页为单页 wiki/methods/regrind-retargeting-guided-rl.md
 
 - wiki/methods/regrind-retargeting-guided-rl.md

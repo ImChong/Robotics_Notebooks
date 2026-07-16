@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-105-textop](../../wiki/entities/paper-loco-manip-161-105-textop.md)
+- [paper-loco-manip-161-022-textop](../../wiki/entities/paper-loco-manip-161-022-textop.md)
 - [loco-manip-161-category-04-generative-language-trajectory](../../wiki/overview/loco-manip-161-category-04-generative-language-trajectory.md)
 
 ## 参考来源（原始）

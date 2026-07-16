@@ -53,7 +53,7 @@
 |---|------|------|-----------|
 | 25 | OmniTrack | 跟踪策略：物理一致参考让 tracking 更稳 | [OmniTrack](../../wiki/entities/paper-hrl-stack-12-omnitrack.md) |
 | 26 | BeyondMimic | 跟踪策略：从动作跟踪到多功能人形控制 | [BeyondMimic](../../wiki/entities/paper-beyondmimic.md) |
-| 27 | SONIC | 跟踪策略：把 motion tracking 规模化成控制基座 | [SONIC](../../wiki/entities/paper-sonic.md) |
+| 27 | SONIC | 跟踪策略：把 motion tracking 规模化成控制基座 | [SONIC](../../wiki/methods/sonic-motion-tracking.md) |
 | 28 | HoloMotion-1 | 跟踪策略：视频动作也进入运动基座训练 | [HoloMotion-1](../../wiki/entities/holomotion.md) |
 | 29 | HumanoidGPT | 跟踪策略：海量动作帧和 Transformer 化 | [HumanoidGPT](../../wiki/entities/paper-humanoid-gpt.md) |
 | 30 | LIMMT | 跟踪策略：数据质量筛选比盲目堆量更重要 | [LIMMT](../../wiki/methods/limmt-gqs-motion-curation.md) |

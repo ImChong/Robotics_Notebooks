@@ -111,20 +111,20 @@ MERGE_MAP: dict[str, tuple[str, str]] = {
     ),
     "paper-loco-manip-161-030-n030": ("methods", "any2track"),
     "paper-loco-manip-161-047-thor": ("entities", "paper-hrl-stack-42-thor"),
-    "paper-loco-manip-161-049-viral": ("entities", "paper-hrl-stack-28-viral"),
+    "paper-loco-manip-161-049-viral": ("entities", "paper-viral-humanoid-visual-sim2real"),
     "paper-loco-manip-161-053-n053": (
         "entities",
-        "paper-hrl-stack-29-opening_the_sim_to_real_door_for_hum",
+        "paper-doorman-opening-sim2real-door",
     ),
     "paper-loco-manip-161-054-n054": (
         "entities",
         "paper-amp-survey-07-adversarial_locomotion_and_motion_im",
     ),
     "paper-loco-manip-161-068-humanoidmimicgen": ("entities", "paper-humanoidmimicgen"),
-    "paper-loco-manip-161-081-viral": ("entities", "paper-hrl-stack-28-viral"),
+    "paper-loco-manip-161-081-viral": ("entities", "paper-viral-humanoid-visual-sim2real"),
     "paper-loco-manip-161-089-n089": (
         "entities",
-        "paper-hrl-stack-29-opening_the_sim_to_real_door_for_hum",
+        "paper-doorman-opening-sim2real-door",
     ),
     "paper-loco-manip-161-090-n090": (
         "entities",

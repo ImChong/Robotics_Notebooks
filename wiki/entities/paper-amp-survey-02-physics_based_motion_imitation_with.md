@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation, sfu, nvidia, sony, siggraph]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-16
 venue: SIGGRAPH 2024
 summary: "ADD（SIGGRAPH 2024）用时空差分特征训练对抗判别器，减轻 AMP 的滑步与关节漂移伪影，是 Peng 作者线的 reward 工程演进。"
 related:

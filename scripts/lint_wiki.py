@@ -292,6 +292,7 @@ def _empty_results() -> dict[str, Any]:
         "unclosed_autolinks": [],
         "methods_without_practitioner_query": [],
         "paper_missing_source_meta": [],
+        "duplicate_arxiv": [],
         "paper_missing_three_sections": [],
         "dataset_missing_metadata": [],
         "stale_claims": [],
@@ -1000,6 +1001,30 @@ def _check_methods_without_practitioner_query(
             )
 
 
+def _check_duplicate_arxiv(pages: list[Path], results: dict[str, Any]) -> None:
+    """V30: 同一 frontmatter arxiv ID 只允许出现在一个 wiki 页面（阻塞 CI）。
+
+    一篇论文（一个 arXiv ID）在站点/图谱中只应有一个 canonical 节点。
+    历史上按策展来源批量建节点导致同一论文出现多个同名页面（如 SONIC
+    双节点），读者困惑且互链分裂。此检查以 frontmatter ``arxiv:`` 为唯一键
+    （正文引用不计），发现重复即报错；合并方法见 log.md 中 structural 合并
+    记录与 schema/page-aliases.json。
+    """
+    arxiv_pages: dict[str, list[str]] = {}
+    for page in pages:
+        content = page.read_text(encoding="utf-8")
+        fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
+        if not fm_match:
+            continue
+        m = re.search(r'^arxiv:\s*"?(\d{4}\.\d{4,5})"?\s*$', fm_match.group(1), re.MULTILINE)
+        if not m:
+            continue
+        arxiv_pages.setdefault(m.group(1), []).append(str(page.relative_to(REPO_ROOT)))
+    for arxiv_id, page_list in sorted(arxiv_pages.items()):
+        if len(page_list) > 1:
+            results["duplicate_arxiv"].append(f"arXiv:{arxiv_id} → {' 与 '.join(sorted(page_list))}")
+
+
 def _check_paper_entity_metadata(pages: list[Path], results: dict[str, Any]) -> None:
     """V23: paper-* 实体页元数据基线检查（信息型，不阻塞 CI）。
 
@@ -1376,6 +1401,7 @@ def lint() -> dict[str, Any]:
     _check_methods_entities(pages, results)
     _check_methods_without_practitioner_query(pages, inbound, results)
     _check_paper_entity_metadata(pages, results)
+    _check_duplicate_arxiv(pages, results)
     _check_dataset_entity_metadata(pages, results)
     _check_stale_claims(pages, results)
     _check_physics_concept_crosslink(pages, results)
@@ -1429,6 +1455,11 @@ def format_report(results: dict[str, Any]) -> str:
             "❌",
         ),
         ("broken_source_refs", "引用了不存在的 sources/ 文件", "❌"),
+        (
+            "duplicate_arxiv",
+            "同一 frontmatter arxiv ID 出现在多个页面（一篇论文只允许一个 canonical 节点）",
+            "❌",
+        ),
         ("sources_orphans", "Sources 孤儿（sources/papers 死链）", "❌"),
         ("stale_pages", "陈旧页面（sources 比 wiki 新，建议 review）", "⚠️"),
         ("outdated_pages", "可能过期（updated: 距今 > 180 天）", "⚠️"),

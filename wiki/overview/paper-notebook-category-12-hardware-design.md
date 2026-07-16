@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-07-10
+updated: 2026-07-16
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 12：硬件设计（39 篇深读笔记索引）。"
@@ -27,7 +27,7 @@ summary: "Paper Notebooks 分类 12：硬件设计（39 篇深读笔记索引）
 - [AGILOped](../entities/paper-notebook-agiloped-agile-open-source-humanoid-robot-for-re.md) — 待深读
 - [Aero Hand Open](../entities/paper-notebook-aero-hand-open.md) — 待深读
 - [Antagonistic Bowden-Cable Actuation of a Lightweight Robotic Hand](../entities/paper-notebook-antagonistic-bowden-cable-actuation-of-a-lightwe.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Antagonistic_Bowden-Cable_Actuation_of_a_Lightweight_Robotic_Hand/Antagonistic_Bowden-Cable_Actuation_of_a_Lightweight_Robotic_Hand.html)
-- [Berkeley Humanoid Lite](../entities/paper-notebook-berkeley-humanoid-lite-an-open-source-accessible.md) — 待深读
+- [Berkeley Humanoid Lite](../entities/berkeley-humanoid-lite.md) — 待深读
 - [Berkeley Humanoid](../entities/paper-notebook-berkeley-humanoid-a-research-platform-for-learni.md) — 待深读
 - [ByteWrist](../entities/paper-notebook-bytewrist-a-parallel-robotic-wrist-enabling-flex.md) — 待深读
 - [CAD-Driven Co-Design for Flight-Ready Jet-Powered Humanoids](../entities/paper-notebook-cad-driven-co-design-for-flight-ready-jet-powere.md) — 待深读

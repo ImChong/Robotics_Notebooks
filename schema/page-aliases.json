@@ -1,0 +1,15 @@
+{
+  "description": "已合并/删除页面的旧 detail 页 ID → canonical 页 ID 映射。合并重复节点删除页面时必须在此登记旧 ID，export_minimal.py 会注入 site-data-v1.json 的 pages.page_aliases，docs/main.js 详情页据此把旧链接重定向到合并后的页面，避免历史 URL 断链。键为旧页面 ID（entity-<stem> 或 wiki-<子目录>-<stem>），值为现存页面 ID。",
+  "aliases": {
+    "entity-paper-hrl-stack-28-viral": "entity-paper-viral-humanoid-visual-sim2real",
+    "entity-paper-hrl-stack-29-opening_the_sim_to_real_door_for_hum": "entity-paper-doorman-opening-sim2real-door",
+    "entity-paper-hrl-stack-40-heracles": "entity-paper-heracles-humanoid-diffusion",
+    "entity-paper-amp-survey-10-unified_walking_running_and_recovery": "entity-paper-unified-walk-run-recovery-sdamp",
+    "entity-paper-amp-survey-04-kimodo": "entity-kimodo",
+    "entity-paper-loco-manip-161-129-homie": "entity-paper-loco-manip-161-040-homie",
+    "entity-paper-loco-manip-161-105-textop": "entity-paper-loco-manip-161-022-textop",
+    "entity-paper-loco-manip-161-139-open-television": "entity-paper-loco-manip-161-131-open-television",
+    "entity-paper-notebook-berkeley-humanoid-lite-an-open-source-accessible": "entity-berkeley-humanoid-lite",
+    "entity-paper-sonic": "wiki-methods-sonic-motion-tracking"
+  }
+}

@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, hkust-gz, xiaomi-robotics, eth, hkust, tsinghua]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-16
 venue: curated
 summary: "HAIC 关注 Humanoid Agile Object Interaction Control via Dynamics-Aware World Model。它处理的是 underactuated objects，也就是对象本身有独立动力学和非完整约束，不是被机器人末端完全控制的刚性物体。"
 related:

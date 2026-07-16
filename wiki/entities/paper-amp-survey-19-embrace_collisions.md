@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, contact-rich, shadowing, sim2real, unitree-g1, tsinghua, shanghai-pil]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-16
 arxiv: "2502.01465"
 venue: "CoRL 2025"
 summary: "Embrace Collisions（arXiv:2502.01465，CoRL 2025）：关键帧基座系运动命令 + Transformer 编码 + 多 critic advantage mixing，G1 零样本部署坐、爬、地面翻滚与起身等全身多接触 shadowing。"

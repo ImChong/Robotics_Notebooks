@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, motion-generation, nvidia, eth, ut-austin, groot]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-16
 arxiv: "2604.24833"
 venue: arXiv
 summary: "MotionBricks（arXiv:2604.24833）用模块化潜空间生成与 Smart Primitives 提供 15k FPS 级实时运动 API，是 GR00T WBC 栈中比 Kimodo 更靠近真机的先验组件。"
@@ -11,7 +11,7 @@ related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../methods/motionbricks.md
   - ./kimodo.md
-  - ./paper-amp-survey-04-kimodo.md
+  - ./kimodo.md
   - ../entities/gr00t-wholebodycontrol.md
   - ../entities/unitree-g1.md
 sources:
@@ -23,7 +23,7 @@ sources:
 
 # MotionBricks：模块化实时运动生成（AMP 专题 #05）
 
-**MotionBricks**（*Scalable Real-Time Motions with Modular Latent Generative Model and Smart Primitives*，arXiv:2604.24833）收录于 [AMP 运动先验专题](https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w) **第 05/19** 篇（**01 分布约束与先验组件化**）。策展导读：**比 [Kimodo #04](./paper-amp-survey-04-kimodo.md) 更靠近机器人**——它是 [GR00T Whole-Body Control](../entities/gr00t-wholebodycontrol.md) 的运动生成层，用 **Smart Primitives + 模块化潜空间** 替代脆弱的手工动画图。
+**MotionBricks**（*Scalable Real-Time Motions with Modular Latent Generative Model and Smart Primitives*，arXiv:2604.24833）收录于 [AMP 运动先验专题](https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w) **第 05/19** 篇（**01 分布约束与先验组件化**）。策展导读：**比 [Kimodo #04](./kimodo.md) 更靠近机器人**——它是 [GR00T Whole-Body Control](../entities/gr00t-wholebodycontrol.md) 的运动生成层，用 **Smart Primitives + 模块化潜空间** 替代脆弱的手工动画图。
 
 > **技术细节主阅读入口：** [MotionBricks 方法页](../methods/motionbricks.md)。本页归纳 AMP 专题语境下的定位、管线与和对抗先验的分工。
 
@@ -121,7 +121,7 @@ flowchart TB
 ## 与其他页面的关系
 
 - 方法归纳（主阅读）：[motionbricks.md](../methods/motionbricks.md)
-- 姊妹生成先验：[Kimodo #04](./paper-amp-survey-04-kimodo.md)
+- 姊妹生成先验：[Kimodo #04](./kimodo.md)
 - 平台：[gr00t-wholebodycontrol.md](../entities/gr00t-wholebodycontrol.md)、[unitree-g1.md](../entities/unitree-g1.md)
 - AMP 专题：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)（#05/19）
 

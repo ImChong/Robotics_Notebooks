@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, humanoid, category-hub, survey]
 status: complete
-updated: 2026-06-29
+updated: 2026-07-16
 summary: "人形 Loco-Manip 161 篇 · 01 运控基座与通用全身跟踪（31 篇）— 底层身体控制、运动跟踪、抗扰动与通用动作执行。"
 related:
   - ./humanoid-loco-manip-161-papers-technology-map.md
@@ -51,7 +51,7 @@ sources:
 | 016 | OmniH2O | [paper-loco-manip-161-016-omnih2o](../entities/paper-hrl-stack-08-omnih2o.md) |
 | 017 | OmniRetarget | [paper-loco-manip-161-017-omniretarget](../entities/paper-hrl-stack-03-omniretarget.md) |
 | 018 | Retargeting | [paper-loco-manip-161-018-retargeting](../entities/paper-hrl-stack-01-retargeting_matters.md) |
-| 019 | SONIC | [paper-sonic](../entities/paper-sonic.md) |
+| 019 | SONIC | [sonic-motion-tracking](../methods/sonic-motion-tracking.md) |
 | 020 | TWIST2 | [paper-loco-manip-161-020-twist2](../entities/paper-twist2.md) |
 | 021 | TWIST | [paper-loco-manip-161-021-twist](../entities/paper-twist.md) |
 | 022 | TextOp | [paper-loco-manip-161-022-textop](../entities/paper-loco-manip-161-022-textop.md) |

@@ -509,8 +509,8 @@ overrides:
   - wiki/entities/paper-loco-manip-161-075-simple.md
   SONIC_Supersizing_Motion_Tracking_for_Natural_Humanoid_Control:
   - wiki/methods/sonic-motion-tracking.md
-  - wiki/entities/paper-sonic.md
-  - wiki/entities/paper-sonic.md
+  - wiki/methods/sonic-motion-tracking.md
+  - wiki/methods/sonic-motion-tracking.md
   SPI-Active__Sampling-Based_System_Identification_with_Active_Exploration:
   - wiki/entities/paper-notebook-sampling-based-system-identification-with-active.md
   SPIDER__Scalable_Physics-Informed_DExterous_Retargeting:
@@ -668,7 +668,7 @@ overrides:
   berkeley-humanoid-a-research-platform-for-learni:
   - wiki/entities/paper-notebook-berkeley-humanoid-a-research-platform-for-learni.md
   berkeley-humanoid-lite-an-open-source-accessible:
-  - wiki/entities/paper-notebook-berkeley-humanoid-lite-an-open-source-accessible.md
+  - wiki/entities/berkeley-humanoid-lite.md
   bfm-zero-a-promptable-behavioral-foundation-mode:
   - wiki/entities/agibot-bfm-2.md
   bi-level-motion-imitation-for-humanoid-robots:

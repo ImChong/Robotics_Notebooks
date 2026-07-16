@@ -67,7 +67,6 @@ HRL_LAYER_MISCON = {
 }
 
 DEEP_READ_LINKS: dict[str, str] = {
-    "paper-sonic.md": "../methods/sonic-motion-tracking.md",
     "paper-beyondmimic.md": "../methods/beyondmimic.md",
     "paper-opentrack.md": "../methods/any2track.md",
     "paper-ams.md": "../methods/ams.md",
@@ -76,11 +75,8 @@ DEEP_READ_LINKS: dict[str, str] = {
     "paper-hrl-stack-11-deepmimic.md": "../methods/deepmimic.md",
     "paper-hrl-stack-01-retargeting_matters.md": "../methods/motion-retargeting-gmr.md",
     "paper-hrl-stack-02-make_tracking_easy.md": "../methods/neural-motion-retargeting-nmr.md",
-    "paper-hrl-stack-28-viral.md": "../entities/paper-viral-humanoid-visual-sim2real.md",
-    "paper-hrl-stack-29-opening_the_sim_to_real_door_for_hum.md": "../entities/paper-doorman-opening-sim2real-door.md",
     "paper-hrl-stack-34-gr00t_n1.md": "../entities/gr00t-wholebodycontrol.md",
     "paper-hrl-stack-37-gentlehumanoid.md": "../methods/gentlehumanoid-motion-tracking.md",
-    "paper-hrl-stack-40-heracles.md": "../entities/paper-heracles-humanoid-diffusion.md",
     "paper-hrl-stack-21-adaptive-humanoid-control.md": "../entities/paper-adaptive-humanoid-control.md",
     "paper-adaptive-humanoid-control.md": "../entities/paper-adaptive-humanoid-control.md",
     "paper-hrl-stack-23-deep_whole_body_parkour.md": "../entities/paper-deep-whole-body-parkour.md",

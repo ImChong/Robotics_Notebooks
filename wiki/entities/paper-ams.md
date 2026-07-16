@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model, nvidia, hku, tsinghua]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-16
 arxiv: "2511.17373"
 venue: "2025 · arXiv"
 code: https://github.com/OpenDriveLab/AMS

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, generative-prior, cvae, locomotion, zju, sim2real]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-16
 arxiv: "2503.09015"
 venue: arXiv
 summary: "GMP（arXiv:2503.09015）用冻结 CVAE 在线合成全身参考轨迹，以关节/关键点稠密 guidance reward 指导 PPO，相对 AMP 标量风格分提供更细粒度自然走跑监督。"
@@ -13,7 +13,7 @@ related:
   - ../tasks/locomotion.md
   - ./paper-amp-survey-01-amp.md
   - ./paper-amp-survey-08-more.md
-  - ./paper-amp-survey-10-unified_walking_running_and_recovery.md
+  - ./paper-unified-walk-run-recovery-sdamp.md
 sources:
   - ../../sources/papers/gmp_generative_motion_prior_arxiv_2503_09015.md
   - ../../sources/papers/humanoid_amp_survey_06_natural_humanoid_robot_locomotion_with_generativ.md
@@ -107,7 +107,7 @@ flowchart TB
 ## 与其他页面的关系
 
 - 对抗对照：[AMP #01](./paper-amp-survey-01-amp.md)、[amp-reward.md](../methods/amp-reward.md)
-- 同段姊妹：[ALMI #07](./paper-amp-survey-07-adversarial_locomotion_and_motion_im.md)、[MoRE #08](./paper-amp-survey-08-more.md)、[SD-AMP #10](./paper-amp-survey-10-unified_walking_running_and_recovery.md)
+- 同段姊妹：[ALMI #07](./paper-amp-survey-07-adversarial_locomotion_and_motion_im.md)、[MoRE #08](./paper-amp-survey-08-more.md)、[SD-AMP #10](./paper-unified-walk-run-recovery-sdamp.md)
 - 任务：[locomotion.md](../tasks/locomotion.md)
 - AMP 专题：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)（#06/19）
 

@@ -11,7 +11,7 @@ related:
   - ./roboparty-ufo.md
   - ./party-os.md
   - ./paper-bfm-zero.md
-  - ./paper-sonic.md
+  - ../methods/sonic-motion-tracking.md
   - ../methods/sonic-motion-tracking.md
   - ../concepts/behavior-foundation-model.md
   - ../overview/bfm-41-papers-technology-map.md
@@ -43,7 +43,7 @@ sources:
 
 ## 为什么重要
 
-- **补 TLDR 人形落地空白：** [TLDR](https://arxiv.org/abs/2407.08464) 在对比时间距离表征上已验证，但 **真实人形全身控制** 上的系统评测此前不足；TeCH 给出与 [BFM-Zero](./paper-bfm-zero.md)、[SONIC](./paper-sonic.md) 的 **首套人形无监督 RL 对照**。
+- **补 TLDR 人形落地空白：** [TLDR](https://arxiv.org/abs/2407.08464) 在对比时间距离表征上已验证，但 **真实人形全身控制** 上的系统评测此前不足；TeCH 给出与 [BFM-Zero](./paper-bfm-zero.md)、[SONIC](../methods/sonic-motion-tracking.md) 的 **首套人形无监督 RL 对照**。
 - **相对 FB 的结构性优势：** FB 依赖 **linear MDP** 假设，在富接触高维人形上易表征退化；TeCH 直接优化时间距离目标，**全局根部旋转漂移** 明显优于 BFM-Zero（页面展示快速 360° 旋转）。
 - **训练成本数量级差异：** 页面称 **单卡 GPU + 数小时 LAFAN1** 即可训练，相对 SONIC **128 GPU × 3 天** 降近 **两个数量级** GPU 小时与环境样本。
 - **零样本双任务接口：** 同一预训练策略无需微调即可做 **轨迹跟踪**（滑动窗口聚合隐条件）与 **不连续目标到达**（单点隐嵌入）——纯跟踪方法（如 SONIC）在姿态跳变上挣扎。
@@ -141,7 +141,7 @@ flowchart TB
 | 对照工作 | 表征 / 训练 | 与 TeCH 的关系 |
 |----------|-------------|----------------|
 | **[BFM-Zero](./paper-bfm-zero.md)** | FB（forward–backward）无监督 RL | **同框架不同表征** 姊妹线；FB 依赖 linear MDP 假设，TeCH 直接优化时间距离，**根部旋转漂移** 更小、目标到达更高效 |
-| **[SONIC](./paper-sonic.md)** | DeepMimic 式规模化监督跟踪 | TeCH 全轨迹 $E_{mae}$ **优于 SONIC 全轨迹**、与 SONIC (TER.) 相当；GPU 小时降近 **两个数量级**；SONIC 难从跌倒恢复 |
+| **[SONIC](../methods/sonic-motion-tracking.md)** | DeepMimic 式规模化监督跟踪 | TeCH 全轨迹 $E_{mae}$ **优于 SONIC 全轨迹**、与 SONIC (TER.) 相当；GPU 小时降近 **两个数量级**；SONIC 难从跌倒恢复 |
 | **[TLDR](https://arxiv.org/abs/2407.08464)** | 对比时间距离表征（原范式） | TeCH 是 TLDR 在 **真实人形全身控制** 上的首套系统落地与评测 |
 | **[Teacher-Student 多技能 BFM](../methods/teacher-student-multi-skill-bfm.md)** | 特权教师蒸馏多技能 | 另一条 BFM 工程路径；TeCH 走 **无监督表征**，无需多任务特权教师 |
 
@@ -159,7 +159,7 @@ flowchart TB
 - [UFO（Roboparty）](./roboparty-ufo.md) — 工程集成与复现入口
 - [RoboParty Lab / Party OS 技术地图](../overview/roboparty-lab-party-os-technology-map.md)
 - [BFM-Zero](./paper-bfm-zero.md) — FB 表征姊妹线
-- [SONIC](./paper-sonic.md) — 监督跟踪规模化基线
+- [SONIC](../methods/sonic-motion-tracking.md) — 监督跟踪规模化基线
 - [行为基础模型](../concepts/behavior-foundation-model.md)
 - [BFM 01 Forward-backward 表征](../overview/bfm-category-01-forward-backward-representation.md)
 - [Unitree G1](./unitree-g1.md)

@@ -136,7 +136,7 @@ flowchart TB
 | 04 | Fast Imitation via Behavior Foundation Models | [paper-bfm-04-fast-imitation-bfm](../entities/paper-bfm-04-fast-imitation-bfm.md) | [source](../../sources/papers/bfm_awesome_fast_imitation_bfm_neurips_2024.md) |
 | 05 | Learning One Representation to Optimize All Rewards | [paper-bfm-05-learning-one-representation](../entities/paper-bfm-05-learning-one-representation.md) | [source](../../sources/papers/bfm_awesome_learning_one_representation_neurips_2021.md) |
 | 06 | Learning Successor States and Goal-Dependent Values | [paper-bfm-06-successor-states](../entities/paper-bfm-06-successor-states.md) | [source](../../sources/papers/bfm_awesome_successor_states_arxiv_2101_07123.md) |
-| 07 | Sonic | [paper-sonic](../entities/paper-sonic.md) | [source](../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md) |
+| 07 | Sonic | [sonic-motion-tracking](../methods/sonic-motion-tracking.md) | [source](../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md) |
 | 08 | Track Any Motions under Any Disturbances | [paper-opentrack](../entities/paper-opentrack.md) | [source](../../sources/papers/bfm_awesome_opentrack_arxiv_2509_13833.md) |
 | 09 | Agility Meets Stability | [paper-ams](../entities/paper-ams.md) | [source](../../sources/papers/bfm_awesome_ams_arxiv_2511_17373.md) |
 | 10 | TWIST2 | [paper-twist2](../entities/paper-twist2.md) | [source](../../sources/papers/bfm_awesome_twist2_arxiv_2505_02833.md) |

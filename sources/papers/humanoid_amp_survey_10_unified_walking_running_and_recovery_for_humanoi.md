@@ -21,7 +21,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-amp-survey-10-unified_walking_running_and_recovery](../../wiki/entities/paper-amp-survey-10-unified_walking_running_and_recovery.md) — AMP 专题 #10 策展页
+- [paper-unified-walk-run-recovery-sdamp](../../wiki/entities/paper-unified-walk-run-recovery-sdamp.md) — AMP 专题 #10 策展页
 - [paper-unified-walk-run-recovery-sdamp](../../wiki/entities/paper-unified-walk-run-recovery-sdamp.md) — 主深读实体页
 - [amp-mjlab](../../wiki/entities/amp-mjlab.md)、[amp-reward](../../wiki/methods/amp-reward.md)
 

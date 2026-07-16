@@ -31,6 +31,9 @@
 ### ❌ 引用了不存在的 sources/ 文件（0 个）
 - 无
 
+### ❌ 同一 frontmatter arxiv ID 出现在多个页面（一篇论文只允许一个 canonical 节点）（0 个）
+- 无
+
 ### ❌ Sources 孤儿（sources/papers 死链）（0 个）
 - 无
 
@@ -112,4 +115,4 @@
 ### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：1605/1635 (98%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1595/1625 (98%) wiki/entity 页有 ingest 来源
