@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-16",
-  "node_count": 1638,
-  "edge_count": 12877,
+  "node_count": 1639,
+  "edge_count": 12890,
   "coverage": {
-    "covered": 1591,
-    "total": 1621,
+    "covered": 1592,
+    "total": 1622,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -220,11 +220,11 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 279
+      "size": 297
     },
     {
       "label": "人形论文深读笔记",
-      "size": 179
+      "size": 176
     },
     {
       "label": "移动操作",
@@ -232,15 +232,15 @@
     },
     {
       "label": "全身控制",
-      "size": 159
+      "size": 140
     },
     {
       "label": "仿真到现实",
-      "size": 124
+      "size": 123
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 104
+      "size": 91
     }
   ],
   "top_hubs": [
@@ -271,7 +271,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 267,
+      "degree": 268,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -279,7 +279,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 234,
+      "degree": 235,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -314,7 +314,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 169,
+      "degree": 170,
       "has_repo": true
     }
   ],
@@ -378,8 +378,7 @@
       "label": "TWIST2",
       "type": "entity",
       "degree": 35,
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",

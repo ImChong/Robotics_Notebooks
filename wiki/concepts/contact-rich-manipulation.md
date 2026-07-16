@@ -2,7 +2,7 @@
 type: concept
 tags: [manipulation, contact, force-control, impedance-control, tsid]
 status: complete
-updated: 2026-07-08
+updated: 2026-07-16
 summary: "Contact-Rich Manipulation 指需要持续建模接触、摩擦和力约束的操作任务，难点不在于碰到物体，而在于控制接触过程本身。"
 related:
   - ../queries/contact-wrench-closed-loop.md
@@ -11,6 +11,7 @@ related:
   - ../entities/paper-chord-contact-wrench-dexterous-manipulation.md
   - ../entities/paper-trex-tactile-reactive-dexterous-manipulation.md
   - ../entities/paper-omnitactune-tactile-residual-adaptation.md
+  - ../entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md
   - ../tasks/manipulation.md
   - ./contact-dynamics.md
   - ./tsid.md
@@ -106,6 +107,7 @@ sources:
 - [CHORD](../entities/paper-chord-contact-wrench-dexterous-manipulation.md) — **接触位置 vs 接触力旋量** 的演示迁移；CWS 奖励覆盖推/撬/滑等瞬态接触阶段。
 - [T-Rex](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md) — **学习式触觉反应 VLA**：12 项双手力控/形变/协调真机任务与 **开源触觉 play 数据集**；强调 **异步高频触觉专家** 而非朴素模态拼接。
 - [OmniTacTune](../entities/paper-omnitactune-tactile-residual-adaptation.md) — **冻结视觉 + 触觉残差真机 RL**：单臂 xArm7 上四接触丰富任务（插装/开盖/杠杆），**40–80 min** 在线练习、**无需离线触觉演示**；与 T-Rex 形成「短预算插件式适应」vs「大规模触觉 mid-training」对照。
+- [TouchWorld](../entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md) — **预测–反应式触觉基础模型**：人形 **Wuji** 平台上 **六任务长程** benchmark（浇花/清桌面/杯与插头插入/擦锅/抽纸巾），含 **人为扰动** 设置；**Tactile World Model** 预测视触觉子目标 + **TRT** 高频残差，干净 **65.0%**、扰动 **53.7%** 宏平均。
 - [Flying Knots](../entities/paper-flying-knots.md) — 绳段 **自碰撞（critical point）** 的动态操作；用 **任务级 ILC + 逆模型 QP** 而非阻抗执行层直接闭环。
 - [Manipulation](../tasks/manipulation.md) 是更上层的任务总览；本页强调其中“最难的接触子域”。
 

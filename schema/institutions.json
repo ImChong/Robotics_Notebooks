@@ -1072,6 +1072,13 @@
         "dexmal-robotics"
       ]
     },
+    "phanes-ai": {
+      "label": "菲尼斯智能（PHANES AI）",
+      "aliases": [
+        "phanes-ai",
+        "phanes"
+      ]
+    },
     "perceptron": {
       "label": "感知器（Perceptron）",
       "aliases": [

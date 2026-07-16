@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, vla, tactile-sensing, dexterous-manipulation, flow-matching, bimanual, contact-rich, imitation-learning, egocentric-video, dataset, berkeley, nvidia, stanford, nvidia-gear]
 status: complete
-updated: 2026-07-08
+updated: 2026-07-16
 arxiv: "2606.17055"
 related:
   - ../methods/vla.md
@@ -16,6 +16,8 @@ related:
   - ../concepts/visuo-tactile-fusion.md
   - ../concepts/tactile-sensing.md
   - ../entities/nvidia-gear-lab.md
+  - ../entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md
+  - ../entities/paper-omnitactune-tactile-residual-adaptation.md
 sources:
   - ../../sources/papers/trex_arxiv_2606_17055.md
   - ../../sources/sites/tactile-reactive-dexterous-github-io.md
@@ -136,18 +138,20 @@ Flip Page、Transfer Egg、Wipe Plate、Apply Toothpaste、Split Cup、Sort Mahj
 
 ## 与其他工作对比
 
-| 维度 | T-Rex | EgoScale | π₀.₅ + tactile | RDP / ViTacFormer |
-|------|-------|----------|----------------|-------------------|
-| 预训练 | **22k+ h 人视频** | **20k+ h 人视频** | π 系 VLA 预训练 | 任务数据从零或小规模 |
-| 触觉 | **专用高频专家 + VQ-VAE** | 无 | 朴素拼接力信号 | 慢–快或 ACT 式融合 |
-| 平台 | **58-DoF 双手灵巧** | 灵巧手 VLA | 同平台微调 | 同平台对比 |
-| 宏平均 SR | **65%** | **35%** | **6%** | **3–6%** |
+| 维度 | T-Rex | TouchWorld | EgoScale | π₀.₅ + tactile | RDP / ViTacFormer |
+|------|-------|------------|----------|----------------|-------------------|
+| 预训练 | **22k+ h 人视频** | EgoTouch 人触觉 + 机端演示 | **20k+ h 人视频** | π 系 VLA 预训练 | 任务数据从零或小规模 |
+| 触觉 | **专用高频专家 + VQ-VAE** | **TWM 子目标 + TRT 残差** | 无 | 朴素拼接力信号 | 慢–快或 ACT 式融合 |
+| 长程结构 | 语言指令 | **SP + 记忆子任务** | 语言指令 | 语言指令 | 任务 prompt |
+| 平台 | **58-DoF 双手灵巧** | 人形 + Wuji 压力手套 | 灵巧手 VLA | 同平台微调 | 同平台对比 |
+| 宏平均 SR | **65%**（12 任务） | **65%**（6 任务） | **35%** | **6%** | **3–6%** |
 
 ## 与其他页面的关系
 
 - 与 [VLA](../methods/vla.md)：同属 flow-VLA 族，但 T-Rex 显式解决 **视觉帧率 vs 触觉频率** 不匹配。
 - 与 [EgoScale](../methods/egoscale.md)：共享 **人预训练 + 机端 mid-training** 骨架；T-Rex 把 mid-training 换成 **触觉 play** 并新增 **高频专家**。
 - 与 [视触觉融合](../concepts/visuo-tactile-fusion.md)：T-Rex 是 **VLA 尺度** 的「接触后触觉主导」实例，含 **时序力 token 化** 读点。
+- 与 [OmniTacTune](./paper-omnitactune-tactile-residual-adaptation.md)、[TouchWorld](./paper-touchworld-tactile-foundation-dexterous-manipulation.md)：2026 触觉灵巧 **端到端 mid-training / 层级世界模型 / 插件式 RL 残差** 三条主线对照。
 - 与 [接触丰富操作](../concepts/contact-rich-manipulation.md)、[双臂操作](../tasks/bimanual-manipulation.md)：12 任务覆盖 **力控、形变、双手协调** 三类难点。
 
 ## 推荐继续阅读
@@ -171,3 +175,4 @@ Flip Page、Transfer Egg、Wipe Plate、Apply Toothpaste、Split Cup、Sort Mahj
 - [Bimanual Manipulation（双臂操作）](../tasks/bimanual-manipulation.md)
 - [Contact-Rich Manipulation（接触丰富操作）](../concepts/contact-rich-manipulation.md)
 - [Visuo-Tactile Fusion（视触觉融合）](../concepts/visuo-tactile-fusion.md)
+- [TouchWorld（预测–反应式触觉基础模型）](./paper-touchworld-tactile-foundation-dexterous-manipulation.md)
