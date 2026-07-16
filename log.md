@@ -1,5 +1,23 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-16] structural | wiki — 合并 REGRIND 方法页与论文实体页为单页 wiki/methods/regrind-retargeting-guided-rl.md
+
+- wiki/methods/regrind-retargeting-guided-rl.md
+- wiki/tasks/manipulation.md
+- wiki/methods/toporetarget-interaction-preserving-dexterous-retargeting.md
+
+## [2026-07-16] ingest | sources/papers/regrind_arxiv_2607_11874.md — REGRIND MoCap+交互保留重定向+残差 RL 灵巧工具操作；wiki/methods/regrind-retargeting-guided-rl.md、wiki/entities/paper-regrind-dexterous-manipulation.md
+
+- wiki/methods/regrind-retargeting-guided-rl.md
+- wiki/entities/paper-regrind-dexterous-manipulation.md
+- wiki/methods/toporetarget-interaction-preserving-dexterous-retargeting.md
+- wiki/methods/spider-physics-informed-dexterous-retargeting.md
+- wiki/concepts/motion-retargeting-pipeline.md
+- wiki/tasks/manipulation.md
+- sources/papers/regrind_arxiv_2607_11874.md
+- sources/sites/regrind-project-yunhaifeng.md
+- sources/repos/regrind.md
+
 ## [2026-07-16] ingest | sources/blogs/limx_cosa_05_release_2026-07-15.md — LimX COSA 0.5 / FluxVLA Engine 实体页与 VLA、loco-manipulation 交叉更新
 
 - wiki/entities/limx-cosa.md

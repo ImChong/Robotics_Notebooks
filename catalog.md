@@ -1321,6 +1321,7 @@
 - [QT-Opt](wiki/methods/qt-opt.md) — QT-Opt**：面向视觉输入机械臂抓取的异策深度强化学习框架，用交叉熵方法等近似在连续动作空间上做 Q 学习，并结合长时间运行的真实机器人数据采集闭环。 `📅unknown` `[method_page]`
 - [Quasi-Newton BFGS / L-BFGS（拟牛顿法总览）](wiki/methods/quasi-newton-bfgs.md) — 拟牛顿法**：不显式形成 Hessian，用梯度差分维护近似矩阵。本页为 **总览入口**；各算法细节见独立节点 **BFGS** 与 **[L-BFGS](./l-bf `📅unknown` `[method_page]`
 - [ReActor（物理感知 RL 运动重定向）](wiki/methods/reactor-physics-aware-motion-retargeting.md) — ReActor**（*Reinforcement Learning for Physics-Aware Motion Retargeting*，Müller 等，SIGGRAPH 2026 预印本 `📅2026-05-13` `[method_page]`
+- [REGRIND（重定向引导灵巧操作 RL）](wiki/methods/regrind-retargeting-guided-rl.md) — REGRIND**（*A Minimalist Retargeting-Guided Reinforcement Learning Recipe for Dexterous Manipulatio `📅2026-07-16` `[method_page]`
 - [Reinforcement Learning (RL, 强化学习)](wiki/methods/reinforcement-learning.md) — 强化学习 (Reinforcement Learning)**：通过与环境交互，以最大化累积奖励 (Reward) 为目标学习决策策略的机器学习范式。 `📅unknown` `[method_page]`
 - [RMSProp（Root Mean Square Propagation）](wiki/methods/rmsprop.md) — RMSProp**：对梯度平方 $g_t^2$ 做 **指数滑动平均（EMA）** 得到 $v_t$，用 $g_t / \sqrt{v_t + \epsilon}$ 归一化更新方向，使 per-p `📅unknown` `[method_page]`
 - [RoboArena（评测基准）](wiki/methods/roboarena.md) — RoboArena**：面向通用机器人策略的分布式真实世界评测框架，聚合多个实验室在不同环境与任务上的配对对比实验，用排名反映策略泛化而非单一固定场景得分。 `📅unknown` `[method_page]`

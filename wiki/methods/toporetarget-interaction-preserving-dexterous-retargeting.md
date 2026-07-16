@@ -3,13 +3,14 @@ type: method
 tags: [robotics, motion-retargeting, dexterous-manipulation, reinforcement-learning, contact-rich-manipulation, sim2real]
 status: complete
 date: 2026-06-17
-updated: 2026-06-17
+updated: 2026-07-16
 related:
   - ../concepts/motion-retargeting.md
   - ../concepts/motion-retargeting-pipeline.md
   - ./spider-physics-informed-dexterous-retargeting.md
   - ./motion-retargeting-gmr.md
   - ../entities/paper-hrl-stack-03-omniretarget.md
+  - ./regrind-retargeting-guided-rl.md
   - ../tasks/manipulation.md
   - ../entities/wuji-robotics.md
 sources:
@@ -91,6 +92,7 @@ flowchart LR
 - **相对 OmniRetarget：** 同用 **interaction mesh + Laplacian** 保留人–物/手–物局部关系；OmniRetarget 面向 **人形全身 + 地形/物体 Sequential SOCP**（~41 ms/帧），TopoRetarget 面向 **灵巧手 + 固定参数实时优化**（~4.7 ms/帧），在 ContactPose 接触精度/对齐上更优。
 - **相对 DexPilot / GeoRT：** 后者以 **手部中心** 或 **极速几何** 为目标，论文显示在 hand–object 穿透与接触对齐上劣势明显（GeoRT 最大穿透 **22.22 mm**）。
 - **相对 SPIDER：** SPIDER 用 **并行仿真采样** 做动力学 refinement；TopoRetarget 停留在 **运动学交互保留 + 下游 RL 修补**，不重写控制序列，更轻、更适合实时遥操与大规模参考生成。
+- **相对 REGRIND：** 同族 **interaction mesh + Laplacian + 残差 RL**；REGRIND 面向 **MoCap 单次演示 → 剪刀/螺丝刀工具操作 → LEAP/WUJI 真机**，并系统对比 SPIDER/DexMachina（见 [REGRIND](../methods/regrind-retargeting-guided-rl.md)）。
 - **相对 GMR 类 IK：** GMR 解决骨架几何对齐；TopoRetarget 把 **物体相对交互** 写进 mesh 能量，专为 **contact-rich in-hand manipulation** 设计。
 
 ## 实验要点（论文 Table 1–2）
@@ -114,6 +116,7 @@ flowchart LR
 - [Motion Retargeting Pipeline（动作重定向流水线）](../concepts/motion-retargeting-pipeline.md) — 「演示 → 参考 → RL 跟踪」段的一种 Laplacian mesh 落点。
 - [SPIDER（物理感知采样式灵巧重定向）](./spider-physics-informed-dexterous-retargeting.md) — 仿真采样动力学 refinement 对照。
 - [OmniRetarget（人形交互保留重定向）](../entities/paper-hrl-stack-03-omniretarget.md) — 同人族 interaction mesh，全身 loco-manipulation 尺度。
+- [REGRIND（重定向引导灵巧操作 RL）](./regrind-retargeting-guided-rl.md) — 同族 mesh 重定向 + 残差 RL，剪刀/螺丝刀真机。
 - [Manipulation（操作）](../tasks/manipulation.md) — contact-rich 灵巧技能任务背景。
 - [舞肌科技 / Wuji Hand](../entities/wuji-robotics.md) — 论文主真机平台。
 - [DynaRetarget vs TopoRetarget（接触保真重定向对比）](../comparisons/dynaretarget-vs-toporetarget-retargeting.md) — 运动学层 vs 动力学层接触保真选型对比。

@@ -1,13 +1,65 @@
 {
   "generated_at": "2026-07-16",
-  "node_count": 1651,
-  "edge_count": 12847,
+  "node_count": 1652,
+  "edge_count": 12858,
   "coverage": {
-    "covered": 1604,
-    "total": 1634,
+    "covered": 1605,
+    "total": 1635,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/methods/regrind-retargeting-guided-rl.md",
+      "detail_id": "wiki-methods-regrind-retargeting-guided-rl",
+      "label": "REGRIND（重定向引导灵巧操作 RL）",
+      "type": "method",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/toporetarget-interaction-preserving-dexterous-retargeting.md",
+      "detail_id": "wiki-methods-toporetarget-interaction-preserving-dexterous-retargeting",
+      "label": "TopoRetarget（交互保留灵巧重定向）",
+      "type": "method",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/methods/spider-physics-informed-dexterous-retargeting.md",
+      "detail_id": "wiki-methods-spider-physics-informed-dexterous-retargeting",
+      "label": "SPIDER（物理感知采样式灵巧重定向）",
+      "type": "method",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/concepts/motion-retargeting-pipeline.md",
+      "detail_id": "wiki-concepts-motion-retargeting-pipeline",
+      "label": "Motion Retargeting Pipeline（动作重定向流水线）",
+      "type": "concept",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
     {
       "path": "wiki/entities/limx-cosa.md",
       "detail_id": "entity-limx-cosa",
@@ -91,16 +143,6 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
       "path": "wiki/entities/robotwin.md",
       "detail_id": "entity-robotwin",
       "label": "RoboTwin 2.0",
@@ -174,56 +216,18 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/agent-reach.md",
-      "detail_id": "entity-agent-reach",
-      "label": "Agent Reach（Panniantong）",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/caveman.md",
-      "detail_id": "entity-caveman",
-      "label": "Caveman",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-gaitspan-humanoid-locomotion-walking-running.md",
-      "detail_id": "entity-paper-gaitspan-humanoid-locomotion-walking-running",
-      "label": "GaitSpan：从行走到跑步的人形技能生长",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/tasks/humanoid-locomotion.md",
-      "detail_id": "wiki-tasks-humanoid-locomotion",
-      "label": "Humanoid Locomotion (人形机器人移动)",
-      "type": "task",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/limx-cosa.md",
-    "detail_id": "entity-limx-cosa",
-    "label": "LimX COSA（人形大脑操作系统）",
-    "type": "entity",
+    "path": "wiki/methods/regrind-retargeting-guided-rl.md",
+    "detail_id": "wiki-methods-regrind-retargeting-guided-rl",
+    "label": "REGRIND（重定向引导灵巧操作 RL）",
+    "type": "method",
     "recency": "2026-07-16",
     "source": "log.md",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "动作重定向（Motion Retargeting） 社区"
   },
   "top_communities": [
     {
@@ -299,18 +303,18 @@
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
     {
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "degree": 224,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",
       "label": "Paper Notebooks · Loco-Manipulation and WBC",
       "type": "overview",
       "degree": 222,
       "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
-    },
-    {
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "degree": 222,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
@@ -329,19 +333,19 @@
   ],
   "top_paper_hubs": [
     {
+      "detail_id": "entity-paper-hrl-stack-03-omniretarget",
+      "label": "OmniRetarget",
+      "type": "entity",
+      "degree": 45,
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",
       "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
       "type": "entity",
       "degree": 44,
       "has_repo": true
-    },
-    {
-      "detail_id": "entity-paper-hrl-stack-03-omniretarget",
-      "label": "OmniRetarget",
-      "type": "entity",
-      "degree": 44,
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
     },
     {
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",

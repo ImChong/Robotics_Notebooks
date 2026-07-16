@@ -56,6 +56,13 @@
         "cmu"
       ]
     },
+    "cornell": {
+      "label": "康奈尔大学（Cornell University）",
+      "aliases": [
+        "cornell",
+        "cornell-university"
+      ]
+    },
     "mit": {
       "label": "麻省理工（MIT）",
       "aliases": [
