@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-16] ingest | sources/papers/simple_arxiv_2606_08278.md — SIMPLE 人形 loco-manip 仿真 testbed 深读；升格 wiki/entities/paper-loco-manip-161-075-simple.md
+
 ## [2026-07-16] ingest | sources/repos/flashsac.md — 补全 FlashSAC 官方 GitHub 仓库链接与训练框架要点
 
 - wiki/methods/flashsac.md

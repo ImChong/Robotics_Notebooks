@@ -2,13 +2,14 @@
 type: concept
 tags: [simulation, evaluation, foundation-model, closed-loop, real-to-sim, benchmarking]
 status: complete
-updated: 2026-07-08
+updated: 2026-07-16
 related:
   - ../entities/deepinsight.md
   - ../entities/genesis-world-10.md
   - ../overview/robot-training-stack-layers-technology-map.md
   - ../entities/isaac-gym-isaac-lab.md
   - ../entities/paper-simfoundry-real2sim-scene-generation.md
+  - ../entities/paper-loco-manip-161-075-simple.md
   - ./sim2real.md
   - ./data-flywheel.md
   - ../methods/vla.md
@@ -109,6 +110,7 @@ flowchart TB
 - [VLA](../methods/vla.md) — 操作基础模型评测基准语境
 - [ENPIRE](../methods/enpire.md) — 真机闭环 autoresearch 与 RoboCasa 仿真 ablation 的分工样本
 - [SimFoundry](../entities/paper-simfoundry-real2sim-scene-generation.md) — 真机视频孪生 + Pearson/MMRV 操作策略评测（arXiv:2606.28276）
+- [SIMPLE](../entities/paper-loco-manip-161-075-simple.md) — 人形全身 loco-manipulation 双仿真器 testbed；仿真排序与真机强相关（arXiv:2606.08278，USC PSI Lab）
 - [数据飞轮](data-flywheel.md) — 评测驱动的数据采集闭环
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是其「④ sim↔real 校准层」的评测基建前提
 
