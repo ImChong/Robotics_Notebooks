@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-07-16",
-  "node_count": 1656,
-  "edge_count": 12906,
+  "node_count": 1657,
+  "edge_count": 12912,
   "coverage": {
-    "covered": 1609,
-    "total": 1639,
+    "covered": 1610,
+    "total": 1640,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-muninn-trajectory-diffusion-acceleration.md",
+      "detail_id": "entity-paper-muninn-trajectory-diffusion-acceleration",
+      "label": "Muninn（轨迹扩散免训练加速）",
+      "type": "entity",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/diffusion-policy.md",
+      "detail_id": "wiki-methods-diffusion-policy",
+      "label": "Diffusion Policy",
+      "type": "method",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/diffusion-motion-generation.md",
+      "detail_id": "wiki-methods-diffusion-motion-generation",
+      "label": "Diffusion-based Motion Generation (基于扩散模型的运动生成)",
+      "type": "method",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
     {
       "path": "wiki/entities/lumo-2.md",
       "detail_id": "entity-lumo-2",
@@ -184,53 +216,23 @@
       "source": "log.md",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/tasks/loco-manipulation.md",
-      "detail_id": "wiki-tasks-loco-manipulation",
-      "label": "Loco-Manipulation (移动操作)",
-      "type": "task",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md",
-      "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
-      "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/dexmal-dw05.md",
-      "detail_id": "entity-dexmal-dw05",
-      "label": "Dexmal DW05（OpenDW）",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/lumo-2.md",
-    "detail_id": "entity-lumo-2",
-    "label": "Lumo-2（Latent World-Action Model）",
+    "path": "wiki/entities/paper-muninn-trajectory-diffusion-acceleration.md",
+    "detail_id": "entity-paper-muninn-trajectory-diffusion-acceleration",
+    "label": "Muninn（轨迹扩散免训练加速）",
     "type": "entity",
     "recency": "2026-07-16",
     "source": "log.md",
     "action": "added",
+    "has_repo": true,
     "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 293
+      "size": 294
     },
     {
       "label": "人形论文深读笔记",
@@ -289,7 +291,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 231,
+      "degree": 232,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -303,7 +305,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 225,
+      "degree": 226,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
