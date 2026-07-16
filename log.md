@@ -1,5 +1,9 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-16] ingest | sources/sites/legsvla-github-io.md — 刷新 LEGS 项目页摘录（1,110 trials、9/9、LEGS-AUG、~15× 成本）；wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md
+
+- wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md
+- sources/sites/legsvla-github-io.md
 ## [2026-07-16] ingest | sources/repos/dexmal_opendw.md — 接入 Dexmal OpenDW/DW05 开源世界模型与 DW05-Base 权重；新建 wiki/entities/dexmal-dw05.md；互链 WAM、DM0.5、τ0-WM、RoboTwin、manipulation
 
 - wiki/entities/dexmal-dw05.md
