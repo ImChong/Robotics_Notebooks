@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, motion-cerebellum-survey, humanoid, motion-control, sysu]
 status: complete
-updated: 2026-07-06
+updated: 2026-07-16
 venue: curated
 summary: "接口：上层规划与泛化动作小脑分工。输入是上层任务命令、物体/负载状态和机器人本体状态；实现上把移动、操作、平衡和负载扰动拆成可控接口，再通过蒸馏、MPC 引导或强化学习训练全身策略；重点是让 VLA/planner 可以稳定调用身体。"
 related:

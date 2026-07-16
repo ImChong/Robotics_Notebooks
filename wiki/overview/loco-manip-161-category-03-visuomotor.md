@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, humanoid, category-hub, survey]
 status: complete
-updated: 2026-07-02
+updated: 2026-07-16
 summary: "人形 Loco-Manip 161 篇 · 03 视觉感知驱动的人形移动操作（37 篇）— 视觉完成目标定位、场景理解和操作闭环。"
 related:
   - ./humanoid-loco-manip-161-papers-technology-map.md
@@ -58,7 +58,7 @@ sources:
 | 078 | StageACT | [paper-loco-manip-161-078-stageact](../entities/paper-loco-manip-161-078-stageact.md) |
 | 079 | SynAgent | [paper-loco-manip-161-079-synagent](../entities/paper-loco-manip-161-079-synagent.md) |
 | 080 | TrajBooster | [paper-loco-manip-161-080-trajbooster](../entities/paper-loco-manip-161-080-trajbooster.md) |
-| 081 | VIRAL | [paper-loco-manip-161-081-viral](../entities/paper-hrl-stack-28-viral.md) |
+| 081 | VIRAL | [paper-loco-manip-161-081-viral](../entities/paper-viral-humanoid-visual-sim2real.md) |
 | 082 | VisualMimic | [paper-loco-manip-161-082-visualmimic](../entities/paper-notebook-visualmimic.md) |
 | 083 | WholeBodyVLA | [paper-loco-manip-161-083-wholebodyvla](../entities/paper-hrl-stack-30-wholebodyvla.md) |
 | 084 | 人形操作接口 | [paper-loco-manip-161-084-n084](../entities/paper-loco-manip-161-084-n084.md) |
@@ -66,7 +66,7 @@ sources:
 | 086 | 使用3D扩散策略的通用人形操作 | [paper-loco-manip-161-086-n086](../entities/paper-loco-manip-161-086-n086.md) |
 | 087 | 具有选择策略的协调人形操作 | [paper-loco-manip-161-087-n087](../entities/paper-loco-manip-161-087-n087.md) |
 | 088 | 基于基础模型的自主人形抓取快速部署管道 | [paper-loco-manip-161-088-n088](../entities/paper-loco-manip-161-088-n088.md) |
-| 089 | 打开仿真到现实世界的人形像素到动作策略传输之门 | [paper-loco-manip-161-089-n089](../entities/paper-hrl-stack-29-opening_the_sim_to_real_door_for_hum.md) |
+| 089 | 打开仿真到现实世界的人形像素到动作策略传输之门 | [paper-loco-manip-161-089-n089](../entities/paper-doorman-opening-sim2real-door.md) |
 | 090 | 通过带有多模态基础模型的具体行动链推理的人形智能体用于零样本移动操作 | [paper-loco-manip-161-090-n090](../entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md) |
 | 091 | 通过真实部署就绪的技能空间释放人形机器人的潜力 | [paper-loco-manip-161-091-n091](../entities/paper-loco-manip-161-091-n091.md) |
 | 092 | 通过触摸梦学习多样化人形操作 | [paper-loco-manip-161-092-n092](../entities/paper-loco-manip-161-092-n092.md) |

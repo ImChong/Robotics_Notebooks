@@ -23,7 +23,7 @@ sources:
 
 **State Entropy Maximization with Random Encoders for Efficient Exploration** 收录于 [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) **第 28/41** 篇，归类为 **03 Intrinsic reward 预训练**（2020 · ICML）。
 
-> **深读页：** [reinforcement-learning](../methods/reinforcement-learning.md) — 方法机制与实验细节见链接页；本页保留 survey 坐标与交叉引用。
+> **方法背景：** [reinforcement-learning](../methods/reinforcement-learning.md) — 通用方法页（非本文专属深读）；本文机制与实验以原文为准，本页保留 survey 坐标与交叉引用。
 
 ## 一句话定义
 

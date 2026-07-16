@@ -1,20 +1,31 @@
 ---
 
 type: entity
-tags: [repo, motion-retargeting, humanoid, physics-based-control, smpl, nvidia]
+tags: [repo, motion-retargeting, humanoid, physics-based-control, smpl, nvidia, paper, bfm, behavior-foundation-model, awesome-bfm-papers, berkeley]
 status: complete
-updated: 2026-06-09
+updated: 2026-07-16
+code: https://github.com/ZhengyiLuo/PHC
+venue: "2023 · ICCV"
+arxiv: "2305.06456"
 summary: "PHC（ZhengyiLuo/PHC）是 ICCV 2023 物理人形控制框架，含 SMPL→自定义人形 shape/motion fitting 重定向脚本与万级动作模仿训练。"
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-02-motion-imitation.md
+  - ../overview/bfm-41-papers-technology-map.md
+  - ../overview/bfm-category-02-goal-conditioned-learning.md
   - ../concepts/motion-retargeting.md
   - ../methods/motion-retargeting-gmr.md
   - ../methods/dart-control.md
-  - ./paper-bfm-22-phc.md
+  - ./phc.md
   - ./zhengyi-luo.md
   - ./protomotions.md
 sources:
   - ../../sources/repos/phc.md
   - ../../sources/papers/bfm_awesome_phc_arxiv_2305_06456.md
+  - ../../sources/papers/bfm_awesome_41_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 ---
 
 # PHC（Perpetual Humanoid Control）
@@ -30,6 +41,17 @@ sources:
 | AMASS | Archive of Motion Capture as Surface Shapes | 大规模 SMPL 人体运动库 |
 | PMCP | Progressive Multiplicative Control Policy | 渐进扩容网络容量的训练策略 |
 | IK | Inverse Kinematics | motion fitting 中的姿态对齐 |
+
+## Survey 坐标（策展索引）
+
+### 在 awesome-bfm-papers 中
+
+| 字段 | 内容 |
+|------|------|
+| 编号 | 22/41 |
+| 分组 | 02 Goal-conditioned 学习 |
+| 出处 | 2023 · ICCV |
+| 索引来源 | [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) |
 
 ## 为什么重要
 
@@ -69,12 +91,13 @@ python scripts/data_process/fit_smpl_motion.py robot=unitree_g1_fitting +amass_r
 - [DART（DartControl）](../methods/dart-control.md) — 项目页演示 DART 运动学输出 + PHC 跟踪以减轻穿模/滑步
 - [ProtoMotions](./protomotions.md)
 - [Zhengyi Luo](./zhengyi-luo.md)
-- [paper-bfm-22-phc](./paper-bfm-22-phc.md)
+- [phc](./phc.md)
 
 ## 参考来源
 
 - [PHC 仓库归档](../../sources/repos/phc.md)
 - [BFM awesome PHC 论文摘录](../../sources/papers/bfm_awesome_phc_arxiv_2305_06456.md)
+- 论文：<https://arxiv.org/abs/2305.06456>
 
 ## 推荐继续阅读
 

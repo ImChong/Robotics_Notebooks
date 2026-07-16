@@ -6,6 +6,7 @@ status: complete
 date: 2026-05-12
 updated: 2026-05-28
 related:
+  - ./paper-amp-survey-19-embrace_collisions.md
   - ./robot-motion-keyframe-editors.md
   - ./humanoid-robot.md
   - ../concepts/sim2real.md
@@ -122,6 +123,8 @@ flowchart TD
 - **In Submission 状态会变化**：Deep Whole-Body Parkour 在抓取时标注为投稿中，后续录用信息需人工更新。
 
 ## 关联页面
+
+- [Embrace Collisions（论文实体）](./paper-amp-survey-19-embrace_collisions.md) — 本项目对应论文（arXiv:2502.01465）在 AMP 专题中的深读页
 
 - [机器人关键帧与运动编辑工具](./robot-motion-keyframe-editors.md) — 同源 `robot-motion-editor`（NPZ）与同类浏览器/MuJoCo 工具对照
 - [人形机器人](./humanoid-robot.md)

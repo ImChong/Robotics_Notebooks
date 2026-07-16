@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model, shanghai-pil, pku, tsinghua]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-16
 arxiv: "2509.13833"
 venue: "2025 · arXiv"
 code: https://github.com/GalaxyGeneralRobotics/OpenTrack
@@ -28,7 +28,7 @@ sources:
 
 **Track Any Motions under Any Disturbances**（OpenTrack / Any2Track，arXiv:2509.13833）要求人形 motion tracker 在复杂地形、外力与模型误差等真实扰动下仍能跟踪任意动作。
 
-> **深读页：** [any2track](../methods/any2track.md) — 方法机制与实验细节见链接页；本页保留 survey 坐标与交叉引用。
+> **方法深读：** [any2track](../methods/any2track.md) — 覆盖本文（Any2Track）与同族 RGMT 的技术页；论文实体以本页为 canonical，保留 survey 坐标与交叉引用。
 
 ## 一句话定义
 

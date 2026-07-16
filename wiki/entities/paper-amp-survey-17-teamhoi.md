@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation, multi-agent, hoi, transformer, sea-ai-lab, nus]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-16
 arxiv: "2603.07988"
 venue: "CVPR 2026"
 code: https://github.com/sail-sg/TeamHOI

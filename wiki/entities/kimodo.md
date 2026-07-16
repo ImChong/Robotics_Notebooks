@@ -1,9 +1,12 @@
 ---
 type: entity
-tags: [repo, diffusion, motion-generation, humanoid, nvidia, unitree-g1, soma, smpl-x, text-to-motion]
+tags: [repo, paper, diffusion, motion-generation, humanoid, nvidia, unitree-g1, soma, smpl-x, text-to-motion, amp, motion-prior]
 status: complete
-updated: 2026-07-11
+updated: 2026-07-16
+arxiv: "2603.15546"
 related:
+  - ../overview/humanoid-amp-motion-prior-survey.md
+  - ../methods/motionbricks.md
   - ../methods/diffusion-motion-generation.md
   - ../methods/motionbricks.md
   - ../methods/genmo.md
@@ -18,6 +21,9 @@ sources:
   - ../../sources/repos/kimodo.md
   - ../../sources/sites/kimodo-project.md
   - ../../sources/papers/kimodo_arxiv_2603_15546.md
+  - ../../sources/papers/humanoid_amp_survey_04_kimodo_scaling_controllable_human_motion_generat.md
+  - ../../sources/papers/humanoid_amp_survey_19_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
 summary: "Kimodo 是 NVIDIA 开源的运动学扩散模型：在约 700 小时 Rigplay 动捕上训练，两阶段 root/body 去噪器支持文本与全身/末端/2D 路径约束，覆盖 SOMA / G1 / SMPL-X，并提供 Benchmark、时间线 Demo 与 ProtoMotions / GEAR-SONIC 下游衔接。"
 ---
 
@@ -42,6 +48,18 @@ summary: "Kimodo 是 NVIDIA 开源的运动学扩散模型：在约 700 小时 R
 - **规模 + 可控**：公开 mocap 偏小长期限制文生运动的质量与约束精度；Kimodo 用大规模工作室数据支撑 **scaling 实验**，并把「导演式」关键帧编辑与扩散采样结合。
 - **机器人演示数据上游**：G1 变体可 **快于遥操作** 生成人形参考轨迹，经 NPZ/CSV 导入 [ProtoMotions](./protomotions.md) 训练物理策略，或在 [GEAR-SONIC Demo](https://nvlabs.github.io/GEAR-SONIC/demo.html) 中与 [SONIC](../methods/sonic-motion-tracking.md) 跟踪策略闭环演示。
 - **可复现评测**：[Kimodo Motion Generation Benchmark](https://huggingface.co/datasets/nvidia/Kimodo-Motion-Gen-Benchmark) 覆盖文本与多类约束测试用例；SEED 训练变体便于与仅使用 [BONES-SEED](https://huggingface.co/datasets/bones-studio/seed) 的其他方法公平对比。
+
+## Survey 坐标（策展索引）
+
+### 在 AMP 运动先验专题 19 篇中
+
+| 字段 | 内容 |
+|------|------|
+| 编号 | 04/19 |
+| 分组 | 01 分布约束与先验组件化 |
+| 索引来源 | [具身智能研究室 · AMP 运动先验专题长文](https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w) |
+
+策展导读直言：**不是机器人控制论文，但应该放在这里**——它代表「先验」在 **运动学生成层** 的 scaling 路线，回答「**参考从哪来**」；产出经 retarget + 跟踪/AMP 进真机，与 [AMP #01](./paper-amp-survey-01-amp.md) 的 **RL 风格奖励** 互补而非替代。同段姊妹 [MotionBricks #05](../methods/motionbricks.md) 更靠近 **实时机器人 WBC API**，Kimodo 偏 **离线高质量扩散 + 导演式编辑**。
 
 ## 核心结构 / 机制
 
@@ -102,6 +120,8 @@ flowchart LR
 
 ## 关联页面
 
+- [AMP 运动先验专题](../overview/humanoid-amp-motion-prior-survey.md)（本文 #04/19）
+
 - [Diffusion-based Motion Generation](../methods/diffusion-motion-generation.md) — 扩散式全身轨迹生成范式
 - [MotionBricks](../methods/motionbricks.md) — 同生态实时潜空间生成式运动
 - [GENMO / GEM](../methods/genmo.md) — 视频/多模态人体运动估计与生成
@@ -117,6 +137,9 @@ flowchart LR
 - [sources/repos/kimodo.md](../../sources/repos/kimodo.md)
 - [sources/sites/kimodo-project.md](../../sources/sites/kimodo-project.md)
 - [sources/papers/kimodo_arxiv_2603_15546.md](../../sources/papers/kimodo_arxiv_2603_15546.md)
+- [humanoid_amp_survey_04_kimodo_scaling_controllable_human_motion_generat.md](../../sources/papers/humanoid_amp_survey_04_kimodo_scaling_controllable_human_motion_generat.md) — AMP 专题策展摘录
+- [humanoid_amp_survey_19_catalog.md](../../sources/papers/humanoid_amp_survey_19_catalog.md) — AMP 专题总表
+- [wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md) — 微信公众号编译导读
 
 ## 推荐继续阅读
 

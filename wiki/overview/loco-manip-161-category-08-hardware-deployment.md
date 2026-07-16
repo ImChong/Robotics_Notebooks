@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, humanoid, category-hub, survey]
 status: complete
-updated: 2026-06-26
+updated: 2026-07-16
 summary: "人形 Loco-Manip 161 篇 · 08 硬件平台、感知配置与部署扩展（11 篇）— 本体、传感器和真实部署系统。"
 related:
   - ./humanoid-loco-manip-161-papers-technology-map.md
@@ -37,7 +37,7 @@ sources:
 | 136 | DemoHLM | [paper-loco-manip-161-136-demohlm](../entities/paper-loco-manip-161-136-demohlm.md) |
 | 137 | Gallant | [paper-loco-manip-161-137-gallant](../entities/paper-loco-manip-161-137-gallant.md) |
 | 138 | Mobile-TeleVision | [paper-loco-manip-161-138-mobile-television](../entities/paper-loco-manip-161-138-mobile-television.md) |
-| 139 | Open-TeleVision | [paper-loco-manip-161-139-open-television](../entities/paper-loco-manip-161-139-open-television.md) |
+| 139 | Open-TeleVision | [paper-loco-manip-161-131-open-television](../entities/paper-loco-manip-161-131-open-television.md) |
 | 140 | TWIST2 | [paper-loco-manip-161-140-twist2](../entities/paper-twist2.md) |
 | 141 | ToddlerBot | [paper-loco-manip-161-141-toddlerbot](../entities/paper-loco-manip-161-141-toddlerbot.md) |
 | 142 | 具有实时基础地形重建的步态自适应感知人形运动 | [paper-loco-manip-161-142-n142](../entities/paper-loco-manip-161-142-n142.md) |

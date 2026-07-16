@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-survey, humanoid, berkeley, amazon]
 status: complete
-updated: 2026-07-06
+updated: 2026-07-16
 arxiv: "2606.07934"
 summary: "MPC 重定向跨本体全身遥操作，使 teleop 数据可跨平台复用。"
 related:

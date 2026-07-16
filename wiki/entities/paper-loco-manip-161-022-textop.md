@@ -2,22 +2,24 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-07-08
+updated: 2026-07-16
 venue: curated
 summary: "TextOp 主要解决数据闭环：用语言指令、遥操作/外骨骼数据采集人类操作和机器人状态，再通过扩散策略/流匹配、全身控制器/WBC/MPC转成可训练、可复用的全身轨迹/动作序列、低层控制器目标。关键点是把动作生成看成条件生成问题，用扩散或流匹配在多模态动作分布里采样可执行轨迹。"
 related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-01-motion-base-wbt.md
+  - ../overview/loco-manip-161-category-04-generative-language-trajectory.md
   - ../tasks/loco-manipulation.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_022_textop.md
+  - ../../sources/papers/loco_manip_161_survey_105_textop.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
   - ../../sources/papers/humanoid_loco_manip_161_catalog.md
 ---
 
 # TextOp
 
-**TextOp** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A) **第 022/161** 篇，归类为 **01 运控基座与通用全身跟踪**。
+**TextOp** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A) ，在该 survey 中出现 **两次**（第 **022/161** 篇归类 **01 运控基座与通用全身跟踪**，第 **105/161** 篇归类 **04 生成式运动、语言控制与轨迹规划**；策展分类不同，canonical 实体仅此页）。
 
 ## 一句话定义
 
@@ -34,14 +36,14 @@ TextOp 主要解决数据闭环：用语言指令、遥操作/外骨骼数据采
 ## 为什么重要
 
 - TextOp 主要解决数据闭环：用语言指令、遥操作/外骨骼数据采集人类操作和机器人状态，再通过扩散策略/流匹配、全身控制器/WBC/MPC转成可训练、可复用的全身轨迹/动作序列、低层控制器目标。关键点是把动作生成看成条件生成问题，用扩散或流匹配在多模态动作分布里采样可执行轨迹。
-- 人形 Loco-Manip 161 篇 **#022/161** · 运控基座与通用全身跟踪。
+- 人形 Loco-Manip 161 篇 **#022/161** · 运控基座与通用全身跟踪；**#105/161** · 生成式运动、语言控制与轨迹规划（同一论文双槽位）。
 
 ## 核心信息（索引级）
 
 | 字段 | 内容 |
 |------|------|
-| 编号 | 022/161 |
-| 分组 | 01 运控基座与通用全身跟踪 |
+| 编号 | 022/161 与 105/161（同一论文双槽位） |
+| 分组 | 01 运控基座与通用全身跟踪；04 生成式运动、语言控制与轨迹规划 |
 | 原文题目 | TextOp: Real-time Interactive Text-Driven Humanoid Robot Motion Generation and Control |
 | 机构 | Institute of Artificial Intelligence (TeleAI), China Telecom、Shanghai Jiao Tong University、East China University of Science and Technology |
 | 发表日期 | 2026年2月7日 |
@@ -67,12 +69,13 @@ TextOp 主要解决数据闭环：用语言指令、遥操作/外骨骼数据采
 ## 与其他页面的关系
 
 - 技术地图：[humanoid-loco-manip-161-papers-technology-map.md](../overview/humanoid-loco-manip-161-papers-technology-map.md)
-- 分类 hub：[loco-manip-161-category-01-motion-base-wbt.md](../overview/loco-manip-161-category-01-motion-base-wbt.md)
+- 分类 hub：[loco-manip-161-category-01-motion-base-wbt.md](../overview/loco-manip-161-category-01-motion-base-wbt.md)、[loco-manip-161-category-04-generative-language-trajectory.md](../overview/loco-manip-161-category-04-generative-language-trajectory.md)
 - 原始 source：[loco_manip_161_survey_022_textop.md](../../sources/papers/loco_manip_161_survey_022_textop.md)
 
 ## 参考来源
 
-- [loco_manip_161_survey_022_textop.md](../../sources/papers/loco_manip_161_survey_022_textop.md) — 161 篇策展摘录
+- [loco_manip_161_survey_022_textop.md](../../sources/papers/loco_manip_161_survey_022_textop.md) — 161 篇策展摘录（#022）
+- [loco_manip_161_survey_105_textop.md](../../sources/papers/loco_manip_161_survey_105_textop.md) — 161 篇策展摘录（#105）
 - [humanoid_loco_manip_161_catalog.md](../../sources/papers/humanoid_loco_manip_161_catalog.md)
 - [wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md)
 

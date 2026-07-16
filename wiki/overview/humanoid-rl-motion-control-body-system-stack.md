@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, rl, motion-control, survey, body-system-stack, vla, world-model]
 status: complete
-updated: 2026-07-13
+updated: 2026-07-16
 related:
   - ./robot-training-stack-layers-technology-map.md
   - ./robot-world-models-training-loop-taxonomy.md
@@ -126,14 +126,14 @@ summary: "把 42 篇 humanoid RL 运动控制 / 移动操作论文整理成一�
 | 08 | OmniH2O | [paper-hrl-stack-08-omnih2o.md](../entities/paper-hrl-stack-08-omnih2o.md) |
 | 09 | TWIST | [paper-twist.md](../entities/paper-twist.md) |
 | 10 | TWIST2 | [paper-twist2.md](../entities/paper-twist2.md) |
-| 11 | DeepMimic | [paper-hrl-stack-11-deepmimic.md](../entities/paper-hrl-stack-11-deepmimic.md) |
+| 11 | DeepMimic | [deepmimic.md](../methods/deepmimic.md) |
 | 12 | OmniTrack | [paper-hrl-stack-12-omnitrack.md](../entities/paper-hrl-stack-12-omnitrack.md) |
 | 13 | Track Any Motions under Any Disturbances | [paper-opentrack.md](../entities/paper-opentrack.md) |
 | 14 | Robust and Generalized Humanoid Motion Tracking | [paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md](../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md) |
-| 15 | BeyondMimic | [paper-beyondmimic.md](../entities/paper-beyondmimic.md) |
+| 15 | BeyondMimic | [beyondmimic.md](../methods/beyondmimic.md) |
 | 16 | OmniXtreme | [paper-hrl-stack-16-omnixtreme.md](../entities/paper-hrl-stack-16-omnixtreme.md) |
-| 17 | SONIC | [paper-sonic.md](../entities/paper-sonic.md) |
-| 18 | Agility Meets Stability | [paper-ams.md](../entities/paper-ams.md) |
+| 17 | SONIC | [sonic-motion-tracking.md](../methods/sonic-motion-tracking.md) |
+| 18 | Agility Meets Stability | [ams.md](../methods/ams.md) |
 | 19 | BFM-Zero | [paper-bfm-zero.md](../entities/paper-bfm-zero.md) |
 | 20 | PvP | [paper-hrl-stack-20-pvp.md](../entities/paper-hrl-stack-20-pvp.md) |
 | 21 | Towards Adaptive Humanoid Control via Multi-Behavior Distillation and Reinforced Fine-Tuning | [paper-adaptive-humanoid-control.md](../entities/paper-adaptive-humanoid-control.md) |
@@ -143,8 +143,8 @@ summary: "把 42 篇 humanoid RL 运动控制 / 移动操作论文整理成一�
 | 25 | ASAP | [paper-hrl-stack-25-asap.md](../entities/paper-hrl-stack-25-asap.md) |
 | 26 | Learning Vision-Driven Reactive Soccer Skills for Humanoid Robots | [paper-hrl-stack-26-learning_vision_driven_reactive_socc.md](../entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md) |
 | 27 | Learning Whole-Body Humanoid Locomotion via Motion Generation and Motion Tracking（**全文消化** · arXiv:2604.17335） | [paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md](../entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md) |
-| 28 | VIRAL | [paper-hrl-stack-28-viral.md](../entities/paper-hrl-stack-28-viral.md) |
-| 29 | Opening the Sim-to-Real Door for Humanoid Pixel-to-Action Policy Transfer | [paper-hrl-stack-29-opening_the_sim_to_real_door_for_hum.md](../entities/paper-hrl-stack-29-opening_the_sim_to_real_door_for_hum.md) |
+| 28 | VIRAL | [paper-viral-humanoid-visual-sim2real.md](../entities/paper-viral-humanoid-visual-sim2real.md) |
+| 29 | Opening the Sim-to-Real Door for Humanoid Pixel-to-Action Policy Transfer | [paper-doorman-opening-sim2real-door.md](../entities/paper-doorman-opening-sim2real-door.md) |
 | 30 | WholeBodyVLA | [paper-hrl-stack-30-wholebodyvla.md](../entities/paper-hrl-stack-30-wholebodyvla.md) |
 | 31 | SENTINEL | [paper-sentinel.md](../entities/paper-sentinel.md) |
 | 32 | MetaWorld | [paper-hrl-stack-32-metaworld.md](../entities/paper-hrl-stack-32-metaworld.md) |
@@ -152,10 +152,10 @@ summary: "把 42 篇 humanoid RL 运动控制 / 移动操作论文整理成一�
 | 34 | GR00T N1 | [paper-hrl-stack-34-gr00t_n1.md](../entities/paper-hrl-stack-34-gr00t_n1.md) |
 | 35 | DreamDojo | [paper-hrl-stack-35-dreamdojo.md](../entities/paper-hrl-stack-35-dreamdojo.md) |
 | 36 | CHIP | [paper-hrl-stack-36-chip.md](../entities/paper-hrl-stack-36-chip.md) |
-| 37 | GentleHumanoid | [paper-hrl-stack-37-gentlehumanoid.md](../entities/paper-hrl-stack-37-gentlehumanoid.md) |
-| 38 | HAIC | [paper-hrl-stack-38-haic.md](../entities/paper-hrl-stack-38-haic.md) |
+| 37 | GentleHumanoid | [gentlehumanoid-motion-tracking.md](../methods/gentlehumanoid-motion-tracking.md) |
+| 38 | HAIC | [haic.md](../methods/haic.md) |
 | 39 | Closing Sim-to-Real Gap for Heavy-loaded Humanoid Agile Motion Skills via Differentiable Simulation | [paper-hrl-stack-39-closing_sim_to_real_gap_for_heavy_lo.md](../entities/paper-hrl-stack-39-closing_sim_to_real_gap_for_heavy_lo.md) |
-| 40 | Heracles | [paper-hrl-stack-40-heracles.md](../entities/paper-hrl-stack-40-heracles.md) |
+| 40 | Heracles | [paper-heracles-humanoid-diffusion.md](../entities/paper-heracles-humanoid-diffusion.md) |
 | 41 | SafeFall | [paper-hrl-stack-41-safefall.md](../entities/paper-hrl-stack-41-safefall.md) |
 | 42 | Thor | [paper-hrl-stack-42-thor.md](../entities/paper-hrl-stack-42-thor.md) |
 

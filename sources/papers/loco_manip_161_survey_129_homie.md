@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-129-homie](../../wiki/entities/paper-loco-manip-161-129-homie.md)
+- [paper-loco-manip-161-040-homie](../../wiki/entities/paper-loco-manip-161-040-homie.md)
 - [loco-manip-161-category-07-data-teleop](../../wiki/overview/loco-manip-161-category-07-data-teleop.md)
 
 ## 参考来源（原始）

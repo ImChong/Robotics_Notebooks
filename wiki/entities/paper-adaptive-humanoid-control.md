@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, multi-behavior, distillation, amp, teleai, unitree-g1, aaai]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-16
 arxiv: "2511.06371"
 venue: AAAI 2026 Oral
 summary: "AHC（AAAI 2026 Oral）三阶段：起身/行走专精策略（含 AMP）→ MoE 蒸馏统一 π^d → PCGrad 多任务微调得地形自适应 G1 控制器。"
@@ -12,7 +12,7 @@ related:
   - ../methods/amp-reward.md
   - ../tasks/balance-recovery.md
   - ../tasks/locomotion.md
-  - ./paper-amp-survey-10-unified_walking_running_and_recovery.md
+  - ./paper-unified-walk-run-recovery-sdamp.md
   - ./paper-amp-survey-12-haml.md
   - ./paper-host-humanoid-standingup.md
   - ../entities/unitree-g1.md
@@ -47,7 +47,7 @@ sources:
 
 ## 为什么重要
 
-- **多行为必先「压进一个身体」：** 策展强调 AMP 是 **各专精阶段** 的风格项，而非事后给单技能打补丁；与 [SD-AMP #10](./paper-amp-survey-10-unified_walking_running_and_recovery.md)（训练期门控单策略）、[HAML #12](./paper-amp-survey-12-haml.md)（条件 AMP teacher）并列多技能路线。
+- **多行为必先「压进一个身体」：** 策展强调 AMP 是 **各专精阶段** 的风格项，而非事后给单技能打补丁；与 [SD-AMP #10](./paper-unified-walk-run-recovery-sdamp.md)（训练期门控单策略）、[HAML #12](./paper-amp-survey-12-haml.md)（条件 AMP teacher）并列多技能路线。
 - **蒸馏不够、还需 RL 微调：** $\pi^d$ 在 hurdle/discrete 仅 **0.756 / 0.702** 成功率；$\pi^{\mathrm{AHC}}$ 达 **0.922 / 0.969**——说明 **地形自适应** 需第二阶段强化而非纯 BC。
 - **PCGrad 实用价值：** walk / recovery **共享 actor、分行为 critic** 并行 PPO 时，PCGrad 缓解梯度冲突。
 - **真机：** 跌倒起身续走、楼梯/坡地/障碍；相对 [HoST](./paper-host-humanoid-standingup.md) 关节加速度更平滑（AMP 引导自然起身）。
@@ -122,7 +122,7 @@ flowchart TB
 
 ## 与其他页面的关系
 
-- 多技能姊妹：[SD-AMP #10](./paper-amp-survey-10-unified_walking_running_and_recovery.md)、[HAML #12](./paper-amp-survey-12-haml.md)、[MoRE #08](./paper-amp-survey-08-more.md)
+- 多技能姊妹：[SD-AMP #10](./paper-unified-walk-run-recovery-sdamp.md)、[HAML #12](./paper-amp-survey-12-haml.md)、[MoRE #08](./paper-amp-survey-08-more.md)
 - 起身对照：[HoST](./paper-host-humanoid-standingup.md)
 - 任务：[balance-recovery.md](../tasks/balance-recovery.md)、[locomotion.md](../tasks/locomotion.md)
 - AMP 专题：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)（#11/19）
