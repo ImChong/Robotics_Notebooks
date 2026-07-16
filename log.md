@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-16] ingest | sources/sites/xiaomi-robotics-1.md — Xiaomi-Robotics-1 100k h UMI 预训练具身基座 VLA；wiki/entities/xiaomi-robotics-1.md、wiki/methods/vla.md、wiki/entities/xiaomi-robotics-0.md、wiki/entities/xiaomi-robotics-u0.md
+
+- wiki/entities/xiaomi-robotics-1.md
+- wiki/methods/vla.md
+- wiki/entities/xiaomi-robotics-0.md
+- wiki/entities/xiaomi-robotics-u0.md
+- sources/sites/xiaomi-robotics-1.md
+
 ## [2026-07-16] structural | wiki — 合并 REGRIND 方法页与论文实体页为单页 wiki/methods/regrind-retargeting-guided-rl.md
 
 - wiki/methods/regrind-retargeting-guided-rl.md
