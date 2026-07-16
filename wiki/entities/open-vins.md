@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, vio, msckf, research, ros, cmu]
 status: complete
-updated: 2026-05-27
+updated: 2026-07-16
 related:
   - ../entities/vins-fusion.md
   - ../comparisons/lidar-slam-lio-vio-selection.md

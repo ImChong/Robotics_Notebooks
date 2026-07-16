@@ -1,13 +1,44 @@
 {
   "generated_at": "2026-07-16",
-  "node_count": 1647,
-  "edge_count": 12799,
+  "node_count": 1648,
+  "edge_count": 12809,
   "coverage": {
-    "covered": 1600,
-    "total": 1630,
+    "covered": 1601,
+    "total": 1631,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-co-calib-multi-fisheye-calibration.md",
+      "detail_id": "entity-paper-co-calib-multi-fisheye-calibration",
+      "label": "CO-Calib（多鱼眼标定 · 观测质量）",
+      "type": "entity",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/formalizations/3d-coordinate-transforms-vision-robotics.md",
+      "detail_id": "wiki-formalizations-3d-coordinate-transforms-vision-robotics",
+      "label": "三维坐标变换（视觉–机器人对齐）",
+      "type": "formalization",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/entities/vins-fusion.md",
+      "detail_id": "entity-vins-fusion",
+      "label": "VINS-Fusion",
+      "type": "entity",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
+    },
     {
       "path": "wiki/entities/graphify.md",
       "detail_id": "entity-graphify",
@@ -184,48 +215,17 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-kemo-event-driven-keyframe-memory-vla.md",
-      "detail_id": "entity-paper-kemo-event-driven-keyframe-memory-vla",
-      "label": "KEMO（Event-Driven Keyframe Memory for Long-Horizon Robot Manipulation with VLA Policies）",
-      "type": "entity",
-      "recency": "2026-07-15",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-panoworld-real-world-panoramic-generation.md",
-      "detail_id": "entity-paper-panoworld-real-world-panoramic-generation",
-      "label": "PanoWorld：真实世界全景可控生成",
-      "type": "entity",
-      "recency": "2026-07-15",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/generative-world-models.md",
-      "detail_id": "wiki-methods-generative-world-models",
-      "label": "Generative World Models (生成式世界模型)",
-      "type": "method",
-      "recency": "2026-07-15",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/graphify.md",
-    "detail_id": "entity-graphify",
-    "label": "graphify（Graphify Labs）",
+    "path": "wiki/entities/paper-co-calib-multi-fisheye-calibration.md",
+    "detail_id": "entity-paper-co-calib-multi-fisheye-calibration",
+    "label": "CO-Calib（多鱼眼标定 · 观测质量）",
     "type": "entity",
     "recency": "2026-07-16",
     "source": "log.md",
     "action": "added",
-    "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {

@@ -2,7 +2,7 @@
 type: formalization
 tags: [kinematics, computer-vision, calibration, hand-eye, camera-model, embodied-ai, shenlan]
 status: complete
-updated: 2026-06-09
+updated: 2026-07-16
 related:
   - ../overview/shenlan-embodied-ai-fundamentals-series.md
   - ./homogeneous-coordinates-transform.md
@@ -12,6 +12,7 @@ related:
   - ../methods/visual-servoing.md
   - ../methods/vla.md
   - ../entities/april-tag.md
+  - ../entities/paper-co-calib-multi-fisheye-calibration.md
   - ../entities/vision-banana.md
 sources:
   - ../../sources/blogs/wechat_shenlan_3d_coordinate_transforms.md
@@ -159,6 +160,7 @@ $A$：末端两姿态间变换；$B$：标定板在相机下的观测变换；$X
 - [黎曼流形与切空间](./riemannian-manifold-tangent-space.md) — 位姿优化统一语言
 - [Grasp Pose Estimation](../methods/grasp-pose-estimation.md)
 - [Visual Servoing](../methods/visual-servoing.md)
+- [CO-Calib（多鱼眼标定）](../entities/paper-co-calib-multi-fisheye-calibration.md) — 宽 FoV 多相机内参/外参标定与观测可观测性
 - [VLA](../methods/vla.md)
 - [Vision Banana](../entities/vision-banana.md) — 单目 metric depth → 点云反投影的上游示例
 
