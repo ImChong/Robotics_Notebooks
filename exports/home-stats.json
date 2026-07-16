@@ -1,13 +1,42 @@
 {
   "generated_at": "2026-07-16",
-  "node_count": 1636,
-  "edge_count": 12861,
+  "node_count": 1637,
+  "edge_count": 12871,
   "coverage": {
-    "covered": 1589,
-    "total": 1619,
+    "covered": 1590,
+    "total": 1620,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-neuralactuator-neural-actuation-modeling.md",
+      "detail_id": "entity-paper-neuralactuator-neural-actuation-modeling",
+      "label": "NeuralActuator（Neural Actuation Modeling · arXiv:2607.11734）",
+      "type": "entity",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/methods/actuator-network.md",
+      "detail_id": "wiki-methods-actuator-network",
+      "label": "Actuator Network (执行器网络)",
+      "type": "method",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-bam-extended-friction-servo-actuators.md",
+      "detail_id": "entity-paper-bam-extended-friction-servo-actuators",
+      "label": "扩展摩擦模型：舵机物理仿真（BAM 论文）",
+      "type": "entity",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/methods/flashsac.md",
       "detail_id": "wiki-methods-flashsac",
@@ -173,48 +202,17 @@
       "source": "log.md",
       "action": "added",
       "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/methods/reactor-physics-aware-motion-retargeting.md",
-      "detail_id": "wiki-methods-reactor-physics-aware-motion-retargeting",
-      "label": "ReActor（物理感知 RL 运动重定向）",
-      "type": "method",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/methods/spider-physics-informed-dexterous-retargeting.md",
-      "detail_id": "wiki-methods-spider-physics-informed-dexterous-retargeting",
-      "label": "SPIDER（物理感知采样式灵巧重定向）",
-      "type": "method",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/entities/phc.md",
-      "detail_id": "entity-phc",
-      "label": "PHC（Perpetual Humanoid Control）",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/methods/flashsac.md",
-    "detail_id": "wiki-methods-flashsac",
-    "label": "FlashSAC",
-    "type": "method",
+    "path": "wiki/entities/paper-neuralactuator-neural-actuation-modeling.md",
+    "detail_id": "entity-paper-neuralactuator-neural-actuation-modeling",
+    "label": "NeuralActuator（Neural Actuation Modeling · arXiv:2607.11734）",
+    "type": "entity",
     "recency": "2026-07-16",
     "source": "log.md",
     "action": "added",
-    "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
@@ -231,11 +229,11 @@
     },
     {
       "label": "全身控制",
-      "size": 160
+      "size": 159
     },
     {
       "label": "仿真到现实",
-      "size": 123
+      "size": 124
     },
     {
       "label": "人形强化学习运动控制",
@@ -254,7 +252,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 288,
+      "degree": 289,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

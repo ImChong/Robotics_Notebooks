@@ -9,7 +9,7 @@ tags:
   - contact-rich
   - unc
 status: complete
-updated: 2026-07-11
+updated: 2026-07-16
 arxiv: "2607.03529"
 related:
   - ../overview/wm-action-consequence-category-02-contact-modeling.md
