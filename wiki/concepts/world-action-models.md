@@ -21,6 +21,7 @@ related:
   - ../entities/paper-worldvln-aerial-vln-wam.md
   - ../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md
   - ../entities/paper-egowam-egocentric-human-wam-co-training.md
+  - ../entities/paper-wam-ttt-human-video-test-time-steering.md
   - ../tasks/vision-language-navigation.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
   - ./humanoid-policy-network-architecture.md
@@ -44,6 +45,7 @@ sources:
   - ../../sources/papers/abot_m05_arxiv_2607_00678.md
   - ../../sources/papers/navwam_arxiv_2606_13494.md
   - ../../sources/papers/egowam.md
+  - ../../sources/papers/wam_ttt_arxiv_2607_06988.md
   - ../../sources/papers/being_m07.md
   - ../../sources/papers/pelican_unified_uei_arxiv_2605_15153.md
   - ../../sources/papers/defi_arxiv_2604_16391.md
@@ -130,6 +132,8 @@ sources:
 
 **文献实例（Joint 族 + 野外 egocentric 人数据协同训练 · 可替换世界目标）**：[EgoWAM](../entities/paper-egowam-egocentric-human-wam-co-training.md) 在 **HPT** 上 **固定骨干、flow-matching 动作头与三源数据混合**（机器人遥操作 + 域内人 + [EgoVerse](https://egoverse.ai/) 野外人），**仅替换世界预测目标**（Pixel / DINO / 3D motion flow），系统检验 **WAM 动力学监督** 能否把 **具身差距** 下常失效的 **BC 人–机共训** 转为可扩展增益：**DINO** 在 OOD 物体/场景上最高约 **4×** 泛化，**3D flow** 域内 **+20–30%**；未对齐人数据时 **BC 可跌至 robot-only 以下** 而 **3D Flow** 仍鲁棒（Georgia Tech RL²，[项目页](https://gatech-rl2.github.io/egowam.github.io/)）。
 
+**文献实例（Joint 族 + 部署期人视频 TTT steering · LDA 底座）**：[WAM-TTT](../entities/paper-wam-ttt-human-video-test-time-steering.md) 在 **冻结 LDA-1B WAM** 的 **video expert** 外挂 **Spatial-TTT fast-weight 分支**：**meta-training** 用 **2286 对** 相位同步人–机示教 + **KV 记忆重建** 对齐人 Key/Value 与机器人 Query；**部署** 仅用 **无标注 egocentric 人视频** 做 **自监督视频预测 TTT** 写入记忆即可 **steer** 新任务，无需机器人动作或全模型微调。在 **G1 + Galbot 双臂** **9 项真机** **New 家庭 OOD** 上平均 **46.2%** progress，显著优于同人视频的 **WAM-ICL（7.1%）** 与同骨干 **LDA（32.5%）**（PKU / Galbot 等，arXiv:2607.06988）。
+
 **文献实例（Joint 族 + 原生 CEDC · 4B 部署导向）**：[Kairos](../entities/paper-kairos-native-world-model-stack.md) 以 **Video DiT + Action DiT（MoT）** 联合 flow matching，**Stage I–II 仅训 VideoDiT、Stage III 联合 ActionDiT**；推理支持 **action-only**（不滚未来视频）与 **Kairos-joint**（联合去噪，LIBERO-Plus **89.0→90.8**）。原生 **跨具身数据课程** 与 **仅训 ActionDiT** 消融（**−23.2** LIBERO-Plus）强调：世界生成监督是控制相关表征的必要来源（arXiv:2606.16533，Kairos Team / kairos-agi）。
 
 **文献实例（Joint 族 + latent foresight 查询冻结生成器 · 部署纯 VLA）**：[InternVLA-A1.5](../entities/paper-internvla-a15-unified-vla.md) 在 **Qwen3.5-2B MoT** 上持续 **VQA/子任务** 共训，用 **50 个 foresight token** 读出紧凑潜码条件化 **冻结 WAN2.2-5B**，以 video flow loss **蒸馏动力学先验** 至 unified expert，再以 **flow matching** 输出连续 action chunk；**推理丢弃视频分支**（~0.1s/步），在 LIBERO-Plus / DOMINO 零样本与真机 **组合指令 OOD** 上报告最强组合泛化（arXiv:2607.04988，上海 AI Lab Physical Intelligence Team）。
@@ -203,6 +207,7 @@ flowchart TB
 - [WorldVLN（空中 VLN · WAM）](../entities/paper-worldvln-aerial-vln-wam.md)
 - [NavWAM（image-goal 视觉导航 · WAM）](../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md)
 - [EgoWAM（野外 egocentric 人数据 · WAM 协同训练）](../entities/paper-egowam-egocentric-human-wam-co-training.md)
+- [WAM-TTT（人视频 · 测试时训练 steering）](../entities/paper-wam-ttt-human-video-test-time-steering.md)
 - [τ₀-World Model（τ0-WM）](../entities/tau0-world-model.md)
 - [Dexmal DW05（OpenDW）](../entities/dexmal-dw05.md)
 - [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md)

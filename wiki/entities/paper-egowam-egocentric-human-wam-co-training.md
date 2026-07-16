@@ -12,7 +12,7 @@ tags:
   - georgia-tech
 status: complete
 venue: curated
-updated: 2026-07-13
+updated: 2026-07-16
 related:
   - ../concepts/world-action-models.md
   - ../methods/imitation-learning.md
@@ -22,6 +22,7 @@ related:
   - ../comparisons/humannet-table1-human-video-corpora.md
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
   - ./paper-dit4dit-video-action-model.md
+  - ./paper-wam-ttt-human-video-test-time-steering.md
   - ./humannet.md
 sources:
   - ../../sources/papers/egowam.md
@@ -120,6 +121,7 @@ flowchart TB
 - [Manipulation](../tasks/manipulation.md) — 双臂操作与人数据驱动策略任务族
 - [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) — 同 WAM 范式、不同形态（人形实时 loco-manip）
 - [DiT4DiT](./paper-dit4dit-video-action-model.md) — 双 DiT flow-matching WAM；EgoWAM 强调 **人–机共训与世界表征轴**
+- [WAM-TTT](./paper-wam-ttt-human-video-test-time-steering.md) — **部署期** 人视频 TTT 记忆 steering；与 EgoWAM **训练期共训** 互补
 
 ## 关联页面
 
