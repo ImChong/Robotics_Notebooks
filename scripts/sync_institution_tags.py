@@ -122,6 +122,8 @@ ORG_PHRASE_MAP: list[tuple[str, str]] = [
     ("乐聚机器人", "leju"),
     ("小米机器人实验室", "xiaomi-robotics"),
     ("lumos robotics", "lumos"),
+    ("astribot", "astribot"),
+    ("星尘智能", "astribot"),
     ("opendrivelab", "opendrivelab"),
     ("法国国家信息与自动化研究所", "inria"),
     ("佐治亚理工学院", "georgia-tech"),

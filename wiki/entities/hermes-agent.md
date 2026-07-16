@@ -10,13 +10,14 @@ tags:
   - persistent-memory
   - messaging-gateway
 status: complete
-updated: 2026-06-20
+updated: 2026-07-16
 related:
   - ./ponytail.md
   - ./caveman.md
   - ./superpowers-obra.md
   - ./sensenova-skills.md
   - ./agent-reach.md
+  - ./philia.md
   - ../references/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
   - ../concepts/ai-auto-research.md
@@ -47,7 +48,7 @@ tags: [llm-agents, coding-agents, agent-infrastructure, skills, mcp, persistent-
 ## 为什么重要（对本知识库读者）
 
 - **与 Karpathy LLM Wiki 同构轴、不同落点：** [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) 把 **知识** 编译进 `wiki/`；Hermes 把 **行为与程序性记忆** 编译进 **技能、MEMORY.md、USER.md、SOUL.md** 与 SQLite 会话。维护本仓库的 agent 可对照两者：**结构化 markdown 知识库** vs **可执行代理运行时**。
-- **与 Superpowers / Agent Reach 的互补：** [Superpowers（obra）](superpowers-obra.md) 提供 **TDD / worktree / 子代理评审** 等 **交付流程技能**；[Agent Reach](agent-reach.md) 聚合 **外网读搜上游 CLI**；Hermes 自带 web/browser/MCP/终端，并覆盖 **网关、cron、沙箱、轨迹导出**，更接近 **agent OS**。
+- **与 Superpowers / Agent Reach 的互补：** [Superpowers（obra）](superpowers-obra.md) 提供 **TDD / worktree / 子代理评审** 等 **交付流程技能**；[Agent Reach](agent-reach.md) 聚合 **外网读搜上游 CLI**；Hermes 自带 web/browser/MCP/终端，并覆盖 **网关、cron、沙箱、轨迹导出**，更接近 **agent OS**。真机 **Robot Gateway + 物理安全闸门** 路线见 Astribot [Philia](philia.md)。
 - **研究侧接口：** 文档与代码路径支持 **批处理、ShareGPT 轨迹、Atropos RL**，对需要 **从代理交互生成训练数据** 的机器人学习管线有参照价值（与仿真 RL 栈正交，但共享「轨迹 → 策略」思维）。
 
 ## 核心结构
