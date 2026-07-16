@@ -1,12 +1,14 @@
 ---
 type: entity
-tags: [paper, humanoid, sim2real, visual-rl, loco-manipulation, teacher-student, dagger, ppo, unitree-g1, isaac-lab, cvpr2026, nvidia, cmu]
+tags: [paper, humanoid, sim2real, visual-rl, loco-manipulation, teacher-student, dagger, ppo, unitree-g1, isaac-lab, cvpr2026, nvidia, cmu, berkeley, cuhk, body-system-stack]
 status: complete
-updated: 2026-07-02
+updated: 2026-07-16
 arxiv: "2511.15200"
 venue: "CVPR 2026"
 code: https://github.com/NVlabs/GR00T-VisualSim2Real
 related:
+  - ../overview/humanoid-rl-motion-control-body-system-stack.md
+  - ../overview/humanoid-amp-motion-prior-survey.md
   - ./paper-doorman-opening-sim2real-door.md
   - ./gr00t-visual-sim2real.md
   - ./tairan-he.md
@@ -21,6 +23,9 @@ related:
   - ./isaac-gym-isaac-lab.md
 sources:
   - ../../sources/papers/viral-humanoid-visual-sim2real.md
+  - ../../sources/papers/humanoid_rl_stack_28_viral_visual_sim_to_real_at_scale_for_humanoid_l.md
+  - ../../sources/papers/humanoid_rl_stack_42_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
 summary: "VIRAL（arXiv:2511.15200，CVPR 2026）给出人形 loco-manipulation 的视觉 Sim2Real 全栈配方：PPO 特权教师以 delta 命令驱动预训练 WBC，大规模分块渲染仿真中用 DAgger+BC 蒸馏 RGB 学生，并结合 SysID、相机对齐与强视觉域随机化在 Unitree G1 上零样本部署。"
 ---
 
@@ -56,6 +61,16 @@ summary: "VIRAL（arXiv:2511.15200，CVPR 2026）给出人形 loco-manipulation 
 - **算力与可复现性**：论文通过 scaling study 论证 **并行 GPU 数量** 对教师与学生阶段 **成功率与稳定性** 的关键作用（学生训练可达 **64 GPU** 量级与 **分块渲染**）。
 - **工程闭环完整**：从 **特权教师**、**蒸馏混合策略** 到 **灵巧手 SysID** 与 **相机外参对齐**，与 [GR00T-VisualSim2Real](./gr00t-visual-sim2real.md) 开源栈叙事一致，便于对照实现细节。
 - **姊妹工作**：同仓 [DoorMan（论文实体）](./paper-doorman-opening-sim2real-door.md) 聚焦 **铰接门 loco-manipulation** 与 **GRPO 自举**，与 VIRAL 的 **规模化并行 + delta-WBC 教师** 形成互补阅读。
+
+## Survey 坐标（策展索引）
+
+### 在 42 篇 RL 运动控制身体系统栈中
+
+| 字段 | 内容 |
+|------|------|
+| 编号 | 28/42 |
+| 系统栈层 | 04 视觉闭环 · 任务接口 · 世界模型 |
+| 索引来源 | [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) |
 
 ## 核心机制（归纳）
 
@@ -105,6 +120,8 @@ summary: "VIRAL（arXiv:2511.15200，CVPR 2026）给出人形 loco-manipulation 
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [Unitree G1](./unitree-g1.md)
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
+- [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) — 42 篇栈总框架（本文 #28/42）
+- [AMP 运动先验专题](../overview/humanoid-amp-motion-prior-survey.md) — 姊妹篇总览
 
 ## 实验与评测
 
@@ -118,6 +135,9 @@ summary: "VIRAL（arXiv:2511.15200，CVPR 2026）给出人形 loco-manipulation 
 
 - [sources/papers/viral-humanoid-visual-sim2real.md](../../sources/papers/viral-humanoid-visual-sim2real.md)
 - He, Wang, Xue, Ben, Luo, Xiao, Yuan, Da, Castañeda, Sastry, Liu, Shi, Fan, Zhu, *VIRAL: Visual Sim-to-Real at Scale for Humanoid Loco-Manipulation*, arXiv:2511.15200v1, 2025. <https://arxiv.org/abs/2511.15200v1>
+- [humanoid_rl_stack_28_viral_visual_sim_to_real_at_scale_for_humanoid_l.md](../../sources/papers/humanoid_rl_stack_28_viral_visual_sim_to_real_at_scale_for_humanoid_l.md) — 42 篇栈策展摘录
+- [humanoid_rl_stack_42_catalog.md](../../sources/papers/humanoid_rl_stack_42_catalog.md) — 42 篇总表
+- [wechat_embodied_ai_lab_humanoid_rl_motion_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md) — 微信公众号编译导读
 
 ## 推荐继续阅读
 

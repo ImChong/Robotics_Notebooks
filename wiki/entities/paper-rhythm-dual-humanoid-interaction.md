@@ -14,7 +14,7 @@ related:
   - ../concepts/whole-body-control.md
   - ../methods/motion-retargeting-gmr.md
   - ./paper-assistmimic.md
-  - ./paper-bfm-22-phc.md
+  - ./phc.md
   - ./unitree-g1.md
 sources:
   - ../../sources/papers/rhythm_arxiv_2603_02856.md
@@ -123,7 +123,7 @@ flowchart TB
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md)
 - [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md)
 - [AssistMimic](./paper-assistmimic.md) — 双人 assistive MARL tracking（仿真主证据）
-- [PHC](./paper-bfm-22-phc.md) — 单人 tracking prior 族；Rhythm 走 **双 agent 图奖励** 而非 PHC 零填充扩展
+- [PHC](./phc.md) — 单人 tracking prior 族；Rhythm 走 **双 agent 图奖励** 而非 PHC 零填充扩展
 - [GMR](../methods/motion-retargeting-gmr.md) — IAMR 重定向基线之一
 - [Sim2Real](../concepts/sim2real.md)
 - [Unitree G1](./unitree-g1.md)

@@ -969,8 +969,32 @@ def build_site_data(items: List[Dict]) -> Dict:
             "roadmap_pages": roadmap_pages,
             "tech_map_page": tech_map_page,
             "detail_pages": detail_pages,
+            "page_aliases": load_page_aliases(detail_pages),
         },
     }
+
+
+def load_page_aliases(detail_pages: Dict[str, Dict]) -> Dict[str, str]:
+    """读取 schema/page-aliases.json 的旧 ID → canonical ID 映射并校验。
+
+    - 别名目标必须是现存 detail 页，否则重定向落空；
+    - 别名键不得与现存页面 ID 冲突，否则会遮蔽真实页面。
+    两类问题都直接报错，让 ci-preflight 拦下。
+    """
+    alias_file = ROOT / "schema" / "page-aliases.json"
+    if not alias_file.exists():
+        return {}
+    data = json.loads(alias_file.read_text(encoding="utf-8"))
+    aliases = data.get("aliases", {})
+    errors = []
+    for old_id, new_id in aliases.items():
+        if old_id in detail_pages:
+            errors.append(f"alias 键 {old_id} 与现存页面 ID 冲突")
+        if new_id not in detail_pages:
+            errors.append(f"alias {old_id} → {new_id} 的目标页面不存在")
+    if errors:
+        raise SystemExit("schema/page-aliases.json 校验失败：\n" + "\n".join(errors))
+    return aliases
 
 
 def generate_sitemap(

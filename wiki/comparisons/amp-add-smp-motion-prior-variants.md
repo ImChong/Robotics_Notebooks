@@ -2,7 +2,7 @@
 type: comparison
 tags: [amp, motion-prior, rl, humanoid, imitation-learning, comparison]
 status: complete
-updated: 2026-05-21
+updated: 2026-07-16
 summary: "AMP / ADD / SMP 三种对抗式运动先验变体：判别器形式、多目标解耦与模块化 reward model 的选型对比。"
 sources:
   - ../../sources/papers/amp.md

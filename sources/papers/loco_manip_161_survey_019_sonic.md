@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-sonic](../../wiki/entities/paper-sonic.md)
+- [sonic-motion-tracking](../../wiki/methods/sonic-motion-tracking.md)
 - [loco-manip-161-category-01-motion-base-wbt](../../wiki/overview/loco-manip-161-category-01-motion-base-wbt.md)
 
 ## 参考来源（原始）

@@ -26,7 +26,7 @@
    - **对 wiki 的映射：** [paper-motion-cerebellum-stubborn](../../wiki/entities/paper-motion-cerebellum-stubborn.md)
 
 4. **跟踪误差驱动自适应采样（AdpS）：** PT 下 episode 终止不再可靠反映片段难度；Stubborn 用段内 **平均关键点跟踪误差** $\bar{e}$ 在线更新参考帧采样权重——高误差段增权、已成功跟踪段衰减，使训练聚焦难片段与不稳定状态。
-   - **对 wiki 的映射：** [BeyondMimic](../../wiki/entities/paper-beyondmimic.md)、[LIMMT](../../wiki/methods/limmt-gqs-motion-curation.md)
+   - **对 wiki 的映射：** [BeyondMimic](../../wiki/methods/beyondmimic.md)、[LIMMT](../../wiki/methods/limmt-gqs-motion-curation.md)
 
 5. **实验：** IsaacLab/MuJoCo 上 **完整 LAFAN1** 跟踪；对比 HoloMotion、Any2Track、BFM-Zero、From-scratch multi-motion RL。Stubborn 在 MPBPE/MPJPE/MPJVE 上最优（如 MPBPE 48.85 mm vs From-scratch 62.68）；5 m/s 强扰动下 PT 消融使恢复成功率 **100%**（w/o PT 为 77.5%–85%）。真机 **G1** 演示跟踪、抗扰与倒地恢复（含翻转/杂技类动作）。
    - **对 wiki 的映射：** [LaFAN1](../../wiki/entities/lafan1-dataset.md)、[Unitree G1](../../wiki/entities/unitree-g1.md)、[HoloMotion](../../wiki/entities/holomotion.md)、[Any2Track](../../wiki/methods/any2track.md)

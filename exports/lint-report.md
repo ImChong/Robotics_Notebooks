@@ -2,7 +2,7 @@
 
 ## [2026-07-16] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **4** 条信息型预警）：
+共发现 **0** 个问题（另含 **5** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -29,6 +29,9 @@
 - 无
 
 ### ❌ 引用了不存在的 sources/ 文件（0 个）
+- 无
+
+### ❌ 同一 frontmatter arxiv ID 出现在多个页面（一篇论文只允许一个 canonical 节点）（0 个）
 - 无
 
 ### ❌ Sources 孤儿（sources/papers 死链）（0 个）
@@ -88,7 +91,8 @@
 ### ❌ 工具实体缺少可派生的所属机构（0 个）
 - 无
 
-### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（1 个）
+### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（2 个）
+- wiki/methods/haic.md（被 4 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/regrind-retargeting-guided-rl.md（被 5 个页面引用，无 queries/comparisons 落地）
 
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（1 个）
@@ -112,4 +116,4 @@
 ### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：1610/1640 (98%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1589/1619 (98%) wiki/entity 页有 ingest 来源

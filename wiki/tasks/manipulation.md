@@ -100,6 +100,7 @@ flowchart TD
 - **DeFI**：**GFDM + GIDM** 分阶段预训练解耦前向/逆动力学，再用扩散适配器耦合微调；强调无动作标签人视频与 CALVIN / SimplerEnv 长程表现；入口见 [DeFI](../methods/defi-decoupled-dynamics-vla.md)
 - **EgoScale**：在 **海量 egocentric 人视频** 上对 **流式 VLA** 做 **腕 + 重定向灵巧手** 显式预训练，并以 **对齐人–机 mid-training** 承接 embodiment gap，面向 **高 DoF 长程灵巧** 任务；入口见 [EgoScale](../methods/egoscale.md)
 - **EgoWAM**：在 **双臂真机** 上实证 **朴素 BC 人–机共训** 可因具身差距 **负迁移**，而 **WAM 可替换世界目标**（DINO / 3D flow）使性能随 **EgoVerse 野外人数据** 扩展；入口见 [EgoWAM](../entities/paper-egowam-egocentric-human-wam-co-training.md)
+- **WAM-TTT**：在 **冻结 LDA WAM** 上用 **人视频测试时 TTT fast-weight 记忆** **steer** 新任务变体——**meta-training** 对齐人–机相位 + **KV 重建**；部署仅需 **无标注 egocentric 人视频**；**G1 + Galbot 双臂 9 任务** New 家庭场景 **46.2%** avg progress，显著优于 **WAM-ICL（7.1%）**；入口见 [WAM-TTT](../entities/paper-wam-ttt-human-video-test-time-steering.md)（arXiv:2607.06988）
 - **T-Rex**（[实体页](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md)，arXiv:2606.17055）：**触觉反应式灵巧操作**——人视频预训练 + **100 h 触觉 play mid-training** + 变频率 MoT；开源触觉数据集与 **12 任务** 双手真机基准
 - **OmniTacTune**（[实体页](../entities/paper-omnitactune-tactile-residual-adaptation.md)，arXiv:2607.03723）：**策略无关触觉残差真机 RL**——冻结 Flow/ACT/DP/π₀.₅ 视觉基策略，**40–80 min** 在线练习把接触丰富任务 **5–40% → 85–100%**；**无需离线触觉演示**
 - **FastGrasp**（[实体页](../entities/paper-fastgrasp-mobile-dexterous-grasping.md)，arXiv:2604.12879）：**移动底盘 + 臂 + LeapHand 全身 RL 快速灵巧抓取**——CVAE 点云引导 + PPO + **二值触觉** 冲击稳定；仿真 **50.09%**、真机 **32–35%**
@@ -134,6 +135,7 @@ flowchart TD
 - [DeFI（解耦前向/逆动力学 VLA）](../methods/defi-decoupled-dynamics-vla.md) — 混合视频前向 + 自监督逆向预训练的操作策略
 - [EgoScale](../methods/egoscale.md) — 人视频规模预训练 VLA + 对齐 mid-training 的灵巧操作迁移
 - [EgoWAM](../entities/paper-egowam-egocentric-human-wam-co-training.md) — WAM 人–机协同训练与野外 egocentric 人数据缩放
+- [WAM-TTT](../entities/paper-wam-ttt-human-video-test-time-steering.md) — 部署期人视频 TTT 记忆 steering 冻结 WAM（LDA 底座，arXiv:2607.06988）
 - [T-Rex](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md) — 触觉反应式灵巧 VLA + 开源触觉数据集与 12 任务基准
 - [OmniTacTune](../entities/paper-omnitactune-tactile-residual-adaptation.md) — 冻结视觉策略 + 触觉残差真机 RL 的快速接触适应（arXiv:2607.03723）
 - [FastGrasp](../entities/paper-fastgrasp-mobile-dexterous-grasping.md) — 轮式移动全身 RL + CVAE 抓取引导 + 二值触觉高速灵巧抓取（arXiv:2604.12879）

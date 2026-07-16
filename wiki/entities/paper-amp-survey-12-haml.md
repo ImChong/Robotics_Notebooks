@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, multi-skill, policy-distillation, conditional-gan, sdu, unitree-g1]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-16
 venue: MDPI Actuators 2026
 doi: "10.3390/act15040212"
 summary: "HAML（MDPI 2026）两阶段：条件对抗多技能 teacher（错配 transition–label 防条件坍缩）→ 历史本体蒸馏 student，G1 单策略覆盖走舞挥手等技能切换。"
@@ -11,7 +11,7 @@ related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../methods/amp-reward.md
   - ./paper-adaptive-humanoid-control.md
-  - ./paper-amp-survey-10-unified_walking_running_and_recovery.md
+  - ./paper-unified-walk-run-recovery-sdamp.md
   - ./paper-amp-survey-08-more.md
   - ../entities/unitree-g1.md
 sources:
@@ -111,7 +111,7 @@ flowchart TB
 
 ## 与其他页面的关系
 
-- 多技能姊妹：[AHC #11](./paper-adaptive-humanoid-control.md)、[SD-AMP #10](./paper-amp-survey-10-unified_walking_running_and_recovery.md)、[MoRE #08](./paper-amp-survey-08-more.md)
+- 多技能姊妹：[AHC #11](./paper-adaptive-humanoid-control.md)、[SD-AMP #10](./paper-unified-walk-run-recovery-sdamp.md)、[MoRE #08](./paper-amp-survey-08-more.md)
 - 方法：[amp-reward.md](../methods/amp-reward.md)
 - 平台：[unitree-g1.md](../entities/unitree-g1.md)
 - AMP 专题：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)（#12/19）

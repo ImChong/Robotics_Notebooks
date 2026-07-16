@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, locomotion, loco-manipulation, adversarial-rl, teleai, shanghaitech, neurips]
 status: complete
-updated: 2026-07-13
+updated: 2026-07-16
 arxiv: "2504.14305"
 venue: NeurIPS 2025
 summary: "ALMI（NeurIPS 2025）将人形拆为下半身 locomotion 与上半身 mimic 两策略，用互相对抗的迭代 RL 达到走跑稳健与上肢跟踪的纳什均衡，并发布 ALMI-X 数据集。"

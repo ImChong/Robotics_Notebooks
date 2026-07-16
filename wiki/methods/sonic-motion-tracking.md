@@ -1,11 +1,22 @@
 ---
 type: method
-tags: [humanoid, imitation-learning, motion-tracking, foundation-model, nvidia, vla, teleoperation]
+tags: [paper, humanoid, imitation-learning, motion-tracking, foundation-model, nvidia, vla, teleoperation, rl, motion-control, bfm, behavior-foundation-model, loco-manipulation, body-system-stack, loco-manip-161-survey]
 status: complete
 date: 2026-05-14
 updated: 2026-07-16
+arxiv: "2511.07820"
+venue: "2025 · arXiv"
 related:
-  - ../entities/paper-sonic.md
+  - ../overview/humanoid-loco-manip-161-papers-technology-map.md
+  - ../overview/loco-manip-161-category-01-motion-base-wbt.md
+  - ../overview/loco-manip-161-category-04-generative-language-trajectory.md
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-04-wbt-base.md
+  - ../overview/humanoid-rl-motion-control-body-system-stack.md
+  - ../overview/humanoid-amp-motion-prior-survey.md
+  - ../overview/bfm-41-papers-technology-map.md
+  - ../overview/bfm-category-02-goal-conditioned-learning.md
+  - ../concepts/behavior-foundation-model.md
   - ../entities/paper-athena-wbc-humanoid-longtail.md
   - ../entities/paper-scenebot.md
   - ../entities/paper-motionwam-humanoid-loco-manipulation-wam.md
@@ -28,6 +39,18 @@ related:
   - ./gentlehumanoid-motion-tracking.md
 sources:
   - ../../sources/repos/sonic-humanoid-motion-tracking.md
+  - ../../sources/papers/humanoid_rl_stack_17_sonic_supersizing_motion_tracking_for_natural_hu.md
+  - ../../sources/papers/humanoid_rl_stack_42_catalog.md
+  - ../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md
+  - ../../sources/papers/bfm_awesome_41_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
+  - ../../sources/papers/loco_manip_161_survey_019_sonic.md
+  - ../../sources/papers/loco_manip_161_survey_103_sonic.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
+  - ../../sources/papers/humanoid_loco_manip_161_catalog.md
 summary: "SONIC 通过规模化运动跟踪监督训练通用人形策略，把海量 MoCap 帧上的轨迹跟踪当作预训练任务；以统一 token 接口接入 VR、视频、文本、音乐与 VLA（如 GR00T N1.5 演示），并可桥接实时运动学规划器做交互式导航与风格化步态。"
 ---
 
@@ -48,6 +71,8 @@ SONIC（*Supersizing Motion Tracking for Natural Humanoid Whole-Body Control*）
 | WBC | Whole-Body Control | 全身协调跟踪的执行层问题 |
 | VLA | Vision-Language-Action | 经统一 token 接入的高层接口 |
 | VR | Virtual Reality | 遥操作与实时参考生成入口之一 |
+| BFM | Behavior Foundation Model | 大规模行为数据预训练的可复用全身行为先验 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
 
 ## 论文信息（arXiv:2511.07820）
 
@@ -60,6 +85,35 @@ SONIC（*Supersizing Motion Tracking for Natural Humanoid Whole-Body Control*）
 | 项目页 | <https://nvlabs.github.io/GEAR-SONIC/>（别名 <https://nvlabs.github.io/SONIC/>） |
 
 论文摘要口径的三个关键量：**1 亿+ MoCap 帧（约 700 小时）** 的密集轨迹监督、网络容量 **1.2M→42M 参数** 的扩展区间、约 **2.1 万 GPU 小时** 训练算力；结论是性能随算力与数据多样性 **稳步改善**，且学到的策略 **泛化到未见动作**。接口侧的一个具体细节：单一策略经 **专用编码器 → 统一 token 空间**，同时处理 **机器人运动、人体运动与混合运动** 三类指令的 **共享潜表征**——这也是 VR / 视频 / 文本 / 音乐 / VLA 能共用同一低层的原因。
+
+## Survey 坐标（策展索引）
+
+### 在 42 篇 RL 运动控制身体系统栈中
+
+| 字段 | 内容 |
+|------|------|
+| 编号 | 17/42 |
+| 系统栈层 | 02 参考跟踪 · 通用控制 |
+| 索引来源 | [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) |
+
+### 在 BFM 41 篇技术地图中
+
+| 字段 | 内容 |
+|------|------|
+| 编号 | 07/41 |
+| 分组 | 02 Goal-conditioned 学习 |
+| 索引来源 | [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) |
+
+### 在人形 Loco-Manip 161 篇中
+
+同一篇论文在 [Loco-Manip 161 篇技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md) 里出现 **两次**（策展分类不同，canonical 实体仅此页）：
+
+| 槽位 | 分组 | 分类 hub |
+|------|------|----------|
+| 019/161 | 01 运控基座与通用全身跟踪 | [loco-manip-161-category-01-motion-base-wbt](../overview/loco-manip-161-category-01-motion-base-wbt.md) |
+| 103/161 | 04 生成式运动、语言控制与轨迹规划 | [loco-manip-161-category-04-generative-language-trajectory](../overview/loco-manip-161-category-04-generative-language-trajectory.md) |
+
+索引来源：[具身智能研究室 · 161 篇人形 Loco-Manip 长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A)
 
 ## 为什么重要？
 
@@ -184,16 +238,35 @@ flowchart LR
 - 论文：<https://arxiv.org/abs/2511.07820>
 - 项目页：<https://nvlabs.github.io/GEAR-SONIC/>（别名 <https://nvlabs.github.io/SONIC/>）
 - GEM / GENMO：<https://research.nvidia.com/labs/dair/genmo/>
+- [42 篇 RL 运动控制（微信公众号）](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA)
+- [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) — 完整列表与数据集表
+- [A Survey of Behavior Foundation Model](https://arxiv.org/abs/2506.20487) — TPAMI 2025 综述
 
 ## 参考来源
 
 - [SONIC（规模化人体运动跟踪驱动的人形全身控制）](../../sources/repos/sonic-humanoid-motion-tracking.md)
+- [humanoid_rl_stack_17_sonic_supersizing_motion_tracking_for_natural_hu.md](../../sources/papers/humanoid_rl_stack_17_sonic_supersizing_motion_tracking_for_natural_hu.md) — 42 篇栈策展摘录
+- [humanoid_rl_stack_42_catalog.md](../../sources/papers/humanoid_rl_stack_42_catalog.md) — 42 篇总表
+- [bfm_awesome_sonic_arxiv_2511_07820.md](../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md) — awesome-bfm 策展摘录
+- [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 41+10 总表
+- [wechat_embodied_ai_lab_humanoid_rl_motion_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md) — RL 运动控制微信公众号编译导读
+- [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — BFM 41 篇微信公众号编译导读
+- [loco_manip_161_survey_019_sonic.md](../../sources/papers/loco_manip_161_survey_019_sonic.md) — Loco-Manip 161 #019 策展摘录
+- [loco_manip_161_survey_103_sonic.md](../../sources/papers/loco_manip_161_survey_103_sonic.md) — Loco-Manip 161 #103 策展摘录
+- [humanoid_loco_manip_161_catalog.md](../../sources/papers/humanoid_loco_manip_161_catalog.md) — Loco-Manip 161 总表
+- [wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md) — Loco-Manip 161 微信公众号编译导读
+- [motion_cerebellum_64_catalog.md](../../sources/papers/motion_cerebellum_64_catalog.md) — 运动小脑 64 篇总表
+- [wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md) — 运动小脑微信公众号编译导读
+- 原始抓取：[wechat_humanoid_rl_42_survey_2026-05-26.md](../../sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md)
 - NVIDIA SONIC 项目页 — <https://nvlabs.github.io/GEAR-SONIC/>（页面内摘要、方法段落与演示分区，2026-05-14 抓取对照）
 - arXiv 摘要与版本页 — <https://arxiv.org/abs/2511.07820>（v3，2026-05-21；作者名单、规模量级与统一潜表征叙述，2026-07-11 对照）
 
 ## 关联页面
 
-- [SONIC（论文实体页）](../entities/paper-sonic.md) — survey 坐标（RL 身体系统栈 #17/42、BFM 地图 #07/41、Loco-Manip 161 #019/#103）与交叉引用。
+- [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) — 42 篇栈总框架（本文 #17/42）
+- [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) — 本文 #07/41（02 Goal-conditioned 学习）
+- [Loco-Manip 161 篇技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md) — 本文 #019/#103 双槽位
+- [Behavior Foundation Model（概念）](../concepts/behavior-foundation-model.md)
 - [BeyondMimic](./beyondmimic.md)
 - [ExoActor (视频生成驱动的交互式人形控制)](./exoactor.md)
 - [GENMO（统一人体运动估计与生成）](./genmo.md)

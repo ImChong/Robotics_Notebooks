@@ -23,7 +23,7 @@ sources:
 
 **Zero-Shot Adaptation of Behavioral Foundation Models to Unseen Dynamics** 收录于 [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) **第 32/41** 篇，归类为 **04 Adaptation**（2025 · arXiv）。
 
-> **深读页：** [paper-any2any-cross-embodiment-wbt](../entities/paper-any2any-cross-embodiment-wbt.md) — 方法机制与实验细节见链接页；本页保留 survey 坐标与交叉引用。
+> **同主题深读：** [paper-any2any-cross-embodiment-wbt](../entities/paper-any2any-cross-embodiment-wbt.md) — 同题材（跨动力学/跨具身适配）的另一篇论文深读页，两者并非同一工作；本页保留本文的 survey 坐标与交叉引用。
 
 ## 一句话定义
 

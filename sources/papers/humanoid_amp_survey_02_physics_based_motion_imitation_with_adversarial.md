@@ -21,7 +21,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-amp-survey-02-physics_based_motion_imitation_with](../../wiki/entities/paper-amp-survey-02-physics_based_motion_imitation_with.md) — 主实体页（深读归纳）
+- [add](../../wiki/methods/add.md) — 主实体页（深读归纳）
 - [add](../../wiki/methods/add.md)、[amp-reward](../../wiki/methods/amp-reward.md)
 
 ## 参考来源（原始）

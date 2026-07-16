@@ -1,9 +1,15 @@
 ---
 type: method
-tags: [score-matching, diffusion, generative-prior, humanoid, unitree-g1]
+tags: [score-matching, diffusion, generative-prior, humanoid, unitree-g1, paper, amp, motion-prior, sfu, nvidia, sony, stanford]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-16
+venue: arXiv
+arxiv: "2512.03028"
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-02-motion-imitation.md
+  - ../overview/humanoid-amp-motion-prior-survey.md
+  - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../entities/mimickit.md
   - ../entities/smp-g1-mjlab.md
   - ../entities/protomotions.md
@@ -15,6 +21,11 @@ related:
 sources:
   - ../../sources/papers/smp.md
   - ../../sources/repos/smp_suz_tsinghua.md
+  - ../../sources/papers/humanoid_amp_survey_03_smp_reusable_score_matching_motion_priors_for_ph.md
+  - ../../sources/papers/humanoid_amp_survey_19_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 summary: "SMP (Score-Matching Motion Priors) 通过预训练扩散模型作为“冻结奖励器”，实现了高效、可组合且无需原始数据的运动模仿学习。"
 ---
 
@@ -33,6 +44,16 @@ summary: "SMP (Score-Matching Motion Priors) 通过预训练扩散模型作为�
 | G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
 | ADD | Adversarial Differential Discriminator | 差分判别、减少碎片化 reward 的 AMP 演进 |
 | Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+
+## Survey 坐标（策展索引）
+
+### 在 AMP 运动先验专题 19 篇中
+
+| 字段 | 内容 |
+|------|------|
+| 编号 | 03/19 |
+| 分组 | 01 分布约束与先验组件化 |
+| 索引来源 | [具身智能研究室 · AMP 运动先验专题长文](https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w) |
 
 ## 核心技术路线
 
@@ -91,3 +112,5 @@ flowchart TD
 - [sources/papers/smp.md](../../sources/papers/smp.md)
 - [sources/repos/smp_suz_tsinghua.md](../../sources/repos/smp_suz_tsinghua.md)
 - Mu et al., *SMP: Reusable Score-Matching Motion Priors for Physics-Based Character Control*, 2026.
+- 原始抓取：[wechat_humanoid_amp_19_survey_2026-05-26.md](../../sources/raw/wechat_humanoid_amp_19_survey_2026-05-26.md)
+

@@ -22,7 +22,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-amp-survey-03-smp](../../wiki/entities/paper-amp-survey-03-smp.md) — 主实体页（深读归纳）
+- [smp](../../wiki/methods/smp.md) — 主实体页（深读归纳）
 - [smp](../../wiki/methods/smp.md)、[smp-g1-mjlab](../../wiki/entities/smp-g1-mjlab.md)
 
 ## 参考来源（原始）

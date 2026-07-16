@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation, locomotion, mixture-of-experts, terrain-adaptation, unitree-g1, sim2real, teleai, heu, shanghaitech, ustc]
 status: complete
-updated: 2026-07-13
+updated: 2026-07-16
 arxiv: "2506.08840"
 venue: arXiv
 code: https://github.com/TeleHuman/MoRE
@@ -17,7 +17,7 @@ related:
   - ./lafan1-dataset.md
   - ./paper-hiking-in-the-wild.md
   - ./paper-amp-survey-07-adversarial_locomotion_and_motion_im.md
-  - ./paper-amp-survey-10-unified_walking_running_and_recovery.md
+  - ./paper-unified-walk-run-recovery-sdamp.md
   - ./paper-explicit-stair-geometry-humanoid-locomotion.md
 sources:
   - ../../sources/repos/more.md
@@ -137,7 +137,7 @@ flowchart TB
 
 1. **MoRE = 部署期 FSM 切策略：** 仍是 **单一网络**；步态由 **gait command**（及 Stage 2 训练时的采样）选择判别器分支与 gait reward，不是多个独立 checkpoint 硬切换。
 2. **先有 AMP 再有地形：** Stage 1 **故意不用 motion prior**，先保证复杂地形 **可达性**；AMP 仅在 Stage 2 注入 **风格**，顺序与「平地 AMP 再加大感知」不同。
-3. **多判别器 = SD-AMP 双判别器：** [SD-AMP #10](./paper-amp-survey-10-unified_walking_running_and_recovery.md) 按 **机体是否跌倒** 门控 recovery/loco；MoRE 按 **用户步态命令** 门控 **三种人形步态** 判别器，且依赖 **深度外感知**——问题设定与路由信号均不同。
+3. **多判别器 = SD-AMP 双判别器：** [SD-AMP #10](./paper-unified-walk-run-recovery-sdamp.md) 按 **机体是否跌倒** 门控 recovery/loco；MoRE 按 **用户步态命令** 门控 **三种人形步态** 判别器，且依赖 **深度外感知**——问题设定与路由信号均不同。
 4. **MoE 在 base 层：** Expert 只出现在 **Stage 2 残差模块**，Stage 1 base actor 为常规模型。
 
 ## 实验与评测
@@ -151,7 +151,7 @@ flowchart TB
 
 - AMP 专题总览：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)（#08/19）
 - 方法基线：[amp-reward.md](../methods/amp-reward.md)
-- 同段姊妹篇：[ALMI #07](./paper-amp-survey-07-adversarial_locomotion_and_motion_im.md)（上下半身）、[Hiking in the Wild #09](./paper-hiking-in-the-wild.md)（感知跑酷）、[SD-AMP #10](./paper-amp-survey-10-unified_walking_running_and_recovery.md)（状态门控双判别器）
+- 同段姊妹篇：[ALMI #07](./paper-amp-survey-07-adversarial_locomotion_and_motion_im.md)（上下半身）、[Hiking in the Wild #09](./paper-hiking-in-the-wild.md)（感知跑酷）、[SD-AMP #10](./paper-unified-walk-run-recovery-sdamp.md)（状态门控双判别器）
 - 任务/概念：[locomotion.md](../tasks/locomotion.md)、[terrain-adaptation.md](../concepts/terrain-adaptation.md)
 - 平台与数据：[unitree-g1.md](./unitree-g1.md)、[lafan1-dataset.md](./lafan1-dataset.md)
 - 对照基线（楼梯）：[paper-explicit-stair-geometry-humanoid-locomotion.md](./paper-explicit-stair-geometry-humanoid-locomotion.md)

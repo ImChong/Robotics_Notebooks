@@ -4407,6 +4407,16 @@
     const markdownRouteIndex = buildMarkdownRouteIndex(siteData);
     const params = new URLSearchParams(window.location.search);
     const detailId = params.get('id') || '';
+
+    // 已合并/删除页面的旧 ID：按 page_aliases 重定向到 canonical 页，历史链接不断链
+    const pageAliases = pages.page_aliases || {};
+    if (detailId && !detailPages[detailId] && pageAliases[detailId] && detailPages[pageAliases[detailId]]) {
+      var aliasTarget = detailHref(pageAliases[detailId]);
+      if (window.location.hash) aliasTarget += window.location.hash;
+      window.location.replace(aliasTarget);
+      return;
+    }
+
     const detailPage = resolveDetailPage(detailId, detailPages);
 
     if (detailPage && detailPage.type === 'roadmap_page') {
