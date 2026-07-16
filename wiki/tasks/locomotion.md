@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-07-13
+updated: 2026-07-16
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md

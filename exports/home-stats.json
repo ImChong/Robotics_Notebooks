@@ -1,13 +1,31 @@
 {
   "generated_at": "2026-07-16",
-  "node_count": 1645,
-  "edge_count": 12779,
+  "node_count": 1646,
+  "edge_count": 12789,
   "coverage": {
-    "covered": 1598,
-    "total": 1628,
+    "covered": 1599,
+    "total": 1629,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-gaitspan-humanoid-locomotion-walking-running.md",
+      "detail_id": "entity-paper-gaitspan-humanoid-locomotion-walking-running",
+      "label": "GaitSpan：从行走到跑步的人形技能生长",
+      "type": "entity",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/tasks/humanoid-locomotion.md",
+      "detail_id": "wiki-tasks-humanoid-locomotion",
+      "label": "Humanoid Locomotion (人形机器人移动)",
+      "type": "task",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained"
+    },
     {
       "path": "wiki/entities/robo-bench.md",
       "detail_id": "entity-robo-bench",
@@ -194,64 +212,41 @@
       "source": "log.md",
       "action": "added",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/modern-robotics-book.md",
-      "detail_id": "entity-modern-robotics-book",
-      "label": "Modern Robotics (Lynch-Park 教材)",
-      "type": "entity",
-      "recency": "2026-07-15",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-pace-sim2real-legged-robots.md",
-      "detail_id": "entity-paper-pace-sim2real-legged-robots",
-      "label": "PACE（足式系统化 Sim2Real）",
-      "type": "entity",
-      "recency": "2026-07-15",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/robo-bench.md",
-    "detail_id": "entity-robo-bench",
-    "label": "RoboBench（MLLM 具身大脑综合评测）",
+    "path": "wiki/entities/paper-gaitspan-humanoid-locomotion-walking-running.md",
+    "detail_id": "entity-paper-gaitspan-humanoid-locomotion-walking-running",
+    "label": "GaitSpan：从行走到跑步的人形技能生长",
     "type": "entity",
-    "recency": "2026-07-15",
+    "recency": "2026-07-16",
     "source": "log.md",
-    "action": "maintained",
-    "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 302
+      "size": 280
     },
     {
       "label": "人形论文深读笔记",
-      "size": 210
+      "size": 181
     },
     {
       "label": "移动操作",
-      "size": 184
-    },
-    {
-      "label": "动作重定向",
-      "size": 111
-    },
-    {
-      "label": "人形强化学习运动控制",
-      "size": 91
+      "size": 176
     },
     {
       "label": "全身控制",
-      "size": 88
+      "size": 160
+    },
+    {
+      "label": "人形强化学习运动控制",
+      "size": 119
+    },
+    {
+      "label": "仿真到现实",
+      "size": 95
     }
   ],
   "top_hubs": [
@@ -266,7 +261,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 286,
+      "degree": 287,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -290,14 +285,13 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 229,
-      "community_label": "运动控制（Locomotion） 社区"
+      "degree": 230
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 224,
+      "degree": 225,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
@@ -365,7 +359,8 @@
       "label": "TWIST2",
       "type": "entity",
       "degree": 35,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
@@ -377,7 +372,7 @@
       "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",
       "label": "SD-AMP：统一走、跑与起身的对抗运动先验",
       "type": "entity",
-      "degree": 29
+      "degree": 30
     },
     {
       "detail_id": "entity-paper-bfm-zero",
@@ -397,7 +392,7 @@
       "label": "FastStair（Learning to Run Up Stairs with Humanoid Robots）",
       "type": "entity",
       "degree": 27,
-      "community_label": "运动控制（Locomotion） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ]
 }

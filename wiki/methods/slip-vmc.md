@@ -2,7 +2,7 @@
 type: method
 tags: [locomotion, control, model-based, slip, vmc, legged]
 status: complete
-updated: 2026-07-14
+updated: 2026-07-16
 summary: "SLIP（弹簧负载倒立摆）用质心–足端弹簧近似腿足支撑相；VMC（虚拟模型控制）在任务空间施加虚拟弹簧/阻尼，是 LIP 之后、全刚体 WBC 之前的经典简化控制栈。"
 related:
   - ../concepts/lip-zmp.md

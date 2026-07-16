@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, locomotion, sprint, spectral-prior, sim2real, unitree-g1, isaac-gym, ppo, lafan1, gmr]
 status: complete
-updated: 2026-06-05
+updated: 2026-07-16
 arxiv: "2605.28549"
 related:
   - ../tasks/humanoid-locomotion.md

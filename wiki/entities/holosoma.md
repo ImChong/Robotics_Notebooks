@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, humanoid, rl, motion-retargeting, whole-body-tracking, locomotion, amazon-far, isaacgym, isaacsim, mujoco, unitree-g1, booster-t1]
 status: complete
-updated: 2026-06-11
+updated: 2026-07-16
 summary: "holosoma 是 Amazon FAR 开源的人形全身 RL 训练、推理与 OmniRetarget 重定向一体化框架；支持 IsaacGym/IsaacSim/MJWarp/MuJoCo、PPO/FastSAC、G1/T1 与 sim-to-real 部署管线。"
 related:
   - ./paper-hrl-stack-03-omniretarget.md
