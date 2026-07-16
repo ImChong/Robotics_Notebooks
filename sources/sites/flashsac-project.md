@@ -6,6 +6,7 @@
 - **类型：** site
 - **URL：** <https://holiday-robot.github.io/FlashSAC/>
 - **论文：** <https://arxiv.org/abs/2604.04539>
+- **代码：** <https://github.com/Holiday-Robot/FlashSAC>
 - **入库日期：** 2026-07-16
 - **一句话说明：** 产品叙事与演示视频：TL;DR「If you're using PPO, try FlashSAC!」；按低/高 DoF、sim-to-real 分组展示 IsaacLab / Genesis / ManiSkill / MuJoCo Playground 与 **Unitree G1** 真机结果。
 - **沉淀到 wiki：** [FlashSAC](../../wiki/methods/flashsac.md)
@@ -27,3 +28,4 @@
 
 - [FlashSAC（方法页）](../../wiki/methods/flashsac.md) — 演示、任务覆盖与工程叙事
 - [sources/papers/flashsac_arxiv_2604_04539.md](../papers/flashsac_arxiv_2604_04539.md) — 方法与实验以论文为准
+- [sources/repos/flashsac.md](../repos/flashsac.md) — 官方训练框架与 Hydra 配置

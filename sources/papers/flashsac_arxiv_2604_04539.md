@@ -7,6 +7,7 @@
 - **arXiv abs：** <https://arxiv.org/abs/2604.04539>
 - **PDF：** <https://arxiv.org/pdf/2604.04539>
 - **项目主页：** <https://holiday-robot.github.io/FlashSAC/>
+- **代码：** <https://github.com/Holiday-Robot/FlashSAC>
 - **作者：** Donghu Kim, Youngdo Lee, Minho Park, Kinam Kim, I Made Aswin Nahendra, Takuma Seno, Sehee Min, Daniel Palenicek, Florian Vogt, Danica Kragic, Jan Peters, Jaegul Choo, Hojoon Lee
 - **机构：** Holiday Robotics、KAIST、KRAFTON、Turing Inc.、TU Darmstadt、hessian.AI、KTH、DFKI、RIG 等（多机构联合）
 - **入库日期：** 2026-07-16
@@ -62,6 +63,7 @@
 - 任务：[Locomotion](../../wiki/tasks/locomotion.md)、[Sim2Real](../../wiki/concepts/sim2real.md)
 - 相邻 off-policy 加速：[Learning Sim-to-Real Humanoid Locomotion in 15 Minutes](../../wiki/entities/paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m.md)（FastSAC/FastTD3）
 - 系统栈：[UniLab](../../wiki/entities/unilab.md)（异构训练 runtime 支持 FlashSAC）
+- 官方代码：[sources/repos/flashsac.md](../repos/flashsac.md)
 
 ## BibTeX
 

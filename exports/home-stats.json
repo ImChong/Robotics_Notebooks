@@ -9,6 +9,27 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/methods/flashsac.md",
+      "detail_id": "wiki-methods-flashsac",
+      "label": "FlashSAC",
+      "type": "method",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/comparisons/ppo-vs-sac.md",
+      "detail_id": "wiki-comparisons-ppo-vs-sac",
+      "label": "PPO vs SAC (vs BRRL/BPO)：机器人 RL 算法选型",
+      "type": "comparison",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
       "path": "wiki/entities/paper-muninn-trajectory-diffusion-acceleration.md",
       "detail_id": "entity-paper-muninn-trajectory-diffusion-acceleration",
       "label": "Muninn（轨迹扩散免训练加速）",
@@ -69,16 +90,6 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/methods/flashsac.md",
-      "detail_id": "wiki-methods-flashsac",
-      "label": "FlashSAC",
-      "type": "method",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
       "path": "wiki/entities/paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m.md",
       "detail_id": "entity-paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m",
       "label": "Learning Sim-to-Real Humanoid Locomotion in 15 Minutes",
@@ -112,16 +123,6 @@
       "detail_id": "wiki-methods-policy-optimization",
       "label": "Policy Optimization",
       "type": "method",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "path": "wiki/comparisons/ppo-vs-sac.md",
-      "detail_id": "wiki-comparisons-ppo-vs-sac",
-      "label": "PPO vs SAC (vs BRRL/BPO)：机器人 RL 算法选型",
-      "type": "comparison",
       "recency": "2026-07-16",
       "source": "log.md",
       "action": "maintained",
@@ -206,15 +207,15 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-muninn-trajectory-diffusion-acceleration.md",
-    "detail_id": "entity-paper-muninn-trajectory-diffusion-acceleration",
-    "label": "Muninn（轨迹扩散免训练加速）",
-    "type": "entity",
+    "path": "wiki/methods/flashsac.md",
+    "detail_id": "wiki-methods-flashsac",
+    "label": "FlashSAC",
+    "type": "method",
     "recency": "2026-07-16",
     "source": "log.md",
     "action": "added",
     "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "community_label": "强化学习（Reinforcement Learning, RL） 社区"
   },
   "top_communities": [
     {
