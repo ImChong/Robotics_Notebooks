@@ -990,6 +990,7 @@
 - [vS-Graphs（视觉 SLAM + 3D 场景图）](wiki/entities/paper-vs-graphs-visual-slam-scene-graph.md) — vS-Graphs**（Tourani et al., arXiv:2503.01783，IEEE RA-L 2026，[代 `📅unknown` `[entity_page]`
 - [VT-WAM（Visual-Tactile World Action Model · arXiv:2607.02503）](wiki/entities/paper-vt-wam-visuotactile-contact-rich.md) — VT-WAM**（*VT-WAM: Visual-Tactile World Action Model for Contact-Rich Manipulation*，[arXiv:2607.025 `📅unknown` `[entity_page]`
 - [Walk These Ways: Tuning Robot Control for Generalization with Multiplicity of Behavior](wiki/entities/paper-walk-these-ways-quadruped-mob.md) — 一句话定义**：学习 **单一条件策略** \(\pi(a|c,b)\)：在 **同一平坦训练分布** 上，用少量 **行为参数 \(b\)** 切换步态族（频率、摆腿高度、躯干姿态等），从而在  `📅unknown` `[entity_page]`
+- [WAM-TTT（人视频 · 测试时训练 · WAM Steering）](wiki/entities/paper-wam-ttt-human-video-test-time-steering.md) — WAM-TTT**（*Steering World-Action Models by Watching Human Play at Test Time*，[arXiv:2607.06988](ht `📅unknown` `[entity_page]`
 - [WEM（World-Ego Modeling / World-Ego Model）](wiki/entities/paper-wem-world-ego-modeling.md) — WEM**（*World-Ego Model*，arXiv:2605.19957，项目页，[代码](https://g `📅unknown` `[entity_page]`
 - [WOLF-VLA](wiki/entities/paper-wolf-vla.md) — WOLF-VLA**（arXiv:2606.25591，DFKI 等）收录于 [具身智能研究室 · Loco-Manip 接触专题](https://mp.weixin.qq.com/s/UjSh `📅unknown` `[entity_page]`
 - [Worldscape-MoE（Unified Mixture-of-Experts World Model · arXiv:2607.03964）](wiki/entities/paper-worldscape-moe-heterogeneous-action.md) — Worldscape-MoE**（*Worldscape-MoE: A Unified Mixture-of-Experts World Model for Scalable Heterogene `📅unknown` `[entity_page]`

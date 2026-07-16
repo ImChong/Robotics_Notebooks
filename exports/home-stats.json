@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-07-16",
-  "node_count": 1656,
-  "edge_count": 12906,
+  "node_count": 1657,
+  "edge_count": 12919,
   "coverage": {
-    "covered": 1609,
-    "total": 1639,
+    "covered": 1610,
+    "total": 1640,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-wam-ttt-human-video-test-time-steering.md",
+      "detail_id": "entity-paper-wam-ttt-human-video-test-time-steering",
+      "label": "WAM-TTT（人视频 · 测试时训练 · WAM Steering）",
+      "type": "entity",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/lumo-2.md",
       "detail_id": "entity-lumo-2",
@@ -204,23 +214,12 @@
       "recency": "2026-07-16",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/dexmal-dw05.md",
-      "detail_id": "entity-dexmal-dw05",
-      "label": "Dexmal DW05（OpenDW）",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/lumo-2.md",
-    "detail_id": "entity-lumo-2",
-    "label": "Lumo-2（Latent World-Action Model）",
+    "path": "wiki/entities/paper-wam-ttt-human-video-test-time-steering.md",
+    "detail_id": "entity-paper-wam-ttt-human-video-test-time-steering",
+    "label": "WAM-TTT（人视频 · 测试时训练 · WAM Steering）",
     "type": "entity",
     "recency": "2026-07-16",
     "source": "log.md",
@@ -230,7 +229,7 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 293
+      "size": 294
     },
     {
       "label": "人形论文深读笔记",
@@ -281,7 +280,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 266,
+      "degree": 267,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -289,7 +288,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 231,
+      "degree": 233,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -325,7 +324,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 168,
+      "degree": 169,
       "has_repo": true
     }
   ],
@@ -349,7 +348,7 @@
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
       "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
       "type": "entity",
-      "degree": 39,
+      "degree": 40,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
