@@ -4,6 +4,7 @@ tags: [rl, policy-optimization, sac, off-policy, maximum-entropy, locomotion, si
 status: complete
 updated: 2026-07-16
 arxiv: "2604.04539"
+code: https://github.com/Holiday-Robot/FlashSAC
 summary: "FlashSAC 在 SAC 上引入 scaling 式少更新+大模型+高吞吐，并联合权重/特征/梯度范数约束与统一熵+噪声重复探索，使高维机器人 off-policy RL 在墙钟与渐近性能上同时超越 PPO，G1 盲行走 sim-to-real 可从小时级压到分钟级。"
 related:
   - ./sac.md
@@ -20,11 +21,12 @@ related:
 sources:
   - ../../sources/papers/flashsac_arxiv_2604_04539.md
   - ../../sources/sites/flashsac-project.md
+  - ../../sources/repos/flashsac.md
 ---
 
 # FlashSAC
 
-**FlashSAC**（arXiv:[2604.04539](https://arxiv.org/abs/2604.04539)，[项目页](https://holiday-robot.github.io/FlashSAC/)）是在 [SAC](./sac.md) 最大熵 off-policy 框架上，面向 **高维机器人控制** 重新设计的算法：用 **监督学习式 scaling**（更少梯度步、更大网络、更高数据吞吐）换墙钟，并用 **权重/特征/梯度范数约束** 抑制 bootstrap critic 误差累积；在 **60+ 任务 / 10 个仿真器** 上稳定超越 [PPO](./ppo.md) 与强 off-policy 基线，**Unitree G1** 盲行走 sim-to-real 训练可从 **小时级降到约 20 分钟**（平地）。
+**FlashSAC**（arXiv:[2604.04539](https://arxiv.org/abs/2604.04539)，[项目页](https://holiday-robot.github.io/FlashSAC/)，[GitHub](https://github.com/Holiday-Robot/FlashSAC)）是在 [SAC](./sac.md) 最大熵 off-policy 框架上，面向 **高维机器人控制** 重新设计的算法：用 **监督学习式 scaling**（更少梯度步、更大网络、更高数据吞吐）换墙钟，并用 **权重/特征/梯度范数约束** 抑制 bootstrap critic 误差累积；在 **60+ 任务 / 10 个仿真器** 上稳定超越 [PPO](./ppo.md) 与强 off-policy 基线，**Unitree G1** 盲行走 sim-to-real 训练可从 **小时级降到约 20 分钟**（平地）。
 
 ## 一句话定义
 
@@ -109,6 +111,26 @@ FlashSAC 仍优化 SAC 的 **最大熵** off-policy 目标，但针对机器人 
 
 ## 工程实践
 
+### 官方代码库
+
+| 字段 | 内容 |
+|------|------|
+| 仓库 | <https://github.com/Holiday-Robot/FlashSAC> |
+| 训练入口 | `uv run python train.py`（[Hydra](https://hydra.cc/)，`configs/flashSAC_base.yaml`） |
+| 批量脚本 | `scripts/run_mujoco.sh`、`scripts/run_isaaclab.sh` 等 |
+| 可视化 | `play_isaaclab.py`（IsaacLab checkpoint 回放） |
+| 覆盖仿真器 | IsaacLab、MuJoCo Playground、ManiSkill、Genesis、HumanoidBench、MyoSuite、MuJoCo、Meta-World、DMC（**100+ 任务**） |
+| 依赖管理 | `uv sync`；可选 `--extra isaaclab` 等（`isaaclab` 与 `genesis`/`humanoid-bench` 需分环境） |
+
+仓库按仿真器类型自动切换吞吐预设（与论文叙事一致）：
+
+| | GPU 仿真 | CPU 仿真 |
+|---|---|---|
+| `num_envs` | 1024 | 1 |
+| `batch_size` | 2048 | 512 |
+| AMP | On | Off |
+| Replay buffer | `cuda:0` | `cpu` |
+
 ### 默认超参数（GPU 大规模状态控制，论文 §9 归纳）
 
 | 超参数 | 推荐值 | 说明 |
@@ -160,9 +182,11 @@ FlashSAC 仍优化 SAC 的 **最大熵** off-policy 目标，但针对机器人 
 
 - [flashsac_arxiv_2604_04539.md](../../sources/papers/flashsac_arxiv_2604_04539.md)
 - [flashsac-project.md](../../sources/sites/flashsac-project.md)
+- [flashsac.md（官方仓库）](../../sources/repos/flashsac.md)
 - Kim et al. (2026). *FlashSAC: Fast and Stable Off-Policy Reinforcement Learning for High-Dimensional Robot Control*. <https://arxiv.org/abs/2604.04539>
 
 ## 推荐继续阅读
 
+- 官方实现与训练脚本：<https://github.com/Holiday-Robot/FlashSAC>
 - 项目页演示与任务视频：<https://holiday-robot.github.io/FlashSAC/>
 - Antonin Raffin 博客系列：*Getting SAC to work on a massive parallel simulator* — 大规模并行 SAC 调参经验（论文 Related Work 引用）

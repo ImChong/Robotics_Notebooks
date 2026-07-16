@@ -53,6 +53,23 @@ python3 scripts/ingest_paper.py my_topic --title "..." --desc "..."
 - 为什么值得保留
 - 来源日期（如果知道）
 
+### 步骤 2.5：项目页与源码开放核查（有项目页时必做）
+
+论文、博客或仓库 ingest 时，若资料带有 **项目页**（`*.github.io`、机构 lab 页、`research.nvidia.com/labs/...` 等），**必须先打开项目页**核对源码与数据是否开放，再写 wiki 或 `sources/` 归档。
+
+**核查清单：**
+
+1. **项目页头部 / Footer / Code / Resources 区** — 查找 GitHub、Hugging Face、Zenodo、ModelScope 等链接。
+2. **区分开放程度**（写入归档与 wiki，勿含糊带过）：
+   - **已开源**：训练/推理/部署代码、权重或数据集至少一项可公开获取 → 在 `sources/sites/<项目>.md` 的元数据行写明 `- **代码：** <url>`（及数据集行，如有）；若仓库值得单独导航，另建 `sources/repos/<name>.md`。
+   - **部分开源**：仅 Sim2Sim、checkpoint、数据处理脚本等子集 → 在 wiki「局限与风险」或「工程实践」中写明 **已发布 / 待发布** 边界（参考 [VisualMimic 实体页](../wiki/entities/paper-notebook-visualmimic.md) 的「开源状态」小节）。
+   - **宣称将开源 / 未列链接**：项目页或论文写 "code will be released" 但尚无 URL → 写明「截至入库日项目页未列 GitHub」并标注入库日期，便于后续 lint 跟进。
+   - **确认未开源**：无代码链接且论文未承诺 → 在 wiki 局限中一句点明，避免读者误以为可复现。
+3. **交叉链接**：`sources/sites/` ↔ `sources/repos/` ↔ `sources/papers/` 三处元数据互指（项目页、论文、代码 URL 齐全时）；升格 wiki 后 `## 参考来源` 至少链到对应 `sources/sites/` 或 `sources/repos/`。
+4. **勿仅凭论文 PDF 臆断**：Code  availability 以 **项目页实际链接** 为准；PDF 写 open-source 但页上无链时，按「宣称 / 待核实」处理。
+
+> **为什么单独成步**：大量机器人论文的复现入口在项目页而非 arXiv；漏查会导致 wiki 误写「暂无代码」或漏收官方仓库，损害选型与复现判断。
+
 ### 步骤 3：判断是否沉淀到 `wiki/`
 
 只有满足以下至少一条，才升格进 `wiki/`：
@@ -95,6 +112,7 @@ python3 scripts/ingest_paper.py my_topic --title "..." --desc "..."
   ```
 - `关联页面` — 至少 2 个相关 wiki 页
 - `推荐继续阅读` — 至少 1 个外部资源
+- **源码开放状态（有项目页时）** — 在「工程实践」或「局限与风险」中写明项目页核查结论（见步骤 2.5）；已开源则链到 `sources/repos/` 与官方仓库
 - **Mermaid 流程图（推荐，管线类资料建议必做）** — 若资料的主贡献是**多阶段数据流、训练流水线或闭环系统**（例如「采集 → 重定向 → 仿真修正 → 策略训练」），在升格后的 wiki 页中增加一节（如「流程总览」），用 ```mermaid 代码块绘制**一张主干流程图**：节点对应模块边界，边对应数据/监督信号流向；子细节可用文字分节或第二张图，避免单图过度拥挤。渲染侧以 GitHub / 站点 Mermaid 为准，避免使用非标准语法。
 - 必要时更新 `index.md`
 
@@ -311,5 +329,6 @@ make log OP=ingest DESC="sources/papers/xxx.md — 简述覆盖的 wiki 页面"
 - 不要把 wiki 页写成纯外链列表 — 要有知识归纳
 - 不要为了收集而收集 — 优先服务学习与研究主线
 - 不要在 ingest 时一次性做太多事 — 一次一条资料，深度到位再推进
+- **有项目页必先查源码是否开放**（步骤 2.5），再写 wiki 开源表述与 `sources/repos/` 归档
 - 每次 ingest 都要运行 `make catalog` 更新 `catalog.md`，并追加 `log.md`，不要遗漏
 - 子网页优化、纯 wiki 扩写等 **structural** 记录若在当日 `log.md` 正文中写明 `wiki/...`，首页「最新知识节点」会与其他同日条目一并列出；提交前务必 `make ci-preflight` 刷新派生 JSON

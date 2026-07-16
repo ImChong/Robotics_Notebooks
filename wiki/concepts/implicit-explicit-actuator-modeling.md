@@ -2,7 +2,7 @@
 type: concept
 tags: [actuator, simulation, sim2real, control, rl, nvidia]
 status: complete
-updated: 2026-07-09
+updated: 2026-07-16
 related:
   - ./sim2real.md
   - ./armature-modeling.md

@@ -145,6 +145,7 @@
 - 不要把 wiki 页写成纯外链列表 — 要有知识归纳
 - 不要为了收集而收集 — 优先服务学习与研究主线
 - 不要在 ingest 时一次性做太多事 — 一次一条资料，深度到位再推进
+- **有项目页的 ingest 必须先打开项目页核查源码/数据是否开放**（已开源 / 部分 / 待发布 / 未开源），并写入 `sources/sites/`、`sources/repos/` 与 wiki 局限或工程实践；详见 [schema/ingest-workflow.md § 步骤 2.5](schema/ingest-workflow.md)
 - 每次 ingest 都要追加到 `log.md`
 - 每次 query 有好结果都要写回 wiki
 - **每个 wiki 页面必须包含 `## 参考来源` 区块**，标注该页知识编译自哪些原始资料

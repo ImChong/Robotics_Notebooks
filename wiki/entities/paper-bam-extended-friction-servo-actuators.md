@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, sim2real, actuator, friction, mujoco, system-identification, servo, dynamixel, icra-2025, google]
 status: complete
-updated: 2026-07-15
+updated: 2026-07-16
 arxiv: "2410.08650"
 venue: ICRA 2025
 code: https://github.com/Rhoban/bam
@@ -14,6 +14,7 @@ related:
   - ../queries/sim2real-gap-reduction.md
   - ./bam-better-actuator-models.md
   - ./sage-sim2real-actuator-gap-estimator.md
+  - ./paper-neuralactuator-neural-actuation-modeling.md
 sources:
   - ../../sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md
 summary: "ICRA 2025：为舵机提出 M1–M6 可辨识扩展摩擦上界模型，摆锤 CMA-ES 标定后在 MuJoCo 2R 臂上相对 Coulomb–Viscous 将轨迹 MAE 降至约一半，面向 RL 低增益下的执行器 sim2real。"
@@ -130,6 +131,7 @@ flowchart TB
 - [Sim2Real](../concepts/sim2real.md)、[System Identification](../concepts/system-identification.md)
 - [BAM 开源仓库](./bam-better-actuator-models.md)、[Actuator Network](../methods/actuator-network.md)
 - [Sim2Real Gap 缩减实战](../queries/sim2real-gap-reduction.md)、[SAGE](./sage-sim2real-actuator-gap-estimator.md)
+- [NeuralActuator（数据驱动 + 可微仿真）](./paper-neuralactuator-neural-actuation-modeling.md) — 低成本臂多任务执行器/力感知
 
 ## 推荐继续阅读
 
