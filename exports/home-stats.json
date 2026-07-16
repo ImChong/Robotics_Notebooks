@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-16",
   "node_count": 1639,
-  "edge_count": 12890,
+  "edge_count": 12900,
   "coverage": {
     "covered": 1592,
     "total": 1622,
@@ -46,6 +46,16 @@
       "recency": "2026-07-16",
       "source": "log.md",
       "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-loco-manip-161-075-simple.md",
+      "detail_id": "entity-paper-loco-manip-161-075-simple",
+      "label": "SIMPLE（Simulation-Based Policy Learning and Evaluation for Humanoid Loco-manipulation）",
+      "type": "entity",
+      "recency": "2026-07-16",
+      "source": "log.md",
+      "action": "added",
       "has_repo": true
     },
     {
@@ -197,15 +207,6 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/methods/deepmimic.md",
-      "detail_id": "wiki-methods-deepmimic",
-      "label": "DeepMimic: 示例引导的技能学习",
-      "type": "method",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
@@ -229,7 +230,7 @@
     },
     {
       "label": "移动操作",
-      "size": 176
+      "size": 175
     },
     {
       "label": "全身控制",
@@ -256,7 +257,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 289,
+      "degree": 290,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -272,7 +273,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 268,
+      "degree": 269,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -315,7 +316,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 170,
+      "degree": 171,
       "has_repo": true
     }
   ],
