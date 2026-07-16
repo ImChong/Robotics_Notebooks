@@ -1371,8 +1371,9 @@ def _build_graph_data() -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
             "health_score": health_score,
             "summary": extract_summary(content),
             "_recency": wiki_recency_date(content, page).isoformat(),
-            # 论文节点：type=entity 且 frontmatter tags 含 paper（私有标记，写出前剔除）
-            "_is_paper": node_type == "entity" and "paper" in node_tags,
+            # 论文节点：type=entity/method 且 frontmatter tags 含 paper（私有标记，写出前剔除）。
+            # method 页覆盖 SONIC、BeyondMimic 等升格为深度拆解页的论文，须一并进论文榜单。
+            "_is_paper": node_type in ("entity", "method") and "paper" in node_tags,
             # 更新记录 ⭐️：关联 sources/repos/ 源码归档（私有标记，写出前剔除）
             "_has_repo_source": wiki_has_repo_source(content),
         }

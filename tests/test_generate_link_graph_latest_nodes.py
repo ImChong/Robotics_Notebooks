@@ -127,7 +127,7 @@ class ResolveLatestNodesMaxTest(unittest.TestCase):
 
 
 class PaperHubStatsTest(unittest.TestCase):
-    """top_paper_hubs：仅论文节点（type=entity 且带 paper 标签）按互链度排序。"""
+    """top_paper_hubs：仅论文节点（type=entity/method 且带 paper 标签）按互链度排序。"""
 
     def test_build_graph_data_marks_paper_nodes(self) -> None:
         nodes, _ = glg._build_graph_data()
@@ -135,10 +135,18 @@ class PaperHubStatsTest(unittest.TestCase):
         bfm = by_id.get("wiki/entities/paper-behavior-foundation-model-humanoid.md")
         self.assertIsNotNone(bfm)
         self.assertTrue(bfm.get("_is_paper"))
+        # 升格为深度拆解页的论文（type=method + paper 标签）也是论文节点
+        sonic = by_id.get("wiki/methods/sonic-motion-tracking.md")
+        self.assertIsNotNone(sonic)
+        self.assertTrue(sonic.get("_is_paper"))
         # 概念页不是论文节点
         sim2real = by_id.get("wiki/concepts/sim2real.md")
         self.assertIsNotNone(sim2real)
         self.assertFalse(sim2real.get("_is_paper"))
+        # 无 paper 标签的 method 页不是论文节点
+        rl = by_id.get("wiki/methods/reinforcement-learning.md")
+        self.assertIsNotNone(rl)
+        self.assertFalse(rl.get("_is_paper"))
 
     def test_top_paper_hubs_are_papers_sorted_desc(self) -> None:
         nodes, edges = glg._build_graph_data()
