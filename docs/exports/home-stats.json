@@ -319,6 +319,20 @@
   ],
   "top_paper_hubs": [
     {
+      "detail_id": "wiki-methods-sonic-motion-tracking",
+      "label": "SONIC（规模化运动跟踪人形控制）",
+      "type": "method",
+      "degree": 111,
+      "has_repo": true
+    },
+    {
+      "detail_id": "wiki-methods-beyondmimic",
+      "label": "BeyondMimic",
+      "type": "method",
+      "degree": 53,
+      "has_repo": true
+    },
+    {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",
       "label": "OmniRetarget",
       "type": "entity",
@@ -332,6 +346,12 @@
       "type": "entity",
       "degree": 44,
       "has_repo": true
+    },
+    {
+      "detail_id": "wiki-methods-deepmimic",
+      "label": "DeepMimic: 示例引导的技能学习",
+      "type": "method",
+      "degree": 44
     },
     {
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
@@ -365,26 +385,6 @@
       "label": "Perceptive Humanoid Parkour（PHP）",
       "type": "entity",
       "degree": 31
-    },
-    {
-      "detail_id": "entity-paper-bfm-zero",
-      "label": "BFM-Zero",
-      "type": "entity",
-      "degree": 28,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "detail_id": "entity-paper-faststair-humanoid-stair-ascent",
-      "label": "FastStair（Learning to Run Up Stairs with Humanoid Robots）",
-      "type": "entity",
-      "degree": 28,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "detail_id": "entity-paper-perceptive-bfm",
-      "label": "Perceptive BFM：Adapting Human Motion Priors to Robot-Centric Terrain",
-      "type": "entity",
-      "degree": 28
     }
   ]
 }
