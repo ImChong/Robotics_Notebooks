@@ -6,7 +6,18 @@
 - tests/test_lint_wiki_eval_benchmark_crosslink.py（9 条用例：entities/comparisons/concepts 三目录、列表式/内联式 tag、有/无回链、双枢纽、枢纽豁免、INFO 不计失败）
 - exports/lint-report.md（新增基线段：benchmark/evaluation 页缺回链专题枢纽 20 页）
 
+## [2026-07-16] ingest | sources/papers/touchworld_arxiv_2607_07287.md — TouchWorld 预测–反应式触觉基础模型；wiki/entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md；交叉更新 visuo-tactile-fusion / contact-rich-manipulation / T-Rex
+
+- wiki/entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md
+- wiki/concepts/visuo-tactile-fusion.md
+- wiki/concepts/contact-rich-manipulation.md
+- wiki/entities/paper-trex-tactile-reactive-dexterous-manipulation.md
+- sources/papers/touchworld_arxiv_2607_07287.md
+- sources/sites/touchworld-phanes-lab.md
+
 ## [2026-07-16] ingest | sources/papers/simple_arxiv_2606_08278.md — SIMPLE 人形 loco-manip 仿真 testbed 深读；升格 wiki/entities/paper-loco-manip-161-075-simple.md
+
+- wiki/entities/paper-loco-manip-161-075-simple.md
 
 ## [2026-07-16] ingest | sources/repos/flashsac.md — 补全 FlashSAC 官方 GitHub 仓库链接与训练框架要点
 

@@ -120,6 +120,7 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "mujoco",
     "sonic",
     "wbc",  # 已由 concepts/whole-body-control.md 覆盖（slug 与页面 stem 不同名）
+    "wam",  # 已由 concepts/world-action-models.md 覆盖（缩写 slug 与页面 stem 不同名）
     "locomotion",
     "loco-manipulation",
     "step",
