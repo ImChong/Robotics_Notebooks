@@ -4,6 +4,7 @@ tags: [software, simulation, mujoco, reinforcement-learning, benchmark, deepmind
 status: complete
 updated: 2026-05-11
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./mujoco.md
   - ./mujoco-mjx.md
   - ./brax.md
@@ -73,6 +74,7 @@ summary: "dm_control 是 Google DeepMind 开源的 MuJoCo Python 栈：以 Contr
 - [Reinforcement Learning（方法总览）](../methods/reinforcement-learning.md) — 与连续控制基准的关系
 - [Locomotion（任务）](../tasks/locomotion.md) — walker / humanoid 等域在任务层面的位置
 - [仿真器选型指南（Query）](../queries/simulator-selection-guide.md) — 与 Isaac Lab、Genesis 等并列讨论时的上下文
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ 策略任务成功率评测层：MuJoCo Control Suite 连续控制 RL 基准
 
 ## 推荐继续阅读
 

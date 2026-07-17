@@ -16,6 +16,7 @@ updated: 2026-06-01
 arxiv: "2605.19957"
 code: https://github.com/ZGCA-HMI-Lab/WEM
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../methods/generative-world-models.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
   - ../overview/ego-9-papers-technology-map.md
@@ -134,6 +135,7 @@ flowchart TB
 - [EWMBench](./ewmbench.md) — 操纵向 EWM 多维基准（对照 HTEWorld 混合长程设定）。
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 移动+操作任务背景。
 - [Manipulation](../tasks/manipulation.md) — 操作子任务与 world model 选型语境。
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ② 世界模型预测保真度评测层：EWMScore 长程混合导航–操作视频评测
 
 ## 方法栈
 

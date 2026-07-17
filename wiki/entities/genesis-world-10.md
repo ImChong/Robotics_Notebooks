@@ -4,6 +4,7 @@ tags: [simulation, physics-engine, rendering, compiler, foundation-model, evalua
 status: complete
 updated: 2026-06-18
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./genesis-sim.md
   - ./gene-26-5-genesis-ai.md
   - ../overview/robot-training-stack-layers-technology-map.md
@@ -109,6 +110,7 @@ flowchart LR
 - [Sim2Real](../concepts/sim2real.md) — real-to-sim / sim-to-real 方法论
 - [数据飞轮](../concepts/data-flywheel.md) — 数据–仿真–部署闭环语境
 - [Isaac Gym / Isaac Lab](isaac-gym-isaac-lab.md) — 同类高并行仿真与评测栈参照
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ④ sim↔real 校准层：把仿真定位为机器人基础模型的闭环评测与迭代引擎
 
 ## 推荐继续阅读
 

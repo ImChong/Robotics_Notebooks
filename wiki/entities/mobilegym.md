@@ -5,6 +5,7 @@ tags: [benchmark, mobile-gui-agent, simulation, online-rl, grpo, evaluation, mll
 status: complete
 updated: 2026-06-02
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../comparisons/online-vs-offline-rl.md
   - ../methods/vla.md
   - ../methods/reinforcement-learning.md
@@ -117,6 +118,7 @@ flowchart TB
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — PPO/GRPO 与稠密 shaping 奖励语境
 - [Sim2Real](../concepts/sim2real.md) — 仿真训练、真机保留增益的对照框架
 - [ESI-Bench](./esi-bench.md) — 另一路线的 **可验证、可并行** 具身评测（3D 空间 QA vs 移动 GUI）
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ / ④ 层：GUI Agent 仿真成功率评测并保留真机迁移信号（真机子集 95.1% 增益）
 
 ## 参考来源
 

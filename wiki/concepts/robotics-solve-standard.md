@@ -4,6 +4,7 @@ tags: [evaluation, benchmarking, home-robot, deployment, reliability, sunday-rob
 status: complete
 updated: 2026-07-17
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../entities/sunday-robotics-act2.md
   - ../tasks/manipulation.md
   - ../entities/tidybot2.md
@@ -76,6 +77,7 @@ summary: "Solve（Sunday Robotics, 2026）将机器人能力进展解构为 Perf
 - [Manipulation](../tasks/manipulation.md) — 家用可变形操作任务语境
 - [TidyBot2](../entities/tidybot2.md) — 开源 household 平台（可作不同 Adaptation 假设下的对照）
 - [VLA](../methods/vla.md) — 操作基础模型评测与 few-shot 叙事
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 其 ③ 策略成功率评测层的可比性基础：Solve 三元组回答「同一成功率数字在不同边界下是否可比、可累积」
 
 ## 推荐继续阅读
 

@@ -4,6 +4,7 @@ tags: [software, reinforcement-learning, api, benchmark, farama]
 status: complete
 updated: 2026-06-28
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../methods/reinforcement-learning.md
   - ../formalizations/mdp.md
   - ./mujoco.md
@@ -106,6 +107,7 @@ flowchart LR
 - [Isaac Gym](./isaac-gym.md) — GPU 并行物理；与 API 标准分层理解
 - [十年仿真平台技术地图](../overview/sim-platforms-decade-technology-map.md) — MuJoCo + Gym 基准的历史位置
 - [仿真器选型指南](../queries/simulator-selection-guide.md) — 物理引擎选型；Gymnasium 解决「算法怎么接环境」
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是其 ③ 策略任务成功率评测层的底层 API 标准：把算法与物理仿真解耦以复现 RL 基准
 
 ## 推荐继续阅读
 

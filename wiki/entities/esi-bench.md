@@ -5,6 +5,7 @@ tags: [benchmark, embodied-ai, spatial-intelligence, mllm, omnigibson, behavior-
 status: complete
 updated: 2026-07-12
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/3d-spatial-vqa.md
   - ../tasks/vision-language-navigation.md
   - ../methods/vla.md
@@ -152,6 +153,7 @@ flowchart LR
 - [WEM / HTEWorld](./paper-wem-world-ego-modeling.md) — 共享 **BEHAVIOR-1K / OmniGibson** 生态的不同评测切面
 - [EWMBench](./ewmbench.md) — 具身 **视频世界模型** 生成质量评测，互补
 - [RoboBench](./robo-bench.md) — 操纵流水线 **MLLM embodied brain** 五维 QA；与下游 VLA 分数相关
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是其 ① 具身大脑 / MLLM 认知评测层的代表基准，双向回链
 
 ## 参考来源
 

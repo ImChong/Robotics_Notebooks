@@ -14,6 +14,7 @@ arxiv: "2305.14654"
 venue: "RSS 2018"
 code: https://github.com/google-deepmind/barkour_robot
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../tasks/locomotion.md
   - ./quadruped-robot.md
   - ./mujoco.md
@@ -120,6 +121,7 @@ flowchart TB
 - [Terrain Adaptation](../concepts/terrain-adaptation.md)
 - [RSS 2018 敏捷四足 sim2real](./paper-quadruped-agile-sim2real-rss2018.md)
 - [Walk These Ways（MoB）](./paper-walk-these-ways-quadruped-mob.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是其 ③ 策略任务成功率评测层的四足敏捷代表基准，双向回链
 
 ## 方法栈
 

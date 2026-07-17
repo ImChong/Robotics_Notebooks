@@ -5,6 +5,7 @@ status: complete
 updated: 2026-07-03
 arxiv: "2606.28276"
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/sim2real.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../tasks/manipulation.md
@@ -147,6 +148,7 @@ flowchart TB
 - [Genesis World 1.0](./genesis-world-10.md) — 产业侧 **real-to-sim 评测基础设施** 叙事参照
 - [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md) — 实验策略族之一（GR00T N1.6/N1.7）
 - [NVIDIA GEAR Lab](./nvidia-gear-lab.md) — 研究组与姊妹工作（ENPIRE、GR00T Visual Sim2Real 等）
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ④ sim↔real 校准层：real-to-sim 策略评测（均值 Pearson 0.911）
 
 ## 参考来源
 

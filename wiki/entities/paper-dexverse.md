@@ -6,6 +6,7 @@ updated: 2026-07-14
 arxiv: "2607.08751"
 venue: "arXiv 2026"
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../tasks/manipulation.md
   - ../concepts/contact-rich-manipulation.md
   - ../queries/dexterous-manipulation-data-pipeline.md
@@ -133,6 +134,7 @@ flowchart TB
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md) — 精密接触类任务难点
 - [Isaac Lab](./isaac-lab.md) — 仿真后端与 manager-based 环境
 - [CoorDex](./paper-coordex-dexterous-humanoid-loco-manipulation.md) — UNC/Berkeley 人形 dexterous loco-manipulation
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ 策略任务成功率评测层：100 项灵巧操作泛化基准，暴露亚厘米接触与跨技能泛化瓶颈
 
 ## 参考来源
 

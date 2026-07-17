@@ -5,6 +5,7 @@ status: complete
 updated: 2026-07-16
 arxiv: "2606.08278"
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-03-visuomotor.md
   - ../tasks/loco-manipulation.md
@@ -148,6 +149,7 @@ flowchart TB
 - 任务：[Loco-Manipulation](../tasks/loco-manipulation.md)
 - 同 lab 模型：[Psi0](./paper-loco-manip-161-156-psi0.md)
 - 对照 benchmark：[SimFoundry](./paper-simfoundry-real2sim-scene-generation.md)（操作侧重 real-to-sim）、[TeleOpBench](./paper-notebook-teleopbench-a-simulator-centric-benchmark-for-du.md)（双臂遥操作基准）
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页兼跨其 ③ 策略成功率与 ④ sim↔real 校准层：仿真排序与真机强相关、支持纯仿真数据零样本 sim-to-real
 
 ## 参考来源
 

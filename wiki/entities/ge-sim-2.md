@@ -4,6 +4,7 @@ tags: [world-models, video-generation, manipulation, simulation, closed-loop, ag
 status: complete
 updated: 2026-07-16
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../overview/agibot-june-2026-release-technology-map.md
   - ../overview/agibot-release-category-03-world-model.md
   - ../methods/generative-world-models.md
@@ -116,6 +117,7 @@ flowchart TB
 - [机器人世界模型：训练闭环 taxonomy](../overview/robot-world-models-training-loop-taxonomy.md) — ③ 视频世界模型 · 从想象到训练闭环
 - [智元 2026-06 发布技术地图](../overview/agibot-june-2026-release-technology-map.md) — GE-Sim 2.0 在七段落地链路中的 **03 世界模型** 位
 - [τ₀-World Model（τ0-WM）](./tau0-world-model.md) — 同 Agibot 系 **5B 统一视频–动作** 与测试时 propose–evaluate–revise（策略–仿真一体，非独立 Judge 栈）
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ② 世界模型预测保真度评测层：动作条件视频世界模拟器的闭环策略交互与评测/奖励
 
 ## 参考来源
 

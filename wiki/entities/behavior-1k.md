@@ -5,6 +5,7 @@ tags: [entity, simulator, benchmark, embodied-ai, omniverse, everyday-activities
 status: complete
 updated: 2026-06-22
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./nvidia-omniverse.md
   - ./paper-behavior-foundation-model-humanoid.md
   - ../concepts/simulation-evaluation-infrastructure.md
@@ -56,6 +57,7 @@ summary: "斯坦福等 2023 年推出的具身 AI 基准：基于社会调查筛
 - [NVIDIA Omniverse](./nvidia-omniverse.md)
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)
 - [十年仿真平台技术地图](../overview/sim-platforms-decade-technology-map.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ 策略任务成功率评测层：开放世界日常活动综合能力基准
 
 ## 参考来源
 
