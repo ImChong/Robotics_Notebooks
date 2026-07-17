@@ -999,6 +999,13 @@
         "curr0"
       ]
     },
+    "sunday-robotics": {
+      "label": "周日机器人（Sunday Robotics）",
+      "aliases": [
+        "sunday-robotics",
+        "sunday-ai"
+      ]
+    },
     "humanoid-ai": {
       "label": "人形机器人公司（Humanoid）",
       "aliases": [

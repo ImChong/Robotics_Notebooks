@@ -2,7 +2,7 @@
 
 ## [2026-07-17] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **21** 条信息型预警）：
+共发现 **0** 个问题（另含 **22** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -115,7 +115,8 @@
 ### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」专题枢纽（信息型，不阻塞 CI）（20 个）
+### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」专题枢纽（信息型，不阻塞 CI）（21 个）
+- wiki/concepts/robotics-solve-standard.md
 - wiki/entities/behavior-1k.md
 - wiki/entities/deepinsight.md
 - wiki/entities/dm-control.md
@@ -137,4 +138,4 @@
 - wiki/entities/paper-wem-world-ego-modeling.md
 - wiki/entities/smplolympics.md
 
-📊 Sources 覆盖率：1597/1627 (98%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1599/1629 (98%) wiki/entity 页有 ingest 来源

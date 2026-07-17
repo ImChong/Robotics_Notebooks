@@ -6,6 +6,7 @@ updated: 2026-05-18
 related:
   - ../tasks/manipulation.md
   - ../tasks/loco-manipulation.md
+  - ../entities/sunday-robotics-act2.md
   - ../overview/robot-open-source-wechat-issue02-curator.md
 sources:
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md

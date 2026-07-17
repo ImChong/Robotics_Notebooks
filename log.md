@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-17] ingest | sources/blogs/sunday_act2_preview.md — Sunday ACT-2 预览：Solve 叠衣 99.1%、泛化鸿沟缩放与单示范 SFT；升格 wiki/entities/sunday-robotics-act2.md、wiki/concepts/robotics-solve-standard.md
+
 ## [2026-07-17] ingest | sources/sites/lejurobot.md、openlet-openatom.md、lingbot-vla.md、rhino-auto.md — 乐聚/OpenLET、LingBot-VLA 1.0、辉羲智能入库
 
 - wiki/entities/leju-robotics.md

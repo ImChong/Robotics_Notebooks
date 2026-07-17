@@ -1,13 +1,33 @@
 {
   "generated_at": "2026-07-17",
-  "node_count": 1644,
-  "edge_count": 12944,
+  "node_count": 1646,
+  "edge_count": 12961,
   "coverage": {
-    "covered": 1597,
-    "total": 1627,
+    "covered": 1599,
+    "total": 1629,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/sunday-robotics-act2.md",
+      "detail_id": "entity-sunday-robotics-act2",
+      "label": "ACT-2（Sunday Robotics · Generalizing Reliability）",
+      "type": "entity",
+      "recency": "2026-07-17",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/robotics-solve-standard.md",
+      "detail_id": "wiki-concepts-robotics-solve-standard",
+      "label": "Robotics Solve 标准",
+      "type": "concept",
+      "recency": "2026-07-17",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/leju-robotics.md",
       "detail_id": "entity-leju-robotics",
@@ -45,8 +65,7 @@
       "type": "entity",
       "recency": "2026-07-17",
       "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/methods/vla.md",
@@ -192,44 +211,30 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-neuralactuator-neural-actuation-modeling.md",
-      "detail_id": "entity-paper-neuralactuator-neural-actuation-modeling",
-      "label": "NeuralActuator（Neural Actuation Modeling · arXiv:2607.11734）",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/methods/actuator-network.md",
-      "detail_id": "wiki-methods-actuator-network",
-      "label": "Actuator Network (执行器网络)",
-      "type": "method",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/leju-robotics.md",
-    "detail_id": "entity-leju-robotics",
-    "label": "乐聚机器人（Leju Robotics）",
+    "path": "wiki/entities/sunday-robotics-act2.md",
+    "detail_id": "entity-sunday-robotics-act2",
+    "label": "ACT-2（Sunday Robotics · Generalizing Reliability）",
     "type": "entity",
     "recency": "2026-07-17",
     "source": "log.md",
-    "action": "added"
+    "action": "added",
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 278
+      "size": 285
     },
     {
       "label": "人形论文深读笔记",
       "size": 179
+    },
+    {
+      "label": "仿真到现实",
+      "size": 178
     },
     {
       "label": "移动操作",
@@ -237,15 +242,11 @@
     },
     {
       "label": "全身控制",
-      "size": 141
-    },
-    {
-      "label": "仿真到现实",
-      "size": 123
+      "size": 109
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 106
+      "size": 104
     }
   ],
   "top_hubs": [
@@ -276,7 +277,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 271,
+      "degree": 273,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -284,7 +285,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 238,
+      "degree": 244,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
