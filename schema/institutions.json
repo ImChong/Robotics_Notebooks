@@ -1021,6 +1021,13 @@
         "flexion-robotics"
       ]
     },
+    "mimic-robotics": {
+      "label": "迷可机器人（Mimic Robotics）",
+      "aliases": [
+        "mimic-robotics",
+        "mimic"
+      ]
+    },
     "sssa": {
       "label": "圣安娜高等研究学院（Scuola Superiore Sant'Anna）",
       "aliases": [

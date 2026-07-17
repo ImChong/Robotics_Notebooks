@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-07-14
+updated: 2026-07-17
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 
@@ -74,6 +74,10 @@ subject to: FK(θ) = p_target (末端位置约束)
 ### 3.5 稀疏关键点重定向（SKR，BifrostUMI）
 
 [BifrostUMI](../entities/paper-bifrost-umi.md) 提出的 **Spatial Keypoint Retargeting（SKR）** 面向 **无机器人采集 → 人形部署**：用 **骨盆、左右 TCP、左右脚** 五个任务关键点表示全身运动，**仅** 按身高差缩放 **骨盆–脚垂直距离**，其余关键点间 **度量空间关系保持不变**（对比 [GMR](../methods/motion-retargeting-gmr.md) 的全局/局部缩放）。闭环中从关节 FK 得当前关键点，与扩散高层预测合成目标，再用 **mink** 解全身 IK 供 WBC 跟踪——把「几何桥」与「低层动力学」明确分层。
+
+### 3.6 采样式灵巧手重定向（SBR，Smooth Operator）
+
+[mimic robotics](https://mimicrobotics.github.io/smooth-operator/) 的 **Sampling-Based Retargeter（SBR）** 面向 **15 DoF 级实时遥操作**：用 **Kabsch–Umeyama** 对齐人手指点云与机器人手，再以 **MPPI / MPOPI + iCEM** 做 **梯度无关** 路径积分优化，缓解 DexPilot / GeoRT 等 **梯度法局部极小与抖动**。18 人用户研究中整体成功率 **54.1%**、NASA-TLX **36.4**（相对 GeoRT 26.6% / 56.4）。开源快照见 [mimic_retargeter_lab](https://github.com/mimicrobotics/mimic_retargeter_lab)；与 [mimic wearable U1](../entities/mimic-wearable-u1.md)「机械 1:1、无软件重定向」形成 **中层采集 vs 顶层真机遥操作** 对照。
 
 ### 4. 深度学习重定向（Learning-Based）
 - Encoder-Decoder 架构：将人类骨架 embedding，再 decode 到目标机器人

@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-17",
-  "node_count": 1646,
-  "edge_count": 12961,
+  "node_count": 1648,
+  "edge_count": 12984,
   "coverage": {
-    "covered": 1599,
-    "total": 1629,
+    "covered": 1601,
+    "total": 1631,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -27,6 +27,97 @@
       "source": "log.md",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-07-17",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/humanoid-hardware-101-sensing-end-effectors.md",
+      "detail_id": "wiki-overview-humanoid-hardware-101-sensing-end-effectors",
+      "label": "Humanoid Hardware 101 · 06：传感与末端执行器",
+      "type": "overview",
+      "recency": "2026-07-17",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/tidybot2.md",
+      "detail_id": "entity-tidybot2",
+      "label": "TidyBot2",
+      "type": "entity",
+      "recency": "2026-07-17",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/mimic-hand-m1.md",
+      "detail_id": "entity-mimic-hand-m1",
+      "label": "mimic hand M1",
+      "type": "entity",
+      "recency": "2026-07-17",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/mimic-wearable-u1.md",
+      "detail_id": "entity-mimic-wearable-u1",
+      "label": "mimic wearable U1（umimic）",
+      "type": "entity",
+      "recency": "2026-07-17",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/methods/mimic-video.md",
+      "detail_id": "wiki-methods-mimic-video",
+      "label": "mimic-video（Video-Action Model, VAM）",
+      "type": "method",
+      "recency": "2026-07-17",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/teleoperation.md",
+      "detail_id": "wiki-tasks-teleoperation",
+      "label": "Teleoperation（遥操作）",
+      "type": "task",
+      "recency": "2026-07-17",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/queries/dexterous-data-collection-guide.md",
+      "detail_id": "wiki-queries-dexterous-data-collection-guide",
+      "label": "灵巧操作数据采集指南",
+      "type": "query",
+      "recency": "2026-07-17",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
+    {
+      "path": "wiki/concepts/motion-retargeting.md",
+      "detail_id": "wiki-concepts-motion-retargeting",
+      "label": "Motion Retargeting（动作重定向）",
+      "type": "concept",
+      "recency": "2026-07-17",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
     },
     {
       "path": "wiki/entities/leju-robotics.md",
@@ -119,98 +210,6 @@
       "source": "log.md",
       "action": "added",
       "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/concepts/visuo-tactile-fusion.md",
-      "detail_id": "wiki-concepts-visuo-tactile-fusion",
-      "label": "视触觉融合（Visuo-Tactile Fusion）",
-      "type": "concept",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/concepts/contact-rich-manipulation.md",
-      "detail_id": "wiki-concepts-contact-rich-manipulation",
-      "label": "Contact-Rich Manipulation（接触丰富型操作）",
-      "type": "concept",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-trex-tactile-reactive-dexterous-manipulation.md",
-      "detail_id": "entity-paper-trex-tactile-reactive-dexterous-manipulation",
-      "label": "T-Rex：触觉反应式灵巧操作",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-loco-manip-161-075-simple.md",
-      "detail_id": "entity-paper-loco-manip-161-075-simple",
-      "label": "SIMPLE（Simulation-Based Policy Learning and Evaluation for Humanoid Loco-manipulation）",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/methods/flashsac.md",
-      "detail_id": "wiki-methods-flashsac",
-      "label": "FlashSAC",
-      "type": "method",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "path": "wiki/comparisons/ppo-vs-sac.md",
-      "detail_id": "wiki-comparisons-ppo-vs-sac",
-      "label": "PPO vs SAC (vs BRRL/BPO)：机器人 RL 算法选型",
-      "type": "comparison",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-muninn-trajectory-diffusion-acceleration.md",
-      "detail_id": "entity-paper-muninn-trajectory-diffusion-acceleration",
-      "label": "Muninn（轨迹扩散免训练加速）",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/diffusion-policy.md",
-      "detail_id": "wiki-methods-diffusion-policy",
-      "label": "Diffusion Policy",
-      "type": "method",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/diffusion-motion-generation.md",
-      "detail_id": "wiki-methods-diffusion-motion-generation",
-      "label": "Diffusion-based Motion Generation (基于扩散模型的运动生成)",
-      "type": "method",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
@@ -246,7 +245,7 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 104
+      "size": 106
     }
   ],
   "top_hubs": [
@@ -285,7 +284,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 244,
+      "degree": 247,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
