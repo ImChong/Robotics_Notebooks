@@ -1,6 +1,17 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-16] ingest | sources/papers/touchworld_arxiv_2607_07287.md — TouchWorld 预测–反应式触觉基础模型；wiki/entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md；交叉更新 visuo-tactile-fusion / contact-rich-manipulation / T-Rex
+
+- wiki/entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md
+- wiki/concepts/visuo-tactile-fusion.md
+- wiki/concepts/contact-rich-manipulation.md
+- wiki/entities/paper-trex-tactile-reactive-dexterous-manipulation.md
+- sources/papers/touchworld_arxiv_2607_07287.md
+- sources/sites/touchworld-phanes-lab.md
+
 ## [2026-07-16] ingest | sources/papers/simple_arxiv_2606_08278.md — SIMPLE 人形 loco-manip 仿真 testbed 深读；升格 wiki/entities/paper-loco-manip-161-075-simple.md
+
+- wiki/entities/paper-loco-manip-161-075-simple.md
 
 ## [2026-07-16] ingest | sources/repos/flashsac.md — 补全 FlashSAC 官方 GitHub 仓库链接与训练框架要点
 

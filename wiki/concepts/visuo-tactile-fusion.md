@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, manipulation, contact-rich, multimodal, tactile-sensing, fusion]
 status: complete
-updated: 2026-07-08
+updated: 2026-07-16
 related:
   - ./tactile-sensing.md
   - ./contact-rich-manipulation.md
@@ -19,6 +19,7 @@ related:
   - ../methods/tactile-impedance-control.md
   - ../entities/paper-trex-tactile-reactive-dexterous-manipulation.md
   - ../entities/paper-omnitactune-tactile-residual-adaptation.md
+  - ../entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md
   - ./hybrid-force-position-control.md
   - ../queries/contact-wrench-closed-loop.md
   - ./contact-force-loop-bandwidth.md
@@ -118,6 +119,13 @@ $\alpha_t$ 既可以由人类先验（接触力、深度差）算出，也可以
 - **与端到端融合的分工：** 视觉策略继续吃规模化人视频/遥操数据；触觉只在 **接触丰富最后一公里** 通过试错学习，避开「触觉数据永远追不上视觉规模」的困境。
 - **与 [T-Rex](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md) 的对照：** T-Rex 需要 **100 h 触觉 mid-training** 把触觉写进 VLA；OmniTacTune 适合 **已有视觉策略、预算有限、想快速补触觉** 的部署场景。
 
+### 5. 预测–反应层级 (Predictive–Reactive Hierarchy)
+
+在 **名义 VLA 之外** 再拆两条触觉专用通路：**慢层预测未来视触觉子目标**，**快层 TRT 残差纠偏**。代表：[TouchWorld](../entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md)（arXiv:2607.07287）用 **Subtask Planner + Tactile World Model（Wan2.2）** 生成接触感知子目标，名义 **视触觉 flow-VLA** 出 $H=32$ 动作块，**TRT** 在 $W=16$ 滑动窗口上每 $C=4$ 步提交残差；六任务长程 benchmark 干净 **65.0%**、人为扰动 **53.7%**，较单体触觉基线 FTP-1 **+15.7 / +18.5 pt**。
+
+- **与残差适应的分工：** OmniTacTune 的残差来自 **真机 RL 试错**；TouchWorld 的 TRT 来自 **遥操残差监督**，且上游还有 **触觉世界模型** 提供「预期接触长什么样」。
+- **与 T-Rex 的对照：** 二者都强调 **频率解耦 + 残差精修**；TouchWorld 额外把 **子任务规划 + 触觉子目标预测** 写入层级，更偏 **长程 household 六任务** 与 **人形 Wuji 平台**。
+
 ## 接触瞬间为什么难
 
 把这一阶段单独拎出来，是因为常见的几个坑都集中在这里：
@@ -164,7 +172,7 @@ flowchart LR
 - **误区 2：视觉触觉传感器（如 GelSight）就解决了一切。**
   GelSight 给出的依然是「接触局部」的信号，仍然需要全局相机做粗对位；它替代不了视觉 + 触觉的分工，只是把触觉那一路的信息密度变高了。
 - **误区 3：把触觉信号简单拼到视觉 token 后面。**
-  在 VLA / Diffusion Policy 中，token 数量不平衡几乎一定让触觉被忽略；必须在结构上显式偏置或在 loss 中保护触觉路径。[T-Rex](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md) 给出 VLA 尺度反例：**π₀.₅ + tactile** 平均成功率低于无触觉 π₀.₅，需 **频率解耦触觉专家 + 时序力 VQ-VAE**。[OmniTacTune](../entities/paper-omnitactune-tactile-residual-adaptation.md) 则表明：短预算下 **冻结视觉 + 触觉残差真机 RL** 可优于 **继续堆 visuo-tactile 演示**。
+  在 VLA / Diffusion Policy 中，token 数量不平衡几乎一定让触觉被忽略；必须在结构上显式偏置或在 loss 中保护触觉路径。[T-Rex](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md) 给出 VLA 尺度反例：**π₀.₅ + tactile** 平均成功率低于无触觉 π₀.₅，需 **频率解耦触觉专家 + 时序力 VQ-VAE**。[OmniTacTune](../entities/paper-omnitactune-tactile-residual-adaptation.md) 则表明：短预算下 **冻结视觉 + 触觉残差真机 RL** 可优于 **继续堆 visuo-tactile 演示**。[TouchWorld](../entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md) 进一步把触觉拆成 **TWM 预测子目标 + TRT 快残差**，在人为扰动设置优势更大。
 - **误区 4：用力残差代替触觉就行。**
   力残差只能告诉「有没有接触」，无法告诉「接触发生在指尖哪一块」。空间分布是视觉触觉传感器或阵列式传感器的核心价值。
 
@@ -189,6 +197,7 @@ flowchart LR
 - [Multimodal Fusion Tricks](../queries/multimodal-fusion-tricks.md)
 - [Tactile Feedback in RL](../queries/tactile-feedback-in-rl.md)
 - [OmniTacTune](../entities/paper-omnitactune-tactile-residual-adaptation.md) — 冻结视觉 + 触觉残差真机 RL，无需离线触觉演示
+- [TouchWorld](../entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md) — 预测–反应式触觉层级：TWM 子目标 + TRT 残差 + 六任务长程 benchmark
 - [Manipulation 任务](../tasks/manipulation.md)
 - [Grasp Pose Estimation](../methods/grasp-pose-estimation.md) — ① 抓取阶段的视觉感知主线
 - [抓取策略选型 Query](../queries/grasp-policy-selection.md) — ① 抓取阶段的选型决策
