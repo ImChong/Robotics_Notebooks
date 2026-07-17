@@ -38,8 +38,8 @@
 
 ## P2: 事实库与矛盾检测扩展 (Quantity)
 
-- [ ] **事实库扩展**：
-    - [ ] `schema/canonical-facts.json` 由 230 → **240 条**：新增 10 条具身评测选型矛盾检测规则（仿真基准可复现 vs 真机代表性、任务成功率 vs 过程/中间指标、世界模型视频质量 ≠ 下游策略收益、MLLM 认知评分 ≠ 可执行动作能力、单任务过拟合 vs 跨任务泛化、离线回放评测 vs 在线闭环评测、成功率均值掩盖长尾失败模式、基准饱和 ≠ 真实场景就绪、评测集泄漏致虚高、静态基准不覆盖分布漂移）；逐条经脚本校验对现存 wiki 页有 pos 命中且 0 误报（`make lint` 潜在矛盾 0 个、0 errors）。
+- [x] **事实库扩展**：
+    - [x] `schema/canonical-facts.json` 由 230 → **240 条**：新增 10 条具身评测选型矛盾检测规则（仿真基准可复现 vs 真机代表性、任务成功率 vs 过程/中间指标、世界模型视频质量 ≠ 下游策略收益、MLLM 认知评分 ≠ 可执行动作能力、单任务过拟合 vs 跨任务泛化、离线回放评测 vs 在线闭环评测、成功率均值掩盖长尾失败模式、基准饱和 ≠ 真实场景就绪、评测集泄漏致虚高、静态基准不覆盖分布漂移）；逐条经脚本校验对现存 wiki 页有 pos 命中且 0 误报（`make lint` 潜在矛盾 0 个、0 errors）。（已落地：10 条规则的 `pos_claims` 均锚定 `queries/embodied-eval-benchmark-selection-loop.md` / `concepts/sim-vs-real-eval-gap.md` 现存正文，逐条 pos 命中 ≥1 页；`neg_claims` 断言相反错误说法，经全量 wiki 页复核 0 命中（0 误报）；`lint_wiki.py --report` 0 errors、潜在矛盾 0 个、信息型预警仍 22 条不新增；`ci-preflight` 12/12 通过）
 
 ## P3: 交互层"具身评测基准"增强 (UX/UI)
 
@@ -54,7 +54,7 @@
 
 - [ ] `make lint`: 0 errors（新引入的 `eval_benchmark_crosslink` 为 INFO 级，不阻塞 CI）。
 - [ ] 知识图谱节点数 **≥ 1610**，边数 **≥ 12230**（见 `exports/graph-stats.json`）。
-- [ ] 事实库扩展至 **240 条**（补齐 仿真 vs 真机 / 成功率 vs 过程指标 / 世界模型质量 vs 策略收益 等 10 条具身评测选型矛盾检测规则）。
+- [x] 事实库扩展至 **240 条**（补齐 仿真 vs 真机 / 成功率 vs 过程指标 / 世界模型质量 vs 策略收益 等 10 条具身评测选型矛盾检测规则）。
 - [ ] `community_quality_warning` 保持 `false` 且 `largest_community_ratio ≤ 0.25`。
 - [ ] `log.md` 记录 V29 关键改动。
 
