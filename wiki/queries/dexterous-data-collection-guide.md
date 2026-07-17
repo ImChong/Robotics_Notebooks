@@ -2,10 +2,11 @@
 type: query
 tags: [dexterity, data-collection, teleoperation, simulation, robot-hand]
 status: complete
-updated: 2026-06-13
+updated: 2026-07-17
 related:
   - ../entities/allegro-hand.md
   - ../entities/ruka-v2-hand.md
+  - ../entities/mimic-wearable-u1.md
   - ../comparisons/data-gloves-vs-vision-teleop.md
   - ../methods/behavior-cloning.md
   - ./demo-data-collection-guide.md
@@ -43,6 +44,7 @@ summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、A
 - **优点**：无需佩戴繁琐设备，操作者手部无约束。
 - **缺点**：视觉遮挡严重（例如手指重叠时）；缺乏力反馈，操作者很难感知抓握力度。
 - **代表项目**：AnyTeleop, DexCap；开源硬件侧 [RUKA-v2 Hand](../entities/ruka-v2-hand.md) 已集成 **AnyTeleop 向量重定向 + OpenTeach/Oculus VR** 遥操作管线。
+- **固定运动学外骨骼（产业参考）**：[mimic wearable U1](../entities/mimic-wearable-u1.md) 用 **刚性连杆强制 M1 可达空间**，复制腕相机与指尖触觉布局，以 **零软件重定向** 采集中层数据——与视觉方案互补，见 [mimic 数据金字塔](../entities/mimic-hand-m1.md#数据金字塔中的位置)。
 - **配对数据集参考**：[HRDexDB](../entities/hrdexdb-dataset.md) 采用 **XSens + MANUS 手套** 遥操 xArm6 + 多灵巧手，在 23 路同步相机下采集 **同物体人–机配对** 3D 轨迹与触觉（与纯视觉 teleop 的遮挡权衡不同）。
 
 ## 2. 穿戴式数据手套 (Data Gloves)
@@ -70,6 +72,7 @@ summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、A
 ## 关联页面
 - [Allegro Hand 实体](../entities/allegro-hand.md)
 - [RUKA-v2 Hand 实体](../entities/ruka-v2-hand.md) — 全栈开源腱驱动 + VR 遥操作范例
+- [mimic wearable U1](../entities/mimic-wearable-u1.md) — 固定 M1 运动学的被动外骨骼中层采集
 - [Behavior Cloning](../methods/behavior-cloning.md)
 - [多模态融合技巧](./multimodal-fusion-tricks.md)
 - [操作演示数据采集总指南](./demo-data-collection-guide.md)

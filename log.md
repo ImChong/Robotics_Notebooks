@@ -1,5 +1,20 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-17] ingest | sources/blogs/mimicrobotics_m1_u1_full_stack.md — mimic hand M1 与 wearable U1 全栈灵巧平台发布
+
+- wiki/entities/mimic-hand-m1.md
+- wiki/entities/mimic-wearable-u1.md
+- wiki/methods/mimic-video.md
+- wiki/tasks/teleoperation.md
+- wiki/tasks/manipulation.md
+- wiki/queries/dexterous-data-collection-guide.md
+- wiki/concepts/motion-retargeting.md
+- sources/blogs/mimicrobotics_m1_u1_full_stack.md
+- sources/sites/mimicrobotics.md
+- sources/sites/mimicrobotics-smooth-operator.md
+- sources/repos/mimicrobotics_mimic_retargeter_lab.md
+- schema/institutions.json（mimic-robotics）
+
 ## [2026-07-17] ingest | sources/sites/lejurobot.md、openlet-openatom.md、lingbot-vla.md、rhino-auto.md — 乐聚/OpenLET、LingBot-VLA 1.0、辉羲智能入库
 
 - wiki/entities/leju-robotics.md

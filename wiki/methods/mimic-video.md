@@ -2,7 +2,7 @@
 type: method
 tags: [vam, video-action-model, imitation-learning, vla, flow-matching, manipulation, cosmos, inverse-dynamics]
 status: complete
-updated: 2026-07-13
+updated: 2026-07-17
 date: 2026-05-17
 summary: "mimic-video 提出 Video-Action Model（VAM）：用语义–动力学一体的互联网规模视频扩散骨干在潜空间形成视觉计划，再以流匹配动作解码器作逆动力学模型输出机器人动作块，从而把大量样本效率压力从纯 VLA 式静态先验转移到视频表征质量。"
 related:
@@ -17,6 +17,8 @@ related:
   - ../entities/paper-dit4dit-video-action-model.md
   - ../entities/paper-motionwam-humanoid-loco-manipulation-wam.md
   - ../entities/tau0-world-model.md
+  - ../entities/mimic-hand-m1.md
+  - ../entities/mimic-wearable-u1.md
   - ./defi-decoupled-dynamics-vla.md
   - ../overview/world-models-15-open-source-technology-map.md
   - ../overview/world-models-route-01-cascade.md
@@ -26,6 +28,8 @@ sources:
   - ../../sources/papers/shenlan_wm_survey_04_mimic-video.md
   - ../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md
   - ../../sources/sites/mimic-video-github-io.md
+  - ../../sources/sites/mimicrobotics.md
+  - ../../sources/blogs/mimicrobotics_m1_u1_full_stack.md
   - ../../sources/repos/lucidrains_mimic_video.md
 ---
 
@@ -122,6 +126,7 @@ flowchart LR
 - 与 [World Action Models](../concepts/world-action-models.md)：VAM 在文献谱系上接近 **联合建模未来表征与动作**，但实现上通过 **冻结视频骨干 + 边际动作采样** 强调 **可部署分工**。
 - 与 [Cosmos 3](../entities/cosmos-3.md)：mimic-video 论文实现依赖 **Cosmos-Predict2 系** 视频骨干；Cosmos 3 为 **全模态 MoT 母平台**（policy / 正逆动力学 / Reasoner 一体），可视为同生态的 **下一代统一栈**。
 - 与 [DeFI](./defi-decoupled-dynamics-vla.md)：同属视频先验 + 逆动力学；DeFI 把 **前向（SVD）与逆向（DINO+VQ 自监督）** 预训练 **显式拆开**，并强调逆向模块需与 forward **同等规模** 预训练。
+- 与 [mimic hand M1](../entities/mimic-hand-m1.md) / [mimic wearable U1](../entities/mimic-wearable-u1.md)：mimic 产业化 **固定人手形态全栈**（2026-07 博客）——U1 中层示范、M1 顶层真机数据，与 VAM 的 **视频预训练 + 同形态后训练** 叙事一致。
 
 ## 推荐继续阅读
 
@@ -148,3 +153,5 @@ flowchart LR
 - [World Action Models](../concepts/world-action-models.md)
 - [DeFI（解耦前向/逆动力学 VLA）](./defi-decoupled-dynamics-vla.md)
 - [τ₀-World Model（τ0-WM）](../entities/tau0-world-model.md) — 联合训练视频–动作 + 测试时动作条件仿真（Agibot，5B）
+- [mimic hand M1](../entities/mimic-hand-m1.md) — mimic 产业腱驱动灵巧手与数据金字塔
+- [mimic wearable U1](../entities/mimic-wearable-u1.md) — 与 M1 1:1 的可穿戴示范采集（umimic）
