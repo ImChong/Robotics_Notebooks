@@ -1,13 +1,63 @@
 {
   "generated_at": "2026-07-17",
-  "node_count": 1646,
-  "edge_count": 12967,
+  "node_count": 1648,
+  "edge_count": 12984,
   "coverage": {
-    "covered": 1599,
-    "total": 1629,
+    "covered": 1601,
+    "total": 1631,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/sunday-robotics-act2.md",
+      "detail_id": "entity-sunday-robotics-act2",
+      "label": "ACT-2（Sunday Robotics · Generalizing Reliability）",
+      "type": "entity",
+      "recency": "2026-07-17",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/robotics-solve-standard.md",
+      "detail_id": "wiki-concepts-robotics-solve-standard",
+      "label": "Robotics Solve 标准",
+      "type": "concept",
+      "recency": "2026-07-17",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-07-17",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/humanoid-hardware-101-sensing-end-effectors.md",
+      "detail_id": "wiki-overview-humanoid-hardware-101-sensing-end-effectors",
+      "label": "Humanoid Hardware 101 · 06：传感与末端执行器",
+      "type": "overview",
+      "recency": "2026-07-17",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/tidybot2.md",
+      "detail_id": "entity-tidybot2",
+      "label": "TidyBot2",
+      "type": "entity",
+      "recency": "2026-07-17",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/mimic-hand-m1.md",
       "detail_id": "entity-mimic-hand-m1",
@@ -47,16 +97,6 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-07-17",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/queries/dexterous-data-collection-guide.md",
@@ -116,8 +156,7 @@
       "type": "entity",
       "recency": "2026-07-17",
       "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/methods/vla.md",
@@ -171,66 +210,30 @@
       "source": "log.md",
       "action": "added",
       "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/concepts/visuo-tactile-fusion.md",
-      "detail_id": "wiki-concepts-visuo-tactile-fusion",
-      "label": "视触觉融合（Visuo-Tactile Fusion）",
-      "type": "concept",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/concepts/contact-rich-manipulation.md",
-      "detail_id": "wiki-concepts-contact-rich-manipulation",
-      "label": "Contact-Rich Manipulation（接触丰富型操作）",
-      "type": "concept",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-trex-tactile-reactive-dexterous-manipulation.md",
-      "detail_id": "entity-paper-trex-tactile-reactive-dexterous-manipulation",
-      "label": "T-Rex：触觉反应式灵巧操作",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-loco-manip-161-075-simple.md",
-      "detail_id": "entity-paper-loco-manip-161-075-simple",
-      "label": "SIMPLE（Simulation-Based Policy Learning and Evaluation for Humanoid Loco-manipulation）",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/mimic-hand-m1.md",
-    "detail_id": "entity-mimic-hand-m1",
-    "label": "mimic hand M1",
+    "path": "wiki/entities/sunday-robotics-act2.md",
+    "detail_id": "entity-sunday-robotics-act2",
+    "label": "ACT-2（Sunday Robotics · Generalizing Reliability）",
     "type": "entity",
     "recency": "2026-07-17",
     "source": "log.md",
     "action": "added",
-    "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 278
+      "size": 285
     },
     {
       "label": "人形论文深读笔记",
       "size": 179
+    },
+    {
+      "label": "仿真到现实",
+      "size": 178
     },
     {
       "label": "移动操作",
@@ -238,15 +241,11 @@
     },
     {
       "label": "全身控制",
-      "size": 141
-    },
-    {
-      "label": "仿真到现实",
-      "size": 123
+      "size": 109
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 104
+      "size": 106
     }
   ],
   "top_hubs": [
@@ -277,7 +276,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 271,
+      "degree": 273,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -285,7 +284,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 241,
+      "degree": 247,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {

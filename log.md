@@ -1,5 +1,16 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-17] ingest | sources/blogs/sunday_act2_preview.md — Sunday ACT-2 预览：Solve 叠衣 99.1%、泛化鸿沟缩放与单示范 SFT；升格 wiki/entities/sunday-robotics-act2.md、wiki/concepts/robotics-solve-standard.md
+
+- wiki/entities/sunday-robotics-act2.md
+- wiki/concepts/robotics-solve-standard.md
+- wiki/tasks/manipulation.md
+- wiki/overview/humanoid-hardware-101-sensing-end-effectors.md
+- wiki/entities/tidybot2.md
+- sources/blogs/sunday_act2_preview.md
+- sources/sites/sunday-robotics.md
+- schema/institutions.json（sunday-robotics）
+
 ## [2026-07-17] ingest | sources/blogs/mimicrobotics_m1_u1_full_stack.md — mimic hand M1 与 wearable U1 全栈灵巧平台发布
 
 - wiki/entities/mimic-hand-m1.md

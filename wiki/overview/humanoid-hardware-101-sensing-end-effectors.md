@@ -39,10 +39,11 @@ sources:
 ## 末端执行器
 
 - 全驱动多指 **成本高、装配难、耐久挑战大**；多数商业场景 **两指/三指/任务夹爪** 单位经济性更优。
-- 文内：工业取放、家务（Sunday 三指等）证明 **不必人手形态** 才能干活。
+- 文内：工业取放、家务（[Sunday 三指](../entities/sunday-robotics-act2.md) 等）证明 **不必人手形态** 才能干活。
 
 ## 关联页面
 
+- [ACT-2 / Sunday Robotics](../entities/sunday-robotics-act2.md) — Memo 家用平台与三指家务夹爪产业案例
 - [Humanoid Hardware 101 技术地图](./humanoid-hardware-101-technology-map.md)
 - [产业与成本地缘](./humanoid-hardware-101-supply-chain-economics.md)
 - [视觉触觉融合](../concepts/visuo-tactile-fusion.md)
