@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-17] ingest | sources/papers/fmpose3d_arxiv_2602_05755.md — FMPose3D Flow Matching 单目 3D 姿态；wiki/entities/paper-fmpose3d-monocular-3d-pose-flow-matching.md；交叉更新 motion-retargeting-pipeline
+
+- wiki/entities/paper-fmpose3d-monocular-3d-pose-flow-matching.md
+- wiki/concepts/motion-retargeting-pipeline.md
+- sources/papers/fmpose3d_arxiv_2602_05755.md
+- sources/sites/fmpose3d-xiu-cs-github-io.md
+- sources/repos/fmpose3d.md
+
 ## [2026-07-16] lint | V29 P0 评测基准页交叉链路巡检 V1 — scripts/lint_wiki.py 新增 `_check_eval_benchmark_crosslink`（INFO 级，不阻塞 CI）
 
 - scripts/lint_wiki.py（新增 `EVAL_BENCHMARK_HUBS` / `EVAL_BENCHMARK_TAG_KEYWORDS` / `_check_eval_benchmark_crosslink`；接入 `INFO_ONLY_KEYS`、`_empty_results`、runner 与报告段）
