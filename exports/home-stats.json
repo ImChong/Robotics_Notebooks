@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-17",
   "node_count": 1648,
-  "edge_count": 12984,
+  "edge_count": 13014,
   "coverage": {
     "covered": 1601,
     "total": 1631,
@@ -225,11 +225,11 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 285
+      "size": 286
     },
     {
       "label": "人形论文深读笔记",
-      "size": 179
+      "size": 180
     },
     {
       "label": "仿真到现实",
