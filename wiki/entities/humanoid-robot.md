@@ -13,6 +13,7 @@ related:
   - ../concepts/whole-body-control.md
   - ../comparisons/wbc-vs-rl.md
   - ./unitree.md
+  - ./leju-robotics.md
   - ./hightorque-robotics.md
   - ./anymal.md
   - ./boston-dynamics.md
@@ -103,6 +104,7 @@ flowchart TD
 |------|------|-----|-----------|---------|------|
 | **Atlas** | Boston Dynamics | 28 | 液压/全电 | 研究平台 | 动态平衡的行业标杆，全电版近期发布 |
 | **Unitree H1/G1** | Unitree | 19-23 | 准直接驱动(QDD) | 商业化 | 性价比极高，是当前 RL 研究的首选硬件 |
+| **KUAVO（夸父）** | 乐聚 | 全尺寸 | 轮臂双形态可选 | 商业化/科研 | 国产全尺寸人形 + [OpenLET](./openlet.md) 真机数据生态 |
 | **Digit** | Agility Robotics | 20 | 串联弹性执行器(SEA) | 商业部署 | 数字化物流场景的先驱，独特的腿部结构 |
 | **Tesla Optimus** | Tesla | ~40 | 线性/旋转执行器 | 内部迭代 | 追求量产效率与全栈 AI；腿部 **PRS 直线驱动** 公开讨论与权衡见 [行星滚柱丝杠人形腿](../concepts/planetary-roller-screw-humanoid-leg-actuation.md) |
 | **Apollo** | Apptronik | 28 | 电力驱动 | 商业化 | 针对工业协同设计，强调安全与交互 |
@@ -142,6 +144,7 @@ flowchart TD
 - [全身运动控制](../concepts/whole-body-control.md)
 - [WBC vs RL 对比](../comparisons/wbc-vs-rl.md)
 - [Unitree](./unitree.md)
+- [乐聚机器人 / KUAVO](./leju-robotics.md)
 - [高擎机电（HighTorque Robotics）](./hightorque-robotics.md)
 - [四足机器人](./quadruped-robot.md)
 - [ANYmal](./anymal.md)（高性能四足机器人，足式 RL 研究标杆）

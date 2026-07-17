@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [LingBot-VLA 2.0](../../wiki/entities/lingbot-vla-v2.md)
+- [LingBot-VLA](../../wiki/entities/lingbot-vla.md)（1.0 官方仓；后继见 [LingBot-VLA 2.0](../../wiki/entities/lingbot-vla-v2.md)）
 - [loco-manip-161-category-09-vla-world-models](../../wiki/overview/loco-manip-161-category-09-vla-world-models.md)
 
 ## 参考来源（原始）

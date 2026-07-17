@@ -24,6 +24,7 @@ related:
   - ../entities/openvla.md
   - ../entities/mushr.md
   - ../entities/aeris-10-plfm-radar.md
+  - ../entities/rhino-auto.md
   - ../comparisons/lidar-slam-lio-vio-selection.md
   - ../concepts/ros2-basics.md
   - ../methods/vla.md
@@ -160,6 +161,7 @@ flowchart TB
 ### 自动驾驶与 NVIDIA 栈
 
 - **[Autoware](../entities/autoware.md)**：Autoware Core/Universe 组件化，面向 **道路场景**。
+- **车规大算力 SoC（对照）：** 乘用车域控除 x86/Jetson 外，亦有 **>500 TOPS** 级 **ASIL-D** 芯片路线（如 [辉羲智能光至 R1](../entities/rhino-auto.md) 的 **RINA 无图城区方案** 叙事）；与 ROS 2 移动栈接口层不同，但同属 **感知–规划边缘算力** 选型语境。
 - **[Isaac ROS Visual SLAM](../entities/isaac-ros-visual-slam.md)** / **[nvblox](../entities/isaac-ros-nvblox.md)**：GPU 加速，与 Nav2 **3D costmap** 衔接。
 
 ### 与本仓库其它主线

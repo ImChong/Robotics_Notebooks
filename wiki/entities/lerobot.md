@@ -4,11 +4,13 @@ type: entity
 title: LeRobot (Hugging Face)
 tags: [framework, robot-learning, open-source, dataset, huggingface]
 summary: "LeRobot 是 Hugging Face 开发的具身智能全栈框架，旨在将 Transformers 生态迁移到机器人领域，支持高效数据采集与策略训练。"
-updated: 2026-07-16
+updated: 2026-07-17
 related:
   - ./paper-evo1-lightweight-vla.md
   - ./openvla.md
   - ./lingbot-vla-v2.md
+  - ./lingbot-vla.md
+  - ./openlet.md
   - ../overview/navigation-slam-autonomy-stack.md
   - ../methods/vla.md
 ---

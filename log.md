@@ -1,5 +1,23 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-17] ingest | sources/sites/lejurobot.md、openlet-openatom.md、lingbot-vla.md、rhino-auto.md — 乐聚/OpenLET、LingBot-VLA 1.0、辉羲智能入库
+
+- wiki/entities/leju-robotics.md
+- wiki/entities/openlet.md
+- wiki/entities/lingbot-vla.md
+- wiki/entities/rhino-auto.md
+- wiki/methods/vla.md
+- wiki/entities/lingbot-vla-v2.md
+- sources/sites/lejurobot.md
+- sources/sites/openlet-openatom.md
+- sources/sites/rhino-auto.md
+- sources/sites/lingbot-vla-technology-robbant.md
+- sources/repos/lingbot-vla.md
+- sources/repos/openlet-let-base-dataset.md
+- sources/papers/lingbot_vla_arxiv_2601_18692.md
+- sources/papers/loco_manip_161_survey_152_lingbot-vla.md（修正 1.0 误链至 2.0）
+- schema/institutions.json（openatom、rhino-auto）
+
 ## [2026-07-17] ingest | sources/papers/fmpose3d_arxiv_2602_05755.md — FMPose3D Flow Matching 单目 3D 姿态；wiki/entities/paper-fmpose3d-monocular-3d-pose-flow-matching.md；交叉更新 motion-retargeting-pipeline
 
 - wiki/entities/paper-fmpose3d-monocular-3d-pose-flow-matching.md
