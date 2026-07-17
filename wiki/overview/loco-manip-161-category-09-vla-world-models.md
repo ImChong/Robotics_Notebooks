@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, humanoid, category-hub, survey]
 status: complete
-updated: 2026-07-02
+updated: 2026-07-17
 summary: "人形 Loco-Manip 161 篇 · 09 人形 VLA、世界模型与通用操作（15 篇）— 视觉、语言、动作和世界建模接到执行层。"
 related:
   - ./humanoid-loco-manip-161-papers-technology-map.md
@@ -39,7 +39,7 @@ sources:
 | 149 | Gemini Robotics | [paper-loco-manip-161-149-gemini-robotics](../entities/gemini-robotics.md) |
 | 150 | Genie Envisioner | [paper-loco-manip-161-150-genie-envisioner](../entities/ge-sim-2.md) |
 | 151 | LEGS | [paper-loco-manip-161-151-legs](../entities/paper-legs-embodied-gaussian-splatting-vla.md) |
-| 152 | LingBot-VLA | [LingBot-VLA 2.0](../entities/lingbot-vla-v2.md) |
+| 152 | LingBot-VLA | [LingBot-VLA](../entities/lingbot-vla.md)（1.0；[2.0](../entities/lingbot-vla-v2.md)） |
 | 153 | MetaWorld-X | [paper-loco-manip-161-153-metaworld-x](../entities/paper-hrl-stack-32-metaworld.md) |
 | 154 | OpenHLM | [paper-loco-manip-161-154-openhlm](../entities/paper-loco-manip-161-154-openhlm.md) |
 | 155 | PhysiFlow | [paper-loco-manip-161-155-physiflow](../entities/paper-loco-manip-161-155-physiflow.md) |

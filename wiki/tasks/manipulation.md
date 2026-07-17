@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-07-16
+updated: 2026-07-17
 related:
   - ../entities/paper-flying-knots.md
   - ../entities/paper-robustness-robotic-manipulation-survey.md

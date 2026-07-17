@@ -1,13 +1,75 @@
 {
   "generated_at": "2026-07-17",
-  "node_count": 1640,
-  "edge_count": 12907,
+  "node_count": 1644,
+  "edge_count": 12944,
   "coverage": {
-    "covered": 1593,
-    "total": 1623,
+    "covered": 1597,
+    "total": 1627,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/leju-robotics.md",
+      "detail_id": "entity-leju-robotics",
+      "label": "乐聚机器人（Leju Robotics）",
+      "type": "entity",
+      "recency": "2026-07-17",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/openlet.md",
+      "detail_id": "entity-openlet",
+      "label": "OpenLET 具身智能开源数据集社区",
+      "type": "entity",
+      "recency": "2026-07-17",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/lingbot-vla.md",
+      "detail_id": "entity-lingbot-vla",
+      "label": "LingBot-VLA",
+      "type": "entity",
+      "recency": "2026-07-17",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/rhino-auto.md",
+      "detail_id": "entity-rhino-auto",
+      "label": "辉羲智能（Rhino Auto）",
+      "type": "entity",
+      "recency": "2026-07-17",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-07-17",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/lingbot-vla-v2.md",
+      "detail_id": "entity-lingbot-vla-v2",
+      "label": "LingBot-VLA 2.0",
+      "type": "entity",
+      "recency": "2026-07-17",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-fmpose3d-monocular-3d-pose-flow-matching.md",
       "detail_id": "entity-paper-fmpose3d-monocular-3d-pose-flow-matching",
@@ -149,81 +211,21 @@
       "recency": "2026-07-16",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-bam-extended-friction-servo-actuators.md",
-      "detail_id": "entity-paper-bam-extended-friction-servo-actuators",
-      "label": "扩展摩擦模型：舵机物理仿真（BAM 论文）",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m.md",
-      "detail_id": "entity-paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m",
-      "label": "Learning Sim-to-Real Humanoid Locomotion in 15 Minutes",
-      "type": "entity",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "path": "wiki/methods/sac.md",
-      "detail_id": "wiki-methods-sac",
-      "label": "SAC（Soft Actor-Critic）",
-      "type": "method",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "path": "wiki/methods/ppo.md",
-      "detail_id": "wiki-methods-ppo",
-      "label": "PPO（Proximal Policy Optimization）",
-      "type": "method",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/policy-optimization.md",
-      "detail_id": "wiki-methods-policy-optimization",
-      "label": "Policy Optimization",
-      "type": "method",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "path": "wiki/tasks/locomotion.md",
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
-      "recency": "2026-07-16",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-fmpose3d-monocular-3d-pose-flow-matching.md",
-    "detail_id": "entity-paper-fmpose3d-monocular-3d-pose-flow-matching",
-    "label": "FMPose3D：Flow Matching 单目 3D 姿态估计",
+    "path": "wiki/entities/leju-robotics.md",
+    "detail_id": "entity-leju-robotics",
+    "label": "乐聚机器人（Leju Robotics）",
     "type": "entity",
     "recency": "2026-07-17",
     "source": "log.md",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "动作重定向（Motion Retargeting） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 276
+      "size": 278
     },
     {
       "label": "人形论文深读笔记",
@@ -235,7 +237,7 @@
     },
     {
       "label": "全身控制",
-      "size": 140
+      "size": 141
     },
     {
       "label": "仿真到现实",
@@ -266,7 +268,7 @@
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
-      "degree": 276,
+      "degree": 278,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
@@ -274,7 +276,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 269,
+      "degree": 271,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -282,7 +284,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 235,
+      "degree": 238,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {

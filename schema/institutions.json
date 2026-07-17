@@ -914,6 +914,18 @@
         "leju"
       ]
     },
+    "openatom": {
+      "label": "开放原子开源基金会（OpenAtom Foundation）",
+      "aliases": [
+        "openatom"
+      ]
+    },
+    "rhino-auto": {
+      "label": "辉羲智能（Rhino Auto）",
+      "aliases": [
+        "rhino-auto"
+      ]
+    },
     "tu-darmstadt": {
       "label": "达姆施塔特工业大学（TU Darmstadt）",
       "aliases": [
