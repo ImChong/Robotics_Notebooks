@@ -116,6 +116,8 @@ flowchart LR
 - [ContactMimic](../wiki/entities/paper-contactmimic.md) — 在 keypoint tracking 外显式跟踪 per-body 接触指令，G1 真机验证 contact controllability，无需任务专用奖励即可搬箱
 - [UHAS 统一手部动作空间](../wiki/methods/uhas-unified-hand-action-space.md) — 规范球几何形变动作表示 + 级联 IK，单一 PPO 策略跨 Allegro / LEAP / Shadow 零样本迁移
 - [FastGrasp](../wiki/entities/paper-fastgrasp-mobile-dexterous-grasping.md) — CVAE 点云抓取引导 + 全身 RL + 二值触觉反馈的移动高速灵巧抓取 sim2real
+- [TouchWorld](../wiki/entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md) — 预测–反应式触觉基础模型：触觉世界模型预测接触子目标 + TRT 高频残差，人形长程六任务真机成功率 65.0%（干净）/ 53.7%（人为扰动）
+- [REGRIND](../wiki/methods/regrind-retargeting-guided-rl.md) — 单次人手–物体动捕重定向 + 残差 RL 跟踪物体关键点，零样本部署 LEAP/WUJI 完成剪刀、螺丝刀等 contact-rich 工具操作
 - Luo et al., *DEFT: Dexterous Fine-Grained Manipulation Transformer* (2024)
 
 ### 推荐做什么

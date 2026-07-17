@@ -86,6 +86,7 @@ flowchart LR
 - [τ₀-World Model（τ0-WM）](../wiki/entities/tau0-world-model.md)（本仓库）— 联合预测 + 测试时修订的对照实例
 - [PhysisForcing](../wiki/entities/paper-physisforcing.md)（本仓库）— 训练期分层物理对齐（像素级轨迹 + 语义级 token 关系），推理零额外开销："视频保真 ≠ 物理可信"的正面解法
 - [PhysMani](../wiki/entities/paper-physmani-dynamic-manipulation-world-model.md)（本仓库）— 在线学习的无散度 3D Gaussian 速度场世界模型与 future-aware 策略并行耦合，面向快速动态目标操作（ECCV 2026）
+- [Xiaomi-Robotics-U0](../wiki/entities/xiaomi-robotics-u0.md)（本仓库）— 38B 统一自回归世界基础模型：T2I/X2I 与多视角具身场景生成/迁移/操纵视频共训，不内置策略头，作为下游 VLA 的合成数据引擎——「视觉逼真≠动作可推断」的直接例证
 
 ### 学完输出什么
 - 能解释"视频保真度高"为何不等于"动作可推断 / 可闭环"
@@ -113,6 +114,7 @@ flowchart LR
 ### 推荐读什么
 - [DeFI（解耦动力学 VLA）](../wiki/methods/defi-decoupled-dynamics-vla.md)（本仓库）
 - [World Action Models](../wiki/concepts/world-action-models.md) 中 Cascaded 小节（本仓库）
+- [Being-M0.7（人形潜空间 World–Action Model）](../wiki/entities/paper-being-m07-humanoid-latent-wam.md)（本仓库）— Cascaded WAM 人形实例：人中心 video-motion 先验预训练 + future-conditioned action expert，G1 真机 loco-manipulation 显著超 GR00T-N1.6
 - [动作后果技术地图](../wiki/overview/robot-world-models-action-consequence-technology-map.md)（本仓库）— 与 Joint / 部署横切对照
 
 ### 学完输出什么
@@ -142,6 +144,8 @@ flowchart LR
 - [DiT4DiT（双 DiT 联合 VAM）](../wiki/entities/paper-dit4dit-video-action-model.md)（本仓库）
 - [MotionWAM（人形 loco-manip · 实时 WAM）](../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md)（本仓库）
 - [ABot-M0.5（移动操作 · latent action + Dream Forcing）](../wiki/entities/paper-abot-m05-mobile-manipulation-wam.md)（本仓库）
+- [Dexmal DW05（OpenDW）](../wiki/entities/dexmal-dw05.md)（本仓库）— Wan 骨干 + MoT 三专家头联合视频/动作/价值的开源 Joint WAM，含训练/推理全栈与 RoboTwin 2.0 微调评测包
+- [Lumo-2（Latent World-Action Model）](../wiki/entities/lumo-2.md)（本仓库）— Qwen3.5-4B 潜空间世界–动作模型，三阶段渐进模态预对齐 + BAR 块解码，真机 22 项挑战全面超 π₀.₅/Fast-WAM
 - [Pelican-Unified 1.0](../wiki/methods/pelican-unified-1.md)、[Kairos](../wiki/entities/paper-kairos-native-world-model-stack.md)（本仓库）
 - [Cosmos 3](../wiki/entities/cosmos-3.md)（本仓库）— 平台级 Joint / 多任务 I/O 对照
 
@@ -187,7 +191,7 @@ flowchart LR
 
 **方向 A：人–机数据与世界监督目标**
 - 野外 egocentric 人数据如何与机器人遥操作共训；世界预测目标（Pixel / DINO / 3D flow）如何改变具身差距下的增益
-- 关键词：[EgoWAM](../wiki/entities/paper-egowam-egocentric-human-wam-co-training.md)、[模仿学习纵深](depth-imitation-learning.md)
+- 关键词：[EgoWAM](../wiki/entities/paper-egowam-egocentric-human-wam-co-training.md)、[WAM-TTT（人视频测试时训练 steering）](../wiki/entities/paper-wam-ttt-human-video-test-time-steering.md)、[模仿学习纵深](depth-imitation-learning.md)
 
 **方向 B：导航与空间决策中的 WAM**
 - image-goal / 空中 VLN 上的 Joint 或自回归 WAM；与经典 VLN / 导航 VLA 的接口

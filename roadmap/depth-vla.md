@@ -117,6 +117,7 @@ flowchart LR
 - [π0](../wiki/methods/π0-policy.md) 与 [π0.7](../wiki/methods/pi07-policy.md)（本仓库）
 - [SayCan](../wiki/methods/saycan.md) 与 [DIAL 指令增强](../wiki/methods/dial-instruction-augmentation.md)（本仓库）
 - [InternVLA-A1.5](../wiki/entities/paper-internvla-a15-unified-vla.md)（本仓库）— 2026 主线前沿对照：统一理解 + 潜式前瞻 + flow matching 动作的单一 MoT 框架，组合泛化与长程执行显著超 π₀.₅
+- [LingBot-VLA](../wiki/entities/lingbot-vla.md)（本仓库）— Qwen2.5-VL-3B + flow 动作头，2 万小时双臂真机预训练；开源 4B 权重与 LeRobot v3.0 后训练栈，RoboTwin 仿真领先 π₀.₅
 
 ### 学完输出什么
 - 能画出典型 VLA 的三段式结构（视觉编码 → 语义 backbone → 动作专家）并说清各家差异
@@ -146,6 +147,7 @@ flowchart LR
 - [EgoScale](../wiki/methods/egoscale.md)、[HumanNet](../wiki/entities/humannet.md)、[mimic-video](../wiki/methods/mimic-video.md)（本仓库）
 - [World Action Models（WAM）](../wiki/concepts/world-action-models.md) 与 [Pelican-Unified 1.0](../wiki/methods/pelican-unified-1.md)（本仓库）
 - [DeFI](../wiki/methods/defi-decoupled-dynamics-vla.md) 与 [具身 Scaling Laws](../wiki/concepts/embodied-scaling-laws.md)（本仓库）
+- [Xiaomi-Robotics-1](../wiki/entities/xiaomi-robotics-1.md)（本仓库）— 10 万小时 embodiment-free UMI 预训练 + 跨本体后训练，验证数据/模型规模双向可预测 scaling，预训练收益直接迁移到未见环境开箱成功率
 
 ### 学完输出什么
 - 能说清 VLA 数据金字塔（真机演示 / 仿真 / 人类视频 / 互联网视频）各层的作用与代价
@@ -175,6 +177,8 @@ flowchart LR
 - [具身模型延迟–泛化权衡](../wiki/concepts/embodied-fm-latency-generalization-tradeoff.md)（本仓库）
 - [Evo-1](../wiki/entities/paper-evo1-lightweight-vla.md)（本仓库）— 0.77B 轻量 VLA：两阶段训练保持 VLM 语义对齐，消费级 GPU 2.3 GB / 16.4 Hz，边缘侧选型的代表样本
 - [行为树 VLA 编排](../wiki/concepts/behavior-tree-vla-orchestration.md)（本仓库）
+- [EventVLA](../wiki/entities/paper-eventvla-visual-evidence-memory.md)（本仓库）— 稀疏视觉证据记忆端到端 VLA，用基础锚点 + 前瞻式关键帧预测解决长程操作的记忆瓶颈，是行为树编排之外的模型内记忆路线
+- [RoboTTT](../wiki/entities/paper-robottt-test-time-training-vla-context.md)（本仓库）— 在 VLA 层内嵌测试时训练，将 visuomotor 上下文压缩进固定大小 fast weights，扩到约 8K 步且支持部署后在线自纠偏
 - [Query：操作 VLA 架构选型](../wiki/queries/manipulation-vla-architecture-selection.md)（本仓库）
 
 ### 学完输出什么
