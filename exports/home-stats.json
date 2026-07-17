@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-17",
   "node_count": 1639,
-  "edge_count": 12900,
+  "edge_count": 12902,
   "coverage": {
     "covered": 1592,
     "total": 1622,
@@ -222,11 +222,11 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 297
+      "size": 276
     },
     {
       "label": "人形论文深读笔记",
-      "size": 176
+      "size": 179
     },
     {
       "label": "移动操作",
@@ -242,7 +242,7 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 91
+      "size": 105
     }
   ],
   "top_hubs": [
@@ -317,7 +317,8 @@
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
       "degree": 171,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     }
   ],
   "top_paper_hubs": [
@@ -380,7 +381,8 @@
       "label": "TWIST2",
       "type": "entity",
       "degree": 35,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
