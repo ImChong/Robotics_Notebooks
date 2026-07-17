@@ -24,8 +24,8 @@
 
 ## P0: 自动化与工具链深度强化 (Engineering)
 
-- [ ] **评测基准页交叉链路巡检 V1**：
-    - [ ] `scripts/lint_wiki.py` 新增 `_check_eval_benchmark_crosslink`：对 `tags` 含 `benchmark` / `evaluation`（子串匹配派生标签）的 `entities/` / `comparisons/` / `concepts/` 页，检查正文是否回链到「具身大模型评测基准选型闭环」专题枢纽（`embodied-eval-benchmark-selection-loop` / `topic-embodied-eval-benchmark`，缺失给 INFO 级 `eval_benchmark_crosslink` 提示，不阻塞 CI），枢纽页自身豁免；写入 lint 报告基线快照（`exports/lint-report.md`）；新增 `tests/test_lint_wiki_eval_benchmark_crosslink.py` 用例覆盖（列表式/内联式 tag、有/无回链、双枢纽、枢纽豁免、INFO 不计失败）。
+- [x] **评测基准页交叉链路巡检 V1**：
+    - [x] `scripts/lint_wiki.py` 新增 `_check_eval_benchmark_crosslink`：对 `tags` 含 `benchmark` / `evaluation`（子串匹配派生标签）的 `entities/` / `comparisons/` / `concepts/` 页，检查正文是否回链到「具身大模型评测基准选型闭环」专题枢纽（`embodied-eval-benchmark-selection-loop` / `topic-embodied-eval-benchmark`，缺失给 INFO 级 `eval_benchmark_crosslink` 提示，不阻塞 CI），枢纽页自身豁免；写入 lint 报告基线快照（`exports/lint-report.md`）；新增 `tests/test_lint_wiki_eval_benchmark_crosslink.py` 用例覆盖（列表式/内联式 tag、有/无回链、双枢纽、枢纽豁免、INFO 不计失败）。（已落地：新增 `eval_benchmark_crosslink` INFO 键并接入 `INFO_ONLY_KEYS`/`_empty_results`/runner/报告段；`lint_wiki.py --report` 0 errors、新段基线 20 页；9 条新用例 + 全量 82 条 lint_wiki 用例通过；ruff check/format 通过）
 
 ## P1: 具身大模型评测基准选型闭环知识链专题 (Quality)
 
