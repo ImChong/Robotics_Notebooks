@@ -50,6 +50,7 @@ flowchart LR
 - [LQR](../wiki/formalizations/lqr.md)
 - [Modern Robotics 教材](../wiki/entities/modern-robotics-book.md) — Chapter 8（动力学）
 - [Query：Pinocchio 快速上手](../wiki/queries/pinocchio-quick-start.md)
+- [建模与求解（控制问题框架）](../wiki/concepts/modeling-and-solving-for-control.md) — 先确定状态/输入/动力学与约束，再选 QP/MPC/iLQR/RL 等求解器，是 Model-based 与 Learning-based 的共同上游
 
 ### 推荐做什么
 - 用 [Pinocchio](../wiki/entities/pinocchio.md) 加载一个人形 URDF，计算质心、惯量矩阵和重力项
@@ -73,6 +74,7 @@ flowchart LR
 - [ZMP-LIP 形式化](../wiki/formalizations/zmp-lip.md)
 - [Capture Point / DCM](../wiki/concepts/capture-point-dcm.md)
 - [Locomotion 任务地图](../wiki/tasks/locomotion.md) 与 [Footstep Planning](../wiki/concepts/footstep-planning.md)
+- [SLIP + VMC（弹簧负载倒立摆与虚拟模型控制）](../wiki/methods/slip-vmc.md) — LIP 之后、WBC 之前的中间简化层：弹簧腿近似支撑相 + 虚拟阻抗力映射到关节力矩
 - Kajita et al., *Biped Walking Pattern Generation by using Preview Control of ZMP* (2003)
 
 ### 推荐做什么
@@ -119,6 +121,8 @@ flowchart LR
 ### 推荐读什么
 - [Model Predictive Control (MPC)](../wiki/methods/model-predictive-control.md)
 - [Nonlinear MPC](../wiki/methods/nonlinear-model-predictive-control.md)
+- [SRBD + 凸 MPC + WBC](../wiki/concepts/srbd-convex-mpc-wbc.md) — 单刚体近似质心运动的凸 MPC 分层架构，人形实时行走的工程主流折中
+- [Centroidal NMPC + WBC 栈](../wiki/methods/centroidal-nmpc-wbc-stack.md) — 质心动力学 + 非线性 MPC，比凸 SRBD-MPC 更高保真的传统控制顶层
 - [LQR / iLQR](../wiki/methods/lqr-ilqr.md)
 - [MPC vs RL](../wiki/comparisons/mpc-vs-rl.md)
 - [Query：MPC 求解器选型](../wiki/queries/mpc-solver-selection.md) 与 [Query：MPC 调参指南](../wiki/queries/mpc-tuning-guide.md)

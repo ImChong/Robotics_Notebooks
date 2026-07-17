@@ -171,6 +171,7 @@ flowchart LR
 - [电机驱动器底软通信协议总览](../wiki/overview/motor-drive-firmware-bus-protocols.md)
 - [Query：EtherCAT 主站优化指南](../wiki/queries/ethercat-master-optimization.md) 与 [Query：实时运控中间件配置指南](../wiki/queries/real-time-control-middleware-guide.md)
 - [Actuator Network（执行器网络）](../wiki/methods/actuator-network.md)、[Implicit/Explicit 执行器建模](../wiki/concepts/implicit-explicit-actuator-modeling.md)、[Armature Modeling（电枢惯量建模）](../wiki/concepts/armature-modeling.md) — 台架数据回馈仿真的三条路
+- [NeuralActuator](../wiki/entities/paper-neuralactuator-neural-actuation-modeling.md) — Transformer 执行器模型联合预测可微仿真 torque surrogate 与无 F/T 传感器外力估计，低成本舵机平台上力估计误差降至 0.12 N，可作台架数据回馈仿真的第四条路
 - [Query：主流人形机器人硬件对比](../wiki/queries/hardware-comparison.md) — 对照商用模组的验收指标定位自己的水平
 
 ### 推荐做什么

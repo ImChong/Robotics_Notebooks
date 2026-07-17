@@ -49,6 +49,7 @@ flowchart LR
 - [Privileged Training](../wiki/concepts/privileged-training.md)
 - [Curriculum Learning](../wiki/concepts/curriculum-learning.md)
 - [ANYmal](../wiki/entities/anymal.md) — RSL 盲走与野外行走工作线
+- [DreamWaQ](../wiki/methods/dreamwaq.md) — CENet 从本体历史想象隐式地形并估计体速，无外感知单阶段 PPO 盲走基线
 
 ### 推荐做什么
 - 在 legged_gym / Isaac Lab 里用课程学习训一个能过粗糙地形的盲走策略
@@ -70,6 +71,7 @@ flowchart LR
 ### 推荐读什么
 - [Terrain Latent Representation](../wiki/concepts/terrain-latent-representation.md)
 - [AME：注意力高程图编码](../wiki/entities/paper-ame-attention-based-map-encoding.md) 与 [AME-2 深读笔记](../wiki/entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md) — CNN + 本体条件 MHA 聚焦下一落脚可行区域，ANYmal-D 与 GR-1 上验证稀疏地形泛化与可解释注意力
+- [Attention 落足点优化](../wiki/methods/attention-foot-placement.md) — 在感知地形表示上用注意力机制选择可行走区域的方法主题页，AME 为其代表实现
 - [Sensor Fusion](../wiki/concepts/sensor-fusion.md)
 - [State Estimation](../wiki/concepts/state-estimation.md)
 - [LiDAR SLAM / LIO / VIO 选型](../wiki/comparisons/lidar-slam-lio-vio-selection.md)
@@ -98,6 +100,8 @@ flowchart LR
 - [InfiniteDiffusion / Terrain Diffusion](../wiki/entities/paper-infinite-diffusion-terrain-diffusion.md) — 学习式程序化地形的生成侧新工具（SIGGRAPH 2026，无界流式生成）
 - [Domain Randomization](../wiki/concepts/domain-randomization.md)
 - [DreamWaQ++](../wiki/entities/dreamwaq-plus.md)
+- [PIE：感知一阶段鲁棒行走](../wiki/methods/pie-perceptive-locomotion.md) — 单阶段视觉跑酷框架，深度图+本体经多头估计器输出显式高度图与隐式环境表征，与两阶段 teacher-student 路线对照
+- [Teacher-Student 与 DAgger 训练](../wiki/methods/teacher-student-dagger-training.md) — 特权教师蒸馏可部署学生的通用范式，本 Stage teacher-student 感知策略路线的方法页
 - Miki et al., *Learning Robust Perceptive Locomotion for Quadrupedal Robots in the Wild* (2022)
 
 ### 推荐做什么

@@ -84,6 +84,7 @@ flowchart LR
 - [SLAM Toolbox](../wiki/entities/slam-toolbox.md)、[Cartographer](../wiki/entities/cartographer.md)、[FAST-LIO](../wiki/entities/fast-lio.md)、[ORB-SLAM3](../wiki/entities/orb-slam3.md)（本仓库）
 - [State Estimation](../wiki/concepts/state-estimation.md) 与 [Sensor Fusion](../wiki/concepts/sensor-fusion.md)（本仓库）
 - [Ultra-Fusion](../wiki/entities/paper-ultra-fusion-multi-sensor-slam.md)（本仓库）— 韧性多传感器融合前沿
+- [CO-Calib](../wiki/entities/paper-co-calib-multi-fisheye-calibration.md)（本仓库）— 多鱼眼标定 failure-oriented 分析：可观测性引导选帧将 Kalibr 类管线成功率 68.1%→99.3%，多相机 VIO/SLAM 外参标定的前置工具
 
 ### 学完输出什么
 - 能为给定平台（室内 AMR / 野外四足 / 手持建图）选出合理的 SLAM 配置
@@ -142,6 +143,7 @@ flowchart LR
 - [分层四足导航栈](../wiki/concepts/hierarchical-quadruped-navigation-stack.md) 与 [HiPAN](../wiki/methods/hipan.md)（本仓库）
 - [NoMaD](../wiki/entities/paper-notebook-nomad-goal-masked-diffusion-policies-for-navigat.md) 与 [NavDP](../wiki/entities/paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md)（本仓库）
 - [EgoNav](../wiki/entities/paper-notebook-egonav.md)、[LookOut](../wiki/entities/paper-notebook-lookout.md)、[FocusNav](../wiki/entities/paper-notebook-focusnav.md)（本仓库）— 人形导航深读锚点
+- [SRU](../wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md)（本仓库）— 给 RNN 补空间配准能力的循环单元，端到端 RL 无地图导航，Unitree B2W 真机零样本 50–120 m 长程目标导航
 - [Paper Notebooks · Navigation 分类](../wiki/overview/paper-notebook-category-08-navigation.md)（本仓库）— 深读论文全景入口
 
 ### 学完输出什么
@@ -199,7 +201,7 @@ flowchart LR
 
 **方向 D：导航世界模型与新载体**
 - 用 WAM 联合预测未来观测与动作；空中 VLN 等新设定
-- 关键词：[NavWAM](../wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md)、[WorldVLN](../wiki/entities/paper-worldvln-aerial-vln-wam.md)、[社会导航](../wiki/entities/paper-notebook-learning-social-navigation-from-positive-and-neg.md)
+- 关键词：[NavWAM](../wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md)、[WorldVLN](../wiki/entities/paper-worldvln-aerial-vln-wam.md)、[PanoWorld（真实世界全景可控生成）](../wiki/entities/paper-panoworld-real-world-panoramic-generation.md)、[社会导航](../wiki/entities/paper-notebook-learning-social-navigation-from-positive-and-neg.md)
 
 ---
 

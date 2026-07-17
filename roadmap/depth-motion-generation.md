@@ -174,6 +174,7 @@ flowchart LR
 - [Learning Whole-Body Humanoid Locomotion](../wiki/entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md) 与 [Heracles](../wiki/entities/paper-heracles-humanoid-diffusion.md)（本仓库）— 扩散规划与恢复中间件
 - [OMG](../wiki/entities/paper-omg-omni-modal-humanoid-control.md) 与 [MotionBricks](../wiki/methods/motionbricks.md)（本仓库）— 多模态接口与实时基元
 - [GPC](../wiki/entities/paper-gpc-generative-pretrained-controllers.md)（本仓库）— token 化生成控制器
+- [Muninn](../wiki/entities/paper-muninn-trajectory-diffusion-acceleration.md)（本仓库）— training-free 轨迹扩散缓存加速：probe 稳定性 + conformal 标定偏差预算，最高约 4.6× 墙钟加速且可证轨迹偏离界，可直接叠在现有扩散规划器 / Diffusion Policy 上
 
 ### 学完输出什么
 - 能为"生成器 + 跟踪器"耦合系统设计训练与部署方案（含延迟预算）

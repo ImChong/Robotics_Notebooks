@@ -53,6 +53,7 @@ flowchart LR
 - [Motion Retargeting](../wiki/concepts/motion-retargeting.md)（本仓库）— 概念主入口
 - [动作重定向专题汇总](../wiki/overview/topic-motion-retargeting.md)（本仓库）
 - [Character Animation vs Robotics](../wiki/concepts/character-animation-vs-robotics.md)（本仓库）— 两界评价标准差异
+- [运动学可行与动力学可行](../wiki/concepts/kinematic-vs-dynamic-feasibility.md)（本仓库）— 「能摆出这个姿势」≠「站得住、跟得上」，与本页动画/机器人评价线差异同源
 - [Motion Retargeting Pipeline](../wiki/concepts/motion-retargeting-pipeline.md)（本仓库）— 管线定位
 
 ### 学完输出什么
@@ -110,6 +111,7 @@ flowchart LR
 - [AMASS](../wiki/entities/amass.md) 与 [LAFAN1](../wiki/entities/lafan1-dataset.md)（本仓库）— 动捕数据基座
 - [人形参考动作数据集对比](../wiki/comparisons/humanoid-reference-motion-datasets.md)（本仓库）— 选型主入口
 - [GVHMR](../wiki/entities/gvhmr.md)、[SAM 3D Body](../wiki/entities/sam-3d-body.md)、[FreeMoCap](../wiki/entities/freemocap.md)（本仓库）— 视频/低成本采集
+- [FMPose3D](../wiki/entities/paper-fmpose3d-monocular-3d-pose-flow-matching.md)（本仓库）— 条件 Flow Matching 单目 2D→3D 姿态提升，3 步 ODE 多假设 + RPEA 聚合，可作视频→稀疏 3D 骨架的轻量上游
 - [PEAR](../wiki/entities/paper-pear-pixel-aligned-expressive-hmr.md) 与 [ViDiHand](../wiki/entities/paper-vidihand.md)（本仓库）— 表达级数据源前沿：单图 SMPL-X 身/脸/手 >100 FPS 实时恢复（SIGGRAPH 2026）与 egocentric 双手 4D 视频扩散估计
 - [Motion Data Quality](../wiki/concepts/motion-data-quality.md) 与 [LiMMT / GQS 动作数据整编](../wiki/methods/limmt-gqs-motion-curation.md)（本仓库）— 质量量化
 
