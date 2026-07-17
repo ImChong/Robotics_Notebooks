@@ -49,7 +49,7 @@ tags: [paper, repo, diffusion, trajectory-planning, inference-acceleration, offl
 - **与训练期加速正交**：可与 **蒸馏少步采样器、窄网络** 叠加（论文 DP3 实验）；适合「已有大教师、先要实时」的工程路径。
 - **开源可复现**：[`gokulp01/Muninn`](https://github.com/gokulp01/Muninn) 提供 `muninn` 核心包与 **~90 行 Diffuser 适配器**，覆盖 calibrate → eta 选择 → eval 全管线。
 
-## 核心结构
+## 核心结构与方法栈
 
 | 模块 | 作用 |
 |------|------|
@@ -80,7 +80,7 @@ flowchart TB
   C --> online
 ```
 
-### 评测覆盖（索引级）
+## 评测覆盖（索引级）
 
 | 家族 | 代表模型 | 主要指标 |
 |------|----------|----------|

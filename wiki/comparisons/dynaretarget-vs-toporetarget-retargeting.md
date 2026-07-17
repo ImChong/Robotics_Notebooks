@@ -148,6 +148,7 @@ flowchart TD
 - [DynaRetarget / SBTO（增量采样式动力学重定向）](../methods/dynaretarget-sbto-motion-retargeting.md) — 动力学层方法细节。
 - [TopoRetarget（交互保留灵巧重定向）](../methods/toporetarget-interaction-preserving-dexterous-retargeting.md) — 运动学层方法细节。
 - [SPIDER（物理感知采样式灵巧重定向）](../methods/spider-physics-informed-dexterous-retargeting.md) — 短视距 SBMPC 对照基线。
+- [REGRIND（重定向引导灵巧操作 RL）](../methods/regrind-retargeting-guided-rl.md) — 同族 interaction mesh 重定向 + 残差 RL 的极简配方，论文含与 SPIDER / DexMachina 的剪刀·螺丝刀真机对照。
 - [OmniRetarget（人形交互保留重定向）](../entities/paper-hrl-stack-03-omniretarget.md) — 共享的 kinematic 参考数据源与对比基线。
 - [Loco-Manipulation（移动操作）](../tasks/loco-manipulation.md) — DynaRetarget 任务域。
 - [Manipulation（操作）](../tasks/manipulation.md) — TopoRetarget 任务域。

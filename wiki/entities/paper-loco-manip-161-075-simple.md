@@ -99,7 +99,7 @@ flowchart TB
 1. **运动规划（自动化）：** 物体落稳 → BoDex 合成抓取 → CuRobo 双臂轨迹 + 脚本化底座移动；无需操作员，但 demos/hr 较低。
 2. **VR 遥操作（人类）：** PICO XR egocentric 双目流；手部 IK retarget，平衡/locomotion 由 tracking policy 托管；仿真内遥操作最快且可无限离线 replay 渲染。
 
-### 三级评测协议（L0 / L1 / L2）
+## 评测：三级协议（L0 / L1 / L2）
 
 - 对训练环境施加 **渐进 OOD 域随机化**（视觉、布局、动力学扰动等，详见论文 Sec.4）。
 - 每任务 **10** 次 rollout 报成功次数；项目页以 `L0 / L1 / L2` 三列展示。
