@@ -130,6 +130,7 @@ flowchart TD
 - [DAgger](../methods/dagger.md)
 - [VLA](../methods/vla.md)
 - [mimic-video（Video-Action Model）](../methods/mimic-video.md) — 视频潜计划 + 轻量动作解码器的操作学习路线
+- [mimic hand M1](../entities/mimic-hand-m1.md) — mimic 产业 AI-first 腱驱动手（15+6 DoF，>25 kg 抓握）
 - [τ₀-World Model（τ0-WM）](../entities/tau0-world-model.md) — 5B 统一视频–动作世界模型与测试时后果评估
 - [Dexmal DW05（OpenDW）](../entities/dexmal-dw05.md) — Wan+MoT 联合视频/动作/价值；开源 Base 与 RoboTwin SFT 权重
 - [DeFI（解耦前向/逆动力学 VLA）](../methods/defi-decoupled-dynamics-vla.md) — 混合视频前向 + 自监督逆向预训练的操作策略
