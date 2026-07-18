@@ -1632,6 +1632,8 @@
 - [路线（纵深）：如果目标是 BFM（人形行为基础模型）](roadmap/depth-bfm.md) — 摘要**：面向"想用一个 checkpoint 控住人形全身"的纵深路线，从 RL locomotion 与动捕数据基座、动作跟踪谱系（DeepMimic → ASE → PHC → Masked `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是传统模型控制（LIP/ZMP → MPC → WBC）](roadmap/depth-classical-control.md) — 摘要**：面向"想用基于模型的传统控制栈驱动人形机器人"的纵深路线，从简化模型（LIP/ZMP）到 Centroidal 轨迹优化、MPC，再到 TSID/WBC 与真机状态估计，按 Stage  `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是接触丰富的操作任务](roadmap/depth-contact-manipulation.md) — 摘要**：面向"装配、拧螺丝、插拔等需要精细接触"的操作任务的纵深路线，按 Stage 0–3 串通从阻抗控制到 ACT / Diffusion Policy 的核心方法；本路线是 [运动控制主路 `📅unknown` `[roadmap_page]`
+- [路线（纵深）：如果目标是人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](roadmap/depth-humanoid-boxing.md) — 摘要**：面向"让两台人形机器人在擂台上像人一样对打"的纵深路线，从对抗全身任务的问题定义与自主 / 遥操作两条产品路线出发，经拳击 MoCap 的全身跟踪基座、技能蒸馏到潜空间动作流形，再到两玩 `📅unknown` `[roadmap_page]`
+- [路线（纵深）：如果目标是人形足球（全向行走 → 感知踢球 → 多机战术）](roadmap/depth-humanoid-soccer.md) — 摘要**：面向"让人形机器人追球、射门、打整场比赛"的纵深路线，从 RoboCup 任务全景与感知–决策–运动的耦合问题出发，经参数化全向行走与跌倒恢复的运动基座、球/场地/对手的机载感知，到闭环 `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是模仿学习与技能迁移](roadmap/depth-imitation-learning.md) — 摘要**：面向"从人类演示数据让机器人学习技能"的纵深路线，从时序建模基础到 ASE / Diffusion Policy，按 Stage 0–6 串通核心方法；本路线是 [运动控制主路线](mo `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是 Loco-Manipulation（移动操作）](roadmap/depth-loco-manipulation.md) — 摘要**：面向"让机器人边走边动手（搬箱、开门、端托盘）"的纵深路线，从行走与操作的全身耦合问题出发，经全身控制基座、遥操作与数据采集、全身技能学习，到统一生成式模型与导航–操作联合，按 Stag `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是动作生成（文本/多模态 → 人形动作）](roadmap/depth-motion-generation.md) — 摘要**：面向"想用生成模型造出人体/人形动作"的纵深路线，从生成模型基础（扩散 / 流匹配）与动作表示、文本-动作数据集，到生成骨干主线（MDM 式扩散 → 可控生成 → HY-Motion / `📅unknown` `[roadmap_page]`

@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-18",
-  "node_count": 1678,
-  "edge_count": 13260,
+  "node_count": 1680,
+  "edge_count": 13371,
   "coverage": {
     "covered": 1631,
     "total": 1661,
@@ -16,7 +16,7 @@
       "recency": "2026-07-18",
       "source": "log.md",
       "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/overview/motor-design-workflow.md",
@@ -26,7 +26,7 @@
       "recency": "2026-07-18",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/overview/humanoid-actuator-102-technology-map.md",
@@ -36,7 +36,7 @@
       "recency": "2026-07-18",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/concepts/field-oriented-control.md",
@@ -47,7 +47,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/comparisons/robot-control-eight-paradigms-taxonomy.md",
@@ -218,7 +218,7 @@
     "recency": "2026-07-18",
     "source": "log.md",
     "action": "added",
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
   },
   "top_communities": [
     {
@@ -227,23 +227,23 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 177
+      "size": 179
     },
     {
       "label": "移动操作",
-      "size": 167
-    },
-    {
-      "label": "全身控制",
-      "size": 151
-    },
-    {
-      "label": "仿真到现实",
-      "size": 148
+      "size": 176
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 139
+      "size": 171
+    },
+    {
+      "label": "全身控制",
+      "size": 163
+    },
+    {
+      "label": "仿真到现实",
+      "size": 90
     }
   ],
   "top_hubs": [
@@ -289,7 +289,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 235,
+      "degree": 236,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
@@ -297,7 +297,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 232
+      "degree": 233
     },
     {
       "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",
@@ -317,9 +317,8 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 175,
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "degree": 176,
+      "has_repo": true
     }
   ],
   "top_paper_hubs": [
@@ -335,7 +334,8 @@
       "label": "BeyondMimic",
       "type": "method",
       "degree": 53,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",
@@ -356,7 +356,8 @@
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
-      "degree": 44
+      "degree": 45,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
