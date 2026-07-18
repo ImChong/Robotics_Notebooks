@@ -1,9 +1,19 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
-## [2026-07-18] fix(actions): 为 depth-perceptive-locomotion 社区补 COMMUNITY_NAME_OVERRIDES，修复 test_community_naming
+## [2026-07-18] structural | scripts/utils/community_labels.py — 补 roadmap/depth-perceptive-locomotion.md 社区名 override，修复 pytest 社区命名测试
 
 - scripts/utils/community_labels.py
-- exports/link-graph.json、docs/exports/link-graph.json
+
+## [2026-07-18] ingest | sources/sites/kicad-org.md + sources/courses/kicad_docs_10_zh.md + sources/repos/kicad.md — 接入 KiCad 开源 EDA；wiki/entities/kicad.md；交叉更新 depth-torque-motor-design Stage 4、humanoid-hardware-101-power-compute-electronics、simplefoc
+
+- sources/sites/kicad-org.md
+- sources/courses/kicad_docs_10_zh.md
+- sources/repos/kicad.md
+- wiki/entities/kicad.md
+- wiki/overview/humanoid-hardware-101-power-compute-electronics.md
+- wiki/entities/simplefoc.md
+- roadmap/depth-torque-motor-design.md
+- schema/institutions.json
 
 ## [2026-07-18] ingest | sources/sites/altium-designer-primary-refs.md — Altium Designer 官方文档一手资料；升格 wiki/entities/altium-designer.md
 
