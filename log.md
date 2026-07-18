@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-18] structural | scripts/utils/community_labels.py — 补 roadmap/depth-perceptive-locomotion.md 社区名 override，修复 pytest 社区命名测试
+
 ## [2026-07-18] ingest | sources/sites/kicad-org.md + sources/courses/kicad_docs_10_zh.md + sources/repos/kicad.md — 接入 KiCad 开源 EDA；wiki/entities/kicad.md；交叉更新 depth-torque-motor-design Stage 4、humanoid-hardware-101-power-compute-electronics、simplefoc
 
 - sources/sites/kicad-org.md
