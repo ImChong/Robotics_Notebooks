@@ -1,13 +1,55 @@
 {
   "generated_at": "2026-07-18",
-  "node_count": 1680,
-  "edge_count": 13371,
+  "node_count": 1681,
+  "edge_count": 13385,
   "coverage": {
-    "covered": 1631,
-    "total": 1661,
+    "covered": 1632,
+    "total": 1662,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/tasks/humanoid-soccer.md",
+      "detail_id": "wiki-tasks-humanoid-soccer",
+      "label": "Humanoid Soccer",
+      "type": "task",
+      "recency": "2026-07-18",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/kicad.md",
+      "detail_id": "entity-kicad",
+      "label": "KiCad（开源 PCB 与原理图 EDA）",
+      "type": "entity",
+      "recency": "2026-07-18",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/overview/humanoid-hardware-101-power-compute-electronics.md",
+      "detail_id": "wiki-overview-humanoid-hardware-101-power-compute-electronics",
+      "label": "Humanoid Hardware 101 · 05：能源与计算电子",
+      "type": "overview",
+      "recency": "2026-07-18",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/simplefoc.md",
+      "detail_id": "entity-simplefoc",
+      "label": "SimpleFOC（Arduino-FOC 生态）",
+      "type": "entity",
+      "recency": "2026-07-18",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
     {
       "path": "wiki/entities/altium-designer.md",
       "detail_id": "entity-altium-designer",
@@ -168,57 +210,17 @@
       "source": "log.md",
       "action": "added",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/methods/feedback-linearization-control.md",
-      "detail_id": "wiki-methods-feedback-linearization-control",
-      "label": "Feedback Linearization Control（反馈线性化控制）",
-      "type": "method",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/methods/sliding-mode-control.md",
-      "detail_id": "wiki-methods-sliding-mode-control",
-      "label": "Sliding Mode Control（滑模控制，SMC）",
-      "type": "method",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/methods/h-infinity-control.md",
-      "detail_id": "wiki-methods-h-infinity-control",
-      "label": "H-infinity Control（H∞ 控制）",
-      "type": "method",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/methods/mu-synthesis-control.md",
-      "detail_id": "wiki-methods-mu-synthesis-control",
-      "label": "Mu Synthesis Control（μ 综合控制）",
-      "type": "method",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/altium-designer.md",
-    "detail_id": "entity-altium-designer",
-    "label": "Altium Designer",
-    "type": "entity",
+    "path": "wiki/tasks/humanoid-soccer.md",
+    "detail_id": "wiki-tasks-humanoid-soccer",
+    "label": "Humanoid Soccer",
+    "type": "task",
     "recency": "2026-07-18",
     "source": "log.md",
-    "action": "added",
-    "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    "action": "maintained",
+    "has_repo": true
   },
   "top_communities": [
     {

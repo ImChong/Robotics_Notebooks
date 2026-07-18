@@ -5,12 +5,22 @@
 - roadmap/depth-humanoid-soccer.md：新建「人形足球（全向行走 → 感知踢球 → 多机战术）」纵深路线（起点：首届 RoboCup，1997），Stage 0 RoboCup 全景与感知–决策–运动耦合 → Stage 1 参数化全向行走与跌倒恢复 → Stage 2 机载感知与自定位 → Stage 3 追球–对齐–射门课程 RL（PAiD / RoboNaldo / 教师–学生蒸馏）→ Stage 4 多机战术群控 → Stage 5 整队系统 / 端到端 / 体育谱系；链接 wiki/tasks/humanoid-soccer.md、humanoid-soccer-skill-learning-method-selection、humanoid-multi-robot-coordination 等枢纽页
 - roadmap/depth-humanoid-boxing.md：新建「人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）」纵深路线（起点：MuJoCo 人形对抗自博弈，2017），Stage 0 对抗全身任务与自主 / 遥操作两条路线（RoboStriker vs REK）→ Stage 1 拳击 MoCap 全身跟踪基座 → Stage 2 技能蒸馏潜空间动作流形 → Stage 3 两玩家零和博弈与 LS-NFSP → Stage 4 高冲击真机安全（SafeFall）→ Stage 5 类人度评测 / 体育谱系 / 赛事产业；链接 paper-notebook-robostriker、rek、smplolympics、topic-wbt 等枢纽页
 - roadmap/README.md、README.md、index.md、roadmap/motion-control.md、docs/index.html、docs/main.js 与其余十四条 depth-* 路线页：纵深路线数 14 → 16，按里程碑历史序插入（人形足球 1997 列移动操作后、人形拳击 2017 列动作重定向后）并补双向链接；首页「更多路线」按钮扩为十六个
-- catalog.md、exports/graph-stats.json、exports/home-stats.json 及 docs/exports/ 同步再生成；README 知识图谱 badge 1678节点/13260边 → 1680节点/13371边；make lint、make ci-preflight 12/12、pytest 320 passed 全部通过
+- catalog.md、exports/graph-stats.json、exports/home-stats.json 及 docs/exports/ 同步再生成；README 知识图谱 badge 更新至 1681节点/13385边（含合并 main 的 KiCad ingest）；make lint、make ci-preflight 12/12、pytest 320 passed 全部通过
 
-## [2026-07-18] fix(actions): 为 depth-perceptive-locomotion 社区补 COMMUNITY_NAME_OVERRIDES，修复 test_community_naming
+## [2026-07-18] structural | scripts/utils/community_labels.py — 补 roadmap/depth-perceptive-locomotion.md 社区名 override，修复 pytest 社区命名测试
 
 - scripts/utils/community_labels.py
-- exports/link-graph.json、docs/exports/link-graph.json
+
+## [2026-07-18] ingest | sources/sites/kicad-org.md + sources/courses/kicad_docs_10_zh.md + sources/repos/kicad.md — 接入 KiCad 开源 EDA；wiki/entities/kicad.md；交叉更新 depth-torque-motor-design Stage 4、humanoid-hardware-101-power-compute-electronics、simplefoc
+
+- sources/sites/kicad-org.md
+- sources/courses/kicad_docs_10_zh.md
+- sources/repos/kicad.md
+- wiki/entities/kicad.md
+- wiki/overview/humanoid-hardware-101-power-compute-electronics.md
+- wiki/entities/simplefoc.md
+- roadmap/depth-torque-motor-design.md
+- schema/institutions.json
 
 ## [2026-07-18] ingest | sources/sites/altium-designer-primary-refs.md — Altium Designer 官方文档一手资料；升格 wiki/entities/altium-designer.md
 
