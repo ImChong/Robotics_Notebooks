@@ -138,4 +138,4 @@
 - wiki/entities/paper-wem-world-ego-modeling.md
 - wiki/entities/smplolympics.md
 
-📊 Sources 覆盖率：1602/1632 (98%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1630/1660 (98%) wiki/entity 页有 ingest 来源

@@ -1,236 +1,231 @@
 {
   "generated_at": "2026-07-18",
-  "node_count": 1649,
-  "edge_count": 13031,
+  "node_count": 1677,
+  "edge_count": 13227,
   "coverage": {
-    "covered": 1602,
-    "total": 1632,
+    "covered": 1630,
+    "total": 1660,
     "percent": 98
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-scaling-bfm-humanoid.md",
-      "detail_id": "entity-paper-scaling-bfm-humanoid",
-      "label": "ScaleBFM（Scaling Behavior Foundation Model for Humanoid Robots）",
-      "type": "entity",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-behavior-foundation-model-humanoid.md",
-      "detail_id": "entity-paper-behavior-foundation-model-humanoid",
-      "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
-      "type": "entity",
+      "path": "wiki/comparisons/robot-control-eight-paradigms-taxonomy.md",
+      "detail_id": "wiki-comparisons-robot-control-eight-paradigms-taxonomy",
+      "label": "八大机器人控制体系分类",
+      "type": "comparison",
       "recency": "2026-07-18",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
-      "path": "wiki/concepts/behavior-foundation-model.md",
-      "detail_id": "wiki-concepts-behavior-foundation-model",
-      "label": "Behavior Foundation Model（行为基础模型，BFM）",
-      "type": "concept",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/methods/sonic-motion-tracking.md",
-      "detail_id": "wiki-methods-sonic-motion-tracking",
-      "label": "SONIC（规模化运动跟踪人形控制）",
-      "type": "method",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-reactivebfm.md",
-      "detail_id": "entity-paper-reactivebfm",
-      "label": "ReactiveBFM",
-      "type": "entity",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/sunday-robotics-act2.md",
-      "detail_id": "entity-sunday-robotics-act2",
-      "label": "ACT-2（Sunday Robotics · Generalizing Reliability）",
-      "type": "entity",
-      "recency": "2026-07-17",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/robotics-solve-standard.md",
-      "detail_id": "wiki-concepts-robotics-solve-standard",
-      "label": "Robotics Solve 标准",
-      "type": "concept",
-      "recency": "2026-07-17",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-07-17",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/humanoid-hardware-101-sensing-end-effectors.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-sensing-end-effectors",
-      "label": "Humanoid Hardware 101 · 06：传感与末端执行器",
+      "path": "wiki/overview/robot-control-paradigm-classical-linear-feedback.md",
+      "detail_id": "wiki-overview-robot-control-paradigm-classical-linear-feedback",
+      "label": "经典线性反馈控制（体系①）",
       "type": "overview",
-      "recency": "2026-07-17",
+      "recency": "2026-07-18",
       "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
-      "path": "wiki/entities/tidybot2.md",
-      "detail_id": "entity-tidybot2",
-      "label": "TidyBot2",
-      "type": "entity",
-      "recency": "2026-07-17",
+      "path": "wiki/overview/robot-control-paradigm-model-based-nonlinear-dynamics.md",
+      "detail_id": "wiki-overview-robot-control-paradigm-model-based-nonlinear-dynamics",
+      "label": "基于模型的非线性动力学控制（体系②）",
+      "type": "overview",
+      "recency": "2026-07-18",
       "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
-      "path": "wiki/entities/mimic-hand-m1.md",
-      "detail_id": "entity-mimic-hand-m1",
-      "label": "mimic hand M1",
-      "type": "entity",
-      "recency": "2026-07-17",
+      "path": "wiki/overview/robot-control-paradigm-robust-control.md",
+      "detail_id": "wiki-overview-robot-control-paradigm-robust-control",
+      "label": "鲁棒控制（体系③）",
+      "type": "overview",
+      "recency": "2026-07-18",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/overview/robot-control-paradigm-adaptive-control.md",
+      "detail_id": "wiki-overview-robot-control-paradigm-adaptive-control",
+      "label": "自适应控制（体系④）",
+      "type": "overview",
+      "recency": "2026-07-18",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/overview/robot-control-paradigm-hybrid-position-force.md",
+      "detail_id": "wiki-overview-robot-control-paradigm-hybrid-position-force",
+      "label": "位置/力混合控制（体系⑤）",
+      "type": "overview",
+      "recency": "2026-07-18",
       "source": "log.md",
       "action": "added",
       "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
     },
     {
-      "path": "wiki/entities/mimic-wearable-u1.md",
-      "detail_id": "entity-mimic-wearable-u1",
-      "label": "mimic wearable U1（umimic）",
-      "type": "entity",
-      "recency": "2026-07-17",
+      "path": "wiki/overview/robot-control-paradigm-receding-horizon-ilc.md",
+      "detail_id": "wiki-overview-robot-control-paradigm-receding-horizon-ilc",
+      "label": "滚动优化与迭代学习控制（体系⑥）",
+      "type": "overview",
+      "recency": "2026-07-18",
       "source": "log.md",
-      "action": "added"
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
-      "path": "wiki/methods/mimic-video.md",
-      "detail_id": "wiki-methods-mimic-video",
-      "label": "mimic-video（Video-Action Model, VAM）",
+      "path": "wiki/overview/robot-control-paradigm-ml-driven-control.md",
+      "detail_id": "wiki-overview-robot-control-paradigm-ml-driven-control",
+      "label": "机器学习驱动控制（体系⑦）",
+      "type": "overview",
+      "recency": "2026-07-18",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/overview/robot-control-paradigm-rl-intelligent-control.md",
+      "detail_id": "wiki-overview-robot-control-paradigm-rl-intelligent-control",
+      "label": "强化学习智能控制（体系⑧）",
+      "type": "overview",
+      "recency": "2026-07-18",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/methods/pole-placement-control.md",
+      "detail_id": "wiki-methods-pole-placement-control",
+      "label": "Pole Placement Control（极点配置控制）",
       "type": "method",
-      "recency": "2026-07-17",
+      "recency": "2026-07-18",
       "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
-      "path": "wiki/tasks/teleoperation.md",
-      "detail_id": "wiki-tasks-teleoperation",
-      "label": "Teleoperation（遥操作）",
-      "type": "task",
-      "recency": "2026-07-17",
+      "path": "wiki/methods/computed-torque-control.md",
+      "detail_id": "wiki-methods-computed-torque-control",
+      "label": "Computed Torque Control（计算力矩控制，CTC）",
+      "type": "method",
+      "recency": "2026-07-18",
       "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
-      "path": "wiki/queries/dexterous-data-collection-guide.md",
-      "detail_id": "wiki-queries-dexterous-data-collection-guide",
-      "label": "灵巧操作数据采集指南",
-      "type": "query",
-      "recency": "2026-07-17",
+      "path": "wiki/methods/inverse-dynamics-control.md",
+      "detail_id": "wiki-methods-inverse-dynamics-control",
+      "label": "Inverse Dynamics Control（逆动力学控制，IDC）",
+      "type": "method",
+      "recency": "2026-07-18",
       "source": "log.md",
-      "action": "maintained",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/methods/feedback-linearization-control.md",
+      "detail_id": "wiki-methods-feedback-linearization-control",
+      "label": "Feedback Linearization Control（反馈线性化控制）",
+      "type": "method",
+      "recency": "2026-07-18",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/methods/sliding-mode-control.md",
+      "detail_id": "wiki-methods-sliding-mode-control",
+      "label": "Sliding Mode Control（滑模控制，SMC）",
+      "type": "method",
+      "recency": "2026-07-18",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/methods/h-infinity-control.md",
+      "detail_id": "wiki-methods-h-infinity-control",
+      "label": "H-infinity Control（H∞ 控制）",
+      "type": "method",
+      "recency": "2026-07-18",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/methods/mu-synthesis-control.md",
+      "detail_id": "wiki-methods-mu-synthesis-control",
+      "label": "Mu Synthesis Control（μ 综合控制）",
+      "type": "method",
+      "recency": "2026-07-18",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/methods/mrac.md",
+      "detail_id": "wiki-methods-mrac",
+      "label": "MRAC（模型参考自适应控制）",
+      "type": "method",
+      "recency": "2026-07-18",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/methods/adaptive-computed-torque-control.md",
+      "detail_id": "wiki-methods-adaptive-computed-torque-control",
+      "label": "Adaptive Computed Torque Control（自适应计算力矩，A-CTC）",
+      "type": "method",
+      "recency": "2026-07-18",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/methods/recursive-least-squares-control.md",
+      "detail_id": "wiki-methods-recursive-least-squares-control",
+      "label": "Recursive Least Squares Control（RLS 递归最小二乘辨识）",
+      "type": "method",
+      "recency": "2026-07-18",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/methods/admittance-control.md",
+      "detail_id": "wiki-methods-admittance-control",
+      "label": "Admittance Control（导纳控制）",
+      "type": "method",
+      "recency": "2026-07-18",
+      "source": "log.md",
+      "action": "added",
       "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/concepts/motion-retargeting.md",
-      "detail_id": "wiki-concepts-motion-retargeting",
-      "label": "Motion Retargeting（动作重定向）",
-      "type": "concept",
-      "recency": "2026-07-17",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/entities/leju-robotics.md",
-      "detail_id": "entity-leju-robotics",
-      "label": "乐聚机器人（Leju Robotics）",
-      "type": "entity",
-      "recency": "2026-07-17",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/openlet.md",
-      "detail_id": "entity-openlet",
-      "label": "OpenLET 具身智能开源数据集社区",
-      "type": "entity",
-      "recency": "2026-07-17",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/lingbot-vla.md",
-      "detail_id": "entity-lingbot-vla",
-      "label": "LingBot-VLA",
-      "type": "entity",
-      "recency": "2026-07-17",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/rhino-auto.md",
-      "detail_id": "entity-rhino-auto",
-      "label": "辉羲智能（Rhino Auto）",
-      "type": "entity",
-      "recency": "2026-07-17",
-      "source": "log.md",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-scaling-bfm-humanoid.md",
-    "detail_id": "entity-paper-scaling-bfm-humanoid",
-    "label": "ScaleBFM（Scaling Behavior Foundation Model for Humanoid Robots）",
-    "type": "entity",
+    "path": "wiki/comparisons/robot-control-eight-paradigms-taxonomy.md",
+    "detail_id": "wiki-comparisons-robot-control-eight-paradigms-taxonomy",
+    "label": "八大机器人控制体系分类",
+    "type": "comparison",
     "recency": "2026-07-18",
     "source": "log.md",
-    "action": "added",
-    "has_repo": true
+    "action": "maintained",
+    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 287
+      "size": 308
     },
     {
       "label": "人形论文深读笔记",
-      "size": 177
-    },
-    {
-      "label": "仿真到现实",
       "size": 177
     },
     {
@@ -239,11 +234,15 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 153
+      "size": 150
+    },
+    {
+      "label": "仿真到现实",
+      "size": 139
     },
     {
       "label": "全身控制",
-      "size": 111
+      "size": 120
     }
   ],
   "top_hubs": [
@@ -258,7 +257,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 291,
+      "degree": 292,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -286,18 +285,19 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
-      "degree": 232
-    },
-    {
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 227,
+      "degree": 235,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "degree": 232,
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",
@@ -317,7 +317,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 171,
+      "degree": 175,
       "has_repo": true,
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
     }
@@ -350,8 +350,7 @@
       "label": "OmniRetarget",
       "type": "entity",
       "degree": 45,
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "wiki-methods-deepmimic",

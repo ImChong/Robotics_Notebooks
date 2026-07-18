@@ -2,12 +2,16 @@
 type: concept
 tags: [control, manipulation, impedance-control, force-control, contact-rich, whole-body-control]
 status: complete
-updated: 2026-07-01
+updated: 2026-07-18
 summary: "Impedance Control 通过把末端行为写成质量-弹簧-阻尼关系，让机器人在接触任务中既能跟踪目标又能保持柔顺。"
 sources:
+  - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/papers/contact_dynamics.md
   - ../../sources/papers/contact_planning.md
 related:
+  - ../comparisons/robot-control-eight-paradigms-taxonomy.md
+  - ../overview/robot-control-paradigm-hybrid-position-force.md
+  - ../methods/admittance-control.md
   - ../queries/contact-wrench-closed-loop.md
   - ./contact-force-loop-bandwidth.md
   - ./contact-rich-manipulation.md
@@ -94,6 +98,7 @@ $$ f = K_d (x_d - x) + B_d (\dot{x}_d - \dot{x}) $$
 
 ## 参考来源
 
+- [wechat_shenlan_robot_control_eight_paradigms.md](../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md) — 深蓝八大控制体系：阻抗控制代表算法
 - Hogan, N. (1985). *Impedance Control: An Approach to Manipulation*. Journal of Dynamic Systems, Measurement, and Control.
 - [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md) — 接触力与柔顺执行基础
 - [sources/papers/contact_planning.md](../../sources/papers/contact_planning.md) — 接触任务中的执行层组织
@@ -101,6 +106,9 @@ $$ f = K_d (x_d - x) + B_d (\dot{x}_d - \dot{x}) $$
 
 ## 关联页面
 
+- [八大机器人控制体系分类](../comparisons/robot-control-eight-paradigms-taxonomy.md)
+- [位置/力混合控制（体系⑤）](../overview/robot-control-paradigm-hybrid-position-force.md)
+- [Admittance Control](../methods/admittance-control.md)
 - [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 本页是四层闭环里的 **③ 控制层**（阻抗/导纳对偶这条路线）
 - [Contact-Force-Loop Bandwidth（力控闭环带宽）](./contact-force-loop-bandwidth.md) — 「环境越硬刚度越低」反直觉法则的稳定性来源
 - [Contact-Rich Manipulation](./contact-rich-manipulation.md)

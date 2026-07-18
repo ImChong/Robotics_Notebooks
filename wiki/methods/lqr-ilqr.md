@@ -2,13 +2,17 @@
 type: method
 tags: [control, lqr, ilqr, optimal-control, optimization, locomotion]
 status: complete
-updated: 2026-04-25
+updated: 2026-07-18
 related:
+  - ../comparisons/robot-control-eight-paradigms-taxonomy.md
+  - ../overview/robot-control-paradigm-classical-linear-feedback.md
   - ../formalizations/lqr.md
   - ./trajectory-optimization.md
   - ./model-predictive-control.md
   - ../entities/crocoddyl.md
   - ../concepts/optimal-control.md
+sources:
+  - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
 summary: "LQR / iLQR 是机器人最优控制与轨迹优化的基石，通过 Riccati 递归高效求解线性及非线性轨迹优化问题。"
 ---
 
@@ -123,12 +127,15 @@ iLQR 常被称为“DDP 的简化版”。
 
 ## 参考来源
 
+- [wechat_shenlan_robot_control_eight_paradigms.md](../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md) — 深蓝八大控制体系：LQR 代表算法
 - [lqr_ilqr_primary_refs.md](../../sources/papers/lqr_ilqr_primary_refs.md) — iLQR / DDP 一手论文与 MIT 课程索引（Li & Todorov 2004；Tassa et al. 2012/2014 等）
 - [mit_underactuated_kalman_lqr.md](../../sources/courses/mit_underactuated_kalman_lqr.md) — DDP 与 iLQR 关系讲义
 - [optimal_control.md](../../sources/papers/optimal_control.md) — 最优控制与 DDP 历史主线
 
 ## 关联页面
 
+- [八大机器人控制体系分类](../comparisons/robot-control-eight-paradigms-taxonomy.md)
+- [滚动优化与 ILC（体系⑥）](../overview/robot-control-paradigm-receding-horizon-ilc.md)
 - [LQR / iLQR 形式化](../formalizations/lqr.md) — 理论背景与数学推导
 - [Trajectory Optimization](./trajectory-optimization.md) — 轨迹优化全景
 - [Crocoddyl](../entities/crocoddyl.md) — 基于 iLQR/FDDP 的工业级开源求解器

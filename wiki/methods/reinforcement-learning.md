@@ -2,8 +2,12 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-18
 related:
+  - ../comparisons/robot-control-eight-paradigms-taxonomy.md
+  - ../overview/robot-control-paradigm-rl-intelligent-control.md
+  - ../methods/value-based-reinforcement-learning.md
+  - ../methods/hierarchical-reinforcement-learning.md
   - ../entities/richard-sutton.md
   - ../entities/sutton-barto-rl-book.md
   - ../concepts/bitter-lesson.md
@@ -29,6 +33,7 @@ related:
   - ../entities/paper-tsil-temporal-self-imitation-learning.md
   - ../entities/gymnasium.md
 sources:
+  - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/sites/incompleteideas-net-rich-sutton.md
   - ../../sources/papers/intentional_streaming_rl.md
   - ../../sources/papers/policy_optimization.md
