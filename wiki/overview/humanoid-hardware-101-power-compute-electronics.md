@@ -40,12 +40,14 @@ sources:
 ## PCB
 
 - 驱动板、控制板、通信与电源管理；受益于 **面板化批量** 与汽车/移动电子生态。
+- 自研关节驱动板等量产向流程可参考商业 EDA 官方文档：[Altium Designer](../entities/altium-designer.md)（原理图 → 规则驱动 layout → 制造 OutJob）；开源低功率对照见 [SimpleFOC](../entities/simplefoc.md) 板卡资料。
 
 ## 关联页面
 
 - [Humanoid Hardware 101 技术地图](./humanoid-hardware-101-technology-map.md)
 - [人形电池热管理 Query](../queries/humanoid-battery-thermal-management.md)
 - [开源人形「大脑」对比](../entities/open-source-humanoid-brains.md)
+- [Altium Designer（商业 PCB EDA）](../entities/altium-designer.md)
 - [产业与成本地缘](./humanoid-hardware-101-supply-chain-economics.md)
 
 ## 参考来源
