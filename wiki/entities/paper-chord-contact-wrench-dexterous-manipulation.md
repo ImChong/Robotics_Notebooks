@@ -6,6 +6,7 @@ updated: 2026-06-29
 venue: "2026 · NVIDIA Tech Report"
 summary: "CHORD 以物体中心接触力旋量（CWS）空间奖励把人类双手演示迁移到灵巧手 RL 策略，在 4,739 项 benchmark 上训练、1,831 项评测达 82.12% 平均成功率，并扩展到 G1 全身与 Sharpa 真机。"
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/contact-rich-manipulation.md
   - ../tasks/manipulation.md
   - ../methods/spider-physics-informed-dexterous-retargeting.md
@@ -134,6 +135,7 @@ flowchart TB
 - [灵巧操作数据管线](../queries/dexterous-manipulation-data-pipeline.md) — V2D 把 CHORD 嵌入「视频→重建→RL」端到端链路。
 - [Isaac Lab](./isaac-lab.md) — benchmark 环境与训练宿主。
 - [IL for Manipulation](../queries/il-for-manipulation.md) — 演示驱动 vs RL 探索的选型坐标。
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ 策略任务成功率评测层：接触力旋量灵巧操作基准（4,739 训练 / 1,831 评测）
 
 ## 推荐继续阅读
 

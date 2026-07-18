@@ -6,6 +6,7 @@ status: complete
 updated: 2026-06-12
 arxiv: "2407.00187"
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./zhengyi-luo.md
   - ../methods/amp-reward.md
   - ../methods/ase.md
@@ -97,6 +98,7 @@ flowchart LR
 - [ASE](../methods/ase.md)
 - [Locomotion](../tasks/locomotion.md)
 - [Motion Retargeting](../concepts/motion-retargeting.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ 策略任务成功率评测层：SMPL 人形 10 项运动 benchmark（PPO/AMP/PULSE 基线）
 
 ## 参考来源
 

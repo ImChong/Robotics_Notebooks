@@ -13,6 +13,7 @@ status: complete
 updated: 2026-06-20
 arxiv: "2606.04463"
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../methods/generative-world-models.md
   - ../concepts/video-as-simulation.md
   - ../methods/roboarena.md
@@ -149,6 +150,7 @@ flowchart TB
 - [Cosmos 3](./cosmos-3.md) — 基座视频扩散平台
 - [WorldGym](./paper-shenlan-wm-15-worldgym.md) — 同类 WM 策略评估靶场
 - [Manipulation](../tasks/manipulation.md) — 操纵策略与评测语境
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页兼跨其 ② 世界模型与 ④ 校准层：视频世界模型作虚拟策略评估器，RoboArena 评测与真机排名强相关
 
 ## 参考来源
 

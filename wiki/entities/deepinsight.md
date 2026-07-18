@@ -4,6 +4,7 @@ tags: [evaluation, physical-ai, humanoid, infrastructure, benchmarking, foundati
 status: complete
 updated: 2026-07-08
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./paper-athena-wbc-humanoid-longtail.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../overview/robot-training-stack-layers-technology-map.md
@@ -167,6 +168,7 @@ flowchart TB
 - [Whole-Body Control](../concepts/whole-body-control.md) — System 0 控制层
 - [Athena-WBC](./paper-athena-wbc-humanoid-longtail.md) — 同机构 System 0 训练集长尾与能力对齐专家蒸馏（arXiv:2607.04837）
 - [数据飞轮](../concepts/data-flywheel.md) — 评测驱动采集闭环
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 全栈统一评测基础设施，横跨其 ① 认知 / ② 世界模型 / ③ 策略成功率各层的跨层回归定位
 
 ## 推荐继续阅读
 

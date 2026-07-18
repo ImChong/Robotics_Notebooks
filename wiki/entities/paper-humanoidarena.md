@@ -7,6 +7,7 @@ arxiv: "2606.17833"
 venue: "2026 · arXiv"
 code: https://humanoidarena.github.io
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../tasks/loco-manipulation.md
   - ../tasks/teleoperation.md
   - ../concepts/whole-body-control.md
@@ -164,6 +165,7 @@ flowchart TB
 - [GMR（方法）](../methods/motion-retargeting-gmr.md) — 共享上游重定向。
 - [Isaac Lab](./isaac-lab.md) — 仿真宿主与录制环境。
 - [HumanoidMimicGen](./paper-humanoidmimicgen.md) — 另一 G1 loco-manip 仿真基准对照。
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ 策略任务成功率评测层：人形分层全身控制基准，测 policy–tracker 接口可执行性/可转移性
 
 ## 参考来源
 

@@ -17,6 +17,7 @@ updated: 2026-07-10
 arxiv: "2607.03792"
 summary: "REALM（arXiv:2607.03792）：揭示 REVERIE-CE 等连续 VLN 在 3 m 区域到达与实例可见接地之间的 Last-3-Meter Grounding Gap；提出可插拔末段精修模块 REALM、实例指标 ONS/GS/OracleGS 与 REVERIE-AIM 数据集，在四类 VLN 骨干上一致提升细粒度接地并验证真机 Stretch。"
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../tasks/vision-language-navigation.md
   - ../entities/paper-vln-03-reverie.md
   - ../entities/paper-vln-09-etpnav.md
@@ -121,6 +122,7 @@ flowchart LR
 - [ETPNav](../entities/paper-vln-09-etpnav.md) — 本文主要上游骨干之一（拓扑规划 VLN-CE）
 - [VLN 四范式开源复现](../overview/vln-open-source-repro-paradigms.md) — UniNaVid 精修骨干与导航 VLA 语境
 - [3D 空间 VQA](../concepts/3d-spatial-vqa.md) — 同为「为看见而行动」的细粒度空间能力，侧重 QA 而非轨迹到达
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ 策略任务成功率评测层：Last-3-Meter VLN 细粒度接地评测（ONS/GS/OracleGS）
 
 ## 参考来源
 

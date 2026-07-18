@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-18",
   "node_count": 1677,
-  "edge_count": 13227,
+  "edge_count": 13248,
   "coverage": {
     "covered": 1630,
     "total": 1660,
@@ -222,7 +222,7 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 308
+      "size": 320
     },
     {
       "label": "人形论文深读笔记",
@@ -234,11 +234,11 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 150
+      "size": 139
     },
     {
       "label": "仿真到现实",
-      "size": 139
+      "size": 137
     },
     {
       "label": "全身控制",
