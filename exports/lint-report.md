@@ -1,6 +1,6 @@
 # Wiki 健康报告
 
-## [2026-07-17] lint | health-check | 自动化 wiki 健康检查
+## [2026-07-18] lint | health-check | 自动化 wiki 健康检查
 
 共发现 **0** 个问题（另含 **22** 条信息型预警）：
 
@@ -138,4 +138,4 @@
 - wiki/entities/paper-wem-world-ego-modeling.md
 - wiki/entities/smplolympics.md
 
-📊 Sources 覆盖率：1601/1631 (98%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1602/1632 (98%) wiki/entity 页有 ingest 来源

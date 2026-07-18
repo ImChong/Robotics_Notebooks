@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, foundation-policy, cvae, generative-policy, masked-control, dagger, privileged-training, ppo, unitree-g1, isaac-gym, amass, shanghai-ai-lab, pku, motion-tracking, teleoperation, locomotion]
 status: complete
-updated: 2026-07-11
+updated: 2026-07-18
 arxiv: "2509.13780"
 venue: "TPAMI 2025"
 related:
@@ -25,6 +25,7 @@ related:
   - ./holomotion.md
   - ./isaac-gym-isaac-lab.md
   - ./paper-reactivebfm.md
+  - ./paper-scaling-bfm-humanoid.md
   - ../overview/bfm-category-02-goal-conditioned-learning.md
 sources:
   - ../../sources/papers/bfm_humanoid_arxiv_2509_13780.md
@@ -190,6 +191,7 @@ $$
 - 与 [HOVER](https://hover-versatile-humanoid.github.io/) 对照：同为多模式 WBC，HOVER 强调 **multi-mode multi-task RL**；BFM 用 **生成式 + DAgger 蒸馏**，并显式支持 **潜空间运算**。
 - 与 [Perceptive BFM](./paper-perceptive-bfm.md) 对照：同为 **开放 raw 参考 + 单策略多行为** 接口，但 Perceptive BFM 用 **TCRS 离线监督 + identity-gated 感知残差** 闭合 **操作者–环境失配**（楼梯/块/户外），弥补本文与 SONIC 类路线对 **地形兼容参考** 的隐含假设。
 - 与 [ReactiveBFM](./paper-reactivebfm.md) 对照：本文 BFM 提供 **多接口低层生成/跟踪先验**；ReactiveBFM 在其上叠加 **闭环 AR 运动规划**（scheduled prefix sampling + 异步重规划），解决开环级联的 **exposure bias**，在 G1 真机实现文本条件 reactive WBC 与零样本移动目标到达。
+- 与 [ScaleBFM](./paper-scaling-bfm-humanoid.md) 对照：同作者团队后续 **scaling 技术报告**（arXiv:2607.15163）；走 **PPO + Humanoid Transformer + 全局 integrated tracking** 并系统实证 on-policy 数量与参考多样性协同，而非本文 **CVAE + 掩码在线蒸馏** 生成式路线。
 
 ## 常见误区或局限
 
@@ -213,6 +215,7 @@ $$
 - [Unitree G1](./unitree-g1.md)
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
 - [ReactiveBFM（闭环规划–控制）](./paper-reactivebfm.md)
+- [ScaleBFM（BFM scaling 配方）](./paper-scaling-bfm-humanoid.md)
 
 ## 参考来源
 

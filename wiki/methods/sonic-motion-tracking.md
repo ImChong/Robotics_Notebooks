@@ -3,7 +3,7 @@ type: method
 tags: [paper, humanoid, imitation-learning, motion-tracking, foundation-model, nvidia, vla, teleoperation, rl, motion-control, bfm, behavior-foundation-model, loco-manipulation, body-system-stack, loco-manip-161-survey]
 status: complete
 date: 2026-05-14
-updated: 2026-07-16
+updated: 2026-07-18
 arxiv: "2511.07820"
 venue: "2025 · arXiv"
 related:
@@ -22,6 +22,7 @@ related:
   - ../entities/paper-motionwam-humanoid-loco-manipulation-wam.md
   - ../entities/paper-humanoid-gpt.md
   - ../entities/paper-any2any-cross-embodiment-wbt.md
+  - ../entities/paper-scaling-bfm-humanoid.md
   - ./beyondmimic.md
   - ./egm-efficient-general-mimic.md
   - ./exoactor.md
@@ -231,6 +232,7 @@ flowchart LR
 - [SceneBot](../entities/paper-scenebot.md)：contact-prompted 单策略 tracker；论文以 SONIC 为自由空间强基线，在 **地形+物体** 交互上展示 contact label 与场景重建数据的必要性。
 - [HumanoidArena](../entities/paper-humanoidarena.md)：将 SONIC 与 TWIST2 并列为 **分层全身学习的双 GMT 后端**，在 7 项腿关键 HOI/HSI 上评测 **跨 GMT 迁移** 与扰动泛化（arXiv:2606.17833）。
 - [Athena-WBC](../entities/paper-athena-wbc-humanoid-longtail.md)：以 **SONIC 配方** 为强基线，研究 **训练集长尾残余** 的 **能力对齐专家蒸馏**（arXiv:2607.04837）；绝对数字不与 G1 发布权重直接可比。
+- [ScaleBFM](../entities/paper-scaling-bfm-humanoid.md)：同 motion-tracking BFM 预训练叙事，但系统拆解 **on-policy 数量 × 参考多样性 × Humanoid Transformer** 三轴 scaling；whole-body 基准上 **BFM-Global** 相对 SONIC **G-MPKPE 降幅约 54%（BONES）/ 82%（Ours）**（arXiv:2607.15163）。
 
 ## 推荐继续阅读
 
@@ -267,6 +269,7 @@ flowchart LR
 - [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) — 本文 #07/41（02 Goal-conditioned 学习）
 - [Loco-Manip 161 篇技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md) — 本文 #019/#103 双槽位
 - [Behavior Foundation Model（概念）](../concepts/behavior-foundation-model.md)
+- [ScaleBFM（BFM scaling 配方）](../entities/paper-scaling-bfm-humanoid.md)
 - [BeyondMimic](./beyondmimic.md)
 - [ExoActor (视频生成驱动的交互式人形控制)](./exoactor.md)
 - [GENMO（统一人体运动估计与生成）](./genmo.md)

@@ -1,5 +1,16 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-18] ingest | sources/papers/scaling_bfm_arxiv_2607_15163.md — ScaleBFM 三轴 scaling 配方与 Humanoid Transformer；升格 wiki/entities/paper-scaling-bfm-humanoid.md
+
+- wiki/entities/paper-scaling-bfm-humanoid.md
+- wiki/entities/paper-behavior-foundation-model-humanoid.md
+- wiki/concepts/behavior-foundation-model.md
+- wiki/methods/sonic-motion-tracking.md
+- wiki/entities/paper-reactivebfm.md
+- sources/papers/scaling_bfm_arxiv_2607_15163.md
+- sources/sites/scalebfm-github-io.md
+- sources/repos/scalebfm.md
+
 ## [2026-07-17] structural | schema/canonical-facts.json 230 → 240 条 — V29 P2 补 10 条具身评测选型矛盾检测规则
 
 - schema/canonical-facts.json（新增 10 条：仿真可复现 vs 真机代表性、任务成功率 vs 过程/中间指标、世界模型视频质量 ≠ 策略收益、MLLM 认知评分 ≠ 可执行动作、单任务过拟合 vs 跨任务泛化、离线回放 vs 在线闭环、成功率均值掩盖长尾、基准饱和 ≠ 场景就绪、评测集泄漏致虚高、静态基准不覆盖分布漂移）
