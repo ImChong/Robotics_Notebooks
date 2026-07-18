@@ -31,7 +31,8 @@
     'data-pipeline': 'wiki/overview/topic-data-pipeline.md',
     'physics-fidelity': 'wiki/overview/topic-physics-fidelity.md',
     'contact-force-control': 'wiki/overview/topic-contact-force-control.md',
-    'embodied-foundation-model': 'wiki/overview/topic-embodied-foundation-model.md'
+    'embodied-foundation-model': 'wiki/overview/topic-embodied-foundation-model.md',
+    'embodied-eval-benchmark': 'wiki/overview/topic-embodied-eval-benchmark.md'
   };
 
   function hubIdSet(key) {
@@ -209,6 +210,24 @@
         'wiki/concepts/behavior-tree-vla-orchestration.md',
         'wiki/concepts/3d-spatial-vqa.md'
       ]))
+    },
+    'embodied-eval-benchmark': {
+      /* 四层评测选型闭环（认知→预测保真度→策略成功率→sim↔real gap）。片段取
+         干净的 `bench` / `eval` / `benchmark`（仅命中评测/基准专有页），未被片段
+         命中的评测页（无连字符的 ewmbench、含 evaluation 的 gigaworld / 评测基建）
+         用 ids 显式纳入，与 sim2real / physics-fidelity 保持最小重叠。 */
+      segments: new Set([
+        'bench', 'eval', 'benchmark'
+      ]),
+      ids: mergeIds('embodied-eval-benchmark', new Set([
+        'wiki/queries/embodied-eval-benchmark-selection-loop.md',
+        'wiki/concepts/sim-vs-real-eval-gap.md',
+        'wiki/entities/robo-bench.md',
+        'wiki/entities/esi-bench.md',
+        'wiki/entities/ewmbench.md',
+        'wiki/entities/paper-gigaworld-1-policy-evaluation.md',
+        'wiki/concepts/simulation-evaluation-infrastructure.md'
+      ]))
     }
   };
 
@@ -321,6 +340,12 @@
       label: '具身大模型 (Embodied Foundation Model)',
       wikiPath: TOPIC_HUB_IDS['embodied-foundation-model'],
       description: 'VLM 感知理解→VLN 空间导航→VLA 动作执行→VLX 一体化扩展→世界模型时序推演五层家族选型闭环与泛化/实时性取舍。'
+    },
+    'embodied-eval-benchmark': {
+      emoji: '🧪',
+      label: '具身评测基准 (Embodied Eval Benchmark)',
+      wikiPath: TOPIC_HUB_IDS['embodied-eval-benchmark'],
+      description: 'MLLM 认知评测→世界模型预测保真度评测→策略任务成功率评测→sim↔real 评测 gap 校准四层评测选型闭环与可复现性/真实代表性/过程 vs 结果取舍。'
     }
   };
 

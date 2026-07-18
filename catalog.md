@@ -1594,6 +1594,7 @@
 - [接触力控（专题汇总）](wiki/overview/topic-contact-force-control.md) — 接触力控专题** 关注「机器人如何在接触中稳住力」这条**纵向闭环**：从**接触感知/估计**，经**力旋量表示**与**阻抗/导纳/混合力位控制**，到**接触丰富操作策略**，逐层分析每层如 `📅unknown` `[overview_page]`
 - [跨具身迁移（专题汇总）](wiki/overview/topic-cross-embodiment.md) — 跨具身迁移** 研究如何把在 **某一机器人形态、仿真环境或数据源** 上学到的技能，迁移到 **不同骨架、尺寸或硬件平台**，而不完全重训。 `📅unknown` `[overview_page]`
 - [训练数据管线（专题汇总）](wiki/overview/topic-data-pipeline.md) — 训练数据管线专题** 关注人形策略训练的**上游数据链路**：从原始动作捕捉 / 人体视频，经**质量评估**与**重定向**，到 RL/IL **策略可用的训练输入**。 `📅unknown` `[overview_page]`
+- [具身评测基准选型闭环（专题汇总）](wiki/overview/topic-embodied-eval-benchmark.md) — 具身评测基准选型闭环** 指按 **具身大脑/MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准** 逐层分工的评测谱系，各层共享「测 `📅unknown` `[overview_page]`
 - [具身大模型分类学选型闭环（专题汇总）](wiki/overview/topic-embodied-foundation-model.md) — 具身大模型分类学选型闭环** 指按 **跨模态感知（VLM）→ 空间导航（VLN）→ 动作执行（VLA）→ 一体化多任务扩展（VLX）→ 世界模型时序推演（WM）** 逐层分工的家族谱系，各层共享 `📅unknown` `[overview_page]`
 - [抓取与操作（专题汇总）](wiki/overview/topic-grasp.md) — 抓取专题** 关注机器人如何通过感知与规划，在接触丰富的环境中稳定地 **抓取、持握并操纵物体**，是人形 loco-manip 与桌面操作的核心子栈。 `📅unknown` `[overview_page]`
 - [IL/RL 学习范式（专题汇总）](wiki/overview/topic-learning.md) — 机器人学习专题** 覆盖 **从数据或交互中习得策略** 的主要范式：强化学习（RL）、模仿学习（IL）及其与 model-based、离线 RL、基础模型的组合。 `📅unknown` `[overview_page]`

@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-07-18",
-  "node_count": 1681,
-  "edge_count": 13385,
+  "node_count": 1682,
+  "edge_count": 13396,
   "coverage": {
-    "covered": 1632,
-    "total": 1662,
+    "covered": 1633,
+    "total": 1663,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/topic-embodied-eval-benchmark.md",
+      "detail_id": "wiki-overview-topic-embodied-eval-benchmark",
+      "label": "具身评测基准选型闭环（专题汇总）",
+      "type": "overview",
+      "recency": "2026-07-18",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/tasks/humanoid-soccer.md",
       "detail_id": "wiki-tasks-humanoid-soccer",
@@ -200,32 +210,26 @@
       "source": "log.md",
       "action": "added",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/methods/inverse-dynamics-control.md",
-      "detail_id": "wiki-methods-inverse-dynamics-control",
-      "label": "Inverse Dynamics Control（逆动力学控制，IDC）",
-      "type": "method",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/tasks/humanoid-soccer.md",
-    "detail_id": "wiki-tasks-humanoid-soccer",
-    "label": "Humanoid Soccer",
-    "type": "task",
+    "path": "wiki/overview/topic-embodied-eval-benchmark.md",
+    "detail_id": "wiki-overview-topic-embodied-eval-benchmark",
+    "label": "具身评测基准选型闭环（专题汇总）",
+    "type": "overview",
     "recency": "2026-07-18",
     "source": "log.md",
-    "action": "maintained",
-    "has_repo": true
+    "action": "added",
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 298
+      "size": 286
+    },
+    {
+      "label": "人形强化学习运动控制",
+      "size": 202
     },
     {
       "label": "人形论文深读笔记",
@@ -233,19 +237,15 @@
     },
     {
       "label": "移动操作",
-      "size": 176
-    },
-    {
-      "label": "人形强化学习运动控制",
-      "size": 171
+      "size": 153
     },
     {
       "label": "全身控制",
-      "size": 163
+      "size": 131
     },
     {
       "label": "仿真到现实",
-      "size": 90
+      "size": 107
     }
   ],
   "top_hubs": [

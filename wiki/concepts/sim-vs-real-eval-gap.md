@@ -8,6 +8,7 @@ sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
   - ../../sources/papers/robo_bench_arxiv_2510_17801.md
 related:
+  - ../overview/topic-embodied-eval-benchmark.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../concepts/sim2real.md

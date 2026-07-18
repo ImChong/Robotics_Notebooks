@@ -43,8 +43,8 @@
 
 ## P3: 交互层"具身评测基准"增强 (UX/UI)
 
-- [ ] **图谱页"具身评测基准"专题视图**：
-    - [ ] `docs/topic-filters.js` 单一事实源新增「具身评测基准」专题（`embodied-eval-benchmark`，🧪 emoji），复用 path 片段并集机制（`bench` / `eval` 等干净片段，与既有专题保持最小重叠）并用 `ids` 显式纳入未被片段命中的评测页（`embodied-eval-benchmark-selection-loop` / `sim-vs-real-eval-gap` / `robo-bench` / `ewmbench` / `esi-bench` / `paper-gigaworld-1-policy-evaluation` / `simulation-evaluation-infrastructure` 等）；同步在 `docs/graph.html` `#filter-topic-chips` 增加对应 chip。专题汇总枢纽页 `wiki/overview/topic-embodied-eval-benchmark.md` 已建（从相关评测/query 页交叉回链），`graph-stats.json` 0 orphans。专题视图落稳后截图归档至 `.cursor-artifacts/screenshots/graph-topic-embodied-eval-benchmark.png`。
+- [x] **图谱页"具身评测基准"专题视图**：
+    - [x] `docs/topic-filters.js` 单一事实源新增「具身评测基准」专题（`embodied-eval-benchmark`，🧪 emoji），复用 path 片段并集机制（`bench` / `eval` 等干净片段，与既有专题保持最小重叠）并用 `ids` 显式纳入未被片段命中的评测页（`embodied-eval-benchmark-selection-loop` / `sim-vs-real-eval-gap` / `robo-bench` / `ewmbench` / `esi-bench` / `paper-gigaworld-1-policy-evaluation` / `simulation-evaluation-infrastructure` 等）；同步在 `docs/graph.html` `#filter-topic-chips` 增加对应 chip。专题汇总枢纽页 `wiki/overview/topic-embodied-eval-benchmark.md` 已建（从相关评测/query 页交叉回链），`graph-stats.json` 0 orphans。专题视图落稳后截图归档至 `.cursor-artifacts/screenshots/graph-topic-embodied-eval-benchmark.png`。（已落地：`topic-filters.js` 新增 `embodied-eval-benchmark` 三段落——`TOPIC_HUB_IDS` / `TOPIC_FILTERS`（segments=`bench`/`eval`/`benchmark` 干净片段 + 7 页 ids）/ `TOPIC_META`（🧪）；`graph.html` 第 19 个 chip 就位；补建枢纽页 `topic-embodied-eval-benchmark.md`（含英文缩写速查、四层选型表、关键取舍，从 query/concept 页双向回链）；node 端复核 7 个目标评测页 + 枢纽命中、`vla.md` 未命中；`export+graph` 重生 1682 节点/13396 边、**0 orphans**、`largest_community_ratio` 0.17 且 `community_quality_warning: false`；`lint_wiki` **0 errors 0 信息型预警**。截图需浏览器环境，本轮后台例行未附。）
 - [ ] **详情页"同专题相关页"提示**：
     - [ ] 复用 `docs/topic-filters.js` 单一事实源（`renderMetaTopicBadges` → `topicsForNode` 已数据驱动），评测基准/新建页命中「具身评测基准」专题时自动渲染对应轻量徽标 + 跳转 `graph.html?topic=embodied-eval-benchmark`（空态降级隐藏）。P3① 把 `embodied-eval-benchmark` 写入单一事实源后，详情页「所属专题」徽标行即自动联动；选一页评测实体页端到端验证并归档截图至 `.cursor-artifacts/screenshots/detail-topic-embodied-eval-benchmark.png`。
 
@@ -52,11 +52,11 @@
 
 ## 验收标准 (Definition of DoD)
 
-- [ ] `make lint`: 0 errors（新引入的 `eval_benchmark_crosslink` 为 INFO 级，不阻塞 CI）。
-- [ ] 知识图谱节点数 **≥ 1610**，边数 **≥ 12230**（见 `exports/graph-stats.json`）。
+- [x] `make lint`: 0 errors（新引入的 `eval_benchmark_crosslink` 为 INFO 级，不阻塞 CI）。（`lint_wiki` 0 errors 0 信息型预警）
+- [x] 知识图谱节点数 **≥ 1610**，边数 **≥ 12230**（见 `exports/graph-stats.json`）。（1682 节点 / 13396 边）
 - [x] 事实库扩展至 **240 条**（补齐 仿真 vs 真机 / 成功率 vs 过程指标 / 世界模型质量 vs 策略收益 等 10 条具身评测选型矛盾检测规则）。
-- [ ] `community_quality_warning` 保持 `false` 且 `largest_community_ratio ≤ 0.25`。
-- [ ] `log.md` 记录 V29 关键改动。
+- [x] `community_quality_warning` 保持 `false` 且 `largest_community_ratio ≤ 0.25`。（0.17，warning=false）
+- [x] `log.md` 记录 V29 关键改动。（P3① 专题视图记录已追加）
 
 ---
 
