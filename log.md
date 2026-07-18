@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-18] fix(actions): 为 depth-perceptive-locomotion 社区补 COMMUNITY_NAME_OVERRIDES，修复 test_community_naming
+
+- scripts/utils/community_labels.py
+- exports/link-graph.json、docs/exports/link-graph.json
+
 ## [2026-07-18] ingest | sources/sites/altium-designer-primary-refs.md — Altium Designer 官方文档一手资料；升格 wiki/entities/altium-designer.md
 
 - schema/institutions.json（注册 Altium 机构 alias）

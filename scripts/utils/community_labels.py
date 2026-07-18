@@ -92,6 +92,7 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "wiki/entities/isaac-gym-isaac-lab.md": "仿真训练（Isaac Gym / Isaac Lab）",
     "wiki/tasks/humanoid-soccer.md": "人形足球（Humanoid Soccer）",
     "roadmap/depth-navigation.md": "导航纵深路线（Navigation Deep-Dive Roadmap）",
+    "roadmap/depth-perceptive-locomotion.md": "感知越障纵深路线（Perceptive Locomotion Deep-Dive Roadmap）",
     "roadmap/depth-torque-motor-design.md": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap）",
 }
 
