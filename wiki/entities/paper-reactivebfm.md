@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, behavior-foundation-model, closed-loop, motion-planning, diffusion, text-conditioned, exposure-bias, curriculum-learning, unitree-g1, cuhk, shanghai-ai-lab, sim2real, asynchronous-control]
 status: complete
-updated: 2026-07-01
+updated: 2026-07-18
 arxiv: "2606.30362"
 venue: "arXiv 2026"
 related:
@@ -13,6 +13,7 @@ related:
   - ../concepts/sim2real.md
   - ../methods/sonic-motion-tracking.md
   - ./paper-behavior-foundation-model-humanoid.md
+  - ./paper-scaling-bfm-humanoid.md
   - ./unitree-g1.md
   - ./amass.md
 sources:
@@ -123,6 +124,7 @@ flowchart TB
 
 - **相对 [BFM](./paper-behavior-foundation-model-humanoid.md)**：BFM 解决 **多控制接口的统一低层生成**；ReactiveBFM 解决 **「谁在线产生参考」**——把 BFM 从开环跟踪器升格为 **闭环栈的执行层**。
 - **相对 [SONIC](../methods/sonic-motion-tracking.md)**：SONIC 强调 **规模化 tracking 预训练**；ReactiveBFM 直接采用同族 tracker，贡献在 **上层闭环 AR 规划 + 训练/部署工程**。
+- **相对 [ScaleBFM](./paper-scaling-bfm-humanoid.md)**：同 Shanghai AI Lab 栈与 G1 真机文化；ScaleBFM 专注 **低层 BFM scaling 与 Humanoid Transformer**，ReactiveBFM 在其 tracker 类能力之上叠 **闭环运动规划**。
 - **相对 TextOp / DART / Kimodo + SONIC 开环级联**：同类「文本/运动生成 + tracker」，但 ReactiveBFM **闭合 proprioceptive 反馈环**，扰动下成功率差距显著。
 - **相对 CLoSD、DartControl**：同为闭环递归规划，但 ReactiveBFM 强调 **真机部署、异步时延、exposure bias 课程** 三件套同时成立。
 
@@ -136,6 +138,7 @@ flowchart TB
 
 - [Behavior Foundation Model](../concepts/behavior-foundation-model.md)
 - [BFM（Behavior Foundation Model for Humanoid Robots）](./paper-behavior-foundation-model-humanoid.md)
+- [ScaleBFM（BFM scaling 配方）](./paper-scaling-bfm-humanoid.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md)
 - [Curriculum Learning](../concepts/curriculum-learning.md)
