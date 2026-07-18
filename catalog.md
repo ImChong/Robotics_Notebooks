@@ -160,6 +160,7 @@
 - [Yobotics HumanoidE3 外接算法模板（LCM）](wiki/entities/jackhan-yobotics-e3-algorithm-template.md) — 本模板用 LCM 与 WalkE3-Controller 的 DEVELOPMENT 模式对接，提供 AlgorithmBase 双线程（约 50Hz 推理与 500Hz 发令）与 ONNX/PyTo `📅unknown` `[entity_page]`
 - [Linxi "Jim" Fan（范林熹）](wiki/entities/jim-fan.md) — Linxi "Jim" Fan** 是 **NVIDIA 具身智能与通才 agent** 方向的 **PI 级研究科学家**：与 Yuke Zhu 共 `📅unknown` `[entity_page]`
 - [autoresearch（karpathy/autoresearch）](wiki/entities/karpathy-autoresearch.md) — autoresearch** 是 Andrej Karpathy 的 [GitHub 仓库](https://github.com/k `📅unknown` `[entity_page]`
+- [KiCad（开源 PCB 与原理图 EDA）](wiki/entities/kicad.md) — KiCad**（kicad.org）是面向 **原理图 → PCB → 制造文件** 的 **免费开源电子设计自动化（EDA）套件**：跨 Wi `📅unknown` `[entity_page]`
 - [Kimera](wiki/entities/kimera.md) — Kimera** 将 **视觉-惯性里程计、鲁棒位姿图与语义网格** 组合为度量-语义地图。 `📅unknown` `[entity_page]`
 - [Kimodo（可控人体与人形运动扩散）](wiki/entities/kimodo.md) — Kimodo**（**Ki**nematic **Mo**tion **D**iffusi**o**n）在 **运动学空间** 对骨架姿态序列做 **显式扩散去噪**：在约 **700 小时**  `📅unknown` `[entity_page]`
 - [KinetIQ Ascend（Humanoid · 真机 VLA 强化学习后训练）](wiki/entities/kinetiq-ascend.md) — KinetIQ Ascend** 是 **Humanoid**（thehumanoid.ai）在 **KinetIQ** AI 框架上发布的  `📅unknown` `[entity_page]`

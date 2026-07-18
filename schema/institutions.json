@@ -372,6 +372,13 @@
         "w-and-b"
       ]
     },
+    "kicad": {
+      "label": "开源 PCB 设计套件（KiCad）",
+      "aliases": [
+        "kicad",
+        "kicad-org"
+      ]
+    },
     "wokwi": {
       "label": "在线电路仿真（Wokwi）",
       "aliases": [

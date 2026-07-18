@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-07-18",
-  "node_count": 1677,
-  "edge_count": 13252,
+  "node_count": 1678,
+  "edge_count": 13266,
   "coverage": {
-    "covered": 1630,
-    "total": 1660,
+    "covered": 1631,
+    "total": 1661,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/kicad.md",
+      "detail_id": "entity-kicad",
+      "label": "KiCad（开源 PCB 与原理图 EDA）",
+      "type": "entity",
+      "recency": "2026-07-18",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/overview/humanoid-hardware-101-power-compute-electronics.md",
+      "detail_id": "wiki-overview-humanoid-hardware-101-power-compute-electronics",
+      "label": "Humanoid Hardware 101 · 05：能源与计算电子",
+      "type": "overview",
+      "recency": "2026-07-18",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/simplefoc.md",
+      "detail_id": "entity-simplefoc",
+      "label": "SimpleFOC（Arduino-FOC 生态）",
+      "type": "entity",
+      "recency": "2026-07-18",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/overview/motor-design-workflow.md",
       "detail_id": "wiki-overview-motor-design-workflow",
@@ -16,7 +48,7 @@
       "recency": "2026-07-18",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/overview/humanoid-actuator-102-technology-map.md",
@@ -26,7 +58,7 @@
       "recency": "2026-07-18",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/concepts/field-oriented-control.md",
@@ -37,7 +69,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/comparisons/robot-control-eight-paradigms-taxonomy.md",
@@ -178,52 +210,23 @@
       "source": "log.md",
       "action": "added",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/methods/h-infinity-control.md",
-      "detail_id": "wiki-methods-h-infinity-control",
-      "label": "H-infinity Control（H∞ 控制）",
-      "type": "method",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/methods/mu-synthesis-control.md",
-      "detail_id": "wiki-methods-mu-synthesis-control",
-      "label": "Mu Synthesis Control（μ 综合控制）",
-      "type": "method",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/methods/mrac.md",
-      "detail_id": "wiki-methods-mrac",
-      "label": "MRAC（模型参考自适应控制）",
-      "type": "method",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/motor-design-workflow.md",
-    "detail_id": "wiki-overview-motor-design-workflow",
-    "label": "电机设计流程（规格 → 仿真 → 样机 → 控制）",
-    "type": "overview",
+    "path": "wiki/entities/kicad.md",
+    "detail_id": "entity-kicad",
+    "label": "KiCad（开源 PCB 与原理图 EDA）",
+    "type": "entity",
     "recency": "2026-07-18",
     "source": "log.md",
-    "action": "maintained",
-    "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 320
+      "size": 298
     },
     {
       "label": "人形论文深读笔记",
@@ -234,16 +237,16 @@
       "size": 167
     },
     {
-      "label": "人形强化学习运动控制",
-      "size": 139
+      "label": "全身控制",
+      "size": 151
     },
     {
       "label": "仿真到现实",
-      "size": 137
+      "size": 148
     },
     {
-      "label": "全身控制",
-      "size": 120
+      "label": "人形强化学习运动控制",
+      "size": 139
     }
   ],
   "top_hubs": [
@@ -297,8 +300,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 232,
-      "community_label": "运动控制（Locomotion） 社区"
+      "degree": 232
     },
     {
       "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",

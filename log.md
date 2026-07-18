@@ -1,5 +1,16 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-18] ingest | sources/sites/kicad-org.md + sources/courses/kicad_docs_10_zh.md + sources/repos/kicad.md — 接入 KiCad 开源 EDA；wiki/entities/kicad.md；交叉更新 depth-torque-motor-design Stage 4、humanoid-hardware-101-power-compute-electronics、simplefoc
+
+- sources/sites/kicad-org.md
+- sources/courses/kicad_docs_10_zh.md
+- sources/repos/kicad.md
+- wiki/entities/kicad.md
+- wiki/overview/humanoid-hardware-101-power-compute-electronics.md
+- wiki/entities/simplefoc.md
+- roadmap/depth-torque-motor-design.md
+- schema/institutions.json
+
 ## [2026-07-18] structural | roadmap/depth-torque-motor-design.md — 力矩电机设计纵深新增 Stage 4 电机驱动 PCB 设计，Stage 0–5 扩为 Stage 0–6
 
 - roadmap/depth-torque-motor-design.md：在 Stage 3（驱动硬件与电流环）与原 Stage 4（FOC 力矩闭环标定）之间插入「Stage 4 电机驱动 PCB 设计：把电流环装进自己的板子」——功率级选型 / 电流采样链路落板 / 布局散热 / 分步 bring-up，原 Stage 4/5 顺延为 Stage 5/6；摘要、Mermaid 路线图、快速入口表同步
