@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-17] structural | schema/canonical-facts.json 230 → 240 条 — V29 P2 补 10 条具身评测选型矛盾检测规则
+
+- schema/canonical-facts.json（新增 10 条：仿真可复现 vs 真机代表性、任务成功率 vs 过程/中间指标、世界模型视频质量 ≠ 策略收益、MLLM 认知评分 ≠ 可执行动作、单任务过拟合 vs 跨任务泛化、离线回放 vs 在线闭环、成功率均值掩盖长尾、基准饱和 ≠ 场景就绪、评测集泄漏致虚高、静态基准不覆盖分布漂移）
+- 校验：每条 `pos_claims` 锚定 `queries/embodied-eval-benchmark-selection-loop.md` / `concepts/sim-vs-real-eval-gap.md` 现存正文，pos 命中 ≥1 页；`neg_claims` 经全量 wiki 页复核 0 命中（0 误报）
+- `lint_wiki.py --report` 0 errors、潜在矛盾 0 个（信息型预警仍 22 条）；`ci-preflight` 12/12 通过
+- docs/checklists/tech-stack-next-phase-checklist-v29.md（P2 打勾 + DoD 事实库 240 条打勾）
+
 ## [2026-07-17] ingest | sources/blogs/sunday_act2_preview.md — Sunday ACT-2 预览：Solve 叠衣 99.1%、泛化鸿沟缩放与单示范 SFT；升格 wiki/entities/sunday-robotics-act2.md、wiki/concepts/robotics-solve-standard.md
 
 - wiki/entities/sunday-robotics-act2.md
