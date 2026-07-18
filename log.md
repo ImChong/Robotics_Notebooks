@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-18] ingest | sources/sites/genception-project.md — 复核 GenCeption 项目页开源状态（截至 2026-07-18 仍待发布；arXiv v1）
+
 ## [2026-07-18] ingest | sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md — 深蓝八大机器人控制体系；taxonomy + 8 体系 overview + 19 代表算法 method 页
 
 - sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md

@@ -4,7 +4,9 @@
 
 - **URL：** <https://genception.github.io/>
 - **对应论文：** [Video Generation Models are General-Purpose Vision Learners](https://arxiv.org/abs/2607.09024)（arXiv:2607.09024，ECCV 2026）
+- **代码：** 待发布（截至 **2026-07-18** 复核：项目页 Header/Footer/Resources 区 **无** GitHub、Hugging Face、Zenodo 等链接；论文 PDF 亦未列公开仓库）
 - **入库日期：** 2026-07-15
+- **开源状态复核：** 2026-07-18（arXiv 仍为 v1；无新版本）
 - **一句话说明：** 官方落地页：text-to-video 预训练 → feed-forward 统一视频感知范式演示、多任务结果视频、架构动画、涌现泛化案例与 BibTeX。
 
 ## 页面要点（2026-07 快照）
