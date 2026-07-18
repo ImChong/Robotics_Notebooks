@@ -1,6 +1,6 @@
 # 路线（纵深）：如果目标是力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环 → 关节模组）
 
-**摘要**：面向"想把关节电机从任务指标一路做到可验收力矩闭环模组"的纵深路线，从电机学地基与 TN/TI 读图，到关节指标定义与执行器架构选型、电磁热设计、驱动硬件与电流环，再到 FOC 力矩闭环标定补偿与台架验收交付，按 Stage 0–5 串通全流程；本路线是 [运动控制主路线](motion-control.md) 的硬件底座分支——所有控制/RL 纵深输出的关节力矩指令，最终都要靠这条路线交付的力矩闭环兑现。
+**摘要**：面向"想把关节电机从任务指标一路做到可验收力矩闭环模组"的纵深路线，从电机学地基与 TN/TI 读图，到关节指标定义与执行器架构选型、电磁热设计、驱动硬件与电流环、电机驱动 PCB 设计落板，再到 FOC 力矩闭环标定补偿与台架验收交付，按 Stage 0–6 串通全流程；本路线是 [运动控制主路线](motion-control.md) 的硬件底座分支——所有控制/RL 纵深输出的关节力矩指令，最终都要靠这条路线交付的力矩闭环兑现。
 
 ## 路线一览
 
@@ -10,20 +10,21 @@ flowchart LR
   S1["**Stage 1**<br/>指标与架构选型<br/><em>反射惯量 / QDD·谐波·丝杠</em>"]
   S2["**Stage 2**<br/>电磁与热设计<br/><em>齿槽·纹波 / Ld·Lq / 连续区</em>"]
   S3["**Stage 3**<br/>驱动与电流环<br/><em>电流采样 / 对齐 / 带宽</em>"]
-  S4["**Stage 4**<br/>力矩闭环与标定<br/><em>MTPA·弱磁 / 抗齿槽 / Kt 标定</em>"]
-  S5["**Stage 5**<br/>台架与模组交付<br/><em>整机 TN·TI / 总线力矩模式</em>"]
+  S4["**Stage 4**<br/>驱动 PCB 设计<br/><em>功率级 / 采样链路 / 布局散热</em>"]
+  S5["**Stage 5**<br/>力矩闭环与标定<br/><em>MTPA·弱磁 / 抗齿槽 / Kt 标定</em>"]
+  S6["**Stage 6**<br/>台架与模组交付<br/><em>整机 TN·TI / 总线力矩模式</em>"]
 
-  S0 --> S1 --> S2 --> S3 --> S4 --> S5
-  S4 -.->|参数回馈| S2
-  S5 -.->|温升降额| S1
+  S0 --> S1 --> S2 --> S3 --> S4 --> S5 --> S6
+  S5 -.->|参数回馈| S2
+  S6 -.->|温升降额| S1
 
   classDef stage fill:#142a3a,stroke:#16a085,stroke-width:2px,color:#fff
-  class S0,S1,S2,S3,S4,S5 stage
+  class S0,S1,S2,S3,S4,S5,S6 stage
 ```
 
 ## 这条路径怎么用
 
-- 目标读者是想做**力矩可控的关节执行器**的硬件/驱动/机器人工程师——不是"选一台电机装上"，而是让"给 1 Nm 就是 1 Nm"在指标、电磁、驱动、标定、验收五个层面都成立
+- 目标读者是想做**力矩可控的关节执行器**的硬件/驱动/机器人工程师——不是"选一台电机装上"，而是让"给 1 Nm 就是 1 Nm"在指标、电磁、驱动、落板、标定、验收六个层面都成立
 - 需要基础电磁学与电路直觉（安培力、反电势、RL 回路）；FEA 工具与控制推导会随路线逐步补
 - 每个阶段有前置知识、核心问题、推荐读什么、推荐做什么、学完输出什么
 - 主干工序总览可先读 [电机设计流程（规格 → 仿真 → 样机 → 控制）](../wiki/overview/motor-design-workflow.md)——本路线是它的**学习顺序展开版**：该页回答"工序有哪些"，本路线回答"按什么顺序把每道工序学成可动手的能力"
@@ -31,7 +32,7 @@ flowchart LR
 **和主路线的关系：**
 - 本路线位于主路线 L0–L2 之下的**硬件底座层**，任意阶段可切入；建议在主路线 L2（动力学）前后进入，此时"关节力矩"已经从抽象符号变成物理需求
 - [传统模型控制纵深](depth-classical-control.md) Stage 4 的 WBC 与 [RL 运动控制纵深](depth-rl-locomotion.md) 的策略最终都输出关节力矩指令；这条指令假设的"力矩源"就是本路线的交付物
-- sim2real 里的执行器建模（[Actuator Network](../wiki/methods/actuator-network.md)、[Implicit/Explicit 建模](../wiki/concepts/implicit-explicit-actuator-modeling.md)）在 Stage 5 与台架数据闭环——硬件团队交付的不只是模组，还有它的可仿真模型
+- sim2real 里的执行器建模（[Actuator Network](../wiki/methods/actuator-network.md)、[Implicit/Explicit 建模](../wiki/concepts/implicit-explicit-actuator-modeling.md)）在 Stage 6 与台架数据闭环——硬件团队交付的不只是模组，还有它的可仿真模型
 
 ---
 
@@ -134,7 +135,33 @@ flowchart LR
 
 ---
 
-## Stage 4 FOC 力矩闭环、标定与补偿
+## Stage 4 电机驱动 PCB 设计：把电流环装进自己的板子
+
+### 核心问题
+- 功率级选型怎么跟 Stage 1 的关节规格对齐：母线电压与峰值相电流决定 MOSFET 的 \(R_{ds(on)}\)/\(Q_g\) 权衡、栅极驱动（自举还是隔离）、死区设置与母线电容容量
+- Stage 3 的"采不准电流就谈不上力矩"怎么落到板上：采样电阻的开尔文接法、运放带宽与共模抑制、ADC 采样窗口与 PWM 中心对齐
+- 功率回路寄生电感与开关噪声怎么被布局布线管住：层叠与接地分区、功率环路面积最小化、编码器/总线小信号与功率级的隔离
+- 关节内嵌驱动板的体积与散热约束：铜皮 + 导热垫 + 外壳的散热路径怎么接进 Stage 2 的热预算，板级过流/过温/欠压保护阈值怎么定
+
+### 推荐读什么
+- [SimpleFOC（Arduino-FOC 生态）](../wiki/entities/simplefoc.md) "硬件：SimpleFOCBoards" 一节 — 原理图与制板指南开源，低功率参考设计的起点；更高功率参考 ODrive / VESC / mjbots
+- [开源人形机器人硬件](../wiki/entities/open-source-humanoid-hardware.md) — 自研关节驱动板的开源整机参考（ODRI Solo、Berkeley Humanoid Lite 等）
+- [Humanoid Hardware 101 · 05：能源与计算电子](../wiki/overview/humanoid-hardware-101-power-compute-electronics.md) — PCB/BMS 的模块复用与 DFM 降本视角
+- [CAN 总线协议](../wiki/concepts/can-bus-protocol.md) 与 [CAN vs EtherCAT 关节总线对比](../wiki/comparisons/can-vs-ethercat-joint-bus.md) — 总线接口硬件（收发器、隔离、终端电阻）在画原理图时就要定
+
+### 推荐做什么
+- 精读一块开源驱动板原理图（SimpleFOC Mini / ODrive / moteus 任一），标注功率回路、栅极驱动、电流采样链路、保护电路四条线路并画出信号流
+- 自绘一版关节驱动板：三相桥 + 栅极驱动 + 相电流采样 + MCU + CAN 收发器，走完原理图 → layout → 打样 → 焊接
+- 分步 bring-up：低压限流上电看栅极与相电压波形 → 校准电流采样零偏与增益 → 复跑 Stage 3 的电角度对齐与 \(i_d/i_q\) 电流闭环
+- 用示波器对比采样电阻两端电压与固件 ADC 读数，量化电流测量链路的误差与噪声底；复测电流环带宽，与 Stage 3 的开源板对比找差距
+
+### 学完输出什么
+- 一块能复跑 Stage 3 电流闭环的自研驱动板，附原理图、layout 与 bring-up 记录
+- 一份力矩精度的硬件误差预算表：采样电阻精度/温漂、运放失调、ADC 分辨率、死区畸变各贡献多少力矩误差——Stage 5 的标定补偿从这张表出发
+
+---
+
+## Stage 5 FOC 力矩闭环、标定与补偿
 
 ### 核心问题
 - MTPA 与弱磁怎么按 \(L_d/L_q\) 分配 \(i_d/i_q\)，高速区力矩指令为什么必须打折
@@ -159,7 +186,7 @@ flowchart LR
 
 ---
 
-## Stage 5 台架验收与关节模组交付
+## Stage 6 台架验收与关节模组交付
 
 ### 核心问题
 - 整机（电机+减速器+驱动器）TN/TI 与单电机差在哪：减速器效率、背隙、热阻会怎么改写包络
@@ -193,8 +220,9 @@ flowchart LR
 | Stage 1 | 指标反推与三大物种选型 | [Actuator 102 · 07：决策矩阵与三大物种](../wiki/overview/humanoid-actuator-102-decision-species.md) |
 | Stage 2 | 齿槽/纹波/热连续区 | [电机设计流程](../wiki/overview/motor-design-workflow.md) |
 | Stage 3 | 电流采样与电流环 | [FOC 逐步推导](../wiki/formalizations/field-oriented-control-derivation.md) |
-| Stage 4 | 力矩标定与补偿 | [磁场定向控制（FOC）](../wiki/concepts/field-oriented-control.md) |
-| Stage 5 | 模组验收与总线力矩模式 | [电机驱动器底软通信协议总览](../wiki/overview/motor-drive-firmware-bus-protocols.md) |
+| Stage 4 | 驱动板功率级/采样链路落板 | [Humanoid Hardware 101 · 05：能源与计算电子](../wiki/overview/humanoid-hardware-101-power-compute-electronics.md) |
+| Stage 5 | 力矩标定与补偿 | [磁场定向控制（FOC）](../wiki/concepts/field-oriented-control.md) |
+| Stage 6 | 模组验收与总线力矩模式 | [电机驱动器底软通信协议总览](../wiki/overview/motor-drive-firmware-bus-protocols.md) |
 
 ## 和其他页面的关系
 

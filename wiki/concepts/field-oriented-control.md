@@ -116,7 +116,7 @@ flowchart LR
 
 ## 关联页面
 
-- [力矩电机设计纵深路线（Stage 0–5 学习顺序展开版）](../../roadmap/depth-torque-motor-design.md)
+- [力矩电机设计纵深路线（Stage 0–6 学习顺序展开版）](../../roadmap/depth-torque-motor-design.md)
 - [FOC 逐步推导](../formalizations/field-oriented-control-derivation.md)
 - [电机驱动器底软通信协议总览](../overview/motor-drive-firmware-bus-protocols.md)
 - [SimpleFOC](../entities/simplefoc.md)
