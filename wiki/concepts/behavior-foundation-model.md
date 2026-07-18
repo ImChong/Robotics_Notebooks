@@ -2,7 +2,7 @@
 type: concept
 tags: [bfm, behavior-foundation-model, humanoid, whole-body-control, foundation-policy, pretraining, survey]
 status: complete
-updated: 2026-07-11
+updated: 2026-07-18
 related:
   - ./foundation-policy.md
   - ./whole-body-control.md
@@ -11,6 +11,7 @@ related:
   - ../entities/paper-behavior-foundation-model-humanoid.md
   - ../entities/paper-perceptive-bfm.md
   - ../entities/paper-reactivebfm.md
+  - ../entities/paper-scaling-bfm-humanoid.md
   - ../methods/sonic-motion-tracking.md
   - ../methods/beyondmimic.md
   - ../methods/dagger.md
@@ -84,14 +85,14 @@ flowchart TB
 
 | 路线 | 训练信号 | 典型能力 | 本库入口 |
 |------|----------|----------|----------|
-| **Goal-conditioned** | 外在 reward + 参考运动/目标状态 | Motion tracking、多模式 WBC、VR 遥操作 | [SONIC](../methods/sonic-motion-tracking.md)、[BFM 论文实体](../entities/paper-behavior-foundation-model-humanoid.md)（CVAE+掩码蒸馏） |
+| **Goal-conditioned** | 外在 reward + 参考运动/目标状态 | Motion tracking、多模式 WBC、VR 遥操作 | [SONIC](../methods/sonic-motion-tracking.md)、[BFM 论文实体](../entities/paper-behavior-foundation-model-humanoid.md)（CVAE+掩码蒸馏）、[ScaleBFM](../entities/paper-scaling-bfm-humanoid.md)（PPO+Transformer scaling） |
 | **Intrinsic-reward** | $r^{int}$：好奇心、多样性、覆盖 | 无显式参考的技能发现 | 综述列为历史/辅助线；人形 WBC 列表条目较少 |
 | **Forward–backward** | 无 reward 转移；F/B 嵌入 + 测试时 reward 组合 | 零样本到达、跟踪、奖励优化 | 与 CVAE-BFM 对照：[BFM 实体页](../entities/paper-behavior-foundation-model-humanoid.md) § 同期工作（BFM-Zero） |
 
 ### Goal-conditioned 子脉络（最贴近人形真机）
 
 - **跟踪驱动**：逐步对齐参考关节/姿态（DeepMimic 系）→ ASE/CALM/CASE 潜空间 → MaskedMimic / HOVER **多模式统一**。
-- **本库已深读代表**：[BFM](../entities/paper-behavior-foundation-model-humanoid.md) 把多接口写成 **位级掩码 + CVAE + 在线蒸馏**；[SONIC](../methods/sonic-motion-tracking.md) 强调 **MoCap 规模 + 网络/算力 scaling**；[Perceptive BFM](../entities/paper-perceptive-bfm.md) 在 **保留 raw 参考接口** 前提下用 **机器人中心感知** 闭合操作者–环境失配（楼梯/块/户外真机）；[ReactiveBFM](../entities/paper-reactivebfm.md) 把 BFM/SONIC 类 tracker 与 **自回归运动扩散规划器** 闭合成 **真机可部署 reactive 系统**，用 prefix curriculum 缓解开环级联的 exposure bias；[GPC](../entities/paper-gpc-generative-pretrained-controllers.md)（SIGGRAPH 2026）在 **物理角色动画** 侧把 **FSQ 离散技能 + GPT 式下一 token 预测 + CoLA 微调** 推到 **>600 h** 规模——与 BFM 人形真机栈 **互补对照**（仿真生成式先验 vs 机器人执行器）。
+- **本库已深读代表**：[BFM](../entities/paper-behavior-foundation-model-humanoid.md) 把多接口写成 **位级掩码 + CVAE + 在线蒸馏**；[ScaleBFM](../entities/paper-scaling-bfm-humanoid.md) 系统拆解 **PPO on-policy 数量 × 参考运动多样性 × Humanoid Transformer** 三轴 scaling，并以 **全局 integrated tracking** 刷新 SONIC 等跟踪基线；[SONIC](../methods/sonic-motion-tracking.md) 强调 **MoCap 规模 + 网络/算力 scaling**；[Perceptive BFM](../entities/paper-perceptive-bfm.md) 在 **保留 raw 参考接口** 前提下用 **机器人中心感知** 闭合操作者–环境失配（楼梯/块/户外真机）；[ReactiveBFM](../entities/paper-reactivebfm.md) 把 BFM/SONIC 类 tracker 与 **自回归运动扩散规划器** 闭合成 **真机可部署 reactive 系统**，用 prefix curriculum 缓解开环级联的 exposure bias；[GPC](../entities/paper-gpc-generative-pretrained-controllers.md)（SIGGRAPH 2026）在 **物理角色动画** 侧把 **FSQ 离散技能 + GPT 式下一 token 预测 + CoLA 微调** 推到 **>600 h** 规模——与 BFM 人形真机栈 **互补对照**（仿真生成式先验 vs 机器人执行器）。
 
 ## 适应两线（怎么接到新任务）
 
@@ -127,6 +128,7 @@ flowchart TB
 - [BFM（Behavior Foundation Model for Humanoid Robots）](../entities/paper-behavior-foundation-model-humanoid.md) — CVAE+掩码人形 WBC 单篇深读
 - [Perceptive BFM](../entities/paper-perceptive-bfm.md) — raw 参考 + 地形感知 PMT/TCRS
 - [ReactiveBFM](../entities/paper-reactivebfm.md) — 闭环 AR 规划 + BFM 跟踪，真机 reactive WBC
+- [ScaleBFM](../entities/paper-scaling-bfm-humanoid.md) — BFM scaling 三轴配方与 Humanoid Transformer
 - [GPC](../entities/paper-gpc-generative-pretrained-controllers.md) — FSQ 离散技能 + GPT 式预训练生成式控制器（>600 h，SIGGRAPH 2026）
 - [SONIC](../methods/sonic-motion-tracking.md) — goal-conditioned scaling 代表
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)

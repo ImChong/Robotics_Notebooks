@@ -1,5 +1,56 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-18] ingest | sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md — 深蓝八大机器人控制体系；taxonomy + 8 体系 overview + 19 代表算法 method 页
+
+- sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
+- sources/raw/wechat_shenlan_robot_control_eight_paradigms_2026-07-18.md
+- wiki/comparisons/robot-control-eight-paradigms-taxonomy.md
+- wiki/overview/robot-control-paradigm-classical-linear-feedback.md
+- wiki/overview/robot-control-paradigm-model-based-nonlinear-dynamics.md
+- wiki/overview/robot-control-paradigm-robust-control.md
+- wiki/overview/robot-control-paradigm-adaptive-control.md
+- wiki/overview/robot-control-paradigm-hybrid-position-force.md
+- wiki/overview/robot-control-paradigm-receding-horizon-ilc.md
+- wiki/overview/robot-control-paradigm-ml-driven-control.md
+- wiki/overview/robot-control-paradigm-rl-intelligent-control.md
+- wiki/methods/pole-placement-control.md
+- wiki/methods/computed-torque-control.md
+- wiki/methods/inverse-dynamics-control.md
+- wiki/methods/feedback-linearization-control.md
+- wiki/methods/sliding-mode-control.md
+- wiki/methods/h-infinity-control.md
+- wiki/methods/mu-synthesis-control.md
+- wiki/methods/mrac.md
+- wiki/methods/adaptive-computed-torque-control.md
+- wiki/methods/recursive-least-squares-control.md
+- wiki/methods/admittance-control.md
+- wiki/methods/direct-force-feedback-control.md
+- wiki/methods/iterative-learning-control.md
+- wiki/methods/neural-network-compensation-control.md
+- wiki/methods/gaussian-process-control.md
+- wiki/methods/fuzzy-logic-control.md
+- wiki/methods/unsupervised-clustering-fault-compensation.md
+- wiki/methods/value-based-reinforcement-learning.md
+- wiki/methods/hierarchical-reinforcement-learning.md
+
+## [2026-07-18] ingest | sources/papers/scaling_bfm_arxiv_2607_15163.md — ScaleBFM 三轴 scaling 配方与 Humanoid Transformer；升格 wiki/entities/paper-scaling-bfm-humanoid.md
+
+- wiki/entities/paper-scaling-bfm-humanoid.md
+- wiki/entities/paper-behavior-foundation-model-humanoid.md
+- wiki/concepts/behavior-foundation-model.md
+- wiki/methods/sonic-motion-tracking.md
+- wiki/entities/paper-reactivebfm.md
+- sources/papers/scaling_bfm_arxiv_2607_15163.md
+- sources/sites/scalebfm-github-io.md
+- sources/repos/scalebfm.md
+
+## [2026-07-17] structural | schema/canonical-facts.json 230 → 240 条 — V29 P2 补 10 条具身评测选型矛盾检测规则
+
+- schema/canonical-facts.json（新增 10 条：仿真可复现 vs 真机代表性、任务成功率 vs 过程/中间指标、世界模型视频质量 ≠ 策略收益、MLLM 认知评分 ≠ 可执行动作、单任务过拟合 vs 跨任务泛化、离线回放 vs 在线闭环、成功率均值掩盖长尾、基准饱和 ≠ 场景就绪、评测集泄漏致虚高、静态基准不覆盖分布漂移）
+- 校验：每条 `pos_claims` 锚定 `queries/embodied-eval-benchmark-selection-loop.md` / `concepts/sim-vs-real-eval-gap.md` 现存正文，pos 命中 ≥1 页；`neg_claims` 经全量 wiki 页复核 0 命中（0 误报）
+- `lint_wiki.py --report` 0 errors、潜在矛盾 0 个（信息型预警仍 22 条）；`ci-preflight` 12/12 通过
+- docs/checklists/tech-stack-next-phase-checklist-v29.md（P2 打勾 + DoD 事实库 240 条打勾）
+
 ## [2026-07-17] ingest | sources/blogs/sunday_act2_preview.md — Sunday ACT-2 预览：Solve 叠衣 99.1%、泛化鸿沟缩放与单示范 SFT；升格 wiki/entities/sunday-robotics-act2.md、wiki/concepts/robotics-solve-standard.md
 
 - wiki/entities/sunday-robotics-act2.md
