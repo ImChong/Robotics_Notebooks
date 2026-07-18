@@ -38,7 +38,9 @@
   - [如果目标是模仿学习与技能迁移](depth-imitation-learning.md)
   - [如果目标是 RL 运动控制](depth-rl-locomotion.md)
   - [如果目标是 Loco-Manipulation（移动操作）](depth-loco-manipulation.md)
+  - [如果目标是人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md)
   - [如果目标是动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md)
+  - [如果目标是人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md)
   - [如果目标是 BFM（人形行为基础模型）](depth-bfm.md)
   - [如果目标是感知越障](depth-perceptive-locomotion.md)
   - [如果目标是动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
@@ -1372,7 +1374,7 @@ flowchart TD
 
 ## 可选纵深（独立路线页）
 
-主路线偏向"先稳住一条主干"，但实际研究方向往往要继续深入某一个子专题。下面十四条纵深路径**各自是独立的 roadmap 页面**，从主路线的某个阶段衔接出去（按各方向起点里程碑的历史顺序排列，与首页、README 一致）：
+主路线偏向"先稳住一条主干"，但实际研究方向往往要继续深入某一个子专题。下面十六条纵深路径**各自是独立的 roadmap 页面**，从主路线的某个阶段衔接出去（按各方向起点里程碑的历史顺序排列，与首页、README 一致）：
 
 | 纵深路径 | 适合谁 | 主线衔接点 |
 |---------|------|-----------|
@@ -1384,7 +1386,9 @@ flowchart TD
 | [如果目标是模仿学习与技能迁移](depth-imitation-learning.md) | 想从人类演示数据驱动机器人技能 | L5.3 之后 |
 | [如果目标是 RL 运动控制](depth-rl-locomotion.md) | 想用 RL 让人形走起来、不愿从头啃控制理论 | L3 → L5.2 |
 | [如果目标是 Loco-Manipulation（移动操作）](depth-loco-manipulation.md) | 想让机器人边走边动手（搬箱、开门、端托盘）| L4 + L5 之后 |
+| [如果目标是人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md) | 想让机器人追球、射门、打整场比赛 | L5 之后 |
 | [如果目标是动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md) | 想搭"人体动作 → 机器人可执行参考"的数据管线 | L2 + L5.3 之后 |
+| [如果目标是人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md) | 想让两台人形在擂台上像人一样对打 | L5.3 之后 |
 | [如果目标是 BFM（人形行为基础模型）](depth-bfm.md) | 想用一个 checkpoint 控住人形全身 | L5.3 之后 |
 | [如果目标是感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md) | 想让机器人看着地形上楼梯、跨障碍、跑酷 | L5 之后 |
 | [如果目标是动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md) | 想用生成模型造出人体/人形动作 | L5.3 之后 |
@@ -1428,7 +1432,9 @@ flowchart TD
   - [如果目标是模仿学习与技能迁移](depth-imitation-learning.md)
   - [如果目标是 RL 运动控制](depth-rl-locomotion.md)
   - [如果目标是 Loco-Manipulation](depth-loco-manipulation.md)
+  - [如果目标是人形足球](depth-humanoid-soccer.md)
   - [如果目标是动作重定向](depth-motion-retargeting.md)
+  - [如果目标是人形拳击](depth-humanoid-boxing.md)
   - [如果目标是 BFM（人形行为基础模型）](depth-bfm.md)
   - [如果目标是感知越障](depth-perceptive-locomotion.md)
   - [如果目标是动作生成](depth-motion-generation.md)

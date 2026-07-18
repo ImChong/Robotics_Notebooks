@@ -244,6 +244,8 @@ flowchart LR
   - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
   - [VLA（视觉-语言-动作模型）](depth-vla.md)
   - [WAM（世界–动作模型）](depth-wam.md)
+  - [人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md)
+  - [人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md)
 - 关联知识页：
   - [Humanoid 执行器 102：八章技术地图](../wiki/overview/humanoid-actuator-102-technology-map.md)
   - [Humanoid Hardware 101 · 04：集成执行器](../wiki/overview/humanoid-hardware-101-integrated-actuators.md)

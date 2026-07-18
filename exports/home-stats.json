@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-07-18",
-  "node_count": 1679,
-  "edge_count": 13274,
+  "node_count": 1681,
+  "edge_count": 13385,
   "coverage": {
     "covered": 1632,
     "total": 1662,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/tasks/humanoid-soccer.md",
+      "detail_id": "wiki-tasks-humanoid-soccer",
+      "label": "Humanoid Soccer",
+      "type": "task",
+      "recency": "2026-07-18",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/kicad.md",
       "detail_id": "entity-kicad",
@@ -17,7 +27,7 @@
       "source": "log.md",
       "action": "added",
       "has_repo": true,
-      "community_label": "人形机器人（Humanoid Robot） 社区"
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/overview/humanoid-hardware-101-power-compute-electronics.md",
@@ -27,7 +37,7 @@
       "recency": "2026-07-18",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "人形机器人（Humanoid Robot） 社区"
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/entities/simplefoc.md",
@@ -38,7 +48,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "人形机器人（Humanoid Robot） 社区"
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/entities/altium-designer.md",
@@ -48,7 +58,7 @@
       "recency": "2026-07-18",
       "source": "log.md",
       "action": "added",
-      "community_label": "人形机器人（Humanoid Robot） 社区"
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/overview/motor-design-workflow.md",
@@ -58,7 +68,7 @@
       "recency": "2026-07-18",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "人形机器人（Humanoid Robot） 社区"
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/overview/humanoid-actuator-102-technology-map.md",
@@ -68,7 +78,7 @@
       "recency": "2026-07-18",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "人形机器人（Humanoid Robot） 社区"
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/concepts/field-oriented-control.md",
@@ -79,7 +89,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "人形机器人（Humanoid Robot） 社区"
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/comparisons/robot-control-eight-paradigms-taxonomy.md",
@@ -200,53 +210,42 @@
       "source": "log.md",
       "action": "added",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/methods/feedback-linearization-control.md",
-      "detail_id": "wiki-methods-feedback-linearization-control",
-      "label": "Feedback Linearization Control（反馈线性化控制）",
-      "type": "method",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/kicad.md",
-    "detail_id": "entity-kicad",
-    "label": "KiCad（开源 PCB 与原理图 EDA）",
-    "type": "entity",
+    "path": "wiki/tasks/humanoid-soccer.md",
+    "detail_id": "wiki-tasks-humanoid-soccer",
+    "label": "Humanoid Soccer",
+    "type": "task",
     "recency": "2026-07-18",
     "source": "log.md",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "人形机器人（Humanoid Robot） 社区"
+    "action": "maintained",
+    "has_repo": true
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 319
+      "size": 298
     },
     {
       "label": "人形论文深读笔记",
-      "size": 177
+      "size": 179
     },
     {
       "label": "移动操作",
-      "size": 167
+      "size": 176
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 139
+      "size": 171
     },
     {
       "label": "全身控制",
-      "size": 132
+      "size": 163
     },
     {
       "label": "仿真到现实",
-      "size": 107
+      "size": 90
     }
   ],
   "top_hubs": [
@@ -292,7 +291,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 235,
+      "degree": 236,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
@@ -300,7 +299,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 232
+      "degree": 233
     },
     {
       "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",
@@ -320,9 +319,8 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 175,
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "degree": 176,
+      "has_repo": true
     }
   ],
   "top_paper_hubs": [
@@ -338,7 +336,8 @@
       "label": "BeyondMimic",
       "type": "method",
       "degree": 53,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",
@@ -359,7 +358,8 @@
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
-      "degree": 44
+      "degree": 45,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
