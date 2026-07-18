@@ -154,7 +154,7 @@ flowchart TD
 
 ## 关联页面
 
-- [力矩电机设计纵深路线（Stage 0–5 学习顺序展开版）](../../roadmap/depth-torque-motor-design.md)
+- [力矩电机设计纵深路线（Stage 0–6 学习顺序展开版）](../../roadmap/depth-torque-motor-design.md)
 - [电机电磁仿真软件选型](../comparisons/motor-em-simulation-software.md)
 - [电机转矩-转速曲线（TN 曲线）](../concepts/motor-torque-speed-curve.md)
 - [电机转矩-电流曲线（TI 曲线）](../concepts/motor-torque-current-curve.md)

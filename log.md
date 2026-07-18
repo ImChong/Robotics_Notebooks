@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-18] structural | roadmap/depth-torque-motor-design.md — 力矩电机设计纵深新增 Stage 4 电机驱动 PCB 设计，Stage 0–5 扩为 Stage 0–6
+
+- roadmap/depth-torque-motor-design.md：在 Stage 3（驱动硬件与电流环）与原 Stage 4（FOC 力矩闭环标定）之间插入「Stage 4 电机驱动 PCB 设计：把电流环装进自己的板子」——功率级选型 / 电流采样链路落板 / 布局散热 / 分步 bring-up，原 Stage 4/5 顺延为 Stage 5/6；摘要、Mermaid 路线图、快速入口表同步
+- wiki/overview/motor-design-workflow.md、wiki/overview/humanoid-actuator-102-technology-map.md、wiki/concepts/field-oriented-control.md：入口文案 Stage 0–5 → Stage 0–6
+
 ## [2026-07-18] ingest | sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md — 深蓝八大机器人控制体系；taxonomy + 8 体系 overview + 19 代表算法 method 页
 
 - sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md

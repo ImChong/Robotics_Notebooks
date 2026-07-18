@@ -1,13 +1,44 @@
 {
   "generated_at": "2026-07-18",
   "node_count": 1677,
-  "edge_count": 13248,
+  "edge_count": 13252,
   "coverage": {
     "covered": 1630,
     "total": 1660,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/motor-design-workflow.md",
+      "detail_id": "wiki-overview-motor-design-workflow",
+      "label": "电机设计流程（规格 → 仿真 → 样机 → 控制）",
+      "type": "overview",
+      "recency": "2026-07-18",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/overview/humanoid-actuator-102-technology-map.md",
+      "detail_id": "wiki-overview-humanoid-actuator-102-technology-map",
+      "label": "Humanoid 执行器 102：八章技术地图",
+      "type": "overview",
+      "recency": "2026-07-18",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/concepts/field-oriented-control.md",
+      "detail_id": "wiki-concepts-field-oriented-control",
+      "label": "磁场定向控制（Field Oriented Control, FOC）",
+      "type": "concept",
+      "recency": "2026-07-18",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
     {
       "path": "wiki/comparisons/robot-control-eight-paradigms-taxonomy.md",
       "detail_id": "wiki-comparisons-robot-control-eight-paradigms-taxonomy",
@@ -177,47 +208,17 @@
       "source": "log.md",
       "action": "added",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/methods/adaptive-computed-torque-control.md",
-      "detail_id": "wiki-methods-adaptive-computed-torque-control",
-      "label": "Adaptive Computed Torque Control（自适应计算力矩，A-CTC）",
-      "type": "method",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/methods/recursive-least-squares-control.md",
-      "detail_id": "wiki-methods-recursive-least-squares-control",
-      "label": "Recursive Least Squares Control（RLS 递归最小二乘辨识）",
-      "type": "method",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/methods/admittance-control.md",
-      "detail_id": "wiki-methods-admittance-control",
-      "label": "Admittance Control（导纳控制）",
-      "type": "method",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/comparisons/robot-control-eight-paradigms-taxonomy.md",
-    "detail_id": "wiki-comparisons-robot-control-eight-paradigms-taxonomy",
-    "label": "八大机器人控制体系分类",
-    "type": "comparison",
+    "path": "wiki/overview/motor-design-workflow.md",
+    "detail_id": "wiki-overview-motor-design-workflow",
+    "label": "电机设计流程（规格 → 仿真 → 样机 → 控制）",
+    "type": "overview",
     "recency": "2026-07-18",
     "source": "log.md",
     "action": "maintained",
-    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
   },
   "top_communities": [
     {
