@@ -825,6 +825,13 @@
         "amap"
       ]
     },
+    "altium": {
+      "label": "奥碟创（Altium）",
+      "aliases": [
+        "altium",
+        "altium-designer"
+      ]
+    },
     "autodesk": {
       "label": "欧特克（Autodesk）",
       "aliases": [

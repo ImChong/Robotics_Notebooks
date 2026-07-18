@@ -145,6 +145,7 @@ flowchart LR
 
 ### 推荐读什么
 - [KiCad（开源 PCB EDA）](../wiki/entities/kicad.md) — 原理图 → layout → Gerber 的零许可成本工具链；[10.0 中文文档](https://docs.kicad.org/10.0/zh/) 与 `kicad-cli` 适合团队版控与打样前 DRC
+- [Altium Designer](../wiki/entities/altium-designer.md) — 商业 EDA 官方文档（原理图 → 规则驱动 layout → OutJob/制造发布、ECAD-MCAD 协同）；量产向自研驱动板的常用工具链
 - [SimpleFOC（Arduino-FOC 生态）](../wiki/entities/simplefoc.md) "硬件：SimpleFOCBoards" 一节 — 原理图与制板指南开源，低功率参考设计的起点；更高功率参考 ODrive / VESC / mjbots
 - [开源人形机器人硬件](../wiki/entities/open-source-humanoid-hardware.md) — 自研关节驱动板的开源整机参考（ODRI Solo、Berkeley Humanoid Lite 等）
 - [Humanoid Hardware 101 · 05：能源与计算电子](../wiki/overview/humanoid-hardware-101-power-compute-electronics.md) — PCB/BMS 的模块复用与 DFM 降本视角

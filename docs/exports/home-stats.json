@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-18",
-  "node_count": 1678,
-  "edge_count": 13266,
+  "node_count": 1679,
+  "edge_count": 13274,
   "coverage": {
-    "covered": 1631,
-    "total": 1661,
+    "covered": 1632,
+    "total": 1662,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -17,7 +17,7 @@
       "source": "log.md",
       "action": "added",
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "人形机器人（Humanoid Robot） 社区"
     },
     {
       "path": "wiki/overview/humanoid-hardware-101-power-compute-electronics.md",
@@ -27,7 +27,7 @@
       "recency": "2026-07-18",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "人形机器人（Humanoid Robot） 社区"
     },
     {
       "path": "wiki/entities/simplefoc.md",
@@ -38,7 +38,17 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "人形机器人（Humanoid Robot） 社区"
+    },
+    {
+      "path": "wiki/entities/altium-designer.md",
+      "detail_id": "entity-altium-designer",
+      "label": "Altium Designer",
+      "type": "entity",
+      "recency": "2026-07-18",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "人形机器人（Humanoid Robot） 社区"
     },
     {
       "path": "wiki/overview/motor-design-workflow.md",
@@ -48,7 +58,7 @@
       "recency": "2026-07-18",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "人形机器人（Humanoid Robot） 社区"
     },
     {
       "path": "wiki/overview/humanoid-actuator-102-technology-map.md",
@@ -58,7 +68,7 @@
       "recency": "2026-07-18",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "人形机器人（Humanoid Robot） 社区"
     },
     {
       "path": "wiki/concepts/field-oriented-control.md",
@@ -69,7 +79,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "人形机器人（Humanoid Robot） 社区"
     },
     {
       "path": "wiki/comparisons/robot-control-eight-paradigms-taxonomy.md",
@@ -200,16 +210,6 @@
       "source": "log.md",
       "action": "added",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/methods/sliding-mode-control.md",
-      "detail_id": "wiki-methods-sliding-mode-control",
-      "label": "Sliding Mode Control（滑模控制，SMC）",
-      "type": "method",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -221,12 +221,12 @@
     "source": "log.md",
     "action": "added",
     "has_repo": true,
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "community_label": "人形机器人（Humanoid Robot） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 298
+      "size": 319
     },
     {
       "label": "人形论文深读笔记",
@@ -237,16 +237,16 @@
       "size": 167
     },
     {
+      "label": "人形强化学习运动控制",
+      "size": 139
+    },
+    {
       "label": "全身控制",
-      "size": 151
+      "size": 132
     },
     {
       "label": "仿真到现实",
-      "size": 148
-    },
-    {
-      "label": "人形强化学习运动控制",
-      "size": 139
+      "size": 107
     }
   ],
   "top_hubs": [

@@ -2,6 +2,8 @@
 
 ## [2026-07-18] structural | scripts/utils/community_labels.py — 补 roadmap/depth-perceptive-locomotion.md 社区名 override，修复 pytest 社区命名测试
 
+- scripts/utils/community_labels.py
+
 ## [2026-07-18] ingest | sources/sites/kicad-org.md + sources/courses/kicad_docs_10_zh.md + sources/repos/kicad.md — 接入 KiCad 开源 EDA；wiki/entities/kicad.md；交叉更新 depth-torque-motor-design Stage 4、humanoid-hardware-101-power-compute-electronics、simplefoc
 
 - sources/sites/kicad-org.md
@@ -12,6 +14,13 @@
 - wiki/entities/simplefoc.md
 - roadmap/depth-torque-motor-design.md
 - schema/institutions.json
+
+## [2026-07-18] ingest | sources/sites/altium-designer-primary-refs.md — Altium Designer 官方文档一手资料；升格 wiki/entities/altium-designer.md
+
+- schema/institutions.json（注册 Altium 机构 alias）
+- sources/sites/altium-designer-primary-refs.md
+- wiki/entities/altium-designer.md
+- roadmap/depth-torque-motor-design.md（Stage 4 推荐读什么补充 Altium 入口）
 
 ## [2026-07-18] structural | roadmap/depth-torque-motor-design.md — 力矩电机设计纵深新增 Stage 4 电机驱动 PCB 设计，Stage 0–5 扩为 Stage 0–6
 

@@ -9,6 +9,7 @@ related:
   - ../queries/humanoid-battery-thermal-management.md
   - ../entities/open-source-humanoid-brains.md
   - ../entities/kicad.md
+  - ../entities/altium-designer.md
 sources:
   - ../../sources/blogs/wechat_human_five_humanoid_hardware_101.md
   - ../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md
@@ -41,7 +42,7 @@ sources:
 ## PCB
 
 - 驱动板、控制板、通信与电源管理；受益于 **面板化批量** 与汽车/移动电子生态。
-- 自研或改版开源板卡时，常用 **[KiCad](../entities/kicad.md)** 等开源 EDA 完成原理图 → layout → Gerber 交付；关节驱动落板细节见 [力矩电机设计纵深 Stage 4](../../roadmap/depth-torque-motor-design.md)。
+- 自研或改版开源板卡时，常用 **[KiCad](../entities/kicad.md)** 等开源 EDA 完成原理图 → layout → Gerber 交付；量产向流程可参考商业 EDA 官方文档 **[Altium Designer](../entities/altium-designer.md)**（规则驱动 layout、制造 OutJob、ECAD-MCAD 协同）。关节驱动落板细节见 [力矩电机设计纵深 Stage 4](../../roadmap/depth-torque-motor-design.md)；低功率开源对照见 [SimpleFOC](../entities/simplefoc.md) 板卡资料。
 
 ## 关联页面
 
@@ -49,6 +50,7 @@ sources:
 - [人形电池热管理 Query](../queries/humanoid-battery-thermal-management.md)
 - [开源人形「大脑」对比](../entities/open-source-humanoid-brains.md)
 - [KiCad（开源 PCB EDA）](../entities/kicad.md)
+- [Altium Designer（商业 PCB EDA）](../entities/altium-designer.md)
 - [产业与成本地缘](./humanoid-hardware-101-supply-chain-economics.md)
 
 ## 参考来源
