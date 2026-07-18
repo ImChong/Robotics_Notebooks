@@ -2,21 +2,24 @@
 type: method
 tags: [control, pid, classical-control, joint-control, quadruped]
 status: complete
-updated: 2026-06-23
+updated: 2026-07-18
 related:
+  - ../comparisons/robot-control-eight-paradigms-taxonomy.md
+  - ../overview/robot-control-paradigm-classical-linear-feedback.md
   - ./model-predictive-control.md
   - ./reinforcement-learning.md
   - ../comparisons/mpc-vs-rl.md
   - ../entities/quadruped-control-curriculum.md
   - ../concepts/sim2real.md
 sources:
+  - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/courses/quadruped_control_simulation_rl_curriculum.md
 summary: "PID 是关节级经典反馈控制：比例-积分-微分组合跟踪期望位置/速度；四足演进路线中作为底层执行层，复杂地形 loco 常由 RL 取代高层。"
 ---
 
 # PID Control（比例-积分-微分控制）
 
-**PID 控制**：根据误差 $e$ 及其积分、微分，输出控制量 $u$ 的经典 **线性反馈** 方法，仍是机器人 **关节伺服、姿态稳定** 的默认底层。
+PID 控制：根据误差 $e$ 及其积分、微分，输出控制量 $u$ 的经典 **线性反馈** 方法，仍是机器人 **关节伺服、姿态稳定** 的默认底层。
 
 ## 一句话定义
 
@@ -43,8 +46,8 @@ PID（单关节伺服）
     → RL（复杂地形端到端，PD 仍作执行层）
 ```
 
-- **PID/PD**：适合 **已知轨迹跟踪**、桌面级调试、站立平衡初版
-- **局限**：多关节耦合、接触切换、非结构化地形下 **手工调参难扩展**（MPC 在碎石地也会失效，从而引出 RL）
+- PID/PD：适合 **已知轨迹跟踪**、桌面级调试、站立平衡初版
+- 局限：多关节耦合、接触切换、非结构化地形下 **手工调参难扩展**（MPC 在碎石地也会失效，从而引出 RL）
 
 ## 离散形式（位置 PD）
 
@@ -56,8 +59,8 @@ $$
 
 ## 整定要点（衔接 Sim2Real）
 
-- **增益过高**：噪声放大、振荡、过热
-- **增益过低**：跟踪慢、抗扰差、跌倒
+- 增益过高：噪声放大、振荡、过热
+- 增益过低：跟踪慢、抗扰差、跌倒
 - 课程 Ch6 强调 **实机 PD 整定与安全协议** 与摩擦补偿、DR 并列
 
 ## 主要技术路线
@@ -85,11 +88,13 @@ RL 输出目标位置/力矩，**PD 仍作底层伺服**；复杂地形 loco 由
 
 ## 常见误区
 
-- **在四足复杂地形上纯 PID 做 loco**：缺少接触调度与步态，难以与 RL/MPC 路线竞争。
-- **积分项盲目开启**：饱和 windup，足式更常用 **PD + 前馈**。
+- 在四足复杂地形上纯 PID 做 loco：缺少接触调度与步态，难以与 RL/MPC 路线竞争。
+- 积分项盲目开启：饱和 windup，足式更常用 **PD + 前馈**。
 
 ## 关联页面
 
+- [八大机器人控制体系分类](../comparisons/robot-control-eight-paradigms-taxonomy.md)
+- [经典线性反馈控制（体系①）](../overview/robot-control-paradigm-classical-linear-feedback.md)
 - [Model Predictive Control](./model-predictive-control.md)
 - [Reinforcement Learning](./reinforcement-learning.md)
 - [MPC vs RL](../comparisons/mpc-vs-rl.md)
@@ -103,4 +108,5 @@ RL 输出目标位置/力矩，**PD 仍作底层伺服**；复杂地形 loco 由
 
 ## 参考来源
 
+- [wechat_shenlan_robot_control_eight_paradigms.md](../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md) — 深蓝八大控制体系：经典线性反馈代表算法
 - [sources/courses/quadruped_control_simulation_rl_curriculum.md](../../sources/courses/quadruped_control_simulation_rl_curriculum.md) — 课程 Ch1 控制演进

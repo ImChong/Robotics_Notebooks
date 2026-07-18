@@ -1,5 +1,38 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-18] ingest | sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md — 深蓝八大机器人控制体系；taxonomy + 8 体系 overview + 19 代表算法 method 页
+
+- sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
+- sources/raw/wechat_shenlan_robot_control_eight_paradigms_2026-07-18.md
+- wiki/comparisons/robot-control-eight-paradigms-taxonomy.md
+- wiki/overview/robot-control-paradigm-classical-linear-feedback.md
+- wiki/overview/robot-control-paradigm-model-based-nonlinear-dynamics.md
+- wiki/overview/robot-control-paradigm-robust-control.md
+- wiki/overview/robot-control-paradigm-adaptive-control.md
+- wiki/overview/robot-control-paradigm-hybrid-position-force.md
+- wiki/overview/robot-control-paradigm-receding-horizon-ilc.md
+- wiki/overview/robot-control-paradigm-ml-driven-control.md
+- wiki/overview/robot-control-paradigm-rl-intelligent-control.md
+- wiki/methods/pole-placement-control.md
+- wiki/methods/computed-torque-control.md
+- wiki/methods/inverse-dynamics-control.md
+- wiki/methods/feedback-linearization-control.md
+- wiki/methods/sliding-mode-control.md
+- wiki/methods/h-infinity-control.md
+- wiki/methods/mu-synthesis-control.md
+- wiki/methods/mrac.md
+- wiki/methods/adaptive-computed-torque-control.md
+- wiki/methods/recursive-least-squares-control.md
+- wiki/methods/admittance-control.md
+- wiki/methods/direct-force-feedback-control.md
+- wiki/methods/iterative-learning-control.md
+- wiki/methods/neural-network-compensation-control.md
+- wiki/methods/gaussian-process-control.md
+- wiki/methods/fuzzy-logic-control.md
+- wiki/methods/unsupervised-clustering-fault-compensation.md
+- wiki/methods/value-based-reinforcement-learning.md
+- wiki/methods/hierarchical-reinforcement-learning.md
+
 ## [2026-07-18] ingest | sources/papers/scaling_bfm_arxiv_2607_15163.md — ScaleBFM 三轴 scaling 配方与 Humanoid Transformer；升格 wiki/entities/paper-scaling-bfm-humanoid.md
 
 - wiki/entities/paper-scaling-bfm-humanoid.md

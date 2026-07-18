@@ -2,12 +2,16 @@
 type: method
 tags: [rl, model-based, planning, locomotion, sample-efficiency, horizon-robotics]
 status: complete
-updated: 2026-07-14
+updated: 2026-07-18
 related:
+  - ../comparisons/robot-control-eight-paradigms-taxonomy.md
+  - ../overview/robot-control-paradigm-rl-intelligent-control.md
+  - ../methods/gaussian-process-control.md
   - ../entities/richard-sutton.md
   - ../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md
   - ../concepts/world-action-models.md
 sources:
+  - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/blogs/sutton_one_step_trap.md
   - ../../sources/sites/incompleteideas-net-rich-sutton.md
 summary: "Model-Based RL 借助环境模型提升样本效率，在机器人控制中常与规划和世界模型结合。"

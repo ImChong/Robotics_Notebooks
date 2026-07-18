@@ -2,12 +2,16 @@
 type: concept
 tags: [control, manipulation, force-control, position-control, contact-rich, assembly]
 status: complete
-updated: 2026-04-20
+updated: 2026-07-18
 summary: "力位混合控制把不同方向上的控制目标拆分为位置跟踪与力跟踪两类，是接触丰富操作中最常见的执行层结构之一。"
 sources:
+  - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/papers/contact_dynamics.md
   - ../../sources/papers/contact_planning.md
 related:
+  - ../comparisons/robot-control-eight-paradigms-taxonomy.md
+  - ../overview/robot-control-paradigm-hybrid-position-force.md
+  - ../methods/direct-force-feedback-control.md
   - ../queries/contact-wrench-closed-loop.md
   - ./contact-force-loop-bandwidth.md
   - ./impedance-control.md
@@ -97,14 +101,16 @@ $$ \tau = J^T ( S f_{pos} + \bar{S} f_{force} ) $$
 
 ## 参考来源
 
+- [wechat_shenlan_robot_control_eight_paradigms.md](../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md) — 深蓝八大控制体系：力位混合代表算法
 - Raibert, M. H., & Craig, J. J. (1981). *Hybrid position/force control of manipulators*. Journal of Dynamic Systems, Measurement, and Control.
 - Khatib, O. (1987). *A unified approach for motion and force control of robot manipulators: The operational space formulation*. IEEE Journal on Robotics and Automation.
 - [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md) — 接触力基础
 
 ## 关联页面
 
-- [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 本页是四层闭环里的 **③ 控制层**（力位子空间正交划分这条路线）
-- [Contact-Force-Loop Bandwidth（力控闭环带宽）](./contact-force-loop-bandwidth.md) — 力控子空间的带宽/刚度取舍与传感器时延边界
+- [八大机器人控制体系分类](../comparisons/robot-control-eight-paradigms-taxonomy.md)
+- [位置/力混合控制（体系⑤）](../overview/robot-control-paradigm-hybrid-position-force.md)
+- [Direct Force Feedback Control](../methods/direct-force-feedback-control.md)
 - [Impedance Control](./impedance-control.md)
 - [Contact-Rich Manipulation](./contact-rich-manipulation.md)
 - [Whole-Body Control](./whole-body-control.md)

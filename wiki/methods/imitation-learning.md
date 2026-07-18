@@ -2,8 +2,10 @@
 type: method
 tags: [il, behavior-cloning, diffusion-policy, sim2real]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-18
 related:
+  - ../comparisons/robot-control-eight-paradigms-taxonomy.md
+  - ../overview/robot-control-paradigm-rl-intelligent-control.md
   - ../concepts/humanoid-policy-network-architecture.md
   - ./bc-z.md
   - ./learning-from-play-lmp.md
@@ -22,6 +24,7 @@ related:
   - ./smp.md
   - ./disney-olaf-character-robot.md
 sources:
+  - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/humanoid_touch_dream.md
   - ../../sources/papers/humannet.md

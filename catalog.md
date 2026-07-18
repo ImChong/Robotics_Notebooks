@@ -1222,7 +1222,9 @@
 - [Adagrad（Adaptive Gradient）](wiki/methods/adagrad.md) — Adagrad**：为每个参数维护 **累积梯度平方** $G_t$，用 $\eta / \sqrt{G_t + \epsilon}$ 缩放各维步长——梯度历史大的参数获得更小有效学习率，稀疏特征 `📅unknown` `[method_page]`
 - [Adam（Adaptive Moment Estimation）](wiki/methods/adam.md) — Adam**：对 mini-batch 梯度 $g_t$ 同时估计 **一阶矩** $m_t$（动量）与 **二阶矩** $v_t$（RMSProp 式方差），经  `📅unknown` `[method_page]`
 - [AdamW（Adam with Decoupled Weight Decay）](wiki/methods/adamw.md) — AdamW**：在 Adam 更新之后（或之前，实现细节各异），**独立**施加权重衰减 $\theta \leftarrow \theta - \eta \lambda `📅unknown` `[method_page]`
+- [Adaptive Computed Torque Control（自适应计算力矩，A-CTC）](wiki/methods/adaptive-computed-torque-control.md) — A-CTC：在 CTC 框架内在线辨识/更新惯性、质量等动力学参数，动态修正前馈补偿。 `📅unknown` `[method_page]`
 - [ADD: 对抗性微分判别器](wiki/methods/add.md) — Adversarial Differential Discriminator (ADD)** 是对 amp-reward 架构的重要改进，旨在解决生成动作中的物理 `📅unknown` `[method_page]`
+- [Admittance Control（导纳控制）](wiki/methods/admittance-control.md) — 导纳控制：以测得的外力为输入，输出位置/速度修正，实现力→运动的柔顺响应，与阻抗控制对偶。 `📅unknown` `[method_page]`
 - [AMP & HumanX: 判别器驱动的风格学习](wiki/methods/amp-reward.md) — 在机器人动作模仿中，单纯的轨迹跟踪奖励（如关节角度 MSE）往往会导致机器人出现高频抖动、抽搐或不自然的步态。**AMP** 引入了生成对抗的思想来提升运动质量，而 **HumanX** 将其扩展到了 `📅unknown` `[method_page]`
 - [AMS: 物理可行性过滤与混合奖励](wiki/methods/ams.md) — 在人形机器人动作合成与学习中，很多参考动捕数据（MoCap）由于人体与机器人的动力学差异，直接模仿会导致物理不可行。**AMS** 提供了一套系统化的数据清洗与奖励设计方法。 `📅unknown` `[method_page]`
 - [Any2Track & RGMT: 增强型自适应与时序建模](wiki/methods/any2track.md) — 在复杂的人形机器人控制任务（如多步动作模仿或动态越障）中，传统的单帧马尔可夫决策过程 (MDP) 往往不足以捕捉环境的非平稳性（如地面滑移、外力扰动）。**Any2Track** 与 **RGMT `📅unknown` `[method_page]`
@@ -1240,6 +1242,7 @@
 - [Centroidal NMPC + WBC 栈](wiki/methods/centroidal-nmpc-wbc-stack.md) — 飞书 Know-How 将 **质心动力学模型 + 非线性模型预测控制 + WBC（CD+NMPC+WBC）** 列为传统控制主链的**高保真层**：NMPC 在质心动量/接触力变量上滚动优化，WBC `📅unknown` `[method_page]`
 - [Chasing Autonomy Pipeline](wiki/methods/chasing-autonomy-pipeline.md) — Chasing Autonomy Pipeline** 是由加州理工学院和 Unitree 团队（Olkin et al., 2026）提出的一套使人形机器人能够高性能奔跑的系统框架。它有效衔接了 `📅unknown` `[method_page]`
 - [CLAW (宇树 G1 全身动作数据生成管线)](wiki/methods/claw.md) — CLAW** (Composable Language-Annotated Whole-Body Motion Data Generation) 是一种面向人形机器人的模块化数据生成方案。它通过将 `📅unknown` `[method_page]`
+- [Computed Torque Control（计算力矩控制，CTC）](wiki/methods/computed-torque-control.md) — CTC：用动力学模型计算前馈力矩抵消非线性耦合，再叠加反馈使闭环近似线性解耦系统。 `📅unknown` `[method_page]`
 - [Conjugate Gradient Method（共轭梯度法）](wiki/methods/conjugate-gradient-method.md) — 共轭梯度（CG）**：在 $n$ 维空间构造 $A$-共轭方向，至多 $n$ 步解精确线性系统 $Ax=b$（精确算术）；对大型稀疏 SPD 矩阵，截断 CG 是求解凸 QP 牛顿步、弹性力学与  `📅unknown` `[method_page]`
 - [ContactNet](wiki/methods/contact-net.md) — ContactNet** 解决了“在杂乱无章的堆叠物中，手手该按在哪”的问题。它直接输入原始点云，输出稠密的接触成功概率图。 `📅unknown` `[method_page]`
 - [Convex Relaxation in Robotics（机器人凸松弛）](wiki/methods/convex-relaxation-robotics.md) — 凸松弛**：将非凸 QCQP / 组合问题 **放松为凸问题**（SDP/SOCP/LP），求下界或近似解；配合 **Riemannian Staircase**、**分布式松弛** 与 **GN `📅unknown` `[method_page]`
@@ -1252,6 +1255,7 @@
 - [DIAL（指令增强）](wiki/methods/dial-instruction-augmentation.md) — DIAL（Data-driven Instruction Augmentation for Language-conditioned control）**：在少量人工指令标注上微调 VLM，再对海 `📅unknown` `[method_page]`
 - [Diffusion-based Motion Generation (基于扩散模型的运动生成)](wiki/methods/diffusion-motion-generation.md) — Diffusion-based Motion Generation**：利用扩散概率模型（Diffusion Probabilistic Models）生成机器人关节空间或笛卡尔空间的连续运动序列 `📅unknown` `[method_page]`
 - [Diffusion Policy](wiki/methods/diffusion-policy.md) — Diffusion Policy**：将扩散生成模型（Diffusion Model）用于机器人模仿学习，通过逆扩散过程从噪声中生成动作序列的策略学习方法。 `📅unknown` `[method_page]`
+- [Direct Force Feedback Control（直接力反馈控制）](wiki/methods/direct-force-feedback-control.md) — 直接力反馈：以目标接触力为设定值，力传感器闭环直接调节执行器输出，结构最简单。 `📅unknown` `[method_page]`
 - [Disney Olaf 角色机器人（实机动画角色）](wiki/methods/disney-olaf-character-robot.md) — 一句话定义：** 面向「高角色保真 + 紧凑机电包络」的娱乐型双足平台：用**动画参考 + RL** 解决非物理比例与风格化步态，用**机构设计**解决「看不见腿」与**热/声学**等实演约束。 `📅unknown` `[method_page]`
 - [Dynamic Movement Primitives (DMP)](wiki/methods/dmp.md) — DMP** 是一种用于轨迹建模和控制的方法。它将复杂的运动路径表示为一个非线性动力学系统，其核心是一个受迫振荡器，可以通过调整参数来改变运动的速度和目标位置，而不需要重新规划。 `📅unknown` `[method_page]`
 - [DreamWaQ：盲走一阶段鲁棒行走](wiki/methods/dreamwaq.md) — DreamWaQ**（*Learning Robust Quadrupedal Locomotion With Implicit Terrain Imagination*，ICRA 2023，[a `📅unknown` `[method_page]`
@@ -1262,16 +1266,21 @@
 - [EgoScale](wiki/methods/egoscale.md) — EgoScale**（NVIDIA GEAR Lab 等，arXiv:2602.16710）研究的是：能否把 **互联网尺度的第 `📅2026-05-17` `[method_page]`
 - [ENPIRE](wiki/methods/enpire.md) — ENPIRE**（NVIDIA GEAR Lab 等，2026）研究的是：能否把 **真机机器人策略开发** 从「人类盯实验 + `📅2026-06-18` `[method_page]`
 - [ExoActor (视频生成驱动的交互式人形控制)](wiki/methods/exoactor.md) — ExoActor** 把"第三人称（exocentric）视频生成"作为人形机器人 **交互动力学的统一接口**：给定任务指令与场景观测，先让大型视频生成模型"想象"出一段任务执行视频，再把视频翻 `📅unknown` `[method_page]`
+- [Feedback Linearization Control（反馈线性化控制）](wiki/methods/feedback-linearization-control.md) — 反馈线性化：通过状态反馈与坐标变换消去系统非线性，化为可控线性形式后复用 LQR/PID。 `📅unknown` `[method_page]`
 - [FlashSAC](wiki/methods/flashsac.md) — FlashSAC**（arXiv:2604.04539，[项目页](https://holiday-robot.github `📅unknown` `[method_page]`
+- [Fuzzy Logic Control（模糊逻辑控制）](wiki/methods/fuzzy-logic-control.md) — 模糊逻辑控制：将操作经验编码为 If-Then 模糊规则，经模糊推理与去模糊得到控制量，无需精确动力学方程。 `📅unknown` `[method_page]`
 - [Generalized Advantage Estimation (GAE)](wiki/methods/gae.md) — GAE** 解决了强化学习中一个核心痛点：如何准确估计一个动作比平均水平“好多少”（即优势函数 $A(s, a)$），同时保持低方差。 `📅unknown` `[method_page]`
 - [Gauss-Newton（高斯-牛顿法）](wiki/methods/gauss-newton.md) — Gauss-Newton（GN）**：最小化 $\|r(x)\|^2$ 时，用残差 Jacobian $J(x) = \partial r / \partial x$ 构造 Hessian 近似  `📅unknown` `[method_page]`
+- [Gaussian Process Control（高斯过程控制）](wiki/methods/gaussian-process-control.md) — GP 控制：用高斯过程建立概率动力学模型，预测下一状态并给出不确定度，支持安全约束下的决策。 `📅unknown` `[method_page]`
 - [Generative Data Augmentation (生成式数据增强)](wiki/methods/generative-data-augmentation.md) — 在具身智能训练中，**生成式数据增强** 是解决“长尾效应 (Long-tail Distribution)”的关键。虽然我们可以轻易采集到成千上万条成功的“拿杯子”演示，但“杯子滑落”、“手部剧烈抖 `📅unknown` `[method_page]`
 - [Generative World Models (生成式世界模型)](wiki/methods/generative-world-models.md) — 生成式世界模型** 是具身智能（Embodied AI）领域的下一代物理引擎替代者。不同于 Drake 或 MuJoCo 等基于严谨几何和力学方程的解析引擎，生成式世界模型直接利用**生成式 AI `📅unknown` `[method_page]`
 - [GENMO（统一人体运动估计与生成）](wiki/methods/genmo.md) — GENMO**（*A GENeralist Model for Human MOtion*，NVIDIA Research，**ICCV 2025 Highlight**；代码与权重发布后更名为  `📅unknown` `[method_page]`
 - [GentleHumanoid（上半身柔顺全身运动跟踪）](wiki/methods/gentlehumanoid-motion-tracking.md) — GentleHumanoid**（Stanford 等，arXiv:2511.04679，[项目页](https://gen `📅unknown` `[method_page]`
 - [Grasp Pose Estimation（抓取位姿估计）](wiki/methods/grasp-pose-estimation.md) — 抓取位姿估计 (Grasp Pose Estimation)** 解决「相机看到一堆物体，应该把夹爪放在哪、怎么转、张多大」这一感知子问题：把 **RGBD / 深度 / 点云** 观测映射为一组 `📅unknown` `[method_page]`
+- [H-infinity Control（H∞ 控制）](wiki/methods/h-infinity-control.md) — H∞ 控制：最小化从扰动/不确定性到跟踪误差的 **最坏情况** $H_\infty$ 范数，保证鲁棒性能界。 `📅unknown` `[method_page]`
 - [HAIC: 基于世界模型的教师-学生训练](wiki/methods/haic.md) — 在复杂的物体交互任务（如搬运、协作、精细操作）中，机器人不仅要模仿姿态，还要实时预测物体状态和外力。**HAIC** 提出了一种创新的训练范式，通过世界模型（World Model）将特权信息（Pri `📅unknown` `[method_page]`
 - [Hindsight Experience Replay (HER)](wiki/methods/her.md) — HER** 是一种处理“稀疏奖励（Sparse Reward）”任务的绝佳技巧。在抓取或装配任务中，如果机器人只有在完美完成任务时才得到 1 分奖励，它很难通过随机探索学到任何东西。 `📅unknown` `[method_page]`
+- [Hierarchical Reinforcement Learning（分层强化学习，HRL）](wiki/methods/hierarchical-reinforcement-learning.md) — HRL：上层策略拆分子任务/选项，下层策略执行具体运动，缓解长时程信用分配与探索难题。 `📅unknown` `[method_page]`
 - [HIL: Hybrid Imitation Learning（混合模仿学习）](wiki/methods/hil-hybrid-imitation-learning.md) — HIL** 将 **逐帧 motion tracking** 与 **AMP 式对抗模仿** 放在同一策略、同一观测空间里并行训练，使物理仿真角色既能精确学会跑酷参考动作，又能在新障碍布局中灵活组 `📅unknown` `[method_page]`
 - [HiPAN（Hierarchical Posture-Adaptive Navigation）](wiki/methods/hipan.md) — HiPAN** 是面向**四足机器人**在**非结构化三维环境**（窄通道、限高、死胡同、半封闭房间）中的导航框架：部署时**不依赖显式三维地图**，仅用**机载深度**做感知，通过**分层强化学 `📅unknown` `[method_page]`
 - [htwk-gym](wiki/methods/htwk-gym.md) — htwk-gym** 是一个开源的强化学习（RL）框架，专门针对人形机器人足球（Humanoid Soccer）竞赛设计。该框架由 RoboCup 强队 HTWK Leipzig 维护，在 **B `📅unknown` `[method_page]`
@@ -1280,6 +1289,8 @@
 - [Imitation Learning (IL, 模仿学习)](wiki/methods/imitation-learning.md) — 模仿学习 (Imitation Learning)**：通过专家演示数据（**行为克隆**、**DAgger** 等），让机器人学会从状态到动作的映射，核心是“抄”。 `📅unknown` `[method_page]`
 - [In-hand Reorientation (手内重定向)](wiki/methods/in-hand-reorientation.md) — 手内重定向 (In-hand Reorientation)** 是灵巧操作（Dexterous Manipulation）领域中最具挑战性的任务之一。它的目标是让多指灵巧手（如 Allegro H `📅unknown` `[method_page]`
 - [Intentional Updates for Streaming RL（意图更新与流式强化学习）](wiki/methods/intentional-updates-streaming-rl.md) — 意图更新（intentional updates）指：不显式固定「参数空间步长」，而是先规定**当前这一步在关心的输出量**（价值预测、动作 log-probability 等）上希望达到的变化，再用 `📅2026-05-10` `[method_page]`
+- [Inverse Dynamics Control（逆动力学控制，IDC）](wiki/methods/inverse-dynamics-control.md) — IDC：由期望轨迹 $(q_d,\dot{q}_d,\ddot{q}_d)$ 经动力学逆解直接得前馈力矩，辅以少量反馈修正。 `📅unknown` `[method_page]`
+- [Iterative Learning Control（迭代学习控制，ILC）](wiki/methods/iterative-learning-control.md) — ILC：重复执行同一轨迹时，将上批次全程误差映射为下一批次前馈修正，迭代提升跟踪精度。 `📅unknown` `[method_page]`
 - [L-BFGS（Limited-memory BFGS）](wiki/methods/l-bfgs.md) — L-BFGS**：BFGS 的 **有限内存** 变体，只保留最近 $m$ 对 $(s_k, y_k)$，用 **two-loop recursion** 隐式计算 $H `📅unknown` `[method_page]`
 - [LCP: Lipschitz 约束策略](wiki/methods/lcp.md) — Lipschitz-Constrained Policies (LCP)** 旨在提高深度强化学习策略在物理控制任务中的数值稳定性和鲁棒性。 `📅unknown` `[method_page]`
 - [Learning from Play（Play-LMP）](wiki/methods/learning-from-play-lmp.md) — Learning from Play**：利用大量未标注任务边界的机器人交互片段（play），学习潜在「计划」表征与条件策略，从而在少量任务标注下完成复杂操控序列。 `📅unknown` `[method_page]`
@@ -1293,17 +1304,20 @@
 - [Multi-Agent Reinforcement Learning (MARL)](wiki/methods/marl.md) — MARL** 扩展了单智能体 RL，处理多个机器人在同一空间协作或竞争的问题（如机器人足球、多臂流水线）。 `📅unknown` `[method_page]`
 - [mimic-video（Video-Action Model, VAM）](wiki/methods/mimic-video.md) — mimic-video 是一类把互联网规模视频生成模型当作操作语义与物理动力学先验的通用操作策略：先在视频潜空间里形成与语言指令一致的视觉动力学计划，再以流匹配动作头输出机器人动作块。 `📅2026-05-17` `[method_page]`
 - [Model-Based RL（基于模型的强化学习）](wiki/methods/model-based-rl.md) — Model-Based RL（MBRL）**：在强化学习中，智能体显式学习或利用环境的动力学模型，通过在模型中规划或生成虚拟经验来提升样本效率。 `📅unknown` `[method_page]`
-- [Model Predictive Control (MPC，模型预测控制)](wiki/methods/model-predictive-control.md) — 模型预测控制**：一种基于滚动时域优化的控制方法，在每个时刻求解一个有限时域的最优控制问题，只执行第一步，然后重复。 `📅unknown` `[method_page]`
+- [Model Predictive Control (MPC，模型预测控制)](wiki/methods/model-predictive-control.md) — 模型预测控制：一种基于滚动时域优化的控制方法，在每个时刻求解一个有限时域的最优控制问题，只执行第一步，然后重复。 `📅unknown` `[method_page]`
 - [GMR: 通用动作重定向](wiki/methods/motion-retargeting-gmr.md) — GMR (General Motion Retargeting)** 是运动控制流程中的“前端”模块，负责将人类或其他来源的动作序列转换为机器人可理解的关节角度序列。 `📅unknown` `[method_page]`
 - [MotionBricks: 模块化生成式运动合成框架](wiki/methods/motionbricks.md) — MotionBricks** 是 NVIDIA Research 推出的一种用于人形机器人和数字角色的高保真运动生成框架。它代表了从「判别式运动先验」（如 [AMP](./amp-reward.m `📅unknown` `[method_page]`
 - [Model Predictive Path Integral (MPPI)](wiki/methods/mppi.md) — MPPI** 是一种基于采样（Sampling-based）的随机最优控制算法。它不依赖于对动力学方程进行求导（与 DDP/iLQR 不同），而是通过在 GPU 上并行生成成千上万条随机轨迹，并根 `📅unknown` `[method_page]`
+- [MRAC（模型参考自适应控制）](wiki/methods/mrac.md) — MRAC：指定理想参考模型动态，用自适应律在线调节控制器，使实际输出渐近匹配参考模型。 `📅unknown` `[method_page]`
 - [MT-Opt](wiki/methods/mt-opt.md) — MT-Opt**：在多机器人并行采集框架下，同时学习多项操控技能的连续动作多任务深度强化学习系统；强调任务规范、成功检测器与跨任务表示共享。 `📅unknown` `[method_page]`
 - [MTRG / GfR: Multi-Task Reference and Goal-Driven RL](wiki/methods/mtrg-reference-goal-driven-rl.md) — GfR**（Generalizing from References，**RSS 2026**）提出多任务 RL 范式， `📅unknown` `[method_page]`
+- [Mu Synthesis Control（μ 综合控制）](wiki/methods/mu-synthesis-control.md) — μ 综合：在 H∞ 框架上显式处理 **结构化参数不确定性**（多关节耦合、多参数漂移），优化稳定裕度。 `📅unknown` `[method_page]`
 - [Muon（MomentUm Orthogonalized by Newton–Schulz）](wiki/methods/muon.md) — Muon** 是面向神经网络 **隐藏层 2D 权重矩阵** 的优化器：对 SGD-momentum 产生的更新矩阵 $G$，用 **Newton–Schulz 迭代**（`newtonschul `📅unknown` `[method_page]`
 - [Nesterov Momentum（Nesterov 加速梯度）](wiki/methods/nesterov-momentum.md) — Nesterov Accelerated Gradient（NAG）**：在施加动量更新 **之前**，先沿当前速度方向做一步「前瞻」，在 **前瞻点** 计算梯度。相比经典 [SGD Momen `📅unknown` `[method_page]`
 - [NMR（神经运动重定向与人形全身控制）](wiki/methods/neural-motion-retargeting-nmr.md) — NMR（Neural Motion Retargeting）** 面向「人体 SMPL（或同类）序列 → 人形机器人可执行全身轨迹」：不把重定向当成孤立的逐帧几何优化，而是用**可扩展的监督数据  `📅unknown` `[method_page]`
+- [Neural Network Compensation Control（神经网络补偿控制）](wiki/methods/neural-network-compensation-control.md) — NN 补偿：离线训练网络拟合动力学残差，运行时并联输出补偿力矩，修正解析模型未覆盖的非线性。 `📅unknown` `[method_page]`
 - [Newton's Method（牛顿法）](wiki/methods/newtons-method.md) — 牛顿法（Newton's method）**：在当前点用 **Hessian** $\nabla^2 f(x_k)$ 构造二次模型，搜索方向 $p_k = -(\nabla^2 f(x_k))^{ `📅unknown` `[method_page]`
-- [Nonlinear Model Predictive Control（NMPC）](wiki/methods/nonlinear-model-predictive-control.md) — NMPC（非线性 MPC）**：在每个控制周期求解 **非线性** 有限时域 OCP——非线性动力学 $x_{k+1}=f(x_k,u_k)$、非线性代价与约束（碰撞、摩擦等），只执行首步控制后滚 `📅unknown` `[method_page]`
+- [Nonlinear Model Predictive Control（NMPC）](wiki/methods/nonlinear-model-predictive-control.md) — NMPC（非线性 MPC）：在每个控制周期求解 **非线性** 有限时域 OCP——非线性动力学 $x_{k+1}=f(x_k,u_k)$、非线性代价与约束（碰撞、摩擦等），只执行首步控制后滚动重规划 `📅unknown` `[method_page]`
 - [目标检测（Object Detection）](wiki/methods/object-detection.md) — 目标检测**在给定图像中同时回答 **「有什么物体」** 与 **「在哪里（边界框）」**；在机器人中它为 **抓取、导航、人机交互** 提供 **物体级语义与几何锚点**。 `📅unknown` `[method_page]`
 - [Octo（开源 Generalist Policy）](wiki/methods/octo-model.md) — Octo**：开源的通用机器人操作策略，通常基于 Transformer / 扩散式动作头，在 Open X-Embodiment 等多数据集上预训练，支持语言或图像目标，并可在新机器人上做高效微 `📅unknown` `[method_page]`
 - [PAiD Framework](wiki/methods/paid-framework.md) — PAiD (Perception-Action integrated Decision-making)** 是由 TeleHuman 研究团队提出的一种针对人形机器人足球技能的渐进式学习框架。其核 `📅unknown` `[method_page]`
@@ -1311,13 +1325,15 @@
 - [Penalty / Barrier / Augmented Lagrangian（罚函数、障碍法与增广拉格朗日）](wiki/methods/penalty-barrier-augmented-lagrangian.md) — 序列无约束化**（课程 3.4）：通过罚项或障碍项把约束「推入」目标，反复求解无约束/简单约束子问题。**PHR 增广拉格朗日**（Powell–Hestenes–Rockafellar）在对偶空 `📅unknown` `[method_page]`
 - [π MPC（Parallel-in-horizon、Construction-free NMPC）](wiki/methods/pi-mpc.md) — π MPC**（*π MPC: A Parallel-in-horizon and Construction-free NMPC Solver*，arXiv:2601.14414，JHU · Ts `📅unknown` `[method_page]`
 - [π₀.7（Pi-zero 0.7）通才 VLA](wiki/methods/pi07-policy.md) — π₀.7** 是 Physical Intelligence 在 2026 年公开的**通才机器人基础策略（VLA）**：在保留 π 系 **flow matching 动作头**与 **MEM  `📅unknown` `[method_page]`
-- [PID Control（比例-积分-微分控制）](wiki/methods/pid-control.md) — PID 控制**：根据误差 $e$ 及其积分、微分，输出控制量 $u$ 的经典 **线性反馈** 方法，仍是机器人 **关节伺服、姿态稳定** 的默认底层。 `📅unknown` `[method_page]`
+- [PID Control（比例-积分-微分控制）](wiki/methods/pid-control.md) — PID 控制：根据误差 $e$ 及其积分、微分，输出控制量 $u$ 的经典 **线性反馈** 方法，仍是机器人 **关节伺服、姿态稳定** 的默认底层。 `📅unknown` `[method_page]`
 - [PIE：感知一阶段鲁棒行走（隐式–显式学习）](wiki/methods/pie-perceptive-locomotion.md) — PIE**（*Parkour with Implicit-Explicit Learning Framework for Legged Robots*，ZJU，IEEE RA-L 2024，[ar `📅unknown` `[method_page]`
+- [Pole Placement Control（极点配置控制）](wiki/methods/pole-placement-control.md) — 人为指定闭环极点位置，直接塑造伺服收敛速度与振荡幅度。 `📅unknown` `[method_page]`
 - [Policy Optimization](wiki/methods/policy-optimization.md) — 策略优化**：通过直接对策略参数做梯度上升或近似优化，使期望累积奖励最大化的一类强化学习方法。 `📅unknown` `[method_page]`
 - [PPO（Proximal Policy Optimization）](wiki/methods/ppo.md) — PPO（近端策略优化）**：用 **clip 代理目标** 限制每次策略更新中新旧策略概率比的偏离幅度，在保持 TRPO 级别更新稳定性的同时，把实现复杂度降到一阶优化器即可训练，是机器人 RL  `📅unknown` `[method_page]`
 - [QT-Opt](wiki/methods/qt-opt.md) — QT-Opt**：面向视觉输入机械臂抓取的异策深度强化学习框架，用交叉熵方法等近似在连续动作空间上做 Q 学习，并结合长时间运行的真实机器人数据采集闭环。 `📅unknown` `[method_page]`
 - [Quasi-Newton BFGS / L-BFGS（拟牛顿法总览）](wiki/methods/quasi-newton-bfgs.md) — 拟牛顿法**：不显式形成 Hessian，用梯度差分维护近似矩阵。本页为 **总览入口**；各算法细节见独立节点 **BFGS** 与 **[L-BFGS](./l-bf `📅unknown` `[method_page]`
 - [ReActor（物理感知 RL 运动重定向）](wiki/methods/reactor-physics-aware-motion-retargeting.md) — ReActor**（*Reinforcement Learning for Physics-Aware Motion Retargeting*，Müller 等，SIGGRAPH 2026 预印本 `📅2026-05-13` `[method_page]`
+- [Recursive Least Squares Control（RLS 递归最小二乘辨识）](wiki/methods/recursive-least-squares-control.md) — RLS：递推最小化预测误差，在线更新动力学参数估计，为自适应/前馈控制提供参数流。 `📅unknown` `[method_page]`
 - [REGRIND（重定向引导灵巧操作 RL）](wiki/methods/regrind-retargeting-guided-rl.md) — REGRIND**（*A Minimalist Retargeting-Guided Reinforcement Learning Recipe for Dexterous Manipulatio `📅2026-07-16` `[method_page]`
 - [Reinforcement Learning (RL, 强化学习)](wiki/methods/reinforcement-learning.md) — 强化学习 (Reinforcement Learning)**：通过与环境交互，以最大化累积奖励 (Reward) 为目标学习决策策略的机器学习范式。 `📅unknown` `[method_page]`
 - [RMSProp（Root Mean Square Propagation）](wiki/methods/rmsprop.md) — RMSProp**：对梯度平方 $g_t^2$ 做 **指数滑动平均（EMA）** 得到 $v_t$，用 $g_t / \sqrt{v_t + \epsilon}$ 归一化更新方向，使 per-p `📅unknown` `[method_page]`
@@ -1329,6 +1345,7 @@
 - [SGD Momentum（动量随机梯度下降）](wiki/methods/sgd-momentum.md) — SGD Momentum**：在 SGD 基础上维护速度向量 $v_t$，将当前梯度与历史速度加权叠加，使参数更新在 **一致梯度方向** 上加速、在 **振荡方向** 上 `📅unknown` `[method_page]`
 - [SGD（Stochastic Gradient Descent）](wiki/methods/sgd.md) — SGD（随机梯度下降）**：用训练集 mini-batch 上估计的梯度 $\hat{g}_t$ 替代全数据精确梯度，按 $\theta_{t+1} = \theta_t - \eta \hat{ `📅unknown` `[method_page]`
 - [骨架动作识别（Skeleton-Based Action Recognition）](wiki/methods/skeleton-action-recognition.md) — 骨架动作识别**：以关节坐标序列（3D/2D 骨架）为输入，识别或描述人体 / 机器人正在执行的动作类别，是模仿学习数据质量和跨形态泛化的重要支撑技术。 `📅unknown` `[method_page]`
+- [Sliding Mode Control（滑模控制，SMC）](wiki/methods/sliding-mode-control.md) — SMC：设计滑模面 $s(x)=0$，用不连续/饱和切换律强制状态沿面滑向原点，对匹配扰动不敏感。 `📅unknown` `[method_page]`
 - [SLIP + VMC（弹簧负载倒立摆与虚拟模型控制）](wiki/methods/slip-vmc.md) — SLIP（Spring-Loaded Inverted Pendulum）** 把支撑腿近似为质心与足端之间的弹簧；**VMC（Virtual Model Control）** 在任务空间定义虚拟 `📅unknown` `[method_page]`
 - [Smooth Navigation Path Generation（平滑导航路径生成）](wiki/methods/smooth-navigation-path-generation.md) — 平滑导航路径生成**：在已知或采样的几何路径基础上，通过 **无约束或软约束优化** 最小化 jerk/曲率/能量，得到 **曲率连续、可跟踪** 的导航轨迹——课程 2.4–2.5 的无约束优化 `📅unknown` `[method_page]`
 - [SMP: 基于得分匹配的可复用运动先验](wiki/methods/smp.md) — SMP** 代表了从对抗模仿学习（如 AMP）向生成式先验引导学习的范式演进。它将复杂的运动分布建模为一个连续的得分场（Score Field），并以此指导  `📅unknown` `[method_page]`
@@ -1347,6 +1364,8 @@
 - [Truncated Newton（截断牛顿 / Newton-CG）](wiki/methods/truncated-newton.md) — 截断牛顿（Truncated Newton）**：每步不求解精确 Newton 方程 $Hp = -g$，而用 [共轭梯度（CG）](./conjugate-gradient-method.md `📅unknown` `[method_page]`
 - [UHAS（Unified Hand Action Space，统一手部动作空间）](wiki/methods/uhas-unified-hand-action-space.md) — UHAS**（Casas 等，arXiv:2607.03570，UT Dallas IRVL / ASU IRIS，RSS 2026 灵巧操作研讨会）提出一种 **球面几何统一动作空间**：策略不 `📅2026-07-11` `[method_page]`
 - [Unified Multimodal Tokens (统一多模态 Token)](wiki/methods/unified-multimodal-tokens.md) — 统一多模态 Token** 是一种先进的具身智能架构设计。它摒弃了为每种感官模态设计专用神经网络分支的传统做法，转而将所有输入（图像、语言、状态、动作）全部转换为格式一致的 Token 序列，并在 `📅unknown` `[method_page]`
+- [Unsupervised Clustering Fault Compensation（无监督聚类故障补偿）](wiki/methods/unsupervised-clustering-fault-compensation.md) — 聚类故障补偿：对运行数据无监督聚类识别工况/磨损模式，切换预存补偿参数，实现被动自适应。 `📅unknown` `[method_page]`
+- [Value-based Reinforcement Learning（基于值函数的强化学习）](wiki/methods/value-based-reinforcement-learning.md) — 值函数 RL：估计状态-动作价值 $Q(s,a)$ 或 $V(s)$，通过贪心或 $\epsilon$-贪心选动作，适合离散控制。 `📅unknown` `[method_page]`
 - [Visual Servoing（视觉伺服控制）](wiki/methods/visual-servoing.md) — 视觉伺服 (Visual Servoing)** 是一门将计算机视觉（Computer Vision）与经典控制理论（Control Theory）深度融合的技术。它不依赖于将图像构建为复杂的 3 `📅unknown` `[method_page]`
 - [VLA（Vision-Language-Action）](wiki/methods/vla.md) — VLA**：把视觉、语言和机器人动作统一到同一个模型里，让策略不只“看见状态后输出动作”，还能够显式理解任务指令和语义约束。 `📅unknown` `[method_page]`
 - [WiLoR（野外 3D 手部定位与重建）](wiki/methods/wilor.md) — WiLoR**（CVPR 2025）面向 **单目 RGB** 场景下的 **双手** 检测与 **MANO 类 3D 重建**：先用轻量全卷积结构在高分辨率特征上定位手部，再用 Transfor `📅unknown` `[method_page]`
@@ -1441,6 +1460,7 @@
 - [ONNX Runtime vs MNN vs TensorRT（机载推理 Runtime 选型）](wiki/comparisons/onnxruntime-vs-mnn-vs-tensorrt.md) — 机器人学习管线里，**训练框架**（PyTorch/JAX）与 **机载执行**（C++/Rust @ 50–1000 Hz）之间通常插入 **ONNX  `📅unknown` `[comparison_page]`
 - [PPO vs SAC (vs BRRL/BPO)：机器人 RL 算法选型](wiki/comparisons/ppo-vs-sac.md) — 背景**：PPO（Proximal Policy Optimization）和 SAC（Soft Actor-Critic）是机器人 RL 领域最主流的两种连续控制算法。两者都已在真实机器人上取得 `📅unknown` `[comparison_page]`
 - [RL vs 模仿学习（Imitation Learning）](wiki/comparisons/rl-vs-il.md) — RL 和 IL 是机器人策略学习的两条主干路线。两者都在学"策略 $\pi(a|s)$"，但监督信号、数据需求、能达到的行为质量完全不同。 `📅unknown` `[comparison_page]`
+- [八大机器人控制体系分类](wiki/comparisons/robot-control-eight-paradigms-taxonomy.md) — 从机器人 **任务规划 → 控制算法 → 伺服执行** 的分层闭环出发，控制算法层可划分为 **八大体系**；前四类侧重 **显式建模**，后四类分别面向 **接触作业、约束优化、数据补偿与自主习得 `📅unknown` `[comparison_page]`
 - [机器人顶会顶刊发表渠道对比](wiki/comparisons/robotics-research-venues.md) — 在机器人学习与系统方向投稿或引用时，**会议**（ICRA、IROS、CoRL、RSS）与 **期刊**（T-RO、IJRR、Science Robotics）的 **主办方、审稿节奏、论文集托管 `📅unknown` `[comparison_page]`
 - [ROS 2 vs LCM (机器人中间件选型)](wiki/comparisons/ros2-vs-lcm.md) — 在机器人真机部署中，如何让分布在不同进程（甚至不同计算板）上的节点进行可靠、低延迟的数据通信？**ROS 2 (Robot Operating System 2)** 和 **LCM (Lightwe `📅unknown` `[comparison_page]`
 - [Second-Order Optimizers：选型对比](wiki/comparisons/second-order-optimizers.md) — 背景**：机器人 Trajectory Optimization、IK、标定与 NMPC 打靶后，常归结为 **非 `📅unknown` `[comparison_page]`
@@ -1552,6 +1572,14 @@
 - [Paper Notebooks · Physics-Based Animation](wiki/overview/paper-notebook-category-13-physics-based-animation.md) — Physics-Based Animation**（`13_Physics-Based_Animation`）是 [Humanoid Robot Learning Paper Notebooks `📅unknown` `[overview_page]`
 - [Paper Notebooks · Human Motion](wiki/overview/paper-notebook-category-14-human-motion.md) — Human Motion**（`14_Human_Motion`）是 [Humanoid Robot Learning Paper Notebooks](https://imchong.githu `📅unknown` `[overview_page]`
 - [RoboParty Lab / Party OS 技术地图](wiki/overview/roboparty-lab-party-os-technology-map.md) — RoboParty Lab 把「好 idea 输在基建」的问题显式产品化：**Party OS** 作为研发底座，首批开源 **hhtools（动作重定向）→ MimicLite（监督跟踪 infra `📅unknown` `[overview_page]`
+- [自适应控制（体系④）](wiki/overview/robot-control-paradigm-adaptive-control.md) — 在线辨识时变参数并修正控制律，解决负载变化、磨损与摩擦漂移，与鲁棒「被动抵抗」形成互补。 `📅unknown` `[overview_page]`
+- [经典线性反馈控制（体系①）](wiki/overview/robot-control-paradigm-classical-linear-feedback.md) — 针对线性、弱扰动系统的底层伺服闭环，是电机/舵机与单关节跟踪的标配。 `📅unknown` `[overview_page]`
+- [位置/力混合控制（体系⑤）](wiki/overview/robot-control-paradigm-hybrid-position-force.md) — 接触作业专用：在任务空间分解位置与力约束，实现打磨、装配、人机协作的柔顺交互。 `📅unknown` `[overview_page]`
+- [机器学习驱动控制（体系⑦）](wiki/overview/robot-control-paradigm-ml-driven-control.md) — 用标注数据拟合解析模型难以描述的摩擦残差、柔性形变等，常作为传统控制器的补偿模块。 `📅unknown` `[overview_page]`
+- [基于模型的非线性动力学控制（体系②）](wiki/overview/robot-control-paradigm-model-based-nonlinear-dynamics.md) — 依赖精确动力学方程，用前馈抵消惯性/重力/耦合，服务多自由度机械臂与人形中层控制。 `📅unknown` `[overview_page]`
+- [滚动优化与迭代学习控制（体系⑥）](wiki/overview/robot-control-paradigm-receding-horizon-ilc.md) — 分别面向带硬约束的动态轨迹与高度重复工业轨迹，突破单步反馈的局部性。 `📅unknown` `[overview_page]`
+- [强化学习智能控制（体系⑧）](wiki/overview/robot-control-paradigm-rl-intelligent-control.md) — 无标注环境交互试错，靠奖励函数优化策略，面向未知动力学与复杂多任务。 `📅unknown` `[overview_page]`
+- [鲁棒控制（体系③）](wiki/overview/robot-control-paradigm-robust-control.md) — 在模型不精确与外部扰动下保证稳定与有界误差，强调「最坏情况」下的性能保证。 `📅unknown` `[overview_page]`
 - [Robot Learning Overview](wiki/overview/robot-learning-overview.md) — 机器人学习**：让机器人通过数据学会完成复杂任务的方法集合，核心是把”如何做”从人工编程转向从经验中学习。 `📅unknown` `[overview_page]`
 - [机器人开源宝库（微信策展第01期）— 索引](wiki/overview/robot-open-source-wechat-issue01-curator.md) — 本页把第三方微信清单中的 **10 个开源机器人/平台**拆成独立实体节点，并在此集中列出**官方文档与组织级 GitHub**入口，避免把网盘短链当作唯一分发源。 `📅unknown` `[overview_page]`
 - [机器人开源宝库（微信策展第02期）— 索引](wiki/overview/robot-open-source-wechat-issue02-curator.md) — 本页对应转载清单 **第 11–20 号**共 **10** 条开源机器人/平台入口，拆成独立实体节点，并集中指向 **官方文档、GitHub 组织与论文/数据集页**；个人网盘与 360 共享链不作 `📅unknown` `[overview_page]`

@@ -3,6 +3,8 @@ type: method
 tags: [rl, policy-optimization, ppo, sac, locomotion]
 status: complete
 related:
+  - ../comparisons/robot-control-eight-paradigms-taxonomy.md
+  - ../overview/robot-control-paradigm-rl-intelligent-control.md
   - ./ppo.md
   - ./sac.md
   - ./flashsac.md
@@ -14,8 +16,10 @@ related:
   - ../formalizations/mdp.md
   - ../formalizations/bellman-equation.md
   - ../queries/rl-hyperparameter-guide.md
+sources:
+  - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
 summary: "Policy Optimization 汇总 PPO、SAC、TD3 等主流策略更新方法，是机器人 RL 的算法核心。"
-updated: 2026-07-16
+updated: 2026-07-18
 ---
 
 # Policy Optimization
