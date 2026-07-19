@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-07-19",
-  "node_count": 1686,
-  "edge_count": 13511,
+  "node_count": 1687,
+  "edge_count": 13524,
   "coverage": {
-    "covered": 1636,
-    "total": 1666,
+    "covered": 1637,
+    "total": 1667,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/roboscience-vloa.md",
+      "detail_id": "entity-roboscience-vloa",
+      "label": "VLOA（RoboScience · Visics 通用具身栈）",
+      "type": "entity",
+      "recency": "2026-07-19",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-notebook-humanoid-manipulation-interface.md",
       "detail_id": "entity-paper-notebook-humanoid-manipulation-interface",
@@ -54,7 +64,8 @@
       "recency": "2026-07-19",
       "source": "log.md",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "path": "wiki/concepts/sim2real.md",
@@ -199,39 +210,30 @@
       "source": "log.md",
       "action": "added",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/overview/robot-control-paradigm-adaptive-control.md",
-      "detail_id": "wiki-overview-robot-control-paradigm-adaptive-control",
-      "label": "自适应控制（体系④）",
-      "type": "overview",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-notebook-humanoid-manipulation-interface.md",
-    "detail_id": "entity-paper-notebook-humanoid-manipulation-interface",
-    "label": "HuMI（Humanoid Manipulation Interface）",
+    "path": "wiki/entities/roboscience-vloa.md",
+    "detail_id": "entity-roboscience-vloa",
+    "label": "VLOA（RoboScience · Visics 通用具身栈）",
     "type": "entity",
     "recency": "2026-07-19",
     "source": "log.md",
-    "action": "maintained"
+    "action": "added",
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 289
+      "size": 293
+    },
+    {
+      "label": "人形强化学习运动控制",
+      "size": 194
     },
     {
       "label": "人形论文深读笔记",
       "size": 179
-    },
-    {
-      "label": "人形强化学习运动控制",
-      "size": 176
     },
     {
       "label": "移动操作",
@@ -243,7 +245,7 @@
     },
     {
       "label": "仿真训练",
-      "size": 109
+      "size": 111
     }
   ],
   "top_hubs": [
@@ -274,7 +276,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 273,
+      "degree": 275,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -282,7 +284,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 248,
+      "degree": 250,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -335,7 +337,8 @@
       "label": "BeyondMimic",
       "type": "method",
       "degree": 53,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",

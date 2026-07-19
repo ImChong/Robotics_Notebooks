@@ -23,6 +23,7 @@ related:
   - ./pi07-policy.md
   - ../concepts/world-action-models.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
+  - ../entities/roboscience-vloa.md
   - ../entities/paper-daji-anticipatory-joint-intent.md
   - ../entities/paper-motionwam-humanoid-loco-manipulation-wam.md
   - ./pelican-unified-1.md
