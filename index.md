@@ -21,6 +21,7 @@
 | 想让机器人边走边动手 | [Loco-Manipulation 纵深路线](roadmap/depth-loco-manipulation.md) |
 | 想让机器人追球射门打比赛 | [人形足球纵深路线](roadmap/depth-humanoid-soccer.md) |
 | 想把人体动作变成机器人参考轨迹 | [动作重定向纵深路线](roadmap/depth-motion-retargeting.md) |
+| 想让仿真训好的策略稳上真机 | [Sim2Real 纵深路线](roadmap/depth-sim2real.md) |
 | 想让两台人形在擂台上对打 | [人形拳击纵深路线](roadmap/depth-humanoid-boxing.md) |
 | 想做人形全身行为基础模型 | [BFM 纵深路线](roadmap/depth-bfm.md) |
 | 想让机器人看地形越障 | [感知越障纵深路线](roadmap/depth-perceptive-locomotion.md) |
