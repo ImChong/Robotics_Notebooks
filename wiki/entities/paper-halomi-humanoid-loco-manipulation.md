@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, imitation-learning, active-perception, umi, robot-free, vla, whole-body-control, unitree-g1, bfm-zero, dagger, teleoperation, shanghai-jiao-tong]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-19
 arxiv: "2606.18772"
 venue: "arXiv 2026"
 related:
@@ -151,7 +151,7 @@ flowchart TB
 - [Teleoperation](../tasks/teleoperation.md) — Robot-Free 示范采集谱系
 - [BFM-Zero](./paper-bfm-zero.md) — 全身行为先验与潜空间跟踪
 - [BifrostUMI](./paper-bifrost-umi.md) — 五关键点 + 下身参考的无机器人对照
-- [HuMI（计划实体）](./paper-notebook-humanoid-manipulation-interface.md) — Vive+UMI 全身示范对照
+- [HuMI](./paper-notebook-humanoid-manipulation-interface.md) — Vive+UMI 全身示范 + IK 预览对照
 - [EgoMI（计划实体）](./paper-notebook-egomi-learning-active-vision-and-whole-body-mani.md) — 主动视觉 + 记忆策略的并行路线
 - [Behavior Foundation Model](./paper-behavior-foundation-model-humanoid.md) — BFM 谱系总览
 - [Whole-Body Control](../concepts/whole-body-control.md)
