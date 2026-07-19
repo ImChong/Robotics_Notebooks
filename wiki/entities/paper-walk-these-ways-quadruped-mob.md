@@ -4,7 +4,7 @@ type: entity
 tags: [quadruped, reinforcement-learning, sim2real, generalization, legged-gym, mit]
 status: stable
 summary: "四足 MoB：单一策略嵌入多种步态与风格参数，部署时人类可调参以适配分布外地形与任务；开源 Walk These Ways 控制器。"
-updated: 2026-06-05
+updated: 2026-07-19
 arxiv: "2212.03238"
 related:
   - ../entities/legged-gym.md

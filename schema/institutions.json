@@ -763,10 +763,32 @@
         "snap"
       ]
     },
+    "agency-for-defense-development": {
+      "label": "韩国国防科学研究所（Agency for Defense Development）",
+      "aliases": [
+        "agency-for-defense-development",
+        "add",
+        "add-korea"
+      ]
+    },
     "kaist": {
       "label": "韩国科学技术院（KAIST）",
       "aliases": [
         "kaist"
+      ]
+    },
+    "korea-university": {
+      "label": "高丽大学（Korea University）",
+      "aliases": [
+        "korea-university",
+        "korea-u"
+      ]
+    },
+    "diden-robotics": {
+      "label": "谛映机器人（DIDEN Robotics）",
+      "aliases": [
+        "diden-robotics",
+        "diden"
       ]
     },
     "max-planck": {
