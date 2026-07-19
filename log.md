@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-19] ingest | sources/blogs/kimi_k3_tech_blog.md + sources/courses/kimi_k3_api_quickstart.md — Kimi K3 技术博客与 API 接入；wiki/entities/kimi-k3.md；交叉更新 muon / enpire
+
 ## [2026-07-19] ingest | sources/repos/handumi-sw.md — HandUMI 无机器人双臂示教软件；wiki/entities/handumi.md；交叉更新 teleoperation / bimanual-manipulation / lerobot
 
 ## [2026-07-19] structural | roadmap/depth-sim2real.md — 纵深路线扩容至十七条：新增 Sim2Real 纵深
