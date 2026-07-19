@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-07-19",
-  "node_count": 1684,
-  "edge_count": 13480,
+  "node_count": 1685,
+  "edge_count": 13488,
   "coverage": {
-    "covered": 1634,
-    "total": 1664,
+    "covered": 1635,
+    "total": 1665,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/kimi-k3.md",
+      "detail_id": "entity-kimi-k3",
+      "label": "Kimi K3",
+      "type": "entity",
+      "recency": "2026-07-19",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/handumi.md",
       "detail_id": "entity-handumi",
@@ -201,27 +211,17 @@
       "source": "log.md",
       "action": "added",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/overview/robot-control-paradigm-rl-intelligent-control.md",
-      "detail_id": "wiki-overview-robot-control-paradigm-rl-intelligent-control",
-      "label": "强化学习智能控制（体系⑧）",
-      "type": "overview",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/handumi.md",
-    "detail_id": "entity-handumi",
-    "label": "HandUMI",
+    "path": "wiki/entities/kimi-k3.md",
+    "detail_id": "entity-kimi-k3",
+    "label": "Kimi K3",
     "type": "entity",
     "recency": "2026-07-19",
     "source": "log.md",
     "action": "added",
-    "has_repo": true
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
@@ -233,12 +233,12 @@
       "size": 180
     },
     {
-      "label": "移动操作",
-      "size": 158
+      "label": "人形强化学习运动控制",
+      "size": 174
     },
     {
-      "label": "人形强化学习运动控制",
-      "size": 157
+      "label": "移动操作",
+      "size": 153
     },
     {
       "label": "全身控制",
@@ -353,7 +353,8 @@
       "label": "OmniRetarget",
       "type": "entity",
       "degree": 45,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
     },
     {
       "detail_id": "wiki-methods-deepmimic",

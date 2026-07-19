@@ -3,7 +3,7 @@
 type: method
 tags: [coding-agents, dexterous-manipulation, real-world-rl, nvidia-gear, auto-reset, policy-improvement, autoresearch, behavior-cloning, reinforcement-learning, nvidia]
 status: complete
-updated: 2026-07-01
+updated: 2026-07-19
 date: 2026-06-18
 summary: "ENPIRE 把真机策略自改进封装成 coding agent 可编排的 EN–PI–R–E 闭环：自动 reset/verify 环境、多范式策略改进、并行 rollout 与跨假设演化，在 Push-T、插针、GPU 插拔、扎/剪扎带等灵巧任务上报告约 99% pass@8，并给出 AutoEnvBench 与 MRU/MTU 机队 scaling 指标。"
 related:
@@ -19,6 +19,7 @@ related:
   - ./egoscale.md
   - ../entities/gr00t-wholebodycontrol.md
   - ../entities/nvidia-gear-lab.md
+  - ../entities/kimi-k3.md
 sources:
   - ../../sources/papers/enpire_nvidia_gear_2026.md
   - ../../sources/sites/nvidia-research-enpire.md
@@ -115,7 +116,7 @@ flowchart TB
 
 - **任务：** Push-T、Pin Insertion、GPU Insertion、Tie Ziptie、Cut Ziptie 等 **高灵巧桌面操作**。
 - **成功率：** 展示策略达 **约 99% pass@8**（8 次独立 rollout 中至少一次成功的通过率表述，以项目页为准）。
-- **AutoEnvBench：** 比较 **Codex（GPT-5.5）**、**Claude Code（Opus 4.7）**、**Kimi Code（K2.6）** 在 Push-T（启发式学习）与 Pin Insertion（梯度学习）上的 **墙钟研究进展曲线**。
+- **AutoEnvBench：** 比较 **Codex（GPT-5.5）**、**Claude Code（Opus 4.7）**、**Kimi Code（K2.6）** 在 Push-T（启发式学习）与 Pin Insertion（梯度学习）上的 **墙钟研究进展曲线**；产品线后续旗舰 **[Kimi K3](../entities/kimi-k3.md)** 为同族 coding backend，选型时需关注 **thinking history 回传** 等 harness 兼容性。
 - **Fleet scaling：** **1 / 4 / 8 agent** 团队；更大并行可更快抬高成功率，但 **token-to-success 与协调开销** 上升。
 
 ### 仿真侧补充（RoboCasa）
