@@ -30,6 +30,7 @@ related:
   - ../entities/molmo-motion.md
   - ../entities/robotic-world-model-eth-rsl.md
   - ../entities/world-labs.md
+  - ../entities/roboscience-vloa.md
   - ./dwm.md
   - ./mimic-video.md
 sources:

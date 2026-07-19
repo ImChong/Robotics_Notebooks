@@ -1028,6 +1028,7 @@
 - [RoboGen](wiki/entities/robogen.md) — RoboGen** 是面向 **机器人学习数据扩展** 的 **自动生成框架**，利用大语言模型与仿真器联动 **程序化生成任务、场景与演示轨迹**。 `📅unknown` `[entity_page]`
 - [UFO（Roboparty 无监督 RL 控制框架）](wiki/entities/roboparty-ufo.md) — UFO**（*Unsupervised RL Control Development Framework*）是 Party OS 首批开源的 **无监督强化学习控 `📅unknown` `[entity_page]`
 - [RoboParty（萝博派对）](wiki/entities/roboparty.md) — RoboParty（上海萝博派对科技有限公司）** 是国内少数将「全栈开源双足人形」作为公司主线的创业团队：先以 Roboto Origin 开源整机与 `📅unknown` `[entity_page]`
+- [VLOA（RoboScience · Visics 通用具身栈）](wiki/entities/roboscience-vloa.md) — VLOA**（*Vision-Language-Object-Action*）是 **RoboScience**（北京机科未来科技有限公司，2024-12 成立）对外披露的 **端到端通用具身大模 `📅unknown` `[entity_page]`
 - [Robot Explorer](wiki/entities/robot-explorer.md) — Robot Explorer** 是一个基于 Web 的交互式 3D 机器人探索工具，专注于机器人动力学分析、运动学可视化与教育演示。它由开发者 `ferrolho` 维护，支持在浏览器中直接操控 `📅unknown` `[entity_page]`
 - [RIO（Robot I/O）](wiki/entities/robot-io-rio.md) — RIO（Robot I/O）** 是一套面向**真实机器人**的 **Python 实时 I/O** 与编排框架，目标是把「换一套机械臂 / 人形 / 相机 / 遥操作设备就要重写控制栈」的摩擦降 `📅unknown` `[entity_page]`
 - [robot_lab (IsaacLab 扩展框架)](wiki/entities/robot-lab.md) — robot_lab** 是由 `fan-ziqi` 维护的 **IsaacLab 生态扩展库**：在核心仓库外独立开发机器人资产、Gym 环境与训练脚本，避免 fork 上游 Isaac Lab。 `📅unknown` `[entity_page]`

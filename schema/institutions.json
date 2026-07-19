@@ -1055,6 +1055,14 @@
         "sunday-ai"
       ]
     },
+    "roboscience": {
+      "label": "机科未来（RoboScience）",
+      "aliases": [
+        "roboscience",
+        "visics",
+        "vloa"
+      ]
+    },
     "humanoid-ai": {
       "label": "人形机器人公司（Humanoid）",
       "aliases": [
