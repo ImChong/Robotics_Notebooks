@@ -228,6 +228,7 @@
 | [x] [hdl_graph_slam.md](repos/hdl_graph_slam.md) | hdl_graph_slam 3D 激光图优化 |
 | [x] [voxgraph.md](repos/voxgraph.md) | voxgraph TSDF 位姿图 |
 | [x] [openloong_dyn_control.md](repos/openloong_dyn_control.md) | OpenLoong-Dyn-Control：人形 MPC+WBC |
+| [x] [handumi-sw.md](repos/handumi-sw.md) | HandUMI 无机器人双臂示教软件：LeRobot v3 兼容采集、校准/QA、多臂重定向 |
 | [x] [lerobot.md](repos/lerobot.md) | Hugging Face LeRobot 具身框架 |
 | [x] [openvla.md](repos/openvla.md) | OpenVLA 开源视觉-语言-动作模型 |
 | [x] [mushr.md](repos/mushr.md) | MuSHR 非完整约束小车导航教学平台 |
@@ -405,6 +406,7 @@
 | [x] [lingbot-vla-v2-technology-robbant.md](sites/lingbot-vla-v2-technology-robbant.md) | LingBot-VLA 2.0 官方项目页 technology.robbyant.com/lingbot-vla-v2（数据管线、MoE、真机 benchmark 可视化） |
 | [x] [openlet-openatom.md](sites/openlet-openatom.md) | OpenLET 具身智能开源数据集社区（开放原子 × 乐聚） |
 | [x] [rhino-auto.md](sites/rhino-auto.md) | 辉羲智能官网：光至 R1 智驾芯片与 RINA 方案 |
+| [x] [handumi-sw.md](sites/handumi-sw.md) | HandUMI 官方文档站 robonet-ai.github.io/handumi-sw/ |
 | [x] [lerobot-huggingface-org.md](sites/lerobot-huggingface-org.md) | LeRobot Hugging Face 组织页：Hub 模型/数据集/Spaces/Collections 分发入口 |
 | [x] [mamma-tue-mpg-de.md](sites/mamma-tue-mpg-de.md) | MAMMA 项目页 mamma.is.tue.mpg.de（MammaNet、MAMMASyn、Vicon 对比、iPhone demo；配套 arXiv:2506.13040） |
 | [x] [mimic-video-github-io.md](sites/mimic-video-github-io.md) | mimic-video 项目页 mimic-video.github.io（VAM 摘要、Cosmos-Predict2 方法叙述、真机与仿真结果、BibTeX） |

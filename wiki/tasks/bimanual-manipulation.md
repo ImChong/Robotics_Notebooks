@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, bimanual, humanoid, dual-arm, whole-body, imitation-learning, teleoperation]
 status: complete
-updated: 2026-07-15
+updated: 2026-07-19
 summary: "双臂协调操作（Bimanual Manipulation）要求两只手臂在力学和时序上协同完成单臂无法完成的任务，是人形机器人操作能力的核心挑战之一。"
 sources:
   - ../../sources/papers/imitation_learning.md
@@ -136,6 +136,7 @@ $${}^A T_{obj} \cdot {}^{obj} T_B = {}^A T_B$$
 | Mobile ALOHA（2024） | IL + 移动底盘 | ALOHA + 底盘 | 双臂 + 移动的融合 |
 | π₀（2024） | VLA + Flow Matching | 人形/桌面 | 统一 loco-manip 的双臂策略 |
 | GELLO（2023） | 低成本遥操作 | 各类机械臂 | 降低双臂数据采集门槛 |
+| HandUMI（2026） | 无机器人示教 + 重定向 | 平行夹爪双臂（PiPER / OpenArm / TRLC-DK1 / YAM 等） | 一次采集、多臂复用；LeRobot v3 兼容；见 [HandUMI](../entities/handumi.md) |
 
 ## 与 Loco-Manipulation 的区别
 

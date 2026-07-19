@@ -358,6 +358,13 @@
         "roboparty"
       ]
     },
+    "robonet": {
+      "label": "机器人网络（RoboNet AI）",
+      "aliases": [
+        "robonet",
+        "robonet-ai"
+      ]
+    },
     "freemocap": {
       "label": "自由动作捕捉（FreeMoCap Project）",
       "aliases": [
