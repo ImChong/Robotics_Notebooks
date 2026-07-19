@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-19] ingest | sources/papers/apt_rl_science_robotics_2026.md — APT-RL Science Robotics 2026 封面；wiki/entities/paper-apt-rl-agile-perceptive-quadruped-locomotion.md
+
 ## [2026-07-19] ingest | sources/blogs/kimi_k3_tech_blog.md + sources/courses/kimi_k3_api_quickstart.md — Kimi K3 技术博客与 API 接入；wiki/entities/kimi-k3.md；交叉更新 muon / enpire
 
 ## [2026-07-19] ingest | sources/repos/handumi-sw.md — HandUMI 无机器人双臂示教软件；wiki/entities/handumi.md；交叉更新 teleoperation / bimanual-manipulation / lerobot

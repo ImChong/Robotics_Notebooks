@@ -2,7 +2,7 @@
 type: entity
 tags: [quadruped, legged, hardware, platform, locomotion]
 status: complete
-updated: 2026-07-08
+updated: 2026-07-19
 related:
   - ./humanoid-robot.md
   - ./anymal.md
@@ -13,6 +13,7 @@ related:
   - ./patent-boston-dynamics-legged-control-stack.md
   - ./unitree.md
   - ./paper-barkour-quadruped-agility-benchmark.md
+  - ./paper-apt-rl-agile-perceptive-quadruped-locomotion.md
   - ./legged-gym.md
   - ../tasks/locomotion.md
   - ../tasks/hybrid-locomotion.md
