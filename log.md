@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-19] ingest | sources/repos/handumi-sw.md — HandUMI 无机器人双臂示教软件；wiki/entities/handumi.md；交叉更新 teleoperation / bimanual-manipulation / lerobot
+
 ## [2026-07-19] structural | roadmap/depth-sim2real.md — 纵深路线扩容至十七条：新增 Sim2Real 纵深
 
 - roadmap/depth-sim2real.md：新建「Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）」纵深路线（起点：域随机化 DR，2017），Stage 0 域差六类画像与方法三分（随机化 / 对齐 / 适应）→ Stage 1 资产与执行器对齐（SysID / ActuatorNet / BAM / PACE / SAGE / 并联闭链）→ Stage 2 训练期鲁棒化（DR / 课程 / 特权蒸馏 / RMA / 电机包络约束）→ Stage 3 感知与视觉迁移（视觉 DR / RGB 蒸馏 / VFM 替代 / 合成深度预训练）→ Stage 4 部署工程闭环（sim2sim 回归 / 处理器在环 / ONNX / 渐进 SOP）→ Stage 5 真机安全微调 / Real2Sim / 评测基础设施 / 跨具身汇合；链接 wiki/concepts/sim2real.md、sim2real-approaches 对比页、sim2real-checklist 等枢纽页
