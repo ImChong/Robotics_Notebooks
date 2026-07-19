@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-18] structural | docs/topic-filters.js + docs/graph.html + wiki/overview/topic-embodied-eval-benchmark.md — V29 P3① 图谱页「具身评测基准」专题视图落地
+
+- docs/topic-filters.js：单一事实源新增第 19 个专题 `embodied-eval-benchmark`（🧪）——`TOPIC_HUB_IDS` 挂枢纽页、`TOPIC_FILTERS` 用干净片段 `bench`/`eval`/`benchmark` 并集 + 7 页 `ids` 显式纳入（robo-bench/esi-bench/ewmbench/gigaworld-1/simulation-evaluation-infrastructure/选型闭环 Query/sim-vs-real-eval-gap）、`TOPIC_META` 补 emoji+简称+导读；与 sim2real/physics-fidelity 保持最小重叠
+- docs/graph.html：`#filter-topic-chips` 增加对应 chip（第 19 个专题）
+- wiki/overview/topic-embodied-eval-benchmark.md：补建专题汇总枢纽页（英文缩写速查 + 四层评测选型表 + 关键取舍），从 queries/embodied-eval-benchmark-selection-loop.md、concepts/sim-vs-real-eval-gap.md 双向回链
+- node 端复核 7 个目标评测页 + 枢纽命中、vla.md 未命中；export+graph 重生 1682 节点/13396 边、0 orphans、largest_community_ratio 0.17 且 community_quality_warning=false；lint_wiki 0 errors 0 信息型预警
+
 ## [2026-07-18] structural | roadmap/depth-humanoid-soccer.md + depth-humanoid-boxing.md — 纵深路线扩容至十六条：新增人形足球与人形拳击两条竞技纵深
 
 - roadmap/depth-humanoid-soccer.md：新建「人形足球（全向行走 → 感知踢球 → 多机战术）」纵深路线（起点：首届 RoboCup，1997），Stage 0 RoboCup 全景与感知–决策–运动耦合 → Stage 1 参数化全向行走与跌倒恢复 → Stage 2 机载感知与自定位 → Stage 3 追球–对齐–射门课程 RL（PAiD / RoboNaldo / 教师–学生蒸馏）→ Stage 4 多机战术群控 → Stage 5 整队系统 / 端到端 / 体育谱系；链接 wiki/tasks/humanoid-soccer.md、humanoid-soccer-skill-learning-method-selection、humanoid-multi-robot-coordination 等枢纽页
