@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-19] structural | roadmap/depth-sim2real.md — 纵深路线扩容至十七条：新增 Sim2Real 纵深
+
+- roadmap/depth-sim2real.md：新建「Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）」纵深路线（起点：域随机化 DR，2017），Stage 0 域差六类画像与方法三分（随机化 / 对齐 / 适应）→ Stage 1 资产与执行器对齐（SysID / ActuatorNet / BAM / PACE / SAGE / 并联闭链）→ Stage 2 训练期鲁棒化（DR / 课程 / 特权蒸馏 / RMA / 电机包络约束）→ Stage 3 感知与视觉迁移（视觉 DR / RGB 蒸馏 / VFM 替代 / 合成深度预训练）→ Stage 4 部署工程闭环（sim2sim 回归 / 处理器在环 / ONNX / 渐进 SOP）→ Stage 5 真机安全微调 / Real2Sim / 评测基础设施 / 跨具身汇合；链接 wiki/concepts/sim2real.md、sim2real-approaches 对比页、sim2real-checklist 等枢纽页
+- roadmap/README.md、README.md、index.md、roadmap/motion-control.md、docs/index.html、docs/main.js 与其余十六条 depth-* 路线页：纵深路线数 16 → 17，按里程碑历史序插入（Sim2Real 2017 列动作重定向后、人形拳击前）并补双向链接；首页「更多路线」按钮扩为十七个
+- catalog.md 与 graph/home 统计、README badge 由 make ci-preflight 同步再生成
+
 ## [2026-07-18] structural | docs/topic-filters.js + docs/graph.html + wiki/overview/topic-embodied-eval-benchmark.md — V29 P3① 图谱页「具身评测基准」专题视图落地
 
 - docs/topic-filters.js：单一事实源新增第 19 个专题 `embodied-eval-benchmark`（🧪）——`TOPIC_HUB_IDS` 挂枢纽页、`TOPIC_FILTERS` 用干净片段 `bench`/`eval`/`benchmark` 并集 + 7 页 `ids` 显式纳入（robo-bench/esi-bench/ewmbench/gigaworld-1/simulation-evaluation-infrastructure/选型闭环 Query/sim-vs-real-eval-gap）、`TOPIC_META` 补 emoji+简称+导读；与 sim2real/physics-fidelity 保持最小重叠

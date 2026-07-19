@@ -231,6 +231,7 @@ flowchart LR
   - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md)
   - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
   - [安全控制（CLF/CBF）](depth-safe-control.md)
+  - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md)
 - 关联知识页：
   - [RoboStriker](../wiki/entities/paper-notebook-robostriker.md)
   - [REK](../wiki/entities/rek.md)

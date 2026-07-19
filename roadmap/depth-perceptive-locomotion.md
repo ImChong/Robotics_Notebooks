@@ -195,6 +195,7 @@ flowchart LR
   - [BFM（人形行为基础模型）](depth-bfm.md)
   - [人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md)
   - [人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md)
+  - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md)
 - 关联知识页：
   - [楼梯与障碍感知 locomotion 任务枢纽](../wiki/tasks/stair-obstacle-perceptive-locomotion.md)
   - [FastStair](../wiki/entities/paper-faststair-humanoid-stair-ascent.md) — Stage 3 人形高速上楼 · 规划引导 RL
