@@ -106,7 +106,7 @@ flowchart LR
 - DR 随机化哪些参数、范围怎么定、何时反而伤性能；DR 与课程学习怎么配合
 - 特权 Teacher–Student 为什么是 sim2real 核心套路：把 RL 探索转成 Teacher 标注的监督学习
 - RMA 两阶段：特权 extrinsics 训 base policy，历史轨迹监督训 adaptation module，真机秒级隐式估计环境参数
-- 约束即安全层：把电机速度–扭矩包络写进训练（MUJICA），替代"纯 DR 赌鲁棒"
+- 约束即安全层：把电机速度–扭矩包络写进训练（MUJICA、KAIST Hound MOR 约束 RL），替代"纯 DR 赌鲁棒"
 
 ### 推荐做什么
 - 在自己的任务上跑"无 DR / 动力学 DR / DR + RMA"三组消融，记录训练稳定性与 sim2sim 成绩
@@ -117,6 +117,7 @@ flowchart LR
 - [Privileged Training](../wiki/concepts/privileged-training.md)（本仓库）
 - [RMA（Rapid Motor Adaptation）](../wiki/entities/paper-rma-rapid-motor-adaptation.md)（本仓库）— 在线适应代表作
 - [MUJICA](../wiki/entities/paper-mujica-wheel-legged-multi-skill.md)（本仓库）— 电机包络约束进 P3O 的零样本实例
+- [执行器约束 RL 高速四足](../wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md)（本仓库，arXiv:2312.17507）— MOR 约束 + 减速器映射；HOUND 6.5 m/s 与高速 sim2real 消融
 
 ### 学完输出什么
 - 一份带范围依据的 DR 参数表

@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-20] ingest | sources/papers/actuator_constrained_rl_high_speed_quadruped_arxiv_2312_17507.md — 执行器约束 RL 高速四足 MOR；wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md；交叉 sim2real / locomotion / APT-RL / depth-sim2real
+
 ## [2026-07-20] ingest | sources/sites/chingmu.md — 青瞳视觉光学动捕全栈与 MotionDecode 数据计划；wiki/entities/chingmu.md；交叉更新 notable-commercial-robot-platforms
 
 ## [2026-07-20] ingest | sources/sites/engineai-urkl.md — EngineAI URKL 人形格斗联赛；wiki/entities/urkl.md；交叉 rek / teleoperation / depth-humanoid-boxing

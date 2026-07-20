@@ -15,7 +15,7 @@ tags:
   - agency-for-defense-development
   - diden-robotics
 status: complete
-updated: 2026-07-19
+updated: 2026-07-20
 doi: "10.1126/scirobotics.adz7397"
 arxiv: "2607.13579"
 venue: "Science Robotics 2026"
@@ -30,6 +30,7 @@ related:
   - ./paper-walk-these-ways-quadruped-mob.md
   - ./paper-swap-parkour.md
   - ./extreme-parkour.md
+  - ./paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md
 sources:
   - ../../sources/papers/apt_rl_science_robotics_2026.md
   - ../../sources/sites/skillquadsr-github-io.md
@@ -144,6 +145,7 @@ flowchart TB
 - [Walk These Ways（MoB）](./paper-walk-these-ways-quadruped-mob.md)
 - [SWAP（四足感知跑酷）](./paper-swap-parkour.md)
 - [Extreme Parkour](./extreme-parkour.md)
+- [执行器约束 RL 高速奔跑（同 HOUND · MOR）](./paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md)
 - [Privileged Training](../concepts/privileged-training.md)
 
 ## 推荐继续阅读
