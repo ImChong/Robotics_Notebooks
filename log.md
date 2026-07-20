@@ -2,6 +2,8 @@
 
 ## [2026-07-20] ingest | sources/sites/chingmu.md — 青瞳视觉光学动捕全栈与 MotionDecode 数据计划；wiki/entities/chingmu.md；交叉更新 notable-commercial-robot-platforms
 
+## [2026-07-20] ingest | sources/sites/engineai-urkl.md — EngineAI URKL 人形格斗联赛；wiki/entities/urkl.md；交叉 rek / teleoperation / depth-humanoid-boxing
+
 ## [2026-07-19] ingest | sources/sites/roboscience.md — RoboScience VLOA/Visics/RoboMirage；wiki/entities/roboscience-vloa.md；交叉更新 generative-world-models / vla / manipulation
 
 ## [2026-07-19] ingest | sources/papers/humi_arxiv_2602_06643.md — HuMI 无机器人人形全身操作；wiki/entities/paper-notebook-humanoid-manipulation-interface.md；交叉更新 wiki/entities/paper-halomi-humanoid-loco-manipulation.md
@@ -3472,3 +3474,14 @@
 - `wiki/concepts/embodied-fm-latency-generalization-tradeoff.md`：把[五层选型闭环 Query] ③ 执行层「泛化↔实时」的工程判据，沉淀为独立概念页；明示**模型规模 / 多模态跨度 / 世界模型推演步长**三个泛化旋钮如何共同推高推理时延 `τ`、压缩可用控制带宽，给出可稳定闭环的充要条件 `τ_total ≤ 1/f_ctrl`，并把这条「可达边界」讲成端到端 vs 分层选型分界的物理根因（分层=频段解耦）；配三旋钮代价表、破边界三条工程路线（动作分块 / 频域意图分词 / 异步双频）与常见误判速查表。
 - `wiki/queries/embodied-fm-taxonomy-loop.md` ③ 执行层判据注脚补链新页、`related` 纳入新页，形成双向回链；新页 `tags` 含 vla/world-model，正文回链专题枢纽，不新增 `embodied_fm_crosslink` INFO 预警。
 - `make lint` 0 errors（另含 7 条既有信息型预警，均与本次改动无关，不阻塞 CI）；勾选 v28 P1「具身大模型分类学选型闭环知识链」第②项（概念页），该父条目两个子项全部完成。
+
+## [2026-07-19] structural | checklist-v29 P3② 详情页「具身评测基准」专题徽标联动 —— 端到端验证收尾
+
+- 详情页「所属专题」徽标行（`docs/main.js renderMetaTopicBadges` → `docs/topic-filters.js topicsForNode`）本就以单一事实源数据驱动：命中 `embodied-eval-benchmark` 即渲染「🧪 具身评测基准 (Embodied Eval Benchmark)」徽标并跳 `graph.html?topic=embodied-eval-benchmark`，空态降级隐藏整行——P3① 把该专题（3 段 `bench`/`eval`/`benchmark` 干净片段 + 7 页 `ids`）写入单一事实源后详情页已自动联动，无需二次实现。
+- node 逐页复核：`robo-bench`/`ewmbench`/`esi-bench`/`paper-gigaworld-1-policy-evaluation`/`simulation-evaluation-infrastructure`/`embodied-eval-benchmark-selection-loop`/`sim-vs-real-eval-gap` 7 页均稳定命中 `embodied-eval-benchmark`，非评测的 `vlm-vln-vla-vlx-world-model-taxonomy` 未命中；端到端截图 `detail.html?id=entity-robo-bench`「所属专题」行同渲「🏋 全身控制 (WBC)」+「🧪 具身评测基准」双徽标，多专题互不干扰。截图归档 `.cursor-artifacts/screenshots/detail-topic-embodied-eval-benchmark.png`（gitignore，不入库）。
+- `make export graph` 重生 1687 节点 / 13524 边、0 orphans；`lint_wiki --report` 0 errors（1 条信息型预警，不阻塞 CI）。勾选 v29 P3「详情页『同专题相关页』提示」，**v29 全数完成**。
+
+## [2026-07-20] structural | checklist-v30 主题调整 —— 改为「执行器驱动链选型闭环」
+
+- 应维护者要求更换 v30 优化方向：由「免机器人示教数据采集选型闭环」改为「**执行器驱动链选型闭环**」——与 V28（选哪类具身大模型）/ V29（怎么评测）两条软件链互补，回答「策略力矩指令由什么电子硬件驱动链落地」。
+- 四层链：EDA 电路设计（KiCad vs Altium、自研驱动板 vs 一体化关节）→ 电机驱动固件 FOC（SimpleFOC，电流环带宽/编码器分辨率）→ 执行器建模与摩擦辨识（BAM / NeuralActuator / actuator-network / SAGE，理想力矩源假设何时破）→ 实时总线闭环集成（EtherCAT 周期 ≠ 闭环带宽）。P0 巡检 / P1 Query（`actuator-drive-chain-selection-loop`）+ concept（`torque-source-abstraction-gap`）/ P2 事实库 240→250（10 条驱动链选型矛盾）/ P3 专题视图（`actuator-drive-chain`，⚡，第 20 项）+ 详情页徽标结构不变。

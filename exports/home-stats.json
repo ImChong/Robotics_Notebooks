@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-20",
-  "node_count": 1688,
-  "edge_count": 13531,
+  "node_count": 1689,
+  "edge_count": 13539,
   "coverage": {
-    "covered": 1638,
-    "total": 1668,
+    "covered": 1639,
+    "total": 1669,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -17,6 +17,15 @@
       "source": "log.md",
       "action": "added",
       "has_repo": true
+    },
+    {
+      "path": "wiki/entities/urkl.md",
+      "detail_id": "entity-urkl",
+      "label": "URKL（Ultimate Robot Knock-out Legend · EngineAI 人形格斗联赛）",
+      "type": "entity",
+      "recency": "2026-07-20",
+      "source": "log.md",
+      "action": "added"
     },
     {
       "path": "wiki/entities/roboscience-vloa.md",
@@ -200,16 +209,6 @@
       "source": "log.md",
       "action": "added",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/overview/robot-control-paradigm-model-based-nonlinear-dynamics.md",
-      "detail_id": "wiki-overview-robot-control-paradigm-model-based-nonlinear-dynamics",
-      "label": "基于模型的非线性动力学控制（体系②）",
-      "type": "overview",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -229,23 +228,23 @@
     },
     {
       "label": "模仿学习",
-      "size": 197
+      "size": 183
     },
     {
       "label": "人形论文深读笔记",
       "size": 179
     },
     {
+      "label": "全身控制",
+      "size": 153
+    },
+    {
       "label": "移动操作",
       "size": 153
     },
     {
-      "label": "全身控制",
-      "size": 150
-    },
-    {
       "label": "仿真训练",
-      "size": 111
+      "size": 109
     }
   ],
   "top_hubs": [
@@ -338,8 +337,7 @@
       "label": "BeyondMimic",
       "type": "method",
       "degree": 53,
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",
