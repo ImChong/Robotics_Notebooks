@@ -151,6 +151,7 @@
 - **每个 wiki 页面必须包含 `## 参考来源` 区块**，标注该页知识编译自哪些原始资料
   （这是 Karpathy"compilation beats retrieval"的核心体现：页面本身即溯源）
 - **每个 wiki 页面必须包含 `## 英文缩写速查` 区块**（紧跟一句话定义之后；三列：缩写 / 英文全称 / 简要说明；至少 3 行）。格式见 [schema/page-types.md](schema/page-types.md)；ingest 步骤见 [schema/ingest-workflow.md](schema/ingest-workflow.md)
+- **论文实体页（`wiki/entities/paper-*.md`）在官方有可运行代码时，必须增加 `## 源码运行时序图`**（`mermaid sequenceDiagram`，节点对齐 `sources/repos/` 与 README 入口；无可运行实现时写明「不适用」及原因）。详见 [schema/ingest-workflow.md § 步骤 5](schema/ingest-workflow.md)
 - **CI 质量网关（必须通过）**：
   - 提交前必须本地运行 `make ci-preflight`，它会按固定顺序同步 `catalog.md`、`exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md` 与 `docs/index.html`，然后执行 lint/search/export 检查。其中大体积站点 JSON 与 sitemap 已 gitignore、**不随提交入库**（Pages 部署时现场生成），preflight 重新生成它们只为本地检查与预览。
   - 若只想确认派生文件是否已经全部提交，运行 `make ci-check`；该命令会在重新生成后发现未提交的统计/导出差异并失败。

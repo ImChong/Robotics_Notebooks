@@ -1,5 +1,9 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-20] structural | schema/ingest-workflow.md + page-types.md + AGENTS.md — 有源码论文 ingest 必加源码运行时序图；ClothTransformer 页标注不适用
+
+## [2026-07-20] ingest | sources/papers/clothtransformer_arxiv_2605_27852.md — ClothTransformer 统一 latent Transformer 布料仿真；wiki/entities/paper-clothtransformer-unified-latent-cloth-simulation.md；交叉 manipulation / deform360
+
 ## [2026-07-20] ingest | sources/repos/unitree.md — 深度补全 unitreerobotics 组织开源地图；升级 wiki/entities/unitree.md 软件生态；交叉 unitree-g1 / unitree-rl-mjlab / unitree-ros / teleoperation / lerobot
 
 - 原始资料：深化 [`sources/repos/unitree.md`](sources/repos/unitree.md)（组织级；约 49 公开仓；SDK2 / ROS / 三条 RL / XR+IL / UnifoLM 分类导航）

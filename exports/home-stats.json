@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-07-20",
-  "node_count": 1697,
-  "edge_count": 13611,
+  "node_count": 1698,
+  "edge_count": 13618,
   "coverage": {
-    "covered": 1647,
-    "total": 1677,
+    "covered": 1648,
+    "total": 1678,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-clothtransformer-unified-latent-cloth-simulation.md",
+      "detail_id": "entity-paper-clothtransformer-unified-latent-cloth-simulation",
+      "label": "ClothTransformer（Unified Latent-Space Cloth Simulation · arXiv:2605.27852）",
+      "type": "entity",
+      "recency": "2026-07-20",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/unitree.md",
       "detail_id": "entity-unitree",
@@ -198,52 +209,43 @@
       "recency": "2026-07-19",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-apt-rl-agile-perceptive-quadruped-locomotion.md",
-      "detail_id": "entity-paper-apt-rl-agile-perceptive-quadruped-locomotion",
-      "label": "APT-RL：野外敏捷感知多技能四足 Locomotion",
-      "type": "entity",
-      "recency": "2026-07-19",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/unitree.md",
-    "detail_id": "entity-unitree",
-    "label": "Unitree",
+    "path": "wiki/entities/paper-clothtransformer-unified-latent-cloth-simulation.md",
+    "detail_id": "entity-paper-clothtransformer-unified-latent-cloth-simulation",
+    "label": "ClothTransformer（Unified Latent-Space Cloth Simulation · arXiv:2605.27852）",
     "type": "entity",
     "recency": "2026-07-20",
     "source": "log.md",
-    "action": "maintained",
-    "has_repo": true
+    "action": "added",
+    "has_repo": true,
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 318
-    },
-    {
-      "label": "模仿学习",
-      "size": 183
+      "size": 324
     },
     {
       "label": "人形论文深读笔记",
-      "size": 178
+      "size": 179
+    },
+    {
+      "label": "模仿学习",
+      "size": 171
     },
     {
       "label": "移动操作",
-      "size": 176
+      "size": 169
     },
     {
       "label": "全身控制",
-      "size": 132
+      "size": 130
     },
     {
       "label": "仿真到现实",
-      "size": 84
+      "size": 85
     }
   ],
   "top_hubs": [
@@ -282,7 +284,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 252,
+      "degree": 254,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {

@@ -9,9 +9,10 @@ tags:
   - visuotactile
   - eccv
 status: complete
-updated: 2026-07-11
+updated: 2026-07-20
 arxiv: "2607.05390"
 related:
+  - ../entities/paper-clothtransformer-unified-latent-cloth-simulation.md
   - ../overview/wm-action-consequence-category-02-contact-modeling.md
   - ../concepts/world-action-models.md
   - ../methods/generative-world-models.md
@@ -112,6 +113,7 @@ flowchart TB
 | **Cosmos / 2D video WM** | **可扩展 2D** 路线对照对象 |
 | **[VT-WAM](./paper-vt-wam-visuotactile-contact-rich.md)** | 真机 **闭环 tactile WAM**；Deform360 偏 **offline benchmark** |
 | **[RynnWorld-4D](./paper-rynnworld-4d-rgb-depth-flow.md)** | **RGB-DF 4D** 生成；Deform360 聚焦 **可变形体 + 粒子** |
+| **[ClothTransformer](./paper-clothtransformer-unified-latent-cloth-simulation.md)** | **仿真神经布料求解器** + 无穿透 GT；Deform360 偏 **真实布绳视触觉 WM** |
 
 ## 常见误区或局限
 
