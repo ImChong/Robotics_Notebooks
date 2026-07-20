@@ -93,6 +93,7 @@
 - [FAST-LIO](wiki/entities/fast-lio.md) — FAST-LIO** 以 **紧耦合迭代卡尔曼滤波** 实现低延迟 3D LiDAR-惯性里程计。 `📅unknown` `[entity_page]`
 - [Featurize（蒜粒方块）](wiki/entities/featurize.md) — Featurize**（featurize.cn）定位 **机器学习在线实验室**：预装 PyTorch 等环境，提供 RTX 3090/4090 `📅unknown` `[entity_page]`
 - [Figure AI](wiki/entities/figure-ai.md) — Figure AI** 构建「全栈人形」：**Figure 系列硬件** + **Helix 系列 VLA 模型**，目标是在真实家庭与物流场景中完成语言条件下的全身操作与移动。 `📅unknown` `[entity_page]`
+- [Flexion × Niantic Spatial × NVIDIA：RGB 导航 Sim2Real 管线](wiki/entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [Flexion Reflect v1.0（长程人形自主平台）](wiki/entities/flexion-reflect-v1.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [Flightmare](wiki/entities/flightmare.md) — Flightmare**（uzh-rpg/flightmare）是苏黎世大学 **Robotics and Per `📅unknown` `[entity_page]`
 - [Humanoid FluxVLA Engine](wiki/entities/fluxvla-engine.md) — Humanoid FluxVLA Engine** 是 **逐际动力（LimX Dynamics）** 随 **COSA 0.5**（2026-07）同步开源的 **人形 VLA 全栈工程框架 `📅unknown` `[entity_page]`
