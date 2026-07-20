@@ -125,7 +125,7 @@
 | [x] [nvidia_cosmos.md](repos/nvidia_cosmos.md) | NVIDIA/cosmos：Cosmos 3 全模态世界模型开放平台（Diffusers / vLLM-Omni / NIM，OpenMDW-1.1） |
 | [pinocchio.md](repos/pinocchio.md) | Pinocchio 动力学库 |
 | [crocoddyl.md](repos/crocoddyl.md) | Crocoddyl 最优控制框架 |
-| [unitree.md](repos/unitree.md) | Unitree 硬件与 SDK |
+| [x] [unitree.md](repos/unitree.md) | unitreerobotics 官方 GitHub 组织总览：SDK2 / ROS / 三条 RL 线 / XR 遥操作 / UnifoLM |
 | [x] [unitree_ros.md](repos/unitree_ros.md) | unitree_ros：ROS1 + Gazebo8 官方描述与关节级仿真包 |
 | [x] [unitree_ros_to_real.md](repos/unitree_ros_to_real.md) | unitree_ros_to_real：ROS↔真机桥与 unitree_legged_msgs（与 unitree_ros 配套） |
 | [x] [now_you_see_that.md](repos/now_you_see_that.md) | Now You See That 官方 GitHub（arXiv:2602.06382；README + 视频；训练代码待发布） |

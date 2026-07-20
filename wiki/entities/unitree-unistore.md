@@ -2,7 +2,7 @@
 type: entity
 tags: [platform, ecosystem, humanoid, deployment, unitree]
 status: complete
-updated: 2026-07-08
+updated: 2026-07-20
 related:
   - ./unitree.md
   - ./unitree-g1.md

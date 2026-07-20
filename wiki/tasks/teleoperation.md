@@ -88,6 +88,7 @@ sources:
 |------|--------|---------|---------|------|
 | ALOHA（Stanford 2023） | 4 臂台式 | Leader Arms | ~50 任务 | 低成本（$20K），精细操作 |
 | OmniH2O（CMU/Tsinghua 2024） | Unitree H1/G1 | VR + 手套 | 全身遥操作 | 全身 DOF 控制，含移动基座 |
+| **xr_teleoperate（Unitree 官方）** | Unitree G1 / H1 | AVP / PICO / Quest 等 XR | 官方参考实现 | 宇树开源全身遥操作主仓；可与 `unitree_sim_isaaclab` 同 DDS 仿真采数；组织地图见 [Unitree](../entities/unitree.md) |
 | HTD（CMU/Bosch 2026） | 人形 + 灵巧手 | VR + 摇杆 + 分布式触觉 | 5 个真实接触丰富任务 | LBC 稳定下肢，VR 采集上身/手部示范，并同步手部力与触觉 |
 | UMI（Stanford 2024） | 通用 | GoPro + 夹爪 | 可扩展 | 无需专用机器人，数据可迁移 |
 | HandUMI（RoboNet 2026） | PiPER / OpenArm / TRLC-DK1 / YAM 等平行夹爪双臂 | HandUMI 手持接口 + PICO / Quest | 无机器人采集 | **一次采集、多臂重定向**；LeRobot v3 兼容 + 内置校准/QA；见 [实体](../entities/handumi.md) |
