@@ -3,7 +3,7 @@
 type: entity
 tags: [manipulation, dexterous-hand, hardware, open-source, tendon-driven, teleoperation, imitation-learning, nyu]
 status: complete
-updated: 2026-06-13
+updated: 2026-07-20
 related:
   - ../tasks/manipulation.md
   - ../tasks/teleoperation.md
@@ -11,6 +11,7 @@ related:
   - ./paper-notebook-ruka-rethinking-the-design-of-humanoid-hands-wit.md
   - ./orca-hand.md
   - ./allegro-hand.md
+  - ./handroid.md
   - ./en02-op.md
 sources:
   - ../../sources/papers/ruka_v2_arxiv_2603_26660.md
@@ -103,6 +104,7 @@ flowchart LR
 - [RUKA v1（Paper Notebooks 待深读）](./paper-notebook-ruka-rethinking-the-design-of-humanoid-hands-wit.md)
 - [Orca Hand](./orca-hand.md) — 另一类开源腱驱动仿手
 - [Allegro Hand](./allegro-hand.md) — 直驱科研平台对照
+- [Handroid](./handroid.md) — 桌面双形态平台（手 / 人形滑轨重配置；CAD 已公开）
 
 ## 推荐继续阅读
 

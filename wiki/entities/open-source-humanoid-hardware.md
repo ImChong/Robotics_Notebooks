@@ -3,12 +3,13 @@
 type: entity
 tags: [humanoid, hardware, open-source, robotics, research, berkeley]
 status: complete
-updated: 2026-07-14
+updated: 2026-07-20
 related:
   - ../overview/humanoid-hardware-101-technology-map.md
   - ./humanoid-robot.md
   - ./roboto-origin.md
   - ./asimov-v1.md
+  - ./handroid.md
   - ../overview/robot-open-source-wechat-issue01-curator.md
   - ../overview/robot-open-source-wechat-issue02-curator.md
   - ./berkeley-humanoid-lite.md
@@ -62,6 +63,7 @@ summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humano
 | **Unitree H1 (SDK版)** | Unitree | 19 | 商业级 QDD | > 50,000 USD | Isaac Gym (legged_gym) 生态极强 |
 | **Asimov v1** | Asimov Inc. | 25 主动 + 2 被动（公开 README） | 铝结构 + MJF 尼龙；关节驱动以官方设计为准 | DIY Kit 目标价量级约 **1.5 万 USD**（以官网为准） | 单仓含 CAD/电气/**MuJoCo**；运控 API/策略仍在路线图 |
 | **OpenLoong 青龙** | 人形机器人（上海）/ 开放原子 | **43**（公开硬件 README） | 全尺寸公版；**EtherCAT** 关节总线；五指灵巧手 | 全栈开源图纸（制造门槛高，非 DIY 低价档） | **Framework**（ROS-free C++）+ **Dyn-Control**（MPC/WBC+MuJoCo）+ Isaac Gym/ROS 并行栈；详见 [OpenLoong](./openloong.md) |
+| **Handroid** | UNC Chapel Hill / Stanford | **27**（双形态） | **Dynamixel** + 3D 打印模块；滑轨在手/人形间重配置 | 桌面级（**0.33 m / 2.05 kg**）；CAD+BOM 已公开 | 统一遥操作/IL/RL 栈；控制代码截至 2026-07 待链出；详见 [Handroid](./handroid.md) |
 
 ## 1. Berkeley Humanoid (准直接驱动派)
 - **特点**：极其强调低成本和维修便捷性。它证明了使用廉价的无刷电机和 3D 打印结构，也能完成稳定的动态行走。
@@ -115,6 +117,7 @@ summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humano
 - [Asimov v1](./asimov-v1.md)
 - [OpenLoong（青龙·公版机）](./openloong.md)
 - [Open Duck Mini](./open-duck-mini.md)
+- [Handroid](./handroid.md) — 桌面双形态（灵巧手 ↔ 人形）研究平台
 - [机器人开源宝库（微信策展第01期）](../overview/robot-open-source-wechat-issue01-curator.md)
 - [机器人开源宝库（微信策展第02期）](../overview/robot-open-source-wechat-issue02-curator.md)
 - [人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)
