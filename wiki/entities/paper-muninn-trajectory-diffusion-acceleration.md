@@ -7,8 +7,9 @@ tags:
   - trajectory-planning
   - inference-acceleration
   - offline-rl
+  - uiuc
 status: complete
-updated: 2026-07-16
+updated: 2026-07-20
 arxiv: "2605.09999"
 venue: RSS 2026
 code: https://github.com/gokulp01/Muninn
@@ -18,10 +19,10 @@ related:
   - ../methods/reinforcement-learning.md
   - ../tasks/manipulation.md
 sources:
+  - ../../sources/blogs/wechat_qbitai_rss2026_awards_2026-07-16.md
   - ../../sources/papers/muninn_arxiv_2605_09999.md
   - ../../sources/repos/muninn.md
 summary: "Muninn（arXiv:2605.09999 · RSS 2026）：免训练轨迹扩散缓存包装器——probe 稳定性 + 采样器解析灵敏度经 conformal 标定为逐步偏差预算，在 D4RL / 构型规划 / Diffusion Policy 上最高约 4.6× 墙钟加速且可证轨迹偏离界；官方 Diffuser 集成开源。"
-tags: [paper, repo, diffusion, trajectory-planning, inference-acceleration, offline-rl, uiuc]
 ---
 
 # Muninn（轨迹扩散免训练加速）
@@ -44,6 +45,7 @@ tags: [paper, repo, diffusion, trajectory-planning, inference-acceleration, offl
 
 ## 为什么重要
 
+- **奖项：** RSS 2026 **最佳学生论文奖**；本库节点已存在，本次由量子位报道交叉回链。
 - **部署瓶颈的共性解法**：轨迹扩散规划（[Diffuser](https://github.com/jannerm/diffuser) 等）与操作 [Diffusion Policy](../methods/diffusion-policy.md) 都受 **逐步 denoiser 调用** 制约；Muninn 提供 **模型无关** 包装层，而非为每个骨干重训蒸馏网。
 - **风险可解释**：相对 FixedSkip / FewSteps 等 **不算误差传播** 的 inference 捷径，Muninn 用 conformal 上界 + 灵敏度加权，给出 **轨迹偏离概率证书**（相对全量教师）。
 - **与训练期加速正交**：可与 **蒸馏少步采样器、窄网络** 叠加（论文 DP3 实验）；适合「已有大教师、先要实时」的工程路径。

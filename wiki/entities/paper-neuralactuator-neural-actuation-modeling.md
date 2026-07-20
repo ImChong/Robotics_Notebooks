@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, sim2real, actuator, differentiable-simulation, force-estimation, transformer, servo, dynamixel, openmanipulator, lerobot, mit]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-20
 arxiv: "2607.11734"
 code: https://github.com/Frank-ZY-Dou/Dynamics-Modeling/tree/main/NeuralActuator
 related:
@@ -15,6 +15,7 @@ related:
   - ../entities/lerobot.md
   - ../entities/sage-sim2real-actuator-gap-estimator.md
 sources:
+  - ../../sources/blogs/wechat_qbitai_rss2026_awards_2026-07-16.md
   - ../../sources/papers/neuralactuator_arxiv_2607_11734.md
 summary: "MIT CDFG：Transformer 执行器模型联合预测可微仿真 torque surrogate、无 F/T 的外力+接触门控与电机工况；NAD 双臂遥操作数据集；OpenManipulator-X/SO-101/Franka 验证 rollout、力估计与 BC 下游增益。"
 ---
@@ -42,6 +43,7 @@ summary: "MIT CDFG：Transformer 执行器模型联合预测可微仿真 torque 
 
 ## 为什么重要
 
+- **奖项：** RSS 2026 **最佳系统论文奖**；本库节点已存在，本次由量子位报道交叉回链。
 - **执行器 gap 的新监督范式：** 与依赖 **关节力矩传感** 或 **可靠电流标定** 的 [Actuator Network](../methods/actuator-network.md) / 经典 ID 不同，**torque surrogate 头仅用 pose 轨迹 + 可微物理反传**，适配 Dynamixel 等 **无可靠 τ 标签** 的平台。
 - **动力学 + 力感知统一：** 同一遥测历史预测 **simulator-equivalent 输入** 与 **末端 3D 外力**；contact gate 抑制无接触时的力幻觉——与 [Current as Touch](./paper-current-as-touch-proprioceptive-contact.md) 的 **CRP 柔顺接口** 形成 **力估计 vs 力控接口** 对照。
 - **可复现实验栈：** NAD 覆盖 **自由运动、已知载荷、六轴 fixture 交互、Joint 3 机械受限**；三平台（**OpenManipulator-X ~$500**、**SO-101**、**Franka 离线 benchmark**）跨度大，便于对照 [BAM](./paper-bam-extended-friction-servo-actuators.md) 等 **解析摩擦** 路线。

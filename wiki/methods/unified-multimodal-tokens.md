@@ -2,7 +2,7 @@
 type: method
 tags: [vla, transformers, tokenization, multi-modal, architecture]
 status: complete
-updated: 2026-04-21
+updated: 2026-07-20
 related:
   - ../formalizations/vla-tokenization.md
   - ../formalizations/cross-modal-attention.md

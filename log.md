@@ -1,5 +1,86 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-20] ingest | sources/blogs/wechat_shenlan_scirobotics_china_top3_2026-07-02.md — 深蓝AI 近五年 Science Robotics 中国顶尖高校盘点；9 篇独立论文实体（浙大/北航/清华）
+
+- 原始资料：[`sources/blogs/wechat_shenlan_scirobotics_china_top3_2026-07-02.md`](sources/blogs/wechat_shenlan_scirobotics_china_top3_2026-07-02.md)（<https://mp.weixin.qq.com/s/hbz9VPNH84CUtqORychPeA>）；raw [`sources/raw/wechat_shenlan_scirobotics_china_top3_2026-07-02/`](sources/raw/wechat_shenlan_scirobotics_china_top3_2026-07-02/)
+- 抓取：Agent Reach v1.5.0 + wechat-article-for-ai（Camoufox）
+- 沉淀页面：
+  - [`wiki/entities/paper-swarm-micro-flying-robots-in-the-wild.md`](wiki/entities/paper-swarm-micro-flying-robots-in-the-wild.md)
+  - [`wiki/entities/paper-bistable-soft-jumper-magnetic.md`](wiki/entities/paper-bistable-soft-jumper-magnetic.md)
+  - [`wiki/entities/paper-microsaccade-inspired-event-camera.md`](wiki/entities/paper-microsaccade-inspired-event-camera.md)
+  - [`wiki/entities/paper-octopus-inspired-esoam-soft-arm.md`](wiki/entities/paper-octopus-inspired-esoam-soft-arm.md)
+  - [`wiki/entities/paper-aerial-aquatic-remora-hitchhiking-robot.md`](wiki/entities/paper-aerial-aquatic-remora-hitchhiking-robot.md)
+  - [`wiki/entities/paper-miniature-deep-sea-morphable-robot.md`](wiki/entities/paper-miniature-deep-sea-morphable-robot.md)
+  - [`wiki/entities/paper-subcentimeter-pipeline-inspection-robot.md`](wiki/entities/paper-subcentimeter-pipeline-inspection-robot.md)
+  - [`wiki/entities/paper-tianjicx-neuromorphic-chip-robots.md`](wiki/entities/paper-tianjicx-neuromorphic-chip-robots.md)
+  - [`wiki/entities/paper-neurogpr-brain-inspired-place-recognition.md`](wiki/entities/paper-neurogpr-brain-inspired-place-recognition.md)
+- 开源要点：AMI-EV→Zenodo 全套；蜂群规划关联 EGO-Planner；北航/清华多篇硬件论文截至入库日无训练栈公开仓
+
+## [2026-07-20] ingest | sources/blogs/wechat_qbitai_rss2026_awards_2026-07-16.md — 量子位 RSS 2026 三项最佳/Final List/ToT；新建 7 实体 + 交叉 3 已有大奖页
+
+- 原始资料：[`sources/blogs/wechat_qbitai_rss2026_awards_2026-07-16.md`](sources/blogs/wechat_qbitai_rss2026_awards_2026-07-16.md)（<https://mp.weixin.qq.com/s/M3gYuB1gB2c3XL1GMk-p-A>）；raw [`sources/raw/wechat_qbitai_rss2026_awards_2026-07-16/`](sources/raw/wechat_qbitai_rss2026_awards_2026-07-16/)
+- 抓取：Agent Reach v1.5.0 + wechat-article-for-ai（Camoufox）
+- **复用已有完整节点（不重复造页）：** [`wiki/methods/flashsac.md`](wiki/methods/flashsac.md)（最佳论文）、[`wiki/entities/paper-muninn-trajectory-diffusion-acceleration.md`](wiki/entities/paper-muninn-trajectory-diffusion-acceleration.md)（最佳学生）、[`wiki/entities/paper-neuralactuator-neural-actuation-modeling.md`](wiki/entities/paper-neuralactuator-neural-actuation-modeling.md)（最佳系统）
+- **新建：**
+  - [`wiki/entities/paper-automated-facial-mechanisms-animatronic.md`](wiki/entities/paper-automated-facial-mechanisms-animatronic.md)
+  - [`wiki/entities/paper-oat-ordered-action-tokenization.md`](wiki/entities/paper-oat-ordered-action-tokenization.md)（官方仓 Chaoqi-LIU/oat）
+  - [`wiki/entities/paper-dapl-extrinsic-dexterity-clutter.md`](wiki/entities/paper-dapl-extrinsic-dexterity-clutter.md)
+  - [`wiki/entities/paper-cunrto-gpu-robust-trajectory-optimization.md`](wiki/entities/paper-cunrto-gpu-robust-trajectory-optimization.md)
+  - [`wiki/entities/paper-unified-fluid-robot-multiphysics-swimming.md`](wiki/entities/paper-unified-fluid-robot-multiphysics-swimming.md)（Aquarium.jl）
+  - [`wiki/entities/euroc-mav-datasets.md`](wiki/entities/euroc-mav-datasets.md)（IJRR ToT）
+  - [`wiki/entities/paper-deimel-compliant-underactuated-robotic-hand.md`](wiki/entities/paper-deimel-compliant-underactuated-robotic-hand.md)（RSS ToT）
+
+## [2026-07-20] ingest | sources/papers/miniature_deep_sea_morphable_scirobotics_2025.md — 北航文力/丁希仑组深海软体可变形机器人；wiki/entities/paper-miniature-deep-sea-morphable-robot.md；交叉 locomotion / paper-octopus-inspired-esoam-soft-arm / paper-aerial-aquatic-remora-hitchhiking-robot
+
+- 原始资料：[`sources/papers/miniature_deep_sea_morphable_scirobotics_2025.md`](sources/papers/miniature_deep_sea_morphable_scirobotics_2025.md)
+- 沉淀页面：[`wiki/entities/paper-miniature-deep-sea-morphable-robot.md`](wiki/entities/paper-miniature-deep-sea-morphable-robot.md)
+- 交叉更新：[`wiki/tasks/locomotion.md`](wiki/tasks/locomotion.md)
+- 开源状态：截至 2026-07-20 **未开源**（无官方代码仓库）
+
+## [2026-07-20] ingest | sources/papers/aerial_aquatic_remora_scirobotics_2022.md — 北航文力组仿印鱼两栖搭便车多旋翼；wiki/entities/paper-aerial-aquatic-remora-hitchhiking-robot.md；交叉 locomotion / crazyswarm2 / paper-octopus-inspired-esoam-soft-arm
+
+- 原始资料：[`sources/papers/aerial_aquatic_remora_scirobotics_2022.md`](sources/papers/aerial_aquatic_remora_scirobotics_2022.md)
+- 沉淀页面：[`wiki/entities/paper-aerial-aquatic-remora-hitchhiking-robot.md`](wiki/entities/paper-aerial-aquatic-remora-hitchhiking-robot.md)
+- 交叉更新：[`wiki/tasks/locomotion.md`](wiki/tasks/locomotion.md)、[`wiki/entities/crazyswarm2.md`](wiki/entities/crazyswarm2.md)
+- 开源状态：截至 2026-07-20 **未开源**（无官方代码仓库）
+
+## [2026-07-20] ingest | sources/papers/octopus_inspired_esoam_scirobotics_2023.md — 北航文力组仿章鱼传感软臂 E-SOAM；wiki/entities/paper-octopus-inspired-esoam-soft-arm.md；交叉 manipulation / teleoperation / bimanual-manipulation
+
+- 原始资料：[`sources/papers/octopus_inspired_esoam_scirobotics_2023.md`](sources/papers/octopus_inspired_esoam_scirobotics_2023.md)
+- 沉淀页面：[`wiki/entities/paper-octopus-inspired-esoam-soft-arm.md`](wiki/entities/paper-octopus-inspired-esoam-soft-arm.md)
+- 交叉更新：[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`wiki/tasks/teleoperation.md`](wiki/tasks/teleoperation.md)、[`wiki/tasks/bimanual-manipulation.md`](wiki/tasks/bimanual-manipulation.md)
+- 开源状态：截至 2026-07-20 **未开源**（无官方代码仓库）
+
+## [2026-07-20] ingest | sources/papers/neurogpr_scirobotics_2023.md — NeuroGPR 脑启发多模态 ANN+SNN 场所识别；wiki/entities/paper-neurogpr-brain-inspired-place-recognition.md；交叉 paper-tianjicx / quadruped-robot / locomotion
+
+- 原始资料：[`sources/papers/neurogpr_scirobotics_2023.md`](sources/papers/neurogpr_scirobotics_2023.md)
+- 沉淀页面：[`wiki/entities/paper-neurogpr-brain-inspired-place-recognition.md`](wiki/entities/paper-neurogpr-brain-inspired-place-recognition.md)
+- 机构：清华大学类脑计算研究中心；通讯作者施路平
+- DOI：10.1126/scirobotics.abm6996（Science Robotics 2023）
+- 关键贡献：NeuroGPR；视觉 + LiDAR 多模态；ANN 语义分支 + SNN 时序分支；对光照/视角/遮挡鲁棒；四足机器人实机部署
+- 交叉更新：[`wiki/entities/paper-tianjicx-neuromorphic-chip-robots.md`](wiki/entities/paper-tianjicx-neuromorphic-chip-robots.md)（mutual link）、[`wiki/entities/quadruped-robot.md`](wiki/entities/quadruped-robot.md)、[`wiki/tasks/locomotion.md`](wiki/tasks/locomotion.md)
+- 开源状态：确认未开源（截至 2026-07-20 无 GitHub）
+
+## [2026-07-20] ingest | sources/papers/tianjicx_neuromorphic_scirobotics_2022.md — TianjicX 时空弹性神经形态芯片多任务机器人；wiki/entities/paper-tianjicx-neuromorphic-chip-robots.md；交叉 paper-neurogpr / locomotion
+
+- 原始资料：[`sources/papers/tianjicx_neuromorphic_scirobotics_2022.md`](sources/papers/tianjicx_neuromorphic_scirobotics_2022.md)
+- 沉淀页面：[`wiki/entities/paper-tianjicx-neuromorphic-chip-robots.md`](wiki/entities/paper-tianjicx-neuromorphic-chip-robots.md)
+- 机构：清华大学类脑计算研究中心；通讯作者施路平
+- DOI：10.1126/scirobotics.abk2948（Science Robotics 2022）
+- 关键贡献：TianjicX 神经形态芯片；时空弹性 ANN+SNN 调度；轮式机器人三任务并发（跟踪/避障/语音识别）；低功耗边缘计算
+- 交叉更新：[`wiki/entities/paper-neurogpr-brain-inspired-place-recognition.md`](wiki/entities/paper-neurogpr-brain-inspired-place-recognition.md)、[`wiki/tasks/locomotion.md`](wiki/tasks/locomotion.md)
+- 开源状态：确认未开源（截至 2026-07-20 无 GitHub）
+
+## [2026-07-20] ingest | sources/papers/subcentimeter_pipeline_inspection_scirobotics_2022.md — 亚厘米级 DEA 蠕动管道检测机器人；wiki/entities/paper-subcentimeter-pipeline-inspection-robot.md；交叉 locomotion / teleoperation
+
+- 原始资料：[`sources/papers/subcentimeter_pipeline_inspection_scirobotics_2022.md`](sources/papers/subcentimeter_pipeline_inspection_scirobotics_2022.md)
+- 沉淀页面：[`wiki/entities/paper-subcentimeter-pipeline-inspection-robot.md`](wiki/entities/paper-subcentimeter-pipeline-inspection-robot.md)
+- 机构：清华大学机械工程系；通讯作者赵慧婵
+- DOI：10.1126/scirobotics.abm8597（Science Robotics 2022）
+- 关键贡献：2.2 g / 47 mm 蠕虫式软体机器人；DEA 人工肌肉三段蠕动；< 1 cm 管道穿行；直/L/S/螺旋管 + 玻璃/金属/碳纤维壁 + 空气/油液介质；> 1 体长/秒；微摄像头遥控内窥
+- 交叉更新：[`wiki/tasks/locomotion.md`](wiki/tasks/locomotion.md)、[`wiki/tasks/teleoperation.md`](wiki/tasks/teleoperation.md)
+- 开源状态：确认未开源（截至 2026-07-20 无 GitHub 或 CAD）
+
 ## [2026-07-20] structural | schema/ingest-workflow.md + page-types.md + AGENTS.md — 有源码论文 ingest 必加源码运行时序图；ClothTransformer 页标注不适用
 
 ## [2026-07-20] ingest | sources/papers/clothtransformer_arxiv_2605_27852.md — ClothTransformer 统一 latent Transformer 布料仿真；wiki/entities/paper-clothtransformer-unified-latent-cloth-simulation.md；交叉 manipulation / deform360
