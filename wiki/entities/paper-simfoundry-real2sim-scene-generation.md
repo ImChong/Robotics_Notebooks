@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, manipulation, real2sim, sim2real, scene-generation, digital-twin, digital-cousin, policy-evaluation, nvidia, gear, droid, isaac-lab, 3dgs, vla]
 status: complete
-updated: 2026-07-03
+updated: 2026-07-20
 arxiv: "2606.28276"
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md

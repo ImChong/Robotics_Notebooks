@@ -2,8 +2,9 @@
 type: entity
 tags: [humanoid, loco-manipulation, vla, vlm, reinforcement-learning, whole-body-control, long-horizon, semantic-mapping, runtime, flexion]
 status: complete
-updated: 2026-06-30
+updated: 2026-07-20
 related:
+  - ./flexion-niantic-nvidia-rgb-sim2real-pipeline.md
   - ../methods/vla.md
   - ../methods/reinforcement-learning.md
   - ../concepts/whole-body-control.md
@@ -15,6 +16,7 @@ related:
   - ./current-robotics-curr0.md
 sources:
   - ../../sources/blogs/flexion_reflect_v1_0.md
+  - ../../sources/blogs/flexion_niantic_nvidia_sim2real_rgb_2026-07-20.md
 summary: "Flexion Reflect v1.0（2026-06）是人形长程自主智能平台：Reflect-VLM 任务级 tool 推理 + VLA/RL 运动层 + Reflex 全身控制 + FlexComm 运行时与 3DGS 全栈仿真；单条 NL 指令跨楼层取件—乘梯—开箱—上架全程无人工介入，16 步 mission 评测 SFT+RL 90% 完成率。"
 ---
 
@@ -131,6 +133,10 @@ flowchart TB
 - **可观测性：** reasoning → 内核/网卡日志统一采集，降低「每层 1% 失败率相乘」的排障成本。
 - **3DGS 仿真：** 满足 VLM 逼真观测、策略可用几何、实时闭环与失败可回放四要件。
 
+### 与 Niantic × NVIDIA RGB 导航管线（2026-07）
+
+[Flexion × Niantic Spatial × NVIDIA RGB Sim2Real 管线](./flexion-niantic-nvidia-rgb-sim2real-pipeline.md) 把 Reflect 栈中的 **3DGS 仿真理念** 落到可复制的 **部署现场数字孪生**：360° 扫描 → NuRec USDZ → Isaac Lab **纯 RGB 局部导航 RL** → **零样本真机**。联合文将 **全任务仿真评测**（导航 + 交互 + 规划 + 恢复）列为下一步，与 Reflect v1.0 长程自主方向直接衔接。
+
 ## 常见误区或局限
 
 - **不是论文或开源基准：** 除 16 步 mission 曲线外，缺独立第三方复现与完整权重发布。
@@ -150,6 +156,7 @@ flowchart TB
 - [ROS2 vs LCM](../comparisons/ros2-vs-lcm.md) — FlexComm 对照的中间件选型背景
 - [KinetIQ Ascend](./kinetiq-ascend.md) — 另一套 2026 真机 VLA+RL 产业栈（偏产线操作）
 - [Curr-0](./current-robotics-curr0.md) — HumanEx + 三系统单策略 + 世界模型评测对照
+- [Flexion × Niantic × NVIDIA RGB Sim2Real 管线](./flexion-niantic-nvidia-rgb-sim2real-pipeline.md) — 场地 3DGS 重建 + RGB 导航零样本部署（2026-07）
 
 ## 推荐继续阅读
 
@@ -160,3 +167,4 @@ flowchart TB
 ## 参考来源
 
 - [flexion_reflect_v1_0.md](../../sources/blogs/flexion_reflect_v1_0.md)
+- [flexion_niantic_nvidia_sim2real_rgb_2026-07-20.md](../../sources/blogs/flexion_niantic_nvidia_sim2real_rgb_2026-07-20.md) — 与 Niantic Spatial、NVIDIA 联合的 Real2Sim→RGB 导航 Sim2Real 管线

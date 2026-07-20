@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-20] ingest | sources/blogs/flexion_niantic_nvidia_sim2real_rgb_2026-07-20.md — Flexion×Niantic×NVIDIA RGB 导航 Sim2Real 管线；wiki/entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md；交叉 sim2real / flexion-reflect-v1 / gs-playground
+
 ## [2026-07-20] ingest | sources/blogs/wechat_shenlan_scirobotics_china_top3_2026-07-02.md — 深蓝AI 近五年 Science Robotics 中国顶尖高校盘点；9 篇独立论文实体（浙大/北航/清华）
 
 - 原始资料：[`sources/blogs/wechat_shenlan_scirobotics_china_top3_2026-07-02.md`](sources/blogs/wechat_shenlan_scirobotics_china_top3_2026-07-02.md)（<https://mp.weixin.qq.com/s/hbz9VPNH84CUtqORychPeA>）；raw [`sources/raw/wechat_shenlan_scirobotics_china_top3_2026-07-02/`](sources/raw/wechat_shenlan_scirobotics_china_top3_2026-07-02/)

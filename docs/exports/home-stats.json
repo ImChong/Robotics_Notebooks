@@ -1,13 +1,22 @@
 {
   "generated_at": "2026-07-20",
-  "node_count": 1714,
-  "edge_count": 13692,
+  "node_count": 1715,
+  "edge_count": 13704,
   "coverage": {
-    "covered": 1664,
-    "total": 1694,
+    "covered": 1665,
+    "total": 1695,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md",
+      "detail_id": "entity-flexion-niantic-nvidia-rgb-sim2real-pipeline",
+      "label": "Flexion × Niantic Spatial × NVIDIA：RGB 导航 Sim2Real 管线",
+      "type": "entity",
+      "recency": "2026-07-20",
+      "source": "log.md",
+      "action": "added"
+    },
     {
       "path": "wiki/entities/paper-swarm-micro-flying-robots-in-the-wild.md",
       "detail_id": "entity-paper-swarm-micro-flying-robots-in-the-wild",
@@ -201,31 +210,21 @@
       "source": "log.md",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/tasks/locomotion.md",
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
-      "recency": "2026-07-20",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-swarm-micro-flying-robots-in-the-wild.md",
-    "detail_id": "entity-paper-swarm-micro-flying-robots-in-the-wild",
-    "label": "野外微型飞行机器人蜂群（Swarm of Micro Flying Robots in the Wild）",
+    "path": "wiki/entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md",
+    "detail_id": "entity-flexion-niantic-nvidia-rgb-sim2real-pipeline",
+    "label": "Flexion × Niantic Spatial × NVIDIA：RGB 导航 Sim2Real 管线",
     "type": "entity",
     "recency": "2026-07-20",
     "source": "log.md",
-    "action": "added",
-    "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 348
+      "size": 347
     },
     {
       "label": "人形论文深读笔记",
@@ -260,7 +259,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 304,
+      "degree": 307,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -291,13 +290,13 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 247
+      "degree": 248
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 239,
+      "degree": 240,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
@@ -363,17 +362,17 @@
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
+      "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
+      "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
+      "type": "entity",
+      "degree": 40
+    },
+    {
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
       "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
       "type": "entity",
       "degree": 40,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
-      "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
-      "type": "entity",
-      "degree": 39
     },
     {
       "detail_id": "entity-paper-twist2",

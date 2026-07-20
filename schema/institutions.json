@@ -546,6 +546,13 @@
         "ningbo-eastern"
       ]
     },
+    "niantic-spatial": {
+      "label": "耐安提克空间智能（Niantic Spatial）",
+      "aliases": [
+        "niantic",
+        "niantic-spatial"
+      ]
+    },
     "fudan": {
       "label": "复旦大学（Fudan）",
       "aliases": [
