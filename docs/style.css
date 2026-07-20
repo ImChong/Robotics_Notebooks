@@ -1820,6 +1820,17 @@ button.home-wiki-heatmap-cell.is-active {
   width: auto !important;
   height: auto !important;
 }
+@media (min-width: 900px) {
+  .mermaid-lightbox {
+    padding: 0.5rem;
+  }
+  .mermaid-lightbox-panel {
+    width: min(98vw, calc(100vw - 1rem));
+    height: min(96vh, calc(100dvh - 1rem));
+    max-width: calc(100vw - 1rem);
+    max-height: calc(100dvh - 1rem);
+  }
+}
 .detail-markdown-body hr {
   margin: 1.5rem 0;
   border: 0;
