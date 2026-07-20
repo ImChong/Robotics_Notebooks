@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-20",
-  "node_count": 1691,
-  "edge_count": 13563,
+  "node_count": 1692,
+  "edge_count": 13572,
   "coverage": {
-    "covered": 1641,
-    "total": 1671,
+    "covered": 1642,
+    "total": 1672,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -16,6 +16,17 @@
       "recency": "2026-07-20",
       "source": "log.md",
       "action": "added"
+    },
+    {
+      "path": "wiki/entities/midas-hand.md",
+      "detail_id": "entity-midas-hand",
+      "label": "MIDAS Hand",
+      "type": "entity",
+      "recency": "2026-07-20",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
     },
     {
       "path": "wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md",
@@ -198,17 +209,6 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/concepts/field-oriented-control.md",
-      "detail_id": "wiki-concepts-field-oriented-control",
-      "label": "磁场定向控制（Field Oriented Control, FOC）",
-      "type": "concept",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -282,7 +282,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 251,
+      "degree": 252,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {

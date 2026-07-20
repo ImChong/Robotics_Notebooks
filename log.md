@@ -1,6 +1,9 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+
 ## [2026-07-20] ingest | sources/papers/handroid_arxiv_2607_16187.md — Handroid 双形态桌面机器人；wiki/entities/handroid.md；交叉 manipulation / loco-manipulation / teleoperation
+
+## [2026-07-20] ingest | sources/papers/midas_hand_arxiv_2607_14487.md — MIDAS Hand UCLA 开源直驱触觉灵巧手；wiki/entities/midas-hand.md；交叉 dexterous-data-collection-guide / ruka-v2-hand
 
 ## [2026-07-20] structural | wiki 链接 Top-10 论文节点新增「源码运行时序图」模块 — beyondmimic（whole_body_tracking）/ paper-hrl-stack-03-omniretarget（holosoma）/ paper-twist2（amazon-far/TWIST2）/ deepmimic（xbpeng/DeepMimic）四页各加 mermaid sequenceDiagram；其余 6 个 Top-10 论文节点（SONIC / BFM / MotionWAM / LEGS / SD-AMP / PHP）官方源码未发布，不适用
 
