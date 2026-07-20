@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, vla, loco-manipulation, 3dgs, gaussian-splatting, sim2real, teleoperation-free, unitree-g1, stanford, sam3d, mujoco]
 status: complete
-updated: 2026-07-17
+updated: 2026-07-20
 arxiv: "2606.01458"
 related:
   - ../tasks/loco-manipulation.md
@@ -117,6 +117,14 @@ flowchart TB
 - **不是「消灭 teleop」：** teleop 在短程 Task 1 仍可比；LEGS 优势在 **长时程 + 外观增广 + 规模化合成**。
 - **不是纯 NeRF/纯 mesh：** 去掉 **3DGS+校准** 的 SAM3D 基线平均成功率约 **减半**（论文 ~33% vs ~67%）。
 - **依赖栈：** 需要已有 **SONIC**、手持场景扫描、**静态背景**；对透明/反光/动态场景与跨人形硬件 **未充分验证**（§5）。
+
+## 开源状态（项目页核查，2026-07-20）
+
+| 资源 | 状态 |
+|------|------|
+| 项目页 | <https://legsvla.github.io/> |
+| 代码 | **未发布**（页面按钮 *Code (Coming Soon)*，无 GitHub 链） |
+| 源码运行时序图 | **不适用**（无官方可运行仓）；低层 WBC 依赖已开源的 [SONIC](../methods/sonic-motion-tracking.md) |
 
 ## 关联页面
 

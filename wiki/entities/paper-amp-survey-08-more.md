@@ -1,8 +1,9 @@
 ---
+
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation, locomotion, mixture-of-experts, terrain-adaptation, unitree-g1, sim2real, teleai, heu, shanghaitech, ustc]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-20
 arxiv: "2506.08840"
 venue: arXiv
 code: https://github.com/TeleHuman/MoRE
@@ -132,6 +133,40 @@ flowchart TB
 - **MuJoCo：** `deploy_mujoco_with_resi.py` 提供 Roughness / Pit / Stairs / Gap 四类 sim2sim 场景。
 
 详见 [sources/repos/more.md](../../sources/repos/more.md)。
+
+## 源码运行时序图
+
+官方实现 [TeleHuman/MoRE](https://github.com/TeleHuman/MoRE)：先 `legged_gym/scripts/train.py --task g1_16dof_loco` 训基础步态，再 `--task g1_16dof_resi_moe` 训残差 MoE；`play.py` 回放；`deploy/deploy_mujoco/deploy_mujoco_with_resi.py` 做 MuJoCo 部署验证。一次完整运行如下：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户
+    participant TR as legged_gym/scripts/<br/>train.py · play.py
+    participant BASE as g1_16dof_loco<br/>基础步态
+    participant MOE as g1_16dof_resi_moe<br/>残差 MoE
+    participant GYM as Isaac Gym
+    participant DEP as deploy_mujoco_with_resi.py
+    U->>TR: --task g1_16dof_loco --headless
+    loop 基础策略
+        TR->>GYM: rollout
+        GYM-->>BASE: 速度跟踪奖励
+        BASE->>BASE: PPO 更新
+    end
+    U->>TR: --task g1_16dof_resi_moe<br/>（加载 base checkpoint）
+    loop 残差 MoE
+        TR->>GYM: 复杂地形 + body mask
+        GYM-->>MOE: 观测 / 奖励
+        MOE->>BASE: 残差叠加
+        MOE->>MOE: 专家门控更新
+    end
+    U->>TR: play.py --load_run=…
+    U->>DEP: g1_16dof_resi_moe.yaml
+    DEP-->>U: MuJoCo 部署回放
+```
+
+- **必须先有 base**：残差专家站在冻结/预训练步态之上，不要从零只训 MoE。
+- **分布式**：可用 `torchrun --nproc_per_node=2` 加速（见 README）。
 
 ## 常见误区
 

@@ -1,9 +1,11 @@
 ---
+
 type: entity
 tags: [paper, humanoid, motion-tracking, martial-arts, reinforcement-learning, unitree-g1, sim2real, teleai, sjtu, hit, shanghaitech, neurips-2025]
 status: complete
-updated: 2026-07-09
+updated: 2026-07-20
 arxiv: "2506.12851"
+code: https://github.com/TeleHuman/PBHC
 venue: "NeurIPS 2025"
 related:
   - ../overview/paper-notebook-category-14-human-motion.md
@@ -107,6 +109,37 @@ flowchart TB
 
 - **仿真：** 多难度 motion 集上 PBHC **一致优于** 可部署基线，接近 oracle；Tai Chi 等 sim-to-real 根轨迹形态对齐（真机根位姿不可测，实验固定原点）。
 - **真机（G1）：** Jump/roundhouse/side/front/back kick、360° spin、舞蹈、李小龙 pose、组合拳、马步、太极、stretch leg 等（见 [项目页](https://kungfubot.github.io/) 视频）。
+
+## 源码运行时序图
+
+官方实现 [TeleHuman/PBHC](https://github.com/TeleHuman/PBHC)（KungfuBot）：重定向 `mink_retarget/` 或 `phc_retarget/`；训练 `humanoidverse/train_agent.py +simulator=isaacgym +exp=motion_tracking`；评估 `eval_agent.py`；部署 `humanoidverse/urci.py +simulator=mujoco +checkpoint=…onnx`。一次完整运行如下：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户
+    participant MOT as 视频 / AMASS
+    participant RET as mink / phc_retarget
+    participant TR as train_agent.py
+    participant GYM as Isaac Gym
+    participant EV as eval_agent.py
+    participant URCI as urci.py MuJoCo / 真机
+    U->>MOT: 准备运动来源
+    MOT->>RET: SMPL → G1 参考
+    U->>TR: +exp=motion_tracking
+    loop 跟踪 RL
+        TR->>GYM: rollout
+        GYM-->>TR: 跟踪奖励
+        TR->>TR: 更新并导出
+    end
+    U->>EV: 评估 checkpoint
+    EV-->>URCI: ONNX
+    U->>URCI: +checkpoint=…onnx
+    URCI-->>U: 仿真 / 真机武术跟踪
+```
+
+- **motion pipeline 与 policy pipeline 分离**：换重定向后端不必改训练脚本接口。
+- **URCI** 是统一机器人控制入口，仿真与真机靠 `+simulator=` 切换。
 
 ## 常见误区
 

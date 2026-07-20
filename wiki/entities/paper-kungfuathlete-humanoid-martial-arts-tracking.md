@@ -1,9 +1,11 @@
 ---
+
 type: entity
 tags: [paper, humanoid, motion-tracking, martial-arts, dataset, balance-recovery, unitree-g1, reinforcement-learning, bit, gvhmr, gmr]
 status: complete
-updated: 2026-07-09
+updated: 2026-07-20
 arxiv: "2602.13656"
+code: https://github.com/NPCLEI/KungFuAthleteBot
 venue: "arXiv 2026"
 related:
   - ../tasks/balance-recovery.md
@@ -136,6 +138,38 @@ flowchart TB
 | + feet slip (w=5) | 6/6，$E_{\mathrm{mpboe}}$ 进一步下降 |
 
 加 recovery 目标后，无扰 **单腿站** 场景 BeyondMimic 基线从全败变为可完成；feet slip + CoM + 膝踝 rate 改善交叉步 **抬脚质量**。
+
+## 源码运行时序图
+
+官方仓库 [NPCLEI/KungFuAthleteBot](https://github.com/NPCLEI/KungFuAthleteBot)：视频 → GVHMR / GMR / 高度修正 → `scripts/qpos_to_npz.py`；训练 `scripts/train.py Unitree-G1-1307-Stage-I/II/III`；回放 `scripts/play.py`；可导出 ONNX 部署。一次完整运行如下：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户
+    participant VID as 武术视频数据集
+    participant HMR as GVHMR
+    participant RET as GMR + 高度修正
+    participant NPZ as qpos_to_npz.py
+    participant TR as scripts/train.py
+    participant MJ as Unitree RL Mjlab
+    participant PL as scripts/play.py
+    U->>VID: 准备演示视频
+    VID->>HMR: 提人体运动
+    HMR->>RET: 重定向到 G1 qpos
+    RET->>NPZ: 写参考 npz
+    U->>TR: Stage-I / II / III
+    loop 分阶段跟踪 RL
+        TR->>MJ: 并行环境
+        MJ-->>TR: 跟踪奖励
+        TR->>TR: PPO / FastSAC 更新
+    end
+    U->>PL: --checkpoint-file=…
+    PL-->>U: MuJoCo 回放 / 导出部署
+```
+
+- **三阶段课程**：不要跳过 Stage 顺序；高动态动作依赖前置稳定跟踪。
+- **上游感知可换**：GVHMR/GMR 可替换，但 npz 接口需对齐训练任务。
 
 ## 常见误区
 

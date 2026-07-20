@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, locomotion, parkour, motion-matching, depth, teacher-student, dagger, ppo, unitree-g1, perception, skill-chaining, amazon-far, body-system-stack]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-20
 arxiv: "2602.15827"
 venue: "RSS 2026"
 related:
@@ -143,6 +143,15 @@ flowchart TB
 - **把 PHP 与 OmniRetarget 混为同一篇：** 2509.26633 是**重定向与数据增广引擎**；2602.15827 是**感知策略与技能链**。
 - **以为 motion matching 在线运行：** 本文用于**离线**参考合成；实机闭环由**深度策略**完成，matching 不在部署时计算。
 - **以为纯 DAgger 即可：** 论文明确指出高动态技能需要 **PPO 辅助**，否则对称但「过高/过低」的根轨迹在模仿损失下等价。
+
+## 开源状态（项目页核查，2026-07-20）
+
+| 资源 | 状态 |
+|------|------|
+| 项目页 | <https://php-parkour.github.io/> |
+| 浏览器 demo | <https://php-parkour.github.io/index-mobile.html>（MuJoCo 全浏览器交互，**非**训练源码） |
+| 代码 | **未发布**（页面按钮 *Code (Coming Soon)*） |
+| 源码运行时序图 | **不适用**（无官方可运行仓）；上游重定向可复用已开源的 [holosoma / OmniRetarget](./paper-hrl-stack-03-omniretarget.md) |
 
 ## 与其他页面的关系
 

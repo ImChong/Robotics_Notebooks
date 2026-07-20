@@ -1,5 +1,6 @@
 ---
 
+
 type: entity
 tags:
   - paper
@@ -11,8 +12,9 @@ tags:
   - centroidal-dynamics
   - training-time-guidance
 status: complete
-updated: 2026-07-16
+updated: 2026-07-20
 arxiv: "2606.05687"
+code: https://github.com/junhengl/mpc-rl
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-07-loco-manip-interface.md
@@ -116,6 +118,35 @@ flowchart TB
 | **仿真** | 时变速度跟踪、推恢复、约束满足：MPC-RL 优于纯 RL |
 | **真机** | 跑步机行走；未知 10 kg 背心/载荷；推恢复；**290 kg 推车** |
 | **求解器** | πⁿ MPC 相对 qpth / qpax / CusADi / consensus ADMM 的批扩展性与显存 |
+
+## 源码运行时序图
+
+官方仓库 [junhengl/mpc-rl](https://github.com/junhengl/mpc-rl)：`uv run train Mjlab-MPC-Guided-Locomotion-Themis`（或 Loco-manipulation 任务）；`uv run play … --wandb-run-path …` 回放。每步环境内嵌 centroidal QP-MPC / PiMPC。一次完整运行如下：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户
+    participant TR as uv run train
+    participant ENV as mjlab 并行环境
+    participant MPC as centroidal QP-MPC<br/>PiMPC / JAX
+    participant POL as RL policy
+    participant PL as uv run play
+    U->>TR: Mjlab-MPC-Guided-…Themis
+    loop 环境步
+        ENV->>MPC: 批量求解接触 / CoM 计划
+        MPC-->>ENV: 计划特征注入 reward/critic
+        ENV->>POL: 观测（含 MPC 特征）
+        POL-->>ENV: 动作
+        ENV->>ENV: 物理步进
+        TR->>POL: PPO 更新
+    end
+    U->>PL: --wandb-run-path=…
+    PL-->>U: 回放 MPC 引导策略
+```
+
+- **MPC 在环**：算力瓶颈常在批量 QP，而非纯网络前向。
+- **Locomotion 与 loco-manip** 是不同任务名，共享求解器栈。
 
 ## 常见误区或局限
 

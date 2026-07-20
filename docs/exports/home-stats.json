@@ -1,13 +1,34 @@
 {
   "generated_at": "2026-07-20",
   "node_count": 1692,
-  "edge_count": 13572,
+  "edge_count": 13573,
   "coverage": {
     "covered": 1642,
     "total": 1672,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/methods/sonic-motion-tracking.md",
+      "detail_id": "wiki-methods-sonic-motion-tracking",
+      "label": "SONIC（规模化运动跟踪人形控制）",
+      "type": "method",
+      "recency": "2026-07-20",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-behavior-foundation-model-humanoid.md",
+      "detail_id": "entity-paper-behavior-foundation-model-humanoid",
+      "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
+      "type": "entity",
+      "recency": "2026-07-20",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
     {
       "path": "wiki/entities/handroid.md",
       "detail_id": "entity-handroid",
@@ -189,36 +210,17 @@
       "source": "log.md",
       "action": "added",
       "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/overview/motor-design-workflow.md",
-      "detail_id": "wiki-overview-motor-design-workflow",
-      "label": "电机设计流程（规格 → 仿真 → 样机 → 控制）",
-      "type": "overview",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/overview/humanoid-actuator-102-technology-map.md",
-      "detail_id": "wiki-overview-humanoid-actuator-102-technology-map",
-      "label": "Humanoid 执行器 102：八章技术地图",
-      "type": "overview",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/handroid.md",
-    "detail_id": "entity-handroid",
-    "label": "Handroid",
-    "type": "entity",
+    "path": "wiki/methods/sonic-motion-tracking.md",
+    "detail_id": "wiki-methods-sonic-motion-tracking",
+    "label": "SONIC（规模化运动跟踪人形控制）",
+    "type": "method",
     "recency": "2026-07-20",
     "source": "log.md",
-    "action": "added"
+    "action": "maintained",
+    "has_repo": true
   },
   "top_communities": [
     {
@@ -327,7 +329,7 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 113,
+      "degree": 114,
       "has_repo": true
     },
     {

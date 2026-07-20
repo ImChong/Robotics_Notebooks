@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, locomotion, fall-recovery, unitree-g1, isaac-lab, ppo, sim2real, lafan1, hku]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-20
 arxiv: "2605.18611"
 related:
   - ../overview/humanoid-amp-motion-prior-survey.md
@@ -119,6 +119,15 @@ $g_z$ 为投影重力 $z$ 分量；阈值落在经验分布低占用区，作者
 1. **门控在部署运行：** 式 (5) 仅用于**训练时选判别器**；推理时策略已内化，不读 $g_z$ 做切换。
 2. **三条参考 = 能力上限：** 论文主张的是**先验分离**而非 MoCap 规模；换平台仍需 retarget 与任务奖励调参。
 3. **SD-AMP = Selective AMP：** [Selective AMP](../../sources/papers/multi-gait-learning.md) 按**步态周期 vs 高动态**决定是否加 AMP；本文按**机体是否跌倒**切换**不同判别器**。
+
+## 开源状态（项目页核查，2026-07-20）
+
+| 资源 | 状态 |
+|------|------|
+| arXiv | <https://arxiv.org/abs/2605.18611> |
+| 官方代码 | **未发布**（论文 HTML / abs **无** GitHub 或项目页 Code 链） |
+| 工程对照 | [AMP_mjlab](./amp-mjlab.md)（`ccrpRepo/AMP_mjlab`）实现 **统一 walk/run/recovery**，但是 **单判别器 + 分区参考库**，**不是**本文双判别器 + 重力门控的官方仓 |
+| 源码运行时序图 | **不适用**（无官方可运行仓）；工程侧流程见 AMP_mjlab 页的训练到部署流程图 |
 
 ## 实验与评测
 

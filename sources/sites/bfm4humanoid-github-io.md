@@ -13,7 +13,7 @@ BFM 论文官方项目页：以 **演示视频** 展示一个统一策略在 Uni
 ## 公开信息要点（截至入库日）
 
 - **作者与机构**：Weishuai Zeng, Shunlin Lu, Kangning Yin, Xiaojie Niu, Minyue Dai, Jingbo Wang, Jiangmiao Pang；北京大学 / 港中大（深圳）/ 上交大 / 复旦 / **上海人工智能实验室**。
-- **代码 / 权重**：页面写 *Code: In Coming*；以官方仓库后续更新为准。
+- **代码 / 权重**：页面写 *Code (In Coming)*；**2026-07-20** 再核仍无 GitHub / HF 权重链，以官方仓库后续更新为准。
 - **演示分组**（按页面展示顺序，归纳）：
   - 通用动作：游泳、行走 / 坐姿、地面起身。
   - 高动态：Roundhouse Kick、Basketball Layup、Forward Roll、Butterfly Kick、Cartwheel、Side Salto。

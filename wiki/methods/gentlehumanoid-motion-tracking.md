@@ -1,8 +1,10 @@
 ---
+
 type: method
 tags: [humanoid, motion-tracking, impedance-control, compliance, contact-rich, ppo, teacher-student, sim2real, unitree-g1, mjlab, human-robot-interaction, paper, rl, motion-control, body-system-stack, stanford]
 status: complete
-updated: 2026-07-16
+code: https://github.com/Axellwppr/gentle-humanoid
+updated: 2026-07-20
 venue: curated
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
@@ -163,7 +165,9 @@ f_{\text{drive\_limited}} = \min\left(1,\ \frac{\tau_{\text{safe}}}{\|f_{\text{d
 |------|-----|
 | 论文 | [arXiv:2511.04679](https://arxiv.org/abs/2511.04679) |
 | 项目页 | [gentle-humanoid.axell.top](https://gentle-humanoid.axell.top/) |
-| 代码（训练/部署） | [github.com/Axellwppr/motion_tracking](https://github.com/Axellwppr/motion_tracking) |
+| 代码（训练） | [github.com/Axellwppr/gentle-humanoid-training](https://github.com/Axellwppr/gentle-humanoid-training) |
+| 代码（推理/部署） | [github.com/Axellwppr/gentle-humanoid](https://github.com/Axellwppr/gentle-humanoid) |
+| 相关（mjlab tracking） | [github.com/Axellwppr/motion_tracking](https://github.com/Axellwppr/motion_tracking)（compliance 分支） |
 | Tracking 演示 | [motion-tracking.axell.top](https://motion-tracking.axell.top/) |
 | 修改版 GMR | [github.com/Axellwppr/GMR](https://github.com/Axellwppr/GMR) |
 
@@ -175,6 +179,36 @@ f_{\text{drive\_limited}} = \min\left(1,\ \frac{\tau_{\text{safe}}}{\|f_{\text{d
 - [GentleHumanoid 项目页归档](../../sources/sites/gentle-humanoid-axell-top.md)
 - [Axellwppr/motion_tracking 仓库归档](../../sources/repos/axellwppr_motion_tracking.md)
 - 原始抓取：[wechat_humanoid_rl_42_survey_2026-05-26.md](../../sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md)
+
+## 源码运行时序图
+
+官方拆为训练仓 [Axellwppr/gentle-humanoid-training](https://github.com/Axellwppr/gentle-humanoid-training) 与推理/部署仓 [Axellwppr/gentle-humanoid](https://github.com/Axellwppr/gentle-humanoid)（相关 tracking 实验亦可参考 `Axellwppr/motion_tracking` 的 compliance 分支）。训练侧 `bash train.sh`，评估导出 `scripts/eval.py --export`；部署侧 `src/sim2sim.py` / `src/deploy.py`。一次完整运行如下：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户
+    participant TR as gentle-humanoid-training<br/>train.sh
+    participant ENV as 仿真并行环境<br/>柔顺跟踪任务
+    participant EV as scripts/eval.py
+    participant DEP as gentle-humanoid<br/>sim2sim / deploy.py
+    participant ROB as MuJoCo / 真机
+    U->>TR: bash train.sh
+    loop PPO / 跟踪迭代
+        TR->>ENV: 批量动作
+        ENV-->>TR: 观测 + 柔顺 / 跟踪奖励
+        TR->>TR: 策略更新
+    end
+    U->>EV: --run_path=… --export
+    EV-->>DEP: 导出策略权重
+    U->>DEP: sim2sim 或 --real
+    DEP->>ROB: 50 Hz 级控制环
+    ROB-->>DEP: 本体反馈
+    DEP-->>U: 上半身柔顺跟踪演示
+```
+
+- **训练 / 部署双仓**：避免把 Isaac 训练依赖带进真机运行时。
+- **柔顺项在奖励与部署阻抗参数两边都要对齐**，只拷权重不够。
 
 ## 关联页面
 

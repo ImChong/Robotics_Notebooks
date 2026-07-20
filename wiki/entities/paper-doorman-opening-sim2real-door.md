@@ -1,8 +1,9 @@
 ---
+
 type: entity
 tags: [paper, humanoid, sim2real, visual-rl, loco-manipulation, teacher-student, dagger, grpo, ppo, unitree-g1, isaac-lab, door-opening, cvpr2026, nvidia, gear, body-system-stack]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-20
 arxiv: "2512.01061"
 venue: "CVPR 2026"
 code: https://github.com/NVlabs/GR00T-VisualSim2Real
@@ -133,6 +134,37 @@ flowchart TB
 - **物理**：门型、尺寸、铰链阻尼、闩锁、把手位、阻力矩等 **程序化** 随机化。
 - **视觉**：**PBR 材质**、大量 **dome light**、相机内外参微扰、后处理等；消融显示 **无纹理/无穹顶光** 时成功率可降至 **约 5–20%**，全量设置下子任务约 **81–86%**（论文表 1，未见门评估）。
 - **真机**：报告相对 **同 WBC 人类遥操作** 的 **成功率与耗时** 优势（具体百分比以论文图 5 与正文为准）。
+
+## 源码运行时序图
+
+与 VIRAL 同仓 [NVlabs/GR00T-VisualSim2Real](https://github.com/NVlabs/GR00T-VisualSim2Real)：`train_agent_trl.py` / `eval_agent_trl.py` + Hydra。DoorMan 配方侧重 **开门等接触丰富 loco-manip** 的教师–学生视觉 Sim2Real。一次完整运行如下（具体 `+exp=` 以仓库 DoorMan 配置名为准）：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户
+    participant TR as gr00t/rl/<br/>train_agent_trl.py
+    participant LAB as Isaac Lab<br/>开门 / 接触任务
+    participant TEA as 特权教师 PPO
+    participant STU as RGB 学生
+    participant EV as eval_agent_trl.py
+    U->>TR: +exp=…doorman…teacher
+    loop 教师 PPO
+        TR->>LAB: 特权状态 + 接触动力学
+        LAB-->>TEA: 奖励 / 终止
+        TEA->>TEA: 更新
+    end
+    U->>TR: +exp=…doorman…student
+    loop 视觉蒸馏
+        TR->>LAB: RGB rollout
+        STU->>TEA: 动作标签
+        STU->>STU: 蒸馏更新
+    end
+    U->>EV: 加载学生 checkpoint
+    EV-->>U: 单环境回放 / 导出
+```
+
+- **与 VIRAL 共享栈**：差别在任务 exp 与接触场景资产，而非另一套训练脚本。
 
 ## 常见误区或局限
 

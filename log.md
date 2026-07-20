@@ -1,11 +1,25 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-20] structural | Top-50 论文枢纽有代码缺图补齐 — 19 页源码运行时序图 + RPL/PILOT 开源状态
+
+- 范围：`exports/hub-rankings.json` paper 榜 Top-50 中「有官方代码信号且缺 mermaid 时序图」的节点
+- 新增时序图（19）：ASE、BFM-Zero、OASIS、VIRAL、SPIDER（`facebookresearch/spider`）、DoorMan、GentleHumanoid、MoRE、TWIST、GVHMR、ResMimic、T-Rex、PHC、GR00T N1、KungFuAthleteBot、MPC-RL、KungfuBot/PBHC、Humanoid-GPT、WEM
+- 开源状态不适用（2）：RPL、PILOT（WholebodyVLA 仅为索引仓，无独立可运行官方实现）
+- 链接校正：SPIDER 官方仓改为 facebookresearch/spider；GentleHumanoid 训练/部署双仓写入 frontmatter `code`
+
+## [2026-07-20] structural | 论文链接 Top-10 枢纽再核官方源码 — SONIC 补 GR00T-WholeBodyControl 源码运行时序图；BFM / MotionWAM / LEGS / SD-AMP / PHP 标注未开源
+
+- 触发：首页 `top_paper_hubs` 前十论文节点源码地址再确认；纠正此前「SONIC 官方源码未发布」误判
+- `wiki/methods/sonic-motion-tracking.md`：写入官方代码 / HF 权重 / BONES-SEED；新增「源码运行时序图」（`gear_sonic` 训练 → `eval_agent_trl` → `gear_sonic_deploy`）
+- `sources/repos/sonic-humanoid-motion-tracking.md`：元数据补代码 / 权重 / 数据 / 文档站与工程入口表
+- `wiki/entities/paper-behavior-foundation-model-humanoid.md`、`paper-motionwam-…`、`paper-legs-…`、`paper-unified-walk-run-recovery-sdamp.md`、`paper-hrl-stack-22-perceptive_humanoid_parkour.md`：各加「开源状态（2026-07-20）」——均无官方可运行仓（SD-AMP 明确 AMP_mjlab 仅为工程对照）
+- 已有时序图且源码仍有效：BeyondMimic（`whole_body_tracking`）、OmniRetarget（`holosoma`）、DeepMimic（`xbpeng/DeepMimic`）、TWIST2（`amazon-far/TWIST2`）HTTP 200 复核
 
 ## [2026-07-20] ingest | sources/papers/handroid_arxiv_2607_16187.md — Handroid 双形态桌面机器人；wiki/entities/handroid.md；交叉 manipulation / loco-manipulation / teleoperation
 
 ## [2026-07-20] ingest | sources/papers/midas_hand_arxiv_2607_14487.md — MIDAS Hand UCLA 开源直驱触觉灵巧手；wiki/entities/midas-hand.md；交叉 dexterous-data-collection-guide / ruka-v2-hand
 
-## [2026-07-20] structural | wiki 链接 Top-10 论文节点新增「源码运行时序图」模块 — beyondmimic（whole_body_tracking）/ paper-hrl-stack-03-omniretarget（holosoma）/ paper-twist2（amazon-far/TWIST2）/ deepmimic（xbpeng/DeepMimic）四页各加 mermaid sequenceDiagram；其余 6 个 Top-10 论文节点（SONIC / BFM / MotionWAM / LEGS / SD-AMP / PHP）官方源码未发布，不适用
+## [2026-07-20] structural | wiki 链接 Top-10 论文节点新增「源码运行时序图」模块 — beyondmimic（whole_body_tracking）/ paper-hrl-stack-03-omniretarget（holosoma）/ paper-twist2（amazon-far/TWIST2）/ deepmimic（xbpeng/DeepMimic）四页各加 mermaid sequenceDiagram；其余 5 个 Top-10 论文节点（BFM / MotionWAM / LEGS / SD-AMP / PHP）官方源码未发布，不适用；**SONIC 已开源（NVlabs/GR00T-WholeBodyControl），时序图见同日后续 structural 条目**
 
 ## [2026-07-20] ingest | sources/papers/actuator_constrained_rl_high_speed_quadruped_arxiv_2312_17507.md — 执行器约束 RL 高速四足 MOR；wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md；交叉 sim2real / locomotion / APT-RL / depth-sim2real
 

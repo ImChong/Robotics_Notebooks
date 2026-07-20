@@ -4,7 +4,7 @@ type: entity
 title: LaFAN1（Ubisoft La Forge 动捕数据集）
 tags: [dataset, mocap, bvh, locomotion, animation, ubisoft, siggraph-2020, sfu]
 summary: "LaFAN1 是 Ubisoft La Forge 在 GitHub 发布的 BVH 动捕数据集（SIGGRAPH 2020 论文配套），覆盖行走、舞蹈、跌倒恢复等多主题；许可为 CC BY-NC-ND 4.0，工程上常被用作全身跟踪与重定向研究的基准动作源。"
-updated: 2026-07-16
+updated: 2026-07-20
 related:
   - ../concepts/motion-retargeting.md
   - ./wbc-fsm.md

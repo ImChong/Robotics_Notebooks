@@ -1,10 +1,12 @@
 ---
 
+
 type: entity
 tags: [repo, paper, human-pose, hmr, monocular-video, smpl, world-grounded, motion-retargeting, upstream, siggraph-asia-2024, tsinghua, zju]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-20
 arxiv: "2409.06662"
+code: https://github.com/zju3dv/GVHMR
 venue: SIGGRAPH Asia 2024
 summary: "GVHMR 用 Gravity-View 坐标逐帧估计单目视频人体姿态，再经相机运动恢复 world-grounded SMPL 全局轨迹，是人形「视频→重定向」链路最常见的上游 HMR 模块之一。"
 related:
@@ -135,6 +137,32 @@ flowchart LR
 - **依赖相机运动估计：** 移动相机需 VO；静态场景应使用 `-s`，否则 VO 噪声会污染世界轨迹。
 - **动力学保真度：** 位置较准时仍可能 **过平滑或抖动**；重定向前可考虑 HTD-Refine 类 **高阶时序精炼**。
 - 与棚拍 MoCap / [AMASS](./amass.md) 相比噪声更大，常需物理筛选或 RL 修补层。
+
+## 源码运行时序图
+
+官方仓库 [zju3dv/GVHMR](https://github.com/zju3dv/GVHMR)：演示 `tools/demo/demo.py --video=…`；训练 / 评测走 `tools/train.py`（Hydra `exp=gvhmr/...`）。输出世界坐标系人体运动，常作为 GMR 等重定向上游。一次完整运行如下：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户
+    participant DEMO as tools/demo/demo.py
+    participant VO as SimpleVO / DPVO
+    participant NET as GVHMR 模型
+    participant TR as tools/train.py
+    participant OUT as SMPL / 世界系运动
+    U->>DEMO: --video=输入视频
+    DEMO->>VO: 估计相机 / 视觉里程计
+    DEMO->>NET: 图像序列
+    NET-->>OUT: 世界接地人体运动
+    OUT-->>U: 可视化 / 导出
+    U->>TR: exp=gvhmr/mixed/...（可选重训）
+    TR->>NET: 多数据集监督更新
+    TR-->>U: checkpoint
+```
+
+- **默认可直接 demo**：多数下游只消费预训练权重，不必先训。
+- **与 GMR 分工**：GVHMR 出人体运动；机器人关节轨迹由 [GMR](../methods/motion-retargeting-gmr.md) 等承接。
 
 ## 关联页面
 

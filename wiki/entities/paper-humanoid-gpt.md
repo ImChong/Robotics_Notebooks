@@ -1,11 +1,12 @@
 ---
+
 type: entity
 tags: [paper, humanoid, motion-tracking, imitation-learning, reinforcement-learning, transformer, dagger, scaling-law, zero-shot, unitree-g1, cvpr2026, galbot, tsinghua]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-20
 arxiv: "2606.03985"
 venue: "CVPR 2026"
-code: "https://github.com/GalaxyGeneralRobotics/Humanoid-GPT"
+code: https://github.com/GalaxyGeneralRobotics/Humanoid-GPT
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-04-wbt-base.md
@@ -144,6 +145,32 @@ flowchart TB
 - **仿真亮点（Table 2）**：Humanoid-GPT-L @ 2B — SR **92.58%**，MPJPE **0.0735**，MPKPE **40.99 mm**；同 2B 下 TCN-L SR **89.05%** 且 MPKPE **56.15 mm**。
 - **真机（Table 3，训练外舞蹈）**：四支未见舞曲上 MPJPE/MPJVE 整体优于 GMT / TWIST / Any2Track；Humanoid-GPT-B 在多数 clip 上 MPJVE 最低。
 - **定性**：项目页 **训练外** 真机片段（digging / disinfection / soccer / security 等）与相对 **SONIC** 的四类并排视频；完整协议与随机种子以 **PDF** 为准。
+
+## 源码运行时序图
+
+官方仓库 [GalaxyGeneralRobotics/Humanoid-GPT](https://github.com/GalaxyGeneralRobotics/Humanoid-GPT)：**训练代码尚未完全开放**；公开主线是预训练权重的推理与部署。`tracking/convert_qpos2kpt.py` 转关键点；`scripts.inference` / `scripts.eval_parallel`；`deploy.play_track` 支持仿真与 `--real`。一次完整「数据 → 推理 → 部署」如下：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户
+    participant CKPT as 发布 ONNX / 权重
+    participant CVT as convert_qpos2kpt.py
+    participant INF as scripts.inference
+    participant DEP as deploy.play_track
+    participant ROB as MuJoCo / Unitree G1
+    U->>CKPT: 下载官方 checkpoint
+    U->>CVT: mocap / qpos → keypoint
+    U->>INF: --load_path=… --mocap_path=…
+    INF->>CKPT: 加载 GPT tracking 策略
+    INF-->>U: 仿真指标 / 可视化
+    U->>DEP: --track-dir=…（或 --real --net=…）
+    DEP->>ROB: 全身跟踪控制
+    ROB-->>DEP: 状态反馈
+```
+
+- **当前可复现边界**：推理/部署已开源；端到端训练数据与脚本以仓库 TODO 为准。
+- **与 SONIC 对照**：同为跟踪基础策略，接口与数据格式不同，勿混用 checkpoint。
 
 ## 常见误区或局限
 

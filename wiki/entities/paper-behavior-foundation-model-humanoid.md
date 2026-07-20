@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, foundation-policy, cvae, generative-policy, masked-control, dagger, privileged-training, ppo, unitree-g1, isaac-gym, amass, shanghai-ai-lab, pku, motion-tracking, teleoperation, locomotion]
 status: complete
-updated: 2026-07-18
+updated: 2026-07-20
 arxiv: "2509.13780"
 venue: "TPAMI 2025"
 related:
@@ -197,7 +197,15 @@ $$
 
 - **不是 VLA**：BFM 没有语言 / 视觉条件输入；它是 **低层全身控制基础模型**，需上层提供 mode 与目标状态（VR、规划器、VLA 等）。
 - **proxy agent 仍要逐技能 RL**：BFM 的「免重写 reward」体现在 **下游 mode 切换**，不是说 motion tracking 教师本身没成本；论文 proxy 仍用 PPO + reward 工程。
-- **代码未开源**：项目页标 *Code: In Coming*；复现需等待官方发布或自行实现 CVAE + 掩码蒸馏管线。
+- **代码未开源**：项目页仍标 *Code (In Coming)*（**2026-07-20** 再核）；复现需等待官方发布或自行实现 CVAE + 掩码蒸馏管线。
+
+## 开源状态（项目页核查，2026-07-20）
+
+| 资源 | 状态 |
+|------|------|
+| 项目页 | <https://bfm4humanoid.github.io/> |
+| 代码 / 权重 | **未发布**（页面按钮文案 *Code (In Coming)*，无 GitHub / HF 权重链） |
+| 源码运行时序图 | **不适用**（无官方可运行仓） |
 
 ## 关联页面
 

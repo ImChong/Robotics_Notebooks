@@ -1,4 +1,5 @@
 ---
+
 type: entity
 tags:
   - paper
@@ -13,7 +14,7 @@ tags:
   - isaac-lab
   - teleoperation
 status: complete
-updated: 2026-07-16
+updated: 2026-07-20
 arxiv: "2601.17440"
 related:
   - ../tasks/loco-manipulation.md
@@ -126,6 +127,14 @@ flowchart TB
 | 全地形 | 无感知基线 **无法穿越**；消融：去视觉 / 去注意力 / 去 MoE 均升高 stumble 误差 |
 | 实机 | 楼梯、高台等非结构化场景；**VR 遥操作** + **自主分层 RL** |
 | 代码 | 入库时 **无官方公开仓库**（见 [参考来源](#参考来源)） |
+
+## 开源状态（项目页核查，2026-07-20）
+
+| 资源 | 状态 |
+|------|------|
+| 相关索引仓 | [OpenDriveLab/WholebodyVLA](https://github.com/OpenDriveLab/WholebodyVLA)（相关论文索引，**明确无具体开源时间表**） |
+| PILOT 官方训练/部署仓 | **未发现**独立可运行发布 |
+| 源码运行时序图 | **不适用**（无官方可复现入口） |
 
 ## 常见误区或局限
 

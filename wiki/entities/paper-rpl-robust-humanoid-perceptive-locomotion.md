@@ -1,4 +1,5 @@
 ---
+
 type: entity
 tags:
   - paper
@@ -14,7 +15,7 @@ tags:
   - isaac-gym
   - amazon-far
 status: complete
-updated: 2026-07-16
+updated: 2026-07-20
 arxiv: "2602.03002"
 related:
   - ../tasks/stair-obstacle-perceptive-locomotion.md
@@ -132,6 +133,14 @@ flowchart TB
 | 多相机 | 垫脚石上 **2 相机** 达专家级双向性能；单下视相机明显掉点（Table II） |
 | 消融 | **RSM** 关键于未见窄宽度；**DFSV** 关键于非对称多视角（如前相机楼梯、后相机垫脚石） |
 | 代码 | 入库时 **无官方公开仓库** |
+
+## 开源状态（项目页核查，2026-07-20）
+
+| 资源 | 状态 |
+|------|------|
+| 相关索引仓 | [OpenDriveLab/WholebodyVLA](https://github.com/OpenDriveLab/WholebodyVLA)（资源列表，**非** RPL 可运行训练代码） |
+| RPL 官方训练/部署仓 | **未发现**独立可运行发布 |
+| 源码运行时序图 | **不适用**（无官方可复现入口） |
 
 ## 常见误区或局限
 

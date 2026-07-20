@@ -16,7 +16,7 @@
 |------|------------|
 | 项目首页 | <https://legsvla.github.io/> |
 | arXiv | <https://arxiv.org/abs/2606.01458> |
-| 代码 | 页面标注 **Coming Soon**（2026-07-16 抓取） |
+| 代码 | 页面标注 **Coming Soon**（2026-07-16 抓取；**2026-07-20** 再核仍为 Coming Soon） |
 
 ## 首页核心主张（项目页摘录）
 

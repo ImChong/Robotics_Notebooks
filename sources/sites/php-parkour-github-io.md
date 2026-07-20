@@ -16,7 +16,7 @@ Amazon FAR 等人提出的 **Perceptive Humanoid Parkour (PHP)** 官方站点：
 
 - **机构：** Amazon FAR、UC Berkeley、CMU、Stanford University（* equal；† FAR co-lead）。
 - **会议标签：** RSS 2026。
-- **外链：** arXiv Paper、Video、Code（页面标注 *Coming Soon*）、Related Research。
+- **外链：** arXiv Paper、Video、Code（页面标注 *Coming Soon*；**2026-07-20** 再核仍为 Coming Soon）、Related Research。
 - **交互 demo 操作提示（主页 / mobile）：**
   - 对齐障碍后**持续按住 W** 完成接近、攀爬、台上与下落全过程；
   - A/D 微调对准下一障碍；Y 切换低/高速；BACKSPACE 或 Reload 重置。
