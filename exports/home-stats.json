@@ -1,13 +1,22 @@
 {
-  "generated_at": "2026-07-19",
-  "node_count": 1687,
-  "edge_count": 13524,
+  "generated_at": "2026-07-20",
+  "node_count": 1688,
+  "edge_count": 13532,
   "coverage": {
-    "covered": 1637,
-    "total": 1667,
+    "covered": 1638,
+    "total": 1668,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/urkl.md",
+      "detail_id": "entity-urkl",
+      "label": "URKL（Ultimate Robot Knock-out Legend · EngineAI 人形格斗联赛）",
+      "type": "entity",
+      "recency": "2026-07-20",
+      "source": "log.md",
+      "action": "added"
+    },
     {
       "path": "wiki/entities/roboscience-vloa.md",
       "detail_id": "entity-roboscience-vloa",
@@ -200,27 +209,16 @@
       "source": "log.md",
       "action": "added",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/overview/robot-control-paradigm-robust-control.md",
-      "detail_id": "wiki-overview-robot-control-paradigm-robust-control",
-      "label": "鲁棒控制（体系③）",
-      "type": "overview",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/roboscience-vloa.md",
-    "detail_id": "entity-roboscience-vloa",
-    "label": "VLOA（RoboScience · Visics 通用具身栈）",
+    "path": "wiki/entities/urkl.md",
+    "detail_id": "entity-urkl",
+    "label": "URKL（Ultimate Robot Knock-out Legend · EngineAI 人形格斗联赛）",
     "type": "entity",
-    "recency": "2026-07-19",
+    "recency": "2026-07-20",
     "source": "log.md",
-    "action": "added",
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
@@ -229,23 +227,23 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 194
+      "size": 181
     },
     {
       "label": "人形论文深读笔记",
       "size": 179
     },
     {
+      "label": "全身控制",
+      "size": 153
+    },
+    {
       "label": "移动操作",
       "size": 153
     },
     {
-      "label": "全身控制",
-      "size": 150
-    },
-    {
       "label": "仿真训练",
-      "size": 111
+      "size": 109
     }
   ],
   "top_hubs": [
@@ -337,8 +335,7 @@
       "label": "BeyondMimic",
       "type": "method",
       "degree": 53,
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",

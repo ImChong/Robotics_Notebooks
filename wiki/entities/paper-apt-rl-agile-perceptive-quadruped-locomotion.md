@@ -101,7 +101,7 @@ flowchart TB
 | **感知蒸馏** | 特权 2.5D 高程 → depth+LiDAR | LiDAR 45 bins（0.6–5 m）；DAgger |
 | **减振 LiDAR** | 高速冲击隔离 | **>4 m/s** 启用 3D 打印减振机构 |
 
-**与相邻工作的差异：**
+## 与相邻工作对比
 
 | 维度 | APT-RL | Learning to Adapt | Walk These Ways | SWAP / Extreme Parkour |
 |------|--------|-------------------|-----------------|------------------------|
