@@ -41,7 +41,7 @@ summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、A
 
 这是目前最前沿且低成本的方案。
 - **设备**：Leap Motion, Intel RealSense, 或 Meta Quest 摄像头。
-- **原理**：利用手部追踪算法（如 Mediapipe 或专有引擎）实时估计人类操作者的指关节角度，并通过**重定向 (Retargeting)** 映射到灵巧手的 URDF 模型上。
+- **原理**：利用手部追踪算法（如 [MediaPipe](../entities/mediapipe.md) 或专有引擎）实时估计人类操作者的指关节角度，并通过**重定向 (Retargeting)** 映射到灵巧手的 URDF 模型上。
 - **优点**：无需佩戴繁琐设备，操作者手部无约束。
 - **缺点**：视觉遮挡严重（例如手指重叠时）；缺乏力反馈，操作者很难感知抓握力度。
 - **代表项目**：AnyTeleop, DexCap；开源硬件侧 [RUKA-v2 Hand](../entities/ruka-v2-hand.md) 已集成 **AnyTeleop 向量重定向 + OpenTeach/Oculus VR** 遥操作管线；[MIDAS Hand](../entities/midas-hand.md) 提供 **MediaPipe 摄像头 + MANUS 手套** 双模态重定向与 **283 taxel 触觉同步流**（`midas-hand-org` 四仓库）。
@@ -74,6 +74,7 @@ summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、A
 - [Allegro Hand 实体](../entities/allegro-hand.md)
 - [RUKA-v2 Hand 实体](../entities/ruka-v2-hand.md) — 全栈开源腱驱动 + VR 遥操作范例
 - [MIDAS Hand 实体](../entities/midas-hand.md) — 直驱触觉开源手 + MediaPipe/MANUS 遥操作
+- [MediaPipe 实体](../entities/mediapipe.md) — 低成本 21 点手部关键点感知框架
 - [mimic wearable U1](../entities/mimic-wearable-u1.md) — 固定 M1 运动学的被动外骨骼中层采集
 - [Behavior Cloning](../methods/behavior-cloning.md)
 - [多模态融合技巧](./multimodal-fusion-tricks.md)

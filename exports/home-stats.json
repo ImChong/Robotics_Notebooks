@@ -1,13 +1,35 @@
 {
   "generated_at": "2026-07-20",
-  "node_count": 1695,
-  "edge_count": 13591,
+  "node_count": 1697,
+  "edge_count": 13605,
   "coverage": {
-    "covered": 1645,
-    "total": 1675,
+    "covered": 1647,
+    "total": 1677,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/mediapipe.md",
+      "detail_id": "entity-mediapipe",
+      "label": "MediaPipe",
+      "type": "entity",
+      "recency": "2026-07-20",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/entities/gnm-head.md",
+      "detail_id": "entity-gnm-head",
+      "label": "GNM Head（GNM 生态）",
+      "type": "entity",
+      "recency": "2026-07-20",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
     {
       "path": "wiki/entities/paper-roller-skating-amp-humanoid-passive-wheels.md",
       "detail_id": "entity-paper-roller-skating-amp-humanoid-passive-wheels",
@@ -187,42 +209,23 @@
       "action": "added",
       "has_repo": true,
       "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/overview/humanoid-hardware-101-power-compute-electronics.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-power-compute-electronics",
-      "label": "Humanoid Hardware 101 · 05：能源与计算电子",
-      "type": "overview",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/simplefoc.md",
-      "detail_id": "entity-simplefoc",
-      "label": "SimpleFOC（Arduino-FOC 生态）",
-      "type": "entity",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-roller-skating-amp-humanoid-passive-wheels.md",
-    "detail_id": "entity-paper-roller-skating-amp-humanoid-passive-wheels",
-    "label": "被动轮人形轮滑 AMP（Tsinghua）",
+    "path": "wiki/entities/mediapipe.md",
+    "detail_id": "entity-mediapipe",
+    "label": "MediaPipe",
     "type": "entity",
     "recency": "2026-07-20",
     "source": "log.md",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "动作重定向（Motion Retargeting） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 324
+      "size": 323
     },
     {
       "label": "人形论文深读笔记",

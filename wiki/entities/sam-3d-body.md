@@ -10,6 +10,7 @@ related:
   - ../concepts/motion-retargeting-pipeline.md
   - ../concepts/whole-body-tracking-pipeline.md
   - ../methods/motion-retargeting-gmr.md
+  - ./gnm-head.md
 sources:
   - ../../sources/papers/sam_3d_body_arxiv_2602_15989.md
   - ../../sources/repos/sam-3d-body.md
@@ -84,7 +85,7 @@ flowchart LR
 | 速度 | 重型基础模型 | **>100 FPS**（论文） | 逐帧手部 | 时序模型 |
 | 典型下游 | 动捕 BVH、重定向 | 实时虚拟人 / 低延迟动捕 | 灵巧操作、ExoActor 双手支路 | 长序列运动合成、跟踪参考 |
 
-**实践建议**：需要 **手指精细语义** 时仍可用 WiLoR 补强；需要 **长时一致轨迹** 时在 3DB 逐帧输出上加时序滤波（见 [SAM3DBody-cpp](./sam3dbody-cpp.md)）或接 GENMO 类模型。
+**实践建议**：需要 **手指精细语义** 时仍可用 WiLoR 补强；需要 **长时一致轨迹** 时在 3DB 逐帧输出上加时序滤波（见 [SAM3DBody-cpp](./sam3dbody-cpp.md)）或接 GENMO 类模型。仅头脸参数化生成/语义控制时，可对照 Google 开源的 [GNM Head](./gnm-head.md)（3DMM 生态，Apache 2.0）。
 
 ## 常见误区或局限
 
@@ -101,6 +102,7 @@ flowchart LR
 - [WiLoR](../methods/wilor.md) — 手部专用估计互补
 - [GENMO](../methods/genmo.md) — 时序人体运动生成/估计对照
 - [GMR](../methods/motion-retargeting-gmr.md) — SMPL/MHR 序列 → 机器人重定向
+- [GNM Head](./gnm-head.md) — 参数化头脸 3DMM（与全身 HMR 粒度互补）
 
 ## 推荐继续阅读
 

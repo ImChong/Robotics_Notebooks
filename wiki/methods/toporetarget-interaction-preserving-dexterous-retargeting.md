@@ -13,6 +13,7 @@ related:
   - ./regrind-retargeting-guided-rl.md
   - ../tasks/manipulation.md
   - ../entities/wuji-robotics.md
+  - ../entities/mediapipe.md
 sources:
   - ../../sources/papers/toporetarget_arxiv_2606_16272.md
   - ../../sources/sites/toporetarget-github-io.md
