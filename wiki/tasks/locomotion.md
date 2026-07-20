@@ -315,6 +315,9 @@ flowchart TD
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [MoRE：复杂地形多步态 AMP](../entities/paper-amp-survey-08-more.md) — 深度相机 + 多判别器先验 + gait command 切换
 - [MPC](../methods/model-predictive-control.md)
+- [磁驱动双稳态软跳跃机器人](../entities/paper-bistable-soft-jumper-magnetic.md)
+- [统一流体-机器人多物理游泳仿真](../entities/paper-unified-fluid-robot-multiphysics-swimming.md)
+
 
 ## 推荐继续阅读
 

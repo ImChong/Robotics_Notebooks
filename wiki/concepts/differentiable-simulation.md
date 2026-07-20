@@ -2,7 +2,7 @@
 type: concept
 tags: [simulation, differentiable-physics, system-identification, reinforcement-learning, gradient-based]
 status: complete
-updated: 2026-06-23
+updated: 2026-07-20
 related:
   - ../formalizations/adjoint-sensitivity-analysis.md
   - ../entities/matrix-simulation-platform.md
@@ -78,6 +78,9 @@ summary: "Differentiable Simulation 允许对仿真 rollout 反传梯度，用�
 - 数学：[Adjoint Sensitivity Analysis](../formalizations/adjoint-sensitivity-analysis.md)
 - 应用：[System Identification](./system-identification.md)、[Model-Based RL](../methods/model-based-rl.md)
 - 保真度取舍：[仿真物理保真度链路](../queries/simulation-physics-fidelity.md)、[Physics Fidelity ↔ Sim2Real Gap](./physics-fidelity-sim2real-gap.md) — 可微性与接触保真度的冲突
+- [统一流体-机器人多物理游泳仿真](../entities/paper-unified-fluid-robot-multiphysics-swimming.md)
+- [NeuralActuator](../entities/paper-neuralactuator-neural-actuation-modeling.md)
+
 
 ## 推荐继续阅读
 

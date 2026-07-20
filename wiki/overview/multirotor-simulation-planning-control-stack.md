@@ -2,7 +2,7 @@
 type: overview
 tags: [uav, multirotor, px4, simulation, planning, swarm, mavlink, reinforcement-learning]
 status: complete
-updated: 2026-07-08
+updated: 2026-07-20
 related:
   - ../entities/betaflight.md
   - ../entities/wtfos.md
@@ -245,6 +245,9 @@ flowchart TB
 - [仿真器选型指南](../queries/simulator-selection-guide.md)
 - [WorldVLN（空中 VLN）](../entities/paper-worldvln-aerial-vln-wam.md)
 - [电机驱动器底软通信协议总览](./motor-drive-firmware-bus-protocols.md)（DroneCAN 行）
+- [野外微型飞行机器人蜂群](../entities/paper-swarm-micro-flying-robots-in-the-wild.md)
+- [EuRoC MAV 数据集](../entities/euroc-mav-datasets.md)
+
 
 ## 推荐继续阅读
 

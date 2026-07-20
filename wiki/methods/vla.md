@@ -353,6 +353,8 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md) — BT 生命周期与 VLA chunk 分层模式
 - [LimX COSA（人形大脑 OS）](../entities/limx-cosa.md) — S2/S1/S0 调度 V³-0 VLA + LimX WBT 的产业长程 loco-manipulation 栈（2026-07）
 - [FluxVLA Engine](../entities/fluxvla-engine.md) — 逐际开源人形 VLA 训练/推理工程底座（π0.5/GR00T/OpenVLA 等）
+- [OAT 有序动作 Tokenization](../entities/paper-oat-ordered-action-tokenization.md)
+
 
 ## 推荐继续阅读
 

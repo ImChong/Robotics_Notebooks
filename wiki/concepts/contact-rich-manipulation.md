@@ -2,7 +2,7 @@
 type: concept
 tags: [manipulation, contact, force-control, impedance-control, tsid]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-20
 summary: "Contact-Rich Manipulation 指需要持续建模接触、摩擦和力约束的操作任务，难点不在于碰到物体，而在于控制接触过程本身。"
 related:
   - ../queries/contact-wrench-closed-loop.md
@@ -143,6 +143,8 @@ sources:
 - [Hybrid Force-Position Control](./hybrid-force-position-control.md)
 - [Visuo-Tactile Fusion](./visuo-tactile-fusion.md)
 - [Query：接触丰富操作实践指南](../queries/contact-rich-manipulation-guide.md)
+- [DAPL 杂乱场景外在灵巧](../entities/paper-dapl-extrinsic-dexterity-clutter.md)
+
 
 ## 推荐继续阅读
 

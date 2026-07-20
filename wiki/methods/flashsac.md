@@ -2,7 +2,7 @@
 type: method
 tags: [rl, policy-optimization, sac, off-policy, maximum-entropy, locomotion, sim2real, humanoid, kaist, darmstadt, dfki]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-20
 arxiv: "2604.04539"
 code: https://github.com/Holiday-Robot/FlashSAC
 summary: "FlashSAC 在 SAC 上引入 scaling 式少更新+大模型+高吞吐，并联合权重/特征/梯度范数约束与统一熵+噪声重复探索，使高维机器人 off-policy RL 在墙钟与渐近性能上同时超越 PPO，G1 盲行走 sim-to-real 可从小时级压到分钟级。"
@@ -19,6 +19,7 @@ related:
   - ../entities/unilab.md
   - ../entities/paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m.md
 sources:
+  - ../../sources/blogs/wechat_qbitai_rss2026_awards_2026-07-16.md
   - ../../sources/papers/flashsac_arxiv_2604_04539.md
   - ../../sources/sites/flashsac-project.md
   - ../../sources/repos/flashsac.md
@@ -49,6 +50,7 @@ sources:
 
 ## 为什么重要
 
+- **奖项：** RSS 2026 **最佳论文奖**（Holiday Robotics / KAIST 等）；本库节点已存在，本次由量子位报道交叉回链。
 - **挑战 PPO 默认地位：** 人形、灵巧手、视觉控制进入 **高维状态–动作空间** 后，on-policy 窄分布数据难以支撑准确策略评估；FlashSAC 用 replay 覆盖更广分布，在最难任务上 **渐近回报与墙钟** 同时领先 PPO。
 - **补齐 FastSAC 短板：** [FastSAC / FastTD3](../entities/paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m.md) 用 ~0.2M 小网络换墙钟，渐近性能受限；FlashSAC 用 **2.5M 参数** 与稳定性机制，在 scaling 下兼顾 **速度 + 上限**。
 - **sim-to-real 可部署：** 论文在 **G1 盲行走** 上与 PPO 共享同一 sim-to-real 管线（CENet、非对称 actor-critic、域随机 + 地形课程），仅换算法即获 **约 10×** 墙钟增益，且真机行为稳定。
