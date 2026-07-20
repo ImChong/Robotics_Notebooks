@@ -15,6 +15,10 @@
 - `wiki/entities/paper-behavior-foundation-model-humanoid.md`、`paper-motionwam-…`、`paper-legs-…`、`paper-unified-walk-run-recovery-sdamp.md`、`paper-hrl-stack-22-perceptive_humanoid_parkour.md`：各加「开源状态（2026-07-20）」——均无官方可运行仓（SD-AMP 明确 AMP_mjlab 仅为工程对照）
 - 已有时序图且源码仍有效：BeyondMimic（`whole_body_tracking`）、OmniRetarget（`holosoma`）、DeepMimic（`xbpeng/DeepMimic`）、TWIST2（`amazon-far/TWIST2`）HTTP 200 复核
 
+## [2026-07-20] ingest | sources/papers/handroid_arxiv_2607_16187.md — Handroid 双形态桌面机器人；wiki/entities/handroid.md；交叉 manipulation / loco-manipulation / teleoperation
+
+## [2026-07-20] ingest | sources/papers/midas_hand_arxiv_2607_14487.md — MIDAS Hand UCLA 开源直驱触觉灵巧手；wiki/entities/midas-hand.md；交叉 dexterous-data-collection-guide / ruka-v2-hand
+
 ## [2026-07-20] structural | wiki 链接 Top-10 论文节点新增「源码运行时序图」模块 — beyondmimic（whole_body_tracking）/ paper-hrl-stack-03-omniretarget（holosoma）/ paper-twist2（amazon-far/TWIST2）/ deepmimic（xbpeng/DeepMimic）四页各加 mermaid sequenceDiagram；其余 5 个 Top-10 论文节点（BFM / MotionWAM / LEGS / SD-AMP / PHP）官方源码未发布，不适用；**SONIC 已开源（NVlabs/GR00T-WholeBodyControl），时序图见同日后续 structural 条目**
 
 ## [2026-07-20] ingest | sources/papers/actuator_constrained_rl_high_speed_quadruped_arxiv_2312_17507.md — 执行器约束 RL 高速四足 MOR；wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md；交叉 sim2real / locomotion / APT-RL / depth-sim2real
