@@ -2,7 +2,7 @@
 
 ## [2026-07-20] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **19** 条信息型预警）：
+共发现 **0** 个问题（另含 **18** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -116,8 +116,8 @@
 - wiki/entities/paper-unified-fluid-robot-multiphysics-swimming.md（缺 方法 / 评测 / 对比）
 - wiki/entities/paper-vision-dribbling-humanoid-soccer-privileged-representation.md（缺 对比）
 
-### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（1 个）
-- wiki/entities/euroc-mav-datasets.md（缺 重定向就绪度）
+### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（1 个）
 - wiki/methods/adaptive-computed-torque-control.md（含绝对化措辞「最新」，updated=2026-07-18；同主题更新页 wiki/entities/paper-dapl-extrinsic-dexterity-clutter.md updated=2026-07-20）
