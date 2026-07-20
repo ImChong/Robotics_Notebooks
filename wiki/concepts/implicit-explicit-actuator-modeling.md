@@ -123,6 +123,7 @@ flowchart LR
 
 ## 关联页面
 
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 本页是其③「执行器建模与摩擦辨识」层写回仿真的仿真侧对接
 - [物理保真度 ↔ Sim2Real Gap](./physics-fidelity-sim2real-gap.md) — 本页是其保真度链路中「执行器层」的具体开关
 - [Sim2Real](./sim2real.md) — 执行器对齐是高保真迁移子链路
 - [Armature 建模](./armature-modeling.md) — explicit 不稳定时常用的稳定性旋钮
