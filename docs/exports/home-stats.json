@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md",
+      "detail_id": "entity-paper-actuator-constrained-rl-high-speed-quadruped-locomotion",
+      "label": "执行器约束 RL 高速四足奔跑（MOR）",
+      "type": "entity",
+      "recency": "2026-07-20",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/chingmu.md",
       "detail_id": "entity-chingmu",
       "label": "青瞳视觉（CHINGMU Vision）",
@@ -200,27 +210,17 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/overview/robot-control-paradigm-classical-linear-feedback.md",
-      "detail_id": "wiki-overview-robot-control-paradigm-classical-linear-feedback",
-      "label": "经典线性反馈控制（体系①）",
-      "type": "overview",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/chingmu.md",
-    "detail_id": "entity-chingmu",
-    "label": "青瞳视觉（CHINGMU Vision）",
+    "path": "wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md",
+    "detail_id": "entity-paper-actuator-constrained-rl-high-speed-quadruped-locomotion",
+    "label": "执行器约束 RL 高速四足奔跑（MOR）",
     "type": "entity",
     "recency": "2026-07-20",
     "source": "log.md",
     "action": "added",
-    "has_repo": true
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
