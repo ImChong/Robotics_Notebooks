@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-20] ingest | sources/repos/unitree.md — 深度补全 unitreerobotics 组织开源地图；升级 wiki/entities/unitree.md 软件生态；交叉 unitree-g1 / unitree-rl-mjlab / unitree-ros / teleoperation / lerobot
+
+- 原始资料：深化 [`sources/repos/unitree.md`](sources/repos/unitree.md)（组织级；约 49 公开仓；SDK2 / ROS / 三条 RL / XR+IL / UnifoLM 分类导航）
+- 沉淀页面：升级 [`wiki/entities/unitree.md`](wiki/entities/unitree.md)（官方开源软件生态 + Mermaid 研发栈图 + 选型提示）
+- 交叉更新：[`wiki/entities/unitree-g1.md`](wiki/entities/unitree-g1.md)、[`wiki/entities/unitree-rl-mjlab.md`](wiki/entities/unitree-rl-mjlab.md)、[`wiki/entities/unitree-ros.md`](wiki/entities/unitree-ros.md)、[`wiki/tasks/teleoperation.md`](wiki/tasks/teleoperation.md)、[`wiki/entities/lerobot.md`](wiki/entities/lerobot.md)、[`sources/README.md`](sources/README.md)
+- 开源状态：组织仓已开源；`unitree_model` GitHub deprecated → HF；UnifoLM VLA/WMA 训练/推理/权重已发布
+- 未新建子实体页（留待后续单独 ingest）：`unitree_rl_gym`、`unitree_rl_lab`、`unitree_sdk2`、`xr_teleoperate`、`unifolm-vla`、`unifolm-world-model-action`
+
 ## [2026-07-20] structural | wiki/methods/sonic-motion-tracking.md — 读源码导航：模块边界/文件树/算法↔代码映射/FSQ数据流；交叉 gr00t-wholebodycontrol
 
 ## [2026-07-20] ingest | sources/repos/mediapipe.md + sources/repos/gnm.md — Google MediaPipe 与 GNM Head 官方仓库；wiki/entities/mediapipe.md、wiki/entities/gnm-head.md；交叉 dexterous-data-collection-guide / midas-hand / sam-3d-body

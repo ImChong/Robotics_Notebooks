@@ -1,13 +1,75 @@
 {
   "generated_at": "2026-07-20",
   "node_count": 1697,
-  "edge_count": 13605,
+  "edge_count": 13611,
   "coverage": {
     "covered": 1647,
     "total": 1677,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/unitree.md",
+      "detail_id": "entity-unitree",
+      "label": "Unitree",
+      "type": "entity",
+      "recency": "2026-07-20",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/unitree-g1.md",
+      "detail_id": "entity-unitree-g1",
+      "label": "Unitree G1 (人形机器人)",
+      "type": "entity",
+      "recency": "2026-07-20",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/unitree-rl-mjlab.md",
+      "detail_id": "entity-unitree-rl-mjlab",
+      "label": "unitree_rl_mjlab (Unitree 官方 RL 框架)",
+      "type": "entity",
+      "recency": "2026-07-20",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/unitree-ros.md",
+      "detail_id": "entity-unitree-ros",
+      "label": "unitree_ros（Unitree 官方 ROS1 / Gazebo 栈）",
+      "type": "entity",
+      "recency": "2026-07-20",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/tasks/teleoperation.md",
+      "detail_id": "wiki-tasks-teleoperation",
+      "label": "Teleoperation（遥操作）",
+      "type": "task",
+      "recency": "2026-07-20",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/lerobot.md",
+      "detail_id": "entity-lerobot",
+      "label": "LeRobot (Hugging Face)",
+      "type": "entity",
+      "recency": "2026-07-20",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/methods/sonic-motion-tracking.md",
       "detail_id": "wiki-methods-sonic-motion-tracking",
@@ -146,76 +208,13 @@
       "source": "log.md",
       "action": "added",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/kimi-k3.md",
-      "detail_id": "entity-kimi-k3",
-      "label": "Kimi K3",
-      "type": "entity",
-      "recency": "2026-07-19",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/handumi.md",
-      "detail_id": "entity-handumi",
-      "label": "HandUMI",
-      "type": "entity",
-      "recency": "2026-07-19",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "recency": "2026-07-19",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/overview/topic-embodied-eval-benchmark.md",
-      "detail_id": "wiki-overview-topic-embodied-eval-benchmark",
-      "label": "具身评测基准选型闭环（专题汇总）",
-      "type": "overview",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/tasks/humanoid-soccer.md",
-      "detail_id": "wiki-tasks-humanoid-soccer",
-      "label": "Humanoid Soccer",
-      "type": "task",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/kicad.md",
-      "detail_id": "entity-kicad",
-      "label": "KiCad（开源 PCB 与原理图 EDA）",
-      "type": "entity",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/methods/sonic-motion-tracking.md",
-    "detail_id": "wiki-methods-sonic-motion-tracking",
-    "label": "SONIC（规模化运动跟踪人形控制）",
-    "type": "method",
+    "path": "wiki/entities/unitree.md",
+    "detail_id": "entity-unitree",
+    "label": "Unitree",
+    "type": "entity",
     "recency": "2026-07-20",
     "source": "log.md",
     "action": "maintained",
@@ -224,19 +223,19 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 323
-    },
-    {
-      "label": "人形论文深读笔记",
-      "size": 179
-    },
-    {
-      "label": "移动操作",
-      "size": 172
+      "size": 318
     },
     {
       "label": "模仿学习",
-      "size": 165
+      "size": 183
+    },
+    {
+      "label": "人形论文深读笔记",
+      "size": 178
+    },
+    {
+      "label": "移动操作",
+      "size": 176
     },
     {
       "label": "全身控制",
@@ -244,7 +243,7 @@
     },
     {
       "label": "仿真到现实",
-      "size": 85
+      "size": 84
     }
   ],
   "top_hubs": [
@@ -259,7 +258,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 297,
+      "degree": 298,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
