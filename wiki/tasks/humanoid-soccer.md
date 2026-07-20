@@ -2,7 +2,7 @@
 type: task
 tags: [humanoid, soccer, robocup, rl, perception, kicking]
 status: drafting
-updated: 2026-06-12
+updated: 2026-07-20
 related:
   - ./locomotion.md
   - ../concepts/humanoid-multi-robot-coordination.md
@@ -14,6 +14,7 @@ related:
   - ../entities/booster-robocup-demo.md
   - ../entities/unitree-g1.md
   - ../entities/paper-robonaldo-humanoid-soccer-shooting.md
+  - ../entities/paper-vision-dribbling-humanoid-soccer-privileged-representation.md
   - ../entities/paper-humanoid-soccer-swarm-intelligence.md
   - ../entities/paper-notebook-a-hierarchical-model-based-system-for-high-perfo.md
   - ../entities/paper-notebook-learning-soccer-skills-for-humanoid-robots.md
@@ -61,6 +62,7 @@ summary: "Humanoid Soccer 是机器人学中最具挑战性的综合任务之一
 - **HTWK-Gym**：针对 Booster T1/K1 平台的足球任务优化框架。
 - **PAiD (Perception-Action Integrated Decision-making)**：将感知与动作解耦并渐进式融合，实现更稳健的踢球。
 - **[RoboNaldo](../entities/paper-robonaldo-humanoid-soccer-shooting.md)**：以单条人类踢球参考为 scaffold 的 **三阶段 motion-guided curriculum RL**，在 G1 上实现 **亚米级点瞄准射门**、**13 m/s 级触球球速** 与 **来球 one-touch** 室外真机演示。
+- **[视觉特权表征运球](../entities/paper-vision-dribbling-humanoid-soccer-privileged-representation.md)**（arXiv:2607.12702）：**RMA 式两阶段** — 特权编码器学对手感知运球，再蒸馏 **CNN+GRU 深度 latent**；Booster T1 仿真下无障碍 **100%**、静态障碍 **96%**、动态抢球 **46%** SR。
 
 ### 分层状态机 + 技能库
 将比赛逻辑划分为多个状态（寻球、追球、对齐、踢球），每个状态对应一个底层控制器。
@@ -79,6 +81,7 @@ summary: "Humanoid Soccer 是机器人学中最具挑战性的综合任务之一
 |------|----------|---------|
 | **寻球 (Search)** | 广域视觉扫描、头部关节协同 | YOLOv8 + 分级搜索策略 |
 | **接近与对齐 (Chase & Align)** | 全向步态、动态 ZMP 调节 | 参数化行走 (htwk-gym) |
+| **运球 (Dribble)** | 移动中控球、遮挡下球态估计、动态对手规避 | [视觉特权表征运球](../entities/paper-vision-dribbling-humanoid-soccer-privileged-representation.md)（深度+RMA 蒸馏，仿真） |
 | **踢球 (Kick)** | 单脚支撑平衡、摆腿轨迹规划、高冲量触球时机 | RLVisionKick / PAiD / RoboNaldo |
 | **跌倒恢复 (Get up)** | 接触力反馈、全身协同规划 | 预设 Keyframe / RL Getup |
 

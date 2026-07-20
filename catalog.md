@@ -921,11 +921,13 @@
 - [RoboNaldo（人形足球射门 · Motion-Guided Curriculum RL）](wiki/entities/paper-robonaldo-humanoid-soccer-shooting.md) — RoboNaldo**（*Accurate, Stable and Powerful Humanoid Soccer Shooting via Motion-Guided Curriculum R `📅unknown` `[entity_page]`
 - [RoboTTT（Test-Time-Training Robot Policies）](wiki/entities/paper-robottt-test-time-training-vla-context.md) — RoboTTT**（*Context Scaling for Robot Policies*，[NVIDIA GEAR 项目页](https://research.nvidia.com/labs/ `📅unknown` `[entity_page]`
 - [Robustness of Robotic Manipulation](wiki/entities/paper-robustness-robotic-manipulation-survey.md) — Robustness of Robotic Manipulation: Foundations and Frontiers**（Dong et al., arXiv:2606.31494）是面向  `📅unknown` `[entity_page]`
+- [被动轮人形轮滑 AMP（Tsinghua）](wiki/entities/paper-roller-skating-amp-humanoid-passive-wheels.md) — Learning Roller-Skating Motions of Humanoid Robots Based on Adversarial Motion Priors**（清华大学，arXiv `📅unknown` `[entity_page]`
 - [ROVE（Unlocking Human Interventions for Humanoid Manipulation via RL）](wiki/entities/paper-rove-humanoid-vla-intervention.md) — ROVE** 是 XPENG Robotics 与复旦、港中文、上交等团队提出的 **人形 VLA 后训练 RL 框架**（arXiv:2606.17011，[项目页](https://xpeng `📅unknown` `[entity_page]`
 - [RPL：复杂地形上的鲁棒人形多向感知行走](wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) — RPL**（*Learning Robust Humanoid Perceptive Locomotion on Challenging Terrains*，Amazon FAR 等，arXiv: `📅unknown` `[entity_page]`
 - [RynnWorld-4D（4D Embodied World Models · arXiv:2607.06559）](wiki/entities/paper-rynnworld-4d-rgb-depth-flow.md) — RynnWorld-4D**（*RynnWorld-4D: 4D Embodied World Models for Robotic Manipulation*，[arXiv:2607.06559 `📅unknown` `[entity_page]`
 - [ScaleBFM（Scaling Behavior Foundation Model for Humanoid Robots）](wiki/entities/paper-scaling-bfm-humanoid.md) — ScaleBFM** 是上海人工智能实验室牵头、多校与 Galbot 合作的人形 **BFM scaling 技术报告**（arXiv:2607.15163，[项目页](https://scale `📅unknown` `[entity_page]`
 - [SceneBot（Contact-Prompted Whole-Body Tracking with Scene-Interaction）](wiki/entities/paper-scenebot.md) — SceneBot**（arXiv:2606.27581，Amazon FAR / Stanford / CMU）提出 **接触条件化（contact-prompted）** 的通用人形全身运动跟踪 `📅unknown` `[entity_page]`
+- [语义音频驱动人形全身控制（Lab-RoCoCo）](wiki/entities/paper-semantic-audio-wbc-humanoid.md) — Semantic Audio-driven Understanding for Dynamic Humanoid Whole Body Control**（Sapienza / UNINT，arX `📅unknown` `[entity_page]`
 - [SENTINEL](wiki/entities/paper-sentinel.md) — SENTINEL**（*A Fully End-to-End Language-Action Model for Humanoid Robots*，arXiv:2511.19236）将自然语言与本 `📅unknown` `[entity_page]`
 - [Shape Your Body：多具身价值梯度机器人共设计](wiki/entities/paper-shape-your-body-value-gradient-design.md) — Shape Your Body**（Bohlinger & Peters，TU Darmstadt；[项目页](https://nico-bohlinger.github.io/shape-you `📅unknown` `[entity_page]`
 - [TesserAct](wiki/entities/paper-shenlan-wm-01-tesseract.md) — TesserAct: Learning 4D Embodied World Models** 收录于 [深蓝具身智能 · 世界模型 15 开源项目专题](https://mp.weixin.qq. `📅unknown` `[entity_page]`
@@ -973,6 +975,7 @@
 - [Vesta（A Generalist Embodied Reasoning Model）](wiki/entities/paper-vesta-generalist-embodied-reasoning.md) — Vesta** 是 NVIDIA 等团队提出的 **具身通才 planner VLM**（arXiv:2606.20905）：在 **Qwen3-VL-8B** 上，用 **六类空间导向 SFT  `📅unknown` `[entity_page]`
 - [ViDiHand — Video Diffusion for 4D Hand Motion Reconstruction](wiki/entities/paper-vidihand.md) — 一句话定义**：**ViDiHand** 将 **预训练 video diffusion（Wan2.1-VACE）** 的内部表征当作 **egocentric 双手 4D 重建** 的通用先验— `📅unknown` `[entity_page]`
 - [VIRAL（Visual Sim-to-Real at Scale for Humanoid Loco-Manipulation）](wiki/entities/paper-viral-humanoid-visual-sim2real.md) — VIRAL** 是一篇面向 **人形机器人 loco-manipulation** 的 **视觉 Sim2Real** 系统论文（arXiv:2511.15200，CVPR 2026）：策略  `📅unknown` `[entity_page]`
+- [视觉特权表征人形足球运球（Lab-RoCoCo）](wiki/entities/paper-vision-dribbling-humanoid-soccer-privileged-representation.md) — Vision-Based Dribbling for Humanoid Soccer via Privileged Representation Learning**（Sapienza / CSI `📅unknown` `[entity_page]`
 - [VLK（Vision-Language-Kinematics）](wiki/entities/paper-vlk-synthetic-loco-manipulation.md) — VLK**（arXiv:2606.30645）收录于 [具身智能研究室 · Loco-Manip 接触专题](https://mp.weixin.qq.com/s/UjShbwl8p1h9ukym `📅unknown` `[entity_page]`
 - [R2R](wiki/entities/paper-vln-01-r2r.md) — R2R** 收录于 深蓝具身智能 · VLN 10 项代表性研究 **第 01/10**  `📅unknown` `[entity_page]`
 - [VLN-CE](wiki/entities/paper-vln-02-vln-ce.md) — VLN-CE** 收录于 深蓝具身智能 · VLN 10 项代表性研究 **第 02/10 `📅unknown` `[entity_page]`
