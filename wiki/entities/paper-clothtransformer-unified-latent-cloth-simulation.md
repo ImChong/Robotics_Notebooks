@@ -88,6 +88,10 @@ flowchart LR
   CCD[CCD loss / post-process] -.-> OUT
 ```
 
+## 源码运行时序图
+
+**不适用**（截至 2026-07-20：[GitHub `YuCrazing/ClothTransformer`](https://github.com/YuCrazing/ClothTransformer) 仅 README + `.gitignore`，无可辨识 `train` / `infer` 入口或预训练权重；数据集已单独发布于 Hugging Face）。论文级 **编码 → 潜空间演化 → 解码** 数据流见上文「流程总览」`flowchart`；待官方补全可运行脚本后应按 [ingest-workflow](../../schema/ingest-workflow.md) 补写 `sequenceDiagram`。
+
 ### 无穿透数据集（三场景）
 
 | 子集 | 内容 | 序列数 | 帧数 |
