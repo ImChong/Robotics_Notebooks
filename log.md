@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-20] structural | wiki/methods/sonic-motion-tracking.md — 读源码导航：模块边界/文件树/算法↔代码映射/FSQ数据流；交叉 gr00t-wholebodycontrol
+
 ## [2026-07-20] ingest | sources/repos/mediapipe.md + sources/repos/gnm.md — Google MediaPipe 与 GNM Head 官方仓库；wiki/entities/mediapipe.md、wiki/entities/gnm-head.md；交叉 dexterous-data-collection-guide / midas-hand / sam-3d-body
 
 ## [2026-07-20] ingest | sources/papers/roller_skating_amp_arxiv_2607_10815.md + vision_dribbling + semantic_audio_wbc — 三篇 arXiv:2607 论文入库；wiki/entities/paper-roller-skating-amp-humanoid-passive-wheels.md、paper-vision-dribbling-humanoid-soccer-privileged-representation.md、paper-semantic-audio-wbc-humanoid.md；交叉 humanoid-soccer

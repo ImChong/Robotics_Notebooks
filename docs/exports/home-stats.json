@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/methods/sonic-motion-tracking.md",
+      "detail_id": "wiki-methods-sonic-motion-tracking",
+      "label": "SONIC（规模化运动跟踪人形控制）",
+      "type": "method",
+      "recency": "2026-07-20",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/mediapipe.md",
       "detail_id": "entity-mediapipe",
       "label": "MediaPipe",
@@ -38,16 +48,6 @@
       "recency": "2026-07-20",
       "source": "log.md",
       "action": "added"
-    },
-    {
-      "path": "wiki/methods/sonic-motion-tracking.md",
-      "detail_id": "wiki-methods-sonic-motion-tracking",
-      "label": "SONIC（规模化运动跟踪人形控制）",
-      "type": "method",
-      "recency": "2026-07-20",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-behavior-foundation-model-humanoid.md",
@@ -212,15 +212,14 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/mediapipe.md",
-    "detail_id": "entity-mediapipe",
-    "label": "MediaPipe",
-    "type": "entity",
+    "path": "wiki/methods/sonic-motion-tracking.md",
+    "detail_id": "wiki-methods-sonic-motion-tracking",
+    "label": "SONIC（规模化运动跟踪人形控制）",
+    "type": "method",
     "recency": "2026-07-20",
     "source": "log.md",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "动作重定向（Motion Retargeting） 社区"
+    "action": "maintained",
+    "has_repo": true
   },
   "top_communities": [
     {
