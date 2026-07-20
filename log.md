@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-20] ingest | sources/sites/engineai-urkl.md — EngineAI URKL 人形格斗联赛；wiki/entities/urkl.md；交叉 rek / teleoperation / depth-humanoid-boxing
+
 ## [2026-07-19] ingest | sources/sites/roboscience.md — RoboScience VLOA/Visics/RoboMirage；wiki/entities/roboscience-vloa.md；交叉更新 generative-world-models / vla / manipulation
 
 ## [2026-07-19] ingest | sources/papers/humi_arxiv_2602_06643.md — HuMI 无机器人人形全身操作；wiki/entities/paper-notebook-humanoid-manipulation-interface.md；交叉更新 wiki/entities/paper-halomi-humanoid-loco-manipulation.md

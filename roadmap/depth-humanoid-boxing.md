@@ -52,6 +52,7 @@ flowchart LR
 ### 推荐读什么
 - [RoboStriker](../wiki/entities/paper-notebook-robostriker.md)（本仓库）— 自主人形拳击的分层决策代表，本路线的锚点论文
 - [REK 人形格斗联赛](../wiki/entities/rek.md)（本仓库）— VR 遥操作全接触格斗的产业样本
+- [URKL 人形格斗联赛](../wiki/entities/urkl.md)（本仓库）— EngineAI 统一 T800 **自主算法** 格斗联赛
 - [Towards Motion Turing Test](../wiki/entities/paper-notebook-towards-motion-turing-test.md)（本仓库）— 拳击类动态行为的类人度差距量化
 - [Teleoperation 任务页](../wiki/tasks/teleoperation.md)（本仓库）— 竞技向全身遥操作的谱系位置
 
@@ -197,7 +198,7 @@ flowchart LR
 
 **方向 C：赛事与产业**
 - 自主拳击与 VR 格斗联赛的产品化：售票赛事、机器人租赁与中美并行的格斗联赛叙事
-- 关键词：[REK](../wiki/entities/rek.md)、[Unitree G1](../wiki/entities/unitree-g1.md)
+- 关键词：[REK](../wiki/entities/rek.md)、[URKL](../wiki/entities/urkl.md)、[Unitree G1](../wiki/entities/unitree-g1.md)
 
 ---
 

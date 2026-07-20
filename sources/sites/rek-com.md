@@ -32,13 +32,14 @@
 | **REK1** | 2026-02-07 **Kezar Pavilion**（旧金山）；购票者可申请成为 Pilot | [Reflex Arc 项目页](https://reflexarc.co.uk/projects/rek-robots) |
 | **首场爆款** | 2025-09 旧金山 Temple 夜店 inaugural，售票近 **3400**（场馆容量约 2500）；Twitch 联创 Justin Kan、UFC 选手 Hyder Amil 等 pilot G1 | Humanoid Sports Network |
 | **观赛形态** | REK0 **VR180** 可在 Apple Vision Pro（Vantage VR）沉浸式回看 | Reflex Arc |
-| **产业语境** | 与 **Engine AI** 等中国「人形格斗联赛」形成对照：REK 强调 **embodied VR 选手** 而非纯自主策略 | Rest of World |
+| **产业语境** | 与 **[URKL](../../wiki/entities/urkl.md)**（EngineAI · 统一 T800 + 自主算法）等中国联赛形成对照：REK 强调 **embodied VR 选手** 而非纯自主策略 | Rest of World；本仓库 [engineai-urkl.md](./engineai-urkl.md) |
 
 ## 对 wiki 的映射
 
 - 主实体：[REK（人形格斗联赛）](../../wiki/entities/rek.md)
 - 硬件交叉：[Unitree G1](../../wiki/entities/unitree-g1.md)、[Unitree](../../wiki/entities/unitree.md)
 - 任务交叉：[Teleoperation](../../wiki/tasks/teleoperation.md) — VR 全身映射的现场竞技形态
+- 产业对照：[URKL](../../wiki/entities/urkl.md) — EngineAI **自主算法** 标准化 T800 联赛
 - 研究对照：[RoboStriker](../../wiki/entities/paper-notebook-robostriker.md) — **自主**人形拳击多智能体 RL，与 REK **人类 pilot** 路线互补
 
 ## 待后续深读（可选）
