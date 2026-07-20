@@ -598,6 +598,14 @@
         "caltech"
       ]
     },
+    "chingmu": {
+      "label": "青瞳视觉（CHINGMU Vision）",
+      "aliases": [
+        "chingmu",
+        "chingmu-vision",
+        "cmrobot"
+      ]
+    },
     "uf": {
       "label": "佛罗里达大学（UF）",
       "aliases": [

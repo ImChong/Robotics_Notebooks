@@ -10,6 +10,7 @@ related:
   - ../entities/humanoid-robot.md
   - ../entities/quadruped-robot.md
   - ../entities/motioncode.md
+  - ../entities/chingmu.md
   - ../entities/unitree.md
   - ../entities/boston-dynamics.md
   - ../entities/anymal.md
@@ -70,7 +71,7 @@ related:
 
 ### 运动数据与训练资产（非整机品牌）
 
-整机厂商之外，产业侧还有专门提供 **人体运动采集、标注与跨管线交付** 的供应商，常与人形 **模仿学习 / RL / 动画** 共用同一套运动资产（通常仍需 [Motion Retargeting](../concepts/motion-retargeting.md)）。例：[MotionCode](../entities/motioncode.md)（官网 [motioncode.ai](https://motioncode.ai/)）。
+整机厂商之外，产业侧还有专门提供 **人体运动采集、标注与跨管线交付** 的供应商，常与人形 **模仿学习 / RL / 动画** 共用同一套运动资产（通常仍需 [Motion Retargeting](../concepts/motion-retargeting.md)）。例：[MotionCode](../entities/motioncode.md)（官网 [motioncode.ai](https://motioncode.ai/)）；国内光学动捕全栈 [青瞳视觉 CHINGMU](../entities/chingmu.md)（[en.chingmu.com](https://en.chingmu.com/)，含 **MotionDecode** 千小时数据与 G1 重定向样例）。
 
 ### 关节动力与执行器 OEM（非整机品牌）
 
@@ -106,6 +107,7 @@ related:
 - [Boston Dynamics](../entities/boston-dynamics.md)
 - [ANYmal](../entities/anymal.md)
 - [MotionCode](../entities/motioncode.md) — 人体运动数据与 Mind 线人形训练叙事
+- [青瞳视觉 CHINGMU](../entities/chingmu.md) — 光学动捕硬件/软件 + MotionDecode 具身数据集
 
 ## 参考来源
 

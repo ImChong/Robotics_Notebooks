@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-07-20",
-  "node_count": 1688,
-  "edge_count": 13532,
+  "node_count": 1689,
+  "edge_count": 13539,
   "coverage": {
-    "covered": 1638,
-    "total": 1668,
+    "covered": 1639,
+    "total": 1669,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/chingmu.md",
+      "detail_id": "entity-chingmu",
+      "label": "青瞳视觉（CHINGMU Vision）",
+      "type": "entity",
+      "recency": "2026-07-20",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/urkl.md",
       "detail_id": "entity-urkl",
@@ -74,7 +84,7 @@
       "source": "log.md",
       "action": "added",
       "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "path": "wiki/concepts/sim2real.md",
@@ -199,26 +209,17 @@
       "source": "log.md",
       "action": "added",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/overview/robot-control-paradigm-model-based-nonlinear-dynamics.md",
-      "detail_id": "wiki-overview-robot-control-paradigm-model-based-nonlinear-dynamics",
-      "label": "基于模型的非线性动力学控制（体系②）",
-      "type": "overview",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/urkl.md",
-    "detail_id": "entity-urkl",
-    "label": "URKL（Ultimate Robot Knock-out Legend · EngineAI 人形格斗联赛）",
+    "path": "wiki/entities/chingmu.md",
+    "detail_id": "entity-chingmu",
+    "label": "青瞳视觉（CHINGMU Vision）",
     "type": "entity",
     "recency": "2026-07-20",
     "source": "log.md",
-    "action": "added"
+    "action": "added",
+    "has_repo": true
   },
   "top_communities": [
     {
@@ -226,8 +227,8 @@
       "size": 293
     },
     {
-      "label": "人形强化学习运动控制",
-      "size": 181
+      "label": "模仿学习",
+      "size": 183
     },
     {
       "label": "人形论文深读笔记",
@@ -311,15 +312,16 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 178,
-      "has_repo": true
+      "degree": 179,
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
       "label": "人形机器人 RL 运动控制：身体系统栈视角",
       "type": "overview",
       "degree": 178,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     }
   ],
   "top_paper_hubs": [
@@ -343,7 +345,7 @@
       "type": "entity",
       "degree": 46,
       "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",
@@ -357,7 +359,7 @@
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
       "degree": 45,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
@@ -378,14 +380,14 @@
       "type": "entity",
       "degree": 36,
       "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",
       "label": "SD-AMP：统一走、跑与起身的对抗运动先验",
       "type": "entity",
       "degree": 36,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",

@@ -2,13 +2,13 @@
 
 机器人技术栈知识库 / Robotics research and engineering wiki.
 
-<!-- Last updated: 2026-07-20 (V30 自动更新：图谱 1688 节点 13532 边) -->
+<!-- Last updated: 2026-07-20 (V30 自动更新：图谱 1689 节点 13539 边) -->
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen?logo=github)](https://imchong.github.io/Robotics_Notebooks/)
 [![Deploy GitHub Pages](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml)
 [![Wiki Lint](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/lint.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/lint.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
-[![Knowledge Graph](https://img.shields.io/badge/知识图谱-1688节点_13532边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
+[![Knowledge Graph](https://img.shields.io/badge/知识图谱-1689节点_13539边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
 [![Sources Coverage](https://img.shields.io/badge/sources覆盖率-98%25-green)](docs/checklists/tech-stack-next-phase-checklist-v30.md)
 
 ---
@@ -87,7 +87,7 @@
 
 ## 维护看板
 
-- 当前技术栈执行清单：[V30](docs/checklists/tech-stack-next-phase-checklist-v30.md)
+- 当前技术栈执行清单：[V29](docs/checklists/tech-stack-next-phase-checklist-v29.md)
 - 前端体验优化清单：[frontend-optimization-v1](docs/checklists/frontend-optimization-v1.md)
 - 历史执行清单索引：[docs/checklists/README.md](docs/checklists/README.md)
 
