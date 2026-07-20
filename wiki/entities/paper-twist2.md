@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model, teleoperation, loco-manipulation, diffusion-policy, data-collection, unitree-g1, icra-2026]
 status: complete
-updated: 2026-07-19
+updated: 2026-07-20
 arxiv: "2511.02832"
 venue: "ICRA 2026 · arXiv"
 code: https://github.com/amazon-far/TWIST2
@@ -86,6 +86,39 @@ flowchart TB
   track --> g1
   pred --> g1
 ```
+
+## 源码运行时序图
+
+官方仓库 [amazon-far/TWIST2](https://github.com/amazon-far/TWIST2) 全栈开源：遥操作栈（XRoboToolkit 配置）、低层 RL tracking 控制器与 checkpoint、visuomotor 训练/部署脚本与颈硬件 BOM（归档见 [sources/repos/twist2.md](../../sources/repos/twist2.md)）。按「采集 → 训练 → 自主」三段运行，模块交互如下：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor OP as 操作员
+    participant XRT as XRoboToolkit<br/>PICO 4 Ultra + Trackers
+    participant RET as 实时重定向<br/>（GMR 等）
+    participant S1 as System 1<br/>RL tracking 控制器
+    participant G1 as Unitree G1<br/>含 2-DoF 颈
+    participant DS as 示范日志 / TWIST-Data
+    participant S2 as System 2<br/>visuomotor 策略（Diffusion Policy）
+    loop 遥操作数据采集
+        OP->>XRT: 全身姿态 + 头部朝向流
+        XRT->>RET: 6-DoF 全身流
+        RET->>S1: G1 全身参考（含颈指令）
+        S1->>G1: 动态可行关节动作
+        G1-->>OP: egocentric RGB 回传（主动视角）
+        G1->>DS: 同步记录视觉 / 状态 / 动作
+    end
+    OP->>S2: 用示范数据训练<br/>模仿学习策略
+    loop 自主执行（Kick-T / WB-Dex 等）
+        G1->>S2: egocentric 观测
+        S2->>S1: 预测未来全身关节位置
+        S1->>G1: 跟踪执行
+    end
+```
+
+- **低层复用是关键**：遥操作与自主共用同一个 sim2real RL tracking 控制器（随仓库发布 checkpoint），System 2 只需输出运动学参考，无需重训低层。
+- **采集即训练数据**：示范日志与 [TWIST-Data](https://twist-data.github.io/) 社区数据集同构，跑通采集环节即可直接进入 visuomotor 训练脚本。
 
 ## 核心机制（归纳）
 

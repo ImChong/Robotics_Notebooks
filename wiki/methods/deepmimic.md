@@ -2,7 +2,8 @@
 type: method
 tags: [imitation-learning, tracking, rl, xbpeng, paper, humanoid, motion-control, body-system-stack, ubc, berkeley]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-20
+code: https://github.com/xbpeng/DeepMimic
 venue: curated
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
@@ -60,6 +61,36 @@ summary: "DeepMimic 是物理角色动画的基石工作，通过精确的轨迹
 | **奖励函数** | [奖励函数设计](../concepts/reward-design.md) Multi-term Reward | 综合位置、速度、末端位姿和质心偏差 |
 | **初始化** | RSI (Reference State Initialization) | 在轨迹的任意点开始训练，增加样本多样性 |
 | **早期终止** | Early Exit | 如果跌倒或偏离过大则重置，提高训练效率 |
+
+## 源码运行时序图
+
+官方实现 [xbpeng/DeepMimic](https://github.com/xbpeng/DeepMimic)：C++ 仿真核 `DeepMimicCore`（Bullet 物理 + OpenGL 渲染，SWIG 封装给 Python）+ TensorFlow PPO Agent + MPI 多进程采样。训练入口 `DeepMimic_Optimizer.py`（headless），可视化入口 `DeepMimic.py`；场景、角色、参考动作与算法超参全部由 `args/*.txt` 参数文件指定。一次完整运行的模块交互如下：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户
+    participant TRN as DeepMimic_Optimizer.py<br/>mpiexec 多进程训练
+    participant CORE as DeepMimicCore<br/>C++ / Bullet（SWIG 封装）
+    participant AG as PPO Agent<br/>TensorFlow
+    participant VIS as DeepMimic.py<br/>OpenGL 可视化
+    U->>TRN: --arg_file args/train_humanoid3d_<br/>backflip_args.txt
+    TRN->>CORE: 加载 imitate 场景 + 角色<br/>+ 参考动作 clip
+    loop 采样迭代（MPI worker 并行）
+        CORE->>CORE: RSI 参考状态初始化
+        AG->>CORE: 30 Hz 查询动作（PD 目标）
+        CORE->>CORE: Bullet 物理步进（1.2 kHz）
+        CORE-->>AG: 状态 + 相位 + 多项跟踪奖励<br/>（位姿 / 速度 / 末端 / 质心）
+        CORE-->>AG: 跌倒或偏离过大 → Early Termination
+        AG->>AG: PPO 更新（MPI 梯度同步）<br/>+ 保存 checkpoint
+    end
+    U->>VIS: --arg_file args/run_…_args.txt<br/>--model_file 训练好的策略
+    VIS->>CORE: 加载策略执行
+    CORE-->>U: OpenGL 实时渲染模仿效果
+```
+
+- **主要技术路线的三个模块都在循环里**：RSI 对应循环开头的随机初始化，multi-term reward 对应仿真核返回的多项跟踪奖励，Early Exit 对应偏离即重置。
+- **原版栈较老（TF1 + SWIG 编译）**：现代复现建议直接用 [MimicKit](../entities/mimickit.md)（同作者，集成 DeepMimic / AMP 等算法，支持 Isaac Gym / Isaac Lab）。
 
 ## 关联页面
 - [protomotions](../entities/protomotions.md) — 提供大规模并行训练支持。

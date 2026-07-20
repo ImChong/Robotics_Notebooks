@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-retargeting, motion-control, interaction-mesh, loco-manipulation, data-generation, amazon-far, body-system-stack, icra-2026]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-20
 arxiv: "2509.26633"
 venue: ICRA 2026
 summary: "OmniRetarget 用 interaction mesh + Sequential SOCP 硬约束生成交互保留的人形运动学参考，支持单演示增广与 holosoma 开源管线；下游 5 reward + 4 DR 无 curriculum 即可 G1 零样本实机 30 s parkour/loco-manipulation；PHP 等论文的原子技能重定向上游。"
@@ -105,6 +105,37 @@ flowchart TB
 **5 项 reward：** body tracking（DeepMimic 位姿/速度）、object tracking（适用时）、action rate、soft joint limit、self-collision（接触力 >1 N 二值惩罚）。
 
 **4 项机器人 DR：** 躯干 COM 扰动、关节默认位、随机推、观测噪声；物体侧随机化质量/COM/惯量/形状。
+
+## 源码运行时序图
+
+官方代码以 [holosoma](https://github.com/amazon-far/holosoma) 发布，拆为三个顶层包：`holosoma_retargeting`（OmniRetarget 重定向引擎）、`holosoma`（RL 训练）、`holosoma_inference`（sim2sim / sim2real 推理部署），共享 WandB 实验管理。`demo_scripts/demo_omomo_wb_tracking.sh` 等脚本可端到端跑通「重定向 → WBT 训练」；一次完整运行的模块交互如下（命令细节见 [sources/repos/holosoma.md](../../sources/repos/holosoma.md)）：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户
+    participant RT as holosoma_retargeting<br/>OmniRetarget 引擎
+    participant TR as holosoma<br/>train_agent.py
+    participant SIM as 仿真器<br/>IsaacGym / IsaacSim / MJWarp
+    participant WB as WandB
+    participant INF as holosoma_inference
+    U->>RT: demo_omomo_wb_tracking.sh<br/>输入 MoCap（OMOMO / LAFAN1 / 自采）
+    RT->>RT: interaction mesh + Sequential SOCP<br/>硬约束求解 + 物体/地形/embodiment 增广
+    RT-->>TR: 运动学参考轨迹
+    U->>TR: train_agent.py exp:g1-29dof-…<br/>simulator:isaacgym logger:wandb
+    TR->>SIM: 创建并行环境（G1 / T1）<br/>加载参考轨迹
+    loop RL 迭代（PPO / FastSAC）
+        TR->>SIM: 批量动作
+        SIM-->>TR: 观测 + 5 reward<br/>（4 DR · 无 curriculum）
+        TR->>WB: 曲线 / 视频 / ONNX checkpoint
+    end
+    U->>INF: 部署（sim2sim / sim2real）
+    INF->>WB: 拉取 checkpoint / ONNX
+    INF-->>U: MuJoCo 验证 → G1 真机 WBT
+```
+
+- **重定向与训练解耦**：`holosoma_retargeting` 产出的参考轨迹是纯运动学数据资产（HF 公开 4 h），可独立于 RL 复用；LAFAN1 因许可需用该包自行重定向。
+- **checkpoint 全托管 WandB**：训练自动上传 ONNX，推理端直接按运行号拉取，三包之间不靠本地文件路径耦合。
 
 ## 实验与评测
 
