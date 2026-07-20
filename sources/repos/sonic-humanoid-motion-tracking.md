@@ -64,7 +64,7 @@
 
 ## 对 Wiki 的映射
 
-- **wiki/methods/sonic-motion-tracking.md**：人形通用动作跟踪基础模型方法页（含流程图、源码运行时序图与接口总览）。
+- **wiki/methods/sonic-motion-tracking.md**：人形通用动作跟踪基础模型方法页（含流程图、读源码导航：模块边界 / 文件树 / 算法↔代码映射 / token 数据流 / 源码运行时序图）。
 - **wiki/entities/gr00t-wholebodycontrol.md**：官方代码仓实体页。
 - **wiki/methods/beyondmimic.md**：历史与技术脉络对齐。
 - **wiki/methods/exoactor.md**：作为「SMPL 估计轨迹 → 机器人执行」的执行层实例。

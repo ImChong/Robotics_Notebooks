@@ -54,7 +54,7 @@ sources:
   - ../../sources/papers/loco_manip_161_survey_103_sonic.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
   - ../../sources/papers/humanoid_loco_manip_161_catalog.md
-summary: "SONIC 通过规模化运动跟踪监督训练通用人形策略，把海量 MoCap 帧上的轨迹跟踪当作预训练任务；以统一 token 接口接入 VR、视频、文本、音乐与 VLA（如 GR00T N1.5 演示），并可桥接实时运动学规划器做交互式导航与风格化步态。官方训练/部署代码在 NVlabs/GR00T-WholeBodyControl，权重见 HF nvidia/GEAR-SONIC。"
+summary: "SONIC 通过规模化运动跟踪监督训练通用人形策略，把海量 MoCap 帧上的轨迹跟踪当作预训练任务；以 FSQ 统一 token 接口接入 VR、视频、文本、音乐与 VLA（如 GR00T N1.5 演示），并可桥接实时运动学规划器做交互式导航与风格化步态。官方训练/部署代码在 NVlabs/GR00T-WholeBodyControl；方法页含模块边界、文件树、算法↔代码映射与源码时序图。"
 ---
 
 # SONIC（规模化运动跟踪人形控制）
@@ -76,6 +76,12 @@ SONIC（*Supersizing Motion Tracking for Natural Humanoid Whole-Body Control*）
 | VR | Virtual Reality | 遥操作与实时参考生成入口之一 |
 | BFM | Behavior Foundation Model | 大规模行为数据预训练的可复用全身行为先验 |
 | AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| FSQ | Finite Scalar Quantization | 多编码器投影到共享潜 token 的量化接口 |
+| PPO | Proximal Policy Optimization | Isaac Lab 侧主训练算法（TRL 封装） |
+| ONNX | Open Neural Network Exchange | PyTorch checkpoint 导出到 C++ / TensorRT 部署的交换格式 |
+| SMPL | Skinned Multi-Person Linear Model | 人体参数化姿态，SMPL encoder 的输入模态之一 |
+| G1 | Unitree G1 | 官方发布权重与训练默认的 29-DoF 人形平台 |
+| SOMA | Skeleton-Oriented Motion Abstraction | 可选第四编码器：BVH 衍生骨架关节（`sonic_bones_seed`） |
 
 ## 论文信息（arXiv:2511.07820）
 
@@ -210,9 +216,118 @@ flowchart LR
 
 上图强调 **模块边界**：GEM / VLA / 规划器位于「生成或规划参考运动」一侧；SONIC 负责在动力学与接触约束下 **高频率跟踪**；具体观测栈、控制频率与接口字段以论文与 [官方文档站](https://nvlabs.github.io/GR00T-WholeBodyControl/) 为准。
 
-## 源码运行时序图
+## 读源码导航（论文 ↔ 仓库）
 
-官方实现落在 [NVlabs/GR00T-WholeBodyControl](https://github.com/NVlabs/GR00T-WholeBodyControl)：`gear_sonic/` 负责 Isaac Lab 侧数据处理与 PPO 训练，`gear_sonic_deploy/` 负责 ONNX / TensorRT C++ 推理与真机 / MuJoCo sim2sim。权重与 SMPL 样本经 `download_from_hf.py` 从 [HF `nvidia/GEAR-SONIC`](https://huggingface.co/nvidia/GEAR-SONIC) 拉取；大规模参考动作用 [BONES-SEED](https://huggingface.co/datasets/bones-studio/seed) G1 CSV 转成 motion lib。一次完整「数据 → 训练 → 评测 → 部署」模块交互如下（命令与路径以仓库 README / Training Guide / Quick Start 为准；工程仓总览见 [GR00T-WholeBodyControl](../entities/gr00t-wholebodycontrol.md)）：
+官方实现落在 [NVlabs/GR00T-WholeBodyControl](https://github.com/NVlabs/GR00T-WholeBodyControl)（工程仓总览见 [GR00T-WholeBodyControl](../entities/gr00t-wholebodycontrol.md)）。读仓建议顺序：**模块边界 → 文件树 → 算法↔代码映射 → 统一 token 数据流 → 运行时序**；命令与路径以仓库 README / [Training Guide](https://nvlabs.github.io/GR00T-WholeBodyControl/user_guide/training.html) / Quick Start 为准。
+
+### 1）模块边界（训练 / 仿真 / 部署）
+
+```mermaid
+flowchart TB
+  subgraph assets["资产层"]
+    HF[HF nvidia/GEAR-SONIC<br/>PyTorch · ONNX · obs config]
+    SEED[HF bones-studio/seed<br/>BONES-SEED G1 CSV]
+  end
+
+  subgraph train_stack["gear_sonic/ · Isaac Lab Python"]
+    DP[data_process/<br/>CSV→motion_lib·过滤]
+    CFG[config/ · Hydra exp<br/>sonic_release / bones_seed]
+    ENV[envs/ · 并行跟踪环境]
+    TRL[trl/ + train_agent_trl.py<br/>PPO + 辅助损失]
+    EV[eval_agent_trl.py<br/>指标 · 渲染 · ONNX 导出]
+  end
+
+  subgraph deploy_stack["gear_sonic_deploy/ · C++ / TensorRT"]
+    DEP[deploy.sh<br/>sim | real]
+    RT[50 Hz encoder→decoder<br/>ZMQ / VR / 键盘]
+  end
+
+  subgraph runtime["运行时目标"]
+    MJ[MuJoCo run_sim_loop]
+    G1HW[Unitree G1 真机]
+  end
+
+  SEED --> DP --> ENV
+  HF --> TRL
+  HF --> DEP
+  CFG --> TRL
+  ENV --> TRL
+  TRL --> EV
+  EV -->|export_onnx_only| DEP
+  DEP --> RT
+  RT --> MJ
+  RT --> G1HW
+```
+
+要点：**Isaac Lab 只跑 `gear_sonic`**；真机 / sim2sim 走 **独立 C++ 栈**；权重从 `last.pt` 经 `eval_agent_trl.py +export_onnx_only=true` 落到部署用 ONNX。
+
+### 2）文件树注解（先认路，再下钻）
+
+```
+GR00T-WholeBodyControl/
+├── download_from_hf.py          # 拉权重 / SMPL；--training · --low-latency
+├── gear_sonic/                  # ★ 训练与评测（Isaac Lab）
+│   ├── data_process/            # Bones-SEED CSV→PKL、过滤、SOMA/BVH
+│   ├── config/                  # Hydra：+exp=…/sonic_release
+│   ├── envs/                    # 跟踪环境、观测与 reward 接线
+│   ├── trl/                     # PPO / TRL 算法实现
+│   ├── train_agent_trl.py       # 训练 / 微调入口
+│   ├── eval_agent_trl.py        # 评测、渲染、ONNX 导出
+│   └── scripts/                 # run_sim_loop · launch_inference · VR
+├── gear_sonic_deploy/           # ★ C++ 推理（真机 / sim2sim）
+│   └── deploy.sh                # ./deploy.sh sim | real · --cp · --obs-config
+├── motionbricks/                # 同仓生成式运动预览（非 SONIC 主干）
+└── data/                        # 本地 motion_lib_* / smpl_filtered（gitignore 常见）
+```
+
+同仓还有 **Decoupled WBC** 与 **MotionBricks**；读 SONIC 时默认只跟 `gear_sonic*` + HF 权重，避免和 N1.5 解耦 WBC 混线。
+
+### 3）算法 ↔ 代码映射
+
+| 论文 / 方法概念 | 仓库落点 | 读什么 |
+|-----------------|----------|--------|
+| 规模化 motion tracking 预训练 | `train_agent_trl.py` + `+exp=…/sonic_release` | 单一统一策略、PPO 主环 |
+| 专用编码器 → 统一 token | Training Guide：G1 / teleop / SMPL（+ 可选 SOMA）→ **FSQ** → 共享 64-d latent | 换上游 = 换 encoder，decoder 共用 |
+| 密集跟踪监督 / 奖励 | `envs/` + W&B `rewards/*`、`tracking_*` | `anchor_pos_err`、`body_pos_err`、`mpjpe_*` |
+| MoCap 数据规模 | BONES-SEED → `convert_soma_csv_to_motion_lib.py` → `filter_and_copy_bones_data.py` | 过滤后约 130K / 142K PKL |
+| 多模态条件（VR / 视频 / VLA） | teleop encoder；`scripts/launch_inference.py`；ZMQ Manager | 低层仍是同一 decoder |
+| 实时运动学规划器 | 文档 Kinematic Planner + 部署输入类型 | 手柄 / 风格化步态接 tracking |
+| 真机 50 Hz 全身控制 | `gear_sonic_deploy/deploy.sh` + `model_{encoder,decoder}.onnx` | 默认约 200 ms（10×20 ms）参考 lookahead；低延迟档 4 帧 / ~80 ms |
+| 配置驱动实验 | Hydra `+exp=manager/universal_token/all_modes/…` | `sonic_release` vs `sonic_bones_seed` |
+
+### 4）统一 token 数据流（部署侧）
+
+```mermaid
+flowchart LR
+  subgraph inputs["参考模态（并行 encoder）"]
+    I1[G1 关节轨迹]
+    I2[Teleop<br/>头+双腕 3-point]
+    I3[SMPL 人体关节]
+    I4[SOMA 骨架<br/>可选]
+  end
+
+  subgraph core["universal-token 策略 · 50 Hz"]
+    ENC[专用 Encoder 族]
+    FSQN[FSQ → 64-d token]
+    DEC[共享 Decoder]
+  end
+
+  subgraph out["执行"]
+    ACT[29-DoF G1 关节动作]
+  end
+
+  I1 --> ENC
+  I2 --> ENC
+  I3 --> ENC
+  I4 --> ENC
+  ENC --> FSQN --> DEC --> ACT
+```
+
+发布权重把 encoder / decoder 拆成 ONNX 对；**Default** 与 **Low-latency teleop** 必须 **成套** 使用（含各自的 `observation_config.yaml`），不可混搭。
+
+### 5）源码运行时序图
+
+权重与 SMPL 样本经 `download_from_hf.py` 从 [HF `nvidia/GEAR-SONIC`](https://huggingface.co/nvidia/GEAR-SONIC) 拉取；大规模参考动作用 [BONES-SEED](https://huggingface.co/datasets/bones-studio/seed) G1 CSV 转成 motion lib。一次完整「数据 → 训练 → 评测 → 部署」交互如下：
 
 ```mermaid
 sequenceDiagram
@@ -238,14 +353,16 @@ sequenceDiagram
     U->>EV: eval_agent_trl.py<br/>+checkpoint=sonic_release/last.pt
     EV->>LAB: 加载策略与参考 motion lib
     EV-->>U: 指标 / 渲染视频
+    U->>EV: +export_onnx_only=true
+    EV-->>DEP: exported/*_encoder.onnx · *_decoder.onnx
     U->>DEP: deploy.sh sim 或 real<br/>（ONNX / TensorRT）
     DEP->>SIM: 50 Hz 策略推理 · 多速率命令环
     SIM-->>DEP: 本体 / 深度等观测
     DEP-->>U: 键盘 / VR / ZMQ 接口控制
 ```
 
-- **训练与部署解耦**：Isaac Lab Python 环境只跑 `gear_sonic`；真机 / sim2sim 走独立 C++ 栈与（可选）Docker，权重格式从 PyTorch checkpoint 导出到部署用 ONNX。
-- **统一 token 接口不变**：换 VR / 视频 / 规划器 / VLA 上游只换 encoder，不重训整条低层 tracking policy——与上文「多上游 → token → 全身执行」流程图一致。
+- **训练与部署解耦**：Python 训练环境与 C++ 部署栈分离；中间靠 ONNX 交接。
+- **统一 token 接口不变**：换 VR / 视频 / 规划器 / VLA 上游只换 encoder，不重训整条低层 tracking policy——与上文「多上游 → token → 全身执行」及本节数据流图一致。
 
 ## 主要技术路线
 
@@ -253,7 +370,7 @@ sequenceDiagram
 |------|------|
 | **监督** | 密集跟踪损失：策略输出逼近参考全身运动（具体观测与动作空间以论文为准）。 |
 | **规模** | 论文与官网公开量级包含 **上亿帧**、**约 700 小时** MoCap、**约 1.2M→42M** 参数叙述与 **约 2.1 万 GPU 小时** 算力叙述；性能随规模单调改善的报道支撑「跟踪可扩展」论点。 |
-| **接口** | **专用编码器 → 统一 token**；支持 **VLA、VR、视频、文本 / 音乐** 等上游与 **实时运动学规划** 桥接。 |
+| **接口** | **专用编码器 → FSQ → 统一 64-d token → 共享 decoder**；支持 **VLA、VR、视频、文本 / 音乐** 等上游与 **实时运动学规划** 桥接；部署 **50 Hz**，ONNX encoder/decoder 成套使用。 |
 
 ## 常见误区或局限
 
