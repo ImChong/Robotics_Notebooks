@@ -2,7 +2,7 @@
 type: method
 tags: [rl, imitation-learning, locomotion, humanoid, sampling, diffusion, paper, motion-control, body-system-stack, bfm, behavior-foundation-model, stanford, berkeley]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-20
 code: https://github.com/HybridRobotics/whole_body_tracking
 venue: "2025 · arXiv"
 arxiv: "2508.08241"
@@ -123,6 +123,39 @@ flowchart TD
   P -->|动作指令| E
   P --> Pi
 ```
+
+## 源码运行时序图
+
+官方跟踪阶段实现 [whole_body_tracking](https://github.com/HybridRobotics/whole_body_tracking) 基于 Isaac Lab，参考动作用 WandB Registry 管理：先用 `scripts/csv_to_npz.py` 把重定向动作转成参考 npz 并注册，再用 `scripts/rsl_rl/train.py --task=Tracking-Flat-G1-v0` 训练，`scripts/rsl_rl/play.py` 回放与导出。一次完整运行的模块交互如下（具体张量与命令行以仓库 README 为准）：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户
+    participant PRE as scripts/csv_to_npz.py
+    participant WB as WandB Registry
+    participant TR as scripts/rsl_rl/<br/>train.py · play.py
+    participant ENV as Isaac Lab 并行环境<br/>Tracking-Flat-G1-v0
+    participant PPO as rsl_rl PPO<br/>OnPolicyRunner
+    U->>PRE: 输入重定向动作 CSV<br/>（LAFAN1 / GMR 输出等）
+    PRE->>PRE: 运动学回放补全<br/>身体位姿与速度
+    PRE->>WB: 注册参考动作 .npz
+    U->>TR: train.py --task=Tracking-Flat-G1-v0<br/>--registry_name=指定动作
+    TR->>WB: 拉取参考动作
+    TR->>ENV: 创建并行环境<br/>加载参考动作命令项
+    loop 每次 PPO 迭代
+        PPO->>ENV: 批量动作（关节目标 → PD）
+        ENV->>ENV: 物理步进 + 失败率<br/>自适应片段采样
+        ENV-->>PPO: 观测 + 统一任务空间<br/>跟踪奖励
+        PPO->>PPO: GAE + PPO 更新
+        PPO->>WB: 曲线 / 视频 / checkpoint
+    end
+    U->>TR: play.py --wandb_path=训练运行号
+    TR-->>U: 加载 checkpoint 回放<br/>并导出部署用策略
+```
+
+- **训练与部署解耦**：本仓库只覆盖「参考动作 → 跟踪策略」的训练闭环；真机部署控制器在配套 deploy 仓库，与上文「端到端数据流」中的 `策略 π` 输出衔接。
+- **动作即资产**：参考动作与 checkpoint 全走 WandB Registry，换动作只改 `--registry_name`，与「失败率驱动自适应采样」一起构成多技能批量训练的工程底座。
 
 ## 输入与输出：和实现对齐时看什么
 
