@@ -1,10 +1,12 @@
 ---
 
+
 type: entity
 tags: [paper, vla, tactile-sensing, dexterous-manipulation, flow-matching, bimanual, contact-rich, imitation-learning, egocentric-video, dataset, berkeley, nvidia, stanford, nvidia-gear]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-20
 arxiv: "2606.17055"
+code: https://github.com/ZhuoyangLiu2005/T-Rex
 related:
   - ../methods/vla.md
   - ../methods/egoscale.md
@@ -127,6 +129,36 @@ flowchart TB
 ### 12 任务族（示例）
 
 Flip Page、Transfer Egg、Wipe Plate、Apply Toothpaste、Split Cup、Sort Mahjong、Open Lock、Refill Tablet、Acid-Base Neutralization、Extract Card、Deal Poker、Screw Lightbulb。
+
+## 源码运行时序图
+
+官方仓库 [ZhuoyangLiu2005/T-Rex](https://github.com/ZhuoyangLiu2005/T-Rex)：数据经 `utils/gen_json_…` / `convert_inlab_to_lerobot.sh`；post-train 用 `scripts/train.sh`；推理 `scripts/test.sh`（ZMQ）；真机客户端 `hardware_code/eval/eval_trex_async.py`。一次完整运行如下：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户
+    participant PRE as 数据转换<br/>HDF5/MP4 → LeRobot
+    participant TR as scripts/train.sh
+    participant MOT as MoT VLA +<br/>触觉 VQ-VAE
+    participant SRV as scripts/test.sh<br/>ZMQ server
+    participant CLI as eval_trex_async.py
+    participant ROB as 双臂真机
+    U->>PRE: 原始触觉 / 视觉演示
+    PRE-->>TR: JSON / LeRobot 数据集
+    U->>TR: 自 midtrain checkpoint 继续训
+    TR->>MOT: 更新权重
+    U->>SRV: 启动慢/快双频服务
+    loop 部署
+        CLI->>SRV: 观测（图像 + 高频触觉）
+        SRV->>MOT: slow 视觉 latent / fast 触觉 token
+        SRV-->>CLI: 动作 chunk
+        CLI->>ROB: 下发控制
+    end
+```
+
+- **双频推理**：视觉慢时钟与触觉快时钟分离，是复现接触反应的关键。
+- **完整预训练**在其他分支；`main` 侧重 post-train + 部署。
 
 ## 常见误区或局限
 

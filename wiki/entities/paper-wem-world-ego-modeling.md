@@ -1,5 +1,6 @@
 ---
 
+
 type: entity
 tags:
   - paper
@@ -12,7 +13,7 @@ tags:
   - diffusion
   - mixture-of-experts
 status: complete
-updated: 2026-06-01
+updated: 2026-07-20
 arxiv: "2605.19957"
 code: https://github.com/ZGCA-HMI-Lab/WEM
 related:
@@ -121,6 +122,33 @@ flowchart TB
 | **WEM** | **61.48** |
 
 （同训练数据微调；完整子指标见 [项目页](https://zgca-hmi-lab.github.io/WEM/) 与论文。）消融显示去掉 **非对称 query**、**RCA** 或 **邻域扩展路由** 均明显降低 EWMScore。
+
+## 源码运行时序图
+
+官方仓库 [ZGCA-HMI-Lab/WEM](https://github.com/ZGCA-HMI-Lab/WEM)：先 `prepare_b1k.py` 与各类 `precompute_*` 缓存；`torchrun … train.py --stage 1/2` 两阶段训练；`generate.py` 生成；`eval/evaluate.py` 评测。一次完整运行如下：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户
+    participant RAW as HTEWorld / B1K 视频
+    participant PRE as prepare + precompute_*
+    participant TR as train.py stage1/2
+    participant GEN as generate.py
+    participant EV as eval/evaluate.py
+    U->>RAW: 下载数据集
+    RAW->>PRE: latent / 文本 / 视觉缓存
+    U->>TR: --stage 1（decoder）
+    TR->>TR: 更新视频解码器
+    U->>TR: --stage 2（完整 WEM）
+    TR->>TR: World-Ego 联合训练
+    U->>GEN: 首帧 + 指令 → 未来视频
+    GEN-->>EV: 生成样本
+    EV-->>U: HTEWorld 指标
+```
+
+- **预计算是一等公民**：跳过 cache 会让训练 I/O 不可用。
+- **两阶段顺序固定**：先 decoder 再完整模型。
 
 ## 常见误区或局限
 

@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-20] structural | Top-50 论文枢纽有代码缺图补齐 — 19 页源码运行时序图 + RPL/PILOT 开源状态
+
+- 范围：`exports/hub-rankings.json` paper 榜 Top-50 中「有官方代码信号且缺 mermaid 时序图」的节点
+- 新增时序图（19）：ASE、BFM-Zero、OASIS、VIRAL、SPIDER（`facebookresearch/spider`）、DoorMan、GentleHumanoid、MoRE、TWIST、GVHMR、ResMimic、T-Rex、PHC、GR00T N1、KungFuAthleteBot、MPC-RL、KungfuBot/PBHC、Humanoid-GPT、WEM
+- 开源状态不适用（2）：RPL、PILOT（WholebodyVLA 仅为索引仓，无独立可运行官方实现）
+- 链接校正：SPIDER 官方仓改为 facebookresearch/spider；GentleHumanoid 训练/部署双仓写入 frontmatter `code`
+
 ## [2026-07-20] structural | 论文链接 Top-10 枢纽再核官方源码 — SONIC 补 GR00T-WholeBodyControl 源码运行时序图；BFM / MotionWAM / LEGS / SD-AMP / PHP 标注未开源
 
 - 触发：首页 `top_paper_hubs` 前十论文节点源码地址再确认；纠正此前「SONIC 官方源码未发布」误判

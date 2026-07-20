@@ -1,8 +1,9 @@
 ---
+
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, loco-manipulation, loco-manip-161-survey, nvidia, vla]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-20
 arxiv: "2503.14734"
 venue: "2025 · arXiv"
 code: https://github.com/NVIDIA/Isaac-GR00T
@@ -155,6 +156,35 @@ flowchart TB
 ### 局限（论文 §4.6）
 
 当前 N1 主要覆盖 **短视界桌面操作**；长视界 loco-manipulation、更强空间推理 VLM、物理一致合成数据与架构仍属后续方向（与 [Foundation Policy](../concepts/foundation-policy.md) 中 GR00T N1.5+ 演进线对照阅读）。
+
+## 源码运行时序图
+
+官方参考实现 [NVIDIA/Isaac-GR00T](https://github.com/NVIDIA/Isaac-GR00T)：微调 `gr00t/experiment/launch_finetune.py`；推理 `scripts/deployment/standalone_inference_script.py` 或 `gr00t/eval/run_gr00t_server.py`；开环评估 `gr00t/eval/open_loop_eval.py`。数据为 GR00T LeRobot 格式 + `modality.json`。一次完整运行如下：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户
+    participant DS as LeRobot 演示<br/>modality.json
+    participant FT as launch_finetune.py
+    participant VLA as GR00T VLA<br/>+ diffusion action head
+    participant SRV as run_gr00t_server.py
+    participant CLI as 机器人 / 仿真客户端
+    U->>DS: 准备 embodiment 标签与模态配置
+    U->>FT: --base-model-path nvidia/GR00T-…
+    FT->>VLA: 微调
+    U->>SRV: 启动 PolicyServer
+    loop 闭环
+        CLI->>SRV: 图像 / 状态 / 语言
+        SRV->>VLA: 前向
+        SRV-->>CLI: 动作 chunk
+        CLI->>CLI: 执行并反馈
+    end
+    U->>FT: （可选）open_loop_eval.py 评测
+```
+
+- **N1 论文机制 vs N1.5+ 工程**：本时序对应当前 Isaac-GR00T 发布栈；版本号以模型卡为准。
+- **全身低层**常再接 [SONIC / GR00T-WholeBodyControl](../methods/sonic-motion-tracking.md)。
 
 ## 常见误区
 

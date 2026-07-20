@@ -1,8 +1,9 @@
 ---
+
 type: entity
 tags: [paper, humanoid, loco-manipulation, loco-manip-survey, sim2real, teleoperation, flow-matching, domain-randomization, unitree-g1, isaac-sim, teleai]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-20
 arxiv: "2606.08548"
 code: https://github.com/TeleHuman/OASIS
 project: https://oasis-humanoid.github.io/
@@ -167,6 +168,37 @@ flowchart TB
 - **相对 LEGS：** 两者都把「视觉多样性」从真机数据中解耦，但 OASIS 仍保留 **VR teleop** 提供接触可行的全身轨迹，LEGS 则连 teleop 都省去、纯靠 3DGS 合成——OASIS 接触/动力学更贴真机，LEGS 采集成本更低。
 - **相对 VIRAL：** OASIS 的 motion 来自 **人类 teleop**（多样性受操作员上限、未做轨迹动力学扰动），VIRAL 的 PPO 教师靠 **RL 探索** 拓宽 motion 覆盖；OASIS 胜在演示语义自然、易对齐任务，VIRAL 胜在探索式覆盖更广。
 - **共同结论：** 三条路线都验证了 **仿真/合成数据可在 G1 loco-manip 上替代或增强真机 teleop**；OASIS 进一步给出「**纯仿真 ≥ 等量真机、混合最优**」的量化证据。
+
+## 源码运行时序图
+
+官方仓库 [TeleHuman/OASIS](https://github.com/TeleHuman/OASIS) 当前公开主线是 **Isaac Sim 仿真遥操作采集与离线重渲染**（`teleop.sh` / `record.sh` / `replay.sh` / `play.sh`），而非端到端策略训练脚本。一次完整「采集 → 增广」运行如下（命令以仓库 README 为准）：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户 / 操作员
+    participant VR as PICO / XRoboToolkit
+    participant TEL as teleop.sh
+    participant SIM as Isaac Sim 场景
+    participant REC as record.sh
+    participant REP as replay.sh
+    participant DS as 随机化渲染数据集
+    U->>TEL: 启动遥操作服务
+    TEL->>VR: 绑定头显 / 手柄
+    TEL->>SIM: 加载资产与机器人
+    loop 采集 episode
+        VR-->>TEL: 全身 / 双臂指令
+        TEL->>SIM: 仿真步进
+        REC->>SIM: 记录状态轨迹
+    end
+    U->>REP: 离线重放轨迹
+    REP->>SIM: 纹理 / 光照 / 相机随机化
+    REP-->>DS: 多样化图像 + 动作标签
+    DS-->>U: 供下游 visuomotor / VLA 训练
+```
+
+- **本仓产出是数据工厂**：策略训练在下游；OASIS 保证仿真轨迹可复现重渲染。
+- **play.sh** 用于场景与回放快速检查，不替代完整 record/replay 管线。
 
 ## 常见误区或局限
 

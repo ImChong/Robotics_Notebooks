@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-20",
   "node_count": 1690,
-  "edge_count": 13553,
+  "edge_count": 13554,
   "coverage": {
     "covered": 1640,
     "total": 1670,
@@ -329,7 +329,7 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 113,
+      "degree": 114,
       "has_repo": true
     },
     {

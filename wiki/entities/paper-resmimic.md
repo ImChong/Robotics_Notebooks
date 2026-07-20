@@ -1,9 +1,11 @@
 ---
+
 type: entity
 tags: [paper, humanoid, loco-manipulation, motion-tracking, residual-learning, reinforcement-learning, ppo, gmt, sim2real, unitree-g1, amazon-far, whole-body]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-20
 arxiv: "2510.05070"
+code: https://github.com/amazon-far/ResMimic
 related:
   - ../tasks/loco-manipulation.md
   - ../concepts/whole-body-tracking-pipeline.md
@@ -117,6 +119,36 @@ flowchart TB
 
 - **残差可视化（项目页）：** 腕关节 **delta 动作幅度更大**，与「物体交互主要由残差承担」一致。
 - **真机：** MoCap 物体状态、随机初姿 11 次试验、连续跪姿抬箱、扰动恢复等（见 [项目页](https://resmimic.github.io/)）。
+
+## 源码运行时序图
+
+官方仓库 [amazon-far/ResMimic](https://github.com/amazon-far/ResMimic)（基于 TWIST2 风格 `legged_gym` / `rsl_rl`）：`./train.sh <wandb_entity>` 训练残差策略，`./eval.sh <wandb_run_id> <iter>` 回放。一次完整运行如下：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户
+    participant SETUP as 环境依赖 / TWIST2 资产
+    participant TR as train.sh
+    participant ENV as legged_gym 并行环境
+    participant RES as Residual policy
+    participant WB as WandB
+    participant EV as eval.sh
+    U->>SETUP: 安装与数据准备
+    U->>TR: ./train.sh <wandb_entity>
+    loop 残差学习
+        TR->>ENV: 批量动作（GMT + 残差）
+        ENV-->>RES: loco-manip 奖励
+        RES->>RES: PPO 更新
+        TR->>WB: 曲线 / checkpoint
+    end
+    U->>EV: ./eval.sh <run_id> <iter>
+    EV->>WB: 拉取 checkpoint
+    EV-->>U: 仿真回放
+```
+
+- **站在通用 tracker 上**：残差专攻全身 loco-manipulation，不替代底层 GMT。
+- **checkpoint 以 WandB run 为索引**，本地路径以脚本为准。
 
 ## 常见误区或局限
 

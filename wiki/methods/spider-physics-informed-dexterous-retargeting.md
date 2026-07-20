@@ -1,9 +1,11 @@
 ---
+
 type: method
 tags: [robotics, motion-retargeting, dexterous-manipulation, humanoid, physics-simulation, imitation-learning, contact-rich-manipulation, paper, humanoid-paper-notebooks]
 status: complete
+code: https://github.com/facebookresearch/spider
 date: 2026-05-17
-updated: 2026-07-16
+updated: 2026-07-20
 venue: "2025.11"
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
@@ -116,6 +118,33 @@ flowchart LR
 - **计算与场景可仿真性**：方法假设交互对象与环境可在并行仿真器里完成 rollout；网格质量、接触参数与并行吞吐决定可用规模。
 - **数字主张的边界**：论文中的 **10× 相对 RL 基线**、**2.4M 帧** 等数字与具体实验设置绑定，迁移到新机器人时应视作**量级参考**而非普适常数。
 
+## 源码运行时序图
+
+官方实现为 [facebookresearch/spider](https://github.com/facebookresearch/spider)（项目页 [spider-project](https://jc-bao.github.io/spider-project/) 指向该仓）。主线是 **演示 → 接触/场景 → IK → MuJoCo Warp 物理采样 → 机器人轨迹**，无 RL 训练环。快速入口如 `uv run examples/run_mjwp_fast.py`；完整链路含 `process_datasets → decompose → detect_contact → generate_xml → ik_fast → run_mjwp_fast → read_to_robot`。一次完整运行如下：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户
+    participant DS as process_datasets<br/>decompose
+    participant CT as detect_contact
+    participant XML as generate_xml
+    participant IK as ik_fast
+    participant MJ as run_mjwp_fast<br/>MuJoCo Warp
+    participant OUT as read_to_robot
+    U->>DS: 输入人手 / 物体运动
+    DS->>DS: 统一格式与资产
+    DS->>CT: 接触检测
+    CT->>XML: 生成动力学场景 XML
+    XML->>IK: IK 初值
+    IK->>MJ: 物理可行采样
+    MJ-->>OUT: 动态可行轨迹
+    OUT-->>U: 机器人可执行 / 下游学习数据
+```
+
+- **重定向而非策略学习**：输出是轨迹资产；下游 RL/IL 另仓进行。
+- **fast 示例**可跳过部分阶段做冒烟；论文级复现建议走完整 pipeline。
+
 ## 关联页面
 
 - [Motion Retargeting（动作重定向）](../concepts/motion-retargeting.md) — 任务定义与「运动学 vs 动力学」分层坐标。
@@ -134,6 +163,7 @@ flowchart LR
 - 论文摘要页：<https://arxiv.org/abs/2511.09484>
 - arXiv HTML 全文：<https://arxiv.org/html/2511.09484v2>
 - 项目首页（视频与交互可视化）：<https://jc-bao.github.io/spider-project/>
+- 官方代码：<https://github.com/facebookresearch/spider>
 - 网站源码仓：<https://github.com/jc-bao/spider-project>
 
 ## 参考来源

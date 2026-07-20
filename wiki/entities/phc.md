@@ -1,9 +1,10 @@
 ---
 
+
 type: entity
 tags: [repo, motion-retargeting, humanoid, physics-based-control, smpl, nvidia, paper, bfm, behavior-foundation-model, awesome-bfm-papers, berkeley]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-20
 code: https://github.com/ZhengyiLuo/PHC
 venue: "2023 · ICCV"
 arxiv: "2305.06456"
@@ -83,6 +84,38 @@ python scripts/data_process/fit_smpl_motion.py robot=unitree_g1_fitting +amass_r
 | [GMR](../methods/motion-retargeting-gmr.md) | 实时几何 IK，多输入格式，CPU 友好 |
 | **PHC** | SMPL 拟合 + 物理模仿闭环，适合离线大规模库 |
 | [ProtoMotions](./protomotions.md) | 多后端并行训练；PHC 提供 AMASS 预处理参考 |
+
+## 源码运行时序图
+
+官方实现 [ZhengyiLuo/PHC](https://github.com/ZhengyiLuo/PHC)（README.MD）：数据 `convert_amass_data.py`；训练 `phc/run_hydra.py`（如 `robot=unitree_g1`）；PMCP 挖掘 `scripts/pmcp/forward_pmcp.py`；`test=True` 评测可视化。一次完整运行如下：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户
+    participant AMASS as convert_amass_data.py
+    participant TR as phc/run_hydra.py
+    participant ENV as Isaac Gym
+    participant PRIM as primitive 策略
+    participant PMCP as forward_pmcp.py
+    participant COMP as composer
+    U->>AMASS: AMASS / SMPL → 训练格式
+    U->>TR: learning=im_big 等（训 primitive）
+    loop 模仿学习
+        TR->>ENV: rollout
+        ENV-->>PRIM: 跟踪奖励
+        PRIM->>PRIM: 更新
+    end
+    U->>PMCP: 挖掘失败片段
+    PMCP-->>TR: 扩展运动集
+    U->>TR: 训练 composer
+    TR->>COMP: 组合多 primitive
+    U->>TR: test=True epoch=-1
+    TR-->>U: 可视化持续控制 / 起身
+```
+
+- **PMCP 是数据飞轮**：失败案例回灌后再训，而不是只加长单次 PPO。
+- **Hydra 配置**决定机器人与任务；G1 等 embodiment 用对应 `robot=` / `env=`。
 
 ## 关联页面
 

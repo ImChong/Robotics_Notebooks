@@ -1,8 +1,9 @@
 ---
+
 type: entity
 tags: [paper, humanoid, sim2real, visual-rl, loco-manipulation, teacher-student, dagger, ppo, unitree-g1, isaac-lab, cvpr2026, nvidia, cmu, berkeley, cuhk, body-system-stack]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-20
 arxiv: "2511.15200"
 venue: "CVPR 2026"
 code: https://github.com/NVlabs/GR00T-VisualSim2Real
@@ -98,6 +99,39 @@ summary: "VIRAL（arXiv:2511.15200，CVPR 2026）给出人形 loco-manipulation 
 
 - **连续试验**：59 次中 **54 次成功**（约 **91.5%**），与 [GR00T-VisualSim2Real](./gr00t-visual-sim2real.md) 页中引用的统计一致。
 - **与遥操作对比**：在相同 HOMIE 底层下，相对 **专家** 成功率接近且 **周期时间更短**；显著优于 **非专家** 遥操作。
+
+## 源码运行时序图
+
+官方代码在 [NVlabs/GR00T-VisualSim2Real](https://github.com/NVlabs/GR00T-VisualSim2Real)（与 DoorMan 同仓）：教师 / 学生均经 `gr00t/rl/train_agent_trl.py`（Hydra `+exp=loco_manip/...`），评测与导出用 `gr00t/rl/eval_agent_trl.py`。VIRAL 走 **特权教师 PPO → RGB 学生蒸馏**。一次完整运行如下（exp 名以仓库为准）：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户
+    participant TR as gr00t/rl/<br/>train_agent_trl.py
+    participant LAB as Isaac Lab 任务
+    participant TEA as 特权教师 PPO
+    participant STU as RGB 学生<br/>DAgger / 蒸馏
+    participant EV as eval_agent_trl.py
+    U->>TR: +exp=loco_manip/…teacher
+    loop 教师 PPO
+        TR->>LAB: 特权状态 rollout
+        LAB-->>TEA: 观测 + 奖励
+        TEA->>TEA: 策略更新
+    end
+    U->>TR: +exp=loco_manip/…student
+    loop 学生蒸馏
+        TR->>LAB: RGB 观测 rollout
+        LAB-->>STU: 视觉输入
+        STU->>TEA: 查询教师动作
+        STU->>STU: 模仿 + RL 更新
+    end
+    U->>EV: +checkpoint=… num_envs=1
+    EV-->>U: 回放 / 导出 ONNX
+```
+
+- **同仓多论文**：换 Hydra exp 切换 VIRAL / DoorMan 等配方，共享 `gr00t/rl` 基础设施。
+- **教师不部署**：真机只跑视觉学生策略。
 
 ## 常见误区或局限
 
