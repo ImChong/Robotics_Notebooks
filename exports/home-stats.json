@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-20",
-  "node_count": 1689,
-  "edge_count": 13539,
+  "node_count": 1690,
+  "edge_count": 13553,
   "coverage": {
-    "covered": 1639,
-    "total": 1669,
+    "covered": 1640,
+    "total": 1670,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -63,7 +63,7 @@
       "recency": "2026-07-19",
       "source": "log.md",
       "action": "added",
-      "community_label": "运动控制（Locomotion） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/kimi-k3.md",
@@ -115,7 +115,8 @@
       "recency": "2026-07-18",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "path": "wiki/entities/kicad.md",
@@ -224,27 +225,27 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 293
+      "size": 319
     },
     {
       "label": "模仿学习",
-      "size": 183
+      "size": 182
     },
     {
       "label": "人形论文深读笔记",
-      "size": 179
-    },
-    {
-      "label": "全身控制",
-      "size": 153
+      "size": 178
     },
     {
       "label": "移动操作",
-      "size": 153
+      "size": 176
     },
     {
-      "label": "仿真训练",
-      "size": 109
+      "label": "全身控制",
+      "size": 132
+    },
+    {
+      "label": "仿真到现实",
+      "size": 84
     }
   ],
   "top_hubs": [
@@ -259,7 +260,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 294,
+      "degree": 296,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -287,19 +288,18 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "degree": 237
+    },
+    {
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
       "degree": 236,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
-      "degree": 235,
-      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",
@@ -337,7 +337,8 @@
       "label": "BeyondMimic",
       "type": "method",
       "degree": 53,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",
