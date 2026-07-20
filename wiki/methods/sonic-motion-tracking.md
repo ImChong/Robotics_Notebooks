@@ -225,26 +225,26 @@ flowchart LR
 ```mermaid
 flowchart TB
   subgraph assets["资产层"]
-    HF[HF nvidia/GEAR-SONIC<br/>PyTorch · ONNX · obs config]
-    SEED[HF bones-studio/seed<br/>BONES-SEED G1 CSV]
+    HF["HF GEAR-SONIC<br/>PyTorch / ONNX / obs config"]
+    SEED["HF BONES-SEED<br/>G1 CSV"]
   end
 
-  subgraph train_stack["gear_sonic/ · Isaac Lab Python"]
-    DP[data_process/<br/>CSV→motion_lib·过滤]
-    CFG[config/ · Hydra exp<br/>sonic_release / bones_seed]
-    ENV[envs/ · 并行跟踪环境]
-    TRL[trl/ + train_agent_trl.py<br/>PPO + 辅助损失]
-    EV[eval_agent_trl.py<br/>指标 · 渲染 · ONNX 导出]
+  subgraph train_stack["gear_sonic · Isaac Lab Python"]
+    DP["data_process<br/>CSV to motion_lib + filter"]
+    CFG["config Hydra exp<br/>sonic_release / bones_seed"]
+    ENV["envs 并行跟踪环境"]
+    TRL["trl + train_agent_trl.py<br/>PPO + 辅助损失"]
+    EV["eval_agent_trl.py<br/>指标 / 渲染 / ONNX 导出"]
   end
 
-  subgraph deploy_stack["gear_sonic_deploy/ · C++ / TensorRT"]
-    DEP[deploy.sh<br/>sim | real]
-    RT[50 Hz encoder→decoder<br/>ZMQ / VR / 键盘]
+  subgraph deploy_stack["gear_sonic_deploy · C++ TensorRT"]
+    DEP["deploy.sh sim or real"]
+    RT["50 Hz encoder to decoder<br/>ZMQ / VR / keyboard"]
   end
 
   subgraph runtime["运行时目标"]
-    MJ[MuJoCo run_sim_loop]
-    G1HW[Unitree G1 真机]
+    MJ["MuJoCo run_sim_loop"]
+    G1HW["Unitree G1 真机"]
   end
 
   SEED --> DP --> ENV
@@ -253,7 +253,7 @@ flowchart TB
   CFG --> TRL
   ENV --> TRL
   TRL --> EV
-  EV -->|export_onnx_only| DEP
+  EV -->|"export_onnx_only"| DEP
   DEP --> RT
   RT --> MJ
   RT --> G1HW
@@ -299,21 +299,21 @@ GR00T-WholeBodyControl/
 
 ```mermaid
 flowchart LR
-  subgraph inputs["参考模态（并行 encoder）"]
-    I1[G1 关节轨迹]
-    I2[Teleop<br/>头+双腕 3-point]
-    I3[SMPL 人体关节]
-    I4[SOMA 骨架<br/>可选]
+  subgraph inputs["参考模态 并行 encoder"]
+    I1["G1 关节轨迹"]
+    I2["Teleop 头+双腕 3-point"]
+    I3["SMPL 人体关节"]
+    I4["SOMA 骨架 可选"]
   end
 
-  subgraph core["universal-token 策略 · 50 Hz"]
-    ENC[专用 Encoder 族]
-    FSQN[FSQ → 64-d token]
-    DEC[共享 Decoder]
+  subgraph core["universal-token 策略 50 Hz"]
+    ENC["专用 Encoder 族"]
+    FSQN["FSQ to 64-d token"]
+    DEC["共享 Decoder"]
   end
 
   subgraph out["执行"]
-    ACT[29-DoF G1 关节动作]
+    ACT["29-DoF G1 关节动作"]
   end
 
   I1 --> ENC
