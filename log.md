@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-20] ingest | sources/sites/chingmu.md — 青瞳视觉光学动捕全栈与 MotionDecode 数据计划；wiki/entities/chingmu.md；交叉更新 notable-commercial-robot-platforms
+
 ## [2026-07-19] ingest | sources/sites/roboscience.md — RoboScience VLOA/Visics/RoboMirage；wiki/entities/roboscience-vloa.md；交叉更新 generative-world-models / vla / manipulation
 
 ## [2026-07-19] ingest | sources/papers/humi_arxiv_2602_06643.md — HuMI 无机器人人形全身操作；wiki/entities/paper-notebook-humanoid-manipulation-interface.md；交叉更新 wiki/entities/paper-halomi-humanoid-loco-manipulation.md

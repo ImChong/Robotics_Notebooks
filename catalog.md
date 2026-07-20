@@ -55,6 +55,7 @@
 - [CARLA](wiki/entities/carla.md) — CARLA**（Car Learning to Act）是面向 **自动驾驶** 研究的开源 **城市驾驶仿真器**，以 Unreal Engine 提供高保真视觉与物理交互环境。 `📅unknown` `[entity_page]`
 - [Cartographer](wiki/entities/cartographer.md) — Cartographer** 是 Google 开源的 **子图 SLAM** 系统，支持 2D/3D 激光与多传感器配置。 `📅unknown` `[entity_page]`
 - [Caveman](wiki/entities/caveman.md) — Caveman** 是 JuliusBrussee/caveman 仓库分发的 **编码代理输出压缩技能/插 `📅unknown` `[entity_page]`
+- [青瞳视觉（CHINGMU Vision）](wiki/entities/chingmu.md) — 青瞳视觉**（en.chingmu.com，上海青瞳视觉科技有限公司）是国内 **光学动作捕捉（MoCap）全栈自研** 供应商：自 **20 `📅unknown` `[entity_page]`
 - [Cosmos 3（NVIDIA 全模态世界模型）](wiki/entities/cosmos-3.md) — Cosmos 3**（2026-06，arXiv:2606.02800，[项目页](https://research.nvi `📅unknown` `[entity_page]`
 - [Crazyflie Firmware](wiki/entities/crazyflie-firmware.md) — crazyflie-firmware**（[bitcraze/crazyflie-firmware](https://github.com/bitcraze/crazyflie-firmware `📅unknown` `[entity_page]`
 - [Crazyswarm2](wiki/entities/crazyswarm2.md) — Crazyswarm2**（IMRCLab/crazyswarm2）在 **[Crazyflie 固件](./c `📅unknown` `[entity_page]`
