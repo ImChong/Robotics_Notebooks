@@ -248,6 +248,8 @@ flowchart TD
 - [OmniRetarget（论文实体）](../entities/paper-hrl-stack-03-omniretarget.md) / [holosoma](../entities/holosoma.md) — 交互保留重定向与 loco-manipulation 参考数据生成
 - [ResMimic（论文实体）](../entities/paper-resmimic.md) — GMT 预训练 + 残差后训练的全身 loco-manipulation（arXiv:2510.05070）
 - [VisualMimic（论文实体）](../entities/paper-notebook-visualmimic.md) — 视觉分层 sim2real + 关键点 tracker 全身 loco-manipulation（arXiv:2509.20322）
+- [视觉特权表征运球（论文实体）](../entities/paper-vision-dribbling-humanoid-soccer-privileged-representation.md) — RMA 式深度蒸馏 + 对手感知运球（arXiv:2607.12702，Booster T1 仿真）
+- [语义音频驱动 WBC（论文实体）](../entities/paper-semantic-audio-wbc-humanoid.md) — 音频指纹/语音语义在线调度 BeyondMimic 技能库（arXiv:2607.14182，G1 真机）
 - [Motion Retargeting](../concepts/motion-retargeting.md) — 人形搬运/攀台等技能的上游映射层
 - [DiT4DiT（论文实体）](../entities/paper-dit4dit-video-action-model.md) — 双 DiT 联合 VAM，G1 全身 loco-manip 前序（arXiv:2603.10448）
 - [MotionWAM（论文实体）](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) — 实时 WAM + 统一全身 token 的人形 loco-manip（arXiv:2606.09215）

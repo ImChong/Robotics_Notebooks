@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-20] ingest | sources/papers/roller_skating_amp_arxiv_2607_10815.md + vision_dribbling + semantic_audio_wbc — 三篇 arXiv:2607 论文入库；wiki/entities/paper-roller-skating-amp-humanoid-passive-wheels.md、paper-vision-dribbling-humanoid-soccer-privileged-representation.md、paper-semantic-audio-wbc-humanoid.md；交叉 humanoid-soccer
+
 ## [2026-07-20] structural | Top-50 论文枢纽有代码缺图补齐 — 19 页源码运行时序图 + RPL/PILOT 开源状态
 
 - 范围：`exports/hub-rankings.json` paper 榜 Top-50 中「有官方代码信号且缺 mermaid 时序图」的节点

@@ -1,13 +1,22 @@
 {
   "generated_at": "2026-07-20",
-  "node_count": 1692,
-  "edge_count": 13573,
+  "node_count": 1695,
+  "edge_count": 13591,
   "coverage": {
-    "covered": 1642,
-    "total": 1672,
+    "covered": 1645,
+    "total": 1675,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-roller-skating-amp-humanoid-passive-wheels.md",
+      "detail_id": "entity-paper-roller-skating-amp-humanoid-passive-wheels",
+      "label": "被动轮人形轮滑 AMP（Tsinghua）",
+      "type": "entity",
+      "recency": "2026-07-20",
+      "source": "log.md",
+      "action": "added"
+    },
     {
       "path": "wiki/methods/sonic-motion-tracking.md",
       "detail_id": "wiki-methods-sonic-motion-tracking",
@@ -166,8 +175,7 @@
       "recency": "2026-07-18",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/kicad.md",
@@ -200,44 +208,33 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/altium-designer.md",
-      "detail_id": "entity-altium-designer",
-      "label": "Altium Designer",
-      "type": "entity",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/methods/sonic-motion-tracking.md",
-    "detail_id": "wiki-methods-sonic-motion-tracking",
-    "label": "SONIC（规模化运动跟踪人形控制）",
-    "type": "method",
+    "path": "wiki/entities/paper-roller-skating-amp-humanoid-passive-wheels.md",
+    "detail_id": "entity-paper-roller-skating-amp-humanoid-passive-wheels",
+    "label": "被动轮人形轮滑 AMP（Tsinghua）",
+    "type": "entity",
     "recency": "2026-07-20",
     "source": "log.md",
-    "action": "maintained",
-    "has_repo": true
+    "action": "added"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 319
-    },
-    {
-      "label": "模仿学习",
-      "size": 182
+      "size": 324
     },
     {
       "label": "人形论文深读笔记",
-      "size": 178
+      "size": 179
     },
     {
       "label": "移动操作",
-      "size": 176
+      "size": 172
+    },
+    {
+      "label": "模仿学习",
+      "size": 165
     },
     {
       "label": "全身控制",
@@ -245,7 +242,7 @@
     },
     {
       "label": "仿真到现实",
-      "size": 84
+      "size": 85
     }
   ],
   "top_hubs": [
@@ -260,7 +257,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 296,
+      "degree": 297,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -268,7 +265,7 @@
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
-      "degree": 280,
+      "degree": 284,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
@@ -288,18 +285,18 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
-      "degree": 237
-    },
-    {
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 236,
+      "degree": 238,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "degree": 238
     },
     {
       "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",
@@ -312,7 +309,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 179,
+      "degree": 180,
       "has_repo": true,
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
@@ -336,7 +333,7 @@
       "detail_id": "wiki-methods-beyondmimic",
       "label": "BeyondMimic",
       "type": "method",
-      "degree": 53,
+      "degree": 54,
       "has_repo": true,
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
