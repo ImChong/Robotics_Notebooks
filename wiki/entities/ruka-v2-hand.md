@@ -3,13 +3,14 @@
 type: entity
 tags: [manipulation, dexterous-hand, hardware, open-source, tendon-driven, teleoperation, imitation-learning, nyu]
 status: complete
-updated: 2026-06-13
+updated: 2026-07-20
 related:
   - ../tasks/manipulation.md
   - ../tasks/teleoperation.md
   - ../queries/dexterous-data-collection-guide.md
   - ./paper-notebook-ruka-rethinking-the-design-of-humanoid-hands-wit.md
   - ./orca-hand.md
+  - ./midas-hand.md
   - ./allegro-hand.md
   - ./en02-op.md
 sources:
@@ -86,6 +87,7 @@ flowchart LR
 | RUKA v1 | ✓ | 约 1.3K USD | 11 | 0 | 腱 |
 | ORCA | ✓ | 约 3.5K USD | 17 | 1 | 腱 |
 | RUKA-v2 | ✓ | 约 1.5K USD | 16 | 2 | 腱 |
+| MIDAS Hand | ✓ | <3K USD | 13 | 0 | 直驱 + DTA |
 | Wuji Hand | ✗ | 约 5.5K USD | 20 | 0 | 直驱 |
 | Sharpa Wave | ✗ | 约 50K USD | 22 | 0 | 直驱 |
 
@@ -102,6 +104,7 @@ flowchart LR
 - [灵巧操作数据采集指南](../queries/dexterous-data-collection-guide.md) — 开源手 + 视觉重定向选型
 - [RUKA v1（Paper Notebooks 待深读）](./paper-notebook-ruka-rethinking-the-design-of-humanoid-hands-wit.md)
 - [Orca Hand](./orca-hand.md) — 另一类开源腱驱动仿手
+- [MIDAS Hand](./midas-hand.md) — 直驱 + 密集触觉开源对照
 - [Allegro Hand](./allegro-hand.md) — 直驱科研平台对照
 
 ## 推荐继续阅读

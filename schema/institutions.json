@@ -306,6 +306,12 @@
         "ucsd"
       ]
     },
+    "ucla": {
+      "label": "加州大学洛杉矶分校（UCLA）",
+      "aliases": [
+        "ucla"
+      ]
+    },
     "genesis-ai": {
       "label": "创世纪 AI（Genesis AI）",
       "aliases": [
