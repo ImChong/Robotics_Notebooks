@@ -12,6 +12,7 @@ related:
   - ./orca-hand.md
   - ./midas-hand.md
   - ./allegro-hand.md
+  - ./handroid.md
   - ./en02-op.md
 sources:
   - ../../sources/papers/ruka_v2_arxiv_2603_26660.md
@@ -106,6 +107,7 @@ flowchart LR
 - [Orca Hand](./orca-hand.md) — 另一类开源腱驱动仿手
 - [MIDAS Hand](./midas-hand.md) — 直驱 + 密集触觉开源对照
 - [Allegro Hand](./allegro-hand.md) — 直驱科研平台对照
+- [Handroid](./handroid.md) — 桌面双形态平台（手 / 人形滑轨重配置；CAD 已公开）
 
 ## 推荐继续阅读
 
