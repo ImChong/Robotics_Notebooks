@@ -134,4 +134,4 @@
 ### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：1664/1694 (98%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1665/1695 (98%) wiki/entity 页有 ingest 来源
