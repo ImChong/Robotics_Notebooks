@@ -2,10 +2,11 @@
 type: entity
 tags: [humanoid, teleoperation, vr, entertainment-robotics, sports, unitree]
 status: complete
-updated: 2026-06-28
+updated: 2026-07-20
 related:
   - ./unitree-g1.md
   - ./unitree.md
+  - ./urkl.md
   - ./paper-notebook-robostriker.md
   - ../tasks/teleoperation.md
   - ../methods/open-duck-mini.md
@@ -38,7 +39,7 @@ summary: "REK（Robot Embodied Kombat）是以 VR 遥操作 Unitree 人形进行
 - **消费级人形的「非科研」出口：** 在 [Unitree G1](./unitree-g1.md) 大量用于 RL / loco-manip 研究的语境下，REK 证明同一硬件可支撑 **高冲击、高曝光** 的娱乐产品化路径。
 - **VR 遥操作的极限场景：** 与桌面操作或家务示教不同，格斗要求 **低延迟全身映射、抗摔打与紧急停机**——是 [Teleoperation](../tasks/teleoperation.md) 谱系中 **竞技向** 的极端数据点。
 - **自主 vs 人类 pilot 对照轴：** 学术侧 [RoboStriker](./paper-notebook-robostriker.md) 走 **双智能体 RL 自主拳击**；REK 走 **人类策略 + 机器人执行**——同一「人形拳击」任务的两条技术路线，选型与评测指标完全不同。
-- **中美产业叙事并列：** 2026 年前后中国 **Engine AI** 等亦推人形格斗联赛；REK 以 **embodied VR 选手** 与 **Unitree 硬件生态** 形成可对照的西方现场赛事样本。
+- **中美产业叙事并列：** 2026 年前后中国 **[URKL](./urkl.md)**（EngineAI · 自主算法 + 统一 T800）与 REK 形成对照；REK 以 **embodied VR 选手** 与 **Unitree 硬件生态** 形成西方现场赛事样本。
 
 ## 流程总览
 
@@ -108,6 +109,7 @@ flowchart LR
 - [Unitree](./unitree.md) — 硬件供应链与 SDK 生态
 - [Teleoperation](../tasks/teleoperation.md) — VR 全身映射的任务谱系
 - [RoboStriker](./paper-notebook-robostriker.md) — 自主人形拳击 RL 研究对照
+- [URKL](./urkl.md) — 中国 EngineAI 标准化 T800 **自主算法** 格斗联赛对照
 - [Open Duck Mini](./open-duck-mini.md) — 另一条 **娱乐向双足** 开源硬件路线（DIY vs 量产 G1 租赁）
 
 ## 参考来源

@@ -825,6 +825,13 @@
         "elephantrobotics"
       ]
     },
+    "engineai": {
+      "label": "众擎机器人（ENGINEAI）",
+      "aliases": [
+        "engineai",
+        "zhongqing-robotics"
+      ]
+    },
     "robotis": {
       "label": "乐百机器人（ROBOTIS）",
       "aliases": [
