@@ -3,9 +3,10 @@ type: method
 tags: [paper, humanoid, imitation-learning, motion-tracking, foundation-model, nvidia, vla, teleoperation, rl, motion-control, bfm, behavior-foundation-model, loco-manipulation, body-system-stack, loco-manip-161-survey]
 status: complete
 date: 2026-05-14
-updated: 2026-07-18
+updated: 2026-07-20
 arxiv: "2511.07820"
 venue: "2025 · arXiv"
+code: https://github.com/NVlabs/GR00T-WholeBodyControl
 related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-01-motion-base-wbt.md
@@ -40,6 +41,7 @@ related:
   - ./gentlehumanoid-motion-tracking.md
 sources:
   - ../../sources/repos/sonic-humanoid-motion-tracking.md
+  - ../../sources/repos/gr00t_wholebodycontrol.md
   - ../../sources/papers/humanoid_rl_stack_17_sonic_supersizing_motion_tracking_for_natural_hu.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md
@@ -52,7 +54,7 @@ sources:
   - ../../sources/papers/loco_manip_161_survey_103_sonic.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
   - ../../sources/papers/humanoid_loco_manip_161_catalog.md
-summary: "SONIC 通过规模化运动跟踪监督训练通用人形策略，把海量 MoCap 帧上的轨迹跟踪当作预训练任务；以统一 token 接口接入 VR、视频、文本、音乐与 VLA（如 GR00T N1.5 演示），并可桥接实时运动学规划器做交互式导航与风格化步态。"
+summary: "SONIC 通过规模化运动跟踪监督训练通用人形策略，把海量 MoCap 帧上的轨迹跟踪当作预训练任务；以统一 token 接口接入 VR、视频、文本、音乐与 VLA（如 GR00T N1.5 演示），并可桥接实时运动学规划器做交互式导航与风格化步态。官方训练/部署代码在 NVlabs/GR00T-WholeBodyControl，权重见 HF nvidia/GEAR-SONIC。"
 ---
 
 # SONIC（规模化运动跟踪人形控制）
@@ -84,6 +86,10 @@ SONIC（*Supersizing Motion Tracking for Natural Humanoid Whole-Body Control*）
 | 机构 | NVIDIA（GEAR Lab 等）；CMU 等合作者 |
 | arXiv 版本 | v1 2025-11-11 → v2 2025-12-04 → v3 2026-05-21 |
 | 项目页 | <https://nvlabs.github.io/GEAR-SONIC/>（别名 <https://nvlabs.github.io/SONIC/>） |
+| 代码 | <https://github.com/NVlabs/GR00T-WholeBodyControl>（`gear_sonic` 训练 + `gear_sonic_deploy` 部署） |
+| 权重 | <https://huggingface.co/nvidia/GEAR-SONIC> |
+| 数据 | <https://huggingface.co/datasets/bones-studio/seed>（BONES-SEED） |
+| 文档 | <https://nvlabs.github.io/GR00T-WholeBodyControl/> |
 
 论文摘要口径的三个关键量：**1 亿+ MoCap 帧（约 700 小时）** 的密集轨迹监督、网络容量 **1.2M→42M 参数** 的扩展区间、约 **2.1 万 GPU 小时** 训练算力；结论是性能随算力与数据多样性 **稳步改善**，且学到的策略 **泛化到未见动作**。接口侧的一个具体细节：单一策略经 **专用编码器 → 统一 token 空间**，同时处理 **机器人运动、人体运动与混合运动** 三类指令的 **共享潜表征**——这也是 VR / 视频 / 文本 / 音乐 / VLA 能共用同一低层的原因。
 
@@ -140,7 +146,7 @@ SONIC（*Supersizing Motion Tracking for Natural Humanoid Whole-Body Control*）
 | **下游** | **实时运动学规划器** 与 tracking 衔接，支持导航与多样步态 / 姿态；**统一 token 空间** 同时服务 VR 遥操作与 **VLA**（演示为 GR00T N1.5）。 |
 | **遥操作** | 视频 + GEM 姿态估计；VR **三点**上身 + 规划器下身；VR **全身** 追踪。 |
 | **多模态条件** | 音乐 / 文本经 GEM 生成人体运动，再由策略跟踪。 |
-| **开源预期** | 官网写明展示涉及模型将发布（以 GitHub / 模型卡实际更新为准）。 |
+| **已开源** | 训练/部署代码在 [GR00T-WholeBodyControl](https://github.com/NVlabs/GR00T-WholeBodyControl)；权重 [HF GEAR-SONIC](https://huggingface.co/nvidia/GEAR-SONIC)；动捕子集 [BONES-SEED](https://huggingface.co/datasets/bones-studio/seed)（2026-07-20 项目页/文档站核查）。 |
 
 ## 流程总览（Mermaid）
 
@@ -202,7 +208,44 @@ flowchart LR
   E --> C --> R
 ```
 
-上图强调 **模块边界**：GEM / VLA / 规划器位于「生成或规划参考运动」一侧；SONIC 负责在动力学与接触约束下 **高频率跟踪**；具体观测栈、控制频率与接口字段以论文与后续开源代码为准。
+上图强调 **模块边界**：GEM / VLA / 规划器位于「生成或规划参考运动」一侧；SONIC 负责在动力学与接触约束下 **高频率跟踪**；具体观测栈、控制频率与接口字段以论文与 [官方文档站](https://nvlabs.github.io/GR00T-WholeBodyControl/) 为准。
+
+## 源码运行时序图
+
+官方实现落在 [NVlabs/GR00T-WholeBodyControl](https://github.com/NVlabs/GR00T-WholeBodyControl)：`gear_sonic/` 负责 Isaac Lab 侧数据处理与 PPO 训练，`gear_sonic_deploy/` 负责 ONNX / TensorRT C++ 推理与真机 / MuJoCo sim2sim。权重与 SMPL 样本经 `download_from_hf.py` 从 [HF `nvidia/GEAR-SONIC`](https://huggingface.co/nvidia/GEAR-SONIC) 拉取；大规模参考动作用 [BONES-SEED](https://huggingface.co/datasets/bones-studio/seed) G1 CSV 转成 motion lib。一次完整「数据 → 训练 → 评测 → 部署」模块交互如下（命令与路径以仓库 README / Training Guide / Quick Start 为准；工程仓总览见 [GR00T-WholeBodyControl](../entities/gr00t-wholebodycontrol.md)）：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户
+    participant HF as Hugging Face<br/>GEAR-SONIC · BONES-SEED
+    participant DP as gear_sonic/data_process<br/>convert · filter
+    participant TR as gear_sonic/<br/>train_agent_trl.py
+    participant LAB as Isaac Lab<br/>并行环境
+    participant EV as gear_sonic/<br/>eval_agent_trl.py
+    participant DEP as gear_sonic_deploy/<br/>deploy.sh
+    participant SIM as MuJoCo run_sim_loop<br/>或 Unitree G1 真机
+    U->>HF: download_from_hf.py --training<br/>（checkpoint + SMPL）
+    U->>HF: 下载 BONES-SEED G1 CSV
+    U->>DP: convert_soma_csv_to_motion_lib.py<br/>→ filter_and_copy_bones_data.py
+    DP-->>TR: data/motion_lib_bones_seed/robot_filtered
+    U->>TR: train_agent_trl.py<br/>+exp=…/sonic_release
+    loop PPO / TRL 迭代
+        TR->>LAB: 批量动作（统一 token 跟踪）
+        LAB-->>TR: 观测 + 跟踪奖励 / 误差
+        TR->>TR: 策略更新 · 写 checkpoint
+    end
+    U->>EV: eval_agent_trl.py<br/>+checkpoint=sonic_release/last.pt
+    EV->>LAB: 加载策略与参考 motion lib
+    EV-->>U: 指标 / 渲染视频
+    U->>DEP: deploy.sh sim 或 real<br/>（ONNX / TensorRT）
+    DEP->>SIM: 50 Hz 策略推理 · 多速率命令环
+    SIM-->>DEP: 本体 / 深度等观测
+    DEP-->>U: 键盘 / VR / ZMQ 接口控制
+```
+
+- **训练与部署解耦**：Isaac Lab Python 环境只跑 `gear_sonic`；真机 / sim2sim 走独立 C++ 栈与（可选）Docker，权重格式从 PyTorch checkpoint 导出到部署用 ONNX。
+- **统一 token 接口不变**：换 VR / 视频 / 规划器 / VLA 上游只换 encoder，不重训整条低层 tracking policy——与上文「多上游 → token → 全身执行」流程图一致。
 
 ## 主要技术路线
 
@@ -217,7 +260,7 @@ flowchart LR
 - **不是万能仿真替身**：跟踪器只能在其训练分布与机器人动力学对齐的范围内泛化；极端杂技或强接触任务仍可能失败。
 - **跳过重定向的前提**：ExoActor 显示「人体轨迹 → SONIC」可优于某些 SMPL→机器人重定向流水线，但不等于所有平台都应丢弃重定向（参见 [GMR](./motion-retargeting-gmr.md) 讨论）。
 - **硬件差异**：同一策略在不同人形硬件上仍需适配观测与动作映射。
-- **演示与论文的边界**：官网视频突出系统集成；**可重复协议、随机种子与定量对比**仍以论文与后续开源实验脚本为准。
+- **演示与论文的边界**：官网视频突出系统集成；**可重复协议、随机种子与定量对比**仍以论文与仓库 `eval_agent_trl.py` / 文档站评测脚本为准。
 
 ## 与其他页面的关系
 
@@ -226,6 +269,7 @@ flowchart LR
 - [Imitation Learning](./imitation-learning.md)：大规模跟踪可视为广义的演示驱动学习。
 - [VLA](./vla.md)：SONIC 可作为低层执行器与 VLA 堆叠时的接口参考。
 - [Teleoperation](../tasks/teleoperation.md)：VR / 视频遥操作与规划器下身的工程组合参考。
+- [GR00T-WholeBodyControl](../entities/gr00t-wholebodycontrol.md)：官方训练 / 部署单仓与文档站入口。
 - [Zhengyi Luo（罗正宜）](../entities/zhengyi-luo.md)：论文共同一作与项目核心贡献者之一，主页汇总 SONIC 与相邻人形工作入口。
 - [GentleHumanoid](./gentlehumanoid-motion-tracking.md)：同属 motion tracking 族，但显式优化 **上半身柔顺与可调接触力**，可与 SONIC 的规模化刚性跟踪对照阅读。
 - [Humanoid-GPT](../entities/paper-humanoid-gpt.md)：2B 帧 + Transformer 蒸馏路线；站点直接与 SONIC 对比 daily/dance/高动态/平衡四类行为。
@@ -239,6 +283,8 @@ flowchart LR
 - [机器人论文阅读笔记：SONIC Supersizing Motion Tracking for Natural Humanoid Control](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/SONIC_Supersizing_Motion_Tracking_for_Natural_Humanoid_Control/SONIC_Supersizing_Motion_Tracking_for_Natural_Humanoid_Control.html)
 - 论文：<https://arxiv.org/abs/2511.07820>
 - 项目页：<https://nvlabs.github.io/GEAR-SONIC/>（别名 <https://nvlabs.github.io/SONIC/>）
+- 代码：<https://github.com/NVlabs/GR00T-WholeBodyControl>
+- 权重：<https://huggingface.co/nvidia/GEAR-SONIC>
 - GEM / GENMO：<https://research.nvidia.com/labs/dair/genmo/>
 - [42 篇 RL 运动控制（微信公众号）](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA)
 - [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) — 完整列表与数据集表
@@ -247,6 +293,7 @@ flowchart LR
 ## 参考来源
 
 - [SONIC（规模化人体运动跟踪驱动的人形全身控制）](../../sources/repos/sonic-humanoid-motion-tracking.md)
+- [GR00T-WholeBodyControl 仓归档](../../sources/repos/gr00t_wholebodycontrol.md) — 官方训练/部署单仓
 - [humanoid_rl_stack_17_sonic_supersizing_motion_tracking_for_natural_hu.md](../../sources/papers/humanoid_rl_stack_17_sonic_supersizing_motion_tracking_for_natural_hu.md) — 42 篇栈策展摘录
 - [humanoid_rl_stack_42_catalog.md](../../sources/papers/humanoid_rl_stack_42_catalog.md) — 42 篇总表
 - [bfm_awesome_sonic_arxiv_2511_07820.md](../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md) — awesome-bfm 策展摘录
@@ -260,8 +307,10 @@ flowchart LR
 - [motion_cerebellum_64_catalog.md](../../sources/papers/motion_cerebellum_64_catalog.md) — 运动小脑 64 篇总表
 - [wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md) — 运动小脑微信公众号编译导读
 - 原始抓取：[wechat_humanoid_rl_42_survey_2026-05-26.md](../../sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md)
-- NVIDIA SONIC 项目页 — <https://nvlabs.github.io/GEAR-SONIC/>（页面内摘要、方法段落与演示分区，2026-05-14 抓取对照）
-- arXiv 摘要与版本页 — <https://arxiv.org/abs/2511.07820>（v3，2026-05-21；作者名单、规模量级与统一潜表征叙述，2026-07-11 对照）
+- NVIDIA SONIC 项目页 — <https://nvlabs.github.io/GEAR-SONIC/>（页面内摘要、方法段落与演示分区；2026-07-20 再核源码入口）
+- 官方代码 / 文档 — <https://github.com/NVlabs/GR00T-WholeBodyControl> · <https://nvlabs.github.io/GR00T-WholeBodyControl/>
+- 权重与数据 — <https://huggingface.co/nvidia/GEAR-SONIC> · <https://huggingface.co/datasets/bones-studio/seed>
+- arXiv 摘要与版本页 — <https://arxiv.org/abs/2511.07820>（v3，2026-05-21；作者名单、规模量级与统一潜表征叙述；正文写明 Code is available at GR00T-WholeBodyControl）
 
 ## 关联页面
 

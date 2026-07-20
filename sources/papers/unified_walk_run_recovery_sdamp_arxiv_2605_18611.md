@@ -10,6 +10,7 @@
 - **机构：** The University of Hong Kong（Yidan Lu, Yichao Zhong, Liu Zhao, Wanyue Li；通讯作者 Peng Lu）
 - **硬件：** Unitree G1（真机验证，无部署期显式模式切换）
 - **入库日期：** 2026-05-25
+- **开源状态（2026-07-20 再核）：** 论文 HTML / abs **无** 官方 GitHub；工程侧统一 walk/run/recovery 对照见 [AMP_mjlab](../repos/amp_mjlab.md)（非本文双判别器实现）。
 - **一句话说明：** 用**状态相关 AMP（SD-AMP）**在训练期按投影重力门控切换 recovery / 速度条件 locomotion 两个判别器，**三条 LAFAN1 参考片段**即可让**单一策略**在 G1 上统一走、跑与俯卧/仰卧起身，部署为 50 Hz 冻结 ONNX、无运行时 FSM。
 
 ## 摘要级要点

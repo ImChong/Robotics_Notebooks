@@ -12,7 +12,7 @@ tags:
   - real-time-control
   - unified-action-space
 status: complete
-updated: 2026-07-16
+updated: 2026-07-20
 arxiv: "2606.09215"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
@@ -120,6 +120,14 @@ flowchart TB
 - **误区：** 把 MotionWAM 等同于「任意视频生成 + 人形头」；关键是 **单次前向隐状态条件化** 与 **SONIC 统一 token**，而非追求像素级未来帧质量。
 - **误区：** 认为 VLA 微调演示即可覆盖全身 loco-manip；论文显示 **Qwen3DiT**（容量匹配、仅换 VLM 先验）在 **locomotion-heavy** 任务上接近 **零成功率**。
 - **局限：** 目前仅在 **G1** 上验证三阶段配方；**严格新物体 OOD** 未报告；**单目 egocentric** 在物体出视野或头摄漂移时易失稳（见论文 Failure Cases）。
+
+## 开源状态（项目页核查，2026-07-20）
+
+| 资源 | 状态 |
+|------|------|
+| arXiv | <https://arxiv.org/abs/2606.09215> |
+| 项目页 / 代码 | **未发现**公开项目页或 GitHub（abs / HTML 均无 Code 链；Awesome-WAM 等第三方列表亦无官方仓） |
+| 源码运行时序图 | **不适用**（无官方可运行仓）；低层解码依赖已开源的 [SONIC / GR00T-WholeBodyControl](../methods/sonic-motion-tracking.md) |
 
 ## 方法栈
 

@@ -9,6 +9,27 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/methods/sonic-motion-tracking.md",
+      "detail_id": "wiki-methods-sonic-motion-tracking",
+      "label": "SONIC（规模化运动跟踪人形控制）",
+      "type": "method",
+      "recency": "2026-07-20",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-behavior-foundation-model-humanoid.md",
+      "detail_id": "entity-paper-behavior-foundation-model-humanoid",
+      "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
+      "type": "entity",
+      "recency": "2026-07-20",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
       "path": "wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md",
       "detail_id": "entity-paper-actuator-constrained-rl-high-speed-quadruped-locomotion",
       "label": "执行器约束 RL 高速四足奔跑（MOR）",
@@ -189,38 +210,17 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/concepts/field-oriented-control.md",
-      "detail_id": "wiki-concepts-field-oriented-control",
-      "label": "磁场定向控制（Field Oriented Control, FOC）",
-      "type": "concept",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/comparisons/robot-control-eight-paradigms-taxonomy.md",
-      "detail_id": "wiki-comparisons-robot-control-eight-paradigms-taxonomy",
-      "label": "八大机器人控制体系分类",
-      "type": "comparison",
-      "recency": "2026-07-18",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md",
-    "detail_id": "entity-paper-actuator-constrained-rl-high-speed-quadruped-locomotion",
-    "label": "执行器约束 RL 高速四足奔跑（MOR）",
-    "type": "entity",
+    "path": "wiki/methods/sonic-motion-tracking.md",
+    "detail_id": "wiki-methods-sonic-motion-tracking",
+    "label": "SONIC（规模化运动跟踪人形控制）",
+    "type": "method",
     "recency": "2026-07-20",
     "source": "log.md",
-    "action": "added",
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "action": "maintained",
+    "has_repo": true
   },
   "top_communities": [
     {
