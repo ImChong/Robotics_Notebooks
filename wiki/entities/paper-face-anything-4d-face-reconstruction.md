@@ -10,6 +10,7 @@ related:
   - ../queries/humanoid-training-data-pipeline.md
   - ../entities/gvhmr.md
   - ../entities/vision-banana.md
+  - ./gnm-head.md
   - ../tasks/teleoperation.md
 sources:
   - ../../sources/papers/face_anything_arxiv_2604_19702.md
@@ -41,7 +42,7 @@ summary: "Face Anything（arXiv:2604.19702，TUM + 华为诺亚方舟）用 cano
 - **统一任务表述：** 传统动态人脸管线常把 **重建** 与 **跟踪** 拆成优化或两阶段模块；Face Anything 用 **规范坐标图** 把二者合并为 **单次前馈**，降低长序列误差累积与工程拼接成本。
 - **前馈几何复兴（面部专用）：** 与 [Depth Anything 3](https://github.com/DepthAnything/Depth-Anything-V3)、VGGT、Pi3 等 **通用前馈 3D** 并列，但针对 **非刚性面部** 引入 **FLAME 规范空间** 监督，在面部深度/对应上专精。
 - **机器人/遥操作相关上游：** 全身重定向默认走 [GVHMR](./gvhmr.md) 等 **SMPL 恢复**；**表情丰富的面部 telepresence / 数字人驱动** 需要独立的 **面部 4D 对应**（见 [遥操作](../tasks/teleoperation.md) 与 [humanoid-training-data-pipeline](../queries/humanoid-training-data-pipeline.md)）。Face Anything 提供 **任意图像序列 → 时序一致面部几何+跟踪** 的候选模块。
-- **数据工程可复用：** 基于 **NeRSemble 多视角 + COLMAP + FLAME** 的 canonical map 合成流程，对构建 **面部稠密对应** 监督有参考价值。
+- **数据工程可复用：** 基于 **NeRSemble 多视角 + COLMAP + FLAME** 的 canonical map 合成流程，对构建 **面部稠密对应** 监督有参考价值；参数化头脸先验也可对照 [GNM Head](./gnm-head.md)（Google 开源 3DMM，Apache 2.0）。
 
 ## 核心机制
 
@@ -111,6 +112,7 @@ flowchart TB
 ## 与其他页面的关系
 
 - [GVHMR](./gvhmr.md) — **全身** 单目视频→SMPL；Face Anything 覆盖 **面部 4D** 分支
+- [GNM Head](./gnm-head.md) — 参数化头脸统计模型（生成式先验，非单目 HMR）
 - [Vision Banana](./vision-banana.md) — 另一路 **前馈 3D 感知**（分割/深度/法线）；面部动态对应未覆盖
 - [视觉表征作为策略输入](../concepts/visual-representation-for-policy.md) — 机器人策略如何选择 **前馈几何/对应** 上游
 - [生成式视觉预训练](../concepts/generative-vision-pretraining.md) — 前馈 3D 与生成式统一感知范式背景

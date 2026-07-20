@@ -11,6 +11,7 @@ related:
   - ./ruka-v2-hand.md
   - ./orca-hand.md
   - ./allegro-hand.md
+  - ./mediapipe.md
 sources:
   - ../../sources/papers/midas_hand_arxiv_2607_14487.md
   - ../../sources/repos/midas-hand-org.md
@@ -105,6 +106,7 @@ flowchart LR
 - [RUKA-v2 Hand](./ruka-v2-hand.md) — 更低成本腱驱动开源对照
 - [Orca Hand](./orca-hand.md) — 另一类开源仿手
 - [Allegro Hand](./allegro-hand.md) — 商业科研直驱平台对照
+- [MediaPipe](./mediapipe.md) — `midas_hand_teleop` 默认摄像头手部感知上游
 
 ## 推荐继续阅读
 
