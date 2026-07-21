@@ -2,7 +2,7 @@
 type: concept
 tags: [vit, vision-transformer, computer-vision, deep-learning, perception, backbone]
 status: complete
-updated: 2026-07-05
+updated: 2026-07-21
 related:
   - ../comparisons/cnn-vs-vit-backbones.md
   - ./vision-backbones.md
@@ -10,8 +10,10 @@ related:
   - ./generative-vision-pretraining.md
   - ../methods/unified-multimodal-tokens.md
   - ../queries/perception-backbone-selection.md
+  - ../entities/paper-turingvit.md
 sources:
   - ../../sources/blogs/wechat_human_five_vit_intro.md
+  - ../../sources/papers/turingvit_arxiv_2606_24253.md
 summary: "Vision Transformer 将图像切为 patch token，以全局自注意力替代卷积堆叠，经仅编码器栈与 class token 完成分类；大数据下 scaling 优异，是 VLM/VLA 视觉塔与多模态统一架构的基础模块。"
 ---
 
@@ -119,13 +121,16 @@ flowchart LR
 - [视觉骨干](../concepts/vision-backbones.md)：预训练 → 检测/VLA 链条
 - [生成式视觉预训练](./generative-vision-pretraining.md)：MAE、DINOv2 等 ViT SSL
 - [感知骨干选型 query](../queries/perception-backbone-selection.md)：任务导向决策树
+- [TuringViT](../entities/paper-turingvit.md)：VLM-native **线性注意力主导** 的可定制 SOTA ViT（小鹏；配方公开、资产未开源）
 
 ## 推荐继续阅读
 
 - 原始论文：*An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale*
 - human five 配套教程：<https://github.com/VizuaraAI/Transformers-for-vision-BOOK>
 - Hugging Face 预训练权重：`google/vit-base-patch16-224`
+- TuringViT 项目页：<https://turingvit.github.io/>
 
 ## 参考来源
 
 - [wechat_human_five_vit_intro.md](../../sources/blogs/wechat_human_five_vit_intro.md) — human five 微信公众号《ViT入门》（<https://mp.weixin.qq.com/s/ugiOirWHrSgEefG8W1-o6Q>）
+- [TuringViT 论文摘录（arXiv:2606.24253）](../../sources/papers/turingvit_arxiv_2606_24253.md)

@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-21] ingest | sources/papers/turingvit+x_world+x_cache+x_foresight+x_mind + sites — 小鹏 TuringViT / X-World 系列五篇；wiki 实体页；交叉更新 WM/VLA/ViT
+
+- **开源状态：** 五篇项目页截至 2026-07-21 **均未列 GitHub/权重**（仅 arXiv / Tech Report）
+- **新建 papers：** [`sources/papers/turingvit_arxiv_2606_24253.md`](sources/papers/turingvit_arxiv_2606_24253.md)、[`sources/papers/x_world_arxiv_2603_19979.md`](sources/papers/x_world_arxiv_2603_19979.md)、[`sources/papers/x_cache_arxiv_2604_20289.md`](sources/papers/x_cache_arxiv_2604_20289.md)、[`sources/papers/x_foresight_arxiv_2605_24892.md`](sources/papers/x_foresight_arxiv_2605_24892.md)、[`sources/papers/x_mind_arxiv_2606_28758.md`](sources/papers/x_mind_arxiv_2606_28758.md)
+- **新建 sites：** [`sources/sites/turingvit-github-io.md`](sources/sites/turingvit-github-io.md)、[`sources/sites/x-world-1-github-io.md`](sources/sites/x-world-1-github-io.md)、[`sources/sites/x-cache-1-github-io.md`](sources/sites/x-cache-1-github-io.md)、[`sources/sites/x-foresight-1-github-io.md`](sources/sites/x-foresight-1-github-io.md)、[`sources/sites/xp-x-mind-github-io.md`](sources/sites/xp-x-mind-github-io.md)
+- **新建 wiki：** [`wiki/entities/paper-turingvit.md`](wiki/entities/paper-turingvit.md)、[`wiki/entities/paper-x-world.md`](wiki/entities/paper-x-world.md)、[`wiki/entities/paper-x-cache.md`](wiki/entities/paper-x-cache.md)、[`wiki/entities/paper-x-foresight.md`](wiki/entities/paper-x-foresight.md)、[`wiki/entities/paper-x-mind.md`](wiki/entities/paper-x-mind.md)
+- **交叉更新：** [`wiki/methods/generative-world-models.md`](wiki/methods/generative-world-models.md)、[`wiki/concepts/world-action-models.md`](wiki/concepts/world-action-models.md)、[`wiki/concepts/video-as-simulation.md`](wiki/concepts/video-as-simulation.md)、[`wiki/concepts/vision-transformer.md`](wiki/concepts/vision-transformer.md)、[`wiki/concepts/vision-backbones.md`](wiki/concepts/vision-backbones.md)、[`wiki/methods/vla.md`](wiki/methods/vla.md)
+
 ## [2026-07-21] ingest | sources/repos/rebot-devarm.md + sources/sites/rebot-devarm-seeed-wiki.md — Seeed reBot-DevArm 全栈开源桌面六轴臂；wiki/entities/rebot-devarm.md；交叉 lerobot / manipulation / teleoperation / stackforce / parol6；注册 seeed 机构
 
 - **开源状态：** 已开源（全栈）— 硬件 CERN-OHL-W-2.0 + 软件 Apache-2.0；OSHWA CN000024；STEP/BOM/组装 + Motorbridge / ROS2 / LeRobot / Pinocchio；RS Isaac Sim 演示仓 `Seeed-Projects/reBot-Isaacsim`

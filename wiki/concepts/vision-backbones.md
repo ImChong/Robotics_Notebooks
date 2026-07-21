@@ -7,7 +7,7 @@ tags:
   - backbone
   - deep-learning
 status: complete
-updated: 2026-07-05
+updated: 2026-07-21
 related:
   - ./vision-transformer.md
   - ./deep-learning-foundations.md
@@ -19,9 +19,11 @@ related:
   - ../entities/paper-resnet-deep-residual-learning.md
   - ../entities/paper-yolo-unified-realtime-detection.md
   - ../entities/vision-banana.md
+  - ../entities/paper-turingvit.md
 sources:
   - ../../sources/papers/resnet_arxiv_1512_03385.md
   - ../../sources/papers/vision_backbone_detection_classics.md
+  - ../../sources/papers/turingvit_arxiv_2606_24253.md
 summary: "视觉骨干是从图像提取多尺度表征的 CNN/ViT 网络；ResNet 等深度残差结构解决可训练性，并作为检测、VLA 与机器人感知策略的上游特征底座。"
 ---
 
@@ -104,6 +106,7 @@ flowchart TB
 - [YOLO v1（论文实体）](../entities/paper-yolo-unified-realtime-detection.md)
 - [生成式视觉预训练（概念）](./generative-vision-pretraining.md) — 图像生成预训练作为 FVM 新兴主线
 - [Vision Banana（实体）](../entities/vision-banana.md) — 生成基座 + instruction-tuning 实证
+- [TuringViT（论文实体）](../entities/paper-turingvit.md) — VLM-native 线性注意力 ViT；对照 SigLIP2 数据/延迟轴
 - [传感器融合](./sensor-fusion.md)
 - [三维坐标变换（形式化）](../formalizations/3d-coordinate-transforms-vision-robotics.md)
 
@@ -111,6 +114,7 @@ flowchart TB
 
 - [ResNet 论文摘录（arXiv:1512.03385）](../../sources/papers/resnet_arxiv_1512_03385.md)
 - [经典视觉骨干与检测文献簇](../../sources/papers/vision_backbone_detection_classics.md)
+- [TuringViT 论文摘录（arXiv:2606.24253）](../../sources/papers/turingvit_arxiv_2606_24253.md)
 
 ## 推荐继续阅读
 
