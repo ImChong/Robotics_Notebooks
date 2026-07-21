@@ -93,6 +93,12 @@ flowchart TB
 - **实机验证（竹林）：** 10 架掌心级四旋翼，**无 GPS**、**无动捕**、**无地面站实时控制**；通过机载深度相机检测竹竿；演示自由飞行、编队与穿越窄道。
 - **三个扩展任务（EGO-Planner-v2 仓库）：** swarm formation（队形重构）、interlaced flights（交错穿越）、multi-goal tracking（目标跟踪），验证框架通用性。
 
+## 与其他工作对比
+
+- **vs MADER / EGO-Swarm：** 这些方法只优化轨迹形状、时间分配固定；本文用 **MINCO** 将时间纳入与形状的联合优化，在最拥挤走廊场景优势最显著——后行机通过 **时间膨胀** 避让而非空间绕路，轨迹更光滑、更安全、能耗更低。
+- **vs EGO-Planner Swarm：** 是对 [EGO-Planner Swarm](./ego-planner-swarm.md)（ESDF + B-spline、时间固定）的升格，时空联合优化在密集场景收益最大。
+- **vs 室内动捕蜂群：** 相较 [Crazyswarm2](./crazyswarm2.md) 等依赖外部动捕 / 地面站的室内平台，本文强调 **无 GPS / 无动捕 / 纯机载计算** 的野外（竹林）蜂群。
+
 ## 局限与风险
 
 - **代码与硬件解耦：** EGO-Planner-v2 提供完整规划代码和仿真 playground，但 **自研掌心级硬件平台（机体、电调、主控板）设计未随代码开源**，实机复现需自行适配飞控。
