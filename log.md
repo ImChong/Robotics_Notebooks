@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-21] ingest | sources/repos/rebot-devarm.md + sources/sites/rebot-devarm-seeed-wiki.md — Seeed reBot-DevArm 全栈开源桌面六轴臂；wiki/entities/rebot-devarm.md；交叉 lerobot / manipulation / teleoperation / stackforce / parol6；注册 seeed 机构
+
+- **开源状态：** 已开源（全栈）— 硬件 CERN-OHL-W-2.0 + 软件 Apache-2.0；OSHWA CN000024；STEP/BOM/组装 + Motorbridge / ROS2 / LeRobot / Pinocchio；RS Isaac Sim 演示仓 `Seeed-Projects/reBot-Isaacsim`
+- **新建：** [`sources/repos/rebot-devarm.md`](sources/repos/rebot-devarm.md)、[`sources/sites/rebot-devarm-seeed-wiki.md`](sources/sites/rebot-devarm-seeed-wiki.md)、[`wiki/entities/rebot-devarm.md`](wiki/entities/rebot-devarm.md)
+- **机构：** `schema/institutions.json` 新增 `seeed`（矽递科技 / Seeed Studio）
+- **交叉更新：** [`wiki/entities/lerobot.md`](wiki/entities/lerobot.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`wiki/tasks/teleoperation.md`](wiki/tasks/teleoperation.md)、[`wiki/entities/stackforce.md`](wiki/entities/stackforce.md)、[`wiki/entities/parol6-source-robotics.md`](wiki/entities/parol6-source-robotics.md)
+
+
 ## [2026-07-21] ingest | sources/sites/systems_engineering_* + dds_omg_rtos_edge_ota_safety — 系统工程主题盘点：复用 CAN/EtherCAT/ROS2/UDP；新建 15 概念 + 1 专题总览
 
 - **盘点结论（已有独立节点，复用不重建）：**

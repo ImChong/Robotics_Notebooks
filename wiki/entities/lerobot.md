@@ -4,13 +4,14 @@ type: entity
 title: LeRobot (Hugging Face)
 tags: [framework, robot-learning, open-source, dataset, huggingface]
 summary: "LeRobot 是 Hugging Face 开发的具身智能全栈框架，旨在将 Transformers 生态迁移到机器人领域，支持高效数据采集与策略训练。"
-updated: 2026-07-20
+updated: 2026-07-21
 related:
   - ./paper-evo1-lightweight-vla.md
   - ./openvla.md
   - ./lingbot-vla-v2.md
   - ./lingbot-vla.md
   - ./openlet.md
+  - ./rebot-devarm.md
   - ../overview/navigation-slam-autonomy-stack.md
   - ../methods/vla.md
 ---
@@ -33,7 +34,7 @@ related:
 
 在具身智能的爆发期，LeRobot 扮演了“机器人届的 Transformers”角色：
 - **生态对齐**：通过与 Hugging Face 模型库和数据集库打通，极大降低了开发者共享和复用机器人策略（如 [diffusion-policy](../methods/diffusion-policy.md)）的门槛。
-- **开源硬件支持**：原生支持低成本开源硬件（如 Koch 机械臂、SO100/SO101），推动了“人人皆可机器人”的普及。
+- **开源硬件支持**：原生支持低成本开源硬件（如 Koch 机械臂、SO100/SO101），推动了“人人皆可机器人”的普及；社区与厂商侧亦有 [reBot-DevArm](./rebot-devarm.md)（Seeed B601）等更高负载桌面臂的官方 LeRobot 教程对接。
 - **标准化数据格式**：定义了一套高效、可扩展的具身智能数据存储标准（LeRobot v2.0+），方便不同团队之间的数据交换与 Hub 上传。
 
 ## 核心组件
@@ -100,6 +101,7 @@ flowchart LR
 - **部署/Agent OS 对照：** [DimOS（Dimensional）](./dimensionalos-dimos.md) 侧重 **现场 Module 编排、SLAM 导航、空间记忆与 MCP 自然语言控制**；与 LeRobot 的 **数据集 Hub + 策略训练** 正交，常在「训练用 LeRobot、集成用 DimOS/ROS」分层共存。
 - **无机器人双臂采集：** [HandUMI](./handumi.md) 用可穿戴手持接口 **脱离目标机器人** 采集示范，导出 **LeRobot v3 兼容** 同步数据，再重定向到 PiPER、OpenArm、TRLC-DK1、YAM 等平行夹爪双臂——降低「每台臂一套遥操作」的规模化成本。
 - **Unitree G1 官方改版：** [unitreerobotics/unitree_lerobot](https://github.com/unitreerobotics/unitree_lerobot) 在 LeRobot 上适配 G1 双臂灵巧手采数/训练/测试，常与 `xr_teleoperate`、`unitree_sim_isaaclab` 组成官方 IL 闭环；组织级导航见 [Unitree](./unitree.md)。
+- **Seeed reBot 桌面臂：** [reBot-DevArm](./rebot-devarm.md)（B601-DM / B601-RS）提供官方 Wiki 的 LeRobot 入门教程（采数 / 训练路径以 Seeed 文档为准），适合需要 **>1 kg 负载** 且仍走 LeRobot 格式的桌面操作实验。
 
 ## 常见误区
 
@@ -117,3 +119,4 @@ flowchart LR
 - [LeRobot on Hugging Face Hub](https://huggingface.co/lerobot)
 - [Cyclo Intelligence 仓库归档](../../sources/repos/cyclo_intelligence.md) — LeRobot 作为 Cyclo 推理后端之一
 - [Evo-1 论文与仓库归档](../../sources/papers/evo1_arxiv_2511_04555.md) — 官方 LeRobot 内置轻量 VLA 策略（SO100/SO101）
+- [reBot-DevArm 仓库归档](../../sources/repos/rebot-devarm.md) — Seeed 开源桌面臂官方 LeRobot 教程对接

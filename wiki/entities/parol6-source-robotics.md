@@ -2,12 +2,13 @@
 type: entity
 tags: [manipulator, open-source, parol6, source-robotics, education, ros]
 status: complete
-updated: 2026-05-18
+updated: 2026-07-21
 related:
   - ../tasks/manipulation.md
   - ../overview/robot-open-source-wechat-issue02-curator.md
   - ../concepts/ros2-basics.md
   - ./elephantrobotics-mycobot-320.md
+  - ./rebot-devarm.md
 sources:
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md
 summary: "Source Robotics PAROL6：开源桌面六轴机械臂；官网产品页、PAROL-docs 文档站与作者 PCrnjak GitHub 上的硬件/代码仓库。"
@@ -25,10 +26,12 @@ summary: "Source Robotics PAROL6：开源桌面六轴机械臂；官网产品页
 |------|----------|----------|
 | Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
 | ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+| DoF | Degrees of Freedom | 六轴臂自由度；选型时对照负载与工作空间 |
+| DIY | Do It Yourself | 社区自组装复现路径 |
 
 ## 为什么重要
 
-- **教育向开源臂补充**：与 **myCobot** 等桌面臂并列时，PAROL6 提供另一条 **硬件开源度与社区节奏** 的对比样本。
+- **教育向开源臂补充**：与 **myCobot**、[reBot-DevArm](./rebot-devarm.md) 等桌面臂并列时，PAROL6 提供另一条 **硬件开源度与社区节奏** 的对比样本。
 - **文档独立站**：`PAROL-docs` 将 **组装 / 校准 / ROS** 从营销页拆离，利于长期维护。
 
 ## 开源入口（策展摘录）
@@ -43,6 +46,7 @@ summary: "Source Robotics PAROL6：开源桌面六轴机械臂；官网产品页
 
 - [Manipulation](../tasks/manipulation.md)
 - [myCobot 320](./elephantrobotics-mycobot-320.md)
+- [reBot-DevArm](./rebot-devarm.md) — Seeed 更高负载开源桌面六轴对照
 - [ROS 2 基础](../concepts/ros2-basics.md)
 - [机器人开源宝库（微信策展第02期）索引](../overview/robot-open-source-wechat-issue02-curator.md)
 

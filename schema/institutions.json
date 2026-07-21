@@ -1210,6 +1210,14 @@
         "astribot",
         "astribot-robotics"
       ]
+    },
+    "seeed": {
+      "label": "矽递科技（Seeed Studio）",
+      "aliases": [
+        "seeed",
+        "seeed-studio",
+        "seeed-projects"
+      ]
     }
   }
 }
