@@ -3,13 +3,15 @@
 type: entity
 tags: [repo, framework, mujoco, mujoco-warp, isaac-lab-api, reinforcement-learning, gpu-simulation, nvidia, unitree]
 status: complete
-updated: 2026-07-14
+updated: 2026-07-21
 related:
   - ./mujoco.md
   - ./mujoco-playground.md
   - ../overview/robot-training-stack-layers-technology-map.md
   - ./newton-physics.md
   - ./isaac-gym-isaac-lab.md
+  - ./isaac-lab.md
+  - ./isaac-sim.md
   - ./legged-gym.md
   - ./mjlab-playground.md
   - ./amp-mjlab.md
@@ -96,7 +98,8 @@ mjlab 架构
 
 - [MuJoCo](./mujoco.md) — 物理内核（mjlab 使用 MuJoCo Warp）
 - [Newton Physics](./newton-physics.md) — 同生态的底层 GPU 可微引擎（非 RL 框架封装）
-- [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md) — API 设计来源
+- [Isaac Lab](./isaac-lab.md) — API 设计来源；底层依赖 [Isaac Sim](./isaac-sim.md)
+- [Isaac Gym / Isaac Sim / Isaac Lab](./isaac-gym-isaac-lab.md) — 三代产品总览
 - [legged_gym](./legged-gym.md) — 同类框架，绑定 IsaacGym
 - [AMP_mjlab](./amp-mjlab.md) — 以 mjlab 为底层的 AMP 统一策略实现
 - [SMP on G1（mjlab）](./smp-g1-mjlab.md) — G1 上 score-matching 运动先验复现

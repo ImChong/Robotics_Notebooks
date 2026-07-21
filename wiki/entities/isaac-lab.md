@@ -3,9 +3,10 @@
 type: entity
 tags: [entity, simulator, isaac, isaac-sim, gpu-simulation, reinforcement-learning, sim2real, nvidia]
 status: stable
-updated: 2026-07-14
+updated: 2026-07-21
 related:
   - ./isaac-gym-isaac-lab.md
+  - ./isaac-sim.md
   - ./isaac-gym.md
   - ../concepts/implicit-explicit-actuator-modeling.md
   - ./robotic-world-model-eth-rsl.md
@@ -28,6 +29,8 @@ related:
   - ../comparisons/china-gpu-cloud-platforms.md
   - ../comparisons/international-gpu-cloud-platforms.md
 sources:
+  - ../../sources/repos/isaac_lab.md
+  - ../../sources/repos/isaac_sim.md
   - ../../sources/courses/nvidia_sim_to_real_so101_isaac.md
   - ../../sources/papers/simulation_tools.md
   - ../../sources/papers/policy_optimization.md
@@ -42,7 +45,7 @@ summary: "NVIDIA 当前官方主推的 robot learning 框架，建立在 Isaac S
 
 ## 一句话定义
 
-> Isaac Lab 不是 [Isaac Gym](./isaac-gym.md) 的 API 换皮，而是 NVIDIA 当前 robot learning 的官方主线框架：它接住了 IsaacGymEnvs / OmniIsaacGymEnvs / Orbit 用户，跑在更完整的 Isaac Sim 生态上。
+> Isaac Lab 不是 [Isaac Gym](./isaac-gym.md) 的 API 换皮，而是 NVIDIA 当前 robot learning 的官方主线框架：它接住了 IsaacGymEnvs / OmniIsaacGymEnvs / Orbit 用户，跑在更完整的 [Isaac Sim](./isaac-sim.md) 生态上。
 
 ## 英文缩写速查
 
@@ -67,14 +70,14 @@ summary: "NVIDIA 当前官方主推的 robot learning 框架，建立在 Isaac S
 - 它是 [Isaac Gym](./isaac-gym.md) 这条线的后继者，但**不是简单的版本号升级**。
 - 它官方持续维护、文档更系统、迁移路径更明确。
 
-两代框架的整体定位与迁移路径，见综述页：[Isaac Gym / Isaac Lab 平台总览](./isaac-gym-isaac-lab.md)。
+三代产品的整体定位与迁移路径，见综述页：[Isaac Gym / Isaac Sim / Isaac Lab](./isaac-gym-isaac-lab.md)。仿真底座细节见独立实体页：[Isaac Sim](./isaac-sim.md)。
 
 ## 为什么它重要
 
 Isaac Lab 之所以是当前主线：
 
 - 它接住了 [Isaac Gym](./isaac-gym.md) 这条 GPU 并行 RL 的能力路线
-- 建立在更完整的 **Isaac Sim** 生态之上（渲染、传感器、USD 资产）
+- 建立在更完整的 [Isaac Sim](./isaac-sim.md) 生态之上（渲染、传感器、USD 资产）
 - 官方持续维护、文档更系统、迁移路径更明确
 - 对 robot learning / manipulation / locomotion 的支持更现代
 - **算法兼容性**：新一代算法如 **BRRL / BPO (2026)** 优先在 Isaac Lab 环境下完成了人形机器人行走等任务的验证，显示了它对现代 RL 研究的良好支撑
@@ -87,9 +90,91 @@ Isaac Lab 的目标是提供一套现代化、可维护的 robot learning workfl
 - 支持训练、迁移、任务定义、环境注册、仿真管理
 - 在同一套生态里覆盖 RL、IL、locomotion、manipulation
 
+## 核心类图
+
+对齐官方 Task Design Workflows：`ManagerBased*`（模块化 MDP）与 `Direct*`（单类实现，接近旧 IsaacGymEnvs 心智）：
+
+```mermaid
+classDiagram
+    class ManagerBasedEnv {
+        +cfg ManagerBasedEnvCfg
+        +scene InteractiveScene
+        +reset()
+        +step(action)
+    }
+    class ManagerBasedRLEnv {
+        +reward_manager
+        +termination_manager
+        +curriculum_manager
+        +command_manager
+    }
+    class DirectRLEnv {
+        +_get_observations()
+        +_get_rewards()
+        +_get_dones()
+        +step(action)
+    }
+    class DirectMARLEnv {
+        +multi-agent step API
+    }
+    class ObservationManager
+    class ActionManager
+    class RewardManager
+    class TerminationManager
+    class EventManager
+    class InteractiveScene
+    class SimulationContext
+    ManagerBasedEnv <|-- ManagerBasedRLEnv
+    ManagerBasedEnv *-- ObservationManager
+    ManagerBasedEnv *-- ActionManager
+    ManagerBasedEnv *-- EventManager
+    ManagerBasedEnv *-- InteractiveScene
+    ManagerBasedRLEnv *-- RewardManager
+    ManagerBasedRLEnv *-- TerminationManager
+    ManagerBasedEnv --> SimulationContext : Isaac Sim backend
+    DirectRLEnv --> SimulationContext : Isaac Sim backend
+    DirectMARLEnv --> SimulationContext : Isaac Sim backend
+```
+
+## 源码运行时序图
+
+官方仓 [isaac-sim/IsaacLab](https://github.com/isaac-sim/IsaacLab)；典型入口为 `scripts/reinforcement_learning/.../train.py`（或文档中的 AppLauncher + env 注册）。manager-based RL 一步交互如下：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as 训练脚本
+    participant Launch as AppLauncher<br/>启动 Isaac Sim
+    participant Env as ManagerBasedRLEnv
+    participant Act as ActionManager
+    participant Sim as SimulationContext<br/>PhysX 步进
+    participant Obs as ObservationManager
+    participant Rew as RewardManager
+    participant Term as TerminationManager
+    participant RL as RSL-RL / rl-games / SKRL
+
+    User->>Launch: 解析配置并启动 Kit
+    Launch->>Env: 按 cfg 构造并行环境
+    Env->>Env: reset() 初始化 scene / managers
+    loop 训练 rollout
+        RL->>Env: step(actions)
+        Env->>Act: process_actions → 写关节目标
+        Env->>Sim: decimation 次物理步进
+        Sim-->>Env: 状态 / 传感器 buffer
+        Env->>Obs: compute observations
+        Env->>Rew: compute rewards
+        Env->>Term: compute terminations / truncations
+        Env-->>RL: obs, reward, done, info
+        RL->>RL: PPO 等参数更新
+    end
+```
+
+- **复现路径：** 安装匹配版本的 Isaac Sim → clone Isaac Lab → 按文档选 RSL-RL/rl-games/SKRL 后端跑官方任务；从 Gym 迁移见官方 Migration 指南。
+- **开源状态：** 训练框架已开源；运行依赖 Isaac Sim（见 [isaac-sim source](../../sources/repos/isaac_sim.md)）。
+
 ## 架构与工作流
 
-Isaac Lab 的关键区别在于它**站在 Isaac Sim / Omniverse 之上**，因此除了物理还能给到高保真渲染与传感器仿真：
+Isaac Lab 的关键区别在于它**站在 [Isaac Sim](./isaac-sim.md) / Omniverse 之上**，因此除了物理还能给到高保真渲染与传感器仿真：
 
 ```mermaid
 flowchart TB
@@ -184,7 +269,7 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 
 ### 1. 以为 Isaac Lab = Isaac Gym 2.0
 
-不对。它们不是「Isaac Gym 2.0 = Isaac Lab」的版本号关系；Isaac Lab 是基于 Isaac Sim 的新主线框架，架构与生态都不同。详见 [Isaac Gym](./isaac-gym.md)。
+不对。它们不是「Isaac Gym 2.0 = Isaac Lab」的版本号关系；Isaac Lab 是基于 [Isaac Sim](./isaac-sim.md) 的新主线框架，架构与生态都不同。详见 [Isaac Gym](./isaac-gym.md)。
 
 ### 2. 以为换成 Isaac Lab，旧经验都作废
 
@@ -201,7 +286,10 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 
 ## 参考来源
 
+- **ingest 档案：** [sources/repos/isaac_lab.md](../../sources/repos/isaac_lab.md)
+- **ingest 档案：** [sources/repos/isaac_sim.md](../../sources/repos/isaac_sim.md)
 - 官方文档：<https://isaac-sim.github.io/IsaacLab/v2.1.0/>
+- Task Design Workflows：<https://isaac-sim.github.io/IsaacLab/main/source/overview/core-concepts/task_workflows.html>
 - Ao et al., *Bounded Ratio Reinforcement Learning* (2026) — 在 Isaac Lab 中验证新算法
 - **ingest 档案：** [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — PPO/BRRL 与 Isaac Lab 的结合应用
 - **ingest 档案：** [sources/courses/nvidia_sim_to_real_so101_isaac.md](../../sources/courses/nvidia_sim_to_real_so101_isaac.md) — SO-101 课：仿真 DR 遥操作采数、策略评测与 sim2real 对照实验
@@ -210,9 +298,10 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 
 ## 关联页面
 
-- [Isaac Gym / Isaac Lab 平台总览](./isaac-gym-isaac-lab.md) — 两代框架定位与迁移路径
+- [Isaac Sim](./isaac-sim.md) — 仿真底座（USD / PhysX / 传感器）
+- [Isaac Gym / Isaac Sim / Isaac Lab 总览](./isaac-gym-isaac-lab.md) — 三代产品定位与迁移路径
 - [Isaac Teleop](./isaac-teleop.md) — XR 遥操作与示范采集的统一框架（Lab 3.x 主线）
-- [Isaac Gym](./isaac-gym.md) — 它的旧一代前身
+- [Isaac Gym](./isaac-gym.md) — 旧一代独立 GPU RL 前身
 - [Robotic World Model（ETH RSL，RWM / RWM-U）](./robotic-world-model-eth-rsl.md) — Isaac Lab 扩展的神经动力学与想象训练参考实现
 - [Newton Physics](./newton-physics.md) — Isaac Lab 存在 `feature/newton` 物理后端集成探索
 - [训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md) — 大平台层定位；与 Playground/mjlab 非同一竞争平面

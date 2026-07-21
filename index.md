@@ -69,7 +69,8 @@
 - [Trajectory Optimization](wiki/methods/trajectory-optimization.md)
 - [Locomotion](wiki/tasks/locomotion.md)
 - [WBC vs RL](wiki/comparisons/wbc-vs-rl.md)
-- [Isaac Gym / Isaac Lab](wiki/entities/isaac-gym-isaac-lab.md)
+- [Isaac Gym / Isaac Sim / Isaac Lab](wiki/entities/isaac-gym-isaac-lab.md)（总览）
+- [Isaac Sim](wiki/entities/isaac-sim.md) · [Isaac Lab](wiki/entities/isaac-lab.md) · [Isaac Gym](wiki/entities/isaac-gym.md)
 - [Robotic World Model（ETH RSL，RWM / RWM-U）](wiki/entities/robotic-world-model-eth-rsl.md)（Isaac Lab 扩展 + Lite 离线仓；集成 RNN 动力学与想象 rollout 的 MBRL 参考实现）
 - [SAGE（执行器 Sim2Real 间隙估计）](wiki/entities/sage-sim2real-actuator-gap-estimator.md)（Isaac 重放与真机对齐、关节级 gap 指标与成对数据）
 - [Genesis (仿真器)](wiki/entities/genesis-sim.md)

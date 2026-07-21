@@ -1,13 +1,57 @@
 {
   "generated_at": "2026-07-21",
-  "node_count": 1717,
-  "edge_count": 13735,
+  "node_count": 1718,
+  "edge_count": 13765,
   "coverage": {
-    "covered": 1667,
-    "total": 1697,
+    "covered": 1668,
+    "total": 1698,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/isaac-sim.md",
+      "detail_id": "entity-isaac-sim",
+      "label": "Isaac Sim",
+      "type": "entity",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+    },
+    {
+      "path": "wiki/entities/isaac-gym.md",
+      "detail_id": "entity-isaac-gym",
+      "label": "Isaac Gym",
+      "type": "entity",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+    },
+    {
+      "path": "wiki/entities/isaac-lab.md",
+      "detail_id": "entity-isaac-lab",
+      "label": "Isaac Lab",
+      "type": "entity",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+    },
+    {
+      "path": "wiki/entities/isaac-gym-isaac-lab.md",
+      "detail_id": "entity-isaac-gym-isaac-lab",
+      "label": "Isaac Gym / Isaac Sim / Isaac Lab",
+      "type": "entity",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+    },
     {
       "path": "wiki/entities/ssik.md",
       "detail_id": "entity-ssik",
@@ -169,64 +213,23 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-neuralactuator-neural-actuation-modeling.md",
-      "detail_id": "entity-paper-neuralactuator-neural-actuation-modeling",
-      "label": "NeuralActuator（Neural Actuation Modeling · arXiv:2607.11734）",
-      "type": "entity",
-      "recency": "2026-07-20",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-automated-facial-mechanisms-animatronic.md",
-      "detail_id": "entity-paper-automated-facial-mechanisms-animatronic",
-      "label": "自动化面部机构合成（Automated Synthesis of Facial Mechanisms for Conversational Animatronic Robots）",
-      "type": "entity",
-      "recency": "2026-07-20",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-oat-ordered-action-tokenization.md",
-      "detail_id": "entity-paper-oat-ordered-action-tokenization",
-      "label": "OAT：有序动作 Tokenization（Ordered Action Tokenization）",
-      "type": "entity",
-      "recency": "2026-07-20",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dapl-extrinsic-dexterity-clutter.md",
-      "detail_id": "entity-paper-dapl-extrinsic-dexterity-clutter",
-      "label": "DAPL：杂乱场景中的外在灵巧性（Emerging Extrinsic Dexterity in Cluttered Scenes via Dynamics-aware Policy Learning）",
-      "type": "entity",
-      "recency": "2026-07-20",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/ssik.md",
-    "detail_id": "entity-ssik",
-    "label": "ssik（解析逆运动学）",
+    "path": "wiki/entities/isaac-sim.md",
+    "detail_id": "entity-isaac-sim",
+    "label": "Isaac Sim",
     "type": "entity",
     "recency": "2026-07-21",
     "source": "log.md",
     "action": "added",
     "has_repo": true,
-    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 377
+      "size": 373
     },
     {
       "label": "人形论文深读笔记",
@@ -234,7 +237,7 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 172
+      "size": 173
     },
     {
       "label": "移动操作",
@@ -246,7 +249,7 @@
     },
     {
       "label": "仿真训练",
-      "size": 70
+      "size": 65
     }
   ],
   "top_hubs": [
@@ -261,7 +264,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 307,
+      "degree": 308,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -300,7 +303,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 240,
+      "degree": 241,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
