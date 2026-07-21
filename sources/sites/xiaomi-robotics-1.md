@@ -3,11 +3,14 @@
 > 来源归档（ingest）
 
 - **标题：** Xiaomi-Robotics-1: Scaling Vision-Language-Action Models with over 100K Hours of Real-World Trajectories
-- **类型：** site（品牌站项目页 + PDF 技术报告；代码/权重待发布）
+- **类型：** site（品牌站项目页 + PDF 技术报告；代码/权重仓占位）
 - **组织：** Xiaomi Robotics（小米机器人实验室）
 - **品牌站说明页：** <https://robotics.xiaomi.com/xiaomi-robotics-1.html>
 - **技术报告 PDF：** <https://robotics.xiaomi.com/robot-static-resource/xiaomi-robotics-1/xiaomi-robotics-1.pdf>
-- **入库日期：** 2026-07-16
+- **论文：** <https://arxiv.org/abs/2607.15330>（归档见 [`sources/papers/xiaomi_robotics_1_arxiv_2607_15330.md`](../papers/xiaomi_robotics_1_arxiv_2607_15330.md)）
+- **代码：** <https://github.com/XiaomiRobotics/Xiaomi-Robotics-1>（截至 2026-07-21 **Coming soon**，见 [`sources/repos/xiaomi-robotics-1.md`](../repos/xiaomi-robotics-1.md)）
+- **模型组织页：** <https://huggingface.co/XiaomiRobotics>（XR-1 权重待上架）
+- **入库日期：** 2026-07-16；**开源核查刷新：** 2026-07-21
 - **一句话说明：** 小米 **具身基座 VLA**：**10 万小时** embodiment-free **UMI** 轨迹预训练（**>1,700** 场景、VLM **自动状态转移标注**）+ **~1 万小时** 跨本体后训练（**>7,200h** 真机移动操作/双臂 + 开源数据集）；**Qwen3-VL + DiT flow matching + Choice Policies** 的 **MoT** 架构（**2B / 5B / 10B**）；预训练 **数据/模型 scaling** 可预测地迁移到未见环境真机开箱成功率；少样本微调四任务平均 **75%**（**<10h/任务**）超 **π₀.₅ 40%**；**RoboCasa / RoboCasa365 / VLABench / RoboDojo** 四基准 SOTA。
 - **沉淀到 wiki：** [Xiaomi-Robotics-1](../../wiki/entities/xiaomi-robotics-1.md)
 
@@ -50,13 +53,15 @@
 
 ## 对 wiki 的映射
 
-- 新建 **`wiki/entities/xiaomi-robotics-1.md`**：数据—训练—scaling—下游适配实体页（双 Mermaid：预训练管线 / 后训练对齐）。
-- 更新 **`wiki/entities/xiaomi-robotics-0.md`**、**`wiki/methods/vla.md`**：小米 VLA 谱系交叉引用。
+- 实体页 **`wiki/entities/xiaomi-robotics-1.md`**：数据—训练—scaling—下游适配（含 arXiv:2607.15330 与开源边界）。
+- 交叉：**`wiki/entities/xiaomi-robotics-0.md`**、**`wiki/methods/vla.md`**、**`sources/papers/xiaomi_robotics_1_arxiv_2607_15330.md`**、**`sources/repos/xiaomi-robotics-1.md`**。
 
 ---
 
 ## 外部参考
 
-- Xiaomi Robotics, *Xiaomi-Robotics-1: Scaling Vision-Language-Action Models with over 100K Hours of Real-World Data*, arXiv preprint（项目页 BibTeX，编号待公开）
+- Xiaomi Robotics, *Xiaomi-Robotics-1: Scaling Vision-Language-Action Models with over 100K Hours of Real-World Trajectories*, [arXiv:2607.15330](https://arxiv.org/abs/2607.15330)
 - [Robotics @ Xiaomi — XR-1](https://robotics.xiaomi.com/xiaomi-robotics-1.html)
 - [技术报告 PDF](https://robotics.xiaomi.com/robot-static-resource/xiaomi-robotics-1/xiaomi-robotics-1.pdf)
+- [GitHub（占位）](https://github.com/XiaomiRobotics/Xiaomi-Robotics-1)
+- [Hugging Face 组织](https://huggingface.co/XiaomiRobotics)

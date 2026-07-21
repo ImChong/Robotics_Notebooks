@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-21] ingest | sources/papers/handroid_arxiv_2607_16187.md — 复核 Handroid（arXiv:2607.16187）：CAD/BOM 已开源、Code 仍占位；wiki/entities/handroid.md 刷新核查日
+
+## [2026-07-21] ingest | sources/papers/raven_rl_adaptive_visibility_graph_arxiv_2607_15701.md — UCLA RoMeLa RAVEN；wiki/entities/paper-raven-rl-adaptive-visibility-graph-mpc.md；交叉 ARTEMIS / Booster Gym / mpc-vs-rl / humanoid-locomotion
+
+## [2026-07-21] ingest | sources/papers/xiaomi_robotics_1_arxiv_2607_15330.md — 接入 XR-1 arXiv:2607.15330；刷新项目页/占位仓开源边界；wiki/entities/xiaomi-robotics-1.md
+
 ## [2026-07-21] structural | Isaac Gym / Isaac Sim / Isaac Lab 独立节点补齐运行时序图与类图
 
 - 新建独立实体：[`wiki/entities/isaac-sim.md`](wiki/entities/isaac-sim.md)（此前仅散见于总览与对比页）

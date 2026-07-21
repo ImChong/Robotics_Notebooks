@@ -1,13 +1,42 @@
 {
   "generated_at": "2026-07-21",
-  "node_count": 1718,
-  "edge_count": 13765,
+  "node_count": 1719,
+  "edge_count": 13775,
   "coverage": {
-    "covered": 1668,
-    "total": 1698,
+    "covered": 1669,
+    "total": 1699,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/handroid.md",
+      "detail_id": "entity-handroid",
+      "label": "Handroid",
+      "type": "entity",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-raven-rl-adaptive-visibility-graph-mpc.md",
+      "detail_id": "entity-paper-raven-rl-adaptive-visibility-graph-mpc",
+      "label": "RAVEN：强化学习自适应可见图规划 + 无碰撞 MPC",
+      "type": "entity",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/xiaomi-robotics-1.md",
+      "detail_id": "entity-xiaomi-robotics-1",
+      "label": "Xiaomi-Robotics-1",
+      "type": "entity",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/isaac-sim.md",
       "detail_id": "entity-isaac-sim",
@@ -182,54 +211,21 @@
       "source": "log.md",
       "action": "added",
       "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-neurogpr-brain-inspired-place-recognition.md",
-      "detail_id": "entity-paper-neurogpr-brain-inspired-place-recognition",
-      "label": "NeuroGPR：脑启发多模态混合神经网络机器人场所识别",
-      "type": "entity",
-      "recency": "2026-07-20",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/methods/flashsac.md",
-      "detail_id": "wiki-methods-flashsac",
-      "label": "FlashSAC",
-      "type": "method",
-      "recency": "2026-07-20",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-muninn-trajectory-diffusion-acceleration.md",
-      "detail_id": "entity-paper-muninn-trajectory-diffusion-acceleration",
-      "label": "Muninn（轨迹扩散免训练加速）",
-      "type": "entity",
-      "recency": "2026-07-20",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/isaac-sim.md",
-    "detail_id": "entity-isaac-sim",
-    "label": "Isaac Sim",
+    "path": "wiki/entities/handroid.md",
+    "detail_id": "entity-handroid",
+    "label": "Handroid",
     "type": "entity",
     "recency": "2026-07-21",
     "source": "log.md",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+    "action": "maintained"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 373
+      "size": 372
     },
     {
       "label": "人形论文深读笔记",

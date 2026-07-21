@@ -7,7 +7,7 @@
 - **配套论文：** [Handroid（arXiv:2607.16187）](https://arxiv.org/abs/2607.16187) — 归档见 [`sources/papers/handroid_arxiv_2607_16187.md`](../papers/handroid_arxiv_2607_16187.md)
 - **配套 CAD：** <https://cad.onshape.com/documents/d3de21915f3c9cacc1887cf3/w/dc7c7b68235fdbb205f27505/e/8673167885a4e16e9b6c2791>
 - **配套 BOM：** <https://docs.google.com/spreadsheets/d/1ml2pJ9iSiDhcNiEPnRkoHqwzarEjfeZ8KSDNHGFpFh4/edit?usp=sharing>
-- **代码：** 截至入库日项目页 **Code 按钮为占位链（`href="#"`）**，**未列出 GitHub / Hugging Face 等代码仓库**；GitHub 组织 [`robot-handroid`](https://github.com/robot-handroid) 仅含静态站镜像 [`robot-handroid.github.io`](https://github.com/robot-handroid/robot-handroid.github.io)。
+- **代码：** 截至 **2026-07-21** 复核查实：项目页 **Code 按钮仍为占位链（`href="#"`）**，**未列出 GitHub / Hugging Face 等代码仓库**；GitHub 组织 [`robot-handroid`](https://github.com/robot-handroid) 仅含静态站镜像 [`robot-handroid.github.io`](https://github.com/robot-handroid/robot-handroid.github.io)。
 
 ## 一句话摘要
 

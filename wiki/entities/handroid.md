@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, dexterous-hand, hardware, open-source, desktop-scale, morphology-reconfiguration, reinforcement-learning, imitation-learning, teleoperation, unc-chapel-hill, stanford]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-21
 related:
   - ../tasks/manipulation.md
   - ../tasks/loco-manipulation.md
@@ -133,7 +133,7 @@ flowchart LR
 
 ## 局限与风险
 
-- **开源边界：** 论文写 **open-source**，但项目页 **Code 为占位**；复现者当前只能依赖 **CAD/BOM**，**仿真环境、策略权重与部署脚本** 尚不可用——入库日按 **部分开源（机械已发布 / 软件待发布）** 记录。
+- **开源边界：** 论文写 **open-source**，但项目页 **Code 为占位**；复现者当前只能依赖 **CAD/BOM**，**仿真环境、策略权重与部署脚本** 尚不可用——按 **部分开源（机械已发布 / 软件待发布）** 记录（**2026-07-21** 复核查实仍无有效 Code URL）。
 - **桌面尺度：** 非全尺寸人形，**载荷、行走鲁棒性与真实场景通过性** 不能外推到 Unitree G1/H1 等级平台。
 - **形态切换成本：** 长时程任务需 **物理重配置 + 与外部臂对接**，工程上比固定形态平台更复杂。
 - **执行器族：** 基于 **Dynamixel** 与 3D 打印结构，耐久性与精度需按桌面研究平台预期管理。
