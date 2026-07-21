@@ -2,13 +2,14 @@
 type: method
 tags: [3d-reconstruction, foundation-model, transformer, slam, streaming-perception]
 status: drafting
-updated: 2026-07-06
+updated: 2026-07-21
 related:
   - ../concepts/state-estimation.md
   - ../concepts/3d-spatial-vqa.md
   - ../formalizations/ekf.md
   - ./vla.md
   - ../entities/sceneverse-pp.md
+  - ../entities/paper-glob3r.md
 sources:
   - ../../sources/repos/lingbot-map.md
   - ../../sources/papers/lingbot_map_arxiv_2604_14141.md
@@ -109,6 +110,11 @@ flowchart LR
 - **传统 SLAM**：显式特征匹配、回环、位姿图与后端优化模块耦合强。
 - **LingBot-Map**：以前馈网络为主，将多类几何上下文管理收进 **GCA**；仍可从 SLAM 原则理解其状态设计，但减少了对部分手工组件的依赖。
 
+### 与 Glob3R（全局 SfM + 基础模型）的对比
+
+- **[Glob3R](../entities/paper-glob3r.md)**（arXiv:2607.09225）走 **冻结 Pi3X + dense warp tracks → 运动平均 + BA** 的**离线全局精炼**；在 T&T / KITTI 等论文表中常显著优于 LingBot-Map 的流式前馈设定。
+- **选型：** 要 **在线 / 近实时几何状态** → LingBot-Map；要 **离线高精度位姿与神经渲染** → 跟进 Glob3R（注意其官方推理代码截至 2026-07-21 仍为占位仓）。
+
 ### 与 VLA / 空间推理任务的关系
 
 - 可为 [VLA (Vision-Language-Action)](./vla.md) 或 [3D 空间 VQA](../concepts/3d-spatial-vqa.md) 讨论提供**在线度量几何**先验：语义–语言层仍需与几何模块分工或融合。
@@ -116,6 +122,7 @@ flowchart LR
 
 ## 关联页面
 
+- [Glob3R（全局 SfM + 3D 基础模型）](../entities/paper-glob3r.md) — 离线高精度对照
 - [VLA (Vision-Language-Action)](./vla.md)
 - [State Estimation (状态估计)](../concepts/state-estimation.md)
 - [3D 空间 VQA](../concepts/3d-spatial-vqa.md)

@@ -1,5 +1,15 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-21] ingest | sources/papers/glob3r_arxiv_2607_09225.md — Glob3R（HKUST×通义×NJU×Fudan）全局 SfM + 3D 基础模型；升格 wiki/entities/paper-glob3r.md；交叉 wiki/methods/lingbot-map.md、wiki/concepts/state-estimation.md、wiki/overview/topic-state-estimation.md、wiki/overview/navigation-slam-autonomy-stack.md；官方仓 aigc3d/Glob3R 占位（Inference TODO）
+
+- **开源状态：** **部分开源（占位仓）** — 项目页 Code → [`aigc3d/Glob3R`](https://github.com/aigc3d/Glob3R)；仓内仅 README，Inference/Evaluation 仍 TODO（截至 2026-07-21）
+- **新建 papers：** [`sources/papers/glob3r_arxiv_2607_09225.md`](sources/papers/glob3r_arxiv_2607_09225.md)
+- **新建 sites：** [`sources/sites/junyuandeng-glob3r-github-io.md`](sources/sites/junyuandeng-glob3r-github-io.md)
+- **新建 repos：** [`sources/repos/glob3r.md`](sources/repos/glob3r.md)
+- **新建 wiki：** [`wiki/entities/paper-glob3r.md`](wiki/entities/paper-glob3r.md)
+- **机构：** `schema/institutions.json` 为 `alibaba` 追加 alias `tongyi` / `tongyi-lab`
+- **交叉更新：** [`wiki/methods/lingbot-map.md`](wiki/methods/lingbot-map.md)、[`wiki/concepts/state-estimation.md`](wiki/concepts/state-estimation.md)、[`wiki/overview/topic-state-estimation.md`](wiki/overview/topic-state-estimation.md)、[`wiki/overview/navigation-slam-autonomy-stack.md`](wiki/overview/navigation-slam-autonomy-stack.md)
+
 ## [2026-07-21] ingest | sources/papers/egohtr_arxiv_2607_13472.md — EgoHTR（ETH×Stanford×Berkeley×TUM）rough-terrain 人–场景 4D 数据集；升格 wiki/entities/paper-egohtr.md；交叉 wiki/comparisons/humanoid-reference-motion-datasets.md、wiki/entities/amass.md、wiki/tasks/locomotion.md、wiki/concepts/terrain-adaptation.md、wiki/concepts/motion-retargeting.md、wiki/entities/paper-hrl-stack-03-omniretarget.md、wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md；项目页 Dataset/Code coming soon
 
 - **开源状态：** **宣称将开源 / 待发布** — 项目页 Dataset / Code 均 *coming soon*；GitHub org 仅站点仓（截至 2026-07-21）
