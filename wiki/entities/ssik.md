@@ -76,6 +76,46 @@ flowchart LR
 | **MINK / TracIK** | 数值 | 单解/种子 | 任意 URDF 几何 | 无分支枚举；FK 精度依赖迭代容差 |
 | **cuRobo** | GPU 数值 IK + 规划 | 并行多解探索 | 无碰撞 IK + 轨迹优化 | 非「全部分支」语义；偏规划栈 |
 
+## 源码运行时序图
+
+官方仓库 [personalrobotics/ssik](https://github.com/personalrobotics/ssik) 的**生产路径**是导入预置或 `ssik build` 生成的 per-arm artifact（如 `ssik/prebuilt/franka_panda_ik.py`），运行时 **不解析 URDF、不加载 sympy**。一次 `solve(T_target)` 的模块交互如下（节点名对齐仓库目录与 README 入口）：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户 / 控制循环
+    participant ART as prebuilt/*_ik.py<br/>或 ssik build 产物
+    participant KB as 烘焙 KinBody _KB
+    participant SOL as ssik.solvers.*<br/>如 seven_r.spherical_shoulder
+    participant SP as ssik.subproblems SP1–SP6
+    participant PP as ssik.postprocess
+    participant REF as ssik.refinement<br/>可选 LM 抛光
+    participant ROB as 机器人 / 仿真
+
+    U->>ART: solve(T_target, q_seed=…, max_solutions=…)
+    ART->>KB: 读取关节限位与 POE 常数
+    ART->>SOL: 调用已 dispatch 的解析求解器
+    loop 代数子问题分解
+        SOL->>SP: SP1–SP6 闭式/半闭式求根
+        SP-->>SOL: 候选关节向量 q
+    end
+    SOL-->>ART: 原始代数 IK 候选集
+    ART->>PP: wrap_to_limits → respect_limits
+    opt q_seed 已提供
+        ART->>PP: within_seed_tolerance → nearest_to_seed
+    end
+    opt allow_refinement=True
+        ART->>REF: kinbody_jacobian + LM polish
+        REF-->>ART: 收紧 fk_residual
+    end
+    ART-->>U: list[Solution]（q, fk_residual, refinement_used）
+    U->>ROB: 下发 q_command（或空列表 ⇒ 重规划）
+```
+
+**构建期（一次性）**：自定义 URDF / 工具链时走 `ssik build my_arm.urdf --base … --ee …`（`ssik/cli.py`）→ `load_urdf_kinbody_normalized` → `ssik.core.dispatcher.dispatch` 选 tier → `ssik.core.codegen.emit_artifact` 写出 `my_arm_ik.py`；之后运行时与 prebuilt **同一 API**。
+
+**开发路径（不推荐部署）**：`ssik.Manipulator.from_urdf` 在**每个新进程**重新做 URDF 解析、拓扑分类与（部分几何）sympy 预处理，再进入与上图相同的 `solve` 管线；支持 `explain=True` 返回 `Diagnostic` 诊断空解原因。
+
 ## 工程实践
 
 | 步骤 | 建议 |
