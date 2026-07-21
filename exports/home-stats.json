@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-21",
-  "node_count": 1748,
-  "edge_count": 14078,
+  "node_count": 1749,
+  "edge_count": 14092,
   "coverage": {
-    "covered": 1698,
-    "total": 1728,
+    "covered": 1699,
+    "total": 1729,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -35,7 +35,8 @@
       "recency": "2026-07-21",
       "source": "log.md",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/tienkung-humanoid-open-source.md",
@@ -45,7 +46,8 @@
       "recency": "2026-07-21",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/open-source-humanoid-hardware.md",
@@ -55,7 +57,8 @@
       "recency": "2026-07-21",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/openloong.md",
@@ -225,15 +228,15 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 355
-    },
-    {
-      "label": "人形论文深读笔记",
-      "size": 175
+      "size": 383
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 172
+      "size": 184
+    },
+    {
+      "label": "人形论文深读笔记",
+      "size": 176
     },
     {
       "label": "移动操作",
@@ -241,11 +244,11 @@
     },
     {
       "label": "全身控制",
-      "size": 152
+      "size": 157
     },
     {
-      "label": "仿真到现实",
-      "size": 103
+      "label": "仿真训练",
+      "size": 67
     }
   ],
   "top_hubs": [
@@ -260,7 +263,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 312,
+      "degree": 313,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

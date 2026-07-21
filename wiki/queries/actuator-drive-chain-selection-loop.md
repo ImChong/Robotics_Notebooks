@@ -12,6 +12,7 @@ sources:
   - ../../sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md
 related:
   - ../concepts/implicit-explicit-actuator-modeling.md
+  - ../concepts/torque-source-abstraction-gap.md
   - ../concepts/ethercat-protocol.md
   - ../concepts/motor-torque-current-curve.md
   - ../concepts/motor-torque-speed-curve.md
@@ -159,6 +160,7 @@ flowchart TD
 - 姊妹 Query：[具身大模型评测基准选型闭环](./embodied-eval-benchmark-selection-loop.md) — 「怎么评测/证明它」，与本页共同兜底 sim↔real
 - [EtherCAT 主站优化](./ethercat-master-optimization.md) — ④层实时总线闭环集成的深度调优
 - [Implicit/Explicit 执行器建模](../concepts/implicit-explicit-actuator-modeling.md) — ③层执行器模型写回仿真的仿真侧对接
+- [力矩源抽象 Gap（理想力矩源 ↔ 真实执行器）](../concepts/torque-source-abstraction-gap.md) — ③层「理想力矩源何时破」的物理根因专页
 - [EtherCAT 协议基础](../concepts/ethercat-protocol.md) — ④层硬实时总线的协议基础
 - [KiCad（开源 EDA）](../entities/kicad.md) — ①层开源电路设计真值
 - [Altium Designer（商用 EDA）](../entities/altium-designer.md) — ①层商用量产向 EDA
