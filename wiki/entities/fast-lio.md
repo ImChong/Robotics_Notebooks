@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, lidar, lio, slam, ros, hku]
 status: complete
-updated: 2026-05-27
+updated: 2026-07-21
 related:
   - ../entities/lio-sam.md
   - ../comparisons/lidar-slam-lio-vio-selection.md

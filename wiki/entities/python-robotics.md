@@ -3,9 +3,10 @@
 type: entity
 tags: [repo, education, autonomous-navigation, path-planning, slam, localization, python, textbook, mit]
 status: complete
-updated: 2026-06-09
+updated: 2026-07-21
 related:
   - ../overview/navigation-slam-autonomy-stack.md
+  - ../overview/autonomous-driving-core-algorithms-series.md
   - ../entities/navigation2.md
   - ../entities/modern-robotics-book.md
   - ../formalizations/kalman-filter.md
@@ -17,6 +18,7 @@ sources:
   - ../../sources/repos/python_robotics.md
   - ../../sources/papers/python_robotics_arxiv_1808_10703.md
   - ../../sources/courses/python_robotics_textbook.md
+  - ../../sources/blogs/wechat_shenlan_ai_ad_planning_control.md
 summary: "PythonRobotics 是高星 Python 自主导航算法代码集与 Sphinx 在线教材：覆盖定位、建图、SLAM、规划与跟踪，最小依赖 + 动画演示，是理解 Nav2/Autoware 算法层的经典入门底座，非 ROS 工程栈。"
 ---
 
@@ -97,6 +99,7 @@ flowchart LR
 ## 关联页面
 
 - [导航·SLAM·自动驾驶栈总览](../overview/navigation-slam-autonomy-stack.md)
+- [《自动驾驶核心算法盘点》专栏技术地图](../overview/autonomous-driving-core-algorithms-series.md) — 文内配图常引本仓 LQR/Frenet 示例
 - [Navigation2（Nav2）](./navigation2.md)
 - [Kalman Filter](../formalizations/kalman-filter.md)
 - [Trajectory Optimization](../methods/trajectory-optimization.md)

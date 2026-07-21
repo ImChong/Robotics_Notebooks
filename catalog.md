@@ -1546,6 +1546,7 @@
 - [智元发布分类 04：语义执行基座](wiki/overview/agibot-release-category-04-execution-vla.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [智元发布分类 05：身体能力底座](wiki/overview/agibot-release-category-05-body-foundations.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [智元发布分类 06：应用编排与交付](wiki/overview/agibot-release-category-06-application-delivery.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
+- [《自动驾驶核心算法盘点》专栏技术地图](wiki/overview/autonomous-driving-core-algorithms-series.md) — 经典自动驾驶软件栈仍可概括为 **感知 → 定位/地图 → 跟踪/预测 → 规划 → 控制**：上游把世界变成带 ID 的 3D 实体与未来意图，下游在运动学与舒适约束下把意图变成可执行轨迹与执行器指 `📅unknown` `[overview_page]`
 - [BFM 技术地图：41 篇论文的五类问题视角](wiki/overview/bfm-41-papers-technology-map.md) — BFM 最值得看的，不是「动作库更大」，而是把身体能力做成上层智能可调用的接口**——走、平衡、起身、接触、抗扰恢复要先在底层封装好，语言 / VLA / 世界模型 / 规划器才能稳定调用；41  `📅unknown` `[overview_page]`
 - [BFM 分类 01：Forward-backward 表征](wiki/overview/bfm-category-01-forward-backward-representation.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [BFM 分类 02：Goal-conditioned 学习](wiki/overview/bfm-category-02-goal-conditioned-learning.md) — 运控基座的**动作覆盖面**——跟踪、全身技能、遥操作、人-物交互（HOI）能否在统一目标条件下扩展？ `📅unknown` `[overview_page]`

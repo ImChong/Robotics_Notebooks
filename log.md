@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-21] ingest | sources/blogs/wechat_shenlan_ai_ad_2d_detection.md、sources/blogs/wechat_shenlan_ai_ad_3d_detection.md — 短链补抓深蓝AI 专辑第 1–2 篇（2D/3D 检测）；替换 pending；专辑总览升至 5/5
+
+- **工具：** Agent Reach v1.5.0 + wechat-article-for-ai（Camoufox）；**短链直连成功** — <https://mp.weixin.qq.com/s/7Mm5OwVKgoyT4Zpr45E34A>（2D）、<https://mp.weixin.qq.com/s/1d7P4HDXmmZUZiVNx1HfXw>（3D）
+- **新建 blogs：** [`sources/blogs/wechat_shenlan_ai_ad_2d_detection.md`](sources/blogs/wechat_shenlan_ai_ad_2d_detection.md)、[`sources/blogs/wechat_shenlan_ai_ad_3d_detection.md`](sources/blogs/wechat_shenlan_ai_ad_3d_detection.md)
+- **删除占位：** `sources/blogs/wechat_shenlan_ai_ad_2d_detection_pending.md`、`sources/blogs/wechat_shenlan_ai_ad_3d_detection_pending.md`
+- **新建 raw：** [`sources/raw/wechat_shenlan_ai_ad_2d_detection_2026-06-14.md`](sources/raw/wechat_shenlan_ai_ad_2d_detection_2026-06-14.md)、[`sources/raw/wechat_shenlan_ai_ad_3d_detection_2026-06-22.md`](sources/raw/wechat_shenlan_ai_ad_3d_detection_2026-06-22.md)
+- **更新：** [`sources/raw/wechat_shenlan_ai_ad_core_algorithms_album_2026.json`](sources/raw/wechat_shenlan_ai_ad_core_algorithms_album_2026.json)（1–2 篇 status=scraped）、[`wiki/overview/autonomous-driving-core-algorithms-series.md`](wiki/overview/autonomous-driving-core-algorithms-series.md)（5/5 + 检测速查表）、[`wiki/methods/object-detection.md`](wiki/methods/object-detection.md)
+
 ## [2026-07-21] ingest | sources/sites/x-humanoid.md、sources/sites/x-humanoid-opensource-cloud.md、sources/repos/open-x-humanoid.md — 接入 X-Humanoid 官网/天工造物社区/Open-X-Humanoid；升格 wiki/entities/x-humanoid.md；交叉 tienkung-humanoid-open-source、open-source-humanoid-hardware、openloong、pelican-unified-1、paper-loco-manip-161-038-hex、paper-heracles-humanoid-diffusion、humanoid-robot、robot-open-source-wechat-issue01-curator
 
 - **开源状态：** **已开源（多入口）** — 官网开源页 + 天工造物文档中心 + [`Open-X-Humanoid`](https://github.com/Open-X-Humanoid)（约 23 公开仓）；权重多在 HF `X-Humanoid`
@@ -7,6 +15,16 @@
 - **新建 repos：** [`sources/repos/open-x-humanoid.md`](sources/repos/open-x-humanoid.md)
 - **新建 wiki：** [`wiki/entities/x-humanoid.md`](wiki/entities/x-humanoid.md)
 - **交叉更新：** [`wiki/entities/tienkung-humanoid-open-source.md`](wiki/entities/tienkung-humanoid-open-source.md)、[`wiki/entities/open-source-humanoid-hardware.md`](wiki/entities/open-source-humanoid-hardware.md)、[`wiki/entities/openloong.md`](wiki/entities/openloong.md)、[`wiki/methods/pelican-unified-1.md`](wiki/methods/pelican-unified-1.md)、[`wiki/entities/paper-loco-manip-161-038-hex.md`](wiki/entities/paper-loco-manip-161-038-hex.md)、[`wiki/entities/paper-heracles-humanoid-diffusion.md`](wiki/entities/paper-heracles-humanoid-diffusion.md)、[`wiki/entities/humanoid-robot.md`](wiki/entities/humanoid-robot.md)、[`wiki/overview/robot-open-source-wechat-issue01-curator.md`](wiki/overview/robot-open-source-wechat-issue01-curator.md)
+
+## [2026-07-21] ingest | sources/blogs/wechat_shenlan_ai_ad_* + album — 深蓝AI《自动驾驶核心算法盘点》专辑（5 篇）；升格 wiki/overview/autonomous-driving-core-algorithms-series.md；正文入库 3/5（规划控制 / SLAM高精地图 / 跟踪预测）；第 1–2 篇 2D/3D 检测 CAPTCHA 占位
+
+- **工具：** [Agent Reach](https://github.com/Panniantong/Agent-Reach) v1.5.0 + [wechat-article-for-ai](https://github.com/bzd6661/wechat-article-for-ai)（Camoufox）；专辑页可直取列表；文章直连遇「环境异常」滑块，**搜狗微信中转**成功抓取第 3–5 篇；第 1–2 篇搜狗未收录且直连 CAPTCHA，仅占位
+- **专辑：** <https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzY4NjA5NTgyMQ==&action=getalbum&album_id=4596755873481310212>（深蓝AI，5 篇）
+- **新建 blogs：** [`sources/blogs/wechat_shenlan_ai_ad_planning_control.md`](sources/blogs/wechat_shenlan_ai_ad_planning_control.md)、[`sources/blogs/wechat_shenlan_ai_ad_slam_hdmap.md`](sources/blogs/wechat_shenlan_ai_ad_slam_hdmap.md)、[`sources/blogs/wechat_shenlan_ai_ad_tracking_prediction.md`](sources/blogs/wechat_shenlan_ai_ad_tracking_prediction.md)、[`sources/blogs/wechat_shenlan_ai_ad_2d_detection_pending.md`](sources/blogs/wechat_shenlan_ai_ad_2d_detection_pending.md)、[`sources/blogs/wechat_shenlan_ai_ad_3d_detection_pending.md`](sources/blogs/wechat_shenlan_ai_ad_3d_detection_pending.md)
+- **新建 raw：** [`sources/raw/wechat_shenlan_ai_ad_planning_control_2026-07-09.md`](sources/raw/wechat_shenlan_ai_ad_planning_control_2026-07-09.md)、[`sources/raw/wechat_shenlan_ai_ad_slam_hdmap_2026-07-13.md`](sources/raw/wechat_shenlan_ai_ad_slam_hdmap_2026-07-13.md)、[`sources/raw/wechat_shenlan_ai_ad_tracking_prediction_2026-07-19.md`](sources/raw/wechat_shenlan_ai_ad_tracking_prediction_2026-07-19.md)、[`sources/raw/wechat_shenlan_ai_ad_core_algorithms_album_2026.json`](sources/raw/wechat_shenlan_ai_ad_core_algorithms_album_2026.json)
+- **新建 wiki：** [`wiki/overview/autonomous-driving-core-algorithms-series.md`](wiki/overview/autonomous-driving-core-algorithms-series.md)
+- **交叉更新：** [`wiki/overview/navigation-slam-autonomy-stack.md`](wiki/overview/navigation-slam-autonomy-stack.md)、[`wiki/methods/object-detection.md`](wiki/methods/object-detection.md)、[`wiki/methods/lqr-ilqr.md`](wiki/methods/lqr-ilqr.md)、[`wiki/methods/model-predictive-control.md`](wiki/methods/model-predictive-control.md)、[`wiki/entities/python-robotics.md`](wiki/entities/python-robotics.md)
+- **待跟进：** 第 1–2 篇正文补抓后替换 pending blogs 并扩充专辑总览检测子索引
 
 ## [2026-07-21] ingest | sources/papers/gmt_arxiv_2506_14770.md、sources/sites/gmt-humanoid-github-io.md、sources/repos/humanoid-general-motion-tracking.md — 接入 GMT（arXiv:2506.14770）项目页与部分开源代码；新建 wiki/entities/paper-gmt.md；校正 161 策展误写扩散；交叉 whole-body-tracking-pipeline、humanoid-motion-tracking-method-selection、paper-phygile、paper-resmimic、egm-efficient-general-mimic、paper-loco-manip-161-009-gmt、paper-notebook-general-motion-tracking-for-humanoid-whole-body
 

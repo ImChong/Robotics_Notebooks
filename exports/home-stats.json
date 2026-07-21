@@ -1,13 +1,32 @@
 {
   "generated_at": "2026-07-21",
-  "node_count": 1747,
-  "edge_count": 14057,
+  "node_count": 1748,
+  "edge_count": 14078,
   "coverage": {
-    "covered": 1697,
-    "total": 1727,
+    "covered": 1698,
+    "total": 1728,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/autonomous-driving-core-algorithms-series.md",
+      "detail_id": "wiki-overview-autonomous-driving-core-algorithms-series",
+      "label": "《自动驾驶核心算法盘点》专栏技术地图",
+      "type": "overview",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/methods/object-detection.md",
+      "detail_id": "wiki-methods-object-detection",
+      "label": "目标检测（Object Detection）",
+      "type": "method",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/x-humanoid.md",
       "detail_id": "entity-x-humanoid",
@@ -16,8 +35,7 @@
       "recency": "2026-07-21",
       "source": "log.md",
       "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/tienkung-humanoid-open-source.md",
@@ -27,8 +45,7 @@
       "recency": "2026-07-21",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/open-source-humanoid-hardware.md",
@@ -38,8 +55,7 @@
       "recency": "2026-07-21",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/openloong.md",
@@ -104,6 +120,48 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
+      "path": "wiki/overview/navigation-slam-autonomy-stack.md",
+      "detail_id": "wiki-overview-navigation-slam-autonomy-stack",
+      "label": "导航·SLAM·自动驾驶开源栈总览",
+      "type": "overview",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/methods/lqr-ilqr.md",
+      "detail_id": "wiki-methods-lqr-ilqr",
+      "label": "LQR / iLQR 算法详解",
+      "type": "method",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/methods/model-predictive-control.md",
+      "detail_id": "wiki-methods-model-predictive-control",
+      "label": "Model Predictive Control (MPC，模型预测控制)",
+      "type": "method",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/entities/python-robotics.md",
+      "detail_id": "entity-python-robotics",
+      "label": "PythonRobotics",
+      "type": "entity",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
       "path": "wiki/entities/paper-gmt.md",
       "detail_id": "entity-paper-gmt",
       "label": "GMT（General Motion Tracking for Humanoid Whole-Body Control）",
@@ -153,91 +211,29 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-resmimic.md",
-      "detail_id": "entity-paper-resmimic",
-      "label": "ResMimic（GMT → 人形全身 Loco-Manipulation 残差学习）",
-      "type": "entity",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/methods/egm-efficient-general-mimic.md",
-      "detail_id": "wiki-methods-egm-efficient-general-mimic",
-      "label": "EGM（Efficient General Mimic，高效通用模仿跟踪）",
-      "type": "method",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-general-motion-tracking-for-humanoid-whole-body.md",
-      "detail_id": "entity-paper-notebook-general-motion-tracking-for-humanoid-whole-body",
-      "label": "General Motion Tracking for Humanoid Whole-Body Control（Paper Notebooks 计划）",
-      "type": "entity",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-humanoidarena.md",
-      "detail_id": "entity-paper-humanoidarena",
-      "label": "HumanoidArena（Egocentric Hierarchical Whole-body Benchmark）",
-      "type": "entity",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/overview/loco-manip-161-category-01-motion-base-wbt.md",
-      "detail_id": "wiki-overview-loco-manip-161-category-01-motion-base-wbt",
-      "label": "Loco-Manip 161 分类 01：运控基座与通用全身跟踪",
-      "type": "overview",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md",
-      "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",
-      "label": "Paper Notebooks · Loco-Manipulation and WBC",
-      "type": "overview",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/x-humanoid.md",
-    "detail_id": "entity-x-humanoid",
-    "label": "X-Humanoid（北京人形机器人创新中心）",
-    "type": "entity",
+    "path": "wiki/overview/autonomous-driving-core-algorithms-series.md",
+    "detail_id": "wiki-overview-autonomous-driving-core-algorithms-series",
+    "label": "《自动驾驶核心算法盘点》专栏技术地图",
+    "type": "overview",
     "recency": "2026-07-21",
     "source": "log.md",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 387
-    },
-    {
-      "label": "人形强化学习运动控制",
-      "size": 184
+      "size": 355
     },
     {
       "label": "人形论文深读笔记",
-      "size": 176
+      "size": 175
+    },
+    {
+      "label": "人形强化学习运动控制",
+      "size": 172
     },
     {
       "label": "移动操作",
@@ -245,11 +241,11 @@
     },
     {
       "label": "全身控制",
-      "size": 158
+      "size": 152
     },
     {
-      "label": "仿真训练",
-      "size": 67
+      "label": "仿真到现实",
+      "size": 103
     }
   ],
   "top_hubs": [
@@ -272,7 +268,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 287,
+      "degree": 288,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

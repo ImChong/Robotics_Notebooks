@@ -2,14 +2,16 @@
 type: method
 tags: [control, mpc, optimization, locomotion, humanoid]
 status: complete
-updated: 2026-07-18
+updated: 2026-07-21
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-receding-horizon-ilc.md
   - ./iterative-learning-control.md
   - ./lqr-ilqr.md
+  - ../overview/autonomous-driving-core-algorithms-series.md
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
+  - ../../sources/blogs/wechat_shenlan_ai_ad_planning_control.md
 summary: "MPC（模型预测控制）通过在线滚动优化未来轨迹，在约束控制与人形/腿足运动规划中广泛使用。"
 ---
 
@@ -235,6 +237,7 @@ print("apply control:", u.ravel())
 ## 参考来源
 
 - [wechat_shenlan_robot_control_eight_paradigms.md](../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md) — 深蓝八大控制体系：MPC 代表算法
+- [wechat_shenlan_ai_ad_planning_control.md](../../sources/blogs/wechat_shenlan_ai_ad_planning_control.md) — 车载轨迹跟踪 MPC 与 PID/LQR 分工
 - Bellicoso et al., *Convex Model Predictive Control for Bipedal Locomotion* — 双足行走 MPC 代表论文
 - [Optimal Control 2025 (YouTube Course)](https://www.youtube.com/playlist?list=PLZnJoM76RM6IAJfMXd1PgGNXn3dxhkVgI), Lecture 10: Convex MPC — 理论讲解
 - Acados (http://acados.org/) — 开源 NMPC 求解器，实现参考
@@ -242,6 +245,7 @@ print("apply control:", u.ravel())
 
 ## 关联页面
 
+- [《自动驾驶核心算法盘点》专栏技术地图](../overview/autonomous-driving-core-algorithms-series.md) — 车载 MPC 在规控组合中的位置
 - [八大机器人控制体系分类](../comparisons/robot-control-eight-paradigms-taxonomy.md)
 - [滚动优化与 ILC（体系⑥）](../overview/robot-control-paradigm-receding-horizon-ilc.md)
 - [Iterative Learning Control](./iterative-learning-control.md)
