@@ -1,13 +1,54 @@
 {
-  "generated_at": "2026-07-20",
-  "node_count": 1716,
-  "edge_count": 13723,
+  "generated_at": "2026-07-21",
+  "node_count": 1717,
+  "edge_count": 13735,
   "coverage": {
-    "covered": 1666,
-    "total": 1696,
+    "covered": 1667,
+    "total": 1697,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/ssik.md",
+      "detail_id": "entity-ssik",
+      "label": "ssik（解析逆运动学）",
+      "type": "entity",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/queries/actuator-drive-chain-selection-loop.md",
+      "detail_id": "wiki-queries-actuator-drive-chain-selection-loop",
+      "label": "Query：执行器驱动链选型闭环知识链",
+      "type": "query",
+      "recency": "2026-07-20",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/queries/ethercat-master-optimization.md",
+      "detail_id": "wiki-queries-ethercat-master-optimization",
+      "label": "EtherCAT 主站优化指南",
+      "type": "query",
+      "recency": "2026-07-20",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/concepts/implicit-explicit-actuator-modeling.md",
+      "detail_id": "wiki-concepts-implicit-explicit-actuator-modeling",
+      "label": "Implicit / Explicit 执行器建模",
+      "type": "concept",
+      "recency": "2026-07-20",
+      "source": "log.md",
+      "action": "maintained"
+    },
     {
       "path": "wiki/entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md",
       "detail_id": "entity-flexion-niantic-nvidia-rgb-sim2real-pipeline",
@@ -169,57 +210,18 @@
       "source": "log.md",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-cunrto-gpu-robust-trajectory-optimization.md",
-      "detail_id": "entity-paper-cunrto-gpu-robust-trajectory-optimization",
-      "label": "cuNRTO：GPU 加速非线性鲁棒轨迹优化（CUDA Nonlinear Robust Trajectory Optimization）",
-      "type": "entity",
-      "recency": "2026-07-20",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-unified-fluid-robot-multiphysics-swimming.md",
-      "detail_id": "entity-paper-unified-fluid-robot-multiphysics-swimming",
-      "label": "统一流体-机器人多物理可微仿真（Realizing Robotic Swimming with Unified Fluid-Robot Multiphysics）",
-      "type": "entity",
-      "recency": "2026-07-20",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/euroc-mav-datasets.md",
-      "detail_id": "entity-euroc-mav-datasets",
-      "label": "EuRoC MAV 数据集（The EuRoC Micro Aerial Vehicle Datasets）",
-      "type": "entity",
-      "recency": "2026-07-20",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-deimel-compliant-underactuated-robotic-hand.md",
-      "detail_id": "entity-paper-deimel-compliant-underactuated-robotic-hand",
-      "label": "顺应性欠驱动机器人手（A Novel Type of Compliant, Underactuated Robotic Hand for Dexterous Grasping）",
-      "type": "entity",
-      "recency": "2026-07-20",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md",
-    "detail_id": "entity-flexion-niantic-nvidia-rgb-sim2real-pipeline",
-    "label": "Flexion × Niantic Spatial × NVIDIA：RGB 导航 Sim2Real 管线",
+    "path": "wiki/entities/ssik.md",
+    "detail_id": "entity-ssik",
+    "label": "ssik（解析逆运动学）",
     "type": "entity",
-    "recency": "2026-07-20",
+    "recency": "2026-07-21",
     "source": "log.md",
     "action": "added",
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "has_repo": true,
+    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
   },
   "top_communities": [
     {
@@ -240,7 +242,7 @@
     },
     {
       "label": "全身控制",
-      "size": 131
+      "size": 132
     },
     {
       "label": "仿真训练",
@@ -283,7 +285,8 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 262,
+      "degree": 264,
+      "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {

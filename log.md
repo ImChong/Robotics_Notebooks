@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-21] ingest | sources/repos/ssik.md — 接入 UW PRL 解析 IK 库 ssik；wiki/entities/ssik.md；交叉更新 manipulation / teleoperation / moveit2 / curobo
+
 ## [2026-07-20] query | wiki/queries/actuator-drive-chain-selection-loop.md — V30 P1 执行器驱动链选型闭环知识链
 
 - 新建端到端 Query 页：EDA 电路设计 → 电机驱动固件 FOC → 执行器建模与摩擦辨识 → 实时总线闭环集成 四层驱动链选型决策链，配四层决策树 Mermaid、选型矛盾/失败模式速查、英文缩写表。
