@@ -2,7 +2,7 @@
 type: method
 tags: [vla, foundation-policy, deepmind, flow-matching, manipulation]
 status: complete
-updated: 2026-07-11
+updated: 2026-07-21
 related:
   - ./vla.md
   - ./pi07-policy.md
@@ -16,7 +16,7 @@ summary: "π₀ (Pi-zero) 是由 Physical Intelligence 提出的一种通用的 
 
 # π₀ (Pi-zero) 策略模型
 
-**π₀ (Pi-zero)** 是具身智能大模型（VLA）领域的最新突破，由 Physical Intelligence 团队于 2024 年提出。它旨在打破“一个机器人一个模型”的限制，通过单一的大型神经网络同时掌控不同形态（如双臂机械臂、灵巧手、移动底座）的机器人执行多样化的复杂任务。
+**π₀ (Pi-zero)** 是具身智能大模型（VLA）领域的奠基性工作，由 Physical Intelligence 团队于 2024 年提出（其后继版本见 [π₀.7](./pi07-policy.md)）。它旨在打破“一个机器人一个模型”的限制，通过单一的大型神经网络同时掌控不同形态（如双臂机械臂、灵巧手、移动底座）的机器人执行多样化的复杂任务。
 
 ## 英文缩写速查
 

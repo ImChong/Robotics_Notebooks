@@ -107,7 +107,7 @@ flowchart LR
 
 | 轴 | 报告口径 |
 |----|----------|
-| **vs 基线** | SOTA GNN（HOOD/ContourCraft 骨干）、MAT、LayersNet；**单统一模型** 三场景 test MVE **~6.5–15 cm**，最强基线 **~31–149 cm**（约 **4–9×** 误差比） |
+| **vs 基线** | 代表性 GNN（HOOD/ContourCraft 骨干）、MAT、LayersNet；**单统一模型** 三场景 test MVE **~6.5–15 cm**，最强基线 **~31–149 cm**（约 **4–9×** 误差比） |
 | **CCD 消融** | DCD only → +CCD loss → +CCD post. 逐步消除布–物与自碰撞伪影 |
 | **Latent 压缩** | \(K=1024\) 默认：**~4.9 ms/frame** 推理，精度–效率折中最优（Human Garment 50k-step 消融） |
 | **跨分辨率** | ~3.6k 训练 → **40k 顶点测试** 仍优于基线；核心 Transformer 耗时随分辨率增长慢于 GNN/MAT |
@@ -141,7 +141,7 @@ flowchart LR
 
 | 工作 | 关系 |
 |------|------|
-| **HOOD / ContourCraft（GNN）** | 人体着装 SOTA 骨干；**单场景或统一训练均劣于** ClothTransformer latent  formulation |
+| **HOOD / ContourCraft（GNN）** | 人体着装代表性骨干；**单场景或统一训练均劣于** ClothTransformer latent  formulation |
 | **MAT / LayersNet** | Transformer 基线；mesh/UV 耦合分辨率，泛化与速度受限 |
 | **[Deform360](./paper-deform360-deformable-visuotactile-dataset.md)** | **真实** 布/绳视触觉数据 + WM；本文偏 **仿真神经求解器 + 无穿透 GT** |
 | **[Flying Knots](./paper-flying-knots.md)** | **真机绳操纵 ILC**；本文 Robotic Manip. 为 **仿真可变形体动力学** |
@@ -161,7 +161,7 @@ flowchart LR
 - [ClothTransformer 项目页](https://yucrazing.github.io/clothtransformer/)
 - [ClothTransformer 数据集（Hugging Face）](https://huggingface.co/datasets/YuCrazing1/ClothTransformer-dataset)
 - Li et al., *GIPC: GPU-Accelerated Incremental Potential Contact* — 论文 GT 仿真器
-- Bian et al., *ContourCraft* — DCD 后处理多衣穿透 SOTA 对照
+- Bian et al., *ContourCraft* — DCD 后处理多衣穿透代表性对照
 
 ## 参考来源
 
