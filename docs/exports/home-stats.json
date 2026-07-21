@@ -1,13 +1,74 @@
 {
   "generated_at": "2026-07-21",
-  "node_count": 1744,
-  "edge_count": 13997,
+  "node_count": 1745,
+  "edge_count": 14017,
   "coverage": {
-    "covered": 1694,
-    "total": 1724,
+    "covered": 1695,
+    "total": 1725,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/autonomous-driving-core-algorithms-series.md",
+      "detail_id": "wiki-overview-autonomous-driving-core-algorithms-series",
+      "label": "《自动驾驶核心算法盘点》专栏技术地图",
+      "type": "overview",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/navigation-slam-autonomy-stack.md",
+      "detail_id": "wiki-overview-navigation-slam-autonomy-stack",
+      "label": "导航·SLAM·自动驾驶开源栈总览",
+      "type": "overview",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/object-detection.md",
+      "detail_id": "wiki-methods-object-detection",
+      "label": "目标检测（Object Detection）",
+      "type": "method",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/lqr-ilqr.md",
+      "detail_id": "wiki-methods-lqr-ilqr",
+      "label": "LQR / iLQR 算法详解",
+      "type": "method",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/methods/model-predictive-control.md",
+      "detail_id": "wiki-methods-model-predictive-control",
+      "label": "Model Predictive Control (MPC，模型预测控制)",
+      "type": "method",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/entities/python-robotics.md",
+      "detail_id": "entity-python-robotics",
+      "label": "PythonRobotics",
+      "type": "entity",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/paper-egohtr.md",
       "detail_id": "entity-paper-egohtr",
@@ -151,87 +212,22 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
-    },
-    {
-      "path": "wiki/entities/open-source-humanoid-hardware.md",
-      "detail_id": "entity-open-source-humanoid-hardware",
-      "label": "开源人形机器人硬件方案对比",
-      "type": "entity",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rynnbrain-1-1.md",
-      "detail_id": "entity-paper-rynnbrain-1-1",
-      "label": "RynnBrain 1.1：更强、更可泛化的具身基础模型",
-      "type": "entity",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/embodied-scaling-laws.md",
-      "detail_id": "wiki-concepts-embodied-scaling-laws",
-      "label": "Embodied Scaling Laws (具身规模法则)",
-      "type": "concept",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/foundation-policy.md",
-      "detail_id": "wiki-concepts-foundation-policy",
-      "label": "Foundation Policy（基础策略模型）",
-      "type": "concept",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/qwen-vla.md",
-      "detail_id": "entity-qwen-vla",
-      "label": "Qwen-VLA",
-      "type": "entity",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-egohtr.md",
-    "detail_id": "entity-paper-egohtr",
-    "label": "EgoHTR：第一视角粗糙地形人–场景 4D 演示",
-    "type": "entity",
+    "path": "wiki/overview/autonomous-driving-core-algorithms-series.md",
+    "detail_id": "wiki-overview-autonomous-driving-core-algorithms-series",
+    "label": "《自动驾驶核心算法盘点》专栏技术地图",
+    "type": "overview",
     "recency": "2026-07-21",
     "source": "log.md",
     "action": "added",
-    "community_label": "动作重定向（Motion Retargeting） 社区"
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 402
+      "size": 400
     },
     {
       "label": "人形论文深读笔记",
@@ -247,7 +243,7 @@
     },
     {
       "label": "全身控制",
-      "size": 132
+      "size": 129
     },
     {
       "label": "仿真训练",
@@ -274,7 +270,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 286,
+      "degree": 287,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

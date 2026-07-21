@@ -1,5 +1,15 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-21] ingest | sources/blogs/wechat_shenlan_ai_ad_* + album — 深蓝AI《自动驾驶核心算法盘点》专辑（5 篇）；升格 wiki/overview/autonomous-driving-core-algorithms-series.md；正文入库 3/5（规划控制 / SLAM高精地图 / 跟踪预测）；第 1–2 篇 2D/3D 检测 CAPTCHA 占位
+
+- **工具：** [Agent Reach](https://github.com/Panniantong/Agent-Reach) v1.5.0 + [wechat-article-for-ai](https://github.com/bzd6661/wechat-article-for-ai)（Camoufox）；专辑页可直取列表；文章直连遇「环境异常」滑块，**搜狗微信中转**成功抓取第 3–5 篇；第 1–2 篇搜狗未收录且直连 CAPTCHA，仅占位
+- **专辑：** <https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzY4NjA5NTgyMQ==&action=getalbum&album_id=4596755873481310212>（深蓝AI，5 篇）
+- **新建 blogs：** [`sources/blogs/wechat_shenlan_ai_ad_planning_control.md`](sources/blogs/wechat_shenlan_ai_ad_planning_control.md)、[`sources/blogs/wechat_shenlan_ai_ad_slam_hdmap.md`](sources/blogs/wechat_shenlan_ai_ad_slam_hdmap.md)、[`sources/blogs/wechat_shenlan_ai_ad_tracking_prediction.md`](sources/blogs/wechat_shenlan_ai_ad_tracking_prediction.md)、[`sources/blogs/wechat_shenlan_ai_ad_2d_detection_pending.md`](sources/blogs/wechat_shenlan_ai_ad_2d_detection_pending.md)、[`sources/blogs/wechat_shenlan_ai_ad_3d_detection_pending.md`](sources/blogs/wechat_shenlan_ai_ad_3d_detection_pending.md)
+- **新建 raw：** [`sources/raw/wechat_shenlan_ai_ad_planning_control_2026-07-09.md`](sources/raw/wechat_shenlan_ai_ad_planning_control_2026-07-09.md)、[`sources/raw/wechat_shenlan_ai_ad_slam_hdmap_2026-07-13.md`](sources/raw/wechat_shenlan_ai_ad_slam_hdmap_2026-07-13.md)、[`sources/raw/wechat_shenlan_ai_ad_tracking_prediction_2026-07-19.md`](sources/raw/wechat_shenlan_ai_ad_tracking_prediction_2026-07-19.md)、[`sources/raw/wechat_shenlan_ai_ad_core_algorithms_album_2026.json`](sources/raw/wechat_shenlan_ai_ad_core_algorithms_album_2026.json)
+- **新建 wiki：** [`wiki/overview/autonomous-driving-core-algorithms-series.md`](wiki/overview/autonomous-driving-core-algorithms-series.md)
+- **交叉更新：** [`wiki/overview/navigation-slam-autonomy-stack.md`](wiki/overview/navigation-slam-autonomy-stack.md)、[`wiki/methods/object-detection.md`](wiki/methods/object-detection.md)、[`wiki/methods/lqr-ilqr.md`](wiki/methods/lqr-ilqr.md)、[`wiki/methods/model-predictive-control.md`](wiki/methods/model-predictive-control.md)、[`wiki/entities/python-robotics.md`](wiki/entities/python-robotics.md)
+- **待跟进：** 第 1–2 篇正文补抓后替换 pending blogs 并扩充专辑总览检测子索引
+
 ## [2026-07-21] ingest | sources/papers/egohtr_arxiv_2607_13472.md — EgoHTR（ETH×Stanford×Berkeley×TUM）rough-terrain 人–场景 4D 数据集；升格 wiki/entities/paper-egohtr.md；交叉 wiki/comparisons/humanoid-reference-motion-datasets.md、wiki/entities/amass.md、wiki/tasks/locomotion.md、wiki/concepts/terrain-adaptation.md、wiki/concepts/motion-retargeting.md、wiki/entities/paper-hrl-stack-03-omniretarget.md、wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md；项目页 Dataset/Code coming soon
 
 - **开源状态：** **宣称将开源 / 待发布** — 项目页 Dataset / Code 均 *coming soon*；GitHub org 仅站点仓（截至 2026-07-21）

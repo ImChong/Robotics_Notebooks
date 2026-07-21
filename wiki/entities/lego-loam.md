@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, lidar, loam, ground-vehicle, slam, hku]
 status: complete
-updated: 2026-05-27
+updated: 2026-07-21
 related:
   - ../entities/fast-lio.md
   - ../comparisons/lidar-slam-lio-vio-selection.md

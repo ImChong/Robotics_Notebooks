@@ -7,7 +7,7 @@ tags:
   - real-time
   - robotics
 status: complete
-updated: 2026-06-22
+updated: 2026-07-21
 related:
   - ../concepts/vision-backbones.md
   - ../comparisons/cnn-vs-vit-backbones.md
@@ -18,11 +18,14 @@ related:
   - ../entities/rf-detr.md
   - ../tasks/manipulation.md
   - ../tasks/humanoid-soccer.md
+  - ../overview/autonomous-driving-core-algorithms-series.md
 sources:
   - ../../sources/papers/yolo_arxiv_1506_02640.md
   - ../../sources/papers/resnet_arxiv_1512_03385.md
   - ../../sources/papers/vision_backbone_detection_classics.md
   - ../../sources/papers/rf_detr_arxiv_2511_09554.md
+  - ../../sources/blogs/wechat_shenlan_ai_ad_2d_detection_pending.md
+  - ../../sources/blogs/wechat_shenlan_ai_ad_3d_detection_pending.md
 summary: "目标检测在图像中定位并分类物体；两阶段 R-CNN 族精度高，YOLO 等单阶段方法以端到端回归实现机载实时感知，DETR/RF-DETR 等无 NMS Transformer 路线在 ViT 骨干下补齐精度–延迟前沿，是机器人导航与操作视觉栈的核心模块。"
 ---
 
@@ -131,6 +134,7 @@ YOLO v1 误差分析（相对 Fast R-CNN）：
 - [Booster RoboCup Demo](../entities/booster-robocup-demo.md)
 - [Visual Servoing（方法）](./visual-servoing.md)
 - [Query：目标检测模型选型](../queries/object-detection-model-selection.md)
+- [《自动驾驶核心算法盘点》专栏技术地图](../overview/autonomous-driving-core-algorithms-series.md) — 车载 2D/3D 检测篇待补抓，跟踪上游依赖 3D 检测
 
 ## 参考来源
 
@@ -138,6 +142,8 @@ YOLO v1 误差分析（相对 Fast R-CNN）：
 - [ResNet 论文摘录（arXiv:1512.03385）](../../sources/papers/resnet_arxiv_1512_03385.md)
 - [经典视觉骨干与检测文献簇](../../sources/papers/vision_backbone_detection_classics.md)
 - [RF-DETR 论文摘录（arXiv:2511.09554）](../../sources/papers/rf_detr_arxiv_2511_09554.md)
+- [深蓝AI 2D 检测篇占位](../../sources/blogs/wechat_shenlan_ai_ad_2d_detection_pending.md)
+- [深蓝AI 3D 检测篇占位](../../sources/blogs/wechat_shenlan_ai_ad_3d_detection_pending.md)
 
 ## 推荐继续阅读
 

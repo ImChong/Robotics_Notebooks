@@ -1,0 +1,49 @@
+{
+  "album_title": "自动驾驶核心算法盘点",
+  "album_id": "4596755873481310212",
+  "biz": "MzY4NjA5NTgyMQ==",
+  "account": "深蓝AI",
+  "album_url": "https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzY4NjA5NTgyMQ==&action=getalbum&album_id=4596755873481310212",
+  "articles": [
+    {
+      "ord": 1,
+      "title": "自动驾驶感知算法盘点｜目标检测篇（一）",
+      "mid": "2247601965",
+      "sn": "bd482fb32d1e40b17bcdc8dfedf7ea04",
+      "status": "captcha_blocked",
+      "create_time": "1781410140"
+    },
+    {
+      "ord": 2,
+      "title": "3D目标检测经典算法全盘点：单目、双目、激光雷达",
+      "mid": "2247602190",
+      "sn": "a9e9a29449a395f8c08f54f4c78fed06",
+      "status": "captcha_blocked",
+      "create_time": null
+    },
+    {
+      "ord": 3,
+      "title": "自动驾驶核心算法盘点｜规划与控制篇",
+      "mid": "2247602818",
+      "sn": "e6a0f914dcdd7878d5f4993d247fb85c",
+      "status": "scraped",
+      "date": "2026-07-09"
+    },
+    {
+      "ord": 4,
+      "title": "自动驾驶核心算法盘点｜SLAM与高精地图篇",
+      "mid": "2247602862",
+      "sn": "9918db21b11a1d5fcec96482798bbff7",
+      "status": "scraped",
+      "date": "2026-07-13"
+    },
+    {
+      "ord": 5,
+      "title": "自动驾驶核心算法盘点｜目标跟踪与轨迹预测篇",
+      "mid": "2247603090",
+      "sn": "50660dccdee1fe7f77438eb839203156",
+      "status": "scraped",
+      "date": "2026-07-19"
+    }
+  ]
+}
