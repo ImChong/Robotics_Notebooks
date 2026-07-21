@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-21
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型。"
 related:
   - ../../roadmap/depth-wam.md
@@ -22,6 +22,8 @@ related:
   - ../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md
   - ../entities/paper-egowam-egocentric-human-wam-co-training.md
   - ../entities/paper-wam-ttt-human-video-test-time-steering.md
+  - ../entities/paper-x-foresight.md
+  - ../entities/paper-x-mind.md
   - ../tasks/vision-language-navigation.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
   - ./humanoid-policy-network-architecture.md
@@ -49,6 +51,8 @@ sources:
   - ../../sources/papers/being_m07.md
   - ../../sources/papers/pelican_unified_uei_arxiv_2605_15153.md
   - ../../sources/papers/defi_arxiv_2604_16391.md
+  - ../../sources/papers/x_foresight_arxiv_2605_24892.md
+  - ../../sources/papers/x_mind_arxiv_2606_28758.md
   - ../../sources/repos/awesome-wam-openmoss.md
   - ../../sources/sites/awesome-wam-openmoss.md
   - ../../sources/repos/dexmal_opendw.md
@@ -210,6 +214,8 @@ flowchart TB
 - [WAM-TTT（人视频 · 测试时训练 steering）](../entities/paper-wam-ttt-human-video-test-time-steering.md)
 - [τ₀-World Model（τ0-WM）](../entities/tau0-world-model.md)
 - [Dexmal DW05（OpenDW）](../entities/dexmal-dw05.md)
+- [X-Foresight](../entities/paper-x-foresight.md) — 驾驶域 Joint：chunk-wise 世界因果 + 动作同训（小鹏；未开源）
+- [X-Mind](../entities/paper-x-mind.md) — 驾驶域 Visual CoT：PWM 内化为压缩 sketch（小鹏；未开源）
 - [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md)
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [Model-Based RL](../methods/model-based-rl.md)

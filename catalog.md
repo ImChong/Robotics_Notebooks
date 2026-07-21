@@ -985,6 +985,7 @@
 - [G3M](wiki/entities/paper-tro-manip-04-g3m.md) — G3M**（*Learning From Videos Through Graph-to-Graphs Generative Modeling for Robotic Manipulation*） `📅unknown` `[entity_page]`
 - [DGM Robot Learning Survey](wiki/entities/paper-tro-manip-05-dgm-robot-learning-survey.md) — A Survey on Deep Generative Models for Robot Learning From Multimodal Demonstrations** 收录于 [深蓝具身智能 `📅unknown` `[entity_page]`
 - [TSIL（Temporal Self-Imitation Learning）](wiki/entities/paper-tsil-temporal-self-imitation-learning.md) — TSIL**（*Temporal Self-Imitation Learning*，Jia & Chen，Duke / General Robotics Lab，arXiv:[2606.19752 `📅unknown` `[entity_page]`
+- [TuringViT（Making SOTA Vision Transformers Accessible to All）](wiki/entities/paper-turingvit.md) — TuringViT**（arXiv:2606.24253）由小鹏（XPeng）提出：面向 VLM/VLA 时代的 **可定制 SOTA 视 `📅unknown` `[entity_page]`
 - [TWIST](wiki/entities/paper-twist.md) — TWIST**（*Teleoperated Whole-Body Imitation System*，arXiv:2505.02833，CoRL 2025）是全身人形遥操作与模仿学习系统。 `📅unknown` `[entity_page]`
 - [TWIST2](wiki/entities/paper-twist2.md) — TWIST2**（*Scalable, Portable, and Holistic Humanoid Data Collection System*，arXiv:2511.02832，**ICR `📅unknown` `[entity_page]`
 - [Ultra-Fusion（韧性多传感器融合 SLAM）](wiki/entities/paper-ultra-fusion-multi-sensor-slam.md) — Ultra-Fusion**（Tian et al., arXiv:2606.21223，项目页， `📅unknown` `[entity_page]`
@@ -1017,7 +1018,11 @@
 - [WOLF-VLA](wiki/entities/paper-wolf-vla.md) — WOLF-VLA**（arXiv:2606.25591，DFKI 等）收录于 [具身智能研究室 · Loco-Manip 接触专题](https://mp.weixin.qq.com/s/UjSh `📅unknown` `[entity_page]`
 - [Worldscape-MoE（Unified Mixture-of-Experts World Model · arXiv:2607.03964）](wiki/entities/paper-worldscape-moe-heterogeneous-action.md) — Worldscape-MoE**（*Worldscape-MoE: A Unified Mixture-of-Experts World Model for Scalable Heterogene `📅unknown` `[entity_page]`
 - [WorldVLN（空中 VLN · 自回归 World Action Model）](wiki/entities/paper-worldvln-aerial-vln-wam.md) — WorldVLN**（*Autoregressive World Action Model for Aerial Vision-Language Navigation*，arXiv:2605.15 `📅unknown` `[entity_page]`
+- [X-Cache（Cross-Chunk Block Caching）](wiki/entities/paper-x-cache.md) — X-Cache**（arXiv:2604.20289）由小鹏（XPeng） AI Infra 团队提出：专为 **少步蒸馏 + 闭环交互 `📅unknown` `[entity_page]`
+- [X-Foresight（Joint Vision-Action Causal Forecasting）](wiki/entities/paper-x-foresight.md) — X-Foresight**（arXiv:2605.24892）由小鹏（XPeng） PWM 团队提出：将 **预测式世界模型** 直接集成 `📅unknown` `[entity_page]`
 - [X-IONet（跨平台惯性里程计网络）](wiki/entities/paper-x-ionet-cross-platform-inertial-odometry.md) — X-IONet**（Cross-Platform Inertial Odometry Network）是 Shen & Chen 提出的 **仅用单 IMU** 的跨平台惯性里程计框架（IEEE  `📅unknown` `[entity_page]`
+- [X-Mind（Efficient Visual Chain-of-Thought via Predictive World Model）](wiki/entities/paper-x-mind.md) — X-Mind**（arXiv:2606.28758）由小鹏（XPeng） PWM 团队提出：将 **Predictive World Mo `📅unknown` `[entity_page]`
+- [X-World（Controllable Ego-Centric Multi-Camera World Models）](wiki/entities/paper-x-world.md) — X-World**（arXiv:2603.19979）由小鹏（XPeng） GWM 团队提出：面向端到端智驾评测与数据扩增的 **动作条件 `📅unknown` `[entity_page]`
 - [YOLO v1（You Only Look Once）](wiki/entities/paper-yolo-unified-realtime-detection.md) — YOLO**（You Only Look Once）是 Joseph Redmon 等提出的 **统一实时目标检测** 方法（arXiv:1506.02640，CVPR 2016）。它将检测从「区 `📅unknown` `[entity_page]`
 - [PAROL6（Source Robotics）](wiki/entities/parol6-source-robotics.md) — PAROL6** 是 **Source Robotics** 推出的 **开源桌面六轴机械臂**：强调 **低成本、可 DIY、ROS 控制**；产品介绍在 **[source-robotics. `📅unknown` `[entity_page]`
 - [Party OS（RoboParty 人形研发底座）](wiki/entities/party-os.md) — Party OS** 是 RoboParty 旗下 RoboParty Lab 对外沉淀的 **开放研 `📅unknown` `[entity_page]`

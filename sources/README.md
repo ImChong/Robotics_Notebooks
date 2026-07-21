@@ -9,6 +9,11 @@
 ### papers/ — 论文来源归档
 | 文件 | 内容 |
 |------|------|
+| [x] [turingvit_arxiv_2606_24253.md](papers/turingvit_arxiv_2606_24253.md) | TuringViT：VLM-native 线性注意力 ViT（arXiv:2606.24253，小鹏；项目页未开源） |
+| [x] [x_world_arxiv_2603_19979.md](papers/x_world_arxiv_2603_19979.md) | X-World：7 摄动作条件驾驶世界模型（arXiv:2603.19979，小鹏；未开源） |
+| [x] [x_cache_arxiv_2604_20289.md](papers/x_cache_arxiv_2604_20289.md) | X-Cache：少步 AR 世界模型跨 chunk 缓存加速（arXiv:2604.20289，小鹏；未开源） |
+| [x] [x_foresight_arxiv_2605_24892.md](papers/x_foresight_arxiv_2605_24892.md) | X-Foresight：驾驶 VLA 内嵌长视界预测式世界建模（arXiv:2605.24892，小鹏；未开源） |
+| [x] [x_mind_arxiv_2606_28758.md](papers/x_mind_arxiv_2606_28758.md) | X-Mind：Visual CoT + 压缩 sketch / RBD（arXiv:2606.28758，小鹏；未开源） |
 | [x] [robottt_nvidia_gear.md](papers/robottt_nvidia_gear.md) | RoboTTT：NVIDIA GEAR 在 GR00T N1.7 VLA 内嵌 TTT fast weights，visuomotor 上下文扩至 8K 步（项目页 research.nvidia.com/labs/gear/robottt/） |
 | [x] [rl_pd_action_interface_locomotion.md](papers/rl_pd_action_interface_locomotion.md) | RL+PD 动作接口与增益设计：Digit / Cassie / 四足经典 / 可变刚度 / 扭矩控制等 10 篇索引 |
 | [x] [sds_quadruped_arxiv_2410_11571.md](papers/sds_quadruped_arxiv_2410_11571.md) | SDS：四足单视频 VLM→奖励 + IsaacGym 闭环进化（arXiv:2410.11571），E-SDS 前序方法摘录 |
@@ -337,6 +342,11 @@
 ### sites/ — 网站与在线工具归档
 | 文件 | 内容 |
 |------|------|
+| [x] [turingvit-github-io.md](sites/turingvit-github-io.md) | TuringViT 项目页 turingvit.github.io（小鹏；截至入库日未列代码） |
+| [x] [x-world-1-github-io.md](sites/x-world-1-github-io.md) | X-World 项目页 x-world-1.github.io（小鹏 GWM；未开源） |
+| [x] [x-cache-1-github-io.md](sites/x-cache-1-github-io.md) | X-Cache 项目页 x-cache-1.github.io（小鹏 AI Infra；未开源） |
+| [x] [x-foresight-1-github-io.md](sites/x-foresight-1-github-io.md) | X-Foresight 项目页 x-foresight-1.github.io（小鹏 PWM；未开源） |
+| [x] [xp-x-mind-github-io.md](sites/xp-x-mind-github-io.md) | X-Mind 项目页 xp-x-mind.github.io（小鹏 PWM；未开源） |
 | [x] [amass-dataset.md](sites/amass-dataset.md) | AMASS：MPI-IS 统一 SMPL 人体动捕元数据集（站点与论文索引） |
 | [x] [apollo-lab-yale-apollo-resources-github-io.md](sites/apollo-lab-yale-apollo-resources-github-io.md) | apollo-lab-yale.github.io/apollo-resources：URDD 浏览器内可视化（Three.js + GitHub API 列机器人） |
 | [x] [now-you-see-that-github-io.md](sites/now-you-see-that-github-io.md) | Now You See That 项目页 hellod035.github.io（RSS 2026、深度增广可视化、跑酷/楼梯/平衡恢复实机视频；arXiv:2602.06382） |
