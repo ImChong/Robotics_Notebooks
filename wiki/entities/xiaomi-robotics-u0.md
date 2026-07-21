@@ -2,7 +2,7 @@
 type: entity
 tags: [world-models, generative-ai, autoregressive, multi-view, embodied-synthesis, open-source, xiaomi, manipulation, data-augmentation]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-21
 related:
   - ../methods/generative-world-models.md
   - ../concepts/video-as-simulation.md

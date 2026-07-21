@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-21",
-  "node_count": 1734,
-  "edge_count": 13882,
+  "node_count": 1735,
+  "edge_count": 13892,
   "coverage": {
-    "covered": 1684,
-    "total": 1714,
+    "covered": 1685,
+    "total": 1715,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -16,7 +16,36 @@
       "recency": "2026-07-21",
       "source": "log.md",
       "action": "added",
-      "community_label": "机器人系统工程（专题汇总） 社区"
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/handroid.md",
+      "detail_id": "entity-handroid",
+      "label": "Handroid",
+      "type": "entity",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-raven-rl-adaptive-visibility-graph-mpc.md",
+      "detail_id": "entity-paper-raven-rl-adaptive-visibility-graph-mpc",
+      "label": "RAVEN：强化学习自适应可见图规划 + 无碰撞 MPC",
+      "type": "entity",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/xiaomi-robotics-1.md",
+      "detail_id": "entity-xiaomi-robotics-1",
+      "label": "Xiaomi-Robotics-1",
+      "type": "entity",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/isaac-sim.md",
@@ -81,7 +110,8 @@
       "recency": "2026-07-20",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/queries/ethercat-master-optimization.md",
@@ -91,7 +121,7 @@
       "recency": "2026-07-20",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "机器人系统工程（专题汇总） 社区"
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/concepts/implicit-explicit-actuator-modeling.md",
@@ -109,7 +139,8 @@
       "type": "entity",
       "recency": "2026-07-20",
       "source": "log.md",
-      "action": "added"
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/paper-swarm-micro-flying-robots-in-the-wild.md",
@@ -179,38 +210,7 @@
       "recency": "2026-07-20",
       "source": "log.md",
       "action": "added",
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-tianjicx-neuromorphic-chip-robots.md",
-      "detail_id": "entity-paper-tianjicx-neuromorphic-chip-robots",
-      "label": "TianjicX：面向多任务机器人的时空弹性神经形态芯片",
-      "type": "entity",
-      "recency": "2026-07-20",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-neurogpr-brain-inspired-place-recognition.md",
-      "detail_id": "entity-paper-neurogpr-brain-inspired-place-recognition",
-      "label": "NeuroGPR：脑启发多模态混合神经网络机器人场所识别",
-      "type": "entity",
-      "recency": "2026-07-20",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/methods/flashsac.md",
-      "detail_id": "wiki-methods-flashsac",
-      "label": "FlashSAC",
-      "type": "method",
-      "recency": "2026-07-20",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -221,24 +221,24 @@
     "recency": "2026-07-21",
     "source": "log.md",
     "action": "added",
-    "community_label": "机器人系统工程（专题汇总） 社区"
+    "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 396
+      "size": 367
+    },
+    {
+      "label": "模仿学习",
+      "size": 206
     },
     {
       "label": "人形论文深读笔记",
-      "size": 176
+      "size": 179
     },
     {
       "label": "移动操作",
-      "size": 173
-    },
-    {
-      "label": "人形强化学习运动控制",
-      "size": 142
+      "size": 153
     },
     {
       "label": "全身控制",
@@ -246,7 +246,7 @@
     },
     {
       "label": "仿真训练",
-      "size": 91
+      "size": 67
     }
   ],
   "top_hubs": [
@@ -316,14 +316,15 @@
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
       "degree": 180,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
       "label": "人形机器人 RL 运动控制：身体系统栈视角",
       "type": "overview",
       "degree": 178,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     }
   ],
   "top_paper_hubs": [
@@ -339,14 +340,16 @@
       "label": "BeyondMimic",
       "type": "method",
       "degree": 54,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",
       "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
       "type": "entity",
       "degree": 46,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",
@@ -359,7 +362,8 @@
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
-      "degree": 45
+      "degree": 45,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
@@ -380,14 +384,14 @@
       "type": "entity",
       "degree": 36,
       "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",
       "label": "SD-AMP：统一走、跑与起身的对抗运动先验",
       "type": "entity",
       "degree": 36,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",

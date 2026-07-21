@@ -3,7 +3,7 @@
 type: entity
 tags: [humanoid, hardware, open-source, robotics, research, berkeley]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-21
 related:
   - ../overview/humanoid-hardware-101-technology-map.md
   - ./humanoid-robot.md

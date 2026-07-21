@@ -3,11 +3,12 @@ type: comparison
 tags: [mpc, rl, control, locomotion, comparison, engineering-selection]
 status: stable
 summary: "MPC vs RL：控制策略选型对比"
-updated: 2026-06-10
+updated: 2026-07-21
 sources:
   - ../../sources/papers/mpc.md
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/mpc_rl_arxiv_2606_05687.md
+  - ../../sources/papers/raven_rl_adaptive_visibility_graph_arxiv_2607_15701.md
 ---
 
 # MPC vs RL：控制策略选型对比
@@ -176,6 +177,7 @@ sources:
 - [MPC Solver Selection](../queries/mpc-solver-selection.md) — MPC 求解器选型指南
 - [MPC-RL](../entities/paper-mpc-rl-humanoid-locomotion-manipulation.md) — 训练期 MPC 地标奖励 + 部署期纯 RL
 - [π MPC](../methods/pi-mpc.md) — parallel-in-horizon ADMM 求解器（MPC-RL 批训练后端）
+- [RAVEN](../entities/paper-raven-rl-adaptive-visibility-graph-mpc.md) — RL 只改可见图障碍膨胀，cf-MPC 保约束的人形导航混合栈
 
 ---
 
@@ -183,6 +185,7 @@ sources:
 
 - Bledt & Kim, *Implementing Regularized Predictive Control for High-Performance Quadrupedal Locomotion*
 - Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep RL*
+- Hou et al., *RAVEN* ([arXiv:2607.15701](https://arxiv.org/abs/2607.15701)) — RL 自适应规划几何 + collision-free MPC
 
 ## 一句话记忆
 
