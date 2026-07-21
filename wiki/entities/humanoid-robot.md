@@ -19,6 +19,8 @@ related:
   - ./boston-dynamics.md
   - ./asimov-v1.md
   - ./openloong.md
+  - ./x-humanoid.md
+  - ./tienkung-humanoid-open-source.md
   - ../concepts/humanoid-parallel-joint-kinematics.md
   - ../concepts/planetary-roller-screw-humanoid-leg-actuation.md
   - ./figure-ai.md
