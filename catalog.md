@@ -1047,6 +1047,7 @@
 - [Qwen-Robot Suite](wiki/entities/qwen-robot-suite.md) — Qwen-Robot Suite**（官方总览博客）把 **视觉–语言理解** 与 **三类物理动作域** 对 `📅unknown` `[entity_page]`
 - [Qwen-RobotWorld](wiki/entities/qwen-robot-world.md) — Qwen-RobotWorld**（深度博客 | [技术报告 PDF](https://qianwen-res `📅unknown` `[entity_page]`
 - [Qwen-VLA](wiki/entities/qwen-vla.md) — Qwen-VLA**（QwenLM/Qwen-VLA）把 **操作（manipulation）**、**视觉–语言导航（ `📅unknown` `[entity_page]`
+- [reBot-DevArm（Seeed reBot Arm B601）](wiki/entities/rebot-devarm.md) — reBot-DevArm**（商品名 **reBot Arm B601**）是 Seeed Studio 推出的 **桌面级开源六轴 `📅unknown` `[entity_page]`
 - [REK（Robot Embodied Kombat · 人形格斗联赛）](wiki/entities/rek.md) — REK** 是旧金山公司 **Robot Embodied Kombat** 运营的 **人形机器人格斗体育联赛**：选手在场边戴 **VR 头显**，通过自研 **REK TEK** 将人体动作 `📅unknown` `[entity_page]`
 - [RF-DETR（Roboflow Detection Transformer）](wiki/entities/rf-detr.md) — RF-DETR** 是 Roboflow 与 CMU 联合提出的 **实时 closed-vocabulary 检测 Transformer**（ICLR 2026，[arXiv:2511.095 `📅unknown` `[entity_page]`
 - [辉羲智能（Rhino Auto）](wiki/entities/rhino-auto.md) — 辉羲智能**（rhino.auto）是专注 **车载智能计算平台** 的芯片与方案公司：2024 年世界智能网联汽车大会发布首款高阶智驾芯片 **光至 `📅unknown` `[entity_page]`

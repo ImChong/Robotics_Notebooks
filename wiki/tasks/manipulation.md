@@ -199,6 +199,7 @@ flowchart TD
 ## 关联页面
 
 - [ssik（解析逆运动学）](../entities/ssik.md) — 6R/7R 全分支解析 IK；遥操作跟踪与规划种子枚举，覆盖 EAIK 拒绝的几何
+- [reBot-DevArm（Seeed B601）](../entities/rebot-devarm.md) — 全栈开源桌面六轴臂（DM/RS）；LeRobot / ROS2 / Pinocchio 已适配
 - [cuRobo（GPU 无碰撞运动生成）](../entities/curobo.md) — 到达、避障与 MoveIt / Isaac ROS 集成路径上的规划–优化参考栈
 - [MoveIt 2](../entities/moveit2.md) — ROS 2 机械臂运动规划、Planning Scene 与 pick-and-place（MTC）事实标准栈
 - [ScheduleStream（多臂 TAMP 与调度）](../entities/schedulestream.md) — 双臂/多臂 **物体分配 + 并行运动时间表** 的规划层框架（ICRA 2026）
