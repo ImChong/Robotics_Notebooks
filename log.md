@@ -1,5 +1,14 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-21] ingest | sources/papers/egohtr_arxiv_2607_13472.md — EgoHTR（ETH×Stanford×Berkeley×TUM）rough-terrain 人–场景 4D 数据集；升格 wiki/entities/paper-egohtr.md；交叉 wiki/comparisons/humanoid-reference-motion-datasets.md、wiki/entities/amass.md、wiki/tasks/locomotion.md、wiki/concepts/terrain-adaptation.md、wiki/concepts/motion-retargeting.md、wiki/entities/paper-hrl-stack-03-omniretarget.md、wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md；项目页 Dataset/Code coming soon
+
+- **开源状态：** **宣称将开源 / 待发布** — 项目页 Dataset / Code 均 *coming soon*；GitHub org 仅站点仓（截至 2026-07-21）
+- **新建 papers：** [`sources/papers/egohtr_arxiv_2607_13472.md`](sources/papers/egohtr_arxiv_2607_13472.md)
+- **新建 sites：** [`sources/sites/egohtr-github-io.md`](sources/sites/egohtr-github-io.md)
+- **新建 wiki：** [`wiki/entities/paper-egohtr.md`](wiki/entities/paper-egohtr.md)
+- **机构：** `schema/institutions.json` 新增 `tum`（慕尼黑工业大学）
+- **交叉更新：** [`wiki/comparisons/humanoid-reference-motion-datasets.md`](wiki/comparisons/humanoid-reference-motion-datasets.md)、[`wiki/entities/amass.md`](wiki/entities/amass.md)、[`wiki/tasks/locomotion.md`](wiki/tasks/locomotion.md)、[`wiki/concepts/terrain-adaptation.md`](wiki/concepts/terrain-adaptation.md)、[`wiki/concepts/motion-retargeting.md`](wiki/concepts/motion-retargeting.md)、[`wiki/entities/paper-hrl-stack-03-omniretarget.md`](wiki/entities/paper-hrl-stack-03-omniretarget.md)、[`wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md`](wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md)、[`wiki/methods/motion-retargeting-gmr.md`](wiki/methods/motion-retargeting-gmr.md)
+
 ## [2026-07-21] ingest | sources/papers/ergocub_shared_embodied_intelligence_nmi_s42256_026_01272_2.md + sites/repos — ergoCub Shared Embodied Intelligence（Nat Mach Intell 2026）；wiki/entities/paper-ergocub-shared-embodied-intelligence.md；交叉 WBC / locomotion / sim2real / humanoid-robot / icub3 / open-source-hardware；注册 iit/inail/generative-bionics/university-of-manchester
 
 - **开源状态：** **已开源** — 论文复现仓（BSD-3-Clause）+ [adam](https://github.com/ami-iit/adam) + [shared-controllers](https://github.com/gbionics/shared-controllers)；非整机 CAD/BOM（截至 2026-07-21）

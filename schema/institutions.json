@@ -97,6 +97,15 @@
         "eth-zurich"
       ]
     },
+    "tum": {
+      "label": "慕尼黑工业大学（TU Munich）",
+      "aliases": [
+        "tum",
+        "tu-munich",
+        "tu-munchen",
+        "technical-university-of-munich"
+      ]
+    },
     "tsinghua": {
       "label": "清华大学（Tsinghua）",
       "aliases": [

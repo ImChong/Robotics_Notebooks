@@ -354,6 +354,7 @@
 - [Gaze2Act](wiki/entities/paper-ego-05-gaze2act.md) — Gaze2Act** 收录于 具身智能研究室 · Ego 9 篇专题 **第 05/9 `📅unknown` `[entity_page]`
 - [EgoExoMem](wiki/entities/paper-ego-08-egoexomem.md) — EgoExoMem** 收录于 具身智能研究室 · Ego 9 篇专题 **第 08/9 `📅unknown` `[entity_page]`
 - [E³C](wiki/entities/paper-ego-09-e3c.md) — E³C** 收录于 具身智能研究室 · Ego 9 篇专题 **第 09/9** 篇，归类 `📅unknown` `[entity_page]`
+- [EgoHTR：第一视角粗糙地形人–场景 4D 演示](wiki/entities/paper-egohtr.md) — EgoHTR**（*EgoHTR: Egocentric 4D Demonstrations of Human Terrain Traversal*，arXiv:[2607.13472](http `📅unknown` `[entity_page]`
 - [EgoWAM（野外 Egocentric 人数据 · World Action Model 协同训练）](wiki/entities/paper-egowam-egocentric-human-wam-co-training.md) — EgoWAM**（*World Action Models Beyond Pixels with In-the-Wild Egocentric Human Data*，[项目页](https:// `📅unknown` `[entity_page]`
 - [EmbodiedGen V2（Simulation-Ready 3D World Engine · arXiv:2607.07459）](wiki/entities/paper-embodiedgen-v2-sim-ready-world-engine.md) — EmbodiedGen V2**（*\calmfont EmbodiedGen V2: An Agentic, Simulation-Ready 3D World Engine for Embod `📅unknown` `[entity_page]`
 - [ergoCub：面向人因的共享具身智能人形](wiki/entities/paper-ergocub-shared-embodied-intelligence.md) — ergoCub**（*Towards shared embodied intelligence in humanoid robots through optimization, developme `📅unknown` `[entity_page]`

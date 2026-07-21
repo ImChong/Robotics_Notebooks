@@ -2,7 +2,7 @@
 type: method
 tags: [robotics, kinematics, retargeting, humanoid]
 status: complete
-updated: 2026-07-06
+updated: 2026-07-21
 related:
   - ../concepts/motion-retargeting.md
   - ./neural-motion-retargeting-nmr.md
@@ -13,6 +13,7 @@ related:
   - ../entities/paper-htd-refine-monocular-hmr.md
   - ../entities/gen2humanoid.md
   - ../entities/yanjie-ze.md
+  - ../entities/paper-egohtr.md
 sources:
   - ../../sources/papers/motion_control_projects.md
   - ../../sources/papers/exoactor.md
@@ -20,6 +21,7 @@ sources:
   - ../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md
   - ../../sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md
   - ../../sources/repos/gen2humanoid.md
+  - ../../sources/papers/egohtr_arxiv_2607_13472.md
 summary: "GMR (General Motion Retargeting) 是一种高效的通用动作重定向方法，主要解决从人类动捕数据到异构机器人骨架的几何映射问题。"
 ---
 
@@ -178,6 +180,7 @@ $$
 - [sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md](../../sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md) — SPIDER：采样优化式物理重定向与运动学前端的衔接。
 - Ze Y., et al. *GMR: General Motion Retargeting* — [arXiv:2505.02833](https://arxiv.org/abs/2505.02833)；技术报告 [arXiv:2510.02252](https://arxiv.org/abs/2510.02252)。
 - [GMR 源码仓库](https://github.com/YanjieZe/GMR) — 功能列表、支持的机器人与数据格式、与 TWIST / MimicKit 等生态链接。
+- [sources/papers/egohtr_arxiv_2607_13472.md](../../sources/papers/egohtr_arxiv_2607_13472.md) — EgoHTR Human2Robot 将 GMR 与 OmniRetarget/CoACD 并列。
 
 ## 关联页面
 
@@ -191,3 +194,4 @@ $$
 - [DART（DartControl）](./dart-control.md) — SMPL-X 运动学输出经 GMR 等人形执行接口的常见上游之一。
 - [SONIC（规模化运动跟踪）](./sonic-motion-tracking.md) — 与「跳过重定向、直接 tracking」路线对照阅读。
 - [Gen2Humanoid](../entities/gen2humanoid.md) — HY-Motion 生成轨迹经 GMR 到多机型的端到端胶水管线。
+- [EgoHTR](../entities/paper-egohtr.md) — rough-terrain 场景对齐人演示的 Human2Robot 上游之一。
