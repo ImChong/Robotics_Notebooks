@@ -2,7 +2,7 @@
 type: concept
 tags: [locomotion, terrain, perception, footstep-planning, sim2real]
 status: complete
-updated: 2026-07-14
+updated: 2026-07-21
 summary: "Terrain Adaptation 指机器人根据地形感知结果调整步位、身体姿态和接触策略，以在不平整环境中保持稳定移动。"
 related:
   - ../entities/paper-ame-attention-based-map-encoding.md
@@ -22,6 +22,7 @@ related:
   - ../entities/dreamwaq-plus.md
   - ../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md
   - ../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md
+  - ../entities/paper-egohtr.md
 sources:
   - ../../sources/papers/footstep_and_balance.md
   - ../../sources/papers/privileged_training.md
@@ -32,6 +33,7 @@ sources:
   - ../../sources/papers/discrete_terrain_minimal_proximity_sensing_arxiv_2606_31912.md
   - ../../sources/papers/ame_arxiv_2506_09588.md
   - ../../sources/papers/humanoid_pnb_ame-2-agile-and-generalized-legged-locomotion-vi.md
+  - ../../sources/papers/egohtr_arxiv_2607_13472.md
 ---
 
 # Terrain Adaptation（地形适应）
@@ -149,6 +151,7 @@ sources:
 - [sources/papers/dreamwaq_plus_arxiv_2409_19709.md](../../sources/papers/dreamwaq_plus_arxiv_2409_19709.md) — DreamWaQ++ 多模态点云四足 loco
 - [sources/papers/explicit_stair_geometry_arxiv_2605_09944.md](../../sources/papers/explicit_stair_geometry_arxiv_2605_09944.md) — 显式楼梯几何条件化人形爬梯
 - [sources/papers/discrete_terrain_minimal_proximity_sensing_arxiv_2606_31912.md](../../sources/papers/discrete_terrain_minimal_proximity_sensing_arxiv_2606_31912.md) — ETH RSL 四足足底 ToF 离散地形
+- [sources/papers/egohtr_arxiv_2607_13472.md](../../sources/papers/egohtr_arxiv_2607_13472.md) — EgoHTR：rough-terrain 人–场景 4D 演示与 G1 感知 mimic
 
 ## 关联页面
 
@@ -159,6 +162,7 @@ sources:
 - [Sim2Real](./sim2real.md)
 - [Balance Recovery](../tasks/balance-recovery.md)
 - [MoRE（复杂地形多步态 AMP）](../entities/paper-amp-survey-08-more.md) — 深度外感知 + 多判别器先验下的 gait 切换范例
+- [EgoHTR](../entities/paper-egohtr.md) — 场景对齐人演示支撑 foothold-critical 感知穿越
 
 ## 推荐继续阅读
 

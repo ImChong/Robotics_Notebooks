@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-07-19
+updated: 2026-07-21
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 
@@ -230,6 +230,7 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - **ingest 档案：** [sources/repos/phuma.md](../../sources/repos/phuma.md) — PHUMA：G1/H1-2 预重定向 locomotion（arXiv:2510.26236）
 - **ingest 档案：** [sources/sites/humanoideveryday.md](../../sources/sites/humanoideveryday.md) — Humanoid Everyday：真机开放世界操作集
 - **ingest 档案：** [sources/sites/mixamo.md](../../sources/sites/mixamo.md) — Mixamo：Adobe 在线角色与动画服务（商业许可与管线说明）
+- **ingest 档案：** [sources/papers/egohtr_arxiv_2607_13472.md](../../sources/papers/egohtr_arxiv_2607_13472.md) — EgoHTR：rough-terrain 场景对齐人演示；Human2Robot 侧用 OmniRetarget/GMR/CoACD
 
 ---
 
@@ -237,6 +238,7 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - [Motion Retargeting Pipeline](./motion-retargeting-pipeline.md) — 端到端工程链路视角：源归一 → 骨架对齐 → IK → 物理筛选 → 配对监督
 - [Motion Retargeting Objective（重定向目标函数形式化）](../formalizations/motion-retargeting-objective.md) — 姿态相似 / 末端接触 / 平衡 / 限位 / 平滑项的统一加权和及其三种工程退化
 - [Motion Data Quality（动作数据质量维度）](./motion-data-quality.md) — 形态差距/接触/物理/规模四轴决定重定向是否可省略及需补几层
+- [EgoHTR](../entities/paper-egohtr.md) — 上游 rough-terrain 4D 人–场景数据（待开放）与 G1 retarget 叙事
 - [人形训练数据管线选型指南](../queries/humanoid-training-data-pipeline.md) — 重定向在「来源 → 重定向 → 训练范式」端到端管线中的位置
 - [Chasing Autonomy Pipeline](../methods/chasing-autonomy-pipeline.md) — 利用带硬约束的动态重定向来生成改进参考库的框架
 

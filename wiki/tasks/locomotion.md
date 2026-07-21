@@ -48,11 +48,14 @@ related:
   - ../entities/paper-variable-impedance-contact-rl.md
   - ../entities/jackhan-walke3-e3-ecosystem.md
   - ../methods/disney-olaf-character-robot.md
+  - ../entities/paper-ergocub-shared-embodied-intelligence.md
+  - ../entities/paper-egohtr.md
 sources:
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/state_estimation.md
   - ../../sources/papers/rl_pd_action_interface_locomotion.md
   - ../../sources/papers/multi-gait-learning.md
+  - ../../sources/papers/egohtr_arxiv_2607_13472.md
 summary: "Locomotion 研究机器人如何稳定、高效地在不同地形上移动，是腿式与人形控制的核心任务页。"
 ---
 
@@ -318,7 +321,7 @@ flowchart TD
 - [磁驱动双稳态软跳跃机器人](../entities/paper-bistable-soft-jumper-magnetic.md)
 - [统一流体-机器人多物理游泳仿真](../entities/paper-unified-fluid-robot-multiphysics-swimming.md)
 - [ergoCub Shared Embodied Intelligence](../entities/paper-ergocub-shared-embodied-intelligence.md) — 硬件优化抬高 CoM + 分层 WBC 行走，相对 iCub3 更大步长/更短步周期
-
+- [EgoHTR](../entities/paper-egohtr.md) — rough-terrain 人–场景 4D 演示 → G1 感知 mimic（数据/代码待发布）
 
 ## 推荐继续阅读
 

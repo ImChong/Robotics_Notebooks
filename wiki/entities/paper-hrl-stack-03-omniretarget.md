@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-retargeting, motion-control, interaction-mesh, loco-manipulation, data-generation, amazon-far, body-system-stack, icra-2026]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-21
 arxiv: "2509.26633"
 venue: ICRA 2026
 summary: "OmniRetarget 用 interaction mesh + Sequential SOCP 硬约束生成交互保留的人形运动学参考，支持单演示增广与 holosoma 开源管线；下游 5 reward + 4 DR 无 curriculum 即可 G1 零样本实机 30 s parkour/loco-manipulation；PHP 等论文的原子技能重定向上游。"
@@ -20,6 +20,7 @@ related:
   - ../methods/motion-retargeting-gmr.md
   - ../tasks/loco-manipulation.md
   - ./unitree-g1.md
+  - ./paper-egohtr.md
 sources:
   - ../../sources/papers/omniretarget_arxiv_2509_26633.md
   - ../../sources/sites/omniretarget-github-io.md
@@ -29,6 +30,7 @@ sources:
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
+  - ../../sources/papers/egohtr_arxiv_2607_13472.md
 ---
 
 # OmniRetarget
@@ -169,6 +171,7 @@ sequenceDiagram
 - 公开轨迹：[OmniRetarget 数据集](./omniretarget-dataset.md)
 - 下游跑酷：[PHP（2602.15827）](./paper-hrl-stack-22-perceptive_humanoid_parkour.md)
 - Dynamic refinement：[DynaRetarget / SBTO](../methods/dynaretarget-sbto-motion-retargeting.md) 以本库 kinematic 参考为 SBTO 输入（285 motions · refinement **76.8%**）
+- 下游数据消费：[EgoHTR](./paper-egohtr.md) 项目页声明 Human2Robot 场景感知 retarget 基于 OmniRetarget / GMR / CoACD
 - 问题域：[Motion Retargeting](../concepts/motion-retargeting.md)、[GMR](../methods/motion-retargeting-gmr.md)、[Loco-Manipulation](../tasks/loco-manipulation.md)
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 
@@ -179,6 +182,7 @@ sequenceDiagram
 - [holosoma.md](../../sources/repos/holosoma.md) — 开源代码框架
 - [omniretarget-dataset-huggingface.md](../../sources/sites/omniretarget-dataset-huggingface.md) — HuggingFace 数据集
 - [humanoid_rl_stack_03_omniretarget_interaction_preserving_data_generat.md](../../sources/papers/humanoid_rl_stack_03_omniretarget_interaction_preserving_data_generat.md) — 42 篇栈策展摘录
+- [egohtr_arxiv_2607_13472.md](../../sources/papers/egohtr_arxiv_2607_13472.md) — EgoHTR 将本方法列为场景感知 retarget 上游
 
 ## 推荐继续阅读
 

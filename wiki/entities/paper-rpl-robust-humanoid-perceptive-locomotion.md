@@ -15,7 +15,7 @@ tags:
   - isaac-gym
   - amazon-far
 status: complete
-updated: 2026-07-20
+updated: 2026-07-21
 arxiv: "2602.03002"
 related:
   - ../tasks/stair-obstacle-perceptive-locomotion.md
@@ -31,9 +31,11 @@ related:
   - ./paper-faststair-humanoid-stair-ascent.md
   - ./paper-ladderman-humanoid-perceptive-ladder-climbing.md
   - ./extreme-parkour.md
+  - ./paper-egohtr.md
 sources:
   - ../../sources/papers/rpl_arxiv_2602_03002.md
   - ../../sources/sites/rpl-humanoid-github-io.md
+  - ../../sources/papers/egohtr_arxiv_2607_13472.md
 summary: "RPL（arXiv:2602.03002，Amazon FAR）两阶段训练：特权高程图分地形专家（FALCON 双智能体 PPO）经 DAgger 蒸馏为多视角深度 Transformer 统一策略；DFSV 与 RSM 鲁棒双向行走与未见窄地形；Warp 多深度渲染约 5× 加速；G1 真机带 2 kg 载荷穿越坡/楼梯/垫脚石。"
 ---
 
@@ -170,12 +172,14 @@ flowchart TB
 - [DAgger](../methods/dagger.md) — Stage 2 蒸馏算法
 - [PHP（Perceptive Humanoid Parkour）](./paper-hrl-stack-22-perceptive_humanoid_parkour.md) — 同系 Amazon FAR 深度跑酷对照
 - [LadderMan](./paper-ladderman-humanoid-perceptive-ladder-climbing.md) — 同系 Amazon FAR 稀疏踏棍攀爬与梯上操作
+- [EgoHTR](./paper-egohtr.md) — rough-terrain 人演示 → 高度图条件 mimic（数据缺口对照；待开放）
 - [Unitree G1](./unitree-g1.md) — 实验平台
 
 ## 参考来源
 
 - [RPL 论文摘录（arXiv:2602.03002）](../../sources/papers/rpl_arxiv_2602_03002.md)
 - [RPL 项目页归档](../../sources/sites/rpl-humanoid-github-io.md)
+- [EgoHTR 论文摘录](../../sources/papers/egohtr_arxiv_2607_13472.md) — 挑战地形人先验数据侧对照
 
 ## 推荐继续阅读
 
