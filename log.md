@@ -1,5 +1,15 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-21] ingest | sources/papers/rynnbrain_1_1_arxiv_2607_17977.md + sites/repos — RynnBrain 1.1 具身基础模型；wiki/entities/paper-rynnbrain-1-1.md；交叉 vla / embodied-scaling-laws / foundation-policy / qwen-vla / rynnworld-4d
+
+- **开源状态：** **部分开源** — 2B/9B/122B-A10B 权重（HF/ModelScope）+ 推理/`cookbooks`（Apache-2.0）；**未见** RynnBrain-VLA 训练码与 VLA 权重（截至 2026-07-21）
+- **新建 papers：** [`sources/papers/rynnbrain_1_1_arxiv_2607_17977.md`](sources/papers/rynnbrain_1_1_arxiv_2607_17977.md)
+- **新建 sites：** [`sources/sites/rynnbrain-alibaba-damo.md`](sources/sites/rynnbrain-alibaba-damo.md)
+- **新建 repos：** [`sources/repos/rynnbrain.md`](sources/repos/rynnbrain.md)
+- **新建 wiki：** [`wiki/entities/paper-rynnbrain-1-1.md`](wiki/entities/paper-rynnbrain-1-1.md)
+- **机构：** `schema/institutions.json` 为 `alibaba` 追加 alias `damo` / `damo-academy`
+- **交叉更新：** [`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/concepts/embodied-scaling-laws.md`](wiki/concepts/embodied-scaling-laws.md)、[`wiki/concepts/foundation-policy.md`](wiki/concepts/foundation-policy.md)、[`wiki/entities/qwen-vla.md`](wiki/entities/qwen-vla.md)、[`wiki/entities/paper-rynnworld-4d-rgb-depth-flow.md`](wiki/entities/paper-rynnworld-4d-rgb-depth-flow.md)
+
 ## [2026-07-21] ingest | sources/papers/turingvit+x_world+x_cache+x_foresight+x_mind + sites — 小鹏 TuringViT / X-World 系列五篇；wiki 实体页；交叉更新 WM/VLA/ViT
 
 - **开源状态：** 五篇项目页截至 2026-07-21 **均未列 GitHub/权重**（仅 arXiv / Tech Report）

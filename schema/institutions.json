@@ -885,7 +885,9 @@
         "alibaba",
         "qwen",
         "amap-cvlab",
-        "amap"
+        "amap",
+        "damo",
+        "damo-academy"
       ]
     },
     "altium": {

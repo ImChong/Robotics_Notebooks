@@ -2,7 +2,7 @@
 type: entity
 tags: [vla, qwen, open-source, flow-matching, generalist, cross-embodiment, navigation, manipulation]
 status: complete
-updated: 2026-05-30
+updated: 2026-07-21
 related:
   - ../methods/vla.md
   - ../methods/star-vla.md
@@ -15,11 +15,13 @@ related:
   - ./qwen-robot-suite.md
   - ./qwen-robot-manip.md
   - ./qwen-robot-nav.md
+  - ./paper-rynnbrain-1-1.md
   - ../overview/vla-open-source-repro-landscape-2025.md
 sources:
   - ../../sources/repos/qwen-vla.md
   - ../../sources/papers/qwenvla_arxiv_2605_30280.md
   - ../../sources/blogs/qwen_robot_suite.md
+  - ../../sources/papers/rynnbrain_1_1_arxiv_2607_17977.md
 summary: "Qwen-VLA 是通义团队开源的统一 VLA 通才：Qwen3.5-4B 视觉–语言骨干 + 1.15B DiT flow-matching 动作解码器，以 embodiment-aware 文本 prompt 在同一权重下覆盖操作、导航与轨迹预测，渐进训练含动作预训练、多模态 CPT、SFT 与 RL。"
 ---
 
@@ -122,9 +124,11 @@ flowchart TB
 - [Loco-manipulation](../tasks/loco-manipulation.md) — 操作与移动联合任务语境
 - [Qwen-Robot Suite](./qwen-robot-suite.md) — 通义分域具身三件套与 agent 闭环
 - [Qwen-RobotManip](./qwen-robot-manip.md) — Suite 内操作专精 foundation
+- [RynnBrain 1.1](./paper-rynnbrain-1-1.md) — 同阿里生态具身预训练脑；受控实验显示优于「直接 Qwen 后训练 VLA」
 
 ## 推荐继续阅读
 
 - Black et al., *π₀: A Vision-Language-Action Flow Model for General Robot Control* — flow-matching VLA 相近动作建模脉络
 - [Physical Intelligence openpi](https://github.com/Physical-Intelligence/openpi) — π 系通才与真机微调常用参照
 - [VLA 开源复现景观（2025）](../overview/vla-open-source-repro-landscape-2025.md) — 按复现目标选仓库的策展地图
+- [RynnBrain 1.1（arXiv:2607.17977）](https://arxiv.org/abs/2607.17977) — 具身脑初始化 vs 通用 Qwen 的真机对照

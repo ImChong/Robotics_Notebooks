@@ -1,13 +1,77 @@
 {
   "generated_at": "2026-07-21",
-  "node_count": 1741,
-  "edge_count": 13951,
+  "node_count": 1742,
+  "edge_count": 13966,
   "coverage": {
-    "covered": 1691,
-    "total": 1721,
+    "covered": 1692,
+    "total": 1722,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-rynnbrain-1-1.md",
+      "detail_id": "entity-paper-rynnbrain-1-1",
+      "label": "RynnBrain 1.1：更强、更可泛化的具身基础模型",
+      "type": "entity",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/embodied-scaling-laws.md",
+      "detail_id": "wiki-concepts-embodied-scaling-laws",
+      "label": "Embodied Scaling Laws (具身规模法则)",
+      "type": "concept",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/foundation-policy.md",
+      "detail_id": "wiki-concepts-foundation-policy",
+      "label": "Foundation Policy（基础策略模型）",
+      "type": "concept",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/qwen-vla.md",
+      "detail_id": "entity-qwen-vla",
+      "label": "Qwen-VLA",
+      "type": "entity",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-rynnworld-4d-rgb-depth-flow.md",
+      "detail_id": "entity-paper-rynnworld-4d-rgb-depth-flow",
+      "label": "RynnWorld-4D（4D Embodied World Models · arXiv:2607.06559）",
+      "type": "entity",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-turingvit.md",
       "detail_id": "entity-paper-turingvit",
@@ -110,17 +174,6 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
       "path": "wiki/entities/rebot-devarm.md",
       "detail_id": "entity-rebot-devarm",
       "label": "reBot-DevArm（Seeed reBot Arm B601）",
@@ -162,70 +215,23 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/stackforce.md",
-      "detail_id": "entity-stackforce",
-      "label": "StackForce",
-      "type": "entity",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
-    },
-    {
-      "path": "wiki/entities/parol6-source-robotics.md",
-      "detail_id": "entity-parol6-source-robotics",
-      "label": "PAROL6（Source Robotics）",
-      "type": "entity",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/topic-systems-engineering.md",
-      "detail_id": "wiki-overview-topic-systems-engineering",
-      "label": "机器人系统工程（专题汇总）",
-      "type": "overview",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/handroid.md",
-      "detail_id": "entity-handroid",
-      "label": "Handroid",
-      "type": "entity",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-raven-rl-adaptive-visibility-graph-mpc.md",
-      "detail_id": "entity-paper-raven-rl-adaptive-visibility-graph-mpc",
-      "label": "RAVEN：强化学习自适应可见图规划 + 无碰撞 MPC",
-      "type": "entity",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-turingvit.md",
-    "detail_id": "entity-paper-turingvit",
-    "label": "TuringViT（Making SOTA Vision Transformers Accessible to All）",
+    "path": "wiki/entities/paper-rynnbrain-1-1.md",
+    "detail_id": "entity-paper-rynnbrain-1-1",
+    "label": "RynnBrain 1.1：更强、更可泛化的具身基础模型",
     "type": "entity",
     "recency": "2026-07-21",
     "source": "log.md",
     "action": "added",
+    "has_repo": true,
     "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 337
+      "size": 338
     },
     {
       "label": "模仿学习",
@@ -268,7 +274,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 284,
+      "degree": 286,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -284,7 +290,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 266,
+      "degree": 267,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -330,7 +336,7 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 114,
+      "degree": 115,
       "has_repo": true
     },
     {

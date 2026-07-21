@@ -1,10 +1,12 @@
 ---
 type: concept
 tags: [foundation-policy, vla, rt1, rt2, pi0, pi07, octo, generalist, pretraining, manipulation]
+updated: 2026-07-21
 related:
   - ../queries/contact-wrench-closed-loop.md
   - ./humanoid-policy-network-architecture.md
   - ../methods/vla.md
+  - ../entities/paper-rynnbrain-1-1.md
   - ../methods/sonic-motion-tracking.md
   - ../entities/gr00t-wholebodycontrol.md
   - ../entities/isaac-gr00t.md
@@ -29,8 +31,8 @@ sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/star_vla.md
   - ../../sources/repos/gr00t_wholebodycontrol.md
+  - ../../sources/papers/rynnbrain_1_1_arxiv_2607_17977.md
 summary: "Foundation Policy 指在大规模多任务机器人数据上预训练的通用策略模型，是 VLA 和通用操作策略的抽象母类。"
-updated: 2026-07-14
 ---
 
 # Foundation Policy（基础策略模型）
@@ -158,6 +160,7 @@ flowchart TD
 - [模仿学习（Imitation Learning）](../methods/imitation-learning.md)
 - [Diffusion Policy](../methods/diffusion-policy.md)
 - [VLA](../methods/vla.md)
+- [RynnBrain 1.1](../entities/paper-rynnbrain-1-1.md) — 具身预训练脑作 VLA 初始化；跨本体统一动作空间案例
 - [π₀.₇（Pi-zero 0.7）通才 VLA](../methods/pi07-policy.md)
 - [GR00T-WholeBodyControl（实体）](../entities/gr00t-wholebodycontrol.md)
 - [Foundation Policy for Humanoids（Query 实践指南）](../queries/foundation-policy-for-humanoids.md)

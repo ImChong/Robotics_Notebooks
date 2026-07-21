@@ -9,7 +9,7 @@ tags:
   - manipulation
   - alibaba
 status: complete
-updated: 2026-07-13
+updated: 2026-07-21
 arxiv: "2607.06559"
 related:
   - ../overview/wm-action-consequence-category-03-geometry-4d.md
@@ -19,8 +19,10 @@ related:
   - ../overview/robot-world-models-action-consequence-technology-map.md
   - ../entities/paper-meco-wam-4d-geometry-cotraining.md
   - ../entities/paper-embodiedgen-v2-sim-ready-world-engine.md
+  - ../entities/paper-rynnbrain-1-1.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
+  - ../../sources/papers/rynnbrain_1_1_arxiv_2607_17977.md
 summary: "RynnWorld-4D（arXiv:2607.06559）：统一扩散同步生成 RGB、深度、光流；Rynn4D 2.544 亿帧；RynnWorld-4D-Policy 单次前向读 4D latent 出动作，真机双手任务大幅领先所报基线（Hand-over 28.57% vs π₀ 2.86%，原文口径）。"
 ---
 
@@ -128,6 +130,7 @@ flowchart TB
 - [World Action Models](../concepts/world-action-models.md) — Policy 头与 WAM 交界
 - [MECo-WAM](./paper-meco-wam-4d-geometry-cotraining.md) — 推理高效几何 WAM 对照
 - [Deform360](./paper-deform360-deformable-visuotactile-dataset.md) — 可变形体 3D 粒子对照数据
+- [RynnBrain 1.1](./paper-rynnbrain-1-1.md) — 同达摩院 Rynn* 线的具身基础模型 / VLA 脑
 
 ## 推荐继续阅读
 
@@ -135,8 +138,10 @@ flowchart TB
 - [RynnWorld-4D 项目页](https://alibaba-damo-academy.github.io/RynnWorld-4D.github.io)
 - [MECo-WAM 论文实体](./paper-meco-wam-4d-geometry-cotraining.md)
 - [Generative World Models](../methods/generative-world-models.md) — Wan 系视频先验
+- [RynnBrain 1.1 论文实体](./paper-rynnbrain-1-1.md)
 
 ## 参考来源
 
 - [具身智能研究室 · 世界模型动作后果专题导读（2026-07）](../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md)
 - [RynnWorld-4D 论文（arXiv:2607.06559）](https://arxiv.org/abs/2607.06559)
+- [RynnBrain 1.1 论文摘录（arXiv:2607.17977）](../../sources/papers/rynnbrain_1_1_arxiv_2607_17977.md)
