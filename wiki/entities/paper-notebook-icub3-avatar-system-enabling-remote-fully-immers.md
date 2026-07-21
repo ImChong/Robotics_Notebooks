@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
 status: planned
-updated: 2026-06-26
+updated: 2026-07-21
 arxiv: "2203.06972"
 related:
   - ../overview/paper-notebook-category-07-teleoperation.md
@@ -50,6 +50,7 @@ iCub3 Avatar System 的人形机器人学习论文条目，当前处于 Paper No
 
 - 分类父节点：[paper-notebook-category-07-teleoperation](../overview/paper-notebook-category-07-teleoperation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- 同族硬件演化：[ergoCub Shared Embodied Intelligence](./paper-ergocub-shared-embodied-intelligence.md) — 自 iCub3 优化出的人因协作整机（*Nat Mach Intell* 2026）
 
 ## 参考来源
 

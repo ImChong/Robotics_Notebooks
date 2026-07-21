@@ -1,5 +1,15 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-21] ingest | sources/papers/ergocub_shared_embodied_intelligence_nmi_s42256_026_01272_2.md + sites/repos — ergoCub Shared Embodied Intelligence（Nat Mach Intell 2026）；wiki/entities/paper-ergocub-shared-embodied-intelligence.md；交叉 WBC / locomotion / sim2real / humanoid-robot / icub3 / open-source-hardware；注册 iit/inail/generative-bionics/university-of-manchester
+
+- **开源状态：** **已开源** — 论文复现仓（BSD-3-Clause）+ [adam](https://github.com/ami-iit/adam) + [shared-controllers](https://github.com/gbionics/shared-controllers)；非整机 CAD/BOM（截至 2026-07-21）
+- **新建 papers：** [`sources/papers/ergocub_shared_embodied_intelligence_nmi_s42256_026_01272_2.md`](sources/papers/ergocub_shared_embodied_intelligence_nmi_s42256_026_01272_2.md)
+- **新建 sites：** [`sources/sites/ergocub-eu.md`](sources/sites/ergocub-eu.md)
+- **新建 repos：** [`sources/repos/paper-sartore-2025-ergocub-nmi.md`](sources/repos/paper-sartore-2025-ergocub-nmi.md)、[`sources/repos/ami-iit-adam.md`](sources/repos/ami-iit-adam.md)、[`sources/repos/gbionics-shared-controllers.md`](sources/repos/gbionics-shared-controllers.md)
+- **新建 wiki：** [`wiki/entities/paper-ergocub-shared-embodied-intelligence.md`](wiki/entities/paper-ergocub-shared-embodied-intelligence.md)
+- **机构：** `schema/institutions.json` 新增 `iit` / `inail` / `generative-bionics` / `university-of-manchester`
+- **交叉更新：** [`wiki/concepts/whole-body-control.md`](wiki/concepts/whole-body-control.md)、[`wiki/tasks/locomotion.md`](wiki/tasks/locomotion.md)、[`wiki/concepts/sim2real.md`](wiki/concepts/sim2real.md)、[`wiki/entities/humanoid-robot.md`](wiki/entities/humanoid-robot.md)、[`wiki/entities/paper-notebook-icub3-avatar-system-enabling-remote-fully-immers.md`](wiki/entities/paper-notebook-icub3-avatar-system-enabling-remote-fully-immers.md)、[`wiki/entities/open-source-humanoid-hardware.md`](wiki/entities/open-source-humanoid-hardware.md)
+
 ## [2026-07-21] ingest | sources/papers/rynnbrain_1_1_arxiv_2607_17977.md + sites/repos — RynnBrain 1.1 具身基础模型；wiki/entities/paper-rynnbrain-1-1.md；交叉 vla / embodied-scaling-laws / foundation-policy / qwen-vla / rynnworld-4d
 
 - **开源状态：** **部分开源** — 2B/9B/122B-A10B 权重（HF/ModelScope）+ 推理/`cookbooks`（Apache-2.0）；**未见** RynnBrain-VLA 训练码与 VLA 权重（截至 2026-07-21）
