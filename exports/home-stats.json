@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-07-21",
-  "node_count": 1718,
-  "edge_count": 13765,
+  "node_count": 1734,
+  "edge_count": 13882,
   "coverage": {
-    "covered": 1668,
-    "total": 1698,
+    "covered": 1684,
+    "total": 1714,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/topic-systems-engineering.md",
+      "detail_id": "wiki-overview-topic-systems-engineering",
+      "label": "机器人系统工程（专题汇总）",
+      "type": "overview",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "机器人系统工程（专题汇总） 社区"
+    },
     {
       "path": "wiki/entities/isaac-sim.md",
       "detail_id": "entity-isaac-sim",
@@ -71,8 +81,7 @@
       "recency": "2026-07-20",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/queries/ethercat-master-optimization.md",
@@ -82,7 +91,7 @@
       "recency": "2026-07-20",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+      "community_label": "机器人系统工程（专题汇总） 社区"
     },
     {
       "path": "wiki/concepts/implicit-explicit-actuator-modeling.md",
@@ -100,8 +109,7 @@
       "type": "entity",
       "recency": "2026-07-20",
       "source": "log.md",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-swarm-micro-flying-robots-in-the-wild.md",
@@ -171,7 +179,7 @@
       "recency": "2026-07-20",
       "source": "log.md",
       "action": "added",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "path": "wiki/entities/paper-tianjicx-neuromorphic-chip-robots.md",
@@ -203,45 +211,34 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-muninn-trajectory-diffusion-acceleration.md",
-      "detail_id": "entity-paper-muninn-trajectory-diffusion-acceleration",
-      "label": "Muninn（轨迹扩散免训练加速）",
-      "type": "entity",
-      "recency": "2026-07-20",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/isaac-sim.md",
-    "detail_id": "entity-isaac-sim",
-    "label": "Isaac Sim",
-    "type": "entity",
+    "path": "wiki/overview/topic-systems-engineering.md",
+    "detail_id": "wiki-overview-topic-systems-engineering",
+    "label": "机器人系统工程（专题汇总）",
+    "type": "overview",
     "recency": "2026-07-21",
     "source": "log.md",
     "action": "added",
-    "has_repo": true,
-    "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+    "community_label": "机器人系统工程（专题汇总） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 373
+      "size": 396
     },
     {
       "label": "人形论文深读笔记",
-      "size": 179
-    },
-    {
-      "label": "人形强化学习运动控制",
-      "size": 173
+      "size": 176
     },
     {
       "label": "移动操作",
-      "size": 153
+      "size": 173
+    },
+    {
+      "label": "人形强化学习运动控制",
+      "size": 142
     },
     {
       "label": "全身控制",
@@ -249,7 +246,7 @@
     },
     {
       "label": "仿真训练",
-      "size": 65
+      "size": 91
     }
   ],
   "top_hubs": [
@@ -349,8 +346,7 @@
       "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
       "type": "entity",
       "degree": 46,
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",
