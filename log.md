@@ -2,6 +2,14 @@
 
 ## [2026-07-21] ingest | sources/repos/ssik.md — 接入 UW PRL 解析 IK 库 ssik；wiki/entities/ssik.md；交叉更新 manipulation / teleoperation / moveit2 / curobo
 
+## [2026-07-20] query | wiki/queries/actuator-drive-chain-selection-loop.md — V30 P1 执行器驱动链选型闭环知识链
+
+- 新建端到端 Query 页：EDA 电路设计 → 电机驱动固件 FOC → 执行器建模与摩擦辨识 → 实时总线闭环集成 四层驱动链选型决策链，配四层决策树 Mermaid、选型矛盾/失败模式速查、英文缩写表。
+- 沉淀页面：[`wiki/queries/actuator-drive-chain-selection-loop.md`](wiki/queries/actuator-drive-chain-selection-loop.md)
+- 交叉回链（消孤儿）：[`wiki/queries/ethercat-master-optimization.md`](wiki/queries/ethercat-master-optimization.md) 与 [`wiki/concepts/implicit-explicit-actuator-modeling.md`](wiki/concepts/implicit-explicit-actuator-modeling.md) 各补入本页链接。
+- 门禁：`make lint` 0 errors；`make export graph` 后 `graph-stats.json` 0 orphans、`largest_community_ratio` 0.22（`community_quality_warning: false`）；节点 1687→1716、边 13524→13723（均已越过 V30 目标 ≥1698 / ≥13580）。
+- 对应 v30 清单 P1 首项已打勾（`[x]`），该组小节转 `[~]`。
+
 ## [2026-07-20] ingest | sources/blogs/flexion_niantic_nvidia_sim2real_rgb_2026-07-20.md — Flexion×Niantic×NVIDIA RGB 导航 Sim2Real 管线；wiki/entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md；交叉 sim2real / flexion-reflect-v1 / gs-playground
 
 ## [2026-07-20] ingest | sources/blogs/wechat_shenlan_scirobotics_china_top3_2026-07-02.md — 深蓝AI 近五年 Science Robotics 中国顶尖高校盘点；9 篇独立论文实体（浙大/北航/清华）

@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-21",
-  "node_count": 1716,
-  "edge_count": 13716,
+  "node_count": 1717,
+  "edge_count": 13735,
   "coverage": {
-    "covered": 1666,
-    "total": 1696,
+    "covered": 1667,
+    "total": 1697,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -20,13 +20,44 @@
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
+      "path": "wiki/queries/actuator-drive-chain-selection-loop.md",
+      "detail_id": "wiki-queries-actuator-drive-chain-selection-loop",
+      "label": "Query：执行器驱动链选型闭环知识链",
+      "type": "query",
+      "recency": "2026-07-20",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/queries/ethercat-master-optimization.md",
+      "detail_id": "wiki-queries-ethercat-master-optimization",
+      "label": "EtherCAT 主站优化指南",
+      "type": "query",
+      "recency": "2026-07-20",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/concepts/implicit-explicit-actuator-modeling.md",
+      "detail_id": "wiki-concepts-implicit-explicit-actuator-modeling",
+      "label": "Implicit / Explicit 执行器建模",
+      "type": "concept",
+      "recency": "2026-07-20",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
       "path": "wiki/entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md",
       "detail_id": "entity-flexion-niantic-nvidia-rgb-sim2real-pipeline",
       "label": "Flexion × Niantic Spatial × NVIDIA：RGB 导航 Sim2Real 管线",
       "type": "entity",
       "recency": "2026-07-20",
       "source": "log.md",
-      "action": "added"
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/paper-swarm-micro-flying-robots-in-the-wild.md",
@@ -46,7 +77,7 @@
       "recency": "2026-07-20",
       "source": "log.md",
       "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "path": "wiki/entities/paper-microsaccade-inspired-event-camera.md",
@@ -96,7 +127,7 @@
       "recency": "2026-07-20",
       "source": "log.md",
       "action": "added",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "path": "wiki/entities/paper-tianjicx-neuromorphic-chip-robots.md",
@@ -106,7 +137,7 @@
       "recency": "2026-07-20",
       "source": "log.md",
       "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "path": "wiki/entities/paper-neurogpr-brain-inspired-place-recognition.md",
@@ -116,7 +147,7 @@
       "recency": "2026-07-20",
       "source": "log.md",
       "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "path": "wiki/methods/flashsac.md",
@@ -146,8 +177,7 @@
       "type": "entity",
       "recency": "2026-07-20",
       "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "action": "maintained"
     },
     {
       "path": "wiki/entities/paper-automated-facial-mechanisms-animatronic.md",
@@ -180,37 +210,6 @@
       "source": "log.md",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-cunrto-gpu-robust-trajectory-optimization.md",
-      "detail_id": "entity-paper-cunrto-gpu-robust-trajectory-optimization",
-      "label": "cuNRTO：GPU 加速非线性鲁棒轨迹优化（CUDA Nonlinear Robust Trajectory Optimization）",
-      "type": "entity",
-      "recency": "2026-07-20",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-unified-fluid-robot-multiphysics-swimming.md",
-      "detail_id": "entity-paper-unified-fluid-robot-multiphysics-swimming",
-      "label": "统一流体-机器人多物理可微仿真（Realizing Robotic Swimming with Unified Fluid-Robot Multiphysics）",
-      "type": "entity",
-      "recency": "2026-07-20",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/euroc-mav-datasets.md",
-      "detail_id": "entity-euroc-mav-datasets",
-      "label": "EuRoC MAV 数据集（The EuRoC Micro Aerial Vehicle Datasets）",
-      "type": "entity",
-      "recency": "2026-07-20",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -227,27 +226,27 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 347
+      "size": 377
     },
     {
       "label": "人形论文深读笔记",
       "size": 179
     },
     {
-      "label": "移动操作",
-      "size": 176
+      "label": "人形强化学习运动控制",
+      "size": 172
     },
     {
-      "label": "模仿学习",
-      "size": 161
+      "label": "移动操作",
+      "size": 153
     },
     {
       "label": "全身控制",
-      "size": 144
+      "size": 132
     },
     {
-      "label": "仿真到现实",
-      "size": 90
+      "label": "仿真训练",
+      "size": 70
     }
   ],
   "top_hubs": [
@@ -294,7 +293,8 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 248
+      "degree": 248,
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
@@ -316,15 +316,14 @@
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
       "degree": 180,
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
       "label": "人形机器人 RL 运动控制：身体系统栈视角",
       "type": "overview",
       "degree": 178,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     }
   ],
   "top_paper_hubs": [
@@ -340,8 +339,7 @@
       "label": "BeyondMimic",
       "type": "method",
       "degree": 54,
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",
@@ -349,7 +347,7 @@
       "type": "entity",
       "degree": 46,
       "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",
@@ -362,8 +360,7 @@
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
-      "degree": 45,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "degree": 45
     },
     {
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
@@ -384,14 +381,14 @@
       "type": "entity",
       "degree": 36,
       "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",
       "label": "SD-AMP：统一走、跑与起身的对抗运动先验",
       "type": "entity",
       "degree": 36,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
