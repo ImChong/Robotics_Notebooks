@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, wbc, fsm, humanoid, unitree-g1, deployment, onnx, cpp, motion-tracking, whole-body-control]
 status: complete
-updated: 2026-05-15
+updated: 2026-07-21
 related:
   - ./lafan1-dataset.md
   - ./amp-mjlab.md
@@ -12,6 +12,8 @@ related:
   - ../methods/motion-retargeting-gmr.md
   - ../tasks/locomotion.md
   - ../concepts/sim2real.md
+  - ../concepts/robot-safety-state-machine.md
+  - ../overview/topic-systems-engineering.md
 sources:
   - ../../sources/repos/wbc_fsm.md
 summary: "wbc_fsm 是针对 Unitree G1 的 C++ 全身控制部署框架，用有限状态机管理 Passive/Loco/WBC 三种模式，内嵌 LAFAN1 动捕训练的 ONNX 策略，无 ROS 依赖，支持仿真与真机双端部署。"
@@ -117,6 +119,7 @@ G1 板端 (PC2 / aarch64)
 
 ## 关联页面
 
+- [机器人安全状态机](../concepts/robot-safety-state-machine.md) — 硬件/通信故障安全态的通用概念
 - [AMP_mjlab](./amp-mjlab.md) — 同组织，策略训练侧对应物
 - [Unitree G1](./unitree-g1.md) — 目标硬件平台
 - [unitree_rl_mjlab](./unitree-rl-mjlab.md) — Unitree 官方 RL+ONNX 部署参考
@@ -124,3 +127,4 @@ G1 板端 (PC2 / aarch64)
 - [Motion Retargeting GMR](../methods/motion-retargeting-gmr.md) — LAFAN1 → G1 重定向方法
 - [LaFAN1 动捕数据集](./lafan1-dataset.md) — MoCap 源数据与许可边界
 - [Locomotion](../tasks/locomotion.md) — 上层任务场景
+- [系统工程专题](../overview/topic-systems-engineering.md)

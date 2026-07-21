@@ -1,5 +1,23 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-21] ingest | sources/sites/systems_engineering_* + dds_omg_rtos_edge_ota_safety — 系统工程主题盘点：复用 CAN/EtherCAT/ROS2/UDP；新建 15 概念 + 1 专题总览
+
+- **盘点结论（已有独立节点，复用不重建）：**
+  - CAN / CAN FD / EtherCAT / ROS 2 / LCM / UDP 组播 / 通信专题 / 实时中间件 Query / 控制环延迟
+- **一手资料：**
+  - [`sources/sites/systems_engineering_os_network_primary_refs.md`](sources/sites/systems_engineering_os_network_primary_refs.md)
+  - [`sources/sites/systems_engineering_data_distributed_primary_refs.md`](sources/sites/systems_engineering_data_distributed_primary_refs.md)
+  - [`sources/sites/systems_engineering_deploy_obs_security_primary_refs.md`](sources/sites/systems_engineering_deploy_obs_security_primary_refs.md)
+  - [`sources/sites/dds_omg_rtos_edge_ota_safety_primary_refs.md`](sources/sites/dds_omg_rtos_edge_ota_safety_primary_refs.md)
+- **专题枢纽：** [`wiki/overview/topic-systems-engineering.md`](wiki/overview/topic-systems-engineering.md)
+- **新建概念页：**
+  - `operating-system-basics` / `network-protocol-stack` / `database-fundamentals` / `cache-consistency-pitfalls`
+  - `message-queue-reliability` / `distributed-systems-basics` / `container-orchestration-cicd`
+  - `observability-logs-metrics-tracing` / `software-security-basics` / `rtos-realtime-scheduling`
+  - `dds-communication` / `edge-cloud-robotics` / `control-inference-frequency-decoupling`
+  - `model-versioning-ota` / `robot-safety-state-machine`
+- **交叉更新：** `ros2-basics`、`topic-communication`、`real-time-control-middleware-guide`、`wbc-fsm`
+
 ## [2026-07-21] ingest | sources/papers/handroid_arxiv_2607_16187.md — 复核 Handroid（arXiv:2607.16187）：CAD/BOM 已开源、Code 仍占位；wiki/entities/handroid.md 刷新核查日
 
 ## [2026-07-21] ingest | sources/papers/raven_rl_adaptive_visibility_graph_arxiv_2607_15701.md — UCLA RoMeLa RAVEN；wiki/entities/paper-raven-rl-adaptive-visibility-graph-mpc.md；交叉 ARTEMIS / Booster Gym / mpc-vs-rl / humanoid-locomotion

@@ -1149,6 +1149,7 @@
 - [Behavior Foundation Model（行为基础模型，BFM）](wiki/concepts/behavior-foundation-model.md) — Behavior Foundation Model（BFM）**：从 **大规模、多样化行为数据**（动捕、遥操作、自博弈交互等）学习 **可复用的全身行为先验**，使人形 **whole-bod `📅unknown` `[wiki_page]`
 - [行为树 × VLA 编排](wiki/concepts/behavior-tree-vla-orchestration.md) — 行为树（Behaviour Tree, BT）与 VLA 结合**：把 **宏任务流程**（加载策略、复位姿态、移动底盘、循环 pick-and-place）交给 **可组合、可恢复** 的行为树 `📅unknown` `[wiki_page]`
 - [The Bitter Lesson（惨痛教训）](wiki/concepts/bitter-lesson.md) — The Bitter Lesson**：Richard Sutton 2019 年提出的 AI 方法论观察——**通用、可随算力规模扩展的方法（search 与 learning）长期压倒内置人类 `📅unknown` `[wiki_page]`
+- [缓存一致性陷阱（穿透 / 雪崩 / 击穿 / 一致性）](wiki/concepts/cache-consistency-pitfalls.md) — 缓存一致性陷阱** 归纳「加速层」失效时如何打穿数据库或返回脏数据——在机器人模型仓库、配置中心与遥测聚合 API 上反复出现。 `📅unknown` `[wiki_page]`
 - [CAN 总线（经典 CAN / CAN 2.0）](wiki/concepts/can-bus-protocol.md) — CAN（Controller Area Network）** 是一种 **多主、广播式、带硬件仲裁** 的串行现场总线。在机器人里，它最常见于 **主控板 ↔ 关节电机驱动器** 的反馈与力矩指令 `📅unknown` `[wiki_page]`
 - [CAN FD（Flexible Data Rate）](wiki/concepts/can-fd.md) — CAN FD** 是对经典 CAN 的数据链路层扩展：由 Bosch 2011 年起与车企等推动，在 **ISO 11898-1** 框架下标准化。机器人新一代 **USB2CAN FD**、部分 `📅unknown` `[wiki_page]`
 - [Capture Point / DCM](wiki/concepts/capture-point-dcm.md) — Capture Point（捕获点）** 和 **DCM（Divergent Component of Motion，发散运动分量）** 是腿式机器人动态平衡与步态控制里两个非常关键的概念，用来描 `📅unknown` `[wiki_page]`
@@ -1161,16 +1162,22 @@
 - [Contact Estimation（接触估计）](wiki/concepts/contact-estimation.md) — Contact Estimation 是指在机器人运动过程中，**实时判断哪个足/末端执行器处于接触状态（与地面或物体接触）**，并尽可能估计接触力的大小和方向。 `📅unknown` `[wiki_page]`
 - [Contact-Force-Loop Bandwidth（力控闭环带宽 ↔ 接触稳定性）](wiki/concepts/contact-force-loop-bandwidth.md) — 力控闭环带宽**：在与刚性环境接触时，力控制器能稳定跟踪力指令的最高频率。它不是一个可以随意调大的旋钮——它被**感知时延、控制刚度、接触离散化**三者联合钳住，超过这条边界，接触就会震荡或穿透。 `📅unknown` `[wiki_page]`
 - [Contact-Rich Manipulation（接触丰富型操作）](wiki/concepts/contact-rich-manipulation.md) — Contact-Rich Manipulation**：那些必须利用接触力、摩擦、约束和接触序列本身才能完成的操作任务，例如插拔、拧瓶盖、推门、卡扣装配、双手推箱等。 `📅unknown` `[wiki_page]`
+- [容器编排与 CI/CD（Docker / Kubernetes / 持续交付）](wiki/concepts/container-orchestration-cicd.md) — 容器编排与 CI/CD** 用镜像固化运行环境，用声明式编排扩缩仿真与训练，用流水线把代码/模型晋升到可回滚的发布物。 `📅unknown` `[wiki_page]`
 - [Control Allocation（控制分配）](wiki/concepts/control-allocation.md) — 控制分配**：给定低维 **广义力/ wrench 指令** $w \in \mathbb{R}^m$（如期望合外力/力矩），在冗余执行器映射 $w = B\tau$ 下求执行器输入 $\tau$ `📅unknown` `[wiki_page]`
 - [Control Barrier Function（控制屏障函数）](wiki/concepts/control-barrier-function.md) — 控制屏障函数（Control Barrier Function，CBF）**：一种将系统安全约束转化为可在控制层实时强制执行的数学工具。通过定义一个标量函数 $h(x)$，使得 $h(x) \ge `📅unknown` `[wiki_page]`
+- [控制频率与推理频率解耦](wiki/concepts/control-inference-frequency-decoupling.md) — 控制/推理频率解耦** 让 **慢模型**（策略、VLA、规划）以低频产出动作意图，由 **快控制器**（PD、WBC、阻抗）以高频执行，避免把推理延迟写进力矩周期。 `📅unknown` `[wiki_page]`
 - [Curriculum Learning（课程学习）](wiki/concepts/curriculum-learning.md) — Curriculum Learning 是一种训练策略：在学习早期提供更简单的任务或环境，随着策略能力提升逐渐增加难度，模拟人类"从简单到复杂"的学习过程。 `📅unknown` `[wiki_page]`
 - [Data Flywheel (具身数据飞轮)](wiki/concepts/data-flywheel.md) — 具身数据飞轮 (Data Flywheel)** 指的是机器人学习中通过**自动化闭环**实现数据规模化与性能持续提升的机制。它的核心逻辑是：更强的模型吸引更多场景使用 → 产生更多样化的数据 → `📅unknown` `[wiki_page]`
+- [数据库基础（索引 / 事务 / 锁 / 隔离级别 / 复制 / 分片）](wiki/concepts/database-fundamentals.md) — 数据库基础** 说明如何在机器人研发数据面里 **正确存、正确并发写、正确扩展读**，并明确它不属于力矩闭环路径。 `📅unknown` `[wiki_page]`
+- [DDS 通信机制（Data Distribution Service）](wiki/concepts/dds-communication.md) — DDS** 是 OMG 标准化的 **数据中心化发布订阅** 中间件：用 Topic、类型系统与 **QoS** 在去中心化发现下分发数据；ROS 2 通过 RMW 使用其实现（Fast DDS、 `📅unknown` `[wiki_page]`
 - [深度学习基础 (Deep Learning Foundations)](wiki/concepts/deep-learning-foundations.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[wiki_page]`
 - [深度强化学习游戏里程碑（DQN / AlphaGo）](wiki/concepts/deep-rl-game-milestones.md) — 深度强化学习游戏里程碑**：以 Atari DQN 与围棋 AlphaGo 为代表的一系列工作，用端到端神经网络从像素或棋盘状态映射到动作，证明了规模化数据驱动方法在**离散或结构化动作空间**任 `📅unknown` `[wiki_page]`
 - [Dexterous Kinematics (灵巧手运动学)](wiki/concepts/dexterous-kinematics.md) — 灵巧手运动学 (Dexterous Kinematics)** 是机器人学中研究多指协同操作的理论基础。与传统的单臂串联运动学不同，灵巧手在抓取物体时，多个手指通过接触点与物体共同构成了一个**闭 `📅unknown` `[wiki_page]`
 - [Differentiable Simulation（可微仿真）](wiki/concepts/differentiable-simulation.md) — 可微仿真**：物理引擎在 forward rollout 的同时支持 **对状态、参数或控制输入求导**，使优化与 learning 可直接利用 **解析梯度** 而非纯有限差分或黑盒 RL。 `📅unknown` `[wiki_page]`
 - [Diffusion Model（扩散模型）](wiki/concepts/diffusion-model.md) — 扩散模型（Diffusion Model）**：人为定义从真实数据到高斯噪声的前向破坏过程，训练神经网络学习逆向降噪，使模型能从简单噪声分布经多步小幅修正生成结构化样本。 `📅unknown` `[wiki_page]`
+- [分布式系统基础（CAP / 选主 / 一致性 / 超时 / 重试）](wiki/concepts/distributed-systems-basics.md) — 分布式系统基础** 给出多机协作时 **一致性、可用性、分区容忍** 的取舍，以及选主、超时与重试的工程默认值——并划清与机载安全 FSM 的边界。 `📅unknown` `[wiki_page]`
 - [Domain Randomization](wiki/concepts/domain-randomization.md) — 域随机化**：在仿真训练中主动随机化物理参数、视觉纹理、环境设置，让策略被迫学会适应各种变化的泛化能力，从而实现零样本从仿真迁移到现实。 `📅unknown` `[wiki_page]`
+- [边缘计算与云端协同（Edge–Cloud Robotics）](wiki/concepts/edge-cloud-robotics.md) — 边缘–云端协同** 把机器人能力拆到 **低延迟本地闭环** 与 **高算力云端批处理**：边缘保安全与控制，云端保学习、存储与队级优化。 `📅unknown` `[wiki_page]`
 - [Embodied Data Cleaning (具身数据清洗)](wiki/concepts/embodied-data-cleaning.md) — 具身数据清洗**：在具身智能（Embodied AI）中，将人类示教或自动采集的原始“脏数据”转化为高质量、可用于训练的专家演示轨迹（Expert Trajectories）的过程。 `📅unknown` `[wiki_page]`
 - [概念：具身大模型实时性 ↔ 泛化能力取舍](wiki/concepts/embodied-fm-latency-generalization-tradeoff.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[wiki_page]`
 - [具身 RL 最小闭环（Embodied RL Minimal Closed Loop）](wiki/concepts/embodied-rl-minimal-closed-loop.md) — 在具身智能里，**最小闭环**指：智能体与仿真（或真机）环境之间，每一步都能完成 **观测 → 决策 → 执行 → 物理推进 → 奖励反馈** 的完整回合，且各变量与 [MDP](../formali `📅unknown` `[wiki_page]`
@@ -1200,6 +1207,8 @@
 - [Latent Imagination (潜空间想象)](wiki/concepts/latent-imagination.md) — 潜空间想象 (Latent Imagination)** 是现代 Model-Based 强化学习（尤其是 **Dreamer** 系列）的灵魂。它彻底改变了机器人学习的范式：不再是在真实世界或沉 `📅unknown` `[wiki_page]`
 - [LCM (Lightweight Communications and Marshalling) 基础](wiki/concepts/lcm-basics.md) — LCM** 是一款由 MIT 团队开发的通信库，专门针对**高频、低延迟、高带宽**的机器人控制场景设计。在人形机器人和四足机器人的“脊髓级”控制中，LCM 是优于 ROS 2 的首选方案。 `📅unknown` `[wiki_page]`
 - [LIP / ZMP](wiki/concepts/lip-zmp.md) — LIP（Linear Inverted Pendulum, 线性倒立摆）** 和 **ZMP（Zero Moment Point, 零力矩点）** 是双足机器人行走控制里最经典的一对基础模型与稳定 `📅unknown` `[wiki_page]`
+- [消息队列可靠性（队列 / 重复消费 / 顺序 / 幂等）](wiki/concepts/message-queue-reliability.md) — 消息队列可靠性** 处理「异步投递」下的 **至少一次、重复、乱序** 现实，要求消费者 **幂等**——适用于任务调度与遥测，不替代实时中间件。 `📅unknown` `[wiki_page]`
+- [模型版本管理与 OTA](wiki/concepts/model-versioning-ota.md) — 模型版本管理与 OTA** 把策略/感知权重与机载固件当作 **可签名、可回滚、可审计** 的发布物，经空中或近场通道安全晋升到机器人。 `📅unknown` `[wiki_page]`
 - [建模与求解（控制问题框架）](wiki/concepts/modeling-and-solving-for-control.md) — 飞书 Know-How「**建模 + 求解**」是人形控制问题拆解的第一轴：**建模**确定状态、输入、动力学与约束；**求解**选择能否实时、能否保证约束的算法（QP、MPC、iLQR、RL 等）。 `📅unknown` `[wiki_page]`
 - [Motion Data Quality（动作数据质量维度）](wiki/concepts/motion-data-quality.md) — 把一段参考运动 / 演示数据「能不能直接喂给人形策略训练」拆成**四个可独立评估的质量轴**。它回答的不是「数据多不多」，而是「数据**像不像**机器人能物理执行的东西」——这正是 [Motion R `📅unknown` `[wiki_page]`
 - [Motion Retargeting Pipeline（动作重定向流水线）](wiki/concepts/motion-retargeting-pipeline.md) — Motion Retargeting Pipeline** 关注的不是「某一个重定向算法」，而是把**异构来源的人体动作**（MoCap、单目视频估计、生成模型、遥操作流）落到**机器人可执行参考 `📅unknown` `[wiki_page]`
@@ -1207,8 +1216,11 @@
 - [电机转矩-电流曲线（TI 曲线）](wiki/concepts/motor-torque-current-curve.md) — TI 曲线**（Torque-Current Curve，转矩-电流曲线）描述电机输出转矩与驱动电流之间的关系。对永磁同步电机（PMSM）和无刷电机（BLDC），它在理想区近似直线，斜率即 **力 `📅unknown` `[wiki_page]`
 - [电机转矩-转速曲线（TN 曲线）](wiki/concepts/motor-torque-speed-curve.md) — TN 曲线**（Torque-Speed Curve，转矩-转速曲线）以转速为横轴、输出转矩为纵轴，刻画电机/关节模组在全速域内的力矩能力边界；评估人形或腿足执行器时，它通常是 datasheet `📅unknown` `[wiki_page]`
 - [MPC 与 WBC 集成：人形机器人 locomotion 的典型控制架构](wiki/concepts/mpc-wbc-integration.md) — MPC 负责"大尺度规划"（质心往哪走、落脚点放哪），WBC 负责"全身执行"（怎么协调关节力矩来跟踪 MPC 发出的指令）**——两者分层配合，组成当前人形机器人 locomotion 最主流的 `📅unknown` `[wiki_page]`
+- [网络协议栈基础（TCP / UDP / HTTP / DNS / TLS / 负载均衡）](wiki/concepts/network-protocol-stack.md) — 网络协议栈基础** 给出机器人研发与部署中最常用的传输/应用层协议角色划分：**哪些适合可靠服务，哪些适合低延迟传感/控制数据**。 `📅unknown` `[wiki_page]`
 - [神经反馈控制器（Neural Feedback Controller）](wiki/concepts/neural-feedback-controller.md) — 神经反馈控制器**：强化学习训练完成后导出的 **策略网络** $\pi_\theta$，在控制论意义上是一个 **非线性状态反馈律** $u_t = \pi(o_t)$——把当前观测映射为关节目 `📅unknown` `[wiki_page]`
+- [可观测性（Logs / Metrics / Tracing）](wiki/concepts/observability-logs-metrics-tracing.md) — 可观测性** 让系统在故障时仍能回答「发生了什么、哪里慢、因果链如何」——对云边服务用三支柱，对硬实时环路用轻量指标。 `📅unknown` `[wiki_page]`
 - [Open X-Embodiment（OXE）](wiki/concepts/open-x-embodiment.md) — Open X-Embodiment**：面向机器人模仿学习的大规模跨机构、跨硬件形态数据集与基准管线，把多种机器人的演示统一到可比格式上，用于训练与评测「通用操作策略」。 `📅unknown` `[wiki_page]`
+- [操作系统基础（进程 / 线程 / 内存 / 文件系统 / 调度）](wiki/concepts/operating-system-basics.md) — 操作系统基础** 解释主控板上「谁在跑、何时被抢占、内存如何映射、磁盘 I/O 如何饿死控制线程」——是诊断真机抖动时最先翻的一层。 `📅unknown` `[wiki_page]`
 - [Optimal Control (OCP)](wiki/concepts/optimal-control.md) — 最优控制**：给定一个动力学系统和一个代价函数，求解在有限或无限时域内使得代价最小的控制输入序列的理论框架。 `📅unknown` `[wiki_page]`
 - [Physics Fidelity ↔ Sim2Real Gap（物理保真度与仿真到现实差距）](wiki/concepts/physics-fidelity-sim2real-gap.md) — 物理保真度（Physics Fidelity）**：仿真器对真实物理过程的逼近程度。它不是一个标量，而是沿 **几何/URDF 精度 → 刚体动力学算法 → 接触/摩擦模型 → 执行器模型** 四 `📅unknown` `[wiki_page]`
 - [人形腿部行星滚柱丝杠直线驱动（PRS 路线）](wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md) — 人形腿部用**行星滚柱丝杠（Planetary Roller Screw, PRS）**把电机旋转转为**直线推力**，再经**连杆机构**映射为髋/膝/踝等关节角，是在**负载密度、静态保持、纵向布 `📅unknown` `[wiki_page]`
@@ -1217,16 +1229,19 @@
 - [处理器在环 Sim2Real（Processor-in-the-loop）](wiki/concepts/processor-in-the-loop-sim2real.md) — 处理器在环 Sim2Real**：不把控制器当成「数学上完美的函数」，而把**真实固件执行路径**（线程优先级、周期抖动、总线协议、嵌入式浮点语义）当作与环境动力学并列的**闭环组成部分**，在仿 `📅unknown` `[wiki_page]`
 - [Reward Design](wiki/concepts/reward-design.md) — 奖励函数设计（Reward Design）**：强化学习中定义智能体优化目标的核心环节。奖励函数的好坏直接决定策略能不能学出来、学出来后的行为是否符合预期。 `📅unknown` `[wiki_page]`
 - [连杆惯量与转子惯量（Robot Link vs Rotor Inertia）](wiki/concepts/robot-link-and-rotor-inertia.md) — 人形与腿足机器人的「关节有多沉」，在工程上往往来自 **两件不同的事**：**连杆刚体惯量**（机械结构质量分布）与 **电机转子经减速器反射的等效惯量**（传动链旋转部件）。混淆两者会导致仿真偏轻、 `📅unknown` `[wiki_page]`
+- [机器人安全状态机（硬件 / 通信故障）](wiki/concepts/robot-safety-state-machine.md) — 机器人安全状态机** 用确定性有限状态机，在 **驱动器报错、总线超时、控制 deadline miss、估计发散** 时切到预定义安全态（阻尼、无力矩、冻结姿态），保证故障响应不依赖网络。 `📅unknown` `[wiki_page]`
 - [Robotics Solve 标准](wiki/concepts/robotics-solve-standard.md) — Solve** 是 Sunday Robotics 在 2026 年提出的机器人能力 **声明格式**：在明确 **Scope（适用分布）** 与 **Adaptation cost（部署适配成本 `📅unknown` `[wiki_page]`
 - [ROS 2 (Robot Operating System 2) 基础](wiki/concepts/ros2-basics.md) — ROS 2** 是全球机器人社区中最广泛使用的开源框架。它并非真正的操作系统，而是一套运行在 Linux 之上的**中间件 (Middleware)**，提供了标准化的通信协议、开发工具和海量的算 `📅unknown` `[wiki_page]`
 - [RS-232 串行接口（TIA/EIA-232）](wiki/concepts/rs-232-serial-interface.md) — RS-232**（现行标准名 **TIA-232-F**）是 1960 年代起用于 **数据终端设备（DTE）与数据电路终端设备（DCE）** 之间串行二进制交换的 **电气与机械接口标准**。它 `📅unknown` `[wiki_page]`
 - [RS-485 串行总线（TIA/EIA-485）](wiki/concepts/rs-485-serial-bus.md) — RS-485**（**TIA-485-A**）定义 **平衡数字多点系统** 中驱动器与接收器的电气特性。它只规定 **物理层**——比特如何变成差分电压——**不规定** 帧格式或主从协议；机器 `📅unknown` `[wiki_page]`
+- [RTOS 与实时调度](wiki/concepts/rtos-realtime-scheduling.md) — RTOS 与实时调度** 保证任务在 **截止时间前** 完成：MCU 侧常用 FreeRTOS/裸机，主控侧常用 PREEMPT_RT Linux + 隔离核与 FIFO 优先级。 `📅unknown` `[wiki_page]`
 - [Safe Real-World RL Fine-Tuning（真机安全 RL 微调）](wiki/concepts/safe-real-world-rl-fine-tuning.md) — 真机安全 RL 微调** 关心 Sim2Real 链路的**最后一段**：当仿真策略已经能跑、但真机上还差最后几成性能时，如何在**真实机器人上继续用 RL 调整 `📅unknown` `[wiki_page]`
 - [Safety Filter（安全过滤器）](wiki/concepts/safety-filter.md) — Safety Filter**：位于高层策略和低层控制器之间的一层在线修正模块。它接收一个“名义动作”或“候选控制输入”，在尽量少改动原动作的前提下，强制满足安全约束，例如关节限位、碰撞距离、接触 `📅unknown` `[wiki_page]`
 - [传感器融合（Sensor Fusion）](wiki/concepts/sensor-fusion.md) — 传感器融合**：将来自多个传感器（IMU、摄像头、激光雷达、腿部运动学）的测量值在概率框架下统一融合，估计机器人的位姿、速度和接触状态，为上层控制（MPC / WBC）提供实时、精确的状态输入。 `📅unknown` `[wiki_page]`
 - [概念：仿真评测可复现性 ↔ 真实世界代表性取舍（sim↔real 评测 gap）](wiki/concepts/sim-vs-real-eval-gap.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[wiki_page]`
 - [Sim2Real](wiki/concepts/sim2real.md) — Sim2Real**（仿真到现实迁移）：在仿真环境训练控制策略，然后部署到真实机器人上。 `📅unknown` `[wiki_page]`
 - [仿真评测基础设施（Simulation as Evaluation Infrastructure）](wiki/concepts/simulation-evaluation-infrastructure.md) — 仿真评测基础设施**指：在机器人学习与基础模型开发中，把仿真主要用作**可扩展、可复现的闭环评测与 recipe 迭代引擎**，而不是默认等同于「仿真数据生成器」。当评测与真机 rollout  `📅unknown` `[wiki_page]`
+- [软件安全基础（认证 / 授权 / 密钥 / 供应链）](wiki/concepts/software-security-basics.md) — 软件安全基础** 区分「你是谁 / 你能做什么 / 密钥如何保管 / 构建链是否可信」——覆盖遥操作、OTA、模型仓库与 CI 制品。 `📅unknown` `[wiki_page]`
 - [SRBD + 凸 MPC + WBC](wiki/concepts/srbd-convex-mpc-wbc.md) — 飞书 Know-How 条目 **「单刚体动力学模型 + 凸模型预测控制 + WBC」** 指：用 **SRBD（Single Rigid Body Dynamics）** 近似整机质心运动，在  `📅unknown` `[wiki_page]`
 - [State Estimation](wiki/concepts/state-estimation.md) — State Estimation（状态估计）**：根据传感器观测、机器人模型和历史信息，估计机器人当前最可能真实状态的过程。 `📅unknown` `[wiki_page]`
 - [System Identification](wiki/concepts/system-identification.md) — System Identification（系统辨识 / SysID）**：通过实验数据估计机器人动力学、执行器、摩擦、延迟等模型参数，使模型更接近真实系统的过程。 `📅unknown` `[wiki_page]`
@@ -1639,6 +1654,7 @@
 - [真机安全微调（专题汇总）](wiki/overview/topic-safe-fine-tuning.md) — 真机安全 RL 微调** 在已有 sim2real 策略能跑的基础上，于 **真实机器人上继续在线优化**，并用 **安全集约束、低秩更新或 Recovery 策略** 限制探索导致的摔倒与硬件风 `📅unknown` `[overview_page]`
 - [Sim2Real（专题汇总）](wiki/overview/topic-sim2real.md) — Sim2Real（Simulation to Real）** 研究如何把 **仿真里训练好的策略** 稳定迁移到真实机器人，弥合动力学、感知、延迟与接触上的分布差距。 `📅unknown` `[overview_page]`
 - [状态估计（专题汇总）](wiki/overview/topic-state-estimation.md) — 状态估计** 从 **IMU、关节编码器、相机、LiDAR、雷达等传感器** 融合出机器人位姿、速度与接触/地形状态，是感知式 locomotion 与导航的控制输入基础。 `📅unknown` `[overview_page]`
+- [机器人系统工程（专题汇总）](wiki/overview/topic-systems-engineering.md) — 机器人系统工程专题** 回答：策略与控制之外，真机与研发栈还依赖哪些 **操作系统、网络、数据、分布式、部署、实时与安全** 能力，以及它们在运控环路中的边界。 `📅unknown` `[overview_page]`
 - [触觉与力觉（专题汇总）](wiki/overview/topic-tactile.md) — 触觉专题** 研究机器人如何通过 **力、触觉与接触状态** 闭环调节交互，使抓取、装配与 loco-manip 在不确定接触下仍稳定可控。 `📅unknown` `[overview_page]`
 - [视觉感知骨干（专题汇总）](wiki/overview/topic-vision-backbone.md) — 视觉感知骨干专题** 关注机器人策略与 VLA **上游的视觉表征**：从 CNN/ViT 骨干到检测/分割头，再到 **policy 可用的特征接口**。 `📅unknown` `[overview_page]`
 - [VLA 与基础策略（专题汇总）](wiki/overview/topic-vla.md) — VLA（Vision-Language-Action）** 把 **视觉观测、自然语言指令与机器人动作** 统一到同一策略或基础模型中，面向多任务操作与 loco-manip 的「一个模型多种技能 `📅unknown` `[overview_page]`
