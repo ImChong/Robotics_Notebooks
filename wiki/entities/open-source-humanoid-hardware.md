@@ -16,6 +16,7 @@ related:
   - ./odri-solo-and-bolt.md
   - ./fourier-grx-n1.md
   - ./tienkung-humanoid-open-source.md
+  - ./x-humanoid.md
   - ./agibot-lingxi-x1.md
   - ./openloong.md
   - ./open-duck-mini.md
@@ -30,6 +31,8 @@ sources:
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md
   - ../../sources/repos/openloong.md
+  - ../../sources/repos/open-x-humanoid.md
+  - ../../sources/sites/x-humanoid.md
 summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humanoid、Roboto Origin、Asimov v1、ODRI 与商业平台的机械结构、执行器选型及开源生态，为研究者提供低成本入门指南。"
 ---
 
@@ -86,6 +89,13 @@ summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humano
 - **优点**：EtherCAT 工业总线、43 DOF、训推/白虎数据集与 [OpenLoong-Brain](./openloong.md) 大模型技能线，适合整机系统工程与 WBC/MPC 研究。
 - **局限**：制造与 EtherCAT 集成门槛高；多软件栈（Framework / Dyn-Control / ROS / Isaac Gym）环境版本需自行对齐。
 - **详情**：[OpenLoong（青龙·公版机）](./openloong.md)
+
+## 2e. 天工 / X-Humanoid（中心制开源人形）
+
+- **特点**：北京人形机器人创新中心以 **官网 + 天工造物社区 + Open-X-Humanoid** 三入口分发 Lite/Pro（及天工 3.0）本体资料、IsaacLab 运控（TienKung-Lab）、RoboMIND 数据与 HEX/XR-1/Pelican 等上层模型。
+- **优点**：硬件文档与 RL/VLA 代码同品牌；半程马拉松等真机叙事与开源仓对齐。
+- **局限**：入口与版本号（2.0/3.0、Lite/Pro）分散；真机与算力门槛高。
+- **详情**：[X-Humanoid](./x-humanoid.md)、[天工 Lite / Pro](./tienkung-humanoid-open-source.md)
 
 ## 3. ODRI 架构 (学术严谨派)
 - **特点**：Open Dynamic Robot Initiative。虽然其人形版本较少，但其开源的执行器模块（Actuator Modules）被广泛借鉴。

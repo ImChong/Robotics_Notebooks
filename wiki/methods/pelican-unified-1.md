@@ -4,7 +4,7 @@ type: method
 tags: [pelican-unified, uei, vla, world-models, diffusion, joint-wam, embodied-ai, qwen3-vl, x-humanoid]
 status: complete
 date: 2026-05-16
-updated: 2026-05-16
+updated: 2026-07-21
 summary: "Pelican-Unified 1.0 将 Qwen3-VL 作为统一理解与推理模块，把末态稠密潜变量 z 送入 Wan 系 Unified Future Generator，在同一扩散去噪中联合生成未来视频与动作块，使语言、视频与动作损失共同塑造共享表示。"
 related:
   - ../concepts/world-action-models.md
@@ -15,9 +15,12 @@ related:
   - ./being-h07.md
   - ./star-vla.md
   - ../concepts/humanoid-policy-network-architecture.md
+  - ../entities/x-humanoid.md
 sources:
   - ../../sources/papers/pelican_unified_uei_arxiv_2605_15153.md
   - ../../sources/papers/world_action_models_survey_2605.md
+  - ../../sources/repos/open-x-humanoid.md
+  - ../../sources/sites/x-humanoid.md
 ---
 
 # Pelican-Unified 1.0（统一具身智能 UEI）
@@ -105,6 +108,8 @@ flowchart LR
 
 - [Pelican-Unified 1.0 技术报告（arXiv:2605.15153）](../../sources/papers/pelican_unified_uei_arxiv_2605_15153.md)
 - [World Action Models 综述（arXiv:2605.12090）](../../sources/papers/world_action_models_survey_2605.md)
+- [Open-X-Humanoid 组织归档](../../sources/repos/open-x-humanoid.md)
+- [X-Humanoid 官网归档](../../sources/sites/x-humanoid.md)
 
 ## 关联页面
 
@@ -112,6 +117,7 @@ flowchart LR
 - [VLA](./vla.md)
 - [Generative World Models](./generative-world-models.md)
 - [Being-H0.7](./being-h07.md)
+- [X-Humanoid（北京人形机器人创新中心）](../entities/x-humanoid.md)
 
 ## 推荐继续阅读
 

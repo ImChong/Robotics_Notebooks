@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-21",
-  "node_count": 1747,
-  "edge_count": 14056,
+  "node_count": 1748,
+  "edge_count": 14078,
   "coverage": {
-    "covered": 1697,
-    "total": 1727,
+    "covered": 1698,
+    "total": 1728,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -22,6 +22,98 @@
       "detail_id": "wiki-methods-object-detection",
       "label": "目标检测（Object Detection）",
       "type": "method",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/x-humanoid.md",
+      "detail_id": "entity-x-humanoid",
+      "label": "X-Humanoid（北京人形机器人创新中心）",
+      "type": "entity",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/tienkung-humanoid-open-source.md",
+      "detail_id": "entity-tienkung-humanoid-open-source",
+      "label": "天工 Lite / Pro（开源人形）",
+      "type": "entity",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/open-source-humanoid-hardware.md",
+      "detail_id": "entity-open-source-humanoid-hardware",
+      "label": "开源人形机器人硬件方案对比",
+      "type": "entity",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/openloong.md",
+      "detail_id": "entity-openloong",
+      "label": "OpenLoong（青龙·公版机）",
+      "type": "entity",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/methods/pelican-unified-1.md",
+      "detail_id": "wiki-methods-pelican-unified-1",
+      "label": "Pelican-Unified 1.0（统一具身智能 UEI）",
+      "type": "method",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-loco-manip-161-038-hex.md",
+      "detail_id": "entity-paper-loco-manip-161-038-hex",
+      "label": "HEX",
+      "type": "entity",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-heracles-humanoid-diffusion.md",
+      "detail_id": "entity-paper-heracles-humanoid-diffusion",
+      "label": "Heracles：跟踪精度与生成式恢复的扩散中间件",
+      "type": "entity",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/humanoid-robot.md",
+      "detail_id": "entity-humanoid-robot",
+      "label": "人形机器人（Humanoid Robot）",
+      "type": "entity",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/overview/robot-open-source-wechat-issue01-curator.md",
+      "detail_id": "wiki-overview-robot-open-source-wechat-issue01-curator",
+      "label": "机器人开源宝库（微信策展第01期）— 索引",
+      "type": "overview",
       "recency": "2026-07-21",
       "source": "log.md",
       "action": "maintained",
@@ -77,7 +169,8 @@
       "recency": "2026-07-21",
       "source": "log.md",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "path": "wiki/entities/paper-loco-manip-161-009-gmt.md",
@@ -86,7 +179,8 @@
       "type": "entity",
       "recency": "2026-07-21",
       "source": "log.md",
-      "action": "added"
+      "action": "added",
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "path": "wiki/concepts/whole-body-tracking-pipeline.md",
@@ -95,7 +189,8 @@
       "type": "concept",
       "recency": "2026-07-21",
       "source": "log.md",
-      "action": "maintained"
+      "action": "maintained",
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "path": "wiki/queries/humanoid-motion-tracking-method-selection.md",
@@ -104,7 +199,8 @@
       "type": "query",
       "recency": "2026-07-21",
       "source": "log.md",
-      "action": "maintained"
+      "action": "maintained",
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "path": "wiki/entities/paper-phygile.md",
@@ -113,95 +209,8 @@
       "type": "entity",
       "recency": "2026-07-21",
       "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-resmimic.md",
-      "detail_id": "entity-paper-resmimic",
-      "label": "ResMimic（GMT → 人形全身 Loco-Manipulation 残差学习）",
-      "type": "entity",
-      "recency": "2026-07-21",
-      "source": "log.md",
       "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/methods/egm-efficient-general-mimic.md",
-      "detail_id": "wiki-methods-egm-efficient-general-mimic",
-      "label": "EGM（Efficient General Mimic，高效通用模仿跟踪）",
-      "type": "method",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-notebook-general-motion-tracking-for-humanoid-whole-body.md",
-      "detail_id": "entity-paper-notebook-general-motion-tracking-for-humanoid-whole-body",
-      "label": "General Motion Tracking for Humanoid Whole-Body Control（Paper Notebooks 计划）",
-      "type": "entity",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-humanoidarena.md",
-      "detail_id": "entity-paper-humanoidarena",
-      "label": "HumanoidArena（Egocentric Hierarchical Whole-body Benchmark）",
-      "type": "entity",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/overview/loco-manip-161-category-01-motion-base-wbt.md",
-      "detail_id": "wiki-overview-loco-manip-161-category-01-motion-base-wbt",
-      "label": "Loco-Manip 161 分类 01：运控基座与通用全身跟踪",
-      "type": "overview",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md",
-      "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",
-      "label": "Paper Notebooks · Loco-Manipulation and WBC",
-      "type": "overview",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-glob3r.md",
-      "detail_id": "entity-paper-glob3r",
-      "label": "Glob3R：3D 基础模型引导的全局 SfM",
-      "type": "entity",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/methods/lingbot-map.md",
-      "detail_id": "wiki-methods-lingbot-map",
-      "label": "LingBot-Map (Streaming 3D Reconstruction Foundation Model)",
-      "type": "method",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/concepts/state-estimation.md",
-      "detail_id": "wiki-concepts-state-estimation",
-      "label": "State Estimation",
-      "type": "concept",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -216,27 +225,27 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 385
+      "size": 355
     },
     {
       "label": "人形论文深读笔记",
-      "size": 179
+      "size": 175
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 170
+      "size": 172
     },
     {
       "label": "移动操作",
-      "size": 151
+      "size": 171
     },
     {
       "label": "全身控制",
-      "size": 147
+      "size": 152
     },
     {
-      "label": "仿真训练",
-      "size": 67
+      "label": "仿真到现实",
+      "size": 103
     }
   ],
   "top_hubs": [
@@ -251,7 +260,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 311,
+      "degree": 312,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -259,7 +268,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 287,
+      "degree": 288,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -329,7 +338,8 @@
       "label": "BeyondMimic",
       "type": "method",
       "degree": 55,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",
@@ -350,7 +360,8 @@
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
-      "degree": 45
+      "degree": 45,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
