@@ -114,7 +114,8 @@ flowchart LR
 - [Crocoddyl](./crocoddyl.md) — **shooting / 多接触最优控制** 的另一条经典开源工具链
 - [Manipulation（操作任务）](../tasks/manipulation.md) — 抓取–放置与 **笛卡尔目标** 的工程任务面
 - [Motion Retargeting（运动重定向）](../concepts/motion-retargeting.md) — V2 将 **高 DoF 无碰撞 IK** 与 **重定向 / 策略训练** 质量关联的叙事入口
-- [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md) — NVIDIA 仿真与 **Isaac Sim** 生态入口
+- [Isaac Sim](./isaac-sim.md) — 文档与示例对齐的仿真底座
+- [Isaac Gym / Isaac Sim / Isaac Lab](./isaac-gym-isaac-lab.md) — NVIDIA 仿真与学习栈总览
 - [ScheduleStream](./schedulestream.md) — **任务层调度 + stream 采样**；连续 motion 段可与 cuRobo 类后端互补
 - [MoveIt 2](./moveit2.md) — ROS 2 规划宿主；cuMotion 等以 MoveIt 插件集成
 - [ssik](./ssik.md) — **解析** 全分支 IK（6R/7R）；与 cuRobo **GPU 数值 IK** 分层：前者枚举代数分支，后者做无碰撞并行搜索与轨迹优化

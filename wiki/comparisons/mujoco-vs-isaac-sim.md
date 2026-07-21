@@ -2,13 +2,17 @@
 type: comparison
 tags: [simulation, software, physics-engine, rl, nvidia, deepmind]
 status: complete
-updated: 2026-04-21
+updated: 2026-07-21
 related:
   - ../entities/mujoco.md
   - ../entities/mujoco-mjx.md
+  - ../entities/isaac-sim.md
+  - ../entities/isaac-lab.md
+  - ../entities/isaac-gym.md
   - ../methods/reinforcement-learning.md
   - ../concepts/sim2real.md
 summary: "物理引擎选型对比：MuJoCo 以极致的接触精度和控制理论背景称王；而 Isaac Sim / Gym 凭借 GPU 千万级并行霸占现代 RL 训练管线。"
+updated: 2026-07-21
 ---
 
 # MuJoCo vs Isaac Sim (物理引擎选型)
@@ -65,6 +69,9 @@ summary: "物理引擎选型对比：MuJoCo 以极致的接触精度和控制理
 
 ## 关联页面
 - [MuJoCo 实体页](../entities/mujoco.md)
+- [Isaac Sim](../entities/isaac-sim.md)
+- [Isaac Lab](../entities/isaac-lab.md)
+- [Isaac Gym](../entities/isaac-gym.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Sim2Real](../concepts/sim2real.md)
 

@@ -2,11 +2,13 @@
 type: entity
 tags: [course, nvidia, isaac, omniverse, openusd, physical-ai, sim2real]
 status: complete
-updated: 2026-05-21
+updated: 2026-07-21
 related:
   - ./nvidia-so101-sim2real-lab-workflow.md
   - ./nvidia-omniverse.md
   - ./isaac-gym-isaac-lab.md
+  - ./isaac-sim.md
+  - ./isaac-lab.md
   - ./lerobot.md
   - ../concepts/sim2real.md
 sources:
@@ -48,7 +50,7 @@ NVIDIA 官方的 Physical AI 自学路径总入口：按主题选课后，用 Is
 | 路径 | 侧重 | 与本库关联 |
 |------|------|------------|
 | SO-101 Sim2Real | 操作臂 VLA + 四类 gap 策略 | [nvidia-so101-sim2real-lab-workflow](./nvidia-so101-sim2real-lab-workflow.md) |
-| Isaac Sim / Isaac Lab 入门 | 仿真与 GPU RL | [isaac-gym-isaac-lab](./isaac-gym-isaac-lab.md) |
+| Isaac Sim / Isaac Lab 入门 | 仿真与 GPU RL | [Isaac Sim](./isaac-sim.md)、[Isaac Lab](./isaac-lab.md)；总览 [isaac-gym-isaac-lab](./isaac-gym-isaac-lab.md) |
 | Omniverse + OpenUSD | 工业数字孪生场景组合 | [nvidia-omniverse](./nvidia-omniverse.md) |
 | Isaac ROS | ROS 2 + NITROS 真机感知导航 | [ros2-basics](../concepts/ros2-basics.md) |
 | Learn OpenUSD | USD 课纲与认证 | 资产管线、URDF→USD |

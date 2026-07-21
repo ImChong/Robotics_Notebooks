@@ -2,21 +2,24 @@
 type: entity
 tags: [software, simulation, physics-engine, nvidia, realtime, metaverse]
 status: complete
-updated: 2026-04-21
+updated: 2026-07-21
 related:
   - ./blender.md
   - ./mujoco.md
+  - ./isaac-sim.md
+  - ./isaac-lab.md
   - ../comparisons/mujoco-vs-isaac-sim.md
   - ../concepts/sim2real.md
   - ../methods/reinforcement-learning.md
 sources:
   - ../../sources/papers/simulation.md
+  - ../../sources/repos/isaac_sim.md
 summary: "NVIDIA Omniverse 是 Isaac Sim 的底层支撑平台，是一个基于 USD 格式、工业级的实时三维协作与仿真引擎，旨在为具身智能提供高保真的数字化孪生环境。"
 ---
 
 # NVIDIA Omniverse (具身仿真底座)
 
-**NVIDIA Omniverse** 并非一个简单的物理引擎，而是一个庞大的**实时协作仿真平台**。在机器人领域，它是目前最强物理仿真器 **Isaac Sim** 的运行底座。通过利用光线追踪（RTX）、大规模并行物理计算（PhysX）和通用场景描述（USD），Omniverse 为具身智能（Embodied AI）提供了一个与物理世界高度一致的数字化孪生空间。
+**NVIDIA Omniverse** 并非一个简单的物理引擎，而是一个庞大的**实时协作仿真平台**。在机器人领域，它是 [Isaac Sim](./isaac-sim.md) 的运行底座。通过利用光线追踪（RTX）、大规模并行物理计算（PhysX）和通用场景描述（USD），Omniverse 为具身智能（Embodied AI）提供了一个与物理世界高度一致的数字化孪生空间。
 
 ## 英文缩写速查
 
@@ -42,7 +45,7 @@ summary: "NVIDIA Omniverse 是 Isaac Sim 的底层支撑平台，是一个基于
 3. **RTX 高保真渲染**：
    支持实时的光线追踪。对于 [视觉伺服](../methods/visual-servoing.md) 和基于摄像头的感知算法训练，Omniverse 能提供极度逼真的光影、材质和镜头畸变效果。
 4. **Isaac 扩展库**：
-   在 Omniverse 之上，Isaac Sim 提供了专门针对机器人的传感器模拟（LiDAR, IMU, Depth Camera）、关节控制接口以及丰富的机器人模型库（如 Unitree, Franka, Universal Robots）。
+   在 Omniverse 之上，[Isaac Sim](./isaac-sim.md) 提供专门针对机器人的传感器模拟（LiDAR, IMU, Depth Camera）、关节控制接口以及丰富的机器人模型库（如 Unitree, Franka, Universal Robots）；其上的学习框架见 [Isaac Lab](./isaac-lab.md)。
 
 ## 行业影响
 
@@ -50,6 +53,8 @@ summary: "NVIDIA Omniverse 是 Isaac Sim 的底层支撑平台，是一个基于
 - **工业数字化孪生**：宝马（BMW）等巨头利用 Omniverse 构建完整的工厂数字化孪生，在机器人进入真实产线前进行全流程的虚拟验证。
 
 ## 关联页面
+- [Isaac Sim](./isaac-sim.md) — Omniverse 上的机器人仿真应用实体页
+- [Isaac Lab](./isaac-lab.md) — 建立在 Isaac Sim 上的学习框架
 - [Blender（开源 DCC 与 USD 资产来源）](./blender.md)
 - [MuJoCo 物理引擎](./mujoco.md)
 - [对比：MuJoCo vs Isaac Sim](../comparisons/mujoco-vs-isaac-sim.md)
@@ -58,4 +63,5 @@ summary: "NVIDIA Omniverse 是 Isaac Sim 的底层支撑平台，是一个基于
 
 ## 参考来源
 - NVIDIA Omniverse 官方文档.
+- **ingest 档案：** [sources/repos/isaac_sim.md](../../sources/repos/isaac_sim.md)
 - Makoviychuk, V., et al. (2021). *Isaac Gym: High Performance GPU-Based Physics Simulation For Robot Learning*.

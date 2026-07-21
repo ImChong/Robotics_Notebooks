@@ -1,5 +1,16 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-21] structural | Isaac Gym / Isaac Sim / Isaac Lab 独立节点补齐运行时序图与类图
+
+- 新建独立实体：[`wiki/entities/isaac-sim.md`](wiki/entities/isaac-sim.md)（此前仅散见于总览与对比页）
+- 为三页补齐 **`## 核心类图`** + **`## 源码运行时序图`**（mermaid `classDiagram` / `sequenceDiagram`）：
+  - [`wiki/entities/isaac-gym.md`](wiki/entities/isaac-gym.md)
+  - [`wiki/entities/isaac-sim.md`](wiki/entities/isaac-sim.md)
+  - [`wiki/entities/isaac-lab.md`](wiki/entities/isaac-lab.md)
+- 总览枢纽改写为三代产品：[`wiki/entities/isaac-gym-isaac-lab.md`](wiki/entities/isaac-gym-isaac-lab.md)
+- Source 拆分：[`sources/repos/isaac_sim.md`](sources/repos/isaac_sim.md)、[`isaac_lab.md`](sources/repos/isaac_lab.md)、[`isaac_gym.md`](sources/repos/isaac_gym.md)；联合索引更新 [`isaac_gym_isaac_lab.md`](sources/repos/isaac_gym_isaac_lab.md)
+- 交叉：`nvidia-omniverse`、`nvidia-physical-ai-learning`、`curobo`、`mjlab`、`mujoco-vs-isaac-sim`、`robot-training-stack-layers-technology-map`、`index.md`
+
 ## [2026-07-21] ingest | sources/repos/ssik.md — 接入 UW PRL 解析 IK 库 ssik；wiki/entities/ssik.md；交叉更新 manipulation / teleoperation / moveit2 / curobo
 
 ## [2026-07-20] query | wiki/queries/actuator-drive-chain-selection-loop.md — V30 P1 执行器驱动链选型闭环知识链

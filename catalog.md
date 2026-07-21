@@ -152,11 +152,12 @@
 - [iGibson](wiki/entities/igibson.md) — iGibson** 是斯坦福大学等机构 2020 年发布的 **交互式室内仿真环境**，强调 **真实感视觉场景** 与 **高保真物理交互** 的融合。 `📅unknown` `[entity_page]`
 - [InMoov（开源 3D 打印人形）](wiki/entities/inmoov-humanoid.md) — InMoov** 是 **Gael Langevin** 自 2012 年起维护的 **全球首个开源 3D 打印真人比例人形** 项目：以 **Arduino** 控制、**MyRobotLab `📅unknown` `[entity_page]`
 - [Isaac GR00T（人形 VLA 开发平台）](wiki/entities/isaac-gr00t.md) — Isaac GR00T** 是 NVIDIA 面向通用人形机器人的 **开源开发平台**：以 [Isaac-GR00T](https://github.com/NVIDIA/Isaac-GR00T `📅unknown` `[entity_page]`
-- [Isaac Gym / Isaac Lab](wiki/entities/isaac-gym-isaac-lab.md) — Isaac Gym** 和 **Isaac Lab** 是 NVIDIA 机器人强化学习生态里的两代核心框架。 `📅unknown` `[entity_page]`
+- [Isaac Gym / Isaac Sim / Isaac Lab](wiki/entities/isaac-gym-isaac-lab.md) — Isaac Gym**、**Isaac Sim** 与 **Isaac Lab** 是 NVIDIA 机器人仿真与学习生态里需要分开理解的三个产品节点。 `📅unknown` `[entity_page]`
 - [Isaac Gym](wiki/entities/isaac-gym.md) — Isaac Gym** 是 NVIDIA 早期推出的 GPU 加速机器人强化学习仿真框架，主打「在单张 GPU 上同时跑几千到上万个环境」的大规模并行训练。 `📅unknown` `[entity_page]`
 - [Isaac Lab](wiki/entities/isaac-lab.md) — Isaac Lab** 是 NVIDIA 当前官方主推的机器人学习框架，建立在 **Isaac Sim** 之上，用于 robot learning、locomotion、manipulation `📅unknown` `[entity_page]`
 - [Isaac ROS Nvblox](wiki/entities/isaac-ros-nvblox.md) — isaac_ros_nvblox**（[NVIDIA-ISAAC-ROS/isaac_ros_nvblox](https://github.com/NVIDIA-ISAAC-ROS/isaac_r `📅unknown` `[entity_page]`
 - [Isaac ROS Visual SLAM](wiki/entities/isaac-ros-visual-slam.md) — isaac_ros_visual_slam**（[NVIDIA-ISAAC-ROS/isaac_ros_visual_slam](https://github.com/NVIDIA-ISAAC-R `📅unknown` `[entity_page]`
+- [Isaac Sim](wiki/entities/isaac-sim.md) — Isaac Sim** 是 NVIDIA 基于 **Omniverse / OpenUSD** 的机器人仿真应用：导入 URDF/MJCF/CAD/USD，用 PhysX（及 Newton）做物理 `📅unknown` `[entity_page]`
 - [Isaac Teleop](wiki/entities/isaac-teleop.md) — Isaac Teleop** 是 NVIDIA 推出的**统一遥操作与数据采集框架**，面向 egocentric 视角下的高保真人机示范：同一套设备抽象与 retargeting 图既可用于  `📅unknown` `[entity_page]`
 - [FEAP MuJoCo 部署（E3 ONNX）](wiki/entities/jackhan-feap-mujoco-deployment.md) — 本仓库在 MuJoCo 中部署 FEAP 论文配套的双 ONNX 网络（Encoder + Actor），支持键盘或手柄速度指令与地形场景验证。 `📅unknown` `[entity_page]`
 - [FEAP Vision MuJoCo 部署（深度 + TorchScript）](wiki/entities/jackhan-feapvision-mujoco-deployment.md) — 本仓库在 MuJoCo 中渲染深度相机、拼接本体观测并加载 TorchScript 策略，经 PD 与手柄指令驱动 E3 类 21-DoF 人形。 `📅unknown` `[entity_page]`
@@ -228,7 +229,7 @@
 - [数值优化学习策展（机器人 L0+）](wiki/entities/numerical-optimization-curriculum.md) — 一句话：** 机器人控制栈里反复出现的 **QP、NMPC、TrajOpt、碰撞距离、控制分配** 共用同一套数值优化语言；本页把 [《数值优化基础》](../../sources/courses `📅unknown` `[entity_page]`
 - [Nuwa Skill（女娲.skill）](wiki/entities/nuwa-skill.md) — Nuwa Skill** 是 alchaincyf/nuwa-skill 仓库分发的 **元 skill `📅unknown` `[entity_page]`
 - [NVIDIA GEAR Lab（Generalist Embodied Agent Research）](wiki/entities/nvidia-gear-lab.md) — GEAR** 是 NVIDIA Research 下的 **具身智能基础研究组**（门户：<https://research.nvidia.com/labs/gear/>），由 **[Linxi  `📅unknown` `[entity_page]`
-- [NVIDIA Omniverse (具身仿真底座)](wiki/entities/nvidia-omniverse.md) — NVIDIA Omniverse** 并非一个简单的物理引擎，而是一个庞大的**实时协作仿真平台**。在机器人领域，它是目前最强物理仿真器 **Isaac Sim** 的运行底座。通过利用光线追踪 `📅unknown` `[entity_page]`
+- [NVIDIA Omniverse (具身仿真底座)](wiki/entities/nvidia-omniverse.md) — NVIDIA Omniverse** 并非一个简单的物理引擎，而是一个庞大的**实时协作仿真平台**。在机器人领域，它是 Isaac Sim 的运行底座。通过利 `📅unknown` `[entity_page]`
 - [NVIDIA Physical AI Learning](wiki/entities/nvidia-physical-ai-learning.md) — NVIDIA Physical AI Learning** 是 NVIDIA 面向 **Physical AI**（能感知、推理物理关系、执行动作并适应真实环境的 AI 系统）的 **免费自学课程 `📅unknown` `[entity_page]`
 - [NVIDIA SO-101 Sim2Real 实验 workflow](wiki/entities/nvidia-so101-sim2real-lab-workflow.md) — Train an SO-101 Robot From Sim-to-Real With NVIDIA Isaac** 是 [Physical AI Learning](./nvidia-physi `📅unknown` `[entity_page]`
 - [Meta Quest (Oculus) 遥操作](wiki/entities/oculust-quest-teleop.md) — 在机器人模仿学习（Imitation Learning）和 VLA 模型训练中，**Meta Quest (原 Oculus Quest)** 系列 VR 头显已成为获取大规模高质量人类演示数据的核心 `📅unknown` `[entity_page]`
