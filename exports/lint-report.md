@@ -2,7 +2,7 @@
 
 ## [2026-07-21] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **18** 条信息型预警）：
+共发现 **0** 个问题（另含 **0** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -97,30 +97,14 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（17 个）
-- wiki/entities/paper-aerial-aquatic-remora-hitchhiking-robot.md（缺 评测）
-- wiki/entities/paper-automated-facial-mechanisms-animatronic.md（缺 方法 / 评测 / 对比）
-- wiki/entities/paper-bistable-soft-jumper-magnetic.md（缺 评测）
-- wiki/entities/paper-clothtransformer-unified-latent-cloth-simulation.md（缺 评测）
-- wiki/entities/paper-cunrto-gpu-robust-trajectory-optimization.md（缺 方法 / 评测 / 对比）
-- wiki/entities/paper-dapl-extrinsic-dexterity-clutter.md（缺 方法 / 评测 / 对比）
-- wiki/entities/paper-deimel-compliant-underactuated-robotic-hand.md（缺 方法 / 评测 / 对比）
-- wiki/entities/paper-microsaccade-inspired-event-camera.md（缺 对比）
-- wiki/entities/paper-miniature-deep-sea-morphable-robot.md（缺 评测）
-- wiki/entities/paper-oat-ordered-action-tokenization.md（缺 方法 / 评测 / 对比）
-- wiki/entities/paper-octopus-inspired-esoam-soft-arm.md（缺 对比）
-- wiki/entities/paper-roller-skating-amp-humanoid-passive-wheels.md（缺 对比）
-- wiki/entities/paper-semantic-audio-wbc-humanoid.md（缺 对比）
-- wiki/entities/paper-subcentimeter-pipeline-inspection-robot.md（缺 评测）
-- wiki/entities/paper-swarm-micro-flying-robots-in-the-wild.md（缺 对比）
-- wiki/entities/paper-unified-fluid-robot-multiphysics-swimming.md（缺 方法 / 评测 / 对比）
-- wiki/entities/paper-vision-dribbling-humanoid-soccer-privileged-representation.md（缺 对比）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（1 个）
-- wiki/methods/adaptive-computed-torque-control.md（含绝对化措辞「最新」，updated=2026-07-18；同主题更新页 wiki/entities/curobo.md updated=2026-07-21）
+### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
