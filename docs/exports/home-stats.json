@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-21",
   "node_count": 1747,
-  "edge_count": 14055,
+  "edge_count": 14056,
   "coverage": {
     "covered": 1697,
     "total": 1727,
@@ -18,6 +18,16 @@
       "action": "added"
     },
     {
+      "path": "wiki/methods/object-detection.md",
+      "detail_id": "wiki-methods-object-detection",
+      "label": "目标检测（Object Detection）",
+      "type": "method",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "path": "wiki/overview/navigation-slam-autonomy-stack.md",
       "detail_id": "wiki-overview-navigation-slam-autonomy-stack",
       "label": "导航·SLAM·自动驾驶开源栈总览",
@@ -27,16 +37,6 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/methods/object-detection.md",
-      "detail_id": "wiki-methods-object-detection",
-      "label": "目标检测（Object Detection）",
-      "type": "method",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/methods/lqr-ilqr.md",

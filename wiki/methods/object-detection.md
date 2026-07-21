@@ -24,9 +24,9 @@ sources:
   - ../../sources/papers/resnet_arxiv_1512_03385.md
   - ../../sources/papers/vision_backbone_detection_classics.md
   - ../../sources/papers/rf_detr_arxiv_2511_09554.md
-  - ../../sources/blogs/wechat_shenlan_ai_ad_2d_detection_pending.md
-  - ../../sources/blogs/wechat_shenlan_ai_ad_3d_detection_pending.md
-summary: "目标检测在图像中定位并分类物体；两阶段 R-CNN 族精度高，YOLO 等单阶段方法以端到端回归实现机载实时感知，DETR/RF-DETR 等无 NMS Transformer 路线在 ViT 骨干下补齐精度–延迟前沿，是机器人导航与操作视觉栈的核心模块。"
+  - ../../sources/blogs/wechat_shenlan_ai_ad_2d_detection.md
+  - ../../sources/blogs/wechat_shenlan_ai_ad_3d_detection.md
+summary: "目标检测在图像中定位并分类物体；两阶段 R-CNN 族精度高，YOLO 等单阶段方法以端到端回归实现机载实时感知，DETR/RF-DETR 等无 NMS Transformer 路线在 ViT 骨干下补齐精度–延迟前沿；车载侧另有单目/双目/LiDAR 3D 检测选型轴，是机器人导航与操作视觉栈的核心模块。"
 ---
 
 # 目标检测（Object Detection）
@@ -86,6 +86,10 @@ summary: "目标检测在图像中定位并分类物体；两阶段 R-CNN 族精
 
 **机器人语境：** 需要 **无 NMS 确定性延迟**、**ViT 域迁移**（如 RF100-VL 类垂直数据集）或 **检测+分割统一 API** 时，[RF-DETR](../entities/rf-detr.md) 是 YOLO 之外的工程选项；开放词汇/语言指令仍走 GroundingDINO 等 VLM 路线。
 
+### 车载扩展：2D 四大族与 3D 传感器路线
+
+深蓝AI 专辑将车载 **2D** 划为两阶段 Anchor、单阶段 CNN Anchor（含 YOLO v3–v9）、Anchor-Free、Transformer（含 DETR）四族；**3D** 则按 **单目 / 双目 / LiDAR（含多模态）** 选型——PointPillars 偏量产实时，CenterPoint 衔接 MOT。完整表见 [《自动驾驶核心算法盘点》专栏技术地图](../overview/autonomous-driving-core-algorithms-series.md)；勿把 COCO mAP 直接当成 KITTI/nuScenes 3D 结论。
+
 ### 流程总览
 
 ```mermaid
@@ -134,7 +138,7 @@ YOLO v1 误差分析（相对 Fast R-CNN）：
 - [Booster RoboCup Demo](../entities/booster-robocup-demo.md)
 - [Visual Servoing（方法）](./visual-servoing.md)
 - [Query：目标检测模型选型](../queries/object-detection-model-selection.md)
-- [《自动驾驶核心算法盘点》专栏技术地图](../overview/autonomous-driving-core-algorithms-series.md) — 车载 2D/3D 检测篇待补抓，跟踪上游依赖 3D 检测
+- [《自动驾驶核心算法盘点》专栏技术地图](../overview/autonomous-driving-core-algorithms-series.md) — 车载 2D/3D 检测与跟踪上游
 
 ## 参考来源
 
@@ -142,8 +146,8 @@ YOLO v1 误差分析（相对 Fast R-CNN）：
 - [ResNet 论文摘录（arXiv:1512.03385）](../../sources/papers/resnet_arxiv_1512_03385.md)
 - [经典视觉骨干与检测文献簇](../../sources/papers/vision_backbone_detection_classics.md)
 - [RF-DETR 论文摘录（arXiv:2511.09554）](../../sources/papers/rf_detr_arxiv_2511_09554.md)
-- [深蓝AI 2D 检测篇占位](../../sources/blogs/wechat_shenlan_ai_ad_2d_detection_pending.md)
-- [深蓝AI 3D 检测篇占位](../../sources/blogs/wechat_shenlan_ai_ad_3d_detection_pending.md)
+- [深蓝AI 2D 目标检测篇](../../sources/blogs/wechat_shenlan_ai_ad_2d_detection.md)
+- [深蓝AI 3D 目标检测篇](../../sources/blogs/wechat_shenlan_ai_ad_3d_detection.md)
 
 ## 推荐继续阅读
 
