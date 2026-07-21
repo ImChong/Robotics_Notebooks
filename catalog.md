@@ -356,6 +356,7 @@
 - [E³C](wiki/entities/paper-ego-09-e3c.md) — E³C** 收录于 具身智能研究室 · Ego 9 篇专题 **第 09/9** 篇，归类 `📅unknown` `[entity_page]`
 - [EgoWAM（野外 Egocentric 人数据 · World Action Model 协同训练）](wiki/entities/paper-egowam-egocentric-human-wam-co-training.md) — EgoWAM**（*World Action Models Beyond Pixels with In-the-Wild Egocentric Human Data*，[项目页](https:// `📅unknown` `[entity_page]`
 - [EmbodiedGen V2（Simulation-Ready 3D World Engine · arXiv:2607.07459）](wiki/entities/paper-embodiedgen-v2-sim-ready-world-engine.md) — EmbodiedGen V2**（*\calmfont EmbodiedGen V2: An Agentic, Simulation-Ready 3D World Engine for Embod `📅unknown` `[entity_page]`
+- [ergoCub：面向人因的共享具身智能人形](wiki/entities/paper-ergocub-shared-embodied-intelligence.md) — ergoCub**（*Towards shared embodied intelligence in humanoid robots through optimization, developme `📅unknown` `[entity_page]`
 - [EventVLA（Event-Driven Visual Evidence Memory for Long-Horizon VLA）](wiki/entities/paper-eventvla-visual-evidence-memory.md) — EventVLA**（arXiv:2606.20092，[项目页](https://ganlin-yang.github.i `📅unknown` `[entity_page]`
 - [Evo-1：轻量 VLA 与语义对齐保持](wiki/entities/paper-evo1-lightweight-vla.md) — Evo-1**（*Lightweight Vision-Language-Action Model with Preserved Semantic Alignment*，arXiv:[2511.0 `📅unknown` `[entity_page]`
 - [显式楼梯几何条件化人形运动（Explicit Stair Geometry Conditioning）](wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md) — 显式楼梯几何条件化**（arXiv:2605.09944，AIRS / CUHK-Shenzhen / MBZUAI）针对 **人形楼梯爬升** 提出：不把地形压进 **高维隐式 embeddin `📅unknown` `[entity_page]`

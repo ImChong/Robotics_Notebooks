@@ -1,13 +1,86 @@
 {
   "generated_at": "2026-07-21",
-  "node_count": 1742,
-  "edge_count": 13966,
+  "node_count": 1743,
+  "edge_count": 13979,
   "coverage": {
-    "covered": 1692,
-    "total": 1722,
+    "covered": 1693,
+    "total": 1723,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-ergocub-shared-embodied-intelligence.md",
+      "detail_id": "entity-paper-ergocub-shared-embodied-intelligence",
+      "label": "ergoCub：面向人因的共享具身智能人形",
+      "type": "entity",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/concepts/whole-body-control.md",
+      "detail_id": "wiki-concepts-whole-body-control",
+      "label": "Whole-Body Control (WBC，全身控制)",
+      "type": "concept",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/tasks/locomotion.md",
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "运动控制（Locomotion） 社区"
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/humanoid-robot.md",
+      "detail_id": "entity-humanoid-robot",
+      "label": "人形机器人（Humanoid Robot）",
+      "type": "entity",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-notebook-icub3-avatar-system-enabling-remote-fully-immers.md",
+      "detail_id": "entity-paper-notebook-icub3-avatar-system-enabling-remote-fully-immers",
+      "label": "iCub3 Avatar System",
+      "type": "entity",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
+    },
+    {
+      "path": "wiki/entities/open-source-humanoid-hardware.md",
+      "detail_id": "entity-open-source-humanoid-hardware",
+      "label": "开源人形机器人硬件方案对比",
+      "type": "entity",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-rynnbrain-1-1.md",
       "detail_id": "entity-paper-rynnbrain-1-1",
@@ -142,108 +215,34 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/video-as-simulation.md",
-      "detail_id": "wiki-concepts-video-as-simulation",
-      "label": "Video-as-Simulation (视频即仿真)",
-      "type": "concept",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/vision-transformer.md",
-      "detail_id": "wiki-concepts-vision-transformer",
-      "label": "Vision Transformer（ViT，视觉 Transformer）",
-      "type": "concept",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/vision-backbones.md",
-      "detail_id": "wiki-concepts-vision-backbones",
-      "label": "视觉骨干（Vision Backbones）",
-      "type": "concept",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/rebot-devarm.md",
-      "detail_id": "entity-rebot-devarm",
-      "label": "reBot-DevArm（Seeed reBot Arm B601）",
-      "type": "entity",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/lerobot.md",
-      "detail_id": "entity-lerobot",
-      "label": "LeRobot (Hugging Face)",
-      "type": "entity",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/tasks/teleoperation.md",
-      "detail_id": "wiki-tasks-teleoperation",
-      "label": "Teleoperation（遥操作）",
-      "type": "task",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-rynnbrain-1-1.md",
-    "detail_id": "entity-paper-rynnbrain-1-1",
-    "label": "RynnBrain 1.1：更强、更可泛化的具身基础模型",
+    "path": "wiki/entities/paper-ergocub-shared-embodied-intelligence.md",
+    "detail_id": "entity-paper-ergocub-shared-embodied-intelligence",
+    "label": "ergoCub：面向人因的共享具身智能人形",
     "type": "entity",
     "recency": "2026-07-21",
     "source": "log.md",
     "action": "added",
-    "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 338
-    },
-    {
-      "label": "模仿学习",
-      "size": 193
+      "size": 406
     },
     {
       "label": "人形论文深读笔记",
       "size": 179
     },
     {
+      "label": "人形强化学习运动控制",
+      "size": 166
+    },
+    {
       "label": "移动操作",
-      "size": 173
+      "size": 153
     },
     {
       "label": "全身控制",
@@ -251,7 +250,7 @@
     },
     {
       "label": "仿真训练",
-      "size": 91
+      "size": 80
     }
   ],
   "top_hubs": [
@@ -266,7 +265,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 308,
+      "degree": 310,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -298,7 +297,8 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 248
+      "degree": 250,
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
@@ -320,15 +320,14 @@
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
       "degree": 180,
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
       "label": "人形机器人 RL 运动控制：身体系统栈视角",
       "type": "overview",
       "degree": 178,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     }
   ],
   "top_paper_hubs": [
@@ -344,8 +343,7 @@
       "label": "BeyondMimic",
       "type": "method",
       "degree": 54,
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",
@@ -353,7 +351,7 @@
       "type": "entity",
       "degree": 46,
       "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",
@@ -366,8 +364,7 @@
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
-      "degree": 45,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "degree": 45
     },
     {
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
@@ -388,14 +385,14 @@
       "type": "entity",
       "degree": 36,
       "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",
       "label": "SD-AMP：统一走、跑与起身的对抗运动先验",
       "type": "entity",
       "degree": 36,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",

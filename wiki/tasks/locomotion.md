@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-21
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -317,6 +317,7 @@ flowchart TD
 - [MPC](../methods/model-predictive-control.md)
 - [磁驱动双稳态软跳跃机器人](../entities/paper-bistable-soft-jumper-magnetic.md)
 - [统一流体-机器人多物理游泳仿真](../entities/paper-unified-fluid-robot-multiphysics-swimming.md)
+- [ergoCub Shared Embodied Intelligence](../entities/paper-ergocub-shared-embodied-intelligence.md) — 硬件优化抬高 CoM + 分层 WBC 行走，相对 iCub3 更大步长/更短步周期
 
 
 ## 推荐继续阅读

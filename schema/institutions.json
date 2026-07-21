@@ -1220,6 +1220,34 @@
         "seeed-studio",
         "seeed-projects"
       ]
+    },
+    "iit": {
+      "label": "意大利技术研究院（Istituto Italiano di Tecnologia）",
+      "aliases": [
+        "iit",
+        "istituto-italiano-di-tecnologia",
+        "ami-iit"
+      ]
+    },
+    "inail": {
+      "label": "意大利国家工伤保险研究所（INAIL）",
+      "aliases": [
+        "inail"
+      ]
+    },
+    "generative-bionics": {
+      "label": "生成仿生学（GenerativeBionics）",
+      "aliases": [
+        "generative-bionics",
+        "gbionics"
+      ]
+    },
+    "university-of-manchester": {
+      "label": "曼彻斯特大学（University of Manchester）",
+      "aliases": [
+        "university-of-manchester",
+        "manchester"
+      ]
     }
   }
 }

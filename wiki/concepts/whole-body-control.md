@@ -2,7 +2,7 @@
 type: concept
 tags: [control, wbc, humanoid, optimization]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-21
 related:
   - ../tasks/locomotion.md
   - ../methods/imitation-learning.md
@@ -182,6 +182,7 @@ print("joint acceleration command:", qdd_star)
 - [PILOT（论文实体）](../entities/paper-pilot-perceptive-loco-manipulation.md) — 学习型 **单阶段 MoE 全身 LLC**：LiDAR 高程图 + 跨模态编码，作 loco-manipulation 上层 API（arXiv:2601.17440）
 - [KungfuBot 2 / VMS](../entities/paper-notebook-kungfubot-2.md) — OMoE 单策略多技能低层全身控制器，可作 text-to-motion 执行层（[PBHC](../../sources/repos/pbhc.md)）
 - [KungfuBot](../entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) — 高动态武术/舞蹈 physics-based WBT 真机案例
+- [ergoCub Shared Embodied Intelligence](../entities/paper-ergocub-shared-embodied-intelligence.md) — 人因指标驱动的硬件–分层 WBC 联合优化（*Nat Mach Intell* 2026；adam + shared-controllers）
 
 ## 继续深挖入口
 
