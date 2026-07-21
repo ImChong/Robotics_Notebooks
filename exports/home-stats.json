@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-21",
-  "node_count": 1745,
-  "edge_count": 14017,
+  "node_count": 1747,
+  "edge_count": 14055,
   "coverage": {
-    "covered": 1695,
-    "total": 1725,
+    "covered": 1697,
+    "total": 1727,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -15,8 +15,7 @@
       "type": "overview",
       "recency": "2026-07-21",
       "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/overview/navigation-slam-autonomy-stack.md",
@@ -27,7 +26,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/methods/object-detection.md",
@@ -67,151 +66,142 @@
       "recency": "2026-07-21",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
-      "path": "wiki/entities/paper-egohtr.md",
-      "detail_id": "entity-paper-egohtr",
-      "label": "EgoHTR：第一视角粗糙地形人–场景 4D 演示",
+      "path": "wiki/entities/paper-gmt.md",
+      "detail_id": "entity-paper-gmt",
+      "label": "GMT（General Motion Tracking for Humanoid Whole-Body Control）",
       "type": "entity",
       "recency": "2026-07-21",
       "source": "log.md",
       "action": "added",
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/comparisons/humanoid-reference-motion-datasets.md",
-      "detail_id": "wiki-comparisons-humanoid-reference-motion-datasets",
-      "label": "人形参考运动与操作数据集选型",
-      "type": "comparison",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/entities/amass.md",
-      "detail_id": "entity-amass",
-      "label": "AMASS（Archive of Motion Capture as Surface Shapes）",
-      "type": "entity",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/tasks/locomotion.md",
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/concepts/terrain-adaptation.md",
-      "detail_id": "wiki-concepts-terrain-adaptation",
-      "label": "Terrain Adaptation（地形适应）",
-      "type": "concept",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/concepts/motion-retargeting.md",
-      "detail_id": "wiki-concepts-motion-retargeting",
-      "label": "Motion Retargeting（动作重定向）",
-      "type": "concept",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-hrl-stack-03-omniretarget.md",
-      "detail_id": "entity-paper-hrl-stack-03-omniretarget",
-      "label": "OmniRetarget",
-      "type": "entity",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
       "has_repo": true
     },
     {
-      "path": "wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md",
-      "detail_id": "entity-paper-rpl-robust-humanoid-perceptive-locomotion",
-      "label": "RPL：复杂地形上的鲁棒人形多向感知行走",
+      "path": "wiki/entities/paper-loco-manip-161-009-gmt.md",
+      "detail_id": "entity-paper-loco-manip-161-009-gmt",
+      "label": "GMT（Loco-Manip 161 · #009 索引）",
+      "type": "entity",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/concepts/whole-body-tracking-pipeline.md",
+      "detail_id": "wiki-concepts-whole-body-tracking-pipeline",
+      "label": "Whole-Body Tracking Pipeline（全身运动跟踪流水线）",
+      "type": "concept",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/queries/humanoid-motion-tracking-method-selection.md",
+      "detail_id": "wiki-queries-humanoid-motion-tracking-method-selection",
+      "label": "人形运动跟踪方法选型指南",
+      "type": "query",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-phygile.md",
+      "detail_id": "entity-paper-phygile",
+      "label": "PhyGile（Physics-Prefix Guided Motion Generation for Agile General Humanoid Motion Tracking）",
       "type": "entity",
       "recency": "2026-07-21",
       "source": "log.md",
       "action": "maintained"
     },
     {
-      "path": "wiki/methods/motion-retargeting-gmr.md",
-      "detail_id": "wiki-methods-motion-retargeting-gmr",
-      "label": "GMR: 通用动作重定向",
+      "path": "wiki/entities/paper-resmimic.md",
+      "detail_id": "entity-paper-resmimic",
+      "label": "ResMimic（GMT → 人形全身 Loco-Manipulation 残差学习）",
+      "type": "entity",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/methods/egm-efficient-general-mimic.md",
+      "detail_id": "wiki-methods-egm-efficient-general-mimic",
+      "label": "EGM（Efficient General Mimic，高效通用模仿跟踪）",
       "type": "method",
       "recency": "2026-07-21",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
+      "has_repo": true
     },
     {
-      "path": "wiki/entities/paper-ergocub-shared-embodied-intelligence.md",
-      "detail_id": "entity-paper-ergocub-shared-embodied-intelligence",
-      "label": "ergoCub：面向人因的共享具身智能人形",
+      "path": "wiki/entities/paper-notebook-general-motion-tracking-for-humanoid-whole-body.md",
+      "detail_id": "entity-paper-notebook-general-motion-tracking-for-humanoid-whole-body",
+      "label": "General Motion Tracking for Humanoid Whole-Body Control（Paper Notebooks 计划）",
+      "type": "entity",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-humanoidarena.md",
+      "detail_id": "entity-paper-humanoidarena",
+      "label": "HumanoidArena（Egocentric Hierarchical Whole-body Benchmark）",
+      "type": "entity",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/overview/loco-manip-161-category-01-motion-base-wbt.md",
+      "detail_id": "wiki-overview-loco-manip-161-category-01-motion-base-wbt",
+      "label": "Loco-Manip 161 分类 01：运控基座与通用全身跟踪",
+      "type": "overview",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md",
+      "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",
+      "label": "Paper Notebooks · Loco-Manipulation and WBC",
+      "type": "overview",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-glob3r.md",
+      "detail_id": "entity-paper-glob3r",
+      "label": "Glob3R：3D 基础模型引导的全局 SfM",
       "type": "entity",
       "recency": "2026-07-21",
       "source": "log.md",
       "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/concepts/whole-body-control.md",
-      "detail_id": "wiki-concepts-whole-body-control",
-      "label": "Whole-Body Control (WBC，全身控制)",
-      "type": "concept",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
       "has_repo": true,
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/humanoid-robot.md",
-      "detail_id": "entity-humanoid-robot",
-      "label": "人形机器人（Humanoid Robot）",
-      "type": "entity",
+      "path": "wiki/methods/lingbot-map.md",
+      "detail_id": "wiki-methods-lingbot-map",
+      "label": "LingBot-Map (Streaming 3D Reconstruction Foundation Model)",
+      "type": "method",
       "recency": "2026-07-21",
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
     },
     {
-      "path": "wiki/entities/paper-notebook-icub3-avatar-system-enabling-remote-fully-immers.md",
-      "detail_id": "entity-paper-notebook-icub3-avatar-system-enabling-remote-fully-immers",
-      "label": "iCub3 Avatar System",
-      "type": "entity",
+      "path": "wiki/concepts/state-estimation.md",
+      "detail_id": "wiki-concepts-state-estimation",
+      "label": "State Estimation",
+      "type": "concept",
       "recency": "2026-07-21",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -221,13 +211,12 @@
     "type": "overview",
     "recency": "2026-07-21",
     "source": "log.md",
-    "action": "added",
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 400
+      "size": 385
     },
     {
       "label": "人形论文深读笔记",
@@ -235,15 +224,15 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 172
+      "size": 170
     },
     {
       "label": "移动操作",
-      "size": 153
+      "size": 151
     },
     {
       "label": "全身控制",
-      "size": 129
+      "size": 147
     },
     {
       "label": "仿真训练",
@@ -262,7 +251,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 310,
+      "degree": 311,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -309,7 +298,7 @@
       "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",
       "label": "Paper Notebooks · Loco-Manipulation and WBC",
       "type": "overview",
-      "degree": 222,
+      "degree": 223,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
@@ -332,14 +321,14 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 115,
+      "degree": 116,
       "has_repo": true
     },
     {
       "detail_id": "wiki-methods-beyondmimic",
       "label": "BeyondMimic",
       "type": "method",
-      "degree": 54,
+      "degree": 55,
       "has_repo": true
     },
     {

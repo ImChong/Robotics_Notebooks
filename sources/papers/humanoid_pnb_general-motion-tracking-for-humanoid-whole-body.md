@@ -14,14 +14,17 @@
 ## 核心摘录（策展，非全文）
 
 - 本文件锚定 **待深读** 论文在姊妹仓库 `progress.json` 中的条目；笔记完成后应改用笔记页链接并深化 wiki 归纳。
-- 知识归纳见 wiki 实体页：[paper-notebook-general-motion-tracking-for-humanoid-whole-body](../../wiki/entities/paper-notebook-general-motion-tracking-for-humanoid-whole-body.md).
+- 知识归纳见正式实体：[paper-gmt](../../wiki/entities/paper-gmt.md)；计划占位：[paper-notebook-general-motion-tracking-for-humanoid-whole-body](../../wiki/entities/paper-notebook-general-motion-tracking-for-humanoid-whole-body.md)。
 
 ## 对 wiki 的映射
 
+- [paper-gmt](../../wiki/entities/paper-gmt.md)
 - [paper-notebook-general-motion-tracking-for-humanoid-whole-body](../../wiki/entities/paper-notebook-general-motion-tracking-for-humanoid-whole-body.md)
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../../wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 
 ## 参考来源（原始）
 
 - [Humanoid Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json)
+- 论文：<https://arxiv.org/abs/2506.14770>
+- 权威摘录：[`gmt_arxiv_2506_14770.md`](./gmt_arxiv_2506_14770.md)
 

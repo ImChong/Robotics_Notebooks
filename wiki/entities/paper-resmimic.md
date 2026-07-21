@@ -3,10 +3,11 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, motion-tracking, residual-learning, reinforcement-learning, ppo, gmt, sim2real, unitree-g1, amazon-far, whole-body]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-21
 arxiv: "2510.05070"
 code: https://github.com/amazon-far/ResMimic
 related:
+  - ./paper-gmt.md
   - ../tasks/loco-manipulation.md
   - ../concepts/whole-body-tracking-pipeline.md
   - ../concepts/motion-retargeting.md
@@ -21,6 +22,7 @@ sources:
   - ../../sources/papers/resmimic_arxiv_2510_05070.md
   - ../../sources/sites/resmimic-github-io.md
   - ../../sources/repos/resmimic.md
+  - ../../sources/papers/gmt_arxiv_2506_14770.md
 summary: "ResMimic（arXiv:2510.05070，Amazon FAR）用两阶段残差学习把大规模 GMT 先验接到物体条件 loco-manipulation：点云物体跟踪奖励、接触奖励与虚拟力课程稳定训练，G1 真机实现 92.5% sim-to-sim 成功率与 4.5–5.5 kg 全身接触搬运。"
 ---
 
@@ -176,6 +178,7 @@ sequenceDiagram
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [TWIST](./paper-twist.md)
+- [GMT（Chen et al.）](./paper-gmt.md)
 - [OmniRetarget](./paper-hrl-stack-03-omniretarget.md)
 - [holosoma](./holosoma.md)
 - [VideoMimic](./videomimic.md)

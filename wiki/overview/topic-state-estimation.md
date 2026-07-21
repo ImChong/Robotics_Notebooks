@@ -2,7 +2,7 @@
 type: overview
 tags: [topic, topic-state-estimation, slam, odometry, ekf, perception]
 status: complete
-updated: 2026-07-08
+updated: 2026-07-21
 summary: "状态估计专题汇总：本体感知融合、SLAM/VIO/LIO 选型与 Kalman/优化估计框架，服务 locomotion 与导航中的位姿与速度估计。"
 ---
 
@@ -52,6 +52,8 @@ summary: "状态估计专题汇总：本体感知融合、SLAM/VIO/LIO 选型与
 - [AERIS-10（开源相控阵雷达）](../entities/aeris-10-plfm-radar.md) — 10.5 GHz PLFM 主动测距 + GPS/IMU 点迹修正；非 SLAM 栈，可作 **雷达测距** 硬件参考
 - [Ultra-Fusion（多传感器 SLAM）](../entities/paper-ultra-fusion-multi-sensor-slam.md) — 统一滑窗 LVIO/LVWIO、退化调度与在线时空标定（arXiv:2606.21223）
 - [X-IONet（跨平台惯性里程计）](../entities/paper-x-ionet-cross-platform-inertial-odometry.md) — 单 IMU 行人/四足 IO + EKF（IEEE RA-L 2026）
+- [Glob3R（全局 SfM + 3D 基础模型）](../entities/paper-glob3r.md) — 冻结 Pi3X + tracks → 运动平均/BA；离线高精度建图与渲染
+- [LingBot-Map](../methods/lingbot-map.md) — 流式前馈 3D 重建（在线几何对照）
 - [Contact Estimation](../concepts/contact-estimation.md)
 - [Terrain Latent Representation](../concepts/terrain-latent-representation.md)
 - [3D Spatial VQA](../concepts/3d-spatial-vqa.md)

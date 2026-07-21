@@ -14,6 +14,8 @@ related:
   - ../entities/lio-sam.md
   - ../entities/orb-slam3.md
   - ../entities/paper-vs-graphs-visual-slam-scene-graph.md
+  - ../entities/paper-glob3r.md
+  - ../methods/lingbot-map.md
   - ../entities/vins-fusion.md
   - ../entities/open-vins.md
   - ../entities/rtabmap.md
@@ -156,6 +158,8 @@ flowchart TB
 - **[OpenVSLAM](../entities/openvslam.md)** → 社区多迁移至 **stella_vslam** 分支维护。
 - **[Kimera](../entities/kimera.md)**：Kimera-VIO + RPGO + Semantics 模块化 **语义 SLAM**。
 - **[RTAB-Map](../entities/rtabmap.md)**：RGB-D/激光多模态建图与记忆管理。
+- **[LingBot-Map](../methods/lingbot-map.md)**：流式前馈 3D 几何基础模型（在线位姿/稠密几何）；非经典特征 SLAM，可作视觉几何上游。
+- **[Glob3R](../entities/paper-glob3r.md)**：基础模型引导的**离线全局 SfM**（dense warp tracks → 运动平均 + BA）；适合事后高精度建图/渲染，推理代码截至 2026-07-21 仍为占位仓。
 
 ### 主动雷达（补充，非 ROS 原生）
 
@@ -199,6 +203,8 @@ flowchart TB
 - [Autoware](../entities/autoware.md)
 - [ROS 2 基础](../concepts/ros2-basics.md)
 - [VLA 方法](../methods/vla.md)
+- [LingBot-Map](../methods/lingbot-map.md) — 流式前馈视觉几何
+- [Glob3R](../entities/paper-glob3r.md) — 全局 SfM + 3D 基础模型（离线精炼）
 
 ## 推荐继续阅读
 

@@ -373,6 +373,8 @@
 - [Gamma-World（γ-World / Generative Multi-Agent World Model）](wiki/entities/paper-gamma-world-multi-agent.md) — Gamma-World**（*γ-World*，arXiv:2605.28816，[项目页](https://research.nvidia.com/labs/sil/projects/gamma `📅unknown` `[entity_page]`
 - [GaP（Graph-as-Policy）](wiki/entities/paper-gap-graph-as-policy.md) — GaP**（*A Graph-as-Policy Multi-Agent Self-Learning Harness For Variational Automation Tasks*，NVIDI `📅unknown` `[entity_page]`
 - [GigaWorld-1（World Models for Robot Policy Evaluation · arXiv:2607.02642）](wiki/entities/paper-gigaworld-1-policy-evaluation.md) — GigaWorld-1**（*GigaWorld-1: A Roadmap to Build World Models for Robot Policy Evaluation*，[arXiv:26 `📅unknown` `[entity_page]`
+- [Glob3R：3D 基础模型引导的全局 SfM](wiki/entities/paper-glob3r.md) — Glob3R**（*Glob3R: Global Structure-from-Motion with 3D Foundation Models*，arXiv:[2607.09225](https `📅unknown` `[entity_page]`
+- [GMT（General Motion Tracking for Humanoid Whole-Body Control）](wiki/entities/paper-gmt.md) — GMT**（*GMT: General Motion Tracking for Humanoid Whole-Body Control*，UC San Diego × Simon Fraser U `📅unknown` `[entity_page]`
 - [GPC（Generative Pretrained Controllers）](wiki/entities/paper-gpc-generative-pretrained-controllers.md) — GPC**（*GPC: Large-Scale Generative Pretraining for Transferable Motor Control*，Yi Shi / Yifeng Jia `📅unknown` `[entity_page]`
 - [GRAIL](wiki/entities/paper-grail.md) — GRAIL**（*Generating Humanoid Loco-Manipulation from 3D Assets and Video Priors*，[arXiv:2606.05160 `📅unknown` `[entity_page]`
 - [Green-VLA：分阶段通才 VLA 与人形部署](wiki/entities/paper-greenvla-staged-vla-humanoid.md) — Green-VLA** 是 Sber Robotics Center 提出的 **分阶段 Vision–Language–Action 框架**（arXiv:[2602.00919](https: `📅unknown` `[entity_page]`
@@ -437,7 +439,7 @@
 - [WT-UMI](wiki/entities/paper-loco-manip-07-wt-umi.md) — WT-UMI** 收录于 具身智能研究室 · Loco-Manip 8 篇周报 **第 0 `📅unknown` `[entity_page]`
 - [X-OP](wiki/entities/paper-loco-manip-08-x-op.md) — X-OP** 收录于 具身智能研究室 · Loco-Manip 8 篇周报 **第 08/ `📅unknown` `[entity_page]`
 - [ExBody2](wiki/entities/paper-loco-manip-161-007-exbody2.md) — ExBody2** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A `📅unknown` `[entity_page]`
-- [GMT](wiki/entities/paper-loco-manip-161-009-gmt.md) — GMT** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文 **第 `📅unknown` `[entity_page]`
+- [GMT（Loco-Manip 161 · #009 索引）](wiki/entities/paper-loco-manip-161-009-gmt.md) — GMT** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文 **第 `📅unknown` `[entity_page]`
 - [HumanPlus](wiki/entities/paper-loco-manip-161-012-humanplus.md) — HumanPlus** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3 `📅unknown` `[entity_page]`
 - [MOSAIC](wiki/entities/paper-loco-manip-161-014-mosaic.md) — MOSAIC** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
 - [TextOp](wiki/entities/paper-loco-manip-161-022-textop.md) — TextOp** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
@@ -669,7 +671,7 @@
 - [GAIT](wiki/entities/paper-notebook-gait.md) — GAIT: Legged Robot Proprioceptive State Estimation with Attention over Inertial-Leg Tokens** 收录于  `📅unknown` `[entity_page]`
 - [GaussGym](wiki/entities/paper-notebook-gaussgym-an-open-source-real-to-sim-framework-fo.md) — GaussGym: An open-source real-to-sim framework for learning locomotion from pixels** 已列入 [Humanoid `📅unknown` `[entity_page]`
 - [GBC](wiki/entities/paper-notebook-gbc.md) — GBC: Generalized Behavior-Cloning Framework for Whole-Body Humanoid Imitation** 已列入 [Humanoid Robo `📅unknown` `[entity_page]`
-- [General Motion Tracking for Humanoid Whole-Body Control](wiki/entities/paper-notebook-general-motion-tracking-for-humanoid-whole-body.md) — General Motion Tracking for Humanoid Whole-Body Control** 已列入 [Humanoid Robot Learning Paper Noteb `📅unknown` `[entity_page]`
+- [General Motion Tracking for Humanoid Whole-Body Control（Paper Notebooks 计划）](wiki/entities/paper-notebook-general-motion-tracking-for-humanoid-whole-body.md) — General Motion Tracking / GMT** 已列入 [Humanoid Robot Learning Paper Notebooks](https://imchong.gith `📅unknown` `[entity_page]`
 - [Geometry-Aware Predictive Safety Filters on Humanoids](wiki/entities/paper-notebook-geometry-aware-predictive-safety-filters-on-huma.md) — Geometry-Aware Predictive Safety Filters on Humanoids** 已列入 [Humanoid Robot Learning Paper Noteboo `📅unknown` `[entity_page]`
 - [Go to Zero](wiki/entities/paper-notebook-go-to-zero-towards-zero-shot-motion-generation-w.md) — Go to Zero: Towards Zero-shot Motion Generation with Million-scale Data** 收录于 [Humanoid Robot Lear `📅unknown` `[entity_page]`
 - [GTSAM](wiki/entities/paper-notebook-gtsam-factor-graphs-for-sensor-fusion-in-robotic.md) — GTSAM: Factor graphs for Sensor Fusion in Robotics** 已列入 [Humanoid Robot Learning Paper Notebooks `📅unknown` `[entity_page]`
