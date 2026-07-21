@@ -104,22 +104,22 @@ flowchart TB
 sequenceDiagram
   autonumber
   actor U as 复现者
-  participant Paper as paper_sartore_…/optimal_hardware
-  participant Adam as ami-iit/adam
-  participant Opt as 硬件优化求解器
-  participant PI as paper_…/physical_intelligence
-  participant SC as shared-controllers / wholebodycontrollib
+  participant Adam as adam 动力学库
+  participant PaperHW as optimal_hardware
+  participant Solver as 硬件优化求解器
+  participant PaperPI as physical_intelligence
+  participant SC as shared-controllers
   participant Robot as ergoCub 或仿真
   U->>Adam: pip/conda 安装 adam-robotics
-  U->>Paper: 按 OptimalHardware + Docker 跑优化
-  Paper->>Adam: 参数化浮动基动力学
-  Adam-->>Opt: 质量/惯性/耦合量
-  Opt-->>U: 最优连杆长度与模型输出
-  U->>SC: conda 装 YARP/iDynTree 后 pip install
-  U->>PI: 跑 PhysicalIntelligence 脚本
-  PI->>SC: 分层 WBC / 共享控制
+  U->>PaperHW: OptimalHardware + Docker 跑优化
+  PaperHW->>Adam: 参数化浮动基动力学
+  Adam-->>Solver: 质量、惯性、耦合量
+  Solver-->>U: 最优连杆长度与模型输出
+  U->>SC: conda 装 YARP、iDynTree 后 pip install
+  U->>PaperPI: 跑 PhysicalIntelligence 脚本
+  PaperPI->>SC: 分层 WBC、共享控制
   SC->>Robot: 轨迹与关节命令
-  Robot-->>PI: F/T、状态；人体传感更新内部模型
+  Robot-->>PaperPI: F/T、状态；人体传感更新内部模型
 ```
 
 - **硬件支路：** 论文仓 + adam（可含 Docker）即可复述优化；不要求真机。
