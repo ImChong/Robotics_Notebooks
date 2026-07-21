@@ -1,5 +1,15 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-21] ingest | sources/papers/gmt_arxiv_2506_14770.md、sources/sites/gmt-humanoid-github-io.md、sources/repos/humanoid-general-motion-tracking.md — 接入 GMT（arXiv:2506.14770）项目页与部分开源代码；新建 wiki/entities/paper-gmt.md；校正 161 策展误写扩散；交叉 whole-body-tracking-pipeline、humanoid-motion-tracking-method-selection、paper-phygile、paper-resmimic、egm-efficient-general-mimic、paper-loco-manip-161-009-gmt、paper-notebook-general-motion-tracking-for-humanoid-whole-body
+
+- **开源状态：** **部分开源** — 项目页 → [`zixuan417/humanoid-general-motion-tracking`](https://github.com/zixuan417/humanoid-general-motion-tracking)；MuJoCo sim2sim + pretrained + 示例 motion；训练/数据处理与重定向 **待发布**（截至 2026-07-21）
+- **新建 papers：** [`sources/papers/gmt_arxiv_2506_14770.md`](sources/papers/gmt_arxiv_2506_14770.md)
+- **新建 sites：** [`sources/sites/gmt-humanoid-github-io.md`](sources/sites/gmt-humanoid-github-io.md)
+- **新建 repos：** [`sources/repos/humanoid-general-motion-tracking.md`](sources/repos/humanoid-general-motion-tracking.md)
+- **新建 wiki：** [`wiki/entities/paper-gmt.md`](wiki/entities/paper-gmt.md)
+- **校正：** [`wiki/entities/paper-loco-manip-161-009-gmt.md`](wiki/entities/paper-loco-manip-161-009-gmt.md)、[`sources/papers/loco_manip_161_survey_009_gmt.md`](sources/papers/loco_manip_161_survey_009_gmt.md) — 纠正公众号「扩散/流匹配」误述
+- **交叉更新：** [`wiki/concepts/whole-body-tracking-pipeline.md`](wiki/concepts/whole-body-tracking-pipeline.md)、[`wiki/queries/humanoid-motion-tracking-method-selection.md`](wiki/queries/humanoid-motion-tracking-method-selection.md)、[`wiki/entities/paper-phygile.md`](wiki/entities/paper-phygile.md)、[`wiki/entities/paper-resmimic.md`](wiki/entities/paper-resmimic.md)、[`wiki/methods/egm-efficient-general-mimic.md`](wiki/methods/egm-efficient-general-mimic.md)、[`wiki/entities/paper-notebook-general-motion-tracking-for-humanoid-whole-body.md`](wiki/entities/paper-notebook-general-motion-tracking-for-humanoid-whole-body.md)、[`wiki/entities/paper-humanoidarena.md`](wiki/entities/paper-humanoidarena.md)、[`wiki/overview/loco-manip-161-category-01-motion-base-wbt.md`](wiki/overview/loco-manip-161-category-01-motion-base-wbt.md)、[`wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md`](wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
+
 ## [2026-07-21] ingest | sources/papers/glob3r_arxiv_2607_09225.md — Glob3R（HKUST×通义×NJU×Fudan）全局 SfM + 3D 基础模型；升格 wiki/entities/paper-glob3r.md；交叉 wiki/methods/lingbot-map.md、wiki/concepts/state-estimation.md、wiki/overview/topic-state-estimation.md、wiki/overview/navigation-slam-autonomy-stack.md；官方仓 aigc3d/Glob3R 占位（Inference TODO）
 
 - **开源状态：** **部分开源（占位仓）** — 项目页 Code → [`aigc3d/Glob3R`](https://github.com/aigc3d/Glob3R)；仓内仅 README，Inference/Evaluation 仍 TODO（截至 2026-07-21）

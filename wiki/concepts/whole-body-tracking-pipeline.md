@@ -3,8 +3,8 @@ type: concept
 tags: [robotics, humanoid, whole-body-tracking, wbt, pipeline, motion-tracking, cross-embodiment, sim2real]
 status: complete
 created: 2026-05-29
-updated: 2026-07-16
-summary: "Whole-Body Tracking（WBT）端到端流水线：参考采集 → 重定向 → 训练数据 → 策略学习 → 跨具身迁移 → 真机部署的统一视图，对比 SONIC / BeyondMimic / SD-AMP / Heracles / Any2Any / GMT(RGMT) 等 6 条主流落地路径在每一阶段的取舍。"
+updated: 2026-07-21
+summary: "Whole-Body Tracking（WBT）端到端流水线：参考采集 → 重定向 → 训练数据 → 策略学习 → 跨具身迁移 → 真机部署的统一视图，对比 SONIC / BeyondMimic / SD-AMP / Heracles / Any2Any / GMT 等主流落地路径在每一阶段的取舍。"
 related:
   - ./motion-retargeting-pipeline.md
   - ./motion-retargeting.md
@@ -17,6 +17,7 @@ related:
   - ../methods/deepmimic.md
   - ../methods/limmt-gqs-motion-curation.md
   - ../methods/amp-reward.md
+  - ../entities/paper-gmt.md
   - ../entities/paper-any2any-cross-embodiment-wbt.md
   - ../entities/paper-unified-walk-run-recovery-sdamp.md
   - ../entities/paper-heracles-humanoid-diffusion.md
@@ -32,6 +33,7 @@ related:
   - ../entities/sam3dbody-cpp.md
   - ../entities/paper-htd-refine-monocular-hmr.md
 sources:
+  - ../../sources/papers/gmt_arxiv_2506_14770.md
   - ../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md
   - ../../sources/papers/bfm_awesome_beyondmimic_arxiv_2508_08241.md
   - ../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md
@@ -45,7 +47,7 @@ sources:
 
 # Whole-Body Tracking Pipeline（全身运动跟踪流水线）
 
-**Whole-Body Tracking（WBT）** 关心的是「让人形机器人**全身**按一段参考动作动起来」的端到端工程链路。它**消费** [Motion Retargeting Pipeline](./motion-retargeting-pipeline.md) 的参考轨迹产物，**生产**可上真机的跟踪策略。本页把这条链路统一成 6 个阶段，并把 **SONIC / BeyondMimic / SD-AMP / Heracles / Any2Any / GMT (RGMT)** 6 条主流落地路径并排放进来对比。
+**Whole-Body Tracking（WBT）** 关心的是「让人形机器人**全身**按一段参考动作动起来」的端到端工程链路。它**消费** [Motion Retargeting Pipeline](./motion-retargeting-pipeline.md) 的参考轨迹产物，**生产**可上真机的跟踪策略。本页把这条链路统一成 6 个阶段，并把 **SONIC / BeyondMimic / SD-AMP / Heracles / Any2Any / GMT**（含 [Chen et al. GMT](../entities/paper-gmt.md) 与 RGMT 等鲁棒变体）等主流落地路径并排放进来对比。
 
 ## 一句话定义
 

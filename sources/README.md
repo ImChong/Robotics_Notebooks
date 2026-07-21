@@ -9,6 +9,7 @@
 ### papers/ — 论文来源归档
 | 文件 | 内容 |
 |------|------|
+| [x] [gmt_arxiv_2506_14770.md](papers/gmt_arxiv_2506_14770.md) | GMT：Adaptive Sampling + Motion MoE 统一人形全身跟踪（arXiv:2506.14770，UCSD×SFU；部分开源 sim2sim） |
 | [x] [turingvit_arxiv_2606_24253.md](papers/turingvit_arxiv_2606_24253.md) | TuringViT：VLM-native 线性注意力 ViT（arXiv:2606.24253，小鹏；项目页未开源） |
 | [x] [x_world_arxiv_2603_19979.md](papers/x_world_arxiv_2603_19979.md) | X-World：7 摄动作条件驾驶世界模型（arXiv:2603.19979，小鹏；未开源） |
 | [x] [x_cache_arxiv_2604_20289.md](papers/x_cache_arxiv_2604_20289.md) | X-Cache：少步 AR 世界模型跨 chunk 缓存加速（arXiv:2604.20289，小鹏；未开源） |
@@ -120,6 +121,7 @@
 ### repos/ — 代码仓库来源归档
 | 文件 | 内容 |
 |------|------|
+| [x] [humanoid-general-motion-tracking.md](repos/humanoid-general-motion-tracking.md) | GMT 官方仓：MuJoCo sim2sim + pretrained（zixuan417；训练/重定向待发布） |
 | [mujoco.md](repos/mujoco.md) | MuJoCo 物理引擎 |
 | [x] [bullet3.md](repos/bullet3.md) | Bullet3 Physics SDK：C++ 核心与 PyBullet / pybullet_envs 官方仓 |
 | [x] [mujoco-mjx.md](repos/mujoco-mjx.md) | MuJoCo MJX：JAX/XLA 重实现（`mujoco-mjx`） |
@@ -342,6 +344,7 @@
 ### sites/ — 网站与在线工具归档
 | 文件 | 内容 |
 |------|------|
+| [x] [gmt-humanoid-github-io.md](sites/gmt-humanoid-github-io.md) | GMT 项目页 gmt-humanoid.github.io（长序列/敏捷/风格化真机；配套 arXiv:2506.14770） |
 | [x] [turingvit-github-io.md](sites/turingvit-github-io.md) | TuringViT 项目页 turingvit.github.io（小鹏；截至入库日未列代码） |
 | [x] [x-world-1-github-io.md](sites/x-world-1-github-io.md) | X-World 项目页 x-world-1.github.io（小鹏 GWM；未开源） |
 | [x] [x-cache-1-github-io.md](sites/x-cache-1-github-io.md) | X-Cache 项目页 x-cache-1.github.io（小鹏 AI Infra；未开源） |

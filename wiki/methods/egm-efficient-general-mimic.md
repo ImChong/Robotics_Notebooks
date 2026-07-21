@@ -2,8 +2,9 @@
 type: method
 tags: [humanoid, motion-tracking, rl, ppo, dagger, moe, curriculum, unitree-g1, imitation-learning]
 status: complete
-updated: 2026-06-09
+updated: 2026-07-21
 related:
+  - ../entities/paper-gmt.md
   - ./limmt-gqs-motion-curation.md
   - ./beyondmimic.md
   - ./deepmimic.md
@@ -15,6 +16,7 @@ related:
 sources:
   - ../../sources/papers/egm_arxiv_2512_19043.md
   - ../../sources/blogs/egm_themoonlight_literature_review_2512_19043.md
+  - ../../sources/papers/gmt_arxiv_2506_14770.md
 summary: "EGM（Efficient General Mimic）：以 Bin 级跨动作课程自适应采样、上下身分组的复合解耦 MoE（CDMoE）与三阶段教师–学生训练，在少量高质量重定向动捕上学习可泛化的人形高动态全身跟踪策略。"
 ---
 
@@ -96,6 +98,7 @@ flowchart LR
 
 ## 关联页面
 
+- [GMT](../entities/paper-gmt.md) — Adaptive Sampling + Motion MoE 的统一全身跟踪前序/对照
 - [BeyondMimic](./beyondmimic.md) — Isaac Lab 上高精度模仿与失败驱动采样的代表框架
 - [DeepMimic](./deepmimic.md) — 显式跟踪奖励与 RSI 等基线概念
 - [DAgger](./dagger.md) — 学生阶段使用的在线模仿聚合
@@ -108,6 +111,7 @@ flowchart LR
 
 - [sources/papers/egm_arxiv_2512_19043.md](../../sources/papers/egm_arxiv_2512_19043.md)
 - [sources/blogs/egm_themoonlight_literature_review_2512_19043.md](../../sources/blogs/egm_themoonlight_literature_review_2512_19043.md)
+- [sources/papers/gmt_arxiv_2506_14770.md](../../sources/papers/gmt_arxiv_2506_14770.md)
 
 ## 推荐继续阅读
 
