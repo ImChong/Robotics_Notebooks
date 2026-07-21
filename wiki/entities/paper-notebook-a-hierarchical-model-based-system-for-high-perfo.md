@@ -10,7 +10,7 @@ tags:
   - model-based
   - humanoid-paper-notebooks
 status: draft
-updated: 2026-06-26
+updated: 2026-07-21
 arxiv: "2512.09431"
 related:
   - ../tasks/humanoid-soccer.md
@@ -119,6 +119,7 @@ flowchart TB
 - [Swarm Intelligence 人形足球](paper-humanoid-soccer-swarm-intelligence.md) — 去中心化对照
 - [Humanoid Soccer](../tasks/humanoid-soccer.md)
 - [paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
+- [RAVEN：RL 自适应可见图 + cf-MPC](./paper-raven-rl-adaptive-visibility-graph-mpc.md) — 同实验室在 **DAVG+cf-MPC** 上用 RL 调节障碍膨胀，专攻延迟与跟踪误差下的人形导航
 
 ## 参考来源
 
@@ -131,3 +132,4 @@ flowchart TB
 - Wang, Q., et al. (2025). arXiv:2512.09431.
 - Nadiri, F., & Rad, A. B. (2025). *Swarm Intelligence for Collaborative Play in Humanoid Soccer Teams*. Sensors. <https://doi.org/10.3390/s25113496>
 - [Humanoid Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- Hou et al., *RAVEN* ([arXiv:2607.15701](https://arxiv.org/abs/2607.15701)) — DAVG-cfMPC 导航骨干的强化学习几何自适应

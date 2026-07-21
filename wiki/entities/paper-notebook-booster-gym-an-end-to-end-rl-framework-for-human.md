@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned, booster]
 status: planned
-updated: 2026-06-26
+updated: 2026-07-21
 arxiv: "2506.15132"
 related:
   - ../overview/paper-notebook-category-05-locomotion.md
@@ -58,6 +58,11 @@ Booster Gym 的人形机器人学习论文条目，当前处于 Paper Notebooks 
 - [Humanoid Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2506.15132>
 
+## 关联页面
+
+- [RAVEN：RL 自适应可见图 + cf-MPC](./paper-raven-rl-adaptive-visibility-graph-mpc.md) — 真机导航栈以 Booster Gym 为底层 locomotion，上层接 DAVG-cfMPC
+
 ## 推荐继续阅读
 
 - [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- Hou et al., *RAVEN* ([arXiv:2607.15701](https://arxiv.org/abs/2607.15701)) — Booster Gym + RL-MPC 人形导航

@@ -2,7 +2,7 @@
 
 ## [2026-07-21] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **0** 条信息型预警）：
+共发现 **0** 个问题（另含 **2** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -97,14 +97,14 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（1 个）
+- wiki/entities/paper-raven-rl-adaptive-visibility-graph-mpc.md（缺 评测 / 对比）
 
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（1 个）
+- wiki/entities/paper-clothtransformer-unified-latent-cloth-simulation.md（含绝对化措辞「SOTA」，updated=2026-07-20；同主题更新页 wiki/entities/paper-notebook-a-hierarchical-model-based-system-for-high-perfo.md updated=2026-07-21）
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -118,4 +118,4 @@
 ### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：1668/1698 (98%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1669/1699 (98%) wiki/entity 页有 ingest 来源

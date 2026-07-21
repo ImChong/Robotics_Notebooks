@@ -1,8 +1,9 @@
 ---
 type: entity
-tags: [vla, foundation-policy, umi, scaling-laws, mobile-manipulation, cross-embodiment, flow-matching, xiaomi]
+tags: [paper, vla, foundation-policy, umi, scaling-laws, mobile-manipulation, cross-embodiment, flow-matching, xiaomi, xiaomi-robotics]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-21
+arxiv: "2607.15330"
 related:
   - ../methods/vla.md
   - ../methods/diffusion-policy.md
@@ -13,13 +14,15 @@ related:
   - ./xiaomi-robotics-0.md
   - ./xiaomi-robotics-u0.md
 sources:
+  - ../../sources/papers/xiaomi_robotics_1_arxiv_2607_15330.md
   - ../../sources/sites/xiaomi-robotics-1.md
-summary: "Xiaomi-Robotics-1 是小米发布的具身基座 VLA：10 万小时 UMI 无本体预训练（VLM 自动状态转移标注）+ 约 1 万小时跨本体后训练，Qwen3-VL + DiT flow matching 的 MoT 架构在数据与模型规模上呈现可预测 scaling，并迁移到未见环境真机开箱与少样本新任务适配。"
+  - ../../sources/repos/xiaomi-robotics-1.md
+summary: "Xiaomi-Robotics-1（XR-1，arXiv:2607.15330）：>100k h UMI 无本体预训练（VLM 自动状态转移标注）+ ~10k h 跨本体后训练；Qwen3-VL + DiT flow matching MoT（2.6B/5.1B/10.5B）；预训练 scaling 迁移到未见环境开箱与少样本微调；RoboCasa 四榜领先；GitHub/HF 入口已建但代码权重 Coming soon。"
 ---
 
 # Xiaomi-Robotics-1
 
-**Xiaomi-Robotics-1**（官网代号 **XR-1**）是小米机器人实验室 2026 年 7 月发布的 **大规模具身基座 VLA**：用 **embodiment-free UMI 预训练** 打破机器人真机遥操作的数据瓶颈，再用 modest 的 **跨本体后训练** 把「状态转移描述 → 动作」的能力对齐到 **真实机器人本体与自然语言指令**。论文/项目页的核心主张是：机器人策略也能像 LLM/VLM 一样，在 **数据、参数量与算力** 上呈现 **尚未饱和的 scaling law**，且预训练阶段的收益 **直接迁移** 到后训练开箱表现。
+**Xiaomi-Robotics-1**（官网代号 **XR-1**，[arXiv:2607.15330](https://arxiv.org/abs/2607.15330)）是小米机器人实验室 2026 年 7 月发布的 **大规模具身基座 VLA**：用 **embodiment-free UMI 预训练** 打破机器人真机遥操作的数据瓶颈，再用 modest 的 **跨本体后训练** 把「状态转移描述 → 动作」的能力对齐到 **真实机器人本体与自然语言指令**。论文/项目页的核心主张是：机器人策略也能像 LLM/VLM 一样，在 **数据、参数量与算力** 上呈现 **尚未饱和的 scaling law**，且预训练阶段的收益 **直接迁移** 到后训练开箱表现。
 
 ## 一句话定义
 
@@ -36,6 +39,17 @@ summary: "Xiaomi-Robotics-1 是小米发布的具身基座 VLA：10 万小时 UM
 | MoT | Mixture-of-Transformers | VLM 与 DiT 耦合、共享训练目标的架构族 |
 | SOTA | State of the Art | 当前最优水平 |
 
+## 核心信息
+
+| 字段 | 内容 |
+|------|------|
+| **机构** | 小米机器人实验室（Xiaomi Robotics） |
+| **arXiv** | [2607.15330](https://arxiv.org/abs/2607.15330) |
+| **项目页** | <https://robotics.xiaomi.com/xiaomi-robotics-1.html> |
+| **规模变体** | **2.6B / 5.1B / 10.5B** |
+| **预训练数据** | **>100k h** 真实世界 UMI（**>1,700** 场景） |
+| **后训练数据** | **~10k h** 跨本体（**>7.2k h** 自采真机 + imperative UMI + 开源集） |
+
 ## 为什么重要
 
 - **把机器人数据瓶颈改写成「可 scale 的 UMI 预训练」：** 真机 teleop 慢、贵、任务分布窄；**>100k h** 跨 **>1,700** 场景的 UMI 轨迹 + **两周级 VLM 自动标注**，给出一条与 LLM 预训练同构的 **「先 breadth、后 alignment」** 路线。
@@ -43,7 +57,7 @@ summary: "Xiaomi-Robotics-1 是小米发布的具身基座 VLA：10 万小时 UM
 - **与 [Xiaomi-Robotics-0](./xiaomi-robotics-0.md) 形成谱系对照：** 同为 **Qwen3-VL + DiT + Choice Policies**；**XR-0** 主打 **~4.7B 异步 chunk 实时部署**，**XR-1** 主打 **100k h UMI scaling 与移动操作基座**；少样本微调实验中 XR-1 亦对照 **XR-0** 与 **π₀.₅**。
 - **与 [Xiaomi-Robotics-U0](./xiaomi-robotics-u0.md) 互补：** **38B 合成 WM** 可增广视觉分布，**XR-1** 负责 **大规模真实接触轨迹上的 action prior**——同实验室「合成 + 真实 scaling」双轨。
 
-## 核心结构
+## 核心原理
 
 | 模块 | 作用 |
 |------|------|
@@ -79,21 +93,35 @@ flowchart TB
   Align --> Deploy[未见环境开箱\n+ 少样本下游微调]
 ```
 
-## 关键结果（项目页 / 技术报告）
+## 关键结果（论文表 / 项目页）
 
 | 维度 | 要点 |
 |------|------|
-| **预训练 scaling** | **~20k h** UMI 子集上，数据 **12.5%→100%**、模型 **2B→10B**，验证 action **MSE** 单调下降；**50%+** 数据时过拟合风险明显降低。 |
+| **预训练 scaling** | **~20k h** UMI 子集上，数据 **12.5%→100%**、模型 **2B→10B**，验证 action **MSE** 单调下降。 |
 | **后训练开箱** | 四任务（鞋柜/书包/桌面/沙发）；**10B + 100% 20k h 预训练** 总成功率约 **79%**；**2B→10B** 后训练成功率 **61%→79%**。 |
-| **少样本微调** | 四灵巧任务（phone packing、printer refilling、laundry loading、box packing）；**<10 h/任务** 平均成功率 **75%** vs **π₀.₅ 40%**；**<40 h/任务** **85%** vs **53%**。 |
-| **仿真基准** | RoboCasa **74.5%**、RoboCasa365 **57.4%**、VLABench **59.1%**、RoboDojo **13.93**（官网 leaderboard 表，2026-07-15）。 |
+| **少样本微调** | 四灵巧任务；**<10 h/任务** 平均成功率 **75%** vs **π₀.₅ 40%**；**<40 h/任务** **85%** vs **53%**。 |
+| **仿真基准** | RoboCasa **74.5%**；RoboCasa365 平均 **57.4%**（摘要写 57.6%）；VLABench SR 领先；RoboDojo 平均分 **20.07** / 成功率 **13.93%**。 |
 | **长程真机** | 项目页展示 **>10 min** 房间级 **行李箱打包** 未剪辑视频。 |
 
-## 常见误区或局限
+## 工程实践
+
+| 维度 | 要点 |
+|------|------|
+| **动作表示** | 臂：相对当前状态的 **delta EE**；移动基座速度 + 腰相对位移；异构本体统一向量并对缺失维 **mask** |
+| **后训练采样** | VL : 开源机器人 : imperative UMI : 自采真机 ≈ **0.5 : 0.5 : 0.5 : 8.5** |
+| **部署叙事** | 未见环境开箱；少样本新任务用 XR-0 同系 **异步训练 recipe** 微调 |
+| **复现入口** | 论文 + 项目页 PDF；跟踪 [GitHub 占位仓](https://github.com/XiaomiRobotics/Xiaomi-Robotics-1) 与 [HF 组织](https://huggingface.co/XiaomiRobotics) |
+
+## 源码运行时序图
+
+**不适用。** 截至 2026-07-21 项目页虽已挂 GitHub / Hugging Face 入口，但官方仓 README 标明 **Code / Model Coming soon**，仓库仅含 README 与 PDF，**无可辨识的训练 / 推理 / 部署脚本或 XR-1 权重**；故不绘制运行时序图。开放后应以 `sources/repos/xiaomi-robotics-1.md` 与 README 入口重绘。
+
+## 局限与风险
 
 - **误区：100k h 等于「全是真机 teleop」。** 预训练主体是 **UMI 无机器人轨迹**；**>7.2k h** 真机集中在 **后训练 alignment**，二者语言条件形式不同（**状态转移 vs imperative**）。
 - **误区：仿真 SOTA 自动等于任意硬件即插即用。** 开箱评测强调 **未见环境/物体实例**；新 embodiment 仍需后训练或微调与安全层。
-- **局限：** 截至 ingest 时 **代码与权重尚未发布**（项目页声明将陆续开源）；技术报告 arXiv 编号待公开；与 **XR-0** 的 **异步 RTC 后训练** 细节以各自文档为准。
+- **开源边界：** **宣称将开源**；GitHub/HF **入口已建**，但截至 2026-07-21 **无可运行代码与 XR-1 权重**（与已开源的 [Xiaomi-Robotics-0](./xiaomi-robotics-0.md) 不同）。
+- **数字口径：** 摘要 RoboCasa365 **57.6%** / RoboDojo score **20.07**；正文表 RoboCasa365 平均 **57.4%**、RoboDojo 另报成功率 **13.93%**——引用时以正文表为准并注明指标名。
 
 ## 关联页面
 
@@ -107,13 +135,15 @@ flowchart TB
 
 ## 参考来源
 
+- [xiaomi_robotics_1_arxiv_2607_15330.md](../../sources/papers/xiaomi_robotics_1_arxiv_2607_15330.md) — arXiv:2607.15330 论文归档
 - [Xiaomi-Robotics-1 项目页与技术报告归档](../../sources/sites/xiaomi-robotics-1.md)
-- Xiaomi Robotics, *Xiaomi-Robotics-1: Scaling Vision-Language-Action Models with over 100K Hours of Real-World Data*, [arXiv preprint（项目页 BibTeX）](https://robotics.xiaomi.com/xiaomi-robotics-1.html)
-- [技术报告 PDF](https://robotics.xiaomi.com/robot-static-resource/xiaomi-robotics-1/xiaomi-robotics-1.pdf)
-- [Robotics @ Xiaomi — XR-1 说明页](https://robotics.xiaomi.com/xiaomi-robotics-1.html)
+- [Xiaomi-Robotics-1 官方仓（占位）](../../sources/repos/xiaomi-robotics-1.md)
+- 论文：<https://arxiv.org/abs/2607.15330>
+- 项目页：<https://robotics.xiaomi.com/xiaomi-robotics-1.html>
 
 ## 推荐继续阅读
 
 - Black et al., *π₀.₅: a Vision-Language-Action Model with Open-World Generalization* — XR-1 少样本与仿真对照基线
 - Chi et al., *Universal Manipulation Interface: In-The-Wild Robot Teaching Without In-The-Wild Robots* — UMI 采集范式原文
 - [Physical Intelligence openpi](https://github.com/Physical-Intelligence/openpi) — π 系微调协议与开源权重生态
+- [Xiaomi-Robotics-0 GitHub](https://github.com/XiaomiRobotics/Xiaomi-Robotics-0) — 同组织已可运行 VLA 栈
