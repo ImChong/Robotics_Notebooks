@@ -3,9 +3,10 @@ title: 人形运动跟踪方法选型指南
 type: query
 status: complete
 created: 2026-05-21
-updated: 2026-07-16
+updated: 2026-07-21
 summary: 在人形 RL 运动控制栈中，如何按任务阶段在 DeepMimic / BeyondMimic / AMP 家族 / 通用 tracker / 接触丰富场景 tracking / 生成式动作先验之间选型。
 sources:
+  - ../../sources/papers/gmt_arxiv_2506_14770.md
   - ../../sources/papers/scenebot_arxiv_2606_27581.md
   - ../../sources/papers/humanoid_pnb_vmp.md
   - ../../sources/papers/deepmimic.md
@@ -52,7 +53,7 @@ flowchart TD
 |----------|------------|----------|
 | 证明「能跟参考跑起来」 | 显式 tracking reward | [DeepMimic](../methods/deepmimic.md)、[BeyondMimic](../methods/beyondmimic.md) |
 | 任务完成后仍像「人」 | 对抗式 motion prior | [AMP](../methods/amp-reward.md)、[ADD](../methods/add.md)、[SMP](../methods/smp.md) |
-| 多动作通用 tracker | 规模化 tracking policy | [Any2Track](../methods/any2track.md)、[AMS](../methods/ams.md)、[MotionBricks](../methods/motionbricks.md)、[EGM](../methods/egm-efficient-general-mimic.md)、[SONIC](../methods/sonic-motion-tracking.md)、[Humanoid-GPT](../entities/paper-humanoid-gpt.md) |
+| 多动作通用 tracker | 规模化 tracking policy | [GMT](../entities/paper-gmt.md)、[Any2Track](../methods/any2track.md)、[AMS](../methods/ams.md)、[MotionBricks](../methods/motionbricks.md)、[EGM](../methods/egm-efficient-general-mimic.md)、[SONIC](../methods/sonic-motion-tracking.md)、[Humanoid-GPT](../entities/paper-humanoid-gpt.md) |
 | 高覆盖率下训练集长尾 | 能力对齐 expert + 路由蒸馏 | [Athena-WBC](../entities/paper-athena-wbc-humanoid-longtail.md)（改奖励/重力课程，非仅重采样；STC/TIS/MPJPE-W） |
 | 动画参考 + latent 上下文跟踪 | 两阶段 VAE prior + 显式 PPO | [VMP](../entities/paper-notebook-vmp.md)（SCA 2024；LIME 真机） |
 | 接触丰富场景 tracking | 参考运动 + per-link contact label | [SceneBot](../entities/paper-scenebot.md)（hindsight 场景重建 + 单策略 terrain/object） |
@@ -76,7 +77,7 @@ flowchart TD
 
 ### 3. 通用 tracker 与实时原语
 
-[MotionBricks](../methods/motionbricks.md) 强调实时 smart primitives + 全身控制；[Any2Track](../methods/any2track.md)、[AMS](../methods/ams.md) 面向**多参考、抗扰、负载变化**的通用跟踪器，常作为「身体基础模型」层。
+[MotionBricks](../methods/motionbricks.md) 强调实时 smart primitives + 全身控制；[GMT](../entities/paper-gmt.md) 用 **Adaptive Sampling + Motion MoE** 做大规模 filtered MoCap 上的**单策略**真机跟踪；[Any2Track](../methods/any2track.md)、[AMS](../methods/ams.md) 面向**多参考、抗扰、负载变化**的通用跟踪器，常作为「身体基础模型」层。
 
 当瓶颈不在网络结构而在**数据不平衡与高动态精度**时，看 [EGM](../methods/egm-efficient-general-mimic.md)：它用 **bin 级误差驱动的跨动作采样课程** + **上下身分组 CDMoE**，论证「小而高质量的精选 MoCap 子集优于大规则筛集」，把选型轴从「堆更多小时数据」转向「数据策展 + 采样调度」。
 
