@@ -121,6 +121,7 @@
 ### repos/ — 代码仓库来源归档
 | 文件 | 内容 |
 |------|------|
+| [x] [open-x-humanoid.md](repos/open-x-humanoid.md) | Open-X-Humanoid GitHub 组织：天工本体 / TienKung-Lab / HEX·XR-1·Pelican / RoboMIND 工具链矩阵 |
 | [x] [humanoid-general-motion-tracking.md](repos/humanoid-general-motion-tracking.md) | GMT 官方仓：MuJoCo sim2sim + pretrained（zixuan417；训练/重定向待发布） |
 | [mujoco.md](repos/mujoco.md) | MuJoCo 物理引擎 |
 | [x] [bullet3.md](repos/bullet3.md) | Bullet3 Physics SDK：C++ 核心与 PyBullet / pybullet_envs 官方仓 |
@@ -344,6 +345,8 @@
 ### sites/ — 网站与在线工具归档
 | 文件 | 内容 |
 |------|------|
+| [x] [x-humanoid.md](sites/x-humanoid.md) | 北京人形机器人创新中心官网与 opensource.html（天工本体开源清单） |
+| [x] [x-humanoid-opensource-cloud.md](sites/x-humanoid-opensource-cloud.md) | 天工造物开源社区：文档中心 / 问答 / 课程 / 生态索引 |
 | [x] [gmt-humanoid-github-io.md](sites/gmt-humanoid-github-io.md) | GMT 项目页 gmt-humanoid.github.io（长序列/敏捷/风格化真机；配套 arXiv:2506.14770） |
 | [x] [turingvit-github-io.md](sites/turingvit-github-io.md) | TuringViT 项目页 turingvit.github.io（小鹏；截至入库日未列代码） |
 | [x] [x-world-1-github-io.md](sites/x-world-1-github-io.md) | X-World 项目页 x-world-1.github.io（小鹏 GWM；未开源） |

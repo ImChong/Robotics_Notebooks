@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-21] ingest | sources/sites/x-humanoid.md、sources/sites/x-humanoid-opensource-cloud.md、sources/repos/open-x-humanoid.md — 接入 X-Humanoid 官网/天工造物社区/Open-X-Humanoid；升格 wiki/entities/x-humanoid.md；交叉 tienkung-humanoid-open-source、open-source-humanoid-hardware、openloong、pelican-unified-1、paper-loco-manip-161-038-hex、paper-heracles-humanoid-diffusion、humanoid-robot、robot-open-source-wechat-issue01-curator
+
+- **开源状态：** **已开源（多入口）** — 官网开源页 + 天工造物文档中心 + [`Open-X-Humanoid`](https://github.com/Open-X-Humanoid)（约 23 公开仓）；权重多在 HF `X-Humanoid`
+- **新建 sites：** [`sources/sites/x-humanoid.md`](sources/sites/x-humanoid.md)、[`sources/sites/x-humanoid-opensource-cloud.md`](sources/sites/x-humanoid-opensource-cloud.md)
+- **新建 repos：** [`sources/repos/open-x-humanoid.md`](sources/repos/open-x-humanoid.md)
+- **新建 wiki：** [`wiki/entities/x-humanoid.md`](wiki/entities/x-humanoid.md)
+- **交叉更新：** [`wiki/entities/tienkung-humanoid-open-source.md`](wiki/entities/tienkung-humanoid-open-source.md)、[`wiki/entities/open-source-humanoid-hardware.md`](wiki/entities/open-source-humanoid-hardware.md)、[`wiki/entities/openloong.md`](wiki/entities/openloong.md)、[`wiki/methods/pelican-unified-1.md`](wiki/methods/pelican-unified-1.md)、[`wiki/entities/paper-loco-manip-161-038-hex.md`](wiki/entities/paper-loco-manip-161-038-hex.md)、[`wiki/entities/paper-heracles-humanoid-diffusion.md`](wiki/entities/paper-heracles-humanoid-diffusion.md)、[`wiki/entities/humanoid-robot.md`](wiki/entities/humanoid-robot.md)、[`wiki/overview/robot-open-source-wechat-issue01-curator.md`](wiki/overview/robot-open-source-wechat-issue01-curator.md)
+
 ## [2026-07-21] ingest | sources/papers/gmt_arxiv_2506_14770.md、sources/sites/gmt-humanoid-github-io.md、sources/repos/humanoid-general-motion-tracking.md — 接入 GMT（arXiv:2506.14770）项目页与部分开源代码；新建 wiki/entities/paper-gmt.md；校正 161 策展误写扩散；交叉 whole-body-tracking-pipeline、humanoid-motion-tracking-method-selection、paper-phygile、paper-resmimic、egm-efficient-general-mimic、paper-loco-manip-161-009-gmt、paper-notebook-general-motion-tracking-for-humanoid-whole-body
 
 - **开源状态：** **部分开源** — 项目页 → [`zixuan417/humanoid-general-motion-tracking`](https://github.com/zixuan417/humanoid-general-motion-tracking)；MuJoCo sim2sim + pretrained + 示例 motion；训练/数据处理与重定向 **待发布**（截至 2026-07-21）
