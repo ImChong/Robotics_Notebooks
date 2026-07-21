@@ -76,6 +76,184 @@ flowchart LR
 | **MINK / TracIK** | 数值 | 单解/种子 | 任意 URDF 几何 | 无分支枚举；FK 精度依赖迭代容差 |
 | **cuRobo** | GPU 数值 IK + 规划 | 并行多解探索 | 无碰撞 IK + 轨迹优化 | 非「全部分支」语义；偏规划栈 |
 
+## 源码运行时序图
+
+官方仓库 [personalrobotics/ssik](https://github.com/personalrobotics/ssik) 的**生产路径**是导入预置或 `ssik build` 生成的 per-arm artifact（如 `ssik/prebuilt/franka_panda_ik.py`），运行时 **不解析 URDF、不加载 sympy**。一次 `solve(T_target)` 的模块交互如下（节点名对齐仓库目录与 README 入口）：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户 / 控制循环
+    participant ART as prebuilt/*_ik.py<br/>或 ssik build 产物
+    participant KB as 烘焙 KinBody _KB
+    participant SOL as ssik.solvers.*<br/>如 seven_r.spherical_shoulder
+    participant SP as ssik.subproblems SP1–SP6
+    participant PP as ssik.postprocess
+    participant REF as ssik.refinement<br/>可选 LM 抛光
+    participant ROB as 机器人 / 仿真
+
+    U->>ART: solve(T_target, q_seed=…, max_solutions=…)
+    ART->>KB: 读取关节限位与 POE 常数
+    ART->>SOL: 调用已 dispatch 的解析求解器
+    loop 代数子问题分解
+        SOL->>SP: SP1–SP6 闭式/半闭式求根
+        SP-->>SOL: 候选关节向量 q
+    end
+    SOL-->>ART: 原始代数 IK 候选集
+    ART->>PP: wrap_to_limits → respect_limits
+    opt q_seed 已提供
+        ART->>PP: within_seed_tolerance → nearest_to_seed
+    end
+    opt allow_refinement=True
+        ART->>REF: kinbody_jacobian + LM polish
+        REF-->>ART: 收紧 fk_residual
+    end
+    ART-->>U: list[Solution]（q, fk_residual, refinement_used）
+    U->>ROB: 下发 q_command（或空列表 ⇒ 重规划）
+```
+
+**构建期（一次性）**：自定义 URDF / 工具链时走 `ssik build my_arm.urdf --base … --ee …`（`ssik/cli.py`）→ `load_urdf_kinbody_normalized` → `ssik.core.dispatcher.dispatch` 选 tier → `ssik.core.codegen.emit_artifact` 写出 `my_arm_ik.py`；之后运行时与 prebuilt **同一 API**。
+
+**开发路径（不推荐部署）**：`ssik.Manipulator.from_urdf` 在**每个新进程**重新做 URDF 解析、拓扑分类与（部分几何）sympy 预处理，再进入与上图相同的 `solve` 管线；支持 `explain=True` 返回 `Diagnostic` 诊断空解原因。
+
+## 源码类图
+
+核心类型分布在 `ssik/manipulator.py`、`ssik/_kinbody.py`、`ssik/core/` 与 per-arm artifact（`ssik/prebuilt/*_ik.py` 或 `ssik build` 产物）。求解器以 **模块级 `solve(kb, T, …)` 函数** 组织（`ssik/solvers/ikgeo/*`、`seven_r/*`、`jointlock/*`），后处理为 `ssik/postprocess.py` 中的纯函数。
+
+```mermaid
+classDiagram
+    direction TB
+
+    class Manipulator {
+        <<public entry>>
+        -KinBody _kb
+        -DispatchPlan _plan
+        +from_urdf(path, base, ee) Manipulator
+        +fk(q) ndarray
+        +solve(T, q_seed, ...) list~Solution~
+        +solve(T, explain=True) tuple
+        +solver_name str
+        +dof int
+    }
+
+    class ArmArtifact {
+        <<prebuilt/*_ik.py>>
+        +SOLVER_NAME str
+        +BASE_LINK str
+        +EE_LINK str
+        +DOF int
+        +T_HOME ndarray
+        -KinBody _KB
+        +solve(T, ...) list~Solution~
+    }
+
+    class KinBody {
+        +links list~Link~
+        +joints list~Joint~
+        +GetDOF() int
+        +GetChain(base, ee) list
+    }
+
+    class Link {
+        +name str
+    }
+
+    class Joint {
+        +name str
+        +dof_index int
+        +parent_link Link
+        +T_left ndarray
+        +T_right ndarray
+        +axis ndarray
+        +limits tuple
+    }
+
+    class JointSpec {
+        <<URDF loader>>
+        +parent_link_T ndarray
+        +axis ndarray
+        +limits tuple
+    }
+
+    class DispatchPlan {
+        +solver_name str
+        +tier int
+        +reason str
+        +expected_ms_median float
+        +needs_symbolic_precompute bool
+    }
+
+    class Solution {
+        <<frozen dataclass>>
+        +q ndarray
+        +fk_residual float
+        +refinement_used str
+    }
+
+    class Diagnostic {
+        <<frozen dataclass>>
+        +solver_name str
+        +raw_candidates int
+        +dropped_by_limits int
+        +final_count int
+        +summary() str
+    }
+
+    class TolerancePolicy {
+        <<frozen dataclass>>
+        +axis_parallel float
+        +subproblem_numerical float
+        +subproblem_dedup float
+    }
+
+    class SolverModule {
+        <<ssik.solvers.*>>
+        +solve(kb, T, policy) list~ndarray~
+    }
+
+    class Postprocess {
+        <<ssik.postprocess>>
+        +wrap_to_limits()
+        +respect_limits()
+        +nearest_to_seed()
+        +within_seed_tolerance()
+    }
+
+    class Refinement {
+        <<ssik.refinement>>
+        +kinbody_jacobian()
+        +seeded_track()
+    }
+
+    Manipulator *-- KinBody : owns
+    Manipulator *-- DispatchPlan : dispatch result
+    Manipulator ..> SolverModule : lazy import
+    Manipulator ..> Solution : returns
+    Manipulator ..> Diagnostic : explain=True
+    Manipulator ..> TolerancePolicy : policy=
+
+    ArmArtifact *-- KinBody : baked _KB
+    ArmArtifact ..> SolverModule : fixed import
+    ArmArtifact ..> Postprocess : filter/rank
+    ArmArtifact ..> Refinement : allow_refinement
+    ArmArtifact ..> Solution : returns
+
+    KinBody o-- Link : N+1
+    KinBody o-- Joint : N
+    Joint --> Link : parent_link
+
+    JointSpec ..> KinBody : build_kinbody()
+    KinBody ..> DispatchPlan : dispatch(kb)
+
+    SolverModule ..> Solution : candidates
+    Postprocess ..> Solution : filters
+    Refinement ..> Solution : polishes
+```
+
+- **`Manipulator`**：开发/探索入口；`from_urdf` 触发 URDF→`KinBody`→`dispatch`→运行时 lazy 加载对应 `ssik.solvers.*`。
+- **`ArmArtifact`**：`ssik build` / prebuilt 的部署形态；求解器与 KinBody 常数在**构建期冻结**，`solve` 签名与 `Manipulator.solve` 对齐。
+- **`Solution`**：唯一标准化的 IK 返回值；求解器身份由 `Manipulator.solver_name` 或 artifact 的 `SOLVER_NAME` 提供，不重复挂在每个解上。
+
 ## 工程实践
 
 | 步骤 | 建议 |

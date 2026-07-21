@@ -23,6 +23,8 @@
 - **做法：** 子问题分解（Raghavan–Roth、Manocha–Canny、Husty–Pfurner 等）+ 统一 dispatch；**构建期** 把每臂预处理烘焙进单文件 `.py` artifact，**运行时** 无 URDF 解析、无 sympy。
 - **预置臂：** 轮子内置 19+ 款（UR 系、Franka Panda/FR3、iiwa14、xArm6/7、JACO2、PiPER、Rizon、OpenArm、R1 Pro 等）；非标准工具链或夹具需 `ssik build`。
 - **API：** `solve(T_target)` → `list[Solution]`，每项含 `q`、`fk_residual`、`refinement_used`；支持 `q_seed` / `seed_tolerance` 做轨迹连续 IK。
+- **运行时序：** 见 [wiki/entities/ssik.md § 源码运行时序图](../wiki/entities/ssik.md#源码运行时序图)（`prebuilt/*_ik.py` → `ssik.solvers.*` → `ssik.postprocess` → 可选 `ssik.refinement`）。
+- **类结构：** 见 [wiki/entities/ssik.md § 源码类图](../wiki/entities/ssik.md#源码类图)（`Manipulator` / `ArmArtifact` / `KinBody` / `Solution` / `DispatchPlan`）。
 
 ---
 
