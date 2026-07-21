@@ -4,7 +4,7 @@ type: entity
 tags: [ros2, motion-planning, manipulation, inverse-kinematics, collision-checking, ompl, moveit, pick-and-place, linux-foundation]
 status: complete
 date: 2026-06-15
-updated: 2026-06-15
+updated: 2026-07-21
 related:
   - ../tasks/manipulation.md
   - ../concepts/ros2-basics.md
@@ -107,6 +107,7 @@ flowchart TB
 ## 与相邻规划栈的对照
 
 - **[cuRobo](./curobo.md)**：GPU 并行 **IK + 几何规划 + 轨迹优化**；经 **Isaac ROS cuMotion** 等以 **MoveIt 插件** 形态集成，适合 **高吞吐重规划**；MoveIt 2 仍是 **ROS 语义、场景与执行** 的宿主。
+- **[ssik](./ssik.md)**：Python **解析 IK**，对 6R/7R 返回 **全部分支**（含非 Pieper 6R、非 SRS 7R）；可作 MoveIt **Kinematics 插件后端** 或规划前分支枚举，**不替代** Planning Scene 碰撞检测。
 - **[Crocoddyl](./crocoddyl.md)** / **[Pinocchio](./pinocchio.md)**：最优控制 / 动力学侧对照；MoveIt 默认更偏 **几何碰撞 + 采样/工业规划器**，动力学约束需额外模块或 Pilz 等工业轨迹类型。
 - **学习式抓取**（[AnyGrasp](./anygrasp.md) 等）：网络输出抓取候选后，常仍用 MoveIt **IK + 碰撞过滤** 做可执行性筛选（见 [grasp-pose-estimation](../methods/grasp-pose-estimation.md)）。
 
@@ -122,6 +123,7 @@ flowchart TB
 - [Manipulation（操作任务）](../tasks/manipulation.md) — 抓取、放置与移动操作任务语境
 - [ROS 2 基础](../concepts/ros2-basics.md) — 中间件与 launch 前提
 - [cuRobo](./curobo.md) — GPU 运动生成与 MoveIt 插件集成
+- [ssik](./ssik.md) — 解析全分支 IK，与 MoveIt 数值 IK 插件对照
 - [URDF-Studio](./urdf-studio.md) — Web 端 URDF/MJCF 编辑；与 MoveIt 配置上下游
 - [CAD Skills](./cad-skills.md) — SRDF/URDF Agent Skills 与 MoveIt 语义层
 - [Model Predictive Control](../methods/model-predictive-control.md) / [Trajectory Optimization](../methods/trajectory-optimization.md) — 规划算法对照

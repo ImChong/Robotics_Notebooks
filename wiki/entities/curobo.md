@@ -11,7 +11,7 @@ tags:
   - isaac-sim
   - inverse-kinematics
 status: complete
-updated: 2026-06-27
+updated: 2026-07-21
 related:
   - ../methods/trajectory-optimization.md
   - ./crocoddyl.md
@@ -117,6 +117,7 @@ flowchart LR
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md) — NVIDIA 仿真与 **Isaac Sim** 生态入口
 - [ScheduleStream](./schedulestream.md) — **任务层调度 + stream 采样**；连续 motion 段可与 cuRobo 类后端互补
 - [MoveIt 2](./moveit2.md) — ROS 2 规划宿主；cuMotion 等以 MoveIt 插件集成
+- [ssik](./ssik.md) — **解析** 全分支 IK（6R/7R）；与 cuRobo **GPU 数值 IK** 分层：前者枚举代数分支，后者做无碰撞并行搜索与轨迹优化
 
 ## 参考来源
 

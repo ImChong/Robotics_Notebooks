@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-07-20
+updated: 2026-07-21
 related:
   - ../entities/paper-clothtransformer-unified-latent-cloth-simulation.md
   - ../entities/paper-flying-knots.md
@@ -30,6 +30,7 @@ sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/survey_papers.md
   - ../../sources/papers/physx_omni_arxiv_2605_21572.md
+  - ../../sources/repos/ssik.md
   - ../../sources/blogs/wechat_shenlan_tro_manip_5_papers_survey.md
 summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核心难点是感知、接触和全身协同。"
 ---
@@ -182,6 +183,7 @@ flowchart TD
 - [PhysMani](../entities/paper-physmani-dynamic-manipulation-world-model.md) — 3D Gaussian 物理世界模型 + future-aware 3DFA，动态操作 Benchmark 与 Astribot 真机（ECCV 2026，arXiv:2607.01938）
 - [Lumo-2](../entities/lumo-2.md) — Astribot latent WAM：三阶段模态预对齐、22 项 S1 真机 benchmark、32 段项目页演示视频（arXiv:2607.11270）
 - [Philia](../entities/philia.md) — Astribot 多机器人物理 AI 助手运行时（OpenClaw + Robot Gateway，arXiv:2607.11377）
+- [ssik](../entities/ssik.md) — 6R/7R **解析 IK** 全分支枚举；非 Pieper 6R 与 7R 冗余臂（UW PRL，BSD-3）
 
 ## 关联任务
 
@@ -196,6 +198,7 @@ flowchart TD
 
 ## 关联页面
 
+- [ssik（解析逆运动学）](../entities/ssik.md) — 6R/7R 全分支解析 IK；遥操作跟踪与规划种子枚举，覆盖 EAIK 拒绝的几何
 - [cuRobo（GPU 无碰撞运动生成）](../entities/curobo.md) — 到达、避障与 MoveIt / Isaac ROS 集成路径上的规划–优化参考栈
 - [MoveIt 2](../entities/moveit2.md) — ROS 2 机械臂运动规划、Planning Scene 与 pick-and-place（MTC）事实标准栈
 - [ScheduleStream（多臂 TAMP 与调度）](../entities/schedulestream.md) — 双臂/多臂 **物体分配 + 并行运动时间表** 的规划层框架（ICRA 2026）

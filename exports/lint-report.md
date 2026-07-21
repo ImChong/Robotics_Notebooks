@@ -1,6 +1,6 @@
 # Wiki 健康报告
 
-## [2026-07-20] lint | health-check | 自动化 wiki 健康检查
+## [2026-07-21] lint | health-check | 自动化 wiki 健康检查
 
 共发现 **0** 个问题（另含 **18** 条信息型预警）：
 
@@ -120,7 +120,7 @@
 - 无
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（1 个）
-- wiki/methods/adaptive-computed-torque-control.md（含绝对化措辞「最新」，updated=2026-07-18；同主题更新页 wiki/entities/paper-dapl-extrinsic-dexterity-clutter.md updated=2026-07-20）
+- wiki/methods/adaptive-computed-torque-control.md（含绝对化措辞「最新」，updated=2026-07-18；同主题更新页 wiki/entities/curobo.md updated=2026-07-21）
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -134,4 +134,4 @@
 ### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：1665/1695 (98%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1666/1696 (98%) wiki/entity 页有 ingest 来源
