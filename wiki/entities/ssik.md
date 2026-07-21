@@ -116,6 +116,144 @@ sequenceDiagram
 
 **开发路径（不推荐部署）**：`ssik.Manipulator.from_urdf` 在**每个新进程**重新做 URDF 解析、拓扑分类与（部分几何）sympy 预处理，再进入与上图相同的 `solve` 管线；支持 `explain=True` 返回 `Diagnostic` 诊断空解原因。
 
+## 源码类图
+
+核心类型分布在 `ssik/manipulator.py`、`ssik/_kinbody.py`、`ssik/core/` 与 per-arm artifact（`ssik/prebuilt/*_ik.py` 或 `ssik build` 产物）。求解器以 **模块级 `solve(kb, T, …)` 函数** 组织（`ssik/solvers/ikgeo/*`、`seven_r/*`、`jointlock/*`），后处理为 `ssik/postprocess.py` 中的纯函数。
+
+```mermaid
+classDiagram
+    direction TB
+
+    class Manipulator {
+        <<public entry>>
+        -KinBody _kb
+        -DispatchPlan _plan
+        +from_urdf(path, base, ee) Manipulator
+        +fk(q) ndarray
+        +solve(T, q_seed, ...) list~Solution~
+        +solve(T, explain=True) tuple
+        +solver_name str
+        +dof int
+    }
+
+    class ArmArtifact {
+        <<prebuilt/*_ik.py>>
+        +SOLVER_NAME str
+        +BASE_LINK str
+        +EE_LINK str
+        +DOF int
+        +T_HOME ndarray
+        -KinBody _KB
+        +solve(T, ...) list~Solution~
+    }
+
+    class KinBody {
+        +links list~Link~
+        +joints list~Joint~
+        +GetDOF() int
+        +GetChain(base, ee) list
+    }
+
+    class Link {
+        +name str
+    }
+
+    class Joint {
+        +name str
+        +dof_index int
+        +parent_link Link
+        +T_left ndarray
+        +T_right ndarray
+        +axis ndarray
+        +limits tuple
+    }
+
+    class JointSpec {
+        <<URDF loader>>
+        +parent_link_T ndarray
+        +axis ndarray
+        +limits tuple
+    }
+
+    class DispatchPlan {
+        +solver_name str
+        +tier int
+        +reason str
+        +expected_ms_median float
+        +needs_symbolic_precompute bool
+    }
+
+    class Solution {
+        <<frozen dataclass>>
+        +q ndarray
+        +fk_residual float
+        +refinement_used str
+    }
+
+    class Diagnostic {
+        <<frozen dataclass>>
+        +solver_name str
+        +raw_candidates int
+        +dropped_by_limits int
+        +final_count int
+        +summary() str
+    }
+
+    class TolerancePolicy {
+        <<frozen dataclass>>
+        +axis_parallel float
+        +subproblem_numerical float
+        +subproblem_dedup float
+    }
+
+    class SolverModule {
+        <<ssik.solvers.*>>
+        +solve(kb, T, policy) list~ndarray~
+    }
+
+    class Postprocess {
+        <<ssik.postprocess>>
+        +wrap_to_limits()
+        +respect_limits()
+        +nearest_to_seed()
+        +within_seed_tolerance()
+    }
+
+    class Refinement {
+        <<ssik.refinement>>
+        +kinbody_jacobian()
+        +seeded_track()
+    }
+
+    Manipulator *-- KinBody : owns
+    Manipulator *-- DispatchPlan : dispatch result
+    Manipulator ..> SolverModule : lazy import
+    Manipulator ..> Solution : returns
+    Manipulator ..> Diagnostic : explain=True
+    Manipulator ..> TolerancePolicy : policy=
+
+    ArmArtifact *-- KinBody : baked _KB
+    ArmArtifact ..> SolverModule : fixed import
+    ArmArtifact ..> Postprocess : filter/rank
+    ArmArtifact ..> Refinement : allow_refinement
+    ArmArtifact ..> Solution : returns
+
+    KinBody o-- Link : N+1
+    KinBody o-- Joint : N
+    Joint --> Link : parent_link
+
+    JointSpec ..> KinBody : build_kinbody()
+    KinBody ..> DispatchPlan : dispatch(kb)
+
+    SolverModule ..> Solution : candidates
+    Postprocess ..> Solution : filters
+    Refinement ..> Solution : polishes
+```
+
+- **`Manipulator`**：开发/探索入口；`from_urdf` 触发 URDF→`KinBody`→`dispatch`→运行时 lazy 加载对应 `ssik.solvers.*`。
+- **`ArmArtifact`**：`ssik build` / prebuilt 的部署形态；求解器与 KinBody 常数在**构建期冻结**，`solve` 签名与 `Manipulator.solve` 对齐。
+- **`Solution`**：唯一标准化的 IK 返回值；求解器身份由 `Manipulator.solver_name` 或 artifact 的 `SOLVER_NAME` 提供，不重复挂在每个解上。
+
 ## 工程实践
 
 | 步骤 | 建议 |
