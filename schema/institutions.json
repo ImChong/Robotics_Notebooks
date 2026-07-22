@@ -1343,6 +1343,20 @@
         "meituan",
         "meituan-dianping"
       ]
+    },
+    "mondo-robotics": {
+      "label": "摩多机器人（Mondo Robotics）",
+      "aliases": [
+        "mondo-robotics",
+        "mondo"
+      ]
+    },
+    "miaodong": {
+      "label": "妙动科技（Miaodong）",
+      "aliases": [
+        "miaodong",
+        "acodedog"
+      ]
     }
   }
 }

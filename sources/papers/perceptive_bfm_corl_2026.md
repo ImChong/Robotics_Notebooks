@@ -6,13 +6,15 @@
 - **缩写：** **Perceptive BFM** / **PMT**（Perceptive Motion Tracking）
 - **类型：** paper / humanoid / behavior-foundation-model / perceptive-locomotion / motion-tracking
 - **项目页：** <https://acodedog.github.io/perceptive-bfm/>
-- **arXiv：** TBA（截至 2026-06-11）
-- **PDF：** 项目页提供 submission PDF 链接（CoRL 2026 under review）
-- **代码：** TBA
+- **arXiv：** <https://arxiv.org/abs/2606.08059>
+- **PDF：** <https://arxiv.org/pdf/2606.08059>；项目页亦提供 submission PDF
+- **代码：** <https://github.com/Mondo-Robotics/PMT>（**已开源**，2026-07-22 项目页核查）
+- **资产：** Hugging Face dataset `aCodeDog/PMT-assets`
 - **作者：** Wang, Zifan; Li, Yizhao; Ma, Teli; Zhang, Qiang; Fan, Yudong; Xu, Hao; Yang, Shuo; Liang, Junwei
-- **机构：** 妙动科技；香港科技大学（广州）；香港科技大学；中国科学技术大学人工智能研究院
+- **机构：** 妙动科技；香港科技大学（广州）；香港科技大学；中国科学技术大学人工智能研究院；摩多机器人（代码发布方）
 - **会议：** CoRL 2026（submission，under review）
 - **入库日期：** 2026-06-11
+- **再核日期：** 2026-07-22
 - **一句话说明：** 在 **保留原始人体运动参考为部署命令** 的前提下，用 **机器人中心地形感知** 把人类运动先验落地到楼梯、坡、稀疏支撑与户外真机；**TCRS** 离线合成地形一致监督，**PMT** 经盲 teacher、视觉 student、目标帧对齐蒸馏与 identity-gated 残差微调，在 **Unitree G1** 上单策略覆盖跟踪、风格动作、杂技与 mocap 遥操作。
 
 ## 核心论文摘录（MVP）
@@ -51,5 +53,6 @@
 ## 对 wiki 的映射（汇总）
 
 - 沉淀实体页：[`wiki/entities/paper-perceptive-bfm.md`](../../wiki/entities/paper-perceptive-bfm.md)
+- 代码归档：[`sources/repos/mondo_robotics_pmt.md`](../repos/mondo_robotics_pmt.md)
 - 任务索引：[`wiki/tasks/stair-obstacle-perceptive-locomotion.md`](../../wiki/tasks/stair-obstacle-perceptive-locomotion.md)
 - 站点归档：[`sources/sites/perceptive-bfm-github-io.md`](../sites/perceptive-bfm-github-io.md)

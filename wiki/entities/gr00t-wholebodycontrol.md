@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, whole-body-control, humanoid, nvidia, sonic, motionbricks, isaac-lab, vla]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-22
 related:
   - ./paper-hrl-stack-34-gr00t_n1.md
   - ../methods/motionbricks.md
@@ -14,10 +14,13 @@ related:
   - ./isaac-gym-isaac-lab.md
   - ./nvidia-gear-lab.md
   - ./isaac-gr00t.md
+  - ./paper-loco-manip-161-154-openhlm.md
+  - ./paper-humanoidarena.md
 sources:
   - ../../sources/repos/gr00t_wholebodycontrol.md
+  - ../../sources/sites/gr00t-wholebodycontrol-docs.md
   - ../../sources/repos/isaac_gr00t.md
-summary: "GR00T-WholeBodyControl 是 NVlabs 的人形全身控制单仓：托管解耦 WBC（GR00T N1.5/N1.6）、GEAR-SONIC（SONIC 训练/部署/C++ 推理/VR 采集）与 MotionBricks 预览子项目，并提供 Isaac Lab 对齐文档与 VLA 数据链教程。"
+summary: "GR00T-WholeBodyControl 是 NVlabs 的人形全身控制单仓：托管解耦 WBC（GR00T N1.5/N1.6）、GEAR-SONIC（SONIC 训练/部署/C++ 推理/VR 采集）与 MotionBricks 预览子项目；文档站覆盖安装、VLA 数据链与低延迟遥操作 checkpoint（约 2.9k★，2026-07）。"
 ---
 
 # GR00T-WholeBodyControl（人形全身控制统一平台）
@@ -55,21 +58,24 @@ summary: "GR00T-WholeBodyControl 是 NVlabs 的人形全身控制单仓：托管
 ## 关联页面
 
 - [GR00T N1（论文实体）](./paper-hrl-stack-34-gr00t_n1.md) — N1 论文机制与 42 篇栈坐标；本页聚焦 N1.5+ 工程栈与 WBC 部署
-
 - [MotionBricks](../methods/motionbricks.md) — 生成式运动子项目与论文级方法归纳
-- [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md) — GEAR-SONIC 的方法与接口总览；**读源码导航**（模块边界、文件树、算法↔代码映射、FSQ token 数据流、时序图）以方法页为准
+- [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md) — GEAR-SONIC 的方法与接口总览；**读源码导航**以方法页为准
 - [Foundation Policy](../concepts/foundation-policy.md) — GR00T 系基础策略与分层控制叙事
 - [Whole-Body Control](../concepts/whole-body-control.md) — WBC 概念层与 QP / 分层控制主线
 - [Isaac GR00T](./isaac-gr00t.md) — N1.7 VLA 主仓；G1 全身路径经 `UNITREE_G1_SONIC` 调用本仓 SONIC
 - [GR00T-VisualSim2Real](./gr00t-visual-sim2real.md) — 同品牌视觉 Sim2Real 仓库，任务侧重不同
-- [Kimodo](./kimodo.md) — 文生人体/人形运动学轨迹的上游；GEAR-SONIC 在线 Demo 集成「Kimodo 生成轨迹 → SONIC 仿真跟踪」工作流
+- [Kimodo](./kimodo.md) — 文生人体/人形运动学轨迹的上游；GEAR-SONIC 在线 Demo 集成
+- [OpenHLM](./paper-loco-manip-161-154-openhlm.md) — 基于本仓改写的全身 VLA 采集/部署配方
+- [HumanoidArena](./paper-humanoidarena.md) — 以 SONIC 为 GMT 后端之一的分层基准
 
 ## 参考来源
 
 - [sources/repos/gr00t_wholebodycontrol.md](../../sources/repos/gr00t_wholebodycontrol.md)
+- [sources/sites/gr00t-wholebodycontrol-docs.md](../../sources/sites/gr00t-wholebodycontrol-docs.md)
 
 ## 推荐继续阅读
 
 - [GR00T-WholeBodyControl 文档（GitHub Pages）](https://nvlabs.github.io/GR00T-WholeBodyControl/)
 - [GEAR-SONIC 项目页](https://nvlabs.github.io/GEAR-SONIC/)
 - [MotionBricks 项目页](https://nvlabs.github.io/motionbricks/)
+- [GitHub 仓库](https://github.com/NVlabs/GR00T-WholeBodyControl)

@@ -11,8 +11,11 @@
 - **Hugging Face 模型：** <https://huggingface.co/HorizonRobotics/HoloMotion_models>
 - **Docker Hub：** <https://hub.docker.com/r/horizonrobotics/holomotion>
 - **入库日期：** 2026-05-18
+- **再核日期：** 2026-07-22
+- **GitHub：** 约 **590** stars（2026-07-22）
 - **一句话说明：** 地平线发布的 **人形全身运动跟踪** 开源栈：配套 **HoloMotion-1** 技术报告中的 **混合大规模运动语料 + 稀疏 MoE Transformer 策略 + 序列级 PPO** 路线，并提供 **HF 权重与官方镜像** 降低复现门槛。
 - **沉淀到 wiki：** [`wiki/entities/holomotion.md`](../../wiki/entities/holomotion.md)
+- **文档站归档：** [`sources/sites/holomotion-docs.md`](../sites/holomotion-docs.md)
 
 ---
 

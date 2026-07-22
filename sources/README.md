@@ -9,6 +9,7 @@
 ### papers/ — 论文来源归档
 | 文件 | 内容 |
 |------|------|
+| [x] [openhlm_arxiv_2606_22174.md](papers/openhlm_arxiv_2606_22174.md) | OpenHLM：全身原生人形 VLA 经验配方（arXiv:2606.22174，清华/期智/千寻；已开源） |
 | [x] [gmt_arxiv_2506_14770.md](papers/gmt_arxiv_2506_14770.md) | GMT：Adaptive Sampling + Motion MoE 统一人形全身跟踪（arXiv:2506.14770，UCSD×SFU；部分开源 sim2sim） |
 | [x] [turingvit_arxiv_2606_24253.md](papers/turingvit_arxiv_2606_24253.md) | TuringViT：VLM-native 线性注意力 ViT（arXiv:2606.24253，小鹏；项目页未开源） |
 | [x] [x_world_arxiv_2603_19979.md](papers/x_world_arxiv_2603_19979.md) | X-World：7 摄动作条件驾驶世界模型（arXiv:2603.19979，小鹏；未开源） |
@@ -121,6 +122,9 @@
 ### repos/ — 代码仓库来源归档
 | 文件 | 内容 |
 |------|------|
+| [x] [mondo_robotics_pmt.md](repos/mondo_robotics_pmt.md) | Mondo-Robotics/PMT：Perceptive BFM 官方训练/回放/TCRS（arXiv:2606.08059） |
+| [x] [openhlm.md](repos/openhlm.md) | OpenHLM-project/OpenHLM：全身 VLA 采集/训练/部署全栈 |
+| [x] [humanoidarena.md](repos/humanoidarena.md) | HumanoidArena：egocentric 分层全身 benchmark 官方仓 |
 | [x] [open-x-humanoid.md](repos/open-x-humanoid.md) | Open-X-Humanoid GitHub 组织：天工本体 / TienKung-Lab / HEX·XR-1·Pelican / RoboMIND 工具链矩阵 |
 | [x] [humanoid-general-motion-tracking.md](repos/humanoid-general-motion-tracking.md) | GMT 官方仓：MuJoCo sim2sim + pretrained（zixuan417；训练/重定向待发布） |
 | [mujoco.md](repos/mujoco.md) | MuJoCo 物理引擎 |
@@ -345,6 +349,10 @@
 ### sites/ — 网站与在线工具归档
 | 文件 | 内容 |
 |------|------|
+| [x] [openhlm-project-github-io.md](sites/openhlm-project-github-io.md) | OpenHLM 项目页（配方消融、12 任务、开源入口） |
+| [x] [humanoidarena-github-io.md](sites/humanoidarena-github-io.md) | HumanoidArena 项目页（7 任务、双 GMT、数据/模型发布） |
+| [x] [holomotion-docs.md](sites/holomotion-docs.md) | HoloMotion 官方文档站 |
+| [x] [gr00t-wholebodycontrol-docs.md](sites/gr00t-wholebodycontrol-docs.md) | GR00T-WholeBodyControl 文档站 |
 | [x] [x-humanoid.md](sites/x-humanoid.md) | 北京人形机器人创新中心官网与 opensource.html（天工本体开源清单） |
 | [x] [x-humanoid-opensource-cloud.md](sites/x-humanoid-opensource-cloud.md) | 天工造物开源社区：文档中心 / 问答 / 课程 / 生态索引 |
 | [x] [gmt-humanoid-github-io.md](sites/gmt-humanoid-github-io.md) | GMT 项目页 gmt-humanoid.github.io（长序列/敏捷/风格化真机；配套 arXiv:2506.14770） |

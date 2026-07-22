@@ -4,7 +4,9 @@
 - **类型**：repo
 - **机构**：NVIDIA NVlabs（GEAR WBC）
 - **归档日期**：2026-05-14
-- **GitHub**：约 2.0k stars；**代码** Apache-2.0，**模型权重** 另受 NVIDIA Open Model License 等约束（见仓库 `LICENSE` / `legal/`）
+- **再核日期**：2026-07-22
+- **文档站**：https://nvlabs.github.io/GR00T-WholeBodyControl/
+- **GitHub**：约 **2.9k** stars（2026-07-22）；**代码** Apache-2.0（主体），**模型权重** 另受 NVIDIA Open Model License 等约束（见仓库 `LICENSE` / `legal/`）
 
 ## 一句话说明
 

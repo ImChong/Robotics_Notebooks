@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-07-21
+updated: 2026-07-22
 sources:
   - ../../sources/papers/fastgrasp_arxiv_2604_12879.md
   - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md
@@ -112,7 +112,7 @@ flowchart TD
 ### 3. 基础模型路线 (Foundation Models / VLA)
 - **核心**：将视觉、语言和全身动作（Whole-body Actions）映射到统一的 Token 空间。
 - **趋势**：强调从互联网规模的人类视频中学习，而非依赖昂贵的机器人演示。
-- **代表作**：Ψ₀ (2026), WholeBodyVLA (2025), SENTINEL (2025), [DAJI](../entities/paper-daji-anticipatory-joint-intent.md)（2026，语言条件预期关节意图接口）。
+- **代表作**：Ψ₀ (2026), WholeBodyVLA (2025), SENTINEL (2025), [DAJI](../entities/paper-daji-anticipatory-joint-intent.md)（2026，语言条件预期关节意图接口）；[OpenHLM](../entities/paper-loco-manip-161-154-openhlm.md)（2026，关节级全身遥操作 + π₀.₅ 系 VLA + HuMI 共训的全身原生配方，**已开源**）。
 
 ### 4. 视觉分层 Sim2Real（Keypoint Tracker + Depth Visuomotor）
 - **核心**：**任务无关低层** 从人类动作蒸馏 **关键点跟踪器**（motion teacher → keypoint student）；**任务专用高层** 从特权物体状态教师蒸馏 **egocentric 深度 visuomotor 生成器**；接口为 root + 头/双手/双足共 5 点，共享低层、逐任务训高层。
@@ -203,7 +203,7 @@ flowchart TD
 
 ### 25. 分层 policy–GMT 接口基准（HumanoidArena · 双 tracker 扰动诊断）
 - **核心**：将 egocentric 全身学习表述为 **高层策略 → 40D 中间全身动作 → 低层 GMT**；在 **7 项下肢关键 HOI/HSI** 上，从 **视觉/语义/执行扰动** 与 **TWIST2↔SONIC 跨 GMT** 两轴诊断 **policy–tracker 接口**——而非只报端到端成功率。
-- **代表作**：[HumanoidArena](../entities/paper-humanoidarena.md) (HKUST-GZ 等, 2026, arXiv:2606.17833) — PICO+GMR 采集 → Isaac Lab NPZ → LeRobot 训练；实验显示分层控制能解多样腿关键交互，但 **性能强 tracker 条件化**、**跨 GMT 迁移脆弱**。
+- **代表作**：[HumanoidArena](../entities/paper-humanoidarena.md) (HKUST-GZ 等, 2026, arXiv:2606.17833) — PICO+GMR 采集 → Isaac Lab NPZ → LeRobot 训练；**代码/数据/模型已开源**（multicam 待发布）；实验显示分层控制能解多样腿关键交互，但 **性能强 tracker 条件化**、**跨 GMT 迁移脆弱**。
 
 ### 26. 轮式移动全身 RL + 点云抓取引导 + 二值触觉（FastGrasp · 高速灵巧抓取）
 - **核心**：**两阶段**——预训练 **CVAE** 从腕摄点云生成多样抓取候选，经 **GWC/GDC 包络度** 选最优引导；**PPO** 同步控制 **移动底盘、臂与 16-DoF 手**；**二值压力触觉** 观测与奖励支撑冲击接触下的实时收紧；**15 Hz** 控制与 **DR + LPF + 触觉适应** 完成 sim2real。
@@ -269,6 +269,8 @@ flowchart TD
 - [Flexion Reflect v1.0](../entities/flexion-reflect-v1.md) — 产业长程自主栈：Reflect-VLM mission + VLA/RL 运动 + Reflex WBC + FlexComm（2026-06 博客）
 - [HumanoidMimicGen（论文实体）](../entities/paper-humanoidmimicgen.md) — MimicGen 式全身规划合成 loco-manip 示范 + G1 九任务基准 + co-training（arXiv:2605.27724）
 - [HumanoidArena（论文实体）](../entities/paper-humanoidarena.md) — egocentric 分层全身 benchmark：7 项腿关键 HOI/HSI + 双 GMT 扰动/迁移诊断（arXiv:2606.17833）
+- [OpenHLM（论文实体）](../entities/paper-loco-manip-161-154-openhlm.md) — 全身原生人形 VLA 经验配方（arXiv:2606.22174，已开源）
+- [GR00T-WholeBodyControl（实体）](../entities/gr00t-wholebodycontrol.md) — NVIDIA 解耦 WBC / SONIC / MotionBricks 统一仓
 - [FastGrasp（论文实体）](../entities/paper-fastgrasp-mobile-dexterous-grasping.md) — 轮式移动全身 RL + CVAE 抓取引导 + 二值触觉高速灵巧抓取（arXiv:2604.12879）
 - [3D-IC（论文实体）](../entities/paper-3d-ic-joint-navigation-manipulation-planning.md) — 共享 3D 地图的 OVMM 交互路点链联合规划（ICML 2026，Stretch 3）
 

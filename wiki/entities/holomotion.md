@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, humanoid, motion-tracking, foundation-model, horizon-robotics, transformer, mixture-of-experts, ppo, zero-shot, teleoperation, imitation-learning]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-22
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-04-wbt-base.md
@@ -18,10 +18,11 @@ related:
   - ./paper-omg-omni-modal-humanoid-control.md
 sources:
   - ../../sources/repos/horizon_robotics_holomotion.md
+  - ../../sources/sites/holomotion-docs.md
   - ../../sources/papers/holomotion_arxiv_2605_15336.md
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
-summary: "HoloMotion-1 是地平线提出的人形零样本全身运动跟踪「运动基础模型」：以野外视频重建动作为主、MoCap 与自采为辅的混合语料做规模化 RL，策略采用稀疏 MoE Transformer 与 KV-cache 实时推理及序列级 PPO；开源代码、HF 权重与 Docker 与 arXiv:2605.15336 技术报告对齐。"
+summary: "HoloMotion-1 是地平线提出的人形零样本全身运动跟踪「运动基础模型」：混合语料 + 稀疏 MoE Transformer + 序列级 PPO；开源代码、HF 权重、Docker 与文档站（arXiv:2605.15336；约 590★，2026-07）。"
 ---
 
 # HoloMotion（HoloMotion-1）
@@ -110,4 +111,5 @@ flowchart LR
 ## 参考来源
 
 - [sources/repos/horizon_robotics_holomotion.md](../../sources/repos/horizon_robotics_holomotion.md)
+- [sources/sites/holomotion-docs.md](../../sources/sites/holomotion-docs.md)
 - [sources/papers/holomotion_arxiv_2605_15336.md](../../sources/papers/holomotion_arxiv_2605_15336.md)
