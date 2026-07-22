@@ -99,6 +99,19 @@ HOIST 冻结 VLA 本身，只学习 flow-matching action expert 的 initial-nois
 | 低层 | 固定 GR00T Whole-Body Control stack |
 | 观测 | ego RGB-D + side RGB + proprioception + language + nav history |
 
+## 与其他工作对比
+
+HOIST 面向**欠驱动悬挂负载**的间接定位，与同库的强接触/受力工作 [FALCON](./paper-loco-manip-161-109-falcon.md)、[Thor](./paper-hrl-stack-42-thor.md)、[CHIP](./paper-hrl-stack-36-chip.md) 在「接触/力」议题上相邻，但对象与控制层次都不同。下表为定性对照。
+
+| 维度 | HOIST | FALCON | Thor | CHIP |
+|------|-------|--------|------|------|
+| 交互对象 | 欠驱动悬挂摆动负载（间接施力/定位） | 主动施力的车/门/重物 | 强接触环境的反作用力 | 接触物体的柔顺跟踪 |
+| 控制层次 | 高层 VLA + 固定 WBC，只后训练高层命令 | 双 agent RL 全身策略 | 分体 RL 全身策略 | motion tracking + 可调末端柔顺 |
+| 关键手段 | 50 demos SFT + 30 rollout batched actor-critic（initial-noise steering） | torque-limit-aware 3D force curriculum | FAT2 力自适应躯干倾斜 | hindsight perturbation |
+| 力/接触角色 | 停止时机与残余摆动，间接影响负载 | 持续主动外力 | 峰值大力发力 | 可调末端刚度 |
+| 目标指标 | 负载终端 Δx/Δy/Δψ 定位误差 | 力范围 + 上肢跟踪精度 | 拉力（N） | 任务成功率 |
+| 开源 | 未确认官方可运行代码 | MIT 全链路 | 代码 Coming Soon | 代码 Coming Soon |
+
 ## 局限与风险
 
 - **低层不会自适应负载力**：论文承认 WBC 未针对悬挂负载微调，接口无法显式适配不同重量。

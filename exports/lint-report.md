@@ -2,7 +2,7 @@
 
 ## [2026-07-22] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **27** 条信息型预警）：
+共发现 **0** 个问题（另含 **0** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -52,8 +52,8 @@
 ### 💡 频繁提及但缺少 wiki 页面的概念（0 个）
 - 无
 
-### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（1 个）
-- LoRA（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
+### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### ⚠️ Frontmatter 缺少 type 字段（0 个）
 - 无
@@ -97,35 +97,11 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（25 个）
-- wiki/entities/paper-cwi-composite-humanoid-whole-body-imitation.md（缺 评测 / 对比）
-- wiki/entities/paper-gentlehumanoid.md（缺 对比）
-- wiki/entities/paper-grail.md（缺 评测 / 对比）
-- wiki/entities/paper-haic.md（缺 对比）
-- wiki/entities/paper-harness-vla.md（缺 对比）
-- wiki/entities/paper-hrl-stack-05-humanx.md（缺 对比）
-- wiki/entities/paper-hrl-stack-06-hdmi.md（缺 评测 / 对比）
-- wiki/entities/paper-hrl-stack-30-wholebodyvla.md（缺 评测 / 对比）
-- wiki/entities/paper-hrl-stack-36-chip.md（缺 对比）
-- wiki/entities/paper-hrl-stack-42-thor.md（缺 对比）
-- wiki/entities/paper-lehome-learning-to-fold.md（缺 对比）
-- wiki/entities/paper-loco-manip-03-genhoi.md（缺 对比）
-- wiki/entities/paper-loco-manip-07-wt-umi.md（缺 对比）
-- wiki/entities/paper-loco-manip-161-039-hmc.md（缺 评测 / 对比）
-- wiki/entities/paper-loco-manip-161-074-pro-hoi.md（缺 对比）
-- wiki/entities/paper-loco-manip-161-076-sugar.md（缺 评测 / 对比）
-- wiki/entities/paper-loco-manip-161-109-falcon.md（缺 评测 / 对比）
-- wiki/entities/paper-loco-manip-161-116-wococo.md（缺 评测 / 对比）
-- wiki/entities/paper-mevion.md（缺 方法 / 评测 / 对比）
-- wiki/entities/paper-motion-cerebellum-ceer.md（缺 评测 / 对比）
-- wiki/entities/paper-motion-cerebellum-hoist.md（缺 对比）
-- wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md（缺 评测 / 对比）
-- wiki/entities/paper-patch-policy.md（缺 对比）
-- wiki/entities/paper-pot-vla.md（缺 对比）
-- wiki/entities/paper-world-translation.md（缺 方法 / 对比）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
+- 无
 
-### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（1 个）
-- wiki/entities/paper-wolf-vla.md（缺 重定向就绪度）
+### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
 - 无
@@ -142,4 +118,4 @@
 ### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：1714/1744 (98%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1715/1745 (98%) wiki/entity 页有 ingest 来源

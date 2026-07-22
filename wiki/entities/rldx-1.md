@@ -78,7 +78,7 @@ flowchart TB
 
 ## 训练管线
 
-公开叙事为 **三阶段**：**Pre-training**（视频等上的泛化）→ **Mid-training**（在如 DROID、ALLEX 等数据上注入操作与多模态能力）→ **Post-training / Fine-tune**（仿真或任务集适配）。**合成数据**用于放大稀有操作与组合场景。训练 CLI 为 `rldx/experiment/launch_train.py`，通过 `--video-length`、`--use-memory`、`--use-motion`、`--use-physics` 等组合能力；可与 **LoRA**、**训练时 RTC**（与 Black et al. 训练时 action conditioning 工作同源）联用。
+公开叙事为 **三阶段**：**Pre-training**（视频等上的泛化）→ **Mid-training**（在如 DROID、ALLEX 等数据上注入操作与多模态能力）→ **Post-training / Fine-tune**（仿真或任务集适配）。**合成数据**用于放大稀有操作与组合场景。训练 CLI 为 `rldx/experiment/launch_train.py`，通过 `--video-length`、`--use-memory`、`--use-motion`、`--use-physics` 等组合能力；可与 [LoRA](../concepts/lora.md)、**训练时 RTC**（与 Black et al. 训练时 action conditioning 工作同源）联用。
 
 ```mermaid
 flowchart LR

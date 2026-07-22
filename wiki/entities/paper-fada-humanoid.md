@@ -95,7 +95,7 @@ $$
 
 ### 3）Few-shot 目标适应
 
-从目标 rollout 提取 $\mathcal{W}_{tgt}$，冻结 $P$ 与 $I$ 预训练权重，仅优化 IDM 上 **LoRA** $\Delta\psi$：
+从目标 rollout 提取 $\mathcal{W}_{tgt}$，冻结 $P$ 与 $I$ 预训练权重，仅优化 IDM 上 [LoRA](../concepts/lora.md) $\Delta\psi$：
 
 $$
 \ell_{adapt}(\Delta\psi) = \mathbb{E}\left[\left\|\pi_1(I_{\psi+\Delta\psi}(\cdot)) - \pi_1(U_{exec}^K)\right\|_2^2\right]

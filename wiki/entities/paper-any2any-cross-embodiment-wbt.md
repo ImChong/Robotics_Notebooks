@@ -84,7 +84,7 @@ flowchart LR
 ### 2）动力学适配（Dynamic Adaptation）
 
 - 对齐后残差主要是 $\Delta\eta = \eta_{\mathcal{T}} - \eta_{\mathcal{S}}$（惯量、摩擦、执行器、接触等），论文视为 **相对全参 $\theta_{\mathcal{S}}$ 低维**。
-- 在 **动力学敏感模块**（实验上偏 Action Decoder 等）插入 **LoRA**：$W' = W + BA$，只训 $A,B$；rank $k$ 控制可吸收的动力学 gap 容量。
+- 在 **动力学敏感模块**（实验上偏 Action Decoder 等）插入 [LoRA](../concepts/lora.md)：$W' = W + BA$，只训 $A,B$；rank $k$ 控制可吸收的动力学 gap 容量。
 - **训练：** Isaac Lab + PPO；奖励、DR、参考采样等与 **对应源预训练设置一致**，仅增加对齐与 PEFT 组件——便于公平对比「从头训」基线。
 
 ### 3）实验与骨干
