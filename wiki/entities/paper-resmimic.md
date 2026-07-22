@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, motion-tracking, residual-learning, reinforcement-learning, ppo, gmt, sim2real, unitree-g1, amazon-far, whole-body]
 status: complete
-updated: 2026-07-21
+updated: 2026-07-22
 arxiv: "2510.05070"
 code: https://github.com/amazon-far/ResMimic
 related:

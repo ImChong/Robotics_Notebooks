@@ -331,7 +331,7 @@
 - [CoorDex（Coordinating Body and Hand Priors for Continuous Dexterous Humanoid Loco-Manipulation）](wiki/entities/paper-coordex-dexterous-humanoid-loco-manipulation.md) — CoorDex**（arXiv:2606.23680，[项目页](https://skevinci.github.io/co `📅unknown` `[entity_page]`
 - [cuNRTO：GPU 加速非线性鲁棒轨迹优化（CUDA Nonlinear Robust Trajectory Optimization）](wiki/entities/paper-cunrto-gpu-robust-trajectory-optimization.md) — cuNRTO**（*cuNRTO: GPU-Accelerated Nonlinear Robust Trajectory Optimization*，[arXiv:2603.02642](htt `📅unknown` `[entity_page]`
 - [Current as Touch（Proprioceptive Contact Feedback · arXiv:2607.03529）](wiki/entities/paper-current-as-touch-proprioceptive-contact.md) — Current as Touch**（*Current as Touch: Proprioceptive Contact Feedback for Compliant Dexterous Mani `📅unknown` `[entity_page]`
-- [CWI（Composite Humanoid Whole-Body Imitation · Loco-Manipulation）](wiki/entities/paper-cwi-composite-humanoid-whole-body-imitation.md) — CWI**（*Composite Humanoid Whole-Body Imitation System for Loco-manipulation*，arXiv:[2606.27676](ht `📅unknown` `[entity_page]`
+- [CWI（Composite Humanoid Whole-Body Imitation）](wiki/entities/paper-cwi-composite-humanoid-whole-body-imitation.md) — CWI**（*Composite Humanoid Whole-Body Imitation System for Loco-manipulation*，arXiv:[2606.27676](ht `📅unknown` `[entity_page]`
 - [DAJI（预期关节意图 · 语言条件人形控制）](wiki/entities/paper-daji-anticipatory-joint-intent.md) — DAJI**（*Before the Body Moves: Learning Anticipatory Joint Intent for Language-Conditioned Humanoi `📅unknown` `[entity_page]`
 - [DAPL：杂乱场景中的外在灵巧性（Emerging Extrinsic Dexterity in Cluttered Scenes via Dynamics-aware Policy Learning）](wiki/entities/paper-dapl-extrinsic-dexterity-clutter.md) — DAPL**（*Emerging Extrinsic Dexterity in Cluttered Scenes via Dynamics-aware Policy Learning*，[arXi `📅unknown` `[entity_page]`
 - [Deep Whole-body Parkour：感知式全身跑酷](wiki/entities/paper-deep-whole-body-parkour.md) — Deep Whole-body Parkour**（arXiv:2601.07701）隶属 Project Instinct，在 [42 篇 RL `📅unknown` `[entity_page]`
@@ -395,7 +395,7 @@
 - [OmniRetarget](wiki/entities/paper-hrl-stack-03-omniretarget.md) — OmniRetarget**（*OmniRetarget: Interaction-Preserving Data Generation for Humanoid Whole-Body Loco- `📅unknown` `[entity_page]`
 - [From Generated Human Videos to Physically Plausible Robot Trajectories](wiki/entities/paper-hrl-stack-04-from_generated_human_videos_to_physi.md) — From Generated Human Videos to Physically Plausible Robot Trajectories** 收录于 [具身智能研究室 · 42 篇 human `📅unknown` `[entity_page]`
 - [HumanX](wiki/entities/paper-hrl-stack-05-humanx.md) — HumanX**（*Toward Agile and Generalizable Humanoid Interaction Skills from Human Videos*）是一条从人类视频到人 `📅unknown` `[entity_page]`
-- [HDMI](wiki/entities/paper-hrl-stack-06-hdmi.md) — HDMI**（*HDMI: Learning Interactive Humanoid Whole-Body Control from Human Videos*，<https://hdmi-hu `📅unknown` `[entity_page]`
+- [HDMI](wiki/entities/paper-hrl-stack-06-hdmi.md) — HDMI**（*HDMI: Learning Interactive Humanoid Whole-Body Control from Human Videos*，arXiv:[2509.1675 `📅unknown` `[entity_page]`
 - [Learning Human-to-Humanoid Real-Time Whole-Body Teleoperation](wiki/entities/paper-hrl-stack-07-learning_human_to_humanoid_real_time.md) — Learning Human-to-Humanoid Real-Time Whole-Body Teleoperation** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动 `📅unknown` `[entity_page]`
 - [OmniH2O](wiki/entities/paper-hrl-stack-08-omnih2o.md) — OmniH2O** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZu `📅unknown` `[entity_page]`
 - [OmniTrack](wiki/entities/paper-hrl-stack-12-omnitrack.md) — OmniTrack** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-p `📅unknown` `[entity_page]`
@@ -1355,7 +1355,7 @@
 - [GentleHumanoid（上半身柔顺全身运动跟踪）](wiki/methods/gentlehumanoid-motion-tracking.md) — GentleHumanoid**（Stanford 等，arXiv:2511.04679，[项目页](https://gen `📅unknown` `[method_page]`
 - [Grasp Pose Estimation（抓取位姿估计）](wiki/methods/grasp-pose-estimation.md) — 抓取位姿估计 (Grasp Pose Estimation)** 解决「相机看到一堆物体，应该把夹爪放在哪、怎么转、张多大」这一感知子问题：把 **RGBD / 深度 / 点云** 观测映射为一组 `📅unknown` `[method_page]`
 - [H-infinity Control（H∞ 控制）](wiki/methods/h-infinity-control.md) — H∞ 控制：最小化从扰动/不确定性到跟踪误差的 **最坏情况** $H_\infty$ 范数，保证鲁棒性能界。 `📅unknown` `[method_page]`
-- [HAIC: 基于世界模型的教师-学生训练](wiki/methods/haic.md) — 在复杂的物体交互任务（如搬运、协作、精细操作）中，机器人不仅要模仿姿态，还要实时预测物体状态和外力。**HAIC** 提出了一种创新的训练范式，通过世界模型（World Model）将特权信息（Pri `📅unknown` `[method_page]`
+- [HAIC: 动力学感知世界模型控制](wiki/methods/haic.md) — HAIC**（*Humanoid Agile Object Interaction Control via Dynamics-Aware World Model*）不是泛称的分层控制器，而是面向  `📅unknown` `[method_page]`
 - [Hindsight Experience Replay (HER)](wiki/methods/her.md) — HER** 是一种处理“稀疏奖励（Sparse Reward）”任务的绝佳技巧。在抓取或装配任务中，如果机器人只有在完美完成任务时才得到 1 分奖励，它很难通过随机探索学到任何东西。 `📅unknown` `[method_page]`
 - [Hierarchical Reinforcement Learning（分层强化学习，HRL）](wiki/methods/hierarchical-reinforcement-learning.md) — HRL：上层策略拆分子任务/选项，下层策略执行具体运动，缓解长时程信用分配与探索难题。 `📅unknown` `[method_page]`
 - [HIL: Hybrid Imitation Learning（混合模仿学习）](wiki/methods/hil-hybrid-imitation-learning.md) — HIL** 将 **逐帧 motion tracking** 与 **AMP 式对抗模仿** 放在同一策略、同一观测空间里并行训练，使物理仿真角色既能精确学会跑酷参考动作，又能在新障碍布局中灵活组 `📅unknown` `[method_page]`

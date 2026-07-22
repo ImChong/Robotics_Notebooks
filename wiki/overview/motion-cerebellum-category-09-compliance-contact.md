@@ -2,7 +2,7 @@
 type: overview
 tags: [motion-cerebellum, humanoid, category-hub, survey, compliance-contact]
 status: complete
-updated: 2026-06-18
+updated: 2026-07-22
 summary: "运动小脑 64 篇长文 · I 柔顺与接触（5 篇）— 接触等站位。"
 related:
   - ./humanoid-motion-cerebellum-technology-map.md

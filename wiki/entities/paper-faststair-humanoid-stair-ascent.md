@@ -13,7 +13,7 @@ tags:
   - limx-dynamics
   - stairs
 status: complete
-updated: 2026-07-14
+updated: 2026-07-22
 arxiv: "2601.10365"
 related:
   - ../../roadmap/depth-perceptive-locomotion.md

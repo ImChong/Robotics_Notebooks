@@ -3,7 +3,7 @@ type: entity
 title: GRAIL Loco-Manipulation Dataset（G1 合成轨迹）
 tags: [dataset, humanoid, loco-manipulation, synthetic-data, unitree-g1, huggingface, nvidia, sonic]
 summary: "Hugging Face 上的 GRAIL 公开集：约 22k 条物理可行的 Unitree G1 loco-manipulation 轨迹（video + 4D HOI recon + robot/objects pkl + USD），按 pickup/sitting/terrain 分目录；Apache 2.0（子资产许可各异）。"
-updated: 2026-07-02
+updated: 2026-07-22
 status: complete
 related:
   - ./paper-grail.md

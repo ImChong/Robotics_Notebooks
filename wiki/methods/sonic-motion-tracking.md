@@ -3,7 +3,7 @@ type: method
 tags: [paper, humanoid, imitation-learning, motion-tracking, foundation-model, nvidia, vla, teleoperation, rl, motion-control, bfm, behavior-foundation-model, loco-manipulation, body-system-stack, loco-manip-161-survey]
 status: complete
 date: 2026-05-14
-updated: 2026-07-21
+updated: 2026-07-22
 arxiv: "2511.07820"
 venue: "2025 · arXiv"
 code: https://github.com/NVlabs/GR00T-WholeBodyControl
