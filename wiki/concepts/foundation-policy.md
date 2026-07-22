@@ -1,7 +1,7 @@
 ---
 type: concept
 tags: [foundation-policy, vla, rt1, rt2, pi0, pi07, octo, generalist, pretraining, manipulation]
-updated: 2026-07-21
+updated: 2026-07-22
 related:
   - ../queries/contact-wrench-closed-loop.md
   - ./humanoid-policy-network-architecture.md

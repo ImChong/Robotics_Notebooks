@@ -1,5 +1,9 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-22] structural | wiki/entities/gr00t-wholebodycontrol.md、wiki/entities/holomotion.md — 独立节点补「源码运行时序图」（GEAR-SONIC / HoloSMPL→Retarget→Train→Docker）；六项目序列图齐备（MotionWAM 仍为不适用）
+
+## [2026-07-22] ingest | sources/sites/{perceptive-bfm,openhlm-project,humanoidarena,dit4dit,holomotion-docs,gr00t-wholebodycontrol-docs} + repos/{mondo_robotics_pmt,openhlm,humanoidarena,gr00t_wholebodycontrol,horizon_robotics_holomotion} — 六项目页/仓开源再核：PerceptiveBFM(PMT 已开源)·OpenHLM(全栈开源升格)·HumanoidArena(代码/数据已发)·GR00T-WBC·HoloMotion 刷新·MotionWAM 仍无独立仓(dit4dit 为前序)；wiki/entities/paper-perceptive-bfm.md wiki/entities/paper-loco-manip-161-154-openhlm.md wiki/entities/paper-humanoidarena.md wiki/entities/gr00t-wholebodycontrol.md wiki/entities/holomotion.md wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md wiki/tasks/loco-manipulation.md
+
 ## [2026-07-22] ingest | sources/papers/m4world_arxiv_2607_14005.md — 接入 M⁴World（arXiv:2607.14005）多视角多模态驾驶世界模型；升格 wiki/entities/paper-m4world.md；交叉 wiki/methods/generative-world-models.md、wiki/concepts/video-as-simulation.md、wiki/entities/paper-x-world.md、wiki/overview/robot-world-models-training-loop-taxonomy.md、wiki/overview/autonomous-driving-core-algorithms-series.md；机构新增 meituan；未开源
 
 - **开源状态：** **未开源** — arXiv abs/HTML/PDF 均无项目页或 GitHub；训练数据为自采驾驶日志（截至 2026-07-22）

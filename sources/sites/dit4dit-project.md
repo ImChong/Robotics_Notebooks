@@ -9,7 +9,8 @@
 - **代码：** <https://github.com/Mondo-Robotics/DiT4DiT>
 - **机构：** Mondo Robotics；HKUST(GZ)；HKUST
 - **入库日期：** 2026-06-10
-- **一句话说明：** 官方项目页：级联双 DiT VAM 方法图、LIBERO / RoboCasa-GR1 仿真表、G1 八项桌面 + 三项全身 loco-manip 真机视频、零样本泛化消融、生成视频计划演示、部署效率表（6 Hz / 2.2B）与 BibTeX。
+- **再核日期：** 2026-07-22
+- **一句话说明：** 官方项目页：级联双 DiT VAM 方法图、LIBERO / RoboCasa-GR1 仿真表、G1 八项桌面 + 三项全身 loco-manip 真机视频、零样本泛化消融、生成视频计划演示、部署效率表（6 Hz / 2.2B）与 BibTeX。同团队后续 **MotionWAM**（arXiv:2606.09215）继承双 DiT 接口，但 **截至 2026-07-22 仍无** 独立项目页/代码；勿将本页误认为 MotionWAM 开源入口。
 
 ## 页面结构（公开站点索引）
 

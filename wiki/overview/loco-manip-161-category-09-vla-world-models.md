@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, humanoid, category-hub, survey]
 status: complete
-updated: 2026-07-17
+updated: 2026-07-22
 summary: "人形 Loco-Manip 161 篇 · 09 人形 VLA、世界模型与通用操作（15 篇）— 视觉、语言、动作和世界建模接到执行层。"
 related:
   - ./humanoid-loco-manip-161-papers-technology-map.md

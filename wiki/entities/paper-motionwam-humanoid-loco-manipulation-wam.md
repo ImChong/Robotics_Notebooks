@@ -12,7 +12,7 @@ tags:
   - real-time-control
   - unified-action-space
 status: complete
-updated: 2026-07-20
+updated: 2026-07-22
 arxiv: "2606.09215"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
@@ -32,9 +32,10 @@ related:
   - ../overview/robot-world-models-training-loop-taxonomy.md
 sources:
   - ../../sources/papers/motionwam_arxiv_2606_09215.md
+  - ../../sources/sites/dit4dit-project.md
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
-summary: "MotionWAM（arXiv:2606.09215）：实时人形 loco-manipulation 的 World Action Model——Video DiT 单次前向隐状态条件 Motion DiT，在统一 SONIC motion token 空间联合预测行走、躯干、身高、足端交互与双手操作；三阶段 egocentric 视频→跨具身动作→全身遥操作微调；G1 九项真机任务平均成功率 76.1%，较同演示微调 GR00T-N1.7 高约 32 个百分点。"
+summary: "MotionWAM（arXiv:2606.09215）：实时人形 loco-manipulation 的 World Action Model——Video DiT 单次前向隐状态条件 Motion DiT，在统一 SONIC motion token 空间联合预测行走、躯干、身高、足端交互与双手操作；G1 九项真机 76.1% vs GR00T-N1.7 43.9%；截至 2026-07-22 仍无官方代码（dit4dit.github.io 为前序 DiT4DiT 页）。"
 ---
 
 # MotionWAM（实时人形 Loco-Manipulation · World Action Model）
@@ -121,12 +122,13 @@ flowchart TB
 - **误区：** 认为 VLA 微调演示即可覆盖全身 loco-manip；论文显示 **Qwen3DiT**（容量匹配、仅换 VLM 先验）在 **locomotion-heavy** 任务上接近 **零成功率**。
 - **局限：** 目前仅在 **G1** 上验证三阶段配方；**严格新物体 OOD** 未报告；**单目 egocentric** 在物体出视野或头摄漂移时易失稳（见论文 Failure Cases）。
 
-## 开源状态（项目页核查，2026-07-20）
+## 开源状态（项目页核查，2026-07-22）
 
 | 资源 | 状态 |
 |------|------|
 | arXiv | <https://arxiv.org/abs/2606.09215> |
-| 项目页 / 代码 | **未发现**公开项目页或 GitHub（abs / HTML 均无 Code 链；Awesome-WAM 等第三方列表亦无官方仓） |
+| 独立项目页 / 代码 | **未发现**（abs / HTML 均无 Code 链） |
+| 用户常见关联 URL | <https://dit4dit.github.io/> 为同团队前序 **[DiT4DiT](./paper-dit4dit-video-action-model.md)** 项目页（[代码已开源](https://github.com/Mondo-Robotics/DiT4DiT)），**不是** MotionWAM 发布页 |
 | 源码运行时序图 | **不适用**（无官方可运行仓）；低层解码依赖已开源的 [SONIC / GR00T-WholeBodyControl](../methods/sonic-motion-tracking.md) |
 
 ## 方法栈
@@ -157,6 +159,7 @@ flowchart TB
 ## 参考来源
 
 - [MotionWAM 论文摘录（arXiv:2606.09215）](../../sources/papers/motionwam_arxiv_2606_09215.md)
+- [DiT4DiT 项目页归档](../../sources/sites/dit4dit-project.md) — 同团队前序 VAM 落地页（勿与 MotionWAM 混淆）
 
 ## 推荐继续阅读
 

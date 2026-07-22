@@ -6,11 +6,15 @@
 - **缩写：** **HumanoidArena**
 - **类型：** paper / benchmark / humanoid / hierarchical-control / egocentric / HOI / HSI
 - **arXiv：** <https://arxiv.org/abs/2606.17833>（PDF：<https://arxiv.org/pdf/2606.17833>）
-- **项目页：** <https://humanoidarena.github.io>
+- **项目页：** <https://humanoidarena.github.io/>
+- **代码：** <https://github.com/William-wAng618/HumanoidArena>（分支 `release/open-source-prep`，MIT）
+- **数据 / 模型：** ModelScope `Twang2026/HumanoidArenaV3.1` · `Twang2026/HumanoidArena_models` · raw `Twang2026/HumanoidArena_raw`（HF 镜像见项目页）
 - **发表日期：** 2026-06-16
 - **作者：** Taowen Wang, Zikang Xie, Bin Yang, Yunheng Wang, Zizhao Yuan, Yuetong Fang, Yixiao Feng, Yichi Wang, Xingyu Chen, Haodong Chen, Qiwei Wu, Weisheng Xu, Lihan Chen, Lusong Li, Zecui Zeng, Renjing Xu（* 共同一作以项目页为准）
 - **机构：** 香港科技大学（广州）、北京工业大学、哈尔滨工业大学（深圳）、深圳北理莫斯科大学、京东探索研究院
 - **入库日期：** 2026-07-06
+- **再核日期：** 2026-07-22
+- **开源状态：** **已开源**（代码 + LeRobot 数据 + checkpoint + 资产 + raw；multicam **待发布**）
 - **一句话说明：** **仿真优先** 的 egocentric **分层全身学习基准**：高层策略把第一人称视觉、本体与指令映射为 **40D 中间全身动作**，由低层 **GMT**（TWIST2 / SONIC）执行；在 **7 项下肢关键 HOI/HSI** 任务上，从 **扰动泛化** 与 **跨 GMT 迁移** 两轴诊断 policy–tracker 接口——分层控制能解多样腿关键交互，但性能 **强 tracker 条件化**、**跨 GMT 迁移脆弱**。
 
 ## 摘录 1：问题与分层 formulation（摘要 / 引言）
@@ -49,7 +53,7 @@
 - **2 后端特定动作解释：** Isaac Lab 内 **TWIST2** 或 **SONIC** action provider 将共享信号解释为可执行 **G1 目标**，暴露不同低层跟踪动力学。
 - **3 录制与规范化：** Recording manager 序列化 **NPZ**（egocentric 观测、状态、动作、可回放轨迹）；示范规范为 **64D canonical state** 与 **40D intermediate whole-body action**（含主 ego、左右腕视角）。
 - **4 转换与 benchmark：** 原始录制转 **LeRobot 兼容数据集** → 训练高层策略 → 在 **in-GMT / cross-GMT / visual / semantic / execution** 协议下评测。
-- **开源资源：** 代码、LeRobot 数据集、策略 checkpoint、Isaac Lab 仿真资产（项目页 GitHub / HuggingFace / Google Drive 入口）。
+- **开源资源（2026-07-22）：** 代码 [William-wAng618/HumanoidArena](https://github.com/William-wAng618/HumanoidArena)（`release/open-source-prep`）、LeRobot 数据集、策略 checkpoint、Isaac Lab 仿真资产、raw 数据均已发布；**multicam 仍待发布**（见项目页 Release Plan）。
 
 **对 wiki 的映射：**
 - [HumanoidArena](../../wiki/entities/paper-humanoidarena.md) — Mermaid 管线总览
