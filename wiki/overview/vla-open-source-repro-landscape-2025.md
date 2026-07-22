@@ -2,7 +2,7 @@
 type: overview
 tags: [vla, open-source, reproduction, survey, github, embodied-ai]
 status: complete
-updated: 2026-07-11
+updated: 2026-07-22
 related:
   - ../methods/vla.md
   - ../methods/star-vla.md
@@ -14,9 +14,11 @@ related:
   - ../entities/lerobot.md
   - ../overview/vln-open-source-repro-paradigms.md
   - ../formalizations/lie-group-rigid-body-motions.md
+  - ../entities/paper-harness-vla.md
 sources:
   - ../../sources/blogs/wechat_shenlan_vla_github_repro_survey_2025.md
-summary: "2025 年高可见 VLA 开源栈策展：从通用策略（OpenPI）、轻量适配（VLA-Adapter）、RL 系统（RLinf/SimpleVLA-RL）到跨本体（UniVLA）、VLA+世界模型（RynnVLA-002）、工程框架（StarVLA）与垂直场景（SpatialVLA、OpenDriveVLA、DexGraspVLA、DeepThinkVLA），按复现目标分组而非单一路线排名。"
+  - ../../sources/repos/rpent.md
+summary: "2025 年高可见 VLA 开源栈策展：从通用策略（OpenPI）、轻量适配（VLA-Adapter）、RL 系统（RLinf/SimpleVLA-RL）与 agentic 运行时（RPent/Harness VLA）到跨本体（UniVLA）、VLA+世界模型（RynnVLA-002）、工程框架（StarVLA）与垂直场景（SpatialVLA、OpenDriveVLA、DexGraspVLA、DeepThinkVLA），按复现目标分组而非单一路线排名。"
 ---
 
 # VLA 开源复现景观（2025 策展）
@@ -85,6 +87,7 @@ flowchart TB
 | **OpenPI** | Physical Intelligence 的 π0 / π0-FAST / π0.5；VLM 语义 + flow matching 动作；多真机平台微调 | [openpi](https://github.com/Physical-Intelligence/openpi) | [π0 Policy](../methods/π0-policy.md)、[π0.7](../methods/pi07-policy.md)、[VLA](../methods/vla.md) |
 | **VLA-Adapter** | ~0.5B 轻量 VLA；Bridge Attention 注入 VL；强调低机器人预训练数据 | [VLA-Adapter](https://github.com/OpenHelix-Team/VLA-Adapter) | [VLA](../methods/vla.md)、[选型 Query](../queries/manipulation-vla-architecture-selection.md) |
 | **RLinf** | 大规模 RL **系统**（流水线、通信、调度）；内置 **STEAM/RECAP** 离线 advantage + CFG 管线；对接 OpenPI | [RLinf](https://github.com/RLinf/RLinf) | [STEAM](../entities/paper-steam-advantage-modeling.md)、[VLA](../methods/vla.md)、[强化学习](../methods/reinforcement-learning.md) |
+| **RPent** | RLinf 生态 **agentic 运行时**：LLM planner + 固定原语 + 冻结 VLA（`vla_act`）；Harness VLA 官方实现 | [RPent](https://github.com/RLinf/RPent) | [Harness VLA](../entities/paper-harness-vla.md)、[VLA](../methods/vla.md) |
 | **SimpleVLA-RL** | veRL 扩展；面向 VLA 的轨迹采样与并行；OpenVLA-OFT RL 实验 | [SimpleVLA-RL](https://github.com/PRIME-RL/SimpleVLA-RL) | [VLA](../methods/vla.md) |
 | **UniVLA** | 从视频学 **潜动作**；跨平台轻量解码；减弱显式动作标签依赖 | [UniVLA](https://github.com/OpenDriveLab/UniVLA) | [DeFI](../methods/defi-decoupled-dynamics-vla.md)（潜动作路线对照）；**≠** 导航向 [Uni-NaVid](../overview/vln-open-source-repro-paradigms.md) |
 | **RynnVLA-002** | 统一动作生成与环境预测的自回归 **动作-世界模型** | [RynnVLA-002](https://github.com/alibaba-damo-academy/RynnVLA-002) | [世界模型闭环分类](../overview/robot-world-models-training-loop-taxonomy.md)、[LeRobot](../entities/lerobot.md) |
@@ -102,6 +105,7 @@ flowchart TB
 | 单卡 / 小团队试 VLA | VLA-Adapter 或 StarVLA | 勿与 OpenPI 数据规模假设混用 |
 | 给已有 VLA 做 RL 后训练 | SimpleVLA-RL + 确认仿真/渲染依赖；或 **RLinf STEAM/RECAP**（离线 advantage + CFG，无需在线采样） | 需对齐 veRL 与 OpenVLA-OFT 版本；STEAM 见 [论文实体](../entities/paper-steam-advantage-modeling.md) |
 | 搭集群 RL 基建 | RLinf | 系统项目，不等同于单一策略 checkpoint |
+| 冻结 VLA + LLM harness 评测 | RPent（Harness VLA）+ LIBERO-Pro | 需 LLM API key 与 π₀.₅ / 仿真依赖；≠ 训练新 VLA |
 | 人视频 → 机器人 | UniVLA（对照 [DeFI](../methods/defi-decoupled-dynamics-vla.md) 解耦路线） | 潜动作语义与真机控制接口对齐 |
 | VLA + 世界模型联合 | RynnVLA-002 | 数据收集（文内 SO100 抓取放置）与 WM 训练算力 |
 | 换 VLM backbone 做消融 | StarVLA | 模块边界清晰，但 benchmark 需自对齐 |

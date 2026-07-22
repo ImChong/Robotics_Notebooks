@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-07-21
+updated: 2026-07-22
 related:
   - ../entities/paper-clothtransformer-unified-latent-cloth-simulation.md
   - ../entities/paper-flying-knots.md
@@ -150,6 +150,7 @@ flowchart TD
 - [ClothTransformer](../entities/paper-clothtransformer-unified-latent-cloth-simulation.md) — 统一 latent Transformer 神经布料仿真 + 无穿透数据集（arXiv:2605.27852）
 - [ENPIRE](../methods/enpire.md) — coding agent 驱动的真机策略自改进闭环（自动 reset/verify + 多 PI 范式 + 机队 scaling）
 - [ASPIRE](../methods/aspire.md) — 持续学习 code-as-policy：逐原语 trace 调试 + 技能库复利 + 进化搜索（LIBERO-Pro / Robosuite / BEHAVIOR-1K）
+- [Harness VLA](../entities/paper-harness-vla.md) — 冻结 VLA + 固定原语记忆 harness；LIBERO-Pro / RoboCasa365 / RoboTwin C2R（arXiv:2607.08448）
 - [GaP](../entities/paper-gap-graph-as-policy.md) — Graph-as-Policy 多 agent harness：ROS 式计算图 + MORSL 技能 + 仿真排练自学习，面向 [变体自动化](../concepts/variational-automation.md)（arXiv:2607.05369）
 - [3D-IC](../entities/paper-3d-ic-joint-navigation-manipulation-planning.md) — 共享 3D 地图的 OVMM 交互路点链联合规划（ICML 2026，Stretch 3）
 - [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md) — 操作数据的规模化定律

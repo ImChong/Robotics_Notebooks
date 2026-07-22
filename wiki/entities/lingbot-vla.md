@@ -2,7 +2,7 @@
 type: entity
 tags: [vla, open-source, flow-matching, manipulation, qwen, depth-distillation, robbyant]
 status: complete
-updated: 2026-07-17
+updated: 2026-07-22
 arxiv: "2601.18692"
 code: https://github.com/robbyant/lingbot-vla
 related:
@@ -12,6 +12,7 @@ related:
   - ./lerobot.md
   - ../tasks/manipulation.md
   - ../methods/lingbot-map.md
+  - ./paper-harness-vla.md
 sources:
   - ../../sources/papers/lingbot_vla_arxiv_2601_18692.md
   - ../../sources/repos/lingbot-vla.md
@@ -125,6 +126,7 @@ flowchart TB
 - [HumanNet](./humannet.md) — 同架构受控预训练实验
 - [LeRobot](./lerobot.md) — 后训练格式
 - [Manipulation](../tasks/manipulation.md) — GM-100 / RoboTwin 语境
+- [Harness VLA](./paper-harness-vla.md) — RoboTwin C2R 上将后训练 LingBot-VLA 作冻结 `vla_act` 后端
 
 ## 推荐继续阅读
 

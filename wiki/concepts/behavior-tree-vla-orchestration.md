@@ -2,7 +2,7 @@
 type: concept
 tags: [behavior-tree, vla, orchestration, deployment, ros2, physical-ai, robotis]
 status: complete
-updated: 2026-07-06
+updated: 2026-07-22
 summary: "行为树与 VLA 结合：用 BT 编排策略加载/暂停/复位与宏动作，VLA 负责语言条件下的连续操作 chunk；BT 提供可组合、可恢复的任务结构，VLA 提供语义技能执行。"
 related:
   - ../methods/vla.md
@@ -12,6 +12,7 @@ related:
   - ../queries/vla-deployment-guide.md
   - ../queries/vla-with-low-level-controller.md
   - ../methods/action-chunking.md
+  - ../entities/paper-harness-vla.md
 sources:
   - ../../sources/repos/cyclo_intelligence.md
 ---
@@ -128,6 +129,7 @@ BT 节点可传入：
 - [VLA 真机部署指南（Query）](../queries/vla-deployment-guide.md) — chunk 与延迟
 - [VLA 与低级控制器融合（Query）](../queries/vla-with-low-level-controller.md) — 执行层接口
 - [Action Chunking（方法）](../methods/action-chunking.md) — RESUME 阶段的 chunk 语义
+- [Harness VLA（论文实体）](../entities/paper-harness-vla.md) — agentic JSON 原语 + 记忆；与 BT 确定性编排对照
 - [具身大模型分类学选型闭环（专题枢纽）](../overview/topic-embodied-foundation-model.md) — 行为树编排对应五层闭环的 VLX 一体化扩展层
 
 ## 推荐继续阅读
