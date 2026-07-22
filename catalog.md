@@ -521,6 +521,7 @@
 - [通过主动空间大脑和通用动作小脑进行人形全身操作](wiki/entities/paper-loco-manip-161-160-n160.md) — 通过主动空间大脑和通用动作小脑进行人形全身操作** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9Eh `📅unknown` `[entity_page]`
 - [EgoVLA](wiki/entities/paper-loco-manip-161-161-egovla.md) — EgoVLA** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
 - [MAMMA：无标记多视角多人 SMPL-X 动作捕捉](wiki/entities/paper-mamma-markerless-motion-capture.md) — MAMMA**（*Markerless Accurate Multi-person Motion Acquisition*，arXiv:2506.13040，CVPR 2026 Oral，[项目页 `📅unknown` `[entity_page]`
+- [Masked Visual Actions（统一世界建模的掩码视觉动作）](wiki/entities/paper-masked-visual-actions.md) — Masked Visual Actions**（*Masked Visual Actions for Unified World Modeling*，[arXiv:2607.19343](http `📅unknown` `[entity_page]`
 - [MECo-WAM（Multi-Expert Co-Training World Action Model · arXiv:2607.05468）](wiki/entities/paper-meco-wam-4d-geometry-cotraining.md) — MECo-WAM**（*Learning 4D Geometric Priors for Inference-Efficient World Action Models*，[arXiv:2607. `📅unknown` `[entity_page]`
 - [MEVION：高力高速双臂数据采集系统](wiki/entities/paper-mevion.md) — MEVION** 是面向重载、高速双臂模仿学习的开源 leader–follower 数据采集平台，用四条 6-DoF 机械臂与平行夹爪扩展 ALOHA 的力速工作区。 `📅unknown` `[entity_page]`
 - [AMI-EV：微扫视启发的事件相机系统](wiki/entities/paper-microsaccade-inspired-event-camera.md) — Microsaccade-inspired event camera for robotics**（Botao He*、Fei Gao*、Cornelia Fermüller* 等，ZJU FAS `📅unknown` `[entity_page]`

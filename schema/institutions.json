@@ -82,6 +82,14 @@
         "stanford"
       ]
     },
+    "umd": {
+      "label": "马里兰大学学院公园分校（University of Maryland）",
+      "aliases": [
+        "umd",
+        "maryland",
+        "university-of-maryland"
+      ]
+    },
     "berkeley": {
       "label": "加州大学伯克利分校（UC Berkeley）",
       "aliases": [

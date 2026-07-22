@@ -23,6 +23,7 @@ related:
   - ./paper-shenlan-wm-15-worldgym.md
   - ./paper-kairos-native-world-model-stack.md
   - ./paper-driftworld.md
+  - ./paper-masked-visual-actions.md
   - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/oscar_arxiv_2606_04463.md
@@ -151,6 +152,7 @@ flowchart TB
 - [Cosmos 3](./cosmos-3.md) — 基座视频扩散平台
 - [WorldGym](./paper-shenlan-wm-15-worldgym.md) — 同类 WM 策略评估靶场
 - [DriftWorld](./paper-driftworld.md) — 1-step drifting：强调推理时搜索速度
+- [Masked Visual Actions](./paper-masked-visual-actions.md) — 像素掩码条件：前向/逆向统一 + 策略评估
 - [Manipulation](../tasks/manipulation.md) — 操纵策略与评测语境
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页兼跨其 ② 世界模型与 ④ 校准层：视频世界模型作虚拟策略评估器，RoboArena 评测与真机排名强相关
 
