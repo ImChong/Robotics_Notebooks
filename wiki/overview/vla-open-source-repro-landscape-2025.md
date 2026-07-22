@@ -96,6 +96,7 @@ flowchart TB
 | **OpenDriveVLA** | 端到端驾驶 VLA；2D/3D 实例 + 分层 VL 对齐 | [OpenDriveVLA](https://github.com/DriveVLA/OpenDriveVLA) | [VLA](../methods/vla.md)（驾驶域扩展） |
 | **DexGraspVLA** | 分层 VLM 规划 + 扩散抓取控制；杂乱场景长程 | [DexGraspVLA](https://github.com/Psi-Robot/DexGraspVLA) | [Manipulation](../tasks/manipulation.md)、[抓取选型](../queries/grasp-policy-selection.md) |
 | **DeepThinkVLA** | 先因果推理 token，再双向注意力 **并行** 动作解码 | [DeepThinkVLA](https://github.com/wadeKeith/DeepThinkVLA) | [VLA](../methods/vla.md) |
+| **lehome_solution**（补充） | LeHome 2026 夺冠配方：π₀.₅ + AWR/RECAP **异步 RL**（HF Hub 总线）+ 真机 DAgger；双赛道权重 | [lehome_solution](https://github.com/IliaLarchenko/lehome_solution) | [Learning to Fold](../entities/paper-lehome-learning-to-fold.md)、[LeRobot](../entities/lerobot.md) |
 
 ## 按复现目标选入口
 
@@ -103,7 +104,7 @@ flowchart TB
 |-------------|----------|--------|
 | 复现 π 系多任务操作 | OpenPI 仓库 + 官方权重/数据说明 | 多机器人 URDF、相机标定与 action space 不一致 |
 | 单卡 / 小团队试 VLA | VLA-Adapter 或 StarVLA | 勿与 OpenPI 数据规模假设混用 |
-| 给已有 VLA 做 RL 后训练 | SimpleVLA-RL + 确认仿真/渲染依赖；或 **RLinf STEAM/RECAP**（离线 advantage + CFG，无需在线采样） | 需对齐 veRL 与 OpenVLA-OFT 版本；STEAM 见 [论文实体](../entities/paper-steam-advantage-modeling.md) |
+| 给已有 VLA 做 RL 后训练 | SimpleVLA-RL + 确认仿真/渲染依赖；或 **RLinf STEAM/RECAP**（离线 advantage + CFG，无需在线采样）；要 **在线异步 rollout 飞轮** 可对照 [lehome_solution](../entities/paper-lehome-learning-to-fold.md) | 需对齐 veRL 与 OpenVLA-OFT 版本；STEAM 见 [论文实体](../entities/paper-steam-advantage-modeling.md)；LeHome 需 Isaac Sim + HF Hub |
 | 搭集群 RL 基建 | RLinf | 系统项目，不等同于单一策略 checkpoint |
 | 冻结 VLA + LLM harness 评测 | RPent（Harness VLA）+ LIBERO-Pro | 需 LLM API key 与 π₀.₅ / 仿真依赖；≠ 训练新 VLA |
 | 人视频 → 机器人 | UniVLA（对照 [DeFI](../methods/defi-decoupled-dynamics-vla.md) 解耦路线） | 潜动作语义与真机控制接口对齐 |
@@ -133,6 +134,7 @@ flowchart TB
 - [操作 VLA 架构选型 Query](../queries/manipulation-vla-architecture-selection.md)
 - [机器人世界模型训练闭环分类](../overview/robot-world-models-training-loop-taxonomy.md)
 - [LeRobot](../entities/lerobot.md) — RynnVLA-002 文内 SO100 数据收集语境
+- [Learning to Fold（LeHome 2026）](../entities/paper-lehome-learning-to-fold.md) — 竞赛级 π₀.₅ RL + DAgger 全链路开源
 
 ## 参考来源
 

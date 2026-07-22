@@ -1,13 +1,127 @@
 {
   "generated_at": "2026-07-22",
-  "node_count": 1762,
-  "edge_count": 14341,
+  "node_count": 1763,
+  "edge_count": 14362,
   "coverage": {
-    "covered": 1712,
-    "total": 1742,
+    "covered": 1713,
+    "total": 1743,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-lehome-learning-to-fold.md",
+      "detail_id": "entity-paper-lehome-learning-to-fold",
+      "label": "Learning to Fold（LeHome Challenge 2026 · arXiv:2606.27163）",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/awr.md",
+      "detail_id": "wiki-methods-awr",
+      "label": "AWR: 优势加权回归",
+      "type": "method",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/methods/dagger.md",
+      "detail_id": "wiki-methods-dagger",
+      "label": "DAgger（Dataset Aggregation）",
+      "type": "method",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/lerobot.md",
+      "detail_id": "entity-lerobot",
+      "label": "LeRobot (Hugging Face)",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
+      "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
+      "label": "VLA 开源复现景观（2025 策展）",
+      "type": "overview",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-steam-advantage-modeling.md",
+      "detail_id": "entity-paper-steam-advantage-modeling",
+      "label": "STEAM：自监督时序 Ensemble Advantage 建模",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/sunday-robotics-act2.md",
+      "detail_id": "entity-sunday-robotics-act2",
+      "label": "ACT-2（Sunday Robotics · Generalizing Reliability）",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/nvidia-so101-sim2real-lab-workflow.md",
+      "detail_id": "entity-nvidia-so101-sim2real-lab-workflow",
+      "label": "NVIDIA SO-101 Sim2Real 实验 workflow",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained"
+    },
     {
       "path": "wiki/entities/paper-xrobotoolkit.md",
       "detail_id": "entity-paper-xrobotoolkit",
@@ -97,132 +211,23 @@
       "source": "log.md",
       "action": "added",
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-humanoid-dart.md",
-      "detail_id": "entity-paper-humanoid-dart",
-      "label": "Humanoid-DART",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-wolf-vla.md",
-      "detail_id": "entity-paper-wolf-vla",
-      "label": "WOLF-VLA",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-gentlehumanoid.md",
-      "detail_id": "entity-paper-gentlehumanoid",
-      "label": "GentleHumanoid",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-haic.md",
-      "detail_id": "entity-paper-haic",
-      "label": "HAIC",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-loco-manip-161-076-sugar.md",
-      "detail_id": "entity-paper-loco-manip-161-076-sugar",
-      "label": "SUGAR",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-loco-manip-07-wt-umi.md",
-      "detail_id": "entity-paper-loco-manip-07-wt-umi",
-      "label": "WT-UMI",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-motion-cerebellum-ceer.md",
-      "detail_id": "entity-paper-motion-cerebellum-ceer",
-      "label": "CEER",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-loco-manip-161-074-pro-hoi.md",
-      "detail_id": "entity-paper-loco-manip-161-074-pro-hoi",
-      "label": "Pro-HOI",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-loco-manip-03-genhoi.md",
-      "detail_id": "entity-paper-loco-manip-03-genhoi",
-      "label": "GenHOI",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-loco-manip-161-109-falcon.md",
-      "detail_id": "entity-paper-loco-manip-161-109-falcon",
-      "label": "FALCON",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-loco-manip-161-039-hmc.md",
-      "detail_id": "entity-paper-loco-manip-161-039-hmc",
-      "label": "HMC",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-xrobotoolkit.md",
-    "detail_id": "entity-paper-xrobotoolkit",
-    "label": "XRoboToolkit",
+    "path": "wiki/entities/paper-lehome-learning-to-fold.md",
+    "detail_id": "entity-paper-lehome-learning-to-fold",
+    "label": "Learning to Fold（LeHome Challenge 2026 · arXiv:2606.27163）",
     "type": "entity",
     "recency": "2026-07-22",
     "source": "log.md",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 440
+      "size": 441
     },
     {
       "label": "移动操作",
@@ -257,7 +262,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 318,
+      "degree": 320,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -265,7 +270,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 299,
+      "degree": 301,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -281,7 +286,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 274,
+      "degree": 276,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

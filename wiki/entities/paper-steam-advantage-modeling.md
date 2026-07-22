@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, offline-rl, advantage-modeling, vla, post-training, self-supervised, tsinghua, lerobot, manipulation, behavior-cloning]
 status: complete
-updated: 2026-07-11
+updated: 2026-07-22
 arxiv: "2606.29834"
 code: https://github.com/RLinf/RLinf
 related:
@@ -151,6 +151,7 @@ flowchart LR
 - [LWD](../methods/lwd.md) — 另一条车队级 **offline-to-online RL** 飞轮。
 - [ROVE](./paper-rove-humanoid-vla-intervention.md) — 人形干预轨迹的价值引导提取。
 - [LeRobot](./lerobot.md) — STEAM/RECAP 数据格式与 OpenPI 栈。
+- [Learning to Fold（LeHome 2026）](./paper-lehome-learning-to-fold.md) — 在线异步 AWR+RECAP 飞轮对照（竞赛全链路开源）。
 - [Manipulation](../tasks/manipulation.md) — 长程桌面/零售操作任务背景。
 - [VLA 开源复现景观 2025](../overview/vla-open-source-repro-landscape-2025.md) — RLinf 系统定位。
 
