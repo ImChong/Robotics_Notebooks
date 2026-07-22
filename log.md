@@ -1,5 +1,14 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-22] ingest | sources/papers/adp_arxiv_2607_03454.md、sources/sites/seokju-lee-adp-github-io.md — 接入 ADP（arXiv:2607.03454）对抗动力学先验；升格 wiki/entities/paper-adp.md；交叉 amp-reward、locomotion、balance-recovery、humanoid-locomotion、centroidal-dynamics、unitree-g1、amp-add-smp、paper-unified-walk-run-recovery-sdamp；机构新增 samsung/hanyang/kimm；代码 coming soon
+
+- **开源状态：** **宣称将开源 / 待发布** — 项目页 Code *(coming soon)*；[`seokju-lee/adp`](https://github.com/seokju-lee/adp) 仅为项目站（`index.html` + `static/`），无可运行训练/推理入口（截至 2026-07-22）
+- **新建 papers：** [`sources/papers/adp_arxiv_2607_03454.md`](sources/papers/adp_arxiv_2607_03454.md)
+- **新建 sites：** [`sources/sites/seokju-lee-adp-github-io.md`](sources/sites/seokju-lee-adp-github-io.md)
+- **新建 wiki：** [`wiki/entities/paper-adp.md`](wiki/entities/paper-adp.md)
+- **机构：** `schema/institutions.json` 新增 `samsung`（三星电子）、`hanyang`（汉阳大学）、`kimm`（韩国机械材料研究院）；沿用既有 `kaist`
+- **交叉更新：** [`wiki/methods/amp-reward.md`](wiki/methods/amp-reward.md)、[`wiki/tasks/locomotion.md`](wiki/tasks/locomotion.md)、[`wiki/tasks/balance-recovery.md`](wiki/tasks/balance-recovery.md)、[`wiki/tasks/humanoid-locomotion.md`](wiki/tasks/humanoid-locomotion.md)、[`wiki/concepts/centroidal-dynamics.md`](wiki/concepts/centroidal-dynamics.md)、[`wiki/entities/unitree-g1.md`](wiki/entities/unitree-g1.md)、[`wiki/comparisons/amp-add-smp-motion-prior-variants.md`](wiki/comparisons/amp-add-smp-motion-prior-variants.md)、[`wiki/entities/paper-unified-walk-run-recovery-sdamp.md`](wiki/entities/paper-unified-walk-run-recovery-sdamp.md)
+
 ## [2026-07-22] ingest | sources/papers/driftworld_arxiv_2607_15065.md、sources/sites/susie-lu-driftworld-github-io.md、sources/repos/driftworld.md — 接入 DriftWorld（arXiv:2607.15065）1-step drifting 动作条件世界模型；升格 wiki/entities/paper-driftworld.md
 
 - **开源状态：** **部分开源** — 项目页 Paper/Code 双链；[`Susie-Lu/driftworld`](https://github.com/Susie-Lu/driftworld) + HF checkpoint；Push-T 训练/可视化/指标/GPC-RANK/策略评估可运行；其它数据集 README *Will be added soon*；License 未声明（截至 2026-07-22）

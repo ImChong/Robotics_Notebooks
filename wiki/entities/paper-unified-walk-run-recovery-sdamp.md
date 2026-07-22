@@ -2,13 +2,14 @@
 type: entity
 tags: [paper, humanoid, amp, locomotion, fall-recovery, unitree-g1, isaac-lab, ppo, sim2real, lafan1, hku]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-22
 arxiv: "2605.18611"
 related:
   - ../overview/humanoid-amp-motion-prior-survey.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ./paper-amp-survey-08-more.md
   - ./paper-adaptive-humanoid-control.md
+  - ./paper-adp.md
   - ../methods/amp-reward.md
   - ../tasks/locomotion.md
   - ../tasks/balance-recovery.md
@@ -23,6 +24,7 @@ sources:
   - ../../sources/papers/humanoid_amp_survey_10_unified_walking_running_and_recovery_for_humanoi.md
   - ../../sources/papers/humanoid_amp_survey_19_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
+  - ../../sources/papers/adp_arxiv_2607_03454.md
 summary: "SD-AMP（arXiv:2605.18611）用投影重力门控在训练期切换 recovery 与速度条件 locomotion 两个 AMP 判别器，三条 LAFAN1 参考即让 Unitree G1 单策略统一走、跑与俯卧/仰卧起身，真机 50 Hz ONNX 无运行时模式切换。"
 ---
 
@@ -51,6 +53,7 @@ summary: "SD-AMP（arXiv:2605.18611）用投影重力门控在训练期切换 re
 - **消灭部署 FSM：** 与模块化「走控 + 跑控 + 起身控 + 手调切换」相比，硬件 rollout 展示 **recovery → walk → run** 连续序列，同一冻结 ONNX（50 Hz）。
 - **与工程线对照：** [AMP_mjlab](./amp-mjlab.md) 在 mjlab 上用统一判别器 + 分区参考；本文用**双判别器 + 固定重力阈值**，理论化「何时用哪种 prior」。
 - **与 Heracles 互补：** [Heracles](./paper-heracles-humanoid-diffusion.md) 用扩散中间件改参考；本文在 **单策略 AMP+RL** 内解决问题——选型见 [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)。
+- **与 ADP 正交：** [ADP](./paper-adp.md) 改的是先验 **特征空间**（动力学 vs 运动学）；SD-AMP 改的是 **regime 门控**（recovery vs locomotion）。抗扰 + 起身统一时可组合思考。
 
 ## Survey 坐标（策展索引）
 
@@ -152,7 +155,7 @@ $g_z$ 为投影重力 $z$ 分量；阈值落在经验分布低占用区，作者
 
 - [AMP & HumanX](../methods/amp-reward.md)、[Locomotion](../tasks/locomotion.md)、[Balance Recovery](../tasks/balance-recovery.md)
 - [Unitree G1](./unitree-g1.md)、[AMP_mjlab](./amp-mjlab.md)、[LAFAN1](./lafan1-dataset.md)
-- [Heracles](./paper-heracles-humanoid-diffusion.md)、[SPRINT](./paper-sprint-humanoid-athletic-sprints.md)、[人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
+- [Heracles](./paper-heracles-humanoid-diffusion.md)、[ADP](./paper-adp.md)、[SPRINT](./paper-sprint-humanoid-athletic-sprints.md)、[人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
 - [AMP 运动先验专题](../overview/humanoid-amp-motion-prior-survey.md)（本文 #10/19）、[MoRE #08](./paper-amp-survey-08-more.md)、[AHC #11](./paper-adaptive-humanoid-control.md)
 
 ## 推荐继续阅读

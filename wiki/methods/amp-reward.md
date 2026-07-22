@@ -2,12 +2,13 @@
 type: method
 tags: [rl, imitation-learning, gan, motion-prior, humanoid]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-22
 related:
   - ../overview/jason-peng-flexible-motion-skill-learning.md
   - ../entities/mimickit.md
   - ../entities/protomotions.md
   - ../entities/paper-amp-survey-08-more.md
+  - ../entities/paper-adp.md
   - ./imitation-learning.md
   - ./beyondmimic.md
   - ./hil-hybrid-imitation-learning.md
@@ -16,6 +17,7 @@ sources:
   - ../../sources/papers/amp.md
   - ../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md
   - ../../sources/papers/more_mixture_residual_experts_arxiv_2506_08840.md
+  - ../../sources/papers/adp_arxiv_2607_03454.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
   - ../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md
   - ../../sources/papers/motion_control_projects.md
@@ -63,6 +65,10 @@ summary: "AMP (Adversarial Motion Prior) 通过判别器奖励引导机器人学
 
 当**同一策略**需同时覆盖 **locomotion + fall recovery** 时，单一全局 AMP 先验易把行走统计与起身动力学混在一个判别器里。SD-AMP 在**训练期**用投影重力门控 $|g_z+1|>0.6$（约 37° 倾角）路由到 **recovery 判别器**，否则路由到 **速度条件 locomotion 判别器**（$\hat{v}_t$ 在 walk/run 参考间混合）；部署仍为单 ONNX、无运行时模式变量。详见 [SD-AMP 统一走跑起身实体页](../entities/paper-unified-walk-run-recovery-sdamp.md)。
 
+### 6. 对抗动力学先验（ADP，arXiv:2607.03454）
+
+若目标是 **推扰恢复** 而非风格自然度，[ADP](../entities/paper-adp.md) 把判别目标从关节级运动学特征换成 **SRBD-TO 导出的动力学时间窗**（CoM、质心动量、接触力/状态）。同源 TO 参考下，相对 AMP 报告更高 \(J_{80}\) 与更短恢复时间；**不**显式跟踪姿态。与 SD-AMP 的「regime 门控」正交，关注的是 **先验表示层**。
+
 ## HumanX: 扩展到物体交互与接触图
 
 **HumanX** 是对 AMP 范式的重大增强，它认为“姿态像”是不够的，“接触像”才关键。
@@ -102,11 +108,12 @@ $$
 - [Multi-Gait Learning for Humanoid Robots Using Reinforcement Learning with Selective Adversarial Motion Priority](../../sources/papers/multi-gait-learning.md) — 提出了 Selective AMP 以应对多步态学习中的正则化权衡。
 - [Unified Walking, Running, and Recovery…（arXiv:2605.18611）](../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md) — SD-AMP：双判别器 + 重力门控，G1 真机统一走跑起身。
 - [SPRINT（arXiv:2605.28549）](../../sources/papers/sprint_arxiv_2605_28549.md) — 高动态冲刺场景下以频谱先验替代对抗先验的对照路线。
+- [ADP（arXiv:2607.03454）](../../sources/papers/adp_arxiv_2607_03454.md) — 动力学特征对抗先验，抗扰 locomotion 相对 AMP 的对照。
 
 ## 关联页面
 
 - [Query：人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
-- [SD-AMP 统一走跑起身](../entities/paper-unified-walk-run-recovery-sdamp.md)、[MoRE 复杂地形多步态 AMP](../entities/paper-amp-survey-08-more.md)、[SPRINT 竞技冲刺频谱先验](../entities/paper-sprint-humanoid-athletic-sprints.md)、[Heracles 扩散中间件](../entities/paper-heracles-humanoid-diffusion.md)
+- [SD-AMP 统一走跑起身](../entities/paper-unified-walk-run-recovery-sdamp.md)、[ADP 对抗动力学先验](../entities/paper-adp.md)、[MoRE 复杂地形多步态 AMP](../entities/paper-amp-survey-08-more.md)、[SPRINT 竞技冲刺频谱先验](../entities/paper-sprint-humanoid-athletic-sprints.md)、[Heracles 扩散中间件](../entities/paper-heracles-humanoid-diffusion.md)
 - [AMP / ADD / SMP 运动先验变体对比](../comparisons/amp-add-smp-motion-prior-variants.md)
 - [protomotions](../entities/protomotions.md) — 提供大规模并行训练支持。
 
