@@ -2,7 +2,7 @@
 type: method
 tags: [coding-agents, skill-library, continual-learning, code-as-policy, nvidia-gear, manipulation, sim2real, evolutionary-search, nvidia]
 status: complete
-updated: 2026-07-08
+updated: 2026-07-22
 date: 2026-06-30
 summary: "ASPIRE 是 NVIDIA GEAR 等的持续学习 code-as-policy 系统：闭环执行引擎暴露逐原语多模态 trace 供 coding agent 诊断修补，进化搜索探索多样控制程序，并把验证修复蒸馏进可扩展技能库——让后续任务以 in-context 技能加速适应，并在 LIBERO-Pro / Robosuite / BEHAVIOR-1K 上大幅超越 CaP-Agent0 与 VLA 基线，初步证明仿真技能可降低真机跨具身编程 token 成本。"
 related:
@@ -16,6 +16,7 @@ related:
   - ../entities/mujoco-playground.md
   - ../entities/behavior-1k.md
   - ../queries/real-robot-policy-autoresearch-harness.md
+  - ../entities/paper-harness-vla.md
 sources:
   - ../../sources/papers/aspire_nvidia_gear_2026.md
   - ../../sources/sites/nvidia-research-aspire.md
@@ -171,6 +172,7 @@ flowchart TB
 - 与 [Data Flywheel](../concepts/data-flywheel.md)：技能库是 **失败修复 → 可复用知识** 的飞轮，而非演示数据飞轮。
 - 与 [NVIDIA GEAR Lab](../entities/nvidia-gear-lab.md)：研究组锚点与姊妹工作索引。
 - 与 [GaP](../entities/paper-gap-graph-as-policy.md)：同属 agentic 编程谱；**程序技能库** vs **ROS 式计算图 + VA benchmark**。
+- 与 [Harness VLA](../entities/paper-harness-vla.md)：同属 LLM harness；ASPIRE **扩张**技能库，Harness VLA **固定**原语并把冻结 VLA 当作 `vla_act`。
 
 ## 推荐继续阅读
 
@@ -193,3 +195,4 @@ flowchart TB
 - [NVIDIA GEAR Lab](../entities/nvidia-gear-lab.md) — 研究组与工程栈锚点
 - [MuJoCo Playground](../entities/mujoco-playground.md) — CaP-X 仿真基础设施
 - [BEHAVIOR-1K](../entities/behavior-1k.md) — 长时程家务仿真基准
+- [Harness VLA](../entities/paper-harness-vla.md) — 固定原语 + 冻结 VLA 接触专家的记忆 harness 对照

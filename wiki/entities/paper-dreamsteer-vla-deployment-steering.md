@@ -9,7 +9,7 @@ tags:
   - manipulation
   - meta
 status: complete
-updated: 2026-07-11
+updated: 2026-07-22
 arxiv: "2607.02865"
 related:
   - ../overview/wm-action-consequence-category-01-wam-action-prediction.md
@@ -19,6 +19,7 @@ related:
   - ../overview/robot-world-models-action-consequence-technology-map.md
   - ../entities/paper-taco-tactile-wm-vla-posttrain.md
   - ../entities/paper-gigaworld-1-policy-evaluation.md
+  - ../entities/paper-harness-vla.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
 summary: "DreamSteer（arXiv:2607.02865）：部署时冻结 VLA 采样多候选 + 运动原语，潜变量 WM 预演未来、语言价值模型排序；四组真机 OOD 成功率 23.75%→66.25%、指令遵循 38.75%→56.25%。"
@@ -126,6 +127,7 @@ flowchart TB
 - [动作后果技术地图](../overview/robot-world-models-action-consequence-technology-map.md) — 专题总览
 - [World Action Models](../concepts/world-action-models.md) — WM 预演动作后果概念
 - [VLA](../methods/vla.md) — $\pi_0$ / GR00T 等被 steering 的策略
+- [Harness VLA](./paper-harness-vla.md) — 原语级 agentic harness + 记忆；同属冻结 VLA 部署路线
 
 ## 推荐继续阅读
 
