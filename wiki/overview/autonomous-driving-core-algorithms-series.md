@@ -2,7 +2,7 @@
 type: overview
 tags: [autonomous-driving, perception, planning, control, slam, hd-map, tracking, trajectory-prediction, shenlan]
 status: complete
-updated: 2026-07-21
+updated: 2026-07-22
 related:
   - ../overview/navigation-slam-autonomy-stack.md
   - ../methods/object-detection.md
@@ -17,6 +17,7 @@ related:
   - ../formalizations/kalman-filter.md
   - ../queries/object-detection-model-selection.md
   - ../entities/autoware.md
+  - ../entities/paper-m4world.md
 sources:
   - ../../sources/blogs/wechat_shenlan_ai_ad_2d_detection.md
   - ../../sources/blogs/wechat_shenlan_ai_ad_3d_detection.md
@@ -24,6 +25,7 @@ sources:
   - ../../sources/blogs/wechat_shenlan_ai_ad_slam_hdmap.md
   - ../../sources/blogs/wechat_shenlan_ai_ad_tracking_prediction.md
   - ../../sources/raw/wechat_shenlan_ai_ad_core_algorithms_album_2026.json
+  - ../../sources/papers/m4world_arxiv_2607_14005.md
 summary: "深蓝AI《自动驾驶核心算法盘点》专辑技术地图：2D/3D 检测→规划控制→SLAM/高精地图→跟踪与轨迹预测；5/5 篇正文已入库，挂接仓库导航/SLAM/LQR/MPC/检测节点。"
 ---
 
@@ -164,6 +166,7 @@ flowchart TB
 - [模型预测控制](../methods/model-predictive-control.md)
 - [LiDAR SLAM / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)
 - [卡尔曼滤波](../formalizations/kalman-filter.md)
+- [M⁴World](../entities/paper-m4world.md) — 生成式驾驶仿真 / 长尾感知增广（环视+LiDAR；对照阅读，未开源）
 
 ## 参考来源
 

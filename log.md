@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-22] ingest | sources/papers/m4world_arxiv_2607_14005.md — 接入 M⁴World（arXiv:2607.14005）多视角多模态驾驶世界模型；升格 wiki/entities/paper-m4world.md；交叉 wiki/methods/generative-world-models.md、wiki/concepts/video-as-simulation.md、wiki/entities/paper-x-world.md、wiki/overview/robot-world-models-training-loop-taxonomy.md、wiki/overview/autonomous-driving-core-algorithms-series.md；机构新增 meituan；未开源
+
+- **开源状态：** **未开源** — arXiv abs/HTML/PDF 均无项目页或 GitHub；训练数据为自采驾驶日志（截至 2026-07-22）
+- **新建 papers：** [`sources/papers/m4world_arxiv_2607_14005.md`](sources/papers/m4world_arxiv_2607_14005.md)
+- **新建 wiki：** [`wiki/entities/paper-m4world.md`](wiki/entities/paper-m4world.md)
+- **机构：** `schema/institutions.json` 新增 `meituan`（美团）；沿用既有 `casia` / `bit`
+- **交叉更新：** [`wiki/methods/generative-world-models.md`](wiki/methods/generative-world-models.md)、[`wiki/concepts/video-as-simulation.md`](wiki/concepts/video-as-simulation.md)、[`wiki/entities/paper-x-world.md`](wiki/entities/paper-x-world.md)、[`wiki/overview/robot-world-models-training-loop-taxonomy.md`](wiki/overview/robot-world-models-training-loop-taxonomy.md)、[`wiki/overview/autonomous-driving-core-algorithms-series.md`](wiki/overview/autonomous-driving-core-algorithms-series.md)
+
 ## [2026-07-22] ingest | sources/papers/masked_visual_actions_arxiv_2607_19343.md、sources/sites/masked-visual-actions-github-io.md、sources/repos/masked-visual-actions.md — 接入 Masked Visual Actions（arXiv:2607.19343）；升格 wiki/entities/paper-masked-visual-actions.md；交叉 generative-world-models、video-as-simulation、world-models-route-01/03、robot-world-models-training-loop-taxonomy、paper-driftworld、paper-oscar、embodied-eval-benchmark-selection-loop、manipulation；机构新增 umd
 
 - **开源状态：** **部分开源** — 项目页 Code → [`HadiZayer/masked-visual-actions`](https://github.com/HadiZayer/masked-visual-actions)（Apache-2.0）+ HF 双专家 LoRA；推理 / DiffSynth LoRA 训练可运行；DROID URDF 渲染工具 README *coming soon*；项目页 `paper.pdf` 404（以 arXiv:2607.19343 为准）（截至 2026-07-22）

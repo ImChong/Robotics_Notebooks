@@ -1,22 +1,21 @@
 {
   "generated_at": "2026-07-22",
-  "node_count": 1758,
-  "edge_count": 14195,
+  "node_count": 1759,
+  "edge_count": 14208,
   "coverage": {
-    "covered": 1708,
-    "total": 1738,
+    "covered": 1709,
+    "total": 1739,
     "percent": 98
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-masked-visual-actions.md",
-      "detail_id": "entity-paper-masked-visual-actions",
-      "label": "Masked Visual Actions（统一世界建模的掩码视觉动作）",
+      "path": "wiki/entities/paper-m4world.md",
+      "detail_id": "entity-paper-m4world",
+      "label": "M⁴World（Multi-view Multimodal Driving World Model）",
       "type": "entity",
       "recency": "2026-07-22",
       "source": "log.md",
       "action": "added",
-      "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -40,6 +39,47 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
+      "path": "wiki/entities/paper-x-world.md",
+      "detail_id": "entity-paper-x-world",
+      "label": "X-World（Controllable Ego-Centric Multi-Camera World Models）",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/robot-world-models-training-loop-taxonomy.md",
+      "detail_id": "wiki-overview-robot-world-models-training-loop-taxonomy",
+      "label": "机器人世界模型：训练闭环与三线 taxonomy",
+      "type": "overview",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/autonomous-driving-core-algorithms-series.md",
+      "detail_id": "wiki-overview-autonomous-driving-core-algorithms-series",
+      "label": "《自动驾驶核心算法盘点》专栏技术地图",
+      "type": "overview",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-masked-visual-actions.md",
+      "detail_id": "entity-paper-masked-visual-actions",
+      "label": "Masked Visual Actions（统一世界建模的掩码视觉动作）",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "path": "wiki/overview/world-models-route-03-virtual-sandbox.md",
       "detail_id": "wiki-overview-world-models-route-03-virtual-sandbox",
       "label": "世界模型路线 03：虚拟沙盒",
@@ -53,16 +93,6 @@
       "path": "wiki/overview/world-models-route-01-cascade.md",
       "detail_id": "wiki-overview-world-models-route-01-cascade",
       "label": "世界模型路线 01：级联架构",
-      "type": "overview",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/robot-world-models-training-loop-taxonomy.md",
-      "detail_id": "wiki-overview-robot-world-models-training-loop-taxonomy",
-      "label": "机器人世界模型：训练闭环与三线 taxonomy",
       "type": "overview",
       "recency": "2026-07-22",
       "source": "log.md",
@@ -186,55 +216,22 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/behavior-tree-vla-orchestration.md",
-      "detail_id": "wiki-concepts-behavior-tree-vla-orchestration",
-      "label": "行为树 × VLA 编排",
-      "type": "concept",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/aspire.md",
-      "detail_id": "wiki-methods-aspire",
-      "label": "ASPIRE",
-      "type": "method",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
-      "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
-      "label": "VLA 开源复现景观（2025 策展）",
-      "type": "overview",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-masked-visual-actions.md",
-    "detail_id": "entity-paper-masked-visual-actions",
-    "label": "Masked Visual Actions（统一世界建模的掩码视觉动作）",
+    "path": "wiki/entities/paper-m4world.md",
+    "detail_id": "entity-paper-m4world",
+    "label": "M⁴World（Multi-view Multimodal Driving World Model）",
     "type": "entity",
     "recency": "2026-07-22",
     "source": "log.md",
     "action": "added",
-    "has_repo": true,
     "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 435
+      "size": 436
     },
     {
       "label": "人形论文深读笔记",

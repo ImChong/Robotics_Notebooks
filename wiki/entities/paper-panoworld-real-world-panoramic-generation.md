@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, panoramic, video-generation, diffusion, uav, dataset, tsinghua, whu]
 status: complete
-updated: 2026-07-15
+updated: 2026-07-22
 arxiv: "2607.09661"
 project: https://lihaoy-ux.github.io/panoworld-page/
 summary: "PanoWorld（arXiv:2607.09661，Insta360 Research 等）利用 ERP 旋转等变将相机运动简化为固定朝向平移，以 DPRC 射线条件动作建模与 GMA 几何记忆实现可控全景视频生成；配套 World360（12 万 clip）与 Wan2.2-5B 三阶段 LoRA 训练，显著优于 Matrix-3D / OmniRoam，并可 Causal Forcing 蒸馏实时生成。"

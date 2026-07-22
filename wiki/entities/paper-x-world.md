@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, generative-world-models, autonomous-driving, multi-camera, video-diffusion, vla, xpeng]
 status: complete
-updated: 2026-07-21
+updated: 2026-07-22
 arxiv: "2603.19979"
 related:
   - ../methods/generative-world-models.md
@@ -13,6 +13,7 @@ related:
   - ./paper-x-foresight.md
   - ./paper-x-mind.md
   - ./paper-turingvit.md
+  - ./paper-m4world.md
 sources:
   - ../../sources/papers/x_world_arxiv_2603_19979.md
   - ../../sources/sites/x-world-1-github-io.md
@@ -93,6 +94,7 @@ flowchart TB
 | 对照 | 差异 |
 |------|------|
 | **GAIA-1 / UniSim** | 同为视频世界模型；X-World 聚焦 **车载 7 摄 ego-centric + 动作条件** |
+| **M⁴World** | 同为多摄驾驶生成 WM；M⁴World 强调 **物体外观操纵 + 同步 LiDAR**，X-World 强调 **动作条件闭环评测底座** |
 | **X-Foresight / X-Mind** | X-World 是 **级联仿真底座**；后两者把世界预测 **嵌进 VLA** |
 | **解析仿真器** | 生成式保真 ≠ 可证明动力学；评测可复现性更强、物理保证更弱 |
 
@@ -120,6 +122,7 @@ flowchart TB
 - [X-Cache](./paper-x-cache.md) — 少步推理加速
 - [X-Foresight](./paper-x-foresight.md) — 策略内嵌预测式世界建模
 - [X-Mind](./paper-x-mind.md) — Visual CoT 高效变体
+- [M⁴World](./paper-m4world.md) — 美团等环视+LiDAR 物体可控驾驶 WM（对照）
 - [TuringViT](./paper-turingvit.md) — 同机构视觉编码器底座
 
 ## 参考来源
