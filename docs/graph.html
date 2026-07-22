@@ -134,8 +134,8 @@
       scrollbar-color: rgba(255,255,255,0.28) transparent;
     }
     /* 专题汇总导读条（画布右下角、操作提示条上方，选中非「全量」专题时显示；
-       左上角会被筛选浮窗遮挡、左下有图例、右上有参数面板，故固定右下；
-       bottom 抬高 72px 避开操作提示条（约 61px），也天然高于移动端图例 FAB（60px） */
+       左上角会被筛选浮窗遮挡、左下有图例 FAB、右上有参数面板，故固定右下；
+       bottom 抬高 72px 避开操作提示条（约 61px），也天然高于图例 FAB（约 60px） */
     .topic-intro-banner {
       position: absolute;
       bottom: 72px;
@@ -370,24 +370,70 @@
     }
     .tt-link:hover { color: #00d4ff; border-color: rgba(0,212,255,0.7); }
 
-    /* ── 图例 ── */
+    /* ── 图例：全端默认折叠为左下角 FAB，点击后自左滑出 ── */
+    #graph-legend-fab {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      z-index: 12;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 50%;
+      background: rgba(13,17,23,0.92);
+      color: rgba(255,255,255,0.82);
+      font-size: 1.1rem;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.45);
+      backdrop-filter: blur(8px);
+      transition: transform .15s, border-color .15s, box-shadow .15s, opacity .15s;
+    }
+    #graph-legend-fab:hover,
+    #graph-legend-fab:focus-visible {
+      border-color: rgba(0,212,255,0.45);
+      box-shadow: 0 6px 22px rgba(0,212,255,0.18);
+      outline: none;
+    }
+    #graph-legend-fab[aria-expanded="true"] {
+      opacity: 0;
+      pointer-events: none;
+    }
     #graph-legend {
       position: absolute;
-      bottom: 20px; left: 20px;
-      z-index: 10;
+      bottom: 20px;
+      left: 20px;
+      top: auto;
+      z-index: 46;
       display: flex;
       flex-direction: column;
       gap: 5px;
+      width: auto;
+      max-width: min(320px, calc(100% - 40px));
+      max-height: min(420px, calc(100% - 40px));
+      margin: 0;
       padding: 10px 13px;
       background: rgba(13,17,23,0.88);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 10px;
       backdrop-filter: blur(6px);
-      max-height: min(420px, calc(100dvh - var(--header-h) - 88px));
+      box-shadow: 0 8px 32px rgba(0,0,0,0.45);
       overflow-y: auto;
       overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
       scrollbar-width: thin;
       scrollbar-color: rgba(255,255,255,0.28) transparent;
+      transform: translateX(calc(-100% - 28px));
+      transition: transform .28s cubic-bezier(.4,0,.2,1);
+      pointer-events: none;
+    }
+    #graph-legend.graph-legend-open {
+      transform: translateX(0);
+      pointer-events: auto;
     }
     #graph-legend::-webkit-scrollbar {
       width: 6px;
@@ -395,6 +441,19 @@
     #graph-legend::-webkit-scrollbar-thumb {
       background: rgba(255,255,255,0.22);
       border-radius: 4px;
+    }
+    #graph-legend-scrim {
+      position: absolute;
+      inset: 0;
+      z-index: 44;
+      background: rgba(0,0,0,0.42);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .22s ease;
+    }
+    #graph-legend-scrim.is-visible {
+      opacity: 1;
+      pointer-events: auto;
     }
     .legend-row {
       display: flex;
@@ -429,90 +488,16 @@
       color: rgba(255,255,255,0.32);
       font-variant-numeric: tabular-nums;
     }
-
-    /* ── 移动端图例 FAB + 左侧抽屉 ── */
-    #graph-legend-fab {
-      display: none;
-    }
-    #graph-legend-scrim {
-      display: none;
-    }
     @media (max-width: 768px) {
       #graph-legend-fab {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
         bottom: 16px;
         left: 16px;
-        z-index: 12;
-        width: 44px;
-        height: 44px;
-        padding: 0;
-        border: 1px solid rgba(255,255,255,0.14);
-        border-radius: 50%;
-        background: rgba(13,17,23,0.92);
-        color: rgba(255,255,255,0.82);
-        font-size: 1.1rem;
-        line-height: 1;
-        cursor: pointer;
-        box-shadow: 0 4px 18px rgba(0,0,0,0.45);
-        backdrop-filter: blur(8px);
-        transition: transform .15s, border-color .15s, box-shadow .15s;
-      }
-      #graph-legend-fab:hover,
-      #graph-legend-fab:focus-visible {
-        border-color: rgba(0,212,255,0.45);
-        box-shadow: 0 6px 22px rgba(0,212,255,0.18);
-        outline: none;
-      }
-      #graph-legend-fab[aria-expanded="true"] {
-        opacity: 0;
-        pointer-events: none;
       }
       #graph-legend {
-        /* 与桌面端相同的卡片外观，仅改为默认隐藏 + 自左滑入 */
-        position: fixed;
         bottom: 16px;
         left: 16px;
-        top: auto;
-        width: auto;
-        max-width: calc(100vw - 32px);
-        max-height: min(72vh, calc(100dvh - var(--header-h) - 120px));
-        margin: 0;
-        padding: 10px 13px;
-        background: rgba(13,17,23,0.88);
-        border: 1px solid rgba(255,255,255,0.08);
-        border-radius: 10px;
-        backdrop-filter: blur(6px);
-        box-shadow: 0 8px 32px rgba(0,0,0,0.45);
-        transform: translateX(calc(-100% - 28px));
-        transition: transform .28s cubic-bezier(.4,0,.2,1);
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        z-index: 46;
-        pointer-events: none;
-      }
-      #graph-legend.graph-legend-open {
-        transform: translateX(0);
-        pointer-events: auto;
-      }
-      #graph-legend-scrim {
-        position: fixed;
-        top: calc(var(--header-h) + 46px);
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 44;
-        background: rgba(0,0,0,0.42);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity .22s ease;
-      }
-      #graph-legend-scrim.is-visible {
-        display: block;
-        opacity: 1;
-        pointer-events: auto;
+        max-width: calc(100% - 32px);
+        max-height: min(72vh, calc(100% - 32px));
       }
     }
 
@@ -1886,29 +1871,18 @@
     const graphLegendScrim = document.getElementById('graph-legend-scrim');
     let legendDrawerOpen = false;
 
-    function isLegendDrawerMode() {
-      return window.matchMedia('(max-width: 768px)').matches;
-    }
-
     function setLegendDrawerOpen(open) {
-      if (!isLegendDrawerMode()) {
-        graphLegend.classList.remove('graph-legend-open');
-        if (graphLegendScrim) {
-          graphLegendScrim.classList.remove('is-visible');
-          graphLegendScrim.hidden = true;
-        }
-        if (graphLegendFab) graphLegendFab.setAttribute('aria-expanded', 'false');
-        legendDrawerOpen = false;
-        return;
-      }
-      legendDrawerOpen = open;
-      graphLegend.classList.toggle('graph-legend-open', open);
+      legendDrawerOpen = !!open;
+      if (graphLegend) graphLegend.classList.toggle('graph-legend-open', legendDrawerOpen);
       if (graphLegendScrim) {
-        graphLegendScrim.classList.toggle('is-visible', open);
-        graphLegendScrim.hidden = !open;
-        graphLegendScrim.setAttribute('aria-hidden', open ? 'false' : 'true');
+        graphLegendScrim.classList.toggle('is-visible', legendDrawerOpen);
+        graphLegendScrim.hidden = !legendDrawerOpen;
+        graphLegendScrim.setAttribute('aria-hidden', legendDrawerOpen ? 'false' : 'true');
       }
-      if (graphLegendFab) graphLegendFab.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (graphLegendFab) {
+        graphLegendFab.setAttribute('aria-expanded', legendDrawerOpen ? 'true' : 'false');
+        graphLegendFab.setAttribute('aria-label', legendDrawerOpen ? '关闭图例' : '打开图例');
+      }
     }
 
     function closeLegendDrawer() { setLegendDrawerOpen(false); }
@@ -1923,9 +1897,6 @@
     if (graphLegendScrim) {
       graphLegendScrim.addEventListener('click', () => closeLegendDrawer());
     }
-    window.addEventListener('resize', () => {
-      if (!isLegendDrawerMode()) closeLegendDrawer();
-    });
     const filterToggle = document.getElementById('filter-toggle');
     const filterLabel = document.getElementById('filter-label');
     const filterPanel = document.getElementById('filter-panel');
