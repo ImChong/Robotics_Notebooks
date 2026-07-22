@@ -1,5 +1,15 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-22] ingest | sources/papers/uni_lavira_arxiv_2605_27582.md、sources/sites/xetroubadour-uni-lavira-github-io.md、sources/repos/uni-lavira-code.md — 接入 Uni-LaViRA（arXiv:2605.27582）统一具身导航三层翻译；升格 wiki/entities/paper-uni-lavira.md；交叉 VLN、四范式复现、VLA、WorldVLN、unitree-g1；机构新增 casia/rochester/bmw-nanjing
+
+- **开源状态：** **已开源** — 项目页 Code → [`NJU-R-L-Group-Embodied-Lab/uni-lavira-code`](https://github.com/NJU-R-L-Group-Embodied-Lab/uni-lavira-code)；Habitat + AirSim 评测与四真机入口可运行；License **CC BY-NC-SA 4.0**；依赖 MLLM API（截至 2026-07-22）
+- **新建 papers：** [`sources/papers/uni_lavira_arxiv_2605_27582.md`](sources/papers/uni_lavira_arxiv_2605_27582.md)
+- **新建 sites：** [`sources/sites/xetroubadour-uni-lavira-github-io.md`](sources/sites/xetroubadour-uni-lavira-github-io.md)
+- **新建 repos：** [`sources/repos/uni-lavira-code.md`](sources/repos/uni-lavira-code.md)
+- **新建 wiki：** [`wiki/entities/paper-uni-lavira.md`](wiki/entities/paper-uni-lavira.md)
+- **机构：** `schema/institutions.json` 新增 `casia`（中科院自动化所）、`rochester`（罗切斯特大学）、`bmw-nanjing`（宝马南京信息技术）；沿用既有 `nju` / `buaa`
+- **交叉更新：** [`wiki/tasks/vision-language-navigation.md`](wiki/tasks/vision-language-navigation.md)、[`wiki/overview/vln-open-source-repro-paradigms.md`](wiki/overview/vln-open-source-repro-paradigms.md)、[`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/entities/paper-worldvln-aerial-vln-wam.md`](wiki/entities/paper-worldvln-aerial-vln-wam.md)、[`wiki/entities/unitree-g1.md`](wiki/entities/unitree-g1.md)
+
 ## [2026-07-22] ingest | sources/papers/harness_vla_arxiv_2607_08448.md、sources/sites/harnessvla-github-io.md、sources/repos/rpent.md — 接入 Harness VLA（arXiv:2607.08448）；升格 wiki/entities/paper-harness-vla.md；交叉 wiki/methods/vla.md、wiki/concepts/behavior-tree-vla-orchestration.md、wiki/methods/aspire.md、wiki/overview/vla-open-source-repro-landscape-2025.md、wiki/entities/paper-dreamsteer-vla-deployment-steering.md、wiki/entities/lingbot-vla.md、wiki/entities/rldx-1.md、wiki/tasks/manipulation.md；机构新增 casia/striding-ai/infinigence；代码已开源 RLinf/RPent
 
 - **开源状态：** **已开源** — 项目页 Code → [`RLinf/RPent`](https://github.com/RLinf/RPent)；`rpent` CLI + LIBERO-Pro 默认栈；RoboCasa/真机条目以 README Feature Matrix 为准（截至 2026-07-22）
@@ -9,6 +19,7 @@
 - **新建 wiki：** [`wiki/entities/paper-harness-vla.md`](wiki/entities/paper-harness-vla.md)
 - **机构：** `schema/institutions.json` 新增 `casia`（中科院自动化所）、`striding-ai`（跨步智能）、`infinigence`（无问芯穹）；沿用 `tsinghua` / `purdue` / `hkust` / `zgca`
 - **交叉更新：** [`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/concepts/behavior-tree-vla-orchestration.md`](wiki/concepts/behavior-tree-vla-orchestration.md)、[`wiki/methods/aspire.md`](wiki/methods/aspire.md)、[`wiki/overview/vla-open-source-repro-landscape-2025.md`](wiki/overview/vla-open-source-repro-landscape-2025.md)、[`wiki/entities/paper-dreamsteer-vla-deployment-steering.md`](wiki/entities/paper-dreamsteer-vla-deployment-steering.md)、[`wiki/entities/lingbot-vla.md`](wiki/entities/lingbot-vla.md)、[`wiki/entities/rldx-1.md`](wiki/entities/rldx-1.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`sources/repos/rlinf.md`](sources/repos/rlinf.md)
+
 
 ## [2026-07-22] ingest | sources/papers/adp_arxiv_2607_03454.md、sources/sites/seokju-lee-adp-github-io.md — 接入 ADP（arXiv:2607.03454）对抗动力学先验；升格 wiki/entities/paper-adp.md；交叉 amp-reward、locomotion、balance-recovery、humanoid-locomotion、centroidal-dynamics、unitree-g1、amp-add-smp、paper-unified-walk-run-recovery-sdamp；机构新增 samsung/hanyang/kimm；代码 coming soon
 
