@@ -820,6 +820,27 @@
         "kaist"
       ]
     },
+    "samsung": {
+      "label": "三星电子（Samsung Electronics）",
+      "aliases": [
+        "samsung",
+        "samsung-electronics"
+      ]
+    },
+    "hanyang": {
+      "label": "汉阳大学（Hanyang University）",
+      "aliases": [
+        "hanyang",
+        "hanyang-university"
+      ]
+    },
+    "kimm": {
+      "label": "韩国机械材料研究院（KIMM）",
+      "aliases": [
+        "kimm",
+        "korea-institute-of-machinery-materials"
+      ]
+    },
     "korea-university": {
       "label": "高丽大学（Korea University）",
       "aliases": [

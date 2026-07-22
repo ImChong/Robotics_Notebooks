@@ -2,12 +2,13 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-07-21
+updated: 2026-07-22
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
   - ../entities/paper-rma-rapid-motor-adaptation.md
   - ../entities/paper-amp-survey-08-more.md
+  - ../entities/paper-adp.md
   - ../concepts/state-estimation.md
   - ../methods/reinforcement-learning.md
   - ../methods/imitation-learning.md
@@ -56,6 +57,7 @@ sources:
   - ../../sources/papers/rl_pd_action_interface_locomotion.md
   - ../../sources/papers/multi-gait-learning.md
   - ../../sources/papers/egohtr_arxiv_2607_13472.md
+  - ../../sources/papers/adp_arxiv_2607_03454.md
 summary: "Locomotion 研究机器人如何稳定、高效地在不同地形上移动，是腿式与人形控制的核心任务页。"
 ---
 
@@ -175,6 +177,7 @@ flowchart TD
 - **Multi-Gait Learning (多步态学习)**：在一个统一的 RL 框架下训练多种步态。
   - 新趋势：使用 **Selective AMP (选择性 AMP)** 策略，对周期性步态（如行走、上楼梯）应用 AMP 以提高稳定性，对高动态步态（如跑、跳）则省略 AMP，避免正则化过度约束。
   - **SD-AMP（arXiv:2605.18611）**：训练期用投影重力门控在 **recovery / 速度条件 locomotion** 两个 AMP 判别器间切换，部署单策略覆盖走、跑与起身（见 [SD-AMP 实体页](../entities/paper-unified-walk-run-recovery-sdamp.md)）。
+  - **ADP（arXiv:2607.03454）**：对抗先验目标从运动学风格改为 **SRBD-TO 动力学时间窗**（CoM/动量/接触），强化推扰恢复；见 [ADP 实体页](../entities/paper-adp.md)。
   - **HoST（arXiv:2502.08378）**：无 MoCap 参考的**纯起身**技能，多 critic + 四地形课程 + 真机运动约束，G1 室内外与俯仰卧验证（见 [HoST 实体页](../entities/paper-host-humanoid-standingup.md)）。
 - **世界模型**：学习环境模型，在模型里规划。
   - 代表：[Model-Based RL（Dreamer 等）](../methods/model-based-rl.md)、[LIFT（BIGAI 三阶段管线）](../entities/lift-humanoid.md)
@@ -322,6 +325,8 @@ flowchart TD
 - [统一流体-机器人多物理游泳仿真](../entities/paper-unified-fluid-robot-multiphysics-swimming.md)
 - [ergoCub Shared Embodied Intelligence](../entities/paper-ergocub-shared-embodied-intelligence.md) — 硬件优化抬高 CoM + 分层 WBC 行走，相对 iCub3 更大步长/更短步周期
 - [EgoHTR](../entities/paper-egohtr.md) — rough-terrain 人–场景 4D 演示 → G1 感知 mimic（数据/代码待发布）
+- [ADP](../entities/paper-adp.md) — 对抗动力学先验（SRBD-TO + 动力学窗），抗扰相对 AMP 提升；代码待发布
+- [SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md) — 重力门控双 AMP，走跑起身统一策略
 
 ## 推荐继续阅读
 
