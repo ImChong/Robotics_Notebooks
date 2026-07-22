@@ -1,5 +1,15 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-22] ingest | sources/papers/xrobotoolkit_arxiv_2508_00097.md + sources/sites/xr-robotics-github-io.md + sources/repos/xrobotoolkit.md — XRoboToolkit（arXiv:2508.00097）OpenXR 跨平台 XR 遥操作套件；升格 wiki/entities/paper-xrobotoolkit.md；交叉 wiki/tasks/teleoperation.md、wiki/entities/paper-twist2.md、wiki/entities/isaac-teleop.md、wiki/entities/paper-loco-manip-161-131-open-television.md；SII 2026 Best Paper，全栈已开源
+
+- **开源状态：** **已开源** — 项目页 GitHub → [`XR-Robotics`](https://github.com/XR-Robotics)（PC-Service / Unity Client / Teleop-Sample-Python 等）；π₀ 折毯示范集未单独发布（截至 2026-07-22）
+- **新建 papers：** [`sources/papers/xrobotoolkit_arxiv_2508_00097.md`](sources/papers/xrobotoolkit_arxiv_2508_00097.md)
+- **新建 sites：** [`sources/sites/xr-robotics-github-io.md`](sources/sites/xr-robotics-github-io.md)
+- **新建 repos：** [`sources/repos/xrobotoolkit.md`](sources/repos/xrobotoolkit.md)
+- **新建 wiki：** [`wiki/entities/paper-xrobotoolkit.md`](wiki/entities/paper-xrobotoolkit.md)
+- **机构：** `schema/institutions.json` 新增 `george-mason`；沿用既有 `bytedance` / `georgia-tech`
+- **交叉更新：** [`wiki/tasks/teleoperation.md`](wiki/tasks/teleoperation.md)、[`wiki/entities/paper-twist2.md`](wiki/entities/paper-twist2.md)、[`wiki/entities/isaac-teleop.md`](wiki/entities/isaac-teleop.md)、[`wiki/entities/paper-loco-manip-161-131-open-television.md`](wiki/entities/paper-loco-manip-161-131-open-television.md)、[`sources/papers/teleoperation.md`](sources/papers/teleoperation.md)
+
 ## [2026-07-22] ingest | sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md — 复抓公众号 Loco-Manip 接触专题并深化文中论文独立节点（去索引级 stub）
 
 - **工具：** Agent Reach v1.5.0 + wechat-article-for-ai（已预装）

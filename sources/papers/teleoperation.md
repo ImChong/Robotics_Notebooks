@@ -6,7 +6,7 @@
 - **类型：** paper
 - **来源：** RSS / CoRL / arXiv / Science Robotics
 - **入库日期：** 2026-04-14
-- **最后更新：** 2026-05-23
+- **最后更新：** 2026-07-22
 - **一句话说明：** 覆盖 ALOHA/ACT 遥操作系统、OmniH2O 全身遥操作、UMI 通用操作接口等
 
 ## 核心论文摘录
@@ -59,8 +59,18 @@
   - [motion-retargeting](../../wiki/concepts/motion-retargeting.md)
   - [loco-manipulation](../../wiki/tasks/loco-manipulation.md)
 
+### 7) XRoboToolkit: A Cross-Platform Framework for Robot Teleoperation（Zhao et al., 2025）
+- **链接：** <https://arxiv.org/abs/2508.00097>；<https://xr-robotics.github.io/>；代码 <https://github.com/XR-Robotics>
+- **核心贡献：** 基于 **OpenXR** 的跨平台 XR 遥操作套件：低延迟立体视觉、QP-IK、头/手柄/手/辅助 tracker；验证于 UR5/ARX/Galaxea/Shadow Hand/MuJoCo；同硬件相对 Open-TeleVision 视频流延迟约 −22%；100 条折毯示范 LoRA 微调 π₀
+- **关键洞见：** XR↔机器人标准化数据面比「再做一个头显 demo」更关键；已成 TWIST2 等人形栈的 XR 流入口
+- **对 wiki 的映射：**
+  - [XRoboToolkit（论文实体）](../../wiki/entities/paper-xrobotoolkit.md)
+  - [teleoperation](../../wiki/tasks/teleoperation.md)
+  - [Open-TeleVision](../../wiki/entities/paper-loco-manip-161-131-open-television.md)
+  - [TWIST2](../../wiki/entities/paper-twist2.md)
+
 ## 当前提炼状态
 
 - [x] 论文摘要填写
 - [x] wiki 页面映射确认
-- [ ] 关联 wiki 页面的参考来源段落已添加 ingest 链接
+- [x] 关联 wiki 页面的参考来源段落已添加 ingest 链接

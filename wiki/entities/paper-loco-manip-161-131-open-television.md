@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-22
 venue: curated
 summary: "Open-TeleVision 主要解决数据闭环：用相机图像/多视角观测、本体状态与关节序列、遥操作/外骨骼数据采集人类操作和机器人状态，再通过ACT/行为克隆模仿学习、扩散策略/流匹配、MM-DiT/Transformer 动作头转成可训练、可复用的关节位置/力矩命令、末端执行器/腕手目标、动作 chunk/token。关键点是把动作生成看成条件生成问题，用扩散或流匹配在多模态动作分布里采样可执"
 related:
@@ -10,11 +10,13 @@ related:
   - ../overview/loco-manip-161-category-07-data-teleop.md
   - ../overview/loco-manip-161-category-08-hardware-deployment.md
   - ../tasks/loco-manipulation.md
+  - ./paper-xrobotoolkit.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_131_open-television.md
   - ../../sources/papers/loco_manip_161_survey_139_open-television.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
   - ../../sources/papers/humanoid_loco_manip_161_catalog.md
+  - ../../sources/papers/xrobotoolkit_arxiv_2508_00097.md
 ---
 
 # Open-TeleVision
@@ -65,11 +67,13 @@ Open-TeleVision 主要解决数据闭环：用相机图像/多视角观测、本
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。
 2. Loco-manip 单篇工作不自动解决 **底层 WBC 鲁棒性**；须与运控/接触控制对照。
+3. **延迟数字勿与后作混用**：[XRoboToolkit](./paper-xrobotoolkit.md)（arXiv:2508.00097）在同硬件（ZED Mini→Quest 3）上相对 Open-TeleVision 报告约 **22%** 视频流延迟下降；对照实验以该文 Table II 为准，不宜反推本页策展摘要。
 
 ## 与其他页面的关系
 
 - 技术地图：[humanoid-loco-manip-161-papers-technology-map.md](../overview/humanoid-loco-manip-161-papers-technology-map.md)
 - 分类 hub：[loco-manip-161-category-07-data-teleop.md](../overview/loco-manip-161-category-07-data-teleop.md)、[loco-manip-161-category-08-hardware-deployment.md](../overview/loco-manip-161-category-08-hardware-deployment.md)
+- 延迟后作对照：[paper-xrobotoolkit.md](./paper-xrobotoolkit.md)
 - 原始 source：[loco_manip_161_survey_131_open-television.md](../../sources/papers/loco_manip_161_survey_131_open-television.md)
 
 ## 参考来源
@@ -78,7 +82,10 @@ Open-TeleVision 主要解决数据闭环：用相机图像/多视角观测、本
 - [loco_manip_161_survey_139_open-television.md](../../sources/papers/loco_manip_161_survey_139_open-television.md) — 161 篇策展摘录（#139）
 - [humanoid_loco_manip_161_catalog.md](../../sources/papers/humanoid_loco_manip_161_catalog.md)
 - [wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md)
+- [xrobotoolkit_arxiv_2508_00097.md](../../sources/papers/xrobotoolkit_arxiv_2508_00097.md) — 同硬件视频流延迟对照实验
 
 ## 推荐继续阅读
 
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
+- [XRoboToolkit（论文实体）](./paper-xrobotoolkit.md) — OpenXR 跨平台套件与延迟表
+- [Open-TeleVision 项目页](https://robot-tv.github.io/)

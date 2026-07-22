@@ -2,7 +2,7 @@
 type: comparison
 tags: [dexterity, data-collection, teleoperation, hardware, sensors]
 status: complete
-updated: 2026-04-21
+updated: 2026-07-22
 related:
   - ../queries/dexterous-data-collection-guide.md
   - ../entities/allegro-hand.md
