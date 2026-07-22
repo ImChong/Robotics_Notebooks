@@ -11,7 +11,7 @@
 - **机构：** Mondo Robotics（摩多机器人）；香港科技大学（广州）；香港科技大学
 - **入库日期：** 2026-06-10
 - **开源状态（2026-07-20 再核）：** arXiv abs / HTML **无** 项目页或 GitHub Code 链；暂无官方可运行仓。
-- **开源状态（2026-07-22 再核）：** arXiv abs / HTML 仍 **无** 官方项目页、GitHub、Hugging Face 或数据下载入口；暂无官方可运行仓。
+- **开源状态（2026-07-22 再核）：** arXiv abs / HTML 仍 **无** 独立项目页或 GitHub Code 链；暂无官方可运行仓。用户给出的 <https://dit4dit.github.io/> 为同团队前序 **DiT4DiT** 项目页（已开源 [Mondo-Robotics/DiT4DiT](https://github.com/Mondo-Robotics/DiT4DiT)），**不是** MotionWAM 代码发布页。
 - **一句话说明：** 面向 **实时闭环人形 loco-manipulation** 的 **World Action Model**：Video DiT 与 Motion DiT **双骨干** 经 **单次前向去噪隐状态** 耦合；用 **统一全身 motion token**（基于 SONIC 潜空间）替代上下身分层接口，三阶段从 egocentric 视频预训练到跨具身动作后训练再到全身遥操作微调；在 **宇树 G1 + 双 ALOHA2 夹爪 + 头部 RealSense D435i** 九项真机任务上相对同演示微调的 VLA 基线 **整体成功率 +32% 绝对值**。
 
 ## 核心论文摘录（MVP）

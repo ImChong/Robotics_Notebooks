@@ -2,7 +2,7 @@
 type: method
 tags: [generative-model, wbc, humanoid, motion-synthesis, gr00t, nvidia, paper, amp, motion-prior, motion-generation, eth, ut-austin, groot]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-22
 venue: arXiv
 arxiv: "2604.24833"
 related:

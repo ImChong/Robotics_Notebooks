@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, stairs, obstacle, perception, blind-locomotion, parkour, humanoid, quadruped, hub]
 status: complete
-updated: 2026-07-19
+updated: 2026-07-22
 related:
   - ../entities/paper-ame-attention-based-map-encoding.md
   - ../entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md

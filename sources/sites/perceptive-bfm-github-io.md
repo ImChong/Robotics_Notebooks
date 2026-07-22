@@ -6,7 +6,9 @@
 - **标题：** Perceptive Behavior Foundation Model: Adapting Human Motion Priors to Robot-Centric Terrain
 - **机构：** 妙动科技；香港科技大学（广州）；香港科技大学；中国科学技术大学人工智能研究院
 - **入库日期：** 2026-06-11
-- **论文：** CoRL 2026 submission（页面标注 *Under review*）；arXiv **TBA**；代码 **TBA**
+- **再核日期：** 2026-07-22
+- **论文：** CoRL 2026 submission；arXiv **[2606.08059](https://arxiv.org/abs/2606.08059)**
+- **代码：** **已开源** · [Mondo-Robotics/PMT](https://github.com/Mondo-Robotics/PMT)（项目页链出；HF 资产 `aCodeDog/PMT-assets`）
 - **一句话说明：** 官方落地页：提出 **Perceptive BFM**——保留 **原始人体运动参考** 作为部署接口，用 **机器人中心地形感知** 在线补全落脚、间隙、姿态与接触时序；训练期 **TCRS** 离线合成地形一致监督，经 **PMT** 四阶段（盲 teacher → 视觉 student → 目标帧对齐蒸馏 → identity-gated 残差微调）在 **Unitree G1** 上单策略覆盖 locomotion、风格动作、杂技与 mocap 遥操作，并演示楼梯、坡、稀疏支撑、草地与户外真机。
 
 ## 页面要点（2026-06 快照）
@@ -50,8 +52,18 @@
 - TCRS 为 **运动学合成器**，不建模接触丰富动力学；假设 **静态刚体、可观测高程场**——不覆盖可变形、颗粒或湿滑介质。
 - 适应以 **足部为中心**，上身命令原样保留 → **上肢可能与近障碰撞**（页面展示 mocap 撞障失败例）。
 
+## 开源状态（2026-07-22 项目页核查）
+
+| 产物 | 状态 |
+|------|------|
+| arXiv | [2606.08059](https://arxiv.org/abs/2606.08059) |
+| 代码 | [Mondo-Robotics/PMT](https://github.com/Mondo-Robotics/PMT) |
+| 预训练 / 样例资产 | HF `aCodeDog/PMT-assets` |
+| 浏览器 demo | MuJoCo WASM + ONNX（无需装仓） |
+
 ## 对 wiki 的映射
 
 - 沉淀实体页：[`wiki/entities/paper-perceptive-bfm.md`](../../wiki/entities/paper-perceptive-bfm.md)
+- 代码归档：[`sources/repos/mondo_robotics_pmt.md`](../repos/mondo_robotics_pmt.md)
 - 任务挂接：[`wiki/tasks/stair-obstacle-perceptive-locomotion.md`](../../wiki/tasks/stair-obstacle-perceptive-locomotion.md)
 - 概念互链：[`wiki/concepts/behavior-foundation-model.md`](../../wiki/concepts/behavior-foundation-model.md)、[`wiki/concepts/whole-body-tracking-pipeline.md`](../../wiki/concepts/whole-body-tracking-pipeline.md)
