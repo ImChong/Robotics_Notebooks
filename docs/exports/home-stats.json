@@ -1,13 +1,84 @@
 {
   "generated_at": "2026-07-22",
   "node_count": 1759,
-  "edge_count": 14208,
+  "edge_count": 14222,
   "coverage": {
     "covered": 1709,
     "total": 1739,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-perceptive-bfm.md",
+      "detail_id": "entity-paper-perceptive-bfm",
+      "label": "Perceptive BFM：Adapting Human Motion Priors to Robot-Centric Terrain",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-loco-manip-161-154-openhlm.md",
+      "detail_id": "entity-paper-loco-manip-161-154-openhlm",
+      "label": "OpenHLM",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-humanoidarena.md",
+      "detail_id": "entity-paper-humanoidarena",
+      "label": "HumanoidArena（Egocentric Hierarchical Whole-body Benchmark）",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/gr00t-wholebodycontrol.md",
+      "detail_id": "entity-gr00t-wholebodycontrol",
+      "label": "GR00T-WholeBodyControl（人形全身控制统一平台）",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/holomotion.md",
+      "detail_id": "entity-holomotion",
+      "label": "HoloMotion（HoloMotion-1）",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md",
+      "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
+      "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/loco-manipulation.md",
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    },
     {
       "path": "wiki/entities/paper-m4world.md",
       "detail_id": "entity-paper-m4world",
@@ -141,97 +212,22 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-uni-lavira.md",
-      "detail_id": "entity-paper-uni-lavira",
-      "label": "Uni-LaViRA：统一具身导航的语言–视觉–机器人动作翻译",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/tasks/vision-language-navigation.md",
-      "detail_id": "wiki-tasks-vision-language-navigation",
-      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
-      "type": "task",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/vln-open-source-repro-paradigms.md",
-      "detail_id": "wiki-overview-vln-open-source-repro-paradigms",
-      "label": "VLN 开源复现：四范式学习路径",
-      "type": "overview",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-worldvln-aerial-vln-wam.md",
-      "detail_id": "entity-paper-worldvln-aerial-vln-wam",
-      "label": "WorldVLN（空中 VLN · 自回归 World Action Model）",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/unitree-g1.md",
-      "detail_id": "entity-unitree-g1",
-      "label": "Unitree G1 (人形机器人)",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-harness-vla.md",
-      "detail_id": "entity-paper-harness-vla",
-      "label": "Harness VLA（Memory-Guided Agentic Manipulation · arXiv:2607.08448）",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-m4world.md",
-    "detail_id": "entity-paper-m4world",
-    "label": "M⁴World（Multi-view Multimodal Driving World Model）",
+    "path": "wiki/entities/paper-perceptive-bfm.md",
+    "detail_id": "entity-paper-perceptive-bfm",
+    "label": "Perceptive BFM：Adapting Human Motion Priors to Robot-Centric Terrain",
     "type": "entity",
     "recency": "2026-07-22",
     "source": "log.md",
-    "action": "added",
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "action": "maintained",
+    "has_repo": true
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 436
+      "size": 433
     },
     {
       "label": "人形论文深读笔记",
@@ -247,7 +243,7 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 137
+      "size": 128
     },
     {
       "label": "仿真训练",
@@ -274,7 +270,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 296,
+      "degree": 297,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -282,7 +278,7 @@
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
-      "degree": 285,
+      "degree": 287,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
@@ -320,7 +316,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 180,
+      "degree": 181,
       "has_repo": true,
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
@@ -345,8 +341,7 @@
       "label": "BeyondMimic",
       "type": "method",
       "degree": 55,
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",
@@ -360,8 +355,7 @@
       "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
       "type": "entity",
       "degree": 46,
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "wiki-methods-deepmimic",

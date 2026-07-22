@@ -187,6 +187,16 @@ sequenceDiagram
 - **户外结果偏定性**；系统级数字以室内长程果盘与 12 任务为主。
 - **勿与 161 策展旧摘要等同：** 公众号条目为地图坐标；消融与开源以本页与官方仓为准。
 
+## 与其他工作对比
+
+| 工作 | 关系 |
+|------|------|
+| **GR00T N1.6 / Ψ₀** | 项目页系统级基线；OpenHLM 以 **更少演示时长** 取得更高长程 progress |
+| **[GR00T-WholeBodyControl](./gr00t-wholebodycontrol.md)** | 低层采集/部署栈上游；OpenHLM 仓内为其改写块，非替代 SONIC 训练 |
+| **解耦上下身 VLA** | 仅暴露部分自由度；OpenHLM 强调 **32-D 关节全身** 才可达踩踏板/蹲穿架等任务 |
+| **[HumanoidArena](./paper-humanoidarena.md)** | 仿真分层 **GMT 接口基准**；OpenHLM 是真机 **全身原生 VLA 配方**——可对照中间动作 vs 全关节动作空间 |
+| **HuMI / UMI 系** | OpenHLM 把 HuMI 用作 **异构共训** 降本通道，而非唯一数据源 |
+
 ## 关联页面
 
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 全身移动操作任务坐标
