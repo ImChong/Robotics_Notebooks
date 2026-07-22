@@ -24,6 +24,7 @@ related:
   - ./paper-amp-survey-16-clot.md
   - ./paper-heft.md
   - ./yanjie-ze.md
+  - ./paper-xrobotoolkit.md
 sources:
   - ../../sources/papers/humanoid_rl_stack_10_twist2_scalable_portable_and_holistic_humanoid_d.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
@@ -35,6 +36,8 @@ sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
+  - ../../sources/papers/xrobotoolkit_arxiv_2508_00097.md
+  - ../../sources/repos/xrobotoolkit.md
 ---
 
 # TWIST2
@@ -128,7 +131,7 @@ sequenceDiagram
 |------|------|
 | 2-DoF 颈 | 增广 G1 主动 egocentric 感知；MuJoCo 颈建模评测 |
 | PICO 4 Ultra + Trackers | 便携全身 6-DoF 流；Passthrough / Egocentric 双模式 |
-| XRoboToolkit | 统一 egocentric 视频与全身姿态流 |
+| XRoboToolkit | 统一 egocentric 视频与全身姿态流；框架本身见 [XRoboToolkit 实体](./paper-xrobotoolkit.md) |
 
 ### 2）分层 visuomotor 控制
 
@@ -156,6 +159,7 @@ sequenceDiagram
 - 分层 benchmark 后端：[paper-humanoidarena.md](./paper-humanoidarena.md) — 与 SONIC 并列作双 GMT 评测（arXiv:2606.17833）
 - RL 身体系统栈：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - BFM 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
+- XR 中间层：[paper-xrobotoolkit.md](./paper-xrobotoolkit.md) — PICO/Quest OpenXR 流与 QP-IK 套件
 - 任务：[teleoperation.md](../tasks/teleoperation.md)、[loco-manipulation.md](../tasks/loco-manipulation.md)
 
 ## 实验与评测

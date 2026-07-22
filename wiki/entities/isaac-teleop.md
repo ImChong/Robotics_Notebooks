@@ -2,7 +2,7 @@
 type: entity
 tags: [entity, teleoperation, isaac, isaac-lab, xr, data-collection, imitation-learning, nvidia]
 status: complete
-updated: 2026-06-02
+updated: 2026-07-22
 related:
   - ./isaac-lab.md
   - ./isaac-gym-isaac-lab.md
@@ -10,8 +10,10 @@ related:
   - ../methods/imitation-learning.md
   - ./unitree-g1.md
   - ./robot-io-rio.md
+  - ./paper-xrobotoolkit.md
 sources:
   - ../../sources/repos/nvidia_isaac_teleop.md
+  - ../../sources/papers/xrobotoolkit_arxiv_2508_00097.md
 summary: "Isaac Teleop 是 NVIDIA 统一的仿真与真机遥操作框架：标准化 XR/外设接口、图式 retargeting 与 MCAP/示范录制，并作为 Isaac Lab 3.x 的 XR 遥操作主线替代 openxr 设备栈。"
 ---
 
@@ -124,12 +126,14 @@ flowchart TB
 2. **预构建 pipeline 对象放进 config** — `@configclass` 深拷贝会破坏图引用，应传 **callable**。
 3. **忽略 anchor 与坐标系** — `world_T_anchor` 与 `target_offset_roll/pitch/yaw` 决定人体跟踪到机器人 EE 的映射，换设备模式常需重调。
 4. **与「跨形态实时 I/O 框架」混淆** — [RIO](./robot-io-rio.md) 侧重真机 Node/中间件与 VLA 异步推理；Isaac Teleop 侧重 **NVIDIA 仿真生态 + XR retargeting**，二者可对照阅读而非互替。
+5. **与通用 XR 中间层混淆** — [XRoboToolkit](./paper-xrobotoolkit.md) 是 OpenXR 跨臂/跨仿真的头显侧套件（PICO/Quest，非 Isaac 绑定）；选型时按「是否已在 Isaac Lab 内」分流。
 
 ## 关联页面
 
 - [Isaac Lab](./isaac-lab.md) — XR 遥操作集成与示范录制的宿主框架
 - [Isaac Gym / Isaac Lab 平台总览](./isaac-gym-isaac-lab.md) — 仿真与学习栈上下文
 - [Teleoperation（遥操作）](../tasks/teleoperation.md) — 任务视角与多系统对照表
+- [XRoboToolkit（论文实体）](./paper-xrobotoolkit.md) — OpenXR 跨平台 XR 遥操作中间层（对照）
 - [Imitation Learning](../methods/imitation-learning.md) — 示范数据下游学习
 - [Unitree G1](./unitree-g1.md) — 文档中 G1 TriHand / loco-manip 遥操作范例平台
 - [RIO（Robot I/O）](./robot-io-rio.md) — 另一套跨形态真机 I/O 抽象（对照）
@@ -140,9 +144,11 @@ flowchart TB
 - [NVIDIA/IsaacTeleop（GitHub）](https://github.com/NVIDIA/IsaacTeleop)
 - [Isaac Teleop 官方文档](https://nvidia.github.io/IsaacTeleop/main/index.html)
 - [Isaac Lab — Isaac Teleop 功能说明](https://isaac-sim.github.io/IsaacLab/main/source/features/isaac_teleop.html)
+- [XRoboToolkit 论文归档](../../sources/papers/xrobotoolkit_arxiv_2508_00097.md) — 非 Isaac 绑定的 OpenXR 遥操作对照
 
 ## 推荐继续阅读
 
 - Isaac Teleop Quick Start（官方文档 Getting Started）
 - [Isaac Lab Mimic 与合成数据](https://isaac-sim.github.io/IsaacLab/main/source/overview/imitation-learning/index.html) — 示范录制之后的 IL 管线
 - [Setting up Isaac Teleop with CloudXR](https://isaac-sim.github.io/IsaacLab/main/source/how-to/cloudxr_teleoperation.html) — 首次跑通 XR 环境
+- [XRoboToolkit 项目页](https://xr-robotics.github.io/) — PICO/Quest 跨平台遥操作套件
