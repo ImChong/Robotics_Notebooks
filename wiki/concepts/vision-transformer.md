@@ -2,7 +2,7 @@
 type: concept
 tags: [vit, vision-transformer, computer-vision, deep-learning, perception, backbone]
 status: complete
-updated: 2026-07-21
+updated: 2026-07-22
 related:
   - ../comparisons/cnn-vs-vit-backbones.md
   - ./vision-backbones.md
