@@ -26,6 +26,7 @@ related:
   - ../entities/paper-worldvln-aerial-vln-wam.md
   - ../entities/paper-oscar.md
   - ../entities/paper-driftworld.md
+  - ../entities/paper-m4world.md
   - ../entities/paper-gigaworld-1-policy-evaluation.md
   - ../entities/paper-embodiedgen-v2-sim-ready-world-engine.md
   - ../tasks/vision-language-navigation.md
@@ -36,6 +37,7 @@ sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
   - ../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md
   - ../../sources/papers/worldvln_arxiv_2605_15964.md
+  - ../../sources/papers/m4world_arxiv_2607_14005.md
 summary: "依据 arXiv:2605.00080 与策展解读，把机器人世界模型整理为策略内预测、学习型模拟器、可控视频生成三线，并强调评价应从开环视频逼真转向物理/动作一致性与训练闭环增益。"
 ---
 
@@ -81,8 +83,8 @@ flowchart TB
 | 线路 | 典型问题 | 与本库页面的关系 |
 |------|----------|------------------|
 | **① 策略内世界模型** | 执行 \(a\) 前，内部推演 \(o'\) 是否合理？ | [VLA](../methods/vla.md)、[WAM](../concepts/world-action-models.md)、[Being-H0.7](../methods/being-h07.md)（潜空间先验）、[mimic-video](../methods/mimic-video.md)、[τ₀-WM](../entities/tau0-world-model.md)（动作条件仿真 + 测试时修订）、[WorldVLN](../entities/paper-worldvln-aerial-vln-wam.md)（空中 VLN · 自回归 WAM） |
-| **② 学习型模拟器** | 真机数据贵、传统仿真不够真，能否学可用「中间环境」？ | [Model-Based RL](../methods/model-based-rl.md)、[Video-as-Simulation](../concepts/video-as-simulation.md)、[Robotic World Model（ETH RSL）](../entities/robotic-world-model-eth-rsl.md)（状态动力学口径）、[OSCAR](../entities/paper-oscar.md)（骨架条件 WM + RoboArena 虚拟策略评估）、[DriftWorld](../entities/paper-driftworld.md)（1-step drifting + 离线评估） |
-| **③ 机器人视频世界模型** | 生成的未来是否 **受动作控制** 且 **物理/几何可信**？ | [Generative World Models](../methods/generative-world-models.md)、[Latent Imagination](../concepts/latent-imagination.md)、[WEM](../entities/paper-wem-world-ego-modeling.md)（world/ego 解耦 + 混合长程基准 HTEWorld）、[GE-Sim 2.0](../entities/ge-sim-2.md)（闭环 rollout + 本体状态 + World Judge）、[OSCAR](../entities/paper-oscar.md)（跨具身骨架条件 + 四阶段数据管线）、[DriftWorld](../entities/paper-driftworld.md)（非扩散单次前向动作条件） |
+| **② 学习型模拟器** | 真机数据贵、传统仿真不够真，能否学可用「中间环境」？ | [Model-Based RL](../methods/model-based-rl.md)、[Video-as-Simulation](../concepts/video-as-simulation.md)、[Robotic World Model（ETH RSL）](../entities/robotic-world-model-eth-rsl.md)（状态动力学口径）、[OSCAR](../entities/paper-oscar.md)（骨架条件 WM + RoboArena 虚拟策略评估）、[DriftWorld](../entities/paper-driftworld.md)（1-step drifting + 离线评估）、[M⁴World](../entities/paper-m4world.md)（驾驶环视+LiDAR 可控仿真） |
+| **③ 机器人视频世界模型** | 生成的未来是否 **受动作控制** 且 **物理/几何可信**？ | [Generative World Models](../methods/generative-world-models.md)、[Latent Imagination](../concepts/latent-imagination.md)、[WEM](../entities/paper-wem-world-ego-modeling.md)（world/ego 解耦 + 混合长程基准 HTEWorld）、[GE-Sim 2.0](../entities/ge-sim-2.md)（闭环 rollout + 本体状态 + World Judge）、[OSCAR](../entities/paper-oscar.md)（跨具身骨架条件 + 四阶段数据管线）、[DriftWorld](../entities/paper-driftworld.md)（非扩散单次前向动作条件）、[M⁴World](../entities/paper-m4world.md)（物体外观条件 + 分钟级驾驶流式） |
 
 ## 路线演化：从「想象未来」到「训练闭环」
 

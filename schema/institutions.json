@@ -1328,6 +1328,13 @@
         "bmw",
         "bmw-nj"
       ]
+    },
+    "meituan": {
+      "label": "美团（Meituan）",
+      "aliases": [
+        "meituan",
+        "meituan-dianping"
+      ]
     }
   }
 }

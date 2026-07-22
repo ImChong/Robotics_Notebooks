@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-22] ingest | sources/papers/m4world_arxiv_2607_14005.md — 接入 M⁴World（arXiv:2607.14005）多视角多模态驾驶世界模型；升格 wiki/entities/paper-m4world.md；交叉 wiki/methods/generative-world-models.md、wiki/concepts/video-as-simulation.md、wiki/entities/paper-x-world.md、wiki/overview/robot-world-models-training-loop-taxonomy.md、wiki/overview/autonomous-driving-core-algorithms-series.md；机构新增 meituan；未开源
+
+- **开源状态：** **未开源** — arXiv abs/HTML/PDF 均无项目页或 GitHub；训练数据为自采驾驶日志（截至 2026-07-22）
+- **新建 papers：** [`sources/papers/m4world_arxiv_2607_14005.md`](sources/papers/m4world_arxiv_2607_14005.md)
+- **新建 wiki：** [`wiki/entities/paper-m4world.md`](wiki/entities/paper-m4world.md)
+- **机构：** `schema/institutions.json` 新增 `meituan`（美团）；沿用既有 `casia` / `bit`
+- **交叉更新：** [`wiki/methods/generative-world-models.md`](wiki/methods/generative-world-models.md)、[`wiki/concepts/video-as-simulation.md`](wiki/concepts/video-as-simulation.md)、[`wiki/entities/paper-x-world.md`](wiki/entities/paper-x-world.md)、[`wiki/overview/robot-world-models-training-loop-taxonomy.md`](wiki/overview/robot-world-models-training-loop-taxonomy.md)、[`wiki/overview/autonomous-driving-core-algorithms-series.md`](wiki/overview/autonomous-driving-core-algorithms-series.md)
+
 ## [2026-07-22] ingest | sources/papers/uni_lavira_arxiv_2605_27582.md、sources/sites/xetroubadour-uni-lavira-github-io.md、sources/repos/uni-lavira-code.md — 接入 Uni-LaViRA（arXiv:2605.27582）统一具身导航三层翻译；升格 wiki/entities/paper-uni-lavira.md；交叉 VLN、四范式复现、VLA、WorldVLN、unitree-g1；机构新增 casia/rochester/bmw-nanjing
 
 - **开源状态：** **已开源** — 项目页 Code → [`NJU-R-L-Group-Embodied-Lab/uni-lavira-code`](https://github.com/NJU-R-L-Group-Embodied-Lab/uni-lavira-code)；Habitat + AirSim 评测与四真机入口可运行；License **CC BY-NC-SA 4.0**；依赖 MLLM API（截至 2026-07-22）
