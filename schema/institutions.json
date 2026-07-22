@@ -69,6 +69,13 @@
         "mit"
       ]
     },
+    "harvard": {
+      "label": "哈佛大学（Harvard University）",
+      "aliases": [
+        "harvard",
+        "harvard-university"
+      ]
+    },
     "stanford": {
       "label": "斯坦福大学（Stanford）",
       "aliases": [

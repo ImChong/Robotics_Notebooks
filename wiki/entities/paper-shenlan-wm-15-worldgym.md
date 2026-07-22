@@ -1,9 +1,8 @@
 ---
-
 type: entity
 tags: [paper, world-models, shenlan-survey, open-source, google-deepmind, nyu, stanford]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-22
 arxiv: "2506.00613"
 venue: —
 summary: "WM 作策略评估虚拟靶场；VLM 奖励 + MC 模拟，与真机排名高度相关。"
@@ -13,6 +12,7 @@ related:
   - ../overview/robot-world-models-training-loop-taxonomy.md
   - ../methods/generative-world-models.md
   - ../concepts/world-action-models.md
+  - ./paper-driftworld.md
 sources:
   - ../../sources/papers/shenlan_wm_survey_15_worldgym.md
   - ../../sources/papers/shenlan_world_models_15_reference_catalog.md
@@ -72,6 +72,7 @@ WM 作策略评估虚拟靶场；VLM 奖励 + MC 模拟，与真机排名高度�
 
 - 路线 hub：[world-models-route-03-virtual-sandbox.md](../overview/world-models-route-03-virtual-sandbox.md)
 - 总地图：[world-models-15-open-source-technology-map.md](../overview/world-models-15-open-source-technology-map.md)
+- 外延对照：[DriftWorld](./paper-driftworld.md) — 1-step drifting 快评估 / 推理时搜索
 - 原始 source：[shenlan_wm_survey_15_worldgym.md](../../sources/papers/shenlan_wm_survey_15_worldgym.md)
 
 ## 参考来源

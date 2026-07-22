@@ -9,7 +9,7 @@ tags:
   - simulation
   - gigaai
 status: complete
-updated: 2026-07-14
+updated: 2026-07-22
 arxiv: "2607.02642"
 related:
   - ../overview/wm-action-consequence-category-04-eval-posttrain.md
@@ -20,6 +20,7 @@ related:
   - ../entities/paper-dreamsteer-vla-deployment-steering.md
   - ../entities/paper-embodiedgen-v2-sim-ready-world-engine.md
   - ../entities/paper-worldscape-moe-heterogeneous-action.md
+  - ../entities/paper-driftworld.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
@@ -107,6 +108,7 @@ flowchart TB
 | **[DreamSteer](./paper-dreamsteer-vla-deployment-steering.md)** | WM **在线选动作**；GigaWorld **离线评策略版本** |
 | **[EmbodiedGen V2](./paper-embodiedgen-v2-sim-ready-world-engine.md)** | **3D sim 环境** 降数据成本；GigaWorld **2D WM rollout 评估** |
 | **[Worldscape-MoE](./paper-worldscape-moe-heterogeneous-action.md)** | **异构控制生成 WM**；GigaWorld 偏 **evaluator-oriented 机器人 action** |
+| **[DriftWorld](./paper-driftworld.md)** | **1-step drifting** 快想象 + 离线评估相关性；GigaWorld 偏 **评估协议 / WMES roadmap** |
 | **WorldArena EWM** | **生成质量 16 维**；WMBench 强调 **policy outcome alignment** |
 | **经典 sim eval** | sim2real gap + **场景建模贵** |
 
@@ -122,6 +124,7 @@ flowchart TB
 - [动作后果技术地图](../overview/robot-world-models-action-consequence-technology-map.md) — 「策略版本评估」入口
 - [World Action Models](../concepts/world-action-models.md) — 被评估 WAM/VLA 语境
 - [DreamSteer](./paper-dreamsteer-vla-deployment-steering.md) — WM 预演选动作
+- [DriftWorld](./paper-driftworld.md) — 1-step drifting 离线评估 + 推理时搜索
 - [EmbodiedGen V2](./paper-embodiedgen-v2-sim-ready-world-engine.md) — 环境扩展
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是其「② 世界模型作策略评估器层」的代表工作（长时序动作忠实 > 短时视觉逼真），双向回链
 

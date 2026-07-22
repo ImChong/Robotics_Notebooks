@@ -1,5 +1,15 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-22] ingest | sources/papers/driftworld_arxiv_2607_15065.md、sources/sites/susie-lu-driftworld-github-io.md、sources/repos/driftworld.md — 接入 DriftWorld（arXiv:2607.15065）1-step drifting 动作条件世界模型；升格 wiki/entities/paper-driftworld.md
+
+- **开源状态：** **部分开源** — 项目页 Paper/Code 双链；[`Susie-Lu/driftworld`](https://github.com/Susie-Lu/driftworld) + HF checkpoint；Push-T 训练/可视化/指标/GPC-RANK/策略评估可运行；其它数据集 README *Will be added soon*；License 未声明（截至 2026-07-22）
+- **新建 papers：** [`sources/papers/driftworld_arxiv_2607_15065.md`](sources/papers/driftworld_arxiv_2607_15065.md)
+- **新建 sites：** [`sources/sites/susie-lu-driftworld-github-io.md`](sources/sites/susie-lu-driftworld-github-io.md)
+- **新建 repos：** [`sources/repos/driftworld.md`](sources/repos/driftworld.md)
+- **新建 wiki：** [`wiki/entities/paper-driftworld.md`](wiki/entities/paper-driftworld.md)
+- **机构：** `schema/institutions.json` 新增 `harvard`（哈佛大学）
+- **交叉更新：** [`wiki/methods/generative-world-models.md`](wiki/methods/generative-world-models.md)、[`wiki/overview/world-models-route-03-virtual-sandbox.md`](wiki/overview/world-models-route-03-virtual-sandbox.md)、[`wiki/overview/robot-world-models-training-loop-taxonomy.md`](wiki/overview/robot-world-models-training-loop-taxonomy.md)、[`wiki/concepts/video-as-simulation.md`](wiki/concepts/video-as-simulation.md)、[`wiki/entities/paper-oscar.md`](wiki/entities/paper-oscar.md)、[`wiki/entities/paper-gigaworld-1-policy-evaluation.md`](wiki/entities/paper-gigaworld-1-policy-evaluation.md)、[`wiki/entities/paper-shenlan-wm-15-worldgym.md`](wiki/entities/paper-shenlan-wm-15-worldgym.md)、[`wiki/queries/embodied-eval-benchmark-selection-loop.md`](wiki/queries/embodied-eval-benchmark-selection-loop.md)
+
 ## [2026-07-22] ingest | sources/papers/pot_vla_arxiv_2607_18016.md、patch_policy_arxiv_2607_18236.md、world_translation_arxiv_2607_18154.md、mevion_arxiv_2607_17970.md + sites/repos — 接入每日机器人情报四项高价值资料
 
 - **新建 wiki：** [`wiki/entities/paper-pot-vla.md`](wiki/entities/paper-pot-vla.md)、[`wiki/entities/paper-patch-policy.md`](wiki/entities/paper-patch-policy.md)、[`wiki/entities/paper-world-translation.md`](wiki/entities/paper-world-translation.md)、[`wiki/entities/paper-mevion.md`](wiki/entities/paper-mevion.md)
