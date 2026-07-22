@@ -15,9 +15,11 @@ related:
   - ../entities/paper-shenlan-wm-15-worldgym.md
   - ../entities/paper-oscar.md
   - ../entities/paper-driftworld.md
+  - ../entities/paper-masked-visual-actions.md
 sources:
   - ../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md
   - ../../sources/papers/shenlan_world_models_15_reference_catalog.md
+  - ../../sources/papers/masked_visual_actions_arxiv_2607_19343.md
 ---
 
 # 世界模型路线 03：虚拟沙盒
@@ -51,6 +53,7 @@ sources:
 
 - [OSCAR](../entities/paper-oscar.md)（arXiv:2606.04463）— 跨具身 **2D 骨架条件** 视频 WM，在 [RoboArena](../methods/roboarena.md) 七策略上验证虚拟 rollout 与真机排名相关性（Pearson **ρ +0.750**）。
 - [DriftWorld](../entities/paper-driftworld.md)（arXiv:2607.15065）— **1-step drifting** 动作条件 WM（30+ fps），用快想象做 **GPC-RANK 推理时改进** 与离线策略评估（与 GT 相关性最高约 **0.99**）。
+- [Masked Visual Actions](../entities/paper-masked-visual-actions.md)（arXiv:2607.19343）— **像素掩码动作** 统一前向仿真与逆向行为合成；RoboCasa 策略评估 **r=0.982**，Best-of-N 规划 + 真机演示进度对齐。
 
 ## 在 15 项目地图中的位置
 
@@ -70,6 +73,7 @@ sources:
 - [Video-as-Simulation](../concepts/video-as-simulation.md)
 - [OSCAR](../entities/paper-oscar.md) — RoboArena 虚拟策略评估代理
 - [DriftWorld](../entities/paper-driftworld.md) — 1-step drifting：推理时搜索 + 离线评估
+- [Masked Visual Actions](../entities/paper-masked-visual-actions.md) — 掩码视觉动作：规划 / 评估 + 前向/逆向统一
 
 ## 参考来源
 

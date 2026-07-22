@@ -1,5 +1,15 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-22] ingest | sources/papers/masked_visual_actions_arxiv_2607_19343.md、sources/sites/masked-visual-actions-github-io.md、sources/repos/masked-visual-actions.md — 接入 Masked Visual Actions（arXiv:2607.19343）；升格 wiki/entities/paper-masked-visual-actions.md；交叉 generative-world-models、video-as-simulation、world-models-route-01/03、robot-world-models-training-loop-taxonomy、paper-driftworld、paper-oscar、embodied-eval-benchmark-selection-loop、manipulation；机构新增 umd
+
+- **开源状态：** **部分开源** — 项目页 Code → [`HadiZayer/masked-visual-actions`](https://github.com/HadiZayer/masked-visual-actions)（Apache-2.0）+ HF 双专家 LoRA；推理 / DiffSynth LoRA 训练可运行；DROID URDF 渲染工具 README *coming soon*；项目页 `paper.pdf` 404（以 arXiv:2607.19343 为准）（截至 2026-07-22）
+- **新建 papers：** [`sources/papers/masked_visual_actions_arxiv_2607_19343.md`](sources/papers/masked_visual_actions_arxiv_2607_19343.md)
+- **新建 sites：** [`sources/sites/masked-visual-actions-github-io.md`](sources/sites/masked-visual-actions-github-io.md)
+- **新建 repos：** [`sources/repos/masked-visual-actions.md`](sources/repos/masked-visual-actions.md)
+- **新建 wiki：** [`wiki/entities/paper-masked-visual-actions.md`](wiki/entities/paper-masked-visual-actions.md)
+- **机构：** `schema/institutions.json` 新增 `umd`（马里兰大学学院公园分校）；沿用既有 `stanford` / `harvard`
+- **交叉更新：** [`wiki/methods/generative-world-models.md`](wiki/methods/generative-world-models.md)、[`wiki/concepts/video-as-simulation.md`](wiki/concepts/video-as-simulation.md)、[`wiki/overview/world-models-route-03-virtual-sandbox.md`](wiki/overview/world-models-route-03-virtual-sandbox.md)、[`wiki/overview/world-models-route-01-cascade.md`](wiki/overview/world-models-route-01-cascade.md)、[`wiki/overview/robot-world-models-training-loop-taxonomy.md`](wiki/overview/robot-world-models-training-loop-taxonomy.md)、[`wiki/entities/paper-driftworld.md`](wiki/entities/paper-driftworld.md)、[`wiki/entities/paper-oscar.md`](wiki/entities/paper-oscar.md)、[`wiki/queries/embodied-eval-benchmark-selection-loop.md`](wiki/queries/embodied-eval-benchmark-selection-loop.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)
+
 ## [2026-07-22] ingest | sources/papers/uni_lavira_arxiv_2605_27582.md、sources/sites/xetroubadour-uni-lavira-github-io.md、sources/repos/uni-lavira-code.md — 接入 Uni-LaViRA（arXiv:2605.27582）统一具身导航三层翻译；升格 wiki/entities/paper-uni-lavira.md；交叉 VLN、四范式复现、VLA、WorldVLN、unitree-g1；机构新增 casia/rochester/bmw-nanjing
 
 - **开源状态：** **已开源** — 项目页 Code → [`NJU-R-L-Group-Embodied-Lab/uni-lavira-code`](https://github.com/NJU-R-L-Group-Embodied-Lab/uni-lavira-code)；Habitat + AirSim 评测与四真机入口可运行；License **CC BY-NC-SA 4.0**；依赖 MLLM API（截至 2026-07-22）

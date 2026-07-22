@@ -1,13 +1,117 @@
 {
   "generated_at": "2026-07-22",
-  "node_count": 1757,
-  "edge_count": 14175,
+  "node_count": 1758,
+  "edge_count": 14195,
   "coverage": {
-    "covered": 1707,
-    "total": 1737,
+    "covered": 1708,
+    "total": 1738,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-masked-visual-actions.md",
+      "detail_id": "entity-paper-masked-visual-actions",
+      "label": "Masked Visual Actions（统一世界建模的掩码视觉动作）",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/generative-world-models.md",
+      "detail_id": "wiki-methods-generative-world-models",
+      "label": "Generative World Models (生成式世界模型)",
+      "type": "method",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/video-as-simulation.md",
+      "detail_id": "wiki-concepts-video-as-simulation",
+      "label": "Video-as-Simulation (视频即仿真)",
+      "type": "concept",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/world-models-route-03-virtual-sandbox.md",
+      "detail_id": "wiki-overview-world-models-route-03-virtual-sandbox",
+      "label": "世界模型路线 03：虚拟沙盒",
+      "type": "overview",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/world-models-route-01-cascade.md",
+      "detail_id": "wiki-overview-world-models-route-01-cascade",
+      "label": "世界模型路线 01：级联架构",
+      "type": "overview",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/robot-world-models-training-loop-taxonomy.md",
+      "detail_id": "wiki-overview-robot-world-models-training-loop-taxonomy",
+      "label": "机器人世界模型：训练闭环与三线 taxonomy",
+      "type": "overview",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-driftworld.md",
+      "detail_id": "entity-paper-driftworld",
+      "label": "DriftWorld（Fast World Modeling through Drifting）",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-oscar.md",
+      "detail_id": "entity-paper-oscar",
+      "label": "OSCAR（跨具身动作条件世界模型）",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/queries/embodied-eval-benchmark-selection-loop.md",
+      "detail_id": "wiki-queries-embodied-eval-benchmark-selection-loop",
+      "label": "Query：具身大模型评测基准选型闭环知识链",
+      "type": "query",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-uni-lavira.md",
       "detail_id": "entity-paper-uni-lavira",
@@ -114,111 +218,12 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dreamsteer-vla-deployment-steering.md",
-      "detail_id": "entity-paper-dreamsteer-vla-deployment-steering",
-      "label": "DreamSteer（Latent World Model Steering for VLA · arXiv:2607.02865）",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/lingbot-vla.md",
-      "detail_id": "entity-lingbot-vla",
-      "label": "LingBot-VLA",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/rldx-1.md",
-      "detail_id": "entity-rldx-1",
-      "label": "RLDX-1",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-adp.md",
-      "detail_id": "entity-paper-adp",
-      "label": "ADP：对抗动力学先验的人形抗扰 locomotion",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/methods/amp-reward.md",
-      "detail_id": "wiki-methods-amp-reward",
-      "label": "AMP & HumanX: 判别器驱动的风格学习",
-      "type": "method",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/tasks/locomotion.md",
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/tasks/balance-recovery.md",
-      "detail_id": "wiki-tasks-balance-recovery",
-      "label": "Balance Recovery（平衡恢复）",
-      "type": "task",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/tasks/humanoid-locomotion.md",
-      "detail_id": "wiki-tasks-humanoid-locomotion",
-      "label": "Humanoid Locomotion (人形机器人移动)",
-      "type": "task",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/concepts/centroidal-dynamics.md",
-      "detail_id": "wiki-concepts-centroidal-dynamics",
-      "label": "Centroidal Dynamics",
-      "type": "concept",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-uni-lavira.md",
-    "detail_id": "entity-paper-uni-lavira",
-    "label": "Uni-LaViRA：统一具身导航的语言–视觉–机器人动作翻译",
+    "path": "wiki/entities/paper-masked-visual-actions.md",
+    "detail_id": "entity-paper-masked-visual-actions",
+    "label": "Masked Visual Actions（统一世界建模的掩码视觉动作）",
     "type": "entity",
     "recency": "2026-07-22",
     "source": "log.md",
@@ -229,7 +234,7 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 364
+      "size": 435
     },
     {
       "label": "人形论文深读笔记",
@@ -240,16 +245,16 @@
       "size": 171
     },
     {
-      "label": "仿真到现实",
-      "size": 162
-    },
-    {
       "label": "全身控制",
       "size": 147
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 130
+      "size": 137
+    },
+    {
+      "label": "仿真训练",
+      "size": 67
     }
   ],
   "top_hubs": [
@@ -288,7 +293,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 271,
+      "degree": 273,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -296,7 +301,8 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 254
+      "degree": 254,
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
@@ -342,7 +348,8 @@
       "label": "BeyondMimic",
       "type": "method",
       "degree": 55,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",

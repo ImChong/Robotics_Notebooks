@@ -18,6 +18,7 @@ related:
   - ../entities/ewmbench.md
   - ../entities/paper-gigaworld-1-policy-evaluation.md
   - ../entities/paper-driftworld.md
+  - ../entities/paper-masked-visual-actions.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../concepts/sim2real.md
   - ../queries/embodied-fm-taxonomy-loop.md
@@ -151,6 +152,7 @@ flowchart TD
 - [EWMBench（具身世界模型生成评测）](../entities/ewmbench.md) — ②层世界模型预测保真度评测
 - [GigaWorld-1（世界模型策略评估器）](../entities/paper-gigaworld-1-policy-evaluation.md) — ②层「动作忠实 > 视觉逼真」策略评估器
 - [DriftWorld](../entities/paper-driftworld.md) — ②层外延：1-step drifting 快评估 + 推理时搜索（相关性最高约 0.99）
+- [Masked Visual Actions](../entities/paper-masked-visual-actions.md) — ②层外延：掩码动作条件 WM，RoboCasa 策略评估 **r=0.982**
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md) — ④层可信仿真作闭环评测引擎的前提
 - [Sim2Real](../concepts/sim2real.md) — ④层评测结论外推真机的迁移背景
 - 姊妹 Query：[具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — 「选哪一类模型」，本页承接「选完怎么评测」
