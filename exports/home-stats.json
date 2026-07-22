@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-22",
-  "node_count": 1750,
-  "edge_count": 14110,
+  "node_count": 1754,
+  "edge_count": 14127,
   "coverage": {
-    "covered": 1700,
-    "total": 1730,
+    "covered": 1704,
+    "total": 1734,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -101,6 +101,88 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
+      "path": "wiki/entities/paper-pot-vla.md",
+      "detail_id": "entity-paper-pot-vla",
+      "label": "POT-VLA：持久 3D 对象状态的人形闭环 VLA",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-patch-policy.md",
+      "detail_id": "entity-paper-patch-policy",
+      "label": "Patch Policy：密集视觉表征的轻量高频控制",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-world-translation.md",
+      "detail_id": "entity-paper-world-translation",
+      "label": "World Translation：反向动力学提取的 Sim2Real 域翻译",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-mevion.md",
+      "detail_id": "entity-paper-mevion",
+      "label": "MEVION：高力高速双臂数据采集系统",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/unitree-g1.md",
+      "detail_id": "entity-unitree-g1",
+      "label": "Unitree G1 (人形机器人)",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/tasks/bimanual-manipulation.md",
+      "detail_id": "wiki-tasks-bimanual-manipulation",
+      "label": "Bimanual Manipulation（双臂协调操作）",
+      "type": "task",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "path": "wiki/concepts/torque-source-abstraction-gap.md",
       "detail_id": "wiki-concepts-torque-source-abstraction-gap",
       "label": "力矩源抽象 Gap（理想力矩源 ↔ 真实执行器）",
@@ -129,90 +211,6 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/overview/autonomous-driving-core-algorithms-series.md",
-      "detail_id": "wiki-overview-autonomous-driving-core-algorithms-series",
-      "label": "《自动驾驶核心算法盘点》专栏技术地图",
-      "type": "overview",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/methods/object-detection.md",
-      "detail_id": "wiki-methods-object-detection",
-      "label": "目标检测（Object Detection）",
-      "type": "method",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/x-humanoid.md",
-      "detail_id": "entity-x-humanoid",
-      "label": "X-Humanoid（北京人形机器人创新中心）",
-      "type": "entity",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/tienkung-humanoid-open-source.md",
-      "detail_id": "entity-tienkung-humanoid-open-source",
-      "label": "天工 Lite / Pro（开源人形）",
-      "type": "entity",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/open-source-humanoid-hardware.md",
-      "detail_id": "entity-open-source-humanoid-hardware",
-      "label": "开源人形机器人硬件方案对比",
-      "type": "entity",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/openloong.md",
-      "detail_id": "entity-openloong",
-      "label": "OpenLoong（青龙·公版机）",
-      "type": "entity",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/methods/pelican-unified-1.md",
-      "detail_id": "wiki-methods-pelican-unified-1",
-      "label": "Pelican-Unified 1.0（统一具身智能 UEI）",
-      "type": "method",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-loco-manip-161-038-hex.md",
-      "detail_id": "entity-paper-loco-manip-161-038-hex",
-      "label": "HEX",
-      "type": "entity",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -229,7 +227,7 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 405
+      "size": 407
     },
     {
       "label": "人形强化学习运动控制",
@@ -264,7 +262,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 313,
+      "degree": 315,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -272,7 +270,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 288,
+      "degree": 292,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -280,7 +278,7 @@
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
-      "degree": 284,
+      "degree": 285,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
@@ -288,7 +286,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 268,
+      "degree": 269,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
