@@ -1,13 +1,77 @@
 {
   "generated_at": "2026-07-22",
-  "node_count": 1755,
-  "edge_count": 14146,
+  "node_count": 1756,
+  "edge_count": 14158,
   "coverage": {
-    "covered": 1705,
-    "total": 1735,
+    "covered": 1706,
+    "total": 1736,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-uni-lavira.md",
+      "detail_id": "entity-paper-uni-lavira",
+      "label": "Uni-LaViRA：统一具身导航的语言–视觉–机器人动作翻译",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/vision-language-navigation.md",
+      "detail_id": "wiki-tasks-vision-language-navigation",
+      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
+      "type": "task",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/vln-open-source-repro-paradigms.md",
+      "detail_id": "wiki-overview-vln-open-source-repro-paradigms",
+      "label": "VLN 开源复现：四范式学习路径",
+      "type": "overview",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-worldvln-aerial-vln-wam.md",
+      "detail_id": "entity-paper-worldvln-aerial-vln-wam",
+      "label": "WorldVLN（空中 VLN · 自回归 World Action Model）",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/unitree-g1.md",
+      "detail_id": "entity-unitree-g1",
+      "label": "Unitree G1 (人形机器人)",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/paper-adp.md",
       "detail_id": "entity-paper-adp",
@@ -63,16 +127,6 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/unitree-g1.md",
-      "detail_id": "entity-unitree-g1",
-      "label": "Unitree G1 (人形机器人)",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     },
     {
       "path": "wiki/comparisons/amp-add-smp-motion-prior-variants.md",
@@ -155,70 +209,23 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-gigaworld-1-policy-evaluation.md",
-      "detail_id": "entity-paper-gigaworld-1-policy-evaluation",
-      "label": "GigaWorld-1（World Models for Robot Policy Evaluation · arXiv:2607.02642）",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-shenlan-wm-15-worldgym.md",
-      "detail_id": "entity-paper-shenlan-wm-15-worldgym",
-      "label": "WorldGym",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/queries/embodied-eval-benchmark-selection-loop.md",
-      "detail_id": "wiki-queries-embodied-eval-benchmark-selection-loop",
-      "label": "Query：具身大模型评测基准选型闭环知识链",
-      "type": "query",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-pot-vla.md",
-      "detail_id": "entity-paper-pot-vla",
-      "label": "POT-VLA：持久 3D 对象状态的人形闭环 VLA",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-patch-policy.md",
-      "detail_id": "entity-paper-patch-policy",
-      "label": "Patch Policy：密集视觉表征的轻量高频控制",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-adp.md",
-    "detail_id": "entity-paper-adp",
-    "label": "ADP：对抗动力学先验的人形抗扰 locomotion",
+    "path": "wiki/entities/paper-uni-lavira.md",
+    "detail_id": "entity-paper-uni-lavira",
+    "label": "Uni-LaViRA：统一具身导航的语言–视觉–机器人动作翻译",
     "type": "entity",
     "recency": "2026-07-22",
     "source": "log.md",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 359
+      "size": 363
     },
     {
       "label": "人形论文深读笔记",
@@ -234,7 +241,7 @@
     },
     {
       "label": "全身控制",
-      "size": 146
+      "size": 147
     },
     {
       "label": "人形强化学习运动控制",
@@ -261,7 +268,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 292,
+      "degree": 294,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
