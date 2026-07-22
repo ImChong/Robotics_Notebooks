@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-22",
-  "node_count": 1758,
-  "edge_count": 14188,
+  "node_count": 1759,
+  "edge_count": 14208,
   "coverage": {
-    "covered": 1708,
-    "total": 1738,
+    "covered": 1709,
+    "total": 1739,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -66,6 +66,80 @@
       "recency": "2026-07-22",
       "source": "log.md",
       "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-masked-visual-actions.md",
+      "detail_id": "entity-paper-masked-visual-actions",
+      "label": "Masked Visual Actions（统一世界建模的掩码视觉动作）",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/world-models-route-03-virtual-sandbox.md",
+      "detail_id": "wiki-overview-world-models-route-03-virtual-sandbox",
+      "label": "世界模型路线 03：虚拟沙盒",
+      "type": "overview",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/world-models-route-01-cascade.md",
+      "detail_id": "wiki-overview-world-models-route-01-cascade",
+      "label": "世界模型路线 01：级联架构",
+      "type": "overview",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-driftworld.md",
+      "detail_id": "entity-paper-driftworld",
+      "label": "DriftWorld（Fast World Modeling through Drifting）",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-oscar.md",
+      "detail_id": "entity-paper-oscar",
+      "label": "OSCAR（跨具身动作条件世界模型）",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/queries/embodied-eval-benchmark-selection-loop.md",
+      "detail_id": "wiki-queries-embodied-eval-benchmark-selection-loop",
+      "label": "Query：具身大模型评测基准选型闭环知识链",
+      "type": "query",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -142,81 +216,6 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/behavior-tree-vla-orchestration.md",
-      "detail_id": "wiki-concepts-behavior-tree-vla-orchestration",
-      "label": "行为树 × VLA 编排",
-      "type": "concept",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/aspire.md",
-      "detail_id": "wiki-methods-aspire",
-      "label": "ASPIRE",
-      "type": "method",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
-      "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
-      "label": "VLA 开源复现景观（2025 策展）",
-      "type": "overview",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dreamsteer-vla-deployment-steering.md",
-      "detail_id": "entity-paper-dreamsteer-vla-deployment-steering",
-      "label": "DreamSteer（Latent World Model Steering for VLA · arXiv:2607.02865）",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/lingbot-vla.md",
-      "detail_id": "entity-lingbot-vla",
-      "label": "LingBot-VLA",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/rldx-1.md",
-      "detail_id": "entity-rldx-1",
-      "label": "RLDX-1",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -232,7 +231,7 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 432
+      "size": 436
     },
     {
       "label": "人形论文深读笔记",
@@ -244,7 +243,7 @@
     },
     {
       "label": "全身控制",
-      "size": 146
+      "size": 147
     },
     {
       "label": "人形强化学习运动控制",
@@ -291,7 +290,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 271,
+      "degree": 273,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

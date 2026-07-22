@@ -20,6 +20,7 @@ related:
   - ../concepts/video-as-simulation.md
   - ../concepts/latent-imagination.md
   - ./paper-oscar.md
+  - ./paper-masked-visual-actions.md
   - ./paper-gigaworld-1-policy-evaluation.md
   - ./paper-shenlan-wm-15-worldgym.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
@@ -208,12 +209,12 @@ sequenceDiagram
 
 ## 与相邻工作的分界（对比）
 
-| 对比轴 | DriftWorld | [OSCAR](./paper-oscar.md) | [WorldGym](./paper-shenlan-wm-15-worldgym.md) / [GigaWorld-1](./paper-gigaworld-1-policy-evaluation.md) |
-|--------|------------|---------------------------|--------------------------------------------------------------------------------------------------------|
-| **生成范式** | **Drifting · 1-step** | Cosmos-Predict2.5 扩散 / flow | 各异（常为扩散视频 WM） |
-| **条件** | 低维动作 + 可选语言；帧级 FiLM | **2D 骨架** 跨具身 | 动作 / 语言不等 |
-| **主卖点** | **推理速度 + 搜索/评估** | 跨具身 + RoboArena 排名 | 评估协议 / WMES / VLM 奖励 |
-| **开源重心** | Push-T 全链路 | 数据管线 + 2B 微调 | 视各项目 |
+| 对比轴 | DriftWorld | [OSCAR](./paper-oscar.md) | [Masked Visual Actions](./paper-masked-visual-actions.md) | [WorldGym](./paper-shenlan-wm-15-worldgym.md) / [GigaWorld-1](./paper-gigaworld-1-policy-evaluation.md) |
+|--------|------------|---------------------------|----------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
+| **生成范式** | **Drifting · 1-step** | Cosmos-Predict2.5 扩散 / flow | Wan-Fun-Control + LoRA | 各异（常为扩散视频 WM） |
+| **条件** | 低维动作 + 可选语言；帧级 FiLM | **2D 骨架** 跨具身 | **像素掩码轨迹**（机器人/物体） | 动作 / 语言不等 |
+| **主卖点** | **推理速度 + 搜索/评估** | 跨具身 + RoboArena 排名 | **前向/逆向统一** + 评估 | 评估协议 / WMES / VLM 奖励 |
+| **开源重心** | Push-T 全链路 | 数据管线 + 2B 微调 | DiffSynth LoRA；渲染 *soon* | 视各项目 |
 
 ## 关联页面
 
@@ -222,6 +223,7 @@ sequenceDiagram
 - [robot-world-models-training-loop-taxonomy](../overview/robot-world-models-training-loop-taxonomy.md) — 训练闭环坐标
 - [Video-as-Simulation](../concepts/video-as-simulation.md) — 像素仿真动机与延迟约束
 - [OSCAR](./paper-oscar.md) — 动作条件视频 WM + 虚拟策略评估
+- [Masked Visual Actions](./paper-masked-visual-actions.md) — 掩码动作条件：前向/逆向统一 + 策略评估
 - [GigaWorld-1](./paper-gigaworld-1-policy-evaluation.md) — WM 作策略评估器 roadmap
 - [WorldGym](./paper-shenlan-wm-15-worldgym.md) — VLM 奖励策略评估靶场
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — ② 世界模型评估层
