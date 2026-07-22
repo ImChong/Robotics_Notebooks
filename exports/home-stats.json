@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-22",
-  "node_count": 1756,
-  "edge_count": 14166,
+  "node_count": 1758,
+  "edge_count": 14195,
   "coverage": {
-    "covered": 1706,
-    "total": 1736,
+    "covered": 1708,
+    "total": 1738,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -113,60 +113,58 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
-      "path": "wiki/entities/paper-adp.md",
-      "detail_id": "entity-paper-adp",
-      "label": "ADP：对抗动力学先验的人形抗扰 locomotion",
+      "path": "wiki/entities/paper-uni-lavira.md",
+      "detail_id": "entity-paper-uni-lavira",
+      "label": "Uni-LaViRA：统一具身导航的语言–视觉–机器人动作翻译",
       "type": "entity",
       "recency": "2026-07-22",
       "source": "log.md",
-      "action": "added"
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
-      "path": "wiki/methods/amp-reward.md",
-      "detail_id": "wiki-methods-amp-reward",
-      "label": "AMP & HumanX: 判别器驱动的风格学习",
+      "path": "wiki/tasks/vision-language-navigation.md",
+      "detail_id": "wiki-tasks-vision-language-navigation",
+      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
+      "type": "task",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/vln-open-source-repro-paradigms.md",
+      "detail_id": "wiki-overview-vln-open-source-repro-paradigms",
+      "label": "VLN 开源复现：四范式学习路径",
+      "type": "overview",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
       "type": "method",
       "recency": "2026-07-22",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
-      "path": "wiki/tasks/locomotion.md",
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/tasks/balance-recovery.md",
-      "detail_id": "wiki-tasks-balance-recovery",
-      "label": "Balance Recovery（平衡恢复）",
-      "type": "task",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/tasks/humanoid-locomotion.md",
-      "detail_id": "wiki-tasks-humanoid-locomotion",
-      "label": "Humanoid Locomotion (人形机器人移动)",
-      "type": "task",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/concepts/centroidal-dynamics.md",
-      "detail_id": "wiki-concepts-centroidal-dynamics",
-      "label": "Centroidal Dynamics",
-      "type": "concept",
+      "path": "wiki/entities/paper-worldvln-aerial-vln-wam.md",
+      "detail_id": "entity-paper-worldvln-aerial-vln-wam",
+      "label": "WorldVLN（空中 VLN · 自回归 World Action Model）",
+      "type": "entity",
       "recency": "2026-07-22",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/unitree-g1.md",
@@ -179,33 +177,46 @@
       "has_repo": true
     },
     {
-      "path": "wiki/comparisons/amp-add-smp-motion-prior-variants.md",
-      "detail_id": "wiki-comparisons-amp-add-smp-motion-prior-variants",
-      "label": "AMP vs ADD vs SMP：运动先验变体对比",
-      "type": "comparison",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-unified-walk-run-recovery-sdamp.md",
-      "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",
-      "label": "SD-AMP：统一走、跑与起身的对抗运动先验",
+      "path": "wiki/entities/paper-harness-vla.md",
+      "detail_id": "entity-paper-harness-vla",
+      "label": "Harness VLA（Memory-Guided Agentic Manipulation · arXiv:2607.08448）",
       "type": "entity",
       "recency": "2026-07-22",
       "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
-      "path": "wiki/entities/paper-gigaworld-1-policy-evaluation.md",
-      "detail_id": "entity-paper-gigaworld-1-policy-evaluation",
-      "label": "GigaWorld-1（World Models for Robot Policy Evaluation · arXiv:2607.02642）",
-      "type": "entity",
+      "path": "wiki/concepts/behavior-tree-vla-orchestration.md",
+      "detail_id": "wiki-concepts-behavior-tree-vla-orchestration",
+      "label": "行为树 × VLA 编排",
+      "type": "concept",
       "recency": "2026-07-22",
       "source": "log.md",
       "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/aspire.md",
+      "detail_id": "wiki-methods-aspire",
+      "label": "ASPIRE",
+      "type": "method",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
+      "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
+      "label": "VLA 开源复现景观（2025 策展）",
+      "type": "overview",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
@@ -223,7 +234,7 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 360
+      "size": 435
     },
     {
       "label": "人形论文深读笔记",
@@ -234,16 +245,16 @@
       "size": 171
     },
     {
-      "label": "仿真到现实",
-      "size": 162
-    },
-    {
       "label": "全身控制",
-      "size": 146
+      "size": 147
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 130
+      "size": 137
+    },
+    {
+      "label": "仿真训练",
+      "size": 67
     }
   ],
   "top_hubs": [
@@ -266,7 +277,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 292,
+      "degree": 296,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -282,7 +293,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 271,
+      "degree": 273,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -290,7 +301,8 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 254
+      "degree": 254,
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
@@ -336,7 +348,8 @@
       "label": "BeyondMimic",
       "type": "method",
       "degree": 55,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",

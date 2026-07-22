@@ -1295,6 +1295,47 @@
         "university-of-manchester",
         "manchester"
       ]
+    },
+    "casia": {
+      "label": "中国科学院自动化研究所（CASIA）",
+      "aliases": [
+        "cas-ia",
+        "casia",
+        "ia-cas",
+        "institute-of-automation-cas"
+      ]
+    },
+    "striding-ai": {
+      "label": "跨步智能（Striding AI）",
+      "aliases": [
+        "striding-ai",
+        "striding",
+        "stridingai"
+      ]
+    },
+    "infinigence": {
+      "label": "无问芯穹（Infinigence AI）",
+      "aliases": [
+        "infinigence",
+        "infinigence-ai",
+        "infini-ai"
+      ]
+    },
+    "rochester": {
+      "label": "罗切斯特大学（University of Rochester）",
+      "aliases": [
+        "rochester",
+        "u-rochester",
+        "urochester"
+      ]
+    },
+    "bmw-nanjing": {
+      "label": "宝马南京信息技术（BMW Nanjing Information Technology）",
+      "aliases": [
+        "bmw-nanjing",
+        "bmw",
+        "bmw-nj"
+      ]
     }
   }
 }
