@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-22] ingest | sources/papers/pot_vla_arxiv_2607_18016.md、patch_policy_arxiv_2607_18236.md、world_translation_arxiv_2607_18154.md、mevion_arxiv_2607_17970.md + sites/repos — 接入每日机器人情报四项高价值资料
+
+- **新建 wiki：** [`wiki/entities/paper-pot-vla.md`](wiki/entities/paper-pot-vla.md)、[`wiki/entities/paper-patch-policy.md`](wiki/entities/paper-patch-policy.md)、[`wiki/entities/paper-world-translation.md`](wiki/entities/paper-world-translation.md)、[`wiki/entities/paper-mevion.md`](wiki/entities/paper-mevion.md)
+- **开源核查：** MEVION **已开源、研究原型**；Patch Policy **代码待发布**；POT-VLA 与 World Translation **未发现官方代码入口**（截至 2026-07-22）。
+- **交叉更新：** [`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/entities/unitree-g1.md`](wiki/entities/unitree-g1.md)、[`wiki/concepts/sim2real.md`](wiki/concepts/sim2real.md)、[`wiki/tasks/bimanual-manipulation.md`](wiki/tasks/bimanual-manipulation.md)
+
 ## [2026-07-21] concept | wiki/concepts/torque-source-abstraction-gap.md — V30 P1 执行器驱动链选型闭环知识链第二页（力矩源抽象 Gap）
 
 - 新建概念页：「理想力矩源」抽象 ↔ 真实执行器 取舍——明示 RL/MPC 策略把执行器当理想力矩源的抽象在摩擦/齿隙/带宽/热约束下何时破，讲成「策略力矩指令能否被真实驱动链忠实执行」的物理根因；配抽象成立条件表、四层 gap 归因 Mermaid、收窄力矩执行 gap 三条工程路线（摩擦辨识补偿 / 执行器网络 / 力矩传感闭环）与常见误判/误区速查、英文缩写表。
