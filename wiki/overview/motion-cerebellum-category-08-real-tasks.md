@@ -2,7 +2,7 @@
 type: overview
 tags: [motion-cerebellum, humanoid, category-hub, survey, real-tasks]
 status: complete
-updated: 2026-07-02
+updated: 2026-07-22
 summary: "运动小脑 64 篇长文 · H 真实任务（8 篇）— 任务等站位。"
 related:
   - ./humanoid-motion-cerebellum-technology-map.md

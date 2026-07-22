@@ -25,3 +25,10 @@
 
 - 微信公众号编译：[wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md](../blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md)
 - 原始抓取：[wechat_humanoid_loco_manip_161_2026-06-26.md](../raw/wechat_humanoid_loco_manip_161_2026-06-26.md)
+
+## 项目页与开源状态核查（2026-07-22）
+
+- **论文/项目：** <https://loco-hmc.github.io>。
+- **代码：** 未确认官方训练/部署仓库；可见 GitHub 账户仅项目页仓库。
+- **关键结论：** HMC-Controller 在 torque space 混合 position、impedance、hybrid force-position；HMC-Policy 用 MoE routing 从大量位置示范和少量力感知示范学习，真机 challenging tasks 相对基线提升超过 50%。
+- **wiki 深化：** [paper-loco-manip-161-039-hmc](../../wiki/entities/paper-loco-manip-161-039-hmc.md)。

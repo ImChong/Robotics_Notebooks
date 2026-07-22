@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, contact-rich, category-hub, survey, generative-models, sim2real]
 status: complete
-updated: 2026-07-03
+updated: 2026-07-22
 summary: "Loco-Manip 接触专题 · 03 生成式补数（7 篇）— 生成视频、3D 资产、高斯场景与仿真能否提供可训练接触轨迹？"
 related:
   - ./loco-manip-contact-technology-map.md

@@ -1,78 +1,133 @@
 ---
-
 type: entity
-tags: [paper, loco-manipulation, loco-manip-survey, humanoid, hkust-gz, ustc, nus, hkust, hku]
+tags: [paper, loco-manipulation, loco-manip-survey, loco-manip-contact-survey, generative-data, generated-video, contact-aware-planning, zero-shot, unitree-g1, hkust-gz, ustc, nus, hku]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-22
 arxiv: "2606.12995"
-summary: "生成 HOI 视频 → 提取接触线索 → 机器人优化目标（≠ SimGenHOI）。"
+venue: "arXiv 2026"
 related:
   - ../overview/loco-manip-8-papers-technology-map.md
   - ../overview/loco-manip-category-02-synthetic-data.md
+  - ../overview/loco-manip-contact-category-03-generative-data.md
+  - ../tasks/loco-manipulation.md
 sources:
   - ../../sources/papers/loco_manip_survey_03_genhoi.md
   - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md
-  - ../../sources/papers/loco_manip_8_papers_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md
+summary: "GenHOI（arXiv:2606.12995）用生成视频作为零样本 HOI 动作先验：从机器人观测重建 real-to-sim 首帧，用 Seedance 2.0 生成 5 s 交互视频，抽取接触关键帧/手物接触区域并做几何优化；四类物体平均成功率 76.7%，平均手-接触点误差 0.22 m。"
 ---
 
 # GenHOI
 
-**GenHOI** 收录于 [具身智能研究室 · Loco-Manip 8 篇周报](https://mp.weixin.qq.com/s/Ez87ljBYmCyIpLKjMjEyaQ) **第 03/8** 篇，归类为 **02 生成与仿真数据**。
+**GenHOI**（*Contact-Aware Humanoid-Object Interaction by Imitating Generated Videos without Task-Specific Training*）探索一条极轻量的生成式路线：不为每个任务训练新策略，也不收集真实示范，而是让机器人基于自身观测生成一段任务视频，再从视频中提取接触几何约束，优化成可跟踪的全身轨迹。
 
 ## 一句话定义
 
-生成 HOI 视频 → 提取接触线索 → 机器人优化目标（≠ SimGenHOI）。
+GenHOI 把生成视频当作接触先验，通过关键帧接触检测、几何约束和闭环跟踪，让 Unitree G1 零样本执行多类物体交互。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| Loco-Manip | Loco-Manipulation | 行走与操作动力学耦合的全身任务 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制层 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态策略 |
+| GenHOI | Generated-video Humanoid-Object Interaction | 本文框架名 |
+| HOI | Human/Humanoid-Object Interaction | 人形机器人与物体交互 |
+| OOD | Out-of-Distribution | 未见机器人-物体相对位置评测 |
+| VLM | Vision-Language Model | Doubao-Seed-2.0/GPT-5.5 用于关键帧选择 |
+| RGB-D | RGB + Depth | onboard 物体 pose / real-to-sim 重建输入 |
+| GMR | General Motion Retargeting | 视频恢复人体动作到机器人轨迹的重定向工具 |
 
 ## 为什么重要
 
-- 生成 HOI 视频 → 提取接触线索 → 机器人优化目标（≠ SimGenHOI）。
+- **生成视频不直接控制机器人**：GenHOI 只把视频中的接触事件、接触区域和粗运动作为优化先验，避免把 2D 视频尺度错误直接下发。
+- **无需 task-specific training**：对 box、chair、table、cylinder 四类任务，每个任务从生成视频提取参考，不像 HDMI 需要约 70 min 单任务训练。
+- **接触约束是成败关键**：去掉 contact detection、trajectory smoothing 或 inward bias 后平均成功率均低于 50%，说明生成视频必须被几何/接触校正。
+- **部署传感闭环**：真实机器人用 D435i + Mid360 LiDAR 估计对象和全局位姿，再在线优化轨迹。
 
-## 核心信息（索引级）
+## 流程总览
 
-| 字段 | 内容 |
+```mermaid
+flowchart TB
+  obs["onboard RGB-D / object mesh"] --> sim["MuJoCo real-to-sim first frame"]
+  sim --> video["Seedance 2.0 生成 5 s HOI video"]
+  video --> key["VLM 关键接触帧选择"]
+  key --> contact["Depth Anything + VitPose + hand mask\n手物接触区域"]
+  contact --> opt["root/waist/upper-body 几何优化\n+ inward bias + smoothing"]
+  opt --> track["closed-loop trajectory tracking"]
+  track --> g1["Unitree G1 real/sim execution"]
+```
+
+## 核心原理（详细）
+
+### 1. Real-to-sim video generation
+
+GenHOI 先根据 onboard RGB-D 估计对象 6D pose（FoundationPose 或 AprilTag）并在 MuJoCo 中渲染机器人-物体首帧，然后把首帧和语言命令送入 Seedance 2.0 生成 **5 s** 固定视角视频。生成视频提供「该怎么接触」的视觉示例。
+
+### 2. Contact-aware geometric constraints
+
+系统在生成视频最后 **3 s** 内每 **0.5 s** 采样候选帧，拼接后交给 VLM 选出首次双手接触关键帧。之后用 Depth Anything 恢复 metric depth，用 VitPose/hand mask 得到左右手 3D 接触点；如果手被物体遮挡，则沿相机射线取与物体 mesh 的最后交点。
+
+### 3. Geometry-guided trajectory optimization
+
+优化变量只包含终端 root position/yaw、root height、waist pitch 和 14 个上肢关节，而不是全身轨迹。位置权重 `w_p=20`、旋转权重 `w_R=5`、正则 `w_reg=0.25`，并加入 **δ=0.06 m inward bias**，让双手目标略向内压，形成虚拟夹持趋势。终端修正用 **K=90 frames（最后 3 s）** quintic smoothstep 平滑回传。
+
+### 4. Closed-loop tracking
+
+优化后的轨迹由通用 humanoid tracking controller 执行：下肢跟 global root trajectory，上身跟 waist/arm joint trajectory。真机平台为 Unitree G1，传感含 Mid360 LiDAR 与 Intel RealSense D435i，计算工作站为 i9 + RTX 4080。
+
+## 关键实验数字
+
+| 指标 | 结果 |
 |------|------|
-| 编号 | 03/8 |
-| 分组 | 02 生成与仿真数据 |
-| 出处 | 2026 · arXiv:2606.12995 |
-| 论文/项目 | <https://arxiv.org/abs/2606.12995> |
+| 四类物体 | box、asymmetric chair carrying、table lifting from below、cylinder enveloping |
+| 平均成功率 | Ours **76.7%**；ExoActor **11.7%**；无平滑 **28.3%**；无接触检测 **41.7%**；无 inward bias **43.3%** |
+| 平均手-接触点误差 | Ours **0.22 m**；ExoActor **0.75 m** |
+| 学习/生成时间 | HDMI ~**70 min**；GenHOI **1 min 51 s** |
+| OOD 距离 | Ours 在 -1.0/+1.5 m 相对偏移仍 **8/10**；ExoActor 全 0/10 |
+| VLM 关键帧 | Doubao-Seed-2.0 **95.0%**；GPT-5.5 **96.7%** |
+| 失败分析 | 50 次 box-grasping 中 **34/50** 全流程成功 |
 
-## 核心机制（归纳）
+## 源码运行时序图
 
-### 1）策展导读要点
+**不适用**：项目页 <https://genhoi-humanoid.github.io/> 和 arXiv 页面未列出官方 GitHub/可运行代码链接。截至 2026-07-22 仅确认项目展示与论文。
 
-生成 HOI 视频 → 提取接触线索 → 机器人优化目标（≠ SimGenHOI）。
+## 工程实践（含开源状态）
 
-## 常见误区
+| 项 | 结论 |
+|----|------|
+| 项目页 | <https://genhoi-humanoid.github.io/> |
+| 代码 | 未列出官方代码仓库 |
+| 依赖资产 | 物体 mesh、MuJoCo 场景、Seedance 2.0、Depth Anything、VitPose、GMR、tracking controller |
+| 真机 | Unitree G1 + Mid360 LiDAR + RealSense D435i |
+| 主要风险 | 生成视频质量、接触关键帧检测、低层 tracking 误差 |
 
-1. 策展编译不能替代原文消融与实机协议；量化指标以 PDF 为准。
+## 局限与风险
 
-## 实验与评测
+- **需要准确物体 mesh**：未见物体需要在线重建或 shape completion。
+- **受视频生成质量制约**：失败包括 camera drift、object deformation、hallucination。
+- **当前手部不灵巧**：缺少 dexterous hands，任务主要是粗接触/包络/搬运。
+- **不是策略学习范式替代品**：低层 tracker 能力仍决定执行上限。
 
-- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
-- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+## 关联页面
 
-## 与其他页面的关系
-
-- 技术地图：[loco-manip-8-papers-technology-map.md](../overview/loco-manip-8-papers-technology-map.md)
-- 分类 hub：[loco-manip-category-02-synthetic-data.md](../overview/loco-manip-category-02-synthetic-data.md)
-- 原始 source：[loco_manip_survey_03_genhoi.md](../../sources/papers/loco_manip_survey_03_genhoi.md)
+- [Loco-Manip 接触分类 03：生成式路线补数据](../overview/loco-manip-contact-category-03-generative-data.md)
+- [Loco-Manip 8 篇 · 生成与仿真数据](../overview/loco-manip-category-02-synthetic-data.md)
+- [SimGenHOI](./paper-notebook-simgenhoi-physically-realistic-whole-body-humano.md)
+- [GRAIL](./paper-grail.md)
+- [OASIS](./paper-loco-manip-04-oasis.md)
+- [GMR](../methods/motion-retargeting-gmr.md)
 
 ## 参考来源
 
-- [loco_manip_survey_03_genhoi.md](../../sources/papers/loco_manip_survey_03_genhoi.md) — Loco-Manip 8 篇策展摘录
+- [loco_manip_survey_03_genhoi.md](../../sources/papers/loco_manip_survey_03_genhoi.md)
 - [loco_manip_8_papers_catalog.md](../../sources/papers/loco_manip_8_papers_catalog.md)
 - [wechat_embodied_ai_lab_loco_manip_8_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md)
-- 论文/项目：<https://arxiv.org/abs/2606.12995>
+- [loco-manip-contact-category-03-generative-data](../overview/loco-manip-contact-category-03-generative-data.md)
+- [wechat_embodied_ai_lab_loco_manip_contact_survey.md](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md)
+- Bi et al., *GenHOI: Contact-Aware Humanoid-Object Interaction by Imitating Generated Videos without Task-Specific Training*, arXiv:2606.12995, 2026. <https://arxiv.org/abs/2606.12995>
+- 官方项目页：<https://genhoi-humanoid.github.io/>
 
 ## 推荐继续阅读
 
-- [Loco-Manip 8 篇技术地图](../overview/loco-manip-8-papers-technology-map.md)
-- [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
+- [GenHOI 项目页](https://genhoi-humanoid.github.io/)
+- [Seedance 2.0](https://arxiv.org/abs/2604.14148)
+- [Depth Anything V2](https://depth-anything-v2.github.io/)

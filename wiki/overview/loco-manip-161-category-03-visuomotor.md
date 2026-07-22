@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, humanoid, category-hub, survey]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-22
 summary: "人形 Loco-Manip 161 篇 · 03 视觉感知驱动的人形移动操作（37 篇）— 视觉完成目标定位、场景理解和操作闭环。"
 related:
   - ./humanoid-loco-manip-161-papers-technology-map.md

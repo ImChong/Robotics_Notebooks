@@ -20,9 +20,18 @@
 
 ## 对 wiki 的映射
 
-  - （待交叉链接）
+- [paper-hrl-stack-05-humanx](../../wiki/entities/paper-hrl-stack-05-humanx.md)
+- [humanoid-rl-motion-control-body-system-stack](../../wiki/overview/humanoid-rl-motion-control-body-system-stack.md)
+- [loco-manip-contact-category-01-contact-data](../../wiki/overview/loco-manip-contact-category-01-contact-data.md)
 
 ## 参考来源（原始）
 
 - 微信公众号编译：[wechat_embodied_ai_lab_humanoid_rl_motion_survey.md](../blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)
 - 姊妹篇 AMP 专题：[wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md](../blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md)
+
+## 项目页与开源状态核查（2026-07-22）
+
+- **论文/项目：** arXiv:2602.02473；项目页 <https://wyhuai.github.io/human-x/>。
+- **代码：** 项目页 Code 链接指向 `github.com/wyhuai/humanx`，本次核查返回 404；`wyhuai/human-x` 为项目页资源仓，不视作可运行实现。
+- **关键数字：** 五类域、10 个技能、zero-shot transfer 到 Unitree G1；human-robot passing 超 10 consecutive cycles；泛化成功率超过 prior methods 8×。
+- **wiki 深化：** [paper-hrl-stack-05-humanx](../../wiki/entities/paper-hrl-stack-05-humanx.md)。

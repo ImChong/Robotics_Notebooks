@@ -2,10 +2,12 @@
 type: method
 tags: [rl, world-model, teacher-student, imitation-learning, sim2real, paper, humanoid, motion-control, body-system-stack, hkust-gz, xiaomi-robotics, eth, hkust, tsinghua]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-22
 venue: curated
 related:
+  - ../entities/paper-haic.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
+  - ../overview/loco-manip-contact-category-05-vla-world-models.md
   - ../overview/humanoid-amp-motion-prior-survey.md
   - ./model-based-rl.md
   - ./amp-reward.md
@@ -15,57 +17,61 @@ sources:
   - ../../sources/papers/humanoid_rl_stack_38_haic_humanoid_agile_object_interaction_control_v.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
-summary: "HAIC (Hierarchical AI Controller) 提出了一种结合世界模型的两阶段教师-学生训练范式，用于解决物体交互任务中的感知-动作协调难题。"
+  - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md
+summary: "HAIC（Humanoid Agile Object Interaction Control）用 dynamics-aware world model 从本体历史预测欠驱动物体的速度/加速度，并通过非对称微调把特权动力学信息蒸馏到可部署学生策略。"
 ---
 
-# HAIC: 基于世界模型的教师-学生训练
+# HAIC: 动力学感知世界模型控制
 
-在复杂的物体交互任务（如搬运、协作、精细操作）中，机器人不仅要模仿姿态，还要实时预测物体状态和外力。**HAIC** 提出了一种创新的训练范式，通过世界模型（World Model）将特权信息（Privileged Info）有效地转化为可部署的学生策略。
+**HAIC**（*Humanoid Agile Object Interaction Control via Dynamics-Aware World Model*）不是泛称的分层控制器，而是面向 **underactuated objects** 的人形控制方法：从可部署的本体历史预测对象高阶动力学状态，并把预测投影到几何先验，形成动态占据与接触可供性。
 
 ## 两阶段训练范式
 
 HAIC 的核心在于如何平滑地从“全知全能”的教师过渡到“仅靠观测”的学生。
 
 ### 第一阶段：联合预训练 (Joint Pre-training)
-- **教师策略 (Teacher Policy)**：输入特权信息（物体精确位姿、外力、质量等），输出专家动作和价值估计。
-- **世界模型 (World Model)**：**关键枢纽**。它的目标是输入可观测的本体感知历史，预测特权特征。
-- **学生策略 (Student Policy)**：输入包括世界模型预测的特征、本体感知历史和参考运动。
-- **目标**：三者同步更新。通过蒸馏损失让学生策略模仿教师的动作。
+- **教师策略 (Teacher Policy)**：输入特权对象状态、几何和接触信息，输出专家动作和价值估计。
+- **动力学世界模型 (Dynamics-Aware World Model)**：输入本体历史，预测对象 velocity / acceleration 等高阶状态。
+- **学生策略 (Student Policy)**：输入本体历史、世界模型预测和动态占据表示，学习可部署动作。
+- **目标**：让学生在训练早期获得接近 teacher 的物理后果感知，而不是只记忆接触姿态。
 
-### 第二阶段：策略微调与对齐 (Fine-tuning & Alignment)
-- **教师冻结**：教师策略的 Actor 部分被冻结，仅 Critic 部分继续提供价值信号（Advantage）。
-- **世界模型对齐**：通过指数移动平均 (EMA) 更新，继续精细化对特权特征的预测。
-- **学生进化**：学生策略使用教师 Critic 提供的信号进行强化学习更新。
-- **结果**：学生策略学会了在没有真特权信息的情况下，利用世界模型的预测能力完成任务。
+### 第二阶段：非对称微调 (Asymmetric Fine-tuning)
+- **教师/critic 保持特权视角**：训练侧仍能访问更完整的对象状态。
+- **世界模型跟随 student 分布**：持续适配学生策略探索出的状态分布，减少 rollout 分布偏移。
+- **学生策略部署约束**：部署时不依赖外部对象状态估计，只用本体历史和 learned world model。
+- **结果**：在滑板、推车、拉车和箱子跨地形任务中补偿欠驱动物体的惯性扰动与视觉遮挡。
 
 ## 主要技术路线
 
 | 模块 | 角色 | 训练方法 |
 |------|-----|---------|
-| **教师策略** | 专家提供者 | 使用特权信息进行标准 RL 训练 |
-| **世界模型** | 桥梁/感知层 | 监督学习：利用本体观测预测特权特征 |
-| **学生策略** | 部署模型 | 模仿教师动作 + 世界模型预测特征输入 |
-| **训练范式** | 两阶段蒸馏 | 从“联合训练”过渡到“固定教师、强化学生” |
+| **教师策略** | 特权动力学专家 | 使用对象状态、几何和接触信息训练 |
+| **世界模型** | 可部署动力学感知层 | 从 proprioceptive history 预测 velocity / acceleration |
+| **动态占据** | 空间接地表示 | 把预测投影到几何先验，给出碰撞边界与接触可供性 |
+| **学生策略** | 真机部署策略 | 只依赖本体历史和 world-model 输出 |
+| **训练范式** | 非对称微调 | 让 world model 适配 student rollout 分布 |
 
 ## 技术特色
 
-- **特权特征预测**：世界模型不只是预测图像，而是预测对任务关键的物理特征（如“物体现在是否倾斜”）。
-- **解耦设计**：感知预测（世界模型）与动作执行（学生 Actor）相互独立又紧密配合。
-- **真机鲁棒性**：由于在训练中模拟了预测误差，学生策略在真机部署时对感知噪声具有极强的免疫力。
+- **预测动力学而非图像**：HAIC 关心对象速度、加速度和动态占据，而不是生成未来帧。
+- **本体历史补盲区**：对象遮挡相机或遮住地面时，策略仍可从接触反馈和身体运动推断后果。
+- **开源路径清晰**：官方仓库含 `scripts/train.py`、`scripts/play.py`、Isaac Sim 任务配置与 MuJoCo Sim2Sim 入口。
 
 ## 典型应用场景
 
-- **物体搬运**：在不知道物体准确重量的情况下，通过世界模型感知负重并调整姿态。
-- **协作任务**：预测合作伙伴的意图或外力变化。
+- **滑板 / 推车 / 拉车**：对象有非完整约束和独立惯性，不能当作刚性末端目标。
+- **装箱后运输**：多对象顺序交互要求策略记住已改变的载荷与接触状态。
+- **坡面 / 楼梯 / 平台复合地形**：箱体或车体遮挡视觉时，动态占据可辅助避碰和稳定。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| AI | Artificial Intelligence | 人工智能 |
-| Privileged Info | Privileged Information | 训练时可访问、部署时不可见的额外状态 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| HAIC | Humanoid Agile Object Interaction Control | 面向欠驱动物体的人形交互控制框架 |
+| WM | World Model | 从本体历史预测对象高阶动力学状态 |
+| HOI | Humanoid-Object Interaction | 人形机器人与物体的全身交互任务 |
+| Sim2Sim | Simulation to Simulation | Isaac Sim 策略到 MuJoCo 验证/部署链路 |
+| RL | Reinforcement Learning | 通过交互优化长期回报的训练范式 |
 
 ## Survey 坐标（策展索引）
 
@@ -78,14 +84,22 @@ HAIC 的核心在于如何平滑地从“全知全能”的教师过渡到“仅
 | 出处 | curated |
 | 索引来源 | [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) |
 
+## 论文实体
+
+- [HAIC 论文实体](../entities/paper-haic.md) — 论文级页面，包含项目页、开源状态、关键实验与源码运行时序图。
+
 ## 参考来源
 
 - [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档《开源运动控制项目》总结。
-- [HAIC 技术报告相关 PDF](../../sources/papers/motion_control_projects.md)
+- [humanoid_rl_stack_38_haic_humanoid_agile_object_interaction_control_v.md](../../sources/papers/humanoid_rl_stack_38_haic_humanoid_agile_object_interaction_control_v.md)
 - 原始抓取：[wechat_humanoid_rl_42_survey_2026-05-26.md](../../sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md)
+- [wechat_embodied_ai_lab_loco_manip_contact_survey.md](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md)
+- 官方项目页：<https://haic-humanoid.github.io/>
+- 官方代码：<https://github.com/ldt29/HAIC>
 
 ## 关联页面
 
 - [Model-Based RL](./model-based-rl.md) — 世界模型在 HAIC 中作为特征提取器。
 - [Privileged Training (特权信息训练)](../concepts/privileged-training.md)
 - [Sim2Real](../concepts/sim2real.md) — 教师-学生蒸馏是解决 Sim2Real 差距的标准模式。
+- [Loco-Manip 接触分类 05：VLA 与世界模型调用](../overview/loco-manip-contact-category-05-vla-world-models.md)

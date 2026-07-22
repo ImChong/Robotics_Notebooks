@@ -1,7 +1,7 @@
 ---
 type: concept
 summary: "Contact Dynamics 研究接触力 (Contact Force)、摩擦锥 (Friction Cone) 和物理约束如何改变机器人动力学，是 locomotion 与操作控制的核心物理基础。"
-updated: 2026-07-20
+updated: 2026-07-22
 ---
 
 # Contact Dynamics

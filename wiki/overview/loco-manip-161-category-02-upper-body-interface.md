@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, humanoid, category-hub, survey]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-22
 summary: "人形 Loco-Manip 161 篇 · 02 上半身中心控制与移动操作接口（24 篇）— 手臂、躯干、根部和末端执行器之间的协同控制。"
 related:
   - ./humanoid-loco-manip-161-papers-technology-map.md

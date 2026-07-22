@@ -25,3 +25,10 @@
 
 - 微信公众号编译：[wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md](../blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md)
 - 原始抓取：[wechat_humanoid_loco_manip_161_2026-06-26.md](../raw/wechat_humanoid_loco_manip_161_2026-06-26.md)
+
+## 项目页与开源状态核查（2026-07-22）
+
+- **论文：** arXiv:2603.01126；项目页 <https://pro-hoi.github.io/>。
+- **代码：** 未确认官方可运行仓库。
+- **关键数字：** OOD MuJoCo Ours w/ FR. grasp success 99.93%、task success 88.38%；真机中速 21/28 grasp success；系统报告超过 15 个连续搬运循环。
+- **wiki 深化：** [paper-loco-manip-161-074-pro-hoi](../../wiki/entities/paper-loco-manip-161-074-pro-hoi.md)。

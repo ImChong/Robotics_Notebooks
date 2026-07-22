@@ -25,3 +25,10 @@
 
 - 微信公众号编译：[wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md](../blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md)
 - 原始抓取：[wechat_humanoid_loco_manip_161_2026-06-26.md](../raw/wechat_humanoid_loco_manip_161_2026-06-26.md)
+
+## 项目页与开源状态核查（2026-07-22）
+
+- **论文/项目：** arXiv:2606.22174；项目页 <https://openhlm-project.github.io/>。
+- **代码：** 项目页未列官方 GitHub/可运行代码。
+- **关键数字：** 水果长程基准 OpenHLM 1.14 h demos 达 87.5% task progress；GR00T N1.6 2.70 h 为 57.5%，Ψ0 为 48.8%；12 个语言任务平均 task progress 超 90%。
+- **wiki 深化：** [paper-loco-manip-161-154-openhlm](../../wiki/entities/paper-loco-manip-161-154-openhlm.md)。

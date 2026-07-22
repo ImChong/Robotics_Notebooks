@@ -20,9 +20,18 @@
 
 ## 对 wiki 的映射
 
-  - （待交叉链接）
+- [paper-hrl-stack-30-wholebodyvla](../../wiki/entities/paper-hrl-stack-30-wholebodyvla.md)
+- [humanoid-rl-motion-control-body-system-stack](../../wiki/overview/humanoid-rl-motion-control-body-system-stack.md)
+- [loco-manip-contact-category-05-vla-world-models](../../wiki/overview/loco-manip-contact-category-05-vla-world-models.md)
 
 ## 参考来源（原始）
 
 - 微信公众号编译：[wechat_embodied_ai_lab_humanoid_rl_motion_survey.md](../blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)
 - 姊妹篇 AMP 专题：[wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md](../blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md)
+
+## 项目页与开源状态核查（2026-07-22）
+
+- **论文/项目：** ICLR 2026, arXiv:2512.11047；项目页 <https://opendrivelab.com/WholeBodyVLA>。
+- **GitHub：** <https://github.com/OpenDriveLab/WholebodyVLA>，MIT；README 明确当前无 open-source codebase 时间表，仓库主要是资源/参考集合。
+- **关键数字：** latent action 约 10 Hz 解码；LMO policy 50 Hz 执行；Agibot X2 cart pushing 负载超过 50 kg。
+- **wiki 深化：** [paper-hrl-stack-30-wholebodyvla](../../wiki/entities/paper-hrl-stack-30-wholebodyvla.md)。

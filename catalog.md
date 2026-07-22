@@ -374,12 +374,14 @@
 - [GaitSpan：从行走到跑步的人形技能生长](wiki/entities/paper-gaitspan-humanoid-locomotion-walking-running.md) — GaitSpan**（*Growing Humanoid Locomotion from Walking to Running*，密歇根大学 / 加州大学伯克利分校 / Skyline High  `📅unknown` `[entity_page]`
 - [Gamma-World（γ-World / Generative Multi-Agent World Model）](wiki/entities/paper-gamma-world-multi-agent.md) — Gamma-World**（*γ-World*，arXiv:2605.28816，[项目页](https://research.nvidia.com/labs/sil/projects/gamma `📅unknown` `[entity_page]`
 - [GaP（Graph-as-Policy）](wiki/entities/paper-gap-graph-as-policy.md) — GaP**（*A Graph-as-Policy Multi-Agent Self-Learning Harness For Variational Automation Tasks*，NVIDI `📅unknown` `[entity_page]`
+- [GentleHumanoid](wiki/entities/paper-gentlehumanoid.md) — GentleHumanoid**（*Learning Upper-body Compliance for Contact-rich Human and Object Interaction*）是接 `📅unknown` `[entity_page]`
 - [GigaWorld-1（World Models for Robot Policy Evaluation · arXiv:2607.02642）](wiki/entities/paper-gigaworld-1-policy-evaluation.md) — GigaWorld-1**（*GigaWorld-1: A Roadmap to Build World Models for Robot Policy Evaluation*，[arXiv:26 `📅unknown` `[entity_page]`
 - [Glob3R：3D 基础模型引导的全局 SfM](wiki/entities/paper-glob3r.md) — Glob3R**（*Glob3R: Global Structure-from-Motion with 3D Foundation Models*，arXiv:[2607.09225](https `📅unknown` `[entity_page]`
 - [GMT（General Motion Tracking for Humanoid Whole-Body Control）](wiki/entities/paper-gmt.md) — GMT**（*GMT: General Motion Tracking for Humanoid Whole-Body Control*，UC San Diego × Simon Fraser U `📅unknown` `[entity_page]`
 - [GPC（Generative Pretrained Controllers）](wiki/entities/paper-gpc-generative-pretrained-controllers.md) — GPC**（*GPC: Large-Scale Generative Pretraining for Transferable Motor Control*，Yi Shi / Yifeng Jia `📅unknown` `[entity_page]`
 - [GRAIL](wiki/entities/paper-grail.md) — GRAIL**（*Generating Humanoid Loco-Manipulation from 3D Assets and Video Priors*，[arXiv:2606.05160 `📅unknown` `[entity_page]`
 - [Green-VLA：分阶段通才 VLA 与人形部署](wiki/entities/paper-greenvla-staged-vla-humanoid.md) — Green-VLA** 是 Sber Robotics Center 提出的 **分阶段 Vision–Language–Action 框架**（arXiv:[2602.00919](https: `📅unknown` `[entity_page]`
+- [HAIC](wiki/entities/paper-haic.md) — HAIC**（*Humanoid Agile Object Interaction Control via Dynamics-Aware World Model*）解决的是 **underactu `📅unknown` `[entity_page]`
 - [HALOMI（Learning Humanoid Loco-Manipulation with Active Perception from Human Demonstrations）](wiki/entities/paper-halomi-humanoid-loco-manipulation.md) — HALOMI**（*Humanoid Active-Perception Loco-Manipulation Interface*，arXiv:2606.18772，[项目页](https://h `📅unknown` `[entity_page]`
 - [HapMorph：多维气动触觉属性渲染框架](wiki/entities/paper-hapmorph-pneumatic-haptic-render.md) — HapMorph**（Chen et al., Scuola Superiore Sant'Anna；[arXiv:2509.05433](https://arxiv.org/abs/2509.0 `📅unknown` `[entity_page]`
 - [Harness VLA（Memory-Guided Agentic Manipulation · arXiv:2607.08448）](wiki/entities/paper-harness-vla.md) — Harness VLA**（*Steering Frozen VLAs into Reliable Manipulation Primitives via Memory-Guided Agents `📅unknown` `[entity_page]`
@@ -392,7 +394,7 @@
 - [Make Tracking Easy](wiki/entities/paper-hrl-stack-02-make_tracking_easy.md) — Make Tracking Easy** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUP `📅unknown` `[entity_page]`
 - [OmniRetarget](wiki/entities/paper-hrl-stack-03-omniretarget.md) — OmniRetarget**（*OmniRetarget: Interaction-Preserving Data Generation for Humanoid Whole-Body Loco- `📅unknown` `[entity_page]`
 - [From Generated Human Videos to Physically Plausible Robot Trajectories](wiki/entities/paper-hrl-stack-04-from_generated_human_videos_to_physi.md) — From Generated Human Videos to Physically Plausible Robot Trajectories** 收录于 [具身智能研究室 · 42 篇 human `📅unknown` `[entity_page]`
-- [HumanX](wiki/entities/paper-hrl-stack-05-humanx.md) — HumanX** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA `📅unknown` `[entity_page]`
+- [HumanX](wiki/entities/paper-hrl-stack-05-humanx.md) — HumanX**（*Toward Agile and Generalizable Humanoid Interaction Skills from Human Videos*）是一条从人类视频到人 `📅unknown` `[entity_page]`
 - [HDMI](wiki/entities/paper-hrl-stack-06-hdmi.md) — HDMI**（*HDMI: Learning Interactive Humanoid Whole-Body Control from Human Videos*，<https://hdmi-hu `📅unknown` `[entity_page]`
 - [Learning Human-to-Humanoid Real-Time Whole-Body Teleoperation](wiki/entities/paper-hrl-stack-07-learning_human_to_humanoid_real_time.md) — Learning Human-to-Humanoid Real-Time Whole-Body Teleoperation** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动 `📅unknown` `[entity_page]`
 - [OmniH2O](wiki/entities/paper-hrl-stack-08-omnih2o.md) — OmniH2O** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZu `📅unknown` `[entity_page]`
@@ -404,25 +406,25 @@
 - [ASAP](wiki/entities/paper-hrl-stack-25-asap.md) — ASAP** 收录于 具身智能研究室 · 42 篇 humanoid RL 运动控制长文  `📅unknown` `[entity_page]`
 - [Learning Vision-Driven Reactive Soccer Skills for Humanoid Robots](wiki/entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md) — Learning Vision-Driven Reactive Soccer Skills for Humanoid Robots** 收录于 [具身智能研究室 · 42 篇 humanoid R `📅unknown` `[entity_page]`
 - [Learning Whole-Body Humanoid Locomotion via Motion Generation and Motion Tracking](wiki/entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md) — Learning Whole-Body Humanoid Locomotion via Motion Generation and Motion Tracking**（arXiv:[2604.17 `📅unknown` `[entity_page]`
-- [WholeBodyVLA](wiki/entities/paper-hrl-stack-30-wholebodyvla.md) — WholeBodyVLA** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzf `📅unknown` `[entity_page]`
+- [WholeBodyVLA](wiki/entities/paper-hrl-stack-30-wholebodyvla.md) — WholeBodyVLA**（*Towards Unified Latent VLA for Whole-body Loco-manipulation Control*）把全身移动操作拆成「高层  `📅unknown` `[entity_page]`
 - [MetaWorld](wiki/entities/paper-hrl-stack-32-metaworld.md) — MetaWorld** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-p `📅unknown` `[entity_page]`
 - [Ego-Vision World Model for Humanoid Contact Planning](wiki/entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md) — Ego-Vision World Model for Humanoid Contact Planning** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](htt `📅unknown` `[entity_page]`
 - [GR00T N1](wiki/entities/paper-hrl-stack-34-gr00t_n1.md) — GR00T N1**（*An Open Foundation Model for Generalist Humanoid Robots*，[arXiv:2503.14734](https://ar `📅unknown` `[entity_page]`
 - [DreamDojo](wiki/entities/paper-hrl-stack-35-dreamdojo.md) — DreamDojo** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-p `📅unknown` `[entity_page]`
-- [CHIP](wiki/entities/paper-hrl-stack-36-chip.md) — CHIP** 收录于 具身智能研究室 · 42 篇 humanoid RL 运动控制长文  `📅unknown` `[entity_page]`
+- [CHIP](wiki/entities/paper-hrl-stack-36-chip.md) — CHIP**（*Learning Adaptive Compliance for Humanoid Control through Hindsight Perturbation*）把末端刚度变成  `📅unknown` `[entity_page]`
 - [Closing Sim-to-Real Gap for Heavy-loaded Humanoid Agile Motion Skills via Differentiable Simulation](wiki/entities/paper-hrl-stack-39-closing_sim_to_real_gap_for_heavy_lo.md) — Closing Sim-to-Real Gap for Heavy-loaded Humanoid Agile Motion Skills via Differentiable Simulatio `📅unknown` `[entity_page]`
 - [SafeFall](wiki/entities/paper-hrl-stack-41-safefall.md) — SafeFall** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZ `📅unknown` `[entity_page]`
-- [Thor](wiki/entities/paper-hrl-stack-42-thor.md) — Thor** 收录于 具身智能研究室 · 42 篇 humanoid RL 运动控制长文  `📅unknown` `[entity_page]`
+- [Thor](wiki/entities/paper-hrl-stack-42-thor.md) — Thor**（*Towards Human-Level Whole-Body Reactions under Intense Contact-Rich Environments*）研究人形机器人在 `📅unknown` `[entity_page]`
 - [HTD-Refine：对齐高阶时序动力学的单目人体运动恢复](wiki/entities/paper-htd-refine-monocular-hmr.md) — HTD-Refine**（arXiv:2605.26879，CVPR 2026 Oral Award Candidate，浙大 / Ant / UT Austin）研究 **单目 world-gr `📅unknown` `[entity_page]`
-- [Human-as-Humanoid](wiki/entities/paper-human-as-humanoid.md) — Human-as-Humanoid** 收录于 [具身智能研究室 · Loco-Manip 接触专题](https://mp.weixin.qq.com/s/UjShbwl8p1h9ukymfiR `📅unknown` `[entity_page]`
-- [Humanoid-DART](wiki/entities/paper-humanoid-dart.md) — Humanoid-DART**（arXiv:2606.26855，MPI-IS 等）收录于 [具身智能研究室 · Loco-Manip 接触专题](https://mp.weixin.qq.com `📅unknown` `[entity_page]`
+- [Human-as-Humanoid](wiki/entities/paper-human-as-humanoid.md) — Human-as-Humanoid: Enabling Zero-Shot Humanoid Learning from Ego-Exo Human Videos with Human-Align `📅unknown` `[entity_page]`
+- [Humanoid-DART](wiki/entities/paper-humanoid-dart.md) — Humanoid-DART: Humanoid Loco-Manipulation using Diffusion-guided Augmentation through Relabeling a `📅unknown` `[entity_page]`
 - [Humanoid-GPT（Scaling Data and Structure for Zero-Shot Motion Tracking）](wiki/entities/paper-humanoid-gpt.md) — Humanoid-GPT** 是清华、Galbot、上交、北大与期智等团队的 **人形全身在线 motion tracking** 工作（arXiv:2606.03985，项目页标注 **CVPR `📅unknown` `[entity_page]`
 - [Swarm Intelligence for Collaborative Play in Humanoid Soccer Teams](wiki/entities/paper-humanoid-soccer-swarm-intelligence.md) — Nadiri & Rad（Sensors 2025, 25(11):3496）** 提出面向 **人形足球机器人队** 的 **生物启发式去中心化群控框架**：在部分可观测、高动态对抗场上，用  `📅unknown` `[entity_page]`
 - [Humanoid Surgeon（In Vivo Laparoscopic Feasibility）](wiki/entities/paper-humanoid-surgeon-in-vivo-laparoscopy.md) — Humanoid Surgeon**（*In vivo feasibility study of humanoid robots in surgery*，Zekai Liang / Michael `📅unknown` `[entity_page]`
 - [HumanoidArena（Egocentric Hierarchical Whole-body Benchmark）](wiki/entities/paper-humanoidarena.md) — HumanoidArena** 是香港科技大学（广州）、北京工业大学、哈尔滨工业大学（深圳）、深圳北理莫斯科大学与京东探索研究院等团队的 **仿真优先人形全身学习基准**（arXiv:2606.1 `📅unknown` `[entity_page]`
 - [HumanoidMimicGen](wiki/entities/paper-humanoidmimicgen.md) — HumanoidMimicGen** 是 NVIDIA 与 UT Austin 团队的 **人形 loco-manipulation 合成示范生成** 论文（arXiv:2605.27724，Op `📅unknown` `[entity_page]`
-- [HumanoidUMI](wiki/entities/paper-humanoidumi.md) — HumanoidUMI**（arXiv:2606.27239，BAAI）收录于 [具身智能研究室 · Loco-Manip 接触专题](https://mp.weixin.qq.com/s/UjS `📅unknown` `[entity_page]`
-- [Imagine2Real](wiki/entities/paper-imagine2real-zero-shot-hoi.md) — Imagine2Real**（arXiv:2605.22272，ZJU / Shanghai AI Lab 等）收录于 [具身智能研究室 · Loco-Manip 接触专题](https://mp `📅unknown` `[entity_page]`
+- [HumanoidUMI](wiki/entities/paper-humanoidumi.md) — HumanoidUMI: Bridging Robot-Free Demonstrations and Humanoid Whole-Body Manipulation**（arXiv:2606. `📅unknown` `[entity_page]`
+- [Imagine2Real](wiki/entities/paper-imagine2real-zero-shot-hoi.md) — Imagine2Real: Towards Zero-shot Humanoid-Object Interaction via Video Generative Priors**（arXiv:26 `📅unknown` `[entity_page]`
 - [InfiniteDiffusion / Terrain Diffusion（学习式无限地形生成）](wiki/entities/paper-infinite-diffusion-terrain-diffusion.md) — InfiniteDiffusion**（*Bridging Learned Fidelity and Procedural Utility for Open-World Terrain Gener `📅unknown` `[entity_page]`
 - [InternVLA-A1.5：理解、潜式前瞻与动作的统一 VLA](wiki/entities/paper-internvla-a15-unified-vla.md) — InternVLA-A1.5**（*Unifying Understanding, Latent Foresight, and Action for Compositional Generaliz `📅unknown` `[entity_page]`
 - [InterPrior（Scaling Generative Control for Physics-Based Human-Object Interactions）](wiki/entities/paper-interprior.md) — InterPrior** 是 UIUC 与 Amazon 团队的 **物理仿真人–物交互（HOI）** 论文（arXiv:2602.06035，项目页标注 **CVPR 2026 Highligh `📅unknown` `[entity_page]`
@@ -435,11 +437,11 @@
 - [LEGS（Loco-manipulation via Embodied Gaussian Splatting）](wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md) — LEGS** 是斯坦福团队提出的 **人形 loco-manipulation VLA 数据工厂**（arXiv:2606.01458，2026-05）：在 **无真人遥操作、无种子演示、无人视频 `📅unknown` `[entity_page]`
 - [Ego-Pi](wiki/entities/paper-loco-manip-01-ego-pi.md) — Ego-Pi** 收录于 具身智能研究室 · Loco-Manip 8 篇周报 **第 0 `📅unknown` `[entity_page]`
 - [EgoPriMo](wiki/entities/paper-loco-manip-02-egoprimo.md) — EgoPriMo** 收录于 具身智能研究室 · Loco-Manip 8 篇周报 **第 `📅unknown` `[entity_page]`
-- [GenHOI](wiki/entities/paper-loco-manip-03-genhoi.md) — GenHOI** 收录于 具身智能研究室 · Loco-Manip 8 篇周报 **第 0 `📅unknown` `[entity_page]`
+- [GenHOI](wiki/entities/paper-loco-manip-03-genhoi.md) — GenHOI**（*Contact-Aware Humanoid-Object Interaction by Imitating Generated Videos without Task-Spe `📅unknown` `[entity_page]`
 - [OASIS（From Simulation Data Collection to Real-World Humanoid Loco-Manipulation）](wiki/entities/paper-loco-manip-04-oasis.md) — OASIS** 是中国电信 TeleAI 等团队提出的人形 **loco-manipulation 纯仿真数据框架**（arXiv:2606.08548，2026-06）：用 **真实物体照片 `📅unknown` `[entity_page]`
 - [VAIC](wiki/entities/paper-loco-manip-05-vaic.md) — VAIC** 收录于 具身智能研究室 · Loco-Manip 8 篇周报 **第 05/ `📅unknown` `[entity_page]`
 - [M3imic](wiki/entities/paper-loco-manip-06-m3imic.md) — M3imic** 收录于 具身智能研究室 · Loco-Manip 8 篇周报 **第 0 `📅unknown` `[entity_page]`
-- [WT-UMI](wiki/entities/paper-loco-manip-07-wt-umi.md) — WT-UMI** 收录于 具身智能研究室 · Loco-Manip 8 篇周报 **第 0 `📅unknown` `[entity_page]`
+- [WT-UMI](wiki/entities/paper-loco-manip-07-wt-umi.md) — WT-UMI**（*Whole-Body Tactile UMI for Force-Supervised Humanoid Manipulation*）把 UMI 式示范接口扩展为 **全身触觉 `📅unknown` `[entity_page]`
 - [X-OP](wiki/entities/paper-loco-manip-08-x-op.md) — X-OP** 收录于 具身智能研究室 · Loco-Manip 8 篇周报 **第 08/ `📅unknown` `[entity_page]`
 - [ExBody2](wiki/entities/paper-loco-manip-161-007-exbody2.md) — ExBody2** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A `📅unknown` `[entity_page]`
 - [GMT（Loco-Manip 161 · #009 索引）](wiki/entities/paper-loco-manip-161-009-gmt.md) — GMT** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文 **第 `📅unknown` `[entity_page]`
@@ -453,7 +455,7 @@
 - [人形机器人行为基础模型](wiki/entities/paper-loco-manip-161-027-n027.md) — 人形机器人行为基础模型** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0 `📅unknown` `[entity_page]`
 - [从专家到通用：走向人形机器人的通用全身控制](wiki/entities/paper-loco-manip-161-028-n028.md) — 从专家到通用：走向人形机器人的通用全身控制** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsI `📅unknown` `[entity_page]`
 - [HEX](wiki/entities/paper-loco-manip-161-038-hex.md) — HEX** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文 **第 `📅unknown` `[entity_page]`
-- [HMC](wiki/entities/paper-loco-manip-161-039-hmc.md) — HMC** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文 **第 `📅unknown` `[entity_page]`
+- [HMC](wiki/entities/paper-loco-manip-161-039-hmc.md) — HMC**（*Learning Heterogeneous Meta-Control for Contact-Rich Loco-Manipulation*）关注一个工程上很真实的问题：同一个人形 `📅unknown` `[entity_page]`
 - [HOMIE](wiki/entities/paper-loco-manip-161-040-homie.md) — HOMIE** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文，在 `📅unknown` `[entity_page]`
 - [HiWET](wiki/entities/paper-loco-manip-161-041-hiwet.md) — HiWET** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
 - [Hold](wiki/entities/paper-loco-manip-161-042-hold.md) — Hold** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
@@ -471,9 +473,9 @@
 - [Humanoid](wiki/entities/paper-loco-manip-161-069-humanoid.md) — Humanoid** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A `📅unknown` `[entity_page]`
 - [OmniDP](wiki/entities/paper-loco-manip-161-071-omnidp.md) — OmniDP** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
 - [Opt2Skill](wiki/entities/paper-loco-manip-161-072-opt2skill.md) — Opt2Skill** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3 `📅unknown` `[entity_page]`
-- [Pro-HOI](wiki/entities/paper-loco-manip-161-074-pro-hoi.md) — Pro-HOI** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A `📅unknown` `[entity_page]`
+- [Pro-HOI](wiki/entities/paper-loco-manip-161-074-pro-hoi.md) — Pro-HOI**（*Perceptive Root-guided Humanoid-Object Interaction*）把人形抱箱/搬运任务的高层接口改写为 **root trajector `📅unknown` `[entity_page]`
 - [SIMPLE（Simulation-Based Policy Learning and Evaluation for Humanoid Loco-manipulation）](wiki/entities/paper-loco-manip-161-075-simple.md) — SIMPLE** 是 USC Physical Superintelligence (PSI) Lab 提出的 **人形全身 loco-manipul `📅unknown` `[entity_page]`
-- [SUGAR](wiki/entities/paper-loco-manip-161-076-sugar.md) — SUGAR** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
+- [SUGAR](wiki/entities/paper-loco-manip-161-076-sugar.md) — SUGAR**（*A Scalable Human-Video-Driven Generalizable Humanoid Loco-Manipulation Learning Framework `📅unknown` `[entity_page]`
 - [SkillBlender](wiki/entities/paper-loco-manip-161-077-skillblender.md) — SkillBlender** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR `📅unknown` `[entity_page]`
 - [StageACT](wiki/entities/paper-loco-manip-161-078-stageact.md) — StageACT** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A `📅unknown` `[entity_page]`
 - [SynAgent](wiki/entities/paper-loco-manip-161-079-synagent.md) — SynAgent** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A `📅unknown` `[entity_page]`
@@ -494,9 +496,9 @@
 - [从语言到运动](wiki/entities/paper-loco-manip-161-106-n106.md) — 从语言到运动** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
 - [使用潜在扩散模型进行物理一致的人形移动操作](wiki/entities/paper-loco-manip-161-107-n107.md) — 使用潜在扩散模型进行物理一致的人形移动操作** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsI `📅unknown` `[entity_page]`
 - [揭示数据和模型扩展对人形机器人高级控制的影响](wiki/entities/paper-loco-manip-161-108-n108.md) — 揭示数据和模型扩展对人形机器人高级控制的影响** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9Ehs `📅unknown` `[entity_page]`
-- [FALCON](wiki/entities/paper-loco-manip-161-109-falcon.md) — FALCON** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
+- [FALCON](wiki/entities/paper-loco-manip-161-109-falcon.md) — FALCON**（*Learning Force-Adaptive Humanoid Loco-Manipulation*）面向拉车、开门、重物搬运等 **强力交互**，用双 agent RL 将 `📅unknown` `[entity_page]`
 - [HITTER](wiki/entities/paper-loco-manip-161-111-hitter.md) — HITTER** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
-- [WoCoCo](wiki/entities/paper-loco-manip-161-116-wococo.md) — WoCoCo** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
+- [WoCoCo](wiki/entities/paper-loco-manip-161-116-wococo.md) — WoCoCo**（*Learning Whole-Body Humanoid Control with Sequential Contacts*）把人形控制的难点从单次接触扩展到 **顺序接触 `📅unknown` `[entity_page]`
 - [多阶段强化学习的人形全身羽毛球](wiki/entities/paper-loco-manip-161-117-n117.md) — 多阶段强化学习的人形全身羽毛球** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGd `📅unknown` `[entity_page]`
 - [腿式机械手全身动态投掷](wiki/entities/paper-loco-manip-161-118-n118.md) — 腿式机械手全身动态投掷** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0 `📅unknown` `[entity_page]`
 - [迈向多样化人形乒乓球：具有预测增强的统一强化学习](wiki/entities/paper-loco-manip-161-119-n119.md) — 迈向多样化人形乒乓球：具有预测增强的统一强化学习** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9E `📅unknown` `[entity_page]`
@@ -514,7 +516,7 @@
 - [具有实时基础地形重建的步态自适应感知人形运动](wiki/entities/paper-loco-manip-161-142-n142.md) — 具有实时基础地形重建的步态自适应感知人形运动** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9Ehs `📅unknown` `[entity_page]`
 - [学习人对人的实时全身远程操作。](wiki/entities/paper-loco-manip-161-144-n144.md) — 学习人对人的实时全身远程操作。** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGd `📅unknown` `[entity_page]`
 - [手眼自主配送](wiki/entities/paper-loco-manip-161-145-n145.md) — 手眼自主配送** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
-- [OpenHLM](wiki/entities/paper-loco-manip-161-154-openhlm.md) — OpenHLM** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A `📅unknown` `[entity_page]`
+- [OpenHLM](wiki/entities/paper-loco-manip-161-154-openhlm.md) — OpenHLM**（*An Empirical Recipe for Whole-Body Humanoid Loco-Manipulation*）不是只提出一个模型结构，而是系统比较人形 VLA `📅unknown` `[entity_page]`
 - [PhysiFlow](wiki/entities/paper-loco-manip-161-155-physiflow.md) — PhysiFlow** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3 `📅unknown` `[entity_page]`
 - [Psi0](wiki/entities/paper-loco-manip-161-156-psi0.md) — Psi0** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
 - [REFINE-DP](wiki/entities/paper-loco-manip-161-157-refine-dp.md) — REFINE-DP** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3 `📅unknown` `[entity_page]`
@@ -531,11 +533,11 @@
 - [深海软体可变形机器人：压力等效多模态运动](wiki/entities/paper-miniature-deep-sea-morphable-robot.md) — Miniature deep-sea morphable robot with multimodal locomotion**（Wen Li‡ / Ding Xilun‡（丁希仑），北京航空航天大 `📅unknown` `[entity_page]`
 - [MINT（Mimic Intent, Not Just Trajectories）](wiki/entities/paper-mint-vla.md) — MINT**（*Mimic Intent, Not Just Trajectories*，arXiv:2602.08602，**RSS 2026**）由上海交通大学与上海创智学院等提出：认为 VL `📅unknown` `[entity_page]`
 - [主动空间大脑与泛化动作小脑](wiki/entities/paper-motion-cerebellum-active-spatial-brain-generalized-cerebellum.md) — 主动空间大脑与泛化动作小脑** 收录于 具身智能研究室 · 运动小脑 64 篇长文 **第 `📅unknown` `[entity_page]`
-- [CEER](wiki/entities/paper-motion-cerebellum-ceer.md) — CEER** 收录于 具身智能研究室 · 运动小脑 64 篇长文 **第 47/64**  `📅unknown` `[entity_page]`
+- [CEER](wiki/entities/paper-motion-cerebellum-ceer.md) — CEER**（*Compliant End-Effector and Root Control as a Unified Interface for Hierarchical Humanoid L `📅unknown` `[entity_page]`
 - [ConstrainedMimic](wiki/entities/paper-motion-cerebellum-constrainedmimic.md) — ConstrainedMimic** 收录于 具身智能研究室 · 运动小脑 64 篇长文  `📅unknown` `[entity_page]`
 - [GuideWalk](wiki/entities/paper-motion-cerebellum-guidewalk.md) — GuideWalk** 收录于 具身智能研究室 · 运动小脑 64 篇长文 **第 01/ `📅unknown` `[entity_page]`
 - [HANDOFF](wiki/entities/paper-motion-cerebellum-handoff.md) — HANDOFF** 收录于 具身智能研究室 · 运动小脑 64 篇长文 **第 48/64 `📅unknown` `[entity_page]`
-- [HOIST](wiki/entities/paper-motion-cerebellum-hoist.md) — HOIST** 收录于 具身智能研究室 · 运动小脑 64 篇长文 **第 53/64 `📅unknown` `[entity_page]`
+- [HOIST](wiki/entities/paper-motion-cerebellum-hoist.md) — HOIST**（*Humanoid Optimization with Imitation and Sample-efficient Tuning for Manipulating Suspend `📅unknown` `[entity_page]`
 - [MARCH](wiki/entities/paper-motion-cerebellum-march.md) — MARCH** 收录于 具身智能研究室 · 运动小脑 64 篇长文 **第 04/64 `📅unknown` `[entity_page]`
 - [MuGen](wiki/entities/paper-motion-cerebellum-mugen.md) — MuGen** 收录于 具身智能研究室 · 运动小脑 64 篇长文 **第 39/64 `📅unknown` `[entity_page]`
 - [SafeWBC](wiki/entities/paper-motion-cerebellum-safewbc.md) — SafeWBC** 收录于 具身智能研究室 · 运动小脑 64 篇长文 **第 36/64 `📅unknown` `[entity_page]`
@@ -1013,7 +1015,7 @@
 - [ViDiHand — Video Diffusion for 4D Hand Motion Reconstruction](wiki/entities/paper-vidihand.md) — 一句话定义**：**ViDiHand** 将 **预训练 video diffusion（Wan2.1-VACE）** 的内部表征当作 **egocentric 双手 4D 重建** 的通用先验— `📅unknown` `[entity_page]`
 - [VIRAL（Visual Sim-to-Real at Scale for Humanoid Loco-Manipulation）](wiki/entities/paper-viral-humanoid-visual-sim2real.md) — VIRAL** 是一篇面向 **人形机器人 loco-manipulation** 的 **视觉 Sim2Real** 系统论文（arXiv:2511.15200，CVPR 2026）：策略  `📅unknown` `[entity_page]`
 - [视觉特权表征人形足球运球（Lab-RoCoCo）](wiki/entities/paper-vision-dribbling-humanoid-soccer-privileged-representation.md) — Vision-Based Dribbling for Humanoid Soccer via Privileged Representation Learning**（Sapienza / CSI `📅unknown` `[entity_page]`
-- [VLK（Vision-Language-Kinematics）](wiki/entities/paper-vlk-synthetic-loco-manipulation.md) — VLK**（arXiv:2606.30645）收录于 [具身智能研究室 · Loco-Manip 接触专题](https://mp.weixin.qq.com/s/UjShbwl8p1h9ukym `📅unknown` `[entity_page]`
+- [VLK（Vision-Language-Kinematics）](wiki/entities/paper-vlk-synthetic-loco-manipulation.md) — VLK: Learning Humanoid Loco-Manipulation from Synthetic Interactions in Reconstructed Scenes**（arX `📅unknown` `[entity_page]`
 - [R2R](wiki/entities/paper-vln-01-r2r.md) — R2R** 收录于 深蓝具身智能 · VLN 10 项代表性研究 **第 01/10**  `📅unknown` `[entity_page]`
 - [VLN-CE](wiki/entities/paper-vln-02-vln-ce.md) — VLN-CE** 收录于 深蓝具身智能 · VLN 10 项代表性研究 **第 02/10 `📅unknown` `[entity_page]`
 - [REVERIE](wiki/entities/paper-vln-03-reverie.md) — REVERIE** 收录于 深蓝具身智能 · VLN 10 项代表性研究 **第 03/1 `📅unknown` `[entity_page]`
@@ -1029,7 +1031,7 @@
 - [Walk These Ways: Tuning Robot Control for Generalization with Multiplicity of Behavior](wiki/entities/paper-walk-these-ways-quadruped-mob.md) — 一句话定义**：学习 **单一条件策略** \(\pi(a|c,b)\)：在 **同一平坦训练分布** 上，用少量 **行为参数 \(b\)** 切换步态族（频率、摆腿高度、躯干姿态等），从而在  `📅unknown` `[entity_page]`
 - [WAM-TTT（人视频 · 测试时训练 · WAM Steering）](wiki/entities/paper-wam-ttt-human-video-test-time-steering.md) — WAM-TTT**（*Steering World-Action Models by Watching Human Play at Test Time*，[arXiv:2607.06988](ht `📅unknown` `[entity_page]`
 - [WEM（World-Ego Modeling / World-Ego Model）](wiki/entities/paper-wem-world-ego-modeling.md) — WEM**（*World-Ego Model*，arXiv:2605.19957，项目页，[代码](https://g `📅unknown` `[entity_page]`
-- [WOLF-VLA](wiki/entities/paper-wolf-vla.md) — WOLF-VLA**（arXiv:2606.25591，DFKI 等）收录于 [具身智能研究室 · Loco-Manip 接触专题](https://mp.weixin.qq.com/s/UjSh `📅unknown` `[entity_page]`
+- [WOLF-VLA](wiki/entities/paper-wolf-vla.md) — WOLF-VLA: Whole-Body Humanoid Optimal Locomotion Framework for Vision-Language-Action Learning**（a `📅unknown` `[entity_page]`
 - [World Translation：反向动力学提取的 Sim2Real 域翻译](wiki/entities/paper-world-translation.md) — World Translation** 从观测到的状态转移反向抽取隐含动力学，再以无配对域翻译在仿真与现实间保留动力学内容、迁移域风格。 `📅unknown` `[entity_page]`
 - [Worldscape-MoE（Unified Mixture-of-Experts World Model · arXiv:2607.03964）](wiki/entities/paper-worldscape-moe-heterogeneous-action.md) — Worldscape-MoE**（*Worldscape-MoE: A Unified Mixture-of-Experts World Model for Scalable Heterogene `📅unknown` `[entity_page]`
 - [WorldVLN（空中 VLN · 自回归 World Action Model）](wiki/entities/paper-worldvln-aerial-vln-wam.md) — WorldVLN**（*Autoregressive World Action Model for Aerial Vision-Language Navigation*，arXiv:2605.15 `📅unknown` `[entity_page]`

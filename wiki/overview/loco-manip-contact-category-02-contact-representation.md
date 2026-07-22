@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, contact-rich, category-hub, survey, whole-body-control]
 status: complete
-updated: 2026-07-03
+updated: 2026-07-22
 summary: "Loco-Manip 接触专题 · 02 接触表示（8 篇）— 接触被写成标签、接触流、身体-手协同、主动感知、触觉力还是全身控制接口？"
 related:
   - ./loco-manip-contact-technology-map.md

@@ -12,6 +12,8 @@
 - **作者：** Tianyi Xie*, Haotian Zhang*, Jinhyung Park*, Zi Wang*, Bowen Wen, Jiefeng Li, Xueting Li, Qingwei Ben, Haoyang Weng, Yufei Ye, David Minor, Tingwu Wang, Chenfanfu Jiang, Sanja Fidler, Jan Kautz, Linxi Fan, Yuke Zhu, Zhengyi Luo‡, Umar Iqbal‡, Ye Yuan‡（*co-first；‡project leads）
 - **机构：** NVIDIA、UCLA
 - **入库日期：** 2026-06-30
+- **复核日期：** 2026-07-22
+- **文档：** <https://nvlabs.github.io/GRAIL/>
 - **一句话说明：** 全数字人形 loco-manipulation 数据生成管线：在已知 3D 场景/相机/尺度/机器人比例角色下，用视频基础模型合成交互视频，再重建 metric 4D HOI 轨迹、重定向到 Unitree G1 并训练任务通用 tracker；仅用生成数据训练 egocentric 视觉策略，真机 pick-up 84%、爬楼梯 90%。
 
 ## 核心摘录（策展，非全文）
@@ -34,12 +36,17 @@
 6. **公开数据集：** [PhysicalAI-Robotics-Locomanipulation-GRAIL](https://huggingface.co/datasets/nvidia/PhysicalAI-Robotics-Locomanipulation-GRAIL) 发布 ~22k 条 G1 post-SONIC 轨迹（video + 4D recon + robot/objects pkl + USD，约 250 GB）。
    - **对 wiki 的映射：** [grail-locomanipulation-dataset](../../wiki/entities/grail-locomanipulation-dataset.md)
 
+7. **官方代码与复现边界：** [NVlabs/GRAIL](https://github.com/NVlabs/GRAIL) 已发布 Docker quick start、checkpoint 下载、ComAsset 示例资产下载、`grail.pipelines.gen_terrain` / `gen_3d_assets` / `gen_2dhoi` / `recon_4dhoi` 等入口；README TODO 仍标注 quick-start demo script 与 manipulation dataset 待发布，许可证为 NVIDIA License（非商业限制）。
+   - **对 wiki 的映射：** [GRAIL 实体页源码运行时序图](../../wiki/entities/paper-grail.md)
+
 ## 对 wiki 的映射
 
 - 沉淀实体页：[paper-grail](../../wiki/entities/paper-grail.md)
 - 公开数据集：[grail-locomanipulation-dataset](../../wiki/entities/grail-locomanipulation-dataset.md)
 - Loco-Manip 分类 hub：[loco-manip-161-category-03-visuomotor](../../wiki/overview/loco-manip-161-category-03-visuomotor.md)
 - 运动小脑分类 hub：[motion-cerebellum-category-08-real-tasks](../../wiki/overview/motion-cerebellum-category-08-real-tasks.md)
+- 接触横切面：[loco-manip-contact-category-03-generative-data](../../wiki/overview/loco-manip-contact-category-03-generative-data.md)
+- 项目页归档：[grail-project](../sites/grail-project.md)
 - 姊妹策展：[loco_manip_161_survey_061_grail.md](./loco_manip_161_survey_061_grail.md)、[motion_cerebellum_survey_57_grail.md](./motion_cerebellum_survey_57_grail.md)
 
 ## 参考来源（原始）
@@ -48,3 +55,4 @@
 - arXiv：<https://arxiv.org/abs/2606.05160>
 - 代码：<https://github.com/NVlabs/GRAIL>
 - 数据集：<https://huggingface.co/datasets/nvidia/PhysicalAI-Robotics-Locomanipulation-GRAIL>
+- 接触横切面编译：[wechat_embodied_ai_lab_loco_manip_contact_survey.md](../blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md)

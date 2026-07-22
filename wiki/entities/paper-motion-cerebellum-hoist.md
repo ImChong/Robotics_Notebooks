@@ -1,81 +1,132 @@
 ---
-
 type: entity
-tags: [paper, motion-cerebellum-survey, humanoid, motion-control, uf]
+tags: [paper, motion-cerebellum-survey, loco-manip-contact-survey, humanoid, loco-manipulation, suspended-load, underactuated-object, vla, reinforcement-learning, construction-robotics, uf]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-22
 arxiv: "2606.00252"
-summary: "任务：悬挂负载操作考验后果建模。输入是 VR 示教、悬挂负载状态和机器人本体状态；实现上先训练高层任务策略，再用 batched RL 对自主 rollout 做样本高效微调；核心是处理负载摆动、滞后和反作用力对全身平衡的影响。"
+venue: "arXiv 2026"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-08-real-tasks.md
+  - ../overview/loco-manip-contact-category-04-post-contact-stability.md
+  - ../methods/vla.md
 sources:
   - ../../sources/papers/motion_cerebellum_survey_53_hoist.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
-  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md
+summary: "HOIST（arXiv:2606.00252）定义 humanoid hoisting：人形机器人通过全身接触间接定位悬挂摆动物体；方法以 50 条 VR 示范微调 GR00T N1.6 高层 VLA，再用最多 30 条自主 rollout 做 batched RL refinement，真实平台位置误差从 9.28 cm 降到 6.38 cm。"
 ---
 
 # HOIST
 
-**HOIST** 收录于 [具身智能研究室 · 运动小脑 64 篇长文](https://mp.weixin.qq.com/s/Kx9myecE1Z0eGqOapoqQnA) **第 53/64** 篇，归类为 **H 真实任务**。
+**HOIST**（*Humanoid Optimization with Imitation and Sample-efficient Tuning for Manipulating Suspended Loads*）把工地/物流中「人扶悬挂重物定位」抽象为人形机器人任务：机器人不能直接驱动吊装机构，只能靠身体移动、双手接触和停止时机影响一个欠驱动摆动物体。
 
 ## 一句话定义
 
-任务：悬挂负载操作考验后果建模。输入是 VR 示教、悬挂负载状态和机器人本体状态；实现上先训练高层任务策略，再用 batched RL 对自主 rollout 做样本高效微调；核心是处理负载摆动、滞后和反作用力对全身平衡的影响。
+HOIST 用 VR 示范初始化高层 VLA，再用少量自主 rollout 的离线 actor-critic 微调命令噪声，让人形机器人更准地定位悬挂负载并减少残余摆动。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制层 |
-| RL | Reinforcement Learning | 通过与环境交互学习策略的范式 |
-| Loco-Manip | Loco-Manipulation | 行走与操作动力学耦合的全身任务 |
+| HOIST | Humanoid Optimization with Imitation and Sample-efficient Tuning | 本文方法名 |
+| VLA | Vision-Language-Action | 高层策略基于 GR00T N1.6 改造 |
+| VR | Virtual Reality | 示范采集接口 |
+| RL | Reinforcement Learning | 使用 batched rollout refinement 优化闭环误差 |
+| WBC | Whole-Body Control | 固定 GR00T whole-body execution stack |
+| IMU | Inertial Measurement Unit | 用于分析悬挂负载残余运动 |
 
 ## 为什么重要
 
-- 任务：悬挂负载操作考验后果建模。输入是 VR 示教、悬挂负载状态和机器人本体状态；实现上先训练高层任务策略，再用 batched RL 对自主 rollout 做样本高效微调；核心是处理负载摆动、滞后和反作用力对全身平衡的影响。
-- 运动小脑 64 篇 **#53/64** · 任务：悬挂负载操作考验后果建模。
+- **对象是欠驱动的**：悬挂负载像摆，机器人只能间接施力，停止后物体仍会摆动/过冲。
+- **模拟真实安全需求**：施工吊装最终定位常由人站在负载旁手扶，存在 struck-by/caught-between 风险。
+- **示范不够，闭环偏差要优化**：额外 30 条示范不如 30 条自主 rollout + RL refinement 有效，因为后者直接看部署分布误差。
+- **保持低层控制固定**：不改 whole-body controller，只优化高层命令，让方法更像「任务层后训练」。
 
-## 核心信息（索引级）
+## 流程总览
 
-| 字段 | 内容 |
-|------|------|
-| 编号 | 53/64 |
-| 分组 | H 真实任务 |
-| 机构 | 佛罗里达大学 |
-| 论文/项目 | https://arxiv.org/abs/2606.00252v1 |
+```mermaid
+flowchart TB
+  vr["PICO VR teleoperation\n50 demos"] --> sft["GR00T N1.6 high-level VLA finetune"]
+  sft --> wbc["fixed GR00T whole-body controller"]
+  wbc --> rollout["autonomous hoisting rollouts"]
+  rollout --> reward["placement + yaw reward labels"]
+  reward --> rl["batched actor-critic\ninitial-noise steering"]
+  rl --> deploy["refined VLA command chunks"]
+  deploy --> payload["suspended payload placement"]
+```
 
-## 核心机制（归纳）
+## 核心原理（详细）
 
-### 1）策展导读要点
+### 1. 高层命令空间
 
-任务：悬挂负载操作考验后果建模。输入是 VR 示教、悬挂负载状态和机器人本体状态；实现上先训练高层任务策略，再用 batched RL 对自主 rollout 做样本高效微调；核心是处理负载摆动、滞后和反作用力对全身平衡的影响。
+策略输入包括 ego RGB、ego depth、side RGB、机器人本体、语言指令、上一导航命令；输出未来 action chunk 的 planner-command increments：head target、left/right hand targets、navigation command、base height。低层 WBC 将这些命令转成电机动作。
 
-### 2）策展导读要点
+### 2. 监督微调
 
-机构：佛罗里达大学
+VLA-50 使用 **50 条** VR 示范，VLA-80 使用 **80 条**。监督学习负责给出安全的 approach-contact-push-stop 初始行为，但不能直接最小化最终摆动和定位误差。
 
-## 常见误区
+### 3. Batched RL refinement
 
-1. 运动小脑条目解决 **身体层** 问题，不替代 VLA/世界模型的任务规划。
+HOIST 冻结 VLA 本身，只学习 flow-matching action expert 的 initial-noise steering actor-critic。每轮收集少量自主 rollout，按最终 `Δx, Δy, Δψ` 标注 reward，再做离线更新。这样可复用冻结 VLM features，样本效率较高。
 
-## 实验与评测
+### 4. 指标与结果
 
-- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
-- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+主指标是 payload 终端 `Δx, Δy, Δψ` 和 Manhattan error。摘要给出相对 pure VLA rollouts，HOIST translational placement error 降低 **19.9 cm**、raw angular error 降低 **3.56°**。
 
-## 与其他页面的关系
+## 关键实验数字
 
-- 技术地图：[humanoid-motion-cerebellum-technology-map.md](../overview/humanoid-motion-cerebellum-technology-map.md)
-- 分类 hub：[motion-cerebellum-category-08-real-tasks.md](../overview/motion-cerebellum-category-08-real-tasks.md)
+| Domain | Method | Demos | RL rollouts | `|Δx|+|Δy|` |
+|--------|--------|-------|-------------|-----------|
+| Simulation | VLA-50 | 50 | 0 | 22.44 cm |
+| Simulation | VLA-80 | 80 | 0 | 18.58 cm |
+| Simulation | HOIST | 50 | 30 | **6.25 cm** |
+| Real platform | VLA-50 | 50 | 0 | 9.28 cm |
+| Real platform | VLA-80 | 80 | 0 | 8.57 cm |
+| Real platform | HOIST | 50 | 30 | **6.38 cm** |
+
+## 源码运行时序图
+
+**不适用**：arXiv 页面未列出官方代码仓库；论文引用 GR00T Whole-Body Control 仓库作为低层执行栈，但 HOIST 自身训练/rollout refinement 未确认开源。
+
+## 工程实践（含开源状态）
+
+| 项 | 结论 |
+|----|------|
+| 论文 | <https://arxiv.org/abs/2606.00252> |
+| 代码 | 未确认 HOIST 官方可运行代码 |
+| 示范 | PICO VR headset/controllers；50/80 demos 对比 |
+| 低层 | 固定 GR00T Whole-Body Control stack |
+| 观测 | ego RGB-D + side RGB + proprioception + language + nav history |
+
+## 局限与风险
+
+- **低层不会自适应负载力**：论文承认 WBC 未针对悬挂负载微调，接口无法显式适配不同重量。
+- **依赖 side-view 图像**：真实工地可能难布置外部视角。
+- **奖励简单**：当前用位置/yaw 误差，不含显式安全约束；未来需加入人机安全边界。
+- **任务窄但重要**：专注悬挂负载，不是通用 manipulation。
+
+## 关联页面
+
+- [运动小脑 · H 真实任务](../overview/motion-cerebellum-category-08-real-tasks.md)
+- [Loco-Manip 接触分类 04：接触后如何稳住](../overview/loco-manip-contact-category-04-post-contact-stability.md)
+- [VLA](../methods/vla.md)
+- [FALCON](./paper-loco-manip-161-109-falcon.md)
+- [CHIP](./paper-hrl-stack-36-chip.md)
+- [Thor](./paper-hrl-stack-42-thor.md)
 
 ## 参考来源
 
 - [motion_cerebellum_survey_53_hoist.md](../../sources/papers/motion_cerebellum_survey_53_hoist.md)
 - [motion_cerebellum_64_catalog.md](../../sources/papers/motion_cerebellum_64_catalog.md)
 - [wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md)
+- [motion-cerebellum-category-08-real-tasks](../overview/motion-cerebellum-category-08-real-tasks.md)
+- [loco-manip-contact-category-04-post-contact-stability](../overview/loco-manip-contact-category-04-post-contact-stability.md)
+- [wechat_embodied_ai_lab_loco_manip_contact_survey.md](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md)
+- Liu et al., *HOIST: Humanoid Optimization with Imitation and Sample-efficient Tuning for Manipulating Suspended Loads*, arXiv:2606.00252, 2026. <https://arxiv.org/abs/2606.00252>
 
 ## 推荐继续阅读
 
-- [运动小脑技术地图](../overview/humanoid-motion-cerebellum-technology-map.md)
-- [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)
+- [HOIST arXiv HTML](https://arxiv.org/html/2606.00252)
+- [GR00T Whole-Body Control](https://github.com/NVlabs/GR00T-WholeBodyControl)
+- [安全强化学习综述](https://jmlr.org/papers/v16/garcia15a.html)

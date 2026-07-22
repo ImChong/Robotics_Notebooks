@@ -8,9 +8,11 @@
 - **原始链接：** https://mp.weixin.qq.com/s/UjShbwl8p1h9ukymfiRNaw
 - **发表日期：** 2026-07-03
 - **入库日期：** 2026-07-03
+- **更新日期：** 2026-07-22
 - **抓取方式：** [Agent Reach](https://github.com/Panniantong/Agent-Reach) v1.5.0（`pip install git+https://github.com/Panniantong/Agent-Reach.git` + [wechat-article-for-ai](https://github.com/bzd6661/wechat-article-for-ai) 至 `~/.agent-reach/tools/`（Camoufox，`playwright==1.49.1` 规避 viewport 协议错误））；正文约 0.77 万字 / 7 图；Jina Reader 对 `mp.weixin.qq.com` 返回 CAPTCHA，未采用
 - **姊妹篇：** [161 篇人形 loco-manip 十类地图](wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md)、[Loco-Manip 8 篇数据入口](wechat_embodied_ai_lab_loco_manip_8_papers_survey.md)、[运动小脑 64 篇](wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md)
 - **一句话说明：** 按 **接触数据 → 接触表示/接口 → 生成式补数 → 接触后力控/柔顺 → VLA/世界模型调用** 五段链路串读约 36 篇 loco-manip 工作；核心判断：人形 loco-manip 的瓶颈正从「会不会动」转向 **接触结构能否贯穿数据、策略、力反馈与上层模型**。
+- **2026-07-22 复抓/深化：** 文中论文实体已从 index-level stub 深化为独立节点；本 source 作为五组分类 hub 与各论文实体的统一策展来源。
 
 ## 核心摘录（归纳，非全文）
 
@@ -37,7 +39,7 @@
 
 - [loco-manip-contact-technology-map](../../wiki/overview/loco-manip-contact-technology-map.md)（**父节点** + Mermaid）
 - 子分类 hub：`wiki/overview/loco-manip-contact-category-01-contact-data.md` … `05-vla-world-models.md`
-- **论文实体**：文中 **36 篇** 均在 `wiki/entities/paper-*` 有独立节点，并由五组 `loco-manip-contact-category-*` 分类 hub 挂接（含新建 Human-as-Humanoid、HumanoidUMI、VLK、Imagine2Real、Humanoid-DART、WOLF-VLA）
+- **论文实体**：文中 **36 篇** 均在 `wiki/entities/paper-*` 有独立节点，并由五组 `loco-manip-contact-category-*` 分类 hub 挂接（含新建/深化 [paper-human-as-humanoid](../../wiki/entities/paper-human-as-humanoid.md)、[paper-humanoidumi](../../wiki/entities/paper-humanoidumi.md)、[paper-vlk-synthetic-loco-manipulation](../../wiki/entities/paper-vlk-synthetic-loco-manipulation.md)、[paper-imagine2real-zero-shot-hoi](../../wiki/entities/paper-imagine2real-zero-shot-hoi.md)、[paper-humanoid-dart](../../wiki/entities/paper-humanoid-dart.md)、[paper-wolf-vla](../../wiki/entities/paper-wolf-vla.md)、[paper-gentlehumanoid](../../wiki/entities/paper-gentlehumanoid.md)、[paper-haic](../../wiki/entities/paper-haic.md)）
 
 ## 可信度与使用边界
 

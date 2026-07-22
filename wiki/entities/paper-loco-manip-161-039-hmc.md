@@ -1,83 +1,120 @@
 ---
 type: entity
-tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
+tags: [paper, loco-manipulation, loco-manip-161-survey, loco-manip-contact-survey, heterogeneous-control, impedance-control, force-position-control, teleoperation, imitation-learning, humanoid, ucsd]
 status: complete
-updated: 2026-07-16
-venue: curated
-summary: "HMC 主要解决数据闭环：用遥操作/外骨骼数据、接触力/触觉信号采集人类操作和机器人状态，再通过ACT/行为克隆模仿学习、分层技能/专家策略转成可训练、可复用的关节位置/力矩命令、全身轨迹/动作序列、低层控制器目标。关键点是把任务拆成可路由的技能或专家策略，再用高层模块在执行中选择和组合。"
+updated: 2026-07-22
+arxiv: "2511.14756"
+venue: "ICRA 2026 / RSS 2025 WCBM Spotlight"
 related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-02-upper-body-interface.md
-  - ../tasks/loco-manipulation.md
+  - ../overview/loco-manip-contact-category-04-post-contact-stability.md
+  - ../concepts/hybrid-force-position-control.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_039_hmc.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
-  - ../../sources/papers/humanoid_loco_manip_161_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md
+summary: "HMC（Learning Heterogeneous Meta-Control for Contact-Rich Loco-Manipulation）把 position、impedance、hybrid force-position 三类控制 profile 在 torque space 连续混合；HMC-Policy 用 MoE routing 从大量位置数据和少量力感知示范中学习，在擦白板、开抽屉等真机任务相对基线提升超过 50%。"
 ---
 
 # HMC
 
-**HMC** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A) **第 039/161** 篇，归类为 **02 上半身中心控制与移动操作接口**。
+**HMC**（*Learning Heterogeneous Meta-Control for Contact-Rich Loco-Manipulation*）关注一个工程上很真实的问题：同一个人形任务里，free-space 需要精准位置控制，擦拭/插入需要柔顺，抽屉/门又需要力位混合。HMC 用 torque-space blending 和 mixture-of-experts policy 学习何时切换/混合这些控制模式。
 
 ## 一句话定义
 
-HMC 主要解决数据闭环：用遥操作/外骨骼数据、接触力/触觉信号采集人类操作和机器人状态，再通过ACT/行为克隆模仿学习、分层技能/专家策略转成可训练、可复用的关节位置/力矩命令、全身轨迹/动作序列、低层控制器目标。关键点是把任务拆成可路由的技能或专家策略，再用高层模块在执行中选择和组合。
+HMC 是一种异构元控制框架，用连续控制模式混合和专家路由，让人形机器人在接触丰富任务中自适应选择位置、阻抗和力位混合控制。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| Loco-Manip | Loco-Manipulation | 行走与操作动力学耦合的全身任务 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制层 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态策略 |
+| HMC | Heterogeneous Meta-Control | 异构元控制，本文核心方法 |
+| MoE | Mixture of Experts | HMC-Policy 的专家路由结构 |
+| ACT | Action Chunking Transformer | 对比 imitation policy 基线 |
+| IK | Inverse Kinematics | 位置控制/遥操作中常见几何层 |
+| WBC | Whole-Body Control | 多模式 torque blending 的身体控制背景 |
+| C.S. | Cartesian Space | 策略专家的笛卡尔空间输出之一 |
 
 ## 为什么重要
 
-- HMC 主要解决数据闭环：用遥操作/外骨骼数据、接触力/触觉信号采集人类操作和机器人状态，再通过ACT/行为克隆模仿学习、分层技能/专家策略转成可训练、可复用的关节位置/力矩命令、全身轨迹/动作序列、低层控制器目标。关键点是把任务拆成可路由的技能或专家策略，再用高层模块在执行中选择和组合。
-- 人形 Loco-Manip 161 篇 **#039/161** · 上半身中心控制与移动操作接口。
+- **控制模式单一会失败**：高刚度插入会抖动/过力；低刚度又不能对齐/发力。HMC 把模式选择作为策略输出的一部分。
+- **遥操作和 policy 共用接口**：HMC-Controller 同时服务人类示范采集与自主策略部署，减少示范/执行接口不一致。
+- **数据利用更现实**：大量 position-only demonstrations + 少量 fine-grained force-aware demonstrations，比全量高质量力控示范更可获得。
+- **真机任务贴近接触本质**：螺母插入拧紧、peg-in-hole、擦白板、开门、整理椅子、微波炉、穿衣/拍背按摩等。
 
-## 核心信息（索引级）
+## 流程总览
 
-| 字段 | 内容 |
-|------|------|
-| 编号 | 039/161 |
-| 分组 | 02 上半身中心控制与移动操作接口 |
-| 原文题目 | HMC: Learning Heterogeneous Meta-Control for Contact-Rich Loco-Manipulation |
-| 机构 | HMC: Learning Heterogeneous Meta-Control for Contact-Rich、UC San Diego |
-| 发表日期 | 2025年11月18日 |
-| 论文/项目 | https://loco-hmc.github.io |
+```mermaid
+flowchart TB
+  demo1["large-scale position-only demos"] --> pre["pretrain shared transformer + position expert"]
+  demo2["small force-aware multi-expert demos"] --> finetune["fine-tune all experts + router"]
+  pre --> finetune
+  finetune --> router["soft routing network"]
+  router --> pos["position expert"]
+  router --> imp["impedance expert"]
+  router --> hybrid["hybrid force-position expert"]
+  pos --> blend["torque-space blending"]
+  imp --> blend
+  hybrid --> blend
+  blend --> robot["contact-rich humanoid tasks"]
+```
 
-## 核心机制（归纳）
+## 核心原理（详细）
 
-### 策展导读要点
+### 1. HMC-Controller
 
-HMC 主要解决数据闭环：用遥操作/外骨骼数据、接触力/触觉信号采集人类操作和机器人状态，再通过ACT/行为克隆模仿学习、分层技能/专家策略转成可训练、可复用的关节位置/力矩命令、全身轨迹/动作序列、低层控制器目标。关键点是把任务拆成可路由的技能或专家策略，再用高层模块在执行中选择和组合。
+HMC-Controller 将 position、impedance、hybrid force-position controller 的 action 连续混合到 torque space。它不是硬切状态机，而是允许 stiffness/force profile 平滑变化；这对插入、擦拭、开门等任务尤其重要。
 
-## 评测与指标（索引级）
+### 2. HMC-Policy
 
-- 本条目为 161 篇策展索引级摘录，**未搬运原文量化 benchmark 与实机指标**；评测口径与具体数值以原文 PDF / 项目页为准。
-- 评测原始出处：[原文 / 项目页](https://loco-hmc.github.io)（见上方「核心信息」表「论文/项目」一行）。
-- 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-02-upper-body-interface.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
+策略采用异构专家结构：先用大量位置示范训练 shared transformer trunk 和 position expert，获得强泛化的 free-space prior；再用较少力感知多专家数据微调所有参数，soft router 学习在不同接触阶段混合专家输出。
 
-## 常见误区
+### 3. 为什么比 ACT(meta) 更合适
 
-1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。
-2. Loco-manip 单篇工作不自动解决 **底层 WBC 鲁棒性**；须与运控/接触控制对照。
+ACT 适合动作 chunk imitation，但如果输出只落在单一控制 profile，遇到 contact-rich 任务时要么太硬，要么太软。HMC 把控制 profile 本身显式纳入动作空间，降低模仿策略承担的物理补偿难度。
 
-## 与其他页面的关系
+## 源码运行时序图
 
-- 技术地图：[humanoid-loco-manip-161-papers-technology-map.md](../overview/humanoid-loco-manip-161-papers-technology-map.md)
-- 分类 hub：[loco-manip-161-category-02-upper-body-interface.md](../overview/loco-manip-161-category-02-upper-body-interface.md)
-- 原始 source：[loco_manip_161_survey_039_hmc.md](../../sources/papers/loco_manip_161_survey_039_hmc.md)
+**不适用**：官方项目页 <https://loco-hmc.github.io> 未列出训练/部署 GitHub；可访问的 `loco-hmc` GitHub 账户仅有项目页仓库。暂无官方可运行实现。
+
+## 工程实践（含开源状态）
+
+| 项 | 结论 |
+|----|------|
+| 项目页 | <https://loco-hmc.github.io> |
+| 代码 | 未开放可运行训练/部署代码，仅见项目页仓库 |
+| 控制接口 | position / impedance / hybrid force-position torque-space blending |
+| 策略 | shared transformer trunk + multi-expert heads + soft router |
+| 报告效果 | 真机 challenging tasks 相对 baselines **over 50% relative improvement** |
+
+## 局限与风险
+
+- **需要力感知示范**：少量即可，但采集与标注 stiffness/profile 仍是工程成本。
+- **控制器实现依赖硬件力矩接口**：不同人形的低层力矩/阻抗可控性会影响迁移。
+- **未开放代码**：难以复现实验和 profile blending 细节。
+- **高层任务规划不在本文核心**：HMC 解决接触控制模式，不自动解决任务分解。
+
+## 关联页面
+
+- [Loco-Manip 接触分类 04：接触后如何稳住](../overview/loco-manip-contact-category-04-post-contact-stability.md)
+- [161 篇 · 02 上半身接口](../overview/loco-manip-161-category-02-upper-body-interface.md)
+- [力位混合控制](../concepts/hybrid-force-position-control.md)
+- [阻抗控制](../concepts/impedance-control.md)
+- [WT-UMI](./paper-loco-manip-07-wt-umi.md)
+- [FALCON](./paper-loco-manip-161-109-falcon.md)
 
 ## 参考来源
 
-- [loco_manip_161_survey_039_hmc.md](../../sources/papers/loco_manip_161_survey_039_hmc.md) — 161 篇策展摘录
+- [loco_manip_161_survey_039_hmc.md](../../sources/papers/loco_manip_161_survey_039_hmc.md)
 - [humanoid_loco_manip_161_catalog.md](../../sources/papers/humanoid_loco_manip_161_catalog.md)
 - [wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md)
+- [loco-manip-contact-category-04-post-contact-stability](../overview/loco-manip-contact-category-04-post-contact-stability.md)
+- [wechat_embodied_ai_lab_loco_manip_contact_survey.md](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md)
+- 官方项目页：<https://loco-hmc.github.io>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：HMC](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/HMC__Learning_Heterogeneous_Meta-Control_for_Contact-Rich_Loco-Manipulation/HMC__Learning_Heterogeneous_Meta-Control_for_Contact-Rich_Loco-Manipulation.html)
-- [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
-- 同题深读/既有实体：[paper-loco-manip-161-039-hmc](../entities/paper-loco-manip-161-039-hmc.md)
+- [HMC 项目页](https://loco-hmc.github.io)
+- [Hybrid Force-Position Control](../concepts/hybrid-force-position-control.md)
+- [Tactile Impedance Control](../methods/tactile-impedance-control.md)

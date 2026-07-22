@@ -25,3 +25,10 @@
 
 - 微信公众号编译：[wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md](../blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md)
 - 原始抓取：[wechat_humanoid_loco_manip_161_2026-06-26.md](../raw/wechat_humanoid_loco_manip_161_2026-06-26.md)
+
+## 项目页与开源状态核查（2026-07-22）
+
+- **论文：** arXiv:2605.20373。
+- **代码：** <https://github.com/tianshuwu/SUGAR>，MIT；根目录含 `train.sh`、`inference.sh`、`source/sugar_rl`、`source/sugar_il`。
+- **开放边界：** 已发布 inference demo、checkpoint、六任务处理数据、完整训练管线；RGB-D human videos 到训练数据的数据处理管线与 sim-to-sim pipeline 仍待发布。
+- **wiki 深化：** [paper-loco-manip-161-076-sugar](../../wiki/entities/paper-loco-manip-161-076-sugar.md) 已补充流程、开源状态和源码运行时序图。

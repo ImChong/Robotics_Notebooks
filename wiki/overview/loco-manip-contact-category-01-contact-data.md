@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, contact-rich, category-hub, survey, data-pipeline]
 status: complete
-updated: 2026-07-03
+updated: 2026-07-22
 summary: "Loco-Manip 接触专题 · 01 接触数据（8 篇）— 带物体状态、场景约束、接触时序与本体可执行性的交互数据从哪来？"
 related:
   - ./loco-manip-contact-technology-map.md

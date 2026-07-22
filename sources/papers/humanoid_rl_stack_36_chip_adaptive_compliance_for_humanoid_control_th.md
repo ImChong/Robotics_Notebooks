@@ -20,9 +20,18 @@
 
 ## 对 wiki 的映射
 
-  - （待交叉链接）
+- [paper-hrl-stack-36-chip](../../wiki/entities/paper-hrl-stack-36-chip.md)
+- [humanoid-rl-motion-control-body-system-stack](../../wiki/overview/humanoid-rl-motion-control-body-system-stack.md)
+- [motion-cerebellum-category-09-compliance-contact](../../wiki/overview/motion-cerebellum-category-09-compliance-contact.md)
 
 ## 参考来源（原始）
 
 - 微信公众号编译：[wechat_embodied_ai_lab_humanoid_rl_motion_survey.md](../blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)
 - 姊妹篇 AMP 专题：[wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md](../blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md)
+
+## 项目页与开源状态核查（2026-07-22）
+
+- **论文/项目：** arXiv:2512.14689；项目页 <https://nvlabs.github.io/CHIP/>。
+- **代码：** 项目页标注 `Code (Coming Soon)`，未确认可运行实现。
+- **关键数字：** GR00T N1.5 + CHIP 数据：small whiteboard wiping 80%、large whiteboard wiping 60%、box lifting 90%；compliance `10/k` 可由图像/VLM 预测。
+- **wiki 深化：** [paper-hrl-stack-36-chip](../../wiki/entities/paper-hrl-stack-36-chip.md)。

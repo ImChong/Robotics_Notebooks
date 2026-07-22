@@ -1,10 +1,11 @@
 ---
 type: entity
-tags: [paper, humanoid, rl, motion-control, body-system-stack, loco-manipulation, loco-manip-161-survey, cmu]
+tags: [paper, humanoid, rl, motion-control, body-system-stack, loco-manipulation, loco-manip-161-survey, loco-manip-contact-survey, human-video, contact-data, robot-object-co-tracking, sim2real, unitree-g1, cmu]
 status: complete
-updated: 2026-07-16
-venue: curated
-summary: "HDMI 的全称是 HumanoiD iMitation for Interaction。它也从人类视频出发，但比 HumanX 更进一步，把重点放在 contact-rich humanoid-object interaction 上。"
+updated: 2026-07-22
+arxiv: "2509.16757"
+venue: "arXiv 2025"
+summary: "HDMI（HumanoiD iMitation for Interaction，arXiv:2509.16757，CMU/LeCAR）从单目 RGB 人类 HOI 视频抽取人体、物体轨迹与接触点，重定向为结构化 motion.npz，再用 robot-object co-tracking RL、统一物体表示、残差动作空间与接触奖励训练 G1 策略；真机实现 67 次连续双向开门穿越、6 类真实 loco-manip 任务与 14 类仿真任务，官方 LeCAR-Lab/HDMI 已开放 IsaacLab 训练代码。"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-03-data-pipeline.md
@@ -12,117 +13,192 @@ related:
   - ../overview/humanoid-amp-motion-prior-survey.md
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-05-mocap-human-video.md
+  - ../overview/loco-manip-contact-category-01-contact-data.md
   - ../tasks/loco-manipulation.md
+  - ../concepts/contact-rich-manipulation.md
+  - ../concepts/motion-retargeting-pipeline.md
+  - ../methods/reinforcement-learning.md
+  - ./paper-hrl-stack-05-humanx.md
+  - ./paper-omnicontact-humanoid-loco-manipulation.md
+  - ./paper-loco-manip-03-genhoi.md
 sources:
   - ../../sources/papers/humanoid_rl_stack_06_hdmi_learning_interactive_humanoid_whole_body_co.md
-  - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/papers/loco_manip_161_survey_110_hdmi.md
+  - ../../sources/sites/hdmi-project.md
+  - ../../sources/repos/hdmi.md
+  - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/papers/humanoid_loco_manip_161_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
-  - ../../sources/papers/motion_cerebellum_64_catalog.md
-  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md
 ---
 
 # HDMI
 
-**HDMI**（*HDMI: Learning Interactive Humanoid Whole-Body Control from Human Videos*，<https://hdmi-humanoid.github.io>）收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) **第 06/42** 篇，并同时出现在 [人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A) **第 110/161** 篇；本页为合并后的 **单一 canonical 实体**。
+**HDMI**（*HDMI: Learning Interactive Humanoid Whole-Body Control from Human Videos*，arXiv:[2509.16757](https://arxiv.org/abs/2509.16757)，[项目页](https://hdmi-humanoid.github.io)，[代码](https://github.com/LeCAR-Lab/HDMI)）是 CMU / LeCAR 团队提出的 **单目人类视频到人形 HOI 控制** 框架：把 unconstrained RGB 视频恢复为 **机器人 + 物体 + 接触点** 的结构化参考，再用 **robot-object co-tracking** 强化学习训练 Unitree G1 全身交互策略。
 
 ## 一句话定义
 
-HDMI 的全称是 HumanoiD iMitation for Interaction。它也从人类视频出发，但比 HumanX 更进一步，把重点放在 contact-rich humanoid-object interaction 上。
+HDMI 把单目人类 HOI 视频转成带物体状态和接触点的 G1 参考轨迹，并用统一 co-tracking RL 策略同时追踪机器人身体与物体运动，从而零样本部署到真实人形机器人。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
-| Loco-Manip | Loco-Manipulation | 行走与操作动力学耦合的全身任务 |
-| HOI | Human-Object Interaction | 人-物交互，含接触与物体运动 |
+| HDMI | HumanoiD iMitation for Interaction | 从人类视频学习人形全身交互技能的框架 |
+| HOI | Human-Object Interaction | 人-物交互；本文关注门、箱子、球、泡沫垫等接触任务 |
+| RGB | Red-Green-Blue | 单目视频输入模态，区别于多相机 MoCap 或深度传感 |
+| GVHMR | Global Video Human Mesh Recovery | 从视频估计 SMPL/人体运动的上游工具 |
+| GMR | General Motion Retargeting | HDMI README 中人到 G1 重定向链路的一环 |
+| RL | Reinforcement Learning | 训练 robot-object co-tracking policy 的范式 |
+| PPO | Proximal Policy Optimization | 官方仓 `ppo_roa_train` / `ppo_roa_finetune` 使用的训练接口 |
+| ROA | Residual Action | HDMI 代码中 residual action distillation 对应的策略实现 |
+| G1 | Unitree G1 Humanoid | 论文与官方代码默认部署平台 |
 
 ## 为什么重要
 
-- 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 中属于 **01 数据 · 重定向 · 遥操作**（#06/42）。
-- 在 [人形 Loco-Manip 161 篇技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md) 中属于 **05 动捕、人类视频与交互动作规划**（#110/161）。
-- HDMI 的全称是 HumanoiD iMitation for Interaction。它也从人类视频出发，但比 HumanX 更进一步，把重点放在 contact-rich humanoid-object interaction 上。
-- 这篇论文要解决的是：如果视频里有人推箱子、搬箱子、开门、滚球、放倒木板，人形机器人能不能把这些人-物交互变成自己可以执行的全身技能？
-- HDMI 的管线分成三步：先从单目 RGB 视频里估计人体和物体轨迹，并重定向成人形机器人参考数据；再用强化学习训练一个 robot-object co-tracking policy，让机器人同时跟踪自己的身体状态和物体状态；最后把策略零样本部署到真实 Unitree G1 上。
+- **把人类视频从「只看人体」推进到「人体 + 物体 + 接触」。** HumanX 等路线证明人体动作可从视频到机器人，HDMI 进一步把 object state 与 contact point 纳入训练观测和奖励，直接服务 contact-rich loco-manipulation。
+- **不依赖任务特定奖励工程。** 论文把开门、搬箱、推箱、滚球等任务都表述为 robot-object co-tracking，用统一物体表示、残差动作空间和接触奖励替代每个任务手写 reward。
+- **实机证据强。** 项目页和论文报告 Unitree G1 上 **67 次连续双向开门穿越**，并覆盖 **6 类真实任务**、**14 类仿真任务**。
+- **官方代码已开放。** [LeCAR-Lab/HDMI](https://github.com/LeCAR-Lab/HDMI) 提供 IsaacSim 4.5 / IsaacLab 2.2 训练框架、`scripts/train.py`、`scripts/play.py`、`active_adaptation/envs/mdp/commands/hdmi/`、`ppo_roa.py` 与 motion data 格式说明。
+- **在三张地图中都有坐标。** 它同时属于 [42 篇 humanoid RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)、[161 篇 Loco-Manip #110](../overview/loco-manip-161-category-05-mocap-human-video.md) 与 [接触数据](../overview/loco-manip-contact-category-01-contact-data.md) 横切面。
 
-## 核心信息（索引级）
+## 流程总览
 
-| 字段 | 内容 |
-|------|------|
-| 原文题目 | HDMI: Learning Interactive Humanoid Whole-Body Control from Human Videos |
-| 机构 | CMU |
-| 发表日期 | 2025年9月27日 |
-| 出处 | curated |
-| 链接 | <https://hdmi-humanoid.github.io> |
+```mermaid
+flowchart TB
+  video["单目 RGB 人类 HOI 视频"] --> recover["GVHMR / pose estimation\n人体轨迹恢复"]
+  video --> object["物体轨迹 + 接触信号标注\nobject pos/quat/vel + contact points"]
+  recover --> retarget["GMR / LocoMujoco 重定向\nSMPL → Unitree G1"]
+  object --> dataset["结构化 motion.npz + meta.json\nrobot bodies + object body"]
+  retarget --> dataset
+  dataset --> rl["Robot-object co-tracking RL\nPPO + tracking + regularization"]
+  rl --> rep["统一物体表示\nobject state / contact point in root frame"]
+  rl --> residual["残差动作空间\nref joint + corrective offset"]
+  rl --> reward["统一交互奖励\n接触位置 + 有界接触力"]
+  rep --> policy["HDMI policy\nproprioception + phase + object state"]
+  residual --> policy
+  reward --> policy
+  policy --> sim["IsaacLab / IsaacSim\n14 类仿真任务"]
+  policy --> real["Unitree G1 真机\n6 类任务 + 67 次开门穿越"]
+```
 
-### 在 42 篇 RL 运动控制身体系统栈中
+## 核心原理（详细）
 
-| 字段 | 内容 |
-|------|------|
-| 编号 | 06/42 |
-| 系统栈层 | 01 数据 · 重定向 · 遥操作 |
-| 索引来源 | [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) |
+### 1. 视频到结构化参考：让 object 进入 motion dataset
 
-### 在人形 Loco-Manip 161 篇中
+HDMI 的输入不是人工 MoCap，也不是高层 VLM 规划，而是第三人称 **monocular RGB** 人类示范视频。管线先用 GVHMR 恢复人体姿态，再通过 GMR / LocoMujoco 之类的重定向链路得到 G1 body / joint 轨迹；同时后处理物体位姿、速度与接触信号，形成每帧参考状态 $\{s_t^{ref}, p_t^{contact}\}$。
 
-| 字段 | 内容 |
-|------|------|
-| 编号 | 110/161 |
-| 分组 | 05 动捕、人类视频与交互动作规划 |
-| 分类 hub | [loco-manip-161-category-05-mocap-human-video](../overview/loco-manip-161-category-05-mocap-human-video.md) |
-| 索引来源 | [具身智能研究室 · 161 篇人形 Loco-Manip 长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A) |
+官方 README 对训练数据格式给出工程定义：`motion.npz` 中 `pos/quat/lin_vel/ang_vel` 为 `[T, B, 3/4]`，`pos/vel` joint state 为 `[T, J]`；物体作为额外 body 追加到 robot body state 后，`meta.json` 记录 body / joint 排列。这一设计让策略在训练时看到 **机器人参考 + 物体参考 + 接触位置**，而不是只追踪人形骨架。
 
-## 核心机制（归纳）
+### 2. Robot-object co-tracking：身体和物体同时是目标
 
-### 1）策展导读要点
+论文把交互技能学习定义为 co-tracking：策略输入本体状态、phase variable、机器人 root frame 下的 object state / contact points，输出 G1 低层关节目标。episode 会在机器人或物体偏离参考过大时终止；PPO 奖励同时包含身体跟踪、物体跟踪、正则与接触项。
 
-HDMI 的全称是 HumanoiD iMitation for Interaction。它也从人类视频出发，但比 HumanX 更进一步，把重点放在 contact-rich humanoid-object interaction 上。
+这和纯 motion tracking 的区别在于：机器人「像不像人」不是唯一目标，物体是否被按预期移动同样进入训练闭环。因此 HDMI 更适合 door traversal、box carry、push、roll 等 object-centric 技能。
 
-### 2）策展导读要点
+### 3. 统一物体表示：用 root-frame object/contact 兼容不同物体
 
-这篇论文要解决的是：如果视频里有人推箱子、搬箱子、开门、滚球、放倒木板，人形机器人能不能把这些人-物交互变成自己可以执行的全身技能？
+不同任务的物体几何和交互点不同，HDMI 不为每个物体重写策略接口，而是把物体状态和参考接触点统一变换到机器人 root frame。策略看到的是相对位姿、速度、目标 contact point 与 phase，而不是任务 ID 专用控制器。
 
-### 3）策展导读要点
+这个表示的价值在于：同一个 PPO 框架可覆盖门、箱子、球、泡沫垫、木板等任务；接触点还给策略提供「哪里应该发生交互」的稀疏提示，缓解视频重建接触不准的问题。
 
-HDMI 的管线分成三步：先从单目 RGB 视频里估计人体和物体轨迹，并重定向成人形机器人参考数据；再用强化学习训练一个 robot-object co-tracking policy，让机器人同时跟踪自己的身体状态和物体状态；最后把策略零样本部署到真实 Unitree G1 上。
+### 4. 残差动作空间：围绕参考姿态探索
 
-### 4）策展导读要点
+视频重定向得到的 kinematic trajectory 通常能提供粗姿态，但不能保证动态平衡。HDMI 不让策略从零输出绝对关节目标，而是输出加在 $\theta_t^{ref}$ 上的 residual offset。这样 exploration 以当前参考姿态为中心：例如跪地、推门、搬箱等大姿态变化不用从默认站姿慢慢学，策略主要学习如何补偿动力学、接触与平衡误差。
 
-这里最关键的变化是，控制器不再只追踪“机器人像不像人”，还要追踪“物体有没有按预期被改变”。这就把模仿学习从 body motion tracking 推到了 object interaction tracking。
+### 5. 统一交互奖励：接触位置 + 有界接触力
 
-## 常见误区
+视频参考常有穿模、接触漂移或缺失力信息。HDMI 用 interaction reward 在 contact signal 激活时约束端效器靠近接触点，并鼓励足够但不过量的接触力；力项带阈值上限，避免为了追踪物体而输出危险大力。该奖励按 active end-effector 平均，使手、脚或其他接触体都能被统一处理。
 
-1. 重定向/遥操作不是「训练前脚本」——参考质量上限往往 **早于** RL 策略决定。
+### 6. 实验与评测
 
-## 实验与评测
+| 维度 | 论文 / 项目页报告 |
+|------|------------------|
+| 真机平台 | Unitree G1 |
+| 真机长期任务 | **67** 次连续双向 door opening / traversal |
+| 真机任务覆盖 | **6** 类 loco-manipulation 任务 |
+| 仿真任务覆盖 | **14** 类任务：push door、carry/place bread box、push box、move foam mats、roll ball、topple 等 |
+| 训练后部署 | RL policy 零样本 sim-to-real；项目页附 35 min door traversal 视频 |
+| 官方代码 | IsaacSim / IsaacLab 训练、play、motion visualization、policy export；sim2real 细节指向 `EGalahad/sim2real` |
 
-- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
-- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+## 源码运行时序图
 
-## 与其他页面的关系
+官方仓库 [LeCAR-Lab/HDMI](https://github.com/LeCAR-Lab/HDMI) 已开放训练代码，README 给出 IsaacSim 4.5、IsaacLab 2.2、数据准备、teacher/student 训练与评估入口。
 
-- 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
-- Loco-Manip 地图：[humanoid-loco-manip-161-papers-technology-map.md](../overview/humanoid-loco-manip-161-papers-technology-map.md)
-- AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
-- 姊妹篇 HumanX：[paper-hrl-stack-05-humanx.md](./paper-hrl-stack-05-humanx.md)
-- 原始 source：[humanoid_rl_stack_06_hdmi_learning_interactive_humanoid_whole_body_co.md](../../sources/papers/humanoid_rl_stack_06_hdmi_learning_interactive_humanoid_whole_body_co.md)
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户
+    participant Repo as LeCAR-Lab/HDMI
+    participant Data as motion.npz + meta.json
+    participant Isaac as IsaacSim 4.5 / IsaacLab 2.2
+    participant Train as scripts/train.py
+    participant Play as scripts/play.py
+    participant Policy as exported HDMI policy
+    U->>Repo: git clone + pip install -e .
+    U->>Isaac: 安装 IsaacSim 与 IsaacLab v2.2.0
+    U->>Data: GVHMR/GMR/LocoMujoco 转换并追加 object body
+    U->>Play: replay_motion=true 可视化 reference
+    U->>Train: algo=ppo_roa_train task=G1/hdmi/move_suitcase
+    Train->>Isaac: teacher co-tracking PPO
+    Isaac-->>Train: teacher checkpoint
+    U->>Train: algo=ppo_roa_finetune checkpoint_path=<teacher>
+    Train-->>Policy: student checkpoint / export_policy=true
+    U->>Play: checkpoint_path=<student>
+    Play-->>U: IsaacLab rollout 或导出策略供 sim2real
+```
+
+## 工程实践（含开源状态）
+
+| 项 | 结论 |
+|----|------|
+| 项目页 | <https://hdmi-humanoid.github.io> |
+| arXiv | <https://arxiv.org/abs/2509.16757> |
+| 官方代码 | <https://github.com/LeCAR-Lab/HDMI>，公开仓库；GitHub API 显示默认分支 `main`，2026-01-17 有更新 |
+| 训练后端 | IsaacSim 4.5.0、IsaacLab v2.2.0、Python 3.10 |
+| 关键目录 | `active_adaptation/envs/mdp/commands/hdmi/`、`active_adaptation/learning/ppo_roa.py`、`scripts/`、`cfg/`、`data/` |
+| 数据入口 | `motion.npz` + `meta.json`；人体重定向与物体轨迹需按 README 格式准备 |
+| 可运行入口 | `python scripts/train.py algo=ppo_roa_train task=G1/hdmi/move_suitcase`；`python scripts/play.py ... checkpoint_path=...` |
+| Sim2Real | README 指向 <https://github.com/EGalahad/sim2real>，部署细节不在主仓完整展开 |
+| 许可证 | GitHub API 未返回标准 `licenseInfo`；复用前需阅读仓库 `LICENSE` / README |
+
+## 局限与风险
+
+- **视频到数据的上游仍需工程处理。** README 描述 GVHMR、GMR/LocoMujoco、object trajectory 与 contact signals 的处理步骤，但完整自动化质量依赖外部估计器、物体标注和接触清洗。
+- **仍是 reference-conditioned skill learning。** 策略学会执行给定视频生成的技能参考，不等价于开放语言任务规划或在线组合长程 skill。
+- **接触奖励依赖 contact signal。** 如果视频/标注给出的接触点或接触时刻错误，policy 会被引向错误交互；HDMI 通过力阈值和 residual action 缓解，但不能完全消除。
+- **真机任务覆盖仍偏粗操作。** 开门、搬箱、滚球等验证强，但灵巧手、柔性物体、工具使用和多物体长程任务还需要额外数据与高层控制。
+- **Sim2Real 主仓边界需注意。** 训练代码已开放；真实机器人部署链路部分转到独立 sim2real 仓库，复现者需要核对硬件接口和安全限制。
+
+## 关联页面
+
+- [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) — HDMI 是 #06/42，位于数据、重定向、遥操作入口层。
+- [人形 Loco-Manip 161 篇技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md) 与 [05 动捕/人类视频](../overview/loco-manip-161-category-05-mocap-human-video.md) — HDMI 是 #110/161。
+- [Loco-Manip 接触分类 01：接触数据](../overview/loco-manip-contact-category-01-contact-data.md) — 接触横切面中 HDMI 属于「视频数据转接触轨迹」。
+- [Loco-Manipulation](../tasks/loco-manipulation.md) — 全身移动操作任务背景。
+- [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md) — 接触点与有界力奖励的概念背景。
+- [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) — GVHMR / GMR / LocoMujoco 数据入口。
+- [HumanX](./paper-hrl-stack-05-humanx.md) — 同样从人类视频获取 HOI 先验的相邻路线。
+- [OmniContact](./paper-omnicontact-humanoid-loco-manipulation.md) — 将 HDMI dense HOI tracking 抽象为可组合 Contact Flow 的后续对照。
+- [GenHOI](./paper-loco-manip-03-genhoi.md) — 用生成视频做零样本接触规划，对比 HDMI 的每技能训练路线。
 
 ## 参考来源
 
-- [humanoid_rl_stack_06_hdmi_learning_interactive_humanoid_whole_body_co.md](../../sources/papers/humanoid_rl_stack_06_hdmi_learning_interactive_humanoid_whole_body_co.md) — 42 篇栈策展摘录
-- [loco_manip_161_survey_110_hdmi.md](../../sources/papers/loco_manip_161_survey_110_hdmi.md) — Loco-Manip 161 #110 策展摘录
-- [humanoid_rl_stack_42_catalog.md](../../sources/papers/humanoid_rl_stack_42_catalog.md) — 42 篇总表
-- [humanoid_loco_manip_161_catalog.md](../../sources/papers/humanoid_loco_manip_161_catalog.md) — 161 篇总表
-- [wechat_embodied_ai_lab_humanoid_rl_motion_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md) — 42 篇微信公众号编译导读
-- [wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md) — 161 篇微信公众号编译导读
-- 原始抓取：[wechat_humanoid_rl_42_survey_2026-05-26.md](../../sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md)
+- [humanoid_rl_stack_06_hdmi_learning_interactive_humanoid_whole_body_co.md](../../sources/papers/humanoid_rl_stack_06_hdmi_learning_interactive_humanoid_whole_body_co.md)
+- [loco_manip_161_survey_110_hdmi.md](../../sources/papers/loco_manip_161_survey_110_hdmi.md)
+- [hdmi-project.md](../../sources/sites/hdmi-project.md)
+- [hdmi.md](../../sources/repos/hdmi.md)
+- [wechat_embodied_ai_lab_humanoid_rl_motion_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)
+- [wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md)
+- [wechat_embodied_ai_lab_loco_manip_contact_survey.md](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md)
+- Weng et al., *HDMI: Learning Interactive Humanoid Whole-Body Control from Human Videos*, arXiv:2509.16757, 2025. <https://arxiv.org/abs/2509.16757>
+- 官方代码：<https://github.com/LeCAR-Lab/HDMI>
 
 ## 推荐继续阅读
 
-- [42 篇 RL 运动控制（微信公众号）](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA)
-- [161 篇 Loco-Manip（微信公众号）](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A)
-- [19 篇 AMP 运动先验姊妹篇](https://mp.weixin.qq.com/s/YZsm3855iP3TNTT1aou7w)
+- [HDMI 项目页](https://hdmi-humanoid.github.io)
+- [HDMI 官方 GitHub](https://github.com/LeCAR-Lab/HDMI)
+- [arXiv HTML](https://arxiv.org/html/2509.16757v3)
+- [35 Min Door Traversal 视频](https://www.youtube.com/watch?v=-BDmzuvm778)
+- [Loco-Manip 接触技术地图](../overview/loco-manip-contact-technology-map.md)
