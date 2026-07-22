@@ -412,11 +412,14 @@
       display: flex;
       flex-direction: column;
       gap: 5px;
-      width: auto;
-      max-width: min(320px, calc(100% - 40px));
-      max-height: min(420px, calc(100% - 40px));
+      /* PC：展开后约占视口宽高各 1/3，内容过多时内部滚动 */
+      width: calc(100vw / 3);
+      height: calc(100vh / 3);
+      max-width: calc(100% - 40px);
+      max-height: calc(100% - 40px);
       margin: 0;
-      padding: 10px 13px;
+      padding: 12px 14px;
+      box-sizing: border-box;
       background: rgba(13,17,23,0.88);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 10px;
@@ -496,8 +499,11 @@
       #graph-legend {
         bottom: 16px;
         left: 16px;
+        width: auto;
+        height: auto;
         max-width: calc(100% - 32px);
         max-height: min(72vh, calc(100% - 32px));
+        padding: 10px 13px;
       }
     }
 

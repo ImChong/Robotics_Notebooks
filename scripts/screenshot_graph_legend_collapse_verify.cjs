@@ -85,6 +85,7 @@ const path = require('path');
       const legend = document.getElementById('graph-legend');
       const scrim = document.getElementById('graph-legend-scrim');
       const title = legend.querySelector('.legend-title');
+      const rect = legend.getBoundingClientRect();
       return {
         fabExpanded: fab.getAttribute('aria-expanded'),
         legendOpen: legend.classList.contains('graph-legend-open'),
@@ -92,6 +93,12 @@ const path = require('path');
         scrimVisible: scrim && scrim.classList.contains('is-visible') && !scrim.hidden,
         titleText: title ? title.textContent.trim() : '',
         rowCount: legend.querySelectorAll('.legend-row').length,
+        size: {
+          width: Math.round(rect.width),
+          height: Math.round(rect.height),
+          vw: window.innerWidth,
+          vh: window.innerHeight,
+        },
       };
     });
 
@@ -115,6 +122,11 @@ const path = require('path');
       };
     });
 
+    const expectedW = openState.size.vw / 3;
+    const expectedH = openState.size.vh / 3;
+    const sizeOk = Math.abs(openState.size.width - expectedW) < 24
+      && Math.abs(openState.size.height - expectedH) < 24;
+
     const ok = (collapsedState.fabDisplay === 'inline-flex' || collapsedState.fabDisplay === 'flex')
       && collapsedState.fabExpanded === 'false'
       && collapsedState.legendOpen === false
@@ -123,6 +135,7 @@ const path = require('path');
       && openState.legendOpen === true
       && openState.scrimVisible === true
       && openState.rowCount > 0
+      && sizeOk
       && afterEsc.fabExpanded === 'false'
       && afterEsc.legendOpen === false;
 
