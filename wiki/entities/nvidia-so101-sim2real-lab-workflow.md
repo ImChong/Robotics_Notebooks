@@ -2,7 +2,7 @@
 type: entity
 tags: [course, nvidia, sim2real, vla, groot, lerobot, isaac-lab, manipulation, so101, cosmos, domain-randomization]
 status: complete
-updated: 2026-05-21
+updated: 2026-07-22
 related:
   - ./nvidia-physical-ai-learning.md
   - ./isaac-gym-isaac-lab.md
@@ -163,6 +163,7 @@ flowchart TD
 - [Domain Randomization](../concepts/domain-randomization.md)
 - [LeRobot](./lerobot.md)
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
+- [Learning to Fold（LeHome 2026）](./paper-lehome-learning-to-fold.md) — 同硬件族竞赛方案：Isaac Sim RL + 真机 DAgger 全链路
 - [SAGE](./sage-sim2real-actuator-gap-estimator.md)
 - [Cosmos 3](./cosmos-3.md)
 - [Manipulation](../tasks/manipulation.md)

@@ -1,5 +1,15 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-22] ingest | sources/papers/lehome_learning_to_fold_arxiv_2606_27163.md + sources/sites/ilialarchenko-lehome2026.md + sources/repos/lehome_solution.md + sources/sites/huggingface-lehome-{sim,real}.md — Learning to Fold（arXiv:2606.27163）LeHome 2026 全链路开源；升格 wiki/entities/paper-lehome-learning-to-fold.md；交叉 vla/awr/dagger/sim2real/lerobot/manipulation/vla-open-source-repro-landscape/steam/sunday/nvidia-so101；机构新增 ilia-larchenko；仿真1st/真机2nd权重已发
+
+- **开源状态：** **已开源（完整工程）** — [`IliaLarchenko/lehome_solution`](https://github.com/IliaLarchenko/lehome_solution)（Apache-2.0）+ HF [`lehome_sim`](https://huggingface.co/IliaLarchenko/lehome_sim)（仿真 1st）/ [`lehome_real`](https://huggingface.co/IliaLarchenko/lehome_real)（真机 2nd）；博客含成功/失败推理视频（截至 2026-07-22）
+- **新建 papers：** [`sources/papers/lehome_learning_to_fold_arxiv_2606_27163.md`](sources/papers/lehome_learning_to_fold_arxiv_2606_27163.md)
+- **新建 sites：** [`sources/sites/ilialarchenko-lehome2026.md`](sources/sites/ilialarchenko-lehome2026.md)、[`sources/sites/huggingface-lehome-sim.md`](sources/sites/huggingface-lehome-sim.md)、[`sources/sites/huggingface-lehome-real.md`](sources/sites/huggingface-lehome-real.md)
+- **新建 repos：** [`sources/repos/lehome_solution.md`](sources/repos/lehome_solution.md)
+- **新建 wiki：** [`wiki/entities/paper-lehome-learning-to-fold.md`](wiki/entities/paper-lehome-learning-to-fold.md)
+- **机构：** `schema/institutions.json` 新增 `ilia-larchenko`；沿用既有 `huggingface` / `physical-intelligence` / `nvidia`
+- **交叉更新：** [`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/methods/awr.md`](wiki/methods/awr.md)、[`wiki/methods/dagger.md`](wiki/methods/dagger.md)、[`wiki/concepts/sim2real.md`](wiki/concepts/sim2real.md)、[`wiki/entities/lerobot.md`](wiki/entities/lerobot.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`wiki/overview/vla-open-source-repro-landscape-2025.md`](wiki/overview/vla-open-source-repro-landscape-2025.md)、[`wiki/entities/paper-steam-advantage-modeling.md`](wiki/entities/paper-steam-advantage-modeling.md)、[`wiki/entities/sunday-robotics-act2.md`](wiki/entities/sunday-robotics-act2.md)、[`wiki/entities/nvidia-so101-sim2real-lab-workflow.md`](wiki/entities/nvidia-so101-sim2real-lab-workflow.md)
+
 ## [2026-07-22] ingest | sources/papers/xrobotoolkit_arxiv_2508_00097.md + sources/sites/xr-robotics-github-io.md + sources/repos/xrobotoolkit.md — XRoboToolkit（arXiv:2508.00097）OpenXR 跨平台 XR 遥操作套件；升格 wiki/entities/paper-xrobotoolkit.md；交叉 wiki/tasks/teleoperation.md、wiki/entities/paper-twist2.md、wiki/entities/isaac-teleop.md、wiki/entities/paper-loco-manip-161-131-open-television.md；SII 2026 Best Paper，全栈已开源
 
 - **开源状态：** **已开源** — 项目页 GitHub → [`XR-Robotics`](https://github.com/XR-Robotics)（PC-Service / Unity Client / Teleop-Sample-Python 等）；π₀ 折毯示范集未单独发布（截至 2026-07-22）

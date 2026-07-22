@@ -2,7 +2,7 @@
 type: entity
 tags: [home-robot, mobile-manipulation, foundation-model, deformable-manipulation, laundry-folding, sunday-robotics, solve-standard, post-training]
 status: complete
-updated: 2026-07-17
+updated: 2026-07-22
 related:
   - ../concepts/robotics-solve-standard.md
   - ../tasks/manipulation.md
@@ -142,6 +142,7 @@ flowchart TB
 - [TidyBot2](./tidybot2.md) — 开源 household 移动操作平台对照
 - [Curr-0](./current-robotics-curr0.md) — 另一全栈「人类数据→基础模型」产业路线
 - [LeRobot](./lerobot.md) — 开源叠衣 checkpoint 生态（`folding_latest`）
+- [Learning to Fold（LeHome 2026）](./paper-lehome-learning-to-fold.md) — 开源竞赛全链路叠衣（SO-ARM101；仿真 1st / 真机 2nd）
 - [Humanoid Hardware 101 · 末端](../overview/humanoid-hardware-101-sensing-end-effectors.md) — Sunday 三指夹爪案例
 
 ## 推荐继续阅读
