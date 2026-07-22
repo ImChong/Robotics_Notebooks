@@ -2,7 +2,7 @@
 type: overview
 tags: [world-models, category-hub, virtual-sandbox, model-based-rl, policy-evaluation, dreamer, shenlan-survey]
 status: complete
-updated: 2026-06-20
+updated: 2026-07-22
 summary: "深蓝世界模型 15 项目 · 03 虚拟沙盒（3 篇）— 世界模型作 RL 想象环境或策略评估靶场，用 rollout 替代昂贵真机试错；代表 DreamerV3、RLVR-World、WorldGym。"
 related:
   - ./world-models-15-open-source-technology-map.md
@@ -14,6 +14,7 @@ related:
   - ../entities/paper-shenlan-wm-14-rlvr-world.md
   - ../entities/paper-shenlan-wm-15-worldgym.md
   - ../entities/paper-oscar.md
+  - ../entities/paper-driftworld.md
 sources:
   - ../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md
   - ../../sources/papers/shenlan_world_models_15_reference_catalog.md
@@ -46,7 +47,10 @@ sources:
 | 14 | RLVR-World | [paper-shenlan-wm-14-rlvr-world.md](../entities/paper-shenlan-wm-14-rlvr-world.md) | [source](../../sources/papers/shenlan_wm_survey_14_rlvr-world.md) |
 | 15 | WorldGym | [paper-shenlan-wm-15-worldgym.md](../entities/paper-shenlan-wm-15-worldgym.md) | [source](../../sources/papers/shenlan_wm_survey_15_worldgym.md) |
 
-**路线外延（非 15 项目策展）：** [OSCAR](../entities/paper-oscar.md)（arXiv:2606.04463）— 跨具身 **2D 骨架条件** 视频 WM，在 [RoboArena](../methods/roboarena.md) 七策略上验证虚拟 rollout 与真机排名相关性（Pearson **ρ +0.750**）。
+**路线外延（非 15 项目策展）：**
+
+- [OSCAR](../entities/paper-oscar.md)（arXiv:2606.04463）— 跨具身 **2D 骨架条件** 视频 WM，在 [RoboArena](../methods/roboarena.md) 七策略上验证虚拟 rollout 与真机排名相关性（Pearson **ρ +0.750**）。
+- [DriftWorld](../entities/paper-driftworld.md)（arXiv:2607.15065）— **1-step drifting** 动作条件 WM（30+ fps），用快想象做 **GPC-RANK 推理时改进** 与离线策略评估（与 GT 相关性最高约 **0.99**）。
 
 ## 在 15 项目地图中的位置
 
@@ -65,6 +69,7 @@ sources:
 - [机器人世界模型训练闭环 taxonomy](./robot-world-models-training-loop-taxonomy.md)
 - [Video-as-Simulation](../concepts/video-as-simulation.md)
 - [OSCAR](../entities/paper-oscar.md) — RoboArena 虚拟策略评估代理
+- [DriftWorld](../entities/paper-driftworld.md) — 1-step drifting：推理时搜索 + 离线评估
 
 ## 参考来源
 

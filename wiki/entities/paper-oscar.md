@@ -10,7 +10,7 @@ tags:
   - cosmos
   - skeleton-conditioning
 status: complete
-updated: 2026-06-20
+updated: 2026-07-22
 arxiv: "2606.04463"
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
@@ -22,6 +22,7 @@ related:
   - ./cosmos-3.md
   - ./paper-shenlan-wm-15-worldgym.md
   - ./paper-kairos-native-world-model-stack.md
+  - ./paper-driftworld.md
   - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/oscar_arxiv_2606_04463.md
@@ -149,6 +150,7 @@ flowchart TB
 - [RoboArena](../methods/roboarena.md) — 分布式真机评测框架
 - [Cosmos 3](./cosmos-3.md) — 基座视频扩散平台
 - [WorldGym](./paper-shenlan-wm-15-worldgym.md) — 同类 WM 策略评估靶场
+- [DriftWorld](./paper-driftworld.md) — 1-step drifting：强调推理时搜索速度
 - [Manipulation](../tasks/manipulation.md) — 操纵策略与评测语境
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页兼跨其 ② 世界模型与 ④ 校准层：视频世界模型作虚拟策略评估器，RoboArena 评测与真机排名强相关
 

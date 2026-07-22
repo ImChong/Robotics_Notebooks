@@ -1,13 +1,105 @@
 {
   "generated_at": "2026-07-22",
-  "node_count": 1749,
-  "edge_count": 14092,
+  "node_count": 1750,
+  "edge_count": 14110,
   "coverage": {
-    "covered": 1699,
-    "total": 1729,
+    "covered": 1700,
+    "total": 1730,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-driftworld.md",
+      "detail_id": "entity-paper-driftworld",
+      "label": "DriftWorld（Fast World Modeling through Drifting）",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/generative-world-models.md",
+      "detail_id": "wiki-methods-generative-world-models",
+      "label": "Generative World Models (生成式世界模型)",
+      "type": "method",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/world-models-route-03-virtual-sandbox.md",
+      "detail_id": "wiki-overview-world-models-route-03-virtual-sandbox",
+      "label": "世界模型路线 03：虚拟沙盒",
+      "type": "overview",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/robot-world-models-training-loop-taxonomy.md",
+      "detail_id": "wiki-overview-robot-world-models-training-loop-taxonomy",
+      "label": "机器人世界模型：训练闭环与三线 taxonomy",
+      "type": "overview",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/video-as-simulation.md",
+      "detail_id": "wiki-concepts-video-as-simulation",
+      "label": "Video-as-Simulation (视频即仿真)",
+      "type": "concept",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-oscar.md",
+      "detail_id": "entity-paper-oscar",
+      "label": "OSCAR（跨具身动作条件世界模型）",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-gigaworld-1-policy-evaluation.md",
+      "detail_id": "entity-paper-gigaworld-1-policy-evaluation",
+      "label": "GigaWorld-1（World Models for Robot Policy Evaluation · arXiv:2607.02642）",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-shenlan-wm-15-worldgym.md",
+      "detail_id": "entity-paper-shenlan-wm-15-worldgym",
+      "label": "WorldGym",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/queries/embodied-eval-benchmark-selection-loop.md",
+      "detail_id": "wiki-queries-embodied-eval-benchmark-selection-loop",
+      "label": "Query：具身大模型评测基准选型闭环知识链",
+      "type": "query",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/concepts/torque-source-abstraction-gap.md",
       "detail_id": "wiki-concepts-torque-source-abstraction-gap",
@@ -15,7 +107,7 @@
       "type": "concept",
       "recency": "2026-07-21",
       "source": "log.md",
-      "action": "maintained",
+      "action": "added",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
@@ -121,123 +213,31 @@
       "action": "added",
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-heracles-humanoid-diffusion.md",
-      "detail_id": "entity-paper-heracles-humanoid-diffusion",
-      "label": "Heracles：跟踪精度与生成式恢复的扩散中间件",
-      "type": "entity",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/humanoid-robot.md",
-      "detail_id": "entity-humanoid-robot",
-      "label": "人形机器人（Humanoid Robot）",
-      "type": "entity",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/overview/robot-open-source-wechat-issue01-curator.md",
-      "detail_id": "wiki-overview-robot-open-source-wechat-issue01-curator",
-      "label": "机器人开源宝库（微信策展第01期）— 索引",
-      "type": "overview",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/navigation-slam-autonomy-stack.md",
-      "detail_id": "wiki-overview-navigation-slam-autonomy-stack",
-      "label": "导航·SLAM·自动驾驶开源栈总览",
-      "type": "overview",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/methods/lqr-ilqr.md",
-      "detail_id": "wiki-methods-lqr-ilqr",
-      "label": "LQR / iLQR 算法详解",
-      "type": "method",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/methods/model-predictive-control.md",
-      "detail_id": "wiki-methods-model-predictive-control",
-      "label": "Model Predictive Control (MPC，模型预测控制)",
-      "type": "method",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/python-robotics.md",
-      "detail_id": "entity-python-robotics",
-      "label": "PythonRobotics",
-      "type": "entity",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-gmt.md",
-      "detail_id": "entity-paper-gmt",
-      "label": "GMT（General Motion Tracking for Humanoid Whole-Body Control）",
-      "type": "entity",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-loco-manip-161-009-gmt.md",
-      "detail_id": "entity-paper-loco-manip-161-009-gmt",
-      "label": "GMT（Loco-Manip 161 · #009 索引）",
-      "type": "entity",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/torque-source-abstraction-gap.md",
-    "detail_id": "wiki-concepts-torque-source-abstraction-gap",
-    "label": "力矩源抽象 Gap（理想力矩源 ↔ 真实执行器）",
-    "type": "concept",
-    "recency": "2026-07-21",
+    "path": "wiki/entities/paper-driftworld.md",
+    "detail_id": "entity-paper-driftworld",
+    "label": "DriftWorld（Fast World Modeling through Drifting）",
+    "type": "entity",
+    "recency": "2026-07-22",
     "source": "log.md",
-    "action": "maintained",
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 383
+      "size": 405
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 184
+      "size": 193
     },
     {
       "label": "人形论文深读笔记",
-      "size": 176
+      "size": 178
     },
     {
       "label": "移动操作",
@@ -245,7 +245,7 @@
     },
     {
       "label": "全身控制",
-      "size": 157
+      "size": 146
     },
     {
       "label": "仿真训练",
@@ -288,7 +288,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 267,
+      "degree": 268,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
