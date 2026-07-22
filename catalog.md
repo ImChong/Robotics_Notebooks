@@ -1261,6 +1261,7 @@
 - [Terrain Adaptation（地形适应）](wiki/concepts/terrain-adaptation.md) — Terrain Adaptation**：让腿式或人形机器人根据地形感知结果，动态调整落脚点、身体姿态、接触时序和控制参数，从而在楼梯、碎石、草地、台阶和坡面上稳定行走。 `📅unknown` `[wiki_page]`
 - [地形 Latent 表征（Terrain Latent Representation）](wiki/concepts/terrain-latent-representation.md) — 地形 Latent 表征**：在感知足式/人形 locomotion 中，把深度图或高度图经 Encoder 映射为 **低维向量**（如 64–256 维），供策略网络消费。该向量常被称为  `📅unknown` `[wiki_page]`
 - [文字生成 CAD（Text-to-CAD）](wiki/concepts/text-to-cad.md) — 文字生成 CAD** 指用**自然语言提示**或**对话式代理**，自动生成或迭代**可编辑的 CAD 几何**（常见为 **B-rep** 实体），并通常导出 **STEP**、**STL**、 `📅2026-05-14` `[wiki_page]`
+- [力矩源抽象 Gap（理想力矩源 ↔ 真实执行器）](wiki/concepts/torque-source-abstraction-gap.md) — RL/MPC 策略在仿真里几乎都默认一个隐含抽象：**执行器是一个理想力矩源**——策略下发的期望力矩 $\tau_{des}$ 会被瞬时、无损、无偏地施加到关节上，即 $\tau_{out}=\ta `📅unknown` `[wiki_page]`
 - [Transformer](wiki/concepts/transformer.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[wiki_page]`
 - [TSID](wiki/concepts/tsid.md) — TSID（Task Space Inverse Dynamics，任务空间逆动力学）** 是一种典型的人形机器人全身控制方法，用来在满足动力学与接触约束的前提下，把任务空间目标转成可执行的关节加速 `📅unknown` `[wiki_page]`
 - [TTL 串行逻辑电平（UART 板内接口）](wiki/concepts/ttl-serial-logic-level.md) — 在嵌入式与机器人固件语境里，「串口」若未特别说明电气标准，通常指 **MCU UART 外设引脚上的 TTL/CMOS 单端逻辑电平**——不是 RS-232 的 ±12 V，也不是 RS-485 的 `📅unknown` `[wiki_page]`

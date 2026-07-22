@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21",
+  "generated_at": "2026-07-22",
   "node_count": 1749,
   "edge_count": 14092,
   "coverage": {
@@ -8,6 +8,36 @@
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/torque-source-abstraction-gap.md",
+      "detail_id": "wiki-concepts-torque-source-abstraction-gap",
+      "label": "力矩源抽象 Gap（理想力矩源 ↔ 真实执行器）",
+      "type": "concept",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/queries/actuator-drive-chain-selection-loop.md",
+      "detail_id": "wiki-queries-actuator-drive-chain-selection-loop",
+      "label": "Query：执行器驱动链选型闭环知识链",
+      "type": "query",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/concepts/implicit-explicit-actuator-modeling.md",
+      "detail_id": "wiki-concepts-implicit-explicit-actuator-modeling",
+      "label": "Implicit / Explicit 执行器建模",
+      "type": "concept",
+      "recency": "2026-07-21",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/overview/autonomous-driving-core-algorithms-series.md",
       "detail_id": "wiki-overview-autonomous-driving-core-algorithms-series",
@@ -184,46 +214,17 @@
       "source": "log.md",
       "action": "added",
       "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/concepts/whole-body-tracking-pipeline.md",
-      "detail_id": "wiki-concepts-whole-body-tracking-pipeline",
-      "label": "Whole-Body Tracking Pipeline（全身运动跟踪流水线）",
-      "type": "concept",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/queries/humanoid-motion-tracking-method-selection.md",
-      "detail_id": "wiki-queries-humanoid-motion-tracking-method-selection",
-      "label": "人形运动跟踪方法选型指南",
-      "type": "query",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-phygile.md",
-      "detail_id": "entity-paper-phygile",
-      "label": "PhyGile（Physics-Prefix Guided Motion Generation for Agile General Humanoid Motion Tracking）",
-      "type": "entity",
-      "recency": "2026-07-21",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/autonomous-driving-core-algorithms-series.md",
-    "detail_id": "wiki-overview-autonomous-driving-core-algorithms-series",
-    "label": "《自动驾驶核心算法盘点》专栏技术地图",
-    "type": "overview",
+    "path": "wiki/concepts/torque-source-abstraction-gap.md",
+    "detail_id": "wiki-concepts-torque-source-abstraction-gap",
+    "label": "力矩源抽象 Gap（理想力矩源 ↔ 真实执行器）",
+    "type": "concept",
     "recency": "2026-07-21",
     "source": "log.md",
-    "action": "added"
+    "action": "maintained",
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
