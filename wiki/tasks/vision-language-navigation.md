@@ -22,6 +22,7 @@ related:
   - ../entities/paper-vesta-generalist-embodied-reasoning.md
   - ../entities/paper-realm-last-3-meter-vln-grounding.md
   - ../entities/paper-3d-ic-joint-navigation-manipulation-planning.md
+  - ../entities/paper-da-nav.md
   - locomotion.md
 sources:
   - ../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md
@@ -31,6 +32,7 @@ sources:
   - ../../sources/papers/uni_lavira_arxiv_2605_27582.md
   - ../../sources/papers/realm_last_3_meter_vln_arxiv_2607_03792.md
   - ../../sources/papers/3d_ic_icml_2026.md
+  - ../../sources/papers/da_nav_arxiv_2607_11638.md
 ---
 
 # 视觉–语言导航（Vision-and-Language Navigation, VLN）
@@ -58,6 +60,7 @@ sources:
 - **通才 planner 统一导航 + 推理**：[Vesta](../entities/paper-vesta-generalist-embodied-reasoning.md) 在同一 **Qwen3-VL-8B** checkpoint 上同时 SFT **VLN-CE（R2R/RxR/ScaleVLN）** 与具身 cognition/localization；R2R-CE **SR 55.5%** 与 InternVLA-N1 specialist 持平，而 **Nav-only finetune 的 generalist 竞品在 R2R 上 SR=0**（灾难性遗忘）——说明 VLN 是否应并入 **更大 planner mix** 时需评估 **域外遗忘** 而不仅是导航榜分数。
 - **REVERIE 末段接地鸿沟**：[REALM](../entities/paper-realm-last-3-meter-vln-grounding.md)（arXiv:2607.03792）指出 REVERIE-CE 等任务虽要求框出目标实例，但主流 **3 m SR** 不评 **最终朝向与可见性**——ETPNav-FT SR=34.67% 时 **ONS@0.1m 仅 6.32%**；作者提出 **plug-and-play 末段精修** 与 **REVERIE-AIM** 实例中心评测集。
 - **OVMM 导航–操作联合规划**：[3D-IC](../entities/paper-3d-ic-joint-navigation-manipulation-planning.md)（ICML 2026）在 **共享 3D 特征图** 上为开放词汇移动操作生成 **多阶段交互路点链**，用 **VLM 路点可行性 + 转移代价** 选链，避免「导航到了但操作姿态差」的分阶段错配；真机 **Stretch 3** 验证。
+- **城市尺度方向感知 VLN**：[DA-Nav](../entities/paper-da-nav.md)（arXiv:2607.11638）用 **商业导航离散方向指令**（非细粒度地标描述），在 **egocentric 图像平面网格** 上做 spatial grounding，并以 **CoT + ReDA recovery** 支撑长程纠偏；CARLA SoTA，**零样本** 迁到 Go2 / 乐聚人形公里级户外——与室内 R2R/REVERIE 栈互补。
 
 ## 核心要素
 
@@ -75,6 +78,12 @@ sources:
 - **设定差异：** [WorldVLN](../entities/paper-worldvln-aerial-vln-wam.md) 等 **空中 VLN** 工作在 **连续 3D 航点** 与 **大视角 egocentric 变化** 下闭环执行语言指令；相对 Matterport 离散转向，更强调 **因果记忆、短视界世界预测与真机迁移**。
 - **范式对照：** 地面开源栈见 [四范式复现路径](../overview/vln-open-source-repro-paradigms.md)；空中路线可将 **自回归 World Action Model** 与 **导航 VLA** 对照阅读（[WAM 概念页](../concepts/world-action-models.md)）。
 - **零样本统一 agent：** [Uni-LaViRA](../entities/paper-uni-lavira.md)（arXiv:2605.27582）把 VLN-CE / ObjectNav / EQA / Aerial-VLN 写成同一 **Language→Vision→Robot** 翻译环，**无机器人轨迹训练**；OpenUAV SR 40.0%，并与训练式导航基础模型对照。
+
+### 户外 / 城市尺度方向指令
+
+- **设定差异：** [DA-Nav](../entities/paper-da-nav.md) 面向 **地面足式/人形** 的 **城市户外闭环**，指令来自 **Google Maps / 高德** 解析出的 FORWARD / TURN\_\* / STOP，而非 Matterport 细粒度路径描述。
+- **方法要点：** 离散 **图像平面网格** + **偏离评估→动作→轨迹** CoT；配套 **ReDA**（含 recovery）；评测额外强调 **DF / CSR**。
+- **开源边界：** 截至 2026-07-22 **未发布** 官方代码/权重；选型可读方法，复现仍走 [四范式开源栈](../overview/vln-open-source-repro-paradigms.md)。
 
 ## 常见误区
 
@@ -94,6 +103,7 @@ sources:
 - **模型**：[VLA](../methods/vla.md) 可作为统一骨架，在导航子任务上接入离散动作头或目标点输出。
 - **通才 embodied planner**：[Vesta](../entities/paper-vesta-generalist-embodied-reasoning.md) — 导航与具身推理、长时程子任务规划 **单模型 SFT**；R2R-CE 与 offline planning / 真机 memory 任务一并报告（arXiv:2606.20905）。
 - **REVERIE 实例接地**：[REALM](../entities/paper-realm-last-3-meter-vln-grounding.md) — Last-3-Meter Grounding Gap、ONS/GS/OracleGS 指标与 REVERIE-AIM（arXiv:2607.03792）。
+- **城市尺度方向感知**：[DA-Nav](../entities/paper-da-nav.md) — 商业导航指令 + 图像平面离散 grounding + CoT 恢复；CARLA / Go2 / Kuavo-V（arXiv:2607.11638）。
 
 ## 参考来源
 
@@ -101,6 +111,7 @@ sources:
 - [WorldVLN 论文摘录（arXiv:2605.15964）](../../sources/papers/worldvln_arxiv_2605_15964.md) — 空中 VLN · 自回归 WAM
 - [Uni-LaViRA 论文摘录（arXiv:2605.27582）](../../sources/papers/uni_lavira_arxiv_2605_27582.md) — 零样本统一具身导航
 - [REALM 论文摘录（arXiv:2607.03792）](../../sources/papers/realm_last_3_meter_vln_arxiv_2607_03792.md) — REVERIE 末段实例接地与评测鸿沟
+- [DA-Nav 论文摘录（arXiv:2607.11638）](../../sources/papers/da_nav_arxiv_2607_11638.md) — 城市尺度方向感知 VLN
 - [SceneVerse++ 原始资料归档](../../sources/repos/sceneverse-pp.md)
 - Chen et al., *Lifting Unlabeled Internet-level Data for 3D Scene Understanding* (arXiv:2604.01907) — VLN 数据生成与 R2R 实验
 - Anderson et al., *Vision-and-Language Navigation* — R2R 任务经典定义（如需溯源基准起源可查阅原文）
@@ -118,6 +129,7 @@ sources:
 - [Locomotion](locomotion.md)
 - [VLA](../methods/vla.md)
 - [REALM（Last-3-Meter VLN 实例接地）](../entities/paper-realm-last-3-meter-vln-grounding.md) — REVERIE 末段评测鸿沟与 plug-and-play 精修
+- [DA-Nav（方向感知城市尺度 VLN）](../entities/paper-da-nav.md) — 商业导航指令 + 图像平面网格 + CoT 恢复
 
 ## 推荐继续阅读
 

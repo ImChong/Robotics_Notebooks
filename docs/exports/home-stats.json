@@ -1,23 +1,44 @@
 {
   "generated_at": "2026-07-22",
-  "node_count": 1763,
-  "edge_count": 14362,
+  "node_count": 1764,
+  "edge_count": 14378,
   "coverage": {
-    "covered": 1713,
-    "total": 1743,
+    "covered": 1714,
+    "total": 1744,
     "percent": 98
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-lehome-learning-to-fold.md",
-      "detail_id": "entity-paper-lehome-learning-to-fold",
-      "label": "Learning to Fold（LeHome Challenge 2026 · arXiv:2606.27163）",
+      "path": "wiki/entities/paper-da-nav.md",
+      "detail_id": "entity-paper-da-nav",
+      "label": "DA-Nav（方向感知城市尺度 VLN）",
       "type": "entity",
       "recency": "2026-07-22",
       "source": "log.md",
       "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/vision-language-navigation.md",
+      "detail_id": "wiki-tasks-vision-language-navigation",
+      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
+      "type": "task",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/methods/vla.md",
@@ -27,6 +48,47 @@
       "recency": "2026-07-22",
       "source": "log.md",
       "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/vln-open-source-repro-paradigms.md",
+      "detail_id": "wiki-overview-vln-open-source-repro-paradigms",
+      "label": "VLN 开源复现：四范式学习路径",
+      "type": "overview",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-navila-legged-robot-vision-language-action-model.md",
+      "detail_id": "entity-paper-notebook-navila-legged-robot-vision-language-action-model",
+      "label": "NaVILA",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/behavior-cloning.md",
+      "detail_id": "wiki-methods-behavior-cloning",
+      "label": "Behavior Cloning（行为克隆）",
+      "type": "method",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-lehome-learning-to-fold.md",
+      "detail_id": "entity-paper-lehome-learning-to-fold",
+      "label": "Learning to Fold（LeHome Challenge 2026 · arXiv:2606.27163）",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -47,17 +109,6 @@
       "recency": "2026-07-22",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/lerobot.md",
@@ -161,73 +212,22 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-loco-manip-161-131-open-television.md",
-      "detail_id": "entity-paper-loco-manip-161-131-open-television",
-      "label": "Open-TeleVision",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-human-as-humanoid.md",
-      "detail_id": "entity-paper-human-as-humanoid",
-      "label": "Human-as-Humanoid",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-humanoidumi.md",
-      "detail_id": "entity-paper-humanoidumi",
-      "label": "HumanoidUMI",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-vlk-synthetic-loco-manipulation.md",
-      "detail_id": "entity-paper-vlk-synthetic-loco-manipulation",
-      "label": "VLK（Vision-Language-Kinematics）",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-imagine2real-zero-shot-hoi.md",
-      "detail_id": "entity-paper-imagine2real-zero-shot-hoi",
-      "label": "Imagine2Real",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-lehome-learning-to-fold.md",
-    "detail_id": "entity-paper-lehome-learning-to-fold",
-    "label": "Learning to Fold（LeHome Challenge 2026 · arXiv:2606.27163）",
+    "path": "wiki/entities/paper-da-nav.md",
+    "detail_id": "entity-paper-da-nav",
+    "label": "DA-Nav（方向感知城市尺度 VLN）",
     "type": "entity",
     "recency": "2026-07-22",
     "source": "log.md",
     "action": "added",
-    "has_repo": true,
     "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 441
+      "size": 447
     },
     {
       "label": "移动操作",
@@ -235,11 +235,11 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 176
+      "size": 175
     },
     {
       "label": "全身控制",
-      "size": 147
+      "size": 146
     },
     {
       "label": "人形强化学习运动控制",
@@ -262,7 +262,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 320,
+      "degree": 322,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -270,7 +270,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 301,
+      "degree": 303,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

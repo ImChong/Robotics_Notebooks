@@ -2,7 +2,7 @@
 type: method
 tags: [il, behavior-cloning, supervised-learning, manipulation, covariate-shift]
 status: complete
-updated: 2026-07-14
+updated: 2026-07-22
 summary: "Behavior Cloning 把专家演示转成监督学习问题，是机器人模仿学习最简单也最常用的基线。"
 related:
   - ./imitation-learning.md
@@ -77,7 +77,7 @@ $$
 单步小误差会沿着闭环执行不断累积，序列越长、任务越长 horizon，问题越明显。BC 并不是“每步都独立无害”的方法。
 
 ### 3. 受限于专家上界
-如果数据里没有恢复动作、异常姿态或罕见接触，BC 通常也学不会这些行为。
+如果数据里没有恢复动作、异常姿态或罕见接触，BC 通常也学不会这些行为。[DA-Nav](../entities/paper-da-nav.md) 在户外 VLN 消融中给出定量对照：去掉 recovery 轨迹后 CSR 从约 **98%** 掉到 **15%**，说明「只仿完美专家」对闭环纠偏不足。
 
 ## 主要技术路线
 
@@ -129,6 +129,7 @@ $$
 - [Manipulation](../tasks/manipulation.md)
 - [RL vs Imitation Learning](../comparisons/rl-vs-il.md)
 - [KinetIQ Ascend](../entities/kinetiq-ascend.md) — BC 预训练 + 真机 PPO 突破工业可靠性/速度天花板
+- [DA-Nav](../entities/paper-da-nav.md) — 户外 VLN：专家+recovery 数据相对纯 BC 的纠偏消融
 
 ## 推荐继续阅读
 
