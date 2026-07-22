@@ -19,6 +19,18 @@
 
 ---
 
+## 仓库结构（README / 文档索引，2026-07-22）
+
+| 路径 | 职责 |
+|------|------|
+| `holosmpl/` | 多源动捕 → 统一 HoloSMPL 表示 |
+| `holoretarget/` | HoloRetarget（训练侧高速 / 机上遥操作） |
+| `holomotion/` | 策略训练与推理核心 |
+| `docs/train_motion_tracking.md` · `evaluate_motion_tracking.md` | 训练 / 评测入口 |
+| `docs/realworld_deployment.md` | 离线 motion / 在线 teleop 真机部署 |
+| `deployment/` + Docker Hub | v1.4 镜像与机上部署 |
+| HF `HorizonRobotics/HoloMotion_models` | 预训练 motion / velocity tracking 权重 |
+
 ## 与「robot_lab」命名的关系
 
 文档站点路径含 `robot_lab/holomotion`，指 **Horizon Robotics 组织下托管的 GitHub Pages**，与社区维护的 IsaacLab 扩展仓库 **[fan-ziqi/robot_lab](robot_lab.md)** 不是同一项目；阅读文档与引用链接时建议 **以组织名与域名区分**。

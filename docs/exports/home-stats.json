@@ -9,6 +9,26 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/gr00t-wholebodycontrol.md",
+      "detail_id": "entity-gr00t-wholebodycontrol",
+      "label": "GR00T-WholeBodyControl（人形全身控制统一平台）",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/holomotion.md",
+      "detail_id": "entity-holomotion",
+      "label": "HoloMotion（HoloMotion-1）",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/paper-perceptive-bfm.md",
       "detail_id": "entity-paper-perceptive-bfm",
       "label": "Perceptive BFM：Adapting Human Motion Priors to Robot-Centric Terrain",
@@ -32,26 +52,6 @@
       "path": "wiki/entities/paper-humanoidarena.md",
       "detail_id": "entity-paper-humanoidarena",
       "label": "HumanoidArena（Egocentric Hierarchical Whole-body Benchmark）",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/gr00t-wholebodycontrol.md",
-      "detail_id": "entity-gr00t-wholebodycontrol",
-      "label": "GR00T-WholeBodyControl（人形全身控制统一平台）",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/holomotion.md",
-      "detail_id": "entity-holomotion",
-      "label": "HoloMotion（HoloMotion-1）",
       "type": "entity",
       "recency": "2026-07-22",
       "source": "log.md",
@@ -215,9 +215,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-perceptive-bfm.md",
-    "detail_id": "entity-paper-perceptive-bfm",
-    "label": "Perceptive BFM：Adapting Human Motion Priors to Robot-Centric Terrain",
+    "path": "wiki/entities/gr00t-wholebodycontrol.md",
+    "detail_id": "entity-gr00t-wholebodycontrol",
+    "label": "GR00T-WholeBodyControl（人形全身控制统一平台）",
     "type": "entity",
     "recency": "2026-07-22",
     "source": "log.md",

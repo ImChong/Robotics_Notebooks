@@ -89,6 +89,39 @@ flowchart LR
 | 权重 | [Hugging Face：HorizonRobotics/HoloMotion_models](https://huggingface.co/HorizonRobotics/HoloMotion_models) |
 | Docker | [hub.docker.com/r/horizonrobotics/holomotion](https://hub.docker.com/r/horizonrobotics/holomotion) |
 
+## 源码运行时序图
+
+节点对齐 [`sources/repos/horizon_robotics_holomotion.md`](../../sources/repos/horizon_robotics_holomotion.md) 与官方 README（v1.4：HoloSMPL → HoloRetarget → 训练/评测 → Docker 真机）。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户
+    participant HF as HF HorizonRobotics/<br/>HoloMotion_models
+    participant SMPL as holosmpl/
+    participant RT as holoretarget/<br/>HoloRetarget
+    participant TR as docs/<br/>train_motion_tracking
+    participant EV as docs/<br/>evaluate_motion_tracking
+    participant DK as Docker v1.4<br/>deployment/
+    participant G1 as Unitree G1
+    alt 仅部署预训练（无需训练）
+        U->>HF: 拉取 motion/velocity tracking 权重
+        U->>DK: 离线 .npz 回放 或 在线 VR 遥操作
+        DK->>G1: 全身跟踪 / 速度跟踪
+    else 自有数据训练
+        U->>SMPL: VR/惯性/光学/视觉 → 统一 HoloSMPL
+        SMPL->>RT: HoloRetarget（训练侧数千 FPS）
+        RT-->>TR: 重定向 HDF5 / .npz
+        U->>TR: 序列级 PPO · MoE Transformer
+        TR-->>EV: checkpoint
+        U->>EV: 仿真零样本评测
+        EV-->>DK: 导出部署权重
+        DK->>G1: 真机跟踪（无任务特化微调）
+    end
+```
+
+关键复现路径：预训练用户走 **Docker + HF 权重**（离线 motion / 在线 teleop）；训练用户按 `docs/environment_setup.md` → HoloSMPL → Retargeting → `train_motion_tracking` → `evaluate_motion_tracking` → `docs/realworld_deployment.md`。
+
 ## 命名说明
 
 文档路径中的 `robot_lab` 指 **Horizon 在 GitHub Pages 上的站点分段**，与社区 IsaacLab 扩展 **[robot_lab（fan-ziqi）](./robot-lab.md)** **不是同一仓库**；选型与引用时请用 **组织名与 Git URL** 区分。

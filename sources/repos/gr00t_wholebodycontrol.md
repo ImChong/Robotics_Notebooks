@@ -27,12 +27,20 @@
 | `gear_sonic_deploy` | 真机 C++ 推理栈 |
 | `motionbricks` | MotionBricks 预览代码与资源 |
 
+## 关键复现路径（2026-07-22）
+
+1. `download_from_hf.py` 拉 GEAR-SONIC checkpoint（可选 BONES-SEED → `gear_sonic/data_process`）
+2. `gear_sonic/train_agent_trl.py`（Isaac Lab）→ `eval_agent_trl.py`（可 `+export_onnx_only=true`）
+3. `gear_sonic_deploy/deploy.sh` sim/real（ONNX/TensorRT，50 Hz）
+4. Decoupled WBC / MotionBricks / VLA 采集见 [文档站](https://nvlabs.github.io/GR00T-WholeBodyControl/)
+
 ## 对 wiki 的映射
 
 1. **[MotionBricks](../../wiki/methods/motionbricks.md)**：生成式运动层与本仓 `motionbricks/` 子项目对应
-2. **[SONIC（规模化运动跟踪）](../../wiki/methods/sonic-motion-tracking.md)**：GEAR-SONIC 论文与训练/部署入口
-3. **[Foundation Policy / GR00T](../../wiki/concepts/foundation-policy.md)**：N1.5 / N1.6 解耦 WBC 与 VLA 工作流文档（站点 tutorials）
-4. **[GR00T-VisualSim2Real](../../wiki/entities/gr00t-visual-sim2real.md)**：同品牌下视觉 Sim2Real 另一官方仓库，分工不同
+2. **[SONIC（规模化运动跟踪）](../../wiki/methods/sonic-motion-tracking.md)**：GEAR-SONIC 论文与训练/部署入口（含详细源码时序图）
+3. **[GR00T-WholeBodyControl 实体](../../wiki/entities/gr00t-wholebodycontrol.md)**：本仓导航页（含仓级时序图）
+4. **[Foundation Policy / GR00T](../../wiki/concepts/foundation-policy.md)**：N1.5 / N1.6 解耦 WBC 与 VLA 工作流文档（站点 tutorials）
+5. **[GR00T-VisualSim2Real](../../wiki/entities/gr00t-visual-sim2real.md)**：同品牌下视觉 Sim2Real 另一官方仓库，分工不同
 
 ## 引用（GEAR-SONIC，仓库 README）
 

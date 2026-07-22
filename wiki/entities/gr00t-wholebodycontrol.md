@@ -55,6 +55,42 @@ summary: "GR00T-WholeBodyControl 是 NVlabs 的人形全身控制单仓：托管
 | GEAR-SONIC | 以运动跟踪为统一预训练目标的通用人形行为模型；含 `gear_sonic` 训练与 `gear_sonic_deploy` C++ 部署 |
 | MotionBricks | 实时潜空间生成式运动控制（与 [MotionBricks 方法页](../methods/motionbricks.md) 及项目页一致） |
 
+## 源码运行时序图
+
+节点对齐 [`sources/repos/gr00t_wholebodycontrol.md`](../../sources/repos/gr00t_wholebodycontrol.md)。本仓三条线并存；下图以 **GEAR-SONIC** 主复现路径为主（Decoupled WBC / MotionBricks 见文档站对应章节）。更细的 FSQ token 数据流见 [SONIC 方法页](../methods/sonic-motion-tracking.md)。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户
+    participant HF as HF nvidia/<br/>GEAR-SONIC
+    participant DP as gear_sonic/<br/>data_process
+    participant TR as gear_sonic/<br/>train_agent_trl.py
+    participant LAB as Isaac Lab
+    participant EV as gear_sonic/<br/>eval_agent_trl.py
+    participant DEP as gear_sonic_deploy/<br/>deploy.sh
+    participant G1 as MuJoCo / Unitree G1
+    U->>HF: download_from_hf.py（checkpoint + SMPL）
+    opt BONES-SEED 大规模参考
+        U->>DP: CSV → motion_lib → filter
+        DP-->>TR: robot_filtered 运动库
+    end
+    U->>TR: train_agent_trl.py +exp=…/sonic_release
+    loop PPO / TRL
+        TR->>LAB: 统一 token 跟踪
+        LAB-->>TR: 观测 + 奖励
+    end
+    U->>EV: eval_agent_trl.py +checkpoint=last.pt
+    EV-->>U: 指标 / 视频
+    U->>EV: +export_onnx_only=true
+    EV-->>DEP: encoder/decoder ONNX
+    U->>DEP: deploy.sh sim|real（TensorRT）
+    DEP->>G1: 50 Hz 推理 · VR/ZMQ/键盘
+    G1-->>DEP: 本体等观测
+```
+
+关键复现路径：独立 venv 装训练栈 → HF 权重 → `train_agent_trl.py` / `eval_agent_trl.py` → ONNX 导出 → `gear_sonic_deploy/deploy.sh`；VLA 采集见文档站 Data Collection / VLA Workflow。
+
 ## 关联页面
 
 - [GR00T N1（论文实体）](./paper-hrl-stack-34-gr00t_n1.md) — N1 论文机制与 42 篇栈坐标；本页聚焦 N1.5+ 工程栈与 WBC 部署
