@@ -29,9 +29,9 @@
 
 ## P1: 执行器驱动链选型闭环知识链专题 (Quality)
 
-- [~] **执行器驱动链选型闭环知识链 (+2)**：
+- [x] **执行器驱动链选型闭环知识链 (+2)**：
     - [x] `wiki/queries/actuator-drive-chain-selection-loop.md`（端到端 Query：EDA 电路设计 → 电机驱动固件 FOC → 执行器建模与摩擦辨识 → 实时总线闭环集成 四层驱动链选型的取舍决策树，覆盖每层选什么工具/方案、开源 vs 商用与自研 vs 一体化关节的取舍、数据手册参数与实测曲线的偏差来源、建模保真度 vs 辨识成本、总线周期与闭环带宽的关系与典型误判，配 Mermaid 决策流程图）。建页后从 `ethercat-master-optimization` query 页与 `implicit-explicit-actuator-modeling` 概念页回链（消孤儿，`graph-stats.json` 0 orphans）。**（2026-07-20 完成：新页含四层决策树 Mermaid、选型矛盾/失败模式速查、缩写表，`make lint` 0 errors，`graph-stats.json` 0 orphans；节点 1687→1716、边 13524→13723）**
-    - [ ] `wiki/concepts/torque-source-abstraction-gap.md`（「理想力矩源」抽象 ↔ 真实执行器 取舍概念页：明示 RL/MPC 策略把执行器当理想力矩源的抽象在摩擦/齿隙/带宽/热约束下何时破，并把这条 gap 讲成「策略力矩指令能否被真实驱动链忠实执行」的物理根因；配抽象成立条件表、缩小力矩执行 gap 的三条工程路线（摩擦辨识补偿 / 执行器网络 / 力矩传感闭环）与常见误判速查）。与 Query 页双向回链。
+    - [x] `wiki/concepts/torque-source-abstraction-gap.md`（「理想力矩源」抽象 ↔ 真实执行器 取舍概念页：明示 RL/MPC 策略把执行器当理想力矩源的抽象在摩擦/齿隙/带宽/热约束下何时破，并把这条 gap 讲成「策略力矩指令能否被真实驱动链忠实执行」的物理根因；配抽象成立条件表、缩小力矩执行 gap 的三条工程路线（摩擦辨识补偿 / 执行器网络 / 力矩传感闭环）与常见误判速查）。与 Query 页双向回链。**（2026-07-21 完成：新页含抽象成立条件表、四层 Mermaid gap 归因图、三条工程路线与常见误判/误区速查，与 Query 页及 implicit-explicit 概念页双向回链；`make lint` 0 errors，`graph-stats.json` 0 orphans）**
 
 - [ ] **驱动链层级专题交叉补强**：
     - [ ] 在 `wiki/entities/kicad.md`（EDA 层，与 `altium-designer.md` 对照）、`wiki/entities/simplefoc.md`（驱动固件层）、`wiki/entities/paper-neuralactuator-neural-actuation-modeling.md` / `wiki/entities/bam-better-actuator-models.md`（执行器建模层）、`wiki/concepts/ethercat-protocol.md`（实时总线层）等页与 P1 新页（`queries/actuator-drive-chain-selection-loop.md`）形成双向回链：各页在 `related` 与「关联页面」补入驱动链选型闭环 Query 页并标注本页所在驱动链层；Query 页 `related` 含全部相关驱动链页，双向闭合，消除孤儿页。

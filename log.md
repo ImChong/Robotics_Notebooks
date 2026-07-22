@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-21] concept | wiki/concepts/torque-source-abstraction-gap.md — V30 P1 执行器驱动链选型闭环知识链第二页（力矩源抽象 Gap）
+
+- 新建概念页：「理想力矩源」抽象 ↔ 真实执行器 取舍——明示 RL/MPC 策略把执行器当理想力矩源的抽象在摩擦/齿隙/带宽/热约束下何时破，讲成「策略力矩指令能否被真实驱动链忠实执行」的物理根因；配抽象成立条件表、四层 gap 归因 Mermaid、收窄力矩执行 gap 三条工程路线（摩擦辨识补偿 / 执行器网络 / 力矩传感闭环）与常见误判/误区速查、英文缩写表。
+- 沉淀页面：[`wiki/concepts/torque-source-abstraction-gap.md`](wiki/concepts/torque-source-abstraction-gap.md)
+- 双向回链（消孤儿）：[`wiki/queries/actuator-drive-chain-selection-loop.md`](wiki/queries/actuator-drive-chain-selection-loop.md)（Query 页 `related` + 关联页面补入本页）与 [`wiki/concepts/implicit-explicit-actuator-modeling.md`](wiki/concepts/implicit-explicit-actuator-modeling.md)（`related` + 关联页面互链）。
+- 门禁：`make lint` 0 errors（仅 1 条既有 INFO 陈旧声明，与本次无关）；`make export graph` 后 `graph-stats.json` 0 orphans、`largest_community_ratio` 0.219（`community_quality_warning: false`）；节点 1748→1749、边 14078→14092。
+- 对应 v30 清单 P1「执行器驱动链选型闭环知识链 (+2)」两项子任务全部打勾（`[x]`），该组小节由 `[~]` 转 `[x]`。
+
 ## [2026-07-21] ingest | sources/blogs/wechat_shenlan_ai_ad_2d_detection.md、sources/blogs/wechat_shenlan_ai_ad_3d_detection.md — 短链补抓深蓝AI 专辑第 1–2 篇（2D/3D 检测）；替换 pending；专辑总览升至 5/5
 
 - **工具：** Agent Reach v1.5.0 + wechat-article-for-ai（Camoufox）；**短链直连成功** — <https://mp.weixin.qq.com/s/7Mm5OwVKgoyT4Zpr45E34A>（2D）、<https://mp.weixin.qq.com/s/1d7P4HDXmmZUZiVNx1HfXw>（3D）
