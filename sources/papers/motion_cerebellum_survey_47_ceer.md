@@ -24,3 +24,10 @@
 
 - 项目页：https://robotproject8.github.io/ceer\_page/
 - 微信公众号编译：[wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md](../blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md)
+
+## 项目页与开源状态核查（2026-07-22）
+
+- **论文：** arXiv:2605.19981；项目页 <https://robotproject8.github.io/ceer_page/>。
+- **代码：** 项目页未列 GitHub/可运行仓库。
+- **关键数字：** 3.3 cm end-effector tracking accuracy；房间级单物体任务最高 70% 成功率；人类键盘基线 5 人 × 4 任务 × 2 次共 40 trials。
+- **wiki 深化：** [paper-motion-cerebellum-ceer](../../wiki/entities/paper-motion-cerebellum-ceer.md)。

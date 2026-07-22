@@ -42,3 +42,10 @@
 - [x] 方法页 `wiki/methods/gentlehumanoid-motion-tracking.md` 与工程实体已沉淀
 - [x] 相关概念页交叉链接已更新
 - [ ] 若后续需要，可继续拆成 upper-body compliance / safe physical interaction / assistive humanoid interaction 子页面
+
+## 项目页与开源状态核查（2026-07-22）
+
+- **论文/项目：** arXiv:2511.04679；项目页 <https://gentle-humanoid.axell.top/>。
+- **代码：** 训练仓 <https://github.com/Axellwppr/gentle-humanoid-training>、部署仓 <https://github.com/Axellwppr/gentle-humanoid>，相关 `Axellwppr/motion_tracking` compliance 分支。
+- **关键数字：** `τ_safe ∈ [5,15] N`，约 25 h @ 50 Hz motion data，40 路 calibrated capacitive taxels 压力垫。
+- **wiki 深化：** [paper-gentlehumanoid](../../wiki/entities/paper-gentlehumanoid.md)；方法页见 [gentlehumanoid-motion-tracking](../../wiki/methods/gentlehumanoid-motion-tracking.md)。

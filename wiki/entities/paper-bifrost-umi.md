@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, teleoperation, imitation-learning, diffusion-policy, motion-retargeting, whole-body-control, umi, robot-free, data-collection, unitree-g1, vr-tracking, visuomotor, baai-aether]
 status: complete
-updated: 2026-07-19
+updated: 2026-07-22
 arxiv: "2605.03452"
 venue: "RSS 2024"
 related:

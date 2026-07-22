@@ -1,94 +1,112 @@
 ---
-
 type: entity
-tags: [paper, humanoid, rl, motion-control, body-system-stack, opendrivelab, agibot, hku, fudan]
+tags: [paper, humanoid, rl, motion-control, body-system-stack, loco-manip-contact-survey, vla, latent-action, whole-body-control, opendrivelab, agibot, hku, fudan]
 status: complete
-updated: 2026-07-16
-venue: curated
-summary: "WholeBodyVLA 讨论的是全身 loco-manipulation VLA。它关注的问题是：人形机器人在大空间里完成抓取、搬运、推车等任务时，locomotion 和 manipulation 不能被简单拆开。"
+updated: 2026-07-22
+arxiv: "2512.11047"
+venue: "ICLR 2026"
 related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
-  - ../overview/humanoid-amp-motion-prior-survey.md
+  - ../overview/loco-manip-contact-category-05-vla-world-models.md
+  - ../overview/loco-manip-161-category-03-visuomotor.md
+  - ../methods/vla.md
 sources:
   - ../../sources/papers/humanoid_rl_stack_30_wholebodyvla_towards_unified_latent_vla_for_whol.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md
+summary: "WholeBodyVLA（ICLR 2026, arXiv:2512.11047）用 Latent Action Model 从 manipulation 和 manipulation-aware locomotion 视频学习 latent action token，再由 VLM 以约 10 Hz 解码双臂关节动作和 LMO locomotion commands，LMO 以 50 Hz 执行；项目展示 Agibot X2 推动超过 50 kg 负载。"
 ---
 
 # WholeBodyVLA
 
-**WholeBodyVLA** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) **第 30/42** 篇，归类为 **04 视觉闭环 · 任务接口 · 世界模型**。
+**WholeBodyVLA**（*Towards Unified Latent VLA for Whole-body Loco-manipulation Control*）把全身移动操作拆成「高层 VLM 预测 latent action token」与「底层 LMO RL locomotion policy 执行」：行走不只是速度跟踪，而是为抓取、搬运、推车提供合适身体姿态和位置。
 
 ## 一句话定义
 
-WholeBodyVLA 讨论的是全身 loco-manipulation VLA。它关注的问题是：人形机器人在大空间里完成抓取、搬运、推车等任务时，locomotion 和 manipulation 不能被简单拆开。
+WholeBodyVLA 用 action-free 视频预训练 latent action，再让 VLM 将图像和语言解码为双臂动作与面向操作的 locomotion commands，实现大空间全身 VLA 控制。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| VLA | Vision-Language-Action | 视觉语言动作策略 |
+| LAM | Latent Action Model | 从无动作标注视频学习 latent action supervision |
+| LMO | Loco-Manipulation-Oriented policy | 50 Hz 执行 locomotion commands 的底层 RL 策略 |
+| VLM | Vision-Language Model | 编码第一视角图像与语言指令 |
+| DoF | Degree of Freedom | 人形全身控制自由度 |
+| Hz | Hertz | 页面给出 latent 解码约 10 Hz、LMO 执行 50 Hz |
 
 ## 为什么重要
 
-- 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 中属于 **04 视觉闭环 · 任务接口 · 世界模型**（#30/42）。
-- WholeBodyVLA 讨论的是全身 loco-manipulation VLA。它关注的问题是：人形机器人在大空间里完成抓取、搬运、推车等任务时，locomotion 和 manipulation 不能被简单拆开。
-- 它的关键组件包括 Unified Latent Learning 和 LMO。前者把 action-free 视频转成 latent action token，后者则是面向 loco-manipulation 的底层 RL 策略。
-- 这篇论文里我最认同的一点是：行走不是为了追踪速度，而是为了到达适合操作的位置，并让身体稳定下来。
+- **统一移动与操作**：传统 VLA 常假设固定臂/移动底座，WholeBodyVLA 明确面向 bimanual grasp、sidestep、squat、cart pushing 等全身协同。
+- **latent action 学自无动作视频**：LAM 从 manipulation 和 manipulation-aware locomotion videos 学监督信号，减少对机器人动作标签的依赖。
+- **底层 locomotion 为操作服务**：LMO RL policy 不是通用速度跟踪器，而是支持精确、稳定、受扰下的全身位置调整。
+- **真实重载演示突出**：项目页展示 Agibot X2 推 cart，负载超过 **50 kg**。
 
-## 核心信息（索引级）
+## 流程总览
 
-| 字段 | 内容 |
-|------|------|
-| 编号 | 30/42 |
-| 系统栈层 | 04 视觉闭环 · 任务接口 · 世界模型 |
-| 机构 | 复旦大学；OpenDriveLab & 香港大学 MMLab；智元机器人；SII |
-| 出处 | curated |
-| 链接 | <https://opendrivelab.com/WholeBodyVLA> |
+```mermaid
+flowchart TB
+  vid["action-free manipulation + locomotion videos"] --> lam["LAM pretraining\nlatent action tokens"]
+  ego["egocentric image + language"] --> vlm["VLM"]
+  lam --> vlm
+  vlm --> decode["decode latent actions ~10 Hz"]
+  decode --> arms["dual-arm joint actions"]
+  decode --> lmo["LMO locomotion commands"]
+  lmo --> low["LMO policy 50 Hz"]
+  arms --> robot["Agibot X2 whole-body control"]
+  low --> robot
+```
 
-## 核心机制（归纳）
+## 核心原理（详细）
 
-### 1）策展导读要点
+LAM 提供统一 latent supervision，解决无动作标注视频如何成为 VLA 动作训练信号的问题。运行时，VLM 只看 egocentric images 与 language instructions，输出 latent action tokens；这些 token 再解码成两类命令：双臂 joint actions 和 locomotion commands。LMO policy 以 **50 Hz** 跟踪 locomotion commands，使机器人能侧移、转身、蹲下、推车、越过不平地形。
 
-WholeBodyVLA 讨论的是全身 loco-manipulation VLA。它关注的问题是：人形机器人在大空间里完成抓取、搬运、推车等任务时，locomotion 和 manipulation 不能被简单拆开。
+项目展示任务包括 Bag Packing、Box Loading、Cart Pushing、object/start-pose/terrain generalization、visual navigation、long-horizon bimanual manipulation、wiping/vacuum cleaning 等。它强调「大空间」和「全身」，不是桌面短程抓取。
 
-### 2）策展导读要点
+## 源码运行时序图
 
-它的关键组件包括 Unified Latent Learning 和 LMO。前者把 action-free 视频转成 latent action token，后者则是面向 loco-manipulation 的底层 RL 策略。
+**不适用**：官方 GitHub [OpenDriveLab/WholebodyVLA](https://github.com/OpenDriveLab/WholebodyVLA) 存在，但 README 明确写明 **currently have no concrete timeline for open-sourcing the codebase**，当前仓库是资源/参考集合而非可运行训练或部署实现。
 
-### 3）策展导读要点
+## 工程实践（含开源状态）
 
-这篇论文里我最认同的一点是：行走不是为了追踪速度，而是为了到达适合操作的位置，并让身体稳定下来。
+| 项 | 结论 |
+|----|------|
+| 项目页 | <https://opendrivelab.com/WholeBodyVLA> |
+| 论文 | arXiv:2512.11047，ICLR 2026 |
+| GitHub | <https://github.com/OpenDriveLab/WholebodyVLA>，MIT，但当前无代码开放时间表 |
+| 机器人 | Agibot X2 |
+| 运行频率 | latent 解码约 10 Hz；LMO 低层 50 Hz |
+| 典型能力 | Bag packing、box loading、cart pushing >50 kg、terrain generalization |
 
-### 4）策展导读要点
+## 局限与风险
 
-如果底层 locomotion 只会速度跟踪，上层 VLA 就要自己学习“如何走到适合抓取的位置”。这会让任务变得很难。WholeBodyVLA 通过面向操作的 locomotion controller，把行走重新定义成操作准备动作。
+- **代码未开放**：虽然有 GitHub，但不能复现模型训练。
+- **数据依赖未完全透明**：LAM 训练视频、LMO 训练细节和 low-level controller 未完全给出。
+- **重载演示强但指标少**：项目页视频丰富，量化表较少。
+- **系统耦合复杂**：VLA、latent decoder、LMO、机器人硬件都需对齐，替换平台成本高。
 
-## 常见误区
+## 关联页面
 
-1. VLA/世界模型条目解决 **接口与预测**，不自动替代已封装的底层 WBC 能力。
-
-## 实验与评测
-
-- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
-- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
-
-## 与其他页面的关系
-
-- 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
-- AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
-- 原始 source：[humanoid_rl_stack_30_wholebodyvla_towards_unified_latent_vla_for_whol.md](../../sources/papers/humanoid_rl_stack_30_wholebodyvla_towards_unified_latent_vla_for_whol.md)
+- [Loco-Manip 接触分类 05：VLA 与世界模型调用](../overview/loco-manip-contact-category-05-vla-world-models.md)
+- [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)
+- [VLA](../methods/vla.md)
+- [OpenHLM](./paper-loco-manip-161-154-openhlm.md)
+- [HAIC](./paper-haic.md)
 
 ## 参考来源
 
-- [humanoid_rl_stack_30_wholebodyvla_towards_unified_latent_vla_for_whol.md](../../sources/papers/humanoid_rl_stack_30_wholebodyvla_towards_unified_latent_vla_for_whol.md) — 42 篇栈策展摘录
-- [humanoid_rl_stack_42_catalog.md](../../sources/papers/humanoid_rl_stack_42_catalog.md) — 总表
-- [wechat_embodied_ai_lab_humanoid_rl_motion_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md) — 微信公众号编译导读
-- 原始抓取：[wechat_humanoid_rl_42_survey_2026-05-26.md](../../sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md)
+- [humanoid_rl_stack_30_wholebodyvla_towards_unified_latent_vla_for_whol.md](../../sources/papers/humanoid_rl_stack_30_wholebodyvla_towards_unified_latent_vla_for_whol.md)
+- [humanoid_rl_stack_42_catalog.md](../../sources/papers/humanoid_rl_stack_42_catalog.md)
+- [wechat_embodied_ai_lab_humanoid_rl_motion_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)
+- [loco-manip-contact-category-05-vla-world-models](../overview/loco-manip-contact-category-05-vla-world-models.md)
+- [wechat_embodied_ai_lab_loco_manip_contact_survey.md](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md)
+- Jiang et al., *WholeBodyVLA: Towards Unified Latent VLA for Whole-body Loco-manipulation Control*, arXiv:2512.11047, ICLR 2026. <https://arxiv.org/abs/2512.11047>
+- GitHub resources: <https://github.com/OpenDriveLab/WholebodyVLA>
 
 ## 推荐继续阅读
 
-- [42 篇 RL 运动控制（微信公众号）](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA)
-- [19 篇 AMP 运动先验姊妹篇](https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w)
+- [WholeBodyVLA 项目页](https://opendrivelab.com/WholeBodyVLA)
+- [OpenDriveLab/WholebodyVLA](https://github.com/OpenDriveLab/WholebodyVLA)
+- [OpenHLM](./paper-loco-manip-161-154-openhlm.md)

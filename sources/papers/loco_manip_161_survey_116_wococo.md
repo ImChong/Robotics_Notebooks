@@ -25,3 +25,10 @@
 
 - 微信公众号编译：[wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md](../blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md)
 - 原始抓取：[wechat_humanoid_loco_manip_161_2026-06-26.md](../raw/wechat_humanoid_loco_manip_161_2026-06-26.md)
+
+## 项目页与开源状态核查（2026-07-22）
+
+- **论文/项目：** arXiv:2406.06005 / CoRL 2024 Oral；项目页 <https://lecar-lab.github.io/wococo/>。
+- **代码：** <https://github.com/LeCAR-Lab/wococo>；CC BY-NC 4.0 + inherited licenses；含 `legged_gym`、`rsl_rl`、`scripts/train.py`、`scripts/play.py`。
+- **开放边界：** README 提供 clap-and-dance 示例，明确鼓励用户按具体任务工程化 reward/MDP 与 sim-to-real。
+- **wiki 深化：** [paper-loco-manip-161-116-wococo](../../wiki/entities/paper-loco-manip-161-116-wococo.md) 已补源码运行时序图。

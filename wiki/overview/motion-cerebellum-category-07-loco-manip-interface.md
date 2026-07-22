@@ -2,7 +2,7 @@
 type: overview
 tags: [motion-cerebellum, humanoid, category-hub, survey, loco-manip-interface]
 status: complete
-updated: 2026-06-18
+updated: 2026-07-22
 summary: "运动小脑 64 篇长文 · G Loco-Manip 接口（5 篇）— 接口等站位。"
 related:
   - ./humanoid-motion-cerebellum-technology-map.md

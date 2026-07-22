@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, humanoid, category-hub, survey]
 status: complete
-updated: 2026-06-26
+updated: 2026-07-22
 summary: "人形 Loco-Manip 161 篇 · 05 动捕、人类视频与交互动作规划（11 篇）— 人类动作数据转成机器人可用的运动和交互先验。"
 related:
   - ./humanoid-loco-manip-161-papers-technology-map.md

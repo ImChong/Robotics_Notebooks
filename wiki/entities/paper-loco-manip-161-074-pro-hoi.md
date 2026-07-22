@@ -1,81 +1,135 @@
 ---
 type: entity
-tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
+tags: [paper, loco-manipulation, loco-manip-161-survey, loco-manip-contact-survey, contact-representation, root-trajectory, digital-twin, recovery, reinforcement-learning, unitree-g1, humanoid]
 status: complete
-updated: 2026-07-16
-venue: curated
-summary: "Pro-HOI 先从相机图像/多视角观测、本体状态与关节序列、人类视频/动捕轨迹恢复场景、目标或运动表征，再用扩散策略/流匹配、IK/动作重定向、全身控制器/WBC/MPC生成全身轨迹/动作序列。关键点是把动作生成看成条件生成问题，用扩散或流匹配在多模态动作分布里采样可执行轨迹。"
+updated: 2026-07-22
+arxiv: "2603.01126"
+venue: "arXiv 2026"
 related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-03-visuomotor.md
+  - ../overview/loco-manip-contact-category-02-contact-representation.md
   - ../tasks/loco-manipulation.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_074_pro-hoi.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
-  - ../../sources/papers/humanoid_loco_manip_161_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md
+summary: "Pro-HOI（arXiv:2603.01126）以 root trajectory + contact state 作为高层接口，用参考全身运动只做奖励而非观测，并结合 FoundationPose、FAST-LIO2 与 MuJoCo digital twin 实现箱子搬运、避障和掉落后 re-grasp；OOD MuJoCo 任务 Ours w/ FR. 99.93% grasp success、88.38% task success。"
 ---
 
 # Pro-HOI
 
-**Pro-HOI** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A) **第 074/161** 篇，归类为 **03 视觉感知驱动的人形移动操作**。
+**Pro-HOI**（*Perceptive Root-guided Humanoid-Object Interaction*）把人形抱箱/搬运任务的高层接口改写为 **root trajectory + desired contact state**：策略不再观测完整参考动作，而只根据根轨迹、接触状态和本体信息学习何时蹲、抓、走、放，并通过数字孪生处理物体掉落后的恢复。
 
 ## 一句话定义
 
-Pro-HOI 先从相机图像/多视角观测、本体状态与关节序列、人类视频/动捕轨迹恢复场景、目标或运动表征，再用扩散策略/流匹配、IK/动作重定向、全身控制器/WBC/MPC生成全身轨迹/动作序列。关键点是把动作生成看成条件生成问题，用扩散或流匹配在多模态动作分布里采样可执行轨迹。
+Pro-HOI 用根轨迹作为可规划接口、用接触状态编码任务阶段、用 digital twin 做失效恢复，从而让 Unitree G1 在箱子搬运中实现可控、泛化和可恢复的闭环 HOI。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| Loco-Manip | Loco-Manipulation | 行走与操作动力学耦合的全身任务 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制层 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态策略 |
+| Pro-HOI | Perceptive Root-guided Humanoid-Object Interaction | 根轨迹引导的人形物体交互框架 |
+| HOI | Humanoid/Human-Object Interaction | 人形机器人与物体交互任务 |
+| SDF | Signed Distance Field | 用于修正手物穿透的几何损失 |
+| PPO | Proximal Policy Optimization | 训练 root-guided policy 的 RL 算法 |
+| TEB | Timed Elastic Band | 部署时用于长程避障的局部路径规划器 |
+| FAST-LIO2 | Fast LiDAR-Inertial Odometry 2 | 真机根位姿估计模块 |
 
 ## 为什么重要
 
-- Pro-HOI 先从相机图像/多视角观测、本体状态与关节序列、人类视频/动捕轨迹恢复场景、目标或运动表征，再用扩散策略/流匹配、IK/动作重定向、全身控制器/WBC/MPC生成全身轨迹/动作序列。关键点是把动作生成看成条件生成问题，用扩散或流匹配在多模态动作分布里采样可执行轨迹。
-- 人形 Loco-Manip 161 篇 **#074/161** · 视觉感知驱动的人形移动操作。
+- **根轨迹成为高层通用接口**：导航、避障、搬运不再靠完整全身参考轨迹驱动，而由 root trajectory 编码任务进展。
+- **参考动作只做奖励**：避免策略过拟合一条人类/重定向全身轨迹，提升物体初始位置和目标位置泛化。
+- **恢复机制清晰**：物体掉落后，FoundationPose 视野丢失时用 MuJoCo digital twin 预测落点，再调整 gaze 和 re-grasp。
+- **真机部署完整**：论文声称全部模块运行在 Unitree G1 onboard Jetson NX，D435i + Mid-360 LiDAR 支撑闭环。
 
-## 核心信息（索引级）
+## 流程总览
 
-| 字段 | 内容 |
+```mermaid
+flowchart TB
+  mocap["Xsens box-carrying SMPL motions"] --> gmr["GMR retarget to G1"]
+  gmr --> blender["Blender object association"]
+  blender --> sdf["SDF penetration optimization"]
+  sdf --> train["PPO root-guided policy\nobs: root deviation + contact"]
+  planner["TEB / task planner"] --> root["6-DoF root trajectory + contact schedule"]
+  root --> train
+  train --> deploy["G1 deployment"]
+  deploy --> perceive["FoundationPose + FAST-LIO2"]
+  perceive --> twin["Digital Twin drop prediction"]
+  twin --> regrasp["gaze adjust + re-grasp"]
+```
+
+## 核心原理（详细）
+
+### 1. 数据准备：从人体抱箱到机器人参考
+
+论文采集 box-carrying human motions（SMPL）并用 GMR 重定向到 G1。由于普通 HOI 重定向缺少物体状态，作者在 Blender 中用 `Child Of` 约束手工关联物体与末端，再用 SDF loss 优化接触阶段手物穿透。这个过程不是为了让策略逐帧跟踪，而是为了提供奖励中的风格/接触参考。
+
+### 2. Root-guided observation
+
+目标观测为 `g_t = [Δp_root, Δr_root, c_t]`：根位置/朝向偏差 + 二值接触状态。垂直根运动提示蹲/站，水平根运动提示运输，`c_t` 提示是否应保持接触。策略动作是 **29 DoF joint position targets**，由 PD 转为力矩。
+
+### 3. 训练与部署差异
+
+critic 可访问 privileged 信息，actor 只用真机可得观测；训练时加入摩擦、恢复系数、关节偏置、质心偏移、物体质量、外推扰动等 domain randomization。部署时 D435i 给物体，Mid-360 + FAST-LIO2 给根状态，控制环约 **50 Hz**，物体感知约 **40 Hz**，状态估计约 **200 Hz**。
+
+### 4. Digital Twin recovery
+
+掉落检测逻辑：当期望接触 `c_t=1` 但相对物体位置偏差在窗口 `N=10` 内超过安全区域（约 **0.4 × 0.2 × 0.4 m**）时触发。Digital Twin 用最近物体状态和速度在 MuJoCo 中模拟落体/碰撞，预测最终落点后让机器人转头重新检测并 re-grasp。
+
+## 关键实验数字
+
+| 指标 | 结果 |
 |------|------|
-| 编号 | 074/161 |
-| 分组 | 03 视觉感知驱动的人形移动操作 |
-| 原文题目 | Pro-HOI: Perceptive Root-guided Humanoid-Object Interaction |
-| 机构 | Institute of Artificial Intelligence (TeleAI), China Telecom、Zhejiang University、University of Science and Technology of China、ShanghaiTech University |
-| 发表日期 | 2026年3月1日 |
-| 论文/项目 | https://pro-hoi.github.io/ |
+| MuJoCo 场景规模 | OOD 网格、物体 yaw、4 m 目标圈共 **5,756** distinct scenarios |
+| OOD grasp success | Ours w/ FR. **99.93%**；PhysHSI **82.54%** |
+| OOD task success | Ours w/ FR. **88.38%**；PhysHSI **70.17%** |
+| Root tracking | Ours RPE **0.22 ± 0.02 m**，ROE **5.77 ± 0.41 rad** |
+| 真机速度档 | Slow 0.2 m/s、Middle 0.4 m/s、Fast 0.6 m/s |
+| 真机中速长测 | **21/28** grasp success，placement precision **0.16 m** |
+| 连续搬运 | 论文/图示报告 **over 15 continuous carrying cycles** |
 
-## 核心机制（归纳）
+## 源码运行时序图
 
-### 策展导读要点
+**不适用**：官方项目页 <https://pro-hoi.github.io/> 在本次核查中未确认可运行 GitHub 仓库；arXiv HTML 仅提供方法与项目页说明。若后续项目页补代码，应增加 `train/play/deploy` 运行图。
 
-Pro-HOI 先从相机图像/多视角观测、本体状态与关节序列、人类视频/动捕轨迹恢复场景、目标或运动表征，再用扩散策略/流匹配、IK/动作重定向、全身控制器/WBC/MPC生成全身轨迹/动作序列。关键点是把动作生成看成条件生成问题，用扩散或流匹配在多模态动作分布里采样可执行轨迹。
+## 工程实践（含开源状态）
 
-## 评测与指标（索引级）
+| 项 | 结论 |
+|----|------|
+| 项目页 | <https://pro-hoi.github.io/> |
+| 代码 | 截至 2026-07-22 未确认官方可运行仓库 |
+| 硬件 | Unitree G1，D435i，Mid-360 LiDAR，Jetson Orin/NX 级 onboard compute |
+| 软件模块 | FoundationPose、FAST-LIO2、MuJoCo digital twin、TEB local planner、LCM 通信 |
+| 训练 | Isaac Lab，高性能平台 8×RTX 3090；PPO Actor MLP `[512,256,128]` |
 
-- 本条目为 161 篇策展索引级摘录，**未搬运原文量化 benchmark 与实机指标**；评测口径与具体数值以原文 PDF / 项目页为准。
-- 评测原始出处：[原文 / 项目页](https://pro-hoi.github.io/)（见上方「核心信息」表「论文/项目」一行）。
-- 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-03-visuomotor.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
+## 局限与风险
 
-## 常见误区
+- **对象类别窄**：核心实验围绕 box carrying，root-guided 接口对抽屉、门、工具等接触拓扑是否足够仍待验证。
+- **仍需 mesh/pose 估计**：FoundationPose 与 Digital Twin 假设有对象模型；未知/变形物体会更难。
+- **recovery 是工程状态机 + 仿真预测**：鲁棒但不等于 learned recovery policy，复杂碰撞可能误判落点。
+- **代码未开放**：目前无法复现训练 pipeline 与真机部署细节。
 
-1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。
-2. Loco-manip 单篇工作不自动解决 **底层 WBC 鲁棒性**；须与运控/接触控制对照。
+## 关联页面
 
-## 与其他页面的关系
-
-- 技术地图：[humanoid-loco-manip-161-papers-technology-map.md](../overview/humanoid-loco-manip-161-papers-technology-map.md)
-- 分类 hub：[loco-manip-161-category-03-visuomotor.md](../overview/loco-manip-161-category-03-visuomotor.md)
-- 原始 source：[loco_manip_161_survey_074_pro-hoi.md](../../sources/papers/loco_manip_161_survey_074_pro-hoi.md)
+- [Loco-Manip 接触分类 02：接触表示](../overview/loco-manip-contact-category-02-contact-representation.md)
+- [161 篇 · 03 视觉感知驱动](../overview/loco-manip-161-category-03-visuomotor.md)
+- [CEER](./paper-motion-cerebellum-ceer.md)
+- [FALCON](./paper-loco-manip-161-109-falcon.md)
+- [PhysHSI](./paper-amp-survey-15-physhsi.md)
+- [OmniRetarget](./paper-hrl-stack-03-omniretarget.md)
 
 ## 参考来源
 
-- [loco_manip_161_survey_074_pro-hoi.md](../../sources/papers/loco_manip_161_survey_074_pro-hoi.md) — 161 篇策展摘录
+- [loco_manip_161_survey_074_pro-hoi.md](../../sources/papers/loco_manip_161_survey_074_pro-hoi.md)
 - [humanoid_loco_manip_161_catalog.md](../../sources/papers/humanoid_loco_manip_161_catalog.md)
 - [wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md)
+- [loco-manip-contact-category-02-contact-representation](../overview/loco-manip-contact-category-02-contact-representation.md)
+- [wechat_embodied_ai_lab_loco_manip_contact_survey.md](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md)
+- Lin et al., *Pro-HOI: Perceptive Root-guided Humanoid-Object Interaction*, arXiv:2603.01126, 2026. <https://arxiv.org/abs/2603.01126>
 
 ## 推荐继续阅读
 
-- [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
+- [Pro-HOI arXiv HTML](https://arxiv.org/html/2603.01126)
+- [FoundationPose](https://nvlabs.github.io/FoundationPose/)
+- [FAST-LIO2](https://github.com/hku-mars/FAST_LIO)

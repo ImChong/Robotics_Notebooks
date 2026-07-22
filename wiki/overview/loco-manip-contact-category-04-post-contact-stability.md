@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, contact-rich, category-hub, survey, force-control, impedance-control]
 status: complete
-updated: 2026-07-03
+updated: 2026-07-22
 summary: "Loco-Manip 接触专题 · 04 接触后稳定（7 篇）— 力自适应、阻抗、柔顺、负载摆动与强接触下身体如何持续？"
 related:
   - ./loco-manip-contact-technology-map.md
@@ -38,7 +38,7 @@ sources:
 | FALCON | [paper-loco-manip-161-109-falcon](../entities/paper-loco-manip-161-109-falcon.md) | 下肢稳定 + 上肢任务分工；3D 力课程 |
 | HMC | [paper-loco-manip-161-039-hmc](../entities/paper-loco-manip-161-039-hmc.md) | 位置/阻抗/力位混合的异构元控制 |
 | WoCoCo | [paper-loco-manip-161-116-wococo](../entities/paper-loco-manip-161-116-wococo.md) | 顺序接触分阶段全身控制 |
-| GentleHumanoid | [gentlehumanoid-motion-tracking](../methods/gentlehumanoid-motion-tracking.md) | 上肢柔顺接入全身跟踪 |
+| GentleHumanoid | [paper-gentlehumanoid](../entities/paper-gentlehumanoid.md) | 上肢柔顺接入全身跟踪 |
 | CHIP | [paper-hrl-stack-36-chip](../entities/paper-hrl-stack-36-chip.md) | 事后扰动学习自适应柔顺 |
 | HOIST | [paper-motion-cerebellum-hoist](../entities/paper-motion-cerebellum-hoist.md) | 悬挂负载摆动；欠驱动间接全身控制 |
 | Thor | [paper-hrl-stack-42-thor](../entities/paper-hrl-stack-42-thor.md) | 强接触环境受力后全身反应 |
@@ -52,6 +52,7 @@ sources:
 
 ## 关联页面
 
+- [GentleHumanoid 方法页](../methods/gentlehumanoid-motion-tracking.md)
 - [阻抗控制](../concepts/impedance-control.md)
 - [力位混合控制](../concepts/hybrid-force-position-control.md)
 - [运动小脑 · I 柔顺接触](./motion-cerebellum-category-09-compliance-contact.md)

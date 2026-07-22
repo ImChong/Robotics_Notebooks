@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, humanoid, category-hub, survey]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-22
 summary: "人形 Loco-Manip 161 篇 · 04 生成式运动、语言控制与轨迹规划（16 篇）— 从语言、目标或条件输入生成全身动作和轨迹。"
 related:
   - ./humanoid-loco-manip-161-papers-technology-map.md

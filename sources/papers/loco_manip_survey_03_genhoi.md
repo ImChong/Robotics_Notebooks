@@ -26,3 +26,10 @@
 
 - 论文：<https://arxiv.org/abs/2606.12995>
 - 微信公众号编译：[wechat_embodied_ai_lab_loco_manip_8_papers_survey.md](../blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md)
+
+## 项目页与开源状态核查（2026-07-22）
+
+- **论文：** arXiv:2606.12995；项目页 <https://genhoi-humanoid.github.io/>。
+- **代码：** 项目页未列官方 GitHub/可运行代码。
+- **关键数字：** 四类物体平均成功率 76.7%，平均 hand-contact point error 0.22 m；HDMI 学习约 70 min，GenHOI 约 1 min 51 s；VLM 关键帧选择 Doubao 95.0%、GPT-5.5 96.7%。
+- **wiki 深化：** [paper-loco-manip-03-genhoi](../../wiki/entities/paper-loco-manip-03-genhoi.md)。

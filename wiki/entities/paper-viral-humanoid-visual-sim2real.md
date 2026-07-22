@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, sim2real, visual-rl, loco-manipulation, teacher-student, dagger, ppo, unitree-g1, isaac-lab, cvpr2026, nvidia, cmu, berkeley, cuhk, body-system-stack]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-22
 arxiv: "2511.15200"
 venue: "CVPR 2026"
 code: https://github.com/NVlabs/GR00T-VisualSim2Real

@@ -4,9 +4,10 @@ type: method
 tags: [humanoid, motion-tracking, impedance-control, compliance, contact-rich, ppo, teacher-student, sim2real, unitree-g1, mjlab, human-robot-interaction, paper, rl, motion-control, body-system-stack, stanford]
 status: complete
 code: https://github.com/Axellwppr/gentle-humanoid
-updated: 2026-07-20
+updated: 2026-07-22
 venue: curated
 related:
+  - ../entities/paper-gentlehumanoid.md
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-09-compliance-contact.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
@@ -172,6 +173,10 @@ f_{\text{drive\_limited}} = \min\left(1,\ \frac{\tau_{\text{safe}}}{\|f_{\text{d
 | 修改版 GMR | [github.com/Axellwppr/GMR](https://github.com/Axellwppr/GMR) |
 
 实现栈细节见 [axellwppr-motion-tracking](../entities/axellwppr-motion-tracking.md) 与 [mjlab](../entities/mjlab.md)。
+
+## 论文实体
+
+- [GentleHumanoid 论文实体](../entities/paper-gentlehumanoid.md) — 论文级页面，汇总 arXiv、项目页、开源仓库与源码运行时序图；本页保留方法/工程细节展开。
 
 ## 参考来源
 

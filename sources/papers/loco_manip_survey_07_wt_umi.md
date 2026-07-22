@@ -25,3 +25,10 @@
 
 - 项目页：<https://wt-umi.github.io/WTUMI/> · <https://arxiv.org/abs/2606.13232>
 - 微信公众号编译：[wechat_embodied_ai_lab_loco_manip_8_papers_survey.md](../blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md)
+
+## 项目页与开源状态核查（2026-07-22）
+
+- **项目页：** <https://wt-umi.github.io/WTUMI/>。
+- **代码：** 页面标注 `Code (Coming Soon)`；未确认可运行仓库。
+- **关键数字：** Human Correction + Admittance 平均成功率 96.15%，contact drift 12.47 mm，contact establishment time 0.58 s；Human force RMSE 1.05 N、teleoperation force RMSE 2.07 N。
+- **wiki 深化：** [paper-loco-manip-07-wt-umi](../../wiki/entities/paper-loco-manip-07-wt-umi.md)。

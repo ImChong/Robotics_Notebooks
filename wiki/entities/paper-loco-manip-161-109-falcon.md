@@ -1,82 +1,141 @@
 ---
 type: entity
-tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
+tags: [paper, loco-manipulation, loco-manip-161-survey, loco-manip-contact-survey, force-adaptive-control, reinforcement-learning, whole-body-control, sim2real, humanoid, cmu]
 status: complete
-updated: 2026-07-16
-venue: curated
-summary: "FALCON 主要解决数据闭环：用本体状态与关节序列、人类视频/动捕轨迹、遥操作/外骨骼数据采集人类操作和机器人状态，再通过全身控制器/WBC/MPC转成可训练、可复用的关节位置/力矩命令、末端执行器/腕手目标。关键点是把全身控制器/WBC/MPC放在同一条训练/部署链路里，减少高层目标到低层动作之间的断点。"
+updated: 2026-07-22
+arxiv: "2505.06776"
+venue: "L4DC 2026 Oral"
 related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-05-mocap-human-video.md
-  - ../tasks/loco-manipulation.md
+  - ../overview/loco-manip-contact-category-04-post-contact-stability.md
+  - ../concepts/whole-body-control.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_109_falcon.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
-  - ../../sources/papers/humanoid_loco_manip_161_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md
+summary: "FALCON（arXiv:2505.06776，L4DC 2026 Oral）把人形 forceful loco-manip 分成下肢稳定 agent 与上肢末端跟踪/力补偿 agent，并用 torque-limit-aware 3D force curriculum 训练；真机覆盖 0-20 N 载荷运输、0-100 N 拉车、0-40 N 开门，官方 MIT 代码含 IsaacGym 训练、sim2sim、sim2real。"
 ---
 
 # FALCON
 
-**FALCON** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A) **第 109/161** 篇，归类为 **05 动捕、人类视频与交互动作规划**。
+**FALCON**（*Learning Force-Adaptive Humanoid Loco-Manipulation*）面向拉车、开门、重物搬运等 **强力交互**，用双 agent RL 将下肢抗扰稳定和上肢末端/力交互分开训练，再通过 3D force curriculum 提升对外力的适应能力。
 
 ## 一句话定义
 
-FALCON 主要解决数据闭环：用本体状态与关节序列、人类视频/动捕轨迹、遥操作/外骨骼数据采集人类操作和机器人状态，再通过全身控制器/WBC/MPC转成可训练、可复用的关节位置/力矩命令、末端执行器/腕手目标。关键点是把全身控制器/WBC/MPC放在同一条训练/部署链路里，减少高层目标到低层动作之间的断点。
+FALCON 是一个 force-adaptive 双 agent 人形 loco-manip 框架：下肢负责受力下稳定行走，上肢负责末端跟踪与隐式力补偿。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| Loco-Manip | Loco-Manipulation | 行走与操作动力学耦合的全身任务 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制层 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态策略 |
+| FALCON | Force-Adaptive Loco-manipulation Control | 本文框架名 |
+| RL | Reinforcement Learning | 双 agent 策略训练范式 |
+| WBC | Whole-Body Control | 上下肢协调执行基础 |
+| DoF | Degree of Freedom | G1/T1 策略配置均为 29 DoF |
+| IsaacGym | NVIDIA Isaac Gym | 官方训练仿真后端 |
+| Sim2Real | Simulation to Real | 官方仓库已发布 sim2real 代码 |
 
 ## 为什么重要
 
-- FALCON 主要解决数据闭环：用本体状态与关节序列、人类视频/动捕轨迹、遥操作/外骨骼数据采集人类操作和机器人状态，再通过全身控制器/WBC/MPC转成可训练、可复用的关节位置/力矩命令、末端执行器/腕手目标。关键点是把全身控制器/WBC/MPC放在同一条训练/部署链路里，减少高层目标到低层动作之间的断点。
-- 人形 Loco-Manip 161 篇 **#109/161** · 动捕、人类视频与交互动作规划。
+- **力不是扰动，而是任务本体**：door-opening、cart-pulling、heavy-lifting 需要持续施力；仅靠低层 locomotion + upper-body IK 容易失稳或跟踪失败。
+- **上下肢分工明确**：lower-body agent 处理外力扰动下稳定，upper-body agent 跟踪末端位置并隐式补偿力。
+- **跨平台叙事强**：同一训练设置部署到 Unitree G1 与 Booster T1，无需 embodiment-specific reward/curriculum tuning。
+- **开源可复现**：官方 LeCAR-Lab/FALCON 已发布 training、sim2sim、sim2real 代码。
 
-## 核心信息（索引级）
+## 流程总览
 
-| 字段 | 内容 |
-|------|------|
-| 编号 | 109/161 |
-| 分组 | 05 动捕、人类视频与交互动作规划 |
-| 原文题目 | FALCON: Learning Force-Adaptive Humanoid Loco-Manipulation |
-| 机构 | Carnegie Mellon University |
-| 发表日期 | 2025年11月16日 |
-| 论文/项目 | https://lecar-lab.github.io/falcon-humanoid |
+```mermaid
+flowchart TB
+  task["EE target / teleop task"] --> upper["Upper-body agent\nEE tracking + implicit force compensation"]
+  force["3D force curriculum\ntorque-limit-aware"] --> upper
+  force --> lower["Lower-body agent\nstable locomotion under force"]
+  upper --> joint["joint targets / actions"]
+  lower --> joint
+  joint --> robot["G1 / Booster T1"]
+  robot --> real["Cart pulling / Door opening / Heavy lifting"]
+```
 
-## 核心机制（归纳）
+## 核心原理（详细）
 
-### 策展导读要点
+### 1. Dual-agent decomposition
 
-FALCON 主要解决数据闭环：用本体状态与关节序列、人类视频/动捕轨迹、遥操作/外骨骼数据采集人类操作和机器人状态，再通过全身控制器/WBC/MPC转成可训练、可复用的关节位置/力矩命令、末端执行器/腕手目标。关键点是把全身控制器/WBC/MPC放在同一条训练/部署链路里，减少高层目标到低层动作之间的断点。
+FALCON 不把所有奖励塞给单一全身策略，而是将任务拆为两个专门 agent。这样训练时 reward 更干净：下肢不必解释复杂手部目标，上肢不必单独解决强外力下的步态稳定。
 
-## 评测与指标（索引级）
+### 2. Torque-limit-aware 3D force curriculum
 
-- 本条目为 161 篇策展索引级摘录，**未搬运原文量化 benchmark 与实机指标**；评测口径与具体数值以原文 PDF / 项目页为准。
-- 评测原始出处：[原文 / 项目页](https://lecar-lab.github.io/falcon-humanoid)（见上方「核心信息」表「论文/项目」一行）。
-- 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-05-mocap-human-video.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
+训练时对末端施加逐步增强的 3D 外力，同时尊重关节 torque limit。课程的目的不是让策略盲目输出更大力，而是在安全力矩边界内学习身体姿态、步态与上肢补偿的协同。
 
-## 常见误区
+### 3. 真实任务范围
 
-1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。
-2. Loco-manip 单篇工作不自动解决 **底层 WBC 鲁棒性**；须与运控/接触控制对照。
+项目页报告真实任务力范围：payloads transporting **0-20 N**、cart-pulling **0-100 N**、door-opening **0-40 N**。相比 baseline（低层 RL locomotion + 上身 IK、无 force curriculum），FALCON 在重载和开门中更稳定。
 
-## 与其他页面的关系
+### 4. 训练收敛与跟踪
 
-- 技术地图：[humanoid-loco-manip-161-papers-technology-map.md](../overview/humanoid-loco-manip-161-papers-technology-map.md)
-- 分类 hub：[loco-manip-161-category-05-mocap-human-video.md](../overview/loco-manip-161-category-05-mocap-human-video.md)
-- 原始 source：[loco_manip_161_survey_109_falcon.md](../../sources/papers/loco_manip_161_survey_109_falcon.md)
+摘要报告 FALCON 相对 baseline 达到 **2×** 更准确的 upper-body joint tracking，并保持受力下 locomotion 鲁棒性与更快收敛。
+
+## 源码运行时序图
+
+官方代码 [LeCAR-Lab/FALCON](https://github.com/LeCAR-Lab/FALCON) 为 MIT，含 `humanoidverse/train_agent.py`、`eval_agent.py`、`sim2real/`、`isaac_utils/`。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户
+    participant Repo as LeCAR-Lab/FALCON
+    participant Gym as IsaacGym Preview4
+    participant Train as humanoidverse/train_agent.py
+    participant Eval as humanoidverse/eval_agent.py
+    participant Real as sim2real / humanoid
+    U->>Repo: git clone + pip install -e . + isaac_utils
+    U->>Gym: 安装 IsaacGym Preview4
+    U->>Train: +exp=decoupled_locomotion... +robot=g1_29dof...
+    Train->>Gym: 4096 env force curriculum PPO
+    Gym-->>Train: checkpoint
+    U->>Eval: +checkpoint=<path>
+    Eval-->>U: IsaacGym rollout
+    U->>Real: sim2real 部署策略
+    Real-->>U: 拉车/开门/搬运真机任务
+```
+
+## 工程实践（含开源状态）
+
+| 项 | 结论 |
+|----|------|
+| 项目页 | <https://lecar-lab.github.io/falcon-humanoid> |
+| 官方代码 | <https://github.com/LeCAR-Lab/FALCON>，MIT，已发布 training/sim2sim/sim2real |
+| 平台 | Unitree G1、Booster T1 |
+| 训练入口 | `python humanoidverse/train_agent.py ... num_envs=4096 ...` |
+| 评估入口 | `python humanoidverse/eval_agent.py +checkpoint=<path>` |
+| 典型任务 | Cart-Pulling、Door-Opening、Heavy-Lifting、Payloads-Transporting、Tug-of-War |
+
+## 局限与风险
+
+- **偏 forceful tasks**：对精细接触、灵巧手、视觉语言任务规划不是主贡献。
+- **课程设计仍是工程核心**：虽然无需按 embodiment 重调，但 force curriculum 与 reward 配置仍影响复现。
+- **IsaacGym 依赖旧栈**：Preview4 与 Python 3.8 复现环境有维护成本。
+
+## 关联页面
+
+- [Loco-Manip 接触分类 04：接触后如何稳住](../overview/loco-manip-contact-category-04-post-contact-stability.md)
+- [161 篇 · 05 动捕/交互动作规划](../overview/loco-manip-161-category-05-mocap-human-video.md)
+- [HMC](./paper-loco-manip-161-039-hmc.md)
+- [WoCoCo](./paper-loco-manip-161-116-wococo.md)
+- [Thor](./paper-hrl-stack-42-thor.md)
+- [Whole-Body Control](../concepts/whole-body-control.md)
 
 ## 参考来源
 
-- [loco_manip_161_survey_109_falcon.md](../../sources/papers/loco_manip_161_survey_109_falcon.md) — 161 篇策展摘录
+- [loco_manip_161_survey_109_falcon.md](../../sources/papers/loco_manip_161_survey_109_falcon.md)
 - [humanoid_loco_manip_161_catalog.md](../../sources/papers/humanoid_loco_manip_161_catalog.md)
 - [wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md)
+- [loco-manip-contact-category-04-post-contact-stability](../overview/loco-manip-contact-category-04-post-contact-stability.md)
+- [wechat_embodied_ai_lab_loco_manip_contact_survey.md](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md)
+- Zhang et al., *FALCON: Learning Force-Adaptive Humanoid Loco-Manipulation*, arXiv:2505.06776, 2025. <https://arxiv.org/abs/2505.06776>
+- 官方代码：<https://github.com/LeCAR-Lab/FALCON>
 
 ## 推荐继续阅读
 
-- [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
-- 同题深读/既有实体：[paper-loco-manip-161-109-falcon](../entities/paper-loco-manip-161-109-falcon.md)
+- [FALCON 项目页](https://lecar-lab.github.io/falcon-humanoid)
+- [FALCON GitHub](https://github.com/LeCAR-Lab/FALCON)
+- [机器人论文阅读笔记：FALCON](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/)

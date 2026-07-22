@@ -30,4 +30,7 @@
 
 - 微信公众号编译：[wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md](../blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md)
 - 原始抓取：[wechat_humanoid_loco_manip_161_2026-06-26.md](../raw/wechat_humanoid_loco_manip_161_2026-06-26.md)
-- 官方项目页 / arXiv / GitHub（2026-07-22 ingest）
+
+- 官方项目页 / arXiv / GitHub（2026-07-22 ingest）：代码已开源 <https://github.com/OpenHLM-project/OpenHLM>
+- 接触专题交叉：[wechat_embodied_ai_lab_loco_manip_contact_survey.md](../blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md)
+

@@ -1,98 +1,118 @@
 ---
-
 type: entity
-tags: [paper, humanoid, rl, motion-control, body-system-stack, shanghai-ai-lab, hkust]
+tags: [paper, humanoid, rl, motion-control, body-system-stack, loco-manip-contact-survey, human-video, data-generation, imitation-learning, interaction-skills, unitree-g1, shanghai-ai-lab, hkust]
 status: complete
-updated: 2026-07-16
-venue: curated
-summary: "HumanX 也从视频出发，但它关心的是 agile and generalizable humanoid interaction skills。它想把人类视频转成机器人可学习的交互技能，覆盖篮球、足球、羽毛球等任务。"
+updated: 2026-07-22
+arxiv: "2602.02473"
+venue: "arXiv 2026"
 related:
-  - ../overview/humanoid-motion-cerebellum-technology-map.md
-  - ../overview/motion-cerebellum-category-03-data-pipeline.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
-  - ../overview/humanoid-amp-motion-prior-survey.md
+  - ../overview/motion-cerebellum-category-03-data-pipeline.md
+  - ../overview/loco-manip-contact-category-01-contact-data.md
+  - ../methods/imitation-learning.md
 sources:
   - ../../sources/papers/humanoid_rl_stack_05_humanx_toward_agile_and_generalizable_humanoid_i.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
-  - ../../sources/papers/motion_cerebellum_64_catalog.md
-  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md
+summary: "HumanX（arXiv:2602.02473）把人类视频编译成可学习的人形交互技能：XGen 生成物理合理且可增强的机器人交互数据，XMimic 学统一交互策略；覆盖篮球、足球、羽毛球、搬货、反应格斗五类域、10 个技能，并零样本迁移到 Unitree G1，报告泛化成功率超过 prior methods 8×。"
 ---
 
 # HumanX
 
-**HumanX** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) **第 05/42** 篇，归类为 **01 数据 · 重定向 · 遥操作**。
+**HumanX**（*Toward Agile and Generalizable Humanoid Interaction Skills from Human Videos*）是一条从人类视频到人形交互技能的全栈管线：XGen 负责把视频转换成物理合理、可增强的机器人交互数据；XMimic 负责学习可泛化交互策略。
 
 ## 一句话定义
 
-HumanX 也从视频出发，但它关心的是 agile and generalizable humanoid interaction skills。它想把人类视频转成机器人可学习的交互技能，覆盖篮球、足球、羽毛球等任务。
+HumanX 用 XGen + XMimic 将人类运动视频编译成 Unitree G1 可执行的敏捷交互技能，覆盖球类、搬货和反应格斗等接触任务。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| XGen | HumanX Data Generation | 从视频合成机器人交互数据并增强对象 mesh/尺寸/轨迹 |
+| XMimic | HumanX Imitation Framework | 学习泛化交互技能的统一 imitation 框架 |
+| HOI | Human-Object Interaction | 视频中的人-物交互 |
+| G1 | Unitree G1 Humanoid | 论文真机迁移平台 |
+| MoCap | Motion Capture | 部分 autonomous interaction 演示使用外部 sensing |
+| IL | Imitation Learning | XMimic 的主要学习范式 |
 
 ## 为什么重要
 
-- 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 中属于 **01 数据 · 重定向 · 遥操作**（#05/42）。
-- HumanX 也从视频出发，但它关心的是 agile and generalizable humanoid interaction skills。它想把人类视频转成机器人可学习的交互技能，覆盖篮球、足球、羽毛球等任务。
-- 它的框架包括两个部分：XGen 和 XMimic。XGen 用来从视频中合成物理合理的交互数据，并支持对象 mesh、尺寸、轨迹等增强；XMimic 则学习这些数据里的泛化交互技能。
-- 这篇论文最重要的不是“机器人会打球”，而是数据生产思路：真实机器人交互数据贵，人类视频多，但视频里的动作和机器人身体不匹配，物体状态也不一定完整。HumanX 试图把视频中的人-物交互转换成机器人可以训练的数据。
+- **把人类视频当接触数据入口**：真实机器人交互数据贵，人类视频多；HumanX 试图把视频中的敏捷交互转换为机器人训练数据。
+- **关注 agile interaction**：篮球、足球、羽毛球、搬货、反应格斗比普通 pick-and-place 更考验全身动态和物体时序。
+- **少示范强泛化**：项目页摘要称 sustained human-robot passing 超 **10 consecutive cycles** 可由单个视频示范学习。
+- **迁移到真机**：10 个技能 zero-shot transfer 到 physical Unitree G1。
 
-## 核心信息（索引级）
+## 流程总览
 
-| 字段 | 内容 |
-|------|------|
-| 编号 | 05/42 |
-| 系统栈层 | 01 数据 · 重定向 · 遥操作 |
-| 机构 | 香港科技大学；上海人工智能实验室 |
-| 出处 | curated |
-| 链接 | <https://wyhuai.github.io/human-x/> |
+```mermaid
+flowchart TB
+  video["human videos"] --> xgen["XGen\nphysical robot interaction data"]
+  xgen --> aug["object mesh / size / trajectory augmentation"]
+  aug --> xmimic["XMimic unified imitation policy"]
+  xmimic --> skills["10 skills / 5 domains"]
+  skills --> g1["Unitree G1 zero-shot transfer"]
+  g1 --> tasks["basketball / football / badminton / cargo / fighting"]
+```
 
-## 核心机制（归纳）
+## 核心原理（详细）
 
-### 1）策展导读要点
+HumanX 的重点不是“机器人会打球”本身，而是数据生产：视频中的人体动作和机器人形态不一致，物体状态也不完整。XGen 需要恢复/合成物理合理的机器人-物体交互数据，并通过物体 mesh、尺寸、轨迹增强扩大分布；XMimic 则学习统一策略，使同一技能能在对象状态变化下泛化。
 
-HumanX 也从视频出发，但它关心的是 agile and generalizable humanoid interaction skills。它想把人类视频转成机器人可学习的交互技能，覆盖篮球、足球、羽毛球等任务。
+与 OmniRetarget 相比，OmniRetarget 更像 interaction-preserving retargeting engine；HumanX 更像从视频到技能的完整数据+策略闭环。与 SUGAR 相比，HumanX 更强调敏捷交互和球类/反应任务。
 
-### 2）策展导读要点
+## 关键实验数字
 
-它的框架包括两个部分：XGen 和 XMimic。XGen 用来从视频中合成物理合理的交互数据，并支持对象 mesh、尺寸、轨迹等增强；XMimic 则学习这些数据里的泛化交互技能。
+| 项 | 数字/结论 |
+|----|-----------|
+| 任务域 | basketball、football、badminton、cargo pickup、reactive fighting，共 **5** 类 |
+| 技能数 | **10** different skills |
+| 真机 | zero-shot transfer to physical Unitree G1 |
+| Passing | human-robot passing over **10 consecutive cycles** |
+| 泛化 | over **8×** higher generalization success than prior methods |
 
-### 3）策展导读要点
+## 源码运行时序图
 
-这篇论文最重要的不是“机器人会打球”，而是数据生产思路：真实机器人交互数据贵，人类视频多，但视频里的动作和机器人身体不匹配，物体状态也不一定完整。HumanX 试图把视频中的人-物交互转换成机器人可以训练的数据。
+**不适用**：项目页 HTML 的 Code 按钮指向 `https://github.com/wyhuai/humanx`，本次核查返回 404；另有 `wyhuai/human-x` 仓库但根目录仅 `index.html/resources/static`，是项目页资源仓，不是可运行代码。故截至 2026-07-22 不视为官方 runnable code。
 
-### 4）策展导读要点
+## 工程实践（含开源状态）
 
-它和 OmniRetarget 的区别在于：OmniRetarget 更像一个交互保留的重定向引擎，HumanX 更像从人类视频到机器人交互技能的完整管线。
+| 项 | 结论 |
+|----|------|
+| 项目页 | <https://wyhuai.github.io/human-x/> |
+| 代码 | 项目页 Code 链接不可用；未确认可运行实现 |
+| 数据 | 项目页列出 Datasets 按钮，需后续核查开放范围 |
+| 平台 | Unitree G1 |
+| 任务 | 球类敏捷技能、搬货、反应格斗 |
 
-## 常见误区
+## 局限与风险
 
-1. 重定向/遥操作不是「训练前脚本」——参考质量上限往往 **早于** RL 策略决定。
+- **视频到物理状态仍难**：球类/格斗中物体速度、接触力和遮挡比静态物体更难恢复。
+- **部分演示依赖 MoCap sensing**：无外部感知版本需单独看成功范围。
+- **代码链接失效**：当前不能验证 XGen/XMimic 实现。
+- **安全风险高**：格斗/高速球类任务在真机上需要严格安全控制。
 
-## 实验与评测
+## 关联页面
 
-- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
-- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
-
-## 与其他页面的关系
-
-- 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
-- AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
-- 原始 source：[humanoid_rl_stack_05_humanx_toward_agile_and_generalizable_humanoid_i.md](../../sources/papers/humanoid_rl_stack_05_humanx_toward_agile_and_generalizable_humanoid_i.md)
+- [Loco-Manip 接触分类 01：接触数据](../overview/loco-manip-contact-category-01-contact-data.md)
+- [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)
+- [运动小脑 · 数据管线](../overview/motion-cerebellum-category-03-data-pipeline.md)
+- [SUGAR](./paper-loco-manip-161-076-sugar.md)
+- [OmniRetarget](./paper-hrl-stack-03-omniretarget.md)
+- [Imitation Learning](../methods/imitation-learning.md)
 
 ## 参考来源
 
-- [humanoid_rl_stack_05_humanx_toward_agile_and_generalizable_humanoid_i.md](../../sources/papers/humanoid_rl_stack_05_humanx_toward_agile_and_generalizable_humanoid_i.md) — 42 篇栈策展摘录
-- [humanoid_rl_stack_42_catalog.md](../../sources/papers/humanoid_rl_stack_42_catalog.md) — 总表
-- [wechat_embodied_ai_lab_humanoid_rl_motion_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md) — 微信公众号编译导读
-- 原始抓取：[wechat_humanoid_rl_42_survey_2026-05-26.md](../../sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md)
+- [humanoid_rl_stack_05_humanx_toward_agile_and_generalizable_humanoid_i.md](../../sources/papers/humanoid_rl_stack_05_humanx_toward_agile_and_generalizable_humanoid_i.md)
+- [humanoid_rl_stack_42_catalog.md](../../sources/papers/humanoid_rl_stack_42_catalog.md)
+- [wechat_embodied_ai_lab_humanoid_rl_motion_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)
+- [loco-manip-contact-category-01-contact-data](../overview/loco-manip-contact-category-01-contact-data.md)
+- [wechat_embodied_ai_lab_loco_manip_contact_survey.md](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md)
+- Chen/Wang et al., *HumanX: Toward Agile and Generalizable Humanoid Interaction Skills from Human Videos*, arXiv:2602.02473, 2026. <https://arxiv.org/abs/2602.02473>
 
 ## 推荐继续阅读
 
+- [HumanX 项目页](https://wyhuai.github.io/human-x/)
 - [机器人论文阅读笔记：HumanX](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/HumanX__Toward_Agile_and_Generalizable_Humanoid_Interaction_Skills_from_Human_Vi/HumanX__Toward_Agile_and_Generalizable_Humanoid_Interaction_Skills_from_Human_Vi.html)
-- [42 篇 RL 运动控制（微信公众号）](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA)
-- [19 篇 AMP 运动先验姊妹篇](https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w)
+- [OmniRetarget](./paper-hrl-stack-03-omniretarget.md)

@@ -24,3 +24,10 @@
 
 - 项目页：https://arxiv.org/abs/2606.00252v1
 - 微信公众号编译：[wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md](../blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md)
+
+## 项目页与开源状态核查（2026-07-22）
+
+- **论文：** arXiv:2606.00252。
+- **代码：** 未确认 HOIST 官方可运行代码；论文引用 GR00T Whole-Body Control 作为固定低层执行栈。
+- **关键数字：** HOIST 用 50 demos + 30 RL rollouts；真实平台 `|Δx|+|Δy|` 从 VLA-50 的 9.28 cm 降到 6.38 cm；相对 pure VLA translational error 降 19.9 cm、raw angular error 降 3.56°。
+- **wiki 深化：** [paper-motion-cerebellum-hoist](../../wiki/entities/paper-motion-cerebellum-hoist.md)。

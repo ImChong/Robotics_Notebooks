@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, humanoid, motion-tracking, teleoperation, mjlab, unitree-g1, tsinghua, shanghai-pil]
 status: complete
-updated: 2026-07-04
+updated: 2026-07-22
 summary: "Axellwppr/motion_tracking：HEFT 官方 mjlab 训练栈，支持 G1/L7 全身跟踪、PMG 配对数据、WPC 负载课程与 sim2real 检查点部署。"
 related:
   - ./paper-heft.md

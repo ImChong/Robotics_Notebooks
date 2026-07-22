@@ -1,97 +1,116 @@
 ---
-
 type: entity
-tags: [paper, humanoid, rl, motion-control, body-system-stack, ut-austin, nvidia, stanford]
+tags: [paper, humanoid, rl, motion-control, body-system-stack, loco-manip-contact-survey, compliance, hindsight-perturbation, force-control, vla, nvidia, stanford, ut-austin]
 status: complete
-updated: 2026-07-16
-venue: curated
-summary: "CHIP 的题目是 Adaptive Compliance for Humanoid Control through Hindsight Perturbation。它想让已有 motion tracking controller 获得可调 end-effector compliance。"
+updated: 2026-07-22
+arxiv: "2512.14689"
+venue: "arXiv 2025"
 related:
-  - ../overview/humanoid-motion-cerebellum-technology-map.md
-  - ../overview/motion-cerebellum-category-09-compliance-contact.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
-  - ../overview/humanoid-amp-motion-prior-survey.md
+  - ../overview/motion-cerebellum-category-09-compliance-contact.md
+  - ../overview/loco-manip-contact-category-04-post-contact-stability.md
+  - ../concepts/impedance-control.md
 sources:
   - ../../sources/papers/humanoid_rl_stack_36_chip_adaptive_compliance_for_humanoid_control_th.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
-  - ../../sources/papers/motion_cerebellum_64_catalog.md
-  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md
+summary: "CHIP（arXiv:2512.14689）通过 hindsight perturbation 给通用 humanoid motion tracking controller 增加连续可调末端柔顺，不需要改参考动作或额外 reward；项目页展示 GR00T N1.5 VLA 用 CHIP 数据完成白板擦拭 80%/60%、箱子搬运 90%，官方代码仍为 Coming Soon。"
 ---
 
 # CHIP
 
-**CHIP** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) **第 36/42** 篇，归类为 **05 接触 · 柔顺 · 安全恢复**。
+**CHIP**（*Learning Adaptive Compliance for Humanoid Control through Hindsight Perturbation*）把末端刚度变成 motion tracking controller 的可调输入：策略仍能跟踪任意参考运动，但在接触任务中可按需要变软、变硬或连续调节柔顺。
 
 ## 一句话定义
 
-CHIP 的题目是 Adaptive Compliance for Humanoid Control through Hindsight Perturbation。它想让已有 motion tracking controller 获得可调 end-effector compliance。
+CHIP 用 hindsight perturbation 让人形跟踪策略学会可调 compliance，从而在搬箱、擦白板、开门、协作抓取等任务中按接触需求切换软硬。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| CHIP | Compliant control through Hindsight Perturbation | 本文方法名 |
+| VLA | Vision-Language-Action | 项目页用 GR00T N1.5 微调自主任务 |
+| GR00T | Generalist Robot 00 Technology | 自主 VLA baseline/finetune 模型 |
+| RL | Reinforcement Learning | CHIP 插入 humanoid motion tracking 训练 |
+| EE | End-Effector | 柔顺控制主要作用于末端执行器 |
+| VLM | Vision-Language Model | Gemini 可从图像预测合适 compliance |
 
 ## 为什么重要
 
-- 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 中属于 **05 接触 · 柔顺 · 安全恢复**（#36/42）。
-- CHIP 的题目是 Adaptive Compliance for Humanoid Control through Hindsight Perturbation。它想让已有 motion tracking controller 获得可调 end-effector compliance。
-- 传统刚性 motion tracking 在高动态动作里很好用，但在擦白板、推车、开门、协作搬运等任务里会出问题。因为这些任务要求末端执行器在受力时产生合理偏移，而不是强行保持目标位置。
-- CHIP 的核心是 hindsight perturbation：训练时向末端施加扰动力，但在观测目标里事后扣除扰动偏移，让策略把受力后的偏移当成合理状态，而不是立刻强行纠正。
+- **柔顺不是离散开关**：空箱、装湿巾、装哑铃需要不同 `10/k`；项目页示例从 0.5、0.3 到 0.2 连续调节。
+- **训练代价低**：CHIP 不做 SoftMimic 式 IK 数据增广，也不额外调 reward，而是把原参考动作事后解释为扰动后的目标。
+- **可接入上层 VLA**：Gemini 可根据少量 anchor examples 从图像预测 compliance；GR00T N1.5 用 CHIP 数据做自主擦白板/搬箱。
+- **多人/多机协作相关**：在 SpringGrasp 规划下，CHIP 支持多机器人协同抓球/箱并移动。
 
-## 核心信息（索引级）
+## 流程总览
 
-| 字段 | 内容 |
-|------|------|
-| 编号 | 36/42 |
-| 系统栈层 | 05 接触 · 柔顺 · 安全恢复 |
-| 机构 | NVIDIA；斯坦福大学；德州大学奥斯汀分校 |
-| 出处 | curated |
-| 链接 | <https://nvlabs.github.io/CHIP/> |
+```mermaid
+flowchart TB
+  ref["原始 motion tracking reference"] --> hp["hindsight perturbation\n重构稀疏跟踪目标"]
+  comp["compliance command 10/k"] --> policy["compliance-aware tracking policy"]
+  hp --> policy
+  policy --> modes["stiff / compliant / damper-only following"]
+  image["user image + anchors"] --> gemini["VLM predicts compliance"]
+  gemini --> comp
+  modes --> tasks["box holding / wiping / door / VLA tasks"]
+```
 
-## 核心机制（归纳）
+## 核心原理（详细）
 
-### 1）策展导读要点
+CHIP 的关键是 hindsight perturbation：训练时不用真的修改参考动作，而是在目标观测中扣除扰动偏移，让策略把受力后的偏移视为合理状态。这使策略不会一受外力就强行拉回原位置，也不会完全放弃全局轨迹。compliance command 基于 Hooke's law，有物理含义，因此可以被人手调节或由 VLM 预测。
 
-CHIP 的题目是 Adaptive Compliance for Humanoid Control through Hindsight Perturbation。它想让已有 motion tracking controller 获得可调 end-effector compliance。
+项目页展示三种 HRI 模式：低 compliance + global tracking（刚性抵抗扰动）、高 compliance + global tracking（受扰后回到轨迹）、damper-only local following（近似无限柔顺，跟随人引导）。
 
-### 2）策展导读要点
+## 关键实验数字
 
-传统刚性 motion tracking 在高动态动作里很好用，但在擦白板、推车、开门、协作搬运等任务里会出问题。因为这些任务要求末端执行器在受力时产生合理偏移，而不是强行保持目标位置。
+| 任务 | 项目页报告 |
+|------|------------|
+| Small whiteboard wiping | GR00T N1.5 + CHIP 数据，task success **80%** |
+| Large whiteboard wiping | task success **60%** |
+| Box lifting | task success **90%**，20 次连续评估中前 10 次展示成功 rollout |
+| Box with dumbbell | compliance `10/k=0.25` 合适；0.15 太硬、0.425 太软 |
 
-### 3）策展导读要点
+## 源码运行时序图
 
-CHIP 的核心是 hindsight perturbation：训练时向末端施加扰动力，但在观测目标里事后扣除扰动偏移，让策略把受力后的偏移当成合理状态，而不是立刻强行纠正。
+**不适用**：项目页多处标注 **Code (Coming Soon)**，并写明 “Stay tuned for more videos and code release in 1 month.” 截至 2026-07-22 未确认官方可运行仓库。
 
-### 4）策展导读要点
+## 工程实践（含开源状态）
 
-它还把柔顺系数变成可调输入。比如开门阶段可能需要刚一点，擦白板需要软一点，搬重物需要根据重量调整刚度。
+| 项 | 结论 |
+|----|------|
+| 项目页 | <https://nvlabs.github.io/CHIP/> |
+| 代码 | Coming Soon，未确认可运行实现 |
+| 上层集成 | Gemini compliance prediction；GR00T N1.5 VLA finetune |
+| 典型任务 | Christmas gift delivery、wipe/write、phone room delivery、waste box disposal、multi-robot grasping |
 
-## 常见误区
+## 局限与风险
 
-1. 柔顺/恢复策略要在 **接触丰富** 与 **长期稳定** 间折中，不能只看单帧姿态。
+- **代码未开放**：无法验证 hindsight target reconstruction 的具体实现。
+- **柔顺值仍需任务语义**：VLM 可预测但需要 anchor examples，错误 compliance 会导致太软/太硬失败。
+- **不等于力控传感闭环**：CHIP 是 compliance-aware tracking，不一定显式测量/闭环控制接触力。
 
-## 实验与评测
+## 关联页面
 
-- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
-- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
-
-## 与其他页面的关系
-
-- 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
-- AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
-- 原始 source：[humanoid_rl_stack_36_chip_adaptive_compliance_for_humanoid_control_th.md](../../sources/papers/humanoid_rl_stack_36_chip_adaptive_compliance_for_humanoid_control_th.md)
+- [Loco-Manip 接触分类 04：接触后如何稳住](../overview/loco-manip-contact-category-04-post-contact-stability.md)
+- [运动小脑 · I 柔顺接触](../overview/motion-cerebellum-category-09-compliance-contact.md)
+- [阻抗控制](../concepts/impedance-control.md)
+- [GentleHumanoid](./paper-gentlehumanoid.md)
+- [Thor](./paper-hrl-stack-42-thor.md)
+- [HMC](./paper-loco-manip-161-039-hmc.md)
 
 ## 参考来源
 
-- [humanoid_rl_stack_36_chip_adaptive_compliance_for_humanoid_control_th.md](../../sources/papers/humanoid_rl_stack_36_chip_adaptive_compliance_for_humanoid_control_th.md) — 42 篇栈策展摘录
-- [humanoid_rl_stack_42_catalog.md](../../sources/papers/humanoid_rl_stack_42_catalog.md) — 总表
-- [wechat_embodied_ai_lab_humanoid_rl_motion_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md) — 微信公众号编译导读
-- 原始抓取：[wechat_humanoid_rl_42_survey_2026-05-26.md](../../sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md)
+- [humanoid_rl_stack_36_chip_adaptive_compliance_for_humanoid_control_th.md](../../sources/papers/humanoid_rl_stack_36_chip_adaptive_compliance_for_humanoid_control_th.md)
+- [humanoid_rl_stack_42_catalog.md](../../sources/papers/humanoid_rl_stack_42_catalog.md)
+- [wechat_embodied_ai_lab_humanoid_rl_motion_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)
+- [loco-manip-contact-category-04-post-contact-stability](../overview/loco-manip-contact-category-04-post-contact-stability.md)
+- [wechat_embodied_ai_lab_loco_manip_contact_survey.md](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md)
+- Chen et al., *CHIP: Learning Adaptive Compliance for Humanoid Control through Hindsight Perturbation*, arXiv:2512.14689, 2025. <https://arxiv.org/abs/2512.14689>
 
 ## 推荐继续阅读
 
-- [42 篇 RL 运动控制（微信公众号）](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA)
-- [19 篇 AMP 运动先验姊妹篇](https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w)
+- [CHIP 项目页](https://nvlabs.github.io/CHIP/)
+- [SpringGrasp](https://stanford-tml.github.io/SpringGrasp/)
+- [GentleHumanoid](./paper-gentlehumanoid.md)

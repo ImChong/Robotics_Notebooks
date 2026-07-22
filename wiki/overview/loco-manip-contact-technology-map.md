@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, humanoid, contact-rich, survey, embodied-ai, force-control, vla]
 status: complete
-updated: 2026-07-03
+updated: 2026-07-22
 related:
   - ./loco-manip-contact-category-01-contact-data.md
   - ./loco-manip-contact-category-02-contact-representation.md

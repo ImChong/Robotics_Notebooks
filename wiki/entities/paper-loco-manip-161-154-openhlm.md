@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid, vla, teleoperation, whole-body-control, tsinghua, shanghai-pil, spirit-ai, unitree-g1]
+tags: [paper, loco-manipulation, loco-manip-161-survey, loco-manip-contact-survey, humanoid, vla, teleoperation, whole-body-control, tsinghua, shanghai-pil, spirit-ai, unitree-g1]
 status: complete
 updated: 2026-07-22
 arxiv: "2606.22174"
@@ -9,6 +9,7 @@ code: https://github.com/OpenHLM-project/OpenHLM
 related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-09-vla-world-models.md
+  - ../overview/loco-manip-contact-category-05-vla-world-models.md
   - ../tasks/loco-manipulation.md
   - ../tasks/teleoperation.md
   - ../methods/vla.md
@@ -24,6 +25,7 @@ sources:
   - ../../sources/repos/openhlm.md
   - ../../sources/papers/loco_manip_161_survey_154_openhlm.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md
 summary: "OpenHLM（清华/期智/千寻，arXiv:2606.22174）：全身原生人形 VLA 经验配方——关节级全身遥操作采集、π₀.₅ 系 VLA 适配消融、HuMI/stationary 异构共训；长程果盘 87.5% progress（1.14 h demo）优于 GR00T N1.6/Ψ₀；开源代码、数据与 checkpoint。"
 ---
 
@@ -199,6 +201,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [Loco-Manip 接触分类 05：VLA 与世界模型调用](../overview/loco-manip-contact-category-05-vla-world-models.md)
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 全身移动操作任务坐标
 - [VLA](../methods/vla.md) — π₀.₅ / GR00T 等对照语境
 - [Teleoperation](../tasks/teleoperation.md) — 全身遥操作与 HuMI 采集
@@ -208,6 +211,7 @@ sequenceDiagram
 
 ## 参考来源
 
+- [wechat_embodied_ai_lab_loco_manip_contact_survey.md](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md)
 - [OpenHLM 论文摘录（arXiv:2606.22174）](../../sources/papers/openhlm_arxiv_2606_22174.md)
 - [OpenHLM 项目页归档](../../sources/sites/openhlm-project-github-io.md)
 - [OpenHLM 代码归档](../../sources/repos/openhlm.md)

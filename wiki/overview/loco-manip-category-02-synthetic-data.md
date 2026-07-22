@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, synthetic-data, simulation, category-hub, survey]
 status: complete
-updated: 2026-06-14
+updated: 2026-07-22
 summary: "Loco-Manip 8 篇周报 · 02 生成与仿真数据（2 篇）— 生成视频与仿真 teleop 能否承担更重的可执行 loco-manip 数据生产（GenHOI、OASIS）？"
 related:
   - ./loco-manip-8-papers-technology-map.md

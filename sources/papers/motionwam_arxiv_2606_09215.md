@@ -10,7 +10,8 @@
 - **作者：** Jia Zheng†, Teli Ma†, Yudong Fan, Zifan Wang, Shuo Yang*, Junwei Liang*（† 共同一作；* 通讯 / 共同指导）
 - **机构：** Mondo Robotics（摩多机器人）；香港科技大学（广州）；香港科技大学
 - **入库日期：** 2026-06-10
-- **开源状态（2026-07-22 再核）：** arXiv abs / HTML **无** 独立项目页或 GitHub Code 链；暂无官方可运行仓。用户给出的 <https://dit4dit.github.io/> 为同团队前序 **DiT4DiT** 项目页（已开源 [Mondo-Robotics/DiT4DiT](https://github.com/Mondo-Robotics/DiT4DiT)），**不是** MotionWAM 代码发布页。
+- **开源状态（2026-07-20 再核）：** arXiv abs / HTML **无** 项目页或 GitHub Code 链；暂无官方可运行仓。
+- **开源状态（2026-07-22 再核）：** arXiv abs / HTML 仍 **无** 独立项目页或 GitHub Code 链；暂无官方可运行仓。用户给出的 <https://dit4dit.github.io/> 为同团队前序 **DiT4DiT** 项目页（已开源 [Mondo-Robotics/DiT4DiT](https://github.com/Mondo-Robotics/DiT4DiT)），**不是** MotionWAM 代码发布页。
 - **一句话说明：** 面向 **实时闭环人形 loco-manipulation** 的 **World Action Model**：Video DiT 与 Motion DiT **双骨干** 经 **单次前向去噪隐状态** 耦合；用 **统一全身 motion token**（基于 SONIC 潜空间）替代上下身分层接口，三阶段从 egocentric 视频预训练到跨具身动作后训练再到全身遥操作微调；在 **宇树 G1 + 双 ALOHA2 夹爪 + 头部 RealSense D435i** 九项真机任务上相对同演示微调的 VLA 基线 **整体成功率 +32% 绝对值**。
 
 ## 核心论文摘录（MVP）
@@ -64,3 +65,13 @@
 
 - 沉淀实体页：[`wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md`](../../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md)
 - 互链参考：[World Action Models](../../wiki/concepts/world-action-models.md)、[Loco-Manipulation](../../wiki/tasks/loco-manipulation.md)、[SONIC](../../wiki/methods/sonic-motion-tracking.md)、[VLA](../../wiki/methods/vla.md)、[Unitree G1](../../wiki/entities/unitree-g1.md)
+- 161 survey 坐标：[loco_manip_161_survey_100_motionwam.md](./loco_manip_161_survey_100_motionwam.md)
+- 接触横切面：[loco-manip-contact-category-05-vla-world-models](../../wiki/overview/loco-manip-contact-category-05-vla-world-models.md)
+
+## 参考来源（原始）
+
+- arXiv：<https://arxiv.org/abs/2606.09215>
+- arXiv HTML：<https://arxiv.org/html/2606.09215v1>
+- 161 篇微信公众号编译：[wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md](../blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md)
+- 运动小脑微信公众号编译：[wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md](../blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md)
+- 接触横切面编译：[wechat_embodied_ai_lab_loco_manip_contact_survey.md](../blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md)

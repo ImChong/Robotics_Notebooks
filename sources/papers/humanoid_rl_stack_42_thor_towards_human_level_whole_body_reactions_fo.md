@@ -20,9 +20,18 @@
 
 ## 对 wiki 的映射
 
-  - （待交叉链接）
+- [paper-hrl-stack-42-thor](../../wiki/entities/paper-hrl-stack-42-thor.md)
+- [humanoid-rl-motion-control-body-system-stack](../../wiki/overview/humanoid-rl-motion-control-body-system-stack.md)
+- [loco-manip-contact-category-04-post-contact-stability](../../wiki/overview/loco-manip-contact-category-04-post-contact-stability.md)
 
 ## 参考来源（原始）
 
 - 微信公众号编译：[wechat_embodied_ai_lab_humanoid_rl_motion_survey.md](../blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)
 - 姊妹篇 AMP 专题：[wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md](../blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md)
+
+## 项目页与开源状态核查（2026-07-22）
+
+- **论文/项目：** arXiv:2510.26280；项目页 <https://baai-aether.github.io/baai-thor/>。
+- **代码：** 项目页标注 `Code(Coming Soon)`，未确认可运行实现。
+- **关键数字：** Unitree G1 后拉 167.7±2.4 N、前拉 145.5±2.0 N；较最佳 baseline 提升 68.9% / 74.7%；可拉 130 N 货架、单手开约 60 N 防火门。
+- **wiki 深化：** [paper-hrl-stack-42-thor](../../wiki/entities/paper-hrl-stack-42-thor.md)。

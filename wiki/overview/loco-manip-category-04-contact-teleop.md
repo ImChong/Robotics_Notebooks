@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, tactile, teleoperation, category-hub, survey]
 status: complete
-updated: 2026-06-14
+updated: 2026-07-22
 summary: "Loco-Manip 8 篇周报 · 04 触觉与跨本体遥操作（2 篇）— 力/触觉如何补视觉盲区（WT-UMI），MPC 重定向如何让 teleop 成为跨机器人数据入口（X-OP）？"
 related:
   - ./loco-manip-8-papers-technology-map.md
