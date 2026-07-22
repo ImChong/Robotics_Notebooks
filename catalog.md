@@ -520,6 +520,7 @@
 - [EgoVLA](wiki/entities/paper-loco-manip-161-161-egovla.md) — EgoVLA** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
 - [MAMMA：无标记多视角多人 SMPL-X 动作捕捉](wiki/entities/paper-mamma-markerless-motion-capture.md) — MAMMA**（*Markerless Accurate Multi-person Motion Acquisition*，arXiv:2506.13040，CVPR 2026 Oral，[项目页 `📅unknown` `[entity_page]`
 - [MECo-WAM（Multi-Expert Co-Training World Action Model · arXiv:2607.05468）](wiki/entities/paper-meco-wam-4d-geometry-cotraining.md) — MECo-WAM**（*Learning 4D Geometric Priors for Inference-Efficient World Action Models*，[arXiv:2607. `📅unknown` `[entity_page]`
+- [MEVION：高力高速双臂数据采集系统](wiki/entities/paper-mevion.md) — MEVION** 是面向重载、高速双臂模仿学习的开源 leader–follower 数据采集平台，用四条 6-DoF 机械臂与平行夹爪扩展 ALOHA 的力速工作区。 `📅unknown` `[entity_page]`
 - [AMI-EV：微扫视启发的事件相机系统](wiki/entities/paper-microsaccade-inspired-event-camera.md) — Microsaccade-inspired event camera for robotics**（Botao He*、Fei Gao*、Cornelia Fermüller* 等，ZJU FAS `📅unknown` `[entity_page]`
 - [MIGHTY（Hermite 样条高效 UAV 轨迹规划）](wiki/entities/paper-mighty-hermite-spline-trajectory-planning.md) — MIGHTY**（*Hermite Spline-based Efficient Trajectory Planning*，arXiv:2511.10822，[IEEE RA-L 2026](ht `📅unknown` `[entity_page]`
 - [深海软体可变形机器人：压力等效多模态运动](wiki/entities/paper-miniature-deep-sea-morphable-robot.md) — Miniature deep-sea morphable robot with multimodal locomotion**（Wen Li‡ / Ding Xilun‡（丁希仑），北京航空航天大 `📅unknown` `[entity_page]`
@@ -922,6 +923,7 @@
 - [OSCAR（跨具身动作条件世界模型）](wiki/entities/paper-oscar.md) — OSCAR**（*OSCAR: Omni-Embodiment Action-Conditioned World Model for Robotics*，arXiv:2606.04463，2026 `📅unknown` `[entity_page]`
 - [PACE（足式系统化 Sim2Real）](wiki/entities/paper-pace-sim2real-legged-robots.md) — PACE**（**P**recise **A**daptation through **C**ontinuous **E**volution）是 ETH Zurich Robotic System `📅unknown` `[entity_page]`
 - [PanoWorld：真实世界全景可控生成](wiki/entities/paper-panoworld-real-world-panoramic-generation.md) — PanoWorld**（*Real-World Panoramic Generation*，[arXiv:2607.09661](https://arxiv.org/abs/2607.09661 `📅unknown` `[entity_page]`
+- [Patch Policy：密集视觉表征的轻量高频控制](wiki/entities/paper-patch-policy.md) — Patch Policy** 是一种不依赖大型 VLM、直接把预训练 ViT 密集 patch 特征接入机器人策略 transformer 的轻量架构。 `📅unknown` `[entity_page]`
 - [PEAR：像素对齐的表意人体网格恢复](wiki/entities/paper-pear-pixel-aligned-expressive-hmr.md) — PEAR**（*Pixel-aligned Expressive humAn mesh Recovery*，arXiv:2601.22693，SIGGRAPH 2026，[IDEA](https: `📅unknown` `[entity_page]`
 - [Perceptive BFM：Adapting Human Motion Priors to Robot-Centric Terrain](wiki/entities/paper-perceptive-bfm.md) — Perceptive BFM**（*Perceptive Behavior Foundation Model: Adapting Human Motion Priors to Robot-Cent `📅unknown` `[entity_page]`
 - [PhyGile（Physics-Prefix Guided Motion Generation for Agile General Humanoid Motion Tracking）](wiki/entities/paper-phygile.md) — PhyGile** 是西北工业大学、上海 AI Lab、中科大、清华、复旦、字节与东北大学等团队的 **文本驱动人形敏捷全身控制** 工作（arXiv:2603.19305）：在 **262 维机 `📅unknown` `[entity_page]`
@@ -929,6 +931,7 @@
 - [PhysisForcing（Physics Reinforced World Simulator）](wiki/entities/paper-physisforcing.md) — PhysisForcing**（*PhysisForcing: Physics Reinforced World Simulator for Robotic Manipulation*，arXiv `📅unknown` `[entity_page]`
 - [PhysMani（Physics-principled 3D World Model for Dynamic Manipulation）](wiki/entities/paper-physmani-dynamic-manipulation-world-model.md) — PhysMani**（*Physics-principled 3D World Model for Dynamic Object Manipulation*，arXiv:2607.01938， `📅unknown` `[entity_page]`
 - [PILOT：非结构化场景感知统一 loco-manipulation 低层控制器](wiki/entities/paper-pilot-perceptive-loco-manipulation.md) — PILOT**（*A Perceptive Integrated Low-level Controller for Loco-manipulation over Unstructured Scen `📅unknown` `[entity_page]`
+- [POT-VLA：持久 3D 对象状态的人形闭环 VLA](wiki/entities/paper-pot-vla.md) — POT-VLA** 用 RGB-D 持续维护按任务角色索引的三维对象记录，使动作生成、完成判定与失败恢复共享同一物理状态。 `📅unknown` `[entity_page]`
 - [A Cubic Barrier with Elasticity-Inclusive Dynamic Stiffness（TOG）](wiki/entities/paper-ppf-cubic-barrier-contact-solver.md) — 一句话定义：** 本文提出一种 **三次障碍（cubic barrier）** 接触模型，并在接触矩阵组装时纳入 **弹性模态对动态刚度的贡献（elasticity-inclusive dynam `📅unknown` `[entity_page]`
 - [Sim-to-Real: Learning Agile Locomotion For Quadruped Robots（RSS 2018）](wiki/entities/paper-quadruped-agile-sim2real-rss2018.md) — 一句话定义**：通过 **域随机化** 覆盖模型与传感不确定性，在仿真中训练 **高频敏捷四足运动策略**，并 **零样本或低开销** 迁移到实物平台，是后续大量 **sim2real 腿足工作 `📅unknown` `[entity_page]`
 - [Learning Torque Control for Quadrupedal Locomotion](wiki/entities/paper-quadruped-torque-control-rl.md) — 一句话定义**：用 **单网络策略直接预测关节扭矩**（相对高频），在仿真中训练并完成 **sim2real**，在多种地形与扰动下与 **位置+PD** 基线对比 **奖励与鲁棒性**。 `📅unknown` `[entity_page]`
@@ -1021,6 +1024,7 @@
 - [WAM-TTT（人视频 · 测试时训练 · WAM Steering）](wiki/entities/paper-wam-ttt-human-video-test-time-steering.md) — WAM-TTT**（*Steering World-Action Models by Watching Human Play at Test Time*，[arXiv:2607.06988](ht `📅unknown` `[entity_page]`
 - [WEM（World-Ego Modeling / World-Ego Model）](wiki/entities/paper-wem-world-ego-modeling.md) — WEM**（*World-Ego Model*，arXiv:2605.19957，项目页，[代码](https://g `📅unknown` `[entity_page]`
 - [WOLF-VLA](wiki/entities/paper-wolf-vla.md) — WOLF-VLA**（arXiv:2606.25591，DFKI 等）收录于 [具身智能研究室 · Loco-Manip 接触专题](https://mp.weixin.qq.com/s/UjSh `📅unknown` `[entity_page]`
+- [World Translation：反向动力学提取的 Sim2Real 域翻译](wiki/entities/paper-world-translation.md) — World Translation** 从观测到的状态转移反向抽取隐含动力学，再以无配对域翻译在仿真与现实间保留动力学内容、迁移域风格。 `📅unknown` `[entity_page]`
 - [Worldscape-MoE（Unified Mixture-of-Experts World Model · arXiv:2607.03964）](wiki/entities/paper-worldscape-moe-heterogeneous-action.md) — Worldscape-MoE**（*Worldscape-MoE: A Unified Mixture-of-Experts World Model for Scalable Heterogene `📅unknown` `[entity_page]`
 - [WorldVLN（空中 VLN · 自回归 World Action Model）](wiki/entities/paper-worldvln-aerial-vln-wam.md) — WorldVLN**（*Autoregressive World Action Model for Aerial Vision-Language Navigation*，arXiv:2605.15 `📅unknown` `[entity_page]`
 - [X-Cache（Cross-Chunk Block Caching）](wiki/entities/paper-x-cache.md) — X-Cache**（arXiv:2604.20289）由小鹏（XPeng） AI Infra 团队提出：专为 **少步蒸馏 + 闭环交互 `📅unknown` `[entity_page]`
