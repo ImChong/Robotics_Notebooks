@@ -516,7 +516,7 @@
 - [具有实时基础地形重建的步态自适应感知人形运动](wiki/entities/paper-loco-manip-161-142-n142.md) — 具有实时基础地形重建的步态自适应感知人形运动** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9Ehs `📅unknown` `[entity_page]`
 - [学习人对人的实时全身远程操作。](wiki/entities/paper-loco-manip-161-144-n144.md) — 学习人对人的实时全身远程操作。** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGd `📅unknown` `[entity_page]`
 - [手眼自主配送](wiki/entities/paper-loco-manip-161-145-n145.md) — 手眼自主配送** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
-- [OpenHLM](wiki/entities/paper-loco-manip-161-154-openhlm.md) — OpenHLM**（*An Empirical Recipe for Whole-Body Humanoid Loco-Manipulation*）不是只提出一个模型结构，而是系统比较人形 VLA `📅unknown` `[entity_page]`
+- [OpenHLM](wiki/entities/paper-loco-manip-161-154-openhlm.md) — OpenHLM**（*An Empirical Recipe for Whole-Body Humanoid Loco-Manipulation*，[项目页](https://openhlm-pr `📅unknown` `[entity_page]`
 - [PhysiFlow](wiki/entities/paper-loco-manip-161-155-physiflow.md) — PhysiFlow** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3 `📅unknown` `[entity_page]`
 - [Psi0](wiki/entities/paper-loco-manip-161-156-psi0.md) — Psi0** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
 - [REFINE-DP](wiki/entities/paper-loco-manip-161-157-refine-dp.md) — REFINE-DP** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3 `📅unknown` `[entity_page]`

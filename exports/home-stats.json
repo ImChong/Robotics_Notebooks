@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-22",
   "node_count": 1761,
-  "edge_count": 14319,
+  "edge_count": 14328,
   "coverage": {
     "covered": 1711,
     "total": 1741,
@@ -186,7 +186,7 @@
       "recency": "2026-07-22",
       "source": "log.md",
       "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-hrl-stack-30-wholebodyvla.md",
@@ -222,15 +222,15 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 441
-    },
-    {
-      "label": "移动操作",
-      "size": 179
+      "size": 440
     },
     {
       "label": "人形论文深读笔记",
       "size": 176
+    },
+    {
+      "label": "移动操作",
+      "size": 175
     },
     {
       "label": "全身控制",
@@ -238,7 +238,7 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 96
+      "size": 100
     },
     {
       "label": "仿真训练",
@@ -273,7 +273,7 @@
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
-      "degree": 284,
+      "degree": 287,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
@@ -311,7 +311,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 182,
+      "degree": 183,
       "has_repo": true,
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },

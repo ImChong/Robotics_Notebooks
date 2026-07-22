@@ -2,7 +2,7 @@
 
 ## [2026-07-22] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **27** 条信息型预警）：
+共发现 **0** 个问题（另含 **26** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -97,7 +97,7 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（25 个）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（24 个）
 - wiki/entities/paper-cwi-composite-humanoid-whole-body-imitation.md（缺 评测 / 对比）
 - wiki/entities/paper-gentlehumanoid.md（缺 对比）
 - wiki/entities/paper-grail.md（缺 评测 / 对比）
@@ -115,7 +115,6 @@
 - wiki/entities/paper-loco-manip-161-076-sugar.md（缺 评测 / 对比）
 - wiki/entities/paper-loco-manip-161-109-falcon.md（缺 评测 / 对比）
 - wiki/entities/paper-loco-manip-161-116-wococo.md（缺 评测 / 对比）
-- wiki/entities/paper-loco-manip-161-154-openhlm.md（缺 对比）
 - wiki/entities/paper-mevion.md（缺 方法 / 评测 / 对比）
 - wiki/entities/paper-motion-cerebellum-ceer.md（缺 评测 / 对比）
 - wiki/entities/paper-motion-cerebellum-hoist.md（缺 对比）
