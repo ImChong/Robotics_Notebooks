@@ -13,9 +13,11 @@ related:
   - ../entities/sceneverse-pp.md
   - ../concepts/3d-spatial-vqa.md
   - ../entities/paper-uni-lavira.md
+  - ../entities/paper-da-nav.md
 sources:
   - ../../sources/blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md
   - ../../sources/papers/uni_lavira_arxiv_2605_27582.md
+  - ../../sources/papers/da_nav_arxiv_2607_11638.md
 summary: "VLN 新手复现策展：四条范式各一栈——VLFM（2D 语义地图）、NavGPT（LLM 推理）、NoMaD（扩散统一探索/到达）、Uni-NaVid（导航 VLA）；按模块化→语言中枢→端到端策略→统一 VLA 由浅入深，而非性能排名。"
 ---
 
@@ -78,6 +80,7 @@ flowchart LR
 - **Uni-NaVid** = **导航** 方向的 VLA（RSS 2025 叙事），与 [VLA 开源景观](./vla-open-source-repro-landscape-2025.md) 中的 **UniVLA**（跨本体**操作**潜动作）**不同名、不同任务**。
 - 若已熟悉 [VLA 方法页](../methods/vla.md)，可把 Uni-NaVid 读作「VLN 子任务上的 VLA 实例」；NoMaD 则更接近 [Diffusion Policy](../methods/diffusion-policy.md) 在导航上的落地。
 - **零样本对照：** [Uni-LaViRA](../entities/paper-uni-lavira.md)（arXiv:2605.27582）走 **training-free Language→Vision→Robot agent**，官方仓含 Habitat/AirSim 评测与四真机入口；适合在跑通 Uni-NaVid **之后**对照「堆轨迹训导航 VLA」vs「结构化 MLLM agent」两条路线（依赖 API、CC BY-NC-SA，不替换本页四范式入门顺序）。
+- **户外方向感知（暂不可复现）：** [DA-Nav](../entities/paper-da-nav.md)（arXiv:2607.11638）用 **商业导航离散方向** + **图像平面网格** + **CoT recovery**，并零样本足式/人形；**截至 2026-07-22 未开源**，不进入本页四范式清单，仅作「动作表示 / 恢复监督」阅读对照。
 
 ## 按目标选入口
 
@@ -107,11 +110,13 @@ flowchart LR
 - [SceneVerse++](../entities/sceneverse-pp.md) — 互联网视频→R2R 风格数据
 - [3D 空间 VQA](../concepts/3d-spatial-vqa.md) — 空间推理与 VLN 对照
 - [Uni-LaViRA](../entities/paper-uni-lavira.md) — 零样本三层翻译统一导航（对照 Uni-NaVid）
+- [DA-Nav](../entities/paper-da-nav.md) — 城市户外方向感知 VLN（方法对照；暂未开源）
 
 ## 参考来源
 
 - [深蓝具身智能：VLN 四范式新手复现推荐（微信公众号归档）](../../sources/blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md)
 - [Uni-LaViRA 论文摘录（arXiv:2605.27582）](../../sources/papers/uni_lavira_arxiv_2605_27582.md)
+- [DA-Nav 论文摘录（arXiv:2607.11638）](../../sources/papers/da_nav_arxiv_2607_11638.md)
 
 ## 推荐继续阅读
 

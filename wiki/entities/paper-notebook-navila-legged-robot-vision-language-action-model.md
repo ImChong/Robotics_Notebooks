@@ -2,14 +2,18 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-06-26
+updated: 2026-07-22
 arxiv: "2412.04453"
 related:
   - ../overview/paper-notebook-category-08-navigation.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ./paper-da-nav.md
+  - ../tasks/vision-language-navigation.md
 sources:
   - ../../sources/papers/humanoid_pnb_navila-legged-robot-vision-language-action-model.md
+  - ../../sources/papers/da_nav_arxiv_2607_11638.md
 summary: "NaVILA 提出了一个两层分层框架，将高层视觉 - 语言 - 动作（VLA）推理出的自然语言指令转换为低层足式运动控制，实现了人类自然语言指令到复杂地面导航的高效映射。"
+updated: 2026-07-22
 ---
 
 # NaVILA
@@ -49,6 +53,8 @@ NaVILA 提出了一个两层分层框架，将高层视觉 - 语言 - 动作（V
 
 - 分类父节点：[paper-notebook-category-08-navigation](../overview/paper-notebook-category-08-navigation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- 对照：[DA-Nav](./paper-da-nav.md) — 同作城市/户外地面导航基线；DA-Nav 报告 NaVILA 在 CARLA 上 CSR≈5%，并改用 **方向指令 + 图像平面网格 + recovery CoT**（方法页；暂未开源）
+- 任务页：[视觉–语言导航（VLN）](../tasks/vision-language-navigation.md)
 
 ## 参考来源
 

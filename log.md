@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-22] ingest | sources/papers/da_nav_arxiv_2607_11638.md — DA-Nav（arXiv:2607.11638）方向感知城市尺度 VLN；升格 wiki/entities/paper-da-nav.md；交叉 wiki/tasks/vision-language-navigation.md、wiki/concepts/sim2real.md、wiki/methods/vla.md、wiki/overview/vln-open-source-repro-paradigms.md、wiki/entities/paper-notebook-navila-legged-robot-vision-language-action-model.md；未开源
+
+- **开源状态：** **未开源** — arXiv abs/HTML/PDF 无项目页或 GitHub；公开检索无官方同名可运行仓（截至 2026-07-22）
+- **新建 papers：** [`sources/papers/da_nav_arxiv_2607_11638.md`](sources/papers/da_nav_arxiv_2607_11638.md)
+- **新建 wiki：** [`wiki/entities/paper-da-nav.md`](wiki/entities/paper-da-nav.md)
+- **机构：** 沿用既有 `shanghaitech` / `ict` / `casia` / `ucas` / `leju`
+- **交叉更新：** [`wiki/tasks/vision-language-navigation.md`](wiki/tasks/vision-language-navigation.md)、[`wiki/concepts/sim2real.md`](wiki/concepts/sim2real.md)、[`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/overview/vln-open-source-repro-paradigms.md`](wiki/overview/vln-open-source-repro-paradigms.md)、[`wiki/entities/paper-notebook-navila-legged-robot-vision-language-action-model.md`](wiki/entities/paper-notebook-navila-legged-robot-vision-language-action-model.md)、[`wiki/methods/behavior-cloning.md`](wiki/methods/behavior-cloning.md)
+
 ## [2026-07-22] ingest | sources/papers/lehome_learning_to_fold_arxiv_2606_27163.md + sources/sites/ilialarchenko-lehome2026.md + sources/repos/lehome_solution.md + sources/sites/huggingface-lehome-{sim,real}.md — Learning to Fold（arXiv:2606.27163）LeHome 2026 全链路开源；升格 wiki/entities/paper-lehome-learning-to-fold.md；交叉 vla/awr/dagger/sim2real/lerobot/manipulation/vla-open-source-repro-landscape/steam/sunday/nvidia-so101；机构新增 ilia-larchenko；仿真1st/真机2nd权重已发
 
 - **开源状态：** **已开源（完整工程）** — [`IliaLarchenko/lehome_solution`](https://github.com/IliaLarchenko/lehome_solution)（Apache-2.0）+ HF [`lehome_sim`](https://huggingface.co/IliaLarchenko/lehome_sim)（仿真 1st）/ [`lehome_real`](https://huggingface.co/IliaLarchenko/lehome_real)（真机 2nd）；博客含成功/失败推理视频（截至 2026-07-22）
