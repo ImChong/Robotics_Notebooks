@@ -122,7 +122,7 @@ const path = require('path');
       };
     });
 
-    const expectedW = openState.size.vw / 3;
+    const expectedW = openState.size.vw / 4;
     const expectedH = openState.size.vh / 3;
     const sizeOk = Math.abs(openState.size.width - expectedW) < 24
       && Math.abs(openState.size.height - expectedH) < 24;
