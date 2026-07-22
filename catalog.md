@@ -382,6 +382,7 @@
 - [Green-VLA：分阶段通才 VLA 与人形部署](wiki/entities/paper-greenvla-staged-vla-humanoid.md) — Green-VLA** 是 Sber Robotics Center 提出的 **分阶段 Vision–Language–Action 框架**（arXiv:[2602.00919](https: `📅unknown` `[entity_page]`
 - [HALOMI（Learning Humanoid Loco-Manipulation with Active Perception from Human Demonstrations）](wiki/entities/paper-halomi-humanoid-loco-manipulation.md) — HALOMI**（*Humanoid Active-Perception Loco-Manipulation Interface*，arXiv:2606.18772，[项目页](https://h `📅unknown` `[entity_page]`
 - [HapMorph：多维气动触觉属性渲染框架](wiki/entities/paper-hapmorph-pneumatic-haptic-render.md) — HapMorph**（Chen et al., Scuola Superiore Sant'Anna；[arXiv:2509.05433](https://arxiv.org/abs/2509.0 `📅unknown` `[entity_page]`
+- [Harness VLA（Memory-Guided Agentic Manipulation · arXiv:2607.08448）](wiki/entities/paper-harness-vla.md) — Harness VLA**（*Steering Frozen VLAs into Reliable Manipulation Primitives via Memory-Guided Agents `📅unknown` `[entity_page]`
 - [HEFT](wiki/entities/paper-heft.md) — HEFT**（*Heavy-Payload Full-size Humanoid Teleoperation with Privileged Motion Guidance and Windowe `📅unknown` `[entity_page]`
 - [Heracles：跟踪精度与生成式恢复的扩散中间件](wiki/entities/paper-heracles-humanoid-diffusion.md) — Heracles**（*Bridging Precise Tracking and Generative Synthesis for General Humanoid Control*，arXiv `📅unknown` `[entity_page]`
 - [Hiking in the Wild：可扩展感知跑酷框架](wiki/entities/paper-hiking-in-the-wild.md) — Hiking in the Wild**（arXiv:2601.07718）由清华大学交叉信息研究院等提出，在 [42 篇 RL 身体系统栈](https://mp.weixin.qq.com/s `📅unknown` `[entity_page]`

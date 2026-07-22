@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-22",
-  "node_count": 1756,
-  "edge_count": 14158,
+  "node_count": 1757,
+  "edge_count": 14175,
   "coverage": {
-    "covered": 1706,
-    "total": 1736,
+    "covered": 1707,
+    "total": 1737,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -73,6 +73,92 @@
       "has_repo": true
     },
     {
+      "path": "wiki/entities/paper-harness-vla.md",
+      "detail_id": "entity-paper-harness-vla",
+      "label": "Harness VLA（Memory-Guided Agentic Manipulation · arXiv:2607.08448）",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/behavior-tree-vla-orchestration.md",
+      "detail_id": "wiki-concepts-behavior-tree-vla-orchestration",
+      "label": "行为树 × VLA 编排",
+      "type": "concept",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/aspire.md",
+      "detail_id": "wiki-methods-aspire",
+      "label": "ASPIRE",
+      "type": "method",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
+      "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
+      "label": "VLA 开源复现景观（2025 策展）",
+      "type": "overview",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-dreamsteer-vla-deployment-steering.md",
+      "detail_id": "entity-paper-dreamsteer-vla-deployment-steering",
+      "label": "DreamSteer（Latent World Model Steering for VLA · arXiv:2607.02865）",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/lingbot-vla.md",
+      "detail_id": "entity-lingbot-vla",
+      "label": "LingBot-VLA",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/rldx-1.md",
+      "detail_id": "entity-rldx-1",
+      "label": "RLDX-1",
+      "type": "entity",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "path": "wiki/entities/paper-adp.md",
       "detail_id": "entity-paper-adp",
       "label": "ADP：对抗动力学先验的人形抗扰 locomotion",
@@ -127,88 +213,6 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/comparisons/amp-add-smp-motion-prior-variants.md",
-      "detail_id": "wiki-comparisons-amp-add-smp-motion-prior-variants",
-      "label": "AMP vs ADD vs SMP：运动先验变体对比",
-      "type": "comparison",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-unified-walk-run-recovery-sdamp.md",
-      "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",
-      "label": "SD-AMP：统一走、跑与起身的对抗运动先验",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-driftworld.md",
-      "detail_id": "entity-paper-driftworld",
-      "label": "DriftWorld（Fast World Modeling through Drifting）",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/generative-world-models.md",
-      "detail_id": "wiki-methods-generative-world-models",
-      "label": "Generative World Models (生成式世界模型)",
-      "type": "method",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/world-models-route-03-virtual-sandbox.md",
-      "detail_id": "wiki-overview-world-models-route-03-virtual-sandbox",
-      "label": "世界模型路线 03：虚拟沙盒",
-      "type": "overview",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/robot-world-models-training-loop-taxonomy.md",
-      "detail_id": "wiki-overview-robot-world-models-training-loop-taxonomy",
-      "label": "机器人世界模型：训练闭环与三线 taxonomy",
-      "type": "overview",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/video-as-simulation.md",
-      "detail_id": "wiki-concepts-video-as-simulation",
-      "label": "Video-as-Simulation (视频即仿真)",
-      "type": "concept",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-oscar.md",
-      "detail_id": "entity-paper-oscar",
-      "label": "OSCAR（跨具身动作条件世界模型）",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -225,7 +229,7 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 363
+      "size": 364
     },
     {
       "label": "人形论文深读笔记",
@@ -268,7 +272,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 294,
+      "degree": 296,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -284,7 +288,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 269,
+      "degree": 271,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

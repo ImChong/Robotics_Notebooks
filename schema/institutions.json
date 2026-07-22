@@ -1291,9 +1291,26 @@
     "casia": {
       "label": "中国科学院自动化研究所（CASIA）",
       "aliases": [
+        "cas-ia",
         "casia",
         "ia-cas",
-        "cas-ia"
+        "institute-of-automation-cas"
+      ]
+    },
+    "striding-ai": {
+      "label": "跨步智能（Striding AI）",
+      "aliases": [
+        "striding-ai",
+        "striding",
+        "stridingai"
+      ]
+    },
+    "infinigence": {
+      "label": "无问芯穹（Infinigence AI）",
+      "aliases": [
+        "infinigence",
+        "infinigence-ai",
+        "infini-ai"
       ]
     },
     "rochester": {
