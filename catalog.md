@@ -1434,7 +1434,7 @@
 - [VLA（Vision-Language-Action）](wiki/methods/vla.md) — VLA**：把视觉、语言和机器人动作统一到同一个模型里，让策略不只“看见状态后输出动作”，还能够显式理解任务指令和语义约束。 `📅unknown` `[method_page]`
 - [WiLoR（野外 3D 手部定位与重建）](wiki/methods/wilor.md) — WiLoR**（CVPR 2025）面向 **单目 RGB** 场景下的 **双手** 检测与 **MANO 类 3D 重建**：先用轻量全卷积结构在高分辨率特征上定位手部，再用 Transfor `📅unknown` `[method_page]`
 - [ZEST (Zero-shot Embodied Skill Transfer)](wiki/methods/zest.md) — ZEST** 是由 Boston Dynamics 团队开发的一套统一的具身技能学习与迁移框架。它通过强化学习（RL）将多样化的、异构的人类运动数据（如动捕、视频、动画）转化为机器人的高动态、多接 `📅unknown` `[method_page]`
-- [π₀ (Pi-zero) 策略模型](wiki/methods/π0-policy.md) — π₀ (Pi-zero)** 是具身智能大模型（VLA）领域的最新突破，由 Physical Intelligence 团队于 2024 年提出。它旨在打破“一个机器人一个模型”的限制，通过单一的 `📅unknown` `[method_page]`
+- [π₀ (Pi-zero) 策略模型](wiki/methods/π0-policy.md) — π₀ (Pi-zero)** 是具身智能大模型（VLA）领域的奠基性工作，由 Physical Intelligence 团队于 2024 年提出（其后继版本见 [π₀.7](./pi07-pol `📅unknown` `[method_page]`
 
 ### Wiki Tasks（任务页）
 

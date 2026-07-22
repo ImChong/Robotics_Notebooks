@@ -94,6 +94,9 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # clip：正文里既指 CLIP 视觉-语言模型，又指力矩「限幅」动词（torque clip），
     # 两义被小写 slug 合并，非单一可成页概念，作停用词不再误报为「缺独立页」。
     "clip",
+    # arxiv：预印本托管/出版平台（基础设施），非机器人概念/方法/形式化，
+    # 不应建独立 concepts/methods 页；与 http/https/main 同类基础设施停用词。
+    "arxiv",
 }
 
 # 高频术语但「已在 entities/ 或非同名 stem 的 methods 页有恰当归属」，
