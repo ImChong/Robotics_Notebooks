@@ -94,8 +94,19 @@ class WikiActivityFromLogTest(unittest.TestCase):
         with self._patched_log():
             out = glg.wiki_activity_from_log(self.nodes)
         node = out[0]["nodes"][0]
-        allowed = {"detail_id", "label", "type", "action", "has_repo", "community_label"}
+        # path：供首页/更新记录把 roadmap_page 链到 roadmap.html
+        allowed = {
+            "detail_id",
+            "label",
+            "type",
+            "path",
+            "action",
+            "has_repo",
+            "community_label",
+        }
         self.assertTrue(set(node).issubset(allowed))
+        self.assertIn("path", node)
+        self.assertTrue(str(node["path"]).endswith(".md"))
 
     def test_has_repo_flag_when_wiki_links_sources_repos(self) -> None:
         repo_rel = "wiki/entities/caveman.md"
