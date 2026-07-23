@@ -1,5 +1,15 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-23] ingest | sources/papers/egosteer_arxiv_2607_09701.md + sources/sites/egosteer-github-io.md + sources/repos/egosteer.md / egosmith.md / egosteer-robot-stack.md — EgoSteer（arXiv:2607.09701）EgoSmith+Robot Stack+WM-VLA 全栈；wiki/entities/paper-egosteer.md；交叉 wiki/methods/egoscale.md、wiki/entities/paper-egowam-egocentric-human-wam-co-training.md、wiki/methods/vla.md、wiki/methods/dagger.md、wiki/tasks/manipulation.md、wiki/overview/vla-open-source-repro-landscape-2025.md；部分开源（代码+权重已发，全量处理后数据待齐）
+
+- **开源状态：** **部分开源** — [`egosteer/egosteer`](https://github.com/egosteer/egosteer) / [`egosmith`](https://github.com/egosteer/egosmith) / [`robot-stack`](https://github.com/egosteer/robot-stack)（Apache-2.0）+ HF `EgoSteer-3B-Base` / `EgoSteer-3B-RealMan`；处理后 9.6K h / 187 h 全量数据集截至 2026-07-23 仍未在 HF 公开
+- **新建 papers：** [`sources/papers/egosteer_arxiv_2607_09701.md`](sources/papers/egosteer_arxiv_2607_09701.md)
+- **新建 sites：** [`sources/sites/egosteer-github-io.md`](sources/sites/egosteer-github-io.md)
+- **新建 repos：** [`sources/repos/egosteer.md`](sources/repos/egosteer.md)、[`sources/repos/egosmith.md`](sources/repos/egosmith.md)、[`sources/repos/egosteer-robot-stack.md`](sources/repos/egosteer-robot-stack.md)
+- **新建 wiki：** [`wiki/entities/paper-egosteer.md`](wiki/entities/paper-egosteer.md)
+- **机构：** 沿用既有 `pku` / `upenn`；新增 `psibot`
+- **交叉更新：** [`wiki/methods/egoscale.md`](wiki/methods/egoscale.md)、[`wiki/entities/paper-egowam-egocentric-human-wam-co-training.md`](wiki/entities/paper-egowam-egocentric-human-wam-co-training.md)、[`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/methods/dagger.md`](wiki/methods/dagger.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`wiki/overview/vla-open-source-repro-landscape-2025.md`](wiki/overview/vla-open-source-repro-landscape-2025.md)
+
 ## [2026-07-23] ingest | sources/papers/extreme_rgmt_arxiv_2607_20110.md + sources/sites/extreme-rgmt-github-io.md — Extreme-RGMT（arXiv:2607.20110）两阶段 PACE+STAR 高动态 generalist 跟踪；wiki/entities/paper-extreme-rgmt.md；交叉 wiki/entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md、wiki/methods/any2track.md、wiki/methods/sonic-motion-tracking.md、wiki/methods/beyondmimic.md、wiki/entities/paper-hrl-stack-16-omnixtreme.md、wiki/overview/humanoid-rl-motion-control-body-system-stack.md；截至 2026-07-23 项目页未开源
 
 - **开源状态：** **确认未开源** — 项目页 <https://zeonsunlightyu.github.io/Extreme-RGMT.github.io/> 仅 arXiv PDF + BibTeX + 演示视频，无 GitHub / HF（截至 2026-07-23）

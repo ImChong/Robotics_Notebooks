@@ -1,13 +1,86 @@
 {
   "generated_at": "2026-07-23",
-  "node_count": 1774,
-  "edge_count": 14581,
+  "node_count": 1775,
+  "edge_count": 14599,
   "coverage": {
-    "covered": 1723,
-    "total": 1753,
+    "covered": 1724,
+    "total": 1754,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-egosteer.md",
+      "detail_id": "entity-paper-egosteer",
+      "label": "EgoSteer：从 Egocentric 视频到可操控双灵巧手全栈",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/egoscale.md",
+      "detail_id": "wiki-methods-egoscale",
+      "label": "EgoScale",
+      "type": "method",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-egowam-egocentric-human-wam-co-training.md",
+      "detail_id": "entity-paper-egowam-egocentric-human-wam-co-training",
+      "label": "EgoWAM（野外 Egocentric 人数据 · World Action Model 协同训练）",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/dagger.md",
+      "detail_id": "wiki-methods-dagger",
+      "label": "DAgger（Dataset Aggregation）",
+      "type": "method",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
+      "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
+      "label": "VLA 开源复现景观（2025 策展）",
+      "type": "overview",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-extreme-rgmt.md",
       "detail_id": "entity-paper-extreme-rgmt",
@@ -90,28 +163,6 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
-      "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
-      "label": "VLA 开源复现景观（2025 策展）",
-      "type": "overview",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
       "path": "wiki/queries/embodied-eval-benchmark-selection-loop.md",
       "detail_id": "wiki-queries-embodied-eval-benchmark-selection-loop",
       "label": "Query：具身大模型评测基准选型闭环知识链",
@@ -119,17 +170,6 @@
       "recency": "2026-07-23",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/overview/topic-vla.md",
@@ -172,82 +212,39 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-wan-video.md",
-      "detail_id": "entity-paper-wan-video",
-      "label": "Wan（开源大规模视频生成基础模型）",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-wan-move.md",
-      "detail_id": "entity-paper-wan-move",
-      "label": "Wan-Move（潜空间轨迹引导的运动可控视频生成）",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-masked-visual-actions.md",
-      "detail_id": "entity-paper-masked-visual-actions",
-      "label": "Masked Visual Actions（统一世界建模的掩码视觉动作）",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-ctrl-world.md",
-      "detail_id": "entity-paper-ctrl-world",
-      "label": "Ctrl-World（可控机器人操作生成式世界模型）",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "生成式世界模型（Generative World Models） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-extreme-rgmt.md",
-    "detail_id": "entity-paper-extreme-rgmt",
-    "label": "Extreme-RGMT：高动态技能的持续学习与鲁棒通用全身跟踪",
+    "path": "wiki/entities/paper-egosteer.md",
+    "detail_id": "entity-paper-egosteer",
+    "label": "EgoSteer：从 Egocentric 视频到可操控双灵巧手全栈",
     "type": "entity",
     "recency": "2026-07-23",
     "source": "log.md",
     "action": "added",
-    "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    "has_repo": true,
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 266
+      "size": 274
     },
     {
       "label": "人形论文深读笔记",
       "size": 208
     },
     {
+      "label": "移动操作",
+      "size": 167
+    },
+    {
       "label": "全身控制",
       "size": 166
     },
     {
-      "label": "移动操作",
-      "size": 164
-    },
-    {
       "label": "人形强化学习运动控制",
-      "size": 142
+      "size": 125
     },
     {
       "label": "生成式世界模型",
@@ -274,7 +271,15 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 311,
+      "degree": 313,
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "degree": 288,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -285,14 +290,6 @@
       "degree": 287,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "degree": 286,
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "detail_id": "wiki-tasks-locomotion",
@@ -320,7 +317,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 185,
+      "degree": 186,
       "has_repo": true
     },
     {
@@ -384,8 +381,7 @@
       "label": "TWIST2",
       "type": "entity",
       "degree": 38,
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",

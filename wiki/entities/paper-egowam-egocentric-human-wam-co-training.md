@@ -12,7 +12,7 @@ tags:
   - georgia-tech
 status: complete
 venue: curated
-updated: 2026-07-16
+updated: 2026-07-23
 related:
   - ../concepts/world-action-models.md
   - ../methods/imitation-learning.md
@@ -23,9 +23,11 @@ related:
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
   - ./paper-dit4dit-video-action-model.md
   - ./paper-wam-ttt-human-video-test-time-steering.md
+  - ./paper-egosteer.md
   - ./humannet.md
 sources:
   - ../../sources/papers/egowam.md
+  - ../../sources/papers/egosteer_arxiv_2607_09701.md
 summary: "EgoWAM（Georgia Tech RL²）：固定 HPT 骨干与数据混合、仅替换世界预测目标（Pixel/DINO/3D flow）的受控人–机协同训练——WAM 状态分支弥合具身差距，使机器人性能随野外 egocentric 人数据扩展；DINO 最高约 4× OOD 泛化，3D flow 域内 +20–30%，未对齐人数据下 BC 可跌至 robot-only 以下而 3D Flow 仍鲁棒。"
 ---
 
@@ -118,6 +120,7 @@ flowchart TB
 - [World Action Models（WAM）](../concepts/world-action-models.md) — Joint 族中 **人数据协同训练 + 世界目标消融** 的桌面/双臂实例
 - [Imitation Learning](../methods/imitation-learning.md) — BC 与人数据缩放的基线语境与 **负迁移** 讨论
 - [EgoScale](../methods/egoscale.md) — **VLA + 显式人动作标签** 的人视频缩放对照
+- [EgoSteer](./paper-egosteer.md) — 训练-only DINOv3 世界专家 + 显式腕–指动作；对照「世界头作主监督」vs「世界头作表征整形」
 - [Manipulation](../tasks/manipulation.md) — 双臂操作与人数据驱动策略任务族
 - [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) — 同 WAM 范式、不同形态（人形实时 loco-manip）
 - [DiT4DiT](./paper-dit4dit-video-action-model.md) — 双 DiT flow-matching WAM；EgoWAM 强调 **人–机共训与世界表征轴**
@@ -129,11 +132,13 @@ flowchart TB
 - [Imitation Learning](../methods/imitation-learning.md)
 - [Manipulation](../tasks/manipulation.md)
 - [EgoScale](../methods/egoscale.md)
+- [EgoSteer](./paper-egosteer.md)
 - [HumanNet 人视频语料对比](../comparisons/humannet-table1-human-video-corpora.md)
 
 ## 参考来源
 
 - [EgoWAM 项目页摘录](../../sources/papers/egowam.md)
+- [EgoSteer 论文摘录（对照）](../../sources/papers/egosteer_arxiv_2607_09701.md)
 
 ## 推荐继续阅读
 
