@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, openloong, bit]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-23
 venue: curated
 summary: "RGMT 是 robust and generalized humanoid motion tracking。它的核心是 dynamics-conditioned aggregation：用 causal temporal encoder 总结近期本体状态，用 multi-head command encoder 选择性聚合参考命令。论文还设计 recovery curriculum 和 anne"
 related:
@@ -11,6 +11,7 @@ related:
   - ../overview/motion-cerebellum-category-04-wbt-base.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/humanoid-amp-motion-prior-survey.md
+  - ./paper-extreme-rgmt.md
 sources:
   - ../../sources/papers/humanoid_rl_stack_14_robust_and_generalized_humanoid_motion_tracking.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
@@ -78,6 +79,7 @@ RGMT 是 robust and generalized humanoid motion tracking。它的核心是 dynam
 
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
+- 后续扩展：[Extreme-RGMT](./paper-extreme-rgmt.md) — 两阶段 continual learning（PACE + STAR）把高动态技能叠进同一 generalist 策略
 - 原始 source：[humanoid_rl_stack_14_robust_and_generalized_humanoid_motion_tracking.md](../../sources/papers/humanoid_rl_stack_14_robust_and_generalized_humanoid_motion_tracking.md)
 
 ## 参考来源

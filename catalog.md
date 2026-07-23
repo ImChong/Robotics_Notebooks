@@ -366,6 +366,7 @@
 - [EventVLA（Event-Driven Visual Evidence Memory for Long-Horizon VLA）](wiki/entities/paper-eventvla-visual-evidence-memory.md) — EventVLA**（arXiv:2606.20092，[项目页](https://ganlin-yang.github.i `📅unknown` `[entity_page]`
 - [Evo-1：轻量 VLA 与语义对齐保持](wiki/entities/paper-evo1-lightweight-vla.md) — Evo-1**（*Lightweight Vision-Language-Action Model with Preserved Semantic Alignment*，arXiv:[2511.0 `📅unknown` `[entity_page]`
 - [显式楼梯几何条件化人形运动（Explicit Stair Geometry Conditioning）](wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md) — 显式楼梯几何条件化**（arXiv:2605.09944，AIRS / CUHK-Shenzhen / MBZUAI）针对 **人形楼梯爬升** 提出：不把地形压进 **高维隐式 embeddin `📅unknown` `[entity_page]`
+- [Extreme-RGMT：高动态技能的持续学习与鲁棒通用全身跟踪](wiki/entities/paper-extreme-rgmt.md) — Extreme-RGMT**（*Continual Learning of Highly Dynamic Skills for Robust Generalist Humanoid Control `📅unknown` `[entity_page]`
 - [FabriVLA：轻量 VLA 与精确多任务操作](wiki/entities/paper-fabrivla.md) — FabriVLA**（*A Lightweight Vision-Language-Action Model for Precise Multi-Task Manipulation*，[arXiv `📅unknown` `[entity_page]`
 - [Face Anything](wiki/entities/paper-face-anything-4d-face-reconstruction.md) — Face Anything**（*4D Face Reconstruction from Any Image Sequence*，arXiv:2604.19702，[项目页](https://ko `📅unknown` `[entity_page]`
 - [FADA（Few-Shot Domain Adaptation via Dynamics Alignment）](wiki/entities/paper-fada-humanoid.md) — FADA** 是 CMU LeCAR-Lab 提出的 **人形控制少样本域适应** 框架（arXiv:2606.28476，[项目页](https://lecar-lab.github.io/FA `📅unknown` `[entity_page]`

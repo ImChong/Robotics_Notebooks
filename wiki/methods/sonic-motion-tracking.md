@@ -3,7 +3,7 @@ type: method
 tags: [paper, humanoid, imitation-learning, motion-tracking, foundation-model, nvidia, vla, teleoperation, rl, motion-control, bfm, behavior-foundation-model, loco-manipulation, body-system-stack, loco-manip-161-survey]
 status: complete
 date: 2026-05-14
-updated: 2026-07-22
+updated: 2026-07-23
 arxiv: "2511.07820"
 venue: "2025 · arXiv"
 code: https://github.com/NVlabs/GR00T-WholeBodyControl
@@ -39,6 +39,7 @@ related:
   - ../entities/paper-legs-embodied-gaussian-splatting-vla.md
   - ../entities/ardy.md
   - ./gentlehumanoid-motion-tracking.md
+  - ../entities/paper-extreme-rgmt.md
 sources:
   - ../../sources/repos/sonic-humanoid-motion-tracking.md
   - ../../sources/repos/gr00t_wholebodycontrol.md
@@ -446,4 +447,5 @@ sequenceDiagram
 - [SceneBot（论文实体）](../entities/paper-scenebot.md) — contact label + hindsight 场景重建；自由空间媲美 SONIC、场景交互显著领先（arXiv:2606.27581）
 - [HumanoidArena（论文实体）](../entities/paper-humanoidarena.md) — SONIC 作为 GMT 后端的分层 egocentric benchmark（arXiv:2606.17833）
 - [Teleoperation（遥操作）](../tasks/teleoperation.md)
+- [Extreme-RGMT](../entities/paper-extreme-rgmt.md) — generalist 跟踪上叠高动态技能；仿真对照含 SONIC
 - [Zhengyi Luo（罗正宜）](../entities/zhengyi-luo.md)
