@@ -1,5 +1,15 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-23] fix(export): 站点标题还原 Markdown 转义（A\* → A*）
+
+- `extract_title`（export_minimal / search_indexing / generate_link_graph）：去掉 H1 中的 `\*` 等转义，避免详情页/图谱把反斜杠当正文显示
+- `wiki/methods/a-star.md`：H1 改为不转义的 `A* 全局路径规划`（正文内链仍可按需转义）
+
+## [2026-07-23] structural | wiki 人形系统课独立节点加厚 — 方法/概念/实体/overview 由 stub 扩为含原理·路线·工程实践·调试指标的完整页
+
+- 针对 PR #1225 新建的 A\*/DWA/融合定位/动态障碍/足球感知定位/语音/TARE/FAR/RealSense/G1 软件栈/历史与现状/大模型赋能/自主探索等页：补公式与流程、主要技术路线表、工程 SOP/调参、失败模式与误区，正文体量对齐仓库完整方法页（约 2–3k 非空白字符）
+- `make ci-preflight` 通过
+
 ## [2026-07-23] ingest | sources/courses/shenlan_humanoid_system_theory_practice.md — 深蓝学院《人形机器人系统—理论与实践》八章大纲入库；策展 hub + 缺失知识点独立节点全覆盖
 
 - **课程源：** [`sources/courses/shenlan_humanoid_system_theory_practice.md`](sources/courses/shenlan_humanoid_system_theory_practice.md)（具身智能研究室大纲图 / 深蓝学院 course 802）

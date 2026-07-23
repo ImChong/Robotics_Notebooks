@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/methods/a-star.md",
+      "detail_id": "wiki-methods-a-star",
+      "label": "A* 全局路径规划",
+      "type": "method",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
+    },
+    {
       "path": "wiki/entities/humanoid-system-curriculum.md",
       "detail_id": "entity-humanoid-system-curriculum",
       "label": "人形机器人系统学习策展（G1 → 导航 → 足球 → 大模型）",
@@ -202,27 +213,18 @@
       "recency": "2026-07-23",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/humanoid-system-curriculum.md",
-    "detail_id": "entity-humanoid-system-curriculum",
-    "label": "人形机器人系统学习策展（G1 → 导航 → 足球 → 大模型）",
-    "type": "entity",
+    "path": "wiki/methods/a-star.md",
+    "detail_id": "wiki-methods-a-star",
+    "label": "A* 全局路径规划",
+    "type": "method",
     "recency": "2026-07-23",
     "source": "log.md",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
   },
   "top_communities": [
     {

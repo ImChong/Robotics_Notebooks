@@ -1317,7 +1317,7 @@
 
 ### Wiki Methods（方法页）
 
-- [A\* 全局路径规划](wiki/methods/a-star.md) — A\*** 在离散图（常见为占据栅格邻接图）上搜索从起点到终点的路径，用代价函数 \(f(n)=g(n)+h(n)\)（起点累计代价 + 启发估计）在 **可采纳启发** 下保证最优——深蓝学院人 `📅unknown` `[method_page]`
+- [A* 全局路径规划](wiki/methods/a-star.md) — A\***（A-star）在离散图（常见为占据栅格邻接图）上搜索从起点到终点的路径，用代价函数 \(f(n)=g(n)+h(n)\)（起点累计代价 + 启发估计）在 **可采纳启发** 下保证最优 `📅unknown` `[method_page]`
 - [Action Chunking（动作块输出）](wiki/methods/action-chunking.md) — Action Chunking**：让策略一次预测未来连续若干步动作，而不是每个控制周期只吐一帧动作。它最早在模仿学习和双臂操作场景里被广泛采用，现在也成为 VLA 与低层控制器结合时处理推理延迟 `📅unknown` `[method_page]`
 - [Actuator Network (执行器网络)](wiki/methods/actuator-network.md) — 执行器网络 (Actuator Network)** 是一种在机器人仿真中用于模拟物理驱动器（如电控伺服电机、SEA 驱动器）真实物理行为的深度学习模型。它是解决**足式机器人 Sim2Real  `📅unknown` `[method_page]`
 - [Adadelta（Adaptive Delta）](wiki/methods/adadelta.md) — Adadelta**：同时维护 **梯度平方的 EMA** 与 **参数更新量的 EMA**，用二者 RMS 之比确定每步缩放因子，**取消显式全局学习率 $\eta$**，在 [Adagrad `📅unknown` `[method_page]`
