@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-23",
-  "node_count": 1772,
-  "edge_count": 14498,
+  "node_count": 1773,
+  "edge_count": 14566,
   "coverage": {
     "covered": 1722,
     "total": 1752,
@@ -92,6 +92,16 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/humanoid-multi-robot-coordination.md",
+      "detail_id": "wiki-concepts-humanoid-multi-robot-coordination",
+      "label": "人形多机协调（Humanoid Multi-Robot Coordination）",
+      "type": "concept",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "动作重定向（Motion Retargeting） 社区"
     },
     {
       "path": "wiki/entities/paper-wan-video.md",
@@ -206,17 +216,6 @@
       "recency": "2026-07-23",
       "source": "log.md",
       "action": "added"
-    },
-    {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -233,26 +232,26 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 344
-    },
-    {
-      "label": "移动操作",
-      "size": 179
+      "size": 273
     },
     {
       "label": "人形论文深读笔记",
-      "size": 174
+      "size": 208
     },
     {
       "label": "全身控制",
-      "size": 150
+      "size": 166
+    },
+    {
+      "label": "移动操作",
+      "size": 164
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 129
+      "size": 124
     },
     {
-      "label": "仿真训练",
+      "label": "生成式世界模型",
       "size": 83
     }
   ],
@@ -300,7 +299,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 254,
+      "degree": 255,
       "community_label": "运动控制（Locomotion） 社区"
     },
     {
@@ -322,7 +321,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 184,
+      "degree": 185,
       "has_repo": true
     },
     {
@@ -338,14 +337,14 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 117,
+      "degree": 118,
       "has_repo": true
     },
     {
       "detail_id": "wiki-methods-beyondmimic",
       "label": "BeyondMimic",
       "type": "method",
-      "degree": 55,
+      "degree": 56,
       "has_repo": true
     },
     {
@@ -367,7 +366,7 @@
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
-      "degree": 45
+      "degree": 46
     },
     {
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
