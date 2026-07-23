@@ -985,6 +985,13 @@
         "zju-uiuc"
       ]
     },
+    "ucsc": {
+      "label": "加州大学圣克鲁兹分校（UC Santa Cruz）",
+      "aliases": [
+        "ucsc",
+        "uc-santa-cruz"
+      ]
+    },
     "generalist-ai": {
       "label": "通用人工智能（Generalist AI）",
       "aliases": [

@@ -1,13 +1,94 @@
 {
   "generated_at": "2026-07-23",
-  "node_count": 1800,
-  "edge_count": 15021,
+  "node_count": 1802,
+  "edge_count": 15047,
   "coverage": {
-    "covered": 1748,
-    "total": 1777,
+    "covered": 1750,
+    "total": 1779,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/generative-motion-rig.md",
+      "detail_id": "entity-generative-motion-rig",
+      "label": "Generative Motion Rig（Disney）：艺术家驱动的生成式运动绑定",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/entities/blender.md",
+      "detail_id": "entity-blender",
+      "label": "Blender（开源 3D 创作套件）",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/robot-motion-keyframe-editors.md",
+      "detail_id": "entity-robot-motion-keyframe-editors",
+      "label": "机器人关键帧与运动编辑工具（选型入口）",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/concepts/character-animation-vs-robotics.md",
+      "detail_id": "wiki-concepts-character-animation-vs-robotics",
+      "label": "Character Animation vs Robotics（角色动画与机器人控制的边界）",
+      "type": "concept",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/methods/motion-retargeting-gmr.md",
+      "detail_id": "wiki-methods-motion-retargeting-gmr",
+      "label": "GMR: 通用动作重定向",
+      "type": "method",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/methods/diffusion-motion-generation.md",
+      "detail_id": "wiki-methods-diffusion-motion-generation",
+      "label": "Diffusion-based Motion Generation (基于扩散模型的运动生成)",
+      "type": "method",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/rigmo.md",
+      "detail_id": "entity-rigmo",
+      "label": "RigMo：统一 Rig 与 Motion 的生成式动画",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/entities/ardy.md",
+      "detail_id": "entity-ardy",
+      "label": "ARDY：交互式可控 3D 人体运动生成",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
     {
       "path": "wiki/entities/paper-tacrefinenet-tactile-grasp-refinement.md",
       "detail_id": "entity-paper-tacrefinenet-tactile-grasp-refinement",
@@ -116,7 +197,7 @@
       "type": "method",
       "recency": "2026-07-23",
       "source": "log.md",
-      "action": "maintained",
+      "action": "added",
       "has_repo": true,
       "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
     },
@@ -128,106 +209,22 @@
       "recency": "2026-07-23",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "roadmap/motion-control.md",
-      "detail_id": "roadmap-motion-control",
-      "label": "主路线：运动控制算法工程师成长路线",
-      "type": "roadmap_page",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-real2sim.md",
-      "detail_id": "roadmap-depth-real2sim",
-      "label": "路线（纵深）：如果目标是 Real2Sim（真实世界 → 可仿真资产/场景/孪生）",
-      "type": "roadmap_page",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "roadmap/depth-sim2real.md",
-      "detail_id": "roadmap-depth-sim2real",
-      "label": "路线（纵深）：如果目标是 Sim2Real（仿真到真机迁移）",
-      "type": "roadmap_page",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/img2threejs.md",
-      "detail_id": "entity-img2threejs",
-      "label": "img2threejs",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/articraft.md",
-      "detail_id": "entity-articraft",
-      "label": "Articraft",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/concepts/text-to-cad.md",
-      "detail_id": "wiki-concepts-text-to-cad",
-      "label": "文字生成 CAD（Text-to-CAD）",
-      "type": "concept",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/cad-skills.md",
-      "detail_id": "entity-cad-skills",
-      "label": "CAD Skills",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/gsap-skills.md",
-      "detail_id": "entity-gsap-skills",
-      "label": "GSAP AI Skills（greensock/gsap-skills）",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-tacrefinenet-tactile-grasp-refinement.md",
-    "detail_id": "entity-paper-tacrefinenet-tactile-grasp-refinement",
-    "label": "TacRefineNet：边缘突出物体的目标条件触觉抓取精修",
+    "path": "wiki/entities/generative-motion-rig.md",
+    "detail_id": "entity-generative-motion-rig",
+    "label": "Generative Motion Rig（Disney）：艺术家驱动的生成式运动绑定",
     "type": "entity",
     "recency": "2026-07-23",
     "source": "log.md",
     "action": "added",
-    "has_repo": true,
-    "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    "community_label": "模仿学习（Imitation Learning, IL） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 337
+      "size": 338
     },
     {
       "label": "人形论文深读笔记",

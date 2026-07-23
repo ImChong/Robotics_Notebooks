@@ -3,11 +3,12 @@
 type: entity
 tags: [tooling, motion-editing, keyframes, urdf, mujoco, imitation-learning, data-pipeline, nvidia, stanford]
 status: complete
-updated: 2026-07-08
+updated: 2026-07-23
 related:
   - ./blender.md
   - ./mujoco.md
   - ./project-instinct.md
+  - ./generative-motion-rig.md
   - ../concepts/motion-retargeting-pipeline.md
   - ../tasks/manipulation.md
   - ../tasks/teleoperation.md
@@ -88,6 +89,7 @@ flowchart LR
 - [Manipulation](../tasks/manipulation.md) — 操作任务里关键帧式示教与数据后处理
 - [Teleoperation](../tasks/teleoperation.md) — 上游人类演示采集
 - [Blender（DCC 绑定/动画/BVH 上游）](./blender.md) — 通用网格与骨骼编辑；与本页三条 **机器人专用** 编辑器互补串联
+- [Generative Motion Rig（Disney）](./generative-motion-rig.md) — 艺术家端 Blender generative keyframing（闭源；对照而非替代本页工具）
 
 ## 推荐继续阅读
 
