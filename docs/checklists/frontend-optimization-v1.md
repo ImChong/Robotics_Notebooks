@@ -35,6 +35,7 @@
 - [x] **响应式体验优化**：
     - [x] 确保极简后的首页在手机端首屏就能看到搜索框和图谱入口。
     - [x] 图谱页 `graph.html`：「按社区着色」图例全端（PC + 移动）改为左下角 FAB，默认折叠；点击后自左侧滑出抽屉，点击空白/遮罩或 Esc 收起，避免遮挡画布。PC 端展开尺寸约为视口宽 1/4、高 1/3。
+    - [x] 图谱页 `graph.html`：移动端 Chrome 下滑隐藏底栏后，画布壳层按 `visualViewport` / `dvh` 同步高度，避免 graph view 下方留白。
 
 ---
 
@@ -51,6 +52,7 @@
 ### Phase 3: 体验打磨 (UX)
 - [ ] 搜索结果列表优化：支持卡片式快速预览。
 - [ ] 详情页浮窗联动。
+- [x] 图谱页移动端动态视口：Chrome 底栏显隐时 `#graph-wrap` 用 `--app-vh`（`visualViewport.height`）撑满，消除下方空白条。
 - [x] 详情页 Markdown 渲染修复：正文独立 `---` 行渲染为分隔线，并按整行分隔符剥离 YAML frontmatter。
 - [x] 首页搜索索引修复：将 `tech-map/`、roadmap 与 references 纳入 `search-index.json`，支持搜索 `tech-map`。
 - [x] 技术路线页 `roadmap.html`：基于导出阶段数据渲染可折叠阶段树（垂直 `<details>` 列表）；已移除折叠 Mermaid 线框总图与路线页内 Mermaid CDN。

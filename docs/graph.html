@@ -8,13 +8,32 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕸️</text></svg>" />
   <meta name="color-scheme" content="dark light" />
   <script src="theme-init.js"></script>
+  <script>
+    /* 尽早写入动态视口高度，减少 Chrome 底栏态下首屏壳层高度闪一下 */
+    (function () {
+      var h = (window.visualViewport && window.visualViewport.height) || window.innerHeight;
+      if (h > 0) document.documentElement.style.setProperty('--app-vh', Math.round(h) + 'px');
+    })();
+  </script>
   <script id="sponsor-js" src="sponsor.js?v=2"></script>
   <link rel="stylesheet" href="style.css" />
   <style>
     /* ── 图谱页专用样式（不影响其他页面）── */
-    body { 
-      overflow: hidden; 
+    /* --app-vh：由 JS 按 visualViewport/innerHeight 写入，跟踪移动端浏览器底栏/地址栏显隐；
+       无 JS 时回退 100dvh。画布背景与 body 对齐，避免壳层未撑满时露出浅灰底。 */
+    html {
+      height: 100%;
+      height: 100dvh;
+      height: var(--app-vh, 100dvh);
+    }
+    body {
+      overflow: hidden;
       font-family: var(--font-sans);
+      height: 100%;
+      background: #0d1117;
+    }
+    [data-theme="light"] body {
+      background: #eef2f7;
     }
 
     /* 显式声明字体以防部分浏览器组件继承失效 */
@@ -265,7 +284,12 @@
     #graph-wrap {
       position: fixed;
       top: calc(var(--header-h) + 46px);
-      left: 0; right: 0; bottom: 0;
+      left: 0; right: 0;
+      /* 不用 bottom:0：移动端 Chrome 底栏收起后 layout viewport 可能不长高，
+         会在画布下方留出一块空白。改为按动态视口高度显式计算。 */
+      bottom: auto;
+      height: calc(100dvh - var(--header-h) - 46px);
+      height: calc(var(--app-vh, 100dvh) - var(--header-h) - 46px);
       transition: right .22s cubic-bezier(.4,0,.2,1);
     }
     #graph-canvas,
@@ -2659,11 +2683,35 @@
     /* ── SVG 尺寸（移动端首屏 clientHeight 可能为 0，需延后 fit）── */
     const wrap = document.getElementById('graph-wrap');
     const svg = d3.select('#graph-canvas');
+    const GRAPH_TOOLBAR_BAND_PX = 46;
     let W = 0;
     let H = 0;
 
+    function readHeaderHeightPx() {
+      const raw = getComputedStyle(document.documentElement).getPropertyValue('--header-h').trim();
+      const n = parseFloat(raw);
+      return Number.isFinite(n) ? n : 58;
+    }
+
+    /* 将 --app-vh 同步为当前可视高度，使 #graph-wrap 在 Chrome 底栏显隐时跟着伸缩 */
+    function syncGraphShellToViewport() {
+      const vv = window.visualViewport;
+      const viewportH = Math.round((vv && vv.height) || window.innerHeight || 0);
+      if (viewportH <= 0) return false;
+      document.documentElement.style.setProperty('--app-vh', viewportH + 'px');
+      if (wrap) {
+        const shellTop = readHeaderHeightPx() + GRAPH_TOOLBAR_BAND_PX;
+        const offsetTop = (vv && Number.isFinite(vv.offsetTop)) ? Math.round(vv.offsetTop) : 0;
+        wrap.style.top = (shellTop + offsetTop) + 'px';
+        wrap.style.height = Math.max(1, viewportH - shellTop) + 'px';
+        wrap.style.bottom = 'auto';
+      }
+      return true;
+    }
+
     function measureGraphViewport() {
       if (!wrap) return false;
+      syncGraphShellToViewport();
       const nextW = wrap.clientWidth;
       const nextH = wrap.clientHeight;
       if (nextW <= 0 || nextH <= 0) return false;
@@ -4228,9 +4276,13 @@
       applyGraphFitTransform(transform);
     }
 
-    /* ── resize（移动端地址栏收起会改变可视高度）── */
+    /* ── resize（移动端地址栏/底栏显隐会改变可视高度）── */
     function onGraphViewportResize() {
+      const prevW = W;
+      const prevH = H;
       if (!updateGraphViewport()) return;
+      // 壳层未伸缩时不必重适配，避免底栏动画期间反复 fit
+      if (W === prevW && H === prevH) return;
       if (graph3dView) graph3dView.resize();
       if (is3DView()) {
         // 3D：仅同步视口尺寸（上面 resize() 已处理），不自动适配屏幕。
@@ -4250,7 +4302,11 @@
     window.addEventListener('resize', onGraphViewportResize);
     if (window.visualViewport) {
       window.visualViewport.addEventListener('resize', onGraphViewportResize);
+      // iOS 地址栏滚动时 offsetTop 会变，需同步壳层 top
+      window.visualViewport.addEventListener('scroll', onGraphViewportResize);
     }
+    // 尽早写入 --app-vh，避免首屏在 JS 测量前用错高度
+    syncGraphShellToViewport();
 
     /* ── 主题切换监听：同步更新 D3 SVG 元素颜色 ── */
     new MutationObserver(() => {
