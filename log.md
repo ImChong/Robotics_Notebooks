@@ -19,6 +19,14 @@
 - **机构：** `schema/institutions.json` 新增 `columbia` / `jhu` / `fau` / `style3d`；沿用既有 `ubc` / `ucla` / `nus`
 - **交叉更新：** [`wiki/concepts/sim2real.md`](wiki/concepts/sim2real.md)、[`wiki/methods/crisp-real2sim.md`](wiki/methods/crisp-real2sim.md)、[`wiki/entities/paper-simfoundry-real2sim-scene-generation.md`](wiki/entities/paper-simfoundry-real2sim-scene-generation.md)、[`wiki/entities/articraft.md`](wiki/entities/articraft.md)、[`wiki/entities/paper-bfm-zero.md`](wiki/entities/paper-bfm-zero.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)
 
+## [2026-07-22] lint | scripts/lint_wiki.py — V30 P0 执行器驱动链页交叉链路巡检 V1（INFO 级，不阻塞 CI）
+
+- **新增检查：** `_check_actuator_drive_chain_crosslink`——对 frontmatter `tags` 含 `actuator` / `eda` / `foc`（子串匹配派生标签）的 `wiki/entities/` `wiki/comparisons/` `wiki/concepts/` 页，检查正文是否回链到「执行器驱动链选型闭环」专题枢纽（`actuator-drive-chain-selection-loop` / `topic-actuator-drive-chain`），缺失记为 INFO 级 `actuator_drive_chain_crosslink` 提示，枢纽页自身豁免
+- **登记点：** 新增 `ACTUATOR_DRIVE_CHAIN_HUBS` / `ACTUATOR_DRIVE_CHAIN_TAG_KEYWORDS` 常量，登记进 `INFO_ONLY_KEYS`、`_empty_results`、`lint()` 检查序列与 `format_report` 报告段
+- **测试：** 新建 [`tests/test_lint_wiki_actuator_drive_chain_crosslink.py`](tests/test_lint_wiki_actuator_drive_chain_crosslink.py) 10 条用例（列表式/内联式 tag、有/无回链、双枢纽同现、comparison/concept 覆盖、枢纽豁免、INFO 不计失败），全过
+- **基线快照：** `python3 scripts/lint_wiki.py --report` 更新 [`exports/lint-report.md`](exports/lint-report.md)，新 INFO 段列出 35 页待补驱动链枢纽回链；`make lint` 0 errors，ruff/mypy 通过
+- **执行清单：** [`docs/checklists/tech-stack-next-phase-checklist-v30.md`](docs/checklists/tech-stack-next-phase-checklist-v30.md) P0「驱动链页交叉链路巡检 V1」勾选完成
+
 ## [2026-07-22] lint | 清零全量知识库 lint 信息型预警（27→0）：为 25 篇 paper-* 实体补齐「方法/评测/对比」三段式 ## 区块（源自各页正文与 sources/ 归档，对比表沿用 htd-refine 房型、定性无杜撰数字）；为 paper-wolf-vla.md 补「重定向就绪度」速查维度；新建 wiki/concepts/lora.md + sources/notes/lora.md（LoRA 低秩适配概念页），并把 mimic-video/fada/any2any/m4world/wam-ttt/rldx-1 六处 **LoRA** 引用改为回链概念页消除孤儿；同步 catalog/graph-stats/home-stats/README/docs/lint-report 派生索引
 
 ## [2026-07-22] ingest | sources/papers/da_nav_arxiv_2607_11638.md — DA-Nav（arXiv:2607.11638）方向感知城市尺度 VLN；升格 wiki/entities/paper-da-nav.md；交叉 wiki/tasks/vision-language-navigation.md、wiki/concepts/sim2real.md、wiki/methods/vla.md、wiki/overview/vln-open-source-repro-paradigms.md、wiki/entities/paper-notebook-navila-legged-robot-vision-language-action-model.md；未开源
