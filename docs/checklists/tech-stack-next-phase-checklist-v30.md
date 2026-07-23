@@ -24,8 +24,8 @@
 
 ## P0: 自动化与工具链深度强化 (Engineering)
 
-- [ ] **驱动链页交叉链路巡检 V1**：
-    - [ ] `scripts/lint_wiki.py` 新增 `_check_actuator_drive_chain_crosslink`：对 `tags` 含 `actuator` / `eda` / `foc`（子串匹配派生标签）的 `entities/` / `comparisons/` / `concepts/` 页，检查正文是否回链到「执行器驱动链选型闭环」专题枢纽（`actuator-drive-chain-selection-loop` / `topic-actuator-drive-chain`，缺失给 INFO 级 `actuator_drive_chain_crosslink` 提示，不阻塞 CI），枢纽页自身豁免；写入 lint 报告基线快照（`exports/lint-report.md`）；新增 `tests/test_lint_wiki_actuator_drive_chain_crosslink.py` 用例覆盖（列表式/内联式 tag、有/无回链、双枢纽、枢纽豁免、INFO 不计失败）。
+- [x] **驱动链页交叉链路巡检 V1**：
+    - [x] `scripts/lint_wiki.py` 新增 `_check_actuator_drive_chain_crosslink`：对 `tags` 含 `actuator` / `eda` / `foc`（子串匹配派生标签）的 `entities/` / `comparisons/` / `concepts/` 页，检查正文是否回链到「执行器驱动链选型闭环」专题枢纽（`actuator-drive-chain-selection-loop` / `topic-actuator-drive-chain`，缺失给 INFO 级 `actuator_drive_chain_crosslink` 提示，不阻塞 CI），枢纽页自身豁免；写入 lint 报告基线快照（`exports/lint-report.md`）；新增 `tests/test_lint_wiki_actuator_drive_chain_crosslink.py` 用例覆盖（列表式/内联式 tag、有/无回链、双枢纽、枢纽豁免、INFO 不计失败）。**（2026-07-22 完成：新增 `ACTUATOR_DRIVE_CHAIN_HUBS` / `ACTUATOR_DRIVE_CHAIN_TAG_KEYWORDS` 常量 + `_check_actuator_drive_chain_crosslink`，登记进 `INFO_ONLY_KEYS`/`_empty_results`/`format_report`，`make lint` 0 errors，报告新增 INFO 段（35 页待补回链，不阻塞 CI）；新用例 10 条全过、ruff/mypy 通过）**
 
 ## P1: 执行器驱动链选型闭环知识链专题 (Quality)
 
