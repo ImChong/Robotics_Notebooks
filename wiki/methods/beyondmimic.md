@@ -2,7 +2,7 @@
 type: method
 tags: [rl, imitation-learning, locomotion, humanoid, sampling, diffusion, paper, motion-control, body-system-stack, bfm, behavior-foundation-model, stanford, berkeley]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-23
 code: https://github.com/HybridRobotics/whole_body_tracking
 venue: "2025 · arXiv"
 arxiv: "2508.08241"
@@ -21,6 +21,7 @@ related:
   - ../concepts/armature-modeling.md
   - ../concepts/curriculum-learning.md
   - ../concepts/reward-design.md
+  - ../entities/paper-extreme-rgmt.md
 sources:
   - ../../sources/papers/motion_control_projects.md
   - ../../sources/papers/bfm_awesome_beyondmimic_arxiv_2508_08241.md
@@ -332,3 +333,4 @@ BeyondMimic 已经成为许多人形机器人项目的底层基座：
 - [Armature Modeling (电枢惯量建模)](../concepts/armature-modeling.md)
 - [Reward Design (奖励设计)](../concepts/reward-design.md) — 统一任务空间跟踪与分项日志的关系。
 - [Curriculum Learning (课程学习)](../concepts/curriculum-learning.md) — 失败驱动采样是课程学习的一种高级形式。
+- [Extreme-RGMT](../entities/paper-extreme-rgmt.md) — 同样面对高动态 vs generalist 权衡；对照表含 BeyondMimic。

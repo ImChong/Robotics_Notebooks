@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-23] ingest | sources/papers/extreme_rgmt_arxiv_2607_20110.md + sources/sites/extreme-rgmt-github-io.md — Extreme-RGMT（arXiv:2607.20110）两阶段 PACE+STAR 高动态 generalist 跟踪；wiki/entities/paper-extreme-rgmt.md；交叉 wiki/entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md、wiki/methods/any2track.md、wiki/methods/sonic-motion-tracking.md、wiki/methods/beyondmimic.md、wiki/entities/paper-hrl-stack-16-omnixtreme.md、wiki/overview/humanoid-rl-motion-control-body-system-stack.md；截至 2026-07-23 项目页未开源
+
 ## [2026-07-23] fix | docs/index.html — 恢复首页「更多路线」缺失的人形群控展演按钮（18 条纵深与 main.js 对齐）
 
 - docs/index.html：合并冲突后首页「更多路线」漏掉 [人形群控展演](roadmap/depth-humanoid-swarm-performance.md) 按钮，展开文案仍写「17 条」；按历史序插回动作重定向与 Sim2Real 之间，文案与注释同步为 18 条（与 `docs/main.js` 折叠切换文案一致）
