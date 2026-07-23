@@ -1,5 +1,14 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-23] ingest | sources/repos/img2threejs.md + sources/sites/img2threejs-showcase.md — img2threejs（单图→质量门控程序化 Three.js Agent Skill）；升格 wiki/entities/img2threejs.md；交叉 wiki/entities/articraft.md、cad-skills.md、gsap-skills.md、wiki/concepts/text-to-cad.md；已开源 MIT
+
+- **开源状态：** **已开源** — [`hoainho/img2threejs`](https://github.com/hoainho/img2threejs)（MIT，`SKILL.md` + `forge/` stdlib）+ 画廊 [`img2threejs-showcase`](https://hoainho.github.io/img2threejs-showcase/)
+- **新建 repos：** [`sources/repos/img2threejs.md`](sources/repos/img2threejs.md)
+- **新建 sites：** [`sources/sites/img2threejs-showcase.md`](sources/sites/img2threejs-showcase.md)
+- **新建 wiki：** [`wiki/entities/img2threejs.md`](wiki/entities/img2threejs.md)
+- **交叉更新：** [`wiki/entities/articraft.md`](wiki/entities/articraft.md)、[`wiki/entities/cad-skills.md`](wiki/entities/cad-skills.md)、[`wiki/entities/gsap-skills.md`](wiki/entities/gsap-skills.md)、[`wiki/concepts/text-to-cad.md`](wiki/concepts/text-to-cad.md)
+- **定位提示：** reconstruction-by-code / WebGL prop，非 URDF·MJCF 仿真就绪关节资产
+
 ## [2026-07-23] ingest | sources/repos/exercises-dataset.md — Exercises Dataset（1,324 健身动作目录+多语说明+GIF）；升格 wiki/entities/exercises-dataset.md；交叉 wiki/comparisons/humanoid-reference-motion-datasets.md、wiki/entities/amass.md、wiki/concepts/motion-data-quality.md；分层开源（MIT 文本 + Gym visual 媒体）
 
 - **开源状态：** **已开源（分层）** — 代码/JSON/说明文本 MIT；`images/` `videos/` © Gym visual（LICENSE 媒体例外 + NOTICE.md）

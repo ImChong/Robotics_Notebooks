@@ -1,13 +1,65 @@
 {
   "generated_at": "2026-07-23",
-  "node_count": 1777,
-  "edge_count": 14621,
+  "node_count": 1778,
+  "edge_count": 14635,
   "coverage": {
-    "covered": 1726,
-    "total": 1756,
+    "covered": 1727,
+    "total": 1757,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/img2threejs.md",
+      "detail_id": "entity-img2threejs",
+      "label": "img2threejs",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/articraft.md",
+      "detail_id": "entity-articraft",
+      "label": "Articraft",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/concepts/text-to-cad.md",
+      "detail_id": "wiki-concepts-text-to-cad",
+      "label": "文字生成 CAD（Text-to-CAD）",
+      "type": "concept",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/entities/cad-skills.md",
+      "detail_id": "entity-cad-skills",
+      "label": "CAD Skills",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/gsap-skills.md",
+      "detail_id": "entity-gsap-skills",
+      "label": "GSAP AI Skills（greensock/gsap-skills）",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/exercises-dataset.md",
       "detail_id": "entity-exercises-dataset",
@@ -163,69 +215,17 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/tasks/vision-language-navigation.md",
-      "detail_id": "wiki-tasks-vision-language-navigation",
-      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
-      "type": "task",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/topic-vla.md",
-      "detail_id": "wiki-overview-topic-vla",
-      "label": "VLA 与基础策略（专题汇总）",
-      "type": "overview",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-extreme-rgmt.md",
-      "detail_id": "entity-paper-extreme-rgmt",
-      "label": "Extreme-RGMT：高动态技能的持续学习与鲁棒通用全身跟踪",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md",
-      "detail_id": "entity-paper-hrl-stack-14-robust_and_generalized_humanoid_moti",
-      "label": "Robust and Generalized Humanoid Motion Tracking",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/methods/any2track.md",
-      "detail_id": "wiki-methods-any2track",
-      "label": "Any2Track & RGMT: 增强型自适应与时序建模",
-      "type": "method",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/exercises-dataset.md",
-    "detail_id": "entity-exercises-dataset",
-    "label": "Exercises Dataset（健身动作目录）",
+    "path": "wiki/entities/img2threejs.md",
+    "detail_id": "entity-img2threejs",
+    "label": "img2threejs",
     "type": "entity",
     "recency": "2026-07-23",
     "source": "log.md",
     "action": "added",
-    "has_repo": true,
-    "community_label": "动作重定向（Motion Retargeting） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
@@ -246,7 +246,7 @@
     },
     {
       "label": "全身控制",
-      "size": 131
+      "size": 130
     },
     {
       "label": "生成式世界模型",
@@ -265,7 +265,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 324,
+      "degree": 325,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
