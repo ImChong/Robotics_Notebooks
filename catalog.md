@@ -1736,6 +1736,7 @@
 - [路线（纵深）：如果目标是动作重定向（人体动作 → 机器人参考轨迹）](roadmap/depth-motion-retargeting.md) — 摘要**：面向"想把人体动捕/视频/生成动作变成机器人可执行参考轨迹"的纵深路线，从重定向的问题定义与数据管线定位、运动学优化工具箱、参考动作数据源与质量控制，到方法谱系主线（运动学优化 GMR  `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是导航（SLAM → Nav2 → VLN → 导航 VLA）](roadmap/depth-navigation.md) — 摘要**：面向"让机器人知道自己在哪、该往哪走"的纵深路线，从导航栈分层与 SLAM / 状态估计基座，到经典 ROS 2 导航闭环，再到学习型导航、视觉–语言导航（VLN）与导航 VLA / W `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是感知越障（Perceptive Locomotion）](roadmap/depth-perceptive-locomotion.md) — 摘要**：面向"让机器人看着地形上楼梯、跨障碍、跑酷"的纵深路线，从本体感知盲走基线到地形表征、感知策略训练，再到楼梯/跑酷进阶与导航栈整合，按 Stage 0–4 串通核心方法；本路线是 [运动 `📅unknown` `[roadmap_page]`
+- [路线（纵深）：如果目标是 Real2Sim（真实世界 → 可仿真资产/场景/孪生）](roadmap/depth-real2sim.md) — 摘要**：面向"想把真实世界变成能在仿真里训练与评测的资产"的纵深路线，从"可仿真（simulation-ready）"判据与 Real2Sim vs Sim2Real 定位，到几何与外观重建（3 `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是人形 RL 运动控制](roadmap/depth-rl-locomotion.md) — 摘要**：面向"想用强化学习做人形 locomotion"的快速纵深路线，从 RL 基础到 sim2real，按 Stage 0–5 串通核心方法；本路线是 [运动控制主路线](motion-co `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是安全控制（CLF / CBF / Safe RL）](roadmap/depth-safe-control.md) — 摘要**：面向"在满足安全约束的前提下控制机器人"的纵深路线，从 Lyapunov 稳定性到 CBF-QP、再到 Safe RL，按 Stage 0–3 串通核心方法；本路线是 [运动控制主路线 `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是 Sim2Real（仿真到真机迁移）](roadmap/depth-sim2real.md) — 摘要**：面向"想把仿真里训好的策略稳定搬上真机"的纵深路线，从 domain gap 六类来源画像与方法三分（仿真端随机化 / 分布对齐 / 真机适应），到资产与执行器对齐（SysID / Ac `📅unknown` `[roadmap_page]`

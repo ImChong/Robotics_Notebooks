@@ -195,7 +195,7 @@ flowchart LR
 - 关键词：[真机安全 RL 微调](../wiki/concepts/safe-real-world-rl-fine-tuning.md)、[SLowRL](../wiki/entities/paper-slowrl-safe-lora-locomotion-sim2real.md)、[FADA](../wiki/entities/paper-fada-humanoid.md)、[LIFT](../wiki/entities/lift-humanoid.md)、[SplitAdapter](../wiki/entities/paper-splitadapter-load-aware-loco-manipulation.md)
 
 **方向 B：Real2Sim 与数字孪生**
-- 从单目/真机视频构造接触动力学可信的仿真资产与 digital cousins，反向补齐仿真侧
+- 从单目/真机视频构造接触动力学可信的仿真资产与 digital cousins，反向补齐仿真侧；本方向的完整展开见 [Real2Sim 纵深](depth-real2sim.md)（本路线的反向补集）
 - 关键词：[CRISP](../wiki/methods/crisp-real2sim.md)、[SimFoundry](../wiki/entities/paper-simfoundry-real2sim-scene-generation.md)、[PhysX-Omni](../wiki/entities/physx-omni.md)
 
 **方向 C：评测基础设施与 sim-vs-real 评测 gap**
@@ -223,6 +223,7 @@ flowchart LR
 
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)（本路线是 L6 的展开版）
 - 其它纵深路径：
+  - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md) — 本路线的**反向补集**：Real2Sim 修仿真侧资产，本路线迁移到真机，常串联
   - [人形 RL 运动控制](depth-rl-locomotion.md) — 本路线消费其训练产物；训练侧直接前置
   - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md) — Stage 1 执行器模型的硬件侧展开版
   - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md) — Stage 3 感知进策略的任务侧展开版

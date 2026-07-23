@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-23] structural | roadmap/depth-real2sim.md — 新增 Real2Sim（真实世界 → 可仿真资产/场景/孪生）纵深路线，十九条纵深入口全站同步
+
+- roadmap/depth-real2sim.md：新建「Real2Sim」纵深路线（起点：3D Gaussian Splatting 规模化重建，2023），Stage 0 定位与可仿真判据（Real2Sim vs Sim2Real · 三种产物粒度）→ Stage 1 几何与外观重建（接触动力学 vs 光真实感）→ Stage 2 物性与关节化补全（碰撞 / 质量摩擦 / 关节 / 接触引导遮挡补全 / sim-ready 资产生成）→ Stage 3 场景 / episode 孪生与数字表亲（VLM-agent 编排）→ Stage 4 Real2Sim2Real 闭环（回训 / real-to-sim 评测 / 真机回放）→ Stage 5 前沿口径与选型（像素世界模型 vs 物理孪生）
+- roadmap/depth-sim2real.md：Stage 5 方向 B 与「其它纵深路径」补 Real2Sim 纵深双向链接（本路线的反向补集）
+- roadmap/README.md、index.md、roadmap/motion-control.md、README.md、docs/index.html、docs/main.js 与其余十七条 depth-* 路线页：纵深路线数 18 → 19，按里程碑历史序在 VLA（2023）后、WAM（2026）前插入 Real2Sim 并补双向链接；顺带补回 README.md 此前遗漏的人形群控展演路线，使根 README 路线表与全站一致（19 条）
+- 派生文件（catalog.md / exports / docs/exports / search-index / sitemap 等）经 make ci-preflight 同步
+
 ## [2026-07-23] ingest | sources/repos/img2threejs.md + sources/sites/img2threejs-showcase.md — img2threejs（单图→质量门控程序化 Three.js Agent Skill）；升格 wiki/entities/img2threejs.md；交叉 wiki/entities/articraft.md、cad-skills.md、gsap-skills.md、wiki/concepts/text-to-cad.md；已开源 MIT
 
 - **开源状态：** **已开源** — [`hoainho/img2threejs`](https://github.com/hoainho/img2threejs)（MIT，`SKILL.md` + `forge/` stdlib）+ 画廊 [`img2threejs-showcase`](https://hoainho.github.io/img2threejs-showcase/)
