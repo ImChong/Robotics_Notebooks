@@ -4,7 +4,7 @@
 type: entity
 tags: [paper, vla, tactile-sensing, dexterous-manipulation, flow-matching, bimanual, contact-rich, imitation-learning, egocentric-video, dataset, berkeley, nvidia, stanford, nvidia-gear]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-23
 arxiv: "2606.17055"
 code: https://github.com/ZhuoyangLiu2005/T-Rex
 related:

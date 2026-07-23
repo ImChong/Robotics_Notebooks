@@ -2,7 +2,7 @@
 type: query
 tags: [manipulation, grasping, perception, vla, il, rl, 6dof, anygrasp, graspnet]
 status: complete
-updated: 2026-05-21
+updated: 2026-07-23
 summary: "抓取策略选型 Query：从「开放场景 vs 已知物体」「稀疏 vs 稠密候选」「几何启发式 vs 学习方法 vs 端到端策略」三轴出发，给出真机抓取系统的方案选择与组合路径。"
 related:
   - ../methods/grasp-pose-estimation.md
@@ -12,10 +12,12 @@ related:
   - ../methods/visual-servoing.md
   - ../concepts/contact-rich-manipulation.md
   - ../comparisons/anygrasp-vs-graspnet.md
+  - ../entities/paper-tacrefinenet-tactile-grasp-refinement.md
 sources:
   - ../../sources/papers/perception.md
   - ../../sources/repos/anygrasp-sdk.md
   - ../../sources/papers/imitation_learning.md
+  - ../../sources/papers/tacrefinenet_arxiv_2509_25746.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「真机抓取系统里，到底该用几何启发式、检测式 grasp pose，还是端到端策略？开放场景和已知物体的选型逻辑有什么不同？」
@@ -92,7 +94,7 @@ sources:
    - 失败兜底：触觉滑移检测 → scripted regrasp
 2. **桌面 / bin picking（开放词汇）**
    - 深度/点云 → [Grasp Pose Estimation](../methods/grasp-pose-estimation.md)（GraspNet 或 [AnyGrasp](../entities/anygrasp.md)）→ Top-K + 显式碰撞检查 → IK → 阻抗闭合
-   - 最后几厘米切到 [Visual Servoing](../methods/visual-servoing.md) / 触觉对齐
+   - 最后几厘米切到 [Visual Servoing](../methods/visual-servoing.md) / 触觉对齐；薄板/圆盘/细杆等边缘突出物体可接 [TacRefineNet](../entities/paper-tacrefinenet-tactile-grasp-refinement.md) 式纯触觉 regrasp 精修头
 3. **动态场景 / 边走边抓**
    - 多视点 / 移动相机 → AnyGrasp 类跨帧关联 → 抓取链平滑 → loco-manipulation 控制层
    - 必须保留 **位姿一致性检查**（同一物体跨帧 id 不漂移）
@@ -187,6 +189,7 @@ GraspNet AP / AP_novel 高，主要意味着「数据分布内匹配好」，但
 - [ContactNet](../methods/contact-net.md) — 与 Contact-GraspNet 在「接触面预测」思路同源
 - [Manipulation](../tasks/manipulation.md) — 操作任务总览，抓取是其感知子问题
 - [Visual Servoing](../methods/visual-servoing.md) — 抓取最后几厘米的亚毫米级对齐方案
+- [TacRefineNet（论文实体）](../entities/paper-tacrefinenet-tactile-grasp-refinement.md) — 边缘突出物体的纯触觉目标条件精修
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md) — 抓握后的接触阶段执行层
 - [cuRobo](../entities/curobo.md) — 抓取候选到无碰撞规划的下游求解器
 - [Query：做机器人操作用模仿学习还是 RL？](./il-for-manipulation.md) — 抓取嵌在技能链时的策略层选型

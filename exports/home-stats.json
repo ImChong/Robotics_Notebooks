@@ -1,13 +1,105 @@
 {
   "generated_at": "2026-07-23",
-  "node_count": 1799,
-  "edge_count": 15001,
+  "node_count": 1800,
+  "edge_count": 15021,
   "coverage": {
-    "covered": 1746,
-    "total": 1776,
+    "covered": 1748,
+    "total": 1777,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-tacrefinenet-tactile-grasp-refinement.md",
+      "detail_id": "entity-paper-tacrefinenet-tactile-grasp-refinement",
+      "label": "TacRefineNet：边缘突出物体的目标条件触觉抓取精修",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
+    {
+      "path": "wiki/concepts/tactile-sensing.md",
+      "detail_id": "wiki-concepts-tactile-sensing",
+      "label": "Tactile Sensing（触觉感知）",
+      "type": "concept",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
+    {
+      "path": "wiki/overview/topic-tactile.md",
+      "detail_id": "wiki-overview-topic-tactile",
+      "label": "触觉与力觉（专题汇总）",
+      "type": "overview",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
+    {
+      "path": "wiki/overview/topic-grasp.md",
+      "detail_id": "wiki-overview-topic-grasp",
+      "label": "抓取与操作（专题汇总）",
+      "type": "overview",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
+    {
+      "path": "wiki/methods/visual-servoing.md",
+      "detail_id": "wiki-methods-visual-servoing",
+      "label": "Visual Servoing（视觉伺服控制）",
+      "type": "method",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/methods/in-hand-reorientation.md",
+      "detail_id": "wiki-methods-in-hand-reorientation",
+      "label": "In-hand Reorientation (手内重定向)",
+      "type": "method",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
+    {
+      "path": "wiki/queries/grasp-policy-selection.md",
+      "detail_id": "wiki-queries-grasp-policy-selection",
+      "label": "Query：抓取策略选型（开放场景 vs 已知物体 / 稀疏 vs 稠密 / 几何 vs 学习）",
+      "type": "query",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-omnitactune-tactile-residual-adaptation.md",
+      "detail_id": "entity-paper-omnitactune-tactile-residual-adaptation",
+      "label": "OmniTacTune：视觉策略的触觉残差真机适应",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
     {
       "path": "wiki/entities/humanoid-system-curriculum.md",
       "detail_id": "entity-humanoid-system-curriculum",
@@ -119,131 +211,39 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/exercises-dataset.md",
-      "detail_id": "entity-exercises-dataset",
-      "label": "Exercises Dataset（健身动作目录）",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/comparisons/humanoid-reference-motion-datasets.md",
-      "detail_id": "wiki-comparisons-humanoid-reference-motion-datasets",
-      "label": "人形参考运动与操作数据集选型",
-      "type": "comparison",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/amass.md",
-      "detail_id": "entity-amass",
-      "label": "AMASS（Archive of Motion Capture as Surface Shapes）",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/concepts/motion-data-quality.md",
-      "detail_id": "wiki-concepts-motion-data-quality",
-      "label": "Motion Data Quality（动作数据质量维度）",
-      "type": "concept",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-egosteer.md",
-      "detail_id": "entity-paper-egosteer",
-      "label": "EgoSteer：从 Egocentric 视频到可操控双灵巧手全栈",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/egoscale.md",
-      "detail_id": "wiki-methods-egoscale",
-      "label": "EgoScale",
-      "type": "method",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-egowam-egocentric-human-wam-co-training.md",
-      "detail_id": "entity-paper-egowam-egocentric-human-wam-co-training",
-      "label": "EgoWAM（野外 Egocentric 人数据 · World Action Model 协同训练）",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/dagger.md",
-      "detail_id": "wiki-methods-dagger",
-      "label": "DAgger（Dataset Aggregation）",
-      "type": "method",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/humanoid-system-curriculum.md",
-    "detail_id": "entity-humanoid-system-curriculum",
-    "label": "人形机器人系统学习策展（G1 → 导航 → 足球 → 大模型）",
+    "path": "wiki/entities/paper-tacrefinenet-tactile-grasp-refinement.md",
+    "detail_id": "entity-paper-tacrefinenet-tactile-grasp-refinement",
+    "label": "TacRefineNet：边缘突出物体的目标条件触觉抓取精修",
     "type": "entity",
     "recency": "2026-07-23",
     "source": "log.md",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 376
+      "size": 337
     },
     {
       "label": "人形论文深读笔记",
-      "size": 177
-    },
-    {
-      "label": "移动操作",
-      "size": 172
+      "size": 211
     },
     {
       "label": "仿真到现实",
-      "size": 165
+      "size": 176
+    },
+    {
+      "label": "移动操作",
+      "size": 156
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 121
+      "size": 126
     },
     {
       "label": "全身控制",
@@ -262,7 +262,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 329,
+      "degree": 331,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -275,20 +275,20 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "degree": 289,
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
       "degree": 288,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "degree": 288,
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "detail_id": "wiki-tasks-locomotion",
