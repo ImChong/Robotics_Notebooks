@@ -218,6 +218,7 @@ flowchart LR
 
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
 - 其它纵深路径：
+  - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
   - [接触丰富的操作任务](depth-contact-manipulation.md) — 上肢精细接触侧的展开版
   - [人形 RL 运动控制](depth-rl-locomotion.md) — 下身基座的训练侧前置
   - [模仿学习与技能迁移](depth-imitation-learning.md) — 数据与技能学习的前置

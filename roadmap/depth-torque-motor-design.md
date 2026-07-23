@@ -231,6 +231,7 @@ flowchart LR
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
 - 工序主干总览：[电机设计流程（规格 → 仿真 → 样机 → 控制）](../wiki/overview/motor-design-workflow.md)；本路线是其学习顺序展开版
 - 其它纵深路径：
+  - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
   - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md) — Stage 4 WBC 输出的关节力矩由本路线的力矩闭环兑现
   - [人形 RL 运动控制](depth-rl-locomotion.md) — sim2real 执行器建模（Stage 5）的下游消费者
   - [安全控制（CLF/CBF）](depth-safe-control.md)

@@ -223,6 +223,7 @@ flowchart LR
 
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)（本路线是 L6 的展开版）
 - 其它纵深路径：
+  - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
   - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md) — 本路线的**反向补集**：Real2Sim 修仿真侧资产，本路线迁移到真机，常串联
   - [人形 RL 运动控制](depth-rl-locomotion.md) — 本路线消费其训练产物；训练侧直接前置
   - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md) — Stage 1 执行器模型的硬件侧展开版

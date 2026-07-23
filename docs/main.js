@@ -5620,7 +5620,7 @@
         extras[rti].hidden = expanded;
       }
       routeToggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-      routeToggle.textContent = expanded ? '展开全部 19 条纵深路线 ↓' : '收起纵深路线 ↑';
+      routeToggle.textContent = expanded ? '展开全部 20 条纵深路线 ↓' : '收起纵深路线 ↑';
       if (routeLinks) {
         routeLinks.classList.toggle('is-expanded', !expanded);
       }

@@ -218,6 +218,7 @@ flowchart LR
 
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
 - 其它纵深路径：
+  - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
   - [VLA（视觉-语言-动作模型）](depth-vla.md) — 姊妹路线：BFM 管身体级协调，VLA 管任务级语义
   - [WAM（世界–动作模型）](depth-wam.md) — 前向后果耦合；可与 VLA / BFM 分层叠用
   - [人形 RL 运动控制](depth-rl-locomotion.md) — 本路线的训练侧前置

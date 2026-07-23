@@ -30,6 +30,7 @@
 - 想 **最短可执行路径**：跳到 [最小可执行学习路径（90 天版本）](#最小可执行学习路径90-天版本)。
 - 想 **完整路线**：按 L−1 → L0 → … → L7 依次阅读。
 - 想 **走纵深**（各自独立路线页，按方向起点里程碑的历史排序）：
+  - [如果目标是遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
   - [如果目标是力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环 → 关节模组）](depth-torque-motor-design.md)
   - [如果目标是传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
   - [如果目标是安全控制](depth-safe-control.md)
@@ -1377,10 +1378,11 @@ flowchart TD
 
 ## 可选纵深（独立路线页）
 
-主路线偏向"先稳住一条主干"，但实际研究方向往往要继续深入某一个子专题。下面十八条纵深路径**各自是独立的 roadmap 页面**，从主路线的某个阶段衔接出去（按各方向起点里程碑的历史顺序排列，与首页、README 一致）：
+主路线偏向"先稳住一条主干"，但实际研究方向往往要继续深入某一个子专题。下面二十条纵深路径**各自是独立的 roadmap 页面**，从主路线的某个阶段衔接出去（按各方向起点里程碑的历史顺序排列，与首页、README 一致）：
 
 | 纵深路径 | 适合谁 | 主线衔接点 |
 |---------|------|-----------|
+| [如果目标是遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md) | 想让人实时操控人形并采集高质量示范数据 | 数据侧：L2 后可入，L5 前后串联 |
 | [如果目标是力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环 → 关节模组）](depth-torque-motor-design.md) | 想把关节电机从任务指标做到可验收的力矩闭环模组 | 硬件底座：任意阶段可入，建议 L2 前后 |
 | [如果目标是传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md) | 想把 model-based 主干写成可运行的控制器 | L2 → L4 |
 | [如果目标是安全控制（CLF / CBF / Safe RL）](depth-safe-control.md) | 想给 WBC / MPC / RL 加可证明的安全约束 | L4.4 / L5 任意 |
@@ -1430,6 +1432,7 @@ flowchart TD
 - 更详细的阶段参考：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
 - 实战经验补充：[Query：人形机器人运动控制 Know-How](../wiki/queries/humanoid-motion-control-know-how.md)
 - 可选纵深路线页（按方向起点里程碑的历史排序）：
+  - [如果目标是遥操作（人形全身遥操作 + 手指遥操作）](depth-teleoperation.md)
   - [如果目标是力矩控制电机设计](depth-torque-motor-design.md)
   - [如果目标是传统模型控制](depth-classical-control.md)
   - [如果目标是安全控制](depth-safe-control.md)

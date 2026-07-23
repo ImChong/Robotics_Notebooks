@@ -220,6 +220,7 @@ flowchart LR
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)（本路线是 L6/L7 仿真资产与评测环节的展开版）
 - 姊妹路线：[Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md) — 本路线的**反向补集**；Real2Sim 修仿真侧资产，Sim2Real 迁移到真机，工程上常串联
 - 其它纵深路径：
+  - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
   - [接触丰富的操作任务](depth-contact-manipulation.md) — Stage 1/2"接触可信"判据的任务侧展开
   - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md) — Stage 3 人–场景运动表征的邻接路线
   - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md)
