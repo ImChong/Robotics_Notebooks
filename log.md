@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-23] ingest | sources/papers/tacrefinenet_arxiv_2509_25746.md — TacRefineNet（arXiv:2509.25746）纯触觉目标条件抓取精修：Siamese 多指策略 + 外在灵巧 regrasp；wiki/entities/paper-tacrefinenet-tactile-grasp-refinement.md；交叉 wiki/concepts/tactile-sensing.md、wiki/overview/topic-tactile.md、wiki/overview/topic-grasp.md、wiki/methods/visual-servoing.md、wiki/methods/in-hand-reorientation.md、wiki/queries/grasp-policy-selection.md、wiki/concepts/sim2real.md、wiki/entities/paper-omnitactune-tactile-residual-adaptation.md；sources/sites/tacrefinenet-google-sites.md、sources/repos/tacrefinenet.md（空仓待发布）
+
 ## [2026-07-23] fix(ux): 详情页 Markdown 还原 A\* 等反斜杠转义
 
 - `docs/main.js`：`renderInlineMarkdown` / `renderLinkLabel` 在强调语法**之前**将 CommonMark `\*` 转为 HTML 实体（避免 `**A\***` 被吃成 `A\`）；策展表与 A* 方法页正文均显示为 `A*`

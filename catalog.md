@@ -1003,6 +1003,7 @@
 - [SWAP：对称等变世界模型四足跑酷](wiki/entities/paper-swap-parkour.md) — SWAP**（*Symmetric Equivariant World-Model for Agile Robot Parkour*，Lan et al., [arXiv:2606.19928 `📅unknown` `[entity_page]`
 - [野外微型飞行机器人蜂群（Swarm of Micro Flying Robots in the Wild）](wiki/entities/paper-swarm-micro-flying-robots-in-the-wild.md) — Swarm of micro flying robots in the wild**（Xin Zhou、Xiangyong Wen、Zhepei Wang 等，ZJU FAST-Lab，Chao  `📅unknown` `[entity_page]`
 - [TACO（TActile World Model as a Self-COrrector · arXiv:2607.02840）](wiki/entities/paper-taco-tactile-wm-vla-posttrain.md) — TACO**（*TACO: TActile World Model as a Self-COrrector for Scalable VLA Post-Training*，[arXiv:2607. `📅unknown` `[entity_page]`
+- [TacRefineNet：边缘突出物体的目标条件触觉抓取精修](wiki/entities/paper-tacrefinenet-tactile-grasp-refinement.md) — TacRefineNet**（*Goal-Conditioned Tactile Grasp Refinement for Edge-Prominent Objects*，小米机器人实验室，arX `📅unknown` `[entity_page]`
 - [TeCH：基于对比表征学习的时间距离建模，用于人形机器人全身控制](wiki/entities/paper-tech-humanoid-control.md) — TeCH**（*Temporal Distance modeling via Contrastive representation learning for Humanoid whole-body `📅unknown` `[entity_page]`
 - [TeleGate](wiki/entities/paper-telegate.md) — TeleGate**（*Whole-Body Humanoid Teleoperation via Gated Expert Selection with Motion Prior*，USTC 等 `📅unknown` `[entity_page]`
 - [TianjicX：面向多任务机器人的时空弹性神经形态芯片](wiki/entities/paper-tianjicx-neuromorphic-chip-robots.md) — Neuromorphic computing chip with spatiotemporal elasticity for multi-intelligent-tasking robots**（ `📅unknown` `[entity_page]`
