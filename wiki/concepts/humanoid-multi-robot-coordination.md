@@ -9,7 +9,7 @@ tags:
   - decentralized-control
   - marl
 status: complete
-updated: 2026-06-12
+updated: 2026-07-23
 related:
   - ../tasks/humanoid-soccer.md
   - ../methods/marl.md
@@ -103,6 +103,7 @@ flowchart LR
 
 ## 与其他页面的关系
 
+- [人形群控展演纵深路线](../../roadmap/depth-humanoid-swarm-performance.md) — 合作展演侧（群舞同步 → 编队走位 → 群体特技）的学习路径；本页的「预录时间轴 vs 在线战术」分界是其 Stage 0 入口
 - [Humanoid Soccer](../tasks/humanoid-soccer.md) — 综合任务；群控是其中「多机协作」子问题
 - [Swarm Intelligence 人形足球论文](../entities/paper-humanoid-soccer-swarm-intelligence.md) — 去中心化 swarm 实体页
 - [ARTEMIS 人形足球系统](../entities/paper-notebook-a-hierarchical-model-based-system-for-high-perfo.md) — 集中式战术层实体页

@@ -218,6 +218,7 @@ flowchart LR
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
 - 其它纵深路径：
   - [人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md) — 对球竞技侧的姊妹路线
+  - [人形群控展演（群舞同步 → 编队走位 → 群体特技）](depth-humanoid-swarm-performance.md)
   - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md) — Stage 1 数据管线的展开版
   - [BFM（人形行为基础模型）](depth-bfm.md) — Stage 2 潜空间先验的展开版
   - [模仿学习与技能迁移](depth-imitation-learning.md) — 跟踪基座的方法前置

@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-23] structural | roadmap/depth-humanoid-swarm-performance.md — 新增人形群控展演（HSP）纵深路线（群舞同步 → 编队走位 → 群体特技），十八条纵深入口全站同步
+
+- roadmap/depth-humanoid-swarm-performance.md：新建「人形群控展演」纵深路线（简写 HSP，Humanoid Swarm Performance；起点：央视春晚 540 台 Alpha 1S 群舞，2016），Stage 0 展演任务谱系与预编排 vs 在线协调两大范式 → Stage 1 单机动作基座（重定向 / 跟踪 RL / 音乐驱动生成）→ Stage 2 群舞同步（时间轴编排 / 时钟同步 / 失步容错）→ Stage 3 编队走位（队形变换 / 互避碰 / 场地定位）→ Stage 4 群体特技（高动态技能 × 多机协同 × 安全边界）→ Stage 5 进阶方向（在线互动 / 学习式协调 / 异构群 / 作业群控）
+- wiki/concepts/humanoid-multi-robot-coordination.md：关联页面补纵深路线入口（「预录时间轴 vs 在线战术」分界即其 Stage 0 入口）
+- roadmap/README.md、README.md、index.md、roadmap/motion-control.md、docs/index.html、docs/main.js 与其余十七条 depth-* 路线页：纵深路线数 17 → 18，按里程碑历史序插入（动作重定向 1998 后、Sim2Real 2017 前）并补双向链接
+
 ## [2026-07-23] ingest | sources/papers/wan_video_arxiv_2503_20314.md + sources/sites/wan-video.md + sources/repos/wan2.1.md — Wan（arXiv:2503.20314）开源视频基础模型；升格 wiki/entities/paper-wan-video.md；交叉 wiki/entities/paper-wan-move.md、wiki/entities/paper-masked-visual-actions.md、wiki/entities/paper-ctrl-world.md、wiki/methods/generative-world-models.md、wiki/concepts/video-as-simulation.md、wiki/overview/robot-world-models-training-loop-taxonomy.md；已开源（Wan2.1/2.2 Apache-2.0）。注：masked-visual-actions.github.io 已于 2026-07-22 ingest，本次补对照实体页
 
 - **开源状态：** **已开源** — [`Wan-Video/Wan2.1`](https://github.com/Wan-Video/Wan2.1) / [`Wan2.2`](https://github.com/Wan-Video/Wan2.2)（Apache-2.0）+ HF/ModelScope Wan-AI（截至 2026-07-23）
