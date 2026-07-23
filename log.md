@@ -1,5 +1,9 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-23] fix | docs/index.html — 恢复首页「更多路线」缺失的人形群控展演按钮（18 条纵深与 main.js 对齐）
+
+- docs/index.html：合并冲突后首页「更多路线」漏掉 [人形群控展演](roadmap/depth-humanoid-swarm-performance.md) 按钮，展开文案仍写「17 条」；按历史序插回动作重定向与 Sim2Real 之间，文案与注释同步为 18 条（与 `docs/main.js` 折叠切换文案一致）
+
 ## [2026-07-23] ingest | sources/sites/sota-evomind-tech.md + sources/repos/evo-sota-io.md — VLA SOTA Leaderboard（EvoMind/MINT-SJTU）；升格 wiki/entities/vla-sota-leaderboard.md；交叉 wiki/methods/vla.md、wiki/overview/vla-open-source-repro-landscape-2025.md、wiki/queries/embodied-eval-benchmark-selection-loop.md、wiki/tasks/manipulation.md、wiki/overview/topic-vla.md；榜站 MIT 开源
 
 - **开源状态：** **已开源（榜站）** — [`MINT-SJTU/Evo-SOTA.io`](https://github.com/MINT-SJTU/Evo-SOTA.io)（MIT）+ 线上 <https://sota.evomind-tech.com/>（截至 2026-07-23）
