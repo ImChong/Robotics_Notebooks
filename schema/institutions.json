@@ -1206,6 +1206,14 @@
         "wuhan-university"
       ]
     },
+    "whut": {
+      "label": "武汉理工大学（Wuhan University of Technology）",
+      "aliases": [
+        "whut",
+        "wuhan-university-of-technology",
+        "wut"
+      ]
+    },
     "uni-luxembourg": {
       "label": "卢森堡大学（University of Luxembourg）",
       "aliases": [

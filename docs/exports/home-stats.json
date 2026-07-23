@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-23",
-  "node_count": 1775,
-  "edge_count": 14599,
+  "node_count": 1776,
+  "edge_count": 14613,
   "coverage": {
-    "covered": 1724,
-    "total": 1754,
+    "covered": 1725,
+    "total": 1755,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -82,6 +82,67 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
+      "path": "wiki/entities/paper-s-squared-vla.md",
+      "detail_id": "entity-paper-s-squared-vla",
+      "label": "S²-VLA（Semantic–Spatial Dual-Stream · 驾驶 VLA · arXiv:2607.13926）",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-x-foresight.md",
+      "detail_id": "entity-paper-x-foresight",
+      "label": "X-Foresight（Joint Vision-Action Causal Forecasting）",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/overview/autonomous-driving-core-algorithms-series.md",
+      "detail_id": "wiki-overview-autonomous-driving-core-algorithms-series",
+      "label": "《自动驾驶核心算法盘点》专栏技术地图",
+      "type": "overview",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/entities/qwen-robot-nav.md",
+      "detail_id": "entity-qwen-robot-nav",
+      "label": "Qwen-RobotNav",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/vision-language-navigation.md",
+      "detail_id": "wiki-tasks-vision-language-navigation",
+      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
+      "type": "task",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/topic-vla.md",
+      "detail_id": "wiki-overview-topic-vla",
+      "label": "VLA 与基础策略（专题汇总）",
+      "type": "overview",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "path": "wiki/entities/paper-extreme-rgmt.md",
       "detail_id": "entity-paper-extreme-rgmt",
       "label": "Extreme-RGMT：高动态技能的持续学习与鲁棒通用全身跟踪",
@@ -150,68 +211,6 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/vla-sota-leaderboard.md",
-      "detail_id": "entity-vla-sota-leaderboard",
-      "label": "VLA SOTA Leaderboard（EvoMind / MINT-SJTU）",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/queries/embodied-eval-benchmark-selection-loop.md",
-      "detail_id": "wiki-queries-embodied-eval-benchmark-selection-loop",
-      "label": "Query：具身大模型评测基准选型闭环知识链",
-      "type": "query",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/overview/topic-vla.md",
-      "detail_id": "wiki-overview-topic-vla",
-      "label": "VLA 与基础策略（专题汇总）",
-      "type": "overview",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-fabrivla.md",
-      "detail_id": "entity-paper-fabrivla",
-      "label": "FabriVLA：轻量 VLA 与精确多任务操作",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-evo1-lightweight-vla.md",
-      "detail_id": "entity-paper-evo1-lightweight-vla",
-      "label": "Evo-1：轻量 VLA 与语义对齐保持",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/humanoid-multi-robot-coordination.md",
-      "detail_id": "wiki-concepts-humanoid-multi-robot-coordination",
-      "label": "人形多机协调（Humanoid Multi-Robot Coordination）",
-      "type": "concept",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "动作重定向（Motion Retargeting） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -228,7 +227,7 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 274
+      "size": 269
     },
     {
       "label": "人形论文深读笔记",
@@ -244,7 +243,7 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 125
+      "size": 142
     },
     {
       "label": "生成式世界模型",
@@ -271,7 +270,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 313,
+      "degree": 315,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -381,7 +380,8 @@
       "label": "TWIST2",
       "type": "entity",
       "degree": 38,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",
