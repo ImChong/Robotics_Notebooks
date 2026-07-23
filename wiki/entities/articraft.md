@@ -3,7 +3,7 @@ type: entity
 tags: [generative-ai, simulation, articulated-bodies, dataset, llm-agents, 3d-assets]
 status: complete
 date: 2026-05-16
-updated: 2026-05-30
+updated: 2026-07-23
 related:
   - ../concepts/text-to-cad.md
   - ../concepts/sim2real.md
@@ -12,6 +12,7 @@ related:
   - ./urdf-studio.md
   - ./cad-skills.md
   - ./mujoco.md
+  - ./paper-agentic-real2sim.md
 sources:
   - ../../sources/sites/articraft3d-github-io.md
   - ../../sources/repos/mattzh72-articraft.md
@@ -81,6 +82,7 @@ flowchart TB
 - [Sim2Real](../concepts/sim2real.md) — 资产几何与动力学一致性的总提醒。
 - [PhysForge（论文实体）](./paper-physforge-physics-grounded-3d-assets.md) — **VLM 物理蓝图 + 扩散 KVI** 的学习式「仿真就绪关节资产」路线，与 Articraft 的 **程序化 agent** 形态对照。
 - [PhysX-Omni](./physx-omni.md) — **VLM + 模板 RLE + TRELLIS** 统一三类物理 3D 与 **PhysXVerse** 数据引擎；项目页亦列 Articraft 等为生成对比基线。
+- [Agentic Real2Sim](./paper-agentic-real2sim.md) — 同属 **agentic VLM** 谱系，但单位是 **交互 episode→MuJoCo 孪生**，而非可关节网格资产库。
 
 ## 推荐继续阅读
 

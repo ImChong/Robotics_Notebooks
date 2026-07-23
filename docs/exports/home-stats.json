@@ -1,13 +1,169 @@
 {
-  "generated_at": "2026-07-22",
-  "node_count": 1765,
-  "edge_count": 14392,
+  "generated_at": "2026-07-23",
+  "node_count": 1767,
+  "edge_count": 14423,
   "coverage": {
-    "covered": 1715,
-    "total": 1745,
+    "covered": 1717,
+    "total": 1747,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-robointer-1-5.md",
+      "detail_id": "entity-paper-robointer-1-5",
+      "label": "RoboInter1.5（中间表示操作与世界建模套件）",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/generative-world-models.md",
+      "detail_id": "wiki-methods-generative-world-models",
+      "label": "Generative World Models (生成式世界模型)",
+      "type": "method",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/video-as-simulation.md",
+      "detail_id": "wiki-concepts-video-as-simulation",
+      "label": "Video-as-Simulation (视频即仿真)",
+      "type": "concept",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
+      "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
+      "label": "VLA 开源复现景观（2025 策展）",
+      "type": "overview",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-internvla-a15-unified-vla.md",
+      "detail_id": "entity-paper-internvla-a15-unified-vla",
+      "label": "InternVLA-A1.5：理解、潜式前瞻与动作的统一 VLA",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-masked-visual-actions.md",
+      "detail_id": "entity-paper-masked-visual-actions",
+      "label": "Masked Visual Actions（统一世界建模的掩码视觉动作）",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-agentic-real2sim.md",
+      "detail_id": "entity-paper-agentic-real2sim",
+      "label": "Agentic Real2Sim（VLM Agent 编排的物理 Real2Sim）",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/methods/crisp-real2sim.md",
+      "detail_id": "wiki-methods-crisp-real2sim",
+      "label": "CRISP（Contact-guided Real2Sim）",
+      "type": "method",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-simfoundry-real2sim-scene-generation.md",
+      "detail_id": "entity-paper-simfoundry-real2sim-scene-generation",
+      "label": "SimFoundry（Modular Real2Sim Scene Generation for Policy Learning and Evaluation）",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/articraft.md",
+      "detail_id": "entity-articraft",
+      "label": "Articraft",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-bfm-zero.md",
+      "detail_id": "entity-paper-bfm-zero",
+      "label": "BFM-Zero",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/concepts/lora.md",
+      "detail_id": "wiki-concepts-lora",
+      "label": "LoRA (Low-Rank Adaptation，低秩适配)",
+      "type": "concept",
+      "recency": "2026-07-22",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-da-nav.md",
       "detail_id": "entity-paper-da-nav",
@@ -23,28 +179,6 @@
       "detail_id": "wiki-tasks-vision-language-navigation",
       "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
       "type": "task",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
       "recency": "2026-07-22",
       "source": "log.md",
       "action": "maintained",
@@ -80,154 +214,23 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-lehome-learning-to-fold.md",
-      "detail_id": "entity-paper-lehome-learning-to-fold",
-      "label": "Learning to Fold（LeHome Challenge 2026 · arXiv:2606.27163）",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/awr.md",
-      "detail_id": "wiki-methods-awr",
-      "label": "AWR: 优势加权回归",
-      "type": "method",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/dagger.md",
-      "detail_id": "wiki-methods-dagger",
-      "label": "DAgger（Dataset Aggregation）",
-      "type": "method",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/lerobot.md",
-      "detail_id": "entity-lerobot",
-      "label": "LeRobot (Hugging Face)",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
-      "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
-      "label": "VLA 开源复现景观（2025 策展）",
-      "type": "overview",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-steam-advantage-modeling.md",
-      "detail_id": "entity-paper-steam-advantage-modeling",
-      "label": "STEAM：自监督时序 Ensemble Advantage 建模",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/sunday-robotics-act2.md",
-      "detail_id": "entity-sunday-robotics-act2",
-      "label": "ACT-2（Sunday Robotics · Generalizing Reliability）",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/nvidia-so101-sim2real-lab-workflow.md",
-      "detail_id": "entity-nvidia-so101-sim2real-lab-workflow",
-      "label": "NVIDIA SO-101 Sim2Real 实验 workflow",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-xrobotoolkit.md",
-      "detail_id": "entity-paper-xrobotoolkit",
-      "label": "XRoboToolkit",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/tasks/teleoperation.md",
-      "detail_id": "wiki-tasks-teleoperation",
-      "label": "Teleoperation（遥操作）",
-      "type": "task",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-twist2.md",
-      "detail_id": "entity-paper-twist2",
-      "label": "TWIST2",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/isaac-teleop.md",
-      "detail_id": "entity-isaac-teleop",
-      "label": "Isaac Teleop",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-da-nav.md",
-    "detail_id": "entity-paper-da-nav",
-    "label": "DA-Nav（方向感知城市尺度 VLN）",
+    "path": "wiki/entities/paper-robointer-1-5.md",
+    "detail_id": "entity-paper-robointer-1-5",
+    "label": "RoboInter1.5（中间表示操作与世界建模套件）",
     "type": "entity",
-    "recency": "2026-07-22",
+    "recency": "2026-07-23",
     "source": "log.md",
     "action": "added",
+    "has_repo": true,
     "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 448
+      "size": 457
     },
     {
       "label": "移动操作",
@@ -262,7 +265,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 322,
+      "degree": 324,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -270,7 +273,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 304,
+      "degree": 306,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -286,7 +289,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 276,
+      "degree": 280,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

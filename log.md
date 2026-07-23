@@ -1,5 +1,24 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-23] ingest | sources/papers/robointer_1_5_arxiv_2607_18709.md + sources/sites/lihaohn-robointer-github-io.md + sources/repos/robointer.md — RoboInter1.5（arXiv:2607.18709）中间表示套件+World；升格 wiki/entities/paper-robointer-1-5.md；交叉 wiki/methods/vla.md、wiki/methods/generative-world-models.md、wiki/concepts/video-as-simulation.md、wiki/tasks/manipulation.md、wiki/overview/vla-open-source-repro-landscape-2025.md、wiki/entities/paper-internvla-a15-unified-vla.md、wiki/entities/paper-masked-visual-actions.md；部分开源（Data/VLM 已发，VLA/World 待齐）
+
+- **开源状态：** **部分开源** — [`InternRobotics/RoboInter`](https://github.com/InternRobotics/RoboInter)（MIT）+ HF Data/VQA/VLM；`RoboInterVLA` 与 **RoboInter-World** 代码/权重待齐（截至 2026-07-23）
+- **新建 papers：** [`sources/papers/robointer_1_5_arxiv_2607_18709.md`](sources/papers/robointer_1_5_arxiv_2607_18709.md)
+- **新建 sites：** [`sources/sites/lihaohn-robointer-github-io.md`](sources/sites/lihaohn-robointer-github-io.md)
+- **新建 repos：** [`sources/repos/robointer.md`](sources/repos/robointer.md)
+- **新建 wiki：** [`wiki/entities/paper-robointer-1-5.md`](wiki/entities/paper-robointer-1-5.md)
+- **机构：** 沿用既有 `ustc` / `buaa` / `shanghai-ai-lab`
+- **交叉更新：** [`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/methods/generative-world-models.md`](wiki/methods/generative-world-models.md)、[`wiki/concepts/video-as-simulation.md`](wiki/concepts/video-as-simulation.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`wiki/overview/vla-open-source-repro-landscape-2025.md`](wiki/overview/vla-open-source-repro-landscape-2025.md)、[`wiki/entities/paper-internvla-a15-unified-vla.md`](wiki/entities/paper-internvla-a15-unified-vla.md)
+
+## [2026-07-23] ingest | sources/papers/agentic_real2sim_arxiv_2607_19190.md + sources/sites/agentic-real2sim-github-io.md — Agentic Real2Sim（arXiv:2607.19190）VLM agent 编排 DROID→MuJoCo episode twin；升格 wiki/entities/paper-agentic-real2sim.md；交叉 wiki/concepts/sim2real.md、wiki/methods/crisp-real2sim.md、wiki/entities/paper-simfoundry-real2sim-scene-generation.md、wiki/entities/articraft.md、wiki/entities/paper-bfm-zero.md、wiki/tasks/manipulation.md；代码 coming soon；机构新增 columbia/jhu/fau/style3d
+
+- **开源状态：** **宣称将开源 / 待发布** — 项目页 **Code (coming soon)**；无可运行官方仓（截至 2026-07-23）
+- **新建 papers：** [`sources/papers/agentic_real2sim_arxiv_2607_19190.md`](sources/papers/agentic_real2sim_arxiv_2607_19190.md)
+- **新建 sites：** [`sources/sites/agentic-real2sim-github-io.md`](sources/sites/agentic-real2sim-github-io.md)
+- **新建 wiki：** [`wiki/entities/paper-agentic-real2sim.md`](wiki/entities/paper-agentic-real2sim.md)
+- **机构：** `schema/institutions.json` 新增 `columbia` / `jhu` / `fau` / `style3d`；沿用既有 `ubc` / `ucla` / `nus`
+- **交叉更新：** [`wiki/concepts/sim2real.md`](wiki/concepts/sim2real.md)、[`wiki/methods/crisp-real2sim.md`](wiki/methods/crisp-real2sim.md)、[`wiki/entities/paper-simfoundry-real2sim-scene-generation.md`](wiki/entities/paper-simfoundry-real2sim-scene-generation.md)、[`wiki/entities/articraft.md`](wiki/entities/articraft.md)、[`wiki/entities/paper-bfm-zero.md`](wiki/entities/paper-bfm-zero.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)
+
 ## [2026-07-22] lint | 清零全量知识库 lint 信息型预警（27→0）：为 25 篇 paper-* 实体补齐「方法/评测/对比」三段式 ## 区块（源自各页正文与 sources/ 归档，对比表沿用 htd-refine 房型、定性无杜撰数字）；为 paper-wolf-vla.md 补「重定向就绪度」速查维度；新建 wiki/concepts/lora.md + sources/notes/lora.md（LoRA 低秩适配概念页），并把 mimic-video/fada/any2any/m4world/wam-ttt/rldx-1 六处 **LoRA** 引用改为回链概念页消除孤儿；同步 catalog/graph-stats/home-stats/README/docs/lint-report 派生索引
 
 ## [2026-07-22] ingest | sources/papers/da_nav_arxiv_2607_11638.md — DA-Nav（arXiv:2607.11638）方向感知城市尺度 VLN；升格 wiki/entities/paper-da-nav.md；交叉 wiki/tasks/vision-language-navigation.md、wiki/concepts/sim2real.md、wiki/methods/vla.md、wiki/overview/vln-open-source-repro-paradigms.md、wiki/entities/paper-notebook-navila-legged-robot-vision-language-action-model.md；未开源
