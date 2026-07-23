@@ -119,6 +119,13 @@ flowchart LR
 
 同一管线换后端：Gemma 4 31B / Qwen 3.6 35B / GPT-5.4 / Claude Haiku 4.5 的回放成功约 **37–48/100**；相对 Gemma，GPT-5.4 约 **31.4×** 模型成本。作者把剩余失败主因归于上游感知与仿真组件，而非「换更大闭源 VLM」。
 
+## 评测与结果
+
+- **主基准（刚性）：** DROID-100 回放成功，用三 VLM 裁判投票（≥8/10 判成功）。Gemma 4 31B 后端取得 **48/100**，账单约 **$2.62**。
+- **多后端对照：** 同一管线换 Gemma 4 31B / Qwen 3.6 35B / GPT-5.4 / Claude Haiku 4.5，回放成功约 **37–48/100**；开源 31B 与闭源大模型接近，而 GPT-5.4 约 **31.4×** 模型成本——印证 agent 只做 schema 约束决策、几何/物理走确定性工具的解耦设计。
+- **失败归因：** 作者把剩余失败主因归于上游分割/跟踪等感知与仿真组件，而非「换更大闭源 VLM」。
+- **口径边界（index-level）：** 「回放成功」是 episode 能否在 MuJoCo 中被复现，**不等于**下游策略成功率；可变形与人形扩展以定性演示为主，无刚性域的定量表。
+
 ## 源码运行时序图
 
 **不适用。** 截至 **2026-07-23**，[项目页](https://agentic-real2sim.github.io/) 仅标注 **Code (coming soon)**，未列可辨识的训练/转换仓库；无法对齐 `sources/repos/` 入口绘制可复现运行时序。开放后应补 `sources/repos/` 并补本图。
@@ -130,6 +137,18 @@ flowchart LR
 | 选型定位 | 需要 **episode 级物理回放** 与 **可换 VLM 编排** 时对照；若只需操作场景 + cousins + 策略相关评测，优先看 [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) |
 | 复现边界 | 当前 **不可本地跑转换**；可先读论文 Tab.1 工具表与项目页 USD 预览理解产物形态 |
 | 评测阅读 | 「回放成功」≠「策略成功率相关」；与 SimFoundry Pearson / MMRV 口径不同 |
+
+## 与其他工作对比
+
+| 维度 | Agentic Real2Sim | [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) | [CRISP](../methods/crisp-real2sim.md) | [Video-as-Simulation](../concepts/video-as-simulation.md) |
+|------|------------------|-----------|-------|---------------------|
+| 产物单位 | **episode twin**（含执行器/轨迹/接触/任务） | sim-ready 场景 + cousins | 单目人–场景平面原语 | 像素 rollout |
+| 底座 | MuJoCo 物理引擎 | 仿真场景生成 | RL + 平面原语 | 生成式视频模型 |
+| 决策方式 | **VLM agent 编排 + 确定性工具** | 场景生成管线 | 单目重建 + RL | 端到端视频预测 |
+| 评测口径 | **回放成功**（三裁判 ≥8/10） | Pearson / MMRV 策略相关 | 人–场景重建质量 | 视频保真/一致性 |
+| 后端可替换性 | **开源 31B ≈ 闭源**，成本差一个数量级 | — | — | — |
+
+> 定位：需要 **episode 级物理回放 + 可换 VLM 编排** 时选本工作；只需操作场景 + 策略相关评测优先 SimFoundry；产物是物理引擎 episode，勿与像素视频世界模型混谈。
 
 ## 局限与风险
 

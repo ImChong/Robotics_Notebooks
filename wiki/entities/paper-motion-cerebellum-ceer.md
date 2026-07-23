@@ -75,6 +75,16 @@ CEER 将高层控制自由度限制在根部运动与末端执行器目标。键
 
 项目页在包含蓝床、黄桌、绿沙发的房间场景中评测四类任务：移动蓝盒到黄/红盒中间、移动到床、移动到沙发、先移动蓝盒再移动红盒。对照包括 LLM-controlled execution 与五名参与者键盘遥操作，任务总计 **40 trials**。
 
+## 评测与结果
+
+CEER 提供明确的**系统级评测**，同时覆盖末端跟踪质量与房间级长时程任务：
+
+- **末端跟踪与柔顺**：项目页报告 **3.3 cm** end-effector tracking accuracy，且 jerk 低于 baselines，说明统一低层策略在保持跟踪精度的同时输出更平滑、更柔顺的动作。
+- **真机技能演示**：Box-on-wall Rotate、Write and Wipe、Cap Insertion、Box Transport、Cart Pulling 等真机任务共用同一 CEER policy，验证 EE-root 接口对多类接触任务的复用性。
+- **房间级长时程任务**：在含蓝床、黄桌、绿沙发的房间场景中评测四类单物体搬运任务，对照 LLM-controlled execution 与五名参与者键盘遥操作（共 **40 trials**，5 人 × 4 任务 × 2 次），模拟任务最高 **70%** 成功率。
+
+> 指标说明：3.3 cm、70%、40 trials 均为项目页报告值，且长程评测使用 minimal skill set 与 single grasp primitive；本页不额外补充未在原文出现的数字。
+
 ## 源码运行时序图
 
 **不适用**：官方项目页未列出 GitHub/可运行代码链接，仅提供项目页、arXiv 与视频/实验说明。截至 2026-07-22 不把页面静态资源视为可复现代码。
@@ -88,6 +98,19 @@ CEER 将高层控制自由度限制在根部运动与末端执行器目标。键
 | 代码 | 未在项目页列出官方 GitHub |
 | 真机展示 | Box-on-wall Rotate、Write and Wipe、Cap Insertion、Box Transport、Cart Pulling |
 | 系统评测 | 3.3 cm EE 跟踪精度；房间级模拟单物体任务最高 70% 成功率 |
+
+## 与其他工作对比
+
+CEER 的贡献是 loco-manip 的**接口抽象**，与同样重新定义高层/示范接口的 [Pro-HOI](./paper-loco-manip-161-074-pro-hoi.md)、[WT-UMI](./paper-loco-manip-07-wt-umi.md) 相邻但落点不同。下表为定性对照。
+
+| 维度 | CEER | Pro-HOI | WT-UMI |
+|------|------|---------|--------|
+| 接口抽象 | root motion + EE pose + 柔顺参数 | root trajectory + 二值 contact state | 全身触觉图像 + 接触力 + 末端位姿 |
+| 高层可插拔性 | LLM skill manager / 键盘 / 任务模块统一产 EE-root 命令 | TEB / task planner 产 root 轨迹 | force-supervised planner 产位姿+力块 |
+| 柔顺/力处理 | compliance-aware 统一低层策略 | 接触状态仅二值，无显式柔顺 | tactile admittance 闭环柔顺修正 |
+| 低层学习 | teacher-student 蒸馏出消费 EE-root 命令的统一 policy | PPO root-guided policy + digital twin 掉落恢复 | admittance controller + target-pose correction |
+| 任务侧重 | 房间级长时程写擦/插盖/搬箱/拉车 | 箱子搬运 + 掉落 re-grasp | 笨重刚体/柔性/人机协作接触任务 |
+| 开源 | 项目页未列 GitHub | 未确认官方可运行仓库 | Code Coming Soon |
 
 ## 局限与风险
 

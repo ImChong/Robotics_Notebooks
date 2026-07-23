@@ -57,6 +57,8 @@
 - **基线快照：** `python3 scripts/lint_wiki.py --report` 更新 [`exports/lint-report.md`](exports/lint-report.md)，新 INFO 段列出 35 页待补驱动链枢纽回链；`make lint` 0 errors，ruff/mypy 通过
 - **执行清单：** [`docs/checklists/tech-stack-next-phase-checklist-v30.md`](docs/checklists/tech-stack-next-phase-checklist-v30.md) P0「驱动链页交叉链路巡检 V1」勾选完成
 
+## [2026-07-22] lint | 清零全量知识库 lint 信息型预警（27→0）：为 25 篇 paper-* 实体补齐「方法/评测/对比」三段式 ## 区块（源自各页正文与 sources/ 归档，对比表沿用 htd-refine 房型、定性无杜撰数字）；为 paper-wolf-vla.md 补「重定向就绪度」速查维度；新建 wiki/concepts/lora.md + sources/notes/lora.md（LoRA 低秩适配概念页），并把 mimic-video/fada/any2any/m4world/wam-ttt/rldx-1 六处 **LoRA** 引用改为回链概念页消除孤儿；同步 catalog/graph-stats/home-stats/README/docs/lint-report 派生索引
+
 ## [2026-07-22] ingest | sources/papers/da_nav_arxiv_2607_11638.md — DA-Nav（arXiv:2607.11638）方向感知城市尺度 VLN；升格 wiki/entities/paper-da-nav.md；交叉 wiki/tasks/vision-language-navigation.md、wiki/concepts/sim2real.md、wiki/methods/vla.md、wiki/overview/vln-open-source-repro-paradigms.md、wiki/entities/paper-notebook-navila-legged-robot-vision-language-action-model.md；未开源
 
 - **开源状态：** **未开源** — arXiv abs/HTML/PDF 无项目页或 GitHub；公开检索无官方同名可运行仓（截至 2026-07-22）

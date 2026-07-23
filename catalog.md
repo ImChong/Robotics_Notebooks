@@ -1239,6 +1239,7 @@
 - [Latent Imagination (潜空间想象)](wiki/concepts/latent-imagination.md) — 潜空间想象 (Latent Imagination)** 是现代 Model-Based 强化学习（尤其是 **Dreamer** 系列）的灵魂。它彻底改变了机器人学习的范式：不再是在真实世界或沉 `📅unknown` `[wiki_page]`
 - [LCM (Lightweight Communications and Marshalling) 基础](wiki/concepts/lcm-basics.md) — LCM** 是一款由 MIT 团队开发的通信库，专门针对**高频、低延迟、高带宽**的机器人控制场景设计。在人形机器人和四足机器人的“脊髓级”控制中，LCM 是优于 ROS 2 的首选方案。 `📅unknown` `[wiki_page]`
 - [LIP / ZMP](wiki/concepts/lip-zmp.md) — LIP（Linear Inverted Pendulum, 线性倒立摆）** 和 **ZMP（Zero Moment Point, 零力矩点）** 是双足机器人行走控制里最经典的一对基础模型与稳定 `📅unknown` `[wiki_page]`
+- [LoRA (Low-Rank Adaptation，低秩适配)](wiki/concepts/lora.md) — LoRA** 是一种参数高效微调（PEFT）方法：不改动预训练权重，只在其旁路上训练一对低秩矩阵，使大模型能以极小的可训练参数量适配新任务、新形态或新动力学。 `📅unknown` `[wiki_page]`
 - [消息队列可靠性（队列 / 重复消费 / 顺序 / 幂等）](wiki/concepts/message-queue-reliability.md) — 消息队列可靠性** 处理「异步投递」下的 **至少一次、重复、乱序** 现实，要求消费者 **幂等**——适用于任务调度与遥测，不替代实时中间件。 `📅unknown` `[wiki_page]`
 - [模型版本管理与 OTA](wiki/concepts/model-versioning-ota.md) — 模型版本管理与 OTA** 把策略/感知权重与机载固件当作 **可签名、可回滚、可审计** 的发布物，经空中或近场通道安全晋升到机器人。 `📅unknown` `[wiki_page]`
 - [建模与求解（控制问题框架）](wiki/concepts/modeling-and-solving-for-control.md) — 飞书 Know-How「**建模 + 求解**」是人形控制问题拆解的第一轴：**建模**确定状态、输入、动力学与约束；**求解**选择能否实时、能否保证约束的算法（QP、MPC、iLQR、RL 等）。 `📅unknown` `[wiki_page]`

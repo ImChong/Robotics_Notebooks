@@ -192,6 +192,20 @@ sequenceDiagram
 
 **失败模式（博客）：** 灵巧不足、过拟合仿真伪影、近成功卡住；debug overlay 实时打印 S/A/R/C/T 预测。
 
+## 与其他工作对比
+
+对照本页 [为什么重要](#为什么重要) 与 [关联页面](#关联页面) 中明确定位的相关工作，均为定性维度（具体数字见 [实验要点（索引级）](#实验要点索引级)）：
+
+| 维度 | Learning to Fold（本页） | ACT-2（Sunday） | STEAM | DreamSteer |
+|------|--------------------------|-----------------|-------|------------|
+| 定位 | 竞赛全栈 **开源** 叠衣方案 | **闭源** 商用叠衣、主打高成功率 | 离线 advantage 建模方法 | 推理期部署 steering 路线 |
+| 策略骨干 | π₀.₅ VLA + 辅助价值/进度头 | ACT 系（未公开细节） | CFGRL / advantage 条件化 | VLA 通用，聚焦推理侧 |
+| advantage 来源 | **在线异步 rollout**（AWR+RECAP，HF Hub 总线） | 以 BC 为主 | **纯离线** 自监督打分，无在线采样 | 不改训练分布 |
+| 推理期干预 | CFG guidance 7–9 + Q 头 Best-of-N + 短 horizon 重规划 | 未公开 | CFGRL 条件放大 | 显式 chunk 选择 / steering |
+| 开源程度 | 代码 + 双赛道权重 + 成败视频全开 | 闭源 | 方法侧开源 | 方法侧 |
+
+与 [STEAM](./paper-steam-advantage-modeling.md) 构成「**在线异步 rollout** vs **纯离线打分**」的 advantage 获取选型对照；与 [ACT-2](./sunday-robotics-act2.md) 构成「开源可复现 SO-ARM101」对「闭源高成功率」的路线对照；[DreamSteer](./paper-dreamsteer-vla-deployment-steering.md) 则代表把干预放在推理期 chunk 选择而非后训练。
+
 ## 局限与风险
 
 - **误区：** 把「仿真第 1」直接当「真机可复现 80%」——真机赛换了评分、硬件与数据配方，且评测机不可长期占用。

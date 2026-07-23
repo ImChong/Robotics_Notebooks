@@ -139,6 +139,7 @@ WOLF-VLA 主模型从 **GR00T-N1.5-3B** 初始化：
 | OC 工具 | Crocoddyl、Pinocchio、Box-FDDP、多相 OCP |
 | 数据规模 | **277 h**，**15,276 episodes**；平均 episode length 28 s |
 | 任务统计 | WF 2874 episodes；WA 8234；W.CS.U 2358；W.CS.U/D 1810 |
+| 重定向就绪度 | 数据为 **RH5 形态专属**：action 是 25 actuated joints 的 delta joint rotation，proprioception 亦按 RH5 骨架记录，因此**只可直接喂给 RH5 策略**；换到 Unitree G1 等异构人形需先做 **motion retargeting / 骨架对齐**。好处是 OCP 生成的轨迹本身满足 torque/关节约束、**物理可行**且动态一致，作为重定向源质量高于纯 mocap/teleop 轨迹 |
 | VLA 训练 | GR00T-N1.5-3B init；4×A100；200k steps；LeRobot format |
 | 开源状态 | 摘要承诺 full dataset、model checkpoints、benchmarking simulation suite 将开放；截至 2026-07-22 未发现官方仓库或下载页 |
 | 源码运行时序图 | **不适用**：当前无可运行官方代码；只可根据论文复现 OCP/VLA 流程 |
