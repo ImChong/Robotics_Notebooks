@@ -1,5 +1,9 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-23] ingest | sources/papers/generative_motion_rig_siggraph_talks_2026.md — Disney Generative Motion Rig（SIGGRAPH Talks 2026）Blender generative keyframing；wiki/entities/generative-motion-rig.md；交叉 wiki/entities/blender.md、wiki/entities/robot-motion-keyframe-editors.md、wiki/concepts/character-animation-vs-robotics.md、wiki/methods/motion-retargeting-gmr.md（GMR 缩写消歧）、wiki/methods/diffusion-motion-generation.md；sources/sites/disney-generative-motion-rig.md（插件未开源）
+
+## [2026-07-23] ingest | sources/papers/rigmo_arxiv_2601_06378.md — RigMo（arXiv:2601.06378）无标注 mesh 联合学 Gaussian bones+SE(3)；wiki/entities/rigmo.md；交叉 wiki/methods/diffusion-motion-generation.md、wiki/entities/ardy.md、wiki/entities/blender.md、wiki/concepts/character-animation-vs-robotics.md；sources/sites/rigmo-page.md、sources/repos/rigmo.md（VAE 已开源 / Motion-DiT 未发布）
+
 ## [2026-07-23] ingest | sources/papers/tacrefinenet_arxiv_2509_25746.md — TacRefineNet（arXiv:2509.25746）纯触觉目标条件抓取精修：Siamese 多指策略 + 外在灵巧 regrasp；wiki/entities/paper-tacrefinenet-tactile-grasp-refinement.md；交叉 wiki/concepts/tactile-sensing.md、wiki/overview/topic-tactile.md、wiki/overview/topic-grasp.md、wiki/methods/visual-servoing.md、wiki/methods/in-hand-reorientation.md、wiki/queries/grasp-policy-selection.md、wiki/concepts/sim2real.md、wiki/entities/paper-omnitactune-tactile-residual-adaptation.md；sources/sites/tacrefinenet-google-sites.md、sources/repos/tacrefinenet.md（空仓待发布）
 
 ## [2026-07-23] fix(ux): 详情页 Markdown 还原 A\* 等反斜杠转义

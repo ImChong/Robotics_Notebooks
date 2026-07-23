@@ -3,7 +3,7 @@
 type: entity
 tags: [software, dcc, 3d-creation, animation, open-source, asset-pipeline, visualization, blender-foundation]
 status: complete
-updated: 2026-07-03
+updated: 2026-07-23
 related:
   - ./freecad.md
   - ./nvidia-omniverse.md
@@ -12,6 +12,8 @@ related:
   - ./ppf-contact-solver.md
   - ./sam3dbody-cpp.md
   - ./robot-motion-keyframe-editors.md
+  - ./generative-motion-rig.md
+  - ./rigmo.md
   - ./motioncode.md
   - ../concepts/motion-retargeting.md
   - ../concepts/motion-retargeting-pipeline.md
@@ -81,6 +83,7 @@ flowchart LR
 - **与商业 DCC 对照**：[Mixamo](./mixamo.md) 提供 **在线角色与动作库**；[MetaHuman](./metahuman.md) 提供 **UE 生态高保真数字人 + Animator 表演**；Blender 提供 **本地全流程编辑与 GPL 源码**——科研复现与插件二次开发通常偏向后者。
 - **与仿真底座对照**：[NVIDIA Omniverse](./nvidia-omniverse.md) 强调 **USD 协作 + GPU 物理**；Blender 强调 **authoring + 动画**——Omniverse 文档亦将 Blender 列为常见 USD 来源之一。
 - **与专用机器人编辑器对照**：[机器人关键帧与运动编辑工具](./robot-motion-keyframe-editors.md) 绑定 **URDF/MJCF/CSV/NPZ**；Blender 绑定 **通用网格与骨骼**——二者常在 pipeline 中 **串联** 而非互斥。
+- **与生成式动画绑定对照**：[Disney Generative Motion Rig](./generative-motion-rig.md) 以 Blender 插件形态把 **generative keyframing** 接进 DCC（闭源）；[RigMo](./rigmo.md) 则从 mesh 序列发现可动画 bones，产出可进入 DCC/资产链的结构，而非 Blender UI 插件。
 - **与机械 CAD 对照**：[FreeCAD](./freecad.md) 强调 **参数化 B-rep 与 STEP 导出**；Blender 强调 **网格与动画**——硬件零件设计常走前者，场景与动捕后处理常走后者。
 
 ## 常见误区或局限
@@ -97,6 +100,8 @@ flowchart LR
 - [SAM3DBody-cpp（BVH 导出与 Blender 插件）](./sam3dbody-cpp.md)
 - [MotionCode（产业侧运动数据供应商）](./motioncode.md)
 - [机器人关键帧与运动编辑工具](./robot-motion-keyframe-editors.md)
+- [Generative Motion Rig（Disney）](./generative-motion-rig.md)
+- [RigMo](./rigmo.md)
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md)
 - [FreeCAD（开源参数化机械 CAD）](./freecad.md)

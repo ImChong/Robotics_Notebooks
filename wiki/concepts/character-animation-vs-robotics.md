@@ -3,7 +3,7 @@ type: concept
 tags: [humanoid, character-animation, entertainment-robotics, motion-retargeting, reward-design, style-prior]
 status: complete
 created: 2026-05-19
-updated: 2026-06-29
+updated: 2026-07-23
 related:
   - ./motion-retargeting.md
   - ./motion-retargeting-pipeline.md
@@ -20,6 +20,8 @@ related:
   - ../entities/botlab-motioncanvas.md
   - ../entities/roboto-origin.md
   - ../entities/robot-motion-keyframe-editors.md
+  - ../entities/generative-motion-rig.md
+  - ../entities/rigmo.md
   - ../entities/blender.md
   - ../entities/manim.md
 sources:
@@ -32,6 +34,8 @@ sources:
   - ../../sources/sites/botlab_motioncanvas.md
   - ../../sources/sites/xue-bin-peng.md
   - ../../sources/papers/deeprl_locomotion_action_space_sca2017.md
+  - ../../sources/papers/generative_motion_rig_siggraph_talks_2026.md
+  - ../../sources/papers/rigmo_arxiv_2601_06378.md
 summary: "Character Animation vs Robotics：澄清「角色化人形（character humanoid）」与「研究/工业型人形」在目标函数、机构约束、表演意图与物理可控性之间的张力——以 Disney Olaf / DeepMimic-AMP-ASE 谱系 / BotLab MotionCanvas / Roboto Origin 等案例为切片。"
 ---
 
@@ -61,7 +65,7 @@ summary: "Character Animation vs Robotics：澄清「角色化人形（character
 | ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
 | MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
 | CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
-| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
+| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考（≠ Disney Generative Motion Rig） |
 
 ## 为什么单独立一页
 
@@ -135,6 +139,8 @@ summary: "Character Animation vs Robotics：澄清「角色化人形（character
 - 给真机演示视频做**可重复的剧本**，避免每次 RL rollout 都换味道；
 - 与 ASE 等 latent 技能做「艺术家可拖动」的高层接口。
 
+**生成式 DCC 绑定（Disney Generative Motion Rig，SIGGRAPH Talks 2026）：** [Generative Motion Rig](../entities/generative-motion-rig.md) 把通用 betweener 嵌进 **Blender 插件**，用稀疏关键帧 / Neural Motion Curves / 噪声采样做 **generative keyframing**，并与传统 FK 层混合——这是 **角色动画端** 的生成式操控形态（插件未开源）。资产发现侧对照：[RigMo](../entities/rigmo.md) 从无标注 mesh 序列学 Gaussian bones，产出可动画结构而非 DCC UI。注意缩写 **GMR** 在仓库内默认指 [General Motion Retargeting](../methods/motion-retargeting-gmr.md)。
+
 ## 决策矩阵（什么时候应该用 character 视角）
 
 | 场景特征 | 推荐视角 | 落地建议 |
@@ -195,7 +201,7 @@ flowchart LR
 - 实机案例：[Disney Olaf 角色机器人](../methods/disney-olaf-character-robot.md)、[VMP](../entities/paper-notebook-vmp.md)（LIME 双足 + 动画参考接口）；中性平台 [Roboto Origin](../entities/roboto-origin.md)、[Asimov v1](../entities/asimov-v1.md)。
 - 风格先验方法：[DeepMimic](../methods/deepmimic.md)、[AMP](../methods/amp-reward.md)、[ASE](../methods/ase.md)；原作者索引 [Xue Bin Peng](../entities/xue-bin-peng.md)。
 - **室内人–场景交互合成（运动学角色）：** [DIMOS](../entities/paper-dimos-human-scene-motion-synthesis.md)（ICCV 2023）用 RL 在 CVAE 运动基元潜空间上合成走–坐–躺序列，服务 AR/VR 与训练数据规模化；上真机需经重定向与接触动力学重建模，与 DeepMimic/AMP 的「仿真物理角色 → 机器人」迁移链正交。
-- 工具层：[BotLab / MotionCanvas](../entities/botlab-motioncanvas.md)、[机器人关键帧与运动编辑工具](../entities/robot-motion-keyframe-editors.md)。
+- 工具层：[BotLab / MotionCanvas](../entities/botlab-motioncanvas.md)、[机器人关键帧与运动编辑工具](../entities/robot-motion-keyframe-editors.md)、[Generative Motion Rig（Disney）](../entities/generative-motion-rig.md)、[RigMo](../entities/rigmo.md)。
 
 ## 推荐继续阅读
 

@@ -114,6 +114,7 @@
 - [GenCeption](wiki/entities/genception.md) — GenCeption**（*Video Generation Models are General-Purpose Vision Learners*，arXiv:2607.09024，**ECCV `📅unknown` `[entity_page]`
 - [GENE-26.5（Genesis AI 操作基础模型）](wiki/entities/gene-26-5-genesis-ai.md) — GENE-26.5** 指 **Genesis AI**（全栈机器人公司，官网域名 genesis-ai.company）在 2026 年前后对外发布的 **机器人操作基础模型** 品牌，与开源物 `📅unknown` `[entity_page]`
 - [Generalist AI（机器人方向）](wiki/entities/generalist-ai-robotics.md) — Generalist AI**：聚焦具身智能与通用机器人策略的商业实体之一；对外叙事强调 **海量人类 / 机器人交互数据** 上的预训练与规模化定律验证（产品线名称与版本随发布更新）。 `📅unknown` `[entity_page]`
+- [Generative Motion Rig（Disney）：艺术家驱动的生成式运动绑定](wiki/entities/generative-motion-rig.md) — Generative Motion Rig（GMR）**（*A Generative Motion Rig for Artist-Driven Motion Authoring*，SIGGRAPH `📅unknown` `[entity_page]`
 - [Genesis (仿真器)](wiki/entities/genesis-sim.md) — Genesis** 是具身智能领域新兴的高性能**物理仿真与数据生成平台**。它通常与 isaac-gym-isaac-lab 并列，作为新一代 `📅unknown` `[entity_page]`
 - [Genesis World 1.0（Genesis AI 仿真基础设施）](wiki/entities/genesis-world-10.md) — Genesis World 1.0** 是 **Genesis AI**（机器人全栈公司，博客域名 genesis.ai）对外阐述的**仿真基础设施**版本：在初版开源 **Genesis** 仿 `📅unknown` `[entity_page]`
 - [Genie Sim 3.0](wiki/entities/genie-sim-3.md) — Genie Sim 3.0** 是智元 AgibotTech/genie_sim 开源的 **高保真综合仿真平 `📅unknown` `[entity_page]`
@@ -1092,6 +1093,7 @@
 - [RF-DETR（Roboflow Detection Transformer）](wiki/entities/rf-detr.md) — RF-DETR** 是 Roboflow 与 CMU 联合提出的 **实时 closed-vocabulary 检测 Transformer**（ICLR 2026，[arXiv:2511.095 `📅unknown` `[entity_page]`
 - [辉羲智能（Rhino Auto）](wiki/entities/rhino-auto.md) — 辉羲智能**（rhino.auto）是专注 **车载智能计算平台** 的芯片与方案公司：2024 年世界智能网联汽车大会发布首款高阶智驾芯片 **光至 `📅unknown` `[entity_page]`
 - [Richard Sutton](wiki/entities/richard-sutton.md) — Richard S. Sutton** 是现代 **强化学习（RL）** 的奠基研究者之一：与 Andrew Barto 合著 RL 标准教材、提出 TD learning / eligibili `📅unknown` `[entity_page]`
+- [RigMo：统一 Rig 与 Motion 的生成式动画](wiki/entities/rigmo.md) — RigMo**（*Unifying Rig and Motion Learning for Generative Animation*，arXiv:2601.06378；GitHub 标注 CVP `📅unknown` `[entity_page]`
 - [RLDX-1](wiki/entities/rldx-1.md) — RLDX-1** 是面向类人**灵巧操作**的 **Vision-Language-Action（VLA）** 开源模型与代码库（技术报告见 arXiv:2605.03269）。在继承大规模 VL `📅unknown` `[entity_page]`
 - [RoamerX（智身四足导航栈）](wiki/entities/roamerx-navigation.md) — RoamerX**（社区开源版 **RoamerX Lite**）是智身科技（GENISOM AI）面向四足机器人的 **ROS 2 导航栈**：在 **Nav2** 基础上增强 **SLAM、全 `📅unknown` `[entity_page]`
 - [RoboBench（MLLM 具身大脑综合评测）](wiki/entities/robo-bench.md) — RoboBench**（*A Comprehensive Evaluation Benchmark for Multimodal Large Language Models as Embodied `📅unknown` `[entity_page]`

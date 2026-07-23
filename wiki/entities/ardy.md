@@ -2,9 +2,10 @@
 type: entity
 tags: [paper, human-motion, motion-generation, diffusion, interactive, text-to-motion, nvidia, eth, siggraph, humanoid]
 status: complete
-updated: 2026-07-11
+updated: 2026-07-23
 venue: SIGGRAPH 2026
 doi: "10.1145/3811284"
+updated: 2026-07-23
 related:
   - ../methods/diffusion-motion-generation.md
   - ../methods/sonic-motion-tracking.md
@@ -13,6 +14,8 @@ related:
   - ../methods/genmo.md
   - ./protomotions.md
   - ./unitree-g1.md
+  - ./rigmo.md
+  - ./generative-motion-rig.md
 sources:
   - ../../sources/papers/ardy_siggraph_2026.md
   - ../../sources/sites/ardy-project.md
@@ -125,6 +128,8 @@ flowchart TB
 - [SONIC](../methods/sonic-motion-tracking.md) — ARDY→G1 物理跟踪下游
 - [MotionBricks](../methods/motionbricks.md) — 同生态实时潜空间生成
 - [HY-Motion vs GENMO vs Kimodo](../comparisons/hy-motion-vs-genmo-vs-kimodo.md) — 规模化离线生成三线对比（ARDY 补交互档）
+- [RigMo](./rigmo.md) — 无标注 mesh 联合学 rig+motion（结构发现档对照）
+- [Generative Motion Rig（Disney）](./generative-motion-rig.md) — DCC generative keyframing（制片工作流对照）
 - [Unitree G1](./unitree-g1.md) — 演示人形平台
 
 ## 参考来源
