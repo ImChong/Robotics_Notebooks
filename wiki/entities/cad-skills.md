@@ -3,13 +3,15 @@ type: entity
 tags: [cad, generative-ai, llm-agents, skills, build123d, urdf, robotics, hardware, manufacturing]
 status: complete
 date: 2026-06-15
-updated: 2026-06-18
+updated: 2026-07-23
+updated: 2026-07-23
 related:
   - ../concepts/text-to-cad.md
   - ../concepts/sim2real.md
   - ./urdf-studio.md
   - ./step2urdf.md
   - ./articraft.md
+  - ./img2threejs.md
   - ./mattpocock-skills.md
   - ./sensenova-skills.md
 sources:
@@ -80,7 +82,7 @@ flowchart TB
 
 - **相同抽象：** [文字生成 CAD](../concepts/text-to-cad.md) §「LLM + CadQuery/build123d」——**语言 → 结构化程序 → B-rep**。
 - **CAD Skills 的增量：** 把该抽象 **产品化为可安装 skills**（安装、handoff、基准、打印链），并 **强制 STEP 真值 + 校验/report 结构**，更接近机器人团队的 **可回归硬件草稿** 工作流，而非 API 黑盒。
-- **不同目标：** 不含 Zoo/Adam 等 **商业 CAD 宿主**；也不等同 [Articraft](./articraft.md) 的 **可关节 3D 资产 agent**——后者偏 **仿真就绪网格与 harness 验证**，CAD Skills 偏 **制造向 B-rep 与 URDF/MoveIt 描述**。
+- **不同目标：** 不含 Zoo/Adam 等 **商业 CAD 宿主**；也不等同 [Articraft](./articraft.md) 的 **可关节 3D 资产 agent**（仿真就绪网格 + harness），或 [img2threejs](./img2threejs.md) 的 **图像→程序化 Three.js** skill（浏览器 WebGL prop）——CAD Skills 偏 **制造向 B-rep 与 URDF/MoveIt 描述**。
 
 ## 常见误区或局限
 
@@ -95,6 +97,7 @@ flowchart TB
 - [URDF-Studio](./urdf-studio.md) — Web 端机器人描述与 BOM；与 URDF skill 的 GUI 对照
 - [step2urdf](./step2urdf.md) — 已有 STEP 装配体的浏览器 STEP→URDF；与 `gen_urdf()` CLI 路线互补
 - [Articraft](./articraft.md) — 可关节 3D 资产生成 agent；偏仿真网格而非 STEP 加工链
+- [img2threejs](./img2threejs.md) — 图像→程序化 Three.js Agent Skill；WebGL 代码资产，非 STEP/URDF
 - [Skills For Real Engineers（mattpocock）](./mattpocock-skills.md) — 通用编码 Agent Skills 对照
 - [Sim2Real](../concepts/sim2real.md) — CAD/URDF 与仿真/真机几何一致性
 

@@ -151,6 +151,7 @@
 - [Humanoid-Gym（人形零样本 Sim2Real 训练框架）](wiki/entities/humanoid-gym.md) — Humanoid-Gym**（Gu / Wang / Chen，arXiv:2404.05695，RobotEra）是在  `📅unknown` `[entity_page]`
 - [人形机器人（Humanoid Robot）](wiki/entities/humanoid-robot.md) — 人形机器人是具有双足步行能力和类人形态（躯干 + 双臂 + 双腿）的机器人平台，兼顾移动能力与操作能力，是当前具身智能研究的核心载体。 `📅unknown` `[entity_page]`
 - [iGibson](wiki/entities/igibson.md) — iGibson** 是斯坦福大学等机构 2020 年发布的 **交互式室内仿真环境**，强调 **真实感视觉场景** 与 **高保真物理交互** 的融合。 `📅unknown` `[entity_page]`
+- [img2threejs](wiki/entities/img2threejs.md) — img2threejs**（hoainho/img2threejs，MIT）是一套 **Agent Skill `📅unknown` `[entity_page]`
 - [InMoov（开源 3D 打印人形）](wiki/entities/inmoov-humanoid.md) — InMoov** 是 **Gael Langevin** 自 2012 年起维护的 **全球首个开源 3D 打印真人比例人形** 项目：以 **Arduino** 控制、**MyRobotLab `📅unknown` `[entity_page]`
 - [Isaac GR00T（人形 VLA 开发平台）](wiki/entities/isaac-gr00t.md) — Isaac GR00T** 是 NVIDIA 面向通用人形机器人的 **开源开发平台**：以 [Isaac-GR00T](https://github.com/NVIDIA/Isaac-GR00T `📅unknown` `[entity_page]`
 - [Isaac Gym / Isaac Sim / Isaac Lab](wiki/entities/isaac-gym-isaac-lab.md) — Isaac Gym**、**Isaac Sim** 与 **Isaac Lab** 是 NVIDIA 机器人仿真与学习生态里需要分开理解的三个产品节点。 `📅unknown` `[entity_page]`

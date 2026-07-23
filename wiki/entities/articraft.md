@@ -11,6 +11,7 @@ related:
   - ./physx-omni.md
   - ./urdf-studio.md
   - ./cad-skills.md
+  - ./img2threejs.md
   - ./mujoco.md
   - ./paper-agentic-real2sim.md
 sources:
@@ -78,6 +79,7 @@ flowchart TB
 - [文字生成 CAD（Text-to-CAD）](../concepts/text-to-cad.md) — 自然语言到 **可制造/可编辑几何** 的另一条主流路线，与「程序化可关节网格资产」互补对照。
 - [URDF-Studio](./urdf-studio.md) — Web 端机器人描述与导出工作流，可与「仿真就绪关节资产」下游衔接对照。
 - [CAD Skills](./cad-skills.md) — **制造向 STEP + URDF skill** 的 Agent Skills 全链路；目标偏 B-rep/加工而非 Articraft 式可关节网格。
+- [img2threejs](./img2threejs.md) — **图像→程序化 Three.js** Agent Skill；同属「程序化 agent」叙事，但目标是浏览器 WebGL prop，不是仿真就绪关节资产。
 - [MuJoCo](./mujoco.md) — 常见刚体/关节仿真后端之一；项目页演示强调物理与 VR 交互叙事。
 - [Sim2Real](../concepts/sim2real.md) — 资产几何与动力学一致性的总提醒。
 - [PhysForge（论文实体）](./paper-physforge-physics-grounded-3d-assets.md) — **VLM 物理蓝图 + 扩散 KVI** 的学习式「仿真就绪关节资产」路线，与 Articraft 的 **程序化 agent** 形态对照。

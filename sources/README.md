@@ -157,6 +157,7 @@
 | [x] [defi-logos-robotics.md](repos/defi-logos-robotics.md) | LogosRoboticsGroup/DeFi：解耦前向/逆动力学 VLA 官方实现（arXiv:2604.16391） |
 | [x] [easy_quadruped.md](repos/easy_quadruped.md) | Xzgz718/easy_quadruped：StanfordQuadruped 二次开发，Pupper 步态控制 + MuJoCo 浮动机身闭环仿真 |
 | [x] [earthtojake-text-to-cad.md](repos/earthtojake-text-to-cad.md) | earthtojake/text-to-cad（CAD Skills）：CAD/URDF/制造 Agent Skills 库（build123d STEP-first + 10 项 benchmark） |
+| [x] [img2threejs.md](repos/img2threejs.md) | hoainho/img2threejs：单图→质量门控程序化 Three.js 工厂（Agent Skill + Python stdlib forge，MIT） |
 | [x] [go2_motion_imitation.md](repos/go2_motion_imitation.md) | TSUITUENYUE/motion-imitation：Go2 retarget_motion + Genesis 关节速度匹配模仿 |
 | [x] [pupperv3_monorepo.md](repos/pupperv3_monorepo.md) | Nate711/pupperv3-monorepo：Pupper v3 机载 ROS 2 软件（与官方文档 ~/pupperv3-monorepo 一致） |
 | [x] [esi_bench.md](repos/esi_bench.md) | ESI-Bench/ESI-Bench：OmniGibson 主动探索评测与 HF 数据集（arXiv:2605.18746） |
@@ -404,6 +405,7 @@
 | [x] [gvhmr-zju3dv-github-io.md](sites/gvhmr-zju3dv-github-io.md) | GVHMR 项目页 zju3dv.github.io/gvhmr（GV 坐标管线、训练/评测、BibTeX；arXiv:2409.06662） |
 | [x] [hrl-boyuai-hands-on-rl.md](sites/hrl-boyuai-hands-on-rl.md) | 动手学强化学习在线书 hrl.boyuai.com（章节 + 在线 notebook + 课件） |
 | [x] [hermes-agent-nousresearch-docs.md](sites/hermes-agent-nousresearch-docs.md) | Hermes Agent 官方站 hermes-agent.nousresearch.com（产品页 + Docusaurus 文档 + llms.txt 索引） |
+| [x] [img2threejs-showcase.md](sites/img2threejs-showcase.md) | img2threejs Live Demo Gallery（hoainho.github.io/img2threejs-showcase；程序化 Three.js 演示） |
 | [x] [npcliu-faststair-github-io.md](sites/npcliu-faststair-github-io.md) | FastStair 项目页 npcliu.github.io/FastStair（摘要、视频区、BibTeX） |
 | [x] [physx-omni-github-io.md](sites/physx-omni-github-io.md) | PhysX-Omni 项目页 physx-omni.github.io（PhysXVerse / PhysX-Bench / 实验对比，arXiv:2605.21572） |
 | [x] [robotics-venues-primary-refs.md](sites/robotics-venues-primary-refs.md) | ICRA、IROS、CoRL、RSS、T-RO、IJRR、Science Robotics 官方介绍与投稿入口一手索引 |
