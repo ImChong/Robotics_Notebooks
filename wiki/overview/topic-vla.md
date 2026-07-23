@@ -2,8 +2,8 @@
 type: overview
 tags: [topic, topic-vla, vision-language-action, foundation, manipulation]
 status: complete
-updated: 2026-07-05
-summary: "VLA 与基础策略专题汇总：视觉-语言-动作统一建模、OpenVLA/π0/GR00T 等开源谱系，以及 BFM 身体接口与 loco-manip 任务接口。"
+updated: 2026-07-23
+summary: "VLA 与基础策略专题汇总：视觉-语言-动作统一建模、OpenVLA/π0/GR00T 等开源谱系，以及 BFM 身体接口与 loco-manip 任务接口；含社区多基准榜入口。"
 ---
 
 # VLA 与基础策略（专题汇总）
@@ -41,6 +41,7 @@ summary: "VLA 与基础策略专题汇总：视觉-语言-动作统一建模、O
 | 地图 | BFM 41 篇技术地图 | [BFM 技术地图](./bfm-41-papers-technology-map.md) |
 | 概念 | BT 编排 VLA 部署 | [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md) |
 | 实体 | ROBOTIS Physical AI 栈 | [Cyclo Intelligence](../entities/cyclo-intelligence.md) |
+| 榜站 | VLA / 灵巧手多基准相对位次 | [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md) |
 | 数据 | 跨具身数据倡议 | [Open X-Embodiment](../concepts/open-x-embodiment.md) |
 
 ## 与其他专题的关系

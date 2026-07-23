@@ -1,5 +1,23 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-23] ingest | sources/sites/sota-evomind-tech.md + sources/repos/evo-sota-io.md — VLA SOTA Leaderboard（EvoMind/MINT-SJTU）；升格 wiki/entities/vla-sota-leaderboard.md；交叉 wiki/methods/vla.md、wiki/overview/vla-open-source-repro-landscape-2025.md、wiki/queries/embodied-eval-benchmark-selection-loop.md、wiki/tasks/manipulation.md、wiki/overview/topic-vla.md；榜站 MIT 开源
+
+- **开源状态：** **已开源（榜站）** — [`MINT-SJTU/Evo-SOTA.io`](https://github.com/MINT-SJTU/Evo-SOTA.io)（MIT）+ 线上 <https://sota.evomind-tech.com/>（截至 2026-07-23）
+- **新建 sites：** [`sources/sites/sota-evomind-tech.md`](sources/sites/sota-evomind-tech.md)
+- **新建 repos：** [`sources/repos/evo-sota-io.md`](sources/repos/evo-sota-io.md)
+- **新建 wiki：** [`wiki/entities/vla-sota-leaderboard.md`](wiki/entities/vla-sota-leaderboard.md)
+- **机构：** 沿用既有 `sjtu`；新增 `evomind`
+- **交叉更新：** [`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/overview/vla-open-source-repro-landscape-2025.md`](wiki/overview/vla-open-source-repro-landscape-2025.md)、[`wiki/queries/embodied-eval-benchmark-selection-loop.md`](wiki/queries/embodied-eval-benchmark-selection-loop.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`wiki/overview/topic-vla.md`](wiki/overview/topic-vla.md)
+
+## [2026-07-23] ingest | sources/papers/fabrivla_arxiv_2607_08575.md + sources/repos/fabrivla.md — FabriVLA（arXiv:2607.08575）轻量 VLA；升格 wiki/entities/paper-fabrivla.md；交叉 wiki/entities/paper-evo1-lightweight-vla.md、wiki/entities/vla-sota-leaderboard.md、wiki/methods/vla.md、wiki/overview/vla-open-source-repro-landscape-2025.md、wiki/tasks/manipulation.md；已开源（Apache-2.0）
+
+- **开源状态：** **已开源** — [`Youi-FabriX/FabriVLA`](https://github.com/Youi-FabriX/FabriVLA)（Apache-2.0）+ HF [`Youi-FabriX/FabriVLA`](https://huggingface.co/Youi-FabriX/FabriVLA) `checkpoint_step_93000.pt`（截至 2026-07-23）；无独立项目页
+- **新建 papers：** [`sources/papers/fabrivla_arxiv_2607_08575.md`](sources/papers/fabrivla_arxiv_2607_08575.md)
+- **新建 repos：** [`sources/repos/fabrivla.md`](sources/repos/fabrivla.md)
+- **新建 wiki：** [`wiki/entities/paper-fabrivla.md`](wiki/entities/paper-fabrivla.md)
+- **机构：** 新增 `umac` / `youibot` / `mese`；榜站侧另见 `evomind`
+- **交叉更新：** [`wiki/entities/paper-evo1-lightweight-vla.md`](wiki/entities/paper-evo1-lightweight-vla.md)、[`wiki/entities/vla-sota-leaderboard.md`](wiki/entities/vla-sota-leaderboard.md)、[`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/overview/vla-open-source-repro-landscape-2025.md`](wiki/overview/vla-open-source-repro-landscape-2025.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`wiki/queries/embodied-eval-benchmark-selection-loop.md`](wiki/queries/embodied-eval-benchmark-selection-loop.md)
+
 ## [2026-07-23] structural | roadmap/depth-humanoid-swarm-performance.md — 新增人形群控展演（HSP）纵深路线（群舞同步 → 编队走位 → 群体特技），十八条纵深入口全站同步
 
 - roadmap/depth-humanoid-swarm-performance.md：新建「人形群控展演」纵深路线（简写 HSP，Humanoid Swarm Performance；起点：央视春晚 540 台 Alpha 1S 群舞，2016），Stage 0 展演任务谱系与预编排 vs 在线协调两大范式 → Stage 1 单机动作基座（重定向 / 跟踪 RL / 音乐驱动生成）→ Stage 2 群舞同步（时间轴编排 / 时钟同步 / 失步容错）→ Stage 3 编队走位（队形变换 / 互避碰 / 场地定位）→ Stage 4 群体特技（高动态技能 × 多机协同 × 安全边界）→ Stage 5 进阶方向（在线互动 / 学习式协调 / 异构群 / 作业群控）

@@ -16,6 +16,9 @@ related:
   - ../formalizations/lie-group-rigid-body-motions.md
   - ../entities/paper-harness-vla.md
   - ../entities/paper-robointer-1-5.md
+  - ../entities/paper-fabrivla.md
+  - ../entities/vla-sota-leaderboard.md
+  - ../entities/paper-evo1-lightweight-vla.md
 sources:
   - ../../sources/blogs/wechat_shenlan_vla_github_repro_survey_2025.md
   - ../../sources/repos/rpent.md
@@ -30,7 +33,7 @@ summary: "2025 年高可见 VLA 开源栈策展：从通用策略（OpenPI）、
 
 VLA 的「智能」可以写在论文里，但**跑不通的训练脚本与权重**会直接暴露工程差距；2025 年开源生态同时在 **模型、RL 训练系统、跨本体与 VLA+世界模型** 四条线上铺开，复现时应先选对「你要验证的层」再选仓库。**2026 起** 可另见通义 [Qwen-VLA](../entities/qwen-vla.md)（**操作 + VLN 统一通才**、Qwen3.5-4B + DiT flow），本页 11 项表仍锁定 2025-12 策展快照。
 
-**2026 补充入口（不入上表）：** [RoboInter1.5](../entities/paper-robointer-1-5.md) 提供 **中间表示数据 + VLM +（待齐）VLA/World**——适合先复现 IR-VQA/Planner，再跟进 VLA 权重。
+**2026 补充入口（不入上表）：** [RoboInter1.5](../entities/paper-robointer-1-5.md) 提供 **中间表示数据 + VLM +（待齐）VLA/World**——适合先复现 IR-VQA/Planner，再跟进 VLA 权重。[FabriVLA](../entities/paper-fabrivla.md) 适合 **Meta-World 轻量 flow-VLA** 对照（gated SA + shallow fusion，代码+93k 权重）；多基准相对位次见 [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md)。
 
 ## 英文缩写速查
 
@@ -106,7 +109,7 @@ flowchart TB
 | 你的首要目标 | 建议起点 | 常见坑 |
 |-------------|----------|--------|
 | 复现 π 系多任务操作 | OpenPI 仓库 + 官方权重/数据说明 | 多机器人 URDF、相机标定与 action space 不一致 |
-| 单卡 / 小团队试 VLA | VLA-Adapter 或 StarVLA | 勿与 OpenPI 数据规模假设混用 |
+| 单卡 / 小团队试 VLA | VLA-Adapter 或 StarVLA；Meta-World 轻量对照可用 [FabriVLA](../entities/paper-fabrivla.md) / [Evo-1](../entities/paper-evo1-lightweight-vla.md) | 勿与 OpenPI 数据规模假设混用；FabriVLA 需 DeepSpeed FP32 master |
 | 给已有 VLA 做 RL 后训练 | SimpleVLA-RL + 确认仿真/渲染依赖；或 **RLinf STEAM/RECAP**（离线 advantage + CFG，无需在线采样）；要 **在线异步 rollout 飞轮** 可对照 [lehome_solution](../entities/paper-lehome-learning-to-fold.md) | 需对齐 veRL 与 OpenVLA-OFT 版本；STEAM 见 [论文实体](../entities/paper-steam-advantage-modeling.md)；LeHome 需 Isaac Sim + HF Hub |
 | 搭集群 RL 基建 | RLinf | 系统项目，不等同于单一策略 checkpoint |
 | 冻结 VLA + LLM harness 评测 | RPent（Harness VLA）+ LIBERO-Pro | 需 LLM API key 与 π₀.₅ / 仿真依赖；≠ 训练新 VLA |
@@ -117,6 +120,7 @@ flowchart TB
 | 驾驶端到端 | OpenDriveVLA | 与室内操作 VLA 数据/评测完全不同域 |
 | 灵巧长程抓取 | DexGraspVLA | 分层延迟与扩散推理实时性 |
 | 可解释推理链 + 控制 | DeepThinkVLA | 推理数据构建成本 |
+| 多基准相对位次导航（非复现） | [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md) | 摘录分数、不重跑；跨基准不可比，须回原文核协议 |
 
 ## 与深蓝专栏其他篇的关系
 

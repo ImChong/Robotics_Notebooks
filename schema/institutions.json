@@ -1401,6 +1401,38 @@
       "aliases": [
         "style3d"
       ]
+    },
+    "umac": {
+      "label": "澳门大学（University of Macau）",
+      "aliases": [
+        "umac",
+        "university-of-macau",
+        "umacau"
+      ]
+    },
+    "youibot": {
+      "label": "优艾智合（Youibot Robotics）",
+      "aliases": [
+        "youibot",
+        "youibot-robotics",
+        "fabrix",
+        "youi-fabrix"
+      ]
+    },
+    "evomind": {
+      "label": "进化思维科技（EvoMind Tech）",
+      "aliases": [
+        "evomind",
+        "evomind-tech",
+        "evo-mind"
+      ]
+    },
+    "mese": {
+      "label": "弥瑟科技（Mese Technology）",
+      "aliases": [
+        "mese",
+        "mese-technology"
+      ]
     }
   }
 }
