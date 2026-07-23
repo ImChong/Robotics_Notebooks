@@ -1,13 +1,109 @@
 {
   "generated_at": "2026-07-23",
-  "node_count": 1766,
-  "edge_count": 14409,
+  "node_count": 1767,
+  "edge_count": 14431,
   "coverage": {
-    "covered": 1716,
-    "total": 1746,
+    "covered": 1717,
+    "total": 1747,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/queries/open-source-vision-trainable-projects.md",
+      "detail_id": "wiki-queries-open-source-vision-trainable-projects",
+      "label": "可直接开训的开源视觉项目选型",
+      "type": "query",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/lerobot.md",
+      "detail_id": "entity-lerobot",
+      "label": "LeRobot (Hugging Face)",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/rf-detr.md",
+      "detail_id": "entity-rf-detr",
+      "label": "RF-DETR（Roboflow Detection Transformer）",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/extreme-parkour.md",
+      "detail_id": "entity-extreme-parkour",
+      "label": "Extreme Parkour（端到端四足感知跑酷）",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "运动控制（Locomotion） 社区"
+    },
+    {
+      "path": "wiki/entities/gr00t-visual-sim2real.md",
+      "detail_id": "entity-gr00t-visual-sim2real",
+      "label": "GR00T-VisualSim2Real (NVIDIA 视觉 Sim2Real 框架)",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-notebook-visualmimic.md",
+      "detail_id": "entity-paper-notebook-visualmimic",
+      "label": "VisualMimic（Visual Humanoid Loco-Manipulation via Motion Tracking and Generation）",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
+      "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
+      "label": "VLA 开源复现景观（2025 策展）",
+      "type": "overview",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/openvla.md",
+      "detail_id": "entity-openvla",
+      "label": "OpenVLA",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/star-vla.md",
+      "detail_id": "wiki-methods-star-vla",
+      "label": "StarVLA",
+      "type": "method",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-robointer-1-5.md",
       "detail_id": "entity-paper-robointer-1-5",
@@ -62,17 +158,6 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
-      "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
-      "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
-      "label": "VLA 开源复现景观（2025 策展）",
-      "type": "overview",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
       "path": "wiki/entities/paper-internvla-a15-unified-vla.md",
       "detail_id": "entity-paper-internvla-a15-unified-vla",
       "label": "InternVLA-A1.5：理解、潜式前瞻与动作的统一 VLA",
@@ -100,8 +185,7 @@
       "type": "entity",
       "recency": "2026-07-23",
       "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/concepts/sim2real.md",
@@ -131,115 +215,32 @@
       "type": "entity",
       "recency": "2026-07-23",
       "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/articraft.md",
-      "detail_id": "entity-articraft",
-      "label": "Articraft",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-bfm-zero.md",
-      "detail_id": "entity-paper-bfm-zero",
-      "label": "BFM-Zero",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-da-nav.md",
-      "detail_id": "entity-paper-da-nav",
-      "label": "DA-Nav（方向感知城市尺度 VLN）",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/tasks/vision-language-navigation.md",
-      "detail_id": "wiki-tasks-vision-language-navigation",
-      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
-      "type": "task",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/vln-open-source-repro-paradigms.md",
-      "detail_id": "wiki-overview-vln-open-source-repro-paradigms",
-      "label": "VLN 开源复现：四范式学习路径",
-      "type": "overview",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-navila-legged-robot-vision-language-action-model.md",
-      "detail_id": "entity-paper-notebook-navila-legged-robot-vision-language-action-model",
-      "label": "NaVILA",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/behavior-cloning.md",
-      "detail_id": "wiki-methods-behavior-cloning",
-      "label": "Behavior Cloning（行为克隆）",
-      "type": "method",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-lehome-learning-to-fold.md",
-      "detail_id": "entity-paper-lehome-learning-to-fold",
-      "label": "Learning to Fold（LeHome Challenge 2026 · arXiv:2606.27163）",
-      "type": "entity",
-      "recency": "2026-07-22",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-robointer-1-5.md",
-    "detail_id": "entity-paper-robointer-1-5",
-    "label": "RoboInter1.5（中间表示操作与世界建模套件）",
-    "type": "entity",
+    "path": "wiki/queries/open-source-vision-trainable-projects.md",
+    "detail_id": "wiki-queries-open-source-vision-trainable-projects",
+    "label": "可直接开训的开源视觉项目选型",
+    "type": "query",
     "recency": "2026-07-23",
     "source": "log.md",
-    "action": "added",
+    "action": "maintained",
     "has_repo": true,
     "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 443
+      "size": 446
     },
     {
       "label": "移动操作",
-      "size": 179
+      "size": 178
     },
     {
       "label": "人形论文深读笔记",
-      "size": 175
+      "size": 177
     },
     {
       "label": "全身控制",
@@ -247,11 +248,11 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 107
+      "size": 96
     },
     {
       "label": "仿真训练",
-      "size": 67
+      "size": 60
     }
   ],
   "top_hubs": [

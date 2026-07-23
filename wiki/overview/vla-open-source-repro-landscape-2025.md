@@ -135,6 +135,7 @@ flowchart TB
 - [VLA（Vision-Language-Action）](../methods/vla.md)
 - [StarVLA](../methods/star-vla.md)
 - [操作 VLA 架构选型 Query](../queries/manipulation-vla-architecture-selection.md)
+- [可直接开训的开源视觉项目选型](../queries/open-source-vision-trainable-projects.md) — 「带视觉 + 能立刻训」按目标分层入口
 - [机器人世界模型训练闭环分类](../overview/robot-world-models-training-loop-taxonomy.md)
 - [LeRobot](../entities/lerobot.md) — RynnVLA-002 文内 SO100 数据收集语境
 - [Learning to Fold（LeHome 2026）](../entities/paper-lehome-learning-to-fold.md) — 竞赛级 π₀.₅ RL + DAgger 全链路开源

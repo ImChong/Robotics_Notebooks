@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-23] query | 可直接开训的开源视觉项目 — 写回 wiki/queries/open-source-vision-trainable-projects.md
+
+- Q: 有哪个开源的带视觉的项目我可以直接开始训练的？
+- A: 默认先 [LeRobot](wiki/entities/lerobot.md)（Hub 数据 + `lerobot-train`）；感知用 [RF-DETR](wiki/entities/rf-detr.md)；单卡 VLA 用 StarVLA/OpenVLA；四足深度跑酷用 [Extreme Parkour](wiki/entities/extreme-parkour.md)；人形 RGB 用 [GR00T-VisualSim2Real](wiki/entities/gr00t-visual-sim2real.md)。[VisualMimic](wiki/entities/paper-notebook-visualmimic.md) 训练代码未发，勿当开训入口。
+- 写回：新建 [`wiki/queries/open-source-vision-trainable-projects.md`](wiki/queries/open-source-vision-trainable-projects.md)；更新 [`wiki/queries/README.md`](wiki/queries/README.md)
+- 涉及页面：[`wiki/overview/vla-open-source-repro-landscape-2025.md`](wiki/overview/vla-open-source-repro-landscape-2025.md)、[`wiki/entities/lerobot.md`](wiki/entities/lerobot.md)、[`wiki/entities/openvla.md`](wiki/entities/openvla.md)、[`wiki/methods/star-vla.md`](wiki/methods/star-vla.md)、[`wiki/entities/rf-detr.md`](wiki/entities/rf-detr.md)、[`wiki/entities/extreme-parkour.md`](wiki/entities/extreme-parkour.md)、[`wiki/entities/gr00t-visual-sim2real.md`](wiki/entities/gr00t-visual-sim2real.md)、[`wiki/entities/paper-notebook-visualmimic.md`](wiki/entities/paper-notebook-visualmimic.md)
+
 ## [2026-07-23] ingest | sources/papers/robointer_1_5_arxiv_2607_18709.md + sources/sites/lihaohn-robointer-github-io.md + sources/repos/robointer.md — RoboInter1.5（arXiv:2607.18709）中间表示套件+World；升格 wiki/entities/paper-robointer-1-5.md；交叉 wiki/methods/vla.md、wiki/methods/generative-world-models.md、wiki/concepts/video-as-simulation.md、wiki/tasks/manipulation.md、wiki/overview/vla-open-source-repro-landscape-2025.md、wiki/entities/paper-internvla-a15-unified-vla.md、wiki/entities/paper-masked-visual-actions.md；部分开源（Data/VLM 已发，VLA/World 待齐）
 
 - **开源状态：** **部分开源** — [`InternRobotics/RoboInter`](https://github.com/InternRobotics/RoboInter)（MIT）+ HF Data/VQA/VLM；`RoboInterVLA` 与 **RoboInter-World** 代码/权重待齐（截至 2026-07-23）

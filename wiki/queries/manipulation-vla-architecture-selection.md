@@ -3,7 +3,7 @@ title: 操作 VLA 与视频-动作架构选型指南
 type: query
 status: complete
 created: 2026-05-21
-updated: 2026-07-01
+updated: 2026-07-23
 summary: 在灵巧操作任务中，如何在 VLA、Video-Action Model、解耦动力学 VLA、世界模型与开源策略家族之间选型与组合。
 sources:
   - ../../sources/blogs/wechat_shenlan_vla_github_repro_survey_2025.md
@@ -100,6 +100,7 @@ sources:
 ## 关联页面
 
 - [VLA 开源复现景观（2025）](../overview/vla-open-source-repro-landscape-2025.md)
+- [可直接开训的开源视觉项目选型](./open-source-vision-trainable-projects.md) — clone 后能否立刻训的仓库筛选
 - [VLA](../methods/vla.md)、[mimic-video](../methods/mimic-video.md)、[DeFI](../methods/defi-decoupled-dynamics-vla.md)、[DWM](../methods/dwm.md)、[CLAW](../methods/claw.md)
 - [π₀ Policy](../methods/π0-policy.md)、[π0.7 Policy](../methods/pi07-policy.md)、[STAR-VLA](../methods/star-vla.md)、[Pelican Unified-1](../methods/pelican-unified-1.md)
 - [VLA 部署指南](./vla-deployment-guide.md)、[IL for Manipulation](./il-for-manipulation.md)、[接触丰富操作指南](./contact-rich-manipulation-guide.md)

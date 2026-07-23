@@ -75,6 +75,7 @@
 | [grasp-policy-selection](./grasp-policy-selection.md) | 真机抓取系统该用几何启发式 / 检测式 grasp pose / 还是端到端策略？开放场景 vs 已知物体怎么选？ | Grasp Pose Estimation、AnyGrasp、ContactNet、Manipulation、Visual Servoing、Contact-Rich Manipulation |
 | [humanoid-motion-tracking-method-selection](./humanoid-motion-tracking-method-selection.md) | 人形运动跟踪与风格先验方法怎么选、怎么组合？ | DeepMimic、BeyondMimic、AMP/ADD/SMP、Any2Track、AMS、GentleHumanoid、ASE、GenMo |
 | [manipulation-vla-architecture-selection](./manipulation-vla-architecture-selection.md) | 灵巧操作里 VLA / 视频-动作 / 世界模型 / 开源策略怎么选？ | VLA、mimic-video、DeFI、DWM、CLAW、π₀、π0.7、STAR-VLA、Pelican |
+| [open-source-vision-trainable-projects](./open-source-vision-trainable-projects.md) | 有哪个开源的带视觉的项目我可以直接开始训练的？ | LeRobot、RF-DETR、StarVLA、OpenVLA、Extreme Parkour、GR00T-VisualSim2Real、VisualMimic |
 | [humanoid-contact-character-control-guide](./humanoid-contact-character-control-guide.md) | 接触丰富人形控制与角色化表演路线怎么选？ | GentleHumanoid、HTTD、Being-H07、Disney OLAF、HiPAN、Zest、EFGCL |
 | [dexterous-manipulation-data-pipeline](./dexterous-manipulation-data-pipeline.md) | 灵巧操作的数据标注、手部感知、GAE 与执行器建模怎么配？ | Auto-labeling、WiLoR、GAE、Actuator Network、Tactile Impedance |
 | [object-detection-model-selection](./object-detection-model-selection.md) | 机器人感知栈选单阶段还是两阶段检测器？机载实时 vs 服务器侧怎么选？ | Object Detection、Vision Backbones、YOLO、ResNet、Manipulation、Humanoid Soccer |
