@@ -17,6 +17,7 @@ related:
   - ../entities/paper-dexverse.md
   - ../entities/paper-physmani-dynamic-manipulation-world-model.md
   - ../entities/paper-masked-visual-actions.md
+  - ../entities/paper-ctrl-world.md
   - ../overview/tro-manip-5-papers-technology-map.md
   - ../entities/paper-tro-manip-01-diversity-scaling.md
   - ../entities/paper-tro-manip-02-canonical-policy.md
@@ -103,7 +104,7 @@ flowchart TD
 - **VLA (Vision-Language-Action Model)**：端到端视觉-语言-动作模型
   - 代表：UnifoLM, π₀, [Green-VLA](../entities/paper-greenvla-staged-vla-humanoid.md)（五阶段课程 + 统一多本体动作 + Green 人形上身部署，arXiv:2602.00919）
   - **产线后训练：** [KinetIQ Ascend](../entities/kinetiq-ascend.md)（Humanoid, 2026）在 **CFM-VLA** 上用 **真机 PPO** 把 BC 策略推到工业级吞吐/可靠性（双臂 Alpha、稀疏奖励、数天 robot-time）
-- **World Model**：学习操作的世界模型，在模型里 planning；像素域上「静态场景 + 手轨迹 → 交互视频」的显式分解路线见 [DWM（Dexterous World Models）](../methods/dwm.md)；**语言条件 3D 物体点轨迹** 先验见 [MolmoMotion](../entities/molmo-motion.md)（DROID 微调后可提升 MolmoBot 规划样本效率）与产业侧级联样本 [VLOA（RoboScience）](../entities/roboscience-vloa.md)（物体中心 3D 点云轨迹 + 轨迹条件操作模型，闭源）；**训练期物理对齐** 见 [PhysisForcing](../entities/paper-physisforcing.md)（CoTracker3 轨迹 + 语义关系双层监督，强化接触丰富操纵视频的可模拟性，arXiv:2606.28128）；**动态目标 + 3D Gaussian 速度场** 见 [PhysMani](../entities/paper-physmani-dynamic-manipulation-world-model.md)（在线无散度 WM + 3DFA 策略，PhysMani-Bench 16 任务，arXiv:2607.01938）；**像素掩码动作统一前向/逆向** 见 [Masked Visual Actions](../entities/paper-masked-visual-actions.md)（策略评估 **r=0.982**，arXiv:2607.19343）；**IR 条件世界模型 + plan-then-execute VLA** 见 [RoboInter1.5](../entities/paper-robointer-1-5.md)（230k+ episode，arXiv:2607.18709）
+- **World Model**：学习操作的世界模型，在模型里 planning；像素域上「静态场景 + 手轨迹 → 交互视频」的显式分解路线见 [DWM（Dexterous World Models）](../methods/dwm.md)；**语言条件 3D 物体点轨迹** 先验见 [MolmoMotion](../entities/molmo-motion.md)（DROID 微调后可提升 MolmoBot 规划样本效率）与产业侧级联样本 [VLOA（RoboScience）](../entities/roboscience-vloa.md)（物体中心 3D 点云轨迹 + 轨迹条件操作模型，闭源）；**训练期物理对齐** 见 [PhysisForcing](../entities/paper-physisforcing.md)（CoTracker3 轨迹 + 语义关系双层监督，强化接触丰富操纵视频的可模拟性，arXiv:2606.28128）；**动态目标 + 3D Gaussian 速度场** 见 [PhysMani](../entities/paper-physmani-dynamic-manipulation-world-model.md)（在线无散度 WM + 3DFA 策略，PhysMani-Bench 16 任务，arXiv:2607.01938）；**像素掩码动作统一前向/逆向** 见 [Masked Visual Actions](../entities/paper-masked-visual-actions.md)（策略评估 **r=0.982**，arXiv:2607.19343）；**多视角 VLA 闭环可控 WM + 合成 SFT** 见 [Ctrl-World](../entities/paper-ctrl-world.md)（ICLR 2026，**38.7%→83.4%**）；**IR 条件世界模型 + plan-then-execute VLA** 见 [RoboInter1.5](../entities/paper-robointer-1-5.md)（230k+ episode，arXiv:2607.18709）
 - **Video-Action Model（VAM）**：用语义–动力学一体的 **视频扩散骨干潜计划** 条件化 **流匹配 / 逆动力学式动作头**，与 VLA 的静态 VLM 先验形成对照；入口见 [mimic-video](../methods/mimic-video.md)。**联合训练 + 测试时仿真选动作** 见 [τ₀-WM](../entities/tau0-world-model.md)（异构掩码预训练、propose–evaluate–revise）；**开源 Wan+MoT 三专家 + RobotWin JSONL 管线** 见 [Dexmal DW05](../entities/dexmal-dw05.md)（DW05-Base / DW05-Robotwin）
 - **DeFI**：**GFDM + GIDM** 分阶段预训练解耦前向/逆动力学，再用扩散适配器耦合微调；强调无动作标签人视频与 CALVIN / SimplerEnv 长程表现；入口见 [DeFI](../methods/defi-decoupled-dynamics-vla.md)
 - **EgoScale**：在 **海量 egocentric 人视频** 上对 **流式 VLA** 做 **腕 + 重定向灵巧手** 显式预训练，并以 **对齐人–机 mid-training** 承接 embodiment gap，面向 **高 DoF 长程灵巧** 任务；入口见 [EgoScale](../methods/egoscale.md)
