@@ -420,6 +420,39 @@ console.log('ok');
         self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
         self.assertIn("ok", result.stdout)
 
+    def test_inline_markdown_unescapes_asterisk_before_emphasis(self):
+        """A\\* and **A\\*** must render as A* without a visible backslash."""
+        node = r"""
+const fs = require('fs');
+const content = fs.readFileSync(process.argv[2], 'utf8');
+const start = content.indexOf('const matchHtmlRegExp');
+const end = content.indexOf('function normalizeMathExpr(expr)', start);
+eval(content.slice(start, end));
+const bold = renderInlineMarkdown('**A\\***（A-star）', {});
+if (bold.includes('\\*') || bold.includes('A\\')) throw new Error('backslash leaked in bold: ' + bold);
+if (!bold.includes('<strong>') || !bold.includes('&#42;')) throw new Error('expected strong+entity: ' + bold);
+const cell = renderInlineMarkdown('A\\* 全局规划', {});
+if (cell.includes('\\*')) throw new Error('backslash leaked in plain: ' + cell);
+if (!cell.includes('&#42;')) throw new Error('expected entity in plain: ' + cell);
+const label = renderLinkLabel('A\\*');
+if (label.includes('\\*') || !label.includes('&#42;')) throw new Error('link label bad: ' + label);
+console.log('ok');
+"""
+        import subprocess
+        import tempfile
+
+        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tmp:
+            tmp.write(node)
+            tmp_path = tmp.name
+        result = subprocess.run(
+            ["node", tmp_path, str(MAIN_JS)],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
+        self.assertIn("ok", result.stdout)
+
     def test_main_js_contains_toc_active_state_and_anchor_copy_hooks(self):
         content = MAIN_JS.read_text(encoding="utf-8")
         expected_snippets = [

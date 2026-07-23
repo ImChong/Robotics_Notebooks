@@ -1199,22 +1199,23 @@
   }
 
   /**
-   * Restore CommonMark backslash escapes after emphasis runs.
-   * Detail titles/tables often contain A\*；without this the backslash leaks into HTML.
-   * Escapable set mirrors CommonMark (brackets via \u005b/\u005d for ESLint).
+   * Turn CommonMark backslash escapes into HTML character references *before*
+   * emphasis runs. Post-emphasis unescape is not enough: `**A\***` is eaten as
+   * `<strong>A\</strong>*` and still displays as A\*. Escapable set mirrors
+   * CommonMark (brackets via \u005b/\u005d for ESLint).
    */
   function unescapeMarkdownEscapes(text) {
-    return String(text || '').replace(/\\([\\`*_{}()#+\-.!|\u005b\u005d])/g, '$1');
+    return String(text || '').replace(/\\([\\`*_{}()#+\-.!|\u005b\u005d])/g, function (_m, ch) {
+      return '&#' + ch.charCodeAt(0) + ';';
+    });
   }
 
   /** Link labels are tokenized before emphasis runs; apply inline styles inside <a> text. */
   function renderLinkLabel(label) {
-    return unescapeMarkdownEscapes(
-      escapeHtml(String(label || ''))
-        .replace(/`([^`]+)`/g, '<code>$1</code>')
-        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-        .replace(/\*([^*]+)\*/g, '<em>$1</em>')
-    );
+    return unescapeMarkdownEscapes(escapeHtml(String(label || '')))
+      .replace(/`([^`]+)`/g, '<code>$1</code>')
+      .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*([^*]+)\*/g, '<em>$1</em>');
   }
 
   function renderInlineMarkdown(text, markdownContext) {
@@ -1306,13 +1307,12 @@
       return token;
     });
 
-    // 3. Apply standard escapes and basic Markdown styles
-    let rendered = escapeHtml(withAutolinks)
+    // 3. HTML-escape, then materialize MD backslash escapes, then emphasis.
+    //    Order matters: `\*` must not participate in `*` / `**` pairing.
+    let rendered = unescapeMarkdownEscapes(escapeHtml(withAutolinks))
       .replace(/`([^`]+)`/g, '<code>$1</code>')
       .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
       .replace(/\*([^*]+)\*/g, '<em>$1</em>');
-    // 3b. After emphasis: turn A\* / RRT\* etc. into literal asterisks for display
-    rendered = unescapeMarkdownEscapes(rendered);
 
     // 4. Restore Links
     linkTokens.forEach(function (entry) {
