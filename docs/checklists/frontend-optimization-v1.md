@@ -37,6 +37,7 @@
     - [x] 图谱页 `graph.html`：「按社区着色」图例全端（PC + 移动）改为左下角 FAB，默认折叠；点击后自左侧滑出抽屉，点击空白/遮罩或 Esc 收起，避免遮挡画布。PC 端展开尺寸约为视口宽 1/4、高 1/3。
     - [x] 图谱页 `graph.html`：移动端 Chrome 下滑隐藏底栏后，画布壳层按 `visualViewport` / `dvh` 同步高度，避免 graph view 下方留白。
     - [x] 录制验证视频 `graph-mobile-viewport-fix.mp4`；同步刷新 README `media/graph-demo.gif`（1776 节点）。
+    - [x] README 演示 GIF 升级为全站演示 `media/site-demo.gif`（替换并删除旧 `media/graph-demo.gif`）：首页入口卡 → 全库即时搜索（MPC）→ 图谱预览 → 完整图谱悬停 / 缩放 / 节点详情侧栏 / 3D 切换，带分步字幕；由 `scripts/record_readme_demo.cjs` 生成（1799 节点）。
 
 ---
 
