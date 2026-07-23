@@ -156,4 +156,4 @@
 - wiki/entities/simplefoc.md
 - wiki/entities/wuji-robotics.md
 
-📊 Sources 覆盖率：1723/1753 (98%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1724/1754 (98%) wiki/entity 页有 ingest 来源

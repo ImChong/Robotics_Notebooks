@@ -2,12 +2,13 @@
 type: entity
 tags: [paper, vla, world-models, predictive-world-model, autonomous-driving, causal-forecasting, xpeng]
 status: complete
-updated: 2026-07-21
+updated: 2026-07-23
 arxiv: "2605.24892"
 related:
   - ../methods/vla.md
   - ../concepts/world-action-models.md
   - ../methods/generative-world-models.md
+  - ./paper-s-squared-vla.md
   - ./paper-x-world.md
   - ./paper-x-mind.md
   - ./paper-x-cache.md
@@ -100,6 +101,7 @@ flowchart LR
 | **朴素 next-frame WM** | 易塌缩外推；本工作块间稀疏、块内稠密 |
 | **X-Mind** | 同团队：本页偏 **稠密多摄想象**；X-Mind 偏 **压缩 Visual CoT** |
 | **X-World** | 外部仿真器；本页把预测 **嵌进策略环** |
+| **S²-VLA** | 另一条驾驶 VLA 轴：用 **语义∥空间双流** 缓解 spatial collapse（NAVSIM SFT），而非内嵌世界模型；见 [S²-VLA](./paper-s-squared-vla.md) |
 
 ## 工程实践
 
@@ -119,6 +121,7 @@ flowchart LR
 ## 关联页面
 
 - [VLA](../methods/vla.md) — 联合世界建模的策略主线
+- [S²-VLA](./paper-s-squared-vla.md) — 驾驶 VLA：语义∥空间双流解耦（武汉理工；NAVSIM）
 - [World Action Models](../concepts/world-action-models.md) — Joint 族对照坐标
 - [生成式世界模型](../methods/generative-world-models.md) — Renderer / 视频仿真谱系
 - [X-World](./paper-x-world.md) — Renderer 注意力/VAE 前序底座
