@@ -1198,12 +1198,23 @@
     return routeIndex && routeIndex[normalizedPath] ? routeIndex[normalizedPath] + hash : '';
   }
 
+  /**
+   * Restore CommonMark backslash escapes after emphasis runs.
+   * Detail titles/tables often contain A\*；without this the backslash leaks into HTML.
+   * Escapable set mirrors CommonMark (brackets via \u005b/\u005d for ESLint).
+   */
+  function unescapeMarkdownEscapes(text) {
+    return String(text || '').replace(/\\([\\`*_{}()#+\-.!|\u005b\u005d])/g, '$1');
+  }
+
   /** Link labels are tokenized before emphasis runs; apply inline styles inside <a> text. */
   function renderLinkLabel(label) {
-    return escapeHtml(String(label || ''))
-      .replace(/`([^`]+)`/g, '<code>$1</code>')
-      .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-      .replace(/\*([^*]+)\*/g, '<em>$1</em>');
+    return unescapeMarkdownEscapes(
+      escapeHtml(String(label || ''))
+        .replace(/`([^`]+)`/g, '<code>$1</code>')
+        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+    );
   }
 
   function renderInlineMarkdown(text, markdownContext) {
@@ -1300,6 +1311,8 @@
       .replace(/`([^`]+)`/g, '<code>$1</code>')
       .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
       .replace(/\*([^*]+)\*/g, '<em>$1</em>');
+    // 3b. After emphasis: turn A\* / RRT\* etc. into literal asterisks for display
+    rendered = unescapeMarkdownEscapes(rendered);
 
     // 4. Restore Links
     linkTokens.forEach(function (entry) {

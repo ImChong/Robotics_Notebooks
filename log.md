@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-23] fix(ux): 详情页 Markdown 还原 A\* 等反斜杠转义
+
+- `docs/main.js`：`renderInlineMarkdown` / `renderLinkLabel` 在强调语法之后还原 CommonMark `\*` 转义，修复策展表等处显示 `A\*`
+- `wiki/entities/humanoid-system-curriculum.md`：第 4 章映射表改为直接写 `A*`
+
 ## [2026-07-23] fix(export): 站点标题还原 Markdown 转义（A\* → A*）
 
 - `extract_title`（export_minimal / search_indexing / generate_link_graph）：去掉 H1 中的 `\*` 等转义，避免详情页/图谱把反斜杠当正文显示

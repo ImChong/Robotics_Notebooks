@@ -100,10 +100,10 @@ flowchart LR
 | 节 | 主题 | 独立节点 |
 |----|------|----------|
 | 4.1 | 动态障碍剔除与 2D 地图 | [动态障碍物滤波](../concepts/dynamic-obstacle-filtering.md) |
-| 4.2 | A\* 全局规划 | [A\*](../methods/a-star.md) |
+| 4.2 | A* 全局规划 | [A*](../methods/a-star.md) |
 | 4.3 | DWA 局部规划 | [DWA](../methods/dwa.md) |
 | 4.4 | 仿真规划实践 | [PythonRobotics](./python-robotics.md)、[Nav2](./navigation2.md) |
-| 实践 | A\* + DWA 避障 | 同上 |
+| 实践 | A* + DWA 避障 | 同上 |
 
 ### 第 5 章 TARE / FAR 自主探索
 
