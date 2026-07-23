@@ -6,6 +6,10 @@ updated: 2026-07-20
 related:
   - ./locomotion.md
   - ../concepts/humanoid-multi-robot-coordination.md
+  - ../concepts/soccer-field-simulation.md
+  - ../methods/soccer-field-line-detection.md
+  - ../methods/visual-line-matching-localization.md
+  - ../methods/visual-line-ekf-fusion.md
   - ../methods/reinforcement-learning.md
   - ../methods/imitation-learning.md
   - ../methods/marl.md
@@ -13,6 +17,8 @@ related:
   - ../methods/htwk-gym.md
   - ../entities/booster-robocup-demo.md
   - ../entities/unitree-g1.md
+  - ../entities/humanoid-system-curriculum.md
+  - ../entities/intel-realsense.md
   - ../entities/paper-robonaldo-humanoid-soccer-shooting.md
   - ../entities/paper-vision-dribbling-humanoid-soccer-privileged-representation.md
   - ../entities/paper-humanoid-soccer-swarm-intelligence.md
@@ -25,6 +31,7 @@ sources:
   - ../../sources/papers/robonaldo_arxiv_2606_11092.md
   - ../../sources/papers/humanoid_soccer_swarm_intelligence_sensors_2025.md
   - ../../sources/papers/artemis_humanoid_soccer_team_coordination_arxiv_2512_09431.md
+  - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
 summary: "Humanoid Soccer 是机器人学中最具挑战性的综合任务之一，要求人形机器人集成高速行走、动态视觉、精准踢球与多机协作。"
 ---
 
@@ -108,6 +115,8 @@ summary: "Humanoid Soccer 是机器人学中最具挑战性的综合任务之一
 
 ## 关联系统/方法
 
+- [人形系统课程策展](../entities/humanoid-system-curriculum.md) — Ch6–7 感知定位与 RoboCup 实践地图
+- [足球场仿真环境](../concepts/soccer-field-simulation.md) / [场地线检测](../methods/soccer-field-line-detection.md) / [线匹配](../methods/visual-line-matching-localization.md) / [线特征 EKF](../methods/visual-line-ekf-fusion.md)
 - [Locomotion](./locomotion.md) — 足球任务的基础
 - [PAiD Framework](../methods/paid-framework.md) — 渐进式感知动作学习
 - [人形足球技能学习方法选型指南](../queries/humanoid-soccer-skill-learning-method-selection.md) — PAiD vs RoboNaldo 选型

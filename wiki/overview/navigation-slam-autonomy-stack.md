@@ -198,6 +198,9 @@ flowchart TB
 
 - [《自动驾驶核心算法盘点》专栏技术地图](./autonomous-driving-core-algorithms-series.md) — 感知/规控/SLAM/跟踪预测经典算法索引
 - [PythonRobotics](../entities/python-robotics.md) — 自主导航算法入门代码与教材
+- [A\*](../methods/a-star.md) / [DWA](../methods/dwa.md) / [里程计–激光融合](../methods/lidar-odometry-fusion.md) — 课程常用独立算法节点
+- [自主探索](../tasks/autonomous-exploration.md) · [TARE](../entities/tare-planner.md) · [FAR](../entities/far-planner.md)
+- [人形系统课程策展](../entities/humanoid-system-curriculum.md) — Ch3–5 导航/探索映射
 - [LiDAR / LIO / VIO 选型对比](../comparisons/lidar-slam-lio-vio-selection.md)
 - [Navigation2](../entities/navigation2.md)
 - [Autoware](../entities/autoware.md)

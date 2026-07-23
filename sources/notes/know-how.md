@@ -199,7 +199,7 @@
         
     - 深蓝学院
         
-        - [人形机器人系统 - 理论与实践](https://www.shenlanxueyuan.com/course/802/task/33927/show)
+        - [人形机器人系统 - 理论与实践](https://www.shenlanxueyuan.com/course/802/task/33927/show) — 大纲归档见 [shenlan_humanoid_system_theory_practice.md](../courses/shenlan_humanoid_system_theory_practice.md)；wiki 策展见 [humanoid-system-curriculum](../../wiki/entities/humanoid-system-curriculum.md)
             
             - 第8章: 大模型赋能人形机器人
                 

@@ -11,9 +11,12 @@ related:
   - ../entities/modern-robotics-book.md
   - ../formalizations/kalman-filter.md
   - ../formalizations/ekf.md
+  - ../methods/a-star.md
+  - ../methods/dwa.md
   - ../methods/trajectory-optimization.md
   - ../concepts/state-estimation.md
   - ../concepts/ros2-basics.md
+  - ../entities/humanoid-system-curriculum.md
 sources:
   - ../../sources/repos/python_robotics.md
   - ../../sources/papers/python_robotics_arxiv_1808_10703.md
@@ -101,9 +104,12 @@ flowchart LR
 - [导航·SLAM·自动驾驶栈总览](../overview/navigation-slam-autonomy-stack.md)
 - [《自动驾驶核心算法盘点》专栏技术地图](../overview/autonomous-driving-core-algorithms-series.md) — 文内配图常引本仓 LQR/Frenet 示例
 - [Navigation2（Nav2）](./navigation2.md)
+- [A\* 全局路径规划](../methods/a-star.md) — Path Planning 模块独立方法页
+- [DWA 局部路径规划](../methods/dwa.md) — 动态窗口法独立方法页
 - [Kalman Filter](../formalizations/kalman-filter.md)
 - [Trajectory Optimization](../methods/trajectory-optimization.md)
 - [Modern Robotics 教材](./modern-robotics-book.md)
+- [人形系统课程策展](./humanoid-system-curriculum.md) — Ch4 规划实践映射本仓
 
 ## 推荐继续阅读
 

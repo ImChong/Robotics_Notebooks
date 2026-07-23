@@ -1,13 +1,22 @@
 {
   "generated_at": "2026-07-23",
-  "node_count": 1780,
-  "edge_count": 14801,
+  "node_count": 1799,
+  "edge_count": 14974,
   "coverage": {
-    "covered": 1727,
-    "total": 1757,
+    "covered": 1746,
+    "total": 1776,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/humanoid-system-curriculum.md",
+      "detail_id": "entity-humanoid-system-curriculum",
+      "label": "人形机器人系统学习策展（G1 → 导航 → 足球 → 大模型）",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "added"
+    },
     {
       "path": "roadmap/depth-teleoperation.md",
       "detail_id": "roadmap-depth-teleoperation",
@@ -86,8 +95,7 @@
       "recency": "2026-07-23",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/gsap-skills.md",
@@ -204,44 +212,33 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
-      "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
-      "label": "VLA 开源复现景观（2025 策展）",
-      "type": "overview",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "roadmap/depth-teleoperation.md",
-    "detail_id": "roadmap-depth-teleoperation",
-    "label": "路线（纵深）：如果目标是遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）",
-    "type": "roadmap_page",
+    "path": "wiki/entities/humanoid-system-curriculum.md",
+    "detail_id": "entity-humanoid-system-curriculum",
+    "label": "人形机器人系统学习策展（G1 → 导航 → 足球 → 大模型）",
+    "type": "entity",
     "recency": "2026-07-23",
     "source": "log.md",
-    "action": "maintained"
+    "action": "added"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 362
+      "size": 391
     },
     {
       "label": "人形论文深读笔记",
       "size": 177
     },
     {
-      "label": "仿真到现实",
-      "size": 176
-    },
-    {
       "label": "移动操作",
       "size": 172
+    },
+    {
+      "label": "仿真到现实",
+      "size": 129
     },
     {
       "label": "人形强化学习运动控制",
@@ -249,7 +246,7 @@
     },
     {
       "label": "全身控制",
-      "size": 108
+      "size": 118
     }
   ],
   "top_hubs": [
@@ -264,7 +261,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 326,
+      "degree": 327,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -272,9 +269,17 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 316,
+      "degree": 317,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "degree": 288,
+      "has_repo": true,
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
       "detail_id": "wiki-tasks-manipulation",
@@ -283,14 +288,6 @@
       "degree": 288,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "detail_id": "wiki-tasks-loco-manipulation",
-      "label": "Loco-Manipulation (移动操作)",
-      "type": "task",
-      "degree": 287,
-      "has_repo": true,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
       "detail_id": "wiki-tasks-locomotion",
@@ -302,7 +299,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 244,
+      "degree": 245,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },

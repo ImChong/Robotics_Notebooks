@@ -1,5 +1,18 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-23] ingest | sources/courses/shenlan_humanoid_system_theory_practice.md — 深蓝学院《人形机器人系统—理论与实践》八章大纲入库；策展 hub + 缺失知识点独立节点全覆盖
+
+- **课程源：** [`sources/courses/shenlan_humanoid_system_theory_practice.md`](sources/courses/shenlan_humanoid_system_theory_practice.md)（具身智能研究室大纲图 / 深蓝学院 course 802）
+- **开源配套：** [`sources/repos/tare_planner.md`](sources/repos/tare_planner.md)、[`sources/repos/far_planner.md`](sources/repos/far_planner.md)、[`sources/sites/cmu-exploration.md`](sources/sites/cmu-exploration.md)（TARE/FAR **已开源**）
+- **策展 hub：** [`wiki/entities/humanoid-system-curriculum.md`](wiki/entities/humanoid-system-curriculum.md) — 八章每节 ↔ 独立 wiki 节点映射表
+- **新建 overview：** `humanoid-robot-history`、`humanoid-algorithm-research-status`、`large-model-empowered-humanoids`
+- **新建 entity：** `unitree-g1-software-stack`、`tare-planner`、`far-planner`、`intel-realsense`
+- **新建 method：** `a-star`、`dwa`、`lidar-odometry-fusion`、`soccer-field-line-detection`、`visual-line-matching-localization`、`visual-line-ekf-fusion`、`humanoid-voice-interaction`
+- **新建 concept：** `dynamic-obstacle-filtering`、`soccer-field-simulation`、`perception-coordinate-postprocessing`
+- **新建 task：** `autonomous-exploration`
+- **复用既有：** `unitree-g1`、`lip-zmp`、`ppo`、`sim2real`、`navigation-slam-autonomy-stack`、`object-detection`、`humanoid-soccer`、`vision-language-navigation`、`paper-vln-10-navid` 等
+- **交叉更新：** `unitree-g1`、`python-robotics`、`humanoid-soccer`、`navigation-slam-autonomy-stack`、`sources/notes/know-how.md`、`sources/README.md`
+
 ## [2026-07-23] structural | roadmap/depth-teleoperation.md — 新增遥操作（人形全身遥操作 + 手指遥操作）纵深路线，二十条纵深入口全站同步
 
 - roadmap/depth-teleoperation.md：新建「遥操作」纵深路线（起点：Goertz 主从机械手遥操作，1954），Stage 0 全景与定位（三种输出形态：示范数据 / 部署期接管 / 竞技操控）→ Stage 1 输入接口与硬件通道（XR / leader–follower / 上肢外骨骼 / 数据手套 / 纯视觉 / UMI 手持）→ Stage 2 映射与延迟（笛卡尔解析 IK · 实时重定向 · 双边遥操作稳定）→ **Stage 3 人形全身遥操作**（稀疏三点补全 → 全身跟踪策略 GMT → WBC / BFM 流形约束；HEFT / PILOT / TWIST2 / CLOT / TeleGate / CWI）→ **Stage 4 手指与灵巧手遥操作**（手姿估计 → 手部重定向 UHAS / 接触保持 TopoRetarget·SPIDER → 触觉手套 / 灵巧手硬件谱系）→ Stage 5 下游闭环与进阶（teleop → IL · 无机器人采集 · VLA 干预 · 数据集规模 · 极端场景）
