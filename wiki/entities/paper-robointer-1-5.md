@@ -113,6 +113,12 @@ flowchart TB
 
 在历史 latent \(z^{\mathrm{hist}}\)、语言 \(c\)、可选动作 \(a\) 与控制视频 \(u\) 条件下对未来 latent 去噪；\(u\) 由物体跟踪点与夹爪轨迹渲染到黑底画布，去掉外观、保留时空结构。论文报告 World 预测可提升 VLA 动作精度。
 
+## 评测与结果
+
+- **数据/基准规模：** RoboInter-Data **>230k** episode · **571** 场景 · **6** 类机械臂 · **10+** 类 IR；RoboInter-VQA 约 **9** 空间 + **20** 时间类、总量约 **2.3M** 量级；新增 **RoboInter-CV** 作长程控制视频基准。
+- **VLM（Planner）：** 在 Qwen2.5-VL / LLaVA-OneVision 上微调，用 `evaluation_intermediate*.py` 评 IR 理解/生成指标（当前唯一可社区端复现的评测口径）。
+- **VLA 与 World（index-level）：** 论文报告 RoboInter-World 的未来预测可提升 VLA 动作精度、三种范式（IC-E2E / EC-E2E / Modular）各有取舍；但 VLA 权重与 World 代码待齐，**per-task 成功率尚不能社区端复现**，此处按索引级记录。
+
 ## 源码运行时序图
 
 公开可运行路径以 **数据 → VLM 训练/评测** 为主（VLA/World 待齐）：
@@ -147,6 +153,16 @@ sequenceDiagram
 | 数据许可 | 遵循 DROID/RH20T 原许可 + HF gated 表单（若启用） |
 | 与 LeRobot | 转换脚本支持 v2.1；v3.0 全量支持仍在 TODO |
 | 1.0 vs 1.5 | 仓 README/徽章多指向 **2602.09973**；读 World/CV 请以 **2607.18709** 为准 |
+| 重定向就绪度 | 数据跨 **6 类机械臂形态**；核心 IR（分割点 / 夹爪轨迹 / 接触帧）是**形态相对无关的中间表示**，比原始电机命令更易跨本体适配、作为重定向/迁移的条件；但 DiT Executor 动作头仍需按目标本体重训，IR 不直接等于可部署关节指令 |
+
+## 与其他工作对比
+
+| 维度 | RoboInter1.5 | [InternVLA-A1.5](./paper-internvla-a15-unified-vla.md) | [Masked Visual Actions](./paper-masked-visual-actions.md) | 纯语言+低层动作数据集 |
+|------|--------------|-----------|-----------|----------------------|
+| 监督结构 | **稠密逐帧 IR**（子任务/轨迹/框/接触，与动作对齐） | 统一 VLA 表征 | 掩码视觉动作条件 | 仅语言 + 电机命令 |
+| 覆盖闭环 | 数据/工具/VQA/VLM/VLA/**World+CV** 全栈 | unified VLA 策略 | 结构化视觉条件 WM | 缺中间监督 |
+| IR 复用 | **双向**：正则化动作空间 + 给世界模型提供像素对齐条件 | 单向策略 | 视觉条件生成 | — |
+| 开源状态 | Data/Tool/VQA/VLM 已发，VLA 权重/World 代码待齐 | 见对应页 | 见对应页 | 视数据集而定 |
 
 ## 局限与风险
 

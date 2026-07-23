@@ -107,7 +107,7 @@ flowchart TB
 | **Meta 数据** | **2286** 对 egocentric 人–机 episode（人侧 GoPro，无姿态） |
 | **评测** | **Orig.** 训练 cubicle vs **New** 未见家庭环境；**progress (%)**，25 trials/格 |
 | **New 平均** | WAM-TTT **46.2%**；LDA **32.5%**；WAM-Cotrain **25.3%**；EgoScale **15.0%**；π₀.₅ **14.8%**；WAM-ICL **7.1%** |
-| **消融亮点** | 去 meta-training 或换 **LoRA** 大幅下降；**memory recon.** 与 **TTT** 均关键 |
+| **消融亮点** | 去 meta-training 或换 [LoRA](../concepts/lora.md) 大幅下降；**memory recon.** 与 **TTT** 均关键 |
 | **扰动** | Deliver Drink 光照/空间扰动下 WAM-TTT **66% / 56%**，WAM-ICL **12% / 20%** |
 
 ## 常见误区或局限

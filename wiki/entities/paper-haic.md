@@ -112,6 +112,16 @@ sequenceDiagram
 | 任务入口 | `python scripts/train.py algo=ppo_haic_train task=G1/haic/skateboard` |
 | 导出 | `python scripts/play.py ... export_policy=true` |
 
+## 与其他工作对比
+
+| 维度 | HAIC | 末端位姿跟踪（刚性物体假设） | 图像预测世界模型（Dreamer 类） | 外部 / 视觉状态估计 |
+|------|------|-------------------------------|----------------------------------|----------------------|
+| 对象建模 | **欠驱动 / 非完整对象**（滑板、推拉车） | 刚性末端附属物 | 不显式区分对象动力学 | 依赖可观测对象状态 |
+| 世界模型预测目标 | 对象 velocity / acceleration 等**高阶状态** | 无 | 预测未来**图像** | 无预测，直接估计 |
+| 视觉盲区鲁棒 | **仅本体历史即可补盲区** | 遮挡时退化 | 依赖视觉输入 | 遮挡 / 失真时失效 |
+| 空间接地 | 高阶预测投影到静态几何先验成 dynamic occupancy | 末端位姿 | latent / 像素空间 | 观测坐标系 |
+| 训练范式 | 非对称微调，world model 持续适配 student 分布 | 常规 RL / 跟踪 | model-based RL | 感知 + 控制解耦 |
+
 ## 局限与风险
 
 - **文档仍不完整**：官方 README 已发布训练、评估与 Sim2Sim 入口，但 setup / usage 文档仍标为待补充。

@@ -65,6 +65,15 @@ LAM 提供统一 latent supervision，解决无动作标注视频如何成为 VL
 
 项目展示任务包括 Bag Packing、Box Loading、Cart Pushing、object/start-pose/terrain generalization、visual navigation、long-horizon bimanual manipulation、wiping/vacuum cleaning 等。它强调「大空间」和「全身」，不是桌面短程抓取。
 
+## 评测与结果
+
+WholeBodyVLA 的公开证据以项目页演示为主，量化指标较少，因此下列成功率/负载类条目按项目页口径归纳，视为 demonstration / index-level 证据而非跨 baseline 的统一 benchmark。
+
+- **重载移动操作**：项目页展示 Agibot X2 推 cart，负载超过 **50 kg**，用于说明面向操作的 locomotion 能在大外力下维持稳定全身姿态。
+- **任务广度**：演示覆盖 Bag Packing、Box Loading、Cart Pushing、object / start-pose / terrain generalization、visual navigation、long-horizon bimanual manipulation、wiping / vacuum cleaning 等，强调「大空间 + 全身」而非桌面短程抓取。
+- **运行频率**：VLM 解码 latent action 约 **10 Hz**，LMO locomotion policy 以 **50 Hz** 执行，两级频率解耦是系统能实时跟踪操作导向 locomotion commands 的工程前提。
+- **量化局限**：项目页视频丰富但未给出逐任务成功率、泛化率等量化表，也未公布与其他全身 VLA 的统一对照，故上述指标不作为可比 benchmark。
+
 ## 源码运行时序图
 
 **不适用**：官方 GitHub [OpenDriveLab/WholebodyVLA](https://github.com/OpenDriveLab/WholebodyVLA) 存在，但 README 明确写明 **currently have no concrete timeline for open-sourcing the codebase**，当前仓库是资源/参考集合而非可运行训练或部署实现。
@@ -79,6 +88,18 @@ LAM 提供统一 latent supervision，解决无动作标注视频如何成为 VL
 | 机器人 | Agibot X2 |
 | 运行频率 | latent 解码约 10 Hz；LMO 低层 50 Hz |
 | 典型能力 | Bag packing、box loading、cart pushing >50 kg、terrain generalization |
+
+## 与其他工作对比
+
+WholeBodyVLA 在「为什么重要」里主要针对传统解耦 VLA（固定臂 / 移动底座假设），关联页面则把它与全身原生 VLA 配方 OpenHLM、以及面向欠驱动对象的 HAIC 并列。下表为定性对照，不含跨论文可比的统一指标。
+
+| 维度 | WholeBodyVLA | 传统解耦 VLA | OpenHLM | HAIC |
+|------|--------------|--------------|---------|------|
+| 全身协同 | locomotion 面向操作，支持侧移/蹲下/推车全身协同 | 常假设固定臂 + 移动底座，移动与操作分离 | 全身原生，映射语言/像素到全部自由度 | 面向对象动力学的全身接触控制 |
+| 动作监督 | LAM 从 action-free 视频学 latent action | 依赖机器人动作标签 | 关节级全身遥操作采集 + 异构共训 | 动力学感知世界模型推断对象状态 |
+| 底层执行 | LMO RL policy 以 50 Hz 跟踪 locomotion commands | 通用速度跟踪器为主 | VLA 直接输出全身动作 | 策略结合世界模型预测做接触决策 |
+| 目标问题 | 大空间重载全身 loco-manipulation | 桌面 / 固定基座操作 | 可复现的全身 VLA 经验配方 | 滑板/推车/拉车等欠驱动、遮挡对象 |
+| 相对定位 | 统一 latent VLA + 面向操作 locomotion | 作为被超越的解耦基线 | 更偏「配方与消融」方法论 | 更偏对象动力学建模 |
 
 ## 局限与风险
 
