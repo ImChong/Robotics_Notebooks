@@ -6,12 +6,12 @@ generate_link_graph.py — Wiki 内链图谱生成工具
 供 docs/graph.html 的 D3.js 渲染使用。
 
 同时写入 exports/graph-stats.json（含 latest_wiki_nodes：按 log.md 最新日历日
-合并当日所有 `## [日期]` 块中出现的有效 wiki/... 路径（去重保序；ingest /
-structural / query 等均可）；latest_wiki_node 为当日列表首项（兼容旧字段）。
+合并当日所有 `## [日期]` 块中出现的有效 wiki/... 与 roadmap/... 路径（去重保序；
+ingest / structural / query 等均可）；latest_wiki_node 为当日列表首项（兼容旧字段）。
 若无日志命中则回退到 frontmatter / mtime 的 recency，列表仅一项。
 
 另写入 exports/wiki-activity.json（首页热力图数据源）：不限时间窗口，按同一套
-路径解析规则汇总 log.md 全量日志的每日 wiki 节点（同日去重、跨日可重复）。
+路径解析规则汇总 log.md 全量日志的每日 wiki/roadmap 节点（同日去重、跨日可重复）。
 
 输出格式：
   {
@@ -60,10 +60,14 @@ STATS_PATH = REPO_ROOT / "exports" / "graph-stats.json"
 ACTIVITY_PATH = REPO_ROOT / "exports" / "wiki-activity.json"
 HUB_RANKINGS_PATH = REPO_ROOT / "exports" / "hub-rankings.json"
 LOG_MD_PATH = REPO_ROOT / "log.md"
-# log.md 正文中出现的 wiki 相对路径（允许省略 .md，匹配至非标点为止）
-WIKI_PATH_IN_LOG = re.compile(r"wiki/(?:[\w./-]+/)+[\w./-]+(?:\.md)?", re.IGNORECASE)
-# 反引号内的 wiki 通配路径，如 `wiki/entities/paper-bfm-*.md`
-WIKI_GLOB_IN_LOG = re.compile(r"`(wiki/[^`]*\*(?:\.md)?)`", re.IGNORECASE)
+# log.md 正文中出现的 wiki / roadmap 相对路径（允许省略 .md，匹配至非标点为止）
+# wiki 至少一层子目录；roadmap 为 roadmap/<file>.md（纵深路线与主路线）
+WIKI_PATH_IN_LOG = re.compile(
+    r"(?:wiki/(?:[\w./-]+/)+[\w./-]+|roadmap/[\w./-]+)(?:\.md)?",
+    re.IGNORECASE,
+)
+# 反引号内的通配路径，如 `wiki/entities/paper-bfm-*.md` / `roadmap/depth-*.md`
+WIKI_GLOB_IN_LOG = re.compile(r"`((?:wiki|roadmap)/[^`]*\*(?:\.md)?)`", re.IGNORECASE)
 
 # ── 研究机构注册表（schema/institutions.json）──────────────────────────────
 # 单一事实源：机构 id → {label, aliases}。节点「所属机构」默认从 frontmatter
@@ -261,8 +265,19 @@ def _normalize_wiki_rel_from_log_match(raw: str) -> str:
     return s
 
 
+def _is_latest_node_path(rel: str) -> bool:
+    """首页「最新知识节点」可收录的仓库相对路径：wiki/ 或 roadmap/（不含 README）。"""
+    if "*" in rel:
+        return False
+    if rel.startswith("wiki/"):
+        return True
+    if rel.startswith("roadmap/") and not rel.endswith("/README.md") and rel != "roadmap/README.md":
+        return True
+    return False
+
+
 def _expand_wiki_glob(pattern: str) -> list[str]:
-    """将 log 中的 `wiki/.../*.md` 展开为仓库内存在的相对路径列表。"""
+    """将 log 中的 `wiki/.../*.md` / `roadmap/depth-*.md` 展开为仓库内存在的相对路径列表。"""
     rel = _normalize_wiki_rel_from_log_match(pattern)
     if "*" not in rel:
         return [rel] if (REPO_ROOT / rel).is_file() else []
@@ -286,7 +301,7 @@ def _append_latest_node(
     git_added_dates: dict[str, str] | None = None,
     community_labels: dict[str, str] | None = None,
 ) -> None:
-    if not rel.startswith("wiki/") or rel in seen or "*" in rel:
+    if not _is_latest_node_path(rel) or rel in seen:
         return
     p = REPO_ROOT / rel
     if not p.is_file():
@@ -350,13 +365,13 @@ def _collect_wiki_paths_from_chunk(
     expand_globs: bool = True,
     text: str | None = None,
 ) -> list[str]:
-    """从单条 log 块提取 wiki 相对路径（块内去重、保序）。"""
+    """从单条 log 块提取 wiki/roadmap 相对路径（块内去重、保序）。"""
     seen: set[str] = set()
     paths: list[str] = []
     source = text if text is not None else chunk
 
     def _maybe_add(rel: str) -> None:
-        if not rel.startswith("wiki/") or "*" in rel or rel in seen:
+        if not _is_latest_node_path(rel) or rel in seen:
             return
         if not (REPO_ROOT / rel).is_file() or rel not in node_by_id:
             return
@@ -379,7 +394,8 @@ def _collect_wiki_paths_from_chunk(
 
 
 def wiki_first_log_dates(nodes: list[dict[str, Any]]) -> dict[str, str]:
-    """Map ``wiki/...md`` → 该路径在 ``log.md`` 中**首次被 ingest/structural 引入**的日历日。
+    """Map ``wiki/...md`` / ``roadmap/...md`` → 该路径在 ``log.md`` 中**首次被
+    ingest/structural 引入**的日历日。
 
       仅扫描 ``ingest`` / ``structural`` 日志块（忽略 lint/query/checklist 等对
       ``wiki/entities/paper-*.md`` 的模式描述，避免 glob 误展开把数百页标成同日维护）。
@@ -439,19 +455,24 @@ _WIKI_GIT_ADDED_DATES_CACHE: dict[str, str] | None = None
 
 
 def _iter_wiki_md_paths() -> list[str]:
-    return sorted(
-        str(p.relative_to(REPO_ROOT)).replace("\\", "/")
-        for p in WIKI_DIR.rglob("*.md")
-        if p.is_file()
-    )
+    paths: list[str] = []
+    for root in GRAPH_CONTENT_DIRS:
+        if not root.is_dir():
+            continue
+        for p in root.rglob("*.md"):
+            if not p.is_file() or p.name == "README.md":
+                continue
+            paths.append(str(p.relative_to(REPO_ROOT)).replace("\\", "/"))
+    return sorted(paths)
 
 
 def wiki_git_added_dates(*, force_refresh: bool = False) -> dict[str, str]:
-    """Map ``wiki/...md`` → ISO committer date of first git add (fallback for action tags).
+    """Map ``wiki/...md`` / ``roadmap/...md`` → ISO committer date of first git add
+    (fallback for action tags).
 
-    Single ``git log --name-status`` pass over ``wiki/``; rename-aware. Used only when
-    ``wiki_first_log_dates`` has no ingest/structural entry for a path (e.g. nodes
-    mentioned in ``query`` / ``lint`` blocks).
+    Single ``git log --name-status`` pass over ``wiki/`` + ``roadmap/``; rename-aware.
+    Used only when ``wiki_first_log_dates`` has no ingest/structural entry for a path
+    (e.g. nodes mentioned in ``query`` / ``lint`` blocks).
     """
     global _WIKI_GIT_ADDED_DATES_CACHE
     if not force_refresh and _WIKI_GIT_ADDED_DATES_CACHE is not None:
@@ -477,6 +498,7 @@ def wiki_git_added_dates(*, force_refresh: bool = False) -> dict[str, str]:
                 "--name-status",
                 "--",
                 "wiki",
+                "roadmap",
             ],
             capture_output=True,
             text=True,
@@ -559,11 +581,12 @@ def latest_wiki_nodes_from_log(
     window_days: int = LATEST_NODES_WINDOW_DAYS,
     community_labels: dict[str, str] | None = None,
 ) -> list[dict[str, Any]]:
-    """从 log.md 解析最近若干日维护日志中出现的 wiki 节点（去重保序）。
+    """从 log.md 解析最近若干日维护日志中出现的 wiki / roadmap 节点（去重保序）。
 
     规则：自上而下读取首条 `## [日期] ...` 的日期作为「最新日」；在 ``window_days``
-    天内的所有同/早日期日志块中，按出现顺序收集 `wiki/...`（同一路径只保留首次出现），
-    且须对应仓库现存文件并在图谱节点中。最终保留前 ``max_items`` 项。不区分 op 类型。
+    天内的所有同/早日期日志块中，按出现顺序收集 `wiki/...` 与 `roadmap/...`
+    （同一路径只保留首次出现），且须对应仓库现存文件并在图谱节点中。最终保留前
+    ``max_items`` 项。不区分 op 类型。
     """
     if max_items <= 0:
         return []
@@ -645,7 +668,7 @@ def wiki_activity_from_log(
     *,
     community_labels: dict[str, str] | None = None,
 ) -> list[dict[str, Any]]:
-    """从 log.md 全量日志汇总每日出现的 wiki 节点（首页热力图按日期筛选用）。
+    """从 log.md 全量日志汇总每日出现的 wiki / roadmap 节点（首页热力图按日期筛选用）。
 
     与 latest_wiki_nodes_from_log 使用同一套路径解析与校验规则，但不限时间
     窗口：同一日期的多个日志块合并、同日去重（跨日可重复出现），仅保留仓库
@@ -725,6 +748,8 @@ def wiki_activity_from_log(
                 "label": meta["label"],
                 "type": meta["type"],
             }
+            if meta.get("path"):
+                node_entry["path"] = meta["path"]
             action = meta.get("action")
             if action:
                 node_entry["action"] = action

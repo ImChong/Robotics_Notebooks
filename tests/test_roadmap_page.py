@@ -37,6 +37,9 @@ class RoadmapPageTests(unittest.TestCase):
             "findRoadmapStageEntryAnchor",
             "bindSelftestMermaidRerender",
             "roadmap-stage-entry-embed",
+            "function latestNodeHref",
+            "renderDetailMetaDateBadge(updated)",
+            "roadmapMetaUpdated",
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
