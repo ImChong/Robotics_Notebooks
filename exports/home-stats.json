@@ -1,13 +1,77 @@
 {
   "generated_at": "2026-07-23",
   "node_count": 1802,
-  "edge_count": 15047,
+  "edge_count": 15052,
   "coverage": {
     "covered": 1750,
     "total": 1779,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/kicad.md",
+      "detail_id": "entity-kicad",
+      "label": "KiCad（开源 PCB 与原理图 EDA）",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/simplefoc.md",
+      "detail_id": "entity-simplefoc",
+      "label": "SimpleFOC（Arduino-FOC 生态）",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-neuralactuator-neural-actuation-modeling.md",
+      "detail_id": "entity-paper-neuralactuator-neural-actuation-modeling",
+      "label": "NeuralActuator（Neural Actuation Modeling · arXiv:2607.11734）",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/bam-better-actuator-models.md",
+      "detail_id": "entity-bam-better-actuator-models",
+      "label": "BAM（Better Actuator Models）",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/concepts/ethercat-protocol.md",
+      "detail_id": "wiki-concepts-ethercat-protocol",
+      "label": "EtherCAT 协议基础",
+      "type": "concept",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "机器人系统工程（专题汇总） 社区"
+    },
+    {
+      "path": "wiki/queries/actuator-drive-chain-selection-loop.md",
+      "detail_id": "wiki-queries-actuator-drive-chain-selection-loop",
+      "label": "Query：执行器驱动链选型闭环知识链",
+      "type": "query",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/generative-motion-rig.md",
       "detail_id": "entity-generative-motion-rig",
@@ -148,78 +212,18 @@
       "source": "log.md",
       "action": "added",
       "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/queries/grasp-policy-selection.md",
-      "detail_id": "wiki-queries-grasp-policy-selection",
-      "label": "Query：抓取策略选型（开放场景 vs 已知物体 / 稀疏 vs 稠密 / 几何 vs 学习）",
-      "type": "query",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-omnitactune-tactile-residual-adaptation.md",
-      "detail_id": "entity-paper-omnitactune-tactile-residual-adaptation",
-      "label": "OmniTacTune：视觉策略的触觉残差真机适应",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/humanoid-system-curriculum.md",
-      "detail_id": "entity-humanoid-system-curriculum",
-      "label": "人形机器人系统学习策展（G1 → 导航 → 足球 → 大模型）",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/methods/a-star.md",
-      "detail_id": "wiki-methods-a-star",
-      "label": "A* 全局路径规划",
-      "type": "method",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "roadmap/depth-teleoperation.md",
-      "detail_id": "roadmap-depth-teleoperation",
-      "label": "路线（纵深）：如果目标是遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）",
-      "type": "roadmap_page",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/generative-motion-rig.md",
-    "detail_id": "entity-generative-motion-rig",
-    "label": "Generative Motion Rig（Disney）：艺术家驱动的生成式运动绑定",
+    "path": "wiki/entities/kicad.md",
+    "detail_id": "entity-kicad",
+    "label": "KiCad（开源 PCB 与原理图 EDA）",
     "type": "entity",
     "recency": "2026-07-23",
     "source": "log.md",
-    "action": "added",
-    "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    "action": "maintained",
+    "has_repo": true,
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {

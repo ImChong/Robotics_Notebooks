@@ -2,7 +2,7 @@
 
 ## [2026-07-23] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **46** 条信息型预警）：
+共发现 **0** 个问题（另含 **42** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -126,7 +126,7 @@
 ### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」专题枢纽（信息型，不阻塞 CI）（35 个）
+### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」专题枢纽（信息型，不阻塞 CI）（31 个）
 - wiki/comparisons/motor-em-simulation-software.md
 - wiki/concepts/armature-modeling.md
 - wiki/concepts/contact-force-loop-bandwidth.md
@@ -142,15 +142,12 @@
 - wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md
 - wiki/concepts/robot-link-and-rotor-inertia.md
 - wiki/entities/altium-designer.md
-- wiki/entities/bam-better-actuator-models.md
 - wiki/entities/humanoid-robot.md
-- wiki/entities/kicad.md
 - wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md
 - wiki/entities/paper-bam-extended-friction-servo-actuators.md
 - wiki/entities/paper-gentlehumanoid.md
 - wiki/entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md
 - wiki/entities/paper-loco-manip-161-039-hmc.md
-- wiki/entities/paper-neuralactuator-neural-actuation-modeling.md
 - wiki/entities/paper-pace-sim2real-legged-robots.md
 - wiki/entities/paper-shenlan-wm-09-gr1.md
 - wiki/entities/paper-subcentimeter-pipeline-inspection-robot.md
@@ -160,7 +157,6 @@
 - wiki/entities/patent-boston-dynamics-legged-control-stack.md
 - wiki/entities/patent-tesla-robot-knee-joint-assembly.md
 - wiki/entities/sage-sim2real-actuator-gap-estimator.md
-- wiki/entities/simplefoc.md
 - wiki/entities/wuji-robotics.md
 
 📊 Sources 覆盖率：1750/1779 (98%) wiki/entity 页有 ingest 来源

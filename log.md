@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-23] structural | V30 P1 驱动链层级专题交叉补强 — 五页双向回链「执行器驱动链选型闭环」Query
+
+- 在 `wiki/entities/kicad.md`（①层 EDA 电路设计）、`wiki/entities/simplefoc.md`（②层 电机驱动固件 FOC）、`wiki/entities/paper-neuralactuator-neural-actuation-modeling.md`（③层 神经执行器网络）、`wiki/entities/bam-better-actuator-models.md`（③层 显式摩擦辨识）、`wiki/concepts/ethercat-protocol.md`（④层 实时总线闭环集成）五页的 `related` 与「关联页面」补入 `wiki/queries/actuator-drive-chain-selection-loop.md` 并标注本页所在驱动链层，与 Query 页 `related` 双向闭合
+- `make lint` 0 errors（五页从 `actuator_drive_chain_crosslink` INFO 名单移除）；`make export graph` 后 `graph-stats.json` 0 orphans、节点 1802、边 15052、16 社区、`largest_community_ratio 0.188 ≤ 0.25`、`community_quality_warning: false`
+- 勾选 `docs/checklists/tech-stack-next-phase-checklist-v30.md` 之 P1「驱动链层级专题交叉补强」
+
 ## [2026-07-23] ingest | sources/papers/generative_motion_rig_siggraph_talks_2026.md — Disney Generative Motion Rig（SIGGRAPH Talks 2026）Blender generative keyframing；wiki/entities/generative-motion-rig.md；交叉 wiki/entities/blender.md、wiki/entities/robot-motion-keyframe-editors.md、wiki/concepts/character-animation-vs-robotics.md、wiki/methods/motion-retargeting-gmr.md（GMR 缩写消歧）、wiki/methods/diffusion-motion-generation.md；sources/sites/disney-generative-motion-rig.md（插件未开源）
 
 ## [2026-07-23] ingest | sources/papers/rigmo_arxiv_2601_06378.md — RigMo（arXiv:2601.06378）无标注 mesh 联合学 Gaussian bones+SE(3)；wiki/entities/rigmo.md；交叉 wiki/methods/diffusion-motion-generation.md、wiki/entities/ardy.md、wiki/entities/blender.md、wiki/concepts/character-animation-vs-robotics.md；sources/sites/rigmo-page.md、sources/repos/rigmo.md（VAE 已开源 / Motion-DiT 未发布）

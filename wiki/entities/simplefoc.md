@@ -5,6 +5,7 @@ tags: [repo, framework, motor-control, foc, bldc, embedded, open-source, linux-f
 status: complete
 updated: 2026-06-24
 related:
+  - ../queries/actuator-drive-chain-selection-loop.md
   - ../concepts/field-oriented-control.md
   - ../overview/motor-drive-firmware-bus-protocols.md
   - ./atom01-firmware.md
@@ -98,6 +99,7 @@ flowchart TB
 
 ## 关联页面
 
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 本页处于驱动链 **②层 电机驱动固件 FOC**（电流环带宽 vs 编码器分辨率/标定）
 - [磁场定向控制（FOC）](../concepts/field-oriented-control.md)
 - [电机驱动器底软通信协议总览](../overview/motor-drive-firmware-bus-protocols.md)
 - [Atom01 Firmware](./atom01-firmware.md)（开源人形底层固件对照）

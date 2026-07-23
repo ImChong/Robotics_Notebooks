@@ -6,6 +6,7 @@ status: complete
 updated: 2026-05-28
 code: https://github.com/Rhoban/bam
 related:
+  - ../queries/actuator-drive-chain-selection-loop.md
   - ./paper-bam-extended-friction-servo-actuators.md
   - ../concepts/sim2real.md
   - ../concepts/system-identification.md
@@ -90,6 +91,7 @@ flowchart LR
 
 ## 关联页面
 
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 本页处于驱动链 **③层 执行器建模与摩擦辨识**（显式解析摩擦辨识路线，与 NeuralActuator 神经执行器网络对照）
 - [扩展摩擦论文实体](./paper-bam-extended-friction-servo-actuators.md)
 - [Sim2Real](../concepts/sim2real.md)、[System Identification](../concepts/system-identification.md)
 - [Actuator Network](../methods/actuator-network.md)、[SAGE](./sage-sim2real-actuator-gap-estimator.md)

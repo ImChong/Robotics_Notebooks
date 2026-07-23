@@ -6,6 +6,7 @@ updated: 2026-07-20
 arxiv: "2607.11734"
 code: https://github.com/Frank-ZY-Dou/Dynamics-Modeling/tree/main/NeuralActuator
 related:
+  - ../queries/actuator-drive-chain-selection-loop.md
   - ../concepts/sim2real.md
   - ../concepts/system-identification.md
   - ../concepts/implicit-explicit-actuator-modeling.md
@@ -133,6 +134,7 @@ flowchart TB
 
 ## 关联页面
 
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 本页处于驱动链 **③层 执行器建模与摩擦辨识**（数据驱动神经执行器网络路线，与 BAM 显式摩擦模型对照）
 - [Sim2Real](../concepts/sim2real.md)、[System Identification](../concepts/system-identification.md)
 - [Actuator Network](../methods/actuator-network.md)、[Implicit / Explicit 执行器建模](../concepts/implicit-explicit-actuator-modeling.md)
 - [BAM 扩展摩擦](./paper-bam-extended-friction-servo-actuators.md)、[SAGE](./sage-sim2real-actuator-gap-estimator.md)
