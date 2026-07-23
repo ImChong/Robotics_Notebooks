@@ -1,5 +1,23 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-23] ingest | sources/sites/sota-evomind-tech.md + sources/repos/evo-sota-io.md — VLA SOTA Leaderboard（EvoMind/MINT-SJTU）；升格 wiki/entities/vla-sota-leaderboard.md；交叉 wiki/methods/vla.md、wiki/overview/vla-open-source-repro-landscape-2025.md、wiki/queries/embodied-eval-benchmark-selection-loop.md、wiki/tasks/manipulation.md、wiki/overview/topic-vla.md；榜站 MIT 开源
+
+- **开源状态：** **已开源（榜站）** — [`MINT-SJTU/Evo-SOTA.io`](https://github.com/MINT-SJTU/Evo-SOTA.io)（MIT）+ 线上 <https://sota.evomind-tech.com/>（截至 2026-07-23）
+- **新建 sites：** [`sources/sites/sota-evomind-tech.md`](sources/sites/sota-evomind-tech.md)
+- **新建 repos：** [`sources/repos/evo-sota-io.md`](sources/repos/evo-sota-io.md)
+- **新建 wiki：** [`wiki/entities/vla-sota-leaderboard.md`](wiki/entities/vla-sota-leaderboard.md)
+- **机构：** 沿用既有 `sjtu`；新增 `evomind`
+- **交叉更新：** [`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/overview/vla-open-source-repro-landscape-2025.md`](wiki/overview/vla-open-source-repro-landscape-2025.md)、[`wiki/queries/embodied-eval-benchmark-selection-loop.md`](wiki/queries/embodied-eval-benchmark-selection-loop.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`wiki/overview/topic-vla.md`](wiki/overview/topic-vla.md)
+
+## [2026-07-23] ingest | sources/papers/fabrivla_arxiv_2607_08575.md + sources/repos/fabrivla.md — FabriVLA（arXiv:2607.08575）轻量 VLA；升格 wiki/entities/paper-fabrivla.md；交叉 wiki/entities/paper-evo1-lightweight-vla.md、wiki/entities/vla-sota-leaderboard.md、wiki/methods/vla.md、wiki/overview/vla-open-source-repro-landscape-2025.md、wiki/tasks/manipulation.md；已开源（Apache-2.0）
+
+- **开源状态：** **已开源** — [`Youi-FabriX/FabriVLA`](https://github.com/Youi-FabriX/FabriVLA)（Apache-2.0）+ HF [`Youi-FabriX/FabriVLA`](https://huggingface.co/Youi-FabriX/FabriVLA) `checkpoint_step_93000.pt`（截至 2026-07-23）；无独立项目页
+- **新建 papers：** [`sources/papers/fabrivla_arxiv_2607_08575.md`](sources/papers/fabrivla_arxiv_2607_08575.md)
+- **新建 repos：** [`sources/repos/fabrivla.md`](sources/repos/fabrivla.md)
+- **新建 wiki：** [`wiki/entities/paper-fabrivla.md`](wiki/entities/paper-fabrivla.md)
+- **机构：** 新增 `umac` / `youibot` / `mese`；榜站侧另见 `evomind`
+- **交叉更新：** [`wiki/entities/paper-evo1-lightweight-vla.md`](wiki/entities/paper-evo1-lightweight-vla.md)、[`wiki/entities/vla-sota-leaderboard.md`](wiki/entities/vla-sota-leaderboard.md)、[`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/overview/vla-open-source-repro-landscape-2025.md`](wiki/overview/vla-open-source-repro-landscape-2025.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`wiki/queries/embodied-eval-benchmark-selection-loop.md`](wiki/queries/embodied-eval-benchmark-selection-loop.md)
+
 ## [2026-07-23] ingest | sources/papers/wan_video_arxiv_2503_20314.md + sources/sites/wan-video.md + sources/repos/wan2.1.md — Wan（arXiv:2503.20314）开源视频基础模型；升格 wiki/entities/paper-wan-video.md；交叉 wiki/entities/paper-wan-move.md、wiki/entities/paper-masked-visual-actions.md、wiki/entities/paper-ctrl-world.md、wiki/methods/generative-world-models.md、wiki/concepts/video-as-simulation.md、wiki/overview/robot-world-models-training-loop-taxonomy.md；已开源（Wan2.1/2.2 Apache-2.0）。注：masked-visual-actions.github.io 已于 2026-07-22 ingest，本次补对照实体页
 
 - **开源状态：** **已开源** — [`Wan-Video/Wan2.1`](https://github.com/Wan-Video/Wan2.1) / [`Wan2.2`](https://github.com/Wan-Video/Wan2.2)（Apache-2.0）+ HF/ModelScope Wan-AI（截至 2026-07-23）

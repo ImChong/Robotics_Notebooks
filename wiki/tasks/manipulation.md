@@ -12,6 +12,8 @@ related:
   - ../entities/paper-simfoundry-real2sim-scene-generation.md
   - ../entities/paper-agentic-real2sim.md
   - ../entities/paper-robointer-1-5.md
+  - ../entities/paper-fabrivla.md
+  - ../entities/vla-sota-leaderboard.md
   - ../entities/paper-chord-contact-wrench-dexterous-manipulation.md
   - ../methods/regrind-retargeting-guided-rl.md
   - ../entities/paper-dexverse.md
@@ -235,6 +237,8 @@ flowchart TD
 - [SimFoundry](../entities/paper-simfoundry-real2sim-scene-generation.md) — 真机视频 → sim-ready 孪生 + object/scene/task cousins；real-to-sim 评测与 sim-to-real 训练（arXiv:2606.28276）
 - [Agentic Real2Sim](../entities/paper-agentic-real2sim.md) — VLM agent 编排 DROID→MuJoCo episode twin（arXiv:2607.19190，代码待开放）
 - [TSIL](../entities/paper-tsil-temporal-self-imitation-learning.md) — 长时域 Meta-World 操作 PPO：自适应时间目标 + 效率加权自模仿（arXiv:2606.19752）
+- [FabriVLA](../entities/paper-fabrivla.md) — 轻量 InternVL3.5 + gated SA flow-matching；Meta-World MT50 tier-avg **90.0%**（arXiv:2607.08575）
+- [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md) — EvoMind/MINT-SJTU 社区 VLA / 灵巧手多基准排行榜
 - [DAPL 杂乱场景外在灵巧](../entities/paper-dapl-extrinsic-dexterity-clutter.md)
 - [自动化仿生对话面部机构合成](../entities/paper-automated-facial-mechanisms-animatronic.md)
 - [Deimel 柔顺欠驱动灵巧手（RSS ToT）](../entities/paper-deimel-compliant-underactuated-robotic-hand.md)

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, lightweight-vla, flow-matching, behavior-cloning, manipulation, lerobot, internvl, sjtu, cvpr-2026]
 status: complete
-updated: 2026-07-12
+updated: 2026-07-23
 arxiv: "2511.04555"
 venue: CVPR 2026
 code: https://github.com/MINT-SJTU/Evo-1
@@ -14,6 +14,8 @@ related:
   - ../tasks/manipulation.md
   - ./lerobot.md
   - ./paper-mint-vla.md
+  - ./paper-fabrivla.md
+  - ./vla-sota-leaderboard.md
 sources:
   - ../../sources/papers/evo1_arxiv_2511_04555.md
   - ../../sources/repos/mint_sjtu_evo1.md
@@ -128,12 +130,15 @@ flowchart TB
 | **π₀ / OpenVLA** | 参数量与显存远小；**无机器人预训练** 仍可在多基准匹配或超越 |
 | **MINT** | 同 MINT-SJTU 生态；MINT 解耦 **频域意图–执行 token**，Evo-1 解耦 **训练阶段上的感知 vs 控制** |
 | **Green-VLA / Qwen-VLA** | 后者走 **多阶段大规模预训练通才**；Evo-1 走 **小模型 + 语义保持微调** 的部署优先路线 |
+| **[FabriVLA](./paper-fabrivla.md)** | 同受轻量 InternVL+FM 启发；FabriVLA 用 **单阶段 + gated SA + shallow fusion**，MT50 **90.0%**（用 Evo-1 公开演示集），但主报告面更窄（Meta-World） |
 
 ## 关联页面
 
 - [VLA（Vision-Language-Action）](../methods/vla.md) — 轻量 flow-VLA 与工程瓶颈语境。
 - [LeRobot (Hugging Face)](./lerobot.md) — Evo-1 **官方内置策略** 与 SO100/SO101 部署路径。
 - [MINT](./paper-mint-vla.md) — 同机构不同 VLA 泛化路线（频域意图分词）。
+- [FabriVLA](./paper-fabrivla.md) — 单阶段轻量对照；MT50 更高、评测面更窄。
+- [VLA SOTA Leaderboard](./vla-sota-leaderboard.md) — EvoMind/MINT-SJTU 社区多基准榜。
 - [Diffusion Policy](../methods/diffusion-policy.md) — 连续动作扩散/流匹配策略族。
 - [Action Chunking](../methods/action-chunking.md) — H 步动作块输出与异步部署。
 - [Manipulation](../tasks/manipulation.md) — Meta-World / LIBERO / 真机操作评测背景。
