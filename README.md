@@ -15,9 +15,9 @@
 
 ## 在线演示
 
-[![知识图谱交互演示：1776 个知识节点按技术社区着色，悬停节点查看简介，滚轮缩放，并可切换 3D 立体视图](media/graph-demo.gif)](https://imchong.github.io/Robotics_Notebooks/graph.html)
+[![站点使用演示：首页按目标选入口、全库即时搜索、图谱预览，进入知识图谱后悬停节点看简介、滚轮缩放、点击节点打开详情侧栏，并可切换 3D 立体视图](media/site-demo.gif)](https://imchong.github.io/Robotics_Notebooks/)
 
-↑ [交互式知识图谱](https://imchong.github.io/Robotics_Notebooks/graph.html)：每个点是一个知识页，颜色代表所属技术社区，连线是页面间的引用关系。悬停看简介与关联边，点击进详情页，支持 2D / 3D 视图切换。
+↑ [在线站点](https://imchong.github.io/Robotics_Notebooks/)使用方式：**首页**按目标选入口（路线 / 搜索 / 图谱），搜索框输入关键词即时命中知识页；**[知识图谱](https://imchong.github.io/Robotics_Notebooks/graph.html)**中每个点是一个知识页，颜色代表技术社区，连线是页面互链——悬停看简介，滚轮缩放、拖拽平移，点击节点打开详情侧栏并一键进知识页，支持 2D / 3D 视图切换。
 
 ---
 
