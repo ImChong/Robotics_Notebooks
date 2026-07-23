@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-23] fix(ux): 详情页 Markdown 还原 A\* 等反斜杠转义
+
+- `docs/main.js`：`renderInlineMarkdown` / `renderLinkLabel` 在强调语法**之前**将 CommonMark `\*` 转为 HTML 实体（避免 `**A\***` 被吃成 `A\`）；策展表与 A* 方法页正文均显示为 `A*`
+- `wiki/entities/humanoid-system-curriculum.md`：第 4 章映射表改为直接写 `A*`
+- 全库复查：约 24 个 wiki 页正文仍含合法 `A\*` / `RRT\*` / `π\*` 等转义；标题/图谱/搜索索引无泄漏；抽查 a-star、dwa、FAR、footstep、STEAM、CWI、策展等详情页 DOM 均无可见 `\`；补充 `test_wiki_prose_backslash_star_does_not_leak_after_render` 回归
+
 ## [2026-07-23] fix(export): 站点标题还原 Markdown 转义（A\* → A*）
 
 - `extract_title`（export_minimal / search_indexing / generate_link_graph）：去掉 H1 中的 `\*` 等转义，避免详情页/图谱把反斜杠当正文显示
