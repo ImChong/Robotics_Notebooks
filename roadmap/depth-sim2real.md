@@ -233,6 +233,7 @@ flowchart LR
   - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md)
   - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md)
   - [人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md)
+  - [人形群控展演（群舞同步 → 编队走位 → 群体特技）](depth-humanoid-swarm-performance.md)
   - [动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md)
   - [人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md)
   - [BFM（人形行为基础模型）](depth-bfm.md)
