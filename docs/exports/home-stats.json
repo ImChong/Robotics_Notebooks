@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-23",
-  "node_count": 1778,
-  "edge_count": 14635,
+  "node_count": 1779,
+  "edge_count": 14700,
   "coverage": {
     "covered": 1727,
     "total": 1757,
@@ -26,7 +26,8 @@
       "recency": "2026-07-23",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
     },
     {
       "path": "wiki/concepts/text-to-cad.md",
@@ -37,7 +38,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
     },
     {
       "path": "wiki/entities/cad-skills.md",
@@ -230,7 +231,7 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 310
+      "size": 312
     },
     {
       "label": "人形论文深读笔记",
@@ -246,10 +247,10 @@
     },
     {
       "label": "全身控制",
-      "size": 130
+      "size": 116
     },
     {
-      "label": "生成式世界模型",
+      "label": "仿真训练",
       "size": 83
     }
   ],
@@ -265,7 +266,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 325,
+      "degree": 326,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -273,7 +274,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 315,
+      "degree": 316,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -304,7 +305,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 243,
+      "degree": 244,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },

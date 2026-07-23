@@ -228,6 +228,7 @@ flowchart LR
   - [人形 RL 运动控制](depth-rl-locomotion.md) — 跟踪策略的训练侧前置
   - [模仿学习与技能迁移](depth-imitation-learning.md) — 参考动作进策略的方法论前置
   - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md) — 特技上真机的部署侧前置
+  - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md) — 展演场地/道具的可仿真资产侧
   - [BFM（人形行为基础模型）](depth-bfm.md) — 单基座控全身的谱系路线
   - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md) — 场地定位工程的邻接路线
   - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md)

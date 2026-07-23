@@ -194,6 +194,7 @@ flowchart LR
   - [人形群控展演（群舞同步 → 编队走位 → 群体特技）](depth-humanoid-swarm-performance.md)
   - [人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md)
   - [Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md)
+  - [Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md)
 - 关联知识页：
   - [Optimal Control](../wiki/concepts/optimal-control.md)
   - [LIP / ZMP](../wiki/concepts/lip-zmp.md)

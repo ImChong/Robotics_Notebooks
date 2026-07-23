@@ -47,6 +47,7 @@
   - [如果目标是感知越障](depth-perceptive-locomotion.md)
   - [如果目标是动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md)
   - [如果目标是 VLA（视觉-语言-动作模型）](depth-vla.md)
+  - [如果目标是 Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md)
   - [如果目标是 WAM（世界–动作模型）](depth-wam.md)
 
 ---
@@ -1397,6 +1398,7 @@ flowchart TD
 | [如果目标是感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md) | 想让机器人看着地形上楼梯、跨障碍、跑酷 | L5 之后 |
 | [如果目标是动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md) | 想用生成模型造出人体/人形动作 | L5.3 之后 |
 | [如果目标是 VLA（视觉-语言-动作模型）](depth-vla.md) | 想让机器人听懂指令干活 | L5.3 之后 |
+| [如果目标是 Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md) | 想把真实世界压成可训练/可评测的仿真资产 | L6 / L7（L6/L7 资产与评测的展开版）|
 | [如果目标是 WAM（世界–动作模型）](depth-wam.md) | 想让策略在出动作前显式预知世界会怎么变 | L5.3 之后 |
 
 每条纵深页都有自己的 Stage 0–N 划分，可以独立阅读；遇到理论卡点再回主路线对应章节补。
@@ -1445,5 +1447,6 @@ flowchart TD
   - [如果目标是感知越障](depth-perceptive-locomotion.md)
   - [如果目标是动作生成](depth-motion-generation.md)
   - [如果目标是 VLA（视觉-语言-动作模型）](depth-vla.md)
+  - [如果目标是 Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md)
   - [如果目标是 WAM（世界–动作模型）](depth-wam.md)
 - 技术栈地图参考：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
