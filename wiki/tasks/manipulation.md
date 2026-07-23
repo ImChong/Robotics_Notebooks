@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-07-22
+updated: 2026-07-23
 related:
   - ../entities/paper-clothtransformer-unified-latent-cloth-simulation.md
   - ../entities/paper-flying-knots.md
@@ -10,6 +10,8 @@ related:
   - ../entities/physx-omni.md
   - ../entities/paper-physforge-physics-grounded-3d-assets.md
   - ../entities/paper-simfoundry-real2sim-scene-generation.md
+  - ../entities/paper-agentic-real2sim.md
+  - ../entities/paper-robointer-1-5.md
   - ../entities/paper-chord-contact-wrench-dexterous-manipulation.md
   - ../methods/regrind-retargeting-guided-rl.md
   - ../entities/paper-dexverse.md
@@ -71,7 +73,7 @@ summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核
 现实世界物体种类几乎无限，不可能为每个物体单独训练。
 
 ### 5. 仿真场景与交互资产
-操作仿真除策略外，还依赖 **可关节、带物理字段的 3D 资产**（尺度、材料、affordance、运动学）。近期 **sim-ready 生成**（如 [PhysX-Omni](../entities/physx-omni.md)、[PhysForge](../entities/paper-physforge-physics-grounded-3d-assets.md)）试图缓解 **PartNet-Mobility 系数据** 在类别与标注上的瓶颈，但导入目标引擎（SAPIEN、MuJoCo、Isaac 等）时仍需核对 **URDF/碰撞/关节限位**。**真机视频孪生**路线见 [SimFoundry](../entities/paper-simfoundry-real2sim-scene-generation.md)（arXiv:2606.28276）：单段 RGB 视频 → 数字孪生 + **digital cousins**，并直接对接 **策略评测与仿真演示训练**（DROID / YAM）。
+操作仿真除策略外，还依赖 **可关节、带物理字段的 3D 资产**（尺度、材料、affordance、运动学）。近期 **sim-ready 生成**（如 [PhysX-Omni](../entities/physx-omni.md)、[PhysForge](../entities/paper-physforge-physics-grounded-3d-assets.md)）试图缓解 **PartNet-Mobility 系数据** 在类别与标注上的瓶颈，但导入目标引擎（SAPIEN、MuJoCo、Isaac 等）时仍需核对 **URDF/碰撞/关节限位**。**真机视频孪生**路线见 [SimFoundry](../entities/paper-simfoundry-real2sim-scene-generation.md)（arXiv:2606.28276）：单段 RGB 视频 → 数字孪生 + **digital cousins**，并直接对接 **策略评测与仿真演示训练**（DROID / YAM）。 **Episode 级 agentic Real2Sim** 见 [Agentic Real2Sim](../entities/paper-agentic-real2sim.md)（DROID→MuJoCo 回放孪生，代码待开放，arXiv:2607.19190）。
 
 ## 操作闭环流程总览
 
@@ -101,7 +103,7 @@ flowchart TD
 - **VLA (Vision-Language-Action Model)**：端到端视觉-语言-动作模型
   - 代表：UnifoLM, π₀, [Green-VLA](../entities/paper-greenvla-staged-vla-humanoid.md)（五阶段课程 + 统一多本体动作 + Green 人形上身部署，arXiv:2602.00919）
   - **产线后训练：** [KinetIQ Ascend](../entities/kinetiq-ascend.md)（Humanoid, 2026）在 **CFM-VLA** 上用 **真机 PPO** 把 BC 策略推到工业级吞吐/可靠性（双臂 Alpha、稀疏奖励、数天 robot-time）
-- **World Model**：学习操作的世界模型，在模型里 planning；像素域上「静态场景 + 手轨迹 → 交互视频」的显式分解路线见 [DWM（Dexterous World Models）](../methods/dwm.md)；**语言条件 3D 物体点轨迹** 先验见 [MolmoMotion](../entities/molmo-motion.md)（DROID 微调后可提升 MolmoBot 规划样本效率）与产业侧级联样本 [VLOA（RoboScience）](../entities/roboscience-vloa.md)（物体中心 3D 点云轨迹 + 轨迹条件操作模型，闭源）；**训练期物理对齐** 见 [PhysisForcing](../entities/paper-physisforcing.md)（CoTracker3 轨迹 + 语义关系双层监督，强化接触丰富操纵视频的可模拟性，arXiv:2606.28128）；**动态目标 + 3D Gaussian 速度场** 见 [PhysMani](../entities/paper-physmani-dynamic-manipulation-world-model.md)（在线无散度 WM + 3DFA 策略，PhysMani-Bench 16 任务，arXiv:2607.01938）；**像素掩码动作统一前向/逆向** 见 [Masked Visual Actions](../entities/paper-masked-visual-actions.md)（策略评估 **r=0.982**，arXiv:2607.19343）
+- **World Model**：学习操作的世界模型，在模型里 planning；像素域上「静态场景 + 手轨迹 → 交互视频」的显式分解路线见 [DWM（Dexterous World Models）](../methods/dwm.md)；**语言条件 3D 物体点轨迹** 先验见 [MolmoMotion](../entities/molmo-motion.md)（DROID 微调后可提升 MolmoBot 规划样本效率）与产业侧级联样本 [VLOA（RoboScience）](../entities/roboscience-vloa.md)（物体中心 3D 点云轨迹 + 轨迹条件操作模型，闭源）；**训练期物理对齐** 见 [PhysisForcing](../entities/paper-physisforcing.md)（CoTracker3 轨迹 + 语义关系双层监督，强化接触丰富操纵视频的可模拟性，arXiv:2606.28128）；**动态目标 + 3D Gaussian 速度场** 见 [PhysMani](../entities/paper-physmani-dynamic-manipulation-world-model.md)（在线无散度 WM + 3DFA 策略，PhysMani-Bench 16 任务，arXiv:2607.01938）；**像素掩码动作统一前向/逆向** 见 [Masked Visual Actions](../entities/paper-masked-visual-actions.md)（策略评估 **r=0.982**，arXiv:2607.19343）；**IR 条件世界模型 + plan-then-execute VLA** 见 [RoboInter1.5](../entities/paper-robointer-1-5.md)（230k+ episode，arXiv:2607.18709）
 - **Video-Action Model（VAM）**：用语义–动力学一体的 **视频扩散骨干潜计划** 条件化 **流匹配 / 逆动力学式动作头**，与 VLA 的静态 VLM 先验形成对照；入口见 [mimic-video](../methods/mimic-video.md)。**联合训练 + 测试时仿真选动作** 见 [τ₀-WM](../entities/tau0-world-model.md)（异构掩码预训练、propose–evaluate–revise）；**开源 Wan+MoT 三专家 + RobotWin JSONL 管线** 见 [Dexmal DW05](../entities/dexmal-dw05.md)（DW05-Base / DW05-Robotwin）
 - **DeFI**：**GFDM + GIDM** 分阶段预训练解耦前向/逆动力学，再用扩散适配器耦合微调；强调无动作标签人视频与 CALVIN / SimplerEnv 长程表现；入口见 [DeFI](../methods/defi-decoupled-dynamics-vla.md)
 - **EgoScale**：在 **海量 egocentric 人视频** 上对 **流式 VLA** 做 **腕 + 重定向灵巧手** 显式预训练，并以 **对齐人–机 mid-training** 承接 embodiment gap，面向 **高 DoF 长程灵巧** 任务；入口见 [EgoScale](../methods/egoscale.md)
@@ -152,6 +154,7 @@ flowchart TD
 - [ENPIRE](../methods/enpire.md) — coding agent 驱动的真机策略自改进闭环（自动 reset/verify + 多 PI 范式 + 机队 scaling）
 - [ASPIRE](../methods/aspire.md) — 持续学习 code-as-policy：逐原语 trace 调试 + 技能库复利 + 进化搜索（LIBERO-Pro / Robosuite / BEHAVIOR-1K）
 - [Harness VLA](../entities/paper-harness-vla.md) — 冻结 VLA + 固定原语记忆 harness；LIBERO-Pro / RoboCasa365 / RoboTwin C2R（arXiv:2607.08448）
+- [RoboInter1.5](../entities/paper-robointer-1-5.md) — 稠密中间表示 Data/VQA/VLM/VLA + IR 条件 World（arXiv:2607.18709）
 - [Learning to Fold（LeHome 2026）](../entities/paper-lehome-learning-to-fold.md) — π₀.₅ + AWR/RECAP 异步 RL 与真机 DAgger 叠衣；仿真 1st / 真机 2nd（arXiv:2606.27163）
 - [GaP](../entities/paper-gap-graph-as-policy.md) — Graph-as-Policy 多 agent harness：ROS 式计算图 + MORSL 技能 + 仿真排练自学习，面向 [变体自动化](../concepts/variational-automation.md)（arXiv:2607.05369）
 - [3D-IC](../entities/paper-3d-ic-joint-navigation-manipulation-planning.md) — 共享 3D 地图的 OVMM 交互路点链联合规划（ICML 2026，Stretch 3）
@@ -229,6 +232,7 @@ flowchart TD
 - [PhysX-Omni](../entities/physx-omni.md) — 统一刚体/可变形/关节体 sim-ready 3D 生成与 PhysXVerse 数据引擎
 - [HomeWorld](../entities/paper-homeworld-whole-home-scene-generation.md) — 全屋 sim-ready  furnished 3D 与 **>15 manipulable objects/scene** 的场景级生成（arXiv:2606.06390）
 - [SimFoundry](../entities/paper-simfoundry-real2sim-scene-generation.md) — 真机视频 → sim-ready 孪生 + object/scene/task cousins；real-to-sim 评测与 sim-to-real 训练（arXiv:2606.28276）
+- [Agentic Real2Sim](../entities/paper-agentic-real2sim.md) — VLM agent 编排 DROID→MuJoCo episode twin（arXiv:2607.19190，代码待开放）
 - [TSIL](../entities/paper-tsil-temporal-self-imitation-learning.md) — 长时域 Meta-World 操作 PPO：自适应时间目标 + 效率加权自模仿（arXiv:2606.19752）
 - [DAPL 杂乱场景外在灵巧](../entities/paper-dapl-extrinsic-dexterity-clutter.md)
 - [自动化仿生对话面部机构合成](../entities/paper-automated-facial-mechanisms-animatronic.md)

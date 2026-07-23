@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, manipulation, real2sim, sim2real, scene-generation, digital-twin, digital-cousin, policy-evaluation, nvidia, gear, droid, isaac-lab, 3dgs, vla]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-23
 arxiv: "2606.28276"
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
@@ -17,6 +17,7 @@ related:
   - ./physx-omni.md
   - ./genesis-world-10.md
   - ./paper-hrl-stack-34-gr00t_n1.md
+  - ./paper-agentic-real2sim.md
 sources:
   - ../../sources/papers/simfoundry_arxiv_2606_28276.md
   - ../../sources/sites/nvidia-research-simfoundry.md
@@ -135,6 +136,7 @@ flowchart TB
 
 - **模块化 ≠ 零人工：** 全自动 F1 约 **0.81–0.92**；论文称 **每物体约 3 分钟** 微调可拉到 **0.93–0.99**——部署前应把「可接受编辑预算」算进管线 SLA。
 - **与 CRISP / 人形 Real2Sim 正交：** [CRISP](../methods/crisp-real2sim.md) 面向 **人–场景接触 + 平面原语 + 人形 RL 跟踪**；SimFoundry 面向 **桌面/厨房类操作场景 + 操作臂/VLA 评测**，几何表示与下游策略接口不同，不宜混为一谈。
+- **与 Agentic Real2Sim 对照：** [Agentic Real2Sim](./paper-agentic-real2sim.md)（arXiv:2607.19190）同样做真机→可仿真，但单位是 **交互 episode twin（MuJoCo 回放）**、编排层是 **VLM agent**，主指标是 **回放成功**；SimFoundry 主打 **场景孪生 + cousins + 策略 Pearson/MMRV**。
 - **评测相关 ≠ 训练免费午餐：** 高 Pearson 只说明 **排序可信**；策略仍可能需 **cousins 或少量真机 demo** 才能覆盖未见物体/布局（论文 co-train 与 cousins 消融已说明）。
 - **代码开放度：** 截至入库日项目页 **未挂公开仓库**；复现需跟踪 GEAR 后续发布与论文附录中的 foundation model 组合（`V_*` 可替换）。
 
@@ -148,6 +150,7 @@ flowchart TB
 - [Genesis World 1.0](./genesis-world-10.md) — 产业侧 **real-to-sim 评测基础设施** 叙事参照
 - [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md) — 实验策略族之一（GR00T N1.6/N1.7）
 - [NVIDIA GEAR Lab](./nvidia-gear-lab.md) — 研究组与姊妹工作（ENPIRE、GR00T Visual Sim2Real 等）
+- [Agentic Real2Sim](./paper-agentic-real2sim.md) — VLM agent 编排的 episode 级 Real2Sim（代码待开放）
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ④ sim↔real 校准层：real-to-sim 策略评测（均值 Pearson 0.911）
 
 ## 参考来源

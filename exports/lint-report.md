@@ -1,8 +1,8 @@
 # Wiki 健康报告
 
-## [2026-07-22] lint | health-check | 自动化 wiki 健康检查
+## [2026-07-23] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **27** 条信息型预警）：
+共发现 **0** 个问题（另含 **30** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -97,7 +97,8 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（25 个）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（27 个）
+- wiki/entities/paper-agentic-real2sim.md（缺 评测 / 对比）
 - wiki/entities/paper-cwi-composite-humanoid-whole-body-imitation.md（缺 评测 / 对比）
 - wiki/entities/paper-gentlehumanoid.md（缺 对比）
 - wiki/entities/paper-grail.md（缺 评测 / 对比）
@@ -122,9 +123,11 @@
 - wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md（缺 评测 / 对比）
 - wiki/entities/paper-patch-policy.md（缺 对比）
 - wiki/entities/paper-pot-vla.md（缺 对比）
+- wiki/entities/paper-robointer-1-5.md（缺 评测 / 对比）
 - wiki/entities/paper-world-translation.md（缺 方法 / 对比）
 
-### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（1 个）
+### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（2 个）
+- wiki/entities/paper-robointer-1-5.md（缺 重定向就绪度）
 - wiki/entities/paper-wolf-vla.md（缺 重定向就绪度）
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
@@ -142,4 +145,4 @@
 ### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：1714/1744 (98%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1716/1746 (98%) wiki/entity 页有 ingest 来源
