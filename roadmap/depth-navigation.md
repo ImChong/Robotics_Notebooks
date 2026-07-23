@@ -220,6 +220,7 @@ flowchart LR
 
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
 - 其它纵深路径：
+  - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
   - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md) — 腿式平台局部越障的展开版
   - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md) — Stage 5 方向 C 的邻接路线
   - [VLA（视觉-语言-动作模型）](depth-vla.md) — Stage 4 语义接地的模型侧展开版

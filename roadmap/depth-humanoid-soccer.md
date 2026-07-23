@@ -220,6 +220,7 @@ flowchart LR
 
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
 - 其它纵深路径：
+  - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
   - [人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md) — 对抗自博弈侧的姊妹路线
   - [人形 RL 运动控制](depth-rl-locomotion.md) — 运动基座的训练侧前置
   - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md) — "感知进策略"的邻接路线

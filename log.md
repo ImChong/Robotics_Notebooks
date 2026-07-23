@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-23] structural | roadmap/depth-teleoperation.md — 新增遥操作（人形全身遥操作 + 手指遥操作）纵深路线，二十条纵深入口全站同步
+
+- roadmap/depth-teleoperation.md：新建「遥操作」纵深路线（起点：Goertz 主从机械手遥操作，1954），Stage 0 全景与定位（三种输出形态：示范数据 / 部署期接管 / 竞技操控）→ Stage 1 输入接口与硬件通道（XR / leader–follower / 上肢外骨骼 / 数据手套 / 纯视觉 / UMI 手持）→ Stage 2 映射与延迟（笛卡尔解析 IK · 实时重定向 · 双边遥操作稳定）→ **Stage 3 人形全身遥操作**（稀疏三点补全 → 全身跟踪策略 GMT → WBC / BFM 流形约束；HEFT / PILOT / TWIST2 / CLOT / TeleGate / CWI）→ **Stage 4 手指与灵巧手遥操作**（手姿估计 → 手部重定向 UHAS / 接触保持 TopoRetarget·SPIDER → 触觉手套 / 灵巧手硬件谱系）→ Stage 5 下游闭环与进阶（teleop → IL · 无机器人采集 · VLA 干预 · 数据集规模 · 极端场景）
+- 按起点里程碑历史序排在**首位**（1954，早于 FOC 1971）：README.md、index.md、roadmap/README.md、roadmap/motion-control.md、docs/index.html、docs/main.js 纵深路线数同步为二十条；docs/index.html 首页按钮以 data-route-extra + hidden 折叠（默认仍只展示里程碑最新 4 条）
+- 其余 19 条 depth-* 路线页「其它纵深路径」各补一条指向遥操作纵深的反向链接，维持纵深互链网络
+- 顺带订正 roadmap/motion-control.md 纵深表此前遗留的「十八条」计数（实为 19，Real2Sim 未同步）→ 现更新为二十条，与全站一致
+- 派生文件（catalog.md / exports / docs/exports / search-index / sitemap 与统计徽章）经 make ci-preflight 同步
+
 ## [2026-07-23] structural | scripts/generate_link_graph.py + docs/main.js + export_minimal — 纵深路线更新纳入首页最新知识节点；路线页元信息显示更新时间标签
 
 - scripts/generate_link_graph.py：log.md 路径解析扩展至 roadmap/…，latest_wiki_nodes / wiki-activity 收录纵深与主路线；git first-add 扫描同步覆盖 roadmap/

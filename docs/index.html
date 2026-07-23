@@ -41,8 +41,8 @@
           <p class="hero-subtitle">先选一个入口，沿 <strong>路线、图谱、模块、论文</strong> 逐步深入。</p>
 
           <div class="hero-stat-row-mini" aria-label="知识库当前规模">
-            <span id="heroNodeCount">1779</span> 个节点 ·
-            <span id="heroEdgeCount">14700</span> 条连接
+            <span id="heroNodeCount">1780</span> 个节点 ·
+            <span id="heroEdgeCount">14801</span> 条连接
           </div>
         </div>
       </div>
@@ -72,16 +72,17 @@
             <span class="home-entry-label">更多路线</span>
             <h3>按研究方向进入纵深路线</h3>
             <!-- 按各方向起点里程碑的历史顺序排列：
-                 力矩电机设计（FOC 1971）→ 传统控制（ZMP 1972）→ 安全控制（CLF 1983）→ 接触操作（阻抗控制 1985）
+                 遥操作（Goertz 主从机械手 1954）→ 力矩电机设计（FOC 1971）→ 传统控制（ZMP 1972）→ 安全控制（CLF 1983）→ 接触操作（阻抗控制 1985）
                  → 导航（概率 SLAM 1986）→ 模仿学习（行为克隆 1988）→ 强化学习（Q-learning 1989）
                  → 移动操作（移动操作臂协调 1994）→ 人形足球（首届 RoboCup 1997）→ 动作重定向（Gleicher 1998）
                  → 人形群控展演（央视春晚 540 台 Alpha 1S 群舞 2016）→ Sim2Real（域随机化 DR 2017）
                  → 人形拳击（MuJoCo 人形对抗自博弈 2017）→ BFM（DeepMimic 2018）
                  → 感知越障（2020s）→ 动作生成（MDM 2022）→ VLA（RT-2 确立 VLA，2023）
                  → Real2Sim（3D Gaussian Splatting 规模化重建 2023）→ WAM（World Action Models 综述形式化，2026）
-                 默认折叠：只展示里程碑最新的 4 条，其余 15 条标记 data-route-extra + hidden，
+                 默认折叠：只展示里程碑最新的 4 条，其余 16 条标记 data-route-extra + hidden，
                  由 main.js 的展开按钮（#homeRouteToggle）控制显隐 -->
             <div class="home-entry-route-links" id="homeRouteLinks">
+              <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-teleoperation" data-route-extra hidden>遥操作</a>
               <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-torque-motor-design" data-route-extra hidden>力矩电机设计</a>
               <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-classical-control" data-route-extra hidden>传统控制</a>
               <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-safe-control" data-route-extra hidden>安全控制</a>
@@ -102,7 +103,7 @@
               <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-real2sim">Real2Sim</a>
               <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-wam">WAM</a>
             </div>
-            <button type="button" id="homeRouteToggle" class="home-entry-link home-route-toggle" aria-expanded="false" aria-controls="homeRouteLinks">展开全部 19 条纵深路线 ↓</button>
+            <button type="button" id="homeRouteToggle" class="home-entry-link home-route-toggle" aria-expanded="false" aria-controls="homeRouteLinks">展开全部 20 条纵深路线 ↓</button>
           </div>
         </div>
       </div>

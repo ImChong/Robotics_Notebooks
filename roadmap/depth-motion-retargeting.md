@@ -219,6 +219,7 @@ flowchart LR
 
 - 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
 - 其它纵深路径：
+  - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
   - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md) — 姊妹路线：生成负责"造动作"，重定向负责"落到机器人"
   - [模仿学习与技能迁移](depth-imitation-learning.md) — 本路线 Stage 4 下游的策略学习侧
   - [BFM（人形行为基础模型）](depth-bfm.md) — Stage 5 方向 D 的主要数据消费者

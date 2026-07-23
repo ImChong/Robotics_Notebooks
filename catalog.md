@@ -1740,6 +1740,7 @@
 - [路线（纵深）：如果目标是人形 RL 运动控制](roadmap/depth-rl-locomotion.md) — 摘要**：面向"想用强化学习做人形 locomotion"的快速纵深路线，从 RL 基础到 sim2real，按 Stage 0–5 串通核心方法；本路线是 [运动控制主路线](motion-co `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是安全控制（CLF / CBF / Safe RL）](roadmap/depth-safe-control.md) — 摘要**：面向"在满足安全约束的前提下控制机器人"的纵深路线，从 Lyapunov 稳定性到 CBF-QP、再到 Safe RL，按 Stage 0–3 串通核心方法；本路线是 [运动控制主路线 `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是 Sim2Real（仿真到真机迁移）](roadmap/depth-sim2real.md) — 摘要**：面向"想把仿真里训好的策略稳定搬上真机"的纵深路线，从 domain gap 六类来源画像与方法三分（仿真端随机化 / 分布对齐 / 真机适应），到资产与执行器对齐（SysID / Ac `📅unknown` `[roadmap_page]`
+- [路线（纵深）：如果目标是遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](roadmap/depth-teleoperation.md) — 摘要**：面向"想搭一套让人实时操控人形机器人、并顺带采集高质量示范数据"的纵深路线，从遥操作的问题定义与输出形态定位、输入接口与硬件通道选型、设备信号到机器人指令的映射与延迟/双边稳定，到**人 `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环 → 关节模组）](roadmap/depth-torque-motor-design.md) — 摘要**：面向"想把关节电机从任务指标一路做到可验收力矩闭环模组"的纵深路线，从电机学地基与 TN/TI 读图，到关节指标定义与执行器架构选型、电磁热设计、驱动硬件与电流环、电机驱动 PCB 设计 `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是 VLA（视觉-语言-动作模型）](roadmap/depth-vla.md) — 摘要**：面向"想让机器人听懂指令干活"的纵深路线，从具身模型分类学、模仿学习策略基座，到 VLA 语义策略主线（RT 系列 → OpenVLA → π0）、数据与 Scaling，再到部署整合与 `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是 WAM（世界–动作模型）](roadmap/depth-wam.md) — 摘要**：面向"想让策略在出动作前显式预知世界会怎么变"的纵深路线，从 VLA / 世界模型 / WAM 的边界与 Cascaded–Joint 族谱，到生成式世界模型与动力学基座，再到 Casc `📅unknown` `[roadmap_page]`
