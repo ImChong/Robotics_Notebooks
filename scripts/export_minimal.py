@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import re
+import subprocess
 from pathlib import Path
 from typing import Any, Dict, List
 
@@ -58,6 +59,89 @@ def build_ingest_index() -> Dict[str, str]:
 
 
 _INGEST_INDEX: Dict[str, str] = {}  # populated in main()
+
+# roadmap/ 无 YAML frontmatter 时，用 git 最近一次提交日作为「更新时间」徽标来源。
+_ROADMAP_GIT_UPDATED_CACHE: Dict[str, str] | None = None
+_GIT_LOG_BOUNDARY = "\x01"
+
+
+def roadmap_git_updated_dates(*, force_refresh: bool = False) -> Dict[str, str]:
+    """Map ``roadmap/*.md`` → ISO date of the newest non-merge commit touching the file."""
+    global _ROADMAP_GIT_UPDATED_CACHE
+    if not force_refresh and _ROADMAP_GIT_UPDATED_CACHE is not None:
+        return _ROADMAP_GIT_UPDATED_CACHE
+
+    roadmap_dir = ROOT / "roadmap"
+    if not roadmap_dir.is_dir():
+        _ROADMAP_GIT_UPDATED_CACHE = {}
+        return _ROADMAP_GIT_UPDATED_CACHE
+
+    current = {
+        str(p.relative_to(ROOT)).replace("\\", "/")
+        for p in roadmap_dir.glob("*.md")
+        if p.is_file() and p.name != "README.md"
+    }
+    if not current:
+        _ROADMAP_GIT_UPDATED_CACHE = {}
+        return _ROADMAP_GIT_UPDATED_CACHE
+
+    try:
+        result = subprocess.run(
+            [
+                "git",
+                "-C",
+                str(ROOT),
+                "-c",
+                "core.quotepath=false",
+                "log",
+                "--topo-order",
+                "--no-merges",
+                f"--format={_GIT_LOG_BOUNDARY}%cs",
+                "--name-only",
+                "--",
+                "roadmap",
+            ],
+            capture_output=True,
+            text=True,
+            check=False,
+            timeout=60,
+        )
+        if result.returncode != 0:
+            _ROADMAP_GIT_UPDATED_CACHE = {}
+            return _ROADMAP_GIT_UPDATED_CACHE
+    except (subprocess.SubprocessError, OSError):
+        _ROADMAP_GIT_UPDATED_CACHE = {}
+        return _ROADMAP_GIT_UPDATED_CACHE
+
+    latest: Dict[str, str] = {}
+    date_str: str | None = None
+    for line in result.stdout.splitlines():
+        if line.startswith(_GIT_LOG_BOUNDARY):
+            date_str = line[1:].strip() or None
+            continue
+        if not date_str:
+            continue
+        path = line.strip()
+        if path in current and path not in latest:
+            latest[path] = date_str
+        if len(latest) >= len(current):
+            break
+
+    _ROADMAP_GIT_UPDATED_CACHE = latest
+    return _ROADMAP_GIT_UPDATED_CACHE
+
+
+def resolve_page_updated(path: Path, fm: dict[str, Any]) -> str | None:
+    """frontmatter ``updated`` 优先；roadmap 页无 frontmatter 时回退到 git 最近提交日。"""
+    raw = fm.get("updated")
+    if raw:
+        return str(raw).strip()[:10] or None
+    parts = path.relative_to(ROOT).parts
+    if parts and parts[0] == "roadmap":
+        page_rel = str(path.relative_to(ROOT)).replace("\\", "/")
+        return roadmap_git_updated_dates().get(page_rel)
+    return None
+
 
 TAG_HINTS = {
     "humanoid": ["humanoid", "unitree"],
@@ -682,7 +766,7 @@ def build_item(path: Path) -> dict[str, Any]:
         "related": collect_markdown_links(text, path),
         "source_links": collect_reference_sources(body_text, path),
         "status": "active",
-        "updated": fm.get("updated"),
+        "updated": resolve_page_updated(path, fm),
     }
 
     parts = path.relative_to(ROOT).parts
@@ -908,6 +992,8 @@ def build_site_data(items: List[Dict]) -> Dict:
             "stages": item.get("stages", []),
             "related_items": item.get("related", []),
             "source_links": item.get("source_links", []),
+            "updated": item.get("updated"),
+            "path": item.get("path"),
         }
         for item in roadmap_items
     }

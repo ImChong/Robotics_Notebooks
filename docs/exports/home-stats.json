@@ -9,6 +9,35 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "roadmap/depth-real2sim.md",
+      "detail_id": "roadmap-depth-real2sim",
+      "label": "路线（纵深）：如果目标是 Real2Sim（真实世界 → 可仿真资产/场景/孪生）",
+      "type": "roadmap_page",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "roadmap/depth-sim2real.md",
+      "detail_id": "roadmap-depth-sim2real",
+      "label": "路线（纵深）：如果目标是 Sim2Real（仿真到真机迁移）",
+      "type": "roadmap_page",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "roadmap/motion-control.md",
+      "detail_id": "roadmap-motion-control",
+      "label": "主路线：运动控制算法工程师成长路线",
+      "type": "roadmap_page",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
       "path": "wiki/entities/img2threejs.md",
       "detail_id": "entity-img2threejs",
       "label": "img2threejs",
@@ -186,46 +215,16 @@
       "source": "log.md",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-x-foresight.md",
-      "detail_id": "entity-paper-x-foresight",
-      "label": "X-Foresight（Joint Vision-Action Causal Forecasting）",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/overview/autonomous-driving-core-algorithms-series.md",
-      "detail_id": "wiki-overview-autonomous-driving-core-algorithms-series",
-      "label": "《自动驾驶核心算法盘点》专栏技术地图",
-      "type": "overview",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/qwen-robot-nav.md",
-      "detail_id": "entity-qwen-robot-nav",
-      "label": "Qwen-RobotNav",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/img2threejs.md",
-    "detail_id": "entity-img2threejs",
-    "label": "img2threejs",
-    "type": "entity",
+    "path": "roadmap/depth-real2sim.md",
+    "detail_id": "roadmap-depth-real2sim",
+    "label": "路线（纵深）：如果目标是 Real2Sim（真实世界 → 可仿真资产/场景/孪生）",
+    "type": "roadmap_page",
     "recency": "2026-07-23",
     "source": "log.md",
-    "action": "added",
+    "action": "maintained",
     "has_repo": true
   },
   "top_communities": [
