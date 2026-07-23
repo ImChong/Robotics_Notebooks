@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, shanghai-ai-lab, flow-matching, mot, compositional-generalization, manipulation, qwen, world-models, latent-foresight]
 status: complete
-updated: 2026-07-11
+updated: 2026-07-23
 arxiv: "2607.04988"
 related:
   - ../methods/vla.md
@@ -14,6 +14,7 @@ related:
   - ./xiaomi-robotics-0.md
   - ./lingbot-vla-v2.md
   - ./robotwin.md
+  - ./paper-robointer-1-5.md
 sources:
   - ../../sources/papers/internvla_a15_arxiv_2607_04988.md
 summary: "InternVLA-A1.5（上海 AI Lab）：Qwen3.5-2B MoT VLM + 460M unified expert；Stage1 持续 VQA/子任务/FAST 共训保语义，Stage2 用 50 foresight token 查询冻结 WAN2.2 潜式未来 + flow matching 连续动作；1.2M 机器人 + 3M 多模态预训练；六套仿真全榜领先，真机组合指令 OOD 与长程 MOF 显著超 π₀.₅/Motus；部署不滚像素，~0.1s/步。"
@@ -160,6 +161,8 @@ flowchart TB
 - [Manipulation](../tasks/manipulation.md) — LIBERO / RoboTwin / 真机操作背景。
 - [RoboTwin](./robotwin.md) — 双臂仿真基准与 DOMINO 动态扩展。
 - [LingBot-VLA 2.0](./lingbot-vla-v2.md) — 同赛道大规模预训练 VLA 对照。
+- [RoboInter1.5](./paper-robointer-1-5.md) — 同组织生态的稠密中间表示 + plan-then-execute VLA 套件（Executor 参考 InternVLA-M1）
+
 
 ## 推荐继续阅读
 

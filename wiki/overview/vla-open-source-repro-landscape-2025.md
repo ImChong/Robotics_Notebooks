@@ -2,7 +2,7 @@
 type: overview
 tags: [vla, open-source, reproduction, survey, github, embodied-ai]
 status: complete
-updated: 2026-07-22
+updated: 2026-07-23
 related:
   - ../methods/vla.md
   - ../methods/star-vla.md
@@ -15,6 +15,7 @@ related:
   - ../overview/vln-open-source-repro-paradigms.md
   - ../formalizations/lie-group-rigid-body-motions.md
   - ../entities/paper-harness-vla.md
+  - ../entities/paper-robointer-1-5.md
 sources:
   - ../../sources/blogs/wechat_shenlan_vla_github_repro_survey_2025.md
   - ../../sources/repos/rpent.md
@@ -28,6 +29,8 @@ summary: "2025 年高可见 VLA 开源栈策展：从通用策略（OpenPI）、
 ## 一句话总结
 
 VLA 的「智能」可以写在论文里，但**跑不通的训练脚本与权重**会直接暴露工程差距；2025 年开源生态同时在 **模型、RL 训练系统、跨本体与 VLA+世界模型** 四条线上铺开，复现时应先选对「你要验证的层」再选仓库。**2026 起** 可另见通义 [Qwen-VLA](../entities/qwen-vla.md)（**操作 + VLN 统一通才**、Qwen3.5-4B + DiT flow），本页 11 项表仍锁定 2025-12 策展快照。
+
+**2026 补充入口（不入上表）：** [RoboInter1.5](../entities/paper-robointer-1-5.md) 提供 **中间表示数据 + VLM +（待齐）VLA/World**——适合先复现 IR-VQA/Planner，再跟进 VLA 权重。
 
 ## 英文缩写速查
 

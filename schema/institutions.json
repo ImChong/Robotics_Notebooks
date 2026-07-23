@@ -1371,6 +1371,36 @@
         "ilia-larchenko",
         "larchenko"
       ]
+    },
+    "columbia": {
+      "label": "哥伦比亚大学（Columbia University）",
+      "aliases": [
+        "columbia",
+        "columbia-university"
+      ]
+    },
+    "jhu": {
+      "label": "约翰霍普金斯大学（Johns Hopkins University）",
+      "aliases": [
+        "jhu",
+        "johns-hopkins",
+        "johns-hopkins-university"
+      ]
+    },
+    "fau": {
+      "label": "埃尔朗根-纽伦堡大学（FAU Erlangen-Nürnberg）",
+      "aliases": [
+        "fau",
+        "erlangen",
+        "nhr-fau",
+        "fau-erlangen"
+      ]
+    },
+    "style3d": {
+      "label": "凌迪科技（Style3D）",
+      "aliases": [
+        "style3d"
+      ]
     }
   }
 }
