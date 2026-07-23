@@ -2,7 +2,7 @@
 type: overview
 tags: [world-models, category-hub, cascade, video-prediction, latent-action, shenlan-survey]
 status: complete
-updated: 2026-07-22
+updated: 2026-07-23
 summary: "深蓝世界模型 15 项目 · 01 级联架构（6 篇）— 先预测未来视觉/4D 状态，再由逆动力学或动作头解码控制；误差在级联间传递是主要权衡。"
 related:
   - ./world-models-15-open-source-technology-map.md

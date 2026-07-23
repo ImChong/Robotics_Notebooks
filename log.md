@@ -1,5 +1,35 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-23] ingest | sources/papers/wan_video_arxiv_2503_20314.md + sources/sites/wan-video.md + sources/repos/wan2.1.md — Wan（arXiv:2503.20314）开源视频基础模型；升格 wiki/entities/paper-wan-video.md；交叉 wiki/entities/paper-wan-move.md、wiki/entities/paper-masked-visual-actions.md、wiki/entities/paper-ctrl-world.md、wiki/methods/generative-world-models.md、wiki/concepts/video-as-simulation.md、wiki/overview/robot-world-models-training-loop-taxonomy.md；已开源（Wan2.1/2.2 Apache-2.0）。注：masked-visual-actions.github.io 已于 2026-07-22 ingest，本次补对照实体页
+
+- **开源状态：** **已开源** — [`Wan-Video/Wan2.1`](https://github.com/Wan-Video/Wan2.1) / [`Wan2.2`](https://github.com/Wan-Video/Wan2.2)（Apache-2.0）+ HF/ModelScope Wan-AI（截至 2026-07-23）
+- **新建 papers：** [`sources/papers/wan_video_arxiv_2503_20314.md`](sources/papers/wan_video_arxiv_2503_20314.md)
+- **新建 sites：** [`sources/sites/wan-video.md`](sources/sites/wan-video.md)
+- **新建 repos：** [`sources/repos/wan2.1.md`](sources/repos/wan2.1.md)
+- **新建 wiki：** [`wiki/entities/paper-wan-video.md`](wiki/entities/paper-wan-video.md)
+- **机构：** 沿用既有 `alibaba`
+- **交叉更新：** [`wiki/methods/generative-world-models.md`](wiki/methods/generative-world-models.md)、[`wiki/concepts/video-as-simulation.md`](wiki/concepts/video-as-simulation.md)、[`wiki/overview/robot-world-models-training-loop-taxonomy.md`](wiki/overview/robot-world-models-training-loop-taxonomy.md)、[`wiki/entities/paper-masked-visual-actions.md`](wiki/entities/paper-masked-visual-actions.md)
+
+## [2026-07-23] ingest | sources/papers/wan_move_arxiv_2512_08765.md + sources/sites/wan-move-github-io.md + sources/repos/wan-move.md — Wan-Move（arXiv:2512.08765，NeurIPS 2025）latent 轨迹运动控制；升格 wiki/entities/paper-wan-move.md；交叉 wiki/entities/paper-wan-video.md、wiki/entities/paper-masked-visual-actions.md、wiki/methods/generative-world-models.md、wiki/concepts/video-as-simulation.md、wiki/overview/world-models-route-03-virtual-sandbox.md；已开源（Apache-2.0）
+
+- **开源状态：** **已开源** — [`ali-vilab/Wan-Move`](https://github.com/ali-vilab/Wan-Move)（Apache-2.0）+ HF `Ruihang/Wan-Move-14B-480P` + MoveBench（截至 2026-07-23）
+- **新建 papers：** [`sources/papers/wan_move_arxiv_2512_08765.md`](sources/papers/wan_move_arxiv_2512_08765.md)
+- **新建 sites：** [`sources/sites/wan-move-github-io.md`](sources/sites/wan-move-github-io.md)
+- **新建 repos：** [`sources/repos/wan-move.md`](sources/repos/wan-move.md)
+- **新建 wiki：** [`wiki/entities/paper-wan-move.md`](wiki/entities/paper-wan-move.md)
+- **机构：** 沿用既有 `alibaba` / `tsinghua` / `hku` / `cuhk`
+- **交叉更新：** [`wiki/entities/paper-wan-video.md`](wiki/entities/paper-wan-video.md)、[`wiki/entities/paper-masked-visual-actions.md`](wiki/entities/paper-masked-visual-actions.md)、[`wiki/methods/generative-world-models.md`](wiki/methods/generative-world-models.md)、[`wiki/concepts/video-as-simulation.md`](wiki/concepts/video-as-simulation.md)
+
+## [2026-07-23] ingest | sources/papers/ctrl_world_arxiv_2510_10125.md + sources/sites/ctrl-world-github-io.md + sources/repos/ctrl-world.md — Ctrl-World（arXiv:2510.10125，ICLR 2026）可控多视角 WM；升格 wiki/entities/paper-ctrl-world.md；交叉 wiki/methods/generative-world-models.md、wiki/concepts/video-as-simulation.md、wiki/overview/world-models-route-03-virtual-sandbox.md、wiki/overview/robot-world-models-training-loop-taxonomy.md、wiki/entities/paper-masked-visual-actions.md、wiki/tasks/manipulation.md、wiki/queries/embodied-eval-benchmark-selection-loop.md；已开源（MIT）
+
+- **开源状态：** **已开源** — [`Robert-gyj/Ctrl-World`](https://github.com/Robert-gyj/Ctrl-World)（MIT）+ HF `yjguo/Ctrl-World`（截至 2026-07-23）
+- **新建 papers：** [`sources/papers/ctrl_world_arxiv_2510_10125.md`](sources/papers/ctrl_world_arxiv_2510_10125.md)
+- **新建 sites：** [`sources/sites/ctrl-world-github-io.md`](sources/sites/ctrl-world-github-io.md)
+- **新建 repos：** [`sources/repos/ctrl-world.md`](sources/repos/ctrl-world.md)
+- **新建 wiki：** [`wiki/entities/paper-ctrl-world.md`](wiki/entities/paper-ctrl-world.md)
+- **机构：** 沿用既有 `stanford` / `tsinghua`
+- **交叉更新：** [`wiki/methods/generative-world-models.md`](wiki/methods/generative-world-models.md)、[`wiki/concepts/video-as-simulation.md`](wiki/concepts/video-as-simulation.md)、[`wiki/overview/world-models-route-03-virtual-sandbox.md`](wiki/overview/world-models-route-03-virtual-sandbox.md)、[`wiki/overview/robot-world-models-training-loop-taxonomy.md`](wiki/overview/robot-world-models-training-loop-taxonomy.md)、[`wiki/entities/paper-masked-visual-actions.md`](wiki/entities/paper-masked-visual-actions.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`wiki/queries/embodied-eval-benchmark-selection-loop.md`](wiki/queries/embodied-eval-benchmark-selection-loop.md)
+
 ## [2026-07-23] ingest | sources/papers/robointer_1_5_arxiv_2607_18709.md + sources/sites/lihaohn-robointer-github-io.md + sources/repos/robointer.md — RoboInter1.5（arXiv:2607.18709）中间表示套件+World；升格 wiki/entities/paper-robointer-1-5.md；交叉 wiki/methods/vla.md、wiki/methods/generative-world-models.md、wiki/concepts/video-as-simulation.md、wiki/tasks/manipulation.md、wiki/overview/vla-open-source-repro-landscape-2025.md、wiki/entities/paper-internvla-a15-unified-vla.md、wiki/entities/paper-masked-visual-actions.md；部分开源（Data/VLM 已发，VLA/World 待齐）
 
 - **开源状态：** **部分开源** — [`InternRobotics/RoboInter`](https://github.com/InternRobotics/RoboInter)（MIT）+ HF Data/VQA/VLM；`RoboInterVLA` 与 **RoboInter-World** 代码/权重待齐（截至 2026-07-23）

@@ -2,7 +2,7 @@
 type: overview
 tags: [world-models, robot-learning, survey, vla, video-generation, model-based-rl, training-loop]
 status: complete
-updated: 2026-07-22
+updated: 2026-07-23
 related:
   - ./robot-world-models-action-consequence-technology-map.md
   - ./world-models-15-open-source-technology-map.md
@@ -27,6 +27,9 @@ related:
   - ../entities/paper-oscar.md
   - ../entities/paper-driftworld.md
   - ../entities/paper-masked-visual-actions.md
+  - ../entities/paper-ctrl-world.md
+  - ../entities/paper-wan-move.md
+  - ../entities/paper-wan-video.md
   - ../entities/paper-m4world.md
   - ../entities/paper-gigaworld-1-policy-evaluation.md
   - ../entities/paper-embodiedgen-v2-sim-ready-world-engine.md
@@ -39,6 +42,8 @@ sources:
   - ../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md
   - ../../sources/papers/worldvln_arxiv_2605_15964.md
   - ../../sources/papers/m4world_arxiv_2607_14005.md
+  - ../../sources/papers/ctrl_world_arxiv_2510_10125.md
+  - ../../sources/papers/wan_video_arxiv_2503_20314.md
 summary: "依据 arXiv:2605.00080 与策展解读，把机器人世界模型整理为策略内预测、学习型模拟器、可控视频生成三线，并强调评价应从开环视频逼真转向物理/动作一致性与训练闭环增益。"
 ---
 
@@ -84,8 +89,8 @@ flowchart TB
 | 线路 | 典型问题 | 与本库页面的关系 |
 |------|----------|------------------|
 | **① 策略内世界模型** | 执行 \(a\) 前，内部推演 \(o'\) 是否合理？ | [VLA](../methods/vla.md)、[WAM](../concepts/world-action-models.md)、[Being-H0.7](../methods/being-h07.md)（潜空间先验）、[mimic-video](../methods/mimic-video.md)、[τ₀-WM](../entities/tau0-world-model.md)（动作条件仿真 + 测试时修订）、[WorldVLN](../entities/paper-worldvln-aerial-vln-wam.md)（空中 VLN · 自回归 WAM） |
-| **② 学习型模拟器** | 真机数据贵、传统仿真不够真，能否学可用「中间环境」？ | [Model-Based RL](../methods/model-based-rl.md)、[Video-as-Simulation](../concepts/video-as-simulation.md)、[Robotic World Model（ETH RSL）](../entities/robotic-world-model-eth-rsl.md)（状态动力学口径）、[OSCAR](../entities/paper-oscar.md)（骨架条件 WM + RoboArena 虚拟策略评估）、[DriftWorld](../entities/paper-driftworld.md)（1-step drifting + 离线评估）、[Masked Visual Actions](../entities/paper-masked-visual-actions.md)（掩码动作条件 + 规划/评估）、[M⁴World](../entities/paper-m4world.md)（驾驶环视+LiDAR 可控仿真） |
-| **③ 机器人视频世界模型** | 生成的未来是否 **受动作控制** 且 **物理/几何可信**？ | [Generative World Models](../methods/generative-world-models.md)、[Latent Imagination](../concepts/latent-imagination.md)、[WEM](../entities/paper-wem-world-ego-modeling.md)（world/ego 解耦 + 混合长程基准 HTEWorld）、[GE-Sim 2.0](../entities/ge-sim-2.md)（闭环 rollout + 本体状态 + World Judge）、[OSCAR](../entities/paper-oscar.md)（跨具身骨架条件 + 四阶段数据管线）、[DriftWorld](../entities/paper-driftworld.md)（非扩散单次前向动作条件）、[Masked Visual Actions](../entities/paper-masked-visual-actions.md)（像素掩码轨迹统一前向/逆向）、[M⁴World](../entities/paper-m4world.md)（物体外观条件 + 分钟级驾驶流式） |
+| **② 学习型模拟器** | 真机数据贵、传统仿真不够真，能否学可用「中间环境」？ | [Model-Based RL](../methods/model-based-rl.md)、[Video-as-Simulation](../concepts/video-as-simulation.md)、[Robotic World Model（ETH RSL）](../entities/robotic-world-model-eth-rsl.md)（状态动力学口径）、[OSCAR](../entities/paper-oscar.md)（骨架条件 WM + RoboArena 虚拟策略评估）、[DriftWorld](../entities/paper-driftworld.md)（1-step drifting + 离线评估）、[Masked Visual Actions](../entities/paper-masked-visual-actions.md)（掩码动作条件 + 规划/评估）、[Ctrl-World](../entities/paper-ctrl-world.md)（多视角 VLA 闭环评估 + 合成 SFT）、[M⁴World](../entities/paper-m4world.md)（驾驶环视+LiDAR 可控仿真） |
+| **③ 机器人视频世界模型** | 生成的未来是否 **受动作控制** 且 **物理/几何可信**？ | [Generative World Models](../methods/generative-world-models.md)、[Latent Imagination](../concepts/latent-imagination.md)、[WEM](../entities/paper-wem-world-ego-modeling.md)（world/ego 解耦 + 混合长程基准 HTEWorld）、[GE-Sim 2.0](../entities/ge-sim-2.md)（闭环 rollout + 本体状态 + World Judge）、[OSCAR](../entities/paper-oscar.md)（跨具身骨架条件 + 四阶段数据管线）、[DriftWorld](../entities/paper-driftworld.md)（非扩散单次前向动作条件）、[Masked Visual Actions](../entities/paper-masked-visual-actions.md)（像素掩码轨迹统一前向/逆向）、[Ctrl-World](../entities/paper-ctrl-world.md)（帧级动作 + 多视角）、[Wan](../entities/paper-wan-video.md) / [Wan-Move](../entities/paper-wan-move.md)（开源视频先验与轨迹可控 I2V）、[M⁴World](../entities/paper-m4world.md)（物体外观条件 + 分钟级驾驶流式） |
 
 ## 路线演化：从「想象未来」到「训练闭环」
 
@@ -132,7 +137,7 @@ flowchart TB
 - 预测未来是否 **帮助少犯错**？
 - 是否在 **闭环任务** 中提高成功率？
 
-若三者答不好，世界模型容易退化为 Demo。本库 [EWMBench](../entities/ewmbench.md) 讨论 **操纵场景守恒** 类指标；[GE-Sim 2.0](../entities/ge-sim-2.md) 把 **任务成功判定与奖励** 内置进模拟器并报告真机策略增益；[WEM / HTEWorld](../entities/paper-wem-world-ego-modeling.md) 进一步覆盖 **导航–操作交错、多轮长程** rollout；[OSCAR](../entities/paper-oscar.md) 在 [RoboArena](../methods/roboarena.md) 上验证 **开环 WM rollout 与真机策略排名相关性**；[DriftWorld](../entities/paper-driftworld.md) 用 **1-step drifting** 把离线评估相关性推到约 **0.99** 同时压低推理时搜索成本；[Masked Visual Actions](../entities/paper-masked-visual-actions.md) 用 **像素掩码动作** 做 RoboCasa 策略评估（**r=0.982**）并统一前向/逆向；[GigaWorld-1](../entities/paper-gigaworld-1-policy-evaluation.md) 系统论证 **长时序动作忠实 rollout** 比短时视觉逼真更决定策略评估质量，可与上述口径对照阅读。
+若三者答不好，世界模型容易退化为 Demo。本库 [EWMBench](../entities/ewmbench.md) 讨论 **操纵场景守恒** 类指标；[GE-Sim 2.0](../entities/ge-sim-2.md) 把 **任务成功判定与奖励** 内置进模拟器并报告真机策略增益；[WEM / HTEWorld](../entities/paper-wem-world-ego-modeling.md) 进一步覆盖 **导航–操作交错、多轮长程** rollout；[OSCAR](../entities/paper-oscar.md) 在 [RoboArena](../methods/roboarena.md) 上验证 **开环 WM rollout 与真机策略排名相关性**；[DriftWorld](../entities/paper-driftworld.md) 用 **1-step drifting** 把离线评估相关性推到约 **0.99** 同时压低推理时搜索成本；[Masked Visual Actions](../entities/paper-masked-visual-actions.md) 用 **像素掩码动作** 做 RoboCasa 策略评估（**r=0.982**）并统一前向/逆向；[Ctrl-World](../entities/paper-ctrl-world.md) 用 **多视角 policy-in-the-loop** 对齐指令跟随排名并用合成轨迹 SFT；[GigaWorld-1](../entities/paper-gigaworld-1-policy-evaluation.md) 系统论证 **长时序动作忠实 rollout** 比短时视觉逼真更决定策略评估质量，可与上述口径对照阅读。
 
 ## 姊妹篇：2026-07 动作后果横切面
 

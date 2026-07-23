@@ -2,7 +2,7 @@
 type: overview
 tags: [world-models, category-hub, virtual-sandbox, model-based-rl, policy-evaluation, dreamer, shenlan-survey]
 status: complete
-updated: 2026-07-22
+updated: 2026-07-23
 summary: "深蓝世界模型 15 项目 · 03 虚拟沙盒（3 篇）— 世界模型作 RL 想象环境或策略评估靶场，用 rollout 替代昂贵真机试错；代表 DreamerV3、RLVR-World、WorldGym。"
 related:
   - ./world-models-15-open-source-technology-map.md
@@ -16,10 +16,14 @@ related:
   - ../entities/paper-oscar.md
   - ../entities/paper-driftworld.md
   - ../entities/paper-masked-visual-actions.md
+  - ../entities/paper-ctrl-world.md
+  - ../entities/paper-wan-move.md
+  - ../entities/paper-wan-video.md
 sources:
   - ../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md
   - ../../sources/papers/shenlan_world_models_15_reference_catalog.md
   - ../../sources/papers/masked_visual_actions_arxiv_2607_19343.md
+  - ../../sources/papers/ctrl_world_arxiv_2510_10125.md
 ---
 
 # 世界模型路线 03：虚拟沙盒
@@ -54,6 +58,7 @@ sources:
 - [OSCAR](../entities/paper-oscar.md)（arXiv:2606.04463）— 跨具身 **2D 骨架条件** 视频 WM，在 [RoboArena](../methods/roboarena.md) 七策略上验证虚拟 rollout 与真机排名相关性（Pearson **ρ +0.750**）。
 - [DriftWorld](../entities/paper-driftworld.md)（arXiv:2607.15065）— **1-step drifting** 动作条件 WM（30+ fps），用快想象做 **GPC-RANK 推理时改进** 与离线策略评估（与 GT 相关性最高约 **0.99**）。
 - [Masked Visual Actions](../entities/paper-masked-visual-actions.md)（arXiv:2607.19343）— **像素掩码动作** 统一前向仿真与逆向行为合成；RoboCasa 策略评估 **r=0.982**，Best-of-N 规划 + 真机演示进度对齐。
+- [Ctrl-World](../entities/paper-ctrl-world.md)（arXiv:2510.10125，ICLR 2026）— **多视角** 可控 WM 与 VLA policy-in-the-loop；合成轨迹 SFT（**38.7%→83.4%**）。
 
 ## 在 15 项目地图中的位置
 
@@ -74,11 +79,13 @@ sources:
 - [OSCAR](../entities/paper-oscar.md) — RoboArena 虚拟策略评估代理
 - [DriftWorld](../entities/paper-driftworld.md) — 1-step drifting：推理时搜索 + 离线评估
 - [Masked Visual Actions](../entities/paper-masked-visual-actions.md) — 掩码视觉动作：规划 / 评估 + 前向/逆向统一
+- [Ctrl-World](../entities/paper-ctrl-world.md) — 多视角可控 WM：VLA 闭环评估 + 合成 SFT
 
 ## 参考来源
 
 - [wechat_shenlan_world_models_15_open_source_2026.md](../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md) — <https://mp.weixin.qq.com/s/KZT8sI4n7GvHWyM20wN3gg>
 - [shenlan_world_models_15_reference_catalog.md](../../sources/papers/shenlan_world_models_15_reference_catalog.md)
+- [ctrl_world_arxiv_2510_10125.md](../../sources/papers/ctrl_world_arxiv_2510_10125.md)
 
 ## 推荐继续阅读
 

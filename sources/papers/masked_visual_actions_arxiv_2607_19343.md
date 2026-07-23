@@ -33,6 +33,7 @@
 - **摘录要点：** 视频模型隐式刻画实体轨迹联合分布；条件在子集 \(S\) 上等价于掩码完成。前向：条件主动实体预测被动；逆向：条件被动预测主动。训练无显式 agency，推理任意选 \(S\)。
 - **对 wiki 的映射：**
   - [Masked Visual Actions](../../wiki/entities/paper-masked-visual-actions.md) — 核心接口与统一建模。
+  - [Ctrl-World](../../wiki/entities/paper-ctrl-world.md) / [Wan-Move](../../wiki/entities/paper-wan-move.md) — 文中视觉对照基线（现已独立实体页）。
   - [Generative World Models](../../wiki/methods/generative-world-models.md) — 像素动作条件谱系。
 
 ### 2) 分割 + 渲染双轨数据

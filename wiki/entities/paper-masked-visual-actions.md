@@ -23,6 +23,9 @@ related:
   - ../overview/robot-world-models-training-loop-taxonomy.md
   - ./paper-driftworld.md
   - ./paper-oscar.md
+  - ./paper-ctrl-world.md
+  - ./paper-wan-move.md
+  - ./paper-wan-video.md
   - ./paper-gigaworld-1-policy-evaluation.md
   - ./paper-shenlan-wm-15-worldgym.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
@@ -117,7 +120,7 @@ flowchart LR
 
 | 轴 | 报告口径（以论文 / 项目页为准） |
 |----|--------------------------------|
-| 视觉 · DROID / BEHAVIOR | Tab. 1：相对 Ctrl-World / Wan-Move / Wan-I2V，LPIPS / SSIM / PSNR 更优；BEHAVIOR 为未见双臂 |
+| 视觉 · DROID / BEHAVIOR | Tab. 1：相对 [Ctrl-World](./paper-ctrl-world.md) / [Wan-Move](./paper-wan-move.md) / [Wan](./paper-wan-video.md)-I2V，LPIPS / SSIM / PSNR 更优；BEHAVIOR 为未见双臂 |
 | 条件消融 | Skeleton / EEF 在未见夹爪与双臂上易把机器人「拉回」训练域具身 |
 | 规划 | Diffusion Policy 提案 + Best-of-N（\(N=10\)）+ Gemini 3.1 Pro 评判；成功率随样本数上升 |
 | 策略评估 · 仿真 | RoboCasa 多任务 WM vs GT 成功率 **r = 0.982**（存在正向任务进度偏置） |
@@ -208,6 +211,8 @@ sequenceDiagram
 - [robot-world-models-training-loop-taxonomy](../overview/robot-world-models-training-loop-taxonomy.md) — 学习型模拟器坐标
 - [DriftWorld](./paper-driftworld.md) — 1-step 快评估对照
 - [OSCAR](./paper-oscar.md) — 骨架条件跨具身对照
+- [Ctrl-World](./paper-ctrl-world.md) — 低维动作多视角 VLA 闭环对照（文中视觉基线）
+- [Wan-Move](./paper-wan-move.md) / [Wan](./paper-wan-video.md) — 轨迹可控 I2V 与上游视频先验（文中对照）
 - [GigaWorld-1](./paper-gigaworld-1-policy-evaluation.md) / [WorldGym](./paper-shenlan-wm-15-worldgym.md) — WM 作评估器坐标
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — ② 世界模型评估层
 - [Manipulation](../tasks/manipulation.md) — 操纵基准语境
