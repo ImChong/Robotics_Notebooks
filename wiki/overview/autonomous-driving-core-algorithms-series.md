@@ -2,7 +2,7 @@
 type: overview
 tags: [autonomous-driving, perception, planning, control, slam, hd-map, tracking, trajectory-prediction, shenlan]
 status: complete
-updated: 2026-07-22
+updated: 2026-07-23
 related:
   - ../overview/navigation-slam-autonomy-stack.md
   - ../methods/object-detection.md
@@ -18,6 +18,8 @@ related:
   - ../queries/object-detection-model-selection.md
   - ../entities/autoware.md
   - ../entities/paper-m4world.md
+  - ../entities/paper-s-squared-vla.md
+  - ../methods/vla.md
 sources:
   - ../../sources/blogs/wechat_shenlan_ai_ad_2d_detection.md
   - ../../sources/blogs/wechat_shenlan_ai_ad_3d_detection.md
@@ -143,7 +145,7 @@ flowchart TB
 | 规划/控制 | [PythonRobotics](../entities/python-robotics.md)、[LQR](../methods/lqr-ilqr.md)、[MPC](../methods/model-predictive-control.md) | 人形全身 [MPC–WBC](../concepts/mpc-wbc-integration.md) 不是车规控 |
 | SLAM/定位 | [导航·SLAM·自动驾驶开源栈](./navigation-slam-autonomy-stack.md)、[Autoware](../entities/autoware.md) | ORB-SLAM 不能直接当 Nav2 全局规划器 |
 | 检测 | [Object Detection](../methods/object-detection.md)、[选型 Query](../queries/object-detection-model-selection.md) | 机器人抓取检测 vs 车载 3D MOT 评测集不同 |
-| 预测/端到端 | 专辑收束提到 E2E/RL 渗透 | 具身 [VLA](../methods/vla.md) 与车端 E2E 共享叙事但栈不同 |
+| 预测/端到端 | 专辑收束提到 E2E/RL 渗透；站内驾驶 VLA 锚点见 [S²-VLA](../entities/paper-s-squared-vla.md)（NAVSIM 双流 SFT）、[X-Foresight](../entities/paper-x-foresight.md)（内嵌世界模型） | 具身 [VLA](../methods/vla.md) 与车端 E2E 共享叙事但栈不同 |
 
 ## 为什么重要
 
@@ -154,7 +156,7 @@ flowchart TB
 ## 局限与风险
 
 - 微信策展体例：引用量、SOTA、FPS、「量产最广」等数字会过时；以论文与官方仓库为准。
-- 专辑偏经典模块化栈；端到端驾驶（UniAD/VAD 等）仅作趋势提及，需另页深挖。
+- 专辑偏经典模块化栈；端到端驾驶（UniAD/VAD 等）仅作趋势提及。站内已沉淀驾驶 VLA 对照页：[S²-VLA](../entities/paper-s-squared-vla.md)（语义∥空间解耦）、[X-Foresight](../entities/paper-x-foresight.md)（预测式世界模型嵌策略）。
 - 第 1–2 篇经 **短链** 补抓；长链若再遇 CAPTCHA，以 short_url 与 raw 归档为准。
 
 ## 关联页面
@@ -167,6 +169,9 @@ flowchart TB
 - [LiDAR SLAM / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)
 - [卡尔曼滤波](../formalizations/kalman-filter.md)
 - [M⁴World](../entities/paper-m4world.md) — 生成式驾驶仿真 / 长尾感知增广（环视+LiDAR；对照阅读，未开源）
+- [S²-VLA](../entities/paper-s-squared-vla.md) — 端到端驾驶 VLA：语义∥空间双流（NAVSIM；未开源）
+- [X-Foresight](../entities/paper-x-foresight.md) — 驾驶 VLA 内嵌预测式世界模型（小鹏；未开源）
+- [VLA](../methods/vla.md) — 视觉–语言–动作方法纵览（含驾驶条目）
 
 ## 参考来源
 

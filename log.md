@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-23] ingest | sources/papers/s_squared_vla_arxiv_2607_13926.md — S²-VLA（arXiv:2607.13926）语义∥空间双流驾驶 VLA；升格 wiki/entities/paper-s-squared-vla.md；交叉 wiki/methods/vla.md、wiki/entities/paper-x-foresight.md、wiki/overview/autonomous-driving-core-algorithms-series.md、wiki/entities/qwen-robot-nav.md、wiki/tasks/vision-language-navigation.md、wiki/overview/topic-vla.md；注册机构 whut；截至 2026-07-23 未开源
+
+- **开源状态：** **确认未开源** — arXiv 页无项目页 / GitHub / HF / 权重（截至 2026-07-23）
+- **新建 papers：** [`sources/papers/s_squared_vla_arxiv_2607_13926.md`](sources/papers/s_squared_vla_arxiv_2607_13926.md)
+- **新建 wiki：** [`wiki/entities/paper-s-squared-vla.md`](wiki/entities/paper-s-squared-vla.md)
+- **机构：** 新增 `whut`（武汉理工大学）
+- **交叉更新：** [`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/entities/paper-x-foresight.md`](wiki/entities/paper-x-foresight.md)、[`wiki/overview/autonomous-driving-core-algorithms-series.md`](wiki/overview/autonomous-driving-core-algorithms-series.md)、[`wiki/entities/qwen-robot-nav.md`](wiki/entities/qwen-robot-nav.md)、[`wiki/tasks/vision-language-navigation.md`](wiki/tasks/vision-language-navigation.md)、[`wiki/overview/topic-vla.md`](wiki/overview/topic-vla.md)
+
 ## [2026-07-23] ingest | sources/papers/extreme_rgmt_arxiv_2607_20110.md + sources/sites/extreme-rgmt-github-io.md — Extreme-RGMT（arXiv:2607.20110）两阶段 PACE+STAR 高动态 generalist 跟踪；wiki/entities/paper-extreme-rgmt.md；交叉 wiki/entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md、wiki/methods/any2track.md、wiki/methods/sonic-motion-tracking.md、wiki/methods/beyondmimic.md、wiki/entities/paper-hrl-stack-16-omnixtreme.md、wiki/overview/humanoid-rl-motion-control-body-system-stack.md；截至 2026-07-23 项目页未开源
 
 - **开源状态：** **确认未开源** — 项目页 <https://zeonsunlightyu.github.io/Extreme-RGMT.github.io/> 仅 arXiv PDF + BibTeX + 演示视频，无 GitHub / HF（截至 2026-07-23）
