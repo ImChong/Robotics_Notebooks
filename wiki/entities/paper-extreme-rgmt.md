@@ -105,7 +105,9 @@ flowchart TB
   end
 ```
 
-### 关键对照数字（仿真，Table VI）
+## 实验与评测
+
+仿真主结果来自论文 Table VI（MuJoCo，五随机种子）；真机为 Unitree G1 上固定回放与 Xsens 在线遥操作（Table VIII）。
 
 | 方法 | In-source Succ. ↑ | Unseen Succ. ↑ | XtremeMotion Succ. ↑ | AMASS Challenging Succ. ↑ |
 |------|-------------------|----------------|----------------------|---------------------------|
@@ -116,7 +118,16 @@ flowchart TB
 | OmniXtreme | — | — | **100%** | 36.16% |
 | **Extreme-RGMT Full** | **99.76%** | **96.68%** | **100%** | **90.91%** |
 
-读法：OmniXtreme 在其高质量 XtremeMotion 上精度更高，但换到直接重定向的 AMASS 困难集时成功率塌很多；Extreme-RGMT Full 更吃「参考质量变化」。
+真机（各 4 动作×5 试验）：AMASS Replay **90%**；高动态 Xsens Teleop **85%**；日常 Xsens Teleop **100%**。STAR 对 Xsens 高动态 Succ. 增益最大（**45.5% → 86.3%**）。
+
+## 与其他工作对比
+
+- vs [RGMT](./paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md)：保留动力学条件参考聚合，补分支出编码 / FSQ，并加 Stage II 持续扩展。
+- vs [OmniXtreme](./paper-hrl-stack-16-omnixtreme.md)：高质量 XtremeMotion 上均可近满分；换直接重定向 AMASS 困难集时 Extreme-RGMT 更稳（90.91% vs 36.16%）。
+- vs 直接 Fine-Tuning：specialist 上升但 generalist 明显掉；PACE 用 consolidation 对齐基座抑制漂移。
+- vs [SONIC](../methods/sonic-motion-tracking.md) / [BeyondMimic](../methods/beyondmimic.md)：generalist 库上同量级；本工作重点是把高动态段叠进同一策略并吃脏在线 MoCap。
+
+读法：OmniXtreme 在其高质量库上关节误差更低；Extreme-RGMT Full 更吃「参考质量变化 + 在线惯性输入」。
 
 ## 工程实践
 
