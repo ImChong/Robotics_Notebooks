@@ -869,7 +869,11 @@ def parse_frontmatter_type(content: str) -> str:
 
 def extract_title(content: str) -> str:
     match = re.search(r"^# (.+)", content, re.MULTILINE)
-    return match.group(1).strip() if match else ""
+    if not match:
+        return ""
+    # 图谱节点 label 不经 Markdown 渲染；还原 H1 转义（如 A\* → A*）
+    title = match.group(1).strip()
+    return re.sub(r"\\([\\`*_{}\[\]()#+\-.!|])", r"\1", title)
 
 
 def parse_frontmatter_list(content: str, key: str) -> list[str]:

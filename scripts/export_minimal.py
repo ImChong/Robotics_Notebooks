@@ -200,7 +200,10 @@ def write_json(path: Path, payload: Dict) -> None:
 def extract_title(text: str, fallback: str) -> str:
     for line in text.splitlines():
         if line.startswith("# "):
-            return line[2:].strip()
+            # H1 常含 Markdown 转义（如 A\*）；站点标题不经 MD 渲染，需还原为字面字符
+            title = line[2:].strip()
+            title = re.sub(r"\\([\\`*_{}\[\]()#+\-.!|])", r"\1", title)
+            return title
     return fallback
 
 

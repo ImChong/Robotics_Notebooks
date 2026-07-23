@@ -89,7 +89,11 @@ def strip_frontmatter(content: str) -> str:
 
 def extract_title(body: str, fallback: str = "") -> str:
     match = re.search(r"^#\s+(.+)$", body, re.MULTILINE)
-    return match.group(1).strip() if match else fallback
+    if not match:
+        return fallback
+    # 站点标题不经 Markdown 渲染；还原 H1 中的转义（如 A\* → A*）
+    title = match.group(1).strip()
+    return re.sub(r"\\([\\`*_{}\[\]()#+\-.!|])", r"\1", title)
 
 
 def extract_summary(body: str, fm: dict | None = None) -> str:

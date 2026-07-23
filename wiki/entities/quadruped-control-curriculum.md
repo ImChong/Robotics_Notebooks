@@ -8,6 +8,7 @@ related:
   - ./matrix-simulation-platform.md
   - ./roamerx-navigation.md
   - ./quadruped-robot.md
+  - ./humanoid-system-curriculum.md
   - ../concepts/differentiable-simulation.md
   - ../concepts/urdf-robot-description.md
   - ../methods/ppo.md
@@ -121,7 +122,7 @@ flowchart LR
 
 - 平台：[四足机器人](./quadruped-robot.md)、[Unitree](./unitree.md)、[Legged Gym](./legged-gym.md)
 - 对比：[MPC vs RL](../comparisons/mpc-vs-rl.md)、[PPO vs SAC](../comparisons/ppo-vs-sac.md)
-- 姊妹课程：[Numerical Optimization Curriculum](./numerical-optimization-curriculum.md)、[Linear Algebra Curriculum](./linear-algebra-curriculum.md)
+- 姊妹课程：[人形系统课程策展](./humanoid-system-curriculum.md)、[Numerical Optimization Curriculum](./numerical-optimization-curriculum.md)、[Linear Algebra Curriculum](./linear-algebra-curriculum.md)
 
 ## 推荐继续阅读
 

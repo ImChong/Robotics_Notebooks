@@ -484,6 +484,8 @@
 | [x] [nvidia_sim_to_real_so101_isaac.md](courses/nvidia_sim_to_real_so101_isaac.md) | NVIDIA：SO-101 操作臂 Sim2Real 动手课（GR00T/LeRobot/Isaac Lab、四类 gap 策略） |
 | [x] [stanford_cs123_robotics_ai.md](courses/stanford_cs123_robotics_ai.md) | Stanford CS 123 Robotics & AI（Pupper v3 配套实验课，cs123-stanford.readthedocs.io） |
 | [x] [numerical_optimization_foundations_robotics.md](courses/numerical_optimization_foundations_robotics.md) | 具身智能研究室《数值优化基础》六章大纲（无约束/约束/对称锥/凸松弛；映射 `numerical-optimization-curriculum`） |
+| [x] [shenlan_humanoid_system_theory_practice.md](courses/shenlan_humanoid_system_theory_practice.md) | 深蓝学院《人形机器人系统—理论与实践》八章大纲（G1→RL→SLAM→A\*/DWA→TARE/FAR→足球感知→VLN；映射 `humanoid-system-curriculum`） |
+| [x] [quadruped_control_simulation_rl_curriculum.md](courses/quadruped_control_simulation_rl_curriculum.md) | 具身智能研究室《四足：动力学→强化学习》八章大纲（映射 `quadruped-control-curriculum`） |
 | [x] [jason_peng_synthetic_motion_humanoid_youtube.md](courses/jason_peng_synthetic_motion_humanoid_youtube.md) | Jason Peng（SFU & NVIDIA）NUS 研讨会：合成运动数据与通用人形控制（`2looxieN53o`；PARC / MimicKit / G1；`wiki/overview/jason-peng-flexible-motion-skill-learning.md`） |
 
 ### notes/ — 原始笔记归档

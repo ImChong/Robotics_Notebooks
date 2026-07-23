@@ -73,6 +73,9 @@ class TestSearchIndexingText(unittest.TestCase):
     def test_extract_title(self) -> None:
         self.assertEqual(extract_title("# Title Here\n\nx"), "Title Here")
 
+    def test_extract_title_unescapes_markdown(self) -> None:
+        self.assertEqual(extract_title("# A\\* 全局路径规划\n\nx"), "A* 全局路径规划")
+
     def test_extract_title_fallback(self) -> None:
         self.assertEqual(extract_title("no h1", "fb"), "fb")
 
