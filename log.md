@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-23] ingest | sources/repos/exercises-dataset.md — Exercises Dataset（1,324 健身动作目录+多语说明+GIF）；升格 wiki/entities/exercises-dataset.md；交叉 wiki/comparisons/humanoid-reference-motion-datasets.md、wiki/entities/amass.md、wiki/concepts/motion-data-quality.md；分层开源（MIT 文本 + Gym visual 媒体）
+
+- **开源状态：** **已开源（分层）** — 代码/JSON/说明文本 MIT；`images/` `videos/` © Gym visual（LICENSE 媒体例外 + NOTICE.md）
+- **新建 repos：** [`sources/repos/exercises-dataset.md`](sources/repos/exercises-dataset.md)
+- **新建 wiki：** [`wiki/entities/exercises-dataset.md`](wiki/entities/exercises-dataset.md)
+- **交叉更新：** [`wiki/comparisons/humanoid-reference-motion-datasets.md`](wiki/comparisons/humanoid-reference-motion-datasets.md)、[`wiki/entities/amass.md`](wiki/entities/amass.md)、[`wiki/concepts/motion-data-quality.md`](wiki/concepts/motion-data-quality.md)
+- **定位提示：** 非 MoCap / 非关节轨迹；勿当作 WBT 参考源
+
 ## [2026-07-23] ingest | sources/papers/egosteer_arxiv_2607_09701.md + sources/sites/egosteer-github-io.md + sources/repos/egosteer.md / egosmith.md / egosteer-robot-stack.md — EgoSteer（arXiv:2607.09701）EgoSmith+Robot Stack+WM-VLA 全栈；wiki/entities/paper-egosteer.md；交叉 wiki/methods/egoscale.md、wiki/entities/paper-egowam-egocentric-human-wam-co-training.md、wiki/methods/vla.md、wiki/methods/dagger.md、wiki/tasks/manipulation.md、wiki/overview/vla-open-source-repro-landscape-2025.md；部分开源（代码+权重已发，全量处理后数据待齐）
 
 - **开源状态：** **部分开源** — [`egosteer/egosteer`](https://github.com/egosteer/egosteer) / [`egosmith`](https://github.com/egosteer/egosmith) / [`robot-stack`](https://github.com/egosteer/robot-stack)（Apache-2.0）+ HF `EgoSteer-3B-Base` / `EgoSteer-3B-RealMan`；处理后 9.6K h / 187 h 全量数据集截至 2026-07-23 仍未在 HF 公开

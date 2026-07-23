@@ -3,13 +3,14 @@ title: Motion Data Quality（动作数据质量维度）
 type: concept
 status: complete
 created: 2026-06-19
-updated: 2026-06-19
+updated: 2026-07-23
 summary: 评估人形参考运动 / 演示数据可用性的四个轴——物理可行性、接触一致性、形态差距（morphology gap）、规模与多样性，及其与重定向必要性的因果关系。
 tags: [dataset, motion-retargeting, data-quality, humanoid]
 related:
   - ./motion-retargeting.md
   - ../comparisons/humanoid-reference-motion-datasets.md
   - ../queries/humanoid-training-data-pipeline.md
+  - ../entities/exercises-dataset.md
 ---
 
 # Motion Data Quality（动作数据质量维度）
@@ -101,6 +102,7 @@ related:
 2. **「重定向后就物理可行了」**：几何重定向只缩小形态差距，接触与力矩仍需动力学一致化层。
 3. **「人体视频规模碾压 MoCap」**：视频量大但 3D / 接触信息弱，需上游重建，否则接触一致性轴塌缩。
 4. **「真机数据无需体检」**：真机执行数据天然物理可行，但仍受任务分布偏窄（规模多样性轴）限制。
+5. **「健身 exercise dataset ≈ 参考运动」**：[Exercises Dataset](../entities/exercises-dataset.md) 一类目录只有标签与 GIF，**没有**可执行状态轨迹——四轴中物理/接触/形态差距均不可评估为「通过」。
 
 ---
 
@@ -110,6 +112,7 @@ related:
 - [PHUMA 仓库归档](../../sources/repos/phuma.md)
 - [OMOMO 仓库归档](../../sources/repos/omomo_release.md)
 - [Humanoid Everyday 项目页归档](../../sources/sites/humanoideveryday.md)
+- [Exercises Dataset 仓库归档](../../sources/repos/exercises-dataset.md) — 非轨迹目录的反例
 
 ---
 
@@ -123,7 +126,7 @@ related:
 - [Imitation Learning](../methods/imitation-learning.md) — 形态差距可忽略时直接消费演示数据的范式
 - [Embodied Scaling Laws](./embodied-scaling-laws.md) — 规模多样性轴的放大效应与边界
 - [Embodied Data Cleaning](./embodied-data-cleaning.md) — 失败/低质轨迹过滤的工程实践
-
+- [Exercises Dataset](../entities/exercises-dataset.md) — 健身目录/GIF；过不了四轴体检的对照
 ## 一句话记忆
 
 > **先看形态差距决定要不要重定向，再过接触与物理两道可行性门，最后才谈规模多样性——四轴串联，缺一轴则下游策略「姿态像而执行废」。**

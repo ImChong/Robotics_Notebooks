@@ -88,6 +88,7 @@
 - [ESI-Bench（具身空间智能基准）](wiki/entities/esi-bench.md) — ESI-Bench**（*Embodied Spatial Intelligence Benchmark*，arXiv:2605.18746，[项目页](https://esi-bench.git `📅unknown` `[entity_page]`
 - [EuRoC MAV 数据集（The EuRoC Micro Aerial Vehicle Datasets）](wiki/entities/euroc-mav-datasets.md) — EuRoC MAV Datasets**（*The EuRoC Micro Aerial Vehicle Datasets*，[DOI: 10.1177/0278364915620033](htt `📅unknown` `[entity_page]`
 - [EWMBench（具身世界模型生成评测）](wiki/entities/ewmbench.md) — EWMBench**（*Embodied World Model Benchmark*，arXiv:2505.09694）把「文生 / 图生视频」模型放在 **机器人操作** 语境里考核：给定  `📅unknown` `[entity_page]`
+- [Exercises Dataset（健身动作目录）](wiki/entities/exercises-dataset.md) — Exercises Dataset**（[hasaneyldrm/exercises-dataset](https://github.com/hasaneyldrm/exercises-datas `📅unknown` `[entity_page]`
 - [Extreme Parkour（端到端四足感知跑酷）](wiki/entities/extreme-parkour.md) — Extreme Parkour**（Cheng et al., arXiv:2309.14341，**ICRA 2024 `📅unknown` `[entity_page]`
 - [fairmotion](wiki/entities/fairmotion.md) — fairmotion**（<https://github.com/facebookresearch/fairmotion>）是 Meta Research 的通用**动捕数据处理库**：统一管理运 `📅unknown` `[entity_page]`
 - [FAST-LIO](wiki/entities/fast-lio.md) — FAST-LIO** 以 **紧耦合迭代卡尔曼滤波** 实现低延迟 3D LiDAR-惯性里程计。 `📅unknown` `[entity_page]`

@@ -4,7 +4,7 @@ type: entity
 title: AMASS（统一 SMPL 表示的大规模人体动捕档案）
 tags: [dataset, mocap, smpl, human-motion, deep-learning, animation, mpi-tuebingen, max-planck]
 summary: "AMASS 将多份光学标记动捕数据通过 MoSh++ 拟合到 SMPL 参数序列，形成可合并训练的人体运动档案；站点提供注册下载与教程代码，是机器人学习里常见的人体参考运动来源之一。"
-updated: 2026-07-21
+updated: 2026-07-23
 status: complete
 related:
   - ../concepts/motion-retargeting.md
@@ -17,6 +17,7 @@ related:
   - ./robot-retargeter.md
   - ../comparisons/humanoid-reference-motion-datasets.md
   - ./paper-egohtr.md
+  - ./exercises-dataset.md
 sources:
   - ../../sources/sites/amass-dataset.md
   - ../../sources/papers/egohtr_arxiv_2607_13472.md
@@ -93,6 +94,7 @@ flowchart LR
 - [OMOMO](./omomo-dataset.md) — 人–物交互 MoCap 源
 - [五集选型对比](../comparisons/humanoid-reference-motion-datasets.md)
 - [EgoHTR](./paper-egohtr.md) — 有场景 mesh 的 rough-terrain 4D 对照（规模远小于 AMASS；待开放）
+- [Exercises Dataset](./exercises-dataset.md) — 健身动作目录/GIF；**不是** MoCap 参考库
 
 ## 推荐继续阅读
 

@@ -3,7 +3,7 @@ type: comparison
 title: 人形参考运动与操作数据集选型（AMASS / LAFAN1 / OMOMO / PHUMA / Humanoid Everyday / KungFuAthlete）
 tags: [dataset, comparison, motion-retargeting, humanoid, mocap, unitree-g1, martial-arts]
 summary: "常用人形数据源的表示、任务域、是否预重定向与典型下游对照；含 KungFuAthlete 高动态与 EgoHTR rough-terrain 人–场景扩展。"
-updated: 2026-07-21
+updated: 2026-07-23
 status: complete
 related:
   - ../concepts/motion-retargeting.md
@@ -15,6 +15,7 @@ related:
   - ../entities/grail-locomanipulation-dataset.md
   - ../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md
   - ../entities/paper-egohtr.md
+  - ../entities/exercises-dataset.md
 sources:
   - ../../sources/sites/amass-dataset.md
   - ../../sources/repos/ubisoft-laforge-animation-dataset.md
@@ -23,6 +24,7 @@ sources:
   - ../../sources/sites/humanoideveryday.md
   - ../../sources/papers/kung_fu_athlete_bot.md
   - ../../sources/papers/egohtr_arxiv_2607_13472.md
+  - ../../sources/repos/exercises-dataset.md
 ---
 
 # 人形参考运动与操作数据集选型
@@ -125,6 +127,7 @@ flowchart TD
 - **忽视 PHUMA 与 AMASS 的重叠与差异**：PHUMA 策展自大规模互联网/Motion-X 系源，强调 **物理可信 + 已重定向**；AMASS 覆盖更广但 **伪影与重定向成本** 由用户承担。
 - **LaFAN1 许可当 MIT**：**NC-ND** 限制衍生数据与商业再分发；OmniRetarget 因此 **不公开发布 LAFAN1 重定向结果**。
 - **把 GRAIL 当真机 MoCap**：其为 **全合成 G1 轨迹**；视觉下游仍可能有 sim-to-real 鸿沟，且物体 USD 许可随 RoboCasa/ComAsset 等上游而异。
+- **把 [Exercises Dataset](../entities/exercises-dataset.md) 当人形参考运动**：其为健身 **动作目录 + 180×180 GIF/缩略图 + 多语说明**（无 BVH/SMPL/关节序列）；适合 App/分类原型，**不能**直接做 WBT / AMP / 重定向输入。
 
 ## 参考来源
 
@@ -136,6 +139,7 @@ flowchart TD
 - [GRAIL 数据集 Hugging Face 归档](../../sources/sites/grail-locomanipulation-huggingface.md)
 - [KungFuAthleteBot 论文 ingest](../../sources/papers/kung_fu_athlete_bot.md)
 - [EgoHTR 论文 ingest](../../sources/papers/egohtr_arxiv_2607_13472.md)
+- [Exercises Dataset 仓库归档](../../sources/repos/exercises-dataset.md) — 健身动作目录（非 MoCap）对照
 
 ## 关联页面
 
@@ -149,6 +153,7 @@ flowchart TD
 - [EgoHTR](../entities/paper-egohtr.md) — rough-terrain 人–场景 4D；数据/代码待发布
 - [KungfuBot / PBHC](../entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) — LAFAN/AMASS/视频 → SMPL 训练输入（[repo](../../sources/repos/pbhc.md)）
 - [Unitree G1](../entities/unitree-g1.md)
+- [Exercises Dataset](../entities/exercises-dataset.md) — 健身目录/GIF；勿与本表 MoCap 源混用
 
 ## 推荐继续阅读
 
