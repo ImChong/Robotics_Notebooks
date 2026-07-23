@@ -86,6 +86,26 @@ class LatestWikiNodesWindowTest(unittest.TestCase):
         self.assertEqual(len(out), 1)
         self.assertEqual(out[0]["recency"], "2026-05-28")
 
+    def test_roadmap_depth_paths_appear_in_latest_nodes(self) -> None:
+        """纵深路线 roadmap/depth-*.md 也应进入首页最新知识节点清单。"""
+        roadmap_rel = "roadmap/depth-real2sim.md"
+        if not _wiki_path_for(roadmap_rel).is_file():
+            self.skipTest("缺少 roadmap/depth-real2sim.md")
+        nodes = self.nodes + [_node(roadmap_rel, "Real2Sim 纵深", "roadmap_page")]
+        self._write_log(
+            [
+                ("2026-07-23", [roadmap_rel, self.existing_paths[0]]),
+            ]
+        )
+        with self._patched_log():
+            out = glg.latest_wiki_nodes_from_log(nodes, max_items=5, window_days=30)
+        paths = [item["path"] for item in out]
+        self.assertIn(roadmap_rel, paths)
+        roadmap_item = next(item for item in out if item["path"] == roadmap_rel)
+        self.assertEqual(roadmap_item["type"], "roadmap_page")
+        self.assertEqual(roadmap_item["detail_id"], "roadmap-depth-real2sim")
+        self.assertEqual(roadmap_item["recency"], "2026-07-23")
+
     def test_zero_max_items_returns_empty(self) -> None:
         self._write_log([("2026-05-28", self.existing_paths)])
         with self._patched_log():

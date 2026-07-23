@@ -255,6 +255,14 @@
     return 'detail.html?id=' + encodeURIComponent(id);
   }
 
+  function latestNodeHref(meta) {
+    if (!meta || !meta.detail_id) return '';
+    if (isRoadmapPageId(meta.detail_id, null, { type: meta.type, path: meta.path })) {
+      return roadmapHref(meta.detail_id);
+    }
+    return detailHref(meta.detail_id);
+  }
+
   function pageHref(id, detailPages) {
     if (!id) return '';
     var page = detailPages && detailPages[id];
@@ -766,7 +774,7 @@
           '<span class="home-latest-row-type">' +
           escapeHtml(rowType) +
           '</span><span class="home-latest-row-main"><a href="' +
-          escapeHtml(detailHref(rowMeta.detail_id)) +
+          escapeHtml(latestNodeHref(rowMeta)) +
           '">' +
           escapeHtml(rowMeta.label || rowMeta.detail_id) +
           renderUpdatesItemRepoStar(rowMeta) + '</a>' +
@@ -812,7 +820,7 @@
         renderActionBadgeCell(meta.action, 'updates-badge-cell') +
         '<span class="updates-item-type">' + escapeHtml(typeLabel) + '</span>' +
         '<span class="updates-item-main">' +
-        '<a class="updates-item-link" href="' + escapeHtml(detailHref(meta.detail_id)) + '">' +
+        '<a class="updates-item-link" href="' + escapeHtml(latestNodeHref(meta)) + '">' +
         escapeHtml(meta.label || meta.detail_id) +
         '</a>' +
         renderUpdatesItemSuffix(meta) +
@@ -859,6 +867,7 @@
             action: nodeMeta.action || '',
             recency: dayEntry.date,
             source: 'log.md',
+            path: nodeMeta.path || '',
             has_repo: !!nodeMeta.has_repo,
             community_label: nodeMeta.community_label || ''
           });
@@ -4159,18 +4168,16 @@
     var metaEl = document.getElementById('roadmapMeta');
     var detail = (detailPages && detailPages[roadmapId]) || {};
     var stages = (roadmapPage && roadmapPage.stages) || [];
-    var updatedRow = document.getElementById('roadmapMetaUpdated');
+    var updated =
+      (detail && detail.updated) ||
+      (roadmapPage && roadmapPage.updated) ||
+      '';
 
-    if (updatedRow) {
-      if (detail.updated) {
-        updatedRow.innerHTML = '<strong>更新时间：</strong>' + escapeHtml(detail.updated);
-        updatedRow.classList.remove('data-meta');
-        updatedRow.hidden = false;
-      } else {
-        updatedRow.hidden = true;
-        updatedRow.innerHTML = '';
-      }
-    }
+    renderDetailMetaItemRow(
+      'roadmapMetaUpdated',
+      '更新时间',
+      updated ? renderDetailMetaDateBadge(updated) : ''
+    );
 
     if (stages.length) {
       var stageLabel = stages.length + ' 个阶段';
@@ -4186,7 +4193,7 @@
     renderDetailMetaItemRow('roadmapMetaInstitution', '所属机构', '');
     if (metaEl) removeLoadingState(metaEl);
 
-    var graphPath = detail.path || '';
+    var graphPath = detail.path || (roadmapPage && roadmapPage.path) || '';
     return Promise.all([
       renderMetaCommunityBadge(graphPath, 'roadmapMetaCommunity'),
       renderMetaTopicBadges(graphPath, 'roadmapMetaTopic'),

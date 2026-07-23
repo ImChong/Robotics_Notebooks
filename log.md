@@ -8,6 +8,14 @@
 - 顺带订正 roadmap/motion-control.md 纵深表此前遗留的「十八条」计数（实为 19，Real2Sim 未同步）→ 现更新为二十条，与全站一致
 - 派生文件（catalog.md / exports / docs/exports / search-index / sitemap 与统计徽章）经 make ci-preflight 同步
 
+## [2026-07-23] structural | scripts/generate_link_graph.py + docs/main.js + export_minimal — 纵深路线更新纳入首页最新知识节点；路线页元信息显示更新时间标签
+
+- scripts/generate_link_graph.py：log.md 路径解析扩展至 roadmap/…，latest_wiki_nodes / wiki-activity 收录纵深与主路线；git first-add 扫描同步覆盖 roadmap/
+- scripts/export_minimal.py：roadmap 页无 frontmatter updated 时用 git 最近提交日回填；roadmap_pages 导出带 updated/path
+- docs/main.js：最新知识节点/更新时间线链接走 roadmap.html；路线元信息用 detail-meta-date 徽章展示更新时间
+- schema/ingest-workflow.md、AGENTS.md：同步最新知识节点收录规则
+- tests：覆盖 roadmap 进入 latest_wiki_nodes 与 updated 回填
+
 ## [2026-07-23] structural | roadmap/depth-real2sim.md — 新增 Real2Sim（真实世界 → 可仿真资产/场景/孪生）纵深路线，十九条纵深入口全站同步
 
 - roadmap/depth-real2sim.md：新建「Real2Sim」纵深路线（起点：3D Gaussian Splatting 规模化重建，2023），Stage 0 定位与可仿真判据（Real2Sim vs Sim2Real · 三种产物粒度）→ Stage 1 几何与外观重建（接触动力学 vs 光真实感）→ Stage 2 物性与关节化补全（碰撞 / 质量摩擦 / 关节 / 接触引导遮挡补全 / sim-ready 资产生成）→ Stage 3 场景 / episode 孪生与数字表亲（VLM-agent 编排）→ Stage 4 Real2Sim2Real 闭环（回训 / real-to-sim 评测 / 真机回放）→ Stage 5 前沿口径与选型（像素世界模型 vs 物理孪生）
