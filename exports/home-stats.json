@@ -1,21 +1,42 @@
 {
   "generated_at": "2026-07-23",
-  "node_count": 1775,
-  "edge_count": 14595,
+  "node_count": 1776,
+  "edge_count": 14613,
   "coverage": {
-    "covered": 1724,
-    "total": 1754,
+    "covered": 1725,
+    "total": 1755,
     "percent": 98
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-s-squared-vla.md",
-      "detail_id": "entity-paper-s-squared-vla",
-      "label": "S²-VLA（Semantic–Spatial Dual-Stream · 驾驶 VLA · arXiv:2607.13926）",
+      "path": "wiki/entities/paper-egosteer.md",
+      "detail_id": "entity-paper-egosteer",
+      "label": "EgoSteer：从 Egocentric 视频到可操控双灵巧手全栈",
       "type": "entity",
       "recency": "2026-07-23",
       "source": "log.md",
       "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/egoscale.md",
+      "detail_id": "wiki-methods-egoscale",
+      "label": "EgoScale",
+      "type": "method",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-egowam-egocentric-human-wam-co-training.md",
+      "detail_id": "entity-paper-egowam-egocentric-human-wam-co-training",
+      "label": "EgoWAM（野外 Egocentric 人数据 · World Action Model 协同训练）",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -27,6 +48,47 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/dagger.md",
+      "detail_id": "wiki-methods-dagger",
+      "label": "DAgger（Dataset Aggregation）",
+      "type": "method",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
+      "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
+      "label": "VLA 开源复现景观（2025 策展）",
+      "type": "overview",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-s-squared-vla.md",
+      "detail_id": "entity-paper-s-squared-vla",
+      "label": "S²-VLA（Semantic–Spatial Dual-Stream · 驾驶 VLA · arXiv:2607.13926）",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -47,7 +109,7 @@
       "recency": "2026-07-23",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
       "path": "wiki/entities/qwen-robot-nav.md",
@@ -149,86 +211,23 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/vla-sota-leaderboard.md",
-      "detail_id": "entity-vla-sota-leaderboard",
-      "label": "VLA SOTA Leaderboard（EvoMind / MINT-SJTU）",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
-      "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
-      "label": "VLA 开源复现景观（2025 策展）",
-      "type": "overview",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/queries/embodied-eval-benchmark-selection-loop.md",
-      "detail_id": "wiki-queries-embodied-eval-benchmark-selection-loop",
-      "label": "Query：具身大模型评测基准选型闭环知识链",
-      "type": "query",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-fabrivla.md",
-      "detail_id": "entity-paper-fabrivla",
-      "label": "FabriVLA：轻量 VLA 与精确多任务操作",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-evo1-lightweight-vla.md",
-      "detail_id": "entity-paper-evo1-lightweight-vla",
-      "label": "Evo-1：轻量 VLA 与语义对齐保持",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-s-squared-vla.md",
-    "detail_id": "entity-paper-s-squared-vla",
-    "label": "S²-VLA（Semantic–Spatial Dual-Stream · 驾驶 VLA · arXiv:2607.13926）",
+    "path": "wiki/entities/paper-egosteer.md",
+    "detail_id": "entity-paper-egosteer",
+    "label": "EgoSteer：从 Egocentric 视频到可操控双灵巧手全栈",
     "type": "entity",
     "recency": "2026-07-23",
     "source": "log.md",
     "action": "added",
+    "has_repo": true,
     "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 303
+      "size": 269
     },
     {
       "label": "人形论文深读笔记",
@@ -240,11 +239,11 @@
     },
     {
       "label": "全身控制",
-      "size": 131
+      "size": 166
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 125
+      "size": 142
     },
     {
       "label": "生成式世界模型",
@@ -271,7 +270,15 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 313,
+      "degree": 315,
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "degree": 288,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -282,14 +289,6 @@
       "degree": 287,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "degree": 286,
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "detail_id": "wiki-tasks-locomotion",
@@ -317,7 +316,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 185,
+      "degree": 186,
       "has_repo": true
     },
     {
@@ -381,7 +380,8 @@
       "label": "TWIST2",
       "type": "entity",
       "degree": 38,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",

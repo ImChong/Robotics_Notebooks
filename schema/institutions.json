@@ -201,6 +201,13 @@
         "agibot"
       ]
     },
+    "psibot": {
+      "label": "灵巧智能（PsiBot）",
+      "aliases": [
+        "psibot",
+        "pku-psibot"
+      ]
+    },
     "fourier": {
       "label": "傅利叶（Fourier）",
       "aliases": [

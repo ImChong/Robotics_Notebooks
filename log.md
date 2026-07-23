@@ -1,5 +1,15 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-23] ingest | sources/papers/egosteer_arxiv_2607_09701.md + sources/sites/egosteer-github-io.md + sources/repos/egosteer.md / egosmith.md / egosteer-robot-stack.md — EgoSteer（arXiv:2607.09701）EgoSmith+Robot Stack+WM-VLA 全栈；wiki/entities/paper-egosteer.md；交叉 wiki/methods/egoscale.md、wiki/entities/paper-egowam-egocentric-human-wam-co-training.md、wiki/methods/vla.md、wiki/methods/dagger.md、wiki/tasks/manipulation.md、wiki/overview/vla-open-source-repro-landscape-2025.md；部分开源（代码+权重已发，全量处理后数据待齐）
+
+- **开源状态：** **部分开源** — [`egosteer/egosteer`](https://github.com/egosteer/egosteer) / [`egosmith`](https://github.com/egosteer/egosmith) / [`robot-stack`](https://github.com/egosteer/robot-stack)（Apache-2.0）+ HF `EgoSteer-3B-Base` / `EgoSteer-3B-RealMan`；处理后 9.6K h / 187 h 全量数据集截至 2026-07-23 仍未在 HF 公开
+- **新建 papers：** [`sources/papers/egosteer_arxiv_2607_09701.md`](sources/papers/egosteer_arxiv_2607_09701.md)
+- **新建 sites：** [`sources/sites/egosteer-github-io.md`](sources/sites/egosteer-github-io.md)
+- **新建 repos：** [`sources/repos/egosteer.md`](sources/repos/egosteer.md)、[`sources/repos/egosmith.md`](sources/repos/egosmith.md)、[`sources/repos/egosteer-robot-stack.md`](sources/repos/egosteer-robot-stack.md)
+- **新建 wiki：** [`wiki/entities/paper-egosteer.md`](wiki/entities/paper-egosteer.md)
+- **机构：** 沿用既有 `pku` / `upenn`；新增 `psibot`
+- **交叉更新：** [`wiki/methods/egoscale.md`](wiki/methods/egoscale.md)、[`wiki/entities/paper-egowam-egocentric-human-wam-co-training.md`](wiki/entities/paper-egowam-egocentric-human-wam-co-training.md)、[`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/methods/dagger.md`](wiki/methods/dagger.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`wiki/overview/vla-open-source-repro-landscape-2025.md`](wiki/overview/vla-open-source-repro-landscape-2025.md)
+
 ## [2026-07-23] ingest | sources/papers/s_squared_vla_arxiv_2607_13926.md — S²-VLA（arXiv:2607.13926）语义∥空间双流驾驶 VLA；升格 wiki/entities/paper-s-squared-vla.md；交叉 wiki/methods/vla.md、wiki/entities/paper-x-foresight.md、wiki/overview/autonomous-driving-core-algorithms-series.md、wiki/entities/qwen-robot-nav.md、wiki/tasks/vision-language-navigation.md、wiki/overview/topic-vla.md；注册机构 whut；截至 2026-07-23 未开源
 
 - **开源状态：** **确认未开源** — arXiv 页无项目页 / GitHub / HF / 权重（截至 2026-07-23）

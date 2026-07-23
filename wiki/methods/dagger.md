@@ -1,7 +1,7 @@
 ---
 type: method
 tags: [il, dagger, online-learning, covariate-shift, expert-intervention]
-updated: 2026-07-22
+updated: 2026-07-23
 status: complete
 summary: "DAgger 通过让当前策略访问状态、再由专家回标这些状态，系统性缓解 Behavior Cloning 的分布漂移问题。"
 related:
@@ -10,8 +10,11 @@ related:
   - ../tasks/manipulation.md
   - ../tasks/ultra-survey.md
   - ../comparisons/rl-vs-il.md
+  - ../entities/paper-egosteer.md
+  - ../entities/paper-lehome-learning-to-fold.md
 sources:
   - ../../sources/papers/imitation_learning.md
+  - ../../sources/papers/egosteer_arxiv_2607_09701.md
 ---
 
 # DAgger（Dataset Aggregation）
@@ -113,6 +116,7 @@ Behavior Cloning 的根本问题不是监督学习本身，而是**训练分布�
 - **ingest 档案：** [sources/papers/ladderman_arxiv_2606_05873.md](../../sources/papers/ladderman_arxiv_2606_05873.md) — LadderMan：单参考 hybrid tracking 专家 → 深度 DAgger+RL 蒸馏
 - **ingest 档案：** [sources/papers/fada_arxiv_2606_28476.md](../../sources/papers/fada_arxiv_2606_28476.md) — FADA：oracle → Planner–IDM 学生 DAgger 蒸馏；目标域 rollout 继续作 IDM 监督
 - **ingest 档案：** [sources/papers/lehome_learning_to_fold_arxiv_2606_27163.md](../../sources/papers/lehome_learning_to_fold_arxiv_2606_27163.md) — LeHome：真机/仿真 DAgger 与异步 RL 叠衣全链路
+- **ingest 档案：** [sources/papers/egosteer_arxiv_2607_09701.md](../../sources/papers/egosteer_arxiv_2607_09701.md) — EgoSteer：相对运动映射 HITL DAgger，难任务 22.5%→62.5%（8.3 h）
 
 ## 关联页面
 
@@ -120,6 +124,7 @@ Behavior Cloning 的根本问题不是监督学习本身，而是**训练分布�
 - [Behavior Cloning Loss](../formalizations/behavior-cloning-loss.md) — DAgger 在线聚合后依然优化的底层目标函数
 - [Imitation Learning](./imitation-learning.md)
 - [Manipulation](../tasks/manipulation.md)
+- [EgoSteer](../entities/paper-egosteer.md) — 双灵巧手统一栈上的 HITL DAgger
 - [Learning to Fold（LeHome 2026）](../entities/paper-lehome-learning-to-fold.md) — 竞赛级双臂叠衣 DAgger + RL
 - [ULTRA：统一多模态 loco-manipulation 控制](../tasks/ultra-survey.md)
 - [RL vs Imitation Learning](../comparisons/rl-vs-il.md)

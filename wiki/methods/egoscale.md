@@ -3,7 +3,7 @@
 type: method
 tags: [vla, egocentric-video, dexterous-manipulation, flow-matching, human-robot-transfer, imitation-learning, nvidia-gear, scaling-laws, nvidia]
 status: complete
-updated: 2026-07-09
+updated: 2026-07-23
 date: 2026-05-17
 summary: "EgoScale 用超两万小时、带腕与重定向高 DoF 手部标签的第一人称人视频预训练流式 VLA，实证人数据规模与验证损失近 log-linear 缩放且与真机灵巧表现强相关，再以小规模视点对齐的人–机 mid-training 把表示锚到机器人，从而在极少机端演示下获得高灵巧长程操作与 one-shot 迹象。"
 related:
@@ -14,11 +14,13 @@ related:
   - ../concepts/embodied-scaling-laws.md
   - ../entities/humannet.md
   - ../entities/paper-trex-tactile-reactive-dexterous-manipulation.md
+  - ../entities/paper-egosteer.md
   - ../tasks/manipulation.md
   - ../entities/nvidia-gear-lab.md
 sources:
   - ../../sources/papers/egoscale_arxiv_2602_16710.md
   - ../../sources/sites/nvidia-research-egoscale.md
+  - ../../sources/papers/egosteer_arxiv_2607_09701.md
 ---
 
 # EgoScale
@@ -84,10 +86,12 @@ flowchart LR
 - **误区：「只靠 YouTube 级人视频就能零样本上机」。** 论文明确需要 **对齐 mid-training** 与 **任务后训练**；人数据主要提供 **可扩展的先验**，不是单独闭环。
 - **局限：标签来自估计栈。** Stage I 依赖 **SLAM / 手部估计**，噪声存在；论文论点是大规模 **统计上** 仍改善表示，但 **域外失败模式** 仍需用机端评测与数据清洗约束。
 - **局限：公开复现材料。** 截至项目页文案，**GitHub 仍为 Coming Soon**，工程复现应以后续官方发布为准。
+- **对照：[EgoSteer](../entities/paper-egosteer.md)（PKU/PsiBot，arXiv:2607.09701）。** 同属 egocentric 腕–指预训练 VLA，但用 **EgoSmith 策展吞吐 + 统一 HITL DAgger 栈 + 训练-only DINOv3 世界专家** 换 mid-training 叙事，且 **代码/权重已开源**（全量处理后数据待发）。
 
 ## 与其他页面的关系
 
 - 与 [VLA](./vla.md)：属于 **同一 VLA 家族接口**（图像 + 语言 → 动作），但强调 **人侧小时数** 与 **腕–手显式监督** 的预训练位置，以及 **mid-training** 在跨本体中的角色。
+- 与 [EgoSteer](../entities/paper-egosteer.md)：同族人视频 → 灵巧 VLA；对照 **mid-training 对齐** vs **策展全栈 + DAgger**。
 - 与 [mimic-video](./mimic-video.md)：mimic-video 把瓶颈叙事放在 **视频骨干潜质量**；EgoScale 把瓶颈叙事放在 **人操纵轨迹规模 + 对齐阶段**，二者可对照阅读而非互斥。
 - 与 [HumanNet](../entities/humannet.md)：HumanNet 侧重建 **互联网级人中心语料与标注管线**；EgoScale 给出 **两万小时量级 egocentric + 动作标签** 上 **VLA 预训练缩放** 的实证数据点。
 - 与 [具身规模法则](../concepts/embodied-scaling-laws.md)：可把本文的 **log-linear 验证损失–数据规模** 与 **下游完成度** 的联动，当作 **人侧监督缩放** 的一个具体案例研究。
@@ -111,6 +115,7 @@ flowchart LR
 - [Imitation Learning](./imitation-learning.md)
 - [mimic-video（VAM）](./mimic-video.md)
 - [Manipulation（操作任务）](../tasks/manipulation.md)
+- [EgoSteer](../entities/paper-egosteer.md)
 - [HumanNet](../entities/humannet.md)
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)
