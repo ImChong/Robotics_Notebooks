@@ -91,7 +91,7 @@
 - [Exercises Dataset（健身动作目录）](wiki/entities/exercises-dataset.md) — Exercises Dataset**（[hasaneyldrm/exercises-dataset](https://github.com/hasaneyldrm/exercises-datas `📅unknown` `[entity_page]`
 - [Extreme Parkour（端到端四足感知跑酷）](wiki/entities/extreme-parkour.md) — Extreme Parkour**（Cheng et al., arXiv:2309.14341，**ICRA 2024 `📅unknown` `[entity_page]`
 - [fairmotion](wiki/entities/fairmotion.md) — fairmotion**（<https://github.com/facebookresearch/fairmotion>）是 Meta Research 的通用**动捕数据处理库**：统一管理运 `📅unknown` `[entity_page]`
-- [FAR Planner](wiki/entities/far-planner.md) — FAR Planner**（Fast, Attemptable Route Planner）用 **动态更新的可见图** 在已知/未知环境中做长距离快速重规划：障碍多边形化，局部层逐帧建图并合并到 `📅unknown` `[entity_page]`
+- [FAR Planner](wiki/entities/far-planner.md) — FAR Planner**（Fast, Attemptable Route Planner）用 **动态更新的可见图（visibility graph）** 在已知或未知环境中做长距离快速重规划： `📅unknown` `[entity_page]`
 - [FAST-LIO](wiki/entities/fast-lio.md) — FAST-LIO** 以 **紧耦合迭代卡尔曼滤波** 实现低延迟 3D LiDAR-惯性里程计。 `📅unknown` `[entity_page]`
 - [Featurize（蒜粒方块）](wiki/entities/featurize.md) — Featurize**（featurize.cn）定位 **机器学习在线实验室**：预装 PyTorch 等环境，提供 RTX 3090/4090 `📅unknown` `[entity_page]`
 - [Figure AI](wiki/entities/figure-ai.md) — Figure AI** 构建「全栈人形」：**Figure 系列硬件** + **Helix 系列 VLA 模型**，目标是在真实家庭与物流场景中完成语言条件下的全身操作与移动。 `📅unknown` `[entity_page]`
@@ -155,7 +155,7 @@
 - [iGibson](wiki/entities/igibson.md) — iGibson** 是斯坦福大学等机构 2020 年发布的 **交互式室内仿真环境**，强调 **真实感视觉场景** 与 **高保真物理交互** 的融合。 `📅unknown` `[entity_page]`
 - [img2threejs](wiki/entities/img2threejs.md) — img2threejs**（hoainho/img2threejs，MIT）是一套 **Agent Skill `📅unknown` `[entity_page]`
 - [InMoov（开源 3D 打印人形）](wiki/entities/inmoov-humanoid.md) — InMoov** 是 **Gael Langevin** 自 2012 年起维护的 **全球首个开源 3D 打印真人比例人形** 项目：以 **Arduino** 控制、**MyRobotLab `📅unknown` `[entity_page]`
-- [Intel RealSense 深度相机](wiki/entities/intel-realsense.md) — Intel RealSense** 是一族消费级 **RGB-D 深度相机**（主动红外立体等方案），为机器人提供对齐的彩色与深度图，是人形课程感知章与大量 G1 论文真机的默认视觉传感器之一。 `📅unknown` `[entity_page]`
+- [Intel RealSense 深度相机](wiki/entities/intel-realsense.md) — Intel RealSense** 是一族消费级 **RGB-D 深度相机**（主动红外立体等方案），输出对齐的彩色与深度，是人形系统课感知章与大量 G1 真 `📅unknown` `[entity_page]`
 - [Isaac GR00T（人形 VLA 开发平台）](wiki/entities/isaac-gr00t.md) — Isaac GR00T** 是 NVIDIA 面向通用人形机器人的 **开源开发平台**：以 [Isaac-GR00T](https://github.com/NVIDIA/Isaac-GR00T `📅unknown` `[entity_page]`
 - [Isaac Gym / Isaac Sim / Isaac Lab](wiki/entities/isaac-gym-isaac-lab.md) — Isaac Gym**、**Isaac Sim** 与 **Isaac Lab** 是 NVIDIA 机器人仿真与学习生态里需要分开理解的三个产品节点。 `📅unknown` `[entity_page]`
 - [Isaac Gym](wiki/entities/isaac-gym.md) — Isaac Gym** 是 NVIDIA 早期推出的 GPU 加速机器人强化学习仿真框架，主打「在单张 GPU 上同时跑几千到上万个环境」的大规模并行训练。 `📅unknown` `[entity_page]`
@@ -1140,7 +1140,7 @@
 - [Superpowers（obra）](wiki/entities/superpowers-obra.md) — Superpowers** 是 obra/superpowers 仓库及其插件分发形态的总称：把作者团队在实践中沉淀的 `📅unknown` `[entity_page]`
 - [Sutton & Barto RL 教材](wiki/entities/sutton-barto-rl-book.md) — Reinforcement Learning: An Introduction**（Richard S. Sutton & Andrew G. Barto）是强化学习领域的**标准教材**：以 M `📅unknown` `[entity_page]`
 - [Tairan He（何泰然）](wiki/entities/tairan-he.md) — Tairan He** 是面向 **通用人形 loco-manipulation** 的机器学习研究者：2026 年起任 **OpenAI Member of Technical Staff**（ `📅unknown` `[entity_page]`
-- [TARE Planner](wiki/entities/tare-planner.md) — TARE Planner** 是 CMU 提出的 **分层自主探索规划器**：近场用稠密表示算细路径，远场用稀疏表示保持全局覆盖顺序，两层路径拼接并在各层求解 TSP 近似——课程第 5.2 节。 `📅unknown` `[entity_page]`
+- [TARE Planner](wiki/entities/tare-planner.md) — TARE Planner**（Technologies for Autonomous Robot Exploration）是 CMU 提出的 **分层自主探索规划器**：近场用稠密表示计算细路径， `📅unknown` `[entity_page]`
 - [τ₀-World Model（τ0-WM）](wiki/entities/tau0-world-model.md) — τ₀-World Model（τ0-WM）**（2026-05-31，AGIBOT Finch 研究页， `📅unknown` `[entity_page]`
 - [TensorBoard](wiki/entities/tensorboard.md) — TensorBoard**（tensorflow/tensorboard）是一套 **Web 端实验检查工 `📅unknown` `[entity_page]`
 - [TensorFlow](wiki/entities/tensorflow.md) — TensorFlow** 是由 **Google Brain** 团队最初开发、现由全球社区维护的 **端到端开源机器学习平台**。它以 **`tf.keras`** 高层 API 降低建模门槛， `📅2026-06-25` `[entity_page]`
@@ -1150,7 +1150,7 @@
 - [Tnkr](wiki/entities/tnkr.md) — Tnkr**（tnkr.ai）公开定位为 **「robotics 的 GitHub」**：把机器人项目里长期分散的 **机械设计、电气接线、控制软件、现场部 `📅unknown` `[entity_page]`
 - [TurtleBot3](wiki/entities/turtlebot3.md) — TurtleBot3** 是 **ROBOTIS** 生态中的 **开源移动机器人** 教育平台：硬件参数、软件栈与仿真入口集中在 **[TurtleBot3 eManual](https://e `📅unknown` `[entity_page]`
 - [UniLab：异构 CPU 仿真 / GPU 学习的机器人 RL 训练系统](wiki/entities/unilab.md) — UniLab**（arXiv:2605.30313，清华等联合）质疑仿真主导机器人 RL 的默认前提：**高效训练是否必须把物理放在 GPU 上**。论文将问题重述为 **仿真–学习闭环的系统组织 `📅unknown` `[entity_page]`
-- [Unitree G1 软件服务栈](wiki/entities/unitree-g1-software-stack.md) — G1 软件服务栈**指在 Unitree G1 上通过 **unitree_sdk2 / DDS**（及可选 ROS 2 桥）暴露的 **低层运控、传感器流与 `📅unknown` `[entity_page]`
+- [Unitree G1 软件服务栈](wiki/entities/unitree-g1-software-stack.md) — G1 软件服务栈**指在 Unitree G1 上通过 **unitree_sdk2 / CycloneDDS**（及可选 ROS 2 桥）暴露的 **运控、 `📅unknown` `[entity_page]`
 - [Unitree G1 (人形机器人)](wiki/entities/unitree-g1.md) — Unitree G1** 是宇树科技 (Unitree) 在 H1 之后推出的一款量产型、高性价比的人形机器人平台。其设计初衷是降低人形机器人研究的门槛，使其能够大规模进入实验室、高校和家庭场景。 `📅unknown` `[entity_page]`
 - [unitree_rl_mjlab (Unitree 官方 RL 框架)](wiki/entities/unitree-rl-mjlab.md) — unitree_rl_mjlab** 是由 Unitree Robotics 官方维护的强化学习训练框架，以 **mjlab**（Isaac Lab API + MuJoCo Warp）为底层，覆 `📅unknown` `[entity_page]`
 - [unitree_ros（Unitree 官方 ROS1 / Gazebo 栈）](wiki/entities/unitree-ros.md) — unitree_ros** 与配套的 **unitree_ros_to_real** 代表宇树在 **ROS1 + Gazebo** 时代的官方开源组合：前者提供多机型 **URDF/xacro `📅unknown` `[entity_page]`
@@ -1221,7 +1221,7 @@
 - [Diffusion Model（扩散模型）](wiki/concepts/diffusion-model.md) — 扩散模型（Diffusion Model）**：人为定义从真实数据到高斯噪声的前向破坏过程，训练神经网络学习逆向降噪，使模型能从简单噪声分布经多步小幅修正生成结构化样本。 `📅unknown` `[wiki_page]`
 - [分布式系统基础（CAP / 选主 / 一致性 / 超时 / 重试）](wiki/concepts/distributed-systems-basics.md) — 分布式系统基础** 给出多机协作时 **一致性、可用性、分区容忍** 的取舍，以及选主、超时与重试的工程默认值——并划清与机载安全 FSM 的边界。 `📅unknown` `[wiki_page]`
 - [Domain Randomization](wiki/concepts/domain-randomization.md) — 域随机化**：在仿真训练中主动随机化物理参数、视觉纹理、环境设置，让策略被迫学会适应各种变化的泛化能力，从而实现零样本从仿真迁移到现实。 `📅unknown` `[wiki_page]`
-- [动态障碍物滤波（导航地图制作）](wiki/concepts/dynamic-obstacle-filtering.md) — 动态障碍物滤波**在建图或代价地图流水线中识别并剔除 **非静态占用**，使二维导航地图主要反映墙体/家具等持久结构——对应课程第 4.1 节「动态障碍物剔除与二维导航地图制作」。 `📅unknown` `[wiki_page]`
+- [动态障碍物滤波（导航地图制作）](wiki/concepts/dynamic-obstacle-filtering.md) — 动态障碍物滤波**在建图或代价地图流水线中识别并抑制 **非静态占用**（行人、临时堆物、扫描拖影），使二维导航地图主要表达墙体/家具等持久结构——对应课程第 4.1 节「动态障碍物剔除与二维导航 `📅unknown` `[wiki_page]`
 - [边缘计算与云端协同（Edge–Cloud Robotics）](wiki/concepts/edge-cloud-robotics.md) — 边缘–云端协同** 把机器人能力拆到 **低延迟本地闭环** 与 **高算力云端批处理**：边缘保安全与控制，云端保学习、存储与队级优化。 `📅unknown` `[wiki_page]`
 - [Embodied Data Cleaning (具身数据清洗)](wiki/concepts/embodied-data-cleaning.md) — 具身数据清洗**：在具身智能（Embodied AI）中，将人类示教或自动采集的原始“脏数据”转化为高质量、可用于训练的专家演示轨迹（Expert Trajectories）的过程。 `📅unknown` `[wiki_page]`
 - [概念：具身大模型实时性 ↔ 泛化能力取舍](wiki/concepts/embodied-fm-latency-generalization-tradeoff.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[wiki_page]`
@@ -1268,7 +1268,7 @@
 - [Open X-Embodiment（OXE）](wiki/concepts/open-x-embodiment.md) — Open X-Embodiment**：面向机器人模仿学习的大规模跨机构、跨硬件形态数据集与基准管线，把多种机器人的演示统一到可比格式上，用于训练与评测「通用操作策略」。 `📅unknown` `[wiki_page]`
 - [操作系统基础（进程 / 线程 / 内存 / 文件系统 / 调度）](wiki/concepts/operating-system-basics.md) — 操作系统基础** 解释主控板上「谁在跑、何时被抢占、内存如何映射、磁盘 I/O 如何饿死控制线程」——是诊断真机抖动时最先翻的一层。 `📅unknown` `[wiki_page]`
 - [Optimal Control (OCP)](wiki/concepts/optimal-control.md) — 最优控制**：给定一个动力学系统和一个代价函数，求解在有限或无限时域内使得代价最小的控制输入序列的理论框架。 `📅unknown` `[wiki_page]`
-- [感知后处理与坐标变换](wiki/concepts/perception-coordinate-postprocessing.md) — 感知后处理与坐标变换**把检测器输出的 **像素量** 经相机模型与外参链变换为 **机器人/场地坐标系下的几何量**，并做置信度过滤与拓扑校验——课程第 7.1 节。 `📅unknown` `[wiki_page]`
+- [感知后处理与坐标变换](wiki/concepts/perception-coordinate-postprocessing.md) — 感知后处理与坐标变换**把检测器输出的 **像素量**（框、线、交点）经相机内参、深度/平面假设与外参链，变成 **机器人 base 或场地世界系下的几何量**，并做过滤与拓扑校验——课程第 7. `📅unknown` `[wiki_page]`
 - [Physics Fidelity ↔ Sim2Real Gap（物理保真度与仿真到现实差距）](wiki/concepts/physics-fidelity-sim2real-gap.md) — 物理保真度（Physics Fidelity）**：仿真器对真实物理过程的逼近程度。它不是一个标量，而是沿 **几何/URDF 精度 → 刚体动力学算法 → 接触/摩擦模型 → 执行器模型** 四 `📅unknown` `[wiki_page]`
 - [人形腿部行星滚柱丝杠直线驱动（PRS 路线）](wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md) — 人形腿部用**行星滚柱丝杠（Planetary Roller Screw, PRS）**把电机旋转转为**直线推力**，再经**连杆机构**映射为髋/膝/踝等关节角，是在**负载密度、静态保持、纵向布 `📅unknown` `[wiki_page]`
 - [Privileged Training（特权信息训练）](wiki/concepts/privileged-training.md) — 特权训练**（Privileged Training / Teacher-Student Training）：训练阶段提供给策略额外的、在真实部署时无法获取的信息，再通过知识蒸馏将能力迁移给仅使用 `📅unknown` `[wiki_page]`
@@ -1288,7 +1288,7 @@
 - [概念：仿真评测可复现性 ↔ 真实世界代表性取舍（sim↔real 评测 gap）](wiki/concepts/sim-vs-real-eval-gap.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[wiki_page]`
 - [Sim2Real](wiki/concepts/sim2real.md) — Sim2Real**（仿真到现实迁移）：在仿真环境训练控制策略，然后部署到真实机器人上。 `📅unknown` `[wiki_page]`
 - [仿真评测基础设施（Simulation as Evaluation Infrastructure）](wiki/concepts/simulation-evaluation-infrastructure.md) — 仿真评测基础设施**指：在机器人学习与基础模型开发中，把仿真主要用作**可扩展、可复现的闭环评测与 recipe 迭代引擎**，而不是默认等同于「仿真数据生成器」。当评测与真机 rollout  `📅unknown` `[wiki_page]`
-- [足球场仿真环境](wiki/concepts/soccer-field-simulation.md) — 足球场仿真环境**是按比赛/教学规格搭建的 **场地几何 + 球/门实体 + 传感器模型** 仿真世界，使检测与定位算法可在无真机场地时迭代——课程第 6.3 节。 `📅unknown` `[wiki_page]`
+- [足球场仿真环境](wiki/concepts/soccer-field-simulation.md) — 足球场仿真环境**是按比赛或教学规格搭建的 **场地几何 + 球/门实体 + 传感器与光照模型**，使人形在无真机场地时也能迭代感知与决策——课程第 6.3 节。 `📅unknown` `[wiki_page]`
 - [软件安全基础（认证 / 授权 / 密钥 / 供应链）](wiki/concepts/software-security-basics.md) — 软件安全基础** 区分「你是谁 / 你能做什么 / 密钥如何保管 / 构建链是否可信」——覆盖遥操作、OTA、模型仓库与 CI 制品。 `📅unknown` `[wiki_page]`
 - [SRBD + 凸 MPC + WBC](wiki/concepts/srbd-convex-mpc-wbc.md) — 飞书 Know-How 条目 **「单刚体动力学模型 + 凸模型预测控制 + WBC」** 指：用 **SRBD（Single Rigid Body Dynamics）** 近似整机质心运动，在  `📅unknown` `[wiki_page]`
 - [State Estimation](wiki/concepts/state-estimation.md) — State Estimation（状态估计）**：根据传感器观测、机器人模型和历史信息，估计机器人当前最可能真实状态的过程。 `📅unknown` `[wiki_page]`
@@ -1317,7 +1317,7 @@
 
 ### Wiki Methods（方法页）
 
-- [A\* 全局路径规划](wiki/methods/a-star.md) — A\*** 在离散图（常为占据栅格邻接）上搜索从起点到终点的路径，用 \(f = g + h\)（已走代价 + 启发估计）保证在可采纳启发下找到最优路径——课程第 4.2 节核心算法。 `📅unknown` `[method_page]`
+- [A\* 全局路径规划](wiki/methods/a-star.md) — A\*** 在离散图（常见为占据栅格邻接图）上搜索从起点到终点的路径，用代价函数 \(f(n)=g(n)+h(n)\)（起点累计代价 + 启发估计）在 **可采纳启发** 下保证最优——深蓝学院人 `📅unknown` `[method_page]`
 - [Action Chunking（动作块输出）](wiki/methods/action-chunking.md) — Action Chunking**：让策略一次预测未来连续若干步动作，而不是每个控制周期只吐一帧动作。它最早在模仿学习和双臂操作场景里被广泛采用，现在也成为 VLA 与低层控制器结合时处理推理延迟 `📅unknown` `[method_page]`
 - [Actuator Network (执行器网络)](wiki/methods/actuator-network.md) — 执行器网络 (Actuator Network)** 是一种在机器人仿真中用于模拟物理驱动器（如电控伺服电机、SEA 驱动器）真实物理行为的深度学习模型。它是解决**足式机器人 Sim2Real  `📅unknown` `[method_page]`
 - [Adadelta（Adaptive Delta）](wiki/methods/adadelta.md) — Adadelta**：同时维护 **梯度平方的 EMA** 与 **参数更新量的 EMA**，用二者 RMS 之比确定每步缩放因子，**取消显式全局学习率 $\eta$**，在 [Adagrad `📅unknown` `[method_page]`
@@ -1361,7 +1361,7 @@
 - [Disney Olaf 角色机器人（实机动画角色）](wiki/methods/disney-olaf-character-robot.md) — 一句话定义：** 面向「高角色保真 + 紧凑机电包络」的娱乐型双足平台：用**动画参考 + RL** 解决非物理比例与风格化步态，用**机构设计**解决「看不见腿」与**热/声学**等实演约束。 `📅unknown` `[method_page]`
 - [Dynamic Movement Primitives (DMP)](wiki/methods/dmp.md) — DMP** 是一种用于轨迹建模和控制的方法。它将复杂的运动路径表示为一个非线性动力学系统，其核心是一个受迫振荡器，可以通过调整参数来改变运动的速度和目标位置，而不需要重新规划。 `📅unknown` `[method_page]`
 - [DreamWaQ：盲走一阶段鲁棒行走](wiki/methods/dreamwaq.md) — DreamWaQ**（*Learning Robust Quadrupedal Locomotion With Implicit Terrain Imagination*，ICRA 2023，[a `📅unknown` `[method_page]`
-- [DWA（Dynamic Window Approach）局部路径规划](wiki/methods/dwa.md) — 动态窗口法（DWA）** 在机器人加速度与障碍约束形成的 **速度窗口** 内采样轨迹，按目标朝向、速度与空隙评价选最优 \((v,\omega)\)，实现局部避障——课程第 4.3 节。 `📅unknown` `[method_page]`
+- [DWA（Dynamic Window Approach）局部路径规划](wiki/methods/dwa.md) — 动态窗口法（DWA）** 在机器人当前速度可达的 **动态窗口** \(V_d\) 内采样线速度/角速度，前向仿真轨迹并用朝向、速度、间隙等目标打分，选出本周期最优 \((v,\omega)\)— `📅unknown` `[method_page]`
 - [DWM（Dexterous World Models，灵巧世界模型）](wiki/methods/dwm.md) — DWM**（Kim 等，CVPR 2026）研究的是：当环境的**静态几何**已经可用（典型来自重建得到的数字孪生），如何用**视频扩散**去预测**灵巧手操作**会在第一人称视频里诱发哪些**物 `📅unknown` `[method_page]`
 - [DynaRetarget / SBTO（增量采样式动力学重定向）](wiki/methods/dynaretarget-sbto-motion-retargeting.md) — DynaRetarget**（Dhédin 等，arXiv:2602.06827，[项目页](https://atarila `📅2026-06-17` `[method_page]`
 - [EFGCL（External Force-Guided Curriculum Learning）](wiki/methods/efgcl.md) — EFGCL** 是一种面向腿足机器人**高动态全身动作**的 **guided RL / 物理引导探索** 训练范式：在仿真里对机器人施加**外部辅助力**，使其在课程早期就能反复完成目标动作；再 `📅2026-05-13` `[method_page]`
@@ -1388,7 +1388,7 @@
 - [HiPAN（Hierarchical Posture-Adaptive Navigation）](wiki/methods/hipan.md) — HiPAN** 是面向**四足机器人**在**非结构化三维环境**（窄通道、限高、死胡同、半封闭房间）中的导航框架：部署时**不依赖显式三维地图**，仅用**机载深度**做感知，通过**分层强化学 `📅unknown` `[method_page]`
 - [htwk-gym](wiki/methods/htwk-gym.md) — htwk-gym** 是一个开源的强化学习（RL）框架，专门针对人形机器人足球（Humanoid Soccer）竞赛设计。该框架由 RoboCup 强队 HTWK Leipzig 维护，在 **B `📅unknown` `[method_page]`
 - [Humanoid Transformer with Touch Dreaming (HTD)](wiki/methods/humanoid-transformer-touch-dreaming.md) — HTD** 是一种面向人形机器人 dexterous loco-manipulation 的多模态行为克隆方法。它把触觉从“附加传感器输入”提升为训练目标：策略不仅预测 action chunks `📅unknown` `[method_page]`
-- [人形机器人智能语音交互](wiki/methods/humanoid-voice-interaction.md) — 人形智能语音交互**是把 **语音识别、语言理解/大模型规划、技能或导航执行、语音合成** 串成可打断闭环，使人形能用自然语言接受任务——课程第 8.2 节与 Ch8 实践。 `📅unknown` `[method_page]`
+- [人形机器人智能语音交互](wiki/methods/humanoid-voice-interaction.md) — 人形智能语音交互**把 **语音识别、语言理解/大模型规划、技能或导航执行、语音合成** 串成可唤醒、可打断的闭环，使人形能用自然语言接受任务——课程第 8.2 节；Ch8 实践常与 [VLN `📅unknown` `[method_page]`
 - [HY-Motion 1.0（文本→3D 人体运动的规模化流匹配 DiT）](wiki/methods/hy-motion-1.md) — HY-Motion 1.0**（Tencent Hunyuan 3D Digital Human Team，arXiv:2512.23464）面向 **文本描述 + 期望时长** 生成 **SMP `📅unknown` `[method_page]`
 - [Imitation Learning (IL, 模仿学习)](wiki/methods/imitation-learning.md) — 模仿学习 (Imitation Learning)**：通过专家演示数据（**行为克隆**、**DAgger** 等），让机器人学会从状态到动作的映射，核心是“抄”。 `📅unknown` `[method_page]`
 - [In-hand Reorientation (手内重定向)](wiki/methods/in-hand-reorientation.md) — 手内重定向 (In-hand Reorientation)** 是灵巧操作（Dexterous Manipulation）领域中最具挑战性的任务之一。它的目标是让多指灵巧手（如 Allegro H `📅unknown` `[method_page]`
@@ -1399,7 +1399,7 @@
 - [LCP: Lipschitz 约束策略](wiki/methods/lcp.md) — Lipschitz-Constrained Policies (LCP)** 旨在提高深度强化学习策略在物理控制任务中的数值稳定性和鲁棒性。 `📅unknown` `[method_page]`
 - [Learning from Play（Play-LMP）](wiki/methods/learning-from-play-lmp.md) — Learning from Play**：利用大量未标注任务边界的机器人交互片段（play），学习潜在「计划」表征与条件策略，从而在少量任务标注下完成复杂操控序列。 `📅unknown` `[method_page]`
 - [Levenberg-Marquardt（LM 阻尼最小二乘）](wiki/methods/levenberg-marquardt.md) — Levenberg-Marquardt（LM）**：在 Gauss-Newton 的 $J^T J$ 上加入阻尼 $\lambda I$，搜索方向 $p  `📅unknown` `[method_page]`
-- [里程计与激光雷达融合定位](wiki/methods/lidar-odometry-fusion.md) — 里程计–激光融合定位**把 **高频相对运动估计（odom）** 与 **激光观测（scan / 点云）** 在统一滤波器或因子图中融合，得到比单源更稳的 2D/3D 位姿——对应课程第 3.4  `📅unknown` `[method_page]`
+- [里程计与激光雷达融合定位](wiki/methods/lidar-odometry-fusion.md) — 里程计–激光融合定位**用 **高频相对运动（轮式/腿式 odom 或 IMU）** 做短时预测，用 **激光扫描匹配或 LIO** 提供绝对/半绝对校正，在滤波器或因子图中融合出稳定的 `map `📅unknown` `[method_page]`
 - [LIMMT / GQS：人形 Motion Tracking 的数据策展](wiki/methods/limmt-gqs-motion-curation.md) — LIMMT**（Guan 等，ICML 2026，arXiv:2606.06953）提出 **「Less Is More for Motion Tracking」**：在物理人形 tracking `📅unknown` `[method_page]`
 - [Line Search & Steepest Descent（线搜索与最速下降）](wiki/methods/line-search-steepest-descent.md) — 线搜索最速下降**：沿负梯度方向 $-\nabla f(x)$ 搜索步长 $\alpha$ 使目标下降；配合 **Armijo / Wolfe** 条件保证收敛。**修正阻尼牛顿法** 用 Hes `📅unknown` `[method_page]`
 - [LingBot-Map (Streaming 3D Reconstruction Foundation Model)](wiki/methods/lingbot-map.md) — LingBot-Map** 是一种新型的 3D 基础模型，旨在解决从连续视频流中进行高效、鲁棒的**流式 3D 重建**问题。 `📅unknown` `[method_page]`
@@ -1454,7 +1454,7 @@
 - [SLIP + VMC（弹簧负载倒立摆与虚拟模型控制）](wiki/methods/slip-vmc.md) — SLIP（Spring-Loaded Inverted Pendulum）** 把支撑腿近似为质心与足端之间的弹簧；**VMC（Virtual Model Control）** 在任务空间定义虚拟 `📅unknown` `[method_page]`
 - [Smooth Navigation Path Generation（平滑导航路径生成）](wiki/methods/smooth-navigation-path-generation.md) — 平滑导航路径生成**：在已知或采样的几何路径基础上，通过 **无约束或软约束优化** 最小化 jerk/曲率/能量，得到 **曲率连续、可跟踪** 的导航轨迹——课程 2.4–2.5 的无约束优化 `📅unknown` `[method_page]`
 - [SMP: 基于得分匹配的可复用运动先验](wiki/methods/smp.md) — SMP** 代表了从对抗模仿学习（如 AMP）向生成式先验引导学习的范式演进。它将复杂的运动分布建模为一个连续的得分场（Score Field），并以此指导  `📅unknown` `[method_page]`
-- [足球场线与球门检测](wiki/methods/soccer-field-line-detection.md) — 球门与场地线交点检测**从机载图像中识别 **球、球门与场地线几何特征（含线–线交点）**，为 RoboCup 风格视觉定位提供测量——课程第 6.4 节与 YOLO11 实践。 `📅unknown` `[method_page]`
+- [足球场线与球门检测](wiki/methods/soccer-field-line-detection.md) — 球门与场地线交点检测**从机载图像识别 **球、球门与场地线几何（含线–线交点）**，输出可供定位与决策使用的结构化观测量——课程第 6.4 节；实践作业常用 **YOLO11** 训练球/门/线 `📅unknown` `[method_page]`
 - [SONIC（规模化运动跟踪人形控制）](wiki/methods/sonic-motion-tracking.md) — SONIC 将规模化运动跟踪作为人形低层控制的统一预训练目标；论文主张网络容量、MoCap 数据与算力三轴 scaling，并以统一 token 接口接入 VR、视频、VLA 等上游。 `📅2026-05-14` `[method_page]`
 - [SPIDER（物理感知采样式灵巧重定向）](wiki/methods/spider-physics-informed-dexterous-retargeting.md) — SPIDER**（*Scalable Physics-Informed DExterous Retargeting*，Pan 等，arXiv:2511.09484）把跨具身迁移写成：**人体演示只 `📅2026-05-17` `[method_page]`
 - [StarVLA](wiki/methods/star-vla.md) — StarVLA**（尤其是其首个技术报告版本 **StarVLA-$\alpha$**）是一个旨在降低 Vision-Language-Action (VLA) 系统复杂性的开源基准模型与框架。 `📅unknown` `[method_page]`
@@ -1472,8 +1472,8 @@
 - [Unified Multimodal Tokens (统一多模态 Token)](wiki/methods/unified-multimodal-tokens.md) — 统一多模态 Token** 是一种先进的具身智能架构设计。它摒弃了为每种感官模态设计专用神经网络分支的传统做法，转而将所有输入（图像、语言、状态、动作）全部转换为格式一致的 Token 序列，并在 `📅unknown` `[method_page]`
 - [Unsupervised Clustering Fault Compensation（无监督聚类故障补偿）](wiki/methods/unsupervised-clustering-fault-compensation.md) — 聚类故障补偿：对运行数据无监督聚类识别工况/磨损模式，切换预存补偿参数，实现被动自适应。 `📅unknown` `[method_page]`
 - [Value-based Reinforcement Learning（基于值函数的强化学习）](wiki/methods/value-based-reinforcement-learning.md) — 值函数 RL：估计状态-动作价值 $Q(s,a)$ 或 $V(s)$，通过贪心或 $\epsilon$-贪心选动作，适合离散控制。 `📅unknown` `[method_page]`
-- [线特征视觉定位的 EKF 融合](wiki/methods/visual-line-ekf-fusion.md) — 线特征 EKF 融合**在 扩展卡尔曼滤波 框架下，以运动模型预测机器人场地位姿，并以 [线匹配](./visual-line-matchi `📅unknown` `[method_page]`
-- [线匹配视觉定位](wiki/methods/visual-line-matching-localization.md) — 线匹配视觉定位**把图像中提取的 **场地线或交点** 与已知场地图纸上的线特征建立对应，从而估计机器人在场地坐标系中的位姿——课程第 7.2 节。 `📅unknown` `[method_page]`
+- [线特征视觉定位的 EKF 融合](wiki/methods/visual-line-ekf-fusion.md) — 线特征 EKF 融合**在 扩展卡尔曼滤波 下，以行走/里程计运动模型预测场地平面位姿，以 [线匹配](./visual-line-matc `📅unknown` `[method_page]`
+- [线匹配视觉定位](wiki/methods/visual-line-matching-localization.md) — 线匹配视觉定位**将图像中提取的 **场地线或交点** 与已知场地图纸上的线特征做 **数据关联**，估计机器人在场地坐标系中的位姿——课程第 7.2 节「空间视觉定位 — 线匹配」。 `📅unknown` `[method_page]`
 - [Visual Servoing（视觉伺服控制）](wiki/methods/visual-servoing.md) — 视觉伺服 (Visual Servoing)** 是一门将计算机视觉（Computer Vision）与经典控制理论（Control Theory）深度融合的技术。它不依赖于将图像构建为复杂的 3 `📅unknown` `[method_page]`
 - [VLA（Vision-Language-Action）](wiki/methods/vla.md) — VLA**：把视觉、语言和机器人动作统一到同一个模型里，让策略不只“看见状态后输出动作”，还能够显式理解任务指令和语义约束。 `📅unknown` `[method_page]`
 - [WiLoR（野外 3D 手部定位与重建）](wiki/methods/wilor.md) — WiLoR**（CVPR 2025）面向 **单目 RGB** 场景下的 **双手** 检测与 **MANO 类 3D 重建**：先用轻量全卷积结构在高分辨率特征上定位手部，再用 Transfor `📅unknown` `[method_page]`
@@ -1482,7 +1482,7 @@
 
 ### Wiki Tasks（任务页）
 
-- [机器人自主探索](wiki/tasks/autonomous-exploration.md) — 自主探索**要求机器人在 **无完整先验地图** 时主动规划观测与运动，尽快覆盖未知空间并维持定位与安全通行——课程第 5.1 / 5.4 节任务定义。 `📅unknown` `[task_page]`
+- [机器人自主探索](wiki/tasks/autonomous-exploration.md) — 自主探索**要求机器人在 **无完整先验地图** 时主动选择观测与运动，尽快覆盖未知空间，同时维持定位与安全通行——课程第 5.1 / 5.4 节任务定义。 `📅unknown` `[task_page]`
 - [Balance Recovery（平衡恢复）](wiki/tasks/balance-recovery.md) — 平衡恢复**（Balance Recovery / Push Recovery）：机器人在受到外部扰动（推力、地形突变、碰撞等）后，从失衡状态恢复到稳定姿态并继续任务的能力。 `📅unknown` `[task_page]`
 - [Bimanual Manipulation（双臂协调操作）](wiki/tasks/bimanual-manipulation.md) — 双臂协调操作（Bimanual Manipulation）**：同时使用两只手臂协同完成一个任务，两臂之间存在物理或时序上的依赖关系——典型任务包括双手递接、拧瓶盖、折叠衣服、组装零件。单臂独立控 `📅unknown` `[task_page]`
 - [Humanoid Locomotion (人形机器人移动)](wiki/tasks/humanoid-locomotion.md) — Humanoid Locomotion**：使双足类人机器人能够在复杂、非结构化的地形中，保持平衡的同时实现高效、鲁棒的位移，并具备全身协调（Whole-body Coordination）能力。 `📅unknown` `[task_page]`
@@ -1612,7 +1612,7 @@
 - [Actuator 102 · 02：旋转-直线分离架构](wiki/overview/humanoid-actuator-102-split-architecture.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [Humanoid 执行器 102：八章技术地图](wiki/overview/humanoid-actuator-102-technology-map.md) — 人形腿部执行器不是「更大扭矩的工业伺服」，而是要在 **亚毫秒冲击** 下 **机械退让**、在 **质量惩罚螺旋** 下维持 **>15 Nm/kg**，并在 **N² 反射惯量** 与 **热极限 `📅unknown` `[overview_page]`
 - [Actuator 102 · 04：热学与力矩控制](wiki/overview/humanoid-actuator-102-thermal-and-control.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
-- [人形机器人算法研究现状](wiki/overview/humanoid-algorithm-research-status.md) — 人形算法研究现状**是对当前人形研究主战场的分层快照：**下肢运动**、**全身 loco-manip**、**导航与探索**、**比赛级感知决策**、**大模型具身**——对应深蓝课程第 1.2 `📅unknown` `[overview_page]`
+- [人形机器人算法研究现状](wiki/overview/humanoid-algorithm-research-status.md) — 人形算法研究现状**是对当前研究主战场的分层快照——**下肢/全身运动、loco-manipulation、导航与探索、比赛级感知决策、大模型具身**——对应课程第 1.2 节，并接到本库可继续深 `📅unknown` `[overview_page]`
 - [人形机器人 AMP：运动先验综述视角](wiki/overview/humanoid-amp-motion-prior-survey.md) — AMP（Adversarial Motion Prior）解决的不是「能不能跑」，而是「跑起来之后仍不像一个身体」。** 它把策略生成的状态转移约束在人类运动分布附近，让任务 reward 与参考 `📅unknown` `[overview_page]`
 - [Humanoid Hardware 101 · 02：传动与感知链](wiki/overview/humanoid-hardware-101-actuation-sensing-chain.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [Humanoid Hardware 101 · 01：机身与材料](wiki/overview/humanoid-hardware-101-chassis-materials.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
@@ -1634,7 +1634,7 @@
 - [深度强化学习运动控制方法（Learning-based）](wiki/overview/humanoid-rl-motion-control-methods.md) — 飞书 Know-How **「深度强化学习运动控制方法（Learning Base）」** 的图谱父节点：覆盖 **RL 基础 → 特权/模仿训练 → 感知 loco → 重定向与跟踪 → BFM 三 `📅unknown` `[overview_page]`
 - [人形机器人发展历史](wiki/overview/humanoid-robot-history.md) — 人形机器人发展历史**梳理双足类人平台从实验室样机到可量产科研整机的关键里程碑，帮助理解今日 G1 等课程平台为何同时继承 **模型基平衡 `📅unknown` `[overview_page]`
 - [Jason Peng：更灵活的运动技能学习](wiki/overview/jason-peng-flexible-motion-skill-learning.md) — 人形运动控制的下一关不是「把更多 clip 跟踪得更像」，而是让控制器在 **数据稀缺** 下仍能 **组合行为、适应新目标与物体**——对抗性分布匹配与生成式迭代数据增强是 Peng 组给出的两条互 `📅unknown` `[overview_page]`
-- [大模型赋能人形机器人](wiki/overview/large-model-empowered-humanoids.md) — 大模型赋能人形**泛指用 **LLM/VLM/VLA** 等预训练模型承接语义理解与任务规划，再通过技能库、导航栈或端到端策略驱动人形执行——课程第 8.1 节的方法地图。 `📅unknown` `[overview_page]`
+- [大模型赋能人形机器人](wiki/overview/large-model-empowered-humanoids.md) — 大模型赋能人形**泛指用 **LLM / VLM / VLA** 等预训练模型承接语义理解与任务规划（有时含直接动作），再通过技能库、导航栈或端到端策略驱动人形执行——课程第 8.1 节的方法地图 `📅unknown` `[overview_page]`
 - [Loco-Manip 161 分类 01：运控基座与通用全身跟踪](wiki/overview/loco-manip-161-category-01-motion-base-wbt.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [Loco-Manip 161 分类 02：上半身中心控制与移动操作接口](wiki/overview/loco-manip-161-category-02-upper-body-interface.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [Loco-Manip 161 分类 03：视觉感知驱动的人形移动操作](wiki/overview/loco-manip-161-category-03-visuomotor.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`

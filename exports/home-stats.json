@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-23",
   "node_count": 1799,
-  "edge_count": 14974,
+  "edge_count": 15001,
   "coverage": {
     "covered": 1746,
     "total": 1776,
@@ -95,7 +95,8 @@
       "recency": "2026-07-23",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/gsap-skills.md",
@@ -226,7 +227,7 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 391
+      "size": 376
     },
     {
       "label": "人形论文深读笔记",
@@ -238,7 +239,7 @@
     },
     {
       "label": "仿真到现实",
-      "size": 129
+      "size": 165
     },
     {
       "label": "人形强化学习运动控制",
@@ -246,7 +247,7 @@
     },
     {
       "label": "全身控制",
-      "size": 118
+      "size": 106
     }
   ],
   "top_hubs": [
@@ -261,7 +262,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 327,
+      "degree": 329,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
