@@ -8,23 +8,15 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕸️</text></svg>" />
   <meta name="color-scheme" content="dark light" />
   <script src="theme-init.js"></script>
-  <script>
-    /* 尽早写入动态视口高度，减少 Chrome 底栏态下首屏壳层高度闪一下 */
-    (function () {
-      var h = (window.visualViewport && window.visualViewport.height) || window.innerHeight;
-      if (h > 0) document.documentElement.style.setProperty('--app-vh', Math.round(h) + 'px');
-    })();
-  </script>
   <script id="sponsor-js" src="sponsor.js?v=2"></script>
   <link rel="stylesheet" href="style.css" />
   <style>
     /* ── 图谱页专用样式（不影响其他页面）── */
-    /* --app-vh：由 JS 按 visualViewport/innerHeight 写入，跟踪移动端浏览器底栏/地址栏显隐；
-       无 JS 时回退 100dvh。画布背景与 body 对齐，避免壳层未撑满时露出浅灰底。 */
+    /* 画布背景与 body 对齐，避免壳层未撑满时露出浅灰底。
+       高度优先 100dvh（随 Chrome 底栏显隐变化）；--app-vh 由 JS 在 resize/交互时写入作增强。 */
     html {
       height: 100%;
       height: 100dvh;
-      height: var(--app-vh, 100dvh);
     }
     body {
       overflow: hidden;
@@ -289,6 +281,7 @@
          会在画布下方留出一块空白。改为按动态视口高度显式计算。 */
       bottom: auto;
       height: calc(100dvh - var(--header-h) - 46px);
+      /* JS 写入 --app-vh 后覆盖为精确可视高度（见 syncGraphShellToViewport） */
       height: calc(var(--app-vh, 100dvh) - var(--header-h) - 46px);
       transition: right .22s cubic-bezier(.4,0,.2,1);
     }
@@ -2693,10 +2686,15 @@
       return Number.isFinite(n) ? n : 58;
     }
 
-    /* 将 --app-vh 同步为当前可视高度，使 #graph-wrap 在 Chrome 底栏显隐时跟着伸缩 */
+    /* 将 --app-vh 同步为当前可视高度，使 #graph-wrap 在 Chrome 底栏显隐时跟着伸缩。
+       注意：一旦写入 --app-vh 就会覆盖纯 dvh；因此必须在 resize / 交互时持续刷新，
+       否则底栏收起后会出现下方留白（用户点进 graph view 时最常见）。 */
     function syncGraphShellToViewport() {
       const vv = window.visualViewport;
-      const viewportH = Math.round((vv && vv.height) || window.innerHeight || 0);
+      // Chrome 底栏动画期间 visualViewport.height 可能短暂滞后于 innerHeight；
+      // 取较大值避免壳层偏矮留下底缝。
+      const vvH = (vv && Number.isFinite(vv.height)) ? vv.height : 0;
+      const viewportH = Math.round(Math.max(window.innerHeight || 0, vvH));
       if (viewportH <= 0) return false;
       document.documentElement.style.setProperty('--app-vh', viewportH + 'px');
       if (wrap) {
@@ -4277,7 +4275,8 @@
     }
 
     /* ── resize（移动端地址栏/底栏显隐会改变可视高度）── */
-    function onGraphViewportResize() {
+    let graphViewportResizeRaf = null;
+    function runGraphViewportResize() {
       const prevW = W;
       const prevH = H;
       if (!updateGraphViewport()) return;
@@ -4299,13 +4298,32 @@
       }
       simulation.alpha(0.1).restart();
     }
+    function onGraphViewportResize() {
+      // 双 rAF：等浏览器把 innerHeight / visualViewport 都更新完再量壳层
+      if (graphViewportResizeRaf != null) cancelAnimationFrame(graphViewportResizeRaf);
+      graphViewportResizeRaf = requestAnimationFrame(() => {
+        graphViewportResizeRaf = requestAnimationFrame(() => {
+          graphViewportResizeRaf = null;
+          runGraphViewportResize();
+        });
+      });
+    }
     window.addEventListener('resize', onGraphViewportResize);
+    window.addEventListener('orientationchange', onGraphViewportResize);
+    window.addEventListener('pageshow', onGraphViewportResize);
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') onGraphViewportResize();
+    });
+    // 用户点到画布时再同步一次：Chrome 底栏收起后有时不立刻触发 resize，
+    // 但「点进 graph view」时 innerHeight 已变高，此时补测可消掉底缝。
+    // runGraphViewportResize 有尺寸未变早退，不会每次 tap 都 fit。
+    window.addEventListener('pointerdown', onGraphViewportResize, { passive: true });
     if (window.visualViewport) {
       window.visualViewport.addEventListener('resize', onGraphViewportResize);
       // iOS 地址栏滚动时 offsetTop 会变，需同步壳层 top
       window.visualViewport.addEventListener('scroll', onGraphViewportResize);
     }
-    // 尽早写入 --app-vh，避免首屏在 JS 测量前用错高度
+    // 尽早写入当前可视高度
     syncGraphShellToViewport();
 
     /* ── 主题切换监听：同步更新 D3 SVG 元素颜色 ── */
