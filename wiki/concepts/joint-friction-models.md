@@ -10,6 +10,7 @@ related:
   - ../entities/bam-better-actuator-models.md
   - ../entities/paper-bam-extended-friction-servo-actuators.md
   - ../methods/actuator-network.md
+  - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/courses/quadruped_control_simulation_rl_curriculum.md
 summary: "关节摩擦常用 Coulomb + Viscous + Stribeck 组合建模；四足 SysID 中摩擦参数对 Sim2Real 跟踪误差与跌倒率影响显著。"
@@ -87,6 +88,7 @@ $$
 - [Quadruped Control Curriculum](../entities/quadruped-control-curriculum.md)
 - [仿真物理保真度链路](../queries/simulation-physics-fidelity.md) — 摩擦模型属第 ③ 接触/摩擦层
 - [Physics Fidelity ↔ Sim2Real Gap](./physics-fidelity-sim2real-gap.md) — 摩擦简化如何转化为打滑/接触 gap
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 关节摩擦模型是③层执行器摩擦辨识的建模对象
 
 ## 推荐继续阅读
 

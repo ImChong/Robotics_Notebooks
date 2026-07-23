@@ -10,6 +10,7 @@ related:
   - ../methods/beyondmimic.md
   - ../methods/actuator-network.md
   - ./system-identification.md
+  - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/papers/robot_link_rotor_inertia_primary_refs.md
   - ../../sources/papers/motion_control_projects.md
@@ -95,6 +96,7 @@ $$
 - [Actuator Network (执行器网络)](../methods/actuator-network.md) — 更复杂的执行器建模方式（如神经网络模拟）。
 - [System Identification (系统辨识)](./system-identification.md) — Armature 是系统辨识中的关键物理参数。
 - [人形机器人并联关节解算](./humanoid-parallel-joint-kinematics.md) — 双驱动并联路径上的几何/力映射与惯量建模分工
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — armature（转子等效惯量）是③层执行器建模写回仿真的关键参数
 
 ## 参考来源
 

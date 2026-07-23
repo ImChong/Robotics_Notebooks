@@ -7,6 +7,7 @@ related:
   - ./trajectory-optimization.md
   - ../concepts/collision-distance-optimization.md
   - ../overview/navigation-slam-autonomy-stack.md
+  - ../comparisons/mobile-robot-navigation-planning-methods.md
 sources:
   - ../../sources/courses/numerical_optimization_foundations_robotics.md
 summary: "平滑导航路径生成：用无约束/软约束优化生成曲率连续、可跟踪的 2D/3D 导航路径，是移动机器人与无人机规划常见模块。"
@@ -62,6 +63,7 @@ $$\min \sum_k \big( w_j \|\Delta^3 p_k\|^2 + w_c \kappa(p_k)^2 + w_l \|p_k - p_k
 - [Navigation & SLAM Stack](../overview/navigation-slam-autonomy-stack.md)
 - [Trajectory Optimization](./trajectory-optimization.md)
 - [Numerical Optimization Curriculum](../entities/numerical-optimization-curriculum.md)
+- [导航规划方法对比：全局·局部·平滑](../comparisons/mobile-robot-navigation-planning-methods.md) — 本页是其路径平滑后处理层的选型落地
 
 ## 推荐继续阅读
 

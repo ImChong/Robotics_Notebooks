@@ -11,6 +11,7 @@ related:
   - ../concepts/perception-coordinate-postprocessing.md
   - ../tasks/humanoid-soccer.md
   - ../entities/humanoid-system-curriculum.md
+  - ../queries/soccer-visual-field-localization-pipeline.md
 sources:
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
 summary: "空间视觉定位—EKF 融合：运动模型预测 + 线匹配观测更新，输出平滑赛场位姿；课程 7.3，衔接检测/匹配与足球决策。"
@@ -129,6 +130,7 @@ flowchart LR
 - [场地线检测](./soccer-field-line-detection.md)
 - [Humanoid Soccer](../tasks/humanoid-soccer.md)
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md)
+- [足球视觉场线定位流水线](../queries/soccer-visual-field-localization-pipeline.md) — 本页是其第三段（EKF 融合），产出抗抖位姿
 
 ## 参考来源
 

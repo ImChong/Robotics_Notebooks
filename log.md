@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-23] structural | 全量 wiki lint 修复所有信息型预警（46→0）— 修复 lint 关键词子串误配（token 前缀匹配，'eda' 不再误配 impedance/bipedal/pedagogy/bytedance，去除 13 条假阳性并补回归测试）；为 22 个执行器/EDA/FOC 真实相关页补「执行器驱动链选型闭环」枢纽双向回链；soccer-field-simulation 回链物理保真度专题；paper-wan-move/paper-wan-video 补「对比/评测」三段式；lidar-slam-lio-vio-selection 接入 lidar-odometry-fusion；新建 3 个落地页 wiki/comparisons/mobile-robot-navigation-planning-methods.md、wiki/queries/soccer-visual-field-localization-pipeline.md、wiki/queries/humanoid-voice-interaction-pipeline.md 覆盖 a-star/dwa/smooth-navigation/soccer 三段/voice 共 7 个高频 methods；同步 graph(1805节点/15099边,0孤儿)/home-stats/exports/catalog；ci-preflight 12/12、lint 0/0
+
 ## [2026-07-23] ingest | sources/papers/generative_motion_rig_siggraph_talks_2026.md — Disney Generative Motion Rig（SIGGRAPH Talks 2026）Blender generative keyframing；wiki/entities/generative-motion-rig.md；交叉 wiki/entities/blender.md、wiki/entities/robot-motion-keyframe-editors.md、wiki/concepts/character-animation-vs-robotics.md、wiki/methods/motion-retargeting-gmr.md（GMR 缩写消歧）、wiki/methods/diffusion-motion-generation.md；sources/sites/disney-generative-motion-rig.md（插件未开源）
 
 ## [2026-07-23] ingest | sources/papers/rigmo_arxiv_2601_06378.md — RigMo（arXiv:2601.06378）无标注 mesh 联合学 Gaussian bones+SE(3)；wiki/entities/rigmo.md；交叉 wiki/methods/diffusion-motion-generation.md、wiki/entities/ardy.md、wiki/entities/blender.md、wiki/concepts/character-animation-vs-robotics.md；sources/sites/rigmo-page.md、sources/repos/rigmo.md（VAE 已开源 / Motion-DiT 未发布）

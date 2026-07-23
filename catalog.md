@@ -1563,6 +1563,7 @@
 - [国外 GPU 云平台选型（机器人学习与仿真）](wiki/comparisons/international-gpu-cloud-platforms.md) — 无法使用国内平台或数据已在海外时，研究者常在 **neocloud**（RunPod / Vast / Lambda）与 **超大规模云**（AWS / GCP）之间选型。本页并列六个主流入口；国内平 `📅unknown` `[comparison_page]`
 - [Kalman Filter vs. Optimization-based Estimation (状态估计选型)](wiki/comparisons/kalman-filter-vs-optimization-based-estimation.md) — 在机器人（特别是人形和四足机器人）中，实时估计 Base 的位置、速度和姿态是所有算法的基础。目前主要存在两大技术路线：以 **EKF** 为代表的递归滤波派，和以 **滑窗优化 (Sliding W `📅unknown` `[comparison_page]`
 - [LiDAR / LIO / VIO 开源选型对比](wiki/comparisons/lidar-slam-lio-vio-selection.md) — 要快且稳的 3D LIO** 选 **FAST-LIO**；要 **因子图 + GPS/回环** 选 **LIO-SAM**；要 **地面车辆起伏地形** 选 **LeGO-LOAM**；**视觉 `📅unknown` `[comparison_page]`
+- [移动机器人导航规划方法对比：全局搜索 · 局部避障 · 路径平滑](wiki/comparisons/mobile-robot-navigation-planning-methods.md) — 移动机器人的导航规划不是单一算法，而是一条 **分层流水线**：全局层用 A\* 在静态占据栅格上搜出起点到终点的最优 **折线**；局部层用 [DWA `📅unknown` `[comparison_page]`
 - [Model-Based vs Model-Free RL 对比](wiki/comparisons/model-based-vs-model-free.md) —  维度 | Model-Free RL | Model-Based RL  `📅unknown` `[comparison_page]`
 - [电机电磁与多物理场仿真软件选型](wiki/comparisons/motor-em-simulation-software.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[comparison_page]`
 - [MPC vs RL：控制策略选型对比](wiki/comparisons/mpc-vs-rl.md) — 背景**：MPC（模型预测控制）和 RL（强化学习）是当前机器人运动控制领域的两大主流范式。MPC 基于显式动力学模型在线求解最优控制，RL 离线学习隐式策略。两者在假设、计算模式和适用场景上都有 `📅unknown` `[comparison_page]`

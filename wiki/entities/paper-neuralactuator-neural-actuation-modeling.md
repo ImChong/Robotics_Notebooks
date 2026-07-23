@@ -14,6 +14,7 @@ related:
   - ../entities/paper-current-as-touch-proprioceptive-contact.md
   - ../entities/lerobot.md
   - ../entities/sage-sim2real-actuator-gap-estimator.md
+  - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/blogs/wechat_qbitai_rss2026_awards_2026-07-16.md
   - ../../sources/papers/neuralactuator_arxiv_2607_11734.md
@@ -137,6 +138,7 @@ flowchart TB
 - [Actuator Network](../methods/actuator-network.md)、[Implicit / Explicit 执行器建模](../concepts/implicit-explicit-actuator-modeling.md)
 - [BAM 扩展摩擦](./paper-bam-extended-friction-servo-actuators.md)、[SAGE](./sage-sim2real-actuator-gap-estimator.md)
 - [Current as Touch](./paper-current-as-touch-proprioceptive-contact.md)、[LeRobot](./lerobot.md)
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — NeuralActuator 是③层数据驱动执行器网络路线的方法来源
 
 ## 推荐继续阅读
 

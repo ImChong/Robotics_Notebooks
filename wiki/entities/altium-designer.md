@@ -9,6 +9,7 @@ related:
   - ./simplefoc.md
   - ./cad-skills.md
   - ../../roadmap/depth-torque-motor-design.md
+  - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/sites/altium-designer-primary-refs.md
 summary: "Altium Designer 是商业统一 EDA 环境：原理图捕获、规则驱动 PCB layout、制造 OutJob/发布与 ECAD-MCAD CoDesigner 协同；机器人自研驱动板/传感器板量产向流程的常用一手文档入口。"
@@ -81,6 +82,7 @@ flowchart LR
 - [SimpleFOC（Arduino-FOC 生态）](./simplefoc.md) — 开源低功率驱动板参考
 - [CAD Skills](./cad-skills.md) — 机械 CAD / URDF 与板级 ECAD 的分工
 - [开源人形机器人硬件](./open-source-humanoid-hardware.md) — 整机驱动板开源范例
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — Altium Designer 是①层商用 EDA 驱动板设计工具
 
 ## 推荐继续阅读
 

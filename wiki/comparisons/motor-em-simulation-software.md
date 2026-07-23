@@ -10,6 +10,7 @@ related:
   - ../overview/humanoid-actuator-102-thermal-and-control.md
   - ../overview/humanoid-hardware-101-integrated-actuators.md
   - ../overview/humanoid-actuator-102-technology-map.md
+  - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/personal/motor_curves_and_em_simulation_faq.md
 summary: "电机设计三类仿真（电磁 FEA、流体散热 CFD、热分析）与 Motor-CAD、Maxwell、JMAG、Flux、COMSOL 的选型对照；机器人关节厂常见 Maxwell+Motor-CAD 组合。"
@@ -119,6 +120,7 @@ flowchart LR
 - [电机转矩-电流曲线（TI 曲线）](../concepts/motor-torque-current-curve.md)
 - [Humanoid 执行器 102 技术地图](../overview/humanoid-actuator-102-technology-map.md)
 - [Humanoid Hardware 101 · 集成执行器](../overview/humanoid-hardware-101-integrated-actuators.md)
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 本页电磁仿真选型服务于①层驱动板/电机设计的标称参数验证，是驱动链的仿真校核入口
 
 ## 参考来源
 

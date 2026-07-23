@@ -31,6 +31,7 @@ related:
   - ../overview/notable-commercial-robot-platforms.md
   - ../overview/robot-open-source-wechat-issue01-curator.md
   - ../overview/robot-open-source-wechat-issue02-curator.md
+  - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/papers/humanoid_hardware.md
   - ../../sources/repos/humannet.md
@@ -168,6 +169,7 @@ flowchart TD
 - [HumanNet](./humannet.md) — 互联网级人中心视频语料与具身预训练管线参照
 - [Project Instinct](./project-instinct.md) — 清华 IIIS / 期智人形「本能级全身控制」公开研究站群（接触丰富 Shadowing、深度跑酷、野外徒步）
 - [ergoCub Shared Embodied Intelligence](./paper-ergocub-shared-embodied-intelligence.md) — IIT×INAIL 人因导向硬件–控制联合优化人形（*Nat Mach Intell* 2026）
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 人形本体的执行器子系统即本驱动链选型闭环的物理载体
 
 ## 参考来源
 - [wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md](../../sources/blogs/wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md) — Optimus 腿部 PRS 路线的第三方解读（与平台表交叉引用）

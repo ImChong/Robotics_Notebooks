@@ -18,6 +18,7 @@ related:
   - ./sage-sim2real-actuator-gap-estimator.md
   - ./paper-bam-extended-friction-servo-actuators.md
   - ./robotic-world-model-eth-rsl.md
+  - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/papers/pace_sim2real_arxiv_2509_06342.md
   - ../../sources/repos/pace-sim2real.md
@@ -174,3 +175,4 @@ flowchart TB
 - [ANYmal 四足机器人](./anymal.md)
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
 - [Sim2Real Gap 缩减实战指南](../queries/sim2real-gap-reduction.md)
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — PACE 面向③层腿式执行器 sim2real gap 的对齐
