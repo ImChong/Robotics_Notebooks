@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-24] structural | schema/page-types.md + ingest-workflow + AGENTS — 规定 paper-* 必须含「结论」；lint 信息型巡检；scaffold --paper；示例补齐 wiki/entities/paper-yahmp.md、paper-deed.md、paper-extreme-rgmt.md
+
+- **规范：** [`schema/page-types.md`](schema/page-types.md)、[`schema/ingest-workflow.md`](schema/ingest-workflow.md)、[`AGENTS.md`](AGENTS.md)
+- **工具：** `lint_wiki.py` 新增 `paper_missing_conclusions`（信息型，报告截断）；`scaffold_wiki_page.py --paper`
+- **示例页：** [`wiki/entities/paper-yahmp.md`](wiki/entities/paper-yahmp.md)、[`wiki/entities/paper-deed.md`](wiki/entities/paper-deed.md)、[`wiki/entities/paper-extreme-rgmt.md`](wiki/entities/paper-extreme-rgmt.md)
+
 ## [2026-07-24] structural | wiki/entities/paper-yahmp.md — 补充「结论」小节：GMT 设计选择何为真影响跟踪 / 力矩 / 交互力
 
 - **页面：** [`wiki/entities/paper-yahmp.md`](wiki/entities/paper-yahmp.md)（详情页 id：`entity-paper-yahmp`）

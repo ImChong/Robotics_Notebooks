@@ -152,6 +152,15 @@ flowchart TB
 - **误区：** 把 Stage II 当成「再训一个 specialist」；正确读法是 **同一 \(\pi_{\mathrm{aug}}\)** 上做角色分裂的采样与损失，而不是两套部署策略。
 - **命名：** 用户侧常称「上海人形机器人创新中心」；论文署名与邮箱域对应 **人形机器人（上海）有限公司 / OpenLoong（青龙）**，与北京人形机器人创新中心（X-Humanoid）不是同一机构。
 
+## 结论
+
+**先稳住 broad generalist，再按完成率分层，用 PACE/STAR 把高动态叠进同一策略，而不是另训会冲掉日常能力的 specialist。**
+
+1. **两阶段必要** — Stage I 全库 generalist；Stage II 才对 \(\mathcal{D}_c\) 难段做 acquisition，并用 \(\mathcal{D}_m\) consolidation 防遗忘。
+2. **STAR 对脏在线参考收益大** — 惯性 MoCap 高动态成功率可从约 45% 提到 86% 量级（论文表）。
+3. **与 OmniXtreme 分工** — 高质量离线库上 specialist 仍可能更贴；参考质量变化 + 在线输入时 Extreme-RGMT Full 更稳。
+4. **代码未开放** — 截至复核日项目页无训练/权重入口，选型先读方法组织方式。
+
 ## 关联页面
 
 - [RGMT（前作）](./paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md) — 动力学条件参考聚合与恢复课程
