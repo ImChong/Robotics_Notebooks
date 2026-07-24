@@ -717,7 +717,6 @@ body.sponsor-dialog-open {
 .updates-day-meta { font-size: .78rem; font-weight: 400; color: var(--text-muted); margin-left: .55rem; }
 .updates-day-list { list-style: none; margin: 8px 0 0; padding: 0; --updates-badge-col-width: 3.25rem; }
 /* 超量日：预览 10 条；交互含再展开/展开全部/收起，视觉沿用 PR#1245 箭头+文案（非 btn-secondary） */
-.updates-item-folded { display: none; }
 .updates-day-actions {
   display: flex;
   flex-wrap: wrap;
@@ -775,6 +774,8 @@ body.sponsor-dialog-open {
   line-height: 1.6;
   padding: 2px 0;
 }
+/* 必须写在 .updates-item 之后且提高特异性：否则同权 display:grid 会盖住 display:none，单日收起失效 */
+.updates-item.updates-item-folded { display: none; }
 .updates-badge {
   font-size: .66rem;
   line-height: 1.5;
