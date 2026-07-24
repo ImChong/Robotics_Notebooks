@@ -84,6 +84,7 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     ),
     "wiki/overview/humanoid-hardware-101-technology-map.md": "人形硬件技术地图（Humanoid Hardware 101）",
     "wiki/overview/humanoid-actuator-102-technology-map.md": "人形执行器技术地图（Humanoid Actuator 102）",
+    "wiki/overview/topic-systems-engineering.md": "机器人系统工程（Robotics Systems Engineering）",
     "wiki/overview/robot-learning-overview.md": "机器人学习（Robot Learning）",
     "wiki/methods/policy-optimization.md": "策略优化（Policy Optimization）",
     "wiki/methods/amp-reward.md": "对抗运动先验（Adversarial Motion Prior, AMP）",
