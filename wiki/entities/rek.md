@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, teleoperation, vr, entertainment-robotics, sports, unitree]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-24
 related:
   - ./unitree-g1.md
   - ./unitree.md

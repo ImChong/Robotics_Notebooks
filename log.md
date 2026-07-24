@@ -1,5 +1,21 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-24] ingest | sources/blogs/wechat_urkl_faq_01.md + sources/sites/urkl-org.md — 众擎 URKL 官方 FAQ 与 urkl.org 独立导读；更新 wiki/entities/urkl.md、wiki/tasks/teleoperation.md、sources/sites/engineai-urkl.md
+
+- **资料 A：** [「众」所周知丨众擎URKL常见疑问解答（01篇）](https://mp.weixin.qq.com/s/mZiWICUnOJZ5bBObVcvUcw)（URKL / 众擎官方公众号，2026-07-24）
+- **抓取：** Agent Reach v1.5.0 + `wechat-article-for-ai`；raw → [`sources/raw/wechat_urkl_faq_01_2026-07-24/`](sources/raw/wechat_urkl_faq_01_2026-07-24/)
+- **资料 B：** [urkl.org](https://urkl.org/) — Independent fan guide（事实复核标注至 2026-07-23）
+- **归档：**
+  - [`sources/blogs/wechat_urkl_faq_01.md`](sources/blogs/wechat_urkl_faq_01.md)
+  - [`sources/sites/urkl-org.md`](sources/sites/urkl-org.md)
+- **开源核查：** 官方 FAQ **宣称将开源本届赛事相关代码**（无仓库 URL）→ 宣称将开源 / 待发布；urkl.org 为第三方导读（无代码）
+- **升格策略：** **不新建**实体页；补充已有 [`wiki/entities/urkl.md`](wiki/entities/urkl.md)
+- **交叉更新：**
+  - [`wiki/entities/urkl.md`](wiki/entities/urkl.md)
+  - [`wiki/tasks/teleoperation.md`](wiki/tasks/teleoperation.md)
+  - [`roadmap/depth-humanoid-boxing.md`](roadmap/depth-humanoid-boxing.md)
+  - [`sources/sites/engineai-urkl.md`](sources/sites/engineai-urkl.md)
+
 ## [2026-07-24] ingest | sources/blogs/generalist_thousand_hands.md — GEN-1 千手跨末端泛化；升格 wiki/entities/generalist-gen1-thousand-hands.md；更新 generalist-ai-robotics / topic-cross-embodiment / foundation-policy / embodied-scaling-laws / manipulation / cross-embodiment-transfer-strategy
 - **资料：** [Towards Machines with a Thousand Hands](https://generalistai.com/blog/towards-machines-with-a-thousand-hands)（Generalist AI，2026-07）
 - **归档：** [`sources/blogs/generalist_thousand_hands.md`](sources/blogs/generalist_thousand_hands.md)
