@@ -1,5 +1,14 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-24] ingest | sources/papers/kairos_arxiv_2606_16533.md — Kairos v3 regret-aware 叙事与开源仓更名；wiki/entities/paper-kairos-native-world-model-stack.md；sources/repos/kairos.md、sources/sites/kairos-acerobotics.md；交叉 wiki/methods/generative-world-models.md、wiki/concepts/world-action-models.md
+
+- **开源状态：** **已开源** — 代码 [kairos-agi/kairos](https://github.com/kairos-agi/kairos)（旧 `kairos-sensenova` 301）；权重 [huggingface.co/kairos-agi](https://huggingface.co/kairos-agi) / Kairos3.1；平台 [kairos.acerobotics.com](https://kairos.acerobotics.com)
+- **修订 papers：** [`sources/papers/kairos_arxiv_2606_16533.md`](sources/papers/kairos_arxiv_2606_16533.md)（v3 标题 *Regret-Aware Native World-Action Model Stack*；control-sufficient / \(\operatorname{Reg}_H\)）
+- **新建 repos/sites：** [`sources/repos/kairos.md`](sources/repos/kairos.md)、[`sources/sites/kairos-acerobotics.md`](sources/sites/kairos-acerobotics.md)；历史索引 [`kairos_sensenova.md`](sources/repos/kairos_sensenova.md) 改为重定向说明
+- **改写 wiki：** [`wiki/entities/paper-kairos-native-world-model-stack.md`](wiki/entities/paper-kairos-native-world-model-stack.md)（补「结论」「源码运行时序图」）
+- **交叉更新：** [`generative-world-models`](wiki/methods/generative-world-models.md)、[`world-action-models`](wiki/concepts/world-action-models.md)；机构注册 `ace-robotics`
+- **机构：** [`schema/institutions.json`](schema/institutions.json) 新增 `ace-robotics` → 大晓机器人（Ace Robotics）
+
 ## [2026-07-24] ingest | sources/papers/faro_arxiv_2607_18362.md — FARO（arXiv:2607.18362）嵌套可行性剪枝加速人形 loco-manipulation 接触搜索；wiki/entities/paper-faro-feasibility-aware-robot-motion-optimization.md；交叉 wiki/entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md、wiki/tasks/loco-manipulation.md、wiki/methods/trajectory-optimization.md；确认未开源
 
 - **开源状态：** **确认未开源** — 无项目页；arXiv/HTML 未列 GitHub；仅补充视频 <https://youtu.be/R6qCHoCormQ>

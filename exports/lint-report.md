@@ -100,7 +100,7 @@
 ### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（807 个）
+### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（806 个）
 - wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md
 - wiki/entities/paper-abot-m05-mobile-manipulation-wam.md
 - wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md
@@ -116,7 +116,7 @@
 - wiki/entities/paper-amp-survey-12-haml.md
 - wiki/entities/paper-amp-survey-13-humanoid_goalkeeper.md
 - wiki/entities/paper-amp-survey-14-husky.md
-- … 另有 792 个（历史 backlog；新建 / 大幅改写的 paper-* 必须含 `## 结论`）
+- … 另有 791 个（历史 backlog；新建 / 大幅改写的 paper-* 必须含 `## 结论`）
 
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无

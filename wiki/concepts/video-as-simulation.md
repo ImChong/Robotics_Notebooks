@@ -2,7 +2,7 @@
 type: concept
 tags: [simulation, video-generation, deepmind, computer-vision, robotics]
 status: complete
-updated: 2026-07-23
+updated: 2026-07-24
 related:
   - ../methods/generative-world-models.md
   - ../entities/ewmbench.md
