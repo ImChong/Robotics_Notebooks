@@ -105,6 +105,7 @@ python3 scripts/ingest_paper.py my_topic --title "..." --desc "..."
 - **`机构标签`** — 论文/实体页须在 frontmatter `tags` 中写入 `schema/institutions.json` 已注册的机构 **alias**（如 `sjtu`、`nvidia`）；正文 **核心信息** 表或 `| 机构 |` 行写明中文全称。多机构联合论文写全；注册表无对应条目时可先略过，或追加注册表后再写 tag。可用 `python3 scripts/sync_institution_tags.py` 从 `| 机构 |` 表与 sources 机构行同步。
   - **新增机构注册时**：`label` 必须为 **`中文（English）`** 全角括号格式（如 `弗莱鑫机器人（Flexion Robotics）`），见 [naming.md § 研究机构命名](naming.md)。`make ci-preflight` **不跑** pytest；改 `institutions.json` 后须额外 `make test`，否则 GitHub Actions **Tests** job 会因 `test_institution_naming` 失败。
 - **`英文缩写速查`** — 紧跟页面「一句话定义」之后，固定标题 `## 英文缩写速查`，三列表格（缩写 / 英文全称 / 简要说明）；至少 3 行，覆盖本页核心缩写。格式与编写要求见 [page-types.md](page-types.md)「新增页面最低质量标准」。
+- **`## 结论`（`wiki/entities/paper-*.md` 必做）** — 升格论文实体页时，在评测相关小节之后增加 **结论**：1 句总判 + 3–7 条可操作要点（何为真影响指标、何为次要代价、部署读法）。格式见 [page-types.md](page-types.md)；示例见 [YAHMP](../wiki/entities/paper-yahmp.md)。**后续 ingest 的论文页一律不得省略**；历史页在大幅改写时补齐。
 - `参考来源` — 必须标注本次 ingest 的原始资料（至少 1 条），格式：
   ```markdown
   ## 参考来源

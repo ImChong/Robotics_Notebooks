@@ -9,6 +9,7 @@
     python3 scripts/scaffold_wiki_page.py concept "视觉伺服" --slug visual-servoing-intro
     python3 scripts/scaffold_wiki_page.py query "机器人感知选型" --slug perception-pick --dry-run
     python3 scripts/scaffold_wiki_page.py entity "AMASS" --slug amass --dataset --dry-run
+    python3 scripts/scaffold_wiki_page.py entity "YAHMP" --slug paper-yahmp --paper --dry-run
 
 `--dataset`（仅 entity 类型）额外附「规模 / 模态 / 许可证 / 适配形态 / 重定向就绪度」
 速查块并写入 `dataset` tag，使新建数据集页直接通过 lint 的数据集元数据巡检。
@@ -171,9 +172,63 @@ def _body_query(title: str) -> str:
     )
 
 
-def build_skeleton(page_type: str, title: str, dataset: bool = False) -> str:
+def _body_paper(title: str) -> str:
+    """论文实体骨架：含评测 / 结论 / 对比 / 源码时序图占位，对齐 page-types 附加要求。"""
+    return (
+        f"# {title}\n\n"
+        "## 一句话定义\n\n"
+        f"**{title}**：TODO 一句话核心定义（方法主张与平台）。\n\n"
+        f"{_ABBREV_BLOCK}\n"
+        "## 为什么重要\n\n"
+        "- **TODO 要点一：** 待补全。\n"
+        "- **TODO 要点二：** 待补全。\n\n"
+        "## 核心信息\n\n"
+        "| 项 | 内容 |\n"
+        "|----|------|\n"
+        "| **机构** | TODO |\n"
+        "| **平台** | TODO |\n"
+        "| **开源** | TODO：已开源 / 部分 / 未开源 |\n\n"
+        "## 核心原理\n\n"
+        "### 方法栈\n\n"
+        "TODO 模块表或分节。\n\n"
+        "### 流程总览\n\n"
+        "TODO：可用 mermaid flowchart。\n\n"
+        "## 源码运行时序图\n\n"
+        "TODO：已开源则画 sequenceDiagram；否则写 **不适用**（原因）。\n\n"
+        "## 工程实践\n\n"
+        "TODO 复现入口、关键超参、部署注意。\n\n"
+        "## 实验与评测\n\n"
+        "- TODO 主指标与设定。\n\n"
+        "## 结论\n\n"
+        "**TODO 一句话总判。**\n\n"
+        "1. **要点一** — TODO。\n"
+        "2. **要点二** — TODO。\n"
+        "3. **要点三** — TODO。\n\n"
+        "## 与其他工作对比\n\n"
+        "| 对照 | 差异读法 |\n"
+        "|------|----------|\n"
+        "| TODO | TODO |\n\n"
+        "## 局限与风险\n\n"
+        "- **适用边界：** TODO。\n"
+        "- **工程风险：** TODO。\n\n"
+        f"{_TAIL_BLOCK}"
+    )
+
+
+def build_skeleton(
+    page_type: str, title: str, dataset: bool = False, paper: bool = False
+) -> str:
     if dataset:
         return _frontmatter(page_type, title, dataset=True) + "\n" + _body_dataset(title)
+    if paper:
+        fm = _frontmatter(page_type, title)
+        # 论文页默认补 arxiv 占位，便于过 paper 元数据巡检
+        fm = fm.replace(
+            "status: draft\n",
+            'status: draft\narxiv: "TODO"\n',
+            1,
+        )
+        return fm + "\n" + _body_paper(title)
     body = _body_query(title) if page_type == "query" else _body_standard(title)
     return _frontmatter(page_type, title) + "\n" + body
 
@@ -216,6 +271,16 @@ def self_check(content: str, page_type: str) -> list[str]:
         ):
             if needle not in content:
                 problems.append(f"query 页缺 {label}")
+
+    if "arxiv:" in content or re.search(r"^##\s+结论\b", content, re.M):
+        # 论文实体骨架 / 含结论的实体：额外自检
+        if not has_section(content, ["结论"]):
+            problems.append("论文实体缺「结论」区块")
+        if not has_section(content, ["评测", "实验"]):
+            problems.append("论文实体缺「实验与评测」类区块")
+        if not has_section(content, ["与其他工作", "对比", "比较"]):
+            problems.append("论文实体缺「与其他工作对比」类区块")
+
     return problems
 
 
@@ -229,6 +294,11 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="数据集实体骨架：附「规模/模态/许可证/适配形态/重定向就绪度」速查块（仅 entity 类型）",
     )
+    parser.add_argument(
+        "--paper",
+        action="store_true",
+        help="论文实体骨架：含实验与评测 / 结论 / 对比 / 源码时序图占位（仅 entity；建议 --slug paper-...）",
+    )
     parser.add_argument("--dry-run", action="store_true", help="只打印骨架，不落盘")
     parser.add_argument("--force", action="store_true", help="允许覆盖已存在文件")
     args = parser.parse_args(argv)
@@ -236,13 +306,21 @@ def main(argv: list[str] | None = None) -> int:
     if args.dataset and args.type != "entity":
         print("✗ --dataset 仅适用于 entity 类型", file=sys.stderr)
         return 2
+    if args.paper and args.type != "entity":
+        print("✗ --paper 仅适用于 entity 类型", file=sys.stderr)
+        return 2
+    if args.dataset and args.paper:
+        print("✗ --dataset 与 --paper 互斥", file=sys.stderr)
+        return 2
 
     slug = slugify(args.title, args.slug)
     if not slug:
         print("✗ 无法从标题推断 slug（纯中文？请用 --slug 指定）", file=sys.stderr)
         return 2
 
-    content = build_skeleton(args.type, args.title, dataset=args.dataset)
+    content = build_skeleton(
+        args.type, args.title, dataset=args.dataset, paper=args.paper
+    )
 
     problems = self_check(content, args.type)
     wc = word_count(content)

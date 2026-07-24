@@ -17,9 +17,10 @@ lint_wiki.py — 自动化 wiki 健康检查脚本
  12. concepts/methods/tasks 缺少 summary/description 字段（V10 新增）
  13. formalizations/ 公式变量在正文是否有物理含义解释（V21 新增）
  14. 高频引用的 methods/ 缺少 queries/ 操作指南或 comparisons/ 对比页（V22 新增，信息型）
- 15. wiki/entities/paper-* 元数据基线（V23 新增，信息型）：
+ 15. wiki/entities/paper-* 元数据基线（V23/V31 新增，信息型）：
      - frontmatter 至少含 arxiv/venue/code 三类来源键之一；
-     - 正文至少含「方法栈 / 评测 / 与其他工作对比」三段式。
+     - 正文至少含「方法栈 / 评测 / 与其他工作对比」三段式；
+     - 正文须含 ``## 结论``（后续 ingest 必做；历史 backlog 信息型）。
  16. 陈旧声明巡检（V24 新增，信息型）：正文含「SOTA / state-of-the-art /
      当前最强 / 最新」等绝对化措辞，但 frontmatter updated 早于库内共享 tag
      的更晚页面时，提示复核断言时效性。
@@ -138,6 +139,7 @@ INFO_ONLY_KEYS: set[str] = {
     "methods_without_practitioner_query",
     "paper_missing_source_meta",
     "paper_missing_three_sections",
+    "paper_missing_conclusions",
     "dataset_missing_metadata",
     "stale_claims",
     "physics_concept_crosslink",
@@ -300,6 +302,7 @@ def _empty_results() -> dict[str, Any]:
         "paper_missing_source_meta": [],
         "duplicate_arxiv": [],
         "paper_missing_three_sections": [],
+        "paper_missing_conclusions": [],
         "dataset_missing_metadata": [],
         "stale_claims": [],
         "physics_concept_crosslink": [],
@@ -1036,17 +1039,19 @@ def _check_duplicate_arxiv(pages: list[Path], results: dict[str, Any]) -> None:
 
 
 def _check_paper_entity_metadata(pages: list[Path], results: dict[str, Any]) -> None:
-    """V23: paper-* 实体页元数据基线检查（信息型，不阻塞 CI）。
+    """V23/V31: paper-* 实体页元数据基线检查（信息型，不阻塞 CI）。
 
     针对 ``wiki/entities/paper-*.md``：
       - frontmatter 至少包含 ``arxiv`` / ``venue`` / ``code`` 三类来源键之一；
-      - 正文至少存在「方法栈 / 评测 / 与其他工作对比」三段式。
+      - 正文至少存在「方法栈 / 评测 / 与其他工作对比」三段式；
+      - 正文须存在 ``## 结论``（政策：后续 ingest / 大幅改写必做）。
 
     用于 ingest 工作流自检入口，缺失项作为基线快照写入 lint 报告。
     """
     method_patterns = ["方法栈", "流程总览", "流程", "核心机制", "核心信息", "pipeline", "方法"]
     eval_patterns = ["评测", "实验", "量化", "结果", "benchmark"]
     compare_patterns = ["与其他工作", "与其他页面", "对比", "比较"]
+    conclusion_patterns = ["结论"]
     source_keys = ("arxiv", "venue", "code")
 
     for page in pages:
@@ -1075,6 +1080,9 @@ def _check_paper_entity_metadata(pages: list[Path], results: dict[str, Any]) -> 
             results["paper_missing_three_sections"].append(
                 f"{rel}（缺 {' / '.join(missing_sections)}）"
             )
+
+        if not has_section(content, conclusion_patterns):
+            results["paper_missing_conclusions"].append(str(rel))
 
 
 def _check_dataset_entity_metadata(pages: list[Path], results: dict[str, Any]) -> None:
@@ -1545,8 +1553,19 @@ def _failing_total(results: dict[str, Any]) -> int:
 
 
 def _info_total(results: dict[str, Any]) -> int:
-    """信息型预警总数（不阻塞 CI）。"""
-    return sum(len(results.get(k, [])) for k in INFO_ONLY_KEYS)
+    """信息型预警总数（不阻塞 CI）。
+
+    ``paper_missing_conclusions`` 历史 backlog 可能数百条，按 **1 个桶** 计入总数，
+    避免每次 lint 摘要被刷成「另含 800+ 条」；明细仍在报告中截断列出。
+    """
+    total = 0
+    for k in INFO_ONLY_KEYS:
+        items = results.get(k, [])
+        if k == "paper_missing_conclusions":
+            total += 1 if items else 0
+        else:
+            total += len(items)
+    return total
 
 
 def format_report(results: dict[str, Any]) -> str:
@@ -1624,6 +1643,11 @@ def format_report(results: dict[str, Any]) -> str:
             "💡",
         ),
         (
+            "paper_missing_conclusions",
+            "paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）",
+            "💡",
+        ),
+        (
             "dataset_missing_metadata",
             "dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）",
             "💡",
@@ -1664,8 +1688,19 @@ def format_report(results: dict[str, Any]) -> str:
         items = results[key]
         lines.append(f"### {icon} {label}（{len(items)} 个）")
         if items:
-            for item in items:
+            # 历史 paper-* 缺「结论」可能数百条：报告只展示前 15 条，避免刷屏
+            display = items
+            extra = 0
+            if key == "paper_missing_conclusions" and len(items) > 15:
+                display = items[:15]
+                extra = len(items) - 15
+            for item in display:
                 lines.append(f"- {item}")
+            if extra:
+                lines.append(
+                    f"- … 另有 {extra} 个（历史 backlog；"
+                    "新建 / 大幅改写的 paper-* 必须含 `## 结论`）"
+                )
         else:
             lines.append("- 无")
         lines.append("")

@@ -119,6 +119,16 @@ flowchart TB
 - **数据：** teleop 81 条 ≈51.5 min；两轮 RECAP 另加 116 条自主 rollout；合计操作 ≈108.4 min。
 - **主结论：** Data-Efficient 承担主要跃迁（0%→32%）；RECAP-1 再至 42%；RECAP-2 因自举漂移回落到 22%。
 
+## 结论
+
+**lab→store 鸿沟首先是系统集成与数据设计问题，不是再换 VLA 架构；经验驱动有用但非单调，必须守住 teleop 与 rollout 的混合比。**
+
+1. **先做 Data-Efficient 配方** — 频率对齐、腕相机、策展、动作降维、视觉高亮、推理平滑，把同 ckpt 的 naive SFT 从 **0%→32%**。
+2. **RECAP 一轮可再涨点** — 文本 `Advantage` 前缀适配 GR00T 解耦结构，**42%**；每轮宜从原公开 ckpt 重启。
+3. **第二轮易自举漂移** — 自生成数据主导时掉到 **22%**；高变异人形任务上要固定 demonstration:rollout 混合或周期性回灌 teleop。
+4. **Reset 会被 advantage 抑制** — 补货后「回到初始」常需外部复位，或改写回报/子任务定义。
+5. **代码未开放** — 可读配方、不可逐行复现；对照公开 Isaac-GR00T / 其他 RECAP 飞轮实现。
+
 ## 与其他工作对比
 
 | 对照 | 差异读法 |

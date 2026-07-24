@@ -2,7 +2,7 @@
 
 ## [2026-07-24] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **0** 条信息型预警）：
+共发现 **0** 个问题（另含 **807** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -99,6 +99,24 @@
 
 ### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
 - 无
+
+### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（807 个）
+- wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md
+- wiki/entities/paper-abot-m05-mobile-manipulation-wam.md
+- wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md
+- wiki/entities/paper-adaptive-humanoid-control.md
+- wiki/entities/paper-adp.md
+- wiki/entities/paper-aerial-aquatic-remora-hitchhiking-robot.md
+- wiki/entities/paper-agentic-real2sim.md
+- wiki/entities/paper-ame-attention-based-map-encoding.md
+- wiki/entities/paper-amp-survey-01-amp.md
+- wiki/entities/paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md
+- wiki/entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md
+- wiki/entities/paper-amp-survey-08-more.md
+- wiki/entities/paper-amp-survey-12-haml.md
+- wiki/entities/paper-amp-survey-13-humanoid_goalkeeper.md
+- wiki/entities/paper-amp-survey-14-husky.md
+- … 另有 792 个（历史 backlog；新建 / 大幅改写的 paper-* 必须含 `## 结论`）
 
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无
