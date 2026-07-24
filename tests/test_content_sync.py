@@ -46,7 +46,7 @@ class DetailContentSyncTests(unittest.TestCase):
             "let quoteHtml = '<blockquote>';",
             "function splitListLine(line)",
             "function renderListSlice(start, end, indent)",
-            'tag === \'ul\' && hasTaskAtIndent(groupStart, j, indent) ? \' class="contains-task-list"\' : \'\'',
+            "tag === 'ul' && hasTaskAtIndent(groupStart, j, indent) ? ' class=\"contains-task-list\"' : ''",
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
