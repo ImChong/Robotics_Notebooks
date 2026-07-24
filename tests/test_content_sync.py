@@ -44,7 +44,9 @@ class DetailContentSyncTests(unittest.TestCase):
             "function escapeMermaidForInnerHtml(text)",
             "return '<div class=\"mermaid\">' + escapeMermaidForInnerHtml(String(code || '').trim()) + '</div>';",
             "let quoteHtml = '<blockquote>';",
-            "if (openTag === 'ul') return hasTask ? '<ul class=\"contains-task-list\">' : '<ul>';",
+            "function splitListLine(line)",
+            "function renderListSlice(start, end, indent)",
+            'tag === \'ul\' && hasTaskAtIndent(groupStart, j, indent) ? \' class="contains-task-list"\' : \'\'',
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
@@ -766,6 +768,81 @@ console.log('ok');
         self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
         self.assertIn("ok", result.stdout)
 
+    def test_render_markdown_content_preserves_nested_lists(self):
+        """Roadmap「其它纵深路径 / 关联知识页」等缩进子项不得被拍平为同级 <li>。"""
+        node = r"""
+const fs = require('fs');
+const content = fs.readFileSync(process.argv[2], 'utf8');
+function escapeHtml(value) {
+  return String(value == null ? '' : value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+function stripYamlFrontmatter(markdown) {
+  return String(markdown || '').replace(/\r\n/g, '\n').trim();
+}
+function renderInlineMarkdown(text) {
+  return String(text || '').replace(/\[([^\]]+)\]\(([^)]+)\)/g, function (_, label, href) {
+    return '<a href="' + escapeHtml(href) + '">' + escapeHtml(label) + '</a>';
+  });
+}
+function renderMathBlocks(text) { return text; }
+function collectMarkdownHeadings() { return []; }
+function slugifyHeading(text) {
+  return String(text || '').toLowerCase().replace(/\s+/g, '-') || 'section';
+}
+function normalizeCodeLang(lang) { return lang || ''; }
+function renderCodeBlock(code) { return '<pre><code>' + escapeHtml(code) + '</code></pre>'; }
+function convertMermaidFencesInHtmlFragment(html) { return html; }
+function applyMathBlocksInHtmlFragment(html) { return html; }
+const start = content.indexOf('const RE_HR = ');
+const end = content.indexOf('function renderChipList', start);
+if (start < 0 || end < 0) throw new Error('cannot locate renderMarkdownContent block');
+eval(content.slice(start, end));
+const sample = [
+  '## 和其他页面的关系',
+  '',
+  '- 完整成长路线参考：[主路线](motion-control.md)',
+  '- 其它纵深路径：',
+  '  - [遥操作](depth-teleoperation.md)',
+  '  - [人形足球](depth-humanoid-soccer.md)',
+  '- 关联知识页：',
+  '  - [人形多机协调](../wiki/concepts/humanoid-multi-robot-coordination.md)',
+  '  - [MARL](../wiki/methods/marl.md)',
+].join('\n');
+const html = renderMarkdownContent(sample, [], {});
+if (!html.includes('<ul><li>完整成长路线参考')) {
+  throw new Error('missing top-level list: ' + html);
+}
+if (!html.includes('其它纵深路径：<ul><li><a href="depth-teleoperation.md">遥操作</a></li>')) {
+  throw new Error('其它纵深路径 children not nested: ' + html);
+}
+if (!html.includes('关联知识页：<ul><li><a href="../wiki/concepts/humanoid-multi-robot-coordination.md">人形多机协调</a></li>')) {
+  throw new Error('关联知识页 children not nested: ' + html);
+}
+const flatSibling = html.includes('</li><li>关联知识页：</li><li><a href="../wiki/concepts');
+if (flatSibling) throw new Error('关联知识页 was flattened to sibling bullets');
+const topLiCount = (html.match(/<ul><li>/g) || []).length;
+if (topLiCount < 1) throw new Error('expected outer ul');
+console.log('ok');
+"""
+        import subprocess
+        import tempfile
+
+        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tmp:
+            tmp.write(node)
+            tmp_path = tmp.name
+        result = subprocess.run(
+            ["node", tmp_path, str(MAIN_JS)],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
+        self.assertIn("ok", result.stdout)
+
     def test_style_css_contains_heading_anchor_active_toc_and_hash_target_styles(self):
         style_content = (ROOT / "docs" / "style.css").read_text(encoding="utf-8")
         expected_snippets = [
@@ -781,6 +858,7 @@ console.log('ok');
             "padding: 2px 0",
             ".detail-hash-target",
             ".detail-markdown-body hr",
+            ".detail-markdown-body ul ul",
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, style_content)

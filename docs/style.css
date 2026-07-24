@@ -1840,6 +1840,13 @@ button.home-wiki-heatmap-cell.is-active {
 .detail-markdown-body ol {
   padding-left: 1.4em;
 }
+.detail-markdown-body ul ul,
+.detail-markdown-body ol ol,
+.detail-markdown-body ul ol,
+.detail-markdown-body ol ul {
+  margin-top: 0.35rem;
+  margin-bottom: 0.1rem;
+}
 .detail-markdown-body li + li {
   margin-top: .35em;
 }
