@@ -1,7 +1,7 @@
 ---
 type: concept
 summary: "Domain Randomization 通过在仿真中随机化参数扩大训练分布，是 sim2real 的主流鲁棒化手段。"
-updated: 2026-07-22
+updated: 2026-07-24
 ---
 
 # Domain Randomization
@@ -128,6 +128,7 @@ Sim2Real 的核心问题是 **domain gap**——仿真和现实的差异。
 - **vs System Identification**：SysID 追求精确建模，DR 追求鲁棒泛化。可以互补。
 - **vs Domain Adaptation**：DA 是在特征空间对齐分布，DR 是在数据分布层面增加多样性
 - **和 privileged information 结合**：用更丰富的状态信息训练，推理时只用可观测信息
+- **轮足高动态案例：** [AWARE](../entities/paper-aware-wheeled-legged-reflexive-evasion.md) 用质量/惯量/摩擦/执行器增益/外扰等 TABLE II 式 DR 支撑 M20 真机反射规避；真机 ASR 仍显著低于仿真，说明极限机动下 DR 必要但常不够。
 
 ## 参考来源
 
@@ -136,6 +137,7 @@ Sim2Real 的核心问题是 **domain gap**——仿真和现实的差异。
 - Hwangbo et al., *Learning Agile and Dynamic Motor Skills for Legged Robots* (2019) — 执行器网络与 actuator DR
 - **ingest 档案：** [sources/papers/simulation_tools.md](../../sources/papers/simulation_tools.md) — Genesis/Isaac Gym 仿真平台（DR 的执行环境）
 - **ingest 档案：** [sources/papers/barkour_arxiv_2305_14654.md](../../sources/papers/barkour_arxiv_2305_14654.md) — Barkour 在 Rudin 默认 DR 之外，对 >1m/s 敏捷动作补充躯干惯量 / 电机建模 / 关节静摩擦随机化（Table II）
+- **ingest 档案：** [sources/papers/aware_arxiv_2604_23761.md](../../sources/papers/aware_arxiv_2604_23761.md) — AWARE 轮足反射避障 DR 表与真机 ASR 落差
 
 ## 关联页面
 
@@ -144,6 +146,7 @@ Sim2Real 的核心问题是 **domain gap**——仿真和现实的差异。
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Whole-Body Control](./whole-body-control.md)
 - [Locomotion](../tasks/locomotion.md)
+- [AWARE（轮足高动态反射避障）](../entities/paper-aware-wheeled-legged-reflexive-evasion.md)
 
 ## 推荐继续阅读
 

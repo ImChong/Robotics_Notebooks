@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, wheel-legged, quadruped, multi-skill, blind-locomotion, constrained-rl, p3o, sim2real, unitree-go2w, isaac-lab, unitree]
 status: complete
-updated: 2026-06-19
+updated: 2026-07-24
 arxiv: "2605.13058"
 venue: ICRA 2026
 project: https://hyzenthlayer.github.io/mujica/
@@ -16,8 +16,10 @@ related:
   - ./unitree.md
   - ./robot-lab.md
   - ./dreamwaq-plus.md
+  - ./paper-aware-wheeled-legged-reflexive-evasion.md
 sources:
   - ../../sources/papers/mujica_arxiv_2605_13058.md
+  - ../../sources/papers/aware_arxiv_2604_23761.md
 summary: "MUJICA（arXiv:2605.13058，ICRA 2026）在 Unitree Go2-W 上用单一本体策略联合全向移动、高台攀爬与摔倒恢复，以 DC 电机硬约束 P3O 与高层技能选择器实现安全零样本 sim2real 与自主模态切换。"
 ---
 
@@ -118,6 +120,7 @@ flowchart TB
 | 路线 | 感知 | 多技能方式 | 轮足极限机动 |
 |------|------|------------|--------------|
 | **MUJICA** | 纯本体 | 单策略 + $\zeta$ + 选择器 | **1 m 高台、摔倒恢复** |
+| [AWARE](./paper-aware-wheeled-legged-reflexive-evasion.md) | 动捕障碍状态 | 高层 RAR + **双专家硬切换** | **高动态反射避障**（M20；非攀爬） |
 | [DreamWaQ++](./dreamwaq-plus.md) | 点云 + 本体 | 单任务障碍感知 | 四足楼梯/OOD，非轮足高台 |
 | MoE-loco / 混合专家 | 本体 | 门控多专家 | 步态切换为主 |
 | Chamorro ICRA'24 盲楼梯 | 本体 + 地形布尔 | 双任务指示 | 楼梯攀爬，非统一三技能 |
@@ -136,6 +139,7 @@ flowchart TB
 - [Sim2Real](../concepts/sim2real.md) — 零样本部署与域随机化
 - [四足机器人](./quadruped-robot.md)、[Unitree](./unitree.md)、[robot_lab](./robot-lab.md)（Go2W 仿真入口）
 - [DreamWaQ++](./dreamwaq-plus.md) — 四足感知 loco 对照；本文走 **盲走 + 轮足异构技能**
+- [AWARE](./paper-aware-wheeled-legged-reflexive-evasion.md) — 同轮足形态，任务轴为 **外源快速障碍反射规避**（非攀爬/恢复）
 
 ## 推荐继续阅读
 

@@ -1499,6 +1499,24 @@
         "technical-university-of-denmark",
         "danmarks-tekniske-universitet"
       ]
+    },
+    "zhongguancun-academy": {
+      "label": "北京中关村学院（Zhongguancun Academy）",
+      "aliases": [
+        "zhongguancun-academy",
+        "bza",
+        "beijing-zhongguancun-academy",
+        "zhongguancun-academy-beijing"
+      ]
+    },
+    "deeprobotics": {
+      "label": "云深处科技（Deep Robotics）",
+      "aliases": [
+        "deeprobotics",
+        "deep-robotics",
+        "deep_robotics",
+        "deep-robotics-lab"
+      ]
     }
   }
 }
