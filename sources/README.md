@@ -288,6 +288,7 @@
 | [x] [mattpocock-skills.md](repos/mattpocock-skills.md) | mattpocock/skills：Skills For Real Engineers（grill、CONTEXT.md、TDD、架构卫生；skills.sh 安装） |
 | [x] [sensenova-skills.md](repos/sensenova-skills.md) | OpenSenseNova/SenseNova-Skills：Agent Skills 办公技能库（信息图/PPT/Excel/深度研究；Hermes/OpenClaw，MIT） |
 | [x] [simplefoc_arduino_foc.md](repos/simplefoc_arduino_foc.md) | SimpleFOC / Arduino-FOC：跨 MCU 开源 FOC 库与 Shield/Mini 硬件生态（BLDC/步进） |
+| [x] [odrive_based_electric_motor_dynamometer.md](repos/odrive_based_electric_motor_dynamometer.md) | Capo01 ODrive 开源四象限电力测功机（对拖 + load cell；效率地图 / Kt） |
 | [x] [hxxxz0_daji.md](repos/hxxxz0_daji.md) | Hxxxz0/DAJI：语言条件人形预期关节意图官方代码（arXiv:2605.14417） |
 | [x] [panniantong_agent_reach.md](repos/panniantong_agent_reach.md) | Panniantong/Agent-Reach：编码代理互联网接入脚手架（CLI + doctor + 可插拔渠道与上游工具链） |
 | [x] [crisp_real2sim_repo.md](repos/crisp_real2sim_repo.md) | Z1hanW/CRISP-Real2Sim：ICLR 2026 单目视频 Real2Sim 官方实现（scripts 1–8 + MotionTracking RL） |
@@ -477,6 +478,11 @@
 |------|------|
 | [x] [uart_rs485_serial_embedded.md](courses/uart_rs485_serial_embedded.md) | UART / RS-232 / RS-485 异步串行与机器人现场布线入门（Wikipedia、TI SLLA383 等索引） |
 | [x] [ttl_uart_logic_level_primary_refs.md](sites/ttl_uart_logic_level_primary_refs.md) | TTL/CMOS UART 逻辑电平一手资料（JEDEC、TI 逻辑族、MS Learn UART 架构） |
+| [x] [motor_dynamometer_primary_refs.md](sites/motor_dynamometer_primary_refs.md) | 电机/关节测功机一手资料索引（GB/T 43200、IEC 60034-2-1、Magtrol、ODrive 对拖、AIP） |
+| [x] [gbt_43200_2023_robot_joint_performance.md](sites/gbt_43200_2023_robot_joint_performance.md) | GB/T 43200-2023 机器人一体化关节性能及试验方法（国标元数据） |
+| [x] [iec_60034_2_1_motor_efficiency.md](sites/iec_60034_2_1_motor_efficiency.md) | IEC 60034-2-1:2024 旋转电机损耗与效率试验方法 |
+| [x] [magtrol_dynamometer_manuals.md](sites/magtrol_dynamometer_manuals.md) | Magtrol 磁滞/涡流/磁粉测功机手册与 M-TEST 7 |
+| [x] [aip_robot_joint_dynamometer.md](sites/aip_robot_joint_dynamometer.md) | AIP 艾普机器人关节/人形电机对拖测功方案（对标 GB/T 43200） |
 | [x] [rs232_tia_eia_primary_refs.md](sites/rs232_tia_eia_primary_refs.md) | RS-232 / TIA-232-F 一手资料（ITU-T V.24/V.28、Maxim 设计指南） |
 | [x] [rs485_tia_eia_primary_refs.md](sites/rs485_tia_eia_primary_refs.md) | RS-485 / TIA-485-A 一手资料（TSB-89A、TI SLLA383/SLLA070、Modbus RTU） |
 | [x] [motor_drive_firmware_bus_protocols.md](courses/motor_drive_firmware_bus_protocols.md) | 电机驱动器底软通信：CANopen/CiA402、CoE、私有 CAN、MIT 帧、DroneCAN 等选型索引 |
