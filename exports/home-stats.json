@@ -1,13 +1,116 @@
 {
   "generated_at": "2026-07-24",
-  "node_count": 1816,
-  "edge_count": 15206,
+  "node_count": 1818,
+  "edge_count": 15231,
   "coverage": {
-    "covered": 1764,
-    "total": 1793,
+    "covered": 1766,
+    "total": 1795,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-extreme-rgmt.md",
+      "detail_id": "entity-paper-extreme-rgmt",
+      "label": "Extreme-RGMT：高动态技能的持续学习与鲁棒通用全身跟踪",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-yahmp.md",
+      "detail_id": "entity-paper-yahmp",
+      "label": "YAHMP：人形通用运动跟踪里什么真的重要？",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-deed.md",
+      "detail_id": "entity-paper-deed",
+      "label": "DEED：零售人形 VLA 的数据高效后训练与经验驱动学习",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-hrl-stack-34-gr00t_n1.md",
+      "detail_id": "entity-paper-hrl-stack-34-gr00t_n1",
+      "label": "GR00T N1",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-steam-advantage-modeling.md",
+      "detail_id": "entity-paper-steam-advantage-modeling",
+      "label": "STEAM：自监督时序 Ensemble Advantage 建模",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-twist2.md",
+      "detail_id": "entity-paper-twist2",
+      "label": "TWIST2",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/mjlab.md",
+      "detail_id": "entity-mjlab",
+      "label": "mjlab (轻量 GPU 加速 RL 框架)",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
+      "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
+      "label": "人形机器人 RL 运动控制：身体系统栈视角",
+      "type": "overview",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/queries/humanoid-motion-tracking-method-selection.md",
+      "detail_id": "wiki-queries-humanoid-motion-tracking-method-selection",
+      "label": "人形运动跟踪方法选型指南",
+      "type": "query",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained"
+    },
     {
       "path": "wiki/overview/e2e-autonomous-driving-top10-algorithms.md",
       "detail_id": "wiki-overview-e2e-autonomous-driving-top10-algorithms",
@@ -113,142 +216,38 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-diffusiondrive.md",
-      "detail_id": "entity-paper-diffusiondrive",
-      "label": "DiffusionDrive（DiffusionDrive: Truncated Diffusion Model for End-to-End Autonomous Driving · arXiv:2411.15139）",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/autonomous-driving-core-algorithms-series.md",
-      "detail_id": "wiki-overview-autonomous-driving-core-algorithms-series",
-      "label": "《自动驾驶核心算法盘点》专栏技术地图",
-      "type": "overview",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/generative-world-models.md",
-      "detail_id": "wiki-methods-generative-world-models",
-      "label": "Generative World Models (生成式世界模型)",
-      "type": "method",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-s-squared-vla.md",
-      "detail_id": "entity-paper-s-squared-vla",
-      "label": "S²-VLA（Semantic–Spatial Dual-Stream · 驾驶 VLA · arXiv:2607.13926）",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-ego-04-emma.md",
-      "detail_id": "entity-paper-ego-04-emma",
-      "label": "EMMA",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/kicad.md",
-      "detail_id": "entity-kicad",
-      "label": "KiCad（开源 PCB 与原理图 EDA）",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/simplefoc.md",
-      "detail_id": "entity-simplefoc",
-      "label": "SimpleFOC（Arduino-FOC 生态）",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-neuralactuator-neural-actuation-modeling.md",
-      "detail_id": "entity-paper-neuralactuator-neural-actuation-modeling",
-      "label": "NeuralActuator（Neural Actuation Modeling · arXiv:2607.11734）",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/bam-better-actuator-models.md",
-      "detail_id": "entity-bam-better-actuator-models",
-      "label": "BAM（Better Actuator Models）",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/concepts/ethercat-protocol.md",
-      "detail_id": "wiki-concepts-ethercat-protocol",
-      "label": "EtherCAT 协议基础",
-      "type": "concept",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "机器人系统工程（专题汇总） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/e2e-autonomous-driving-top10-algorithms.md",
-    "detail_id": "wiki-overview-e2e-autonomous-driving-top10-algorithms",
-    "label": "端到端自动驾驶：十大前沿算法技术地图",
-    "type": "overview",
+    "path": "wiki/entities/paper-extreme-rgmt.md",
+    "detail_id": "entity-paper-extreme-rgmt",
+    "label": "Extreme-RGMT：高动态技能的持续学习与鲁棒通用全身跟踪",
+    "type": "entity",
     "recency": "2026-07-24",
     "source": "log.md",
-    "action": "added",
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "action": "maintained",
+    "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 363
+      "size": 368
     },
     {
       "label": "仿真到现实",
-      "size": 198
+      "size": 204
+    },
+    {
+      "label": "移动操作",
+      "size": 178
     },
     {
       "label": "人形论文深读笔记",
       "size": 177
     },
     {
-      "label": "移动操作",
-      "size": 156
-    },
-    {
       "label": "人形强化学习运动控制",
-      "size": 126
+      "size": 114
     },
     {
       "label": "全身控制",
@@ -275,7 +274,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 328,
+      "degree": 330,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -283,7 +282,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 289,
+      "degree": 290,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -291,7 +290,7 @@
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
-      "degree": 288,
+      "degree": 289,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
@@ -328,7 +327,7 @@
       "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
       "label": "人形机器人 RL 运动控制：身体系统栈视角",
       "type": "overview",
-      "degree": 179,
+      "degree": 181,
       "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     }
   ],
@@ -337,14 +336,14 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 121,
+      "degree": 122,
       "has_repo": true
     },
     {
       "detail_id": "wiki-methods-beyondmimic",
       "label": "BeyondMimic",
       "type": "method",
-      "degree": 58,
+      "degree": 59,
       "has_repo": true
     },
     {
@@ -352,7 +351,8 @@
       "label": "OmniRetarget",
       "type": "entity",
       "degree": 49,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",
@@ -375,17 +375,17 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
+      "detail_id": "entity-paper-twist2",
+      "label": "TWIST2",
+      "type": "entity",
+      "degree": 41,
+      "has_repo": true
+    },
+    {
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
       "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
       "type": "entity",
       "degree": 40
-    },
-    {
-      "detail_id": "entity-paper-twist2",
-      "label": "TWIST2",
-      "type": "entity",
-      "degree": 39,
-      "has_repo": true
     },
     {
       "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",

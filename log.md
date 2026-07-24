@@ -1,5 +1,26 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-24] ingest | sources/sites/extreme-rgmt-github-io.md — Extreme-RGMT（arXiv:2607.20110）复核：项目页仍未开源；交叉 wiki/entities/paper-extreme-rgmt.md ↔ wiki/entities/paper-yahmp.md
+
+- **开源状态：** **确认未开源** — 2026-07-24 复核项目页仍仅 arXiv PDF + BibTeX + 视频，无 GitHub / HF
+- **更新：** [`sources/sites/extreme-rgmt-github-io.md`](sources/sites/extreme-rgmt-github-io.md)、[`wiki/entities/paper-extreme-rgmt.md`](wiki/entities/paper-extreme-rgmt.md)（回链 YAHMP）
+
+## [2026-07-24] ingest | sources/papers/deed_arxiv_2607_20345.md — DEED（arXiv:2607.20345）G1-Edu + GR00T N1.6 零售补货后训练；wiki/entities/paper-deed.md；交叉 wiki/methods/vla.md、wiki/entities/paper-hrl-stack-34-gr00t_n1.md、wiki/entities/paper-steam-advantage-modeling.md；确认未开源
+
+- **开源状态：** **确认未开源** — 全文无项目页 / GitHub
+- **新建 papers：** [`sources/papers/deed_arxiv_2607_20345.md`](sources/papers/deed_arxiv_2607_20345.md)
+- **新建 wiki：** [`wiki/entities/paper-deed.md`](wiki/entities/paper-deed.md)
+- **机构：** 新增 `hive-robots`、`dtu`
+- **交叉更新：** [`vla`](wiki/methods/vla.md)、[`paper-hrl-stack-34-gr00t_n1`](wiki/entities/paper-hrl-stack-34-gr00t_n1.md)、[`paper-steam-advantage-modeling`](wiki/entities/paper-steam-advantage-modeling.md)
+
+## [2026-07-24] ingest | sources/papers/yahmp_arxiv_2607_19903.md + sources/repos/yahmp.md — YAHMP（arXiv:2607.19903）G1 GMT 消融与 ONNX 部署；wiki/entities/paper-yahmp.md；交叉 wiki/entities/paper-twist2.md、wiki/entities/mjlab.md、wiki/entities/paper-extreme-rgmt.md、wiki/overview/humanoid-rl-motion-control-body-system-stack.md、wiki/queries/humanoid-motion-tracking-method-selection.md
+
+- **开源状态：** **已开源** — <https://github.com/fabio-amadio/yahmp>（Apache-2.0；含 ONNX 导出/部署）
+- **新建 papers：** [`sources/papers/yahmp_arxiv_2607_19903.md`](sources/papers/yahmp_arxiv_2607_19903.md)
+- **新建 repos：** [`sources/repos/yahmp.md`](sources/repos/yahmp.md)
+- **新建 wiki：** [`wiki/entities/paper-yahmp.md`](wiki/entities/paper-yahmp.md)（含源码运行时序图）
+- **交叉更新：** [`paper-twist2`](wiki/entities/paper-twist2.md)、[`mjlab`](wiki/entities/mjlab.md)、[`paper-extreme-rgmt`](wiki/entities/paper-extreme-rgmt.md)、[`humanoid-rl-motion-control-body-system-stack`](wiki/overview/humanoid-rl-motion-control-body-system-stack.md)、[`humanoid-motion-tracking-method-selection`](wiki/queries/humanoid-motion-tracking-method-selection.md)
+
 ## [2026-07-24] ingest | sources/blogs/wechat_shenlan_ai_ad_e2e_top10.md — 深蓝AI《端到端自动驾驶：十大前沿算法盘点》；十篇论文独立完整实体（非 stub）
 
 - **工具：** Agent Reach v1.5.0 + wechat-article-for-ai（Camoufox）；短链直连成功 — <https://mp.weixin.qq.com/s/kb4aNFyCLWMKEVgjiX6F_g>

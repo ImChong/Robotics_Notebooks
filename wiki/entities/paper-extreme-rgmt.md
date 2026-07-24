@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-tracking, continual-learning, whole-body-control, teleoperation, unitree-g1, bit, openloong, sdu]
 status: complete
-updated: 2026-07-23
+updated: 2026-07-24
 arxiv: "2607.20110"
 related:
   - ./paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md
@@ -10,6 +10,7 @@ related:
   - ../methods/sonic-motion-tracking.md
   - ../methods/beyondmimic.md
   - ./paper-hrl-stack-16-omnixtreme.md
+  - ./paper-yahmp.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/motion-cerebellum-category-04-wbt-base.md
   - ../tasks/teleoperation.md
@@ -51,7 +52,7 @@ summary: "Extreme-RGMT（arXiv:2607.20110）：在 RGMT 上做两阶段 continua
 | **机构** | 北京理工大学（BIT）；人形机器人（上海）有限公司 / 青龙（OpenLoong）；山东大学（SDU） |
 | **平台** | Unitree G1，29 DoF；策略 50 Hz，底层 PD 500 Hz |
 | **数据** | LAFAN1 + AMASS + 自采 Xsens，合计约 **3.1 h**；分层后 \(\mathcal{D}_m\)≈2.82 h / \(\mathcal{D}_c\)≈0.28 h |
-| **开源** | **未开源**（项目页截至 2026-07-23 无 GitHub / 权重） |
+| **开源** | **未开源**（项目页截至 2026-07-24 仍无 GitHub / 权重） |
 | **项目页** | <https://zeonsunlightyu.github.io/Extreme-RGMT.github.io/> |
 
 ## 核心原理
@@ -158,6 +159,7 @@ flowchart TB
 - [SONIC](../methods/sonic-motion-tracking.md) — 规模化全身跟踪对照
 - [BeyondMimic](../methods/beyondmimic.md) — 高动态跟踪 + 扩散蒸馏路线
 - [OmniXtreme](./paper-hrl-stack-16-omnixtreme.md) — 高动态 specialist 对照
+- [YAHMP](./paper-yahmp.md) — 开源 G1 GMT 消融试验台（mjlab + ONNX；非高动态持续学习）
 - [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) — 控制层总图
 - [遥操作任务](../tasks/teleoperation.md) — 在线参考输入语境
 

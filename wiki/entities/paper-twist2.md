@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model, teleoperation, loco-manipulation, diffusion-policy, data-collection, unitree-g1, icra-2026]
 status: complete
-updated: 2026-07-22
+updated: 2026-07-24
 arxiv: "2511.02832"
 venue: "ICRA 2026 · arXiv"
 code: https://github.com/amazon-far/TWIST2
@@ -20,6 +20,7 @@ related:
   - ../methods/diffusion-policy.md
   - ../methods/motion-retargeting-gmr.md
   - ./paper-twist.md
+  - ./paper-yahmp.md
   - ./paper-bifrost-umi.md
   - ./paper-amp-survey-16-clot.md
   - ./paper-heft.md
@@ -154,6 +155,7 @@ sequenceDiagram
 ## 与其他页面的关系
 
 - 前作：[paper-twist.md](./paper-twist.md)
+- GMT 设计消融对照：[paper-yahmp.md](./paper-yahmp.md) — 同数据重训 TWIST2 作外部基线，YAHMP 开源 mjlab 试验台
 - 无机器人采集对照：[paper-bifrost-umi.md](./paper-bifrost-umi.md)
 - 全局闭环遥操作：[paper-amp-survey-16-clot.md](./paper-amp-survey-16-clot.md)（论文仿真以 TWIST2 为基线）
 - 分层 benchmark 后端：[paper-humanoidarena.md](./paper-humanoidarena.md) — 与 SONIC 并列作双 GMT 评测（arXiv:2606.17833）

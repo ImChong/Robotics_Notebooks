@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, loco-manipulation, loco-manip-161-survey, nvidia, vla]
 status: complete
-updated: 2026-07-22
+updated: 2026-07-24
 arxiv: "2503.14734"
 venue: "2025 · arXiv"
 code: https://github.com/NVIDIA/Isaac-GR00T
@@ -18,6 +18,7 @@ related:
   - ../methods/diffusion-policy.md
   - ../entities/gr00t-wholebodycontrol.md
   - ../entities/isaac-gr00t.md
+  - ./paper-deed.md
 sources:
   - ../../sources/papers/gr00t_n1_arxiv_2503_14734.md
   - ../../sources/repos/isaac_gr00t.md
@@ -197,6 +198,7 @@ sequenceDiagram
 - 概念层：[foundation-policy.md](../concepts/foundation-policy.md)、[vla.md](../methods/vla.md)
 - 方法对照：[diffusion-policy.md](../methods/diffusion-policy.md)
 - **长程上下文 / 部署后学习：** [RoboTTT](./paper-robottt-test-time-training-vla-context.md) — 在 **GR00T N1.7** 上内嵌 TTT fast-weight 层，把 visuomotor 上下文扩到 8K 步（项目页，2026）
+- **零售真机后训练配方（未开源）：** [DEED](./paper-deed.md) — G1-Edu + GR00T N1.6 薯片补货；Data-Efficient SFT + 文本 advantage 前缀 RECAP
 - 工程平台：[isaac-gr00t.md](../entities/isaac-gr00t.md)
 - 工程深读：[gr00t-wholebodycontrol.md](../entities/gr00t-wholebodycontrol.md)
 - RL 身体系统栈：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
