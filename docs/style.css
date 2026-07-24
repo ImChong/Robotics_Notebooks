@@ -716,54 +716,14 @@ body.sponsor-dialog-open {
 }
 .updates-day-meta { font-size: .78rem; font-weight: 400; color: var(--text-muted); margin-left: .55rem; }
 .updates-day-list { list-style: none; margin: 8px 0 0; padding: 0; --updates-badge-col-width: 3.25rem; }
-.updates-day-list-rest { margin-top: 0; }
-/* 超量日：预览 10 条后放折叠箭头 + 数量说明；展开后列表末尾再放收起入口 */
-.updates-day.is-folded .updates-day-list-rest,
-.updates-day.is-folded .updates-day-more-end { display: none; }
-.updates-day-more {
-  display: inline-flex;
+/* 超量日：预览 10 条；按钮组合对齐时间线「再展开 30 天 / 展开全部 / 收起」（btn-secondary） */
+.updates-item-folded { display: none; }
+.updates-day-actions {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 0.45rem;
-  margin: 2px 0 0;
-  padding: 6px 4px;
-  color: var(--accent);
-  background: transparent;
-  border: 0;
-  cursor: pointer;
-  transition: color var(--transition), opacity var(--transition);
-  opacity: 0.85;
-}
-.updates-day-more:hover {
-  color: var(--accent-hover);
-  opacity: 1;
-}
-.updates-day-more:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-  border-radius: 4px;
-}
-.updates-day-more-end {
-  margin-top: 6px;
-  margin-bottom: 2px;
-}
-.updates-day-chevron {
-  display: block;
-  flex-shrink: 0;
-  width: 0.55rem;
-  height: 0.55rem;
-  border-right: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
-  transform: rotate(45deg); /* 折叠：向下 ∨，展开更多 */
-  transition: transform 0.15s ease;
-}
-.updates-day.is-collapsible:not(.is-folded) .updates-day-chevron {
-  transform: rotate(-135deg); /* 展开：向上 ∧，收起至预览 */
-}
-.updates-day-more-label {
-  font-size: .8rem;
-  font-weight: 400;
-  line-height: 1.2;
-  white-space: nowrap;
+  gap: 10px;
+  margin-top: 10px;
 }
 .updates-item {
   display: grid;
