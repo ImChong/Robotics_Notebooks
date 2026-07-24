@@ -15,6 +15,8 @@ related:
   - ../entities/paper-robointer-1-5.md
   - ../entities/paper-fabrivla.md
   - ../entities/paper-egosteer.md
+  - ../entities/egoworld-100w.md
+  - ../entities/paper-egoworld.md
   - ../entities/vla-sota-leaderboard.md
   - ../entities/paper-chord-contact-wrench-dexterous-manipulation.md
   - ../methods/regrind-retargeting-guided-rl.md
@@ -115,6 +117,7 @@ flowchart TD
 - **Video-Action Model（VAM）**：用语义–动力学一体的 **视频扩散骨干潜计划** 条件化 **流匹配 / 逆动力学式动作头**，与 VLA 的静态 VLM 先验形成对照；入口见 [mimic-video](../methods/mimic-video.md)。**联合训练 + 测试时仿真选动作** 见 [τ₀-WM](../entities/tau0-world-model.md)（异构掩码预训练、propose–evaluate–revise）；**开源 Wan+MoT 三专家 + RobotWin JSONL 管线** 见 [Dexmal DW05](../entities/dexmal-dw05.md)（DW05-Base / DW05-Robotwin）
 - **DeFI**：**GFDM + GIDM** 分阶段预训练解耦前向/逆动力学，再用扩散适配器耦合微调；强调无动作标签人视频与 CALVIN / SimplerEnv 长程表现；入口见 [DeFI](../methods/defi-decoupled-dynamics-vla.md)
 - **EgoScale**：在 **海量 egocentric 人视频** 上对 **流式 VLA** 做 **腕 + 重定向灵巧手** 显式预训练，并以 **对齐人–机 mid-training** 承接 embodiment gap，面向 **高 DoF 长程灵巧** 任务；入口见 [EgoScale](../methods/egoscale.md)
+- **EgoWorld-100W**：StellarNex **百万级** 头戴第一人称操作语料，按 **场景×物体×动作×手性** 结构化；**申请制**合作开放（非公开一键下载）；入口见 [EgoWorld-100W](../entities/egoworld-100w.md)（与 ICLR [EgoWorld exo→ego](../entities/paper-egoworld.md) **同名异物**）
 - **EgoSteer**：用 **EgoSmith** 策展 **9.6K h** 全标注 egocentric 语料 + **统一 Robot Stack HITL DAgger** + **训练-only DINOv3 世界专家** 的 flow-VLA；**40+** 自由语言双灵巧任务约 **75%** SR，双具身长程 few-shot **75+%**；代码与权重已开源；入口见 [EgoSteer](../entities/paper-egosteer.md)（arXiv:2607.09701）
 - **EgoWAM**：在 **双臂真机** 上实证 **朴素 BC 人–机共训** 可因具身差距 **负迁移**，而 **WAM 可替换世界目标**（DINO / 3D flow）使性能随 **EgoVerse 野外人数据** 扩展；入口见 [EgoWAM](../entities/paper-egowam-egocentric-human-wam-co-training.md)
 - **WAM-TTT**：在 **冻结 LDA WAM** 上用 **人视频测试时 TTT fast-weight 记忆** **steer** 新任务变体——**meta-training** 对齐人–机相位 + **KV 重建**；部署仅需 **无标注 egocentric 人视频**；**G1 + Galbot 双臂 9 任务** New 家庭场景 **46.2%** avg progress，显著优于 **WAM-ICL（7.1%）**；入口见 [WAM-TTT](../entities/paper-wam-ttt-human-video-test-time-steering.md)（arXiv:2607.06988）
@@ -154,6 +157,8 @@ flowchart TD
 - [Dexmal DW05（OpenDW）](../entities/dexmal-dw05.md) — Wan+MoT 联合视频/动作/价值；开源 Base 与 RoboTwin SFT 权重
 - [DeFI（解耦前向/逆动力学 VLA）](../methods/defi-decoupled-dynamics-vla.md) — 混合视频前向 + 自监督逆向预训练的操作策略
 - [EgoScale](../methods/egoscale.md) — 人视频规模预训练 VLA + 对齐 mid-training 的灵巧操作迁移
+- [EgoWorld-100W](../entities/egoworld-100w.md) — 百万级自中心操作数据（申请制；四维覆盖）
+- [EgoWorld（exo→ego）](../entities/paper-egoworld.md) — 单张第三人称→第一人称视图翻译（ICLR 2026）
 - [EgoSteer](../entities/paper-egosteer.md) — EgoSmith + HITL DAgger + WM 增强双灵巧手 VLA 全栈（arXiv:2607.09701）
 - [EgoWAM](../entities/paper-egowam-egocentric-human-wam-co-training.md) — WAM 人–机协同训练与野外 egocentric 人数据缩放
 - [WAM-TTT](../entities/paper-wam-ttt-human-video-test-time-steering.md) — 部署期人视频 TTT 记忆 steering 冻结 WAM（LDA 底座，arXiv:2607.06988）

@@ -1,13 +1,65 @@
 {
   "generated_at": "2026-07-24",
-  "node_count": 1822,
-  "edge_count": 15296,
+  "node_count": 1824,
+  "edge_count": 15316,
   "coverage": {
-    "covered": 1771,
-    "total": 1799,
+    "covered": 1773,
+    "total": 1801,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-egoworld.md",
+      "detail_id": "entity-paper-egoworld",
+      "label": "EgoWorld（exo→ego 视图翻译）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/egoworld-100w.md",
+      "detail_id": "entity-egoworld-100w",
+      "label": "EgoWorld-100W（百万级自中心操作数据集）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/ego-category-01-data-collection.md",
+      "detail_id": "wiki-overview-ego-category-01-data-collection",
+      "label": "Ego 分类 01：数据采集",
+      "type": "overview",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/egoscale.md",
+      "detail_id": "wiki-methods-egoscale",
+      "label": "EgoScale",
+      "type": "method",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/urkl.md",
       "detail_id": "entity-urkl",
@@ -87,17 +139,6 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
       "path": "wiki/queries/cross-embodiment-transfer-strategy.md",
       "detail_id": "wiki-queries-cross-embodiment-transfer-strategy",
       "label": "跨具身策略迁移选型指南",
@@ -166,72 +207,31 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-unified-fluid-robot-multiphysics-swimming.md",
-      "detail_id": "entity-paper-unified-fluid-robot-multiphysics-swimming",
-      "label": "统一流体-机器人多物理可微仿真（Realizing Robotic Swimming with Unified Fluid-Robot Multiphysics）",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-automated-facial-mechanisms-animatronic.md",
-      "detail_id": "entity-paper-automated-facial-mechanisms-animatronic",
-      "label": "自动化面部机构合成（Automated Synthesis of Facial Mechanisms for Conversational Animatronic Robots）",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md",
-      "detail_id": "entity-paper-3d-ic-joint-navigation-manipulation-planning",
-      "label": "3D-IC（3D Interaction Chains · Joint Navigation and Manipulation Planning）",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-abot-m05-mobile-manipulation-wam.md",
-      "detail_id": "entity-paper-abot-m05-mobile-manipulation-wam",
-      "label": "ABot-M0.5（Unified Mobility-and-Manipulation · World Action Model）",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/urkl.md",
-    "detail_id": "entity-urkl",
-    "label": "URKL（Ultimate Robot Knock-out Legend · EngineAI 人形格斗联赛）",
+    "path": "wiki/entities/paper-egoworld.md",
+    "detail_id": "entity-paper-egoworld",
+    "label": "EgoWorld（exo→ego 视图翻译）",
     "type": "entity",
     "recency": "2026-07-24",
     "source": "log.md",
-    "action": "maintained"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 368
+      "size": 373
     },
     {
       "label": "仿真到现实",
-      "size": 206
+      "size": 186
     },
     {
       "label": "人形论文深读笔记",
-      "size": 177
+      "size": 174
     },
     {
       "label": "移动操作",
@@ -239,11 +239,11 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 127
+      "size": 134
     },
     {
       "label": "全身控制",
-      "size": 106
+      "size": 105
     }
   ],
   "top_hubs": [
@@ -274,7 +274,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 294,
+      "degree": 298,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
