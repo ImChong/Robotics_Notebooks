@@ -722,9 +722,9 @@ body.sponsor-dialog-open {
 .updates-day-more {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  gap: 0.45rem;
   margin: 2px 0 0;
-  padding: 8px 12px;
+  padding: 6px 4px;
   color: var(--accent);
   background: transparent;
   border: 0;
@@ -743,6 +743,7 @@ body.sponsor-dialog-open {
 }
 .updates-day-chevron {
   display: block;
+  flex-shrink: 0;
   width: 0.55rem;
   height: 0.55rem;
   border-right: 2px solid currentColor;
@@ -752,6 +753,12 @@ body.sponsor-dialog-open {
 }
 .updates-day.is-collapsible:not(.is-folded) .updates-day-chevron {
   transform: rotate(-135deg); /* 展开：向上 ∧，收起至预览 */
+}
+.updates-day-more-label {
+  font-size: .8rem;
+  font-weight: 400;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 .updates-item {
   display: grid;

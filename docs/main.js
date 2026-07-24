@@ -850,6 +850,9 @@
           metas.length +
           ' 项">' +
           '<span class="updates-day-chevron" aria-hidden="true"></span>' +
+          '<span class="updates-day-more-label">展开全部 ' +
+          metas.length +
+          ' 项</span>' +
           '</button>';
       }
       return (
@@ -1077,16 +1080,19 @@
         var daySection = moreBtn.closest('.updates-day');
         if (!daySection) return;
         var total = moreBtn.getAttribute('data-total') || '';
+        var labelEl = moreBtn.querySelector('.updates-day-more-label');
         var isFolded = daySection.classList.contains('is-folded');
         if (isFolded) {
           daySection.classList.remove('is-folded');
           moreBtn.setAttribute('aria-expanded', 'true');
           moreBtn.setAttribute('aria-label', '收起至前 ' + TIMELINE_FOLD_SHOW + ' 项');
+          if (labelEl) labelEl.textContent = '收起至前 ' + TIMELINE_FOLD_SHOW + ' 项';
         } else {
           daySection.classList.add('is-folded');
           moreBtn.setAttribute('aria-expanded', 'false');
           moreBtn.setAttribute('aria-label', '展开全部 ' + total + ' 项');
-          // 箭头固定在预览区后；收起后把箭头带回视口，避免停在已隐藏的长列表位置
+          if (labelEl) labelEl.textContent = '展开全部 ' + total + ' 项';
+          // 箭头固定在预览区后；收起后把控件带回视口，避免停在已隐藏的长列表位置
           if (moreBtn.scrollIntoView) {
             moreBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
           }
