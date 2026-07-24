@@ -788,8 +788,8 @@
     }
 
     // 时间线条目 / 单日区块（参考论文笔记站 updates.html：左轨道 + 日期圆点 + 条目行 + 超量折叠）
-    var TIMELINE_FOLD_LIMIT = 14; // 超过则折叠
-    var TIMELINE_FOLD_SHOW = 12;  // 折叠时先显示的条数
+    var TIMELINE_FOLD_LIMIT = 10; // 超过则折叠
+    var TIMELINE_FOLD_SHOW = 10;  // 折叠时先预览的条数
     var activityDays = wikiActivity && Array.isArray(wikiActivity.days) ? wikiActivity.days : [];
 
     function countActionStats(metas) {
