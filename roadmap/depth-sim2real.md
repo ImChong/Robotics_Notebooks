@@ -6,12 +6,12 @@
 
 ```mermaid
 flowchart LR
-  S0["**Stage 0**<br/>域差画像与方法三分<br/><em>六类 gap · DR / 对齐 / 适应</em>"]
-  S1["**Stage 1**<br/>资产与执行器对齐<br/><em>URDF 验收 · SysID · ActuatorNet</em>"]
-  S2["**Stage 2**<br/>训练期鲁棒化<br/><em>DR · 课程 · 特权蒸馏 · RMA</em>"]
-  S3["**Stage 3**<br/>感知与视觉迁移<br/><em>视觉 DR · RGB 蒸馏 · VFM</em>"]
-  S4["**Stage 4**<br/>部署工程闭环<br/><em>sim2sim · 处理器在环 · SOP</em>"]
-  S5["**Stage 5**<br/>真机适应与评测<br/><em>安全微调 · Real2Sim · 评测设施</em>"]
+  S0["<b>Stage 0</b><br/>域差画像与方法三分<br/><em>六类 gap · DR / 对齐 / 适应</em>"]
+  S1["<b>Stage 1</b><br/>资产与执行器对齐<br/><em>URDF 验收 · SysID · ActuatorNet</em>"]
+  S2["<b>Stage 2</b><br/>训练期鲁棒化<br/><em>DR · 课程 · 特权蒸馏 · RMA</em>"]
+  S3["<b>Stage 3</b><br/>感知与视觉迁移<br/><em>视觉 DR · RGB 蒸馏 · VFM</em>"]
+  S4["<b>Stage 4</b><br/>部署工程闭环<br/><em>sim2sim · 处理器在环 · SOP</em>"]
+  S5["<b>Stage 5</b><br/>真机适应与评测<br/><em>安全微调 · Real2Sim · 评测设施</em>"]
 
   S0 --> S1 --> S2 --> S3 --> S4 --> S5
 

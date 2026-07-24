@@ -6,12 +6,12 @@
 
 ```mermaid
 flowchart LR
-  S0["**Stage 0**<br/>全景与前置<br/><em>行走 × 操作耦合问题</em>"]
-  S1["**Stage 1**<br/>全身控制基座<br/><em>WBC / 上下身解耦分层</em>"]
-  S2["**Stage 2**<br/>数据入口<br/><em>遥操作 / 无机器人示范 / 合成</em>"]
-  S3["**Stage 3**<br/>全身技能学习<br/><em>跟踪 + 残差 / 视觉分层</em>"]
-  S4["**Stage 4**<br/>统一模型<br/><em>生成式 / VLA / WAM</em>"]
-  S5["**Stage 5**<br/>进阶方向<br/><em>接触 / 导航联合 / 产业栈</em>"]
+  S0["<b>Stage 0</b><br/>全景与前置<br/><em>行走 × 操作耦合问题</em>"]
+  S1["<b>Stage 1</b><br/>全身控制基座<br/><em>WBC / 上下身解耦分层</em>"]
+  S2["<b>Stage 2</b><br/>数据入口<br/><em>遥操作 / 无机器人示范 / 合成</em>"]
+  S3["<b>Stage 3</b><br/>全身技能学习<br/><em>跟踪 + 残差 / 视觉分层</em>"]
+  S4["<b>Stage 4</b><br/>统一模型<br/><em>生成式 / VLA / WAM</em>"]
+  S5["<b>Stage 5</b><br/>进阶方向<br/><em>接触 / 导航联合 / 产业栈</em>"]
 
   S0 --> S1 --> S2 --> S3 --> S4 --> S5
 

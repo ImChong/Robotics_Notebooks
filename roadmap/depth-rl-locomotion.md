@@ -6,12 +6,12 @@
 
 ```mermaid
 flowchart LR
-  S0["**Stage 0**<br/>RL 基础准备<br/><em>PPO / SAC 跑通</em>"]
-  S1["**Stage 1**<br/>locomotion 概念<br/><em>了解平衡 / 接触切换</em>"]
-  S2["**Stage 2**<br/>RL + Locomotion 方法<br/><em>仿真里走起来</em>"]
-  S3["**Stage 3**<br/>MPC / WBC + RL<br/><em>和传统控制结合</em>"]
-  S4["**Stage 4**<br/>Sim2Real 迁移<br/><em>DR / 延迟处理</em>"]
-  S5["**Stage 5**<br/>进阶方向<br/><em>跑酷 / 视觉 / 多平台</em>"]
+  S0["<b>Stage 0</b><br/>RL 基础准备<br/><em>PPO / SAC 跑通</em>"]
+  S1["<b>Stage 1</b><br/>locomotion 概念<br/><em>了解平衡 / 接触切换</em>"]
+  S2["<b>Stage 2</b><br/>RL + Locomotion 方法<br/><em>仿真里走起来</em>"]
+  S3["<b>Stage 3</b><br/>MPC / WBC + RL<br/><em>和传统控制结合</em>"]
+  S4["<b>Stage 4</b><br/>Sim2Real 迁移<br/><em>DR / 延迟处理</em>"]
+  S5["<b>Stage 5</b><br/>进阶方向<br/><em>跑酷 / 视觉 / 多平台</em>"]
 
   S0 --> S1 --> S2 --> S3 --> S4 --> S5
 

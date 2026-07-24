@@ -6,12 +6,12 @@
 
 ```mermaid
 flowchart LR
-  S0["**Stage 0**<br/>全景与定位<br/><em>问题定义 / 输出形态</em>"]
-  S1["**Stage 1**<br/>输入接口与硬件<br/><em>XR / leader / 外骨骼 / 手套 / 视觉</em>"]
-  S2["**Stage 2**<br/>映射与延迟<br/><em>笛卡尔 IK / 重定向 / 双边稳定</em>"]
-  S3["**Stage 3**<br/>人形全身遥操作<br/><em>三点补全 → 全身跟踪 → WBC/流形</em>"]
-  S4["**Stage 4**<br/>手指/灵巧手遥操作<br/><em>手姿估计 → 手部重定向 → 触觉</em>"]
-  S5["**Stage 5**<br/>下游闭环与进阶<br/><em>IL / 无机器人采集 / 极端场景</em>"]
+  S0["<b>Stage 0</b><br/>全景与定位<br/><em>问题定义 / 输出形态</em>"]
+  S1["<b>Stage 1</b><br/>输入接口与硬件<br/><em>XR / leader / 外骨骼 / 手套 / 视觉</em>"]
+  S2["<b>Stage 2</b><br/>映射与延迟<br/><em>笛卡尔 IK / 重定向 / 双边稳定</em>"]
+  S3["<b>Stage 3</b><br/>人形全身遥操作<br/><em>三点补全 → 全身跟踪 → WBC/流形</em>"]
+  S4["<b>Stage 4</b><br/>手指/灵巧手遥操作<br/><em>手姿估计 → 手部重定向 → 触觉</em>"]
+  S5["<b>Stage 5</b><br/>下游闭环与进阶<br/><em>IL / 无机器人采集 / 极端场景</em>"]
 
   S0 --> S1 --> S2 --> S3 --> S4 --> S5
 

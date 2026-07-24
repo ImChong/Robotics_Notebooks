@@ -6,12 +6,12 @@
 
 ```mermaid
 flowchart LR
-  S0["**Stage 0**<br/>全景与前置<br/><em>导航栈分层 / ROS 2</em>"]
-  S1["**Stage 1**<br/>SLAM 与状态估计<br/><em>2D/3D LiDAR / VIO 选型</em>"]
-  S2["**Stage 2**<br/>经典导航栈<br/><em>Nav2 / costmap / 路径平滑</em>"]
-  S3["**Stage 3**<br/>学习型导航<br/><em>分层导航栈 / 扩散策略</em>"]
-  S4["**Stage 4**<br/>VLN 主线<br/><em>R2R → NaVid → 导航 VLA</em>"]
-  S5["**Stage 5**<br/>进阶方向<br/><em>语义地图 / 主动感知 / OVMM</em>"]
+  S0["<b>Stage 0</b><br/>全景与前置<br/><em>导航栈分层 / ROS 2</em>"]
+  S1["<b>Stage 1</b><br/>SLAM 与状态估计<br/><em>2D/3D LiDAR / VIO 选型</em>"]
+  S2["<b>Stage 2</b><br/>经典导航栈<br/><em>Nav2 / costmap / 路径平滑</em>"]
+  S3["<b>Stage 3</b><br/>学习型导航<br/><em>分层导航栈 / 扩散策略</em>"]
+  S4["<b>Stage 4</b><br/>VLN 主线<br/><em>R2R → NaVid → 导航 VLA</em>"]
+  S5["<b>Stage 5</b><br/>进阶方向<br/><em>语义地图 / 主动感知 / OVMM</em>"]
 
   S0 --> S1 --> S2 --> S3 --> S4 --> S5
 

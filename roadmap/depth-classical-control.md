@@ -6,11 +6,11 @@
 
 ```mermaid
 flowchart LR
-  S0["**Stage 0**<br/>动力学与优化基础<br/><em>浮动基动力学 / QP</em>"]
-  S1["**Stage 1**<br/>简化模型步态<br/><em>LIP/ZMP / DCM</em>"]
-  S2["**Stage 2**<br/>Centroidal 与轨迹优化<br/><em>接触力锥约束</em>"]
-  S3["**Stage 3**<br/>MPC 实时规划<br/><em>凸 MPC / NMPC</em>"]
-  S4["**Stage 4**<br/>TSID / WBC 落地<br/><em>HQP + 状态估计</em>"]
+  S0["<b>Stage 0</b><br/>动力学与优化基础<br/><em>浮动基动力学 / QP</em>"]
+  S1["<b>Stage 1</b><br/>简化模型步态<br/><em>LIP/ZMP / DCM</em>"]
+  S2["<b>Stage 2</b><br/>Centroidal 与轨迹优化<br/><em>接触力锥约束</em>"]
+  S3["<b>Stage 3</b><br/>MPC 实时规划<br/><em>凸 MPC / NMPC</em>"]
+  S4["<b>Stage 4</b><br/>TSID / WBC 落地<br/><em>HQP + 状态估计</em>"]
 
   S0 --> S1 --> S2 --> S3 --> S4
 

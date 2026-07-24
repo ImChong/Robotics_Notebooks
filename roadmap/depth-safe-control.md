@@ -6,10 +6,10 @@
 
 ```mermaid
 flowchart LR
-  S0["**Stage 0**<br/>数学基础<br/><em>Lyapunov 稳定性</em>"]
-  S1["**Stage 1**<br/>CLF / CBF 基础<br/><em>CBF-QP 实现</em>"]
-  S2["**Stage 2**<br/>嵌入 WBC / MPC<br/><em>Safety Filter</em>"]
-  S3["**Stage 3**<br/>Safe RL<br/><em>CMDP / Lagrangian</em>"]
+  S0["<b>Stage 0</b><br/>数学基础<br/><em>Lyapunov 稳定性</em>"]
+  S1["<b>Stage 1</b><br/>CLF / CBF 基础<br/><em>CBF-QP 实现</em>"]
+  S2["<b>Stage 2</b><br/>嵌入 WBC / MPC<br/><em>Safety Filter</em>"]
+  S3["<b>Stage 3</b><br/>Safe RL<br/><em>CMDP / Lagrangian</em>"]
 
   S0 --> S1 --> S2 --> S3
 

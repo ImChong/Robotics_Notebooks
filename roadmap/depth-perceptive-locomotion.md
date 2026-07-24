@@ -6,11 +6,11 @@
 
 ```mermaid
 flowchart LR
-  S0["**Stage 0**<br/>盲走基线<br/><em>本体感知 RL locomotion</em>"]
-  S1["**Stage 1**<br/>感知与地形表征<br/><em>深度相机 / 高程图 / latent</em>"]
-  S2["**Stage 2**<br/>感知策略训练<br/><em>Teacher-Student / 地形课程</em>"]
-  S3["**Stage 3**<br/>越障进阶<br/><em>楼梯 / 离散地形 / 跑酷</em>"]
-  S4["**Stage 4**<br/>系统整合<br/><em>导航栈 / 真机部署</em>"]
+  S0["<b>Stage 0</b><br/>盲走基线<br/><em>本体感知 RL locomotion</em>"]
+  S1["<b>Stage 1</b><br/>感知与地形表征<br/><em>深度相机 / 高程图 / latent</em>"]
+  S2["<b>Stage 2</b><br/>感知策略训练<br/><em>Teacher-Student / 地形课程</em>"]
+  S3["<b>Stage 3</b><br/>越障进阶<br/><em>楼梯 / 离散地形 / 跑酷</em>"]
+  S4["<b>Stage 4</b><br/>系统整合<br/><em>导航栈 / 真机部署</em>"]
 
   S0 --> S1 --> S2 --> S3 --> S4
 

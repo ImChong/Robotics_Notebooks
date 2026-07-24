@@ -6,13 +6,13 @@
 
 ```mermaid
 flowchart LR
-  S0["**Stage 0**<br/>时序建模基础<br/><em>LSTM / Transformer</em>"]
-  S1["**Stage 1**<br/>BC / DAgger<br/><em>核心概念</em>"]
-  S2["**Stage 2**<br/>Motion Retargeting<br/><em>MoCap → 机器人</em>"]
-  S3["**Stage 3**<br/>Diffusion Policy<br/><em>生成式动作</em>"]
-  S4["**Stage 4**<br/>Skill Embedding<br/><em>ASE / 对抗式</em>"]
-  S5["**Stage 5**<br/>Sim2Real<br/><em>真机迁移</em>"]
-  S6["**Stage 6**<br/>进阶方向<br/><em>Video / 多模态 / 长时程</em>"]
+  S0["<b>Stage 0</b><br/>时序建模基础<br/><em>LSTM / Transformer</em>"]
+  S1["<b>Stage 1</b><br/>BC / DAgger<br/><em>核心概念</em>"]
+  S2["<b>Stage 2</b><br/>Motion Retargeting<br/><em>MoCap → 机器人</em>"]
+  S3["<b>Stage 3</b><br/>Diffusion Policy<br/><em>生成式动作</em>"]
+  S4["<b>Stage 4</b><br/>Skill Embedding<br/><em>ASE / 对抗式</em>"]
+  S5["<b>Stage 5</b><br/>Sim2Real<br/><em>真机迁移</em>"]
+  S6["<b>Stage 6</b><br/>进阶方向<br/><em>Video / 多模态 / 长时程</em>"]
 
   S0 --> S1 --> S2 --> S3 --> S4 --> S5 --> S6
 

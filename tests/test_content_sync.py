@@ -89,6 +89,40 @@ console.log('ok');
         self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
         self.assertIn("ok", result.stdout)
 
+    def test_normalize_mermaid_markdown_emphasis_to_html_bold(self):
+        """Depth roadmap overview used **Stage N**; htmlLabels need <b>, not literal asterisks."""
+        content = MAIN_JS.read_text(encoding="utf-8")
+        self.assertIn("function normalizeMermaidMarkdownEmphasis(source)", content)
+        self.assertIn("normalizeMermaidMarkdownEmphasis(source)", content)
+        node = r"""
+const fs = require('fs');
+const content = fs.readFileSync(process.argv[2], 'utf8');
+const start = content.indexOf('function normalizeMermaidMarkdownEmphasis(source)');
+const end = content.indexOf('function mermaidSourceForCurrentBrowser', start);
+eval(content.slice(start, end));
+const sample = 'S0["**Stage 0**<br/>全景与前置<br/><em>BFM</em>"]';
+const out = normalizeMermaidMarkdownEmphasis(sample);
+if (out.includes('**')) throw new Error('markdown ** must be removed: ' + out);
+if (!out.includes('<b>Stage 0</b>')) throw new Error('expected <b>Stage 0</b>: ' + out);
+if (!out.includes('<br/>') || !out.includes('<em>BFM</em>')) {
+  throw new Error('existing HTML labels must stay intact: ' + out);
+}
+console.log('ok');
+"""
+        import tempfile
+
+        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tmp:
+            tmp.write(node)
+            tmp_path = tmp.name
+        result = subprocess.run(
+            ["node", tmp_path, str(MAIN_JS)],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
+        self.assertIn("ok", result.stdout)
+
     def test_main_js_contains_mermaid_click_zoom_lightbox(self):
         content = MAIN_JS.read_text(encoding="utf-8")
         expected_snippets = [

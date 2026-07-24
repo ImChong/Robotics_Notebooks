@@ -6,12 +6,12 @@
 
 ```mermaid
 flowchart LR
-  S0["**Stage 0**<br/>全景与前置<br/><em>RoboCup · 感知×决策×运动耦合</em>"]
-  S1["**Stage 1**<br/>运动基座<br/><em>参数化全向行走 / 跌倒恢复</em>"]
-  S2["**Stage 2**<br/>机载感知<br/><em>球/球门/对手检测 · 自定位</em>"]
-  S3["**Stage 3**<br/>单机技能<br/><em>追球–对齐–射门 课程 RL</em>"]
-  S4["**Stage 4**<br/>多机战术<br/><em>角色分配 / 编队 / 低带宽群控</em>"]
-  S5["**Stage 5**<br/>进阶方向<br/><em>整队系统 / 端到端 / 体育谱系</em>"]
+  S0["<b>Stage 0</b><br/>全景与前置<br/><em>RoboCup · 感知×决策×运动耦合</em>"]
+  S1["<b>Stage 1</b><br/>运动基座<br/><em>参数化全向行走 / 跌倒恢复</em>"]
+  S2["<b>Stage 2</b><br/>机载感知<br/><em>球/球门/对手检测 · 自定位</em>"]
+  S3["<b>Stage 3</b><br/>单机技能<br/><em>追球–对齐–射门 课程 RL</em>"]
+  S4["<b>Stage 4</b><br/>多机战术<br/><em>角色分配 / 编队 / 低带宽群控</em>"]
+  S5["<b>Stage 5</b><br/>进阶方向<br/><em>整队系统 / 端到端 / 体育谱系</em>"]
 
   S0 --> S1 --> S2 --> S3 --> S4 --> S5
 

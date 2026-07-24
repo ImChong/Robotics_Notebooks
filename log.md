@@ -1,5 +1,14 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-24] fix(ux) | 纵深路线「路线一览」Mermaid 节点 `**Stage**` 原样显示 — 改为 `<b>` 并渲染前规范化
+
+- **现象：** 二十条 `roadmap/depth-*.md`「路线一览」flowchart 节点写 `**Stage N**`，与已有 `<br/>` / `<em>` 混用；站点 `htmlLabels` 不解析 Markdown 粗体，星号原样出现在图上。
+- **修复：**
+  - 全部纵深路线一览标签：`**Stage N**` → `<b>Stage N</b>`（`roadmap/depth-*.md`）
+  - `docs/main.js`：`normalizeMermaidMarkdownEmphasis` 在 `mermaid.run` 前将残留 `**…**` 转为 `<b>`
+  - 回归：`tests/test_content_sync.py`；清单：`docs/checklists/frontend-optimization-v1.md`
+- **涉及路线（示例）：** [`roadmap/depth-bfm.md`](roadmap/depth-bfm.md)、[`roadmap/depth-vla.md`](roadmap/depth-vla.md)、[`roadmap/depth-wam.md`](roadmap/depth-wam.md)（及其余 17 条 depth 纵深）
+
 ## [2026-07-24] ingest | sources/papers/zonda_arxiv_2607_21025.md — ZONDA 零样本多楼层动态 ObjectNav；升格 wiki/entities/paper-zonda.md；交叉更新 wiki/tasks/vision-language-navigation.md、wiki/overview/vln-open-source-repro-paradigms.md、wiki/entities/habitat-sim.md、wiki/entities/paper-uni-lavira.md、wiki/concepts/sim2real.md
 
 - **资料：** [ZONDA arXiv:2607.21025](https://arxiv.org/abs/2607.21025)（v1，2026-07-23）

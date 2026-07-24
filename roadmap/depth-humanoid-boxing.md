@@ -6,12 +6,12 @@
 
 ```mermaid
 flowchart LR
-  S0["**Stage 0**<br/>全景与前置<br/><em>对抗全身任务 · 自主 vs 遥操作</em>"]
-  S1["**Stage 1**<br/>跟踪基座<br/><em>拳击 MoCap → 重定向 → 全身跟踪</em>"]
-  S2["**Stage 2**<br/>技能潜空间<br/><em>跟踪技能蒸馏成动作流形</em>"]
-  S3["**Stage 3**<br/>对抗自博弈<br/><em>零和博弈 / LS-NFSP</em>"]
-  S4["**Stage 4**<br/>真机与安全<br/><em>高冲击接触 / 跌倒保护 / 耐久</em>"]
-  S5["**Stage 5**<br/>进阶方向<br/><em>类人度评测 / 体育谱系 / 赛事产业</em>"]
+  S0["<b>Stage 0</b><br/>全景与前置<br/><em>对抗全身任务 · 自主 vs 遥操作</em>"]
+  S1["<b>Stage 1</b><br/>跟踪基座<br/><em>拳击 MoCap → 重定向 → 全身跟踪</em>"]
+  S2["<b>Stage 2</b><br/>技能潜空间<br/><em>跟踪技能蒸馏成动作流形</em>"]
+  S3["<b>Stage 3</b><br/>对抗自博弈<br/><em>零和博弈 / LS-NFSP</em>"]
+  S4["<b>Stage 4</b><br/>真机与安全<br/><em>高冲击接触 / 跌倒保护 / 耐久</em>"]
+  S5["<b>Stage 5</b><br/>进阶方向<br/><em>类人度评测 / 体育谱系 / 赛事产业</em>"]
 
   S0 --> S1 --> S2 --> S3 --> S4 --> S5
 
