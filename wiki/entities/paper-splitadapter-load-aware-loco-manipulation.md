@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, sim2real, online-adaptation, world-model, film, grl, amp, physhsi, unitree-g1, isaac-gym, mujoco, box-manipulation, samsung]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-24
 arxiv: "2606.03297"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
@@ -141,6 +141,17 @@ flowchart TB
 - **最难格点：** **6 kg、0 cm** 地面搬起（sim 表 1 高亮）。
 - **现象：** 基线与 WM-FiLM 常能 **抬起** 但在 **搬运/放置** 失稳；SplitAdapter 在 **6 kg 各高度** 维持高 Full-task。
 - **局限（论文 §6）：** 仅 **刚性箱子** loco-manip；真机重载试验规模受 **G1 单臂约 3 kg 额定载荷** 与硬件耐久约束。
+
+## 结论
+
+**冻结 AMP 搬箱策略后，把负载与动力学拆成双 latent 再分层 FiLM，是重载 loco-manip sim2real 适配的高杠杆改动。**
+
+1. **不要混编两类失配** — 物体/负载支路与机器人动力学支路分开，经分裂世界模型 + GRL 交叉对抗抑制泄漏。
+2. **分层 FiLM 对准不同阶段** — 浅层用载荷条件化抬升，深层用 \(z_{\mathrm{dyn}}\) 补 sim–real 差；消融显示单层 FiLM 主要伤搬运/放置。
+3. **完整版量化领先** — MuJoCo Full-task 86/90 vs PhysHSI 71/90、WM-FiLM 75/90；G1 零样本 26/27（96.3%）vs 16/27（59.3%）。
+4. **6 kg 与 0 cm 地面搬起是最难格** — 基线常能抬起却在搬运/放置失稳；去掉 split latent 对 6 kg Full-task 伤害最大。
+5. **可插拔、不重训大策略** — 只更新适配器与 FiLM，共享原 RL 奖励；上界仍受冻结 PhysHSI 类能力约束。
+6. **范围** — 刚性箱子 loco-manip；真机重载受 G1 单臂约 3 kg 额定与耐久限制；项目页暂无公开训练仓。
 
 ## 常见误区或局限
 

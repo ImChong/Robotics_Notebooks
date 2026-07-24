@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, text-to-motion, diffusion, motion-tracking, gmt, moe, whole-body-control, shanghai-ai-lab, agile-motion]
 status: complete
-updated: 2026-07-21
+updated: 2026-07-24
 arxiv: "2603.19305"
 venue: "2026 · arXiv"
 related:
@@ -125,6 +125,16 @@ flowchart LR
   - **更多真机**：crawl、frog jump、monkey、jump、spin kick、hop、punch、kneel、wave 等。
 - **论文主张**：相对既有 text-driven 人形控制，将可行动作推进到 **高动态、高难度全身** 区间，而非停留于行走与低动态。
 - **量化协议**：完整 benchmark、消融与成功率/跟踪误差表以 **arXiv PDF** 为准；本页为策展索引级摘要。
+
+## 结论
+
+**文本驱动人形敏捷控制要先在机器人原生 262D 里生成，并用 physics-prefix + GMT 闭环验证，而不是「人体 T2M → 重定向 → hope tracker」。**
+
+1. **生成空间改到 robot-native** — 262 维机器人骨骼扩散，避开推理期人体→机 retarget 带来的动力学/接触不可行。
+2. **Physics-prefix 是续写约束，不是事后滤镜** — 可执行前缀 + 约 1s 新生成延续，经预训练 GMT 检验可跟踪性，再闭环仿真精炼。
+3. **GMT 底座要先训厚再适配** — 课程 MoE → 动态专家扩展 → 无标注后训练；prefix 阶段再微调 tracker，服务 breakdance、侧手翻、旋跳等高动态真机。
+4. **与独立 GMT / Heracles 勿混读** — 复用 GMT 跟踪范式但是生成–跟踪统一框架；Heracles 改参考缓冲，本文从头生成 robot-native 轨迹。
+5. **复现与边界** — 截至策展日项目页未列公开代码；演示偏高动态技能指令，日常 loco-manipulation 与复杂交互未在首页强调；量化表以 PDF 为准。
 
 ## 常见误区或局限
 

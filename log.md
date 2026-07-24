@@ -1,8 +1,52 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-24] structural | Top-100 论文枢纽补齐「结论」— hub-rankings paper 榜 paper-* 全覆盖
+
+- **范围：** [`exports/hub-rankings.json`](exports/hub-rankings.json) `paper` 榜 Top-100 中全部 `wiki/entities/paper-*.md`（方法页 / 非 paper-* 实体不在「结论」政策内）
+- **本轮新增：** 第 51–100 名中缺结论的 36 页；第 1–50 名已在同日先一轮补齐
+- **工具：** [`scripts/insert_paper_conclusion.py`](scripts/insert_paper_conclusion.py)
+- **格式：** 1 句总判 + 3–7 条可操作要点（对齐 [`schema/page-types.md`](schema/page-types.md)）
+- **本轮补齐页面：**
+  - [`wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md`](wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md)
+  - [`wiki/entities/paper-hrl-stack-06-hdmi.md`](wiki/entities/paper-hrl-stack-06-hdmi.md)
+  - [`wiki/entities/paper-rove-humanoid-vla-intervention.md`](wiki/entities/paper-rove-humanoid-vla-intervention.md)
+  - [`wiki/entities/paper-splitadapter-load-aware-loco-manipulation.md`](wiki/entities/paper-splitadapter-load-aware-loco-manipulation.md)
+  - [`wiki/entities/paper-omnicontact-humanoid-loco-manipulation.md`](wiki/entities/paper-omnicontact-humanoid-loco-manipulation.md)
+  - [`wiki/entities/paper-pace-sim2real-legged-robots.md`](wiki/entities/paper-pace-sim2real-legged-robots.md)
+  - [`wiki/entities/paper-ssr-humanoid-open-world-traversal.md`](wiki/entities/paper-ssr-humanoid-open-world-traversal.md)
+  - [`wiki/entities/paper-vesta-generalist-embodied-reasoning.md`](wiki/entities/paper-vesta-generalist-embodied-reasoning.md)
+  - [`wiki/entities/paper-wem-world-ego-modeling.md`](wiki/entities/paper-wem-world-ego-modeling.md)
+  - [`wiki/entities/paper-adp.md`](wiki/entities/paper-adp.md)
+  - [`wiki/entities/paper-cwi-composite-humanoid-whole-body-imitation.md`](wiki/entities/paper-cwi-composite-humanoid-whole-body-imitation.md)
+  - [`wiki/entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md`](wiki/entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md)
+  - [`wiki/entities/paper-omnitactune-tactile-residual-adaptation.md`](wiki/entities/paper-omnitactune-tactile-residual-adaptation.md)
+  - [`wiki/entities/paper-steam-advantage-modeling.md`](wiki/entities/paper-steam-advantage-modeling.md)
+  - [`wiki/entities/paper-chord-contact-wrench-dexterous-manipulation.md`](wiki/entities/paper-chord-contact-wrench-dexterous-manipulation.md)
+  - [`wiki/entities/paper-contactmimic.md`](wiki/entities/paper-contactmimic.md)
+  - [`wiki/entities/paper-coordex-dexterous-humanoid-loco-manipulation.md`](wiki/entities/paper-coordex-dexterous-humanoid-loco-manipulation.md)
+  - [`wiki/entities/paper-dit4dit-video-action-model.md`](wiki/entities/paper-dit4dit-video-action-model.md)
+  - [`wiki/entities/paper-egohtr.md`](wiki/entities/paper-egohtr.md)
+  - [`wiki/entities/paper-egosteer.md`](wiki/entities/paper-egosteer.md)
+  - [`wiki/entities/paper-harness-vla.md`](wiki/entities/paper-harness-vla.md)
+  - [`wiki/entities/paper-humanoidmimicgen.md`](wiki/entities/paper-humanoidmimicgen.md)
+  - [`wiki/entities/paper-loco-manip-07-wt-umi.md`](wiki/entities/paper-loco-manip-07-wt-umi.md)
+  - [`wiki/entities/paper-mujica-wheel-legged-multi-skill.md`](wiki/entities/paper-mujica-wheel-legged-multi-skill.md)
+  - [`wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md`](wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md)
+  - [`wiki/entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md`](wiki/entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md)
+  - [`wiki/entities/paper-notebook-kungfubot-2.md`](wiki/entities/paper-notebook-kungfubot-2.md)
+  - [`wiki/entities/paper-now-you-see-that-humanoid-vision-locomotion.md`](wiki/entities/paper-now-you-see-that-humanoid-vision-locomotion.md)
+  - [`wiki/entities/paper-phygile.md`](wiki/entities/paper-phygile.md)
+  - [`wiki/entities/paper-slowrl-safe-lora-locomotion-sim2real.md`](wiki/entities/paper-slowrl-safe-lora-locomotion-sim2real.md)
+  - [`wiki/entities/paper-abot-m05-mobile-manipulation-wam.md`](wiki/entities/paper-abot-m05-mobile-manipulation-wam.md)
+  - [`wiki/entities/paper-ame-attention-based-map-encoding.md`](wiki/entities/paper-ame-attention-based-map-encoding.md)
+  - [`wiki/entities/paper-amp-survey-16-clot.md`](wiki/entities/paper-amp-survey-16-clot.md)
+  - [`wiki/entities/paper-bam-extended-friction-servo-actuators.md`](wiki/entities/paper-bam-extended-friction-servo-actuators.md)
+  - [`wiki/entities/paper-being-m07-humanoid-latent-wam.md`](wiki/entities/paper-being-m07-humanoid-latent-wam.md)
+  - [`wiki/entities/paper-deep-whole-body-parkour.md`](wiki/entities/paper-deep-whole-body-parkour.md)
+
 ## [2026-07-24] structural | Top-50 论文枢纽补齐「结论」— hub-rankings paper 榜 paper-* 全覆盖 + insert_paper_conclusion.py
 
-- **范围：** [`exports/hub-rankings.json`](exports/hub-rankings.json) `paper` 榜 Top-50 中全部 `wiki/entities/paper-*.md`（方法页 / 非 paper-* 实体不在「结论」政策内）
+- **范围：** [`exports/hub-rankings.json`](exports/hub-rankings.json) `paper` 榜 Top-100 中全部 `wiki/entities/paper-*.md`（方法页 / 非 paper-* 实体不在「结论」政策内）
 - **工具：** [`scripts/insert_paper_conclusion.py`](scripts/insert_paper_conclusion.py)（评测节后、对比/局限前插入）
 - **格式：** 1 句总判 + 3–7 条可操作要点（对齐 [`schema/page-types.md`](schema/page-types.md)）
 - **补齐页面（含初批度排序遗漏、按官方 hub 榜补入的 5 页）：**

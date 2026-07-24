@@ -12,7 +12,7 @@ tags:
   - cosmos-predict
   - joint-training
 status: complete
-updated: 2026-07-22
+updated: 2026-07-24
 arxiv: "2603.10448"
 code: https://github.com/Mondo-Robotics/DiT4DiT
 related:
@@ -94,6 +94,17 @@ flowchart TB
 | **G1 真机** | 八项桌面 + 三项全身 loco-manip；单目 egocentric；优于 GR00T-N1.5、Qwen3DiT |
 | **泛化** | 未见物体/类别/数量；如 Arrange Flower 类别变化 **70%** vs Qwen3DiT **0%** |
 | **效率** | **2.2B** 可训参数；A100 **6 Hz**（相对 Cosmos Policy **0.7 Hz**、mimic-video **1.9 Hz**） |
+
+## 结论
+
+**视频生成可作为相对 Grounding/FLARE 更强的策略 scaling proxy：联合训练 Video DiT 与 Action DiT，从固定 $\tau_f$ 去噪隐状态解码动作。**
+
+1. **联合 dual flow-matching** — 非冻结视频骨干只训动作头（mimic-video）；三时间步 $\tau_v/\tau_f/\tau_a$ 稳住特征与控制相位。
+2. **条件来自隐状态而非像素未来帧** — hook $h_t^{\tau_f}$ 经 cross-attn 进 Action DiT。
+3. **基准可读** — LIBERO 平均 **98.6%**；RoboCasa-GR1 约 **50.8%**（项目页 **56.7%**）超 GR00T-N1.6 **47.8%**。
+4. **真机与泛化** — G1 八项桌面 + 三项 loco-manip 超 GR00T-N1.5/Qwen3DiT；未见类别如 Arrange Flower **70%** vs **0%**。
+5. **效率权衡** — **2.2B** 可训参数，A100 **6 Hz**（慢于 GR00T 13 Hz，快于 Cosmos Policy **0.7 Hz**）；论文主张闭环动作质量优先。
+6. **谱系** — 同团队 MotionWAM 继承双 DiT+flow 接口，推向实时全身 loco-manip。
 
 ## 常见误区或局限
 

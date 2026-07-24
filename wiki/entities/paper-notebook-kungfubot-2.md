@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, reinforcement-learning, unitree-g1, sim2real, teleai, sjtu, omoe, icra-2026]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-24
 arxiv: "2509.16638"
 venue: "ICRA 2026"
 related:
@@ -111,6 +111,16 @@ flowchart TB
 - **长序列：** 按时长分桶，基线随时长退化，VMS 稳健。
 - **真机：** 风格化 locomotion、羽毛球/抛球/挥拍、多样踢腿、武术、Charleston/自由舞/长武术套路等（见 [项目页](https://kungfubot2-humanoid.github.io/)）。
 - **下游：** 自然语言 text-to-motion；极限 OOD 技能少量微调。
+
+## 结论
+
+**单策略覆盖多样动态技能并稳住分钟级长序列，靠的是混合跟踪目标 + OMoE + 段级未来窗口奖励，而不是把 KungfuBot v1 的高动态课程直接加宽。**
+
+1. **局部保真与全局轨迹要一起抓** — 纯全局急转易漂，逐步匹配侧踢易失稳；段级短未来窗口兼顾风格与稳定。
+2. **OMoE 用正交子空间做技能组合** — 相对标准 MoE/MLP 更低跟踪误差、更好泛化；重复步态少专家、多变舞蹈多专家。
+3. **长序列是主验收轴** — 按时长分桶时基线随时长退化，VMS 维持低误差；真机覆盖风格化 locomotion、球类、踢腿、武术与长舞蹈套路。
+4. **可当高层规划的低层底座** — 支持 text-to-motion 指令跟踪；空翻等 OOD 用少量微调扩展，不必为每技能重训整网。
+5. **读代码对齐 PBHC general motion tracking** — 2025-10 后对应 v2；勿与 v1 高动态单技能+自适应容差课程混为同一设定。
 
 ## 常见误区
 

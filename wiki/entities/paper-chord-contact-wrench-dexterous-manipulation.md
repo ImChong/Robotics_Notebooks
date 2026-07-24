@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dexterous-manipulation, contact-rich, imitation-learning, reinforcement-learning, benchmark, bimanual, nvidia, isaac-lab, sim2real]
 status: complete
-updated: 2026-06-29
+updated: 2026-07-24
 venue: "2026 · NVIDIA Tech Report"
 summary: "CHORD 以物体中心接触力旋量（CWS）空间奖励把人类双手演示迁移到灵巧手 RL 策略，在 4,739 项 benchmark 上训练、1,831 项评测达 82.12% 平均成功率，并扩展到 G1 全身与 Sharpa 真机。"
 related:
@@ -110,6 +110,17 @@ flowchart TB
 | 基线（行内可比） | DexMachina AUC 0.232→**0.687**；ManipTrans MT-SR 0.428→**0.639**；Ours-1 SP-SR 0.133→**0.999** |
 | 全身 | G1 + Dex3，手部-only / TPV 演示，**90.77%** |
 | 真机 | Dexmate + 双 Sharpa；mocap；开环 chunk + 闭环 |
+
+## 结论
+
+**灵巧操作从演示学接触时，应对齐物体级力学效应（CWS），而不是对齐接触点位置。**
+
+1. **Wrench 比 Position** — support function 比较人/机接触可支持的力-矩包络；允许不同接触位置/手型，只要物体运动效应一致。
+2. **奖励仍是 shaping** — $r_{\mathrm{task}}+r_{\mathrm{imit}}+r_{\mathrm{cws}}$ + VOC 课程/状态 reset/扰动；不是纯 offline BC。
+3. **规模化评测可读** — **1,831** 任务统一超参平均成功率 **82.12%**；CWS 与成功 Pearson **r≈0.80**。
+4. **相对位置/力邻近基线** — DexMachina AUC、ManipTrans MT-SR、SPIDER SP-SR 行内均有大幅提升（见表）。
+5. **跨具身与真机** — 同 CWS 表述可比不同手型；G1+Dex3 约 **90.77%**；Sharpa 双手开环/闭环验证。
+6. **噪声演示退化** — 重建噪大时退到 force-closure basis；真机仍依赖 mocap，端到端 vision 未做。
 
 ## 与代表性方法对比（概念层）
 

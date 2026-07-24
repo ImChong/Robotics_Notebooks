@@ -3,7 +3,7 @@ type: entity
 tags: [paper, quadruped, biped, reinforcement-learning, perceptive-locomotion, neural-mapping, teacher-student, attention, sim2real, eth, anymal, limx]
 status: stable
 summary: "AME-2：全局+局部 AME 编码器 + 不确定性神经高程映射 + Teacher–Student RL，在 ANYmal-D 与 TRON1 上同时实现 parkour 级敏捷与稀疏/未见地形泛化。"
-updated: 2026-07-13
+updated: 2026-07-24
 arxiv: "2601.08485"
 venue: "arXiv 2026"
 related:
@@ -129,6 +129,16 @@ Teacher 输入 **3D** 坐标；Student 输入 **4D** $(x,y,z,u)$（$u$ 为不确
 ### 鲁棒
 
 - TRON1 在 **解锁轮式平台车** 上攀/平衡；ANYmal **膝撑** 恢复 **倾斜非固定踏石**。
+
+## 结论
+
+**敏捷与泛化可以同配方兼得：全局+局部 AME、带不确定性的神经高程映射，以及「训练栈=部署栈」的 Teacher–Student，比端到端 depth 或经典 elevation 单独一条腿更稳。**
+
+1. **Student 必须吃在线同栈映射** — Teacher 用 GT 地图，Student 用 4D 高程+不确定性；部署不再换经典滤波管线，机载约 5 ms/帧。
+2. **global features 进 query 是相对 AME-1 的关键升级** — 同一 policy 能按地形切换攀爬/跳跃/踏石；仅 proprio-query 在复杂混合地形 motion pattern 不足。
+3. **敏捷读点对齐 parkour** — ANYmal-D 零样本最难 parkour+rubble，往返约 2 m/s；TRON1 上攀 0.48 m / 下攀 0.88 m。
+4. **泛化靠显式地图记忆** — 稀疏梁/踏石与组合未见地形可零样本；攀台失败后碰撞补全地图再重试，对照 generalist 缺长期空间记忆。
+5. **不是 raw depth 端到端 loco** — 深度只进映射模块；控制侧仍是显式高程 + AME-2。训练成本仍高（数十 GPU·天），未覆盖 manipulation。
 
 ## 与其他工作对比
 

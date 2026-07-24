@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, contact-rich, loco-manipulation, hoi, reinforcement-learning, unitree-g1, uiuc, sim2real]
 status: complete
-updated: 2026-07-12
+updated: 2026-07-24
 arxiv: "2607.08742"
 venue: "2026 · arXiv"
 summary: "ContactMimic（arXiv:2607.08742）在 keypoint tracking 外显式跟踪 per-body 二值接触指令；以 contact-following 奖励与三种轨迹增广打破关键点–接触相关性，使同一参考下可开启或抑制任务相关物理接触；HUMOTO 10 条仿真与 G1 真机 5 条验证 contact controllability，显著优于 BeyondMimic 且无需任务专用奖励即可完成搬箱等操作。"
@@ -127,6 +127,17 @@ flowchart TB
 | Lean on backrest I | 9/10 | 10/10 | 躯干 sustained 靠椅背 ⇔ contact ✔ |
 | Lean on backrest II | 10/10 | 9/10 | 同上（不同姿态风格） |
 | Sit and squat | 5/5 | 5/5 | 坐姿承重 ⇔ contact ✔，否则蹲姿 |
+
+## 结论
+
+**接触丰富 HOI 跟踪要把 per-body 接触指令做成可运行时开关，并靠轨迹增广打破 keypoint–contact 相关性——只加输入/奖励不够。**
+
+1. **任务由接触语义定义** — 擦板/坐椅/搬箱成功取决于是否产生有意义接触，而非仅 MPJPE。
+2. **同 keypoint 切换 ✔/✘** — 策略额外吃 $\bar{c}_t$，用 $r^{lm}+r^{cd}$ 跟接触；部署可编排「留痕 vs 悬停」「承重 vs 蹲姿」。
+3. **三种增广必要** — label 翻转 / 去物体 / 膨胀几何提供同结构异 contact 配对；去掉后 controllability 明显变差。
+4. **相对 BeyondMimic** — MPJPE 相当，但 pick-up box 物体位移约 **0.03 m→0.49 m**，接触冲量随指令单调。
+5. **真机 contact controllability** — G1 上 5 条 HOI，✔/✘ 成功率多为 **5/5–10/10**。
+6. **边界** — 当前 per-motion 策略、依赖 HUMOTO；非 universal tracker；代码入库时未发。
 
 ## 与代表性方法对比（策展）
 

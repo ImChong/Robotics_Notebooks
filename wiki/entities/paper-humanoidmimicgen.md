@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, imitation-learning, data-generation, mimicgen, whole-body-planning, vla, sim2real, synthetic-data, nvidia, ut-austin, unitree-g1, icra2026]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-24
 arxiv: "2605.27724"
 openreview: "ekzk7TSLKr"
 venue: "ICRA 2026 Workshop on Synthetic Data for Robot Learning (Best Workshop Paper Finalist)"
@@ -152,6 +152,17 @@ flowchart TB
 | PickCanister | 0.50 | 0.75 |
 | PickCanisterWithObstruction | 0.60 | 0.75 |
 | **平均** | **0.51** | **0.71** |
+
+## 结论
+
+**双足 loco-manipulation 上「单条 VR 示范 → 规划驱动千级数据」能压过单纯堆人力采集，关键是混合控制 + 全身可执行规划，而不是再堆 MimicGen 式末端适配。**
+
+1. **数据质量优先于数据量叙事** — 每任务 1 demo → 1000 轨迹，VLA 平均 PSR 0.89，高于 100 条真人 demo 的 0.48 与 DexMimicGen+ 的 0.33。
+2. **Motion noise 与 init 随机化几乎是硬门槛** — 去掉后平均 PSR 分别跌到 0.49 / 0.51；生成管线必须把执行扰动写进标签协议。
+3. **架构上 VLA ≈ Flow，远强于 DP** — 同 1000 生成轨迹下 GR00T N1.6 0.89、AdaFlow 0.86、Diffusion Policy 0.51；长时域 Push Shelf Forward 达 1.00。
+4. **真机走 sim-and-real co-training** — 平均成功率 0.51→0.71（+20%）；仿真主结果用 VLA、真机用 flow matching，对比时按附录协议分开读。
+5. **Homie 下肢 + cuRobo WBIK + 技能 DAG** — 用 RL 腿跟踪 + 全身 IK/碰撞规划补足双足平衡；DexMimicGen+ 故意无规划，勿读成原论文上限。
+6. **仍需人工 precedence/coordination 标注** — 固定技能序列难覆盖需高层 replan 的任务；刚体 object-frame 对类内几何大变有限。
 
 ## 常见误区或局限
 

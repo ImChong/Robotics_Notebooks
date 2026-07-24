@@ -11,7 +11,7 @@ tags:
   - mobile-robot
   - goal-conditioned
 status: complete
-updated: 2026-07-15
+updated: 2026-07-24
 arxiv: "2606.13494"
 related:
   - ../concepts/world-action-models.md
@@ -118,6 +118,16 @@ flowchart TB
 | 图像 + 动作 + 状态 | policy | 大幅提升 |
 | 图像 + 动作 + 状态 + value | policy | **最佳** |
 | 无未来图像（动作+状态+value） | policy | 仍 **降精度** → 需 **联合** 而非单头 |
+
+## 结论
+
+**导航世界模型要直接变成可部署控制，就得把未来观测、goal-progress value 与 action chunk 绑进同一次扩散去噪，而不是预测后再挂 CEM。**
+
+1. **默认走 policy 模式、丢掉 CEM** — 九帧 latent canvas 上单次扩散前向得 action chunk，receding-horizon 闭环；相对 NWM+CEM 离线 ATE/RPE 更低（0.324/0.099 vs 0.453/0.107，无 FT）。
+2. **联合监督是关键，不是「多一个头」** — 仅未来图像 + CEM 弱；图像+动作+状态大幅提升；再加 value 最佳；去掉未来图像仍降精度。
+3. **真机轻量优势可读** — Diablo 24 episode image-goal：79.2%（19/24）优于 OmniVLA 58.3% 与 NWM 16.7%；2B 视频骨干相对 7B VLA 更轻。
+4. **任务边界要守** — 本文是地面 image-goal，不是语言 VLN、也不是人形全身；代码尚未开源，真机规模仅四环境 24 episode。
+5. **与 Cosmos Policy / MotionWAM 同族不同任务** — 复用 latent-frame 原则，选型时按「导航闭环」而非「任意视频 WM + 导航头」来接。
 
 ## 常见误区或局限
 

@@ -100,23 +100,23 @@
 ### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（752 个）
+### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（717 个）
 - wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md
-- wiki/entities/paper-abot-m05-mobile-manipulation-wam.md
 - wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md
 - wiki/entities/paper-adaptive-humanoid-control.md
-- wiki/entities/paper-adp.md
 - wiki/entities/paper-aerial-aquatic-remora-hitchhiking-robot.md
-- wiki/entities/paper-ame-attention-based-map-encoding.md
 - wiki/entities/paper-amp-survey-01-amp.md
 - wiki/entities/paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md
 - wiki/entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md
 - wiki/entities/paper-amp-survey-12-haml.md
 - wiki/entities/paper-amp-survey-13-humanoid_goalkeeper.md
 - wiki/entities/paper-amp-survey-14-husky.md
-- wiki/entities/paper-amp-survey-16-clot.md
 - wiki/entities/paper-amp-survey-17-teamhoi.md
-- … 另有 737 个（历史 backlog；新建 / 大幅改写的 paper-* 必须含 `## 结论`）
+- wiki/entities/paper-amp-survey-19-embrace_collisions.md
+- wiki/entities/paper-anymal-walk-minutes-parallel-drl.md
+- wiki/entities/paper-apt-rl-agile-perceptive-quadruped-locomotion.md
+- wiki/entities/paper-argus-dynamic-symmetry.md
+- … 另有 702 个（历史 backlog；新建 / 大幅改写的 paper-* 必须含 `## 结论`）
 
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无

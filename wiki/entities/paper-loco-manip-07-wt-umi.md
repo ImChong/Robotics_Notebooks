@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-survey, loco-manip-contact-survey, tactile, force-control, admittance-control, teleoperation, whole-body-manipulation, humanoid, georgia-tech]
 status: complete
-updated: 2026-07-22
+updated: 2026-07-24
 arxiv: "2606.13232"
 venue: "arXiv 2026"
 related:
@@ -99,6 +99,16 @@ planner 输出的不只是位置块，还包括接触力轨迹。项目页报告
 | 数据/硬件 | 项目页列出 Dataset、Hardware Guide 入口，需后续核查具体 URL 与许可证 |
 | 控制接口 | 力监督 planner + tactile admittance controller |
 | 适用对象 | bulky rigid、deformable objects、human-humanoid collaboration |
+
+## 结论
+
+**接触丰富人形操作里，把力从后处理指标升级成「planner 输出 + admittance 参考」，比只堆视觉 UMI 示范更能稳住接触建立与漂移。**
+
+1. **Human Correction + Admittance 是主配置** — 平均成功率 96.15%，接触漂移 12.47 mm、建立接触 0.58 s；相对 Raw Teleoperation 85.35% 与纯 Correction 89.29% 明显抬升。
+2. **人类力更平滑，但不能直接当机器人轨迹** — Human Force RMSE 1.05 N / lag 68 ms，Teleop 2.07 N / 151 ms；必须走 target-pose correction 再进 planner。
+3. **Admittance 不是无条件增益** — ViT-FMT Bucket 80%→92%、π0.5 Yogaball/Pillow 有提升，但 π0.5 Bucket 84%→76% 会退化；控制层要与策略分布联合调参。
+4. **传感与硬件是复现瓶颈** — 全身触觉安装/标定/延迟直接进 admittance 稳定性；代码仍 Coming Soon，现阶段只能按项目页与论文做方法选型。
+5. **与 HMC 分轨** — 本文重示范接口与力监督规划；HMC 重控制模式路由。选接触表示时先定「采力」还是「路由柔顺」。
 
 ## 与其他工作对比
 

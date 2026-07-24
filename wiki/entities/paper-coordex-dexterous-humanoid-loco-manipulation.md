@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, dexterous-manipulation, reinforcement-learning, ppo, motion-prior, residual-learning, latent-space, whole-body, unitree-g1, wuji-robotics, isaac-lab, berkeley]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-24
 arxiv: "2606.23680"
 venue: "arXiv 2026"
 related:
@@ -132,6 +132,17 @@ flowchart TB
 | WalkPickTurn | 89% | 1% | 10% | 最小航向误差 9.98° |
 
 **真机（定性）：** G1 + **Dex3-1** 回放关节轨迹；**非** WUJI 配置的定量成功率。
+
+## 结论
+
+**连续高 DoF 灵巧 loco-manipulation 应用分离的 body/hand 潜先验 + 协调潜残差，而不是关节空间 PPO 或单体式潜残差。**
+
+1. **不对称先验** — Body（16-D）管步态/躯干/腕位涌现；Hand（12-D）在腕固定仿真里只学指间协调，避免腕运动占满手潜码。
+2. **协调残差头** — 共享任务上下文 + 分体 body/hand 头；相对 Monolithic 同维残差，WalkGrab **0%→55%**，body action rate **0.40→0.22**。
+3. **关节空间会停走** — All Joint / Body Prior+Hand Joint 成功率 **0%**，stop rate **86–90%**；CoorDex stop **0%**、前进近瓶约 **0.25 m/s**。
+4. **三项仿真技能** — WalkGrab **55%**、OpenFridge **66%**、WalkPickTurn **89%**（50k eval）；成功含未摔倒条件。
+5. **真机勿直接比成功率** — 主结果是 G1+WUJI；真机为 G1+Dex3-1 轨迹回放定性，且用特权物体/接触、未做视觉 sim2real。
+6. **选型对照** — 相对 ResMimic（GMT 关节残差）与 HALOMI（VLA+稀疏头手），CoorDex 落在 **指级潜空间控制层**。
 
 ## 真机与局限
 

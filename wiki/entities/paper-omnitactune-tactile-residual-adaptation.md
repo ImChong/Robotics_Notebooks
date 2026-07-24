@@ -11,7 +11,7 @@ tags:
   - imitation-learning
   - georgia-tech
 status: complete
-updated: 2026-07-23
+updated: 2026-07-24
 arxiv: "2607.03723"
 related:
   - ../concepts/visuo-tactile-fusion.md
@@ -164,6 +164,17 @@ flowchart TB
 ### vs 更多触觉演示（IL）
 
 在 Peg-in-Hole 上，即使给 ACT+触觉拼接、RDP、π₀.₅+触觉 **额外 50 min 遥操**（演示 50→90），成功率仍 **落后 OmniTacTune 20–30 pt**——**在线残差试错** 优于 **继续堆 visuo-tactile 模仿数据**。
+
+## 结论
+
+**接触丰富操作不必重训端到端视触策略：冻结视觉先验，用短时真机触觉残差 RL 专修接触段。**
+
+1. **残差公式** — $a=a^b+s\cdot a^r$，基策略全程冻结；残差只读子目标/基动作/本体/触觉，不侵入 ACT/DP/VLA 内部。
+2. **零离线触觉演示** — Stage I 用基策略 rollout + ControlTac 启动 critic/编码器；Stage II 接触门控残差 RL。
+3. **四任务 40–80 min** — Peg/Charger/Cap/Box 成功率约 **5–40%→85–100%**，平均 **93.75%**，高于 PLD*/ViTAL。
+4. **策略无关可插拔** — Flow/ACT/DP/π₀.₅ 在 Peg-in-Hole ~50 min 均约 **+40–60 pt** 至 **75–100%**。
+5. **试错优于堆演示** — 再给 IL 基线 50 min 视触遥操仍落后 **20–30 pt**。
+6. **选型边界** — 适合「已有视觉策略、快速补触觉」；与 T-Rex 大规模触觉 mid-training、TacRefineNet 仿真精修头预算区间不同。
 
 ## 常见误区
 

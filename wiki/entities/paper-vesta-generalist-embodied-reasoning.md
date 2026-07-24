@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vlm, planner, embodied-reasoning, vln, spatial-intelligence, memory, long-horizon, qwen3-vl, nvidia, bimanual, hierarchical-control]
 status: complete
-updated: 2026-06-23
+updated: 2026-07-24
 arxiv: "2606.20905"
 related:
   - ../methods/vla.md
@@ -148,6 +148,17 @@ flowchart TB
 | Nav-only | 54.1 | ~0 |
 | Embodied-only | 0 | 66.2 |
 | **Vesta unified** | **55.5** | **70.2**（cognition+localization 均值口径见原文） |
+
+## 结论
+
+**在 Qwen3-VL-8B 上用空间导向混合 SFT + 极简 image+text memory，可以把定位、VLN、具身推理与长时程子任务规划收进同一 System-2 planner，且通才混合优于拼 specialist。**
+
+1. **定位为 planner 而非 VLA** — 输出 grounded 自然语言子任务，真机配对 Gr00t-N1.6 等 System-1 actor，不直接出电机命令。
+2. **四轴平均大幅领先** — cognition 68.7、localization 69.9；离线 planning 75.4% vs 最强对照约 38.5%；并称平均超最强单基线 >20 pt。
+3. **统一 mix 避免 catastrophic forgetting** — Nav-only 在 embodied≈0、Embodied-only 在 R2R SR=0；统一后 R2R SR 55.5，且超各自 specialist。
+4. **Memory 用 Image+Text** — 纯图像易过早切子任务，纯文本易过度 continue；Table 5 混合最优（约 75.9% offline）。
+5. **真机记忆任务增益大** — YAM 双臂三任务相对 actor-only +38.3%、相对 Qwen3-VL planner +25%。
+6. **边界** — actor 错误仍是失败主因；VLN 的 SPL/NE 略逊 InternVLA-N1；无公开权重；memory 无 learned retriever。
 
 ## 常见误区或局限
 

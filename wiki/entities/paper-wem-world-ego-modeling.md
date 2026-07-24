@@ -13,7 +13,7 @@ tags:
   - diffusion
   - mixture-of-experts
 status: complete
-updated: 2026-07-20
+updated: 2026-07-24
 arxiv: "2605.19957"
 code: https://github.com/ZGCA-HMI-Lab/WEM
 related:
@@ -149,6 +149,17 @@ sequenceDiagram
 
 - **预计算是一等公民**：跳过 cache 会让训练 I/O 不可用。
 - **两阶段顺序固定**：先 decoder 再完整模型。
+
+## 结论
+
+**长程混合导航–操作视频预测要把「持久场景规律」与「指令驱动机体交互」拆开建模；语义边界 + 全解耦（RCA + CP-MoE）在 HTEWorld 上把 EWMScore 推到 61.48。**
+
+1. **问题是角色纠缠** — 导航要 layout 恒常、操作要接触动力学；单流生成在多 chunk 自回归中易漂移。
+2. **默认 Semantic + Full 解耦** — 实例掩码分 world/ego，再配合路由、专家分工与 unrouting；Intention 边界实验分离较弱。
+3. **RCA 规划器 + CP-MoE 生成器** — 非对称 world/ego query 预算与邻域扩展路由；消融去掉任一项都明显降分。
+4. **HTEWorld 补混合长程评测** — 125K 训练片段、300 条多轮评测轨迹；相对同数据微调基线（如 PAN-style 58.40）领先。
+5. **开源可跑通** — 先 prepare/precompute 缓存，再 stage1 decoder → stage2 完整 WEM，最后 generate + evaluate。
+6. **局限** — 主在 BEHAVIOR-1K 仿真；依赖实例分割预处理；极长 chunk 链仍累积误差；真机与弱监督边界是未来工作。
 
 ## 常见误区或局限
 

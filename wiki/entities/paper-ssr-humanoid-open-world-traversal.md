@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, locomotion, perception, depth, foothold-guidance, symmetry, amp, open-world, stairs, parkour, sim2real, agibot, zju]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-24
 arxiv: "2605.30770"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
@@ -146,6 +146,17 @@ flowchart TB
 | 对照 | **HPL、PIM** 随难度急剧退化 |
 
 定量表格与消融见 [参考来源](#参考来源) 中 arXiv 原文。
+
+## 结论
+
+**单阶段第一视角深度 PPO，用想象落脚引导、潜空间对称与分地形 AMP，把安全落脚与自然全身运动一起学到开放世界长程穿越。**
+
+1. **把落脚安全信号前移到摆动相** — 特权想象未来接触分布并度量支撑不足度；部署仍是端到端深度策略，不跑在线落点优化器。
+2. **对称学习做在等变潜空间** — 相对输入级镜像更省显存（约 23.7 vs 28.8 GB）且更快爬升课程；支持左右脚均可领先的沟壑/高台。
+3. **分地形多判别器 AMP** — 地形条件化风格；NoStyle 功率与峰值足端力升高，单判别器略逊。
+4. **实验室零样本强** — 15/30 cm 楼梯 100%；80 cm 沟 95%、OOD 90 cm 沟 85%；40 cm 台 100%、OOD 45 cm 台 95%。
+5. **户外长程** — AgiBot X2 上 1.3 km / 40 min；并有 1.8 m / 70 kg 跨形态验证。
+6. **与多阶段跑酷区分** — 「单阶段」指无分阶段蒸馏；仍有地形课程与落脚引导门控；对标 FastStair 的高速规划上楼是不同目标。
 
 ## 与其他工作对比
 

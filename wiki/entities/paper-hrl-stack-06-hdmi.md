@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, loco-manipulation, loco-manip-161-survey, loco-manip-contact-survey, human-video, contact-data, robot-object-co-tracking, sim2real, unitree-g1, cmu]
 status: complete
-updated: 2026-07-22
+updated: 2026-07-24
 arxiv: "2509.16757"
 venue: "arXiv 2025"
 summary: "HDMI（HumanoiD iMitation for Interaction，arXiv:2509.16757，CMU/LeCAR）从单目 RGB 人类 HOI 视频抽取人体、物体轨迹与接触点，重定向为结构化 motion.npz，再用 robot-object co-tracking RL、统一物体表示、残差动作空间与接触奖励训练 G1 策略；真机实现 67 次连续双向开门穿越、6 类真实 loco-manip 任务与 14 类仿真任务，官方 LeCAR-Lab/HDMI 已开放 IsaacLab 训练代码。"
@@ -173,6 +173,17 @@ sequenceDiagram
 | 可运行入口 | `python scripts/train.py algo=ppo_roa_train task=G1/hdmi/move_suitcase`；`python scripts/play.py ... checkpoint_path=...` |
 | Sim2Real | README 指向 <https://github.com/EGalahad/sim2real>，部署细节不在主仓完整展开 |
 | 许可证 | GitHub API 未返回标准 `licenseInfo`；复用前需阅读仓库 `LICENSE` / README |
+
+## 结论
+
+**把单目人类 HOI 视频恢复成「机器人 + 物体 + 接触」参考，再用统一 robot-object co-tracking RL，是接触丰富 loco-manip 从「只模仿人体」迈向可真机交互的关键一步。**
+
+1. **物体必须进闭环** — object state 与 contact point 进入观测与奖励，开门/搬箱/推滚等 object-centric 技能才站得住。
+2. **统一接口替代任务手写 reward** — root-frame 物体表示 + 残差动作 + 有界接触力，同一 PPO 框架覆盖多物体几何。
+3. **残差动作围绕参考探索** — 在重定向粗姿态上加 corrective offset，大姿态变化不必从默认站姿重学。
+4. **真机证据偏长期演示** — G1 上 67 次连续双向开门穿越、6 类真机与 14 类仿真任务；量化对照表弱，以完成度与持久性为主。
+5. **官方 IsaacLab 训练可复现** — `ppo_roa_train` / `ppo_roa_finetune` + `motion.npz`；真机部署细节在独立 sim2real 仓。
+6. **仍是 reference-conditioned 单技能** — 不等于开放语言规划或在线 skill 组合；上游视频/接触标注质量决定上限。
 
 ## 与其他工作对比
 

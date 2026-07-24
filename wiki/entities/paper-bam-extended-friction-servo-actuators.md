@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, sim2real, actuator, friction, mujoco, system-identification, servo, dynamixel, icra-2025, google]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-24
 arxiv: "2410.08650"
 venue: ICRA 2025
 code: https://github.com/Rhoban/bam
@@ -100,6 +100,16 @@ flowchart TB
 - **摆锤：** 多质量、摆长、$K_p$ 组合；报告各模型验证 MAE（Fig.5）
 - **2R 操作臂：** circle / square / square_wave / triangular_wave；HG / LG 两组增益（Fig.7）
 - **定性：** drive/backdrive 图显示 M1 无法拟合负载相关边界（Fig.3）
+
+## 结论
+
+**用 M1–M6 可辨识扩展摩擦与摆锤 CMA-ES 标定，显著压低舵机仿真相对 Coulomb–Viscous 的轨迹误差，服务 RL 低增益 sim2real。**
+
+1. **按传动选型模型阶数** — Dynamixel 2R 优选 M4；eRob80:100 优选 M6；eRob80:50 摆锤辨识可止于 M3。
+2. **辨识最优 ≠ 2R 最优** — M5 在摆锤上更好，但 Dynamixel 2R 上 M4 更稳；复杂模型易过拟合。
+3. **仿真用摩擦上界并每步更新** — 以 clip($\tau_{f,stop}$, $\pm\tau_f^m$) 避免零速不连续；MuJoCo 每步用上一时刻 $\tau_e$ 更新 `frictionloss` / 粘性项。
+4. **相对 M1 改善可量化复用** — 摆锤 MAE 约 1.5×–2.9× 降低；2R 低增益下 MAE >2× 改善。
+5. **与 ActuatorNet / SAGE 互补，勿只调静态两参数** — BAM 给可解释摩擦公式；未建模温升、径向力与 dwell time。
 
 ## 对比
 
