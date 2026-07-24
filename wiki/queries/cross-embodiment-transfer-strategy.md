@@ -3,13 +3,14 @@ title: 跨具身策略迁移选型指南
 type: query
 status: complete
 created: 2026-05-31
-updated: 2026-07-11
-summary: 在人形 WBT 栈中，把一份运动控制策略搬到新机体的三条主流路径——单具身重训 + 重定向迁移 vs Any2Any 高效后训练 vs 多具身联合训练——的成本/数据/泛化三维选型决策树与典型故障模式；灵巧手层可对照 UHAS 球面统一动作空间路线。
+updated: 2026-07-24
+summary: 在人形 WBT 栈中，把一份运动控制策略搬到新机体的三条主流路径——单具身重训 + 重定向迁移 vs Any2Any 高效后训练 vs 多具身联合训练——的成本/数据/泛化三维选型决策树与典型故障模式；灵巧手层可对照 UHAS；末端/工具接口轴对照 GEN-1 千手。
 sources:
   - ../../sources/papers/any2any_arxiv_2605_23733.md
   - ../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md
   - ../../sources/papers/humanoid_rl_stack_17_sonic_supersizing_motion_tracking_for_natural_hu.md
   - ../../sources/papers/uhas_arxiv_2607_03570.md
+  - ../../sources/blogs/generalist_thousand_hands.md
 related:
   - ../concepts/whole-body-tracking-pipeline.md
   - ../concepts/motion-retargeting-pipeline.md
@@ -17,6 +18,7 @@ related:
   - ../concepts/sim2real.md
   - ../concepts/behavior-foundation-model.md
   - ../entities/paper-any2any-cross-embodiment-wbt.md
+  - ../entities/generalist-gen1-thousand-hands.md
   - ../methods/sonic-motion-tracking.md
   - ../methods/uhas-unified-hand-action-space.md
   - ../comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md
@@ -43,6 +45,8 @@ related:
 | **多具身联合训练** | 从一开始就把多台机器人塞进同一训练，用统一观测/动作编码吸收差异，训出一个 generalist 骨干。 | [SONIC](../methods/sonic-motion-tracking.md) 多具身路线 / [BFM](../concepts/behavior-foundation-model.md) |
 
 **灵巧手子栈（与上表正交）：** 若迁移对象是 **多指灵巧手** 而非整身人形，[UHAS](../methods/uhas-unified-hand-action-space.md) 用 **规范球面形变 + 级联 IK** 定义共享动作空间，在 [手内重定向](../methods/in-hand-reorientation.md) 上实证 **四手单策略、零样本与 500 iter 微调**（Allegro / LEAP / Shadow / MANO）。选型时勿把人形 WBT 的 token/LoRA 经验直接套到手指关节层。
+
+**末端/工具接口轴（与整机迁移正交）：** 若「换具身」主要是换夹爪或工具头而非换整机骨架，见 [GEN-1 千手](../entities/generalist-gen1-thousand-hands.md)——闭源产业样本用多末端混合预训练 + 视觉条件化，并演示任务中途换手；工程上可借鉴其评测协议，勿与本页三条 WBT 路径混选。
 
 **正交维度（机体参数，而非策略权重）：** 若问题从「搬策略」变成「在固定拓扑下改质量、几何、PD、执行器限位等连续设计变量」，见 [Shape Your Body（VGDS 价值梯度共设计）](../entities/paper-shape-your-body-value-gradient-design.md)——先多具身训 URMA critic，再冻结沿 $\nabla_f V$ 搜索，边际约 1–2 min/设计。
 
@@ -195,6 +199,7 @@ flowchart TD
 - [SONIC](../methods/sonic-motion-tracking.md) — 规模化预训练 / 多具身骨干
 - [SONIC vs BeyondMimic vs SD-AMP vs Heracles](../comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md) — WBT 策略学习阶段的方法谱系对比
 - [人形运动跟踪方法选型指南](./humanoid-motion-tracking-method-selection.md) — 方法选型（阶段 4），本页接其阶段 5
+- [GEN-1 千手：跨末端执行器泛化](../entities/generalist-gen1-thousand-hands.md) — 末端/工具接口多样性（与整机 WBT 迁移正交）
 
 ## 一句话记忆
 

@@ -32,6 +32,7 @@ related:
   - ../entities/curobo.md
   - ../entities/kinetiq-ascend.md
   - ../entities/sunday-robotics-act2.md
+  - ../entities/generalist-gen1-thousand-hands.md
   - ../concepts/robotics-solve-standard.md
 sources:
   - ../../sources/papers/fastgrasp_arxiv_2604_12879.md
@@ -41,6 +42,7 @@ sources:
   - ../../sources/repos/ssik.md
   - ../../sources/blogs/wechat_shenlan_tro_manip_5_papers_survey.md
   - ../../sources/papers/vtap_gripper_arxiv_2607_15448.md
+  - ../../sources/blogs/generalist_thousand_hands.md
 summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核心难点是感知、接触和全身协同。"
 ---
 
@@ -201,6 +203,7 @@ flowchart TD
 - [Lumo-2](../entities/lumo-2.md) — Astribot latent WAM：三阶段模态预对齐、22 项 S1 真机 benchmark、32 段项目页演示视频（arXiv:2607.11270）
 - [Philia](../entities/philia.md) — Astribot 多机器人物理 AI 助手运行时（OpenClaw + Robot Gateway，arXiv:2607.11377）
 - [ssik](../entities/ssik.md) — 6R/7R **解析 IK** 全分支枚举；非 Pieper 6R 与 7R 冗余臂（UW PRL，BSD-3）
+- [GEN-1 千手](../entities/generalist-gen1-thousand-hands.md) — 跨末端/工具接口的通才操作叙事（闭源产业对照）
 
 ## 关联任务
 
