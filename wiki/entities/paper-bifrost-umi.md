@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, teleoperation, imitation-learning, diffusion-policy, motion-retargeting, whole-body-control, umi, robot-free, data-collection, unitree-g1, vr-tracking, visuomotor, baai-aether]
 status: complete
-updated: 2026-07-22
+updated: 2026-07-24
 arxiv: "2605.03452"
 venue: "RSS 2024"
 related:
@@ -135,6 +135,17 @@ flowchart TB
 ## 实验与评测
 
 - 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+
+## 结论
+
+**瓶颈从「占住 G1 做示范」转到「SKR 保度量 + WBC 闭环执行」；采集无机器人，上线仍要真机，跨人形不能默认零成本迁移。**
+
+1. **Robot-free 采集三模态同步** — Pico 脚/腰关键点 + 双腕鱼眼 RGB + 夹爪开度；训练/部署高层只吃可机载复现的腕部图与部分本体。
+2. **高层扩散在稀疏关键点而非全关节** — **47-D**（五关键点 SE(3) + 2 夹爪），预测 **H=48** chunk；局部系监督减弱录制世界系姿态差。
+3. **SKR 只缩放骨盆–脚高度** — 其余关键点相对几何不变，避免传统全局/局部缩放毁掉抓取高度、伸距与脚位。
+4. **执行链是 SKR → mink IK（36-D）→ WBC** — 三层任一偏差都会表现为「看起来对但站不稳/够不着」。
+5. **任务覆盖超出纯臂空间** — 杂乱桌面 pick-place 与桌下扔垃圾（屈膝、躯干前倾、迈步）验证全身必要性。
+6. **与 TWIST2/UMI 分界** — 相对 TWIST2 解决无机器人采集；相对 UMI 固定 G1+五关键点，跨人形需重验 SKR/WBC；代码截至项目页未开源。
 
 ## 与其他工作对比
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, reinforcement-learning, motion-tracking, contact-flow, meta-skill, sim2sim, mocap, unitree-g1, vlm, noitom, hkust, hku, whu]
 status: complete
-updated: 2026-07-01
+updated: 2026-07-24
 arxiv: "2606.26201"
 venue: "arXiv 2026"
 related:
@@ -148,6 +148,17 @@ flowchart TB
 | Push Suitcase | 82.5% | **94.5%** |
 | Stack Boxes | 56.6% | **80.5%** |
 | Push-Stack | 76.5% | **84.5%** |
+
+## 结论
+
+**用可编辑的 Contact Flow（稀疏体目标 + 四端接触时序）同时服务低层统一跟踪与中层规则重规划，是长时程 loco-manip skill chaining 的可复现接口。**
+
+1. **显式接触位极关键** — ablation 将 Carry Box 从 11.5% 提到 98.7%；相对 dense HOI 更可在线合成，相对纯 object goal 保留交互意图。
+2. **CF-Track 单策略覆盖多 meta-skill** — carry/push/slide/kick/relocate；track:amp = 0.85:0.15 为文中最优奖励平衡。
+3. **CF-Gen + 50 Hz 重规划抬升长程** — Push/Stack 等在有重规划时成功率再升（如 Push Suitcase 82.5%→94.5%，Stack 56.6%→80.5%）。
+4. **chaining 相对基线近零 → 数十百分点** — Stack Boxes 终段 56.5%、Push-Stack 76.5%；相对基线平均 meta-skill +40.9%、chaining +66.5%。
+5. **VLM 只出物体布局** — 语义与接触物理解耦，无需改低层权重即可驱动 CF-Gen。
+6. **复现入口** — 22.29 h MoCap + HF G1 NPZ + MuJoCo sim2sim；CF-Gen 仍偏规则，真机细节与灵巧手扩展是后续。
 
 ## 与相邻路线对比
 

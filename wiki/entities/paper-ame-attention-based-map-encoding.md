@@ -3,7 +3,7 @@ type: entity
 tags: [paper, quadruped, humanoid, reinforcement-learning, perceptive-locomotion, attention, sim2real, eth, disney, anymal, fourier]
 status: stable
 summary: "AME（AME-1）：CNN+本体条件 MHA 编码 2.5D 高程图，两阶段 PPO 在 ANYmal-D 与 GR-1 上实现稀疏地形泛化与可解释 foothold 注意力；AME-2 的前作。"
-updated: 2026-07-13
+updated: 2026-07-24
 arxiv: "2506.09588"
 venue: "arXiv 2025"
 related:
@@ -111,6 +111,16 @@ flowchart LR
 ### 网络 ablation
 
 点级 **MHA + 保分辨率 CNN** 优于 **Transformer encoder**、**额外下采样 CNN**、**ViT**——尤其在 **未见地形** 成功率上。
+
+## 结论
+
+**CNN + 本体条件 MHA 编码 2.5D 高程图，两阶段 PPO 在四足与人形上实现稀疏地形泛化与可解释落脚注意力。**
+
+1. **注意力即隐式 foothold 规划** — MHA 权重可视化对齐未来落脚，无需 foothold 监督；map encoding ≈ 接触规划、后续 MLP ≈ 全身跟踪。
+2. **两阶段课程不可省** — Stage 1 用理想感知基地形初始化，Stage 2 再上难地形与感知噪声；无 Stage 1 时稀疏地形几乎不收敛。
+3. **相对 DTC / 专才基线更泛化** — 组合训练地形上 DTC 成功率低 26.5%，baseline-rl 低 77.3%；未见 obstacle parkour 上 GR-1 与 ANYmal-D 均 100%。
+4. **点级 MHA + 保分辨率 CNN 更稳** — 优于 Transformer encoder、额外下采样 CNN、ViT，尤其在未见地形成功率上。
+5. **依赖 elevation mapping，非无地图** — 2.5D 边界下 confined / 强 3D vault 不在 AME-1 主战场；敏捷与学习映射留给 AME-2。
 
 ## 与其他工作对比
 

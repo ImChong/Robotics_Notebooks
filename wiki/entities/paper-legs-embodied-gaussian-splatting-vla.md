@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, vla, loco-manipulation, 3dgs, gaussian-splatting, sim2real, teleoperation-free, unitree-g1, stanford, sam3d, mujoco]
 status: complete
-updated: 2026-07-22
+updated: 2026-07-24
 arxiv: "2606.01458"
 related:
   - ../tasks/loco-manipulation.md
@@ -143,6 +143,17 @@ flowchart TB
 
 - 主表：**9 组 (backbone × task)** 端到端成功率 + **外观随机化**（default / 蓝桌 / 苹果+盒子 / 联合偏移）；阶段累积成功率见论文 Appendix B。
 - 本页为 **知识库编译摘要**；完整消融与 1110 trials 协议见 [参考来源](#参考来源)。
+
+## 结论
+
+**LEGS 的胜负手是「3DGS + 颜色校准」合成的可规模化、可外观增广演示，而不是消灭 teleop；长时程 loco-manip 与外观偏移上增益最大。**
+
+1. **主表读法** — **1,110** 次真机；**9/9**（backbone×task）上 LEGS(200) best or tied；Task 3 上 teleop **全线 0/10**，LEGS(200) 为 **5 / 2 / 6**（ψ0 / π0.5 / GR00T N1.6）。
+2. **去掉 3DGS+校准代价巨大** — SAM3D（无 3DGS/校准）平均成功率约减半（约 **33%** vs **67%**）；close-range 差距 largely 归因于校准管线。
+3. **外观增广是 OOD 必需** — default-only LEGS(200) 偏移下可跌至 **0–10%**；**LEGS-aug(50)** 在最难 objects+scene shift 上 **100% / 80% / 40%**（T1–T3），优于同规模 SAM3D-aug(200)。
+4. **teleop 仍有短程价值** — Task 1 可比；LEGS 优势在长时程、外观增广与规模化合成，不是全面替代示教。
+5. **渲染与物理解耦可复用 motion** — MuJoCo 解碰撞，SONIC 出 **18-D** 命令；同 motion 可只换渲染做 LEGS-aug。
+6. **栈依赖明确** — 需 SONIC、手持扫描、静态背景；透明/反光/动态与跨人形未充分验证；代码仍 *Coming Soon*。
 
 ## 与其他工作对比
 

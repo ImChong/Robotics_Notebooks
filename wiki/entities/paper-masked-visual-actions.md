@@ -13,7 +13,7 @@ tags:
   - umd
   - harvard
 status: complete
-updated: 2026-07-23
+updated: 2026-07-24
 arxiv: "2607.19343"
 related:
   - ../methods/generative-world-models.md
@@ -184,6 +184,17 @@ sequenceDiagram
 | 规划环 | 策略采样 \(N\) 条 → WM 想象 → VLM/人工 rubric 选优再真机执行 |
 | 评估偏置 | 论文报告 WM 对任务进度 **正向偏置**；相关高仍须真机校准 |
 | 选型 | 需要 **跨具身像素条件 + 前向/逆向统一** 时优先；需要 **低延迟大量提案** 见 [DriftWorld](./paper-driftworld.md)；需要 **2D 骨架跨具身** 见 [OSCAR](./paper-oscar.md) |
+
+## 结论
+
+**像素掩码把「动作条件动力学」与「目标→行为」收进同一检查点；评估相关高仍带正向进度偏置，适合预筛选而非单独验收。**
+
+1. **前向/逆向只换条件集 \(S\)** — 掩码机器人得场景响应；掩码物体得机器人运动；主动/被动是用法标签，非训练硬编码。
+2. **视觉质量相对 Ctrl-World / Wan-Move / Wan-I2V 更优** — Tab.1 LPIPS/SSIM/PSNR；BEHAVIOR 覆盖未见双臂，骨架/EEF 条件易把机器人「拉回」训练域具身。
+3. **仿真评估相关极高但有偏** — RoboCasa 多任务 WM vs GT 成功率 **r = 0.982**，存在正向任务进度偏置；真机四任务×20 演示用于对齐进度分布。
+4. **规划环：Best-of-N 有效** — Diffusion Policy 提案 + \(N=10\) + Gemini 评判，成功率随样本数上升。
+5. **逆向 + IDM 可抽低维动作** — CoffeeServeMug 上相对 DP/ACT/SmolVLA 有竞争力（图 11 约 **90%**）。
+6. **工程选型** — 推理优先渲染轨（任意关节可视化）；分割轨更适合数据扩增；基座 **14B** + 双专家 LoRA（MoE 分界 **0.358**）；渲染工具与完整数据仍待齐。
 
 ## 局限与风险
 

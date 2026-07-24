@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, diffusion, motion-tracking, perceptive-locomotion, whole-body, unitree-g1, body-system-stack]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-24
 arxiv: "2604.17335"
 venue: curated
 related:
@@ -128,6 +128,17 @@ flowchart TB
 |------|------|
 | **Tracker Only**（固定参考）vs **Tracker + Gen**（在线生成） | 箱攀、跨栏、上楼梯三类任务平均成功率显著提升；障碍高度/偏航 OOD 时差距最大（如 70–80 cm 箱攀 0.23 → 0.96） |
 | **耦合后是否微调跟踪器** | 五类穿越任务上，微调版 consistently 高于未微调版 |
+
+## 结论
+
+**感知全身 locomotion 应用「扩散规划参考 + RL 跟踪吸收误差」分层，而不是端到端扭矩生成或多专家蒸馏。**
+
+1. **生成器只产运动学参考** — 物理可行性由 PPO tracker 保证；部署 2 步去噪，跟踪器当运动滤波器。
+2. **数据要先物理精炼** — ~5 分钟技能经 GVHMR→接触 IK→DeepMimic 跟踪录制后再训生成器/跟踪器，避免不可行参考。
+3. **闭环微调吃掉 OOD** — 冻结生成器、用机器人真实历史条件；微调后五类穿越 consistently 高于未微调。
+4. **在线生成相对固定参考** — 箱攀/跨栏/楼梯平均成功率显著升；如 70–80 cm 箱攀约 **0.23→0.96**。
+5. **真机全 onboard** — G1 箱攀最高 **75 cm**；LiDAR 高程 + TensorRT ~20 ms；每 0.25 s 更新 0.5 s 视界参考。
+6. **与 Heracles 分工不同** — 本文是地形条件技能在线组合；Heracles 是 tracking↔recovery 中间件。
 
 ## 常见误区
 

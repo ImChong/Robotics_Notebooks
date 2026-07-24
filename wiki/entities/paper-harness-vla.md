@@ -19,7 +19,7 @@ tags:
   - hkust
   - zgca
 status: complete
-updated: 2026-07-22
+updated: 2026-07-24
 arxiv: "2607.08448"
 code: https://github.com/RLinf/RPent
 related:
@@ -177,6 +177,16 @@ sequenceDiagram
 | **零样本 Goal（无 TSM/GM）** | Goal-T **79.0%** / Goal-S **31.0%** | 位置交换更依赖 bootstrapped 轨迹骨架 |
 
 **机制结论（§3.3）：** (1) 规划器层语义重绑定恢复任务条件行为；(2) 稀疏可重试 `vla_act` 快速超过冻结基线；(3) 解析原语隔离非接触执行，LIBERO 族常在解析步完成成功谓词，厨房/双臂更多在接触相位收官。
+
+## 结论
+
+**冻结 VLA 作接触原语、靠记忆增强编排吃掉分布外扰动，是比再训更强 backbone 更可复用的部署杠杆。**
+
+1. **增益归因于 harness，不是权重** — LIBERO-Pro 82.4%（+38.6 pp）、RoboCasa365 55.4%（+25.4 pp）均在冻结后端上取得；分布内 LIBERO overall 96.0% 与 π_RLinf 95.3% 持平，说明 harness 不牺牲 in-distribution。
+2. **固定原语库 + 可重试 `vla_act`** — 规划器只发 JSON，禁止部署期发明新原语；接触密集相位交给短 burst VLA，非接触结构用解析原语隔离。
+3. **记忆要重绑定，不要重放坐标** — Task Specific Memory 存符号化轨迹骨架，Global Memory 存跨任务规则/失败模型；扰动场景从当前 RGB-D 重绑物体与位姿。
+4. **零样本 Goal 不够** — Goal-T 79.0% / Goal-S 31.0%，位置交换更依赖 bootstrapped TSM 骨架；部署前先在参考种子上蒸馏记忆。
+5. **与 ASPIRE / DreamSteer 分清粒度** — ASPIRE 扩张技能库，DreamSteer 做动作 chunk 预演，本文固定词汇、原语级 agentic 闭环；规划器与低层仍开环反馈，缺联合 RL。
 
 ## 与其他工作对比
 

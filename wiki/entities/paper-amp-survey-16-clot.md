@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, teleoperation, whole-body-control, motion-tracking, transformer, sim2real, pndbotics-adam-pro, shanghai-ai-lab, sjtu]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-24
 arxiv: "2602.15060"
 venue: "arXiv"
 code: https://github.com/zhutengjie/CLOT
@@ -125,6 +125,16 @@ flowchart TB
 | Adam Pro 消融 | 仅 Transformer 误差与力矩波动仍大；**pre-shift + AMP** 关键 |
 | 大偏差恢复 | 有 pre-shift 时 AMJT / AMDV 波动与平滑度显著优于无 pre-shift |
 | 真机长时程 | 多步 loco-manipulation 保持与人 **恒定世界系偏移**；单操作员连续任务 |
+
+## 结论
+
+**闭环全局位姿反馈配合 Observation Pre-shift、Transformer 与 AMP，在 Adam Pro 上实现长时程无漂移全身遥操作。**
+
+1. **局部帧跟踪长时程必漂** — 忽视全局位姿反馈时，全尺寸人形高质心场景尤其危险；OptiTrack 人机全局同步是结构性补丁。
+2. **Observation Pre-shift 学平滑插值** — 训练时以概率前移观测窗口 δ、奖励仍对齐当前 t；仅训练启用、部署关闭，避免硬纠尖峰。
+3. **Transformer + AMP 组合才稳住** — 大 pre-shift 下 MLP 难收敛；仅 Transformer 误差与力矩波动仍大，pre-shift + AMP 才关键。
+4. **仿真相对 TWIST2 误差降一个数量级以上** — 如 $E_{mgbp}$ 5.094→0.056；真机多步 loco-manipulation 保持恒定世界系偏移。
+5. **非便携纯软件方案** — 依赖光学动捕室级部署；主真机为 Adam Pro，跨形态迁移需重训。
 
 ## 参考来源
 

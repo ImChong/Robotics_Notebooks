@@ -171,6 +171,17 @@ sequenceDiagram
 - **自主迁移**：Kick-T、WB-Dex 等 visuomotor 策略真机演示。
 - 量化 sim2real 指标与消融以 **论文 PDF** 为准；[CLOT](./paper-amp-survey-16-clot.md) 在 G1 仿真中以官方 TWIST2 权重为对比基线。
 
+## 结论
+
+**TWIST2 的主贡献是「便携全身采集 → 分层 visuomotor」闭环可规模化，而不是又一个孤立 tracking 算法；低层 RL 跟踪复用决定遥操作与自主能否共用一条执行链。**
+
+1. **采集吞吐量是工程验收点** — 约 **15 min** 内 **128** 次双手灵巧 pick-place、**50** 次移动 pick-place，支撑长时程家务/运动/导航示范。
+2. **分层是部署契约** — System 1（sim2real RL 全身 tracking）保证动态可行；System 2（Diffusion Policy）只预测运动学参考，无需重训低层。
+3. **颈 + PICO 解决 egocentric 数据质量** — 2-DoF 颈增广主动视角；XRoboToolkit 统一视频与全身 6-DoF 流，采集即训练数据。
+4. **与无机器人采集路线互补** — BifrostUMI 可不碰 G1 做示范；TWIST2 强调真机便携遥操作与数据规模，瓶颈不同。
+5. **长时程痛点在局部系跟踪** — 全局位姿漂移仍在；CLOT 类闭环全局方案可作互补，不要把项目页长时程视频读成已解决漂移。
+6. **全栈可复现** — 官方仓含遥操作、RL checkpoint、visuomotor 脚本与颈 BOM；量化 sim2real 数字以论文 PDF 为准。
+
 ## 参考来源
 
 - [twist2-project.md](../../sources/sites/twist2-project.md) — 官方项目页一手摘录

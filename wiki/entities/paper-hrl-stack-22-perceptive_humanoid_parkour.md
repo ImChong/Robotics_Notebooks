@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, locomotion, parkour, motion-matching, depth, teacher-student, dagger, ppo, unitree-g1, perception, skill-chaining, amazon-far, body-system-stack]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-24
 arxiv: "2602.15827"
 venue: "RSS 2026"
 related:
@@ -129,6 +129,16 @@ flowchart TB
 - **仿真：** Unitree G1，16 384 并行 env；专家/学生各 20K iterations；多技能均匀采样（学生阶段关闭 adaptive sampling）。
 - **实机（摘要）：** 1.25 m 墙攀 3.63 s；0.4 m 障碍 cat vault 峰值前向 **3.41 m/s**；48–60 s 多障碍课；**障碍实时位移**下仍闭环适应；与人体同动作高墙攀 timing 对照。
 - **消融要点（论文）：** 纯 DAgger 对高动态技能不足；motion matching 相对 MDM 类生成参考在稀疏跑酷数据上更稳；训练仅单障碍、部署可泛化多障碍课。
+
+## 结论
+
+**感知跑酷真正拉开差距的是「motion matching 离线合成长程参考 + DAgger 与 success-driven PPO 课程蒸馏」；纯模仿损失对短时大扭矩过障不敏感。**
+
+1. **实机能力锚点** — Unitree G1 仅凭机载深度 + 离散 2D 速度命令：**1.25 m** 墙攀（约 **96%** 机器人身高，**3.63 s**）；cat vault 峰值前向约 **3.41 m/s**；**48–60 s** 多障碍课；障碍实时位移仍闭环适应。
+2. **Motion matching 只做离线参考** — 模板 `Locomotion → Skill → Locomotion` 密化入技能前步态/接近分布；部署时 matching **不在线计算**，闭环由深度学生完成。
+3. **纯 DAgger 不够** — 攀爬/翻越依赖短时大扭矩；对称但「过高/过低」的根轨迹在模仿损失下等价，故需混合 \(\lambda_{\mathrm{PPO}} L_{\mathrm{PPO}}+\lambda_D L_D\) 线性课程。
+4. **专家 vs 学生观测差** — 专家用特权 height scan + 全局根纠 drift；学生用 WARP 深度；学生阶段关闭专家 adaptive sampling、改均匀技能采样，终止阈值 **0.5 m→1 m** 缓解左右对称。
+5. **与 OmniRetarget 分工** — [2509.26633](./paper-hrl-stack-03-omniretarget.md) 是交互保留重定向数据层；PHP（2602.15827）是感知策略与技能链；代码截至核查日未发布。
 
 ## 与其他工作对比
 

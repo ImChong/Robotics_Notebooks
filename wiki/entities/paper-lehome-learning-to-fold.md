@@ -20,7 +20,7 @@ tags:
   - nvidia
   - ilia-larchenko
 status: complete
-updated: 2026-07-22
+updated: 2026-07-24
 arxiv: "2606.27163"
 code: https://github.com/IliaLarchenko/lehome_solution
 related:
@@ -191,6 +191,16 @@ sequenceDiagram
 | **Best-of-N** | **N=2–3** 足够 | Q 头选 chunk |
 
 **失败模式（博客）：** 灵巧不足、过拟合仿真伪影、近成功卡住；debug overlay 实时打印 S/A/R/C/T 预测。
+
+## 结论
+
+**竞赛可复现的关键是「仿真 AWR+RECAP 异步飞轮」与「真机三桶 BC+DAgger」两套半截配方；不要把仿真第 1 直接外推成真机 80%。**
+
+1. **成绩分赛道读** — 仿真 **1st / 62**、总体 **79.63%**（领先第 2 名约 **6.1 pp**）；真机线下 **865 / 1080（2nd）**，冠军 **895**——评分、硬件与数据配方均已切换。
+2. **推理超参比「更长 chunk」更管用** — CFG guidance 收敛到 **7–9**（远高于先验 ~2）；约每 **5** 步重规划优于跑完 30-step chunk；Best-of-N **N=2–3** 足够。
+3. **真机混合比可照抄作起点** — 官方 BC **60%** / 自家 teleop+DAgger **30%** / 增强 sim replay **10%**；从较晚但非最新 sim ckpt 起步并 **剥离特权/RL 头**。
+4. **π₀.₅ 辅助头服务价值信号** — 同一前向出动作 chunk 与成功概率/完成度/衣物类型等；作者标明多数改动未充分消融，迁移时优先验证 action + garment/completion 头。
+5. **工程飞轮已开源** — HF Hub 作 Trainer/Worker 消息总线；`lehome_sim` / `lehome_real` 权重齐备。相对 [STEAM](./paper-steam-advantage-modeling.md) 走在线异步 rollout，相对 [DreamSteer](./paper-dreamsteer-vla-deployment-steering.md) 干预在后训练而非纯推理 steering。
 
 ## 与其他工作对比
 

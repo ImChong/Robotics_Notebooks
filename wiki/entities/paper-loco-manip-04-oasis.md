@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, loco-manip-survey, sim2real, teleoperation, flow-matching, domain-randomization, unitree-g1, isaac-sim, teleai]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-24
 arxiv: "2606.08548"
 code: https://github.com/TeleHuman/OASIS
 project: https://oasis-humanoid.github.io/
@@ -152,6 +152,17 @@ flowchart TB
 
 - **纯 OASIS 仿真数据** 在多数任务 **≥ 纯真机 teleop**；论文归因于仿真覆盖更广光照/背景，真机数据环境相对固定。
 - **等量混合** 优于任一单源——仿真供视觉泛化，真机补接触与感知细节。
+
+## 结论
+
+**真机 teleop 的贵处多半在复位与视觉多样性，不在单条执行时间：在线只录状态，离线 Path-Tracing + DR 扩增；纯仿真可 ≥ 等量真机，混合最优。**
+
+1. **采集加速看复位成本** — 50 条/任务下 OASIS 相对真机约 **1.15×–1.84×**（Kneel and Wipe 最大）；差距来自场景复位与易碎物谨慎操作。
+2. **视觉 DR 是零样本命门** — 全关随机化平均成功率约 **5%**，全开约 **83%**；光照单项去掉影响最大；每条轨迹渲染 **20** 环境为默认（15–20 趋于饱和）。
+3. **高层必须 rollout 历史** — Flow Matching 条件用参考运动历史、不用带噪机器人状态；无 curriculum rollout 时 Kneel and Wipe 近崩（**0/10** vs **10/10**）。
+4. **层级频率** — 高层 FM **25 Hz** 出参考 chunk（\(F=32\)，推理 10 步 Euler）；低层 Teleopit **50 Hz** 跟到 43-DoF。
+5. **数据结论可操作** — 同预算下纯 OASIS 多数任务 ≥ 纯真机 teleop；等量混合更好（仿真供视觉泛化，真机补接触细节）。
+6. **边界** — 不是 RL 探索数据（多样性受操作员上限）；接触丰富任务仍受资产精度限制；开源主线是采集/重渲染工厂，非端到端训策略脚本。
 
 ## 与其他工作对比
 

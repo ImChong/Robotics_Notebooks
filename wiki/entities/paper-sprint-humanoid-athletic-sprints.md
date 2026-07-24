@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, locomotion, sprint, spectral-prior, sim2real, unitree-g1, isaac-gym, ppo, lafan1, gmr]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-24
 arxiv: "2605.28549"
 related:
   - ../tasks/humanoid-locomotion.md
@@ -114,6 +114,17 @@ flowchart TB
 | 训练成本 | Isaac Gym，单卡 RTX 4090 ~6.5 h |
 
 定量表格与消融见 [参考来源](#参考来源) 中 arXiv 原文。
+
+## 结论
+
+**极速冲刺的主杠杆是「极少参考上的频域外推 + 冻结先验残差 RL」，不是堆 MoCap 或再训一个 AMP。**
+
+1. **数据效率锚点** — 仅 **5 条** LAFAN1 单周期（经 GMR、约 428 帧 / 14 s），锚定速度约 0.66–3.40 m/s、主频 0.68–1.58 Hz，即可外推至参考分布外冲刺。
+2. **连续频率生成，不是 5 个离散速度** — 频谱 VAE + 多谐波 + FiLM 在 **0.6–2.3 Hz**（含边界外）生成 10 关节参考；5 条只提供归纳偏置。
+3. **分层残差** — 先验冻结，PPO 只学 \(a^{\mathrm{res}}\)；\(q_{\mathrm{target}}=q_{\mathrm{ref}}+\alpha\cdot a_{\mathrm{res}}\)，减轻纯任务奖励的「能走但不像人」。
+4. **峰值与对照** — 仿真/真机峰值 **6 m/s**、**0–6 m/s** 单策略连续变速；高于 Chasing Autonomy（~3.3 m/s）与 SD-AMP 快速模式（~3 m/s）。
+5. **相对 AMP 族** — 监督式频谱先验，非对抗分布匹配；论文报相对 Humanoid-Gym/AMP 更低 FID/\(E_{\mathrm{qpos}},E_{\mathrm{vel}}\) 与更快收敛。
+6. **Sim2real 配方** — 非对称 Actor–Critic + 渐进速度课程 + 动力学随机化 → 零样本上 G1；单卡 RTX 4090 训练约 **6.5 h**。
 
 ## 与其他工作对比
 

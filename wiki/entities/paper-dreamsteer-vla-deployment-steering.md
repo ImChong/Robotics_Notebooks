@@ -9,7 +9,7 @@ tags:
   - manipulation
   - meta
 status: complete
-updated: 2026-07-22
+updated: 2026-07-24
 arxiv: "2607.02865"
 related:
   - ../overview/wm-action-consequence-category-01-wam-action-prediction.md
@@ -103,6 +103,16 @@ flowchart TB
 | **设定** | 未见物体；**无目标域 finetune** |
 | **机构** | Meta FAIR、明尼苏达大学 |
 | **演示** | [dream-steer.github.io](https://dream-steer.github.io/) |
+
+## 结论
+
+**真正重要的是「冻结 VLA + 潜空间 WM 预演 + 语言价值排序」的零微调部署 steering；次要代价是有限候选集上的 rerank，不是全局最优规划。**
+
+1. **真机 OOD 增益可读** — 基于 \(\pi_0\) 的四组操纵：任务成功率 **23.75%→66.25%**，指令遵循 **38.75%→56.25%**；设定为未见物体、**无目标域 finetune**。
+2. **潜变量 WM 让多候选评估进得了环** — 同 RTX 4090、\(H{=}10\)：视频扩散 **23.12 s** vs 潜变量 WM **0.59 s**（约 **39×**）；时空分解注意力使复杂度对 horizon 近线性。
+3. **候选来自 VLA 采样 + Cartesian 运动原语** — 质量上限取决于采样覆盖与原语设计；价值模型仍可能被「视觉合理但接触错误」的想象轨迹误导。
+4. **与后训练纠错正交** — 相对 [TACO](./paper-taco-tactile-wm-vla-posttrain.md)（失败→纠错数据→改参数），DreamSteer **全部组件冻结**、纯推理筛选；相对 GigaWorld 更像动作选择器而非离线评估器。
+5. **部署仍付推理延迟** — 多候选 + WM rollout 增算力；长时序误差累积与未建模不确定性是开放风险。
 
 ## 与其他工作对比
 

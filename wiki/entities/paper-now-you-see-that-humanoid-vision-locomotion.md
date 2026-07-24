@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, locomotion, perception, depth, end-to-end-vision, privileged-distillation, multi-critic, amp, sim2real, stairs, parkour, dagger, ppo, hit, honor-robotics, rss-2026, unitree]
 status: complete
-updated: 2026-06-11
+updated: 2026-07-24
 arxiv: "2602.06382"
 venue: "RSS 2026"
 related:
@@ -141,6 +141,16 @@ flowchart TB
 | 下楼弱点 | **86.7%**（重力放大 + 台阶边缘遮挡立体伪影） |
 | 跨平台 | G1 + D435i 附录初步验证 |
 | 控制频率 | 机载 **50 Hz**，无实机微调 |
+
+## 结论
+
+**人形端到端深度 locomotion 的主战场是立体深度传感器伪影本身：8 步增广 + 多 critic/discriminator 特权 RL + vision-aware DAgger，才能同时吃下长楼梯与极端跑酷。**
+
+1. **先把深度噪声建模做对** — RDT-Bench 平均 98.9% SR、5.8% PDR；相对 Humanoid Parkour Learning +27.9% SR、−25.1% PDR；去 Stereo Fusion 单项 −8.5% SR。
+2. **多地形用多 value/风格头，不是多策略** — K=3 critic + K=3 AMP discriminator，相对 Single Critic/Disc. +16.9% SR；仍是单 actor。
+3. **特权 height → 增广深度必须 DAgger** — 直接深度 RL 的 PDR 达 58.1%；仅 BC 86.0% SR（相对完整蒸馏 −12.9%）；去噪一致性再贡献 −5.5% 量级。
+4. **真机零样本可读** — 定制人形 88/90（97.8%），长楼梯 30+ 级 100%；下楼较弱 86.7%（重力放大 + 台阶边缘立体伪影）。
+5. **与 SSR / PHP 分清主线** — SSR 偏单阶段想象落脚与户外长程；PHP 偏多技能链；本文偏立体深度 sim2real 与跑酷+精细楼梯组合。
 
 ## 与其他工作对比
 

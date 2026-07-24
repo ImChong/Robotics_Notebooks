@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, martial-arts, dataset, balance-recovery, unitree-g1, reinforcement-learning, bit, gvhmr, gmr]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-24
 arxiv: "2602.13656"
 code: https://github.com/NPCLEI/KungFuAthleteBot
 venue: "arXiv 2026"
@@ -183,6 +183,17 @@ sequenceDiagram
 - **仿真：** Isaac Sim 5.0 训练，MuJoCo 评测；Succ. / $E_{\mathrm{mpboe}}$ / Smooth（action rate）；FastSAC + FastSAC 域随机化。
 - **真机：** Unitree G1；项目页含抗 torso 拉力、单脚支撑恢复、快速恢复等演示（详见论文 §5 与 [项目页](https://kungfuathletebot.github.io/)）。
 - **量化以原文为准：** 本页为 ingest 编译摘要；完整 benchmark 与长时程（如连续太极）指标见 PDF / 项目页更新。
+
+## 结论
+
+**高动态武术跟踪要把「运动员级参考清洗」与「tracking∪recovery 单策略」一起做，否则难复现抗扰长时程执行。**
+
+1. **数据上界** — Jump 子集动力学显著高于 LAFAN1/PHUMA/AMASS（如 body ang. vel. 0.180 vs AMASS 0.009）；先用 Ground（~84%），Jump 仍在完善。
+2. **参考清洗** — GVHMR→GMR 后做根高度校正：支撑相贴地、速度传播、跳跃段抛物线重建 + SG 平滑，抑制 monocular 垂直漂移。
+3. **统一目标** — FastSAC 单策略混合 $r_{\mathrm{mt}}$ 与门控 $r_{\mathrm{rc}}$；LKE 锚点 + GRSI 跌倒初态，无需独立起身参考即可回到参考 motion。
+4. **消融读法** — 1307 帧高难序列：BeyondMimic 基线 0/6，加 recovery 后 6/6；feet slip（w=5）进一步降 $E_{\mathrm{mpboe}}$、改善抬脚。
+5. **与同域对照** — 相对 KungfuBot 偏自适应课程跟踪，本文强调数据集统计 + 跌倒恢复；相对 SafeFall 是回到参考，不是损伤缓解。
+6. **部署提醒** — Isaac Sim 训练 → MuJoCo 评测 → G1 真机；只下数据不做 GRSI/LKE 混合训，复现不出 recovery。
 
 ## 与其他页面的关系
 

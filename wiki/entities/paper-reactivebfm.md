@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, behavior-foundation-model, closed-loop, motion-planning, diffusion, text-conditioned, exposure-bias, curriculum-learning, unitree-g1, cuhk, shanghai-ai-lab, sim2real, asynchronous-control]
 status: complete
-updated: 2026-07-18
+updated: 2026-07-24
 arxiv: "2606.30362"
 venue: "arXiv 2026"
 related:
@@ -119,6 +119,17 @@ flowchart TB
 - **零样本动态目标到达**：无动态目标训练数据，90% 成功率。
 - **流式文本交互**：长时程行走、功夫、太极等 **中途切换文本指令** 无需重置。
 - **扰动恢复**：踢击、3 kg 球击打、强制反向旋转、拖拽失衡等场景下 **在线重规划恢复**。
+
+## 结论
+
+**BFM/universal tracker 只解决「跟得住参考」；扰动下要恢复，必须把规划器与本体反馈闭合成环，并针对 exposure bias 做训练。**
+
+1. **开环级联是系统病** — DART/TextOp+SONIC 扰动成功率仅 **51.0% / 64.5%**；微小跟踪偏差使规划脱离训练分布并递归放大，换更强 tracker 不够。
+2. **闭环主数字** — ReactiveBFM 闭环成功率 **93.1%**、跌倒 **2.0%**、\(E^r_{\mathrm{MPJPE}}\) **34.6 mm**；相对最佳开环级联约 **+28.6 pt**。
+3. **Scheduled prefix sampling 不可省** — 去掉 self-rollout 成功率跌至 **70.5%**；课程迫使规划器从不完美物理状态学 error-recovery。
+4. **部署工程三件套** — 异步重规划（缓冲 \(N_{\mathrm{buf}}=10\)）+ trajectory chunking 时间集成 + TensorRT（规划 19.3 ms / 控制 5.9 ms），对齐 50 Hz 且不被推理抢占。
+5. **真机能力边界** — 零样本移动目标 **10 次试验 90%**（>40 s）；支持流式改文本指令与踢击/3 kg 球等扰动恢复；训练仅静态到达，动态靠 egocentric 重锚定。
+6. **不是新 BFM 预训练** — 低层沿用 BFM/SONIC 族（>1.02 亿帧）；贡献在 AR-MDM 规划–控制闭环；无相机/触觉，接触丰富交互未建模，真机需外置 GPU + Vive Tracker。
 
 ## 与其他工作的关系
 

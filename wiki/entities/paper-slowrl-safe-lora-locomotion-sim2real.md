@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, quadruped, sim2real, lora, ppo, safe-rl, unitree-go2, isaac-lab, mujoco]
 status: complete
-updated: 2026-05-25
+updated: 2026-07-24
 arxiv: "2603.17092"
 code: https://github.com/unitreerobotics/unitree_rl_lab
 related:
@@ -98,6 +98,16 @@ flowchart TB
 ## 实验与评测
 
 - 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+
+## 结论
+
+**仿真已能跑、真机要抠最后性能时，用 rank-1 LoRA 吸残差 + Recovery 安全滤波限探索，比全参 PPO 微调更安全也更快。**
+
+1. **安全–效率是主收益** — 相对全参 PPO 微调约 46.5% 墙钟缩短；trot 训练期摔倒压到 0（无安全基线平均 14.25 次/seed），jump 到 2（仍远低于 FFT+安全 17.5）。
+2. **Actor 与 Critic 都要 LoRA** — 冻结 Critic 在 IsaacLab→MuJoCo/真机偏移下 advantage 错，Actor-only 不收敛；B=0 初始化保证起步等于仿真策略。
+3. **rank-1 往往够用** — 固定 75 min 墙钟内 ρ=1 最快回到预训练回报；更高秩在接触不连续 + 安全重置下更慢，支持「gap 主要是低维对齐」。
+4. **Recovery 任务无关** — 拉回名义直立低速度 s_nom，Safety Filter 超限硬覆盖主策略；一套 recovery 可服务多下游微调，降低「安全 critic 自身 sim2real」风险。
+5. **低秩也抑制 bang-bang** — trot 上动作变化率相对 FFT 约额外降 88.9%（相对自身起点）；与 DR/RMA 互补，适合已有策略上的保守局部更新阶段。
 
 ## 与其他工作对比
 

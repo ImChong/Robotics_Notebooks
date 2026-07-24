@@ -9,7 +9,7 @@ tags:
   - simulation
   - gigaai
 status: complete
-updated: 2026-07-22
+updated: 2026-07-24
 arxiv: "2607.02642"
 related:
   - ../overview/wm-action-consequence-category-04-eval-posttrain.md
@@ -100,6 +100,17 @@ flowchart TB
 | **GigaWorld-1** | 核心 evaluator-alignment **+14.9%** vs 强 baseline |
 | **Closed-loop 校准** | Gen–Real SR **更接近对角线** vs challenge models（Fig.16–17） |
 | **开源** | 代码、权重、数据集、工具链 |
+
+## 结论
+
+**策略版本评估器要优化「动作忠实的长时序成败对齐」，不是短时画面逼真；GigaWorld-1 的 +14.9% WMES 来自控制接口与数据配比，而非单纯更大生成模型。**
+
+1. **反直觉主结论** — challenge baseline 常过度预测成功（视觉 plausible 但不惩罚差动作）；短时 FVD/美学高 ≠ 好评估器。
+2. **WMES 优化目标是排序相关** — \(S^{\mathrm{real}}(\pi)\) vs \(S^{\mathrm{wm}}(\pi)\)；Score 3 = 同成败 + 高保真物理，而非单帧画质。
+3. **规模与协议口径** — **324k+** WM 模拟轨迹；WMBench **2989** paired traj（teleop:policy ≈ **1:1**）、8 任务族；训练视频 **>12,000 h**（正文另有 ~12980 h 配比叙述）。
+4. **GigaWorld-1 设计图** — Wan 1.3B/5B + 显式 control + hierarchical memory + SLERP prompt → evaluator-alignment **+14.9%**；closed-loop Gen–Real SR 更接近对角线。
+5. **三大洞察可操作化** — 长时序 action-faithful rollout、PhysData 与 robot controllability 配比、低层 action 表征 + spatial alignment + memory。
+6. **不能完全替代真机** — 仍须人类核验边界 case；contact failure 乐观 bias 待降；8 任务族未覆盖移动操作/in-hand/安全关键。
 
 ## 与其他工作对比
 

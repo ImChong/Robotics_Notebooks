@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dataset, eth, stanford, berkeley, tum, humanoid, egocentric, 4d-reconstruction, human-motion, perceptive-locomotion, terrain, motion-retargeting, unitree-g1, smpl-x]
 status: complete
-updated: 2026-07-21
+updated: 2026-07-24
 arxiv: "2607.13472"
 venue: "arXiv 2026"
 related:
@@ -121,6 +121,17 @@ flowchart TB
 | **mimic 消融** | 脚接触奖励在 stepping stones 上提高成功率并加速收敛 |
 | **参考噪声** | 根平移噪声 **>0.1 m** 使训练崩溃；约 **0.05 m** 仍可训 |
 | **真机** | Unitree G1 上 beam / box-up 等原子技能部署演示 |
+
+## 结论
+
+**Rough-terrain 人形 mimic 需要厘米级场景对齐的人–地形 4D 参考；单目全局误差常超 foothold 容忍窗，可穿戴+扫描管线有必要。**
+
+1. **数据定位** — **55** 序列 / **1.37 h** / ~**150k** 帧，覆盖废墟/踏石/窄道/parkour；补 AMASS 无场景、PROX/RICH 偏室内的缺口。
+2. **精度门槛** — 根平移噪声约 **≤0.05 m** 可训，**>0.1 m** 崩溃；对应 foothold-critical 约 **≤5 cm** 参考需求。
+3. **重建三阶段** — MoCap→SMPL-X、拍手同步（<60 ms）、Aria 锚定 + ICP 到 BLK2GO 场景。
+4. **局部 HPS** — mocap GT 子集 MPJPE **73.2 mm**、PA-MPJPE **54.3 mm**；动作/地形难于 SLOPER4D 类城市场景。
+5. **下游 mimic** — 高度图条件 PPO + 时间脚接触奖励，避免稀疏地形「脚悬空却距离很小」；G1 有 beam/box-up 等演示。
+6. **开源按待发布管** — Dataset/Code 项目页 *coming soon*；规模适合基准/fine-tune，不宜单独撑 foundation 预训练。
 
 ## 对比定位
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, whole-body-tracking, perceptive-locomotion, parkour, sim2real, unitree-g1, tsinghua, shanghai-pil]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-24
 arxiv: "2601.07701"
 venue: arXiv
 summary: "Deep Whole-body Parkour（arXiv:2601.07701）：深度感知 + 全身运动跟踪统一框架，单策略在多障碍几何上完成 vault、dive-roll 等多接触跑酷；Isaac Lab + 自定义分组 Warp 射线投射。"
@@ -112,6 +112,16 @@ flowchart TB
 - **仿真：** 多类跑酷动作 × 多样障碍几何；相对盲跟踪对 **初始距离/角度扰动** 更鲁棒。
 - **真机：** Project Instinct 页展示深度 onboard、重复测试与下游蒸馏用例。
 - **工程：** 射线投射加速与 Isaac Lab 大规模并行为可复现要素。
+
+## 结论
+
+**把深度外感知接入全身参考跟踪，单策略按局部几何闭环改步态，完成 vault、dive-roll 等多接触跑酷。**
+
+1. **缝合感知 loco 与盲 WBT** — actor 读噪声深度与本体历史，跟踪相对参考系全身目标，可缩步 / 伸步对准撑手点。
+2. **相对跟踪系 $T_{\text{rel}}$ 解耦误差** — 机器人 xy/yaw + 参考 z/roll/pitch，避免平面漂移破坏垂直 / 俯仰模仿。
+3. **非对称 critic + 自适应采样** — critic 用 height-scan 与连杆真值；按失败率过采样难「运动–地形对」。
+4. **分组 Warp 射线投射是吞吐关键** — 预计算 group→mesh 表，万级并行深度约 10× 加速。
+5. **定位与数据边界要认清** — 主奖励是参考跟踪而非 AMP；强调手 / 躯干接触，与足式 Hiking 互补；数据为定制接触丰富小集，质量优先于规模。
 
 ## 与其他页面的关系
 

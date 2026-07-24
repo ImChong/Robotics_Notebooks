@@ -127,6 +127,18 @@ flowchart LR
 
 数据需 **LeRobot** 格式，区分 `type: sft` 与 `type: rollout`；Step 1/2 的 `data.k` 与 `camera_keys` 必须一致。
 
+## 结论
+
+**混合质量演示/rollout 的帧级信用分配，可用专家时序自监督 advantage + worst-of-N 保守打分完成，再经 CFGRL 提纯 VLA——全程离线、无需在线交互或人工标注。**
+
+1. **监督信号是归一化时间偏移** — 专家帧对 ±signed 偏移训分箱 critic；标量 advantage 再分源 quantile 二值化供 CFGRL。
+2. **Ensemble min 抑制 OOD 过估计** — $A_{\mathrm{STEAM}}=\min_m A_m$；towel 上 M=1→M=3 约 **72.7%→92.3%**。
+3. **分箱要够细** — N=2 仅 **27.3%**，默认 N=32 达 **92.3%**（towel, full data）。
+4. **真机显著超 BC/RECAP/HG-DAgger** — 四任务成功率 **75–93.8%**，较 BC 绝对 **+16.2%–59%**。
+5. **吞吐可读** — towel 约 **58** ep/h vs RECAP **39**（未剔慢进展帧）。
+6. **工程落 RLinf 三阶段** — critic SFT → advantages parquet → `cfg_rl_openpi`；LeRobot 区分 sft/rollout，`data.k` 与相机键必须一致。
+7. **勿当在线 RL** — 只标注已有数据；短程一致任务可先 STEAM Exp，再加 rollout+纠正拉满。
+
 ## 常见误区或局限
 
 - **误区：** 把 STEAM 当成在线 RL——全程 **离线** 标注已有数据，**不需新环境交互**（与 [LWD](../methods/lwd.md) 的车队 online buffer 不同）。

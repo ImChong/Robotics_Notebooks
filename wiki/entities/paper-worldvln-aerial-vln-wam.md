@@ -11,7 +11,7 @@ tags:
   - vision-language-action
   - reinforcement-learning
 status: complete
-updated: 2026-07-22
+updated: 2026-07-24
 arxiv: "2605.15964"
 code: https://github.com/EmbodiedCity/WorldVLN.code
 related:
@@ -94,6 +94,17 @@ flowchart LR
 - **基准：** 项目页展示 **室外（UAV-Flow）** 与 **室内（IndoorUAV）** 仿真，以及 **室内外真机** 部署视频；论文摘要报告相对 **Vision-Language-Action 基线** **成功率提升 12%+**，困难样本优势更大（具体表格以 PDF 为准）。
 - **分析轴（项目页 Training Analysis）：** WAM 是否比 VLA **更易学**、**自回归** 是否必要、**Action-aware GRPO** 相对纯 SFT 的增益（含定性「更直接改善动作执行」表述）。
 - **迁移：** 摘要强调 **真实无人机零样本** 部署可行性（细节见附录 Real-World Deployment）。
+
+## 结论
+
+**空中 VLN 上，关键是「短视界因果潜世界转移 + 可解码动作段」的闭环 WAM，而不是整段视频逼真或单步 VLA 映射。**
+
+1. **相对 VLA 基线有明确提升口径** — 摘要报告成功率提升 **12%+**，困难样本优势更大（细表以 PDF 为准）。
+2. **动作绑定在同一策略内** — 潜自回归骨干预测下一小段世界状态，动作解码器直接映射为 waypoint 段；执行后新观测写回上下文。
+3. **两阶段训练各司其职** — Stage 1 SFT 接地导航动力学与动作解码；Stage 2 Action-aware GRPO 用段级、时间衰减信用分配，把目标从视觉逼真拉向可到达指令。
+4. **与相邻范式边界清晰** — 不同于整段视频 WM+VO、imagine-and-rank，也不同于 Uni-LaViRA 式零样本翻译（无世界转移学习）。
+5. **评测覆盖仿真与真机演示** — 室外 UAV-Flow、室内 IndoorUAV，以及室内外真机部署视频；强调真实无人机零样本可行性。
+6. **勿直接替代地面 VLN 栈** — 动作空间、动力学与安全约束不同；航点/飞控接口与风扰恢复未在单篇穷尽。
 
 ## 常见误区或局限
 

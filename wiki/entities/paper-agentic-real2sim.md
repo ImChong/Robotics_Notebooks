@@ -19,7 +19,7 @@ tags:
   - fau
   - style3d
 status: complete
-updated: 2026-07-23
+updated: 2026-07-24
 arxiv: "2607.19190"
 related:
   - ../concepts/sim2real.md
@@ -137,6 +137,17 @@ flowchart LR
 | 选型定位 | 需要 **episode 级物理回放** 与 **可换 VLM 编排** 时对照；若只需操作场景 + cousins + 策略相关评测，优先看 [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) |
 | 复现边界 | 当前 **不可本地跑转换**；可先读论文 Tab.1 工具表与项目页 USD 预览理解产物形态 |
 | 评测阅读 | 「回放成功」≠「策略成功率相关」；与 SimFoundry Pearson / MMRV 口径不同 |
+
+## 结论
+
+**Agentic Real2Sim 的主指标是「episode 能否在 MuJoCo 回放成功」，不是下游策略成功率；VLM 只做 schema 约束决策，几何/物理走确定性工具。**
+
+1. **主结果读数** — DROID-100、三 VLM 裁判 ≥8/10：Gemma 4 31B 取得 **48/100**，账单约 **$2.62**。
+2. **换更大闭源模型收益有限** — 同管线多后端约 **37–48/100**；相对 Gemma，GPT-5.4 约 **31.4×** 模型成本，成功率接近。
+3. **失败主因在上游感知/仿真组件** — 作者归因分割/跟踪等，而非「再换更大 VLM」。
+4. **产物是 episode twin** — 含观测、执行器、几何、时序状态、物性、后端与成功痕迹；刚性四阶段：发现→分割/mesh/姿态→物性→标定载入→抓取优化。
+5. **口径勿与 SimFoundry 混用** — 「回放成功」≠ Pearson/MMRV 策略相关；可变形与人形以定性为主。
+6. **工程边界** — 绝对成功率仍 **<50%**；截至 2026-07-23 代码 coming soon，本地不可跑转换。
 
 ## 与其他工作对比
 

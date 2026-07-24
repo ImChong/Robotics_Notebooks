@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, repo, sim2real, system-identification, actuator, locomotion, isaac-lab, anymal, quadruped, energy-efficiency, eth, ppo]
 status: complete
-updated: 2026-07-15
+updated: 2026-07-24
 arxiv: "2509.06342"
 venue: IJRR (submitted)
 code: https://github.com/leggedrobotics/pace-sim2real
@@ -143,6 +143,17 @@ flowchart TB
 - 驱动侧速度低通未建模 → PD 力矩偏差
 - PD 增益非 SI 单位 → 跨增益泛化差、能量项失真
 - 盲目增参 → 可辨识性下降；与 PD 增益共优化易产生非唯一解
+
+## 结论
+
+**用悬空 chirp + CMA-ES 把紧凑关节动力学对齐真机后，四项物理能量奖励即可训出可零样本迁移、更省电的盲 locomotion——辨识对齐优于盲目动力学 DR。**
+
+1. **moderate-data、可解释参数** — \(4n+1\) 维（armature、粘性阻尼、Coulomb 摩擦、偏置、全局延迟），仅需标准编码器，无需力矩传感器。
+2. **悬空固定基座协议** — 隔离腿/驱动动力学；chirp 尽量覆盖至策略 Nyquist，低 PD 增益把极点留在可激励频段。
+3. **训练不做动力学 DR** — 只随机化推力、地面摩擦与地形；位置饱和与真机限位一致。
+4. **四项 reward 足够** — 速度跟踪、PMSM 物理能量、碰撞、足端触地；能量项含 Joule、机械功率与势能。
+5. **能效实证** — ANYmal 全流程 CoT 1.27，相对先前工作降 32%；主平台外另有 10+ 足式部署。
+6. **工程注意** — 推荐 Isaac Sim ≥5.0；勿盲目增参或与 PD 增益共优化；面向 PMSM，与舵机摩擦主导场景侧重不同。
 
 ## 局限与风险
 

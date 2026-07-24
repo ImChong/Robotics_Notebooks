@@ -12,7 +12,7 @@ tags:
   - centroidal-dynamics
   - training-time-guidance
 status: complete
-updated: 2026-07-20
+updated: 2026-07-24
 arxiv: "2606.05687"
 code: https://github.com/junhengl/mpc-rl
 related:
@@ -147,6 +147,17 @@ sequenceDiagram
 
 - **MPC 在环**：算力瓶颈常在批量 QP，而非纯网络前向。
 - **Locomotion 与 loco-manip** 是不同任务名，共享求解器栈。
+
+## 结论
+
+**MPC 只在训练期当「地标奖励 + critic 特权」；部署是纯 RL——别当成在线全身 NMPC。**
+
+1. **测试时无 MPC** — 训练用 CD-MPC / πⁿ MPC 批求解注入 landmark reward；导出后 actor 仅本体+命令，配有效惯量 PD。
+2. **相对纯 RL：约束与恢复更强（论文口径）** — 时变速度跟踪、推恢复、约束满足上 MPC-RL 优于同正则块的 Base-RL。
+3. **远端地标要降权** — prediction-confidence weighting \(\alpha=\{0.5,0.25,0.15,0.07,0.03\}\)；避免质心模型失配拖累策略。
+4. **奖励块替换读法** — Base-RL 的 lin/ang vel 指数奖励，由 `mpc_com` / `mpc_lin_vel` / `mpc_ang_mom` / `mpc_foot` / `mpc_grf` 等地标信号替代或补充。
+5. **真机能力按页内口径** — Themis：跑步机行走、未知 **10 kg** 背心/载荷、推恢复、**290 kg** 推车。
+6. **算力瓶颈在批量 QP** — πⁿ MPC 强调相对 qpth/qpax 等的批扩展性；locomotion 与 loco-manip 是不同任务名、共享求解器栈。
 
 ## 常见误区或局限
 

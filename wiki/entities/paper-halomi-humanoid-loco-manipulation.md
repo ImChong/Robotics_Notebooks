@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, imitation-learning, active-perception, umi, robot-free, vla, whole-body-control, unitree-g1, bfm-zero, dagger, teleoperation, shanghai-jiao-tong]
 status: complete
-updated: 2026-07-19
+updated: 2026-07-24
 arxiv: "2606.18772"
 venue: "arXiv 2026"
 related:
@@ -125,6 +125,17 @@ flowchart TB
 | Tossing | — | 定性 | 动态抛掷 |
 
 **主动感知 ablation**：关颈后 Bag Transfer **30%**、Towel **10%**；Pick Bread 即使静态视角够用，关颈仍 **85%→20%**（手眼耦合被破坏）。
+
+## 结论
+
+**稀疏头手示范能跑通 loco-manipulation，真正关键的是「主动颈闭环 + BFM 潜空间跟踪 + 离线参考适配」三件套；缺一环就容易崩。**
+
+1. **主动感知不是加分项** — 关颈后 Bag Transfer **90%→30%**、Towel **80%→10%**；Pick Bread 静态视角看似够用，关颈仍 **85%→20%**（手眼耦合被破坏）。
+2. **跟踪要走 BFM-Zero 潜空间，别直接追世界系关节** — raw action-space 在 OOD 大跳变下易激进失稳；流形约束保持可行、非激进全身行为。
+3. **下身交给 WBC，换 UMI 式便携性** — 不记骨盆/脚；相对 HuMI/BifrostUMI 的显式下身参考，长时域漂移靠相对头手表示与控制器鲁棒性补偿。
+4. **离线适配有明确收益** — controller-aware B-spline+CEM 参考适配使三任务平均跟踪误差约降 **6.7%**，Pick Bread **75%→85%**。
+5. **相对几何泛化仍脆** — 改变面包–盘子相对放置时成功率 **0/10**；头手轨迹空间未覆盖新相位。
+6. **真机任务量级** — 约百条示范量级下 Bag/Pick/Towel 成功率约 **90%/85%/80%**；深蹲抓取与抛掷仅为定性。
 
 ## 与其他工作对比
 

@@ -11,7 +11,7 @@ tags:
   - dream-forcing
   - alibaba
 status: complete
-updated: 2026-07-06
+updated: 2026-07-24
 arxiv: "2607.00678"
 related:
   - ../concepts/world-action-models.md
@@ -110,6 +110,16 @@ flowchart TB
 |------|--------------------------------------|
 | arXiv | [2607.00678](https://arxiv.org/abs/2607.00678) |
 | 前序 | [ABot-M0](https://arxiv.org/abs/2602.11236)（VLA foundation，同仓库已开源训练/权重） |
+
+## 结论
+
+**用帧级 latent action、D-MoT 解耦与 Dream Forcing 三层对齐，把 WAM 从桌面操纵可靠扩展到移动操作。**
+
+1. **三层对齐优先于堆骨干** — 关键是时间粒度（帧级 ALAM latent action）、动作空间（D-MoT move/manip）与训练–推理（Dream Forcing），而非更大 Wan  alone。
+2. **Dream Forcing 对冲 exposure bias** — SFT2 在自 dreamed 视频条件上训逆动力学；文中 5k 步把 Target atomic-seen 从 67.55% 拉到 70.56%，同期继续 Teacher Forcing 降至 66.78%。
+3. **评测以 RoboCasa365 为主战场** — pretrain 平均 40.4%，+Condensed Memory 46.6%，Target 100% 54.2%；LIBERO 99.4% 不能替代移动操作结论。
+4. **三级级联可消融验证** — RoboTwin Clean 上三阶段 latent action 94.0% vs 直接 video→action 87.60%。
+5. **落地注意权重与平台** — M0.5 全量权重仍 coming soon；真机以 Agilex Piper 单臂为主，与人形全身 loco-manip 平台不同。
 
 ## 常见误区或局限
 

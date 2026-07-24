@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, egocentric-video, dexterous-manipulation, world-model, flow-matching, dagger, teleoperation, human-robot-transfer, qwen, pku, psibot, upenn]
 status: complete
-updated: 2026-07-23
+updated: 2026-07-24
 arxiv: "2607.09701"
 code: https://github.com/egosteer/egosteer
 related:
@@ -148,6 +148,17 @@ sequenceDiagram
 | **基线（同机数据后训练）** | EgoSteer **74%** vs π₀.₅ **22%** / Being-H0.5 **39%** |
 | **组件消融** | 去 WM / 去 RTC / 用噪声人数据均显著掉点 |
 | **Few-shot 长程** | RealMan 折盒 **75%**；AgiBot-G1 开盒 **83%**；无预训练基线 **0%** |
+
+## 结论
+
+**可操控双灵巧手自由语言操作是全栈问题：EgoSmith 策展人视频 + 统一 HITL/DAgger 栈 + 世界模型增强 flow-VLA，缺一环都会掉点。**
+
+1. **人侧规模靠策展** — EgoSmith 洗出 **9.6K h** 语言–动作对齐语料（相对 HaWoR 吞吐约 **~9×**）。
+2. **机侧后训练+纠偏** — **187 h / 193** 任务遥操作 + **3** 轮 DAgger（**8.3 h**）；难任务 FT 约 **22.5%→62.5%**。
+3. **40+ 自由语言任务** — 总体约 **75%**；compositional **65%**、unseen **62%**；同机数据下显著高于 π₀.₅ / Being-H0.5。
+4. **Few-shot 长程靠人先验** — 折盒/开盒 **120–200** 条可达 **75+%**，同数据 DP/IMLE/scratch 为 **0%**。
+5. **训练期组件别省** — 去 WM / 去 RTC / 用噪声人数据均显著掉点；RTC 掩盖异步推理停顿。
+6. **开源边界** — 代码+权重+示例已发；全量处理后 9.6K h/187 h 数据待发；缺触觉，高灵巧受 DoF 差距限制。
 
 ## 与其他工作对比
 

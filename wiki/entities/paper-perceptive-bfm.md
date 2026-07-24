@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, bfm, behavior-foundation-model, motion-tracking, perceptive-locomotion, terrain-adaptation, privileged-training, distillation, transformer, unitree-g1, mocap, teleoperation, parkour, miaodong, mondo-robotics, hkust, hkust-gz, ustc]
 status: complete
-updated: 2026-07-22
+updated: 2026-07-24
 arxiv: "2606.08059"
 venue: "CoRL 2026 · submission"
 code: https://github.com/Mondo-Robotics/PMT
@@ -186,6 +186,17 @@ sequenceDiagram
 | 地形 | 楼梯、坡、稀疏块、凹障、草地、室内外不规则面 |
 | 行为 | locomotion、风格舞蹈、台阶后空翻链、mocap 遥操作、侧向/后退 |
 | 定量部署指标 | 项目页以视频画廊与浏览器 WASM demo 为主；训练消融见上表 |
+
+## 结论
+
+**真正重要的是：部署命令仍用平地 raw 人体参考，地形适应交给感知残差；TCRS 只做离线 teacher 监督，不是在线重定向。**
+
+1. **Operator–Environment 失配契约** — 动捕/遥操作给风格意图；落脚、间隙、支撑高度、接触时序由机器人中心高程扫描在线闭合。
+2. **去视觉伤害最大** — Full PMT vs 无视觉 reward **54.6 → 3.6**；增益主要来自感知与架构，而非单纯网络容量。
+3. **TCRS 降低穿透** — 相对简单 Z-lift，足-地形穿透 **5.48 → 2.38 cm（−56.6%）**，间隙违规 −48.3%；仍是运动学合成器，不建模可变形/湿滑地面。
+4. **Identity gate + 跨帧对齐** — \(\tanh(\alpha)\approx 0\) 起步为纯 raw tracker，地形逼迫才开残差；去 target-frame distillation **54.6 → 50.1**。
+5. **单策略多行为** — 同一 G1 权重覆盖 locomotion、风格舞蹈、台阶后空翻、侧向/后退与 mocap 遥操作，项目页强调无 per-skill 调参。
+6. **上身仍盲** — 适应以足为中心，上身命令原样跟踪，近障手臂可能撞击；与全身避障 WBC 仍不同层。
 
 ## 常见误区
 

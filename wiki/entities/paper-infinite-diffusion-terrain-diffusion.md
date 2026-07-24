@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, procedural-terrain, diffusion, world-generation, simulation, siggraph, minecraft, open-source]
 status: complete
-updated: 2026-07-15
+updated: 2026-07-24
 venue: SIGGRAPH 2026
 arxiv: "2512.08309"
 doi: "10.1145/3799902.3811080"
@@ -139,6 +139,17 @@ python -m terrain_diffusion explore xandergos/terrain-diffusion-30m
 - **质量（论文叙事）：** InfiniteDiffusion 将 MultiDiffusion 推广到 **无限 / 超内存域**，作者主张相对全图 eager 扩散 **质量几乎不降级**，同时保持 **O(1) 随机访问** 与 **顺序不变确定性**。
 - **尺度与吞吐（论文叙事）：** 单张 1024×1024 relief 约 **100 km** 宽、大陆可达 **百万 km²**；消费级 GPU **~9× 轨道速度** 流式，Unity 演示 **~3× 轨道速度** 舒适飞行；Minecraft mod 峰值 VRAM **~1.5 GB**。
 - **机器人迁移未评测：** 论文 **未报告** 腿式/人形在生成地形上的 sim2real 迁移实验；将其用作 sim 资产源属 **合理假设**，需单独 benchmark（见 [局限与风险](#局限与风险)）。
+
+## 结论
+
+**真正值钱的是 InfiniteDiffusion 的 O(1) 随机访问 + 顺序不变确定性；Terrain Diffusion 是把这套接口落地成「可学习的 Perlin 式」高程/气候场，不是机器人任务成功率论文。**
+
+1. **相对自回归外绘：访问与误差形态不同** — O(1) 随机访问、顺序不变、误差不复合、可并行；自回归是 O(n)、顺序依赖、误差复合。
+2. **Training-free 推广 MultiDiffusion** — 惰性、无界采样仅由 seed+坐标索引；LRU 只是性能优化，不是持久世界状态。
+3. **尺度与吞吐按论文叙事读** — 单张 1024×1024 relief 约 **100 km** 宽、大陆可达百万 km²；消费级 GPU 约 **9× 轨道速度** 流式，Unity 演示约 **3×** 舒适飞行。
+4. **两阶段管线可操作** — 粗图（Perlin/Azgaar/手绘）控大陆布局 → 30 m/px 或 90 m/px refine；缺条件 TIFF 则回退 Perlin。
+5. **游戏集成门槛清晰** — Minecraft Fabric 1.21.1+、模型约 **2.5 GB**、JVM ≥2.5 GB、VRAM 约 **1.5 GB**（可 offload）；World Scale=2 为推荐起点。
+6. **机器人迁移尚未评测** — 输出是高程/气候场，不含接触动力学；作 sim 资产源需自接碰撞体、摩擦 DR 与课程，无 Isaac/MuJoCo 一键插件。
 
 ## 与其他工作对比
 

@@ -14,7 +14,7 @@ tags:
   - isaac-lab
   - teleoperation
 status: complete
-updated: 2026-07-20
+updated: 2026-07-24
 arxiv: "2601.17440"
 related:
   - ../tasks/loco-manipulation.md
@@ -135,6 +135,17 @@ flowchart TB
 | 相关索引仓 | [OpenDriveLab/WholebodyVLA](https://github.com/OpenDriveLab/WholebodyVLA)（相关论文索引，**明确无具体开源时间表**） |
 | PILOT 官方训练/部署仓 | **未发现**独立可运行发布 |
 | 源码运行时序图 | **不适用**（无官方可复现入口） |
+
+## 结论
+
+**PILOT 的主贡献是「感知 + 全身 loco-manipulation 低层统一策略」；楼梯只是非结构化场景之一，不是专精爬梯论文。**
+
+1. **无感知基线过不了全地形** — 简单地形上跟踪误差低于 HOMIE/FALCON/AMO 与 w/o vision；全地形下无感知基线无法穿越。
+2. **消融指向三项必备件** — 去视觉 / 去注意力 / 去 MoE 均升高 stumble 误差；跨模态编码与 MoE 不是装饰。
+3. **命令接口是速度+高度+躯干+上肢关节** — MoE 用 \(I_t\) 在「协调行走」与「上肢跟踪」间切换；上肢以残差加在参考上。
+4. **感知范围是局部 11×11×0.1 m 高程** — 优势在与操作联合端到端，不是大范围几何专精（对照 FastStair / Explicit Stair）。
+5. **定位是 LLC，高层可另接** — 真机展示 VR 遥操作与分层 RL；统一策略难训，靠 MoE+课程+残差缓解。
+6. **复现边界** — 入库时无官方训练/部署仓；源码运行时序图不适用。
 
 ## 常见误区或局限
 

@@ -167,6 +167,16 @@ flowchart TB
 - **对照协议：** 只比 SFT / 行为克隆网络设计，剔除 AutoVLA、ReCogDrive 等的 RL（如 GRPO）后训练变体。
 - **主结果：** 纯相机 S²-VLA **PDMS 87.1**、**NC 98.4**；相对同骨干 InternVL3-2B 文本头 **+3.0 PDMS**。
 
+## 结论
+
+**驾驶 VLA 里真正拉开差距的是「语义∥空间双流路由」保住未压缩几何；纯 SFT 下的 PDMS 增益可读，但不要把它读成全方法族（含 RL）的绝对第一。**
+
+1. **空间流必须绕过自回归 LM** — 单流文本头 InternVL3-2B 仅 PDMS **84.1**；加多尺度语义 Adapter→**85.6**，再加空间流→**86.2**，全文（+辅助感知）→**87.1 / NC 98.4**，相对文本头 **+3.0 PDMS**。
+2. **对照只比 SFT 网络设计** — Table II 刻意剔除 AutoVLA / ReCogDrive 等 RL（如 GRPO）变体；读榜时勿与带闭环 RL 后训练的方法直接比「绝对 SOTA」。
+3. **纯前视相机仍逼近部分 LiDAR E2E** — 相对 ARTEMIS（PDMS 87.0）可读为同量级；相对 [DiffusionDrive](./paper-diffusiondrive.md)（88.1）仍在 DAC 等子项落后，闭环 RL 是作者标明的下一步。
+4. **三阶段训练顺序有工程含义** — 先 VLM SFT，再冻骨干 LoRA 训意图+感知，最后专训空间精修；损失以 \(\lambda_{\mathrm{plan}}=1.0\) 为主、map/agent 辅之。
+5. **复现边界：未开源** — 无权重与训练脚本，选型只能对照论文超参与 [NAVSIM](https://github.com/autonomousvision/navsim) 协议；勿与操作域 S2-VLA（arXiv:2606.27872）混淆命名。
+
 ## 与其他工作对比
 
 | 对照对象 | 差异要点 |

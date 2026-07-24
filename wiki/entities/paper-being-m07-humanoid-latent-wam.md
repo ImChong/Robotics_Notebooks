@@ -11,7 +11,7 @@ tags:
   - unitree-g1
   - beingbeyond
 status: complete
-updated: 2026-07-15
+updated: 2026-07-24
 venue: "BeingBeyond Technical Report 2026"
 related:
   - ../concepts/world-action-models.md
@@ -106,6 +106,16 @@ flowchart TB
 | **任务** | Mirror Toy Grasping、Water-Tank Fish Scooping、Tabletop Organization、Obstacle-Avoidance Basket Carrying |
 | **定量** | Mirror+Fish 共 **7/15** vs GR00T-N1.6 **2/15**、Ψ0 **3/15**；Mirror **4/10** vs 基线 **1/10**；Fish **3/5** vs **1/5** / **2/5** |
 | **预训练规模** | 原始 **>10,226 h** 混合模态（8+ 数据集 + 内部数据） |
+
+## 结论
+
+**用人数据预训练 latent video-motion 先验，再用 future-conditioned action expert 在少量 G1 演示上接地，形成级联人形 loco-manipulation WAM。**
+
+1. **Cascaded 分解计划与控制** — 先验预测未来 DINO latent 与紧凑 motion；expert 单向读取 prior 多层特征与当前观测，输出可执行 action chunk。
+2. **万小时人中心数据破瓶颈** — 原始 >10,226 h 混合模态（配对 / 仅视频 / 仅动作）扩展监督；DINO latent 避免像素重建。
+3. **head-root motion 统一人–机接口** — 头 / 双手 / 双脚既可来自人动作，也可经 FK 来自机器人轨迹；推理另有 motion 级反馈路径。
+4. **真机相对反应式基线领先** — Mirror+Fish 共 7/15，对照 GR00T-N1.6 2/15、Ψ0 3/15。
+5. **与 MotionWAM 对照选型** — 本文是「人先验 + 后接地」Cascaded；MotionWAM 是 Joint 视频–动作端到端；后训练依赖 VR 全身遥操作，任务规模仍有限。
 
 ## 常见误区或局限
 

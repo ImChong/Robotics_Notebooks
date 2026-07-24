@@ -10,7 +10,7 @@ tags:
   - cosmos
   - skeleton-conditioning
 status: complete
-updated: 2026-07-23
+updated: 2026-07-24
 arxiv: "2606.04463"
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
@@ -127,6 +127,17 @@ flowchart TB
 | **Skeleton（OSCAR）** | **0.571** | **+0.750** | +0.852 | **1.73** |
 
 评测对象：π₀-flow、π₀-FAST、PG-flow、PG-FSQ、PG-FAST、PG-FAST+、PG-Bin 等 **DROID 通用策略**；相机标定用 MoGe-v2 + CtRNet-X；成功判定与配对排序用 **GPT-5**（协议对齐 SIMPLER / WorldGym / WorldEval 系）。
+
+## 结论
+
+**策略评估代理的关键是「虚拟排名能否预测真机」，骨架条件与策展数据比堆参数更管用。**
+
+1. **开环 2B 可超 14B** — 四具身均值 PSNR/SSIM/LPIPS/FVD **24.24 / 0.846 / 0.094 / 7.08**，相对 Kinema4D（14B）全面更好，且同卡 FPS **2.214** vs 0.089。
+2. **骨架条件赢在跨具身与评估** — 无纹理 2D 骨架覆盖 Franka/KUKA/AgiBot/HSR 与 MANO 人手；RoboArena 上 skeleton MMRV **0.571**、Pearson **ρ +0.750**，优于 latent action 与 mesh。
+3. **人类数据 warm-start 有开环收益** — robot+human PSNR **24.24** vs robot-only **23.48**；mesh 难混人手数据。
+4. **数据工程即方法** — 公开约 **216 万** 集经四阶段滤至 **180,657**（机器人 94,830 + 人类 85,827）；重复场景易诱导 freeze-frame。
+5. **虚拟相关 ≠ 取消真机** — 仍有 SISR_Δ **1.73 pp**；适合加速迭代与预筛选，不能替代 RoboArena 分布式真机验证。
+6. **训练门槛友好** — 单 GH200 微调 Cosmos-Predict2.5-2B；首帧 RGB 锚定外观，骨架经 FK→栅格化→VAE 与噪声 latent 逐 token 相加。
 
 ## 与相邻工作的分界（对比）
 

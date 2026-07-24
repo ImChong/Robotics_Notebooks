@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, synthetic-data, sim2real, motion-control, generated-video, loco-manip-contact-survey, nvidia, ucla, unitree-g1]
 status: complete
-updated: 2026-07-22
+updated: 2026-07-24
 arxiv: "2606.05160"
 venue: "arXiv 2026"
 summary: "GRAIL（NVIDIA/UCLA，arXiv:2606.05160）是一条全数字人形 loco-manipulation 数据生成管线：先在已知 3D 资产、场景、相机和机器人比例下用 VFM 合成 HOI 视频，再用 GENMO/WiLoR/FoundationPose 与特权 3D 配置重建 metric 4D HOI，重定向到 Unitree G1 并训练 task-general tracker 与 egocentric RGB 策略；官方 NVlabs/GRAIL 已开源 Docker、pipeline entrypoints、checkpoint 下载和 Hugging Face 数据集。"
@@ -200,6 +200,17 @@ sequenceDiagram
 | 外部凭据 | README 提到 `.env` 可含 `OPENAI_API_KEY`、`KLING_*`、`HF_TOKEN` |
 | 许可证 | NVIDIA License；README 明确非商业使用限制，第三方组件另遵许可 |
 | 待发布边界 | README TODO：quick-start demo script、GRAIL manipulation dataset 尚未全部完成 |
+
+## 结论
+
+**GRAIL 用「生成前固定 3D/相机/尺度」换可重建、可重定向的 loco-manipulation 数据工厂，停在视觉 demo 不够。**
+
+1. **先锁物理上下文，再调 VFM** — 物体、场景、相机、机器人比例已知后才生成 HOI 视频，避免野外视频反推尺度/接触的根本歧义。
+2. **重建必须接到可执行轨迹** — GENMO/WiLoR/FoundationPose + 特权 3D 联合优化 → retarget G1 → SONIC 上 object/scene tracker；`robot/`/`objects/` 是 post-RL 可行轨迹，非纯 kinematic。
+3. **规模与覆盖** — **20,000+** 序列（HF 约 **22k** G1 轨迹、约 250 GB），含 pick-up、sitting、slope/curb/stair 等；manipulation 子集 README 仍标待完整释放。
+4. **真机闭环读法** — 仅用 GRAIL 数据训 egocentric RGB 策略：**pick-up 84%**、**stair-climbing 90%**。
+5. **作混合微调数据** — **95% GRAIL + 5% teleop** 微调 GR00T，抓取优于纯遥操作，并减少「卡在目标附近」。
+6. **复现代价** — 代码/Docker/HF 已开源，但 2D HOI 依赖 Kling 等 API；NVIDIA License 非商业限制；低层能力仍受 SONIC tracker 上限约束。
 
 ## 与其他工作对比
 

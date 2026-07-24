@@ -16,7 +16,7 @@ tags:
   - isaac-sim
   - amazon-far
 status: complete
-updated: 2026-07-16
+updated: 2026-07-24
 arxiv: "2606.05873"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
@@ -134,6 +134,17 @@ flowchart TB
 | 速度 | **~3.4 s/踏棍**（人类 ~3.2 s） |
 | 真机消融（梯子 A, 10 次） | Ours **9/10**；w/o RL **2/10**；w/o VFM **3/10**；w/o RFM **0/10** |
 | 代码 | 论文承诺开源；入库时 **无公开仓库** |
+
+## 结论
+
+**细稀悬空踏棍上，端到端深度 + 踏棍聚焦 + RL 恢复，比「盲跟踪一条参考」关键得多；梯子不是楼梯的特例。**
+
+1. **单参考也能覆盖几何带** — 仅 1 条 OptiTrack（梯子 A）；仿真 \(\phi\in\{55°,60°,65°,70°\}\)、\(z\in\{20,\ldots,30\}\) cm，踏棍 24–28 cm、55–65° 成功率 **>95%**。
+2. **盲基线在 OOD 近乎失效** — 无感知 BeyondMimic 式 tracking：近参考 **49%**，OOD **近零**。
+3. **真机消融：RFM/VFM/RL 都硬** — 梯子 A 10 次：Ours **9/10**；w/o RL **2/10**；w/o VFM **3/10**；w/o RFM **0/10**。
+4. **速度接近人类** — 双向攀爬约 **20 s**；约 **3.4 s/踏棍**（人类约 **3.2 s**）；A/B/C 不同材料与几何。
+5. **两阶段蒸馏可操作** — Stage 1 按 \((\phi,z)\) 训 hybrid-tracking 专家；Stage 2 DAgger+PPO+KL 蒸馏到深度策略；真机用 Fast-FoundationStereo，无硬件改装。
+6. **操作与攀爬分策略** — \(\pi^l/\pi^u\) 双智能体做梯上遥操作；未见负重攀爬强调；入库时无公开仓库。
 
 ## 常见误区或局限
 

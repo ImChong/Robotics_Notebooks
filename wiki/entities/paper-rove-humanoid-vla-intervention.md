@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, vla, reinforcement-learning, post-training, human-in-the-loop, teleoperation, dexterous-manipulation, advantage-conditioning, offline-rl, experience-learning, xpeng-robotics, contact-rich-manipulation, xpeng]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-24
 arxiv: "2606.17011"
 venue: "arXiv 2026"
 related:
@@ -111,6 +111,17 @@ flowchart TB
   - 经验学习平均成功率 **ROVE 最佳**；HG-DAgger 策略犹豫、一任务低于演示策略。
   - 相对 RECAP 的差距体现 **阶段感知 advantage 标注 + critic 质量**；相对 Filtered BC 体现 **RL 式负样本利用**。
   - **三轮迭代** 形成闭环：更好策略 → 更丰富经验 → 更清晰 advantage。
+
+## 结论
+
+**人形部署干预不是专家示范：必须做三阶段标注与状态价值引导，才能从混合质量经验里提纯 VLA，而不是把犹豫学进策略。**
+
+1. **拆开 adaptation 与 recovery** — 对齐/犹豫段赋失败边界，只有显著推进才算 recovery；直接干预 BC（如 HG-DAgger）会吸收 teleoperation gap 噪声。
+2. **学 V(s) 而非 Q** — 跨 embodiment 人类视频只监督进度/恢复，避免动作空间不可比时的 Q 过估计。
+3. **OVE + advantage conditioning** — H-step TD + expectile 乐观价值，再按 action chunk advantage 微调，优于 Filtered BC 式均匀模仿剩余样本。
+4. **真机闭环可迭代** — 擦白板、面包入吐司机三轮 rollout–intervention 分别约 45%→80%、56.7%→86.7%，并出现重试插入、补擦等恢复行为。
+5. **仅演示数据上已优于 SFT** — 说明人形遥操作示范本身次优，value-guided 提取是默认更好起点。
+6. **工程边界** — 人类视频当前只训 critic；缺腕部相机/触觉；未覆盖 loco-manip；平台绑定 IRON-R01。
 
 ## 常见误区或局限
 
