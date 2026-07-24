@@ -10,12 +10,14 @@ tags:
   - dual-stream
   - whut
 status: complete
-updated: 2026-07-23
+updated: 2026-07-24
 arxiv: "2607.13926"
 related:
   - ../methods/vla.md
   - ./paper-x-foresight.md
   - ../overview/autonomous-driving-core-algorithms-series.md
+  - ../overview/e2e-autonomous-driving-top10-algorithms.md
+  - ./paper-diffusiondrive.md
   - ./qwen-robot-nav.md
   - ../tasks/vision-language-navigation.md
   - ../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md
@@ -155,7 +157,7 @@ flowchart TB
 | + 空间流 | 86.2 | 98.1 |
 | + 辅助感知（全文） | **87.1** | **98.4** |
 | ReCogDrive\* / ImagiDrive | 86.5 / 86.4 | 98.1 / 97.9 |
-| DiffusionDrive（LiDAR E2E） | 88.1 | 98.2 |
+| [DiffusionDrive](./paper-diffusiondrive.md)（LiDAR E2E） | 88.1 | 98.2 |
 
 \*RL 增强变体未纳入对照。
 
@@ -172,7 +174,7 @@ flowchart TB
 | 单流 VLM/VLA（InternVL3 文本头、ReCogDrive 等） | 本文化解 **spatial representation collapse**：空间流绕过自回归量化 |
 | [X-Foresight](./paper-x-foresight.md) | 小鹏路线偏 **内嵌预测世界模型**；本文偏 **语义∥空间双流表征路由** |
 | [Qwen-RobotNav](./qwen-robot-nav.md) | RobotNav 是多任务导航基座（含 NAVSIM mode）；本文是 **驾驶专用** 端到端轨迹 VLA |
-| DiffusionDrive / ARTEMIS 等 E2E | 常依赖 LiDAR 或重扩散解码；本文纯前视相机仍逼近 ARTEMIS PDMS |
+| [DiffusionDrive](./paper-diffusiondrive.md) / ARTEMIS 等 E2E | 常依赖 LiDAR 或重扩散解码；本文纯前视相机仍逼近 ARTEMIS PDMS |
 
 ## 局限与风险
 

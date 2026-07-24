@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, egocentric, ego-survey, embodied-ai, georgia-tech]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-24
 arxiv: "2509.04443"
 code: https://ego-moma.github.io/
 summary: "人类移动操作 Ego 数据 + 静态机器人数据共训，绕开大规模移动机器人遥操作成本。"
@@ -19,6 +19,8 @@ sources:
 # EMMA
 
 **EMMA** 收录于 [具身智能研究室 · Ego 9 篇专题](https://mp.weixin.qq.com/s/4JQ1xa-cJ7J1ep_e4txNnA) **第 04/9** 篇，归类为 **02 人→机器人**。
+
+> **命名注意：** 勿与 Waymo 驾驶端到端模型 [EMMA（End-to-End Multimodal Model for Autonomous Driving）](./paper-emma-waymo-e2e.md)（arXiv:2410.23262）混淆。
 
 ## 一句话定义
 

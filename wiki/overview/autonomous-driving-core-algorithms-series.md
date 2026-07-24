@@ -2,9 +2,10 @@
 type: overview
 tags: [autonomous-driving, perception, planning, control, slam, hd-map, tracking, trajectory-prediction, shenlan]
 status: complete
-updated: 2026-07-23
+updated: 2026-07-24
 related:
   - ../overview/navigation-slam-autonomy-stack.md
+  - ./e2e-autonomous-driving-top10-algorithms.md
   - ../methods/object-detection.md
   - ../methods/lqr-ilqr.md
   - ../methods/model-predictive-control.md
@@ -26,9 +27,10 @@ sources:
   - ../../sources/blogs/wechat_shenlan_ai_ad_planning_control.md
   - ../../sources/blogs/wechat_shenlan_ai_ad_slam_hdmap.md
   - ../../sources/blogs/wechat_shenlan_ai_ad_tracking_prediction.md
+  - ../../sources/blogs/wechat_shenlan_ai_ad_e2e_top10.md
   - ../../sources/raw/wechat_shenlan_ai_ad_core_algorithms_album_2026.json
   - ../../sources/papers/m4world_arxiv_2607_14005.md
-summary: "深蓝AI《自动驾驶核心算法盘点》专辑技术地图：2D/3D 检测→规划控制→SLAM/高精地图→跟踪与轨迹预测；5/5 篇正文已入库，挂接仓库导航/SLAM/LQR/MPC/检测节点。"
+summary: "深蓝AI《自动驾驶核心算法盘点》专辑技术地图：2D/3D 检测→规划控制→SLAM/高精地图→跟踪与轨迹预测；5/5 篇正文已入库；端到端续篇见十大算法地图。"
 ---
 
 # 《自动驾驶核心算法盘点》专栏技术地图
@@ -145,7 +147,7 @@ flowchart TB
 | 规划/控制 | [PythonRobotics](../entities/python-robotics.md)、[LQR](../methods/lqr-ilqr.md)、[MPC](../methods/model-predictive-control.md) | 人形全身 [MPC–WBC](../concepts/mpc-wbc-integration.md) 不是车规控 |
 | SLAM/定位 | [导航·SLAM·自动驾驶开源栈](./navigation-slam-autonomy-stack.md)、[Autoware](../entities/autoware.md) | ORB-SLAM 不能直接当 Nav2 全局规划器 |
 | 检测 | [Object Detection](../methods/object-detection.md)、[选型 Query](../queries/object-detection-model-selection.md) | 机器人抓取检测 vs 车载 3D MOT 评测集不同 |
-| 预测/端到端 | 专辑收束提到 E2E/RL 渗透；站内驾驶 VLA 锚点见 [S²-VLA](../entities/paper-s-squared-vla.md)（NAVSIM 双流 SFT）、[X-Foresight](../entities/paper-x-foresight.md)（内嵌世界模型） | 具身 [VLA](../methods/vla.md) 与车端 E2E 共享叙事但栈不同 |
+| 预测/端到端 | 专辑收束提到 E2E/RL 渗透；系统盘点见 [端到端十大算法地图](./e2e-autonomous-driving-top10-algorithms.md)；驾驶 VLA 锚点见 [S²-VLA](../entities/paper-s-squared-vla.md)、[X-Foresight](../entities/paper-x-foresight.md) | 具身 [VLA](../methods/vla.md) 与车端 E2E 共享叙事但栈不同 |
 
 ## 为什么重要
 
@@ -156,11 +158,12 @@ flowchart TB
 ## 局限与风险
 
 - 微信策展体例：引用量、SOTA、FPS、「量产最广」等数字会过时；以论文与官方仓库为准。
-- 专辑偏经典模块化栈；端到端驾驶（UniAD/VAD 等）仅作趋势提及。站内已沉淀驾驶 VLA 对照页：[S²-VLA](../entities/paper-s-squared-vla.md)（语义∥空间解耦）、[X-Foresight](../entities/paper-x-foresight.md)（预测式世界模型嵌策略）。
+- 专辑偏经典模块化栈；端到端驾驶的系统盘点已升格为独立地图：[端到端自动驾驶十大前沿算法](./e2e-autonomous-driving-top10-algorithms.md)（UniAD→DiffusionDrive，十篇完整实体）。驾驶 VLA 对照：[S²-VLA](../entities/paper-s-squared-vla.md)、[X-Foresight](../entities/paper-x-foresight.md)。
 - 第 1–2 篇经 **短链** 补抓；长链若再遇 CAPTCHA，以 short_url 与 raw 归档为准。
 
 ## 关联页面
 
+- [端到端自动驾驶：十大前沿算法技术地图](./e2e-autonomous-driving-top10-algorithms.md) — 深蓝AI E2E 续篇（十篇独立实体）
 - [导航·SLAM·自动驾驶开源栈总览](./navigation-slam-autonomy-stack.md)
 - [目标检测](../methods/object-detection.md)
 - [目标检测模型选型 Query](../queries/object-detection-model-selection.md)
@@ -180,6 +183,7 @@ flowchart TB
 - [wechat_shenlan_ai_ad_planning_control.md](../../sources/blogs/wechat_shenlan_ai_ad_planning_control.md)
 - [wechat_shenlan_ai_ad_slam_hdmap.md](../../sources/blogs/wechat_shenlan_ai_ad_slam_hdmap.md)
 - [wechat_shenlan_ai_ad_tracking_prediction.md](../../sources/blogs/wechat_shenlan_ai_ad_tracking_prediction.md)
+- [wechat_shenlan_ai_ad_e2e_top10.md](../../sources/blogs/wechat_shenlan_ai_ad_e2e_top10.md) — 端到端十大盘点（续篇）
 - [专辑元数据 JSON](../../sources/raw/wechat_shenlan_ai_ad_core_algorithms_album_2026.json)
 
 ## 推荐继续阅读

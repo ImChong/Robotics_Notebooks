@@ -1,5 +1,17 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-24] ingest | sources/blogs/wechat_shenlan_ai_ad_e2e_top10.md — 深蓝AI《端到端自动驾驶：十大前沿算法盘点》；十篇论文独立完整实体（非 stub）
+
+- **工具：** Agent Reach v1.5.0 + wechat-article-for-ai（Camoufox）；短链直连成功 — <https://mp.weixin.qq.com/s/kb4aNFyCLWMKEVgjiX6F_g>
+- **原始抓取：** [`sources/raw/wechat_shenlan_ai_ad_e2e_top10_2026-07-23/`](sources/raw/wechat_shenlan_ai_ad_e2e_top10_2026-07-23/)
+- **新建 blogs：** [`sources/blogs/wechat_shenlan_ai_ad_e2e_top10.md`](sources/blogs/wechat_shenlan_ai_ad_e2e_top10.md)
+- **新建 catalog：** [`sources/papers/e2e_ad_top10_catalog.md`](sources/papers/e2e_ad_top10_catalog.md) + 十篇 `sources/papers/e2e_ad_*.md`
+- **父节点：** [`wiki/overview/e2e-autonomous-driving-top10-algorithms.md`](wiki/overview/e2e-autonomous-driving-top10-algorithms.md)
+- **十篇完整实体（status: complete）：** [`paper-uniad`](wiki/entities/paper-uniad.md)、[`paper-vad-vectorized-scene`](wiki/entities/paper-vad-vectorized-scene.md)、[`paper-drivevlm`](wiki/entities/paper-drivevlm.md)、[`paper-emma-waymo-e2e`](wiki/entities/paper-emma-waymo-e2e.md)、[`paper-gaia1`](wiki/entities/paper-gaia1.md)、[`paper-sparsedrive`](wiki/entities/paper-sparsedrive.md)、[`paper-senna`](wiki/entities/paper-senna.md)、[`paper-momad`](wiki/entities/paper-momad.md)、[`paper-drivetransformer`](wiki/entities/paper-drivetransformer.md)、[`paper-diffusiondrive`](wiki/entities/paper-diffusiondrive.md)
+- **开源核查：** UniAD / VAD / SparseDrive / Senna / MomAD / DriveTransformer / DiffusionDrive **已开源**；DriveVLM **项目页**；EMMA / GAIA-1 **未开源**；配套 `sources/repos/*` 与 `sources/sites/*`
+- **机构：** 新增 `waymo` / `wayve` / `li-auto`；`sensenova` 增 alias `sensetime`
+- **交叉更新：** [`autonomous-driving-core-algorithms-series`](wiki/overview/autonomous-driving-core-algorithms-series.md)、[`generative-world-models`](wiki/methods/generative-world-models.md)、[`paper-s-squared-vla`](wiki/entities/paper-s-squared-vla.md)、[`paper-ego-04-emma`](wiki/entities/paper-ego-04-emma.md)（EMMA 消歧）
+
 ## [2026-07-23] structural | V30 P1 驱动链层级专题交叉补强 — 五页双向回链「执行器驱动链选型闭环」Query
 
 - 在 `wiki/entities/kicad.md`（①层 EDA 电路设计）、`wiki/entities/simplefoc.md`（②层 电机驱动固件 FOC）、`wiki/entities/paper-neuralactuator-neural-actuation-modeling.md`（③层 神经执行器网络）、`wiki/entities/bam-better-actuator-models.md`（③层 显式摩擦辨识）、`wiki/concepts/ethercat-protocol.md`（④层 实时总线闭环集成）五页的 `related` 与「关联页面」补入 `wiki/queries/actuator-drive-chain-selection-loop.md` 并标注本页所在驱动链层，与 Query 页 `related` 双向闭合
