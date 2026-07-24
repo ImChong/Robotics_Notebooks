@@ -192,6 +192,17 @@ sequenceDiagram
 | 调试 | 先查 TDM 是否过早 completed；接地失败看 VA 框是否贴障碍 |
 | 选型 | 要 **零训练跨任务** 且能接受 API/非商用协议 → Uni-LaViRA；要 **端到端可离线权重** → Uni-NaVid 等导航 VLA |
 
+## 结论
+
+**Uni-LaViRA 把导航写成 Language→Vision→Robot 三层翻译并配 TDM/SCB agent loop，用零机器人数据训练的预训练 MLLM 统一 VLN-CE/ObjectNav/EQA/Aerial-VLN 四任务族与四异质真机。**
+
+1. **输出流形分解** — LA 出离散方向 + stop 判定、VA 出像素 bbox/point 经深度反投影得 3D、RA 做确定性短视界几何执行（地面 FMM / UAV 3D 体素）；换本体只换控制器。
+2. **agent loop 补长时程与纠错** — TDM（TODO List Memory）防忘子目标/过早 stop，SCB（Second Chance Backtrack）回退航点并用失败子轨迹条件化重规划，二者正交且全在 prompt 空间。
+3. **training-free** — 骨干 LA=Gemini-3.1-Pro、VA=Qwen3.5-27B 纯推理 API 无微调，主张结构性分解换跨任务/跨本体一般性，而非百万级机器人轨迹。
+4. **多榜结果** — R2R SR **60.7%**、RxR SR **51.3%**、HM3D-v2 SR **77.7%**、HM3D-OVON SR **60.0%**、MP3D-EQA ACC **54.7%**、OpenUAV SR **40.0%**（零样本首报）；主表基于分层 100-episode 子集。
+5. **开源** — 截至 2026-07-22 已开源仿真评测 + 真机入口，License 为 CC BY-NC-SA 4.0（非商业）。
+6. **边界** — 依赖闭源/商用 MLLM API 与提示工程，换骨干会改绝对分数；非商用协议限制部署；100-episode 非官方全量、OpenUAV 方差大；接触丰富操作明确不在本文流形论证范围。
+
 ## 局限与风险
 
 - **依赖闭源/商用 MLLM API** 与提示工程；骨干更换会改绝对分数。  

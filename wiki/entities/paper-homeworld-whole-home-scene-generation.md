@@ -127,6 +127,17 @@ flowchart TB
 - **定性：** 项目页 **Whole-home / Functional Room** 样例与 **具身交互 demo 视频**；媒体报道提及 **跨房间导航、多房间整理** 等家务仿真应用（非论文主表指标）。
 - **待开源后：** 代码/数据集发布（GitHub **Coming Soon**）后需补 **可复现 baseline 数字** 与 **仿真引擎导入评测**。
 
+## 结论
+
+**在 3D 住宅数据稀缺下，用「LLM 平面图 + 2D 生成先验 + 显式 3D shell + VLM 迭代修正」四阶段，把文本一次性生成全局连贯、仿真就绪的 furnished 全屋 3D。**
+
+1. **四阶段流水线** — Floorplan（K-D tree LLM）→ Furnishing（unfurnished 3D shell + top-down/ego roaming + SAM-3/SAM-3D grounding）→ Refinement（微调 VLM 检测碰撞/挡门/越界并迭代 corrective action）→ Surface-centric 可操纵小物放置。
+2. **sim-ready 而非渲染图** — 输出带物理属性、纹理与光照，可导入 MuJoCo/URDF，平均 **>15** 可操作物体/场景，直接服务操作/导航 RL 与 VLA。
+3. **数据本地化** — 策展 **300K**（论文 **314K** validated）中国风矢量住宅平面图 + **5K** furnished 全屋 3D，覆盖封闭式厨房、生活阳台等欧美数据集少见户型。
+4. **K-D tree 作 LLM 输出空间** — 交替垂直/水平切分、叶节点赋 room type，比直接回归多边形更易约束、可确定性反解，减少 polygon overlap。
+5. **评测口径** — 报告 layout diversity、3D design appeal 等定量与用户研究相对 prior methods 的优势；具体表格与基线数值以 PDF 为准（ingest 未逐条转录）。
+6. **边界** — 代码/数据集仍 Coming Soon；闭环 RL/VLA 增益为定性；动态可变形物体、流体、长程任务成功率未作为主指标。
+
 ## 与其他工作对比（论文 Table 1 编译）
 
 | 方向 | 代表 | 与 HomeWorld 的差异 |

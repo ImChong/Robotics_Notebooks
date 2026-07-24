@@ -66,6 +66,16 @@ RGMT 是 robust and generalized humanoid motion tracking。它的核心是 dynam
 
 我的判断**通用运动控制的下一步不是更强 tracking loss，而是更聪明地处理参考质量。**
 
+## 结论
+
+**RGMT 用 dynamics-conditioned aggregation 让人形控制器按当前身体状态动态判断参考片段的重要性，把「更聪明地处理参考质量」而非「更强 tracking loss」作为通用运动控制的方向。**
+
+1. **dynamics-conditioned aggregation** — 用 causal temporal encoder 总结近期本体状态，用 multi-head command encoder 选择性聚合参考命令。
+2. **抗扰与恢复** — 设计 recovery curriculum 与 annealed upward assistance force 来增强恢复和抗扰。
+3. **解决的痛点** — 参考动作可能来自不同数据源、有局部错误或与当前动力学冲突；一味追踪易失稳，动态判断参考重要性降低不一致参考对控制的伤害。
+4. **定位** — 42 篇 humanoid RL 运动控制栈第 14/42，属 02 参考跟踪·通用控制；机构为北京理工大学、人形机器人（上海）有限公司。
+5. **边界** — motion tracking 的泛化常指参考分布内，换数据源或接触条件仍可能崩塌；量化 benchmark、消融与实机指标以原文 PDF/项目页为准（本页未转录）。
+
 ## 常见误区
 
 1. Motion tracking 论文的泛化常指 **参考分布内**；换数据源或接触条件仍可能崩塌。
