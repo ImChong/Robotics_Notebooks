@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-24] structural | V30 P2 事实库扩展：canonical-facts 240 → 250（驱动链选型矛盾检测规则）
+
+- **改动：** [`schema/canonical-facts.json`](schema/canonical-facts.json) 新增 10 条「执行器驱动链选型闭环」矛盾检测规则，配合 V30 P1 交付的驱动链知识链（`queries/actuator-drive-chain-selection-loop.md` / `concepts/torque-source-abstraction-gap.md`）沉淀取舍事实。
+- **新增规则（10）：** 理想力矩源假设 vs 摩擦/齿隙实际、数据手册峰值力矩 vs 持续力矩热约束、FOC 电流环带宽 vs 编码器分辨率制约、总线周期快 ≠ 闭环带宽高、执行器网络拟合好 vs 分布外温升漂移、高减速比力矩大 vs 反驱透明度损失、开源 EDA 够用 vs 高速多层板信号完整性、自研驱动板省钱 vs 可靠性/调试成本、仿真理想执行器 vs 真机 sim2real gap、驱动固件开环标定 vs 负载在环辨识。
+- **校验：** 三段式（terms / pos_claims / neg_claims）与既有 240 条一致；逐条脚本校验对现存驱动链页（`actuator-drive-chain-selection-loop` / `torque-source-abstraction-gap` / `simplefoc` / `humanoid-actuator-102-gear-reflected-inertia`）均有 pos 命中；neg_claims 仅匹配朴素误判措辞，规避页面自身 `≠` / 误判速查行造成的误伤。
+- **门禁：** `make lint` 0 errors、潜在矛盾 0 个（图谱节点/边不受本次纯 schema 改动影响，仍为 P1 交付基线）。
+- **清单：** [`docs/checklists/tech-stack-next-phase-checklist-v30.md`](docs/checklists/tech-stack-next-phase-checklist-v30.md) P2 打勾。
+
 ## [2026-07-24] structural | unitreerobotics 去 stub / 去重：主线仓深化为 complete，合并重复节点
 
 - **问题：** 批量「一仓一 stub」产生大量模板页，且与已有深页（如 `unitree-ros` 覆盖 `unitree_ros_to_real`）重复。
