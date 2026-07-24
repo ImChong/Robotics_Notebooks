@@ -1052,7 +1052,8 @@
     "sensenova": {
       "label": "商汤科技（SenseNova）",
       "aliases": [
-        "sensenova"
+        "sensenova",
+        "sensetime"
       ]
     },
     "leju": {
@@ -1454,6 +1455,26 @@
       "aliases": [
         "mese",
         "mese-technology"
+      ]
+    },
+    "waymo": {
+      "label": "韦莫（Waymo）",
+      "aliases": [
+        "waymo"
+      ]
+    },
+    "wayve": {
+      "label": "韦弗（Wayve）",
+      "aliases": [
+        "wayve"
+      ]
+    },
+    "li-auto": {
+      "label": "理想汽车（Li Auto）",
+      "aliases": [
+        "li-auto",
+        "ideal",
+        "lixiang"
       ]
     }
   }

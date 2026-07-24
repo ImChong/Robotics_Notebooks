@@ -1,13 +1,170 @@
 {
   "generated_at": "2026-07-24",
-  "node_count": 1805,
-  "edge_count": 15099,
+  "node_count": 1816,
+  "edge_count": 15205,
   "coverage": {
-    "covered": 1753,
-    "total": 1782,
+    "covered": 1764,
+    "total": 1793,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/e2e-autonomous-driving-top10-algorithms.md",
+      "detail_id": "wiki-overview-e2e-autonomous-driving-top10-algorithms",
+      "label": "端到端自动驾驶：十大前沿算法技术地图",
+      "type": "overview",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-uniad.md",
+      "detail_id": "entity-paper-uniad",
+      "label": "UniAD（Planning-oriented Autonomous Driving · arXiv:2212.10156）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-vad-vectorized-scene.md",
+      "detail_id": "entity-paper-vad-vectorized-scene",
+      "label": "VAD（VAD: Vectorized Scene Representation for Efficient Autonomous Driving · arXiv:2303.12077）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-drivevlm.md",
+      "detail_id": "entity-paper-drivevlm",
+      "label": "DriveVLM（DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models · arXiv:2402.12289）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-emma-waymo-e2e.md",
+      "detail_id": "entity-paper-emma-waymo-e2e",
+      "label": "EMMA（Waymo）（EMMA: End-to-End Multimodal Model for Autonomous Driving · arXiv:2410.23262）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-gaia1.md",
+      "detail_id": "entity-paper-gaia1",
+      "label": "GAIA-1（GAIA-1: A Generative World Model for Autonomous Driving · arXiv:2309.17080）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-sparsedrive.md",
+      "detail_id": "entity-paper-sparsedrive",
+      "label": "SparseDrive（SparseDrive: End-to-End Autonomous Driving via Sparse Scene Representation · arXiv:2405.19620）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-senna.md",
+      "detail_id": "entity-paper-senna",
+      "label": "Senna（Senna: Bridging Large Vision-Language Models and End-to-End Autonomous Driving · arXiv:2410.22313）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-momad.md",
+      "detail_id": "entity-paper-momad",
+      "label": "MomAD（Don't Shake the Wheel: Momentum-Aware Planning in End-to-End Autonomous Driving · arXiv:2503.03125）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-drivetransformer.md",
+      "detail_id": "entity-paper-drivetransformer",
+      "label": "DriveTransformer（DriveTransformer: Unified Transformer for Scalable End-to-End Autonomous Driving · arXiv:2503.07656）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-diffusiondrive.md",
+      "detail_id": "entity-paper-diffusiondrive",
+      "label": "DiffusionDrive（DiffusionDrive: Truncated Diffusion Model for End-to-End Autonomous Driving · arXiv:2411.15139）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/autonomous-driving-core-algorithms-series.md",
+      "detail_id": "wiki-overview-autonomous-driving-core-algorithms-series",
+      "label": "《自动驾驶核心算法盘点》专栏技术地图",
+      "type": "overview",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/generative-world-models.md",
+      "detail_id": "wiki-methods-generative-world-models",
+      "label": "Generative World Models (生成式世界模型)",
+      "type": "method",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-s-squared-vla.md",
+      "detail_id": "entity-paper-s-squared-vla",
+      "label": "S²-VLA（Semantic–Spatial Dual-Stream · 驾驶 VLA · arXiv:2607.13926）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-ego-04-emma.md",
+      "detail_id": "entity-paper-ego-04-emma",
+      "label": "EMMA",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/comparisons/mobile-robot-navigation-planning-methods.md",
       "detail_id": "wiki-comparisons-mobile-robot-navigation-planning-methods",
@@ -58,176 +215,22 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/robot-motion-keyframe-editors.md",
-      "detail_id": "entity-robot-motion-keyframe-editors",
-      "label": "机器人关键帧与运动编辑工具（选型入口）",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/concepts/character-animation-vs-robotics.md",
-      "detail_id": "wiki-concepts-character-animation-vs-robotics",
-      "label": "Character Animation vs Robotics（角色动画与机器人控制的边界）",
-      "type": "concept",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/methods/motion-retargeting-gmr.md",
-      "detail_id": "wiki-methods-motion-retargeting-gmr",
-      "label": "GMR: 通用动作重定向",
-      "type": "method",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/methods/diffusion-motion-generation.md",
-      "detail_id": "wiki-methods-diffusion-motion-generation",
-      "label": "Diffusion-based Motion Generation (基于扩散模型的运动生成)",
-      "type": "method",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/rigmo.md",
-      "detail_id": "entity-rigmo",
-      "label": "RigMo：统一 Rig 与 Motion 的生成式动画",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/ardy.md",
-      "detail_id": "entity-ardy",
-      "label": "ARDY：交互式可控 3D 人体运动生成",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-tacrefinenet-tactile-grasp-refinement.md",
-      "detail_id": "entity-paper-tacrefinenet-tactile-grasp-refinement",
-      "label": "TacRefineNet：边缘突出物体的目标条件触觉抓取精修",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/concepts/tactile-sensing.md",
-      "detail_id": "wiki-concepts-tactile-sensing",
-      "label": "Tactile Sensing（触觉感知）",
-      "type": "concept",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/overview/topic-tactile.md",
-      "detail_id": "wiki-overview-topic-tactile",
-      "label": "触觉与力觉（专题汇总）",
-      "type": "overview",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/overview/topic-grasp.md",
-      "detail_id": "wiki-overview-topic-grasp",
-      "label": "抓取与操作（专题汇总）",
-      "type": "overview",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/methods/visual-servoing.md",
-      "detail_id": "wiki-methods-visual-servoing",
-      "label": "Visual Servoing（视觉伺服控制）",
-      "type": "method",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/methods/in-hand-reorientation.md",
-      "detail_id": "wiki-methods-in-hand-reorientation",
-      "label": "In-hand Reorientation (手内重定向)",
-      "type": "method",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/queries/grasp-policy-selection.md",
-      "detail_id": "wiki-queries-grasp-policy-selection",
-      "label": "Query：抓取策略选型（开放场景 vs 已知物体 / 稀疏 vs 稠密 / 几何 vs 学习）",
-      "type": "query",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-omnitactune-tactile-residual-adaptation.md",
-      "detail_id": "entity-paper-omnitactune-tactile-residual-adaptation",
-      "label": "OmniTacTune：视觉策略的触觉残差真机适应",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/comparisons/mobile-robot-navigation-planning-methods.md",
-    "detail_id": "wiki-comparisons-mobile-robot-navigation-planning-methods",
-    "label": "移动机器人导航规划方法对比：全局搜索 · 局部避障 · 路径平滑",
-    "type": "comparison",
-    "recency": "2026-07-23",
+    "path": "wiki/overview/e2e-autonomous-driving-top10-algorithms.md",
+    "detail_id": "wiki-overview-e2e-autonomous-driving-top10-algorithms",
+    "label": "端到端自动驾驶：十大前沿算法技术地图",
+    "type": "overview",
+    "recency": "2026-07-24",
     "source": "log.md",
-    "action": "maintained",
-    "has_repo": true,
-    "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
+    "action": "added",
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 354
+      "size": 363
     },
     {
       "label": "仿真到现实",
@@ -270,7 +273,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 317,
+      "degree": 328,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

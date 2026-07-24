@@ -1,5 +1,17 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-24] ingest | sources/blogs/wechat_shenlan_ai_ad_e2e_top10.md — 深蓝AI《端到端自动驾驶：十大前沿算法盘点》；十篇论文独立完整实体（非 stub）
+
+- **工具：** Agent Reach v1.5.0 + wechat-article-for-ai（Camoufox）；短链直连成功 — <https://mp.weixin.qq.com/s/kb4aNFyCLWMKEVgjiX6F_g>
+- **原始抓取：** [`sources/raw/wechat_shenlan_ai_ad_e2e_top10_2026-07-23/`](sources/raw/wechat_shenlan_ai_ad_e2e_top10_2026-07-23/)
+- **新建 blogs：** [`sources/blogs/wechat_shenlan_ai_ad_e2e_top10.md`](sources/blogs/wechat_shenlan_ai_ad_e2e_top10.md)
+- **新建 catalog：** [`sources/papers/e2e_ad_top10_catalog.md`](sources/papers/e2e_ad_top10_catalog.md) + 十篇 `sources/papers/e2e_ad_*.md`
+- **父节点：** [`wiki/overview/e2e-autonomous-driving-top10-algorithms.md`](wiki/overview/e2e-autonomous-driving-top10-algorithms.md)
+- **十篇完整实体（status: complete）：** [`paper-uniad`](wiki/entities/paper-uniad.md)、[`paper-vad-vectorized-scene`](wiki/entities/paper-vad-vectorized-scene.md)、[`paper-drivevlm`](wiki/entities/paper-drivevlm.md)、[`paper-emma-waymo-e2e`](wiki/entities/paper-emma-waymo-e2e.md)、[`paper-gaia1`](wiki/entities/paper-gaia1.md)、[`paper-sparsedrive`](wiki/entities/paper-sparsedrive.md)、[`paper-senna`](wiki/entities/paper-senna.md)、[`paper-momad`](wiki/entities/paper-momad.md)、[`paper-drivetransformer`](wiki/entities/paper-drivetransformer.md)、[`paper-diffusiondrive`](wiki/entities/paper-diffusiondrive.md)
+- **开源核查：** UniAD / VAD / SparseDrive / Senna / MomAD / DriveTransformer / DiffusionDrive **已开源**；DriveVLM **项目页**；EMMA / GAIA-1 **未开源**；配套 `sources/repos/*` 与 `sources/sites/*`
+- **机构：** 新增 `waymo` / `wayve` / `li-auto`；`sensenova` 增 alias `sensetime`
+- **交叉更新：** [`autonomous-driving-core-algorithms-series`](wiki/overview/autonomous-driving-core-algorithms-series.md)、[`generative-world-models`](wiki/methods/generative-world-models.md)、[`paper-s-squared-vla`](wiki/entities/paper-s-squared-vla.md)、[`paper-ego-04-emma`](wiki/entities/paper-ego-04-emma.md)（EMMA 消歧）
+
 ## [2026-07-23] structural | 全量 wiki lint 修复所有信息型预警（46→0）— 修复 lint 关键词子串误配（token 前缀匹配，'eda' 不再误配 impedance/bipedal/pedagogy/bytedance，去除 13 条假阳性并补回归测试）；为 22 个执行器/EDA/FOC 真实相关页补「执行器驱动链选型闭环」枢纽双向回链；soccer-field-simulation 回链物理保真度专题；paper-wan-move/paper-wan-video 补「对比/评测」三段式；lidar-slam-lio-vio-selection 接入 lidar-odometry-fusion；新建 3 个落地页 wiki/comparisons/mobile-robot-navigation-planning-methods.md、wiki/queries/soccer-visual-field-localization-pipeline.md、wiki/queries/humanoid-voice-interaction-pipeline.md 覆盖 a-star/dwa/smooth-navigation/soccer 三段/voice 共 7 个高频 methods；同步 graph(1805节点/15099边,0孤儿)/home-stats/exports/catalog；ci-preflight 12/12、lint 0/0
 
 ## [2026-07-23] ingest | sources/papers/generative_motion_rig_siggraph_talks_2026.md — Disney Generative Motion Rig（SIGGRAPH Talks 2026）Blender generative keyframing；wiki/entities/generative-motion-rig.md；交叉 wiki/entities/blender.md、wiki/entities/robot-motion-keyframe-editors.md、wiki/concepts/character-animation-vs-robotics.md、wiki/methods/motion-retargeting-gmr.md（GMR 缩写消歧）、wiki/methods/diffusion-motion-generation.md；sources/sites/disney-generative-motion-rig.md（插件未开源）

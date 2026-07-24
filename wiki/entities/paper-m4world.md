@@ -13,7 +13,7 @@ tags:
   - casia
   - bit
 status: complete
-updated: 2026-07-22
+updated: 2026-07-24
 arxiv: "2607.14005"
 related:
   - ../methods/generative-world-models.md
