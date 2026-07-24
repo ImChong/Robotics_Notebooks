@@ -62,6 +62,7 @@
 - [x] 技术路线页侧栏 TOC（桌面 ≥1632px）：卡片封顶 `min(76vh, 680px)`，列表区内滚动；移动端抽屉保持原样全高滚动。
 - [x] 详情页 Mermaid：正文 14px / 移动端 12px，增大节点 `padding` 与 `wrappingWidth`，减轻大字贴边与单行裁切；灯箱仍按 1.75× 离屏高清重绘。
 - [x] 详情页 Mermaid 标签裁切：`htmlLabels` 下 `foreignObject` 比 `nodeLabel` 略窄时 post-render 扩框 + CSS `overflow: visible`，修复如 world-models-15 技术地图等长标签贴边裁切。
+- [x] Markdown 嵌套列表：`renderMarkdownContent` 保留缩进层级，路线页「其它纵深路径 / 关联知识页」等不再被拍平为同级 bullet。
 - [x] 首页「更多路线」六按钮排版：`home-entry-route-links` 最小列宽 132px → 118px，861–940px 窗口宽度下不再出现 5+1 孤行；≤860px 移动端保持 2×3 网格。
 - [x] 首页「更多路线」按钮按方向起点里程碑的历史顺序排列：传统控制（ZMP 1972）→ 安全控制（CLF 1983）→ 接触操作（阻抗控制 1985）→ 模仿学习（行为克隆 1988）→ 强化学习（Q-learning 1989）→ 感知越障（2020s）。
 - [x] 首页「更多路线」扩为十按钮并保持历史序：新增导航（概率 SLAM 1986）、移动操作（移动操作臂协调 1994）、BFM（DeepMimic 2018）；原 VLA·BFM 合并按钮拆为独立 BFM 与 VLA（RT-2 2023）两个入口。
