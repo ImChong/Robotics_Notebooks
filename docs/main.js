@@ -3034,7 +3034,6 @@
     const headingQueue = Array.isArray(headings) ? headings.slice() : collectMarkdownHeadings(source);
     let paragraphLines = [];
     let listItems = [];
-    let listTag = '';
     let quoteLines = [];
     let codeLines = [];
     let codeLang = '';
@@ -3043,6 +3042,29 @@
     let htmlBlockLines = [];
     let htmlBlockOpenTag = '';
     const HTML_BLOCK_TAGS = ['div', 'details', 'summary', 'section', 'aside', 'figure', 'figcaption'];
+
+    /** Split leading whitespace indent (spaces=1, tabs=2) from list-marker content. */
+    function splitListLine(line) {
+      var i = 0;
+      var indent = 0;
+      while (i < line.length) {
+        var ch = line.charAt(i);
+        if (ch === ' ') {
+          indent += 1;
+          i += 1;
+        } else if (ch === '\t') {
+          indent += 2;
+          i += 1;
+        } else {
+          break;
+        }
+      }
+      var content = line.slice(i);
+      if (content.charAt(content.length - 1) === ' ' || content.charAt(content.length - 1) === '\t') {
+        content = content.replace(/[ \t]+$/, '');
+      }
+      return { indent: indent, content: content };
+    }
 
     /** Empty <a id="..."></a> bookmark lines (common in roadmap .md) must bypass paragraph escaping. */
     function parseStandaloneBookmarkAnchor(trimmed) {
@@ -3059,39 +3081,80 @@
 
     function flushList() {
       if (!listItems.length) return;
-      const openTag = listTag === 'ol' ? 'ol' : 'ul';
 
-      // ⚡ Bolt Optimization: Replace .some and .map with standard for loop
-      // Expected impact: Eliminates function closure allocation and invocation overhead in hot text parsing loops.
-      let hasTask = false;
-      for (let i = 0; i < listItems.length; i++) {
-        if (listItems[i] && listItems[i].task) {
-          hasTask = true;
-          break;
+      function hasTaskAtIndent(start, end, indent) {
+        for (var t = start; t < end; t++) {
+          var row = listItems[t];
+          if (row.indent < indent) break;
+          if (row.indent === indent && row.task) return true;
         }
+        return false;
       }
 
-      const listOpen = (function () {
-        if (openTag === 'ul') return hasTask ? '<ul class="contains-task-list">' : '<ul>';
-        if (openTag === 'ol') return '<ol>';
-        return '<ul>';
-      })();
-
-      let listItemsHtml = '';
-      for (let i = 0; i < listItems.length; i++) {
-        const item = listItems[i];
-        const body = renderMathBlocks(renderInlineMarkdown(item.text, context));
+      function renderListItemBody(item) {
+        var body = renderMathBlocks(renderInlineMarkdown(item.text, context));
         if (item.task) {
-          const checkedAttr = item.checked ? ' checked' : '';
-          listItemsHtml += '<li class="task-list-item"><label><input type="checkbox"' + checkedAttr + ' disabled aria-readonly="true" /> <span class="task-list-item-body">' + body + '</span></label></li>';
-        } else {
-          listItemsHtml += '<li>' + body + '</li>';
+          var checkedAttr = item.checked ? ' checked' : '';
+          return (
+            '<li class="task-list-item"><label><input type="checkbox"' +
+            checkedAttr +
+            ' disabled aria-readonly="true" /> <span class="task-list-item-body">' +
+            body +
+            '</span></label>'
+          );
         }
+        return '<li>' + body;
       }
 
-      blocks.push(listOpen + listItemsHtml + '</' + openTag + '>');
+      /** Render flat indented list items as nested <ul>/<ol> (fixes 关联知识页 / 其它纵深路径). */
+      function renderListSlice(start, end, indent) {
+        if (start >= end) return '';
+        var html = '';
+        var i = start;
+        while (i < end) {
+          var item = listItems[i];
+          if (item.indent < indent) break;
+
+          var tag = item.tag === 'ol' ? 'ol' : 'ul';
+          var groupStart = i;
+          var j = i;
+          while (j < end) {
+            var it = listItems[j];
+            if (it.indent < indent) break;
+            if (it.indent === indent && (it.tag === 'ol' ? 'ol' : 'ul') !== tag) break;
+            j += 1;
+          }
+
+          var taskClass =
+            tag === 'ul' && hasTaskAtIndent(groupStart, j, indent) ? ' class="contains-task-list"' : '';
+          html += '<' + tag + taskClass + '>';
+
+          var k = groupStart;
+          while (k < j) {
+            var cur = listItems[k];
+            if (cur.indent !== indent) {
+              k += 1;
+              continue;
+            }
+            var childStart = k + 1;
+            var childEnd = childStart;
+            while (childEnd < j && listItems[childEnd].indent > indent) childEnd += 1;
+            html += renderListItemBody(cur);
+            if (childEnd > childStart) {
+              html += renderListSlice(childStart, childEnd, listItems[childStart].indent);
+            }
+            html += '</li>';
+            k = childEnd;
+          }
+
+          html += '</' + tag + '>';
+          i = j;
+        }
+        return html;
+      }
+
+      blocks.push(renderListSlice(0, listItems.length, listItems[0].indent));
       listItems = [];
-      listTag = '';
     }
 
     function flushQuote() {
@@ -3262,37 +3325,46 @@
       continue;
       }
 
-    const taskMatch = trimmed.match(RE_TASK);
+    const listLine = splitListLine(line);
+    const taskMatch = listLine.content.match(RE_TASK);
       if (taskMatch) {
         flushParagraph();
         flushQuote();
-        if (listTag && listTag !== 'ul') flushList();
-        listTag = 'ul';
         listItems.push({
           task: true,
           checked: String(taskMatch[1] || '').trim().toLowerCase() === 'x',
-          text: String(taskMatch[2] || '').trim()
+          text: String(taskMatch[2] || '').trim(),
+          indent: listLine.indent,
+          tag: 'ul'
         });
       continue;
       }
 
-    const unorderedMatch = trimmed.match(RE_UNORDERED);
+    const unorderedMatch = listLine.content.match(RE_UNORDERED);
       if (unorderedMatch) {
         flushParagraph();
         flushQuote();
-        if (listTag && listTag !== 'ul') flushList();
-        listTag = 'ul';
-        listItems.push({ task: false, checked: false, text: unorderedMatch[1] });
+        listItems.push({
+          task: false,
+          checked: false,
+          text: unorderedMatch[1],
+          indent: listLine.indent,
+          tag: 'ul'
+        });
       continue;
       }
 
-    const orderedMatch = trimmed.match(RE_ORDERED);
+    const orderedMatch = listLine.content.match(RE_ORDERED);
       if (orderedMatch) {
         flushParagraph();
         flushQuote();
-        if (listTag && listTag !== 'ol') flushList();
-        listTag = 'ol';
-        listItems.push({ task: false, checked: false, text: orderedMatch[1] });
+        listItems.push({
+          task: false,
+          checked: false,
+          text: orderedMatch[1],
+          indent: listLine.indent,
+          tag: 'ol'
+        });
       continue;
       }
 
