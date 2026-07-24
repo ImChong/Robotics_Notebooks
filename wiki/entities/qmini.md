@@ -1,80 +1,80 @@
 ---
 type: entity
-tags: [repo, unitree, unitreerobotics, platform]
-status: draft
+tags: [repo, unitree, unitreerobotics, quadruped, open-hardware, education]
+status: complete
 updated: 2026-07-24
 related:
   - ./unitree.md
-  - ./unitree-rl-gym.md
   - ./quadruped-robot.md
+  - ../tasks/locomotion.md
 sources:
   - ../../sources/repos/Qmini.md
   - ../../sources/repos/unitree.md
-summary: "宇树相关小型四足开源项目（社区热度高）。"
+summary: "Qmini 是宇树相关的小型开源四足平台：BOM、STEP、URDF 与 DIY 文档齐全，默认参考树莓派 4B，执行器使用 Unitree 8010 电机；软件核心另见 RoboTamer4Qmini。"
 ---
 
 # Qmini
 
-**Qmini** 是 [unitreerobotics](https://github.com/unitreerobotics) 组织下的官方仓库，归属 **开源平台/整机** 主线。
+**Qmini** 面向爱好者、教育与科研的小型四足开源项目：强调可 3D 打印结构、一站式零件清单与模块化扩展。
 
 ## 一句话定义
 
-宇树相关小型四足开源项目（社区热度高）。
+「乐高式」可组装开源小四足——硬件 BOM + 机械 STEP + URDF，配合社区/配套软件快速上手动态步态实验。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| RL | Reinforcement Learning | 强化学习 |
-| Sim2Real | Simulation to Real | 仿真到真机迁移 |
-| SDK | Software Development Kit | 软件开发工具包 |
-| URDF | Unified Robot Description Format | 统一机器人描述格式 |
-| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理引擎 |
+| BOM | Bill of Materials | 物料清单 |
+| STEP | STEP CAD format | 机械零件格式 |
+| URDF | Unified Robot Description Format | 机器人描述 |
+| DIY | Do It Yourself | 自行组装 |
+| STEM | Science Technology Engineering Math | 教育场景 |
+| RL | Reinforcement Learning | 可选算法层 |
 
 ## 为什么重要
 
-整机/小型开源平台提供可复现的硬件+软件对照样本。
+- 降低「买整机才能做四足实验」的门槛；适合课程与原型。
+- 使用与商业平台同源的 **Unitree 8010** 电机体验，利于迁移到更大机型。
+- 在组织仓中社区热度高（星标显著），是硬件开源叙事的代表节点。
 
-在宇树官方开源地图中，本仓是 **开源平台/整机** 的独立节点；与其它仓的选型关系见 [Unitree](./unitree.md)。
+## 核心原理
 
-## 核心信息
+| 开源面 | 内容 |
+|--------|------|
+| 硬件 | 完整 BOM、电气框图、DIY PDF |
+| 机械 | 全零件 STEP、装配 SOP；结构可 3D 打印 |
+| 软件 | `urdf/Qmini.urdf`；核心栈指向 [RoboTamer4Qmini](https://github.com/vsislab/RoboTamer4Qmini) |
 
-| 字段 | 内容 |
-|------|------|
-| 仓库 | [`unitreerobotics/Qmini`](https://github.com/unitreerobotics/Qmini) |
-| 组织分类 | 开源平台/整机 |
-| 星标（2026-07-24） | ~722 |
-| 最近推送 | 2025-09-17 |
-| 主要语言 | N/A |
+**驱动**：11 个 8010 电机——10 个主运动，1 个颈部预留扩展。控制板默认参考 **Raspberry Pi 4 Model B**，可替换。
 
 ## 工程实践
 
-- Complete Bill of Materials (BOM)
-- Electrical system block diagram
-- DIY instructions
-- STEP files for all mechanical components
+1. 按 BOM 采购/打印零件；组装约 3–5 小时量级（上游表述）。
+2. 加载 URDF 做仿真或可视化。
+3. 软件跟 `RoboTamer4Qmini` 文档，而不是假设本仓自含完整 RL 训练。
 
-- 组织级导航与五条研发主线见 [Unitree 软件生态](./unitree.md)；原始归档见 [sources/repos/Qmini.md](../../sources/repos/Qmini.md)。
+> 注：`unitree_actuator_sdk` 等电机调试工具见 sources 归档；不另建重复 wiki 页，需要时从 [unitree_sdk2](./unitree-sdk2.md) 周边说明进入。
 
 ## 局限与风险
 
-- **不要脱离代际混用**：SDK1/ROS1 遗产仓与 SDK2/ROS2/DDS 新栈的消息与启动方式不兼容。
-- **README 边界优先**：功能承诺以官方 README 为准；星标高不等于适合你的机型/仿真器。
-- **外设/第三方手部仓**：驱动与固件版本需与具体灵巧手/雷达硬件对齐，否则 Serial↔DDS 桥会静默失败。
+- 本仓偏硬件与入门软件入口，**不等于**官方 Go2 RL 部署栈。
+- 3D 打印公差与电机标定会影响落地步态，需独立做系统辨识。
+- 配套软件在外部仓库，版本需自行钉扎。
 
 ## 关联页面
 
-- [Unitree 组织枢纽](./unitree.md)
-- [unitree_rl_gym](./unitree-rl-gym.md)
 - [四足机器人](./quadruped-robot.md)
+- [Locomotion](../tasks/locomotion.md)
+- [Unitree](./unitree.md)
+- [unitree_sdk2](./unitree-sdk2.md)
 
 ## 参考来源
 
 - [sources/repos/Qmini.md](../../sources/repos/Qmini.md)
-- [sources/repos/unitree.md](../../sources/repos/unitree.md) — 组织级仓库地图
-- 上游仓库：<https://github.com/unitreerobotics/Qmini>
+- 上游：<https://github.com/unitreerobotics/Qmini>
 
 ## 推荐继续阅读
 
-- 官方开发者文档：<https://support.unitree.com/home/zh/developer>
-- 组织总览：<https://github.com/unitreerobotics>
+- RoboTamer4Qmini：<https://github.com/vsislab/RoboTamer4Qmini>
+

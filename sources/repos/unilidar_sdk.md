@@ -12,7 +12,7 @@
 - **分类：** LiDAR 感知
 - **入库日期：** 2026-07-24
 - **一句话说明：** Unitree L1 LiDAR 官方 SDK。
-- **沉淀到 wiki：** 是 → [`wiki/entities/unilidar-sdk.md`](../../wiki/entities/unilidar-sdk.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/unilidar-sdk2.md`](../../wiki/entities/unilidar-sdk2.md)
 - **组织地图：** [`sources/repos/unitree.md`](unitree.md)
 
 ---
@@ -32,5 +32,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/unilidar-sdk.md`](../../wiki/entities/unilidar-sdk.md)
+- 实体页：[`wiki/entities/unilidar-sdk2.md`](../../wiki/entities/unilidar-sdk2.md)
 - 组织枢纽：[`wiki/entities/unitree.md`](../../wiki/entities/unitree.md)

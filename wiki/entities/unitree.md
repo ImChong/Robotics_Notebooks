@@ -7,7 +7,7 @@ sources:
   - ../../sources/repos/unitree.md
   - ../../sources/sites/unitree-unistore.md
   - ../../sources/papers/humanoid_hardware.md
-summary: "宇树科技是腿式与人形机器人领域高影响力硬件与官方开源软件组织；GitHub unitreerobotics 下活跃仓均有独立 wiki 节点，覆盖 SDK2、ROS、三条 RL 训练线、XR 遥操作与 UnifoLM 基础模型栈。"
+summary: "宇树科技是腿式与人形机器人领域高影响力硬件与官方开源软件组织；GitHub unitreerobotics 主线仓有详情 wiki 节点（SDK2/ROS/RL/遥操作/UnifoLM 等），周边仓合并或仅 sources 归档以避免 stub 与重复节点。"
 related:
   - ./humanoid-robot.md
   - ./quadruped-robot.md
@@ -23,6 +23,9 @@ related:
   - ./unitree-lerobot.md
   - ./unifolm-vla.md
   - ./unifolm-world-model-action.md
+  - ./unitree-dexterous-hand-services.md
+  - ./z1-sdk.md
+  - ./unilidar-sdk2.md
   - ./unitree-unistore.md
   - ./legged-gym.md
   - ./lerobot.md
@@ -144,13 +147,13 @@ Unitree 现在已经明显不只是四足公司。
 
 #### 3.1 官方 GitHub 组织（unitreerobotics）
 
-组织级归档见 [sources/repos/unitree.md](../../sources/repos/unitree.md)。截至 **2026-07-24** 组织约 **52** 个公开仓；本库为其中 **45** 个活跃/可用仓建立了**独立 wiki 节点**（跳过组织元仓与明显过时遗产仓，见下表「跳过说明」）。
+组织级归档见 [sources/repos/unitree.md](../../sources/repos/unitree.md)。截至 **2026-07-24** 组织约 **52** 个公开仓。wiki 侧只为**研究主线与可合并产品线**建立有详情的独立节点；周边/重复仓保留 `sources/repos/` 归档并在下表列出，**不**再生成空 stub，以免图谱重复。
 
 按研究用途可压缩为五条主线（代表仓均已独立成页）：
 
 | 主线 | 代表仓库 | 何时用 |
 |------|----------|--------|
-| **底层通信** | [unitree_sdk2](./unitree-sdk2.md) / [unitree_sdk2_python](./unitree-sdk2-python.md) / [unitree_ros2](./unitree-ros2.md) | 新机型真机控制、自定义部署、ROS 2 集成 |
+| **底层通信** | [unitree_sdk2](./unitree-sdk2.md)（含 Python） / [unitree_ros2](./unitree-ros2.md) | 新机型真机控制、自定义部署、ROS 2 集成 |
 | **经典仿真 / URDF** | [unitree_ros](./unitree-ros.md)、[unitree_mujoco](./unitree-mujoco.md)、[unitree_guide](./unitree-guide.md) | URDF 资产、Gazebo 关节实验、MuJoCo Sim2Sim |
 | **RL 训练** | [unitree_rl_gym](./unitree-rl-gym.md)、[unitree_rl_lab](./unitree-rl-lab.md)、[unitree_rl_mjlab](./unitree-rl-mjlab.md) | 速度跟踪 / 模仿 → Sim2Sim → Sim2Real |
 | **遥操作与 IL** | [xr_teleoperate](./xr-teleoperate.md)、[unitree_sim_isaaclab](./unitree-sim-isaaclab.md)、[unitree_lerobot](./unitree-lerobot.md) | XR 采数、Isaac Lab 仿真采数、对接 [LeRobot](./lerobot.md) |
@@ -203,149 +206,33 @@ flowchart TB
 
 模型资产注意：GitHub [unitree_model](./unitree-model.md) 已标注 **deprecated**，后续 USD 更新以 Hugging Face [`unitreerobotics/unitree_model`](https://huggingface.co/datasets/unitreerobotics/unitree_model) 为准。
 
-##### 全量独立节点清单（按类别）
+##### wiki 独立节点（有详情）与归档策略
 
-**底层 SDK / 通信**
+**A. 已升格详情页（优先阅读）**
 
-| 仓库 | ★ | 最近推送 | wiki 节点 |
-|------|---|----------|-----------|
-| `unitree_sdk2` | ~1243 | 2026-07-09 | [unitree-sdk2](./unitree-sdk2.md) |
-| `unitree_sdk2_python` | ~746 | 2026-07-21 | [unitree-sdk2-python](./unitree-sdk2-python.md) |
-| `unitree_legged_sdk` | ~426 | 2024-03-23 | [unitree-legged-sdk](./unitree-legged-sdk.md) |
-| `unitree_actuator_sdk` | ~132 | 2025-01-15 | [unitree-actuator-sdk](./unitree-actuator-sdk.md) |
-| `unitree_dds_wrapper` | ~34 | 2024-10-16 | [unitree-dds-wrapper](./unitree-dds-wrapper.md) |
+| 主线 | wiki 节点 | 覆盖的上游仓 |
+|------|-----------|--------------|
+| 底层 SDK | [unitree_sdk2](./unitree-sdk2.md) | `unitree_sdk2` + `unitree_sdk2_python`；周边 `unitree_dds_wrapper` / `unitree_actuator_sdk` 仅 sources |
+| 旧代 SDK | [unitree_legged_sdk](./unitree-legged-sdk.md) | `unitree_legged_sdk` |
+| ROS 2 | [unitree_ros2](./unitree-ros2.md) | `unitree_ros2`；`unitree_ros2_to_real`（Go1 遗产）仅 sources 脚注 |
+| ROS1 | [unitree_ros](./unitree-ros.md) | `unitree_ros` + `unitree_ros_to_real`（同页，不拆第二节点） |
+| 仿真 | [unitree_mujoco](./unitree-mujoco.md)、[unitree_guide](./unitree-guide.md)、[unitree_model](./unitree-model.md) | 对应同名仓（model 为 deprecated→HF 指针） |
+| RL | [unitree_rl_gym](./unitree-rl-gym.md)、[unitree_rl_lab](./unitree-rl-lab.md)、[unitree_rl_mjlab](./unitree-rl-mjlab.md) | 三选一后端 |
+| 遥操作 / IL | [xr_teleoperate](./xr-teleoperate.md)、[unitree_sim_isaaclab](./unitree-sim-isaaclab.md)、[unitree_lerobot](./unitree-lerobot.md) | XR 周边 `televuer`/`teleimager`/`kinect_teleoperate` 并入 XR 页 sources |
+| 基础模型 | [unifolm-vla](./unifolm-vla.md)、[unifolm-world-model-action](./unifolm-world-model-action.md) | 对应仓 |
+| 感知 | [UniLidar SDK](./unilidar-sdk2.md)、[point_lio_unilidar](./point-lio-unilidar.md) | L1+L2 SDK 合并；Point-LIO 适配 |
+| 手臂 / 手 | [Z1 软件栈](./z1-sdk.md)、[灵巧手服务](./unitree-dexterous-hand-services.md) | Z1 四仓合并；Dex1/Inspire/Brainco/Linker 合并 |
+| 开源整机 | [Qmini](./qmini.md) | `Qmini` |
+| 平台 / 硬件 | [Unitree G1](./unitree-g1.md)、[G1 软件栈](./unitree-g1-software-stack.md)、[UniStore](./unitree-unistore.md) | 产品与商店；`unitree-app-templates` 并入 UniStore 叙述 |
 
-**ROS 集成**
+**B. 仅 sources 归档（不建独立 wiki，避免 stub/重复）**
 
-| 仓库 | ★ | 最近推送 | wiki 节点 |
-|------|---|----------|-----------|
-| `unitree_ros` | ~1489 | 2026-07-21 | [unitree-ros](./unitree-ros.md) |
-| `unitree_ros2` | ~773 | 2026-07-02 | [unitree-ros2](./unitree-ros2.md) |
-| `unitree_ros_to_real` | ~170 | 2023-06-27 | [unitree-ros-to-real](./unitree-ros-to-real.md) |
-| `unitree_ros2_to_real` | ~84 | 2023-01-13 | [unitree-ros2-to-real](./unitree-ros2-to-real.md) |
-
-**仿真与模型**
-
-| 仓库 | ★ | 最近推送 | wiki 节点 |
-|------|---|----------|-----------|
-| `unitree_mujoco` | ~1097 | 2026-06-08 | [unitree-mujoco](./unitree-mujoco.md) |
-| `unitree_guide` | ~617 | 2024-07-22 | [unitree-guide](./unitree-guide.md) |
-| `unitree_model`（deprecated→HF） | ~147 | 2026-06-01 | [unitree-model](./unitree-model.md) |
-
-**强化学习训练**
-
-| 仓库 | ★ | 最近推送 | wiki 节点 |
-|------|---|----------|-----------|
-| `unitree_rl_gym` | ~3449 | 2025-07-25 | [unitree-rl-gym](./unitree-rl-gym.md) |
-| `unitree_rl_lab` | ~1223 | 2026-05-25 | [unitree-rl-lab](./unitree-rl-lab.md) |
-| `unitree_rl_mjlab` | ~545 | 2026-04-13 | [unitree-rl-mjlab](./unitree-rl-mjlab.md) |
-
-**遥操作与采数**
-
-| 仓库 | ★ | 最近推送 | wiki 节点 |
-|------|---|----------|-----------|
-| `xr_teleoperate` | ~1572 | 2026-05-28 | [xr-teleoperate](./xr-teleoperate.md) |
-| `unitree_sim_isaaclab` | ~524 | 2026-03-30 | [unitree-sim-isaaclab](./unitree-sim-isaaclab.md) |
-| `kinect_teleoperate` | ~117 | 2024-08-13 | [kinect-teleoperate](./kinect-teleoperate.md) |
-| `teleimager` | ~50 | 2026-07-16 | [teleimager](./teleimager.md) |
-| `televuer` | ~46 | 2026-05-27 | [televuer](./televuer.md) |
-
-**模仿学习**
-
-| 仓库 | ★ | 最近推送 | wiki 节点 |
-|------|---|----------|-----------|
-| `unitree_lerobot` | ~725 | 2026-05-25 | [unitree-lerobot](./unitree-lerobot.md) |
-| `UniArmL1` | ~10 | 2026-05-25 | [uniarm-l1](./uniarm-l1.md) |
-
-**基础模型（UnifoLM）**
-
-| 仓库 | ★ | 最近推送 | wiki 节点 |
-|------|---|----------|-----------|
-| `unifolm-world-model-action` | ~1083 | 2026-03-18 | [unifolm-world-model-action](./unifolm-world-model-action.md) |
-| `unifolm-vla` | ~538 | 2026-01-29 | [unifolm-vla](./unifolm-vla.md) |
-
-**LiDAR 感知**
-
-| 仓库 | ★ | 最近推送 | wiki 节点 |
-|------|---|----------|-----------|
-| `point_lio_unilidar` | ~506 | 2025-06-05 | [point-lio-unilidar](./point-lio-unilidar.md) |
-| `unilidar_sdk` | ~140 | 2024-02-18 | [unilidar-sdk](./unilidar-sdk.md) |
-| `unilidar_sdk2` | ~93 | 2025-03-10 | [unilidar-sdk2](./unilidar-sdk2.md) |
-
-**相机外设**
-
-| 仓库 | ★ | 最近推送 | wiki 节点 |
-|------|---|----------|-----------|
-| `UnitreecameraSDK` | ~120 | 2022-04-28 | [unitree-camera-sdk](./unitree-camera-sdk.md) |
-
-**Z1 机械臂**
-
-| 仓库 | ★ | 最近推送 | wiki 节点 |
-|------|---|----------|-----------|
-| `z1_sdk` | ~45 | 2025-09-22 | [z1-sdk](./z1-sdk.md) |
-| `z1_ros` | ~43 | 2024-12-31 | [z1-ros](./z1-ros.md) |
-| `z1_controller` | ~42 | 2025-08-20 | [z1-controller](./z1-controller.md) |
-| `z1_joystick` | ~8 | 2024-02-26 | [z1-joystick](./z1-joystick.md) |
-
-**灵巧手服务**
-
-| 仓库 | ★ | 最近推送 | wiki 节点 |
-|------|---|----------|-----------|
-| `dfx_inspire_service` | ~49 | 2025-09-11 | [dfx-inspire-service](./dfx-inspire-service.md) |
-| `dex1_1_service` | ~19 | 2026-07-08 | [dex1-1-service](./dex1-1-service.md) |
-| `brainco_hand_service` | ~16 | 2026-06-01 | [brainco-hand-service](./brainco-hand-service.md) |
-| `linker_hand_service` | ~0 | 2026-05-12 | [linker-hand-service](./linker-hand-service.md) |
-
-**开源平台**
-
-| 仓库 | ★ | 最近推送 | wiki 节点 |
-|------|---|----------|-----------|
-| `Qmini` | ~722 | 2025-09-17 | [qmini](./qmini.md) |
-
-**UniStore / App**
-
-| 仓库 | ★ | 最近推送 | wiki 节点 |
-|------|---|----------|-----------|
-| `unitree-app-templates` | ~16 | 2026-06-23 | [unitree-app-templates](./unitree-app-templates.md) |
-
-**SLAM / 行业示例**
-
-| 仓库 | ★ | 最近推送 | wiki 节点 |
-|------|---|----------|-----------|
-| `Python_unitree_demos` | ~0 | 2026-07-22 | [python-unitree-demos](./python-unitree-demos.md) |
-| `unitree_slam` | ~0 | 2026-07-23 | [unitree-slam](./unitree-slam.md) |
-
-**工具与调试**
-
-| 仓库 | ★ | 最近推送 | wiki 节点 |
-|------|---|----------|-----------|
-| `logging-mp` | ~3 | 2026-03-24 | [logging-mp](./logging-mp.md) |
-| `digital_servo` | ~1 | 2026-07-22 | [digital-servo](./digital-servo.md) |
-| `unitree-motor-debugging-assistant` | ~0 | 2026-07-22 | [unitree-motor-debugging-assistant](./unitree-motor-debugging-assistant.md) |
-
-**赛事 / Challenge**
-
-| 仓库 | ★ | 最近推送 | wiki 节点 |
-|------|---|----------|-----------|
-| `unibot_submission` | ~6 | 2026-07-10 | [unibot-submission](./unibot-submission.md) |
-
-**组织元资料**
-
-| 仓库 | ★ | 最近推送 | wiki 节点 |
-|------|---|----------|-----------|
-| `Publications` | ~96 | 2023-04-17 | [publications](./publications.md) |
-
-**跳过说明（已过时 / 组织元仓，不建独立节点）：**
-
-| 仓库 | 原因 |
-|------|------|
-| `.github` | 组织 workflow / 元配置 |
-| `unitreerobotics.github.io` | 组织 GitHub Pages |
-| `Acknowledgement` | 致谢清单，无研发入口 |
-| `laikago_ros` | Laikago 停产机型 ROS 包；最近代码推送 2020 |
-| `unitree_pybullet` | PyBullet 遗产仿真；最近推送 2020 |
-| `aliengo_sdk` | Aliengo 旧 SDK；最近推送 2020 |
-| `unitree_cad` | CAD 资产仓；非软件栈入口（最近推送 2022） |
+| 类型 | 仓库示例 | 原因 |
+|------|----------|------|
+| 组织元仓 | `.github`、`unitreerobotics.github.io`、`Acknowledgement`、`Publications` | 无研发入口或纯索引 |
+| 过时遗产 | `laikago_ros`、`unitree_pybullet`、`aliengo_sdk`、`unitree_cad`、`UnitreecameraSDK` | 停产机型 / 长期无维护 |
+| 已并入他页 | `unitree_sdk2_python`、`unitree_ros_to_real`、`unitree_ros2_to_real`、`z1_*`、手部 `*_service`、`unilidar_sdk`、`teleimager`、`televuer`、`kinect_teleoperate`、`unitree-app-templates`、`unitree_dds_wrapper`、`unitree_actuator_sdk` | 见上表「覆盖的上游仓」 |
+| 周边工具 | `logging-mp`、`digital_servo`、`unitree-motor-debugging-assistant`、`unitree_slam`、`Python_unitree_demos`、`unibot_submission`、`UniArmL1` | 保留 sources，需要时从枢纽外链 GitHub |
 
 #### 3.2 UniStore 应用平台
 2025-12 内测、**2026-05-07 全面开放** 的 **[UniStore](./unitree-unistore.md)** 是宇树官方 **机器人动作与应用商店**：用户通过 **Unitree Explore** 手机 App，像安装手机应用一样向 **G1 / H1 / B2 / Go2** 一键下发舞蹈、武术与任务类技能包；平台含 **用户广场、动作库、数据集、开发者中心**，并开放 SDK 上架与收益分成。它与 GitHub 研发栈互补——前者面向 **成品技能分发**，后者面向 **自研训练与部署管线**。

@@ -49,7 +49,6 @@
 - [Boston Dynamics（波士顿动力）](wiki/entities/boston-dynamics.md) — Boston Dynamics** 是一家全球顶尖的机器人工程公司，以其在足式机器人运动控制、平衡和动力学领域的卓越成就而闻名。从 1992 年从 MIT 的 Leg Laboratory 独立至 `📅unknown` `[entity_page]`
 - [BotLab / MotionCanvas（浏览器内策略–仿真编排）](wiki/entities/botlab-motioncanvas.md) — BotLab** 是 地瓜机器人（D-Robotics） 提供的 **Web 端机器人学习与控制实验台**；应用壳层标题为 **Moti `📅unknown` `[entity_page]`
 - [BotWorld（机器人资产平台）](wiki/entities/botworld.md) — BotWorld**（<https://botworld.enkeebot.com/>）是 **EnkeeBot** 运营的 **机器人资产社区与分发平台**：把 **URDF/MJCF/SDF  `📅unknown` `[entity_page]`
-- [brainco_hand_service](wiki/entities/brainco-hand-service.md) — brainco_hand_service** 是 unitreerobotics 组织下的官方仓库，归属 **灵巧手 S `📅unknown` `[entity_page]`
 - [Brax（JAX 可微物理与 RL 训练）](wiki/entities/brax.md) — Brax** 指 GitHub 仓库 `google/brax`：在 **JAX** 上提供 **刚体仿真** 与 **强化学习 `📅2026-05-18` `[entity_page]`
 - [CAD Skills](wiki/entities/cad-skills.md) — CAD Skills** 是 earthtojake/text-to-cad 仓库（品牌名 **CAD  `📅2026-06-15` `[entity_page]`
 - [Cangjie Skill](wiki/entities/cangjie-skill.md) — Cangjie Skill** 是 kangarooking/cangjie-skill 仓库分发 `📅unknown` `[entity_page]`
@@ -75,11 +74,8 @@
 - [PHUMA（Physically Reliable Humanoid Locomotion Dataset）](wiki/entities/dataset-bfm-phuma.md) — PHUMA**（Lee et al., arXiv:2510.26236，2025）是 DAVIAN Robotics /  `📅unknown` `[entity_page]`
 - [PoseScript（BFM 行为数据）](wiki/entities/dataset-bfm-posescript.md) — PoseScript** 列入 awesome-bfm-papers 数据集表（202 `📅unknown` `[entity_page]`
 - [DeepInsight（XPENG Robotics 全栈评测基础设施）](wiki/entities/deepinsight.md) — DeepInsight**（2026-06，arXiv:2606.17574，XPENG Robotics）是面向 **em `📅unknown` `[entity_page]`
-- [dex1_1_service](wiki/entities/dex1-1-service.md) — dex1_1_service** 是 unitreerobotics 组织下的官方仓库，归属 **灵巧手 Serial↔ `📅unknown` `[entity_page]`
 - [Dexmal DM0.5](wiki/entities/dexmal-dm05.md) — DM0.5**（Dexmal 官方博客）是 [Dexmal](https://www.dexmal. `📅unknown` `[entity_page]`
 - [Dexmal DW05（OpenDW）](wiki/entities/dexmal-dw05.md) — DW05**（2026-07，GitHub `dexmal/opendw`，[DW05-Base](https://hugg `📅unknown` `[entity_page]`
-- [dfx_inspire_service](wiki/entities/dfx-inspire-service.md) — dfx_inspire_service** 是 unitreerobotics 组织下的官方仓库，归属 **灵巧手 Se `📅unknown` `[entity_page]`
-- [digital_servo](wiki/entities/digital-servo.md) — digital_servo** 是 unitreerobotics 组织下的官方仓库，归属 **工具与调试** 主线。 `📅unknown` `[entity_page]`
 - [DimOS（Dimensional 物理空间 Agent OS）](wiki/entities/dimensionalos-dimos.md) — DimOS** 是 Dimensional 推出的 **agent-native 物理空间操作系统**：用 **Python Module + Blueprint** 把相机/LiDAR 感知、S `📅unknown` `[entity_page]`
 - [dm_control（DeepMind Control Suite 与 MuJoCo Python 栈）](wiki/entities/dm-control.md) — dm_control** 指 GitHub 上的 [`google-deepmind/dm_control`](https://github.com/google-deepmind/dm_cont `📅unknown` `[entity_page]`
 - [Drake (机器人工具箱)](wiki/entities/drake.md) — Drake** 是由丰田研究院（Toyota Research Institute, TRI）主导开发，由 Russ Tedrake（MIT 教授）团队深度参与的核心开源机器人软件库。它并非单纯的 `📅unknown` `[entity_page]`
@@ -184,7 +180,6 @@
 - [Kimera](wiki/entities/kimera.md) — Kimera** 将 **视觉-惯性里程计、鲁棒位姿图与语义网格** 组合为度量-语义地图。 `📅unknown` `[entity_page]`
 - [Kimi K3](wiki/entities/kimi-k3.md) — Kimi K3** 是 月之暗面（Moonshot AI） 2026 年发布的旗舰大模型：**2.8 万亿参数** MoE、**100 万 tok `📅unknown` `[entity_page]`
 - [Kimodo（可控人体与人形运动扩散）](wiki/entities/kimodo.md) — Kimodo**（**Ki**nematic **Mo**tion **D**iffusi**o**n）在 **运动学空间** 对骨架姿态序列做 **显式扩散去噪**：在约 **700 小时**  `📅unknown` `[entity_page]`
-- [kinect_teleoperate](wiki/entities/kinect-teleoperate.md) — kinect_teleoperate** 是 unitreerobotics 组织下的官方仓库，归属 **遥操作与采数 `📅unknown` `[entity_page]`
 - [KinetIQ Ascend（Humanoid · 真机 VLA 强化学习后训练）](wiki/entities/kinetiq-ascend.md) — KinetIQ Ascend** 是 **Humanoid**（thehumanoid.ai）在 **KinetIQ** AI 框架上发布的  `📅unknown` `[entity_page]`
 - [Kinova Gen3](wiki/entities/kinova-gen3.md) — Kinova Gen3** 是 **Kinova** 公司的 **轻型六轴协作机械臂**：面向 **医疗、服务与科研**；产品介绍在 **[Gen3 产品页](https://www.kinova `📅unknown` `[entity_page]`
 - [Kyber Labs](wiki/entities/kyber-labs.md) — Kyber Labs** 是一家 Brooklyn（Newlab）初创公司，自 **2022** 年起公开叙事为 **「为 AI 控制而设计的机器人操作平台」**：核心是 **双臂 + 仿人灵巧手 `📅unknown` `[entity_page]`
@@ -201,10 +196,8 @@
 - [线性代数学习策展（机器人 L0）](wiki/entities/linear-algebra-curriculum.md) — 一句话：** 机器人运动控制把位姿、速度、力都写成向量和矩阵；本页把 Georgia Tech ILA、[Axl `📅unknown` `[entity_page]`
 - [LingBot-VLA 2.0](wiki/entities/lingbot-vla-v2.md) — LingBot-VLA 2.0**（*From Foundation to Application: Improving VLA Models in Practice*，[arXiv:2607.0 `📅unknown` `[entity_page]`
 - [LingBot-VLA](wiki/entities/lingbot-vla.md) — LingBot-VLA**（*A Pragmatic VLA Foundation Model*，[arXiv:2601.18692](https://arxiv.org/abs/2601.186 `📅unknown` `[entity_page]`
-- [linker_hand_service](wiki/entities/linker-hand-service.md) — linker_hand_service** 是 unitreerobotics 组织下的官方仓库，归属 **灵巧手 Se `📅unknown` `[entity_page]`
 - [LIO-SAM](wiki/entities/lio-sam.md) — LIO-SAM** 将 **IMU 预积分、scan-to-map 与回环** 纳入统一因子图优化。 `📅unknown` `[entity_page]`
 - [Build a Large Language Model (From Scratch)（Raschka / LLMs-from-scratch）](wiki/entities/llms-from-scratch-raschka.md) — 《Build a Large Language Model (From Scratch)》** 是 Sebastian Raschka 的 Manning 2024 教材，官方代码在 [rasbt `📅unknown` `[entity_page]`
-- [logging-mp](wiki/entities/logging-mp.md) — logging-mp** 是 unitreerobotics 组织下的官方仓库，归属 **工具与调试** 主线。 `📅unknown` `[entity_page]`
 - [Lumo-2（Latent World-Action Model）](wiki/entities/lumo-2.md) — Lumo-2**（*Towards Predictive, Aligned, and Scalable Robot Learning*，[arXiv:2607.11270](https://arx `📅unknown` `[entity_page]`
 - [Manim（程序化数学动画引擎）](wiki/entities/manim.md) — Manim** 是一套用 **Python 代码精确描述动画时间线** 的开源引擎，最初由 **Grant Sanderson（3Blue1Brown）** 为教育数学视频而编写。当前存在两个  `📅unknown` `[entity_page]`
 - [ManiSkill2](wiki/entities/maniskill2.md) — ManiSkill2** 是 2023 年发布的 **通用可泛化操作技能（Generalizable Manipulation Skills）统一基准**，构建于 [SAPIEN](./sapie `📅unknown` `[entity_page]`
@@ -1097,20 +1090,18 @@
 - [PhysX-Omni（统一仿真就绪物理 3D 生成）](wiki/entities/physx-omni.md) — PhysX-Omni**（S-Lab NTU / ACE Robotics，arXiv:2605.21572）是面向 **具身 AI、游戏与物理仿真** 的 **统一 sim-ready 3D 生 `📅unknown` `[entity_page]`
 - [Pinocchio (刚体动力学库)](wiki/entities/pinocchio.md) — Pinocchio** 是一个由法国国家信息与自动化研究所（INRIA）开源的，专注于**高计算效率**和**分析导数 (Analytical Derivatives)** 的刚体动力学（Rigi `📅unknown` `[entity_page]`
 - [PlotJuggler](wiki/entities/plotjuggler.md) — PlotJuggler**（PlotJuggler/PlotJuggler）是面向工程师的 **时序数据 `📅unknown` `[entity_page]`
-- [point_lio_unilidar](wiki/entities/point-lio-unilidar.md) — point_lio_unilidar** 是 unitreerobotics 组织下的官方仓库，归属 **LiDAR 感 `📅unknown` `[entity_page]`
+- [point_lio_unilidar](wiki/entities/point-lio-unilidar.md) — point_lio_unilidar** 把学术界 **Point-LIO**（稳健高带宽 LiDAR-Inertial Odometry）接到宇树 **L1 / L2** 雷达产品。 `📅unknown` `[entity_page]`
 - [Pollen Reachy2](wiki/entities/pollen-reachy2.md) — Reachy2** 是 **Pollen Robotics** 推出的 **开源模块化移动人形**：强调 **仿人双臂、全向移动、VR 遥操作** 与 **软硬件全开放**；主线文档在 **[do `📅unknown` `[entity_page]`
 - [Ponytail](wiki/entities/ponytail.md) — Ponytail** 是 DietrichGebert/ponytail 仓库分发的 **编码代理「必要 `📅unknown` `[entity_page]`
 - [Poppy 开源机器人平台](wiki/entities/poppy-project-robots.md) — Poppy** 是由 **法国 Inria** 相关社区推动的 **开源 3D 打印机器人** 家族：包含 **Poppy Humanoid**、**Poppy Torso**、**Ergo Jr `📅unknown` `[entity_page]`
 - [ppf-contact-solver（ZOZO Contact Solver）](wiki/entities/ppf-contact-solver.md) — ppf-contact-solver**（README 亦称 *ZOZO's Contact Solver*）是 ZOZO, Inc. 技 `📅unknown` `[entity_page]`
 - [Project Instinct](wiki/entities/project-instinct.md) — 本页汇总 Project Instinct 公开站点与子课题主张；定量结论与实现细节以各论文 PDF 与代码仓库为准。 `📅2026-05-12` `[entity_page]`
 - [ProtoMotions: 大规模人形机器人仿真框架](wiki/entities/protomotions.md) — ProtoMotions**（当前主线为 **ProtoMotions3**）是 NVIDIA Labs 维护的 **GPU 加速仿真 + 强化学习训练** 框架：面向 **动画角色** 与  `📅unknown` `[entity_page]`
-- [Publications](wiki/entities/publications.md) — Publications** 是 unitreerobotics 组织下的官方仓库，归属 **组织元资料** 主线。 `📅unknown` `[entity_page]`
 - [PX4 Autopilot](wiki/entities/px4-autopilot.md) — PX4**（PX4/PX4-Autopilot）是面向多旋翼、固定翼、VTOL 等的 **开源飞控固件**，通过  `📅unknown` `[entity_page]`
 - [PyBullet](wiki/entities/pybullet.md) — PyBullet** 把 **Bullet3** C++ 物理 SDK 封装为 **Python API `📅unknown` `[entity_page]`
 - [PythonRobotics](wiki/entities/python-robotics.md) — PythonRobotics**（AtsushiSakai/PythonRobotics）是 G `📅unknown` `[entity_page]`
-- [Python_unitree_demos](wiki/entities/python-unitree-demos.md) — Python_unitree_demos** 是 unitreerobotics 组织下的官方仓库，归属 **SLAM  `📅unknown` `[entity_page]`
 - [PyTorch](wiki/entities/pytorch.md) — PyTorch** 是由 **PyTorch 基金会**（Linux Foundation 旗下） stewardship 的开源深度学习框架。它以 **Python 优先** 与 **命令式（e `📅2026-05-15` `[entity_page]`
-- [Qmini](wiki/entities/qmini.md) — Qmini** 是 unitreerobotics 组织下的官方仓库，归属 **开源平台/整机** 主线。 `📅unknown` `[entity_page]`
+- [Qmini](wiki/entities/qmini.md) — Qmini** 面向爱好者、教育与科研的小型四足开源项目：强调可 3D 打印结构、一站式零件清单与模块化扩展。 `📅unknown` `[entity_page]`
 - [quad-swarm-rl](wiki/entities/quad-swarm-rl.md) — quad-swarm-rl**（Zhehui-Huang/quad-swarm-rl）是 **多四 `📅unknown` `[entity_page]`
 - [四足控制学习策展（仿真 → RL → 实机）](wiki/entities/quadruped-control-curriculum.md) — 一句话：** 四足 loco 的完整工程闭环是 **建模 → 辨识 → 并行 RL → 域随机化 → 摩擦补偿与蒸馏 → 导航集成**；本页把 [《四足机器人：从动力学建模到强化学习》](../. `📅unknown` `[entity_page]`
 - [四足机器人（Quadruped Robot）](wiki/entities/quadruped-robot.md) — 四足机器人是以四条腿与环境形成间歇接触的腿足平台，侧重崎岖地形移动与户外部署，常与强化学习 locomotion、Sim2Real 及分层导航结合。 `📅unknown` `[entity_page]`
@@ -1176,8 +1167,6 @@
 - [Tairan He（何泰然）](wiki/entities/tairan-he.md) — Tairan He** 是面向 **通用人形 loco-manipulation** 的机器学习研究者：2026 年起任 **OpenAI Member of Technical Staff**（ `📅unknown` `[entity_page]`
 - [TARE Planner](wiki/entities/tare-planner.md) — TARE Planner**（Technologies for Autonomous Robot Exploration）是 CMU 提出的 **分层自主探索规划器**：近场用稠密表示计算细路径， `📅unknown` `[entity_page]`
 - [τ₀-World Model（τ0-WM）](wiki/entities/tau0-world-model.md) — τ₀-World Model（τ0-WM）**（2026-05-31，AGIBOT Finch 研究页， `📅unknown` `[entity_page]`
-- [teleimager](wiki/entities/teleimager.md) — teleimager** 是 unitreerobotics 组织下的官方仓库，归属 **遥操作与采数** 主线。 `📅unknown` `[entity_page]`
-- [televuer](wiki/entities/televuer.md) — televuer** 是 unitreerobotics 组织下的官方仓库，归属 **遥操作与采数** 主线。 `📅unknown` `[entity_page]`
 - [TensorBoard](wiki/entities/tensorboard.md) — TensorBoard**（tensorflow/tensorboard）是一套 **Web 端实验检查工 `📅unknown` `[entity_page]`
 - [TensorFlow](wiki/entities/tensorflow.md) — TensorFlow** 是由 **Google Brain** 团队最初开发、现由全球社区维护的 **端到端开源机器学习平台**。它以 **`tf.keras`** 高层 API 降低建模门槛， `📅2026-06-25` `[entity_page]`
 - [TensorRT](wiki/entities/tensorrt.md) — NVIDIA TensorRT** 是 NVIDIA 的 **深度学习推理加速 SDK 生态**：在 **build 阶段**将训练好的网络（常见入口为 ONNX 或 P `📅2026-06-25` `[entity_page]`
@@ -1185,36 +1174,25 @@
 - [天工 Lite / Pro（开源人形）](wiki/entities/tienkung-humanoid-open-source.md) — 天工（TienKung）** Lite / Pro 是**北京人形机器人创新中心（X-Humanoid）**推动的开源人形母平台：云端文档总览、[官网开源页 `📅unknown` `[entity_page]`
 - [Tnkr](wiki/entities/tnkr.md) — Tnkr**（tnkr.ai）公开定位为 **「robotics 的 GitHub」**：把机器人项目里长期分散的 **机械设计、电气接线、控制软件、现场部 `📅unknown` `[entity_page]`
 - [TurtleBot3](wiki/entities/turtlebot3.md) — TurtleBot3** 是 **ROBOTIS** 生态中的 **开源移动机器人** 教育平台：硬件参数、软件栈与仿真入口集中在 **[TurtleBot3 eManual](https://e `📅unknown` `[entity_page]`
-- [UniArmL1](wiki/entities/uniarm-l1.md) — UniArmL1** 是 unitreerobotics 组织下的官方仓库，归属 **模仿学习** 主线。 `📅unknown` `[entity_page]`
-- [unibot_submission](wiki/entities/unibot-submission.md) — unibot_submission** 是 unitreerobotics 组织下的官方仓库，归属 **赛事 / Cha `📅unknown` `[entity_page]`
-- [unifolm-vla](wiki/entities/unifolm-vla.md) — unifolm-vla** 是 unitreerobotics 组织下的官方仓库，归属 **基础模型（UnifoLM） `📅unknown` `[entity_page]`
-- [unifolm-world-model-action](wiki/entities/unifolm-world-model-action.md) — unifolm-world-model-action** 是 unitreerobotics 组织下的官方仓库，归属  `📅unknown` `[entity_page]`
+- [UnifoLM-VLA-0（unifolm-vla）](wiki/entities/unifolm-vla.md) — UnifoLM-VLA-0** 是 UnifoLM 系列中的 **Vision–Language–Action** 大模型，强调在机器人操作数据上的持续预训练，使模型从视觉–语言理解走向带物理常识 `📅unknown` `[entity_page]`
+- [UnifoLM-WMA-0（unifolm-world-model-action）](wiki/entities/unifolm-world-model-action.md) — UnifoLM-WMA-0** 是面向通用机器人学习的 **World-Model–Action** 架构：核心世界模型理解机器人与环境的物理交互，并提供 **仿真引擎** 与 **策略增强**  `📅unknown` `[entity_page]`
 - [UniLab：异构 CPU 仿真 / GPU 学习的机器人 RL 训练系统](wiki/entities/unilab.md) — UniLab**（arXiv:2605.30313，清华等联合）质疑仿真主导机器人 RL 的默认前提：**高效训练是否必须把物理放在 GPU 上**。论文将问题重述为 **仿真–学习闭环的系统组织 `📅unknown` `[entity_page]`
-- [unilidar_sdk](wiki/entities/unilidar-sdk.md) — unilidar_sdk** 是 unitreerobotics 组织下的官方仓库，归属 **LiDAR 感知** 主线 `📅unknown` `[entity_page]`
-- [unilidar_sdk2](wiki/entities/unilidar-sdk2.md) — unilidar_sdk2** 是 unitreerobotics 组织下的官方仓库，归属 **LiDAR 感知** 主 `📅unknown` `[entity_page]`
-- [unitree_actuator_sdk](wiki/entities/unitree-actuator-sdk.md) — unitree_actuator_sdk** 是 unitreerobotics 组织下的官方仓库，归属 **底层 SD `📅unknown` `[entity_page]`
-- [unitree-app-templates](wiki/entities/unitree-app-templates.md) — unitree-app-templates** 是 unitreerobotics 组织下的官方仓库，归属 **UniS `📅unknown` `[entity_page]`
-- [UnitreecameraSDK](wiki/entities/unitree-camera-sdk.md) — UnitreecameraSDK** 是 unitreerobotics 组织下的官方仓库，归属 **相机外设** 主线 `📅unknown` `[entity_page]`
-- [unitree_dds_wrapper](wiki/entities/unitree-dds-wrapper.md) — unitree_dds_wrapper** 是 unitreerobotics 组织下的官方仓库，归属 **底层 SDK `📅unknown` `[entity_page]`
+- [UniLidar SDK（L1 / L2）](wiki/entities/unilidar-sdk2.md) — 宇树激光雷达产品线 SDK：**L2 用 `unilidar_sdk2`**，**L1 用 `unilidar_sdk`**。本页合并为一个知识节点，按代际对照，避免两个几乎同构的 stub。 `📅unknown` `[entity_page]`
+- [Unitree 灵巧手 Serial↔DDS 服务](wiki/entities/unitree-dexterous-hand-services.md) — 人形双臂操作常需把厂家手部串口协议桥到 Unitree **DDS** 主题。组织下按手型拆仓；本页合并为**一个节点**，按手型索引。 `📅unknown` `[entity_page]`
 - [Unitree G1 软件服务栈](wiki/entities/unitree-g1-software-stack.md) — G1 软件服务栈**指在 Unitree G1 上通过 **unitree_sdk2 / CycloneDDS**（及可选 ROS 2 桥）暴露的 **运控、 `📅unknown` `[entity_page]`
 - [Unitree G1 (人形机器人)](wiki/entities/unitree-g1.md) — Unitree G1** 是宇树科技 (Unitree) 在 H1 之后推出的一款量产型、高性价比的人形机器人平台。其设计初衷是降低人形机器人研究的门槛，使其能够大规模进入实验室、高校和家庭场景。 `📅unknown` `[entity_page]`
-- [unitree_guide](wiki/entities/unitree-guide.md) — unitree_guide** 是 unitreerobotics 组织下的官方仓库，归属 **仿真与模型** 主线。 `📅unknown` `[entity_page]`
-- [unitree_legged_sdk](wiki/entities/unitree-legged-sdk.md) — unitree_legged_sdk** 是 unitreerobotics 组织下的官方仓库，归属 **底层 SDK  `📅unknown` `[entity_page]`
-- [unitree_lerobot](wiki/entities/unitree-lerobot.md) — unitree_lerobot** 是 unitreerobotics 组织下的官方仓库，归属 **模仿学习** 主线。 `📅unknown` `[entity_page]`
-- [unitree_model](wiki/entities/unitree-model.md) — unitree_model** 是 unitreerobotics 组织下的官方仓库，归属 **仿真与模型** 主线。 `📅unknown` `[entity_page]`
-- [unitree-motor-debugging-assistant](wiki/entities/unitree-motor-debugging-assistant.md) — unitree-motor-debugging-assistant** 是 unitreerobotics 组织下的官方 `📅unknown` `[entity_page]`
-- [unitree_mujoco](wiki/entities/unitree-mujoco.md) — unitree_mujoco** 是 unitreerobotics 组织下的官方仓库，归属 **仿真与模型** 主线。 `📅unknown` `[entity_page]`
-- [unitree_rl_gym](wiki/entities/unitree-rl-gym.md) — unitree_rl_gym** 是 unitreerobotics 组织下的官方仓库，归属 **强化学习训练** 主线 `📅unknown` `[entity_page]`
-- [unitree_rl_lab](wiki/entities/unitree-rl-lab.md) — unitree_rl_lab** 是 unitreerobotics 组织下的官方仓库，归属 **强化学习训练** 主线 `📅unknown` `[entity_page]`
+- [unitree_guide](wiki/entities/unitree-guide.md) — unitree_guide** 是宇树公开的四足控制教学项目，亦是图书《四足机器人控制算法——建模、控制与实践》的配套软件。 `📅unknown` `[entity_page]`
+- [unitree_legged_sdk](wiki/entities/unitree-legged-sdk.md) — unitree_legged_sdk** 主要用于 PC 与运控板之间的通信（亦可在其它机器上经 UDP 使用）。现行 tag（如 v3.8.x）文档写明主支持 **Go1**；Laikago/B `📅unknown` `[entity_page]`
+- [unitree_lerobot](wiki/entities/unitree-lerobot.md) — unitree_lerobot** 把 LeRobot 训练栈接到 Unitree **G1 + 灵巧手** 数据流：数据转换、策略训练验证、仿真回放与真机推理。 `📅unknown` `[entity_page]`
+- [unitree_model（已弃用 → Hugging Face）](wiki/entities/unitree-model.md) — GitHub 仓库 **unitree_model** 曾提供多仿真环境的 Unitree 3D 模型；上游 README 以醒目声明标注：**本仓库已 deprecated，未来更新发布在 Hugg `📅unknown` `[entity_page]`
+- [unitree_mujoco](wiki/entities/unitree-mujoco.md) — unitree_mujoco** 把 **MuJoCo 物理** 与 **SDK2 DDS 接口**接在一起：用 SDK2 / ROS2 / Python SDK 写的低层控制程序，可以先在本仿真 `📅unknown` `[entity_page]`
+- [unitree_rl_gym](wiki/entities/unitree-rl-gym.md) — unitree_rl_gym** 是官方 **Isaac Gym** 路线的强化学习实现，任务与脚本组织接近社区 legged_gym，覆盖 Unitree  `📅unknown` `[entity_page]`
+- [unitree_rl_lab](wiki/entities/unitree-rl-lab.md) — unitree_rl_lab** 在 Isaac Lab 之上提供 Unitree 机器人的强化学习环境；徽章显示 `📅unknown` `[entity_page]`
 - [unitree_rl_mjlab (Unitree 官方 RL 框架)](wiki/entities/unitree-rl-mjlab.md) — unitree_rl_mjlab** 是由 Unitree Robotics 官方维护的强化学习训练框架，以 **mjlab**（Isaac Lab API + MuJoCo Warp）为底层，覆 `📅unknown` `[entity_page]`
-- [unitree_ros_to_real](wiki/entities/unitree-ros-to-real.md) — unitree_ros_to_real** 是 unitreerobotics 组织下的官方仓库，归属 **ROS 集成 `📅unknown` `[entity_page]`
 - [unitree_ros（Unitree 官方 ROS1 / Gazebo 栈）](wiki/entities/unitree-ros.md) — unitree_ros** 与配套的 **unitree_ros_to_real** 代表宇树在 **ROS1 + Gazebo** 时代的官方开源组合：前者提供多机型 **URDF/xacro `📅unknown` `[entity_page]`
-- [unitree_ros2_to_real](wiki/entities/unitree-ros2-to-real.md) — unitree_ros2_to_real** 是 unitreerobotics 组织下的官方仓库，归属 **ROS 集 `📅unknown` `[entity_page]`
-- [unitree_ros2](wiki/entities/unitree-ros2.md) — unitree_ros2** 是 unitreerobotics 组织下的官方仓库，归属 **ROS 集成** 主线。 `📅unknown` `[entity_page]`
-- [unitree_sdk2_python](wiki/entities/unitree-sdk2-python.md) — unitree_sdk2_python** 是 unitreerobotics 组织下的官方仓库，归属 **底层 SDK `📅unknown` `[entity_page]`
-- [unitree_sdk2](wiki/entities/unitree-sdk2.md) — unitree_sdk2** 是 unitreerobotics 组织下的官方仓库，归属 **底层 SDK / 通信 `📅unknown` `[entity_page]`
-- [unitree_sim_isaaclab](wiki/entities/unitree-sim-isaaclab.md) — unitree_sim_isaaclab** 是 unitreerobotics 组织下的官方仓库，归属 **遥操作与采 `📅unknown` `[entity_page]`
-- [unitree_slam](wiki/entities/unitree-slam.md) — unitree_slam** 是 unitreerobotics 组织下的官方仓库，归属 **SLAM / 行业示例 `📅unknown` `[entity_page]`
+- [unitree_ros2](wiki/entities/unitree-ros2.md) — unitree_ros2** 是宇树官方 ROS 2 功能包：底层与 SDK2 一样走 CycloneDDS，因此 **ROS 2 msg 可直接用于通信与控制**，而不必把每个调用再 wrap  `📅unknown` `[entity_page]`
+- [unitree_sdk2（含 Python 绑定）](wiki/entities/unitree-sdk2.md) — unitree_sdk2** 是 Unitree 面向 Go2 / B2 / H1 / G1 等新机型的 **SDK v2（C++，CycloneDDS）**；官方同步维护 **unitree_s `📅unknown` `[entity_page]`
+- [unitree_sim_isaaclab](wiki/entities/unitree-sim-isaaclab.md) — unitree_sim_isaaclab** 基于 Isaac Lab，为 Unitree **G1 / H1-2**（夹爪、Dex3、Inspire 等执行器组合）提供多任务仿真，服务数据采集、 `📅unknown` `[entity_page]`
 - [UniStore（宇树应用平台）](wiki/entities/unitree-unistore.md) — UniStore**（<https://unistore.unitree.com/>）是宇树科技推出的 **机器人任务与动作应用商店**。用户无需手写底层控制代码，即可像安装手机 App 一样，从 `📅unknown` `[entity_page]`
 - [Unitree](wiki/entities/unitree.md) — Unitree Robotics（宇树科技）** 是当前腿式机器人和人形机器人领域最有影响力的公司之一。 `📅unknown` `[entity_page]`
 - [Unity Engine（Unity Technologies 实时 3D 引擎）](wiki/entities/unity-engine.md) — Unity** 是 **Unity Technologies** 的 **实时 3D 创作与运行时平台**，以 **Unity Editor**、**C# / .NET 脚本** 与 **Pack `📅unknown` `[entity_page]`
@@ -1239,14 +1217,11 @@
 - [Xiaomi-Robotics-1](wiki/entities/xiaomi-robotics-1.md) — Xiaomi-Robotics-1**（官网代号 **XR-1**，arXiv:2607.15330）是小米机器人实验室 2 `📅unknown` `[entity_page]`
 - [Xiaomi-Robotics-U0](wiki/entities/xiaomi-robotics-u0.md) — Xiaomi-Robotics-U0**（arXiv:2607.11643，[官网](https://robotics.xi `📅unknown` `[entity_page]`
 - [xpad（Linux Xbox 手柄驱动）](wiki/entities/xpad.md) — xpad**（paroj/xpad）维护主线 Linux 内核中的 **Xbox 游戏手柄 USB 驱动**，并在上游基础上合并更 `📅unknown` `[entity_page]`
-- [xr_teleoperate](wiki/entities/xr-teleoperate.md) — xr_teleoperate** 是 unitreerobotics 组织下的官方仓库，归属 **遥操作与采数** 主线 `📅unknown` `[entity_page]`
+- [xr_teleoperate](wiki/entities/xr-teleoperate.md) — xr_teleoperate** 用 XR 设备（Apple Vision Pro、PICO 4 Ultra Enterprise、Meta Quest 3 等）对 Unitree 人形做全身遥操 `📅unknown` `[entity_page]`
 - [XTDrone](wiki/entities/xtdrone.md) — XTDrone**（robin-shaun/XTDrone）把 **[PX4](./px4-autopilot. `📅unknown` `[entity_page]`
 - [Xue Bin Peng（彭学斌）](wiki/entities/xue-bin-peng.md) — Xue Bin Peng** 是 **物理仿真角色与腿式机器人强化学习运动控制** 领域的核心研究者之一：将 **示例引导 RL（DeepMimic）**、**对抗式运动先验（AMP）** 与  `📅unknown` `[entity_page]`
 - [Yanjie Ze（迮炎杰）](wiki/entities/yanjie-ze.md) — Yanjie Ze** 是面向 **人形机器人模仿学习与 loco-manipulation** 的研究者：从 SJTU 阶段的 **3D 视觉 RL / 扩散策略**，到 Stanford 与  `📅unknown` `[entity_page]`
-- [z1_controller](wiki/entities/z1-controller.md) — z1_controller** 是 unitreerobotics 组织下的官方仓库，归属 **Z1 机械臂** 主线。 `📅unknown` `[entity_page]`
-- [z1_joystick](wiki/entities/z1-joystick.md) — z1_joystick** 是 unitreerobotics 组织下的官方仓库，归属 **Z1 机械臂** 主线。 `📅unknown` `[entity_page]`
-- [z1_ros](wiki/entities/z1-ros.md) — z1_ros** 是 unitreerobotics 组织下的官方仓库，归属 **Z1 机械臂** 主线。 `📅unknown` `[entity_page]`
-- [z1_sdk](wiki/entities/z1-sdk.md) — z1_sdk** 是 unitreerobotics 组织下的官方仓库，归属 **Z1 机械臂** 主线。 `📅unknown` `[entity_page]`
+- [Unitree Z1 软件栈（z1_sdk 等）](wiki/entities/z1-sdk.md) — Z1** 是宇树六轴协作机械臂产品线。组织下拆有 `z1_sdk`、`z1_ros`、`z1_controller`、`z1_joystick` 等多个仓库；本页作为**唯一 wiki 节点**归 `📅unknown` `[entity_page]`
 - [Zhengyi Luo（罗正宜）](wiki/entities/zhengyi-luo.md) — Zhengyi Luo** 的研究把 **人形机器人的通用低层控制** 与 **视觉–语言–动作、Sim2Real 与遥操作数据闭环** 串在同一职业轨迹上：博士阶段提出并开源 **PHC / P `📅unknown` `[entity_page]`
 
 ### Wiki Concepts（概念页）

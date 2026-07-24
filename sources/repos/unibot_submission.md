@@ -12,7 +12,7 @@
 - **分类：** 赛事 / Challenge
 - **入库日期：** 2026-07-24
 - **一句话说明：** UniBot Challenge 赛事资源仓。
-- **沉淀到 wiki：** 是 → [`wiki/entities/unibot-submission.md`](../../wiki/entities/unibot-submission.md)
+- **沉淀到 wiki：** 否（周边/元仓，避免 stub 重复节点）→ 见组织枢纽 [`wiki/entities/unitree.md`](../../wiki/entities/unitree.md)
 - **组织地图：** [`sources/repos/unitree.md`](unitree.md)
 
 ---
@@ -28,5 +28,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/unibot-submission.md`](../../wiki/entities/unibot-submission.md)
+- 实体页：无（仅归档）
 - 组织枢纽：[`wiki/entities/unitree.md`](../../wiki/entities/unitree.md)

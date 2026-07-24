@@ -1,81 +1,88 @@
 ---
 type: entity
-tags: [repo, unitree, unitreerobotics, foundation]
-status: draft
+tags: [repo, unitree, unitreerobotics, vla, foundation-model, imitation-learning, humanoid]
+status: complete
 updated: 2026-07-24
 related:
   - ./unitree.md
   - ./unifolm-world-model-action.md
   - ./unitree-lerobot.md
+  - ./lerobot.md
   - ../concepts/world-action-models.md
   - ../methods/imitation-learning.md
+  - ../tasks/manipulation.md
 sources:
   - ../../sources/repos/unifolm-vla.md
   - ../../sources/repos/unitree.md
-summary: "官方 UnifoLM-VLA-0：人形操作视觉–语言–动作模型（训练/推理/权重已开源）。"
+summary: "UnifoLM-VLA-0 是宇树 UnifoLM 家族的视觉–语言–动作模型，面向通用人形操作；训练/推理/权重已开源，依赖 CUDA 12.4 与钉扎的 LeRobot commit。"
 ---
 
-# unifolm-vla
+# UnifoLM-VLA-0（unifolm-vla）
 
-**unifolm-vla** 是 [unitreerobotics](https://github.com/unitreerobotics) 组织下的官方仓库，归属 **基础模型（UnifoLM）** 主线。
+**UnifoLM-VLA-0** 是 UnifoLM 系列中的 **Vision–Language–Action** 大模型，强调在机器人操作数据上的持续预训练，使模型从视觉–语言理解走向带物理常识的具身决策。
 
 ## 一句话定义
 
-官方 UnifoLM-VLA-0：人形操作视觉–语言–动作模型（训练/推理/权重已开源）。
+官方开源的人形操作 VLA：指令 + 空间感知 → 动作；单策略号称覆盖多类复杂操作（以上游表述与评测为准）。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
 | VLA | Vision-Language-Action | 视觉–语言–动作模型 |
-| WMA | World-Model-Action | 世界模型–动作架构 |
-| IL | Imitation Learning | 模仿学习 |
-| G1 | Unitree G1 Humanoid | 宇树入门级人形平台 |
-| API | Application Programming Interface | 应用程序编程接口 |
+| VLM | Vision-Language Model | 视觉语言模型；本系列有 VLM-Base |
+| VQA | Visual Question Answering | VLM 基座常见预训练形态 |
+| CUDA | Compute Unified Device Architecture | 推荐 12.4 |
+| IL | Imitation Learning | 数据与微调范式 |
+| HF | Hugging Face | 权重与数据集托管 |
 
 ## 为什么重要
 
-官方 UnifoLM 代表宇树在 VLA/WMA 方向的开源落点，便于与自研策略对照。
+- 宇树官方「基础模型」产品线的操作侧落点，可与自研 IL/VLA 对照。
+- **训练 / 推理 / Checkpoints 均已开源**（Open-Source Plan 全勾）。
+- 与 [`unitree_lerobot`](./unitree-lerobot.md) 数据生态、HF Unitree 数据集直接相关。
 
-在宇树官方开源地图中，本仓是 **基础模型（UnifoLM）** 的独立节点；与其它仓的选型关系见 [Unitree](./unitree.md)。
+## 核心原理
 
-## 核心信息
+| 能力叙事（上游） | 含义 |
+|------------------|------|
+| Spatial Semantic Enhancement | 指令与 2D/3D 空间细节联合，强化几何理解 |
+| Manipulation Generalization | 全动力学预测数据支撑跨任务泛化 |
 
-| 字段 | 内容 |
-|------|------|
-| 仓库 | [`unitreerobotics/unifolm-vla`](https://github.com/unitreerobotics/unifolm-vla) |
-| 组织分类 | 基础模型（UnifoLM） |
-| 星标（2026-07-24） | ~538 |
-| 最近推送 | 2026-01-29 |
-| 主要语言 | Python |
+**Checkpoints（HF）**：`UnifoLM-VLM-Base`、`UnifoLM-VLA-Base`（Unitree 开源数据微调）、`UnifoLM-VLA-LIBERO` 等。
 
 ## 工程实践
 
-- Jan 29, 2026: 🚀 We released the training and inference code, along with the model weights for UnifoLM-VLA-0.
+```bash
+conda create -n unifolm-vla python==3.10.18 && conda activate unifolm-vla
+git clone https://github.com/unitreerobotics/unifolm-vla.git && cd unifolm-vla
+pip install --no-deps "lerobot @ git+https://github.com/huggingface/lerobot.git@0878c68"
+pip install -e .
+pip install "flash-attn==2.5.6" --no-build-isolation
+```
 
-- 组织级导航与五条研发主线见 [Unitree 软件生态](./unitree.md)；原始归档见 [sources/repos/unifolm-vla.md](../../sources/repos/unifolm-vla.md)。
+强烈建议 **CUDA 12.4**。项目页：<https://unigen-x.github.io/unifolm-vla.github.io>。
 
 ## 局限与风险
 
-- **不要脱离代际混用**：SDK1/ROS1 遗产仓与 SDK2/ROS2/DDS 新栈的消息与启动方式不兼容。
-- **README 边界优先**：功能承诺以官方 README 为准；星标高不等于适合你的机型/仿真器。
-- **外设/第三方手部仓**：驱动与固件版本需与具体灵巧手/雷达硬件对齐，否则 Serial↔DDS 桥会静默失败。
+- FlashAttention / CUDA / 钉扎 LeRobot commit 使环境脆弱，勿随意升级。
+- 「12 类任务单策略」等声明需对照官方评测设定，不能直接外推到任意现场。
+- 与 WMA（世界模型–动作）是**并行家族成员**，不是互相替代的同一仓库。
 
 ## 关联页面
 
-- [Unitree 组织枢纽](./unitree.md)
-- [unifolm-world-model-action](./unifolm-world-model-action.md)
+- [UnifoLM-WMA](./unifolm-world-model-action.md)
 - [unitree_lerobot](./unitree-lerobot.md)
 - [World-Action Models](../concepts/world-action-models.md)
-- [Imitation Learning](../methods/imitation-learning.md)
+- [Manipulation](../tasks/manipulation.md)
+- [Unitree](./unitree.md)
 
 ## 参考来源
 
 - [sources/repos/unifolm-vla.md](../../sources/repos/unifolm-vla.md)
-- [sources/repos/unitree.md](../../sources/repos/unitree.md) — 组织级仓库地图
-- 上游仓库：<https://github.com/unitreerobotics/unifolm-vla>
+- 上游：<https://github.com/unitreerobotics/unifolm-vla>
 
 ## 推荐继续阅读
 
-- 官方开发者文档：<https://support.unitree.com/home/zh/developer>
-- 组织总览：<https://github.com/unitreerobotics>
+- 项目页：<https://unigen-x.github.io/unifolm-vla.github.io>
+

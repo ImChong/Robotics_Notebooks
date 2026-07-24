@@ -1,83 +1,78 @@
 ---
 type: entity
-tags: [repo, unitree, unitreerobotics, sdk]
-status: draft
+tags: [repo, unitree, unitreerobotics, sdk, legacy, quadruped, ros1]
+status: complete
 updated: 2026-07-24
 related:
   - ./unitree.md
   - ./unitree-sdk2.md
-  - ./unitree-sdk2-python.md
-  - ./unitree-ros2.md
+  - ./unitree-ros.md
+  - ./unitree-guide.md
   - ../concepts/sim2real.md
 sources:
   - ../../sources/repos/unitree_legged_sdk.md
   - ../../sources/repos/unitree.md
-summary: "旧代腿式 SDK（与 ROS1 真机桥配套）；新机型应优先 SDK2，本仓主要用于维护旧链路。"
+summary: "unitree_legged_sdk 是旧代腿式 UDP SDK（当前文档主支持 Go1）；新机型应优先 unitree_sdk2。保留本页是为了维护 ROS1 真机桥与历史复现，而不是推荐新项目默认依赖。"
 ---
 
 # unitree_legged_sdk
 
-**unitree_legged_sdk** 是 [unitreerobotics](https://github.com/unitreerobotics) 组织下的官方仓库，归属 **底层 SDK / 通信** 主线。
+**unitree_legged_sdk** 主要用于 PC 与运控板之间的通信（亦可在其它机器上经 UDP 使用）。现行 tag（如 v3.8.x）文档写明主支持 **Go1**；Laikago/B1/Aliengo/A1 等需回退历史 release（如 v3.3.1）。
 
 ## 一句话定义
 
-旧代腿式 SDK（与 ROS1 真机桥配套）；新机型应优先 SDK2，本仓主要用于维护旧链路。
+SDK1 时代的 UDP 真机通信库——理解 ROS1 `unitree_ros_to_real` 链路时必需，新项目应改走 SDK2。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| SDK | Software Development Kit | 软件开发工具包 |
-| DDS | Data Distribution Service | 分布式实时通信中间件 |
-| ROS 2 | Robot Operating System 2 | 机器人系统集成常用中间件 |
-| API | Application Programming Interface | 应用程序编程接口 |
-| G1 | Unitree G1 Humanoid | 宇树入门级人形平台 |
+| SDK | Software Development Kit | 本仓为旧代 |
+| SDK2 | Unitree SDK version 2 | 新机型默认 |
+| UDP | User Datagram Protocol | 本仓通信方式 |
+| ROS | Robot Operating System | 常与 ros_to_real 联用 |
+| API | Application Programming Interface | C++/可选 Python 封装 |
+| Go1 | Unitree Go1 | 当前文档主支持机型 |
 
 ## 为什么重要
 
-真机通信与低层控制是所有 RL/IL/遥操作部署的共同底座；弄错 SDK 代际会导致整条链路无法联调。
+- 大量 2020–2023 论文与教程仍引用本仓；复现时不能误装 SDK2。
+- 与 [`unitree_ros`](./unitree-ros.md) / `unitree_ros_to_real` 组成 ROS1 真机故事线。
+- 作为对照，帮助理解为何新栈改 DDS。
 
-在宇树官方开源地图中，本仓是 **底层 SDK / 通信** 的独立节点；与其它仓的选型关系见 [Unitree](./unitree.md)。
+## 核心原理
 
-## 核心信息
-
-| 字段 | 内容 |
-|------|------|
-| 仓库 | [`unitreerobotics/unitree_legged_sdk`](https://github.com/unitreerobotics/unitree_legged_sdk) |
-| 组织分类 | 底层 SDK / 通信 |
-| 星标（2026-07-24） | ~426 |
-| 最近推送 | 2024-03-23 |
-| 主要语言 | C++ |
+依赖 Boost、CMake、g++；可选 `-DPYTHON_BUILD=TRUE` 编 Python 封装。运行 C++ 示例常需 `sudo` 以锁定内存。固件与 `Legged_sport` 版本需满足 README 下限。
 
 ## 工程实践
 
-- Boost (version 1.5.4 or higher)
-- CMake (version 2.8.3 or higher)
-- g++ (version 8.3.0 or higher)
+```bash
+mkdir build && cd build && cmake .. && make
+# 或
+cmake -DPYTHON_BUILD=TRUE ..
+```
 
-- 组织级导航与五条研发主线见 [Unitree 软件生态](./unitree.md)；原始归档见 [sources/repos/unitree_legged_sdk.md](../../sources/repos/unitree_legged_sdk.md)。
+缺 `msgpack.hpp` 时安装 `libmsgpack*`；Python 在 arm 上需改 `sys.path` 到 `arm64` 库目录。
 
 ## 局限与风险
 
-- **不要脱离代际混用**：SDK1/ROS1 遗产仓与 SDK2/ROS2/DDS 新栈的消息与启动方式不兼容。
-- **README 边界优先**：功能承诺以官方 README 为准；星标高不等于适合你的机型/仿真器。
-- **外设/第三方手部仓**：驱动与固件版本需与具体灵巧手/雷达硬件对齐，否则 Serial↔DDS 桥会静默失败。
+- **机型支持窄**；错用版本会连不上。
+- 与 SDK2 **协议不兼容**，禁止在同一控制器里混用。
+- 安全：低层示例同样需要吊装与急停流程。
 
 ## 关联页面
 
-- [Unitree 组织枢纽](./unitree.md)
 - [unitree_sdk2](./unitree-sdk2.md)
-- [unitree_sdk2_python](./unitree-sdk2-python.md)
-- [unitree_ros2](./unitree-ros2.md)
-- [Sim2Real](../concepts/sim2real.md)
+- [unitree_ros](./unitree-ros.md)
+- [unitree_guide](./unitree-guide.md)
+- [Unitree](./unitree.md)
 
 ## 参考来源
 
 - [sources/repos/unitree_legged_sdk.md](../../sources/repos/unitree_legged_sdk.md)
-- [sources/repos/unitree.md](../../sources/repos/unitree.md) — 组织级仓库地图
-- 上游仓库：<https://github.com/unitreerobotics/unitree_legged_sdk>
+- 上游：<https://github.com/unitreerobotics/unitree_legged_sdk>
 
 ## 推荐继续阅读
 
-- 官方开发者文档：<https://support.unitree.com/home/zh/developer>
-- 组织总览：<https://github.com/unitreerobotics>
+- 开发者文档中 SDK 代际说明：<https://support.unitree.com/home/zh/developer>
+

@@ -12,7 +12,7 @@
 - **分类：** 工具与调试
 - **入库日期：** 2026-07-24
 - **一句话说明：** 面向多进程的轻量 Python 日志工具（rich 终端 + 文件写入）。
-- **沉淀到 wiki：** 是 → [`wiki/entities/logging-mp.md`](../../wiki/entities/logging-mp.md)
+- **沉淀到 wiki：** 否（周边/元仓，避免 stub 重复节点）→ 见组织枢纽 [`wiki/entities/unitree.md`](../../wiki/entities/unitree.md)
 - **组织地图：** [`sources/repos/unitree.md`](unitree.md)
 
 ---
@@ -32,5 +32,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/logging-mp.md`](../../wiki/entities/logging-mp.md)
+- 实体页：无（仅归档）
 - 组织枢纽：[`wiki/entities/unitree.md`](../../wiki/entities/unitree.md)

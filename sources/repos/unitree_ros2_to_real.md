@@ -12,7 +12,7 @@
 - **分类：** ROS 集成
 - **入库日期：** 2026-07-24
 - **一句话说明：** 面向 Go1 的 ROS 2 真机控制示例包（代际偏旧，选型时对照 unitree_ros2 / SDK2）。
-- **沉淀到 wiki：** 是 → [`wiki/entities/unitree-ros2-to-real.md`](../../wiki/entities/unitree-ros2-to-real.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/unitree-ros2.md`](../../wiki/entities/unitree-ros2.md)
 - **组织地图：** [`sources/repos/unitree.md`](unitree.md)
 
 ---
@@ -28,5 +28,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/unitree-ros2-to-real.md`](../../wiki/entities/unitree-ros2-to-real.md)
+- 实体页：[`wiki/entities/unitree-ros2.md`](../../wiki/entities/unitree-ros2.md)
 - 组织枢纽：[`wiki/entities/unitree.md`](../../wiki/entities/unitree.md)

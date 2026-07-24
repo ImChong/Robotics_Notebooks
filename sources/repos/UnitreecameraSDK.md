@@ -12,7 +12,7 @@
 - **分类：** 相机外设
 - **入库日期：** 2026-07-24
 - **一句话说明：** Go1 相机 SDK（偏旧机型外设栈）。
-- **沉淀到 wiki：** 是 → [`wiki/entities/unitree-camera-sdk.md`](../../wiki/entities/unitree-camera-sdk.md)
+- **沉淀到 wiki：** 否（周边/元仓，避免 stub 重复节点）→ 见组织枢纽 [`wiki/entities/unitree.md`](../../wiki/entities/unitree.md)
 - **组织地图：** [`sources/repos/unitree.md`](unitree.md)
 
 ---
@@ -28,5 +28,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/unitree-camera-sdk.md`](../../wiki/entities/unitree-camera-sdk.md)
+- 实体页：无（仅归档）
 - 组织枢纽：[`wiki/entities/unitree.md`](../../wiki/entities/unitree.md)

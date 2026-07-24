@@ -1,82 +1,74 @@
 ---
 type: entity
-tags: [repo, unitree, unitreerobotics, lidar]
-status: draft
+tags: [repo, unitree, unitreerobotics, lidar, slam, localization]
+status: complete
 updated: 2026-07-24
 related:
   - ./unitree.md
-  - ./unilidar-sdk.md
   - ./unilidar-sdk2.md
   - ../tasks/locomotion.md
+  - ../concepts/sim2real.md
 sources:
   - ../../sources/repos/point_lio_unilidar.md
   - ../../sources/repos/unitree.md
-summary: "面向 Unitree LiDAR 产品的 Point-LIO 定位建图实现。"
+summary: "point_lio_unilidar 将 Point-LIO 适配到 Unitree L1/L2 雷达，提供高带宽激光惯性里程计与建图能力；推荐 Ubuntu 20.04 + ROS Noetic。"
 ---
 
 # point_lio_unilidar
 
-**point_lio_unilidar** 是 [unitreerobotics](https://github.com/unitreerobotics) 组织下的官方仓库，归属 **LiDAR 感知** 主线。
+**point_lio_unilidar** 把学术界 **Point-LIO**（稳健高带宽 LiDAR-Inertial Odometry）接到宇树 **L1 / L2** 雷达产品。
 
 ## 一句话定义
 
-面向 Unitree LiDAR 产品的 Point-LIO 定位建图实现。
+官方维护的 UniLidar + Point-LIO 组合——在振动与剧烈运动下仍追求准确高频里程计与可靠建图。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| LiDAR | Light Detection and Ranging | 激光雷达 |
-| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
-| API | Application Programming Interface | 应用程序编程接口 |
-| SDK | Software Development Kit | 软件开发工具包 |
-| ROS 2 | Robot Operating System 2 | 机器人系统集成常用中间件 |
+| LIO | LiDAR-Inertial Odometry | 激光惯性里程计 |
+| LiDAR | Light Detection and Ranging | L1/L2 传感器 |
+| IMU | Inertial Measurement Unit | 惯性量测 |
+| SLAM | Simultaneous Localization and Mapping | 定位建图总称 |
+| ROS | Robot Operating System | 推荐 Noetic |
+| FOV | Field of View | L1/L2 约 360°×90° |
 
 ## 为什么重要
 
-地形感知与建图依赖官方 LiDAR SDK/算法对齐；独立节点便于外设选型。
+- 给 Unitree 移动平台一条**可复现的开源 LIO 基线**，而不是只卖硬件。
+- Point-LIO 论文强调高带宽与抗剧烈运动，契合足式/轮足颠簸场景。
+- 与 [`unilidar-sdk2`](./unilidar-sdk2.md) 形成「驱动 → 算法」闭环。
 
-在宇树官方开源地图中，本仓是 **LiDAR 感知** 的独立节点；与其它仓的选型关系见 [Unitree](./unitree.md)。
+## 核心原理
 
-## 核心信息
-
-| 字段 | 内容 |
-|------|------|
-| 仓库 | [`unitreerobotics/point_lio_unilidar`](https://github.com/unitreerobotics/point_lio_unilidar) |
-| 组织分类 | LiDAR 感知 |
-| 星标（2026-07-24） | ~506 |
-| 最近推送 | 2025-06-05 |
-| 主要语言 | C++ |
+上游算法来自 HKU MARS Lab [Point-LIO](https://github.com/hku-mars/Point-LIO)。本仓负责 Unitree 雷达驱动对接、话题与参数。L1/L2 共性：大视场、非重复扫描、低成本、适低速移动机器人。
 
 ## 工程实践
 
-- Unitree LiDAR L1
-- Unitree LiDAR L2
-- large field of view (360° × 90°)
-- non-repetitive scanning
-
-- 组织级导航与五条研发主线见 [Unitree 软件生态](./unitree.md)；原始归档见 [sources/repos/point_lio_unilidar.md](../../sources/repos/point_lio_unilidar.md)。
+1. Ubuntu **20.04** + ROS **Noetic**（上游劝阻 18.04 及更旧）。
+2. 安装 `ros-$DISTRO-pcl-conversions`、`libeigen3-dev`。
+3. 先用 UniLidar SDK 确认点云/IMU 正常，再启动本仓 LIO。
+4. 参考仓库视频 demo（L1/L2）核对室外/室内表现预期。
 
 ## 局限与风险
 
-- **不要脱离代际混用**：SDK1/ROS1 遗产仓与 SDK2/ROS2/DDS 新栈的消息与启动方式不兼容。
-- **README 边界优先**：功能承诺以官方 README 为准；星标高不等于适合你的机型/仿真器。
-- **外设/第三方手部仓**：驱动与固件版本需与具体灵巧手/雷达硬件对齐，否则 Serial↔DDS 桥会静默失败。
+- 低速平台假设：高速或极端运动需重调参数。
+- ROS1 Noetic 栈与实验室 ROS2 主线并存时，注意桥接成本。
+- 建图质量强烈依赖外参与时间同步，需按 SDK 坐标定义校准。
 
 ## 关联页面
 
-- [Unitree 组织枢纽](./unitree.md)
-- [unilidar_sdk](./unilidar-sdk.md)
-- [unilidar_sdk2](./unilidar-sdk2.md)
+- [UniLidar SDK](./unilidar-sdk2.md)
 - [Locomotion](../tasks/locomotion.md)
+- [Unitree](./unitree.md)
 
 ## 参考来源
 
 - [sources/repos/point_lio_unilidar.md](../../sources/repos/point_lio_unilidar.md)
-- [sources/repos/unitree.md](../../sources/repos/unitree.md) — 组织级仓库地图
-- 上游仓库：<https://github.com/unitreerobotics/point_lio_unilidar>
+- Point-LIO 论文：<https://onlinelibrary.wiley.com/doi/epdf/10.1002/aisy.202200459>
+- 上游：<https://github.com/unitreerobotics/point_lio_unilidar>
 
 ## 推荐继续阅读
 
-- 官方开发者文档：<https://support.unitree.com/home/zh/developer>
-- 组织总览：<https://github.com/unitreerobotics>
+- Point-LIO 官方仓：<https://github.com/hku-mars/Point-LIO>
+

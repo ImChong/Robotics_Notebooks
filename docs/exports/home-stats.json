@@ -1,13 +1,68 @@
 {
   "generated_at": "2026-07-24",
-  "node_count": 1869,
-  "edge_count": 15598,
+  "node_count": 1844,
+  "edge_count": 15493,
   "coverage": {
-    "covered": 1818,
-    "total": 1846,
+    "covered": 1793,
+    "total": 1821,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/unitree-sdk2.md",
+      "detail_id": "entity-unitree-sdk2",
+      "label": "unitree_sdk2（含 Python 绑定）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/z1-sdk.md",
+      "detail_id": "entity-z1-sdk",
+      "label": "Unitree Z1 软件栈（z1_sdk 等）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/unitree-dexterous-hand-services.md",
+      "detail_id": "entity-unitree-dexterous-hand-services",
+      "label": "Unitree 灵巧手 Serial↔DDS 服务",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/unilidar-sdk2.md",
+      "detail_id": "entity-unilidar-sdk2",
+      "label": "UniLidar SDK（L1 / L2）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/xr-teleoperate.md",
+      "detail_id": "entity-xr-teleoperate",
+      "label": "xr_teleoperate",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/unitree.md",
       "detail_id": "entity-unitree",
@@ -16,17 +71,6 @@
       "recency": "2026-07-24",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/unitree-model.md",
-      "detail_id": "entity-unitree-model",
-      "label": "unitree_model",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -42,6 +86,28 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
+      "path": "wiki/entities/unitree-unistore.md",
+      "detail_id": "entity-unitree-unistore",
+      "label": "UniStore（宇树应用平台）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/unitree-model.md",
+      "detail_id": "entity-unitree-model",
+      "label": "unitree_model（已弃用 → Hugging Face）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/unitree-rl-mjlab.md",
       "detail_id": "entity-unitree-rl-mjlab",
       "label": "unitree_rl_mjlab (Unitree 官方 RL 框架)",
@@ -53,42 +119,9 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/unitree-sdk2.md",
-      "detail_id": "entity-unitree-sdk2",
-      "label": "unitree_sdk2",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/unitree-sdk2-python.md",
-      "detail_id": "entity-unitree-sdk2-python",
-      "label": "unitree_sdk2_python",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
       "path": "wiki/entities/unitree-ros2.md",
       "detail_id": "entity-unitree-ros2",
       "label": "unitree_ros2",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/unitree-ros-to-real.md",
-      "detail_id": "entity-unitree-ros-to-real",
-      "label": "unitree_ros_to_real",
       "type": "entity",
       "recency": "2026-07-24",
       "source": "log.md",
@@ -130,17 +163,6 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/xr-teleoperate.md",
-      "detail_id": "entity-xr-teleoperate",
-      "label": "xr_teleoperate",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
       "path": "wiki/entities/unitree-lerobot.md",
       "detail_id": "entity-unitree-lerobot",
       "label": "unitree_lerobot",
@@ -149,7 +171,7 @@
       "source": "log.md",
       "action": "added",
       "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/unitree-sim-isaaclab.md",
@@ -160,29 +182,27 @@
       "source": "log.md",
       "action": "added",
       "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/unifolm-vla.md",
       "detail_id": "entity-unifolm-vla",
-      "label": "unifolm-vla",
+      "label": "UnifoLM-VLA-0（unifolm-vla）",
       "type": "entity",
       "recency": "2026-07-24",
       "source": "log.md",
       "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/unifolm-world-model-action.md",
       "detail_id": "entity-unifolm-world-model-action",
-      "label": "unifolm-world-model-action",
+      "label": "UnifoLM-WMA-0（unifolm-world-model-action）",
       "type": "entity",
       "recency": "2026-07-24",
       "source": "log.md",
       "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/point-lio-unilidar.md",
@@ -205,48 +225,23 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/tasks/teleoperation.md",
-      "detail_id": "wiki-tasks-teleoperation",
-      "label": "Teleoperation（遥操作）",
-      "type": "task",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/lerobot.md",
-      "detail_id": "entity-lerobot",
-      "label": "LeRobot (Hugging Face)",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/unitree.md",
-    "detail_id": "entity-unitree",
-    "label": "Unitree",
+    "path": "wiki/entities/unitree-sdk2.md",
+    "detail_id": "entity-unitree-sdk2",
+    "label": "unitree_sdk2（含 Python 绑定）",
     "type": "entity",
     "recency": "2026-07-24",
     "source": "log.md",
-    "action": "maintained",
+    "action": "added",
     "has_repo": true,
     "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 393
-    },
-    {
-      "label": "仿真到现实",
-      "size": 207
+      "size": 360
     },
     {
       "label": "人形论文深读笔记",
@@ -258,11 +253,15 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 134
+      "size": 149
+    },
+    {
+      "label": "仿真到现实",
+      "size": 142
     },
     {
       "label": "全身控制",
-      "size": 106
+      "size": 120
     }
   ],
   "top_hubs": [
@@ -277,7 +276,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 343,
+      "degree": 345,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -293,7 +292,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 308,
+      "degree": 304,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -309,13 +308,13 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 262
+      "degree": 264
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 245,
+      "degree": 246,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
@@ -355,7 +354,8 @@
       "label": "BeyondMimic",
       "type": "method",
       "degree": 59,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",
@@ -369,7 +369,8 @@
       "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
       "type": "entity",
       "degree": 47,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "wiki-methods-deepmimic",
@@ -389,7 +390,8 @@
       "label": "TWIST2",
       "type": "entity",
       "degree": 41,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",

@@ -13,7 +13,7 @@
 - **分类：** 遥操作与采数
 - **入库日期：** 2026-07-24
 - **一句话说明：** Azure Kinect 驱动的 H1/G1 全身遥操作实现。
-- **沉淀到 wiki：** 是 → [`wiki/entities/kinect-teleoperate.md`](../../wiki/entities/kinect-teleoperate.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/xr-teleoperate.md`](../../wiki/entities/xr-teleoperate.md)
 - **组织地图：** [`sources/repos/unitree.md`](unitree.md)
 
 ---
@@ -29,5 +29,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/kinect-teleoperate.md`](../../wiki/entities/kinect-teleoperate.md)
+- 实体页：[`wiki/entities/xr-teleoperate.md`](../../wiki/entities/xr-teleoperate.md)
 - 组织枢纽：[`wiki/entities/unitree.md`](../../wiki/entities/unitree.md)

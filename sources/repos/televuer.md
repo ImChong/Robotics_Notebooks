@@ -12,7 +12,7 @@
 - **分类：** 遥操作与采数
 - **入库日期：** 2026-07-24
 - **一句话说明：** XR 视觉与手部/手柄遥操作接口层，服务官方遥操作管线。
-- **沉淀到 wiki：** 是 → [`wiki/entities/televuer.md`](../../wiki/entities/televuer.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/xr-teleoperate.md`](../../wiki/entities/xr-teleoperate.md)
 - **组织地图：** [`sources/repos/unitree.md`](unitree.md)
 
 ---
@@ -30,5 +30,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/televuer.md`](../../wiki/entities/televuer.md)
+- 实体页：[`wiki/entities/xr-teleoperate.md`](../../wiki/entities/xr-teleoperate.md)
 - 组织枢纽：[`wiki/entities/unitree.md`](../../wiki/entities/unitree.md)

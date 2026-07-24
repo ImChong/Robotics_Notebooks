@@ -12,7 +12,7 @@
 - **分类：** 底层 SDK / 通信
 - **入库日期：** 2026-07-24
 - **一句话说明：** 对 Unitree DDS 通信的薄封装，降低直接操作 DDS 主题的样板代码成本。
-- **沉淀到 wiki：** 是 → [`wiki/entities/unitree-dds-wrapper.md`](../../wiki/entities/unitree-dds-wrapper.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/unitree-sdk2.md`](../../wiki/entities/unitree-sdk2.md)
 - **组织地图：** [`sources/repos/unitree.md`](unitree.md)
 
 ---
@@ -28,5 +28,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/unitree-dds-wrapper.md`](../../wiki/entities/unitree-dds-wrapper.md)
+- 实体页：[`wiki/entities/unitree-sdk2.md`](../../wiki/entities/unitree-sdk2.md)
 - 组织枢纽：[`wiki/entities/unitree.md`](../../wiki/entities/unitree.md)

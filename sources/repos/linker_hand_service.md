@@ -12,7 +12,7 @@
 - **分类：** 灵巧手 Serial↔DDS 服务
 - **入库日期：** 2026-07-24
 - **一句话说明：** Linker Hand 灵巧手 Serial↔DDS 服务。
-- **沉淀到 wiki：** 是 → [`wiki/entities/linker-hand-service.md`](../../wiki/entities/linker-hand-service.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/unitree-dexterous-hand-services.md`](../../wiki/entities/unitree-dexterous-hand-services.md)
 - **组织地图：** [`sources/repos/unitree.md`](unitree.md)
 
 ---
@@ -32,5 +32,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/linker-hand-service.md`](../../wiki/entities/linker-hand-service.md)
+- 实体页：[`wiki/entities/unitree-dexterous-hand-services.md`](../../wiki/entities/unitree-dexterous-hand-services.md)
 - 组织枢纽：[`wiki/entities/unitree.md`](../../wiki/entities/unitree.md)

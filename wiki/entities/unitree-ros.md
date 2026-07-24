@@ -5,7 +5,6 @@ status: complete
 updated: 2026-07-24
 related:
   - ./unitree.md
-  - ./unitree-ros-to-real.md
   - ./unitree-ros2.md
   - ./unitree-g1.md
   - ./unitree-rl-mjlab.md
@@ -97,7 +96,7 @@ flowchart LR
 ## 关联页面
 
 - [Unitree](./unitree.md) — 硬件与开源生态总入口；本页仅覆盖 **ROS1 + Gazebo8** 描述与关节级仿真/桥接。
-- [unitree_ros_to_real](./unitree-ros-to-real.md) — 真机 ROS1 桥与 `unitree_legged_msgs` 独立节点。
+- 真机桥 `unitree_ros_to_real` / `unitree_legged_msgs`：**本页一并覆盖**（不另建节点）；归档见 [sources/repos/unitree_ros_to_real.md](../../sources/repos/unitree_ros_to_real.md)。
 - [unitree_ros2](./unitree-ros2.md) — 新机型优先的 ROS 2 + DDS 官方入口。
 - [unitree_rl_mjlab](./unitree-rl-mjlab.md) — **并行官方路线**：GPU 并行 MuJoCo 训练与 ONNX→SDK2 部署；与 ROS1 Gazebo 资产互补而非替代。
 - [Unitree G1](./unitree-g1.md) — `g1_description` 等模型在 ROS 描述包中的工程落点。

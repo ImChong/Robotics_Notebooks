@@ -1,84 +1,90 @@
 ---
 type: entity
-tags: [repo, unitree, unitreerobotics, sim]
-status: draft
+tags: [repo, unitree, unitreerobotics, mujoco, sim2sim, sdk, sim2real]
+status: complete
 updated: 2026-07-24
 related:
   - ./unitree.md
-  - ./unitree-guide.md
+  - ./unitree-sdk2.md
   - ./unitree-rl-mjlab.md
-  - ../concepts/sim2real.md
+  - ./unitree-rl-gym.md
+  - ./unitree-ros2.md
   - ./mujoco.md
+  - ../concepts/sim2real.md
+  - ../tasks/locomotion.md
 sources:
   - ../../sources/repos/unitree_mujoco.md
   - ../../sources/repos/unitree.md
-summary: "官方 MuJoCo 仿真与 Sim2Sim 验证仓，RL 策略落地前常用中间验证环。"
+summary: "unitree_mujoco 是基于 unitree_sdk2 与 MuJoCo 的官方仿真器（C++/Python 双实现），用与真机相同的 LowCmd/LowState DDS 主题做低层控制器的 Sim2Sim；当前版本定位为低层开发验证，而非高层 Sport 模式仿真。"
 ---
 
 # unitree_mujoco
 
-**unitree_mujoco** 是 [unitreerobotics](https://github.com/unitreerobotics) 组织下的官方仓库，归属 **仿真与模型** 主线。
+**unitree_mujoco** 把 **MuJoCo 物理** 与 **SDK2 DDS 接口**接在一起：用 SDK2 / ROS2 / Python SDK 写的低层控制程序，可以先在本仿真器里跑通，再迁到真机。
 
 ## 一句话定义
 
-官方 MuJoCo 仿真与 Sim2Sim 验证仓，RL 策略落地前常用中间验证环。
+官方 Sim2Sim 验证环——仿真侧发布/订阅与真机同构的低层 DDS 消息，专门服务「控制器是否过拟合某一仿真器」的检查。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
 | MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理引擎 |
-| URDF | Unified Robot Description Format | 统一机器人描述格式 |
-| Sim2Sim | Simulation to Simulation | 跨仿真器策略验证 |
-| Sim2Real | Simulation to Real | 仿真到真机迁移 |
-| SDK | Software Development Kit | 软件开发工具包 |
+| Sim2Sim | Simulation to Simulation | 跨仿真器迁移验证 |
+| Sim2Real | Simulation to Real | 仿真到真机 |
+| DDS | Data Distribution Service | 与真机共用的通信层 |
+| IDL | Interface Definition Language | Go 系 `unitree_go` / 人形 `unitree_hg` |
+| SDK2 | Unitree SDK version 2 | 控制程序开发入口 |
 
 ## 为什么重要
 
-仿真与模型资产决定 Sim2Sim 成本；错误资产代际会让训练/验证结果无法对照真机。
+- 官方三条 RL 线（gym / lab / mjlab）在文档中常把本仓或等价 MuJoCo 验证当作 **Play 之后、真机之前** 的一环。
+- **接口同构**降低「换仿真器就要改控制器」的成本；也暴露 DDS 域冲突、电机编号等工程问题。
+- 与 [`unitree_ros`](./unitree-ros.md) Gazebo 栈不同：本仓目标是 **低层力矩/位置控制验证**，不是 Gazebo 关节教学。
 
-在宇树官方开源地图中，本仓是 **仿真与模型** 的独立节点；与其它仓的选型关系见 [Unitree](./unitree.md)。
+## 核心原理
 
-## 核心信息
-
-| 字段 | 内容 |
+| 目录 | 内容 |
 |------|------|
-| 仓库 | [`unitreerobotics/unitree_mujoco`](https://github.com/unitreerobotics/unitree_mujoco) |
-| 组织分类 | 仿真与模型 |
-| 星标（2026-07-24） | ~1097 |
-| 最近推送 | 2026-06-08 |
-| 主要语言 | C++ |
+| `simulate/` | C++ 仿真器（推荐） |
+| `simulate_python/` | Python 仿真器 |
+| `unitree_robots/` | 支持机型的 MJCF |
+| `terrain_tool/` | 地形生成 |
+| `example/` | 示例程序 |
+
+**支持的 SDK2 消息（当前版本）**：`LowCmd`、`LowState`、`SportModeState`（仿真保留位姿速度供分析）、G1 的 `IMUState`（`rt/secondary_imu`）。上游写明：**当前仅支持低层开发**。
+
+**IDL 分族**：Go2 / B2 / H1 / 轮足等用 `unitree_go`；G1 / H1-2 用 `unitree_hg`。
 
 ## 工程实践
 
-- simulate: Simulator implemented based on unitreesdk2 and mujoco (C++, recommended)
-- simulatepython: Simulator implemented based on unitreesdk2python and mujoco (Python)
-- unitreerobots: MJCF description files for robots supported by unitreesdk2
-- terraintool: Tool for generating terrain in simulation scenarios
-
-- 组织级导航与五条研发主线见 [Unitree 软件生态](./unitree.md)；原始归档见 [sources/repos/unitree_mujoco.md](../../sources/repos/unitree_mujoco.md)。
+1. 安装 `unitree_sdk2` 到 `/opt/unitree_robotics`；安装依赖 `libyaml-cpp-dev libspdlog-dev libboost-all-dev libglfw3-dev`。
+2. 下载 MuJoCo release，软链到 `simulate/mujoco`（上游示例版本号以 README 为准）。
+3. `cmake && make` 后运行例如：`./unitree_mujoco -r go2 -s scene_terrain.xml`，另开终端跑 `./test`。
+4. 与真机同网时务必隔离 DDS 域，避免误控实机。
 
 ## 局限与风险
 
-- **不要脱离代际混用**：SDK1/ROS1 遗产仓与 SDK2/ROS2/DDS 新栈的消息与启动方式不兼容。
-- **README 边界优先**：功能承诺以官方 README 为准；星标高不等于适合你的机型/仿真器。
-- **外设/第三方手部仓**：驱动与固件版本需与具体灵巧手/雷达硬件对齐，否则 Serial↔DDS 桥会静默失败。
+- **不是高层运动模式仿真器**：内置 Sport 服务关闭后的真机行为与仿真保留消息语义不同，勿假设完全一致。
+- **电机编号必须对照开发者文档**与实机接线。
+- C++ / Python 两套实现能力边界以上游为准，优先 C++ 路径做严肃验证。
 
 ## 关联页面
 
-- [Unitree 组织枢纽](./unitree.md)
-- [unitree_guide](./unitree-guide.md)
+- [unitree_sdk2](./unitree-sdk2.md)
 - [unitree_rl_mjlab](./unitree-rl-mjlab.md)
-- [Sim2Real](../concepts/sim2real.md)
+- [unitree_rl_gym](./unitree-rl-gym.md)
 - [MuJoCo](./mujoco.md)
+- [Sim2Real](../concepts/sim2real.md)
+- [Unitree](./unitree.md)
 
 ## 参考来源
 
 - [sources/repos/unitree_mujoco.md](../../sources/repos/unitree_mujoco.md)
-- [sources/repos/unitree.md](../../sources/repos/unitree.md) — 组织级仓库地图
-- 上游仓库：<https://github.com/unitreerobotics/unitree_mujoco>
+- 上游：<https://github.com/unitreerobotics/unitree_mujoco>
 
 ## 推荐继续阅读
 
-- 官方开发者文档：<https://support.unitree.com/home/zh/developer>
-- 组织总览：<https://github.com/unitreerobotics>
+- MuJoCo 文档：<https://mujoco.readthedocs.io/>
+
