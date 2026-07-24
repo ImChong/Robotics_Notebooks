@@ -1,5 +1,36 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-24] ingest | sources/repos/unitree.md — unitreerobotics 组织活跃仓全量独立节点（45）；跳过 7 个过时/元仓
+
+- **资料：** [github.com/unitreerobotics](https://github.com/unitreerobotics)（组织 API，截至 2026-07-24 约 52 公开仓）
+- **策略：** 为每个活跃仓库建立独立 `sources/repos/<name>.md` + `wiki/entities/<slug>.md`；组织枢纽 [`wiki/entities/unitree.md`](wiki/entities/unitree.md) 增加全量节点清单与跳过说明。
+- **跳过（过时/元仓）：** `.github`、`unitreerobotics.github.io`、`Acknowledgement`、`laikago_ros`、`unitree_pybullet`、`aliengo_sdk`、`unitree_cad`
+- **保留但标注 deprecated：** [`wiki/entities/unitree-model.md`](wiki/entities/unitree-model.md)（GitHub deprecated → Hugging Face）
+- **既有深页未覆盖写：** [`wiki/entities/unitree-ros.md`](wiki/entities/unitree-ros.md)、[`wiki/entities/unitree-rl-mjlab.md`](wiki/entities/unitree-rl-mjlab.md)（仅补交叉链接）
+- **新独立节点（示例，完整清单见组织枢纽）：**
+  - [`wiki/entities/unitree-sdk2.md`](wiki/entities/unitree-sdk2.md)
+  - [`wiki/entities/unitree-sdk2-python.md`](wiki/entities/unitree-sdk2-python.md)
+  - [`wiki/entities/unitree-ros2.md`](wiki/entities/unitree-ros2.md)
+  - [`wiki/entities/unitree-ros-to-real.md`](wiki/entities/unitree-ros-to-real.md)
+  - [`wiki/entities/unitree-rl-gym.md`](wiki/entities/unitree-rl-gym.md)
+  - [`wiki/entities/unitree-rl-lab.md`](wiki/entities/unitree-rl-lab.md)
+  - [`wiki/entities/unitree-mujoco.md`](wiki/entities/unitree-mujoco.md)
+  - [`wiki/entities/xr-teleoperate.md`](wiki/entities/xr-teleoperate.md)
+  - [`wiki/entities/unitree-lerobot.md`](wiki/entities/unitree-lerobot.md)
+  - [`wiki/entities/unitree-sim-isaaclab.md`](wiki/entities/unitree-sim-isaaclab.md)
+  - [`wiki/entities/unifolm-vla.md`](wiki/entities/unifolm-vla.md)
+  - [`wiki/entities/unifolm-world-model-action.md`](wiki/entities/unifolm-world-model-action.md)
+  - [`wiki/entities/point-lio-unilidar.md`](wiki/entities/point-lio-unilidar.md)
+  - [`wiki/entities/qmini.md`](wiki/entities/qmini.md)
+  - 以及 Z1 / 灵巧手 / LiDAR / 工具 / SLAM / UniStore 模板等其余活跃仓节点
+- **交叉更新：**
+  - [`wiki/entities/unitree.md`](wiki/entities/unitree.md)
+  - [`sources/repos/unitree.md`](sources/repos/unitree.md)
+  - [`wiki/entities/unitree-ros.md`](wiki/entities/unitree-ros.md)
+  - [`wiki/entities/unitree-rl-mjlab.md`](wiki/entities/unitree-rl-mjlab.md)
+  - [`wiki/tasks/teleoperation.md`](wiki/tasks/teleoperation.md)
+  - [`wiki/entities/lerobot.md`](wiki/entities/lerobot.md)
+
 ## [2026-07-24] fix(docs) | README 在线演示「知识图谱」粗体链接 `**` 原样显示
 
 - **现象：** `**[知识图谱](url)**`（粗体包住整段链接）在 GitHub Markdown 下星号可原样露出；同模式亦见于「如何贡献」的 `**[CONTRIBUTING.md](...)**`。
