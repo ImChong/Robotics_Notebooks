@@ -11,6 +11,7 @@ related:
   - ./wokwi.md
   - ./kicad.md
   - ../concepts/can-bus-protocol.md
+  - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/repos/simplefoc_arduino_foc.md
   - ../../sources/sites/simplefoc_documentation.md
@@ -103,6 +104,7 @@ flowchart TB
 - [Atom01 Firmware](./atom01-firmware.md)（开源人形底层固件对照）
 - [Wokwi](./wokwi.md) — 无硬件时在浏览器验证 Arduino/ESP32/STM32 外设与 FOC 原型
 - [KiCad](./kicad.md) — 自研驱动板原理图与 PCB layout
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — SimpleFOC 是②层开源 FOC 驱动固件生态
 
 ## 推荐继续阅读
 

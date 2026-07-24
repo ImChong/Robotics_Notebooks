@@ -12,6 +12,7 @@ related:
   - ./en02-op.md
   - ./open-source-humanoid-hardware.md
   - ../concepts/field-oriented-control.md
+  - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/sites/kicad-org.md
   - ../../sources/courses/kicad_docs_10_zh.md
@@ -119,6 +120,7 @@ flowchart TB
 - [EN02-OP](./en02-op.md)
 - [开源人形机器人硬件方案对比](./open-source-humanoid-hardware.md)
 - [磁场定向控制（FOC）](../concepts/field-oriented-control.md)
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — KiCad 是①层开源 EDA 驱动板设计工具
 
 ## 参考来源
 

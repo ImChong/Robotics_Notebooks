@@ -161,6 +161,20 @@ sequenceDiagram
 - **遮挡与冲突轨迹：** 多轨迹时空重叠时随机选一；复杂交互可能丢细节。
 - **与掩码条件差异：** 点轨迹强调局部运动，不等价于 MVA 的「实体占据掩码」接口。
 
+## 与其他工作对比
+
+按「条件接口 × 是否改骨干 × 面向机器人闭环」三轴，把 Wan-Move 放回同期可控视频 / 像素世界模型谱系（口径以各自论文/README 为准）：
+
+| 对照对象 | 运动条件接口 | 是否改动骨干 | 与本页关系 |
+|----------|--------------|--------------|-----------|
+| [Wan-I2V-14B（基座）](./paper-wan-video.md) | 仅首帧图像 | — | Wan-Move 在其上微调，**不新增运动编码器/ControlNet** |
+| Kling 1.5 Pro Motion Brush（商用） | 交互点级运动刷 | 闭源 | 用户研究里 Wan-Move 运动可控性对标它，但**开源可复现** |
+| [Masked Visual Actions](./paper-masked-visual-actions.md) | 实体占据**掩码** | Wan2.2-Fun-Control | 掩码强调「物体占据」，Wan-Move 的**点轨迹**强调局部运动，二者是选型两端 |
+| [Ctrl-World](./paper-ctrl-world.md) | **低维动作** + 多视角 | 非 Wan 骨干 | 面向操纵策略评估沙盒；Wan-Move 面向通用运动刷、非闭环物理 |
+| [MolmoMotion](./molmo-motion.md) | 显式 **3D 点轨迹** 先验 | — | 同为轨迹条件，但 MolmoMotion 是 3D 运动先验，Wan-Move 在 latent 平面复制特征 |
+
+**选型第一判据**：要 **开源、点级运动控制 + MoveBench 评测** 选本页；要 **可执行动作/闭环物理语义** 应转向掩码（MVA）或低维动作（Ctrl-World）路线——通用运动刷 ≠ 机器人因果控制。
+
 ## 关联页面
 
 - [Wan](./paper-wan-video.md) — 开源视频基础模型上游

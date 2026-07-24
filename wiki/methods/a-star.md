@@ -11,6 +11,7 @@ related:
   - ../concepts/dynamic-obstacle-filtering.md
   - ../entities/far-planner.md
   - ../entities/humanoid-system-curriculum.md
+  - ../comparisons/mobile-robot-navigation-planning-methods.md
 sources:
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
   - ../../sources/repos/python_robotics.md
@@ -129,6 +130,7 @@ flowchart TB
 - [Navigation2](../entities/navigation2.md)
 - [FAR Planner](../entities/far-planner.md) — 长距离可见图对照
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md)
+- [导航规划方法对比：全局·局部·平滑](../comparisons/mobile-robot-navigation-planning-methods.md) — 本页是其全局搜索层，含与 DWA/平滑的分层选型
 
 ## 参考来源
 

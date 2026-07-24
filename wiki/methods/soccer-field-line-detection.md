@@ -13,6 +13,7 @@ related:
   - ../entities/booster-robocup-demo.md
   - ../tasks/humanoid-soccer.md
   - ../entities/humanoid-system-curriculum.md
+  - ../queries/soccer-visual-field-localization-pipeline.md
 sources:
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
 summary: "球门与足球场线交点检测：YOLO 检球/门 + 线几何或关键点回归得到场地结构特征，为线匹配定位供观测；课程 6.4 与 YOLO11 实践。"
@@ -128,6 +129,7 @@ flowchart TB
 - [线匹配视觉定位](./visual-line-matching-localization.md)
 - [Humanoid Soccer](../tasks/humanoid-soccer.md)
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md)
+- [足球视觉场线定位流水线](../queries/soccer-visual-field-localization-pipeline.md) — 本页是其第一段（检测），下接线匹配→EKF
 
 ## 参考来源
 

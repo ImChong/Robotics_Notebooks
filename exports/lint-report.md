@@ -2,7 +2,7 @@
 
 ## [2026-07-23] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **46** 条信息型预警）：
+共发现 **0** 个问题（另含 **0** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -91,22 +91,14 @@
 ### ❌ 工具实体缺少可派生的所属机构（0 个）
 - 无
 
-### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（8 个）
-- wiki/methods/a-star.md（被 12 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/dwa.md（被 14 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/humanoid-voice-interaction.md（被 5 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/lidar-odometry-fusion.md（被 4 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/smooth-navigation-path-generation.md（被 4 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/soccer-field-line-detection.md（被 10 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/visual-line-ekf-fusion.md（被 10 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/visual-line-matching-localization.md（被 10 个页面引用，无 queries/comparisons 落地）
+### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（2 个）
-- wiki/entities/paper-wan-move.md（缺 对比）
-- wiki/entities/paper-wan-video.md（缺 评测 / 对比）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无
@@ -114,8 +106,8 @@
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」专题枢纽（信息型，不阻塞 CI）（1 个）
-- wiki/concepts/soccer-field-simulation.md
+### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」专题枢纽（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 接触/力控/操作概念页缺回链「接触力旋量闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -126,41 +118,7 @@
 ### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」专题枢纽（信息型，不阻塞 CI）（35 个）
-- wiki/comparisons/motor-em-simulation-software.md
-- wiki/concepts/armature-modeling.md
-- wiki/concepts/contact-force-loop-bandwidth.md
-- wiki/concepts/contact-rich-manipulation.md
-- wiki/concepts/embodied-rl-minimal-closed-loop.md
-- wiki/concepts/field-oriented-control.md
-- wiki/concepts/humanoid-rubber-man-analogy.md
-- wiki/concepts/impedance-control.md
-- wiki/concepts/joint-friction-models.md
-- wiki/concepts/lip-zmp.md
-- wiki/concepts/motor-torque-current-curve.md
-- wiki/concepts/motor-torque-speed-curve.md
-- wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md
-- wiki/concepts/robot-link-and-rotor-inertia.md
-- wiki/entities/altium-designer.md
-- wiki/entities/bam-better-actuator-models.md
-- wiki/entities/humanoid-robot.md
-- wiki/entities/kicad.md
-- wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md
-- wiki/entities/paper-bam-extended-friction-servo-actuators.md
-- wiki/entities/paper-gentlehumanoid.md
-- wiki/entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md
-- wiki/entities/paper-loco-manip-161-039-hmc.md
-- wiki/entities/paper-neuralactuator-neural-actuation-modeling.md
-- wiki/entities/paper-pace-sim2real-legged-robots.md
-- wiki/entities/paper-shenlan-wm-09-gr1.md
-- wiki/entities/paper-subcentimeter-pipeline-inspection-robot.md
-- wiki/entities/paper-variable-impedance-contact-rl.md
-- wiki/entities/paper-variable-stiffness-locomotion-rl.md
-- wiki/entities/paper-xrobotoolkit.md
-- wiki/entities/patent-boston-dynamics-legged-control-stack.md
-- wiki/entities/patent-tesla-robot-knee-joint-assembly.md
-- wiki/entities/sage-sim2real-actuator-gap-estimator.md
-- wiki/entities/simplefoc.md
-- wiki/entities/wuji-robotics.md
+### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
+- 无
 
-📊 Sources 覆盖率：1750/1779 (98%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1753/1782 (98%) wiki/entity 页有 ingest 来源

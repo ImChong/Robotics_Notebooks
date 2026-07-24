@@ -11,6 +11,7 @@ related:
   - ../entities/unitree-g1.md
   - ../entities/unitree-g1-software-stack.md
   - ../entities/humanoid-system-curriculum.md
+  - ../queries/humanoid-voice-interaction-pipeline.md
 sources:
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
 summary: "人形智能语音交互：ASR→NLU/LLM→技能或导航→TTS 可打断闭环；课程 8.2，与 VLN/NaVid 组合完成语音导航实践。"
@@ -122,6 +123,7 @@ flowchart LR
 - [NaVid](../entities/paper-vln-10-navid.md)
 - [G1 软件服务栈](../entities/unitree-g1-software-stack.md)
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md)
+- [人形语音交互流水线](../queries/humanoid-voice-interaction-pipeline.md) — 本方法的逐环工程落地（选型/坑/首查项）
 
 ## 参考来源
 

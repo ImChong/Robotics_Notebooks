@@ -23,6 +23,7 @@ related:
   - ./quadruped-robot.md
   - ./paper-quadruped-torque-control-rl.md
   - ../methods/actuator-network.md
+  - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/papers/actuator_constrained_rl_high_speed_quadruped_arxiv_2312_17507.md
 summary: "arXiv:2312.17507：在 RL 训练中将电机扭矩–转速工作区（MOR）硬约束写入仿真，配合对称步态奖励与轻量化足端，使 KAIST Hound 达 6.5 m/s 高速奔跑并缩小高速段 sim2real 差距。"
@@ -139,6 +140,7 @@ flowchart TB
 - [Implicit / Explicit 执行器建模](../concepts/implicit-explicit-actuator-modeling.md)
 - [Sim2Real Gap 缩减实战](../queries/sim2real-gap-reduction.md)
 - [Actuator Network](../methods/actuator-network.md)
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 执行器约束 RL 把③层执行器能力边界直接写进策略训练
 
 ## 推荐继续阅读
 

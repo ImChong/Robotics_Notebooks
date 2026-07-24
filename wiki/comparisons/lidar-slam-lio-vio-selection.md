@@ -15,6 +15,7 @@ related:
   - ../entities/rtabmap.md
   - ../formalizations/lie-group-rigid-body-motions.md
   - ../methods/lingbot-map.md
+  - ../methods/lidar-odometry-fusion.md
 sources:
   - ../../sources/repos/navigation_slam_autonomy_stack_catalog.md
   - ../../sources/repos/fast_lio.md
@@ -91,7 +92,7 @@ flowchart TD
 
 ## 常见误区
 
-- **混淆里程计与 SLAM**：FAST-LIO 等偏 **odometry**；全局一致需回环/图优化模块或上层融合。
+- **混淆里程计与 SLAM**：FAST-LIO 等偏 **odometry**；全局一致需回环/图优化模块或上层融合（课程级 odom↔LiDAR 融合原理见 [里程计–激光融合定位](../methods/lidar-odometry-fusion.md)）。
 - **忽略 IMU 内参标定**：VIO/LIO 性能上限常由 **时间同步与 IMU 噪声** 决定，而非换算法。
 - **在 Lie 群上乱线性化**：位姿估计与优化宜在 **SE(3)** 上处理，参见 [李群刚体运动](../formalizations/lie-group-rigid-body-motions.md)。
 
@@ -120,6 +121,7 @@ flowchart TD
 - [导航·SLAM·自动驾驶栈总览](../overview/navigation-slam-autonomy-stack.md)
 - [Navigation2](../entities/navigation2.md)
 - [LingBot-Map](../methods/lingbot-map.md) — 学习型流式建图对照
+- [里程计–激光融合定位](../methods/lidar-odometry-fusion.md) — 课程级 odom↔LiDAR 融合概念，本页是其开源实现（FAST-LIO/LIO-SAM 等）选型落地
 
 ## 推荐继续阅读
 

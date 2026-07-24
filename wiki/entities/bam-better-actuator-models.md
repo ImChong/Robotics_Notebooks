@@ -12,6 +12,7 @@ related:
   - ../methods/actuator-network.md
   - ./sage-sim2real-actuator-gap-estimator.md
   - ../queries/sim2real-gap-reduction.md
+  - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/repos/rhoban_bam.md
   - ../../sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md
@@ -93,6 +94,7 @@ flowchart LR
 - [扩展摩擦论文实体](./paper-bam-extended-friction-servo-actuators.md)
 - [Sim2Real](../concepts/sim2real.md)、[System Identification](../concepts/system-identification.md)
 - [Actuator Network](../methods/actuator-network.md)、[SAGE](./sage-sim2real-actuator-gap-estimator.md)
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — BAM 是③层显式摩擦辨识路线的代表框架
 
 ## 推荐继续阅读
 

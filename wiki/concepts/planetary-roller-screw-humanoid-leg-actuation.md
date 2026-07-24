@@ -10,6 +10,7 @@ related:
   - ../entities/boston-dynamics.md
   - ./sim2real.md
   - ../concepts/humanoid-parallel-joint-kinematics.md
+  - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/blogs/wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md
 summary: "人形腿部用行星滚柱丝杠（PRS）把电机旋转转为直线推力、再经连杆映射为关节角，是在负载/自锁/布置与力控路径上偏向「工业实用主义」的一类执行器路线，与高动态全旋转关节路线形成典型权衡。"
@@ -86,6 +87,7 @@ flowchart LR
 - [人形机器人并联关节解算](./humanoid-parallel-joint-kinematics.md)：闭链踝/膝在仿真与控制上的接口注意点。
 - [Sim2Real](./sim2real.md)：执行器非线性与摩擦对迁移的影响。
 - [Query：人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)：在多种路线间做决策时的检查清单入口。
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 行星滚柱丝杠是①层执行器传动机构（线性执行器）的一种选型方案
 
 ## 推荐继续阅读
 

@@ -1,13 +1,44 @@
 {
   "generated_at": "2026-07-23",
-  "node_count": 1802,
-  "edge_count": 15047,
+  "node_count": 1805,
+  "edge_count": 15099,
   "coverage": {
-    "covered": 1750,
-    "total": 1779,
+    "covered": 1753,
+    "total": 1782,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/comparisons/mobile-robot-navigation-planning-methods.md",
+      "detail_id": "wiki-comparisons-mobile-robot-navigation-planning-methods",
+      "label": "移动机器人导航规划方法对比：全局搜索 · 局部避障 · 路径平滑",
+      "type": "comparison",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/queries/soccer-visual-field-localization-pipeline.md",
+      "detail_id": "wiki-queries-soccer-visual-field-localization-pipeline",
+      "label": "足球机器人视觉场线定位流水线",
+      "type": "query",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/queries/humanoid-voice-interaction-pipeline.md",
+      "detail_id": "wiki-queries-humanoid-voice-interaction-pipeline",
+      "label": "人形语音交互流水线：唤醒→ASR→LLM→技能/VLN→TTS 可打断闭环",
+      "type": "query",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/generative-motion-rig.md",
       "detail_id": "entity-generative-motion-rig",
@@ -180,59 +211,31 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/humanoid-system-curriculum.md",
-      "detail_id": "entity-humanoid-system-curriculum",
-      "label": "人形机器人系统学习策展（G1 → 导航 → 足球 → 大模型）",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/methods/a-star.md",
-      "detail_id": "wiki-methods-a-star",
-      "label": "A* 全局路径规划",
-      "type": "method",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "roadmap/depth-teleoperation.md",
-      "detail_id": "roadmap-depth-teleoperation",
-      "label": "路线（纵深）：如果目标是遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）",
-      "type": "roadmap_page",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/generative-motion-rig.md",
-    "detail_id": "entity-generative-motion-rig",
-    "label": "Generative Motion Rig（Disney）：艺术家驱动的生成式运动绑定",
-    "type": "entity",
+    "path": "wiki/comparisons/mobile-robot-navigation-planning-methods.md",
+    "detail_id": "wiki-comparisons-mobile-robot-navigation-planning-methods",
+    "label": "移动机器人导航规划方法对比：全局搜索 · 局部避障 · 路径平滑",
+    "type": "comparison",
     "recency": "2026-07-23",
     "source": "log.md",
-    "action": "added",
-    "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    "action": "maintained",
+    "has_repo": true,
+    "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 338
-    },
-    {
-      "label": "人形论文深读笔记",
-      "size": 211
+      "size": 354
     },
     {
       "label": "仿真到现实",
-      "size": 176
+      "size": 198
+    },
+    {
+      "label": "人形论文深读笔记",
+      "size": 177
     },
     {
       "label": "移动操作",

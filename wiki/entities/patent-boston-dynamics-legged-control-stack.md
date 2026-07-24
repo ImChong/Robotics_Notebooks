@@ -16,6 +16,7 @@ related:
   - ./paper-spot-rl-distributional-sim2real.md
   - ./paper-autonomous-spot-nebula-exploration.md
   - ./patent-tesla-robot-knee-joint-assembly.md
+  - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/patents/boston_dynamics_legged_robot_patents.md
 summary: "Boston Dynamics 五件足式机器人专利：在线/非线性轨迹优化、关节电机—驱动一体化、机内数据路由与液压执行器，勾勒模型驱动运控与硬件集成栈。"
@@ -89,6 +90,7 @@ flowchart TB
 - [Spot RL 分布距离 Sim2Real](./paper-spot-rl-distributional-sim2real.md)
 - [Autonomous Spot / NeBula](./paper-autonomous-spot-nebula-exploration.md)
 - [Tesla 膝关节专利](./patent-tesla-robot-knee-joint-assembly.md)
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 该腿式控制栈专利覆盖执行器闭环，是驱动链④层实时集成的工业参照
 
 ## 参考来源
 
