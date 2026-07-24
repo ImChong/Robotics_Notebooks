@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, imitation-learning, reinforcement-learning, transformer, dagger, scaling-law, zero-shot, unitree-g1, cvpr2026, galbot, tsinghua]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-24
 arxiv: "2606.03985"
 venue: "CVPR 2026"
 code: https://github.com/GalaxyGeneralRobotics/Humanoid-GPT
@@ -171,6 +171,16 @@ sequenceDiagram
 
 - **当前可复现边界**：推理/部署已开源；端到端训练数据与脚本以仓库 TODO 为准。
 - **与 SONIC 对照**：同为跟踪基础策略，接口与数据格式不同，勿混用 checkpoint。
+
+## 结论
+
+**同时拉高敏捷与零样本泛化，靠的是「约 2B 帧 + HME 分簇专家 + 因果 Transformer 蒸馏」；同数据量下 MLP/TCN 增益会饱和。**
+
+1. **规模数字要成套读** — 语料约 **20 亿帧**（相对常见 7.2M–100M 约 **20×–200×**）；HME 聚成约 **300** 簇、每簇训 PPO expert，再并行 DAgger 蒸馏为单一 GPT 式 tracker。
+2. **仿真 held-out 可读** — Humanoid-GPT-L @ 2B：SR **92.58%**，MPJPE **0.0735**，MPKPE **40.99 mm**；同 2B 下 TCN-L SR **89.05%**、MPKPE **56.15 mm**——结构升级有增量。
+3. **数据与模型 scaling 都重要** — 小模型从 2M→20M tokens SR/MPKPE 持续改善；同 2B 数据下更大 Transformer 再抬 SR；**小数据大模型会过拟合**（2M 时 MLP-L 弱于 MLP-S）。
+4. **多样性与平衡缺一不可** — 仅多样性易过拟合高频模式；仅平衡限制能力上界；HME 的 gstd / log-volume 用于量化 latent 多样性。
+5. **部署与开源边界** — ONNX + TensorRT 在 RTX 4090 **<1.5 ms**；推理/评测/真机部署与 checkpoint 已开，**2B 训练数据与完整训练管线**仍未开源。主证据绑定 G1 平地、无显式物体交互。
 
 ## 常见误区或局限
 

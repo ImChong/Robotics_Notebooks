@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, locomotion, fall-recovery, unitree-g1, isaac-lab, ppo, sim2real, lafan1, hku]
 status: complete
-updated: 2026-07-22
+updated: 2026-07-24
 arxiv: "2605.18611"
 related:
   - ../overview/humanoid-amp-motion-prior-survey.md
@@ -135,6 +135,17 @@ $g_z$ 为投影重力 $z$ 分量；阈值落在经验分布低占用区，作者
 ## 实验与评测
 
 - 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+
+## 结论
+
+**真正重要的是训练期按跌倒态切换两套 AMP 先验；部署期无门控、无需 mode 命令，三条 LAFAN1 参考换的是先验分离而非数据规模神话。**
+
+1. **门控只在训练选判别器** — \(|g_z+1|>0.6\)（约倾角 **~37°**）路由到 \(D^{\mathrm{rec}}\)，否则走速度条件 \(D^{\mathrm{loco}}\)；推理 ONNX **不读** \(g_z\)，策略已内化。
+2. **单 locomotion 判别器覆盖全速域** — \(\hat{v}_t\) 在 walk/run clip 间混合采样，不必为走/跑各训一套判别器。
+3. **无需单独 recovery 训练阶段** — 跌倒转移持续进 \(D^{\mathrm{rec}}\)，与走跑共享同一 actor。
+4. **速度域要当安全开关读** — 正常约 \([-0.5,1.0]\) m/s；快速约 \([-1.5,3.0]\) m/s 是操作员显式启用，不是行为 mode ID。
+5. **三条参考 ≠ 能力上限** — 主张是先验分离；换平台仍需 retarget 与任务奖励调参。
+6. **别与 Selective AMP 混名** — Selective 按步态周期/高动态决定是否加 AMP；SD-AMP 按是否跌倒切换**不同判别器**；`AMP_mjlab` 是单判别器工程对照，非官方实现。
 
 ## 与其他工作对比
 

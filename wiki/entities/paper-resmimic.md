@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, motion-tracking, residual-learning, reinforcement-learning, ppo, gmt, sim2real, unitree-g1, amazon-far, whole-body]
 status: complete
-updated: 2026-07-22
+updated: 2026-07-24
 arxiv: "2510.05070"
 code: https://github.com/amazon-far/ResMimic
 related:
@@ -151,6 +151,16 @@ sequenceDiagram
 
 - **站在通用 tracker 上**：残差专攻全身 loco-manipulation，不替代底层 GMT。
 - **checkpoint 以 WandB run 为索引**，本地路径以脚本为准。
+
+## 结论
+
+**全身 loco-manipulation 上，真正拉动成功率的是「冻结/复用 GMT 先验 + 轻量残差」；GMT 直出、从头 PPO、GMT 微调三条基线都远不够。**
+
+1. **sim-to-sim 均值 SR 对照（Table I）** — ResMimic **92.5%**（约 **1300** iter）vs GMT 直出 **10%**、从头训练 **0%**（MuJoCo 全崩）、GMT 微调 **7.5%**——残差分解避免每条任务重学平衡与步态。
+2. **统一奖励三件套可跨任务复用** — 点云物体跟踪（免位姿权重调参）+ 链节接触奖励（躯干/髋/臂）+ 虚拟物体力课程（增益渐衰）稳定重物体与噪声参考早期训练。
+3. **残差末层小增益初始化** — 训练初 \(\Delta a\approx 0\)，动作 \(a=a_{\mathrm{gmt}}+\Delta a\)；项目页可视化显示腕关节 delta 幅度更大，与「物体交互主要由残差承担」一致。
+4. **真机载荷锚点** — G1 上跪姿抬箱、背载、蹲起托举、搬椅等；载荷约 **4.5–5.5 kg**，含随机初姿与外力扰动演示。
+5. **部署 gap 要认清** — 每条新技能仍需 Stage II 残差训练（非单策略零样本全任务）；训练/部分真机依赖 MoCap 级物体轨迹，与纯视觉估物仍有 gap。
 
 ## 常见误区或局限
 

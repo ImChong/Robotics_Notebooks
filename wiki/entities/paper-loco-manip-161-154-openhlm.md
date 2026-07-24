@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, loco-manip-contact-survey, humanoid, vla, teleoperation, whole-body-control, tsinghua, shanghai-pil, spirit-ai, unitree-g1]
 status: complete
-updated: 2026-07-22
+updated: 2026-07-24
 arxiv: "2606.22174"
 venue: "2026 · arXiv"
 code: https://github.com/OpenHLM-project/OpenHLM
@@ -181,6 +181,17 @@ sequenceDiagram
 | 训练入口 | `src/openpi4OpenHLM/scripts/train_pytorch.py` |
 | 部署入口 | `serve_policy.py` + `GR00T-…/scripts/deploy_stream.sh` |
 | 检查点示例 | `12tasks_*` / `20fruit-arrangement_*`（含 full-teleop / HuMI / stationary 变体） |
+
+## 结论
+
+**全身原生 loco-manipulation 的可证伪配方是：32-D 关节遥操作接口 → 机器人预训练 VLA → HuMI/stationary 异构共训。**
+
+1. **接口是前提** — 解耦 21-D / VR 三点 24-D 构造上无法覆盖踩踏板、蹲身穿架；只有 32-D 关节全身完成对照三任务全集。
+2. **预训练远强于适配技巧** — π₀.₅ 约 91.3% ≫ PaliGemma 59.6% ≫ random 41.7%；随机投影等人形适配单点翻转不是主瓶颈。
+3. **推理选多步 flow** — 优于 one-step / drifting（约 +20 task-progress），即使后者验证 MSE 可能更低。
+4. **异构共训降本** — held-out 从仅全身遥操作 36% 抬到 +HuMI 84% / +stationary 89%，接近全全身 oracle 96%。
+5. **系统级读数** — 长程果盘 87.5% @ 1.14 h demo，优于 GR00T N1.6 57.5% 与 Ψ₀ 48.8% @ 2.70 h；12 任务平均 progress >90%。
+6. **工程代价** — 开源码/数据/权重，但真机依赖 GR00T-WBC / TensorRT / VR 标定；户外结果偏定性，勿与 161 策展旧摘要等同。
 
 ## 局限与风险
 

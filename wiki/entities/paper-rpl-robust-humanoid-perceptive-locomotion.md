@@ -15,7 +15,7 @@ tags:
   - isaac-gym
   - amazon-far
 status: complete
-updated: 2026-07-21
+updated: 2026-07-24
 arxiv: "2602.03002"
 related:
   - ../tasks/stair-obstacle-perceptive-locomotion.md
@@ -143,6 +143,17 @@ flowchart TB
 | 相关索引仓 | [OpenDriveLab/WholebodyVLA](https://github.com/OpenDriveLab/WholebodyVLA)（资源列表，**非** RPL 可运行训练代码） |
 | RPL 官方训练/部署仓 | **未发现**独立可运行发布 |
 | 源码运行时序图 | **不适用**（无官方可复现入口） |
+
+## 结论
+
+**多向感知行走的关键不是「再训一个楼梯策略」，而是分地形特权专家 → 多视角深度蒸馏，并用 DFSV/RSM 显式扛非对称观测与未见窄地形。**
+
+1. **两阶段契约** — Stage 1 用 1.6 m×1.0 m 高程图分训坡/上下楼梯/垫脚石专家（FALCON 双智能体 + 末端力课程）；Stage 2 DAgger 焊成只看深度的统一下身策略。
+2. **真机相机数 ≠ 仿真最大视野** — 仿真可到 4 相机论证覆盖；G1 躯干仅前后位，部署 **\(N_{\mathrm{cam}}=2\)**（前后 ZED 2i）。
+3. **垫脚石上 2 相机可达专家级双向** — 单下视明显掉点；前后深度是双向/非对称地形的最低配置。
+4. **RSM / DFSV 看 OOD 而非蒸馏 MSE** — RSM 关键未见窄宽度；DFSV 关键非对称多视角（如前楼梯、后垫脚石）；损失相近不能保证泛化。
+5. **载荷是一等公民** — 末端力课程支撑蹲取/搬运 **2 kg** loco-manipulation，而非纯 locomotion 演示。
+6. **多深度仿真是成本瓶颈** — Warp 射线管线在 1024 env×L40S 约 **1.3–1.9 s/iter**，相对 IsaacSim Warp **约 5×**；自遮挡与噪声/延迟/dropout 一并建模。
 
 ## 常见误区或局限
 

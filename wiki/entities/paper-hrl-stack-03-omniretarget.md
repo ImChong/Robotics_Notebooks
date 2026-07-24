@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-retargeting, motion-control, interaction-mesh, loco-manipulation, data-generation, amazon-far, body-system-stack, icra-2026]
 status: complete
-updated: 2026-07-21
+updated: 2026-07-24
 arxiv: "2509.26633"
 venue: ICRA 2026
 summary: "OmniRetarget 用 interaction mesh + Sequential SOCP 硬约束生成交互保留的人形运动学参考，支持单演示增广与 holosoma 开源管线；下游 5 reward + 4 DR 无 curriculum 即可 G1 零样本实机 30 s parkour/loco-manipulation；PHP 等论文的原子技能重定向上游。"
@@ -145,6 +145,17 @@ sequenceDiagram
 - **Kinematic（Table II · OMOMO 物体）：** 相对 PHC/GMR，**穿透时长/深度、脚滑、接触保留**与下游 **RL 成功率**更优（PHC 成功率约 71%，GMR 约 51%）。
 - **增广：** 全增广集评估成功率 **79.1%** vs nominal **82.2%**；纯 DR 扰动物体效果差于 kinematic 增广。
 - **旗舰真机：** 4.6 kg 椅子搬运 → 0.9 m 攀台 → 跳下翻滚（**30 s**）；墙翻峰值角速度 **15 rad/s**。
+
+## 结论
+
+**交互保留的硬约束重定向比更炫的下游 RL 配方更决定成功率；kinematic 增广优于纯物体 DR，公开数据与论文规模要分开读。**
+
+1. **Interaction mesh + Sequential SOCP 硬约束是主杠杆** — SDF 非穿透、关节/速度界、stance 脚固定，相对 PHC/GMR 在穿透、脚滑、接触保留上更优，并抬高下游 RL 成功率（PHC 约 **71%**，GMR 约 **51%**）。
+2. **下游 RL 刻意极简仍能上真机** — DeepMimic 式 **5 reward + 4 DR、无 curriculum**，BeyondMimic 超参开箱即可；瓶颈在参考质量而非复杂课程。
+3. **kinematic 增广优于纯 DR** — 全增广集成功率 **79.1%** vs nominal **82.2%**（略降可接受）；纯 DR 扰动物体效果差于 kinematic 增广。
+4. **数据口径：论文 8+ h vs HF 公开 4.0 h** — 公开为 OMOMO+自采；LAFAN1 因许可需用 `holosoma_retargeting` 自行重定向。
+5. **真机旗舰读法** — 4.6 kg 椅搬运→0.9 m 攀台→翻滚约 **30 s**；墙翻峰值角速度 **15 rad/s**，验证交互保留轨迹可支撑高动态 WBT。
+6. **重定向与训练解耦** — 运动学轨迹是可复用资产（WandB 托管 ONNX），换 embodiment 主要改关键点对应与碰撞模型。
 
 ## 与其他工作对比
 

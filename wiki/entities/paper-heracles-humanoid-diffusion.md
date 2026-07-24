@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, diffusion, flow-matching, recovery, middleware, x-humanoid, body-system-stack]
 status: complete
-updated: 2026-07-21
+updated: 2026-07-24
 arxiv: "2603.27756"
 related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
@@ -114,6 +114,16 @@ flowchart TB
 ## 实验与评测
 
 - 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+
+## 结论
+
+**真正重要的是「状态条件改参考」分层：名义区近恒等保跟踪，OOD 区生成恢复；次要的是是否手调 tracking↔recovery 状态机。**
+
+1. **中间件不取代 tracker** — 只改写参考缓冲 \(\mathbf{m}'_t\)，物理可行性仍由底层 RL tracker 保证；不要当成直接出扭矩的 MDM。
+2. **残差轨迹统一恒等/生成** — \(\mathbf{p}_t\approx\mathbf{m}_t\) 时残差近 0（透传）；大偏差时残差编码多步协调恢复，避免把容量浪费在绝对坐标 identity 上。
+3. **闭环靠 successive replan** — 固定规划窗 + \(N_{\mathrm{exec}}\) 执行间隔；不要求单次预测整条跌倒–站起轨迹。
+4. **选型坐标** — 相对 [BFM](./paper-behavior-foundation-model-humanoid.md) 保留专用 tracker；相对 [SD-AMP](./paper-unified-walk-run-recovery-sdamp.md) 是 middleware+tracker 分层，而非单策略双判别器门控。
+5. **量化/消融读原文** — 本页评测节未抄表；仿真与真机数字以 PDF / 项目页为准。
 
 ## 与其他工作对比
 

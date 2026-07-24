@@ -1,5 +1,66 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-24] structural | Top-50 论文枢纽补齐「结论」— hub-rankings paper 榜 paper-* 全覆盖 + insert_paper_conclusion.py
+
+- **范围：** [`exports/hub-rankings.json`](exports/hub-rankings.json) `paper` 榜 Top-50 中全部 `wiki/entities/paper-*.md`（方法页 / 非 paper-* 实体不在「结论」政策内）
+- **工具：** [`scripts/insert_paper_conclusion.py`](scripts/insert_paper_conclusion.py)（评测节后、对比/局限前插入）
+- **格式：** 1 句总判 + 3–7 条可操作要点（对齐 [`schema/page-types.md`](schema/page-types.md)）
+- **补齐页面（含初批度排序遗漏、按官方 hub 榜补入的 5 页）：**
+  - [`wiki/entities/paper-behavior-foundation-model-humanoid.md`](wiki/entities/paper-behavior-foundation-model-humanoid.md)
+  - [`wiki/entities/paper-hrl-stack-03-omniretarget.md`](wiki/entities/paper-hrl-stack-03-omniretarget.md)
+  - [`wiki/entities/paper-unified-walk-run-recovery-sdamp.md`](wiki/entities/paper-unified-walk-run-recovery-sdamp.md)
+  - [`wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md`](wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md)
+  - [`wiki/entities/paper-twist2.md`](wiki/entities/paper-twist2.md)
+  - [`wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md`](wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md)
+  - [`wiki/entities/paper-masked-visual-actions.md`](wiki/entities/paper-masked-visual-actions.md)
+  - [`wiki/entities/paper-viral-humanoid-visual-sim2real.md`](wiki/entities/paper-viral-humanoid-visual-sim2real.md)
+  - [`wiki/entities/paper-bifrost-umi.md`](wiki/entities/paper-bifrost-umi.md)
+  - [`wiki/entities/paper-gigaworld-1-policy-evaluation.md`](wiki/entities/paper-gigaworld-1-policy-evaluation.md)
+  - [`wiki/entities/paper-heracles-humanoid-diffusion.md`](wiki/entities/paper-heracles-humanoid-diffusion.md)
+  - [`wiki/entities/paper-gmt.md`](wiki/entities/paper-gmt.md)
+  - [`wiki/entities/paper-amp-survey-08-more.md`](wiki/entities/paper-amp-survey-08-more.md)
+  - [`wiki/entities/paper-any2any-cross-embodiment-wbt.md`](wiki/entities/paper-any2any-cross-embodiment-wbt.md)
+  - [`wiki/entities/paper-loco-manip-04-oasis.md`](wiki/entities/paper-loco-manip-04-oasis.md)
+  - [`wiki/entities/paper-driftworld.md`](wiki/entities/paper-driftworld.md)
+  - [`wiki/entities/paper-simfoundry-real2sim-scene-generation.md`](wiki/entities/paper-simfoundry-real2sim-scene-generation.md)
+  - [`wiki/entities/paper-trex-tactile-reactive-dexterous-manipulation.md`](wiki/entities/paper-trex-tactile-reactive-dexterous-manipulation.md)
+  - [`wiki/entities/paper-hrl-stack-34-gr00t_n1.md`](wiki/entities/paper-hrl-stack-34-gr00t_n1.md)
+  - [`wiki/entities/paper-bfm-zero.md`](wiki/entities/paper-bfm-zero.md)
+  - [`wiki/entities/paper-s-squared-vla.md`](wiki/entities/paper-s-squared-vla.md)
+  - [`wiki/entities/paper-faststair-humanoid-stair-ascent.md`](wiki/entities/paper-faststair-humanoid-stair-ascent.md)
+  - [`wiki/entities/paper-dreamsteer-vla-deployment-steering.md`](wiki/entities/paper-dreamsteer-vla-deployment-steering.md)
+  - [`wiki/entities/paper-egowam-egocentric-human-wam-co-training.md`](wiki/entities/paper-egowam-egocentric-human-wam-co-training.md)
+  - [`wiki/entities/paper-doorman-opening-sim2real-door.md`](wiki/entities/paper-doorman-opening-sim2real-door.md)
+  - [`wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md`](wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)
+  - [`wiki/entities/paper-humanoid-gpt.md`](wiki/entities/paper-humanoid-gpt.md)
+  - [`wiki/entities/paper-lehome-learning-to-fold.md`](wiki/entities/paper-lehome-learning-to-fold.md)
+  - [`wiki/entities/paper-resmimic.md`](wiki/entities/paper-resmimic.md)
+  - [`wiki/entities/paper-scenebot.md`](wiki/entities/paper-scenebot.md)
+  - [`wiki/entities/paper-tacrefinenet-tactile-grasp-refinement.md`](wiki/entities/paper-tacrefinenet-tactile-grasp-refinement.md)
+  - [`wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md`](wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md)
+  - [`wiki/entities/paper-humanoidarena.md`](wiki/entities/paper-humanoidarena.md)
+  - [`wiki/entities/paper-m4world.md`](wiki/entities/paper-m4world.md)
+  - [`wiki/entities/paper-perceptive-bfm.md`](wiki/entities/paper-perceptive-bfm.md)
+  - [`wiki/entities/paper-sprint-humanoid-athletic-sprints.md`](wiki/entities/paper-sprint-humanoid-athletic-sprints.md)
+  - [`wiki/entities/paper-oscar.md`](wiki/entities/paper-oscar.md)
+  - [`wiki/entities/paper-ctrl-world.md`](wiki/entities/paper-ctrl-world.md)
+  - [`wiki/entities/paper-grail.md`](wiki/entities/paper-grail.md)
+  - [`wiki/entities/paper-reactivebfm.md`](wiki/entities/paper-reactivebfm.md)
+  - [`wiki/entities/paper-halomi-humanoid-loco-manipulation.md`](wiki/entities/paper-halomi-humanoid-loco-manipulation.md)
+  - [`wiki/entities/paper-infinite-diffusion-terrain-diffusion.md`](wiki/entities/paper-infinite-diffusion-terrain-diffusion.md)
+  - [`wiki/entities/paper-neuralactuator-neural-actuation-modeling.md`](wiki/entities/paper-neuralactuator-neural-actuation-modeling.md)
+  - [`wiki/entities/paper-pilot-perceptive-loco-manipulation.md`](wiki/entities/paper-pilot-perceptive-loco-manipulation.md)
+  - [`wiki/entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md`](wiki/entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md)
+  - [`wiki/entities/paper-mpc-rl-humanoid-locomotion-manipulation.md`](wiki/entities/paper-mpc-rl-humanoid-locomotion-manipulation.md)
+  - [`wiki/entities/paper-omg-omni-modal-humanoid-control.md`](wiki/entities/paper-omg-omni-modal-humanoid-control.md)
+  - [`wiki/entities/paper-worldvln-aerial-vln-wam.md`](wiki/entities/paper-worldvln-aerial-vln-wam.md)
+  - [`wiki/entities/paper-agentic-real2sim.md`](wiki/entities/paper-agentic-real2sim.md)
+  - [`wiki/entities/paper-twist.md`](wiki/entities/paper-twist.md)
+  - [`wiki/entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md`](wiki/entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md)
+  - [`wiki/entities/paper-loco-manip-161-154-openhlm.md`](wiki/entities/paper-loco-manip-161-154-openhlm.md)
+  - [`wiki/entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md`](wiki/entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md)
+  - [`wiki/entities/paper-amp-survey-15-physhsi.md`](wiki/entities/paper-amp-survey-15-physhsi.md)
+
 ## [2026-07-24] ingest | sources/papers/aware_arxiv_2604_23761.md — AWARE（arXiv:2604.23761）轮足高动态反射式避障；wiki/entities/paper-aware-wheeled-legged-reflexive-evasion.md；交叉 wheel-legged / hybrid-locomotion / HRL / MUJICA / sim2real；确认未开源
 
 - **开源状态：** **确认未开源** — 无项目页；arXiv abs/HTML/API 未列 GitHub；作者主页未列 AWARE 仓

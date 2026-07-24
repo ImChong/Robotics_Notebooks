@@ -187,6 +187,17 @@ sequenceDiagram
 - **N1 论文机制 vs N1.5+ 工程**：本时序对应当前 Isaac-GR00T 发布栈；版本号以模型卡为准。
 - **全身低层**常再接 [SONIC / GR00T-WholeBodyControl](../methods/sonic-motion-tracking.md)。
 
+## 结论
+
+**通才人形 VLA 的工程杠杆是数据金字塔共训练 + 跨具身动作接口；System 2 理解与 System 1 的 ~120 Hz action chunk 解耦，不自动替代底层 WBC。**
+
+1. **真机数据效率** — GR-1 四类桌面任务：全量 **76.8%**；仅 **10%** 数据仍 **42.6%**，接近 Diffusion Policy 全量 **46.4%**（DP 10% 仅 10.2%）。
+2. **仿真后训练** — 每任务 100 demo 平均成功率 **45.0%**（RoboCasa/DexMG/GR-1 Tabletop），高于 DP **33.4%** 与 BC-Transformer **26.4%**。
+3. **预训练已有泛化** — 双手递送后放置 **76.6%**；未见物体放入未见容器 **73.3%**（预训练 checkpoint）。
+4. **合成数据怎么用** — 神经轨迹约 **10×** 反事实扩增，后训练可与真机 **1:1** 共采样；低数据区约额外 **+4%～+9%**。
+5. **实现细节** — VLM 取第 **12** 层隐状态（较末层更快且下游更高）；DiT flow-matching \(H=16\)、推理 \(K=4\)；每 embodiment 独立 state/action MLP。
+6. **后训练风险** — 仅右手数据微调可能洗掉预训练双手递送等能力；当前主覆盖短视界桌面操作，长视界 loco-manip 仍属后续。
+
 ## 常见误区
 
 1. **VLA 条目解决接口与预测，不自动替代底层 WBC** — 真机执行仍依赖 Fourier GR-1 全身 IK / 控制栈；高层策略与低层运控需分层验证（见 [gr00t-wholebodycontrol](../entities/gr00t-wholebodycontrol.md)）。

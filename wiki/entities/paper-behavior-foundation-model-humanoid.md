@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, foundation-policy, cvae, generative-policy, masked-control, dagger, privileged-training, ppo, unitree-g1, isaac-gym, amass, shanghai-ai-lab, pku, motion-tracking, teleoperation, locomotion]
 status: complete
-updated: 2026-07-22
+updated: 2026-07-24
 arxiv: "2509.13780"
 venue: "TPAMI 2025"
 related:
@@ -181,6 +181,17 @@ $$
 
 - 与 specialist 平均持平或略优；相对 **同模型从零 RL**（不预训练）则在所有任务上显著领先 → **支持 BFM 的预训练价值**。
 - HOVER 在固定模式上有竞争力，但 BFM 因 **位级掩码 + 生成式潜空间** 对 **任意 mode 组合** 更稳健。
+
+## 结论
+
+**统一多接口 WBC 的关键是位级掩码 + 生成式潜空间；相对 specialist 的跟踪数字优势不大，相对从零 RL 的预训练价值才是主收益。**
+
+1. **掩码切换接口，不必为每种 mode 重写 reward** — 根/关节/关键点目标用二值位任意组合；推理只换掩码即可接 VR、摇杆或 tracking。
+2. **跟踪精度与 specialist 基本持平或略优** — AMASS Test 上 tracking E_mpjpe **0.2226** vs specialist **0.2247**；VR teleop E_mpjpe **0.2235** vs **0.2555**，优势更明显。
+3. **相对同模型从零 RL 全面领先** — 表中 RL from Scratch「显著更差」是支持 BFM 预训练价值的主证据，不要只盯 specialist 的毫米级差距。
+4. **冷启动 curriculum 先满信息再缺信息** — mask Bernoulli 概率从 **1.0 退火到 0.5**，先稳住「全目标」baseline 再学缺失条件。
+5. **潜空间运算换行为组合，残差解码器换稀有技能** — \(z\) 线性插值可得未见组合；classifier-free 调制（Butterfly Kick \(\lambda\approx0.5\)）抬跟踪；冻结主干只训 \(\Delta a\) 比从零 RL 更快适配 Side Salto。
+6. **定位是低层 WBC 先验，不是 VLA** — 无语言/视觉条件；上层仍需给 mode 与目标；proxy 教师本身仍要 PPO + 工程。
 
 ## 与其他工作的关系
 

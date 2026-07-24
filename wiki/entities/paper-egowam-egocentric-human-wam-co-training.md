@@ -12,7 +12,7 @@ tags:
   - georgia-tech
 status: complete
 venue: curated
-updated: 2026-07-23
+updated: 2026-07-24
 related:
   - ../concepts/world-action-models.md
   - ../methods/imitation-learning.md
@@ -108,6 +108,16 @@ flowchart TB
 | **对齐消融** | 未对齐人数据：**BC 20% < robot-only 40%**；**3D Flow 75%**；对齐：**3D Flow 85%** |
 | **表征** | UMAP：**BC** 人机分簇 → **WAM（3D Flow）** 共享嵌入空间 |
 | **数据生态** | 野外人数据来自 **EgoVerse** 生态（见 [HumanNet 对比表](../comparisons/humannet-table1-human-video-corpora.md) 中的 EgoVerse 行） |
+
+## 结论
+
+**野外 egocentric 人数据能否变增益，取决于世界预测目标空间（Pixel / DINO / 3D flow），而不是「加更多人视频 + BC」本身。**
+
+1. **BC 人–机共训可负迁移** — 故意未对齐人数据时，BC 可跌至 **20%**（低于 robot-only **40%**）；同设定下 **3D-Flow WAM 仍 75%**，对齐数据上达 **85%**。
+2. **世界表征分工明确** — **DINO** 驱动 OOD 物体/场景（最高约 **4×** 相对 BC）；**3D motion flow** 带来域内约 **+20–30%**；**Pixel** 在本设定下迁移弱。
+3. **受控消融只换世界头** — 固定 HPT 骨干、动作头（flow matching）与三源数据配方；推理时世界头关闭，只走动作路径。
+4. **有效世界目标三判据** — 抽象外观、跨具身一致的物理效应、分离 ego-motion 与环境变化；UMAP 显示 WAM（3D Flow）使人机嵌入由分簇变为共享。
+5. **选型对照** — 相对 [EgoScale](../methods/egoscale.md) 的显式腕–手动作预训练，EgoWAM 靠未来状态预测对齐跨具身表征；截至 ingest arXiv/代码尚未公开，任务规模为三项双臂真机。
 
 ## 常见误区或局限
 

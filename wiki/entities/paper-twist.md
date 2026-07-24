@@ -4,7 +4,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model, teleoperation, sfu, stanford]
 status: complete
-updated: 2026-07-22
+updated: 2026-07-24
 arxiv: "2505.02833"
 venue: "2025 · CoRL"
 code: https://github.com/YanjieZe/TWIST
@@ -137,6 +137,17 @@ sequenceDiagram
 
 - 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
 - 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+
+## 结论
+
+**全身遥操作要控整具身体，而不是「底盘 + 双臂」拼装；参考质量上限往往早于 RL 策略。**
+
+1. **问题设定** — 腰、腿、手臂、头部与重心互相耦合；一边走一边伸手/转身操作时，身体协调本身就是任务一部分。
+2. **数据路径** — 动捕全身动作 → 重定向 + RL 控制器，目标是真实任务里的全身操作、腿式操作、移动与表达性动作，而非只「姿态像人」。
+3. **栈定位** — 在 RL 身体系统栈属「01 数据·重定向·遥操作」；在 BFM 地图属 Goal-conditioned 学习，强调遥操作作为持续数据生产方式。
+4. **复现入口** — 官方仓 `train_teacher.sh` → `train_student.sh` → `to_jit.sh`；高低层经 Redis 同构，sim/real 只换低层 server。
+5. **工程误区** — 不要把重定向/遥操作当成训练前脚本；后继全栈见 TWIST2。
+6. **量化口径** — 本页为策展编译；benchmark / 消融 / 实机指标以原文 PDF 与项目页为准。
 
 ## 与其他页面的关系
 

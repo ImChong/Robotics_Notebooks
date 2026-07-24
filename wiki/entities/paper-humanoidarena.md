@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, benchmark, humanoid, hierarchical-control, egocentric, loco-manipulation, imitation-learning, vla, hkust-gz, bjut, hit, smsu-bit, jd, unitree-g1]
 status: complete
-updated: 2026-07-22
+updated: 2026-07-24
 arxiv: "2606.17833"
 venue: "2026 · arXiv"
 code: https://github.com/William-wAng618/HumanoidArena
@@ -134,7 +134,6 @@ flowchart TB
 ```
 
 ## 开源状态（2026-07-22）
-
 | 产物 | 状态 |
 |------|------|
 | 代码 | [William-wAng618/HumanoidArena](https://github.com/William-wAng618/HumanoidArena) · MIT · 分支 `release/open-source-prep` |
@@ -176,6 +175,17 @@ sequenceDiagram
 - **Tracker 条件化：** 同一高层在不同 GMT 下性能差异大——**低层选择不是可忽略实现细节**。
 - **跨 GMT 脆弱：** Cross-GMT 显示 **中间全身动作表征** 尚不能无缝在 TWIST2 与 SONIC 间迁移——基准价值在于暴露 **可转移表征** 研究空白。
 - **扰动分解：** Vision / Semantic / Execution 轴可定位失败来自 **感知、语义 grounding 还是执行几何**，而非单一成功率数字。
+
+## 结论
+
+**基准价值在诊断「中间全身动作是否可执行、可跨 GMT 迁移」，而不是再刷一个端到端任务成功率榜。**
+
+1. **分层接口是一等公民** — 高层输出 **40D** 中间全身动作，低层 GMT（TWIST2 / SONIC）执行；共享上游 **35D** GMR 参考，便于对照不同低层动力学。
+2. **腿足结构必要** — 7 项 HOI/HSI（踢球、跨台搬运、蹲放、开门、坐沙发、蹲击、视觉导航）强制落脚、平衡与全身转向，避免把下肢当平面运输。
+3. **低层选择不可忽略** — 同一高层在不同 GMT 下性能差异大；tracker 条件化是主效应，不是实现细节。
+4. **Cross-GMT 仍脆弱** — 中间动作表征尚不能无缝在 TWIST2↔SONIC 间迁移，暴露可转移表征研究空白。
+5. **扰动轴要分开报** — Base / Semantic / Vision / Execution 分别定位语义 grounding、视觉鲁棒与执行几何敏感性，勿压成单一成功率。
+6. **复现路径已闭环** — 代码/LeRobot 数据/模型已开源；multicam 仍待发布；主叙事是仿真优先，真机 sim2real 非主轴。
 
 ## 常见误区或局限
 

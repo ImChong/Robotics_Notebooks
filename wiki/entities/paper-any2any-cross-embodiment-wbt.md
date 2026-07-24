@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-tracking, cross-embodiment, lora, peft, sonic, limx, unitree-g1, isaac-lab]
 status: complete
-updated: 2026-07-17
+updated: 2026-07-24
 arxiv: "2605.23733"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
@@ -103,6 +103,16 @@ flowchart LR
 ## 实验与评测
 
 - 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+
+## 结论
+
+**跨具身 WBT 的主杠杆是运动学接口对齐 + 动力学敏感层 LoRA，不是从头重烧亿级 MoCap；页内口径约 1% 全量预训练成本即可迁到新机。**
+
+1. **先对齐、再微调** — Level-1 观测语义重排 + Level-2 \(\Phi_r\)（散射/髋解耦/闭链 Jacobian）让冻结骨干始终在同一「语义关节」坐标读写，结构性 gap 不消耗行为先验容量。
+2. **LoRA 学 \(\Delta\eta\) 残差，勿默认全参更好** — 全参易覆盖源机平衡与协调先验；实验偏 Action Decoder 等动力学敏感模块插 \(W'=W+BA\)。
+3. **迁移设定** — 5 组 source→target（Oli/Luna/G1/H1 等）；可从 Oli-WBT 或 Gear-SONIC 骨干迁到 LimX / Unitree，含跨厂商 Sonic→Oli/Luna。
+4. **对齐 ≠ 轨迹 retarget** — \(\Phi_r\) 解决控制接口，MoCap 几何仍走既有 [GMR](../methods/motion-retargeting-gmr.md) 等管线；闭链与髋轴必须进 \(J_r,D_r\)。
+5. **不是零样本任意机** — 仍需目标机少量跟踪数据与正确关节映射；定量消融与真机表见原文 PDF。
 
 ## 与其他工作对比
 

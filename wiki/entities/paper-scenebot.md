@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, contact-rich, loco-manipulation, scene-interaction, reinforcement-learning, unitree-g1, amazon-far, stanford, cmu]
 status: complete
-updated: 2026-07-06
+updated: 2026-07-24
 arxiv: "2606.27581"
 venue: "2026 · arXiv"
 summary: "SceneBot（arXiv:2606.27581）以 per-link contact label 将自由空间、地形与全身物体操作统一到单一 PPO motion tracker；hindsight scene reconstruction 从 retarget 运动反推交互图并合成场景资产，7.5 小时数据上自由空间媲美 SONIC、场景交互显著领先。"
@@ -114,6 +114,16 @@ flowchart TB
 | 地形交互 | ✗ | ✗ | ✓ | ✗ | ✓ |
 | 物体交互 | ✗ | ✗ | ✓ | ✓ | ✓ |
 | **单策略同时三项** | ✗ | ✗ | ✗ | ✗ | **✓** |
+
+## 结论
+
+**通才 tracker 要跨进接触丰富场景，真正重要的是 per-link contact label + hindsight 场景重建；自由空间 scaling  alone 填不了物体/地形物理歧义。**
+
+1. **相对 SONIC 的 sim-to-sim 对照（各 20 关键）** — free-space 同级（SR 均 **100%**）；object **95% vs 5%**，terrain **100% vs 15%**，sit **100% vs 0%**——接触条件化拉开的是交互轴，不是平地跟踪。
+2. **全局根状态必要** — 无全局根位姿/线速度时，terrain 成功率 **100%→45%**，object **95%→20%**；真机用 SuperOdometry + 骨盆 IMU（相对 mocap 位置误差约 **0.032 m**）。
+3. **手部 contact label 不可省** — 无手部标签训练时物体抓取成功率近零；\(c_t\) 只定义在机器人侧 link，不绑定具体物体 mesh，高层可用规则/规划/遥操作生成。
+4. **数据引擎约 7.5 小时** — 从无场景上下文的人体运动反推 interaction graph 并合成 2.5D 地形与平行板物体；相对 scene-aware retarget，论文主张重建场景更利于 RL 收敛。
+5. **仍是低层 tracker** — 部署自由空间可令 \(c_t\equiv 0\)；不是端到端视觉 loco-manip policy。代码/数据截至入库日未开源。
 
 ## 常见误区或局限
 

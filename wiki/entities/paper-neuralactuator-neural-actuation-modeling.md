@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, sim2real, actuator, differentiable-simulation, force-estimation, transformer, servo, dynamixel, openmanipulator, lerobot, mit]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-24
 arxiv: "2607.11734"
 code: https://github.com/Frank-ZY-Dou/Dynamics-Modeling/tree/main/NeuralActuator
 related:
@@ -114,6 +114,17 @@ flowchart TB
 | **BC（40 trials）** | Pick-place **92.5%** vs **80%**；Go up-stay **95%** vs **85%** |
 | **跨平台** | SO-101 rollout+force；Franka **仅离线** 载荷 $f_z$ MAE **~0.28 N @500** |
 | **架构消融** | vs MLP/GRU/LSTM（同 ~1.4M 参数），Transformer Force **0.23 N** 最优 |
+
+## 结论
+
+**低成本舵机上，真正拉开差距的是「DiffSim 监督的 torque surrogate + 无 F/T 力/门控联合学习」；别把 surrogate 当成校准物理力矩。**
+
+1. **力估计相对经典 ID 基线数量级下降** — 力基线 avg：ID-Linear **1.41 N** → NeuralActuator **0.12 N**；力传感器测试 Force MAE **0.23 N**。
+2. **无载 rollout 可用** — 无载 @600 关节 MAE 约 **3.1°**，gripper slide **0.2 mm**；载荷测试 Force MAE avg **0.11 N**。
+3. **下游 BC 有增益** — 40 trials：pick-place **92.5% vs 80%**，go up-stay **95% vs 85%**（冻结模型提供 \(\hat f\)）。
+4. **架构选择有消融支撑** — 同约 1.4M 参数下 Transformer Force **0.23 N** 优于 MLP/GRU/LSTM。
+5. **推理满足实时控制** — GPU 约 **0.25 ms** mean / **4019 Hz**（batch=1），覆盖 **60 Hz** 控制环。
+6. **读数边界** — Franka 仅为离线载荷 \(f_z\)（MAE 约 **0.28 N @500**），非在线动力学；condition 头是 Joint 3 rubber-band 二分类（Acc **91.0%** / AUC **0.95**），不是通用故障诊断。
 
 ## 与其他路线对比
 

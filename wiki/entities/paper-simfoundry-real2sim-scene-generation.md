@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, manipulation, real2sim, sim2real, scene-generation, digital-twin, digital-cousin, policy-evaluation, nvidia, gear, droid, isaac-lab, 3dgs, vla]
 status: complete
-updated: 2026-07-23
+updated: 2026-07-24
 arxiv: "2606.28276"
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
@@ -131,6 +131,16 @@ flowchart TB
 - **Real-to-sim 排序一致性：** 7 任务 × 5 策略族（π₀、π₀.₅、GR00T、DreamZero 等）上仿真↔真机 **均值 Pearson r=0.911、MMRV=0.018**，较 PolaRiS 平均高约 0.59。
 - **Cousins 增益：** object / scene / task cousins 分别约 **+17% / +21% / +40%** 平均任务成功率；π₀.₅-base 在 7 个 held-out 任务 **0%→29%**。
 - **Sim-to-real 训练：** YAM Pot on Stove **99%**、DROID Stack Dishware **100%**；π₀.₅-DROID 13 任务 **28%→46%**。
+
+## 结论
+
+**同一套视频孪生既要能给策略排序，也要能训出可零样本上真机的策略；digital cousins 是语义/affordance 级扩增，不是简单 pose 噪声。**
+
+1. **Real-to-sim 排序可信** — 7 任务 × 5 策略族上仿真↔真机均值 Pearson **r=0.911**、MMRV **0.018**，较 PolaRiS 平均约高 **0.59**；子任务拆分可把相关从约 0.90 提到 0.95。
+2. **Cousins 增益分层读** — object / scene / task 分别约 **+17% / +21% / +40%** 平均任务成功率；π₀.₅-base 在 7 个 held-out 任务 **0%→29%**。
+3. **Sim-to-real 可操作点** — 仅 SimFoundry 数据：YAM Pot on Stove **99%**、DROID Stack Dishware **100%**；少量 real co-train 如 Store Marker **60%→92%**（π₀.₅）。
+4. **管线不是零人工** — 全自动 F1 约 **0.81–0.92**；每物体约 **3 分钟** 微调可到 **0.93–0.99**，要把编辑预算算进 SLA。
+5. **高 Pearson ≠ 训练免费午餐** — 排序可信后，未见物体/布局仍常需 cousins 或少量真机 demo；截至入库项目页未挂公开仓库。
 
 ## 常见误区或局限
 

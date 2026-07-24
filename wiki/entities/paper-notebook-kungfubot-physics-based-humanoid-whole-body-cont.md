@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, martial-arts, reinforcement-learning, unitree-g1, sim2real, teleai, sjtu, hit, shanghaitech, neurips-2025]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-24
 arxiv: "2506.12851"
 code: https://github.com/TeleHuman/PBHC
 venue: "NeurIPS 2025"
@@ -140,6 +140,17 @@ sequenceDiagram
 
 - **motion pipeline 与 policy pipeline 分离**：换重定向后端不必改训练脚本接口。
 - **URCI** 是统一机器人控制入口，仿真与真机靠 `+simulator=` 切换。
+
+## 结论
+
+**高动态 WBT 的关键不是固定 tracking factor，而是物理约束 motion 管线 + 按误差自适应的双层容差课程。**
+
+1. **参考先可行** — 提取–滤波–校正–重定向（GVHMR / Mink / PHC 等）尽量满足支撑相、脚滑抑制与动态一致性，再进 RL。
+2. **自适应课程** — 将可接受跟踪偏差写成双层优化变量，随当前误差放宽/收紧；项目页显示相对固定 factor 更稳、更接近各动作最优。
+3. **非对称 AC** — Critic 可用特权信息，Actor 仅部署可得观测；v1 侧重单技能高动态，多技能长序列见 KungfuBot 2。
+4. **评测读法** — 仿真上一致优于可部署基线、接近 oracle；G1 真机覆盖踢腿、旋子、太极、舞蹈等（根位姿真机不可测时实验固定原点）。
+5. **复现栈** — PBHC：`mink/phc_retarget` → IsaacGym `train_agent` → `urci.py` 切 MuJoCo/真机；注意 CC BY-NC，且仓内已混入 v2 模块勿混淆。
+6. **同域分工** — 相对 KungFuAthleteBot 的数据集+recovery，本文抓单技能高动态与自适应容差。
 
 ## 常见误区
 

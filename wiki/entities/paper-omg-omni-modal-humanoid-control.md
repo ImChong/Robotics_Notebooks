@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-generation, diffusion, dit, omni-modal, text-to-motion, audio-conditioned, motion-tracking, foundation-model, unitree-g1, tsinghua, mars-lab]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-24
 code: https://github.com/tsinghua-mars-lab/OMG
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
@@ -122,6 +122,17 @@ flowchart TB
 - **模型规模（已公布）：** OMG-DiT 提供 **50M–1B** 参数配置，文本 encoder 默认 **T5-base**。
 - **评测工具（待发布）：** 仓库规划 **OMG-Evaluator** benchmark 流程，但其依赖的 **OMG-Data 数据集与预训练权重** 标注 **coming soon（HF 待发布）**，因此目前**无法复现官方量化指标**。
 - **可验证证据：** 现阶段主要证据为项目页**一镜到底真机演示**（text / audio / human ref / 组合条件实时切换）与开源训练/推理/**G1 双机部署**代码，定量成功率/跟踪误差等指标需等官方 Evaluator 与权重发布后补录。
+
+## 结论
+
+**OMG 的可验证价值在「多模态生成器 + HoloMotion tracker」分层全栈与开源代码；定量 benchmark 与权重截至入库日仍待发布，勿当已复现的成功率论文读。**
+
+1. **生成器只出参考轨迹** — 物理可行性与高频控制由预训练 HoloMotion ONNX 承担；不是端到端 WBC，也不是「取代 tracker」。
+2. **条件与先验解耦** — 新接口主要通过轻量 encoder + cross-attention / FiLM / CFG 接入，复用运动先验；支持 text / audio / human ref / history 与运行时切换。
+3. **数据规模已公布、权重未齐** — OMG-Data 总处理 **1174.66 h**（文本 **1166.6 h** / 人体参考 **958.77 h** / 音频 **191.6 h**）；HF 数据与 checkpoint 标注 coming soon。
+4. **模型配置可操作** — OMG-DiT **50M–1B**；文本 encoder 默认 T5-base；推理走 ONNX→TensorRT/CUDA。
+5. **部署是双机算力分离** — Jetson Orin 跑 tracker+bridge，GPU 工作站跑 realtime diffusion planner，以保实时 omni-modal 闭环。
+6. **证据级别** — 现阶段主要是一镜到底真机演示与开源训练/部署代码；OMG-Evaluator 与官方量化指标待补录。
 
 ## 与其他工作对比（定性）
 

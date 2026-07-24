@@ -4,7 +4,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model, meta, cmu]
 status: complete
-updated: 2026-07-23
+updated: 2026-07-24
 arxiv: "2511.04131"
 venue: "2025 · arXiv"
 code: https://github.com/LeCAR-Lab/BFM-Zero
@@ -137,6 +137,16 @@ sequenceDiagram
 
 - 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
 - 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+
+## 结论
+
+**真正重要的是用 Forward-Backward 表征学统一 latent prompt 空间，让跟踪、目标姿态、奖励优化与恢复映射到同一行为条件；次要的是为每个任务单独训一套策略。**
+
+1. **行为 token 视角** — 上层不必直接出 29 个关节目标，而输出「向前走 / 低重心 / 恢复站立」一类身体意图的 latent \(z\)；策略以 \(z\) 为条件执行。
+2. **统一接口** — 无监督 RL 学共享行为空间后，运动追踪、目标姿态、奖励优化等任务都映射到同一 latent，再条件化执行。
+3. **工程复用** — 官方栈训练一次，推理按 `tracking` / `goal` / `reward` 切换；ONNX 导出把 Python 训练与仿真/真机部署解耦。
+4. **选型坐标** — 在 42 篇栈属参考跟踪·通用控制（#19），在 BFM 41 篇属 Forward-backward 表征（#01）；与「每技能一策略」的 mimic/tracking 路线对照读。
+5. **量化读原文** — 本页评测节未抄表；benchmark / 消融 / 真机数字以 PDF 与项目页为准，勿把参考分布内泛化外推到任意接触条件。
 
 ## 与其他页面的关系
 

@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, sim2real, visual-rl, loco-manipulation, teacher-student, dagger, ppo, unitree-g1, isaac-lab, cvpr2026, nvidia, cmu, berkeley, cuhk, body-system-stack]
 status: complete
-updated: 2026-07-22
+updated: 2026-07-24
 arxiv: "2511.15200"
 venue: "CVPR 2026"
 code: https://github.com/NVlabs/GR00T-VisualSim2Real
@@ -160,6 +160,17 @@ sequenceDiagram
 ## 实验与评测
 
 - 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+
+## 结论
+
+**机载视觉 loco-manip 的可迁移性取决于「特权教师 + 规模化蒸馏 + SysID/外参对齐」整条闭环；低并行度不是小超参问题，而是方法前提。**
+
+1. **真机主数字** — 连续试验 **59** 次中 **54** 次成功（约 **91.5%**）；同 HOMIE 底层下接近专家遥操作成功率且周期更短，显著优于非专家。
+2. **教师动作是 delta-WBC，不是从零力矩** — 对预训练 HOMIE 类 WBC 发平面速度/yaw/臂指增量，把稳定运动收口为安全 API。
+3. **学生用 DAgger∪BC 凸组合** — \(\alpha\) 默认 **0.5**：BC 快速 imprint，DAgger 覆盖学生自诱导分布，减轻复合误差。
+4. **RSI 缓解长时域探索** — 约 **200** 条仿真遥操作轨迹作 reset buffer，从演示快照初始化。
+5. **Sim2Real 三项要对齐** — 灵巧手 SysID（armature/刚度/阻尼）、相机外参 real-to-sim + 训练期随机化、材质/穹顶光等主项互补；全关随机化时成功率大幅下降。
+6. **算力是方法一部分** — 学生训练可达 **64 GPU** 量级与分块渲染；低并行度消融易失败；真机只部署视觉学生。
 
 ## 与其他工作对比
 

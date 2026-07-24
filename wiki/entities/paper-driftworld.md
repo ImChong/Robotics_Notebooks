@@ -11,7 +11,7 @@ tags:
   - mit
   - harvard
 status: complete
-updated: 2026-07-23
+updated: 2026-07-24
 arxiv: "2607.15065"
 related:
   - ../methods/generative-world-models.md
@@ -198,6 +198,17 @@ sequenceDiagram
 | 在线控制 | 用 chunk 自回归：预测末帧回灌策略再出下一动作块 |
 | 调试 | 先看动作跟随（夹爪是否动）再看背景；identity mapping 多为运动加权不足 |
 | 选型 | 需要 **大量提案 + 低延迟** 时优先于多步扩散 WM；需要跨具身骨架条件见 [OSCAR](./paper-oscar.md) |
+
+## 结论
+
+**世界模型能进控环，靠的是 drifting 单次前向（页内约 17× 快于扩散 WM），不是堆采样步；同骨干 1-step MSE baseline 仍明显更差。**
+
+1. **速度预算** — H100 上 **30+ fps**；Push-T 约 **0.0037 s/frame**，使 \(K=50\) 提案的 GPC-RANK 全提案约 **0.912 s**（对照 GPC WM **2.241 s**）。
+2. **推理时改进有数** — Push-T 上基策略 IoU **0.635→0.781**（GPC-RANK）；离线评估 Pearson：Lift **0.9916**、Can **0.9250**、Push-T **0.9515**。
+3. **训练目标决定可用性** — Action-accentuated drift、运动加权、实机侧 DINO 特征 drifting；消融无 DINO 则夹爪模糊、FID/FVD 崩。
+4. **部署读法** — 仿真可像素 drifting；实机高分辨率走 SD3 VAE latent + DINO 特征损失；推理期不用特征器。
+5. **开源边界** — 当前完整可跑以 Push-T 为主；Bridge/RT-1/Language Table/Robomimic 入口 README 仍标 soon。
+6. **高相关 ≠ 替代真机** — 适合预筛选与版本对比，闭环部署仍需真机校准。
 
 ## 局限与风险
 

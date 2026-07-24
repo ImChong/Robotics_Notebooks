@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, sim2real, visual-rl, loco-manipulation, teacher-student, dagger, grpo, ppo, unitree-g1, isaac-lab, door-opening, cvpr2026, nvidia, gear, body-system-stack]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-24
 arxiv: "2512.01061"
 venue: "CVPR 2026"
 code: https://github.com/NVlabs/GR00T-VisualSim2Real
@@ -190,6 +190,16 @@ sequenceDiagram
 ## 实验与评测
 
 - 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+
+## 结论
+
+**人形纯 RGB 开门的关键配方是：分阶段重置的特权教师 → DAgger 视觉学生 → GRPO 自举，再配上够强的视觉域随机化；弱视觉 DR 会把成功率打崩。**
+
+1. **视觉随机化不是可选项** — 消融显示无纹理/无穹顶光时成功率可降至约 **5–20%**；全量 PBR + dome light + 相机微扰下子任务约 **81–86%**（未见门评估，论文表 1）。
+2. **Staged-reset 专治长桥接探索** — 新阶段写入广义坐标快照（主实验约最近 **100** 步），reset 时混合采样初/中后期状态，避免早期错误接触导致策略回避关键阶段。
+3. **DAgger → GRPO 拆两段** — 先在学生自身观测分布上蒸馏特权教师，再用任务成功二值信号做 actor-only 自举，缩小特权 vs RGB 的部分可观测缺口（文中出现「把手保持在视野内」等补偿行为）。
+4. **动作接口是关节目标 + 预训练 WBC** — **50 Hz** 推理；勿当成从裸力矩学起；换人形栈需对齐动作维度与安全区。
+5. **工程栈可复用** — 与 [VIRAL](./paper-viral-humanoid-visual-sim2real.md) 同属 [GR00T-VisualSim2Real](./gr00t-visual-sim2real.md)；差别在开门接触资产与 exp，而非另一套训练脚本。真机相对同 WBC 人类遥操作有成功率/耗时优势（具体百分比以原文图 5 为准）。
 
 ## 与其他工作对比
 

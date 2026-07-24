@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation, hsi, sim2real, unitree-g1, shanghai-ai-lab, hkust]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-24
 arxiv: "2510.11072"
 venue: arXiv
 summary: "PhysHSI（arXiv:2510.11072）：AMP+混合 RSI 学搬箱/坐/躺/站起，判别器含物体位姿；真机 LiDAR+相机粗细分层定位，G1 室内外自然 HSI。"
@@ -110,6 +110,17 @@ flowchart TB
 - **仿真 Table I：** 相对无 AMP、无 RSI、无物体判别等基线，PhysHSI 在四类任务 **成功率 $R_{\text{succ}}$** 与 **自然度 $S_{\text{human}}$** 双高。
 - **真机：** 室内外搬箱、坐椅、躺床、站起；多样物体尺寸与目标位置。
 - **风格化行走：** 证明同一 AMP 管线可承载非任务必需的表现力动作。
+
+## 结论
+
+**要把 AMP 从「走路更好看」推到真实 HSI，必须让判别器见物体位姿，并用粗–细 onboard 定位闭环。**
+
+1. **任务覆盖** — 同一管线做 Carry / Sit / Lie / Stand Up 与风格化行走；AMP 是跨任务自然性底座，不是逐帧硬跟踪 MoCap。
+2. **物体进判别器** — $\mathbf{o}^{\mathcal{D}}$ 含物体位姿，隐式区分接近/抓取/搬运阶段；非对称训练下部署 actor 仍只见 onboard 可观测量。
+3. **混合 RSI** — 随机相位 + 随机场景，部分 episode 从默认站姿全随机启动，减轻对演示布局过拟合。
+4. **训练细节** — 风格权重 $w^S$ 课程增大 + L2C2 平滑，抑制后期「刷分式」抽搐。
+5. **真机感知** — LiDAR/FAST-LIO 粗定位 → AprilTag 细定位；丢检用里程计传播，抓取后可 mask 物体位姿；全栈 Jetson Orin NX。
+6. **评测口径** — 仿真相对无 AMP/无 RSI/无物体判别等基线，$R_{\text{succ}}$ 与 $S_{\text{human}}$ 双高；真机验证室内外多样尺寸与目标。
 
 ## 与其他页面的关系
 

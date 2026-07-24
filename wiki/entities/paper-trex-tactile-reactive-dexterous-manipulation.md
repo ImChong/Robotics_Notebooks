@@ -4,7 +4,7 @@
 type: entity
 tags: [paper, vla, tactile-sensing, dexterous-manipulation, flow-matching, bimanual, contact-rich, imitation-learning, egocentric-video, dataset, berkeley, nvidia, stanford, nvidia-gear]
 status: complete
-updated: 2026-07-23
+updated: 2026-07-24
 arxiv: "2606.17055"
 code: https://github.com/ZhuoyangLiu2005/T-Rex
 related:
@@ -159,6 +159,17 @@ sequenceDiagram
 
 - **双频推理**：视觉慢时钟与触觉快时钟分离，是复现接触反应的关键。
 - **完整预训练**在其他分支；`main` 侧重 post-train + 部署。
+
+## 结论
+
+**触觉能否提升 VLA，取决于频率解耦与训练阶段：朴素拼接触觉可把 π₀.₅ 从 17% 砸到 6%；异步高频专家 + 时序力 VQ-VAE 才到 65% 宏平均。**
+
+1. **主数字** — 12 任务宏平均 **T-Rex 65%** vs 最强基线 EgoScale **35%**（+30 pt）；去触觉 **−23 pt**（65→42）。
+2. **反例必记** — **π₀.₅ + tactile 朴素条件化仅 6%**，低于无触觉 π₀.₅（**17%**）——问题在架构/配方，不在「有没有传感器」。
+3. **三阶段不可省** — **22,889 h** 人视频预训练 → **100 h** 触觉 mid-training → **~100** 条/任务后训练；仅预训练 45%、仅 mid 34%、从零 18%。
+4. **异步级联** — action 专家 τ:1→0.4 出粗动作并缓存 KV；tactile 专家 τ:0.4→0 残差去噪，每个慢 tick 触发 4 次快 tick；同步去噪约 **−5 pt**。
+5. **表征** — 每指 16 帧 6D 力 → VQ-VAE（K=64）优于 MLP/仅形变；辅助未来视觉损失防触觉反射脱离任务语义。
+6. **边界** — Screw Bulb 等仍低（**35%**）；项目页强调 **50 h** 已开源子集，完整 100 h 以后续发布为准。
 
 ## 常见误区或局限
 

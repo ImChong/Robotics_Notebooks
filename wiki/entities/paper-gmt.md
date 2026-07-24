@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, whole-body, reinforcement-learning, moe, adaptive-sampling, ppo, dagger, sim2real, unitree-g1, ucsd, sfu, gmt]
 status: complete
-updated: 2026-07-21
+updated: 2026-07-24
 arxiv: "2506.14770"
 code: https://github.com/zixuan417/humanoid-general-motion-tracking
 related:
@@ -161,6 +161,17 @@ sequenceDiagram
 | 数据 | 两阶段策展去掉爬行/跌倒/过激动作；不可行动作当噪声 |
 | 调试 | 看难片段跟踪误差与关节力矩；Adaptive Sampling 关闭时易在复合长动作上失衡 |
 | 真机风险 | README 免责：不同机台表现可能失败 |
+
+## 结论
+
+**通用全身跟踪真正拉动精度与覆盖的是 Adaptive Sampling + Motion MoE；「扩散/流匹配」不是 GMT 本体，只是下游 MDM 试探。**
+
+1. **先策展再训** — filtered AMASS+LAFAN1 共 **8925 clips / 33.12 h**；规则过滤 + 初步完成率过滤去掉爬行/跌倒等不可行片段。
+2. **Adaptive Sampling 从早期抬高难样本** — 长序列随机裁剪 + 完成度驱动采样；消融显示去掉后跟踪误差上升，复合长动作更易失衡。
+3. **Motion MoE 对高分位难动作更值钱** — 软门控多专家特化流形不同区域；相对「只堆 clips」是容量侧一等公民。
+4. **目标窗要含即时帧** — GMT-L2-M（即时 + 约 2 s 未来）显著优于去掉即时帧的 GMT-L2。
+5. **部署路径是特权教师 PPO → 学生 DAgger** — 学生吃本体历史上 Unitree G1（文中 23 DoF）；公开仓目前是 MuJoCo sim2sim + pretrained，完整 IsaacGym 训练栈未全开。
+6. **能力边界** — 接触丰富起身/翻滚与地形条件未覆盖；选型时把 GMT 当可复用通用 tracker 底座，而不是端到端 loco-manip。
 
 ## 局限与风险
 

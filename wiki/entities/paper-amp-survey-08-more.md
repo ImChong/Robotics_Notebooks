@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation, locomotion, mixture-of-experts, terrain-adaptation, unitree-g1, sim2real, teleai, heu, shanghaitech, ustc]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-24
 arxiv: "2506.08840"
 venue: arXiv
 code: https://github.com/TeleHuman/MoRE
@@ -181,6 +181,17 @@ sequenceDiagram
 - **消融：** 论文讨论 expert 数量（取 3）、latent vs action residual、MoE 对梯度冲突的缓解；细节见 [arXiv HTML](https://arxiv.org/html/2506.08840v1)。
 - **真机：** 项目页展示平地与组合地形上 **Walk-Run / High-Knees / Squat** 切换与复杂地形穿越视频。
 - **姊妹工作引用：** [显式楼梯几何](./paper-explicit-stair-geometry-humanoid-locomotion.md) 在楼梯 OOD 踢面高度上报告相对 MoRE 视觉基线的成功率优势——阅读 MoRE 时宜同时看 **「隐式视觉特征 vs 显式几何 token」** 两条感知接口。
+
+## 结论
+
+**复杂地形上「像人」必须可命令切换：先 Stage 1 深度相机练穿越，再 Stage 2 叠 latent 残差 MoE + 多判别器 AMP；顺序反了会同时背感知、平衡与多样式先验。**
+
+1. **Stage 1 故意无 motion prior** — 只靠 locomotion 奖励 + 地形课程过楼梯/沟壑/台阶；产出可达性，不追求人形风格。
+2. **残差加在 actor 末层隐特征，不是动作残差** — \(\mathbf{z}_t=\mathbf{z}^o_t+\mathbf{z}'_t\) 再进预训练 action head，比直接残差动作更稳。
+3. **\(N{=}3\) expert + gait command 门控三判别器** — Walk-Run / High-Knees / Squat；风格奖励只计入当前命令对应的 \(D_{\phi_i}\)，另用抬膝/基座高等 \(\mathbf{r}^g\) 补参考缺陷。
+4. **评测读法** — 8 m×14 m 赛道上 MoRE 成功率与穿越距离显著优于 Blind；相对仅 Stage 1 的 Base，在保持穿越性同时引入 lifelike gait（表见原文 Table III）。
+5. **真机锚点** — G1 + RealSense D435i（深度 10 Hz → 64×64），策略 **50 Hz**；官方仓分 `g1_16dof_loco` → `g1_16dof_resi_moe`，必须先有 base checkpoint。
+6. **勿与 SD-AMP 混路由信号** — MoRE 按用户步态命令切判别器；[SD-AMP](./paper-unified-walk-run-recovery-sdamp.md) 按是否跌倒切 recovery/loco。
 
 ## 与其他页面的关系
 
