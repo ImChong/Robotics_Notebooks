@@ -9,16 +9,6 @@
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-extreme-rgmt.md",
-      "detail_id": "entity-paper-extreme-rgmt",
-      "label": "Extreme-RGMT：高动态技能的持续学习与鲁棒通用全身跟踪",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
       "path": "wiki/entities/paper-yahmp.md",
       "detail_id": "entity-paper-yahmp",
       "label": "YAHMP：人形通用运动跟踪里什么真的重要？",
@@ -27,6 +17,16 @@
       "source": "log.md",
       "action": "added",
       "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-extreme-rgmt.md",
+      "detail_id": "entity-paper-extreme-rgmt",
+      "label": "Extreme-RGMT：高动态技能的持续学习与鲁棒通用全身跟踪",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
       "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
@@ -219,13 +219,14 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-extreme-rgmt.md",
-    "detail_id": "entity-paper-extreme-rgmt",
-    "label": "Extreme-RGMT：高动态技能的持续学习与鲁棒通用全身跟踪",
+    "path": "wiki/entities/paper-yahmp.md",
+    "detail_id": "entity-paper-yahmp",
+    "label": "YAHMP：人形通用运动跟踪里什么真的重要？",
     "type": "entity",
     "recency": "2026-07-24",
     "source": "log.md",
-    "action": "maintained",
+    "action": "added",
+    "has_repo": true,
     "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
   },
   "top_communities": [
