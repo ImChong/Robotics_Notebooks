@@ -10,7 +10,7 @@ tags:
   - wam
   - open-source
 status: complete
-updated: 2026-07-13
+updated: 2026-07-24
 arxiv: "2606.02800"
 related:
   - ../concepts/world-action-models.md

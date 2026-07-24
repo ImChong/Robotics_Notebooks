@@ -52,7 +52,7 @@
 | [x] [holomotion_arxiv_2605_15336.md](papers/holomotion_arxiv_2605_15336.md) | HoloMotion-1：混合大规模运动语料 + 稀疏 MoE Transformer + 序列级 PPO 的人形零样本全身跟踪（arXiv:2605.15336，Horizon Robotics）摘录与 wiki 映射 |
 | [x] [homeworld_arxiv_2606_06390.md](papers/homeworld_arxiv_2606_06390.md) | HomeWorld（Kairos）：文本到 sim-ready 全屋 furnished 3D 四阶段流水线 + 300K 中国住宅平面图数据集（arXiv:2606.06390，Ace Robotics / CUHK MMLab）摘录与 wiki 映射 |
 | [x] [hrdexdb_arxiv_2604_14944.md](papers/hrdexdb_arxiv_2604_14944.md) | HRDexDB：同物体配对人–灵巧机器人抓取序列集（100+ 物体 · 23 相机 · 3D + 触觉；arXiv:2604.14944，SNU / RLWRLD）摘录与 wiki 映射 |
-| [x] [kairos_arxiv_2606_16533.md](papers/kairos_arxiv_2606_16533.md) | Kairos：原生 Physical AI 世界模型栈（CEDC + SWA/DSWA/GLA + WAM；Kairos-4B，arXiv:2606.16533，Kairos Team / kairos-agi）摘录与 wiki 映射 |
+| [x] [kairos_arxiv_2606_16533.md](papers/kairos_arxiv_2606_16533.md) | Kairos：regret-aware 原生世界–动作栈（control-sufficient state + CEDC + SWA/DSWA/GLA + WAM；Kairos-4B/3.1，arXiv:2606.16533 v3，kairos-agi / Ace Robotics）摘录与 wiki 映射 |
 | [x] [physforge_arxiv_2605_05163.md](papers/physforge_arxiv_2605_05163.md) | PhysForge：VLM 分层物理蓝图 + KVI 协同扩散生成仿真就绪关节 3D 资产；PhysDB 约 15 万四档标注（arXiv:2605.05163，HKU MMLab / 腾讯混元等）摘录与 wiki 映射 |
 | [x] [physx_omni_arxiv_2605_21572.md](papers/physx_omni_arxiv_2605_21572.md) | PhysX-Omni：统一刚体/可变形/关节体 sim-ready 3D 生成；PhysXVerse + PhysX-Bench（arXiv:2605.21572，NTU S-Lab）摘录与 wiki 映射 |
 | [x] [pilot_arxiv_2601_17440.md](papers/pilot_arxiv_2601_17440.md) | PILOT：LiDAR 高程图 + 跨模态编码 + MoE 单阶段感知全身 loco-manipulation LLC（arXiv:2601.17440，上海交大 / G1）摘录与 wiki 映射 |
@@ -201,7 +201,8 @@
 | [x] [metalhead.md](repos/metalhead.md) | inspirai/MetalHead：Unitree A1 AMP walk/jump/recovery |
 | [x] [mamma.md](repos/mamma.md) | cuevhv/mamma：CVPR 2026 MAMMA 多视角 markerless SMPL-X 管线（CLI + GUI） |
 | [x] [junhengl_mpc_rl.md](repos/junhengl_mpc_rl.md) | junhengl/mpc-rl：MPC-RL 官方代码（CD-MPC 奖励、πⁿ MPC、mjlab+rsl-rl，arXiv:2606.05687） |
-| [x] [kairos_sensenova.md](repos/kairos_sensenova.md) | kairos-agi/kairos-sensenova：Kairos 原生世界模型栈官方仓（arXiv:2606.16533；HF/ModelScope Kairos 3.0 权重） |
+| [x] [kairos.md](repos/kairos.md) | kairos-agi/kairos：Kairos 原生世界–动作模型官方仓（arXiv:2606.16533 v3；Kairos3.1 权重 + LIBERO/RoboTwin 评测） |
+| [x] [kairos_sensenova.md](repos/kairos_sensenova.md) | 历史仓名索引：`kairos-sensenova` **301 →** `kairos-agi/kairos`（保留导航） |
 | [x] [mondo_robotics_dit4dit.md](repos/mondo_robotics_dit4dit.md) | Mondo-Robotics/DiT4DiT：双 DiT VAM 官方训练/评测/部署代码（arXiv:2603.10448） |
 | [x] [mocap_retarget.md](repos/mocap_retarget.md) | ccrpRepo/mocap_retarget：工程向动捕→机器人重定向参考 |
 | [x] [moveit-moveit1.md](repos/moveit-moveit1.md) | moveit/moveit：MoveIt 1（ROS 1 / Noetic）官方源码 |
@@ -418,6 +419,7 @@
 | [x] [altium-designer-primary-refs.md](sites/altium-designer-primary-refs.md) | Altium Designer 官方技术文档一手索引（QuickStart、ECO、Rules/Constraint Manager、制造 OutJob、ECAD-MCAD CoDesigner） |
 | [x] [simplefoc_documentation.md](sites/simplefoc_documentation.md) | docs.simplefoc.com：Arduino SimpleFOC 官方文档（理论、运动/扭矩环、硬件与 v2.4 发布说明） |
 | [x] [jc-bao-spider-project-github-io.md](sites/jc-bao-spider-project-github-io.md) | SPIDER 项目页 jc-bao.github.io/spider-project（管线、交互可视化、BibTeX） |
+| [x] [kairos-acerobotics.md](sites/kairos-acerobotics.md) | Kairos 平台页 kairos.acerobotics.com（Ace Robotics；与 kairos-agi/kairos、HF 权重互指） |
 | [x] [kairos-homeworld-github-io.md](sites/kairos-homeworld-github-io.md) | Kairos · HomeWorld 项目页 kairos-homeworld.github.io（四阶段全屋生成、300K/5K 数据集 teaser、具身交互 demo、BibTeX） |
 | [x] [snuvclab-dwm-github-io.md](sites/snuvclab-dwm-github-io.md) | DWM 项目页 snuvclab.github.io/dwm（TL;DR、方法洞察、BibTeX） |
 | [x] [snuvclab-hrdexdb-github-io.md](sites/snuvclab-hrdexdb-github-io.md) | HRDexDB 项目页 snuvclab.github.io/HRDexDB（配对人–机灵巧抓取 · 2.1K seq · 触觉；arXiv:2604.14944） |

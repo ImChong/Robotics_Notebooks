@@ -201,6 +201,14 @@
         "agibot"
       ]
     },
+    "ace-robotics": {
+      "label": "大晓机器人（Ace Robotics）",
+      "aliases": [
+        "ace-robotics",
+        "acerobotics",
+        "ace"
+      ]
+    },
     "psibot": {
       "label": "灵巧智能（PsiBot）",
       "aliases": [
