@@ -839,8 +839,10 @@
       }
       var dayMeta = formatDayMeta(metas, totalCount, dayStats);
       var foldToggle = '';
+      var foldCollapseEnd = '';
       if (fold) {
         var restCount = metas.length - TIMELINE_FOLD_SHOW;
+        var collapseLabel = '收起至前 ' + TIMELINE_FOLD_SHOW + ' 项';
         foldToggle =
           '<button type="button" class="updates-day-more" data-total="' +
           metas.length +
@@ -854,6 +856,18 @@
           metas.length +
           ' 项</span>' +
           '</button>';
+        // 展开后列表末尾再放一个收起入口，避免滚到底后还要回到中部箭头
+        foldCollapseEnd =
+          '<button type="button" class="updates-day-more updates-day-more-end" data-total="' +
+          metas.length +
+          '" aria-expanded="true" aria-label="' +
+          collapseLabel +
+          '">' +
+          '<span class="updates-day-chevron" aria-hidden="true"></span>' +
+          '<span class="updates-day-more-label">' +
+          collapseLabel +
+          '</span>' +
+          '</button>';
       }
       return (
         '<section class="updates-day' + (fold ? ' is-folded is-collapsible' : '') + '">' +
@@ -863,7 +877,7 @@
         '<ul class="updates-day-list">' + previewHtml + '</ul>' +
         foldToggle +
         (fold
-          ? '<ul class="updates-day-list updates-day-list-rest">' + restHtml + '</ul>'
+          ? '<ul class="updates-day-list updates-day-list-rest">' + restHtml + '</ul>' + foldCollapseEnd
           : '') +
         '</section>'
       );
@@ -1080,21 +1094,29 @@
         var daySection = moreBtn.closest('.updates-day');
         if (!daySection) return;
         var total = moreBtn.getAttribute('data-total') || '';
-        var labelEl = moreBtn.querySelector('.updates-day-more-label');
+        var midBtn = daySection.querySelector('button.updates-day-more:not(.updates-day-more-end)');
         var isFolded = daySection.classList.contains('is-folded');
+        var collapseText = '收起至前 ' + TIMELINE_FOLD_SHOW + ' 项';
+        var expandText = '展开全部 ' + total + ' 项';
+
+        function syncMidLabel(expanded) {
+          if (!midBtn) return;
+          midBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+          midBtn.setAttribute('aria-label', expanded ? collapseText : expandText);
+          var midLabel = midBtn.querySelector('.updates-day-more-label');
+          if (midLabel) midLabel.textContent = expanded ? collapseText : expandText;
+        }
+
         if (isFolded) {
           daySection.classList.remove('is-folded');
-          moreBtn.setAttribute('aria-expanded', 'true');
-          moreBtn.setAttribute('aria-label', '收起至前 ' + TIMELINE_FOLD_SHOW + ' 项');
-          if (labelEl) labelEl.textContent = '收起至前 ' + TIMELINE_FOLD_SHOW + ' 项';
+          syncMidLabel(true);
         } else {
           daySection.classList.add('is-folded');
-          moreBtn.setAttribute('aria-expanded', 'false');
-          moreBtn.setAttribute('aria-label', '展开全部 ' + total + ' 项');
-          if (labelEl) labelEl.textContent = '展开全部 ' + total + ' 项';
-          // 箭头固定在预览区后；收起后把控件带回视口，避免停在已隐藏的长列表位置
-          if (moreBtn.scrollIntoView) {
-            moreBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          syncMidLabel(false);
+          // 从中部或末尾收起后，把中部控件带回视口
+          var foldScrollTarget = midBtn || daySection;
+          if (foldScrollTarget && foldScrollTarget.scrollIntoView) {
+            foldScrollTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
           }
         }
       }
