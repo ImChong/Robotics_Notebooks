@@ -82,6 +82,7 @@
 - [DreamWaQ++（障碍感知四足多模态强化学习）](wiki/entities/dreamwaq-plus.md) — DreamWaQ++**（Nahrendra et al., arXiv:2409.19709，**IEEE T-RO 20 `📅unknown` `[entity_page]`
 - [easy_quadruped（Pupper 控制栈 + MuJoCo 闭环）](wiki/entities/easy-quadruped.md) — easy_quadruped** 是在 [StanfordQuadruped](https://github.com/stanfordroboticsclub/StanfordQuadruped `📅unknown` `[entity_page]`
 - [EGO-Planner Swarm](wiki/entities/ego-planner-swarm.md) — EGO-Planner Swarm**（[ZJU-FAST-Lab/ego-planner-swarm](https://github.com/ZJU-FAST-Lab/ego-planner-s `📅unknown` `[entity_page]`
+- [EgoWorld-100W（百万级自中心操作数据集）](wiki/entities/egoworld-100w.md) — EgoWorld-100W** 是 星际硅途（StellarNex Robotics） 发布的 **头戴第一人称操作视频**  `📅2026-07-24` `[entity_page]`
 - [大象机器人 myAGV](wiki/entities/elephantrobotics-myagv.md) — myAGV** 是 **大象机器人** 的 **开源移动机器人底盘**：强调 **激光雷达、SLAM、ROS/ROS2** 与 **二次开发**；中文支持页在 **[myagv-support/c `📅unknown` `[entity_page]`
 - [大象机器人 myCobot 320](wiki/entities/elephantrobotics-mycobot-320.md) — myCobot 320** 是 **大象机器人（Elephant Robotics）** 的 **桌面六轴协作机械臂**：主打 **轻量、开源、教育/创客**；产品资料在 **[mycobot-3 `📅unknown` `[entity_page]`
 - [EN02-OP（Westwood 开源三指末端）](wiki/entities/en02-op.md) — EN02-OP** 是 Westwood Robotics 发布的 **开源三指末端执行器**：**7 DoF**、**Ro `📅unknown` `[entity_page]`
@@ -375,6 +376,7 @@
 - [EgoSteer：从 Egocentric 视频到可操控双灵巧手全栈](wiki/entities/paper-egosteer.md) — EgoSteer**（*A Full-Stack System Towards Steerable Dexterous Manipulation from Egocentric Videos*， `📅unknown` `[entity_page]`
 - [EgoVerse（Egocentric 人类数据集 · 联盟级人→机迁移）](wiki/entities/paper-egoverse.md) — EgoVerse**（*An Egocentric Human Dataset for Robot Learning from Around the World*，[项目页](https://eg `📅unknown` `[entity_page]`
 - [EgoWAM（野外 Egocentric 人数据 · World Action Model 协同训练）](wiki/entities/paper-egowam-egocentric-human-wam-co-training.md) — EgoWAM**（*World Action Models Beyond Pixels with In-the-Wild Egocentric Human Data*，[项目页](https:// `📅unknown` `[entity_page]`
+- [EgoWorld（exo→ego 视图翻译）](wiki/entities/paper-egoworld.md) — EgoWorld**（*Translating Exocentric View to Egocentric View using Rich Exocentric Observations*，[ar `📅2026-07-24` `[entity_page]`
 - [EmbodiedGen V2（Simulation-Ready 3D World Engine · arXiv:2607.07459）](wiki/entities/paper-embodiedgen-v2-sim-ready-world-engine.md) — EmbodiedGen V2**（*\calmfont EmbodiedGen V2: An Agentic, Simulation-Ready 3D World Engine for Embod `📅unknown` `[entity_page]`
 - [EMMA（Waymo）（EMMA: End-to-End Multimodal Model for Autonomous Driving · arXiv:2410.23262）](wiki/entities/paper-emma-waymo-e2e.md) — EMMA（Waymo）**（*EMMA: End-to-End Multimodal Model for Autonomous Driving*，[2410.23262](https://arxi `📅unknown` `[entity_page]`
 - [ergoCub：面向人因的共享具身智能人形](wiki/entities/paper-ergocub-shared-embodied-intelligence.md) — ergoCub**（*Towards shared embodied intelligence in humanoid robots through optimization, developme `📅unknown` `[entity_page]`

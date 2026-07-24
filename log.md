@@ -1,5 +1,25 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-24] ingest | sources/papers/egoworld_arxiv_2506_17896.md + sources/sites/egoworld-github-io.md + sources/repos/egoworld.md + sources/blogs/stellarnex_egoworld_100w.md + sources/sites/stellarnex-robotics.md — EgoWorld（ICLR 2026 exo→ego）与 StellarNex EgoWorld-100W 同名消歧入库；升格 wiki/entities/paper-egoworld.md、wiki/entities/egoworld-100w.md；交叉更新 wiki/overview/ego-category-01-data-collection.md、wiki/tasks/manipulation.md、wiki/methods/egoscale.md
+
+- **资料 A（方法）：** [EgoWorld ICLR 2026](https://arxiv.org/abs/2506.17896) · [项目页](https://redorangeyellowy.github.io/EgoWorld/) · [代码](https://github.com/redorangeyellowy/EgoWorld)
+- **资料 B（数据）：** [EgoWorld-100W blog](https://stellarnexrobotics.com/blog) · [StellarNex 官网](https://stellarnexrobotics.com/)
+- **归档：**
+  - [`sources/papers/egoworld_arxiv_2506_17896.md`](sources/papers/egoworld_arxiv_2506_17896.md)
+  - [`sources/sites/egoworld-github-io.md`](sources/sites/egoworld-github-io.md)
+  - [`sources/repos/egoworld.md`](sources/repos/egoworld.md)
+  - [`sources/blogs/stellarnex_egoworld_100w.md`](sources/blogs/stellarnex_egoworld_100w.md)
+  - [`sources/sites/stellarnex-robotics.md`](sources/sites/stellarnex-robotics.md)
+- **开源核查：** EgoWorld 论文仓 **已开源**（MIT + train/test）；EgoWorld-100W **申请制合作开放**（无公开全量下载）
+- **升格：**
+  - [`wiki/entities/paper-egoworld.md`](wiki/entities/paper-egoworld.md)
+  - [`wiki/entities/egoworld-100w.md`](wiki/entities/egoworld-100w.md)
+- **交叉更新：**
+  - [`wiki/overview/ego-category-01-data-collection.md`](wiki/overview/ego-category-01-data-collection.md)
+  - [`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)
+  - [`wiki/methods/egoscale.md`](wiki/methods/egoscale.md)
+- **机构注册：** `lg-electronics`、`oxford`、`stellarnex-robotics` → [`schema/institutions.json`](schema/institutions.json)
+
 ## [2026-07-24] ingest | sources/papers/egoverse_arxiv_2604_07607.md + sources/sites/egoverse-ai.md + sources/repos/egoverse.md — EgoVerse 联盟 egocentric 人示教活数据集与跨实验室共训研究；升格 wiki/entities/paper-egoverse.md；交叉更新 EgoWAM / EgoScale / HumanNet / manipulation / ego hubs / index.md
 
 - **资料：** [EgoVerse 项目页](https://egoverse.ai/) · [arXiv:2604.07607](https://arxiv.org/abs/2604.07607) · [GaTech-RL2/EgoVerse](https://github.com/GaTech-RL2/EgoVerse)

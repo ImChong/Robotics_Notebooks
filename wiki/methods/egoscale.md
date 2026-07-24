@@ -16,12 +16,15 @@ related:
   - ../entities/paper-egoverse.md
   - ../entities/paper-trex-tactile-reactive-dexterous-manipulation.md
   - ../entities/paper-egosteer.md
+  - ../entities/egoworld-100w.md
+  - ../entities/paper-egoworld.md
   - ../tasks/manipulation.md
   - ../entities/nvidia-gear-lab.md
 sources:
   - ../../sources/papers/egoscale_arxiv_2602_16710.md
   - ../../sources/sites/nvidia-research-egoscale.md
   - ../../sources/papers/egosteer_arxiv_2607_09701.md
+  - ../../sources/blogs/stellarnex_egoworld_100w.md
   - ../../sources/papers/egoverse_arxiv_2604_07607.md
 ---
 
@@ -119,6 +122,8 @@ flowchart LR
 - [mimic-video（VAM）](./mimic-video.md)
 - [Manipulation（操作任务）](../tasks/manipulation.md)
 - [EgoSteer](../entities/paper-egosteer.md)
+- [EgoWorld-100W](../entities/egoworld-100w.md) — 商业百万级自中心操作语料（申请制；与本方法学术缩放叙事对照）
+- [EgoWorld（exo→ego）](../entities/paper-egoworld.md) — 同名视图翻译方法（消歧）
 - [HumanNet](../entities/humannet.md)
 - [EgoVerse](../entities/paper-egoverse.md)
 - [Motion Retargeting](../concepts/motion-retargeting.md)

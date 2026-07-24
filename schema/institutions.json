@@ -1517,6 +1517,31 @@
         "deep_robotics",
         "deep-robotics-lab"
       ]
+    },
+    "lg-electronics": {
+      "label": "乐金电子（LG Electronics）",
+      "aliases": [
+        "lg-electronics",
+        "lge",
+        "lg"
+      ]
+    },
+    "oxford": {
+      "label": "牛津大学（University of Oxford）",
+      "aliases": [
+        "oxford",
+        "university-of-oxford",
+        "oxford-vgg",
+        "vgg"
+      ]
+    },
+    "stellarnex-robotics": {
+      "label": "星际硅途（StellarNex Robotics）",
+      "aliases": [
+        "stellarnex-robotics",
+        "stellarnex",
+        "stellar-nex"
+      ]
     }
   }
 }

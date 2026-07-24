@@ -1,13 +1,65 @@
 {
   "generated_at": "2026-07-24",
-  "node_count": 1823,
-  "edge_count": 15316,
+  "node_count": 1825,
+  "edge_count": 15336,
   "coverage": {
-    "covered": 1772,
-    "total": 1800,
+    "covered": 1774,
+    "total": 1802,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-egoworld.md",
+      "detail_id": "entity-paper-egoworld",
+      "label": "EgoWorld（exo→ego 视图翻译）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/egoworld-100w.md",
+      "detail_id": "entity-egoworld-100w",
+      "label": "EgoWorld-100W（百万级自中心操作数据集）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/ego-category-01-data-collection.md",
+      "detail_id": "wiki-overview-ego-category-01-data-collection",
+      "label": "Ego 分类 01：数据采集",
+      "type": "overview",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/egoscale.md",
+      "detail_id": "wiki-methods-egoscale",
+      "label": "EgoScale",
+      "type": "method",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-egoverse.md",
       "detail_id": "entity-paper-egoverse",
@@ -24,16 +76,6 @@
       "detail_id": "entity-paper-egowam-egocentric-human-wam-co-training",
       "label": "EgoWAM（野外 Egocentric 人数据 · World Action Model 协同训练）",
       "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/egoscale.md",
-      "detail_id": "wiki-methods-egoscale",
-      "label": "EgoScale",
-      "type": "method",
       "recency": "2026-07-24",
       "source": "log.md",
       "action": "maintained",
@@ -80,27 +122,6 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/ego-category-01-data-collection.md",
-      "detail_id": "wiki-overview-ego-category-01-data-collection",
-      "label": "Ego 分类 01：数据采集",
-      "type": "overview",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -190,32 +211,12 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/queries/cross-embodiment-transfer-strategy.md",
-      "detail_id": "wiki-queries-cross-embodiment-transfer-strategy",
-      "label": "跨具身策略迁移选型指南",
-      "type": "query",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/flashsac.md",
-      "detail_id": "wiki-methods-flashsac",
-      "label": "FlashSAC",
-      "type": "method",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-egoverse.md",
-    "detail_id": "entity-paper-egoverse",
-    "label": "EgoVerse（Egocentric 人类数据集 · 联盟级人→机迁移）",
+    "path": "wiki/entities/paper-egoworld.md",
+    "detail_id": "entity-paper-egoworld",
+    "label": "EgoWorld（exo→ego 视图翻译）",
     "type": "entity",
     "recency": "2026-07-24",
     "source": "log.md",
@@ -226,7 +227,7 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 372
+      "size": 374
     },
     {
       "label": "仿真到现实",
@@ -277,7 +278,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 296,
+      "degree": 300,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
