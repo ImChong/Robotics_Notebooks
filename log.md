@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-24] fix(docs) | README 在线演示「知识图谱」粗体链接 `**` 原样显示
+
+- **现象：** `**[知识图谱](url)**`（粗体包住整段链接）在 GitHub Markdown 下星号可原样露出；同模式亦见于「如何贡献」的 `**[CONTRIBUTING.md](...)**`。
+- **修复：** 改为链接内粗体 `[**知识图谱**](url)` / `[**CONTRIBUTING.md**](CONTRIBUTING.md)`。
+
 ## [2026-07-24] fix(ux) | 纵深路线「路线一览」Mermaid 节点 `**Stage**` 原样显示 — 改为 `<b>` 并渲染前规范化
 
 - **现象：** 二十条 `roadmap/depth-*.md`「路线一览」flowchart 节点写 `**Stage N**`，与已有 `<br/>` / `<em>` 混用；站点 `htmlLabels` 不解析 Markdown 粗体，星号原样出现在图上。
