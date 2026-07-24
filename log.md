@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-24] structural | wiki/entities/paper-yahmp.md — 补充「结论」小节：GMT 设计选择何为真影响跟踪 / 力矩 / 交互力
+
+- **页面：** [`wiki/entities/paper-yahmp.md`](wiki/entities/paper-yahmp.md)（详情页 id：`entity-paper-yahmp`）
+- **改动：** 在「实验与评测」之后新增 **结论** 七条，汇总消融与真机部署读法
+
 ## [2026-07-24] ingest | sources/sites/extreme-rgmt-github-io.md — Extreme-RGMT（arXiv:2607.20110）复核：项目页仍未开源；交叉 wiki/entities/paper-extreme-rgmt.md ↔ wiki/entities/paper-yahmp.md
 
 - **开源状态：** **确认未开源** — 2026-07-24 复核项目页仍仅 arXiv PDF + BibTeX + 视频，无 GitHub / HF
