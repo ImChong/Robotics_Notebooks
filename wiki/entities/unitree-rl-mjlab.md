@@ -2,9 +2,13 @@
 type: entity
 tags: [repo, framework, unitree, mjlab, mujoco, reinforcement-learning, sim2real, humanoid, locomotion]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-24
 related:
   - ./unitree-ros.md
+  - ./unitree-rl-gym.md
+  - ./unitree-rl-lab.md
+  - ./unitree-mujoco.md
+  - ./unitree-sdk2.md
   - ./mjlab.md
   - ./mjlab-playground.md
   - ./unitree.md

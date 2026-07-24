@@ -1,5 +1,50 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-24] structural | unitreerobotics 去 stub / 去重：主线仓深化为 complete，合并重复节点
+
+- **问题：** 批量「一仓一 stub」产生大量模板页，且与已有深页（如 `unitree-ros` 覆盖 `unitree_ros_to_real`）重复。
+- **删除的重复/周边 stub（26）：** `unitree-ros-to-real`、`unitree-ros2-to-real`、`unitree-sdk2-python`、`unitree-dds-wrapper`、`unitree-actuator-sdk`、`teleimager`、`televuer`、`kinect-teleoperate`、Z1 三分页、灵巧手四分页、`unilidar-sdk`、以及 Publications/logging-mp/slam demos 等元仓 stub。
+- **合并详情页：**
+  - [`wiki/entities/unitree-sdk2.md`](wiki/entities/unitree-sdk2.md)（含 Python / 周边 SDK）
+  - [`wiki/entities/z1-sdk.md`](wiki/entities/z1-sdk.md)（Z1 四仓）
+  - [`wiki/entities/unitree-dexterous-hand-services.md`](wiki/entities/unitree-dexterous-hand-services.md)
+  - [`wiki/entities/unilidar-sdk2.md`](wiki/entities/unilidar-sdk2.md)（L1+L2）
+  - [`wiki/entities/xr-teleoperate.md`](wiki/entities/xr-teleoperate.md)（吸收 teleimager/televuer/kinect sources）
+- **深化为 complete 的主线仓：** sdk2、ros2、mujoco、rl-gym、rl-lab、lerobot、sim-isaaclab、xr-teleoperate、unifolm-vla、unifolm-wma、guide、legged-sdk、model、qmini、point-lio 等。
+- **枢纽更新：** [`wiki/entities/unitree.md`](wiki/entities/unitree.md) 改为「有详情节点 + 仅 sources 归档」策略表。
+- **交叉：** [`wiki/entities/unitree-ros.md`](wiki/entities/unitree-ros.md)、[`wiki/entities/unitree-unistore.md`](wiki/entities/unitree-unistore.md)、各 `sources/repos/*` 映射字段。
+
+## [2026-07-24] ingest | sources/repos/unitree.md — unitreerobotics 组织活跃仓全量独立节点（45）；跳过 7 个过时/元仓
+
+- **资料：** [github.com/unitreerobotics](https://github.com/unitreerobotics)（组织 API，截至 2026-07-24 约 52 公开仓）
+- **策略：** 为每个活跃仓库建立独立 `sources/repos/<name>.md` + `wiki/entities/<slug>.md`；组织枢纽 [`wiki/entities/unitree.md`](wiki/entities/unitree.md) 增加全量节点清单与跳过说明。
+- **跳过（过时/元仓）：** `.github`、`unitreerobotics.github.io`、`Acknowledgement`、`laikago_ros`、`unitree_pybullet`、`aliengo_sdk`、`unitree_cad`
+- **保留但标注 deprecated：** [`wiki/entities/unitree-model.md`](wiki/entities/unitree-model.md)（GitHub deprecated → Hugging Face）
+- **既有深页未覆盖写：** [`wiki/entities/unitree-ros.md`](wiki/entities/unitree-ros.md)、[`wiki/entities/unitree-rl-mjlab.md`](wiki/entities/unitree-rl-mjlab.md)（仅补交叉链接）
+- **新独立节点（示例，完整清单见组织枢纽）：**
+  - [`wiki/entities/unitree-sdk2.md`](wiki/entities/unitree-sdk2.md)
+  - [`wiki/entities/unitree-sdk2-python.md`](wiki/entities/unitree-sdk2-python.md)
+  - [`wiki/entities/unitree-ros2.md`](wiki/entities/unitree-ros2.md)
+  - [`wiki/entities/unitree-ros-to-real.md`](wiki/entities/unitree-ros-to-real.md)
+  - [`wiki/entities/unitree-rl-gym.md`](wiki/entities/unitree-rl-gym.md)
+  - [`wiki/entities/unitree-rl-lab.md`](wiki/entities/unitree-rl-lab.md)
+  - [`wiki/entities/unitree-mujoco.md`](wiki/entities/unitree-mujoco.md)
+  - [`wiki/entities/xr-teleoperate.md`](wiki/entities/xr-teleoperate.md)
+  - [`wiki/entities/unitree-lerobot.md`](wiki/entities/unitree-lerobot.md)
+  - [`wiki/entities/unitree-sim-isaaclab.md`](wiki/entities/unitree-sim-isaaclab.md)
+  - [`wiki/entities/unifolm-vla.md`](wiki/entities/unifolm-vla.md)
+  - [`wiki/entities/unifolm-world-model-action.md`](wiki/entities/unifolm-world-model-action.md)
+  - [`wiki/entities/point-lio-unilidar.md`](wiki/entities/point-lio-unilidar.md)
+  - [`wiki/entities/qmini.md`](wiki/entities/qmini.md)
+  - 以及 Z1 / 灵巧手 / LiDAR / 工具 / SLAM / UniStore 模板等其余活跃仓节点
+- **交叉更新：**
+  - [`wiki/entities/unitree.md`](wiki/entities/unitree.md)
+  - [`sources/repos/unitree.md`](sources/repos/unitree.md)
+  - [`wiki/entities/unitree-ros.md`](wiki/entities/unitree-ros.md)
+  - [`wiki/entities/unitree-rl-mjlab.md`](wiki/entities/unitree-rl-mjlab.md)
+  - [`wiki/tasks/teleoperation.md`](wiki/tasks/teleoperation.md)
+  - [`wiki/entities/lerobot.md`](wiki/entities/lerobot.md)
+
 ## [2026-07-24] ingest | sources/sites/motor_dynamometer_primary_refs.md — 测功机一手资料合集入库；升格 wiki/concepts/motor-dynamometer.md
 
 - **资料（一手）：**
@@ -24,6 +69,7 @@
   - [`wiki/concepts/motor-torque-current-curve.md`](wiki/concepts/motor-torque-current-curve.md)
   - [`roadmap/depth-torque-motor-design.md`](roadmap/depth-torque-motor-design.md)（Stage 6）
   - [`sources/README.md`](sources/README.md)
+
 
 ## [2026-07-24] fix(docs) | README 在线演示「知识图谱」粗体链接 `**` 原样显示
 

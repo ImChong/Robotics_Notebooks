@@ -8,7 +8,7 @@
 - **链接：** https://github.com/unitreerobotics/unitree_ros_to_real
 - **入库日期：** 2026-05-17
 - **一句话说明：** 从 ROS 向实机下发控制的配套包：`unitree_legged_msgs` 与 `unitree_legged_real`；README 推荐 Ubuntu 18.04 + ROS Melodic，并与指定版本的 `unitree_legged_sdk`（如 v3.8.0 面向 Go1）同工作空间编译。
-- **沉淀到 wiki：** 是 → [`wiki/entities/unitree-ros.md`](../wiki/entities/unitree-ros.md)（与 `unitree_ros` 同页归纳）
+- **沉淀到 wiki：** 是 → [`wiki/entities/unitree-ros.md`](../../wiki/entities/unitree-ros.md)
 
 ## README 要点（编译自上游 master）
 

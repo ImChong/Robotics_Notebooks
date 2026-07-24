@@ -2,7 +2,7 @@
 type: entity
 tags: [platform, ecosystem, humanoid, deployment, unitree]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-24
 related:
   - ./unitree.md
   - ./unitree-g1.md
@@ -102,6 +102,10 @@ flowchart LR
 | **GitHub / SDK / ROS** | 研发者自研全栈、仿真训练与底层驱动 |
 | **UniStore** | 终端用户与生态开发者 **分发成品技能包** |
 | **[REK](./rek.md) 等娱乐产品** | 第三方联赛/租赁；可与平台动作包叠加，但非官方商店本体 |
+
+## 开发者模板（官方 GitHub）
+
+组织仓 [`unitree-app-templates`](https://github.com/unitreerobotics/unitree-app-templates) 提供 UniStore / App Store 应用模板；**不单独建 wiki 节点**，归档见 [sources/repos/unitree-app-templates.md](../../sources/repos/unitree-app-templates.md)。上架与分成规则以 UniStore 开发者中心为准。
 
 ## 常见误区
 

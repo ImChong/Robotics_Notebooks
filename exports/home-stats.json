@@ -1,18 +1,18 @@
 {
   "generated_at": "2026-07-24",
-  "node_count": 1827,
-  "edge_count": 15359,
+  "node_count": 1845,
+  "edge_count": 15504,
   "coverage": {
-    "covered": 1776,
-    "total": 1804,
+    "covered": 1794,
+    "total": 1822,
     "percent": 98
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/concepts/motor-dynamometer.md",
-      "detail_id": "wiki-concepts-motor-dynamometer",
-      "label": "电机测功机（Dynamometer）",
-      "type": "concept",
+      "path": "wiki/entities/unitree-sdk2.md",
+      "detail_id": "entity-unitree-sdk2",
+      "label": "unitree_sdk2（含 Python 绑定）",
+      "type": "entity",
       "recency": "2026-07-24",
       "source": "log.md",
       "action": "added",
@@ -20,190 +20,218 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/overview/motor-design-workflow.md",
-      "detail_id": "wiki-overview-motor-design-workflow",
-      "label": "电机设计流程（规格 → 仿真 → 样机 → 控制）",
-      "type": "overview",
+      "path": "wiki/entities/z1-sdk.md",
+      "detail_id": "entity-z1-sdk",
+      "label": "Unitree Z1 软件栈（z1_sdk 等）",
+      "type": "entity",
       "recency": "2026-07-24",
       "source": "log.md",
-      "action": "maintained",
+      "action": "added",
+      "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/concepts/motor-torque-speed-curve.md",
-      "detail_id": "wiki-concepts-motor-torque-speed-curve",
-      "label": "电机转矩-转速曲线（TN 曲线）",
-      "type": "concept",
+      "path": "wiki/entities/unitree-dexterous-hand-services.md",
+      "detail_id": "entity-unitree-dexterous-hand-services",
+      "label": "Unitree 灵巧手 Serial↔DDS 服务",
+      "type": "entity",
       "recency": "2026-07-24",
       "source": "log.md",
-      "action": "maintained",
+      "action": "added",
+      "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/concepts/motor-torque-current-curve.md",
-      "detail_id": "wiki-concepts-motor-torque-current-curve",
-      "label": "电机转矩-电流曲线（TI 曲线）",
-      "type": "concept",
+      "path": "wiki/entities/unilidar-sdk2.md",
+      "detail_id": "entity-unilidar-sdk2",
+      "label": "UniLidar SDK（L1 / L2）",
+      "type": "entity",
       "recency": "2026-07-24",
       "source": "log.md",
-      "action": "maintained",
+      "action": "added",
+      "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "roadmap/depth-torque-motor-design.md",
-      "detail_id": "roadmap-depth-torque-motor-design",
-      "label": "路线（纵深）：如果目标是力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环 → 关节模组）",
-      "type": "roadmap_page",
+      "path": "wiki/entities/xr-teleoperate.md",
+      "detail_id": "entity-xr-teleoperate",
+      "label": "xr_teleoperate",
+      "type": "entity",
       "recency": "2026-07-24",
       "source": "log.md",
-      "action": "maintained",
+      "action": "added",
+      "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "roadmap/depth-bfm.md",
-      "detail_id": "roadmap-depth-bfm",
-      "label": "路线（纵深）：如果目标是 BFM（人形行为基础模型）",
-      "type": "roadmap_page",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-classical-control.md",
-      "detail_id": "roadmap-depth-classical-control",
-      "label": "路线（纵深）：如果目标是传统模型控制（LIP/ZMP → MPC → WBC）",
-      "type": "roadmap_page",
+      "path": "wiki/entities/unitree.md",
+      "detail_id": "entity-unitree",
+      "label": "Unitree",
+      "type": "entity",
       "recency": "2026-07-24",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "roadmap/depth-contact-manipulation.md",
-      "detail_id": "roadmap-depth-contact-manipulation",
-      "label": "路线（纵深）：如果目标是接触丰富的操作任务",
-      "type": "roadmap_page",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-humanoid-boxing.md",
-      "detail_id": "roadmap-depth-humanoid-boxing",
-      "label": "路线（纵深）：如果目标是人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）",
-      "type": "roadmap_page",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-humanoid-soccer.md",
-      "detail_id": "roadmap-depth-humanoid-soccer",
-      "label": "路线（纵深）：如果目标是人形足球（全向行走 → 感知踢球 → 多机战术）",
-      "type": "roadmap_page",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-humanoid-swarm-performance.md",
-      "detail_id": "roadmap-depth-humanoid-swarm-performance",
-      "label": "路线（纵深）：如果目标是人形群控展演（群舞同步 → 编队走位 → 群体特技）",
-      "type": "roadmap_page",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-imitation-learning.md",
-      "detail_id": "roadmap-depth-imitation-learning",
-      "label": "路线（纵深）：如果目标是模仿学习与技能迁移",
-      "type": "roadmap_page",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-loco-manipulation.md",
-      "detail_id": "roadmap-depth-loco-manipulation",
-      "label": "路线（纵深）：如果目标是 Loco-Manipulation（移动操作）",
-      "type": "roadmap_page",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-motion-generation.md",
-      "detail_id": "roadmap-depth-motion-generation",
-      "label": "路线（纵深）：如果目标是动作生成（文本/多模态 → 人形动作）",
-      "type": "roadmap_page",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-motion-retargeting.md",
-      "detail_id": "roadmap-depth-motion-retargeting",
-      "label": "路线（纵深）：如果目标是动作重定向（人体动作 → 机器人参考轨迹）",
-      "type": "roadmap_page",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-navigation.md",
-      "detail_id": "roadmap-depth-navigation",
-      "label": "路线（纵深）：如果目标是导航（SLAM → Nav2 → VLN → 导航 VLA）",
-      "type": "roadmap_page",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "roadmap/depth-perceptive-locomotion.md",
-      "detail_id": "roadmap-depth-perceptive-locomotion",
-      "label": "路线（纵深）：如果目标是感知越障（Perceptive Locomotion）",
-      "type": "roadmap_page",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
+      "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "roadmap/depth-real2sim.md",
-      "detail_id": "roadmap-depth-real2sim",
-      "label": "路线（纵深）：如果目标是 Real2Sim（真实世界 → 可仿真资产/场景/孪生）",
-      "type": "roadmap_page",
+      "path": "wiki/entities/unitree-ros.md",
+      "detail_id": "entity-unitree-ros",
+      "label": "unitree_ros（Unitree 官方 ROS1 / Gazebo 栈）",
+      "type": "entity",
       "recency": "2026-07-24",
       "source": "log.md",
       "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/unitree-unistore.md",
+      "detail_id": "entity-unitree-unistore",
+      "label": "UniStore（宇树应用平台）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/unitree-model.md",
+      "detail_id": "entity-unitree-model",
+      "label": "unitree_model（已弃用 → Hugging Face）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/unitree-rl-mjlab.md",
+      "detail_id": "entity-unitree-rl-mjlab",
+      "label": "unitree_rl_mjlab (Unitree 官方 RL 框架)",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/unitree-ros2.md",
+      "detail_id": "entity-unitree-ros2",
+      "label": "unitree_ros2",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/unitree-rl-gym.md",
+      "detail_id": "entity-unitree-rl-gym",
+      "label": "unitree_rl_gym",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/unitree-rl-lab.md",
+      "detail_id": "entity-unitree-rl-lab",
+      "label": "unitree_rl_lab",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/unitree-mujoco.md",
+      "detail_id": "entity-unitree-mujoco",
+      "label": "unitree_mujoco",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/unitree-lerobot.md",
+      "detail_id": "entity-unitree-lerobot",
+      "label": "unitree_lerobot",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/unitree-sim-isaaclab.md",
+      "detail_id": "entity-unitree-sim-isaaclab",
+      "label": "unitree_sim_isaaclab",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/unifolm-vla.md",
+      "detail_id": "entity-unifolm-vla",
+      "label": "UnifoLM-VLA-0（unifolm-vla）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
       "has_repo": true
     },
     {
-      "path": "roadmap/depth-rl-locomotion.md",
-      "detail_id": "roadmap-depth-rl-locomotion",
-      "label": "路线（纵深）：如果目标是人形 RL 运动控制",
-      "type": "roadmap_page",
+      "path": "wiki/entities/unifolm-world-model-action.md",
+      "detail_id": "entity-unifolm-world-model-action",
+      "label": "UnifoLM-WMA-0（unifolm-world-model-action）",
+      "type": "entity",
       "recency": "2026-07-24",
       "source": "log.md",
-      "action": "maintained"
+      "action": "added",
+      "has_repo": true
     },
     {
-      "path": "roadmap/depth-safe-control.md",
-      "detail_id": "roadmap-depth-safe-control",
-      "label": "路线（纵深）：如果目标是安全控制（CLF / CBF / Safe RL）",
-      "type": "roadmap_page",
+      "path": "wiki/entities/point-lio-unilidar.md",
+      "detail_id": "entity-point-lio-unilidar",
+      "label": "point_lio_unilidar",
+      "type": "entity",
       "recency": "2026-07-24",
       "source": "log.md",
-      "action": "maintained"
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/qmini.md",
+      "detail_id": "entity-qmini",
+      "label": "Qmini",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/motor-dynamometer.md",
-    "detail_id": "wiki-concepts-motor-dynamometer",
-    "label": "电机测功机（Dynamometer）",
-    "type": "concept",
+    "path": "wiki/entities/unitree-sdk2.md",
+    "detail_id": "entity-unitree-sdk2",
+    "label": "unitree_sdk2（含 Python 绑定）",
+    "type": "entity",
     "recency": "2026-07-24",
     "source": "log.md",
     "action": "added",
@@ -213,27 +241,27 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 372
-    },
-    {
-      "label": "仿真到现实",
-      "size": 206
-    },
-    {
-      "label": "移动操作",
-      "size": 178
+      "size": 360
     },
     {
       "label": "人形论文深读笔记",
       "size": 177
     },
     {
+      "label": "仿真到现实",
+      "size": 176
+    },
+    {
+      "label": "移动操作",
+      "size": 156
+    },
+    {
       "label": "人形强化学习运动控制",
-      "size": 114
+      "size": 149
     },
     {
       "label": "全身控制",
-      "size": 106
+      "size": 120
     }
   ],
   "top_hubs": [
@@ -248,7 +276,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 335,
+      "degree": 345,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -264,7 +292,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 300,
+      "degree": 304,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -280,13 +308,13 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 257
+      "degree": 264
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 245,
+      "degree": 246,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
@@ -301,7 +329,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 189,
+      "degree": 193,
       "has_repo": true,
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
@@ -326,22 +354,23 @@
       "label": "BeyondMimic",
       "type": "method",
       "degree": 59,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",
       "label": "OmniRetarget",
       "type": "entity",
       "degree": 49,
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",
       "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
       "type": "entity",
       "degree": 47,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "wiki-methods-deepmimic",
@@ -361,7 +390,8 @@
       "label": "TWIST2",
       "type": "entity",
       "degree": 41,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",

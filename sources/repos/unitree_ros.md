@@ -8,7 +8,7 @@
 - **链接：** https://github.com/unitreerobotics/unitree_ros
 - **入库日期：** 2026-05-17
 - **一句话说明：** 官方 ROS1 仿真与描述包集合：多机型 URDF/xacro、Gazebo8 世界与关节控制器（力矩/位置/角速度），README 明确 Gazebo 不提供高层行走；真机 ROS 控制需配合 `unitree_ros_to_real` 与 `unitree_legged_msgs`。
-- **沉淀到 wiki：** 是 → [`wiki/entities/unitree-ros.md`](../wiki/entities/unitree-ros.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/unitree-ros.md`](../../wiki/entities/unitree-ros.md)
 
 ## README 要点（编译自上游 master）
 
