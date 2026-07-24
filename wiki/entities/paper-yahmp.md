@@ -145,10 +145,7 @@ sequenceDiagram
 5. **Teacher–Student 相对标准 PPO 增益很小**，训练更贵。
 6. **手部力随机化**：仿真 free-space 跟踪几乎不变，但真机持力明显更好（4 kg 肘偏角约 **15.5°→6.6°**）。
 7. **部署**：nominal 可 **zero-shot** 上 G1（无真机微调）；同数据重训的 TWIST2 在 key-body 位置上略优，YAHMP 在基座/朝向/关节速度上更准。
-<<<<<<< HEAD
 
-=======
->>>>>>> 96cc74e2 (docs(schema): 规定 paper-* 实体页必须含「结论」章节)
 ## 与其他工作对比
 
 | 对照 | 差异读法 |

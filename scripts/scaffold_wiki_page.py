@@ -215,9 +215,7 @@ def _body_paper(title: str) -> str:
     )
 
 
-def build_skeleton(
-    page_type: str, title: str, dataset: bool = False, paper: bool = False
-) -> str:
+def build_skeleton(page_type: str, title: str, dataset: bool = False, paper: bool = False) -> str:
     if dataset:
         return _frontmatter(page_type, title, dataset=True) + "\n" + _body_dataset(title)
     if paper:
@@ -318,9 +316,7 @@ def main(argv: list[str] | None = None) -> int:
         print("✗ 无法从标题推断 slug（纯中文？请用 --slug 指定）", file=sys.stderr)
         return 2
 
-    content = build_skeleton(
-        args.type, args.title, dataset=args.dataset, paper=args.paper
-    )
+    content = build_skeleton(args.type, args.title, dataset=args.dataset, paper=args.paper)
 
     problems = self_check(content, args.type)
     wc = word_count(content)
