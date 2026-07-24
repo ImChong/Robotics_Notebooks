@@ -830,35 +830,38 @@
 
     function renderTimelineDay(dateLabel, metas, totalCount, dayStats) {
       var fold = metas.length > TIMELINE_FOLD_LIMIT;
-      var itemsHtml = '';
+      var previewHtml = '';
+      var restHtml = '';
       for (var ii = 0; ii < metas.length; ii++) {
-        itemsHtml += renderTimelineItem(metas[ii], fold && ii >= TIMELINE_FOLD_SHOW);
+        var itemHtml = renderTimelineItem(metas[ii], false);
+        if (fold && ii >= TIMELINE_FOLD_SHOW) restHtml += itemHtml;
+        else previewHtml += itemHtml;
       }
       var dayMeta = formatDayMeta(metas, totalCount, dayStats);
-      var dateText = escapeHtml(dateLabel || '未标注日期');
-      var metaHtml = '<span class="updates-day-meta">' + escapeHtml(dayMeta) + '</span>';
-      // 超量日：标题行横向箭头切换展开/收起（吸顶），避免底部按钮被长列表刷走
-      var titleHtml = fold
-        ? (
-          '<button type="button" class="updates-day-toggle" data-total="' +
+      var foldToggle = '';
+      if (fold) {
+        var restCount = metas.length - TIMELINE_FOLD_SHOW;
+        foldToggle =
+          '<button type="button" class="updates-day-more" data-total="' +
           metas.length +
+          '" data-rest="' +
+          restCount +
           '" aria-expanded="false" aria-label="展开全部 ' +
           metas.length +
           ' 项">' +
           '<span class="updates-day-chevron" aria-hidden="true"></span>' +
-          '<span class="updates-day-date-label">' + dateText + '</span>' +
-          metaHtml +
-          '</button>'
-        )
-        : (dateText + metaHtml);
+          '</button>';
+      }
       return (
-        '<section class="updates-day' +
-        (fold ? ' is-folded is-collapsible' : '') +
-        '">' +
+        '<section class="updates-day' + (fold ? ' is-folded is-collapsible' : '') + '">' +
         '<h3 class="updates-day-date"><span class="updates-day-dot" aria-hidden="true"></span>' +
-        titleHtml +
-        '</h3>' +
-        '<ul class="updates-day-list">' + itemsHtml + '</ul>' +
+        escapeHtml(dateLabel || '未标注日期') +
+        '<span class="updates-day-meta">' + escapeHtml(dayMeta) + '</span></h3>' +
+        '<ul class="updates-day-list">' + previewHtml + '</ul>' +
+        foldToggle +
+        (fold
+          ? '<ul class="updates-day-list updates-day-list-rest">' + restHtml + '</ul>'
+          : '') +
         '</section>'
       );
     }
@@ -1069,23 +1072,23 @@
         }
         return;
       }
-      var toggleBtn = ev.target.closest('button.updates-day-toggle');
-      if (toggleBtn) {
-        var daySection = toggleBtn.closest('.updates-day');
+      var moreBtn = ev.target.closest('button.updates-day-more');
+      if (moreBtn) {
+        var daySection = moreBtn.closest('.updates-day');
         if (!daySection) return;
-        var total = toggleBtn.getAttribute('data-total') || '';
+        var total = moreBtn.getAttribute('data-total') || '';
         var isFolded = daySection.classList.contains('is-folded');
         if (isFolded) {
           daySection.classList.remove('is-folded');
-          toggleBtn.setAttribute('aria-expanded', 'true');
-          toggleBtn.setAttribute('aria-label', '收起至前 ' + TIMELINE_FOLD_SHOW + ' 项');
+          moreBtn.setAttribute('aria-expanded', 'true');
+          moreBtn.setAttribute('aria-label', '收起至前 ' + TIMELINE_FOLD_SHOW + ' 项');
         } else {
           daySection.classList.add('is-folded');
-          toggleBtn.setAttribute('aria-expanded', 'false');
-          toggleBtn.setAttribute('aria-label', '展开全部 ' + total + ' 项');
-          // 长列表中部点收起后，把日期标题带回视口（避让吸顶站头）
-          if (daySection.scrollIntoView) {
-            daySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          moreBtn.setAttribute('aria-expanded', 'false');
+          moreBtn.setAttribute('aria-label', '展开全部 ' + total + ' 项');
+          // 箭头固定在预览区后；收起后把箭头带回视口，避免停在已隐藏的长列表位置
+          if (moreBtn.scrollIntoView) {
+            moreBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
           }
         }
       }

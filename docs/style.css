@@ -714,68 +714,50 @@ body.sponsor-dialog-open {
   background: var(--accent);
   box-shadow: 0 0 0 3px var(--bg);
 }
-/* 超量日：标题行可点，横向 › / 展开后 ∨；展开态吸顶，收起不必滚到列表底 */
-.updates-day.is-collapsible .updates-day-date {
-  z-index: 2;
-}
-.updates-day.is-collapsible:not(.is-folded) .updates-day-date {
-  position: sticky;
-  top: var(--header-h);
-  margin: 0 -4px;
-  padding: 8px 4px;
-  background: var(--bg);
-  box-shadow: 0 8px 12px -8px rgba(0, 0, 0, 0.35);
-}
-[data-theme="light"] .updates-day.is-collapsible:not(.is-folded) .updates-day-date {
-  box-shadow: 0 8px 12px -8px rgba(0, 0, 0, 0.12);
-}
-.updates-day-toggle {
-  display: inline-flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 0.15rem 0.45rem;
-  max-width: 100%;
-  margin: 0;
+.updates-day-meta { font-size: .78rem; font-weight: 400; color: var(--text-muted); margin-left: .55rem; }
+.updates-day-list { list-style: none; margin: 8px 0 0; padding: 0; --updates-badge-col-width: 3.25rem; }
+.updates-day-list-rest { margin-top: 0; }
+/* 超量日：预览约 12 条后放折叠箭头；展开后箭头仍留在预览区下方（其余条目在箭头下），可随时收起 */
+.updates-day.is-folded .updates-day-list-rest { display: none; }
+.updates-day-more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  margin: 6px 0 2px;
   padding: 0;
-  border: 0;
+  color: var(--accent);
   background: transparent;
-  color: inherit;
-  font: inherit;
-  font-weight: inherit;
-  line-height: inherit;
-  text-align: left;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
   cursor: pointer;
+  transition: color var(--transition), border-color var(--transition), background var(--transition);
 }
-.updates-day-toggle:hover .updates-day-chevron {
-  border-color: var(--accent);
-  opacity: 1;
+.updates-day-more:hover {
+  color: var(--accent-hover);
+  border-color: var(--accent-hover);
+  background: rgba(127, 182, 240, 0.08);
 }
-.updates-day-toggle:focus-visible {
+[data-theme="light"] .updates-day-more:hover {
+  background: rgba(42, 108, 180, 0.06);
+}
+.updates-day-more:focus-visible {
   outline: 2px solid var(--accent);
-  outline-offset: 3px;
-  border-radius: 4px;
+  outline-offset: 2px;
 }
 .updates-day-chevron {
-  display: inline-block;
-  flex-shrink: 0;
-  width: 0.42rem;
-  height: 0.42rem;
-  margin-right: 0.15rem;
-  margin-top: -0.12em;
-  border-right: 2px solid var(--text-muted);
-  border-bottom: 2px solid var(--text-muted);
-  transform: rotate(-45deg); /* 折叠：横向 › */
-  opacity: 0.75;
-  transition: transform 0.15s ease, border-color var(--transition), opacity var(--transition);
-  align-self: center;
+  display: block;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg); /* 折叠：向下 ∨，展开更多 */
+  transition: transform 0.15s ease;
 }
 .updates-day.is-collapsible:not(.is-folded) .updates-day-chevron {
-  transform: rotate(45deg); /* 展开：向下 ∨ */
+  transform: rotate(-135deg); /* 展开：向上 ∧，收起至预览 */
 }
-.updates-day-date-label { font-weight: 700; }
-.updates-day-meta { font-size: .78rem; font-weight: 400; color: var(--text-muted); margin-left: .55rem; }
-.updates-day-toggle .updates-day-meta { margin-left: 0; }
-.updates-day-list { list-style: none; margin: 8px 0 0; padding: 0; --updates-badge-col-width: 3.25rem; }
 .updates-item {
   display: grid;
   grid-template-columns: var(--updates-badge-col-width, 3.25rem) max-content 1fr;
@@ -853,7 +835,6 @@ a .updates-item-opensource {
   }
   .updates-item-main .updates-item-cat { white-space: normal; }
 }
-.updates-day.is-folded .updates-item-folded { display: none; }
 .updates-timeline-actions {
   display: flex;
   flex-wrap: wrap;
