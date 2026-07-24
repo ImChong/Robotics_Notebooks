@@ -717,14 +717,14 @@ body.sponsor-dialog-open {
 .updates-day-meta { font-size: .78rem; font-weight: 400; color: var(--text-muted); margin-left: .55rem; }
 .updates-day-list { list-style: none; margin: 8px 0 0; padding: 0; --updates-badge-col-width: 3.25rem; }
 .updates-day-list-rest { margin-top: 0; }
-/* 超量日：预览约 12 条后放折叠箭头；展开后箭头仍留在预览区下方（其余条目在箭头下），可随时收起 */
+/* 超量日：预览 10 条后放折叠箭头 + 数量说明；其余条目在箭头下，可随时收起 */
 .updates-day.is-folded .updates-day-list-rest { display: none; }
 .updates-day-more {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  gap: 0.45rem;
   margin: 2px 0 0;
-  padding: 8px 12px;
+  padding: 6px 4px;
   color: var(--accent);
   background: transparent;
   border: 0;
@@ -743,6 +743,7 @@ body.sponsor-dialog-open {
 }
 .updates-day-chevron {
   display: block;
+  flex-shrink: 0;
   width: 0.55rem;
   height: 0.55rem;
   border-right: 2px solid currentColor;
@@ -752,6 +753,12 @@ body.sponsor-dialog-open {
 }
 .updates-day.is-collapsible:not(.is-folded) .updates-day-chevron {
   transform: rotate(-135deg); /* 展开：向上 ∧，收起至预览 */
+}
+.updates-day-more-label {
+  font-size: .8rem;
+  font-weight: 400;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 .updates-item {
   display: grid;
@@ -1863,13 +1870,6 @@ button.home-wiki-heatmap-cell.is-active {
 .detail-markdown-body ul,
 .detail-markdown-body ol {
   padding-left: 1.4em;
-}
-.detail-markdown-body ul ul,
-.detail-markdown-body ol ol,
-.detail-markdown-body ul ol,
-.detail-markdown-body ol ul {
-  margin-top: 0.35rem;
-  margin-bottom: 0.1rem;
 }
 .detail-markdown-body li + li {
   margin-top: .35em;
