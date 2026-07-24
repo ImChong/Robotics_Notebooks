@@ -45,6 +45,32 @@
   - [`wiki/tasks/teleoperation.md`](wiki/tasks/teleoperation.md)
   - [`wiki/entities/lerobot.md`](wiki/entities/lerobot.md)
 
+## [2026-07-24] ingest | sources/sites/motor_dynamometer_primary_refs.md — 测功机一手资料合集入库；升格 wiki/concepts/motor-dynamometer.md
+
+- **资料（一手）：**
+  - [GB/T 43200-2023](https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=B2E40B3445ACE9E166E8E402E89853AF) 机器人一体化关节性能及试验方法
+  - [IEC 60034-2-1:2024](https://webstore.iec.ch/en/publication/67756) 旋转电机损耗与效率试验方法
+  - [Magtrol Manuals](https://www.magtrol.com/manuals/)（HD/ED、WB、M-TEST 7）
+  - [Capo01/odrive_based_electric_motor_dynamometer](https://github.com/Capo01/odrive_based_electric_motor_dynamometer) 开源四象限对拖
+  - [AIP 旋转关节/人形电机对拖方案](https://aipuo.com/products/1336.html)（对标 GB/T 43200；商业未开源）
+  - 艾诺「三层测试」工程分层文（仪器网转载，补边界）
+- **归档：**
+  - [`sources/sites/motor_dynamometer_primary_refs.md`](sources/sites/motor_dynamometer_primary_refs.md)
+  - [`sources/sites/gbt_43200_2023_robot_joint_performance.md`](sources/sites/gbt_43200_2023_robot_joint_performance.md)
+  - [`sources/sites/iec_60034_2_1_motor_efficiency.md`](sources/sites/iec_60034_2_1_motor_efficiency.md)
+  - [`sources/sites/magtrol_dynamometer_manuals.md`](sources/sites/magtrol_dynamometer_manuals.md)
+  - [`sources/sites/aip_robot_joint_dynamometer.md`](sources/sites/aip_robot_joint_dynamometer.md)
+  - [`sources/repos/odrive_based_electric_motor_dynamometer.md`](sources/repos/odrive_based_electric_motor_dynamometer.md)
+- **开源核查：** ODrive 对拖仓 **已开源**；Magtrol / AIP / 国标正文 **确认未开源**（手册或元数据公开）
+- **升格：** [`wiki/concepts/motor-dynamometer.md`](wiki/concepts/motor-dynamometer.md)
+- **交叉更新：**
+  - [`wiki/overview/motor-design-workflow.md`](wiki/overview/motor-design-workflow.md)
+  - [`wiki/concepts/motor-torque-speed-curve.md`](wiki/concepts/motor-torque-speed-curve.md)
+  - [`wiki/concepts/motor-torque-current-curve.md`](wiki/concepts/motor-torque-current-curve.md)
+  - [`roadmap/depth-torque-motor-design.md`](roadmap/depth-torque-motor-design.md)（Stage 6）
+  - [`sources/README.md`](sources/README.md)
+
+
 ## [2026-07-24] fix(docs) | README 在线演示「知识图谱」粗体链接 `**` 原样显示
 
 - **现象：** `**[知识图谱](url)**`（粗体包住整段链接）在 GitHub Markdown 下星号可原样露出；同模式亦见于「如何贡献」的 `**[CONTRIBUTING.md](...)**`。

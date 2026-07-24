@@ -2,7 +2,7 @@
 type: concept
 tags: [motor, actuator, hardware, humanoid, torque, current, efficiency]
 status: complete
-updated: 2026-06-10
+updated: 2026-07-24
 related:
   - ./motor-torque-speed-curve.md
   - ./field-oriented-control.md
@@ -96,6 +96,7 @@ T_{\mathrm{cont}} \approx K_t \cdot I_{\mathrm{cont}}, \quad T_{\mathrm{peak}} \
 ## 关联页面
 
 - [电机转矩-转速曲线（TN 曲线）](./motor-torque-speed-curve.md)
+- [电机测功机（Dynamometer）](./motor-dynamometer.md) — 静态扭矩与 \(K_t\) 的台架测法
 - [磁场定向控制（FOC）](./field-oriented-control.md)
 - [Humanoid 执行器 102 · 热学与力矩控制](../overview/humanoid-actuator-102-thermal-and-control.md)
 - [电机电磁仿真软件选型](../comparisons/motor-em-simulation-software.md)
@@ -104,6 +105,7 @@ T_{\mathrm{cont}} \approx K_t \cdot I_{\mathrm{cont}}, \quad T_{\mathrm{peak}} \
 ## 参考来源
 
 - [motor_curves_and_em_simulation_faq.md](../../sources/personal/motor_curves_and_em_simulation_faq.md)
+- [motor_dynamometer_primary_refs.md](../../sources/sites/motor_dynamometer_primary_refs.md)
 
 ## 推荐继续阅读
 
