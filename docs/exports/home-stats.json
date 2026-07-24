@@ -1,13 +1,94 @@
 {
   "generated_at": "2026-07-24",
-  "node_count": 1819,
-  "edge_count": 15242,
+  "node_count": 1820,
+  "edge_count": 15259,
   "coverage": {
-    "covered": 1767,
-    "total": 1796,
+    "covered": 1768,
+    "total": 1797,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-vtap-gripper.md",
+      "detail_id": "entity-paper-vtap-gripper",
+      "label": "VTAP Gripper（视触觉主动掌夹爪）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
+    {
+      "path": "wiki/concepts/visuo-tactile-fusion.md",
+      "detail_id": "wiki-concepts-visuo-tactile-fusion",
+      "label": "视触觉融合（Visuo-Tactile Fusion）",
+      "type": "concept",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/gel-slim.md",
+      "detail_id": "entity-gel-slim",
+      "label": "GelSlim（薄片化视觉触觉传感器）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
+    {
+      "path": "wiki/methods/in-hand-reorientation.md",
+      "detail_id": "wiki-methods-in-hand-reorientation",
+      "label": "In-hand Reorientation (手内重定向)",
+      "type": "method",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
+    {
+      "path": "wiki/concepts/tactile-sensing.md",
+      "detail_id": "wiki-concepts-tactile-sensing",
+      "label": "Tactile Sensing（触觉感知）",
+      "type": "concept",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
+    {
+      "path": "wiki/concepts/contact-rich-manipulation.md",
+      "detail_id": "wiki-concepts-contact-rich-manipulation",
+      "label": "Contact-Rich Manipulation（接触丰富型操作）",
+      "type": "concept",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
+    {
+      "path": "wiki/concepts/motion-retargeting.md",
+      "detail_id": "wiki-concepts-motion-retargeting",
+      "label": "Motion Retargeting（动作重定向）",
+      "type": "concept",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/paper-kairos-native-world-model-stack.md",
       "detail_id": "entity-paper-kairos-native-world-model-stack",
@@ -133,105 +214,22 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-steam-advantage-modeling.md",
-      "detail_id": "entity-paper-steam-advantage-modeling",
-      "label": "STEAM：自监督时序 Ensemble Advantage 建模",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-twist2.md",
-      "detail_id": "entity-paper-twist2",
-      "label": "TWIST2",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/mjlab.md",
-      "detail_id": "entity-mjlab",
-      "label": "mjlab (轻量 GPU 加速 RL 框架)",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
-      "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
-      "label": "人形机器人 RL 运动控制：身体系统栈视角",
-      "type": "overview",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/queries/humanoid-motion-tracking-method-selection.md",
-      "detail_id": "wiki-queries-humanoid-motion-tracking-method-selection",
-      "label": "人形运动跟踪方法选型指南",
-      "type": "query",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/overview/e2e-autonomous-driving-top10-algorithms.md",
-      "detail_id": "wiki-overview-e2e-autonomous-driving-top10-algorithms",
-      "label": "端到端自动驾驶：十大前沿算法技术地图",
-      "type": "overview",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-uniad.md",
-      "detail_id": "entity-paper-uniad",
-      "label": "UniAD（Planning-oriented Autonomous Driving · arXiv:2212.10156）",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-vad-vectorized-scene.md",
-      "detail_id": "entity-paper-vad-vectorized-scene",
-      "label": "VAD（VAD: Vectorized Scene Representation for Efficient Autonomous Driving · arXiv:2303.12077）",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-kairos-native-world-model-stack.md",
-    "detail_id": "entity-paper-kairos-native-world-model-stack",
-    "label": "Kairos（原生世界–动作模型栈 · kairos-agi）",
+    "path": "wiki/entities/paper-vtap-gripper.md",
+    "detail_id": "entity-paper-vtap-gripper",
+    "label": "VTAP Gripper（视触觉主动掌夹爪）",
     "type": "entity",
     "recency": "2026-07-24",
     "source": "log.md",
-    "action": "maintained",
-    "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "action": "added",
+    "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 368
+      "size": 367
     },
     {
       "label": "仿真到现实",
@@ -279,20 +277,20 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "degree": 292,
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
       "degree": 291,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "degree": 290,
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "detail_id": "wiki-tasks-locomotion",
