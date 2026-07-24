@@ -1,5 +1,21 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-24] ingest | sources/blogs/wechat_shenlan_rss2026_eight_papers_2026-07-24.md — 深蓝具身智能 RSS 2026 Final List 八篇盘点（复用已有节点）
+
+- **资料：** [顶会 RSS 2026 释放明确信号：8篇力作聚焦底层控制、轨迹优化、物理硬件](https://mp.weixin.qq.com/s/qjhBjBqTYHcfnndPFNVb-g)（深蓝具身智能，2026-07-24）
+- **抓取：** Agent Reach v1.5.0 + `wechat-article-for-ai`；raw → [`sources/raw/wechat_shenlan_rss2026_eight_papers_2026-07-24/`](sources/raw/wechat_shenlan_rss2026_eight_papers_2026-07-24/)
+- **策略：** Final List 8 篇均已有 `status: complete` 独立节点（姊妹源 [量子位 RSS 2026](sources/blogs/wechat_qbitai_rss2026_awards_2026-07-16.md)）；**0 新建 / 0 stub**；FlashSAC 保持唯一枢纽 [`wiki/methods/flashsac.md`](wiki/methods/flashsac.md)（不另造 `paper-flashsac`）
+- **交叉更新：**
+  - [`wiki/methods/flashsac.md`](wiki/methods/flashsac.md)
+  - [`wiki/entities/paper-muninn-trajectory-diffusion-acceleration.md`](wiki/entities/paper-muninn-trajectory-diffusion-acceleration.md)
+  - [`wiki/entities/paper-neuralactuator-neural-actuation-modeling.md`](wiki/entities/paper-neuralactuator-neural-actuation-modeling.md)
+  - [`wiki/entities/paper-oat-ordered-action-tokenization.md`](wiki/entities/paper-oat-ordered-action-tokenization.md)
+  - [`wiki/entities/paper-dapl-extrinsic-dexterity-clutter.md`](wiki/entities/paper-dapl-extrinsic-dexterity-clutter.md)
+  - [`wiki/entities/paper-cunrto-gpu-robust-trajectory-optimization.md`](wiki/entities/paper-cunrto-gpu-robust-trajectory-optimization.md)
+  - [`wiki/entities/paper-unified-fluid-robot-multiphysics-swimming.md`](wiki/entities/paper-unified-fluid-robot-multiphysics-swimming.md)
+  - [`wiki/entities/paper-automated-facial-mechanisms-animatronic.md`](wiki/entities/paper-automated-facial-mechanisms-animatronic.md)
+- **补齐：** 上表中 6 篇缺 `## 结论` 的 `paper-*` 页按 schema 补结论（NeuralActuator 已有）；姊妹博客互链
+
 ## [2026-07-24] structural | Top-100 论文枢纽补齐「结论」— hub-rankings paper 榜 paper-* 全覆盖
 
 - **范围：** [`exports/hub-rankings.json`](exports/hub-rankings.json) `paper` 榜 Top-100 中全部 `wiki/entities/paper-*.md`（方法页 / 非 paper-* 实体不在「结论」政策内）

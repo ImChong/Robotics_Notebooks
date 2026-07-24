@@ -16,6 +16,7 @@ related:
   - ../entities/lerobot.md
   - ../entities/sage-sim2real-actuator-gap-estimator.md
 sources:
+  - ../../sources/blogs/wechat_shenlan_rss2026_eight_papers_2026-07-24.md
   - ../../sources/blogs/wechat_qbitai_rss2026_awards_2026-07-16.md
   - ../../sources/papers/neuralactuator_arxiv_2607_11734.md
 summary: "MIT CDFG：Transformer 执行器模型联合预测可微仿真 torque surrogate、无 F/T 的外力+接触门控与电机工况；NAD 双臂遥操作数据集；OpenManipulator-X/SO-101/Franka 验证 rollout、力估计与 BC 下游增益。"
@@ -161,6 +162,7 @@ flowchart TB
 
 ## 参考来源
 
+- [深蓝具身智能：RSS 2026 Final List 八篇盘点](../../sources/blogs/wechat_shenlan_rss2026_eight_papers_2026-07-24.md)
 - [NeuralActuator 论文归档](../../sources/papers/neuralactuator_arxiv_2607_11734.md)
 - Dou et al., *NeuralActuator: Neural Actuation Modeling for Robot Dynamics and External Force Perception*, arXiv:2607.11734
 - [项目页](https://frank-zy-dou.github.io/projects/NeuralActuator/index.html)

@@ -9,7 +9,7 @@ tags:
   - locomotion
   - rss2026
 status: complete
-updated: 2026-07-20
+updated: 2026-07-24
 arxiv: "2506.05012"
 venue: RSS 2026
 code: https://github.com/RoboticExplorationLab/Aquarium.jl
@@ -18,6 +18,7 @@ related:
   - ../concepts/sim2real.md
   - ../concepts/differentiable-simulation.md
 sources:
+  - ../../sources/blogs/wechat_shenlan_rss2026_eight_papers_2026-07-24.md
   - ../../sources/blogs/wechat_qbitai_rss2026_awards_2026-07-16.md
   - ../../sources/papers/unified_fluid_robot_multiphysics_arxiv_2506_05012.md
   - ../../sources/sites/unified-fluid-robot-multiphysics-github-io.md
@@ -146,6 +147,16 @@ sequenceDiagram
 - 线性代数：LinearAlgebra（标准库）
 - 可与 [RoboticExplorationLab](https://github.com/RoboticExplorationLab) 其他 Julia 工具（TrajectoryOptimization.jl 等）组合
 
+## 结论
+
+**统一流体–机器人最小作用量多物理，把刚体与 Navier–Stokes 写成单一变分系统，用可微仿真把游动/C-start 轨迹优化从数百秒压到数秒量级，并改善能量/动量一致性。**
+
+1. **相对分离式耦合** — 避免分步交换界面力的病态；论文相对 SPH 基线约 **75%** 更低轨迹误差。
+2. **开源可跑** — `RoboticExplorationLab/Aquarium.jl`（Julia + Zygote）；优化序列可直接上真机（论文设定）。
+3. **代价** — 完整 NS 比 resistive force 等简化模型贵；网格分辨率与涡结构保真需权衡。
+4. **生态门槛** — Julia 工具链与主流 Python/C++ 机器人栈集成需额外工程。
+5. **选型读法** — 强流固耦合游泳/水下抓取仿真优先；若只需量级正确推进力，简化流体模型可能更省算力。
+
 ## 局限与风险
 
 - **计算成本：** 完整 NS 流体求解比简化流体模型（resistive force theory、blade element 等）计算代价高，长 horizon 优化需适当网格分辨率权衡。
@@ -162,6 +173,7 @@ sequenceDiagram
 
 ## 参考来源
 
+- [深蓝具身智能：RSS 2026 Final List 八篇盘点](../../sources/blogs/wechat_shenlan_rss2026_eight_papers_2026-07-24.md)
 - [量子位：RSS 2026 三项最佳论文报道](../../sources/blogs/wechat_qbitai_rss2026_awards_2026-07-16.md)
 - [Unified Fluid-Robot Multiphysics 论文摘录（arXiv:2506.05012）](../../sources/papers/unified_fluid_robot_multiphysics_arxiv_2506_05012.md)
 - [项目页归档](../../sources/sites/unified-fluid-robot-multiphysics-github-io.md)

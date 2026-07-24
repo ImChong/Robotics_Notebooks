@@ -11,6 +11,7 @@
 - **抓取方式：** [Agent Reach](https://github.com/Panniantong/Agent-Reach) v1.5.0 + `wechat-article-for-ai`（Camoufox）；`--no-images`；Jina Reader 对该链接触发微信 CAPTCHA，未采用
 - **原始抓取落盘：** [`sources/raw/wechat_qbitai_rss2026_awards_2026-07-16/`](../raw/wechat_qbitai_rss2026_awards_2026-07-16/)
 - **一句话说明：** 报道 **RSS 2026** 论文奖：投稿 708 / 录用 210（29.7%）；**Final List 8 篇** 中评出最佳论文 / 最佳学生论文 / 最佳系统论文；并覆盖 IJRR & RSS **Test of Time**、Early Career Spotlight。本库对奖项与 Final List 论文建/链独立节点（已有节点不重复造页）。
+- **姊妹报道：** [深蓝具身智能：RSS 2026 Final List 八篇盘点（2026-07-24）](./wechat_shenlan_rss2026_eight_papers_2026-07-24.md)
 
 ## 核心摘录（归纳，非全文）
 

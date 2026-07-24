@@ -9,6 +9,89 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/methods/flashsac.md",
+      "detail_id": "wiki-methods-flashsac",
+      "label": "FlashSAC",
+      "type": "method",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-muninn-trajectory-diffusion-acceleration.md",
+      "detail_id": "entity-paper-muninn-trajectory-diffusion-acceleration",
+      "label": "Muninn（轨迹扩散免训练加速）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-neuralactuator-neural-actuation-modeling.md",
+      "detail_id": "entity-paper-neuralactuator-neural-actuation-modeling",
+      "label": "NeuralActuator（Neural Actuation Modeling · arXiv:2607.11734）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-oat-ordered-action-tokenization.md",
+      "detail_id": "entity-paper-oat-ordered-action-tokenization",
+      "label": "OAT：有序动作 Tokenization（Ordered Action Tokenization）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-dapl-extrinsic-dexterity-clutter.md",
+      "detail_id": "entity-paper-dapl-extrinsic-dexterity-clutter",
+      "label": "DAPL：杂乱场景中的外在灵巧性（Emerging Extrinsic Dexterity in Cluttered Scenes via Dynamics-aware Policy Learning）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-cunrto-gpu-robust-trajectory-optimization.md",
+      "detail_id": "entity-paper-cunrto-gpu-robust-trajectory-optimization",
+      "label": "cuNRTO：GPU 加速非线性鲁棒轨迹优化（CUDA Nonlinear Robust Trajectory Optimization）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-unified-fluid-robot-multiphysics-swimming.md",
+      "detail_id": "entity-paper-unified-fluid-robot-multiphysics-swimming",
+      "label": "统一流体-机器人多物理可微仿真（Realizing Robotic Swimming with Unified Fluid-Robot Multiphysics）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-automated-facial-mechanisms-animatronic.md",
+      "detail_id": "entity-paper-automated-facial-mechanisms-animatronic",
+      "label": "自动化面部机构合成（Automated Synthesis of Facial Mechanisms for Conversational Animatronic Robots）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "path": "wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md",
       "detail_id": "entity-paper-3d-ic-joint-navigation-manipulation-planning",
       "label": "3D-IC（3D Interaction Chains · Joint Navigation and Manipulation Planning）",
@@ -128,96 +211,18 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-12-haml.md",
-      "detail_id": "entity-paper-amp-survey-12-haml",
-      "label": "HAML：单策略人形对抗多技能学习",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-13-humanoid_goalkeeper.md",
-      "detail_id": "entity-paper-amp-survey-13-humanoid_goalkeeper",
-      "label": "Humanoid Goalkeeper：位置条件化任务–运动约束守门",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-14-husky.md",
-      "detail_id": "entity-paper-amp-survey-14-husky",
-      "label": "HUSKY：物理感知人形滑板全身控制",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-15-physhsi.md",
-      "detail_id": "entity-paper-amp-survey-15-physhsi",
-      "label": "PhysHSI：可部署的真实世界人形–场景交互",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-16-clot.md",
-      "detail_id": "entity-paper-amp-survey-16-clot",
-      "label": "CLOT",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-17-teamhoi.md",
-      "detail_id": "entity-paper-amp-survey-17-teamhoi",
-      "label": "TeamHOI：任意队形的协作人–物交互统一策略",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-19-embrace_collisions.md",
-      "detail_id": "entity-paper-amp-survey-19-embrace_collisions",
-      "label": "Embrace Collisions：可部署的接触无关人形 Shadowing",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-any2any-cross-embodiment-wbt.md",
-      "detail_id": "entity-paper-any2any-cross-embodiment-wbt",
-      "label": "Any2Any：跨具身高效全身跟踪迁移",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md",
-    "detail_id": "entity-paper-3d-ic-joint-navigation-manipulation-planning",
-    "label": "3D-IC（3D Interaction Chains · Joint Navigation and Manipulation Planning）",
-    "type": "entity",
+    "path": "wiki/methods/flashsac.md",
+    "detail_id": "wiki-methods-flashsac",
+    "label": "FlashSAC",
+    "type": "method",
     "recency": "2026-07-24",
     "source": "log.md",
     "action": "maintained",
     "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "community_label": "强化学习（Reinforcement Learning, RL） 社区"
   },
   "top_communities": [
     {
