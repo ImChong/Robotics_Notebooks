@@ -9,6 +9,34 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/urkl.md",
+      "detail_id": "entity-urkl",
+      "label": "URKL（Ultimate Robot Knock-out Legend · EngineAI 人形格斗联赛）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/tasks/teleoperation.md",
+      "detail_id": "wiki-tasks-teleoperation",
+      "label": "Teleoperation（遥操作）",
+      "type": "task",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "roadmap/depth-humanoid-boxing.md",
+      "detail_id": "roadmap-depth-humanoid-boxing",
+      "label": "路线（纵深）：如果目标是人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）",
+      "type": "roadmap_page",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
       "path": "wiki/entities/generalist-gen1-thousand-hands.md",
       "detail_id": "entity-generalist-gen1-thousand-hands",
       "label": "GEN-1 千手：跨末端执行器泛化",
@@ -181,46 +209,16 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md",
-      "detail_id": "entity-paper-actuator-constrained-rl-high-speed-quadruped-locomotion",
-      "label": "执行器约束 RL 高速四足奔跑（MOR）",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-adaptive-humanoid-control.md",
-      "detail_id": "entity-paper-adaptive-humanoid-control",
-      "label": "AHC：多行为蒸馏与强化微调的自适应人形控制",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-adp.md",
-      "detail_id": "entity-paper-adp",
-      "label": "ADP：对抗动力学先验的人形抗扰 locomotion",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/generalist-gen1-thousand-hands.md",
-    "detail_id": "entity-generalist-gen1-thousand-hands",
-    "label": "GEN-1 千手：跨末端执行器泛化",
+    "path": "wiki/entities/urkl.md",
+    "detail_id": "entity-urkl",
+    "label": "URKL（Ultimate Robot Knock-out Legend · EngineAI 人形格斗联赛）",
     "type": "entity",
     "recency": "2026-07-24",
     "source": "log.md",
-    "action": "added",
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "action": "maintained"
   },
   "top_communities": [
     {

@@ -48,9 +48,10 @@
 
 | 类别 | 结论 |
 |------|------|
-| **赛事页** | 截至 **2026-07-20** 未列 GitHub / Hugging Face / 数据集下载 |
+| **赛事页** | 截至 **2026-07-20** 未列 GitHub / Hugging Face / 数据集下载；第三方导读 [urkl.org](./urkl-org.md) 仍记英文页为 **Coming Soon**（复核至 2026-07-23） |
 | **T800 产品** | 提供 **Open Source Edition** SKU（官网标「secondary development: Support」），属 **商业硬件 + SDK** 而非公开训练代码仓库 |
-| **归类** | **商业赛事 + 硬件平台**；参赛队算法 **不承诺开源** |
+| **官方 FAQ（2026-07-24）** | [wechat_urkl_faq_01.md](../blogs/wechat_urkl_faq_01.md) 宣称将 **开源本届赛事相关代码**，但 **未给仓库 URL** → **宣称将开源 / 待发布** |
+| **归类** | **商业赛事 + 硬件平台**；参赛队算法是否强制开源 **未在官网细则中写死**；组委会侧「赛事相关代码」开源 **待链接落地** |
 
 ## 对 wiki 的映射
 
@@ -58,9 +59,11 @@
 - 硬件交叉：T800（本 ingest 未单独建实体页；见产品页与 [LHBS](../../wiki/entities/paper-notebook-learning-human-like-badminton-skills-for-humanoi.md) 中的 EngineAI PM01 对照）
 - 任务/路线交叉：[Teleoperation](../../wiki/tasks/teleoperation.md)、[人形拳击纵深路线](../../roadmap/depth-humanoid-boxing.md)
 - 产业对照：[REK](../../wiki/entities/rek.md) — VR 遥操作格斗联赛
+- 姊妹归档：[urkl-org.md](./urkl-org.md)（独立导读）、[wechat_urkl_faq_01.md](../blogs/wechat_urkl_faq_01.md)（官方 FAQ）
 
 ## 待后续深读（可选）
 
 - [ ] 官方规则 PDF / 评分细则全文（击打精度、闪避、起身速度等权重）
 - [ ] 线上资格赛评测接口与提交格式（开放后）
 - [ ] T800 SDK/API 文档是否对参赛队单独开放
+- [ ] 组委会「本届赛事相关代码」开源仓库 URL 落地后回写步骤 2.5
