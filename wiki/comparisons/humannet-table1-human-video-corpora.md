@@ -2,10 +2,11 @@
 type: comparison
 tags: [dataset, egocentric-video, exocentric-video, vla, embodied-pretraining, humannet]
 status: complete
-updated: 2026-05-17
+updated: 2026-07-24
 summary: "围绕 HumanNet 论文 Table 1，把代表性人类视频/行为语料按视点、活动语义与「具身向可用性」分组，并指向各数据集的官方入口；用于 VLA/模仿学习侧的人类数据选型，而非替代各数据集的官方数据卡。"
 related:
   - ../entities/humannet.md
+  - ../entities/paper-egoverse.md
   - ../methods/vla.md
   - ../methods/imitation-learning.md
   - ../methods/egoscale.md
@@ -13,6 +14,7 @@ related:
 sources:
   - ../../sources/papers/humannet_table1_benchmark_corpora.md
   - ../../sources/papers/humannet.md
+  - ../../sources/papers/egoverse_arxiv_2604_07607.md
 ---
 
 # HumanNet Table 1：代表性人类视频语料与具身向关系
@@ -47,7 +49,7 @@ sources:
 
 ## 视点与活动语义：三组速记
 
-1. **Ego 灵巧线**：EgoDex / OpenEgo / EgoScale 等把 **第一人称 + 手部/任务结构** 推到数据建设前台，与 VLA 里「人视频小时 ↔ 验证损失」缩放叙事常一起出现（另见 [EgoScale](../methods/egoscale.md)）。
+1. **Ego 灵巧线**：EgoDex / OpenEgo / EgoScale / [EgoVerse](../entities/paper-egoverse.md) 等把 **第一人称 + 手部/任务结构** 推到数据建设前台；EgoScale 常与 VLA「人视频小时 ↔ 验证损失」缩放叙事一起出现（另见 [EgoScale](../methods/egoscale.md)），EgoVerse 则强调 **联盟协议 + 人–机共训判据**。
 2. **Exo 互联网视频线**：Kinetics、Something-Something、HowTo100M 等覆盖 **语义与多样性**，更偏 **预训练与表征**，与真机日志的组合方式需单独设计。
 3. **混合与成对**：Ego-Exo4D 强调 **多视点技能活动**；Human2Robot 强调 **人–机成对观测**；HumanNet 强调 **百万小时级人中心视频 + 交互向标注管线**（见 [HumanNet](../entities/humannet.md)）。
 
@@ -59,7 +61,7 @@ sources:
 
 ## 与其他页面的关系
 
-- **实体**：[HumanNet](../entities/humannet.md) 给出语料定义、管线抽象与局限。
+- **实体**：[HumanNet](../entities/humannet.md) 给出语料定义、管线抽象与局限；[EgoVerse](../entities/paper-egoverse.md) 给出联盟式 egocentric 示教 + 跨实验室共训对照。
 - **方法**：[VLA](../methods/vla.md)、[Imitation Learning](../methods/imitation-learning.md) 讨论人类侧数据与真机数据的互补与不等价替换。
 - **方法**：[EgoScale](../methods/egoscale.md) 提供「万小时级 ego 人视频 ↔ VLA」的实证参照轴。
 - **概念**：[具身规模法则](../concepts/embodied-scaling-laws.md) 用于讨论 **人视频小时** 与 **机器人日志小时** 在指标上不可混用。
@@ -68,11 +70,13 @@ sources:
 
 - [HumanNet Table 1 语料链接与规模转录](../../sources/papers/humannet_table1_benchmark_corpora.md)
 - [HumanNet 论文 ingest 归档](../../sources/papers/humannet.md)
+- [EgoVerse 论文 ingest 归档](../../sources/papers/egoverse_arxiv_2604_07607.md)
 - Deng et al., *HumanNet: Scaling Human-centric Video Learning to One Million Hours*（[arXiv:2605.06747](https://arxiv.org/abs/2605.06747)）
 
 ## 关联页面
 
 - [HumanNet](../entities/humannet.md)
+- [EgoVerse](../entities/paper-egoverse.md)
 - [VLA](../methods/vla.md)
 - [Imitation Learning](../methods/imitation-learning.md)
 - [EgoScale](../methods/egoscale.md)
@@ -81,3 +85,4 @@ sources:
 ## 推荐继续阅读
 
 - HumanNet 项目主页：<https://dagroup-pku.github.io/HumanNet/>（数据卡、发布说明与引用格式以官方为准）
+- EgoVerse 项目页：<https://egoverse.ai/>（联盟数据集、浏览器与跨实验室评测入口）

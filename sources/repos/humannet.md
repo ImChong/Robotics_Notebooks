@@ -14,7 +14,7 @@
 
 ## 为何值得保留
 
-- **规模与覆盖**：与 EPIC-KITCHENS、Ego4D、EgoScale、EgoVerse、Ego-Exo4D 等并列讨论时，HumanNet 在「总时长 × 视点 × 活动广度」上给出新的数量级参照。
+- **规模与覆盖**：与 EPIC-KITCHENS、Ego4D、EgoScale、[EgoVerse](../../wiki/entities/paper-egoverse.md)、Ego-Exo4D 等并列讨论时，HumanNet 在「总时长 × 视点 × 活动广度」上给出新的数量级参照。
 - **工程可拆分**：采集 / 处理 / 标注三阶段边界清晰，便于对照本仓库中 [自动化标注流水线](../../wiki/methods/auto-labeling-pipelines.md) 与 [具身数据清洗](../../wiki/concepts/embodied-data-cleaning.md) 等条目。
 - **开源入口**：论文 + 项目页 + GitHub 并列，便于跟踪数据卡、许可与版本发布。
 

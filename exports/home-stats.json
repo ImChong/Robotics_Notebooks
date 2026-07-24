@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-24",
-  "node_count": 1824,
-  "edge_count": 15316,
+  "node_count": 1825,
+  "edge_count": 15336,
   "coverage": {
-    "covered": 1773,
-    "total": 1801,
+    "covered": 1774,
+    "total": 1802,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -55,6 +55,80 @@
       "detail_id": "wiki-methods-egoscale",
       "label": "EgoScale",
       "type": "method",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-egoverse.md",
+      "detail_id": "entity-paper-egoverse",
+      "label": "EgoVerse（Egocentric 人类数据集 · 联盟级人→机迁移）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-egowam-egocentric-human-wam-co-training.md",
+      "detail_id": "entity-paper-egowam-egocentric-human-wam-co-training",
+      "label": "EgoWAM（野外 Egocentric 人数据 · World Action Model 协同训练）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/imitation-learning.md",
+      "detail_id": "wiki-methods-imitation-learning",
+      "label": "Imitation Learning (IL, 模仿学习)",
+      "type": "method",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/entities/humannet.md",
+      "detail_id": "entity-humannet",
+      "label": "HumanNet",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/comparisons/humannet-table1-human-video-corpora.md",
+      "detail_id": "wiki-comparisons-humannet-table1-human-video-corpora",
+      "label": "HumanNet Table 1：代表性人类视频语料与具身向关系",
+      "type": "comparison",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/world-action-models.md",
+      "detail_id": "wiki-concepts-world-action-models",
+      "label": "World Action Models（WAM，世界–动作模型）",
+      "type": "concept",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/ego-category-02-human-to-robot.md",
+      "detail_id": "wiki-overview-ego-category-02-human-to-robot",
+      "label": "Ego 分类 02：人→机器人",
+      "type": "overview",
       "recency": "2026-07-24",
       "source": "log.md",
       "action": "maintained",
@@ -137,76 +211,6 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/queries/cross-embodiment-transfer-strategy.md",
-      "detail_id": "wiki-queries-cross-embodiment-transfer-strategy",
-      "label": "跨具身策略迁移选型指南",
-      "type": "query",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/flashsac.md",
-      "detail_id": "wiki-methods-flashsac",
-      "label": "FlashSAC",
-      "type": "method",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-muninn-trajectory-diffusion-acceleration.md",
-      "detail_id": "entity-paper-muninn-trajectory-diffusion-acceleration",
-      "label": "Muninn（轨迹扩散免训练加速）",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-neuralactuator-neural-actuation-modeling.md",
-      "detail_id": "entity-paper-neuralactuator-neural-actuation-modeling",
-      "label": "NeuralActuator（Neural Actuation Modeling · arXiv:2607.11734）",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-oat-ordered-action-tokenization.md",
-      "detail_id": "entity-paper-oat-ordered-action-tokenization",
-      "label": "OAT：有序动作 Tokenization（Ordered Action Tokenization）",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dapl-extrinsic-dexterity-clutter.md",
-      "detail_id": "entity-paper-dapl-extrinsic-dexterity-clutter",
-      "label": "DAPL：杂乱场景中的外在灵巧性（Emerging Extrinsic Dexterity in Cluttered Scenes via Dynamics-aware Policy Learning）",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-cunrto-gpu-robust-trajectory-optimization.md",
-      "detail_id": "entity-paper-cunrto-gpu-robust-trajectory-optimization",
-      "label": "cuNRTO：GPU 加速非线性鲁棒轨迹优化（CUDA Nonlinear Robust Trajectory Optimization）",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -223,7 +227,7 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 373
+      "size": 374
     },
     {
       "label": "仿真到现实",
@@ -266,7 +270,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 330,
+      "degree": 331,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -274,7 +278,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 298,
+      "degree": 300,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -311,7 +315,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 187,
+      "degree": 189,
       "has_repo": true,
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
