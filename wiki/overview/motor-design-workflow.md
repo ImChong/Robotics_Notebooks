@@ -2,7 +2,7 @@
 type: overview
 tags: [motor, actuator, hardware, humanoid, design, foc, simulation]
 status: complete
-updated: 2026-07-14
+updated: 2026-07-24
 related:
   - ../concepts/motor-torque-speed-curve.md
   - ../concepts/motor-torque-current-curve.md
@@ -114,7 +114,7 @@ flowchart TD
 
 ### 6) 样机与台架测试
 
-台架应测全族曲线，而非单点：
+台架核心设备是 [电机测功机（Dynamometer）](../concepts/motor-dynamometer.md)（吸收式或电力对拖）；应测全族曲线，而非单点：
 
 | 测试 | 验证什么 |
 |------|----------|
@@ -123,7 +123,7 @@ flowchart TD
 | 效率地图 | 工作点能耗与热 |
 | 温升试验 | 连续转矩是否可维持 |
 
-仿真–实测偏差大时，回到步骤 3–4 改磁路或冷却，而不是仅在驱动器上调参。
+仿真–实测偏差大时，回到步骤 3–4 改磁路或冷却，而不是仅在驱动器上调参。选型测功机时先核对 **最大扭矩（含堵转）→ 连续机械功率 → 是否需要四象限**。
 
 ### 7) 驱动器与 FOC 验证
 
@@ -155,6 +155,7 @@ flowchart TD
 ## 关联页面
 
 - [力矩电机设计纵深路线（Stage 0–6 学习顺序展开版）](../../roadmap/depth-torque-motor-design.md)
+- [电机测功机（Dynamometer）](../concepts/motor-dynamometer.md)
 - [电机电磁仿真软件选型](../comparisons/motor-em-simulation-software.md)
 - [电机转矩-转速曲线（TN 曲线）](../concepts/motor-torque-speed-curve.md)
 - [电机转矩-电流曲线（TI 曲线）](../concepts/motor-torque-current-curve.md)
@@ -166,6 +167,7 @@ flowchart TD
 - [ansys_motor_cad_electric_machine_design.md](../../sources/sites/ansys_motor_cad_electric_machine_design.md)
 - [motor_curves_and_em_simulation_faq.md](../../sources/personal/motor_curves_and_em_simulation_faq.md)
 - [simplefoc_documentation.md](../../sources/sites/simplefoc_documentation.md)
+- [motor_dynamometer_primary_refs.md](../../sources/sites/motor_dynamometer_primary_refs.md)
 
 ## 推荐继续阅读
 

@@ -1282,6 +1282,7 @@
 - [Motion Data Quality（动作数据质量维度）](wiki/concepts/motion-data-quality.md) — 把一段参考运动 / 演示数据「能不能直接喂给人形策略训练」拆成**四个可独立评估的质量轴**。它回答的不是「数据多不多」，而是「数据**像不像**机器人能物理执行的东西」——这正是 [Motion R `📅unknown` `[wiki_page]`
 - [Motion Retargeting Pipeline（动作重定向流水线）](wiki/concepts/motion-retargeting-pipeline.md) — Motion Retargeting Pipeline** 关注的不是「某一个重定向算法」，而是把**异构来源的人体动作**（MoCap、单目视频估计、生成模型、遥操作流）落到**机器人可执行参考 `📅unknown` `[wiki_page]`
 - [Motion Retargeting（动作重定向）](wiki/concepts/motion-retargeting.md) — Motion Retargeting 是将一个运动序列（通常来自人类或动物）**转换为适合目标机器人执行的动作序列**的过程。 `📅unknown` `[wiki_page]`
+- [电机测功机（Dynamometer）](wiki/concepts/motor-dynamometer.md) — 测功机**是给被测电机或关节模组施加可控机械负载，并同步测量扭矩、转速（进而机械功率）的试验台核心设备；仿真出来的 TN / [T `📅unknown` `[wiki_page]`
 - [电机转矩-电流曲线（TI 曲线）](wiki/concepts/motor-torque-current-curve.md) — TI 曲线**（Torque-Current Curve，转矩-电流曲线）描述电机输出转矩与驱动电流之间的关系。对永磁同步电机（PMSM）和无刷电机（BLDC），它在理想区近似直线，斜率即 **力 `📅unknown` `[wiki_page]`
 - [电机转矩-转速曲线（TN 曲线）](wiki/concepts/motor-torque-speed-curve.md) — TN 曲线**（Torque-Speed Curve，转矩-转速曲线）以转速为横轴、输出转矩为纵轴，刻画电机/关节模组在全速域内的力矩能力边界；评估人形或腿足执行器时，它通常是 datasheet `📅unknown` `[wiki_page]`
 - [MPC 与 WBC 集成：人形机器人 locomotion 的典型控制架构](wiki/concepts/mpc-wbc-integration.md) — MPC 负责"大尺度规划"（质心往哪走、落脚点放哪），WBC 负责"全身执行"（怎么协调关节力矩来跟踪 MPC 发出的指令）**——两者分层配合，组成当前人形机器人 locomotion 最主流的 `📅unknown` `[wiki_page]`

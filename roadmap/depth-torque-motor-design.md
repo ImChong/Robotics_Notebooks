@@ -196,6 +196,7 @@ flowchart LR
 - 交付给控制/RL 团队时，执行器的可仿真模型（摩擦、延迟、饱和）怎么从台架数据来
 
 ### 推荐读什么
+- [电机测功机（Dynamometer）](../wiki/concepts/motor-dynamometer.md) — 磁滞/涡流/磁粉吸收 vs 电力对拖；GB/T 43200 与 IEC 效率试验入口
 - [电机设计流程](../wiki/overview/motor-design-workflow.md) 步骤 6–8（台架 → FOC 验证 → 模组验收）
 - [电机驱动器底软通信协议总览](../wiki/overview/motor-drive-firmware-bus-protocols.md)
 - [Query：EtherCAT 主站优化指南](../wiki/queries/ethercat-master-optimization.md) 与 [Query：实时运控中间件配置指南](../wiki/queries/real-time-control-middleware-guide.md)
@@ -204,7 +205,7 @@ flowchart LR
 - [Query：主流人形机器人硬件对比](../wiki/queries/hardware-comparison.md) — 对照商用模组的验收指标定位自己的水平
 
 ### 推荐做什么
-- 对拖台架测整模组 TN/TI、效率地图与温升曲线，和 Stage 2 仿真对账；偏差大时回改磁路或冷却而不是只调驱动参数
+- 按 [测功机](../wiki/concepts/motor-dynamometer.md) 选型清单选定吸收式或对拖台架后，测整模组 TN/TI、效率地图与温升曲线，和 Stage 2 仿真对账；偏差大时回改磁路或冷却而不是只调驱动参数
 - 上总线以 1 kHz 发力矩指令，测"指令 → 相电流 → 输出力矩"的端到端延迟与抖动
 - 把台架数据拟合成执行器模型（解析摩擦模型或 actuator network），在 Isaac/MuJoCo 里复现台架阶跃响应
 
@@ -224,7 +225,7 @@ flowchart LR
 | Stage 3 | 电流采样与电流环 | [FOC 逐步推导](../wiki/formalizations/field-oriented-control-derivation.md) |
 | Stage 4 | 驱动板功率级/采样链路落板 | [Humanoid Hardware 101 · 05：能源与计算电子](../wiki/overview/humanoid-hardware-101-power-compute-electronics.md) |
 | Stage 5 | 力矩标定与补偿 | [磁场定向控制（FOC）](../wiki/concepts/field-oriented-control.md) |
-| Stage 6 | 模组验收与总线力矩模式 | [电机驱动器底软通信协议总览](../wiki/overview/motor-drive-firmware-bus-protocols.md) |
+| Stage 6 | 模组验收与总线力矩模式 | [电机测功机](../wiki/concepts/motor-dynamometer.md) · [底软通信协议](../wiki/overview/motor-drive-firmware-bus-protocols.md) |
 
 ## 和其他页面的关系
 
@@ -262,6 +263,7 @@ flowchart LR
 本路线基于以下原始资料与 wiki 编译页的归纳：
 
 - [电机设计流程（规格 → 仿真 → 样机 → 控制）](../wiki/overview/motor-design-workflow.md) 及其 sources（Motor-CAD 官方资料、电机曲线与电磁仿真 FAQ、SimpleFOC 文档）
+- [电机测功机一手资料索引](../sources/sites/motor_dynamometer_primary_refs.md)（GB/T 43200、IEC 60034-2-1、Magtrol 手册、ODrive 开源对拖、AIP 关节对拖）
 - [Humanoid 执行器 102 系列](../wiki/overview/humanoid-actuator-102-technology-map.md)（sources：执行器 102 微信长文）
 - [磁场定向控制（FOC）逐步推导](../wiki/formalizations/field-oriented-control-derivation.md)
 - Blaschke, *The Principle of Field Orientation as Applied to the New Transvektor Closed-Loop Control System* (1972) — FOC 起点
