@@ -829,7 +829,23 @@
       );
     }
 
-    /** 单日展开导航：对齐时间线「再展开 30 天 / 展开全部 / 收起」的 btn-secondary 组合 */
+    /** 单日展开导航：交互对齐「再展开 30 天」三按钮；视觉沿用 PR#1245 箭头+文案样式 */
+    function renderDayActionButton(className, label, pointingUp) {
+      return (
+        '<button type="button" class="updates-day-more ' +
+        className +
+        (pointingUp ? ' is-collapse' : '') +
+        '" aria-label="' +
+        escapeHtml(label) +
+        '">' +
+        '<span class="updates-day-chevron" aria-hidden="true"></span>' +
+        '<span class="updates-day-more-label">' +
+        escapeHtml(label) +
+        '</span>' +
+        '</button>'
+      );
+    }
+
     function renderDayActions(total, showCount) {
       if (!(total > TIMELINE_FOLD_LIMIT)) return '';
       var canExpandMore = showCount < total;
@@ -837,21 +853,27 @@
       var leftButtons = [];
       if (canExpandMore) {
         leftButtons.push(
-          '<button type="button" class="btn-secondary updates-day-more-step">再展开 ' +
-          TIMELINE_FOLD_STEP +
-          ' 项</button>'
+          renderDayActionButton(
+            'updates-day-more-step',
+            '再展开 ' + TIMELINE_FOLD_STEP + ' 项',
+            false
+          )
         );
         leftButtons.push(
-          '<button type="button" class="btn-secondary updates-day-show-all">展开全部 ' +
-          total +
-          ' 项</button>'
+          renderDayActionButton(
+            'updates-day-show-all',
+            '展开全部 ' + total + ' 项',
+            false
+          )
         );
       }
       if (isExpanded) {
         leftButtons.push(
-          '<button type="button" class="btn-secondary updates-day-collapse">收起至前 ' +
-          TIMELINE_FOLD_SHOW +
-          ' 项</button>'
+          renderDayActionButton(
+            'updates-day-collapse',
+            '收起至前 ' + TIMELINE_FOLD_SHOW + ' 项',
+            true
+          )
         );
       }
       if (!leftButtons.length) return '';
