@@ -2,7 +2,7 @@
 type: overview
 tags: [egocentric, ego-survey, category-hub, imitation-learning, vla, mobile-manipulation]
 status: complete
-updated: 2026-06-01
+updated: 2026-07-24
 summary: "Ego 9 篇专题 · 02 人→机器人（3 篇）— 第一视角视频须经对齐与共训才进策略；EgoMimic/EMMA 证 IL 缩放，Gaze2Act 补 VLA 空间意图。"
 related:
   - ./ego-9-papers-technology-map.md
@@ -13,9 +13,11 @@ related:
   - ../entities/paper-ego-03-egomimic.md
   - ../entities/paper-ego-04-emma.md
   - ../entities/paper-ego-05-gaze2act.md
+  - ../entities/paper-egoverse.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md
   - ../../sources/papers/ego_9_papers_catalog.md
+  - ../../sources/papers/egoverse_arxiv_2604_07607.md
 ---
 
 # Ego 分类 02：人→机器人
@@ -46,12 +48,15 @@ sources:
 
 - [模仿学习](../methods/imitation-learning.md)、[VLA](../methods/vla.md)
 - [世界模型](./ego-category-03-world-models.md)
+- [EgoVerse](../entities/paper-egoverse.md) — 联盟级人→机共训研究：共训有效，但缩放依赖域对齐锚定
 
 ## 参考来源
 
 - [wechat_embodied_ai_lab_ego_9_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md)
 - [ego_9_papers_catalog.md](../../sources/papers/ego_9_papers_catalog.md)
+- [EgoVerse 论文摘录](../../sources/papers/egoverse_arxiv_2604_07607.md)
 
 ## 推荐继续阅读
 
 - [机器人论文阅读笔记：EgoHumanoid](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/EgoHumanoid__Unlocking_In-the-Wild_Loco-Manipulation_with_Robot-Free_Egocentric_/EgoHumanoid__Unlocking_In-the-Wild_Loco-Manipulation_with_Robot-Free_Egocentric_.html)
+- [EgoVerse 项目页](https://egoverse.ai/)

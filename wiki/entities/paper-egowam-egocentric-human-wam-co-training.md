@@ -20,6 +20,7 @@ related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
   - ../comparisons/humannet-table1-human-video-corpora.md
+  - ./paper-egoverse.md
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
   - ./paper-dit4dit-video-action-model.md
   - ./paper-wam-ttt-human-video-test-time-steering.md
@@ -28,6 +29,7 @@ related:
 sources:
   - ../../sources/papers/egowam.md
   - ../../sources/papers/egosteer_arxiv_2607_09701.md
+  - ../../sources/papers/egoverse_arxiv_2604_07607.md
 summary: "EgoWAM（Georgia Tech RL²）：固定 HPT 骨干与数据混合、仅替换世界预测目标（Pixel/DINO/3D flow）的受控人–机协同训练——WAM 状态分支弥合具身差距，使机器人性能随野外 egocentric 人数据扩展；DINO 最高约 4× OOD 泛化，3D flow 域内 +20–30%，未对齐人数据下 BC 可跌至 robot-only 以下而 3D Flow 仍鲁棒。"
 ---
 
@@ -65,7 +67,7 @@ summary: "EgoWAM（Georgia Tech RL²）：固定 HPT 骨干与数据混合、仅
 | **共享 Transformer trunk** | 产出 **obs / action / future** 三类 token |
 | **动作头（固定）** | **Conditional flow matching**；读 action tokens；推理唯一执行路径 |
 | **世界头（可替换）** | 读 future tokens；在 **Pixel VAE / DINO RAE / 3D flow** 空间重建未来观测；训练时与动作头 **联合反传**，推理 **关闭** |
-| **三源数据混合（固定配方）** | 机器人遥操作 + **域内人**（同场景物体、视点/行为不匹配）+ **野外人**（[EgoVerse](https://egoverse.ai/)） |
+| **三源数据混合（固定配方）** | 机器人遥操作 + **域内人**（同场景物体、视点/行为不匹配）+ **野外人**（[EgoVerse](./paper-egoverse.md)） |
 
 ### 流程总览
 
@@ -107,7 +109,7 @@ flowchart TB
 | **主结论** | WAM 协同训练随野外人数据 **扩展优于 BC**；**DINO** **OOD** 最高约 **4×**；**3D flow** 域内 **+20–30%** |
 | **对齐消融** | 未对齐人数据：**BC 20% < robot-only 40%**；**3D Flow 75%**；对齐：**3D Flow 85%** |
 | **表征** | UMAP：**BC** 人机分簇 → **WAM（3D Flow）** 共享嵌入空间 |
-| **数据生态** | 野外人数据来自 **EgoVerse** 生态（见 [HumanNet 对比表](../comparisons/humannet-table1-human-video-corpora.md) 中的 EgoVerse 行） |
+| **数据生态** | 野外人数据来自 **[EgoVerse](./paper-egoverse.md)**（见 [HumanNet 对比表](../comparisons/humannet-table1-human-video-corpora.md) 中的 EgoVerse 行） |
 
 ## 结论
 
@@ -123,7 +125,7 @@ flowchart TB
 
 - **误区：** 认为「加更多人视频 + BC」必然提升；论文显示 **misaligned** 人数据可让 BC **差于纯机器人数据**，而 **WAM** 仍可利用 **对齐** 与部分 **未对齐** 数据。
 - **误区：** 把任意 **video prediction loss** 等同于有效 WAM；关键是 **世界目标空间**——**Pixel** 在本设定下 **迁移弱**。
-- **局限：** 截至 ingest **arXiv / 代码尚未公开**；任务规模为 **三项双臂真机**；与 **人形全身 loco-manip**（如 [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md)）形态不同；**HPT** 与 **EgoVerse** 细节以论文全文为准。
+- **局限：** 截至 ingest **arXiv / 代码尚未公开**；任务规模为 **三项双臂真机**；与 **人形全身 loco-manip**（如 [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md)）形态不同；**HPT** 细节以项目页为准；野外数据底座见已入库的 [EgoVerse](./paper-egoverse.md)。
 
 ## 与其他页面的关系
 
@@ -144,16 +146,18 @@ flowchart TB
 - [EgoScale](../methods/egoscale.md)
 - [EgoSteer](./paper-egosteer.md)
 - [HumanNet 人视频语料对比](../comparisons/humannet-table1-human-video-corpora.md)
+- [EgoVerse](./paper-egoverse.md)
 
 ## 参考来源
 
 - [EgoWAM 项目页摘录](../../sources/papers/egowam.md)
 - [EgoSteer 论文摘录（对照）](../../sources/papers/egosteer_arxiv_2607_09701.md)
+- [EgoVerse 论文摘录](../../sources/papers/egoverse_arxiv_2604_07607.md)
 
 ## 推荐继续阅读
 
 - [EgoWAM 项目页](https://gatech-rl2.github.io/egowam.github.io/)
-- [EgoVerse 数据集与平台](https://egoverse.ai/)
-- [EgoVerse 论文（arXiv:2604.07607）](https://arxiv.org/abs/2604.07607)
+- [EgoVerse 论文实体](./paper-egoverse.md)
+- [EgoVerse 项目页](https://egoverse.ai/)
 - [World Action Models 概念页](../concepts/world-action-models.md)
 - [EgoScale 方法页](../methods/egoscale.md) — VLA 人视频缩放对照

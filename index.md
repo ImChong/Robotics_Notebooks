@@ -67,6 +67,7 @@
 - [DeFI（解耦前向/逆动力学 VLA）](wiki/methods/defi-decoupled-dynamics-vla.md)（GFDM + GIDM 分阶段预训练；arXiv:2604.16391）
 - [MINT（Mimic Intent, Not Just Trajectories）](wiki/entities/paper-mint-vla.md)（RSS 2026：频域意图分词 + 单样本迁移；arXiv:2602.08602）
 - [EgoScale](wiki/methods/egoscale.md)（2 万小时级 egocentric 人视频预训练 VLA + 对齐 mid-training；arXiv:2602.16710）
+- [EgoVerse](wiki/entities/paper-egoverse.md)（联盟式 egocentric 人示教活数据集 + 跨实验室人→机共训研究；arXiv:2604.07607）
 - [ENPIRE](wiki/methods/enpire.md)（coding agent 真机策略自改进闭环：EN–PI–R–E 四模块 + AutoEnvBench；NVIDIA GEAR 2026）
 - [Model Predictive Control (MPC)](wiki/methods/model-predictive-control.md)
 - [Trajectory Optimization](wiki/methods/trajectory-optimization.md)

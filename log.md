@@ -1,5 +1,26 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-24] ingest | sources/papers/egoverse_arxiv_2604_07607.md + sources/sites/egoverse-ai.md + sources/repos/egoverse.md — EgoVerse 联盟 egocentric 人示教活数据集与跨实验室共训研究；升格 wiki/entities/paper-egoverse.md；交叉更新 EgoWAM / EgoScale / HumanNet / manipulation / ego hubs / index.md
+
+- **资料：** [EgoVerse 项目页](https://egoverse.ai/) · [arXiv:2604.07607](https://arxiv.org/abs/2604.07607) · [GaTech-RL2/EgoVerse](https://github.com/GaTech-RL2/EgoVerse)
+- **归档：**
+  - [`sources/papers/egoverse_arxiv_2604_07607.md`](sources/papers/egoverse_arxiv_2604_07607.md)
+  - [`sources/sites/egoverse-ai.md`](sources/sites/egoverse-ai.md)
+  - [`sources/repos/egoverse.md`](sources/repos/egoverse.md)
+- **开源核查：** 代码 **MIT 已开源**；数据经 Dataset browser + SQL/R2 **受控开放**（需云凭证）
+- **升格：** [`wiki/entities/paper-egoverse.md`](wiki/entities/paper-egoverse.md)
+- **交叉更新：**
+  - [`wiki/entities/paper-egowam-egocentric-human-wam-co-training.md`](wiki/entities/paper-egowam-egocentric-human-wam-co-training.md)
+  - [`wiki/methods/egoscale.md`](wiki/methods/egoscale.md)
+  - [`wiki/methods/imitation-learning.md`](wiki/methods/imitation-learning.md)
+  - [`wiki/entities/humannet.md`](wiki/entities/humannet.md)
+  - [`wiki/comparisons/humannet-table1-human-video-corpora.md`](wiki/comparisons/humannet-table1-human-video-corpora.md)
+  - [`wiki/concepts/world-action-models.md`](wiki/concepts/world-action-models.md)
+  - [`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)
+  - [`wiki/overview/ego-category-01-data-collection.md`](wiki/overview/ego-category-01-data-collection.md)
+  - [`wiki/overview/ego-category-02-human-to-robot.md`](wiki/overview/ego-category-02-human-to-robot.md)
+  - [`index.md`](index.md)
+
 ## [2026-07-24] ingest | sources/blogs/wechat_urkl_faq_01.md + sources/sites/urkl-org.md — 众擎 URKL 官方 FAQ 与 urkl.org 独立导读；更新 wiki/entities/urkl.md、wiki/tasks/teleoperation.md、sources/sites/engineai-urkl.md
 
 - **资料 A：** [「众」所周知丨众擎URKL常见疑问解答（01篇）](https://mp.weixin.qq.com/s/mZiWICUnOJZ5bBObVcvUcw)（URKL / 众擎官方公众号，2026-07-24）
