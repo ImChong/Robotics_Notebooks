@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-24",
   "node_count": 1816,
-  "edge_count": 15205,
+  "edge_count": 15206,
   "coverage": {
     "covered": 1764,
     "total": 1793,
@@ -166,55 +166,57 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
-      "path": "wiki/comparisons/mobile-robot-navigation-planning-methods.md",
-      "detail_id": "wiki-comparisons-mobile-robot-navigation-planning-methods",
-      "label": "移动机器人导航规划方法对比：全局搜索 · 局部避障 · 路径平滑",
-      "type": "comparison",
+      "path": "wiki/entities/kicad.md",
+      "detail_id": "entity-kicad",
+      "label": "KiCad（开源 PCB 与原理图 EDA）",
+      "type": "entity",
       "recency": "2026-07-23",
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/queries/soccer-visual-field-localization-pipeline.md",
-      "detail_id": "wiki-queries-soccer-visual-field-localization-pipeline",
-      "label": "足球机器人视觉场线定位流水线",
-      "type": "query",
+      "path": "wiki/entities/simplefoc.md",
+      "detail_id": "entity-simplefoc",
+      "label": "SimpleFOC（Arduino-FOC 生态）",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-neuralactuator-neural-actuation-modeling.md",
+      "detail_id": "entity-paper-neuralactuator-neural-actuation-modeling",
+      "label": "NeuralActuator（Neural Actuation Modeling · arXiv:2607.11734）",
+      "type": "entity",
       "recency": "2026-07-23",
       "source": "log.md",
       "action": "maintained",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/queries/humanoid-voice-interaction-pipeline.md",
-      "detail_id": "wiki-queries-humanoid-voice-interaction-pipeline",
-      "label": "人形语音交互流水线：唤醒→ASR→LLM→技能/VLN→TTS 可打断闭环",
-      "type": "query",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/generative-motion-rig.md",
-      "detail_id": "entity-generative-motion-rig",
-      "label": "Generative Motion Rig（Disney）：艺术家驱动的生成式运动绑定",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/blender.md",
-      "detail_id": "entity-blender",
-      "label": "Blender（开源 3D 创作套件）",
+      "path": "wiki/entities/bam-better-actuator-models.md",
+      "detail_id": "entity-bam-better-actuator-models",
+      "label": "BAM（Better Actuator Models）",
       "type": "entity",
       "recency": "2026-07-23",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/concepts/ethercat-protocol.md",
+      "detail_id": "wiki-concepts-ethercat-protocol",
+      "label": "EtherCAT 协议基础",
+      "type": "concept",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "机器人系统工程（专题汇总） 社区"
     }
   ],
   "latest_wiki_node": {

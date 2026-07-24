@@ -4,6 +4,7 @@ tags: [software, eda, pcb, hardware, open-source, embedded, manufacturing, kicad
 status: complete
 updated: 2026-07-18
 related:
+  - ../queries/actuator-drive-chain-selection-loop.md
   - ../overview/humanoid-hardware-101-power-compute-electronics.md
   - ../overview/motor-drive-firmware-bus-protocols.md
   - ./freecad.md
@@ -12,7 +13,6 @@ related:
   - ./en02-op.md
   - ./open-source-humanoid-hardware.md
   - ../concepts/field-oriented-control.md
-  - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/sites/kicad-org.md
   - ../../sources/courses/kicad_docs_10_zh.md
@@ -111,6 +111,7 @@ flowchart TB
 
 ## 关联页面
 
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 本页处于驱动链 **①层 EDA 电路设计**（开源 KiCad vs 商用 Altium、自研驱动板 vs 商用一体化关节）
 - [Humanoid Hardware 101 · 05：能源与计算电子](../overview/humanoid-hardware-101-power-compute-electronics.md)
 - [电机驱动器底软通信协议总览](../overview/motor-drive-firmware-bus-protocols.md)
 - [力矩电机设计纵深（Stage 4 PCB）](../../roadmap/depth-torque-motor-design.md)
@@ -120,7 +121,6 @@ flowchart TB
 - [EN02-OP](./en02-op.md)
 - [开源人形机器人硬件方案对比](./open-source-humanoid-hardware.md)
 - [磁场定向控制（FOC）](../concepts/field-oriented-control.md)
-- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — KiCad 是①层开源 EDA 驱动板设计工具
 
 ## 参考来源
 
