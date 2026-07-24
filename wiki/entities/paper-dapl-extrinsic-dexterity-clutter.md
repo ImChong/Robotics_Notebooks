@@ -10,7 +10,7 @@ tags:
   - extrinsic-dexterity
   - rss2026
 status: complete
-updated: 2026-07-20
+updated: 2026-07-24
 arxiv: "2603.09882"
 venue: RSS 2026
 related:
@@ -19,6 +19,7 @@ related:
   - ../methods/reinforcement-learning.md
   - ../concepts/sim2real.md
 sources:
+  - ../../sources/blogs/wechat_shenlan_rss2026_eight_papers_2026-07-24.md
   - ../../sources/blogs/wechat_qbitai_rss2026_awards_2026-07-16.md
   - ../../sources/papers/dapl_extrinsic_dexterity_arxiv_2603_09882.md
   - ../../sources/sites/dapl-pku-epic-github-io.md
@@ -131,6 +132,16 @@ sequenceDiagram
 - **真机成功率：** 在 **10 个** 不同杂乱货架配置场景中评测（每场景多次试验），真机取物成功率约 **50%**，操作模式为推 / 拨 / 翻转（非抓取）。
 - **sim2real 观察：** 仿真到真机存在接触动力学 gap；动力学感知表示有助缩小该 gap 但未完全消除，剩余差距是真机成功率仍有提升空间的主因。
 
+## 结论
+
+**DAPL 先学接触动力学世界模型，再用其表征引导 RL，使杂乱场景中推/拨/翻转等外在灵巧行为涌现，而不是依赖精确物体模型或预设原语。**
+
+1. **仿真增益清晰** — 相对无动力学感知基线，杂乱取物成功率提升 **>25%**。
+2. **真机约 50%** — 10 类货架杂乱场景；接触动力学 sim2real gap 仍是主瓶颈。
+3. **任务边界** — 专注非抓取外在灵巧；精细夹取、轻薄片/球形等形态覆盖有限。
+4. **复现风险** — 截至入库日 IsaacLab-nonPrehensile 仍标 In preparation，完整代码未齐。
+5. **选型读法** — 遮挡严重、必须借力挪障的货架整理优先；结构化精确抓取仍走几何规划或抓取策略。
+
 ## 与其他工作对比
 
 - **vs 传统规划方法：** 传统方法要求精确物体模型才能规划避障抓取路径；DAPL 无需精确建模即可在接触密集的杂乱场景中操作。
@@ -154,6 +165,7 @@ sequenceDiagram
 
 ## 参考来源
 
+- [深蓝具身智能：RSS 2026 Final List 八篇盘点](../../sources/blogs/wechat_shenlan_rss2026_eight_papers_2026-07-24.md)
 - [量子位：RSS 2026 三项最佳论文报道](../../sources/blogs/wechat_qbitai_rss2026_awards_2026-07-16.md)
 - [DAPL 论文摘录（arXiv:2603.09882）](../../sources/papers/dapl_extrinsic_dexterity_arxiv_2603_09882.md)
 - [DAPL 项目页归档](../../sources/sites/dapl-pku-epic-github-io.md)

@@ -8,7 +8,7 @@ tags:
   - robust-control
   - rss2026
 status: complete
-updated: 2026-07-20
+updated: 2026-07-24
 arxiv: "2603.02642"
 venue: RSS 2026
 related:
@@ -18,6 +18,7 @@ related:
 related_external:
   - https://cunrto.github.io/
 sources:
+  - ../../sources/blogs/wechat_shenlan_rss2026_eight_papers_2026-07-24.md
   - ../../sources/blogs/wechat_qbitai_rss2026_awards_2026-07-16.md
   - ../../sources/papers/cunrto_arxiv_2603_02642.md
   - ../../sources/sites/cunrto-github-io.md
@@ -131,6 +132,16 @@ flowchart LR
 - **不确定性建模：** 将仿真-真机动力学误差（质量、摩擦、延迟等）建模为不确定性集合 $\mathcal{W}$。
 - **鲁棒轨迹保证：** cuNRTO 生成的轨迹在 $\mathcal{W}$ 约束下可行，在真机上遇到建模误差时仍有轨迹跟踪安全裕量。
 
+## 结论
+
+**cuNRTO 把非线性鲁棒轨迹优化改成 CPU 外层线性化 + GPU 内层并行 SOCP/ADMM，把原本小时级规划压到秒级，使在线重规划与 RL 嵌套成为可能。**
+
+1. **墙钟是真卖点** — 文内最高约 **139.6×**；Franka 7-DoF 相对 CPU 基线约 **25.9×**；NRTO-LE 扩展可冲 **100%** 约束满足。
+2. **新用法** — 秒级求解后，RL 训练嵌套鲁棒规划、部署在线重规划才「算得起」。
+3. **开源未齐** — 截至核查日项目页未列 GitHub；勿假设可直接复现。
+4. **建模质量决定保证** — 不确定性集 $\mathcal{W}$ 若盖不住真实 sim2real gap，鲁棒保证失效。
+5. **近似边界** — 强非线性/大位移下线性化与凸松弛误差需单独评估；超长 horizon / 全身人形可能撞单卡显存。
+
 ## 局限与风险
 
 - **代码未开源（截至入库日）：** 无法直接复现；依赖后续发布。
@@ -147,6 +158,7 @@ flowchart LR
 
 ## 参考来源
 
+- [深蓝具身智能：RSS 2026 Final List 八篇盘点](../../sources/blogs/wechat_shenlan_rss2026_eight_papers_2026-07-24.md)
 - [量子位：RSS 2026 三项最佳论文报道](../../sources/blogs/wechat_qbitai_rss2026_awards_2026-07-16.md)
 - [cuNRTO 论文摘录（arXiv:2603.02642）](../../sources/papers/cunrto_arxiv_2603_02642.md)
 - [cuNRTO 项目页归档](../../sources/sites/cunrto-github-io.md)

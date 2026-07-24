@@ -100,7 +100,7 @@
 ### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（717 个）
+### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（711 个）
 - wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md
 - wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md
 - wiki/entities/paper-adaptive-humanoid-control.md
@@ -116,7 +116,7 @@
 - wiki/entities/paper-anymal-walk-minutes-parallel-drl.md
 - wiki/entities/paper-apt-rl-agile-perceptive-quadruped-locomotion.md
 - wiki/entities/paper-argus-dynamic-symmetry.md
-- … 另有 702 个（历史 backlog；新建 / 大幅改写的 paper-* 必须含 `## 结论`）
+- … 另有 696 个（历史 backlog；新建 / 大幅改写的 paper-* 必须含 `## 结论`）
 
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无

@@ -10,7 +10,7 @@ tags:
   - mechanism-design
   - rss2026
 status: complete
-updated: 2026-07-20
+updated: 2026-07-24
 arxiv: "2607.11688"
 venue: RSS 2026
 code: https://github.com/ZZongzheng0918/automated-facial-mechanisms-synthesis
@@ -18,6 +18,7 @@ related:
   - ../tasks/manipulation.md
   - ../entities/midas-hand.md
 sources:
+  - ../../sources/blogs/wechat_shenlan_rss2026_eight_papers_2026-07-24.md
   - ../../sources/blogs/wechat_qbitai_rss2026_awards_2026-07-16.md
   - ../../sources/papers/automated_facial_mechanisms_rss2026.md
   - ../../sources/sites/automated-facial-mechanisms-github-io.md
@@ -136,6 +137,16 @@ sequenceDiagram
 - **泛化验证：** 同一参数化连杆模板 + 分层优化框架跨越多样化人脸与角色几何自动生成可制造机构方案，验证了「单一框架 → 多样面部」的适配能力。
 - **同行评审认可：** 入围 **RSS 2026 Finalist**。
 
+## 结论
+
+**单张 2D 人脸即可驱动分层运动学 + CAD 碰撞闭环，在十余分钟级自动合成可制造、无干涉的对话式 Animatronic 面部连杆机构。**
+
+1. **替代手工调连杆** — 内层解剖/表情轨迹优化 + 外层全局装配碰撞修正，输出可直接制造的结构。
+2. **已开源可复现** — preprocess → optimize → visualize → export_cad 流水线；多脸型原型验证说话/微笑/皱眉。
+3. **皮肤与联合 AU 仍是弱点** — 均匀弹性假设与 AU 独立建模，复杂联合表情可能要后期微调。
+4. **输入质量敏感** — 低质扫描或缺失几何会伤形状适配层。
+5. **边界** — 模板约 10–16 路舵机；LLM 驱动的实时 AU 时序映射不在本文范围，需外部接口。
+
 ## 与其他工作对比
 
 - **vs 传统手工定制：** 现有 Animatronic 面部机构极度依赖经验工匠逐款手工布局拉杆、铰链与舵机，研发周期长、成本高、难以复用；本文将设计转化为结构化参数优化，实现自动化、可批量化。
@@ -156,6 +167,7 @@ sequenceDiagram
 
 ## 参考来源
 
+- [深蓝具身智能：RSS 2026 Final List 八篇盘点](../../sources/blogs/wechat_shenlan_rss2026_eight_papers_2026-07-24.md)
 - [量子位：RSS 2026 三项最佳论文报道](../../sources/blogs/wechat_qbitai_rss2026_awards_2026-07-16.md)
 - [Automated Facial Mechanisms 论文摘录（arXiv:2607.11688）](../../sources/papers/automated_facial_mechanisms_rss2026.md)
 - [项目页归档](../../sources/sites/automated-facial-mechanisms-github-io.md)

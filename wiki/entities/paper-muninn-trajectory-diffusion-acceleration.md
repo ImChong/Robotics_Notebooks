@@ -9,7 +9,7 @@ tags:
   - offline-rl
   - uiuc
 status: complete
-updated: 2026-07-20
+updated: 2026-07-24
 arxiv: "2605.09999"
 venue: RSS 2026
 code: https://github.com/gokulp01/Muninn
@@ -19,6 +19,7 @@ related:
   - ../methods/reinforcement-learning.md
   - ../tasks/manipulation.md
 sources:
+  - ../../sources/blogs/wechat_shenlan_rss2026_eight_papers_2026-07-24.md
   - ../../sources/blogs/wechat_qbitai_rss2026_awards_2026-07-16.md
   - ../../sources/papers/muninn_arxiv_2605_09999.md
   - ../../sources/repos/muninn.md
@@ -93,6 +94,17 @@ flowchart TB
 
 论文报告最高约 **4.6×** 墙钟加速（因模型与 $\eta$ 而异），任务指标与 Full 教师 **基本持平**，硬件上在相近成功率下延迟约 **减半至 1/3**。
 
+## 结论
+
+**Muninn 不是新扩散规划器，而是免训练缓存包装器：用 probe + conformal 偏差预算决定何时跳过完整 denoiser，换墙钟且尽量贴近教师轨迹。**
+
+1. **真收益是延迟** — 报告最高约 **4.6×** 墙钟加速；硬件闭环常可把延迟压到约一半至 1/3，任务分与 Full 教师基本持平。
+2. **先选好教师** — wrapper 逼近原教师；教师不安全或碰撞率高，Muninn 不会 magically 变安全。
+3. **证书≠碰撞保证** — conformal 界的是与全量采样的轨迹距离，接触/约束仍需外层滤波或 MPC。
+4. **部署要重标定** — 可交换假设下标定；新障碍统计、新动力学域需重跑标定。
+5. **集成成本** — 官方开箱偏 Diffuser+D4RL；DP / 真机需自写 `DiffusionAdapter`。
+6. **选型读法** — 优先于「截断步数 / FixedSkip」：预算按步非均匀，且不要求重训蒸馏模型。
+
 ## 常见误区或局限
 
 - **误区：Muninn 是新的扩散规划器** — 它是 **wrapper**；行为上逼近 **原教师**，教师不安全则 Muninn 也不自动变安全。
@@ -120,6 +132,7 @@ flowchart TB
 
 ## 参考来源
 
+- [深蓝具身智能：RSS 2026 Final List 八篇盘点](../../sources/blogs/wechat_shenlan_rss2026_eight_papers_2026-07-24.md)
 - [Muninn 论文摘录（arXiv:2605.09999）](../../sources/papers/muninn_arxiv_2605_09999.md)
 - [gokulp01/Muninn 代码索引](../../sources/repos/muninn.md)
 

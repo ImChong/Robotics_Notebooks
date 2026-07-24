@@ -8,7 +8,7 @@ tags:
   - imitation-learning
   - rss2026
 status: complete
-updated: 2026-07-20
+updated: 2026-07-24
 arxiv: "2602.04215"
 venue: RSS 2026
 related:
@@ -19,6 +19,7 @@ related:
   - ../methods/flashsac.md
 code: https://github.com/Chaoqi-LIU/oat
 sources:
+  - ../../sources/blogs/wechat_shenlan_rss2026_eight_papers_2026-07-24.md
   - ../../sources/papers/oat_ordered_action_tokenization_arxiv_2602_04215.md
   - ../../sources/repos/oat-ordered-action-tokenization.md
   - ../../sources/blogs/wechat_qbitai_rss2026_awards_2026-07-16.md
@@ -127,6 +128,16 @@ sequenceDiagram
 
 - **20+ 机器人操作任务**（含 LIBERO 等）；主指标成功率；基线含 VQ/FSQ tokenization 与 Diffusion Policy。
 
+## 结论
+
+**OAT 用「高压缩 × 完全可解码 × 左右因果」三项约束，把连续动作压成粗到细的有序 token，让 AR 策略可按算力预算截断生成深度。**
+
+1. **主战场是 manipulation AR 头** — 20+ 操作任务上相对 VQ/FSQ tokenization 与 Diffusion Policy 更强；locomotion / 飞行未充分验证。
+2. **粗到细可截断** — 前 token 定轮廓、后 token 补细节；推理可按延迟预算提前停。
+3. **超参仍关键** — 层级数与码本大小决定精度/延迟权衡；VQ 训练仍可能 codebook 利用率不均。
+4. **开源可跑** — 官方 `Chaoqi-LIU/oat` + LIBERO zarr；可作 VLA 动作头插入。
+5. **选型读法** — 要 kv-cache 式 LLM 加速、又要动作保真时优先考虑 OAT；纯高频连续控制仍对照扩散策略。
+
 ## 局限与风险
 
 - **层级数与码本大小超参：** 需按任务精度/延迟调参。
@@ -143,6 +154,7 @@ sequenceDiagram
 
 ## 参考来源
 
+- [深蓝具身智能：RSS 2026 Final List 八篇盘点](../../sources/blogs/wechat_shenlan_rss2026_eight_papers_2026-07-24.md)
 - [OAT 论文摘录（arXiv:2602.04215）](../../sources/papers/oat_ordered_action_tokenization_arxiv_2602_04215.md)
 - [官方仓库归档](../../sources/repos/oat-ordered-action-tokenization.md)
 - [量子位 RSS 2026 颁奖报道](../../sources/blogs/wechat_qbitai_rss2026_awards_2026-07-16.md)
