@@ -68,6 +68,16 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
+      "path": "wiki/concepts/domain-randomization.md",
+      "detail_id": "wiki-concepts-domain-randomization",
+      "label": "Domain Randomization",
+      "type": "concept",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/concepts/sim2real.md",
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
@@ -198,17 +208,6 @@
       "recency": "2026-07-24",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/world-action-models.md",
-      "detail_id": "wiki-concepts-world-action-models",
-      "label": "World Action Models（WAM，世界–动作模型）",
-      "type": "concept",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
