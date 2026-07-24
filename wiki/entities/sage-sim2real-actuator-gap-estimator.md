@@ -13,6 +13,7 @@ related:
   - ./nvidia-so101-sim2real-lab-workflow.md
   - ../queries/sim2real-gap-reduction.md
   - ./paper-pace-sim2real-legged-robots.md
+  - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/repos/sage-sim2real-actuator-gap.md
   - ../../sources/courses/nvidia_sim_to_real_so101_isaac.md
@@ -126,3 +127,4 @@ flowchart LR
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
 - [AMASS](./amass.md)
 - [Sim2Real Gap 缩减实战指南](../queries/sim2real-gap-reduction.md)
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — SAGE 用于③层定位执行器层 sim2real gap 占比

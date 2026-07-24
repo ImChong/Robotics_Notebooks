@@ -12,6 +12,7 @@ related:
   - ./can-bus-protocol.md
   - ../formalizations/control-loop-latency-modeling.md
   - ../queries/sim2real-gap-reduction.md
+  - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/repos/simplefoc_arduino_foc.md
   - ../../sources/sites/simplefoc_documentation.md
@@ -121,6 +122,7 @@ flowchart LR
 - [电机驱动器底软通信协议总览](../overview/motor-drive-firmware-bus-protocols.md)
 - [SimpleFOC](../entities/simplefoc.md)
 - [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md)
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — FOC 是②层电机驱动固件把母线电压变为受控相电流/力矩的核心控制律
 
 ## 推荐继续阅读
 

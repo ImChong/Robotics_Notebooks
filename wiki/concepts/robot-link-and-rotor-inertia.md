@@ -10,6 +10,7 @@ related:
   - ../entities/modern-robotics-book.md
   - ../entities/mujoco.md
   - ../entities/pinocchio.md
+  - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/papers/robot_link_rotor_inertia_primary_refs.md
 summary: "连杆惯量是 URDF/刚体动力学中的 link 空间惯量；转子惯量经减速比以 G² 反射到关节侧，在 MuJoCo 等仿真器中常记为 armature——二者不可混在同一参数位上。"
@@ -147,6 +148,7 @@ flowchart LR
 - [Floating Base Dynamics](./floating-base-dynamics.md) — $M(q)$ 与 CRBA
 - [MuJoCo](../entities/mujoco.md) — 仿真器中的 joint 参数
 - [Sim2Real](./sim2real.md) — 质量/惯量随机化与真机偏差
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 连杆与转子惯量是③层执行器建模的惯性参数来源
 
 ## 参考来源
 

@@ -134,6 +134,43 @@ def test_hub_pages_exempt_from_self_check(tmp_path: Path, monkeypatch) -> None:
     assert results["actuator_drive_chain_crosslink"] == []
 
 
+def test_substring_lookalike_tags_are_not_flagged(tmp_path: Path, monkeypatch) -> None:
+    """裸子串会把 'impedance'/'bipedal'/'pedagogy'/'bytedance' 误判为含 'eda'，
+    token 前缀匹配后这些非执行器页不应进入驱动链巡检清单。
+    """
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    lookalikes = {
+        "impedance-control.md": "[impedance-control, force-control]",
+        "lip-zmp.md": "[locomotion, bipedal]",
+        "humanoid-rubber-man-analogy.md": "[humanoid, pedagogy]",
+        "paper-xrobotoolkit.md": "[teleop, bytedance]",
+    }
+    pages = []
+    for name, tags in lookalikes.items():
+        sub = "entities" if name.startswith("paper-") else "concepts"
+        page = wiki / sub / name
+        page.write_text(
+            f"---\ntype: concept\ntags: {tags}\n---\n未回链驱动链枢纽。\n", encoding="utf-8"
+        )
+        pages.append(page)
+    results = _run(pages)
+    assert results["actuator_drive_chain_crosslink"] == []
+
+
+def test_derived_and_plural_actuator_tags_still_flagged(tmp_path: Path, monkeypatch) -> None:
+    """'actuators'（复数）与 'foc-driver'（派生）仍应被 token 前缀匹配捕获。"""
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    p1 = wiki / "concepts" / "field-oriented-control.md"
+    p1.write_text("---\ntype: concept\ntags: [actuators, motor]\n---\n未回链。\n", encoding="utf-8")
+    p2 = wiki / "entities" / "some-driver.md"
+    p2.write_text("---\ntype: entity\ntags: [foc-driver]\n---\n未回链。\n", encoding="utf-8")
+    results = _run([p1, p2])
+    assert sorted(results["actuator_drive_chain_crosslink"]) == [
+        "wiki/concepts/field-oriented-control.md",
+        "wiki/entities/some-driver.md",
+    ]
+
+
 def test_info_only_does_not_count_toward_failing_total() -> None:
     results = lw._empty_results()
     results["actuator_drive_chain_crosslink"].append("wiki/entities/kicad.md")

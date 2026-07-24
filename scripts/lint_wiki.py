@@ -1184,6 +1184,18 @@ def _check_dataset_entity_metadata(pages: list[Path], results: dict[str, Any]) -
             results["dataset_missing_metadata"].append(f"{rel}（缺 {' / '.join(missing)}）")
 
 
+def _tag_keyword_match(tags: set[str], keywords: tuple[str, ...]) -> bool:
+    """按连字符 token 前缀匹配 tag 与关键词，覆盖 ``eda-tool`` / ``foc-driver`` /
+    ``actuator-network`` / ``actuators`` 等派生标签，同时避免裸子串匹配把
+    ``impedance`` / ``bipedal`` / ``pedagogy`` / ``bytedance`` 误判为含 ``eda``。
+    """
+    for tag in tags:
+        for token in tag.split("-"):
+            if any(token.startswith(kw) for kw in keywords):
+                return True
+    return False
+
+
 # 物理保真度专题枢纽页：动力学/仿真/物理概念页应回链至少一个，形成保真度链路闭环
 PHYSICS_FIDELITY_HUBS: tuple[str, ...] = (
     "simulation-physics-fidelity",
@@ -1267,7 +1279,7 @@ def _check_contact_control_crosslink(pages: list[Path], results: dict[str, Any])
         inline = re.search(r"^tags:\s*\[([^\]]*)\]", fm_block, re.MULTILINE)
         if inline:
             tags |= {t.strip().lower() for t in inline.group(1).split(",")}
-        if not any(kw in tag for tag in tags for kw in CONTACT_CONTROL_TAG_KEYWORDS):
+        if not _tag_keyword_match(tags, CONTACT_CONTROL_TAG_KEYWORDS):
             continue
 
         if not any(hub in content for hub in CONTACT_FORCE_CONTROL_HUBS):
@@ -1318,7 +1330,7 @@ def _check_embodied_fm_crosslink(pages: list[Path], results: dict[str, Any]) -> 
         inline = re.search(r"^tags:\s*\[([^\]]*)\]", fm_block, re.MULTILINE)
         if inline:
             tags |= {t.strip().lower() for t in inline.group(1).split(",")}
-        if not any(kw in tag for tag in tags for kw in EMBODIED_FM_TAG_KEYWORDS):
+        if not _tag_keyword_match(tags, EMBODIED_FM_TAG_KEYWORDS):
             continue
 
         if not any(hub in content for hub in EMBODIED_FM_HUBS):
@@ -1368,7 +1380,7 @@ def _check_eval_benchmark_crosslink(pages: list[Path], results: dict[str, Any]) 
         inline = re.search(r"^tags:\s*\[([^\]]*)\]", fm_block, re.MULTILINE)
         if inline:
             tags |= {t.strip().lower() for t in inline.group(1).split(",")}
-        if not any(kw in tag for tag in tags for kw in EVAL_BENCHMARK_TAG_KEYWORDS):
+        if not _tag_keyword_match(tags, EVAL_BENCHMARK_TAG_KEYWORDS):
             continue
 
         if not any(hub in content for hub in EVAL_BENCHMARK_HUBS):
@@ -1419,7 +1431,7 @@ def _check_actuator_drive_chain_crosslink(pages: list[Path], results: dict[str, 
         inline = re.search(r"^tags:\s*\[([^\]]*)\]", fm_block, re.MULTILINE)
         if inline:
             tags |= {t.strip().lower() for t in inline.group(1).split(",")}
-        if not any(kw in tag for tag in tags for kw in ACTUATOR_DRIVE_CHAIN_TAG_KEYWORDS):
+        if not _tag_keyword_match(tags, ACTUATOR_DRIVE_CHAIN_TAG_KEYWORDS):
             continue
 
         if not any(hub in content for hub in ACTUATOR_DRIVE_CHAIN_HUBS):

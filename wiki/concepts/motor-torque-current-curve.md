@@ -10,6 +10,7 @@ related:
   - ../overview/humanoid-actuator-102-thermal-and-control.md
   - ../overview/humanoid-actuator-102-decision-species.md
   - ../comparisons/motor-em-simulation-software.md
+  - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/personal/motor_curves_and_em_simulation_faq.md
 summary: "TI 曲线（转矩-电流曲线）给出转矩与相电流的线性关系及饱和区；力矩常数 Kt（Nm/A）直接决定同样转矩下的铜损与温升压力。"
@@ -98,6 +99,7 @@ T_{\mathrm{cont}} \approx K_t \cdot I_{\mathrm{cont}}, \quad T_{\mathrm{peak}} \
 - [磁场定向控制（FOC）](./field-oriented-control.md)
 - [Humanoid 执行器 102 · 热学与力矩控制](../overview/humanoid-actuator-102-thermal-and-control.md)
 - [电机电磁仿真软件选型](../comparisons/motor-em-simulation-software.md)
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 力矩–电流曲线是②层 FOC 力矩标定要面对的标称非线性背景
 
 ## 参考来源
 

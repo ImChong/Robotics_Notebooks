@@ -11,6 +11,7 @@ related:
   - ../formalizations/ekf.md
   - ../tasks/humanoid-soccer.md
   - ../entities/humanoid-system-curriculum.md
+  - ../queries/soccer-visual-field-localization-pipeline.md
 sources:
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
 summary: "空间视觉定位—线匹配：观测场地线/交点与已知场地模型建立数据关联并求位姿，是 RoboCup 风格视觉定位主步骤；课程 7.2。"
@@ -119,6 +120,7 @@ flowchart TB
 - [感知后处理与坐标变换](../concepts/perception-coordinate-postprocessing.md)
 - [Humanoid Soccer](../tasks/humanoid-soccer.md)
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md)
+- [足球视觉场线定位流水线](../queries/soccer-visual-field-localization-pipeline.md) — 本页是其第二段（线匹配数据关联）
 
 ## 参考来源
 

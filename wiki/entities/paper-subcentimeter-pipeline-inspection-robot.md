@@ -17,6 +17,7 @@ venue: "Science Robotics 2022"
 related:
   - ../tasks/locomotion.md
   - ../tasks/teleoperation.md
+  - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/blogs/wechat_shenlan_scirobotics_china_top3_2026-07-02.md
   - ../../sources/papers/subcentimeter_pipeline_inspection_scirobotics_2022.md
@@ -138,6 +139,7 @@ flowchart TB
 
 - [Locomotion 任务页](../tasks/locomotion.md)
 - [遥操作（Teleoperation）](../tasks/teleoperation.md)
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 介电弹性体执行器（DEA）是本驱动链电机路线之外的另一类执行器谱系对照
 
 ## 推荐继续阅读
 

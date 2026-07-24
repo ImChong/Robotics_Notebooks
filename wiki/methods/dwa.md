@@ -10,6 +10,7 @@ related:
   - ../concepts/dynamic-obstacle-filtering.md
   - ../entities/unitree-g1-software-stack.md
   - ../entities/humanoid-system-curriculum.md
+  - ../comparisons/mobile-robot-navigation-planning-methods.md
 sources:
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
   - ../../sources/repos/python_robotics.md
@@ -131,6 +132,7 @@ flowchart LR
 - [Navigation2](../entities/navigation2.md)
 - [G1 软件服务栈](../entities/unitree-g1-software-stack.md)
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md)
+- [导航规划方法对比：全局·局部·平滑](../comparisons/mobile-robot-navigation-planning-methods.md) — 本页是其局部避障层的选型落地
 
 ## 参考来源
 
