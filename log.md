@@ -1,5 +1,19 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-24] ingest | sources/blogs/generalist_thousand_hands.md — GEN-1 千手跨末端泛化；升格 wiki/entities/generalist-gen1-thousand-hands.md；更新 generalist-ai-robotics / topic-cross-embodiment / foundation-policy / embodied-scaling-laws / manipulation / cross-embodiment-transfer-strategy
+- **资料：** [Towards Machines with a Thousand Hands](https://generalistai.com/blog/towards-machines-with-a-thousand-hands)（Generalist AI，2026-07）
+- **归档：** [`sources/blogs/generalist_thousand_hands.md`](sources/blogs/generalist_thousand_hands.md)
+- **开源核查：** 确认未开源（无 GitHub / HF / 公开数据集）
+- **升格：** [`wiki/entities/generalist-gen1-thousand-hands.md`](wiki/entities/generalist-gen1-thousand-hands.md)
+- **交叉更新：**
+  - [`wiki/entities/generalist-ai-robotics.md`](wiki/entities/generalist-ai-robotics.md)
+  - [`wiki/overview/topic-cross-embodiment.md`](wiki/overview/topic-cross-embodiment.md)
+  - [`wiki/concepts/foundation-policy.md`](wiki/concepts/foundation-policy.md)
+  - [`wiki/concepts/embodied-scaling-laws.md`](wiki/concepts/embodied-scaling-laws.md)
+  - [`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)
+  - [`wiki/queries/cross-embodiment-transfer-strategy.md`](wiki/queries/cross-embodiment-transfer-strategy.md)
+
+
 ## [2026-07-24] ingest | sources/blogs/wechat_shenlan_rss2026_eight_papers_2026-07-24.md — 深蓝具身智能 RSS 2026 Final List 八篇盘点（复用已有节点）
 
 - **资料：** [顶会 RSS 2026 释放明确信号：8篇力作聚焦底层控制、轨迹优化、物理硬件](https://mp.weixin.qq.com/s/qjhBjBqTYHcfnndPFNVb-g)（深蓝具身智能，2026-07-24）
