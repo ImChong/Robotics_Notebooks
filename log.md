@@ -1,5 +1,19 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-24] ingest | sources/papers/zonda_arxiv_2607_21025.md — ZONDA 零样本多楼层动态 ObjectNav；升格 wiki/entities/paper-zonda.md；交叉更新 wiki/tasks/vision-language-navigation.md、wiki/overview/vln-open-source-repro-paradigms.md、wiki/entities/habitat-sim.md、wiki/entities/paper-uni-lavira.md、wiki/concepts/sim2real.md
+
+- **资料：** [ZONDA arXiv:2607.21025](https://arxiv.org/abs/2607.21025)（v1，2026-07-23）
+- **归档：** [`sources/papers/zonda_arxiv_2607_21025.md`](sources/papers/zonda_arxiv_2607_21025.md)
+- **开源核查：** **确认未开源**（abs/HTML/PDF 无项目页 / GitHub；公开检索无官方仓）
+- **升格：** [`wiki/entities/paper-zonda.md`](wiki/entities/paper-zonda.md)
+- **交叉更新：**
+  - [`wiki/tasks/vision-language-navigation.md`](wiki/tasks/vision-language-navigation.md)
+  - [`wiki/overview/vln-open-source-repro-paradigms.md`](wiki/overview/vln-open-source-repro-paradigms.md)
+  - [`wiki/entities/habitat-sim.md`](wiki/entities/habitat-sim.md)
+  - [`wiki/entities/paper-uni-lavira.md`](wiki/entities/paper-uni-lavira.md)
+  - [`wiki/concepts/sim2real.md`](wiki/concepts/sim2real.md)
+- **机构注册：** `sustech`、`gbu`、`direct-drive-tech` → [`schema/institutions.json`](schema/institutions.json)
+
 ## [2026-07-24] ingest | sources/papers/egoworld_arxiv_2506_17896.md + sources/sites/egoworld-github-io.md + sources/repos/egoworld.md + sources/blogs/stellarnex_egoworld_100w.md + sources/sites/stellarnex-robotics.md — EgoWorld（ICLR 2026 exo→ego）与 StellarNex EgoWorld-100W 同名消歧入库；升格 wiki/entities/paper-egoworld.md、wiki/entities/egoworld-100w.md；交叉更新 wiki/overview/ego-category-01-data-collection.md、wiki/tasks/manipulation.md、wiki/methods/egoscale.md
 
 - **资料 A（方法）：** [EgoWorld ICLR 2026](https://arxiv.org/abs/2506.17896) · [项目页](https://redorangeyellowy.github.io/EgoWorld/) · [代码](https://github.com/redorangeyellowy/EgoWorld)

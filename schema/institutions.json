@@ -1542,6 +1542,31 @@
         "stellarnex",
         "stellar-nex"
       ]
+    },
+    "sustech": {
+      "label": "南方科技大学（SUSTech）",
+      "aliases": [
+        "sustech",
+        "southern-university-of-science-and-technology",
+        "south-university-of-science-and-technology"
+      ]
+    },
+    "gbu": {
+      "label": "大湾区大学（Great Bay University）",
+      "aliases": [
+        "gbu",
+        "great-bay-university",
+        "greatbay"
+      ]
+    },
+    "direct-drive-tech": {
+      "label": "直驱科技（Direct Drive Tech）",
+      "aliases": [
+        "direct-drive-tech",
+        "directdrivetech",
+        "guangdong-direct-drive",
+        "ddt"
+      ]
     }
   }
 }

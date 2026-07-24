@@ -2,7 +2,7 @@
 type: overview
 tags: [vln, navigation, open-source, reproduction, habitat, vla, embodied-ai]
 status: complete
-updated: 2026-07-22
+updated: 2026-07-24
 related:
   - ./vln-10-papers-technology-map.md
   - ../entities/paper-vln-10-navid.md
@@ -14,10 +14,12 @@ related:
   - ../concepts/3d-spatial-vqa.md
   - ../entities/paper-uni-lavira.md
   - ../entities/paper-da-nav.md
+  - ../entities/paper-zonda.md
 sources:
   - ../../sources/blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md
   - ../../sources/papers/uni_lavira_arxiv_2605_27582.md
   - ../../sources/papers/da_nav_arxiv_2607_11638.md
+  - ../../sources/papers/zonda_arxiv_2607_21025.md
 summary: "VLN 新手复现策展：四条范式各一栈——VLFM（2D 语义地图）、NavGPT（LLM 推理）、NoMaD（扩散统一探索/到达）、Uni-NaVid（导航 VLA）；按模块化→语言中枢→端到端策略→统一 VLA 由浅入深，而非性能排名。"
 ---
 
@@ -81,6 +83,7 @@ flowchart LR
 - 若已熟悉 [VLA 方法页](../methods/vla.md)，可把 Uni-NaVid 读作「VLN 子任务上的 VLA 实例」；NoMaD 则更接近 [Diffusion Policy](../methods/diffusion-policy.md) 在导航上的落地。
 - **零样本对照：** [Uni-LaViRA](../entities/paper-uni-lavira.md)（arXiv:2605.27582）走 **training-free Language→Vision→Robot agent**，官方仓含 Habitat/AirSim 评测与四真机入口；适合在跑通 Uni-NaVid **之后**对照「堆轨迹训导航 VLA」vs「结构化 MLLM agent」两条路线（依赖 API、CC BY-NC-SA，不替换本页四范式入门顺序）。
 - **户外方向感知（暂不可复现）：** [DA-Nav](../entities/paper-da-nav.md)（arXiv:2607.11638）用 **商业导航离散方向** + **图像平面网格** + **CoT recovery**，并零样本足式/人形；**截至 2026-07-22 未开源**，不进入本页四范式清单，仅作「动作表示 / 恢复监督」阅读对照。
+- **多楼层动态 ObjectNav（暂不可复现）：** [ZONDA](../entities/paper-zonda.md)（arXiv:2607.21025）在 VLFM 式地图–语义前沿之上补 **跨楼层几何可通行、多视角 VLM 核验、行人预测避障**；**截至 2026-07-24 未开源**。工程上可先跑通 VLFM，再对照已开源 [ASCENT](https://github.com/Zeying-Gong/ascent) 理解跨楼层差异。
 
 ## 按目标选入口
 
@@ -111,12 +114,14 @@ flowchart LR
 - [3D 空间 VQA](../concepts/3d-spatial-vqa.md) — 空间推理与 VLN 对照
 - [Uni-LaViRA](../entities/paper-uni-lavira.md) — 零样本三层翻译统一导航（对照 Uni-NaVid）
 - [DA-Nav](../entities/paper-da-nav.md) — 城市户外方向感知 VLN（方法对照；暂未开源）
+- [ZONDA](../entities/paper-zonda.md) — 多楼层动态零样本 ObjectNav（方法对照；暂未开源）
 
 ## 参考来源
 
 - [深蓝具身智能：VLN 四范式新手复现推荐（微信公众号归档）](../../sources/blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md)
 - [Uni-LaViRA 论文摘录（arXiv:2605.27582）](../../sources/papers/uni_lavira_arxiv_2605_27582.md)
 - [DA-Nav 论文摘录（arXiv:2607.11638）](../../sources/papers/da_nav_arxiv_2607_11638.md)
+- [ZONDA 论文摘录（arXiv:2607.21025）](../../sources/papers/zonda_arxiv_2607_21025.md)
 
 ## 推荐继续阅读
 
