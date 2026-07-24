@@ -2,7 +2,7 @@
 type: entity
 tags: [entity, simulator, embodied-ai, navigation, meta, habitat, gpu-rendering]
 status: complete
-updated: 2026-06-22
+updated: 2026-07-24
 related:
   - ./matterport3d-simulator.md
   - ./igibson.md
@@ -10,8 +10,10 @@ related:
   - ../tasks/vision-language-navigation.md
   - ../overview/sim-platforms-decade-technology-map.md
   - ../overview/vln-10-papers-technology-map.md
+  - ./paper-zonda.md
 sources:
   - ../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md
+  - ../../sources/papers/zonda_arxiv_2607_21025.md
 summary: "Meta AI 2019 年推出的高速具身 AI 仿真平台：单 GPU 数千至上万 FPS 渲染，使大规模真实扫描场景上的端到端 RL 训练可行；Habitat 2.0/3.0 扩展可交互物体与人类化身。"
 ---
 
@@ -45,6 +47,7 @@ summary: "Meta AI 2019 年推出的高速具身 AI 仿真平台：单 GPU 数千
 - **Habitat-Sim**：底层渲染与物理（轻量接触）引擎。
 - **Habitat-Lab**：上层任务定义、数据集接口与 baseline（VLN-CE、ObjectNav 等）。
 - **资产管线**：MP3D / Gibson / HM3D 等场景网格 + episode 数据集。
+- **零样本 ObjectNav 用例：** [ZONDA](./paper-zonda.md) 在 Habitat 上评测 **多楼层** HM3D/MP3D，并扩展 **HM3D-DYNA**（每 episode 注入移动行人）检验动态避障——说明 Lab 层不仅承载静态 ObjectNav，也可作为 **动态干扰** 协议宿主。
 
 ## 常见误区或局限
 
@@ -57,10 +60,12 @@ summary: "Meta AI 2019 年推出的高速具身 AI 仿真平台：单 GPU 数千
 - [paper-vln-02-vln-ce](./paper-vln-02-vln-ce.md)
 - [VLN 10 篇技术地图](../overview/vln-10-papers-technology-map.md)
 - [十年仿真平台技术地图](../overview/sim-platforms-decade-technology-map.md)
+- [ZONDA](./paper-zonda.md) — Habitat 多楼层 / 动态 ObjectNav 用例（arXiv:2607.21025）
 
 ## 参考来源
 
 - [sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md](../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md)
+- [ZONDA 论文摘录（arXiv:2607.21025）](../../sources/papers/zonda_arxiv_2607_21025.md)
 - Savva et al., *Habitat: A Platform for Embodied AI Research* — [arXiv](https://arxiv.org/abs/1904.11121)
 
 ## 推荐继续阅读

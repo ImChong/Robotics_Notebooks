@@ -1,13 +1,76 @@
 {
   "generated_at": "2026-07-24",
-  "node_count": 1825,
-  "edge_count": 15336,
+  "node_count": 1826,
+  "edge_count": 15348,
   "coverage": {
-    "covered": 1774,
-    "total": 1802,
+    "covered": 1775,
+    "total": 1803,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-zonda.md",
+      "detail_id": "entity-paper-zonda",
+      "label": "ZONDA：多楼层动态避障的零样本 ObjectNav",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/vision-language-navigation.md",
+      "detail_id": "wiki-tasks-vision-language-navigation",
+      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
+      "type": "task",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/vln-open-source-repro-paradigms.md",
+      "detail_id": "wiki-overview-vln-open-source-repro-paradigms",
+      "label": "VLN 开源复现：四范式学习路径",
+      "type": "overview",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/habitat-sim.md",
+      "detail_id": "entity-habitat-sim",
+      "label": "Habitat-Sim",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-uni-lavira.md",
+      "detail_id": "entity-paper-uni-lavira",
+      "label": "Uni-LaViRA：统一具身导航的语言–视觉–机器人动作翻译",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/paper-egoworld.md",
       "detail_id": "entity-paper-egoworld",
@@ -152,82 +215,22 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "roadmap/depth-humanoid-boxing.md",
-      "detail_id": "roadmap-depth-humanoid-boxing",
-      "label": "路线（纵深）：如果目标是人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）",
-      "type": "roadmap_page",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/generalist-gen1-thousand-hands.md",
-      "detail_id": "entity-generalist-gen1-thousand-hands",
-      "label": "GEN-1 千手：跨末端执行器泛化",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/generalist-ai-robotics.md",
-      "detail_id": "entity-generalist-ai-robotics",
-      "label": "Generalist AI（机器人方向）",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/topic-cross-embodiment.md",
-      "detail_id": "wiki-overview-topic-cross-embodiment",
-      "label": "跨具身迁移（专题汇总）",
-      "type": "overview",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/concepts/foundation-policy.md",
-      "detail_id": "wiki-concepts-foundation-policy",
-      "label": "Foundation Policy（基础策略模型）",
-      "type": "concept",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/embodied-scaling-laws.md",
-      "detail_id": "wiki-concepts-embodied-scaling-laws",
-      "label": "Embodied Scaling Laws (具身规模法则)",
-      "type": "concept",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-egoworld.md",
-    "detail_id": "entity-paper-egoworld",
-    "label": "EgoWorld（exo→ego 视图翻译）",
+    "path": "wiki/entities/paper-zonda.md",
+    "detail_id": "entity-paper-zonda",
+    "label": "ZONDA：多楼层动态避障的零样本 ObjectNav",
     "type": "entity",
     "recency": "2026-07-24",
     "source": "log.md",
     "action": "added",
-    "has_repo": true,
     "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 374
+      "size": 375
     },
     {
       "label": "仿真到现实",
@@ -262,7 +265,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 333,
+      "degree": 335,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

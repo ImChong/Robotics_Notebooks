@@ -2,7 +2,7 @@
 type: task
 tags: [vln, navigation, embodied-ai, vision-language, matterport]
 summary: "视觉–语言导航（VLN）要求智能体在三维环境中依据自然语言指令执行一系列离散或连续动作到达目标，是连接语言理解与空间运动规划的基准任务。"
-updated: 2026-07-23
+updated: 2026-07-24
 status: complete
 related:
   - ../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md
@@ -23,6 +23,7 @@ related:
   - ../entities/paper-realm-last-3-meter-vln-grounding.md
   - ../entities/paper-3d-ic-joint-navigation-manipulation-planning.md
   - ../entities/paper-da-nav.md
+  - ../entities/paper-zonda.md
   - ../entities/paper-s-squared-vla.md
   - ../entities/qwen-robot-nav.md
   - locomotion.md
@@ -35,6 +36,7 @@ sources:
   - ../../sources/papers/realm_last_3_meter_vln_arxiv_2607_03792.md
   - ../../sources/papers/3d_ic_icml_2026.md
   - ../../sources/papers/da_nav_arxiv_2607_11638.md
+  - ../../sources/papers/zonda_arxiv_2607_21025.md
 ---
 
 # 视觉–语言导航（Vision-and-Language Navigation, VLN）
@@ -63,6 +65,7 @@ sources:
 - **REVERIE 末段接地鸿沟**：[REALM](../entities/paper-realm-last-3-meter-vln-grounding.md)（arXiv:2607.03792）指出 REVERIE-CE 等任务虽要求框出目标实例，但主流 **3 m SR** 不评 **最终朝向与可见性**——ETPNav-FT SR=34.67% 时 **ONS@0.1m 仅 6.32%**；作者提出 **plug-and-play 末段精修** 与 **REVERIE-AIM** 实例中心评测集。
 - **OVMM 导航–操作联合规划**：[3D-IC](../entities/paper-3d-ic-joint-navigation-manipulation-planning.md)（ICML 2026）在 **共享 3D 特征图** 上为开放词汇移动操作生成 **多阶段交互路点链**，用 **VLM 路点可行性 + 转移代价** 选链，避免「导航到了但操作姿态差」的分阶段错配；真机 **Stretch 3** 验证。
 - **城市尺度方向感知 VLN**：[DA-Nav](../entities/paper-da-nav.md)（arXiv:2607.11638）用 **商业导航离散方向指令**（非细粒度地标描述），在 **egocentric 图像平面网格** 上做 spatial grounding，并以 **CoT + ReDA recovery** 支撑长程纠偏；CARLA SoTA，**零样本** 迁到 Go2 / 乐聚人形公里级户外——与室内 R2R/REVERIE 栈互补。
+- **多楼层动态零样本 ObjectNav**：[ZONDA](../entities/paper-zonda.md)（arXiv:2607.21025）在 Habitat HM3D/MP3D 上用 **高度差可通行图 + 启发式跨楼层规划**、**多视角 VLM 核验** 与 **行人预测避障**，并自建 **HM3D-DYNA**；相对 ASCENT 等不绑平台 RL PointNav，真机部署 Direct Drive Tech TITA。
 
 ## 核心要素
 
@@ -87,6 +90,12 @@ sources:
 - **方法要点：** 离散 **图像平面网格** + **偏离评估→动作→轨迹** CoT；配套 **ReDA**（含 recovery）；评测额外强调 **DF / CSR**。
 - **开源边界：** 截至 2026-07-22 **未发布** 官方代码/权重；选型可读方法，复现仍走 [四范式开源栈](../overview/vln-open-source-repro-paradigms.md)。
 
+### 室内 ObjectNav：跨楼层 + 动态行人
+
+- **设定差异：** [ZONDA](../entities/paper-zonda.md) 目标是 **物体类别到达**（非细粒度语言路径）；评测主线为 Habitat **多楼层** HM3D/MP3D，并扩展 **HM3D-DYNA** 加入移动行人。
+- **方法要点：** OST 三图 + 启发式跨楼层（\(H_{\text{agent}}\)）+ 多视角 VLM 确认 + Kalman 行人预测；真机用 MPPI 连续跟踪。
+- **开源边界：** 截至 2026-07-24 **未发布** 官方代码/权重；可与已开源 [ASCENT](https://github.com/Zeying-Gong/ascent) / [VLFM](https://github.com/bdaiinstitute/vlfm) 对照读方法。
+
 ## 常见误区
 
 - **误区**：「VLN 做得好就等于机器人能走。」仿真离散动作与真实连续控制、动力学约束仍有鸿沟，通常需要低层控制与碰撞规避模块。
@@ -106,6 +115,7 @@ sources:
 - **通才 embodied planner**：[Vesta](../entities/paper-vesta-generalist-embodied-reasoning.md) — 导航与具身推理、长时程子任务规划 **单模型 SFT**；R2R-CE 与 offline planning / 真机 memory 任务一并报告（arXiv:2606.20905）。
 - **REVERIE 实例接地**：[REALM](../entities/paper-realm-last-3-meter-vln-grounding.md) — Last-3-Meter Grounding Gap、ONS/GS/OracleGS 指标与 REVERIE-AIM（arXiv:2607.03792）。
 - **城市尺度方向感知**：[DA-Nav](../entities/paper-da-nav.md) — 商业导航指令 + 图像平面离散 grounding + CoT 恢复；CARLA / Go2 / Kuavo-V（arXiv:2607.11638）。
+- **多楼层动态 ObjectNav**：[ZONDA](../entities/paper-zonda.md) — 启发式跨楼层 + 多视角核验 + 行人避障；HM3D-DYNA / TITA（arXiv:2607.21025）。
 
 ## 参考来源
 
@@ -114,6 +124,7 @@ sources:
 - [Uni-LaViRA 论文摘录（arXiv:2605.27582）](../../sources/papers/uni_lavira_arxiv_2605_27582.md) — 零样本统一具身导航
 - [REALM 论文摘录（arXiv:2607.03792）](../../sources/papers/realm_last_3_meter_vln_arxiv_2607_03792.md) — REVERIE 末段实例接地与评测鸿沟
 - [DA-Nav 论文摘录（arXiv:2607.11638）](../../sources/papers/da_nav_arxiv_2607_11638.md) — 城市尺度方向感知 VLN
+- [ZONDA 论文摘录（arXiv:2607.21025）](../../sources/papers/zonda_arxiv_2607_21025.md) — 多楼层动态零样本 ObjectNav
 - [SceneVerse++ 原始资料归档](../../sources/repos/sceneverse-pp.md)
 - Chen et al., *Lifting Unlabeled Internet-level Data for 3D Scene Understanding* (arXiv:2604.01907) — VLN 数据生成与 R2R 实验
 - Anderson et al., *Vision-and-Language Navigation* — R2R 任务经典定义（如需溯源基准起源可查阅原文）
@@ -132,6 +143,7 @@ sources:
 - [VLA](../methods/vla.md)
 - [REALM（Last-3-Meter VLN 实例接地）](../entities/paper-realm-last-3-meter-vln-grounding.md) — REVERIE 末段评测鸿沟与 plug-and-play 精修
 - [DA-Nav（方向感知城市尺度 VLN）](../entities/paper-da-nav.md) — 商业导航指令 + 图像平面网格 + CoT 恢复
+- [ZONDA（多楼层动态零样本 ObjectNav）](../entities/paper-zonda.md) — 跨楼层启发式规划 + 多视角核验 + 行人预测
 - [S²-VLA（驾驶双流 VLA）](../entities/paper-s-squared-vla.md) — NAVSIM 端到端规划；与 VLN / RobotNav 驾驶 mode 对照
 - [Qwen-RobotNav](../entities/qwen-robot-nav.md) — 统一 VLN / ObjNav / 跟踪 / NAVSIM 的导航基座
 
