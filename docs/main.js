@@ -835,19 +835,30 @@
         itemsHtml += renderTimelineItem(metas[ii], fold && ii >= TIMELINE_FOLD_SHOW);
       }
       var dayMeta = formatDayMeta(metas, totalCount, dayStats);
+      var dateText = escapeHtml(dateLabel || '未标注日期');
+      var metaHtml = '<span class="updates-day-meta">' + escapeHtml(dayMeta) + '</span>';
+      // 超量日：标题行横向箭头切换展开/收起（吸顶），避免底部按钮被长列表刷走
+      var titleHtml = fold
+        ? (
+          '<button type="button" class="updates-day-toggle" data-total="' +
+          metas.length +
+          '" aria-expanded="false" aria-label="展开全部 ' +
+          metas.length +
+          ' 项">' +
+          '<span class="updates-day-chevron" aria-hidden="true"></span>' +
+          '<span class="updates-day-date-label">' + dateText + '</span>' +
+          metaHtml +
+          '</button>'
+        )
+        : (dateText + metaHtml);
       return (
-        '<section class="updates-day' + (fold ? ' is-folded' : '') + '">' +
+        '<section class="updates-day' +
+        (fold ? ' is-folded is-collapsible' : '') +
+        '">' +
         '<h3 class="updates-day-date"><span class="updates-day-dot" aria-hidden="true"></span>' +
-        escapeHtml(dateLabel || '未标注日期') +
-        '<span class="updates-day-meta">' + escapeHtml(dayMeta) + '</span></h3>' +
+        titleHtml +
+        '</h3>' +
         '<ul class="updates-day-list">' + itemsHtml + '</ul>' +
-        (fold
-          ? '<button type="button" class="updates-day-more" data-total="' +
-            metas.length +
-            '" aria-expanded="false">展开全部 ' +
-            metas.length +
-            ' 项</button>'
-          : '') +
         '</section>'
       );
     }
@@ -1058,20 +1069,24 @@
         }
         return;
       }
-      var moreBtn = ev.target.closest('button.updates-day-more');
-      if (moreBtn) {
-        var daySection = moreBtn.closest('.updates-day');
+      var toggleBtn = ev.target.closest('button.updates-day-toggle');
+      if (toggleBtn) {
+        var daySection = toggleBtn.closest('.updates-day');
         if (!daySection) return;
-        var total = moreBtn.getAttribute('data-total') || '';
+        var total = toggleBtn.getAttribute('data-total') || '';
         var isFolded = daySection.classList.contains('is-folded');
         if (isFolded) {
           daySection.classList.remove('is-folded');
-          moreBtn.setAttribute('aria-expanded', 'true');
-          moreBtn.textContent = '收起至前 ' + TIMELINE_FOLD_SHOW + ' 项';
+          toggleBtn.setAttribute('aria-expanded', 'true');
+          toggleBtn.setAttribute('aria-label', '收起至前 ' + TIMELINE_FOLD_SHOW + ' 项');
         } else {
           daySection.classList.add('is-folded');
-          moreBtn.setAttribute('aria-expanded', 'false');
-          moreBtn.textContent = '展开全部 ' + total + ' 项';
+          toggleBtn.setAttribute('aria-expanded', 'false');
+          toggleBtn.setAttribute('aria-label', '展开全部 ' + total + ' 项');
+          // 长列表中部点收起后，把日期标题带回视口（避让吸顶站头）
+          if (daySection.scrollIntoView) {
+            daySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
         }
       }
     });
