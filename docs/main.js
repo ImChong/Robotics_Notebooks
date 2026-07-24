@@ -1114,9 +1114,9 @@
           daySection.classList.add('is-folded');
           syncMidLabel(false);
           // 从中部或末尾收起后，把中部控件带回视口
-          var scrollTarget = midBtn || daySection;
-          if (scrollTarget && scrollTarget.scrollIntoView) {
-            scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          var foldScrollTarget = midBtn || daySection;
+          if (foldScrollTarget && foldScrollTarget.scrollIntoView) {
+            foldScrollTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
           }
         }
       }
