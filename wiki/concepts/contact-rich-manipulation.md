@@ -12,6 +12,7 @@ related:
   - ../entities/paper-trex-tactile-reactive-dexterous-manipulation.md
   - ../entities/paper-omnitactune-tactile-residual-adaptation.md
   - ../entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md
+  - ../entities/paper-vtap-gripper.md
   - ../tasks/manipulation.md
   - ./contact-dynamics.md
   - ./tsid.md
@@ -26,6 +27,7 @@ sources:
   - ../../sources/papers/contact_planning.md
   - ../../sources/papers/contact_dynamics.md
   - ../../sources/papers/chord_nvidia_video_to_data_2026.md
+  - ../../sources/papers/vtap_gripper_arxiv_2607_15448.md
 ---
 
 # Contact-Rich Manipulation（接触丰富型操作）
@@ -108,6 +110,7 @@ sources:
 - [T-Rex](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md) — **学习式触觉反应 VLA**：12 项双手力控/形变/协调真机任务与 **开源触觉 play 数据集**；强调 **异步高频触觉专家** 而非朴素模态拼接。
 - [OmniTacTune](../entities/paper-omnitactune-tactile-residual-adaptation.md) — **冻结视觉 + 触觉残差真机 RL**：单臂 xArm7 上四接触丰富任务（插装/开盖/杠杆），**40–80 min** 在线练习、**无需离线触觉演示**；与 T-Rex 形成「短预算插件式适应」vs「大规模触觉 mid-training」对照。
 - [TouchWorld](../entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md) — **预测–反应式触觉基础模型**：人形 **Wuji** 平台上 **六任务长程** benchmark（浇花/清桌面/杯与插头插入/擦锅/抽纸巾），含 **人为扰动** 设置；**Tactile World Model** 预测视触觉子目标 + **TRT** 高频残差，干净 **65.0%**、扰动 **53.7%** 宏平均。
+- [VTAP Gripper](../entities/paper-vtap-gripper.md) — **硬件级指–掌协同**：视触觉主动掌 + FlexiTac 指尖；反应抓取 / 手内 singulation / 1 mm peg-in-hole（arXiv:2607.15448，确认未开源）。
 - [Flying Knots](../entities/paper-flying-knots.md) — 绳段 **自碰撞（critical point）** 的动态操作；用 **任务级 ILC + 逆模型 QP** 而非阻抗执行层直接闭环。
 - [Manipulation](../tasks/manipulation.md) 是更上层的任务总览；本页强调其中“最难的接触子域”。
 
@@ -124,6 +127,7 @@ sources:
 
 - [sources/papers/contact_planning.md](../../sources/papers/contact_planning.md) — 接触隐式优化、多接触规划与接触序列组织
 - [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md) — 接触力、摩擦约束与动力学建模基础
+- [sources/papers/vtap_gripper_arxiv_2607_15448.md](../../sources/papers/vtap_gripper_arxiv_2607_15448.md) — VTAP 指–掌协同接触丰富夹爪
 - Mordatch et al., *Contact-Invariant Optimization for Hand Manipulations*
 
 ## 关联页面

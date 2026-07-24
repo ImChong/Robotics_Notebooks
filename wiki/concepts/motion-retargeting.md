@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-07-22
+updated: 2026-07-24
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 
@@ -78,6 +78,10 @@ subject to: FK(θ) = p_target (末端位置约束)
 ### 3.6 采样式灵巧手重定向（SBR，Smooth Operator）
 
 [mimic robotics](https://mimicrobotics.github.io/smooth-operator/) 的 **Sampling-Based Retargeter（SBR）** 面向 **15 DoF 级实时遥操作**：用 **Kabsch–Umeyama** 对齐人手指点云与机器人手，再以 **MPPI / MPOPI + iCEM** 做 **梯度无关** 路径积分优化，缓解 DexPilot / GeoRT 等 **梯度法局部极小与抖动**。18 人用户研究中整体成功率 **54.1%**、NASA-TLX **36.4**（相对 GeoRT 26.6% / 56.4）。开源快照见 [mimic_retargeter_lab](https://github.com/mimicrobotics/mimic_retargeter_lab)；与 [mimic wearable U1](../entities/mimic-wearable-u1.md)「机械 1:1、无软件重定向」形成 **中层采集 vs 顶层真机遥操作** 对照。
+
+### 3.7 非拟人三指夹爪遥操作重定向（VTAP）
+
+[VTAP Gripper](../entities/paper-vtap-gripper.md)（arXiv:2607.15448）面向 **异构三指夹爪**（无人手关节一一对应）：用 **cage/power/pinch 手势锁子空间** + 中间坐标系 \(\mathcal{I}\)，再优化指尖位置/朝向；singulation 另把拇指–食指滚动映射到内收/外展。这是 **末端夹爪遥操作** 重定向，不是全身 MoCap→人形 WBT 主线，但与 SBR/TopoRetarget 同属「人手 → 非同构手」问题族。
 
 ### 4. 深度学习重定向（Learning-Based）
 - Encoder-Decoder 架构：将人类骨架 embedding，再 decode 到目标机器人
@@ -222,6 +226,7 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - **ingest 档案：** [sources/papers/reactor_rl_physics_aware_motion_retargeting.md](../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md) — ReActor：仿真内双层优化 + RL 跟踪的物理感知重定向（arXiv:2605.06593）
 - **ingest 档案：** [sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md](../../sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md) — SPIDER：并行仿真采样优化 + 虚拟接触引导的规模化物理重定向（arXiv:2511.09484）
 - **ingest 档案：** [sources/papers/toporetarget_arxiv_2606_16272.md](../../sources/papers/toporetarget_arxiv_2606_16272.md) — TopoRetarget：hand–object interaction mesh + Laplacian 灵巧重定向 + 轻量 PPO 跟踪（arXiv:2606.16272）；配套 [项目页](../../sources/sites/toporetarget-github-io.md)
+- **ingest 档案：** [sources/papers/vtap_gripper_arxiv_2607_15448.md](../../sources/papers/vtap_gripper_arxiv_2607_15448.md) — VTAP：非拟人三指夹爪手势条件遥操作重定向（arXiv:2607.15448）
 - **ingest 档案：** [sources/papers/bifrost_umi_arxiv_2605_03452.md](../../sources/papers/bifrost_umi_arxiv_2605_03452.md) — BifrostUMI SKR：稀疏关键点 + 仅身高缩放 + mink IK（arXiv:2605.03452）
 - **ingest 档案：** [sources/sites/jc-bao-spider-project-github-io.md](../../sources/sites/jc-bao-spider-project-github-io.md) — SPIDER 项目页 jc-bao.github.io/spider-project（管线演示与 BibTeX）
 - **ingest 档案：** [sources/sites/amass-dataset.md](../../sources/sites/amass-dataset.md) — AMASS：SMPL 统一人体动捕元数据集（MPI-IS 站点与 ICCV 2019 论文索引）
@@ -255,6 +260,7 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - [ReActor（物理感知 RL 运动重定向）](../methods/reactor-physics-aware-motion-retargeting.md) — 双层：可学习参考 + 同环 RL 跟踪，近似上层梯度
 - [SPIDER（物理感知采样式灵巧重定向）](../methods/spider-physics-informed-dexterous-retargeting.md) — 运动学参考 + 并行仿真采样优化 + 课程式虚拟接触引导
 - [TopoRetarget（交互保留灵巧重定向）](../methods/toporetarget-interaction-preserving-dexterous-retargeting.md) — hand–object interaction mesh + 实时 Laplacian 优化，面向灵巧 in-hand manipulation 参考生成
+- [VTAP Gripper](../entities/paper-vtap-gripper.md) — 非拟人三指夹爪的手势条件遥操作重定向（硬件/采集侧）
 - [GMR vs NMR vs ReActor（重定向方法谱系对比）](../comparisons/gmr-vs-nmr-vs-reactor.md) — 三条主流路线在误差修补位置、训练/推理成本、跨形态能力上的选型坐标
 - [ExoActor](../methods/exoactor.md) — 视频生成驱动的人形控制流水线，提供"中间重定向并非永远收益项"的反例
 - [Character Animation vs Robotics](./character-animation-vs-robotics.md) — 当目标函数里同时出现表演意图与物理可控性时的张力与案例切片

@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-24] ingest | sources/papers/vtap_gripper_arxiv_2607_15448.md — VTAP Gripper（arXiv:2607.15448）视触觉主动掌三指夹爪；wiki/entities/paper-vtap-gripper.md；sources/sites/yuhao-zhou-vtap.md；交叉 wiki/concepts/visuo-tactile-fusion.md、tactile-sensing.md、contact-rich-manipulation.md、wiki/tasks/manipulation.md、wiki/entities/gel-slim.md、wiki/methods/in-hand-reorientation.md；确认未开源
+
+- **开源状态：** **确认未开源** — 项目页 <https://yuhao-zhou.com/vtap/>（`yuhochau.github.io/vtap/` 301）无 VTAP 仓；页上 Code 为 ViTacFormer 模板残留；指尖传感上游 FlexiTac 另开源
+- **新建 papers/sites：** [`sources/papers/vtap_gripper_arxiv_2607_15448.md`](sources/papers/vtap_gripper_arxiv_2607_15448.md)、[`sources/sites/yuhao-zhou-vtap.md`](sources/sites/yuhao-zhou-vtap.md)
+- **新建 wiki：** [`wiki/entities/paper-vtap-gripper.md`](wiki/entities/paper-vtap-gripper.md)
+- **交叉更新：** [`visuo-tactile-fusion`](wiki/concepts/visuo-tactile-fusion.md)、[`tactile-sensing`](wiki/concepts/tactile-sensing.md)、[`contact-rich-manipulation`](wiki/concepts/contact-rich-manipulation.md)、[`manipulation`](wiki/tasks/manipulation.md)、[`gel-slim`](wiki/entities/gel-slim.md)、[`in-hand-reorientation`](wiki/methods/in-hand-reorientation.md)、[`motion-retargeting`](wiki/concepts/motion-retargeting.md)
+
 ## [2026-07-24] ingest | sources/papers/kairos_arxiv_2606_16533.md — Kairos v3 regret-aware 叙事与开源仓更名；wiki/entities/paper-kairos-native-world-model-stack.md；sources/repos/kairos.md、sources/sites/kairos-acerobotics.md；交叉 wiki/methods/generative-world-models.md、wiki/concepts/world-action-models.md
 
 - **开源状态：** **已开源** — 代码 [kairos-agi/kairos](https://github.com/kairos-agi/kairos)（旧 `kairos-sensenova` 301）；权重 [huggingface.co/kairos-agi](https://huggingface.co/kairos-agi) / Kairos3.1；平台 [kairos.acerobotics.com](https://kairos.acerobotics.com)
