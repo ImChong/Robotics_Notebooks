@@ -3,7 +3,7 @@ title: Curriculum Learning（课程学习）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-07-18
+updated: 2026-07-24
 summary: 从简单到复杂的渐进式训练策略，在机器人 RL 中用于解决稀疏奖励、地形多样性和任务复杂度梯度问题。
 ---
 
@@ -95,6 +95,7 @@ terrain_level = clip(terrain_level + delta, 0, max_level)
 | Humanoid 站立/行走 | 初始姿态随机化幅度 + 地形 | Agility Robotics, HUMA |
 | Sim2Real 迁移 | 域随机化参数范围逐步扩大 | ETH ANYmal 系列 |
 | 多技能学习 | 技能难度拓扑排序 | ASE, CALM |
+| 轮足高动态避障 | 按规避成功率升高障碍飞行速度 | [AWARE](../entities/paper-aware-wheeled-legged-reflexive-evasion.md)（Zhao et al., 2026） |
 
 ---
 
@@ -133,6 +134,7 @@ terrain_level = clip(terrain_level + delta, 0, max_level)
 - **ingest 档案：** [sources/sites/kleiyn-efgcl.md](../../sources/sites/kleiyn-efgcl.md) — EFGCL：外部力引导课程（体操 spotting 隐喻）
 - **ingest 档案：** [sources/papers/bfm_humanoid_arxiv_2509_13780.md](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md) — BFM：mask curriculum 让条件生成策略覆盖多种位级掩码（关节 / 根 / 关键点等接口）
 - **ingest 档案：** [sources/papers/kungfubot_pbhc_neurips2025.md](../../sources/papers/kungfubot_pbhc_neurips2025.md) — KungfuBot：双层优化 **自适应跟踪容差** 课程（按当前误差动态调节，优于固定 factor）
+- **ingest 档案：** [sources/papers/aware_arxiv_2604_23761.md](../../sources/papers/aware_arxiv_2604_23761.md) — AWARE：按规避成功率升高障碍飞行速度
 
 ---
 
@@ -147,3 +149,4 @@ terrain_level = clip(terrain_level + delta, 0, max_level)
 - [HiPAN](../methods/hipan.md) — Path-Guided Curriculum Learning：用路径子目标做导航视界课程
 - [EFGCL](../methods/efgcl.md) — 外部辅助力幅度作为连续课程变量，服务高动态全身 RL
 - [KungfuBot](../entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) — 跟踪精度容差的双层优化自适应课程
+- [AWARE](../entities/paper-aware-wheeled-legged-reflexive-evasion.md) — 轮足动态障碍速度课程

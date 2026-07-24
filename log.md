@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-24] ingest | sources/papers/aware_arxiv_2604_23761.md — AWARE（arXiv:2604.23761）轮足高动态反射式避障；wiki/entities/paper-aware-wheeled-legged-reflexive-evasion.md；交叉 wheel-legged / hybrid-locomotion / HRL / MUJICA / sim2real；确认未开源
+
+- **开源状态：** **确认未开源** — 无项目页；arXiv abs/HTML/API 未列 GitHub；作者主页未列 AWARE 仓
+- **新建 papers：** [`sources/papers/aware_arxiv_2604_23761.md`](sources/papers/aware_arxiv_2604_23761.md)
+- **新建 wiki：** [`wiki/entities/paper-aware-wheeled-legged-reflexive-evasion.md`](wiki/entities/paper-aware-wheeled-legged-reflexive-evasion.md)（含结论；源码运行时序图不适用）
+- **机构：** [`schema/institutions.json`](schema/institutions.json) 新增 `zhongguancun-academy`（北京中关村学院）、`deeprobotics`（云深处科技）；复用 `tju` / `nus`
+- **交叉更新：** [`wheel-legged-quadruped`](wiki/concepts/wheel-legged-quadruped.md)、[`hybrid-locomotion`](wiki/tasks/hybrid-locomotion.md)、[`locomotion`](wiki/tasks/locomotion.md)、[`hierarchical-reinforcement-learning`](wiki/methods/hierarchical-reinforcement-learning.md)、[`curriculum-learning`](wiki/concepts/curriculum-learning.md)、[`domain-randomization`](wiki/concepts/domain-randomization.md)、[`sim2real`](wiki/concepts/sim2real.md)、[`paper-mujica-wheel-legged-multi-skill`](wiki/entities/paper-mujica-wheel-legged-multi-skill.md)、[`robot-lab`](wiki/entities/robot-lab.md)
+
 ## [2026-07-24] ingest | sources/papers/vtap_gripper_arxiv_2607_15448.md — VTAP Gripper（arXiv:2607.15448）视触觉主动掌三指夹爪；wiki/entities/paper-vtap-gripper.md；sources/sites/yuhao-zhou-vtap.md；交叉 wiki/concepts/visuo-tactile-fusion.md、tactile-sensing.md、contact-rich-manipulation.md、wiki/tasks/manipulation.md、wiki/entities/gel-slim.md、wiki/methods/in-hand-reorientation.md；确认未开源
 
 - **开源状态：** **确认未开源** — 项目页 <https://yuhao-zhou.com/vtap/>（`yuhochau.github.io/vtap/` 301）无 VTAP 仓；页上 Code 为 ViTacFormer 模板残留；指尖传感上游 FlexiTac 另开源

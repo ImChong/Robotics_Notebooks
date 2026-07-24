@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, framework, reinforcement-learning, isaac-lab, unitree, sim2real]
 status: complete
-updated: 2026-06-09
+updated: 2026-07-24
 related:
   - ../concepts/wheel-legged-quadruped.md
   - ./isaac-gym-isaac-lab.md
@@ -11,8 +11,10 @@ related:
   - ./openloong.md
   - ./atom01-train.md
   - ../methods/beyondmimic.md
+  - ./paper-aware-wheeled-legged-reflexive-evasion.md
 sources:
   - ../../sources/repos/robot_lab.md
+  - ../../sources/papers/aware_arxiv_2604_23761.md
 summary: "robot_lab 是基于 NVIDIA IsaacLab 的机器人 RL 扩展库，在独立仓库中注册 24+ 速度跟踪环境与 BeyondMimic/AMP 等任务，覆盖四足、轮足与人形多厂商机型，训练后可通过 rl_sar 衔接 Gazebo/真机部署。"
 ---
 
@@ -62,7 +64,7 @@ flowchart LR
 
 ## 关键特性
 
-1. **多厂商硬件覆盖**：除 Unitree、Anymal、FFTAI、Booster、RobotEra 等常见机型外，2026 版 README 新增 **Zsibot**、**Magiclab**（四足/轮足/人形）、**Agibot D1**、**Openloong Loong**、**RoboParty ATOM01** 等注册环境；轮足专题见 [轮足四足机器人](../concepts/wheel-legged-quadruped.md)，OpenLoong 整机栈见 [OpenLoong](./openloong.md)，ATOM01 训练仓见 [atom01_train](./atom01-train.md)。
+1. **多厂商硬件覆盖**：除 Unitree、Anymal、FFTAI、Booster、RobotEra 等常见机型外，2026 版 README 新增 **Zsibot**、**Magiclab**（四足/轮足/人形）、**Agibot D1**、**Openloong Loong**、**RoboParty ATOM01** 等注册环境；轮足专题见 [轮足四足机器人](../concepts/wheel-legged-quadruped.md)（含 [AWARE](./paper-aware-wheeled-legged-reflexive-evasion.md) 在 **Deeprobotics M20** 上的高动态反射避障案例），OpenLoong 整机栈见 [OpenLoong](./openloong.md)，ATOM01 训练仓见 [atom01_train](./atom01-train.md)。
 2. **模块化扩展**：新机器人遵循 `assets/` → `tasks/.../config/<robot>/` → `gym.register` 三层模板，与 Isaac Lab 官方扩展规范一致。
 3. **多训练后端**：**RSL-RL** 为主（含多 GPU / 多节点 `--distributed`）；**CusRL** 为实验替代；**SKRL** 用于 G1 **AMP Dance** 等 Direct 任务。
 4. **模仿与风格任务**：
@@ -84,6 +86,7 @@ flowchart LR
 - [legged_gym](./legged-gym.md)
 - [Unitree 品牌主页](./unitree.md)
 - [轮足四足机器人（四轮足）](../concepts/wheel-legged-quadruped.md)
+- [AWARE（M20 高动态反射避障）](./paper-aware-wheeled-legged-reflexive-evasion.md)
 - [BeyondMimic](../methods/beyondmimic.md)
 - [OpenLoong（青龙）](./openloong.md)
 - [Atom01 Train](./atom01-train.md)

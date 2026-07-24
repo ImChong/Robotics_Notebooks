@@ -1,13 +1,103 @@
 {
   "generated_at": "2026-07-24",
-  "node_count": 1820,
-  "edge_count": 15259,
+  "node_count": 1821,
+  "edge_count": 15279,
   "coverage": {
-    "covered": 1768,
-    "total": 1797,
+    "covered": 1769,
+    "total": 1798,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-aware-wheeled-legged-reflexive-evasion.md",
+      "detail_id": "entity-paper-aware-wheeled-legged-reflexive-evasion",
+      "label": "AWARE：轮足高动态反射式避障",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/concepts/wheel-legged-quadruped.md",
+      "detail_id": "wiki-concepts-wheel-legged-quadruped",
+      "label": "轮足四足机器人（四轮足 / Wheel-Legged Quadruped）",
+      "type": "concept",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/tasks/hybrid-locomotion.md",
+      "detail_id": "wiki-tasks-hybrid-locomotion",
+      "label": "Hybrid Locomotion (混合运动)",
+      "type": "task",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/tasks/locomotion.md",
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/methods/hierarchical-reinforcement-learning.md",
+      "detail_id": "wiki-methods-hierarchical-reinforcement-learning",
+      "label": "Hierarchical Reinforcement Learning（分层强化学习，HRL）",
+      "type": "method",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/curriculum-learning.md",
+      "detail_id": "wiki-concepts-curriculum-learning",
+      "label": "Curriculum Learning（课程学习）",
+      "type": "concept",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-mujica-wheel-legged-multi-skill.md",
+      "detail_id": "entity-paper-mujica-wheel-legged-multi-skill",
+      "label": "MUJICA：轮足多技能统一本体控制架构",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/robot-lab.md",
+      "detail_id": "entity-robot-lab",
+      "label": "robot_lab (IsaacLab 扩展框架)",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/paper-vtap-gripper.md",
       "detail_id": "entity-paper-vtap-gripper",
@@ -120,111 +210,17 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-faro-feasibility-aware-robot-motion-optimization.md",
-      "detail_id": "entity-paper-faro-feasibility-aware-robot-motion-optimization",
-      "label": "FARO（可行性感知机器人运动优化）",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md",
-      "detail_id": "entity-paper-motiondisco-extreme-humanoid-loco-manipulation",
-      "label": "MotionDisco（极端人形 Loco-Manipulation 运动发现）",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/tasks/loco-manipulation.md",
-      "detail_id": "wiki-tasks-loco-manipulation",
-      "label": "Loco-Manipulation (移动操作)",
-      "type": "task",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/methods/trajectory-optimization.md",
-      "detail_id": "wiki-methods-trajectory-optimization",
-      "label": "Trajectory Optimization（轨迹优化）",
-      "type": "method",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-yahmp.md",
-      "detail_id": "entity-paper-yahmp",
-      "label": "YAHMP：人形通用运动跟踪里什么真的重要？",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-deed.md",
-      "detail_id": "entity-paper-deed",
-      "label": "DEED：零售人形 VLA 的数据高效后训练与经验驱动学习",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-extreme-rgmt.md",
-      "detail_id": "entity-paper-extreme-rgmt",
-      "label": "Extreme-RGMT：高动态技能的持续学习与鲁棒通用全身跟踪",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-hrl-stack-34-gr00t_n1.md",
-      "detail_id": "entity-paper-hrl-stack-34-gr00t_n1",
-      "label": "GR00T N1",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-vtap-gripper.md",
-    "detail_id": "entity-paper-vtap-gripper",
-    "label": "VTAP Gripper（视触觉主动掌夹爪）",
+    "path": "wiki/entities/paper-aware-wheeled-legged-reflexive-evasion.md",
+    "detail_id": "entity-paper-aware-wheeled-legged-reflexive-evasion",
+    "label": "AWARE：轮足高动态反射式避障",
     "type": "entity",
     "recency": "2026-07-24",
     "source": "log.md",
     "action": "added",
-    "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
@@ -233,7 +229,7 @@
     },
     {
       "label": "仿真到现实",
-      "size": 205
+      "size": 206
     },
     {
       "label": "人形论文深读笔记",
@@ -264,7 +260,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 331,
+      "degree": 333,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -296,7 +292,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 255
+      "degree": 257
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
