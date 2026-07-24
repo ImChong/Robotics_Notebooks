@@ -3,7 +3,7 @@ type: entity
 title: HumanNet（百万小时人中心视频语料）
 tags: [dataset, egocentric-video, exocentric-video, vla, imitation-learning, embodied-pretraining, pku, dagroup]
 summary: "HumanNet 是面向具身学习的大规模人中心视频语料（论文宣称约一百万小时），一三人称混合并配套交互导向标注与可扩展策展管线；适合作为 VLA/表示学习的人类侧数据基础设施参照。"
-updated: 2026-07-08
+updated: 2026-07-24
 status: complete
 related:
   - ../methods/vla.md
@@ -14,12 +14,14 @@ related:
   - ../concepts/embodied-scaling-laws.md
   - ../concepts/embodied-data-cleaning.md
   - ../comparisons/humannet-table1-human-video-corpora.md
+  - ./paper-egoverse.md
   - ./humanoid-robot.md
   - ./lingbot-vla-v2.md
 sources:
   - ../../sources/papers/humannet.md
   - ../../sources/papers/humannet_table1_benchmark_corpora.md
   - ../../sources/repos/humannet.md
+  - ../../sources/papers/egoverse_arxiv_2604_07607.md
 ---
 
 # HumanNet
@@ -104,5 +106,5 @@ flowchart LR
 ## 推荐继续阅读
 
 - [机器人论文阅读笔记：EgoDex](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/EgoDex__Learning_Dexterous_Manipulation_from_Large-Scale_Egocentric_Video/EgoDex__Learning_Dexterous_Manipulation_from_Large-Scale_Egocentric_Video.html)
-- [EgoScale](../methods/egoscale.md)（arXiv:2602.16710，NVIDIA GEAR 项目页）、Ego4D / Ego-Exo4D / EgoVerse 等项目页与数据卡（对比视点设计与下游任务）
+- [EgoScale](../methods/egoscale.md)（arXiv:2602.16710，NVIDIA GEAR 项目页）、[EgoVerse](./paper-egoverse.md)（联盟式 egocentric 示教 + 跨实验室共训）、Ego4D / Ego-Exo4D 等项目页与数据卡（对比视点设计与下游任务）
 - [LingBot-VLA 2.0](./lingbot-vla-v2.md) — HumanNet 论文中 LingBot-VLA 架构的受控后训练对照在 2.0 中扩展为 **6 万小时** 产品与开源链

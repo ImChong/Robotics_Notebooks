@@ -8,7 +8,7 @@
 - **项目页：** <https://gatech-rl2.github.io/egowam.github.io/>
 - **arXiv：** 截至 ingest **尚未在 arXiv 检索到**（项目页提供 Paper / arXiv 入口，待官方公布 ID 后补链）
 - **代码：** 项目页标注 **Coming soon**
-- **数据集：** [EgoVerse](https://egoverse.ai/)（野外 egocentric 人示教；数据门户见项目页 Data Gallery）
+- **数据集：** [EgoVerse](https://egoverse.ai/)（野外 egocentric 人示教；见本库 [egoverse_arxiv_2604_07607.md](./egoverse_arxiv_2604_07607.md) / [wiki/entities/paper-egoverse.md](../../wiki/entities/paper-egoverse.md)）
 - **作者：** Baoyu Li\*、Xinchen Yin\*、Mengying Lin、Yixin Zhang、Danfei Xu（\*Equal contribution）
 - **机构：** 佐治亚理工学院（Georgia Tech）· Robot Learning and Reasoning Lab（RL²）
 - **资助：** Toyota Research Institute（TRI University 3.0）
@@ -65,4 +65,5 @@
 - [EgoWAM 项目页](https://gatech-rl2.github.io/egowam.github.io/)
 - [EgoVerse 数据集与平台](https://egoverse.ai/)
 - [EgoVerse 论文（arXiv:2604.07607）](https://arxiv.org/abs/2604.07607)
+- [EgoVerse 本库实体页](../../wiki/entities/paper-egoverse.md)
 - [World Action Models 综述（arXiv:2605.12090）](https://arxiv.org/abs/2605.12090)

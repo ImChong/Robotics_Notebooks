@@ -59,7 +59,8 @@
 - **EgoVerse**  
   - 项目页：<https://egoverse.ai/>  
   - 论文：<https://arxiv.org/abs/2604.07607>  
-  - 代码：<https://github.com/gatech-rl2/egoverse>
+  - 代码：<https://github.com/GaTech-RL2/EgoVerse>  
+  - 本库：[`sources/papers/egoverse_arxiv_2604_07607.md`](./egoverse_arxiv_2604_07607.md)、[`wiki/entities/paper-egoverse.md`](../../wiki/entities/paper-egoverse.md)
 
 ### Exo-centric 行
 

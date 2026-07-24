@@ -3,7 +3,7 @@
 type: method
 tags: [vla, egocentric-video, dexterous-manipulation, flow-matching, human-robot-transfer, imitation-learning, nvidia-gear, scaling-laws, nvidia]
 status: complete
-updated: 2026-07-23
+updated: 2026-07-24
 date: 2026-05-17
 summary: "EgoScale 用超两万小时、带腕与重定向高 DoF 手部标签的第一人称人视频预训练流式 VLA，实证人数据规模与验证损失近 log-linear 缩放且与真机灵巧表现强相关，再以小规模视点对齐的人–机 mid-training 把表示锚到机器人，从而在极少机端演示下获得高灵巧长程操作与 one-shot 迹象。"
 related:
@@ -13,6 +13,7 @@ related:
   - ../concepts/motion-retargeting.md
   - ../concepts/embodied-scaling-laws.md
   - ../entities/humannet.md
+  - ../entities/paper-egoverse.md
   - ../entities/paper-trex-tactile-reactive-dexterous-manipulation.md
   - ../entities/paper-egosteer.md
   - ../tasks/manipulation.md
@@ -21,6 +22,7 @@ sources:
   - ../../sources/papers/egoscale_arxiv_2602_16710.md
   - ../../sources/sites/nvidia-research-egoscale.md
   - ../../sources/papers/egosteer_arxiv_2607_09701.md
+  - ../../sources/papers/egoverse_arxiv_2604_07607.md
 ---
 
 # EgoScale
@@ -94,6 +96,7 @@ flowchart LR
 - 与 [EgoSteer](../entities/paper-egosteer.md)：同族人视频 → 灵巧 VLA；对照 **mid-training 对齐** vs **策展全栈 + DAgger**。
 - 与 [mimic-video](./mimic-video.md)：mimic-video 把瓶颈叙事放在 **视频骨干潜质量**；EgoScale 把瓶颈叙事放在 **人操纵轨迹规模 + 对齐阶段**，二者可对照阅读而非互斥。
 - 与 [HumanNet](../entities/humannet.md)：HumanNet 侧重建 **互联网级人中心语料与标注管线**；EgoScale 给出 **两万小时量级 egocentric + 动作标签** 上 **VLA 预训练缩放** 的实证数据点。
+- 与 [EgoVerse](../entities/paper-egoverse.md)：同属 Direct 档 egocentric 人数据；EgoVerse 强调 **联盟协议采集 + 人–机共训缩放判据**（域对齐锚定、场景多样性），EgoScale 强调 **VLA 预训练小时 ↔ 验证损失 / 真机完成度**。
 - 与 [具身规模法则](../concepts/embodied-scaling-laws.md)：可把本文的 **log-linear 验证损失–数据规模** 与 **下游完成度** 的联动，当作 **人侧监督缩放** 的一个具体案例研究。
 - 与 [Motion Retargeting](../concepts/motion-retargeting.md)：重定向是 **人手关键点 → 机器人手关节** 的硬接口；误差形态会进入 **预训练标签噪声** 讨论。
 - 与 [T-Rex](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md)：同人灵巧线后续工作；共享 **人 egocentric 预训练 + 机端 mid-training** 骨架，T-Rex 把 mid-training 换成 **触觉同步 play** 并引入 **高频触觉专家**；论文以 EgoScale 为 **最强无触觉基线（35% vs 65%）**。
@@ -117,5 +120,6 @@ flowchart LR
 - [Manipulation（操作任务）](../tasks/manipulation.md)
 - [EgoSteer](../entities/paper-egosteer.md)
 - [HumanNet](../entities/humannet.md)
+- [EgoVerse](../entities/paper-egoverse.md)
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)
