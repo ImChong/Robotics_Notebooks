@@ -12,7 +12,7 @@ tags:
   - evolutionary-search
   - unitree-g1
 status: complete
-updated: 2026-07-16
+updated: 2026-07-24
 arxiv: "2606.06139"
 related:
   - ../tasks/loco-manipulation.md
@@ -25,6 +25,7 @@ related:
   - ./paper-notebook-task-and-motion-planning-for-humanoid-loco-manip.md
   - ../methods/dynaretarget-sbto-motion-retargeting.md
   - ./paper-resmimic.md
+  - ./paper-faro-feasibility-aware-robot-motion-optimization.md
 sources:
   - ../../sources/papers/motiondisco_arxiv_2606_06139.md
 summary: "MotionDisco（arXiv:2606.06139）：LLM 引导进化式程序搜索 + 接触显式 kinodynamic TO，从零发现长时程人形 loco-manipulation 接触计划；DeepMimic 式 RL 跟踪在 G1 真机零样本部署，无需遥操作或人体重定向。"
@@ -54,7 +55,7 @@ summary: "MotionDisco（arXiv:2606.06139）：LLM 引导进化式程序搜索 + 
 - **数据入口范式转换：** 主流 loco-manip 依赖 **MoCap/视频 → 重定向 → RL 跟踪** 或 **遥操作采集**；MotionDisco 把探索重心移到 **自动化接触计划搜索**，理论上可为 **无人类示范的新场景** 生成参考轨迹，并自然产出 **同一任务的多解多样性**（单次搜索内多样接触分配）。
 - **LLM × 优化闭环有实证增益：** 相对 **单次 LLM 调用**，迭代搜索 + **文本失败反馈** 在 8 项任务上显著提高 **有效接触计划比例** 并降低 **TO cost**；首条可行解可在 **分钟级** 出现，使组合爆炸的接触空间探索具备工程可行性。
 - **真机闭环里程碑：** 作者称 **首个** 完全通过 **自动化进化搜索** 发现并在真机上执行 **长时程 loco-manipulation** 的工作（攀台、穿障、桌下取放等），与 [ResMimic](./paper-resmimic.md)、[OmniRetarget](./paper-hrl-stack-03-omniretarget.md) 等 **演示驱动** 路线形成鲜明对照。
-- **团队谱系：** TUM Khadiv 组在 **人形 TAMP / 动态 loco-manip** 上持续积累（Humanoids 2025 TAMP、ICRA 2026 动态发现 workshop 等）；MotionDisco 把 **程序进化（ShinkaEvolve 族）** 与 **接触显式 TO（acados / Hippo）** 推到 **G1 真机**。
+- **团队谱系：** TUM Khadiv 组在 **人形 TAMP / 动态 loco-manip** 上持续积累（Humanoids 2025 TAMP、ICRA 2026 动态发现 workshop 等）；MotionDisco 把 **程序进化（ShinkaEvolve 族）** 与 **接触显式 TO（acados / Hippo）** 推到 **G1 真机**。同团队后续 [FARO](./paper-faro-feasibility-aware-robot-motion-optimization.md) 把 **mode/edge → KSO → TO** 嵌套可行性剪枝系统化，可加速树搜索与 LLM 计划采样（MotionDisco 侧重进化程序发现）。
 
 ## 核心机制（归纳）
 
@@ -119,12 +120,14 @@ flowchart LR
 | **[ResMimic](./paper-resmimic.md)** | 演示/跟踪范式：GMT 预训练 + 残差 loco-manip；依赖上游参考动作 |
 | **[OmniRetarget](./paper-hrl-stack-03-omniretarget.md)** | 交互保留 **人体→人形** 重定向数据工厂 |
 | **[TAMP for Humanoid Loco-manip](./paper-notebook-task-and-motion-planning-for-humanoid-loco-manip.md)** | 同人形 TAMP 问题域；MotionDisco 用 **LLM 程序进化** 探索接触序列 |
+| **[FARO](./paper-faro-feasibility-aware-robot-motion-optimization.md)** | 同团队；共享接触显式 TO 谱系，但聚焦 **嵌套可行性剪枝** 加速搜索，而非进化程序变异 |
 | **Code as Policies / PRoC3S** | 同类 LLM→程序路线；MotionDisco 面向 **全身接触模式** 而非桌面原语 |
 | **DeepMimic 跟踪栈** | 下游部署接口与 [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) 一致 |
 
 ## 关联页面
 
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 任务定义与技术路线 §19
+- [FARO（可行性感知运动优化）](./paper-faro-feasibility-aware-robot-motion-optimization.md) — 同团队嵌套可行性剪枝
 - [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) — 演示驱动上游对照
 - [Teleoperation](../tasks/teleoperation.md) — 人类在环采集对照
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md) — 接触丰富操作概念
@@ -134,6 +137,7 @@ flowchart LR
 ## 参考来源
 
 - [MotionDisco 论文摘录（arXiv:2606.06139）](../../sources/papers/motiondisco_arxiv_2606_06139.md)
+- [FARO 论文摘录（arXiv:2607.18362）](../../sources/papers/faro_arxiv_2607_18362.md)
 
 ## 推荐继续阅读
 

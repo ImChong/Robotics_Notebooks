@@ -61,3 +61,4 @@
 
 - 沉淀实体页：[`wiki/entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md`](../../wiki/entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md)
 - 互链参考：[Loco-Manipulation](../../wiki/tasks/loco-manipulation.md)、[Motion Retargeting Pipeline](../../wiki/concepts/motion-retargeting-pipeline.md)、[Contact-Rich Manipulation](../../wiki/concepts/contact-rich-manipulation.md)、[Unitree G1](../../wiki/entities/unitree-g1.md)
+- 同团队后续剪枝层级：[FARO](../../wiki/entities/paper-faro-feasibility-aware-robot-motion-optimization.md)（arXiv:2607.18362）

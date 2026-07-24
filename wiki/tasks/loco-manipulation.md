@@ -3,8 +3,9 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-07-22
+updated: 2026-07-24
 sources:
+  - ../../sources/papers/faro_arxiv_2607_18362.md
   - ../../sources/papers/fastgrasp_arxiv_2604_12879.md
   - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md
   - ../../sources/papers/loco_manip_8_papers_catalog.md
@@ -179,6 +180,10 @@ flowchart TD
 - **核心**：把长时程 loco-manip 拆成 **离散接触模式序列** 的程序搜索问题；**LLM 进化式变异** Python 接触计划（`walk` / `append_mode` 等 API），由 **顺序运动学剪枝 + kinodynamic TO** 评分并返回 **文本失败反馈** 闭环指导下一轮变异；发现轨迹经 **DeepMimic 式 RL 跟踪** 在真机零样本部署——**不依赖遥操作或人体重定向**。
 - **代表作**：[MotionDisco](../entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md) (TUM / NYU / CMU, 2026, arXiv:2606.06139) — **8** 项任务（攀台、穿障、桌下取放等）；相对单次 LLM 调用，进化搜索 + 文本反馈显著提高有效接触计划比例；**G1** 真机据作者称首个完全由自动化进化搜索发现并执行的长时程 loco-manipulation。
 
+### 19b. 嵌套可行性剪枝加速接触模式搜索（FARO）
+- **核心**：给定候选接触模式序列，用 **mode/edge IK → KSO → 全动力学 TO** 的嵌套必要检验早停不可行分支，并缓存 mode/edge 结果；同一模块可接 **可行性引导树搜索、LLM 计划采样、人类指定计划**，产物经 RL 跟踪上真机。
+- **代表作**：[FARO](../entities/paper-faro-feasibility-aware-robot-motion-optimization.md) (TUM MIRMI / CMU, 2026, arXiv:2607.18362) — Hard box-placement 上 **M,E,KSO** 平均 **26.4** 解 vs TO-only **0**；KSO 相对 TO 约 **100×** 加速且作过滤器 **FNR≈0**；与 MotionDisco 同团队谱系、互补「剪枝层级 vs 进化程序发现」。
+
 ### 20. 协调 body–hand 潜先验 + 连续 dexterous 残差 RL（CoorDex）
 - **核心**：反对 **停走式** loco-manip 与 **夹爪级** 末端接口；将 **29-DoF 全身** 与 **20-DoF 五指手** 分别训成 **privileged tracking teacher → VAE 蒸馏的冻结潜先验**（body 16-D / hand 12-D），下游 PPO 在潜空间输出 **协调残差**——**共享任务上下文 trunk + 分体 body/hand 头**，而非单 MLP 或全关节探索。
 - **不对称先验：** body prior 负责步态、躯干与 **腕位涌现**；**wrist-stabilized hand prior** 在仿真中运动学固定腕、只学指协调，避免手潜码容量被 6D 腕运动占用。
@@ -260,6 +265,7 @@ flowchart TD
 - [Loco-Manip 接触五段链路技术地图](../overview/loco-manip-contact-technology-map.md) — 2026-07 专题：接触数据→表示→生成补数→接触后稳定→VLA/WM（复用既有论文实体，不重复建节点）
 - [Curr-0（Current Robotics）](../entities/current-robotics-curr0.md) — HumanEx 可穿戴数据 + 三系统单策略 + 世界模型评测/后训练全栈（2026-06 博客）
 - [MotionDisco（论文实体）](../entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md) — LLM 进化接触计划搜索 + TO 反馈 + G1 真机运动发现（arXiv:2606.06139）
+- [FARO（论文实体）](../entities/paper-faro-feasibility-aware-robot-motion-optimization.md) — 嵌套可行性剪枝（mode/edge→KSO→TO）加速接触搜索（arXiv:2607.18362）
 - [HALOMI（论文实体）](../entities/paper-halomi-humanoid-loco-manipulation.md) — UMI+egocentric 无机器人示范、BFM-Zero 流形头手 WBC、π₀.₅ VLA 与 G1 主动颈（arXiv:2606.18772）
 - [CoorDex（论文实体）](../entities/paper-coordex-dexterous-humanoid-loco-manipulation.md) — body/hand 潜先验协调残差、连续高 DoF dexterous loco-manipulation（arXiv:2606.23680）
 - [SceneBot（论文实体）](../entities/paper-scenebot.md) — contact-prompted 单策略 WBT：自由空间+地形+搬箱/上楼；hindsight 场景重建数据引擎（arXiv:2606.27581）
@@ -298,6 +304,7 @@ flowchart TD
 - **ingest 档案：** [sources/papers/abot_m05_arxiv_2607_00678.md](../../sources/papers/abot_m05_arxiv_2607_00678.md) — ABot-M0.5：移动操作 WAM（latent action + Dream Forcing，arXiv:2607.00678）
 - **ingest 档案：** [sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md) — Loco-Manip 8 篇数据入口周报（`Ez87ljBYmCyIpLKjMjEyaQ`）
 - **ingest 档案：** [sources/papers/motiondisco_arxiv_2606_06139.md](../../sources/papers/motiondisco_arxiv_2606_06139.md) — MotionDisco：LLM 引导运动发现与人形 loco-manipulation（arXiv:2606.06139）
+- **ingest 档案：** [sources/papers/faro_arxiv_2607_18362.md](../../sources/papers/faro_arxiv_2607_18362.md) — FARO：可行性感知接触剪枝与运动优化（arXiv:2607.18362）
 - **ingest 档案：** [sources/papers/halomi_arxiv_2606_18772.md](../../sources/papers/halomi_arxiv_2606_18772.md) — HALOMI：主动感知无机器人示范→人形 loco-manipulation（arXiv:2606.18772）
 - **ingest 档案：** [sources/papers/coordex_arxiv_2606_23680.md](../../sources/papers/coordex_arxiv_2606_23680.md) — CoorDex：body/hand 潜先验协调残差 dexterous loco-manipulation（arXiv:2606.23680）
 - **ingest 档案：** [sources/papers/cwi_arxiv_2606_27676.md](../../sources/papers/cwi_arxiv_2606_27676.md) — CWI：复合全身模仿 loco-manipulation（arXiv:2606.27676）

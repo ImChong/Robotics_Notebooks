@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-24] ingest | sources/papers/faro_arxiv_2607_18362.md — FARO（arXiv:2607.18362）嵌套可行性剪枝加速人形 loco-manipulation 接触搜索；wiki/entities/paper-faro-feasibility-aware-robot-motion-optimization.md；交叉 wiki/entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md、wiki/tasks/loco-manipulation.md、wiki/methods/trajectory-optimization.md；确认未开源
+
+- **开源状态：** **确认未开源** — 无项目页；arXiv/HTML 未列 GitHub；仅补充视频 <https://youtu.be/R6qCHoCormQ>
+- **新建 papers：** [`sources/papers/faro_arxiv_2607_18362.md`](sources/papers/faro_arxiv_2607_18362.md)
+- **新建 wiki：** [`wiki/entities/paper-faro-feasibility-aware-robot-motion-optimization.md`](wiki/entities/paper-faro-feasibility-aware-robot-motion-optimization.md)
+- **交叉更新：** [`paper-motiondisco-extreme-humanoid-loco-manipulation`](wiki/entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md)、[`loco-manipulation`](wiki/tasks/loco-manipulation.md)、[`trajectory-optimization`](wiki/methods/trajectory-optimization.md)、[`motiondisco_arxiv_2606_06139`](sources/papers/motiondisco_arxiv_2606_06139.md)
+
 ## [2026-07-24] structural | schema/page-types.md + ingest-workflow + AGENTS — 规定 paper-* 必须含「结论」；lint 信息型巡检；scaffold --paper；示例补齐 wiki/entities/paper-yahmp.md、paper-deed.md、paper-extreme-rgmt.md
 
 - **规范：** [`schema/page-types.md`](schema/page-types.md)、[`schema/ingest-workflow.md`](schema/ingest-workflow.md)、[`AGENTS.md`](AGENTS.md)
