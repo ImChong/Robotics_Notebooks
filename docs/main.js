@@ -842,7 +842,11 @@
         '<span class="updates-day-meta">' + escapeHtml(dayMeta) + '</span></h3>' +
         '<ul class="updates-day-list">' + itemsHtml + '</ul>' +
         (fold
-          ? '<button type="button" class="updates-day-more">展开全部 ' + metas.length + ' 项</button>'
+          ? '<button type="button" class="updates-day-more" data-total="' +
+            metas.length +
+            '" aria-expanded="false">展开全部 ' +
+            metas.length +
+            ' 项</button>'
           : '') +
         '</section>'
       );
@@ -1057,8 +1061,18 @@
       var moreBtn = ev.target.closest('button.updates-day-more');
       if (moreBtn) {
         var daySection = moreBtn.closest('.updates-day');
-        if (daySection) daySection.classList.remove('is-folded');
-        moreBtn.parentNode.removeChild(moreBtn);
+        if (!daySection) return;
+        var total = moreBtn.getAttribute('data-total') || '';
+        var isFolded = daySection.classList.contains('is-folded');
+        if (isFolded) {
+          daySection.classList.remove('is-folded');
+          moreBtn.setAttribute('aria-expanded', 'true');
+          moreBtn.textContent = '收起至前 ' + TIMELINE_FOLD_SHOW + ' 项';
+        } else {
+          daySection.classList.add('is-folded');
+          moreBtn.setAttribute('aria-expanded', 'false');
+          moreBtn.textContent = '展开全部 ' + total + ' 项';
+        }
       }
     });
 
