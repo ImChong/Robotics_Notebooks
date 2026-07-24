@@ -6,12 +6,12 @@
 
 ```mermaid
 flowchart LR
-  S0["**Stage 0**<br/>全景与前置<br/><em>BFM 定义 / 分类学</em>"]
-  S1["**Stage 1**<br/>训练基座<br/><em>RL locomotion / 动捕与重定向</em>"]
-  S2["**Stage 2**<br/>跟踪主线<br/><em>DeepMimic → PHC → HOVER</em>"]
-  S3["**Stage 3**<br/>预训练三线<br/><em>Goal / Intrinsic / FB 表征</em>"]
-  S4["**Stage 4**<br/>适应与整合<br/><em>微调 / 高层 VLA + 低层 BFM</em>"]
-  S5["**Stage 5**<br/>进阶方向<br/><em>感知增强 / 评测 / 工业案例</em>"]
+  S0["<b>Stage 0</b><br/>全景与前置<br/><em>BFM 定义 / 分类学</em>"]
+  S1["<b>Stage 1</b><br/>训练基座<br/><em>RL locomotion / 动捕与重定向</em>"]
+  S2["<b>Stage 2</b><br/>跟踪主线<br/><em>DeepMimic → PHC → HOVER</em>"]
+  S3["<b>Stage 3</b><br/>预训练三线<br/><em>Goal / Intrinsic / FB 表征</em>"]
+  S4["<b>Stage 4</b><br/>适应与整合<br/><em>微调 / 高层 VLA + 低层 BFM</em>"]
+  S5["<b>Stage 5</b><br/>进阶方向<br/><em>感知增强 / 评测 / 工业案例</em>"]
 
   S0 --> S1 --> S2 --> S3 --> S4 --> S5
 

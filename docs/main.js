@@ -1794,8 +1794,18 @@
     });
   }
 
+  /**
+   * Mermaid flowchart htmlLabels 认 HTML（b/em/br），不认 Markdown **bold**。
+   * 纵深「路线一览」等曾混用 **Stage N** 与 <br/>，会把 ** 原样画进节点；渲染前统一换成 <b>。
+   */
+  function normalizeMermaidMarkdownEmphasis(source) {
+    if (!source) return source;
+    return String(source).replace(/\*\*([^*\n]+)\*\*/g, '<b>$1</b>');
+  }
+
   function mermaidSourceForCurrentBrowser(source) {
-    return isSafariBrowser() ? degradeMermaidMathToPlainText(source) : source;
+    var normalized = normalizeMermaidMarkdownEmphasis(source);
+    return isSafariBrowser() ? degradeMermaidMathToPlainText(normalized) : normalized;
   }
 
   function initializeMermaidRenderer(fontSizePx) {

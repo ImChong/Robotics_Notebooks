@@ -6,12 +6,12 @@
 
 ```mermaid
 flowchart LR
-  S0["**Stage 0**<br/>边界与族谱<br/><em>VLA / WM / WAM · Cascaded vs Joint</em>"]
-  S1["**Stage 1**<br/>世界模型基座<br/><em>生成式 WM · Model-Based RL</em>"]
-  S2["**Stage 2**<br/>Cascaded 主线<br/><em>future plan → action · DeFI</em>"]
-  S3["**Stage 3**<br/>Joint 主线<br/><em>双 DiT / 统一去噪 / 潜自回归</em>"]
-  S4["**Stage 4**<br/>部署职责三分<br/><em>执行 · 修正 · 筛选 + 接触/几何</em>"]
-  S5["**Stage 5**<br/>数据评测与进阶<br/><em>人机共训 · 导航 · 安全一致</em>"]
+  S0["<b>Stage 0</b><br/>边界与族谱<br/><em>VLA / WM / WAM · Cascaded vs Joint</em>"]
+  S1["<b>Stage 1</b><br/>世界模型基座<br/><em>生成式 WM · Model-Based RL</em>"]
+  S2["<b>Stage 2</b><br/>Cascaded 主线<br/><em>future plan → action · DeFI</em>"]
+  S3["<b>Stage 3</b><br/>Joint 主线<br/><em>双 DiT / 统一去噪 / 潜自回归</em>"]
+  S4["<b>Stage 4</b><br/>部署职责三分<br/><em>执行 · 修正 · 筛选 + 接触/几何</em>"]
+  S5["<b>Stage 5</b><br/>数据评测与进阶<br/><em>人机共训 · 导航 · 安全一致</em>"]
 
   S0 --> S1 --> S2 --> S3 --> S4 --> S5
 

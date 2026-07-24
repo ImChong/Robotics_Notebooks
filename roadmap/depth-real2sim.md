@@ -6,12 +6,12 @@
 
 ```mermaid
 flowchart LR
-  S0["**Stage 0**<br/>定位与可仿真判据<br/><em>Real2Sim vs Sim2Real · 三种产物粒度</em>"]
-  S1["**Stage 1**<br/>几何与外观重建<br/><em>3DGS / mesh · 接触 vs 光真实感</em>"]
-  S2["**Stage 2**<br/>物性与关节化补全<br/><em>碰撞 / 质量摩擦 / 关节 / 接触补全</em>"]
-  S3["**Stage 3**<br/>场景 / episode 孪生<br/><em>VLM 编排 · 数字表亲</em>"]
-  S4["**Stage 4**<br/>Real2Sim2Real 闭环<br/><em>回训 · real-to-sim 评测 · 真机回放</em>"]
-  S5["**Stage 5**<br/>前沿口径与选型<br/><em>像素世界模型 vs 物理孪生</em>"]
+  S0["<b>Stage 0</b><br/>定位与可仿真判据<br/><em>Real2Sim vs Sim2Real · 三种产物粒度</em>"]
+  S1["<b>Stage 1</b><br/>几何与外观重建<br/><em>3DGS / mesh · 接触 vs 光真实感</em>"]
+  S2["<b>Stage 2</b><br/>物性与关节化补全<br/><em>碰撞 / 质量摩擦 / 关节 / 接触补全</em>"]
+  S3["<b>Stage 3</b><br/>场景 / episode 孪生<br/><em>VLM 编排 · 数字表亲</em>"]
+  S4["<b>Stage 4</b><br/>Real2Sim2Real 闭环<br/><em>回训 · real-to-sim 评测 · 真机回放</em>"]
+  S5["<b>Stage 5</b><br/>前沿口径与选型<br/><em>像素世界模型 vs 物理孪生</em>"]
 
   S0 --> S1 --> S2 --> S3 --> S4 --> S5
 

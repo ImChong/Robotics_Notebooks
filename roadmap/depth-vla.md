@@ -6,12 +6,12 @@
 
 ```mermaid
 flowchart LR
-  S0["**Stage 0**<br/>全景与前置<br/><em>VLM/VLN/VLA/BFM 分类学</em>"]
-  S1["**Stage 1**<br/>策略基座<br/><em>BC / ACT / Diffusion Policy</em>"]
-  S2["**Stage 2**<br/>VLA 主线<br/><em>RT 系列 → OpenVLA → π0</em>"]
-  S3["**Stage 3**<br/>数据与 Scaling<br/><em>跨本体 / 人类视频 / WAM</em>"]
-  S4["**Stage 4**<br/>部署与整合<br/><em>推理延迟 / 编排 / 分层接口</em>"]
-  S5["**Stage 5**<br/>进阶方向<br/><em>RL 微调 / 世界模型 / 评测</em>"]
+  S0["<b>Stage 0</b><br/>全景与前置<br/><em>VLM/VLN/VLA/BFM 分类学</em>"]
+  S1["<b>Stage 1</b><br/>策略基座<br/><em>BC / ACT / Diffusion Policy</em>"]
+  S2["<b>Stage 2</b><br/>VLA 主线<br/><em>RT 系列 → OpenVLA → π0</em>"]
+  S3["<b>Stage 3</b><br/>数据与 Scaling<br/><em>跨本体 / 人类视频 / WAM</em>"]
+  S4["<b>Stage 4</b><br/>部署与整合<br/><em>推理延迟 / 编排 / 分层接口</em>"]
+  S5["<b>Stage 5</b><br/>进阶方向<br/><em>RL 微调 / 世界模型 / 评测</em>"]
 
   S0 --> S1 --> S2 --> S3 --> S4 --> S5
 

@@ -6,10 +6,10 @@
 
 ```mermaid
 flowchart LR
-  S0["**Stage 0**<br/>操作基础<br/><em>区分 prehensile / contact-rich</em>"]
-  S1["**Stage 1**<br/>接触力建模与控制<br/><em>Impedance / Admittance</em>"]
-  S2["**Stage 2**<br/>IL 用于操作<br/><em>ACT / Diffusion Policy</em>"]
-  S3["**Stage 3**<br/>Contact-Rich 策略进阶<br/><em>真机 + FT sensor</em>"]
+  S0["<b>Stage 0</b><br/>操作基础<br/><em>区分 prehensile / contact-rich</em>"]
+  S1["<b>Stage 1</b><br/>接触力建模与控制<br/><em>Impedance / Admittance</em>"]
+  S2["<b>Stage 2</b><br/>IL 用于操作<br/><em>ACT / Diffusion Policy</em>"]
+  S3["<b>Stage 3</b><br/>Contact-Rich 策略进阶<br/><em>真机 + FT sensor</em>"]
 
   S0 --> S1 --> S2 --> S3
 

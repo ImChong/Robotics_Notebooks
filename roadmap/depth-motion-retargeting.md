@@ -6,12 +6,12 @@
 
 ```mermaid
 flowchart LR
-  S0["**Stage 0**<br/>全景与前置<br/><em>问题定义 / 管线定位</em>"]
-  S1["**Stage 1**<br/>运动学工具箱<br/><em>IK / QP / 优化目标</em>"]
-  S2["**Stage 2**<br/>数据源与质量<br/><em>MoCap / 视频估计 / 清洗</em>"]
-  S3["**Stage 3**<br/>方法谱系主线<br/><em>GMR → NMR → 物理感知</em>"]
-  S4["**Stage 4**<br/>下游闭环<br/><em>WBT / AMP / 遥操作</em>"]
-  S5["**Stage 5**<br/>进阶方向<br/><em>跨具身 / 灵巧手 / 数据引擎</em>"]
+  S0["<b>Stage 0</b><br/>全景与前置<br/><em>问题定义 / 管线定位</em>"]
+  S1["<b>Stage 1</b><br/>运动学工具箱<br/><em>IK / QP / 优化目标</em>"]
+  S2["<b>Stage 2</b><br/>数据源与质量<br/><em>MoCap / 视频估计 / 清洗</em>"]
+  S3["<b>Stage 3</b><br/>方法谱系主线<br/><em>GMR → NMR → 物理感知</em>"]
+  S4["<b>Stage 4</b><br/>下游闭环<br/><em>WBT / AMP / 遥操作</em>"]
+  S5["<b>Stage 5</b><br/>进阶方向<br/><em>跨具身 / 灵巧手 / 数据引擎</em>"]
 
   S0 --> S1 --> S2 --> S3 --> S4 --> S5
 

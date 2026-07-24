@@ -6,12 +6,12 @@
 
 ```mermaid
 flowchart LR
-  S0["**Stage 0**<br/>全景与前置<br/><em>扩散 / 流匹配基础</em>"]
-  S1["**Stage 1**<br/>表示与数据<br/><em>SMPL 系 / HumanML3D → MotionMillion</em>"]
-  S2["**Stage 2**<br/>生成骨干主线<br/><em>MDM → 可控生成 → 规模化三线</em>"]
-  S3["**Stage 3**<br/>物理化落地<br/><em>PhysDiff / PhyGile / 重定向桥</em>"]
-  S4["**Stage 4**<br/>控制环内生成器<br/><em>扩散规划 / OMG / GPC</em>"]
-  S5["**Stage 5**<br/>进阶方向<br/><em>视频生成 / 零样本 / 场景交互</em>"]
+  S0["<b>Stage 0</b><br/>全景与前置<br/><em>扩散 / 流匹配基础</em>"]
+  S1["<b>Stage 1</b><br/>表示与数据<br/><em>SMPL 系 / HumanML3D → MotionMillion</em>"]
+  S2["<b>Stage 2</b><br/>生成骨干主线<br/><em>MDM → 可控生成 → 规模化三线</em>"]
+  S3["<b>Stage 3</b><br/>物理化落地<br/><em>PhysDiff / PhyGile / 重定向桥</em>"]
+  S4["<b>Stage 4</b><br/>控制环内生成器<br/><em>扩散规划 / OMG / GPC</em>"]
+  S5["<b>Stage 5</b><br/>进阶方向<br/><em>视频生成 / 零样本 / 场景交互</em>"]
 
   S0 --> S1 --> S2 --> S3 --> S4 --> S5
 

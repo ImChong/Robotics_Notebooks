@@ -6,13 +6,13 @@
 
 ```mermaid
 flowchart LR
-  S0["**Stage 0**<br/>电机学地基<br/><em>力矩产生 / Kt / TN·TI 读图</em>"]
-  S1["**Stage 1**<br/>指标与架构选型<br/><em>反射惯量 / QDD·谐波·丝杠</em>"]
-  S2["**Stage 2**<br/>电磁与热设计<br/><em>齿槽·纹波 / Ld·Lq / 连续区</em>"]
-  S3["**Stage 3**<br/>驱动与电流环<br/><em>电流采样 / 对齐 / 带宽</em>"]
-  S4["**Stage 4**<br/>驱动 PCB 设计<br/><em>功率级 / 采样链路 / 布局散热</em>"]
-  S5["**Stage 5**<br/>力矩闭环与标定<br/><em>MTPA·弱磁 / 抗齿槽 / Kt 标定</em>"]
-  S6["**Stage 6**<br/>台架与模组交付<br/><em>整机 TN·TI / 总线力矩模式</em>"]
+  S0["<b>Stage 0</b><br/>电机学地基<br/><em>力矩产生 / Kt / TN·TI 读图</em>"]
+  S1["<b>Stage 1</b><br/>指标与架构选型<br/><em>反射惯量 / QDD·谐波·丝杠</em>"]
+  S2["<b>Stage 2</b><br/>电磁与热设计<br/><em>齿槽·纹波 / Ld·Lq / 连续区</em>"]
+  S3["<b>Stage 3</b><br/>驱动与电流环<br/><em>电流采样 / 对齐 / 带宽</em>"]
+  S4["<b>Stage 4</b><br/>驱动 PCB 设计<br/><em>功率级 / 采样链路 / 布局散热</em>"]
+  S5["<b>Stage 5</b><br/>力矩闭环与标定<br/><em>MTPA·弱磁 / 抗齿槽 / Kt 标定</em>"]
+  S6["<b>Stage 6</b><br/>台架与模组交付<br/><em>整机 TN·TI / 总线力矩模式</em>"]
 
   S0 --> S1 --> S2 --> S3 --> S4 --> S5 --> S6
   S5 -.->|参数回馈| S2
