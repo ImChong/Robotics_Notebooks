@@ -1476,6 +1476,21 @@
         "ideal",
         "lixiang"
       ]
+    },
+    "hive-robots": {
+      "label": "海夫机器人（HIVE Robots）",
+      "aliases": [
+        "hive-robots",
+        "hive"
+      ]
+    },
+    "dtu": {
+      "label": "丹麦技术大学（Technical University of Denmark）",
+      "aliases": [
+        "dtu",
+        "technical-university-of-denmark",
+        "danmarks-tekniske-universitet"
+      ]
     }
   }
 }

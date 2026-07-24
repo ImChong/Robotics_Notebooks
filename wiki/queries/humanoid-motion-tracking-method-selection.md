@@ -172,6 +172,8 @@ flowchart TD
 - [DeepMimic](../methods/deepmimic.md)、[BeyondMimic](../methods/beyondmimic.md)
 - [AMP & HumanX](../methods/amp-reward.md)、[ADD](../methods/add.md)、[SMP](../methods/smp.md)
 - [MotionBricks](../methods/motionbricks.md)、[Any2Track](../methods/any2track.md)、[AMS](../methods/ams.md)、[EGM](../methods/egm-efficient-general-mimic.md)
+- [YAHMP](../entities/paper-yahmp.md) — 开源 G1 GMT 消融试验台（命令/历史/残差/PD/手部力）
+- [Extreme-RGMT](../entities/paper-extreme-rgmt.md) — 高动态持续学习 generalist（未开源）
 - [GentleHumanoid](../methods/gentlehumanoid-motion-tracking.md)
 - [ASE](../methods/ase.md)、[GenMo](../methods/genmo.md)、[扩散动作生成](../methods/diffusion-motion-generation.md)
 - [AMP / ADD / SMP 对比](../comparisons/amp-add-smp-motion-prior-variants.md)

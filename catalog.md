@@ -343,6 +343,7 @@
 - [DA-Nav（方向感知城市尺度 VLN）](wiki/entities/paper-da-nav.md) — DA-Nav**（*Direction-Aware City-Scale Vision-Language Navigation*，[arXiv:2607.11638](https://arxiv. `📅unknown` `[entity_page]`
 - [DAJI（预期关节意图 · 语言条件人形控制）](wiki/entities/paper-daji-anticipatory-joint-intent.md) — DAJI**（*Before the Body Moves: Learning Anticipatory Joint Intent for Language-Conditioned Humanoi `📅unknown` `[entity_page]`
 - [DAPL：杂乱场景中的外在灵巧性（Emerging Extrinsic Dexterity in Cluttered Scenes via Dynamics-aware Policy Learning）](wiki/entities/paper-dapl-extrinsic-dexterity-clutter.md) — DAPL**（*Emerging Extrinsic Dexterity in Cluttered Scenes via Dynamics-aware Policy Learning*，[arXi `📅unknown` `[entity_page]`
+- [DEED：零售人形 VLA 的数据高效后训练与经验驱动学习](wiki/entities/paper-deed.md) — DEED**（*Data-Efficient Post-Training and Experience-Driven Learning*；论文 *Closing the Lab-to-Store  `📅unknown` `[entity_page]`
 - [Deep Whole-body Parkour：感知式全身跑酷](wiki/entities/paper-deep-whole-body-parkour.md) — Deep Whole-body Parkour**（arXiv:2601.07701）隶属 Project Instinct，在 [42 篇 RL `📅unknown` `[entity_page]`
 - [Learning Locomotion Skills Using DeepRL: Does the Choice of Action Space Matter?](wiki/entities/paper-deeprl-locomotion-action-space-sca2017.md) — 一句话定义**：在 **平面物理角色** 的 **步态周期模仿** 上，用深度 RL **对照四种动作参数化**（扭矩、肌肉激活、**目标关节角 + PD**、目标关节角速度），从 **学习时间、 `📅unknown` `[entity_page]`
 - [Deform360（Massive Multi-view Visuotactile Dataset · arXiv:2607.05390）](wiki/entities/paper-deform360-deformable-visuotactile-dataset.md) — Deform360**（*Deform360: A Massive Multi-view Visuotactile Dataset for Deformable World Models*，[ar `📅unknown` `[entity_page]`
@@ -1069,6 +1070,7 @@
 - [X-Mind（Efficient Visual Chain-of-Thought via Predictive World Model）](wiki/entities/paper-x-mind.md) — X-Mind**（arXiv:2606.28758）由小鹏（XPeng） PWM 团队提出：将 **Predictive World Mo `📅unknown` `[entity_page]`
 - [X-World（Controllable Ego-Centric Multi-Camera World Models）](wiki/entities/paper-x-world.md) — X-World**（arXiv:2603.19979）由小鹏（XPeng） GWM 团队提出：面向端到端智驾评测与数据扩增的 **动作条件 `📅unknown` `[entity_page]`
 - [XRoboToolkit](wiki/entities/paper-xrobotoolkit.md) — XRoboToolkit**（*A Cross-Platform Framework for Robot Teleoperation*，字节跳动 PICO / 佐治亚理工 / 乔治梅森，arXiv `📅unknown` `[entity_page]`
+- [YAHMP：人形通用运动跟踪里什么真的重要？](wiki/entities/paper-yahmp.md) — YAHMP**（*Yet Another Humanoid Motion tracking Policy*；论文 *What Matters in Humanoid General Motion  `📅unknown` `[entity_page]`
 - [YOLO v1（You Only Look Once）](wiki/entities/paper-yolo-unified-realtime-detection.md) — YOLO**（You Only Look Once）是 Joseph Redmon 等提出的 **统一实时目标检测** 方法（arXiv:1506.02640，CVPR 2016）。它将检测从「区 `📅unknown` `[entity_page]`
 - [PAROL6（Source Robotics）](wiki/entities/parol6-source-robotics.md) — PAROL6** 是 **Source Robotics** 推出的 **开源桌面六轴机械臂**：强调 **低成本、可 DIY、ROS 控制**；产品介绍在 **[source-robotics. `📅unknown` `[entity_page]`
 - [Party OS（RoboParty 人形研发底座）](wiki/entities/party-os.md) — Party OS** 是 RoboParty 旗下 RoboParty Lab 对外沉淀的 **开放研 `📅unknown` `[entity_page]`

@@ -4,15 +4,15 @@
 - **类型：** site / project-page
 - **URL：** <https://zeonsunlightyu.github.io/Extreme-RGMT.github.io/>
 - **论文：** [arXiv:2607.20110](https://arxiv.org/abs/2607.20110)（PDF：<https://arxiv.org/pdf/2607.20110>）
-- **代码：** 截至 **2026-07-23** 项目页仅有 arXiv PDF badge 与 BibTeX，**未列 GitHub / Hugging Face 仓库或权重链接**
-- **入库日期：** 2026-07-23
+- **代码：** 截至 **2026-07-24** 复核，项目页仍仅有 arXiv PDF badge 与 BibTeX，**未列 GitHub / Hugging Face 仓库或权重链接**
+- **入库日期：** 2026-07-23（2026-07-24 复核开源状态无变化）
 - **配套论文归档：** [`sources/papers/extreme_rgmt_arxiv_2607_20110.md`](../papers/extreme_rgmt_arxiv_2607_20110.md)
 
 ## 一句话摘要
 
 北京理工大学 / 人形机器人（上海）有限公司（青龙 OpenLoong）/ 山东大学提出的 **两阶段 continual learning** 全身 motion tracking 框架：Stage I 学 generalist 基座策略，Stage II 用 **PACE**（acquisition–consolidation）与 **STAR**（高优势片段重采样）在保留日常跟踪能力的同时扩展高动态技能；项目页以高动态 / 低动态 / 失败对比视频为主入口。
 
-## 开源状态（步骤 2.5，截至 2026-07-23）
+## 开源状态（步骤 2.5，截至 2026-07-24）
 
 | 项 | 状态 |
 |----|------|

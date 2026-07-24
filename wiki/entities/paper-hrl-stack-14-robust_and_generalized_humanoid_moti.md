@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, openloong, bit]
 status: complete
-updated: 2026-07-23
+updated: 2026-07-24
 venue: curated
 summary: "RGMT 是 robust and generalized humanoid motion tracking。它的核心是 dynamics-conditioned aggregation：用 causal temporal encoder 总结近期本体状态，用 multi-head command encoder 选择性聚合参考命令。论文还设计 recovery curriculum 和 anne"
 related:
