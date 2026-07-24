@@ -790,6 +790,7 @@
     // 时间线条目 / 单日区块（参考论文笔记站 updates.html：左轨道 + 日期圆点 + 条目行 + 超量折叠）
     var TIMELINE_FOLD_LIMIT = 10; // 超过则折叠
     var TIMELINE_FOLD_SHOW = 10;  // 折叠时先预览的条数
+    var TIMELINE_FOLD_STEP = 10;  // 「再展开 N 项」步进（对齐时间线「再展开 30 天」）
     var activityDays = wikiActivity && Array.isArray(wikiActivity.days) ? wikiActivity.days : [];
 
     function countActionStats(metas) {
@@ -828,57 +829,102 @@
       );
     }
 
+    /** 单日展开导航：交互对齐「再展开 30 天」三按钮；视觉沿用 PR#1245 箭头+文案样式 */
+    function renderDayActionButton(className, label, pointingUp) {
+      return (
+        '<button type="button" class="updates-day-more ' +
+        className +
+        (pointingUp ? ' is-collapse' : '') +
+        '" aria-label="' +
+        escapeHtml(label) +
+        '">' +
+        '<span class="updates-day-chevron" aria-hidden="true"></span>' +
+        '<span class="updates-day-more-label">' +
+        escapeHtml(label) +
+        '</span>' +
+        '</button>'
+      );
+    }
+
+    function renderDayActions(total, showCount) {
+      if (!(total > TIMELINE_FOLD_LIMIT)) return '';
+      var canExpandMore = showCount < total;
+      var isExpanded = showCount > TIMELINE_FOLD_SHOW;
+      var leftButtons = [];
+      if (canExpandMore) {
+        leftButtons.push(
+          renderDayActionButton(
+            'updates-day-more-step',
+            '再展开 ' + TIMELINE_FOLD_STEP + ' 项',
+            false
+          )
+        );
+        leftButtons.push(
+          renderDayActionButton(
+            'updates-day-show-all',
+            '展开全部 ' + total + ' 项',
+            false
+          )
+        );
+      }
+      if (isExpanded) {
+        leftButtons.push(
+          renderDayActionButton(
+            'updates-day-collapse',
+            '收起至前 ' + TIMELINE_FOLD_SHOW + ' 项',
+            true
+          )
+        );
+      }
+      if (!leftButtons.length) return '';
+      return (
+        '<div class="updates-day-actions" role="group" aria-label="单日记录展开导航">' +
+        leftButtons.join('') +
+        '</div>'
+      );
+    }
+
+    function applyDayShowCount(daySection, showCount) {
+      if (!daySection) return;
+      var total = Number(daySection.getAttribute('data-total')) || 0;
+      var next = Math.max(TIMELINE_FOLD_SHOW, Math.min(Number(showCount) || TIMELINE_FOLD_SHOW, total || TIMELINE_FOLD_SHOW));
+      daySection.setAttribute('data-show', String(next));
+      daySection.classList.toggle('is-collapsed', next <= TIMELINE_FOLD_SHOW);
+      var items = daySection.querySelectorAll('.updates-day-list > .updates-item');
+      for (var ii = 0; ii < items.length; ii++) {
+        items[ii].classList.toggle('updates-item-folded', ii >= next);
+      }
+      var actionsHtml = renderDayActions(total, next);
+      var actionsEl = daySection.querySelector('.updates-day-actions');
+      if (actionsEl) {
+        if (actionsHtml) actionsEl.outerHTML = actionsHtml;
+        else actionsEl.parentNode.removeChild(actionsEl);
+      } else if (actionsHtml) {
+        daySection.insertAdjacentHTML('beforeend', actionsHtml);
+      }
+    }
+
     function renderTimelineDay(dateLabel, metas, totalCount, dayStats) {
       var fold = metas.length > TIMELINE_FOLD_LIMIT;
-      var previewHtml = '';
-      var restHtml = '';
+      var showCount = fold ? TIMELINE_FOLD_SHOW : metas.length;
+      var itemsHtml = '';
       for (var ii = 0; ii < metas.length; ii++) {
-        var itemHtml = renderTimelineItem(metas[ii], false);
-        if (fold && ii >= TIMELINE_FOLD_SHOW) restHtml += itemHtml;
-        else previewHtml += itemHtml;
+        itemsHtml += renderTimelineItem(metas[ii], fold && ii >= showCount);
       }
       var dayMeta = formatDayMeta(metas, totalCount, dayStats);
-      var foldToggle = '';
-      var foldCollapseEnd = '';
-      if (fold) {
-        var restCount = metas.length - TIMELINE_FOLD_SHOW;
-        var collapseLabel = '收起至前 ' + TIMELINE_FOLD_SHOW + ' 项';
-        foldToggle =
-          '<button type="button" class="updates-day-more" data-total="' +
-          metas.length +
-          '" data-rest="' +
-          restCount +
-          '" aria-expanded="false" aria-label="展开全部 ' +
-          metas.length +
-          ' 项">' +
-          '<span class="updates-day-chevron" aria-hidden="true"></span>' +
-          '<span class="updates-day-more-label">展开全部 ' +
-          metas.length +
-          ' 项</span>' +
-          '</button>';
-        // 展开后列表末尾再放一个收起入口，避免滚到底后还要回到中部箭头
-        foldCollapseEnd =
-          '<button type="button" class="updates-day-more updates-day-more-end" data-total="' +
-          metas.length +
-          '" aria-expanded="true" aria-label="' +
-          collapseLabel +
-          '">' +
-          '<span class="updates-day-chevron" aria-hidden="true"></span>' +
-          '<span class="updates-day-more-label">' +
-          collapseLabel +
-          '</span>' +
-          '</button>';
-      }
       return (
-        '<section class="updates-day' + (fold ? ' is-folded is-collapsible' : '') + '">' +
+        '<section class="updates-day' +
+        (fold ? ' is-collapsible is-collapsed' : '') +
+        '"' +
+        (fold
+          ? ' data-total="' + metas.length + '" data-show="' + showCount + '"'
+          : '') +
+        '>' +
         '<h3 class="updates-day-date"><span class="updates-day-dot" aria-hidden="true"></span>' +
         escapeHtml(dateLabel || '未标注日期') +
         '<span class="updates-day-meta">' + escapeHtml(dayMeta) + '</span></h3>' +
-        '<ul class="updates-day-list">' + previewHtml + '</ul>' +
-        foldToggle +
-        (fold
-          ? '<ul class="updates-day-list updates-day-list-rest">' + restHtml + '</ul>' + foldCollapseEnd
-          : '') +
+        '<ul class="updates-day-list">' + itemsHtml + '</ul>' +
+        (fold ? renderDayActions(metas.length, showCount) : '') +
         '</section>'
       );
     }
@@ -1089,35 +1135,29 @@
         }
         return;
       }
-      var moreBtn = ev.target.closest('button.updates-day-more');
-      if (moreBtn) {
-        var daySection = moreBtn.closest('.updates-day');
-        if (!daySection) return;
-        var total = moreBtn.getAttribute('data-total') || '';
-        var midBtn = daySection.querySelector('button.updates-day-more:not(.updates-day-more-end)');
-        var isFolded = daySection.classList.contains('is-folded');
-        var collapseText = '收起至前 ' + TIMELINE_FOLD_SHOW + ' 项';
-        var expandText = '展开全部 ' + total + ' 项';
-
-        function syncMidLabel(expanded) {
-          if (!midBtn) return;
-          midBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-          midBtn.setAttribute('aria-label', expanded ? collapseText : expandText);
-          var midLabel = midBtn.querySelector('.updates-day-more-label');
-          if (midLabel) midLabel.textContent = expanded ? collapseText : expandText;
-        }
-
-        if (isFolded) {
-          daySection.classList.remove('is-folded');
-          syncMidLabel(true);
-        } else {
-          daySection.classList.add('is-folded');
-          syncMidLabel(false);
-          // 从中部或末尾收起后，把中部控件带回视口
-          var foldScrollTarget = midBtn || daySection;
-          if (foldScrollTarget && foldScrollTarget.scrollIntoView) {
-            foldScrollTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          }
+      var dayMoreStepBtn = ev.target.closest('button.updates-day-more-step');
+      if (dayMoreStepBtn) {
+        var dayMoreStepSection = dayMoreStepBtn.closest('.updates-day');
+        if (!dayMoreStepSection) return;
+        var stepShow = Number(dayMoreStepSection.getAttribute('data-show')) || TIMELINE_FOLD_SHOW;
+        applyDayShowCount(dayMoreStepSection, stepShow + TIMELINE_FOLD_STEP);
+        return;
+      }
+      var dayShowAllBtn = ev.target.closest('button.updates-day-show-all');
+      if (dayShowAllBtn) {
+        var dayShowAllSection = dayShowAllBtn.closest('.updates-day');
+        if (!dayShowAllSection) return;
+        var dayTotal = Number(dayShowAllSection.getAttribute('data-total')) || 0;
+        applyDayShowCount(dayShowAllSection, dayTotal);
+        return;
+      }
+      var dayCollapseBtn = ev.target.closest('button.updates-day-collapse');
+      if (dayCollapseBtn) {
+        var dayCollapseSection = dayCollapseBtn.closest('.updates-day');
+        if (!dayCollapseSection) return;
+        applyDayShowCount(dayCollapseSection, TIMELINE_FOLD_SHOW);
+        if (dayCollapseSection.scrollIntoView) {
+          dayCollapseSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
       }
     });
