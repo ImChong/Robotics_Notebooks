@@ -1,13 +1,54 @@
 {
   "generated_at": "2026-07-24",
-  "node_count": 1818,
-  "edge_count": 15231,
+  "node_count": 1819,
+  "edge_count": 15242,
   "coverage": {
-    "covered": 1766,
-    "total": 1795,
+    "covered": 1767,
+    "total": 1796,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-faro-feasibility-aware-robot-motion-optimization.md",
+      "detail_id": "entity-paper-faro-feasibility-aware-robot-motion-optimization",
+      "label": "FARO（可行性感知机器人运动优化）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md",
+      "detail_id": "entity-paper-motiondisco-extreme-humanoid-loco-manipulation",
+      "label": "MotionDisco（极端人形 Loco-Manipulation 运动发现）",
+      "type": "entity",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/tasks/loco-manipulation.md",
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    },
+    {
+      "path": "wiki/methods/trajectory-optimization.md",
+      "detail_id": "wiki-methods-trajectory-optimization",
+      "label": "Trajectory Optimization（轨迹优化）",
+      "type": "method",
+      "recency": "2026-07-24",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
     {
       "path": "wiki/entities/paper-yahmp.md",
       "detail_id": "entity-paper-yahmp",
@@ -172,62 +213,17 @@
       "source": "log.md",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-sparsedrive.md",
-      "detail_id": "entity-paper-sparsedrive",
-      "label": "SparseDrive（SparseDrive: End-to-End Autonomous Driving via Sparse Scene Representation · arXiv:2405.19620）",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-senna.md",
-      "detail_id": "entity-paper-senna",
-      "label": "Senna（Senna: Bridging Large Vision-Language Models and End-to-End Autonomous Driving · arXiv:2410.22313）",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-momad.md",
-      "detail_id": "entity-paper-momad",
-      "label": "MomAD（Don't Shake the Wheel: Momentum-Aware Planning in End-to-End Autonomous Driving · arXiv:2503.03125）",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-drivetransformer.md",
-      "detail_id": "entity-paper-drivetransformer",
-      "label": "DriveTransformer（DriveTransformer: Unified Transformer for Scalable End-to-End Autonomous Driving · arXiv:2503.07656）",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-yahmp.md",
-    "detail_id": "entity-paper-yahmp",
-    "label": "YAHMP：人形通用运动跟踪里什么真的重要？",
+    "path": "wiki/entities/paper-faro-feasibility-aware-robot-motion-optimization.md",
+    "detail_id": "entity-paper-faro-feasibility-aware-robot-motion-optimization",
+    "label": "FARO（可行性感知机器人运动优化）",
     "type": "entity",
     "recency": "2026-07-24",
     "source": "log.md",
     "action": "added",
-    "has_repo": true,
-    "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    "community_label": "模仿学习（Imitation Learning, IL） 社区"
   },
   "top_communities": [
     {
@@ -236,19 +232,19 @@
     },
     {
       "label": "仿真到现实",
-      "size": 204
-    },
-    {
-      "label": "移动操作",
-      "size": 178
+      "size": 205
     },
     {
       "label": "人形论文深读笔记",
       "size": 177
     },
     {
+      "label": "移动操作",
+      "size": 156
+    },
+    {
       "label": "人形强化学习运动控制",
-      "size": 114
+      "size": 127
     },
     {
       "label": "全身控制",
@@ -280,20 +276,20 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "degree": 291,
+      "has_repo": true,
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    },
+    {
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
       "degree": 290,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "detail_id": "wiki-tasks-loco-manipulation",
-      "label": "Loco-Manipulation (移动操作)",
-      "type": "task",
-      "degree": 289,
-      "has_repo": true,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
       "detail_id": "wiki-tasks-locomotion",
@@ -352,8 +348,7 @@
       "label": "OmniRetarget",
       "type": "entity",
       "degree": 49,
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",

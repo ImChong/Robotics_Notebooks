@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-retargeting, loco-manipulation, trajectory-optimization, humanoid-paper-notebooks]
 status: complete
-updated: 2026-06-26
+updated: 2026-07-24
 arxiv: "2602.06827"
 related:
   - ../methods/dynaretarget-sbto-motion-retargeting.md
