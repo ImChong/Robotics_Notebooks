@@ -5,13 +5,13 @@ tags: [repo, framework, motor-control, foc, bldc, embedded, open-source, linux-f
 status: complete
 updated: 2026-06-24
 related:
+  - ../queries/actuator-drive-chain-selection-loop.md
   - ../concepts/field-oriented-control.md
   - ../overview/motor-drive-firmware-bus-protocols.md
   - ./atom01-firmware.md
   - ./wokwi.md
   - ./kicad.md
   - ../concepts/can-bus-protocol.md
-  - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/repos/simplefoc_arduino_foc.md
   - ../../sources/sites/simplefoc_documentation.md
@@ -99,12 +99,12 @@ flowchart TB
 
 ## 关联页面
 
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 本页处于驱动链 **②层 电机驱动固件 FOC**（电流环带宽 vs 编码器分辨率/标定）
 - [磁场定向控制（FOC）](../concepts/field-oriented-control.md)
 - [电机驱动器底软通信协议总览](../overview/motor-drive-firmware-bus-protocols.md)
 - [Atom01 Firmware](./atom01-firmware.md)（开源人形底层固件对照）
 - [Wokwi](./wokwi.md) — 无硬件时在浏览器验证 Arduino/ESP32/STM32 外设与 FOC 原型
 - [KiCad](./kicad.md) — 自研驱动板原理图与 PCB layout
-- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — SimpleFOC 是②层开源 FOC 驱动固件生态
 
 ## 推荐继续阅读
 

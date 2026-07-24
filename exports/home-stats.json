@@ -1,13 +1,77 @@
 {
   "generated_at": "2026-07-24",
   "node_count": 1805,
-  "edge_count": 15099,
+  "edge_count": 15100,
   "coverage": {
     "covered": 1753,
     "total": 1782,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/kicad.md",
+      "detail_id": "entity-kicad",
+      "label": "KiCad（开源 PCB 与原理图 EDA）",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/simplefoc.md",
+      "detail_id": "entity-simplefoc",
+      "label": "SimpleFOC（Arduino-FOC 生态）",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-neuralactuator-neural-actuation-modeling.md",
+      "detail_id": "entity-paper-neuralactuator-neural-actuation-modeling",
+      "label": "NeuralActuator（Neural Actuation Modeling · arXiv:2607.11734）",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/bam-better-actuator-models.md",
+      "detail_id": "entity-bam-better-actuator-models",
+      "label": "BAM（Better Actuator Models）",
+      "type": "entity",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/concepts/ethercat-protocol.md",
+      "detail_id": "wiki-concepts-ethercat-protocol",
+      "label": "EtherCAT 协议基础",
+      "type": "concept",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "机器人系统工程（专题汇总） 社区"
+    },
+    {
+      "path": "wiki/queries/actuator-drive-chain-selection-loop.md",
+      "detail_id": "wiki-queries-actuator-drive-chain-selection-loop",
+      "label": "Query：执行器驱动链选型闭环知识链",
+      "type": "query",
+      "recency": "2026-07-23",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/comparisons/mobile-robot-navigation-planning-methods.md",
       "detail_id": "wiki-comparisons-mobile-robot-navigation-planning-methods",
@@ -150,79 +214,18 @@
       "source": "log.md",
       "action": "added",
       "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/overview/topic-grasp.md",
-      "detail_id": "wiki-overview-topic-grasp",
-      "label": "抓取与操作（专题汇总）",
-      "type": "overview",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/methods/visual-servoing.md",
-      "detail_id": "wiki-methods-visual-servoing",
-      "label": "Visual Servoing（视觉伺服控制）",
-      "type": "method",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/methods/in-hand-reorientation.md",
-      "detail_id": "wiki-methods-in-hand-reorientation",
-      "label": "In-hand Reorientation (手内重定向)",
-      "type": "method",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/queries/grasp-policy-selection.md",
-      "detail_id": "wiki-queries-grasp-policy-selection",
-      "label": "Query：抓取策略选型（开放场景 vs 已知物体 / 稀疏 vs 稠密 / 几何 vs 学习）",
-      "type": "query",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-omnitactune-tactile-residual-adaptation.md",
-      "detail_id": "entity-paper-omnitactune-tactile-residual-adaptation",
-      "label": "OmniTacTune：视觉策略的触觉残差真机适应",
-      "type": "entity",
-      "recency": "2026-07-23",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/comparisons/mobile-robot-navigation-planning-methods.md",
-    "detail_id": "wiki-comparisons-mobile-robot-navigation-planning-methods",
-    "label": "移动机器人导航规划方法对比：全局搜索 · 局部避障 · 路径平滑",
-    "type": "comparison",
+    "path": "wiki/entities/kicad.md",
+    "detail_id": "entity-kicad",
+    "label": "KiCad（开源 PCB 与原理图 EDA）",
+    "type": "entity",
     "recency": "2026-07-23",
     "source": "log.md",
     "action": "maintained",
     "has_repo": true,
-    "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
