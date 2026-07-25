@@ -1,13 +1,83 @@
 {
-  "generated_at": "2026-07-24",
-  "node_count": 1845,
-  "edge_count": 15504,
+  "generated_at": "2026-07-25",
+  "node_count": 1846,
+  "edge_count": 15519,
   "coverage": {
-    "covered": 1794,
-    "total": 1822,
+    "covered": 1795,
+    "total": 1823,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-bioinspired-multimodal-robotics.md",
+      "detail_id": "entity-paper-bioinspired-multimodal-robotics",
+      "label": "仿生多模态机器人综述：五项指标与软硬智能融合",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/tasks/locomotion.md",
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/tasks/hybrid-locomotion.md",
+      "detail_id": "wiki-tasks-hybrid-locomotion",
+      "label": "Hybrid Locomotion (混合运动)",
+      "type": "task",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-aerial-aquatic-remora-hitchhiking-robot.md",
+      "detail_id": "entity-paper-aerial-aquatic-remora-hitchhiking-robot",
+      "label": "空中-水中两栖搭便车机器人：仿印鱼吸盘+被动变形桨",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-miniature-deep-sea-morphable-robot.md",
+      "detail_id": "entity-paper-miniature-deep-sea-morphable-robot",
+      "label": "深海软体可变形机器人：压力等效多模态运动",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-octopus-inspired-esoam-soft-arm.md",
+      "detail_id": "entity-paper-octopus-inspired-esoam-soft-arm",
+      "label": "E-SOAM：仿章鱼可传感软臂的环境交互",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-learning-to-adapt-bio-inspired-quadruped-gait.md",
+      "detail_id": "entity-paper-learning-to-adapt-bio-inspired-quadruped-gait",
+      "label": "Learning to Adapt：生物启发步态策略与四足 versatile locomotion",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/unitree-sdk2.md",
       "detail_id": "entity-unitree-sdk2",
@@ -150,106 +220,30 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/unitree-mujoco.md",
-      "detail_id": "entity-unitree-mujoco",
-      "label": "unitree_mujoco",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/unitree-lerobot.md",
-      "detail_id": "entity-unitree-lerobot",
-      "label": "unitree_lerobot",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/unitree-sim-isaaclab.md",
-      "detail_id": "entity-unitree-sim-isaaclab",
-      "label": "unitree_sim_isaaclab",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/unifolm-vla.md",
-      "detail_id": "entity-unifolm-vla",
-      "label": "UnifoLM-VLA-0（unifolm-vla）",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/unifolm-world-model-action.md",
-      "detail_id": "entity-unifolm-world-model-action",
-      "label": "UnifoLM-WMA-0（unifolm-world-model-action）",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/point-lio-unilidar.md",
-      "detail_id": "entity-point-lio-unilidar",
-      "label": "point_lio_unilidar",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/qmini.md",
-      "detail_id": "entity-qmini",
-      "label": "Qmini",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/unitree-sdk2.md",
-    "detail_id": "entity-unitree-sdk2",
-    "label": "unitree_sdk2（含 Python 绑定）",
+    "path": "wiki/entities/paper-bioinspired-multimodal-robotics.md",
+    "detail_id": "entity-paper-bioinspired-multimodal-robotics",
+    "label": "仿生多模态机器人综述：五项指标与软硬智能融合",
     "type": "entity",
-    "recency": "2026-07-24",
+    "recency": "2026-07-25",
     "source": "log.md",
-    "action": "added",
-    "has_repo": true,
+    "action": "maintained",
     "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 360
+      "size": 380
+    },
+    {
+      "label": "仿真到现实",
+      "size": 180
     },
     {
       "label": "人形论文深读笔记",
       "size": 177
-    },
-    {
-      "label": "仿真到现实",
-      "size": 176
     },
     {
       "label": "移动操作",
@@ -257,7 +251,7 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 149
+      "size": 134
     },
     {
       "label": "全身控制",
@@ -284,7 +278,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 331,
+      "degree": 332,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -308,13 +302,13 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 264
+      "degree": 266
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 246,
+      "degree": 248,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
@@ -354,8 +348,7 @@
       "label": "BeyondMimic",
       "type": "method",
       "degree": 59,
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",
@@ -369,8 +362,7 @@
       "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
       "type": "entity",
       "degree": 47,
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "wiki-methods-deepmimic",
@@ -390,8 +382,7 @@
       "label": "TWIST2",
       "type": "entity",
       "degree": 41,
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",

@@ -12,7 +12,7 @@ tags:
   - buaa
   - science-robotics
 status: complete
-updated: 2026-07-20
+updated: 2026-07-25
 doi: "10.1126/scirobotics.adp7821"
 venue: "Science Robotics 2025"
 related:
@@ -134,6 +134,7 @@ flowchart TB
 - [运动任务（Locomotion）](../tasks/locomotion.md) — 游泳/爬行/滑翔三模态运动
 - [章鱼软臂仿生（北航文力组 Science Robotics 2023）](./paper-octopus-inspired-esoam-soft-arm.md)
 - [两栖印鱼搭便车机器人（北航文力组 Science Robotics 2022）](./paper-aerial-aquatic-remora-hitchhiking-robot.md)
+- [仿生多模态机器人综述（Science Robotics 2026）](./paper-bioinspired-multimodal-robotics.md) — 软材料 + 多模态切换的上位框架
 
 ## 推荐继续阅读
 

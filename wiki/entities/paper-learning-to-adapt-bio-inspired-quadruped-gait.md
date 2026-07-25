@@ -12,7 +12,7 @@ tags:
   - gait-selection
   - raisim
 status: complete
-updated: 2026-07-19
+updated: 2026-07-25
 doi: "10.1038/s42256-025-01065-z"
 venue: "Nature Machine Intelligence 2025"
 related:
@@ -158,6 +158,7 @@ flowchart TB
 - [四足机器人](./quadruped-robot.md) — 形态与平台入口
 - [Walk These Ways（MoB）](./paper-walk-these-ways-quadruped-mob.md) — 多样行为参数化对照
 - [E-SDS](./paper-e-sds-environment-aware-humanoid-locomotion-rl.md) — 同作者 UCL **感知 + VLM 奖励** 延伸
+- [仿生多模态机器人综述（Science Robotics 2026）](./paper-bioinspired-multimodal-robotics.md) — 跨介质多模态 vs 本页单形态多 gait
 
 ## 参考来源
 

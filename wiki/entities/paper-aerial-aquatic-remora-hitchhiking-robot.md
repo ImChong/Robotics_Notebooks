@@ -12,7 +12,7 @@ tags:
   - buaa
   - science-robotics
 status: complete
-updated: 2026-07-20
+updated: 2026-07-25
 doi: "10.1126/scirobotics.abm6695"
 venue: "Science Robotics 2022"
 related:
@@ -131,6 +131,7 @@ flowchart LR
 - [Crazyswarm2（多旋翼平台）](./crazyswarm2.md) — 小型室内多旋翼平台参照对比
 - [章鱼臂仿生软体操作（北航文力组系列）](./paper-octopus-inspired-esoam-soft-arm.md)
 - [深海可变形机器人（北航文力组系列）](./paper-miniature-deep-sea-morphable-robot.md)
+- [仿生多模态机器人综述（Science Robotics 2026）](./paper-bioinspired-multimodal-robotics.md) — 结构复用 / 切换代价的上位评测语言
 
 ## 推荐继续阅读
 

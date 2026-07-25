@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-07-24
+updated: 2026-07-25
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -308,6 +308,7 @@ flowchart TD
 - [ZEST](../methods/zest.md) — arXiv:2602.00401（跨形态高动态模仿与零样本硬件部署）
 - [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md)
 - [Argus（动态对称 / 球形腿式全向移动）](../entities/paper-argus-dynamic-symmetry.md) — Science Robotics 2026；动态各向同性 η 与 20 腿无朝向偏好 locomotion
+- [仿生多模态机器人综述（Science Robotics 2026）](../entities/paper-bioinspired-multimodal-robotics.md) — 跨介质仿生多模态定义 + 五项评测指标（MCM/CRP/TC 等）+ 物理×计算智能路线图
 
 ### Benchmark 入口
 - [Locomotion Benchmarks](../../references/benchmarks/locomotion-benchmarks.md)
