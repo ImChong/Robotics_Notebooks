@@ -14,6 +14,7 @@ related:
   - ../entities/pyleecan.md
   - ../entities/axfluxmdo.md
   - ../entities/pcb-motor.md
+  - ../entities/femm.md
   - ../entities/femm-foc-simulation.md
   - ../entities/acmop.md
   - ../entities/kicad.md
@@ -25,6 +26,7 @@ sources:
   - ../../sources/blogs/cadenkraft_coreless_axial_flux_motor_part1.md
   - ../../sources/repos/pygeartrain.md
   - ../../sources/repos/femm_foc_simulation.md
+  - ../../sources/sites/femm_info.md
   - ../../sources/repos/pcb_motor.md
   - ../../sources/repos/axfluxmdo.md
   - ../../sources/repos/pyleecan.md
@@ -51,7 +53,8 @@ summary: "按电磁设计完整度对比开源力矩电机：几何/绕组/磁�
 
 - **要复现「电磁 → 绕线 → 转子 → FEM → 减速 → 驱动 → 台架」整条链**：优先 [Ironless-QDD-Actuator](../entities/ironless-qdd-actuator.md)。
 - **要先建立 Halbach / 无铁芯轴向手算直觉（无 CAD 仓）**：读 [Caden Kraft Axial Flux Part 1](../entities/cadenkraft-ironless-axial-flux-motor.md)，再回 Ironless 打开 FEMM。
-- **要学 FEMM + FOC 扫角入门**：用 [FEMM-FOC-Simulation](../entities/femm-foc-simulation.md)。
+- **要学 FEMM + FOC 扫角入门**：先读 [FEMM](../entities/femm.md) 官方 Tutorial/Examples，再用 [FEMM-FOC-Simulation](../entities/femm-foc-simulation.md)。
+
 - **要学 PCB 轴向绕组可制造文件**：用 [PCB Motor](../entities/pcb-motor.md)（WIP，偏小关节）。
 - **要自己重设人形外转子径向磁通**：用 [PYLEECAN](../entities/pyleecan.md)；轴向磁通早期权衡用 [axfluxmdo](../entities/axfluxmdo.md)；自动优化研究用 [ACMOP](../entities/acmop.md)（非入门）。
 - **要生成可打印摆线/行星齿廓**：用 [pygeartrain](../entities/pygeartrain.md)。
@@ -101,7 +104,7 @@ Halbach / 无铁芯手算与轴向装配叙事见前作 [Ironless Axial Flux Par
 
 | 缺口 | 用什么补 |
 |------|----------|
-| FEMM 建模步骤不会 | FEMM-FOC：DXF → 材料 → 绕组 → FOC 电流 → 扫角转矩 |
+| FEMM 建模步骤不会 | 先 [FEMM](../entities/femm.md) Tutorial/Examples，再 FEMM-FOC：DXF → 材料 → 绕组 → FOC 电流 → 扫角转矩 |
 | 想用 PCB 代替漆包线 | PCB Motor：层数/铜厚/气隙/绕组拓扑 |
 | 只要 Halbach 轴向手算叙事 | Caden Axial Part 1（随后必须回 Ironless 开 FEMM） |
 | 要生成摆线/行星可打印齿廓 | pygeartrain |
@@ -128,6 +131,7 @@ Halbach / 无铁芯手算与轴向装配叙事见前作 [Ironless Axial Flux Par
 
 ## 关联页面
 
+- [FEMM](../entities/femm.md)
 - [开源 QDD / 力矩关节执行器项目对比](./open-source-qdd-actuator-projects.md)
 - [电机电磁与多物理场仿真软件选型](./motor-em-simulation-software.md)
 - [电机设计流程](../overview/motor-design-workflow.md)
@@ -140,6 +144,8 @@ Halbach / 无铁芯手算与轴向装配叙事见前作 [Ironless Axial Flux Par
 - [Ironless-QDD-Actuator](../../sources/repos/ironless_qdd_actuator.md)
 - [Caden Kraft Axial Flux Part 1](../../sources/blogs/cadenkraft_coreless_axial_flux_motor_part1.md)
 - [pygeartrain](../../sources/repos/pygeartrain.md)
+- [FEMM 官方站点](../../sources/sites/femm_info.md)
+
 - [FEMM-FOC-Simulation](../../sources/repos/femm_foc_simulation.md)
 - [pcb-motor](../../sources/repos/pcb_motor.md)
 - [axfluxmdo](../../sources/repos/axfluxmdo.md)
@@ -150,5 +156,7 @@ Halbach / 无铁芯手算与轴向装配叙事见前作 [Ironless Axial Flux Par
 
 - Ironless 项目长文：<https://cadenkraft.com/ironless-cycloidal-planetary-actuator/>
 - Axial Flux Part 1：<https://cadenkraft.com/designing-a-coreless-axial-flux-motor-part-1/>
+- FEMM：<https://www.femm.info/doku/doku.php?id=start>
+
 - PYLEECAN：<https://www.pyleecan.org/>
 - axfluxmdo 文档：<https://jman4162.github.io/axfluxmdo/>

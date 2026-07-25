@@ -25,3 +25,14 @@
 | [paper-mini-cheetah-platform](../../wiki/entities/paper-mini-cheetah-platform.md) | 平台论文 |
 | [paper-wbic-mpc-mini-cheetah](../../wiki/entities/paper-wbic-mpc-mini-cheetah.md) | WBIC+MPC |
 | [bgkatz](./bgkatz.md) | 硬件/驱动侧公开仓库 |
+
+## 社区学习入口（非官方）
+
+| 仓库 | 说明 |
+|------|------|
+| [quadruped_ctrl](./derek_th_wang_quadruped_ctrl.md) | PyBullet + ROS 仿真控制 |
+| [CHAMP](./chvmp_champ.md) | ROS 四足框架，借鉴 Cheetah 思想 |
+| [mini_cheetah_ROS](./gleboss1_mini_cheetah_ros.md) | 社区 ROS 移植（星标低，仅入门） |
+
+亦见策展：[mit_mini_cheetah_learning_stack_curator](../personal/mit_mini_cheetah_learning_stack_curator.md)。
+
