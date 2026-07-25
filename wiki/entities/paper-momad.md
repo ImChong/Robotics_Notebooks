@@ -62,7 +62,7 @@ summary: "MomAD（arXiv:2503.03125，CVPR 2025）：用轨迹动量与感知动�
 | Venue | CVPR 2025 |
 | **演进线索** | 动量感知 / 帧间一致 |
 | **开源** | **已开源** — [`adept-thu/MomAD`](https://github.com/adept-thu/MomAD) |
-| **指标索引** | nuScenes 规划精度 SOTA 级；强调 Smoothness / TPC 与 Turning-nuScenes（以论文为准）。 |
+| **指标索引** | nuScenes 规划精度居第一梯队；强调 Smoothness / TPC 与 Turning-nuScenes（以论文为准）。 |
 
 ## 核心原理
 
@@ -110,7 +110,7 @@ sequenceDiagram
 |------|------|
 | 数据集 | nuScenes；**Turning-nuScenes** 验证子集 |
 | 新指标 | **TPC**（Trajectory Prediction Consistency） |
-| 报告点 | 长时域（>3s）一致性与转弯场景响应；规划精度 SOTA 级 |
+| 报告点 | 长时域（>3s）一致性与转弯场景响应；规划精度居第一梯队 |
 | 对照 | 单帧 one-shot 规划 E2E |
 
 ## 与相邻路线对比
@@ -136,7 +136,7 @@ sequenceDiagram
 
 1. **两大动量** — 轨迹动量（TTM：Hausdorff 对齐参考历史轨迹趋势）+ 感知动量（历史特征平滑，缓解短暂遮挡丢检），另含 MPI 做规划 query 与历史时空上下文交叉注意力。
 2. **新指标与验证集** — 提出 **TPC**（Trajectory Prediction Consistency），构造 **Turning-nuScenes** 验证子集，衡量长时域（>3s）一致性与转弯场景响应。
-3. **落地导向** — nuScenes 规划精度 SOTA 级；对照单帧 one-shot 规划，主打帧间一致而非刷开环碰撞。
+3. **落地导向** — nuScenes 规划精度居第一梯队；对照单帧 one-shot 规划，主打帧间一致而非刷开环碰撞。
 4. **开源** — CVPR 2025，`adept-thu/MomAD` 已开源。
 5. **边界** — 过强动量可能推迟必要急避，需在稳定与响应间折中；开环一致性不自动保证闭环控制品质；Turning 子集构造细节影响可比性。
 

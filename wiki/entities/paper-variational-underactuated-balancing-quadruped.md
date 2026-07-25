@@ -3,6 +3,7 @@ type: entity
 tags: [paper, balance, optimal-control, quadruped, qp, notre-dame, mit]
 status: complete
 updated: 2026-07-25
+venue: "IEEE Access 2020"
 related:
   - ./mit-mini-cheetah.md
   - ../concepts/whole-body-control.md
@@ -87,6 +88,14 @@ flowchart LR
 - 真影响：欠驱动接触下的凸 QP 平衡可行。
 - 次要代价：依赖简化模型；开源缺失。
 - 部署：作为平衡模块研究参考，勿与 trot MPC 混为一谈。
+
+## 与其他工作对比
+
+| 对照对象 | 差异要点 |
+|----------|----------|
+| 常规充分驱动 QP 平衡控制器 | 常规 QP 假设充分驱动接触，两点足等欠驱动工况直接失效；本文用变分线性化 + 凸 QP 处理 |
+| 完整 [MPC](../methods/model-predictive-control.md) | 相对全身 MPC 更紧凑（CPU 时间更省），仍能处理极端摩擦约束下的平衡恢复 |
+| trot 步态 MPC | 本文是欠驱动平衡专用模块，勿与 trot loco 混为一谈；对人形双足平衡有迁移价值 |
 
 ## 局限与风险
 

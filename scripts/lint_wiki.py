@@ -114,12 +114,16 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
 #   loco-manipulation → tasks/loco-manipulation.md（移动操作，任务域，归 tasks）
 #   step       → entities/step2urdf.md（CAD 交换格式，已在 concepts/text-to-cad.md 引介）
 #   twist2     → entities/paper-twist2.md（具体系统/论文，归 entities）
+#   ethercat   → concepts/ethercat-protocol.md（实时总线概念，slug 与页面 stem 不同名）
+#   mit        → schema/institutions.json 机构（麻省理工），归属机构注册表，不建概念页
 MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "amp",
     "armature",
+    "ethercat",  # 已由 concepts/ethercat-protocol.md 覆盖（slug 与页面 stem 不同名）
     "g1",
     "gmr",
     "heracles",
+    "mit",  # 机构（schema/institutions.json），非概念，不应建 concepts/methods 页
     "mjlab",
     "mujoco",
     "sonic",

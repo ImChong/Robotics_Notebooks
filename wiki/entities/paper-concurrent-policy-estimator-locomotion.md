@@ -89,6 +89,14 @@ flowchart TB
 - 次要代价：官方代码不完整；超参耦合更难调。
 - 部署：与 RMA/teacher–student 对照选型，见 privileged-training。
 
+## 与其他工作对比
+
+| 对照对象 | 差异要点 |
+|----------|----------|
+| 两阶段 teacher–student / [特权训练](../concepts/privileged-training.md) | 本文把策略与状态估计**并发**训练，减少串行瓶颈、令估计与控制共同适应 |
+| RMA 式在线适应 | RMA 侧重适应模块；本文显式把「要估计什么」（基座速度/足高/接触）做成可学习估计器 |
+| [Rapid Locomotion RL](./paper-rapid-locomotion-rl.md) | 同属学习 locomotion 线；Rapid 侧重速度课程 + 在线辨识，本文侧重并发状态估计 |
+
 ## 局限与风险
 
 - `sources/papers/privileged_training.md` 曾误写 arXiv `2202.05738`；**正确为 2202.05481**。

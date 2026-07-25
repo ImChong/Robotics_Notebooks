@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-25",
   "node_count": 1890,
-  "edge_count": 16103,
+  "edge_count": 16107,
   "coverage": {
     "covered": 1838,
     "total": 1866,
@@ -184,7 +184,8 @@
       "recency": "2026-07-25",
       "source": "log.md",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
       "path": "wiki/entities/paper-low-cost-modular-actuator-katz.md",
@@ -232,27 +233,27 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 380
+      "size": 350
     },
     {
       "label": "人形论文深读笔记",
-      "size": 177
-    },
-    {
-      "label": "移动操作",
       "size": 174
     },
     {
-      "label": "仿真到现实",
-      "size": 137
+      "label": "移动操作",
+      "size": 161
     },
     {
-      "label": "全身控制",
-      "size": 129
+      "label": "仿真到现实",
+      "size": 144
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 126
+      "size": 136
+    },
+    {
+      "label": "全身控制",
+      "size": 119
     }
   ],
   "top_hubs": [
@@ -352,8 +353,7 @@
       "label": "OmniRetarget",
       "type": "entity",
       "degree": 49,
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",

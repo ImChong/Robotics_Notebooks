@@ -2,7 +2,7 @@
 
 ## [2026-07-25] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **27** 条信息型预警）：
+共发现 **0** 个问题（另含 **1** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -52,9 +52,8 @@
 ### 💡 频繁提及但缺少 wiki 页面的概念（0 个）
 - 无
 
-### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（2 个）
-- MIT（被 8 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
-- EtherCAT（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
+### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### ⚠️ Frontmatter 缺少 type 字段（0 个）
 - 无
@@ -95,27 +94,11 @@
 ### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（6 个）
-- wiki/entities/paper-bledt-rpc-thesis.md
-- wiki/entities/paper-extracting-legged-locomotion-heuristics-rpc.md
-- wiki/entities/paper-mini-cheetah-platform.md
-- wiki/entities/paper-robust-autonomous-navigation-mini-cheetah-vision.md
-- wiki/entities/paper-variational-underactuated-balancing-quadruped.md
-- wiki/entities/paper-vision-aided-dynamic-exploration-mini-cheetah.md
+### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
+- 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（12 个）
-- wiki/entities/paper-bledt-rpc-thesis.md（缺 对比）
-- wiki/entities/paper-concurrent-policy-estimator-locomotion.md（缺 对比）
-- wiki/entities/paper-extracting-legged-locomotion-heuristics-rpc.md（缺 对比）
-- wiki/entities/paper-hs-ddp-legged.md（缺 对比）
-- wiki/entities/paper-learning-to-jump-from-pixels.md（缺 对比）
-- wiki/entities/paper-mhpc.md（缺 对比）
-- wiki/entities/paper-mini-cheetah-platform.md（缺 对比）
-- wiki/entities/paper-rapid-locomotion-rl.md（缺 对比）
-- wiki/entities/paper-robust-autonomous-navigation-mini-cheetah-vision.md（缺 对比）
-- wiki/entities/paper-variational-underactuated-balancing-quadruped.md（缺 对比）
-- wiki/entities/paper-vision-aided-dynamic-exploration-mini-cheetah.md（缺 对比）
-- wiki/entities/paper-wbic-mpc-mini-cheetah.md（缺 对比）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（693 个）
 - wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md
@@ -138,11 +121,8 @@
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（4 个）
-- wiki/entities/paper-lehome-learning-to-fold.md（含绝对化措辞「最新」，updated=2026-07-24；同主题更新页 wiki/entities/dreamwaq-plus.md updated=2026-07-25）
-- wiki/entities/paper-momad.md（含绝对化措辞「SOTA」，updated=2026-07-24；同主题更新页 wiki/entities/paper-aerial-aquatic-remora-hitchhiking-robot.md updated=2026-07-25）
-- wiki/entities/paper-s-squared-vla.md（含绝对化措辞「SOTA」，updated=2026-07-24；同主题更新页 wiki/entities/paper-aerial-aquatic-remora-hitchhiking-robot.md updated=2026-07-25）
-- wiki/entities/paper-uniad.md（含绝对化措辞「SOTA」，updated=2026-07-24；同主题更新页 wiki/entities/paper-aerial-aquatic-remora-hitchhiking-robot.md updated=2026-07-25）
+### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -156,8 +136,7 @@
 ### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」专题枢纽（信息型，不阻塞 CI）（2 个）
-- wiki/entities/benjamin-katz.md
-- wiki/entities/paper-mini-cheetah-platform.md
+### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
+- 无
 
 📊 Sources 覆盖率：1838/1866 (98%) wiki/entity 页有 ingest 来源
