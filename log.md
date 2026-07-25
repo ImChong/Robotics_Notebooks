@@ -1,11 +1,18 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-25] fix(wiki): ironless-qdd-actuator BOM 美元符被 KaTeX 成对 `$...$` 吞掉
+
+- **页面：** [`wiki/entities/ironless-qdd-actuator.md`](wiki/entities/ironless-qdd-actuator.md)
+- **现象：** 「为什么重要」中 `$40…$70` 被 `docs/main.js` 行内公式正则当成数学，详情页显示成无货币符号的斜体数字
+- **修复：** 改为 `40 USD` / `70 USD` / `约 384 USD`，避开成对 `$`
+
 ## [2026-07-25] ingest | sources/papers/low_cost_modular_actuator_katz_mit_2018.md — Katz MIT S.M. 2018 低成本模块化 QDD 执行器（Mini Cheetah 蓝本）；升格 wiki/entities/paper-low-cost-modular-actuator-katz.md；交叉 wiki/comparisons/open-source-qdd-actuator-projects.md、roadmap/depth-torque-motor-design.md、wiki/entities/paper-open-torque-controlled-modular-robot-solo.md、wiki/entities/paper-notebook-proprioceptive-actuator-design-in-the-mit-cheeta.md
 
 - **论文源：** [`sources/papers/low_cost_modular_actuator_katz_mit_2018.md`](sources/papers/low_cost_modular_actuator_katz_mit_2018.md)（DSpace `b85069e2-…` / handle `1721.1/118671`；PDF MD5 `46b87d00bb5d7d665c0e2b676055d995`；**不入库 PDF**，遵 MIT thesis 版权）
 - **新实体：** [`wiki/entities/paper-low-cost-modular-actuator-katz.md`](wiki/entities/paper-low-cost-modular-actuator-katz.md) — COTS U8 级电机 + **6:1** 行星 + 集成 FOC/CAN；9 kg 十二关节四足与后空翻；含源码运行时序图
 - **开源核查（步骤 2.5）：** **部分开源** — 附录 A：[`3phase_integrated`](sources/repos/bgkatz_3phase_integrated.md)、[`motorcontrol`](sources/repos/bgkatz_motorcontrol.md)、[`SPIne`](sources/repos/bgkatz_spine.md)、`bgkatz/actuator`；机械 CAD 未列；叙事页 [`robot_daycare_mini_cheetah`](sources/sites/robot_daycare_mini_cheetah.md)
 - **交叉：** [`wiki/comparisons/open-source-qdd-actuator-projects.md`](wiki/comparisons/open-source-qdd-actuator-projects.md)、[`roadmap/depth-torque-motor-design.md`](roadmap/depth-torque-motor-design.md)、[`wiki/entities/paper-open-torque-controlled-modular-robot-solo.md`](wiki/entities/paper-open-torque-controlled-modular-robot-solo.md)、[`wiki/entities/paper-notebook-proprioceptive-actuator-design-in-the-mit-cheeta.md`](wiki/entities/paper-notebook-proprioceptive-actuator-design-in-the-mit-cheeta.md)、[`wiki/queries/actuator-drive-chain-selection-loop.md`](wiki/queries/actuator-drive-chain-selection-loop.md)
+
 
 ## [2026-07-25] ingest | sources/papers/open_torque_controlled_modular_robot_solo_arxiv_1910_00093.md — Grimminger et al. Solo/ODRI 开源力矩控制模块化腿足架构；升格 wiki/entities/paper-open-torque-controlled-modular-robot-solo.md；交叉 wiki/entities/odri-solo-and-bolt.md、wiki/comparisons/open-source-qdd-actuator-projects.md；sites/repos 回链；注册 schema/institutions.json laas
 

@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/ironless-qdd-actuator.md",
+      "detail_id": "entity-ironless-qdd-actuator",
+      "label": "Ironless QDD Actuator（无铁芯转子摆线—行星执行器）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
       "path": "wiki/entities/paper-low-cost-modular-actuator-katz.md",
       "detail_id": "entity-paper-low-cost-modular-actuator-katz",
       "label": "A Low Cost Modular Actuator for Dynamic Robots（Katz / Mini Cheetah）",
@@ -101,17 +112,6 @@
       "recency": "2026-07-25",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/ironless-qdd-actuator.md",
-      "detail_id": "entity-ironless-qdd-actuator",
-      "label": "Ironless QDD Actuator（无铁芯转子摆线—行星执行器）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
       "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
@@ -225,13 +225,13 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-low-cost-modular-actuator-katz.md",
-    "detail_id": "entity-paper-low-cost-modular-actuator-katz",
-    "label": "A Low Cost Modular Actuator for Dynamic Robots（Katz / Mini Cheetah）",
+    "path": "wiki/entities/ironless-qdd-actuator.md",
+    "detail_id": "entity-ironless-qdd-actuator",
+    "label": "Ironless QDD Actuator（无铁芯转子摆线—行星执行器）",
     "type": "entity",
     "recency": "2026-07-25",
     "source": "log.md",
-    "action": "maintained",
+    "action": "added",
     "has_repo": true,
     "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
   },
