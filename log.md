@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-25] ingest | sources/blogs/wechat_robot_lecture_bioinspired_multimodal_2026-07-25.md — Agent Reach 抓取「机器人大讲堂」微信导读，补全 wiki/entities/paper-bioinspired-multimodal-robotics.md（三阶段历史、六权衡、指标数值例、切换分类、三模块架构）；raw: sources/raw/wechat_robot_lecture_bioinspired_multimodal_2026-07-25/
+
 ## [2026-07-25] ingest | sources/papers/bioinspired_multimodal_robotics_scirobotics_2026.md — Science Robotics 2026 Review「Bioinspired multimodal robotics」；升格 wiki/entities/paper-bioinspired-multimodal-robotics.md；交叉 wiki/tasks/locomotion.md、wiki/tasks/hybrid-locomotion.md、wiki/entities/paper-aerial-aquatic-remora-hitchhiking-robot.md、wiki/entities/paper-miniature-deep-sea-morphable-robot.md、wiki/entities/paper-octopus-inspired-esoam-soft-arm.md、wiki/entities/paper-learning-to-adapt-bio-inspired-quadruped-gait.md；注册机构 dut
 
 ## [2026-07-24] structural | V30 P2 事实库扩展：canonical-facts 240 → 250（驱动链选型矛盾检测规则）
