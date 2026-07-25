@@ -4,6 +4,7 @@ tags: [software, motor, fem, femm, open-source, pmsm, optimization, simulation, 
 status: complete
 updated: 2026-07-25
 related:
+  - ./femm.md
   - ../comparisons/open-source-torque-motor-em-design.md
   - ../comparisons/motor-em-simulation-software.md
   - ../overview/motor-design-workflow.md
@@ -15,6 +16,7 @@ related:
 sources:
   - ../../sources/repos/pyleecan.md
   - ../../sources/sites/pyleecan_org.md
+  - ../../sources/sites/femm_info.md
   - ../../sources/personal/open_source_torque_motor_em_design_curator.md
 summary: "PYLEECAN：径向磁通电机开源多物理场设计/优化框架（Apache-2.0）；GUI 定义 SPMSM/IPMSM 等拓扑，耦合 FEMM/GMSH，支持损耗、扫描与多目标优化；适合自设人形外转子关节电机方案，非固定硬件仓。"
 ---
@@ -23,7 +25,7 @@ summary: "PYLEECAN：径向磁通电机开源多物理场设计/优化框架（A
 
 ## 一句话定义
 
-**PYLEECAN**（[Eomys/pyleecan](https://github.com/Eomys/pyleecan)，[pyleecan.org](https://www.pyleecan.org/)）是面向电机与驱动的 **开源多物理场设计/仿真/优化框架**：参数化径向磁通拓扑、材料与绕组，并可耦合 **FEMM** 等求解器做电磁与损耗分析。
+**PYLEECAN**（[Eomys/pyleecan](https://github.com/Eomys/pyleecan)，[pyleecan.org](https://www.pyleecan.org/)）是面向电机与驱动的 **开源多物理场设计/仿真/优化框架**：参数化径向磁通拓扑、材料与绕组，并可耦合 **[FEMM](./femm.md)** 等求解器做电磁与损耗分析。
 
 ## 英文缩写速查
 
@@ -78,6 +80,7 @@ flowchart LR
 
 ## 关联页面
 
+- [FEMM](./femm.md) — 耦合求解器本体与官方文档/示例
 - [开源力矩电机电磁设计完整度对比](../comparisons/open-source-torque-motor-em-design.md)
 - [axfluxmdo](./axfluxmdo.md) · [ACMOP](./acmop.md) · [FEMM-FOC](./femm-foc-simulation.md)
 - [电机设计流程](../overview/motor-design-workflow.md)
@@ -87,6 +90,7 @@ flowchart LR
 
 - [sources/repos/pyleecan.md](../../sources/repos/pyleecan.md)
 - [sources/sites/pyleecan_org.md](../../sources/sites/pyleecan_org.md)
+- [sources/sites/femm_info.md](../../sources/sites/femm_info.md)
 - [开源力矩电机电磁设计策展](../../sources/personal/open_source_torque_motor_em_design_curator.md)
 
 ## 推荐继续阅读
@@ -94,3 +98,4 @@ flowchart LR
 - 官网：<https://www.pyleecan.org/>
 - GitHub：<https://github.com/Eomys/pyleecan>
 - Gallery：<https://pyleecan.org/gallery.html>
+- FEMM：<https://www.femm.info/doku/doku.php?id=start>

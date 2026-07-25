@@ -4,6 +4,7 @@ tags: [software, motor, femm, foc, simulation, open-source, education, bldc, fem
 status: complete
 updated: 2026-07-25
 related:
+  - ./femm.md
   - ../comparisons/open-source-torque-motor-em-design.md
   - ../comparisons/motor-em-simulation-software.md
   - ./pyleecan.md
@@ -15,6 +16,7 @@ related:
   - ../../roadmap/depth-torque-motor-design.md
 sources:
   - ../../sources/repos/femm_foc_simulation.md
+  - ../../sources/sites/femm_info.md
   - ../../sources/personal/open_source_torque_motor_em_design_curator.md
 summary: "FEMM-FOC-Simulation：开源教学仓，用定/转子 DXF + 已配置 .fem + Lua，按 FOC 电流与转子角扫描径向 BLDC 转矩；适合学 FEMM 工作流，非人形可制造电机。"
 ---
@@ -23,7 +25,7 @@ summary: "FEMM-FOC-Simulation：开源教学仓，用定/转子 DXF + 已配置 
 
 ## 一句话定义
 
-**FEMM-FOC-Simulation**（[yoga-cycle/FEMM-FOC-Simulation](https://github.com/yoga-cycle/FEMM-FOC-Simulation)）用开源 **FEMM** 对小型径向 BLDC 做 **FOC 电流 + 转子机械角扫描**，输出转矩—角度曲线；仓库提供 DXF、`.fem` 与 `FOC_sim.lua`。
+**FEMM-FOC-Simulation**（[yoga-cycle/FEMM-FOC-Simulation](https://github.com/yoga-cycle/FEMM-FOC-Simulation)）用开源 **[FEMM](./femm.md)** 对小型径向 BLDC 做 **FOC 电流 + 转子机械角扫描**，输出转矩—角度曲线；仓库提供 DXF、`.fem` 与 `FOC_sim.lua`。
 
 ## 英文缩写速查
 
@@ -79,6 +81,7 @@ README 设定玩具电机叠长约 **10 mm**；初始转子 d 轴与 A 相对齐
 
 ## 关联页面
 
+- [FEMM](./femm.md) — 求解器本体、文档与官方示例入口
 - [开源力矩电机电磁设计完整度对比](../comparisons/open-source-torque-motor-em-design.md)
 - [电机电磁仿真软件选型](../comparisons/motor-em-simulation-software.md)
 - [PYLEECAN](./pyleecan.md) · [Ironless QDD](./ironless-qdd-actuator.md)
@@ -88,9 +91,11 @@ README 设定玩具电机叠长约 **10 mm**；初始转子 d 轴与 A 相对齐
 ## 参考来源
 
 - [sources/repos/femm_foc_simulation.md](../../sources/repos/femm_foc_simulation.md)
+- [sources/sites/femm_info.md](../../sources/sites/femm_info.md)
 - [开源力矩电机电磁设计策展](../../sources/personal/open_source_torque_motor_em_design_curator.md)
 
 ## 推荐继续阅读
 
 - 仓库：<https://github.com/yoga-cycle/FEMM-FOC-Simulation>
+- FEMM 文档：<https://www.femm.info/doku/doku.php?id=documentation>
 - 灵感博文（README）：<https://things-in-motion.blogspot.com/2019/02/how-to-model-bldc-pmsm-motors-kv.html>
