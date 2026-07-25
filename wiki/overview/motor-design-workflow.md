@@ -13,6 +13,7 @@ related:
   - ./humanoid-actuator-102-technology-map.md
   - ./humanoid-hardware-101-integrated-actuators.md
   - ../entities/simplefoc.md
+  - ../entities/bavaria-direct-winding-calculator.md
   - ../entities/femm.md
   - ../entities/pyleecan.md
   - ../entities/ironless-qdd-actuator.md
@@ -96,6 +97,7 @@ flowchart TD
 
 - 选择 **表贴式 / 内置式（IPM）**、槽数极数、绕组形式（集中/分布）。
 - IPM 利于 **弱磁扩速**；表贴式 \(L_d \approx L_q\) 控制简单，高基速场景需提前算弱磁电流。
+- 槽极组合可先用 [Bavaria Direct 绕组方案计算器](../entities/bavaria-direct-winding-calculator.md) 纸面筛一轮：一次给出绕组系数、齿槽 LCM 与次谐波，筛完再进 FEA。
 
 ### 3) 电磁设计（FEA）
 

@@ -16,6 +16,7 @@ related:
   - ../entities/axfluxmdo.md
   - ../entities/pcb-motor.md
   - ../entities/femm.md
+  - ../entities/bavaria-direct-winding-calculator.md
   - ../entities/femm-foc-simulation.md
   - ../entities/acmop.md
   - ../entities/kicad.md
@@ -100,6 +101,7 @@ flowchart TB
 
 | 缺口 | 用什么补 |
 |------|----------|
+| 槽极组合还没定 | [Bavaria Direct 绕组方案计算器](../entities/bavaria-direct-winding-calculator.md)：排布字符串 + 全极数绕组系数 + 齿槽 LCM，进 FEM 前先筛 |
 | FEMM 建模步骤不会 | 先 [FEMM](../entities/femm.md) Tutorial/Examples，再 FEMM-FOC：DXF → 材料 → 绕组 → FOC 电流 → 扫角转矩 |
 | 想用 PCB 代替漆包线 | PCB Motor：层数/铜厚/气隙/绕组拓扑 |
 | 要 Halbach 一手理论 | Mallinson 1973 → Halbach 1980 OA → Zhu & Howe 2001 |

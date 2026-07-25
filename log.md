@@ -1,5 +1,16 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-25] ingest | sources/repos/bavaria_direct_winding_calculator.md — Bavaria Direct 绕组方案计算器（Bewicklungsrechner XL）standalone 源码；新建 wiki/entities/bavaria-direct-winding-calculator.md 详解算法原理
+
+- **来源归档：** [`sources/repos/bavaria_direct_winding_calculator.md`](sources/repos/bavaria_direct_winding_calculator.md) — 用户上传的 standalone 离线包（`winding_calc.shtml` + 2005 行 JS + 2 个 CSS），(C) 2010 Felix Niessen，GPLv3，上游为 POWERCROCO 2004 版
+- **新实体：** [`wiki/entities/bavaria-direct-winding-calculator.md`](wiki/entities/bavaria-direct-winding-calculator.md) — 逐块拆源码：排布字符串 DSL（`A/a` 相与方向、`-` 空齿、`/` 子电机、`|` 槽分隔）、槽电势星形法相带分配（`Winkel = 180·2p/Q` + 60° 相带）、三步规范化、槽电流负荷（集中绕组两线圈边符号翻转）、空间 DFT 出全极数 k_w 谱、t=0.25/0.55 双时刻平衡性判据、槽口/斜槽 `sin(x)/x` 因子、短距轮转、齿槽 LCM、Canvas 绘图与展开接线图
+- **开源核查（步骤 2.5）：** **已开源**（GPLv3 源码随页面明文分发，无 GitHub 仓库）；**站点已下线** — `bavaria-direct.co.za` DNS 不解析，SimpleFOC 社区串确认工具不可访问，离线包经 RCGroups 分发
+- **版本核对：** 与 Wayback 2014-05-28 抓取的线上副本逐行 diff，仅 3 处外观/文案差异（`Step by step`→`Winding animation`、定子齿填充色），算法与 2010 原版一致
+- **数值核验：** 把相带分配与 DFT 端口到 Python 复算，12/10、12/14 双层 0.93301，9/8 0.94521，12/10 单层 0.96593，24/22 0.94947，36/4（q=3）0.95980，24/4 短距 1/2/3 槽 0.93301/0.83652/0.68301，均与教科书 k_w 及 k_d·k_p 一致；槽口/斜槽因子逐位吻合
+- **机构注册：** `schema/institutions.json` 新增 `bavaria-direct-winding-calculator`
+- **风险记录：** `eval(form.Nuten.value)` + URL 参数未校验拼进 `setTimeout` 字符串 → 勿挂公网；隐式全局循环变量、`if(i=0)` 赋值笔误、手输分布式排布勿以 `|` 结尾
+- **交叉：** [`wiki/overview/motor-design-workflow.md`](wiki/overview/motor-design-workflow.md)（步骤 2「拓扑与槽极」补前置筛选）、[`wiki/comparisons/open-source-torque-motor-em-design.md`](wiki/comparisons/open-source-torque-motor-em-design.md)（「教材与工具」表补「槽极组合还没定」一行）、[`wiki/entities/femm-foc-simulation.md`](wiki/entities/femm-foc-simulation.md)、[`roadmap/depth-torque-motor-design.md`](roadmap/depth-torque-motor-design.md)
+
 ## [2026-07-25] ingest | sources/papers/halbach_permanent_multipole_magnets_1980.md + mallinson_one_sided_fluxes_1973.md + zhu_howe_halbach_pm_machines_review_2001.md — Halbach 一手三篇；升格 wiki/concepts/halbach-array.md 与三篇论文实体
 
 - **一手文献：**
