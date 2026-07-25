@@ -1676,6 +1676,29 @@
       "aliases": [
         "boston-dynamics"
       ]
+    },
+    "lbnl": {
+      "label": "劳伦斯伯克利国家实验室（Lawrence Berkeley National Laboratory）",
+      "aliases": [
+        "lbnl",
+        "lbl",
+        "lawrence-berkeley",
+        "lawrence-berkeley-lab"
+      ]
+    },
+    "sheffield": {
+      "label": "谢菲尔德大学（University of Sheffield）",
+      "aliases": [
+        "sheffield",
+        "university-of-sheffield",
+        "uos"
+      ]
+    },
+    "ampex": {
+      "label": "安派克斯（Ampex）",
+      "aliases": [
+        "ampex"
+      ]
     }
   }
 }

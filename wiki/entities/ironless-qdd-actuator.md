@@ -13,11 +13,16 @@ related:
   - ./femm-foc-simulation.md
   - ./pyleecan.md
   - ./berkeley-humanoid-lite.md
+  - ../concepts/halbach-array.md
+  - ./paper-halbach-permanent-multipole-magnets.md
+  - ./paper-zhu-howe-halbach-pm-machines-review.md
   - ../../roadmap/depth-torque-motor-design.md
   - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/repos/ironless_qdd_actuator.md
   - ../../sources/sites/cadenkraft_ironless_cycloidal_planetary_actuator.md
+  - ../../sources/papers/halbach_permanent_multipole_magnets_1980.md
+  - ../../sources/papers/zhu_howe_halbach_pm_machines_review_2001.md
   - ../../sources/sites/femm_info.md
   - ../../sources/personal/open_source_qdd_actuator_learning_curator.md
   - ../../sources/personal/open_source_torque_motor_em_design_curator.md
@@ -45,6 +50,7 @@ summary: "Caden Kraft Ironless QDD：采购 10010 定子自绕 36N42P + Halbach 
 
 - 在「同时公开绕组/磁钢/FEM/可制造结构 + 真机关节样机」的开源项目里，目前完整度最高之一——见 [电磁设计完整度对比](../comparisons/open-source-torque-motor-em-design.md)。
 - 用 FEMM 把 **有/无铁背 × Halbach/常规** 四象限静态转矩对照写清楚，是学磁路直觉的好教材。
+- Halbach 一手：[Halbach Array](../concepts/halbach-array.md) · [Halbach 1980](./paper-halbach-permanent-multipole-magnets.md) · [Zhu & Howe 2001](./paper-zhu-howe-halbach-pm-machines-review.md)（分段 = compromise）。
 - BOM 约 **40 USD（执行器）/ 70 USD（含控制器）**；与 [Internal Cycloidal](./internal-cycloidal-actuator.md)（约 384 USD）形成成本—成熟度对照。
 - 硬课：**静态保持力矩 ≠ 连续行走力矩**；报告值还 **含减速器增益**，不能当裸电机电磁转矩。
 
@@ -103,6 +109,7 @@ flowchart LR
 
 - [开源力矩电机电磁设计完整度对比](../comparisons/open-source-torque-motor-em-design.md)
 - [开源 QDD 执行器项目对比](../comparisons/open-source-qdd-actuator-projects.md)
+- [Halbach Array](../concepts/halbach-array.md) · [Halbach 1980](./paper-halbach-permanent-multipole-magnets.md)
 - [Internal Cycloidal Actuator](./internal-cycloidal-actuator.md)
 - [FEMM](./femm.md) · [FEMM-FOC-Simulation](./femm-foc-simulation.md) · [PYLEECAN](./pyleecan.md)
 - [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md)
@@ -111,6 +118,7 @@ flowchart LR
 
 - [sources/repos/ironless_qdd_actuator.md](../../sources/repos/ironless_qdd_actuator.md)
 - [sources/sites/cadenkraft_ironless_cycloidal_planetary_actuator.md](../../sources/sites/cadenkraft_ironless_cycloidal_planetary_actuator.md)
+- [Halbach 1980](../../sources/papers/halbach_permanent_multipole_magnets_1980.md) · [Zhu & Howe 2001](../../sources/papers/zhu_howe_halbach_pm_machines_review_2001.md)
 - [sources/sites/femm_info.md](../../sources/sites/femm_info.md)
 - [开源 QDD 执行器学习策展](../../sources/personal/open_source_qdd_actuator_learning_curator.md)
 - [开源力矩电机电磁设计策展](../../sources/personal/open_source_torque_motor_em_design_curator.md)

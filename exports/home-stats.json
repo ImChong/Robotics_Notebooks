@@ -1,13 +1,96 @@
 {
   "generated_at": "2026-07-25",
-  "node_count": 1883,
-  "edge_count": 16030,
+  "node_count": 1887,
+  "edge_count": 16068,
   "coverage": {
-    "covered": 1831,
-    "total": 1859,
+    "covered": 1835,
+    "total": 1863,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/halbach-array.md",
+      "detail_id": "wiki-concepts-halbach-array",
+      "label": "Halbach Array（哈尔巴赫阵列）",
+      "type": "concept",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-mallinson-one-sided-fluxes.md",
+      "detail_id": "entity-paper-mallinson-one-sided-fluxes",
+      "label": "One-sided fluxes — A magnetic curiosity?（Mallinson 1973）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-halbach-permanent-multipole-magnets.md",
+      "detail_id": "entity-paper-halbach-permanent-multipole-magnets",
+      "label": "Design of permanent multipole magnets with oriented REC（Halbach 1980）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-zhu-howe-halbach-pm-machines-review.md",
+      "detail_id": "entity-paper-zhu-howe-halbach-pm-machines-review",
+      "label": "Halbach permanent magnet machines and applications（Zhu & Howe 2001）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/ironless-qdd-actuator.md",
+      "detail_id": "entity-ironless-qdd-actuator",
+      "label": "Ironless QDD Actuator（无铁芯转子摆线—行星执行器）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/comparisons/open-source-torque-motor-em-design.md",
+      "detail_id": "wiki-comparisons-open-source-torque-motor-em-design",
+      "label": "开源机器人力矩电机：电磁设计完整度对比",
+      "type": "comparison",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/overview/motor-design-workflow.md",
+      "detail_id": "wiki-overview-motor-design-workflow",
+      "label": "电机设计流程（规格 → 仿真 → 样机 → 控制）",
+      "type": "overview",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/pcb-motor.md",
+      "detail_id": "entity-pcb-motor",
+      "label": "PCB Motor（PCB 定子轴向磁通电机）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
     {
       "path": "wiki/entities/femm.md",
       "detail_id": "entity-femm",
@@ -42,42 +125,10 @@
       "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
-      "path": "wiki/entities/ironless-qdd-actuator.md",
-      "detail_id": "entity-ironless-qdd-actuator",
-      "label": "Ironless QDD Actuator（无铁芯转子摆线—行星执行器）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
       "path": "wiki/comparisons/motor-em-simulation-software.md",
       "detail_id": "wiki-comparisons-motor-em-simulation-software",
       "label": "电机电磁与多物理场仿真软件选型",
       "type": "comparison",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/comparisons/open-source-torque-motor-em-design.md",
-      "detail_id": "wiki-comparisons-open-source-torque-motor-em-design",
-      "label": "开源机器人力矩电机：电磁设计完整度对比",
-      "type": "comparison",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/overview/motor-design-workflow.md",
-      "detail_id": "wiki-overview-motor-design-workflow",
-      "label": "电机设计流程（规格 → 仿真 → 样机 → 控制）",
-      "type": "overview",
       "recency": "2026-07-25",
       "source": "log.md",
       "action": "maintained",
@@ -166,71 +217,16 @@
       "source": "log.md",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-mini-cheetah-platform.md",
-      "detail_id": "entity-paper-mini-cheetah-platform",
-      "label": "Mini Cheetah: A Platform for Pushing the Limits of Dynamic Quadruped Control",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-wbic-mpc-mini-cheetah.md",
-      "detail_id": "entity-paper-wbic-mpc-mini-cheetah",
-      "label": "Highly Dynamic Quadruped Locomotion via WBIC and MPC",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-vision-aided-dynamic-exploration-mini-cheetah.md",
-      "detail_id": "entity-paper-vision-aided-dynamic-exploration-mini-cheetah",
-      "label": "Vision Aided Dynamic Exploration of Unstructured Terrain",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-hs-ddp-legged.md",
-      "detail_id": "entity-paper-hs-ddp-legged",
-      "label": "Hybrid Systems DDP for Whole-Body Motion Planning",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-mhpc.md",
-      "detail_id": "entity-paper-mhpc",
-      "label": "Model Hierarchy Predictive Control (MHPC)",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/femm.md",
-    "detail_id": "entity-femm",
-    "label": "FEMM（Finite Element Method Magnetics）",
-    "type": "entity",
+    "path": "wiki/concepts/halbach-array.md",
+    "detail_id": "wiki-concepts-halbach-array",
+    "label": "Halbach Array（哈尔巴赫阵列）",
+    "type": "concept",
     "recency": "2026-07-25",
     "source": "log.md",
     "action": "added",
-    "has_repo": true,
     "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
   },
   "top_communities": [

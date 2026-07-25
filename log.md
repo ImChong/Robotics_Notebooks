@@ -1,5 +1,15 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-25] ingest | sources/papers/halbach_permanent_multipole_magnets_1980.md + mallinson_one_sided_fluxes_1973.md + zhu_howe_halbach_pm_machines_review_2001.md — Halbach 一手三篇；升格 wiki/concepts/halbach-array.md 与三篇论文实体
+
+- **一手文献：**
+  1. Mallinson 1973 平面单侧磁通 → [`sources/papers/mallinson_one_sided_fluxes_1973.md`](sources/papers/mallinson_one_sided_fluxes_1973.md) → [`wiki/entities/paper-mallinson-one-sided-fluxes.md`](wiki/entities/paper-mallinson-one-sided-fluxes.md)
+  2. Halbach 1980 圆柱/多极 REC 配方（**绿色 OA**）→ [`sources/papers/halbach_permanent_multipole_magnets_1980.md`](sources/papers/halbach_permanent_multipole_magnets_1980.md) → [`wiki/entities/paper-halbach-permanent-multipole-magnets.md`](wiki/entities/paper-halbach-permanent-multipole-magnets.md)
+  3. Zhu & Howe 2001 电机综述 → [`sources/papers/zhu_howe_halbach_pm_machines_review_2001.md`](sources/papers/zhu_howe_halbach_pm_machines_review_2001.md) → [`wiki/entities/paper-zhu-howe-halbach-pm-machines-review.md`](wiki/entities/paper-zhu-howe-halbach-pm-machines-review.md)
+- **概念主页：** [`wiki/concepts/halbach-array.md`](wiki/concepts/halbach-array.md)
+- **机构注册：** `lbnl`、`sheffield`、`ampex`
+- **交叉：** [`wiki/entities/ironless-qdd-actuator.md`](wiki/entities/ironless-qdd-actuator.md)、[`wiki/comparisons/open-source-torque-motor-em-design.md`](wiki/comparisons/open-source-torque-motor-em-design.md)、[`wiki/overview/motor-design-workflow.md`](wiki/overview/motor-design-workflow.md)、[`wiki/entities/pcb-motor.md`](wiki/entities/pcb-motor.md)
+
 ## [2026-07-25] ingest | sources/sites/femm_info.md — FEMM 官方门户/文档/示例；升格 wiki/entities/femm.md
 
 - **站点：** [`sources/sites/femm_info.md`](sources/sites/femm_info.md) — start / documentation / examples（并核查 download、FAQ）
