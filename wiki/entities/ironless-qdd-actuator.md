@@ -9,6 +9,7 @@ related:
   - ./internal-cycloidal-actuator.md
   - ./cycloidal-quasi-direct-drive-actuator.md
   - ./opentorque-actuator.md
+  - ./femm.md
   - ./femm-foc-simulation.md
   - ./pyleecan.md
   - ./berkeley-humanoid-lite.md
@@ -17,6 +18,7 @@ related:
 sources:
   - ../../sources/repos/ironless_qdd_actuator.md
   - ../../sources/sites/cadenkraft_ironless_cycloidal_planetary_actuator.md
+  - ../../sources/sites/femm_info.md
   - ../../sources/personal/open_source_qdd_actuator_learning_curator.md
   - ../../sources/personal/open_source_torque_motor_em_design_curator.md
 summary: "Caden Kraft Ironless QDD：采购 10010 定子自绕 36N42P + Halbach 无铁芯转子 + 3D 打印摆线—行星 + 集成驱动；仓库含 FEMM/CAD/BOM；报告静态保持约 29.4 N·m（含减速）；开源电磁链路最完整的关节样机之一，须区分保持≠连续动态力矩。"
@@ -26,7 +28,7 @@ summary: "Caden Kraft Ironless QDD：采购 10010 定子自绕 36N42P + Halbach 
 
 ## 一句话定义
 
-**Ironless QDD Actuator**（[CKraft11/Ironless-QDD-Actuator](https://github.com/CKraft11/Ironless-QDD-Actuator)，项目长文 [cadenkraft.com](https://cadenkraft.com/ironless-cycloidal-planetary-actuator/)）是低成本、**全定制件可 3D 打印** 的准直驱关节：采购 **10010** 定子自绕 **36N42P** + **Halbach 无铁芯转子** + **摆线—行星** 组合减速 + 集成驱动与磁编；并公开可打开的 **FEMM** 与 CAD。
+**Ironless QDD Actuator**（[CKraft11/Ironless-QDD-Actuator](https://github.com/CKraft11/Ironless-QDD-Actuator)，项目长文 [cadenkraft.com](https://cadenkraft.com/ironless-cycloidal-planetary-actuator/)）是低成本、**全定制件可 3D 打印** 的准直驱关节：采购 **10010** 定子自绕 **36N42P** + **Halbach 无铁芯转子** + **摆线—行星** 组合减速 + 集成驱动与磁编；并公开可打开的 **[FEMM](./femm.md)** 与 CAD。
 
 ## 英文缩写速查
 
@@ -102,13 +104,14 @@ flowchart LR
 - [开源力矩电机电磁设计完整度对比](../comparisons/open-source-torque-motor-em-design.md)
 - [开源 QDD 执行器项目对比](../comparisons/open-source-qdd-actuator-projects.md)
 - [Internal Cycloidal Actuator](./internal-cycloidal-actuator.md)
-- [FEMM-FOC-Simulation](./femm-foc-simulation.md) · [PYLEECAN](./pyleecan.md)
+- [FEMM](./femm.md) · [FEMM-FOC-Simulation](./femm-foc-simulation.md) · [PYLEECAN](./pyleecan.md)
 - [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md)
 
 ## 参考来源
 
 - [sources/repos/ironless_qdd_actuator.md](../../sources/repos/ironless_qdd_actuator.md)
 - [sources/sites/cadenkraft_ironless_cycloidal_planetary_actuator.md](../../sources/sites/cadenkraft_ironless_cycloidal_planetary_actuator.md)
+- [sources/sites/femm_info.md](../../sources/sites/femm_info.md)
 - [开源 QDD 执行器学习策展](../../sources/personal/open_source_qdd_actuator_learning_curator.md)
 - [开源力矩电机电磁设计策展](../../sources/personal/open_source_torque_motor_em_design_curator.md)
 
@@ -116,4 +119,5 @@ flowchart LR
 
 - 项目长文：<https://cadenkraft.com/ironless-cycloidal-planetary-actuator/>
 - 仓库：<https://github.com/CKraft11/Ironless-QDD-Actuator>
+- FEMM 官方示例：<https://www.femm.info/doku/doku.php?id=examples>
 - MakerWorld 镜像（LFS 备援）：README 内链接

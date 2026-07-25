@@ -161,4 +161,4 @@
 - wiki/entities/mit-mini-cheetah.md
 - wiki/entities/paper-mini-cheetah-platform.md
 
-📊 Sources 覆盖率：1830/1858 (98%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1831/1859 (98%) wiki/entity 页有 ingest 来源

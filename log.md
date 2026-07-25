@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-25] ingest | sources/sites/femm_info.md — FEMM 官方门户/文档/示例；升格 wiki/entities/femm.md
+
+- **站点：** [`sources/sites/femm_info.md`](sources/sites/femm_info.md) — start / documentation / examples（并核查 download、FAQ）
+- **新实体：** [`wiki/entities/femm.md`](wiki/entities/femm.md) — 2D/轴对称开源 FEA；磁/静电/热流/电流场；Lua/Octave/pyFEMM；AFPL + 源码 zip
+- **开源核查：** **已开源**（稳定 21Apr2019 二进制 + `femm42src_21apr2019.zip`；无原生 Linux/无 3D；分析结果可商用，再分发程序另议）
+- **机构：** 注册 `schema/institutions.json` → `femm`
+- **交叉：** [`femm-foc-simulation`](wiki/entities/femm-foc-simulation.md)、[`pyleecan`](wiki/entities/pyleecan.md)、[`ironless-qdd-actuator`](wiki/entities/ironless-qdd-actuator.md)、[`motor-em-simulation-software`](wiki/comparisons/motor-em-simulation-software.md)、[`open-source-torque-motor-em-design`](wiki/comparisons/open-source-torque-motor-em-design.md)、[`motor-design-workflow`](wiki/overview/motor-design-workflow.md)、[`roadmap/depth-torque-motor-design`](roadmap/depth-torque-motor-design.md)
+
 ## [2026-07-25] ingest | sources/blogs/robot_daycare_mini_cheetah_2019.md — Robot Daycare / bgkatz / Mini Cheetah；博文清单 12 篇论文各升格独立实体；平台与人物节点
 
 - **站点/人物：** [`sources/sites/robot-daycare.md`](sources/sites/robot-daycare.md) → [`wiki/entities/benjamin-katz.md`](wiki/entities/benjamin-katz.md)（MIT → Boston Dynamics Atlas → Physical Intelligence）
