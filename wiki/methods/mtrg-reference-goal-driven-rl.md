@@ -156,6 +156,5 @@ flowchart LR
 ## 推荐继续阅读
 
 - [GfR 项目页](https://jiashunwang.github.io/GfR/) — 长程组合、MuJoCo 与感知扩展视频
-
 - [ZEST 论文](https://arxiv.org/abs/2602.00401) — 辅助扳手与跨形态 tracking 细节
 - [HIL 演示](https://youtu.be/le4248gIMME) — 同作者早期混合模仿与场景点云设计

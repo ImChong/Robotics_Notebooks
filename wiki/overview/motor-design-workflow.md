@@ -13,6 +13,7 @@ related:
   - ./humanoid-actuator-102-technology-map.md
   - ./humanoid-hardware-101-integrated-actuators.md
   - ../entities/simplefoc.md
+  - ../entities/bavaria-direct-winding-calculator.md
   - ../entities/femm.md
   - ../entities/pyleecan.md
   - ../entities/ironless-qdd-actuator.md
@@ -20,7 +21,6 @@ related:
   - ../entities/pygeartrain.md
   - ../concepts/halbach-array.md
   - ../entities/paper-halbach-permanent-multipole-magnets.md
-
 sources:
   - ../../sources/sites/ansys_motor_cad_electric_machine_design.md
   - ../../sources/personal/motor_curves_and_em_simulation_faq.md
@@ -100,6 +100,7 @@ flowchart TD
 
 - 选择 **表贴式 / 内置式（IPM）**、槽数极数、绕组形式（集中/分布）。
 - IPM 利于 **弱磁扩速**；表贴式 \(L_d \approx L_q\) 控制简单，高基速场景需提前算弱磁电流。
+- 槽极组合可先用 [Bavaria Direct 绕组方案计算器](../entities/bavaria-direct-winding-calculator.md) 纸面筛一轮：一次给出绕组系数、齿槽 LCM 与次谐波，筛完再进 FEA。
 
 ### 3) 电磁设计（FEA）
 
@@ -171,7 +172,6 @@ flowchart TD
 - [电机电磁仿真软件选型](../comparisons/motor-em-simulation-software.md)
 - [开源力矩电机电磁设计完整度对比](../comparisons/open-source-torque-motor-em-design.md)
 - [Ironless QDD](../entities/ironless-qdd-actuator.md) · [Caden Axial Flux Part 1](../entities/cadenkraft-ironless-axial-flux-motor.md) · [Halbach Array](../concepts/halbach-array.md) · [FEMM](../entities/femm.md) · [PYLEECAN](../entities/pyleecan.md)
-
 - [电机转矩-转速曲线（TN 曲线）](../concepts/motor-torque-speed-curve.md)
 - [电机转矩-电流曲线（TI 曲线）](../concepts/motor-torque-current-curve.md)
 - [磁场定向控制（FOC）](../concepts/field-oriented-control.md)

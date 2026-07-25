@@ -109,7 +109,6 @@ flowchart TB
 | **EZS-Bench Domain** | PF-Cosmos **85.20**；零样本泛化基准 |
 | **WorldArena IDM** | PF-Wan5B **24.0%** avg（基线 **16.0%**；+50% 相对增益） |
 | **RoboTwin 2.0 + Fast-WAM** | 平均成功率 **72.8%**（+4.6%） |
-
 | 机构 | 北京大学（PKU）· 英伟达（NVIDIA） |
 |------|----------------------------------|
 | arXiv | [2606.28128](https://arxiv.org/abs/2606.28128) |

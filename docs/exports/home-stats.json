@@ -1,13 +1,66 @@
 {
   "generated_at": "2026-07-25",
-  "node_count": 1889,
-  "edge_count": 16091,
+  "node_count": 1890,
+  "edge_count": 16103,
   "coverage": {
-    "covered": 1837,
-    "total": 1865,
+    "covered": 1838,
+    "total": 1866,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/bavaria-direct-winding-calculator.md",
+      "detail_id": "entity-bavaria-direct-winding-calculator",
+      "label": "Bavaria Direct 绕组方案计算器（Bewicklungsrechner XL）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/overview/motor-design-workflow.md",
+      "detail_id": "wiki-overview-motor-design-workflow",
+      "label": "电机设计流程（规格 → 仿真 → 样机 → 控制）",
+      "type": "overview",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/comparisons/open-source-torque-motor-em-design.md",
+      "detail_id": "wiki-comparisons-open-source-torque-motor-em-design",
+      "label": "开源机器人力矩电机：电磁设计完整度对比",
+      "type": "comparison",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/femm-foc-simulation.md",
+      "detail_id": "entity-femm-foc-simulation",
+      "label": "FEMM-FOC-Simulation（FEMM 磁场定向控制教学仿真）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "roadmap/depth-torque-motor-design.md",
+      "detail_id": "roadmap-depth-torque-motor-design",
+      "label": "路线（纵深）：如果目标是力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环 → 关节模组）",
+      "type": "roadmap_page",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
     {
       "path": "wiki/entities/cadenkraft-ironless-axial-flux-motor.md",
       "detail_id": "entity-cadenkraft-ironless-axial-flux-motor",
@@ -41,17 +94,6 @@
       "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
-      "path": "wiki/comparisons/open-source-torque-motor-em-design.md",
-      "detail_id": "wiki-comparisons-open-source-torque-motor-em-design",
-      "label": "开源机器人力矩电机：电磁设计完整度对比",
-      "type": "comparison",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
       "path": "wiki/entities/pcb-motor.md",
       "detail_id": "entity-pcb-motor",
       "label": "PCB Motor（PCB 定子轴向磁通电机）",
@@ -60,16 +102,6 @@
       "source": "log.md",
       "action": "added",
       "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/overview/motor-design-workflow.md",
-      "detail_id": "wiki-overview-motor-design-workflow",
-      "label": "电机设计流程（规格 → 仿真 → 样机 → 控制）",
-      "type": "overview",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
       "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
@@ -124,17 +156,6 @@
       "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
-      "path": "wiki/entities/femm-foc-simulation.md",
-      "detail_id": "entity-femm-foc-simulation",
-      "label": "FEMM-FOC-Simulation（FEMM 磁场定向控制教学仿真）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
       "path": "wiki/entities/pyleecan.md",
       "detail_id": "entity-pyleecan",
       "label": "PYLEECAN（径向磁通电机开源设计框架）",
@@ -156,16 +177,6 @@
       "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
-      "path": "roadmap/depth-torque-motor-design.md",
-      "detail_id": "roadmap-depth-torque-motor-design",
-      "label": "路线（纵深）：如果目标是力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环 → 关节模组）",
-      "type": "roadmap_page",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
       "path": "wiki/entities/mit-mini-cheetah.md",
       "detail_id": "entity-mit-mini-cheetah",
       "label": "MIT Mini Cheetah（学习栈与开源边界）",
@@ -173,8 +184,7 @@
       "recency": "2026-07-25",
       "source": "log.md",
       "action": "added",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-low-cost-modular-actuator-katz.md",
@@ -206,37 +216,27 @@
       "source": "log.md",
       "action": "added",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/quadruped-robot.md",
-      "detail_id": "entity-quadruped-robot",
-      "label": "四足机器人（Quadruped Robot）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/cadenkraft-ironless-axial-flux-motor.md",
-    "detail_id": "entity-cadenkraft-ironless-axial-flux-motor",
-    "label": "Caden Kraft Ironless Axial Flux Motor（无铁芯轴向磁通电机）",
+    "path": "wiki/entities/bavaria-direct-winding-calculator.md",
+    "detail_id": "entity-bavaria-direct-winding-calculator",
+    "label": "Bavaria Direct 绕组方案计算器（Bewicklungsrechner XL）",
     "type": "entity",
     "recency": "2026-07-25",
     "source": "log.md",
     "action": "added",
+    "has_repo": true,
     "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 381
+      "size": 380
     },
     {
       "label": "人形论文深读笔记",
-      "size": 211
+      "size": 177
     },
     {
       "label": "移动操作",
@@ -244,15 +244,15 @@
     },
     {
       "label": "仿真到现实",
-      "size": 156
-    },
-    {
-      "label": "人形强化学习运动控制",
-      "size": 121
+      "size": 137
     },
     {
       "label": "全身控制",
-      "size": 119
+      "size": 129
+    },
+    {
+      "label": "人形强化学习运动控制",
+      "size": 126
     }
   ],
   "top_hubs": [
@@ -380,7 +380,8 @@
       "label": "TWIST2",
       "type": "entity",
       "degree": 41,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",

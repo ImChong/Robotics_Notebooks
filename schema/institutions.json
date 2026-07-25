@@ -1656,6 +1656,15 @@
         "horychen"
       ]
     },
+    "bavaria-direct-winding-calculator": {
+      "label": "绕组方案计算器（Bavaria Direct / Bewicklungsrechner XL）",
+      "aliases": [
+        "bavaria-direct-winding-calculator",
+        "bavaria-direct",
+        "bewicklungsrechner-xl",
+        "caendle"
+      ]
+    },
     "laas": {
       "label": "系统分析与架构实验室（LAAS / CNRS）",
       "aliases": [

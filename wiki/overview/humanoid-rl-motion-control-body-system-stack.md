@@ -103,7 +103,6 @@ summary: "把 42 篇 humanoid RL 运动控制 / 移动操作论文整理成一�
 ## 关联页面
 
 - [训练栈分层技术地图](./robot-training-stack-layers-technology-map.md) — 工具链六层（与本文「身体能力八层」互补）
-
 - [人形 AMP 运动先验综述](./humanoid-amp-motion-prior-survey.md) — 19 篇 AMP / 运动先验论文的姊妹篇导航（与本文 42 篇栈互补）
 - [运动小脑 64 篇技术地图](./humanoid-motion-cerebellum-technology-map.md) — 同一公众号 2026-06 姊妹篇：论文高度重叠，按「动作小脑」A–I 九组重框（**复用** 本文 `paper-hrl-stack-*` 等节点，不重复建页）
 - [人形机器人运动控制 Know-How](./humanoid-motion-control-know-how.md) — 真实部署中的硬核工程经验（传感器 / 电机 / 热管理）

@@ -175,23 +175,15 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 > 部署后的真机在线适配自成一段窄口议题（低秩残差 / 生成兜底 / CBF 安全壳三条路径），单列于 [真机安全 RL 微调](./safe-real-world-rl-fine-tuning.md)。
 
 - **安全、参数高效的真机微调（四足）：** [SLowRL](../entities/paper-slowrl-safe-lora-locomotion-sim2real.md)（arXiv:2603.17092）在 **冻结仿真策略** 上只训 **rank-1 LoRA**，并用 **Recovery Policy + Safety Filter** 约束真机探索；Unitree Go2 jump/trot 上相对全参 PPO 微调约 **46.5%** 墙钟缩短、训练期摔倒近零，适合讨论「**不全参、不盲探索**」的 sim2real 收尾阶段。
-
 - **训练期电机包络约束（轮足零样本）：** [MUJICA](../entities/paper-mujica-wheel-legged-multi-skill.md)（arXiv:2605.13058）将 **DC 电机速度–扭矩硬约束** 写入 **P3O**，把仿真违规从 **>90%** 压到 **<3.5%**，支撑 Go2-W **高台攀爬** 等极限机动零样本上真机而不触发过流保护——适合讨论「**约束即 sim2real 安全层**」而非仅域随机化。
-
 - **轮足高动态避障 + DR（动捕状态）：** [AWARE](../entities/paper-aware-wheeled-legged-reflexive-evasion.md)（arXiv:2604.23761）在 Isaac Lab 用 TABLE II 式域随机化（质量/惯量/摩擦/执行器增益/外扰等）支撑 **M20** 真机反射规避；真机 ASR **≈59%** 显著低于仿真，作者归因硬件上限与残余 gap——适合对照「**DR 必要但不足以抹平极限机动**」。
-
 - **训练期 MOR 约束（四足高速奔跑）：** [执行器约束 RL（arXiv:2312.17507）](../entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md) 将 **电机扭矩–转速工作区（MOR）** 经减速器矩阵写入 RaiSim 训练闭环；无约束策略仿真可达 **6.5 m/s** 但 **5 m/s 实机摔倒**，有约束策略高速段 **sim–real reward gap** 不再恶化——与 MUJICA 同属「**规格书包络进训练**」路线，平台为 KAIST Hound。
-
 - **补充参照（学习式管线）：** [LIFT](../entities/lift-humanoid.md) 将「预训练期高随机性探索」与「微调期真机侧确定性动作」拆开，并把随机探索主要约束在 **物理知情世界模型** 的 rollout 中，用于讨论 **安全–样本效率** 折中；其站点亦给出 **预训练任务设计不当 → 零样本 sim2real 失败**、再靠短时段实机数据恢复的案例叙事。
-
 - **补充参照（低成本双足 / 舵机）：** [Open Duck Mini](../entities/open-duck-mini.md) 在 **Feetech 舵机 + BAM 电机辨识 + MuJoCo Playground** 管线上公开 sim2real 行走；强调 MJCF 执行器参数与真机一致、模仿奖励与参考运动分仓迭代，机载部署在 Pi Zero 2W（见 [Open Duck Mini Runtime](../entities/open-duck-mini-runtime.md)）。
-
 - **补充参照（无地图导航 · 合成深度预训练）：** [SRU](../entities/paper-sru-spatially-enhanced-recurrent-memory.md)（IJRR 2025，ETH RSL）在 **TartanAir 等 10 万+ 合成深度** 上预训练 RegNet+FPN 编码器，并配合 **并行深度噪声增强**，使 **单目前向深度 + 循环 SRU 记忆** 的策略在 **B2W** 上 **零样本** 部署办公室/森林等场景（70 m+ 目标）；工程移植见 [SRU-Odin](../entities/sru-odin.md)（Go2 + Odin1，ONNX + ROS1）。
 - **补充参照（城市户外 VLN · CARLA→足式/人形）：** [DA-Nav](../entities/paper-da-nav.md)（arXiv:2607.11638）在 CARLA 训 **方向感知 + CoT 恢复** 策略后，**无真机微调** 迁移 Unitree Go2 与乐聚 Kuavo-V，报告公里级户外闭环；强调 **图像平面离散 grounding** 与 recovery 数据，而非仅动力学域随机化——与 SRU 的「合成深度→坐标目标」路线互补（截至入库日方法未开源）。
 - **补充参照（室内 ObjectNav · Habitat→轮腿双足）：** [ZONDA](../entities/paper-zonda.md)（arXiv:2607.21025）在 Habitat 离散动作空间评测后，真机用 **同一非平台参数 + MPPI 连续跟踪** 部署 Direct Drive Tech TITA；迁移重点在 \(H_{\text{agent}}\) / 膨胀半径与离板 VLM，而非重训低层 RL（截至入库日方法未开源）。
-
 - **补充参照（人形 · Planner–IDM 少样本适应）：** [FADA](../entities/paper-fada-humanoid.md)（arXiv:2606.28476，CMU）把策略分解为 **规划器 + 逆动力学模型（IDM）**：源域 oracle+DAgger 训练后，部署 **冻结 planner**、仅用约 **2 分钟** 目标域 rollout 的观测–动作对 **LoRA 微调 IDM** 对齐动力学；G1/T1 真机高精度全身任务成功率 **20%→90%**，无需目标 reward 或仿真重标定——适合讨论「**只改执行映射、不改任务意图**」的 few-shot sim2real。
-
 - **补充参照（人形 loco-manip · 冻结策略适配）：** [SplitAdapter](../entities/paper-splitadapter-load-aware-loco-manipulation.md)（arXiv:2606.03297）在 **冻结 AMP 搬箱策略** 上学习 **物体/负载** 与 **动力学** 双分支历史适配（分裂世界模型 + GRL + 分层 FiLM），针对 **载荷与搬放高度变化** 与 **sim–real 动力学差** 的耦合；MuJoCo sim-to-sim 与 **Unitree G1 零样本** 重载（6 kg）全流程成功率显著提升，可与 RMA 式「单 latent 外参估计」对照阅读。
 
 ### Real2Sim：从视频构造可仿真资产
@@ -207,7 +199,6 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 ## 参考来源
 - [KungFuAthleteBot](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — G1 真机高动态武术 tracking（[source](../../sources/papers/kung_fu_athlete_bot.md)）
 - [KungfuBot](../entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) — IsaacGym→MuJoCo→G1 高动态 WBT sim2real（[PBHC](../../sources/repos/pbhc.md)）
-
 - Tobin et al. 2017, *Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World* — domain randomization 奠基论文
 - Peng et al. 2018, *Sim-to-Real Transfer of Robotic Control with Dynamics Randomization* — locomotion 控制迁移基线
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — DR / RMA / InEKF ingest 摘要

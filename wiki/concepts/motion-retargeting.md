@@ -213,7 +213,6 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - [KungFuAthleteBot](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — GVHMR→GMR 根高度抛物线校正（[source](../../sources/papers/kung_fu_athlete_bot.md)）
 - [KungfuBot / PBHC](../entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) — SMPL 统一格式 + Mink/PHC 双管线重定向到 G1（[repo](../../sources/repos/pbhc.md)）
 - [Chasing Autonomy: Dynamic Retargeting and Control Guided RL for Performant and Controllable Humanoid Running](../../sources/papers/chasing_autonomy.md)
-
 - Peng et al., *AMP: Adversarial Motion Priors for Style-Preserving Physics-Based Character Control* (2021) — AMP 中的 motion retargeting 应用
 - Choi et al., *SMPL-X: Expressive Whole Body Pose Estimation* (CVPR 2019) — 人体参数化模型
 - Liao et al., *Real-Time Motion Retargeting to Highly Varied User-Specific Hand Anatomies* (CHI 2019) — 异构骨架重定向
@@ -246,7 +245,6 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - [EgoHTR](../entities/paper-egohtr.md) — 上游 rough-terrain 4D 人–场景数据（待开放）与 G1 retarget 叙事
 - [人形训练数据管线选型指南](../queries/humanoid-training-data-pipeline.md) — 重定向在「来源 → 重定向 → 训练范式」端到端管线中的位置
 - [Chasing Autonomy Pipeline](../methods/chasing-autonomy-pipeline.md) — 利用带硬约束的动态重定向来生成改进参考库的框架
-
 - [Imitation Learning](../methods/imitation-learning.md) — 重定向后的轨迹常作为模仿学习的参考数据
 - [Locomotion](../tasks/locomotion.md) — locomotion 的风格先验来自重定向后的 MoCap 数据
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 全身操作任务需要手臂 + 腿部的联合重定向

@@ -18,7 +18,6 @@ related:
   - ../concepts/halbach-array.md
   - ./paper-halbach-permanent-multipole-magnets.md
   - ./paper-zhu-howe-halbach-pm-machines-review.md
-
   - ../../roadmap/depth-torque-motor-design.md
   - ../queries/actuator-drive-chain-selection-loop.md
 sources:
@@ -28,9 +27,7 @@ sources:
   - ../../sources/repos/pygeartrain.md
   - ../../sources/papers/halbach_permanent_multipole_magnets_1980.md
   - ../../sources/papers/zhu_howe_halbach_pm_machines_review_2001.md
-
   - ../../sources/sites/femm_info.md
-
   - ../../sources/personal/open_source_qdd_actuator_learning_curator.md
   - ../../sources/personal/open_source_torque_motor_em_design_curator.md
 summary: "Caden Kraft Ironless QDD：采购 10010 定子自绕 36N42P + Halbach 无铁芯转子 + 3D 打印摆线—行星（~7:1，pygeartrain）+ 集成驱动；仓库含 FEMM/CAD/BOM；报告静态保持约 29.4 N·m（含减速）；开源电磁链路最完整的关节样机之一，须区分保持≠连续动态力矩。"
@@ -124,7 +121,6 @@ flowchart LR
 - [开源 QDD 执行器项目对比](../comparisons/open-source-qdd-actuator-projects.md)
 - [Caden Kraft Ironless Axial Flux Motor](./cadenkraft-ironless-axial-flux-motor.md) · [pygeartrain](./pygeartrain.md)
 - [Halbach Array](../concepts/halbach-array.md) · [Halbach 1980](./paper-halbach-permanent-multipole-magnets.md)
-
 - [Internal Cycloidal Actuator](./internal-cycloidal-actuator.md)
 - [FEMM](./femm.md) · [FEMM-FOC-Simulation](./femm-foc-simulation.md) · [PYLEECAN](./pyleecan.md)
 - [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md)
@@ -136,9 +132,7 @@ flowchart LR
 - [sources/blogs/cadenkraft_ironless_cycloidal_planetary_actuator.md](../../sources/blogs/cadenkraft_ironless_cycloidal_planetary_actuator.md)
 - [sources/repos/pygeartrain.md](../../sources/repos/pygeartrain.md)
 - [Halbach 1980](../../sources/papers/halbach_permanent_multipole_magnets_1980.md) · [Zhu & Howe 2001](../../sources/papers/zhu_howe_halbach_pm_machines_review_2001.md)
-
 - [sources/sites/femm_info.md](../../sources/sites/femm_info.md)
-
 - [开源 QDD 执行器学习策展](../../sources/personal/open_source_qdd_actuator_learning_curator.md)
 - [开源力矩电机电磁设计策展](../../sources/personal/open_source_torque_motor_em_design_curator.md)
 
@@ -148,6 +142,5 @@ flowchart LR
 - 仓库：<https://github.com/CKraft11/Ironless-QDD-Actuator>
 - 齿廓工具：<https://github.com/CKraft11/pygeartrain>
 - FEMM 官方示例：<https://www.femm.info/doku/doku.php?id=examples>
-
 - MakerWorld 镜像（LFS 备援）：README 内链接
 - Halbach 前作：<https://cadenkraft.com/designing-a-coreless-axial-flux-motor-part-1/>

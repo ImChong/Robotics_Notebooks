@@ -297,7 +297,6 @@ MPC 的预测质量高度依赖模型质量。模型错得离谱，预测再漂�
 
 ### 仿真 / 平台入口
 - [Simulation](../../references/repos/simulation.md)
-
 - [Differentiable Simulation](./differentiable-simulation.md) — 可微仿真 + 梯度 SysID（四足课程 Ch3）
 - [Joint Friction Models](./joint-friction-models.md)、[Friction Compensation](./friction-compensation.md)
 - [Quadruped Control Curriculum](../entities/quadruped-control-curriculum.md)
