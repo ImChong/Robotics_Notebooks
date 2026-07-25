@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-25] ingest | sources/repos/open-dreamer.md — Dreamer 4 开源 JAX 复现；升格 wiki/entities/open-dreamer.md；交叉 wiki/overview/world-models-route-03-virtual-sandbox.md、wiki/entities/paper-shenlan-wm-13-dreamerv3.md、wiki/concepts/latent-imagination.md、wiki/methods/generative-world-models.md、wiki/methods/model-based-rl.md；sites: sources/sites/open-dreamer.md；推理仓: sources/repos/reactor-team-open-dreamer.md
+
 ## [2026-07-25] structural | 新增「人形整机硬件设计」纵深路线（第 21 条）：机械 / 电气 / 通信三条设计链
 
 - **新增路线页：** [`roadmap/depth-humanoid-hardware-design.md`](roadmap/depth-humanoid-hardware-design.md) — Stage 0 指标与质量/功率/延迟三大预算 → Stage 1 构型与机械布局 → Stage 2 结构详设与验证（强度/疲劳/模态/公差链）→ Stage 3 电气架构与配电（母线/DC-DC/线束/E-Stop→STO）→ Stage 4 EMC 接地与 PDU 落板 → Stage 5 通信分域与时序预算（拓扑/同步/延迟）→ Stage 6 整机集成 bring-up 与验收交付（含可仿真数字副本）。

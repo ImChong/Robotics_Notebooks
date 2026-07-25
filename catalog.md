@@ -247,6 +247,7 @@
 - [OMOMO（Object Motion Guided Human Motion Synthesis）](wiki/entities/omomo-dataset.md) — OMOMO** 是 Li et al.（Stanford，SIGGRAPH Asia 2023）发布的人–物交互（HOI）**动捕数据集与合成代码**：以 **物体运动序列为条件** 生成/记录人 `📅unknown` `[entity_page]`
 - [ONNX](wiki/entities/onnx.md) — ONNX**（**Open Neural Network Exchange**）是由社区维护、托管于 **LF AI & Data Foundation**（Linux Foundation 旗下 `📅2026-06-25` `[entity_page]`
 - [ONNX Runtime](wiki/entities/onnxruntime.md) — ONNX Runtime**（常缩写 **ORT**）是由 **Microsoft** 主导的开源 **ONNX 推理与训练加速引擎**。它提供 **Python、C++、C#、Java、Java `📅2026-06-25` `[entity_page]`
+- [Open Dreamer](wiki/entities/open-dreamer.md) — Open Dreamer**（next-state/open-dreamer，2026-07）是面向  `📅unknown` `[entity_page]`
 - [Open Duck Mini Runtime](wiki/entities/open-duck-mini-runtime.md) — Open Duck Mini Runtime** 负责在 **Raspberry Pi Zero 2W** 上将 [Open Duck Playground](./open-duck-playgr `📅unknown` `[entity_page]`
 - [Open Duck Mini](wiki/entities/open-duck-mini.md) — Open Duck Mini** 是社区驱动的 **BDX 风格迷你双足机器人**：在娱乐角色外形下，把 **低成本舵机硬件** 与 **MuJoCo Playground RL + Disney `📅unknown` `[entity_page]`
 - [Open Duck Playground](wiki/entities/open-duck-playground.md) — Open Duck Playground** 是 Open Duck 项目的 **MuJoCo Playground 训练仓**：在 JAX/MJX 并行仿真里训练 `open_duck_mini `📅unknown` `[entity_page]`

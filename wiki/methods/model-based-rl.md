@@ -2,7 +2,7 @@
 type: method
 tags: [rl, model-based, planning, locomotion, sample-efficiency, horizon-robotics]
 status: complete
-updated: 2026-07-18
+updated: 2026-07-25
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-rl-intelligent-control.md
@@ -10,10 +10,15 @@ related:
   - ../entities/richard-sutton.md
   - ../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md
   - ../concepts/world-action-models.md
+  - ../concepts/latent-imagination.md
+  - ../entities/paper-shenlan-wm-13-dreamerv3.md
+  - ../entities/open-dreamer.md
+  - ../overview/world-models-route-03-virtual-sandbox.md
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/blogs/sutton_one_step_trap.md
   - ../../sources/sites/incompleteideas-net-rich-sutton.md
+  - ../../sources/repos/open-dreamer.md
 summary: "Model-Based RL 借助环境模型提升样本效率，在机器人控制中常与规划和世界模型结合。"
 ---
 
@@ -145,6 +150,10 @@ Phase 2：Actor-Critic 在潜空间训练（想象数据）
 - 高频控制（>100Hz）下潜空间动力学不稳定
 - 连续高维观测（点云/深度图）的 RSSM 训练仍不稳定
 
+#### Dreamer 4 与开源复现（Open Dreamer）
+
+Dreamer 4（Hafner et al., 2025，[arXiv:2509.24527](https://arxiv.org/abs/2509.24527)）把可扩展交互式视频世界模型推到 Minecraft 级，并强调在世界模型内训练智能体。[Open Dreamer](../entities/open-dreamer.md) 提供 JAX/Flax 的 **tokenizer → dynamics → FVD** 管线与实时 demo；截至入库日 **完整 BC/RL agent 训练环仍在 roadmap**——读 MBRL 时把它当作「可玩的 WM 沙盒复现」，勿默认 agent 环已齐。
+
 ### MBPO（Model-Based Policy Optimization, Janner et al. 2019）
 
 **核心思想**：用神经网络集成模型（Ensemble of Neural Networks）生成短 rollout，与真实数据混合训练 SAC。
@@ -217,6 +226,7 @@ Phase 2：Actor-Critic 在潜空间训练（想象数据）
 ## 参考来源
 
 - Hafner et al., *Mastering Diverse Domains through World Models* (DreamerV3, 2023) — 世界模型通用化
+- Hafner et al., *Training Agents Inside of Scalable World Models* (Dreamer 4, 2025) — <https://arxiv.org/abs/2509.24527>；开源复现 [open-dreamer](../../sources/repos/open-dreamer.md)
 - Janner et al., *When to Trust Your Model: Model-Based Policy Optimization* (MBPO, 2019) — 短 rollout 混合训练
 - Chua et al., *Deep Reinforcement Learning in a Handful of Trials using Probabilistic Dynamics Models* (PETS, 2018) — 集成模型 + CEM 规划
 - Hansen et al., *TD-MPC2: Scalable, Robust World Models for Continuous Control* (2023) — 潜空间规划 + TD 价值
@@ -236,6 +246,9 @@ Phase 2：Actor-Critic 在潜空间训练（想象数据）
 - [Generalized Value Functions (GVFs)](../concepts/generalized-value-functions.md) — Horde 与 span-independent 长期预测
 - [Bayesian Belief Analysis](../concepts/bayesian-belief-analysis.md) — belief 展开与一步陷阱对照
 - [Robotic World Model（ETH RSL，RWM / RWM-U）](../entities/robotic-world-model-eth-rsl.md) — Isaac Lab 扩展与 Lite 离线管线
+- [DreamerV3](../entities/paper-shenlan-wm-13-dreamerv3.md) — 潜空间想象 MBRL 里程碑
+- [Open Dreamer](../entities/open-dreamer.md) — Dreamer 4 开源训练/推理/demo
+- [Latent Imagination](../concepts/latent-imagination.md) — Dreamer 系核心机制
 - [Reinforcement Learning](./reinforcement-learning.md) — MBRL 是 RL 大类下的子方向，与 Model-Free 并列
 - [Model Predictive Control (MPC)](./model-predictive-control.md) — 基于模型规划的经典控制方法，MBRL 的"控制论版"
 - [Trajectory Optimization](./trajectory-optimization.md) — MBRL 规划阶段常用轨迹优化作为求解器

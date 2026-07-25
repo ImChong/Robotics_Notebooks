@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, world-models, shenlan-survey, open-source, google-deepmind]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-25
 arxiv: "2301.04104"
 venue: Nature
 summary: "学习环境模型并在想象中改进行为；单一超参在 150+ 任务超越专用方法。"
@@ -14,10 +14,13 @@ related:
   - ../methods/generative-world-models.md
   - ../concepts/world-action-models.md
   - ../methods/model-based-rl.md
+  - ./open-dreamer.md
+  - ../concepts/latent-imagination.md
 sources:
   - ../../sources/papers/shenlan_wm_survey_13_dreamerv3.md
   - ../../sources/papers/shenlan_world_models_15_reference_catalog.md
   - ../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md
+  - ../../sources/repos/open-dreamer.md
 ---
 
 # DreamerV3
@@ -72,12 +75,14 @@ sources:
 
 - 路线 hub：[world-models-route-03-virtual-sandbox.md](../overview/world-models-route-03-virtual-sandbox.md)
 - 总地图：[world-models-15-open-source-technology-map.md](../overview/world-models-15-open-source-technology-map.md)
+- 开源后继复现：[Open Dreamer](./open-dreamer.md) — Dreamer 4 的 JAX/Flax 训练与实时 demo（完整 agent 环仍待齐）
 - 原始 source：[shenlan_wm_survey_13_dreamerv3.md](../../sources/papers/shenlan_wm_survey_13_dreamerv3.md)
 
 ## 参考来源
 
 - [shenlan_wm_survey_13_dreamerv3.md](../../sources/papers/shenlan_wm_survey_13_dreamerv3.md)
 - [shenlan_world_models_15_reference_catalog.md](../../sources/papers/shenlan_world_models_15_reference_catalog.md)
+- [open-dreamer.md](../../sources/repos/open-dreamer.md) — Dreamer 4 开源复现对照
 - [wechat_shenlan_world_models_15_open_source_2026.md](../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md)
 
 ## 推荐继续阅读
