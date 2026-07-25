@@ -281,5 +281,5 @@ flowchart LR
 - [磁场定向控制（FOC）逐步推导](../wiki/formalizations/field-oriented-control-derivation.md)
 - Blaschke, *The Principle of Field Orientation as Applied to the New Transvektor Closed-Loop Control System* (1972) — FOC 起点
 - Wensing et al., *Proprioceptive Actuator Design in the MIT Cheetah* (IEEE T-RO, 2017) — QDD/本体感知执行器设计范式
-- Katz, *A Low Cost Modular Actuator for Dynamic Robots* (MIT MSc thesis, 2018) — MIT Mini Cheetah 执行器全流程实例
+- [Katz, *A Low Cost Modular Actuator for Dynamic Robots*](../wiki/entities/paper-low-cost-modular-actuator-katz.md)（MIT S.M. thesis, 2018）— MIT Mini Cheetah 模块化 QDD 执行器全流程实例（电子部分开源）
 - Urs et al., *Design and Characterization of 3D Printed, Open-Source Actuators for Legged Locomotion* (arXiv:2202.12395) — 热/寿命/背隙验收范例

@@ -43,7 +43,7 @@ summary: "Caden Kraft Ironless QDD：采购 10010 定子自绕 36N42P + Halbach 
 
 - 在「同时公开绕组/磁钢/FEM/可制造结构 + 真机关节样机」的开源项目里，目前完整度最高之一——见 [电磁设计完整度对比](../comparisons/open-source-torque-motor-em-design.md)。
 - 用 FEMM 把 **有/无铁背 × Halbach/常规** 四象限静态转矩对照写清楚，是学磁路直觉的好教材。
-- BOM 约 **$40（执行器）/ $70（含控制器）**；与 [Internal Cycloidal](./internal-cycloidal-actuator.md)（~$384）形成成本—成熟度对照。
+- BOM 约 **40 USD（执行器）/ 70 USD（含控制器）**；与 [Internal Cycloidal](./internal-cycloidal-actuator.md)（约 384 USD）形成成本—成熟度对照。
 - 硬课：**静态保持力矩 ≠ 连续行走力矩**；报告值还 **含减速器增益**，不能当裸电机电磁转矩。
 
 ## 核心信息

@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-25",
-  "node_count": 1881,
-  "edge_count": 15980,
+  "node_count": 1882,
+  "edge_count": 15999,
   "coverage": {
-    "covered": 1829,
-    "total": 1857,
+    "covered": 1830,
+    "total": 1858,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -176,20 +176,20 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-open-torque-controlled-modular-robot-solo.md",
-      "detail_id": "entity-paper-open-torque-controlled-modular-robot-solo",
-      "label": "An Open Torque-Controlled Modular Robot Architecture（Solo / ODRI）",
+      "path": "wiki/entities/ironless-qdd-actuator.md",
+      "detail_id": "entity-ironless-qdd-actuator",
+      "label": "Ironless QDD Actuator（无铁芯转子摆线—行星执行器）",
       "type": "entity",
       "recency": "2026-07-25",
       "source": "log.md",
-      "action": "maintained",
+      "action": "added",
       "has_repo": true,
       "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
-      "path": "wiki/entities/odri-solo-and-bolt.md",
-      "detail_id": "entity-odri-solo-and-bolt",
-      "label": "ODRI Solo / Bolt（开源腿式平台）",
+      "path": "wiki/entities/paper-low-cost-modular-actuator-katz.md",
+      "detail_id": "entity-paper-low-cost-modular-actuator-katz",
+      "label": "A Low Cost Modular Actuator for Dynamic Robots（Katz / Mini Cheetah）",
       "type": "entity",
       "recency": "2026-07-25",
       "source": "log.md",
@@ -209,14 +209,13 @@
       "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
-      "path": "wiki/comparisons/open-source-torque-motor-em-design.md",
-      "detail_id": "wiki-comparisons-open-source-torque-motor-em-design",
-      "label": "开源机器人力矩电机：电磁设计完整度对比",
-      "type": "comparison",
+      "path": "roadmap/depth-torque-motor-design.md",
+      "detail_id": "roadmap-depth-torque-motor-design",
+      "label": "路线（纵深）：如果目标是力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环 → 关节模组）",
+      "type": "roadmap_page",
       "recency": "2026-07-25",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true,
       "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     }
   ],
@@ -237,19 +236,19 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 177
+      "size": 211
     },
     {
       "label": "移动操作",
       "size": 174
     },
     {
-      "label": "全身控制",
-      "size": 132
+      "label": "仿真到现实",
+      "size": 137
     },
     {
-      "label": "仿真到现实",
-      "size": 124
+      "label": "全身控制",
+      "size": 132
     },
     {
       "label": "人形强化学习运动控制",
@@ -300,7 +299,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 273
+      "degree": 274
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
