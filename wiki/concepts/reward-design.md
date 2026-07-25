@@ -11,7 +11,7 @@ related:
   - ../methods/disney-olaf-character-robot.md
   - ../entities/paper-tsil-temporal-self-imitation-learning.md
 summary: "Reward Design 研究如何把任务目标转成可学习的奖励信号，是机器人 RL 成败的关键工程环节。"
-updated: 2026-07-01
+updated: 2026-07-25
 sources:
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/privileged_training.md

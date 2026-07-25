@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-25",
-  "node_count": 1869,
-  "edge_count": 15921,
+  "node_count": 1882,
+  "edge_count": 16014,
   "coverage": {
-    "covered": 1817,
-    "total": 1845,
+    "covered": 1830,
+    "total": 1858,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -16,7 +16,8 @@
       "recency": "2026-07-25",
       "source": "log.md",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
       "path": "wiki/entities/paper-low-cost-modular-actuator-katz.md",
@@ -82,143 +83,137 @@
       "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
-      "path": "wiki/entities/ironless-qdd-actuator.md",
-      "detail_id": "entity-ironless-qdd-actuator",
-      "label": "Ironless QDD Actuator（无铁芯转子摆线—行星执行器）",
+      "path": "wiki/entities/benjamin-katz.md",
+      "detail_id": "entity-benjamin-katz",
+      "label": "Benjamin Katz（Ben Katz）",
       "type": "entity",
       "recency": "2026-07-25",
       "source": "log.md",
       "action": "added",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+      "has_repo": true
     },
     {
-      "path": "wiki/entities/paper-open-torque-controlled-modular-robot-solo.md",
-      "detail_id": "entity-paper-open-torque-controlled-modular-robot-solo",
-      "label": "An Open Torque-Controlled Modular Robot Architecture（Solo / ODRI）",
+      "path": "wiki/entities/paper-mini-cheetah-platform.md",
+      "detail_id": "entity-paper-mini-cheetah-platform",
+      "label": "Mini Cheetah: A Platform for Pushing the Limits of Dynamic Quadruped Control",
       "type": "entity",
       "recency": "2026-07-25",
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
-      "path": "wiki/entities/paper-notebook-proprioceptive-actuator-design-in-the-mit-cheeta.md",
-      "detail_id": "entity-paper-notebook-proprioceptive-actuator-design-in-the-mit-cheeta",
-      "label": "Proprioceptive actuator design in the MIT Cheetah",
+      "path": "wiki/entities/paper-wbic-mpc-mini-cheetah.md",
+      "detail_id": "entity-paper-wbic-mpc-mini-cheetah",
+      "label": "Highly Dynamic Quadruped Locomotion via WBIC and MPC",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-vision-aided-dynamic-exploration-mini-cheetah.md",
+      "detail_id": "entity-paper-vision-aided-dynamic-exploration-mini-cheetah",
+      "label": "Vision Aided Dynamic Exploration of Unstructured Terrain",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-hs-ddp-legged.md",
+      "detail_id": "entity-paper-hs-ddp-legged",
+      "label": "Hybrid Systems DDP for Whole-Body Motion Planning",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-mhpc.md",
+      "detail_id": "entity-paper-mhpc",
+      "label": "Model Hierarchy Predictive Control (MHPC)",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-bledt-rpc-thesis.md",
+      "detail_id": "entity-paper-bledt-rpc-thesis",
+      "label": "Regularized Predictive Control Framework（Bledt Thesis）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-extracting-legged-locomotion-heuristics-rpc.md",
+      "detail_id": "entity-paper-extracting-legged-locomotion-heuristics-rpc",
+      "label": "Extracting Legged Locomotion Heuristics with RPC",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-variational-underactuated-balancing-quadruped.md",
+      "detail_id": "entity-paper-variational-underactuated-balancing-quadruped",
+      "label": "Variational-Based Optimal Control of Underactuated Balancing",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-robust-autonomous-navigation-mini-cheetah-vision.md",
+      "detail_id": "entity-paper-robust-autonomous-navigation-mini-cheetah-vision",
+      "label": "Robust Autonomous Navigation of Mini-Cheetah Vision",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-concurrent-policy-estimator-locomotion.md",
+      "detail_id": "entity-paper-concurrent-policy-estimator-locomotion",
+      "label": "Concurrent Training of Control Policy and State Estimator",
       "type": "entity",
       "recency": "2026-07-25",
       "source": "log.md",
       "action": "maintained"
     },
     {
-      "path": "wiki/queries/actuator-drive-chain-selection-loop.md",
-      "detail_id": "wiki-queries-actuator-drive-chain-selection-loop",
-      "label": "Query：执行器驱动链选型闭环知识链",
-      "type": "query",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/odri-solo-and-bolt.md",
-      "detail_id": "entity-odri-solo-and-bolt",
-      "label": "ODRI Solo / Bolt（开源腿式平台）",
+      "path": "wiki/entities/paper-learning-to-jump-from-pixels.md",
+      "detail_id": "entity-paper-learning-to-jump-from-pixels",
+      "label": "Learning to Jump from Pixels",
       "type": "entity",
       "recency": "2026-07-25",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
-      "path": "wiki/comparisons/open-source-torque-motor-em-design.md",
-      "detail_id": "wiki-comparisons-open-source-torque-motor-em-design",
-      "label": "开源机器人力矩电机：电磁设计完整度对比",
-      "type": "comparison",
+      "path": "wiki/entities/paper-rapid-locomotion-rl.md",
+      "detail_id": "entity-paper-rapid-locomotion-rl",
+      "label": "Rapid Locomotion via Reinforcement Learning",
+      "type": "entity",
       "recency": "2026-07-25",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/overview/motor-design-workflow.md",
-      "detail_id": "wiki-overview-motor-design-workflow",
-      "label": "电机设计流程（规格 → 仿真 → 样机 → 控制）",
-      "type": "overview",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/pyleecan.md",
-      "detail_id": "entity-pyleecan",
-      "label": "PYLEECAN（径向磁通电机开源设计框架）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/axfluxmdo.md",
-      "detail_id": "entity-axfluxmdo",
-      "label": "axfluxmdo（轴向磁通电机多学科优化工具包）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/pcb-motor.md",
-      "detail_id": "entity-pcb-motor",
-      "label": "PCB Motor（PCB 定子轴向磁通电机）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/femm-foc-simulation.md",
-      "detail_id": "entity-femm-foc-simulation",
-      "label": "FEMM-FOC-Simulation（FEMM 磁场定向控制教学仿真）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/acmop.md",
-      "detail_id": "entity-acmop",
-      "label": "ACMOP（交流电机自动优化框架）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/comparisons/motor-em-simulation-software.md",
-      "detail_id": "wiki-comparisons-motor-em-simulation-software",
-      "label": "电机电磁与多物理场仿真软件选型",
-      "type": "comparison",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+      "has_repo": true
     }
   ],
   "latest_wiki_node": {
@@ -229,7 +224,8 @@
     "recency": "2026-07-25",
     "source": "log.md",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
   },
   "top_communities": [
     {
@@ -237,24 +233,24 @@
       "size": 381
     },
     {
-      "label": "移动操作",
-      "size": 178
+      "label": "人形论文深读笔记",
+      "size": 211
     },
     {
-      "label": "人形论文深读笔记",
-      "size": 177
+      "label": "移动操作",
+      "size": 174
     },
     {
       "label": "仿真到现实",
-      "size": 128
-    },
-    {
-      "label": "全身控制",
-      "size": 120
+      "size": 156
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 114
+      "size": 121
+    },
+    {
+      "label": "全身控制",
+      "size": 119
     }
   ],
   "top_hubs": [
@@ -269,7 +265,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 346,
+      "degree": 349,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -301,13 +297,13 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 268
+      "degree": 274
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 248,
+      "degree": 251,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },

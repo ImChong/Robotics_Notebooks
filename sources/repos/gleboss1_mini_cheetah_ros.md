@@ -18,7 +18,7 @@
 
 ## 定位
 
-- 相对官方 [`Cheetah-Software`](./mit_biomimetics_cheetah_software.md)（LCM），提供更易上手的 ROS 叙事。
+- 相对官方 [`Cheetah-Software`](./cheetah-software.md)（LCM），提供更易上手的 ROS 叙事。
 - 策展建议：与 [quadruped_ctrl](./derek_th_wang_quadruped_ctrl.md)、[CHAMP](./chvmp_champ.md) 同列为「学习入口」，不以复现官方全部功能为验收标准。
 
 ## 对 wiki 的映射

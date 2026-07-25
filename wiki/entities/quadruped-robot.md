@@ -106,6 +106,10 @@ summary: "四足机器人是以四条腿与环境间歇接触的腿足平台，�
 - [MATRiX 仿真平台](./matrix-simulation-platform.md)
 - [RoamerX 导航栈](./roamerx-navigation.md)
 
+## 关联页面
+
+- [MIT Mini Cheetah](./mit-mini-cheetah.md) — 学术高动态小四足实验床
+
 ## 参考来源
 
 - [notable-commercial-robot-platforms](../../sources/repos/notable-commercial-robot-platforms.md)

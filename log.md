@@ -5,9 +5,33 @@
 - **策展源：** [`sources/personal/mit_mini_cheetah_learning_stack_curator.md`](sources/personal/mit_mini_cheetah_learning_stack_curator.md)
 - **新实体：** [`wiki/entities/mit-mini-cheetah.md`](wiki/entities/mit-mini-cheetah.md) — 开源边界表、执行器→驱动→软件→Convex MPC→RL→ROS/CHAMP 学习优先序、流程总览
 - **论文集合：** [`sources/papers/mit_mini_cheetah_control_papers.md`](sources/papers/mit_mini_cheetah_control_papers.md)（Super Mini / ICRA 2019 / Cheetah 3 / Convex MPC / Rapid Locomotion / Falling Cat / Landing）
-- **repos：** [`mit_biomimetics_cheetah_software`](sources/repos/mit_biomimetics_cheetah_software.md)、[`derek_th_wang_quadruped_ctrl`](sources/repos/derek_th_wang_quadruped_ctrl.md)、[`chvmp_champ`](sources/repos/chvmp_champ.md)、[`gleboss1_mini_cheetah_ros`](sources/repos/gleboss1_mini_cheetah_ros.md)
+- **repos：** [`cheetah-software`](sources/repos/cheetah-software.md)（与本 PR 原 `mit_biomimetics_cheetah_software` 合并指向）、[`derek_th_wang_quadruped_ctrl`](sources/repos/derek_th_wang_quadruped_ctrl.md)、[`chvmp_champ`](sources/repos/chvmp_champ.md)、[`gleboss1_mini_cheetah_ros`](sources/repos/gleboss1_mini_cheetah_ros.md)
 - **开源核查（步骤 2.5）：** **部分开源** — 软件与驱动已开；整机 CAD / 绕线 / 电磁设计未公开
 - **交叉：** [`wiki/entities/paper-low-cost-modular-actuator-katz.md`](wiki/entities/paper-low-cost-modular-actuator-katz.md)、[`wiki/concepts/srbd-convex-mpc-wbc.md`](wiki/concepts/srbd-convex-mpc-wbc.md)、[`wiki/concepts/mpc-wbc-integration.md`](wiki/concepts/mpc-wbc-integration.md)、[`wiki/entities/quadruped-robot.md`](wiki/entities/quadruped-robot.md)、[`wiki/comparisons/open-source-qdd-actuator-projects.md`](wiki/comparisons/open-source-qdd-actuator-projects.md)、[`roadmap/depth-torque-motor-design.md`](roadmap/depth-torque-motor-design.md)
+- **合并说明：** 与同日 `robot_daycare_mini_cheetah_2019` ingest 的平台页做内容合并（见下条）
+
+## [2026-07-25] ingest | sources/blogs/robot_daycare_mini_cheetah_2019.md — Robot Daycare / bgkatz / Mini Cheetah；博文清单 12 篇论文各升格独立实体；平台与人物节点
+
+- **站点/人物：** [`sources/sites/robot-daycare.md`](sources/sites/robot-daycare.md) → [`wiki/entities/benjamin-katz.md`](wiki/entities/benjamin-katz.md)（MIT → Boston Dynamics Atlas → Physical Intelligence）
+- **GitHub：** [`sources/repos/bgkatz.md`](sources/repos/bgkatz.md)；控制栈 [`sources/repos/cheetah-software.md`](sources/repos/cheetah-software.md)
+- **博文：** [`sources/blogs/robot_daycare_mini_cheetah_2019.md`](sources/blogs/robot_daycare_mini_cheetah_2019.md)
+- **平台：** [`wiki/entities/mit-mini-cheetah.md`](wiki/entities/mit-mini-cheetah.md)
+- **12 篇独立论文实体（博文清单）：**
+  1. [`paper-mini-cheetah-platform`](wiki/entities/paper-mini-cheetah-platform.md)
+  2. [`paper-wbic-mpc-mini-cheetah`](wiki/entities/paper-wbic-mpc-mini-cheetah.md)
+  3. [`paper-vision-aided-dynamic-exploration-mini-cheetah`](wiki/entities/paper-vision-aided-dynamic-exploration-mini-cheetah.md)
+  4. [`paper-hs-ddp-legged`](wiki/entities/paper-hs-ddp-legged.md)
+  5. [`paper-mhpc`](wiki/entities/paper-mhpc.md)
+  6. [`paper-bledt-rpc-thesis`](wiki/entities/paper-bledt-rpc-thesis.md)
+  7. [`paper-extracting-legged-locomotion-heuristics-rpc`](wiki/entities/paper-extracting-legged-locomotion-heuristics-rpc.md)
+  8. [`paper-variational-underactuated-balancing-quadruped`](wiki/entities/paper-variational-underactuated-balancing-quadruped.md)
+  9. [`paper-robust-autonomous-navigation-mini-cheetah-vision`](wiki/entities/paper-robust-autonomous-navigation-mini-cheetah-vision.md)
+  10. [`paper-concurrent-policy-estimator-locomotion`](wiki/entities/paper-concurrent-policy-estimator-locomotion.md)
+  11. [`paper-learning-to-jump-from-pixels`](wiki/entities/paper-learning-to-jump-from-pixels.md)
+  12. [`paper-rapid-locomotion-rl`](wiki/entities/paper-rapid-locomotion-rl.md)（博文名 Agile Locomotion via Model-free Learning）
+- **开源核查：** Cheetah-Software / rapid-locomotion-rl / HS-DDP-MATLAB 已归档；Jump 项目页无代码；机构注册 `notre-dame`、`boston-dynamics`
+- **交叉：** [`mpc-wbc-integration`](wiki/concepts/mpc-wbc-integration.md)、[`quadruped-robot`](wiki/entities/quadruped-robot.md)、[`privileged_training`](sources/papers/privileged_training.md)（修正 Concurrent 文 arXiv 为 2202.05481）
+
 
 ## [2026-07-25] fix(wiki): ironless-qdd-actuator BOM 美元符被 KaTeX 成对 `$...$` 吞掉
 
@@ -21,7 +45,6 @@
 - **新实体：** [`wiki/entities/paper-low-cost-modular-actuator-katz.md`](wiki/entities/paper-low-cost-modular-actuator-katz.md) — COTS U8 级电机 + **6:1** 行星 + 集成 FOC/CAN；9 kg 十二关节四足与后空翻；含源码运行时序图
 - **开源核查（步骤 2.5）：** **部分开源** — 附录 A：[`3phase_integrated`](sources/repos/bgkatz_3phase_integrated.md)、[`motorcontrol`](sources/repos/bgkatz_motorcontrol.md)、[`SPIne`](sources/repos/bgkatz_spine.md)、`bgkatz/actuator`；机械 CAD 未列；叙事页 [`robot_daycare_mini_cheetah`](sources/sites/robot_daycare_mini_cheetah.md)
 - **交叉：** [`wiki/comparisons/open-source-qdd-actuator-projects.md`](wiki/comparisons/open-source-qdd-actuator-projects.md)、[`roadmap/depth-torque-motor-design.md`](roadmap/depth-torque-motor-design.md)、[`wiki/entities/paper-open-torque-controlled-modular-robot-solo.md`](wiki/entities/paper-open-torque-controlled-modular-robot-solo.md)、[`wiki/entities/paper-notebook-proprioceptive-actuator-design-in-the-mit-cheeta.md`](wiki/entities/paper-notebook-proprioceptive-actuator-design-in-the-mit-cheeta.md)、[`wiki/queries/actuator-drive-chain-selection-loop.md`](wiki/queries/actuator-drive-chain-selection-loop.md)
-
 
 ## [2026-07-25] ingest | sources/papers/open_torque_controlled_modular_robot_solo_arxiv_1910_00093.md — Grimminger et al. Solo/ODRI 开源力矩控制模块化腿足架构；升格 wiki/entities/paper-open-torque-controlled-modular-robot-solo.md；交叉 wiki/entities/odri-solo-and-bolt.md、wiki/comparisons/open-source-qdd-actuator-projects.md；sites/repos 回链；注册 schema/institutions.json laas
 

@@ -32,7 +32,7 @@
 - **仓库：** https://github.com/mit-biomimetics/Cheetah-Software
 - **真机文档：** https://github.com/mit-biomimetics/Cheetah-Software/blob/master/documentation/running_mini_cheetah.md
 - **覆盖：** robot controller、locomotion、MPC、state estimator、WBC、LCM、仿真、硬件接口
-- **归档：** [mit_biomimetics_cheetah_software](../repos/mit_biomimetics_cheetah_software.md)
+- **归档：** [cheetah-software](../repos/cheetah-software.md)
 
 ### 2. 硬件 / 执行器（Ben Katz）
 

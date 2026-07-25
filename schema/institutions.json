@@ -1655,6 +1655,19 @@
         "laas-cnrs",
         "cnrs-laas"
       ]
+    },
+    "notre-dame": {
+      "label": "圣母大学（University of Notre Dame）",
+      "aliases": [
+        "notre-dame",
+        "university-of-notre-dame"
+      ]
+    },
+    "boston-dynamics": {
+      "label": "波士顿动力（Boston Dynamics）",
+      "aliases": [
+        "boston-dynamics"
+      ]
     }
   }
 }
