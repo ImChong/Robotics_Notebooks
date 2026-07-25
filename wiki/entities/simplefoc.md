@@ -1,21 +1,26 @@
 ---
 
 type: entity
-tags: [repo, framework, motor-control, foc, bldc, embedded, open-source, linux-foundation]
+tags: [repo, framework, motor-control, foc, bldc, embedded, open-source, simplefoc]
 status: complete
-updated: 2026-06-24
+updated: 2026-07-25
 related:
   - ../queries/actuator-drive-chain-selection-loop.md
+  - ../comparisons/open-source-qdd-actuator-projects.md
   - ../concepts/field-oriented-control.md
   - ../overview/motor-drive-firmware-bus-protocols.md
+  - ./moteus.md
+  - ./tinymovr.md
   - ./atom01-firmware.md
   - ./wokwi.md
   - ./kicad.md
   - ../concepts/can-bus-protocol.md
+  - ../../roadmap/depth-torque-motor-design.md
 sources:
   - ../../sources/repos/simplefoc_arduino_foc.md
   - ../../sources/sites/simplefoc_documentation.md
-summary: "SimpleFOC 是社区驱动的开源 FOC 生态：Arduino-FOC 库、官方 Shield/Mini 参考硬件与 docs.simplefoc.com 文档，面向 BLDC/步进电机的跨平台低功率闭环控制与学习。"
+  - ../../sources/personal/open_source_qdd_actuator_learning_curator.md
+summary: "SimpleFOC 是社区驱动的开源 FOC 生态：Arduino-FOC 库、官方 Shield/Mini 参考硬件与 docs.simplefoc.com 文档，面向 BLDC/步进电机的跨平台低功率闭环控制与学习；力矩关节路线中作为 Stage 1 入门，之后衔接到 moteus/Tinymovr。"
 ---
 
 # SimpleFOC（Arduino-FOC 生态）
@@ -91,20 +96,23 @@ flowchart TB
 - **局限：实时与确定性** — 无 EtherCAT DC 级多轴同步；硬实时需自选 MCU、定时器与裸机/RTOS 策略。
 - **局限：文档与版本** — 应锁定库版本并对照 [release notes](https://github.com/simplefoc/Arduino-FOC/releases)；社区视频可能落后于 v2.4 API。
 
-## 参考来源
-
-- [sources/repos/simplefoc_arduino_foc.md](../../sources/repos/simplefoc_arduino_foc.md)
-- [sources/sites/simplefoc_documentation.md](../../sources/sites/simplefoc_documentation.md)
-- [simplefoc/Arduino-FOC](https://github.com/simplefoc/Arduino-FOC)
-
 ## 关联页面
 
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 本页处于驱动链 **②层 电机驱动固件 FOC**（电流环带宽 vs 编码器分辨率/标定）
+- [开源 QDD 执行器项目对比](../comparisons/open-source-qdd-actuator-projects.md) — 学习阶梯 Stage 1；之后接 [moteus](./moteus.md) / [Tinymovr](./tinymovr.md)
 - [磁场定向控制（FOC）](../concepts/field-oriented-control.md)
 - [电机驱动器底软通信协议总览](../overview/motor-drive-firmware-bus-protocols.md)
 - [Atom01 Firmware](./atom01-firmware.md)（开源人形底层固件对照）
 - [Wokwi](./wokwi.md) — 无硬件时在浏览器验证 Arduino/ESP32/STM32 外设与 FOC 原型
 - [KiCad](./kicad.md) — 自研驱动板原理图与 PCB layout
+- [力矩电机设计纵深](../../roadmap/depth-torque-motor-design.md)
+
+## 参考来源
+
+- [sources/repos/simplefoc_arduino_foc.md](../../sources/repos/simplefoc_arduino_foc.md)
+- [sources/sites/simplefoc_documentation.md](../../sources/sites/simplefoc_documentation.md)
+- [simplefoc/Arduino-FOC](https://github.com/simplefoc/Arduino-FOC)
+- [开源 QDD 执行器学习策展](../../sources/personal/open_source_qdd_actuator_learning_curator.md)
 
 ## 推荐继续阅读
 

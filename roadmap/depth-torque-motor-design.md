@@ -99,6 +99,7 @@ flowchart LR
 ### 推荐读什么
 - [电机设计流程](../wiki/overview/motor-design-workflow.md) 步骤 2–5（拓扑槽极 → FEA → 热与 CFD → 机械集成）
 - [电机电磁与多物理场仿真软件选型](../wiki/comparisons/motor-em-simulation-software.md)
+- [Internal Cycloidal Actuator](../wiki/entities/internal-cycloidal-actuator.md) — 外转子 + 定子内嵌减速的开源一体设计（学气隙半径、槽极绕组与同轴集成）
 - [Actuator 102 · 04：热学与力矩控制](../wiki/overview/humanoid-actuator-102-thermal-and-control.md)
 - [Query：人形机器人电池与热管理指南](../wiki/queries/humanoid-battery-thermal-management.md) — 关节热预算与整机热链路的衔接
 
@@ -123,11 +124,14 @@ flowchart LR
 - [磁场定向控制（FOC）逐步推导](../wiki/formalizations/field-oriented-control-derivation.md) — Clarke/Park 变换到电流环设计
 - [控制环路延迟建模](../wiki/formalizations/control-loop-latency-modeling.md) — 采样、PWM 更新与指令延迟的预算方法
 - [SimpleFOC（Arduino-FOC 生态）](../wiki/entities/simplefoc.md) — 原型级驱动栈，代码可读性最好的教学实现
+- [moteus](../wiki/entities/moteus.md) · [Tinymovr](../wiki/entities/tinymovr.md) — 关节向开源驱动（PCB + FOC + CAN/CAN-FD）
+- [开源 QDD 执行器项目对比](../wiki/comparisons/open-source-qdd-actuator-projects.md) — SimpleFOC → moteus/Tinymovr → OpenTorque → ODRI 的开源学习阶梯
 - [Actuator 102 · 04：热学与力矩控制](../wiki/overview/humanoid-actuator-102-thermal-and-control.md) "控制（VI）"一节 — 电流环 >20 kHz、指令到力矩 <1 ms 的量级感
 
 ### 推荐做什么
 - 用 SimpleFOC / ODrive 级开源驱动点一台云台或 QDD 电机：做极对数辨识、电角度对齐，跑通 \(i_d/i_q\) 电流闭环
 - 给电流环打阶跃，测上升时间估带宽；改 PWM 频率与电流环增益，观察纹波与噪声变化
+- 进阶：精读 moteus 或 Tinymovr 原理图，对照自研板的采样与保护链路
 
 ### 学完输出什么
 - 一套能跑电流闭环的实物（或高保真仿真）驱动
@@ -146,13 +150,14 @@ flowchart LR
 ### 推荐读什么
 - [KiCad（开源 PCB EDA）](../wiki/entities/kicad.md) — 原理图 → layout → Gerber 的零许可成本工具链；[10.0 中文文档](https://docs.kicad.org/10.0/zh/) 与 `kicad-cli` 适合团队版控与打样前 DRC
 - [Altium Designer](../wiki/entities/altium-designer.md) — 商业 EDA 官方文档（原理图 → 规则驱动 layout → OutJob/制造发布、ECAD-MCAD 协同）；量产向自研驱动板的常用工具链
-- [SimpleFOC（Arduino-FOC 生态）](../wiki/entities/simplefoc.md) "硬件：SimpleFOCBoards" 一节 — 原理图与制板指南开源，低功率参考设计的起点；更高功率参考 ODrive / VESC / mjbots
+- [SimpleFOC（Arduino-FOC 生态）](../wiki/entities/simplefoc.md) "硬件：SimpleFOCBoards" 一节 — 原理图与制板指南开源，低功率参考设计的起点；更高功率参考 ODrive / VESC / [moteus](../wiki/entities/moteus.md)
 - [开源人形机器人硬件](../wiki/entities/open-source-humanoid-hardware.md) — 自研关节驱动板的开源整机参考（ODRI Solo、Berkeley Humanoid Lite 等）
+- [开源 QDD 执行器项目对比](../wiki/comparisons/open-source-qdd-actuator-projects.md) — ODRI / BHL / Internal Cycloidal / OpenTorque 等完整关节与电机本体开源清单
 - [Humanoid Hardware 101 · 05：能源与计算电子](../wiki/overview/humanoid-hardware-101-power-compute-electronics.md) — PCB/BMS 的模块复用与 DFM 降本视角
 - [CAN 总线协议](../wiki/concepts/can-bus-protocol.md) 与 [CAN vs EtherCAT 关节总线对比](../wiki/comparisons/can-vs-ethercat-joint-bus.md) — 总线接口硬件（收发器、隔离、终端电阻）在画原理图时就要定
 
 ### 推荐做什么
-- 精读一块开源驱动板原理图（SimpleFOC Mini / ODrive / moteus 任一），标注功率回路、栅极驱动、电流采样链路、保护电路四条线路并画出信号流
+- 精读一块开源驱动板原理图（SimpleFOC Mini / ODrive / [moteus](../wiki/entities/moteus.md) / [Tinymovr](../wiki/entities/tinymovr.md) 任一），标注功率回路、栅极驱动、电流采样链路、保护电路四条线路并画出信号流
 - 自绘一版关节驱动板：三相桥 + 栅极驱动 + 相电流采样 + MCU + CAN 收发器，走完原理图 → layout → 打样 → 焊接
 - 分步 bring-up：低压限流上电看栅极与相电压波形 → 校准电流采样零偏与增益 → 复跑 Stage 3 的电角度对齐与 \(i_d/i_q\) 电流闭环
 - 用示波器对比采样电阻两端电压与固件 ADC 读数，量化电流测量链路的误差与噪声底；复测电流环带宽，与 Stage 3 的开源板对比找差距
@@ -199,6 +204,8 @@ flowchart LR
 - [电机测功机（Dynamometer）](../wiki/concepts/motor-dynamometer.md) — 磁滞/涡流/磁粉吸收 vs 电力对拖；GB/T 43200 与 IEC 效率试验入口
 - [电机设计流程](../wiki/overview/motor-design-workflow.md) 步骤 6–8（台架 → FOC 验证 → 模组验收）
 - [电机驱动器底软通信协议总览](../wiki/overview/motor-drive-firmware-bus-protocols.md)
+- [3D 打印开源腿式执行器论文（Urs et al.）](../wiki/entities/paper-3d-printed-open-source-actuators-legged.md) — 热限力矩、效率、背隙与 42 万步态循环验收范例
+- [ODRI 执行器硬件](../wiki/entities/odri-solo-and-bolt.md) · [Berkeley Humanoid Lite](../wiki/entities/berkeley-humanoid-lite.md) — 开源关节/整机验收与装配测试参照
 - [Query：EtherCAT 主站优化指南](../wiki/queries/ethercat-master-optimization.md) 与 [Query：实时运控中间件配置指南](../wiki/queries/real-time-control-middleware-guide.md)
 - [Actuator Network（执行器网络）](../wiki/methods/actuator-network.md)、[Implicit/Explicit 执行器建模](../wiki/concepts/implicit-explicit-actuator-modeling.md)、[Armature Modeling（电枢惯量建模）](../wiki/concepts/armature-modeling.md) — 台架数据回馈仿真的三条路
 - [NeuralActuator](../wiki/entities/paper-neuralactuator-neural-actuation-modeling.md) — Transformer 执行器模型联合预测可微仿真 torque surrogate 与无 F/T 传感器外力估计，低成本舵机平台上力估计误差降至 0.12 N，可作台架数据回馈仿真的第四条路
@@ -266,7 +273,9 @@ flowchart LR
 - [电机设计流程（规格 → 仿真 → 样机 → 控制）](../wiki/overview/motor-design-workflow.md) 及其 sources（Motor-CAD 官方资料、电机曲线与电磁仿真 FAQ、SimpleFOC 文档）
 - [电机测功机一手资料索引](../sources/sites/motor_dynamometer_primary_refs.md)（GB/T 43200、IEC 60034-2-1、Magtrol 手册、ODrive 开源对拖、AIP 关节对拖）
 - [Humanoid 执行器 102 系列](../wiki/overview/humanoid-actuator-102-technology-map.md)（sources：执行器 102 微信长文）
+- [开源 QDD / 力矩关节执行器学习策展](../sources/personal/open_source_qdd_actuator_learning_curator.md) 与 [对比页](../wiki/comparisons/open-source-qdd-actuator-projects.md)
 - [磁场定向控制（FOC）逐步推导](../wiki/formalizations/field-oriented-control-derivation.md)
 - Blaschke, *The Principle of Field Orientation as Applied to the New Transvektor Closed-Loop Control System* (1972) — FOC 起点
 - Wensing et al., *Proprioceptive Actuator Design in the MIT Cheetah* (IEEE T-RO, 2017) — QDD/本体感知执行器设计范式
 - Katz, *A Low Cost Modular Actuator for Dynamic Robots* (MIT MSc thesis, 2018) — MIT Mini Cheetah 执行器全流程实例
+- Urs et al., *Design and Characterization of 3D Printed, Open-Source Actuators for Legged Locomotion* (arXiv:2202.12395) — 热/寿命/背隙验收范例

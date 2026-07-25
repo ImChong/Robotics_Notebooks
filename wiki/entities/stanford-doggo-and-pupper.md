@@ -2,10 +2,12 @@
 type: entity
 tags: [quadruped, open-source, stanford, legged, education, research, pupper, ros2, vlm]
 status: complete
-updated: 2026-06-04
+updated: 2026-07-25
 related:
   - ./quadruped-robot.md
   - ./easy-quadruped.md
+  - ../comparisons/open-source-qdd-actuator-projects.md
+  - ./opentorque-actuator.md
   - ../overview/robot-open-source-wechat-issue02-curator.md
   - ../tasks/locomotion.md
   - ../methods/reinforcement-learning.md
@@ -13,9 +15,11 @@ related:
 sources:
   - ../../sources/sites/pupper-v3-documentation-readthedocs.md
   - ../../sources/repos/pupperv3_monorepo.md
+  - ../../sources/repos/stanford_doggo_project.md
   - ../../sources/courses/stanford_cs123_robotics_ai.md
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md
-summary: "Stanford Doggo 与 Pupper 开源四足生态：Doggo 偏高动态跳跃；Pupper 从教学版演进至 v3 伴侣平台（~$2000 自组、Pi 5 + GIM4305、仿真 RL、VLM/语音、ROS 2 monorepo 与 CS 123 课程）。"
+  - ../../sources/personal/open_source_qdd_actuator_learning_curator.md
+summary: "Stanford Doggo 与 Pupper 开源四足生态：Doggo 偏高动态跳跃（QDD 同步带 + ODrive）；Pupper 从教学版演进至 v3 伴侣平台（~$2000 自组、Pi 5 + GIM4305、仿真 RL、VLM/语音、ROS 2 monorepo 与 CS 123 课程）。"
 ---
 
 # Stanford Doggo / Pupper（开源四足）
@@ -112,10 +116,25 @@ flowchart LR
 2. **忽略安全章节** — v3 面向人旁使用（含儿童），须读文档 [Safety](https://pupper-v3-documentation.readthedocs.io/en/latest/using_pupper/safety.html)（E-STOP、勿抓线缆抬机、电机高温等）。
 3. **仅记「12 DoF 树莓派 Pupper」** — 那是早期叙事；v3 为 **Pi 5 + 无刷关节模组 + ~$2000** 级自组成本。
 
+## Doggo 执行器学习要点（相对 Pupper）
+
+Doggo 主仓 [StanfordDoggoProject](https://github.com/Nate711/StanfordDoggoProject) 强调 **QDD 同步带 + ODrive 电流控制 + 绝对位置 + 高动态跳跃**。对人形髋/膝原型特别有用的点：
+
+| 主题 | 学什么 |
+|------|--------|
+| 电机选型 | KV、峰值电流与峰值力矩 |
+| 传动 | 低减速同步带；减速比对速度与输出力矩 |
+| 冲击 | 跳跃工况下的关节与轴承布置 |
+| 控制栈 | ODrive + Teensy；与 [OpenTorque](./opentorque-actuator.md)（VESC）对照 |
+
+完整开源执行器对照见 [开源 QDD 执行器项目对比](../comparisons/open-source-qdd-actuator-projects.md)。
+
 ## 关联页面
 
 - [四足机器人](./quadruped-robot.md)
 - [easy_quadruped（v2  lineage 控制 + MuJoCo）](./easy-quadruped.md)
+- [开源 QDD 执行器项目对比](../comparisons/open-source-qdd-actuator-projects.md)
+- [OpenTorque Actuator](./opentorque-actuator.md)
 - [Locomotion](../tasks/locomotion.md)
 - [强化学习](../methods/reinforcement-learning.md)
 - [VLA](../methods/vla.md)
@@ -126,10 +145,13 @@ flowchart LR
 - 官方建造向导：[Get Started Building](https://pupper-v3-documentation.readthedocs.io/en/latest/index.html#get-started-building)
 - 修改机载代码：[Modifying Pupper code](https://pupper-v3-documentation.readthedocs.io/en/latest/development/modifying_code.html)
 - Hands-On Robotics：https://www.handsonrobotics.org
+- Doggo 主仓：<https://github.com/Nate711/StanfordDoggoProject>
 
 ## 参考来源
 
 - [pupper-v3-documentation-readthedocs.md](../../sources/sites/pupper-v3-documentation-readthedocs.md)
 - [pupperv3_monorepo.md](../../sources/repos/pupperv3_monorepo.md)
+- [stanford_doggo_project.md](../../sources/repos/stanford_doggo_project.md)
 - [stanford_cs123_robotics_ai.md](../../sources/courses/stanford_cs123_robotics_ai.md)
 - [wechat_jixie_robot_open_source_treasury_issue02_10_robots.md](../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md)
+- [开源 QDD 执行器学习策展](../../sources/personal/open_source_qdd_actuator_learning_curator.md)

@@ -2,7 +2,7 @@
 type: query
 tags: [actuator, eda, foc, motor-control, ethercat, sim2real, hardware, selection-loop]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-25
 summary: "执行器驱动链选型闭环知识链：把 EDA 电路设计 → 电机驱动固件 FOC → 执行器建模与摩擦辨识 → 实时总线闭环集成 四层驱动链，从分散的硬件/固件/建模实体页沉淀为一条端到端选型决策链，逐层说明每层选什么、数据手册参数与实测曲线差在哪、建模保真度 vs 辨识成本如何取舍、总线周期 ≠ 闭环带宽。"
 sources:
   - ../../sources/sites/kicad-org.md
@@ -164,7 +164,9 @@ flowchart TD
 - [EtherCAT 协议基础](../concepts/ethercat-protocol.md) — ④层硬实时总线的协议基础
 - [KiCad（开源 EDA）](../entities/kicad.md) — ①层开源电路设计真值
 - [Altium Designer（商用 EDA）](../entities/altium-designer.md) — ①层商用量产向 EDA
-- [SimpleFOC（开源 FOC 生态）](../entities/simplefoc.md) — ②层开源驱动固件
+- [SimpleFOC（开源 FOC 生态）](../entities/simplefoc.md) — ②层开源驱动固件（教学/低功率）
+- [moteus](../entities/moteus.md) · [Tinymovr](../entities/tinymovr.md) · [VESC](../entities/vesc.md) — ②层关节/功率向开源驱动
+- [开源 QDD 执行器项目对比](../comparisons/open-source-qdd-actuator-projects.md) — 完整关节 / 电机本体开源项目选型与学习阶梯
 - [BAM（执行器摩擦辨识）](../entities/bam-better-actuator-models.md) — ③层显式摩擦辨识路线
 - [NeuralActuator（神经执行器建模）](../entities/paper-neuralactuator-neural-actuation-modeling.md) — ③层数据驱动执行器网络路线
 - [SAGE（sim2real 执行器 gap 估计）](../entities/sage-sim2real-actuator-gap-estimator.md) — ③层定位执行器层 gap 占比
