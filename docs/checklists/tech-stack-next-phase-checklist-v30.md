@@ -38,8 +38,8 @@
 
 ## P2: 事实库与矛盾检测扩展 (Quantity)
 
-- [ ] **事实库扩展**：
-    - [ ] `schema/canonical-facts.json` 由 240 → **250 条**：新增 10 条驱动链选型矛盾检测规则（理想力矩源假设 vs 摩擦/齿隙实际、数据手册峰值力矩 vs 持续力矩热约束、FOC 电流环带宽 vs 编码器分辨率制约、总线周期快 ≠ 闭环带宽高、执行器网络拟合好 vs 分布外温升漂移、高减速比力矩大 vs 反驱透明度损失、开源 EDA 够用 vs 高速多层板信号完整性、自研驱动板省钱 vs 可靠性/调试成本、仿真理想执行器 vs 真机 sim2real gap、驱动固件开环标定 vs 负载在环辨识）；逐条经脚本校验对现存 wiki 页有 pos 命中且 0 误报（`make lint` 潜在矛盾 0 个、0 errors）。
+- [x] **事实库扩展**：
+    - [x] `schema/canonical-facts.json` 由 240 → **250 条**：新增 10 条驱动链选型矛盾检测规则（理想力矩源假设 vs 摩擦/齿隙实际、数据手册峰值力矩 vs 持续力矩热约束、FOC 电流环带宽 vs 编码器分辨率制约、总线周期快 ≠ 闭环带宽高、执行器网络拟合好 vs 分布外温升漂移、高减速比力矩大 vs 反驱透明度损失、开源 EDA 够用 vs 高速多层板信号完整性、自研驱动板省钱 vs 可靠性/调试成本、仿真理想执行器 vs 真机 sim2real gap、驱动固件开环标定 vs 负载在环辨识）；逐条经脚本校验对现存 wiki 页有 pos 命中且 0 误报（`make lint` 潜在矛盾 0 个、0 errors）。**（2026-07-24 完成：`canonical-facts.json` 新增上述 10 条规则，terms/pos_claims/neg_claims 三段式与既有 240 条一致；逐条脚本校验每条对现存驱动链页（`actuator-drive-chain-selection-loop` / `torque-source-abstraction-gap` / `simplefoc` / `humanoid-actuator-102-gear-reflected-inertia`）均有 pos 命中，neg_claims 仅匹配朴素误判措辞、不误伤 `≠`/误判速查行；`make lint` 0 errors、潜在矛盾 0 个。）**
 
 ## P3: 交互层"执行器驱动链"增强 (UX/UI)
 
@@ -54,7 +54,7 @@
 
 - [ ] `make lint`: 0 errors（新引入的 `actuator_drive_chain_crosslink` 为 INFO 级，不阻塞 CI）。
 - [ ] 知识图谱节点数 **≥ 1698**，边数 **≥ 13580**（见 `exports/graph-stats.json`）。
-- [ ] 事实库扩展至 **250 条**（补齐 理想力矩源 vs 摩擦实际 / 峰值 vs 持续力矩热约束 / 总线周期 ≠ 闭环带宽 等 10 条驱动链选型矛盾检测规则）。
+- [x] 事实库扩展至 **250 条**（补齐 理想力矩源 vs 摩擦实际 / 峰值 vs 持续力矩热约束 / 总线周期 ≠ 闭环带宽 等 10 条驱动链选型矛盾检测规则）。**（2026-07-24 完成，`make lint` 0 errors、潜在矛盾 0 个）**
 - [ ] `community_quality_warning` 保持 `false` 且 `largest_community_ratio ≤ 0.25`。
 - [ ] `log.md` 记录 V30 关键改动。
 
