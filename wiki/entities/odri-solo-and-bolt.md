@@ -4,6 +4,7 @@ tags: [quadruped, biped, hardware, open-source, odri, torque-control, qdd, actua
 status: complete
 updated: 2026-07-25
 related:
+  - ./paper-open-torque-controlled-modular-robot-solo.md
   - ./quadruped-robot.md
   - ./open-source-humanoid-hardware.md
   - ../comparisons/open-source-qdd-actuator-projects.md
@@ -13,6 +14,7 @@ related:
   - ../tasks/locomotion.md
   - ../../roadmap/depth-torque-motor-design.md
 sources:
+  - ../../sources/papers/open_torque_controlled_modular_robot_solo_arxiv_1910_00093.md
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md
   - ../../sources/repos/open_robot_actuator_hardware.md
   - ../../sources/sites/open_dynamic_robot_initiative.md
@@ -60,11 +62,12 @@ summary: "Open Dynamic Robot Initiative（ODRI）：开源扭矩控制腿足平�
 |------|------|
 | 项目门户 | [open-dynamic-robot-initiative.github.io](https://open-dynamic-robot-initiative.github.io) |
 | 执行器硬件仓 | [open_robot_actuator_hardware](https://github.com/open-dynamic-robot-initiative/open_robot_actuator_hardware)（BSD-3-Clause） |
-| 架构论文 | [arXiv:1910.00093](https://arxiv.org/abs/1910.00093) |
+| 架构论文 | [arXiv:1910.00093](https://arxiv.org/abs/1910.00093) → 实体页 [Solo 架构论文](./paper-open-torque-controlled-modular-robot-solo.md) |
 | 组织 GitHub | [open-dynamic-robot-initiative](https://github.com/open-dynamic-robot-initiative) |
 
 ## 关联页面
 
+- [Solo 架构论文（arXiv:1910.00093）](./paper-open-torque-controlled-modular-robot-solo.md)
 - [开源 QDD 执行器项目对比](../comparisons/open-source-qdd-actuator-projects.md)
 - [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md)
 - [Berkeley Humanoid Lite](./berkeley-humanoid-lite.md)
@@ -79,6 +82,7 @@ summary: "Open Dynamic Robot Initiative（ODRI）：开源扭矩控制腿足平�
 
 ## 参考来源
 
+- [Solo 架构论文归档（arXiv:1910.00093）](../../sources/papers/open_torque_controlled_modular_robot_solo_arxiv_1910_00093.md)
 - [open_robot_actuator_hardware.md](../../sources/repos/open_robot_actuator_hardware.md)
 - [open_dynamic_robot_initiative.md](../../sources/sites/open_dynamic_robot_initiative.md)
 - [开源 QDD 执行器学习策展](../../sources/personal/open_source_qdd_actuator_learning_curator.md)

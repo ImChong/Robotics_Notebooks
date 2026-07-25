@@ -12,7 +12,8 @@
 - **入库日期：** 2026-07-25
 - **一句话说明：** ODRI 开源力控关节硬件总仓：机械结构、行星/皮带减速、驱动 PCB、编码器、电流/力矩控制与装配测试资料。
 - **开源状态：** **已开源**（硬件设计与文档；电机本体通常采购现成无刷外转子）
-- **沉淀到 wiki：** [odri-solo-and-bolt](../../wiki/entities/odri-solo-and-bolt.md)、[open-source-qdd-actuator-projects](../../wiki/comparisons/open-source-qdd-actuator-projects.md)
+- **架构论文：** https://arxiv.org/abs/1910.00093（归档：[open_torque_controlled_modular_robot_solo_arxiv_1910_00093.md](../papers/open_torque_controlled_modular_robot_solo_arxiv_1910_00093.md)）
+- **沉淀到 wiki：** [odri-solo-and-bolt](../../wiki/entities/odri-solo-and-bolt.md)、[paper-open-torque-controlled-modular-robot-solo](../../wiki/entities/paper-open-torque-controlled-modular-robot-solo.md)、[open-source-qdd-actuator-projects](../../wiki/comparisons/open-source-qdd-actuator-projects.md)
 
 ---
 
@@ -38,4 +39,5 @@
 ## 对 wiki 的映射
 
 - [ODRI Solo / Bolt](../../wiki/entities/odri-solo-and-bolt.md)
+- [Solo 架构论文](../../wiki/entities/paper-open-torque-controlled-modular-robot-solo.md)
 - [开源 QDD 执行器项目对比](../../wiki/comparisons/open-source-qdd-actuator-projects.md)

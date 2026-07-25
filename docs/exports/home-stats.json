@@ -1,18 +1,29 @@
 {
   "generated_at": "2026-07-25",
-  "node_count": 1866,
-  "edge_count": 15868,
+  "node_count": 1867,
+  "edge_count": 15880,
   "coverage": {
-    "covered": 1814,
-    "total": 1842,
+    "covered": 1815,
+    "total": 1843,
     "percent": 98
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/comparisons/open-source-torque-motor-em-design.md",
-      "detail_id": "wiki-comparisons-open-source-torque-motor-em-design",
-      "label": "开源机器人力矩电机：电磁设计完整度对比",
-      "type": "comparison",
+      "path": "wiki/entities/paper-open-torque-controlled-modular-robot-solo.md",
+      "detail_id": "entity-paper-open-torque-controlled-modular-robot-solo",
+      "label": "An Open Torque-Controlled Modular Robot Architecture（Solo / ODRI）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/odri-solo-and-bolt.md",
+      "detail_id": "entity-odri-solo-and-bolt",
+      "label": "ODRI Solo / Bolt（开源腿式平台）",
+      "type": "entity",
       "recency": "2026-07-25",
       "source": "log.md",
       "action": "maintained",
@@ -23,6 +34,17 @@
       "path": "wiki/comparisons/open-source-qdd-actuator-projects.md",
       "detail_id": "wiki-comparisons-open-source-qdd-actuator-projects",
       "label": "开源 QDD / 力矩关节执行器项目对比与学习路线",
+      "type": "comparison",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/comparisons/open-source-torque-motor-em-design.md",
+      "detail_id": "wiki-comparisons-open-source-torque-motor-em-design",
+      "label": "开源机器人力矩电机：电磁设计完整度对比",
       "type": "comparison",
       "recency": "2026-07-25",
       "source": "log.md",
@@ -192,17 +214,6 @@
       "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
-      "path": "wiki/entities/odri-solo-and-bolt.md",
-      "detail_id": "entity-odri-solo-and-bolt",
-      "label": "ODRI Solo / Bolt（开源腿式平台）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
       "path": "wiki/entities/stanford-doggo-and-pupper.md",
       "detail_id": "entity-stanford-doggo-and-pupper",
       "label": "Stanford Doggo / Pupper（开源四足）",
@@ -211,24 +222,13 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/internal-cycloidal-actuator.md",
-      "detail_id": "entity-internal-cycloidal-actuator",
-      "label": "Internal Cycloidal Actuator（内嵌摆线一体执行器）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/comparisons/open-source-torque-motor-em-design.md",
-    "detail_id": "wiki-comparisons-open-source-torque-motor-em-design",
-    "label": "开源机器人力矩电机：电磁设计完整度对比",
-    "type": "comparison",
+    "path": "wiki/entities/paper-open-torque-controlled-modular-robot-solo.md",
+    "detail_id": "entity-paper-open-torque-controlled-modular-robot-solo",
+    "label": "An Open Torque-Controlled Modular Robot Architecture（Solo / ODRI）",
+    "type": "entity",
     "recency": "2026-07-25",
     "source": "log.md",
     "action": "maintained",
@@ -250,7 +250,7 @@
     },
     {
       "label": "仿真到现实",
-      "size": 162
+      "size": 169
     },
     {
       "label": "人形强化学习运动控制",
@@ -305,7 +305,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 266
+      "degree": 267
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
