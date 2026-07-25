@@ -1576,6 +1576,20 @@
         "guangdong-direct-drive",
         "ddt"
       ]
+    },
+    "next-state": {
+      "label": "下一状态（Next State）",
+      "aliases": [
+        "next-state"
+      ]
+    },
+    "reactor": {
+      "label": "实时推理平台（Reactor）",
+      "aliases": [
+        "reactor",
+        "reactor-team",
+        "reactor-inc"
+      ]
     }
   }
 }

@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-07-24
+updated: 2026-07-25
 related:
   - ../queries/embodied-fm-taxonomy-loop.md
   - ../entities/paper-motionwam-humanoid-loco-manipulation-wam.md
@@ -44,6 +44,7 @@ related:
   - ../entities/paper-x-foresight.md
   - ../entities/paper-x-mind.md
   - ../entities/paper-m4world.md
+  - ../entities/open-dreamer.md
   - ./dwm.md
   - ./mimic-video.md
 sources:
@@ -71,6 +72,7 @@ sources:
   - ../../sources/papers/m4world_arxiv_2607_14005.md
   - ../../sources/sites/worldlabs-ai.md
   - ../../sources/blogs/allenai_molmo_motion.md
+  - ../../sources/repos/open-dreamer.md
 summary: "生成式世界模型（Generative World Models）利用扩散模型或视频生成技术来模拟物理世界的动态，为机器人提供高保真的视频级仿真和无限的反事实推演能力。"
 ---
 
@@ -171,6 +173,10 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 ### Joint 视频–动作 + 测试时想象（示例：τ₀-WM）
 
 [τ₀-World Model（τ0-WM）](../entities/tau0-world-model.md) 在 **5B** 规模上把 **多视角视频扩散** 与 **连续 action chunk** 绑在同一 VAM 表征：动作支路 **逐层 cross-attention** 读视频中间层，使「预测未来」成为控制相关目标；异构 **遥操作 / UMI / 自我中心人视频** 用 **模态掩码** 分监督。推理侧除策略采样外，还提供 **动作条件多视角 rollout + 任务进度轨迹**，并以 **Re-denoising Consistency Score** 与 **propose–evaluate–revise** 把算力花在执行前——与 [mimic-video](./mimic-video.md) 的「冻结骨干 + 潜计划动作头」及 [GE-Sim 2.0](../entities/ge-sim-2.md) 的「独立 World Judge 闭环模拟器」形成同生态对照。
+
+### Dreamer 4 开源交互式游戏 WM（示例：Open Dreamer）
+
+[Open Dreamer](../entities/open-dreamer.md)（next-state，2026-07）复现 [Dreamer 4](https://arxiv.org/abs/2509.24527)：因果 **MAE tokenizer** + **diffusion forcing / flow matching / shortcut** 动作条件潜动力学，面向 Minecraft/VPT；训练仓、Reactor 推理仓、HF Orbax 权重与浏览器 **Game⟷Dream** demo 已开放，完整 BC/RL agent 环仍在 roadmap。相对机器人视频 WM，它是 **游戏域可交互沙盒** 的可复现基线，挂接 [虚拟沙盒路线](../overview/world-models-route-03-virtual-sandbox.md) 与 [Latent Imagination](../concepts/latent-imagination.md) 的 Dreamer 谱系。
 
 ### 统一具身合成世界基础模型（示例：Xiaomi-Robotics-U0）
 

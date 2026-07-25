@@ -1,13 +1,78 @@
 {
   "generated_at": "2026-07-25",
-  "node_count": 1850,
-  "edge_count": 15667,
+  "node_count": 1851,
+  "edge_count": 15688,
   "coverage": {
-    "covered": 1798,
-    "total": 1826,
+    "covered": 1799,
+    "total": 1827,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/open-dreamer.md",
+      "detail_id": "entity-open-dreamer",
+      "label": "Open Dreamer",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/world-models-route-03-virtual-sandbox.md",
+      "detail_id": "wiki-overview-world-models-route-03-virtual-sandbox",
+      "label": "世界模型路线 03：虚拟沙盒",
+      "type": "overview",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-shenlan-wm-13-dreamerv3.md",
+      "detail_id": "entity-paper-shenlan-wm-13-dreamerv3",
+      "label": "DreamerV3",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/latent-imagination.md",
+      "detail_id": "wiki-concepts-latent-imagination",
+      "label": "Latent Imagination (潜空间想象)",
+      "type": "concept",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/generative-world-models.md",
+      "detail_id": "wiki-methods-generative-world-models",
+      "label": "Generative World Models (生成式世界模型)",
+      "type": "method",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/model-based-rl.md",
+      "detail_id": "wiki-methods-model-based-rl",
+      "label": "Model-Based RL（基于模型的强化学习）",
+      "type": "method",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
     {
       "path": "roadmap/depth-humanoid-hardware-design.md",
       "detail_id": "roadmap-depth-humanoid-hardware-design",
@@ -144,84 +209,23 @@
       "recency": "2026-07-25",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/tasks/hybrid-locomotion.md",
-      "detail_id": "wiki-tasks-hybrid-locomotion",
-      "label": "Hybrid Locomotion (混合运动)",
-      "type": "task",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-aerial-aquatic-remora-hitchhiking-robot.md",
-      "detail_id": "entity-paper-aerial-aquatic-remora-hitchhiking-robot",
-      "label": "空中-水中两栖搭便车机器人：仿印鱼吸盘+被动变形桨",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-miniature-deep-sea-morphable-robot.md",
-      "detail_id": "entity-paper-miniature-deep-sea-morphable-robot",
-      "label": "深海软体可变形机器人：压力等效多模态运动",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-octopus-inspired-esoam-soft-arm.md",
-      "detail_id": "entity-paper-octopus-inspired-esoam-soft-arm",
-      "label": "E-SOAM：仿章鱼可传感软臂的环境交互",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-learning-to-adapt-bio-inspired-quadruped-gait.md",
-      "detail_id": "entity-paper-learning-to-adapt-bio-inspired-quadruped-gait",
-      "label": "Learning to Adapt：生物启发步态策略与四足 versatile locomotion",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/unitree-sdk2.md",
-      "detail_id": "entity-unitree-sdk2",
-      "label": "unitree_sdk2（含 Python 绑定）",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "roadmap/depth-humanoid-hardware-design.md",
-    "detail_id": "roadmap-depth-humanoid-hardware-design",
-    "label": "路线（纵深）：如果目标是人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）",
-    "type": "roadmap_page",
+    "path": "wiki/entities/open-dreamer.md",
+    "detail_id": "entity-open-dreamer",
+    "label": "Open Dreamer",
+    "type": "entity",
     "recency": "2026-07-25",
     "source": "log.md",
-    "action": "maintained",
-    "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 369
+      "size": 370
     },
     {
       "label": "移动操作",
