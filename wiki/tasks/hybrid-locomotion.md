@@ -3,15 +3,17 @@ type: task
 tags: [locomotion, hybrid, wheel-legged, transformable, whole-body]
 status: in-progress
 summary: "Hybrid Locomotion 关注结合不同运动模式（如轮腿结合、双足/四足切换）的机器人系统及其控制挑战。"
-updated: 2026-07-24
+updated: 2026-07-25
 sources:
   - ../../sources/papers/x2n_transformable.md
   - ../../sources/papers/mujica_arxiv_2605_13058.md
   - ../../sources/papers/aware_arxiv_2604_23761.md
+  - ../../sources/papers/bioinspired_multimodal_robotics_scirobotics_2026.md
 related:
   - ../concepts/wheel-legged-quadruped.md
   - ../entities/paper-mujica-wheel-legged-multi-skill.md
   - ../entities/paper-aware-wheeled-legged-reflexive-evasion.md
+  - ../entities/paper-bioinspired-multimodal-robotics.md
 ---
 
 # Hybrid Locomotion (混合运动)
@@ -31,6 +33,8 @@ related:
 1. **模态切换（Mode Transition / Transformation）：** 如何在不同结构形态或运动模式（例如，双足行走模式切换到带轮滑行模式）之间实现平稳和高效的转换。
 2. **全身协调（Whole-body Coordination）：** 在特定的形态下（特别是包含上肢和双腿的完整平台），如何实现下肢移动与上肢操作的协调。
 3. **混合控制框架（Hybrid Control Framework）：** 传统控制中需要分别针对不同模态设计控制器并处理切换逻辑，现代趋势逐渐使用强化学习（RL）来提供统一的策略。
+
+> **评测语言扩展：** 跨介质仿生多模态（走/飞/游/爬等）的上位综述见 [Bioinspired multimodal robotics（Science Robotics 2026）](../entities/paper-bioinspired-multimodal-robotics.md)，用 **边际成本 / 组件复用率 / 切换代价 / 性能增益** 等指标评估「结构共享是否换来任务级收益」——与本页轮腿混合切片互补。
 
 ## 技术路线
 
@@ -61,9 +65,11 @@ related:
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [MUJICA（轮足多技能统一控制）](../entities/paper-mujica-wheel-legged-multi-skill.md)
 - [AWARE（轮足高动态反射式避障）](../entities/paper-aware-wheeled-legged-reflexive-evasion.md)
+- [仿生多模态机器人综述（Science Robotics 2026）](../entities/paper-bioinspired-multimodal-robotics.md)
 
 ## 参考来源
 
 - [X2-N: A Transformable Wheel-legged Humanoid Robot with Dual-mode Locomotion and Manipulation](../../sources/papers/x2n_transformable.md)
 - [MUJICA（arXiv:2605.13058）](../../sources/papers/mujica_arxiv_2605_13058.md)
 - [AWARE（arXiv:2604.23761）](../../sources/papers/aware_arxiv_2604_23761.md)
+- [Bioinspired multimodal robotics（Science Robotics 2026）](../../sources/papers/bioinspired_multimodal_robotics_scirobotics_2026.md)

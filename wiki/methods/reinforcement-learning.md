@@ -2,7 +2,7 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-07-22
+updated: 2026-07-25
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-rl-intelligent-control.md
@@ -242,6 +242,7 @@ flowchart LR
 - [Sim2Real](../concepts/sim2real.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Locomotion](../tasks/locomotion.md)
+- [仿生多模态机器人综述（Science Robotics 2026）](../entities/paper-bioinspired-multimodal-robotics.md) — 控制从分立模态控制器迁向学习框架的领域综述
 - [WBC vs RL](../comparisons/wbc-vs-rl.md)
 - [MPC-RL](../entities/paper-mpc-rl-humanoid-locomotion-manipulation.md) — 训练期 CD-MPC 地标奖励指导 PPO、部署期纯策略
 - [MPC vs RL](../comparisons/mpc-vs-rl.md) — 含训练期 MPC 指导第三条混合轴

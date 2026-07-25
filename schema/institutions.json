@@ -808,7 +808,9 @@
     "buaa": {
       "label": "北京航空航天大学（BUAA）",
       "aliases": [
-        "buaa"
+        "buaa",
+        "beihang",
+        "beihang-university"
       ]
     },
     "zgca": {
@@ -1498,6 +1500,13 @@
         "dtu",
         "technical-university-of-denmark",
         "danmarks-tekniske-universitet"
+      ]
+    },
+    "dut": {
+      "label": "大连理工大学（DUT）",
+      "aliases": [
+        "dut",
+        "dalian-university-of-technology"
       ]
     },
     "zhongguancun-academy": {

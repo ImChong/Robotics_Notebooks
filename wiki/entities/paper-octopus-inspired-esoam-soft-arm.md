@@ -11,7 +11,7 @@ tags:
   - buaa
   - science-robotics
 status: complete
-updated: 2026-07-20
+updated: 2026-07-25
 doi: "10.1126/scirobotics.adh7852"
 venue: "Science Robotics 2023"
 related:
@@ -141,6 +141,7 @@ flowchart TB
 - [双臂操作（Bimanual Manipulation）](../tasks/bimanual-manipulation.md) — 单臂扩展方向参考
 - [空中-水中两栖机器人（北航文力组系列）](./paper-aerial-aquatic-remora-hitchhiking-robot.md)
 - [深海可变形机器人（北航文力组系列）](./paper-miniature-deep-sea-morphable-robot.md)
+- [仿生多模态机器人综述（Science Robotics 2026）](./paper-bioinspired-multimodal-robotics.md) — 文力组仿生系列的上位综述入口
 
 ## 推荐继续阅读
 
