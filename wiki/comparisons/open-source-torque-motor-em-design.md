@@ -8,6 +8,8 @@ related:
   - ./motor-em-simulation-software.md
   - ../overview/motor-design-workflow.md
   - ../entities/ironless-qdd-actuator.md
+  - ../entities/cadenkraft-ironless-axial-flux-motor.md
+  - ../entities/pygeartrain.md
   - ../entities/internal-cycloidal-actuator.md
   - ../entities/pyleecan.md
   - ../entities/axfluxmdo.md
@@ -20,12 +22,14 @@ related:
 sources:
   - ../../sources/personal/open_source_torque_motor_em_design_curator.md
   - ../../sources/repos/ironless_qdd_actuator.md
+  - ../../sources/blogs/cadenkraft_coreless_axial_flux_motor_part1.md
+  - ../../sources/repos/pygeartrain.md
   - ../../sources/repos/femm_foc_simulation.md
   - ../../sources/repos/pcb_motor.md
   - ../../sources/repos/axfluxmdo.md
   - ../../sources/repos/pyleecan.md
   - ../../sources/repos/acmop.md
-summary: "按电磁设计完整度对比开源力矩电机：几何/绕组/磁钢/FEM/CAD/样机六维；「完整电磁＋关节样机」首选 Ironless-QDD，FEMM-FOC/PCB Motor 作教材，PYLEECAN/axfluxmdo/ACMOP 作重设计工具。"
+summary: "按电磁设计完整度对比开源力矩电机：几何/绕组/磁钢/FEM/CAD/样机六维；「完整电磁＋关节样机」首选 Ironless-QDD，FEMM-FOC/PCB Motor 作教材，PYLEECAN/axfluxmdo/ACMOP 作重设计工具；Caden 轴向 Part 1 为 Halbach 叙事前作（未开源 CAD）。"
 ---
 
 # 开源机器人力矩电机：电磁设计完整度对比
@@ -46,9 +50,11 @@ summary: "按电磁设计完整度对比开源力矩电机：几何/绕组/磁�
 ## 一句话结论
 
 - **要复现「电磁 → 绕线 → 转子 → FEM → 减速 → 驱动 → 台架」整条链**：优先 [Ironless-QDD-Actuator](../entities/ironless-qdd-actuator.md)。
+- **要先建立 Halbach / 无铁芯轴向手算直觉（无 CAD 仓）**：读 [Caden Kraft Axial Flux Part 1](../entities/cadenkraft-ironless-axial-flux-motor.md)，再回 Ironless 打开 FEMM。
 - **要学 FEMM + FOC 扫角入门**：用 [FEMM-FOC-Simulation](../entities/femm-foc-simulation.md)。
 - **要学 PCB 轴向绕组可制造文件**：用 [PCB Motor](../entities/pcb-motor.md)（WIP，偏小关节）。
 - **要自己重设人形外转子径向磁通**：用 [PYLEECAN](../entities/pyleecan.md)；轴向磁通早期权衡用 [axfluxmdo](../entities/axfluxmdo.md)；自动优化研究用 [ACMOP](../entities/acmop.md)（非入门）。
+- **要生成可打印摆线/行星齿廓**：用 [pygeartrain](../entities/pygeartrain.md)。
 
 ## 为什么重要
 
@@ -59,6 +65,7 @@ summary: "按电磁设计完整度对比开源力矩电机：几何/绕组/磁�
 | 项目 | 几何 | 绕组 | 磁钢 | FEM/仿真 | CAD/制造 | 实物 | 人形适用 |
 |------|------|------|------|----------|----------|------|----------|
 | [Ironless-QDD](../entities/ironless-qdd-actuator.md) | ✅ 采购 10010 定子 + 自研转子 | ✅ 36N42P | ✅ Halbach | ✅ 多方案 FEMM | ✅ STEP/打印/BOM | ✅ 保持力矩 | 学习向较高 |
+| [Caden Axial Part 1](../entities/cadenkraft-ironless-axial-flux-motor.md) | ✅ 轴向无铁芯叙事 | ✅ 手算匝数 | ✅ Halbach | 无公开 FEM | **未开源 CAD** | 试转/无测功 | 叙事/前作 |
 | [PCB Motor](../entities/pcb-motor.md) | ✅ PCB 轴向 | ✅ 多拓扑 | ✅ 可 Halbach | 部分 | ✅ KiCad | 部分/WIP | 手指腕等小型 |
 | [FEMM-FOC](../entities/femm-foc-simulation.md) | ✅ DXF | ✅ | ✅ | ✅ .fem+Lua | DXF | 弱 | 教学 |
 | [axfluxmdo](../entities/axfluxmdo.md) | 参数化 | 参数化 | 参数化 | Gmsh/GetDP | 3D 生成 | 无固定样机 | 设计工具 |
@@ -84,7 +91,9 @@ flowchart TB
 
 ### Ironless：最完整的「样机级」开源
 
-仓库根目录直接给 `FEMM/`、`CAD/`、`36N42P Winding Scheme.png`、BOM 与驱动配置。定子是采购 **10010**（非自研硅钢模具），但 **绕组方案、Halbach 转子几何、磁钢尺寸、有/无铁与 Halbach 对照 FEMM、摆线—行星结构与样机保持力矩测试** 均公开。读指标时：**~29.4 N·m 是含减速的静态保持**，不是裸电机连续力矩。
+仓库根目录直接给 `FEMM/`、`CAD/`、`36N42P Winding Scheme.png`、BOM 与驱动配置。定子是采购 **10010**（非自研硅钢模具），但 **绕组方案、Halbach 转子几何、磁钢尺寸、有/无铁与 Halbach 对照 FEMM、摆线—行星结构（[pygeartrain](../entities/pygeartrain.md)）与样机保持力矩测试** 均公开。读指标时：**~29.4 N·m 是含减速的静态保持**，不是裸电机连续力矩。
+
+Halbach / 无铁芯手算与轴向装配叙事见前作 [Ironless Axial Flux Part 1](../entities/cadenkraft-ironless-axial-flux-motor.md)（**未开源 CAD**，勿与本仓混淆）。
 
 相邻开源：[Internal Cycloidal](../entities/internal-cycloidal-actuator.md) 同样是 10010 + 自绕 36N42P + 一体摆线，但公开 FEMM 资产与 Halbach 对照不如 Ironless 仓完整；系统侧更多项目见 [QDD 对比页](./open-source-qdd-actuator-projects.md)。
 
@@ -94,6 +103,8 @@ flowchart TB
 |------|----------|
 | FEMM 建模步骤不会 | FEMM-FOC：DXF → 材料 → 绕组 → FOC 电流 → 扫角转矩 |
 | 想用 PCB 代替漆包线 | PCB Motor：层数/铜厚/气隙/绕组拓扑 |
+| 只要 Halbach 轴向手算叙事 | Caden Axial Part 1（随后必须回 Ironless 开 FEMM） |
+| 要生成摆线/行星可打印齿廓 | pygeartrain |
 | 要优化人形外转子径向方案 | PYLEECAN：自定外径、槽极、磁钢、匝数、48 V 低 KV |
 | 要扫轴向磁通薄型关节权衡 | axfluxmdo：力矩密度/质量/温升/轴向力 Pareto |
 | 要研究自动改槽宽齿宽跑 FEA | ACMOP（环境旧，勿作第一课） |
@@ -127,6 +138,8 @@ flowchart TB
 
 - [开源力矩电机电磁设计完整度策展](../../sources/personal/open_source_torque_motor_em_design_curator.md)
 - [Ironless-QDD-Actuator](../../sources/repos/ironless_qdd_actuator.md)
+- [Caden Kraft Axial Flux Part 1](../../sources/blogs/cadenkraft_coreless_axial_flux_motor_part1.md)
+- [pygeartrain](../../sources/repos/pygeartrain.md)
 - [FEMM-FOC-Simulation](../../sources/repos/femm_foc_simulation.md)
 - [pcb-motor](../../sources/repos/pcb_motor.md)
 - [axfluxmdo](../../sources/repos/axfluxmdo.md)
@@ -136,5 +149,6 @@ flowchart TB
 ## 推荐继续阅读
 
 - Ironless 项目长文：<https://cadenkraft.com/ironless-cycloidal-planetary-actuator/>
+- Axial Flux Part 1：<https://cadenkraft.com/designing-a-coreless-axial-flux-motor-part-1/>
 - PYLEECAN：<https://www.pyleecan.org/>
 - axfluxmdo 文档：<https://jman4162.github.io/axfluxmdo/>

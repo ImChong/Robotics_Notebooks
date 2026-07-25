@@ -15,12 +15,15 @@ related:
   - ../entities/simplefoc.md
   - ../entities/pyleecan.md
   - ../entities/ironless-qdd-actuator.md
+  - ../entities/cadenkraft-ironless-axial-flux-motor.md
+  - ../entities/pygeartrain.md
 sources:
   - ../../sources/sites/ansys_motor_cad_electric_machine_design.md
   - ../../sources/personal/motor_curves_and_em_simulation_faq.md
   - ../../sources/sites/simplefoc_documentation.md
   - ../../sources/personal/open_source_torque_motor_em_design_curator.md
-summary: "关节电机从指标定义、电磁/热仿真、样机台架到 FOC 驱动验证的标准迭代流程；人形选型需同时满足 TN/TI 曲线与连续散热边界；开源路径挂接 Ironless/PYLEECAN/FEMM。"
+  - ../../sources/blogs/cadenkraft_coreless_axial_flux_motor_part1.md
+summary: "关节电机从指标定义、电磁/热仿真、样机台架到 FOC 驱动验证的标准迭代流程；人形选型需同时满足 TN/TI 曲线与连续散热边界；开源路径挂接 Ironless/PYLEECAN/FEMM；Caden 轴向 Part 1 作 Halbach 手算入门。"
 ---
 
 # 电机设计流程（规格 → 仿真 → 样机 → 控制）
@@ -162,7 +165,7 @@ flowchart TD
 - [电机测功机（Dynamometer）](../concepts/motor-dynamometer.md)
 - [电机电磁仿真软件选型](../comparisons/motor-em-simulation-software.md)
 - [开源力矩电机电磁设计完整度对比](../comparisons/open-source-torque-motor-em-design.md)
-- [Ironless QDD](../entities/ironless-qdd-actuator.md) · [PYLEECAN](../entities/pyleecan.md)
+- [Ironless QDD](../entities/ironless-qdd-actuator.md) · [Caden Axial Flux Part 1](../entities/cadenkraft-ironless-axial-flux-motor.md) · [PYLEECAN](../entities/pyleecan.md)
 - [电机转矩-转速曲线（TN 曲线）](../concepts/motor-torque-speed-curve.md)
 - [电机转矩-电流曲线（TI 曲线）](../concepts/motor-torque-current-curve.md)
 - [磁场定向控制（FOC）](../concepts/field-oriented-control.md)
@@ -175,8 +178,10 @@ flowchart TD
 - [simplefoc_documentation.md](../../sources/sites/simplefoc_documentation.md)
 - [motor_dynamometer_primary_refs.md](../../sources/sites/motor_dynamometer_primary_refs.md)
 - [开源力矩电机电磁设计策展](../../sources/personal/open_source_torque_motor_em_design_curator.md)
+- [Caden Kraft Axial Flux Part 1](../../sources/blogs/cadenkraft_coreless_axial_flux_motor_part1.md)
 
 ## 推荐继续阅读
 
 - [Ansys Motor-CAD 产品页](https://www.ansys.com/products/electronics/ansys-motor-cad)
 - [SimpleFOC — FOC theory](https://docs.simplefoc.com/foc_theory)
+- Caden Kraft Axial Flux Part 1：<https://cadenkraft.com/designing-a-coreless-axial-flux-motor-part-1/>

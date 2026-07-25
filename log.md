@@ -1,5 +1,15 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-25] ingest | sources/blogs/cadenkraft_coreless_axial_flux_motor_part1.md + sources/blogs/cadenkraft_ironless_cycloidal_planetary_actuator.md — Caden Kraft 无铁芯轴向磁通 Part 1 升格实体；Ironless QDD 博文加厚 + pygeartrain；交叉电磁完整度对比
+
+- **博文（新）：** [`sources/blogs/cadenkraft_coreless_axial_flux_motor_part1.md`](sources/blogs/cadenkraft_coreless_axial_flux_motor_part1.md) · [`sources/sites/cadenkraft_coreless_axial_flux_motor_part1.md`](sources/sites/cadenkraft_coreless_axial_flux_motor_part1.md)
+- **新实体：** [`wiki/entities/cadenkraft-ironless-axial-flux-motor.md`](wiki/entities/cadenkraft-ironless-axial-flux-motor.md) — Halbach 无铁芯轴向；手算匝数；**未开源 CAD**
+- **博文（加厚已有 Ironless）：** [`sources/blogs/cadenkraft_ironless_cycloidal_planetary_actuator.md`](sources/blogs/cadenkraft_ironless_cycloidal_planetary_actuator.md)
+- **新工具仓：** [`sources/repos/pygeartrain.md`](sources/repos/pygeartrain.md) → [`wiki/entities/pygeartrain.md`](wiki/entities/pygeartrain.md)
+- **加厚：** [`wiki/entities/ironless-qdd-actuator.md`](wiki/entities/ironless-qdd-actuator.md) — ~7:1、Kv≈79、728 g、MKS XDrive、FEMM 四象限百分比
+- **交叉：** [`wiki/comparisons/open-source-torque-motor-em-design.md`](wiki/comparisons/open-source-torque-motor-em-design.md)、[`wiki/entities/pcb-motor.md`](wiki/entities/pcb-motor.md)、[`wiki/overview/motor-design-workflow.md`](wiki/overview/motor-design-workflow.md)
+- **开源核查：** Axial Part 1 **未开源**；Ironless-QDD + pygeartrain **已开源**（MIT）
+
 ## [2026-07-25] ingest | sources/blogs/robot_daycare_mini_cheetah_2019.md — Robot Daycare / bgkatz / Mini Cheetah；博文清单 12 篇论文各升格独立实体；平台与人物节点
 
 - **站点/人物：** [`sources/sites/robot-daycare.md`](sources/sites/robot-daycare.md) → [`wiki/entities/benjamin-katz.md`](wiki/entities/benjamin-katz.md)（MIT → Boston Dynamics Atlas → Physical Intelligence）

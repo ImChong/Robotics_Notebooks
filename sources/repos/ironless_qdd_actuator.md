@@ -10,10 +10,12 @@
 - **许可：** README 声明 MIT（GitHub API `license: null`）
 - **星标（截至 2026-07-25）：** ~269
 - **入库日期：** 2026-07-25
-- **一句话说明：** 低成本无铁芯 Halbach 转子 + 采购 10010 定子自绕 36N42P + 摆线—行星减速 + 集成驱动；仓库含 FEMM/CAD/BOM；报告静态保持约 29.4 N·m。
+- **一句话说明：** 低成本无铁芯 Halbach 转子 + 采购 10010 定子自绕 36N42P + 摆线—行星减速（~7:1，pygeartrain）+ 集成驱动；仓库含 FEMM/CAD/BOM；报告静态保持约 29.4 N·m。
 - **开源状态：** **已开源**
 - **项目页归档：** [cadenkraft_ironless_cycloidal_planetary_actuator.md](../sites/cadenkraft_ironless_cycloidal_planetary_actuator.md)
-- **沉淀到 wiki：** [ironless-qdd-actuator](../../wiki/entities/ironless-qdd-actuator.md)
+- **博文归档：** [cadenkraft_ironless_cycloidal_planetary_actuator.md](../blogs/cadenkraft_ironless_cycloidal_planetary_actuator.md)
+- **齿廓工具：** [pygeartrain.md](./pygeartrain.md)
+- **沉淀到 wiki：** [ironless-qdd-actuator](../../wiki/entities/ironless-qdd-actuator.md) · [pygeartrain](../../wiki/entities/pygeartrain.md) · [cadenkraft-ironless-axial-flux-motor](../../wiki/entities/cadenkraft-ironless-axial-flux-motor.md)
 
 ---
 
@@ -41,5 +43,7 @@
 ## 对 wiki 的映射
 
 - [Ironless QDD Actuator](../../wiki/entities/ironless-qdd-actuator.md)
+- [pygeartrain](../../wiki/entities/pygeartrain.md)
+- [Caden Kraft Ironless Axial Flux Motor](../../wiki/entities/cadenkraft-ironless-axial-flux-motor.md)
 - [开源力矩电机电磁设计完整度对比](../../wiki/comparisons/open-source-torque-motor-em-design.md)
 - [开源 QDD 执行器项目对比](../../wiki/comparisons/open-source-qdd-actuator-projects.md)
