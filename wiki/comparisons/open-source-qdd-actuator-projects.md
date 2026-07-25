@@ -17,6 +17,7 @@ related:
   - ../entities/stanford-doggo-and-pupper.md
   - ../entities/paper-3d-printed-open-source-actuators-legged.md
   - ../entities/paper-open-torque-controlled-modular-robot-solo.md
+  - ../entities/paper-low-cost-modular-actuator-katz.md
   - ../entities/open-source-humanoid-hardware.md
   - ./open-source-torque-motor-em-design.md
   - ../queries/actuator-drive-chain-selection-loop.md
@@ -34,9 +35,11 @@ sources:
   - ../../sources/repos/moteus.md
   - ../../sources/repos/tinymovr.md
   - ../../sources/repos/vesc_bldc.md
+  - ../../sources/repos/bgkatz_3phase_integrated.md
   - ../../sources/papers/3d_printed_open_source_actuators_legged_arxiv_2202_12395.md
   - ../../sources/papers/open_torque_controlled_modular_robot_solo_arxiv_1910_00093.md
-summary: "开源力矩/QDD 关节选型对比：两类项目（成品电机+开源关节 vs 电机本体也开源）与优先学习清单；驱动器配套 SimpleFOC→moteus/Tinymovr→VESC；优先深读 ODRI、Berkeley Humanoid Lite、Internal Cycloidal。"
+  - ../../sources/papers/low_cost_modular_actuator_katz_mit_2018.md
+summary: "开源力矩/QDD 关节选型对比：两类项目（成品电机+开源关节 vs 电机本体也开源）与优先学习清单；驱动器配套 SimpleFOC→moteus/Tinymovr→VESC；优先深读 ODRI、Berkeley Humanoid Lite、Internal Cycloidal；对照 Katz Mini Cheetah 模块化先例。"
 ---
 
 # 开源 QDD / 力矩关节执行器项目对比与学习路线
@@ -100,6 +103,7 @@ flowchart TB
 | **OpenTorque** | A | 同步带低减速 | VESC | 快速样机；体积/抗冲击不足人形量产 | [OpenTorque](../entities/opentorque-actuator.md) |
 | **Stanford Doggo** | A | 同步带 QDD | ODrive + Teensy | 高动态跳跃参考；四足非人形 | [Doggo](../entities/stanford-doggo-and-pupper.md) |
 | **Urs et al. 2022** | A（教材型） | 7.5:1 行星 / ~15:1 bilateral | moteus r4.5 | 热/寿命/背隙测全；公开仓链接待核实 | [论文页](../entities/paper-3d-printed-open-source-actuators-legged.md) |
+| **Katz / Mini Cheetah（2018）** | A（历史先例，**部分开源**） | **6:1** 行星 | 自研集成驱动（[`3phase_integrated`](https://github.com/bgkatz/3phase_integrated)） | BOM≈$300、空翻级动态；**机械 CAD 未在 thesis 附录公开** | [Katz thesis](../entities/paper-low-cost-modular-actuator-katz.md) |
 | **Cycloidal QDD (Jeong)** | A+自制电机 | 双摆线 10:1、180° 相位 | moteus-c1 | 与 BHL/ICA 对照；缺背铁限扭矩 | [Jeong QDD](../entities/cycloidal-quasi-direct-drive-actuator.md) |
 | **Ironless QDD** | B（低成本） | 摆线—行星 | 集成驱动 + 磁编 | BOM~$70；**~29 N·m 是静态保持**；FEMM+36N42P 开源最完整样机之一 → [电磁完整度对比](./open-source-torque-motor-em-design.md) | [Ironless](../entities/ironless-qdd-actuator.md) |
 
@@ -111,6 +115,7 @@ flowchart TB
 | [moteus](../entities/moteus.md) | 关节驱动 PCB、FOC、CAN-FD、力矩模式 | —（优先关节向开源驱动） |
 | [Tinymovr](../entities/tinymovr.md) | 小型驱动原理图/PCB/固件与上位机（注意 v3.1+ 源码私有） | 大电流腿关节峰值 |
 | [VESC](../entities/vesc.md) | 大电流功率级与 FOC 工具链 | 专为高频关节协议优化的假设 |
+| [Katz `3phase_integrated`](../entities/paper-low-cost-modular-actuator-katz.md) | Mini Cheetah 系集成驱动 PCB + CAN 菊花链先例 | 不当作完整开源关节 BOM（缺机械 CAD） |
 
 ## 建议学习顺序
 
@@ -140,6 +145,7 @@ flowchart TB
 - 本页是**学习选型图**，不是采购合格证；各项目许可、加工公差与安全等级需自行核验。
 - 「电机本体开源」项目缺工业验证时，只宜作电磁与集成教材，不宜直接拷进重型人形。
 - Urs et al. 论文宣称开源，但截至入库日未在 arXiv HTML 中钉死稳定 GitHub——以论文评测方法为主、复现仓待跟进。
+- Katz Mini Cheetah thesis **部分开源**：驱动/固件/SPIne 可跟；完整机械需自研或社区件，勿与 ODRI 全栈开源混为一谈。
 
 ## 关联页面
 
@@ -148,7 +154,7 @@ flowchart TB
 - [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md)
 - [Actuator 102 · 减速与反射惯量](../overview/humanoid-actuator-102-gear-reflected-inertia.md)
 - [力矩电机设计纵深路线](../../roadmap/depth-torque-motor-design.md)
-- [ODRI](../entities/odri-solo-and-bolt.md) · [Solo 架构论文](../entities/paper-open-torque-controlled-modular-robot-solo.md) · [BHL](../entities/berkeley-humanoid-lite.md) · [Internal Cycloidal](../entities/internal-cycloidal-actuator.md) · [Jeong QDD](../entities/cycloidal-quasi-direct-drive-actuator.md) · [Ironless](../entities/ironless-qdd-actuator.md) · [moteus](../entities/moteus.md) · [VESC](../entities/vesc.md)
+- [ODRI](../entities/odri-solo-and-bolt.md) · [Solo 架构论文](../entities/paper-open-torque-controlled-modular-robot-solo.md) · [Katz Mini Cheetah 执行器](../entities/paper-low-cost-modular-actuator-katz.md) · [BHL](../entities/berkeley-humanoid-lite.md) · [Internal Cycloidal](../entities/internal-cycloidal-actuator.md) · [Jeong QDD](../entities/cycloidal-quasi-direct-drive-actuator.md) · [Ironless](../entities/ironless-qdd-actuator.md) · [moteus](../entities/moteus.md) · [VESC](../entities/vesc.md)
 
 ## 参考来源
 
@@ -157,6 +163,8 @@ flowchart TB
 - [Berkeley-Humanoid-Lite](../../sources/repos/berkeley_humanoid_lite.md)
 - [Internal-Cycloidal-Actuator](../../sources/repos/internal_cycloidal_actuator.md)
 - [OpenTorque-Actuator](../../sources/repos/opentorque_actuator.md)
+- [Katz thesis 归档](../../sources/papers/low_cost_modular_actuator_katz_mit_2018.md)
+- [bgkatz/3phase_integrated](../../sources/repos/bgkatz_3phase_integrated.md)
 - [StanfordDoggoProject](../../sources/repos/stanford_doggo_project.md)
 - [moteus](../../sources/repos/moteus.md)
 - [Tinymovr](../../sources/repos/tinymovr.md)
