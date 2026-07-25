@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-25",
-  "node_count": 1886,
-  "edge_count": 16052,
+  "node_count": 1887,
+  "edge_count": 16068,
   "coverage": {
-    "covered": 1834,
-    "total": 1862,
+    "covered": 1835,
+    "total": 1863,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -92,6 +92,59 @@
       "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
+      "path": "wiki/entities/femm.md",
+      "detail_id": "entity-femm",
+      "label": "FEMM（Finite Element Method Magnetics）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/femm-foc-simulation.md",
+      "detail_id": "entity-femm-foc-simulation",
+      "label": "FEMM-FOC-Simulation（FEMM 磁场定向控制教学仿真）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/pyleecan.md",
+      "detail_id": "entity-pyleecan",
+      "label": "PYLEECAN（径向磁通电机开源设计框架）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/comparisons/motor-em-simulation-software.md",
+      "detail_id": "wiki-comparisons-motor-em-simulation-software",
+      "label": "电机电磁与多物理场仿真软件选型",
+      "type": "comparison",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "roadmap/depth-torque-motor-design.md",
+      "detail_id": "roadmap-depth-torque-motor-design",
+      "label": "路线（纵深）：如果目标是力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环 → 关节模组）",
+      "type": "roadmap_page",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
       "path": "wiki/entities/mit-mini-cheetah.md",
       "detail_id": "entity-mit-mini-cheetah",
       "label": "MIT Mini Cheetah（学习栈与开源边界）",
@@ -156,16 +209,6 @@
       "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
-      "path": "roadmap/depth-torque-motor-design.md",
-      "detail_id": "roadmap-depth-torque-motor-design",
-      "label": "路线（纵深）：如果目标是力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环 → 关节模组）",
-      "type": "roadmap_page",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
       "path": "wiki/entities/benjamin-katz.md",
       "detail_id": "entity-benjamin-katz",
       "label": "Benjamin Katz（Ben Katz）",
@@ -174,49 +217,6 @@
       "source": "log.md",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-mini-cheetah-platform.md",
-      "detail_id": "entity-paper-mini-cheetah-platform",
-      "label": "Mini Cheetah: A Platform for Pushing the Limits of Dynamic Quadruped Control",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-wbic-mpc-mini-cheetah.md",
-      "detail_id": "entity-paper-wbic-mpc-mini-cheetah",
-      "label": "Highly Dynamic Quadruped Locomotion via WBIC and MPC",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-vision-aided-dynamic-exploration-mini-cheetah.md",
-      "detail_id": "entity-paper-vision-aided-dynamic-exploration-mini-cheetah",
-      "label": "Vision Aided Dynamic Exploration of Unstructured Terrain",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-hs-ddp-legged.md",
-      "detail_id": "entity-paper-hs-ddp-legged",
-      "label": "Hybrid Systems DDP for Whole-Body Motion Planning",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {

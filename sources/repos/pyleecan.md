@@ -26,6 +26,7 @@
 ## 对 wiki 的映射
 
 - [PYLEECAN](../../wiki/entities/pyleecan.md)
+- [FEMM](../../wiki/entities/femm.md)
 - [开源力矩电机电磁设计完整度对比](../../wiki/comparisons/open-source-torque-motor-em-design.md)
 - [电机电磁仿真软件选型](../../wiki/comparisons/motor-em-simulation-software.md)
 - [电机设计流程](../../wiki/overview/motor-design-workflow.md)

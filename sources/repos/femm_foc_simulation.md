@@ -22,5 +22,6 @@
 ## 对 wiki 的映射
 
 - [FEMM-FOC-Simulation](../../wiki/entities/femm-foc-simulation.md)
+- [FEMM](../../wiki/entities/femm.md)
 - [开源力矩电机电磁设计完整度对比](../../wiki/comparisons/open-source-torque-motor-em-design.md)
 - [电机电磁仿真软件选型](../../wiki/comparisons/motor-em-simulation-software.md)

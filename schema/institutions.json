@@ -1634,6 +1634,14 @@
         "jman4162"
       ]
     },
+    "femm": {
+      "label": "有限元磁学（Finite Element Method Magnetics）",
+      "aliases": [
+        "femm",
+        "femm-info",
+        "meeker"
+      ]
+    },
     "femm-foc-simulation": {
       "label": "磁场定向仿真项目（FEMM-FOC-Simulation）",
       "aliases": [

@@ -13,6 +13,7 @@ related:
   - ./humanoid-actuator-102-technology-map.md
   - ./humanoid-hardware-101-integrated-actuators.md
   - ../entities/simplefoc.md
+  - ../entities/femm.md
   - ../entities/pyleecan.md
   - ../entities/ironless-qdd-actuator.md
   - ../concepts/halbach-array.md
@@ -21,6 +22,7 @@ sources:
   - ../../sources/sites/ansys_motor_cad_electric_machine_design.md
   - ../../sources/personal/motor_curves_and_em_simulation_faq.md
   - ../../sources/sites/simplefoc_documentation.md
+  - ../../sources/sites/femm_info.md
   - ../../sources/personal/open_source_torque_motor_em_design_curator.md
 summary: "关节电机从指标定义、电磁/热仿真、样机台架到 FOC 驱动验证的标准迭代流程；人形选型需同时满足 TN/TI 曲线与连续散热边界；开源路径挂接 Ironless/PYLEECAN/FEMM。"
 ---
@@ -164,7 +166,7 @@ flowchart TD
 - [电机测功机（Dynamometer）](../concepts/motor-dynamometer.md)
 - [电机电磁仿真软件选型](../comparisons/motor-em-simulation-software.md)
 - [开源力矩电机电磁设计完整度对比](../comparisons/open-source-torque-motor-em-design.md)
-- [Ironless QDD](../entities/ironless-qdd-actuator.md) · [Halbach Array](../concepts/halbach-array.md) · [PYLEECAN](../entities/pyleecan.md)
+- [Ironless QDD](../entities/ironless-qdd-actuator.md) · [Halbach Array](../concepts/halbach-array.md) · [FEMM](../entities/femm.md) · [PYLEECAN](../entities/pyleecan.md)
 - [电机转矩-转速曲线（TN 曲线）](../concepts/motor-torque-speed-curve.md)
 - [电机转矩-电流曲线（TI 曲线）](../concepts/motor-torque-current-curve.md)
 - [磁场定向控制（FOC）](../concepts/field-oriented-control.md)
@@ -175,6 +177,7 @@ flowchart TD
 - [ansys_motor_cad_electric_machine_design.md](../../sources/sites/ansys_motor_cad_electric_machine_design.md)
 - [motor_curves_and_em_simulation_faq.md](../../sources/personal/motor_curves_and_em_simulation_faq.md)
 - [simplefoc_documentation.md](../../sources/sites/simplefoc_documentation.md)
+- [femm_info.md](../../sources/sites/femm_info.md)
 - [motor_dynamometer_primary_refs.md](../../sources/sites/motor_dynamometer_primary_refs.md)
 - [开源力矩电机电磁设计策展](../../sources/personal/open_source_torque_motor_em_design_curator.md)
 - [Halbach 1980](../../sources/papers/halbach_permanent_multipole_magnets_1980.md)
@@ -182,4 +185,5 @@ flowchart TD
 ## 推荐继续阅读
 
 - [Ansys Motor-CAD 产品页](https://www.ansys.com/products/electronics/ansys-motor-cad)
+- [FEMM 官方文档](https://www.femm.info/doku/doku.php?id=documentation)
 - [SimpleFOC — FOC theory](https://docs.simplefoc.com/foc_theory)

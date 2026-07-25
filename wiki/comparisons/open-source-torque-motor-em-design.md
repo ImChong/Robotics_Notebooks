@@ -15,6 +15,7 @@ related:
   - ../entities/pyleecan.md
   - ../entities/axfluxmdo.md
   - ../entities/pcb-motor.md
+  - ../entities/femm.md
   - ../entities/femm-foc-simulation.md
   - ../entities/acmop.md
   - ../entities/kicad.md
@@ -26,6 +27,7 @@ sources:
   - ../../sources/papers/halbach_permanent_multipole_magnets_1980.md
   - ../../sources/papers/zhu_howe_halbach_pm_machines_review_2001.md
   - ../../sources/repos/femm_foc_simulation.md
+  - ../../sources/sites/femm_info.md
   - ../../sources/repos/pcb_motor.md
   - ../../sources/repos/axfluxmdo.md
   - ../../sources/repos/pyleecan.md
@@ -52,7 +54,7 @@ summary: "按电磁设计完整度对比开源力矩电机：几何/绕组/磁�
 
 - **要复现「电磁 → 绕线 → 转子 → FEM → 减速 → 驱动 → 台架」整条链**：优先 [Ironless-QDD-Actuator](../entities/ironless-qdd-actuator.md)。
 - **要读 Halbach 一手文献**：概念页 [Halbach Array](../concepts/halbach-array.md) → [Mallinson 1973](../entities/paper-mallinson-one-sided-fluxes.md) / [Halbach 1980](../entities/paper-halbach-permanent-multipole-magnets.md) / [Zhu & Howe 2001](../entities/paper-zhu-howe-halbach-pm-machines-review.md)。
-- **要学 FEMM + FOC 扫角入门**：用 [FEMM-FOC-Simulation](../entities/femm-foc-simulation.md)。
+- **要学 FEMM + FOC 扫角入门**：先读 [FEMM](../entities/femm.md) 官方 Tutorial/Examples，再用 [FEMM-FOC-Simulation](../entities/femm-foc-simulation.md)。
 - **要学 PCB 轴向绕组可制造文件**：用 [PCB Motor](../entities/pcb-motor.md)（WIP，偏小关节）。
 - **要自己重设人形外转子径向磁通**：用 [PYLEECAN](../entities/pyleecan.md)；轴向磁通早期权衡用 [axfluxmdo](../entities/axfluxmdo.md)；自动优化研究用 [ACMOP](../entities/acmop.md)（非入门）。
 
@@ -98,7 +100,7 @@ flowchart TB
 
 | 缺口 | 用什么补 |
 |------|----------|
-| FEMM 建模步骤不会 | FEMM-FOC：DXF → 材料 → 绕组 → FOC 电流 → 扫角转矩 |
+| FEMM 建模步骤不会 | 先 [FEMM](../entities/femm.md) Tutorial/Examples，再 FEMM-FOC：DXF → 材料 → 绕组 → FOC 电流 → 扫角转矩 |
 | 想用 PCB 代替漆包线 | PCB Motor：层数/铜厚/气隙/绕组拓扑 |
 | 要 Halbach 一手理论 | Mallinson 1973 → Halbach 1980 OA → Zhu & Howe 2001 |
 | 要优化人形外转子径向方案 | PYLEECAN：自定外径、槽极、磁钢、匝数、48 V 低 KV |
@@ -124,6 +126,7 @@ flowchart TB
 
 ## 关联页面
 
+- [FEMM](../entities/femm.md)
 - [开源 QDD / 力矩关节执行器项目对比](./open-source-qdd-actuator-projects.md)
 - [电机电磁与多物理场仿真软件选型](./motor-em-simulation-software.md)
 - [电机设计流程](../overview/motor-design-workflow.md)
@@ -136,6 +139,7 @@ flowchart TB
 - [Ironless-QDD-Actuator](../../sources/repos/ironless_qdd_actuator.md)
 - [Halbach 1980](../../sources/papers/halbach_permanent_multipole_magnets_1980.md)
 - [Zhu & Howe 2001](../../sources/papers/zhu_howe_halbach_pm_machines_review_2001.md)
+- [FEMM 官方站点](../../sources/sites/femm_info.md)
 - [FEMM-FOC-Simulation](../../sources/repos/femm_foc_simulation.md)
 - [pcb-motor](../../sources/repos/pcb_motor.md)
 - [axfluxmdo](../../sources/repos/axfluxmdo.md)
@@ -146,5 +150,6 @@ flowchart TB
 
 - Ironless 项目长文：<https://cadenkraft.com/ironless-cycloidal-planetary-actuator/>
 - Halbach 1980 OA：<https://escholarship.org/content/qt20b829tr/qt20b829tr.pdf>
+- FEMM：<https://www.femm.info/doku/doku.php?id=start>
 - PYLEECAN：<https://www.pyleecan.org/>
 - axfluxmdo 文档：<https://jman4162.github.io/axfluxmdo/>
