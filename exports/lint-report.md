@@ -123,7 +123,7 @@
 - 无
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（4 个）
-- wiki/entities/paper-lehome-learning-to-fold.md（含绝对化措辞「最新」，updated=2026-07-24；同主题更新页 wiki/entities/paper-aerial-aquatic-remora-hitchhiking-robot.md updated=2026-07-25）
+- wiki/entities/paper-lehome-learning-to-fold.md（含绝对化措辞「最新」，updated=2026-07-24；同主题更新页 wiki/entities/extreme-parkour.md updated=2026-07-25）
 - wiki/entities/paper-momad.md（含绝对化措辞「SOTA」，updated=2026-07-24；同主题更新页 wiki/entities/paper-aerial-aquatic-remora-hitchhiking-robot.md updated=2026-07-25）
 - wiki/entities/paper-s-squared-vla.md（含绝对化措辞「SOTA」，updated=2026-07-24；同主题更新页 wiki/entities/paper-aerial-aquatic-remora-hitchhiking-robot.md updated=2026-07-25）
 - wiki/entities/paper-uniad.md（含绝对化措辞「SOTA」，updated=2026-07-24；同主题更新页 wiki/entities/paper-aerial-aquatic-remora-hitchhiking-robot.md updated=2026-07-25）
@@ -143,4 +143,4 @@
 ### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：1816/1844 (98%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1817/1845 (98%) wiki/entity 页有 ingest 来源

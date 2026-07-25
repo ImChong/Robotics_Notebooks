@@ -1,5 +1,14 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-25] ingest | sources/personal/mit_mini_cheetah_learning_stack_curator.md — MIT Mini Cheetah 学习栈策展；升格 wiki/entities/mit-mini-cheetah.md；归档 Cheetah-Software / ROS / CHAMP / 控制论文集合；交叉 Katz 执行器、SRBD-MPC、四足平台、开源 QDD 对比、力矩电机路线
+
+- **策展源：** [`sources/personal/mit_mini_cheetah_learning_stack_curator.md`](sources/personal/mit_mini_cheetah_learning_stack_curator.md)
+- **新实体：** [`wiki/entities/mit-mini-cheetah.md`](wiki/entities/mit-mini-cheetah.md) — 开源边界表、执行器→驱动→软件→Convex MPC→RL→ROS/CHAMP 学习优先序、流程总览
+- **论文集合：** [`sources/papers/mit_mini_cheetah_control_papers.md`](sources/papers/mit_mini_cheetah_control_papers.md)（Super Mini / ICRA 2019 / Cheetah 3 / Convex MPC / Rapid Locomotion / Falling Cat / Landing）
+- **repos：** [`mit_biomimetics_cheetah_software`](sources/repos/mit_biomimetics_cheetah_software.md)、[`derek_th_wang_quadruped_ctrl`](sources/repos/derek_th_wang_quadruped_ctrl.md)、[`chvmp_champ`](sources/repos/chvmp_champ.md)、[`gleboss1_mini_cheetah_ros`](sources/repos/gleboss1_mini_cheetah_ros.md)
+- **开源核查（步骤 2.5）：** **部分开源** — 软件与驱动已开；整机 CAD / 绕线 / 电磁设计未公开
+- **交叉：** [`wiki/entities/paper-low-cost-modular-actuator-katz.md`](wiki/entities/paper-low-cost-modular-actuator-katz.md)、[`wiki/concepts/srbd-convex-mpc-wbc.md`](wiki/concepts/srbd-convex-mpc-wbc.md)、[`wiki/concepts/mpc-wbc-integration.md`](wiki/concepts/mpc-wbc-integration.md)、[`wiki/entities/quadruped-robot.md`](wiki/entities/quadruped-robot.md)、[`wiki/comparisons/open-source-qdd-actuator-projects.md`](wiki/comparisons/open-source-qdd-actuator-projects.md)、[`roadmap/depth-torque-motor-design.md`](roadmap/depth-torque-motor-design.md)
+
 ## [2026-07-25] fix(wiki): ironless-qdd-actuator BOM 美元符被 KaTeX 成对 `$...$` 吞掉
 
 - **页面：** [`wiki/entities/ironless-qdd-actuator.md`](wiki/entities/ironless-qdd-actuator.md)
