@@ -11,6 +11,7 @@ related:
   - ../queries/actuator-drive-chain-selection-loop.md
   - ./stanford-doggo-and-pupper.md
   - ./opentorque-actuator.md
+  - ./paper-low-cost-modular-actuator-katz.md
   - ./open-source-humanoid-hardware.md
   - ./quadruped-robot.md
   - ../tasks/locomotion.md
@@ -155,6 +156,7 @@ sequenceDiagram
 | 对照 | 差异 |
 |------|------|
 | [Stanford Doggo](./stanford-doggo-and-pupper.md) | 同为开源力控四足；Doggo 偏水刀件 + ODrive 叙事，Solo 偏 3D 打印模块化 + 自研 Micro-Driver / master-board |
+| [Katz Mini Cheetah 执行器](./paper-low-cost-modular-actuator-katz.md) | 同属模块化 QDD；Katz 行星 6:1 + 空翻级动态、电子部分开源；Solo 皮带 9:1 + **全栈开源**与阻抗标定教材更完整 |
 | [OpenTorque](./opentorque-actuator.md) / Urs 3D-print QDD | 后者更偏**单关节**热/寿命教材；本文给**整机 + 接触 + 优化跟踪**闭环 |
 | HyQ / ANYmal / MIT Cheetah | 性能标杆但机加与成本门槛高；本文目标是可复制研究平台 |
 | Oncilla 等并联柔顺开源 | 机械柔顺为主；Solo 强调主动阻抗与本体感受力矩 |
@@ -181,6 +183,7 @@ sequenceDiagram
 
 - [ODRI Solo / Bolt](./odri-solo-and-bolt.md)
 - [开源 QDD 执行器项目对比](../comparisons/open-source-qdd-actuator-projects.md)
+- [Katz Mini Cheetah 模块化执行器](./paper-low-cost-modular-actuator-katz.md)
 - [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md)
 - [Stanford Doggo / Pupper](./stanford-doggo-and-pupper.md)
 - [开源人形硬件方案对比](./open-source-humanoid-hardware.md)

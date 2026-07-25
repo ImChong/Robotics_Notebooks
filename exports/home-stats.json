@@ -1,28 +1,17 @@
 {
   "generated_at": "2026-07-25",
-  "node_count": 1867,
-  "edge_count": 15880,
+  "node_count": 1868,
+  "edge_count": 15899,
   "coverage": {
-    "covered": 1815,
-    "total": 1843,
+    "covered": 1816,
+    "total": 1844,
     "percent": 98
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-open-torque-controlled-modular-robot-solo.md",
-      "detail_id": "entity-paper-open-torque-controlled-modular-robot-solo",
-      "label": "An Open Torque-Controlled Modular Robot Architecture（Solo / ODRI）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/odri-solo-and-bolt.md",
-      "detail_id": "entity-odri-solo-and-bolt",
-      "label": "ODRI Solo / Bolt（开源腿式平台）",
+      "path": "wiki/entities/paper-low-cost-modular-actuator-katz.md",
+      "detail_id": "entity-paper-low-cost-modular-actuator-katz",
+      "label": "A Low Cost Modular Actuator for Dynamic Robots（Katz / Mini Cheetah）",
       "type": "entity",
       "recency": "2026-07-25",
       "source": "log.md",
@@ -35,6 +24,58 @@
       "detail_id": "wiki-comparisons-open-source-qdd-actuator-projects",
       "label": "开源 QDD / 力矩关节执行器项目对比与学习路线",
       "type": "comparison",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "roadmap/depth-torque-motor-design.md",
+      "detail_id": "roadmap-depth-torque-motor-design",
+      "label": "路线（纵深）：如果目标是力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环 → 关节模组）",
+      "type": "roadmap_page",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-open-torque-controlled-modular-robot-solo.md",
+      "detail_id": "entity-paper-open-torque-controlled-modular-robot-solo",
+      "label": "An Open Torque-Controlled Modular Robot Architecture（Solo / ODRI）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-proprioceptive-actuator-design-in-the-mit-cheeta.md",
+      "detail_id": "entity-paper-notebook-proprioceptive-actuator-design-in-the-mit-cheeta",
+      "label": "Proprioceptive actuator design in the MIT Cheetah",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/queries/actuator-drive-chain-selection-loop.md",
+      "detail_id": "wiki-queries-actuator-drive-chain-selection-loop",
+      "label": "Query：执行器驱动链选型闭环知识链",
+      "type": "query",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/odri-solo-and-bolt.md",
+      "detail_id": "entity-odri-solo-and-bolt",
+      "label": "ODRI Solo / Bolt（开源腿式平台）",
+      "type": "entity",
       "recency": "2026-07-25",
       "source": "log.md",
       "action": "maintained",
@@ -61,26 +102,6 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "roadmap/depth-torque-motor-design.md",
-      "detail_id": "roadmap-depth-torque-motor-design",
-      "label": "路线（纵深）：如果目标是力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环 → 关节模组）",
-      "type": "roadmap_page",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/queries/actuator-drive-chain-selection-loop.md",
-      "detail_id": "wiki-queries-actuator-drive-chain-selection-loop",
-      "label": "Query：执行器驱动链选型闭环知识链",
-      "type": "query",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     },
     {
       "path": "wiki/entities/ironless-qdd-actuator.md",
@@ -201,33 +222,12 @@
       "action": "added",
       "has_repo": true,
       "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/moteus.md",
-      "detail_id": "entity-moteus",
-      "label": "moteus（mjbots 关节驱动器）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/stanford-doggo-and-pupper.md",
-      "detail_id": "entity-stanford-doggo-and-pupper",
-      "label": "Stanford Doggo / Pupper（开源四足）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-open-torque-controlled-modular-robot-solo.md",
-    "detail_id": "entity-paper-open-torque-controlled-modular-robot-solo",
-    "label": "An Open Torque-Controlled Modular Robot Architecture（Solo / ODRI）",
+    "path": "wiki/entities/paper-low-cost-modular-actuator-katz.md",
+    "detail_id": "entity-paper-low-cost-modular-actuator-katz",
+    "label": "A Low Cost Modular Actuator for Dynamic Robots（Katz / Mini Cheetah）",
     "type": "entity",
     "recency": "2026-07-25",
     "source": "log.md",
@@ -250,7 +250,7 @@
     },
     {
       "label": "仿真到现实",
-      "size": 169
+      "size": 151
     },
     {
       "label": "人形强化学习运动控制",
@@ -305,7 +305,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 267
+      "degree": 268
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
