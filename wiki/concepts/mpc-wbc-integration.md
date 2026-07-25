@@ -163,6 +163,7 @@ QP 优化层：
 ## 参考来源
 
 - Di Carlo et al., *Dynamic Locomotion in the MIT Cheetah 3* (2018) — MPC+WBC 两层架构代表作
+- [MIT Mini Cheetah 平台页](../entities/mit-mini-cheetah.md) — 官方 `Cheetah-Software` 与开源边界
 - Bellicoso et al., *Advances in Real-world Applications for Legged Systems* (2018) — ANYmal MPC-WBC 实践
 - Kim et al., *Highly Dynamic Quadruped Locomotion via Whole-Body Impulse Control* (2019) — WBC 全身冲量控制；实体页 [paper-wbic-mpc-mini-cheetah](../entities/paper-wbic-mpc-mini-cheetah.md)
 - [MIT Mini Cheetah](../entities/mit-mini-cheetah.md) — 平台与论文生态
@@ -172,6 +173,7 @@ QP 优化层：
 - [Model Predictive Control (MPC)](../methods/model-predictive-control.md) — MPC 层
 - [Whole-Body Control (WBC)](./whole-body-control.md) — WBC 层
 - [Centroidal Dynamics](./centroidal-dynamics.md) — MPC 常用的人形简化动力学模型
+- [MIT Mini Cheetah](../entities/mit-mini-cheetah.md) — Convex MPC 工程祖师爷平台
 - [Locomotion](../tasks/locomotion.md) — locomotion 任务层
 - [Optimal Control (OCP)](./optimal-control.md) — 理论层，MPC 是 OCP 的在线求解
 - [Query：控制架构选型对比](../queries/control-architecture-comparison.md)

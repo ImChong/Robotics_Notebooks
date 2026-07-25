@@ -11,9 +11,12 @@ related:
   - ../methods/centroidal-nmpc-wbc-stack.md
   - ./whole-body-control.md
   - ../overview/humanoid-model-based-control-stack.md
+  - ../entities/mit-mini-cheetah.md
 sources:
   - ../../sources/papers/humanoid_motion_control_know_how.md
   - ../../sources/papers/mpc.md
+  - ../../sources/papers/mit_mini_cheetah_control_papers.md
+  - ../../sources/personal/mit_mini_cheetah_learning_stack_curator.md
 ---
 
 # SRBD + 凸 MPC + WBC
@@ -74,3 +77,4 @@ sources:
 ## 推荐继续阅读
 
 - Di Carlo et al., *Dynamic Locomotion in the MIT Cheetah 3 Through Convex Model-Predictive Control*
+- 平台总览：[MIT Mini Cheetah](../entities/mit-mini-cheetah.md)（含 `Cheetah-Software` 与开源边界）

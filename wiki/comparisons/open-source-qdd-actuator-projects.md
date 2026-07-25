@@ -18,6 +18,7 @@ related:
   - ../entities/paper-3d-printed-open-source-actuators-legged.md
   - ../entities/paper-open-torque-controlled-modular-robot-solo.md
   - ../entities/paper-low-cost-modular-actuator-katz.md
+  - ../entities/mit-mini-cheetah.md
   - ../entities/open-source-humanoid-hardware.md
   - ./open-source-torque-motor-em-design.md
   - ../queries/actuator-drive-chain-selection-loop.md
@@ -145,7 +146,7 @@ flowchart TB
 - 本页是**学习选型图**，不是采购合格证；各项目许可、加工公差与安全等级需自行核验。
 - 「电机本体开源」项目缺工业验证时，只宜作电磁与集成教材，不宜直接拷进重型人形。
 - Urs et al. 论文宣称开源，但截至入库日未在 arXiv HTML 中钉死稳定 GitHub——以论文评测方法为主、复现仓待跟进。
-- Katz Mini Cheetah thesis **部分开源**：驱动/固件/SPIne 可跟；完整机械需自研或社区件，勿与 ODRI 全栈开源混为一谈。
+- Katz Mini Cheetah thesis **部分开源**：驱动/固件/SPIne 可跟；完整机械需自研或社区件，勿与 ODRI 全栈开源混为一谈。平台级开源边界与控制栈见 [MIT Mini Cheetah](../entities/mit-mini-cheetah.md)。
 
 ## 关联页面
 
@@ -154,7 +155,7 @@ flowchart TB
 - [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md)
 - [Actuator 102 · 减速与反射惯量](../overview/humanoid-actuator-102-gear-reflected-inertia.md)
 - [力矩电机设计纵深路线](../../roadmap/depth-torque-motor-design.md)
-- [ODRI](../entities/odri-solo-and-bolt.md) · [Solo 架构论文](../entities/paper-open-torque-controlled-modular-robot-solo.md) · [Katz Mini Cheetah 执行器](../entities/paper-low-cost-modular-actuator-katz.md) · [BHL](../entities/berkeley-humanoid-lite.md) · [Internal Cycloidal](../entities/internal-cycloidal-actuator.md) · [Jeong QDD](../entities/cycloidal-quasi-direct-drive-actuator.md) · [Ironless](../entities/ironless-qdd-actuator.md) · [moteus](../entities/moteus.md) · [VESC](../entities/vesc.md)
+- [ODRI](../entities/odri-solo-and-bolt.md) · [Solo 架构论文](../entities/paper-open-torque-controlled-modular-robot-solo.md) · [Katz Mini Cheetah 执行器](../entities/paper-low-cost-modular-actuator-katz.md) · [MIT Mini Cheetah 平台](../entities/mit-mini-cheetah.md) · [BHL](../entities/berkeley-humanoid-lite.md) · [Internal Cycloidal](../entities/internal-cycloidal-actuator.md) · [Jeong QDD](../entities/cycloidal-quasi-direct-drive-actuator.md) · [Ironless](../entities/ironless-qdd-actuator.md) · [moteus](../entities/moteus.md) · [VESC](../entities/vesc.md)
 
 ## 参考来源
 

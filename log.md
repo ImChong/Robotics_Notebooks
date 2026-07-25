@@ -1,5 +1,15 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-25] ingest | sources/personal/mit_mini_cheetah_learning_stack_curator.md — MIT Mini Cheetah 学习栈策展；升格 wiki/entities/mit-mini-cheetah.md；归档 Cheetah-Software / ROS / CHAMP / 控制论文集合；交叉 Katz 执行器、SRBD-MPC、四足平台、开源 QDD 对比、力矩电机路线
+
+- **策展源：** [`sources/personal/mit_mini_cheetah_learning_stack_curator.md`](sources/personal/mit_mini_cheetah_learning_stack_curator.md)
+- **新实体：** [`wiki/entities/mit-mini-cheetah.md`](wiki/entities/mit-mini-cheetah.md) — 开源边界表、执行器→驱动→软件→Convex MPC→RL→ROS/CHAMP 学习优先序、流程总览
+- **论文集合：** [`sources/papers/mit_mini_cheetah_control_papers.md`](sources/papers/mit_mini_cheetah_control_papers.md)（Super Mini / ICRA 2019 / Cheetah 3 / Convex MPC / Rapid Locomotion / Falling Cat / Landing）
+- **repos：** [`cheetah-software`](sources/repos/cheetah-software.md)（与本 PR 原 `mit_biomimetics_cheetah_software` 合并指向）、[`derek_th_wang_quadruped_ctrl`](sources/repos/derek_th_wang_quadruped_ctrl.md)、[`chvmp_champ`](sources/repos/chvmp_champ.md)、[`gleboss1_mini_cheetah_ros`](sources/repos/gleboss1_mini_cheetah_ros.md)
+- **开源核查（步骤 2.5）：** **部分开源** — 软件与驱动已开；整机 CAD / 绕线 / 电磁设计未公开
+- **交叉：** [`wiki/entities/paper-low-cost-modular-actuator-katz.md`](wiki/entities/paper-low-cost-modular-actuator-katz.md)、[`wiki/concepts/srbd-convex-mpc-wbc.md`](wiki/concepts/srbd-convex-mpc-wbc.md)、[`wiki/concepts/mpc-wbc-integration.md`](wiki/concepts/mpc-wbc-integration.md)、[`wiki/entities/quadruped-robot.md`](wiki/entities/quadruped-robot.md)、[`wiki/comparisons/open-source-qdd-actuator-projects.md`](wiki/comparisons/open-source-qdd-actuator-projects.md)、[`roadmap/depth-torque-motor-design.md`](roadmap/depth-torque-motor-design.md)
+- **合并说明：** 与同日 `robot_daycare_mini_cheetah_2019` ingest 的平台页做内容合并（见下条）
+
 ## [2026-07-25] ingest | sources/blogs/robot_daycare_mini_cheetah_2019.md — Robot Daycare / bgkatz / Mini Cheetah；博文清单 12 篇论文各升格独立实体；平台与人物节点
 
 - **站点/人物：** [`sources/sites/robot-daycare.md`](sources/sites/robot-daycare.md) → [`wiki/entities/benjamin-katz.md`](wiki/entities/benjamin-katz.md)（MIT → Boston Dynamics Atlas → Physical Intelligence）
@@ -21,6 +31,7 @@
   12. [`paper-rapid-locomotion-rl`](wiki/entities/paper-rapid-locomotion-rl.md)（博文名 Agile Locomotion via Model-free Learning）
 - **开源核查：** Cheetah-Software / rapid-locomotion-rl / HS-DDP-MATLAB 已归档；Jump 项目页无代码；机构注册 `notre-dame`、`boston-dynamics`
 - **交叉：** [`mpc-wbc-integration`](wiki/concepts/mpc-wbc-integration.md)、[`quadruped-robot`](wiki/entities/quadruped-robot.md)、[`privileged_training`](sources/papers/privileged_training.md)（修正 Concurrent 文 arXiv 为 2202.05481）
+
 
 ## [2026-07-25] fix(wiki): ironless-qdd-actuator BOM 美元符被 KaTeX 成对 `$...$` 吞掉
 

@@ -17,7 +17,7 @@
 - **一句话说明：** Katz 模块化执行器的集成三相驱动 PCB（含磁编），对应 MIT 2018 硕士论文附录 A 的电机控制器硬件入口。
 - **开源状态：** **已开源**（硬件设计；固件分仓）
 - **关联论文：** [low_cost_modular_actuator_katz_mit_2018](../papers/low_cost_modular_actuator_katz_mit_2018.md)
-- **沉淀到 wiki：** [paper-low-cost-modular-actuator-katz](../../wiki/entities/paper-low-cost-modular-actuator-katz.md)
+- **沉淀到 wiki：** [paper-low-cost-modular-actuator-katz](../../wiki/entities/paper-low-cost-modular-actuator-katz.md)、[mit-mini-cheetah](../../wiki/entities/mit-mini-cheetah.md)
 
 ---
 
