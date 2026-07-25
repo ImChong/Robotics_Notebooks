@@ -8,12 +8,15 @@ related:
   - ./axfluxmdo.md
   - ./kicad.md
   - ./ironless-qdd-actuator.md
+  - ./cadenkraft-ironless-axial-flux-motor.md
   - ../concepts/halbach-array.md
+
   - ./pyleecan.md
   - ../../roadmap/depth-torque-motor-design.md
 sources:
   - ../../sources/repos/pcb_motor.md
   - ../../sources/personal/open_source_torque_motor_em_design_curator.md
+  - ../../sources/blogs/cadenkraft_coreless_axial_flux_motor_part1.md
 summary: "pcb-motor：开源 PCB 定子轴向磁通 PMSM/BLDC（WIP，MIT）；公开槽极/绕组拓扑与 KiCad；约 20 极、6 层、铜 140 μm、气隙 1 mm；适合微型关节学习，不适合人形髋膝。"
 ---
 
@@ -38,6 +41,7 @@ summary: "pcb-motor：开源 PCB 定子轴向磁通 PMSM/BLDC（WIP，MIT）；�
 - 展示 **PCB 绕组如何替代漆包线**：层数、铜厚、线宽与相电阻、气隙与力矩的工程权衡可读。
 - 把轴向磁通从「概念」落到 **可打样 Gerber**（见 [KiCad](./kicad.md)），适合手指、腕、灵巧手、云台、微型执行器。
 - 与 [axfluxmdo](./axfluxmdo.md) 工具链互补：一边是可制造样例，一边是连续优化空间。
+- 与 [Caden Axial Flux Part 1](./cadenkraft-ironless-axial-flux-motor.md)（漆包线线圈 + 打印结构、**未开源 CAD**）对照：本仓提供 **可打样 Gerber**，彼仓提供 Halbach 手算叙事。
 
 ## 核心信息（README 摘录）
 
@@ -83,12 +87,15 @@ flowchart LR
 
 - [开源力矩电机电磁设计完整度对比](../comparisons/open-source-torque-motor-em-design.md)
 - [axfluxmdo](./axfluxmdo.md) · [KiCad](./kicad.md) · [Ironless QDD](./ironless-qdd-actuator.md)
+- [Caden Kraft Ironless Axial Flux Motor](./cadenkraft-ironless-axial-flux-motor.md)
 - [Halbach Array](../concepts/halbach-array.md)
+
 
 ## 参考来源
 
 - [sources/repos/pcb_motor.md](../../sources/repos/pcb_motor.md)
 - [开源力矩电机电磁设计策展](../../sources/personal/open_source_torque_motor_em_design_curator.md)
+- [Caden Kraft Axial Flux Part 1](../../sources/blogs/cadenkraft_coreless_axial_flux_motor_part1.md)
 
 ## 推荐继续阅读
 

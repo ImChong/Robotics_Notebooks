@@ -11,6 +11,16 @@
 - **风险记录：** `eval(form.Nuten.value)` + URL 参数未校验拼进 `setTimeout` 字符串 → 勿挂公网；隐式全局循环变量、`if(i=0)` 赋值笔误、手输分布式排布勿以 `|` 结尾
 - **交叉：** [`wiki/overview/motor-design-workflow.md`](wiki/overview/motor-design-workflow.md)（步骤 2「拓扑与槽极」补前置筛选）、[`wiki/comparisons/open-source-torque-motor-em-design.md`](wiki/comparisons/open-source-torque-motor-em-design.md)（「教材与工具」表补「槽极组合还没定」一行）、[`wiki/entities/femm-foc-simulation.md`](wiki/entities/femm-foc-simulation.md)、[`roadmap/depth-torque-motor-design.md`](roadmap/depth-torque-motor-design.md)
 
+## [2026-07-25] ingest | sources/blogs/cadenkraft_coreless_axial_flux_motor_part1.md + sources/blogs/cadenkraft_ironless_cycloidal_planetary_actuator.md — Caden Kraft 无铁芯轴向磁通 Part 1 升格实体；Ironless QDD 博文加厚 + pygeartrain；交叉电磁完整度对比
+
+- **博文（新）：** [`sources/blogs/cadenkraft_coreless_axial_flux_motor_part1.md`](sources/blogs/cadenkraft_coreless_axial_flux_motor_part1.md) · [`sources/sites/cadenkraft_coreless_axial_flux_motor_part1.md`](sources/sites/cadenkraft_coreless_axial_flux_motor_part1.md)
+- **新实体：** [`wiki/entities/cadenkraft-ironless-axial-flux-motor.md`](wiki/entities/cadenkraft-ironless-axial-flux-motor.md) — Halbach 无铁芯轴向；手算匝数；**未开源 CAD**
+- **博文（加厚已有 Ironless）：** [`sources/blogs/cadenkraft_ironless_cycloidal_planetary_actuator.md`](sources/blogs/cadenkraft_ironless_cycloidal_planetary_actuator.md)
+- **新工具仓：** [`sources/repos/pygeartrain.md`](sources/repos/pygeartrain.md) → [`wiki/entities/pygeartrain.md`](wiki/entities/pygeartrain.md)
+- **加厚：** [`wiki/entities/ironless-qdd-actuator.md`](wiki/entities/ironless-qdd-actuator.md) — ~7:1、Kv≈79、728 g、MKS XDrive、FEMM 四象限百分比
+- **交叉：** [`wiki/comparisons/open-source-torque-motor-em-design.md`](wiki/comparisons/open-source-torque-motor-em-design.md)、[`wiki/entities/pcb-motor.md`](wiki/entities/pcb-motor.md)、[`wiki/overview/motor-design-workflow.md`](wiki/overview/motor-design-workflow.md)
+- **开源核查：** Axial Part 1 **未开源**；Ironless-QDD + pygeartrain **已开源**（MIT）
+
 ## [2026-07-25] ingest | sources/papers/halbach_permanent_multipole_magnets_1980.md + mallinson_one_sided_fluxes_1973.md + zhu_howe_halbach_pm_machines_review_2001.md — Halbach 一手三篇；升格 wiki/concepts/halbach-array.md 与三篇论文实体
 
 - **一手文献：**

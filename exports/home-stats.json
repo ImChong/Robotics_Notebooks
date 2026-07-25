@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-25",
-  "node_count": 1888,
-  "edge_count": 16080,
+  "node_count": 1890,
+  "edge_count": 16103,
   "coverage": {
-    "covered": 1836,
-    "total": 1864,
+    "covered": 1838,
+    "total": 1866,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -17,7 +17,7 @@
       "source": "log.md",
       "action": "added",
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/overview/motor-design-workflow.md",
@@ -27,7 +27,7 @@
       "recency": "2026-07-25",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/comparisons/open-source-torque-motor-em-design.md",
@@ -38,7 +38,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/entities/femm-foc-simulation.md",
@@ -49,7 +49,7 @@
       "source": "log.md",
       "action": "added",
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "roadmap/depth-torque-motor-design.md",
@@ -59,47 +59,28 @@
       "recency": "2026-07-25",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
-      "path": "wiki/concepts/halbach-array.md",
-      "detail_id": "wiki-concepts-halbach-array",
-      "label": "Halbach Array（哈尔巴赫阵列）",
-      "type": "concept",
+      "path": "wiki/entities/cadenkraft-ironless-axial-flux-motor.md",
+      "detail_id": "entity-cadenkraft-ironless-axial-flux-motor",
+      "label": "Caden Kraft Ironless Axial Flux Motor（无铁芯轴向磁通电机）",
+      "type": "entity",
       "recency": "2026-07-25",
       "source": "log.md",
       "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
-      "path": "wiki/entities/paper-mallinson-one-sided-fluxes.md",
-      "detail_id": "entity-paper-mallinson-one-sided-fluxes",
-      "label": "One-sided fluxes — A magnetic curiosity?（Mallinson 1973）",
+      "path": "wiki/entities/pygeartrain.md",
+      "detail_id": "entity-pygeartrain",
+      "label": "pygeartrain（摆线/行星齿廓与传动比工具）",
       "type": "entity",
       "recency": "2026-07-25",
       "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-halbach-permanent-multipole-magnets.md",
-      "detail_id": "entity-paper-halbach-permanent-multipole-magnets",
-      "label": "Design of permanent multipole magnets with oriented REC（Halbach 1980）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-zhu-howe-halbach-pm-machines-review.md",
-      "detail_id": "entity-paper-zhu-howe-halbach-pm-machines-review",
-      "label": "Halbach permanent magnet machines and applications（Zhu & Howe 2001）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "action": "added",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/entities/ironless-qdd-actuator.md",
@@ -110,7 +91,7 @@
       "source": "log.md",
       "action": "added",
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/entities/pcb-motor.md",
@@ -121,7 +102,47 @@
       "source": "log.md",
       "action": "added",
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/concepts/halbach-array.md",
+      "detail_id": "wiki-concepts-halbach-array",
+      "label": "Halbach Array（哈尔巴赫阵列）",
+      "type": "concept",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-mallinson-one-sided-fluxes.md",
+      "detail_id": "entity-paper-mallinson-one-sided-fluxes",
+      "label": "One-sided fluxes — A magnetic curiosity?（Mallinson 1973）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-halbach-permanent-multipole-magnets.md",
+      "detail_id": "entity-paper-halbach-permanent-multipole-magnets",
+      "label": "Design of permanent multipole magnets with oriented REC（Halbach 1980）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-zhu-howe-halbach-pm-machines-review.md",
+      "detail_id": "entity-paper-zhu-howe-halbach-pm-machines-review",
+      "label": "Halbach permanent magnet machines and applications（Zhu & Howe 2001）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/entities/femm.md",
@@ -132,7 +153,7 @@
       "source": "log.md",
       "action": "added",
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/entities/pyleecan.md",
@@ -143,7 +164,7 @@
       "source": "log.md",
       "action": "added",
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/comparisons/motor-em-simulation-software.md",
@@ -153,7 +174,7 @@
       "recency": "2026-07-25",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/entities/mit-mini-cheetah.md",
@@ -163,8 +184,7 @@
       "recency": "2026-07-25",
       "source": "log.md",
       "action": "added",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-low-cost-modular-actuator-katz.md",
@@ -175,7 +195,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/concepts/srbd-convex-mpc-wbc.md",
@@ -196,28 +216,6 @@
       "source": "log.md",
       "action": "added",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/quadruped-robot.md",
-      "detail_id": "entity-quadruped-robot",
-      "label": "四足机器人（Quadruped Robot）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/comparisons/open-source-qdd-actuator-projects.md",
-      "detail_id": "wiki-comparisons-open-source-qdd-actuator-projects",
-      "label": "开源 QDD / 力矩关节执行器项目对比与学习路线",
-      "type": "comparison",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -229,16 +227,12 @@
     "source": "log.md",
     "action": "added",
     "has_repo": true,
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 370
-    },
-    {
-      "label": "仿真到现实",
-      "size": 239
+      "size": 380
     },
     {
       "label": "人形论文深读笔记",
@@ -249,12 +243,16 @@
       "size": 174
     },
     {
-      "label": "人形强化学习运动控制",
-      "size": 121
+      "label": "仿真到现实",
+      "size": 137
     },
     {
       "label": "全身控制",
-      "size": 119
+      "size": 129
+    },
+    {
+      "label": "人形强化学习运动控制",
+      "size": 126
     }
   ],
   "top_hubs": [
@@ -382,7 +380,8 @@
       "label": "TWIST2",
       "type": "entity",
       "degree": 41,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
