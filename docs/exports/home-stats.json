@@ -1,13 +1,77 @@
 {
   "generated_at": "2026-07-25",
-  "node_count": 1887,
-  "edge_count": 16068,
+  "node_count": 1889,
+  "edge_count": 16091,
   "coverage": {
-    "covered": 1835,
-    "total": 1863,
+    "covered": 1837,
+    "total": 1865,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/cadenkraft-ironless-axial-flux-motor.md",
+      "detail_id": "entity-cadenkraft-ironless-axial-flux-motor",
+      "label": "Caden Kraft Ironless Axial Flux Motor（无铁芯轴向磁通电机）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/pygeartrain.md",
+      "detail_id": "entity-pygeartrain",
+      "label": "pygeartrain（摆线/行星齿廓与传动比工具）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/ironless-qdd-actuator.md",
+      "detail_id": "entity-ironless-qdd-actuator",
+      "label": "Ironless QDD Actuator（无铁芯转子摆线—行星执行器）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/comparisons/open-source-torque-motor-em-design.md",
+      "detail_id": "wiki-comparisons-open-source-torque-motor-em-design",
+      "label": "开源机器人力矩电机：电磁设计完整度对比",
+      "type": "comparison",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/pcb-motor.md",
+      "detail_id": "entity-pcb-motor",
+      "label": "PCB Motor（PCB 定子轴向磁通电机）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/overview/motor-design-workflow.md",
+      "detail_id": "wiki-overview-motor-design-workflow",
+      "label": "电机设计流程（规格 → 仿真 → 样机 → 控制）",
+      "type": "overview",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
     {
       "path": "wiki/concepts/halbach-array.md",
       "detail_id": "wiki-concepts-halbach-array",
@@ -46,49 +110,6 @@
       "recency": "2026-07-25",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/ironless-qdd-actuator.md",
-      "detail_id": "entity-ironless-qdd-actuator",
-      "label": "Ironless QDD Actuator（无铁芯转子摆线—行星执行器）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/comparisons/open-source-torque-motor-em-design.md",
-      "detail_id": "wiki-comparisons-open-source-torque-motor-em-design",
-      "label": "开源机器人力矩电机：电磁设计完整度对比",
-      "type": "comparison",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/overview/motor-design-workflow.md",
-      "detail_id": "wiki-overview-motor-design-workflow",
-      "label": "电机设计流程（规格 → 仿真 → 样机 → 控制）",
-      "type": "overview",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/pcb-motor.md",
-      "detail_id": "entity-pcb-motor",
-      "label": "PCB Motor（PCB 定子轴向磁通电机）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
       "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
@@ -196,34 +217,13 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/comparisons/open-source-qdd-actuator-projects.md",
-      "detail_id": "wiki-comparisons-open-source-qdd-actuator-projects",
-      "label": "开源 QDD / 力矩关节执行器项目对比与学习路线",
-      "type": "comparison",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/benjamin-katz.md",
-      "detail_id": "entity-benjamin-katz",
-      "label": "Benjamin Katz（Ben Katz）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/halbach-array.md",
-    "detail_id": "wiki-concepts-halbach-array",
-    "label": "Halbach Array（哈尔巴赫阵列）",
-    "type": "concept",
+    "path": "wiki/entities/cadenkraft-ironless-axial-flux-motor.md",
+    "detail_id": "entity-cadenkraft-ironless-axial-flux-motor",
+    "label": "Caden Kraft Ironless Axial Flux Motor（无铁芯轴向磁通电机）",
+    "type": "entity",
     "recency": "2026-07-25",
     "source": "log.md",
     "action": "added",

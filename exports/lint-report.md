@@ -53,7 +53,7 @@
 - 无
 
 ### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（2 个）
-- MIT（被 7 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
+- MIT（被 8 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 - EtherCAT（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 
 ### ⚠️ Frontmatter 缺少 type 字段（0 个）
@@ -160,4 +160,4 @@
 - wiki/entities/benjamin-katz.md
 - wiki/entities/paper-mini-cheetah-platform.md
 
-📊 Sources 覆盖率：1835/1863 (98%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1837/1865 (98%) wiki/entity 页有 ingest 来源
