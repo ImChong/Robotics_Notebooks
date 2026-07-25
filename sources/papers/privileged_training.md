@@ -30,11 +30,13 @@
   - [curriculum-learning](../../wiki/concepts/curriculum-learning.md)
 
 ### 3) Concurrent Training of a Control Policy and a State Estimator（Ji et al., RAL 2022）
-- **链接：** <https://arxiv.org/abs/2202.05738>
+- **链接：** <https://arxiv.org/abs/2202.05481>
 - **核心贡献：** 并发训练范式：control policy 和 state estimator 同步训练，互相提供梯度；绕开了两阶段 teacher-student 训练的串行瓶颈；在 Unitree A1 实现了更快的收敛和更好的泛化
 - **对 wiki 的映射：**
+  - [paper-concurrent-policy-estimator-locomotion](../../wiki/entities/paper-concurrent-policy-estimator-locomotion.md)
   - [privileged-training](../../wiki/concepts/privileged-training.md)
   - [state-estimation](../../wiki/concepts/state-estimation.md)
+  - [mit-mini-cheetah](../../wiki/entities/mit-mini-cheetah.md)
 
 ### 4) Walk These Ways: Tuning Robot Walking（Margolis et al., CoRL 2022）
 - **链接：** <https://arxiv.org/abs/2212.03238>

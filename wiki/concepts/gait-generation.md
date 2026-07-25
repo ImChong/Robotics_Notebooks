@@ -2,7 +2,7 @@
 type: concept
 tags: [locomotion, gait, CPG, rhythm, legged-robots, mpc]
 status: stable
-updated: 2026-06-11
+updated: 2026-07-25
 summary: "Gait Generation 研究步态时序和足端节律如何组织，是 locomotion 高层模式设计的重要模块。"
 ---
 
