@@ -16,6 +16,7 @@ related:
   - ../entities/simplefoc.md
   - ../entities/stanford-doggo-and-pupper.md
   - ../entities/paper-3d-printed-open-source-actuators-legged.md
+  - ../entities/paper-open-torque-controlled-modular-robot-solo.md
   - ../entities/open-source-humanoid-hardware.md
   - ./open-source-torque-motor-em-design.md
   - ../queries/actuator-drive-chain-selection-loop.md
@@ -34,6 +35,7 @@ sources:
   - ../../sources/repos/tinymovr.md
   - ../../sources/repos/vesc_bldc.md
   - ../../sources/papers/3d_printed_open_source_actuators_legged_arxiv_2202_12395.md
+  - ../../sources/papers/open_torque_controlled_modular_robot_solo_arxiv_1910_00093.md
 summary: "开源力矩/QDD 关节选型对比：两类项目（成品电机+开源关节 vs 电机本体也开源）与优先学习清单；驱动器配套 SimpleFOC→moteus/Tinymovr→VESC；优先深读 ODRI、Berkeley Humanoid Lite、Internal Cycloidal。"
 ---
 
@@ -92,7 +94,7 @@ flowchart TB
 
 | 项目 | 类别 | 传动 | 驱动侧 | 成熟度 / 局限 | wiki |
 |------|------|------|--------|------------------|------|
-| **ODRI Actuator HW** | A | 行星或皮带，低减速 QDD | 自研驱动 PCB + 电流/力矩环 | 学术成熟；**无完整电磁设计** | [ODRI](../entities/odri-solo-and-bolt.md) |
+| **ODRI Actuator HW** | A | 行星或皮带，低减速 QDD | 自研驱动 PCB + 电流/力矩环 | 学术成熟；**无完整电磁设计**；架构见 [Solo 论文](../entities/paper-open-torque-controlled-modular-robot-solo.md) | [ODRI](../entities/odri-solo-and-bolt.md) |
 | **Berkeley Humanoid Lite** | A + 整机 | ~15:1 3D 打印摆线 | 公开电流/位置/速度环参数 | 人形链路完整；打印摆线**高性能易脆** | [BHL](../entities/berkeley-humanoid-lite.md) |
 | **Internal Cycloidal** | B | 8:1 内嵌双摆线 | ODrive S1 | 最佳电机本体教材之一；**个人原型** | [ICA](../entities/internal-cycloidal-actuator.md) |
 | **OpenTorque** | A | 同步带低减速 | VESC | 快速样机；体积/抗冲击不足人形量产 | [OpenTorque](../entities/opentorque-actuator.md) |
@@ -146,7 +148,7 @@ flowchart TB
 - [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md)
 - [Actuator 102 · 减速与反射惯量](../overview/humanoid-actuator-102-gear-reflected-inertia.md)
 - [力矩电机设计纵深路线](../../roadmap/depth-torque-motor-design.md)
-- [ODRI](../entities/odri-solo-and-bolt.md) · [BHL](../entities/berkeley-humanoid-lite.md) · [Internal Cycloidal](../entities/internal-cycloidal-actuator.md) · [Jeong QDD](../entities/cycloidal-quasi-direct-drive-actuator.md) · [Ironless](../entities/ironless-qdd-actuator.md) · [moteus](../entities/moteus.md) · [VESC](../entities/vesc.md)
+- [ODRI](../entities/odri-solo-and-bolt.md) · [Solo 架构论文](../entities/paper-open-torque-controlled-modular-robot-solo.md) · [BHL](../entities/berkeley-humanoid-lite.md) · [Internal Cycloidal](../entities/internal-cycloidal-actuator.md) · [Jeong QDD](../entities/cycloidal-quasi-direct-drive-actuator.md) · [Ironless](../entities/ironless-qdd-actuator.md) · [moteus](../entities/moteus.md) · [VESC](../entities/vesc.md)
 
 ## 参考来源
 
@@ -162,6 +164,7 @@ flowchart TB
 - [Jeong 双摆线 QDD](../../sources/repos/quasi_direct_drive_actuator.md)
 - [Ironless QDD](../../sources/repos/ironless_qdd_actuator.md)
 - [3D Printed Open-Source Actuators 论文](../../sources/papers/3d_printed_open_source_actuators_legged_arxiv_2202_12395.md)
+- [Solo / ODRI 架构论文（arXiv:1910.00093）](../../sources/papers/open_torque_controlled_modular_robot_solo_arxiv_1910_00093.md)
 
 ## 推荐继续阅读
 

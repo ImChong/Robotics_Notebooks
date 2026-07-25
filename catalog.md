@@ -962,6 +962,7 @@
 - [OMG：Omni-Modal Motion Generation for Generalist Humanoid Control](wiki/entities/paper-omg-omni-modal-humanoid-control.md) — OMG**（*Omni-Modal Motion Generation for Generalist Humanoid Control*，[项目页](https://tsinghua-mars-l `📅unknown` `[entity_page]`
 - [OmniContact（Chaining Meta-Skills via Contact Flow）](wiki/entities/paper-omnicontact-humanoid-loco-manipulation.md) — OmniContact**（*Chaining Meta-Skills via Contact Flow for Generalizable Humanoid Loco-Manipulation `📅unknown` `[entity_page]`
 - [OmniTacTune：视觉策略的触觉残差真机适应](wiki/entities/paper-omnitactune-tactile-residual-adaptation.md) — OmniTacTune**（*Policy-Agnostic Real-World RL for Tactile Residual Adaptation of Visual Policies*，U `📅unknown` `[entity_page]`
+- [An Open Torque-Controlled Modular Robot Architecture（Solo / ODRI）](wiki/entities/paper-open-torque-controlled-modular-robot-solo.md) — Grimminger et al.（MPI-IS / NYU / LAAS，arXiv:1910.00093，IEEE RA `📅unknown` `[entity_page]`
 - [OpenCap Monocular：单手机视频的人体运动学与动力学](wiki/entities/paper-opencap-monocular.md) — OpenCap Monocular**（*3D Human Kinematics and Musculoskeletal Dynamics from a Single Smartphone Vid `📅unknown` `[entity_page]`
 - [Track Any Motions under Any Disturbances](wiki/entities/paper-opentrack.md) — Track Any Motions under Any Disturbances**（OpenTrack / Any2Track，arXiv:2509.13833）要求人形 motion trac `📅unknown` `[entity_page]`
 - [OSCAR（跨具身动作条件世界模型）](wiki/entities/paper-oscar.md) — OSCAR**（*OSCAR: Omni-Embodiment Action-Conditioned World Model for Robotics*，arXiv:2606.04463，2026 `📅unknown` `[entity_page]`

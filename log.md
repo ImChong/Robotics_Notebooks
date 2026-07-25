@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-25] ingest | sources/papers/open_torque_controlled_modular_robot_solo_arxiv_1910_00093.md — Grimminger et al. Solo/ODRI 开源力矩控制模块化腿足架构；升格 wiki/entities/paper-open-torque-controlled-modular-robot-solo.md；交叉 wiki/entities/odri-solo-and-bolt.md、wiki/comparisons/open-source-qdd-actuator-projects.md；sites/repos 回链；注册 schema/institutions.json laas
+
+- **论文源：** [`sources/papers/open_torque_controlled_modular_robot_solo_arxiv_1910_00093.md`](sources/papers/open_torque_controlled_modular_robot_solo_arxiv_1910_00093.md)（arXiv:1910.00093 / RA-L 2020）
+- **新实体：** [`wiki/entities/paper-open-torque-controlled-modular-robot-solo.md`](wiki/entities/paper-open-torque-controlled-modular-robot-solo.md) — 9:1 皮带 QDD、足底接触开关、阻抗标定、kino-dynamic + CoM 阻抗 QP；含源码运行时序图
+- **交叉：** [`wiki/entities/odri-solo-and-bolt.md`](wiki/entities/odri-solo-and-bolt.md)、[`wiki/comparisons/open-source-qdd-actuator-projects.md`](wiki/comparisons/open-source-qdd-actuator-projects.md)
+- **开源核查：** 项目页已列 BSD-3 全栈；硬件 [`open_robot_actuator_hardware`](sources/repos/open_robot_actuator_hardware.md)、门户 [`open_dynamic_robot_initiative`](sources/sites/open_dynamic_robot_initiative.md)
+- **机构：** 注册 `laas`（系统分析与架构实验室（LAAS / CNRS））
+
 ## [2026-07-25] ingest | sources/personal/open_source_torque_motor_em_design_curator.md — 按电磁设计完整度策展开源力矩电机；升格 wiki/comparisons/open-source-torque-motor-em-design.md；实体 ironless-qdd-actuator（加厚）、pyleecan、axfluxmdo、pcb-motor、femm-foc-simulation、acmop；交叉 wiki/comparisons/open-source-qdd-actuator-projects.md、motor-em-simulation-software.md、wiki/overview/motor-design-workflow.md、roadmap/depth-torque-motor-design.md、wiki/queries/actuator-drive-chain-selection-loop.md
 
 - **策展源：** [`sources/personal/open_source_torque_motor_em_design_curator.md`](sources/personal/open_source_torque_motor_em_design_curator.md)

@@ -1647,6 +1647,14 @@
         "acmop",
         "horychen"
       ]
+    },
+    "laas": {
+      "label": "系统分析与架构实验室（LAAS / CNRS）",
+      "aliases": [
+        "laas",
+        "laas-cnrs",
+        "cnrs-laas"
+      ]
     }
   }
 }
