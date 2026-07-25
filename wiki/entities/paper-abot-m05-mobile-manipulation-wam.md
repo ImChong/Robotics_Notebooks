@@ -105,7 +105,6 @@ flowchart TB
 | **真机** | Agilex Piper 单臂；每任务 **50** demos；Peg Cylinder **70%** / 过程 **96%** |
 | **关键消融** | 三阶段 latent action **94.0%** vs 直接 video→action **87.60%**（RoboTwin Clean） |
 | **代码** | [amap-cvlab/ABot-Manipulation](https://github.com/amap-cvlab/ABot-Manipulation)（M0.5 权重 **coming soon**，2026-07-01） |
-
 | 机构 | AMAP CV Lab（高德 CV Lab，阿里巴巴） |
 |------|--------------------------------------|
 | arXiv | [2607.00678](https://arxiv.org/abs/2607.00678) |

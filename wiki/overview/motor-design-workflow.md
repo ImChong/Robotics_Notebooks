@@ -21,7 +21,6 @@ related:
   - ../entities/pygeartrain.md
   - ../concepts/halbach-array.md
   - ../entities/paper-halbach-permanent-multipole-magnets.md
-
 sources:
   - ../../sources/sites/ansys_motor_cad_electric_machine_design.md
   - ../../sources/personal/motor_curves_and_em_simulation_faq.md
@@ -173,7 +172,6 @@ flowchart TD
 - [电机电磁仿真软件选型](../comparisons/motor-em-simulation-software.md)
 - [开源力矩电机电磁设计完整度对比](../comparisons/open-source-torque-motor-em-design.md)
 - [Ironless QDD](../entities/ironless-qdd-actuator.md) · [Caden Axial Flux Part 1](../entities/cadenkraft-ironless-axial-flux-motor.md) · [Halbach Array](../concepts/halbach-array.md) · [FEMM](../entities/femm.md) · [PYLEECAN](../entities/pyleecan.md)
-
 - [电机转矩-转速曲线（TN 曲线）](../concepts/motor-torque-speed-curve.md)
 - [电机转矩-电流曲线（TI 曲线）](../concepts/motor-torque-current-curve.md)
 - [磁场定向控制（FOC）](../concepts/field-oriented-control.md)

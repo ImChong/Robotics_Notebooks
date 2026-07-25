@@ -332,7 +332,6 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [Uni-LaViRA](../entities/paper-uni-lavira.md) — training-free 导航 agent：主张导航可落在 MLLM 输出流形内，对照「堆轨迹训导航 VLA」
 - [DA-Nav](../entities/paper-da-nav.md) — 城市尺度方向感知 VLN：图像平面网格 + CoT 恢复（对照连续 waypoint / NaVILA）
 - [深度学习基础](../concepts/deep-learning-foundations.md)
-
 - [Foundation Policy（基础策略模型）](../concepts/foundation-policy.md)
 - [仿生多模态机器人综述（Science Robotics 2026）](../entities/paper-bioinspired-multimodal-robotics.md) — 展望中将 VLA/世界模型等纳入多模态切换与环境适配的计算智能侧
 - [π₀ (Pi-zero) 策略模型](./π0-policy.md) — 结合 Flow Matching 的最新 VLA 突破

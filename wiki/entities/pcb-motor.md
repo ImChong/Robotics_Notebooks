@@ -10,7 +10,6 @@ related:
   - ./ironless-qdd-actuator.md
   - ./cadenkraft-ironless-axial-flux-motor.md
   - ../concepts/halbach-array.md
-
   - ./pyleecan.md
   - ../../roadmap/depth-torque-motor-design.md
 sources:

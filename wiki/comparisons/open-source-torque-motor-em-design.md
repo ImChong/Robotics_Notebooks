@@ -31,7 +31,6 @@ sources:
   - ../../sources/repos/pygeartrain.md
   - ../../sources/papers/halbach_permanent_multipole_magnets_1980.md
   - ../../sources/papers/zhu_howe_halbach_pm_machines_review_2001.md
-
   - ../../sources/repos/femm_foc_simulation.md
   - ../../sources/sites/femm_info.md
   - ../../sources/repos/pcb_motor.md
@@ -61,9 +60,7 @@ summary: "按电磁设计完整度对比开源力矩电机：几何/绕组/磁�
 - **要复现「电磁 → 绕线 → 转子 → FEM → 减速 → 驱动 → 台架」整条链**：优先 [Ironless-QDD-Actuator](../entities/ironless-qdd-actuator.md)。
 - **要先建立 Halbach / 无铁芯轴向手算直觉（无 CAD 仓）**：读 [Caden Kraft Axial Flux Part 1](../entities/cadenkraft-ironless-axial-flux-motor.md)，再回 Ironless 打开 FEMM。
 - **要读 Halbach 一手文献**：概念页 [Halbach Array](../concepts/halbach-array.md) → [Mallinson 1973](../entities/paper-mallinson-one-sided-fluxes.md) / [Halbach 1980](../entities/paper-halbach-permanent-multipole-magnets.md) / [Zhu & Howe 2001](../entities/paper-zhu-howe-halbach-pm-machines-review.md)。
-
 - **要学 FEMM + FOC 扫角入门**：先读 [FEMM](../entities/femm.md) 官方 Tutorial/Examples，再用 [FEMM-FOC-Simulation](../entities/femm-foc-simulation.md)。
-
 - **要学 PCB 轴向绕组可制造文件**：用 [PCB Motor](../entities/pcb-motor.md)（WIP，偏小关节）。
 - **要自己重设人形外转子径向磁通**：用 [PYLEECAN](../entities/pyleecan.md)；轴向磁通早期权衡用 [axfluxmdo](../entities/axfluxmdo.md)；自动优化研究用 [ACMOP](../entities/acmop.md)（非入门）。
 - **要生成可打印摆线/行星齿廓**：用 [pygeartrain](../entities/pygeartrain.md)。
@@ -119,7 +116,6 @@ Halbach / 无铁芯手算与轴向装配叙事见前作 [Ironless Axial Flux Par
 | 只要 Halbach 轴向手算叙事 | Caden Axial Part 1（随后必须回 Ironless 开 FEMM） |
 | 要 Halbach 一手理论 | Mallinson 1973 → Halbach 1980 OA → Zhu & Howe 2001 |
 | 要生成摆线/行星可打印齿廓 | pygeartrain |
-
 | 要优化人形外转子径向方案 | PYLEECAN：自定外径、槽极、磁钢、匝数、48 V 低 KV |
 | 要扫轴向磁通薄型关节权衡 | axfluxmdo：力矩密度/质量/温升/轴向力 Pareto |
 | 要研究自动改槽宽齿宽跑 FEA | ACMOP（环境旧，勿作第一课） |
@@ -158,9 +154,7 @@ Halbach / 无铁芯手算与轴向装配叙事见前作 [Ironless Axial Flux Par
 - [pygeartrain](../../sources/repos/pygeartrain.md)
 - [Halbach 1980](../../sources/papers/halbach_permanent_multipole_magnets_1980.md)
 - [Zhu & Howe 2001](../../sources/papers/zhu_howe_halbach_pm_machines_review_2001.md)
-
 - [FEMM 官方站点](../../sources/sites/femm_info.md)
-
 - [FEMM-FOC-Simulation](../../sources/repos/femm_foc_simulation.md)
 - [pcb-motor](../../sources/repos/pcb_motor.md)
 - [axfluxmdo](../../sources/repos/axfluxmdo.md)
@@ -172,8 +166,6 @@ Halbach / 无铁芯手算与轴向装配叙事见前作 [Ironless Axial Flux Par
 - Ironless 项目长文：<https://cadenkraft.com/ironless-cycloidal-planetary-actuator/>
 - Axial Flux Part 1：<https://cadenkraft.com/designing-a-coreless-axial-flux-motor-part-1/>
 - Halbach 1980 OA：<https://escholarship.org/content/qt20b829tr/qt20b829tr.pdf>
-
 - FEMM：<https://www.femm.info/doku/doku.php?id=start>
-
 - PYLEECAN：<https://www.pyleecan.org/>
 - axfluxmdo 文档：<https://jman4162.github.io/axfluxmdo/>

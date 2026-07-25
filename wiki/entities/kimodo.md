@@ -121,7 +121,6 @@ flowchart LR
 ## 关联页面
 
 - [AMP 运动先验专题](../overview/humanoid-amp-motion-prior-survey.md)（本文 #04/19）
-
 - [Diffusion-based Motion Generation](../methods/diffusion-motion-generation.md) — 扩散式全身轨迹生成范式
 - [MotionBricks](../methods/motionbricks.md) — 同生态实时潜空间生成式运动
 - [GENMO / GEM](../methods/genmo.md) — 视频/多模态人体运动估计与生成

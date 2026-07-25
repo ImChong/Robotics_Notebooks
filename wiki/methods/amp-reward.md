@@ -116,7 +116,6 @@ $$
 - [SD-AMP 统一走跑起身](../entities/paper-unified-walk-run-recovery-sdamp.md)、[ADP 对抗动力学先验](../entities/paper-adp.md)、[MoRE 复杂地形多步态 AMP](../entities/paper-amp-survey-08-more.md)、[SPRINT 竞技冲刺频谱先验](../entities/paper-sprint-humanoid-athletic-sprints.md)、[Heracles 扩散中间件](../entities/paper-heracles-humanoid-diffusion.md)
 - [AMP / ADD / SMP 运动先验变体对比](../comparisons/amp-add-smp-motion-prior-variants.md)
 - [protomotions](../entities/protomotions.md) — 提供大规模并行训练支持。
-
 - [Imitation Learning](./imitation-learning.md)
 - [Behavior Cloning](../formalizations/behavior-cloning-loss.md) — HumanX 学生策略训练中使用了 BC 损失。
 - [BeyondMimic](./beyondmimic.md) — 同样是动作模仿，但 BeyondMimic 侧重于精确建模，AMP 侧重于风格判别。
