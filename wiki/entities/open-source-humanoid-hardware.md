@@ -3,7 +3,7 @@
 type: entity
 tags: [humanoid, hardware, open-source, robotics, research, berkeley]
 status: complete
-updated: 2026-07-21
+updated: 2026-07-25
 related:
   - ../overview/humanoid-hardware-101-technology-map.md
   - ./humanoid-robot.md
@@ -105,6 +105,7 @@ summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humano
 
 - **如果你想验证 RL 算法**：首选 **Berkeley Humanoid** 类方案，因为其 QDD 电机的动力学建模最为简单。
 - **如果你想研究全身协调 (WBC)**：建议寻找支持更高自由度的平台，或者在仿真中使用 **ODRI** 模型进行先行验证。
+- **如果你想学开源力矩/QDD 关节本身**（而非整机选型）：见 [开源 QDD 执行器项目对比](../comparisons/open-source-qdd-actuator-projects.md)——优先 ODRI 执行器硬件、BHL 摆线关节、Internal Cycloidal 电机本体。
 - **如果你想做低成本娱乐双足 / BDX 复刻**：见 [Open Duck Mini](./open-duck-mini.md)（~42 cm、BOM &lt;$400、MuJoCo Playground + Pi Zero 2W 部署；非全尺寸人形，但 sim2real 管线完整）。
 
 ## 2d. Open Duck Mini（迷你娱乐双足 / DIY）
@@ -123,6 +124,7 @@ summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humano
 
 ## 关联页面
 - [人形机器人 (Humanoid Robot)](./humanoid-robot.md)
+- [开源 QDD 执行器项目对比](../comparisons/open-source-qdd-actuator-projects.md)
 - [Roboto Origin（开源人形机器人基线）](./roboto-origin.md)
 - [Asimov v1](./asimov-v1.md)
 - [OpenLoong（青龙·公版机）](./openloong.md)

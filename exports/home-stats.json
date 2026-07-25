@@ -1,13 +1,154 @@
 {
   "generated_at": "2026-07-25",
-  "node_count": 1851,
-  "edge_count": 15688,
+  "node_count": 1857,
+  "edge_count": 15767,
   "coverage": {
-    "covered": 1799,
-    "total": 1827,
+    "covered": 1805,
+    "total": 1833,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/comparisons/open-source-qdd-actuator-projects.md",
+      "detail_id": "wiki-comparisons-open-source-qdd-actuator-projects",
+      "label": "开源 QDD / 力矩关节执行器项目对比与学习路线",
+      "type": "comparison",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "roadmap/depth-torque-motor-design.md",
+      "detail_id": "roadmap-depth-torque-motor-design",
+      "label": "路线（纵深）：如果目标是力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环 → 关节模组）",
+      "type": "roadmap_page",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/moteus.md",
+      "detail_id": "entity-moteus",
+      "label": "moteus（mjbots 关节驱动器）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/tinymovr.md",
+      "detail_id": "entity-tinymovr",
+      "label": "Tinymovr（紧凑开源关节驱动）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/opentorque-actuator.md",
+      "detail_id": "entity-opentorque-actuator",
+      "label": "OpenTorque Actuator（开源准直驱关节）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/internal-cycloidal-actuator.md",
+      "detail_id": "entity-internal-cycloidal-actuator",
+      "label": "Internal Cycloidal Actuator（内嵌摆线一体执行器）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-3d-printed-open-source-actuators-legged.md",
+      "detail_id": "entity-paper-3d-printed-open-source-actuators-legged",
+      "label": "3D Printed Open-Source Actuators for Legged Locomotion",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/odri-solo-and-bolt.md",
+      "detail_id": "entity-odri-solo-and-bolt",
+      "label": "ODRI Solo / Bolt（开源腿式平台）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/berkeley-humanoid-lite.md",
+      "detail_id": "entity-berkeley-humanoid-lite",
+      "label": "Berkeley Humanoid Lite（BHL）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/stanford-doggo-and-pupper.md",
+      "detail_id": "entity-stanford-doggo-and-pupper",
+      "label": "Stanford Doggo / Pupper（开源四足）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/simplefoc.md",
+      "detail_id": "entity-simplefoc",
+      "label": "SimpleFOC（Arduino-FOC 生态）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/open-source-humanoid-hardware.md",
+      "detail_id": "entity-open-source-humanoid-hardware",
+      "label": "开源人形机器人硬件方案对比",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/queries/actuator-drive-chain-selection-loop.md",
+      "detail_id": "wiki-queries-actuator-drive-chain-selection-loop",
+      "label": "Query：执行器驱动链选型闭环知识链",
+      "type": "query",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/open-dreamer.md",
       "detail_id": "entity-open-dreamer",
@@ -80,152 +221,28 @@
       "type": "roadmap_page",
       "recency": "2026-07-25",
       "source": "log.md",
-      "action": "maintained",
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/concepts/humanoid-mechanical-layout-design.md",
-      "detail_id": "wiki-concepts-humanoid-mechanical-layout-design",
-      "label": "人形整机机械布局设计（构型 → 传动布置 → 质量分布 → 刚度与公差）",
-      "type": "concept",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/concepts/robot-power-distribution-architecture.md",
-      "detail_id": "wiki-concepts-robot-power-distribution-architecture",
-      "label": "机器人整机配电架构（电池 → 母线 → DC/DC → 线束 → 安全回路）",
-      "type": "concept",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/concepts/robot-onboard-communication-architecture.md",
-      "detail_id": "wiki-concepts-robot-onboard-communication-architecture",
-      "label": "机器人整机通信架构（总线分域 → 拓扑 → 时钟同步 → 延迟预算）",
-      "type": "concept",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "roadmap/depth-torque-motor-design.md",
-      "detail_id": "roadmap-depth-torque-motor-design",
-      "label": "路线（纵深）：如果目标是力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环 → 关节模组）",
-      "type": "roadmap_page",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/motion-control.md",
-      "detail_id": "roadmap-motion-control",
-      "label": "主路线：运动控制算法工程师成长路线",
-      "type": "roadmap_page",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/overview/humanoid-hardware-101-technology-map.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-technology-map",
-      "label": "Humanoid Hardware 101：七类子系统技术地图",
-      "type": "overview",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/overview/humanoid-actuator-102-technology-map.md",
-      "detail_id": "wiki-overview-humanoid-actuator-102-technology-map",
-      "label": "Humanoid 执行器 102：八章技术地图",
-      "type": "overview",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/overview/humanoid-hardware-101-chassis-materials.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-chassis-materials",
-      "label": "Humanoid Hardware 101 · 01：机身与材料",
-      "type": "overview",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/overview/humanoid-hardware-101-power-compute-electronics.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-power-compute-electronics",
-      "label": "Humanoid Hardware 101 · 05：能源与计算电子",
-      "type": "overview",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/overview/topic-communication.md",
-      "detail_id": "wiki-overview-topic-communication",
-      "label": "硬件通信与协议（专题汇总）",
-      "type": "overview",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/overview/topic-systems-engineering.md",
-      "detail_id": "wiki-overview-topic-systems-engineering",
-      "label": "机器人系统工程（专题汇总）",
-      "type": "overview",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-bioinspired-multimodal-robotics.md",
-      "detail_id": "entity-paper-bioinspired-multimodal-robotics",
-      "label": "仿生多模态机器人综述：五项指标与软硬智能融合",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/tasks/locomotion.md",
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
-      "recency": "2026-07-25",
-      "source": "log.md",
       "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/open-dreamer.md",
-    "detail_id": "entity-open-dreamer",
-    "label": "Open Dreamer",
-    "type": "entity",
+    "path": "wiki/comparisons/open-source-qdd-actuator-projects.md",
+    "detail_id": "wiki-comparisons-open-source-qdd-actuator-projects",
+    "label": "开源 QDD / 力矩关节执行器项目对比与学习路线",
+    "type": "comparison",
     "recency": "2026-07-25",
     "source": "log.md",
-    "action": "added",
+    "action": "maintained",
     "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
       "size": 370
+    },
+    {
+      "label": "仿真到现实",
+      "size": 185
     },
     {
       "label": "移动操作",
@@ -236,12 +253,8 @@
       "size": 177
     },
     {
-      "label": "仿真到现实",
-      "size": 162
-    },
-    {
       "label": "人形强化学习运动控制",
-      "size": 114
+      "size": 112
     },
     {
       "label": "全身控制",

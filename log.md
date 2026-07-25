@@ -1,5 +1,14 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-25] ingest | sources/personal/open_source_qdd_actuator_learning_curator.md — 开源 QDD/力矩关节两类项目与学习阶梯；升格 wiki/comparisons/open-source-qdd-actuator-projects.md；实体 moteus/tinymovr/opentorque/internal-cycloidal/paper-3d-printed-open-source-actuators-legged；深化 odri/berkeley-humanoid-lite/stanford-doggo；交叉 roadmap/depth-torque-motor-design.md
+
+- **策展源：** [`sources/personal/open_source_qdd_actuator_learning_curator.md`](sources/personal/open_source_qdd_actuator_learning_curator.md)
+- **对比主页：** [`wiki/comparisons/open-source-qdd-actuator-projects.md`](wiki/comparisons/open-source-qdd-actuator-projects.md)
+- **新实体：** [`wiki/entities/moteus.md`](wiki/entities/moteus.md)、[`wiki/entities/tinymovr.md`](wiki/entities/tinymovr.md)、[`wiki/entities/opentorque-actuator.md`](wiki/entities/opentorque-actuator.md)、[`wiki/entities/internal-cycloidal-actuator.md`](wiki/entities/internal-cycloidal-actuator.md)、[`wiki/entities/paper-3d-printed-open-source-actuators-legged.md`](wiki/entities/paper-3d-printed-open-source-actuators-legged.md)
+- **深化：** [`wiki/entities/odri-solo-and-bolt.md`](wiki/entities/odri-solo-and-bolt.md)、[`wiki/entities/berkeley-humanoid-lite.md`](wiki/entities/berkeley-humanoid-lite.md)、[`wiki/entities/stanford-doggo-and-pupper.md`](wiki/entities/stanford-doggo-and-pupper.md)、[`wiki/entities/simplefoc.md`](wiki/entities/simplefoc.md)
+- **路线/选型交叉：** [`roadmap/depth-torque-motor-design.md`](roadmap/depth-torque-motor-design.md)、[`wiki/entities/open-source-humanoid-hardware.md`](wiki/entities/open-source-humanoid-hardware.md)、[`wiki/queries/actuator-drive-chain-selection-loop.md`](wiki/queries/actuator-drive-chain-selection-loop.md)
+- **sources：** repos（ODRI/BHL/ICA/OpenTorque/Doggo/moteus/Tinymovr/VESC/Jeong/Ironless）、sites（ODRI/BHL/Aaed/Caden）、paper `2202.12395`
+
 ## [2026-07-25] ingest | sources/repos/open-dreamer.md — Dreamer 4 开源 JAX 复现；升格 wiki/entities/open-dreamer.md；交叉 wiki/overview/world-models-route-03-virtual-sandbox.md、wiki/entities/paper-shenlan-wm-13-dreamerv3.md、wiki/concepts/latent-imagination.md、wiki/methods/generative-world-models.md、wiki/methods/model-based-rl.md；sites: sources/sites/open-dreamer.md；推理仓: sources/repos/reactor-team-open-dreamer.md
 
 ## [2026-07-25] structural | 新增「人形整机硬件设计」纵深路线（第 21 条）：机械 / 电气 / 通信三条设计链

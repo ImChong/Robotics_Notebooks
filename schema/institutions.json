@@ -1590,6 +1590,26 @@
         "reactor-team",
         "reactor-inc"
       ]
+    },
+    "mjbots": {
+      "label": "米杰机器人（mjbots）",
+      "aliases": [
+        "mjbots",
+        "moteus"
+      ]
+    },
+    "motionlayer": {
+      "label": "动作层公司（Motion Layer）",
+      "aliases": [
+        "motionlayer",
+        "tinymovr"
+      ]
+    },
+    "simplefoc": {
+      "label": "简易磁场定向控制（SimpleFOC）",
+      "aliases": [
+        "simplefoc"
+      ]
     }
   }
 }
