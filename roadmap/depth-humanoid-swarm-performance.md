@@ -239,6 +239,7 @@ flowchart LR
   - [WAM（世界–动作模型）](depth-wam.md)
   - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md)
   - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
+  - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md)
   - [安全控制（CLF/CBF）](depth-safe-control.md)
 - 关联知识页：
   - [人形多机协调](../wiki/concepts/humanoid-multi-robot-coordination.md)

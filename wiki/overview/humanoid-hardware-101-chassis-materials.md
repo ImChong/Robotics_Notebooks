@@ -45,6 +45,7 @@ sources:
 ## 关联页面
 
 - [Humanoid Hardware 101 技术地图](./humanoid-hardware-101-technology-map.md)
+- [人形整机机械布局设计](../concepts/humanoid-mechanical-layout-design.md) — 材料之上的构型、惯量分布与刚度公差决策
 - [集成执行器](./humanoid-hardware-101-integrated-actuators.md)
 - [产业与成本地缘](./humanoid-hardware-101-supply-chain-economics.md)
 

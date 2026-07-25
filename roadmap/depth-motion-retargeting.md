@@ -227,6 +227,7 @@ flowchart LR
   - [接触丰富的操作任务](depth-contact-manipulation.md) — 方向 B 灵巧手接触的邻接路线
   - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md)
   - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
+  - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md)
   - [安全控制（CLF/CBF）](depth-safe-control.md)
   - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md)
   - [Loco-Manipulation（移动操作）](depth-loco-manipulation.md)

@@ -1,13 +1,131 @@
 {
   "generated_at": "2026-07-25",
-  "node_count": 1846,
-  "edge_count": 15520,
+  "node_count": 1850,
+  "edge_count": 15667,
   "coverage": {
-    "covered": 1795,
-    "total": 1823,
+    "covered": 1798,
+    "total": 1826,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "roadmap/depth-humanoid-hardware-design.md",
+      "detail_id": "roadmap-depth-humanoid-hardware-design",
+      "label": "路线（纵深）：如果目标是人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）",
+      "type": "roadmap_page",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/concepts/humanoid-mechanical-layout-design.md",
+      "detail_id": "wiki-concepts-humanoid-mechanical-layout-design",
+      "label": "人形整机机械布局设计（构型 → 传动布置 → 质量分布 → 刚度与公差）",
+      "type": "concept",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/concepts/robot-power-distribution-architecture.md",
+      "detail_id": "wiki-concepts-robot-power-distribution-architecture",
+      "label": "机器人整机配电架构（电池 → 母线 → DC/DC → 线束 → 安全回路）",
+      "type": "concept",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/concepts/robot-onboard-communication-architecture.md",
+      "detail_id": "wiki-concepts-robot-onboard-communication-architecture",
+      "label": "机器人整机通信架构（总线分域 → 拓扑 → 时钟同步 → 延迟预算）",
+      "type": "concept",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "roadmap/depth-torque-motor-design.md",
+      "detail_id": "roadmap-depth-torque-motor-design",
+      "label": "路线（纵深）：如果目标是力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环 → 关节模组）",
+      "type": "roadmap_page",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "roadmap/motion-control.md",
+      "detail_id": "roadmap-motion-control",
+      "label": "主路线：运动控制算法工程师成长路线",
+      "type": "roadmap_page",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/overview/humanoid-hardware-101-technology-map.md",
+      "detail_id": "wiki-overview-humanoid-hardware-101-technology-map",
+      "label": "Humanoid Hardware 101：七类子系统技术地图",
+      "type": "overview",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/overview/humanoid-actuator-102-technology-map.md",
+      "detail_id": "wiki-overview-humanoid-actuator-102-technology-map",
+      "label": "Humanoid 执行器 102：八章技术地图",
+      "type": "overview",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/overview/humanoid-hardware-101-chassis-materials.md",
+      "detail_id": "wiki-overview-humanoid-hardware-101-chassis-materials",
+      "label": "Humanoid Hardware 101 · 01：机身与材料",
+      "type": "overview",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/overview/humanoid-hardware-101-power-compute-electronics.md",
+      "detail_id": "wiki-overview-humanoid-hardware-101-power-compute-electronics",
+      "label": "Humanoid Hardware 101 · 05：能源与计算电子",
+      "type": "overview",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/overview/topic-communication.md",
+      "detail_id": "wiki-overview-topic-communication",
+      "label": "硬件通信与协议（专题汇总）",
+      "type": "overview",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/overview/topic-systems-engineering.md",
+      "detail_id": "wiki-overview-topic-systems-engineering",
+      "label": "机器人系统工程（专题汇总）",
+      "type": "overview",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
     {
       "path": "wiki/entities/paper-bioinspired-multimodal-robotics.md",
       "detail_id": "entity-paper-bioinspired-multimodal-robotics",
@@ -88,174 +206,42 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/z1-sdk.md",
-      "detail_id": "entity-z1-sdk",
-      "label": "Unitree Z1 软件栈（z1_sdk 等）",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/unitree-dexterous-hand-services.md",
-      "detail_id": "entity-unitree-dexterous-hand-services",
-      "label": "Unitree 灵巧手 Serial↔DDS 服务",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/unilidar-sdk2.md",
-      "detail_id": "entity-unilidar-sdk2",
-      "label": "UniLidar SDK（L1 / L2）",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/xr-teleoperate.md",
-      "detail_id": "entity-xr-teleoperate",
-      "label": "xr_teleoperate",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/unitree.md",
-      "detail_id": "entity-unitree",
-      "label": "Unitree",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/unitree-ros.md",
-      "detail_id": "entity-unitree-ros",
-      "label": "unitree_ros（Unitree 官方 ROS1 / Gazebo 栈）",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/unitree-unistore.md",
-      "detail_id": "entity-unitree-unistore",
-      "label": "UniStore（宇树应用平台）",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/unitree-model.md",
-      "detail_id": "entity-unitree-model",
-      "label": "unitree_model（已弃用 → Hugging Face）",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/unitree-rl-mjlab.md",
-      "detail_id": "entity-unitree-rl-mjlab",
-      "label": "unitree_rl_mjlab (Unitree 官方 RL 框架)",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/unitree-ros2.md",
-      "detail_id": "entity-unitree-ros2",
-      "label": "unitree_ros2",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/unitree-rl-gym.md",
-      "detail_id": "entity-unitree-rl-gym",
-      "label": "unitree_rl_gym",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/unitree-rl-lab.md",
-      "detail_id": "entity-unitree-rl-lab",
-      "label": "unitree_rl_lab",
-      "type": "entity",
-      "recency": "2026-07-24",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-bioinspired-multimodal-robotics.md",
-    "detail_id": "entity-paper-bioinspired-multimodal-robotics",
-    "label": "仿生多模态机器人综述：五项指标与软硬智能融合",
-    "type": "entity",
+    "path": "roadmap/depth-humanoid-hardware-design.md",
+    "detail_id": "roadmap-depth-humanoid-hardware-design",
+    "label": "路线（纵深）：如果目标是人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）",
+    "type": "roadmap_page",
     "recency": "2026-07-25",
     "source": "log.md",
     "action": "maintained",
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 380
+      "size": 369
     },
     {
-      "label": "仿真到现实",
-      "size": 180
+      "label": "移动操作",
+      "size": 178
     },
     {
       "label": "人形论文深读笔记",
       "size": 177
     },
     {
-      "label": "移动操作",
-      "size": 156
+      "label": "仿真到现实",
+      "size": 162
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 134
+      "size": 114
     },
     {
       "label": "全身控制",
-      "size": 120
+      "size": 106
     }
   ],
   "top_hubs": [
@@ -355,7 +341,8 @@
       "label": "OmniRetarget",
       "type": "entity",
       "degree": 49,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",

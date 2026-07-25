@@ -47,6 +47,7 @@ sources:
 ## 关联页面
 
 - [Humanoid Hardware 101 技术地图](./humanoid-hardware-101-technology-map.md)
+- [机器人整机配电架构](../concepts/robot-power-distribution-architecture.md) — 母线/DC-DC/线束/安全回路的整机侧设计
 - [人形电池热管理 Query](../queries/humanoid-battery-thermal-management.md)
 - [开源人形「大脑」对比](../entities/open-source-humanoid-brains.md)
 - [KiCad（开源 PCB EDA）](../entities/kicad.md)

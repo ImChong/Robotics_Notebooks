@@ -72,6 +72,8 @@ flowchart TB
 ## 关联页面
 
 - [硬件通信与协议专题](./topic-communication.md)
+- [机器人整机配电架构](../concepts/robot-power-distribution-architecture.md) · [机器人整机通信架构](../concepts/robot-onboard-communication-architecture.md)
+- [人形整机硬件设计纵深路线](../../roadmap/depth-humanoid-hardware-design.md)
 - [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md)
 - [Deployment 技术地图](../../tech-map/modules/system/deployment.md)
 
