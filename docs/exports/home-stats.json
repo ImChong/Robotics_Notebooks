@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-25",
   "node_count": 1884,
-  "edge_count": 16019,
+  "edge_count": 16020,
   "coverage": {
     "covered": 1832,
     "total": 1860,
@@ -236,7 +236,7 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 177
+      "size": 211
     },
     {
       "label": "移动操作",
