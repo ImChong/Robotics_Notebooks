@@ -230,6 +230,7 @@ flowchart LR
   - [感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md) — Stage 3 感知进策略的任务侧展开版
   - [模仿学习与技能迁移](depth-imitation-learning.md)
   - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
+  - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md) — Stage 1 执行器/延迟参数的整机侧来源
   - [安全控制（CLF/CBF）](depth-safe-control.md) — Stage 5 方向 A 安全壳的理论侧
   - [接触丰富的操作任务](depth-contact-manipulation.md)
   - [导航（SLAM → VLN → 导航 VLA）](depth-navigation.md)

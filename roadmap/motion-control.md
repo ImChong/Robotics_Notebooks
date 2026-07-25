@@ -33,6 +33,7 @@
   - [如果目标是遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
   - [如果目标是力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环 → 关节模组）](depth-torque-motor-design.md)
   - [如果目标是传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
+  - [如果目标是人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md)
   - [如果目标是安全控制](depth-safe-control.md)
   - [如果目标是接触丰富的操作任务](depth-contact-manipulation.md)
   - [如果目标是导航（SLAM → VLN → 导航 VLA）](depth-navigation.md)
@@ -1378,13 +1379,14 @@ flowchart TD
 
 ## 可选纵深（独立路线页）
 
-主路线偏向"先稳住一条主干"，但实际研究方向往往要继续深入某一个子专题。下面二十条纵深路径**各自是独立的 roadmap 页面**，从主路线的某个阶段衔接出去（按各方向起点里程碑的历史顺序排列，与首页、README 一致）：
+主路线偏向"先稳住一条主干"，但实际研究方向往往要继续深入某一个子专题。下面二十一条纵深路径**各自是独立的 roadmap 页面**，从主路线的某个阶段衔接出去（按各方向起点里程碑的历史顺序排列，与首页、README 一致）：
 
 | 纵深路径 | 适合谁 | 主线衔接点 |
 |---------|------|-----------|
 | [如果目标是遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md) | 想让人实时操控人形并采集高质量示范数据 | 数据侧：L2 后可入，L5 前后串联 |
 | [如果目标是力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环 → 关节模组）](depth-torque-motor-design.md) | 想把关节电机从任务指标做到可验收的力矩闭环模组 | 硬件底座：任意阶段可入，建议 L2 前后 |
 | [如果目标是传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md) | 想把 model-based 主干写成可运行的控制器 | L2 → L4 |
+| [如果目标是人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md) | 想把任务需求做成一台能上电、能跑控制、能交付的整机 | 整机硬件底座：任意阶段可入，建议 L2 前后 |
 | [如果目标是安全控制（CLF / CBF / Safe RL）](depth-safe-control.md) | 想给 WBC / MPC / RL 加可证明的安全约束 | L4.4 / L5 任意 |
 | [如果目标是接触丰富的操作任务](depth-contact-manipulation.md) | 想做装配、插拔、双臂协同等精细接触 | L4.4 / L5.3 之后 |
 | [如果目标是导航（SLAM → Nav2 → VLN → 导航 VLA）](depth-navigation.md) | 想让机器人知道自己在哪、该往哪走 | L7.1 / L7.2 展开 |
@@ -1435,6 +1437,7 @@ flowchart TD
   - [如果目标是遥操作（人形全身遥操作 + 手指遥操作）](depth-teleoperation.md)
   - [如果目标是力矩控制电机设计](depth-torque-motor-design.md)
   - [如果目标是传统模型控制](depth-classical-control.md)
+  - [如果目标是人形整机硬件设计](depth-humanoid-hardware-design.md)
   - [如果目标是安全控制](depth-safe-control.md)
   - [如果目标是接触丰富的操作任务](depth-contact-manipulation.md)
   - [如果目标是导航](depth-navigation.md)

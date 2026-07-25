@@ -234,6 +234,7 @@ flowchart LR
 - 其它纵深路径：
   - [遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](depth-teleoperation.md)
   - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md) — Stage 4 WBC 输出的关节力矩由本路线的力矩闭环兑现
+  - [人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](depth-humanoid-hardware-design.md) — 关节模组之上的整机层：功率/延迟预算与总线拓扑在那里收口
   - [人形 RL 运动控制](depth-rl-locomotion.md) — sim2real 执行器建模（Stage 5）的下游消费者
   - [安全控制（CLF/CBF）](depth-safe-control.md)
   - [接触丰富的操作任务](depth-contact-manipulation.md) — 阻抗/力控接口建立在本路线的力矩模式之上

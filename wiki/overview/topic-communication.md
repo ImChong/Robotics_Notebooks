@@ -40,6 +40,7 @@ summary: "硬件通信与协议专题汇总：从电机驱动固件、现场总�
 | 中间件 | ROS 2 vs LCM | [ROS2 Basics](../concepts/ros2-basics.md)、[ROS2 vs LCM](../comparisons/ros2-vs-lcm.md) |
 | DDS | ROS 2 底层 QoS/RTPS | [DDS 通信机制](../concepts/dds-communication.md) |
 | 时钟 | 分布式同步 | [Clock Synchronization](../concepts/clock-synchronization-algorithms.md) |
+| 整机架构 | 分域/拓扑/延迟预算 | [机器人整机通信架构](../concepts/robot-onboard-communication-architecture.md) |
 | 系统工程 | OS/边云/OTA/安全 FSM | [系统工程专题](./topic-systems-engineering.md) |
 
 ## 与其他专题的关系
@@ -50,6 +51,7 @@ summary: "硬件通信与协议专题汇总：从电机驱动固件、现场总�
 
 ## 关联页面
 
+- [机器人整机通信架构](../concepts/robot-onboard-communication-architecture.md) · [人形整机硬件设计纵深路线](../../roadmap/depth-humanoid-hardware-design.md)
 - [Field-Oriented Control](../concepts/field-oriented-control.md)
 - [EtherCAT vs EtherNet/IP](../comparisons/ethercat-vs-ethernet-ip.md)
 - [ROS2 vs LCM](../comparisons/ros2-vs-lcm.md)

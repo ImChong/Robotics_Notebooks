@@ -14,6 +14,7 @@
 | 想遥操作人形采集数据（全身 + 手指） | [遥操作纵深路线](roadmap/depth-teleoperation.md) |
 | 想设计力矩控制关节电机 | [力矩电机设计纵深路线](roadmap/depth-torque-motor-design.md) |
 | 想学传统模型控制（MPC/WBC）| [传统控制纵深路线](roadmap/depth-classical-control.md) |
+| 想设计人形整机硬件（机械 + 电气 + 通信） | [整机硬件设计纵深路线](roadmap/depth-humanoid-hardware-design.md) |
 | 想学安全控制（CLF/CBF）| [安全控制纵深路线](roadmap/depth-safe-control.md) |
 | 想做接触丰富的操作任务 | [接触操作纵深路线](roadmap/depth-contact-manipulation.md) |
 | 想让机器人自主从 A 到 B | [导航纵深路线](roadmap/depth-navigation.md) |

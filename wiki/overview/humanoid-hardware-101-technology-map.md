@@ -5,6 +5,10 @@ status: complete
 updated: 2026-06-01
 related:
   - ./humanoid-actuator-102-technology-map.md
+  - ../concepts/humanoid-mechanical-layout-design.md
+  - ../concepts/robot-power-distribution-architecture.md
+  - ../concepts/robot-onboard-communication-architecture.md
+  - ../../roadmap/depth-humanoid-hardware-design.md
   - ./humanoid-hardware-101-chassis-materials.md
   - ./humanoid-hardware-101-actuation-sensing-chain.md
   - ./humanoid-hardware-101-linear-transmission-bearings.md
@@ -103,6 +107,10 @@ flowchart TB
 ## 关联页面
 
 - [Humanoid 执行器 102 技术地图](./humanoid-actuator-102-technology-map.md) — 姊妹篇：行走冲击、反射惯量与三大物种选型
+- [人形整机硬件设计纵深路线](../../roadmap/depth-humanoid-hardware-design.md) — 把七类子系统按「指标预算 → 机械 → 电气 → 通信 → 整机验收」串成设计顺序
+- [人形整机机械布局设计](../concepts/humanoid-mechanical-layout-design.md) — 部件之上的整机构型、惯量分布与公差链
+- [机器人整机配电架构](../concepts/robot-power-distribution-architecture.md) — 电池/母线/线束/安全回路的整机侧设计
+- [机器人整机通信架构](../concepts/robot-onboard-communication-architecture.md) — 总线分域、时钟同步与延迟预算
 - [人形硬件选型 Query](../queries/humanoid-hardware-selection.md)
 - [开源人形硬件对比](../entities/open-source-humanoid-hardware.md)
 - [电机驱动与总线协议概览](./motor-drive-firmware-bus-protocols.md)

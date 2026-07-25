@@ -1,5 +1,18 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-25] structural | 新增「人形整机硬件设计」纵深路线（第 21 条）：机械 / 电气 / 通信三条设计链
+
+- **新增路线页：** [`roadmap/depth-humanoid-hardware-design.md`](roadmap/depth-humanoid-hardware-design.md) — Stage 0 指标与质量/功率/延迟三大预算 → Stage 1 构型与机械布局 → Stage 2 结构详设与验证（强度/疲劳/模态/公差链）→ Stage 3 电气架构与配电（母线/DC-DC/线束/E-Stop→STO）→ Stage 4 EMC 接地与 PDU 落板 → Stage 5 通信分域与时序预算（拓扑/同步/延迟）→ Stage 6 整机集成 bring-up 与验收交付（含可仿真数字副本）。
+- **新增知识页（3）：**
+  - [`wiki/concepts/humanoid-mechanical-layout-design.md`](wiki/concepts/humanoid-mechanical-layout-design.md) — 自由度分配、执行器布置、质量/惯量分布、刚度强度公差四层决策
+  - [`wiki/concepts/robot-power-distribution-architecture.md`](wiki/concepts/robot-power-distribution-architecture.md) — 能量链分域、上电时序、分级保护、线束、安全回路与 EMC 接地
+  - [`wiki/concepts/robot-onboard-communication-architecture.md`](wiki/concepts/robot-onboard-communication-architecture.md) — 三层分域、带宽与周期计算、三级时钟同步、端到端延迟预算与降级策略
+- **定位分工：** [力矩电机设计纵深](roadmap/depth-torque-motor-design.md) 交付「一个可信的关节模组」，本路线交付「一台可信的整机」；Stage 3 功率预算与 Stage 5 延迟预算是关节模组交付物的整机侧约束。
+- **排序：** 按起点里程碑历史顺序插在传统控制（ZMP 1972）之后、安全控制（CLF 1983）之前（起点：WABOT-1 全尺寸人形整机，1973）；纵深路线总数 20 → 21。
+- **交叉更新：** [`roadmap/README.md`](roadmap/README.md)、[`roadmap/motion-control.md`](roadmap/motion-control.md)（导航 / 可选纵深表 / 末尾列表）、[`README.md`](README.md)、[`index.md`](index.md)、[`docs/index.html`](docs/index.html)（首页按钮「整机硬件」+ 折叠文案）、[`docs/main.js`](docs/main.js)、[`scripts/utils/community_labels.py`](scripts/utils/community_labels.py)，以及既有 20 条纵深路线的「其它纵深路径」清单。
+- **wiki 侧挂接：** [`wiki/overview/humanoid-hardware-101-technology-map.md`](wiki/overview/humanoid-hardware-101-technology-map.md)、[`wiki/overview/humanoid-actuator-102-technology-map.md`](wiki/overview/humanoid-actuator-102-technology-map.md)、[`wiki/overview/humanoid-hardware-101-chassis-materials.md`](wiki/overview/humanoid-hardware-101-chassis-materials.md)、[`wiki/overview/humanoid-hardware-101-power-compute-electronics.md`](wiki/overview/humanoid-hardware-101-power-compute-electronics.md)、[`wiki/overview/topic-communication.md`](wiki/overview/topic-communication.md)、[`wiki/overview/topic-systems-engineering.md`](wiki/overview/topic-systems-engineering.md)。
+- **门禁：** `make lint` 0 errors；`make ci-preflight` 同步 catalog/exports/搜索索引/统计。
+
 ## [2026-07-25] ingest | sources/blogs/wechat_robot_lecture_bioinspired_multimodal_2026-07-25.md — Agent Reach 抓取「机器人大讲堂」微信导读，补全 wiki/entities/paper-bioinspired-multimodal-robotics.md（三阶段历史、六权衡、指标数值例、切换分类、三模块架构）；raw: sources/raw/wechat_robot_lecture_bioinspired_multimodal_2026-07-25/
 
 ## [2026-07-25] ingest | sources/papers/bioinspired_multimodal_robotics_scirobotics_2026.md — Science Robotics 2026 Review「Bioinspired multimodal robotics」；升格 wiki/entities/paper-bioinspired-multimodal-robotics.md；交叉 wiki/tasks/locomotion.md、wiki/tasks/hybrid-locomotion.md、wiki/entities/paper-aerial-aquatic-remora-hitchhiking-robot.md、wiki/entities/paper-miniature-deep-sea-morphable-robot.md、wiki/entities/paper-octopus-inspired-esoam-soft-arm.md、wiki/entities/paper-learning-to-adapt-bio-inspired-quadruped-gait.md；注册机构 dut
