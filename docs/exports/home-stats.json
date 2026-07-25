@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/ironless-qdd-actuator.md",
+      "detail_id": "entity-ironless-qdd-actuator",
+      "label": "Ironless QDD Actuator（无铁芯转子摆线—行星执行器）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
       "path": "wiki/entities/paper-open-torque-controlled-modular-robot-solo.md",
       "detail_id": "entity-paper-open-torque-controlled-modular-robot-solo",
       "label": "An Open Torque-Controlled Modular Robot Architecture（Solo / ODRI）",
@@ -81,17 +92,6 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/ironless-qdd-actuator.md",
-      "detail_id": "entity-ironless-qdd-actuator",
-      "label": "Ironless QDD Actuator（无铁芯转子摆线—行星执行器）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/entities/pyleecan.md",
@@ -225,13 +225,13 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-open-torque-controlled-modular-robot-solo.md",
-    "detail_id": "entity-paper-open-torque-controlled-modular-robot-solo",
-    "label": "An Open Torque-Controlled Modular Robot Architecture（Solo / ODRI）",
+    "path": "wiki/entities/ironless-qdd-actuator.md",
+    "detail_id": "entity-ironless-qdd-actuator",
+    "label": "Ironless QDD Actuator（无铁芯转子摆线—行星执行器）",
     "type": "entity",
     "recency": "2026-07-25",
     "source": "log.md",
-    "action": "maintained",
+    "action": "added",
     "has_repo": true,
     "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
   },

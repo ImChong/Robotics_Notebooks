@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-25] fix(wiki): ironless-qdd-actuator BOM 美元符被 KaTeX 成对 `$...$` 吞掉
+
+- **页面：** [`wiki/entities/ironless-qdd-actuator.md`](wiki/entities/ironless-qdd-actuator.md)
+- **现象：** 「为什么重要」中 `$40…$70` 被 `docs/main.js` 行内公式正则当成数学，详情页显示成无货币符号的斜体数字
+- **修复：** 改为 `40 USD` / `70 USD` / `约 384 USD`，避开成对 `$`
+
 ## [2026-07-25] ingest | sources/papers/open_torque_controlled_modular_robot_solo_arxiv_1910_00093.md — Grimminger et al. Solo/ODRI 开源力矩控制模块化腿足架构；升格 wiki/entities/paper-open-torque-controlled-modular-robot-solo.md；交叉 wiki/entities/odri-solo-and-bolt.md、wiki/comparisons/open-source-qdd-actuator-projects.md；sites/repos 回链；注册 schema/institutions.json laas
 
 - **论文源：** [`sources/papers/open_torque_controlled_modular_robot_solo_arxiv_1910_00093.md`](sources/papers/open_torque_controlled_modular_robot_solo_arxiv_1910_00093.md)（arXiv:1910.00093 / RA-L 2020）
