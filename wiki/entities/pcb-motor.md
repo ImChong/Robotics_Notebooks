@@ -9,6 +9,8 @@ related:
   - ./kicad.md
   - ./ironless-qdd-actuator.md
   - ./cadenkraft-ironless-axial-flux-motor.md
+  - ../concepts/halbach-array.md
+
   - ./pyleecan.md
   - ../../roadmap/depth-torque-motor-design.md
 sources:
@@ -86,6 +88,8 @@ flowchart LR
 - [开源力矩电机电磁设计完整度对比](../comparisons/open-source-torque-motor-em-design.md)
 - [axfluxmdo](./axfluxmdo.md) · [KiCad](./kicad.md) · [Ironless QDD](./ironless-qdd-actuator.md)
 - [Caden Kraft Ironless Axial Flux Motor](./cadenkraft-ironless-axial-flux-motor.md)
+- [Halbach Array](../concepts/halbach-array.md)
+
 
 ## 参考来源
 

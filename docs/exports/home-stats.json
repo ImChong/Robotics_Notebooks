@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-25",
-  "node_count": 1885,
-  "edge_count": 16051,
+  "node_count": 1889,
+  "edge_count": 16091,
   "coverage": {
-    "covered": 1833,
-    "total": 1861,
+    "covered": 1837,
+    "total": 1865,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -67,6 +67,46 @@
       "detail_id": "wiki-overview-motor-design-workflow",
       "label": "电机设计流程（规格 → 仿真 → 样机 → 控制）",
       "type": "overview",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/concepts/halbach-array.md",
+      "detail_id": "wiki-concepts-halbach-array",
+      "label": "Halbach Array（哈尔巴赫阵列）",
+      "type": "concept",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-mallinson-one-sided-fluxes.md",
+      "detail_id": "entity-paper-mallinson-one-sided-fluxes",
+      "label": "One-sided fluxes — A magnetic curiosity?（Mallinson 1973）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-halbach-permanent-multipole-magnets.md",
+      "detail_id": "entity-paper-halbach-permanent-multipole-magnets",
+      "label": "Design of permanent multipole magnets with oriented REC（Halbach 1980）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-zhu-howe-halbach-pm-machines-review.md",
+      "detail_id": "entity-paper-zhu-howe-halbach-pm-machines-review",
+      "label": "Halbach permanent magnet machines and applications（Zhu & Howe 2001）",
+      "type": "entity",
       "recency": "2026-07-25",
       "source": "log.md",
       "action": "maintained",
@@ -177,49 +217,6 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/comparisons/open-source-qdd-actuator-projects.md",
-      "detail_id": "wiki-comparisons-open-source-qdd-actuator-projects",
-      "label": "开源 QDD / 力矩关节执行器项目对比与学习路线",
-      "type": "comparison",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/benjamin-katz.md",
-      "detail_id": "entity-benjamin-katz",
-      "label": "Benjamin Katz（Ben Katz）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-mini-cheetah-platform.md",
-      "detail_id": "entity-paper-mini-cheetah-platform",
-      "label": "Mini Cheetah: A Platform for Pushing the Limits of Dynamic Quadruped Control",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-wbic-mpc-mini-cheetah.md",
-      "detail_id": "entity-paper-wbic-mpc-mini-cheetah",
-      "label": "Highly Dynamic Quadruped Locomotion via WBIC and MPC",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {

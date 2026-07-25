@@ -5,6 +5,8 @@ status: complete
 updated: 2026-07-25
 related:
   - ./ironless-qdd-actuator.md
+  - ../concepts/halbach-array.md
+  - ./paper-halbach-permanent-multipole-magnets.md
   - ./pcb-motor.md
   - ./axfluxmdo.md
   - ./pygeartrain.md
@@ -90,7 +92,7 @@ flowchart LR
 
 ## 关联页面
 
-- [Ironless QDD Actuator](./ironless-qdd-actuator.md) — Halbach / 无铁芯经验的后续完整开源关节
+- [Halbach Array](../concepts/halbach-array.md) · [Ironless QDD Actuator](./ironless-qdd-actuator.md) — Halbach / 无铁芯经验的后续完整开源关节
 - [PCB Motor](./pcb-motor.md) · [axfluxmdo](./axfluxmdo.md)
 - [开源力矩电机电磁设计完整度对比](../comparisons/open-source-torque-motor-em-design.md)
 - [电机设计流程](../overview/motor-design-workflow.md)
