@@ -88,6 +88,16 @@ flowchart TB
 - **增广：** box 质量 **0.1–8 kg**、边长 **0.2–0.4 m**；chair / shelf mesh 亦可 refine。
 - **计算：** SBTO_skip 约 **20 s / 1 s** motion（112-core CPU）；相对 SPIDER 仿真步约 **0.96×**。
 
+## 结论
+
+**IK + 增量 SBTO 在同一 tracking objective 下做 physics-consistent refinement，填补 kinematic→dynamic 缺口，PPO+DR 零样本上真机 loco-manipulation。**
+
+1. **长时域优于 SBMPC** — OmniRetarget 285 条 G1–box motion 上 SBTO_skip 成功率 76.8% vs SPIDER 37.9%，轨迹更平滑。
+2. **下游 RL 增益** — 精炼参考使 PPO tracking object 成功率 97.09%，对比 OmniRetarget kinematic 79.41%。
+3. **演示增广** — 单条参考可 refine 到不同质量/尺寸/几何（box 质量 0.1–8 kg、边长 0.2–0.4 m，chair / shelf mesh）。
+4. **计算成本** — SBTO_skip 约 20 s / 1 s motion（112-core CPU），相对 SPIDER 仿真步约 0.96×。
+5. **真机与状态** — 展示踢/搬/推/手递等 contact-rich 行为；本页为 Paper Notebooks 14_Human_Motion 索引，深读笔记待撰写。
+
 ## 与其他工作对比
 
 | 方法 | 精炼方式 | 长时域 | OmniRetarget 285 | 开源 |

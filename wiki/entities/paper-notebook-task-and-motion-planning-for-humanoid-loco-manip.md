@@ -47,6 +47,15 @@ Task and Motion Planning for Humanoid Loco-manipulation 的人形机器人学习
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是 Paper Notebooks「progress 待深读」清单中的计划索引实体，深读笔记尚未撰写，仅作占位子节点维持知识图谱完整。**
+
+1. **定位** — Task and Motion Planning for Humanoid Loco-manipulation（arXiv:2508.14099，2025.08），分类 04_Loco-Manipulation_and_WBC。
+2. **当前状态** — 处于 Paper Notebooks 阅读进度「待深读」阶段，深读笔记尚未完成。
+3. **占位作用** — 在笔记完成前作为占位子节点，避免知识图谱缺失该论文实体，便于与总索引及分类父节点交叉检索。
+4. **待补充** — 量化 benchmark、消融与实机指标待深读笔记撰写后补充；笔记完成后应链向笔记站并升格为完整索引实体。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

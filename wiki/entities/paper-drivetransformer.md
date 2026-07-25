@@ -133,6 +133,16 @@ sequenceDiagram
 | 复现入口 | https://github.com/Thinklab-SJTU/DriveTransformer |
 | 工程关注点 | 延迟、帧间一致性、可解释中间量表征、与模块化栈的接口 |
 
+## 结论
+
+**把检测/预测/建图/规划四类 Query 放进同一 Transformer 块并行交互，打破感知→预测→规划级联，换来更好的扩展性与训练稳定性。**
+
+1. **三大特征** — 任务并行（agent/map/planning query 同层互关注）、稀疏表示（query 直接与原始传感器特征交互）、流式处理（Memory Queues 传历史）。
+2. **Bench2Drive 指标** — DriveTransformer-Large 报 Driving Score 63.46、Success Rate 35.01%、Latency 211.7 ms（官方 README），另有 nuScenes 开环。
+3. **相对 UniAD** — 级联可解释但误差累积、难 scale；DriveTransformer 以并行统一块规避。
+4. **已开源** — ICLR 2025，Thinklab-SJTU/DriveTransformer 提供 INSTALL→DATA_PREP→TRAIN_EVAL 与权重。
+5. **局限** — 统一块显存与调参复杂度随 query 种类上升，闭环仿真成功不自动等于真机。
+
 ## 局限与风险
 
 - 统一块的显存与调参复杂度随 query 种类上升。

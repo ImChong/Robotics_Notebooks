@@ -100,6 +100,16 @@ flowchart TB
 - **羽毛球物理仿真** + **节奏随机化**，学习 lift / drop shot 等多样技能。
 - 消融 **w/o Interact.**：SR 跌至 ~0.38，证明仅靠模仿无法完成动态拦截。
 
+## 结论
+
+**Imitation-to-Interaction 四阶段把人形从运动模仿者渐进培养成能击球的 striker，实现首个零样本 sim2real 的拟人羽毛球技能。**
+
+1. **四阶段渐进管线** — MoCap 教师模仿 → DAgger 目标条件蒸馏 → AMP 风格稳定 → 羽毛球物理交互 + 流形扩展。
+2. **流形扩展是泛化关键** — 把稀疏 MoCap 击球点泛化为稠密 interaction volume；消融 w/o Interact. 时 SR 跌至 ~0.38，仅靠模仿无法完成动态拦截。
+3. **AMP 稳空间精度** — 消融 w/o Stab. 时 SR 相近但 MSE 由 0.0062 变差到 0.0094（easy）。
+4. **仿真主结果** — Isaac Lab 物理 200 Hz/策略 50 Hz，SR 0.9516/0.9153、MSE 0.0062/0.0108（easy/hard），优于 E2E-AMP（SR 0.86/0.74）等基线。
+5. **真机** — EngineAI PM01 零样本正手挑球 90%、反手挑球 70% SR（各 10 trials），作者称首个拟人羽毛球零样本 sim2real。
+
 ## 常见误区
 
 1. **≠ 纯 MoCap 跟踪：** 四阶段终点是 **物理击球交互**；停在 Stage 1–2 只是「像人挥拍」，未必触球成功。
