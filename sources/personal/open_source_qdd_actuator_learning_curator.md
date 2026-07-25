@@ -64,5 +64,6 @@
 ## 对 wiki 的映射
 
 - 对比主页：[open-source-qdd-actuator-projects](../../wiki/comparisons/open-source-qdd-actuator-projects.md)
+- 电磁设计完整度（互补）：[open-source-torque-motor-em-design](../../wiki/comparisons/open-source-torque-motor-em-design.md)
 - 纵深路线：[depth-torque-motor-design](../../roadmap/depth-torque-motor-design.md)
 - 既有实体：[odri-solo-and-bolt](../../wiki/entities/odri-solo-and-bolt.md)、[berkeley-humanoid-lite](../../wiki/entities/berkeley-humanoid-lite.md)、[stanford-doggo-and-pupper](../../wiki/entities/stanford-doggo-and-pupper.md)、[simplefoc](../../wiki/entities/simplefoc.md)

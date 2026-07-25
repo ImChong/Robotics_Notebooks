@@ -17,10 +17,12 @@ related:
   - ../entities/stanford-doggo-and-pupper.md
   - ../entities/paper-3d-printed-open-source-actuators-legged.md
   - ../entities/open-source-humanoid-hardware.md
+  - ./open-source-torque-motor-em-design.md
   - ../queries/actuator-drive-chain-selection-loop.md
   - ../../roadmap/depth-torque-motor-design.md
 sources:
   - ../../sources/personal/open_source_qdd_actuator_learning_curator.md
+  - ../../sources/personal/open_source_torque_motor_em_design_curator.md
   - ../../sources/repos/open_robot_actuator_hardware.md
   - ../../sources/repos/berkeley_humanoid_lite.md
   - ../../sources/repos/internal_cycloidal_actuator.md
@@ -97,7 +99,7 @@ flowchart TB
 | **Stanford Doggo** | A | 同步带 QDD | ODrive + Teensy | 高动态跳跃参考；四足非人形 | [Doggo](../entities/stanford-doggo-and-pupper.md) |
 | **Urs et al. 2022** | A（教材型） | 7.5:1 行星 / ~15:1 bilateral | moteus r4.5 | 热/寿命/背隙测全；公开仓链接待核实 | [论文页](../entities/paper-3d-printed-open-source-actuators-legged.md) |
 | **Cycloidal QDD (Jeong)** | A+自制电机 | 双摆线 10:1、180° 相位 | moteus-c1 | 与 BHL/ICA 对照；缺背铁限扭矩 | [Jeong QDD](../entities/cycloidal-quasi-direct-drive-actuator.md) |
-| **Ironless QDD** | B（低成本） | 摆线—行星 | 集成驱动 + 磁编 | BOM~$70；**~29 N·m 是静态保持** | [Ironless](../entities/ironless-qdd-actuator.md) |
+| **Ironless QDD** | B（低成本） | 摆线—行星 | 集成驱动 + 磁编 | BOM~$70；**~29 N·m 是静态保持**；FEMM+36N42P 开源最完整样机之一 → [电磁完整度对比](./open-source-torque-motor-em-design.md) | [Ironless](../entities/ironless-qdd-actuator.md) |
 
 ## 驱动器配套（与电机不可分）
 
@@ -139,6 +141,7 @@ flowchart TB
 
 ## 关联页面
 
+- [开源力矩电机电磁设计完整度对比](./open-source-torque-motor-em-design.md) — 几何/绕组/磁钢/FEM/CAD 六维（本页偏关节系统与驱动）
 - [开源人形硬件方案对比](../entities/open-source-humanoid-hardware.md)
 - [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md)
 - [Actuator 102 · 减速与反射惯量](../overview/humanoid-actuator-102-gear-reflected-inertia.md)

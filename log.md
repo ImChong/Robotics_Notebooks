@@ -1,5 +1,14 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-25] ingest | sources/personal/open_source_torque_motor_em_design_curator.md — 按电磁设计完整度策展开源力矩电机；升格 wiki/comparisons/open-source-torque-motor-em-design.md；实体 ironless-qdd-actuator（加厚）、pyleecan、axfluxmdo、pcb-motor、femm-foc-simulation、acmop；交叉 wiki/comparisons/open-source-qdd-actuator-projects.md、motor-em-simulation-software.md、wiki/overview/motor-design-workflow.md、roadmap/depth-torque-motor-design.md、wiki/queries/actuator-drive-chain-selection-loop.md
+
+- **策展源：** [`sources/personal/open_source_torque_motor_em_design_curator.md`](sources/personal/open_source_torque_motor_em_design_curator.md)
+- **对比主页：** [`wiki/comparisons/open-source-torque-motor-em-design.md`](wiki/comparisons/open-source-torque-motor-em-design.md) — 几何/绕组/磁钢/FEM/CAD/样机六维；结论：Ironless 最完整样机链路
+- **加厚：** [`wiki/entities/ironless-qdd-actuator.md`](wiki/entities/ironless-qdd-actuator.md) — 10010 定子自绕 36N42P、Halbach、FEMM 四象限、保持力矩读法
+- **新实体：** [`wiki/entities/pyleecan.md`](wiki/entities/pyleecan.md)、[`wiki/entities/axfluxmdo.md`](wiki/entities/axfluxmdo.md)、[`wiki/entities/pcb-motor.md`](wiki/entities/pcb-motor.md)、[`wiki/entities/femm-foc-simulation.md`](wiki/entities/femm-foc-simulation.md)、[`wiki/entities/acmop.md`](wiki/entities/acmop.md)
+- **交叉：** [`wiki/comparisons/open-source-qdd-actuator-projects.md`](wiki/comparisons/open-source-qdd-actuator-projects.md)、[`wiki/comparisons/motor-em-simulation-software.md`](wiki/comparisons/motor-em-simulation-software.md)、[`wiki/overview/motor-design-workflow.md`](wiki/overview/motor-design-workflow.md)、[`roadmap/depth-torque-motor-design.md`](roadmap/depth-torque-motor-design.md)、[`wiki/queries/actuator-drive-chain-selection-loop.md`](wiki/queries/actuator-drive-chain-selection-loop.md)
+- **sources：** repos（Ironless 加厚、FEMM-FOC、pcb-motor、axfluxmdo、pyleecan、ACMOP）、sites（axfluxmdo docs、pyleecan.org、Caden 项目页加厚）
+
 ## [2026-07-25] ingest | 补齐独立实体节点：wiki/entities/cycloidal-quasi-direct-drive-actuator.md、ironless-qdd-actuator.md、vesc.md；加厚 opentorque/tinymovr/moteus；交叉 wiki/comparisons/open-source-qdd-actuator-projects.md
 
 - **新独立节点（有细节，非 stub）：**

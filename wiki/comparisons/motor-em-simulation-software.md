@@ -2,7 +2,7 @@
 type: comparison
 tags: [motor, simulation, fem, thermal, cfd, hardware, actuator, humanoid]
 status: complete
-updated: 2026-06-10
+updated: 2026-07-25
 related:
   - ../overview/motor-design-workflow.md
   - ../concepts/motor-torque-speed-curve.md
@@ -10,10 +10,16 @@ related:
   - ../overview/humanoid-actuator-102-thermal-and-control.md
   - ../overview/humanoid-hardware-101-integrated-actuators.md
   - ../overview/humanoid-actuator-102-technology-map.md
+  - ./open-source-torque-motor-em-design.md
+  - ../entities/pyleecan.md
+  - ../entities/axfluxmdo.md
+  - ../entities/femm-foc-simulation.md
+  - ../entities/acmop.md
   - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/personal/motor_curves_and_em_simulation_faq.md
-summary: "电机设计三类仿真（电磁 FEA、流体散热 CFD、热分析）与 Motor-CAD、Maxwell、JMAG、Flux、COMSOL 的选型对照；机器人关节厂常见 Maxwell+Motor-CAD 组合。"
+  - ../../sources/personal/open_source_torque_motor_em_design_curator.md
+summary: "电机设计三类仿真（电磁 FEA、流体散热 CFD、热分析）与 Motor-CAD、Maxwell、JMAG、Flux、COMSOL 的选型对照；并挂接 FEMM/PYLEECAN/axfluxmdo 等开源路径；机器人关节厂常见 Maxwell+Motor-CAD 组合。"
 ---
 
 # 电机电磁与多物理场仿真软件选型
@@ -38,6 +44,7 @@ summary: "电机设计三类仿真（电磁 FEA、流体散热 CFD、热分析�
 - **高端伺服与 IPM、日系汽车供应链**：**JMAG**。
 - **电磁+热+流体+结构一套耦合、研究院所**：**COMSOL Multiphysics**。
 - **机器人关节厂常见组合**：**Maxwell（电磁）+ Motor-CAD（热与效率地图）**。
+- **零许可入门 / 开源重设计**：**FEMM** + [FEMM-FOC](../entities/femm-foc-simulation.md) / [PYLEECAN](../entities/pyleecan.md)；轴向用 [axfluxmdo](../entities/axfluxmdo.md)。固定样机教材见 [电磁设计完整度对比](./open-source-torque-motor-em-design.md)。
 
 ## 三类仿真与典型输出
 
@@ -99,11 +106,12 @@ flowchart LR
 
 ## 人形关节电机学习顺序（建议）
 
-1. **Motor-CAD** — 最快得到 TN、效率地图与温升直觉。
-2. **Maxwell** — 理解电磁细节与行业默认工作流。
-3. **JMAG** — 进阶 IPM、伺服与 NVH。
+1. **（开源入门）FEMM** — 用 [FEMM-FOC](../entities/femm-foc-simulation.md) 或 [Ironless FEMM 资产](../entities/ironless-qdd-actuator.md) 建立磁密/转矩直觉；再用 [PYLEECAN](../entities/pyleecan.md) 做参数化扫描。
+2. **Motor-CAD** — 最快得到 TN、效率地图与温升直觉。
+3. **Maxwell** — 理解电磁细节与行业默认工作流。
+4. **JMAG** — 进阶 IPM、伺服与 NVH。
 
-掌握后可分析：TN/[TI](../concepts/motor-torque-current-curve.md) 曲线、MTPA、齿槽转矩、反电势、效率与连续/峰值功率边界，并与 [热学与力矩控制](../overview/humanoid-actuator-102-thermal-and-control.md) 中的散热目标对照。
+掌握后可分析：TN/[TI](../concepts/motor-torque-current-curve.md) 曲线、MTPA、齿槽转矩、反电势、效率与连续/峰值功率边界，并与 [热学与力矩控制](../overview/humanoid-actuator-102-thermal-and-control.md) 中的散热目标对照。开源项目完整度选型见 [开源力矩电机电磁设计完整度对比](./open-source-torque-motor-em-design.md)。
 
 ## 常见误判
 
@@ -116,6 +124,8 @@ flowchart LR
 
 ## 关联页面
 
+- [开源力矩电机电磁设计完整度对比](./open-source-torque-motor-em-design.md)
+- [PYLEECAN](../entities/pyleecan.md) · [axfluxmdo](../entities/axfluxmdo.md) · [FEMM-FOC](../entities/femm-foc-simulation.md) · [ACMOP](../entities/acmop.md)
 - [电机转矩-转速曲线（TN 曲线）](../concepts/motor-torque-speed-curve.md)
 - [电机转矩-电流曲线（TI 曲线）](../concepts/motor-torque-current-curve.md)
 - [Humanoid 执行器 102 技术地图](../overview/humanoid-actuator-102-technology-map.md)
@@ -125,9 +135,12 @@ flowchart LR
 ## 参考来源
 
 - [motor_curves_and_em_simulation_faq.md](../../sources/personal/motor_curves_and_em_simulation_faq.md)
+- [开源力矩电机电磁设计策展](../../sources/personal/open_source_torque_motor_em_design_curator.md)
 
 ## 推荐继续阅读
 
 - [Ansys Motor-CAD](https://www.ansys.com/products/electronics/ansys-motor-cad)
 - [Ansys Maxwell](https://www.ansys.com/products/electronics/ansys-maxwell)
 - [JMAG 官网](https://www.jmag-international.com/)
+- FEMM：<http://www.femm.info/>
+- PYLEECAN：<https://www.pyleecan.org/>

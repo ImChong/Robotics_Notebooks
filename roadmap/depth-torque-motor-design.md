@@ -99,12 +99,15 @@ flowchart LR
 ### 推荐读什么
 - [电机设计流程](../wiki/overview/motor-design-workflow.md) 步骤 2–5（拓扑槽极 → FEA → 热与 CFD → 机械集成）
 - [电机电磁与多物理场仿真软件选型](../wiki/comparisons/motor-em-simulation-software.md)
+- [开源力矩电机电磁设计完整度对比](../wiki/comparisons/open-source-torque-motor-em-design.md) — Ironless（样机+FEMM）→ FEMM-FOC → PYLEECAN/axfluxmdo 重设计
+- [Ironless QDD Actuator](../wiki/entities/ironless-qdd-actuator.md) — 36N42P + Halbach + 开源 FEMM 的低成本关节样机
 - [Internal Cycloidal Actuator](../wiki/entities/internal-cycloidal-actuator.md) — 外转子 + 定子内嵌减速的开源一体设计（学气隙半径、槽极绕组与同轴集成）
+- [PYLEECAN](../wiki/entities/pyleecan.md) · [FEMM-FOC-Simulation](../wiki/entities/femm-foc-simulation.md)
 - [Actuator 102 · 04：热学与力矩控制](../wiki/overview/humanoid-actuator-102-thermal-and-control.md)
 - [Query：人形机器人电池与热管理指南](../wiki/queries/humanoid-battery-thermal-management.md) — 关节热预算与整机热链路的衔接
 
 ### 推荐做什么
-- 用 Motor-CAD / Maxwell（或免费的 FEMM）对同一定子扫 2–3 组槽极方案，对比齿槽转矩、纹波与 \(K_t\)
+- 打开 Ironless `FEMM/` 或跑 FEMM-FOC Lua，建立磁密/转矩直觉；再用 Motor-CAD / Maxwell / [PYLEECAN](../wiki/entities/pyleecan.md) 对同一定子扫 2–3 组槽极方案，对比齿槽转矩、纹波与 \(K_t\)
 - 做一次温升仿真，把"允许连续工作区"画回 TN 图，体会连续区比电磁峰值缩水多少
 
 ### 学完输出什么
@@ -274,6 +277,7 @@ flowchart LR
 - [电机测功机一手资料索引](../sources/sites/motor_dynamometer_primary_refs.md)（GB/T 43200、IEC 60034-2-1、Magtrol 手册、ODrive 开源对拖、AIP 关节对拖）
 - [Humanoid 执行器 102 系列](../wiki/overview/humanoid-actuator-102-technology-map.md)（sources：执行器 102 微信长文）
 - [开源 QDD / 力矩关节执行器学习策展](../sources/personal/open_source_qdd_actuator_learning_curator.md) 与 [对比页](../wiki/comparisons/open-source-qdd-actuator-projects.md)
+- [开源力矩电机电磁设计完整度策展](../sources/personal/open_source_torque_motor_em_design_curator.md) 与 [对比页](../wiki/comparisons/open-source-torque-motor-em-design.md)
 - [磁场定向控制（FOC）逐步推导](../wiki/formalizations/field-oriented-control-derivation.md)
 - Blaschke, *The Principle of Field Orientation as Applied to the New Transvektor Closed-Loop Control System* (1972) — FOC 起点
 - Wensing et al., *Proprioceptive Actuator Design in the MIT Cheetah* (IEEE T-RO, 2017) — QDD/本体感知执行器设计范式

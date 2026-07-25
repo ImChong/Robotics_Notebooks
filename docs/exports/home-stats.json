@@ -1,21 +1,21 @@
 {
   "generated_at": "2026-07-25",
-  "node_count": 1860,
-  "edge_count": 15801,
+  "node_count": 1866,
+  "edge_count": 15868,
   "coverage": {
-    "covered": 1808,
-    "total": 1836,
+    "covered": 1814,
+    "total": 1842,
     "percent": 98
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/cycloidal-quasi-direct-drive-actuator.md",
-      "detail_id": "entity-cycloidal-quasi-direct-drive-actuator",
-      "label": "Cycloidal Quasi-Direct Drive Actuator（Jeong 双摆线 QDD）",
-      "type": "entity",
+      "path": "wiki/comparisons/open-source-torque-motor-em-design.md",
+      "detail_id": "wiki-comparisons-open-source-torque-motor-em-design",
+      "label": "开源机器人力矩电机：电磁设计完整度对比",
+      "type": "comparison",
       "recency": "2026-07-25",
       "source": "log.md",
-      "action": "added",
+      "action": "maintained",
       "has_repo": true,
       "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
@@ -31,9 +31,115 @@
       "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
+      "path": "wiki/overview/motor-design-workflow.md",
+      "detail_id": "wiki-overview-motor-design-workflow",
+      "label": "电机设计流程（规格 → 仿真 → 样机 → 控制）",
+      "type": "overview",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "roadmap/depth-torque-motor-design.md",
+      "detail_id": "roadmap-depth-torque-motor-design",
+      "label": "路线（纵深）：如果目标是力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环 → 关节模组）",
+      "type": "roadmap_page",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/queries/actuator-drive-chain-selection-loop.md",
+      "detail_id": "wiki-queries-actuator-drive-chain-selection-loop",
+      "label": "Query：执行器驱动链选型闭环知识链",
+      "type": "query",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/ironless-qdd-actuator.md",
       "detail_id": "entity-ironless-qdd-actuator",
       "label": "Ironless QDD Actuator（无铁芯转子摆线—行星执行器）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/pyleecan.md",
+      "detail_id": "entity-pyleecan",
+      "label": "PYLEECAN（径向磁通电机开源设计框架）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/axfluxmdo.md",
+      "detail_id": "entity-axfluxmdo",
+      "label": "axfluxmdo（轴向磁通电机多学科优化工具包）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/pcb-motor.md",
+      "detail_id": "entity-pcb-motor",
+      "label": "PCB Motor（PCB 定子轴向磁通电机）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/femm-foc-simulation.md",
+      "detail_id": "entity-femm-foc-simulation",
+      "label": "FEMM-FOC-Simulation（FEMM 磁场定向控制教学仿真）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/acmop.md",
+      "detail_id": "entity-acmop",
+      "label": "ACMOP（交流电机自动优化框架）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/comparisons/motor-em-simulation-software.md",
+      "detail_id": "wiki-comparisons-motor-em-simulation-software",
+      "label": "电机电磁与多物理场仿真软件选型",
+      "type": "comparison",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/cycloidal-quasi-direct-drive-actuator.md",
+      "detail_id": "entity-cycloidal-quasi-direct-drive-actuator",
+      "label": "Cycloidal Quasi-Direct Drive Actuator（Jeong 双摆线 QDD）",
       "type": "entity",
       "recency": "2026-07-25",
       "source": "log.md",
@@ -107,16 +213,6 @@
       "has_repo": true
     },
     {
-      "path": "roadmap/depth-torque-motor-design.md",
-      "detail_id": "roadmap-depth-torque-motor-design",
-      "label": "路线（纵深）：如果目标是力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环 → 关节模组）",
-      "type": "roadmap_page",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
       "path": "wiki/entities/internal-cycloidal-actuator.md",
       "detail_id": "entity-internal-cycloidal-actuator",
       "label": "Internal Cycloidal Actuator（内嵌摆线一体执行器）",
@@ -126,136 +222,39 @@
       "action": "added",
       "has_repo": true,
       "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-3d-printed-open-source-actuators-legged.md",
-      "detail_id": "entity-paper-3d-printed-open-source-actuators-legged",
-      "label": "3D Printed Open-Source Actuators for Legged Locomotion",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/berkeley-humanoid-lite.md",
-      "detail_id": "entity-berkeley-humanoid-lite",
-      "label": "Berkeley Humanoid Lite（BHL）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/simplefoc.md",
-      "detail_id": "entity-simplefoc",
-      "label": "SimpleFOC（Arduino-FOC 生态）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/open-source-humanoid-hardware.md",
-      "detail_id": "entity-open-source-humanoid-hardware",
-      "label": "开源人形机器人硬件方案对比",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/queries/actuator-drive-chain-selection-loop.md",
-      "detail_id": "wiki-queries-actuator-drive-chain-selection-loop",
-      "label": "Query：执行器驱动链选型闭环知识链",
-      "type": "query",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/open-dreamer.md",
-      "detail_id": "entity-open-dreamer",
-      "label": "Open Dreamer",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/world-models-route-03-virtual-sandbox.md",
-      "detail_id": "wiki-overview-world-models-route-03-virtual-sandbox",
-      "label": "世界模型路线 03：虚拟沙盒",
-      "type": "overview",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-shenlan-wm-13-dreamerv3.md",
-      "detail_id": "entity-paper-shenlan-wm-13-dreamerv3",
-      "label": "DreamerV3",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/latent-imagination.md",
-      "detail_id": "wiki-concepts-latent-imagination",
-      "label": "Latent Imagination (潜空间想象)",
-      "type": "concept",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/cycloidal-quasi-direct-drive-actuator.md",
-    "detail_id": "entity-cycloidal-quasi-direct-drive-actuator",
-    "label": "Cycloidal Quasi-Direct Drive Actuator（Jeong 双摆线 QDD）",
-    "type": "entity",
+    "path": "wiki/comparisons/open-source-torque-motor-em-design.md",
+    "detail_id": "wiki-comparisons-open-source-torque-motor-em-design",
+    "label": "开源机器人力矩电机：电磁设计完整度对比",
+    "type": "comparison",
     "recency": "2026-07-25",
     "source": "log.md",
-    "action": "added",
+    "action": "maintained",
     "has_repo": true,
     "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 366
-    },
-    {
-      "label": "人形论文深读笔记",
-      "size": 211
+      "size": 370
     },
     {
       "label": "移动操作",
       "size": 178
     },
     {
+      "label": "人形论文深读笔记",
+      "size": 177
+    },
+    {
       "label": "仿真到现实",
-      "size": 148
+      "size": 162
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 112
+      "size": 114
     },
     {
       "label": "全身控制",
