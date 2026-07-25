@@ -1,16 +1,18 @@
 ---
-
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned, mit]
 status: planned
-updated: 2026-06-26
+updated: 2026-07-25
 venue: curated
 related:
   - ../overview/paper-notebook-category-12-hardware-design.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ./paper-low-cost-modular-actuator-katz.md
+  - ../../roadmap/depth-torque-motor-design.md
 sources:
   - ../../sources/papers/humanoid_pnb_proprioceptive-actuator-design-in-the-mit-cheeta.md
-summary: "Proprioceptive actuator design in the MIT Cheetah：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+  - ../../sources/papers/low_cost_modular_actuator_katz_mit_2018.md
+summary: "Proprioceptive actuator design in the MIT Cheetah：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。低成本模块化落地见 Katz 2018 thesis。"
 ---
 
 # Proprioceptive actuator design in the MIT Cheetah
@@ -51,13 +53,16 @@ Proprioceptive actuator design in the MIT Cheetah 的人形机器人学习论文
 
 - 分类父节点：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- 低成本模块化落地（COTS 电机 + 6:1 行星）：[Katz Mini Cheetah 执行器 thesis](./paper-low-cost-modular-actuator-katz.md)
 
 ## 参考来源
 
 - [humanoid_pnb_proprioceptive-actuator-design-in-the-mit-cheeta.md](../../sources/papers/humanoid_pnb_proprioceptive-actuator-design-in-the-mit-cheeta.md)
+- [Katz 2018 thesis 归档](../../sources/papers/low_cost_modular_actuator_katz_mit_2018.md)
 - [Humanoid Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 
 
 ## 推荐继续阅读
 
 - [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [Katz · A Low Cost Modular Actuator（Mini Cheetah）](./paper-low-cost-modular-actuator-katz.md)
