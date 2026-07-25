@@ -1618,6 +1618,35 @@
         "vedderb",
         "vesc-project"
       ]
+    },
+    "eomys": {
+      "label": "埃奥米工程（Eomys）",
+      "aliases": [
+        "eomys",
+        "pyleecan",
+        "green-forge-coop"
+      ]
+    },
+    "axfluxmdo": {
+      "label": "轴向磁通电机优化（axfluxmdo）",
+      "aliases": [
+        "axfluxmdo",
+        "jman4162"
+      ]
+    },
+    "femm-foc-simulation": {
+      "label": "磁场定向仿真项目（FEMM-FOC-Simulation）",
+      "aliases": [
+        "femm-foc-simulation",
+        "yoga-cycle"
+      ]
+    },
+    "acmop": {
+      "label": "交流电机优化项目（ACMOP）",
+      "aliases": [
+        "acmop",
+        "horychen"
+      ]
     }
   }
 }

@@ -2,21 +2,25 @@
 type: overview
 tags: [motor, actuator, hardware, humanoid, design, foc, simulation]
 status: complete
-updated: 2026-07-24
+updated: 2026-07-25
 related:
   - ../concepts/motor-torque-speed-curve.md
   - ../concepts/motor-torque-current-curve.md
   - ../comparisons/motor-em-simulation-software.md
+  - ../comparisons/open-source-torque-motor-em-design.md
   - ../concepts/field-oriented-control.md
   - ../formalizations/field-oriented-control-derivation.md
   - ./humanoid-actuator-102-technology-map.md
   - ./humanoid-hardware-101-integrated-actuators.md
   - ../entities/simplefoc.md
+  - ../entities/pyleecan.md
+  - ../entities/ironless-qdd-actuator.md
 sources:
   - ../../sources/sites/ansys_motor_cad_electric_machine_design.md
   - ../../sources/personal/motor_curves_and_em_simulation_faq.md
   - ../../sources/sites/simplefoc_documentation.md
-summary: "关节电机从指标定义、电磁/热仿真、样机台架到 FOC 驱动验证的标准迭代流程；人形选型需同时满足 TN/TI 曲线与连续散热边界。"
+  - ../../sources/personal/open_source_torque_motor_em_design_curator.md
+summary: "关节电机从指标定义、电磁/热仿真、样机台架到 FOC 驱动验证的标准迭代流程；人形选型需同时满足 TN/TI 曲线与连续散热边界；开源路径挂接 Ironless/PYLEECAN/FEMM。"
 ---
 
 # 电机设计流程（规格 → 仿真 → 样机 → 控制）
@@ -157,6 +161,8 @@ flowchart TD
 - [力矩电机设计纵深路线（Stage 0–6 学习顺序展开版）](../../roadmap/depth-torque-motor-design.md)
 - [电机测功机（Dynamometer）](../concepts/motor-dynamometer.md)
 - [电机电磁仿真软件选型](../comparisons/motor-em-simulation-software.md)
+- [开源力矩电机电磁设计完整度对比](../comparisons/open-source-torque-motor-em-design.md)
+- [Ironless QDD](../entities/ironless-qdd-actuator.md) · [PYLEECAN](../entities/pyleecan.md)
 - [电机转矩-转速曲线（TN 曲线）](../concepts/motor-torque-speed-curve.md)
 - [电机转矩-电流曲线（TI 曲线）](../concepts/motor-torque-current-curve.md)
 - [磁场定向控制（FOC）](../concepts/field-oriented-control.md)
@@ -168,6 +174,7 @@ flowchart TD
 - [motor_curves_and_em_simulation_faq.md](../../sources/personal/motor_curves_and_em_simulation_faq.md)
 - [simplefoc_documentation.md](../../sources/sites/simplefoc_documentation.md)
 - [motor_dynamometer_primary_refs.md](../../sources/sites/motor_dynamometer_primary_refs.md)
+- [开源力矩电机电磁设计策展](../../sources/personal/open_source_torque_motor_em_design_curator.md)
 
 ## 推荐继续阅读
 
