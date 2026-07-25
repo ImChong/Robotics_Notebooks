@@ -6,6 +6,7 @@ updated: 2026-07-25
 related:
   - ./humanoid-robot.md
   - ./anymal.md
+  - ./mit-mini-cheetah.md
   - ./paper-discrete-terrain-minimal-proximity-sensing.md
   - ./boston-dynamics.md
   - ./paper-autonomous-spot-nebula-exploration.md
@@ -14,7 +15,6 @@ related:
   - ./unitree.md
   - ./paper-barkour-quadruped-agility-benchmark.md
   - ./paper-apt-rl-agile-perceptive-quadruped-locomotion.md
-  - ./mit-mini-cheetah.md
   - ./legged-gym.md
   - ../tasks/locomotion.md
   - ../tasks/hybrid-locomotion.md
@@ -57,6 +57,7 @@ summary: "四足机器人是以四条腿与环境间歇接触的腿足平台，�
 | **Spot** | Boston Dynamics | 工业巡检与商业化四足标杆 | [Boston Dynamics](./boston-dynamics.md)；研究侧见 [NeBula 探索](./paper-autonomous-spot-nebula-exploration.md)、[RL Sim2Real](./paper-spot-rl-distributional-sim2real.md)、[控制专利栈](./patent-boston-dynamics-legged-control-stack.md) |
 | **ANYmal** | ANYbotics / ETH | 高端工业与顶尖学术 RL 载体 | [ANYmal](./anymal.md) |
 | **Go2 / B2** | Unitree | 科研与量产带宽大、生态活跃 | [Unitree](./unitree.md) |
+| **Mini Cheetah** | MIT Biomimetic Robotics Lab | 学术高动态 / Convex MPC 与 RL 教材平台（**部分开源**） | [MIT Mini Cheetah](./mit-mini-cheetah.md) |
 
 更多品牌索引见 [市面知名机器人平台纵览](../overview/notable-commercial-robot-platforms.md)。
 

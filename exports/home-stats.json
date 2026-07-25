@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-25",
   "node_count": 1883,
-  "edge_count": 16015,
+  "edge_count": 16030,
   "coverage": {
     "covered": 1831,
     "total": 1859,
@@ -94,6 +94,70 @@
       "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     },
     {
+      "path": "wiki/entities/mit-mini-cheetah.md",
+      "detail_id": "entity-mit-mini-cheetah",
+      "label": "MIT Mini Cheetah（学习栈与开源边界）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-low-cost-modular-actuator-katz.md",
+      "detail_id": "entity-paper-low-cost-modular-actuator-katz",
+      "label": "A Low Cost Modular Actuator for Dynamic Robots（Katz / Mini Cheetah）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/concepts/srbd-convex-mpc-wbc.md",
+      "detail_id": "wiki-concepts-srbd-convex-mpc-wbc",
+      "label": "SRBD + 凸 MPC + WBC",
+      "type": "concept",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/concepts/mpc-wbc-integration.md",
+      "detail_id": "wiki-concepts-mpc-wbc-integration",
+      "label": "MPC 与 WBC 集成：人形机器人 locomotion 的典型控制架构",
+      "type": "concept",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/entities/quadruped-robot.md",
+      "detail_id": "entity-quadruped-robot",
+      "label": "四足机器人（Quadruped Robot）",
+      "type": "entity",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/comparisons/open-source-qdd-actuator-projects.md",
+      "detail_id": "wiki-comparisons-open-source-qdd-actuator-projects",
+      "label": "开源 QDD / 力矩关节执行器项目对比与学习路线",
+      "type": "comparison",
+      "recency": "2026-07-25",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
       "path": "wiki/entities/benjamin-katz.md",
       "detail_id": "entity-benjamin-katz",
       "label": "Benjamin Katz（Ben Katz）",
@@ -102,17 +166,6 @@
       "source": "log.md",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/mit-mini-cheetah.md",
-      "detail_id": "entity-mit-mini-cheetah",
-      "label": "MIT Mini Cheetah",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
       "path": "wiki/entities/paper-mini-cheetah-platform.md",
@@ -167,56 +220,6 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-bledt-rpc-thesis.md",
-      "detail_id": "entity-paper-bledt-rpc-thesis",
-      "label": "Regularized Predictive Control Framework（Bledt Thesis）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-extracting-legged-locomotion-heuristics-rpc.md",
-      "detail_id": "entity-paper-extracting-legged-locomotion-heuristics-rpc",
-      "label": "Extracting Legged Locomotion Heuristics with RPC",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-variational-underactuated-balancing-quadruped.md",
-      "detail_id": "entity-paper-variational-underactuated-balancing-quadruped",
-      "label": "Variational-Based Optimal Control of Underactuated Balancing",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-robust-autonomous-navigation-mini-cheetah-vision.md",
-      "detail_id": "entity-paper-robust-autonomous-navigation-mini-cheetah-vision",
-      "label": "Robust Autonomous Navigation of Mini-Cheetah Vision",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-concurrent-policy-estimator-locomotion.md",
-      "detail_id": "entity-paper-concurrent-policy-estimator-locomotion",
-      "label": "Concurrent Training of Control Policy and State Estimator",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -245,15 +248,15 @@
     },
     {
       "label": "仿真到现实",
-      "size": 137
-    },
-    {
-      "label": "全身控制",
-      "size": 132
+      "size": 156
     },
     {
       "label": "人形强化学习运动控制",
       "size": 121
+    },
+    {
+      "label": "全身控制",
+      "size": 119
     }
   ],
   "top_hubs": [
@@ -268,7 +271,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 348,
+      "degree": 349,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

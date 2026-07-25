@@ -6,6 +6,7 @@ updated: 2026-07-25
 venue: "MIT S.M. thesis 2018"
 code: https://github.com/bgkatz/3phase_integrated
 related:
+  - ./mit-mini-cheetah.md
   - ../comparisons/open-source-qdd-actuator-projects.md
   - ./paper-notebook-proprioceptive-actuator-design-in-the-mit-cheeta.md
   - ./paper-open-torque-controlled-modular-robot-solo.md
@@ -126,7 +127,7 @@ sequenceDiagram
 
 - **复现入口**：PCB/BOM → [`bgkatz/3phase_integrated`](https://github.com/bgkatz/3phase_integrated)；固件优先 [`bgkatz/motorcontrol`](https://github.com/bgkatz/motorcontrol) 或 mbed `Hobbyking_Cheetah_Compact` / `HKC_MiniCheetah`；多关节桥 [`bgkatz/SPIne`](https://github.com/bgkatz/SPIne)；表征数据 [`bgkatz/actuator`](https://github.com/bgkatz/actuator)。
 - **机械**：thesis **未**提供壳体/行星箱完整 CAD——复制机械需自行按文中尺寸/齿号反求或参考后续社区项目。
-- **整机控制栈**：日后 `mit-biomimetics/Cheetah-Software` 等与 Mini Cheetah 生态相关，但不在本 thesis 附录承诺范围内。
+- **整机控制栈**：见平台总览 [MIT Mini Cheetah](./mit-mini-cheetah.md) 与官方 [`mit-biomimetics/Cheetah-Software`](https://github.com/mit-biomimetics/Cheetah-Software)；本 thesis 附录不承诺整机控制软件。
 
 ## 工程实践
 
@@ -169,7 +170,7 @@ sequenceDiagram
 3. **传动按冲击选型**：太阳轮与轴承裕度要对最大碰撞速度，不单对电机峰值。
 4. **开源预期管理**：可复现的是**驱动与固件**；机械需自行机加或另寻社区 CAD。
 5. **高动态动作**：准模型 + 离线优化力矩回放，在透明执行器上可以「第一次就成功」；着陆策略往往比起飞跟踪更关键。
-6. **读完下一步**：对照 [开源 QDD 对比](../comparisons/open-source-qdd-actuator-projects.md) 选 ODRI/OpenTorque 等补齐可复制机械，或沿 [力矩电机纵深](../../roadmap/depth-torque-motor-design.md) 进入驱动与热设计。
+6. **读完下一步**：先读平台总览 [MIT Mini Cheetah](./mit-mini-cheetah.md)；再对照 [开源 QDD 对比](../comparisons/open-source-qdd-actuator-projects.md) 选 ODRI/OpenTorque 等补齐可复制机械，或沿 [力矩电机纵深](../../roadmap/depth-torque-motor-design.md) 进入驱动与热设计。
 
 ## 局限与风险
 
@@ -181,6 +182,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [MIT Mini Cheetah（学习栈与开源边界）](./mit-mini-cheetah.md)
 - [开源 QDD 执行器项目对比](../comparisons/open-source-qdd-actuator-projects.md)
 - [Proprioceptive actuator design in the MIT Cheetah（计划页）](./paper-notebook-proprioceptive-actuator-design-in-the-mit-cheeta.md)
 - [Solo / ODRI 架构论文](./paper-open-torque-controlled-modular-robot-solo.md)
