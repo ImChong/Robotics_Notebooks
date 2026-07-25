@@ -3,8 +3,10 @@
 type: entity
 tags: [robot, hardware, humanoid, quadruped, industry, mit]
 status: complete
-updated: 2026-07-05
+updated: 2026-07-25
 related:
+  - ./benjamin-katz.md
+  - ./mit-mini-cheetah.md
   - ./humanoid-robot.md
   - ./quadruped-robot.md
   - ./paper-autonomous-spot-nebula-exploration.md

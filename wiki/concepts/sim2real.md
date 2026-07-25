@@ -48,7 +48,7 @@ related:
   - ../entities/paper-mujica-wheel-legged-multi-skill.md
   - ../entities/paper-aware-wheeled-legged-reflexive-evasion.md
 summary: "Sim2Real 关注如何把仿真中学到的策略稳定迁移到真实机器人，是机器人学习落地的核心鸿沟。"
-updated: 2026-07-24
+updated: 2026-07-25
 sources:
   - ../../sources/papers/physx_omni_arxiv_2605_21572.md
   - ../../sources/courses/isaac_lab_implicit_explicit_actuators.md

@@ -1,6 +1,8 @@
 ---
 type: concept
 summary: "Optimal Control 研究如何在动力学约束下最优地生成控制序列，是 MPC、trajectory optimization 和 RL 的共同上游。"
+updated: 2026-07-25
+
 ---
 
 # Optimal Control (OCP)

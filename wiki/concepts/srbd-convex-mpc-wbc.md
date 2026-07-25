@@ -2,7 +2,7 @@
 type: concept
 tags: [mpc, wbc, srbd, convex-optimization, humanoid, model-based]
 status: complete
-updated: 2026-07-14
+updated: 2026-07-25
 summary: "单刚体动力学（SRBD）+ 凸 MPC + WBC：把机身简化为单刚体做凸 MPC 质心规划，再由 WBC 跟踪，是人形实时行走的工程主流折中。"
 related:
   - ../methods/model-predictive-control.md

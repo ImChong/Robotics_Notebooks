@@ -2,7 +2,7 @@
 type: entity
 tags: [quadruped, legged, hardware, platform, locomotion]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-25
 related:
   - ./humanoid-robot.md
   - ./anymal.md
@@ -14,6 +14,7 @@ related:
   - ./unitree.md
   - ./paper-barkour-quadruped-agility-benchmark.md
   - ./paper-apt-rl-agile-perceptive-quadruped-locomotion.md
+  - ./mit-mini-cheetah.md
   - ./legged-gym.md
   - ../tasks/locomotion.md
   - ../tasks/hybrid-locomotion.md
@@ -103,6 +104,10 @@ summary: "四足机器人是以四条腿与环境间歇接触的腿足平台，�
 - [四足控制学习策展](./quadruped-control-curriculum.md)
 - [MATRiX 仿真平台](./matrix-simulation-platform.md)
 - [RoamerX 导航栈](./roamerx-navigation.md)
+
+## 关联页面
+
+- [MIT Mini Cheetah](./mit-mini-cheetah.md) — 学术高动态小四足实验床
 
 ## 参考来源
 

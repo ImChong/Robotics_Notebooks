@@ -1,5 +1,28 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+
+## [2026-07-25] ingest | sources/blogs/robot_daycare_mini_cheetah_2019.md — Robot Daycare / bgkatz / Mini Cheetah；博文清单 12 篇论文各升格独立实体；平台与人物节点
+
+- **站点/人物：** [`sources/sites/robot-daycare.md`](sources/sites/robot-daycare.md) → [`wiki/entities/benjamin-katz.md`](wiki/entities/benjamin-katz.md)（MIT → Boston Dynamics Atlas → Physical Intelligence）
+- **GitHub：** [`sources/repos/bgkatz.md`](sources/repos/bgkatz.md)；控制栈 [`sources/repos/cheetah-software.md`](sources/repos/cheetah-software.md)
+- **博文：** [`sources/blogs/robot_daycare_mini_cheetah_2019.md`](sources/blogs/robot_daycare_mini_cheetah_2019.md)
+- **平台：** [`wiki/entities/mit-mini-cheetah.md`](wiki/entities/mit-mini-cheetah.md)
+- **12 篇独立论文实体（博文清单）：**
+  1. [`paper-mini-cheetah-platform`](wiki/entities/paper-mini-cheetah-platform.md)
+  2. [`paper-wbic-mpc-mini-cheetah`](wiki/entities/paper-wbic-mpc-mini-cheetah.md)
+  3. [`paper-vision-aided-dynamic-exploration-mini-cheetah`](wiki/entities/paper-vision-aided-dynamic-exploration-mini-cheetah.md)
+  4. [`paper-hs-ddp-legged`](wiki/entities/paper-hs-ddp-legged.md)
+  5. [`paper-mhpc`](wiki/entities/paper-mhpc.md)
+  6. [`paper-bledt-rpc-thesis`](wiki/entities/paper-bledt-rpc-thesis.md)
+  7. [`paper-extracting-legged-locomotion-heuristics-rpc`](wiki/entities/paper-extracting-legged-locomotion-heuristics-rpc.md)
+  8. [`paper-variational-underactuated-balancing-quadruped`](wiki/entities/paper-variational-underactuated-balancing-quadruped.md)
+  9. [`paper-robust-autonomous-navigation-mini-cheetah-vision`](wiki/entities/paper-robust-autonomous-navigation-mini-cheetah-vision.md)
+  10. [`paper-concurrent-policy-estimator-locomotion`](wiki/entities/paper-concurrent-policy-estimator-locomotion.md)
+  11. [`paper-learning-to-jump-from-pixels`](wiki/entities/paper-learning-to-jump-from-pixels.md)
+  12. [`paper-rapid-locomotion-rl`](wiki/entities/paper-rapid-locomotion-rl.md)（博文名 Agile Locomotion via Model-free Learning）
+- **开源核查：** Cheetah-Software / rapid-locomotion-rl / HS-DDP-MATLAB 已归档；Jump 项目页无代码；机构注册 `notre-dame`、`boston-dynamics`
+- **交叉：** [`mpc-wbc-integration`](wiki/concepts/mpc-wbc-integration.md)、[`quadruped-robot`](wiki/entities/quadruped-robot.md)、[`privileged_training`](sources/papers/privileged_training.md)（修正 Concurrent 文 arXiv 为 2202.05481）
+
 ## [2026-07-25] ingest | sources/papers/open_torque_controlled_modular_robot_solo_arxiv_1910_00093.md — Grimminger et al. Solo/ODRI 开源力矩控制模块化腿足架构；升格 wiki/entities/paper-open-torque-controlled-modular-robot-solo.md；交叉 wiki/entities/odri-solo-and-bolt.md、wiki/comparisons/open-source-qdd-actuator-projects.md；sites/repos 回链；注册 schema/institutions.json laas
 
 - **论文源：** [`sources/papers/open_torque_controlled_modular_robot_solo_arxiv_1910_00093.md`](sources/papers/open_torque_controlled_modular_robot_solo_arxiv_1910_00093.md)（arXiv:1910.00093 / RA-L 2020）
