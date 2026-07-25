@@ -63,6 +63,7 @@
 - [cuRobo](wiki/entities/curobo.md) — cuRobo**（仓库名 `curobo`）把机器人 **运动生成** 里算得最重的部分——**运动学、有符号距离与连续碰撞、数值优化、几何种子、轨迹优化**——搬到 **GPU** 上 **批量 `📅unknown` `[entity_page]`
 - [Curr-0（Current Robotics · Loco-Dexterous Manipulation）](wiki/entities/current-robotics-curr0.md) — Curr-0** 是 **Current Robotics**（2026-06 博客发布）对外阐述的 **第一代人形 loco-dexterous manipulation 基础系统**：把  `📅unknown` `[entity_page]`
 - [Cyclo Intelligence](wiki/entities/cyclo-intelligence.md) — Cyclo Intelligence** 是 ROBOTIS 发布的 **开源 Physical AI 全栈平台**（[ROBOTIS-GI `📅unknown` `[entity_page]`
+- [Cycloidal Quasi-Direct Drive Actuator（Jeong 双摆线 QDD）](wiki/entities/cycloidal-quasi-direct-drive-actuator.md) — Cycloidal Quasi-Direct Drive Actuator**（[JeongSeoJin/quasi-direct-drive-actuator](https://github.c `📅unknown` `[entity_page]`
 - [Darwin Skill（达尔文.skill）](wiki/entities/darwin-skill.md) — Darwin Skill** 是 alchaincyf/darwin-skill 仓库分发的 **元 s `📅unknown` `[entity_page]`
 - [BABEL（BFM 行为数据）](wiki/entities/dataset-bfm-babel.md) — BABEL** 列入 awesome-bfm-papers 数据集表（2021 · C `📅unknown` `[entity_page]`
 - [HumanML3D（BFM 行为数据）](wiki/entities/dataset-bfm-humanml3d.md) — HumanML3D** 列入 awesome-bfm-papers 数据集表（2022 `📅unknown` `[entity_page]`
@@ -160,6 +161,7 @@
 - [InMoov（开源 3D 打印人形）](wiki/entities/inmoov-humanoid.md) — InMoov** 是 **Gael Langevin** 自 2012 年起维护的 **全球首个开源 3D 打印真人比例人形** 项目：以 **Arduino** 控制、**MyRobotLab `📅unknown` `[entity_page]`
 - [Intel RealSense 深度相机](wiki/entities/intel-realsense.md) — Intel RealSense** 是一族消费级 **RGB-D 深度相机**（主动红外立体等方案），输出对齐的彩色与深度，是人形系统课感知章与大量 G1 真 `📅unknown` `[entity_page]`
 - [Internal Cycloidal Actuator（内嵌摆线一体执行器）](wiki/entities/internal-cycloidal-actuator.md) — Internal Cycloidal Actuator** 是 Aaed Musa 的开源一体关节：[GitHub CAD/BOM](https://github.com/aaedmusa/Int `📅unknown` `[entity_page]`
+- [Ironless QDD Actuator（无铁芯转子摆线—行星执行器）](wiki/entities/ironless-qdd-actuator.md) — Ironless QDD Actuator**（[CKraft11/Ironless-QDD-Actuator](https://github.com/CKraft11/Ironless-QDD- `📅unknown` `[entity_page]`
 - [Isaac GR00T（人形 VLA 开发平台）](wiki/entities/isaac-gr00t.md) — Isaac GR00T** 是 NVIDIA 面向通用人形机器人的 **开源开发平台**：以 [Isaac-GR00T](https://github.com/NVIDIA/Isaac-GR00T `📅unknown` `[entity_page]`
 - [Isaac Gym / Isaac Sim / Isaac Lab](wiki/entities/isaac-gym-isaac-lab.md) — Isaac Gym**、**Isaac Sim** 与 **Isaac Lab** 是 NVIDIA 机器人仿真与学习生态里需要分开理解的三个产品节点。 `📅unknown` `[entity_page]`
 - [Isaac Gym](wiki/entities/isaac-gym.md) — Isaac Gym** 是 NVIDIA 早期推出的 GPU 加速机器人强化学习仿真框架，主打「在单张 GPU 上同时跑几千到上万个环境」的大规模并行训练。 `📅unknown` `[entity_page]`
@@ -223,7 +225,7 @@
 - [mocap_retarget](wiki/entities/mocap-retarget.md) — mocap_retarget**（<https://github.com/ccrpRepo/mocap_retarget>）是社区维护的 **动捕数据重定向到机器人** 的工程向示例仓库，侧重脚本 `📅unknown` `[entity_page]`
 - [Modern Robotics (Lynch-Park 教材)](wiki/entities/modern-robotics-book.md) — Modern Robotics: Mechanics, Planning, and Control** 是 Kevin M. Lynch（Northwestern）与 Frank C. Park（ `📅unknown` `[entity_page]`
 - [MolmoMotion](wiki/entities/molmo-motion.md) — MolmoMotion**（Ai2 博客 | [arXiv:2606.18558](https://arxiv.o `📅unknown` `[entity_page]`
-- [moteus（mjbots 关节驱动器）](wiki/entities/moteus.md) — moteus** 是 mjbots 的开源无刷电机控制器栈（GitHub）：驱动 `📅unknown` `[entity_page]`
+- [moteus（mjbots 关节驱动器）](wiki/entities/moteus.md) — moteus** 是 mjbots 的开源无刷伺服控制器栈（GitHub）：多板 `📅unknown` `[entity_page]`
 - [motion_imitation（四足模仿动物）](wiki/entities/motion-imitation-quadruped.md) — motion_imitation**（<https://github.com/erwincoumans/motion_imitation>）是 Xue Bin Peng 等论文 [*Learnin `📅unknown` `[entity_page]`
 - [MotionCode™](wiki/entities/motioncode.md) — MotionCode**（官网 motioncode.ai）将自身定位为「解码人体运动」的实体，公开业务拆为 **Move / Media /  `📅2026-05-07` `[entity_page]`
 - [Motrix (Motphys 机器人仿真与训练平台)](wiki/entities/motrix.md) — Motrix** 是由 Motphys 开发的高性能机器人物理仿真与强化学习训练平台。它由核心仿真引擎 **MotrixSim** 和上层学习框架 **MotrixLab** 组成，旨在为机器人研 `📅unknown` `[entity_page]`
@@ -1178,7 +1180,7 @@
 - [TensorRT](wiki/entities/tensorrt.md) — NVIDIA TensorRT** 是 NVIDIA 的 **深度学习推理加速 SDK 生态**：在 **build 阶段**将训练好的网络（常见入口为 ONNX 或 P `📅2026-06-25` `[entity_page]`
 - [TidyBot2](wiki/entities/tidybot2.md) — TidyBot2** 是一个面向 **家庭场景物品整理** 的 **移动操作机器人** 研究平台：项目主页 **[tidybot2.github.io](https://tidybot2.gith `📅unknown` `[entity_page]`
 - [天工 Lite / Pro（开源人形）](wiki/entities/tienkung-humanoid-open-source.md) — 天工（TienKung）** Lite / Pro 是**北京人形机器人创新中心（X-Humanoid）**推动的开源人形母平台：云端文档总览、[官网开源页 `📅unknown` `[entity_page]`
-- [Tinymovr（紧凑开源关节驱动）](wiki/entities/tinymovr.md) — Tinymovr** 是紧凑型开源无刷电机控制器（历史组织 `tinymovr`，现主仓 [motionlayer/Tinymovr](https://github.com/motionlayer `📅unknown` `[entity_page]`
+- [Tinymovr（紧凑开源关节驱动）](wiki/entities/tinymovr.md) — Tinymovr**（现属 Motion Layer，仓 [motionlayer/Tinymovr](https://github. `📅unknown` `[entity_page]`
 - [Tnkr](wiki/entities/tnkr.md) — Tnkr**（tnkr.ai）公开定位为 **「robotics 的 GitHub」**：把机器人项目里长期分散的 **机械设计、电气接线、控制软件、现场部 `📅unknown` `[entity_page]`
 - [TurtleBot3](wiki/entities/turtlebot3.md) — TurtleBot3** 是 **ROBOTIS** 生态中的 **开源移动机器人** 教育平台：硬件参数、软件栈与仿真入口集中在 **[TurtleBot3 eManual](https://e `📅unknown` `[entity_page]`
 - [UnifoLM-VLA-0（unifolm-vla）](wiki/entities/unifolm-vla.md) — UnifoLM-VLA-0** 是 UnifoLM 系列中的 **Vision–Language–Action** 大模型，强调在机器人操作数据上的持续预训练，使模型从视觉–语言理解走向带物理常识 `📅unknown` `[entity_page]`
@@ -1207,6 +1209,7 @@
 - [URDF-Studio](wiki/entities/urdf-studio.md) — URDF-Studio** 是由 OpenLegged 社区开发的一款专业级** Web 机器人设计与组装工作站**。它不仅是一个查看器，更是一个涵盖了从拓扑设计到硬件物料管理（BOM）的全流程工 `📅unknown` `[entity_page]`
 - [URKL（Ultimate Robot Knock-out Legend · EngineAI 人形格斗联赛）](wiki/entities/urkl.md) — URKL** 是深圳 **众擎机器人（ENGINEAI）** 发起并主办的 **全尺寸人形机器人格斗联赛**：全球队伍在 **同一 T800 硬件平台** 上比拼 **运控、平衡、感知与战术算法 `📅unknown` `[entity_page]`
 - [Vast.ai](wiki/entities/vast-ai.md) — Vast.ai**（vast.ai）运营 **GPU 算力市场**：分散主机报价，用户按价格、显存、可靠性分数租卡，是国外 **极致低价** 实验路径。 `📅unknown` `[entity_page]`
+- [VESC（开源大电流电机驱动）](wiki/entities/vesc.md) — VESC**（vesc-project.com）是 Benjamin Vedder 发起的开源电机控制器生态：固件仓 [vedderb/b `📅unknown` `[entity_page]`
 - [VideoMimic](wiki/entities/videomimic.md) — VideoMimic**（<https://github.com/hongsukchoi/VideoMimic>，<https://videomimic.github.io/>）实现 **视频驱动 `📅unknown` `[entity_page]`
 - [VINS-Fusion](wiki/entities/vins-fusion.md) — VINS-Fusion** 提供 **滑动窗口优化** 的视觉-惯性里程计与可选 GPS 融合。 `📅unknown` `[entity_page]`
 - [Vision Banana](wiki/entities/vision-banana.md) — Vision Banana**（*Image Generators are Generalist Vision Learners*，arXiv:2604.20329，[项目页](https://v `📅unknown` `[entity_page]`

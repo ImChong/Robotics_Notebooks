@@ -165,7 +165,7 @@ flowchart TD
 - [KiCad（开源 EDA）](../entities/kicad.md) — ①层开源电路设计真值
 - [Altium Designer（商用 EDA）](../entities/altium-designer.md) — ①层商用量产向 EDA
 - [SimpleFOC（开源 FOC 生态）](../entities/simplefoc.md) — ②层开源驱动固件（教学/低功率）
-- [moteus](../entities/moteus.md) · [Tinymovr](../entities/tinymovr.md) — ②层关节向开源驱动（PCB + 固件 + CAN/CAN-FD）
+- [moteus](../entities/moteus.md) · [Tinymovr](../entities/tinymovr.md) · [VESC](../entities/vesc.md) — ②层关节/功率向开源驱动
 - [开源 QDD 执行器项目对比](../comparisons/open-source-qdd-actuator-projects.md) — 完整关节 / 电机本体开源项目选型与学习阶梯
 - [BAM（执行器摩擦辨识）](../entities/bam-better-actuator-models.md) — ③层显式摩擦辨识路线
 - [NeuralActuator（神经执行器建模）](../entities/paper-neuralactuator-neural-actuation-modeling.md) — ③层数据驱动执行器网络路线

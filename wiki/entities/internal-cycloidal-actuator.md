@@ -6,10 +6,13 @@ updated: 2026-07-25
 related:
   - ../comparisons/open-source-qdd-actuator-projects.md
   - ./berkeley-humanoid-lite.md
+  - ./cycloidal-quasi-direct-drive-actuator.md
+  - ./ironless-qdd-actuator.md
   - ./opentorque-actuator.md
   - ./odri-solo-and-bolt.md
   - ../../roadmap/depth-torque-motor-design.md
   - ../overview/humanoid-actuator-102-gear-reflected-inertia.md
+  - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/repos/internal_cycloidal_actuator.md
   - ../../sources/sites/aaedmusa_internal_cycloidal_actuator.md
@@ -88,6 +91,8 @@ flowchart TB
 - [开源 QDD 执行器项目对比](../comparisons/open-source-qdd-actuator-projects.md)
 - [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md)
 - [Berkeley Humanoid Lite](./berkeley-humanoid-lite.md)
+- [Cycloidal QDD（Jeong）](./cycloidal-quasi-direct-drive-actuator.md)
+- [Ironless QDD](./ironless-qdd-actuator.md)
 - [ODRI Solo / Bolt](./odri-solo-and-bolt.md)
 - [力矩电机设计纵深](../../roadmap/depth-torque-motor-design.md)
 

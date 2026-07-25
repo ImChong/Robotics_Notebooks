@@ -9,4 +9,5 @@
 - **入库日期：** 2026-07-25
 - **一句话说明：** Caden Kraft 项目长文：无铁芯（Halbach）转子、成品定子、摆线—行星减速、集成驱动与磁编；强调低成本全 3D 打印。
 - **开源状态：** **已开源**
-- **仓库归档：** [ironless_qdd_actuator.md](../repos/ironless_qdd_actuator.md)
+- 仓库归档：[ironless_qdd_actuator.md](../repos/ironless_qdd_actuator.md)
+- **沉淀到 wiki：** [ironless-qdd-actuator](../../wiki/entities/ironless-qdd-actuator.md)

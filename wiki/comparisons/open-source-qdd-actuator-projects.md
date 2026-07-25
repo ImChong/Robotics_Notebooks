@@ -8,8 +8,11 @@ related:
   - ../entities/berkeley-humanoid-lite.md
   - ../entities/internal-cycloidal-actuator.md
   - ../entities/opentorque-actuator.md
+  - ../entities/cycloidal-quasi-direct-drive-actuator.md
+  - ../entities/ironless-qdd-actuator.md
   - ../entities/moteus.md
   - ../entities/tinymovr.md
+  - ../entities/vesc.md
   - ../entities/simplefoc.md
   - ../entities/stanford-doggo-and-pupper.md
   - ../entities/paper-3d-printed-open-source-actuators-legged.md
@@ -23,7 +26,11 @@ sources:
   - ../../sources/repos/internal_cycloidal_actuator.md
   - ../../sources/repos/opentorque_actuator.md
   - ../../sources/repos/stanford_doggo_project.md
+  - ../../sources/repos/quasi_direct_drive_actuator.md
+  - ../../sources/repos/ironless_qdd_actuator.md
   - ../../sources/repos/moteus.md
+  - ../../sources/repos/tinymovr.md
+  - ../../sources/repos/vesc_bldc.md
   - ../../sources/papers/3d_printed_open_source_actuators_legged_arxiv_2202_12395.md
 summary: "开源力矩/QDD 关节选型对比：两类项目（成品电机+开源关节 vs 电机本体也开源）与优先学习清单；驱动器配套 SimpleFOC→moteus/Tinymovr→VESC；优先深读 ODRI、Berkeley Humanoid Lite、Internal Cycloidal。"
 ---
@@ -89,8 +96,8 @@ flowchart TB
 | **OpenTorque** | A | 同步带低减速 | VESC | 快速样机；体积/抗冲击不足人形量产 | [OpenTorque](../entities/opentorque-actuator.md) |
 | **Stanford Doggo** | A | 同步带 QDD | ODrive + Teensy | 高动态跳跃参考；四足非人形 | [Doggo](../entities/stanford-doggo-and-pupper.md) |
 | **Urs et al. 2022** | A（教材型） | 7.5:1 行星 / ~15:1 bilateral | moteus r4.5 | 热/寿命/背隙测全；公开仓链接待核实 | [论文页](../entities/paper-3d-printed-open-source-actuators-legged.md) |
-| **Cycloidal QDD (Jeong)** | A（减速侧重） | 双摆线 180° 相位 | — | 与 BHL 对照学平衡与背隙 | [sources](../../sources/repos/quasi_direct_drive_actuator.md) |
-| **Ironless QDD** | B（低成本） | 摆线—行星 | 集成驱动 + 磁编 | BOM&lt;$75；**~30 N·m 是静态保持** | [sources](../../sources/repos/ironless_qdd_actuator.md) |
+| **Cycloidal QDD (Jeong)** | A+自制电机 | 双摆线 10:1、180° 相位 | moteus-c1 | 与 BHL/ICA 对照；缺背铁限扭矩 | [Jeong QDD](../entities/cycloidal-quasi-direct-drive-actuator.md) |
+| **Ironless QDD** | B（低成本） | 摆线—行星 | 集成驱动 + 磁编 | BOM~$70；**~29 N·m 是静态保持** | [Ironless](../entities/ironless-qdd-actuator.md) |
 
 ## 驱动器配套（与电机不可分）
 
@@ -98,8 +105,8 @@ flowchart TB
 |------|------------|------------|
 | [SimpleFOC](../entities/simplefoc.md) | Clarke/Park、dq 电流、编码器对齐 | 人形高功率最终驱动 |
 | [moteus](../entities/moteus.md) | 关节驱动 PCB、FOC、CAN-FD、力矩模式 | —（优先关节向开源驱动） |
-| [Tinymovr](../entities/tinymovr.md) | 小型驱动原理图/PCB/固件与上位机 | 大电流腿关节峰值 |
-| VESC（[bldc](../../sources/repos/vesc_bldc.md)） | 大电流功率级 | 专为高频关节协议优化的假设 |
+| [Tinymovr](../entities/tinymovr.md) | 小型驱动原理图/PCB/固件与上位机（注意 v3.1+ 源码私有） | 大电流腿关节峰值 |
+| [VESC](../entities/vesc.md) | 大电流功率级与 FOC 工具链 | 专为高频关节协议优化的假设 |
 
 ## 建议学习顺序
 
@@ -136,7 +143,7 @@ flowchart TB
 - [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md)
 - [Actuator 102 · 减速与反射惯量](../overview/humanoid-actuator-102-gear-reflected-inertia.md)
 - [力矩电机设计纵深路线](../../roadmap/depth-torque-motor-design.md)
-- [ODRI](../entities/odri-solo-and-bolt.md) · [BHL](../entities/berkeley-humanoid-lite.md) · [Internal Cycloidal](../entities/internal-cycloidal-actuator.md) · [moteus](../entities/moteus.md)
+- [ODRI](../entities/odri-solo-and-bolt.md) · [BHL](../entities/berkeley-humanoid-lite.md) · [Internal Cycloidal](../entities/internal-cycloidal-actuator.md) · [Jeong QDD](../entities/cycloidal-quasi-direct-drive-actuator.md) · [Ironless](../entities/ironless-qdd-actuator.md) · [moteus](../entities/moteus.md) · [VESC](../entities/vesc.md)
 
 ## 参考来源
 
@@ -147,6 +154,10 @@ flowchart TB
 - [OpenTorque-Actuator](../../sources/repos/opentorque_actuator.md)
 - [StanfordDoggoProject](../../sources/repos/stanford_doggo_project.md)
 - [moteus](../../sources/repos/moteus.md)
+- [Tinymovr](../../sources/repos/tinymovr.md)
+- [VESC](../../sources/repos/vesc_bldc.md)
+- [Jeong 双摆线 QDD](../../sources/repos/quasi_direct_drive_actuator.md)
+- [Ironless QDD](../../sources/repos/ironless_qdd_actuator.md)
 - [3D Printed Open-Source Actuators 论文](../../sources/papers/3d_printed_open_source_actuators_legged_arxiv_2202_12395.md)
 
 ## 推荐继续阅读

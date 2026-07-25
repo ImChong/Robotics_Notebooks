@@ -1,5 +1,14 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-25] ingest | 补齐独立实体节点：wiki/entities/cycloidal-quasi-direct-drive-actuator.md、ironless-qdd-actuator.md、vesc.md；加厚 opentorque/tinymovr/moteus；交叉 wiki/comparisons/open-source-qdd-actuator-projects.md
+
+- **新独立节点（有细节，非 stub）：**
+  - [`wiki/entities/cycloidal-quasi-direct-drive-actuator.md`](wiki/entities/cycloidal-quasi-direct-drive-actuator.md) — Jeong 双摆线 10:1 + 36N42P + moteus-c1
+  - [`wiki/entities/ironless-qdd-actuator.md`](wiki/entities/ironless-qdd-actuator.md) — Caden Kraft Halbach 无铁芯 + 摆线行星
+  - [`wiki/entities/vesc.md`](wiki/entities/vesc.md) — vedderb/bldc + bldc-hardware
+- **加厚既有节点：** [`opentorque-actuator`](wiki/entities/opentorque-actuator.md)、[`tinymovr`](wiki/entities/tinymovr.md)（标明 v3.1+ 源码私有）、[`moteus`](wiki/entities/moteus.md)（板型规格表）
+- **未新建重复节点：** ODRI 仍用 [`odri-solo-and-bolt`](wiki/entities/odri-solo-and-bolt.md)；Doggo 仍用 [`stanford-doggo-and-pupper`](wiki/entities/stanford-doggo-and-pupper.md)；BHL/SimpleFOC/Internal Cycloidal/Urs 论文沿用既有页
+
 ## [2026-07-25] ingest | sources/personal/open_source_qdd_actuator_learning_curator.md — 开源 QDD/力矩关节两类项目与学习阶梯；升格 wiki/comparisons/open-source-qdd-actuator-projects.md；实体 moteus/tinymovr/opentorque/internal-cycloidal/paper-3d-printed-open-source-actuators-legged；深化 odri/berkeley-humanoid-lite/stanford-doggo；交叉 roadmap/depth-torque-motor-design.md
 
 - **策展源：** [`sources/personal/open_source_qdd_actuator_learning_curator.md`](sources/personal/open_source_qdd_actuator_learning_curator.md)

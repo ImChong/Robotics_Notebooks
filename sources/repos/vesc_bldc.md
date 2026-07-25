@@ -11,7 +11,7 @@
 - **入库日期：** 2026-07-25
 - **一句话说明：** 完整 FOC 固件与驱动硬件设计，适合学大电流功率级；最初非专为高频机器人关节控制设计。
 - **开源状态：** **已开源**（许可需按仓库文件确认；API 对 license 字段常为 null）
-- **沉淀到 wiki：** [open-source-qdd-actuator-projects](../../wiki/comparisons/open-source-qdd-actuator-projects.md)、[opentorque-actuator](../../wiki/entities/opentorque-actuator.md)
+- **沉淀到 wiki：** [vesc](../../wiki/entities/vesc.md)、[opentorque-actuator](../../wiki/entities/opentorque-actuator.md)、[open-source-qdd-actuator-projects](../../wiki/comparisons/open-source-qdd-actuator-projects.md)
 
 ---
 
@@ -19,3 +19,7 @@
 
 - 强项：功率级、FOC、社区工具链。
 - 弱项（相对关节驱动）：控制周期与协议生态未必按「人形 1 kHz 力矩环 + CAN-FD」优化；常见于航模/滑板/OpenTorque 类 DIY 关节。
+
+## 对 wiki 的映射
+
+- [VESC](../../wiki/entities/vesc.md)

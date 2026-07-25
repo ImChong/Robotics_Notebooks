@@ -13,7 +13,7 @@
 - **一句话说明：** 低成本无铁芯转子 + 摆线—行星组合减速 + 集成驱动与磁编的 3D 打印 QDD；BOM 约 &lt;$75，报告静态保持约 30 N·m。
 - **开源状态：** **已开源**
 - **项目页归档：** [cadenkraft_ironless_cycloidal_planetary_actuator.md](../sites/cadenkraft_ironless_cycloidal_planetary_actuator.md)
-- **沉淀到 wiki：** [open-source-qdd-actuator-projects](../../wiki/comparisons/open-source-qdd-actuator-projects.md)
+- **沉淀到 wiki：** [ironless-qdd-actuator](../../wiki/entities/ironless-qdd-actuator.md)
 
 ---
 
@@ -28,4 +28,5 @@
 
 ## 对 wiki 的映射
 
+- [Ironless QDD Actuator](../../wiki/entities/ironless-qdd-actuator.md)
 - [开源 QDD 执行器项目对比](../../wiki/comparisons/open-source-qdd-actuator-projects.md)
