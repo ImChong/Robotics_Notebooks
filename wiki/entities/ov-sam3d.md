@@ -7,9 +7,11 @@ related:
   - ../queries/go2-3d-semantic-mapping-sam-pipeline.md
   - ./dualmap.md
   - ./ovo-semantic-mapping.md
+  - ./paper-segment-anything.md
   - ./point-lio-unilidar.md
 sources:
   - ../../sources/repos/ov-sam3d.md
+  - ../../sources/papers/segment_anything_arxiv_2304_02643.md
 summary: "OV-SAM3D 是训练无关的开放词汇 3D 场景理解框架：超点粗 mask 经多视角 SAM 反投影修正，再结合 RAM 开放标签与重叠分数合并实例；偏离线点云理解。"
 ---
 
@@ -25,7 +27,7 @@ summary: "OV-SAM3D 是训练无关的开放词汇 3D 场景理解框架：超点
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| SAM | Segment Anything Model | 多视角二维 mask 来源 |
+| SAM | Segment Anything Model | 多视角二维 mask 来源；见 [paper-segment-anything](./paper-segment-anything.md) |
 | RAM | Recognize Anything Model | 开放世界图像标签 |
 | OV | Open-Vocabulary | 不依赖闭集 3D 训练集的标签空间 |
 | 3D | Three-Dimensional | 输出为三维实例 mask / 特征 |

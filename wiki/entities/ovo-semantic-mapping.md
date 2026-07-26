@@ -5,12 +5,15 @@ status: complete
 updated: 2026-07-26
 related:
   - ../queries/go2-3d-semantic-mapping-sam-pipeline.md
+  - ./paper-sam2.md
+  - ./paper-segment-anything.md
   - ./dualmap.md
   - ./ov-sam3d.md
   - ./orb-slam3.md
   - ../overview/navigation-slam-autonomy-stack.md
 sources:
   - ../../sources/repos/ovo-semantic-mapping.md
+  - ../../sources/papers/sam2_arxiv_2408_00714.md
 summary: "OVO 是开放词汇在线三维语义映射：对有位姿 RGB-D 关键帧用 SAM2 初始化 mask、跟踪 3D 实例并融合 CLIP；可接 ORB-SLAM / Gaussian-SLAM，支持回环场景。"
 ---
 
@@ -27,7 +30,7 @@ summary: "OVO 是开放词汇在线三维语义映射：对有位姿 RGB-D 关�
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
 | OVO | Open-Vocabulary Online | 本系统缩写：在线开放词汇语义映射 |
-| SAM2 | Segment Anything Model 2 | 默认二维 mask 初始化（亦兼容 SAM1） |
+| SAM2 | Segment Anything Model 2 | 默认二维 mask 初始化（亦兼容 SAM1）；见 [paper-sam2](./paper-sam2.md) |
 | CLIP | Contrastive Language–Image Pretraining | 实例级开放词汇描述 |
 | RGB-D | RGB + Depth | 主输入模态 |
 | SLAM | Simultaneous Localization and Mapping | 可对接 ORB- / Gaussian-SLAM |
@@ -36,7 +39,7 @@ summary: "OVO 是开放词汇在线三维语义映射：对有位姿 RGB-D 关�
 ## 为什么重要
 
 - 强调 **在线 + 低内存 footprint**，并演示与完整 SLAM（含回环）端到端，而不只依赖真值位姿。
-- 官方直接支持 **SAM 2**，与「先 mask 再投到 3D」叙事一致。
+- 官方直接支持 **[SAM 2](./paper-sam2.md)**，与「先 mask 再投到 3D」叙事一致。
 - 相对 [DualMap](./dualmap.md) 更偏 RGB-D SLAM 研究栈；相对 [OV-SAM3D](./ov-sam3d.md) 更偏在线而非离线超点流水线。
 
 ## 核心信息
@@ -71,6 +74,7 @@ summary: "OVO 是开放词汇在线三维语义映射：对有位姿 RGB-D 关�
 ## 关联页面
 
 - [GO2 三维语义建图与 SAM 流水线](../queries/go2-3d-semantic-mapping-sam-pipeline.md)
+- [SAM 2](./paper-sam2.md) / [SAM](./paper-segment-anything.md) — 2D mask 前端基础模型
 - [DualMap](./dualmap.md)
 - [OV-SAM3D](./ov-sam3d.md)
 - [ORB-SLAM3](./orb-slam3.md)
@@ -79,9 +83,11 @@ summary: "OVO 是开放词汇在线三维语义映射：对有位姿 RGB-D 关�
 ## 参考来源
 
 - [sources/repos/ovo-semantic-mapping.md](../../sources/repos/ovo-semantic-mapping.md)
+- [sam2_arxiv_2408_00714.md](../../sources/papers/sam2_arxiv_2408_00714.md) — SAM 2 基础模型归档
 - 项目页：<https://tberriel.github.io/ovo/>
 - arXiv：<https://arxiv.org/abs/2411.15043>
 
 ## 推荐继续阅读
 
 - 上游仓：<https://github.com/tberriel/OVO>
+- [SAM 2 官方仓](https://github.com/facebookresearch/sam2)
