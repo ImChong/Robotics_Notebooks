@@ -1,13 +1,56 @@
 {
   "generated_at": "2026-07-26",
-  "node_count": 1902,
-  "edge_count": 16297,
+  "node_count": 1903,
+  "edge_count": 16309,
   "coverage": {
-    "covered": 1850,
-    "total": 1878,
+    "covered": 1851,
+    "total": 1879,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md",
+      "detail_id": "wiki-queries-go2-3d-semantic-mapping-sam-pipeline",
+      "label": "GO2 三维语义建图与 SAM 流水线",
+      "type": "query",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/point-lio-unilidar.md",
+      "detail_id": "entity-point-lio-unilidar",
+      "label": "point_lio_unilidar",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "运动控制（Locomotion） 社区"
+    },
+    {
+      "path": "wiki/overview/navigation-slam-autonomy-stack.md",
+      "detail_id": "wiki-overview-navigation-slam-autonomy-stack",
+      "label": "导航·SLAM·自动驾驶开源栈总览",
+      "type": "overview",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-real-time-polygonal-semantic-mapping-for-humanoi.md",
+      "detail_id": "entity-paper-notebook-real-time-polygonal-semantic-mapping-for-humanoi",
+      "label": "Real-Time Polygonal Semantic Mapping for Humanoid Robot Stair Climbing",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
+    },
     {
       "path": "wiki/entities/onnxruntime.md",
       "detail_id": "entity-onnxruntime",
@@ -178,58 +221,18 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-panoworld-real-world-panoramic-generation.md",
-      "detail_id": "entity-paper-panoworld-real-world-panoramic-generation",
-      "label": "PanoWorld：真实世界全景可控生成",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-glob3r.md",
-      "detail_id": "entity-paper-glob3r",
-      "label": "Glob3R：3D 基础模型引导的全局 SfM",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/gs-playground.md",
-      "detail_id": "entity-gs-playground",
-      "label": "GS-Playground (3DGS 光真实感仿真)",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/spark-3dgs-renderer.md",
-      "detail_id": "entity-spark-3dgs-renderer",
-      "label": "Spark（Web 3DGS 渲染器）",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/onnxruntime.md",
-    "detail_id": "entity-onnxruntime",
-    "label": "ONNX Runtime",
-    "type": "entity",
+    "path": "wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md",
+    "detail_id": "wiki-queries-go2-3d-semantic-mapping-sam-pipeline",
+    "label": "GO2 三维语义建图与 SAM 流水线",
+    "type": "query",
     "recency": "2026-07-26",
     "source": "log.md",
     "action": "maintained",
     "has_repo": true,
-    "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
   },
   "top_communities": [
     {

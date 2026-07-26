@@ -1,5 +1,21 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-26] query | wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md — GO2 3D 语义建图与 SAM 2D→3D：几何先于语义；对照 point_lio_unilidar / autonomy_stack_go2 / DualMap / OVO / OV-SAM3D / FindAnything；交叉 wiki/entities/point-lio-unilidar.md、wiki/overview/navigation-slam-autonomy-stack.md、wiki/entities/paper-notebook-real-time-polygonal-semantic-mapping-for-humanoi.md
+
+- **Q：** GO2 有无 3D 语义建图资料？移动时点云差；SAM 如何从 2D 到 3D（CMU 相关）？
+- **A：** 先 Point-LIO 几何（同步/时间戳/外参/回环），再检测器+SAM 投影融合；CMU 几何导航栈与 DETR+SAM 伪标注是两条线。
+- **写回：** [`wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md`](wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md)（新建）
+- **来源归档：**
+  - [`sources/personal/go2_3d_semantic_mapping_sam_answer.md`](sources/personal/go2_3d_semantic_mapping_sam_answer.md)
+  - [`sources/repos/autonomy_stack_go2.md`](sources/repos/autonomy_stack_go2.md) · [`dualmap.md`](sources/repos/dualmap.md) · [`ovo-semantic-mapping.md`](sources/repos/ovo-semantic-mapping.md) · [`ov-sam3d.md`](sources/repos/ov-sam3d.md)
+  - [`sources/sites/cmu-mscv-semantic-3d-mapping.md`](sources/sites/cmu-mscv-semantic-3d-mapping.md) · [`findanything.md`](sources/sites/findanything.md)
+- **开源核查（步骤 2.5）：** DualMap / OVO / OV-SAM3D / autonomy_stack_go2 / point_lio_unilidar **已开源**；FindAnything **宣称并入 OKVIS2-X**；MSCV Semantic 3D Mapping 为 **项目页文档**
+- **交叉：**
+  - [`wiki/entities/point-lio-unilidar.md`](wiki/entities/point-lio-unilidar.md)
+  - [`wiki/overview/navigation-slam-autonomy-stack.md`](wiki/overview/navigation-slam-autonomy-stack.md)
+  - [`wiki/entities/paper-notebook-real-time-polygonal-semantic-mapping-for-humanoi.md`](wiki/entities/paper-notebook-real-time-polygonal-semantic-mapping-for-humanoi.md)
+  - [`wiki/queries/README.md`](wiki/queries/README.md)
+
 ## [2026-07-26] ingest | sources/repos/onnxruntime-v1.28.0.md — ONNX Runtime 1.28.0（CUDA 13 与轻量部署）；更新 wiki/entities/onnxruntime.md、onnx.md、comparisons/onnxruntime-vs-mnn-vs-tensorrt.md
 
 - **来源归档：** [`sources/repos/onnxruntime-v1.28.0.md`](sources/repos/onnxruntime-v1.28.0.md) — GitHub Release v1.28.0（2026-07-25）
