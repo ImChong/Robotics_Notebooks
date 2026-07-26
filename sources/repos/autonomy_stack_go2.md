@@ -11,7 +11,7 @@
 - **分类：** 四足自主导航 / SLAM / 规划
 - **入库日期：** 2026-07-26
 - **一句话说明：** 面向 Unitree Go2 EDU 的完整几何自主导航栈：内置 L1 LiDAR + 雷达 IMU，Point-LIO 建图，地形可通行性、避障、路径跟随与 FAR Planner。
-- **沉淀到 wiki：** [GO2 三维语义建图 Query](../../wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md)、[point-lio-unilidar](../../wiki/entities/point-lio-unilidar.md)
+- **沉淀到 wiki：** [autonomy-stack-go2](../../wiki/entities/autonomy-stack-go2.md)（实体）；[GO2 三维语义建图 Query](../../wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md)、[point-lio-unilidar](../../wiki/entities/point-lio-unilidar.md)
 - **相关：** [point_lio_unilidar](point_lio_unilidar.md)、[cmu-exploration.com](https://www.cmu-exploration.com)、[FAR Planner](https://github.com/MichaelFYang/far_planner)
 
 ---
@@ -31,6 +31,7 @@
 
 ## 对 wiki 的映射
 
+- 实体：[autonomy-stack-go2](../../wiki/entities/autonomy-stack-go2.md)
 - Query：[go2-3d-semantic-mapping-sam-pipeline](../../wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md)
 - 几何基线：[point-lio-unilidar](../../wiki/entities/point-lio-unilidar.md)
 - 导航总览：[navigation-slam-autonomy-stack](../../wiki/overview/navigation-slam-autonomy-stack.md)

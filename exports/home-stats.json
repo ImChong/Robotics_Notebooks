@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-26",
-  "node_count": 1903,
-  "edge_count": 16309,
+  "node_count": 1907,
+  "edge_count": 16337,
   "coverage": {
-    "covered": 1851,
-    "total": 1879,
+    "covered": 1855,
+    "total": 1883,
     "percent": 99
   },
   "latest_wiki_nodes": [
@@ -17,7 +17,51 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/entities/autonomy-stack-go2.md",
+      "detail_id": "entity-autonomy-stack-go2",
+      "label": "autonomy_stack_go2",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/entities/dualmap.md",
+      "detail_id": "entity-dualmap",
+      "label": "DualMap",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/entities/ovo-semantic-mapping.md",
+      "detail_id": "entity-ovo-semantic-mapping",
+      "label": "OVO（Open-Vocabulary Online Semantic Mapping）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/entities/ov-sam3d.md",
+      "detail_id": "entity-ov-sam3d",
+      "label": "OV-SAM3D",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
     },
     {
       "path": "wiki/entities/point-lio-unilidar.md",
@@ -28,7 +72,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "运动控制（Locomotion） 社区"
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
     },
     {
       "path": "wiki/overview/navigation-slam-autonomy-stack.md",
@@ -39,7 +83,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
     },
     {
       "path": "wiki/entities/paper-notebook-real-time-polygonal-semantic-mapping-for-humanoi.md",
@@ -93,7 +137,7 @@
       "source": "log.md",
       "action": "added",
       "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
     },
     {
       "path": "wiki/entities/paper-pot-vla.md",
@@ -178,49 +222,6 @@
       "source": "log.md",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-n0-foundation.md",
-      "detail_id": "entity-paper-n0-foundation",
-      "label": "𝒩₀-Foundation（Towards the Age of Tactile Intelligence）",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-n0-vtla.md",
-      "detail_id": "entity-paper-n0-vtla",
-      "label": "𝒩₀-VTLA（Latent Tactile Tokens · Vision-Tactile-Language-Action）",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-n0-twam.md",
-      "detail_id": "entity-paper-n0-twam",
-      "label": "𝒩₀-TWAM（Tactile-Native World Action Model）",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-panolog-ggps.md",
-      "detail_id": "entity-paper-panolog-ggps",
-      "label": "PanoLOG / G²PS：全景户外大规模 3DGS 划分重建",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
@@ -232,16 +233,16 @@
     "source": "log.md",
     "action": "maintained",
     "has_repo": true,
-    "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
+    "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 397
+      "size": 410
     },
     {
       "label": "人形论文深读笔记",
-      "size": 245
+      "size": 226
     },
     {
       "label": "移动操作",
@@ -256,7 +257,7 @@
       "size": 139
     },
     {
-      "label": "运动控制",
+      "label": "模仿学习",
       "size": 66
     }
   ],
@@ -360,7 +361,8 @@
       "label": "OmniRetarget",
       "type": "entity",
       "degree": 49,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",

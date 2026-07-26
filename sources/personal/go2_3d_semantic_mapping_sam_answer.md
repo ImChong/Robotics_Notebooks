@@ -33,7 +33,11 @@
 
 | 要点 | 目标页 |
 |------|--------|
-| 几何故障树 + SAM 投影数学 + 落地顺序 | `wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md`（新建） |
-| GO2 L1 Point-LIO 工程注意 | `wiki/entities/point-lio-unilidar.md`（交叉） |
-| 导航/SLAM 栈中 GO2 入口 | `wiki/overview/navigation-slam-autonomy-stack.md`（交叉） |
-| 多边形语义建图论文占位勿等同本方案 | `wiki/entities/paper-notebook-real-time-polygonal-semantic-mapping-for-humanoi.md`（交叉） |
+| 几何故障树 + SAM 投影数学 + 落地顺序 | `wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md` |
+| GO2 全栈几何导航开源仓 | `wiki/entities/autonomy-stack-go2.md` |
+| 在线开放词汇语义（ROS） | `wiki/entities/dualmap.md` |
+| 在线 RGB-D 开放词汇语义 | `wiki/entities/ovo-semantic-mapping.md` |
+| 离线多视角 SAM→3D | `wiki/entities/ov-sam3d.md` |
+| GO2 L1 Point-LIO 工程注意 | `wiki/entities/point-lio-unilidar.md` |
+| 导航/SLAM 栈中 GO2 入口 | `wiki/overview/navigation-slam-autonomy-stack.md` |
+| 多边形语义建图论文占位勿等同本方案 | `wiki/entities/paper-notebook-real-time-polygonal-semantic-mapping-for-humanoi.md` |

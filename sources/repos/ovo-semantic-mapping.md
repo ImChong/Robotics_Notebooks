@@ -10,7 +10,7 @@
 - **许可：** MIT
 - **入库日期：** 2026-07-26
 - **一句话说明：** 输入有位姿的 RGB-D 关键帧，在线跟踪三维实例并融合 CLIP 特征；官方支持 SAM 2，并可对接 ORB-SLAM / Gaussian-SLAM 类后端做端到端开放词汇在线建图（含回环场景）。
-- **沉淀到 wiki：** [GO2 三维语义建图 Query](../../wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md)
+- **沉淀到 wiki：** [ovo-semantic-mapping](../../wiki/entities/ovo-semantic-mapping.md)（实体）；[GO2 三维语义建图 Query](../../wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md)
 
 ---
 
@@ -27,5 +27,6 @@
 
 ## 对 wiki 的映射
 
+- 实体：[ovo-semantic-mapping](../../wiki/entities/ovo-semantic-mapping.md)
 - Query：[go2-3d-semantic-mapping-sam-pipeline](../../wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md)
 - 相关实体：[orb-slam3](../../wiki/entities/orb-slam3.md)（同族视觉 SLAM 对照）

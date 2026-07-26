@@ -9,7 +9,7 @@
 - **代码：** https://github.com/Eku127/DualMap
 - **入库日期：** 2026-07-26
 - **一句话说明：** 在线开放词汇语义建图；MobileCLIP + YOLO-World / MobileSAM / FastSAM 等混合前端；双地图（全局抽象 + 局部具体）；支持 ROS1/ROS2、rosbag 与动态场景自然语言导航。
-- **沉淀到 wiki：** [GO2 三维语义建图 Query](../../wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md)
+- **沉淀到 wiki：** [dualmap](../../wiki/entities/dualmap.md)（实体）；[GO2 三维语义建图 Query](../../wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md)
 
 ---
 
@@ -27,4 +27,5 @@
 
 ## 对 wiki 的映射
 
+- 实体：[dualmap](../../wiki/entities/dualmap.md)
 - Query：[go2-3d-semantic-mapping-sam-pipeline](../../wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md)

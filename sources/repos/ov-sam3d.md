@@ -9,7 +9,7 @@
 - **代码：** https://github.com/HanchenTai/OV-SAM3D
 - **入库日期：** 2026-07-26
 - **一句话说明：** 训练无关的开放词汇 3D 场景理解：超点粗 mask ← 多视角 SAM 反投影修正，再结合 RAM 开放标签与重叠分数合并实例；偏 **离线点云理解**，非机载实时主路径。
-- **沉淀到 wiki：** [GO2 三维语义建图 Query](../../wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md)
+- **沉淀到 wiki：** [ov-sam3d](../../wiki/entities/ov-sam3d.md)（实体）；[GO2 三维语义建图 Query](../../wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md)
 
 ---
 
@@ -26,4 +26,5 @@
 
 ## 对 wiki 的映射
 
+- 实体：[ov-sam3d](../../wiki/entities/ov-sam3d.md)
 - Query：[go2-3d-semantic-mapping-sam-pipeline](../../wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md)

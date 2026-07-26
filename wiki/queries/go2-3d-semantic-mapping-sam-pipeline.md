@@ -5,6 +5,10 @@ status: complete
 updated: 2026-07-26
 related:
   - ../entities/point-lio-unilidar.md
+  - ../entities/autonomy-stack-go2.md
+  - ../entities/dualmap.md
+  - ../entities/ovo-semantic-mapping.md
+  - ../entities/ov-sam3d.md
   - ../entities/fast-lio.md
   - ../entities/lio-sam.md
   - ../entities/paper-notebook-real-time-polygonal-semantic-mapping-for-humanoi.md
@@ -27,7 +31,7 @@ summary: "GO2 三维语义建图选型：先 Point-LIO 几何（时间同步/去
 # GO2 三维语义建图与 SAM 流水线
 
 > **Query 产物**：本页由以下问题触发：「有没有 GO2 技术资料？对 GO2 的 3D 语义建图感兴趣；点云建图在狗子移动时效果不理想；点云建图 + SAM 如何从 2D 转为 3D 自适应识别（提到 CMU 相关工作）？」
-> 综合来源：[point_lio_unilidar](../entities/point-lio-unilidar.md)、[FAST-LIO](../entities/fast-lio.md)、[LIO-SAM](../entities/lio-sam.md)、[导航·SLAM 栈](../overview/navigation-slam-autonomy-stack.md)、[LiDAR/LIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)、[Real-Time Polygonal Semantic Mapping（待深读占位）](../entities/paper-notebook-real-time-polygonal-semantic-mapping-for-humanoi.md)
+> 综合来源：[point_lio_unilidar](../entities/point-lio-unilidar.md)、[autonomy_stack_go2](../entities/autonomy-stack-go2.md)、[DualMap](../entities/dualmap.md)、[OVO](../entities/ovo-semantic-mapping.md)、[OV-SAM3D](../entities/ov-sam3d.md)、[FAST-LIO](../entities/fast-lio.md)、[LIO-SAM](../entities/lio-sam.md)、[导航·SLAM 栈](../overview/navigation-slam-autonomy-stack.md)、[LiDAR/LIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)、[Real-Time Polygonal Semantic Mapping（待深读占位）](../entities/paper-notebook-real-time-polygonal-semantic-mapping-for-humanoi.md)
 
 ## 一句话定义
 
@@ -53,9 +57,9 @@ summary: "GO2 三维语义建图选型：先 Point-LIO 几何（时间同步/去
 | 层次 | 状态 | 代表页 / 源 |
 |------|------|-------------|
 | GO2 / L1 几何建图 | **较完整** | [point_lio_unilidar](../entities/point-lio-unilidar.md)、[FAST-LIO](../entities/fast-lio.md)、[LIO-SAM](../entities/lio-sam.md) |
-| GO2 全栈几何导航 | **有一手仓可跟** | [autonomy_stack_go2](../../sources/repos/autonomy_stack_go2.md) |
+| GO2 全栈几何导航 | **有独立实体** | [autonomy_stack_go2](../entities/autonomy-stack-go2.md) |
 | 多边形语义建图论文 | **待深读占位** | [Real-Time Polygonal Semantic Mapping](../entities/paper-notebook-real-time-polygonal-semantic-mapping-for-humanoi.md) |
-| GO2 + 相机 + SAM + 3D 语义一体方案 | **本 Query 补选型与流水线**；非该论文深读替代 | 见下文推荐栈 |
+| GO2 + 相机 + SAM + 3D 语义一体方案 | **本 Query 补选型与流水线**；非该论文深读替代 | [DualMap](../entities/dualmap.md) / [OVO](../entities/ovo-semantic-mapping.md) / [OV-SAM3D](../entities/ov-sam3d.md) |
 
 ## 1. 先解决几何建图，再叠加 SAM
 
@@ -113,7 +117,7 @@ p_W = T_{W\leftarrow C}\, p_C
 
 | 路线 | 代表 | 回答什么问题 |
 |------|------|----------------|
-| **GO2 几何自主导航** | [autonomy_stack_go2](../../sources/repos/autonomy_stack_go2.md) | 内置 L1 + 雷达 IMU，Point-LIO SLAM，地形可通行性、避障、FAR Planner。**不是** SAM 语义建图 |
+| **GO2 几何自主导航** | [autonomy_stack_go2](../entities/autonomy-stack-go2.md) | 内置 L1 + 雷达 IMU，Point-LIO SLAM，地形可通行性、避障、FAR Planner。**不是** SAM 语义建图 |
 | **二维语义投影到三维** | [MSCV Semantic 3D Mapping](../../sources/sites/cmu-mscv-semantic-3d-mapping.md) | DETR + SAM + 标定，把 2D 标签投到点云。与截图问题 **直接对应** |
 
 ## 推荐的 GO2 技术架构
@@ -137,13 +141,13 @@ flowchart TB
 
 | 项目 | 用途 | 开源（入库核查） |
 |------|------|------------------|
-| [point_lio_unilidar](../../sources/repos/point_lio_unilidar.md) | GO2 L1/L2 几何基线：时间戳、IMU、外参、去畸变 | **已开源** |
-| [autonomy_stack_go2](../../sources/repos/autonomy_stack_go2.md) | Point-LIO ↔ 地形/规划/避障如何串 | **已开源** |
-| [CMU Semantic 3D Mapping](../../sources/sites/cmu-mscv-semantic-3d-mapping.md) | DETR→SAM→3D 投影说明 | **项目页文档** |
-| [DualMap](../../sources/repos/dualmap.md) | ROS1/2、在线、动态场景；MobileCLIP + SAM 系 + YOLO-World | **已开源** |
-| [OVO](../../sources/repos/ovo-semantic-mapping.md) | 有位姿 RGB-D；SAM2；可接 ORB-/Gaussian-SLAM | **已开源** |
-| [OV-SAM3D](../../sources/repos/ov-sam3d.md) | 离线超点 + 多视角 SAM + RAM 开放标签 | **已开源** |
-| [FindAnything](../../sources/sites/findanything.md) | 对象级体素子地图；Orin NX 级演示 | **宣称并入 OKVIS2-X** |
+| [point_lio_unilidar](../entities/point-lio-unilidar.md) | GO2 L1/L2 几何基线：时间戳、IMU、外参、去畸变 | **已开源** → 实体页 |
+| [autonomy_stack_go2](../entities/autonomy-stack-go2.md) | Point-LIO ↔ 地形/规划/避障如何串 | **已开源** → 实体页 |
+| [CMU Semantic 3D Mapping](../../sources/sites/cmu-mscv-semantic-3d-mapping.md) | DETR→SAM→3D 投影说明 | **项目页文档**（非独立开源仓） |
+| [DualMap](../entities/dualmap.md) | ROS1/2、在线、动态场景；MobileCLIP + SAM 系 + YOLO-World | **已开源** → 实体页 |
+| [OVO](../entities/ovo-semantic-mapping.md) | 有位姿 RGB-D；SAM2；可接 ORB-/Gaussian-SLAM | **已开源** → 实体页 |
+| [OV-SAM3D](../entities/ov-sam3d.md) | 离线超点 + 多视角 SAM + RAM 开放标签 | **已开源** → 实体页 |
+| [FindAnything](../../sources/sites/findanything.md) | 对象级体素子地图；Orin NX 级演示 | **宣称并入 OKVIS2-X**（尚无独立开源仓节点） |
 
 ## 建议的落地顺序
 
@@ -169,6 +173,10 @@ SAM 本身不是直接把 2D 转成 3D，而是先在 RGB 上生成 mask，再�
 ## 关联页面
 
 - [point_lio_unilidar](../entities/point-lio-unilidar.md) — GO2/L1 几何起点
+- [autonomy_stack_go2](../entities/autonomy-stack-go2.md) — CMU GO2 几何全栈
+- [DualMap](../entities/dualmap.md) — 在线开放词汇语义 + ROS
+- [OVO](../entities/ovo-semantic-mapping.md) — 在线 RGB-D 开放词汇语义
+- [OV-SAM3D](../entities/ov-sam3d.md) — 离线多视角 SAM→3D
 - [FAST-LIO](../entities/fast-lio.md) / [LIO-SAM](../entities/lio-sam.md) — 通用 LIO 对照
 - [导航·SLAM·自动驾驶栈](../overview/navigation-slam-autonomy-stack.md) — 栈分层
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md) — 算法选型
@@ -179,13 +187,13 @@ SAM 本身不是直接把 2D 转成 3D，而是先在 RGB 上生成 mask，再�
 ## 参考来源
 
 - [GO2 三维语义建图答疑整理](../../sources/personal/go2_3d_semantic_mapping_sam_answer.md)
-- [point_lio_unilidar](../../sources/repos/point_lio_unilidar.md)
-- [autonomy_stack_go2](../../sources/repos/autonomy_stack_go2.md)
-- [CMU MSCV Semantic 3D Mapping](../../sources/sites/cmu-mscv-semantic-3d-mapping.md)
-- [DualMap](../../sources/repos/dualmap.md)
-- [OVO](../../sources/repos/ovo-semantic-mapping.md)
-- [OV-SAM3D](../../sources/repos/ov-sam3d.md)
-- [FindAnything](../../sources/sites/findanything.md)
+- [point_lio_unilidar](../../sources/repos/point_lio_unilidar.md) → [实体](../entities/point-lio-unilidar.md)
+- [autonomy_stack_go2](../../sources/repos/autonomy_stack_go2.md) → [实体](../entities/autonomy-stack-go2.md)
+- [CMU MSCV Semantic 3D Mapping](../../sources/sites/cmu-mscv-semantic-3d-mapping.md)（项目页，非开源仓）
+- [DualMap](../../sources/repos/dualmap.md) → [实体](../entities/dualmap.md)
+- [OVO](../../sources/repos/ovo-semantic-mapping.md) → [实体](../entities/ovo-semantic-mapping.md)
+- [OV-SAM3D](../../sources/repos/ov-sam3d.md) → [实体](../entities/ov-sam3d.md)
+- [FindAnything](../../sources/sites/findanything.md)（宣称并入 OKVIS2-X，暂无独立开源仓实体）
 
 ## 推荐继续阅读
 

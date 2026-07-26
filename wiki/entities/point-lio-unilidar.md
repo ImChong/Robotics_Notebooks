@@ -6,6 +6,7 @@ updated: 2026-07-26
 related:
   - ./unitree.md
   - ./unilidar-sdk2.md
+  - ./autonomy-stack-go2.md
   - ../tasks/locomotion.md
   - ../concepts/sim2real.md
   - ../queries/go2-3d-semantic-mapping-sam-pipeline.md
@@ -62,6 +63,7 @@ summary: "point_lio_unilidar 将 Point-LIO 适配到 Unitree L1/L2 雷达，提�
 ## 关联页面
 
 - [UniLidar SDK](./unilidar-sdk2.md)
+- [autonomy_stack_go2](./autonomy-stack-go2.md)
 - [Locomotion](../tasks/locomotion.md)
 - [Unitree](./unitree.md)
 - [GO2 三维语义建图与 SAM 流水线](../queries/go2-3d-semantic-mapping-sam-pipeline.md)

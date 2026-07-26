@@ -1,5 +1,15 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-26] structural | wiki/entities/{autonomy-stack-go2,dualmap,ovo-semantic-mapping,ov-sam3d}.md — 为本 PR 已开源仓补齐独立实体节点；回链 wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md
+
+- **新建实体：**
+  - [`wiki/entities/autonomy-stack-go2.md`](wiki/entities/autonomy-stack-go2.md) ← [`sources/repos/autonomy_stack_go2.md`](sources/repos/autonomy_stack_go2.md)
+  - [`wiki/entities/dualmap.md`](wiki/entities/dualmap.md) ← [`sources/repos/dualmap.md`](sources/repos/dualmap.md)
+  - [`wiki/entities/ovo-semantic-mapping.md`](wiki/entities/ovo-semantic-mapping.md) ← [`sources/repos/ovo-semantic-mapping.md`](sources/repos/ovo-semantic-mapping.md)
+  - [`wiki/entities/ov-sam3d.md`](wiki/entities/ov-sam3d.md) ← [`sources/repos/ov-sam3d.md`](sources/repos/ov-sam3d.md)
+- **开源边界：** FindAnything / CMU MSCV Semantic 3D Mapping 分别为「宣称并入 OKVIS2-X」「项目页文档」，**暂不建**开源仓实体
+- **交叉：** [`wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md`](wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md)、[`wiki/entities/point-lio-unilidar.md`](wiki/entities/point-lio-unilidar.md)、[`wiki/overview/navigation-slam-autonomy-stack.md`](wiki/overview/navigation-slam-autonomy-stack.md)
+
 ## [2026-07-26] query | wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md — GO2 3D 语义建图与 SAM 2D→3D：几何先于语义；对照 point_lio_unilidar / autonomy_stack_go2 / DualMap / OVO / OV-SAM3D / FindAnything；交叉 wiki/entities/point-lio-unilidar.md、wiki/overview/navigation-slam-autonomy-stack.md、wiki/entities/paper-notebook-real-time-polygonal-semantic-mapping-for-humanoi.md
 
 - **Q：** GO2 有无 3D 语义建图资料？移动时点云差；SAM 如何从 2D 到 3D（CMU 相关）？
