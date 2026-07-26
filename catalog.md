@@ -245,6 +245,7 @@
 - [MuSHR](wiki/entities/mushr.md) — MuSHR**（Multi-agent System for non-Holonomic Racing）是面向 **教学与研究** 的 ROS 小车开源平台。 `📅unknown` `[entity_page]`
 - [Navigation2（Nav2）](wiki/entities/navigation2.md) — Navigation2**（ros-navigation/navigation2）是 ROS 2  `📅unknown` `[entity_page]`
 - [ncnn](wiki/entities/ncnn.md) — ncnn** 是 **腾讯** 开源的 **高性能神经网络推理框架**，自设计之初面向 **手机与嵌入式**。它以 **纯 C++** 实现、**无第三方运行时依赖**（不依赖 BLAS/NNPA `📅2026-06-25` `[entity_page]`
+- [新智具身智能（NeoteAI）](wiki/entities/neoteai.md) — 新智具身智能**（上海新智具身智能科技有限公司，NeoteAI）源自 **复旦大学可信具身智能研究院（TEAI）**，以触觉为具身原生模态，产 `📅unknown` `[entity_page]`
 - [Newton Physics（物理引擎）](wiki/entities/newton-physics.md) — Newton** 是面向机器人学与仿真研究的 **GPU 加速、可扩展、可微** 物理引擎：在 [NVIDIA Warp](https://developer.nvidia.com/warp-py `📅unknown` `[entity_page]`
 - [数值优化学习策展（机器人 L0+）](wiki/entities/numerical-optimization-curriculum.md) — 一句话：** 机器人控制栈里反复出现的 **QP、NMPC、TrajOpt、碰撞距离、控制分配** 共用同一套数值优化语言；本页把 [《数值优化基础》](../../sources/courses `📅unknown` `[entity_page]`
 - [Nuwa Skill（女娲.skill）](wiki/entities/nuwa-skill.md) — Nuwa Skill** 是 alchaincyf/nuwa-skill 仓库分发的 **元 skill `📅unknown` `[entity_page]`
@@ -605,6 +606,9 @@
 - [MUJICA：轮足多技能统一本体控制架构](wiki/entities/paper-mujica-wheel-legged-multi-skill.md) — MUJICA**（*Multi-skill Unified Joint Integration of Control Architecture*，arXiv:2605.13058，**ICRA 2 `📅unknown` `[entity_page]`
 - [Muninn（轨迹扩散免训练加速）](wiki/entities/paper-muninn-trajectory-diffusion-acceleration.md) — Muninn**（*Your Trajectory Diffusion Model But Faster*，arXiv:2605.09999，[RSS 2026](https://arxiv.or `📅unknown` `[entity_page]`
 - [Muon is Scalable for LLM Training（arXiv:2502.16982）](wiki/entities/paper-muon-scalable-llm-training.md) — Muon is Scalable for LLM Training** 是 **月之暗面（Moonshot AI）** 发表的 Muon **第一篇大规模验证论文**（arXiv:2502.169 `📅unknown` `[entity_page]`
+- [𝒩₀-Foundation（Towards the Age of Tactile Intelligence）](wiki/entities/paper-n0-foundation.md) — 𝒩₀-Foundation**（读作 *Neo-Foundation*，*Towards the Age of Tactile Intelligence*，[项目页](https://resear `📅unknown` `[entity_page]`
+- [𝒩₀-TWAM（Tactile-Native World Action Model）](wiki/entities/paper-n0-twam.md) — 𝒩₀-TWAM**（*Scaling Tactile-Native World Action Model for Contact-Rich Manipulation*，[项目页](https:// `📅unknown` `[entity_page]`
+- [𝒩₀-VTLA（Latent Tactile Tokens · Vision-Tactile-Language-Action）](wiki/entities/paper-n0-vtla.md) — 𝒩₀-VTLA**（*Scaling Vision-Tactile-Language-Action Model with Latent Tactile Tokens*，[项目页](https:// `📅unknown` `[entity_page]`
 - [NavWAM（目标条件视觉导航 · Navigation World Action Model）](wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md) — NavWAM**（*A Navigation World Action Model for Goal-Conditioned Visual Navigation*，arXiv:2606.13494 `📅unknown` `[entity_page]`
 - [NeuralActuator（Neural Actuation Modeling · arXiv:2607.11734）](wiki/entities/paper-neuralactuator-neural-actuation-modeling.md) — NeuralActuator**（*Neural Actuation Modeling for Robot Dynamics and External Force Perception*，[arX `📅unknown` `[entity_page]`
 - [NeuroGPR：脑启发多模态混合神经网络机器人场所识别](wiki/entities/paper-neurogpr-brain-inspired-place-recognition.md) — Brain-inspired multimodal hybrid neural network for robot place recognition**（Shi Luping（施路平）等，清华大 `📅unknown` `[entity_page]`

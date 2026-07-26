@@ -1,13 +1,56 @@
 {
   "generated_at": "2026-07-26",
-  "node_count": 1895,
-  "edge_count": 16191,
+  "node_count": 1899,
+  "edge_count": 16245,
   "coverage": {
-    "covered": 1843,
-    "total": 1871,
+    "covered": 1847,
+    "total": 1875,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/neoteai.md",
+      "detail_id": "entity-neoteai",
+      "label": "新智具身智能（NeoteAI）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-n0-foundation.md",
+      "detail_id": "entity-paper-n0-foundation",
+      "label": "𝒩₀-Foundation（Towards the Age of Tactile Intelligence）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-n0-vtla.md",
+      "detail_id": "entity-paper-n0-vtla",
+      "label": "𝒩₀-VTLA（Latent Tactile Tokens · Vision-Tactile-Language-Action）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-n0-twam.md",
+      "detail_id": "entity-paper-n0-twam",
+      "label": "𝒩₀-TWAM（Tactile-Native World Action Model）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/overview/wam-motion-control-five-paths.md",
       "detail_id": "wiki-overview-wam-motion-control-five-paths",
@@ -175,56 +218,13 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/cadenkraft-ironless-axial-flux-motor.md",
-      "detail_id": "entity-cadenkraft-ironless-axial-flux-motor",
-      "label": "Caden Kraft Ironless Axial Flux Motor（无铁芯轴向磁通电机）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/pygeartrain.md",
-      "detail_id": "entity-pygeartrain",
-      "label": "pygeartrain（摆线/行星齿廓与传动比工具）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/ironless-qdd-actuator.md",
-      "detail_id": "entity-ironless-qdd-actuator",
-      "label": "Ironless QDD Actuator（无铁芯转子摆线—行星执行器）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/pcb-motor.md",
-      "detail_id": "entity-pcb-motor",
-      "label": "PCB Motor（PCB 定子轴向磁通电机）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/wam-motion-control-five-paths.md",
-    "detail_id": "wiki-overview-wam-motion-control-five-paths",
-    "label": "WAM × 人形运动控制：五种系统位置",
-    "type": "overview",
+    "path": "wiki/entities/neoteai.md",
+    "detail_id": "entity-neoteai",
+    "label": "新智具身智能（NeoteAI）",
+    "type": "entity",
     "recency": "2026-07-26",
     "source": "log.md",
     "action": "added",
@@ -233,7 +233,7 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 374
+      "size": 378
     },
     {
       "label": "人形论文深读笔记",
@@ -276,7 +276,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 334,
+      "degree": 337,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -284,7 +284,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 304,
+      "degree": 308,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

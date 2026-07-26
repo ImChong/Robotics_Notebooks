@@ -595,7 +595,9 @@
     "fudan": {
       "label": "复旦大学（Fudan）",
       "aliases": [
-        "fudan"
+        "fudan",
+        "fudan-teai",
+        "teai"
       ]
     },
     "opendrivelab": {
@@ -1277,6 +1279,14 @@
       "aliases": [
         "phanes-ai",
         "phanes"
+      ]
+    },
+    "neoteai": {
+      "label": "新智具身智能（NeoteAI）",
+      "aliases": [
+        "neoteai",
+        "neote",
+        "neote-ai"
       ]
     },
     "perceptron": {

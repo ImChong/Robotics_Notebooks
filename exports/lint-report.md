@@ -2,7 +2,7 @@
 
 ## [2026-07-26] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **1** 条信息型预警）：
+共发现 **0** 个问题（另含 **3** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -118,8 +118,8 @@
 - wiki/entities/paper-argus-dynamic-symmetry.md
 - … 另有 677 个（历史 backlog；新建 / 大幅改写的 paper-* 必须含 `## 结论`）
 
-### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（1 个）
+- wiki/entities/neoteai.md（缺 重定向就绪度）
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
 - 无
@@ -133,10 +133,10 @@
 ### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」专题枢纽（信息型，不阻塞 CI）（1 个）
+- wiki/entities/paper-n0-foundation.md
 
 ### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：1843/1871 (99%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1847/1875 (99%) wiki/entity 页有 ingest 来源
