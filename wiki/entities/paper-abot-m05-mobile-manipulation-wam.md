@@ -11,7 +11,7 @@ tags:
   - dream-forcing
   - alibaba
 status: complete
-updated: 2026-07-24
+updated: 2026-07-26
 arxiv: "2607.00678"
 related:
   - ../concepts/world-action-models.md
@@ -22,10 +22,12 @@ related:
   - ../entities/paper-motionwam-humanoid-loco-manipulation-wam.md
   - ../entities/paper-dit4dit-video-action-model.md
   - ../entities/qwen-robot-manip.md
+  - ../entities/paper-abot-world-0.md
   - ../overview/loco-manip-contact-category-05-vla-world-models.md
   - ../overview/loco-manip-161-category-04-generative-language-trajectory.md
 sources:
   - ../../sources/papers/abot_m05_arxiv_2607_00678.md
+  - ../../sources/papers/abot_world_0_arxiv_2607_19191.md
 summary: "ABot-M0.5（arXiv:2607.00678）：移动操作专用 WAM——帧级 latent action 桥接 video latent 与执行控制，双层 D-MoT 解耦移动/操作子空间，Dream Forcing 在自生成视频上对齐逆动力学；RoboCasa365 平均 46.6%（+Condensed Memory）、LIBERO 99.4%、LIBERO-Plus WAM 对照 83.4%。"
 ---
 
@@ -135,6 +137,7 @@ flowchart TB
 | **Fast-WAM / Lingbot-VA / Cosmos Policy** | RoboCasa365 Target 100% 直接对照；ABot-M0.5 **54.2%** vs Lingbot-VA **45.1%** |
 | **[Qwen-RobotManip](./qwen-robot-manip.md)** | 同 **阿里巴巴** 生态；Qwen 走 **大 VLA + flow DiT**，ABot-M0.5 走 **显式 WAM 级联与 rollout 对齐** |
 | **ABot-M0** | 同团队 VLA 前序；M0.5 升格为 **统一移动–操作 WAM** |
+| **[ABot-World-0](./paper-abot-world-0.md)** | 同机构 **ABot** 命名族；开放域 **键盘交互视频世界** + 单卡实时部署，**非** 移动操作 WAM |
 
 ## 关联页面
 
@@ -143,6 +146,7 @@ flowchart TB
 - [Manipulation](../tasks/manipulation.md) — RoboTwin / LIBERO 精细操纵语境
 - [VLA](../methods/vla.md) — π₀.₅ / GR00T 等反应式对照基线
 - [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) — 人形实时 WAM 对照
+- [ABot-World-0](./paper-abot-world-0.md) — 同机构交互式视频世界模型（勿与本页混淆）
 - [Loco-Manip 接触 · 05 VLA/WM](../overview/loco-manip-contact-category-05-vla-world-models.md) — 上层模型与接触结构接口
 
 ## 参考来源

@@ -2,7 +2,7 @@
 type: concept
 tags: [simulation, video-generation, deepmind, computer-vision, robotics]
 status: complete
-updated: 2026-07-24
+updated: 2026-07-26
 related:
   - ../methods/generative-world-models.md
   - ../entities/ewmbench.md
@@ -22,6 +22,7 @@ related:
   - ../entities/paper-wan-video.md
   - ../entities/paper-robointer-1-5.md
   - ../entities/paper-m4world.md
+  - ../entities/paper-abot-world-0.md
 sources:
   - ../../sources/papers/diffusion_and_gen.md
   - ../../sources/papers/exoactor.md
@@ -32,6 +33,7 @@ sources:
   - ../../sources/papers/x_world_arxiv_2603_19979.md
   - ../../sources/papers/driftworld_arxiv_2607_15065.md
   - ../../sources/papers/m4world_arxiv_2607_14005.md
+  - ../../sources/papers/abot_world_0_arxiv_2607_19191.md
   - ../../sources/papers/masked_visual_actions_arxiv_2607_19343.md
   - ../../sources/papers/ctrl_world_arxiv_2510_10125.md
   - ../../sources/papers/wan_move_arxiv_2512_08765.md
@@ -113,6 +115,8 @@ UniSim 把视频生成模型当作可交互的物理引擎来训练视觉策略�
 
 在 **车载多传感器仿真** 设定下，[M⁴World](../entities/paper-m4world.md)（arXiv:2607.14005）把「视频即仿真」扩展到 **环视相机 + 同步 LiDAR range map**，并以物体级外观条件支持长尾场景编辑；4-step 因果蒸馏面向 **分钟级** 流式，与操纵域 DriftWorld 的「少步」动机相近但评测与传感栈不同。
 
+在 **开放域交互式内容 / 桌面实时** 设定下，[ABot-World-0](../entities/paper-abot-world-0.md)（arXiv:2607.19191）用 **原始键盘动作** 统一场景漫游与第三人称角色，经 **LongForcing** 压长程自回归漂移，并在 **单卡 RTX 5090** 上做到 **720P ≤16 FPS**；它更接近 UniSim「可玩的像素世界」叙事，而不是关节级机器人策略评估代理——推理学生已开源，完整训练数据/教师仍待发。
+
 ## 关联页面
 - [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — 本页所述物理/仿真要素在保真度链路（建模 ① → 数值 ② → 接触 ③ → 随机化 ④）中的定位
 - [Generative World Models](../methods/generative-world-models.md)
@@ -135,6 +139,7 @@ UniSim 把视频生成模型当作可交互的物理引擎来训练视觉策略�
 - [X-World](../entities/paper-x-world.md) — 小鹏 **7 摄动作条件** 驾驶视频世界模型（arXiv:2603.19979；未开源）。
 - [X-Cache](../entities/paper-x-cache.md) — 少步 AR 世界模型跨 chunk 加速（arXiv:2604.20289）。
 - [M⁴World](../entities/paper-m4world.md) — 多视角多模态驾驶 WM：物体外观控制 + 分钟级流式（arXiv:2607.14005；未开源）。
+- [ABot-World-0](../entities/paper-abot-world-0.md) — 单卡桌面键盘交互视频世界模型（arXiv:2607.19191；部分开源）。
 
 ## 参考来源
 - Yang, S., et al. (2023). *UniSim: Learning Interactive Real-World Simulators*.
@@ -155,3 +160,4 @@ UniSim 把视频生成模型当作可交互的物理引擎来训练视觉策略�
 - Wan Team (2025). *Wan* (arXiv:2503.20314) — 见 [sources/papers/wan_video_arxiv_2503_20314.md](../../sources/papers/wan_video_arxiv_2503_20314.md)。
 - Team of RoboInter1.5 (2026). *RoboInter1.5* (arXiv:2607.18709) — 见 [sources/papers/robointer_1_5_arxiv_2607_18709.md](../../sources/papers/robointer_1_5_arxiv_2607_18709.md)。
 - Cheng, K., et al. (2026). *M⁴World* (arXiv:2607.14005) — 见 [sources/papers/m4world_arxiv_2607_14005.md](../../sources/papers/m4world_arxiv_2607_14005.md)。
+- Jiang, F., et al. (2026). *ABot-World-0* (arXiv:2607.19191) — 见 [sources/papers/abot_world_0_arxiv_2607_19191.md](../../sources/papers/abot_world_0_arxiv_2607_19191.md)。

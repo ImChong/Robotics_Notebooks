@@ -1,8 +1,8 @@
 ---
 type: entity
-tags: [paper, world-models, panoramic, video-generation, diffusion, uav, dataset, tsinghua, whu]
+tags: [paper, world-models, panoramic, video-generation, diffusion, uav, dataset, tsinghua, whu, insta360]
 status: complete
-updated: 2026-07-22
+updated: 2026-07-26
 arxiv: "2607.09661"
 project: https://lihaoy-ux.github.io/panoworld-page/
 summary: "PanoWorld（arXiv:2607.09661，Insta360 Research 等）利用 ERP 旋转等变将相机运动简化为固定朝向平移，以 DPRC 射线条件动作建模与 GMA 几何记忆实现可控全景视频生成；配套 World360（12 万 clip）与 Wan2.2-5B 三阶段 LoRA 训练，显著优于 Matrix-3D / OmniRoam，并可 Causal Forcing 蒸馏实时生成。"
@@ -12,6 +12,7 @@ related:
   - ../entities/paper-infinite-diffusion-terrain-diffusion.md
   - ../entities/paper-gigaworld-1-policy-evaluation.md
   - ../entities/paper-wem-world-ego-modeling.md
+  - ../entities/paper-panolog-ggps.md
   - ../tasks/vision-language-navigation.md
 sources:
   - ../../sources/papers/panoworld_arxiv_2607_09661.md
@@ -134,7 +135,7 @@ flowchart TB
 
 - **模态与平台：** 数据以 **UAV 环视航拍** 为主，**地面人形 egocentric / 操纵手眼** 覆盖有限；与 [HumanoidPano](./paper-notebook-humanoidpano-hybrid-spherical-panoramic-lidar-cr.md) 等 **机器人环视感知** 需额外 domain 适配。
 - **物理可执行性：** 高 PSNR/FID **不保证** 可用于 closed-loop 控制或 Sim2Real；部署前仍需 [Video-as-Simulation](../concepts/video-as-simulation.md) 类 **交互/接触** 校验。
-- **显式 3D：** 不做 Matrix-3D 式全局 mesh/GS 重建，**持久 editable 3D 资产** 非目标；偏 **视频级 world rollout**。
+- **显式 3D：** 不做 Matrix-3D 式全局 mesh/GS 重建，**持久 editable 3D 资产** 非目标；偏 **视频级 world rollout**。同机构重建线见 [PanoLOG / G²PS](./paper-panolog-ggps.md)。
 - **开源状态：** 论文承诺公开模型/代码/World360；以项目页与仓库实际上线为准。
 
 ## 关联页面与对比
@@ -144,6 +145,7 @@ flowchart TB
 - [InfiniteDiffusion / Terrain Diffusion](./paper-infinite-diffusion-terrain-diffusion.md) — 另一 **360°/无限场景** 生成相邻方向（静态地形 vs 动态全景视频）
 - [GigaWorld-1](./paper-gigaworld-1-policy-evaluation.md) — 同为 **分层记忆 + 显式 control** 的视频 WM 对照
 - [WEM（World-Ego Modeling）](./paper-wem-world-ego-modeling.md) — world/ego 长程分解的另一记忆范式
+- [PanoLOG / G²PS](./paper-panolog-ggps.md) — 同机构 **全景户外 3DGS 重建**（生成 vs 重建）
 
 ## 推荐继续阅读
 

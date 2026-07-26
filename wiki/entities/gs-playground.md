@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, simulation, 3dgs, gaussian-splatting, photorealistic, visual-rl, sim2real, rss2026, nvidia]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-26
 related:
   - ./genesis-sim.md
   - ./isaac-gym-isaac-lab.md
@@ -14,6 +14,7 @@ related:
   - ./aholo-viewer.md
   - ../methods/crisp-real2sim.md
   - ./flexion-niantic-nvidia-rgb-sim2real-pipeline.md
+  - ./paper-panolog-ggps.md
 sources:
   - ../../sources/repos/gs_playground.md
 summary: "GS-Playground 将并行物理仿真与批量 3D Gaussian Splatting 渲染耦合，以最高 10^4 FPS 提供光真实感视觉观测，用于视觉 RL 训练，RSS 2026 收录。"
@@ -115,6 +116,7 @@ summary: "GS-Playground 将并行物理仿真与批量 3D Gaussian Splatting 渲
 - [World Labs](./world-labs.md) — 空间世界生成（Marble）与 Spark 产业侧上下文
 - [CRISP](../methods/crisp-real2sim.md) — 另一条 Real2Sim 路线：单目视频 + 平面原语与接触物理（ICLR 2026），与 3DGS 外观路径互补对照（见 [选型对比](../comparisons/crisp-vs-gs-playground-real2sim.md)）
 - [LEGS（论文实体）](./paper-legs-embodied-gaussian-splatting-vla.md) — 3DGS 背景 + mesh 前景为人形 VLA loco-manip 合成演示（arXiv:2606.01458）
+- [PanoLOG / G²PS](./paper-panolog-ggps.md) — 户外全景大规模 3DGS 重建，可作仿真场景资产上游
 
 ## 参考来源
 

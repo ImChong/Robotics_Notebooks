@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-26",
-  "node_count": 1899,
-  "edge_count": 16245,
+  "node_count": 1901,
+  "edge_count": 16275,
   "coverage": {
-    "covered": 1847,
-    "total": 1875,
+    "covered": 1849,
+    "total": 1877,
     "percent": 99
   },
   "latest_wiki_nodes": [
@@ -52,6 +52,151 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
+      "path": "wiki/entities/paper-panolog-ggps.md",
+      "detail_id": "entity-paper-panolog-ggps",
+      "label": "PanoLOG / G²PS：全景户外大规模 3DGS 划分重建",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-panoworld-real-world-panoramic-generation.md",
+      "detail_id": "entity-paper-panoworld-real-world-panoramic-generation",
+      "label": "PanoWorld：真实世界全景可控生成",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-glob3r.md",
+      "detail_id": "entity-paper-glob3r",
+      "label": "Glob3R：3D 基础模型引导的全局 SfM",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/gs-playground.md",
+      "detail_id": "entity-gs-playground",
+      "label": "GS-Playground (3DGS 光真实感仿真)",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/spark-3dgs-renderer.md",
+      "detail_id": "entity-spark-3dgs-renderer",
+      "label": "Spark（Web 3DGS 渲染器）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/unreal-engine-5.md",
+      "detail_id": "entity-unreal-engine-5",
+      "label": "Unreal Engine 5（Epic 实时 3D 引擎）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+    },
+    {
+      "path": "wiki/overview/navigation-slam-autonomy-stack.md",
+      "detail_id": "wiki-overview-navigation-slam-autonomy-stack",
+      "label": "导航·SLAM·自动驾驶开源栈总览",
+      "type": "overview",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/overview/topic-state-estimation.md",
+      "detail_id": "wiki-overview-topic-state-estimation",
+      "label": "状态估计（专题汇总）",
+      "type": "overview",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-abot-world-0.md",
+      "detail_id": "entity-paper-abot-world-0",
+      "label": "ABot-World-0（单卡桌面无限交互世界 Rollout）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/generative-world-models.md",
+      "detail_id": "wiki-methods-generative-world-models",
+      "label": "Generative World Models (生成式世界模型)",
+      "type": "method",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/video-as-simulation.md",
+      "detail_id": "wiki-concepts-video-as-simulation",
+      "label": "Video-as-Simulation (视频即仿真)",
+      "type": "concept",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/robot-world-models-training-loop-taxonomy.md",
+      "detail_id": "wiki-overview-robot-world-models-training-loop-taxonomy",
+      "label": "机器人世界模型：训练闭环与三线 taxonomy",
+      "type": "overview",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-wan-video.md",
+      "detail_id": "entity-paper-wan-video",
+      "label": "Wan（开源大规模视频生成基础模型）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-abot-m05-mobile-manipulation-wam.md",
+      "detail_id": "entity-paper-abot-m05-mobile-manipulation-wam",
+      "label": "ABot-M0.5（Unified Mobility-and-Manipulation · World Action Model）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "path": "wiki/overview/wam-motion-control-five-paths.md",
       "detail_id": "wiki-overview-wam-motion-control-five-paths",
       "label": "WAM × 人形运动控制：五种系统位置",
@@ -71,153 +216,6 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-egowm-egocentric-world-model.md",
-      "detail_id": "entity-paper-egowm-egocentric-world-model",
-      "label": "EgoWM（Egocentric World Model from Internet Priors）",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-unit-unified-physical-language.md",
-      "detail_id": "entity-paper-unit-unified-physical-language",
-      "label": "UniT（统一物理语言 / 潜动作分词器）",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md",
-      "detail_id": "entity-paper-hrl-stack-33-ego_vision_world_model_for_humanoid",
-      "label": "Ego-VCP（Ego-Vision World Model for Humanoid Contact Planning）",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/robotic-world-model-eth-rsl.md",
-      "detail_id": "entity-robotic-world-model-eth-rsl",
-      "label": "Robotic World Model（ETH RSL：RWM / RWM-U）",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/lift-humanoid.md",
-      "detail_id": "entity-lift-humanoid",
-      "label": "LIFT（人形大规模预训练 + 高效微调）",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-haic.md",
-      "detail_id": "entity-paper-haic",
-      "label": "HAIC",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/being-h07.md",
-      "detail_id": "wiki-methods-being-h07",
-      "label": "Being-H0.7（潜空间世界–动作模型）",
-      "type": "method",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/topic-actuator-drive-chain.md",
-      "detail_id": "wiki-overview-topic-actuator-drive-chain",
-      "label": "执行器驱动链选型闭环（专题汇总）",
-      "type": "overview",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/queries/actuator-drive-chain-selection-loop.md",
-      "detail_id": "wiki-queries-actuator-drive-chain-selection-loop",
-      "label": "Query：执行器驱动链选型闭环知识链",
-      "type": "query",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/bavaria-direct-winding-calculator.md",
-      "detail_id": "entity-bavaria-direct-winding-calculator",
-      "label": "Bavaria Direct 绕组方案计算器（Bewicklungsrechner XL）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/overview/motor-design-workflow.md",
-      "detail_id": "wiki-overview-motor-design-workflow",
-      "label": "电机设计流程（规格 → 仿真 → 样机 → 控制）",
-      "type": "overview",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/comparisons/open-source-torque-motor-em-design.md",
-      "detail_id": "wiki-comparisons-open-source-torque-motor-em-design",
-      "label": "开源机器人力矩电机：电磁设计完整度对比",
-      "type": "comparison",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/femm-foc-simulation.md",
-      "detail_id": "entity-femm-foc-simulation",
-      "label": "FEMM-FOC-Simulation（FEMM 磁场定向控制教学仿真）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "roadmap/depth-torque-motor-design.md",
-      "detail_id": "roadmap-depth-torque-motor-design",
-      "label": "路线（纵深）：如果目标是力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环 → 关节模组）",
-      "type": "roadmap_page",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -233,7 +231,7 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 378
+      "size": 391
     },
     {
       "label": "人形论文深读笔记",
@@ -241,7 +239,7 @@
     },
     {
       "label": "移动操作",
-      "size": 174
+      "size": 151
     },
     {
       "label": "全身控制",
@@ -249,7 +247,7 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 125
+      "size": 126
     },
     {
       "label": "仿真到现实",
@@ -382,8 +380,7 @@
       "label": "TWIST2",
       "type": "entity",
       "degree": 41,
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",

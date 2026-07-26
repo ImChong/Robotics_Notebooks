@@ -9,12 +9,13 @@ tags:
   - world-models
   - alibaba
 status: complete
-updated: 2026-07-23
+updated: 2026-07-26
 arxiv: "2503.20314"
 related:
   - ./paper-wan-move.md
   - ./paper-masked-visual-actions.md
   - ./paper-ctrl-world.md
+  - ./paper-abot-world-0.md
   - ../methods/generative-world-models.md
   - ../concepts/video-as-simulation.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
@@ -24,7 +25,8 @@ sources:
   - ../../sources/papers/wan_video_arxiv_2503_20314.md
   - ../../sources/repos/wan2.1.md
   - ../../sources/sites/wan-video.md
-summary: "Wan（arXiv:2503.20314，Alibaba）：开源大规模视频基础模型技术报告；DiT + Wan-VAE，1.3B/14B 等覆盖 T2V/I2V；Wan2.1/2.2 已开源，是 Wan-Move、MVA 等机器人视频 WM 的上游先验。"
+  - ../../sources/papers/abot_world_0_arxiv_2607_19191.md
+summary: "Wan（arXiv:2503.20314，Alibaba）：开源大规模视频基础模型技术报告；DiT + Wan-VAE，1.3B/14B 等覆盖 T2V/I2V；Wan2.1/2.2 已开源，是 Wan-Move、MVA、ABot-World-0 等机器人/交互视频 WM 的上游先验。"
 ---
 
 # Wan（开源大规模视频生成基础模型）
@@ -163,6 +165,7 @@ Wan 在本库的定位是**上游视觉先验**，而非终端机器人世界模
 | [Masked Visual Actions](./paper-masked-visual-actions.md) | Wan2.2-Fun-A14B-Control | 实体占据掩码 | 机器人像素 WM，走 Fun-Control 条件线 |
 | [Ctrl-World](./paper-ctrl-world.md) | **非 Wan（SVD）** | 低维动作 + 多视角 | 骨干对照项，说明可控 WM 不必绑定 Wan |
 | [ABot-M0.5](./paper-abot-m05-mobile-manipulation-wam.md) / [τ₀ World Model](./tau0-world-model.md) | Wan2.2 系 | 具身动作/观测 | 其他 Wan2.2 具身衍生，共享上游先验 |
+| [ABot-World-0](./paper-abot-world-0.md) | Wan2.2-TI2V-5B | 原始键盘 + 角色记忆 | 交互式开放域视频世界；单卡实时部署 |
 
 **选型第一判据**：需要**可微调的视频基础先验**时选本页作骨干；需要**可执行动作/掩码/接触语义**时，价值在派生的机器人适配层，而非裸 Wan I2V——「先验在视频模型、语义在机器人适配层」。
 
@@ -173,6 +176,7 @@ Wan 在本库的定位是**上游视觉先验**，而非终端机器人世界模
 - [Ctrl-World](./paper-ctrl-world.md) — 非 Wan 骨干的对照（SVD）可控操纵 WM
 - [Generative World Models](../methods/generative-world-models.md) — 方法谱系
 - [ABot-M0.5](./paper-abot-m05-mobile-manipulation-wam.md) / [τ₀ World Model](./tau0-world-model.md) — 其他 Wan2.2 系具身衍生
+- [ABot-World-0](./paper-abot-world-0.md) — Wan2.2-TI2V-5B 上的键盘交互桌面实时世界模型
 
 ## 参考来源
 
