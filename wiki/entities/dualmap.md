@@ -8,6 +8,8 @@ related:
   - ./ovo-semantic-mapping.md
   - ./ov-sam3d.md
   - ./findanything.md
+  - ./paper-segment-anything.md
+  - ./paper-sam2.md
   - ../overview/navigation-slam-autonomy-stack.md
   - ./orb-slam3.md
 sources:
@@ -28,7 +30,7 @@ summary: "DualMap 是在线开放词汇语义建图系统：MobileCLIP + YOLO-Wo
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
 | CLIP | Contrastive Language–Image Pretraining | 开放词汇查询的视觉语言特征 |
-| SAM | Segment Anything Model | 二维分割；本系统可用 MobileSAM / FastSAM |
+| SAM | Segment Anything Model | 二维分割；本系统可用 MobileSAM / FastSAM；基础模型见 [paper-segment-anything](./paper-segment-anything.md) |
 | YOLO | You Only Look Once | 检测前端（YOLO-World 等） |
 | ROS | Robot Operating System | 支持 ROS1 / ROS2 与 rosbag |
 | OV | Open-Vocabulary | 不限定闭集类别列表的语义 |
