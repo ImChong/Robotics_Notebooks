@@ -160,4 +160,4 @@
 - wiki/entities/benjamin-katz.md
 - wiki/entities/paper-mini-cheetah-platform.md
 
-📊 Sources 覆盖率：1838/1866 (98%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1839/1867 (99%) wiki/entity 页有 ingest 来源

@@ -1789,6 +1789,7 @@
 - [机器人世界模型：训练闭环与三线 taxonomy](wiki/overview/robot-world-models-training-loop-taxonomy.md) — 机器人世界模型的下一步，不是继续证明「会生成未来视频」，而是证明 **预测出的未来能进入策略学习、任务评估与闭环决策**——开环像不像真，不足以说明机器人有没有变强。 `📅unknown` `[overview_page]`
 - [《具身智能基础》专栏技术地图](wiki/overview/shenlan-embodied-ai-fundamentals-series.md) — 具身智能的大模型叙事容易掩盖一条暗线：**所有「能交互」的智能，最终都要在多个坐标系与弯曲状态空间之间做对变换**——先用齐次坐标把刚体运动写进可连乘的 $4\times4$ 矩阵（L0 工程底座）， `📅unknown` `[overview_page]`
 - [十年仿真平台技术地图（TOP 8）](wiki/overview/sim-platforms-decade-technology-map.md) — 仿真平台的发展轨迹清晰反映具身智能研究重心的演进：**没有单一「赢家通吃」**，而是从 MuJoCo 的物理奠基，经 [AI2-THOR](../en `📅unknown` `[overview_page]`
+- [执行器驱动链选型闭环（专题汇总）](wiki/overview/topic-actuator-drive-chain.md) — 执行器驱动链选型闭环** 指把策略（RL/MPC）输出的关节力矩指令落到真机时，按 **EDA 电路设计 → 电机驱动固件 FOC → 执行器建模与摩擦辨识 → 实时总线闭环集成** 逐层分工的硬 `📅unknown` `[overview_page]`
 - [硬件通信与协议（专题汇总）](wiki/overview/topic-communication.md) — 通信协议专题** 回答机器人 **关节驱动、传感器与上层控制器之间** 用什么物理层/协议传数据，以及如何在延迟、带宽、同步与生态之间选型。 `📅unknown` `[overview_page]`
 - [接触力控（专题汇总）](wiki/overview/topic-contact-force-control.md) — 接触力控专题** 关注「机器人如何在接触中稳住力」这条**纵向闭环**：从**接触感知/估计**，经**力旋量表示**与**阻抗/导纳/混合力位控制**，到**接触丰富操作策略**，逐层分析每层如 `📅unknown` `[overview_page]`
 - [跨具身迁移（专题汇总）](wiki/overview/topic-cross-embodiment.md) — 跨具身迁移** 研究如何把在 **某一机器人形态、仿真环境或数据源** 上学到的技能，迁移到 **不同骨架、尺寸或硬件平台**，而不完全重训。 `📅unknown` `[overview_page]`
