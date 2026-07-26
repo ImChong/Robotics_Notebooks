@@ -2,12 +2,16 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-07-24
+updated: 2026-07-26
 related:
   - ../entities/paper-clothtransformer-unified-latent-cloth-simulation.md
   - ../entities/paper-flying-knots.md
   - ../entities/paper-robustness-robotic-manipulation-survey.md
   - ../entities/paper-vtap-gripper.md
+  - ../entities/neoteai.md
+  - ../entities/paper-n0-foundation.md
+  - ../entities/paper-n0-vtla.md
+  - ../entities/paper-n0-twam.md
   - ../entities/physx-omni.md
   - ../entities/paper-physforge-physics-grounded-3d-assets.md
   - ../entities/paper-simfoundry-real2sim-scene-generation.md
@@ -125,6 +129,7 @@ flowchart TD
 - **T-Rex**（[实体页](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md)，arXiv:2606.17055）：**触觉反应式灵巧操作**——人视频预训练 + **100 h 触觉 play mid-training** + 变频率 MoT；开源触觉数据集与 **12 任务** 双手真机基准
 - **OmniTacTune**（[实体页](../entities/paper-omnitactune-tactile-residual-adaptation.md)，arXiv:2607.03723）：**策略无关触觉残差真机 RL**——冻结 Flow/ACT/DP/π₀.₅ 视觉基策略，**40–80 min** 在线练习把接触丰富任务 **5–40% → 85–100%**；**无需离线触觉演示**
 - **VTAP Gripper**（[实体页](../entities/paper-vtap-gripper.md)，arXiv:2607.15448）：**视触觉主动掌 + FlexiTac 三指夹爪**——硬件级指–掌协同与手势条件遥操作重定向；反应抓取 **93.3%**、peg-in-hole **70%**（确认未开源）
+- **NeoteAI 𝒩₀**（[公司实体](../entities/neoteai.md)）：OpenNeoData **5k h** + NeoForce 力场；[𝒩₀-VTLA](../entities/paper-n0-vtla.md) NeoReal **47.2%**；[𝒩₀-TWAM](../entities/paper-n0-twam.md) 真机接触均 **46.3%**（模型代码待 2026-07-31）
 - **家用可变形操作 · Solve 叙事**：[ACT-2（Sunday Robotics）](../entities/sunday-robotics-act2.md)（2026-07）在 **Memo** 移动平台上以 **人类 sensorized 预训练 + in-house post-training** 报告 **叠衣 99.1%（785 ep、未见家庭、零部署适配）**；评测框架见 [Robotics Solve 标准](../concepts/robotics-solve-standard.md)——与开源 [TidyBot2](../entities/tidybot2.md)、[LeRobot folding](../entities/lerobot.md)、竞赛全链路 [Learning to Fold / LeHome](../entities/paper-lehome-learning-to-fold.md)（仿真 1st / 真机 2nd，SO-ARM101）形成 **闭源可靠性主张 vs 可复现栈** 对照
 - **FastGrasp**（[实体页](../entities/paper-fastgrasp-mobile-dexterous-grasping.md)，arXiv:2604.12879）：**移动底盘 + 臂 + LeapHand 全身 RL 快速灵巧抓取**——CVAE 点云引导 + PPO + **二值触觉** 冲击稳定；仿真 **50.09%**、真机 **32–35%**
 
@@ -203,6 +208,7 @@ flowchart TD
 - [HRDexDB](../entities/hrdexdb-dataset.md) — 同物体配对的人–灵巧机器人抓取序列集（100+ 物体 · 23 相机 · 3D + 触觉）
 - [OmniTacTune](../entities/paper-omnitactune-tactile-residual-adaptation.md) — 冻结视觉基策略 + 触觉残差真机 RL（arXiv:2607.03723）
 - [VTAP Gripper](../entities/paper-vtap-gripper.md) — 视触觉主动掌三指夹爪 + FlexiTac；遥操作重定向参考架构（arXiv:2607.15448）
+- [NeoteAI / 𝒩₀](../entities/neoteai.md) — OpenNeoData + NeoForce；[𝒩₀-VTLA](../entities/paper-n0-vtla.md) · [𝒩₀-TWAM](../entities/paper-n0-twam.md)
 - [FastGrasp](../entities/paper-fastgrasp-mobile-dexterous-grasping.md) — Agilex 移动操作器 + LeapHand 高速灵巧抓取（arXiv:2604.12879）
 - [PhysisForcing](../entities/paper-physisforcing.md) — 操纵视频 DiT 训练期分层物理对齐；R-Bench / WorldArena / Fast-WAM 下游增益（arXiv:2606.28128）
 - [GaP](../entities/paper-gap-graph-as-policy.md) — 变体自动化计算图策略；可 staging VLA 提升工业位姿鲁棒性（arXiv:2607.05369）

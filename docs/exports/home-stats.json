@@ -1,13 +1,56 @@
 {
   "generated_at": "2026-07-26",
-  "node_count": 1897,
-  "edge_count": 16221,
+  "node_count": 1901,
+  "edge_count": 16275,
   "coverage": {
-    "covered": 1845,
-    "total": 1873,
+    "covered": 1849,
+    "total": 1877,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/neoteai.md",
+      "detail_id": "entity-neoteai",
+      "label": "新智具身智能（NeoteAI）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-n0-foundation.md",
+      "detail_id": "entity-paper-n0-foundation",
+      "label": "𝒩₀-Foundation（Towards the Age of Tactile Intelligence）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-n0-vtla.md",
+      "detail_id": "entity-paper-n0-vtla",
+      "label": "𝒩₀-VTLA（Latent Tactile Tokens · Vision-Tactile-Language-Action）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-n0-twam.md",
+      "detail_id": "entity-paper-n0-twam",
+      "label": "𝒩₀-TWAM（Tactile-Native World Action Model）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-panolog-ggps.md",
       "detail_id": "entity-paper-panolog-ggps",
@@ -173,66 +216,22 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-egowm-egocentric-world-model.md",
-      "detail_id": "entity-paper-egowm-egocentric-world-model",
-      "label": "EgoWM（Egocentric World Model from Internet Priors）",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-unit-unified-physical-language.md",
-      "detail_id": "entity-paper-unit-unified-physical-language",
-      "label": "UniT（统一物理语言 / 潜动作分词器）",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md",
-      "detail_id": "entity-paper-hrl-stack-33-ego_vision_world_model_for_humanoid",
-      "label": "Ego-VCP（Ego-Vision World Model for Humanoid Contact Planning）",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/robotic-world-model-eth-rsl.md",
-      "detail_id": "entity-robotic-world-model-eth-rsl",
-      "label": "Robotic World Model（ETH RSL：RWM / RWM-U）",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-panolog-ggps.md",
-    "detail_id": "entity-paper-panolog-ggps",
-    "label": "PanoLOG / G²PS：全景户外大规模 3DGS 划分重建",
+    "path": "wiki/entities/neoteai.md",
+    "detail_id": "entity-neoteai",
+    "label": "新智具身智能（NeoteAI）",
     "type": "entity",
     "recency": "2026-07-26",
     "source": "log.md",
-    "action": "maintained",
-    "has_repo": true
+    "action": "added",
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 387
+      "size": 391
     },
     {
       "label": "人形论文深读笔记",
@@ -275,7 +274,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 334,
+      "degree": 337,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -283,7 +282,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 304,
+      "degree": 308,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

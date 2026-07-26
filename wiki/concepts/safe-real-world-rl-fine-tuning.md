@@ -3,7 +3,7 @@ type: concept
 tags: [safe-rl, fine-tuning, sim2real, real-world-rl, lora, safety-filter, recovery, deployment]
 status: complete
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-26
 summary: "真机安全 RL 微调：在已有 sim2real 策略上做真机在线适配时，如何用低秩残差、生成式兜底与 CBF/CLF 安全壳约束探索边界，避免训练期摔倒与硬件损坏。"
 related:
   - ./sim2real.md

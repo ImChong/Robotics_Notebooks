@@ -2,7 +2,7 @@
 type: overview
 tags: [topic, topic-tactile, haptic, force, contact, visuo-tactile]
 status: complete
-updated: 2026-07-23
+updated: 2026-07-26
 summary: "触觉与力觉闭环专题汇总：覆盖触觉传感、视触觉融合、阻抗/力控与接触估计，强调「摸得着」对抓取与 loco-manip 稳定性的作用。"
 ---
 
@@ -41,6 +41,7 @@ summary: "触觉与力觉闭环专题汇总：覆盖触觉传感、视触觉融�
 | 执行 | 力位混合 | [Hybrid Force-Position Control](../concepts/hybrid-force-position-control.md) |
 | 操作员渲染 | 可穿戴力触觉显示 | [HapMorph](../entities/paper-hapmorph-pneumatic-haptic-render.md)（气动 AFPA 解耦尺寸+刚度） |
 | 抓取精修 | 纯触觉目标条件伺服 | [TacRefineNet](../entities/paper-tacrefinenet-tactile-grasp-refinement.md)（Siamese · 外在灵巧 regrasp · arXiv:2509.25746） |
+| 数据+策略栈 | 力场表征 / VTLA / 触觉 WAM | [NeoteAI 𝒩₀](../entities/neoteai.md)（OpenNeoData 5k h；Foundation / VTLA / TWAM） |
 
 ## 与其他专题的关系
 
@@ -52,6 +53,7 @@ summary: "触觉与力觉闭环专题汇总：覆盖触觉传感、视触觉融�
 
 - [HapMorph（论文实体）](../entities/paper-hapmorph-pneumatic-haptic-render.md) — VR/遥操作操作员侧可穿戴气动触觉
 - [TacRefineNet（论文实体）](../entities/paper-tacrefinenet-tactile-grasp-refinement.md) — 边缘突出物体的纯触觉抓取精修
+- [NeoteAI / 𝒩₀ 三件套](../entities/neoteai.md) — OpenNeoData + NeoForce + VTLA/TWAM
 - [Teleoperation](../tasks/teleoperation.md) — 操作员力反馈与示范采集
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
 - [Contact Dynamics](../concepts/contact-dynamics.md)
@@ -62,4 +64,5 @@ summary: "触觉与力觉闭环专题汇总：覆盖触觉传感、视触觉融�
 - 本库归纳自 [Tactile Sensing](../concepts/tactile-sensing.md)、[Visuo-Tactile Fusion](../concepts/visuo-tactile-fusion.md)、[Impedance Control](../concepts/impedance-control.md)
 - **ingest 档案：** [sources/papers/hapmorph_arxiv_2509_05433.md](../../sources/papers/hapmorph_arxiv_2509_05433.md) — HapMorph 可穿戴气动多维触觉渲染（arXiv:2509.05433）
 - **ingest 档案：** [sources/papers/tacrefinenet_arxiv_2509_25746.md](../../sources/papers/tacrefinenet_arxiv_2509_25746.md) — TacRefineNet 多指触觉抓取精修（arXiv:2509.25746）
+- **ingest 档案：** [sources/papers/n0_foundation.md](../../sources/papers/n0_foundation.md) — 𝒩₀-Foundation / OpenNeoData
 - 图谱专题定义：[docs/topic-filters.js](../../docs/topic-filters.js)（`tactile` 命中规则）
