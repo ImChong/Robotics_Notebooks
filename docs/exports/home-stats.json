@@ -1,13 +1,35 @@
 {
   "generated_at": "2026-07-26",
-  "node_count": 1909,
-  "edge_count": 16354,
+  "node_count": 1911,
+  "edge_count": 16373,
   "coverage": {
-    "covered": 1857,
-    "total": 1885,
+    "covered": 1859,
+    "total": 1887,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-segment-anything.md",
+      "detail_id": "entity-paper-segment-anything",
+      "label": "Segment Anything（SAM）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-sam2.md",
+      "detail_id": "entity-paper-sam2",
+      "label": "SAM 2：图像与视频中的 Segment Anything",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
     {
       "path": "wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md",
       "detail_id": "wiki-queries-go2-3d-semantic-mapping-sam-pipeline",
@@ -16,6 +38,39 @@
       "recency": "2026-07-26",
       "source": "log.md",
       "action": "maintained",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/entities/ovo-semantic-mapping.md",
+      "detail_id": "entity-ovo-semantic-mapping",
+      "label": "OVO（Open-Vocabulary Online Semantic Mapping）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/entities/dualmap.md",
+      "detail_id": "entity-dualmap",
+      "label": "DualMap",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/entities/ov-sam3d.md",
+      "detail_id": "entity-ov-sam3d",
+      "label": "OV-SAM3D",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "added",
       "has_repo": true,
       "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
     },
@@ -45,39 +100,6 @@
       "path": "wiki/entities/autonomy-stack-go2.md",
       "detail_id": "entity-autonomy-stack-go2",
       "label": "autonomy_stack_go2",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/dualmap.md",
-      "detail_id": "entity-dualmap",
-      "label": "DualMap",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/ovo-semantic-mapping.md",
-      "detail_id": "entity-ovo-semantic-mapping",
-      "label": "OVO（Open-Vocabulary Online Semantic Mapping）",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/ov-sam3d.md",
-      "detail_id": "entity-ov-sam3d",
-      "label": "OV-SAM3D",
       "type": "entity",
       "recency": "2026-07-26",
       "source": "log.md",
@@ -202,35 +224,13 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/isaac-gr00t.md",
-      "detail_id": "entity-isaac-gr00t",
-      "label": "Isaac GR00T（人形 VLA 开发平台）",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-hrl-stack-34-gr00t_n1.md",
-      "detail_id": "entity-paper-hrl-stack-34-gr00t_n1",
-      "label": "GR00T N1",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md",
-    "detail_id": "wiki-queries-go2-3d-semantic-mapping-sam-pipeline",
-    "label": "GO2 三维语义建图与 SAM 流水线",
-    "type": "query",
+    "path": "wiki/entities/paper-segment-anything.md",
+    "detail_id": "entity-paper-segment-anything",
+    "label": "Segment Anything（SAM）",
+    "type": "entity",
     "recency": "2026-07-26",
     "source": "log.md",
     "action": "maintained",
