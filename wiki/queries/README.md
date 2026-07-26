@@ -81,7 +81,7 @@
 | [perception-backbone-selection](./perception-backbone-selection.md) | 机器人感知栈该用分类骨干 / 检测头 / 还是通用预训练表征？选型第一刀砍在哪？ | Vision Backbones、Visual Representation for Policy、CNN vs ViT、Object Detection、VLA、DINOv2/R3M/VC-1 |
 | [real-robot-policy-autoresearch-harness](./real-robot-policy-autoresearch-harness.md) | 如何把真机策略开发改造成 coding agent 可编排的自改进闭环？前提、范式选型与 scaling 怎么读？ | ENPIRE、Behavior Cloning、Reinforcement Learning、Simulation-Evaluation Infrastructure、Data Flywheel、Embodied Scaling Laws |
 | [numerical-optimization-method-selection](./numerical-optimization-method-selection.md) | 机器人数值优化方法（LQR/iLQR、拟牛顿、罚/障碍/增广拉格朗日、凸松弛）该按什么标准选、怎么分层组合？ | LQR/iLQR、Quasi-Newton BFGS、Penalty/Barrier/Augmented Lagrangian、Convex Relaxation、Optimization Software Selection |
-| [go2-3d-semantic-mapping-sam-pipeline](./go2-3d-semantic-mapping-sam-pipeline.md) | GO2 有没有 3D 语义建图资料？移动时点云差怎么办？SAM 怎么从 2D 到 3D？（CMU 相关） | point_lio_unilidar、FAST-LIO、LIO-SAM、autonomy_stack_go2、DualMap、OVO、OV-SAM3D、FindAnything |
+| [go2-3d-semantic-mapping-sam-pipeline](./go2-3d-semantic-mapping-sam-pipeline.md) | GO2 三维语义建图有哪些资料？运动中点云差怎么排？SAM 如何落到 3D？CMU 相关工作如何区分？ | point_lio_unilidar、FAST-LIO、LIO-SAM、autonomy_stack_go2、DualMap、OVO、OV-SAM3D、FindAnything、CMU MSCV Semantic 3D Mapping |
 
 **对比页（comparisons/）补充**：AMP 先验变体见 [amp-add-smp-motion-prior-variants](../comparisons/amp-add-smp-motion-prior-variants.md)。
 

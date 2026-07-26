@@ -1,5 +1,9 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-26] structural | wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md — 面向全体读者改写：先交代问题背景与核心疑问，去掉「可直接回复对方」等对单人话术标题
+
+- **改写：** [`wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md`](wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md) — 新增「问题背景与核心疑问」+ 结论先行；§3 去第二人称；删除私聊式短答节
+
 ## [2026-07-26] structural | wiki/entities/{findanything,cmu-mscv-semantic-3d-mapping}.md — 为项目页建 site/项目实体；开源仓地址与源码分析待官方发布后补
 
 - **新建：**
