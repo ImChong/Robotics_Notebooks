@@ -398,7 +398,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 
 ## 推荐继续阅读
 
-- [POT-VLA](../entities/paper-pot-vla.md) — 用持久 3D 对象状态统一 G1 动作生成、几何验收与失败恢复
+- [POT-VLA](../entities/paper-pot-vla.md) — Persistent Object Tokenization：共享角色化 3D 对象记忆条件化 GR00T-N1.7 并做几何谓词验收；G1 **39/80→71/80**（arXiv:2607.18016）
 - [Patch Policy](../entities/paper-patch-policy.md) — 直接消费密集 ViT patch token 的轻量高频控制策略
 - RT-2 / π₀ 原论文或项目博客
 - [OpenVLA](../entities/openvla.md) / Octo 开源实现
