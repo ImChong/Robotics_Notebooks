@@ -2,7 +2,7 @@
 type: entity
 tags: [unitree, hardware, sdk, sim2real, humanoid, quadruped]
 status: complete
-updated: 2026-07-24
+updated: 2026-07-26
 sources:
   - ../../sources/repos/unitree.md
   - ../../sources/sites/unitree-unistore.md
@@ -33,6 +33,7 @@ related:
   - ../concepts/sim2real.md
   - ../concepts/wheel-legged-quadruped.md
   - ./dreamwaq-plus.md
+  - ./waytoagi.md
 ---
 
 # Unitree
@@ -362,6 +363,7 @@ Unitree 是非常重要的目标平台语境：先选定官方 RL 仓之一，�
 - UniStore 应用平台：<https://unistore.unitree.com/>
 - G1 页面：<https://www.unitree.com/g1/>
 - H1 页面：<https://www.unitree.com/h1/>
+- 中文社区策展镜像（非官方）：[WaytoAGI · AI硬件](./waytoagi.md) — 飞书栏目含宇树简介等 PDF 转载，硬件与 SDK 仍以本页官方入口为准
 - UnifoLM-WMA 项目页：<https://unigen-x.github.io/unifolm-world-model-action.github.io>
 - UnifoLM-VLA 项目页：<https://unigen-x.github.io/unifolm-vla.github.io>
 

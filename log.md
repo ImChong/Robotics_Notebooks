@@ -1,5 +1,18 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-26] ingest | sources/sites/waytoagi-feishu-wiki.md — WaytoAGI 飞书知识库首页入库；升格 wiki/entities/waytoagi.md；交叉 unitree / VLA 复现地图 / OpenLET
+
+- **确认工具：** Agent Reach v1.5.0 已安装（`~/.local/bin/agent-reach`）；抓取用 Camoufox + 飞书公开 `wiki/v2/tree/*`（Jina 仅得壳层）
+- **来源归档：**
+  - [`sources/sites/waytoagi-feishu-wiki.md`](sources/sites/waytoagi-feishu-wiki.md)
+  - [`sources/raw/feishu_waytoagi_wiki_home_2026-07-26.md`](sources/raw/feishu_waytoagi_wiki_home_2026-07-26.md) — 一级 TOC + AI硬件子树
+- **主升格：** [`wiki/entities/waytoagi.md`](wiki/entities/waytoagi.md) — 社区门户实体；机器人主线读「AI硬件」雷达
+- **开源核查（步骤 2.5）：** 飞书库 **Public access**；无独立算法仓；宇树 PDF 为**社区转载**
+- **交叉：**
+  - [`wiki/entities/unitree.md`](wiki/entities/unitree.md)
+  - [`wiki/overview/vla-open-source-repro-landscape-2025.md`](wiki/overview/vla-open-source-repro-landscape-2025.md)
+  - [`wiki/entities/openlet.md`](wiki/entities/openlet.md)
+
 ## [2026-07-26] ingest | sources/repos/ultralytics.md — Ultralytics YOLO 官方仓入库；升格 wiki/entities/ultralytics.md；交叉 wiki/methods/object-detection.md、wiki/queries/object-detection-model-selection.md、wiki/entities/rf-detr.md、wiki/entities/paper-yolo-unified-realtime-detection.md、wiki/entities/booster-robocup-demo.md、wiki/methods/soccer-field-line-detection.md
 
 ## [2026-07-26] ingest | sources/papers/segment_anything_arxiv_2304_02643.md + sources/papers/sam2_arxiv_2408_00714.md — SAM/SAM2 论文与官方仓入库；升格 wiki/entities/paper-segment-anything.md、wiki/entities/paper-sam2.md；交叉 wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md、wiki/entities/ovo-semantic-mapping.md、wiki/entities/dualmap.md、wiki/entities/ov-sam3d.md

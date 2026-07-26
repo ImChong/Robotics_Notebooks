@@ -1,13 +1,54 @@
 {
   "generated_at": "2026-07-26",
-  "node_count": 1912,
-  "edge_count": 16387,
+  "node_count": 1913,
+  "edge_count": 16399,
   "coverage": {
-    "covered": 1860,
-    "total": 1888,
+    "covered": 1861,
+    "total": 1889,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/waytoagi.md",
+      "detail_id": "entity-waytoagi",
+      "label": "WaytoAGI（通往 AGI 之路）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/unitree.md",
+      "detail_id": "entity-unitree",
+      "label": "Unitree",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
+      "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
+      "label": "VLA 开源复现景观（2025 策展）",
+      "type": "overview",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/openlet.md",
+      "detail_id": "entity-openlet",
+      "label": "OpenLET 具身智能开源数据集社区",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/ultralytics.md",
       "detail_id": "entity-ultralytics",
@@ -183,61 +224,16 @@
       "action": "added",
       "has_repo": true,
       "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/point-lio-unilidar.md",
-      "detail_id": "entity-point-lio-unilidar",
-      "label": "point_lio_unilidar",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/overview/navigation-slam-autonomy-stack.md",
-      "detail_id": "wiki-overview-navigation-slam-autonomy-stack",
-      "label": "导航·SLAM·自动驾驶开源栈总览",
-      "type": "overview",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-real-time-polygonal-semantic-mapping-for-humanoi.md",
-      "detail_id": "entity-paper-notebook-real-time-polygonal-semantic-mapping-for-humanoi",
-      "label": "Real-Time Polygonal Semantic Mapping for Humanoid Robot Stair Climbing",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
-    },
-    {
-      "path": "wiki/entities/onnxruntime.md",
-      "detail_id": "entity-onnxruntime",
-      "label": "ONNX Runtime",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/ultralytics.md",
-    "detail_id": "entity-ultralytics",
-    "label": "Ultralytics YOLO",
+    "path": "wiki/entities/waytoagi.md",
+    "detail_id": "entity-waytoagi",
+    "label": "WaytoAGI（通往 AGI 之路）",
     "type": "entity",
     "recency": "2026-07-26",
     "source": "log.md",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
@@ -285,7 +281,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 337,
+      "degree": 338,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -301,7 +297,7 @@
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
-      "degree": 293,
+      "degree": 294,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
