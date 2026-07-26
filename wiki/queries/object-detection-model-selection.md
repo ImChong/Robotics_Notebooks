@@ -2,13 +2,14 @@
 type: query
 tags: [object-detection, perception, computer-vision, real-time, yolo, faster-rcnn, robotics, deployment]
 status: complete
-updated: 2026-07-21
+updated: 2026-07-26
 summary: "目标检测模型选型 Query：从「机载实时 vs 服务器侧高精度」「单阶段 vs 两阶段 / 实时 DETR」「2D 框够不够 vs 要不要级联位姿」三轴出发，给出机器人感知栈里检测器的选型逻辑、部署陷阱与组合 pipeline。"
 related:
   - ../methods/object-detection.md
   - ../concepts/vision-backbones.md
   - perception-backbone-selection.md
   - ../entities/paper-yolo-unified-realtime-detection.md
+  - ../entities/ultralytics.md
   - ../entities/paper-resnet-deep-residual-learning.md
   - ../entities/rf-detr.md
   - ../tasks/manipulation.md
@@ -21,12 +22,13 @@ sources:
   - ../../sources/papers/resnet_arxiv_1512_03385.md
   - ../../sources/papers/vision_backbone_detection_classics.md
   - ../../sources/papers/rf_detr_arxiv_2511_09554.md
+  - ../../sources/repos/ultralytics.md
   - ../../sources/blogs/wechat_shenlan_ai_ad_2d_detection.md
   - ../../sources/blogs/wechat_shenlan_ai_ad_3d_detection.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「机器人感知栈里到底该选单阶段（YOLO 系）还是两阶段（Faster R-CNN 系）检测器？机载实时和服务器侧高精度的选型逻辑有什么不同？2D 框够用吗？」
-> 综合来源：[Object Detection（方法）](../methods/object-detection.md)、[视觉骨干（概念）](../concepts/vision-backbones.md)、[YOLO v1（论文实体）](../entities/paper-yolo-unified-realtime-detection.md)、[ResNet（论文实体）](../entities/paper-resnet-deep-residual-learning.md)、[Manipulation（任务）](../tasks/manipulation.md)、[Humanoid Soccer（任务）](../tasks/humanoid-soccer.md)
+> 综合来源：[Object Detection（方法）](../methods/object-detection.md)、[视觉骨干（概念）](../concepts/vision-backbones.md)、[YOLO v1（论文实体）](../entities/paper-yolo-unified-realtime-detection.md)、[Ultralytics（工程仓）](../entities/ultralytics.md)、[ResNet（论文实体）](../entities/paper-resnet-deep-residual-learning.md)、[Manipulation（任务）](../tasks/manipulation.md)、[Humanoid Soccer（任务）](../tasks/humanoid-soccer.md)
 
 # Query：目标检测模型选型（机载实时 vs 服务器侧 / 单阶段 vs 两阶段 / 2D 框 vs 级联位姿）
 
@@ -36,7 +38,7 @@ sources:
 检测要在哪里跑、延迟预算多少？
 ├── 机载 / 边缘（Jetson 级算力，要 >10–30 FPS 闭环）
 │   ├── 目标类别固定、场景受控（球 / 障碍 / 人）
-│   │   └→ 单阶段（YOLO 系）或 无 NMS 实时 DETR（[RF-DETR](../entities/rf-detr.md)）+ TensorRT/FP16
+│   │   └→ 单阶段（[Ultralytics YOLO](../entities/ultralytics.md) 系）或 无 NMS 实时 DETR（[RF-DETR](../entities/rf-detr.md)）+ TensorRT/FP16
 │   └── 类别开放 / 需语言指令
 │       └→ 轻量开放词汇检测（OWL-ViT / Grounding-DINO 蒸馏版）兜底
 └── 服务器侧 / 离线（算力充足，精度优先）
@@ -69,7 +71,7 @@ sources:
 
 | 范式 | 代表 | 优势 | 风险 | 何时优先 |
 |------|------|------|------|---------|
-| 单阶段密集回归 | [YOLO v1](../entities/paper-yolo-unified-realtime-detection.md)、SSD、RetinaNet | 端到端、全图上下文、快 | 小目标/密集场景定位错误偏高 | 机载实时、类别固定、闭环感知 |
+| 单阶段密集回归 | [YOLO v1](../entities/paper-yolo-unified-realtime-detection.md) → 工程 [Ultralytics](../entities/ultralytics.md)、SSD、RetinaNet | 端到端、全图上下文、快 | 小目标/密集场景定位错误偏高；**AGPL** 商用需注意 | 机载实时、类别固定、闭环感知 |
 | 端到端 DETR（无 NMS） | [RF-DETR](../entities/rf-detr.md)、RT-DETR | **ViT 域迁移**、确定性延迟、检测/分割统一 API | closed-vocab 需微调；XL 权重许可受限 | 垂直域 fine-tune、要与 YOLO 比 RF100-VL 类 benchmark |
 | 两阶段提议+分类 | Faster R-CNN（RPN + RoI） | 定位精度高、小目标更稳 | 延迟大、工程链路长 | 服务器侧、高精度、小目标 |
 | 单阶段 + Focal loss | RetinaNet | 单阶段逼近两阶段精度 | 仍需调难易样本平衡 | 想兼顾速度与精度时的折中 |
@@ -162,6 +164,7 @@ sources:
 - [ResNet 论文摘录（arXiv:1512.03385）](../../sources/papers/resnet_arxiv_1512_03385.md) — 检测骨干与 FPN 的精度地基
 - [经典视觉骨干与检测文献簇](../../sources/papers/vision_backbone_detection_classics.md) — 两阶段/单阶段谱系与对比
 - [RF-DETR 论文摘录（arXiv:2511.09554）](../../sources/papers/rf_detr_arxiv_2511_09554.md) — 实时 DETR 与域迁移 benchmark
+- [Ultralytics 仓库归档](../../sources/repos/ultralytics.md) — YOLO 工程主仓与许可
 - [深蓝AI 2D 目标检测篇](../../sources/blogs/wechat_shenlan_ai_ad_2d_detection.md) — 车载 2D 四族策展
 - [深蓝AI 3D 目标检测篇](../../sources/blogs/wechat_shenlan_ai_ad_3d_detection.md) — 单目/双目/LiDAR 选型策展
 
@@ -172,6 +175,7 @@ sources:
 - [《自动驾驶核心算法盘点》专栏技术地图](../overview/autonomous-driving-core-algorithms-series.md) — 车载 2D/3D 检测速查与上游跟踪
 - [视觉骨干（概念）](../concepts/vision-backbones.md) — 检测器骨干与多尺度特征的上游
 - [YOLO v1（论文实体）](../entities/paper-yolo-unified-realtime-detection.md) — 单阶段回归检测开山工作
+- [Ultralytics YOLO（工程仓）](../entities/ultralytics.md) — YOLO 训练/导出/部署统一入口
 - [RF-DETR（实体）](../entities/rf-detr.md) — 无 NMS 实时 DETR 与 vertical-domain fine-tune
 - [ResNet（论文实体）](../entities/paper-resnet-deep-residual-learning.md) — ResNet-FPN 骨干代表
 - [Manipulation（任务）](../tasks/manipulation.md) — 检测 → 抓取候选的下游任务

@@ -9,7 +9,7 @@ tags:
   - perception
   - robotics
 status: complete
-updated: 2026-06-06
+updated: 2026-07-26
 arxiv: "1506.02640"
 venue: "CVPR 2016"
 code: https://github.com/pjreddie/darknet
@@ -17,11 +17,13 @@ related:
   - ../methods/object-detection.md
   - ../concepts/vision-backbones.md
   - ./paper-resnet-deep-residual-learning.md
+  - ./ultralytics.md
   - ./booster-robocup-demo.md
   - ../tasks/humanoid-soccer.md
 sources:
   - ../../sources/papers/yolo_arxiv_1506_02640.md
   - ../../sources/papers/vision_backbone_detection_classics.md
+  - ../../sources/repos/ultralytics.md
 summary: "YOLO v1（arXiv:1506.02640）将目标检测重构为单次 CNN 回归，在 Pascal VOC 上达 63.4 mAP @ 45 FPS，开启端到端实时检测范式并深刻影响机器人机载感知栈。"
 tags: [paper, computer-vision, object-detection, real-time, perception, robotics, ai2, uw]
 
@@ -51,7 +53,7 @@ tags: [paper, computer-vision, object-detection, real-time, perception, robotics
 
 - **范式转换：** 首次在 **精度可接受** 的前提下把检测做到 **真·实时**（>30 FPS），证明 **单网络端到端优化** 可行。
 - **全局上下文：** 与滑动窗口 / R-CNN 局部 patch 不同，YOLO 训练与推理时 **看到全图**，背景假阳性约为 Fast R-CNN 的 **三分之一**。
-- **机器人落地广泛：** 从 RoboCup [Booster 演示](./booster-robocup-demo.md) 的 YOLOv8，到人形足球 [寻球模块](../tasks/humanoid-soccer.md)，**YOLO 谱系** 仍是机载边缘设备的主流选择之一。
+- **机器人落地广泛：** 从 RoboCup [Booster 演示](./booster-robocup-demo.md) 的 YOLOv8，到人形足球 [寻球模块](../tasks/humanoid-soccer.md)，**YOLO 谱系** 仍是机载边缘设备的主流选择之一；工程入口见 [Ultralytics](./ultralytics.md)。
 
 ## 核心结构
 
@@ -102,6 +104,7 @@ flowchart LR
 - [目标检测（方法）](../methods/object-detection.md)
 - [视觉骨干（概念）](../concepts/vision-backbones.md)
 - [ResNet（论文实体）](./paper-resnet-deep-residual-learning.md)
+- [Ultralytics YOLO（工程仓）](./ultralytics.md)
 - [Booster RoboCup Demo](./booster-robocup-demo.md)
 - [Humanoid Soccer（任务）](../tasks/humanoid-soccer.md)
 
@@ -109,11 +112,13 @@ flowchart LR
 
 - [YOLO v1 论文摘录（arXiv:1506.02640）](../../sources/papers/yolo_arxiv_1506_02640.md)
 - [经典视觉骨干与检测文献簇](../../sources/papers/vision_backbone_detection_classics.md)
+- [Ultralytics 仓库归档](../../sources/repos/ultralytics.md)
 
 ## 推荐继续阅读
 
 - 论文 PDF：<https://arxiv.org/pdf/1506.02640.pdf>
 - 项目页：<http://pjreddie.com/yolo/>
 - Darknet：<https://github.com/pjreddie/darknet>
+- [Ultralytics](./ultralytics.md) — 当代 YOLO 工程谱系
 - [Fast R-CNN](https://arxiv.org/abs/1504.08083)（误差分析对照）
 - [Faster R-CNN](https://arxiv.org/abs/1506.01497)（两阶段准实时路线）

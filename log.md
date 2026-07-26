@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-26] ingest | sources/repos/ultralytics.md — Ultralytics YOLO 官方仓入库；升格 wiki/entities/ultralytics.md；交叉 wiki/methods/object-detection.md、wiki/queries/object-detection-model-selection.md、wiki/entities/rf-detr.md、wiki/entities/paper-yolo-unified-realtime-detection.md、wiki/entities/booster-robocup-demo.md、wiki/methods/soccer-field-line-detection.md
+
 ## [2026-07-26] structural | wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md — 面向全体读者改写：先交代问题背景与核心疑问，去掉「可直接回复对方」等对单人话术标题
 
 - **改写：** [`wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md`](wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md) — 新增「问题背景与核心疑问」+ 结论先行；§3 去第二人称；删除私聊式短答节

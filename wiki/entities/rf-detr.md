@@ -11,7 +11,7 @@ tags:
   - perception
   - robotics
 status: complete
-updated: 2026-06-25
+updated: 2026-07-26
 arxiv: "2511.09554"
 venue: "ICLR 2026"
 code: https://github.com/roboflow/rf-detr
@@ -19,6 +19,7 @@ related:
   - ../methods/object-detection.md
   - ../concepts/vision-backbones.md
   - ../queries/object-detection-model-selection.md
+  - ./ultralytics.md
   - ./paper-yolo-unified-realtime-detection.md
   - ../tasks/manipulation.md
   - ../tasks/humanoid-soccer.md
@@ -26,6 +27,7 @@ sources:
   - ../../sources/papers/rf_detr_arxiv_2511_09554.md
   - ../../sources/repos/rf_detr.md
   - ../../sources/sites/rfdetr-docs.md
+  - ../../sources/repos/ultralytics.md
 summary: "RF-DETR 是 Roboflow 提出的实时 DETR 族：DINOv2 骨干 + 端到端 weight-sharing NAS，单次训练后在 Pareto 前沿选精度–延迟点；COCO 上 2XL 首破 60 AP，支持检测/分割/关键点微调与 ONNX–TensorRT 部署。"
 tags: [repo, paper, computer-vision, object-detection, instance-segmentation, real-time, perception, robotics, nvidia, cmu]
 
@@ -55,7 +57,7 @@ tags: [repo, paper, computer-vision, object-detection, instance-segmentation, re
 ## 为什么重要
 
 - **实时 DETR 新标杆：** **RF-DETR-2XL** 在 COCO 上 **60.1 AP50:95 @ 17.2 ms**（T4, TensorRT FP16），据论文为首个 **实时 >60 AP** 的检测器；**Large** 在 **6.8 ms** 下达 **56.5 AP**，优于同级 YOLO11x 且延迟更低。
-- **机器人选型新选项：** 相对 YOLO，**无 NMS**、**DINOv2 域迁移更强**（RF100-VL 上 YOLOv8/v11 明显落后）；相对 GroundingDINO，**无文本塔、快 ~20×**，适合 **固定类别机载闭环**（球/人/障碍/工装）。
+- **机器人选型新选项：** 相对 [Ultralytics YOLO](./ultralytics.md)，**无 NMS**、**DINOv2 域迁移更强**（RF100-VL 上 YOLOv8/v11 明显落后）；相对 GroundingDINO，**无文本塔、快 ~20×**，适合 **固定类别机载闭环**（球/人/障碍/工装）。
 - **一次训练、多部署点：** NAS 子网共享权重 → 同一 checkpoint 可换 **Nano→Large** 分辨率与 decoder 深度，便于 **仿真训练 → Jetson/服务器分级部署** 而不重复训多套模型。
 - **任务统一：** 检测与 **RF-DETR-Seg** 共享 backbone 与训练 API；关键点 preview 可做人形 **2D 姿态锚点**（再级联 3D/控制）。
 
@@ -103,7 +105,7 @@ flowchart TB
 
 | 路线 | 代表 | 相对 RF-DETR |
 |------|------|--------------|
-| YOLO 单阶段 | YOLOv8/v11 | RF-DETR **COCO/RF100-VL 精度更高**；**无 NMS**；DINOv2 **域迁移更好** |
+| YOLO 单阶段 | [Ultralytics](./ultralytics.md) YOLOv8/v11/v26 | RF-DETR **COCO/RF100-VL 精度更高**；**无 NMS**；DINOv2 **域迁移更好** |
 | 实时 DETR | RT-DETR、LW-DETR、D-FINE | RF-DETR-N **+5 AP** 于 D-FINE-N；**NAS 一次训练多尺度** |
 | 开放词汇 VLM | GroundingDINO、YOLO-World | VLM **开放类/语言** 强；RF-DETR **closed-vocab 微调快 20×+** |
 | 两阶段 R-CNN | Faster R-CNN | R-CNN **小目标定位** 仍稳；RF-DETR **端到端实时** 更适合闭环 |
@@ -120,6 +122,7 @@ flowchart TB
 - [目标检测（方法）](../methods/object-detection.md)
 - [视觉骨干（概念）](../concepts/vision-backbones.md)
 - [Query：目标检测模型选型](../queries/object-detection-model-selection.md)
+- [Ultralytics YOLO（工程仓）](./ultralytics.md)
 - [YOLO v1（论文实体）](./paper-yolo-unified-realtime-detection.md)
 - [Manipulation（任务）](../tasks/manipulation.md)
 - [Humanoid Soccer（任务）](../tasks/humanoid-soccer.md)
@@ -129,6 +132,7 @@ flowchart TB
 - [RF-DETR 论文摘录（arXiv:2511.09554）](../../sources/papers/rf_detr_arxiv_2511_09554.md)
 - [rf-detr 仓库归档](../../sources/repos/rf_detr.md)
 - [RF-DETR 官方文档站](../../sources/sites/rfdetr-docs.md)
+- [Ultralytics 仓库归档](../../sources/repos/ultralytics.md)
 
 ## 推荐继续阅读
 
@@ -137,4 +141,4 @@ flowchart TB
 - 文档：<https://rfdetr.roboflow.com/latest/>
 - [LW-DETR](https://arxiv.org/abs/2406.08460)（直接架构前身）
 - [DINOv2](https://arxiv.org/abs/2304.07193)（骨干预训练）
-- [Ultralytics YOLO 文档](https://docs.ultralytics.com/)（YOLO 系工程对照）
+- [Ultralytics YOLO](./ultralytics.md)（YOLO 系工程对照）

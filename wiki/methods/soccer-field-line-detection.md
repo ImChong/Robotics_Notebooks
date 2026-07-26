@@ -2,7 +2,7 @@
 type: method
 tags: [computer-vision, soccer, perception, yolo, geometry, humanoid, robocup]
 status: complete
-updated: 2026-07-23
+updated: 2026-07-26
 related:
   - ../methods/object-detection.md
   - ../concepts/soccer-field-simulation.md
@@ -11,11 +11,13 @@ related:
   - ../concepts/perception-coordinate-postprocessing.md
   - ../entities/intel-realsense.md
   - ../entities/booster-robocup-demo.md
+  - ../entities/ultralytics.md
   - ../tasks/humanoid-soccer.md
   - ../entities/humanoid-system-curriculum.md
   - ../queries/soccer-visual-field-localization-pipeline.md
 sources:
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
+  - ../../sources/repos/ultralytics.md
 summary: "球门与足球场线交点检测：YOLO 检球/门 + 线几何或关键点回归得到场地结构特征，为线匹配定位供观测；课程 6.4 与 YOLO11 实践。"
 ---
 
@@ -137,5 +139,5 @@ flowchart TB
 
 ## 推荐继续阅读
 
-- Ultralytics YOLO11 文档（训练、导出、关键点模式）
+- Ultralytics YOLO11 / YOLO26 文档（训练、导出、关键点模式）→ 实体 [Ultralytics](../entities/ultralytics.md)
 - RoboCup Humanoid League 规则中的场地线规格

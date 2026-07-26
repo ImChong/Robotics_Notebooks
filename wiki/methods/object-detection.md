@@ -7,13 +7,14 @@ tags:
   - real-time
   - robotics
 status: complete
-updated: 2026-07-21
+updated: 2026-07-26
 related:
   - ../concepts/vision-backbones.md
   - ../comparisons/cnn-vs-vit-backbones.md
   - ../concepts/visual-representation-for-policy.md
   - ../queries/perception-backbone-selection.md
   - ../entities/paper-yolo-unified-realtime-detection.md
+  - ../entities/ultralytics.md
   - ../entities/paper-resnet-deep-residual-learning.md
   - ../entities/rf-detr.md
   - ../tasks/manipulation.md
@@ -24,6 +25,7 @@ sources:
   - ../../sources/papers/resnet_arxiv_1512_03385.md
   - ../../sources/papers/vision_backbone_detection_classics.md
   - ../../sources/papers/rf_detr_arxiv_2511_09554.md
+  - ../../sources/repos/ultralytics.md
   - ../../sources/blogs/wechat_shenlan_ai_ad_2d_detection.md
   - ../../sources/blogs/wechat_shenlan_ai_ad_3d_detection.md
 summary: "目标检测在图像中定位并分类物体；两阶段 R-CNN 族精度高，YOLO 等单阶段方法以端到端回归实现机载实时感知，DETR/RF-DETR 等无 NMS Transformer 路线在 ViT 骨干下补齐精度–延迟前沿；车载侧另有单目/双目/LiDAR 3D 检测选型轴，是机器人导航与操作视觉栈的核心模块。"
@@ -74,7 +76,7 @@ summary: "目标检测在图像中定位并分类物体；两阶段 R-CNN 族精
 | SSD | 多尺度 default boxes | 精度与速度折中 |
 | RetinaNet | Focal loss 平衡难易样本 | 单阶段逼近两阶段精度 |
 
-**机器人语境：** 机载实时 **球体/障碍/人** 检测；后续 YOLOv5–v8、TensorRT 加速为工程主流。
+**机器人语境：** 机载实时 **球体/障碍/人** 检测；后续 YOLOv5–v8/v11/v26、TensorRT 加速为工程主流——统一入口见 [Ultralytics](../entities/ultralytics.md)。
 
 ### 端到端 Transformer：DETR / RF-DETR（无 NMS）
 
@@ -138,6 +140,7 @@ YOLO v1 误差分析（相对 Fast R-CNN）：
 - [Booster RoboCup Demo](../entities/booster-robocup-demo.md)
 - [Visual Servoing（方法）](./visual-servoing.md)
 - [Query：目标检测模型选型](../queries/object-detection-model-selection.md)
+- [Ultralytics YOLO](../entities/ultralytics.md)
 - [《自动驾驶核心算法盘点》专栏技术地图](../overview/autonomous-driving-core-algorithms-series.md) — 车载 2D/3D 检测与跟踪上游
 
 ## 参考来源
@@ -146,6 +149,7 @@ YOLO v1 误差分析（相对 Fast R-CNN）：
 - [ResNet 论文摘录（arXiv:1512.03385）](../../sources/papers/resnet_arxiv_1512_03385.md)
 - [经典视觉骨干与检测文献簇](../../sources/papers/vision_backbone_detection_classics.md)
 - [RF-DETR 论文摘录（arXiv:2511.09554）](../../sources/papers/rf_detr_arxiv_2511_09554.md)
+- [Ultralytics 仓库归档](../../sources/repos/ultralytics.md)
 - [深蓝AI 2D 目标检测篇](../../sources/blogs/wechat_shenlan_ai_ad_2d_detection.md)
 - [深蓝AI 3D 目标检测篇](../../sources/blogs/wechat_shenlan_ai_ad_3d_detection.md)
 
@@ -153,5 +157,5 @@ YOLO v1 误差分析（相对 Fast R-CNN）：
 
 - [YOLO 论文 PDF](https://arxiv.org/pdf/1506.02640.pdf)
 - [Faster R-CNN](https://arxiv.org/abs/1506.01497)
-- [Ultralytics YOLO 文档](https://docs.ultralytics.com/)（工程后继）
+- [Ultralytics](../entities/ultralytics.md) — YOLO 工程主仓
 - [RF-DETR 文档](https://rfdetr.roboflow.com/latest/)（实时 DETR 微调与部署）
