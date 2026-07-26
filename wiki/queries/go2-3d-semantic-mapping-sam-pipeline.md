@@ -32,7 +32,7 @@ summary: "GO2 三维语义建图选型：先 Point-LIO 几何（时间同步/去
 
 # GO2 三维语义建图与 SAM 流水线
 
-> **Query 产物**：本页由以下问题触发：「有没有 GO2 技术资料？对 GO2 的 3D 语义建图感兴趣；点云建图在狗子移动时效果不理想；点云建图 + SAM 如何从 2D 转为 3D 自适应识别（提到 CMU 相关工作）？」
+> **Query 产物**：本页由以下问题触发：「GO2 有哪些可用的三维语义建图资料？运动中点云建图效果差应如何排查？点云建图结合 SAM 时，二维 mask 如何落到三维？常被提及的 CMU 相关工作各自解决什么问题？」
 > 综合来源：[point_lio_unilidar](../entities/point-lio-unilidar.md)、[autonomy_stack_go2](../entities/autonomy-stack-go2.md)、[DualMap](../entities/dualmap.md)、[OVO](../entities/ovo-semantic-mapping.md)、[OV-SAM3D](../entities/ov-sam3d.md)、[FindAnything](../entities/findanything.md)、[CMU MSCV Semantic 3D Mapping](../entities/cmu-mscv-semantic-3d-mapping.md)、[FAST-LIO](../entities/fast-lio.md)、[LIO-SAM](../entities/lio-sam.md)、[导航·SLAM 栈](../overview/navigation-slam-autonomy-stack.md)、[LiDAR/LIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)、[Real-Time Polygonal Semantic Mapping（待深读占位）](../entities/paper-notebook-real-time-polygonal-semantic-mapping-for-humanoi.md)
 
 ## 一句话定义
@@ -53,6 +53,19 @@ summary: "GO2 三维语义建图选型：先 Point-LIO 几何（时间同步/去
 | TSDF | Truncated Signed Distance Function | 稠密几何融合表示之一 |
 | RGB-D | RGB + Depth | 彩色与深度；OVO 等语义栈常见输入 |
 | FOV | Field of View | 视场；L1/L2 约 360°×90° |
+
+## 问题背景与核心疑问
+
+在四足平台（尤其是 [Unitree GO2](../entities/unitree.md)）上做室内外建图时，常见诉求会叠在一起：既要 **运动中稳定的三维点云地图**，又希望借助 **SAM 一类二维分割** 得到语义或实例信息，并往往听说 **CMU** 有相关工作可参考。实际推进时，这几类问题容易缠在一起：
+
+| # | 核心疑问 | 本页对应解答 |
+|---|----------|--------------|
+| Q1 | GO2 / L1 上有哪些可复现的建图与导航资料？本库覆盖到哪一层？ | [库内现状](#库内现状对照本仓库) · [一手项目](#最值得参考的一手项目) |
+| Q2 | 狗子移动时点云重影、墙面变厚、地图撕裂，是否应先换更「高级」的点云算法或直接上 SAM？ | [§1 先几何再语义](#1-先解决几何建图再叠加-sam) |
+| Q3 | SAM（或 SAM2）如何从二维图像「变成」三维点云上的标签？ | [§2 SAM 与 2D→3D](#2-sam-并不是直接把-2d变成3d) |
+| Q4 | 常被一并提起的 CMU 工作，是几何自主导航还是 DETR+SAM 语义投影？ | [§3 CMU 两条路线](#3-cmu-相关工作常是两条不同路线) |
+
+**结论先行（面向选型）：** 把问题拆成「几何建图」与「语义融合」两层。运动中点云质量差时，优先排查 LiDAR/IMU 时间同步、逐点时间戳、运动去畸变、外参与回环，再叠加 SAM。几何基线可选 [point_lio_unilidar](../entities/point-lio-unilidar.md) 与 [autonomy_stack_go2](../entities/autonomy-stack-go2.md)。SAM 产出的是二维 mask；三维标签来自相机内参、相机–LiDAR 外参、机器人位姿下的投影与跨帧融合——流程对照见 [CMU MSCV Semantic 3D Mapping](../entities/cmu-mscv-semantic-3d-mapping.md)。后续语义系统可重点看 [DualMap](../entities/dualmap.md)、[OVO](../entities/ovo-semantic-mapping.md)、[OV-SAM3D](../entities/ov-sam3d.md)、[FindAnything](../entities/findanything.md)。
 
 ## 库内现状（对照本仓库）
 
@@ -115,12 +128,14 @@ p_W = T_{W\leftarrow C}\, p_C
 
 [CMU MSCV Semantic 3D Mapping](../entities/cmu-mscv-semantic-3d-mapping.md) 正是：DETR 框 → SAM 实例 mask → 外参/位姿映射到 3D 点云（伪标注/检测管线）。
 
-## 3. 你看到的 CMU 工作可能是两条不同路线
+## 3. CMU 相关工作常是两条不同路线
+
+文献与社区讨论里，「CMU + GO2 / 语义建图」往往混指不同项目，宜按问题拆开：
 
 | 路线 | 代表 | 回答什么问题 |
 |------|------|----------------|
 | **GO2 几何自主导航** | [autonomy_stack_go2](../entities/autonomy-stack-go2.md) | 内置 L1 + 雷达 IMU，Point-LIO SLAM，地形可通行性、避障、FAR Planner。**不是** SAM 语义建图 |
-| **二维语义投影到三维** | [MSCV Semantic 3D Mapping](../entities/cmu-mscv-semantic-3d-mapping.md) | DETR + SAM + 标定，把 2D 标签投到点云。与截图问题 **直接对应** |
+| **二维语义投影到三维** | [MSCV Semantic 3D Mapping](../entities/cmu-mscv-semantic-3d-mapping.md) | DETR + SAM + 标定，把 2D 标签投到点云。与「SAM 如何落到 3D」**直接对应** |
 
 ## 推荐的 GO2 技术架构
 
@@ -158,12 +173,6 @@ flowchart TB
 3. 仅当慢速与正常运动地图都足够锐利，再进语义阶段。
 4. 先做 **离线着色点云**：检测器 + SAM → mask 投影到保存的 PCD。
 5. 离线稳定后，改为 **在线关键帧融合**；再接入 DualMap / OVO / 对象级场景图。
-
-## 可直接回复对方的短答
-
-有一些资料，不过建议把问题拆成「几何建图」和「语义融合」两层。GO2 移动时点云效果差，优先检查 LiDAR/IMU 时间同步、逐点时间戳、运动去畸变、外参和回环，不要先急着加 SAM。宇树的 `point_lio_unilidar` 和 CMU 的 `autonomy_stack_go2` 都可以作为 GO2 几何建图基线。
-
-SAM 本身不是直接把 2D 转成 3D，而是先在 RGB 上生成 mask，再根据相机内参、相机–LiDAR 外参和机器人位姿，把点云投影到图像、从 mask 读标签，然后跨帧融回三维地图。CMU 有一个 Semantic 3D Mapping 项目正好采用 DETR→SAM→2D 标签投影到 3D 点云。后续可重点看 DualMap、OVO、OV-SAM3D 和 FindAnything。
 
 ## 常见误区
 

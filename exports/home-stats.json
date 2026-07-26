@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md",
+      "detail_id": "wiki-queries-go2-3d-semantic-mapping-sam-pipeline",
+      "label": "GO2 三维语义建图与 SAM 流水线",
+      "type": "query",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
       "path": "wiki/entities/findanything.md",
       "detail_id": "entity-findanything",
       "label": "FindAnything",
@@ -27,17 +38,6 @@
       "recency": "2026-07-26",
       "source": "log.md",
       "action": "added",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md",
-      "detail_id": "wiki-queries-go2-3d-semantic-mapping-sam-pipeline",
-      "label": "GO2 三维语义建图与 SAM 流水线",
-      "type": "query",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
       "has_repo": true,
       "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
     },
@@ -227,13 +227,13 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/findanything.md",
-    "detail_id": "entity-findanything",
-    "label": "FindAnything",
-    "type": "entity",
+    "path": "wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md",
+    "detail_id": "wiki-queries-go2-3d-semantic-mapping-sam-pipeline",
+    "label": "GO2 三维语义建图与 SAM 流水线",
+    "type": "query",
     "recency": "2026-07-26",
     "source": "log.md",
-    "action": "added",
+    "action": "maintained",
     "has_repo": true,
     "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
   },
