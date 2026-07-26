@@ -308,6 +308,25 @@
     }
     #graph-canvas-3d[hidden] { display: none !important; }
     #graph-canvas-3d .scene-nav-info { display: none !important; }
+    .graph-3d-labels {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 3;
+    }
+    .graph-3d-label {
+      position: absolute;
+      text-align: center;
+      white-space: nowrap;
+      transform: translate(-50%, 0);
+      user-select: none;
+      transition: opacity .15s;
+      pointer-events: none;
+    }
+    .graph-3d-label.is-topic-hub {
+      font-weight: 700;
+    }
 
     /* dot-grid overlay (CSS only) */
     #graph-wrap::before {
@@ -747,6 +766,7 @@
     [data-theme="light"] .topic-intro-text { color: rgba(15, 23, 42, 0.68); }
     [data-theme="light"] .topic-intro-link { color: #1659b4; }
     [data-theme="light"] .node-topic-hub .node-label { fill: rgba(15, 23, 42, 0.88) !important; }
+    [data-theme="light"] .graph-3d-label.is-topic-hub { color: rgba(15, 23, 42, 0.88) !important; }
     [data-theme="light"] .toolbar-sep { background: rgba(0,0,0,0.1); }
     [data-theme="light"] #graph-node-count { color: rgba(0,0,0,0.38); }
     [data-theme="light"] #graph-back {
@@ -1698,6 +1718,13 @@
         </label>
       </div>
 
+      <div class="slider-row">
+        <label class="physics-toggle" for="check-node-labels">
+          <input type="checkbox" id="check-node-labels" checked />
+          <span>🏷 显示节点名称</span>
+        </label>
+      </div>
+
       <div class="slider-divider"></div>
       <div class="physics-section-title">视图模式</div>
       <div class="view-mode-toggle" role="group" aria-label="2D / 3D 视图切换">
@@ -2153,6 +2180,12 @@
     let isMagnetic2D = false;
     let isMagnetic3D = false;
     const checkMagneticEl = document.getElementById('check-magnetic');
+    // 节点名称显隐：2D / 3D 共享同一开关（与磁吸模式各自记忆不同）
+    let showNodeLabels = true;
+    let labelsSettled2D = false;
+    let userZoomed2D = false;
+    let label = null;
+    const checkNodeLabelsEl = document.getElementById('check-node-labels');
 
     function isMagneticForCurrentView() {
       return is3DView() ? isMagnetic3D : isMagnetic2D;
@@ -2160,6 +2193,10 @@
 
     function syncMagneticCheckbox() {
       if (checkMagneticEl) checkMagneticEl.checked = isMagneticForCurrentView();
+    }
+
+    function syncNodeLabelsCheckbox() {
+      if (checkNodeLabelsEl) checkNodeLabelsEl.checked = showNodeLabels;
     }
 
     const SPATIAL_VIEW_KEY = 'rn-graph-spatial-view';
@@ -2240,6 +2277,12 @@
         edgeHighlightsWithNode,
         getChargeStrength: () => chargeStrength,
         getMagneticConfig: getMagneticConfig3D,
+        areNodeLabelsVisible: () => showNodeLabels,
+        getNodeLabelText: (d) => d._info.title || d.label,
+        getNodeLabelFontSize: scaledFontSize,
+        getNodeLabelColor: labelFill,
+        getNodeLabelOpacity: computeNodeLabelOpacity,
+        isNodeLabelHub: isCurrentTopicHub,
         onNodeClick: (d, ev) => {
           if (timelinePlaying) return;
           if (isMobile) {
@@ -2341,6 +2384,7 @@
         syncGraphDomFromSimulation();
         resumeSimulation2D();
         fitToScreen();
+        sync2DNodeLabels();
       }
 
       try { localStorage.setItem(SPATIAL_VIEW_KEY, mode); } catch (_e) { /* ignore */ }
@@ -2372,6 +2416,41 @@
     }
     function labelFill() {
       return isDark() ? 'rgba(255,255,255,0.55)' : 'rgba(0,0,0,0.5)';
+    }
+
+    function nodeLabelVisible(d) {
+      return nodeMatchesDegreeTop(d) && nodeMatchesCurrentFilter(d)
+        && nodeMatchesSearch(d) && nodeMatchesTopic(d) && nodeMatchesInstitutionFilter(d);
+    }
+
+    function computeNodeLabelOpacity(d, zoomK, labelsReady, cameraMoved) {
+      if (!showNodeLabels) return 0;
+      if (!labelsReady || timelineAnimating) return 0;
+      if (!nodeLabelVisible(d)) return 0;
+      const hub = isCurrentTopicHub(d);
+      if (searchQuery || hub) return 0.92;
+      if (!cameraMoved) return 0.85;
+      const k = zoomK != null ? zoomK : 1;
+      return k > 0.6 ? Math.min(1, (k - 0.6) * 2.5) : 0;
+    }
+
+    function sync2DNodeLabels() {
+      if (!label) return;
+      if (!showNodeLabels || timelineAnimating || !labelsSettled2D) {
+        label.style('opacity', 0);
+        return;
+      }
+      const k = d3.zoomTransform(svg.node()).k;
+      label.style('opacity', d => computeNodeLabelOpacity(d, k, true, userZoomed2D));
+    }
+
+    function setShowNodeLabels(on) {
+      showNodeLabels = !!on;
+      syncNodeLabelsCheckbox();
+      sync2DNodeLabels();
+      if (graph3dView && typeof graph3dView.syncLabels === 'function') {
+        graph3dView.syncLabels();
+      }
     }
 
     const HEALTH_COLORS = ['#f87171', '#fb923c', '#facc15', '#4ade80'];
@@ -2751,8 +2830,8 @@
       .scaleExtent([GRAPH_ZOOM_MIN, GRAPH_ZOOM_MAX])
       .on('zoom', ev => {
         gRoot.attr('transform', ev.transform);
-        const k = ev.transform.k;
-        label.style('opacity', k > 0.6 ? Math.min(1, (k - 0.6) * 2.5) : 0);
+        userZoomed2D = true;
+        sync2DNodeLabels();
       });
     svg.call(zoom);
 
@@ -2886,7 +2965,7 @@
       .attr('stroke-width', 1.5)
       .attr('stroke-opacity', 0.35);
 
-    const label = node.append('text')
+    label = node.append('text')
       .attr('class', 'node-label')
       .text(d => d._info.title || d.label)
       .attr('dy', d => scaledRadius(d) + 13)
@@ -3025,7 +3104,8 @@
     }
 
     function finishSimulationLoad() {
-      node.select('.node-label').transition().duration(400).style('opacity', 0.85);
+      labelsSettled2D = true;
+      sync2DNodeLabels();
       whenGraphViewportReady(() => fitToScreen());
     }
 
@@ -3035,7 +3115,9 @@
         graph3dView.fitToScreen(350);
         return;
       }
-      node.select('.node-label').style('opacity', 0);
+      labelsSettled2D = false;
+      userZoomed2D = false;
+      label.style('opacity', 0);
       updateGraphViewport();
       randomizeNodePositions();
       syncGraphDomFromSimulation();
@@ -3701,9 +3783,9 @@
           .attr('stroke-opacity', ok ? (hub ? 0.85 : 0.35) : 0.05)
           .attr('stroke-width', hub ? 2.5 : 1.5);
         d3.select(this).select('.node-label')
-          .style('opacity', ok && (searchQuery || hub) ? 0.92 : null)
           .style('font-weight', hub ? 700 : null);
       });
+      sync2DNodeLabels();
 
       link
         .style('opacity', null) // V21 修复：清除 openSidebar 的内联 style 干扰
@@ -4052,7 +4134,8 @@
       restoreTimelinePositions();
       simulation.stop();
       syncGraphDomFromSimulation();
-      node.select('.node-label').transition().duration(350).style('opacity', 0.85);
+      labelsSettled2D = true;
+      sync2DNodeLabels();
       fitToScreen();
     }
 
@@ -4368,6 +4451,14 @@
         if (is3DView()) isMagnetic3D = ev.target.checked;
         else isMagnetic2D = ev.target.checked;
         updateForces();
+      });
+    }
+
+    /* 显示节点名称（2D / 3D 共享同一开关） */
+    if (checkNodeLabelsEl) {
+      checkNodeLabelsEl.checked = showNodeLabels;
+      checkNodeLabelsEl.addEventListener('change', ev => {
+        setShowNodeLabels(ev.target.checked);
       });
     }
 
