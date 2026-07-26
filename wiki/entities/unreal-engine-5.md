@@ -2,7 +2,7 @@
 type: entity
 tags: [software, unreal-engine, epic-games, simulation, rendering, game-engine, photorealistic]
 status: complete
-updated: 2026-07-14
+updated: 2026-07-26
 related:
   - ./unity-engine.md
   - ./metahuman.md
@@ -14,6 +14,7 @@ related:
   - ../concepts/procedural-terrain-generation.md
   - ../queries/simulator-selection-guide.md
   - ../overview/sim-platforms-decade-technology-map.md
+  - ./paper-panolog-ggps.md
 sources:
   - ../../sources/sites/unreal-engine-5-com.md
   - ../../sources/sites/unreal-engine-5-8-docs.md
@@ -123,6 +124,7 @@ flowchart TB
 - [仿真器选型指南](../queries/simulator-selection-guide.md) — locomotion RL 与 UE 视觉栈的分支对照
 - [Sim2Real](../concepts/sim2real.md) — 视觉域随机化与迁移
 - [程序化地形生成](../concepts/procedural-terrain-generation.md) — 与 Mesh Terrain / PCG 邻接
+- [PanoLOG / G²PS](./paper-panolog-ggps.md) — 官方预告 UE 5.8 3DGS 渲染插件的重建侧资产来源
 
 ## 参考来源
 

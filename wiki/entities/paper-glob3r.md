@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, hkust, alibaba, nju, fudan, sfm, 3d-reconstruction, foundation-model, slam, pose-estimation, neural-rendering, bundle-adjustment]
 status: complete
-updated: 2026-07-21
+updated: 2026-07-26
 arxiv: "2607.09225"
 venue: "arXiv 2026"
 related:
@@ -12,6 +12,7 @@ related:
   - ../overview/navigation-slam-autonomy-stack.md
   - ../concepts/3d-spatial-vqa.md
   - ../formalizations/se3-representation.md
+  - ./paper-panolog-ggps.md
 sources:
   - ../../sources/papers/glob3r_arxiv_2607_09225.md
   - ../../sources/sites/junyuandeng-glob3r-github-io.md
@@ -145,6 +146,7 @@ pose graph 边携带相对位姿与 track 权重：先稳健旋转平均，再�
 - [导航·SLAM 开源栈总览](../overview/navigation-slam-autonomy-stack.md) — 经典 SLAM 工程栈对照
 - [3D 空间 VQA](../concepts/3d-spatial-vqa.md) — 几何先验与空间推理下游
 - [SE(3) 表示](../formalizations/se3-representation.md) — 位姿形式化底座
+- [PanoLOG / G²PS](./paper-panolog-ggps.md) — 给定位姿下的全景户外 3DGS 重建（下游渲染资产）
 
 ## 参考来源
 
