@@ -44,6 +44,7 @@ related:
   - ../entities/paper-x-foresight.md
   - ../entities/paper-x-mind.md
   - ../entities/paper-m4world.md
+  - ../entities/paper-abot-world-0.md
   - ../entities/open-dreamer.md
   - ./dwm.md
   - ./mimic-video.md
@@ -70,7 +71,10 @@ sources:
   - ../../sources/papers/wan_move_arxiv_2512_08765.md
   - ../../sources/papers/wan_video_arxiv_2503_20314.md
   - ../../sources/papers/m4world_arxiv_2607_14005.md
+  - ../../sources/papers/abot_world_0_arxiv_2607_19191.md
   - ../../sources/sites/worldlabs-ai.md
+  - ../../sources/repos/abot-world.md
+  - ../../sources/sites/abot-world.md
   - ../../sources/blogs/allenai_molmo_motion.md
   - ../../sources/repos/open-dreamer.md
 summary: "生成式世界模型（Generative World Models）利用扩散模型或视频生成技术来模拟物理世界的动态，为机器人提供高保真的视频级仿真和无限的反事实推演能力。"
@@ -218,6 +222,10 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 
 [M⁴World](../entities/paper-m4world.md)（arXiv:2607.14005，美团 × CASIA × BIT）在共享 **DiT** 潜空间上联合生成 **环视视频 + 同步 LiDAR range map**，并把物体条件从几何 box 扩展为 **布局 + SigLIP/文本外观**；经 Teacher Forcing → 4-step ODE → Self-Forcing/DMD → 长视频微调，支撑 **分钟级** 因果流式，并用 VLM judge 评可控性。相对 X-World 的 **动作条件评测底座**，M⁴World 更强调 **物体级交互操纵与相机–LiDAR 多模态**；截至入库日 **未开源**。
 
+### 单卡桌面实时交互世界（示例：ABot-World-0）
+
+[ABot-World-0](../entities/paper-abot-world-0.md)（arXiv:2607.19191，高德 AMAP CV Lab）把交互式视频世界模型写成 **数据闭环 + 双向→因果蒸馏 + 全栈流式共设计**：WorldExplorer 多源采集（游戏 / 仿真 / 互联网）、原始键盘统一漫游与第三人称角色、**LongForcing** 对齐长程学生自 rollout，并在 **单卡 RTX 5090** 上把 **720P** 推到最高约 **16 FPS**（首帧 **1.2 s**，峰值约 **19 GiB**）。相对 M⁴World 的驾驶多传感器仿真与 Open Dreamer 的游戏潜动力学，它更强调 **消费级实时像素世界可玩性**；**推理与 5B 因果学生已开源**，教师权重与约 500 h 数据集仍待发布。
+
 ### 相邻方向：三维世界生成与流式 3DGS（产业样本）
 
 部分团队将「世界模型」叙事延伸到 **持久 3D 世界** 的生成与编辑，并以 **3D Gaussian Splatting** 在 Web 或工具链中交付可漫游场景；这与上文以 **像素视频 rollout** 为中心的讨论共享「生成式环境」动机，但 **评测对象与训练目标** 往往更接近内容管线而非机器人控制回路。产业侧公开样本见 [World Labs](../entities/world-labs.md)（Marble + [Spark](../entities/spark-3dgs-renderer.md)）；同类 Web 渲染可对照 [Aholo Viewer](../entities/aholo-viewer.md)（见 [Spark vs Aholo](../comparisons/spark-vs-aholo-web-3dgs-renderers.md)）。
@@ -271,6 +279,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [X-Foresight](../entities/paper-x-foresight.md) — 驾驶 VLA **内嵌** 长视界预测式世界建模（arXiv:2605.24892）。
 - [X-Mind](../entities/paper-x-mind.md) — Visual CoT + 压缩 sketch / RBD 的车载高效变体（arXiv:2606.28758）。
 - [M⁴World](../entities/paper-m4world.md) — 美团等 **多视角多模态** 驾驶 WM：物体外观控制 + 分钟级流式（arXiv:2607.14005）。
+- [ABot-World-0](../entities/paper-abot-world-0.md) — 高德 **单卡桌面** 键盘交互视频 WM：LongForcing + 720P 实时流式（arXiv:2607.19191；部分开源）。
 
 ## 参考来源
 - [机器人论文阅读笔记：Generative World Modelling for Humanoids](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/Generative_World_Modelling_for_Humanoids__1X_World_Model_Challenge_Technical_Report/Generative_World_Modelling_for_Humanoids__1X_World_Model_Challenge_Technical_Report.html)
@@ -297,3 +306,4 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - Chu, R., et al. (2025). *Wan-Move* — 见 [sources/papers/wan_move_arxiv_2512_08765.md](../../sources/papers/wan_move_arxiv_2512_08765.md)。
 - Wan Team (2025). *Wan* — 见 [sources/papers/wan_video_arxiv_2503_20314.md](../../sources/papers/wan_video_arxiv_2503_20314.md)。
 - Cheng, K., et al. (2026). *M⁴World: A Multi-view Multimodal Driving World Model for Interactive Object Manipulation and Minute-long Streaming* — 见 [sources/papers/m4world_arxiv_2607_14005.md](../../sources/papers/m4world_arxiv_2607_14005.md)。
+- Jiang, F., et al. (2026). *ABot-World-0: Infinite Interactive World Rollout on a Single Desktop GPU* — 见 [sources/papers/abot_world_0_arxiv_2607_19191.md](../../sources/papers/abot_world_0_arxiv_2607_19191.md)。

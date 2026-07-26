@@ -1,13 +1,76 @@
 {
   "generated_at": "2026-07-26",
-  "node_count": 1895,
-  "edge_count": 16191,
+  "node_count": 1896,
+  "edge_count": 16207,
   "coverage": {
-    "covered": 1843,
-    "total": 1871,
+    "covered": 1844,
+    "total": 1872,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-abot-world-0.md",
+      "detail_id": "entity-paper-abot-world-0",
+      "label": "ABot-World-0（单卡桌面无限交互世界 Rollout）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/generative-world-models.md",
+      "detail_id": "wiki-methods-generative-world-models",
+      "label": "Generative World Models (生成式世界模型)",
+      "type": "method",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/video-as-simulation.md",
+      "detail_id": "wiki-concepts-video-as-simulation",
+      "label": "Video-as-Simulation (视频即仿真)",
+      "type": "concept",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/robot-world-models-training-loop-taxonomy.md",
+      "detail_id": "wiki-overview-robot-world-models-training-loop-taxonomy",
+      "label": "机器人世界模型：训练闭环与三线 taxonomy",
+      "type": "overview",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-wan-video.md",
+      "detail_id": "entity-paper-wan-video",
+      "label": "Wan（开源大规模视频生成基础模型）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-abot-m05-mobile-manipulation-wam.md",
+      "detail_id": "entity-paper-abot-m05-mobile-manipulation-wam",
+      "label": "ABot-M0.5（Unified Mobility-and-Manipulation · World Action Model）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/overview/wam-motion-control-five-paths.md",
       "detail_id": "wiki-overview-wam-motion-control-five-paths",
@@ -154,86 +217,23 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/femm-foc-simulation.md",
-      "detail_id": "entity-femm-foc-simulation",
-      "label": "FEMM-FOC-Simulation（FEMM 磁场定向控制教学仿真）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "roadmap/depth-torque-motor-design.md",
-      "detail_id": "roadmap-depth-torque-motor-design",
-      "label": "路线（纵深）：如果目标是力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环 → 关节模组）",
-      "type": "roadmap_page",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/cadenkraft-ironless-axial-flux-motor.md",
-      "detail_id": "entity-cadenkraft-ironless-axial-flux-motor",
-      "label": "Caden Kraft Ironless Axial Flux Motor（无铁芯轴向磁通电机）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/pygeartrain.md",
-      "detail_id": "entity-pygeartrain",
-      "label": "pygeartrain（摆线/行星齿廓与传动比工具）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/ironless-qdd-actuator.md",
-      "detail_id": "entity-ironless-qdd-actuator",
-      "label": "Ironless QDD Actuator（无铁芯转子摆线—行星执行器）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/pcb-motor.md",
-      "detail_id": "entity-pcb-motor",
-      "label": "PCB Motor（PCB 定子轴向磁通电机）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/wam-motion-control-five-paths.md",
-    "detail_id": "wiki-overview-wam-motion-control-five-paths",
-    "label": "WAM × 人形运动控制：五种系统位置",
-    "type": "overview",
+    "path": "wiki/entities/paper-abot-world-0.md",
+    "detail_id": "entity-paper-abot-world-0",
+    "label": "ABot-World-0（单卡桌面无限交互世界 Rollout）",
+    "type": "entity",
     "recency": "2026-07-26",
     "source": "log.md",
-    "action": "added",
+    "action": "maintained",
+    "has_repo": true,
     "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 374
+      "size": 375
     },
     {
       "label": "人形论文深读笔记",
