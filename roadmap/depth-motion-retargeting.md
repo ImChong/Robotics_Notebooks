@@ -1,6 +1,6 @@
 # 路线（纵深）：如果目标是动作重定向（人体动作 → 机器人参考轨迹）
 
-**摘要**：面向"想把人体动捕/视频/生成动作变成机器人可执行参考轨迹"的纵深路线，从重定向的问题定义与数据管线定位、运动学优化工具箱、参考动作数据源与质量控制，到方法谱系主线（运动学优化 GMR → 学习式 NMR → 物理感知 ReActor / SPIDER / DynaRetarget），再到下游跟踪训练闭环与进阶方向，按 Stage 0–5 串通核心方法；本路线是 [运动控制主路线](motion-control.md) 的一条分支，向上承接 [动作生成纵深](depth-motion-generation.md) 的运动学输出，向下供给 [BFM 纵深](depth-bfm.md) 与 [模仿学习纵深](depth-imitation-learning.md) 的训练数据。
+**摘要**：面向"想把人体/动物动捕、视频、生成动作变成机器人可执行参考轨迹"的纵深路线，从重定向的问题定义与数据管线定位、运动学优化工具箱、参考动作数据源与质量控制，到方法谱系主线（运动学优化 GMR → 学习式 NMR → 物理感知 ReActor / SPIDER / DynaRetarget）与**四足支线**（动物/视频关键点 → 空间+时间重定向 STMR → legged_gym 跟踪），再到下游跟踪训练闭环与进阶方向，按 Stage 0–5 串通核心方法；本路线是 [运动控制主路线](motion-control.md) 的一条分支，向上承接 [动作生成纵深](depth-motion-generation.md) 的运动学输出，向下供给 [BFM 纵深](depth-bfm.md) 与 [模仿学习纵深](depth-imitation-learning.md) 的训练数据。
 
 ## 路线一览
 
@@ -10,19 +10,24 @@ flowchart LR
   S1["<b>Stage 1</b><br/>运动学工具箱<br/><em>IK / QP / 优化目标</em>"]
   S2["<b>Stage 2</b><br/>数据源与质量<br/><em>MoCap / 视频估计 / 清洗</em>"]
   S3["<b>Stage 3</b><br/>方法谱系主线<br/><em>GMR → NMR → 物理感知</em>"]
+  S3Q["<b>Stage 3 支线</b><br/>四足重定向<br/><em>关键点 → SMR/TMR → 跟踪</em>"]
   S4["<b>Stage 4</b><br/>下游闭环<br/><em>WBT / AMP / 遥操作</em>"]
   S5["<b>Stage 5</b><br/>进阶方向<br/><em>跨具身 / 灵巧手 / 数据引擎</em>"]
 
   S0 --> S1 --> S2 --> S3 --> S4 --> S5
+  S2 --> S3Q --> S4
 
   classDef stage fill:#142a3a,stroke:#e84393,stroke-width:2px,color:#fff
+  classDef branch fill:#3a1428,stroke:#e84393,stroke-width:2px,stroke-dasharray:5 3,color:#fff
   class S0,S1,S2,S3,S4,S5 stage
+  class S3Q branch
 ```
 
 ## 这条路径怎么用
 
 - 目标读者是想搭"人体参考动作 → 机器人可执行轨迹"数据管线的人——模仿学习、全身跟踪（WBT）、AMP 风格先验的训练数据几乎都要穿过这道闸
 - 动作重定向解决 **跨骨架映射**：源（人/动物）与目标（机器人）的骨架拓扑、肢体比例、关节限位、质量分布都不同，直接复制关节角会产生脚滑、穿模、超限等伪影
+- 本路线含两条并行的形态线：**人形主线**（人体 MoCap/视频 → 人形全身参考）与 **四足支线**（动物 MoCap/视频关键点 → 四足参考，见 Stage 3 末尾）。两条线共用 Stage 0–2 的问题定义、优化工具箱与数据质量判据，在 Stage 4 又都汇入"参考轨迹 → RL 跟踪策略"的下游闭环；差别集中在腿部 DoF 更少、基座轨迹常缺失、步态相位与时间轴必须一并重定向
 - 每个阶段都有前置知识、核心问题、推荐做什么、推荐读什么、学完输出什么
 
 **和主路线的关系：**
@@ -44,6 +49,7 @@ flowchart LR
 - 重定向到底在解什么：保留运动语义与风格的同时满足目标骨架的可执行性
 - 动画界（像不像）与机器人界（能不能跟得上）的评价线为什么不同
 - 重定向在训练数据管线里的位置：采集 → 清洗 → 重定向 → 跟踪训练
+- 目标形态不同，难点也不同：人形是"同构但比例/限位不同"，四足是"异构骨架 + 腿部 DoF 更少"，后者常连源数据的全局基座轨迹都要反推
 
 ### 推荐做什么
 - 读专题汇总页，把"概念 / 流水线 / 选型 / 数据 / 下游"五层入口过一遍
@@ -55,10 +61,12 @@ flowchart LR
 - [Character Animation vs Robotics](../wiki/concepts/character-animation-vs-robotics.md)（本仓库）— 两界评价标准差异
 - [运动学可行与动力学可行](../wiki/concepts/kinematic-vs-dynamic-feasibility.md)（本仓库）— 「能摆出这个姿势」≠「站得住、跟得上」，与本页动画/机器人评价线差异同源
 - [Motion Retargeting Pipeline](../wiki/concepts/motion-retargeting-pipeline.md)（本仓库）— 管线定位
+- [四足机器人](../wiki/entities/quadruped-robot.md)（本仓库）— 四足支线的目标平台特征：支撑域、步态、控制频率
 
 ### 学完输出什么
 - 能一句话说清重定向解决什么、为什么不能跳过
 - 能画出"采集 → 重定向 → 训练"数据管线并标出误差来源
+- 能判断自己的任务落在人形主线还是四足支线，以及两者共用哪几段
 
 ---
 
@@ -102,10 +110,12 @@ flowchart LR
 - SMPL 系表示为什么成为事实标准，重定向前要做哪些统一化
 - 数据质量维度：脚滑、漂移、穿透、抖动怎么量化与过滤
 - 数据集的"重定向就绪度"怎么评估
+- 四足支线的数据源为什么更"脏"：动物光学动捕稀缺且多为私有，实践中依赖 **视频关键点估计** 与 **动画骨架**（如 LaFAN1 dog set），噪声、缺帧、无全局基座轨迹是常态；也没有 SMPL 那样的统一参数化模型可依赖
 
 ### 推荐做什么
 - 下载一段 AMASS 数据与一段视频估计（GVHMR）数据，对比两者的脚部接触质量
 - 给自己的管线加一个质量过滤器（脚滑速度阈值 + 关节速度上限），统计过滤比例
+- 四足方向：取一段动物片段（如 motion_imitation 自带的 `dog_pace` / `dog_trot`），统计足端接触相位与基座速度是否自洽——不自洽的片段正是四足重定向脚滑的源头
 
 ### 推荐读什么
 - [AMASS](../wiki/entities/amass.md) 与 [LAFAN1](../wiki/entities/lafan1-dataset.md)（本仓库）— 动捕数据基座
@@ -114,6 +124,8 @@ flowchart LR
 - [FMPose3D](../wiki/entities/paper-fmpose3d-monocular-3d-pose-flow-matching.md)（本仓库）— 条件 Flow Matching 单目 2D→3D 姿态提升，3 步 ODE 多假设 + RPEA 聚合，可作视频→稀疏 3D 骨架的轻量上游
 - [PEAR](../wiki/entities/paper-pear-pixel-aligned-expressive-hmr.md) 与 [ViDiHand](../wiki/entities/paper-vidihand.md)（本仓库）— 表达级数据源前沿：单图 SMPL-X 身/脸/手 >100 FPS 实时恢复（SIGGRAPH 2026）与 egocentric 双手 4D 视频扩散估计
 - [Motion Data Quality](../wiki/concepts/motion-data-quality.md) 与 [LiMMT / GQS 动作数据整编](../wiki/methods/limmt-gqs-motion-curation.md)（本仓库）— 质量量化
+- [motion_imitation（四足）](../wiki/entities/motion-imitation-quadruped.md)（本仓库）— `data/motions/` 里的动物片段是四足重定向最容易拿到的起步数据
+- [LaFAN1](../wiki/entities/lafan1-dataset.md) 与 [PAN Motion Retargeting](../wiki/entities/pan-motion-retargeting.md)（本仓库）— 动画侧四足骨架数据（dog set）与人↔狗互映射演示
 
 ### 学完输出什么
 - 一份自己方向的数据源选型表（成本 / 质量 / 覆盖度三列）
@@ -134,20 +146,46 @@ flowchart LR
 - NMR 的学习式整段映射：仿真锚定的配对数据怎么造、非自回归推理换来什么
 - 物理感知路线：ReActor 的双层 RL、SPIDER 的采样式优化、DynaRetarget 的增量 SBTO 各自把物理约束放在哪一层
 - OmniRetarget 一系为什么强调"交互保留"（人-物-地形的空间关系）
+- 四足支线的三个额外难点：腿部 DoF（多为 3 DoF/腿）远少于动物、源数据常缺全局基座轨迹、步态相位与时间轴本身就是被重定向的量
 
 ### 推荐做什么
 - 用 GMR 开源实现把一套 AMASS 数据重定向到 Unitree G1 等目标模型，检查关节限位与穿模
 - 精读 GMR vs NMR vs ReActor 对比页，为自己的场景（离线数据生产 / 实时遥操 / 高动态技能）选一条主路线并说明理由
+- 四足方向：先做空间重定向（足端 + 基座关键点，按腿长比例缩放），检查 trot / pace 的接触相位是否被保留，再用时间缩放把峰值关节速度压回机器人可执行范围——把 STMR 的 SMR/TMR 拆解亲手走一遍
 
 ### 推荐读什么
 - [GMR](../wiki/methods/motion-retargeting-gmr.md)、[NMR](../wiki/methods/neural-motion-retargeting-nmr.md)、[ReActor](../wiki/methods/reactor-physics-aware-motion-retargeting.md)（本仓库）— 三条代表路线
 - [GMR vs NMR vs ReActor 选型对比](../wiki/comparisons/gmr-vs-nmr-vs-reactor.md)（本仓库）— 谱系主入口
 - [DynaRetarget / SBTO](../wiki/methods/dynaretarget-sbto-motion-retargeting.md) 与 [SPIDER](../wiki/methods/spider-physics-informed-dexterous-retargeting.md)（本仓库）— 物理感知扩展
 - [OmniRetarget](../wiki/entities/paper-hrl-stack-03-omniretarget.md) 与 [Retargeting Matters](../wiki/entities/paper-hrl-stack-01-retargeting_matters.md)（本仓库）— 交互保留与重定向质量对下游的影响
+- [STMR 四足时空重定向](../wiki/entities/stmr-quadruped-retargeting.md)（本仓库）— 四足支线主入口，见下节
+
+### 四足支线：动物 / 视频关键点 → 四足参考
+
+人形主线默认"源与目标都是双足人形骨架"；换成四足后，问题的边界条件整体变了：
+
+| 差异点 | 人形主线 | 四足支线 |
+|--------|---------|---------|
+| 源数据 | 人体 MoCap，SMPL 系是事实标准 | 动物 MoCap / 视频关键点 / 动画骨架，无统一参数化模型 |
+| 骨架对应 | 同构，可逐关节对齐后修比例 | 异构：动物腿 vs 机器人 3 DoF 腿，实际只能匹配足端与基座关键点 |
+| 基座轨迹 | MoCap 一般自带全局 root | 视频/关键点常缺失，需由"支撑足不打滑"约束反推基座速度 |
+| 时间轴 | 通常按原速播放 | 动物速度常超出机器人力矩/带宽，**时间缩放是重定向的一部分** |
+| 接触语义 | 双足支撑相/摆动相 | 四足步态相位（trot / pace / bound / gallop）与 duty factor 必须整体保留 |
+
+代表工作构成三级台阶：
+
+1. **[motion_imitation](../wiki/entities/motion-imitation-quadruped.md)（Peng 等，RSS 2020）** — 历史锚点：用 IK 把动物 MoCap 的足端与基座关键点映射到四足，再在 PyBullet 里做 RL 模仿。重定向这一步与环境耦合、没有独立模块，但"异构骨架关键点映射 + 可跟踪性"的问题形态已经完整。
+2. **[STMR](../wiki/entities/stmr-quadruped-retargeting.md)（IEEE T-RO 2025）** — 把问题显式拆成两层：**SMR（空间重定向）** 在运动学层由关键点生成全身位形、抑制脚滑与穿地，并能处理没有全局基座轨迹的输入；**TMR（时间重定向）** 在动力学层用模型基控制搜索可行的时序参数，让跳跃、后空翻这类含飞行相的技能在真机上仍可跟踪。下游接 legged_gym 式 RL，论文报告 Go1 / Aliengo / B2 真机实验。
+3. **[PAN](../wiki/entities/pan-motion-retargeting.md)（TVCG 2023）与 [ReActor](../wiki/methods/reactor-physics-aware-motion-retargeting.md)** — 跨形态一侧：PAN 用按身体部位的注意力网络做双足↔四足互映射（输出偏动画 BVH，进机器人前仍需物理筛选）；ReActor 用有界参数化 + 双层 RL，在强异构人形与四足上统一生成少伪影的可跟踪参考。
+
+工程落地样本：[Go2 Motion Imitation](../wiki/entities/go2-motion-imitation.md) 的 `retarget_motion.py` 是"源格式 → 具体机型状态"这一步最短的可复现脚本，适合作为自己机型定制管线的模板。
+
+> 选型经验：**离线批量生产四足参考**优先 SMR/TMR 式两层拆解（脚滑与时序不可行分层修）；**只想快速跑通一个技能**用 motion_imitation / Go2 脚本级管线；**要在人形与四足间复用同一套参考**再上 PAN / ReActor 这类跨形态方法（见 Stage 5 方向 A）。
 
 ### 学完输出什么
 - 一条跑通的"AMASS → 目标人形"重定向管线
 - 能说清三类路线"数据来自哪里、误差在哪里修、推理预算多大"的取舍
+- 若走四足支线：一条"动物片段 → 四足参考"的最小管线，并能说清脚滑、基座缺失、时间轴不可行三类伪影分别在哪一层修
 
 ---
 
@@ -164,16 +202,19 @@ flowchart LR
 - "看起来在学、实际上在追不可行轨迹"：重定向伪影如何拖垮下游训练
 - 实时遥操作对重定向的额外要求：延迟预算、滑窗推理、安全限幅
 - AMP 风格先验与逐帧跟踪对重定向质量的敏感度差异
+- 四足侧的下游同样是"参考 → RL 跟踪"，但生态不同：legged_gym / Genesis + AMP 风格先验比人形 WBT 栈更常见，评价也更偏步态稳定与真机可执行而非全身姿态误差
 
 ### 推荐做什么
 - 把 Stage 3 的重定向产物喂给一个开源 WBT 训练管线（如 BeyondMimic），观察跟踪误差与失败片段
 - 对同一段数据做"有/无质量过滤"两组训练，对比收敛速度——验证 Retargeting Matters 的结论
+- 四足方向：在 legged_gym / Genesis 上复现一条"动物片段 → 跟踪策略"，并对比同一段动作在时间缩放前后的跟踪成功率——这是 TMR 有没有用的最直接实验
 
 ### 推荐读什么
 - [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md) 与 [WBT 专题汇总](../wiki/overview/topic-wbt.md)（本仓库）
 - [SONIC](../wiki/methods/sonic-motion-tracking.md) 与 [BeyondMimic](../wiki/methods/beyondmimic.md)（本仓库）— 跟踪侧消费者
 - [Query：人形动作跟踪方法选型](../wiki/queries/humanoid-motion-tracking-method-selection.md)（本仓库）
 - [Teleoperation](../wiki/tasks/teleoperation.md)（本仓库）— 实时重定向的应用面
+- [legged_gym](../wiki/entities/legged-gym.md)、[AMP 奖励设计](../wiki/methods/amp-reward.md) 与 [Locomotion](../wiki/tasks/locomotion.md)（本仓库）— 四足支线的跟踪训练侧与任务层落点
 
 ### 学完输出什么
 - 一条从参考动作走到可跟踪策略的端到端管线
@@ -187,7 +228,7 @@ flowchart LR
 - Stage 4 内容
 
 **方向 A：跨具身重定向**
-- 把同一套参考动作映射到异构形态（四足、异构人形、机械臂）
+- 把同一套参考动作映射到异构形态（四足、异构人形、机械臂）；Stage 3 支线解决的是"动物动作 → 某一台四足"，本方向进一步解决"一份参考 → 多机型复用"，包括人形↔四足互映射
 - 关键词：[STMR 四足重定向](../wiki/entities/stmr-quadruped-retargeting.md)、[PAN Motion Retargeting](../wiki/entities/pan-motion-retargeting.md)、[Any2Any 跨具身 WBT](../wiki/entities/paper-any2any-cross-embodiment-wbt.md)、[跨具身专题](../wiki/overview/topic-cross-embodiment.md)、[Query：跨具身迁移策略](../wiki/queries/cross-embodiment-transfer-strategy.md)
 
 **方向 B：灵巧手与交互保留重定向**
@@ -212,6 +253,7 @@ flowchart LR
 | Stage 1 | IK / 优化目标 | [Motion Retargeting Objective](../wiki/formalizations/motion-retargeting-objective.md) |
 | Stage 2 | 数据源与质量 | [人形参考动作数据集对比](../wiki/comparisons/humanoid-reference-motion-datasets.md) |
 | Stage 3 | 方法谱系选型 | [GMR vs NMR vs ReActor](../wiki/comparisons/gmr-vs-nmr-vs-reactor.md) |
+| Stage 3 支线 | 动物/关键点 → 四足参考 | [STMR 四足时空重定向](../wiki/entities/stmr-quadruped-retargeting.md) |
 | Stage 4 | 下游跟踪闭环 | [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md) |
 | Stage 5 | 进阶方向 | [动作重定向专题汇总](../wiki/overview/topic-motion-retargeting.md) |
 
@@ -223,7 +265,7 @@ flowchart LR
   - [动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md) — 姊妹路线：生成负责"造动作"，重定向负责"落到机器人"
   - [模仿学习与技能迁移](depth-imitation-learning.md) — 本路线 Stage 4 下游的策略学习侧
   - [BFM（人形行为基础模型）](depth-bfm.md) — Stage 5 方向 D 的主要数据消费者
-  - [人形 RL 运动控制](depth-rl-locomotion.md) — 跟踪训练的训练侧前置
+  - [人形 RL 运动控制](depth-rl-locomotion.md) — 跟踪训练的训练侧前置，也是 Stage 3 四足支线 legged_gym 跟踪的训练侧
   - [接触丰富的操作任务](depth-contact-manipulation.md) — 方向 B 灵巧手接触的邻接路线
   - [力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环）](depth-torque-motor-design.md)
   - [传统模型控制（LIP/ZMP → MPC → WBC）](depth-classical-control.md)
@@ -248,5 +290,9 @@ flowchart LR
 
 - [Motion Retargeting](../wiki/concepts/motion-retargeting.md) 与 [动作重定向专题汇总](../wiki/overview/topic-motion-retargeting.md)
 - [GMR vs NMR vs ReActor 选型对比](../wiki/comparisons/gmr-vs-nmr-vs-reactor.md)
+- [STMR 四足时空重定向](../wiki/entities/stmr-quadruped-retargeting.md)、[motion_imitation（四足）](../wiki/entities/motion-imitation-quadruped.md)、[Go2 Motion Imitation](../wiki/entities/go2-motion-imitation.md)、[PAN Motion Retargeting](../wiki/entities/pan-motion-retargeting.md) — 四足支线来源
 - "Retargetting Motion to New Characters" (Gleicher, SIGGRAPH 1998) — 动作重定向问题的奠基工作
 - "Retargeting Matters: General Motion Retargeting for Humanoid Motion Tracking" (GMR, arXiv:2505.02833) — 重定向质量对下游跟踪的影响
+- "Spatio-Temporal Motion Retargeting for Quadruped Robots" (STMR, IEEE T-RO 2025, arXiv:2404.11557) — 四足空间/时间重定向的显式拆解
+- "Learning Agile Robotic Locomotion Skills by Imitating Animals" (Peng et al., RSS 2020) — 动物 MoCap → 四足参考的历史锚点
+- "Pose-aware Attention Network for Flexible Motion Retargeting by Body Part" (PAN, TVCG 2023, arXiv:2306.08006) — 双足↔四足跨结构映射

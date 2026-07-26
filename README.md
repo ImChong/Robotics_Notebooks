@@ -2,13 +2,13 @@
 
 机器人技术栈知识库 / Robotics research and engineering wiki.
 
-<!-- Last updated: 2026-07-26 (V30 自动更新：图谱 1913 节点 16399 边) -->
+<!-- Last updated: 2026-07-26 (V30 自动更新：图谱 1913 节点 16405 边) -->
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen?logo=github)](https://imchong.github.io/Robotics_Notebooks/)
 [![Deploy GitHub Pages](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml)
 [![Wiki Lint](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/lint.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/lint.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
-[![Knowledge Graph](https://img.shields.io/badge/知识图谱-1913节点_16399边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
+[![Knowledge Graph](https://img.shields.io/badge/知识图谱-1913节点_16405边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
 [![Sources Coverage](https://img.shields.io/badge/sources覆盖率-99%25-green)](docs/checklists/tech-stack-next-phase-checklist-v30.md)
 
 ---
@@ -54,7 +54,7 @@
 | 用强化学习做运动控制 | [RL 纵深路线](roadmap/depth-rl-locomotion.md) |
 | 让机器人边走边动手 | [Loco-Manipulation 纵深路线](roadmap/depth-loco-manipulation.md) |
 | 让机器人追球射门打比赛 | [人形足球纵深路线](roadmap/depth-humanoid-soccer.md) |
-| 把人体动作变成机器人参考轨迹 | [动作重定向纵深路线](roadmap/depth-motion-retargeting.md) |
+| 把人体/动物动作变成人形或四足参考轨迹 | [动作重定向纵深路线](roadmap/depth-motion-retargeting.md) |
 | 让一群人形同台跳舞变队形炫技 | [人形群控展演纵深路线](roadmap/depth-humanoid-swarm-performance.md) |
 | 让仿真训好的策略稳上真机 | [Sim2Real 纵深路线](roadmap/depth-sim2real.md) |
 | 让两台人形在擂台上对打 | [人形拳击纵深路线](roadmap/depth-humanoid-boxing.md) |

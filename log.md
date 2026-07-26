@@ -1,5 +1,15 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-26] structural | roadmap/depth-motion-retargeting.md — 动作重定向纵深补四足支线（动物/视频关键点 → SMR/TMR → legged_gym 跟踪）
+
+- **改写：** [`roadmap/depth-motion-retargeting.md`](roadmap/depth-motion-retargeting.md)
+  - 路线图 mermaid：Stage 2 分出「Stage 3 支线（四足重定向）」并汇回 Stage 4
+  - Stage 0/2/3/4 各补四足视角：目标平台差异、动物数据源更脏、腿部 DoF 与缺基座轨迹、legged_gym/AMP 下游生态
+  - Stage 3 新增「四足支线」小节：人形/四足差异对照表 + motion_imitation → STMR（SMR/TMR）→ PAN / ReActor 三级台阶 + 选型经验
+  - Stage 5 方向 A 明确「一份参考 → 多机型」与支线的分工；快速入口表补支线行
+- **交叉：** [`wiki/entities/stmr-quadruped-retargeting.md`](wiki/entities/stmr-quadruped-retargeting.md)、[`wiki/entities/motion-imitation-quadruped.md`](wiki/entities/motion-imitation-quadruped.md)、[`wiki/entities/go2-motion-imitation.md`](wiki/entities/go2-motion-imitation.md)、[`wiki/entities/pan-motion-retargeting.md`](wiki/entities/pan-motion-retargeting.md)、[`wiki/entities/quadruped-robot.md`](wiki/entities/quadruped-robot.md)、[`wiki/entities/legged-gym.md`](wiki/entities/legged-gym.md)、[`wiki/methods/amp-reward.md`](wiki/methods/amp-reward.md)
+- **入口同步：** [`roadmap/README.md`](roadmap/README.md) 与 [`README.md`](README.md) 该路线一行描述改为「人体/动物动作 → 人形或四足参考轨迹」
+
 ## [2026-07-26] ingest | sources/sites/waytoagi-feishu-wiki.md — WaytoAGI 飞书知识库首页入库；升格 wiki/entities/waytoagi.md；交叉 unitree / VLA 复现地图 / OpenLET
 
 - **确认工具：** Agent Reach v1.5.0 已安装（`~/.local/bin/agent-reach`）；抓取用 Camoufox + 飞书公开 `wiki/v2/tree/*`（Jina 仅得壳层）
