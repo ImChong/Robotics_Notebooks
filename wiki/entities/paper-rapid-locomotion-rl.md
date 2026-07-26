@@ -109,6 +109,14 @@ sequenceDiagram
 - 次要代价：训练算力；安全部署成本。
 - 部署：优先官方仓库；硬件仍需 Mini Cheetah 或动力学接近的仿制机。
 
+## 与其他工作对比
+
+| 对照对象 | 差异要点 |
+|----------|----------|
+| 模型基 [WBIC + MPC / cMPC](./paper-wbic-mpc-mini-cheetah.md) 栈 | 本文用端到端 model-free RL 达 3.9 m/s，对照早期 cMPC ~2.45 m/s；展示学习路线可与模型基并存 |
+| [Learning to Jump from Pixels](./paper-learning-to-jump-from-pixels.md) | 同组视觉技能线聚焦间断地形跳跃；本文聚焦连续自然地形高速盲走 |
+| [并发策略 + 估计](./paper-concurrent-policy-estimator-locomotion.md) | 并发文侧重可学习状态估计；本文侧重速度自适应课程 + 在线系统辨识式 Sim2Real |
+
 ## 局限与风险
 
 - 高速失败冲击大。

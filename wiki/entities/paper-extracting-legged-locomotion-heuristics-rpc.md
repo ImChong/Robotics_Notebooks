@@ -3,6 +3,7 @@ type: entity
 tags: [paper, mpc, locomotion, quadruped, mit, heuristics, control]
 status: complete
 updated: 2026-07-25
+venue: "ICRA 2020"
 related:
   - ./paper-bledt-rpc-thesis.md
   - ./paper-wbic-mpc-mini-cheetah.md
@@ -86,6 +87,14 @@ flowchart LR
 - 真影响：可迁移的启发式提取流程。
 - 次要代价：离线计算；简单模型表达力上限。
 - 部署：与现有 MPC/WBIC 叠用，见导航系统文。
+
+## 与其他工作对比
+
+| 对照对象 | 差异要点 |
+|----------|----------|
+| [Bledt 博士论文](./paper-bledt-rpc-thesis.md) | 本文是博士论文的会议浓缩版，聚焦「怎么挖启发式」的可执行流程 |
+| 黑箱替代控制器（端到端学习） | 本文强调保留物理直觉的简单模型，不改控制器结构或增益，仅增/替正则项 |
+| [WBIC + MPC](./paper-wbic-mpc-mini-cheetah.md) | 提取的启发式叠加在 WBIC+MPC 内核之上，与现有工程栈复用 |
 
 ## 局限与风险
 

@@ -3,6 +3,7 @@ type: entity
 tags: [paper, quadruped, vision, locomotion, perception, mit, exploration]
 status: complete
 updated: 2026-07-25
+venue: "ICRA 2020"
 related:
   - ./mit-mini-cheetah.md
   - ./paper-wbic-mpc-mini-cheetah.md
@@ -79,6 +80,14 @@ summary: "Kim et al. ICRA 2020：Mini Cheetah 双 RealSense + 轻量落脚/避�
 - 真影响：双 RealSense + 轻量落脚评估可行。
 - 次要代价：感知与规划仍偏启发式，泛化环境有限。
 - 部署：与 [IROS 2020 导航](./paper-robust-autonomous-navigation-mini-cheetah-vision.md) 连读看系统化。
+
+## 与其他工作对比
+
+| 对照对象 | 差异要点 |
+|----------|----------|
+| 重型 SLAM / 建图感知栈 | 本文用双 RealSense + 轻量落脚评估过非结构地形，而非上重型建图 |
+| [Mini-Cheetah Vision 导航](./paper-robust-autonomous-navigation-mini-cheetah-vision.md) | 本文是外感知入门系统；导航文进一步接入分层估计做无绳自主航点跟踪 |
+| [Learning to Jump from Pixels](./paper-learning-to-jump-from-pixels.md) | 跳跃文用像素级学习执行敏捷跳跃；本文用几何评估 + 动态 trot/jump 探索 |
 
 ## 局限与风险
 

@@ -3,6 +3,7 @@ type: entity
 tags: [paper, navigation, vision, quadruped, locomotion, mit, rpc]
 status: complete
 updated: 2026-07-25
+venue: "IROS 2020"
 related:
   - ./mit-mini-cheetah.md
   - ./paper-vision-aided-dynamic-exploration-mini-cheetah.md
@@ -89,6 +90,14 @@ flowchart TB
 - 真影响：RPC+WBIC+视觉在小型机上可 >1 m/s 自主。
 - 次要代价：开源缺失；系统复杂难复现。
 - 部署：作为系统蓝图阅读，组件分别回溯 RPC/WBIC/视觉探索文。
+
+## 与其他工作对比
+
+| 对照对象 | 差异要点 |
+|----------|----------|
+| [视觉辅助动态探索](./paper-vision-aided-dynamic-exploration-mini-cheetah.md) | 探索文验证外感知 + 动态运动可行；本文进一步集成为无绳全机载自主导航（>1 m/s） |
+| [RPC](./paper-bledt-rpc-thesis.md) / [WBIC](./paper-wbic-mpc-mini-cheetah.md) 单点算法 | 本文价值在系统集成与分层状态估计，而非单一新控制算法 |
+| 盲走控制器 | 论证盲走不够——敏捷鲁棒很大程度来自视觉反应闭环 |
 
 ## 局限与风险
 

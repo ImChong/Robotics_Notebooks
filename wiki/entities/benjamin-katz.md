@@ -9,6 +9,7 @@ related:
   - ./paper-mini-cheetah-platform.md
   - ./paper-wbic-mpc-mini-cheetah.md
   - ../comparisons/open-source-qdd-actuator-projects.md
+  - ../queries/actuator-drive-chain-selection-loop.md
   - ../../roadmap/depth-torque-motor-design.md
   - ./quadruped-robot.md
 sources:
@@ -79,6 +80,7 @@ summary: "Benjamin Katz（Ben）：MIT Mini Cheetah 主设计者；后入 Boston
 - [paper-mini-cheetah-platform](./paper-mini-cheetah-platform.md)
 - [Boston Dynamics](./boston-dynamics.md)
 - [开源 QDD 项目对比](../comparisons/open-source-qdd-actuator-projects.md)
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — Ben 自研可背驱 QDD 执行器 + 驱动板固件是驱动链 **①EDA / ②FOC 固件** 层的开源范式
 - [四足机器人](./quadruped-robot.md)
 
 ## 参考来源

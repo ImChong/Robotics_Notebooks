@@ -3,6 +3,7 @@ type: entity
 tags: [paper, quadruped, hardware, platform, mpc, mit, actuator]
 status: complete
 updated: 2026-07-25
+venue: "ICRA 2019"
 related:
   - ./mit-mini-cheetah.md
   - ./benjamin-katz.md
@@ -10,6 +11,7 @@ related:
   - ../methods/model-predictive-control.md
   - ../concepts/srbd-convex-mpc-wbc.md
   - ../comparisons/open-source-qdd-actuator-projects.md
+  - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/papers/mini_cheetah_platform_icra_2019.md
   - ../../sources/blogs/robot_daycare_mini_cheetah_2019.md
@@ -104,6 +106,14 @@ sequenceDiagram
 - 部署读法：复现优先 Cheetah-Software；硬件走 Katz 论文+博客+bgkatz。
 - 与 [WBIC+MPC](./paper-wbic-mpc-mini-cheetah.md) 组成「平台 + 控制」最小阅读对。
 
+## 与其他工作对比
+
+| 对照对象 | 差异要点 |
+|----------|----------|
+| [WBIC + MPC](./paper-wbic-mpc-mini-cheetah.md) | 平台论文定义硬件与 cMPC 能力包络（含离线优化后空翻）；WBIC+MPC 给出可复现的在线分层控制内核，二者组成「平台 + 控制」最小阅读对 |
+| [ODRI Solo / Bolt](./odri-solo-and-bolt.md) | 同为开源力控小四足；Solo 开源完整度更高，Mini Cheetah 侧重 cMPC 多步态动态能力与特技 |
+| [开源 QDD 项目对比](../comparisons/open-source-qdd-actuator-projects.md) | 对照可购性/供应链与自建成本；Mini Cheetah 是研究基线硬件而非量产成品 |
+
 ## 局限与风险
 
 - IEEE 全文可能付费；摘要与实验室材料可作入门。
@@ -115,6 +125,7 @@ sequenceDiagram
 - [Benjamin Katz](./benjamin-katz.md)
 - [WBIC + MPC](./paper-wbic-mpc-mini-cheetah.md)
 - [MPC](../methods/model-predictive-control.md)
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — Mini Cheetah 的可背驱模块化执行器是驱动链 **①EDA 自研驱动板 / ②FOC 固件** 层的社区基线硬件
 
 ## 参考来源
 

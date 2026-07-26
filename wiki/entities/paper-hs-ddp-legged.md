@@ -101,6 +101,14 @@ sequenceDiagram
 - 次要代价：MATLAB 原型 ≠ 实时嵌入式。
 - 部署：算法验证用官方 MATLAB；真机跟踪另选。
 
+## 与其他工作对比
+
+| 对照对象 | 差异要点 |
+|----------|----------|
+| 标准平滑 DDP | 假设动力学连续可微；HS-DDP 显式处理触地冲击映射、切换约束（AL）与切换时刻（STO） |
+| [MHPC](./paper-mhpc.md) | MHPC 是在线模型层级预测控制；HS-DDP 偏离线/规划 TO 后端，二者同属 ROAM 工具链、可配对使用 |
+| [Mini Cheetah 栈](./mit-mini-cheetah.md) | HS-DDP 只产出全身轨迹，真机部署需另接状态估计与跟踪控制器（如 Cheetah-Software 栈） |
+
 ## 局限与风险
 
 - 接触序列仍常需先验或启发式。

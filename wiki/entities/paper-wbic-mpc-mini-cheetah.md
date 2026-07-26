@@ -105,6 +105,14 @@ sequenceDiagram
 - 次要代价：依赖模型与接触计划质量；感知仍需外挂。
 - 部署：优先 Cheetah-Software，再替换启发式/正则（见 RPC 线）。
 
+## 与其他工作对比
+
+| 对照对象 | 差异要点 |
+|----------|----------|
+| 通用 WBC（只跟踪躯干轨迹） | 本文以 MPC 反力为桥梁使全身命令与接触冲量一致（WBIC），更适合腾空相与高速摆腿 |
+| [平台论文](./paper-mini-cheetah-platform.md) | 平台论文用离线优化做特技/多步态；本文给出在线分层 MPC+WBIC 的通用 locomotion 内核 |
+| [RPC 启发式提取](./paper-extracting-legged-locomotion-heuristics-rpc.md) | RPC 在本文 MPC 代价上叠加可辨识正则/启发式，属同一内核的增强线 |
+
 ## 局限与风险
 
 - 简化模型误差在极端地形需 RPC/视觉或学习补偿。

@@ -65,7 +65,7 @@ summary: "UniAD（arXiv:2212.10156，CVPR 2023 Best Paper）：以规划为优�
 | Venue | CVPR 2023 Best Paper |
 | **演进线索** | 规划导向 |
 | **开源** | **已开源** — [`OpenDriveLab/UniAD`](https://github.com/OpenDriveLab/UniAD) |
-| **指标索引** | nuScenes 多子任务 SOTA；文内/盘点称规划平均碰撞率约 **0.29%**（以原论文表为准）。 |
+| **指标索引** | nuScenes 多子任务当时最优；文内/盘点称规划平均碰撞率约 **0.29%**（以原论文表为准）。 |
 
 ## 核心原理
 
@@ -153,7 +153,7 @@ sequenceDiagram
 
 1. **五模块规划导向串联** — TrackFormer/MapFormer/MotionFormer/OccFormer 共享规划导向联合损失喂给 Planner，仅多视角相机 → BEV，无 LiDAR。
 2. **权威背书与基线地位** — CVPR 2023 Best Paper，成为后续向量化/稀疏化/并行 Transformer 路线的共同参照基线。
-3. **主数字** — nuScenes 开环多子任务 SOTA，盘点称规划平均碰撞率约 0.29%（以原论文表为准）。
+3. **主数字** — nuScenes 开环多子任务当时最优，盘点称规划平均碰撞率约 0.29%（以原论文表为准）。
 4. **可审计性** — 保留 agent、地图、占用、轨迹等中间可解释表征，回应模块化栈的累积误差与目标不对齐。
 5. **局限** — 内部仍是感知→预测→规划级联，误差可沿模块传播；底层依赖稠密 BEV 算力压力大；开环指标不等同闭环量产安全。
 

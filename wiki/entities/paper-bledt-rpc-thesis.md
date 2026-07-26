@@ -3,6 +3,7 @@ type: entity
 tags: [paper, thesis, mpc, locomotion, quadruped, mit, control]
 status: complete
 updated: 2026-07-25
+venue: "MIT PhD Thesis 2020"
 related:
   - ./paper-extracting-legged-locomotion-heuristics-rpc.md
   - ./paper-robust-autonomous-navigation-mini-cheetah-vision.md
@@ -77,6 +78,14 @@ summary: "Bledt MIT 博士论文（2020）：Regularized Predictive Control（RP
 - 真影响：正则启发式可系统提取与适应。
 - 次要代价：离线探索成本；启发式仍可能过拟合仿真。
 - 部署：与 WBIC 叠用做导航/高动态，见系统论文。
+
+## 与其他工作对比
+
+| 对照对象 | 差异要点 |
+|----------|----------|
+| [ICRA 2020 启发式提取](./paper-extracting-legged-locomotion-heuristics-rpc.md) | 本论著是 RPC 控制哲学的长文定义；ICRA 短文是可执行摘要/落地说明 |
+| [WBIC + MPC](./paper-wbic-mpc-mini-cheetah.md) | WBIC+MPC 提供分层控制内核；RPC 在其代价上叠加可提取、可在线适应的正则启发式 |
+| [IROS 2020 Vision 导航](./paper-robust-autonomous-navigation-mini-cheetah-vision.md) | 导航系统文把 RPC+WBIC 接入视觉闭环，是 RPC 线的系统级验证 |
 
 ## 局限与风险
 
