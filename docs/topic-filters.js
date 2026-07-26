@@ -251,6 +251,7 @@
         'wiki/entities/kicad.md',
         'wiki/entities/altium-designer.md',
         'wiki/entities/simplefoc.md',
+        'wiki/entities/paper-neuralactuator-neural-actuation-modeling.md',
         'wiki/queries/ethercat-master-optimization.md',
         'wiki/overview/motor-drive-firmware-bus-protocols.md'
       ]))

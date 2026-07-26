@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-26] structural | docs/checklists — V30 收尾（详情页感知栈徽标）并新建 v31「机器人视觉感知栈选型闭环」执行清单
+
+- **V30 P3② 收尾：** 详情页「所属专题」徽标行本就数据驱动（`main.js renderMetaTopicBadges` → `topic-filters.js topicsForNode`），P3① 写入单一事实源后自动联动
+  - node 逐页复核发现驱动链 ③层 [`wiki/entities/paper-neuralactuator-neural-actuation-modeling.md`](wiki/entities/paper-neuralactuator-neural-actuation-modeling.md) 漏命中（id 分词为 `neuralactuator`/`actuation`，无干净 `actuator` 片段），遂显式补入 [`docs/topic-filters.js`](docs/topic-filters.js) `actuator-drive-chain.ids`，使该真·驱动链页详情页徽标与图谱专题视图同步点亮
+  - 补后 node 复核 simplefoc/kicad/altium/neuralactuator/bam/ethercat-protocol/field-oriented-control/implicit-explicit/query/torque-source-abstraction-gap/枢纽页 11 页均命中，非驱动链的 vla/topic-grasp/robo-bench 均不命中；`make lint` 0 errors；至此 **v30 全数完成**
+- **新建执行清单：** [`docs/checklists/tech-stack-next-phase-checklist-v31.md`](docs/checklists/tech-stack-next-phase-checklist-v31.md) — 聚焦「机器人视觉感知栈选型闭环」（传感与标定 → 2D 检测/分割选型 → 2D→3D 语义建图 → 下游策略消费 四层选型链），承接近周 YOLO/RF-DETR/SAM/SAM2/FindAnything/语义建图密集 ingest
+- **看板维护：** v30 移入 [`docs/checklists/archive/`](docs/checklists/archive/)；[`docs/checklists/README.md`](docs/checklists/README.md) 当前入口与历史列表同步更新
+
 ## [2026-07-26] structural | roadmap/depth-motion-retargeting.md — 动作重定向纵深补四足支线（动物/视频关键点 → SMR/TMR → legged_gym 跟踪）
 
 - **改写：** [`roadmap/depth-motion-retargeting.md`](roadmap/depth-motion-retargeting.md)
