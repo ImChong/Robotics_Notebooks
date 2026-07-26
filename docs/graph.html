@@ -1720,7 +1720,7 @@
 
       <div class="slider-row">
         <label class="physics-toggle" for="check-node-labels">
-          <input type="checkbox" id="check-node-labels" checked />
+          <input type="checkbox" id="check-node-labels" />
           <span>🏷 显示节点名称</span>
         </label>
       </div>
@@ -2180,8 +2180,8 @@
     let isMagnetic2D = false;
     let isMagnetic3D = false;
     const checkMagneticEl = document.getElementById('check-magnetic');
-    // 节点名称显隐：2D / 3D 共享同一开关（与磁吸模式各自记忆不同）
-    let showNodeLabels = true;
+    // 节点名称显隐：2D / 3D 共享同一开关（默认关闭；与磁吸模式各自记忆不同）
+    let showNodeLabels = false;
     let labelsSettled2D = false;
     let userZoomed2D = false;
     let label = null;
