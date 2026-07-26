@@ -14,6 +14,22 @@
   - [`wiki/entities/paper-hrl-stack-34-gr00t_n1.md`](wiki/entities/paper-hrl-stack-34-gr00t_n1.md)
   - [`wiki/entities/paper-loco-manip-161-057-being-0.md`](wiki/entities/paper-loco-manip-161-057-being-0.md)
 
+## [2026-07-26] ingest | sources/sites/research-neoteai-com.md + neoteai-com.md — NeoteAI 𝒩₀ 三件套（Foundation/VTLA/TWAM）与公司站；OpenNeoData 部分开源
+
+- **公司站：** [`sources/sites/neoteai-com.md`](sources/sites/neoteai-com.md) — 上海新智具身智能；InTac 传感器 / 数据平台 / N 系列大模型；天使轮近亿；源自复旦 TEAI
+- **研究站：** [`sources/sites/research-neoteai-com.md`](sources/sites/research-neoteai-com.md) — 2026-07-25 同日发布三项目页
+- **论文归档：** [`sources/papers/n0_foundation.md`](sources/papers/n0_foundation.md) · [`n0_vtla.md`](sources/papers/n0_vtla.md) · [`n0_twam.md`](sources/papers/n0_twam.md)
+- **仓库：** [`sources/repos/n0-foundation.md`](sources/repos/n0-foundation.md) · [`n0-vtla.md`](sources/repos/n0-vtla.md) · [`n0-twam.md`](sources/repos/n0-twam.md) · [`neoteai-release.md`](sources/repos/neoteai-release.md)（GitCode 传感器 SDK）
+- **Wiki 实体：**
+  - [`wiki/entities/neoteai.md`](wiki/entities/neoteai.md)
+  - [`wiki/entities/paper-n0-foundation.md`](wiki/entities/paper-n0-foundation.md)
+  - [`wiki/entities/paper-n0-vtla.md`](wiki/entities/paper-n0-vtla.md)
+  - [`wiki/entities/paper-n0-twam.md`](wiki/entities/paper-n0-twam.md)
+- **开源核查（步骤 2.5）：** **部分开源** — OpenNeoData（5k h，HF+ModelScope，门禁，CC-BY-NC-SA-4.0）已放；三 GitHub 仓截至入库日仅 README/diagrams；NeoForce / VTLA / TWAM 代码与权重 Roadmap **By July 31, 2026**；传感器 SDK 在 GitCode 已开放
+- **机构注册：** `schema/institutions.json` 新增 `neoteai`；`fudan` 增补 `fudan-teai` / `teai` aliases
+- **交叉：** visuo-tactile-fusion（范式 §6）、contact-rich-manipulation、topic-tactile、world-action-models、VT-WAM、manipulation
+
+
 ## [2026-07-26] ingest | sources/papers/ggps_panolog_arxiv_2607_08769.md — PanoLOG/G²PS 全景户外 3DGS；新建 wiki/entities/paper-panolog-ggps.md；交叉 PanoWorld/Glob3R/GS-Playground/导航栈；训练代码已开源，HF 部分数据
 
 - **来源归档：**

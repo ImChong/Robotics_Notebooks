@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, manipulation, contact-rich, multimodal, tactile-sensing, fusion]
 status: complete
-updated: 2026-07-24
+updated: 2026-07-26
 related:
   - ./tactile-sensing.md
   - ./contact-rich-manipulation.md
@@ -21,6 +21,10 @@ related:
   - ../entities/paper-omnitactune-tactile-residual-adaptation.md
   - ../entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md
   - ../entities/paper-vtap-gripper.md
+  - ../entities/neoteai.md
+  - ../entities/paper-n0-foundation.md
+  - ../entities/paper-n0-vtla.md
+  - ../entities/paper-n0-twam.md
   - ./hybrid-force-position-control.md
   - ../queries/contact-wrench-closed-loop.md
   - ./contact-force-loop-bandwidth.md
@@ -29,6 +33,7 @@ sources:
   - ../../sources/papers/contact_dynamics.md
   - ../../sources/papers/humanoid_touch_dream.md
   - ../../sources/papers/vtap_gripper_arxiv_2607_15448.md
+  - ../../sources/papers/n0_foundation.md
 summary: "视触觉融合（Visuo-Tactile Fusion）研究如何在接触瞬间动态切换视觉的全局先验与触觉的局部反馈：视觉提供宏观语义和粗对位，触觉补足遮挡区的微对位与力学闭环。"
 ---
 
@@ -129,6 +134,19 @@ $\alpha_t$ 既可以由人类先验（接触力、深度差）算出，也可以
 - **与残差适应的分工：** OmniTacTune 的残差来自 **真机 RL 试错**；TouchWorld 的 TRT 来自 **遥操残差监督**，且上游还有 **触觉世界模型** 提供「预期接触长什么样」。
 - **与 T-Rex 的对照：** 二者都强调 **频率解耦 + 残差精修**；TouchWorld 额外把 **子任务规划 + 触觉子目标预测** 写入层级，更偏 **长程 household 六任务** 与 **人形 Wuji 平台**。
 
+### 6. 力场统一 + 预测触觉策略栈（NeoForce / 𝒩₀）
+
+[新智具身 NeoteAI](../entities/neoteai.md) 的 **𝒩₀** 三件套把融合问题拆成底座与两条策略：
+
+| 层 | 页面 | 融合读点 |
+|----|------|----------|
+| 表征 | [𝒩₀-Foundation](../entities/paper-n0-foundation.md) | 触觉图像 → **三轴力场**；同骨干下 NeoForce 条件优于原始触觉拼接 |
+| VTLA | [𝒩₀-VTLA](../entities/paper-n0-vtla.md) | 动作专家只消费 **未来接触 latent**，当前触觉不直灌 VL 前缀 |
+| WAM | [𝒩₀-TWAM](../entities/paper-n0-twam.md) | **预测通路**（VAE 未来触觉）+ **观测通路**（NeoForce 力场）角色分离 |
+
+- **与注意力融合的差别：** 不是「多拼触觉 token」，而是先统一物理量、再决定预测 vs 观测何时进动作头。
+- **开源提醒：** OpenNeoData（5k h）已放；模型代码/权重截至 2026-07-26 仍为占位（Roadmap 写 7/31）。
+
 ## 接触瞬间为什么难
 
 把这一阶段单独拎出来，是因为常见的几个坑都集中在这里：
@@ -202,6 +220,7 @@ flowchart LR
 - [OmniTacTune](../entities/paper-omnitactune-tactile-residual-adaptation.md) — 冻结视觉 + 触觉残差真机 RL，无需离线触觉演示
 - [TouchWorld](../entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md) — 预测–反应式触觉层级：TWM 子目标 + TRT 残差 + 六任务长程 benchmark
 - [VTAP Gripper](../entities/paper-vtap-gripper.md) — 主动掌 LED 开关视/触 + FlexiTac 指尖；硬件级阶段切换实例（arXiv:2607.15448）
+- [NeoteAI / 𝒩₀ 栈](../entities/neoteai.md) — NeoForce 力场 + 𝒩₀-VTLA 预测触觉 + 𝒩₀-TWAM 双通路
 - [Manipulation 任务](../tasks/manipulation.md)
 - [Grasp Pose Estimation](../methods/grasp-pose-estimation.md) — ① 抓取阶段的视觉感知主线
 - [抓取策略选型 Query](../queries/grasp-policy-selection.md) — ① 抓取阶段的选型决策

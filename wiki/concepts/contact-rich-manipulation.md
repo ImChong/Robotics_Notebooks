@@ -2,7 +2,7 @@
 type: concept
 tags: [manipulation, contact, force-control, impedance-control, tsid]
 status: complete
-updated: 2026-07-24
+updated: 2026-07-26
 summary: "Contact-Rich Manipulation 指需要持续建模接触、摩擦和力约束的操作任务，难点不在于碰到物体，而在于控制接触过程本身。"
 related:
   - ../queries/contact-wrench-closed-loop.md
@@ -13,6 +13,9 @@ related:
   - ../entities/paper-omnitactune-tactile-residual-adaptation.md
   - ../entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md
   - ../entities/paper-vtap-gripper.md
+  - ../entities/neoteai.md
+  - ../entities/paper-n0-foundation.md
+  - ../entities/paper-n0-twam.md
   - ../tasks/manipulation.md
   - ./contact-dynamics.md
   - ./tsid.md
@@ -28,6 +31,8 @@ sources:
   - ../../sources/papers/contact_dynamics.md
   - ../../sources/papers/chord_nvidia_video_to_data_2026.md
   - ../../sources/papers/vtap_gripper_arxiv_2607_15448.md
+  - ../../sources/papers/n0_foundation.md
+  - ../../sources/papers/n0_twam.md
 ---
 
 # Contact-Rich Manipulation（接触丰富型操作）
@@ -146,6 +151,7 @@ sources:
 - [Tactile Impedance Control](../methods/tactile-impedance-control.md)
 - [Hybrid Force-Position Control](./hybrid-force-position-control.md)
 - [Visuo-Tactile Fusion](./visuo-tactile-fusion.md)
+- [NeoteAI 𝒩₀-Foundation / TWAM](../entities/neoteai.md) — NeoReal/NeoSim 接触套件 + 触觉原生 WAM
 - [Query：接触丰富操作实践指南](../queries/contact-rich-manipulation-guide.md)
 - [DAPL 杂乱场景外在灵巧](../entities/paper-dapl-extrinsic-dexterity-clutter.md)
 
