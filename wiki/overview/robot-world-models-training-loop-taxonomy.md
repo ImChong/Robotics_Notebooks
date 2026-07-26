@@ -2,7 +2,7 @@
 type: overview
 tags: [world-models, robot-learning, survey, vla, video-generation, model-based-rl, training-loop]
 status: complete
-updated: 2026-07-24
+updated: 2026-07-26
 related:
   - ./robot-world-models-action-consequence-technology-map.md
   - ./world-models-15-open-source-technology-map.md
@@ -11,6 +11,7 @@ related:
   - ./world-models-route-03-virtual-sandbox.md
   - ./ego-9-papers-technology-map.md
   - ./ego-category-03-world-models.md
+  - ./wam-motion-control-five-paths.md
   - ../methods/generative-world-models.md
   - ../concepts/world-action-models.md
   - ../methods/vla.md

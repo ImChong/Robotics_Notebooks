@@ -11,9 +11,10 @@ tags:
   - unitree-g1
   - beingbeyond
 status: complete
-updated: 2026-07-24
+updated: 2026-07-26
 venue: "BeingBeyond Technical Report 2026"
 related:
+  - ../overview/wam-motion-control-five-paths.md
   - ../concepts/world-action-models.md
   - ../tasks/loco-manipulation.md
   - ../tasks/teleoperation.md
@@ -26,6 +27,7 @@ related:
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
   - ./unitree-g1.md
 sources:
+  - ../../sources/blogs/wechat_embodied_ai_lab_wam_motion_control_five_paths.md
   - ../../sources/papers/being_m07.md
 summary: "Being-M0.7（BeingBeyond, 2026-07）：人形 loco-manipulation 潜空间 WAM——>1 万小时人中心 video/motion 混合预训练学 DINO 视觉 latent 与紧凑全身 motion 先验，future-conditioned action expert 在 G1 VR 遥操作数据上接地；真机四任务定量 7/15 vs GR00T-N1.6 2/15、Ψ0 3/15。"
 ---

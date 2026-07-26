@@ -9,9 +9,10 @@ tags:
   - action-chunking
   - humanoid-manipulation
 status: complete
-updated: 2026-07-15
+updated: 2026-07-26
 summary: "Being-H0.7 用大规模第一人称视频与机器人演示，在潜空间对齐未来感知监督，得到可部署的「世界–动作」先验；推理不滚未来像素，直接输出动作 chunk。"
 related:
+  - ../overview/wam-motion-control-five-paths.md
   - ../methods/vla.md
   - ./pelican-unified-1.md
   - ../entities/paper-being-m07-humanoid-latent-wam.md
@@ -22,6 +23,7 @@ related:
   - ../concepts/foundation-policy.md
   - ../formalizations/cross-modal-attention.md
 sources:
+  - ../../sources/blogs/wechat_embodied_ai_lab_wam_motion_control_five_paths.md
   - ../../sources/papers/being_h07.md
 ---
 

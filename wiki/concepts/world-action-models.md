@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-07-24
+updated: 2026-07-26
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型。"
 related:
   - ../../roadmap/depth-wam.md
@@ -27,6 +27,7 @@ related:
   - ../entities/paper-x-mind.md
   - ../tasks/vision-language-navigation.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
+  - ../overview/wam-motion-control-five-paths.md
   - ./humanoid-policy-network-architecture.md
   - ../methods/vla.md
   - ../methods/generative-world-models.md

@@ -12,8 +12,9 @@ tags:
   - booster-robotics
   - unitree
 status: complete
-updated: 2026-05-17
+updated: 2026-07-26
 related:
+  - ../overview/wam-motion-control-five-paths.md
   - ../tasks/locomotion.md
   - ../methods/reinforcement-learning.md
   - ../methods/model-based-rl.md
@@ -23,6 +24,7 @@ related:
   - ./mujoco-mjx.md
   - ./mjlab-playground.md
 sources:
+  - ../../sources/blogs/wechat_embodied_ai_lab_wam_motion_control_five_paths.md
   - ../../sources/papers/lift_humanoid_arxiv_2601_21363.md
   - ../../sources/sites/lift-humanoid-github-io.md
   - ../../sources/repos/bigai-lift-humanoid.md

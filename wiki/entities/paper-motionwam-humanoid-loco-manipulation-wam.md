@@ -13,10 +13,11 @@ tags:
   - unified-action-space
   - loco-manip-contact-survey
 status: complete
-updated: 2026-07-24
+updated: 2026-07-26
 arxiv: "2606.09215"
 venue: "arXiv 2026"
 related:
+  - ../overview/wam-motion-control-five-paths.md
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-05-promptable-control.md
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
@@ -36,6 +37,7 @@ related:
   - ./paper-worldvln-aerial-vln-wam.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
 sources:
+  - ../../sources/blogs/wechat_embodied_ai_lab_wam_motion_control_five_paths.md
   - ../../sources/papers/motionwam_arxiv_2606_09215.md
   - ../../sources/papers/loco_manip_161_survey_100_motionwam.md
   - ../../sources/sites/dit4dit-project.md
