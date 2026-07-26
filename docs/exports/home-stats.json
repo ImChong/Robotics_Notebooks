@@ -1,13 +1,93 @@
 {
   "generated_at": "2026-07-26",
   "node_count": 1913,
-  "edge_count": 16399,
+  "edge_count": 16405,
   "coverage": {
     "covered": 1861,
     "total": 1889,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "roadmap/depth-motion-retargeting.md",
+      "detail_id": "roadmap-depth-motion-retargeting",
+      "label": "路线（纵深）：如果目标是动作重定向（人体动作 → 机器人参考轨迹）",
+      "type": "roadmap_page",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/stmr-quadruped-retargeting.md",
+      "detail_id": "entity-stmr-quadruped-retargeting",
+      "label": "STMR 四足时空重定向",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/motion-imitation-quadruped.md",
+      "detail_id": "entity-motion-imitation-quadruped",
+      "label": "motion_imitation（四足模仿动物）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/go2-motion-imitation.md",
+      "detail_id": "entity-go2-motion-imitation",
+      "label": "Go2 Motion Imitation",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/pan-motion-retargeting.md",
+      "detail_id": "entity-pan-motion-retargeting",
+      "label": "PAN Motion Retargeting",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/entities/quadruped-robot.md",
+      "detail_id": "entity-quadruped-robot",
+      "label": "四足机器人（Quadruped Robot）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/legged-gym.md",
+      "detail_id": "entity-legged-gym",
+      "label": "legged_gym",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/methods/amp-reward.md",
+      "detail_id": "wiki-methods-amp-reward",
+      "label": "AMP & HumanX: 判别器驱动的风格学习",
+      "type": "method",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
     {
       "path": "wiki/entities/waytoagi.md",
       "detail_id": "entity-waytoagi",
@@ -136,104 +216,16 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-sam2.md",
-      "detail_id": "entity-paper-sam2",
-      "label": "SAM 2：图像与视频中的 Segment Anything",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md",
-      "detail_id": "wiki-queries-go2-3d-semantic-mapping-sam-pipeline",
-      "label": "GO2 三维语义建图与 SAM 流水线",
-      "type": "query",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/ovo-semantic-mapping.md",
-      "detail_id": "entity-ovo-semantic-mapping",
-      "label": "OVO（Open-Vocabulary Online Semantic Mapping）",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/dualmap.md",
-      "detail_id": "entity-dualmap",
-      "label": "DualMap",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/ov-sam3d.md",
-      "detail_id": "entity-ov-sam3d",
-      "label": "OV-SAM3D",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/findanything.md",
-      "detail_id": "entity-findanything",
-      "label": "FindAnything",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/cmu-mscv-semantic-3d-mapping.md",
-      "detail_id": "entity-cmu-mscv-semantic-3d-mapping",
-      "label": "CMU MSCV Semantic 3D Mapping",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/autonomy-stack-go2.md",
-      "detail_id": "entity-autonomy-stack-go2",
-      "label": "autonomy_stack_go2",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/waytoagi.md",
-    "detail_id": "entity-waytoagi",
-    "label": "WaytoAGI（通往 AGI 之路）",
-    "type": "entity",
+    "path": "roadmap/depth-motion-retargeting.md",
+    "detail_id": "roadmap-depth-motion-retargeting",
+    "label": "路线（纵深）：如果目标是动作重定向（人体动作 → 机器人参考轨迹）",
+    "type": "roadmap_page",
     "recency": "2026-07-26",
     "source": "log.md",
-    "action": "added"
+    "action": "maintained"
   },
   "top_communities": [
     {
@@ -245,12 +237,12 @@
       "size": 226
     },
     {
-      "label": "移动操作",
-      "size": 174
+      "label": "人形强化学习运动控制",
+      "size": 171
     },
     {
-      "label": "人形强化学习运动控制",
-      "size": 170
+      "label": "移动操作",
+      "size": 144
     },
     {
       "label": "全身控制",
@@ -305,7 +297,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 274,
+      "degree": 275,
       "community_label": "运动控制（Locomotion） 社区"
     },
     {
