@@ -3,13 +3,15 @@ type: entity
 title: ONNX Runtime
 date: 2026-06-25
 tags: [framework, deployment, onnxruntime, inference, edge-ai, microsoft, cpp]
-summary: "ONNX Runtime 是微软主导的生产级 ONNX 推理引擎，跨平台多语言，通过 Execution Provider 对接 CPU/CUDA/TensorRT 等后端，是人形机器人 C++ 机载策略推理的主流运行时之一。"
-updated: 2026-06-25
+summary: "ONNX Runtime 是微软主导的生产级 ONNX 推理引擎；1.28.0 起并行提供 CUDA 12/13 GPU 包，CUDA EP 可选用 cuDNN/cuFFT 并取消 nvrtc 链接以缩小 redistributable，是人形机器人 C++ 机载策略推理的主流运行时之一。"
+updated: 2026-07-26
 ---
 
 # ONNX Runtime
 
 **ONNX Runtime**（常缩写 **ORT**）是由 **Microsoft** 主导的开源 **ONNX 推理与训练加速引擎**。它提供 **Python、C++、C#、Java、JavaScript** 等 API，运行于 **Linux、Windows、macOS、iOS、Android 与 Web 浏览器**，并通过 **Execution Provider（EP）** 将算子调度到 CPU、CUDA、TensorRT、OpenVINO、CoreML、NNAPI 等后端。在机器人栈中，ORT 是 **「PyTorch 训练 → ONNX 导出 → C++ 机载 50–1000 Hz 控制环」** 路径上最常见的 **生产级 runtime**。
+
+本库当前跟踪版本锚点：**[v1.28.0](../../sources/repos/onnxruntime-v1.28.0.md)**（2026-07-25）— **CUDA 13 打包** 与 **轻量 CUDA 部署**。
 
 ## 一句话定义
 
@@ -22,6 +24,7 @@ updated: 2026-06-25
 | ORT | ONNX Runtime | ONNX 开源推理/训练加速引擎 |
 | EP | Execution Provider | 算子后端插件（CPU、CUDA、TensorRT 等） |
 | ONNX | Open Neural Network Exchange | ORT 消费的开放模型格式 |
+| CUDA | Compute Unified Device Architecture | NVIDIA GPU 栈；1.28 起分 cuda12/cuda13 包 |
 | GPU | Graphics Processing Unit | CUDA / TensorRT EP 的算力基础 |
 | WASM | WebAssembly | ORT Web 在浏览器中的执行载体 |
 | RL | Reinforcement Learning | 策略网络机载推理的主要应用场景 |
@@ -33,6 +36,7 @@ updated: 2026-06-25
 - **跨平台一份模型**：同一 `.onnx` 可在仿真工作站（CUDA EP）与真机 Orin/PC2（CPU 或 TensorRT EP）复用，降低 sim2real 分叉。
 - **性能调优纵深**：除默认优化外，支持图优化、量化与 EP 特有配置；NVIDIA 场景常叠加 **TensorRT EP** 进一步融合算子。
 - **Web / 边端扩展**：**ONNX Runtime Web**（WASM/WebGPU）支撑浏览器内 policy 演示（如 [BotLab MotionCanvas](./botlab-motioncanvas.md)）。
+- **部署体积可收敛（1.28+）**：CUDA EP 将 **cuDNN / cuFFT** 改为运行时可选、**不再链接 `nvrtc`**，配合 **CUDA 13** 官方包，利于机载/边缘 **瘦镜像**。
 
 ## 核心结构（官方能力归纳）
 
@@ -40,24 +44,52 @@ updated: 2026-06-25
 2. **Execution Providers**：按优先级注册；算子无法在首选 EP 执行时 **回退** 到次选 EP（行为以版本文档为准）。
 3. **包分发**：
    - `pip install onnxruntime` — CPU 默认构建
-   - `onnxruntime-gpu` — CUDA 路径（须匹配 CUDA/cuDNN）
+   - `onnxruntime-gpu` — CUDA 路径（须匹配 **CUDA 12 或 13** 与 cuDNN；见下方版本锚点）
    - `onnxruntime-genai` — 生成式/LLM 扩展
 4. **语言绑定**：C++ 适合机载实时环；Python 适合导出后数值对齐与回归测试。
 5. **训练分支**：ONNX Runtime Training 面向大模型训练加速与 on-device training（机器人控制环较少直接用）。
 
+## 版本锚点：1.28.0（CUDA 13 与轻量部署）
+
+> 依据 [Release v1.28.0](https://github.com/microsoft/onnxruntime/releases/tag/v1.28.0) / [来源专档](../../sources/repos/onnxruntime-v1.28.0.md)。开源状态：**已开源（MIT）**。
+
+| 维度 | 要点 |
+|------|------|
+| **格式依赖** | 捆绑 **ONNX 1.22.0** + protobuf 6.33.5；图优化器 opset 检查同步 |
+| **CUDA 双线包** | Release 同时提供 **`gpu_cuda12`** 与 **`gpu_cuda13`** 预编译资产；NPM 改从 CUDA 13 pipeline 发布 |
+| **轻量 redistributable** | CUDA EP：**cuDNN / cuFFT 运行时可选**；**取消 `nvrtc` 链接** → 所需 CUDA redistributable 显著缩小 |
+| **体积信号（Linux x64）** | 官方 `gpu_cuda13` tgz **~230 MB** vs `gpu_cuda12` **~404 MB**（Release Assets；作选型参考，非延迟保证） |
+| **API 边界** | `OrtModelPackageApi` 进入 **experimental** C API，机载生产勿依赖 |
+| **破坏性清理** | SkipLayerNorm strict mode 废弃；CUDA EP 移除 TensorRT fused causal attention kernels 等 |
+
+**机载选型口诀**：新 CUDA 13 / 瘦镜像优先评估 **cuda13 包 + 可选 cuDNN**；仍钉 JetPack/CUDA 12 栈则继续 **`cuda12` 资产**，并做全链路回归后再升 1.28。
+
+## 工程实践
+
+| 步骤 | 建议 |
+|------|------|
+| 1. 钉版本 | README / lockfile 写死 minor（如历史工程 `1.19.2` / `1.22.0`）；升 **1.28** 须单独回归 |
+| 2. 选包 | CPU-only 工控 → CPU 包；NVIDIA 仿真/机载 → 按驱动选 **cuda12 或 cuda13** GPU 包 |
+| 3. 验 EP | `session.get_providers()` 确认 CUDA/TensorRT 是否真正注册；勿假设装了 gpu wheel 就走 GPU |
+| 4. 对齐观测 | 关节顺序、history、归一化在 C++ 侧与训练脚本一致（见 [robot-policy-debug-playbook](../queries/robot-policy-debug-playbook.md)） |
+| 5. 固定 shape | 控制环优先 **batch=1 + 静态输入维**，利于 EP 优化与延迟抖动控制 |
+| 6. 安全升级 | 1.28 含大量内存安全与输入校验修复；生产升级宜读完整 Release Notes |
+
 ## 与机器人研究与工程的关系
 
 - **全身控制**：[Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) 推理层常与 TensorRT 并列；ORT 负责 **通用 ONNX 算子执行**，TensorRT 负责 **NVIDIA 图优化**。
-- **版本钉扎**：工程 README 常固定 minor 版本（如 `onnxruntime==1.19.2` / `1.22.0`），因算子支持与 ABI 随版本变化。
-- **观测对齐**：ORT 只执行网络前向；**关节顺序、history stack、归一化** 须在 C++ 侧与训练脚本一致（见 [robot-policy-debug-playbook](../queries/robot-policy-debug-playbook.md)）。
-- **与格式分工**：[ONNX](./onnx.md) 定义文件；ORT 执行文件——勿混淆二者。
+- **版本钉扎**：工程 README 常固定 minor 版本（如 `onnxruntime==1.19.2` / `1.22.0`），因算子支持与 ABI 随版本变化；**1.28.0** 是当前本库文档跟踪锚点，不等于各仓库已升级。
+- **观测对齐**：ORT 只执行网络前向；**关节顺序、history stack、归一化** 须在 C++ 侧与训练脚本一致。
+- **与格式分工**：[ONNX](./onnx.md) 定义文件；ORT 执行文件——勿混淆二者。1.28 捆绑 ONNX **1.22.0**，导出 opset 须与目标 runtime 对齐。
 
 ## 常见误区或局限
 
 - **「装了 onnxruntime-gpu 就一定走 GPU」**：须确认 `session.get_providers()`、CUDA 驱动与 EP 注册顺序。
+- **CUDA 13 包 ≠ 所有板卡可用**：Jetson / 旧 JetPack 可能仍在 CUDA 12；选错包线会直接无法加载。
 - **TensorRT EP ≠ 纯 TensorRT**：仍经 ORT 调度；极致延迟场景可能选择 **trtexec 独立引擎**（见对比页）。
 - **动态 shape**：部分导出图带动态轴；机载实时环通常 **固定 batch=1 与固定输入 shape** 以利于 EP 优化。
 - **浏览器与机载差异**：WebGPU/WASM 算子覆盖与桌面 CUDA 不同，不能假设 demo 与真机数值完全一致。
+- **实验 API**：Model Package 相关 C API 仍可能变更，勿写入机载硬依赖。
 
 ## 流程总览（导出 → Session → 控制环）
 
@@ -65,10 +97,12 @@ updated: 2026-06-25
 flowchart LR
   onnx[.onnx 策略文件]
   opts[SessionOptions + EP 列表]
+  pkg{GPU 包线?}
   sess[InferenceSession]
   pre[C++ 观测构造<br/>与训练对齐]
   loop[控制环 timer<br/>50–1000 Hz]
-  onnx --> opts --> sess
+  onnx --> opts --> pkg
+  pkg -->|cuda12 / cuda13 / CPU| sess
   pre --> loop
   loop -->|input dict| sess
   sess -->|action tensor| post[动作缩放 / 限幅 / WBC]
@@ -89,10 +123,12 @@ flowchart LR
 
 ## 参考来源
 
+- [ONNX Runtime v1.28.0 Release 归档](../../sources/repos/onnxruntime-v1.28.0.md)
 - [ONNX Runtime 官方站点与文档索引](../../sources/repos/onnxruntime-official.md)
 
 ## 推荐继续阅读
 
+- [ONNX Runtime v1.28.0 Release Notes](https://github.com/microsoft/onnxruntime/releases/tag/v1.28.0)
 - [ONNX Runtime 官网](https://onnxruntime.ai/)
 - [文档：Execution Providers](https://onnxruntime.ai/docs/execution-providers/)
 - [ONNX Runtime Web](https://onnxruntime.ai/docs/tutorials/web/)

@@ -4,7 +4,7 @@ title: ONNX
 date: 2026-06-25
 tags: [framework, deployment, onnx, model-export, interoperability, linux-foundation]
 summary: "ONNX 是开放神经网络交换格式（IR）：用统一计算图、算子集与 .onnx 文件衔接训练框架与推理引擎，是机器人策略从 PyTorch/JAX 导出到机载 C++ 的常见中间契约。"
-updated: 2026-06-25
+updated: 2026-07-26
 ---
 
 # ONNX
@@ -54,7 +54,7 @@ updated: 2026-06-25
 - **导出图 ≠ 训练图**：动态控制流、自定义 autograd、部分 RNN/注意力实现可能无法无损导出；应在目标 EP 上做 **代表性输入 benchmark**。
 - **opset 与算子覆盖**：新算子可能仅部分 runtime 支持；Jetson/ARM 上尤需提前验证。
 - **观测预处理不在 ONNX 内**：许多机器人仓库（如 [ProtoMotions](./protomotions.md)）选择把 obs 计算 bake 进 ONNX，或在外部 C++ 复刻；混用会导致 sim2real 隐性 gap。
-- **版本锁定**：机载项目常固定 `onnxruntime==x.y.z`（见 [jackhan-feap-mujoco-deployment](./jackhan-feap-mujoco-deployment.md)）；升级需回归全链路。
+- **版本锁定**：机载项目常固定 `onnxruntime==x.y.z`（见 [jackhan-feap-mujoco-deployment](./jackhan-feap-mujoco-deployment.md)）；升级需回归全链路。本库跟踪的 [ONNX Runtime 1.28.0](./onnxruntime.md) 捆绑 **ONNX 1.22.0**，导出 opset 须与目标 runtime 对齐。
 
 ## 流程总览（训练框架 → 机载推理）
 
@@ -87,6 +87,7 @@ flowchart LR
 ## 参考来源
 
 - [ONNX 官方站点与规范索引](../../sources/repos/onnx-official.md)
+- [ONNX Runtime v1.28.0 Release 归档](../../sources/repos/onnxruntime-v1.28.0.md)（runtime 捆绑 ONNX 1.22.0）
 
 ## 推荐继续阅读
 

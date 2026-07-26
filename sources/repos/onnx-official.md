@@ -11,8 +11,8 @@
 - **教程仓库：** https://github.com/onnx/tutorials
 - **支持的工具与框架列表：** https://onnx.ai/supported-tools
 - **治理：** LF AI & Data Foundation **Graduate Project**（开放治理、SIG / Working Group）
-- **入库日期：** 2026-06-25
-- **一句话说明：** **开放神经网络交换格式（IR）**：用统一的计算图、算子集与 `.onnx` 文件格式，让开发者在 **PyTorch / TensorFlow / JAX** 等框架中训练后，把模型交给 **ONNX Runtime、TensorRT、MNN** 等推理引擎与硬件优化栈；当前规范侧重 **推理（scoring）** 能力，并含 **ONNX-ML** 扩展以覆盖经典 ML 算子。
+- **入库日期：** 2026-06-25；**续更：** 2026-07-26（对齐 ORT 1.28.0 捆绑 ONNX 1.22.0）
+- **一句话说明：** **开放神经网络交换格式（IR）**：用统一的计算图、算子集与 `.onnx` 文件格式，让开发者在 **PyTorch / TensorFlow / JAX** 等框架中训练后，把模型交给 **ONNX Runtime、TensorRT、MNN** 等推理引擎与硬件优化栈；当前规范侧重 **推理（scoring）** 能力，并含 **ONNX-ML** 扩展以覆盖经典 ML 算子。[ONNX Runtime 1.28.0](./onnxruntime-v1.28.0.md) 捆绑 **ONNX 1.22.0**。
 - **沉淀到 wiki：** [ONNX](../../wiki/entities/onnx.md)
 
 ---

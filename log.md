@@ -1,5 +1,15 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-26] ingest | sources/repos/onnxruntime-v1.28.0.md — ONNX Runtime 1.28.0（CUDA 13 与轻量部署）；更新 wiki/entities/onnxruntime.md、onnx.md、comparisons/onnxruntime-vs-mnn-vs-tensorrt.md
+
+- **来源归档：** [`sources/repos/onnxruntime-v1.28.0.md`](sources/repos/onnxruntime-v1.28.0.md) — GitHub Release v1.28.0（2026-07-25）
+- **索引续更：** [`sources/repos/onnxruntime-official.md`](sources/repos/onnxruntime-official.md) · [`sources/repos/onnx-official.md`](sources/repos/onnx-official.md)
+- **主升格 / 更新：** [`wiki/entities/onnxruntime.md`](wiki/entities/onnxruntime.md) — 版本锚点（CUDA 12/13 双线包、cuDNN/cuFFT 可选、取消 nvrtc、ONNX 1.22.0）
+- **开源核查（步骤 2.5）：** **已开源（MIT）** — `microsoft/onnxruntime` 完整源码 + Release 预编译资产（含 `gpu_cuda12` / `gpu_cuda13`）
+- **交叉：**
+  - [`wiki/entities/onnx.md`](wiki/entities/onnx.md)
+  - [`wiki/comparisons/onnxruntime-vs-mnn-vs-tensorrt.md`](wiki/comparisons/onnxruntime-vs-mnn-vs-tensorrt.md)
+
 ## [2026-07-26] ingest | sources/sites/yale-grablab-openhand.md + yale-openhand-model-f3.md — Yale OpenHand 欠驱动开源手族与 Model F3；升格 wiki/entities/yale-openhand.md
 
 - **项目页：** [`sources/sites/yale-grablab-openhand.md`](sources/sites/yale-grablab-openhand.md) — Grab Lab OpenHand 总站（型号目录 / HDM / Couplings）

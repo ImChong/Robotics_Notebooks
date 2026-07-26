@@ -7,10 +7,22 @@
 - **主页：** https://onnxruntime.ai/
 - **文档：** https://onnxruntime.ai/docs/
 - **核心代码：** https://github.com/microsoft/onnxruntime
+- **最新跟踪版本：** [v1.28.0（2026-07-25）](./onnxruntime-v1.28.0.md) — CUDA 13 与轻量 CUDA 部署
 - **Generative AI 扩展：** https://onnxruntime.ai/docs/genai/（`onnxruntime-genai`）
-- **入库日期：** 2026-06-25
-- **一句话说明：** 微软主导的 **生产级 ONNX 推理与训练加速引擎**，支持 **Python / C++ / C# / Java / JavaScript** 等语言，覆盖 **Linux / Windows / macOS / iOS / Android / Web**；通过 **Execution Provider（EP）** 对接 CPU、CUDA、TensorRT、OpenVINO、CoreML、NNAPI 等后端；广泛用于 **Windows、Office、Azure、Bing** 及机器人 **C++ 机载策略推理**（如 Unitree G1 WBC、AMP_mjlab 部署链）。
+- **入库日期：** 2026-06-25（索引）；**续更：** 2026-07-26（接入 1.28.0）
+- **开源状态：** **已开源**（MIT；完整源码 + Release 预编译资产）
+- **一句话说明：** 微软主导的 **生产级 ONNX 推理与训练加速引擎**，支持 **Python / C++ / C# / Java / JavaScript** 等语言，覆盖 **Linux / Windows / macOS / iOS / Android / Web**；通过 **Execution Provider（EP）** 对接 CPU、CUDA、TensorRT、OpenVINO、CoreML、NNAPI 等后端；广泛用于 **Windows、Office、Azure、Bing** 及机器人 **C++ 机载策略推理**（如 Unitree G1 WBC、AMP_mjlab 部署链）。**1.28.0** 起官方并行提供 **CUDA 12 / CUDA 13** GPU 包，且 CUDA EP 可将 cuDNN/cuFFT 作运行时可选依赖以缩小 redistributable。
 - **沉淀到 wiki：** [ONNX Runtime](../../wiki/entities/onnxruntime.md)
+
+---
+
+## 版本锚点：v1.28.0（2026-07-25）
+
+详见专档 [onnxruntime-v1.28.0.md](./onnxruntime-v1.28.0.md)。工程侧优先记住三点：
+
+1. **CUDA 13 打包线**：Release 资产含 `gpu_cuda12` 与 `gpu_cuda13`；NPM 改走 CUDA 13 pipeline。
+2. **轻量 GPU 部署**：CUDA EP **cuDNN / cuFFT 运行时可选**，**不再链接 `nvrtc`**。
+3. **格式依赖**：捆绑 **ONNX 1.22.0**（+ protobuf 6.33.5）；升级机载钉扎版本时须回归。
 
 ---
 
@@ -71,8 +83,9 @@ ORT 通过 **SessionOptions** 注册 EP，按优先级调度算子：
 
 ## 对 wiki 的映射
 
-- 新建 **`wiki/entities/onnxruntime.md`**：runtime 实体页（EP、语言绑定、机器人 C++ 部署）。
+- 维护 **`wiki/entities/onnxruntime.md`**：runtime 实体页（EP、语言绑定、机器人 C++ 部署；含 **1.28.0** 版本锚点）。
 - 参与 **`wiki/comparisons/onnxruntime-vs-mnn-vs-tensorrt.md`** 选型对比。
+- 版本专档：**`sources/repos/onnxruntime-v1.28.0.md`**。
 
 ---
 
@@ -82,4 +95,5 @@ ORT 通过 **SessionOptions** 注册 EP，按优先级调度算子：
 - [文档首页](https://onnxruntime.ai/docs/)
 - [Execution Providers](https://onnxruntime.ai/docs/execution-providers/)
 - [microsoft/onnxruntime（GitHub）](https://github.com/microsoft/onnxruntime)
+- [Release v1.28.0](https://github.com/microsoft/onnxruntime/releases/tag/v1.28.0)
 - [ONNX Runtime Web](https://onnxruntime.ai/docs/tutorials/web/)
