@@ -2,7 +2,7 @@
 type: entity
 tags: [dataset, humanoid, leju, open-source, openatom, manipulation, loco-manipulation]
 status: complete
-updated: 2026-07-17
+updated: 2026-07-26
 related:
   - ./leju-robotics.md
   - ./lerobot.md
@@ -11,6 +11,7 @@ related:
   - ./humannet.md
   - ./lingbot-vla.md
   - ../comparisons/humanoid-reference-motion-datasets.md
+  - ./waytoagi.md
 sources:
   - ../../sources/sites/openlet-openatom.md
   - ../../sources/repos/openlet-let-base-dataset.md
@@ -97,6 +98,7 @@ flowchart LR
 - [LeRobot](./lerobot.md) — 数据格式与训练框架
 - [HumanNet](./humannet.md) — 另一「大规模小时」但偏 **人视频** 的预训练来源对照
 - [LingBot-VLA](./lingbot-vla.md) — 真机双臂 VLA；可与 LET 操作数据组成「基础模型 + 领域后训练」链路
+- [WaytoAGI](./waytoagi.md) — 中文飞书**文档策展**社区（非真机数据集）；与 OpenLET 定位互补
 - [Manipulation](../tasks/manipulation.md) / [Loco-Manipulation](../tasks/loco-manipulation.md)
 
 ## 推荐继续阅读
