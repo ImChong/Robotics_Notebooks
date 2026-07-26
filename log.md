@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-26] ingest | sources/papers/abot_world_0_arxiv_2607_19191.md — ABot-World-0（arXiv:2607.19191）高德交互式视频世界模型；升格 wiki/entities/paper-abot-world-0.md；交叉更新 wiki/methods/generative-world-models.md、wiki/concepts/video-as-simulation.md、wiki/overview/robot-world-models-training-loop-taxonomy.md、wiki/entities/paper-wan-video.md、wiki/entities/paper-abot-m05-mobile-manipulation-wam.md；归档 sources/repos/abot-world.md、sources/sites/abot-world.md
+
 ## [2026-07-26] ingest | sources/blogs/wechat_embodied_ai_lab_wam_motion_control_five_paths.md — 人形运动控制进入 WAM 的五种系统位置；补齐缺失论文实体并复用已有非 stub 节点
 
 - **来源归档：** [`sources/blogs/wechat_embodied_ai_lab_wam_motion_control_five_paths.md`](sources/blogs/wechat_embodied_ai_lab_wam_motion_control_five_paths.md)（Agent Reach v1.5.0 + wechat-article-for-ai；<https://mp.weixin.qq.com/s/2pP9LWlsTmTAgTglFuLwSA>）
