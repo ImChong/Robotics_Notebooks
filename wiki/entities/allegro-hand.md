@@ -3,7 +3,7 @@
 type: entity
 tags: [hardware, dexterity, manipulation, robot-hand, research, wonik-robotics]
 status: complete
-updated: 2026-04-21
+updated: 2026-07-26
 related:
   - ../tasks/manipulation.md
   - ../concepts/tactile-sensing.md
@@ -56,6 +56,7 @@ summary: "Allegro Hand 是一款轻量化的四指灵巧手平台，拥有 16 �
 
 ## 关联页面
 - [Shadow Hand (灵巧手)](./shadow-hand.md) — 仿生程度更高的五指方案
+- [Yale OpenHand](./yale-openhand.md) — 低执行器数欠驱动开源手族对照
 - [Manipulation 任务](../tasks/manipulation.md)
 - [Dexterous Kinematics (灵巧手运动学)](../concepts/dexterous-kinematics.md) — 灵巧操作的数学基础
 - [Tactile Sensing (触觉感知)](../concepts/tactile-sensing.md)

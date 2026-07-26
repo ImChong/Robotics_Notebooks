@@ -2,7 +2,7 @@
 type: overview
 tags: [topic, topic-grasp, manipulation, dexterous, grasp]
 status: complete
-updated: 2026-07-23
+updated: 2026-07-26
 summary: "抓取与操作感知专题汇总：从接触建模、灵巧手运动学到 GraspNet/AnyGrasp 等感知抓取栈，覆盖 pick-place、双手协作与 loco-manip 中的操作子问题。"
 ---
 
@@ -40,6 +40,7 @@ summary: "抓取与操作感知专题汇总：从接触建模、灵巧手运动�
 | 感知抓取 | 6-DoF 抓取检测与选型 | [AnyGrasp vs GraspNet](../comparisons/anygrasp-vs-graspnet.md) |
 | 组合 | loco-manip 中的操作 | [Loco-Manipulation](../tasks/loco-manipulation.md) |
 | 硬件 | 低成本开源三指末端 | [EN02-OP](../entities/en02-op.md)（Westwood，7 DoF + Dynamixel） |
+| 硬件 | 开源欠驱动腱驱手族 | [Yale OpenHand](../entities/yale-openhand.md)（T/T42/O/F3；CAD CC BY-NC；F3 腕相机估力） |
 | 数据 | 同物体人–机配对灵巧抓取 | [HRDexDB](../entities/hrdexdb-dataset.md)（100+ 物体 · 多灵巧手 · 3D + 触觉） |
 | 方法 | 移动高速灵巧抓取 + 全身 RL | [FastGrasp](../entities/paper-fastgrasp-mobile-dexterous-grasping.md)（CVAE 引导 · 二值触觉 · arXiv:2604.12879） |
 | 末段精修 | 纯触觉目标条件 regrasp | [TacRefineNet](../entities/paper-tacrefinenet-tactile-grasp-refinement.md)（板/盘/杆 · Siamese · arXiv:2509.25746） |

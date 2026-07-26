@@ -13,6 +13,7 @@ related:
   - ../entities/paper-omnitactune-tactile-residual-adaptation.md
   - ../entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md
   - ../entities/paper-vtap-gripper.md
+  - ../entities/yale-openhand.md
   - ../entities/neoteai.md
   - ../entities/paper-n0-foundation.md
   - ../entities/paper-n0-twam.md
@@ -152,6 +153,7 @@ sources:
 - [Hybrid Force-Position Control](./hybrid-force-position-control.md)
 - [Visuo-Tactile Fusion](./visuo-tactile-fusion.md)
 - [NeoteAI 𝒩₀-Foundation / TWAM](../entities/neoteai.md) — NeoReal/NeoSim 接触套件 + 触觉原生 WAM
+- [Yale OpenHand Model F3](../entities/yale-openhand.md) — 腕相机形变估力、免 FT 力控擦拭/插销/书法（硬件已开源，力估论文审稿中）
 - [Query：接触丰富操作实践指南](../queries/contact-rich-manipulation-guide.md)
 - [DAPL 杂乱场景外在灵巧](../entities/paper-dapl-extrinsic-dexterity-clutter.md)
 
