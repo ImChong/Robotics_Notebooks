@@ -140,4 +140,4 @@
 ### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：1859/1887 (99%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1860/1888 (99%) wiki/entity 页有 ingest 来源

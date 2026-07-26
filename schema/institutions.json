@@ -198,6 +198,13 @@
         "unitree-a1"
       ]
     },
+    "ultralytics": {
+      "label": "超光速视觉（Ultralytics）",
+      "aliases": [
+        "ultralytics",
+        "ultralytics-yolo"
+      ]
+    },
     "unity-technologies": {
       "label": "实时三维引擎商（Unity Technologies）",
       "aliases": [

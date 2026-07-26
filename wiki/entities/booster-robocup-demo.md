@@ -3,13 +3,16 @@
 type: entity
 tags: [humanoid, robocup, ros2, booster-robotics, perception, rl, booster]
 status: drafting
-updated: 2026-06-25
+updated: 2026-07-26
 related:
   - ./robot-lab.md
   - ../concepts/ros2-basics.md
   - ../methods/auto-labeling-pipelines.md
+  - ./ultralytics.md
+  - ../tasks/humanoid-soccer.md
 sources:
   - ../../sources/repos/booster-robocup-demo.md
+  - ../../sources/repos/ultralytics.md
 summary: "Booster Robotics RoboCup Demo 是专为 Booster 系列人形机器人设计的足球比赛自主决策框架，集成了 YOLOv8 感知与基于强化学习的视觉踢球算法。"
 ---
 
@@ -31,7 +34,7 @@ summary: "Booster Robotics RoboCup Demo 是专为 Booster 系列人形机器人�
 该系统基于 **ROS 2 Humble** 构建，采用了典型的感知-决策-执行分层架构：
 
 ### 1. 感知层 (`vision`)
-- **目标检测**: 使用 **YOLOv8** 模型实时识别足球、机器人对手/队友及场地边线。
+- **目标检测**: 使用 **YOLOv8**（[Ultralytics](./ultralytics.md) 谱系）模型实时识别足球、机器人对手/队友及场地边线。
 - **坐标变换**: 将 2D 图像坐标通过相机外参及地面约束转换为机器人坐标系下的 3D 位姿。
 - **推理优化**: 在真机端（NVIDIA Orin）使用 **TensorRT** 加速，仿真端支持 ONNX Runtime。
 
