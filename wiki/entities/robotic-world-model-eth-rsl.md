@@ -3,14 +3,16 @@
 type: entity
 tags: [world-models, model-based-rl, isaac-lab, anymal, eth-rsl, open-source, dynamics-model, offline-rl, eth]
 status: complete
-updated: 2026-07-15
+updated: 2026-07-26
 related:
+  - ../overview/wam-motion-control-five-paths.md
   - ../methods/model-based-rl.md
   - ../methods/generative-world-models.md
   - ./isaac-gym-isaac-lab.md
   - ./anymal.md
   - ../concepts/latent-imagination.md
 sources:
+  - ../../sources/blogs/wechat_embodied_ai_lab_wam_motion_control_five_paths.md
   - ../../sources/repos/leggedrobotics_robotic_world_model.md
   - ../../sources/repos/leggedrobotics_robotic_world_model_lite.md
 summary: "ETH RSL 的 Robotic World Model（RWM）与 Uncertainty-Aware RWM（RWM-U）：在 Isaac Lab 中联训神经动力学与 PPO，并支持在线或纯离线想象 rollout 训练模型基策略；Lite 仓剥离仿真仅保留离线管线与 Colab 入口。"

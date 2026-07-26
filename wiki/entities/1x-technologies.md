@@ -3,14 +3,19 @@
 type: entity
 tags: [hardware, humanoid, industry, teleoperation, 1x-technologies]
 status: complete
-updated: 2026-05-07
+updated: 2026-07-26
 related:
+  - ../overview/wam-motion-control-five-paths.md
+  - ./paper-1xwm-redwood-world-model.md
   - ./humanoid-robot.md
   - ./figure-ai.md
   - ../queries/humanoid-hardware-selection.md
   - ../tasks/loco-manipulation.md
 sources:
+  - ../../sources/blogs/wechat_embodied_ai_lab_wam_motion_control_five_paths.md
+  - ../../sources/papers/1x_world_model_redwood.md
   - ../../sources/repos/1x-technologies.md
+  - ../../sources/repos/1xgpt.md
 summary: "1X Technologies（前身为 Halodi Robotics）是一家挪威与美国双总部的通用人形机器人公司，产品覆盖轮式人形 EVE 与面向家庭场景的双足 NEO，强调真实世界部署数据与 AI 能力迭代。"
 ---
 
@@ -51,6 +56,8 @@ summary: "1X Technologies（前身为 Halodi Robotics）是一家挪威与美国
 
 ## 关联页面
 
+- [1X World Model（1XWM）](./paper-1xwm-redwood-world-model.md)
+- [WAM×运动控制五路径](../overview/wam-motion-control-five-paths.md)
 - [人形机器人](./humanoid-robot.md)
 - [Figure AI](./figure-ai.md)（美国人形与 VLA 路线的可比节点）
 - [Query：人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)
@@ -59,6 +66,8 @@ summary: "1X Technologies（前身为 Halodi Robotics）是一家挪威与美国
 ## 参考来源
 
 - [1X Technologies 原始资料](../../sources/repos/1x-technologies.md)
+- [1XWM 技术报告归档](../../sources/papers/1x_world_model_redwood.md)
+- [1xgpt Challenge 归档](../../sources/repos/1xgpt.md)
 
 ## 推荐继续阅读
 

@@ -2,16 +2,18 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, loco-manip-contact-survey, world-model, underactuated-objects, privileged-training, sim2real, unitree-g1, rss2026, tsinghua, hkust-gz, eth, xiaomi]
 status: complete
-updated: 2026-07-22
+updated: 2026-07-26
 arxiv: "2602.11758"
 venue: "RSS 2026"
 related:
+  - ../overview/wam-motion-control-five-paths.md
   - ../methods/haic.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/loco-manip-contact-category-05-vla-world-models.md
   - ../methods/model-based-rl.md
   - ../concepts/privileged-training.md
 sources:
+  - ../../sources/blogs/wechat_embodied_ai_lab_wam_motion_control_five_paths.md
   - ../../sources/papers/humanoid_rl_stack_38_haic_humanoid_agile_object_interaction_control_v.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md

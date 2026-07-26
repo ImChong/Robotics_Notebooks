@@ -1,13 +1,108 @@
 {
   "generated_at": "2026-07-26",
-  "node_count": 1891,
-  "edge_count": 16131,
+  "node_count": 1895,
+  "edge_count": 16191,
   "coverage": {
-    "covered": 1839,
-    "total": 1867,
+    "covered": 1843,
+    "total": 1871,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/wam-motion-control-five-paths.md",
+      "detail_id": "wiki-overview-wam-motion-control-five-paths",
+      "label": "WAM × 人形运动控制：五种系统位置",
+      "type": "overview",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-1xwm-redwood-world-model.md",
+      "detail_id": "entity-paper-1xwm-redwood-world-model",
+      "label": "1X World Model（1XWM / Redwood 评测引擎）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-egowm-egocentric-world-model.md",
+      "detail_id": "entity-paper-egowm-egocentric-world-model",
+      "label": "EgoWM（Egocentric World Model from Internet Priors）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-unit-unified-physical-language.md",
+      "detail_id": "entity-paper-unit-unified-physical-language",
+      "label": "UniT（统一物理语言 / 潜动作分词器）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md",
+      "detail_id": "entity-paper-hrl-stack-33-ego_vision_world_model_for_humanoid",
+      "label": "Ego-VCP（Ego-Vision World Model for Humanoid Contact Planning）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/robotic-world-model-eth-rsl.md",
+      "detail_id": "entity-robotic-world-model-eth-rsl",
+      "label": "Robotic World Model（ETH RSL：RWM / RWM-U）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/lift-humanoid.md",
+      "detail_id": "entity-lift-humanoid",
+      "label": "LIFT（人形大规模预训练 + 高效微调）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-haic.md",
+      "detail_id": "entity-paper-haic",
+      "label": "HAIC",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/being-h07.md",
+      "detail_id": "wiki-methods-being-h07",
+      "label": "Being-H0.7（潜空间世界–动作模型）",
+      "type": "method",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/overview/topic-actuator-drive-chain.md",
       "detail_id": "wiki-overview-topic-actuator-drive-chain",
@@ -123,120 +218,26 @@
       "action": "added",
       "has_repo": true,
       "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/concepts/halbach-array.md",
-      "detail_id": "wiki-concepts-halbach-array",
-      "label": "Halbach Array（哈尔巴赫阵列）",
-      "type": "concept",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-mallinson-one-sided-fluxes.md",
-      "detail_id": "entity-paper-mallinson-one-sided-fluxes",
-      "label": "One-sided fluxes — A magnetic curiosity?（Mallinson 1973）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-halbach-permanent-multipole-magnets.md",
-      "detail_id": "entity-paper-halbach-permanent-multipole-magnets",
-      "label": "Design of permanent multipole magnets with oriented REC（Halbach 1980）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-zhu-howe-halbach-pm-machines-review.md",
-      "detail_id": "entity-paper-zhu-howe-halbach-pm-machines-review",
-      "label": "Halbach permanent magnet machines and applications（Zhu & Howe 2001）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/femm.md",
-      "detail_id": "entity-femm",
-      "label": "FEMM（Finite Element Method Magnetics）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/pyleecan.md",
-      "detail_id": "entity-pyleecan",
-      "label": "PYLEECAN（径向磁通电机开源设计框架）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/comparisons/motor-em-simulation-software.md",
-      "detail_id": "wiki-comparisons-motor-em-simulation-software",
-      "label": "电机电磁与多物理场仿真软件选型",
-      "type": "comparison",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/mit-mini-cheetah.md",
-      "detail_id": "entity-mit-mini-cheetah",
-      "label": "MIT Mini Cheetah（学习栈与开源边界）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-low-cost-modular-actuator-katz.md",
-      "detail_id": "entity-paper-low-cost-modular-actuator-katz",
-      "label": "A Low Cost Modular Actuator for Dynamic Robots（Katz / Mini Cheetah）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/topic-actuator-drive-chain.md",
-    "detail_id": "wiki-overview-topic-actuator-drive-chain",
-    "label": "执行器驱动链选型闭环（专题汇总）",
+    "path": "wiki/overview/wam-motion-control-five-paths.md",
+    "detail_id": "wiki-overview-wam-motion-control-five-paths",
+    "label": "WAM × 人形运动控制：五种系统位置",
     "type": "overview",
-    "recency": "2026-07-25",
+    "recency": "2026-07-26",
     "source": "log.md",
     "action": "added",
-    "has_repo": true
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 369
+      "size": 374
     },
     {
       "label": "人形论文深读笔记",
-      "size": 212
+      "size": 211
     },
     {
       "label": "移动操作",
@@ -275,7 +276,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 333,
+      "degree": 334,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -291,7 +292,7 @@
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
-      "degree": 291,
+      "degree": 292,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
@@ -325,11 +326,12 @@
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
-      "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
-      "label": "人形机器人 RL 运动控制：身体系统栈视角",
-      "type": "overview",
+      "detail_id": "wiki-concepts-whole-body-control",
+      "label": "Whole-Body Control (WBC，全身控制)",
+      "type": "concept",
       "degree": 181,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "top_paper_hubs": [
@@ -356,6 +358,13 @@
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
+      "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
+      "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
+      "type": "entity",
+      "degree": 49,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",
       "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
       "type": "entity",
@@ -367,13 +376,6 @@
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
       "degree": 46
-    },
-    {
-      "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
-      "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
-      "type": "entity",
-      "degree": 44,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "detail_id": "entity-paper-twist2",

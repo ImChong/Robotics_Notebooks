@@ -1,5 +1,18 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-26] ingest | sources/blogs/wechat_embodied_ai_lab_wam_motion_control_five_paths.md — 人形运动控制进入 WAM 的五种系统位置；补齐缺失论文实体并复用已有非 stub 节点
+
+- **来源归档：** [`sources/blogs/wechat_embodied_ai_lab_wam_motion_control_five_paths.md`](sources/blogs/wechat_embodied_ai_lab_wam_motion_control_five_paths.md)（Agent Reach v1.5.0 + wechat-article-for-ai；<https://mp.weixin.qq.com/s/2pP9LWlsTmTAgTglFuLwSA>）
+- **主升格：** [`wiki/overview/wam-motion-control-five-paths.md`](wiki/overview/wam-motion-control-five-paths.md) — ①在线规划 ②模型式 RL/适配 ③内部动力学估计 ④未来进策略 ⑤评估与动作表示
+- **新建论文实体（原先缺失）：**
+  - [`wiki/entities/paper-1xwm-redwood-world-model.md`](wiki/entities/paper-1xwm-redwood-world-model.md) ← [`sources/papers/1x_world_model_redwood.md`](sources/papers/1x_world_model_redwood.md) + site/repo
+  - [`wiki/entities/paper-egowm-egocentric-world-model.md`](wiki/entities/paper-egowm-egocentric-world-model.md) ← arXiv:2601.15284
+  - [`wiki/entities/paper-unit-unified-physical-language.md`](wiki/entities/paper-unit-unified-physical-language.md) ← arXiv:2604.19734
+- **加厚复用（不新建重复节点）：** [`wiki/entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md`](wiki/entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md)（Ego-VCP，arXiv:2510.11682，MIT 开源）
+- **复用已有 complete 节点：** RWM-U [`robotic-world-model-eth-rsl.md`](wiki/entities/robotic-world-model-eth-rsl.md)、LIFT [`lift-humanoid.md`](wiki/entities/lift-humanoid.md)、HAIC [`paper-haic.md`](wiki/entities/paper-haic.md)、MotionWAM、Being-M0.7、Being-H0.7（[`methods/being-h07.md`](wiki/methods/being-h07.md)）
+- **开源核查：** Ego-VCP / UniT **已开源**；EgoWM **部分**；1XWM 完整评测栈未全开源（公开 1xgpt Challenge）
+- **交叉：** WAM 概念页、训练闭环 taxonomy、1X Technologies 实体互链；`panniantong_agent_reach` 维护备注追加本篇
+
 ## [2026-07-25] structural | 图谱页新增「执行器驱动链」专题视图（v30 P3① 完成）—— topic-filters.js + graph.html chip + 新建枢纽页 topic-actuator-drive-chain.md
 
 - **执行清单推进：** [`docs/checklists/tech-stack-next-phase-checklist-v30.md`](docs/checklists/tech-stack-next-phase-checklist-v30.md) P3① 打勾——「执行器驱动链」专题视图落地，收口 V30 驱动链选型闭环知识链的交互层。
