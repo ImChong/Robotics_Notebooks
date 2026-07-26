@@ -2,11 +2,12 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
 status: planned
-updated: 2026-06-26
+updated: 2026-07-26
 arxiv: "2411.01919"
 related:
   - ../overview/paper-notebook-category-05-locomotion.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ../queries/go2-3d-semantic-mapping-sam-pipeline.md
 sources:
   - ../../sources/papers/humanoid_pnb_real-time-polygonal-semantic-mapping-for-humanoi.md
 summary: "Real-Time Polygonal Semantic Mapping for Humanoid Robot Stair Climbing：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
@@ -50,6 +51,7 @@ Real-Time Polygonal Semantic Mapping for Humanoid Robot Stair Climbing 的人形
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- **勿与 GO2+SAM 流水线混同**：本页仍是「待深读」占位；若问题是 **GO2 运动点云质量 + SAM 2D→3D**，先读 [GO2 三维语义建图与 SAM 流水线](../queries/go2-3d-semantic-mapping-sam-pipeline.md)。
 
 ## 参考来源
 

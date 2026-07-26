@@ -37,6 +37,7 @@
 - [Atom01 Hardware](wiki/entities/atom01-hardware.md) — Atom01_hardware** 是 Roboparty Atom01 机器人的硬件主仓库，负责承载机械结构、电子设计与物料清单等“实体可复现”资产。 `📅unknown` `[entity_page]`
 - [Atom01 Train](wiki/entities/atom01-train.md) — atom01_train** 是 Roboparty Atom01 项目的训练主仓库，聚焦 IsaacLab 场景下的策略学习、实验配置与迁移链路。 `📅unknown` `[entity_page]`
 - [AutoDL](wiki/entities/autodl.md) — AutoDL**（autodl.com）是国内 **GPU 算力租赁与炼丹** 平台：用 Docker 容器把物理机的 1–N 块 GPU 租 `📅unknown` `[entity_page]`
+- [autonomy_stack_go2](wiki/entities/autonomy-stack-go2.md) — autonomy_stack_go2**（[jizhang-cmu/autonomy_stack_go2](https://github.com/jizhang-cmu/autonomy_stac `📅unknown` `[entity_page]`
 - [Autoware](wiki/entities/autoware.md) — Autoware**（autowarefoundation/autoware）由 Autowar `📅unknown` `[entity_page]`
 - [Awesome Text-to-Motion（Zilize 精选集）](wiki/entities/awesome-text-to-motion-zilize.md) — Awesome Text-to-Motion**（GitHub 仓名 `awesome-text-to-motion`）是一份 **文本驱动人体运动生成** 的 curated 列表：按 **Su `📅unknown` `[entity_page]`
 - [AWS EC2 GPU](wiki/entities/aws-ec2-gpu.md) — Amazon EC2 GPU 实例**是 AWS 弹性计算中的 **NVIDIA GPU 虚拟机**产品线，从入门级 **g4dn（T4）** 到 **p5（H100）** / **p5e（H20 `📅unknown` `[entity_page]`
@@ -61,6 +62,7 @@
 - [Cartographer](wiki/entities/cartographer.md) — Cartographer** 是 Google 开源的 **子图 SLAM** 系统，支持 2D/3D 激光与多传感器配置。 `📅unknown` `[entity_page]`
 - [Caveman](wiki/entities/caveman.md) — Caveman** 是 JuliusBrussee/caveman 仓库分发的 **编码代理输出压缩技能/插 `📅unknown` `[entity_page]`
 - [青瞳视觉（CHINGMU Vision）](wiki/entities/chingmu.md) — 青瞳视觉**（en.chingmu.com，上海青瞳视觉科技有限公司）是国内 **光学动作捕捉（MoCap）全栈自研** 供应商：自 **20 `📅unknown` `[entity_page]`
+- [CMU MSCV Semantic 3D Mapping](wiki/entities/cmu-mscv-semantic-3d-mapping.md) — CMU MSCV Semantic 3D Mapping**（[F23 Team 17 项目页](https://mscvprojects.ri.cmu.edu/f23team17/sample- `📅unknown` `[entity_page]`
 - [Cosmos 3（NVIDIA 全模态世界模型）](wiki/entities/cosmos-3.md) — Cosmos 3**（2026-06，arXiv:2606.02800，[项目页](https://research.nvi `📅unknown` `[entity_page]`
 - [Crazyflie Firmware](wiki/entities/crazyflie-firmware.md) — crazyflie-firmware**（[bitcraze/crazyflie-firmware](https://github.com/bitcraze/crazyflie-firmware `📅unknown` `[entity_page]`
 - [Crazyswarm2](wiki/entities/crazyswarm2.md) — Crazyswarm2**（IMRCLab/crazyswarm2）在 **[Crazyflie 固件](./c `📅unknown` `[entity_page]`
@@ -86,6 +88,7 @@
 - [dm_control（DeepMind Control Suite 与 MuJoCo Python 栈）](wiki/entities/dm-control.md) — dm_control** 指 GitHub 上的 [`google-deepmind/dm_control`](https://github.com/google-deepmind/dm_cont `📅unknown` `[entity_page]`
 - [Drake (机器人工具箱)](wiki/entities/drake.md) — Drake** 是由丰田研究院（Toyota Research Institute, TRI）主导开发，由 Russ Tedrake（MIT 教授）团队深度参与的核心开源机器人软件库。它并非单纯的 `📅unknown` `[entity_page]`
 - [DreamWaQ++（障碍感知四足多模态强化学习）](wiki/entities/dreamwaq-plus.md) — DreamWaQ++**（Nahrendra et al., arXiv:2409.19709，**IEEE T-RO 20 `📅unknown` `[entity_page]`
+- [DualMap](wiki/entities/dualmap.md) — DualMap**（Eku127/DualMap，RAL 2025）是面向动态环境的 **在线开放词汇语义建图** 与自然 `📅unknown` `[entity_page]`
 - [easy_quadruped（Pupper 控制栈 + MuJoCo 闭环）](wiki/entities/easy-quadruped.md) — easy_quadruped** 是在 [StanfordQuadruped](https://github.com/stanfordroboticsclub/StanfordQuadruped `📅unknown` `[entity_page]`
 - [EGO-Planner Swarm](wiki/entities/ego-planner-swarm.md) — EGO-Planner Swarm**（[ZJU-FAST-Lab/ego-planner-swarm](https://github.com/ZJU-FAST-Lab/ego-planner-s `📅unknown` `[entity_page]`
 - [EgoWorld-100W（百万级自中心操作数据集）](wiki/entities/egoworld-100w.md) — EgoWorld-100W** 是 星际硅途（StellarNex Robotics） 发布的 **头戴第一人称操作视频**  `📅2026-07-24` `[entity_page]`
@@ -104,6 +107,7 @@
 - [FEMM-FOC-Simulation（FEMM 磁场定向控制教学仿真）](wiki/entities/femm-foc-simulation.md) — FEMM-FOC-Simulation**（[yoga-cycle/FEMM-FOC-Simulation](https://github.com/yoga-cycle/FEMM-FOC-Simu `📅unknown` `[entity_page]`
 - [FEMM（Finite Element Method Magnetics）](wiki/entities/femm.md) — FEMM**（femm.info，作者 David C. Meeker）是面向 **2D 与轴对称 `📅unknown` `[entity_page]`
 - [Figure AI](wiki/entities/figure-ai.md) — Figure AI** 构建「全栈人形」：**Figure 系列硬件** + **Helix 系列 VLA 模型**，目标是在真实家庭与物流场景中完成语言条件下的全身操作与移动。 `📅unknown` `[entity_page]`
+- [FindAnything](wiki/entities/findanything.md) — FindAnything**（项目页，arXiv:2504.08603）是面向机器人探索的 **开放词汇、对 `📅unknown` `[entity_page]`
 - [Flexion × Niantic Spatial × NVIDIA：RGB 导航 Sim2Real 管线](wiki/entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [Flexion Reflect v1.0（长程人形自主平台）](wiki/entities/flexion-reflect-v1.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [Flightmare](wiki/entities/flightmare.md) — Flightmare**（uzh-rpg/flightmare）是苏黎世大学 **Robotics and Per `📅unknown` `[entity_page]`
@@ -277,6 +281,8 @@
 - [OpenVSLAM](wiki/entities/openvslam.md) — OpenVSLAM** 强调 **模块可替换** 的视觉 SLAM 框架（特征、回环、优化器可插拔）。 `📅unknown` `[entity_page]`
 - [ORB-SLAM3](wiki/entities/orb-slam3.md) — ORB-SLAM3** 是学术与工程界广泛引用的 **视觉/视觉-惯性 SLAM** 开源库。 `📅unknown` `[entity_page]`
 - [Orca Hand（虎鲸巧手）](wiki/entities/orca-hand.md) — Orca Hand** 是一套面向 **仿生灵巧手** 复刻与二次开发的开源硬件/软件栈：**orcahand.com** 提供 CAD、 `📅unknown` `[entity_page]`
+- [OV-SAM3D](wiki/entities/ov-sam3d.md) — OV-SAM3D**（HanchenTai/OV-SAM3D）是 **无需针对场景训练** 的开放词汇三维场景理 `📅unknown` `[entity_page]`
+- [OVO（Open-Vocabulary Online Semantic Mapping）](wiki/entities/ovo-semantic-mapping.md) — OVO**（tberriel/OVO，MIT）把 **开放词汇在线 3D 语义映射** 接到视觉 SLAM 骨干上。 `📅unknown` `[entity_page]`
 - [PAN Motion Retargeting](wiki/entities/pan-motion-retargeting.md) — pan-motion-retargeting**（<https://github.com/hlcdyy/pan-motion-retargeting>）是 TVCG 2023 论文 [*Pose- `📅unknown` `[entity_page]`
 - [1X World Model（1XWM / Redwood 评测引擎）](wiki/entities/paper-1xwm-redwood-world-model.md) — 1X World Model（1XWM）**（技术报告 *1X World Model: Evaluating Bits, not Atoms*；发现页挂在 [Redwood AI World M `📅unknown` `[entity_page]`
 - [3D-IC（3D Interaction Chains · Joint Navigation and Manipulation Planning）](wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md) — 3D-IC**（*Joint Navigation and Manipulation Planning with 3D Interaction Chains*，Zhang 等，ICML 2026  `📅unknown` `[entity_page]`

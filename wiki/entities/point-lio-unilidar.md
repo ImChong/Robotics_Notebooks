@@ -2,15 +2,18 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, lidar, slam, localization]
 status: complete
-updated: 2026-07-24
+updated: 2026-07-26
 related:
   - ./unitree.md
   - ./unilidar-sdk2.md
+  - ./autonomy-stack-go2.md
   - ../tasks/locomotion.md
   - ../concepts/sim2real.md
+  - ../queries/go2-3d-semantic-mapping-sam-pipeline.md
 sources:
   - ../../sources/repos/point_lio_unilidar.md
   - ../../sources/repos/unitree.md
+  - ../../sources/repos/autonomy_stack_go2.md
 summary: "point_lio_unilidar 将 Point-LIO 适配到 Unitree L1/L2 雷达，提供高带宽激光惯性里程计与建图能力；推荐 Ubuntu 20.04 + ROS Noetic。"
 ---
 
@@ -55,20 +58,25 @@ summary: "point_lio_unilidar 将 Point-LIO 适配到 Unitree L1/L2 雷达，提�
 - 低速平台假设：高速或极端运动需重调参数。
 - ROS1 Noetic 栈与实验室 ROS2 主线并存时，注意桥接成本。
 - 建图质量强烈依赖外参与时间同步，需按 SDK 坐标定义校准。
+- **运动时重影/墙面变厚**：优先查时间同步、逐点时间戳、去畸变、外参与 IMU 初始化，再谈叠加 SAM 语义；见 [GO2 三维语义建图 Query](../queries/go2-3d-semantic-mapping-sam-pipeline.md)。
 
 ## 关联页面
 
 - [UniLidar SDK](./unilidar-sdk2.md)
+- [autonomy_stack_go2](./autonomy-stack-go2.md)
 - [Locomotion](../tasks/locomotion.md)
 - [Unitree](./unitree.md)
+- [GO2 三维语义建图与 SAM 流水线](../queries/go2-3d-semantic-mapping-sam-pipeline.md)
 
 ## 参考来源
 
 - [sources/repos/point_lio_unilidar.md](../../sources/repos/point_lio_unilidar.md)
+- [sources/repos/autonomy_stack_go2.md](../../sources/repos/autonomy_stack_go2.md) — CMU GO2 几何自主导航栈中的 Point-LIO 用法
 - Point-LIO 论文：<https://onlinelibrary.wiley.com/doi/epdf/10.1002/aisy.202200459>
 - 上游：<https://github.com/unitreerobotics/point_lio_unilidar>
 
 ## 推荐继续阅读
 
 - Point-LIO 官方仓：<https://github.com/hku-mars/Point-LIO>
+- CMU `autonomy_stack_go2`：<https://github.com/jizhang-cmu/autonomy_stack_go2>
 
