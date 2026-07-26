@@ -1,5 +1,14 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-25] structural | 图谱页新增「执行器驱动链」专题视图（v30 P3① 完成）—— topic-filters.js + graph.html chip + 新建枢纽页 topic-actuator-drive-chain.md
+
+- **执行清单推进：** [`docs/checklists/tech-stack-next-phase-checklist-v30.md`](docs/checklists/tech-stack-next-phase-checklist-v30.md) P3① 打勾——「执行器驱动链」专题视图落地，收口 V30 驱动链选型闭环知识链的交互层。
+- **单一事实源：** [`docs/topic-filters.js`](docs/topic-filters.js) 新增 `actuator-drive-chain` 专题（第 20 项），三处联动：`TOPIC_HUB_IDS`（枢纽页路径）、`TOPIC_FILTERS`（`segments = actuator / foc` 干净片段 + 14 条 `ids` 显式纳入 EDA/FOC/建模/总线四层驱动链页）、`TOPIC_META`（⚡ emoji + 中英标签 + 四层导读）。与 communication（总线）/ physics-fidelity（执行器建模）保持最小重叠。
+- **图谱 chip：** [`docs/graph.html`](docs/graph.html) `#filter-topic-chips` 追加「⚡ 执行器驱动链 (Actuator Drive Chain)」按钮，紧随「具身评测基准」。
+- **新建枢纽页：** [`wiki/overview/topic-actuator-drive-chain.md`](wiki/overview/topic-actuator-drive-chain.md) —— 四层驱动链（EDA 电路设计 → FOC 驱动固件 → 执行器建模/摩擦辨识 → 实时总线闭环）统一入口，含一句话定义、缩写速查、四层选型表、关键取舍、跨专题关系；从 [`queries/actuator-drive-chain-selection-loop.md`](wiki/queries/actuator-drive-chain-selection-loop.md) `related` + 「所属专题」行双向回链消孤儿。
+- **验证：** Node harness 校验 simplefoc/kicad/bam 命中该专题、grasp 页不命中；`make lint` 0 errors / 0 孤儿；`make export graph` 后 `graph-stats.json`：节点 1891、边 16127、16 社区、`largest_community_ratio 0.195 ≤ 0.25`、`community_quality_warning: false`、0 orphans。
+- **待补：** 专题视图截图归档（`.cursor-artifacts/screenshots/graph-topic-actuator-drive-chain.png`，`.gitignore` 屏蔽，PR 时补）；P3② 详情页「同专题相关页」徽标已随单一事实源自动联动，端到端验证留待下一轮。
+
 ## [2026-07-25] ingest | sources/repos/bavaria_direct_winding_calculator.md — Bavaria Direct 绕组方案计算器（Bewicklungsrechner XL）standalone 源码；新建 wiki/entities/bavaria-direct-winding-calculator.md 详解算法原理
 
 - **来源归档：** [`sources/repos/bavaria_direct_winding_calculator.md`](sources/repos/bavaria_direct_winding_calculator.md) — 用户上传的 standalone 离线包（`winding_calc.shtml` + 2005 行 JS + 2 个 CSS），(C) 2010 Felix Niessen，GPLv3，上游为 POWERCROCO 2004 版

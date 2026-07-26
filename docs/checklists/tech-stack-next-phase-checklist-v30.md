@@ -43,8 +43,8 @@
 
 ## P3: 交互层"执行器驱动链"增强 (UX/UI)
 
-- [ ] **图谱页"执行器驱动链"专题视图**：
-    - [ ] `docs/topic-filters.js` 单一事实源新增「执行器驱动链」专题（`actuator-drive-chain`，⚡ emoji），复用 path 片段并集机制（`actuator` / `foc` 等干净片段，与既有专题保持最小重叠）并用 `ids` 显式纳入未被片段命中的驱动链页（`actuator-drive-chain-selection-loop` / `torque-source-abstraction-gap` / `kicad` / `altium-designer` / `simplefoc` / `ethercat-protocol` / `motor-torque-current-curve` / `motor-torque-speed-curve` / `planetary-roller-screw-humanoid-leg-actuation` 等）；同步在 `docs/graph.html` `#filter-topic-chips` 增加对应 chip。专题汇总枢纽页 `wiki/overview/topic-actuator-drive-chain.md` 已建（从相关驱动链/query 页交叉回链），`graph-stats.json` 0 orphans。专题视图落稳后截图归档至 `.cursor-artifacts/screenshots/graph-topic-actuator-drive-chain.png`。
+- [x] **图谱页"执行器驱动链"专题视图**：
+    - [x] `docs/topic-filters.js` 单一事实源新增「执行器驱动链」专题（`actuator-drive-chain`，⚡ emoji），复用 path 片段并集机制（`actuator` / `foc` 等干净片段，与既有专题保持最小重叠）并用 `ids` 显式纳入未被片段命中的驱动链页（`actuator-drive-chain-selection-loop` / `torque-source-abstraction-gap` / `kicad` / `altium-designer` / `simplefoc` / `ethercat-protocol` / `motor-torque-current-curve` / `motor-torque-speed-curve` / `planetary-roller-screw-humanoid-leg-actuation` 等）；同步在 `docs/graph.html` `#filter-topic-chips` 增加对应 chip。专题汇总枢纽页 `wiki/overview/topic-actuator-drive-chain.md` 已建（从相关驱动链/query 页交叉回链），`graph-stats.json` 0 orphans。专题视图落稳后截图归档至 `.cursor-artifacts/screenshots/graph-topic-actuator-drive-chain.png`。**（2026-07-25 完成：`topic-filters.js` 新增 `actuator-drive-chain` 专题（`TOPIC_HUB_IDS`/`TOPIC_FILTERS`/`TOPIC_META` 三处，⚡ emoji，segments=`actuator`/`foc` + 14 条 ids 显式纳入四层驱动链页），`graph.html` `#filter-topic-chips` 增第 20 个 chip；新建枢纽页 `wiki/overview/topic-actuator-drive-chain.md` 并从 `queries/actuator-drive-chain-selection-loop.md` 双向回链消孤儿。Node harness 验证 simplefoc/kicad/bam 命中、grasp 页不命中；`make lint` 0 errors、0 孤儿，`make export graph` 后节点 1891 / 边 16127 / 16 社区 / `largest_community_ratio 0.195 ≤ 0.25` / `community_quality_warning: false` / 0 orphans。截图归档待 PR 时补（`.cursor-artifacts/` 不入库）。）**
 - [ ] **详情页"同专题相关页"提示**：
     - [ ] 复用 `docs/topic-filters.js` 单一事实源（`renderMetaTopicBadges` → `topicsForNode` 已数据驱动），驱动链/新建页命中「执行器驱动链」专题时自动渲染对应轻量徽标 + 跳转 `graph.html?topic=actuator-drive-chain`（空态降级隐藏）。P3① 把 `actuator-drive-chain` 写入单一事实源后，详情页「所属专题」徽标行即自动联动；选一页驱动链实体页端到端验证并归档截图至 `.cursor-artifacts/screenshots/detail-topic-actuator-drive-chain.png`。
 
@@ -52,11 +52,11 @@
 
 ## 验收标准 (Definition of DoD)
 
-- [ ] `make lint`: 0 errors（新引入的 `actuator_drive_chain_crosslink` 为 INFO 级，不阻塞 CI）。
-- [ ] 知识图谱节点数 **≥ 1698**，边数 **≥ 13580**（见 `exports/graph-stats.json`）。
+- [x] `make lint`: 0 errors（新引入的 `actuator_drive_chain_crosslink` 为 INFO 级，不阻塞 CI）。**（2026-07-25 复核：0 errors、27 条信息型预警、0 孤儿）**
+- [x] 知识图谱节点数 **≥ 1698**，边数 **≥ 13580**（见 `exports/graph-stats.json`）。**（2026-07-25：1891 节点 / 16127 边）**
 - [x] 事实库扩展至 **250 条**（补齐 理想力矩源 vs 摩擦实际 / 峰值 vs 持续力矩热约束 / 总线周期 ≠ 闭环带宽 等 10 条驱动链选型矛盾检测规则）。**（2026-07-24 完成，`make lint` 0 errors、潜在矛盾 0 个）**
-- [ ] `community_quality_warning` 保持 `false` 且 `largest_community_ratio ≤ 0.25`。
-- [ ] `log.md` 记录 V30 关键改动。
+- [x] `community_quality_warning` 保持 `false` 且 `largest_community_ratio ≤ 0.25`。**（2026-07-25：0.195 ≤ 0.25，warning false）**
+- [x] `log.md` 记录 V30 关键改动。**（2026-07-25：新增 structural 条目记录「执行器驱动链」专题视图落地）**
 
 ---
 

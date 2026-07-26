@@ -32,7 +32,8 @@
     'physics-fidelity': 'wiki/overview/topic-physics-fidelity.md',
     'contact-force-control': 'wiki/overview/topic-contact-force-control.md',
     'embodied-foundation-model': 'wiki/overview/topic-embodied-foundation-model.md',
-    'embodied-eval-benchmark': 'wiki/overview/topic-embodied-eval-benchmark.md'
+    'embodied-eval-benchmark': 'wiki/overview/topic-embodied-eval-benchmark.md',
+    'actuator-drive-chain': 'wiki/overview/topic-actuator-drive-chain.md'
   };
 
   function hubIdSet(key) {
@@ -228,6 +229,31 @@
         'wiki/entities/paper-gigaworld-1-policy-evaluation.md',
         'wiki/concepts/simulation-evaluation-infrastructure.md'
       ]))
+    },
+    'actuator-drive-chain': {
+      /* 执行器驱动链选型闭环（EDA 电路 → FOC 固件 → 执行器建模/摩擦辨识 → 实时总线）。
+         片段取干净的 `actuator` / `foc`（命中执行器建模页与 FOC 驱动页），未被片段
+         命中的四层驱动链页（EDA 工具、总线协议、电机曲线、传动等）用 ids 显式纳入；
+         与 communication（总线）/ physics-fidelity（执行器建模）保持最小重叠。 */
+      segments: new Set([
+        'actuator', 'foc'
+      ]),
+      ids: mergeIds('actuator-drive-chain', new Set([
+        'wiki/queries/actuator-drive-chain-selection-loop.md',
+        'wiki/concepts/torque-source-abstraction-gap.md',
+        'wiki/concepts/implicit-explicit-actuator-modeling.md',
+        'wiki/concepts/ethercat-protocol.md',
+        'wiki/concepts/field-oriented-control.md',
+        'wiki/concepts/joint-friction-models.md',
+        'wiki/concepts/motor-torque-current-curve.md',
+        'wiki/concepts/motor-torque-speed-curve.md',
+        'wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md',
+        'wiki/entities/kicad.md',
+        'wiki/entities/altium-designer.md',
+        'wiki/entities/simplefoc.md',
+        'wiki/queries/ethercat-master-optimization.md',
+        'wiki/overview/motor-drive-firmware-bus-protocols.md'
+      ]))
     }
   };
 
@@ -346,6 +372,12 @@
       label: '具身评测基准 (Embodied Eval Benchmark)',
       wikiPath: TOPIC_HUB_IDS['embodied-eval-benchmark'],
       description: 'MLLM 认知评测→世界模型预测保真度评测→策略任务成功率评测→sim↔real 评测 gap 校准四层评测选型闭环与可复现性/真实代表性/过程 vs 结果取舍。'
+    },
+    'actuator-drive-chain': {
+      emoji: '⚡',
+      label: '执行器驱动链 (Actuator Drive Chain)',
+      wikiPath: TOPIC_HUB_IDS['actuator-drive-chain'],
+      description: 'EDA 电路设计→电机驱动固件 FOC→执行器建模与摩擦辨识→实时总线闭环集成四层驱动链选型闭环与标称 vs 实测、建模保真度 vs 辨识成本、总线周期 vs 闭环带宽取舍。'
     }
   };
 
