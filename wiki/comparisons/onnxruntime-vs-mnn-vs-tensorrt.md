@@ -2,7 +2,7 @@
 type: comparison
 tags: [deployment, inference, onnx, onnxruntime, mnn, tensorrt, edge-ai, robotics]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-26
 related:
   - ../entities/onnx.md
   - ../entities/onnxruntime.md
@@ -80,6 +80,7 @@ summary: "机器人 onboard 推理选型：ONNX 为格式契约；ORT/TRT/MNN �
 2. **纯 C++ 人形控制环（50–500 Hz）**：本库 [wbc-fsm](../../sources/repos/wbc_fsm.md)、[AMP_mjlab](../entities/amp-mjlab.md) 等已验证 **aarch64/x64 ORT** 路径。
 3. **需要 Web 演示**： [BotLab MotionCanvas](../entities/botlab-motioncanvas.md) 类 **WASM/WebGPU** 场景。
 4. **希望保留 EP 回退**：CUDA EP 失败时可回 CPU，利于开发期调试。
+5. **要压 GPU redistributable / 瘦镜像（1.28+）**：优先评估 [ORT 1.28.0](../entities/onnxruntime.md) 的 **CUDA 13 包** 与 **可选 cuDNN/cuFFT**；仍钉 CUDA 12 / JetPack 则继续 `cuda12` 资产。
 
 ### 何时优先 TensorRT？
 
@@ -161,6 +162,7 @@ flowchart TB
 
 - [ONNX 官方站点与规范索引](../../sources/repos/onnx-official.md)
 - [ONNX Runtime 官方站点与文档索引](../../sources/repos/onnxruntime-official.md)
+- [ONNX Runtime v1.28.0 Release 归档](../../sources/repos/onnxruntime-v1.28.0.md)
 - [MNN 官方文档与仓库索引](../../sources/repos/mnn-official.md)
 - [NVIDIA TensorRT 官方站点与文档索引](../../sources/repos/tensorrt-official.md)
 - [Intel OpenVINO 官方文档索引](../../sources/repos/openvino-official.md)
