@@ -7,6 +7,7 @@ related:
   - ../queries/go2-3d-semantic-mapping-sam-pipeline.md
   - ./ovo-semantic-mapping.md
   - ./ov-sam3d.md
+  - ./findanything.md
   - ../overview/navigation-slam-autonomy-stack.md
   - ./orb-slam3.md
 sources:
@@ -37,7 +38,7 @@ summary: "DualMap 是在线开放词汇语义建图系统：MobileCLIP + YOLO-Wo
 
 - 同时覆盖 **建图 + 语言导航 + 动态更新**，比「只投影 mask 到 PCD」更接近落地。
 - 有 **ROS 模式**，便于后续接到 GO2 等移动平台（需自配相机/深度与时间同步）。
-- 与 [OVO](./ovo-semantic-mapping.md)、[OV-SAM3D](./ov-sam3d.md) 形成「在线 ROS / 在线 RGB-D / 离线点云」选型三角。
+- 与 [OVO](./ovo-semantic-mapping.md)、[OV-SAM3D](./ov-sam3d.md)、[FindAnything](./findanything.md) 形成开放词汇语义选型池（FindAnything 仓仍待发布）。
 
 ## 核心信息
 
@@ -74,6 +75,7 @@ summary: "DualMap 是在线开放词汇语义建图系统：MobileCLIP + YOLO-Wo
 - [GO2 三维语义建图与 SAM 流水线](../queries/go2-3d-semantic-mapping-sam-pipeline.md)
 - [OVO](./ovo-semantic-mapping.md)
 - [OV-SAM3D](./ov-sam3d.md)
+- [FindAnything](./findanything.md)
 - [导航·SLAM 栈](../overview/navigation-slam-autonomy-stack.md)
 - [ORB-SLAM3](./orb-slam3.md)
 

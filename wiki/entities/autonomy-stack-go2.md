@@ -6,6 +6,7 @@ updated: 2026-07-26
 related:
   - ./point-lio-unilidar.md
   - ./unitree.md
+  - ./cmu-mscv-semantic-3d-mapping.md
   - ../overview/navigation-slam-autonomy-stack.md
   - ../queries/go2-3d-semantic-mapping-sam-pipeline.md
   - ./fast-lio.md
@@ -38,7 +39,7 @@ summary: "autonomy_stack_go2 是 CMU Ji Zhang 团队面向 Unitree Go2 EDU 的�
 
 - 给 GO2 一条 **可复现的几何自主导航全栈**，而不只是单独跑 LIO。
 - 展示 [point_lio_unilidar](./point-lio-unilidar.md) 如何接到地形、避障与规划。
-- 与「DETR+SAM→3D」语义路线对照时，避免把 CMU 几何栈误当成语义建图（见 [GO2 语义 Query](../queries/go2-3d-semantic-mapping-sam-pipeline.md)）。
+- 与「DETR+SAM→3D」语义路线对照时，避免把 CMU 几何栈误当成语义建图（见 [CMU MSCV Semantic 3D Mapping](./cmu-mscv-semantic-3d-mapping.md) 与 [GO2 语义 Query](../queries/go2-3d-semantic-mapping-sam-pipeline.md)）。
 
 ## 核心信息
 
@@ -76,6 +77,7 @@ summary: "autonomy_stack_go2 是 CMU Ji Zhang 团队面向 Unitree Go2 EDU 的�
 - [Unitree](./unitree.md)
 - [导航·SLAM 栈](../overview/navigation-slam-autonomy-stack.md)
 - [GO2 三维语义建图与 SAM 流水线](../queries/go2-3d-semantic-mapping-sam-pipeline.md)
+- [CMU MSCV Semantic 3D Mapping](./cmu-mscv-semantic-3d-mapping.md) — 语义投影线，勿混同
 - [FAST-LIO](./fast-lio.md)
 
 ## 参考来源

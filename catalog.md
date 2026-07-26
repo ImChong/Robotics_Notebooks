@@ -62,6 +62,7 @@
 - [Cartographer](wiki/entities/cartographer.md) — Cartographer** 是 Google 开源的 **子图 SLAM** 系统，支持 2D/3D 激光与多传感器配置。 `📅unknown` `[entity_page]`
 - [Caveman](wiki/entities/caveman.md) — Caveman** 是 JuliusBrussee/caveman 仓库分发的 **编码代理输出压缩技能/插 `📅unknown` `[entity_page]`
 - [青瞳视觉（CHINGMU Vision）](wiki/entities/chingmu.md) — 青瞳视觉**（en.chingmu.com，上海青瞳视觉科技有限公司）是国内 **光学动作捕捉（MoCap）全栈自研** 供应商：自 **20 `📅unknown` `[entity_page]`
+- [CMU MSCV Semantic 3D Mapping](wiki/entities/cmu-mscv-semantic-3d-mapping.md) — CMU MSCV Semantic 3D Mapping**（[F23 Team 17 项目页](https://mscvprojects.ri.cmu.edu/f23team17/sample- `📅unknown` `[entity_page]`
 - [Cosmos 3（NVIDIA 全模态世界模型）](wiki/entities/cosmos-3.md) — Cosmos 3**（2026-06，arXiv:2606.02800，[项目页](https://research.nvi `📅unknown` `[entity_page]`
 - [Crazyflie Firmware](wiki/entities/crazyflie-firmware.md) — crazyflie-firmware**（[bitcraze/crazyflie-firmware](https://github.com/bitcraze/crazyflie-firmware `📅unknown` `[entity_page]`
 - [Crazyswarm2](wiki/entities/crazyswarm2.md) — Crazyswarm2**（IMRCLab/crazyswarm2）在 **[Crazyflie 固件](./c `📅unknown` `[entity_page]`
@@ -106,6 +107,7 @@
 - [FEMM-FOC-Simulation（FEMM 磁场定向控制教学仿真）](wiki/entities/femm-foc-simulation.md) — FEMM-FOC-Simulation**（[yoga-cycle/FEMM-FOC-Simulation](https://github.com/yoga-cycle/FEMM-FOC-Simu `📅unknown` `[entity_page]`
 - [FEMM（Finite Element Method Magnetics）](wiki/entities/femm.md) — FEMM**（femm.info，作者 David C. Meeker）是面向 **2D 与轴对称 `📅unknown` `[entity_page]`
 - [Figure AI](wiki/entities/figure-ai.md) — Figure AI** 构建「全栈人形」：**Figure 系列硬件** + **Helix 系列 VLA 模型**，目标是在真实家庭与物流场景中完成语言条件下的全身操作与移动。 `📅unknown` `[entity_page]`
+- [FindAnything](wiki/entities/findanything.md) — FindAnything**（项目页，arXiv:2504.08603）是面向机器人探索的 **开放词汇、对 `📅unknown` `[entity_page]`
 - [Flexion × Niantic Spatial × NVIDIA：RGB 导航 Sim2Real 管线](wiki/entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [Flexion Reflect v1.0（长程人形自主平台）](wiki/entities/flexion-reflect-v1.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [Flightmare](wiki/entities/flightmare.md) — Flightmare**（uzh-rpg/flightmare）是苏黎世大学 **Robotics and Per `📅unknown` `[entity_page]`

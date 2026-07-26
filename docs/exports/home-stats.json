@@ -1,13 +1,35 @@
 {
   "generated_at": "2026-07-26",
-  "node_count": 1907,
-  "edge_count": 16337,
+  "node_count": 1909,
+  "edge_count": 16354,
   "coverage": {
-    "covered": 1855,
-    "total": 1883,
+    "covered": 1857,
+    "total": 1885,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/findanything.md",
+      "detail_id": "entity-findanything",
+      "label": "FindAnything",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/entities/cmu-mscv-semantic-3d-mapping.md",
+      "detail_id": "entity-cmu-mscv-semantic-3d-mapping",
+      "label": "CMU MSCV Semantic 3D Mapping",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
     {
       "path": "wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md",
       "detail_id": "wiki-queries-go2-3d-semantic-mapping-sam-pipeline",
@@ -202,36 +224,16 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-loco-manip-161-057-being-0.md",
-      "detail_id": "entity-paper-loco-manip-161-057-being-0",
-      "label": "Being-0",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/entities/neoteai.md",
-      "detail_id": "entity-neoteai",
-      "label": "新智具身智能（NeoteAI）",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md",
-    "detail_id": "wiki-queries-go2-3d-semantic-mapping-sam-pipeline",
-    "label": "GO2 三维语义建图与 SAM 流水线",
-    "type": "query",
+    "path": "wiki/entities/findanything.md",
+    "detail_id": "entity-findanything",
+    "label": "FindAnything",
+    "type": "entity",
     "recency": "2026-07-26",
     "source": "log.md",
-    "action": "maintained",
+    "action": "added",
     "has_repo": true,
     "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
   },

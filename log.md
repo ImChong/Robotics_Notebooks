@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-26] structural | wiki/entities/{findanything,cmu-mscv-semantic-3d-mapping}.md — 为项目页建 site/项目实体；开源仓地址与源码分析待官方发布后补
+
+- **新建：**
+  - [`wiki/entities/findanything.md`](wiki/entities/findanything.md) ← [`sources/sites/findanything.md`](sources/sites/findanything.md)（宣称并入 OKVIS2-X）
+  - [`wiki/entities/cmu-mscv-semantic-3d-mapping.md`](wiki/entities/cmu-mscv-semantic-3d-mapping.md) ← [`sources/sites/cmu-mscv-semantic-3d-mapping.md`](sources/sites/cmu-mscv-semantic-3d-mapping.md)
+- **跟进约定：** 官方放出独立仓后 → 新建 `sources/repos/`、更新实体「代码仓」行、补运行/README 分析
+- **交叉：** [`wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md`](wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md)、[`wiki/entities/autonomy-stack-go2.md`](wiki/entities/autonomy-stack-go2.md)、[`wiki/entities/dualmap.md`](wiki/entities/dualmap.md)
+
 ## [2026-07-26] structural | wiki/entities/{autonomy-stack-go2,dualmap,ovo-semantic-mapping,ov-sam3d}.md — 为本 PR 已开源仓补齐独立实体节点；回链 wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md
 
 - **新建实体：**

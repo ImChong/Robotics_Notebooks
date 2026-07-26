@@ -23,11 +23,11 @@
 |------|------|------------------------|
 | [point_lio_unilidar](../repos/point_lio_unilidar.md) | GO2 L1/L2 几何建图基线 | **已开源** |
 | [autonomy_stack_go2](../repos/autonomy_stack_go2.md) | GO2 全栈几何自主导航 | **已开源** |
-| [CMU MSCV Semantic 3D Mapping](../sites/cmu-mscv-semantic-3d-mapping.md) | DETR+SAM→3D 伪标注流水线说明 | **项目页文档**（课程项目；非完整生产栈） |
+| [CMU MSCV Semantic 3D Mapping](../sites/cmu-mscv-semantic-3d-mapping.md) | DETR+SAM→3D 伪标注流水线说明 | **项目页实体** [`wiki/entities/cmu-mscv-semantic-3d-mapping.md`](../../wiki/entities/cmu-mscv-semantic-3d-mapping.md)；独立仓待补 |
 | [DualMap](../repos/dualmap.md) | 在线开放词汇语义地图 + ROS | **已开源** |
 | [OVO](../repos/ovo-semantic-mapping.md) | 在线开放词汇语义映射 + SAM2 | **已开源** |
 | [OV-SAM3D](../repos/ov-sam3d.md) | 离线多视角 SAM→3D 实例 | **已开源** |
-| [FindAnything](../sites/findanything.md) | 对象级体素子地图；机载演示 | **宣称将并入 OKVIS2-X**（项目页） |
+| [FindAnything](../sites/findanything.md) | 对象级体素子地图；机载演示 | **项目页实体** [`wiki/entities/findanything.md`](../../wiki/entities/findanything.md)；宣称并入 OKVIS2-X |
 
 ## 对 wiki 的映射
 
@@ -38,6 +38,8 @@
 | 在线开放词汇语义（ROS） | `wiki/entities/dualmap.md` |
 | 在线 RGB-D 开放词汇语义 | `wiki/entities/ovo-semantic-mapping.md` |
 | 离线多视角 SAM→3D | `wiki/entities/ov-sam3d.md` |
+| FindAnything 项目页占位（仓待补） | `wiki/entities/findanything.md` |
+| CMU MSCV DETR+SAM 项目页占位 | `wiki/entities/cmu-mscv-semantic-3d-mapping.md` |
 | GO2 L1 Point-LIO 工程注意 | `wiki/entities/point-lio-unilidar.md` |
 | 导航/SLAM 栈中 GO2 入口 | `wiki/overview/navigation-slam-autonomy-stack.md` |
 | 多边形语义建图论文占位勿等同本方案 | `wiki/entities/paper-notebook-real-time-polygonal-semantic-mapping-for-humanoi.md` |

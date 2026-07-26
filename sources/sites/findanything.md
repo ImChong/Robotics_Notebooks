@@ -9,7 +9,7 @@
 - **机构：** 慕尼黑工业大学（Technical University of Munich）& 苏黎世联邦理工学院（ETH Zurich）
 - **入库日期：** 2026-07-26
 - **一句话说明：** 将 SAM/eSAM 二维区域与视觉语言特征聚合到对象级三维体素子地图；强调内存可扩展与机载实时；已演示 Jetson Orin NX 级部署与语言引导探索。
-- **沉淀到 wiki：** [GO2 三维语义建图 Query](../../wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md)
+- **沉淀到 wiki：** [findanything](../../wiki/entities/findanything.md)（site/项目实体）；[GO2 三维语义建图 Query](../../wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md)
 
 ---
 
@@ -26,4 +26,5 @@
 
 ## 对 wiki 的映射
 
+- 实体（项目页占位）：[findanything](../../wiki/entities/findanything.md) — 开源仓落地后再补 `sources/repos/` 与源码分析
 - Query：[go2-3d-semantic-mapping-sam-pipeline](../../wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md)

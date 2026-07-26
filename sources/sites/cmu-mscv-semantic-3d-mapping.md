@@ -9,7 +9,7 @@
 - **项目索引：** https://mscvprojects.ri.cmu.edu/
 - **入库日期：** 2026-07-26
 - **一句话说明：** 用 DETR 做二维检测框、以框提示 SAM 得实例 mask，再经相机外参与位姿把 2D 标签投影到 3D 点云，作稀疏 LiDAR（如 VLP-16）室内伪标注与检测管线说明。
-- **沉淀到 wiki：** [GO2 三维语义建图 Query](../../wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md)
+- **沉淀到 wiki：** [cmu-mscv-semantic-3d-mapping](../../wiki/entities/cmu-mscv-semantic-3d-mapping.md)（site/项目实体）；[GO2 三维语义建图 Query](../../wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md)
 
 ---
 
@@ -35,4 +35,6 @@
 
 ## 对 wiki 的映射
 
+- 实体（项目页占位）：[cmu-mscv-semantic-3d-mapping](../../wiki/entities/cmu-mscv-semantic-3d-mapping.md) — 若日后有独立仓再补 `sources/repos/` 与源码分析
 - Query：[go2-3d-semantic-mapping-sam-pipeline](../../wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md) — 「SAM 如何从 2D 到 3D」的直接对照案例
+- 几何线对照：[autonomy-stack-go2](../../wiki/entities/autonomy-stack-go2.md)
