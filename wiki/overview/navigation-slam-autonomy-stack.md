@@ -3,7 +3,7 @@
 type: overview
 tags: [navigation, slam, ros2, autoware, lidar, vio, mobile-robot, autonomous-driving, openloong]
 status: complete
-updated: 2026-07-21
+updated: 2026-07-26
 related:
   - ./autonomous-driving-core-algorithms-series.md
   - ../entities/python-robotics.md
@@ -13,6 +13,8 @@ related:
   - ../entities/fast-lio.md
   - ../entities/lio-sam.md
   - ../entities/orb-slam3.md
+  - ../entities/paper-panolog-ggps.md
+  - ../entities/paper-glob3r.md
   - ../entities/paper-vs-graphs-visual-slam-scene-graph.md
   - ../entities/paper-glob3r.md
   - ../methods/lingbot-map.md
@@ -160,6 +162,7 @@ flowchart TB
 - **[RTAB-Map](../entities/rtabmap.md)**：RGB-D/激光多模态建图与记忆管理。
 - **[LingBot-Map](../methods/lingbot-map.md)**：流式前馈 3D 几何基础模型（在线位姿/稠密几何）；非经典特征 SLAM，可作视觉几何上游。
 - **[Glob3R](../entities/paper-glob3r.md)**：基础模型引导的**离线全局 SfM**（dense warp tracks → 运动平均 + BA）；适合事后高精度建图/渲染，推理代码截至 2026-07-21 仍为占位仓。
+- **[PanoLOG / G²PS](../entities/paper-panolog-ggps.md)**：ERP **全景户外大规模 3DGS**（天空球 + DAP 深度 + 几何/梯度划分）；训练代码已开源，服务 novel-view / 数字孪生资产而非实时定位。
 
 ### 主动雷达（补充，非 ROS 原生）
 
@@ -208,6 +211,7 @@ flowchart TB
 - [VLA 方法](../methods/vla.md)
 - [LingBot-Map](../methods/lingbot-map.md) — 流式前馈视觉几何
 - [Glob3R](../entities/paper-glob3r.md) — 全局 SfM + 3D 基础模型（离线精炼）
+- [PanoLOG / G²PS](../entities/paper-panolog-ggps.md) — 全景户外 3DGS 重建（novel-view 资产）
 
 ## 推荐继续阅读
 

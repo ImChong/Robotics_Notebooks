@@ -1,5 +1,23 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-26] ingest | sources/papers/ggps_panolog_arxiv_2607_08769.md — PanoLOG/G²PS 全景户外 3DGS；新建 wiki/entities/paper-panolog-ggps.md；交叉 PanoWorld/Glob3R/GS-Playground/导航栈；训练代码已开源，HF 部分数据
+
+- **来源归档：**
+  - [`sources/papers/ggps_panolog_arxiv_2607_08769.md`](sources/papers/ggps_panolog_arxiv_2607_08769.md) — arXiv:2607.08769
+  - [`sources/sites/insta360-research-team-ggps-website.md`](sources/sites/insta360-research-team-ggps-website.md) — 项目页核查
+  - [`sources/repos/ggps.md`](sources/repos/ggps.md) — 官方训练仓
+- **主升格：** [`wiki/entities/paper-panolog-ggps.md`](wiki/entities/paper-panolog-ggps.md) — PanoLOG 两阶段 + G²PS 划分；Pano360；源码运行时序图
+- **开源核查（步骤 2.5）：** **已开源（训练代码）** + **数据集部分**（HF：FTP/NSC/NSK）；预训练 `.ply` 与 UE 5.8 插件待发布；许可 CC BY-NC 4.0
+- **机构注册：** `schema/institutions.json` 新增 `insta360`（影石研究（Insta360 Research））
+- **交叉：**
+  - [`wiki/entities/paper-panoworld-real-world-panoramic-generation.md`](wiki/entities/paper-panoworld-real-world-panoramic-generation.md)
+  - [`wiki/entities/paper-glob3r.md`](wiki/entities/paper-glob3r.md)
+  - [`wiki/entities/gs-playground.md`](wiki/entities/gs-playground.md)
+  - [`wiki/entities/spark-3dgs-renderer.md`](wiki/entities/spark-3dgs-renderer.md)
+  - [`wiki/entities/unreal-engine-5.md`](wiki/entities/unreal-engine-5.md)
+  - [`wiki/overview/navigation-slam-autonomy-stack.md`](wiki/overview/navigation-slam-autonomy-stack.md)
+  - [`wiki/overview/topic-state-estimation.md`](wiki/overview/topic-state-estimation.md)
+
 ## [2026-07-26] ingest | sources/blogs/wechat_embodied_ai_lab_wam_motion_control_five_paths.md — 人形运动控制进入 WAM 的五种系统位置；补齐缺失论文实体并复用已有非 stub 节点
 
 - **来源归档：** [`sources/blogs/wechat_embodied_ai_lab_wam_motion_control_five_paths.md`](sources/blogs/wechat_embodied_ai_lab_wam_motion_control_five_paths.md)（Agent Reach v1.5.0 + wechat-article-for-ai；<https://mp.weixin.qq.com/s/2pP9LWlsTmTAgTglFuLwSA>）

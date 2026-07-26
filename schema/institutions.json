@@ -281,6 +281,13 @@
         "openvino"
       ]
     },
+    "insta360": {
+      "label": "影石研究（Insta360 Research）",
+      "aliases": [
+        "insta360",
+        "insta360-research"
+      ]
+    },
     "toyota-research": {
       "label": "丰田研究院（TRI）",
       "aliases": [

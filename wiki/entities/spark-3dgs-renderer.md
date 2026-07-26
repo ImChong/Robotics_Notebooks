@@ -3,13 +3,14 @@
 type: entity
 tags: [repo, 3dgs, gaussian-splatting, web, threejs, webgl2, streaming, lod, open-source, linux-foundation]
 status: complete
-updated: 2026-05-28
+updated: 2026-07-26
 related:
   - ./world-labs.md
   - ./aholo-viewer.md
   - ./gs-playground.md
   - ../comparisons/spark-vs-aholo-web-3dgs-renderers.md
   - ../methods/generative-world-models.md
+  - ./paper-panolog-ggps.md
 sources:
   - ../../sources/blogs/worldlabs_spark_2_0_streaming_3dgs.md
   - ../../sources/sites/worldlabs-ai.md
@@ -75,6 +76,7 @@ flowchart LR
 - [GS-Playground](./gs-playground.md)
 - [Spark vs Aholo（Web 3DGS 渲染选型）](../comparisons/spark-vs-aholo-web-3dgs-renderers.md)
 - [生成式世界模型](../methods/generative-world-models.md)
+- [PanoLOG / G²PS](./paper-panolog-ggps.md) — 户外全景 3DGS 重建资产，可喂 Web/引擎浏览
 
 ## 参考来源
 
