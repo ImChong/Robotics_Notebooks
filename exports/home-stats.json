@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-26",
-  "node_count": 1896,
-  "edge_count": 16205,
+  "node_count": 1897,
+  "edge_count": 16221,
   "coverage": {
-    "covered": 1844,
-    "total": 1872,
+    "covered": 1845,
+    "total": 1873,
     "percent": 99
   },
   "latest_wiki_nodes": [
@@ -91,6 +91,69 @@
       "action": "maintained"
     },
     {
+      "path": "wiki/entities/paper-abot-world-0.md",
+      "detail_id": "entity-paper-abot-world-0",
+      "label": "ABot-World-0（单卡桌面无限交互世界 Rollout）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/generative-world-models.md",
+      "detail_id": "wiki-methods-generative-world-models",
+      "label": "Generative World Models (生成式世界模型)",
+      "type": "method",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/video-as-simulation.md",
+      "detail_id": "wiki-concepts-video-as-simulation",
+      "label": "Video-as-Simulation (视频即仿真)",
+      "type": "concept",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/robot-world-models-training-loop-taxonomy.md",
+      "detail_id": "wiki-overview-robot-world-models-training-loop-taxonomy",
+      "label": "机器人世界模型：训练闭环与三线 taxonomy",
+      "type": "overview",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-wan-video.md",
+      "detail_id": "entity-paper-wan-video",
+      "label": "Wan（开源大规模视频生成基础模型）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-abot-m05-mobile-manipulation-wam.md",
+      "detail_id": "entity-paper-abot-m05-mobile-manipulation-wam",
+      "label": "ABot-M0.5（Unified Mobility-and-Manipulation · World Action Model）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "path": "wiki/overview/wam-motion-control-five-paths.md",
       "detail_id": "wiki-overview-wam-motion-control-five-paths",
       "label": "WAM × 人形运动控制：五种系统位置",
@@ -154,67 +217,6 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/lift-humanoid.md",
-      "detail_id": "entity-lift-humanoid",
-      "label": "LIFT（人形大规模预训练 + 高效微调）",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-haic.md",
-      "detail_id": "entity-paper-haic",
-      "label": "HAIC",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/being-h07.md",
-      "detail_id": "wiki-methods-being-h07",
-      "label": "Being-H0.7（潜空间世界–动作模型）",
-      "type": "method",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/topic-actuator-drive-chain.md",
-      "detail_id": "wiki-overview-topic-actuator-drive-chain",
-      "label": "执行器驱动链选型闭环（专题汇总）",
-      "type": "overview",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/queries/actuator-drive-chain-selection-loop.md",
-      "detail_id": "wiki-queries-actuator-drive-chain-selection-loop",
-      "label": "Query：执行器驱动链选型闭环知识链",
-      "type": "query",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/bavaria-direct-winding-calculator.md",
-      "detail_id": "entity-bavaria-direct-winding-calculator",
-      "label": "Bavaria Direct 绕组方案计算器（Bewicklungsrechner XL）",
-      "type": "entity",
-      "recency": "2026-07-25",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -230,7 +232,7 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 386
+      "size": 387
     },
     {
       "label": "人形论文深读笔记",
