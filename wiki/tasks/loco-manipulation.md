@@ -3,8 +3,9 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-07-24
+updated: 2026-07-26
 sources:
+  - ../../sources/papers/pot_vla_arxiv_2607_18016.md
   - ../../sources/papers/faro_arxiv_2607_18362.md
   - ../../sources/papers/fastgrasp_arxiv_2604_12879.md
   - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md
@@ -218,6 +219,10 @@ flowchart TD
 - **核心**：面向 **开放词汇移动操作（OVMM）**，在 **共享 3D 特征图** 上为导航与操作生成 **阶段对齐交互路点**，串联为 **候选交互链**；**分层策略** 用 **VLM 路点级可行性** + **转移代价** 选链，**下一路点执行 + 观测重规划** 闭环。
 - **代表作**：[3D-IC](../entities/paper-3d-ic-joint-navigation-manipulation-planning.md) (ICT CAS / UCAS, 2026, ICML) — 仿真与 **Stretch 3** 真机；相对分阶段 OVMM 提升 **任务成功率与轨迹效率**；与 [REALM](../entities/paper-realm-last-3-meter-vln-grounding.md) 等同平台、互补 **VLN 末段接地** 问题。
 
+### 28. 持久 3D 对象 token + 几何谓词闭环（POT-VLA · object-state divergence）
+- **核心**：长时程人形 VLA 中，**动作条件用的对象状态** 与 **验收用的对象状态** 易分叉；用 RGB-D 维护 **角色索引持久 3D 对象记录**，同一记忆条件化全身动作头并做几何谓词验收 / 局部恢复。
+- **代表作**：[POT-VLA](../entities/paper-pot-vla.md) (BUAA / BZA / TJU / DeepCybo / ZGCI, 2026, arXiv:2607.18016) — **GR00T-N1.7** 匹配对照 **39/80→71/80**（Unitree G1 八类）；消融显示 **token 条件化主增益、谓词防假完成**；截至入库日 **未开源**。
+
 ## 重点应用领域
 
 | 领域 | 典型任务 | 代表研究 |
@@ -279,6 +284,7 @@ flowchart TD
 - [GR00T-WholeBodyControl（实体）](../entities/gr00t-wholebodycontrol.md) — NVIDIA 解耦 WBC / SONIC / MotionBricks 统一仓
 - [FastGrasp（论文实体）](../entities/paper-fastgrasp-mobile-dexterous-grasping.md) — 轮式移动全身 RL + CVAE 抓取引导 + 二值触觉高速灵巧抓取（arXiv:2604.12879）
 - [3D-IC（论文实体）](../entities/paper-3d-ic-joint-navigation-manipulation-planning.md) — 共享 3D 地图的 OVMM 交互路点链联合规划（ICML 2026，Stretch 3）
+- [POT-VLA（论文实体）](../entities/paper-pot-vla.md) — 持久 3D 对象 token + 几何谓词可验证闭环；G1 上 GR00T-N1.7 **39/80→71/80**（arXiv:2607.18016）
 
 ## 参考来源
 - [awesome-humanoid-robot-learning](../../sources/repos/awesome-humanoid-robot-learning.md) — 持续更新的人形机器人学习论文集

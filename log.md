@@ -1,5 +1,19 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-26] ingest | sources/papers/pot_vla_arxiv_2607_18016.md — 深读补全 POT-VLA（arXiv:2607.18016）；升格 wiki/entities/paper-pot-vla.md；交叉 wiki/methods/vla.md、wiki/tasks/loco-manipulation.md、wiki/entities/unitree-g1.md、wiki/entities/isaac-gr00t.md、wiki/entities/paper-hrl-stack-34-gr00t_n1.md、wiki/entities/paper-loco-manip-161-057-being-0.md；机构注册 deepcybo + zgci→zgca
+
+- **来源归档：** [`sources/papers/pot_vla_arxiv_2607_18016.md`](sources/papers/pot_vla_arxiv_2607_18016.md) — arXiv:2607.18016（Closing the Loop in Humanoid VLA）
+- **主升格：** [`wiki/entities/paper-pot-vla.md`](wiki/entities/paper-pot-vla.md) — POT / object-state divergence / GR00T-N1.7 匹配对照 **39/80→71/80**；结论与消融齐全
+- **开源核查（步骤 2.5）：** **确认未开源**（截至 2026-07-26；无项目页/代码/权重）；源码运行时序图不适用
+- **机构注册：** `schema/institutions.json` 新增 `deepcybo`（机智赛博（DeepCybo））；`zgci` 并入 `zgca` aliases
+- **交叉：**
+  - [`wiki/methods/vla.md`](wiki/methods/vla.md)
+  - [`wiki/tasks/loco-manipulation.md`](wiki/tasks/loco-manipulation.md)
+  - [`wiki/entities/unitree-g1.md`](wiki/entities/unitree-g1.md)
+  - [`wiki/entities/isaac-gr00t.md`](wiki/entities/isaac-gr00t.md)
+  - [`wiki/entities/paper-hrl-stack-34-gr00t_n1.md`](wiki/entities/paper-hrl-stack-34-gr00t_n1.md)
+  - [`wiki/entities/paper-loco-manip-161-057-being-0.md`](wiki/entities/paper-loco-manip-161-057-being-0.md)
+
 ## [2026-07-26] ingest | sources/papers/ggps_panolog_arxiv_2607_08769.md — PanoLOG/G²PS 全景户外 3DGS；新建 wiki/entities/paper-panolog-ggps.md；交叉 PanoWorld/Glob3R/GS-Playground/导航栈；训练代码已开源，HF 部分数据
 
 - **来源归档：**
