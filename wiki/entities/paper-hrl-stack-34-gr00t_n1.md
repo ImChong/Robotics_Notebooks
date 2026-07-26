@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, loco-manipulation, loco-manip-161-survey, nvidia, vla]
 status: complete
-updated: 2026-07-24
+updated: 2026-07-26
 arxiv: "2503.14734"
 venue: "2025 · arXiv"
 code: https://github.com/NVIDIA/Isaac-GR00T
@@ -210,6 +210,7 @@ sequenceDiagram
 - 方法对照：[diffusion-policy.md](../methods/diffusion-policy.md)
 - **长程上下文 / 部署后学习：** [RoboTTT](./paper-robottt-test-time-training-vla-context.md) — 在 **GR00T N1.7** 上内嵌 TTT fast-weight 层，把 visuomotor 上下文扩到 8K 步（项目页，2026）
 - **零售真机后训练配方（未开源）：** [DEED](./paper-deed.md) — G1-Edu + GR00T N1.6 薯片补货；Data-Efficient SFT + 文本 advantage 前缀 RECAP
+- **对象中心可验证闭环（未开源）：** [POT-VLA](./paper-pot-vla.md) — 同 **GR00T-N1.7** 匹配对照下，持久 3D 对象 token + 几何谓词把 G1 八类任务 **39/80→71/80**
 - 工程平台：[isaac-gr00t.md](../entities/isaac-gr00t.md)
 - 工程深读：[gr00t-wholebodycontrol.md](../entities/gr00t-wholebodycontrol.md)
 - RL 身体系统栈：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)

@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-26",
   "node_count": 1902,
-  "edge_count": 16288,
+  "edge_count": 16297,
   "coverage": {
     "covered": 1850,
     "total": 1878,
@@ -18,6 +18,80 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-pot-vla.md",
+      "detail_id": "entity-paper-pot-vla",
+      "label": "POT-VLA（Persistent 3D Object Tokens · 可验证人形 Loco-Manipulation）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/loco-manipulation.md",
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    },
+    {
+      "path": "wiki/entities/unitree-g1.md",
+      "detail_id": "entity-unitree-g1",
+      "label": "Unitree G1 (人形机器人)",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/isaac-gr00t.md",
+      "detail_id": "entity-isaac-gr00t",
+      "label": "Isaac GR00T（人形 VLA 开发平台）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-hrl-stack-34-gr00t_n1.md",
+      "detail_id": "entity-paper-hrl-stack-34-gr00t_n1",
+      "label": "GR00T N1",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-loco-manip-161-057-being-0.md",
+      "detail_id": "entity-paper-loco-manip-161-057-being-0",
+      "label": "Being-0",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
       "path": "wiki/entities/neoteai.md",
@@ -100,8 +174,7 @@
       "recency": "2026-07-26",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/spark-3dgs-renderer.md",
@@ -111,7 +184,7 @@
       "recency": "2026-07-26",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/unreal-engine-5.md",
@@ -143,79 +216,6 @@
       "recency": "2026-07-26",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-abot-world-0.md",
-      "detail_id": "entity-paper-abot-world-0",
-      "label": "ABot-World-0（单卡桌面无限交互世界 Rollout）",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/generative-world-models.md",
-      "detail_id": "wiki-methods-generative-world-models",
-      "label": "Generative World Models (生成式世界模型)",
-      "type": "method",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/video-as-simulation.md",
-      "detail_id": "wiki-concepts-video-as-simulation",
-      "label": "Video-as-Simulation (视频即仿真)",
-      "type": "concept",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/robot-world-models-training-loop-taxonomy.md",
-      "detail_id": "wiki-overview-robot-world-models-training-loop-taxonomy",
-      "label": "机器人世界模型：训练闭环与三线 taxonomy",
-      "type": "overview",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-wan-video.md",
-      "detail_id": "entity-paper-wan-video",
-      "label": "Wan（开源大规模视频生成基础模型）",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-abot-m05-mobile-manipulation-wam.md",
-      "detail_id": "entity-paper-abot-m05-mobile-manipulation-wam",
-      "label": "ABot-M0.5（Unified Mobility-and-Manipulation · World Action Model）",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/wam-motion-control-five-paths.md",
-      "detail_id": "wiki-overview-wam-motion-control-five-paths",
-      "label": "WAM × 人形运动控制：五种系统位置",
-      "type": "overview",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -236,23 +236,23 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 211
+      "size": 245
     },
     {
       "label": "移动操作",
       "size": 174
     },
     {
-      "label": "全身控制",
-      "size": 138
-    },
-    {
       "label": "人形强化学习运动控制",
-      "size": 125
+      "size": 170
     },
     {
-      "label": "仿真到现实",
-      "size": 110
+      "label": "全身控制",
+      "size": 139
+    },
+    {
+      "label": "运动控制",
+      "size": 66
     }
   ],
   "top_hubs": [
@@ -291,7 +291,7 @@
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
-      "degree": 292,
+      "degree": 293,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
@@ -299,7 +299,8 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 274
+      "degree": 274,
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
@@ -346,15 +347,15 @@
       "label": "BeyondMimic",
       "type": "method",
       "degree": 59,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",
       "label": "OmniRetarget",
       "type": "entity",
       "degree": 49,
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
@@ -374,7 +375,8 @@
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
-      "degree": 46
+      "degree": 46,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "entity-paper-twist2",

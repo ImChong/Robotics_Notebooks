@@ -836,7 +836,9 @@
       "label": "中关村人工智能研究院（ZGCA）",
       "aliases": [
         "zgca",
-        "zgca-ai"
+        "zgca-ai",
+        "zgci",
+        "zhongguancun-institute-of-artificial-intelligence"
       ]
     },
     "usc": {
@@ -1734,6 +1736,14 @@
       "label": "安派克斯（Ampex）",
       "aliases": [
         "ampex"
+      ]
+    },
+    "deepcybo": {
+      "label": "机智赛博（DeepCybo）",
+      "aliases": [
+        "deepcybo",
+        "beijing-deepcybo",
+        "ji-zhi-sai-bo"
       ]
     }
   }
