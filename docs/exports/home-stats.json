@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-07-26",
-  "node_count": 1901,
-  "edge_count": 16284,
+  "node_count": 1902,
+  "edge_count": 16297,
   "coverage": {
-    "covered": 1849,
-    "total": 1877,
+    "covered": 1850,
+    "total": 1878,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/yale-openhand.md",
+      "detail_id": "entity-yale-openhand",
+      "label": "Yale OpenHand（耶鲁开源欠驱动手）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-pot-vla.md",
       "detail_id": "entity-paper-pot-vla",
@@ -205,37 +216,27 @@
       "recency": "2026-07-26",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-abot-world-0.md",
-      "detail_id": "entity-paper-abot-world-0",
-      "label": "ABot-World-0（单卡桌面无限交互世界 Rollout）",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-pot-vla.md",
-    "detail_id": "entity-paper-pot-vla",
-    "label": "POT-VLA（Persistent 3D Object Tokens · 可验证人形 Loco-Manipulation）",
+    "path": "wiki/entities/yale-openhand.md",
+    "detail_id": "entity-yale-openhand",
+    "label": "Yale OpenHand（耶鲁开源欠驱动手）",
     "type": "entity",
     "recency": "2026-07-26",
     "source": "log.md",
-    "action": "maintained",
+    "action": "added",
+    "has_repo": true,
     "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 410
+      "size": 397
     },
     {
       "label": "人形论文深读笔记",
-      "size": 226
+      "size": 245
     },
     {
       "label": "移动操作",
@@ -250,7 +251,7 @@
       "size": 139
     },
     {
-      "label": "模仿学习",
+      "label": "运动控制",
       "size": 66
     }
   ],
@@ -282,7 +283,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 308,
+      "degree": 310,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -354,8 +355,7 @@
       "label": "OmniRetarget",
       "type": "entity",
       "degree": 49,
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",

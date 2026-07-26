@@ -8,6 +8,7 @@ related:
   - ../entities/paper-flying-knots.md
   - ../entities/paper-robustness-robotic-manipulation-survey.md
   - ../entities/paper-vtap-gripper.md
+  - ../entities/yale-openhand.md
   - ../entities/neoteai.md
   - ../entities/paper-n0-foundation.md
   - ../entities/paper-n0-vtla.md
@@ -205,6 +206,7 @@ flowchart TD
 - [KinetIQ Ascend](../entities/kinetiq-ascend.md) — 产线 CFM-VLA 真机 PPO 后训练（Humanoid, 2026）
 - [MolmoMotion](../entities/molmo-motion.md) — 语言条件 3D 点轨迹预测与 DROID 微调规划先验（arXiv:2606.18558）
 - [EN02-OP](../entities/en02-op.md) — Westwood 开源三指 7-DoF 夹爪（Dynamixel + 3D 打印，DIY 约 $200 量级）
+- [Yale OpenHand](../entities/yale-openhand.md) — Grab Lab 开源欠驱动腱驱手族（T/T42/O/F3；CAD CC BY-NC；F3 免 FT 视觉估力）
 - [HRDexDB](../entities/hrdexdb-dataset.md) — 同物体配对的人–灵巧机器人抓取序列集（100+ 物体 · 23 相机 · 3D + 触觉）
 - [OmniTacTune](../entities/paper-omnitactune-tactile-residual-adaptation.md) — 冻结视觉基策略 + 触觉残差真机 RL（arXiv:2607.03723）
 - [VTAP Gripper](../entities/paper-vtap-gripper.md) — 视触觉主动掌三指夹爪 + FlexiTac；遥操作重定向参考架构（arXiv:2607.15448）
@@ -267,6 +269,7 @@ flowchart TD
 - [DAPL 杂乱场景外在灵巧](../entities/paper-dapl-extrinsic-dexterity-clutter.md)
 - [自动化仿生对话面部机构合成](../entities/paper-automated-facial-mechanisms-animatronic.md)
 - [Deimel 柔顺欠驱动灵巧手（RSS ToT）](../entities/paper-deimel-compliant-underactuated-robotic-hand.md)
+- [Yale OpenHand](../entities/yale-openhand.md) — 打印件 + Dynamixel 腱驱欠驱动开源手族（对照气动软体路线）
 
 
 ## 推荐继续阅读

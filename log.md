@@ -1,5 +1,15 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-26] ingest | sources/sites/yale-grablab-openhand.md + yale-openhand-model-f3.md — Yale OpenHand 欠驱动开源手族与 Model F3；升格 wiki/entities/yale-openhand.md
+
+- **项目页：** [`sources/sites/yale-grablab-openhand.md`](sources/sites/yale-grablab-openhand.md) — Grab Lab OpenHand 总站（型号目录 / HDM / Couplings）
+- **型号页：** [`sources/sites/yale-openhand-model-f3.md`](sources/sites/yale-openhand-model-f3.md) — Model F3（Forces-for-Free；腕相机形变估力）
+- **仓库：** [`sources/repos/openhand-hardware.md`](sources/repos/openhand-hardware.md)（CAD，CC BY-NC 3.0）· [`sources/repos/openhand_node.md`](sources/repos/openhand_node.md)（O/T/T42 控制，MIT）
+- **主升格：** [`wiki/entities/yale-openhand.md`](wiki/entities/yale-openhand.md)
+- **开源核查（步骤 2.5）：** **已开源（CAD + 装配 + 控制/仿真）**；Model F3 视觉力估论文页内 **[paper under review]**，截至入库日未见公开代码/DOI
+- **机构注册：** `schema/institutions.json` 新增 `yale`（耶鲁大学（Yale University）；aliases 含 `grablab`）
+- **交叉：** topic-grasp、manipulation、contact-rich-manipulation、en02-op、allegro-hand、paper-deimel-compliant-underactuated-robotic-hand
+
 ## [2026-07-26] ingest | sources/papers/pot_vla_arxiv_2607_18016.md — 深读补全 POT-VLA（arXiv:2607.18016）；升格 wiki/entities/paper-pot-vla.md；交叉 wiki/methods/vla.md、wiki/tasks/loco-manipulation.md、wiki/entities/unitree-g1.md、wiki/entities/isaac-gr00t.md、wiki/entities/paper-hrl-stack-34-gr00t_n1.md、wiki/entities/paper-loco-manip-161-057-being-0.md；机构注册 deepcybo + zgci→zgca
 
 - **来源归档：** [`sources/papers/pot_vla_arxiv_2607_18016.md`](sources/papers/pot_vla_arxiv_2607_18016.md) — arXiv:2607.18016（Closing the Loop in Humanoid VLA）

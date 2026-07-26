@@ -8,12 +8,13 @@ tags:
   - rss2014
   - test-of-time
 status: complete
-updated: 2026-07-20
+updated: 2026-07-26
 doi: "10.15607/rss.2014.x.018"
 venue: RSS 2014
 related:
   - ../tasks/manipulation.md
   - ../entities/midas-hand.md
+  - ../entities/yale-openhand.md
   - ../concepts/dexterous-kinematics.md
   - ../concepts/contact-rich-manipulation.md
 sources:
@@ -125,6 +126,7 @@ flowchart TB
 - **vs 全驱动灵巧手：** 传统灵巧手追求「每关节一个驱动器」，代价是昂贵、笨重、控制复杂、碰撞危险；本手用极少气动执行器 + 机械顺应性完成多样抓取，**以接触为驱动信号而非干扰**。
 - **本设计路线演进：** RBO Hand 1（本文，RSS 2014）→ RBO Hand 2（IJRR 2015，更完整评测与更多抓取类型）→ RBO Hand 3（Handed Shearing Auxetics 高弹性网格执行器，可实现更复杂形变）。
 - **vs 现代直驱电动灵巧手：** 与 [MIDAS Hand](../entities/midas-hand.md) 等直驱电动手形成软 / 硬两条工程路线对照——前者以顺应性换容错与安全，后者以刚性换力量与精度。
+- **vs 打印件腱驱欠驱动：** [Yale OpenHand](../entities/yale-openhand.md) 同属欠驱动自适应抓取，但走 **Dynamixel + 3D 打印/HDM** 而非气动软体，更易接入常规舵机栈。
 
 ## 局限与风险
 
@@ -138,6 +140,7 @@ flowchart TB
 
 - [Manipulation（操作任务）](../tasks/manipulation.md) — 灵巧手是操作的核心硬件基础
 - [MIDAS Hand](../entities/midas-hand.md) — 现代直驱电动灵巧手；与气动柔性手形成对照
+- [Yale OpenHand](../entities/yale-openhand.md) — 打印件腱驱欠驱动开源手族对照
 - [Dexterous Kinematics（灵巧运动学）](../concepts/dexterous-kinematics.md) — 欠驱动手的运动学分析基础
 - [Contact-Rich Manipulation（接触丰富操作）](../concepts/contact-rich-manipulation.md) — 以接触为核心机制的设计哲学
 

@@ -2,13 +2,14 @@
 type: entity
 tags: [manipulation, end-effector, gripper, hardware, open-source, dynamixel, westwood-robotics]
 status: complete
-updated: 2026-06-30
+updated: 2026-07-26
 related:
   - ../tasks/manipulation.md
   - ../overview/topic-grasp.md
   - ./orca-hand.md
   - ./ruka-v2-hand.md
   - ./allegro-hand.md
+  - ./yale-openhand.md
   - ../queries/grasp-policy-selection.md
 sources:
   - ../../sources/repos/en02-op.md
@@ -67,6 +68,7 @@ flowchart LR
 | 平台 | DoF / 形态 | 成本量级 | 控制栈 | 适用 |
 |------|------------|----------|--------|------|
 | **EN02-OP** | 三指 **7 DoF** | **约 200 USD** DIY（官方估算） | Dynamixel SDK | 低成本臂端/人形非高灵巧抓取 |
+| [Yale OpenHand](./yale-openhand.md) | 欠驱动腱驱多型号 | 材料低；**CC BY-NC** | `openhand_node`（O/T/T42） | 自适应抓取 / F3 视觉估力实验 |
 | [RUKA-v2 Hand](./ruka-v2-hand.md) | 仿人 **16+2 DoF** | 约 1.5K USD 材料 | OpenTeach + BAKU 等全栈 | 高 DoF 遥操作与 IL 研究 |
 | [Orca Hand](./orca-hand.md) | 仿生灵巧手 | 官网 BOM | orcahand 生态 | 仿生五指复刻 |
 | [Allegro Hand](./allegro-hand.md) | 四指 **16 DoF** | 约 16K USD 级 | 研究社区驱动 | 标准灵巧操作 benchmark |
@@ -82,6 +84,7 @@ flowchart LR
 - [Manipulation](../tasks/manipulation.md) — 操作任务与末端硬件选型语境
 - [抓取专题汇总](../overview/topic-grasp.md) — 感知–规划–执行闭环
 - [Orca Hand](./orca-hand.md) / [RUKA-v2 Hand](./ruka-v2-hand.md) — 更高 DoF 开源手对照
+- [Yale OpenHand](./yale-openhand.md) — 欠驱动腱驱开源手族（与全驱动三指对照）
 - [Query：抓取策略选型](../queries/grasp-policy-selection.md)
 
 ## 推荐继续阅读

@@ -76,6 +76,16 @@
         "harvard-university"
       ]
     },
+    "yale": {
+      "label": "耶鲁大学（Yale University）",
+      "aliases": [
+        "yale",
+        "yale-university",
+        "grablab",
+        "yale-grablab",
+        "grab-lab"
+      ]
+    },
     "stanford": {
       "label": "斯坦福大学（Stanford）",
       "aliases": [
