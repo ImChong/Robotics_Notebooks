@@ -174,7 +174,7 @@ flowchart LR
 - [ARTEMIS 冠军系统](../wiki/entities/paper-notebook-a-hierarchical-model-based-system-for-high-perfo.md)（本仓库）— 集中式战术层，RoboCup 2024 Adult-Size 冠军
 - [Swarm Intelligence 人形足球](../wiki/entities/paper-humanoid-soccer-swarm-intelligence.md)（本仓库）— 去中心化 4v4 对照
 - [MARL](../wiki/methods/marl.md) 与 [CTDE vs 去中心化 MARL](../wiki/comparisons/ctde-vs-decentralized-marl.md)（本仓库）
-- [SPL 极低带宽协调](../../sources/papers/robocup_spl_limited_communication_coordination_arxiv_2401_15026.md)（本仓库 sources）
+- [SPL 极低带宽协调](../sources/papers/robocup_spl_limited_communication_coordination_arxiv_2401_15026.md)（本仓库 sources）
 
 ### 学完输出什么
 - 一个 2v2 仿真对抗里可运行的角色分配 + 编队方案

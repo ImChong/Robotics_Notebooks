@@ -248,8 +248,8 @@ flowchart LR
 
 本路线基于以下原始资料的归纳：
 
-- [RoboStriker 摘录](../../sources/papers/humanoid_pnb_robostriker.md)（arXiv:2601.22517）— 跟踪 → 潜空间 → LS-NFSP 的完整分层做法
-- [REK 官网归档](../../sources/sites/rek-com.md) — VR 遥操作全接触格斗联赛
-- [SMPLOlympics 摘录](../../sources/papers/smplolympics_arxiv_2407_00187.md)（arXiv:2407.00187）— 拳击/击剑交替自博弈基线
+- [RoboStriker 摘录](../sources/papers/humanoid_pnb_robostriker.md)（arXiv:2601.22517）— 跟踪 → 潜空间 → LS-NFSP 的完整分层做法
+- [REK 官网归档](../sources/sites/rek-com.md) — VR 遥操作全接触格斗联赛
+- [SMPLOlympics 摘录](../sources/papers/smplolympics_arxiv_2407_00187.md)（arXiv:2407.00187）— 拳击/击剑交替自博弈基线
 - Bansal et al., *Emergent Complexity via Multi-Agent Competition* (2017, arXiv:1710.03748) — MuJoCo 人形对抗自博弈起点
-- [Towards Motion Turing Test 摘录](../../sources/papers/humanoid_pnb_towards-motion-turing-test.md) — 拳击类动态行为类人度差距
+- [Towards Motion Turing Test 摘录](../sources/papers/humanoid_pnb_towards-motion-turing-test.md) — 拳击类动态行为类人度差距
