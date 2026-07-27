@@ -1,13 +1,22 @@
 {
   "generated_at": "2026-07-27",
   "node_count": 1913,
-  "edge_count": 16405,
+  "edge_count": 16406,
   "coverage": {
     "covered": 1861,
     "total": 1889,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-neuralactuator-neural-actuation-modeling.md",
+      "detail_id": "entity-paper-neuralactuator-neural-actuation-modeling",
+      "label": "NeuralActuator（Neural Actuation Modeling · arXiv:2607.11734）",
+      "type": "entity",
+      "recency": "2026-07-26",
+      "source": "log.md",
+      "action": "maintained"
+    },
     {
       "path": "roadmap/depth-motion-retargeting.md",
       "detail_id": "roadmap-depth-motion-retargeting",
@@ -205,24 +214,13 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-segment-anything.md",
-      "detail_id": "entity-paper-segment-anything",
-      "label": "Segment Anything（SAM）",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "roadmap/depth-motion-retargeting.md",
-    "detail_id": "roadmap-depth-motion-retargeting",
-    "label": "路线（纵深）：如果目标是动作重定向（人体动作 → 机器人参考轨迹）",
-    "type": "roadmap_page",
+    "path": "wiki/entities/paper-neuralactuator-neural-actuation-modeling.md",
+    "detail_id": "entity-paper-neuralactuator-neural-actuation-modeling",
+    "label": "NeuralActuator（Neural Actuation Modeling · arXiv:2607.11734）",
+    "type": "entity",
     "recency": "2026-07-26",
     "source": "log.md",
     "action": "maintained"

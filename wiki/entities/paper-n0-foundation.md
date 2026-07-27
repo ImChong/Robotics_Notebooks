@@ -15,6 +15,7 @@ related:
   - ../overview/topic-tactile.md
   - ./paper-deform360-deformable-visuotactile-dataset.md
   - ./paper-vt-wam-visuotactile-contact-rich.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/n0_foundation.md
   - ../../sources/sites/research-neoteai-com.md
@@ -142,6 +143,7 @@ flowchart TB
 - [NeoteAI](./neoteai.md) · [𝒩₀-VTLA](./paper-n0-vtla.md) · [𝒩₀-TWAM](./paper-n0-twam.md)
 - [视触觉融合](../concepts/visuo-tactile-fusion.md) · [接触丰富操作](../concepts/contact-rich-manipulation.md)
 - [Deform360](./paper-deform360-deformable-visuotactile-dataset.md) — 另一条大规模真实视触觉数据轴
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — NeoReal（真机 10 任务）/ NeoSim（仿真 12 任务）属其 ③ 策略任务成功率评测层：接触丰富操作的力场条件真机 + 仿真套件
 
 ## 参考来源
 
