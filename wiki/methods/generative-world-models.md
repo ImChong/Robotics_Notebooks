@@ -17,6 +17,7 @@ related:
   - ../methods/being-h07.md
   - ../entities/nvidia-omniverse.md
   - ../entities/ewmbench.md
+  - ../entities/paper-worldscore.md
   - ../entities/paper-wem-world-ego-modeling.md
   - ../entities/paper-gamma-world-multi-agent.md
   - ../entities/paper-homeworld-whole-home-scene-generation.md
@@ -57,6 +58,7 @@ sources:
   - ../../sources/papers/being_h07.md
   - ../../sources/papers/world_action_models_survey_2605.md
   - ../../sources/papers/ewmbench.md
+  - ../../sources/papers/worldscore_arxiv_2504_00983.md
   - ../../sources/papers/dwm_arxiv_2512_17907.md
   - ../../sources/papers/mimic_video_arxiv_2512_15692.md
   - ../../sources/papers/infinite_diffusion_terrain_diffusion_siggraph_2026.md
@@ -122,7 +124,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - **物理一致性缺失**：模型有时会产生违反物理常识的幻觉（如物体凭空消失）。
 - **推理开销大**：目前生成一帧高质量视频的速度远低于物理引擎的 1000Hz 要求。
 - **交互精度低**：很难通过生成的视频反推精确到毫米级的接触力。
-- **评测口径漂移**：通用「文生视频」基准往往强调美学与粗粒度语义；面向操纵的 **场景守恒、末端时序、步骤逻辑** 需要单独量纲，参见 [EWMBench](../entities/ewmbench.md)。
+- **评测口径漂移**：通用「文生视频」基准往往强调美学与粗粒度语义；面向操纵的 **场景守恒、末端时序、步骤逻辑** 需要单独量纲，参见 [EWMBench](../entities/ewmbench.md)。若目标是开放域 **多场景 + 相机布局** 的世界生成（含 3D/4D），用 [WorldScore](../entities/paper-worldscore.md) 的 Ctrl/Quality/Dynamics，勿与 EWMBench 混轴。
 
 ### 条件分解：已知静态场景 + 灵巧手轨迹（DWM）
 
@@ -251,6 +253,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [NVIDIA Omniverse](../entities/nvidia-omniverse.md)
 - [ExoActor](./exoactor.md) — 视频生成驱动的交互式人形控制。
 - [EWMBench](../entities/ewmbench.md) — 具身视频世界模型生成质量的多维基准与开源工具链。
+- [WorldScore](../entities/paper-worldscore.md) — 3D/4D/I2V/T2V **多场景世界生成** 统一评测（ICCV 2025；HF 活榜）。
 - [GE-Sim 2.0](../entities/ge-sim-2.md) — Agibot **闭环** 操纵视频世界模拟器：本体状态专家 + World Judge + 加速 rollout（arXiv:2605.27491）。
 - [Cosmos 3](../entities/cosmos-3.md) — NVIDIA **全模态 MoT 世界模型平台**：Reasoner + Generator 双路径，覆盖 VLM、视频生成、policy 与正/逆动力学（arXiv:2606.02800）。
 - [Kairos（原生世界–动作模型栈）](../entities/paper-kairos-native-world-model-stack.md) — **regret-aware CEDC + SWA/DSWA/GLA + 4B/3.1 部署导向 WAM**（arXiv:2606.16533 v3，[kairos-agi/kairos](https://github.com/kairos-agi/kairos)）。
@@ -293,6 +296,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - Luo, H., et al. (2026). *Being-H0.7: A Latent World-Action Model from Egocentric Videos* — 见 [sources/papers/being_h07.md](../../sources/papers/being_h07.md)。
 - Wang, S., et al. (2026). *World Action Models: The Next Frontier in Embodied AI* — 见 [sources/papers/world_action_models_survey_2605.md](../../sources/papers/world_action_models_survey_2605.md)。
 - Hu, Y., et al. (2025). *EWMBench: Evaluating Scene, Motion, and Semantic Quality in Embodied World Models* — 见 [sources/papers/ewmbench.md](../../sources/papers/ewmbench.md)。
+- Duan, H., et al. (2025). *WorldScore: A Unified Evaluation Benchmark for World Generation* — 见 [sources/papers/worldscore_arxiv_2504_00983.md](../../sources/papers/worldscore_arxiv_2504_00983.md)。
 - World Labs 官方站点与 Spark/Marble 关联归档 — 见 [sources/sites/worldlabs-ai.md](../../sources/sites/worldlabs-ai.md)。
 - Spark 2.0 技术博客归档 — 见 [sources/blogs/worldlabs_spark_2_0_streaming_3dgs.md](../../sources/blogs/worldlabs_spark_2_0_streaming_3dgs.md)。
 - Kim, B., et al. (2026). *Dexterous World Models* — 见 [sources/papers/dwm_arxiv_2512_17907.md](../../sources/papers/dwm_arxiv_2512_17907.md)。

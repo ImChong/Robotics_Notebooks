@@ -1,13 +1,76 @@
 {
   "generated_at": "2026-07-27",
-  "node_count": 1947,
-  "edge_count": 16816,
+  "node_count": 1948,
+  "edge_count": 16828,
   "coverage": {
-    "covered": 1895,
-    "total": 1923,
+    "covered": 1896,
+    "total": 1924,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-worldscore.md",
+      "detail_id": "entity-paper-worldscore",
+      "label": "WorldScore（统一世界生成评测基准）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/ewmbench.md",
+      "detail_id": "entity-ewmbench",
+      "label": "EWMBench（具身世界模型生成评测）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/generative-world-models.md",
+      "detail_id": "wiki-methods-generative-world-models",
+      "label": "Generative World Models (生成式世界模型)",
+      "type": "method",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/video-as-simulation.md",
+      "detail_id": "wiki-concepts-video-as-simulation",
+      "label": "Video-as-Simulation (视频即仿真)",
+      "type": "concept",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/topic-embodied-eval-benchmark.md",
+      "detail_id": "wiki-overview-topic-embodied-eval-benchmark",
+      "label": "具身评测基准选型闭环（专题汇总）",
+      "type": "overview",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/queries/embodied-eval-benchmark-selection-loop.md",
+      "detail_id": "wiki-queries-embodied-eval-benchmark-selection-loop",
+      "label": "Query：具身大模型评测基准选型闭环知识链",
+      "type": "query",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-diffgi.md",
       "detail_id": "entity-paper-diffgi",
@@ -154,106 +217,43 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/lumina-embodied.md",
-      "detail_id": "entity-lumina-embodied",
-      "label": "Lumina 具身智能社区",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/waytoagi.md",
-      "detail_id": "entity-waytoagi",
-      "label": "WaytoAGI（通往 AGI 之路）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/isaac-sim.md",
-      "detail_id": "entity-isaac-sim",
-      "label": "Isaac Sim",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
-    },
-    {
-      "path": "wiki/entities/openlet.md",
-      "detail_id": "entity-openlet",
-      "label": "OpenLET 具身智能开源数据集社区",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
-      "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
-      "label": "VLA 开源复现景观（2025 策展）",
-      "type": "overview",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/micromouse.md",
-      "detail_id": "wiki-concepts-micromouse",
-      "label": "Micromouse",
-      "type": "concept",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-diffgi.md",
-    "detail_id": "entity-paper-diffgi",
-    "label": "DiffGI（Differentiable Geometry Images · ECCV 2026）",
+    "path": "wiki/entities/paper-worldscore.md",
+    "detail_id": "entity-paper-worldscore",
+    "label": "WorldScore（统一世界生成评测基准）",
     "type": "entity",
     "recency": "2026-07-27",
     "source": "log.md",
     "action": "maintained",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 432
+      "size": 438
     },
     {
       "label": "人形论文深读笔记",
       "size": 225
     },
     {
+      "label": "人形强化学习运动控制",
+      "size": 158
+    },
+    {
       "label": "移动操作",
       "size": 153
     },
     {
-      "label": "人形强化学习运动控制",
-      "size": 136
-    },
-    {
       "label": "全身控制",
-      "size": 136
+      "size": 138
     },
     {
-      "label": "仿真训练",
-      "size": 83
+      "label": "模仿学习",
+      "size": 68
     }
   ],
   "top_hubs": [
@@ -330,7 +330,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 198,
+      "degree": 200,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
@@ -348,7 +348,8 @@
       "label": "BeyondMimic",
       "type": "method",
       "degree": 59,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
@@ -376,7 +377,8 @@
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
-      "degree": 46
+      "degree": 46,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "detail_id": "entity-paper-twist2",
