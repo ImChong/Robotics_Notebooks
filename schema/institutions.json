@@ -1766,6 +1766,33 @@
         "adobe",
         "adobe-research"
       ]
+    },
+    "uw-madison": {
+      "label": "威斯康星大学麦迪逊分校（University of Wisconsin–Madison）",
+      "aliases": [
+        "uw-madison",
+        "wisconsin",
+        "uwmadison"
+      ]
+    },
+    "ucsb": {
+      "label": "加州大学圣巴巴拉分校（UC Santa Barbara）",
+      "aliases": [
+        "ucsb",
+        "uc-santa-barbara"
+      ]
+    },
+    "rlwrld": {
+      "label": "瑞沃世界（RLWRLD）",
+      "aliases": [
+        "rlwrld"
+      ]
+    },
+    "instadapt": {
+      "label": "因思特自适应（InstAdapt）",
+      "aliases": [
+        "instadapt"
+      ]
     }
   }
 }

@@ -32,6 +32,8 @@ related:
   - ../entities/paper-driftworld.md
   - ../entities/paper-masked-visual-actions.md
   - ../entities/paper-ctrl-world.md
+  - ../entities/paper-rofacto.md
+  - ../entities/paper-vitacworld.md
   - ../entities/paper-wan-move.md
   - ../entities/paper-wan-video.md
   - ../entities/paper-robointer-1-5.md
@@ -259,6 +261,8 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [DriftWorld](../entities/paper-driftworld.md) — **1-step drifting** 动作条件 WM：推理时搜索 + 离线评估（arXiv:2607.15065）。
 - [Masked Visual Actions](../entities/paper-masked-visual-actions.md) — **像素掩码轨迹** 统一前向/逆向；RoboCasa 策略评估 **r=0.982**（arXiv:2607.19343）。
 - [Ctrl-World](../entities/paper-ctrl-world.md) — **多视角** 可控 WM：VLA 闭环评估 + 合成 SFT（ICLR 2026）。
+- [Rofacto](../entities/paper-rofacto.md) — **名义轨迹 + URDF 渲染** 动作接口；相对向量条件提升场景响应（arXiv:2607.22535）。
+- [ViTacWorld](../entities/paper-vitacworld.md) — **视触觉** 动作条件 WM：dream 数据增强 + 策略评估（arXiv:2607.22530）。
 - [Wan](../entities/paper-wan-video.md) / [Wan-Move](../entities/paper-wan-move.md) — 开源视频基础模型与 latent 轨迹运动控制。
 - [RoboInter1.5 / RoboInter-World](../entities/paper-robointer-1-5.md) — **IR 控制视频** 条件世界模型 + VLA 套件（arXiv:2607.18709）。
 - [τ₀-World Model（τ0-WM）](../entities/tau0-world-model.md) — Agibot **5B 统一视频–动作世界模型**：异构掩码预训练 + 测试时 propose–evaluate–revise（技术报告 2026-05-31）。
