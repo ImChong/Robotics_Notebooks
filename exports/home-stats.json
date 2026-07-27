@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-27",
-  "node_count": 1937,
-  "edge_count": 16685,
+  "node_count": 1938,
+  "edge_count": 16707,
   "coverage": {
-    "covered": 1885,
-    "total": 1913,
+    "covered": 1886,
+    "total": 1914,
     "percent": 99
   },
   "latest_wiki_nodes": [
@@ -52,6 +52,99 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
+      "path": "wiki/entities/paper-taco-tactile-sensor-benchmark.md",
+      "detail_id": "entity-paper-taco-tactile-sensor-benchmark",
+      "label": "TacO（触觉传感器操作基准 · arXiv:2605.21976）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
+    {
+      "path": "wiki/concepts/tactile-sensing.md",
+      "detail_id": "wiki-concepts-tactile-sensing",
+      "label": "Tactile Sensing（触觉感知）",
+      "type": "concept",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
+    {
+      "path": "wiki/concepts/visuo-tactile-fusion.md",
+      "detail_id": "wiki-concepts-visuo-tactile-fusion",
+      "label": "视触觉融合（Visuo-Tactile Fusion）",
+      "type": "concept",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
+    {
+      "path": "wiki/concepts/contact-rich-manipulation.md",
+      "detail_id": "wiki-concepts-contact-rich-manipulation",
+      "label": "Contact-Rich Manipulation（接触丰富型操作）",
+      "type": "concept",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
+    {
+      "path": "wiki/overview/topic-tactile.md",
+      "detail_id": "wiki-overview-topic-tactile",
+      "label": "触觉与力觉（专题汇总）",
+      "type": "overview",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
+    {
+      "path": "wiki/methods/imitation-learning.md",
+      "detail_id": "wiki-methods-imitation-learning",
+      "label": "Imitation Learning (IL, 模仿学习)",
+      "type": "method",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/methods/action-chunking.md",
+      "detail_id": "wiki-methods-action-chunking",
+      "label": "Action Chunking（动作块输出）",
+      "type": "method",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-taco-tactile-wm-vla-posttrain.md",
+      "detail_id": "entity-paper-taco-tactile-wm-vla-posttrain",
+      "label": "TACO（TActile World Model as a Self-COrrector · arXiv:2607.02840）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-vtap-gripper.md",
+      "detail_id": "entity-paper-vtap-gripper",
+      "label": "VTAP Gripper（视触觉主动掌夹爪）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
+    {
       "path": "wiki/entities/paper-topreward.md",
       "detail_id": "entity-paper-topreward",
       "label": "TOPReward：Token 概率作零样本机器人进度奖励",
@@ -94,17 +187,6 @@
       "action": "maintained"
     },
     {
-      "path": "wiki/methods/imitation-learning.md",
-      "detail_id": "wiki-methods-imitation-learning",
-      "label": "Imitation Learning (IL, 模仿学习)",
-      "type": "method",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
       "path": "wiki/concepts/open-x-embodiment.md",
       "detail_id": "wiki-concepts-open-x-embodiment",
       "label": "Open X-Embodiment（OXE）",
@@ -129,90 +211,6 @@
       "path": "wiki/entities/xpolicylab.md",
       "detail_id": "entity-xpolicylab",
       "label": "XPolicyLab（统一策略训推与评测适配层）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/queries/embodied-eval-benchmark-selection-loop.md",
-      "detail_id": "wiki-queries-embodied-eval-benchmark-selection-loop",
-      "label": "Query：具身大模型评测基准选型闭环知识链",
-      "type": "query",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/topic-embodied-eval-benchmark.md",
-      "detail_id": "wiki-overview-topic-embodied-eval-benchmark",
-      "label": "具身评测基准选型闭环（专题汇总）",
-      "type": "overview",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/simulation-evaluation-infrastructure.md",
-      "detail_id": "wiki-concepts-simulation-evaluation-infrastructure",
-      "label": "仿真评测基础设施（Simulation as Evaluation Infrastructure）",
-      "type": "concept",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/xiaomi-robotics-1.md",
-      "detail_id": "entity-xiaomi-robotics-1",
-      "label": "Xiaomi-Robotics-1",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/robo-bench.md",
-      "detail_id": "entity-robo-bench",
-      "label": "RoboBench（MLLM 具身大脑综合评测）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/vla-sota-leaderboard.md",
-      "detail_id": "entity-vla-sota-leaderboard",
-      "label": "VLA SOTA Leaderboard（EvoMind / MINT-SJTU）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/roboflow-sports.md",
-      "detail_id": "entity-roboflow-sports",
-      "label": "Roboflow Sports",
       "type": "entity",
       "recency": "2026-07-27",
       "source": "log.md",
@@ -286,7 +284,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 319,
+      "degree": 320,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -321,20 +319,20 @@
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
+      "detail_id": "wiki-methods-imitation-learning",
+      "label": "Imitation Learning (IL, 模仿学习)",
+      "type": "method",
+      "degree": 199,
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
       "degree": 198,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "detail_id": "wiki-methods-imitation-learning",
-      "label": "Imitation Learning (IL, 模仿学习)",
-      "type": "method",
-      "degree": 197,
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     }
   ],
   "top_paper_hubs": [
