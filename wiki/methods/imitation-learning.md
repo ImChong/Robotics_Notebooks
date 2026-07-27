@@ -27,6 +27,7 @@ related:
   - ../entities/paper-topreward.md
   - ../entities/paper-taco-tactile-sensor-benchmark.md
   - ../entities/xyz-deux.md
+  - ../entities/paper-chronos.md
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/papers/imitation_learning.md
@@ -197,6 +198,7 @@ flowchart TD
 - [Sim2Real](../concepts/sim2real.md)
 - [Foundation Policy（基础策略模型）](../concepts/foundation-policy.md)
 - [Behavior Cloning](./behavior-cloning.md) — 最基础的离线监督式 IL 基线
+- [Chronos](../entities/paper-chronos.md) — 全历史 SSM + IMLE + 二阶桥的非马尔可夫模仿（arXiv:2606.30318）
 - [CLAW (宇树 G1 全身动作数据生成管线)](./claw.md) — 通过 MuJoCo 仿真和组合原子动作快速生成带语言标签的专家数据
 - [Humanoid Transformer with Touch Dreaming](./humanoid-transformer-touch-dreaming.md) — 用未来触觉 latent 预测增强人形接触丰富型操作的行为克隆策略
 - [robot_lab](../entities/robot-lab.md) — 提供高效 IL/RL 任务开发环境的扩展框架

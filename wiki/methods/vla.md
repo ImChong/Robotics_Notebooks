@@ -64,6 +64,7 @@ related:
   - ../entities/paper-internvla-a15-unified-vla.md
   - ../entities/paper-harness-vla.md
   - ../entities/paper-fm-vla.md
+  - ../entities/paper-chronos.md
   - ../entities/paper-robointer-1-5.md
   - ../entities/dexmal-dm05.md
   - ../entities/paper-last-hd-latent-physical-reasoning.md
@@ -114,6 +115,7 @@ sources:
   - ../../sources/repos/cyclo_intelligence.md
   - ../../sources/papers/lingbot_vla_v2_tech_report.md
   - ../../sources/repos/lingbot-vla-v2.md
+  - ../../sources/papers/chronos_arxiv_2606_30318.md
 ---
 
 # VLA（Vision-Language-Action）
@@ -246,7 +248,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 
 **长程任务编排：** 当单段 VLA chunk 不足以覆盖「复位 → 移动 → 多轮操作 → 卸载」时，可用 **行为树** 显式调度策略 `LOAD/RESUME/STOP` 与确定性宏动作（关节/底盘）。开源锚点见 [Cyclo Intelligence](../entities/cyclo-intelligence.md) 与概念页 [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md)。
 
-**长程记忆增强（模型内）：** 相似观测在不同执行阶段需不同动作时，可在 VLA 视觉侧注入 **稀疏历史证据** 而非稠密帧堆叠或在线 VLM 子任务分解。[KEMO](../entities/paper-kemo-event-driven-keyframe-memory-vla.md)（arXiv:2606.23589）用 **运动学减速峰 + DINOv2 视觉去重** 选事件关键帧，经 **门控 cross-attention** 插拔进 **π₀.₅**，在真机双臂六项记忆依赖任务上相对无记忆基线 **TSR +23.6 pt**。[EventVLA](../entities/paper-eventvla-visual-evidence-memory.md)（arXiv:2606.20092）以 **基础视觉锚点 + 前瞻式 KEM** 在 **QwenOFT** 上端到端预测关键帧并 **拼接原始图像**；发布 **RoboTwin-MeM** 诊断基准，在 17 项仿真记忆任务与 4 项真机双臂任务上相对 SOTA 记忆 VLA 平均约 **+40%**（RoboTwin-MeM **75.2%**）。当阶段变化 **视觉几乎不可见**（重复按键、指定次数擦拭）时，改记 **接触力历史**：[FM-VLA](../entities/paper-fm-vla.md)（arXiv:2607.18231，清华/微软研究院等）用冻结 **Force-VAE** 把整集腕部 wrench 压成 **K=8** token（+短窗状态）注入 π₀.₅ action expert，智元 G1 三项任务平均 **83.3%**、推理仅 **+3.3 ms**，显著优于短窗力（TA-VLA）与视觉记忆（π-MEM）。另一条轴是把历史 **压缩进固定大小 fast weights** 而非显式帧记忆：[RoboTTT](../entities/paper-robottt-test-time-training-vla-context.md)（NVIDIA GEAR）在 **GR00T N1.7** 内嵌 **TTT 层**，每步 visuomotor token 对 fast weights 做 **自监督梯度更新**，把上下文扩到 **8K 步**（约 5 min）且 **推理延迟不随上下文增长**；相对单步上下文基线报告约 **+87%** 长程装配完成分，并支持 **单次人视频 in-context 模仿** 与 **部署后在线自纠偏**（与 [TTT-Parkour](../entities/paper-notebook-ttt-parkour.md) 的仿真短时微调式 TTT 不同）。
+**长程记忆增强（模型内）：** 相似观测在不同执行阶段需不同动作时，可在 VLA 视觉侧注入 **稀疏历史证据** 而非稠密帧堆叠或在线 VLM 子任务分解。[KEMO](../entities/paper-kemo-event-driven-keyframe-memory-vla.md)（arXiv:2606.23589）用 **运动学减速峰 + DINOv2 视觉去重** 选事件关键帧，经 **门控 cross-attention** 插拔进 **π₀.₅**，在真机双臂六项记忆依赖任务上相对无记忆基线 **TSR +23.6 pt**。[EventVLA](../entities/paper-eventvla-visual-evidence-memory.md)（arXiv:2606.20092）以 **基础视觉锚点 + 前瞻式 KEM** 在 **QwenOFT** 上端到端预测关键帧并 **拼接原始图像**；发布 **RoboTwin-MeM** 诊断基准，在 17 项仿真记忆任务与 4 项真机双臂任务上相对 SOTA 记忆 VLA 平均约 **+40%**（RoboTwin-MeM **75.2%**）。当阶段变化 **视觉几乎不可见**（重复按键、指定次数擦拭）时，改记 **接触力历史**：[FM-VLA](../entities/paper-fm-vla.md)（arXiv:2607.18231，清华/微软研究院等）用冻结 **Force-VAE** 把整集腕部 wrench 压成 **K=8** token（+短窗状态）注入 π₀.₅ action expert，智元 G1 三项任务平均 **83.3%**、推理仅 **+3.3 ms**，显著优于短窗力（TA-VLA）与视觉记忆（π-MEM）。与「往大 VLA 上挂记忆」正交的一条线是 **紧凑全历史策略**：[Chronos](../entities/paper-chronos.md)（arXiv:2606.30318，HUST）把观测历史写成 **SSM 潜状态**（一 token/物理步），再以 **IMLE 粗先验 + 二阶加速度桥** 生成动作；RMBench **73.6%**（相对 π₀.₅ **+62.4 pt**、Mem-0 **+22.8 pt**，约 **0.3B**），真机双臂平均 **78%**，代码与 HF ckpt 已开源。另一条轴是把历史 **压缩进固定大小 fast weights** 而非显式帧记忆：[RoboTTT](../entities/paper-robottt-test-time-training-vla-context.md)（NVIDIA GEAR）在 **GR00T N1.7** 内嵌 **TTT 层**，每步 visuomotor token 对 fast weights 做 **自监督梯度更新**，把上下文扩到 **8K 步**（约 5 min）且 **推理延迟不随上下文增长**；相对单步上下文基线报告约 **+87%** 长程装配完成分，并支持 **单次人视频 in-context 模仿** 与 **部署后在线自纠偏**（与 [TTT-Parkour](../entities/paper-notebook-ttt-parkour.md) 的仿真短时微调式 TTT 不同）。
 
 ## 适合放在系统中的哪一层
 
@@ -322,6 +324,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [sources/repos/lingbot-vla-v2.md](../../sources/repos/lingbot-vla-v2.md) — LingBot-VLA 2.0 官方仓库与权重入口
 - [sources/papers/harness_vla_arxiv_2607_08448.md](../../sources/papers/harness_vla_arxiv_2607_08448.md) — Harness VLA：冻结 VLA 作接触原语 + 记忆增强 agentic harness（arXiv:2607.08448）
 - [sources/papers/fm_vla_arxiv_2607_18231.md](../../sources/papers/fm_vla_arxiv_2607_18231.md) — FM-VLA：Force-VAE 力觉长程记忆（arXiv:2607.18231）
+- [sources/papers/chronos_arxiv_2606_30318.md](../../sources/papers/chronos_arxiv_2606_30318.md) — Chronos：全历史 SSM + IMLE + 二阶桥（arXiv:2606.30318）
 - [sources/papers/robointer_1_5_arxiv_2607_18709.md](../../sources/papers/robointer_1_5_arxiv_2607_18709.md) — RoboInter1.5 中间表示套件（arXiv:2607.18709）
 - [sources/repos/rpent.md](../../sources/repos/rpent.md) — RPent：Harness VLA 官方 agent 运行时
 - [sources/papers/lehome_learning_to_fold_arxiv_2606_27163.md](../../sources/papers/lehome_learning_to_fold_arxiv_2606_27163.md) — Learning to Fold：π₀.₅ + AWR/RECAP 异步 RL 叠衣全链路（arXiv:2606.27163）
@@ -382,6 +385,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [FM-VLA（力觉长程记忆）](../entities/paper-fm-vla.md) — Force-VAE 压缩 wrench 历史注入 π₀.₅；接触计数任务平均 83.3%、+3.3 ms（arXiv:2607.18231）
 - [KEMO（事件关键帧视觉记忆）](../entities/paper-kemo-event-driven-keyframe-memory-vla.md) — 运动学峰 + DINOv2 去重选帧插拔 π₀.₅（arXiv:2606.23589）
 - [EventVLA（视觉证据记忆）](../entities/paper-eventvla-visual-evidence-memory.md) — 前瞻 KEM + 原始关键帧缓冲；RoboTwin-MeM（arXiv:2606.20092）
+- [Chronos（全历史 SSM + 二阶动作桥）](../entities/paper-chronos.md) — 紧凑非马尔可夫策略；RMBench 73.6%、真机 78%（arXiv:2606.30318）
 - [RoboInter1.5（中间表示套件）](../entities/paper-robointer-1-5.md) — Data/VQA/VLM/VLA + IR 条件 World；部分开源（arXiv:2607.18709）
 - [Learning to Fold（LeHome 2026）](../entities/paper-lehome-learning-to-fold.md) — π₀.₅ + AWR/RECAP 异步 RL 与真机 DAgger；仿真 1st / 真机 2nd；全链路开源（arXiv:2606.27163）
 - [DEED](../entities/paper-deed.md) — G1-Edu + GR00T N1.6 零售补货：Data-Efficient + RECAP（未开源，arXiv:2607.20345）

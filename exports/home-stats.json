@@ -1,13 +1,120 @@
 {
   "generated_at": "2026-07-27",
-  "node_count": 1945,
-  "edge_count": 16787,
+  "node_count": 1946,
+  "edge_count": 16806,
   "coverage": {
-    "covered": 1893,
-    "total": 1921,
+    "covered": 1894,
+    "total": 1922,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-chronos.md",
+      "detail_id": "entity-paper-chronos",
+      "label": "Chronos（Physics-Informed Full-History Framework for Non-Markovian Long-Horizon Manipulation）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/robotwin.md",
+      "detail_id": "entity-robotwin",
+      "label": "RoboTwin 2.0",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-eventvla-visual-evidence-memory.md",
+      "detail_id": "entity-paper-eventvla-visual-evidence-memory",
+      "label": "EventVLA（Event-Driven Visual Evidence Memory for Long-Horizon VLA）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-kemo-event-driven-keyframe-memory-vla.md",
+      "detail_id": "entity-paper-kemo-event-driven-keyframe-memory-vla",
+      "label": "KEMO（Event-Driven Keyframe Memory for Long-Horizon Robot Manipulation with VLA Policies）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-fm-vla.md",
+      "detail_id": "entity-paper-fm-vla",
+      "label": "FM-VLA（Force-based Memory for Vision-Language-Action Models）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/action-chunking.md",
+      "detail_id": "wiki-methods-action-chunking",
+      "label": "Action Chunking（动作块输出）",
+      "type": "method",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/diffusion-policy.md",
+      "detail_id": "wiki-methods-diffusion-policy",
+      "label": "Diffusion Policy",
+      "type": "method",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/imitation-learning.md",
+      "detail_id": "wiki-methods-imitation-learning",
+      "label": "Imitation Learning (IL, 模仿学习)",
+      "type": "method",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
     {
       "path": "wiki/entities/lumina-embodied.md",
       "detail_id": "entity-lumina-embodied",
@@ -29,17 +136,6 @@
       "action": "maintained"
     },
     {
-      "path": "wiki/entities/robotwin.md",
-      "detail_id": "entity-robotwin",
-      "label": "RoboTwin 2.0",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
       "path": "wiki/entities/isaac-sim.md",
       "detail_id": "entity-isaac-sim",
       "label": "Isaac Sim",
@@ -49,17 +145,6 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/openlet.md",
@@ -137,109 +222,23 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/kicad.md",
-      "detail_id": "entity-kicad",
-      "label": "KiCad（开源 PCB 与原理图 EDA）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/mushr.md",
-      "detail_id": "entity-mushr",
-      "label": "MuSHR",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/oomwoo.md",
-      "detail_id": "entity-oomwoo",
-      "label": "OOMWOO",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/navigation2.md",
-      "detail_id": "entity-navigation2",
-      "label": "Navigation2（Nav2）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/slam-toolbox.md",
-      "detail_id": "entity-slam-toolbox",
-      "label": "SLAM Toolbox",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/overview/navigation-slam-autonomy-stack.md",
-      "detail_id": "wiki-overview-navigation-slam-autonomy-stack",
-      "label": "导航·SLAM·自动驾驶开源栈总览",
-      "type": "overview",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-molingo.md",
-      "detail_id": "entity-paper-molingo",
-      "label": "MoLingo（Motion–Language Alignment for Text-to-Human Motion Generation）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/methods/diffusion-motion-generation.md",
-      "detail_id": "wiki-methods-diffusion-motion-generation",
-      "label": "Diffusion-based Motion Generation (基于扩散模型的运动生成)",
-      "type": "method",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/lumina-embodied.md",
-    "detail_id": "entity-lumina-embodied",
-    "label": "Lumina 具身智能社区",
+    "path": "wiki/entities/paper-chronos.md",
+    "detail_id": "entity-paper-chronos",
+    "label": "Chronos（Physics-Informed Full-History Framework for Non-Markovian Long-Horizon Manipulation）",
     "type": "entity",
     "recency": "2026-07-27",
     "source": "log.md",
-    "action": "added",
+    "action": "maintained",
     "has_repo": true,
     "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 431
+      "size": 432
     },
     {
       "label": "人形论文深读笔记",
@@ -274,7 +273,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 353,
+      "degree": 355,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -290,7 +289,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 321,
+      "degree": 323,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -328,7 +327,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 201,
+      "degree": 203,
       "has_repo": true,
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },

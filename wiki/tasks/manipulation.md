@@ -131,6 +131,7 @@ flowchart TD
 - **T-Rex**（[实体页](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md)，arXiv:2606.17055）：**触觉反应式灵巧操作**——人视频预训练 + **100 h 触觉 play mid-training** + 变频率 MoT；开源触觉数据集与 **12 任务** 双手真机基准
 - **OmniTacTune**（[实体页](../entities/paper-omnitactune-tactile-residual-adaptation.md)，arXiv:2607.03723）：**策略无关触觉残差真机 RL**——冻结 Flow/ACT/DP/π₀.₅ 视觉基策略，**40–80 min** 在线练习把接触丰富任务 **5–40% → 85–100%**；**无需离线触觉演示**
 - **FM-VLA**（[实体页](../entities/paper-fm-vla.md)，arXiv:2607.18231）：**力觉长程记忆**——冻结 Force-VAE 压缩整集腕部 wrench 为 **K=8** token（+短窗状态）注入 **π₀.₅**；智元 G1 三项记忆依赖接触任务平均 **83.3%**，推理仅 **+3.3 ms**（官方代码 coming soon）
+- **Chronos**（[实体页](../entities/paper-chronos.md)，arXiv:2606.30318）：**全历史 SSM + IMLE + 二阶加速度桥**——历史作策略潜状态；RMBench **73.6%**（相对 π₀.₅ **+62.4 pt**），真机双臂平均 **78%**；RMBench+UR3 代码与 HF ckpt 已开源
 - **VTAP Gripper**（[实体页](../entities/paper-vtap-gripper.md)，arXiv:2607.15448）：**视触觉主动掌 + FlexiTac 三指夹爪**——硬件级指–掌协同与手势条件遥操作重定向；反应抓取 **93.3%**、peg-in-hole **70%**（确认未开源）
 - **NeoteAI 𝒩₀**（[公司实体](../entities/neoteai.md)）：OpenNeoData **5k h** + NeoForce 力场；[𝒩₀-VTLA](../entities/paper-n0-vtla.md) NeoReal **47.2%**；[𝒩₀-TWAM](../entities/paper-n0-twam.md) 真机接触均 **46.3%**（模型代码待 2026-07-31）
 - **家用可变形操作 · Solve 叙事**：[ACT-2（Sunday Robotics）](../entities/sunday-robotics-act2.md)（2026-07）在 **Memo** 移动平台上以 **人类 sensorized 预训练 + in-house post-training** 报告 **叠衣 99.1%（785 ep、未见家庭、零部署适配）**；评测框架见 [Robotics Solve 标准](../concepts/robotics-solve-standard.md)——与开源 [TidyBot2](../entities/tidybot2.md)、[LeRobot folding](../entities/lerobot.md)、竞赛全链路 [Learning to Fold / LeHome](../entities/paper-lehome-learning-to-fold.md)（仿真 1st / 真机 2nd，SO-ARM101）形成 **闭源可靠性主张 vs 可复现栈** 对照
@@ -206,6 +207,7 @@ flowchart TD
 - [KEMO](../entities/paper-kemo-event-driven-keyframe-memory-vla.md) — 事件驱动关键帧记忆插拔 π₀.₅，真机双臂长程记忆依赖任务 TSR +23.6 pt（arXiv:2606.23589）
 - [FM-VLA](../entities/paper-fm-vla.md) — Force-VAE 力觉长程记忆注入 π₀.₅；智元 G1 接触计数任务平均 83.3%（arXiv:2607.18231）
 - [EventVLA](../entities/paper-eventvla-visual-evidence-memory.md) — 稀疏视觉证据记忆 + RoboTwin-MeM（arXiv:2606.20092）
+- [Chronos](../entities/paper-chronos.md) — 全历史 SSM + IMLE + 二阶加速度桥；RMBench 73.6%、真机 78%（arXiv:2606.30318）
 - [RoboTTT](../entities/paper-robottt-test-time-training-vla-context.md) — GR00T N1.7 内嵌 TTT fast weights，8K 步 visuomotor 上下文 + 部署后在线学习（NVIDIA GEAR 项目页）
 - [KinetIQ Ascend](../entities/kinetiq-ascend.md) — 产线 CFM-VLA 真机 PPO 后训练（Humanoid, 2026）
 - [MolmoMotion](../entities/molmo-motion.md) — 语言条件 3D 点轨迹预测与 DROID 微调规划先验（arXiv:2606.18558）

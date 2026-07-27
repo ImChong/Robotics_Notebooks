@@ -27,6 +27,7 @@ related:
   - ../methods/action-chunking.md
   - ./paper-kemo-event-driven-keyframe-memory-vla.md
   - ./paper-eventvla-visual-evidence-memory.md
+  - ./paper-chronos.md
 sources:
   - ../../sources/papers/fm_vla_arxiv_2607_18231.md
   - ../../sources/sites/fm-vla-page.md
@@ -201,6 +202,7 @@ Action expert 序列：`[noisy-action × H] ‖ [力记忆 × K] ‖ [状态 × 
 | 路线 | 记什么 | 典型代表 | 相对 FM-VLA |
 |------|--------|----------|-------------|
 | 视觉稀疏关键帧 | 可见状态转移 | [KEMO](./paper-kemo-event-driven-keyframe-memory-vla.md)、[EventVLA](./paper-eventvla-visual-evidence-memory.md) | 画面有阶段变化时优先；视觉模糊计数时 FM-VLA 更对症 |
+| 全历史 SSM 策略 | 轨迹级相位状态 | [Chronos](./paper-chronos.md) | 紧凑专用策略 + 二阶动作桥；非挂到 π 系的力/视觉记忆模块 |
 | 视觉稠密/多尺度 | 帧或语言摘要 | MemoryVLA、MEM / π-MEM | 更贵；Buttons 上仍明显落后 |
 | 短窗力/触觉条件 | 瞬时接触 | TA-VLA、ForceVLA | 改善接触细控，不解决长程事件计数 |
 | Fast-weight / TTT | 压缩进权重 | RoboTTT 等 | 另一记忆介质；与力通道正交 |
@@ -214,6 +216,7 @@ Action expert 序列：`[noisy-action × H] ‖ [力记忆 × K] ‖ [状态 × 
 - [Action Chunking](../methods/action-chunking.md) — $H=30$ 动作块
 - [KEMO](./paper-kemo-event-driven-keyframe-memory-vla.md) — 事件关键帧视觉记忆（π₀.₅）
 - [EventVLA](./paper-eventvla-visual-evidence-memory.md) — 学习式视觉关键帧记忆 + RoboTwin-MeM
+- [Chronos](./paper-chronos.md) — 全历史 SSM + IMLE/二阶桥的紧凑记忆策略（arXiv:2606.30318）
 
 ## 参考来源
 
