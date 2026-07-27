@@ -12,6 +12,7 @@
 - **作者：** Alex Brandes、Haig Conti Georges Sajelian、Manthan Patel、Dominik Hollidt、Chenhao Li、Matthias Heyrman、Oliver Hausdörfer、Manuel Kaufmann、Xi Wang、Jonas Frey、Angela P. Schoellig、Christian Holz、Marc Pollefeys、Marco Hutter 等
 - **状态：** arXiv 预印本（约 2026-07-15）；**数据与代码计划开放**（项目页 Dataset / Code 均标 *coming soon*）
 - **入库日期：** 2026-07-21
+- **开源再核查：** 2026-07-27 — 项目页仍为 Dataset / Code *coming soon*；GitHub org `egohtr` 仅 `egohtr.github.io` 站点仓
 - **一句话说明：** 用 Aria 眼镜 + Rokoko IMU 服 + Leica BLK2GO 扫描，在 rough terrain 上采集 **55** 条场景对齐的 4D 人体运动（约 **1.37 h / 150k** 帧），并以此训练 Unitree G1 感知 locomotion。
 
 ## 摘录 1：问题与贡献
@@ -39,32 +40,32 @@
 ## 摘录 3：数据集规模与精度
 
 - **规模：** 7 场景（办公室、实验室跑酷厅、健身房、户外废墟等，约 25–1000 m²）；动作含 parkour、爬、翻、窄道、踏石、楼梯等；55 序列 / 1.37 h / ~150k @ 30 fps；平均序列约 90 s；36 序列含第二视角 Aria（0.88 h）；约 0.7 h 标记 mocap GT 测试子集。
-- **局部精度（相对 mocap GT）：** MPJPE **73.2 mm**、PA-MPJPE **54.3 mm**；相对 SLOPER4D 在更难动态/粗糙地形下仍略优。
-- **全局：** 报告 W-MPJPE / WA-MPJPE / RTE（自称首个报告全局 HPS 估计的人–场景运动数据集之一）。
+- **局部精度（相对 mocap GT）：** MPJPE **73.2 mm**、PA-MPJPE **54.3 mm**；相对 SLOPER4D（78.01 / 55.4）在更难动态/粗糙地形下仍略优（约 −6.2% / −2.0%）。
+- **全局（自称首个报告全局 HPS 的人–场景运动数据集之一）：** W-MPJPE **151.3 mm**、WA-MPJPE **66.7 mm**、RTE **0.09%**（mocap GT 子集，~72.6k 帧量级）。
 - **定性：** 粗糙地形上脚滑、穿地、时序抖动较少；管道/箱体等强遮挡场景仍可用。
 
 **对 wiki 的映射：** 实体页「数据集速查」；更新 [人形参考运动数据集选型](../../wiki/comparisons/humanoid-reference-motion-datasets.md)。
 
 ## 摘录 4：下游感知 locomotion 与精度必要性
 
-- **训练：** 按参考 clip 分别训 Unitree G1 专家；PPO；actor 观测本体 + 重定向关节指令 + yaw 对齐地形高度扫描；除 mimic 奖励外加 **时间脚接触奖励**（稀疏踏石上尤为关键）。
-- **消融：** 接触奖励在 stepping stones 上提升成功率并加速收敛（文中 Table 3）。
-- **参考精度门槛：** 对参考根位置加高斯噪声——约 **σ≤0.05 m** 仍可训，**>0.1 m** 崩溃；论证当前单目人–场景重建全局误差常超该窗，而 EgoHTR 锚定 Aria SLAM + 稠密扫描可满足 foothold-critical 任务。
+- **训练：** 按参考 clip 分别训 Unitree G1 专家；PPO；actor 观测本体 + 重定向关节指令 + yaw 对齐地形高度扫描；除 mimic 奖励外加 **时间脚接触奖励**（稀疏踏石上尤为关键）；自适应参考状态初始化（仅无穿透帧）。
+- **消融（Table 3，5 seeds）：** stepping stones 上加接触奖励：Max SR **67% → 72%**，收敛到 SR≥50% 的步数 **7.14 → 5.72**（×10⁸）；Flat/Beam 成功率持平但收敛略快。
+- **参考精度门槛：** 对参考根位置加高斯噪声——约 **σ≤0.05 m** 仍可训，**>0.1 m** 崩溃；论证当前单目人–场景重建（VisualMimic / MeshMimic 等）全局误差常超该窗，而 EgoHTR 锚定 Aria SLAM + 稠密扫描可满足 foothold-critical 任务。
 - **重定向栈：** 场景感知 retarget 基于 OmniRetarget、GMR、CoACD（项目页方法说明）。
 - **真机：** beam / box-up 等原子技能在 G1 上部署演示。
 
-**对 wiki 的映射：** [Locomotion](../../wiki/tasks/locomotion.md)、[Terrain Adaptation](../../wiki/concepts/terrain-adaptation.md)、[OmniRetarget](../../wiki/entities/paper-hrl-stack-03-omniretarget.md)、[RPL](../../wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md)。
+**对 wiki 的映射：** [Locomotion](../../wiki/tasks/locomotion.md)、[Terrain Adaptation](../../wiki/concepts/terrain-adaptation.md)、[OmniRetarget](../../wiki/entities/paper-hrl-stack-03-omniretarget.md)、[RPL](../../wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md)、[VisualMimic](../../wiki/entities/paper-notebook-visualmimic.md)、[MeshMimic](../../wiki/entities/paper-notebook-meshmimic.md)。
 
 ## 摘录 5：HMR 基准与局限
 
-- **基准：** 外视（如 JOSH / Human3R）、ego（EgoAllo）等在遮挡、运动模糊、全局漂移上暴露失败模式；数据集可作 fine-tune 资源。
+- **基准（Table 4 节选）：** 外视 JOSH SR **57.2%** / Human3R SR **80.5%**（遮挡、运动模糊下失败）；EgoAllo 虽 SR 100% 但局部 MPJPE **161.1 mm**、PA-MPJPE **111.5 mm**（偏平地先验）；IMU poser 易时序漂移致不可物理交互。数据集可作 fine-tune 资源。
 - **局限：** 规模尚不足以大规模预训练；仅静态环境、无关节物体；手部未并入身体模型；无事后联合人–场景优化；无特征环境 / 高加速机动可能失败。
-- **开放边界（项目页核查，截至 2026-07-21）：** 页头 **Dataset (coming soon)**、**Code (coming soon)**；GitHub org `egohtr` 仅公开项目站仓 `egohtr/egohtr.github.io`，**无可运行重建/训练仓与数据下载 URL** → 归类 **宣称将开源 / 待发布**。
+- **开放边界（项目页核查，截至 2026-07-27 再确认）：** 页头 **Dataset (coming soon)**、**Code (coming soon)**；GitHub org `egohtr` 仅公开项目站仓 `egohtr/egohtr.github.io`，**无可运行重建/训练仓与数据下载 URL** → 归类 **宣称将开源 / 待发布**。
 
 **对 wiki 的映射：** sites 归档与实体页「开源状态 / 源码运行时序图：不适用」。
 
 ## 当前提炼状态
 
 - [x] arXiv HTML / 项目页 / GitHub org 已对齐摘录
-- [x] wiki 映射：`wiki/entities/paper-egohtr.md` 新建
+- [x] wiki 映射：`wiki/entities/paper-egohtr.md`（2026-07-21 新建；2026-07-27 加深评测数字与开源再核查）
 - [x] 开源边界写入 sites / wiki 局限（无 repos：尚无代码 URL）

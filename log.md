@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-27] ingest | sources/papers/egohtr_arxiv_2607_13472.md — EgoHTR 加深评测数字与开源再核查；wiki/entities/paper-egohtr.md + VisualMimic/MeshMimic 回链
+
 ## [2026-07-27] ingest | sources/papers/fm_vla_arxiv_2607_18231.md — FM-VLA 力觉记忆 VLA；wiki/entities/paper-fm-vla.md + 交叉 VLA/manipulation/CRM/KEMO/EventVLA
 
 - **论文：** [`sources/papers/fm_vla_arxiv_2607_18231.md`](sources/papers/fm_vla_arxiv_2607_18231.md)（arXiv:2607.18231；清华 / 微软研究院 / 复旦 / 中科大）

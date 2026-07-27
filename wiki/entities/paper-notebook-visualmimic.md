@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, visual-rl, sim2real, hierarchical-control, teacher-student, dagger, ppo, keypoint-tracking, depth, humanoid-paper-notebooks, stanford]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-27
 arxiv: "2509.20322"
 venue: "2025 · arXiv"
 code: https://github.com/visualmimic/VisualMimic
@@ -19,6 +19,7 @@ related:
   - ./paper-resmimic.md
   - ./paper-viral-humanoid-visual-sim2real.md
   - ./yanjie-ze.md
+  - ./paper-egohtr.md
 sources:
   - ../../sources/papers/visualmimic_arxiv_2509_20322.md
   - ../../sources/papers/humanoid_pnb_visualmimic.md
@@ -141,6 +142,7 @@ flowchart TB
 - 视觉环境交互对照：[videomimic.md](./videomimic.md)
 - GMT/残差 loco-manip 对照：[paper-resmimic.md](./paper-resmimic.md)
 - 规模化 RGB sim2real 对照：[paper-viral-humanoid-visual-sim2real.md](./paper-viral-humanoid-visual-sim2real.md)
+- 高精度人–地形 4D 对照：[EgoHTR](./paper-egohtr.md) — 论证单目全局误差常超 foothold 0.1 m 容忍窗
 - Sim2Real 概念：[sim2real.md](../concepts/sim2real.md)
 
 ## 参考来源

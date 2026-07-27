@@ -15,7 +15,7 @@ tags:
   - isaac-gym
   - amazon-far
 status: complete
-updated: 2026-07-24
+updated: 2026-07-27
 arxiv: "2602.03002"
 related:
   - ../tasks/stair-obstacle-perceptive-locomotion.md
