@@ -1,13 +1,56 @@
 {
   "generated_at": "2026-07-27",
   "node_count": 1938,
-  "edge_count": 16706,
+  "edge_count": 16707,
   "coverage": {
     "covered": 1886,
     "total": 1914,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/handumi.md",
+      "detail_id": "entity-handumi",
+      "label": "HandUMI",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/teleoperation.md",
+      "detail_id": "wiki-tasks-teleoperation",
+      "label": "Teleoperation（遥操作）",
+      "type": "task",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/tasks/bimanual-manipulation.md",
+      "detail_id": "wiki-tasks-bimanual-manipulation",
+      "label": "Bimanual Manipulation（双臂协调操作）",
+      "type": "task",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/lerobot.md",
+      "detail_id": "entity-lerobot",
+      "label": "LeRobot (Hugging Face)",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-taco-tactile-sensor-benchmark.md",
       "detail_id": "entity-paper-taco-tactile-sensor-benchmark",
@@ -174,58 +217,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/queries/embodied-eval-benchmark-selection-loop.md",
-      "detail_id": "wiki-queries-embodied-eval-benchmark-selection-loop",
-      "label": "Query：具身大模型评测基准选型闭环知识链",
-      "type": "query",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/topic-embodied-eval-benchmark.md",
-      "detail_id": "wiki-overview-topic-embodied-eval-benchmark",
-      "label": "具身评测基准选型闭环（专题汇总）",
-      "type": "overview",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/simulation-evaluation-infrastructure.md",
-      "detail_id": "wiki-concepts-simulation-evaluation-infrastructure",
-      "label": "仿真评测基础设施（Simulation as Evaluation Infrastructure）",
-      "type": "concept",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-taco-tactile-sensor-benchmark.md",
-    "detail_id": "entity-paper-taco-tactile-sensor-benchmark",
-    "label": "TacO（触觉传感器操作基准 · arXiv:2605.21976）",
+    "path": "wiki/entities/handumi.md",
+    "detail_id": "entity-handumi",
+    "label": "HandUMI",
     "type": "entity",
     "recency": "2026-07-27",
     "source": "log.md",
     "action": "maintained",
     "has_repo": true,
-    "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {

@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-27] ingest | sources/repos/handumi-sw.md — 刷新 HandUMI：硬件迁 robonet-ai/handumi-hw、统一 CLI、QA/convert 管线；wiki/entities/handumi.md；交叉 teleoperation / bimanual-manipulation / lerobot；归档 handumi-hw / handumi-quest-app / sites/handumi-sw
+
+- **软件 / 硬件 / Quest / 文档：** [`sources/repos/handumi-sw.md`](sources/repos/handumi-sw.md)（<https://github.com/robonet-ai/handumi-sw>）· [`sources/repos/handumi-hw.md`](sources/repos/handumi-hw.md)（<https://github.com/robonet-ai/handumi-hw>；旧 BrikHMP18 仓 301）· [`sources/repos/handumi-quest-app.md`](sources/repos/handumi-quest-app.md) · [`sources/sites/handumi-sw.md`](sources/sites/handumi-sw.md)（<https://robonet-ai.github.io/handumi-sw/>）
+- **主升格 / 刷新：** [`wiki/entities/handumi.md`](wiki/entities/handumi.md) — 一次采集、多臂重定向；模块化 tip；Feetech 直测开合；`handumi`/`hu` CLI；LeRobot v3 + validate/convert
+- **交叉：** [`wiki/tasks/teleoperation.md`](wiki/tasks/teleoperation.md)、[`wiki/tasks/bimanual-manipulation.md`](wiki/tasks/bimanual-manipulation.md)、[`wiki/entities/lerobot.md`](wiki/entities/lerobot.md)
+- **开源核查（2026-07-27）：** handumi-sw / handumi-hw **已开源**（Apache-2.0）；Quest 应用公开仓 + APK（仓页未标 SPDX）
+
 ## [2026-07-27] ingest | sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md — TacO 跨模态触觉传感器真机 IL 基准；升格 wiki/entities/paper-taco-tactile-sensor-benchmark.md；交叉更新 wiki/concepts/tactile-sensing.md、wiki/concepts/visuo-tactile-fusion.md、wiki/concepts/contact-rich-manipulation.md、wiki/overview/topic-tactile.md、wiki/methods/imitation-learning.md、wiki/methods/action-chunking.md、wiki/entities/paper-taco-tactile-wm-vla-posttrain.md、wiki/entities/paper-vtap-gripper.md；归档 sources/sites/tacobench-github-io.md、sources/repos/taco-bench.md
 
 - **论文 / 项目页 / 仓：** [`sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md`](sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md)（arXiv:2605.21976）· [`sources/sites/tacobench-github-io.md`](sources/sites/tacobench-github-io.md)（<https://tacobench.github.io/>）· [`sources/repos/taco-bench.md`](sources/repos/taco-bench.md)（<https://github.com/TacObench/TacO>）· 硬件 STL（<https://github.com/TacObench/TacObench.github.io/tree/main/3D_part_files>）
