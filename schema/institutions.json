@@ -1808,6 +1808,15 @@
         "ai-mmlab",
         "mmlab-club"
       ]
+    },
+    "xyz-corp": {
+      "label": "艾克斯怀吉（XYZ）",
+      "aliases": [
+        "xyz-corp",
+        "xyz",
+        "xyzcorp",
+        "deux"
+      ]
     }
   }
 }

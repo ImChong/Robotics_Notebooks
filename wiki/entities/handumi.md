@@ -12,6 +12,7 @@ related:
   - ./mimic-wearable-u1.md
   - ./paper-bifrost-umi.md
   - ./paper-halomi-humanoid-loco-manipulation.md
+  - ./xyz-deux.md
 sources:
   - ../../sources/repos/handumi-sw.md
   - ../../sources/repos/handumi-hw.md
@@ -54,7 +55,7 @@ HandUMI 把问题切成两步：
 1. **采集阶段**：用可穿戴 HandUMI + PICO / Quest 追踪，**脱离目标机器人** 记录同步示范；
 2. **部署阶段**：对选定 embodiment 做 **标定指纹 + 重定向 + QA**，再仿真预览或真机回放/遥操作。
 
-文档站明确其产品叙事：帮助 **初创公司加速部署**、帮助 **研究人员做更多实验**。这与 [BifrostUMI](./paper-bifrost-umi.md)、[HALOMI](./paper-halomi-humanoid-loco-manipulation.md) 等 **无机器人示范** 路线同族，但 HandUMI **明确收敛到平行夹爪双臂工位**，而非全身人形 loco-manipulation；工程上更贴近 **LeRobot 生态的数据飞轮**（见 [LeRobot](./lerobot.md)）。相对 [mimic U1](./mimic-wearable-u1.md) 的「与特定灵巧手 1:1 运动学」路线，HandUMI 走 **跨臂可重定向**，用 tip 模块化换夹爪几何。
+文档站明确其产品叙事：帮助 **初创公司加速部署**、帮助 **研究人员做更多实验**。这与 [BifrostUMI](./paper-bifrost-umi.md)、[HALOMI](./paper-halomi-humanoid-loco-manipulation.md) 等 **无机器人示范** 路线同族，但 HandUMI **明确收敛到平行夹爪双臂工位**，而非全身人形 loco-manipulation；工程上更贴近 **LeRobot 生态的数据飞轮**（见 [LeRobot](./lerobot.md)）。相对 [mimic U1](./mimic-wearable-u1.md) 的「与特定灵巧手 1:1 运动学」路线，HandUMI 走 **跨臂可重定向**，用 tip 模块化换夹爪几何；相对商业 [DEUX / Glove X](./xyz-deux.md) 的 **专有三指手 1:1 绑定**，HandUMI 优先 **开源可迁移数据集** 而非门店一体机锁定。
 
 ## 流程总览
 
@@ -170,6 +171,7 @@ flowchart LR
 - [ALOHA (双臂遥操作硬件)](./aloha.md) — 传统 leader–follower 双臂采集对照
 - [mimic wearable U1](./mimic-wearable-u1.md) — 固定运动学外骨骼 / 无 retargeting 对照
 - [BifrostUMI](./paper-bifrost-umi.md) — 无机器人示范 → 人形全身对照
+- [DEUX / Glove X（XYZ）](./xyz-deux.md) — 商业 1:1 手套绑定对照（闭源、不可跨臂迁移）
 
 ## 参考来源
 

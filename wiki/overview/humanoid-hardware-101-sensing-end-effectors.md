@@ -2,16 +2,19 @@
 type: overview
 tags: [humanoid, hardware, tactile, end-effector, imu, category-hub]
 status: complete
-updated: 2026-06-01
+updated: 2026-07-27
 summary: "Humanoid Hardware 101 · 06 传感与末端 — IMU/相机可commodity；触觉占手部 BOM 大头；多数任务不必 24DoF 全驱动灵巧手。"
 related:
   - ./humanoid-hardware-101-technology-map.md
   - ./humanoid-hardware-101-integrated-actuators.md
   - ../concepts/visuo-tactile-fusion.md
   - ../methods/grasp-pose-estimation.md
+  - ../entities/sunday-robotics-act2.md
+  - ../entities/xyz-deux.md
 sources:
   - ../../sources/blogs/wechat_human_five_humanoid_hardware_101.md
   - ../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md
+  - ../../sources/sites/xyzcorp-deux.md
 ---
 
 # Humanoid Hardware 101 · 06：传感与末端执行器
@@ -39,11 +42,12 @@ sources:
 ## 末端执行器
 
 - 全驱动多指 **成本高、装配难、耐久挑战大**；多数商业场景 **两指/三指/任务夹爪** 单位经济性更优。
-- 文内：工业取放、家务（[Sunday 三指](../entities/sunday-robotics-act2.md) 等）证明 **不必人手形态** 才能干活。
+- 文内：工业取放、家务（[Sunday 三指](../entities/sunday-robotics-act2.md) 等）证明 **不必人手形态** 才能干活；韩国 [DEUX](../entities/xyz-deux.md)（XYZ，2026）同样押注 **三指专有手 + Glove X 1:1 采数**，把「几何三点接触」写进零售服务机器人产品叙事。
 
 ## 关联页面
 
 - [ACT-2 / Sunday Robotics](../entities/sunday-robotics-act2.md) — Memo 家用平台与三指家务夹爪产业案例
+- [DEUX（XYZ）](../entities/xyz-deux.md) — 半人形服务机器人 + 三指手 + Glove X 商业样本
 - [Humanoid Hardware 101 技术地图](./humanoid-hardware-101-technology-map.md)
 - [产业与成本地缘](./humanoid-hardware-101-supply-chain-economics.md)
 - [视觉触觉融合](../concepts/visuo-tactile-fusion.md)
@@ -53,3 +57,4 @@ sources:
 
 - [wechat_human_five_humanoid_hardware_101.md](../../sources/blogs/wechat_human_five_humanoid_hardware_101.md)
 - [wechat_humanoid_hardware_101_2026-06-01.md](../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md)
+- [xyzcorp-deux.md](../../sources/sites/xyzcorp-deux.md) — DEUX 三指手与 Glove X 产品归档

@@ -1300,6 +1300,7 @@
 - [xr_teleoperate](wiki/entities/xr-teleoperate.md) — xr_teleoperate** 用 XR 设备（Apple Vision Pro、PICO 4 Ultra Enterprise、Meta Quest 3 等）对 Unitree 人形做全身遥操 `📅unknown` `[entity_page]`
 - [XTDrone](wiki/entities/xtdrone.md) — XTDrone**（robin-shaun/XTDrone）把 **[PX4](./px4-autopilot. `📅unknown` `[entity_page]`
 - [Xue Bin Peng（彭学斌）](wiki/entities/xue-bin-peng.md) — Xue Bin Peng** 是 **物理仿真角色与腿式机器人强化学习运动控制** 领域的核心研究者之一：将 **示例引导 RL（DeepMimic）**、**对抗式运动先验（AMP）** 与  `📅unknown` `[entity_page]`
+- [DEUX（XYZ · 半人形服务机器人）](wiki/entities/xyz-deux.md) — DEUX** 是韩国 **艾克斯怀吉（XYZ / XYZ Corp）** 于 **2026** 发布的 **半人形（semi-humanoid）双臂移动服务机器人**（产品页与 ABOUT 称  `📅unknown` `[entity_page]`
 - [Yale OpenHand（耶鲁开源欠驱动手）](wiki/entities/yale-openhand.md) — Yale OpenHand** 是耶鲁大学 Grab Lab（Aaron M. Dollar 组）维护的 **开源、可快速原型的腱驱动欠驱动机器人手系列**：以 3D 打印 + 柔顺关节浇注降低改 `📅unknown` `[entity_page]`
 - [Yanjie Ze（迮炎杰）](wiki/entities/yanjie-ze.md) — Yanjie Ze** 是面向 **人形机器人模仿学习与 loco-manipulation** 的研究者：从 SJTU 阶段的 **3D 视觉 RL / 扩散策略**，到 Stanford 与  `📅unknown` `[entity_page]`
 - [Unitree Z1 软件栈（z1_sdk 等）](wiki/entities/z1-sdk.md) — Z1** 是宇树六轴协作机械臂产品线。组织下拆有 `z1_sdk`、`z1_ros`、`z1_controller`、`z1_joystick` 等多个仓库；本页作为**唯一 wiki 节点**归 `📅unknown` `[entity_page]`

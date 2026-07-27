@@ -2,13 +2,15 @@
 type: comparison
 tags: [dexterity, data-collection, teleoperation, hardware, sensors]
 status: complete
-updated: 2026-07-22
+updated: 2026-07-27
 related:
   - ../queries/dexterous-data-collection-guide.md
   - ../entities/allegro-hand.md
+  - ../entities/xyz-deux.md
   - ../methods/behavior-cloning.md
 sources:
   - ../../sources/papers/imitation_learning.md
+  - ../../sources/sites/xyzcorp-deux.md
 summary: "灵巧操作数据采集选型：对比了穿戴式数据手套与基于视觉的遥操作方案，涵盖了精度、成本、遮挡鲁棒性及力反馈等关键维度。"
 ---
 
@@ -44,6 +46,7 @@ summary: "灵巧操作数据采集选型：对比了穿戴式数据手套与基�
 1. **接触极其频繁的操作**：例如在口袋里摸索硬币、盲拧螺丝。这类任务视觉无法介入，且需要手套提供极高频的关节序列。
 2. **高保真力控训练**：当你的 RL 奖励函数对手指捏力非常敏感时，带有力反馈的数据手套（如 SenseGlove）是唯一的选择。
 3. **长期、大规模工程采集**：对数据一致性（Consistency）要求极高，不能容忍由于摄像头位置变动导致的轨迹偏移。
+4. **与特定灵巧手 1:1 绑定的商业采数**：如 [DEUX / Glove X](../entities/xyz-deux.md)（XYZ，2026）用接触点对齐宣称 **zero-shot retarget、免后处理**——换来的是 **embodiment 锁定** 与闭源数据飞轮，适合门店一体机而非跨臂开源数据集。
 
 ### 推荐使用视觉遥操作的场景：
 1. **低预算科研项目**：Meta Quest 配合重定向算法（Retargeting）可以快速搭建起一套可用的 Demo 采集系统。
@@ -57,8 +60,10 @@ summary: "灵巧操作数据采集选型：对比了穿戴式数据手套与基�
 ## 关联页面
 - [灵巧操作数据采集指南](../queries/dexterous-data-collection-guide.md)
 - [Allegro Hand 实体](../entities/allegro-hand.md)
+- [DEUX / Glove X（XYZ）](../entities/xyz-deux.md) — 商业三指手 + 1:1 手套零样本重定向样本
 - [Behavior Cloning (行为克隆)](../methods/behavior-cloning.md)
 
 ## 参考来源
 - [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md)
+- [xyzcorp-deux.md](../../sources/sites/xyzcorp-deux.md) — Glove X 产品规格与开源核查
 - Qin, B., et al. (2023). *AnyTeleop Framework*.

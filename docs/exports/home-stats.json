@@ -1,13 +1,61 @@
 {
   "generated_at": "2026-07-27",
-  "node_count": 1938,
-  "edge_count": 16707,
+  "node_count": 1939,
+  "edge_count": 16720,
   "coverage": {
-    "covered": 1886,
-    "total": 1914,
+    "covered": 1887,
+    "total": 1915,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/xyz-deux.md",
+      "detail_id": "entity-xyz-deux",
+      "label": "DEUX（XYZ · 半人形服务机器人）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/teleoperation.md",
+      "detail_id": "wiki-tasks-teleoperation",
+      "label": "Teleoperation（遥操作）",
+      "type": "task",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/comparisons/data-gloves-vs-vision-teleop.md",
+      "detail_id": "wiki-comparisons-data-gloves-vs-vision-teleop",
+      "label": "数据手套 vs 视觉遥操作 (灵巧数据采集选型)",
+      "type": "comparison",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/overview/humanoid-hardware-101-sensing-end-effectors.md",
+      "detail_id": "wiki-overview-humanoid-hardware-101-sensing-end-effectors",
+      "label": "Humanoid Hardware 101 · 06：传感与末端执行器",
+      "type": "overview",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/sunday-robotics-act2.md",
+      "detail_id": "entity-sunday-robotics-act2",
+      "label": "ACT-2（Sunday Robotics · Generalizing Reliability）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/handumi.md",
       "detail_id": "entity-handumi",
@@ -20,14 +68,15 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
-      "path": "wiki/tasks/teleoperation.md",
-      "detail_id": "wiki-tasks-teleoperation",
-      "label": "Teleoperation（遥操作）",
-      "type": "task",
+      "path": "wiki/methods/imitation-learning.md",
+      "detail_id": "wiki-methods-imitation-learning",
+      "label": "Imitation Learning (IL, 模仿学习)",
+      "type": "method",
       "recency": "2026-07-27",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "path": "wiki/tasks/bimanual-manipulation.md",
@@ -103,17 +152,6 @@
       "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
     },
     {
-      "path": "wiki/methods/imitation-learning.md",
-      "detail_id": "wiki-methods-imitation-learning",
-      "label": "Imitation Learning (IL, 模仿学习)",
-      "type": "method",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
       "path": "wiki/methods/action-chunking.md",
       "detail_id": "wiki-methods-action-chunking",
       "label": "Action Chunking（动作块输出）",
@@ -176,64 +214,22 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/awr.md",
-      "detail_id": "wiki-methods-awr",
-      "label": "AWR: 优势加权回归",
-      "type": "method",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/concepts/open-x-embodiment.md",
-      "detail_id": "wiki-concepts-open-x-embodiment",
-      "label": "Open X-Embodiment（OXE）",
-      "type": "concept",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/robodojo.md",
-      "detail_id": "entity-robodojo",
-      "label": "RoboDojo（统一仿真–真机通用操纵评测）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/xpolicylab.md",
-      "detail_id": "entity-xpolicylab",
-      "label": "XPolicyLab（统一策略训推与评测适配层）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/handumi.md",
-    "detail_id": "entity-handumi",
-    "label": "HandUMI",
+    "path": "wiki/entities/xyz-deux.md",
+    "detail_id": "entity-xyz-deux",
+    "label": "DEUX（XYZ · 半人形服务机器人）",
     "type": "entity",
     "recency": "2026-07-27",
     "source": "log.md",
-    "action": "maintained",
-    "has_repo": true,
+    "action": "added",
     "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 430
+      "size": 431
     },
     {
       "label": "人形论文深读笔记",
@@ -284,7 +280,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 320,
+      "degree": 321,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -322,7 +318,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 199,
+      "degree": 201,
       "has_repo": true,
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
