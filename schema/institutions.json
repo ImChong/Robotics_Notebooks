@@ -1852,6 +1852,13 @@
         "uk-mars",
         "ukmarsbot"
       ]
+    },
+    "ieee": {
+      "label": "电气电子工程师学会（IEEE）",
+      "aliases": [
+        "ieee",
+        "ieee-region-1"
+      ]
     }
   }
 }
