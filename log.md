@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-27] structural | media/site-demo.gif — 按去标题后的首页重录 README 演示 GIF
+
+- **脚本：** [`scripts/record_readme_demo.cjs`](scripts/record_readme_demo.cjs)（70 frames / 3.12 MB；图谱 1933 节点）
+- **关联：** 承接首页入口区标题/副标题删除（[`docs/index.html`](docs/index.html)）
+
 ## [2026-07-27] ingest | sources/papers/ace_brain_0_5_arxiv_2607_04426.md — ACE-Brain-0.5 统一具身基础模型；wiki/entities/paper-ace-brain-0-5.md
 
 - **论文：** [`sources/papers/ace_brain_0_5_arxiv_2607_04426.md`](sources/papers/ace_brain_0_5_arxiv_2607_04426.md)（arXiv:2607.04426；ACE-Brain Team / 大晓 Ace Robotics）
