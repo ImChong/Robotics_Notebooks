@@ -1,13 +1,138 @@
 {
   "generated_at": "2026-07-27",
   "node_count": 1948,
-  "edge_count": 16828,
+  "edge_count": 16840,
   "coverage": {
     "covered": 1896,
     "total": 1924,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "roadmap/depth-motion-retargeting.md",
+      "detail_id": "roadmap-depth-motion-retargeting",
+      "label": "路线（纵深）：如果目标是动作重定向（人体动作 → 机器人参考轨迹）",
+      "type": "roadmap_page",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/robot-motion-keyframe-editors.md",
+      "detail_id": "entity-robot-motion-keyframe-editors",
+      "label": "机器人关键帧与运动编辑工具（选型入口）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/human-humanoid-tools.md",
+      "detail_id": "entity-human-humanoid-tools",
+      "label": "human-humanoid-tools（hhtools）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/soma-retargeter.md",
+      "detail_id": "entity-soma-retargeter",
+      "label": "SOMA Retargeter",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/entities/robot-retargeter.md",
+      "detail_id": "entity-robot-retargeter",
+      "label": "robot_retargeter",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/entities/mocap-retarget.md",
+      "detail_id": "entity-mocap-retarget",
+      "label": "mocap_retarget",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/entities/human2humanoid.md",
+      "detail_id": "entity-human2humanoid",
+      "label": "human2humanoid（LeCAR-Lab）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/mimickit.md",
+      "detail_id": "entity-mimickit",
+      "label": "MimicKit: 运动模仿与控制研究套件",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/fairmotion.md",
+      "detail_id": "entity-fairmotion",
+      "label": "fairmotion",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/entities/blender.md",
+      "detail_id": "entity-blender",
+      "label": "Blender（开源 3D 创作套件）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/robot-viewer.md",
+      "detail_id": "entity-robot-viewer",
+      "label": "Robot Viewer",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/generative-motion-rig.md",
+      "detail_id": "entity-generative-motion-rig",
+      "label": "Generative Motion Rig（Disney）：艺术家驱动的生成式运动绑定",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
     {
       "path": "wiki/entities/paper-worldscore.md",
       "detail_id": "entity-paper-worldscore",
@@ -91,144 +216,17 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-physforge-physics-grounded-3d-assets.md",
-      "detail_id": "entity-paper-physforge-physics-grounded-3d-assets",
-      "label": "PhysForge（Physics-Grounded 3D Assets for Interactive Virtual Worlds）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/articraft.md",
-      "detail_id": "entity-articraft",
-      "label": "Articraft",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-chronos.md",
-      "detail_id": "entity-paper-chronos",
-      "label": "Chronos（Physics-Informed Full-History Framework for Non-Markovian Long-Horizon Manipulation）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/robotwin.md",
-      "detail_id": "entity-robotwin",
-      "label": "RoboTwin 2.0",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-eventvla-visual-evidence-memory.md",
-      "detail_id": "entity-paper-eventvla-visual-evidence-memory",
-      "label": "EventVLA（Event-Driven Visual Evidence Memory for Long-Horizon VLA）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-kemo-event-driven-keyframe-memory-vla.md",
-      "detail_id": "entity-paper-kemo-event-driven-keyframe-memory-vla",
-      "label": "KEMO（Event-Driven Keyframe Memory for Long-Horizon Robot Manipulation with VLA Policies）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-fm-vla.md",
-      "detail_id": "entity-paper-fm-vla",
-      "label": "FM-VLA（Force-based Memory for Vision-Language-Action Models）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/action-chunking.md",
-      "detail_id": "wiki-methods-action-chunking",
-      "label": "Action Chunking（动作块输出）",
-      "type": "method",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/diffusion-policy.md",
-      "detail_id": "wiki-methods-diffusion-policy",
-      "label": "Diffusion Policy",
-      "type": "method",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/imitation-learning.md",
-      "detail_id": "wiki-methods-imitation-learning",
-      "label": "Imitation Learning (IL, 模仿学习)",
-      "type": "method",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-worldscore.md",
-    "detail_id": "entity-paper-worldscore",
-    "label": "WorldScore（统一世界生成评测基准）",
-    "type": "entity",
+    "path": "roadmap/depth-motion-retargeting.md",
+    "detail_id": "roadmap-depth-motion-retargeting",
+    "label": "路线（纵深）：如果目标是动作重定向（人体动作 → 机器人参考轨迹）",
+    "type": "roadmap_page",
     "recency": "2026-07-27",
     "source": "log.md",
     "action": "maintained",
-    "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
@@ -240,20 +238,20 @@
       "size": 225
     },
     {
-      "label": "人形强化学习运动控制",
-      "size": 158
-    },
-    {
       "label": "移动操作",
       "size": 153
     },
     {
+      "label": "人形强化学习运动控制",
+      "size": 147
+    },
+    {
       "label": "全身控制",
-      "size": 138
+      "size": 135
     },
     {
       "label": "模仿学习",
-      "size": 68
+      "size": 66
     }
   ],
   "top_hubs": [
@@ -377,8 +375,7 @@
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
-      "degree": 46,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "degree": 46
     },
     {
       "detail_id": "entity-paper-twist2",
