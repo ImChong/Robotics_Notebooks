@@ -87,7 +87,7 @@ flowchart LR
 - [MuJoCo](./mujoco.md) — MJCF 与物理引擎上下文
 - [Project Instinct](./project-instinct.md) — 同源组的公开研究与工具入口
 - [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) — 重定向或跟踪之后的手工修整在流水线中的位置
-- [动作重定向纵深路线 Stage 3.5](../../roadmap/depth-motion-retargeting.md) — 本页三条编辑链路与开源重定向器一起构成的工具链选型阶段
+- [动作重定向纵深路线 Stage 4](../../roadmap/depth-motion-retargeting.md) — 本页三条编辑链路与开源重定向器一起构成的工具链选型阶段
 - [Manipulation](../tasks/manipulation.md) — 操作任务里关键帧式示教与数据后处理
 - [Teleoperation](../tasks/teleoperation.md) — 上游人类演示采集
 - [Blender（DCC 绑定/动画/BVH 上游）](./blender.md) — 通用网格与骨骼编辑；与本页三条 **机器人专用** 编辑器互补串联
