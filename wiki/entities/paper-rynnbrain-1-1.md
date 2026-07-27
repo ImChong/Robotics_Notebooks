@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, alibaba, embodied-foundation-model, vla, qwen, spatial-grounding, 3d-grounding, contact-point, flow-matching, unitree, astribot, wuji-robotics, scaling, foundation-policy]
 status: complete
-updated: 2026-07-21
+updated: 2026-07-27
 arxiv: "2607.17977"
 related:
   - ../methods/vla.md
@@ -178,6 +178,7 @@ sequenceDiagram
 - [Qwen-VLA](./qwen-vla.md) — 同阿里 Qwen 生态通才 VLA。
 - [RynnWorld-4D](./paper-rynnworld-4d-rgb-depth-flow.md) — 同院系 4D 世界模型。
 - [InternVLA-A1.5](./paper-internvla-a15-unified-vla.md) — Qwen3.5 + flow VLA 对照。
+- [ACE-Brain-0.5](./paper-ace-brain-0-5.md) — 同 Qwen3-VL 族统一具身脑；强调进度自监控与 SSR+。
 - [Manipulation](../tasks/manipulation.md) / [Bimanual Manipulation](../tasks/bimanual-manipulation.md) — 真机操作任务背景。
 
 ## 推荐继续阅读

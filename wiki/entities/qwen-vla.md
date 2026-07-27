@@ -2,7 +2,7 @@
 type: entity
 tags: [vla, qwen, open-source, flow-matching, generalist, cross-embodiment, navigation, manipulation]
 status: complete
-updated: 2026-07-21
+updated: 2026-07-27
 related:
   - ../methods/vla.md
   - ../methods/star-vla.md
@@ -125,6 +125,7 @@ flowchart TB
 - [Qwen-Robot Suite](./qwen-robot-suite.md) — 通义分域具身三件套与 agent 闭环
 - [Qwen-RobotManip](./qwen-robot-manip.md) — Suite 内操作专精 foundation
 - [RynnBrain 1.1](./paper-rynnbrain-1-1.md) — 同阿里生态具身预训练脑；受控实验显示优于「直接 Qwen 后训练 VLA」
+- [ACE-Brain-0.5](./paper-ace-brain-0-5.md) — 同 Qwen3-VL 族；统一感知–规划–动作–进度闭环 + SSR+
 
 ## 推荐继续阅读
 
