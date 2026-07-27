@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-27] ingest | sources/papers/chronos_arxiv_2606_30318.md — Chronos 全历史 SSM + IMLE + 二阶桥；升格 wiki/entities/paper-chronos.md；交叉 vla / manipulation / robotwin / eventvla / kemo / fm-vla / action-chunking / diffusion-policy / imitation-learning；归档 sites/chronos-manipulation-github-io.md、repos/chronos.md
+
+- **论文 / 项目页 / 仓：** [`sources/papers/chronos_arxiv_2606_30318.md`](sources/papers/chronos_arxiv_2606_30318.md)（arXiv:2606.30318）· [`sources/sites/chronos-manipulation-github-io.md`](sources/sites/chronos-manipulation-github-io.md)（<https://chronos-manipulation.github.io/>）· [`sources/repos/chronos.md`](sources/repos/chronos.md)（<https://github.com/yulinzhouZYL/Chronos>；HF Chronos-RMBench）
+- **主升格：** [`wiki/entities/paper-chronos.md`](wiki/entities/paper-chronos.md) — 非马尔可夫长程操作：全历史 SSM + IMLE 粗先验 + 二阶 Schrödinger 加速度桥
+- **交叉：** [`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`wiki/entities/robotwin.md`](wiki/entities/robotwin.md)、[`wiki/entities/paper-eventvla-visual-evidence-memory.md`](wiki/entities/paper-eventvla-visual-evidence-memory.md)、[`wiki/entities/paper-kemo-event-driven-keyframe-memory-vla.md`](wiki/entities/paper-kemo-event-driven-keyframe-memory-vla.md)、[`wiki/entities/paper-fm-vla.md`](wiki/entities/paper-fm-vla.md)、[`wiki/methods/action-chunking.md`](wiki/methods/action-chunking.md)、[`wiki/methods/diffusion-policy.md`](wiki/methods/diffusion-policy.md)、[`wiki/methods/imitation-learning.md`](wiki/methods/imitation-learning.md)
+- **开源核查（2026-07-27）：** **已开源（部分）** — RMBench 仿真 + 真机 UR3 管线与 HF ckpt（MIT）；ALOHA / RoboTwin 2.0 清理代码 Coming soon
+
 ## [2026-07-27] ingest | sources/sites/lumina-embodied-ai.md — Lumina 具身智能社区官网；升格 wiki/entities/lumina-embodied.md；交叉 waytoagi / robotwin / isaac-sim / vla / openlet / vla-open-source-repro-landscape；归档 sources/repos/lumina-eai.md 并回链 embodied-ai-guide
 
 - **官网 / Org：** [`sources/sites/lumina-embodied-ai.md`](sources/sites/lumina-embodied-ai.md)（<https://lumina-embodied.ai/>）· [`sources/repos/lumina-eai.md`](sources/repos/lumina-eai.md)（<https://github.com/Lumina-EAI>）· 百科仓回链 [`sources/repos/embodied-ai-guide.md`](sources/repos/embodied-ai-guide.md)

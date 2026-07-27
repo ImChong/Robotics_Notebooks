@@ -19,6 +19,7 @@ related:
   - ../queries/vla-with-low-level-controller.md
   - ../tasks/bimanual-manipulation.md
   - ../entities/paper-taco-tactile-sensor-benchmark.md
+  - ../entities/paper-chronos.md
 ---
 
 # Action Chunking（动作块输出）
@@ -161,3 +162,4 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
 - [Query：VLA 与低级关节控制器融合架构](../queries/vla-with-low-level-controller.md) — VLA + WBC 的 action buffer 设计
 - [Bimanual Manipulation](../tasks/bimanual-manipulation.md) — 双臂协调任务中常见 chunk 输出
 - [TacO（触觉传感器操作基准）](../entities/paper-taco-tactile-sensor-benchmark.md) — ACT 作为跨模态触觉硬件评测骨干（chunk 64 / 执行 32）
+- [Chronos](../entities/paper-chronos.md) — 把 action chunk 当广义坐标，经 IMLE 先验 + 二阶加速度桥精炼（arXiv:2606.30318）

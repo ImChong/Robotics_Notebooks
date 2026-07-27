@@ -3,7 +3,7 @@ type: method
 tags: [il, diffusion, manipulation, generative-model]
 status: complete
 summary: "Diffusion Policy 用多步去噪生成动作序列，擅长处理多模态和长时序的机器人操作行为。"
-updated: 2026-07-20
+updated: 2026-07-27
 ---
 
 # Diffusion Policy
@@ -141,6 +141,7 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 - [BifrostUMI（论文实体）](../entities/paper-bifrost-umi.md) — 人形全身 visuomotor 的扩散高层实例
 - [Muninn（论文实体）](../entities/paper-muninn-trajectory-diffusion-acceleration.md) — 扩散策略/轨迹扩散的免训练推理加速与 conformal 偏差证书
 - [OAT 有序动作 Tokenization](../entities/paper-oat-ordered-action-tokenization.md)
+- [Chronos](../entities/paper-chronos.md) — ALOHA 上相对 diffusion/flow 动作头的二阶加速度桥对照（arXiv:2606.30318）
 
 
 ## 推荐继续阅读

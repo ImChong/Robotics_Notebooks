@@ -14,6 +14,7 @@ related:
   - ./robot-motion-keyframe-editors.md
   - ./paper-eventvla-visual-evidence-memory.md
   - ./paper-fm-vla.md
+  - ./paper-chronos.md
 sources:
   - ../../sources/papers/kemo_arxiv_2606_23589.md
 summary: "KEMO（arXiv:2606.23589，HKEAI/CUHK/xdof.ai 等）为 π₀.₅ 提供可插拔事件驱动关键帧记忆：运动学减速峰 + DINOv2 视觉去重选帧，SigLIP 编码后经门控 cross-attention 注入；真机双臂 6 项记忆依赖任务聚合 TSR +23.6 pt、SCR +34.1 pt 优于无记忆 π₀.₅，优于 MemoryVLA。"
@@ -137,6 +138,7 @@ SCR 聚合：**76.4%** vs π₀.₅ **42.3%**（**+34.1 pt**）。Drawer 任务�
 - 动作接口：[Action Chunking](../methods/action-chunking.md) — $H=50$ 块预测与长时程执行。
 - 相邻稀疏记忆路线：[EventVLA](./paper-eventvla-visual-evidence-memory.md) — **学习式前瞻 KEM + 原始图像拼接**（QwenOFT）与 **RoboTwin-MeM** 基准；本文侧重 **运动学启发式选帧 + π₀.₅ 门控融合**。
 - 力觉记忆对照：[FM-VLA](./paper-fm-vla.md) — 当阶段变化 **视觉不可见** 时，用 Force-VAE 压缩 wrench 历史而非视觉关键帧（π₀.₅，arXiv:2607.18231）。
+- 全历史紧凑策略对照：[Chronos](./paper-chronos.md) — 不往大 VLA 挂记忆，而用 **SSM 全历史状态 + 二阶动作桥**（RMBench 73.6%，arXiv:2606.30318）。
 
 ## 实验与评测
 
