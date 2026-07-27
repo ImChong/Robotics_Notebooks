@@ -1,5 +1,17 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-27] ingest | sources/repos/kimi-k3.md + HF/ModelScope/tech report — Kimi K3 开放权重与技术报告一手资料；刷新 wiki/entities/kimi-k3.md；交叉 muon / enpire / autoresearch harness
+
+- **一手开源面（2026-07-27 核查）：**
+  - GitHub [`MoonshotAI/Kimi-K3`](https://github.com/MoonshotAI/Kimi-K3) → [`sources/repos/kimi-k3.md`](sources/repos/kimi-k3.md)（README / **Kimi K3 License** / `k3_tech_report.pdf`；仓内无训练脚本）
+  - HF [`moonshotai/Kimi-K3`](https://huggingface.co/moonshotai/Kimi-K3) → [`sources/sites/huggingface-moonshotai-kimi-k3.md`](sources/sites/huggingface-moonshotai-kimi-k3.md)（96× MXFP4 safetensors，约 **1.56 TB**；custom code）
+  - ModelScope [`moonshotai/Kimi-K3`](https://www.modelscope.cn/models/moonshotai/Kimi-K3) → [`sources/sites/modelscope-moonshotai-kimi-k3.md`](sources/sites/modelscope-moonshotai-kimi-k3.md)
+  - 技术报告 PDF → [`sources/papers/kimi_k3_tech_report.md`](sources/papers/kimi_k3_tech_report.md)（47 页；无 arXiv；激活 **104B**、69 KDA + 24 Gated MLA、MoonViT-V2）
+- **既有资料同步：** [`sources/blogs/kimi_k3_tech_blog.md`](sources/blogs/kimi_k3_tech_blog.md)、[`sources/courses/kimi_k3_api_quickstart.md`](sources/courses/kimi_k3_api_quickstart.md) — 权重状态改为已开源；`reasoning_effort` 档位补 `low/high/max`
+- **主刷新：** [`wiki/entities/kimi-k3.md`](wiki/entities/kimi-k3.md) — 开源状态表、部署时序图、规格与 License 风险
+- **交叉：** [`wiki/methods/muon.md`](wiki/methods/muon.md)、[`wiki/methods/enpire.md`](wiki/methods/enpire.md)、[`wiki/queries/real-robot-policy-autoresearch-harness.md`](wiki/queries/real-robot-policy-autoresearch-harness.md)
+- **开源结论：** **开放权重 + 技术报告已开源**；训练代码/数据未随公开仓发布；推理走 vLLM / SGLang / TokenSpeed 官方 recipe
+
 ## [2026-07-27] ingest | sources/sites/3dgenstudio-com.md + sources/repos/3dgenstudio.md — 升格 wiki/entities/3dgenstudio.md；交叉 text-to-cad / blender / articraft / img2threejs / freecad-mcp；开源核查：Community License 已开源（禁 SaaS 转售）
 
 - **官网 / 仓：** [`sources/sites/3dgenstudio-com.md`](sources/sites/3dgenstudio-com.md)（<https://www.3dgenstudio.com/>，v2.1.0）· [`sources/repos/3dgenstudio.md`](sources/repos/3dgenstudio.md)（<https://github.com/visualbruno/3DGenStudio>）

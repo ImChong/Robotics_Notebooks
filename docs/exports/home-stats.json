@@ -1,13 +1,55 @@
 {
   "generated_at": "2026-07-27",
   "node_count": 1949,
-  "edge_count": 16854,
+  "edge_count": 16856,
   "coverage": {
     "covered": 1897,
     "total": 1925,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/kimi-k3.md",
+      "detail_id": "entity-kimi-k3",
+      "label": "Kimi K3",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/muon.md",
+      "detail_id": "wiki-methods-muon",
+      "label": "Muon（MomentUm Orthogonalized by Newton–Schulz）",
+      "type": "method",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/enpire.md",
+      "detail_id": "wiki-methods-enpire",
+      "label": "ENPIRE",
+      "type": "method",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/queries/real-robot-policy-autoresearch-harness.md",
+      "detail_id": "wiki-queries-real-robot-policy-autoresearch-harness",
+      "label": "真机策略 autoresearch 闭环搭建指南",
+      "type": "query",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/3dgenstudio.md",
       "detail_id": "entity-3dgenstudio",
@@ -180,59 +222,16 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/generative-motion-rig.md",
-      "detail_id": "entity-generative-motion-rig",
-      "label": "Generative Motion Rig（Disney）：艺术家驱动的生成式运动绑定",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-worldscore.md",
-      "detail_id": "entity-paper-worldscore",
-      "label": "WorldScore（统一世界生成评测基准）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/ewmbench.md",
-      "detail_id": "entity-ewmbench",
-      "label": "EWMBench（具身世界模型生成评测）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/generative-world-models.md",
-      "detail_id": "wiki-methods-generative-world-models",
-      "label": "Generative World Models (生成式世界模型)",
-      "type": "method",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/3dgenstudio.md",
-    "detail_id": "entity-3dgenstudio",
-    "label": "3D Gen Studio",
+    "path": "wiki/entities/kimi-k3.md",
+    "detail_id": "entity-kimi-k3",
+    "label": "Kimi K3",
     "type": "entity",
     "recency": "2026-07-27",
     "source": "log.md",
-    "action": "added",
+    "action": "maintained",
     "has_repo": true,
     "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
