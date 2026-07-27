@@ -8,8 +8,11 @@ related:
   - ../entities/navigation2.md
   - ../overview/navigation-slam-autonomy-stack.md
   - ./oomwoo.md
+  - ./ukmarsbot.md
+  - ../concepts/micromouse.md
 sources:
   - ../../sources/repos/mushr.md
+  - ../../sources/repos/ukmarsbot.md
 summary: "MuSHR 是华盛顿大学 PRL 的多智能体非完整约束小车平台：低成本硬件 + ROS 导航/竞速教学。"
 ---
 
@@ -52,6 +55,8 @@ summary: "MuSHR 是华盛顿大学 PRL 的多智能体非完整约束小车平�
 - [Navigation2](../entities/navigation2.md)
 - [导航·SLAM·自动驾驶栈总览](../overview/navigation-slam-autonomy-stack.md)
 - [OOMWOO](./oomwoo.md) — 另一类低成本 ROS 2 整机（家用清扫形态）
+- [UKMARSBOT](./ukmarsbot.md) — 无 ROS 的嵌入式竞赛/教学差速平台对照
+- [Micromouse](../concepts/micromouse.md) — 迷宫竞速压缩栈
 
 ## 推荐继续阅读
 

@@ -1844,6 +1844,14 @@
         "icl",
         "imperial-college-london"
       ]
+    },
+    "ukmars": {
+      "label": "英国微型鼠与机器人协会（UK Micromouse and Robotics Society）",
+      "aliases": [
+        "ukmars",
+        "uk-mars",
+        "ukmarsbot"
+      ]
     }
   }
 }
