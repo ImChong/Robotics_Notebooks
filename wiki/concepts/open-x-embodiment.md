@@ -2,15 +2,17 @@
 type: concept
 tags: [dataset, scaling, cross-embodiment, manipulation, community]
 status: complete
-updated: 2026-07-15
+updated: 2026-07-27
 related:
   - ../queries/contact-wrench-closed-loop.md
   - ./foundation-policy.md
   - ./embodied-scaling-laws.md
   - ../methods/octo-model.md
   - ../methods/vla.md
+  - ../entities/paper-topreward.md
 sources:
   - ../../sources/blogs/ted_xiao_embodied_three_eras_primary_refs.md
+  - ../../sources/papers/topreward_arxiv_2602_19313.md
 summary: "Open X-Embodiment（OXE）联合多机构把异构机器人演示数据规范化并开源，支撑跨本体规模化学习与通用策略预训练。"
 ---
 
@@ -25,6 +27,8 @@ summary: "Open X-Embodiment（OXE）联合多机构把异构机器人演示数�
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
 | OXE | Open X-Embodiment | 跨形态机器人的大规模操作数据集 |
+| RT | Robotics Transformer | 早期通用操作策略系列，常与 OXE 数据叙事并列 |
+| VLA | Vision-Language-Action | 在 OXE 等混合数据上预训练的通用策略形态 |
 
 ## 为什么重要
 
@@ -35,8 +39,10 @@ summary: "Open X-Embodiment（OXE）联合多机构把异构机器人演示数�
 - [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 跨本体操作数据训练的策略，其接触执行环节由本链托底
 - [Octo Model](../methods/octo-model.md)
 - [Foundation Policy](./foundation-policy.md)
+- [TOPReward](../entities/paper-topreward.md) — 在 OXE 39 数据集上评测零样本进度奖励（Mean VOC）
 
 ## 参考来源
 
 - Padalkar et al., *Open X-Embodiment: Robotic Learning at Scale*, https://arxiv.org/abs/2310.08864
 - [ted_xiao_embodied_three_eras_primary_refs.md](../../sources/blogs/ted_xiao_embodied_three_eras_primary_refs.md)
+- [sources/papers/topreward_arxiv_2602_19313.md](../../sources/papers/topreward_arxiv_2602_19313.md) — OXE 进度估计评测轴

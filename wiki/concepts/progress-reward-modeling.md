@@ -13,6 +13,7 @@ status: complete
 updated: 2026-07-27
 related:
   - ../entities/paper-progress-reward-modeling-survey.md
+  - ../entities/paper-topreward.md
   - ../methods/reinforcement-learning.md
   - ../methods/imitation-learning.md
   - ../methods/vla.md
@@ -22,6 +23,7 @@ related:
 sources:
   - ../../sources/papers/progress_reward_modeling_survey_arxiv_2607_21655.md
   - ../../sources/repos/awesome-progress-models.md
+  - ../../sources/papers/topreward_arxiv_2602_19313.md
 summary: "过程奖励/进度模型：在终局成功之外估计任务是否在推进、停滞或回退；用接口三维×四种构造范式×保真/鲁棒/效用评测透镜阅读该领域。"
 ---
 
@@ -65,7 +67,7 @@ summary: "过程奖励/进度模型：在终局成功之外估计任务是否在
 
 | 范式 | 信号从哪来 | 长处 | 主要陷阱 |
 |------|------------|------|----------|
-| 冻结基础模型打分 | 图文相似、token 概率、上下文价值 | 零样本 | 语义先验 ≠ 已标定奖励 |
+| 冻结基础模型打分 | 图文相似、token 概率、上下文价值 | 零样本 | 语义先验 ≠ 已标定奖励；实例见 [TOPReward](../entities/paper-topreward.md) |
 | 时序/相对监督 | 演示时间序、邻近、偏好 | 弱监督可规模化 | 「更晚」≠「更好」 |
 | 指令微调进度预测 | 显式进度/成功/Δ/推理目标 | 专用能力 | 需覆盖失败与回退 |
 | 程序化奖励 | LLM/VLM 生成代码与特征 | 可解释可改 | 只及于可用状态变量 |
@@ -96,6 +98,7 @@ summary: "过程奖励/进度模型：在终局成功之外估计任务是否在
 ## 关联页面
 
 - [Progress Reward Survey（论文实体）](../entities/paper-progress-reward-modeling-survey.md) — 综述与 Awesome 入口
+- [TOPReward](../entities/paper-topreward.md) — 视频 VLM token 似然零样本进度；OXE / ManiRewardBench
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — 稠密奖励与信用分配
 - [Imitation Learning](../methods/imitation-learning.md) — 演示时间序作弱进度
 - [VLA](../methods/vla.md) — 指令微调进度模型常挂 VLM 生态
@@ -108,8 +111,10 @@ summary: "过程奖励/进度模型：在终局成功之外估计任务是否在
 
 - [综述论文归档](../../sources/papers/progress_reward_modeling_survey_arxiv_2607_21655.md)
 - [Awesome-Progress-Models](../../sources/repos/awesome-progress-models.md)
+- [TOPReward 论文归档](../../sources/papers/topreward_arxiv_2602_19313.md)
 
 ## 推荐继续阅读
 
 - [arXiv:2607.21655](https://arxiv.org/abs/2607.21655) — 综述全文
 - [Awesome-Progress-Models](https://github.com/sterzhang/Awesome-Progress-Models) — 可点击论文画廊
+- [TOPReward 项目页](https://topreward.github.io/webpage/) — 冻结 VLM token 似然进度实例

@@ -2,7 +2,7 @@
 type: method
 tags: [il, behavior-cloning, diffusion-policy, sim2real]
 status: complete
-updated: 2026-07-24
+updated: 2026-07-27
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-rl-intelligent-control.md
@@ -24,10 +24,12 @@ related:
   - ./amp-reward.md
   - ./smp.md
   - ./disney-olaf-character-robot.md
+  - ../entities/paper-topreward.md
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/humanoid_touch_dream.md
+  - ../../sources/papers/topreward_arxiv_2602_19313.md
   - ../../sources/papers/humannet.md
   - ../../sources/papers/interprior_arxiv_2602_06035.md
   - ../../sources/papers/mimic_video_arxiv_2512_15692.md
@@ -209,6 +211,7 @@ flowchart TD
 - [ADD](./add.md) (对抗性微分判别器，消除运动伪影)
 - [LCP](./lcp.md) (Lipschitz 约束策略，提升控制鲁棒性)
 - [AWR](./awr.md) (优势加权回归，简单高效的离策学习)
+- [TOPReward](../entities/paper-topreward.md) — 零样本 VLM 进度作 advantage 的 TOP-AWR 加权 BC
 - [DeepMimic](./deepmimic.md) (经典的显式轨迹跟踪模仿学习)
 - [Learn Weightlessness](../../sources/papers/learn_weightlessness.md) — 针对非自稳定运动的失重模仿机制
 - [ASE](./ase.md) (对抗性技能嵌入)

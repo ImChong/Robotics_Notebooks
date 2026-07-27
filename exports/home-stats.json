@@ -1,13 +1,65 @@
 {
   "generated_at": "2026-07-27",
-  "node_count": 1936,
-  "edge_count": 16673,
+  "node_count": 1937,
+  "edge_count": 16684,
   "coverage": {
-    "covered": 1884,
-    "total": 1912,
+    "covered": 1885,
+    "total": 1913,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-topreward.md",
+      "detail_id": "entity-paper-topreward",
+      "label": "TOPReward：Token 概率作零样本机器人进度奖励",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/progress-reward-modeling.md",
+      "detail_id": "wiki-concepts-progress-reward-modeling",
+      "label": "过程奖励建模（Progress Reward Modeling）",
+      "type": "concept",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-progress-reward-modeling-survey.md",
+      "detail_id": "entity-paper-progress-reward-modeling-survey",
+      "label": "Progress Reward Modeling Survey（过程奖励综述 · arXiv:2607.21655）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/awr.md",
+      "detail_id": "wiki-methods-awr",
+      "label": "AWR: 优势加权回归",
+      "type": "method",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/open-x-embodiment.md",
+      "detail_id": "wiki-concepts-open-x-embodiment",
+      "label": "Open X-Embodiment（OXE）",
+      "type": "concept",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/robodojo.md",
       "detail_id": "entity-robodojo",
@@ -166,78 +218,23 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-ace-brain-0-5.md",
-      "detail_id": "entity-paper-ace-brain-0-5",
-      "label": "ACE-Brain-0.5：统一具身基础模型（Physical Agentic AI）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/foundation-policy.md",
-      "detail_id": "wiki-concepts-foundation-policy",
-      "label": "Foundation Policy（基础策略模型）",
-      "type": "concept",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/progress-reward-modeling.md",
-      "detail_id": "wiki-concepts-progress-reward-modeling",
-      "label": "过程奖励建模（Progress Reward Modeling）",
-      "type": "concept",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rynnbrain-1-1.md",
-      "detail_id": "entity-paper-rynnbrain-1-1",
-      "label": "RynnBrain 1.1：更强、更可泛化的具身基础模型",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/qwen-vla.md",
-      "detail_id": "entity-qwen-vla",
-      "label": "Qwen-VLA",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/robodojo.md",
-    "detail_id": "entity-robodojo",
-    "label": "RoboDojo（统一仿真–真机通用操纵评测）",
+    "path": "wiki/entities/paper-topreward.md",
+    "detail_id": "entity-paper-topreward",
+    "label": "TOPReward：Token 概率作零样本机器人进度奖励",
     "type": "entity",
     "recency": "2026-07-27",
     "source": "log.md",
-    "action": "added",
+    "action": "maintained",
     "has_repo": true,
     "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 429
+      "size": 430
     },
     {
       "label": "人形论文深读笔记",
@@ -269,20 +266,20 @@
       "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
     },
     {
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "degree": 350,
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
       "degree": 349,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "degree": 349,
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "detail_id": "wiki-tasks-manipulation",
@@ -334,7 +331,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 195,
+      "degree": 197,
       "has_repo": true,
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
     }
