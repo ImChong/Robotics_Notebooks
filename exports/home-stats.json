@@ -1,13 +1,68 @@
 {
   "generated_at": "2026-07-27",
-  "node_count": 1940,
-  "edge_count": 16739,
+  "node_count": 1941,
+  "edge_count": 16749,
   "coverage": {
-    "covered": 1888,
-    "total": 1916,
+    "covered": 1889,
+    "total": 1917,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/oomwoo.md",
+      "detail_id": "entity-oomwoo",
+      "label": "OOMWOO",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/entities/navigation2.md",
+      "detail_id": "entity-navigation2",
+      "label": "Navigation2（Nav2）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/entities/slam-toolbox.md",
+      "detail_id": "entity-slam-toolbox",
+      "label": "SLAM Toolbox",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/overview/navigation-slam-autonomy-stack.md",
+      "detail_id": "wiki-overview-navigation-slam-autonomy-stack",
+      "label": "导航·SLAM·自动驾驶开源栈总览",
+      "type": "overview",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/entities/mushr.md",
+      "detail_id": "entity-mushr",
+      "label": "MuSHR",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
     {
       "path": "wiki/entities/paper-molingo.md",
       "detail_id": "entity-paper-molingo",
@@ -160,76 +215,23 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/tasks/bimanual-manipulation.md",
-      "detail_id": "wiki-tasks-bimanual-manipulation",
-      "label": "Bimanual Manipulation（双臂协调操作）",
-      "type": "task",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/lerobot.md",
-      "detail_id": "entity-lerobot",
-      "label": "LeRobot (Hugging Face)",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-taco-tactile-sensor-benchmark.md",
-      "detail_id": "entity-paper-taco-tactile-sensor-benchmark",
-      "label": "TacO（触觉传感器操作基准 · arXiv:2605.21976）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/concepts/tactile-sensing.md",
-      "detail_id": "wiki-concepts-tactile-sensing",
-      "label": "Tactile Sensing（触觉感知）",
-      "type": "concept",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/concepts/visuo-tactile-fusion.md",
-      "detail_id": "wiki-concepts-visuo-tactile-fusion",
-      "label": "视触觉融合（Visuo-Tactile Fusion）",
-      "type": "concept",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-molingo.md",
-    "detail_id": "entity-paper-molingo",
-    "label": "MoLingo（Motion–Language Alignment for Text-to-Human Motion Generation）",
+    "path": "wiki/entities/oomwoo.md",
+    "detail_id": "entity-oomwoo",
+    "label": "OOMWOO",
     "type": "entity",
     "recency": "2026-07-27",
     "source": "log.md",
-    "action": "maintained",
+    "action": "added",
     "has_repo": true,
-    "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 431
+      "size": 430
     },
     {
       "label": "人形论文深读笔记",
@@ -240,11 +242,11 @@
       "size": 153
     },
     {
-      "label": "全身控制",
-      "size": 137
+      "label": "人形强化学习运动控制",
+      "size": 136
     },
     {
-      "label": "人形强化学习运动控制",
+      "label": "全身控制",
       "size": 136
     },
     {

@@ -3,10 +3,11 @@
 type: entity
 tags: [repo, ros, education, ackermann, navigation, racing, mit]
 status: complete
-updated: 2026-05-27
+updated: 2026-07-27
 related:
   - ../entities/navigation2.md
   - ../overview/navigation-slam-autonomy-stack.md
+  - ./oomwoo.md
 sources:
   - ../../sources/repos/mushr.md
 summary: "MuSHR 是华盛顿大学 PRL 的多智能体非完整约束小车平台：低成本硬件 + ROS 导航/竞速教学。"
@@ -50,6 +51,7 @@ summary: "MuSHR 是华盛顿大学 PRL 的多智能体非完整约束小车平�
 
 - [Navigation2](../entities/navigation2.md)
 - [导航·SLAM·自动驾驶栈总览](../overview/navigation-slam-autonomy-stack.md)
+- [OOMWOO](./oomwoo.md) — 另一类低成本 ROS 2 整机（家用清扫形态）
 
 ## 推荐继续阅读
 

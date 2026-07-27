@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, ros2, navigation, nav2, mobile-robot, planning, linux-foundation]
 status: complete
-updated: 2026-06-09
+updated: 2026-07-27
 related:
   - ./python-robotics.md
   - ../overview/navigation-slam-autonomy-stack.md
@@ -13,6 +13,7 @@ related:
   - ./cartographer.md
   - ./fast-lio.md
   - ./mushr.md
+  - ./oomwoo.md
   - ./autoware.md
 sources:
   - ../../sources/repos/navigation2.md
@@ -39,6 +40,7 @@ summary: "Navigation2（Nav2）是 ROS 2 标准导航框架：行为树、全局
 - **插件化**：全局规划（NavFn、Smac Planner 等）、局部规划（DWB、RPP、MPPI 等）、控制器与 **行为树（BT）** 可独立升级。
 - 与 [ROS 2 基础](../concepts/ros2-basics.md)、[slam_toolbox](https://github.com/SteveMacenski/slam_toolbox) 形成常见 **「建图 + 导航」** 闭环。
 - 算法预习可先用 [PythonRobotics](./python-robotics.md) 跑通 A*、DWA、Stanley/MPC 等示例，再读 Nav2 插件与 ROS 2 集成。
+- 开源家用清扫整机入口见 [OOMWOO](./oomwoo.md)（Gazebo + slam_toolbox + Nav2，仿真优先）。
 
 ## 核心结构/机制
 
@@ -70,6 +72,7 @@ summary: "Navigation2（Nav2）是 ROS 2 标准导航框架：行为树、全局
 - [PythonRobotics](./python-robotics.md) — 规划/跟踪算法入门代码
 - [导航·SLAM·自动驾驶栈总览](../overview/navigation-slam-autonomy-stack.md)
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)
+- [OOMWOO](./oomwoo.md) — 开源家用扫地机（Nav2 应用整机）
 - [Autoware](./autoware.md)
 
 ## 推荐继续阅读

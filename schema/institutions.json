@@ -1818,6 +1818,14 @@
         "deux"
       ]
     },
+    "makerspet": {
+      "label": "创客宠物（Maker's Pet）",
+      "aliases": [
+        "makerspet",
+        "makers-pet",
+        "oomwoo"
+      ]
+    },
     "university-of-tubingen": {
       "label": "图宾根大学（University of Tübingen）",
       "aliases": [

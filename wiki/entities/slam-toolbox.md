@@ -3,11 +3,12 @@
 type: entity
 tags: [repo, ros2, slam, 2d-lidar, mapping, navigation, linux-foundation]
 status: complete
-updated: 2026-05-27
+updated: 2026-07-27
 related:
   - ../entities/navigation2.md
   - ../overview/navigation-slam-autonomy-stack.md
   - ../comparisons/lidar-slam-lio-vio-selection.md
+  - ./oomwoo.md
 sources:
   - ../../sources/repos/slam_toolbox.md
 summary: "SLAM Toolbox 是 ROS 2 常用的 2D lifelong SLAM：Karto 后端、大地图序列化、建图/定位模式切换，常与 Nav2 组合。"
@@ -56,6 +57,7 @@ summary: "SLAM Toolbox 是 ROS 2 常用的 2D lifelong SLAM：Karto 后端、大
 - [Navigation2](../entities/navigation2.md)
 - [导航·SLAM·自动驾驶栈总览](../overview/navigation-slam-autonomy-stack.md)
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)
+- [OOMWOO](./oomwoo.md) — 架构默认机载 2D SLAM 搭档
 
 ## 推荐继续阅读
 

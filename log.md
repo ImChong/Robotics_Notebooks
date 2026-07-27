@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-27] ingest | sources/repos/oomwoo.md — OOMWOO 开源家用扫地机；升格 wiki/entities/oomwoo.md；交叉 navigation2 / slam-toolbox / navigation-slam-autonomy-stack / mushr；归档 sources/sites/oomwoo-com.md；注册 makerspet
+
+- **主仓 / 项目页：** [`sources/repos/oomwoo.md`](sources/repos/oomwoo.md)（<https://github.com/makerspet/oomwoo>；~6.5k★；Apache-2.0）· [`sources/sites/oomwoo-com.md`](sources/sites/oomwoo-com.md)（<https://oomwoo.com/>）
+- **主升格：** [`wiki/entities/oomwoo.md`](wiki/entities/oomwoo.md) — ROS 2 / Nav2 / slam_toolbox + CM4·CM5 / STM32 安全分层；仿真优先、本地优先
+- **交叉：** [`wiki/entities/navigation2.md`](wiki/entities/navigation2.md)、[`wiki/entities/slam-toolbox.md`](wiki/entities/slam-toolbox.md)、[`wiki/overview/navigation-slam-autonomy-stack.md`](wiki/overview/navigation-slam-autonomy-stack.md)、[`wiki/entities/mushr.md`](wiki/entities/mushr.md)
+- **机构注册：** `schema/institutions.json` → `makerspet`（创客宠物（Maker's Pet））
+- **开源核查（2026-07-27）：** **部分开源 / 早期开发**（主仓 + oomwoo-one / oomwoo-install 已开；完整 BoM / CAD / I/O 板与固件进行中）
+
 ## [2026-07-27] ingest | sources/sites/molingo-github-io.md — MoLingo（CVPR 2026）语义对齐连续 latent T2M；升格 wiki/entities/paper-molingo.md；交叉 diffusion-motion-generation / hy-motion-1 / dart-control / awesome-text-to-motion / phc / paper-notebook-humanml3d / paper-phygile；归档 papers/molingo_arxiv_2512_13840.md、repos/molingo.md；注册 university-of-tubingen / imperial-college
 
 - **项目页 / 论文 / 仓：** [`sources/sites/molingo-github-io.md`](sources/sites/molingo-github-io.md)（<https://hynann.github.io/molingo/MoLingo.html>）· [`sources/papers/molingo_arxiv_2512_13840.md`](sources/papers/molingo_arxiv_2512_13840.md)（arXiv:2512.13840）· [`sources/repos/molingo.md`](sources/repos/molingo.md)（<https://github.com/hynann/MoLingo>）
