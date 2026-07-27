@@ -205,6 +205,12 @@
         "ultralytics-yolo"
       ]
     },
+    "roboflow": {
+      "label": "罗博福流（Roboflow）",
+      "aliases": [
+        "roboflow"
+      ]
+    },
     "unity-technologies": {
       "label": "实时三维引擎商（Unity Technologies）",
       "aliases": [

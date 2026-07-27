@@ -1,13 +1,77 @@
 {
   "generated_at": "2026-07-27",
-  "node_count": 1933,
-  "edge_count": 16628,
+  "node_count": 1934,
+  "edge_count": 16642,
   "coverage": {
-    "covered": 1881,
-    "total": 1909,
+    "covered": 1882,
+    "total": 1910,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/roboflow-sports.md",
+      "detail_id": "entity-roboflow-sports",
+      "label": "Roboflow Sports",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/soccer-field-line-detection.md",
+      "detail_id": "wiki-methods-soccer-field-line-detection",
+      "label": "足球场线与球门检测",
+      "type": "method",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/queries/soccer-visual-field-localization-pipeline.md",
+      "detail_id": "wiki-queries-soccer-visual-field-localization-pipeline",
+      "label": "足球机器人视觉场线定位流水线",
+      "type": "query",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/humanoid-soccer.md",
+      "detail_id": "wiki-tasks-humanoid-soccer",
+      "label": "Humanoid Soccer",
+      "type": "task",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/ultralytics.md",
+      "detail_id": "entity-ultralytics",
+      "label": "Ultralytics YOLO",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/rf-detr.md",
+      "detail_id": "entity-rf-detr",
+      "label": "RF-DETR（Roboflow Detection Transformer）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/paper-ace-brain-0-5.md",
       "detail_id": "entity-paper-ace-brain-0-5",
@@ -151,86 +215,23 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/reinforcement-learning.md",
-      "detail_id": "wiki-methods-reinforcement-learning",
-      "label": "Reinforcement Learning (RL, 强化学习)",
-      "type": "method",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-vitacworld.md",
-      "detail_id": "entity-paper-vitacworld",
-      "label": "ViTacWorld（视触觉世界模型 · arXiv:2607.22530）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/visuo-tactile-fusion.md",
-      "detail_id": "wiki-concepts-visuo-tactile-fusion",
-      "label": "视触觉融合（Visuo-Tactile Fusion）",
-      "type": "concept",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-vt-wam-visuotactile-contact-rich.md",
-      "detail_id": "entity-paper-vt-wam-visuotactile-contact-rich",
-      "label": "VT-WAM（Visual-Tactile World Action Model · arXiv:2607.02503）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/generative-world-models.md",
-      "detail_id": "wiki-methods-generative-world-models",
-      "label": "Generative World Models (生成式世界模型)",
-      "type": "method",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-ctrl-world.md",
-      "detail_id": "entity-paper-ctrl-world",
-      "label": "Ctrl-World（可控机器人操作生成式世界模型）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-ace-brain-0-5.md",
-    "detail_id": "entity-paper-ace-brain-0-5",
-    "label": "ACE-Brain-0.5：统一具身基础模型（Physical Agentic AI）",
+    "path": "wiki/entities/roboflow-sports.md",
+    "detail_id": "entity-roboflow-sports",
+    "label": "Roboflow Sports",
     "type": "entity",
     "recency": "2026-07-27",
     "source": "log.md",
-    "action": "maintained",
+    "action": "added",
     "has_repo": true,
     "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 428
+      "size": 427
     },
     {
       "label": "人形论文深读笔记",

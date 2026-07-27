@@ -11,7 +11,7 @@ tags:
   - perception
   - robotics
 status: complete
-updated: 2026-07-26
+updated: 2026-07-27
 arxiv: "2511.09554"
 venue: "ICLR 2026"
 code: https://github.com/roboflow/rf-detr
@@ -20,6 +20,7 @@ related:
   - ../concepts/vision-backbones.md
   - ../queries/object-detection-model-selection.md
   - ./ultralytics.md
+  - ./roboflow-sports.md
   - ./paper-yolo-unified-realtime-detection.md
   - ../tasks/manipulation.md
   - ../tasks/humanoid-soccer.md
@@ -28,8 +29,9 @@ sources:
   - ../../sources/repos/rf_detr.md
   - ../../sources/sites/rfdetr-docs.md
   - ../../sources/repos/ultralytics.md
+  - ../../sources/repos/roboflow_sports.md
 summary: "RF-DETR 是 Roboflow 提出的实时 DETR 族：DINOv2 骨干 + 端到端 weight-sharing NAS，单次训练后在 Pareto 前沿选精度–延迟点；COCO 上 2XL 首破 60 AP，支持检测/分割/关键点微调与 ONNX–TensorRT 部署。"
-tags: [repo, paper, computer-vision, object-detection, instance-segmentation, real-time, perception, robotics, nvidia, cmu]
+tags: [repo, paper, computer-vision, object-detection, instance-segmentation, real-time, perception, robotics, nvidia, cmu, roboflow]
 
 ---
 
@@ -123,6 +125,7 @@ flowchart TB
 - [视觉骨干（概念）](../concepts/vision-backbones.md)
 - [Query：目标检测模型选型](../queries/object-detection-model-selection.md)
 - [Ultralytics YOLO（工程仓）](./ultralytics.md)
+- [Roboflow Sports](./roboflow-sports.md) — 同机构体育 CV demo；可用本检测器替换 AGPL YOLO 权重
 - [YOLO v1（论文实体）](./paper-yolo-unified-realtime-detection.md)
 - [Manipulation（任务）](../tasks/manipulation.md)
 - [Humanoid Soccer（任务）](../tasks/humanoid-soccer.md)
@@ -133,6 +136,7 @@ flowchart TB
 - [rf-detr 仓库归档](../../sources/repos/rf_detr.md)
 - [RF-DETR 官方文档站](../../sources/sites/rfdetr-docs.md)
 - [Ultralytics 仓库归档](../../sources/repos/ultralytics.md)
+- [roboflow_sports.md](../../sources/repos/roboflow_sports.md) — 同机构体育分析工具对照
 
 ## 推荐继续阅读
 

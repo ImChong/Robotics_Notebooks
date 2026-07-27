@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, tooling, computer-vision, object-detection, yolo, real-time, perception, robotics, ultralytics]
 status: complete
-updated: 2026-07-26
+updated: 2026-07-27
 code: https://github.com/ultralytics/ultralytics
 related:
   - ../methods/object-detection.md
@@ -12,10 +12,12 @@ related:
   - ./booster-robocup-demo.md
   - ../tasks/humanoid-soccer.md
   - ../methods/soccer-field-line-detection.md
+  - ./roboflow-sports.md
   - ./dualmap.md
 sources:
   - ../../sources/repos/ultralytics.md
   - ../../sources/sites/docs-ultralytics.md
+  - ../../sources/repos/roboflow_sports.md
 summary: "Ultralytics（ultralytics/ultralytics）：YOLO 工程主仓；统一 CLI/Python 覆盖检测/分割/姿态/OBB/深度/跟踪与 ONNX·TensorRT 导出；当前主推 YOLO26（AGPL-3.0，商用需 Enterprise）。"
 ---
 
@@ -168,6 +170,7 @@ sequenceDiagram
 - [RF-DETR](./rf-detr.md) — 实时 DETR 对照
 - [Booster RoboCup Demo](./booster-robocup-demo.md) — YOLOv8 真机范例
 - [人形足球](../tasks/humanoid-soccer.md) / [场地线检测](../methods/soccer-field-line-detection.md)
+- [Roboflow Sports](./roboflow-sports.md) — YOLOv8 足球广播分析 demo（本仓 AGPL 权重叠 MIT 分析代码）
 - [DualMap](./dualmap.md) — 开放词汇语义建图中的检测/分割前端
 
 ## 参考来源

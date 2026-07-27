@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-27] ingest | sources/repos/roboflow_sports.md — Roboflow Sports 体育 CV 工具与足球俯视雷达；wiki/entities/roboflow-sports.md
+
+- **来源归档：** [`sources/repos/roboflow_sports.md`](sources/repos/roboflow_sports.md)（<https://github.com/roboflow/sports>；~5.2k★；MIT；2026-07-27 核查）
+- **主升格：** [`wiki/entities/roboflow-sports.md`](wiki/entities/roboflow-sports.md) — 球场关键点单应、球跟踪、SigLIP 分队、RADAR 俯视；与机载场线定位对照
+- **交叉：** [`wiki/methods/soccer-field-line-detection.md`](wiki/methods/soccer-field-line-detection.md)、[`wiki/queries/soccer-visual-field-localization-pipeline.md`](wiki/queries/soccer-visual-field-localization-pipeline.md)、[`wiki/tasks/humanoid-soccer.md`](wiki/tasks/humanoid-soccer.md)、[`wiki/entities/ultralytics.md`](wiki/entities/ultralytics.md)、[`wiki/entities/rf-detr.md`](wiki/entities/rf-detr.md)
+- **机构注册：** `schema/institutions.json` → `roboflow`（罗博福流（Roboflow））
+- **开源核查：** **已开源**（库 MIT + soccer 示例；权重经 `setup.sh`/Drive；demo 绑 Ultralytics AGPL）
+
 ## [2026-07-27] structural | media/site-demo.gif — 按去标题后的首页重录 README 演示 GIF
 
 - **脚本：** [`scripts/record_readme_demo.cjs`](scripts/record_readme_demo.cjs)（70 frames / 3.12 MB；图谱 1933 节点）

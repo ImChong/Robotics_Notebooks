@@ -2,7 +2,7 @@
 type: task
 tags: [humanoid, soccer, robocup, rl, perception, kicking]
 status: drafting
-updated: 2026-07-20
+updated: 2026-07-27
 related:
   - ./locomotion.md
   - ../concepts/humanoid-multi-robot-coordination.md
@@ -16,6 +16,7 @@ related:
   - ../methods/paid-framework.md
   - ../methods/htwk-gym.md
   - ../entities/booster-robocup-demo.md
+  - ../entities/roboflow-sports.md
   - ../entities/unitree-g1.md
   - ../entities/humanoid-system-curriculum.md
   - ../entities/intel-realsense.md
@@ -28,6 +29,7 @@ sources:
   - ../../sources/repos/htwk_gym.md
   - ../../sources/repos/humanoid_soccer.md
   - ../../sources/repos/booster-robocup-demo.md
+  - ../../sources/repos/roboflow_sports.md
   - ../../sources/papers/robonaldo_arxiv_2606_11092.md
   - ../../sources/papers/humanoid_soccer_swarm_intelligence_sensors_2025.md
   - ../../sources/papers/artemis_humanoid_soccer_team_coordination_arxiv_2512_09431.md
@@ -46,7 +48,7 @@ summary: "Humanoid Soccer 是机器人学中最具挑战性的综合任务之一
 ## 核心挑战
 
 ### 1. 动态感知与定位
-机器人必须在快速移动中识别高速滚动的足球、对手机器人、场地边线和球门，并实时更新自身位姿。
+机器人必须在快速移动中识别高速滚动的足球、对手机器人、场地边线和球门，并实时更新自身位姿。广播/第三人称侧的检测–跟踪–俯视投影可参考 [Roboflow Sports](../entities/roboflow-sports.md)；机载场线定位见 [视觉场线定位流水线](../queries/soccer-visual-field-localization-pipeline.md)。
 
 ### 2. 闭环踢球 (Closed-loop Kicking)
 不同于预设轨迹的踢球，竞技环境要求：
@@ -110,6 +112,7 @@ summary: "Humanoid Soccer 是机器人学中最具挑战性的综合任务之一
 - [TeleHuman/HumanoidSoccer (PAiD) 源码仓库](../../sources/repos/humanoid_soccer.md) — 针对 Unitree G1 的渐进式足球学习
 - [robonaldo_arxiv_2606_11092.md](../../sources/papers/robonaldo_arxiv_2606_11092.md) — RoboNaldo 人形射门课程 RL 与 G1 机载感知摘录
 - [Booster Robotics RoboCup Demo](../../wiki/entities/booster-robocup-demo.md) — 完整的足球比赛软件方案
+- [roboflow_sports.md](../../sources/repos/roboflow_sports.md) — 广播视角检测/跟踪/俯视雷达开源对照
 - [humanoid_soccer_swarm_intelligence_sensors_2025.md](../../sources/papers/humanoid_soccer_swarm_intelligence_sensors_2025.md) — 人形足球 swarm 群控（Sensors 2025）
 - [artemis_humanoid_soccer_team_coordination_arxiv_2512_09431.md](../../sources/papers/artemis_humanoid_soccer_team_coordination_arxiv_2512_09431.md) — ARTEMIS 冠军系统群控摘录
 
@@ -117,6 +120,7 @@ summary: "Humanoid Soccer 是机器人学中最具挑战性的综合任务之一
 
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md) — Ch6–7 感知定位与 RoboCup 实践地图
 - [足球场仿真环境](../concepts/soccer-field-simulation.md) / [场地线检测](../methods/soccer-field-line-detection.md) / [线匹配](../methods/visual-line-matching-localization.md) / [线特征 EKF](../methods/visual-line-ekf-fusion.md)
+- [Roboflow Sports](../entities/roboflow-sports.md) — 第三人称体育 CV 与俯视雷达 demo
 - [Locomotion](./locomotion.md) — 足球任务的基础
 - [PAiD Framework](../methods/paid-framework.md) — 渐进式感知动作学习
 - [人形足球技能学习方法选型指南](../queries/humanoid-soccer-skill-learning-method-selection.md) — PAiD vs RoboNaldo 选型

@@ -2,7 +2,7 @@
 type: query
 tags: [soccer, localization, perception, ekf, robocup, humanoid, computer-vision, selection-loop]
 status: complete
-updated: 2026-07-23
+updated: 2026-07-27
 related:
   - ../methods/soccer-field-line-detection.md
   - ../methods/visual-line-matching-localization.md
@@ -11,8 +11,10 @@ related:
   - ../concepts/soccer-field-simulation.md
   - ../tasks/humanoid-soccer.md
   - ../entities/humanoid-system-curriculum.md
+  - ../entities/roboflow-sports.md
 sources:
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
+  - ../../sources/repos/roboflow_sports.md
 summary: "足球机器人视觉场线定位端到端流水线：场线/交点检测 → 线匹配数据关联 → EKF 融合，合三个课程方法为一条抗抖 (x,y,θ) 位姿落地。"
 ---
 
@@ -86,6 +88,7 @@ flowchart LR
 ## 参考来源
 
 - [深蓝学院人形系统课程大纲](../../sources/courses/shenlan_humanoid_system_theory_practice.md) — 第 6.4（场线检测）、7.2（线匹配定位）、7.3（EKF 融合）节
+- [roboflow_sports.md](../../sources/repos/roboflow_sports.md) — 广播视角关键点单应与俯视雷达（第三人称对照，非机载 EKF）
 
 ## 关联页面
 
@@ -95,3 +98,4 @@ flowchart LR
 - [EKF 形式化](../formalizations/ekf.md) — 融合环节的预测/更新递推与线性化基础
 - [足球场仿真](../concepts/soccer-field-simulation.md) — 有真值位姿，便于画「匹配误差 vs 距离」并联调全链
 - [Humanoid Soccer](../tasks/humanoid-soccer.md) — 本流水线服务的上层任务与基准
+- [Roboflow Sports](../entities/roboflow-sports.md) — 广播相机关键点→单应→俯视雷达；对照本流水线前两段几何思路
