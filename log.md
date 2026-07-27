@@ -1,5 +1,14 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-27] ingest | sources/blogs/robodojo_open_longterm_eval_2026-07.md — RoboDojo 开放长期公益评测；wiki/entities/robodojo.md · wiki/entities/xpolicylab.md
+
+- **公告 / 站点：** [`sources/blogs/robodojo_open_longterm_eval_2026-07.md`](sources/blogs/robodojo_open_longterm_eval_2026-07.md) · [`sources/sites/robodojo-benchmark.md`](sources/sites/robodojo-benchmark.md)（<https://robodojo-benchmark.com/>；Eval / Leaderboard / Protocol 2026-07-27 核查）
+- **论文 / 仓：** [`sources/papers/robodojo_arxiv_2607_04434.md`](sources/papers/robodojo_arxiv_2607_04434.md)（arXiv:2607.04434）· [`sources/repos/robodojo.md`](sources/repos/robodojo.md) · [`sources/repos/xpolicylab.md`](sources/repos/xpolicylab.md)
+- **主升格：** [`wiki/entities/robodojo.md`](wiki/entities/robodojo.md) — 42 sim 五维 + 18 real；公益 verified 上榜（XPolicyLab 开源训推+权重+评测视频）；[`wiki/entities/xpolicylab.md`](wiki/entities/xpolicylab.md) — 40+ 策略适配
+- **交叉：** [`wiki/queries/embodied-eval-benchmark-selection-loop.md`](wiki/queries/embodied-eval-benchmark-selection-loop.md)、[`wiki/overview/topic-embodied-eval-benchmark.md`](wiki/overview/topic-embodied-eval-benchmark.md)、[`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/concepts/simulation-evaluation-infrastructure.md`](wiki/concepts/simulation-evaluation-infrastructure.md)、[`wiki/entities/xiaomi-robotics-1.md`](wiki/entities/xiaomi-robotics-1.md)、[`wiki/entities/robo-bench.md`](wiki/entities/robo-bench.md)、[`wiki/entities/vla-sota-leaderboard.md`](wiki/entities/vla-sota-leaderboard.md)
+- **机构注册：** `schema/institutions.json` → `ai-mmlab-club`（人工智能多媒体实验室俱乐部（AI MMLab Club））
+- **开源核查：** RoboDojo **已开源**（eval-only，MIT LICENSE）；XPolicyLab **已开源**（Apache-2.0）；verified 上榜强制开源训推与 checkpoint
+
 ## [2026-07-27] ingest | sources/repos/roboflow_sports.md — Roboflow Sports 体育 CV 工具与足球俯视雷达；wiki/entities/roboflow-sports.md
 
 - **来源归档：** [`sources/repos/roboflow_sports.md`](sources/repos/roboflow_sports.md)（<https://github.com/roboflow/sports>；~5.2k★；MIT；2026-07-27 核查）

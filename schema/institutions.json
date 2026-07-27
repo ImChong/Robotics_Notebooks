@@ -1799,6 +1799,15 @@
       "aliases": [
         "instadapt"
       ]
+    },
+    "ai-mmlab-club": {
+      "label": "人工智能多媒体实验室俱乐部（AI MMLab Club）",
+      "aliases": [
+        "ai-mmlab-club",
+        "aimmlab",
+        "ai-mmlab",
+        "mmlab-club"
+      ]
     }
   }
 }

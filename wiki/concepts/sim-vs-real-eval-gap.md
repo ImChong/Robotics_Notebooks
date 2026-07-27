@@ -2,7 +2,7 @@
 type: concept
 tags: [evaluation, benchmark, sim2real, simulation, embodied-ai, reproducibility, world-model]
 status: complete
-updated: 2026-07-14
+updated: 2026-07-27
 summary: "仿真评测可复现性 ↔ 真实世界代表性 取舍概念页：明示仿真基准在可复现性/吞吐/可控性上的优势，为何以牺牲真实接触、感知噪声、长尾分布的代表性为代价，并把这条 gap 讲成「评测结论能否外推到真机」的物理根因；配可复现性 vs 代表性代价表、缩小评测 gap 的三条工程路线与常见误判速查。"
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
