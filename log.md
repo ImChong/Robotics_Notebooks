@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-27] ingest | sources/sites/3dgenstudio-com.md + sources/repos/3dgenstudio.md — 升格 wiki/entities/3dgenstudio.md；交叉 text-to-cad / blender / articraft / img2threejs / freecad-mcp；开源核查：Community License 已开源（禁 SaaS 转售）
+
+- **官网 / 仓：** [`sources/sites/3dgenstudio-com.md`](sources/sites/3dgenstudio-com.md)（<https://www.3dgenstudio.com/>，v2.1.0）· [`sources/repos/3dgenstudio.md`](sources/repos/3dgenstudio.md)（<https://github.com/visualbruno/3DGenStudio>）
+- **主升格：** [`wiki/entities/3dgenstudio.md`](wiki/entities/3dgenstudio.md) — 本地优先 AI 网格生产工作台：Kanban/Graph + ComfyUI + Mesh Editor + MCP；导出 GLB/OBJ/FBX
+- **交叉：** [`wiki/concepts/text-to-cad.md`](wiki/concepts/text-to-cad.md)、[`wiki/entities/blender.md`](wiki/entities/blender.md)、[`wiki/entities/articraft.md`](wiki/entities/articraft.md)、[`wiki/entities/img2threejs.md`](wiki/entities/img2threejs.md)、[`wiki/entities/freecad-mcp.md`](wiki/entities/freecad-mcp.md)；索引 [`sources/sites/text-to-cad-tools.md`](sources/sites/text-to-cad-tools.md)
+- **开源核查（2026-07-27）：** **已开源** — Community License（可自用/改代码与商用生成物；禁止转售软件本体与付费 SaaS 托管）；依赖本地 ComfyUI + 可选第三方 API
+- **机构注册：** `schema/institutions.json` → `3d-gen-studio`（三维生成工作室（3D Gen Studio））
+
 ## [2026-07-27] structural | roadmap/depth-motion-retargeting.md — 新增 Stage 4 工程工具链与轨迹编辑器（原 Stage 4/5 顺延为 5/6），接入 wiki/entities/robot-motion-keyframe-editors.md、wiki/entities/human-humanoid-tools.md、wiki/entities/soma-retargeter.md、wiki/entities/robot-retargeter.md、wiki/entities/mocap-retarget.md 等一手工具资料
 
 - **主更新：** [`roadmap/depth-motion-retargeting.md`](roadmap/depth-motion-retargeting.md) — 新增 **Stage 4 工程工具链与轨迹编辑器**：工具形态谱系（脚本级 / 库级 / 工作台级 / 框架内置 / 编辑器级）+ 三条一手编辑链路 + 四元数顺序与 FPS 重采样踩坑；原「下游闭环 / 进阶方向」顺延为 Stage 5 / Stage 6（站点 `export_minimal.py` 只解析整数 Stage，小数号不会进阶段速览）；同步更新路线图 Mermaid、前置知识链与快速入口表

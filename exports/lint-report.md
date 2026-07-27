@@ -53,7 +53,7 @@
 - 无
 
 ### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（1 个）
-- License（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
+- LICENSE（被 7 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 
 ### ⚠️ Frontmatter 缺少 type 字段（0 个）
 - 无
@@ -140,4 +140,4 @@
 ### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：1896/1924 (99%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1897/1925 (99%) wiki/entity 页有 ingest 来源

@@ -6,6 +6,7 @@
 ### Entities（实体页）
 
 - [1X Technologies](wiki/entities/1x-technologies.md) — 1X Technologies** 专注于「能在真实环境里长期运行的人形机器人」，当前公开产品线以 **轮式人形 EVE**（面向仓储 / 安防 / 医疗等结构化场景）与 **双足 NEO**（强 `📅unknown` `[entity_page]`
+- [3D Gen Studio](wiki/entities/3dgenstudio.md) — 3D Gen Studio**（visualbruno/3DGenStudio，官网 [3dgenstu `📅unknown` `[entity_page]`
 - [ACMOP（交流电机自动优化框架）](wiki/entities/acmop.md) — ACMOP**（horychen/ACMOP，*Alternating Current Machine Optimizat `📅unknown` `[entity_page]`
 - [AERIS-10（PLFM_RADAR）](wiki/entities/aeris-10-plfm-radar.md) — AERIS-10** 是 GitHub 上高关注度的 **开源脉冲线性调频（PLFM）相控阵雷达** 全栈：从原理图、PCB、FPGA 固件到 Python 可视化一应俱全，适合研究 **波束赋形 `📅unknown` `[entity_page]`
 - [Agent Reach（Panniantong）](wiki/entities/agent-reach.md) — Agent Reach 是面向编码代理的开源安装脚手架：把网页、社媒、视频字幕、GitHub、RSS 与语义搜索等能力所依赖的上游 CLI 与 MCP 依赖收拢到可重复的安装与诊断路径；凭据默认仅存本 `📅2026-05-21` `[entity_page]`

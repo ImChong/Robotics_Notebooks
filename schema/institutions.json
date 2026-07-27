@@ -1868,6 +1868,14 @@
         "clo3d",
         "clo-virtual-fashion-inc"
       ]
+    },
+    "3d-gen-studio": {
+      "label": "三维生成工作室（3D Gen Studio）",
+      "aliases": [
+        "3d-gen-studio",
+        "3dgenstudio",
+        "visualbruno"
+      ]
     }
   }
 }

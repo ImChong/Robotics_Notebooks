@@ -12,6 +12,7 @@ related:
   - ./urdf-studio.md
   - ./cad-skills.md
   - ./img2threejs.md
+  - ./3dgenstudio.md
   - ./mujoco.md
   - ./paper-agentic-real2sim.md
   - ./paper-diffgi.md
@@ -19,6 +20,7 @@ sources:
   - ../../sources/sites/articraft3d-github-io.md
   - ../../sources/repos/mattzh72-articraft.md
   - ../../sources/papers/physx_omni_arxiv_2605_21572.md
+  - ../../sources/repos/3dgenstudio.md
 summary: "Articraft 将「可关节 3D 资产生成」表述为受限工作区内的程序化 agent 回路：LLM 在 SDK 上编写/修改生成程序，执行 harness 返回编译与验证类结构化反馈并迭代，目标为带关节限位与 PBR 的仿真就绪对象；配套 Articraft-10K 数据集与公开代码仓。"
 ---
 
@@ -81,6 +83,7 @@ flowchart TB
 - [URDF-Studio](./urdf-studio.md) — Web 端机器人描述与导出工作流，可与「仿真就绪关节资产」下游衔接对照。
 - [CAD Skills](./cad-skills.md) — **制造向 STEP + URDF skill** 的 Agent Skills 全链路；目标偏 B-rep/加工而非 Articraft 式可关节网格。
 - [img2threejs](./img2threejs.md) — **图像→程序化 Three.js** Agent Skill；同属「程序化 agent」叙事，但目标是浏览器 WebGL prop，不是仿真就绪关节资产。
+- [3D Gen Studio](./3dgenstudio.md) — **ComfyUI 网格生产编排**（Kanban/Graph/MCP）；产出静态 GLB/OBJ，与本页「可关节 + 验证闭环」目标不同。
 - [MuJoCo](./mujoco.md) — 常见刚体/关节仿真后端之一；项目页演示强调物理与 VR 交互叙事。
 - [Sim2Real](../concepts/sim2real.md) — 资产几何与动力学一致性的总提醒。
 - [PhysForge（论文实体）](./paper-physforge-physics-grounded-3d-assets.md) — **VLM 物理蓝图 + 扩散 KVI** 的学习式「仿真就绪关节资产」路线，与 Articraft 的 **程序化 agent** 形态对照。

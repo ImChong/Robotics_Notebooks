@@ -2,17 +2,19 @@
 type: entity
 tags: [software, cad, mcp, llm-agents, freecad, parametric-modeling, open-source, hardware, fem]
 status: complete
-updated: 2026-07-10
+updated: 2026-07-27
 related:
   - ./freecad.md
   - ./cad-skills.md
   - ./step2urdf.md
   - ./urdf-studio.md
+  - ./3dgenstudio.md
   - ../concepts/text-to-cad.md
   - ../concepts/urdf-robot-description.md
   - ../queries/simulation-physics-fidelity.md
 sources:
   - ../../sources/repos/freecad-mcp.md
+  - ../../sources/repos/3dgenstudio.md
 summary: "FreeCAD MCP（neka-nat/freecad-mcp）用 Addon RPC + PyPI MCP server 把桌面 FreeCAD 暴露给 Claude 等代理：建改对象、执行 Python、截图审图、插标准件与 CalculiX FEM，是机器人硬件链路中「自然语言驱动已有 CAD」的轻量桥接。"
 ---
 
@@ -114,6 +116,7 @@ flowchart LR
 - [CAD Skills（LLM 驱动 CAD 技能）](./cad-skills.md)
 - [step2urdf（STEP→URDF 浏览器转换）](./step2urdf.md)
 - [URDF-Studio（URDF/MJCF 设计工作站）](./urdf-studio.md)
+- [3D Gen Studio（ComfyUI 网格生产 + MCP）](./3dgenstudio.md) — 同属 MCP 自动化，但目标是 **mesh 管线** 而非 FreeCAD B-rep
 - [文字生成 CAD（Text-to-CAD）](../concepts/text-to-cad.md)
 - [URDF（统一机器人描述格式）](../concepts/urdf-robot-description.md)
 - [仿真物理保真度链路](../queries/simulation-physics-fidelity.md)
