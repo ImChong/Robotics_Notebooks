@@ -1,13 +1,88 @@
 {
   "generated_at": "2026-07-27",
-  "node_count": 1941,
-  "edge_count": 16749,
+  "node_count": 1942,
+  "edge_count": 16764,
   "coverage": {
-    "covered": 1889,
-    "total": 1917,
+    "covered": 1890,
+    "total": 1918,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/lumina-embodied.md",
+      "detail_id": "entity-lumina-embodied",
+      "label": "Lumina 具身智能社区",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/waytoagi.md",
+      "detail_id": "entity-waytoagi",
+      "label": "WaytoAGI（通往 AGI 之路）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/robotwin.md",
+      "detail_id": "entity-robotwin",
+      "label": "RoboTwin 2.0",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/isaac-sim.md",
+      "detail_id": "entity-isaac-sim",
+      "label": "Isaac Sim",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/openlet.md",
+      "detail_id": "entity-openlet",
+      "label": "OpenLET 具身智能开源数据集社区",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
+      "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
+      "label": "VLA 开源复现景观（2025 策展）",
+      "type": "overview",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/oomwoo.md",
       "detail_id": "entity-oomwoo",
@@ -145,93 +220,23 @@
       "recency": "2026-07-27",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/xyz-deux.md",
-      "detail_id": "entity-xyz-deux",
-      "label": "DEUX（XYZ · 半人形服务机器人）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/tasks/teleoperation.md",
-      "detail_id": "wiki-tasks-teleoperation",
-      "label": "Teleoperation（遥操作）",
-      "type": "task",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/comparisons/data-gloves-vs-vision-teleop.md",
-      "detail_id": "wiki-comparisons-data-gloves-vs-vision-teleop",
-      "label": "数据手套 vs 视觉遥操作 (灵巧数据采集选型)",
-      "type": "comparison",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/overview/humanoid-hardware-101-sensing-end-effectors.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-sensing-end-effectors",
-      "label": "Humanoid Hardware 101 · 06：传感与末端执行器",
-      "type": "overview",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/sunday-robotics-act2.md",
-      "detail_id": "entity-sunday-robotics-act2",
-      "label": "ACT-2（Sunday Robotics · Generalizing Reliability）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/handumi.md",
-      "detail_id": "entity-handumi",
-      "label": "HandUMI",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/imitation-learning.md",
-      "detail_id": "wiki-methods-imitation-learning",
-      "label": "Imitation Learning (IL, 模仿学习)",
-      "type": "method",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/oomwoo.md",
-    "detail_id": "entity-oomwoo",
-    "label": "OOMWOO",
+    "path": "wiki/entities/lumina-embodied.md",
+    "detail_id": "entity-lumina-embodied",
+    "label": "Lumina 具身智能社区",
     "type": "entity",
     "recency": "2026-07-27",
     "source": "log.md",
     "action": "added",
     "has_repo": true,
-    "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 430
+      "size": 431
     },
     {
       "label": "人形论文深读笔记",
@@ -266,7 +271,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 350,
+      "degree": 353,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

@@ -2,7 +2,7 @@
 type: entity
 tags: [entity, simulator, isaac, isaac-sim, omniverse, gpu-simulation, usd, sensors, nvidia, sim2real]
 status: complete
-updated: 2026-07-21
+updated: 2026-07-27
 related:
   - ./isaac-lab.md
   - ./isaac-gym.md
@@ -12,6 +12,7 @@ related:
   - ../comparisons/mujoco-vs-isaac-lab.md
   - ./newton-physics.md
   - ./isaac-teleop.md
+  - ./lumina-embodied.md
   - ../concepts/sim2real.md
   - ../methods/reinforcement-learning.md
   - ../queries/simulator-selection-guide.md
@@ -19,6 +20,7 @@ sources:
   - ../../sources/repos/isaac_sim.md
   - ../../sources/repos/isaac_gym_isaac_lab.md
   - ../../sources/papers/simulation_tools.md
+  - ../../sources/sites/lumina-embodied-ai.md
 summary: "NVIDIA Isaac Sim 是基于 Omniverse / OpenUSD 的机器人仿真应用：资产导入、PhysX/Newton 物理、RTX 传感器、合成数据与 ROS 2 SIL；是 Isaac Lab 的仿真底座，与已弃用的 Isaac Gym 不是同一代产品。"
 ---
 
@@ -203,6 +205,7 @@ flowchart TB
 - Isaac Sim 文档首页：<https://docs.isaacsim.omniverse.nvidia.com/latest/index.html>
 - 开源仓库：<https://github.com/isaac-sim/IsaacSim>
 - Core API：<https://docs.isaacsim.omniverse.nvidia.com/latest/py/source/extensions/isaacsim.core.api/docs/index.html>
+- 中文社区入门（Lumina）：[Isaac Sim 一百讲（1）安装](https://lumina-embodied.ai/blog/isaac101-1)
 
 ## 参考来源
 
@@ -210,6 +213,7 @@ flowchart TB
 - **ingest 档案：** [sources/repos/isaac_gym_isaac_lab.md](../../sources/repos/isaac_gym_isaac_lab.md)
 - 官方文档：What Is Isaac Sim / Workflow Overview / Robotics Ecosystem
 - **ingest 档案：** [sources/papers/simulation_tools.md](../../sources/papers/simulation_tools.md)
+- **社区教程入口：** [Lumina 官网归档](../../sources/sites/lumina-embodied-ai.md)（Isaac Sim 一百讲 1–5）
 
 ## 关联页面
 
@@ -220,6 +224,7 @@ flowchart TB
 - [MuJoCo vs Isaac Sim](../comparisons/mujoco-vs-isaac-sim.md)
 - [Newton Physics](./newton-physics.md) — 可选物理后端方向
 - [Isaac Teleop](./isaac-teleop.md) — XR 遥操作与示范采集
+- [Lumina 具身智能社区](./lumina-embodied.md) — 中文 Isaac Sim 一百讲与社区 Talks
 - [Sim2Real](../concepts/sim2real.md)
 - [仿真器选型指南](../queries/simulator-selection-guide.md)
 

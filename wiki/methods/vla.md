@@ -72,6 +72,8 @@ related:
   - ../entities/robo-bench.md
   - ../concepts/behavior-tree-vla-orchestration.md
   - ../entities/paper-uni-lavira.md
+  - ../entities/lumina-embodied.md
+  - ../entities/waytoagi.md
 sources:
   - ../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md
   - ../../sources/papers/rl_foundation_models.md
@@ -289,7 +291,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [深蓝具身智能：2025 VLA 开源复现景观（微信公众号）](../../sources/blogs/wechat_shenlan_vla_github_repro_survey_2025.md) — OpenPI、VLA-Adapter、RLinf 等 11 项 GitHub 栈策展索引
 - [sources/papers/rl_foundation_models.md](../../sources/papers/rl_foundation_models.md) — RT-1 / RT-2 / π₀ / Octo / TD-MPC2 综述
 - [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — π₀ 与生成式动作建模路线
-- [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md) — Lumina 社区具身智能百科全书，涵盖能力栈与仿真管线
+- [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md) — Lumina 社区具身智能百科全书，涵盖能力栈与仿真管线；门户见 [Lumina](../entities/lumina-embodied.md)
 - [Xbotics-Embodied-Guide](../../sources/repos/xbotics-embodied-guide.md) — 工程实践导向，包含 VLA 实战路线图与数据飞轮建设
 - [SceneVerse++](../../sources/repos/sceneverse-pp.md) — 互联网视频→3D 场景的大规模自动标注与 VQA/VLN 监督（补充空间推理数据来源）
 - [RLDX-1](../../sources/repos/rldx-1.md) — RLWRLD 灵巧操作 VLA 仓库与技术报告归档
@@ -361,6 +363,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [Diffusion Policy](./diffusion-policy.md)
 - [Behavior Cloning](./behavior-cloning.md)
 - [RoboTwin 2.0](../entities/robotwin.md) — 具身智能自动化数据生成平台
+- [Lumina 具身智能社区](../entities/lumina-embodied.md) — Talks / Guide 社区雷达（与 Embodied-AI-Guide 同源）
 - [LeRobot](../entities/lerobot.md) — Hugging Face 具身智能全栈框架
 - [OpenVLA](../entities/openvla.md) — 开源 Prismatic VLA 与 LoRA/OFT 微调
 - [NVIDIA SO-101 Sim2Real 实验 workflow](../entities/nvidia-so101-sim2real-lab-workflow.md) — GR00T N1.6 教程级 VLA + 四类 sim2real 策略对照

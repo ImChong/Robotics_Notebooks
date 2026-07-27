@@ -4,7 +4,10 @@
 - **链接**: https://github.com/tianxingchen/Embodied-AI-Guide
 - **类型**: repo / encyclopedia
 - **作者**: tianxingchen (Lumina Community)
+- **社区官网**: https://lumina-embodied.ai/ （博客镜像：https://lumina-embodied.ai/blog/eai-guide）
+- **站点归档**: [lumina-embodied-ai.md](../sites/lumina-embodied-ai.md)
 - **核心关注点**: 具身智能全栈技术、VLA 模型、仿真到现实管线、RoboTwin 2.0
+- **最后核查**: 2026-07-27
 
 ## 核心内容摘要
 
@@ -25,8 +28,9 @@
 - 强调数据规模化 (Scaling Laws) 在具身智能中的应用。
 
 ## 对 Wiki 的映射
-- **wiki/entities/robotwin.md** (新建)
-- **wiki/entities/sapien.md** (新建)
-- **wiki/entities/aloha.md** (新建)
-- **wiki/methods/vla.md** (补充 Algorithm Capability Stack)
+- **wiki/entities/lumina-embodied.md** — 社区门户实体（官网 Talks / 教程 / Call）
+- **wiki/entities/robotwin.md**
+- **wiki/entities/sapien.md**
+- **wiki/entities/aloha.md**
+- **wiki/methods/vla.md** (Algorithm Capability Stack)
 - **wiki/methods/action-chunking.md** (关联 ALOHA 硬件)
