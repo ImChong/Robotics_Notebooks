@@ -2,7 +2,7 @@
 type: method
 tags: [vla, foundation-policy, physical-intelligence, flow-matching, manipulation, prompting, cross-embodiment]
 status: complete
-updated: 2026-07-11
+updated: 2026-07-27
 related:
   - ./π0-policy.md
   - ./vla.md
@@ -40,7 +40,7 @@ summary: "π₀.7 是 Physical Intelligence 的通才机器人 VLA：用多模�
 - **异质数据 ≠ 直接混合**：多机器人、多风格、不同质量的数据 naive 合并常导致策略对多模态行为取平均；π₀.₇ 用**显式条件**把不同执行模式变成提示空间中的不同模式，而不是互相污染。
 - **把 RL 专精「蒸馏进通才」**：团队将 Recap / π*₀.₆ 路线产生的自主 rollout 作为训练源，通过元数据区分「高表现专精行为」，使单一 π₀.₇ 在洗衣、浓缩咖啡、折箱等任务上对标或超过任务专训 RL 策略的归一化吞吐（官方博客图表叙事）。
 - **组合泛化与跨本体**：博客与论文均强调在**未见厨电组合操作**、**语言分步 coaching**、以及**未见本体上的折衣**等设置上的定性/定量证据——这是机器人基础模型是否具备「LLM 式组合性」的关键压力测试之一。
-- **长程记忆对照：** π₀.₇ 使用 **MEM 式历史视觉**；同系 **π₀.₅** 上的可插拔 **[KEMO](../entities/paper-kemo-event-driven-keyframe-memory-vla.md)** 则存 **稀疏事件关键帧**（运动学检测 + 门控融合），面向双臂长程 **stage ambiguity** 的另一条记忆路线。
+- **长程记忆对照：** π₀.₇ 使用 **MEM 式历史视觉**；同系 **π₀.₅** 上的可插拔 **[KEMO](../entities/paper-kemo-event-driven-keyframe-memory-vla.md)** 则存 **稀疏事件关键帧**（运动学检测 + 门控融合），面向双臂长程 **stage ambiguity** 的另一条记忆路线；当进度写在 **接触力** 而非画面上时，见 **[FM-VLA](../entities/paper-fm-vla.md)**（Force-VAE 压缩 wrench 历史注入 π₀.₅ action expert）。
 
 ## 主要技术路线
 

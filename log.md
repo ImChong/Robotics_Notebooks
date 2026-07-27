@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-27] ingest | sources/papers/fm_vla_arxiv_2607_18231.md — FM-VLA 力觉记忆 VLA；wiki/entities/paper-fm-vla.md + 交叉 VLA/manipulation/CRM/KEMO/EventVLA
+
+- **论文：** [`sources/papers/fm_vla_arxiv_2607_18231.md`](sources/papers/fm_vla_arxiv_2607_18231.md)（arXiv:2607.18231；清华 / 微软研究院 / 复旦 / 中科大）
+- **项目页 / 仓：** [`sources/sites/fm-vla-page.md`](sources/sites/fm-vla-page.md) · [`sources/repos/fm-vla.md`](sources/repos/fm-vla.md) — **宣称将开源**（README「Code will be released soon」，仅 demo 媒体）
+- **主升格：** [`wiki/entities/paper-fm-vla.md`](wiki/entities/paper-fm-vla.md) — Force-VAE（$K=8$）+ 短状态窗注入 π₀.₅；G1 三项任务平均 **83.3%**、+**3.3 ms**
+- **交叉：** [`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`wiki/concepts/contact-rich-manipulation.md`](wiki/concepts/contact-rich-manipulation.md)、[`paper-kemo`](wiki/entities/paper-kemo-event-driven-keyframe-memory-vla.md)、[`paper-eventvla`](wiki/entities/paper-eventvla-visual-evidence-memory.md)
+- **开源核查日：** 2026-07-27
+
 ## [2026-07-27] ingest | sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md — 世界模型「学到多少真实物理」：按预测输出阅读；12 篇新建 complete 实体 + 复用已有节点
 
 - **来源归档：** [`sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md`](sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md)（Agent Reach v1.5.0 + wechat-article-for-ai；<https://mp.weixin.qq.com/s/OawDKruG8zEepiy-x1nKuA>）
