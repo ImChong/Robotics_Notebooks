@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-27] ingest | sources/papers/worldscore_arxiv_2504_00983.md — WorldScore 统一世界生成评测（ICCV 2025）；升格 wiki/entities/paper-worldscore.md；交叉 ewmbench / generative-world-models / video-as-simulation / topic-embodied-eval-benchmark / embodied-eval-benchmark-selection-loop；归档 sites/haoyi-duan-worldscore-github-io.md、sites/worldscore-leaderboard-hf.md、repos/worldscore.md；开源核查：MIT 代码 + HF Dataset + HF Leaderboard 已开源
+
+- **论文 / 项目页 / 仓 / 榜：** [`sources/papers/worldscore_arxiv_2504_00983.md`](sources/papers/worldscore_arxiv_2504_00983.md)（arXiv:2504.00983，ICCV 2025）· [`sources/sites/haoyi-duan-worldscore-github-io.md`](sources/sites/haoyi-duan-worldscore-github-io.md)（<https://haoyi-duan.github.io/WorldScore/>）· [`sources/repos/worldscore.md`](sources/repos/worldscore.md)（<https://github.com/haoyi-duan/WorldScore>）· [`sources/sites/worldscore-leaderboard-hf.md`](sources/sites/worldscore-leaderboard-hf.md)（<https://huggingface.co/spaces/Howieeeee/WorldScore_Leaderboard>；HF Dataset Howieeeee/WorldScore）
+- **主升格：** [`wiki/entities/paper-worldscore.md`](wiki/entities/paper-worldscore.md) — next-scene + 显式相机轨迹；3000 例；Ctrl/Quality/Dynamics → Static/Dynamic；统一评 3D/4D/I2V/T2V
+- **交叉：** [`wiki/entities/ewmbench.md`](wiki/entities/ewmbench.md)、[`wiki/methods/generative-world-models.md`](wiki/methods/generative-world-models.md)、[`wiki/concepts/video-as-simulation.md`](wiki/concepts/video-as-simulation.md)、[`wiki/overview/topic-embodied-eval-benchmark.md`](wiki/overview/topic-embodied-eval-benchmark.md)、[`wiki/queries/embodied-eval-benchmark-selection-loop.md`](wiki/queries/embodied-eval-benchmark-selection-loop.md)
+- **开源核查（2026-07-27）：** **已开源** — MIT 评测仓 + HF static/dynamic 数据集 + HF Leaderboard（可提交 `worldscore.json`）；评测依赖 DROID-SLAM/SAM/VFI 较重
+
 ## [2026-07-27] ingest | sources/papers/diffgi_arxiv_2607_13365.md — DiffGI 可微 TSDF geometry image（ECCV 2026）；升格 wiki/entities/paper-diffgi.md；交叉 clothtransformer / physforge / articraft；归档 sites/ejshim-diffgi-github-io.md、repos/diffgi.md；注册 clo-virtual-fashion；开源核查：Code (soon)/仓内仅 docs，待发布
 
 - **论文 / 项目页 / 仓：** [`sources/papers/diffgi_arxiv_2607_13365.md`](sources/papers/diffgi_arxiv_2607_13365.md)（arXiv:2607.13365）· [`sources/sites/ejshim-diffgi-github-io.md`](sources/sites/ejshim-diffgi-github-io.md)（<https://ejshim.github.io/diffgi/>）· [`sources/repos/diffgi.md`](sources/repos/diffgi.md)（<https://github.com/EJShim/diffgi>；仅 docs）

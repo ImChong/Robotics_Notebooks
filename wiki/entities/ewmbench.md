@@ -10,11 +10,13 @@ related:
   - ../methods/model-based-rl.md
   - ./paper-wem-world-ego-modeling.md
   - ./ge-sim-2.md
+  - ./paper-worldscore.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/ewmbench.md
   - ../../sources/repos/ewmbench.md
   - ../../sources/sites/agibot-world.md
+  - ../../sources/papers/worldscore_arxiv_2504_00983.md
 summary: "EWMBench 是面向具身世界模型（EWM）视频生成的公开基准与工具链：在 Agibot-World 子集上统一初始化后，从场景守恒、末端轨迹与语义/逻辑对齐三轴评测候选文生视频模型，并开源数据与评测代码。"
 ---
 
@@ -36,7 +38,7 @@ summary: "EWMBench 是面向具身世界模型（EWM）视频生成的公开基�
 
 ## 为什么重要
 
-- **问题对准「通用视频指标 ≠ 具身可用」**：VBench 等基准难以单独暴露 **静态场景漂移、末端时序错乱、指令步骤缺失** 等操纵任务失效模式；EWMBench 显式把这些维度拆开报告（论文 Table 1 与 §4.1–4.3）。
+- **问题对准「通用视频指标 ≠ 具身可用」**：VBench 等基准难以单独暴露 **静态场景漂移、末端时序错乱、指令步骤缺失** 等操纵任务失效模式；EWMBench 显式把这些维度拆开报告（论文 Table 1 与 §4.1–4.3）。开放域 **多场景 + 相机布局** 世界生成请改看 [WorldScore](./paper-worldscore.md)（ICCV 2025），二者轴线不同。
 - **与生成式世界模型路线直接对齐**：当研究把扩散式视频模型当作 [生成式世界模型](../methods/generative-world-models.md) 或 [视频即仿真](../concepts/video-as-simulation.md) 的像素接口时，需要一个 **可复现、与真机数据同源** 的坐标系；EWMBench 的数据子集直接构建于 **Agibot-World** 开源操纵数据。论文局限中提到的 **导航与移动操作** 扩展，在 [WEM / HTEWorld](./paper-wem-world-ego-modeling.md) 中已有 **BEHAVIOR-1K 混合长程** 对照基准。
 - **工程可落地**：官方仓库提供 **目录约定、`config.yaml`、预处理脚本与依赖版本**，降低「论文指标无法复现」的摩擦（细节以 README 为准）。
 
@@ -95,15 +97,18 @@ flowchart LR
 - [GE-Sim 2.0](./ge-sim-2.md) — 同 Genie Envisioner 生态的 **闭环** 视频世界模拟器（内置 World Judge；EWMBench 偏开环生成质量）
 - [Model-Based RL（基于模型的强化学习）](../methods/model-based-rl.md) — 世界模型学习与规划文献脉络（EWMBench 评的是「生成式视频世界模型」子类）
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是其「② 世界模型预测保真度评测层」的代表基准，双向回链
+- [WorldScore](./paper-worldscore.md) — 开放域 3D/4D/视频 **多场景世界生成** 统一榜（相机可控 + 质量 + 动态）；非操纵三轴
 
 ## 参考来源
 
 - [EWMBench 论文摘录](../../sources/papers/ewmbench.md)
 - [EWMBench 仓库与运行归档](../../sources/repos/ewmbench.md)
 - [Agibot-World 站点归档](../../sources/sites/agibot-world.md)
+- [WorldScore 论文摘录](../../sources/papers/worldscore_arxiv_2504_00983.md) — 开放域世界生成统一评测对照
 - Hu et al., *EWMBench: Evaluating Scene, Motion, and Semantic Quality in Embodied World Models*, [arXiv:2505.09694](https://arxiv.org/abs/2505.09694)
 
 ## 推荐继续阅读
 
 - Huang et al., *VBench: Comprehensive Benchmark Suite for Video Generative Models*, [arXiv:2311.17982](https://arxiv.org/abs/2311.17982) — 通用文生视频多维基准，与 EWMBench 的 **embodied 特化** 维度形成对照
+- Duan et al., *WorldScore*, [arXiv:2504.00983](https://arxiv.org/abs/2504.00983) — 多场景相机可控世界生成统一榜
 - [AgibotTech/EWMBench（GitHub）](https://github.com/AgibotTech/EWMBench) — 安装、目录结构与 `config.yaml` 约定的一手说明

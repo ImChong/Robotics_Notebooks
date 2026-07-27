@@ -6,6 +6,7 @@ updated: 2026-07-27
 related:
   - ../methods/generative-world-models.md
   - ../entities/ewmbench.md
+  - ../entities/paper-worldscore.md
   - ../entities/paper-wem-world-ego-modeling.md
   - ../methods/dwm.md
   - ../methods/mimic-video.md
@@ -27,6 +28,7 @@ sources:
   - ../../sources/papers/diffusion_and_gen.md
   - ../../sources/papers/exoactor.md
   - ../../sources/papers/ewmbench.md
+  - ../../sources/papers/worldscore_arxiv_2504_00983.md
   - ../../sources/papers/dwm_arxiv_2512_17907.md
   - ../../sources/papers/mimic_video_arxiv_2512_15692.md
   - ../../sources/papers/wem_arxiv_2605_19957.md
@@ -85,7 +87,7 @@ UniSim 证明了通过将“大量无人干预的人类视频”与“少量机�
 - **因果偏差**：模型可能会产生“动作未到，物体先动”的逻辑错误。
 - **长程发散**：随着预测步数增加，生成的视频细节会逐渐模糊，导致策略在长时域任务中失效。
 - **无法闭环力控**：由于缺乏接触力反馈，它更适合训练视觉策略，而非底层高频关节控制。
-- **评测口径**：像素 rollout 的「任务是否真被完成」难以用单一感知分数刻画；可对照公开 **具身视频世界模型** 基准（如 [EWMBench](../entities/ewmbench.md) 的场景守恒 / 末端轨迹 / 语义逻辑三轴）做系统性体检，而不是只看通用文生视频榜单。
+- **评测口径**：像素 rollout 的「任务是否真被完成」难以用单一感知分数刻画；可对照公开 **具身视频世界模型** 基准（如 [EWMBench](../entities/ewmbench.md) 的场景守恒 / 末端轨迹 / 语义逻辑三轴）做系统性体检，而不是只看通用文生视频榜单。若关心的是开放域 **多场景运镜与跨场景一致性**（含 3D/4D 方法），改用 [WorldScore](../entities/paper-worldscore.md)。
 
 ## 在人形控制上的延伸：[ExoActor](../methods/exoactor.md)
 
@@ -121,6 +123,7 @@ UniSim 把视频生成模型当作可交互的物理引擎来训练视觉策略�
 - [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — 本页所述物理/仿真要素在保真度链路（建模 ① → 数值 ② → 接触 ③ → 随机化 ④）中的定位
 - [Generative World Models](../methods/generative-world-models.md)
 - [EWMBench](../entities/ewmbench.md) — 操纵场景下视频世界模型生成的多维评测坐标
+- [WorldScore](../entities/paper-worldscore.md) — 开放域多场景 + 相机可控世界生成统一评测（ICCV 2025）
 - [Sim2Real (仿真到现实迁移)](../concepts/sim2real.md)
 - [Model-Based RL](../methods/model-based-rl.md)
 - [ExoActor](../methods/exoactor.md) — 把视频即仿真思想用到人形机器人交互行为生成上。
@@ -146,6 +149,7 @@ UniSim 把视频生成模型当作可交互的物理引擎来训练视觉策略�
 - [Google DeepMind Blog on UniSim](https://deepmind.google/discover/blog/unisim/).
 - Zhou Y., et al. (2026). *ExoActor: Exocentric Video Generation as Generalizable Interactive Humanoid Control* — 见 [sources/papers/exoactor.md](../../sources/papers/exoactor.md)。
 - Hu, Y., et al. (2025). *EWMBench: Evaluating Scene, Motion, and Semantic Quality in Embodied World Models* — 见 [sources/papers/ewmbench.md](../../sources/papers/ewmbench.md)。
+- Duan, H., et al. (2025). *WorldScore: A Unified Evaluation Benchmark for World Generation* — 见 [sources/papers/worldscore_arxiv_2504_00983.md](../../sources/papers/worldscore_arxiv_2504_00983.md)。
 - Kim, B., et al. (2026). *Dexterous World Models* — 见 [sources/papers/dwm_arxiv_2512_17907.md](../../sources/papers/dwm_arxiv_2512_17907.md)。
 - Pai, J., et al. (2025). *mimic-video: Video-Action Models for Generalizable Robot Control Beyond VLAs* — 见 [sources/papers/mimic_video_arxiv_2512_15692.md](../../sources/papers/mimic_video_arxiv_2512_15692.md)。
 - Lin, Z., et al. (2026). *World-Ego Modeling for Long-Horizon Evolution in Hybrid Embodied Tasks* (arXiv:2605.19957) — 见 [sources/papers/wem_arxiv_2605_19957.md](../../sources/papers/wem_arxiv_2605_19957.md)。

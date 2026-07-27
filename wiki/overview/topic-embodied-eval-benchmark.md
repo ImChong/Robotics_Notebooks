@@ -9,6 +9,7 @@ related:
   - ../entities/robo-bench.md
   - ../entities/esi-bench.md
   - ../entities/ewmbench.md
+  - ../entities/paper-worldscore.md
   - ../entities/paper-gigaworld-1-policy-evaluation.md
   - ../entities/robodojo.md
   - ../entities/xpolicylab.md
@@ -16,6 +17,7 @@ related:
 sources:
   - ../../sources/papers/robo_bench_arxiv_2510_17801.md
   - ../../sources/papers/ewmbench.md
+  - ../../sources/papers/worldscore_arxiv_2504_00983.md
   - ../../sources/papers/esi_bench_arxiv_2605_18746.md
   - ../../sources/papers/robodojo_arxiv_2607_04434.md
 summary: "具身评测基准选型闭环专题枢纽：把具身大脑/MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准 四层评测，从分散的评测基准实体页收拢为一条可导航的选型链，统一各层测什么、用什么代表性基准、指标的可复现性/真实代表性/过程 vs 结果/成本取舍入口。"
@@ -51,7 +53,7 @@ summary: "具身评测基准选型闭环专题枢纽：把具身大脑/MLLM 认�
 | 层次 | 测什么 | 代表基准 | 站内入口 |
 |------|--------|----------|----------|
 | ① 认知评测 | MLLM 作为 embodied brain 的感知/规划/推理能力 | RoboBench、ESI-Bench | [RoboBench](../entities/robo-bench.md)、[ESI-Bench](../entities/esi-bench.md) |
-| ② 预测保真度评测 | 世界模型视频生成的时序/轨迹/语义保真度 | EWMBench、GigaWorld-1 WMBench | [EWMBench](../entities/ewmbench.md)、[GigaWorld-1 策略评估](../entities/paper-gigaworld-1-policy-evaluation.md) |
+| ② 预测保真度评测 | 世界模型视频生成的时序/轨迹/语义保真度；开放域多场景世界生成另见 WorldScore | EWMBench、GigaWorld-1 WMBench；WorldScore（相邻） | [EWMBench](../entities/ewmbench.md)、[GigaWorld-1 策略评估](../entities/paper-gigaworld-1-policy-evaluation.md)、[WorldScore](../entities/paper-worldscore.md) |
 | ③ 策略成功率评测 | 下游 VLA/策略的任务成功率与泛化 | GigaWorld-1 评估器、仿真闭环、**RoboDojo** | [GigaWorld-1 策略评估](../entities/paper-gigaworld-1-policy-evaluation.md)、[RoboDojo](../entities/robodojo.md)、[仿真评测基建](../concepts/simulation-evaluation-infrastructure.md) |
 | ④ sim↔real gap 校准 | 评测结论能否外推到真机 | real-to-sim 相关性、RoboDojo RealEval、代表性代价 | [仿真 vs 真机评测 gap](../concepts/sim-vs-real-eval-gap.md)、[RoboDojo](../entities/robodojo.md) |
 | 端到端 | 四层如何逐层选型取舍 | 选型决策树 | [评测基准选型闭环 Query](../queries/embodied-eval-benchmark-selection-loop.md) |
@@ -75,6 +77,7 @@ summary: "具身评测基准选型闭环专题枢纽：把具身大脑/MLLM 认�
 - [RoboBench](../entities/robo-bench.md)
 - [ESI-Bench](../entities/esi-bench.md)
 - [EWMBench](../entities/ewmbench.md)
+- [WorldScore](../entities/paper-worldscore.md) — 开放域 3D/4D/视频多场景世界生成统一榜（② 层相邻，非操纵轴）
 - [GigaWorld-1 策略评估](../entities/paper-gigaworld-1-policy-evaluation.md)
 - [RoboDojo](../entities/robodojo.md)
 - [XPolicyLab](../entities/xpolicylab.md)
@@ -84,6 +87,7 @@ summary: "具身评测基准选型闭环专题枢纽：把具身大脑/MLLM 认�
 
 - [RoboBench 论文](../../sources/papers/robo_bench_arxiv_2510_17801.md) — MLLM 具身大脑五维评测
 - [EWMBench 论文](../../sources/papers/ewmbench.md) — 具身世界模型视频生成评测
+- [WorldScore 论文](../../sources/papers/worldscore_arxiv_2504_00983.md) — 多场景相机可控世界生成统一评测
 - [ESI-Bench 论文](../../sources/papers/esi_bench_arxiv_2605_18746.md) — 具身空间智能评测
 - [RoboDojo 论文](../../sources/papers/robodojo_arxiv_2607_04434.md) — 统一 sim-and-real 通用操纵评测
 - 本页归纳自 [评测基准选型闭环 Query](../queries/embodied-eval-benchmark-selection-loop.md) 及各评测基准实体/概念页
