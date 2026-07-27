@@ -8,17 +8,18 @@
 - **论文：** <https://arxiv.org/abs/2607.13472> — 归档见 [`sources/papers/egohtr_arxiv_2607_13472.md`](../papers/egohtr_arxiv_2607_13472.md)
 - **机构：** 苏黎世联邦理工（ETH Zürich）× 斯坦福大学（Stanford）× 加州大学伯克利分校（UC Berkeley）× 慕尼黑工业大学（TU Munich）
 - **入库日期：** 2026-07-21
+- **开源再核查：** 2026-07-27（状态未变）
 - **一句话说明：** EgoHTR 官方项目页：数据集统计/场景浏览、采集传感器表、Human2Robot 重定向说明，以及 G1 感知全身控制与 HMR 基准应用叙事。
 
-## 公开信息要点（截至 2026-07-21 核查）
+## 公开信息要点（截至 2026-07-27 再核查）
 
 | 项 | 状态 |
 |----|------|
 | **arXiv / PDF** | 已挂：<https://arxiv.org/abs/2607.13472> |
 | **Dataset** | 页头按钮文案 **Dataset (coming soon)**；**无** Hugging Face / Zenodo / 下载 URL |
 | **Code** | 页头按钮文案 **Code (coming soon)**；**无** 可点击训练/重建仓库 URL |
-| **GitHub org** | <https://github.com/egohtr> 目前仅 [`egohtr/egohtr.github.io`](https://github.com/egohtr/egohtr.github.io)（项目站源码），**非** 复现仓 |
-| **开源结论** | **宣称将开源 / 待发布**（论文写 open-source pipeline，项目页尚未列有效数据/代码链接） |
+| **GitHub org** | <https://github.com/egohtr> 目前仅 [`egohtr/egohtr.github.io`](https://github.com/egohtr/egohtr.github.io)（项目站源码，`updated_at`≈2026-07-16），**非** 复现仓 |
+| **开源结论** | **宣称将开源 / 待发布**（论文写 open-source pipeline，项目页尚未列有效数据/代码链接；2026-07-27 再确认无变） |
 
 ### 页面内容摘要
 

@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-27] ingest | sources/papers/egohtr_arxiv_2607_13472.md — EgoHTR 加深评测数字与开源再核查；wiki/entities/paper-egohtr.md + VisualMimic/MeshMimic 回链
+
+- **主实体加深：** [`wiki/entities/paper-egohtr.md`](wiki/entities/paper-egohtr.md) — 补全局 HPS（W-MPJPE 151.3 / WA 66.7 / RTE 0.09%）、踏石接触奖励消融、HMR Table 4
+- **sources 刷新：** [`sources/papers/egohtr_arxiv_2607_13472.md`](sources/papers/egohtr_arxiv_2607_13472.md)、[`sources/sites/egohtr-github-io.md`](sources/sites/egohtr-github-io.md)
+- **交叉回链：** [`wiki/entities/paper-notebook-visualmimic.md`](wiki/entities/paper-notebook-visualmimic.md)、[`wiki/entities/paper-notebook-meshmimic.md`](wiki/entities/paper-notebook-meshmimic.md)
+- **开源核查日：** 2026-07-27 — Dataset/Code 仍 *coming soon*（首次入库 2026-07-21）
+
 ## [2026-07-27] ingest | sources/papers/progress_reward_modeling_survey_arxiv_2607_21655.md — 过程奖励综述 + Awesome 索引；wiki/concepts/progress-reward-modeling.md · wiki/entities/paper-progress-reward-modeling-survey.md
 
 - **论文：** [`sources/papers/progress_reward_modeling_survey_arxiv_2607_21655.md`](sources/papers/progress_reward_modeling_survey_arxiv_2607_21655.md)（arXiv:2607.21655；Northwestern / CMU / UW–Madison / UCSB / UIUC）

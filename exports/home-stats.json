@@ -1,13 +1,42 @@
 {
   "generated_at": "2026-07-27",
   "node_count": 1931,
-  "edge_count": 16602,
+  "edge_count": 16606,
   "coverage": {
     "covered": 1879,
     "total": 1907,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-egohtr.md",
+      "detail_id": "entity-paper-egohtr",
+      "label": "EgoHTR：第一视角粗糙地形人–场景 4D 演示",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-visualmimic.md",
+      "detail_id": "entity-paper-notebook-visualmimic",
+      "label": "VisualMimic（Visual Humanoid Loco-Manipulation via Motion Tracking and Generation）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-notebook-meshmimic.md",
+      "detail_id": "entity-paper-notebook-meshmimic",
+      "label": "MeshMimic",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained"
+    },
     {
       "path": "wiki/concepts/progress-reward-modeling.md",
       "detail_id": "wiki-concepts-progress-reward-modeling",
@@ -187,73 +216,42 @@
       "source": "log.md",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dwm-separating-world-effects.md",
-      "detail_id": "entity-paper-dwm-separating-world-effects",
-      "label": "DWM（Separating World Effects · arXiv:2607.18715）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-physcore.md",
-      "detail_id": "entity-paper-physcore",
-      "label": "PhysCoRe（物理修正残差世界模型 · 材料感知可变形动力学）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-imagined-rollouts-kinematic-not-dynamic.md",
-      "detail_id": "entity-paper-imagined-rollouts-kinematic-not-dynamic",
-      "label": "Imagined Rollouts are Kinematic, Not Dynamic（长程世界模型失败诊断）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/progress-reward-modeling.md",
-    "detail_id": "wiki-concepts-progress-reward-modeling",
-    "label": "过程奖励建模（Progress Reward Modeling）",
-    "type": "concept",
+    "path": "wiki/entities/paper-egohtr.md",
+    "detail_id": "entity-paper-egohtr",
+    "label": "EgoHTR：第一视角粗糙地形人–场景 4D 演示",
+    "type": "entity",
     "recency": "2026-07-27",
     "source": "log.md",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "action": "maintained",
+    "community_label": "模仿学习（Imitation Learning, IL） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 438
+      "size": 442
     },
     {
       "label": "人形论文深读笔记",
-      "size": 242
+      "size": 226
     },
     {
       "label": "移动操作",
-      "size": 177
+      "size": 173
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 170
+      "size": 141
     },
     {
       "label": "全身控制",
       "size": 138
     },
     {
-      "label": "动作重定向",
-      "size": 61
+      "label": "模仿学习",
+      "size": 69
     }
   ],
   "top_hubs": [
@@ -331,7 +329,8 @@
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
       "degree": 195,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     }
   ],
   "top_paper_hubs": [
@@ -362,7 +361,8 @@
       "label": "OmniRetarget",
       "type": "entity",
       "degree": 49,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",
@@ -375,8 +375,7 @@
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
-      "degree": 46,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "degree": 46
     },
     {
       "detail_id": "entity-paper-twist2",

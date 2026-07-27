@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dataset, eth, stanford, berkeley, tum, humanoid, egocentric, 4d-reconstruction, human-motion, perceptive-locomotion, terrain, motion-retargeting, unitree-g1, smpl-x]
 status: complete
-updated: 2026-07-24
+updated: 2026-07-27
 arxiv: "2607.13472"
 venue: "arXiv 2026"
 related:
@@ -14,12 +14,14 @@ related:
   - ../methods/motion-retargeting-gmr.md
   - ./paper-hrl-stack-03-omniretarget.md
   - ./paper-rpl-robust-humanoid-perceptive-locomotion.md
+  - ./paper-notebook-visualmimic.md
+  - ./paper-notebook-meshmimic.md
   - ./unitree-g1.md
   - ../concepts/motion-data-quality.md
 sources:
   - ../../sources/papers/egohtr_arxiv_2607_13472.md
   - ../../sources/sites/egohtr-github-io.md
-summary: "EgoHTR（ETH×Stanford×Berkeley×TUM，arXiv:2607.13472）：Aria+Rokoko+BLK2GO 采集 55 条 rough-terrain 场景对齐 4D 人体运动（~1.37 h / 150k 帧）；支撑 HMR 基准与 G1 感知 locomotion；数据与代码项目页标 coming soon。"
+summary: "EgoHTR（ETH×Stanford×Berkeley×TUM，arXiv:2607.13472）：Aria+Rokoko+BLK2GO 采集 55 条 rough-terrain 场景对齐 4D 人体运动（~1.37 h / 150k 帧）；局部 MPJPE 73.2 mm、全局 W-MPJPE 151.3 mm；支撑 HMR 基准与 G1 感知 locomotion；数据与代码项目页仍标 coming soon（2026-07-27 再核查）。"
 ---
 
 # EgoHTR：第一视角粗糙地形人–场景 4D 演示
@@ -52,7 +54,7 @@ summary: "EgoHTR（ETH×Stanford×Berkeley×TUM，arXiv:2607.13472）：Aria+Rok
 | **规模** | **7** 场景 / **8** 被试 / **55** 序列 / **1.37 h** / ~**150k** 帧 @ 30 fps |
 | **传感** | Aria Gen.1 + Rokoko Pro II + Leica BLK2GO（可选第二 Aria / 固定相机） |
 | **下游** | HMR / 4D human-scene 基准；Unitree G1 感知全身跟踪 |
-| **开源（截至 2026-07-21）** | **宣称将开源 / 待发布**：项目页 Dataset / Code 均为 *coming soon*；无公开下载或可运行仓 |
+| **开源（截至 2026-07-27 再核查）** | **宣称将开源 / 待发布**：项目页 Dataset / Code 均为 *coming soon*；无公开下载或可运行仓 |
 
 ## 为什么重要
 
@@ -115,11 +117,11 @@ flowchart TB
 
 | 维度 | 结果（论文报告） |
 |------|------------------|
-| **局部 HPS** | MPJPE **73.2 mm**；PA-MPJPE **54.3 mm**（mocap GT 子集） |
-| **相对人–场景基线** | 较 SLOPER4D 局部误差略低，且动作/地形更难（parkour、翻、粗糙地形） |
-| **全局** | 报告 W-MPJPE / WA-MPJPE / RTE（强调全局漂移可见） |
-| **mimic 消融** | 脚接触奖励在 stepping stones 上提高成功率并加速收敛 |
+| **局部 HPS** | MPJPE **73.2 mm**；PA-MPJPE **54.3 mm**（mocap GT 子集；较 SLOPER4D 78.01 / 55.4 略优） |
+| **全局 HPS** | W-MPJPE **151.3 mm**；WA-MPJPE **66.7 mm**；RTE **0.09%**（自称首个报告全局人–场景 HPS 的数据集之一） |
+| **mimic 消融（Table 3）** | stepping stones：加脚接触奖励后 Max SR **67%→72%**，收敛步数 **7.14→5.72**（×10⁸）；Flat/Beam 成功率持平、收敛略快 |
 | **参考噪声** | 根平移噪声 **>0.1 m** 使训练崩溃；约 **0.05 m** 仍可训 |
+| **HMR 基准（Table 4）** | 外视 JOSH SR **57.2%** / Human3R **80.5%**；EgoAllo 局部 MPJPE **161.1** / PA **111.5**（偏平地先验） |
 | **真机** | Unitree G1 上 beam / box-up 等原子技能部署演示 |
 
 ## 结论
@@ -129,9 +131,9 @@ flowchart TB
 1. **数据定位** — **55** 序列 / **1.37 h** / ~**150k** 帧，覆盖废墟/踏石/窄道/parkour；补 AMASS 无场景、PROX/RICH 偏室内的缺口。
 2. **精度门槛** — 根平移噪声约 **≤0.05 m** 可训，**>0.1 m** 崩溃；对应 foothold-critical 约 **≤5 cm** 参考需求。
 3. **重建三阶段** — MoCap→SMPL-X、拍手同步（<60 ms）、Aria 锚定 + ICP 到 BLK2GO 场景。
-4. **局部 HPS** — mocap GT 子集 MPJPE **73.2 mm**、PA-MPJPE **54.3 mm**；动作/地形难于 SLOPER4D 类城市场景。
-5. **下游 mimic** — 高度图条件 PPO + 时间脚接触奖励，避免稀疏地形「脚悬空却距离很小」；G1 有 beam/box-up 等演示。
-6. **开源按待发布管** — Dataset/Code 项目页 *coming soon*；规模适合基准/fine-tune，不宜单独撑 foundation 预训练。
+4. **局部/全局 HPS** — mocap GT 子集 MPJPE **73.2** / PA **54.3** mm；全局 W-MPJPE **151.3** / WA **66.7** mm、RTE **0.09%**。
+5. **下游 mimic** — 高度图条件 PPO + 时间脚接触奖励（踏石 SR +5 pp、收敛更快）；G1 有 beam/box-up 等演示。
+6. **开源按待发布管** — Dataset/Code 项目页 *coming soon*（2026-07-27 再确认）；规模适合基准/fine-tune，不宜单独撑 foundation 预训练。
 
 ## 对比定位
 
@@ -139,22 +141,22 @@ flowchart TB
 |------|-------------|
 | [AMASS](./amass.md) | AMASS 规模大但 **无场景**；EgoHTR 小但 **场景对齐 + rough terrain** |
 | SLOPER4D / PROX / RICH | 偏城市场景或室内；EgoHTR 强调 **废墟/踏石/高动态** 与 egocentric 主传感 |
-| 单目人–场景重建（VisualMimic / MeshMimic 等） | 全局误差常超 foothold 容忍窗；EgoHTR 用 Aria SLAM + 扫描锚定厘米级 |
+| [VisualMimic](./paper-notebook-visualmimic.md) / [MeshMimic](./paper-notebook-meshmimic.md) | 单目人–场景重建全局误差常超 foothold 容忍窗（>0.1 m）；EgoHTR 用 Aria SLAM + 扫描锚定厘米级 |
 | [RPL](./paper-rpl-robust-humanoid-perceptive-locomotion.md) | RPL 侧重点是 **深度策略栈**；EgoHTR 是 **人演示数据与重建管线** |
 | [OmniRetarget](./paper-hrl-stack-03-omniretarget.md) | OmniRetarget 是 Human2Robot **重定向上游**；EgoHTR 消费其能力生成 G1 参考 |
 
 ## 源码运行时序图
 
-**不适用**（截至 2026-07-21）：[项目页](https://egohtr.github.io) Dataset / Code 均标 *coming soon*；GitHub org 仅有站点仓 [`egohtr/egohtr.github.io`](https://github.com/egohtr/egohtr.github.io)，无可辨识的训练/重建入口，无法绘制可复现运行时序。开放后应在 `sources/repos/` 补档并补本图。
+**不适用**（截至 2026-07-27 再核查）：[项目页](https://egohtr.github.io) Dataset / Code 均标 *coming soon*；GitHub org 仅有站点仓 [`egohtr/egohtr.github.io`](https://github.com/egohtr/egohtr.github.io)，无可辨识的训练/重建入口，无法绘制可复现运行时序。开放后应在 `sources/repos/` 补档并补本图。
 
 ## 工程实践
 
 | 项 | 建议 |
 |----|------|
 | **选型** | 需要 **人–地形耦合参考**（踏石/梁/废墟）时纳入候选；勿与纯人体 AMASS 混为一谈 |
-| **精度预期** | 局部 MPJPE ~73 mm / PA-MPJPE ~54 mm（mocap GT 子集）；关注全局 W-/WA-MPJPE 与 RTE |
+| **精度预期** | 局部 MPJPE ~73 / PA ~54 mm；全局 W-MPJPE ~151 / WA ~67 mm、RTE ~0.09%（mocap GT 子集） |
 | **上机路径** | 等数据放出 → OmniRetarget/GMR 重定向到 G1 → 加接触奖励的 mimic PPO → 高度图条件策略 |
-| **开源跟进** | 定期复查项目页按钮是否变为有效 URL；勿假设「论文写 open-source」即可复现 |
+| **开源跟进** | 定期复查项目页按钮是否变为有效 URL；勿假设「论文写 open-source」即可复现（2026-07-27 仍未放出） |
 | **源码运行时序图** | **不适用**（原因见上节） |
 
 ## 局限与风险
@@ -173,6 +175,7 @@ flowchart TB
 - [Motion Retargeting](../concepts/motion-retargeting.md) / [GMR](../methods/motion-retargeting-gmr.md) — 人体→机器人映射
 - [OmniRetarget](./paper-hrl-stack-03-omniretarget.md) — 项目页声明的场景感知重定向上游
 - [RPL](./paper-rpl-robust-humanoid-perceptive-locomotion.md) — 挑战地形感知 locomotion 对照
+- [VisualMimic](./paper-notebook-visualmimic.md) / [MeshMimic](./paper-notebook-meshmimic.md) — 单目重建路径对照（全局误差常超 0.1 m 容忍窗）
 - [Motion Data Quality](../concepts/motion-data-quality.md) — 接触/全局精度质量轴
 - [Unitree G1](./unitree-g1.md) — 真机部署平台
 
