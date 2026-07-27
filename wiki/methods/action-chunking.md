@@ -2,13 +2,14 @@
 type: method
 tags: [imitation-learning, vla, action-chunking, latency, transformers, deployment]
 status: complete
-updated: 2026-07-21
+updated: 2026-07-27
 summary: "Action Chunking 让策略一次输出未来多步动作序列，以降低长时序误差并缓解高延迟模型与高频控制器之间的时域错配。"
 sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/diffusion_and_gen.md
   - ../../sources/papers/humanoid_touch_dream.md
   - ../../sources/repos/xiaomi-robotics-0.md
+  - ../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md
 related:
   - ./behavior-cloning.md
   - ./humanoid-transformer-touch-dreaming.md
@@ -17,6 +18,7 @@ related:
   - ../queries/vla-deployment-guide.md
   - ../queries/vla-with-low-level-controller.md
   - ../tasks/bimanual-manipulation.md
+  - ../entities/paper-taco-tactile-sensor-benchmark.md
 ---
 
 # Action Chunking（动作块输出）
@@ -144,6 +146,7 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
 - [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md) — 具身智能能力栈与执行策略
 - Zhao et al., *Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware* — ACT 的代表性工作
 - [sources/papers/defi_arxiv_2604_16391.md](../../sources/papers/defi_arxiv_2604_16391.md) — DeFI：2D 视频预测与 3D 动作推理拆分预训练，扩散适配器输出动作 chunk
+- [sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md](../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md) — TacO：ACT + 模态特异触觉编码器的跨传感器基准
 
 ## 关联页面
 
@@ -157,3 +160,4 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
 - [Query：VLA 真机部署指南](../queries/vla-deployment-guide.md) — 动作缓冲与异步执行
 - [Query：VLA 与低级关节控制器融合架构](../queries/vla-with-low-level-controller.md) — VLA + WBC 的 action buffer 设计
 - [Bimanual Manipulation](../tasks/bimanual-manipulation.md) — 双臂协调任务中常见 chunk 输出
+- [TacO（触觉传感器操作基准）](../entities/paper-taco-tactile-sensor-benchmark.md) — ACT 作为跨模态触觉硬件评测骨干（chunk 64 / 执行 32）

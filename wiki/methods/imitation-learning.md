@@ -25,6 +25,7 @@ related:
   - ./smp.md
   - ./disney-olaf-character-robot.md
   - ../entities/paper-topreward.md
+  - ../entities/paper-taco-tactile-sensor-benchmark.md
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/papers/imitation_learning.md
@@ -38,6 +39,7 @@ sources:
   - ../../sources/papers/egoverse_arxiv_2604_07607.md
   - ../../sources/papers/last_hd_arxiv_2606_23685.md
   - ../../sources/repos/robot_lab.md
+  - ../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md
 summary: "Imitation Learning 通过专家演示学习策略，以 DAgger 和行为克隆 (Behavior Cloning, BC) 为核心支柱，是奖励难定义任务中最直接的数据驱动路线。"
 ---
 
@@ -173,6 +175,7 @@ flowchart TD
 - [sources/papers/egowam.md](../../sources/papers/egowam.md) — EgoWAM：WAM 人–机协同训练与世界目标消融（项目页）摘录
 - [sources/papers/last_hd_arxiv_2606_23685.md](../../sources/papers/last_hd_arxiv_2606_23685.md) — LaST-HD：潜式物理推理 + OOL Glove 人手→机器人 VLA（arXiv:2606.23685）摘录
 - [sources/sites/nvidia-research-egoscale.md](../../sources/sites/nvidia-research-egoscale.md) — NVIDIA Research EgoScale 官方项目页索引
+- [sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md](../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md) — TacO：统一 ACT 跨模态触觉真机 IL 基准
 - [sources/papers/learn_weightlessness.md](../../sources/papers/learn_weightlessness.md) — Learn Weightlessness (WM) ingest 摘要
 - [sources/papers/holomotion_arxiv_2605_15336.md](../../sources/papers/holomotion_arxiv_2605_15336.md) — HoloMotion-1：野外视频重建 + MoCap 混合语料，稀疏 MoE Transformer + 序列级 PPO 的零样本全身跟踪
 - [sources/blogs/claw_unitree_g1_language_annotated_motion_data.md](../../sources/blogs/claw_unitree_g1_language_annotated_motion_data.md) — CLAW 数据生成管线资料
@@ -221,6 +224,7 @@ flowchart TD
 - [HAIC](./haic.md) — 基于世界模型的教师-学生训练范式
 - [InterPrior（论文实体）](../entities/paper-interprior.md) — HOI 模仿专家 → 变分蒸馏 → RL 微调的可泛化运动先验（arXiv:2602.06035）
 - [TSIL（论文实体）](../entities/paper-tsil-temporal-self-imitation-learning.md) — RL 训练期按配置挖掘快速成功并效率加权回放（arXiv:2606.19752）
+- [TacO（触觉传感器操作基准）](../entities/paper-taco-tactile-sensor-benchmark.md) — 统一 ACT 管线跨模态触觉真机 IL 评测（arXiv:2605.21976）
 
 ## 推荐继续阅读
 

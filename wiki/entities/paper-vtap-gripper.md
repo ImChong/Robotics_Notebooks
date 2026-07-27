@@ -14,7 +14,7 @@ tags:
   - purdue
   - columbia
 status: complete
-updated: 2026-07-24
+updated: 2026-07-27
 arxiv: "2607.15448"
 related:
   - ../concepts/visuo-tactile-fusion.md
@@ -27,6 +27,7 @@ related:
   - ./paper-trex-tactile-reactive-dexterous-manipulation.md
   - ./paper-tacrefinenet-tactile-grasp-refinement.md
   - ./paper-deimel-compliant-underactuated-robotic-hand.md
+  - ./paper-taco-tactile-sensor-benchmark.md
 sources:
   - ../../sources/papers/vtap_gripper_arxiv_2607_15448.md
   - ../../sources/sites/yuhao-zhou-vtap.md
@@ -184,6 +185,7 @@ flowchart TB
 - [运动重定向](../concepts/motion-retargeting.md) — 对照：全身 MoCap 重定向 vs 本文夹爪遥操作重定向
 - [手内重定向](../methods/in-hand-reorientation.md) — 手内物体姿态操作方法页
 - [GelSlim](./gel-slim.md) — 薄片视觉触觉硬件对照
+- [TacO（触觉传感器操作基准）](./paper-taco-tactile-sensor-benchmark.md) — 同用 FlexiTac 的跨模态真机 IL 对比
 - [T-Rex](./paper-trex-tactile-reactive-dexterous-manipulation.md) — 下游学习式触觉策略对照
 
 ## 参考来源

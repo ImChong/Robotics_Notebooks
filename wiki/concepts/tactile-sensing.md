@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, manipulation, contact-rich, hardware, sensing]
 status: complete
-updated: 2026-07-24
+updated: 2026-07-27
 related:
   - ../queries/contact-wrench-closed-loop.md
   - ./contact-rich-manipulation.md
@@ -13,11 +13,13 @@ related:
   - ../queries/tactile-feedback-in-rl.md
   - ../entities/paper-tacrefinenet-tactile-grasp-refinement.md
   - ../entities/paper-vtap-gripper.md
+  - ../entities/paper-taco-tactile-sensor-benchmark.md
 sources:
   - ../../sources/papers/contact_dynamics.md
   - ../../sources/papers/humanoid_touch_dream.md
   - ../../sources/papers/tacrefinenet_arxiv_2509_25746.md
   - ../../sources/papers/vtap_gripper_arxiv_2607_15448.md
+  - ../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md
 summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上的法向力和切向力、滑动分布及材质纹理，是实现接触丰富操作和高精度抓取的核心感官。"
 ---
 
@@ -47,13 +49,13 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 随着机器人灵巧手的普及，触觉传感器的形态也迎来了爆发：
 
 ### 1. 基于视觉的触觉传感器 (Vision-based Tactile Sensors)
-- **代表**：GelSight, DIGIT.
+- **代表**：GelSight, DIGIT；真机 IL 横评中的 **Daimon** 见 [TacO 基准](../entities/paper-taco-tactile-sensor-benchmark.md)。
 - **原理**：在弹性硅胶体内部嵌入一个微型摄像头。当硅胶表面与物体接触发生形变时，摄像头捕捉其内表面的形变图像。
 - **优点**：极高的空间分辨率（千万像素级），能捕捉极其精细的纹理和法向深度分布。非常适合直接与端到端（End-to-End）基于视觉的强化学习策略结合。
-- **缺点**：体积较大（难以塞入指尖），帧率受限于摄像头（通常在 30-60Hz），存在盲区。
+- **缺点**：体积较大（难以塞入指尖），帧率受限于摄像头（通常在 30-60Hz），存在盲区；**TacO** 显示高分辨率未必翻译为粗操作 IL 的更高成功率。
 
 ### 2. 电阻/电容式阵列 (Piezoresistive / Capacitive Arrays)
-- **代表**：BioTac, 各种柔性薄膜阵列；夹爪集成例见 [VTAP Gripper](../entities/paper-vtap-gripper.md) 指尖 **FlexiTac**（\(32\times 12\) taxels，与 Fin-Ray 顺应指兼容）。
+- **代表**：BioTac, 各种柔性薄膜阵列；夹爪集成例见 [VTAP Gripper](../entities/paper-vtap-gripper.md) 指尖 **FlexiTac**（\(32\times 12\) taxels，与 Fin-Ray 顺应指兼容）；同硬件亦出现在 [TacO](../entities/paper-taco-tactile-sensor-benchmark.md) 与廉价单点 **FSR**、液态金属 **eGain** 同台对比。
 - **原理**：利用导电聚合物或电容器阵列，当受到压力时，电阻或电容值发生变化。
 - **优点**：易于做成柔性贴片包裹在机械手上，成本较低。
 - **缺点**：存在迟滞现象（Hysteresis），容易受到温度干扰，长期使用会老化漂移。
@@ -81,6 +83,7 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - [GelSlim 实体（薄片化视觉触觉传感器）](../entities/gel-slim.md)
 - [TacRefineNet（论文实体）](../entities/paper-tacrefinenet-tactile-grasp-refinement.md) — 纯触觉抓取精修 / 外在灵巧伺服
 - [VTAP Gripper（论文实体）](../entities/paper-vtap-gripper.md) — 指尖 FlexiTac 阵列 + 掌上光学视触主动掌
+- [TacO（触觉传感器操作基准）](../entities/paper-taco-tactile-sensor-benchmark.md) — 六传感器 × 三任务真机 ACT 对比；无通用最佳模态
 - [Manipulation 任务](../tasks/manipulation.md)
 - [Visual Servoing (视觉伺服)](../methods/visual-servoing.md)
 - [Friction Cone (摩擦锥) 形式化](../formalizations/friction-cone.md)
@@ -92,3 +95,4 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md)
 - [sources/papers/tacrefinenet_arxiv_2509_25746.md](../../sources/papers/tacrefinenet_arxiv_2509_25746.md) — TacRefineNet 压阻多指触觉抓取精修
 - [sources/papers/vtap_gripper_arxiv_2607_15448.md](../../sources/papers/vtap_gripper_arxiv_2607_15448.md) — VTAP FlexiTac 指尖 + 视触觉主动掌
+- [sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md](../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md) — TacO 跨模态触觉传感器真机 IL 基准

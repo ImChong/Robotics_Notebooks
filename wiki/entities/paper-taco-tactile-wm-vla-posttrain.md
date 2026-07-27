@@ -10,7 +10,7 @@ tags:
   - manipulation
   - pku
 status: complete
-updated: 2026-07-26
+updated: 2026-07-27
 arxiv: "2607.02840"
 related:
   - ../overview/wm-action-consequence-category-02-contact-modeling.md
@@ -20,12 +20,15 @@ related:
   - ../overview/robot-world-models-action-consequence-technology-map.md
   - ../entities/paper-vt-wam-visuotactile-contact-rich.md
   - ../entities/paper-dreamsteer-vla-deployment-steering.md
+  - ./paper-taco-tactile-sensor-benchmark.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
 summary: "TACO（arXiv:2607.02840）：识别-想象-标注闭环——进度动作模型定位失败邻域，视触觉 WM 联合去噪视频+力矩并标注纠错动作；知识隔离触觉适应 + 优势条件训练；相对基础 VLA +44pp。"
 ---
 
 # TACO（TActile World Model as a Self-COrrector · arXiv:2607.02840）
+
+> **名称消歧：** 本页 **TACO** = 触觉世界模型作 VLA 自我纠正器（[taco-wm.github.io](https://taco-wm.github.io/)）。库内另有 [TacO（触觉传感器操作基准）](./paper-taco-tactile-sensor-benchmark.md)（arXiv:2605.21976，[tacobench.github.io](https://tacobench.github.io/)）——缩写相同，主题分别为 **后训练数据合成** vs **传感器硬件选型基准**。
 
 **TACO**（*TACO: TActile World Model as a Self-COrrector for Scalable VLA Post-Training*，[arXiv:2607.02840](https://arxiv.org/abs/2607.02840)，北京大学 + AI2 Robotics 等，[taco-wm.github.io](https://taco-wm.github.io/)）用 **触觉感知世界模型** 把真实失败轨迹转为 **VLA 后训练纠错样本**：**Recognize–Imagine–Label** 闭环定位失败邻域、想象局部视触觉修正片段、标注可执行动作；配合 **知识隔离触觉适应** 与 **优势条件训练**，在六类接触丰富真机任务上相对基础策略 **+44pp**。
 
