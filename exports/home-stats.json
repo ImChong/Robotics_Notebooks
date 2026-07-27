@@ -1,13 +1,89 @@
 {
   "generated_at": "2026-07-27",
-  "node_count": 1941,
-  "edge_count": 16749,
+  "node_count": 1944,
+  "edge_count": 16772,
   "coverage": {
-    "covered": 1889,
-    "total": 1917,
+    "covered": 1892,
+    "total": 1920,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/micromouse.md",
+      "detail_id": "wiki-concepts-micromouse",
+      "label": "Micromouse",
+      "type": "concept",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/entities/ukmarsbot.md",
+      "detail_id": "entity-ukmarsbot",
+      "label": "UKMARSBOT",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/entities/wolfiemouse.md",
+      "detail_id": "entity-wolfiemouse",
+      "label": "WolfieMouse",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/methods/a-star.md",
+      "detail_id": "wiki-methods-a-star",
+      "label": "A* 全局路径规划",
+      "type": "method",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/methods/pid-control.md",
+      "detail_id": "wiki-methods-pid-control",
+      "label": "PID Control（比例-积分-微分控制）",
+      "type": "method",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/entities/kicad.md",
+      "detail_id": "entity-kicad",
+      "label": "KiCad（开源 PCB 与原理图 EDA）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/mushr.md",
+      "detail_id": "entity-mushr",
+      "label": "MuSHR",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
     {
       "path": "wiki/entities/oomwoo.md",
       "detail_id": "entity-oomwoo",
@@ -49,17 +125,6 @@
       "recency": "2026-07-27",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/mushr.md",
-      "detail_id": "entity-mushr",
-      "label": "MuSHR",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "added",
       "has_repo": true,
       "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
     },
@@ -155,73 +220,13 @@
       "source": "log.md",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/tasks/teleoperation.md",
-      "detail_id": "wiki-tasks-teleoperation",
-      "label": "Teleoperation（遥操作）",
-      "type": "task",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/comparisons/data-gloves-vs-vision-teleop.md",
-      "detail_id": "wiki-comparisons-data-gloves-vs-vision-teleop",
-      "label": "数据手套 vs 视觉遥操作 (灵巧数据采集选型)",
-      "type": "comparison",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/overview/humanoid-hardware-101-sensing-end-effectors.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-sensing-end-effectors",
-      "label": "Humanoid Hardware 101 · 06：传感与末端执行器",
-      "type": "overview",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/sunday-robotics-act2.md",
-      "detail_id": "entity-sunday-robotics-act2",
-      "label": "ACT-2（Sunday Robotics · Generalizing Reliability）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/handumi.md",
-      "detail_id": "entity-handumi",
-      "label": "HandUMI",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/imitation-learning.md",
-      "detail_id": "wiki-methods-imitation-learning",
-      "label": "Imitation Learning (IL, 模仿学习)",
-      "type": "method",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/oomwoo.md",
-    "detail_id": "entity-oomwoo",
-    "label": "OOMWOO",
-    "type": "entity",
+    "path": "wiki/concepts/micromouse.md",
+    "detail_id": "wiki-concepts-micromouse",
+    "label": "Micromouse",
+    "type": "concept",
     "recency": "2026-07-27",
     "source": "log.md",
     "action": "added",

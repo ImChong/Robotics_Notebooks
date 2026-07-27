@@ -2,7 +2,7 @@
 type: method
 tags: [control, pid, classical-control, joint-control, quadruped]
 status: complete
-updated: 2026-07-18
+updated: 2026-07-27
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-classical-linear-feedback.md
@@ -11,9 +11,13 @@ related:
   - ../comparisons/mpc-vs-rl.md
   - ../entities/quadruped-control-curriculum.md
   - ../concepts/sim2real.md
+  - ../concepts/micromouse.md
+  - ../entities/ukmarsbot.md
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/courses/quadruped_control_simulation_rl_curriculum.md
+  - ../../sources/repos/ukmarsbot.md
+  - ../../sources/sites/micromouseonline-com.md
 summary: "PID 是关节级经典反馈控制：比例-积分-微分组合跟踪期望位置/速度；四足演进路线中作为底层执行层，复杂地形 loco 常由 RL 取代高层。"
 ---
 
@@ -100,6 +104,8 @@ RL 输出目标位置/力矩，**PD 仍作底层伺服**；复杂地形 loco 由
 - [MPC vs RL](../comparisons/mpc-vs-rl.md)
 - [Friction Compensation](../concepts/friction-compensation.md)
 - [Quadruped Control Curriculum](../entities/quadruped-control-curriculum.md)
+- [Micromouse](../concepts/micromouse.md) — 轮速环 / 侧墙跟随的嵌入式竞赛场景
+- [UKMARSBOT](../entities/ukmarsbot.md) — 差速入门平台上的速度环练习
 
 ## 推荐继续阅读
 
@@ -110,3 +116,5 @@ RL 输出目标位置/力矩，**PD 仍作底层伺服**；复杂地形 loco 由
 
 - [wechat_shenlan_robot_control_eight_paradigms.md](../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md) — 深蓝八大控制体系：经典线性反馈代表算法
 - [sources/courses/quadruped_control_simulation_rl_curriculum.md](../../sources/courses/quadruped_control_simulation_rl_curriculum.md) — 课程 Ch1 控制演进
+- [sources/repos/ukmarsbot.md](../../sources/repos/ukmarsbot.md)
+- [sources/sites/micromouseonline-com.md](../../sources/sites/micromouseonline-com.md)

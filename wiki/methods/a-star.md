@@ -2,7 +2,7 @@
 type: method
 tags: [path-planning, search, navigation, graph-search, mobile-robot]
 status: complete
-updated: 2026-07-23
+updated: 2026-07-27
 related:
   - ./dwa.md
   - ./smooth-navigation-path-generation.md
@@ -12,10 +12,13 @@ related:
   - ../entities/far-planner.md
   - ../entities/humanoid-system-curriculum.md
   - ../comparisons/mobile-robot-navigation-planning-methods.md
+  - ../concepts/micromouse.md
 sources:
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
   - ../../sources/repos/python_robotics.md
   - ../../sources/blogs/wechat_shenlan_ai_ad_planning_control.md
+  - ../../sources/repos/emstef-micromouse.md
+  - ../../sources/sites/micromouseonline-com.md
 summary: "A* 全局路径规划：在栅格或图上用 f=g+h 启发搜索最优路径；课程第 4.2 节与 Nav2/PythonRobotics 全局层基线，需与 DWA 局部避障分层配合。"
 ---
 
@@ -131,12 +134,15 @@ flowchart TB
 - [FAR Planner](../entities/far-planner.md) — 长距离可见图对照
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md)
 - [导航规划方法对比：全局·局部·平滑](../comparisons/mobile-robot-navigation-planning-methods.md) — 本页是其全局搜索层，含与 DWA/平滑的分层选型
+- [Micromouse](../concepts/micromouse.md) — 迷宫格图上 Flood Fill / A\* 族的竞赛压缩场景
 
 ## 参考来源
 
 - [深蓝学院人形系统课程大纲](../../sources/courses/shenlan_humanoid_system_theory_practice.md)
 - [PythonRobotics 归档](../../sources/repos/python_robotics.md)
 - [深蓝AI：规划与控制篇](../../sources/blogs/wechat_shenlan_ai_ad_planning_control.md)
+- [Micromouse in Webots 归档](../../sources/repos/emstef-micromouse.md)
+- [Micromouse Online 归档](../../sources/sites/micromouseonline-com.md)
 
 ## 推荐继续阅读
 
