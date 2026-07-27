@@ -20,6 +20,7 @@ related:
   - ../entities/paper-taco-tactile-wm-vla-posttrain.md
   - ../entities/paper-current-as-touch-proprioceptive-contact.md
   - ../entities/paper-n0-twam.md
+  - ../entities/paper-vitacworld.md
   - ../entities/paper-physcore.md
   - ../entities/neoteai.md
 sources:
@@ -136,6 +137,7 @@ flowchart TB
 - [World Action Models](../concepts/world-action-models.md) — Joint WAM 扩展至触觉
 - [Deform360](./paper-deform360-deformable-visuotactile-dataset.md) — 视触觉数据层对照
 - [𝒩₀-TWAM](./paper-n0-twam.md) — NeoteAI 触觉原生 WAM（规模化对照）
+- [ViTacWorld](./paper-vitacworld.md) — 视触觉 WM 作 dream 数据生成器/评估器（非联合出动作）
 - [PhysCoRe](./paper-physcore.md) — 可变形物理混合对照（MPM，非触觉）
 - [VLA](../methods/vla.md) — OmniVTLA 等 tactile VLA 基线
 

@@ -7,6 +7,33 @@
 - **交叉回链：** [`wiki/entities/paper-notebook-visualmimic.md`](wiki/entities/paper-notebook-visualmimic.md)、[`wiki/entities/paper-notebook-meshmimic.md`](wiki/entities/paper-notebook-meshmimic.md)
 - **开源核查日：** 2026-07-27 — Dataset/Code 仍 *coming soon*（首次入库 2026-07-21）
 
+## [2026-07-27] ingest | sources/papers/progress_reward_modeling_survey_arxiv_2607_21655.md — 过程奖励综述 + Awesome 索引；wiki/concepts/progress-reward-modeling.md · wiki/entities/paper-progress-reward-modeling-survey.md
+
+- **论文：** [`sources/papers/progress_reward_modeling_survey_arxiv_2607_21655.md`](sources/papers/progress_reward_modeling_survey_arxiv_2607_21655.md)（arXiv:2607.21655；Northwestern / CMU / UW–Madison / UCSB / UIUC）
+- **索引仓：** [`sources/repos/awesome-progress-models.md`](sources/repos/awesome-progress-models.md) — **MIT 已开源**（策展画廊，非算法实现）
+- **主升格：** [`wiki/concepts/progress-reward-modeling.md`](wiki/concepts/progress-reward-modeling.md) · [`wiki/entities/paper-progress-reward-modeling-survey.md`](wiki/entities/paper-progress-reward-modeling-survey.md) — 接口三维 × 四范式 × 保真/鲁棒/效用透镜
+- **交叉：** [`wiki/methods/reinforcement-learning.md`](wiki/methods/reinforcement-learning.md)
+- **机构：** 注册 `uw-madison`、`ucsb`
+- **开源核查日：** 2026-07-27
+
+## [2026-07-27] ingest | sources/papers/vitacworld_arxiv_2607_22530.md — ViTacWorld 视触觉世界模型；wiki/entities/paper-vitacworld.md + 交叉 visuo-tactile / VT-WAM
+
+- **论文：** [`sources/papers/vitacworld_arxiv_2607_22530.md`](sources/papers/vitacworld_arxiv_2607_22530.md)（arXiv:2607.22530；上海科技大学 / InstAdapt）
+- **项目页：** [`sources/sites/vitacworld-github-io.md`](sources/sites/vitacworld-github-io.md) — **宣称将开源**（Code *coming soon*）
+- **主升格：** [`wiki/entities/paper-vitacworld.md`](wiki/entities/paper-vitacworld.md) — view-aware DiT；π₀.₅+触觉四任务平均 **42.5%→67.5%**（Round-2 **80%**）
+- **交叉：** [`wiki/concepts/visuo-tactile-fusion.md`](wiki/concepts/visuo-tactile-fusion.md)、[`paper-vt-wam`](wiki/entities/paper-vt-wam-visuotactile-contact-rich.md)、[`generative-world-models`](wiki/methods/generative-world-models.md)、[`paper-ctrl-world`](wiki/entities/paper-ctrl-world.md)
+- **机构：** 注册 `instadapt`
+- **开源核查日：** 2026-07-27
+
+## [2026-07-27] ingest | sources/papers/rofacto_arxiv_2607_22535.md — Rofacto URDF 渲染动作世界模型；wiki/entities/paper-rofacto.md + 交叉 DWM / Ctrl-World
+
+- **论文：** [`sources/papers/rofacto_arxiv_2607_22535.md`](sources/papers/rofacto_arxiv_2607_22535.md)（arXiv:2607.22535；SNU / RLWRLD）
+- **项目页 / 仓：** [`sources/sites/rofacto-github-io.md`](sources/sites/rofacto-github-io.md) · [`sources/repos/rofacto.md`](sources/repos/rofacto.md) — **宣称将开源**（Code 链到 GitHub，仓 **404**）
+- **主升格：** [`wiki/entities/paper-rofacto.md`](wiki/entities/paper-rofacto.md) — 名义轨迹 + URDF mesh/深度；Wan 上 DROID PSNR **18.57→21.87**
+- **交叉：** [`wiki/methods/generative-world-models.md`](wiki/methods/generative-world-models.md)、[`wiki/methods/dwm.md`](wiki/methods/dwm.md)、[`paper-ctrl-world`](wiki/entities/paper-ctrl-world.md)
+- **机构：** 注册 `rlwrld`
+- **开源核查日：** 2026-07-27
+
 ## [2026-07-27] ingest | sources/papers/fm_vla_arxiv_2607_18231.md — FM-VLA 力觉记忆 VLA；wiki/entities/paper-fm-vla.md + 交叉 VLA/manipulation/CRM/KEMO/EventVLA
 
 - **论文：** [`sources/papers/fm_vla_arxiv_2607_18231.md`](sources/papers/fm_vla_arxiv_2607_18231.md)（arXiv:2607.18231；清华 / 微软研究院 / 复旦 / 中科大）

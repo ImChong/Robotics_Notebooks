@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-27",
-  "node_count": 1927,
-  "edge_count": 16564,
+  "node_count": 1931,
+  "edge_count": 16606,
   "coverage": {
-    "covered": 1875,
-    "total": 1903,
+    "covered": 1879,
+    "total": 1907,
     "percent": 99
   },
   "latest_wiki_nodes": [
@@ -36,6 +36,113 @@
       "recency": "2026-07-27",
       "source": "log.md",
       "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/progress-reward-modeling.md",
+      "detail_id": "wiki-concepts-progress-reward-modeling",
+      "label": "过程奖励建模（Progress Reward Modeling）",
+      "type": "concept",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-progress-reward-modeling-survey.md",
+      "detail_id": "entity-paper-progress-reward-modeling-survey",
+      "label": "Progress Reward Modeling Survey（过程奖励综述 · arXiv:2607.21655）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/reinforcement-learning.md",
+      "detail_id": "wiki-methods-reinforcement-learning",
+      "label": "Reinforcement Learning (RL, 强化学习)",
+      "type": "method",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-vitacworld.md",
+      "detail_id": "entity-paper-vitacworld",
+      "label": "ViTacWorld（视触觉世界模型 · arXiv:2607.22530）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/visuo-tactile-fusion.md",
+      "detail_id": "wiki-concepts-visuo-tactile-fusion",
+      "label": "视触觉融合（Visuo-Tactile Fusion）",
+      "type": "concept",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-vt-wam-visuotactile-contact-rich.md",
+      "detail_id": "entity-paper-vt-wam-visuotactile-contact-rich",
+      "label": "VT-WAM（Visual-Tactile World Action Model · arXiv:2607.02503）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/generative-world-models.md",
+      "detail_id": "wiki-methods-generative-world-models",
+      "label": "Generative World Models (生成式世界模型)",
+      "type": "method",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-ctrl-world.md",
+      "detail_id": "entity-paper-ctrl-world",
+      "label": "Ctrl-World（可控机器人操作生成式世界模型）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-rofacto.md",
+      "detail_id": "entity-paper-rofacto",
+      "label": "Rofacto（Robot-Factored World Models · arXiv:2607.22535）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/dwm.md",
+      "detail_id": "wiki-methods-dwm",
+      "label": "DWM（Dexterous World Models，灵巧世界模型）",
+      "type": "method",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-fm-vla.md",
@@ -109,113 +216,6 @@
       "source": "log.md",
       "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/dwm.md",
-      "detail_id": "wiki-methods-dwm",
-      "label": "DWM（Dexterous World Models，灵巧世界模型）",
-      "type": "method",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dwm-separating-world-effects.md",
-      "detail_id": "entity-paper-dwm-separating-world-effects",
-      "label": "DWM（Separating World Effects · arXiv:2607.18715）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-physcore.md",
-      "detail_id": "entity-paper-physcore",
-      "label": "PhysCoRe（物理修正残差世界模型 · 材料感知可变形动力学）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-imagined-rollouts-kinematic-not-dynamic.md",
-      "detail_id": "entity-paper-imagined-rollouts-kinematic-not-dynamic",
-      "label": "Imagined Rollouts are Kinematic, Not Dynamic（长程世界模型失败诊断）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-kinebench.md",
-      "detail_id": "entity-paper-kinebench",
-      "label": "KineBench（IDM-free 运动学接地的具身世界模型基准）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-thinking-in-video.md",
-      "detail_id": "entity-paper-thinking-in-video",
-      "label": "Thinking in Video（视频生成器能否对真实世界做因果推理？）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-irasim.md",
-      "detail_id": "entity-paper-irasim",
-      "label": "IRASim（细粒度操作世界模型 · arXiv:2406.14540）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-vjepa2.md",
-      "detail_id": "entity-paper-vjepa2",
-      "label": "V-JEPA 2（自监督视频世界模型 · arXiv:2506.09985）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-worldweaver.md",
-      "detail_id": "entity-paper-worldweaver",
-      "label": "WorldWeaver（流式多智能体世界状态寄存器 · arXiv:2607.21594）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-ha-schmidhuber-world-models.md",
-      "detail_id": "entity-paper-ha-schmidhuber-world-models",
-      "label": "World Models（Ha & Schmidhuber）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -231,7 +231,7 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 432
+      "size": 442
     },
     {
       "label": "人形论文深读笔记",
@@ -274,7 +274,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 340,
+      "degree": 343,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -282,7 +282,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 315,
+      "degree": 317,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -305,7 +305,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 251,
+      "degree": 255,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
@@ -320,7 +320,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 194,
+      "degree": 198,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -328,7 +328,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 193,
+      "degree": 195,
       "has_repo": true,
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
     }
@@ -392,19 +392,19 @@
       "degree": 40
     },
     {
+      "detail_id": "entity-paper-masked-visual-actions",
+      "label": "Masked Visual Actions（统一世界建模的掩码视觉动作）",
+      "type": "entity",
+      "degree": 38,
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",
       "label": "SD-AMP：统一走、跑与起身的对抗运动先验",
       "type": "entity",
       "degree": 38,
       "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "detail_id": "entity-paper-masked-visual-actions",
-      "label": "Masked Visual Actions（统一世界建模的掩码视觉动作）",
-      "type": "entity",
-      "degree": 37,
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ]
 }
