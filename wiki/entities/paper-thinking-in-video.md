@@ -21,6 +21,7 @@ related:
   - ./paper-masked-visual-actions.md
   - ./paper-wan-video.md
   - ./ewmbench.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/thinking_in_video_arxiv_2607_17523.md
   - ../../sources/repos/thinking-in-video.md
@@ -197,6 +198,7 @@ sequenceDiagram
 - [Imagined Rollouts…](./paper-imagined-rollouts-kinematic-not-dynamic.md)
 - [Masked Visual Actions](./paper-masked-visual-actions.md)
 - [EWMBench](./ewmbench.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — ② 世界模型预测保真度评测层（CGDJ 审计生成器因果一致性）
 
 ## 参考来源
 
