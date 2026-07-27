@@ -2,7 +2,7 @@
 type: concept
 tags: [simulation, differentiable-physics, system-identification, reinforcement-learning, gradient-based]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-27
 related:
   - ../formalizations/adjoint-sensitivity-analysis.md
   - ../entities/matrix-simulation-platform.md

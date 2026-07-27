@@ -11,7 +11,7 @@ tags:
   - dataset
   - articulated-objects
 status: complete
-updated: 2026-05-18
+updated: 2026-07-27
 arxiv: "2605.05163"
 related:
   - ../concepts/sim2real.md
@@ -19,6 +19,7 @@ related:
   - ./physx-omni.md
   - ./robotwin.md
   - ./sapien.md
+  - ./paper-diffgi.md
   - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/physforge_arxiv_2605_05163.md
@@ -86,6 +87,7 @@ flowchart LR
 - [SAPIEN（仿真引擎）](./sapien.md) — 关节体交互仿真栈语境。
 - [Sim2Real](../concepts/sim2real.md) — 资产 **动力学/碰撞/关节** 与仿真器一致性总提醒。
 - [Manipulation（任务总览）](../tasks/manipulation.md) — 操作学习对 **可交互场景资产** 的需求背景。
+- [DiffGI](./paper-diffgi.md) — **薄壳 / UV geometry image** 生成对照（偏表面边界，而非关节物理蓝图）。
 
 ## 方法栈
 
