@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-07-27",
-  "node_count": 1946,
-  "edge_count": 16806,
+  "node_count": 1947,
+  "edge_count": 16816,
   "coverage": {
-    "covered": 1894,
-    "total": 1922,
+    "covered": 1895,
+    "total": 1923,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-diffgi.md",
+      "detail_id": "entity-paper-diffgi",
+      "label": "DiffGI（Differentiable Geometry Images · ECCV 2026）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-clothtransformer-unified-latent-cloth-simulation.md",
+      "detail_id": "entity-paper-clothtransformer-unified-latent-cloth-simulation",
+      "label": "ClothTransformer（Unified Latent-Space Cloth Simulation · arXiv:2605.27852）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-physforge-physics-grounded-3d-assets.md",
+      "detail_id": "entity-paper-physforge-physics-grounded-3d-assets",
+      "label": "PhysForge（Physics-Grounded 3D Assets for Interactive Virtual Worlds）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/articraft.md",
+      "detail_id": "entity-articraft",
+      "label": "Articraft",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/paper-chronos.md",
       "detail_id": "entity-paper-chronos",
@@ -178,62 +218,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/ukmarsbot.md",
-      "detail_id": "entity-ukmarsbot",
-      "label": "UKMARSBOT",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/wolfiemouse.md",
-      "detail_id": "entity-wolfiemouse",
-      "label": "WolfieMouse",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/methods/a-star.md",
-      "detail_id": "wiki-methods-a-star",
-      "label": "A* 全局路径规划",
-      "type": "method",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/methods/pid-control.md",
-      "detail_id": "wiki-methods-pid-control",
-      "label": "PID Control（比例-积分-微分控制）",
-      "type": "method",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-chronos.md",
-    "detail_id": "entity-paper-chronos",
-    "label": "Chronos（Physics-Informed Full-History Framework for Non-Markovian Long-Horizon Manipulation）",
+    "path": "wiki/entities/paper-diffgi.md",
+    "detail_id": "entity-paper-diffgi",
+    "label": "DiffGI（Differentiable Geometry Images · ECCV 2026）",
     "type": "entity",
     "recency": "2026-07-27",
     "source": "log.md",
     "action": "maintained",
-    "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
@@ -281,7 +276,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 349,
+      "degree": 350,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -289,7 +284,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 323,
+      "degree": 324,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

@@ -11,11 +11,12 @@ tags:
   - ntu
   - shanghai-ai-lab
 status: complete
-updated: 2026-07-20
+updated: 2026-07-27
 arxiv: "2605.27852"
 related:
   - ../entities/paper-deform360-deformable-visuotactile-dataset.md
   - ../entities/paper-flying-knots.md
+  - ../entities/paper-diffgi.md
   - ../tasks/manipulation.md
   - ../concepts/contact-dynamics.md
   - ../methods/generative-world-models.md
@@ -154,6 +155,7 @@ flowchart LR
 - [Deform360](./paper-deform360-deformable-visuotactile-dataset.md) — 可变形体（含布）真实数据与 WM 对照
 - [Generative World Models](../methods/generative-world-models.md) — 学习式物理/动态预测更广脉络
 - [Flying Knots](./paper-flying-knots.md) — 可变形体真机操纵对照
+- [DiffGI](./paper-diffgi.md) — 可微 TSDF geometry image 生成 UV-friendly 薄壳服装网格（上游几何对照）
 
 ## 推荐继续阅读
 

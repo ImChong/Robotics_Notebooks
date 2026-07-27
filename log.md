@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-27] ingest | sources/papers/diffgi_arxiv_2607_13365.md — DiffGI 可微 TSDF geometry image（ECCV 2026）；升格 wiki/entities/paper-diffgi.md；交叉 clothtransformer / physforge / articraft；归档 sites/ejshim-diffgi-github-io.md、repos/diffgi.md；注册 clo-virtual-fashion；开源核查：Code (soon)/仓内仅 docs，待发布
+
+- **论文 / 项目页 / 仓：** [`sources/papers/diffgi_arxiv_2607_13365.md`](sources/papers/diffgi_arxiv_2607_13365.md)（arXiv:2607.13365）· [`sources/sites/ejshim-diffgi-github-io.md`](sources/sites/ejshim-diffgi-github-io.md)（<https://ejshim.github.io/diffgi/>）· [`sources/repos/diffgi.md`](sources/repos/diffgi.md)（<https://github.com/EJShim/diffgi>；仅 docs）
+- **主升格：** [`wiki/entities/paper-diffgi.md`](wiki/entities/paper-diffgi.md) — 连续 2D TSDF geometry image + Differentiable Marching Squares + \(32\times32\) 潜扩散薄壳生成
+- **交叉：** [`wiki/entities/paper-clothtransformer-unified-latent-cloth-simulation.md`](wiki/entities/paper-clothtransformer-unified-latent-cloth-simulation.md)、[`wiki/entities/paper-physforge-physics-grounded-3d-assets.md`](wiki/entities/paper-physforge-physics-grounded-3d-assets.md)、[`wiki/entities/articraft.md`](wiki/entities/articraft.md)
+- **机构注册：** `schema/institutions.json` → `clo-virtual-fashion`（科洛虚拟时尚（CLO Virtual Fashion））
+- **开源核查（2026-07-27）：** **宣称将开源 / 待发布** — 项目页 **Code (soon)**；公开仓仅项目页静态资源，无可运行训练/推理入口
+
 ## [2026-07-27] ingest | sources/papers/chronos_arxiv_2606_30318.md — Chronos 全历史 SSM + IMLE + 二阶桥；升格 wiki/entities/paper-chronos.md；交叉 vla / manipulation / robotwin / eventvla / kemo / fm-vla / action-chunking / diffusion-policy / imitation-learning；归档 sites/chronos-manipulation-github-io.md、repos/chronos.md
 
 - **论文 / 项目页 / 仓：** [`sources/papers/chronos_arxiv_2606_30318.md`](sources/papers/chronos_arxiv_2606_30318.md)（arXiv:2606.30318）· [`sources/sites/chronos-manipulation-github-io.md`](sources/sites/chronos-manipulation-github-io.md)（<https://chronos-manipulation.github.io/>）· [`sources/repos/chronos.md`](sources/repos/chronos.md)（<https://github.com/yulinzhouZYL/Chronos>；HF Chronos-RMBench）

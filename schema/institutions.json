@@ -1859,6 +1859,15 @@
         "ieee",
         "ieee-region-1"
       ]
+    },
+    "clo-virtual-fashion": {
+      "label": "科洛虚拟时尚（CLO Virtual Fashion）",
+      "aliases": [
+        "clo-virtual-fashion",
+        "clo",
+        "clo3d",
+        "clo-virtual-fashion-inc"
+      ]
     }
   }
 }
