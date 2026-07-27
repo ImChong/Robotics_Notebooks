@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-27] ingest | sources/repos/handumi-sw.md — 刷新 HandUMI：硬件迁 robonet-ai/handumi-hw、统一 CLI、QA/convert 管线；wiki/entities/handumi.md；交叉 teleoperation / bimanual-manipulation / lerobot；归档 handumi-hw / handumi-quest-app / sites/handumi-sw
+
+- **软件 / 硬件 / Quest / 文档：** [`sources/repos/handumi-sw.md`](sources/repos/handumi-sw.md)（<https://github.com/robonet-ai/handumi-sw>）· [`sources/repos/handumi-hw.md`](sources/repos/handumi-hw.md)（<https://github.com/robonet-ai/handumi-hw>；旧 BrikHMP18 仓 301）· [`sources/repos/handumi-quest-app.md`](sources/repos/handumi-quest-app.md) · [`sources/sites/handumi-sw.md`](sources/sites/handumi-sw.md)（<https://robonet-ai.github.io/handumi-sw/>）
+- **主升格 / 刷新：** [`wiki/entities/handumi.md`](wiki/entities/handumi.md) — 一次采集、多臂重定向；模块化 tip；Feetech 直测开合；`handumi`/`hu` CLI；LeRobot v3 + validate/convert
+- **交叉：** [`wiki/tasks/teleoperation.md`](wiki/tasks/teleoperation.md)、[`wiki/tasks/bimanual-manipulation.md`](wiki/tasks/bimanual-manipulation.md)、[`wiki/entities/lerobot.md`](wiki/entities/lerobot.md)
+- **开源核查（2026-07-27）：** handumi-sw / handumi-hw **已开源**（Apache-2.0）；Quest 应用公开仓 + APK（仓页未标 SPDX）
+
 ## [2026-07-27] ingest | sources/papers/topreward_arxiv_2602_19313.md — TOPReward 零样本 VLM token 进度奖励；升格 wiki/entities/paper-topreward.md；交叉更新 wiki/concepts/progress-reward-modeling.md、wiki/entities/paper-progress-reward-modeling-survey.md、wiki/methods/awr.md、wiki/methods/imitation-learning.md、wiki/concepts/open-x-embodiment.md；归档 sources/sites/topreward-github-io.md、sources/repos/topreward.md
 
 - **论文 / 项目页 / 仓：** [`sources/papers/topreward_arxiv_2602_19313.md`](sources/papers/topreward_arxiv_2602_19313.md)（arXiv:2602.19313）· [`sources/sites/topreward-github-io.md`](sources/sites/topreward-github-io.md)（<https://topreward.github.io/webpage/>）· [`sources/repos/topreward.md`](sources/repos/topreward.md)

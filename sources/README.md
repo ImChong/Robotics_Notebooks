@@ -247,6 +247,8 @@
 | [x] [voxgraph.md](repos/voxgraph.md) | voxgraph TSDF 位姿图 |
 | [x] [openloong_dyn_control.md](repos/openloong_dyn_control.md) | OpenLoong-Dyn-Control：人形 MPC+WBC |
 | [x] [handumi-sw.md](repos/handumi-sw.md) | HandUMI 无机器人双臂示教软件：LeRobot v3 兼容采集、校准/QA、多臂重定向 |
+| [x] [handumi-hw.md](repos/handumi-hw.md) | HandUMI 硬件：平行夹爪 tip 可换、Feetech 直测开合、约 $110 零件 |
+| [x] [handumi-quest-app.md](repos/handumi-quest-app.md) | HandUMI Meta Quest 遥测应用（APK + Unity） |
 | [x] [lerobot.md](repos/lerobot.md) | Hugging Face LeRobot 具身框架 |
 | [x] [openvla.md](repos/openvla.md) | OpenVLA 开源视觉-语言-动作模型 |
 | [x] [mushr.md](repos/mushr.md) | MuSHR 非完整约束小车导航教学平台 |

@@ -3,7 +3,7 @@ type: task
 tags: [teleoperation, manipulation, loco-manipulation, data-collection, humanoid]
 status: complete
 summary: "Teleoperation 让人类通过远程接口直接操作机器人，是数据采集和复杂任务执行的重要桥梁。"
-updated: 2026-07-26
+updated: 2026-07-27
 sources:
   - ../../sources/blogs/mimicrobotics_m1_u1_full_stack.md
   - ../../sources/sites/rek-com.md
@@ -99,7 +99,7 @@ sources:
 | **[xr_teleoperate](../entities/xr-teleoperate.md)（Unitree 官方）** | Unitree G1 / H1 | AVP / PICO / Quest 等 XR | 官方参考实现 | 宇树开源全身遥操作主仓；可与 [unitree_sim_isaaclab](../entities/unitree-sim-isaaclab.md) 同 DDS 仿真采数；组织地图见 [Unitree](../entities/unitree.md) |
 | HTD（CMU/Bosch 2026） | 人形 + 灵巧手 | VR + 摇杆 + 分布式触觉 | 5 个真实接触丰富任务 | LBC 稳定下肢，VR 采集上身/手部示范，并同步手部力与触觉 |
 | UMI（Stanford 2024） | 通用 | GoPro + 夹爪 | 可扩展 | 无需专用机器人，数据可迁移 |
-| HandUMI（RoboNet 2026） | PiPER / OpenArm / TRLC-DK1 / YAM 等平行夹爪双臂 | HandUMI 手持接口 + PICO / Quest | 无机器人采集 | **一次采集、多臂重定向**；LeRobot v3 兼容 + 内置校准/QA；见 [实体](../entities/handumi.md) |
+| HandUMI（RoboNet 2026） | PiPER / OpenArm / TRLC-DK1 / YAM 等平行夹爪双臂 | HandUMI 手持接口（~$110 tip 可换）+ PICO / Quest | 无机器人采集 | **一次采集、多臂重定向**；Feetech 直测开合；LeRobot v3 + `handumi validate` QA；见 [实体](../entities/handumi.md) |
 | mimic U1 / umimic（mimic 2026） | mimic hand M1 | 固定运动学被动外骨骼 | 中层规模化 | 与 M1 **运动学/触觉/腕相机 1:1**；无 retargeting；见 [实体](../entities/mimic-wearable-u1.md) |
 | UME-EXO（Ant / Stanford 2026） | OpenArm 双臂移动平台等 | 上肢外骨骼 + IMU | 26–157 条/任务 | 实时触觉力矩反馈 + 全身臂形/力矩记录 + 子链重定向；ACT 学主动柔顺；见 [论文实体](../entities/paper-ume-exo.md) |
 | BifrostUMI（BAAI Aether 2026） | Unitree G1 | Pico 追踪 + 双腕鱼眼夹爪 | 无机器人采集 | UMI 式示范 + 扩散高层 + SKR → 人形全身 WBC；见 [论文实体](../entities/paper-bifrost-umi.md) |

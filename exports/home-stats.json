@@ -1,13 +1,56 @@
 {
   "generated_at": "2026-07-27",
   "node_count": 1937,
-  "edge_count": 16684,
+  "edge_count": 16685,
   "coverage": {
     "covered": 1885,
     "total": 1913,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/handumi.md",
+      "detail_id": "entity-handumi",
+      "label": "HandUMI",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/teleoperation.md",
+      "detail_id": "wiki-tasks-teleoperation",
+      "label": "Teleoperation（遥操作）",
+      "type": "task",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/tasks/bimanual-manipulation.md",
+      "detail_id": "wiki-tasks-bimanual-manipulation",
+      "label": "Bimanual Manipulation（双臂协调操作）",
+      "type": "task",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/lerobot.md",
+      "detail_id": "entity-lerobot",
+      "label": "LeRobot (Hugging Face)",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-topreward.md",
       "detail_id": "entity-paper-topreward",
@@ -176,55 +219,12 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/soccer-field-line-detection.md",
-      "detail_id": "wiki-methods-soccer-field-line-detection",
-      "label": "足球场线与球门检测",
-      "type": "method",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/queries/soccer-visual-field-localization-pipeline.md",
-      "detail_id": "wiki-queries-soccer-visual-field-localization-pipeline",
-      "label": "足球机器人视觉场线定位流水线",
-      "type": "query",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/tasks/humanoid-soccer.md",
-      "detail_id": "wiki-tasks-humanoid-soccer",
-      "label": "Humanoid Soccer",
-      "type": "task",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/ultralytics.md",
-      "detail_id": "entity-ultralytics",
-      "label": "Ultralytics YOLO",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-topreward.md",
-    "detail_id": "entity-paper-topreward",
-    "label": "TOPReward：Token 概率作零样本机器人进度奖励",
+    "path": "wiki/entities/handumi.md",
+    "detail_id": "entity-handumi",
+    "label": "HandUMI",
     "type": "entity",
     "recency": "2026-07-27",
     "source": "log.md",
