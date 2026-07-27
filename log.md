@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-27] ingest | sources/papers/topreward_arxiv_2602_19313.md — TOPReward 零样本 VLM token 进度奖励；升格 wiki/entities/paper-topreward.md；交叉更新 wiki/concepts/progress-reward-modeling.md、wiki/entities/paper-progress-reward-modeling-survey.md、wiki/methods/awr.md、wiki/methods/imitation-learning.md、wiki/concepts/open-x-embodiment.md；归档 sources/sites/topreward-github-io.md、sources/repos/topreward.md
+
+- **论文 / 项目页 / 仓：** [`sources/papers/topreward_arxiv_2602_19313.md`](sources/papers/topreward_arxiv_2602_19313.md)（arXiv:2602.19313）· [`sources/sites/topreward-github-io.md`](sources/sites/topreward-github-io.md)（<https://topreward.github.io/webpage/>）· [`sources/repos/topreward.md`](sources/repos/topreward.md)
+- **主升格：** [`wiki/entities/paper-topreward.md`](wiki/entities/paper-topreward.md) — 视频 VLM 完成 token log-likelihood → 零样本稠密进度；OXE VOC 0.857 / ManiRewardBench ≈0.95；TOP-AWR
+- **交叉：** [`wiki/concepts/progress-reward-modeling.md`](wiki/concepts/progress-reward-modeling.md)、[`wiki/entities/paper-progress-reward-modeling-survey.md`](wiki/entities/paper-progress-reward-modeling-survey.md)、[`wiki/methods/awr.md`](wiki/methods/awr.md)、[`wiki/methods/imitation-learning.md`](wiki/methods/imitation-learning.md)、[`wiki/concepts/open-x-embodiment.md`](wiki/concepts/open-x-embodiment.md)
+- **开源核查：** **已开源**（MIT 推理评测代码 + HF ManiRewardBench 子集；无专用 reward 训练权重）
+
 ## [2026-07-27] ingest | sources/blogs/robodojo_open_longterm_eval_2026-07.md — RoboDojo 开放长期公益评测；wiki/entities/robodojo.md · wiki/entities/xpolicylab.md
 
 - **公告 / 站点：** [`sources/blogs/robodojo_open_longterm_eval_2026-07.md`](sources/blogs/robodojo_open_longterm_eval_2026-07.md) · [`sources/sites/robodojo-benchmark.md`](sources/sites/robodojo-benchmark.md)（<https://robodojo-benchmark.com/>；Eval / Leaderboard / Protocol 2026-07-27 核查）

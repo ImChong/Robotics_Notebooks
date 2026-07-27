@@ -2,14 +2,16 @@
 type: method
 tags: [rl, off-policy, regression, xbpeng]
 status: complete
-updated: 2026-07-22
+updated: 2026-07-27
 related:
   - ../entities/mimickit.md
   - ../entities/protomotions.md
+  - ../entities/paper-topreward.md
   - ./reinforcement-learning.md
   - ./policy-optimization.md
 sources:
   - ../../sources/papers/awr.md
+  - ../../sources/papers/topreward_arxiv_2602_19313.md
 summary: "AWR 是一种简单的离策 RL 算法，通过优势加权回归将策略优化转化为监督学习，避开了策略梯度的不稳定性。"
 ---
 
@@ -21,8 +23,10 @@ summary: "AWR 是一种简单的离策 RL 算法，通过优势加权回归将�
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
+| AWR | Advantage-Weighted Regression | 用优势指数加权做策略回归更新 |
 | RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
 | PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| BC | Behavior Cloning | 无加权的监督式模仿基线，常与 AWR 对照 |
 
 ## 核心思想
 AWR 不直接计算策略梯度，而是通过对优势函数进行指数加权来拟合策略。它试图在数据集中寻找那些表现优于平均水平（即优势为正）的动作，并增加它们的出现概率。
@@ -43,8 +47,10 @@ AWR 不直接计算策略梯度，而是通过对优势函数进行指数加权�
 - [reinforcement-learning](reinforcement-learning.md) — RL 基础。
 - [policy-optimization](policy-optimization.md) — 算法对比。
 - [Learning to Fold（LeHome 2026）](../entities/paper-lehome-learning-to-fold.md) — 竞赛中把 AWR 重采样与 RECAP 条件化叠在 π₀.₅ 上。
+- [TOPReward](../entities/paper-topreward.md) — 用零样本 VLM 进度作 advantage 的 TOP-AWR 真机 BC。
 
 ## 参考来源
 - [机器人论文阅读笔记：Advantage Weighted Regression](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/AWR_Advantage_Weighted_Regression/AWR_Advantage_Weighted_Regression.html)
 - [sources/papers/awr.md](../../sources/papers/awr.md)
 - [sources/papers/lehome_learning_to_fold_arxiv_2606_27163.md](../../sources/papers/lehome_learning_to_fold_arxiv_2606_27163.md) — AWR+RECAP 异步 RL 叠衣配方
+- [sources/papers/topreward_arxiv_2602_19313.md](../../sources/papers/topreward_arxiv_2602_19313.md) — TOP-AWR 下游

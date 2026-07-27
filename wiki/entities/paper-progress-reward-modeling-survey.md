@@ -17,6 +17,7 @@ updated: 2026-07-27
 arxiv: "2607.21655"
 related:
   - ../concepts/progress-reward-modeling.md
+  - ./paper-topreward.md
   - ../methods/reinforcement-learning.md
   - ../methods/imitation-learning.md
   - ../methods/vla.md
@@ -24,6 +25,7 @@ related:
 sources:
   - ../../sources/papers/progress_reward_modeling_survey_arxiv_2607_21655.md
   - ../../sources/repos/awesome-progress-models.md
+  - ../../sources/papers/topreward_arxiv_2602_19313.md
 summary: "Progress Reward Modeling 综述（arXiv:2607.21655）：接口三维×四范式×数据/基准透镜统一过程奖励文献；配套 MIT Awesome-Progress-Models 索引已开源。"
 ---
 
@@ -127,12 +129,14 @@ flowchart TB
 | 资源 | 焦点 | 相对本综述 |
 |------|------|------------|
 | [过程奖励建模（概念）](../concepts/progress-reward-modeling.md) | 本库压缩读法 | 本文是完整出处 |
+| [TOPReward](./paper-topreward.md) | 冻结 VLM token 似然零样本进度 | 四范式中「冻结打分」实例；代码已开 |
 | WAM / VLA 综述 | 策略与世界模型架构 | 互补：奖励侧 vs 策略侧 |
 | 各单篇 ProgressLM / Robometer 等 | 具体算法 | 画廊叶子节点 |
 
 ## 关联页面
 
 - [过程奖励建模](../concepts/progress-reward-modeling.md) — 接口×范式速查
+- [TOPReward](./paper-topreward.md) — 冻结 VLM token 似然进度实例
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — 稠密奖励用途
 - [Imitation Learning](../methods/imitation-learning.md) — 演示序弱监督
 - [VLA](../methods/vla.md) — VLM 进度模型生态
@@ -142,8 +146,10 @@ flowchart TB
 
 - [综述论文归档](../../sources/papers/progress_reward_modeling_survey_arxiv_2607_21655.md)
 - [Awesome-Progress-Models](../../sources/repos/awesome-progress-models.md)
+- [TOPReward 论文归档](../../sources/papers/topreward_arxiv_2602_19313.md)
 
 ## 推荐继续阅读
 
 - [arXiv:2607.21655](https://arxiv.org/abs/2607.21655)
 - [GitHub: Awesome-Progress-Models](https://github.com/sterzhang/Awesome-Progress-Models)
+- [TOPReward 项目页](https://topreward.github.io/webpage/)
