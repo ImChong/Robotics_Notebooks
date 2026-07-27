@@ -2,7 +2,7 @@
 type: overview
 tags: [vla, open-source, reproduction, survey, github, embodied-ai]
 status: complete
-updated: 2026-07-26
+updated: 2026-07-27
 related:
   - ../methods/vla.md
   - ../methods/star-vla.md
@@ -21,6 +21,7 @@ related:
   - ../entities/paper-evo1-lightweight-vla.md
   - ../entities/paper-egosteer.md
   - ../entities/waytoagi.md
+  - ../entities/lumina-embodied.md
 sources:
   - ../../sources/blogs/wechat_shenlan_vla_github_repro_survey_2025.md
   - ../../sources/repos/rpent.md
@@ -156,3 +157,4 @@ flowchart TB
 - [Physical Intelligence openpi](https://github.com/Physical-Intelligence/openpi) — π 系官方开源入口
 - [OpenHelix VLA-Adapter](https://github.com/OpenHelix-Team/VLA-Adapter) — 轻量 VLA 复现入口
 - [WaytoAGI（通往 AGI 之路）](../entities/waytoagi.md) — 中文社区飞书库「AI硬件 / 硬核文章」标题雷达（SpatialVLA 等），复现仍以本页仓库表为准
+- [Lumina 具身智能社区](../entities/lumina-embodied.md) — 具身 Talks / Guide 雷达；复现仍以本页仓库表为准

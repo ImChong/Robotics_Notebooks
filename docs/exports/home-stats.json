@@ -1,13 +1,88 @@
 {
   "generated_at": "2026-07-27",
-  "node_count": 1944,
-  "edge_count": 16772,
+  "node_count": 1945,
+  "edge_count": 16787,
   "coverage": {
-    "covered": 1892,
-    "total": 1920,
+    "covered": 1893,
+    "total": 1921,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/lumina-embodied.md",
+      "detail_id": "entity-lumina-embodied",
+      "label": "Lumina 具身智能社区",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/waytoagi.md",
+      "detail_id": "entity-waytoagi",
+      "label": "WaytoAGI（通往 AGI 之路）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/robotwin.md",
+      "detail_id": "entity-robotwin",
+      "label": "RoboTwin 2.0",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/isaac-sim.md",
+      "detail_id": "entity-isaac-sim",
+      "label": "Isaac Sim",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/openlet.md",
+      "detail_id": "entity-openlet",
+      "label": "OpenLET 具身智能开源数据集社区",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
+      "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
+      "label": "VLA 开源复现景观（2025 策展）",
+      "type": "overview",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/concepts/micromouse.md",
       "detail_id": "wiki-concepts-micromouse",
@@ -148,95 +223,23 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/methods/hy-motion-1.md",
-      "detail_id": "wiki-methods-hy-motion-1",
-      "label": "HY-Motion 1.0（文本→3D 人体运动的规模化流匹配 DiT）",
-      "type": "method",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/methods/dart-control.md",
-      "detail_id": "wiki-methods-dart-control",
-      "label": "DART（DartControl：实时文本驱动人体运动控制）",
-      "type": "method",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/awesome-text-to-motion-zilize.md",
-      "detail_id": "entity-awesome-text-to-motion-zilize",
-      "label": "Awesome Text-to-Motion（Zilize 精选集）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/phc.md",
-      "detail_id": "entity-phc",
-      "label": "PHC（Perpetual Humanoid Control）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-notebook-humanml3d.md",
-      "detail_id": "entity-paper-notebook-humanml3d",
-      "label": "Generating Diverse and Natural 3D Human Motions from Textual Descriptions",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-phygile.md",
-      "detail_id": "entity-paper-phygile",
-      "label": "PhyGile（Physics-Prefix Guided Motion Generation for Agile General Humanoid Motion Tracking）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/xyz-deux.md",
-      "detail_id": "entity-xyz-deux",
-      "label": "DEUX（XYZ · 半人形服务机器人）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/micromouse.md",
-    "detail_id": "wiki-concepts-micromouse",
-    "label": "Micromouse",
-    "type": "concept",
+    "path": "wiki/entities/lumina-embodied.md",
+    "detail_id": "entity-lumina-embodied",
+    "label": "Lumina 具身智能社区",
+    "type": "entity",
     "recency": "2026-07-27",
     "source": "log.md",
     "action": "added",
     "has_repo": true,
-    "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 430
+      "size": 431
     },
     {
       "label": "人形论文深读笔记",
@@ -271,7 +274,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 350,
+      "degree": 353,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

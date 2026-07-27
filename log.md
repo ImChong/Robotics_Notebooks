@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-27] ingest | sources/sites/lumina-embodied-ai.md — Lumina 具身智能社区官网；升格 wiki/entities/lumina-embodied.md；交叉 waytoagi / robotwin / isaac-sim / vla / openlet / vla-open-source-repro-landscape；归档 sources/repos/lumina-eai.md 并回链 embodied-ai-guide
+
+- **官网 / Org：** [`sources/sites/lumina-embodied-ai.md`](sources/sites/lumina-embodied-ai.md)（<https://lumina-embodied.ai/>）· [`sources/repos/lumina-eai.md`](sources/repos/lumina-eai.md)（<https://github.com/Lumina-EAI>）· 百科仓回链 [`sources/repos/embodied-ai-guide.md`](sources/repos/embodied-ai-guide.md)
+- **主升格：** [`wiki/entities/lumina-embodied.md`](wiki/entities/lumina-embodied.md) — Talks / Events / Guide / Isaac Sim 一百讲 / Lumina-Call / EAI-100 社区导航锚点
+- **交叉：** [`wiki/entities/waytoagi.md`](wiki/entities/waytoagi.md)、[`wiki/entities/robotwin.md`](wiki/entities/robotwin.md)、[`wiki/entities/isaac-sim.md`](wiki/entities/isaac-sim.md)、[`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/entities/openlet.md`](wiki/entities/openlet.md)、[`wiki/overview/vla-open-source-repro-landscape-2025.md`](wiki/overview/vla-open-source-repro-landscape-2025.md)
+- **开源核查（2026-07-27）：** 官网公开；Org **已开源** Awesome-EmbodiedAI-Jobs；技术百科在 `tianxingchen/Embodied-AI-Guide`（非 Org 内）
+
 ## [2026-07-27] ingest | sources/repos/wolfiemouse.md + UKMARSBOT/Micromouse 集群 — 升格 wiki/concepts/micromouse.md、wiki/entities/ukmarsbot.md、wiki/entities/wolfiemouse.md；交叉 a-star / pid-control / kicad / mushr；归档 opatiny/lime7/emstef/ianmhoffman/ukmars/micromouseonline 与两则 YouTube；注册 ukmars
 
 - **主升格：** [`wiki/concepts/micromouse.md`](wiki/concepts/micromouse.md) · [`wiki/entities/ukmarsbot.md`](wiki/entities/ukmarsbot.md) · [`wiki/entities/wolfiemouse.md`](wiki/entities/wolfiemouse.md)

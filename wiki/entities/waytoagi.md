@@ -2,9 +2,10 @@
 type: entity
 tags: [community, knowledge-base, embodied-ai, waytoagi, curation, hardware]
 status: complete
-updated: 2026-07-26
+updated: 2026-07-27
 related:
   - ./openlet.md
+  - ./lumina-embodied.md
   - ./unitree.md
   - ./videomimic.md
   - ./paper-bfm-36-leverb.md
@@ -97,6 +98,7 @@ flowchart TB
 ## 关联页面
 
 - [OpenLET](./openlet.md) — 另一类「社区」，但是**真机数据集枢纽**，与文档策展库互补
+- [Lumina 具身智能社区](./lumina-embodied.md) — **专耕具身**的官网门户（Talks / Guide / Call）；与本页「大众 AI + AI硬件雷达」互补
 - [Unitree](./unitree.md) — AI硬件栏目中的厂商锚点（以官方渠道为准）
 - [VLA 开源复现地图（2025）](../overview/vla-open-source-repro-landscape-2025.md) — SpatialVLA 等复现入口
 - [VLA](../methods/vla.md) / [Loco-Manipulation](../tasks/loco-manipulation.md)
