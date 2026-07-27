@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-27",
-  "node_count": 1949,
-  "edge_count": 16856,
+  "node_count": 1951,
+  "edge_count": 16888,
   "coverage": {
-    "covered": 1897,
-    "total": 1925,
+    "covered": 1899,
+    "total": 1927,
     "percent": 99
   },
   "latest_wiki_nodes": [
@@ -238,7 +238,7 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 455
+      "size": 440
     },
     {
       "label": "人形论文深读笔记",
@@ -257,8 +257,8 @@
       "size": 120
     },
     {
-      "label": "仿真训练",
-      "size": 83
+      "label": "模仿学习",
+      "size": 90
     }
   ],
   "top_hubs": [
