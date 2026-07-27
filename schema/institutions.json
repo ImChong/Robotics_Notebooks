@@ -1817,6 +1817,14 @@
         "xyzcorp",
         "deux"
       ]
+    },
+    "makerspet": {
+      "label": "创客宠物（Maker's Pet）",
+      "aliases": [
+        "makerspet",
+        "makers-pet",
+        "oomwoo"
+      ]
     }
   }
 }

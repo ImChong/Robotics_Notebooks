@@ -3,7 +3,7 @@
 type: overview
 tags: [navigation, slam, ros2, autoware, lidar, vio, mobile-robot, autonomous-driving, openloong]
 status: complete
-updated: 2026-07-26
+updated: 2026-07-27
 related:
   - ./autonomous-driving-core-algorithms-series.md
   - ../entities/python-robotics.md
@@ -34,6 +34,7 @@ related:
   - ../entities/lerobot.md
   - ../entities/openvla.md
   - ../entities/mushr.md
+  - ../entities/oomwoo.md
   - ../entities/aeris-10-plfm-radar.md
   - ../entities/rhino-auto.md
   - ../comparisons/lidar-slam-lio-vio-selection.md
@@ -53,6 +54,7 @@ sources:
   - ../../sources/repos/isaac_ros_visual_slam.md
   - ../../sources/repos/isaac_ros_nvblox.md
   - ../../sources/repos/plfm_radar.md
+  - ../../sources/repos/oomwoo.md
 summary: "移动机器人导航与 SLAM 开源栈总览：Nav2 + 2D SLAM、LiDAR/VIO 里程计、Autoware 自动驾驶、Isaac ROS 加速感知建图，并与 OpenLoong 动力学、LeRobot/OpenVLA 具身学习对照分层选型。"
 ---
 
@@ -143,6 +145,7 @@ flowchart TB
 
 - **[Navigation2](../entities/navigation2.md)**：行为树导航器、全局/局部规划器插件（NavFn、Smac、DWB/RPP 等）、代价地图、恢复行为。
 - **[MuSHR](../entities/mushr.md)**：低成本阿克曼平台 + 课程式 ROS 导航实验。
+- **[OOMWOO](../entities/oomwoo.md)**：开源家用扫地机器人整机（Gazebo + slam_toolbox + Nav2；仿真与安装已开源，硬件早期）。
 
 ### 2D SLAM
 
@@ -213,6 +216,7 @@ flowchart TB
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md) — Ch3–5 导航/探索映射
 - [LiDAR / LIO / VIO 选型对比](../comparisons/lidar-slam-lio-vio-selection.md)
 - [Navigation2](../entities/navigation2.md)
+- [OOMWOO](../entities/oomwoo.md) — 开源家用扫地机整机（Nav2 应用入口）
 - [Autoware](../entities/autoware.md)
 - [ROS 2 基础](../concepts/ros2-basics.md)
 - [VLA 方法](../methods/vla.md)

@@ -1,13 +1,68 @@
 {
   "generated_at": "2026-07-27",
-  "node_count": 1939,
-  "edge_count": 16720,
+  "node_count": 1940,
+  "edge_count": 16730,
   "coverage": {
-    "covered": 1887,
-    "total": 1915,
+    "covered": 1888,
+    "total": 1916,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/oomwoo.md",
+      "detail_id": "entity-oomwoo",
+      "label": "OOMWOO",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/entities/navigation2.md",
+      "detail_id": "entity-navigation2",
+      "label": "Navigation2（Nav2）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/entities/slam-toolbox.md",
+      "detail_id": "entity-slam-toolbox",
+      "label": "SLAM Toolbox",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/overview/navigation-slam-autonomy-stack.md",
+      "detail_id": "wiki-overview-navigation-slam-autonomy-stack",
+      "label": "导航·SLAM·自动驾驶开源栈总览",
+      "type": "overview",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/entities/mushr.md",
+      "detail_id": "entity-mushr",
+      "label": "MuSHR",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
     {
       "path": "wiki/entities/xyz-deux.md",
       "detail_id": "entity-xyz-deux",
@@ -161,75 +216,23 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-taco-tactile-wm-vla-posttrain.md",
-      "detail_id": "entity-paper-taco-tactile-wm-vla-posttrain",
-      "label": "TACO（TActile World Model as a Self-COrrector · arXiv:2607.02840）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-vtap-gripper.md",
-      "detail_id": "entity-paper-vtap-gripper",
-      "label": "VTAP Gripper（视触觉主动掌夹爪）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-topreward.md",
-      "detail_id": "entity-paper-topreward",
-      "label": "TOPReward：Token 概率作零样本机器人进度奖励",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/progress-reward-modeling.md",
-      "detail_id": "wiki-concepts-progress-reward-modeling",
-      "label": "过程奖励建模（Progress Reward Modeling）",
-      "type": "concept",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-progress-reward-modeling-survey.md",
-      "detail_id": "entity-paper-progress-reward-modeling-survey",
-      "label": "Progress Reward Modeling Survey（过程奖励综述 · arXiv:2607.21655）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/xyz-deux.md",
-    "detail_id": "entity-xyz-deux",
-    "label": "DEUX（XYZ · 半人形服务机器人）",
+    "path": "wiki/entities/oomwoo.md",
+    "detail_id": "entity-oomwoo",
+    "label": "OOMWOO",
     "type": "entity",
     "recency": "2026-07-27",
     "source": "log.md",
     "action": "added",
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "has_repo": true,
+    "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 431
+      "size": 430
     },
     {
       "label": "人形论文深读笔记",
@@ -240,11 +243,11 @@
       "size": 153
     },
     {
-      "label": "全身控制",
-      "size": 137
+      "label": "人形强化学习运动控制",
+      "size": 136
     },
     {
-      "label": "人形强化学习运动控制",
+      "label": "全身控制",
       "size": 136
     },
     {
