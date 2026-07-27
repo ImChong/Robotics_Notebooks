@@ -13,7 +13,7 @@ tags:
   - umd
   - harvard
 status: complete
-updated: 2026-07-24
+updated: 2026-07-27
 arxiv: "2607.19343"
 related:
   - ../methods/generative-world-models.md
@@ -21,6 +21,7 @@ related:
   - ../overview/world-models-route-03-virtual-sandbox.md
   - ../overview/world-models-route-01-cascade.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
+  - ../overview/world-model-physics-fidelity-outputs.md
   - ./paper-driftworld.md
   - ./paper-oscar.md
   - ./paper-ctrl-world.md
@@ -28,12 +29,14 @@ related:
   - ./paper-wan-video.md
   - ./paper-gigaworld-1-policy-evaluation.md
   - ./paper-shenlan-wm-15-worldgym.md
+  - ./paper-kinebench.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/masked_visual_actions_arxiv_2607_19343.md
   - ../../sources/repos/masked-visual-actions.md
   - ../../sources/sites/masked-visual-actions-github-io.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md
 summary: "Masked Visual Actions（arXiv:2607.19343，Stanford×UMD×Harvard）：像素空间掩码轨迹作统一动作接口；同一 Wan-Fun-Control LoRA 检查点兼作前向场景仿真与逆向机器人合成；约 15h 数据微调，RoboCasa 策略评估相关 r=0.982。"
 ---
 
@@ -220,11 +223,13 @@ sequenceDiagram
 - [世界模型路线 03：虚拟沙盒](../overview/world-models-route-03-virtual-sandbox.md) — 规划 / 评估沙盒
 - [世界模型路线 01：级联架构](../overview/world-models-route-01-cascade.md) — 逆设定 + IDM 抽动作
 - [robot-world-models-training-loop-taxonomy](../overview/robot-world-models-training-loop-taxonomy.md) — 学习型模拟器坐标
+- [世界模型物理保真度输出轴](../overview/world-model-physics-fidelity-outputs.md) — 「视觉动作接口」族与四类测试
 - [DriftWorld](./paper-driftworld.md) — 1-step 快评估对照
 - [OSCAR](./paper-oscar.md) — 骨架条件跨具身对照
 - [Ctrl-World](./paper-ctrl-world.md) — 低维动作多视角 VLA 闭环对照（文中视觉基线）
 - [Wan-Move](./paper-wan-move.md) / [Wan](./paper-wan-video.md) — 轨迹可控 I2V 与上游视频先验（文中对照）
 - [GigaWorld-1](./paper-gigaworld-1-policy-evaluation.md) / [WorldGym](./paper-shenlan-wm-15-worldgym.md) — WM 作评估器坐标
+- [KineBench](./paper-kinebench.md) — IDM-free 可执行性评测对照
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — ② 世界模型评估层
 - [Manipulation](../tasks/manipulation.md) — 操纵基准语境
 
@@ -233,6 +238,7 @@ sequenceDiagram
 - [Masked Visual Actions 论文归档（arXiv:2607.19343）](../../sources/papers/masked_visual_actions_arxiv_2607_19343.md)
 - [HadiZayer/masked-visual-actions 代码索引](../../sources/repos/masked-visual-actions.md)
 - [Masked Visual Actions 项目页归档](../../sources/sites/masked-visual-actions-github-io.md)
+- [具身智能研究室 · 世界模型物理保真度导读](../../sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md)
 
 ## 推荐继续阅读
 

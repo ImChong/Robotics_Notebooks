@@ -1,5 +1,56 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-27] ingest | PhysCoRe / Imagined-Rollouts / KineBench / Thinking-in-Video — 物理保真度评测与混合物理四篇 complete 实体
+
+- **论文归档：**
+  - [`sources/papers/physcore_arxiv_2607_20653.md`](sources/papers/physcore_arxiv_2607_20653.md)（**未开源**，2026-07-27）
+  - [`sources/papers/imagined_rollouts_kinematic_not_dynamic_arxiv_2607_05966.md`](sources/papers/imagined_rollouts_kinematic_not_dynamic_arxiv_2607_05966.md)（diagnostic **未开源**）
+  - [`sources/papers/kinebench_arxiv_2607_19876.md`](sources/papers/kinebench_arxiv_2607_19876.md) + [`sources/repos/kinebench.md`](sources/repos/kinebench.md)（**MIT 已开源**）
+  - [`sources/papers/thinking_in_video_arxiv_2607_17523.md`](sources/papers/thinking_in_video_arxiv_2607_17523.md) + [`sources/repos/thinking-in-video.md`](sources/repos/thinking-in-video.md)（代码+HF 数据 **已开源**）
+- **wiki 实体（complete）：**
+  - [`wiki/entities/paper-physcore.md`](wiki/entities/paper-physcore.md)
+  - [`wiki/entities/paper-imagined-rollouts-kinematic-not-dynamic.md`](wiki/entities/paper-imagined-rollouts-kinematic-not-dynamic.md)
+  - [`wiki/entities/paper-kinebench.md`](wiki/entities/paper-kinebench.md)
+  - [`wiki/entities/paper-thinking-in-video.md`](wiki/entities/paper-thinking-in-video.md)
+- **交叉：** overview [`wiki/overview/world-model-physics-fidelity-outputs.md`](wiki/overview/world-model-physics-fidelity-outputs.md)；轻量更新 Masked Visual Actions / RynnWorld-4D / MECo-WAM / VT-WAM（related + blog 参考来源）
+- **开源核查日：** 2026-07-27
+
+## [2026-07-27] ingest | sources/papers/{irasim,vjepa2,worldweaver,dwm_separating_world_effects} — 物理保真轴四篇（IRASim / V-JEPA 2 / WorldWeaver / DWM-Separating）
+
+- **策展语境：** [`sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md`](sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md)
+- **overview：** [`wiki/overview/world-model-physics-fidelity-outputs.md`](wiki/overview/world-model-physics-fidelity-outputs.md)（与经典 latent/视频节点交叉）
+- **新建论文实体（complete）：**
+  - [`wiki/entities/paper-irasim.md`](wiki/entities/paper-irasim.md) — arXiv:2406.14540；**已开源** Apache-2.0 + 数据/checkpoints
+  - [`wiki/entities/paper-vjepa2.md`](wiki/entities/paper-vjepa2.md) — arXiv:2506.09985；**已开源** MIT + V-JEPA 2-AC；latent 规划
+  - [`wiki/entities/paper-worldweaver.md`](wiki/entities/paper-worldweaver.md) — arXiv:2607.21594；**宣称将开源**（README coming soon）
+  - [`wiki/entities/paper-dwm-separating-world-effects.md`](wiki/entities/paper-dwm-separating-world-effects.md) — arXiv:2607.18715；CEM **+13.1pp**；**未开源**；≠ Dexterous DWM
+- **sources：** papers×4；repos：irasim / vjepa2 / worldweaver；sites：gen-irasim / meta-vjepa2-blog / worldweaver-vail-ucla
+- **消歧：** [`wiki/methods/dwm.md`](wiki/methods/dwm.md) 顶部注明与 2607.18715 同名不同文
+- **机构：** `schema/institutions.json` 注册 `adobe`
+
+## [2026-07-27] ingest | sources/papers/{ha_schmidhuber_world_models,planet_latent_dynamics,tdmpc2,unisim} — 物理保真度博客经典四篇升格完整论文实体；加厚 DreamerV3
+
+- **论文归档：**
+  - [`sources/papers/ha_schmidhuber_world_models_arxiv_1803_10122.md`](sources/papers/ha_schmidhuber_world_models_arxiv_1803_10122.md)
+  - [`sources/papers/planet_latent_dynamics_arxiv_1811_04551.md`](sources/papers/planet_latent_dynamics_arxiv_1811_04551.md)
+  - [`sources/papers/tdmpc2_arxiv_2310_16828.md`](sources/papers/tdmpc2_arxiv_2310_16828.md)
+  - [`sources/papers/unisim_arxiv_2310_06114.md`](sources/papers/unisim_arxiv_2310_06114.md)
+  - 加厚 [`sources/papers/shenlan_wm_survey_13_dreamerv3.md`](sources/papers/shenlan_wm_survey_13_dreamerv3.md)（交叉物理保真度博客 + 开源仓）
+- **repos / sites：**
+  - [`sources/sites/worldmodels-github-io.md`](sources/sites/worldmodels-github-io.md) · [`sources/repos/world-models-experiments.md`](sources/repos/world-models-experiments.md)
+  - [`sources/sites/planetrl-github-io.md`](sources/sites/planetrl-github-io.md) · [`sources/repos/google-research-planet.md`](sources/repos/google-research-planet.md)
+  - [`sources/sites/tdmpc2-com.md`](sources/sites/tdmpc2-com.md) · [`sources/repos/tdmpc2.md`](sources/repos/tdmpc2.md)
+  - [`sources/sites/universal-simulator-github-io.md`](sources/sites/universal-simulator-github-io.md)（UniSim **未开源**）
+  - [`sources/repos/danijar-dreamerv3.md`](sources/repos/danijar-dreamerv3.md)
+- **wiki 实体（complete，非 stub）：**
+  - [`wiki/entities/paper-ha-schmidhuber-world-models.md`](wiki/entities/paper-ha-schmidhuber-world-models.md)
+  - [`wiki/entities/paper-planet-latent-dynamics.md`](wiki/entities/paper-planet-latent-dynamics.md)
+  - [`wiki/entities/paper-td-mpc2.md`](wiki/entities/paper-td-mpc2.md)
+  - [`wiki/entities/paper-unisim.md`](wiki/entities/paper-unisim.md)
+  - 加厚 [`wiki/entities/paper-shenlan-wm-13-dreamerv3.md`](wiki/entities/paper-shenlan-wm-13-dreamerv3.md)（缩写≥3、结论、源码时序、仍链 15 地图）
+- **交叉：** [`wiki/overview/world-model-physics-fidelity-outputs.md`](wiki/overview/world-model-physics-fidelity-outputs.md)；博客 [`sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md`](sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md)
+- **开源口径：** World Models 交互站+实验仓已开源；PlaNet archived Apache；TD-MPC2 MIT+权重；UniSim 仅项目页；DreamerV3 → danijar/dreamerv3 + Open Dreamer 后继
+
 ## [2026-07-26] structural | docs/checklists — V30 收尾（详情页感知栈徽标）并新建 v31「机器人视觉感知栈选型闭环」执行清单
 
 - **V30 P3② 收尾：** 详情页「所属专题」徽标行本就数据驱动（`main.js renderMetaTopicBadges` → `topic-filters.js topicsForNode`），P3① 写入单一事实源后自动联动

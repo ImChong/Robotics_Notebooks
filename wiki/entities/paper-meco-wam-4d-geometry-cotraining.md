@@ -9,10 +9,11 @@ tags:
   - inference-efficient
   - midea
 status: complete
-updated: 2026-07-11
+updated: 2026-07-27
 arxiv: "2607.05468"
 related:
   - ../overview/wm-action-consequence-category-03-geometry-4d.md
+  - ../overview/world-model-physics-fidelity-outputs.md
   - ../concepts/world-action-models.md
   - ../methods/generative-world-models.md
   - ../methods/vla.md
@@ -21,6 +22,7 @@ related:
   - ../entities/paper-dswam-dual-system-wam.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md
 summary: "MECo-WAM（arXiv:2607.05468）：训练期 video/action/4D 三专家 + 冻结 VGGT 监督、衰减 4D read-mask 与动作感知时序几何蒸馏；推理移除全部 4D 组件；LIBERO 98.2%、RoboTwin 2.0 92.6%。"
 ---
 
@@ -131,6 +133,7 @@ flowchart TB
 ## 与其他页面的关系
 
 - [wm-action-consequence-category-03-geometry-4d](../overview/wm-action-consequence-category-03-geometry-4d.md) — 训练期 4D 几何代表
+- [世界模型物理保真度输出轴](../overview/world-model-physics-fidelity-outputs.md) — 「几何/运动信号」族（训练期 4D 端）
 - [动作后果技术地图](../overview/robot-world-models-action-consequence-technology-map.md) — 几何层索引
 - [World Action Models](../concepts/world-action-models.md) — efficient WAM 坐标
 - [DSWAM](./paper-dswam-dual-system-wam.md) — 同生态 WAM
@@ -146,4 +149,5 @@ flowchart TB
 ## 参考来源
 
 - [具身智能研究室 · 世界模型动作后果专题导读（2026-07）](../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md)
+- [具身智能研究室 · 世界模型物理保真度导读（2026-07-27）](../../sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md)
 - [MECo-WAM 论文（arXiv:2607.05468）](https://arxiv.org/abs/2607.05468)
