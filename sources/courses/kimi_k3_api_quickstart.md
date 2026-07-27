@@ -7,15 +7,15 @@
 - **组织：** 月之暗面（Moonshot AI）
 - **原始链接：** <https://platform.kimi.ai/docs/guide/kimi-k3-quickstart>
 - **文档索引：** <https://platform.kimi.ai/docs/llms.txt>
-- **入库日期：** 2026-07-19
+- **入库日期：** 2026-07-19（**2026-07-27** 同步开放权重与 `reasoning_effort` 档位）
 - **一句话说明：** Kimi K3 的 **OpenAI 兼容 API** 接入说明：模型 ID `kimi-k3`、thinking mode、`reasoning_effort`、视觉 / 结构化输出 / 工具调用 / 1M 自动缓存等能力与限制。
 
 ## 核心摘录（归纳，非全文）
 
 ### 1) 模型摘要
 
-- **2.8T 参数** MoE；**KDA + AttnRes**；原生视觉；**1M context**。
-- 首个开源 **3T-class** 模型；权重 **2026-07-27 前** 发布（截至入库日尚未上线公开权重仓库）。
+- **2.8T 参数** MoE（激活 **104B**）；**KDA + AttnRes**；原生视觉；**1M context**。
+- 首个开源 **3T-class** 模型；**完整权重已于 2026-07-27** 发布（HF / ModelScope / GitHub 入口，见 [kimi-k3.md](../repos/kimi-k3.md)）。
 - 场景：**long-horizon coding**、**knowledge work**、**reasoning**。
 
 ### 2) 接入方式
@@ -29,7 +29,7 @@
 
 | 能力 | 说明 |
 |------|------|
-| **Thinking** | K3 **始终开启** thinking；用顶层 **`reasoning_effort`**（勿用 K2.x 的 `thinking` 参数）；当前仅支持 **`max`**（默认） |
+| **Thinking** | K3 **始终开启** thinking；用顶层 **`reasoning_effort`**（勿用 K2.x 的 `thinking` 参数）；HF / 权重卡现支持 **`low` / `high` / `max`**（默认 **`max`**）；以平台文档最新表为准 |
 | **Streaming** | `reasoning_content` 与最终 `content` 分通道 delta |
 | **Vision** | `content` 必须为 **对象数组**；图像用 **base64** 或 `ms://<file_id>`；**不支持公网 image URL** |
 | **Video** | `client.files.create` 上传后 `video_url: ms://<id>` |

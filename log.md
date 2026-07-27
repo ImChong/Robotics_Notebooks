@@ -1,5 +1,17 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-27] ingest | sources/repos/kimi-k3.md + HF/ModelScope/tech report — Kimi K3 开放权重与技术报告一手资料；刷新 wiki/entities/kimi-k3.md；交叉 muon / enpire / autoresearch harness
+
+- **一手开源面（2026-07-27 核查）：**
+  - GitHub [`MoonshotAI/Kimi-K3`](https://github.com/MoonshotAI/Kimi-K3) → [`sources/repos/kimi-k3.md`](sources/repos/kimi-k3.md)（README / **Kimi K3 License** / `k3_tech_report.pdf`；仓内无训练脚本）
+  - HF [`moonshotai/Kimi-K3`](https://huggingface.co/moonshotai/Kimi-K3) → [`sources/sites/huggingface-moonshotai-kimi-k3.md`](sources/sites/huggingface-moonshotai-kimi-k3.md)（96× MXFP4 safetensors，约 **1.56 TB**；custom code）
+  - ModelScope [`moonshotai/Kimi-K3`](https://www.modelscope.cn/models/moonshotai/Kimi-K3) → [`sources/sites/modelscope-moonshotai-kimi-k3.md`](sources/sites/modelscope-moonshotai-kimi-k3.md)
+  - 技术报告 PDF → [`sources/papers/kimi_k3_tech_report.md`](sources/papers/kimi_k3_tech_report.md)（47 页；无 arXiv；激活 **104B**、69 KDA + 24 Gated MLA、MoonViT-V2）
+- **既有资料同步：** [`sources/blogs/kimi_k3_tech_blog.md`](sources/blogs/kimi_k3_tech_blog.md)、[`sources/courses/kimi_k3_api_quickstart.md`](sources/courses/kimi_k3_api_quickstart.md) — 权重状态改为已开源；`reasoning_effort` 档位补 `low/high/max`
+- **主刷新：** [`wiki/entities/kimi-k3.md`](wiki/entities/kimi-k3.md) — 开源状态表、部署时序图、规格与 License 风险
+- **交叉：** [`wiki/methods/muon.md`](wiki/methods/muon.md)、[`wiki/methods/enpire.md`](wiki/methods/enpire.md)、[`wiki/queries/real-robot-policy-autoresearch-harness.md`](wiki/queries/real-robot-policy-autoresearch-harness.md)
+- **开源结论：** **开放权重 + 技术报告已开源**；训练代码/数据未随公开仓发布；推理走 vLLM / SGLang / TokenSpeed 官方 recipe
+
 ## [2026-07-27] structural | roadmap/depth-motion-retargeting.md — 新增 Stage 4 工程工具链与轨迹编辑器（原 Stage 4/5 顺延为 5/6），接入 wiki/entities/robot-motion-keyframe-editors.md、wiki/entities/human-humanoid-tools.md、wiki/entities/soma-retargeter.md、wiki/entities/robot-retargeter.md、wiki/entities/mocap-retarget.md 等一手工具资料
 
 - **主更新：** [`roadmap/depth-motion-retargeting.md`](roadmap/depth-motion-retargeting.md) — 新增 **Stage 4 工程工具链与轨迹编辑器**：工具形态谱系（脚本级 / 库级 / 工作台级 / 框架内置 / 编辑器级）+ 三条一手编辑链路 + 四元数顺序与 FPS 重采样踩坑；原「下游闭环 / 进阶方向」顺延为 Stage 5 / Stage 6（站点 `export_minimal.py` 只解析整数 Stage，小数号不会进阶段速览）；同步更新路线图 Mermaid、前置知识链与快速入口表

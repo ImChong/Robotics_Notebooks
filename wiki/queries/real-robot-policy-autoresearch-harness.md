@@ -16,6 +16,10 @@ related:
   - ../concepts/data-flywheel.md
   - ../concepts/embodied-scaling-laws.md
   - ../tasks/manipulation.md
+  - ../entities/kimi-k3.md
+  - ../entities/karpathy-autoresearch.md
+updated: 2026-07-27
+
 ---
 
 # 真机策略 autoresearch 闭环搭建指南
@@ -75,7 +79,7 @@ verification 是最容易被低估的部分：换传感器布局或安全约束�
 | **MRU**（Mean Robot Utilization）| 机器人时间利用率 | agent 读日志/写代码/等 LLM 时机器人空转 → MRU 下降 |
 | **MTU**（Mean Token Utilization）| LLM token 吞吐利用率 | 机队变大 → 协调开销与 token 成本上升 |
 
-ENPIRE 用 **AutoEnvBench** 比较不同 coding agent（Codex / Claude Code / Kimi Code 等）在同任务上的**墙钟研究进展曲线**——评估的是「agent 推进研究的速度」，而非单次策略分数。更大并行能更快抬高成功率，但 **token-to-success** 与协调开销同步上升，需在两条 scaling 轴上权衡。这与[具身规模法则](../concepts/embodied-scaling-laws.md)的数据/模型缩放律互补。
+ENPIRE 用 **AutoEnvBench** 比较不同 coding agent（Codex / Claude Code / Kimi Code 等）在同任务上的**墙钟研究进展曲线**——评估的是「agent 推进研究的速度」，而非单次策略分数。更大并行能更快抬高成功率，但 **token-to-success** 与协调开销同步上升，需在两条 scaling 轴上权衡。这与[具身规模法则](../concepts/embodied-scaling-laws.md)的数据/模型缩放律互补。Kimi 产品线旗舰 **[Kimi K3](../entities/kimi-k3.md)** 已于 **2026-07-27** 开放权重；若以 K3 为 coding backend，须保证 harness **完整回传 thinking history**。
 
 ## 姊妹路线：ASPIRE 的程序技能复利
 

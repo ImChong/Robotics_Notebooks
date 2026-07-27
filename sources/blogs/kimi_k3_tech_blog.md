@@ -6,15 +6,17 @@
 - **类型：** blog（Moonshot AI / Kimi 官方技术博客）
 - **组织：** 月之暗面（Moonshot AI）
 - **原始链接：** <https://www.kimi.com/blog/kimi-k3>
-- **入库日期：** 2026-07-19
-- **一句话说明：** Kimi K3 是 **2.8T 参数**、**1M 上下文**、**原生视觉** 的旗舰 MoE 模型，基于 **KDA + AttnRes + Stable LatentMoE**；面向长程编码、知识工作与推理，并计划 **2026-07-27 前** 开源完整权重。
+- **入库日期：** 2026-07-19（**2026-07-27** 补记开放权重与技术报告）
+- **一句话说明：** Kimi K3 是 **2.8T 参数**、**1M 上下文**、**原生视觉** 的旗舰 MoE 模型，基于 **KDA + AttnRes + Stable LatentMoE**；面向长程编码、知识工作与推理；**完整权重与技术报告已于 2026-07-27 开源**。
 
-## 开源与可用性（截至 2026-07-19 核查）
+## 开源与可用性（2026-07-27 复查）
 
-- **API / 产品：** 已在 Kimi.com、Kimi Work、Kimi Code、Kimi API 上线；默认 **max thinking effort**。
-- **权重：** 博客与 API 文档均写明 **full model weights will be released by July 27, 2026**；截至入库日 **尚未发布** GitHub / Hugging Face 权重链接。
-- **技术报告：** 架构、训练与评测细节将随 **Kimi K3 technical report** 发布。
-- **推理生态：** 正与 inference partners 与开源维护者对齐；**KDA prefix caching** 实现将贡献给 **vLLM** 社区，随模型一并发布。
+- **API / 产品：** 已在 Kimi.com、Kimi Work、Kimi Code、Kimi API 上线；默认 **max thinking effort**（权重卡现支持 `low` / `high` / `max`）。
+- **权重：** **已开源** — HF [`moonshotai/Kimi-K3`](https://huggingface.co/moonshotai/Kimi-K3)（约 **1.56 TB** MXFP4 safetensors）+ ModelScope 镜像；见 [huggingface-moonshotai-kimi-k3.md](../sites/huggingface-moonshotai-kimi-k3.md)。
+- **GitHub：** [`MoonshotAI/Kimi-K3`](https://github.com/MoonshotAI/Kimi-K3) — README / License / 技术报告 PDF（仓内无训练代码）；见 [kimi-k3.md](../repos/kimi-k3.md)。
+- **技术报告：** **已发布** — [`k3_tech_report.pdf`](https://github.com/MoonshotAI/Kimi-K3/blob/main/k3_tech_report.pdf)；见 [kimi_k3_tech_report.md](../papers/kimi_k3_tech_report.md)。
+- **推理生态：** README 推荐 **vLLM** / **SGLang** / **TokenSpeed** 官方 recipe（随权重同日可用）。
+- **License：** **Kimi K3 License**（含 MaaS >\$20M 营收另签与大产品署名条款）。
 
 ## 核心摘录（归纳，非全文）
 
@@ -22,7 +24,7 @@
 
 | 维度 | 要点 |
 |------|------|
-| **参数量** | **2.8T**（首个开源 **3T-class** 模型） |
+| **参数量** | **2.8T** 总参 / **104B** 激活（首个开源 **3T-class** 模型；激活数以 2026-07-27 技术报告 / HF 卡为准） |
 | **注意力** | **Kimi Delta Attention（KDA）** + **Attention Residuals（AttnRes）** — 改善长序列与深层信息流动 |
 | **MoE** | **Stable LatentMoE**：896 experts，每 token 激活 **16**；相对 K2 约 **2.5× scaling efficiency** |
 | **多模态** | 原生视觉；文本 / 图像 / 视频统一建模 |
@@ -77,5 +79,8 @@
 ## 外部参考
 
 - [Kimi K3 技术博客](https://www.kimi.com/blog/kimi-k3)
+- [GitHub MoonshotAI/Kimi-K3](https://github.com/MoonshotAI/Kimi-K3)
+- [HF moonshotai/Kimi-K3](https://huggingface.co/moonshotai/Kimi-K3)
+- [技术报告 PDF](https://github.com/MoonshotAI/Kimi-K3/blob/main/k3_tech_report.pdf)
 - [Kimi K3 API Quickstart](https://platform.kimi.ai/docs/guide/kimi-k3-quickstart)
 - [Kimi API Platform](https://platform.kimi.ai/)

@@ -1,13 +1,55 @@
 {
   "generated_at": "2026-07-27",
   "node_count": 1948,
-  "edge_count": 16840,
+  "edge_count": 16842,
   "coverage": {
     "covered": 1896,
     "total": 1924,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/kimi-k3.md",
+      "detail_id": "entity-kimi-k3",
+      "label": "Kimi K3",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/muon.md",
+      "detail_id": "wiki-methods-muon",
+      "label": "Muon（MomentUm Orthogonalized by Newton–Schulz）",
+      "type": "method",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/enpire.md",
+      "detail_id": "wiki-methods-enpire",
+      "label": "ENPIRE",
+      "type": "method",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/queries/real-robot-policy-autoresearch-harness.md",
+      "detail_id": "wiki-queries-real-robot-policy-autoresearch-harness",
+      "label": "真机策略 autoresearch 闭环搭建指南",
+      "type": "query",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "roadmap/depth-motion-retargeting.md",
       "detail_id": "roadmap-depth-motion-retargeting",
@@ -175,58 +217,18 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/topic-embodied-eval-benchmark.md",
-      "detail_id": "wiki-overview-topic-embodied-eval-benchmark",
-      "label": "具身评测基准选型闭环（专题汇总）",
-      "type": "overview",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/queries/embodied-eval-benchmark-selection-loop.md",
-      "detail_id": "wiki-queries-embodied-eval-benchmark-selection-loop",
-      "label": "Query：具身大模型评测基准选型闭环知识链",
-      "type": "query",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-diffgi.md",
-      "detail_id": "entity-paper-diffgi",
-      "label": "DiffGI（Differentiable Geometry Images · ECCV 2026）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-clothtransformer-unified-latent-cloth-simulation.md",
-      "detail_id": "entity-paper-clothtransformer-unified-latent-cloth-simulation",
-      "label": "ClothTransformer（Unified Latent-Space Cloth Simulation · arXiv:2605.27852）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "roadmap/depth-motion-retargeting.md",
-    "detail_id": "roadmap-depth-motion-retargeting",
-    "label": "路线（纵深）：如果目标是动作重定向（人体动作 → 机器人参考轨迹）",
-    "type": "roadmap_page",
+    "path": "wiki/entities/kimi-k3.md",
+    "detail_id": "entity-kimi-k3",
+    "label": "Kimi K3",
+    "type": "entity",
     "recency": "2026-07-27",
     "source": "log.md",
     "action": "maintained",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {

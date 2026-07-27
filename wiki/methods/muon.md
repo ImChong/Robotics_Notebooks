@@ -2,7 +2,7 @@
 type: method
 tags: [deep-learning, optimization, muon, orthogonalization, llm-training, transformer, moonshot]
 status: complete
-updated: 2026-07-19
+updated: 2026-07-27
 summary: "Muon 对隐藏层 2D 权重先做 SGD-momentum，再用 Newton–Schulz 迭代近似正交化更新方向；原始提出为博客+代码，Moonshot 在 arXiv:2502.16982 证明其可扩展至 Billion-scale LLM 并约 2× 计算效率。"
 related:
   - ./adamw.md
@@ -43,7 +43,7 @@ sources:
 ## 为什么重要
 
 - **首发形态特殊：** 社区引用与 GitHub Citation 指向 [Keller Jordan 博客](https://kellerjordan.github.io/posts/muon/)，说明 Muon 是 **博客 + 开源实现** 驱动的优化器，而非传统论文首发路线。
-- **LLM 训练新选项：** Moonshot 在 arXiv:2502.16982 用 scaling law 证明相对 [AdamW](./adamw.md) 约 **2× 计算效率**；Moonlight 3B/16B MoE 成为公开标杆；旗舰 [Kimi K3](../entities/kimi-k3.md) 进一步采用 **Per-Head Muon**（按注意力头独立正交化更新）。
+- **LLM 训练新选项：** Moonshot 在 arXiv:2502.16982 用 scaling law 证明相对 [AdamW](./adamw.md) 约 **2× 计算效率**；Moonlight 3B/16B MoE 成为公开标杆；旗舰 [Kimi K3](../entities/kimi-k3.md)（**2026-07-27** 已开放权重与技术报告）进一步采用 **Per-Head Muon**（按注意力头独立正交化更新）。
 - **Speedrun 生态：** NanoGPT / Modded-NanoGPT、[karpathy/autoresearch](../entities/karpathy-autoresearch.md) 等将 Muon+AdamW 作为默认配方。
 - **理论逐渐清晰：** 谱范数约束（arXiv:2506.15054）、Momentum 作谱滤波（arXiv:2606.03899）、Newton 推导（arXiv:2604.01472）解释「为何先 momentum 再正交化」。
 
@@ -122,7 +122,7 @@ flowchart LR
 - [AdamW](./adamw.md) · [SGD Momentum](./sgd-momentum.md) · [Lion](./lion.md)
 - [Deep Learning Optimizers 对比](../comparisons/deep-learning-optimizers.md)
 - [Muon is Scalable for LLM Training（论文实体）](../entities/paper-muon-scalable-llm-training.md)
-- [Kimi K3](../entities/kimi-k3.md) — Per-Head Muon 在 2.8T MoE 上的工程延续
+- [Kimi K3](../entities/kimi-k3.md) — Per-Head Muon 在 2.8T MoE 上的工程延续（技术报告 §2.5）
 - [karpathy/autoresearch](../entities/karpathy-autoresearch.md)
 - [Transformer](../concepts/transformer.md)
 
