@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-27] ingest | sources/sites/xyzcorp-deux.md — DEUX 半人形服务机器人 + Glove X/Brain X；升格 wiki/entities/xyz-deux.md；交叉 teleoperation / data-gloves / hardware-101 / sunday-act2 / handumi / imitation-learning；注册 xyz-corp
+
+- **产品页：** [`sources/sites/xyzcorp-deux.md`](sources/sites/xyzcorp-deux.md)（<https://xyzcorp.imweb.me/DEUX>；ABOUT/TECH 交叉摘录）
+- **主升格：** [`wiki/entities/xyz-deux.md`](wiki/entities/xyz-deux.md) — 三指手 + Glove X 1:1 零样本重定向；Brain X IL/RL；预购规格
+- **交叉：** [`wiki/tasks/teleoperation.md`](wiki/tasks/teleoperation.md)、[`wiki/comparisons/data-gloves-vs-vision-teleop.md`](wiki/comparisons/data-gloves-vs-vision-teleop.md)、[`wiki/overview/humanoid-hardware-101-sensing-end-effectors.md`](wiki/overview/humanoid-hardware-101-sensing-end-effectors.md)、[`wiki/entities/sunday-robotics-act2.md`](wiki/entities/sunday-robotics-act2.md)、[`wiki/entities/handumi.md`](wiki/entities/handumi.md)、[`wiki/methods/imitation-learning.md`](wiki/methods/imitation-learning.md)
+- **机构注册：** `schema/institutions.json` → `xyz-corp`（艾克斯怀吉（XYZ））
+- **开源核查（2026-07-27）：** **未开源**（无 GitHub/HF/数据集；ROS 2 仅产品叙事）
+
 ## [2026-07-27] ingest | sources/repos/handumi-sw.md — 刷新 HandUMI：硬件迁 robonet-ai/handumi-hw、统一 CLI、QA/convert 管线；wiki/entities/handumi.md；交叉 teleoperation / bimanual-manipulation / lerobot；归档 handumi-hw / handumi-quest-app / sites/handumi-sw
 
 - **软件 / 硬件 / Quest / 文档：** [`sources/repos/handumi-sw.md`](sources/repos/handumi-sw.md)（<https://github.com/robonet-ai/handumi-sw>）· [`sources/repos/handumi-hw.md`](sources/repos/handumi-hw.md)（<https://github.com/robonet-ai/handumi-hw>；旧 BrikHMP18 仓 301）· [`sources/repos/handumi-quest-app.md`](sources/repos/handumi-quest-app.md) · [`sources/sites/handumi-sw.md`](sources/sites/handumi-sw.md)（<https://robonet-ai.github.io/handumi-sw/>）

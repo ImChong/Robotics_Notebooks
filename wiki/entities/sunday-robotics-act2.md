@@ -2,7 +2,7 @@
 type: entity
 tags: [home-robot, mobile-manipulation, foundation-model, deformable-manipulation, laundry-folding, sunday-robotics, solve-standard, post-training]
 status: complete
-updated: 2026-07-22
+updated: 2026-07-27
 related:
   - ../concepts/robotics-solve-standard.md
   - ../tasks/manipulation.md
@@ -11,9 +11,11 @@ related:
   - ../entities/current-robotics-curr0.md
   - ../overview/humanoid-hardware-101-sensing-end-effectors.md
   - ../entities/lerobot.md
+  - ../entities/xyz-deux.md
 sources:
   - ../../sources/blogs/sunday_act2_preview.md
   - ../../sources/sites/sunday-robotics.md
+  - ../../sources/sites/xyzcorp-deux.md
 summary: "ACT-2（Sunday Robotics, 2026-07）为 Memo 移动家用机器人的第二代基础模型：人类 sensorized 预训练缩小 in/out-domain 泛化鸿沟，使少量 in-house 后训练可跨未见家庭迁移；叠衣 Solve 报告 99.1%（785 次、零部署适配）与单示范 SFT 新折法泛化。"
 ---
 
@@ -124,7 +126,7 @@ flowchart TB
 
 - **评测协议可借鉴：** 固定 **5 星折痕 rubric**（过折/错位/未折元素/堆叠错误各扣 1 星；2 inch 阈值）；**双轮 annotator + review lead**；rubric **评测前锁定**。
 - **机队飞轮：** 同一 base 多任务共训；博客主张每完成一个 Solve，共享行为（抓取、整理、全身协调）反哺下一任务。
-- **选型对照：** 需要 **可复现开源栈** 时优先 [TidyBot2](./tidybot2.md)、[LeRobot](./lerobot.md)（含 `folding_latest` 示范）；评估 **闭源家用可靠性主张** 时必读 **Solve 边界** 而非 headline SR。
+- **选型对照：** 需要 **可复现开源栈** 时优先 [TidyBot2](./tidybot2.md)、[LeRobot](./lerobot.md)（含 `folding_latest` 示范）；评估 **闭源家用可靠性主张** 时必读 **Solve 边界** 而非 headline SR；另一三指移动服务样本见韩国 [DEUX](./xyz-deux.md)（真店采数 + Glove X，**无** 公开 Solve 定量）。
 
 ## 局限与风险
 
@@ -144,6 +146,7 @@ flowchart TB
 - [LeRobot](./lerobot.md) — 开源叠衣 checkpoint 生态（`folding_latest`）
 - [Learning to Fold（LeHome 2026）](./paper-lehome-learning-to-fold.md) — 开源竞赛全链路叠衣（SO-ARM101；仿真 1st / 真机 2nd）
 - [Humanoid Hardware 101 · 末端](../overview/humanoid-hardware-101-sensing-end-effectors.md) — Sunday 三指夹爪案例
+- [DEUX（XYZ）](./xyz-deux.md) — 另一三指移动服务机器人 + Glove X 采数（闭源、无 Solve 定量）
 
 ## 推荐继续阅读
 
