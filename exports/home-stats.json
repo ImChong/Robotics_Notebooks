@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-27",
-  "node_count": 1942,
-  "edge_count": 16764,
+  "node_count": 1945,
+  "edge_count": 16787,
   "coverage": {
-    "covered": 1890,
-    "total": 1918,
+    "covered": 1893,
+    "total": 1921,
     "percent": 99
   },
   "latest_wiki_nodes": [
@@ -84,6 +84,82 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
+      "path": "wiki/concepts/micromouse.md",
+      "detail_id": "wiki-concepts-micromouse",
+      "label": "Micromouse",
+      "type": "concept",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/entities/ukmarsbot.md",
+      "detail_id": "entity-ukmarsbot",
+      "label": "UKMARSBOT",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/entities/wolfiemouse.md",
+      "detail_id": "entity-wolfiemouse",
+      "label": "WolfieMouse",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/methods/a-star.md",
+      "detail_id": "wiki-methods-a-star",
+      "label": "A* 全局路径规划",
+      "type": "method",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/methods/pid-control.md",
+      "detail_id": "wiki-methods-pid-control",
+      "label": "PID Control（比例-积分-微分控制）",
+      "type": "method",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/entities/kicad.md",
+      "detail_id": "entity-kicad",
+      "label": "KiCad（开源 PCB 与原理图 EDA）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/mushr.md",
+      "detail_id": "entity-mushr",
+      "label": "MuSHR",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
       "path": "wiki/entities/oomwoo.md",
       "detail_id": "entity-oomwoo",
       "label": "OOMWOO",
@@ -128,17 +204,6 @@
       "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
     },
     {
-      "path": "wiki/entities/mushr.md",
-      "detail_id": "entity-mushr",
-      "label": "MuSHR",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
       "path": "wiki/entities/paper-molingo.md",
       "detail_id": "entity-paper-molingo",
       "label": "MoLingo（Motion–Language Alignment for Text-to-Human Motion Generation）",
@@ -158,68 +223,6 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/methods/hy-motion-1.md",
-      "detail_id": "wiki-methods-hy-motion-1",
-      "label": "HY-Motion 1.0（文本→3D 人体运动的规模化流匹配 DiT）",
-      "type": "method",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/methods/dart-control.md",
-      "detail_id": "wiki-methods-dart-control",
-      "label": "DART（DartControl：实时文本驱动人体运动控制）",
-      "type": "method",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/awesome-text-to-motion-zilize.md",
-      "detail_id": "entity-awesome-text-to-motion-zilize",
-      "label": "Awesome Text-to-Motion（Zilize 精选集）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/phc.md",
-      "detail_id": "entity-phc",
-      "label": "PHC（Perpetual Humanoid Control）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-notebook-humanml3d.md",
-      "detail_id": "entity-paper-notebook-humanml3d",
-      "label": "Generating Diverse and Natural 3D Human Motions from Textual Descriptions",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-phygile.md",
-      "detail_id": "entity-paper-phygile",
-      "label": "PhyGile（Physics-Prefix Guided Motion Generation for Agile General Humanoid Motion Tracking）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {

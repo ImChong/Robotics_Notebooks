@@ -2,7 +2,7 @@
 type: entity
 tags: [software, eda, pcb, hardware, open-source, embedded, manufacturing, kicad]
 status: complete
-updated: 2026-07-18
+updated: 2026-07-27
 related:
   - ../queries/actuator-drive-chain-selection-loop.md
   - ../overview/humanoid-hardware-101-power-compute-electronics.md
@@ -13,10 +13,14 @@ related:
   - ./en02-op.md
   - ./open-source-humanoid-hardware.md
   - ../concepts/field-oriented-control.md
+  - ./wolfiemouse.md
+  - ../concepts/micromouse.md
 sources:
   - ../../sources/sites/kicad-org.md
   - ../../sources/courses/kicad_docs_10_zh.md
   - ../../sources/repos/kicad.md
+  - ../../sources/repos/wolfiemouse.md
+  - ../../sources/repos/opatiny-micromouse.md
 summary: "KiCad 是 GPLv3 开源跨平台 EDA：原理图、PCB 布局、ERC/DRC、SPICE、3D 预览与 kicad-cli；机器人栈中用于关节驱动板、BMS 与传感转接板的电子设计真值与 Gerber 制造交付。"
 ---
 
@@ -121,12 +125,16 @@ flowchart TB
 - [EN02-OP](./en02-op.md)
 - [开源人形机器人硬件方案对比](./open-source-humanoid-hardware.md)
 - [磁场定向控制（FOC）](../concepts/field-oriented-control.md)
+- [WolfieMouse](./wolfiemouse.md) — Micromouse 竞赛鼠 KiCad 整板案例
+- [Micromouse](../concepts/micromouse.md) — 自研 PCB 底盘常见场景
 
 ## 参考来源
 
 - [KiCad 官网归档](../../sources/sites/kicad-org.md)
 - [KiCad 10.0 简体中文文档归档](../../sources/courses/kicad_docs_10_zh.md)
 - [KiCad 官方源码仓库归档](../../sources/repos/kicad.md)
+- [WolfieMouse 归档](../../sources/repos/wolfiemouse.md)
+- [Algernon / opatiny 归档](../../sources/repos/opatiny-micromouse.md)
 
 ## 推荐继续阅读
 
