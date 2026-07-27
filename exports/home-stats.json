@@ -1,13 +1,40 @@
 {
   "generated_at": "2026-07-27",
-  "node_count": 1927,
-  "edge_count": 16560,
+  "node_count": 1928,
+  "edge_count": 16566,
   "coverage": {
-    "covered": 1875,
-    "total": 1903,
+    "covered": 1876,
+    "total": 1904,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/arxiv.md",
+      "detail_id": "entity-arxiv",
+      "label": "arXiv（arXiv.org）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/comparisons/robotics-research-venues.md",
+      "detail_id": "wiki-comparisons-robotics-research-venues",
+      "label": "机器人顶会顶刊发表渠道对比",
+      "type": "comparison",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/overview/robot-learning-overview.md",
+      "detail_id": "wiki-overview-robot-learning-overview",
+      "label": "Robot Learning Overview",
+      "type": "overview",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained"
+    },
     {
       "path": "wiki/entities/paper-fm-vla.md",
       "detail_id": "entity-paper-fm-vla",
@@ -187,75 +214,41 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-planet-latent-dynamics.md",
-      "detail_id": "entity-paper-planet-latent-dynamics",
-      "label": "PlaNet（Learning Latent Dynamics for Planning from Pixels）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-td-mpc2.md",
-      "detail_id": "entity-paper-td-mpc2",
-      "label": "TD-MPC2（Scalable, Robust World Models for Continuous Control）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-unisim.md",
-      "detail_id": "entity-paper-unisim",
-      "label": "UniSim（Learning Interactive Real-World Simulators）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-fm-vla.md",
-    "detail_id": "entity-paper-fm-vla",
-    "label": "FM-VLA（Force-based Memory for Vision-Language-Action Models）",
+    "path": "wiki/entities/arxiv.md",
+    "detail_id": "entity-arxiv",
+    "label": "arXiv（arXiv.org）",
     "type": "entity",
     "recency": "2026-07-27",
     "source": "log.md",
-    "action": "maintained",
-    "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 425
+      "size": 423
     },
     {
       "label": "人形论文深读笔记",
-      "size": 242
+      "size": 226
     },
     {
       "label": "移动操作",
-      "size": 174
-    },
-    {
-      "label": "人形强化学习运动控制",
-      "size": 170
+      "size": 154
     },
     {
       "label": "全身控制",
-      "size": 138
+      "size": 137
+    },
+    {
+      "label": "人形强化学习运动控制",
+      "size": 136
     },
     {
       "label": "仿真训练",
-      "size": 60
+      "size": 83
     }
   ],
   "top_hubs": [
@@ -350,8 +343,7 @@
       "label": "BeyondMimic",
       "type": "method",
       "degree": 59,
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
@@ -365,7 +357,8 @@
       "label": "OmniRetarget",
       "type": "entity",
       "degree": 49,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",
@@ -378,8 +371,7 @@
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
-      "degree": 46,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "degree": 46
     },
     {
       "detail_id": "entity-paper-twist2",

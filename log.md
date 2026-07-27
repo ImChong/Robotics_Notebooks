@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-27] ingest | sources/sites/arxiv-org.md — arXiv 开放获取预印本平台宏观节点；wiki/entities/arxiv.md
+
+- **来源归档：** [`sources/sites/arxiv-org.md`](sources/sites/arxiv-org.md)（<https://arxiv.org/>；About / API 2026-07-27 核查）
+- **主升格：** [`wiki/entities/arxiv.md`](wiki/entities/arxiv.md) — 预印本分发 vs 同行评审录用；cs.RO / API / 标识符；与本库 `sources/papers/*_arxiv_*` 默认外链层对齐
+- **交叉：** [`wiki/comparisons/robotics-research-venues.md`](wiki/comparisons/robotics-research-venues.md)、[`wiki/overview/robot-learning-overview.md`](wiki/overview/robot-learning-overview.md)、[`sources/sites/robotics-venues-primary-refs.md`](sources/sites/robotics-venues-primary-refs.md)
+- **机构注册：** `schema/institutions.json` → `arxiv`（学术预印本档案（arXiv））
+- **开源核查：** 平台为开放获取 + 公共 API；单篇论文代码仍以各项目页为准
+
 ## [2026-07-27] ingest | sources/papers/fm_vla_arxiv_2607_18231.md — FM-VLA 力觉记忆 VLA；wiki/entities/paper-fm-vla.md + 交叉 VLA/manipulation/CRM/KEMO/EventVLA
 
 - **论文：** [`sources/papers/fm_vla_arxiv_2607_18231.md`](sources/papers/fm_vla_arxiv_2607_18231.md)（arXiv:2607.18231；清华 / 微软研究院 / 复旦 / 中科大）

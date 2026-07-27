@@ -199,7 +199,12 @@
 
 ---
 
+## 附录：预印本层（非会议/期刊）
+
+日常「先公开、可检索」的文献入口见 **[arXiv.org 来源归档](arxiv-org.md)** 与升格实体 **[wiki/entities/arxiv.md](../../wiki/entities/arxiv.md)**。arXiv **不替代**本页各会刊的录用与论文集托管；ingest 单篇论文时两者常同时出现（预印本 ID + venue）。
+
 ## 对 wiki 的映射
 
 1. **[机器人研究发表渠道对比](../../wiki/comparisons/robotics-research-venues.md)** — 会议 vs 期刊、审稿形态、论文集托管与选题取向
-2. 后续单篇论文 ingest 时，在 `sources/papers/` 条目注明 `venue` 并链接本页或对应官方站
+2. **[arXiv 实体页](../../wiki/entities/arxiv.md)** — 开放获取预印本平台宏观节点
+3. 后续单篇论文 ingest 时，在 `sources/papers/` 条目注明 `venue` 并链接本页或对应官方站

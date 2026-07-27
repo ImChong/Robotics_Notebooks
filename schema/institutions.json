@@ -271,6 +271,13 @@
         "hugging-face"
       ]
     },
+    "arxiv": {
+      "label": "学术预印本档案（arXiv）",
+      "aliases": [
+        "arxiv",
+        "arxiv-org"
+      ]
+    },
     "ai2": {
       "label": "艾伦人工智能研究所（AI2）",
       "aliases": [
