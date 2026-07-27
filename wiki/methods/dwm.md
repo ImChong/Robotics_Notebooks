@@ -16,6 +16,7 @@ related:
   - ../tasks/loco-manipulation.md
   - ../methods/genmo.md
   - ../entities/paper-dwm-separating-world-effects.md
+  - ../entities/paper-rofacto.md
   - ../overview/world-model-physics-fidelity-outputs.md
 sources:
   - ../../sources/papers/dwm_arxiv_2512_17907.md
@@ -111,6 +112,7 @@ flowchart LR
 - [Manipulation（操作任务）](../tasks/manipulation.md)
 - [Loco-Manipulation（移动操作）](../tasks/loco-manipulation.md)
 - [GENMO（人体运动估计与生成）](./genmo.md) — 与手/身体网格条件化生成相邻（DWM 侧重场景交互视频）。
+- [Rofacto](../entities/paper-rofacto.md) — 同实验室后续：渲 **名义轨迹**（非 logged 实现状态）作动作接口（arXiv:2607.22535）。
 
 ## 推荐继续阅读
 

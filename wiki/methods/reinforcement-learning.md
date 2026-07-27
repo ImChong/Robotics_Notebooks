@@ -2,7 +2,7 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-07-25
+updated: 2026-07-27
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-rl-intelligent-control.md
@@ -32,6 +32,8 @@ related:
   - ../entities/paper-shape-your-body-value-gradient-design.md
   - ../entities/paper-tsil-temporal-self-imitation-learning.md
   - ../entities/gymnasium.md
+  - ../concepts/progress-reward-modeling.md
+  - ../entities/paper-progress-reward-modeling-survey.md
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/sites/incompleteideas-net-rich-sutton.md
@@ -246,6 +248,7 @@ flowchart LR
 - [MPC vs RL](../comparisons/mpc-vs-rl.md) — 含训练期 MPC 指导第三条混合轴
 - [Model-Based RL](./model-based-rl.md) — 利用世界模型提升样本效率
 - [Hindsight Experience Replay (HER)](./her.md) — 解决稀疏奖励任务的技巧
+- [过程奖励建模](../concepts/progress-reward-modeling.md) — 稠密进度/过程奖励的接口×范式读法（含 [综述](../entities/paper-progress-reward-modeling-survey.md)）
 - [Multi-Agent RL (MARL)](./marl.md) — 多机器人协同与竞争
 - [Generalized Advantage Estimation (GAE)](./gae.md) — 优势函数估计标准方法
 - [Safe RL](../methods/safe-rl.md) — 满足硬安全约束的 RL 训练
