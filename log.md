@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-27] structural | media/site-demo.gif — 按去标题后的首页重录 README 演示 GIF
+
+- **脚本：** [`scripts/record_readme_demo.cjs`](scripts/record_readme_demo.cjs)（70 frames / 3.12 MB；图谱 1933 节点）
+- **关联：** 承接首页入口区标题/副标题删除（[`docs/index.html`](docs/index.html)）
+
 ## [2026-07-27] ingest | sources/papers/ace_brain_0_5_arxiv_2607_04426.md — ACE-Brain-0.5 统一具身基础模型；wiki/entities/paper-ace-brain-0-5.md
 
 - **论文：** [`sources/papers/ace_brain_0_5_arxiv_2607_04426.md`](sources/papers/ace_brain_0_5_arxiv_2607_04426.md)（arXiv:2607.04426；ACE-Brain Team / 大晓 Ace Robotics）
@@ -8,6 +13,11 @@
 - **交叉：** [`wiki/methods/vla.md`](wiki/methods/vla.md)、[`foundation-policy`](wiki/concepts/foundation-policy.md)、[`progress-reward-modeling`](wiki/concepts/progress-reward-modeling.md)、[`paper-rynnbrain-1-1`](wiki/entities/paper-rynnbrain-1-1.md)、[`qwen-vla`](wiki/entities/qwen-vla.md)、[`vision-language-navigation`](wiki/tasks/vision-language-navigation.md)
 - **机构：** 复用 `ace-robotics`（大晓机器人）
 - **开源核查日：** 2026-07-27
+
+## [2026-07-27] structural | docs/index.html — 删除首页目标入口区标题与副标题（与 Hero 重复）
+
+- **改动：** 移除「选择你的入口」与「按当前目标进入最短路径…」；section 改用 `aria-label="入口"`
+- **同步：** [`docs/style.css`](docs/style.css) 清理 `#home-start .section-subtitle`；[`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md) Phase 4 勾选
 
 ## [2026-07-27] ingest | sources/sites/arxiv-org.md — arXiv 开放获取预印本平台宏观节点；wiki/entities/arxiv.md
 
