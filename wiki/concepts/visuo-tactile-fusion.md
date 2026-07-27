@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, manipulation, contact-rich, multimodal, tactile-sensing, fusion]
 status: complete
-updated: 2026-07-26
+updated: 2026-07-27
 related:
   - ./tactile-sensing.md
   - ./contact-rich-manipulation.md
@@ -28,6 +28,8 @@ related:
   - ./hybrid-force-position-control.md
   - ../queries/contact-wrench-closed-loop.md
   - ./contact-force-loop-bandwidth.md
+  - ../entities/paper-vitacworld.md
+  - ../entities/paper-vt-wam-visuotactile-contact-rich.md
 sources:
   - ../../sources/papers/perception.md
   - ../../sources/papers/contact_dynamics.md
@@ -221,6 +223,8 @@ flowchart LR
 - [TouchWorld](../entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md) — 预测–反应式触觉层级：TWM 子目标 + TRT 残差 + 六任务长程 benchmark
 - [VTAP Gripper](../entities/paper-vtap-gripper.md) — 主动掌 LED 开关视/触 + FlexiTac 指尖；硬件级阶段切换实例（arXiv:2607.15448）
 - [NeoteAI / 𝒩₀ 栈](../entities/neoteai.md) — NeoForce 力场 + 𝒩₀-VTLA 预测触觉 + 𝒩₀-TWAM 双通路
+- [ViTacWorld](../entities/paper-vitacworld.md) — 动作条件视触觉 WM：dream 增强下游触觉策略（arXiv:2607.22530）
+- [VT-WAM](../entities/paper-vt-wam-visuotactile-contact-rich.md) — 联合预测视触觉形变与动作的 WAM
 - [Manipulation 任务](../tasks/manipulation.md)
 - [Grasp Pose Estimation](../methods/grasp-pose-estimation.md) — ① 抓取阶段的视觉感知主线
 - [抓取策略选型 Query](../queries/grasp-policy-selection.md) — ① 抓取阶段的选型决策

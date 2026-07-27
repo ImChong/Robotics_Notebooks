@@ -11,7 +11,7 @@ tags:
   - stanford
   - tsinghua
 status: complete
-updated: 2026-07-24
+updated: 2026-07-27
 arxiv: "2510.10125"
 related:
   - ../methods/generative-world-models.md
@@ -21,6 +21,8 @@ related:
   - ./paper-masked-visual-actions.md
   - ./paper-driftworld.md
   - ./paper-oscar.md
+  - ./paper-rofacto.md
+  - ./paper-vitacworld.md
   - ./paper-wan-video.md
   - ./paper-wan-move.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
@@ -210,6 +212,8 @@ sequenceDiagram
 - [Video-as-Simulation](../concepts/video-as-simulation.md) — 视频即仿真概念
 - [world-models-route-03-virtual-sandbox](../overview/world-models-route-03-virtual-sandbox.md) — 虚拟沙盒路线
 - [Masked Visual Actions](./paper-masked-visual-actions.md) — 掩码条件对照（文中视觉基线语境）
+- [Rofacto](./paper-rofacto.md) — URDF 渲染动作接口对照（名义轨迹 vs 数值位姿）
+- [ViTacWorld](./paper-vitacworld.md) — 视触觉 WM 做 dream 增强 / 评估（对照纯视觉闭环）
 - [Wan](./paper-wan-video.md) / [Wan-Move](./paper-wan-move.md) — 另一视频先验族与轨迹控制
 - [评测选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 想象评估如何接入验收
 
