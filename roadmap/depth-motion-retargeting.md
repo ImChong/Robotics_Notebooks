@@ -1,6 +1,6 @@
 # 路线（纵深）：如果目标是动作重定向（人体动作 → 机器人参考轨迹）
 
-**摘要**：面向"想把人体/动物动捕、视频、生成动作变成机器人可执行参考轨迹"的纵深路线，从重定向的问题定义与数据管线定位、运动学优化工具箱、参考动作数据源与质量控制，到方法谱系主线（运动学优化 GMR → 学习式 NMR → 物理感知 ReActor / SPIDER / DynaRetarget）与**四足支线**（动物/视频关键点 → 空间+时间重定向 STMR → legged_gym 跟踪），再到下游跟踪训练闭环与进阶方向，按 Stage 0–5 串通核心方法；本路线是 [运动控制主路线](motion-control.md) 的一条分支，向上承接 [动作生成纵深](depth-motion-generation.md) 的运动学输出，向下供给 [BFM 纵深](depth-bfm.md) 与 [模仿学习纵深](depth-imitation-learning.md) 的训练数据。
+**摘要**：面向"想把人体/动物动捕、视频、生成动作变成机器人可执行参考轨迹"的纵深路线，从重定向的问题定义与数据管线定位、运动学优化工具箱、参考动作数据源与质量控制，到方法谱系主线（运动学优化 GMR → 学习式 NMR → 物理感知 ReActor / SPIDER / DynaRetarget）与**四足支线**（动物/视频关键点 → 空间+时间重定向 STMR → legged_gym 跟踪），再经 **工程工具链与轨迹编辑器**（开源重定向器 + 关键帧/曲线编辑器的人工修整闭环）进入下游跟踪训练闭环与进阶方向，按 Stage 0–5 串通核心方法；本路线是 [运动控制主路线](motion-control.md) 的一条分支，向上承接 [动作生成纵深](depth-motion-generation.md) 的运动学输出，向下供给 [BFM 纵深](depth-bfm.md) 与 [模仿学习纵深](depth-imitation-learning.md) 的训练数据。
 
 ## 路线一览
 
@@ -11,15 +11,16 @@ flowchart LR
   S2["<b>Stage 2</b><br/>数据源与质量<br/><em>MoCap / 视频估计 / 清洗</em>"]
   S3["<b>Stage 3</b><br/>方法谱系主线<br/><em>GMR → NMR → 物理感知</em>"]
   S3Q["<b>Stage 3 支线</b><br/>四足重定向<br/><em>关键点 → SMR/TMR → 跟踪</em>"]
+  S35["<b>Stage 3.5</b><br/>工具链与编辑器<br/><em>开源重定向器 / 关键帧修整</em>"]
   S4["<b>Stage 4</b><br/>下游闭环<br/><em>WBT / AMP / 遥操作</em>"]
   S5["<b>Stage 5</b><br/>进阶方向<br/><em>跨具身 / 灵巧手 / 数据引擎</em>"]
 
-  S0 --> S1 --> S2 --> S3 --> S4 --> S5
-  S2 --> S3Q --> S4
+  S0 --> S1 --> S2 --> S3 --> S35 --> S4 --> S5
+  S2 --> S3Q --> S35
 
   classDef stage fill:#142a3a,stroke:#e84393,stroke-width:2px,color:#fff
   classDef branch fill:#3a1428,stroke:#e84393,stroke-width:2px,stroke-dasharray:5 3,color:#fff
-  class S0,S1,S2,S3,S4,S5 stage
+  class S0,S1,S2,S3,S35,S4,S5 stage
   class S3Q branch
 ```
 
@@ -189,12 +190,68 @@ flowchart LR
 
 ---
 
+## Stage 3.5 工程工具链与轨迹编辑器
+
+**方法选定之后，决定迭代速度的是"用哪套开源重定向器跑批"和"用什么编辑器修坏帧"——重定向的长尾伪影通常修一遍比重训一遍便宜。**
+
+### 前置知识
+- Stage 3 内容（已经能自己跑通一条重定向管线）
+- 能读 URDF / MJCF，清楚自己下游消费的数据格式
+
+### 核心问题
+- **开源重定向器分四级形态**，成熟度与可改造性此消彼长：脚本级（改起来快、只服务单一机型）、库级（有 IK/接触/缩放模块，可嵌自己的管线）、工作台级（拖放式、批量、跨机型）、框架内置（与训练代码同仓，省掉格式转换）
+- **数据交换格式才是工具链真正的接口**：Unitree / Seed 风格 CSV、MuJoCo `qpos`（joblib + LZ4）、NPZ（`joint_pos` / `base_pos_w` / `base_quat_w`）、BVH / SMPL——**选错格式的代价通常大于选错算法**，因为它决定了哪些工具能串在一起
+- **为什么必须留人工修整这一环**：自动重定向的残余伪影（个别帧穿模、脚滑、撞关节限位）是长尾分布，靠调优化权重去压全局代价很高，逐帧改关键帧往往更省
+- **编辑器要不要带物理**：只做运动学可视化（CoM + 支撑多边形投影）足以判"姿态可行"，但判不了"跟得住"；带 MuJoCo 步进与 QP IK 的编辑器能在编辑当下就把不可跟踪的帧筛掉，代价是必须先有 MJCF
+- **部署形态与数据外发**：纯静态浏览器工具（不上传、可离线）、本地后端服务、pip CLI 三种形态在团队协作与数据合规上的差别
+
+### 工具形态谱系
+
+| 形态 | 代表实现（一手仓库） | 输入 → 输出 | 什么时候选它 |
+|------|----------------------|-------------|--------------|
+| **脚本级** | [mocap_retarget](../wiki/entities/mocap-retarget.md)、[human2humanoid](../wiki/entities/human2humanoid.md) 的 AMASS→机器人脚本 | 动捕档案 → 单一机型关节轨迹 | 只做一台机器人、想读懂几何重定向每一行 |
+| **库级** | [SOMA Retargeter](../wiki/entities/soma-retargeter.md)（GPU IK，BVH→G1 CSV）、[robot_retargeter](../wiki/entities/robot-retargeter.md)（mink + MuJoCo IK，含连杆缩放/接触检测/足端滑动抑制） | SMPL-X / BVH / 源机型 CSV → 多机型轨迹 | 要嵌进自己的批量管线，并需要接触与限位处理 |
+| **工作台级** | [human-humanoid-tools（hhtools）](../wiki/entities/human-humanoid-tools.md)（Newton IK + Interaction-Mesh 双后端、Any URDF、R2R） | 主流数据集格式 → 任意标准 URDF，含机器人↔机器人 | 频繁换数据集或换机型，重定向本身不是研究对象 |
+| **框架内置** | [MimicKit](../wiki/entities/mimickit.md)（重定向与 DeepMimic/AMP 系训练同仓） | 参考动作 → 直接进模仿训练 | 下游就是该框架，想省掉格式转换 |
+| **编辑器级** | 见下节三条编辑链路 | 已有轨迹 → 人工修整 → 重新导出 | 自动产物"大体对但有坏帧" |
+
+### 轨迹与关键帧编辑器：三条一手链路
+
+[机器人关键帧与运动编辑工具（选型入口）](../wiki/entities/robot-motion-keyframe-editors.md) 汇总了三个公开仓库，它们解决同一个问题（**已有轨迹 → 人工修正 → 再导出**），但绑定的仿真栈、交换格式与运行形态完全不同：
+
+1. **[cyoahs/robot_motion_editor](https://github.com/cyoahs/robot_motion_editor)（MIT，纯浏览器）** — Three.js + `urdf-loader`，双视口对比原始与编辑结果，残差式关键帧 + 贝塞尔曲线编辑，实时 CoM 与支撑多边形投影（运动学层面，非物理仿真）；导入导出 Unitree / Seed CSV 并按目标 FPS 重采样，README 强调 **解析与编辑全在本地、无服务端上传**。适合已有 Unitree 风格日志、且不希望数据外发的场景。
+2. **[Stanford-TML/robot_keyframe_kit](https://github.com/Stanford-TML/robot_keyframe_kit)（MIT，`pip install robot-keyframe-kit` → `keyframe-editor`）** — 面向任意 MJCF：自动机构检测（差速/齿轮/并联）、镜像关节、根体贴地、末端 site 跟踪、**Mink QP IK**，并可 **全 MuJoCo 步进** 当场试跟；运动存为 LZ4 压缩 joblib，含 `qpos`、速度、body/site 位姿与 `timed_sequence`。工作流已锚在 MuJoCo / Menagerie 时的默认选择。
+3. **[project-instinct/robot-motion-editor](https://github.com/project-instinct/robot-motion-editor)（Flask + Three.js）** — 加载 URDF 与 `.npz`（`joint_pos` `(T, n_joints)`、`base_pos_w` `(T, 3)`、`base_quat_w` `(T, 4)` **wxyz**），逐通道拖拽关键帧、时间轴 scrub、滑动平均平滑后写回 NPZ；解析与保存依赖本地 Flask 后端。策略/重定向产物本就是 NPZ 时最短路径。
+
+> **踩坑提醒**：跨工具搬运时最常见的静默 bug 是 **四元数顺序**（NPZ 约定 `wxyz`，Unitree CSV 常见 `xyzw`）与 **FPS 重采样**（导出时改 FPS 会插值，速度类监督量随之改变）。接回训练管线前务必用一段已知动作做往返一致性检查。
+
+### 推荐做什么
+- 用一套开源重定向器（如 `robot_retargeter` 或 hhtools）把 Stage 2 的同一段数据重定向到目标机型，与 Stage 1 自写 IK 的产物逐帧对比末端误差与限位违规率——判断"自己写"还是"直接用"
+- 挑自动产物里最差的 10 帧，用一款编辑器改关键帧后重新导出，量化脚滑速度与限位违规下降了多少；把这条修整回路脚本化
+- 做一次 **格式往返测试**：原始 → 编辑器导出 → 重新导入，检查四元数顺序、FPS、关节名顺序是否完全还原
+
+### 推荐读什么
+- [机器人关键帧与运动编辑工具（选型入口）](../wiki/entities/robot-motion-keyframe-editors.md)（本仓库）— 三条编辑链路的运行形态 / 描述格式 / 交换格式 / 物理与 IK 对照
+- [human-humanoid-tools（hhtools）](../wiki/entities/human-humanoid-tools.md)（本仓库）— 工作台级重定向：双后端、Any Motion / Any URDF、R2R 机器人互转
+- [SOMA Retargeter](../wiki/entities/soma-retargeter.md)、[robot_retargeter](../wiki/entities/robot-retargeter.md)、[mocap_retarget](../wiki/entities/mocap-retarget.md)（本仓库）— 库级与脚本级重定向器的一手实现
+- [human2humanoid](../wiki/entities/human2humanoid.md) 与 [MimicKit](../wiki/entities/mimickit.md)（本仓库）— 与遥操作栈 / 模仿训练框架同仓的重定向入口
+- [fairmotion](../wiki/entities/fairmotion.md)（本仓库）— BVH / AMASS IO 与 FK 的上游数据基础设施（已归档，仍是格式转换的参照实现）
+- [Blender](../wiki/entities/blender.md) 与 [Robot Viewer](../wiki/entities/robot-viewer.md)（本仓库）— 通用 DCC 侧骨骼编辑与多格式（URDF/MJCF/USD）快速查看
+- [Generative Motion Rig（Disney）](../wiki/entities/generative-motion-rig.md)（本仓库）— 艺术家侧 generative keyframing 的闭源对照，看"编辑器接生成模型"能到什么程度
+- [Motion Retargeting Pipeline](../wiki/concepts/motion-retargeting-pipeline.md) 与 [Motion Data Quality](../wiki/concepts/motion-data-quality.md)（本仓库）— 人工修整在管线中的位置与验收指标
+
+### 学完输出什么
+- 一张自己的工具链选型表：重定向器形态 / 编辑器 / 交换格式 / 是否带物理 / 是否需要数据外发
+- 一条可复现的「自动重定向 → 人工修帧 → 导回训练格式」回路，并有往返一致性检查
+
+---
+
 ## Stage 4 下游闭环：重定向产物怎么进入训练与遥操作
 
 **重定向不是终点：产物要经得起全身跟踪训练与实时遥操作的检验。**
 
 ### 前置知识
-- Stage 3 内容
+- Stage 3 与 Stage 3.5 内容（有一条能产出干净轨迹的管线）
 - [RL 纵深路线](depth-rl-locomotion.md) Stage 0–2 水平（能在仿真里训练策略）
 
 ### 核心问题
@@ -254,6 +311,7 @@ flowchart LR
 | Stage 2 | 数据源与质量 | [人形参考动作数据集对比](../wiki/comparisons/humanoid-reference-motion-datasets.md) |
 | Stage 3 | 方法谱系选型 | [GMR vs NMR vs ReActor](../wiki/comparisons/gmr-vs-nmr-vs-reactor.md) |
 | Stage 3 支线 | 动物/关键点 → 四足参考 | [STMR 四足时空重定向](../wiki/entities/stmr-quadruped-retargeting.md) |
+| Stage 3.5 | 工具链与轨迹编辑器 | [机器人关键帧与运动编辑工具](../wiki/entities/robot-motion-keyframe-editors.md) |
 | Stage 4 | 下游跟踪闭环 | [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md) |
 | Stage 5 | 进阶方向 | [动作重定向专题汇总](../wiki/overview/topic-motion-retargeting.md) |
 
@@ -291,6 +349,8 @@ flowchart LR
 - [Motion Retargeting](../wiki/concepts/motion-retargeting.md) 与 [动作重定向专题汇总](../wiki/overview/topic-motion-retargeting.md)
 - [GMR vs NMR vs ReActor 选型对比](../wiki/comparisons/gmr-vs-nmr-vs-reactor.md)
 - [STMR 四足时空重定向](../wiki/entities/stmr-quadruped-retargeting.md)、[motion_imitation（四足）](../wiki/entities/motion-imitation-quadruped.md)、[Go2 Motion Imitation](../wiki/entities/go2-motion-imitation.md)、[PAN Motion Retargeting](../wiki/entities/pan-motion-retargeting.md) — 四足支线来源
+- [机器人关键帧与运动编辑工具](../wiki/entities/robot-motion-keyframe-editors.md)、[human-humanoid-tools](../wiki/entities/human-humanoid-tools.md)、[SOMA Retargeter](../wiki/entities/soma-retargeter.md)、[robot_retargeter](../wiki/entities/robot-retargeter.md)、[mocap_retarget](../wiki/entities/mocap-retarget.md) — Stage 3.5 工具链来源
+- 一手仓库 README：[cyoahs/robot_motion_editor](https://github.com/cyoahs/robot_motion_editor)（[归档](../sources/repos/cyoahs-robot-motion-editor.md)）、[Stanford-TML/robot_keyframe_kit](https://github.com/Stanford-TML/robot_keyframe_kit)（[归档](../sources/repos/stanford-tml-robot-keyframe-kit.md)）、[project-instinct/robot-motion-editor](https://github.com/project-instinct/robot-motion-editor)（[归档](../sources/repos/project-instinct-robot-motion-editor.md)）— 轨迹/关键帧编辑器的格式与功能细节
 - "Retargetting Motion to New Characters" (Gleicher, SIGGRAPH 1998) — 动作重定向问题的奠基工作
 - "Retargeting Matters: General Motion Retargeting for Humanoid Motion Tracking" (GMR, arXiv:2505.02833) — 重定向质量对下游跟踪的影响
 - "Spatio-Temporal Motion Retargeting for Quadruped Robots" (STMR, IEEE T-RO 2025, arXiv:2404.11557) — 四足空间/时间重定向的显式拆解
