@@ -2,6 +2,11 @@
 
 ## [2026-07-27] ingest | sources/papers/egohtr_arxiv_2607_13472.md — EgoHTR 加深评测数字与开源再核查；wiki/entities/paper-egohtr.md + VisualMimic/MeshMimic 回链
 
+- **主实体加深：** [`wiki/entities/paper-egohtr.md`](wiki/entities/paper-egohtr.md) — 补全局 HPS（W-MPJPE 151.3 / WA 66.7 / RTE 0.09%）、踏石接触奖励消融、HMR Table 4
+- **sources 刷新：** [`sources/papers/egohtr_arxiv_2607_13472.md`](sources/papers/egohtr_arxiv_2607_13472.md)、[`sources/sites/egohtr-github-io.md`](sources/sites/egohtr-github-io.md)
+- **交叉回链：** [`wiki/entities/paper-notebook-visualmimic.md`](wiki/entities/paper-notebook-visualmimic.md)、[`wiki/entities/paper-notebook-meshmimic.md`](wiki/entities/paper-notebook-meshmimic.md)
+- **开源核查日：** 2026-07-27 — Dataset/Code 仍 *coming soon*（首次入库 2026-07-21）
+
 ## [2026-07-27] ingest | sources/papers/fm_vla_arxiv_2607_18231.md — FM-VLA 力觉记忆 VLA；wiki/entities/paper-fm-vla.md + 交叉 VLA/manipulation/CRM/KEMO/EventVLA
 
 - **论文：** [`sources/papers/fm_vla_arxiv_2607_18231.md`](sources/papers/fm_vla_arxiv_2607_18231.md)（arXiv:2607.18231；清华 / 微软研究院 / 复旦 / 中科大）

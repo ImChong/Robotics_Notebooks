@@ -19,6 +19,25 @@
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
+      "path": "wiki/entities/paper-notebook-visualmimic.md",
+      "detail_id": "entity-paper-notebook-visualmimic",
+      "label": "VisualMimic（Visual Humanoid Loco-Manipulation via Motion Tracking and Generation）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-notebook-meshmimic.md",
+      "detail_id": "entity-paper-notebook-meshmimic",
+      "label": "MeshMimic",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
       "path": "wiki/entities/paper-fm-vla.md",
       "detail_id": "entity-paper-fm-vla",
       "label": "FM-VLA（Force-based Memory for Vision-Language-Action Models）",
@@ -191,28 +210,6 @@
       "path": "wiki/entities/paper-ha-schmidhuber-world-models.md",
       "detail_id": "entity-paper-ha-schmidhuber-world-models",
       "label": "World Models（Ha & Schmidhuber）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-planet-latent-dynamics.md",
-      "detail_id": "entity-paper-planet-latent-dynamics",
-      "label": "PlaNet（Learning Latent Dynamics for Planning from Pixels）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-td-mpc2.md",
-      "detail_id": "entity-paper-td-mpc2",
-      "label": "TD-MPC2（Scalable, Robust World Models for Continuous Control）",
       "type": "entity",
       "recency": "2026-07-27",
       "source": "log.md",
