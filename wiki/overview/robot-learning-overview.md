@@ -1,6 +1,6 @@
 ---
 type: overview
-updated: 2026-05-14
+updated: 2026-07-27
 summary: "Robot Learning Overview 是机器人学习知识库入口页，按控制层、学习层与系统层组织主干主题，并给出阅读顺序与问题驱动导航。"
 sources:
   - ../../sources/papers/survey_papers.md
@@ -202,10 +202,11 @@ sources:
 
 ## 发表与引用
 
-选题、投稿或核对会议/期刊信息时，见 [机器人顶会顶刊发表渠道对比](../comparisons/robotics-research-venues.md)（ICRA、IROS、CoRL、RSS、T-RO、IJRR、Science Robotics 官方入口索引）。
+选题、投稿或核对会议/期刊信息时，见 [机器人顶会顶刊发表渠道对比](../comparisons/robotics-research-venues.md)（ICRA、IROS、CoRL、RSS、T-RO、IJRR、Science Robotics 官方入口索引）。日常预印本检索与本库论文默认外链层见 **[arXiv](../entities/arxiv.md)**（与录用渠道正交）。
 
 ## 关联页面
 
+- [arXiv](../entities/arxiv.md) — 开放获取预印本平台宏观节点
 - [机器人顶会顶刊发表渠道对比](../comparisons/robotics-research-venues.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [动手学强化学习（蘑菇书）](../entities/hands-on-rl-book.md)

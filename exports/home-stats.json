@@ -1,13 +1,40 @@
 {
   "generated_at": "2026-07-27",
-  "node_count": 1931,
-  "edge_count": 16606,
+  "node_count": 1932,
+  "edge_count": 16612,
   "coverage": {
-    "covered": 1879,
-    "total": 1907,
+    "covered": 1880,
+    "total": 1908,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/arxiv.md",
+      "detail_id": "entity-arxiv",
+      "label": "arXiv（arXiv.org）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/comparisons/robotics-research-venues.md",
+      "detail_id": "wiki-comparisons-robotics-research-venues",
+      "label": "机器人顶会顶刊发表渠道对比",
+      "type": "comparison",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/overview/robot-learning-overview.md",
+      "detail_id": "wiki-overview-robot-learning-overview",
+      "label": "Robot Learning Overview",
+      "type": "overview",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained"
+    },
     {
       "path": "wiki/entities/paper-egohtr.md",
       "detail_id": "entity-paper-egohtr",
@@ -186,52 +213,21 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-kemo-event-driven-keyframe-memory-vla.md",
-      "detail_id": "entity-paper-kemo-event-driven-keyframe-memory-vla",
-      "label": "KEMO（Event-Driven Keyframe Memory for Long-Horizon Robot Manipulation with VLA Policies）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-eventvla-visual-evidence-memory.md",
-      "detail_id": "entity-paper-eventvla-visual-evidence-memory",
-      "label": "EventVLA（Event-Driven Visual Evidence Memory for Long-Horizon VLA）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/world-model-physics-fidelity-outputs.md",
-      "detail_id": "wiki-overview-world-model-physics-fidelity-outputs",
-      "label": "世界模型物理保真：输出阅读轴",
-      "type": "overview",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-egohtr.md",
-    "detail_id": "entity-paper-egohtr",
-    "label": "EgoHTR：第一视角粗糙地形人–场景 4D 演示",
+    "path": "wiki/entities/arxiv.md",
+    "detail_id": "entity-arxiv",
+    "label": "arXiv（arXiv.org）",
     "type": "entity",
     "recency": "2026-07-27",
     "source": "log.md",
-    "action": "maintained",
-    "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 442
+      "size": 427
     },
     {
       "label": "人形论文深读笔记",
@@ -239,19 +235,19 @@
     },
     {
       "label": "移动操作",
-      "size": 173
-    },
-    {
-      "label": "人形强化学习运动控制",
-      "size": 141
+      "size": 153
     },
     {
       "label": "全身控制",
-      "size": 138
+      "size": 137
     },
     {
-      "label": "模仿学习",
-      "size": 69
+      "label": "人形强化学习运动控制",
+      "size": 136
+    },
+    {
+      "label": "仿真训练",
+      "size": 83
     }
   ],
   "top_hubs": [
@@ -346,8 +342,7 @@
       "label": "BeyondMimic",
       "type": "method",
       "degree": 59,
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",

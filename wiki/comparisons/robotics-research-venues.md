@@ -1,13 +1,14 @@
 ---
 type: comparison
-tags: [research, publication, conference, journal, ieee, robotics]
+tags: [research, publication, conference, journal, ieee, robotics, preprint, arxiv]
 status: complete
-updated: 2026-05-22
+updated: 2026-07-27
 related:
   - ../methods/reinforcement-learning.md
   - ../concepts/sim2real.md
   - ../entities/xue-bin-peng.md
-summary: "ICRA、IROS、CoRL、RSS 与 T-RO、IJRR、Science Robotics 的官方定位、审稿形态与论文集托管对比，便于选题与引用溯源。"
+  - ../entities/arxiv.md
+summary: "ICRA、IROS、CoRL、RSS 与 T-RO、IJRR、Science Robotics 的官方定位、审稿形态与论文集托管对比，便于选题与引用溯源；预印本层见 arXiv 实体页。"
 ---
 
 # 机器人顶会顶刊发表渠道对比
@@ -19,6 +20,11 @@ summary: "ICRA、IROS、CoRL、RSS 与 T-RO、IJRR、Science Robotics 的官方�
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
 | Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| OA | Open Access | 开放获取；预印本层见 [arXiv](../entities/arxiv.md) |
+| PMLR | Proceedings of Machine Learning Research | CoRL 等会议录出版方 |
+| RAS | Robotics and Automation Society | IEEE 机器人与自动化学会 |
+
+在读本页之前先分清两层：**[arXiv](../entities/arxiv.md)** 负责 **预印本公开与检索**（不经同行评审）；本页负责 **会议/期刊录用与最终论文集托管**。
 
 ## 总览
 
@@ -103,9 +109,11 @@ flowchart LR
 | 「CoRL 与 ICRA 一样走 PaperPlaza」 | CoRL 使用 **OpenReview + PMLR**，审稿规则（双盲、页数）以 corl.org 为准。 |
 | 「期刊论文 = 会议短文加长版」 | T-RO / IJRR / Science Robotics 要求 **实质性新贡献** 与完整实验/理论闭环，不能简单堆砌会议版。 |
 | 「官网年份表 = 引用格式」 | 引用应以 **最终 PDF、IEEE Xplore / SAGE / Science 页码** 或 DBLP 为准；届次站仅作日程参考。 |
+| 「挂了 arXiv = 已发表于顶会」 | [arXiv](../entities/arxiv.md) 只做预印本分发与 moderation；录用与最终版本以本页各渠道为准。 |
 
 ## 与本知识库其他页面的关系
 
+- **[arXiv](../entities/arxiv.md)** — 开放获取预印本平台宏观节点；本库论文 ingest 的默认外链层。
 - **[Reinforcement Learning](../methods/reinforcement-learning.md)**、**[Sim2Real](../concepts/sim2real.md)** — 大量近期学习类工作常见于 CoRL、RSS、ICRA/IROS 学习专题。
 - **[Xue Bin Peng](../entities/xue-bin-peng.md)** 等学者页 — 个人主页列会刊时，应回查上述 **官方论文集** 核对最终版本。
 
@@ -114,7 +122,9 @@ flowchart LR
 - [IEEE RAS 出版物总览](https://www.ieee-ras.org/publications) — RA-L、T-ASE 等与 T-RO 的区分
 - [DBLP 机器人会议索引](https://dblp.org/db/conf/icra/index.html) — 历年论文书目（非官方，但便于检索）
 - [OpenReview CoRL 组](https://openreview.net/group?id=robot-learning.org/CoRL/2026/Conference) — 当年投稿与开放评审状态
+- [arXiv.org](https://arxiv.org/) — 预印本检索与 cs.RO 分类浏览
 
 ## 参考来源
 
 - [机器人顶会顶刊官方一手资料索引](../../sources/sites/robotics-venues-primary-refs.md)
+- [arXiv.org 来源归档](../../sources/sites/arxiv-org.md)

@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-27] ingest | sources/sites/arxiv-org.md — arXiv 开放获取预印本平台宏观节点；wiki/entities/arxiv.md
+
+- **来源归档：** [`sources/sites/arxiv-org.md`](sources/sites/arxiv-org.md)（<https://arxiv.org/>；About / API 2026-07-27 核查）
+- **主升格：** [`wiki/entities/arxiv.md`](wiki/entities/arxiv.md) — 预印本分发 vs 同行评审录用；cs.RO / API / 标识符；与本库 `sources/papers/*_arxiv_*` 默认外链层对齐
+- **交叉：** [`wiki/comparisons/robotics-research-venues.md`](wiki/comparisons/robotics-research-venues.md)、[`wiki/overview/robot-learning-overview.md`](wiki/overview/robot-learning-overview.md)、[`sources/sites/robotics-venues-primary-refs.md`](sources/sites/robotics-venues-primary-refs.md)
+- **机构注册：** `schema/institutions.json` → `arxiv`（学术预印本档案（arXiv））
+- **开源核查：** 平台为开放获取 + 公共 API；单篇论文代码仍以各项目页为准
+
 ## [2026-07-27] ingest | sources/papers/egohtr_arxiv_2607_13472.md — EgoHTR 加深评测数字与开源再核查；wiki/entities/paper-egohtr.md + VisualMimic/MeshMimic 回链
 
 - **主实体加深：** [`wiki/entities/paper-egohtr.md`](wiki/entities/paper-egohtr.md) — 补全局 HPS（W-MPJPE 151.3 / WA 66.7 / RTE 0.09%）、踏石接触奖励消融、HMR Table 4
