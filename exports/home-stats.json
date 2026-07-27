@@ -1,13 +1,76 @@
 {
   "generated_at": "2026-07-27",
-  "node_count": 1926,
-  "edge_count": 16545,
+  "node_count": 1927,
+  "edge_count": 16560,
   "coverage": {
-    "covered": 1874,
-    "total": 1902,
+    "covered": 1875,
+    "total": 1903,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-fm-vla.md",
+      "detail_id": "entity-paper-fm-vla",
+      "label": "FM-VLA（Force-based Memory for Vision-Language-Action Models）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/contact-rich-manipulation.md",
+      "detail_id": "wiki-concepts-contact-rich-manipulation",
+      "label": "Contact-Rich Manipulation（接触丰富型操作）",
+      "type": "concept",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-kemo-event-driven-keyframe-memory-vla.md",
+      "detail_id": "entity-paper-kemo-event-driven-keyframe-memory-vla",
+      "label": "KEMO（Event-Driven Keyframe Memory for Long-Horizon Robot Manipulation with VLA Policies）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-eventvla-visual-evidence-memory.md",
+      "detail_id": "entity-paper-eventvla-visual-evidence-memory",
+      "label": "EventVLA（Event-Driven Visual Evidence Memory for Long-Horizon VLA）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/overview/world-model-physics-fidelity-outputs.md",
       "detail_id": "wiki-overview-world-model-physics-fidelity-outputs",
@@ -156,81 +219,23 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-shenlan-wm-13-dreamerv3.md",
-      "detail_id": "entity-paper-shenlan-wm-13-dreamerv3",
-      "label": "DreamerV3（Mastering Diverse Domains through World Models）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-neuralactuator-neural-actuation-modeling.md",
-      "detail_id": "entity-paper-neuralactuator-neural-actuation-modeling",
-      "label": "NeuralActuator（Neural Actuation Modeling · arXiv:2607.11734）",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-motion-retargeting.md",
-      "detail_id": "roadmap-depth-motion-retargeting",
-      "label": "路线（纵深）：如果目标是动作重定向（人体动作 → 机器人参考轨迹）",
-      "type": "roadmap_page",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/stmr-quadruped-retargeting.md",
-      "detail_id": "entity-stmr-quadruped-retargeting",
-      "label": "STMR 四足时空重定向",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/motion-imitation-quadruped.md",
-      "detail_id": "entity-motion-imitation-quadruped",
-      "label": "motion_imitation（四足模仿动物）",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/go2-motion-imitation.md",
-      "detail_id": "entity-go2-motion-imitation",
-      "label": "Go2 Motion Imitation",
-      "type": "entity",
-      "recency": "2026-07-26",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/world-model-physics-fidelity-outputs.md",
-    "detail_id": "wiki-overview-world-model-physics-fidelity-outputs",
-    "label": "世界模型物理保真：输出阅读轴",
-    "type": "overview",
+    "path": "wiki/entities/paper-fm-vla.md",
+    "detail_id": "entity-paper-fm-vla",
+    "label": "FM-VLA（Force-based Memory for Vision-Language-Action Models）",
+    "type": "entity",
     "recency": "2026-07-27",
     "source": "log.md",
-    "action": "added",
+    "action": "maintained",
+    "has_repo": true,
     "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 424
+      "size": 425
     },
     {
       "label": "人形论文深读笔记",
@@ -273,7 +278,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 338,
+      "degree": 340,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -281,7 +286,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 312,
+      "degree": 315,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

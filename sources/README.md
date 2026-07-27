@@ -9,6 +9,7 @@
 ### papers/ — 论文来源归档
 | 文件 | 内容 |
 |------|------|
+| [x] [fm_vla_arxiv_2607_18231.md](papers/fm_vla_arxiv_2607_18231.md) | FM-VLA：Force-VAE 力觉长程记忆注入 π₀.₅（arXiv:2607.18231；清华/微软研究院/复旦/中科大；代码 coming soon） |
 | [x] [openhlm_arxiv_2606_22174.md](papers/openhlm_arxiv_2606_22174.md) | OpenHLM：全身原生人形 VLA 经验配方（arXiv:2606.22174，清华/期智/千寻；已开源） |
 | [x] [gmt_arxiv_2506_14770.md](papers/gmt_arxiv_2506_14770.md) | GMT：Adaptive Sampling + Motion MoE 统一人形全身跟踪（arXiv:2506.14770，UCSD×SFU；部分开源 sim2sim） |
 | [x] [turingvit_arxiv_2606_24253.md](papers/turingvit_arxiv_2606_24253.md) | TuringViT：VLM-native 线性注意力 ViT（arXiv:2606.24253，小鹏；项目页未开源） |
@@ -122,6 +123,7 @@
 ### repos/ — 代码仓库来源归档
 | 文件 | 内容 |
 |------|------|
+| [x] [fm-vla.md](repos/fm-vla.md) | qft-333/FM-VLA：力觉记忆 VLA 官方占位仓（coming soon；arXiv:2607.18231） |
 | [x] [mondo_robotics_pmt.md](repos/mondo_robotics_pmt.md) | Mondo-Robotics/PMT：Perceptive BFM 官方训练/回放/TCRS（arXiv:2606.08059） |
 | [x] [openhlm.md](repos/openhlm.md) | OpenHLM-project/OpenHLM：全身 VLA 采集/训练/部署全栈 |
 | [x] [humanoidarena.md](repos/humanoidarena.md) | HumanoidArena：egocentric 分层全身 benchmark 官方仓 |
@@ -352,6 +354,7 @@
 ### sites/ — 网站与在线工具归档
 | 文件 | 内容 |
 |------|------|
+| [x] [fm-vla-page.md](sites/fm-vla-page.md) | FM-VLA 项目页 qft-333.github.io/FM-VLA-Page（力觉记忆；代码 coming soon） |
 | [x] [openhlm-project-github-io.md](sites/openhlm-project-github-io.md) | OpenHLM 项目页（配方消融、12 任务、开源入口） |
 | [x] [humanoidarena-github-io.md](sites/humanoidarena-github-io.md) | HumanoidArena 项目页（7 任务、双 GMT、数据/模型发布） |
 | [x] [holomotion-docs.md](sites/holomotion-docs.md) | HoloMotion 官方文档站 |

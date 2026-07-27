@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, manipulation, long-horizon, memory, dual-arm, qwen, ustc, shanghai-ai-lab, sjtu, hku, tsinghua, pku, huawei]
 status: complete
-updated: 2026-07-15
+updated: 2026-07-27
 arxiv: "2606.20092"
 venue: "arXiv 2026"
 related:
@@ -12,6 +12,7 @@ related:
   - ../methods/star-vla.md
   - ../methods/action-chunking.md
   - ./paper-kemo-event-driven-keyframe-memory-vla.md
+  - ./paper-fm-vla.md
   - ./robotwin.md
 sources:
   - ../../sources/papers/eventvla_arxiv_2606_20092.md
@@ -165,6 +166,7 @@ RMBench 上 **仅 VA** 即 **67.8%**；去掉 $o_0$ 或短期历史分别 **33.7
 - 任务语境：[Manipulation](../tasks/manipulation.md)、[Bimanual Manipulation](../tasks/bimanual-manipulation.md) — 长程双臂与记忆依赖操作。
 - 方法谱系：[VLA](../methods/vla.md) — 记忆增强 VLA 子路线；[StarVLA](../methods/star-vla.md) — QwenOFT 实现栈。
 - 相邻记忆工作：[KEMO](./paper-kemo-event-driven-keyframe-memory-vla.md) — 运动学事件选帧 + π₀.₅ 门控融合对照。
+- 力觉记忆对照：[FM-VLA](./paper-fm-vla.md) — Force-VAE 长程 wrench 记忆；适合视觉模糊的接触计数（arXiv:2607.18231）。
 - 仿真平台：[RoboTwin 2.0](./robotwin.md) — RoboTwin-MeM 底层数据与评测环境。
 - 动作接口：[Action Chunking](../methods/action-chunking.md) — $H=50$ chunk 与 KEM 前瞻窗口对齐。
 
