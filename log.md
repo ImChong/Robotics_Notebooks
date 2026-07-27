@@ -5,7 +5,7 @@
 - **主升格：** [`wiki/concepts/micromouse.md`](wiki/concepts/micromouse.md) · [`wiki/entities/ukmarsbot.md`](wiki/entities/ukmarsbot.md) · [`wiki/entities/wolfiemouse.md`](wiki/entities/wolfiemouse.md)
 - **Repos：** WolfieMouse / opatiny Algernon / lime7git / UKMARSBOT / emstef Webots / Ian Hoffman；站点 UKMARS · Micromouse Online；视频 Algernon debug · UKMARSBOT 从零
 - **交叉：** [`wiki/methods/a-star.md`](wiki/methods/a-star.md)、[`wiki/methods/pid-control.md`](wiki/methods/pid-control.md)、[`wiki/entities/kicad.md`](wiki/entities/kicad.md)、[`wiki/entities/mushr.md`](wiki/entities/mushr.md)
-- **机构注册：** `schema/institutions.json` → `ukmars`
+- **机构注册：** `schema/institutions.json` → `ukmars`、`ieee`
 - **开源核查（2026-07-27）：** UKMARSBOT/WolfieMouse/Algernon/Webots **已开源**；lime7 **公开缺根 LICENSE**；Ian Hoffman **设计文档为主 / 部分**；micromouseonline.com **非 IEEE 法人官网**
 
 ## [2026-07-27] ingest | sources/repos/oomwoo.md — OOMWOO 开源家用扫地机；升格 wiki/entities/oomwoo.md；交叉 navigation2 / slam-toolbox / navigation-slam-autonomy-stack / mushr；归档 sources/sites/oomwoo-com.md；注册 makerspet
