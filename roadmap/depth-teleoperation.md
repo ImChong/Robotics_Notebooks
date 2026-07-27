@@ -172,7 +172,7 @@ flowchart LR
 
 ### 前置知识
 - Stage 2 内容（手部映射同样是带约束的实时 IK）
-- [动作重定向纵深](depth-motion-retargeting.md) Stage 5 方向 B（灵巧手接触保持重定向）
+- [动作重定向纵深](depth-motion-retargeting.md) Stage 6 方向 B（灵巧手接触保持重定向）
 
 ### 核心问题
 - 手部姿态怎么来：**数据手套/触觉手套**（关节角直接量）vs **纯视觉手姿估计**（AVP/相机，省穿戴但丢遮挡与力）
@@ -230,7 +230,7 @@ flowchart LR
 **进阶方向：**
 - **无遥操作合成 vs 遥操作采集成本**——参考 [动作生成纵深](depth-motion-generation.md) 与 [Real2Sim/合成演示](depth-real2sim.md) 一侧的对照
 - **极端与商用场景**：[HEFT](../wiki/entities/paper-heft.md) 重载、[REK](../wiki/entities/rek.md) / [URKL](../wiki/entities/urkl.md) 竞技格斗、[Humanoid Surgeon](../wiki/entities/paper-humanoid-surgeon-in-vivo-laparoscopy.md) 手术 in vivo
-- **跨具身遥操作**：一套人体参考驱动异构人形/机械手，参考 [动作重定向纵深](depth-motion-retargeting.md) Stage 5
+- **跨具身遥操作**：一套人体参考驱动异构人形/机械手，参考 [动作重定向纵深](depth-motion-retargeting.md) Stage 6
 
 ### 学完输出什么
 - 一条从遥操作采集走到可部署策略的端到端管线
