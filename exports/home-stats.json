@@ -1,13 +1,44 @@
 {
   "generated_at": "2026-07-27",
   "node_count": 1926,
-  "edge_count": 16543,
+  "edge_count": 16545,
   "coverage": {
     "covered": 1874,
     "total": 1902,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/world-model-physics-fidelity-outputs.md",
+      "detail_id": "wiki-overview-world-model-physics-fidelity-outputs",
+      "label": "世界模型物理保真：输出阅读轴",
+      "type": "overview",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/dwm.md",
+      "detail_id": "wiki-methods-dwm",
+      "label": "DWM（Dexterous World Models，灵巧世界模型）",
+      "type": "method",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-dwm-separating-world-effects.md",
+      "detail_id": "entity-paper-dwm-separating-world-effects",
+      "label": "DWM（Separating World Effects · arXiv:2607.18715）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-physcore.md",
       "detail_id": "entity-paper-physcore",
@@ -51,16 +82,6 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
-      "path": "wiki/overview/world-model-physics-fidelity-outputs.md",
-      "detail_id": "wiki-overview-world-model-physics-fidelity-outputs",
-      "label": "世界模型物理保真：输出阅读轴",
-      "type": "overview",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
       "path": "wiki/entities/paper-irasim.md",
       "detail_id": "entity-paper-irasim",
       "label": "IRASim（细粒度操作世界模型 · arXiv:2406.14540）",
@@ -87,27 +108,6 @@
       "detail_id": "entity-paper-worldweaver",
       "label": "WorldWeaver（流式多智能体世界状态寄存器 · arXiv:2607.21594）",
       "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dwm-separating-world-effects.md",
-      "detail_id": "entity-paper-dwm-separating-world-effects",
-      "label": "DWM（Separating World Effects · arXiv:2607.18715）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/dwm.md",
-      "detail_id": "wiki-methods-dwm",
-      "label": "DWM（Dexterous World Models，灵巧世界模型）",
-      "type": "method",
       "recency": "2026-07-27",
       "source": "log.md",
       "action": "maintained",
@@ -218,13 +218,13 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-physcore.md",
-    "detail_id": "entity-paper-physcore",
-    "label": "PhysCoRe（物理修正残差世界模型 · 材料感知可变形动力学）",
-    "type": "entity",
+    "path": "wiki/overview/world-model-physics-fidelity-outputs.md",
+    "detail_id": "wiki-overview-world-model-physics-fidelity-outputs",
+    "label": "世界模型物理保真：输出阅读轴",
+    "type": "overview",
     "recency": "2026-07-27",
     "source": "log.md",
-    "action": "maintained",
+    "action": "added",
     "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
@@ -349,18 +349,18 @@
       "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
+      "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
+      "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
+      "type": "entity",
+      "degree": 50,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",
       "label": "OmniRetarget",
       "type": "entity",
       "degree": 49,
       "has_repo": true
-    },
-    {
-      "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
-      "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
-      "type": "entity",
-      "degree": 49,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",

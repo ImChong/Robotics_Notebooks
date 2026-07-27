@@ -15,6 +15,8 @@ related:
   - ../methods/generative-world-models.md
   - ./robot-world-models-training-loop-taxonomy.md
   - ./wam-motion-control-five-paths.md
+  - ../entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md
+  - ../entities/paper-motionwam-humanoid-loco-manipulation-wam.md
   - ../entities/paper-ha-schmidhuber-world-models.md
   - ../entities/paper-planet-latent-dynamics.md
   - ../entities/paper-shenlan-wm-13-dreamerv3.md
@@ -61,7 +63,7 @@ summary: "按「动作执行后模型用什么记录世界变化」读机器人�
 
 ## 为什么重要
 
-- **同名不同物：** Ego-VCP、MotionWAM、RynnWorld-4D、VT-WAM 都叫 WM，内部保存/预测的东西差得很远。
+- **同名不同物：** [Ego-VCP](../entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md)、[MotionWAM](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md)、[RynnWorld-4D](../entities/paper-rynnworld-4d-rgb-depth-flow.md)、[VT-WAM](../entities/paper-vt-wam-visuotactile-contact-rich.md) 都叫 WM，内部保存/预测的东西差得很远（前两篇见姊妹篇 [WAM×运动控制五路径](./wam-motion-control-five-paths.md)）。
 - **观感陷阱：** 未来视频「连续」不等于动力学正确；需要动作/动力学敏感性与策略相关性测试。
 - **选型顺序：** 先定输出族与验收测试，再比骨干与数据规模。
 

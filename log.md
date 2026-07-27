@@ -1,5 +1,16 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-27] ingest | sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md — 世界模型「学到多少真实物理」：按预测输出阅读；12 篇新建 complete 实体 + 复用已有节点
+
+- **来源归档：** [`sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md`](sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md)（Agent Reach v1.5.0 + wechat-article-for-ai；<https://mp.weixin.qq.com/s/OawDKruG8zEepiy-x1nKuA>）
+- **原始抓取：** [`sources/raw/wechat_world_model_physics_fidelity_2026-07-27/`](sources/raw/wechat_world_model_physics_fidelity_2026-07-27/)
+- **主升格：** [`wiki/overview/world-model-physics-fidelity-outputs.md`](wiki/overview/world-model-physics-fidelity-outputs.md) — 潜变量 / 视频 / 持续状态 / 动作–世界分解 / 几何·触觉·物理混合 / 评测诊断 + 四类测试优先序
+- **新建论文实体（complete，非 stub，0 重复 arXiv）：** World Models、PlaNet、TD-MPC2、UniSim、IRASim、V-JEPA 2、WorldWeaver、DWM-Separating（≠ Dexterous DWM）、PhysCoRe、Imagined Rollouts、KineBench、Thinking in Video
+- **复用已有 complete：** DreamerV3（加厚）、Masked Visual Actions、RynnWorld-4D、MECo-WAM、VT-WAM；文首对照 Ego-VCP / MotionWAM
+- **命名消歧：** [`wiki/methods/dwm.md`](wiki/methods/dwm.md) ↔ [`paper-dwm-separating-world-effects`](wiki/entities/paper-dwm-separating-world-effects.md)
+- **机构：** 注册 `adobe`（奥多比研究院）
+- **分批明细：** 见下三条同日 log（经典四篇+DreamerV3 / 视频四篇 / 评测四篇）
+
 ## [2026-07-27] ingest | PhysCoRe / Imagined-Rollouts / KineBench / Thinking-in-Video — 物理保真度评测与混合物理四篇 complete 实体
 
 - **论文归档：**
