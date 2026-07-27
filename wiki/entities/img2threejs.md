@@ -11,10 +11,11 @@ tags:
   - frontend
   - agent-infrastructure
 status: complete
-updated: 2026-07-23
+updated: 2026-07-27
 related:
   - ./cad-skills.md
   - ./articraft.md
+  - ./3dgenstudio.md
   - ./gsap-skills.md
   - ./mattpocock-skills.md
   - ./superpowers-obra.md
@@ -26,6 +27,7 @@ related:
 sources:
   - ../../sources/repos/img2threejs.md
   - ../../sources/sites/img2threejs-showcase.md
+  - ../../sources/repos/3dgenstudio.md
 summary: "img2threejs（hoainho/img2threejs）是 Agent Skill：把单张参考图重建为质量门控、可动画的程序化 Three.js Group 工厂（TypeScript）；Python stdlib 脚本 enforce 各阶段，宿主 agent vision 只做视觉判断——reconstruction-by-code，不是摄影测量或仿真就绪关节资产。"
 ---
 
@@ -145,6 +147,7 @@ sequenceDiagram
 
 - [CAD Skills](./cad-skills.md) — **制造向 STEP + URDF** Agent Skills；同属 skill 分发，目标几何栈不同
 - [Articraft](./articraft.md) — **仿真就绪可关节 3D** 的 agent + SDK + harness；对照「程序化但偏物理」
+- [3D Gen Studio](./3dgenstudio.md) — **ComfyUI 网格生产编排**（GLB/OBJ）；同属视觉 3D 资产，产物是网格文件而非可 diff 的 TS 工厂
 - [GSAP Skills](./gsap-skills.md) — **Web 动效** 官方 Agent Skills；同属前端垂直技能
 - [Skills For Real Engineers（mattpocock）](./mattpocock-skills.md) — 通用编码工程技能对照
 - [Superpowers（obra）](./superpowers-obra.md) — 重流程交付技能库

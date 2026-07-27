@@ -1,7 +1,7 @@
 # 文字生成 CAD / 对话式 CAD 工具（原始资料索引）
 
 - **类型**：网站与在线产品（机械 CAD / AEC / API / 脚本栈 / 网格生成）汇编
-- **收录日期**：2026-05-13；**最近更新**：2026-06-15（补充 CAD Skills Agent Skills 库）
+- **收录日期**：2026-05-13；**最近更新**：2026-07-27（补充 3D Gen Studio 本地 ComfyUI 网格编排工作台）
 - **说明**：以下为可检索的**公开入口**与一句话定位；**定价、导出格式列表、合规边界以各产品当前文档为准**，本文件不做采购或合规建议。
 
 ## 一句话
@@ -83,10 +83,11 @@
 - **腾讯混元 3D / Hunyuan3D（文本或图像 → 纹理网格等，开源权重与代码）**：主仓库示例 <https://github.com/Tencent-Hunyuan/Hunyuan3D-2.1>（另见 <https://github.com/Tencent-Hunyuan/Hunyuan3D-2>）；**产品落地页域名可能轮换**，请以腾讯官方公告与 README 外链为准。
 - **Meshy**：<https://www.meshy.ai/>
 - **Wonder3D（研究向：单图重建 mesh，CVPR 2024 Highlight）**：仓库 <https://github.com/xxlong0/Wonder3D> · 项目页 <https://www.xxlong.site/Wonder3D/>
+- **3D Gen Studio（本地优先 AI 网格生产编排，ComfyUI + Kanban/Graph + MCP）**：官网 <https://www.3dgenstudio.com/> · 仓库 <https://github.com/visualbruno/3DGenStudio> · 归档 [3dgenstudio-com.md](./3dgenstudio-com.md) · [../repos/3dgenstudio.md](../repos/3dgenstudio.md) · wiki [3dgenstudio.md](../../wiki/entities/3dgenstudio.md)
 
 ## 对 wiki 的映射
 
-- 升格页面：[wiki/concepts/text-to-cad.md](../../wiki/concepts/text-to-cad.md)、[wiki/entities/cad-skills.md](../../wiki/entities/cad-skills.md)、[wiki/entities/gencad.md](../../wiki/entities/gencad.md)、[wiki/entities/gencad-3d.md](../../wiki/entities/gencad-3d.md)
+- 升格页面：[wiki/concepts/text-to-cad.md](../../wiki/concepts/text-to-cad.md)、[wiki/entities/cad-skills.md](../../wiki/entities/cad-skills.md)、[wiki/entities/gencad.md](../../wiki/entities/gencad.md)、[wiki/entities/gencad-3d.md](../../wiki/entities/gencad-3d.md)、[wiki/entities/3dgenstudio.md](../../wiki/entities/3dgenstudio.md)
 
 ## 参考链接（索引）
 
@@ -103,3 +104,4 @@
 - ModelsLab Text to 3D：<https://docs.modelslab.com/3d-api/text-to-3d>
 - Tripo3D：<https://www.tripo3d.ai/> · Meshy：<https://www.meshy.ai/>
 - Hunyuan3D（开源入口示例）：<https://github.com/Tencent-Hunyuan/Hunyuan3D-2.1> · Wonder3D：<https://github.com/xxlong0/Wonder3D>
+- 3D Gen Studio：<https://www.3dgenstudio.com/> · <https://github.com/visualbruno/3DGenStudio>

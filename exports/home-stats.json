@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-27",
-  "node_count": 1948,
-  "edge_count": 16842,
+  "node_count": 1949,
+  "edge_count": 16856,
   "coverage": {
-    "covered": 1896,
-    "total": 1924,
+    "covered": 1897,
+    "total": 1925,
     "percent": 99
   },
   "latest_wiki_nodes": [
@@ -48,6 +48,72 @@
       "recency": "2026-07-27",
       "source": "log.md",
       "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/3dgenstudio.md",
+      "detail_id": "entity-3dgenstudio",
+      "label": "3D Gen Studio",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/text-to-cad.md",
+      "detail_id": "wiki-concepts-text-to-cad",
+      "label": "文字生成 CAD（Text-to-CAD）",
+      "type": "concept",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/blender.md",
+      "detail_id": "entity-blender",
+      "label": "Blender（开源 3D 创作套件）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/entities/articraft.md",
+      "detail_id": "entity-articraft",
+      "label": "Articraft",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/img2threejs.md",
+      "detail_id": "entity-img2threejs",
+      "label": "img2threejs",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/freecad-mcp.md",
+      "detail_id": "entity-freecad-mcp",
+      "label": "FreeCAD MCP",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -132,7 +198,8 @@
       "recency": "2026-07-27",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "path": "wiki/entities/fairmotion.md",
@@ -146,16 +213,6 @@
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
-      "path": "wiki/entities/blender.md",
-      "detail_id": "entity-blender",
-      "label": "Blender（开源 3D 创作套件）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
       "path": "wiki/entities/robot-viewer.md",
       "detail_id": "entity-robot-viewer",
       "label": "Robot Viewer",
@@ -163,59 +220,7 @@
       "recency": "2026-07-27",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/generative-motion-rig.md",
-      "detail_id": "entity-generative-motion-rig",
-      "label": "Generative Motion Rig（Disney）：艺术家驱动的生成式运动绑定",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-worldscore.md",
-      "detail_id": "entity-paper-worldscore",
-      "label": "WorldScore（统一世界生成评测基准）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
       "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/ewmbench.md",
-      "detail_id": "entity-ewmbench",
-      "label": "EWMBench（具身世界模型生成评测）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/generative-world-models.md",
-      "detail_id": "wiki-methods-generative-world-models",
-      "label": "Generative World Models (生成式世界模型)",
-      "type": "method",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/video-as-simulation.md",
-      "detail_id": "wiki-concepts-video-as-simulation",
-      "label": "Video-as-Simulation (视频即仿真)",
-      "type": "concept",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
@@ -233,7 +238,7 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 438
+      "size": 455
     },
     {
       "label": "人形论文深读笔记",
@@ -245,15 +250,15 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 147
+      "size": 136
     },
     {
       "label": "全身控制",
-      "size": 135
+      "size": 120
     },
     {
-      "label": "模仿学习",
-      "size": 66
+      "label": "仿真训练",
+      "size": 83
     }
   ],
   "top_hubs": [
@@ -276,7 +281,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 350,
+      "degree": 351,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -348,8 +353,7 @@
       "label": "BeyondMimic",
       "type": "method",
       "degree": 59,
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",

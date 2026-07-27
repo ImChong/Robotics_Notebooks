@@ -3,7 +3,7 @@
 type: entity
 tags: [software, dcc, 3d-creation, animation, open-source, asset-pipeline, visualization, blender-foundation]
 status: complete
-updated: 2026-07-23
+updated: 2026-07-27
 related:
   - ./freecad.md
   - ./nvidia-omniverse.md
@@ -15,6 +15,7 @@ related:
   - ./generative-motion-rig.md
   - ./rigmo.md
   - ./motioncode.md
+  - ./3dgenstudio.md
   - ../concepts/motion-retargeting.md
   - ../concepts/motion-retargeting-pipeline.md
   - ../concepts/character-animation-vs-robotics.md
@@ -22,6 +23,8 @@ related:
 sources:
   - ../../sources/sites/blender-org.md
   - ../../sources/repos/blender.md
+  - ../../sources/sites/3dgenstudio-com.md
+  - ../../sources/repos/3dgenstudio.md
 summary: "Blender 是 GPL 开源的全流程 3D 创作套件：在机器人栈中常作 DCC 资产枢纽——网格/USD 场景组装、绑定动画与 BVH 导出、Python 批处理与第三方仿真插件宿主，连接动捕后处理与 Isaac/Omniverse/MuJoCo 等下游。"
 ---
 
@@ -105,6 +108,7 @@ flowchart LR
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md)
 - [FreeCAD（开源参数化机械 CAD）](./freecad.md)
+- [3D Gen Studio（ComfyUI 网格生产编排）](./3dgenstudio.md)
 - [Manim（程序化数学动画，讲解层互补）](./manim.md)
 - [HomeWorld 全屋场景生成论文实体](./paper-homeworld-whole-home-scene-generation.md)
 
