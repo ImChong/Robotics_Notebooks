@@ -51,6 +51,17 @@
       "action": "maintained"
     },
     {
+      "path": "wiki/methods/imitation-learning.md",
+      "detail_id": "wiki-methods-imitation-learning",
+      "label": "Imitation Learning (IL, 模仿学习)",
+      "type": "method",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
       "path": "wiki/concepts/open-x-embodiment.md",
       "detail_id": "wiki-concepts-open-x-embodiment",
       "label": "Open X-Embodiment（OXE）",
@@ -208,16 +219,6 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/rf-detr.md",
-      "detail_id": "entity-rf-detr",
-      "label": "RF-DETR（Roboflow Detection Transformer）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
