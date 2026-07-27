@@ -1,7 +1,7 @@
 ---
 type: concept
 tags: [foundation-policy, vla, rt1, rt2, pi0, pi07, octo, generalist, pretraining, manipulation]
-updated: 2026-07-24
+updated: 2026-07-27
 related:
   - ../queries/contact-wrench-closed-loop.md
   - ./humanoid-policy-network-architecture.md
@@ -167,6 +167,7 @@ flowchart TD
 - [Diffusion Policy](../methods/diffusion-policy.md)
 - [VLA](../methods/vla.md)
 - [RynnBrain 1.1](../entities/paper-rynnbrain-1-1.md) — 具身预训练脑作 VLA 初始化；跨本体统一动作空间案例
+- [ACE-Brain-0.5](../entities/paper-ace-brain-0-5.md) — 五功能统一具身脑（感知–规划–交互–监控–自改进）+ SSR+
 - [π₀.₇（Pi-zero 0.7）通才 VLA](../methods/pi07-policy.md)
 - [GR00T-WholeBodyControl（实体）](../entities/gr00t-wholebodycontrol.md)
 - [Foundation Policy for Humanoids（Query 实践指南）](../queries/foundation-policy-for-humanoids.md)

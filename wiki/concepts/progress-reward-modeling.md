@@ -99,6 +99,7 @@ summary: "过程奖励/进度模型：在终局成功之外估计任务是否在
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — 稠密奖励与信用分配
 - [Imitation Learning](../methods/imitation-learning.md) — 演示时间序作弱进度
 - [VLA](../methods/vla.md) — 指令微调进度模型常挂 VLM 生态
+- [ACE-Brain-0.5](../entities/paper-ace-brain-0-5.md) — 进度估计内置于统一具身脑；RBM refined VOC 强
 - [Contact-Rich Manipulation](./contact-rich-manipulation.md) — 接触细进度常需力/触觉
 - [具身评测基准选型](../queries/embodied-eval-benchmark-selection-loop.md) — 效用评测语境
 - [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — 奖励/评测侧与 VLA·WM 选型并列阅读
