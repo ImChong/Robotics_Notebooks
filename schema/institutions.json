@@ -1825,6 +1825,25 @@
         "makers-pet",
         "oomwoo"
       ]
+    },
+    "university-of-tubingen": {
+      "label": "图宾根大学（University of Tübingen）",
+      "aliases": [
+        "university-of-tubingen",
+        "tuebingen",
+        "tubingen",
+        "uni-tuebingen",
+        "tuebingen-ai-center"
+      ]
+    },
+    "imperial-college": {
+      "label": "帝国理工学院（Imperial College London）",
+      "aliases": [
+        "imperial-college",
+        "imperial",
+        "icl",
+        "imperial-college-london"
+      ]
     }
   }
 }

@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-27",
-  "node_count": 1940,
-  "edge_count": 16730,
+  "node_count": 1941,
+  "edge_count": 16749,
   "coverage": {
-    "covered": 1888,
-    "total": 1916,
+    "covered": 1889,
+    "total": 1917,
     "percent": 99
   },
   "latest_wiki_nodes": [
@@ -62,6 +62,89 @@
       "action": "added",
       "has_repo": true,
       "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-molingo.md",
+      "detail_id": "entity-paper-molingo",
+      "label": "MoLingo（Motion–Language Alignment for Text-to-Human Motion Generation）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/methods/diffusion-motion-generation.md",
+      "detail_id": "wiki-methods-diffusion-motion-generation",
+      "label": "Diffusion-based Motion Generation (基于扩散模型的运动生成)",
+      "type": "method",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/methods/hy-motion-1.md",
+      "detail_id": "wiki-methods-hy-motion-1",
+      "label": "HY-Motion 1.0（文本→3D 人体运动的规模化流匹配 DiT）",
+      "type": "method",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/methods/dart-control.md",
+      "detail_id": "wiki-methods-dart-control",
+      "label": "DART（DartControl：实时文本驱动人体运动控制）",
+      "type": "method",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/entities/awesome-text-to-motion-zilize.md",
+      "detail_id": "entity-awesome-text-to-motion-zilize",
+      "label": "Awesome Text-to-Motion（Zilize 精选集）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/entities/phc.md",
+      "detail_id": "entity-phc",
+      "label": "PHC（Perpetual Humanoid Control）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-notebook-humanml3d.md",
+      "detail_id": "entity-paper-notebook-humanml3d",
+      "label": "Generating Diverse and Natural 3D Human Motions from Textual Descriptions",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-phygile.md",
+      "detail_id": "entity-paper-phygile",
+      "label": "PhyGile（Physics-Prefix Guided Motion Generation for Agile General Humanoid Motion Tracking）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained"
     },
     {
       "path": "wiki/entities/xyz-deux.md",
@@ -132,90 +215,6 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/tasks/bimanual-manipulation.md",
-      "detail_id": "wiki-tasks-bimanual-manipulation",
-      "label": "Bimanual Manipulation（双臂协调操作）",
-      "type": "task",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/lerobot.md",
-      "detail_id": "entity-lerobot",
-      "label": "LeRobot (Hugging Face)",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-taco-tactile-sensor-benchmark.md",
-      "detail_id": "entity-paper-taco-tactile-sensor-benchmark",
-      "label": "TacO（触觉传感器操作基准 · arXiv:2605.21976）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/concepts/tactile-sensing.md",
-      "detail_id": "wiki-concepts-tactile-sensing",
-      "label": "Tactile Sensing（触觉感知）",
-      "type": "concept",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/concepts/visuo-tactile-fusion.md",
-      "detail_id": "wiki-concepts-visuo-tactile-fusion",
-      "label": "视触觉融合（Visuo-Tactile Fusion）",
-      "type": "concept",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/concepts/contact-rich-manipulation.md",
-      "detail_id": "wiki-concepts-contact-rich-manipulation",
-      "label": "Contact-Rich Manipulation（接触丰富型操作）",
-      "type": "concept",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/overview/topic-tactile.md",
-      "detail_id": "wiki-overview-topic-tactile",
-      "label": "触觉与力觉（专题汇总）",
-      "type": "overview",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/methods/action-chunking.md",
-      "detail_id": "wiki-methods-action-chunking",
-      "label": "Action Chunking（动作块输出）",
-      "type": "method",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -236,7 +235,7 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 226
+      "size": 225
     },
     {
       "label": "移动操作",

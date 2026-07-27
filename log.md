@@ -8,6 +8,14 @@
 - **机构注册：** `schema/institutions.json` → `makerspet`（创客宠物（Maker's Pet））
 - **开源核查（2026-07-27）：** **部分开源 / 早期开发**（主仓 + oomwoo-one / oomwoo-install 已开；完整 BoM / CAD / I/O 板与固件进行中）
 
+## [2026-07-27] ingest | sources/sites/molingo-github-io.md — MoLingo（CVPR 2026）语义对齐连续 latent T2M；升格 wiki/entities/paper-molingo.md；交叉 diffusion-motion-generation / hy-motion-1 / dart-control / awesome-text-to-motion / phc / paper-notebook-humanml3d / paper-phygile；归档 papers/molingo_arxiv_2512_13840.md、repos/molingo.md；注册 university-of-tubingen / imperial-college
+
+- **项目页 / 论文 / 仓：** [`sources/sites/molingo-github-io.md`](sources/sites/molingo-github-io.md)（<https://hynann.github.io/molingo/MoLingo.html>）· [`sources/papers/molingo_arxiv_2512_13840.md`](sources/papers/molingo_arxiv_2512_13840.md)（arXiv:2512.13840）· [`sources/repos/molingo.md`](sources/repos/molingo.md)（<https://github.com/hynann/MoLingo>）
+- **主升格：** [`wiki/entities/paper-molingo.md`](wiki/entities/paper-molingo.md) — SAE + 掩码自回归 rectified flow + T5 cross-attn；HumanML3D SOTA；G1+PHC 演示
+- **交叉：** [`wiki/methods/diffusion-motion-generation.md`](wiki/methods/diffusion-motion-generation.md)、[`wiki/methods/hy-motion-1.md`](wiki/methods/hy-motion-1.md)、[`wiki/methods/dart-control.md`](wiki/methods/dart-control.md)、[`wiki/entities/awesome-text-to-motion-zilize.md`](wiki/entities/awesome-text-to-motion-zilize.md)、[`wiki/entities/phc.md`](wiki/entities/phc.md)、[`wiki/entities/paper-notebook-humanml3d.md`](wiki/entities/paper-notebook-humanml3d.md)、[`wiki/entities/paper-phygile.md`](wiki/entities/paper-phygile.md)
+- **机构注册：** `schema/institutions.json` → `university-of-tubingen`、`imperial-college`
+- **开源核查（2026-07-27）：** **已开源（部分）** — 训推/评测/权重已放（Apache-2.0）；README TODO：**G1 tracking pipeline** 未发布
+
 ## [2026-07-27] ingest | sources/sites/xyzcorp-deux.md — DEUX 半人形服务机器人 + Glove X/Brain X；升格 wiki/entities/xyz-deux.md；交叉 teleoperation / data-gloves / hardware-101 / sunday-act2 / handumi / imitation-learning；注册 xyz-corp
 
 - **产品页：** [`sources/sites/xyzcorp-deux.md`](sources/sites/xyzcorp-deux.md)（<https://xyzcorp.imweb.me/DEUX>；ABOUT/TECH 交叉摘录）

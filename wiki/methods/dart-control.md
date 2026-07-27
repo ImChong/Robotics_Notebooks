@@ -2,13 +2,14 @@
 type: method
 tags: [human-motion, text-to-motion, diffusion, autoregressive, spatial-control, smpl-x, real-time, eth-zurich]
 status: complete
-updated: 2026-06-09
+updated: 2026-07-27
 related:
   - ./diffusion-motion-generation.md
   - ./hy-motion-1.md
   - ./genmo.md
   - ../formalizations/probability-flow.md
   - ../entities/awesome-text-to-motion-zilize.md
+  - ../entities/paper-molingo.md
   - ../entities/phc.md
   - ../entities/amass.md
   - ../methods/motion-retargeting-gmr.md
@@ -137,6 +138,7 @@ flowchart TB
 - [HY-Motion 1.0](./hy-motion-1.md) — 十亿级 DiT+流匹配 T2M；与 DART 共享「非 HumanML3D 表示」等工程选择
 - [GENMO（统一人体运动估计与生成）](./genmo.md) — 估计–生成统一扩散人体模型
 - [Awesome Text-to-Motion（Zilize）](../entities/awesome-text-to-motion-zilize.md) — 单人 T2M 文献索引
+- [MoLingo](../entities/paper-molingo.md) — 连续 latent AR flow + SAE；离线 clip 评测与 G1+PHC 演示
 - [PHC](../entities/phc.md) — DART 项目页演示的物理跟踪后处理
 - [AMASS](../entities/amass.md) — DART 训练数据基础
 - [General Motion Retargeting（GMR）](./motion-retargeting-gmr.md) — 人体轨迹→机器人执行接口
