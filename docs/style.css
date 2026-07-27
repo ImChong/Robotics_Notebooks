@@ -1123,9 +1123,6 @@ button.home-wiki-heatmap-cell.is-active {
   cursor: pointer;
   text-align: left;
 }
-#home-start .section-subtitle {
-  margin-bottom: 20px;
-}
 .simple-card {
   padding: 18px 20px;
   background: linear-gradient(180deg, rgba(255,255,255,.8), rgba(255,255,255,.94));

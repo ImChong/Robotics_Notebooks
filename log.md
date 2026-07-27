@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-27] structural | docs/index.html — 删除首页目标入口区标题与副标题（与 Hero 重复）
+
+- **改动：** 移除「选择你的入口」与「按当前目标进入最短路径…」；section 改用 `aria-label="入口"`
+- **同步：** [`docs/style.css`](docs/style.css) 清理 `#home-start .section-subtitle`；[`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md) Phase 4 勾选
+
 ## [2026-07-27] ingest | sources/sites/arxiv-org.md — arXiv 开放获取预印本平台宏观节点；wiki/entities/arxiv.md
 
 - **来源归档：** [`sources/sites/arxiv-org.md`](sources/sites/arxiv-org.md)（<https://arxiv.org/>；About / API 2026-07-27 核查）
