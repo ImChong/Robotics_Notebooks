@@ -9,10 +9,11 @@ tags:
   - manipulation
   - alibaba
 status: complete
-updated: 2026-07-21
+updated: 2026-07-27
 arxiv: "2607.06559"
 related:
   - ../overview/wm-action-consequence-category-03-geometry-4d.md
+  - ../overview/world-model-physics-fidelity-outputs.md
   - ../concepts/world-action-models.md
   - ../methods/generative-world-models.md
   - ../methods/vla.md
@@ -22,6 +23,7 @@ related:
   - ../entities/paper-rynnbrain-1-1.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md
   - ../../sources/papers/rynnbrain_1_1_arxiv_2607_17977.md
 summary: "RynnWorld-4D（arXiv:2607.06559）：统一扩散同步生成 RGB、深度、光流；Rynn4D 2.544 亿帧；RynnWorld-4D-Policy 单次前向读 4D latent 出动作，真机双手任务大幅领先所报基线（Hand-over 28.57% vs π₀ 2.86%，原文口径）。"
 ---
@@ -126,6 +128,7 @@ flowchart TB
 ## 与其他页面的关系
 
 - [wm-action-consequence-category-03-geometry-4d](../overview/wm-action-consequence-category-03-geometry-4d.md) — 显式 4D 生成代表
+- [世界模型物理保真度输出轴](../overview/world-model-physics-fidelity-outputs.md) — 「几何/运动信号」族
 - [动作后果技术地图](../overview/robot-world-models-action-consequence-technology-map.md) — 像素/几何/环境三层索引
 - [World Action Models](../concepts/world-action-models.md) — Policy 头与 WAM 交界
 - [MECo-WAM](./paper-meco-wam-4d-geometry-cotraining.md) — 推理高效几何 WAM 对照
@@ -143,5 +146,6 @@ flowchart TB
 ## 参考来源
 
 - [具身智能研究室 · 世界模型动作后果专题导读（2026-07）](../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md)
+- [具身智能研究室 · 世界模型物理保真度导读（2026-07-27）](../../sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md)
 - [RynnWorld-4D 论文（arXiv:2607.06559）](https://arxiv.org/abs/2607.06559)
 - [RynnBrain 1.1 论文摘录（arXiv:2607.17977）](../../sources/papers/rynnbrain_1_1_arxiv_2607_17977.md)

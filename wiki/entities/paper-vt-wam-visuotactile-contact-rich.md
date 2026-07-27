@@ -8,10 +8,11 @@ tags:
   - flow-matching
   - manipulation
 status: complete
-updated: 2026-07-26
+updated: 2026-07-27
 arxiv: "2607.02503"
 related:
   - ../overview/wm-action-consequence-category-02-contact-modeling.md
+  - ../overview/world-model-physics-fidelity-outputs.md
   - ../concepts/world-action-models.md
   - ../methods/generative-world-models.md
   - ../methods/vla.md
@@ -19,9 +20,11 @@ related:
   - ../entities/paper-taco-tactile-wm-vla-posttrain.md
   - ../entities/paper-current-as-touch-proprioceptive-contact.md
   - ../entities/paper-n0-twam.md
+  - ../entities/paper-physcore.md
   - ../entities/neoteai.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md
 summary: "VT-WAM（arXiv:2607.02503）：统一流匹配联合预测未来视觉、触觉形变与动作；非对称 MoT + 接触门控 AVTAG；六类真机接触任务平均 71.67%（+26.67pp vs Fast-WAM、+35.84pp vs OmniVTLA）。"
 ---
 
@@ -128,10 +131,12 @@ flowchart TB
 ## 与其他页面的关系
 
 - [wm-action-consequence-category-02-contact-modeling](../overview/wm-action-consequence-category-02-contact-modeling.md) — 接触状态建模 hub
+- [世界模型物理保真度输出轴](../overview/world-model-physics-fidelity-outputs.md) — 「触觉」输出族
 - [动作后果技术地图](../overview/robot-world-models-action-consequence-technology-map.md) — 四类接触信号索引
 - [World Action Models](../concepts/world-action-models.md) — Joint WAM 扩展至触觉
 - [Deform360](./paper-deform360-deformable-visuotactile-dataset.md) — 视触觉数据层对照
 - [𝒩₀-TWAM](./paper-n0-twam.md) — NeoteAI 触觉原生 WAM（规模化对照）
+- [PhysCoRe](./paper-physcore.md) — 可变形物理混合对照（MPM，非触觉）
 - [VLA](../methods/vla.md) — OmniVTLA 等 tactile VLA 基线
 
 ## 推荐继续阅读
@@ -144,4 +149,5 @@ flowchart TB
 ## 参考来源
 
 - [具身智能研究室 · 世界模型动作后果专题导读（2026-07）](../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md)
+- [具身智能研究室 · 世界模型物理保真度导读（2026-07-27）](../../sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md)
 - [VT-WAM 论文（arXiv:2607.02503）](https://arxiv.org/abs/2607.02503)

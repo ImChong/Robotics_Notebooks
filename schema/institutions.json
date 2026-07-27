@@ -1752,6 +1752,13 @@
         "beijing-deepcybo",
         "ji-zhi-sai-bo"
       ]
+    },
+    "adobe": {
+      "label": "奥多比研究院（Adobe Research）",
+      "aliases": [
+        "adobe",
+        "adobe-research"
+      ]
     }
   }
 }

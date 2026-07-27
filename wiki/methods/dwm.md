@@ -8,13 +8,15 @@ tags:
   - digital-twins
   - computer-vision
 status: complete
-updated: 2026-06-03
+updated: 2026-07-27
 related:
   - ../methods/generative-world-models.md
   - ../concepts/video-as-simulation.md
   - ../tasks/manipulation.md
   - ../tasks/loco-manipulation.md
   - ../methods/genmo.md
+  - ../entities/paper-dwm-separating-world-effects.md
+  - ../overview/world-model-physics-fidelity-outputs.md
 sources:
   - ../../sources/papers/dwm_arxiv_2512_17907.md
   - ../../sources/sites/snuvclab-dwm-github-io.md
@@ -23,6 +25,8 @@ summary: "DWM（Dexterous World Models）在已知静态 3D 场景上，用场�
 ---
 
 # DWM（Dexterous World Models，灵巧世界模型）
+
+> **同名消歧：** 本页是 **Dexterous World Models**（[arXiv:2512.17907](https://arxiv.org/abs/2512.17907)）。另有北京大学 **DWM: Separating World Effects from Actions in Latent World Models**（[arXiv:2607.18715](https://arxiv.org/abs/2607.18715)）——latent 转移上拆分动作无关世界效应，见 [paper-dwm-separating-world-effects](../entities/paper-dwm-separating-world-effects.md)。二者缩写相同，**勿合并**。
 
 **DWM**（Kim 等，CVPR 2026）研究的是：当环境的**静态几何**已经可用（典型来自重建得到的数字孪生），如何用**视频扩散**去预测**灵巧手操作**会在第一人称视频里诱发哪些**物体与场景外观变化**，而不是让模型从零「画」整个场景。
 

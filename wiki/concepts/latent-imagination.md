@@ -2,7 +2,7 @@
 type: concept
 tags: [world-models, reinforcement-learning, machine-learning, model-based-rl]
 status: complete
-updated: 2026-07-25
+updated: 2026-07-27
 related:
   - ../methods/model-based-rl.md
   - ../methods/generative-world-models.md

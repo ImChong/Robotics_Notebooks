@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, retargeting, feasibility, dynamics, kinematics]
 status: complete
-updated: 2026-07-14
+updated: 2026-07-27
 summary: "运动学可行（姿态/轨迹几何可达）不等于动力学可行（力矩、摩擦、接触与稳定可执行）；人形重定向与跟踪失败常源于混淆二者。"
 related:
   - ./humanoid-vs-other-robots.md

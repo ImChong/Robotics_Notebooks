@@ -2,7 +2,7 @@
 type: overview
 tags: [world-models, category-hub, virtual-sandbox, model-based-rl, policy-evaluation, dreamer, shenlan-survey]
 status: complete
-updated: 2026-07-25
+updated: 2026-07-27
 summary: "深蓝世界模型 15 项目 · 03 虚拟沙盒（3 篇）— 世界模型作 RL 想象环境或策略评估靶场，用 rollout 替代昂贵真机试错；代表 DreamerV3、RLVR-World、WorldGym。"
 related:
   - ./world-models-15-open-source-technology-map.md
