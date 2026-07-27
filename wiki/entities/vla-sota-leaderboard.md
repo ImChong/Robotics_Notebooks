@@ -2,7 +2,7 @@
 type: entity
 tags: [leaderboard, benchmark, vla, dexterous-manipulation, open-source, sjtu, evomind, meta-world, libero, calvin, robotwin]
 status: complete
-updated: 2026-07-23
+updated: 2026-07-27
 related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
@@ -98,6 +98,8 @@ flowchart LR
 - [FabriVLA](./paper-fabrivla.md) — Meta-World 轻量 VLA 开源代表（入库日榜首区）。
 - [Evo-1](./paper-evo1-lightweight-vla.md) — 同生态轻量 VLA；LeRobot 集成。
 - [具身评测选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 分层评测决策；本榜属第 ③ 层聚合视图。
+- [RoboDojo](./robodojo.md) — 官方重跑 + verified 开源上榜的 sim-and-real 公益榜（对照本页「摘录不重跑」）。
+- [XPolicyLab](./xpolicylab.md) — RoboDojo 策略适配与上榜产物发布口。
 - [VLA 开源复现景观](../overview/vla-open-source-repro-landscape-2025.md) — 按复现目标选仓库。
 - [Manipulation](../tasks/manipulation.md) — 桌面操作任务语境。
 

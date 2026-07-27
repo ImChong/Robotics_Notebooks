@@ -2,7 +2,7 @@
 type: concept
 tags: [simulation, evaluation, foundation-model, closed-loop, real-to-sim, benchmarking]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-27
 related:
   - ../entities/deepinsight.md
   - ../entities/genesis-world-10.md
@@ -10,6 +10,8 @@ related:
   - ../entities/isaac-gym-isaac-lab.md
   - ../entities/paper-simfoundry-real2sim-scene-generation.md
   - ../entities/paper-loco-manip-161-075-simple.md
+  - ../entities/robodojo.md
+  - ../entities/xpolicylab.md
   - ./sim2real.md
   - ./data-flywheel.md
   - ../methods/vla.md
@@ -113,6 +115,8 @@ flowchart TB
 - [SIMPLE](../entities/paper-loco-manip-161-075-simple.md) — 人形全身 loco-manipulation 双仿真器 testbed；仿真排序与真机强相关（arXiv:2606.08278，USC PSI Lab）
 - [数据飞轮](data-flywheel.md) — 评测驱动的数据采集闭环
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是其「④ sim↔real 校准层」的评测基建前提
+- [RoboDojo](../entities/robodojo.md) — Isaac 异构并行 + RealEval 真机的统一评测栈工程样本
+- [XPolicyLab](../entities/xpolicylab.md) — 策略 serving 与评测客户端契约层
 
 ## 推荐继续阅读
 

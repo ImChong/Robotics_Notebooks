@@ -2,7 +2,7 @@
 type: entity
 tags: [benchmark, embodied-ai, mllm, vla, manipulation, evaluation, pku, baai, huggingface, open-source]
 status: complete
-updated: 2026-07-12
+updated: 2026-07-27
 related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
@@ -137,6 +137,7 @@ flowchart TB
 - [Vesta（通用具身推理）](./paper-vesta-generalist-embodied-reasoning.md) — 同类「高层 cognition + 低层 actor」分层路线
 - [Manipulation VLA 架构选型](../queries/manipulation-vla-architecture-selection.md) — VLM 骨干选型时可参考 RoboBench 维度分数
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是其「① 具身大脑/MLLM 认知评测层」的代表基准，双向回链
+- [RoboDojo](./robodojo.md) — 策略闭环成功率（sim+real）对照；勿与本页 MLLM 认知分混比
 
 ## 参考来源
 

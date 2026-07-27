@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, foundation-policy, umi, scaling-laws, mobile-manipulation, cross-embodiment, flow-matching, xiaomi, xiaomi-robotics]
 status: complete
-updated: 2026-07-21
+updated: 2026-07-27
 arxiv: "2607.15330"
 related:
   - ../methods/vla.md
@@ -132,6 +132,8 @@ flowchart TB
 - [Diffusion Policy](../methods/diffusion-policy.md) — flow matching / DiT 连续动作生成
 - [Xiaomi-Robotics-0](./xiaomi-robotics-0.md) — 同族开源 VLA，侧重 **实时异步 chunk 部署**
 - [Xiaomi-Robotics-U0](./xiaomi-robotics-u0.md) — 同实验室 **38B 具身合成 WM**
+- [RoboDojo](./robodojo.md) — 论文仿真分数所在的统一 sim-and-real 操纵评测与公益榜
+- [XPolicyLab](./xpolicylab.md) — 仓内已有 `Xiaomi_Robotics_1` 适配目录；官方上榜开源口
 
 ## 参考来源
 

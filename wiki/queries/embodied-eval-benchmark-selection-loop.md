@@ -2,7 +2,7 @@
 type: query
 tags: [benchmark, evaluation, embodied-ai, mllm, world-model, vla, sim2real, taxonomy]
 status: complete
-updated: 2026-07-23
+updated: 2026-07-27
 summary: "具身大模型评测基准选型闭环知识链：把具身大脑/MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准 四层评测，从分散的评测基准实体页沉淀为一条端到端选型决策链，逐层说明测什么、用什么代表性基准、指标的可复现性/真实代表性/过程 vs 结果/成本如何取舍及典型误判。"
 sources:
   - ../../sources/papers/robo_bench_arxiv_2510_17801.md
@@ -22,6 +22,8 @@ related:
   - ../entities/paper-masked-visual-actions.md
   - ../entities/paper-ctrl-world.md
   - ../entities/vla-sota-leaderboard.md
+  - ../entities/robodojo.md
+  - ../entities/xpolicylab.md
   - ../entities/paper-fabrivla.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../concepts/sim2real.md
@@ -60,8 +62,8 @@ flowchart TD
   l2 -->|是 · 视频 WM 保真度| wm[EWMBench: 场景守恒/轨迹/语义对齐<br/>GigaWorld-1: 长时序动作忠实 rollout]
   l2 -->|否 · 直接上真机/仿真跑策略| l3
   wm --> l3{③ 策略成功率在哪测?}
-  l3 -->|仿真高吞吐可复现| simeval[ManiSkill-HAB 低层操作<br/>Mimicking-Bench 人形模仿<br/>Barkour 四足敏捷]
-  l3 -->|真机代表性优先| realeval[真机 rollout: 贵/慢/难复现<br/>但接触/感知噪声/长尾最真实]
+  l3 -->|仿真高吞吐可复现| simeval[ManiSkill-HAB 低层操作<br/>Mimicking-Bench 人形模仿<br/>Barkour 四足敏捷<br/>RoboDojo 五维42任务]
+  l3 -->|真机代表性优先| realeval[真机 rollout: 贵/慢/难复现<br/>RoboDojo RealEval 标准云真机<br/>但接触/感知噪声/长尾最真实]
   simeval --> l4{④ 仿真结论能外推真机吗?}
   realeval --> l4
   l4 -->|需校准| gap[real-to-sim 相关性校准<br/>见 sim↔real 评测 gap 概念页]
@@ -91,15 +93,15 @@ flowchart TD
 
 到这一层才第一次直接测「策略做成没有」，但**成功率这个结果指标本身也有可信度分层**：
 
-- **测什么/用什么基准**：[ManiSkill-HAB](../entities/paper-notebook-maniskill-hab-a-benchmark-for-low-level-manipula.md) 用**真实低层控制**替代「魔法抓取」测家庭重排（GPU 加速、可控演示生成）；[Mimicking-Bench](../entities/paper-notebook-mimicking-bench-a-benchmark-for-generalizable-hu.md) 用大规模人类技能参考系统比较重定向/跟踪/模仿学习组合，测人形全身交互技能泛化；[Barkour](../entities/paper-barkour-quadruped-agility-benchmark.md) 用犬敏捷赛式障碍课 + 0–1 敏捷分测四足敏捷性。桌面语言条件 VLA 的社区相对位次可先扫 [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md)（LIBERO / Meta-World / RoboTwin 等**摘录分数**，不重跑），再回原文核协议——例如 [FabriVLA](../entities/paper-fabrivla.md) 的 MT50 **90.0%** 与 [Evo-1](../entities/paper-evo1-lightweight-vla.md) 的 **80.6%** 同属该层，但训练配方与评测面不同。
-- **可复现 vs 代表性**：仿真成功率**高吞吐、可复现、可控**，适合 recipe 迭代；但「魔法抓取」这类抽象化实现会**系统性虚高**成功率——ManiSkill-HAB 的意义正是把重排基准**落到真实低层操作**上，缩小这道代表性缺口。榜站聚合视图**不能替代**官方评测脚本与协议脚注。
-- **典型误判**：① **成功率均值掩盖长尾失败模式**——同样 80% 成功率，均匀失败 vs 集中在某类物体/初值上的失败，工程含义天差地别；② 单任务过拟合冒充跨任务泛化，需 Mimicking-Bench 这类**跨任务/跨物体**基准把关；③ 离线回放评测（固定初值重放）≠ 在线闭环评测（策略自己滚出轨迹），后者才暴露复合误差；④ **跨基准直接比榜**（LIBERO vs Meta-World vs RoboTwin）——[VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md) Methodology 明确禁止。
+- **测什么/用什么基准**：[ManiSkill-HAB](../entities/paper-notebook-maniskill-hab-a-benchmark-for-low-level-manipula.md) 用**真实低层控制**替代「魔法抓取」测家庭重排（GPU 加速、可控演示生成）；[Mimicking-Bench](../entities/paper-notebook-mimicking-bench-a-benchmark-for-generalizable-hu.md) 用大规模人类技能参考系统比较重定向/跟踪/模仿学习组合，测人形全身交互技能泛化；[Barkour](../entities/paper-barkour-quadruped-agility-benchmark.md) 用犬敏捷赛式障碍课 + 0–1 敏捷分测四足敏捷性。[RoboDojo](../entities/robodojo.md) 用 **42 仿真五维任务 + 18 真机任务** 与 [XPolicyLab](../entities/xpolicylab.md) 统一接口，对通用操纵策略做 **官方重跑** 的 sim-and-real 公益榜（verified 上榜须开源训推与权重）。桌面语言条件 VLA 的社区相对位次可先扫 [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md)（LIBERO / Meta-World / RoboTwin 等**摘录分数**，不重跑），再回原文核协议——例如 [FabriVLA](../entities/paper-fabrivla.md) 的 MT50 **90.0%** 与 [Evo-1](../entities/paper-evo1-lightweight-vla.md) 的 **80.6%** 同属该层，但训练配方与评测面不同。
+- **可复现 vs 代表性**：仿真成功率**高吞吐、可复现、可控**，适合 recipe 迭代；但「魔法抓取」这类抽象化实现会**系统性虚高**成功率——ManiSkill-HAB 的意义正是把重排基准**落到真实低层操作**上，缩小这道代表性缺口。榜站聚合视图**不能替代**官方评测脚本与协议脚注；RoboDojo verified 条目另加 **云管线 + 开源产物** 约束。
+- **典型误判**：① **成功率均值掩盖长尾失败模式**——同样 80% 成功率，均匀失败 vs 集中在某类物体/初值上的失败，工程含义天差地别；② 单任务过拟合冒充跨任务泛化，需 Mimicking-Bench 这类**跨任务/跨物体**基准把关；③ 离线回放评测（固定初值重放）≠ 在线闭环评测（策略自己滚出轨迹），后者才暴露复合误差；④ **跨基准直接比榜**（LIBERO vs Meta-World vs RoboTwin）——[VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md) Methodology 明确禁止；⑤ **本地公开布局分 = RoboDojo verified 榜**——官方另有 hidden-layout 与开源门槛。
 
 ## 4. ④ sim↔real 评测 gap 校准层：评测结论能否外推真机
 
 前三层多数在仿真里完成，最后必须回答**「仿真里测出来的结论，能不能外推到真机」**——否则再漂亮的仿真榜单也只是自证：
 
-- **测什么**：不是再测一次策略，而是测**评测本身的可外推性**——[仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)把可信仿真当作**可扩展闭环评测引擎**，其前提是仿真 rollout 与真机 rollout **统计相关**，且训练管线**刻意不与评测共享同一仿真分布**（避免评测集泄漏）。
+- **测什么**：不是再测一次策略，而是测**评测本身的可外推性**——[仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)把可信仿真当作**可扩展闭环评测引擎**，其前提是仿真 rollout 与真机 rollout **统计相关**，且训练管线**刻意不与评测共享同一仿真分布**（避免评测集泄漏）。[RoboDojo](../entities/robodojo.md) 用同一 XPolicyLab 接口同时报告仿真与 **RealEval 真机**，是「③+④ 同协议」的工程样本，但 **sim 高分仍不自动蕴含真机高分**。
 - **为什么必须单独一层**：仿真在可复现性/吞吐/可控性上的优势，是**以牺牲真实接触、感知噪声、长尾分布代表性**换来的。这条 gap 的物理根因与三条缩小路线，单独沉淀为姊妹概念页 [仿真评测可复现性 ↔ 真实代表性取舍（sim↔real 评测 gap）](../concepts/sim-vs-real-eval-gap.md)。
 - **典型误判**：① 仿真基准饱和（刷到接近满分）当成「真实场景就绪」；② 评测集与训练分布重叠导致虚高（数据泄漏）；③ 静态基准不覆盖部署时的分布漂移。校准手段是**用少量真机 rollout 锚定 sim↔real 排名相关性**，而非用仿真绝对分。
 
@@ -146,6 +148,8 @@ flowchart TD
 - [ewmbench.md](../../sources/papers/ewmbench.md) — EWMBench，②层具身世界模型视频生成三轴评测
 - [esi_bench_arxiv_2605_18746.md](../../sources/papers/esi_bench_arxiv_2605_18746.md) — ESI-Bench，①层主动探索式具身空间智能评测
 - [wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md](../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md) — GigaWorld-1「长时序动作忠实 > 短时视觉逼真」策略评估器结论
+- [robodojo_arxiv_2607_04434.md](../../sources/papers/robodojo_arxiv_2607_04434.md) — RoboDojo，③/④ 层统一 sim-and-real 操纵评测
+- [robodojo_open_longterm_eval_2026-07.md](../../sources/blogs/robodojo_open_longterm_eval_2026-07.md) — 长期公益评测与 verified 开源上榜公告
 
 ## 关联页面
 
@@ -159,6 +163,8 @@ flowchart TD
 - [Masked Visual Actions](../entities/paper-masked-visual-actions.md) — ②层外延：掩码动作条件 WM，RoboCasa 策略评估 **r=0.982**
 - [Ctrl-World](../entities/paper-ctrl-world.md) — ②层外延：多视角可控 WM，VLA 想象评估 + 合成轨迹改进（ICLR 2026）
 - [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md) — ③层社区聚合：多基准 VLA / 灵巧手摘录榜（不重跑）
+- [RoboDojo](../entities/robodojo.md) — ③/④ 层：通用操纵官方 sim-and-real 公益榜（重跑 + 开源上榜）
+- [XPolicyLab](../entities/xpolicylab.md) — RoboDojo/RoboTwin 策略适配与 verified 开源口
 - [FabriVLA](../entities/paper-fabrivla.md) — ③层轻量 VLA Meta-World 对照条目
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md) — ④层可信仿真作闭环评测引擎的前提
 - [Sim2Real](../concepts/sim2real.md) — ④层评测结论外推真机的迁移背景

@@ -1,13 +1,108 @@
 {
   "generated_at": "2026-07-27",
-  "node_count": 1934,
-  "edge_count": 16642,
+  "node_count": 1936,
+  "edge_count": 16673,
   "coverage": {
-    "covered": 1882,
-    "total": 1910,
+    "covered": 1884,
+    "total": 1912,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/robodojo.md",
+      "detail_id": "entity-robodojo",
+      "label": "RoboDojo（统一仿真–真机通用操纵评测）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/xpolicylab.md",
+      "detail_id": "entity-xpolicylab",
+      "label": "XPolicyLab（统一策略训推与评测适配层）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/queries/embodied-eval-benchmark-selection-loop.md",
+      "detail_id": "wiki-queries-embodied-eval-benchmark-selection-loop",
+      "label": "Query：具身大模型评测基准选型闭环知识链",
+      "type": "query",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/topic-embodied-eval-benchmark.md",
+      "detail_id": "wiki-overview-topic-embodied-eval-benchmark",
+      "label": "具身评测基准选型闭环（专题汇总）",
+      "type": "overview",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/simulation-evaluation-infrastructure.md",
+      "detail_id": "wiki-concepts-simulation-evaluation-infrastructure",
+      "label": "仿真评测基础设施（Simulation as Evaluation Infrastructure）",
+      "type": "concept",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/xiaomi-robotics-1.md",
+      "detail_id": "entity-xiaomi-robotics-1",
+      "label": "Xiaomi-Robotics-1",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/robo-bench.md",
+      "detail_id": "entity-robo-bench",
+      "label": "RoboBench（MLLM 具身大脑综合评测）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/vla-sota-leaderboard.md",
+      "detail_id": "entity-vla-sota-leaderboard",
+      "label": "VLA SOTA Leaderboard（EvoMind / MINT-SJTU）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/roboflow-sports.md",
       "detail_id": "entity-roboflow-sports",
@@ -84,17 +179,6 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
       "path": "wiki/concepts/foundation-policy.md",
       "detail_id": "wiki-concepts-foundation-policy",
       "label": "Foundation Policy（基础策略模型）",
@@ -137,90 +221,12 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/tasks/vision-language-navigation.md",
-      "detail_id": "wiki-tasks-vision-language-navigation",
-      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
-      "type": "task",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/arxiv.md",
-      "detail_id": "entity-arxiv",
-      "label": "arXiv（arXiv.org）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/comparisons/robotics-research-venues.md",
-      "detail_id": "wiki-comparisons-robotics-research-venues",
-      "label": "机器人顶会顶刊发表渠道对比",
-      "type": "comparison",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/overview/robot-learning-overview.md",
-      "detail_id": "wiki-overview-robot-learning-overview",
-      "label": "Robot Learning Overview",
-      "type": "overview",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-egohtr.md",
-      "detail_id": "entity-paper-egohtr",
-      "label": "EgoHTR：第一视角粗糙地形人–场景 4D 演示",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-visualmimic.md",
-      "detail_id": "entity-paper-notebook-visualmimic",
-      "label": "VisualMimic（Visual Humanoid Loco-Manipulation via Motion Tracking and Generation）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-notebook-meshmimic.md",
-      "detail_id": "entity-paper-notebook-meshmimic",
-      "label": "MeshMimic",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-progress-reward-modeling-survey.md",
-      "detail_id": "entity-paper-progress-reward-modeling-survey",
-      "label": "Progress Reward Modeling Survey（过程奖励综述 · arXiv:2607.21655）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/roboflow-sports.md",
-    "detail_id": "entity-roboflow-sports",
-    "label": "Roboflow Sports",
+    "path": "wiki/entities/robodojo.md",
+    "detail_id": "entity-robodojo",
+    "label": "RoboDojo（统一仿真–真机通用操纵评测）",
     "type": "entity",
     "recency": "2026-07-27",
     "source": "log.md",
@@ -231,7 +237,7 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 427
+      "size": 429
     },
     {
       "label": "人形论文深读笔记",
@@ -274,7 +280,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 345,
+      "degree": 349,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -282,7 +288,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 318,
+      "degree": 319,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
