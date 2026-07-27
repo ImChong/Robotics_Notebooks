@@ -2,11 +2,14 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-06-26
+updated: 2026-07-27
 arxiv: "2204.09419"
 related:
   - ../overview/paper-notebook-category-14-human-motion.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ./paper-molingo.md
+  - ./awesome-text-to-motion-zilize.md
+  - ../methods/hy-motion-1.md
 sources:
   - ../../sources/papers/humanoid_pnb_humanml3d.md
 summary: "HumanML3D 是目前最主流的 3D 人体运动 - 文本数据集之一，提供了近 1.5 万个动作剪辑和 4.5 万条对应的自然语言描述，是研究文本生成动作（Text-to-Motion）的基石。"
@@ -27,11 +30,14 @@ HumanML3D 是目前最主流的 3D 人体运动 - 文本数据集之一，提供
 | RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略 |
 | WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
 | Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| T2M | Text-to-Motion | 文本条件人体运动生成 |
+| FID | Fréchet Inception Distance | 生成分布与真实分布距离（越低越好） |
 
 ## 为什么重要
 
 - 列入 Paper Notebooks 策展清单，便于与全库 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
+- 后续工作如 [MoLingo](./paper-molingo.md) 仍以 HumanML3D 为训评锚点，并扩展 MARDM-67 / MS-272 / TMR-263 等多协议对照。
 
 ## 核心信息
 
@@ -49,6 +55,8 @@ HumanML3D 是目前最主流的 3D 人体运动 - 文本数据集之一，提供
 
 - 分类父节点：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- 近期 HumanML3D SOTA 方法例：[MoLingo](./paper-molingo.md)
+- T2M 文献索引：[Awesome Text-to-Motion（Zilize）](./awesome-text-to-motion-zilize.md)
 
 ## 参考来源
 
@@ -59,3 +67,5 @@ HumanML3D 是目前最主流的 3D 人体运动 - 文本数据集之一，提供
 ## 推荐继续阅读
 
 - [机器人论文阅读笔记：Generating Diverse and Natural 3D Human Motions from Textual Descriptions](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/HumanML3D/HumanML3D.html)
+- [MoLingo（CVPR 2026）](./paper-molingo.md) — 在 HumanML3D 协议上的语义对齐连续 latent T2M
+- [Awesome Text-to-Motion](./awesome-text-to-motion-zilize.md)

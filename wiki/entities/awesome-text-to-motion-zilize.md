@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, curated-list, text-to-motion, human-motion, smpl, dataset, survey, linux-foundation]
 status: complete
-updated: 2026-06-09
+updated: 2026-07-27
 related:
   - ../methods/diffusion-motion-generation.md
   - ../methods/hy-motion-1.md
@@ -11,6 +11,8 @@ related:
   - ../methods/genmo.md
   - ../methods/motion-retargeting-gmr.md
   - ../methods/skeleton-action-recognition.md
+  - ./paper-molingo.md
+  - ./paper-notebook-humanml3d.md
 sources:
   - ../../sources/repos/zilize-awesome-text-to-motion.md
 summary: "Zilize 维护的 awesome-text-to-motion：文本驱动单人人体运动生成的综述、数据集与模型精选清单，配套 GitHub Pages 交互可视化；范围刻意排除人–物/场景交互，便于与机器人重定向与控制文献对照阅读。"
@@ -59,9 +61,11 @@ summary: "Zilize 维护的 awesome-text-to-motion：文本驱动单人人体运�
 
 - [Diffusion-based Motion Generation](../methods/diffusion-motion-generation.md) — 机器人域扩散轨迹生成；可与人体 T2M 扩散方法对照
 - [HY-Motion 1.0](../methods/hy-motion-1.md) — 腾讯混元开源的十亿级 DiT+流匹配文本→SMPL-H 运动系列（arXiv:2512.23464）
+- [MoLingo](./paper-molingo.md) — 语义对齐连续 latent + 掩码自回归 rectified flow（CVPR 2026；HumanML3D SOTA）
 - [DART（DartControl）](../methods/dart-control.md) — 自回归原语潜扩散 + 在线文本流与空间控制（ICLR 2025）
 - [GENMO（统一人体运动估计与生成）](../methods/genmo.md) — 本列表收录的代表性人体扩散「通才」模型（GEM 发布名）
 - [General Motion Retargeting（GMR）](../methods/motion-retargeting-gmr.md) — 人体运动→机器人骨架的常见工程落点
+- [HumanML3D](./paper-notebook-humanml3d.md) — 主流文本–运动数据集与评测锚点
 - [Skeleton-based Action Recognition](../methods/skeleton-action-recognition.md) — HumanML3D 等在识别/异构基准中的使用语境
 
 ## 参考来源

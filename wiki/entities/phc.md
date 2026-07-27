@@ -4,7 +4,7 @@
 type: entity
 tags: [repo, motion-retargeting, humanoid, physics-based-control, smpl, nvidia, paper, bfm, behavior-foundation-model, awesome-bfm-papers, berkeley]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-27
 code: https://github.com/ZhengyiLuo/PHC
 venue: "2023 · ICCV"
 arxiv: "2305.06456"
@@ -17,6 +17,7 @@ related:
   - ../concepts/motion-retargeting.md
   - ../methods/motion-retargeting-gmr.md
   - ../methods/dart-control.md
+  - ./paper-molingo.md
   - ./phc.md
   - ./zhengyi-luo.md
   - ./protomotions.md
@@ -122,6 +123,7 @@ sequenceDiagram
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [GMR](../methods/motion-retargeting-gmr.md)
 - [DART（DartControl）](../methods/dart-control.md) — 项目页演示 DART 运动学输出 + PHC 跟踪以减轻穿模/滑步
+- [MoLingo](./paper-molingo.md) — 人体 T2M 生成后经重定向 + PHC 策略在 G1 上跟踪（跟踪管线代码待发布）
 - [ProtoMotions](./protomotions.md)
 - [Zhengyi Luo](./zhengyi-luo.md)
 - [phc](./phc.md)

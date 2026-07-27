@@ -2,13 +2,15 @@
 type: method
 tags: [locomotion, diffusion, generative-model, humanoid]
 status: complete
-updated: 2026-07-23
+updated: 2026-07-27
 related:
   - ../entities/kimodo.md
   - ../entities/ardy.md
   - ../entities/rigmo.md
   - ../entities/generative-motion-rig.md
   - ../entities/paper-muninn-trajectory-diffusion-acceleration.md
+  - ../entities/paper-molingo.md
+  - ../entities/paper-phygile.md
 summary: "利用扩散模型生成机器人全身运动序列，通过闭环微调解决分布偏移，实现复杂地形下的实时运动规划。"
 ---
 
@@ -36,6 +38,10 @@ summary: "利用扩散模型生成机器人全身运动序列，通过闭环微�
 ## 文本→机器人原生生成 + GMT 闭环（PhyGile，arXiv:2603.19305）
 
 [PhyGile](../entities/paper-phygile.md) 针对 **人体 text-to-motion 重定向** 的物理不可行问题：用 **TP-MoE 条件扩散** 在 **262D 机器人骨骼空间** 从文本直接生成运动，以 **physics-derived prefix** 引导推理续写，并经 **预训练 GMT** 验证、**闭环仿真精炼** 与 prefix 阶段 **GMT 微调** 闭合生成–执行环。真机展示 breakdance、侧手翻、高踢与空中旋跳等 **高动态全身** 动作。与 [Harmon](../entities/paper-loco-manip-161-097-harmon.md) 同属语言驱动人形生成，但 PhyGile 强调 **robot-native 空间** 与 **跟踪器共训** 而非人体先验 retarget。
+
+## 语义对齐连续 latent + AR flow（MoLingo，CVPR 2026）
+
+[MoLingo](../entities/paper-molingo.md)（arXiv:2512.13840）把 **人体 T2M** 放在 **连续运动 latent** 上做 **掩码自回归 rectified flow**：用 BABEL 帧级文本训 **语义对齐自编码器（SAE）**，并以 **T5 多 token cross-attention** 条件注入；HumanML3D（MARDM-67）上 FID / R-Precision 进入 SOTA，项目页演示 **retarget → PHC tracker → Unitree G1**。与 PhyGile 对照：MoLingo 仍是 **人体先验 + 重定向跟踪**，强项在 **潜空间语义对齐与指令跟随**；开源训推已放，**G1 跟踪管线代码待发布**。
 
 ## 交互式自回归扩散 + 长时域约束（ARDY，SIGGRAPH 2026）
 
@@ -116,6 +122,7 @@ summary: "利用扩散模型生成机器人全身运动序列，通过闭环微�
 - [sources/papers/dart_control_arxiv_2410_05260.md](../../sources/papers/dart_control_arxiv_2410_05260.md) — DART / DartControl（ICLR 2025，arXiv:2410.05260）：自回归运动原语潜扩散 + 在线文本流与潜空间空间控制。
 - [sources/repos/zilize-awesome-text-to-motion.md](../../sources/repos/zilize-awesome-text-to-motion.md) — Zilize 维护的文本驱动人体运动生成综述/数据集/模型精选与交互式项目页索引。
 - [PhyGile（arXiv:2603.19305）](../../sources/papers/phygile_arxiv_2603_19305.md) — physics-prefix 引导的 262D 机器人原生扩散 + GMT 闭环（真机高动态）
+- [MoLingo（arXiv:2512.13840）](../../sources/papers/molingo_arxiv_2512_13840.md) — 语义对齐连续 latent + 掩码自回归 rectified flow（CVPR 2026；G1+PHC 演示）
 - [Diffusion Policy](./diffusion-policy.md) — 扩散策略在操作任务中的应用。
 - [GENMO（统一人体运动估计与生成）](./genmo.md) — 人体运动域的扩散生成代表实现，与机器人控制域的扩散运动生成相互参照（估计 ↔ 生成的双向收益）。
 
@@ -125,6 +132,7 @@ summary: "利用扩散模型生成机器人全身运动序列，通过闭环微�
 - [OMG](../entities/paper-omg-omni-modal-humanoid-control.md) — omni-modal 生成器 + HoloMotion tracker，G1 真机多模态切换
 - [Heracles](../entities/paper-heracles-humanoid-diffusion.md) — 控制环内生成式中间件（flow matching + tracking）
 - [PhyGile](../entities/paper-phygile.md) — 文本→262D robot-native 扩散 + GMT 生成–跟踪闭环
+- [MoLingo](../entities/paper-molingo.md) — 语义对齐连续 latent + AR flow 人体 T2M；retarget→PHC→G1
 - [DIMOS](../entities/paper-dimos-human-scene-motion-synthesis.md) — RL + CVAE 潜空间，室内人–场景交互运动合成（非扩散）
 - [HY-Motion 1.0](./hy-motion-1.md) — 十亿级 DiT+流匹配的人体文本→运动开源系列（腾讯混元）
 - [DART（DartControl）](./dart-control.md) — 自回归原语潜扩散 + 在线文本与空间控制（ICLR 2025，ETH）

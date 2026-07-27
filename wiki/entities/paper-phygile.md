@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, text-to-motion, diffusion, motion-tracking, gmt, moe, whole-body-control, shanghai-ai-lab, agile-motion]
 status: complete
-updated: 2026-07-24
+updated: 2026-07-27
 arxiv: "2603.19305"
 venue: "2026 · arXiv"
 related:
@@ -17,6 +17,7 @@ related:
   - ../entities/paper-loco-manip-161-009-gmt.md
   - ../entities/paper-loco-manip-161-097-harmon.md
   - ../entities/paper-humanoid-gpt.md
+  - ../entities/paper-molingo.md
   - ../queries/humanoid-motion-tracking-method-selection.md
 sources:
   - ../../sources/papers/phygile_arxiv_2603_19305.md
@@ -115,6 +116,7 @@ flowchart LR
 | [Harmon](paper-loco-manip-161-097-harmon.md)（计划） | 人形机器人（语言→全身） | 待深读 | ✓ | PhyGile 强调 **physics prefix + GMT 闭环** 与 **262D native** |
 | [Humanoid-GPT](paper-humanoid-gpt.md) | 重定向参考跟踪 | 规模化 Transformer tracker | ✗（跟踪为主） | PhyGile 主贡献在 **T2M 生成–GMT 共闭环**，非纯 tracker scaling |
 | [Heracles](../entities/paper-heracles-humanoid-diffusion.md) | 状态条件 flow 中间件 | 通用 tracker | ✗ | Heracles **改参考缓冲**；PhyGile **从头生成 robot-native 轨迹** |
+| [MoLingo](./paper-molingo.md) | 人体/SMPL 系（263/272D） | PHC 类 tracker（retarget 后） | ✓ | 人体 T2M SOTA + 语义对齐 latent；**非** robot-native |
 | 人体 T2M + GMR | 人体/SMPL | 任意 tracker | ✓ | PhyGile 避免 **推理期人体→机 retarget** |
 
 ## 实验与评测
@@ -151,6 +153,7 @@ flowchart LR
 - [Motion Retargeting（GMR）](../methods/motion-retargeting-gmr.md) — 对比「为何跳过推理期人体重定向」
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) — retarget→tracker 经典管线上下文
 - [Humanoid-GPT](paper-humanoid-gpt.md) — 同任务 **规模化 tracker** 前沿；正交互补（跟踪 vs 生成闭环）
+- [MoLingo](./paper-molingo.md) — 人体 T2M + PHC 跟踪对照（非 robot-native）
 - [GMT（Chen et al., arXiv:2506.14770）](paper-gmt.md) — 原始统一全身跟踪方法锚点
 
 ## 推荐继续阅读
@@ -171,6 +174,7 @@ flowchart LR
 - [Diffusion Policy](../methods/diffusion-policy.md)
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
 - [GMT（Chen et al.）](paper-gmt.md)
+- [MoLingo](./paper-molingo.md)
 - [Harmon（计划实体）](paper-loco-manip-161-097-harmon.md)
 - [Humanoid-GPT](paper-humanoid-gpt.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
