@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [repo, micromouse, stm32, kicad, pcb, competition, embedded, ieee, open-source]
+tags: [repo, micromouse, stm32, pcb, competition, embedded, ieee, open-source]
 status: complete
 updated: 2026-07-27
 related:
