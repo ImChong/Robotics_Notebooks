@@ -1,13 +1,90 @@
 {
   "generated_at": "2026-07-27",
-  "node_count": 1932,
-  "edge_count": 16612,
+  "node_count": 1933,
+  "edge_count": 16628,
   "coverage": {
-    "covered": 1880,
-    "total": 1908,
+    "covered": 1881,
+    "total": 1909,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-ace-brain-0-5.md",
+      "detail_id": "entity-paper-ace-brain-0-5",
+      "label": "ACE-Brain-0.5：统一具身基础模型（Physical Agentic AI）",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/foundation-policy.md",
+      "detail_id": "wiki-concepts-foundation-policy",
+      "label": "Foundation Policy（基础策略模型）",
+      "type": "concept",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/progress-reward-modeling.md",
+      "detail_id": "wiki-concepts-progress-reward-modeling",
+      "label": "过程奖励建模（Progress Reward Modeling）",
+      "type": "concept",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-rynnbrain-1-1.md",
+      "detail_id": "entity-paper-rynnbrain-1-1",
+      "label": "RynnBrain 1.1：更强、更可泛化的具身基础模型",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/qwen-vla.md",
+      "detail_id": "entity-qwen-vla",
+      "label": "Qwen-VLA",
+      "type": "entity",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/vision-language-navigation.md",
+      "detail_id": "wiki-tasks-vision-language-navigation",
+      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
+      "type": "task",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/arxiv.md",
       "detail_id": "entity-arxiv",
@@ -63,17 +140,6 @@
       "recency": "2026-07-27",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/concepts/progress-reward-modeling.md",
-      "detail_id": "wiki-concepts-progress-reward-modeling",
-      "label": "过程奖励建模（Progress Reward Modeling）",
-      "type": "concept",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-progress-reward-modeling-survey.md",
@@ -148,86 +214,23 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rofacto.md",
-      "detail_id": "entity-paper-rofacto",
-      "label": "Rofacto（Robot-Factored World Models · arXiv:2607.22535）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/dwm.md",
-      "detail_id": "wiki-methods-dwm",
-      "label": "DWM（Dexterous World Models，灵巧世界模型）",
-      "type": "method",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-fm-vla.md",
-      "detail_id": "entity-paper-fm-vla",
-      "label": "FM-VLA（Force-based Memory for Vision-Language-Action Models）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/contact-rich-manipulation.md",
-      "detail_id": "wiki-concepts-contact-rich-manipulation",
-      "label": "Contact-Rich Manipulation（接触丰富型操作）",
-      "type": "concept",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/arxiv.md",
-    "detail_id": "entity-arxiv",
-    "label": "arXiv（arXiv.org）",
+    "path": "wiki/entities/paper-ace-brain-0-5.md",
+    "detail_id": "entity-paper-ace-brain-0-5",
+    "label": "ACE-Brain-0.5：统一具身基础模型（Physical Agentic AI）",
     "type": "entity",
     "recency": "2026-07-27",
     "source": "log.md",
-    "action": "added"
+    "action": "maintained",
+    "has_repo": true,
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 427
+      "size": 428
     },
     {
       "label": "人形论文深读笔记",
@@ -270,7 +273,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 343,
+      "degree": 345,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -278,7 +281,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 317,
+      "degree": 318,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

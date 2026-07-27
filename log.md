@@ -1,5 +1,14 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-27] ingest | sources/papers/ace_brain_0_5_arxiv_2607_04426.md — ACE-Brain-0.5 统一具身基础模型；wiki/entities/paper-ace-brain-0-5.md
+
+- **论文：** [`sources/papers/ace_brain_0_5_arxiv_2607_04426.md`](sources/papers/ace_brain_0_5_arxiv_2607_04426.md)（arXiv:2607.04426；ACE-Brain Team / 大晓 Ace Robotics）
+- **项目页 / 仓：** [`sources/sites/ace-brain-0-5-github-io.md`](sources/sites/ace-brain-0-5-github-io.md) · [`sources/repos/ace-brain-0-5.md`](sources/repos/ace-brain-0-5.md) — **部分开源**（HF 8B 权重 + transformers 推理；GitHub 仅 README/资产）
+- **主升格：** [`wiki/entities/paper-ace-brain-0-5.md`](wiki/entities/paper-ace-brain-0-5.md) — 五功能闭环 + SSR+；LIBERO **98.2%** / Bridge VLA **82.3%** / RBM VOC 强
+- **交叉：** [`wiki/methods/vla.md`](wiki/methods/vla.md)、[`foundation-policy`](wiki/concepts/foundation-policy.md)、[`progress-reward-modeling`](wiki/concepts/progress-reward-modeling.md)、[`paper-rynnbrain-1-1`](wiki/entities/paper-rynnbrain-1-1.md)、[`qwen-vla`](wiki/entities/qwen-vla.md)、[`vision-language-navigation`](wiki/tasks/vision-language-navigation.md)
+- **机构：** 复用 `ace-robotics`（大晓机器人）
+- **开源核查日：** 2026-07-27
+
 ## [2026-07-27] structural | docs/index.html — 删除首页目标入口区标题与副标题（与 Hero 重复）
 
 - **改动：** 移除「选择你的入口」与「按当前目标进入最短路径…」；section 改用 `aria-label="入口"`
