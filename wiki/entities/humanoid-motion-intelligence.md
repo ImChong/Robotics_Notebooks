@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [repo, curated-list, humanoid, motion-control, locomotion, loco-manipulation, vla, sim2real, survey, career]
+tags: [repo, curated-list, humanoid, motion-control, locomotion, loco-manipulation, vla, sim2real, survey, career, embodied-ai-lab]
 status: complete
 updated: 2026-07-28
 related:
@@ -27,6 +27,13 @@ summary: "具身智能研究室维护的人形运动智能 GitHub 知识库：�
 # Humanoid Motion Intelligence（人形机器人运动智能知识库）
 
 **Humanoid Motion Intelligence**（GitHub：[`RealXiaoze/humanoid-motion-intelligence`](https://github.com/RealXiaoze/humanoid-motion-intelligence)）是 **具身智能研究室** 出品的开源 Markdown 知识库：把人形 **运动智能** 从动作数据到实机部署放进同一张问题地图，并挂上论文解读、开源入口、产业信号与求职材料。
+
+| 字段 | 内容 |
+|------|------|
+| 机构 | 具身智能研究室（Embodied AI Lab） |
+| 仓库 | <https://github.com/RealXiaoze/humanoid-motion-intelligence> |
+| 许可 | 原创编排 CC BY-NC-SA 4.0；校验脚本 MIT |
+| 定位 | 策展知识库（非算法训练仓） |
 
 ## 一句话定义
 
