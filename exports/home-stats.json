@@ -1,13 +1,72 @@
 {
   "generated_at": "2026-07-28",
   "node_count": 1956,
-  "edge_count": 16979,
+  "edge_count": 16991,
   "coverage": {
     "covered": 1905,
     "total": 1932,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md",
+      "detail_id": "entity-paper-notebook-skillmimic-learning-basketball-interaction-skill",
+      "label": "SkillMimic（Learning Basketball Interaction Skills from Demonstrations）",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/overview/paper-notebook-category-13-physics-based-animation.md",
+      "detail_id": "wiki-overview-paper-notebook-category-13-physics-based-animation",
+      "label": "Paper Notebooks · Physics-Based Animation",
+      "type": "overview",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
+    },
+    {
+      "path": "wiki/methods/ase.md",
+      "detail_id": "wiki-methods-ase",
+      "label": "ASE: 对抗性技能嵌入",
+      "type": "method",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/methods/hierarchical-reinforcement-learning.md",
+      "detail_id": "wiki-methods-hierarchical-reinforcement-learning",
+      "label": "Hierarchical Reinforcement Learning（分层强化学习，HRL）",
+      "type": "method",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/methods/imitation-learning.md",
+      "detail_id": "wiki-methods-imitation-learning",
+      "label": "Imitation Learning (IL, 模仿学习)",
+      "type": "method",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-learning-to-ball.md",
+      "detail_id": "entity-paper-notebook-learning-to-ball",
+      "label": "Learning to Ball",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
+    },
     {
       "path": "wiki/queries/sim2real-closed-loop-engineering.md",
       "detail_id": "wiki-queries-sim2real-closed-loop-engineering",
@@ -141,79 +200,17 @@
       "recency": "2026-07-28",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-icrowdnav.md",
-      "detail_id": "entity-paper-icrowdnav",
-      "label": "iCrowdNav（意图感知场景表征的视觉人群导航）",
-      "type": "entity",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/methods/dwa.md",
-      "detail_id": "wiki-methods-dwa",
-      "label": "DWA（Dynamic Window Approach）局部路径规划",
-      "type": "method",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/comparisons/mobile-robot-navigation-planning-methods.md",
-      "detail_id": "wiki-comparisons-mobile-robot-navigation-planning-methods",
-      "label": "移动机器人导航规划方法对比：全局搜索 · 局部避障 · 路径平滑",
-      "type": "comparison",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/overview/navigation-slam-autonomy-stack.md",
-      "detail_id": "wiki-overview-navigation-slam-autonomy-stack",
-      "label": "导航·SLAM·自动驾驶开源栈总览",
-      "type": "overview",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md",
-      "detail_id": "entity-paper-sru-spatially-enhanced-recurrent-memory",
-      "label": "SRU（Spatially-Enhanced Recurrent Memory）",
-      "type": "entity",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md",
-      "detail_id": "entity-paper-navwam-goal-conditioned-visual-navigation-wam",
-      "label": "NavWAM（目标条件视觉导航 · Navigation World Action Model）",
-      "type": "entity",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/queries/sim2real-closed-loop-engineering.md",
-    "detail_id": "wiki-queries-sim2real-closed-loop-engineering",
-    "label": "Sim2Real 闭环误差分层工程",
-    "type": "query",
+    "path": "wiki/entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md",
+    "detail_id": "entity-paper-notebook-skillmimic-learning-basketball-interaction-skill",
+    "label": "SkillMimic（Learning Basketball Interaction Skills from Demonstrations）",
+    "type": "entity",
     "recency": "2026-07-28",
     "source": "log.md",
-    "action": "maintained"
+    "action": "maintained",
+    "has_repo": true
   },
   "top_communities": [
     {
@@ -222,7 +219,7 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 224
+      "size": 223
     },
     {
       "label": "移动操作",
@@ -292,7 +289,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 255,
+      "degree": 256,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
@@ -307,7 +304,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 203,
+      "degree": 205,
       "has_repo": true,
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },

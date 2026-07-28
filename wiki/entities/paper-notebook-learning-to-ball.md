@@ -3,11 +3,12 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub, horizon-robotics]
 status: stub
-updated: 2026-06-26
+updated: 2026-07-28
 arxiv: "2509.22442"
 related:
   - ../overview/paper-notebook-category-13-physics-based-animation.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ./paper-notebook-skillmimic-learning-basketball-interaction-skill.md
 sources:
   - ../../sources/papers/humanoid_pnb_learning-to-ball.md
 summary: "把篮球里「运球 / 投篮 / 上篮 / 跑动 / 转身 / 捡球」这些差异极大、各自训好的子技能策略，用一套策略组合框架 + 一个高层「软路由器」拼起来——关键在于处理那些「目标说不清」的过渡段，让物理仿真角色能连贯打出 shoot-off-the-dribble（运球急停跳投）、catch-and-shoot（接球就投）、board-and-bang（抢下前场篮板立刻补篮）这类多阶段长程连招。"
@@ -50,6 +51,7 @@ summary: "把篮球里「运球 / 投篮 / 上篮 / 跑动 / 转身 / 捡球」�
 
 - 分类父节点：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- 统一 HOI 模仿篮球对照：[SkillMimic](./paper-notebook-skillmimic-learning-basketball-interaction-skill.md) — 单策略多技能 + HLC（相对本页多专家软路由）
 
 ## 参考来源
 

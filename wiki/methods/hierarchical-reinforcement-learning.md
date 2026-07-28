@@ -6,13 +6,14 @@ tags:
   - hierarchical
   - long-horizon
 status: complete
-updated: 2026-07-24
+updated: 2026-07-28
 summary: "移动-抓取-放置等长流程任务的层次化 RL。"
 related:
   - ../overview/robot-control-paradigm-rl-intelligent-control.md
   - ./reinforcement-learning.md
   - ../concepts/curriculum-learning.md
   - ../entities/paper-aware-wheeled-legged-reflexive-evasion.md
+  - ../entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/papers/aware_arxiv_2604_23761.md
@@ -68,6 +69,7 @@ HRL：上层策略拆分子任务/选项，下层策略执行具体运动，缓�
 - [Reinforcement Learning](./reinforcement-learning.md)
 - [Curriculum Learning](../concepts/curriculum-learning.md)
 - [AWARE（轮足分层反射避障）](../entities/paper-aware-wheeled-legged-reflexive-evasion.md)
+- [SkillMimic](../entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md) — LLC 多技能模仿 + HLC 离散选技能完成篮球长程任务
 
 ## 参考来源
 

@@ -3,7 +3,7 @@
 type: method
 tags: [hierarchical-control, embedding, gan, xbpeng, paper, bfm, behavior-foundation-model, awesome-bfm-papers, nvidia]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-28
 code: https://github.com/nv-tlabs/ASE
 venue: "2022 · TOG"
 arxiv: "2205.01906"
@@ -15,6 +15,7 @@ related:
   - ./amp-reward.md
   - ../entities/mimickit.md
   - ./smp.md
+  - ../entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md
 sources:
   - ../../sources/papers/ase.md
   - ../../sources/papers/bfm_awesome_ase_arxiv_2205_01906.md
@@ -107,6 +108,7 @@ sequenceDiagram
 
 - [GPC（Generative Pretrained Controllers）](../entities/paper-gpc-generative-pretrained-controllers.md) — 离散 token 生成式预训练对照
 - [Table Tennis Strategy & Skill Learning](./table-tennis-strategy-skill-learning.md) — 五路 ASE 专家 + mixer 体育案例
+- [SkillMimic](../entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md) — 基于 ASE/PhysHOI 的统一 HOI 篮球技能模仿 + HLC（CVPR 2025 Highlight）
 - [protomotions](../entities/protomotions.md) — 提供大规模并行训练支持。
 - [amp-reward](amp-reward.md) — ASE 沿用了 AMP 的判别器结构。
 - [mimickit](../entities/mimickit.md) — 核心集成框架。
