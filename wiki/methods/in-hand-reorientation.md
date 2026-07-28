@@ -2,7 +2,7 @@
 type: method
 tags: [dexterity, manipulation, robot-hand, reinforcement-learning, control]
 status: complete
-updated: 2026-07-24
+updated: 2026-07-28
 related:
   - ../entities/allegro-hand.md
   - ../entities/shadow-hand.md
@@ -12,11 +12,13 @@ related:
   - ./uhas-unified-hand-action-space.md
   - ../entities/paper-tacrefinenet-tactile-grasp-refinement.md
   - ../entities/paper-vtap-gripper.md
+  - ../entities/paper-teledexter.md
 sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/uhas_arxiv_2607_03570.md
   - ../../sources/papers/tacrefinenet_arxiv_2509_25746.md
   - ../../sources/papers/vtap_gripper_arxiv_2607_15448.md
+  - ../../sources/papers/teledexter_arxiv_2607_11481.md
 summary: "手内重定向（In-hand Reorientation）是指机器人灵巧手在不借助于外部环境（如桌面）的前提下，通过手指间的协同动作改变掌心中物体位姿的技术。"
 ---
 
@@ -45,6 +47,7 @@ summary: "手内重定向（In-hand Reorientation）是指机器人灵巧手在�
 - **代表作**：OpenAI 的 *Learning Dexterous In-Hand Manipulation*。
 - **机制**：在仿真中通过海量试错发现奇特的“指尖舞蹈”策略。结合**域随机化 (Domain Randomization)** 解决 Sim2Real 问题。
 - **跨具身动作空间**：[UHAS](./uhas-unified-hand-action-space.md) 把手内立方体重定向策略建在 **规范球面形变** 上，用 **单一 PPO 策略** 同时服务 Allegro、LEAP、Shadow、MANO 四手，并支持零样本迁移与快速微调（arXiv:2607.03570）。
+- **遥操作共跟踪入口**：[TeleDexter](../entities/paper-teledexter.md) 不直接学任务专用重定向策略，而是用 **指尖+物体连续子目标 co-tracking** 在真机遥操作中执行 Cylinder/Cuboid/Bunny 手内重定向（SharpaWave 上 SR 66.7–80%），并采数训下游 Diffusion Policy。
 
 ### 2. 轨迹优化 (Trajectory Optimization)
 将重定向建模为带接触约束的最优控制问题。
@@ -71,10 +74,12 @@ summary: "手内重定向（In-hand Reorientation）是指机器人灵巧手在�
 - [Tactile Sensing (触觉感知)](../concepts/tactile-sensing.md)
 - [TacRefineNet（论文实体）](../entities/paper-tacrefinenet-tactile-grasp-refinement.md) — 外在灵巧触觉精修对照
 - [VTAP Gripper（论文实体）](../entities/paper-vtap-gripper.md) — 三指 + 主动掌的手内重定向 / singulation 硬件实例
+- [TeleDexter（论文实体）](../entities/paper-teledexter.md) — 手–物 co-tracking 遥操作中的真机手内重定向
 - [Cross-modal Attention](../formalizations/cross-modal-attention.md)
 
 ## 参考来源
 - OpenAI, et al. (2018). *Learning Dexterous In-Hand Manipulation*.
 - Akkaya, I., et al. (2019). *Solving Rubik’s Cube with a Robot Hand*.
 - [sources/papers/tacrefinenet_arxiv_2509_25746.md](../../sources/papers/tacrefinenet_arxiv_2509_25746.md) — TacRefineNet 外在灵巧 regrasp
+- [sources/papers/teledexter_arxiv_2607_11481.md](../../sources/papers/teledexter_arxiv_2607_11481.md) — TeleDexter co-tracking 手内重定向
 - [sources/papers/vtap_gripper_arxiv_2607_15448.md](../../sources/papers/vtap_gripper_arxiv_2607_15448.md) — VTAP 手内重定向与 singulation

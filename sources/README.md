@@ -9,6 +9,7 @@
 ### papers/ — 论文来源归档
 | 文件 | 内容 |
 |------|------|
+| [x] [teledexter_arxiv_2607_11481.md](papers/teledexter_arxiv_2607_11481.md) | TeleDexter：hand–object co-tracking 灵巧遥操作（arXiv:2607.11481，清华/BIGAI/北大；未开源） |
 | [x] [fm_vla_arxiv_2607_18231.md](papers/fm_vla_arxiv_2607_18231.md) | FM-VLA：Force-VAE 力觉长程记忆注入 π₀.₅（arXiv:2607.18231；清华/微软研究院/复旦/中科大；代码 coming soon） |
 | [x] [openhlm_arxiv_2606_22174.md](papers/openhlm_arxiv_2606_22174.md) | OpenHLM：全身原生人形 VLA 经验配方（arXiv:2606.22174，清华/期智/千寻；已开源） |
 | [x] [gmt_arxiv_2506_14770.md](papers/gmt_arxiv_2506_14770.md) | GMT：Adaptive Sampling + Motion MoE 统一人形全身跟踪（arXiv:2506.14770，UCSD×SFU；部分开源 sim2sim） |
@@ -363,6 +364,7 @@
 ### sites/ — 网站与在线工具归档
 | 文件 | 内容 |
 |------|------|
+| [x] [teledexter-project.md](sites/teledexter-project.md) | TeleDexter 项目页 bigai-dex.github.io/blog/teledexter（75.2% SR；截至入库日未开源） |
 | [x] [fm-vla-page.md](sites/fm-vla-page.md) | FM-VLA 项目页 qft-333.github.io/FM-VLA-Page（力觉记忆；代码 coming soon） |
 | [x] [openhlm-project-github-io.md](sites/openhlm-project-github-io.md) | OpenHLM 项目页（配方消融、12 任务、开源入口） |
 | [x] [humanoidarena-github-io.md](sites/humanoidarena-github-io.md) | HumanoidArena 项目页（7 任务、双 GMT、数据/模型发布） |

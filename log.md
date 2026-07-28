@@ -1,5 +1,15 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-28] ingest | sources/papers/teledexter_arxiv_2607_11481.md + sites/teledexter-project.md — TeleDexter（arXiv:2607.11481）手–物 co-tracking 灵巧遥操作入库；升格 wiki/entities/paper-teledexter.md；交叉 teleoperation / contact-rich / in-hand-reorientation / dexterous-data-collection / depth-teleoperation / HDMI；未开源
+
+- **一手入口：** 项目页 [bigai-dex.github.io/blog/teledexter](https://bigai-dex.github.io/blog/teledexter/) · 论文 [arXiv:2607.11481](https://arxiv.org/abs/2607.11481) · PDF [paper_teledexter.pdf](https://bigai-dex.github.io/blog/teledexter/paper_teledexter.pdf)
+- **开源核查（2026-07-28）：** **未开源** — 项目页 metalinks 仅 arXiv；GitHub `teledexter` 搜索 0；无 HF/数据集链接
+- **归档：** [`sources/papers/teledexter_arxiv_2607_11481.md`](sources/papers/teledexter_arxiv_2607_11481.md)、[`sources/sites/teledexter-project.md`](sources/sites/teledexter-project.md)；索引 [`sources/README.md`](sources/README.md)
+- **主升格：** [`wiki/entities/paper-teledexter.md`](wiki/entities/paper-teledexter.md) — 连续子目标 co-tracking、hybrid reward、action masking、七任务 75.2% SR、DP 数据飞轮、结论与开源边界
+- **交叉：** [`wiki/tasks/teleoperation.md`](wiki/tasks/teleoperation.md)、[`wiki/concepts/contact-rich-manipulation.md`](wiki/concepts/contact-rich-manipulation.md)、[`wiki/methods/in-hand-reorientation.md`](wiki/methods/in-hand-reorientation.md)、[`wiki/methods/diffusion-policy.md`](wiki/methods/diffusion-policy.md)、[`wiki/queries/dexterous-data-collection-guide.md`](wiki/queries/dexterous-data-collection-guide.md)、[`roadmap/depth-teleoperation.md`](roadmap/depth-teleoperation.md)、[`wiki/entities/paper-hrl-stack-06-hdmi.md`](wiki/entities/paper-hrl-stack-06-hdmi.md)
+- **机构 tags：** `bigai` / `tsinghua` / `pku`（已在 institutions.json）
+
+
 ## [2026-07-28] ingest | sources/papers/raven_rl_adaptive_visibility_graph_arxiv_2607_15701.md — UCLA RoMeLa RAVEN（arXiv:2607.15701）复核升格：补结论/开源再核；wiki/entities/paper-raven-rl-adaptive-visibility-graph-mpc.md；交叉 far-planner / mpc-vs-rl / humanoid-locomotion；roadmap/depth-navigation.md Stage 3
 
 ## [2026-07-28] structural | 主路线与全部纵深路线链接的论文节点 stub/planned → 详细 complete — roadmap/motion-control + depth-*（30 篇升格）
