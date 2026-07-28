@@ -1319,6 +1319,7 @@
 
 ### Wiki Concepts（概念页）
 
+- [2D→3D 语义提升 Gap（2D 检测/分割 ↔ 3D 语义几何）](wiki/concepts/2d-to-3d-semantic-lifting-gap.md) — 机器人感知里几乎都默认一个隐含抽象：**2D 检测/分割结果可以干净地提升到 3D**——一个准的 2D 框或掩码，配上深度，就能得到策略可直接消费的「这个类别的对象在世界坐标里哪个位置、什么几何」。 `📅unknown` `[wiki_page]`
 - [3D 空间 VQA（3D Spatial Visual Question Answering）](wiki/concepts/3d-spatial-vqa.md) — 3D 空间 VQA**：在 **三维室内场景** 条件下，模型需要结合视觉观测与自然语言问题，推理物体间 **几何关系**（远近、相对方位、计数、尺度、路径顺序等）并给出答案——常见形式包括选择题 `📅unknown` `[wiki_page]`
 - [AI Auto-Research（学术研究自动化）](wiki/concepts/ai-auto-research.md) — AI Auto-Research**：用大语言模型及其 **agentic 扩展**，在学术研究 **全生命周期** — 从假设与文献、代码与实验、图表与写作，到同行评议、答辩修订与 Paper2 `📅unknown` `[wiki_page]`
 - [Armature Modeling（电枢惯量建模）](wiki/concepts/armature-modeling.md) — 在机器人动力学和仿真中，**Armature** 指的是电机内部旋转部件（转子）的转动惯量，经过减速比放大后，对关节端产生的等效惯性效应。 `📅unknown` `[wiki_page]`

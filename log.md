@@ -33,6 +33,14 @@
 - **主刷新 wiki：** [`wiki/entities/paper-yahmp.md`](wiki/entities/paper-yahmp.md) — `code` 对齐 hucebot；补 Table II 绝对量级与真机踝振荡读点；双仓选型说明
 - **说明：** 该文已于 2026-07-24 首次 ingest；本次为对齐用户给定项目链接与开源再核的刷新，不重复造页
 
+## [2026-07-27] query | wiki/queries/robot-perception-stack-selection-loop.md + wiki/concepts/2d-to-3d-semantic-lifting-gap.md — 沉淀「机器人视觉感知栈选型闭环」知识链（V31 P1 首项）；从 object-detection-model-selection / perception-backbone-selection 双向回链消孤儿
+
+- **背景（V31 P1）：** 近周密集 ingest 了一批目标检测 / 分割 / 2D→3D 语义建图资料（Ultralytics YOLO、RF-DETR、SAM/SAM2、FindAnything、OV-SAM3D、CMU MSCV Semantic 3D 等），但各页独立、缺一条贯通的感知栈选型视角。本次把它们沉淀为一条位于策略**输入端**的四层选型链，与[执行器驱动链选型闭环](wiki/queries/actuator-drive-chain-selection-loop.md)（输出端）互为镜像。
+- **主新建（端到端 Query）：** [`wiki/queries/robot-perception-stack-selection-loop.md`](wiki/queries/robot-perception-stack-selection-loop.md) — 传感与标定 → 2D 检测/分割选型 → 2D→3D 提升与语义建图 → 下游策略消费 四层选型决策树（配 Mermaid），逐层给「选什么 / 精度 vs 时延算力 / 闭集 vs 开放词汇 / 2D 框 vs 3D 语义几何 / 感知频率 ≠ 控制带宽」的取舍与典型误判，附矛盾速查与失败模式速查表
+- **主新建（物理根因概念）：** [`wiki/concepts/2d-to-3d-semantic-lifting-gap.md`](wiki/concepts/2d-to-3d-semantic-lifting-gap.md) — 「2D 检测/分割结果 ↔ 可供策略消费的 3D 语义几何」取舍概念页：四类信息损失与歧义（尺度不确定 / 遮挡 / 时序不一致 / 语义-几何分离）、提升成立条件表、深度融合 / 多视角一致性 / 语义-几何联合建图三条收窄路线；与 Query 页双向回链
+- **消孤儿回链：** [`wiki/queries/object-detection-model-selection.md`](wiki/queries/object-detection-model-selection.md)、[`wiki/queries/perception-backbone-selection.md`](wiki/queries/perception-backbone-selection.md) 的 `related` 补入新 Query/概念页，双向闭合（`graph-stats.json` 0 orphans）
+- **派生同步：** `make graph` + `make export` + `make catalog` 重生成；图谱 **1949 → 1951 节点 / 16856 → 16888 边**（V31 目标 ≥1924 / ≥16460 已满足）；`make lint` 0 errors（仅 LICENSE 等既有信息型预警）
+- **执行清单：** [`docs/checklists/tech-stack-next-phase-checklist-v31.md`](docs/checklists/tech-stack-next-phase-checklist-v31.md) P1「机器人视觉感知栈选型闭环知识链 (+2)」勾选完成
 
 ## [2026-07-27] ingest | sources/repos/kimi-k3.md + HF/ModelScope/tech report — Kimi K3 开放权重与技术报告一手资料；刷新 wiki/entities/kimi-k3.md；交叉 muon / enpire / autoresearch harness
 

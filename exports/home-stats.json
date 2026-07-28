@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-28",
-  "node_count": 1951,
-  "edge_count": 16880,
+  "node_count": 1953,
+  "edge_count": 16912,
   "coverage": {
-    "covered": 1899,
-    "total": 1927,
+    "covered": 1901,
+    "total": 1929,
     "percent": 99
   },
   "latest_wiki_nodes": [
@@ -113,6 +113,56 @@
       "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
+      "path": "wiki/queries/robot-perception-stack-selection-loop.md",
+      "detail_id": "wiki-queries-robot-perception-stack-selection-loop",
+      "label": "Query：机器人视觉感知栈选型闭环知识链",
+      "type": "query",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/concepts/2d-to-3d-semantic-lifting-gap.md",
+      "detail_id": "wiki-concepts-2d-to-3d-semantic-lifting-gap",
+      "label": "2D→3D 语义提升 Gap（2D 检测/分割 ↔ 3D 语义几何）",
+      "type": "concept",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/queries/actuator-drive-chain-selection-loop.md",
+      "detail_id": "wiki-queries-actuator-drive-chain-selection-loop",
+      "label": "Query：执行器驱动链选型闭环知识链",
+      "type": "query",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/queries/object-detection-model-selection.md",
+      "detail_id": "wiki-queries-object-detection-model-selection",
+      "label": "Query：目标检测模型选型（机载实时 vs 服务器侧 / 单阶段 vs 两阶段 / 2D 框 vs 级联位姿）",
+      "type": "query",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/queries/perception-backbone-selection.md",
+      "detail_id": "wiki-queries-perception-backbone-selection",
+      "label": "Query：机器人感知骨干/表征选型（分类骨干 vs 检测头 vs 通用预训练表征）",
+      "type": "query",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "path": "wiki/methods/muon.md",
       "detail_id": "wiki-methods-muon",
       "label": "Muon（MomentUm Orthogonalized by Newton–Schulz）",
@@ -165,59 +215,6 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/articraft.md",
-      "detail_id": "entity-articraft",
-      "label": "Articraft",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/img2threejs.md",
-      "detail_id": "entity-img2threejs",
-      "label": "img2threejs",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/freecad-mcp.md",
-      "detail_id": "entity-freecad-mcp",
-      "label": "FreeCAD MCP",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "roadmap/depth-motion-retargeting.md",
-      "detail_id": "roadmap-depth-motion-retargeting",
-      "label": "路线（纵深）：如果目标是动作重定向（人体动作 → 机器人参考轨迹）",
-      "type": "roadmap_page",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/robot-motion-keyframe-editors.md",
-      "detail_id": "entity-robot-motion-keyframe-editors",
-      "label": "机器人关键帧与运动编辑工具（选型入口）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
@@ -234,7 +231,7 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 456
+      "size": 441
     },
     {
       "label": "人形论文深读笔记",
@@ -253,8 +250,8 @@
       "size": 120
     },
     {
-      "label": "仿真训练",
-      "size": 84
+      "label": "模仿学习",
+      "size": 90
     }
   ],
   "top_hubs": [
