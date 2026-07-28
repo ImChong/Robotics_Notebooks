@@ -1,5 +1,41 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-28] structural | 主路线与全部纵深路线链接的论文节点 stub/planned → 详细 complete — roadmap/motion-control + depth-*（30 篇升格）
+
+- **触发：** 确保所有纵深路线与主路线中链接的论文节点均为详细页，而非 stub/planned/draft
+- **验收：** 扫描 `roadmap/motion-control.md`、全部 `roadmap/depth-*.md` 与 `wiki/roadmaps/` 内 `wiki/entities/paper-*.md` 链接；`status ∈ {stub,planned,draft}` 或 `paper-notebook-stub/planned` 标签剩余 **0**
+- **本批升格（30）：** 遥操作 12 · 导航 7 · 动作生成 5 · 拳击 2 · 感知越障 2 · 力矩电机 2（足球纵深此前已合入）
+- **明细见同日后续 ingest 条目**（teleoperation / navigation / motion-generation / boxing·parkour·torque）
+- **路线入口：** [`roadmap/README.md`](roadmap/README.md)
+
+## [2026-07-28] ingest | roadmap/depth-navigation 7 篇论文 stub/planned 升格详细实体 — EgoNav / FocusNav / PioneeR / LookOut / NavDP / NaVILA / NoMaD
+
+- **主升格（status → complete）：** [`wiki/entities/paper-notebook-egonav.md`](wiki/entities/paper-notebook-egonav.md)、[`wiki/entities/paper-notebook-focusnav.md`](wiki/entities/paper-notebook-focusnav.md)、[`wiki/entities/paper-notebook-learning-social-navigation-from-positive-and-neg.md`](wiki/entities/paper-notebook-learning-social-navigation-from-positive-and-neg.md)、[`wiki/entities/paper-notebook-lookout.md`](wiki/entities/paper-notebook-lookout.md)、[`wiki/entities/paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md`](wiki/entities/paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md)、[`wiki/entities/paper-notebook-navila-legged-robot-vision-language-action-model.md`](wiki/entities/paper-notebook-navila-legged-robot-vision-language-action-model.md)、[`wiki/entities/paper-notebook-nomad-goal-masked-diffusion-policies-for-navigat.md`](wiki/entities/paper-notebook-nomad-goal-masked-diffusion-policies-for-navigat.md)
+- **开源核查：** NavDP / NaVILA / NoMaD **已开源**（新增 `sources/repos/`）；LookOut **仅数据开放**；EgoNav **待发布**；FocusNav / PioneeR **未开源**。
+- **项目页归档：** `sources/sites/egonav.md`、`lookout.md`、`navdp.md`、`navila.md`、`nomad.md`、`pioneer-social-navigation.md`。
+- **路线入口：** [`roadmap/depth-navigation.md`](roadmap/depth-navigation.md) Stage 3–5；交叉 [`wiki/tasks/vision-language-navigation.md`](wiki/tasks/vision-language-navigation.md) 与 [`wiki/entities/paper-da-nav.md`](wiki/entities/paper-da-nav.md)。
+
+## [2026-07-28] ingest | roadmap/depth-teleoperation 六篇 stub/planned 升格为详细论文实体 — ACE、Bunny-VisionPro、CHILD、DexterCap、ByteDexter、DexUMI
+
+- **主升格（status → complete）：** [`wiki/entities/paper-notebook-ace-a-cross-platform-visual-exoskeletons-system.md`](wiki/entities/paper-notebook-ace-a-cross-platform-visual-exoskeletons-system.md)、[`wiki/entities/paper-notebook-bunny-visionpro-real-time-bimanual-dexterous-tel.md`](wiki/entities/paper-notebook-bunny-visionpro-real-time-bimanual-dexterous-tel.md)、[`wiki/entities/paper-notebook-child-a-whole-body-humanoid-teleoperation-system.md`](wiki/entities/paper-notebook-child-a-whole-body-humanoid-teleoperation-system.md)、[`wiki/entities/paper-notebook-dextercap.md`](wiki/entities/paper-notebook-dextercap.md)、[`wiki/entities/paper-notebook-dexterous-teleoperation-of-20-dof-bytedexter-han.md`](wiki/entities/paper-notebook-dexterous-teleoperation-of-20-dof-bytedexter-han.md)、[`wiki/entities/paper-notebook-dexumi-using-human-hand-as-the-universal-manipul.md`](wiki/entities/paper-notebook-dexumi-using-human-hand-as-the-universal-manipul.md)
+- **开源核查（2026-07-28）：** ACE 源码/硬件公开但许可未明确；Bunny-VisionPro 部分开源；CHILD 软硬件公开但许可未明确；DexterCap 部分开源且缺原始/中间数据；ByteDexter 未开源；DexUMI 已按 MIT 完整开源。
+- **路线入口：** [`roadmap/depth-teleoperation.md`](roadmap/depth-teleoperation.md)
+
+## [2026-07-28] ingest | roadmap/depth-motion-generation 五篇 stub/planned 升格为详细论文实体 — CondMDI、Go to Zero、GMD、OmniControl、PhysDiff
+
+- **主升格（status → complete）：** [`wiki/entities/paper-notebook-flexible-motion-in-betweening-with-diffusion-mod.md`](wiki/entities/paper-notebook-flexible-motion-in-betweening-with-diffusion-mod.md)、[`wiki/entities/paper-notebook-go-to-zero-towards-zero-shot-motion-generation-w.md`](wiki/entities/paper-notebook-go-to-zero-towards-zero-shot-motion-generation-w.md)、[`wiki/entities/paper-notebook-guided-motion-diffusion-for-controllable-human-m.md`](wiki/entities/paper-notebook-guided-motion-diffusion-for-controllable-human-m.md)、[`wiki/entities/paper-notebook-omnicontrol-control-any-joint-at-any-time-for-hu.md`](wiki/entities/paper-notebook-omnicontrol-control-any-joint-at-any-time-for-hu.md)、[`wiki/entities/paper-notebook-physdiff-physics-guided-human-motion-diffusion-m.md`](wiki/entities/paper-notebook-physdiff-physics-guided-human-motion-diffusion-m.md)
+- **方法补全：** 补统一阅读骨架、方法数据流、定量评测、结论、工程边界，并交叉 [Diffusion-based Motion Generation](wiki/methods/diffusion-motion-generation.md)、[PhyGile](wiki/entities/paper-phygile.md) 与 [GPC](wiki/entities/paper-gpc-generative-pretrained-controllers.md)
+- **开源核查（2026-07-28）：** CondMDI / MotionMillion / GMD / OmniControl **已开源**，新增对应 `sources/sites/` 与 `sources/repos/` 归档及源码运行时序图；PhysDiff 项目页未列官方仓库，标记 **未开源**、时序图不适用
+- **路线入口：** [`roadmap/depth-motion-generation.md`](roadmap/depth-motion-generation.md)
+
+## [2026-07-28] ingest | boxing / perceptive-locomotion / torque-motor 六篇论文 stub/planned 升格 complete — wiki/entities/paper-notebook-robostriker.md、wiki/entities/paper-notebook-towards-motion-turing-test.md、wiki/entities/paper-notebook-anymal-parkour-robust-perceptive-locomotion.md、wiki/entities/paper-notebook-humanoid-parkour-learning.md、wiki/entities/paper-notebook-human-level-actuation-for-humanoids.md、wiki/entities/paper-notebook-quasi-direct-drive-for-low-cost-compliant-roboti.md
+
+- **开源核查：** RoboStriker / Humanoid Parkour / Human-Level Actuation 未开源；Motion Turing Test 宣称待发布；ANYmal Parkour 仅图表数据与绘图脚本部分开放；Blue/QDD 的 ROS 核心软件部分开源。
+- **归档：** `sources/sites/robostriker-project.md`、`sources/sites/motion-turing-test.md`、`sources/sites/anymal-parkour.md`、`sources/repos/anymal-parkour-plotting-artifact.md`、`sources/sites/humanoid-parkour-learning.md`、`sources/sites/berkeley-open-arms-blue.md`、`sources/repos/blue-core.md`。
+- **机构注册：** `schema/institutions.json` → `shanghai-innovation-institute`、`xmu`、`oppo`、`teragon-research`。
+
+## [2026-07-28] ingest | roadmap/depth-teleoperation 关联六篇论文 stub/planned 升格 complete — wiki/entities/paper-notebook-egodex-learning-dexterous-manipulation-from-larg.md、wiki/entities/paper-notebook-nuexo-a-wearable-exoskeleton-covering-all-upper.md、wiki/entities/paper-notebook-osmo-open-source-tactile-glove-for-human-to-robo.md、wiki/entities/paper-notebook-teleopbench-a-simulator-centric-benchmark-for-du.md、wiki/entities/paper-notebook-teleoperation-of-humanoid-robots-a-survey.md、wiki/entities/paper-notebook-whole-body-bilateral-teleoperation-with-multi-st.md
+
 ## [2026-07-28] structural | COMMUNITY_NAME_OVERRIDES 补八大机器人控制体系分类（Eight Robot Control Paradigms Taxonomy）— 修复 community-9 命名不符合「中文（English） 社区」导致 Tests/pytest 失败；scripts/utils/community_labels.py
 
 ## [2026-07-28] ingest | roadmap/depth-humanoid-soccer 链接论文 stub/planned/draft 升格为详细节点 — wiki/entities/paper-notebook-learning-soccer-skills-for-humanoid-robots.md 等；roadmap/depth-humanoid-soccer.md

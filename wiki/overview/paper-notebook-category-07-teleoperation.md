@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-07-10
+updated: 2026-07-28
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 07：遥操作（24 篇深读笔记索引）。"

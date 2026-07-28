@@ -7,6 +7,8 @@
 - **笔记链接：** <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/NuExo__A_Wearable_Exoskeleton_Covering_all_Upper_Limb_ROM/NuExo__A_Wearable_Exoskeleton_Covering_all_Upper_Limb_ROM.html>
 - **分类：** 07_Teleoperation
 - **arXiv：** <https://arxiv.org/abs/2503.10554>
+- **项目页：** <https://nubot-nuexo.github.io/>
+- **开源核查（2026-07-28）：** **未开源** — 项目页未列 GitHub、CAD、BOM、控制代码或数据下载。
 - **入库日期：** 2026-07-10
 - **一句话说明：** 从动捕/遥操作到机器人技能学习的演进，是具身智能的关键路径。但现有系统难同时达成四目标：准确（长时间精确跟踪全上肢）、舒适（贴合人体生物力学）、通用（多模态采集如力数据、兼容人形）、便携（轻量户外日用）。NuExo 是一套可穿戴上肢外骨骼，配沉浸式直观遥操作与多模态感知采集来弥合此差距。凭借带同步连杆与同步带传动的新型肩部机构，它能很好地适配复合肩部运动，100% 覆盖自然上肢活动范围；整机仅 5.2 kg，支持背包式户外日常使用。作者还开发了统一直观的遥操作框架与多模态数据采集系统，兼容多款人形。跨平台、跨用户实验验证了其在运动范围与灵活性上的优势，以及在动态场景下数据采集与遥操作精度的稳定性。
 
@@ -24,3 +26,4 @@
 
 - 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/NuExo__A_Wearable_Exoskeleton_Covering_all_Upper_Limb_ROM/NuExo__A_Wearable_Exoskeleton_Covering_all_Upper_Limb_ROM.html>
 - 论文：<https://arxiv.org/abs/2503.10554>
+- 项目页归档：[nuexo-project.md](../sites/nuexo-project.md)

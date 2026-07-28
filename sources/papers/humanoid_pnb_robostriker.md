@@ -7,6 +7,8 @@
 - **笔记链接：** <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/RoboStriker__Hierarchical_Decision-Making_for_Autonomous_Humanoid_Boxing/RoboStriker__Hierarchical_Decision-Making_for_Autonomous_Humanoid_Boxing.html>
 - **分类：** 04_Loco-Manipulation_and_WBC
 - **arXiv：** <https://arxiv.org/abs/2601.22517>
+- **项目页：** <https://yinkangning0124.github.io/RoboStriker/>（[本地归档](../sites/robostriker-project.md)）
+- **源码：** 截至 2026-07-28 未公开
 - **入库日期：** 2026-06-07
 - **一句话说明：** RoboStriker 把"两个人形机器人互殴"建成 两玩家零和马尔可夫博弈，先用单智能体追真人拳击 MoCap 训出 运动跟踪器（46 段、约 14 分钟 Xsens 数据，经 GMR 重定向到 Unitree G1），再把这些技能蒸馏成一个 投到单位超球面的潜空间动作流形，最后在这个潜空间上跑 Latent-Space Neural Fictitious Self-Play (LS-NFSP)，让两个智能体只挑"高层动作意图"而不直接挑电机指令——动作天然物理可行又像人，多智能体训练也稳定收敛。
 
@@ -24,3 +26,4 @@
 
 - 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/RoboStriker__Hierarchical_Decision-Making_for_Autonomous_Humanoid_Boxing/RoboStriker__Hierarchical_Decision-Making_for_Autonomous_Humanoid_Boxing.html>
 - 论文：<https://arxiv.org/abs/2601.22517>
+- 项目页：[robostriker-project.md](../sites/robostriker-project.md)

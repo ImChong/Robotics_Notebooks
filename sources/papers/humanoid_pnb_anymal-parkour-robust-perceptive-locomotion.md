@@ -7,6 +7,8 @@
 - **笔记链接：** <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/ANYmal_Parkour_Robust_Perceptive_Locomotion/ANYmal_Parkour_Robust_Perceptive_Locomotion.html>
 - **分类：** 05_Locomotion
 - **arXiv：** <https://arxiv.org/abs/2306.14874>
+- **项目页：** <https://sites.google.com/leggedrobotics.com/agile-navigation>（[本地归档](../sites/anymal-parkour.md)）
+- **代码 / 数据：** [Zenodo 图表数据与绘图脚本](../repos/anymal-parkour-plotting-artifact.md)；完整策略实现未公开
 - **入库日期：** 2026-06-07
 - **一句话说明：** 宇树（ETH Zurich）团队通过分层分层的强化学习，让 ANYmal 机器人不仅掌握了攀爬、跳跃、钻洞等多种单一跑酷技能，还能根据地形环境感知自主选择最优的技能路径。
 
@@ -24,3 +26,5 @@
 
 - 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/ANYmal_Parkour_Robust_Perceptive_Locomotion/ANYmal_Parkour_Robust_Perceptive_Locomotion.html>
 - 论文：<https://arxiv.org/abs/2306.14874>
+- 项目页：[anymal-parkour.md](../sites/anymal-parkour.md)
+- 部分开放资产：[anymal-parkour-plotting-artifact.md](../repos/anymal-parkour-plotting-artifact.md)

@@ -8,6 +8,8 @@
 - **计划笔记路径：** `papers/07_Teleoperation/teleoperation-of-humanoid-robots-a-survey/teleoperation-of-humanoid-robots-a-survey.md`
 - **分类：** 07_Teleoperation
 - **arXiv：** <https://arxiv.org/abs/2301.04317>
+- **官方网页版：** <https://humanoid-teleoperation.github.io/>
+- **开源核查（2026-07-28）：** **代码不适用** — 综述未提出配套可执行系统，官方网页版未列实现仓库。
 - **入库日期：** 2026-06-11
 - **一句话说明：** 列入 Paper Notebooks 阅读进度，深读笔记尚未完成；本文件为 **进度 → wiki** 溯源锚点。
 
@@ -25,3 +27,4 @@
 
 - [Humanoid Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2301.04317>
+- 官方网页版归档：[humanoid-teleoperation-survey.md](../sites/humanoid-teleoperation-survey.md)

@@ -676,6 +676,14 @@
         "bytedance-seed"
       ]
     },
+    "jpmorgan-ai": {
+      "label": "摩根大通人工智能研究院（J.P. Morgan AI Research）",
+      "aliases": [
+        "jpmorgan-ai",
+        "jpmorgan",
+        "jpmorgan-ai-research"
+      ]
+    },
     "moonshot": {
       "label": "月之暗面（Moonshot AI）",
       "aliases": [
@@ -2055,6 +2063,69 @@
       "aliases": [
         "bitbots",
         "hamburg-bit-bots"
+      ]
+    },
+    "shanghai-innovation-institute": {
+      "label": "上海创智学院（Shanghai Innovation Institute）",
+      "aliases": [
+        "shanghai-innovation-institute"
+      ]
+    },
+    "xmu": {
+      "label": "厦门大学（Xiamen University）",
+      "aliases": [
+        "xmu",
+        "xiamen-university"
+      ]
+    },
+    "oppo": {
+      "label": "欧珀研究院（OPPO Research Institute）",
+      "aliases": [
+        "oppo",
+        "oppo-research"
+      ]
+    },
+    "teragon-research": {
+      "label": "特拉贡研究（Teragon Research）",
+      "aliases": [
+        "teragon-research",
+        "teragon"
+      ]
+    },
+    "yonsei": {
+      "label": "延世大学（Yonsei University）",
+      "aliases": [
+        "yonsei",
+        "yonsei-university"
+      ]
+    },
+    "mobinn": {
+      "label": "摩宾（Mobinn）",
+      "aliases": [
+        "mobinn"
+      ]
+    },
+    "queens-university": {
+      "label": "加拿大女王大学（Queen's University）",
+      "aliases": [
+        "queens-university",
+        "queen's-university",
+        "queens"
+      ]
+    },
+    "apple": {
+      "label": "苹果公司（Apple）",
+      "aliases": [
+        "apple",
+        "apple-ml",
+        "apple-machine-learning-research"
+      ]
+    },
+    "nudt": {
+      "label": "国防科技大学（NUDT）",
+      "aliases": [
+        "nudt",
+        "national-university-of-defense-technology"
       ]
     }
   }

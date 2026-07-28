@@ -8,6 +8,8 @@
 - **计划笔记路径：** `papers/12_Hardware_Design/quasi-direct-drive-for-low-cost-compliant-roboti/quasi-direct-drive-for-low-cost-compliant-roboti.md`
 - **分类：** 12_Hardware_Design
 - **arXiv：** <https://arxiv.org/abs/1904.03815>
+- **项目页：** <https://berkeleyopenarms.github.io/>（[本地归档](../sites/berkeley-open-arms-blue.md)）
+- **代码：** <https://github.com/berkeleyopenarms/blue_core>（[本地归档](../repos/blue-core.md)；系统软件部分开源）
 - **入库日期：** 2026-06-11
 - **一句话说明：** 列入 Paper Notebooks 阅读进度，深读笔记尚未完成；本文件为 **进度 → wiki** 溯源锚点。
 
@@ -25,3 +27,5 @@
 
 - [Humanoid Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/1904.03815>
+- 项目页：[berkeley-open-arms-blue.md](../sites/berkeley-open-arms-blue.md)
+- 代码：[blue-core.md](../repos/blue-core.md)

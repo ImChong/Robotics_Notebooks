@@ -7,18 +7,24 @@
 - **笔记链接：** <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/CHILD__a_Whole-Body_Humanoid_Teleoperation_System/CHILD__a_Whole-Body_Humanoid_Teleoperation_System.html>
 - **分类：** 07_Teleoperation
 - **arXiv：** <https://arxiv.org/abs/2508.00162>
+- **项目页：** <https://uiuckimlab.github.io/CHILD-pages/>
+- **代码与硬件：** <https://github.com/uiuckimlab/CHILD>
+- **机构：** University of Illinois Urbana-Champaign
 - **入库日期：** 2026-07-10
 - **一句话说明：** 遥操作已能让机器人做复杂操作，但很少支持人形的「全身关节级」遥操作，限制了任务多样性。CHILD（Controller for Humanoid Imitation and Live Demonstration）是一套紧凑、可重构的遥操作系统，实现对人形的关节级控制。它能塞进标准婴儿背带（baby carrier），让操作者同时控制四肢，并支持直接关节映射的全身控制与移动操作。系统内置自适应力反馈，提升操作体验并防止不安全关节运动。作者在一台人形与多款双臂系统上验证了移动操作与全身控制，并开源硬件设计以促进可及性与可复现性。
 
 ## 核心摘录（策展，非全文）
 
 - 本文件为 **Paper Notebooks → 本库 wiki** 的溯源锚点；方法细节请读笔记页与论文 PDF。
+- 2026-07-28 项目页核查：BOM、STL、ROS 2/G1 软件和启动说明已公开；仓库未见许可证声明，因此复现入口可用但复用授权需确认。
 - 知识归纳见 wiki 实体页：[paper-notebook-child-a-whole-body-humanoid-teleoperation-system](../../wiki/entities/paper-notebook-child-a-whole-body-humanoid-teleoperation-system.md).
 
 ## 对 wiki 的映射
 
 - [paper-notebook-child-a-whole-body-humanoid-teleoperation-system](../../wiki/entities/paper-notebook-child-a-whole-body-humanoid-teleoperation-system.md)
 - 分类父节点：[paper-notebook-category-07-teleoperation](../../wiki/overview/paper-notebook-category-07-teleoperation.md)
+- 项目页归档：[child-teleoperation](../sites/child-teleoperation.md)
+- 代码归档：[child-teleoperation](../repos/child-teleoperation.md)
 
 ## 参考来源（原始）
 
