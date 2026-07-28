@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-28] structural | roadmap/motion-control.md — 主路线补齐 L5.4 动作重定向（此前只在 L5.3 模仿学习里以一条 bullet 出现，主干缺独立章节）
+
+- **主更新：** [`roadmap/motion-control.md`](roadmap/motion-control.md) — L5.3 与 L6 之间新增 **L5.4 动作重定向**：场景隐喻 / 上一层局限 + 英文缩写速查（L5.4）+ 前置知识 → 核心问题 → 推荐做什么 → 推荐读什么 → 学完输出什么 + 3 道自测题（目标函数与硬约束、运动学可行 ≠ 动力学可行、遥操作 vs 批量造数据的选型）与 mermaid 参考答案
+- **同步一致性：** 摘要「L5：RL / IL / 动作重定向扩展层」；L−1「Learning-based 主线」链路补 motion retargeting；L5 总览缩写表补 Retarget；L5.3「用 MoCap 做 retargeting」bullet 指向 L5.4；可选纵深表衔接点由「L2 + L5.3 之后」改为「L5.4 展开」
+- **交叉入口：** [`wiki/concepts/motion-retargeting.md`](wiki/concepts/motion-retargeting.md)、[`wiki/concepts/motion-retargeting-pipeline.md`](wiki/concepts/motion-retargeting-pipeline.md)、[`wiki/formalizations/motion-retargeting-objective.md`](wiki/formalizations/motion-retargeting-objective.md)、[`wiki/comparisons/gmr-vs-nmr-vs-reactor.md`](wiki/comparisons/gmr-vs-nmr-vs-reactor.md)、[`wiki/concepts/kinematic-vs-dynamic-feasibility.md`](wiki/concepts/kinematic-vs-dynamic-feasibility.md)、[`wiki/concepts/motion-data-quality.md`](wiki/concepts/motion-data-quality.md)、[`wiki/comparisons/humanoid-reference-motion-datasets.md`](wiki/comparisons/humanoid-reference-motion-datasets.md)、[`wiki/methods/motion-retargeting-gmr.md`](wiki/methods/motion-retargeting-gmr.md)、[`wiki/methods/deepmimic.md`](wiki/methods/deepmimic.md)、[`wiki/methods/amp-reward.md`](wiki/methods/amp-reward.md)、[`wiki/entities/amass.md`](wiki/entities/amass.md)、[`wiki/entities/lafan1-dataset.md`](wiki/entities/lafan1-dataset.md)
+- **纵深回链：** [`roadmap/depth-motion-retargeting.md`](roadmap/depth-motion-retargeting.md) 的「和主路线的关系」改为挂在 L5.4 上（原表述为「L2 与 L5 之间的数据侧展开」）
+
 ## [2026-07-28] ingest | sources/papers/icrowdnav_arxiv_2606_26047.md、sources/repos/icrowdnav.md、sources/sites/broln7-socialbev-io.md — iCrowdNav（arXiv:2606.26047，RA-L 2026）视觉人群导航；升格 wiki/entities/paper-icrowdnav.md；交叉 wiki/concepts/sim2real.md、wiki/methods/dwa.md、wiki/comparisons/mobile-robot-navigation-planning-methods.md、wiki/overview/navigation-slam-autonomy-stack.md、wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md、wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md、wiki/entities/paper-notebook-learning-social-navigation-from-positive-and-neg.md、roadmap/depth-navigation.md；注册 peng-cheng-lab / reconova；代码仓待发布
 
 - **论文：** *Learning Robot Visual Navigation in Crowds via Intention-Aware Scene Representations*（SUSTech × Reconova × 鹏城实验室；RA-L 2026）
