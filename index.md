@@ -59,6 +59,7 @@
 - [Capture Point / DCM](wiki/concepts/capture-point-dcm.md)
 - [Sim2Real](wiki/concepts/sim2real.md)
 - [Reinforcement Learning](wiki/methods/reinforcement-learning.md)
+- [Residual Policy Learning](wiki/methods/residual-policy-learning.md)（base + 残差统一框架：经典 RPL/Residual RL → RFC → Versatile Jumping → G1 上 RuN/ResMimic 九篇谱系）
 - [PyTorch](wiki/entities/pytorch.md)
 - [TensorFlow](wiki/entities/tensorflow.md)
 - [Imitation Learning](wiki/methods/imitation-learning.md)

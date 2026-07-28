@@ -89,7 +89,7 @@ summary: "Paper Notebooks 分类 05：行走运动（82 篇深读笔记索引）
 - [RoboMirror](../entities/paper-notebook-robomirror-understand-before-you-imitate-for-vid.md) — 待深读
 - [Robust Humanoid Walking on Compliant and Uneven Terrain with Deep RL](../entities/paper-notebook-robust-humanoid-walking-on-compliant-and-uneven.md) — 待深读
 - [Robust and Versatile Bipedal Jumping Control through Reinforcement Learning](../entities/paper-notebook-robust-and-versatile-bipedal-jumping-control-thr.md) — 待深读
-- [RuN](../entities/paper-notebook-run-residual-policy-for-natural-humanoid-locomot.md) — 待深读
+- [RuN](../entities/paper-notebook-run-residual-policy-for-natural-humanoid-locomot.md) — CMG 运动先验 + 残差策略的 G1 自然走跑（arXiv:2509.20696；2026-07-28 升格完整实体页）
 - [SHIELD](../entities/paper-notebook-shield-safety-on-humanoids-via-cbfs-in-expectati.md) — 待深读
 - [SKATER](../entities/paper-notebook-skater-synthesized-kinematics-for-advanced-trave.md) — 待深读
 - [Scalable and General Whole-Body Control for Cross-Humanoid Locomotion](../concepts/whole-body-control.md) — 见 wiki 实体页

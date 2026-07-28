@@ -88,6 +88,8 @@ G1 的出现极大地加速了大规模数据的采集。由于其成本低廉�
 - [显式楼梯几何条件化（论文实体）](./paper-explicit-stair-geometry-humanoid-locomotion.md) — G1 楼梯几何 token + PPO（arXiv:2605.09944）。
 - [PILOT（论文实体）](./paper-pilot-perceptive-loco-manipulation.md) — G1 感知统一 loco-manipulation 低层控制器（arXiv:2601.17440）。
 - [ResMimic（论文实体）](./paper-resmimic.md) — G1 上 GMT+残差全身 loco-manipulation，4.5–5.5 kg 载荷（arXiv:2510.05070）。
+- [RuN（论文实体）](./paper-notebook-run-residual-policy-for-natural-humanoid-locomot.md) — G1 上 CMG 运动先验 + 轻量残差策略的 0–2.5 m/s 自然走跑切换（arXiv:2509.20696）。
+- [Residual Policy Learning（方法页）](../methods/residual-policy-learning.md) — base + 残差谱系总览（含 G1 上 RuN/ResMimic 定位）。
 - [Whole-Body Locomotion（论文实体）](./paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md) — G1 扩散运动生成 + RL 全身跟踪（arXiv:2604.17335）。
 - [REK](./rek.md) — G1 VR 格斗联赛与机器人租赁品牌。
 - [QuietWalk（论文实体）](./paper-quietwalk-humanoid-locomotion.md) — G1 PINN-GRF 低噪行走（arXiv:2604.23702）。
