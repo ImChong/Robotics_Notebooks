@@ -1387,6 +1387,7 @@
 - [人形机器人并联关节解算（Parallel / Closed-Chain Joint Kinematics）](wiki/concepts/humanoid-parallel-joint-kinematics.md) — 并联关节解算**在这里指：当多个驱动分支通过刚性闭链耦合到同一末端（或同一等效自由度）时，在**机构空间**建立「驱动变量 ↔ 末端位姿/速度/力」映射，并处理**冗余与约束一致性**的一整套问题 `📅unknown` `[wiki_page]`
 - [人形与腿式策略的网络架构（Policy Network Architecture）](wiki/concepts/humanoid-policy-network-architecture.md) — 人形与腿式策略的网络架构**：在模仿学习、对抗式运动先验与强化学习论文的 Method 里，作者通常会写明 **策略网有几层、每层多少隐藏单元、判别器或 critic 是否共享骨干、是否用 Tra `📅unknown` `[wiki_page]`
 - [人形机器人运控策略的观测输入（Humanoid Policy Observation Inputs）](wiki/concepts/humanoid-policy-observation-inputs.md) — 人形机器人运控策略的观测输入**：主流人形/腿式运动控制策略（RL、IL、运动跟踪系）吃进网络或控制律的那一组量的总称；按「部署时能否拿到」可切成五类——本体感知、指令与参考、历史上下文、外部感知 `📅unknown` `[wiki_page]`
+- [人形机器人运控常见奖励函数分类（Humanoid Policy Reward Functions）](wiki/concepts/humanoid-policy-reward-functions.md) — 人形机器人运控常见奖励函数**：训练人形/腿式运动控制策略时写进环境的全部奖励项的总称；按「这个项在替谁说话」可切成六类——任务与跟踪、姿态与稳定、步态与接触、能效与平滑、安全与硬件、风格与模仿， `📅unknown` `[wiki_page]`
 - [人形机器人和橡皮人（教学类比）](wiki/concepts/humanoid-rubber-man-analogy.md) — 飞书 Know-How 子主题 **「人形机器人和橡皮人」** 用直观类比说明：仅在外形上模仿人类的机器人，可能在**质量分布、关节驱动、接触模型**上与真实人体相差甚远，行为更像「可扭曲的橡皮人」— `📅unknown` `[wiki_page]`
 - [人形机器人与其他机器人的区别](wiki/concepts/humanoid-vs-other-robots.md) — 飞书 Know-How「人形机器人与其他机器人的区别」强调：人形不是「自由度更多的机械臂」或「双足版四足」，而是**浮动基 + 间歇接触 + 上身–下肢强耦合** 带来的独特控制问题集合。 `📅unknown` `[wiki_page]`
 - [Hybrid Force-Position Control（力位混合控制）](wiki/concepts/hybrid-force-position-control.md) — 力位混合控制**：把任务空间拆成“该控位置的方向”和“该控力的方向”，让机器人在一个子空间内严格跟踪几何目标，在另一个子空间内稳定施加期望接触力。 `📅unknown` `[wiki_page]`

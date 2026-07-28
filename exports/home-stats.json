@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-07-28",
-  "node_count": 1964,
-  "edge_count": 17357,
+  "node_count": 1965,
+  "edge_count": 17376,
   "coverage": {
-    "covered": 1914,
-    "total": 1940,
+    "covered": 1915,
+    "total": 1941,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/humanoid-policy-reward-functions.md",
+      "detail_id": "wiki-concepts-humanoid-policy-reward-functions",
+      "label": "人形机器人运控常见奖励函数分类（Humanoid Policy Reward Functions）",
+      "type": "concept",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/mimickit.md",
       "detail_id": "entity-mimickit",
@@ -104,7 +114,8 @@
       "type": "concept",
       "recency": "2026-07-28",
       "source": "log.md",
-      "action": "added"
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/paper-raven-rl-adaptive-visibility-graph-mpc.md",
@@ -190,27 +201,17 @@
       "recency": "2026-07-28",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-imitation-learning.md",
-      "detail_id": "roadmap-depth-imitation-learning",
-      "label": "路线（纵深）：如果目标是模仿学习与技能迁移",
-      "type": "roadmap_page",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/mimickit.md",
-    "detail_id": "entity-mimickit",
-    "label": "MimicKit: 运动模仿与控制研究套件",
-    "type": "entity",
+    "path": "wiki/concepts/humanoid-policy-reward-functions.md",
+    "detail_id": "wiki-concepts-humanoid-policy-reward-functions",
+    "label": "人形机器人运控常见奖励函数分类（Humanoid Policy Reward Functions）",
+    "type": "concept",
     "recency": "2026-07-28",
     "source": "log.md",
-    "action": "maintained",
-    "has_repo": true,
-    "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    "action": "added",
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
@@ -222,16 +223,16 @@
       "size": 213
     },
     {
-      "label": "模仿学习",
-      "size": 180
-    },
-    {
       "label": "移动操作",
       "size": 179
     },
     {
+      "label": "模仿学习",
+      "size": 164
+    },
+    {
       "label": "仿真到现实",
-      "size": 123
+      "size": 147
     },
     {
       "label": "操作",
@@ -328,7 +329,7 @@
       "detail_id": "wiki-methods-beyondmimic",
       "label": "BeyondMimic",
       "type": "method",
-      "degree": 61,
+      "degree": 62,
       "has_repo": true
     },
     {
