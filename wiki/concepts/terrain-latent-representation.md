@@ -2,11 +2,12 @@
 type: concept
 tags: [perception, locomotion, representation-learning, teacher-student, height-map, depth, humanoid, quadruped]
 status: complete
-updated: 2026-06-14
+updated: 2026-07-28
 summary: "感知行走里 Encoder 输出的 terrain latent 通常不是可读的高度图，而是深度/高程经 CNN 压缩后的地形摘要向量；Policy 只需足够支撑正确落脚的动作，不必重建显式 64×64 栅格。"
 related:
   - ./terrain-adaptation.md
   - ./privileged-training.md
+  - ./humanoid-policy-observation-inputs.md
   - ./visual-representation-for-policy.md
   - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ../tasks/locomotion.md
@@ -94,6 +95,7 @@ Height Map → Encoder → 128 维 latent → Teacher Policy
 ## 关联页面
 
 - [Terrain Adaptation（地形适应）](./terrain-adaptation.md)
+- [人形机器人运控策略的观测输入](./humanoid-policy-observation-inputs.md) — 本页对应其中 D 类外部感知的编码形态
 - [Privileged Training（特权信息训练）](./privileged-training.md) — Teacher 高度图 → Student 深度 latent 蒸馏
 - [楼梯与障碍 Locomotion 中心节点](../tasks/stair-obstacle-perceptive-locomotion.md)
 - [Perceptive BFM](../entities/paper-perceptive-bfm.md) — raw 参考 + 机器人中心高程感知

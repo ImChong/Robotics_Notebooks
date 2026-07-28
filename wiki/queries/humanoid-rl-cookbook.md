@@ -3,7 +3,7 @@ type: query
 tags: [locomotion, rl, sim2real, humanoid, cookbook, training]
 status: stable
 summary: "人形机器人 RL 策略训练完整 Checklist"
-updated: 2026-05-16
+updated: 2026-07-28
 sources:
   - ../../sources/papers/privileged_training.md
   - ../../sources/papers/policy_optimization.md
@@ -51,6 +51,8 @@ flowchart TB
 ---
 
 ## Stage 2：Observation 设计
+
+> 观测输入的五类划分（本体感知 / 指令与参考 / 历史上下文 / 外部感知 / 特权信息）与逐项获取方式，见概念页 [人形机器人运控策略的观测输入](../concepts/humanoid-policy-observation-inputs.md)；本节是其操作版。
 
 **最小可用 observation**（推荐入门）：
 

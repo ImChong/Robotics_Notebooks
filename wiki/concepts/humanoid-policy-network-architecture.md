@@ -2,9 +2,10 @@
 type: concept
 tags: [il, rl, humanoid, architecture, vla, world-models, foundation-policy, diffusion-policy, amp]
 status: complete
-updated: 2026-07-18
+updated: 2026-07-28
 summary: "人形与腿式模仿/强化策略里，网络“长什么样”往往被写在论文 Method：从浅层 MLP 到 AMP 判别器、MoE、Transformer/Diffusion chunk，再到 VLA 与 WAM；真机强项常是小 MLP，难点在观测、奖励与 sim2real。"
 related:
+  - ./humanoid-policy-observation-inputs.md
   - ./whole-body-control.md
   - ./transformer.md
   - ../methods/imitation-learning.md
@@ -153,6 +154,7 @@ flowchart TD
 
 ## 关联页面
 
+- [人形机器人运控策略的观测输入](./humanoid-policy-observation-inputs.md) — 架构表格中「输入」列的五类来源与获取方式
 - [神经反馈控制器](./neural-feedback-controller.md) — Policy 作为 $\pi(x)$ 状态反馈律与推理算力直觉
 - [Transformer](./transformer.md)
 - [Imitation Learning](../methods/imitation-learning.md)
