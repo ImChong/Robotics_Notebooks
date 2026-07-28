@@ -70,6 +70,7 @@ HRL：上层策略拆分子任务/选项，下层策略执行具体运动，缓�
 - [Curriculum Learning](../concepts/curriculum-learning.md)
 - [AWARE（轮足分层反射避障）](../entities/paper-aware-wheeled-legged-reflexive-evasion.md)
 - [SkillMimic](../entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md) — LLC 多技能模仿 + HLC 离散选技能完成篮球长程任务
+- [Learning to Ball](../entities/paper-notebook-learning-to-ball.md) — 多子技能策略 + soft router 组合长程篮球连招（ill-defined 过渡）
 
 ## 参考来源
 

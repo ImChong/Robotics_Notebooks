@@ -1,5 +1,16 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-28] ingest | sources/papers/learning_to_ball_arxiv_2509_22442.md + sources/repos/learning-to-ball.md + sources/sites/pei-xu-basketball-github-io.md — Learning to Ball（arXiv:2509.22442，SIGGRAPH Asia 2025）；升格 wiki/entities/paper-notebook-learning-to-ball.md；交叉 wiki/overview/paper-notebook-category-13-physics-based-animation.md、wiki/methods/hierarchical-reinforcement-learning.md、wiki/methods/imitation-learning.md、wiki/entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md、wiki/entities/paper-notebook-composite-motion-learning-with-task-control.md
+
+- **论文：** *Learning to Ball: Composing Policies for Long-Horizon Basketball Moves*（Stanford × UC Riverside × Roblox × Clemson；ACM TOG / SIGGRAPH Asia 2025）
+- **一手入口：** [arXiv:2509.22442](https://arxiv.org/abs/2509.22442) · 项目页 [pei-xu.github.io/basketball](https://pei-xu.github.io/basketball) · 仓 [xupei0610/basketball](https://github.com/xupei0610/basketball)
+- **归档：** [`sources/papers/learning_to_ball_arxiv_2509_22442.md`](sources/papers/learning_to_ball_arxiv_2509_22442.md)、[`sources/repos/learning-to-ball.md`](sources/repos/learning-to-ball.md)、[`sources/sites/pei-xu-basketball-github-io.md`](sources/sites/pei-xu-basketball-github-io.md)；更新 [`sources/papers/humanoid_pnb_learning-to-ball.md`](sources/papers/humanoid_pnb_learning-to-ball.md)
+- **主升格：** [`wiki/entities/paper-notebook-learning-to-ball.md`](wiki/entities/paper-notebook-learning-to-ball.md) — Type A/B/C 过渡 + soft router；结论 / 源码运行时序图
+- **交叉：** [`wiki/overview/paper-notebook-category-13-physics-based-animation.md`](wiki/overview/paper-notebook-category-13-physics-based-animation.md)、[`wiki/methods/hierarchical-reinforcement-learning.md`](wiki/methods/hierarchical-reinforcement-learning.md)、[`wiki/methods/imitation-learning.md`](wiki/methods/imitation-learning.md)、[`wiki/entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md`](wiki/entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md)、[`wiki/entities/paper-notebook-composite-motion-learning-with-task-control.md`](wiki/entities/paper-notebook-composite-motion-learning-with-task-control.md)
+- **机构注册：** `schema/institutions.json` → `uc-riverside`、`roblox`、`clemson`（`stanford` 已有）
+- **开源核查（2026-07-28）：** 项目页链 GitHub；仓 **已开源**（MIT）训练/评测与子技能预训练；高层 soft router / gather 独立 cfg 与预训练 **未列于公开清单**
+
+
 ## [2026-07-28] ingest | sources/papers/skillmimic_arxiv_2408_15270.md + sources/repos/skillmimic.md + sources/sites/ingrid789-skillmimic-github-io.md — SkillMimic（arXiv:2408.15270，CVPR 2025 Highlight）；升格 wiki/entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md；交叉 wiki/overview/paper-notebook-category-13-physics-based-animation.md、wiki/methods/ase.md、wiki/methods/hierarchical-reinforcement-learning.md、wiki/methods/imitation-learning.md、wiki/entities/paper-notebook-learning-to-ball.md
 
 - **论文：** *SkillMimic: Learning Basketball Interaction Skills from Demonstrations*（HKUST × Unitree × PKU × Tsinghua × IDEA × Tencent × CMU；CVPR 2025 Highlight）

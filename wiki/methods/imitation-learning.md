@@ -228,6 +228,7 @@ flowchart TD
 - [HAIC](./haic.md) — 基于世界模型的教师-学生训练范式
 - [InterPrior（论文实体）](../entities/paper-interprior.md) — HOI 模仿专家 → 变分蒸馏 → RL 微调的可泛化运动先验（arXiv:2602.06035）
 - [SkillMimic（论文实体）](../entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md) — 统一 HOI 模仿 + Contact Graph 学可复用篮球技能（arXiv:2408.15270）
+- [Learning to Ball（论文实体）](../entities/paper-notebook-learning-to-ball.md) — 非结构化对抗模仿学子技能 + soft router 拼长程篮球连招（arXiv:2509.22442）
 - [TSIL（论文实体）](../entities/paper-tsil-temporal-self-imitation-learning.md) — RL 训练期按配置挖掘快速成功并效率加权回放（arXiv:2606.19752）
 - [TacO（触觉传感器操作基准）](../entities/paper-taco-tactile-sensor-benchmark.md) — 统一 ACT 管线跨模态触觉真机 IL 评测（arXiv:2605.21976）
 - [DEUX（XYZ）](../entities/xyz-deux.md) — 真店手套采数 → Brain X IL/RL 的闭源服务机器人样本

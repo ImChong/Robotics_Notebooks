@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-28",
   "node_count": 1956,
-  "edge_count": 17002,
+  "edge_count": 17010,
   "coverage": {
     "covered": 1905,
     "total": 1932,
@@ -9,14 +9,15 @@
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md",
-      "detail_id": "entity-paper-notebook-skillmimic-learning-basketball-interaction-skill",
-      "label": "SkillMimic（Learning Basketball Interaction Skills from Demonstrations）",
+      "path": "wiki/entities/paper-notebook-learning-to-ball.md",
+      "detail_id": "entity-paper-notebook-learning-to-ball",
+      "label": "Learning to Ball（Composing Policies for Long-Horizon Basketball Moves）",
       "type": "entity",
       "recency": "2026-07-28",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
     },
     {
       "path": "wiki/overview/paper-notebook-category-13-physics-based-animation.md",
@@ -27,15 +28,6 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
-    },
-    {
-      "path": "wiki/methods/ase.md",
-      "detail_id": "wiki-methods-ase",
-      "label": "ASE: 对抗性技能嵌入",
-      "type": "method",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained"
     },
     {
       "path": "wiki/methods/hierarchical-reinforcement-learning.md",
@@ -58,14 +50,33 @@
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
-      "path": "wiki/entities/paper-notebook-learning-to-ball.md",
-      "detail_id": "entity-paper-notebook-learning-to-ball",
-      "label": "Learning to Ball",
+      "path": "wiki/entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md",
+      "detail_id": "entity-paper-notebook-skillmimic-learning-basketball-interaction-skill",
+      "label": "SkillMimic（Learning Basketball Interaction Skills from Demonstrations）",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-notebook-composite-motion-learning-with-task-control.md",
+      "detail_id": "entity-paper-notebook-composite-motion-learning-with-task-control",
+      "label": "Composite Motion Learning with Task Control",
       "type": "entity",
       "recency": "2026-07-28",
       "source": "log.md",
       "action": "maintained",
       "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
+    },
+    {
+      "path": "wiki/methods/ase.md",
+      "detail_id": "wiki-methods-ase",
+      "label": "ASE: 对抗性技能嵌入",
+      "type": "method",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained"
     },
     {
       "path": "wiki/queries/sim2real-closed-loop-engineering.md",
@@ -191,26 +202,18 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/queries/open-source-motion-control-projects.md",
-      "detail_id": "wiki-queries-open-source-motion-control-projects",
-      "label": "开源运动控制项目结构化摘要",
-      "type": "query",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md",
-    "detail_id": "entity-paper-notebook-skillmimic-learning-basketball-interaction-skill",
-    "label": "SkillMimic（Learning Basketball Interaction Skills from Demonstrations）",
+    "path": "wiki/entities/paper-notebook-learning-to-ball.md",
+    "detail_id": "entity-paper-notebook-learning-to-ball",
+    "label": "Learning to Ball（Composing Policies for Long-Horizon Basketball Moves）",
     "type": "entity",
     "recency": "2026-07-28",
     "source": "log.md",
     "action": "maintained",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
   },
   "top_communities": [
     {
@@ -231,11 +234,11 @@
     },
     {
       "label": "全身控制",
-      "size": 114
+      "size": 117
     },
     {
-      "label": "模仿学习",
-      "size": 90
+      "label": "仿真训练",
+      "size": 87
     }
   ],
   "top_hubs": [
@@ -289,7 +292,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 256,
+      "degree": 257,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
@@ -304,7 +307,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 205,
+      "degree": 207,
       "has_repo": true,
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },

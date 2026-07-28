@@ -2,11 +2,12 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
 status: planned
-updated: 2026-06-26
+updated: 2026-07-28
 venue: curated
 related:
   - ../overview/paper-notebook-category-13-physics-based-animation.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ./paper-notebook-learning-to-ball.md
 sources:
   - ../../sources/papers/humanoid_pnb_composite-motion-learning-with-task-control.md
 summary: "Composite Motion Learning with Task Control：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
@@ -50,6 +51,7 @@ Composite Motion Learning with Task Control 的人形机器人学习论文条目
 
 - 分类父节点：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- 后续篮球长程组合应用：[Learning to Ball](./paper-notebook-learning-to-ball.md) — 官方实现基于本方法 + ICCGAN
 
 ## 参考来源
 
