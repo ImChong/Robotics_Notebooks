@@ -38,6 +38,9 @@
 | **Navigation2** | https://navigation.ros.org/ | 移动机器人导航参考栈 |
 | **MoveIt 2** | https://moveit.picknik.ai/ | 机械臂运动规划与碰撞检测（详见 [MoveIt 2 实体页](../../wiki/entities/moveit2.md)） |
 | **ROS 2 Design** | https://design.ros2.org/ | 架构决策记录（为何选 DDS、为何弃用 Master 等） |
+| **RMW Design** | https://design.ros2.org/articles/ros_middleware_interface.html | 中间件抽象接口动机与形态（归档：[ros2-design-rmw-interface.md](ros2-design-rmw-interface.md)） |
+| **RMW Vendors / 多实现** | [About Different Middleware Vendors](https://docs.ros.org/en/humble/Concepts/Intermediate/About-Different-Middleware-Vendors.html) · [Working with multiple RMW](https://docs.ros.org/en/humble/How-To-Guides/Working-with-multiple-RMW-implementations.html) | 支持矩阵与 `RMW_IMPLEMENTATION`（归档：[ros2-rmw-middleware-vendors.md](ros2-rmw-middleware-vendors.md)） |
+| **ros2/rmw** | https://github.com/ros2/rmw | RMW C API 定义仓（归档：[repos/rmw.md](../repos/rmw.md)） |
 
 ## 与本仓库现有资料的关系
 
@@ -51,5 +54,6 @@
 
 ## 对 wiki 的映射
 
-- 已沉淀：[ros2-basics](../../wiki/concepts/ros2-basics.md)、[ros2-vs-lcm](../../wiki/comparisons/ros2-vs-lcm.md)、[dds-communication](../../wiki/concepts/dds-communication.md)
+- 已沉淀：[ros2-basics](../../wiki/concepts/ros2-basics.md)、[rmw-interface](../../wiki/concepts/rmw-interface.md)、[ros2-vs-lcm](../../wiki/comparisons/ros2-vs-lcm.md)、[dds-communication](../../wiki/concepts/dds-communication.md)
 - 技术地图入口：本页支撑 [tech-node-system-ros2](../../tech-map/modules/system/ros2.md) 模块正文
+- RMW 专题归档：[ros2-design-rmw-interface.md](ros2-design-rmw-interface.md)、[ros2-rmw-middleware-vendors.md](ros2-rmw-middleware-vendors.md)、[repos/rmw.md](../repos/rmw.md)

@@ -16,12 +16,13 @@
   - 规范合集：[omg-dds-spec.md](omg-dds-spec.md) — [OMG DDS 1.4](https://www.omg.org/spec/DDS/1.4)、[DDSI-RTPS 2.5](https://www.omg.org/spec/DDSI-RTPS/2.5)
   - Fast DDS：[fast-dds-docs.md](fast-dds-docs.md) · [repos/fast-dds.md](../repos/fast-dds.md)
   - Cyclone DDS：[cyclonedds-io.md](cyclonedds-io.md) · [repos/cyclonedds.md](../repos/cyclonedds.md)
+  - **RMW 接口：** [ros2-design-rmw-interface.md](ros2-design-rmw-interface.md) · [ros2-rmw-middleware-vendors.md](ros2-rmw-middleware-vendors.md) · [repos/rmw.md](../repos/rmw.md)
   - ROS 2：`ros2.repos` 钉定 vendor（[repos/ros2.md](../repos/ros2.md)）；发行版文档 [About different DDS/RTPS vendors](https://docs.ros.org/en/humble/Concepts/Intermediate/About-Different-Middleware-Vendors.html)
 - **要点：**
   - **数据中心化发布订阅（DCPS）**：Topic + Type + QoS；发现去中心化。
   - **QoS**：Reliability、History、Durability、Deadline、Liveliness——决定「要最新」还是「要必达」。
   - ROS 2 通过 **RMW** 换 vendor；默认实现随发行版变化，调优须落到具体 DDS。
-- **对 wiki 的映射：** [dds-communication](../../wiki/concepts/dds-communication.md)、[fast-dds](../../wiki/entities/fast-dds.md)、[cyclone-dds](../../wiki/entities/cyclone-dds.md)、[ros2-basics](../../wiki/concepts/ros2-basics.md)
+- **对 wiki 的映射：** [rmw-interface](../../wiki/concepts/rmw-interface.md)、[dds-communication](../../wiki/concepts/dds-communication.md)、[fast-dds](../../wiki/entities/fast-dds.md)、[cyclone-dds](../../wiki/entities/cyclone-dds.md)、[ros2-basics](../../wiki/concepts/ros2-basics.md)
 
 ### 2) RTOS 与实时调度
 

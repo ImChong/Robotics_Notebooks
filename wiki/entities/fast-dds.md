@@ -5,6 +5,7 @@ status: complete
 updated: 2026-07-28
 related:
   - ../concepts/dds-communication.md
+  - ../concepts/rmw-interface.md
   - ./cyclone-dds.md
   - ../concepts/ros2-basics.md
   - ../comparisons/ros2-vs-lcm.md
@@ -14,6 +15,8 @@ sources:
   - ../../sources/sites/fast-dds-docs.md
   - ../../sources/sites/omg-dds-spec.md
   - ../../sources/repos/ros2.md
+  - ../../sources/repos/rmw.md
+  - ../../sources/sites/ros2-rmw-middleware-vendors.md
 summary: "eProsima Fast DDS：OMG DDS/RTPS 的 Apache-2.0 C++ 实现；ROS 2 默认 RMW 之一（rmw_fastrtps）；双层 API、UDP/TCP/SHM 与 Discovery Server。"
 ---
 
@@ -78,6 +81,7 @@ flowchart LR
 ## 关联页面
 
 - [DDS 通信机制](../concepts/dds-communication.md)
+- [RMW 接口](../concepts/rmw-interface.md)
 - [Cyclone DDS](./cyclone-dds.md)
 - [ROS 2 基础](../concepts/ros2-basics.md)
 - [ROS 2 vs LCM](../comparisons/ros2-vs-lcm.md)
@@ -89,6 +93,7 @@ flowchart LR
 - [sources/sites/fast-dds-docs.md](../../sources/sites/fast-dds-docs.md)
 - [sources/sites/omg-dds-spec.md](../../sources/sites/omg-dds-spec.md)
 - [sources/repos/ros2.md](../../sources/repos/ros2.md)（`ros2.repos` 钉定）
+- [sources/repos/rmw.md](../../sources/repos/rmw.md) · [Vendors / 多 RMW](../../sources/sites/ros2-rmw-middleware-vendors.md)
 
 ## 推荐继续阅读
 

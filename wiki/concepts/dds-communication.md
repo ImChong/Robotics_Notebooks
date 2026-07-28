@@ -5,6 +5,7 @@ status: complete
 updated: 2026-07-28
 related:
   - ./ros2-basics.md
+  - ./rmw-interface.md
   - ../entities/fast-dds.md
   - ../entities/cyclone-dds.md
   - ../comparisons/ros2-vs-lcm.md
@@ -20,6 +21,9 @@ sources:
   - ../../sources/sites/cyclonedds-io.md
   - ../../sources/repos/fast-dds.md
   - ../../sources/repos/cyclonedds.md
+  - ../../sources/repos/rmw.md
+  - ../../sources/sites/ros2-design-rmw-interface.md
+  - ../../sources/sites/ros2-rmw-middleware-vendors.md
   - ../../sources/sites/dds_omg_rtos_edge_ota_safety_primary_refs.md
   - ../../sources/sites/ros2-official-documentation.md
   - ../../sources/repos/ros2.md
@@ -40,7 +44,7 @@ summary: "DDS（Data Distribution Service）：OMG DCPS/QoS 与 DDSI-RTPS 线协
 | DCPS | Data-Centric Publish-Subscribe | 数据中心化发布订阅模型 |
 | RTPS | Real-Time Publish-Subscribe | DDS 互操作线协议（DDSI-RTPS） |
 | QoS | Quality of Service | 可靠性、历史、截止期等策略 |
-| RMW | ROS Middleware | ROS 2 与具体 DDS 实现的适配层 |
+| RMW | ROS Middleware | ROS 2 与具体 DDS 实现的适配层（专页：[rmw-interface](./rmw-interface.md)） |
 | SPDP/SEDP | Simple Participant/Endpoint Discovery Protocol | RTPS 内置发现机制 |
 
 ## 为什么重要
@@ -110,6 +114,7 @@ flowchart LR
 ## 关联页面
 
 - [ROS 2 基础](./ros2-basics.md)
+- [RMW 接口](./rmw-interface.md)
 - [Fast DDS](../entities/fast-dds.md)
 - [Cyclone DDS](../entities/cyclone-dds.md)
 - [ROS 2 vs LCM](../comparisons/ros2-vs-lcm.md)
@@ -125,6 +130,7 @@ flowchart LR
 - [Cyclone DDS 官网](../../sources/sites/cyclonedds-io.md) · [仓](../../sources/repos/cyclonedds.md)
 - [DDS/RTOS/边云合集索引](../../sources/sites/dds_omg_rtos_edge_ota_safety_primary_refs.md)
 - [ROS 2 官方文档](../../sources/sites/ros2-official-documentation.md) · [ros2 元仓](../../sources/repos/ros2.md)
+- [ros2/rmw](../../sources/repos/rmw.md) · [RMW Design](../../sources/sites/ros2-design-rmw-interface.md) · [Vendors / 多 RMW](../../sources/sites/ros2-rmw-middleware-vendors.md)
 
 ## 推荐继续阅读
 

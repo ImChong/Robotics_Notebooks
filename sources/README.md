@@ -231,6 +231,7 @@
 | [x] [navigation_slam_autonomy_stack_catalog.md](repos/navigation_slam_autonomy_stack_catalog.md) | 导航·SLAM·自动驾驶 21 仓索引：Nav2、slam_toolbox、Cartographer、FAST-LIO、VINS、Autoware、Isaac ROS、LeRobot、OpenVLA 等 |
 | [x] [navigation2.md](repos/navigation2.md) | Navigation2：ROS 2 导航框架 |
 | [x] [ros-planning-srdfdom.md](repos/ros-planning-srdfdom.md) | ros-planning/srdfdom：SRDF 解析/写入（MoveIt 语义配置） |
+| [x] [rmw.md](repos/rmw.md) | ros2/rmw：ROS Middleware Interface C API（Quality Level 1） |
 | [x] [slam_toolbox.md](repos/slam_toolbox.md) | SLAM Toolbox：2D lifelong SLAM |
 | [x] [cartographer.md](repos/cartographer.md) | Google Cartographer 2D/3D SLAM |
 | [x] [fast_lio.md](repos/fast_lio.md) | FAST-LIO：LiDAR-惯性里程计 |
@@ -421,6 +422,8 @@
 | [x] [lab_roboparty_com.md](sites/lab_roboparty_com.md) | RoboParty Lab 官网：Party OS 四方向、开源项目与荣誉列表 |
 | [x] [roboparty_lab_tech_humanoid_control.md](sites/roboparty_lab_tech_humanoid_control.md) | TeCH 成果页（lab.roboparty.com/outputs/tech）：无监督人形全身控制 |
 | [x] [ros2-official-documentation.md](sites/ros2-official-documentation.md) | ROS 2 Humble 官方文档、ros2_control / Nav2 / Design 一手索引 |
+| [x] [ros2-design-rmw-interface.md](sites/ros2-design-rmw-interface.md) | ROS 2 Design：Middleware Interface（RMW 抽象动机） |
+| [x] [ros2-rmw-middleware-vendors.md](sites/ros2-rmw-middleware-vendors.md) | 不同 DDS/RMW vendor 矩阵与多 RMW 切换 How-To |
 | [x] [sirui-xu-interprior-github-io.md](sites/sirui-xu-interprior-github-io.md) | InterPrior 项目页 sirui-xu.github.io/InterPrior（能力演示、BibTeX、Inter-line 姊妹链） |
 | [x] [altium-designer-primary-refs.md](sites/altium-designer-primary-refs.md) | Altium Designer 官方技术文档一手索引（QuickStart、ECO、Rules/Constraint Manager、制造 OutJob、ECAD-MCAD CoDesigner） |
 | [x] [simplefoc_documentation.md](sites/simplefoc_documentation.md) | docs.simplefoc.com：Arduino SimpleFOC 官方文档（理论、运动/扭矩环、硬件与 v2.4 发布说明） |

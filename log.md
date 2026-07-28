@@ -1,5 +1,16 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-28] ingest | sources/sites/ros2-design-rmw-interface.md + ros2-rmw-middleware-vendors.md + sources/repos/rmw.md — RMW（ROS Middleware Interface）一手入库；升格 wiki/concepts/rmw-interface.md
+
+- **一手入口：**
+  - Design [ROS 2 middleware interface](https://design.ros2.org/articles/ros_middleware_interface.html)（Dirk Thomas；源 `ros2/design`）
+  - 文档 [About Different Middleware Vendors](https://docs.ros.org/en/humble/Concepts/Intermediate/About-Different-Middleware-Vendors.html) · [Working with multiple RMW](https://docs.ros.org/en/humble/How-To-Guides/Working-with-multiple-RMW-implementations.html)（源 RST：`ros2/ros2_documentation`）
+  - 仓 [ros2/rmw](https://github.com/ros2/rmw)（~119★，Apache-2.0，Quality Level 1）
+- **归档：** [`sources/sites/ros2-design-rmw-interface.md`](sources/sites/ros2-design-rmw-interface.md)、[`sources/sites/ros2-rmw-middleware-vendors.md`](sources/sites/ros2-rmw-middleware-vendors.md)、[`sources/repos/rmw.md`](sources/repos/rmw.md)；交叉 [`sources/sites/ros2-official-documentation.md`](sources/sites/ros2-official-documentation.md)、[`sources/repos/ros2.md`](sources/repos/ros2.md)、[`sources/sites/dds_omg_rtos_edge_ota_safety_primary_refs.md`](sources/sites/dds_omg_rtos_edge_ota_safety_primary_refs.md)、[`sources/README.md`](sources/README.md)
+- **主升格：** [`wiki/concepts/rmw-interface.md`](wiki/concepts/rmw-interface.md) — 分层、vendor 表、`RMW_IMPLEMENTATION`、开源核查
+- **交叉：** [`wiki/concepts/ros2-basics.md`](wiki/concepts/ros2-basics.md)、[`wiki/concepts/dds-communication.md`](wiki/concepts/dds-communication.md)、[`wiki/entities/fast-dds.md`](wiki/entities/fast-dds.md)、[`wiki/entities/cyclone-dds.md`](wiki/entities/cyclone-dds.md)
+- **开源核查（2026-07-28）：** `ros2/rmw` **已开源**（Apache-2.0）；Design / 文档源 **公开**；Fast/Cyclone RMW 适配开源；Connext/Gurum 等商业 vendor 需另装
+
 ## [2026-07-28] ingest | sources/sites/omg-dds-spec.md + fast-dds-docs.md + cyclonedds-io.md + sources/repos/fast-dds.md + cyclonedds.md — DDS 标准与 Fast/Cyclone 一手入库；升格 wiki/entities/fast-dds.md、cyclone-dds.md；深化 wiki/concepts/dds-communication.md
 
 - **一手入口：**

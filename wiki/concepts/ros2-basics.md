@@ -9,6 +9,7 @@ related:
   - ../comparisons/ros2-vs-lcm.md
   - ../queries/real-time-control-middleware-guide.md
   - ./dds-communication.md
+  - ./rmw-interface.md
   - ../entities/fast-dds.md
   - ../entities/cyclone-dds.md
   - ./lcm-basics.md
@@ -17,6 +18,9 @@ sources:
   - ../../sources/sites/ros2-official-documentation.md
   - ../../sources/sites/ros2-github-org.md
   - ../../sources/repos/ros2.md
+  - ../../sources/repos/rmw.md
+  - ../../sources/sites/ros2-design-rmw-interface.md
+  - ../../sources/sites/ros2-rmw-middleware-vendors.md
   - ../../sources/sites/omg-dds-spec.md
   - ../../sources/repos/fast-dds.md
   - ../../sources/repos/cyclonedds.md
@@ -49,7 +53,7 @@ summary: "ROS 2 是机器人系统集成的事实标准中间件栈：节点图 
 
 ### 架构：DDS + RMW
 
-相比 ROS 1，ROS 2 核心变化是默认采用 **DDS**，经 **RMW** 对接具体实现（[Fast DDS](../entities/fast-dds.md)、[Cyclone DDS](../entities/cyclone-dds.md)、实验性 Zenoh 等）。独立概念页：[DDS 通信机制](./dds-communication.md)；标准一手：[OMG DDS / RTPS](../../sources/sites/omg-dds-spec.md)。
+相比 ROS 1，ROS 2 核心变化是默认采用 **DDS**，经 **RMW** 对接具体实现（[Fast DDS](../entities/fast-dds.md)、[Cyclone DDS](../entities/cyclone-dds.md)、实验性 Zenoh 等）。独立概念页：[RMW 接口](./rmw-interface.md)、[DDS 通信机制](./dds-communication.md)；标准一手：[OMG DDS / RTPS](../../sources/sites/omg-dds-spec.md)。
 
 - **去中心化**：无 `roscore`；单节点故障不拖垮全网发现域。
 - **QoS**：按 topic 配置 Reliable / Best Effort、History、Deadline 等；发布端与订阅端须兼容。
@@ -118,6 +122,7 @@ flowchart TB
 
 ## 关联页面
 
+- [RMW 接口](./rmw-interface.md)
 - [DDS 通信机制](./dds-communication.md)
 - [Fast DDS](../entities/fast-dds.md)
 - [Cyclone DDS](../entities/cyclone-dds.md)
@@ -136,6 +141,7 @@ flowchart TB
 - [ROS 2 官方文档（Humble）归档](../../sources/sites/ros2-official-documentation.md)
 - [ROS 2 GitHub 组织归档](../../sources/sites/ros2-github-org.md)（https://github.com/ros2）
 - [ros2/ros2 元仓库归档](../../sources/repos/ros2.md)（https://github.com/ros2/ros2）
+- [ros2/rmw](../../sources/repos/rmw.md) · [RMW Design](../../sources/sites/ros2-design-rmw-interface.md) · [Vendors / 多 RMW](../../sources/sites/ros2-rmw-middleware-vendors.md)
 - [OMG DDS / DDSI-RTPS](../../sources/sites/omg-dds-spec.md) · [Fast DDS](../../sources/repos/fast-dds.md) · [Cyclone DDS](../../sources/repos/cyclonedds.md)
 - [DDS/RTOS 等一手资料合集](../../sources/sites/dds_omg_rtos_edge_ota_safety_primary_refs.md)
 
