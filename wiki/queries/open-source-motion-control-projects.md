@@ -244,3 +244,4 @@ sources:
 - [Reward Design](../concepts/reward-design.md) — OmniTrack / HumanX / AMS / OmniXtreme 的统一入口
 - [Motion Retargeting](../concepts/motion-retargeting.md) — GMR 与 OmniRetarget 所在的问题域
 - [Sim2Real](../concepts/sim2real.md) — 精确建模、特权训练、部署约束的交汇处
+- [Humanoid Motion Intelligence 知识库](../entities/humanoid-motion-intelligence.md) — 具身智能研究室开源项目主表（~166 项）与六条路线总入口
