@@ -3,8 +3,10 @@ type: task
 tags: [teleoperation, manipulation, loco-manipulation, data-collection, humanoid]
 status: complete
 summary: "Teleoperation 让人类通过远程接口直接操作机器人，是数据采集和复杂任务执行的重要桥梁。"
-updated: 2026-07-27
+updated: 2026-07-28
 sources:
+  - ../../sources/papers/teledexter_arxiv_2607_11481.md
+  - ../../sources/sites/teledexter-project.md
   - ../../sources/blogs/mimicrobotics_m1_u1_full_stack.md
   - ../../sources/sites/rek-com.md
   - ../../sources/sites/engineai-urkl.md
@@ -116,6 +118,7 @@ sources:
 | HIW-500（BitRobot / Unitree / HF 2026） | Unitree G1 | 全身遥操作 | **500+ h / 23K+ 集** | 东南亚 **12** 个真实家庭、**10+** 家务任务；开源最大规模人形遥操作集之一；见 [数据集实体](../entities/hiw-500-dataset.md) |
 | TeleGate（USTC / AnyWit 2026） | Unitree G1 | **惯性动捕** 全身关节跟踪 | **2.5 h** 自采六类 | **门控选冻结专家** + VAE 历史→未来先验；避免蒸馏统一策略；跑跳/跌倒恢复；见 [论文实体](../entities/paper-telegate.md) |
 | HEFT（清华 / RobotEra 2026） | Unitree G1 + **L7**（175 cm 全尺寸） | **VR 全身参考**（部署吃 raw 流） | PMG 配对 VR + SEED 等 | **PMG** 噪声 VR 跟踪 + **WPC** 窗化双手负载；L7 **24 kg** 重载遥操作 + 高动态跟踪；见 [论文实体](../entities/paper-heft.md) |
+| **TeleDexter**（清华 / BIGAI / 北大 2026） | Franka + SharpaWave / LeapHand | **NOKOV MoCap**（腕 + 指尖 + 物体 6D） | 七任务真机遥操作 + 50 demos/任务 | **hand–object co-tracking** 低层「小脑」；平均 **75.2% SR**；基线运动学/生成先验近失败；**未开源**；见 [论文实体](../entities/paper-teledexter.md) |
 | AnyTeleop（UCB 2023） | 多平台 | RGB 相机 | 通用 | 无传感器手套，仅视觉输入 |
 | GELLO（Berkeley 2023） | 多 UR/Franka | Leader Arms | 低成本 | 低成本版 ALOHA |
 | REK（2025–） | Unitree G1 / H 系 | VR 头显（REK TEK） | 售票现场赛 | **全接触格斗** 竞技向全身映射；非 IL 数据集导向；见 [REK 实体](../entities/rek.md) |
@@ -168,6 +171,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 
 ## 参考来源
 
+- **ingest 档案：** [sources/papers/teledexter_arxiv_2607_11481.md](../../sources/papers/teledexter_arxiv_2607_11481.md)、[sources/sites/teledexter-project.md](../../sources/sites/teledexter-project.md) — TeleDexter：hand–object co-tracking 灵巧遥操作（arXiv:2607.11481；未开源）
 - **ingest 档案：** [sources/sites/engineai-urkl.md](../../sources/sites/engineai-urkl.md) — URKL：EngineAI 统一 T800 自主算法格斗联赛
 - **ingest 档案：** [sources/sites/urkl-org.md](../../sources/sites/urkl-org.md) — URKL 独立导读站（证据链 / 赛程）
 - **ingest 档案：** [sources/blogs/wechat_urkl_faq_01.md](../../sources/blogs/wechat_urkl_faq_01.md) — 众擎 URKL 官方 FAQ（开源承诺 / 商业化）
@@ -205,6 +209,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - [Imitation Learning](../methods/imitation-learning.md) — 遥操作数据的学习方法
 - [Humanoid Transformer with Touch Dreaming](../methods/humanoid-transformer-touch-dreaming.md) — 使用触觉遥操作数据训练接触感知策略
 - [Diffusion Policy](../methods/diffusion-policy.md) — 遥操作数据训练的扩散策略
+- [TeleDexter（论文实体）](../entities/paper-teledexter.md) — hand–object co-tracking 灵巧遥操作与采数引擎
 - [UME-EXO（论文实体）](../entities/paper-ume-exo.md) — 外骨骼力矩反馈 + 全身臂形示教 → ACT 主动柔顺策略
 - [BifrostUMI（论文实体）](../entities/paper-bifrost-umi.md) — 无机器人示范 → 人形全身扩散策略 + SKR
 - [HandUMI](../entities/handumi.md) — 开源无机器人示教；一次采集多臂重定向

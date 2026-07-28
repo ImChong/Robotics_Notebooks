@@ -1094,6 +1094,7 @@
 - [TacRefineNet：边缘突出物体的目标条件触觉抓取精修](wiki/entities/paper-tacrefinenet-tactile-grasp-refinement.md) — TacRefineNet**（*Goal-Conditioned Tactile Grasp Refinement for Edge-Prominent Objects*，小米机器人实验室，arX `📅unknown` `[entity_page]`
 - [TD-MPC2（Scalable, Robust World Models for Continuous Control）](wiki/entities/paper-td-mpc2.md) — TD-MPC2**（arXiv:2310.16828，ICLR 2024 Spotlight，Nicklas Hansen、 `📅unknown` `[entity_page]`
 - [TeCH：基于对比表征学习的时间距离建模，用于人形机器人全身控制](wiki/entities/paper-tech-humanoid-control.md) — TeCH**（*Temporal Distance modeling via Contrastive representation learning for Humanoid whole-body `📅unknown` `[entity_page]`
+- [TeleDexter：接近人类水平的灵巧遥操作](wiki/entities/paper-teledexter.md) — TeleDexter**（*Towards Human-level Dexterous Teleoperation*，[arXiv:2607.11481](https://arxiv.org/ab `📅unknown` `[entity_page]`
 - [TeleGate](wiki/entities/paper-telegate.md) — TeleGate**（*Whole-Body Humanoid Teleoperation via Gated Expert Selection with Motion Prior*，USTC 等 `📅unknown` `[entity_page]`
 - [Thinking in Video（视频生成器能否对真实世界做因果推理？）](wiki/entities/paper-thinking-in-video.md) — Thinking in Video**（*Can Video Generators Really Reason About the Real World?*，[arXiv:2607.17523 `📅unknown` `[entity_page]`
 - [TianjicX：面向多任务机器人的时空弹性神经形态芯片](wiki/entities/paper-tianjicx-neuromorphic-chip-robots.md) — Neuromorphic computing chip with spatiotemporal elasticity for multi-intelligent-tasking robots**（ `📅unknown` `[entity_page]`
