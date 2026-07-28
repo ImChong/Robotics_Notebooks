@@ -144,6 +144,7 @@ flowchart LR
 - [NoMaD](../wiki/entities/paper-notebook-nomad-goal-masked-diffusion-policies-for-navigat.md) 与 [NavDP](../wiki/entities/paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md)（本仓库）
 - [EgoNav](../wiki/entities/paper-notebook-egonav.md)、[LookOut](../wiki/entities/paper-notebook-lookout.md)、[FocusNav](../wiki/entities/paper-notebook-focusnav.md)（本仓库）— 人形导航深读锚点
 - [SRU](../wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md)（本仓库）— 给 RNN 补空间配准能力的循环单元，端到端 RL 无地图导航，Unitree B2W 真机零样本 50–120 m 长程目标导航
+- [iCrowdNav](../wiki/entities/paper-icrowdnav.md)（本仓库）— RGB-D **BEV + I²Former 姿态意图** 的人群导航 PPO；相对 DWA/DRL-VO 提升私人空间合规，真机零样本（代码待发布）
 - [Paper Notebooks · Navigation 分类](../wiki/overview/paper-notebook-category-08-navigation.md)（本仓库）— 深读论文全景入口
 
 ### 学完输出什么
@@ -201,7 +202,7 @@ flowchart LR
 
 **方向 D：导航世界模型与新载体**
 - 用 WAM 联合预测未来观测与动作；空中 VLN 等新设定
-- 关键词：[NavWAM](../wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md)、[WorldVLN](../wiki/entities/paper-worldvln-aerial-vln-wam.md)、[PanoWorld（真实世界全景可控生成）](../wiki/entities/paper-panoworld-real-world-panoramic-generation.md)、[社会导航](../wiki/entities/paper-notebook-learning-social-navigation-from-positive-and-neg.md)
+- 关键词：[NavWAM](../wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md)、[WorldVLN](../wiki/entities/paper-worldvln-aerial-vln-wam.md)、[PanoWorld（真实世界全景可控生成）](../wiki/entities/paper-panoworld-real-world-panoramic-generation.md)、[社会导航](../wiki/entities/paper-notebook-learning-social-navigation-from-positive-and-neg.md)、[iCrowdNav](../wiki/entities/paper-icrowdnav.md)
 
 ---
 

@@ -2,7 +2,7 @@
 type: method
 tags: [rl, policy-optimization, ppo, on-policy, locomotion]
 status: complete
-updated: 2026-07-21
+updated: 2026-07-28
 summary: "PPO 用 clip 代理目标约束策略更新幅度，兼顾稳定性与实现简单，是人形/足式机器人大规模并行 RL 训练的事实标准算法。"
 related:
   - ./flashsac.md
@@ -99,6 +99,7 @@ $$
 - [PPO vs SAC for Robots（选型 Query）](../queries/ppo-vs-sac-for-robots.md)
 - [Locomotion（任务）](../tasks/locomotion.md)
 - [MDP（形式化）](../formalizations/mdp.md)
+- [iCrowdNav](../entities/paper-icrowdnav.md) — 视觉人群导航中用 PPO 训 BEV+意图策略的实例
 
 ## 参考来源
 - [Policy Optimization 来源归档（PPO/SAC/TD3/TRPO/Rudin/BRRL）](../../sources/papers/policy_optimization.md)

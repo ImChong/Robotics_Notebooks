@@ -2,7 +2,7 @@
 type: method
 tags: [path-planning, local-planning, obstacle-avoidance, navigation, mobile-robot]
 status: complete
-updated: 2026-07-23
+updated: 2026-07-28
 related:
   - ./a-star.md
   - ../entities/python-robotics.md
@@ -11,6 +11,7 @@ related:
   - ../entities/unitree-g1-software-stack.md
   - ../entities/humanoid-system-curriculum.md
   - ../comparisons/mobile-robot-navigation-planning-methods.md
+  - ../entities/paper-icrowdnav.md
 sources:
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
   - ../../sources/repos/python_robotics.md
@@ -133,6 +134,7 @@ flowchart LR
 - [G1 软件服务栈](../entities/unitree-g1-software-stack.md)
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md)
 - [导航规划方法对比：全局·局部·平滑](../comparisons/mobile-robot-navigation-planning-methods.md) — 本页是其局部避障层的选型落地
+- [iCrowdNav](../entities/paper-icrowdnav.md) — 学习型视觉人群导航；论文以 DWA 为经典局部基线对照
 
 ## 参考来源
 
