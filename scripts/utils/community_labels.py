@@ -98,6 +98,9 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "roadmap/depth-humanoid-hardware-design.md": (
         "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap）"
     ),
+    "wiki/comparisons/robot-control-eight-paradigms-taxonomy.md": (
+        "八大机器人控制体系分类（Eight Robot Control Paradigms Taxonomy）"
+    ),
 }
 
 COMMUNITY_LABEL_SUFFIX = " 社区"
