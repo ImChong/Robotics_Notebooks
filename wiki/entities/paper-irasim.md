@@ -24,6 +24,7 @@ related:
   - ../concepts/video-as-simulation.md
   - ../overview/world-models-route-03-virtual-sandbox.md
   - ../tasks/manipulation.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/irasim_arxiv_2406_14540.md
   - ../../sources/repos/irasim.md
@@ -210,6 +211,7 @@ sequenceDiagram
 - [Video-as-Simulation](../concepts/video-as-simulation.md)
 - [世界模型路线 03：虚拟沙盒](../overview/world-models-route-03-virtual-sandbox.md)
 - [Manipulation](../tasks/manipulation.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — ② 世界模型预测保真度 / ③ 策略任务成功率评测层（IRASim 用作策略评估器）
 
 ## 参考来源
 
