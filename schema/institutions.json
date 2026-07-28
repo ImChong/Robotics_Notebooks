@@ -232,6 +232,13 @@
         "ace"
       ]
     },
+    "archon-robotics": {
+      "label": "源策未来（Archon Robotics）",
+      "aliases": [
+        "archon-robotics",
+        "archon"
+      ]
+    },
     "psibot": {
       "label": "灵巧智能（PsiBot）",
       "aliases": [

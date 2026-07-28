@@ -8,9 +8,14 @@
 - **arXiv：** <https://arxiv.org/abs/2606.11092>
 - **PDF：** <https://arxiv.org/pdf/2606.11092>
 - **项目页：** <https://opendrivelab.com/RoboNaldo/>
+- **代码（训练）：** <https://github.com/OpenDriveLab/RoboNaldo>
+- **代码（部署）：** <https://github.com/OpenDriveLab/RoboNaldo_Deploy>
+- **Video：** <https://youtu.be/BuHNzqebIqc>
 - **作者：** Yichao Zhong†, Yidan Lu†, Yuhang Lu, Tianyang Tang, Haoguang Mai, Yixuan Pan, Tianyu Li‡, Li Chen‡, Jingbo Wang, Zhongyu Li, Peng Lu‡, Hongyang Li‡（† 共同一作；‡ 共同指导）
-- **机构：** 香港大学；香港中文大学；Archon Robotics
+- **机构：** 香港大学；香港中文大学；Archon Robotics（OpenDriveLab 项目页托管）
 - **入库日期：** 2026-06-10
+- **再核日期：** 2026-07-28
+- **开源状态：** **已开源**（2026-06 训练+部署代码发布；项目页 Code 链已挂 GitHub）
 - **一句话说明：** 以 **单条人类踢球参考** 为 scaffold 的 **三阶段 motion-guided curriculum RL**：先学稳定全身踢球先验，再适应任意球位定点射门，最后经 **locomotion 命令 + kick-trigger 接口** 泛化到 **来球射门**；仿真误差较基线 **−48.6%**、球速 **2.96×**；**Unitree G1** 机载 LiDAR/IR 感知在真草场外实现 **3 m 平均误差 0.73 m（任意球）/ 0.86 m（来球）**、触球后球速最高 **13.10 m/s**。
 
 ## 核心论文摘录（MVP）
@@ -64,18 +69,21 @@
 ## 对 wiki 的映射（汇总）
 
 - [paper-robonaldo-humanoid-soccer-shooting.md](../../wiki/entities/paper-robonaldo-humanoid-soccer-shooting.md) — 主沉淀页
-- 交叉更新：[humanoid-soccer.md](../../wiki/tasks/humanoid-soccer.md)
+- [robonaldo.md](../repos/robonaldo.md) — 训练仓归档
+- [robonaldo-deploy.md](../repos/robonaldo-deploy.md) — 部署仓归档
+- [opendrivelab-robonaldo.md](../sites/opendrivelab-robonaldo.md) — 项目页
+- 交叉更新：[humanoid-soccer.md](../../wiki/tasks/humanoid-soccer.md)、[paid-framework.md](../../wiki/methods/paid-framework.md)
 
-## 引用（项目页 BibTeX）
+## 引用（项目页 BibTeX，2026-07-28）
 
 ```bibtex
 @article{zhong2026robonaldo,
-  title   = {RoboNaldo: Accurate, Stable and Powerful Humanoid Soccer Shooting
-             via Motion-Guided Curriculum Reinforcement Learning},
-  author  = {Zhong, Yichao and Lu, Yidan and Lu, Yuhang and Tang, Tianyang
-             and Mai, Haoguang and Pan, Yixuan and Li, Tianyu and Chen, Li
-             and Wang, Jingbo and Li, Zhongyu and Lu, Peng and Li, Hongyang},
-  note    = {Under review},
-  year    = {2026}
+  title         = {RoboNaldo: Accurate, Stable and Powerful Humanoid Soccer Shooting via Motion-Guided Curriculum Reinforcement Learning},
+  author        = {Zhong, Yichao and Lu, Yidan and Lu, Yuhang and Tang, Tianyang and Mai, Haoguang and Pan, Yixuan and Li, Tianyu and Chen, Li and Wang, Jingbo and Li, Zhongyu and Lu, Peng and Li, Hongyang},
+  year          = {2026},
+  eprint        = {2606.11092},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.RO},
+  url           = {https://arxiv.org/abs/2606.11092}
 }
 ```

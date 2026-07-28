@@ -2,7 +2,7 @@
 type: task
 tags: [humanoid, soccer, robocup, rl, perception, kicking]
 status: drafting
-updated: 2026-07-27
+updated: 2026-07-28
 related:
   - ./locomotion.md
   - ../concepts/humanoid-multi-robot-coordination.md
@@ -31,6 +31,8 @@ sources:
   - ../../sources/repos/booster-robocup-demo.md
   - ../../sources/repos/roboflow_sports.md
   - ../../sources/papers/robonaldo_arxiv_2606_11092.md
+  - ../../sources/repos/robonaldo.md
+  - ../../sources/repos/robonaldo-deploy.md
   - ../../sources/papers/humanoid_soccer_swarm_intelligence_sensors_2025.md
   - ../../sources/papers/artemis_humanoid_soccer_team_coordination_arxiv_2512_09431.md
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
@@ -70,7 +72,7 @@ summary: "Humanoid Soccer 是机器人学中最具挑战性的综合任务之一
 通过在大规模并行仿真（如 Isaac Gym/Lab）中训练，直接获取端到端的运动与技能。
 - **HTWK-Gym**：针对 Booster T1/K1 平台的足球任务优化框架。
 - **PAiD (Perception-Action Integrated Decision-making)**：将感知与动作解耦并渐进式融合，实现更稳健的踢球。
-- **[RoboNaldo](../entities/paper-robonaldo-humanoid-soccer-shooting.md)**：以单条人类踢球参考为 scaffold 的 **三阶段 motion-guided curriculum RL**，在 G1 上实现 **亚米级点瞄准射门**、**13 m/s 级触球球速** 与 **来球 one-touch** 室外真机演示。
+- **[RoboNaldo](../entities/paper-robonaldo-humanoid-soccer-shooting.md)**：以单条人类踢球参考为 scaffold 的 **三阶段 motion-guided curriculum RL**，在 G1 上实现 **亚米级点瞄准射门**、**13 m/s 级触球球速** 与 **来球 one-touch** 室外真机演示；**已开源** [训练](https://github.com/OpenDriveLab/RoboNaldo) / [部署](https://github.com/OpenDriveLab/RoboNaldo_Deploy)。
 - **[视觉特权表征运球](../entities/paper-vision-dribbling-humanoid-soccer-privileged-representation.md)**（arXiv:2607.12702）：**RMA 式两阶段** — 特权编码器学对手感知运球，再蒸馏 **CNN+GRU 深度 latent**；Booster T1 仿真下无障碍 **100%**、静态障碍 **96%**、动态抢球 **46%** SR。
 
 ### 分层状态机 + 技能库
@@ -111,6 +113,8 @@ summary: "Humanoid Soccer 是机器人学中最具挑战性的综合任务之一
 - [NaoHTWK/htwk-gym 源码仓库](../../sources/repos/htwk_gym.md) — 针对 Booster T1/K1 的足球 RL 框架
 - [TeleHuman/HumanoidSoccer (PAiD) 源码仓库](../../sources/repos/humanoid_soccer.md) — 针对 Unitree G1 的渐进式足球学习
 - [robonaldo_arxiv_2606_11092.md](../../sources/papers/robonaldo_arxiv_2606_11092.md) — RoboNaldo 人形射门课程 RL 与 G1 机载感知摘录
+- [robonaldo.md](../../sources/repos/robonaldo.md) / [robonaldo-deploy.md](../../sources/repos/robonaldo-deploy.md) — RoboNaldo 训练与部署开源仓
+- [opendrivelab-robonaldo.md](../../sources/sites/opendrivelab-robonaldo.md) — 项目页与开源核查
 - [Booster Robotics RoboCup Demo](../../wiki/entities/booster-robocup-demo.md) — 完整的足球比赛软件方案
 - [roboflow_sports.md](../../sources/repos/roboflow_sports.md) — 广播视角检测/跟踪/俯视雷达开源对照
 - [humanoid_soccer_swarm_intelligence_sensors_2025.md](../../sources/papers/humanoid_soccer_swarm_intelligence_sensors_2025.md) — 人形足球 swarm 群控（Sensors 2025）

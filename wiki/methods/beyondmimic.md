@@ -2,7 +2,7 @@
 type: method
 tags: [rl, imitation-learning, locomotion, humanoid, sampling, diffusion, paper, motion-control, body-system-stack, bfm, behavior-foundation-model, stanford, berkeley]
 status: complete
-updated: 2026-07-23
+updated: 2026-07-28
 code: https://github.com/HybridRobotics/whole_body_tracking
 venue: "2025 · arXiv"
 arxiv: "2508.08241"

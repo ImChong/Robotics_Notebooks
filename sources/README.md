@@ -65,7 +65,7 @@
 | [x] [mpc_rl_arxiv_2606_05687.md](papers/mpc_rl_arxiv_2606_05687.md) | MPC-RL：训练期 CD-MPC 地标奖励 + πⁿ MPC 批 GPU 求解，人形 locomotion/loco-manipulation（arXiv:2606.05687，Caltech/JHU）摘录与 wiki 映射 |
 | [x] [pi_mpc_arxiv_2601_14414.md](papers/pi_mpc_arxiv_2601_14414.md) | π MPC：parallel-in-horizon、construction-free ADMM NMPC 求解器（arXiv:2601.14414，JHU/Tsinghua/Caltech）摘录与 wiki 映射 |
 | [x] [motionwam_arxiv_2606_09215.md](papers/motionwam_arxiv_2606_09215.md) | MotionWAM：实时 WAM 人形全身 loco-manipulation，双 DiT + SONIC 统一 token（arXiv:2606.09215，Mondo Robotics / HKUST）摘录与 wiki 映射 |
-| [x] [robonaldo_arxiv_2606_11092.md](papers/robonaldo_arxiv_2606_11092.md) | RoboNaldo：三阶段 motion-guided curriculum RL 人形射门，G1 机载 LiDAR/IR 真草部署（arXiv:2606.11092，港大/港中文/Archon）摘录与 wiki 映射 |
+| [x] [robonaldo_arxiv_2606_11092.md](papers/robonaldo_arxiv_2606_11092.md) | RoboNaldo：三阶段 motion-guided curriculum RL 人形射门，G1 机载 LiDAR/IR 真草部署（arXiv:2606.11092，港大/港中文/Archon；**已开源**训练+部署）摘录与 wiki 映射 |
 | [x] [legs_arxiv_2606_01458.md](papers/legs_arxiv_2606_01458.md) | LEGS：3DGS 无遥操作 VLA 人形 loco-manip 合成数据（arXiv:2606.01458，Stanford）摘录与 wiki 映射 |
 | [x] [splitadapter_arxiv_2606_03297.md](papers/splitadapter_arxiv_2606_03297.md) | SplitAdapter：负载感知因子化适配的人形搬箱 loco-manipulation（arXiv:2606.03297，Samsung）摘录与 wiki 映射 |
 | [x] [bfm_humanoid_arxiv_2509_13780.md](papers/bfm_humanoid_arxiv_2509_13780.md) | BFM：CVAE + 位级掩码 + 在线蒸馏的人形 WBC 基础模型（arXiv:2509.13780，上海 AI Lab 等）摘录与 wiki 映射 |
@@ -161,6 +161,8 @@
 | [x] [easy_quadruped.md](repos/easy_quadruped.md) | Xzgz718/easy_quadruped：StanfordQuadruped 二次开发，Pupper 步态控制 + MuJoCo 浮动机身闭环仿真 |
 | [x] [earthtojake-text-to-cad.md](repos/earthtojake-text-to-cad.md) | earthtojake/text-to-cad（CAD Skills）：CAD/URDF/制造 Agent Skills 库（build123d STEP-first + 10 项 benchmark） |
 | [x] [drawio-scientific-illustrator.md](repos/drawio-scientific-illustrator.md) | icebird1998/drawio-scientific-illustrator：Codex 插件 + MCP 可见操控 draw.io 科研插图（MIT） |
+| [x] [robonaldo.md](repos/robonaldo.md) | OpenDriveLab/RoboNaldo：人形射门三阶段课程 RL 的 Isaac Lab 训练仓（MIT；arXiv:2606.11092） |
+| [x] [robonaldo-deploy.md](repos/robonaldo-deploy.md) | OpenDriveLab/RoboNaldo_Deploy：G1 FreeKick/MuJoCo/真机 FSM 部署仓（配套训练仓 ONNX） |
 | [x] [img2threejs.md](repos/img2threejs.md) | hoainho/img2threejs：单图→质量门控程序化 Three.js 工厂（Agent Skill + Python stdlib forge，MIT） |
 | [x] [go2_motion_imitation.md](repos/go2_motion_imitation.md) | TSUITUENYUE/motion-imitation：Go2 retarget_motion + Genesis 关节速度匹配模仿 |
 | [x] [pupperv3_monorepo.md](repos/pupperv3_monorepo.md) | Nate711/pupperv3-monorepo：Pupper v3 机载 ROS 2 软件（与官方文档 ~/pupperv3-monorepo 一致） |
@@ -382,7 +384,7 @@
 | [x] [ruka-hand-v2-github-io.md](sites/ruka-hand-v2-github-io.md) | RUKA-v2 项目页 ruka-hand-v2.github.io（全开源腱驱动灵巧手、2-DoF 腕、OpenTeach/BAKU 演示；配套 arXiv:2603.26660） |
 | [x] [omniretarget-github-io.md](sites/omniretarget-github-io.md) | OmniRetarget 项目页 omniretarget.github.io（ICRA 2026、增广交互演示、GMR/PHC 基线对比；配套 arXiv:2509.26633） |
 | [x] [omg-tsinghua-mars-lab-github-io.md](sites/omg-tsinghua-mars-lab-github-io.md) | OMG 项目页 tsinghua-mars-lab.github.io/OMG（清华 MARS Lab omni-modal G1 运动生成、OMG-Data、多模态真机演示） |
-| [x] [opendrivelab-robonaldo.md](sites/opendrivelab-robonaldo.md) | RoboNaldo 项目页 opendrivelab.com/RoboNaldo（三阶段射门课程、G1 室外演示与热图；配套 arXiv:2606.11092） |
+| [x] [opendrivelab-robonaldo.md](sites/opendrivelab-robonaldo.md) | RoboNaldo 项目页 opendrivelab.com/RoboNaldo（三阶段射门课程、G1 室外演示与热图；Code→OpenDriveLab/RoboNaldo；配套 arXiv:2606.11092） |
 | [x] [resmimic-github-io.md](sites/resmimic-github-io.md) | ResMimic 项目页 resmimic.github.io（GMT+残差真机演示、基线对比、关节残差可视化；配套 arXiv:2510.05070） |
 | [x] [omniretarget-dataset-huggingface.md](sites/omniretarget-dataset-huggingface.md) | OmniRetarget Dataset（HF）：G1 重定向轨迹 4.0 h（OMOMO + 自采 MoCap；.npz qpos+fps） |
 | [x] [humanoideveryday.md](sites/humanoideveryday.md) | Humanoid Everyday：260 任务真机多模态人形操作集 + 云端评测（arXiv:2510.08807） |

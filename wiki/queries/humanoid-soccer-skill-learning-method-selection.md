@@ -3,11 +3,13 @@ title: 人形足球技能学习方法选型指南
 type: query
 status: complete
 created: 2026-06-11
-updated: 2026-06-11
+updated: 2026-07-28
 summary: 在人形足球（射门 / 踢球）技能学习中，如何在「感知–动作渐进融合」（PAiD）与「motion scaffold + 课程 RL」（RoboNaldo）之间按任务目标选型与组合。
 sources:
   - ../../sources/repos/humanoid_soccer.md
   - ../../sources/papers/robonaldo_arxiv_2606_11092.md
+  - ../../sources/repos/robonaldo.md
+  - ../../sources/repos/robonaldo-deploy.md
   - ../../sources/papers/humanoid_pnb_learning-soccer-skills-for-humanoid-robots.md
 ---
 
@@ -70,7 +72,7 @@ flowchart TD
 ### 3. 落地：Sim2Real 与来球时机
 
 - [PAiD](../methods/paid-framework.md) Stage 3 以 **大规模域随机化 + 控制时延模拟** 保真机鲁棒，主打室内外多地形稳健成功率。
-- [RoboNaldo](../entities/paper-robonaldo-humanoid-soccer-shooting.md) Stage 3 处理**来球射门**：用 locomotion command 与 kick-trigger 把 episode 分接近/踢球/稳定三模式，并在触球附近放松 motion tracking 权重；真机靠机载 LiDAR（近距）+ IR（远距）定位，真草场 3 m 平均误差 0.73 m（任意球）、触球后球速最高 13.10 m/s。
+- [RoboNaldo](../entities/paper-robonaldo-humanoid-soccer-shooting.md) Stage 3 处理**来球射门**：用 locomotion command 与 kick-trigger 把 episode 分接近/踢球/稳定三模式，并在触球附近放松 motion tracking 权重；真机靠机载 LiDAR（近距）+ IR（远距）定位，真草场 3 m 平均误差 0.73 m（任意球）、触球后球速最高 13.10 m/s。**复现：** 已开源 [训练仓](https://github.com/OpenDriveLab/RoboNaldo) + [部署仓](https://github.com/OpenDriveLab/RoboNaldo_Deploy)。
 
 **指标锚点**：PAiD 报告 G1 上 >90% 稳健踢球成功率（成功率导向）；RoboNaldo 报告点级误差与球速（精度/功率导向）——二者指标口径不同，对照时勿直接比成功率。详细对照见 [PAiD 页内 RoboNaldo 对照表](../methods/paid-framework.md)。
 
@@ -78,6 +80,8 @@ flowchart TD
 
 - [HumanoidSoccer (PAiD) 源码仓库](../../sources/repos/humanoid_soccer.md)
 - [RoboNaldo（arXiv:2606.11092）入库摘录](../../sources/papers/robonaldo_arxiv_2606_11092.md)
+- [RoboNaldo 训练仓归档](../../sources/repos/robonaldo.md)
+- [RoboNaldo 部署仓归档](../../sources/repos/robonaldo-deploy.md)
 - [Learning Soccer Skills for Humanoid Robots（Paper Notebooks 摘录）](../../sources/papers/humanoid_pnb_learning-soccer-skills-for-humanoid-robots.md)
 
 ## 关联页面
