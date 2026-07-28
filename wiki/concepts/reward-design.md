@@ -2,16 +2,17 @@
 type: concept
 tags: [rl, reward, locomotion, humanoid, policy-optimization]
 status: complete
+updated: 2026-07-28
 related:
   - ../formalizations/mdp.md
   - ../methods/reinforcement-learning.md
   - ../methods/imitation-learning.md
   - ./domain-randomization.md
+  - ./humanoid-policy-reward-functions.md
   - ../queries/reward-design-guide.md
   - ../methods/disney-olaf-character-robot.md
   - ../entities/paper-tsil-temporal-self-imitation-learning.md
 summary: "Reward Design 研究如何把任务目标转成可学习的奖励信号，是机器人 RL 成败的关键工程环节。"
-updated: 2026-07-25
 sources:
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/privileged_training.md
@@ -174,6 +175,7 @@ DR 改变的是环境的物理参数分布；Reward Design 改变的是优化目
 
 ## 推荐继续阅读
 
+- [人形机器人运控常见奖励函数分类](./humanoid-policy-reward-functions.md) — 人形运控 RL 奖励项按「替谁说话」的六类划分与权重量级速查
 - [Markov Decision Process](../formalizations/mdp.md)
 - [Policy Optimization](../methods/policy-optimization.md)
 - [Imitation Learning](../methods/imitation-learning.md)（AMP 路线：绕过手工奖励）

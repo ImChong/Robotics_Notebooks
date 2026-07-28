@@ -11,6 +11,7 @@ related:
   - ./terrain-latent-representation.md
   - ./contact-estimation.md
   - ./humanoid-policy-network-architecture.md
+  - ./humanoid-policy-reward-functions.md
   - ./control-inference-frequency-decoupling.md
   - ./domain-randomization.md
   - ./motion-retargeting.md
@@ -189,6 +190,7 @@ flowchart LR
 - [地形 Latent 表征](./terrain-latent-representation.md) — D 类深度编码向量的真实形态
 - [接触估计](./contact-estimation.md) — 无足底传感器时接触/力的获取方式
 - [人形与腿式策略的网络架构](./humanoid-policy-network-architecture.md) — 观测向量下游的网络形态
+- [人形机器人运控常见奖励函数分类](./humanoid-policy-reward-functions.md) — 对偶页：奖励侧按「替谁说话」的六类划分（训练期专用，不受部署可得性约束）
 - [控制与推理频率解耦](./control-inference-frequency-decoupling.md) — 多速率观测的时间对齐
 - [Domain Randomization](./domain-randomization.md) — 观测噪声与延迟的随机化
 - [人形机器人 RL 策略训练 Checklist](../queries/humanoid-rl-cookbook.md) — Stage 2 Observation 设计的操作版

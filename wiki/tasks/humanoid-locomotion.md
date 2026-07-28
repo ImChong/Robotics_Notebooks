@@ -7,6 +7,7 @@ related:
   - ./locomotion.md
   - ./stair-obstacle-perceptive-locomotion.md
   - ../concepts/humanoid-policy-observation-inputs.md
+  - ../concepts/humanoid-policy-reward-functions.md
   - ../concepts/terrain-adaptation.md
   - ../entities/paper-gaitspan-humanoid-locomotion-walking-running.md
   - ../entities/paper-roller-skating-amp-humanoid-passive-wheels.md
@@ -82,6 +83,7 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 
 ## 关联页面
 - [人形机器人运控策略的观测输入](../concepts/humanoid-policy-observation-inputs.md) — 主流运控策略输入的五类划分与获取链路
+- [人形机器人运控常见奖励函数分类](../concepts/humanoid-policy-reward-functions.md) — 运控 RL 奖励项的六类划分与权重量级
 - [Learning Whole-Body Humanoid Locomotion（ETH G1）](../entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md) — 扩散运动生成 + RL 全身跟踪，真机箱攀/跨栏/楼梯与混合地形
 - [SPRINT 人形竞技冲刺频谱先验](../entities/paper-sprint-humanoid-athletic-sprints.md) — 极少 MoCap + 频域先验外推至高动态冲刺
 - [SSR 开放世界人形穿越](../entities/paper-ssr-humanoid-open-world-traversal.md) — 想象落脚点 + 潜空间对称 + 分地形 AMP，楼梯/沟壑/高台与户外长程

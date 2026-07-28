@@ -75,7 +75,7 @@ flowchart TB
 
 ## Stage 3：Reward 设计
 
-参考 [locomotion-reward-design-guide.md](./locomotion-reward-design-guide.md)，以下是双足人形的关键调整：
+参考 [locomotion-reward-design-guide.md](./locomotion-reward-design-guide.md) 与 [人形机器人运控常见奖励函数分类](../concepts/humanoid-policy-reward-functions.md)（六类划分与权重量级），以下是双足人形的关键调整：
 
 **人形特有奖励（vs 四足）：**
 
@@ -185,6 +185,7 @@ Adaptation Module（学生）：
 - [Sim2Real Checklist](./sim2real-checklist.md) — 详细的域随机化配置清单
 - [RL Algorithm Selection](./rl-algorithm-selection.md) — PPO vs SAC vs TD3 选型指南
 - [Locomotion Reward Design Guide](./locomotion-reward-design-guide.md) — 奖励函数详细设计
+- [人形机器人运控常见奖励函数分类](../concepts/humanoid-policy-reward-functions.md) — Stage 3 奖励项的六类划分与权重量级全景
 - [Privileged Training](../concepts/privileged-training.md) — Teacher-Student 蒸馏理论
 - [DreamWaQ](../methods/dreamwaq.md) — 盲走一阶段：本体历史隐式估计地形/体速的 obs 设计范例
 - [PIE 感知一阶段鲁棒行走](../methods/pie-perceptive-locomotion.md) — 深度+本体多头估计器的显式/隐式 obs 设计范例
