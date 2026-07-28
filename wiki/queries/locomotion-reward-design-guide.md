@@ -3,7 +3,7 @@ title: Locomotion 奖励函数设计指南
 type: query
 status: complete
 created: 2026-04-14
-updated: 2026-07-07
+updated: 2026-07-28
 summary: 系统整理 RL 训练足式/人形机器人 locomotion 的奖励函数设计原则、常用奖励项分类、调参策略和常见失败模式。
 sources:
   - ../../sources/papers/reward_design.md
@@ -184,6 +184,7 @@ class rewards:
 
 ## 关联页面
 
+- [人形机器人运控常见奖励函数分类](../concepts/humanoid-policy-reward-functions.md) — 奖励项按「替谁说话」的六类划分全景（任务/姿态/步态/能效/安全/风格）
 - [Reward Design](../concepts/reward-design.md) — 奖励函数设计的通用原则
 - [Locomotion](../tasks/locomotion.md) — 奖励设计的应用场景
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 训练框架

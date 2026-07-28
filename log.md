@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-28] ingest | sources/personal/humanoid-loco-policy-reward-functions-faq.md — 新增概念页 wiki/concepts/humanoid-policy-reward-functions.md（人形运控常见奖励函数六类划分与权重量级，与观测输入页互为对偶）；交叉 reward-design / humanoid-policy-observation-inputs / queries/locomotion-reward-design-guide / queries/humanoid-rl-cookbook / tasks/humanoid-locomotion
+
 ## [2026-07-28] ingest | sources/papers/teledexter_arxiv_2607_11481.md + sites/teledexter-project.md — TeleDexter（arXiv:2607.11481）手–物 co-tracking 灵巧遥操作入库；升格 wiki/entities/paper-teledexter.md；交叉 teleoperation / contact-rich / in-hand-reorientation / dexterous-data-collection / depth-teleoperation / HDMI；未开源
 
 - **一手入口：** 项目页 [bigai-dex.github.io/blog/teledexter](https://bigai-dex.github.io/blog/teledexter/) · 论文 [arXiv:2607.11481](https://arxiv.org/abs/2607.11481) · PDF [paper_teledexter.pdf](https://bigai-dex.github.io/blog/teledexter/paper_teledexter.pdf)
