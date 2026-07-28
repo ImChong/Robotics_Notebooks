@@ -1,13 +1,78 @@
 {
   "generated_at": "2026-07-28",
-  "node_count": 1961,
-  "edge_count": 17085,
+  "node_count": 1962,
+  "edge_count": 17101,
   "coverage": {
-    "covered": 1911,
-    "total": 1937,
+    "covered": 1912,
+    "total": 1938,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/drawio-scientific-illustrator.md",
+      "detail_id": "entity-drawio-scientific-illustrator",
+      "label": "Draw.io Scientific Illustrator",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/freecad-mcp.md",
+      "detail_id": "entity-freecad-mcp",
+      "label": "FreeCAD MCP",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/cad-skills.md",
+      "detail_id": "entity-cad-skills",
+      "label": "CAD Skills",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/img2threejs.md",
+      "detail_id": "entity-img2threejs",
+      "label": "img2threejs",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/gsap-skills.md",
+      "detail_id": "entity-gsap-skills",
+      "label": "GSAP AI Skills（greensock/gsap-skills）",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/manim.md",
+      "detail_id": "entity-manim",
+      "label": "Manim（程序化数学动画引擎）",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
     {
       "path": "wiki/concepts/remote-procedure-call.md",
       "detail_id": "wiki-concepts-remote-procedure-call",
@@ -81,17 +146,6 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/freecad-mcp.md",
-      "detail_id": "entity-freecad-mcp",
-      "label": "FreeCAD MCP",
-      "type": "entity",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/concepts/rmw-interface.md",
@@ -168,73 +222,23 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-13-physics-based-animation.md",
-      "detail_id": "wiki-overview-paper-notebook-category-13-physics-based-animation",
-      "label": "Paper Notebooks · Physics-Based Animation",
-      "type": "overview",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
-    },
-    {
-      "path": "wiki/methods/hierarchical-reinforcement-learning.md",
-      "detail_id": "wiki-methods-hierarchical-reinforcement-learning",
-      "label": "Hierarchical Reinforcement Learning（分层强化学习，HRL）",
-      "type": "method",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/imitation-learning.md",
-      "detail_id": "wiki-methods-imitation-learning",
-      "label": "Imitation Learning (IL, 模仿学习)",
-      "type": "method",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md",
-      "detail_id": "entity-paper-notebook-skillmimic-learning-basketball-interaction-skill",
-      "label": "SkillMimic（Learning Basketball Interaction Skills from Demonstrations）",
-      "type": "entity",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-notebook-composite-motion-learning-with-task-control.md",
-      "detail_id": "entity-paper-notebook-composite-motion-learning-with-task-control",
-      "label": "Composite Motion Learning with Task Control",
-      "type": "entity",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/remote-procedure-call.md",
-    "detail_id": "wiki-concepts-remote-procedure-call",
-    "label": "远程过程调用（Remote Procedure Call, RPC）",
-    "type": "concept",
+    "path": "wiki/entities/drawio-scientific-illustrator.md",
+    "detail_id": "entity-drawio-scientific-illustrator",
+    "label": "Draw.io Scientific Illustrator",
+    "type": "entity",
     "recency": "2026-07-28",
     "source": "log.md",
     "action": "added",
     "has_repo": true,
-    "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 439
+      "size": 440
     },
     {
       "label": "人形论文深读笔记",
