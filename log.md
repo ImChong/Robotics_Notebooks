@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-28] structural | COMMUNITY_NAME_OVERRIDES 补八大机器人控制体系分类（Eight Robot Control Paradigms Taxonomy）— 修复 community-9 命名不符合「中文（English） 社区」导致 Tests/pytest 失败；scripts/utils/community_labels.py
+
 ## [2026-07-28] ingest | roadmap/depth-humanoid-soccer 链接论文 stub/planned/draft 升格为详细节点 — wiki/entities/paper-notebook-learning-soccer-skills-for-humanoid-robots.md 等；roadmap/depth-humanoid-soccer.md
 
 - **触发：** 确保 [人形足球纵深](roadmap/depth-humanoid-soccer.md)（`roadmap-depth-humanoid-soccer`）链接的论文节点均为详细页，而非 stub/planned/draft
