@@ -1448,6 +1448,7 @@
 - [概念：仿真评测可复现性 ↔ 真实世界代表性取舍（sim↔real 评测 gap）](wiki/concepts/sim-vs-real-eval-gap.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[wiki_page]`
 - [Sim2Real](wiki/concepts/sim2real.md) — Sim2Real**（仿真到现实迁移）：在仿真环境训练控制策略，然后部署到真实机器人上。 `📅unknown` `[wiki_page]`
 - [仿真评测基础设施（Simulation as Evaluation Infrastructure）](wiki/concepts/simulation-evaluation-infrastructure.md) — 仿真评测基础设施**指：在机器人学习与基础模型开发中，把仿真主要用作**可扩展、可复现的闭环评测与 recipe 迭代引擎**，而不是默认等同于「仿真数据生成器」。当评测与真机 rollout  `📅unknown` `[wiki_page]`
+- [SMPL-X（参数化全身人体模型）](wiki/concepts/smpl-x.md) — SMPL-X**（*SMPL eXpressive*）是在 SMPL 身体模型基础上扩展出的 **参数化全身人体模型**：用一组低维的 `📅unknown` `[wiki_page]`
 - [足球场仿真环境](wiki/concepts/soccer-field-simulation.md) — 足球场仿真环境**是按比赛或教学规格搭建的 **场地几何 + 球/门实体 + 传感器与光照模型**，使人形在无真机场地时也能迭代感知与决策——课程第 6.3 节。 `📅unknown` `[wiki_page]`
 - [软件安全基础（认证 / 授权 / 密钥 / 供应链）](wiki/concepts/software-security-basics.md) — 软件安全基础** 区分「你是谁 / 你能做什么 / 密钥如何保管 / 构建链是否可信」——覆盖遥操作、OTA、模型仓库与 CI 制品。 `📅unknown` `[wiki_page]`
 - [SRBD + 凸 MPC + WBC](wiki/concepts/srbd-convex-mpc-wbc.md) — 飞书 Know-How 条目 **「单刚体动力学模型 + 凸模型预测控制 + WBC」** 指：用 **SRBD（Single Rigid Body Dynamics）** 近似整机质心运动，在  `📅unknown` `[wiki_page]`
@@ -1504,6 +1505,7 @@
 - [Centroidal NMPC + WBC 栈](wiki/methods/centroidal-nmpc-wbc-stack.md) — 飞书 Know-How 将 **质心动力学模型 + 非线性模型预测控制 + WBC（CD+NMPC+WBC）** 列为传统控制主链的**高保真层**：NMPC 在质心动量/接触力变量上滚动优化，WBC `📅unknown` `[method_page]`
 - [Chasing Autonomy Pipeline](wiki/methods/chasing-autonomy-pipeline.md) — Chasing Autonomy Pipeline** 是由加州理工学院和 Unitree 团队（Olkin et al., 2026）提出的一套使人形机器人能够高性能奔跑的系统框架。它有效衔接了 `📅unknown` `[method_page]`
 - [CLAW (宇树 G1 全身动作数据生成管线)](wiki/methods/claw.md) — CLAW** (Composable Language-Annotated Whole-Body Motion Data Generation) 是一种面向人形机器人的模块化数据生成方案。它通过将 `📅unknown` `[method_page]`
+- [CMA-ES（协方差矩阵自适应进化策略）](wiki/methods/cma-es.md) — CMA-ES**（*Covariance Matrix Adaptation Evolution Strategy*）是一种 **无梯度（derivative-free）、黑箱的连续优化算法**。 `📅unknown` `[method_page]`
 - [Computed Torque Control（计算力矩控制，CTC）](wiki/methods/computed-torque-control.md) — CTC：用动力学模型计算前馈力矩抵消非线性耦合，再叠加反馈使闭环近似线性解耦系统。 `📅unknown` `[method_page]`
 - [Conjugate Gradient Method（共轭梯度法）](wiki/methods/conjugate-gradient-method.md) — 共轭梯度（CG）**：在 $n$ 维空间构造 $A$-共轭方向，至多 $n$ 步解精确线性系统 $Ax=b$（精确算术）；对大型稀疏 SPD 矩阵，截断 CG 是求解凸 QP 牛顿步、弹性力学与  `📅unknown` `[method_page]`
 - [ContactNet](wiki/methods/contact-net.md) — ContactNet** 解决了“在杂乱无章的堆叠物中，手手该按在哪”的问题。它直接输入原始点云，输出稠密的接触成功概率图。 `📅unknown` `[method_page]`
