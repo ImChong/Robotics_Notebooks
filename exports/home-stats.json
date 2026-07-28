@@ -1,18 +1,18 @@
 {
   "generated_at": "2026-07-28",
-  "node_count": 1958,
-  "edge_count": 17044,
+  "node_count": 1959,
+  "edge_count": 17055,
   "coverage": {
-    "covered": 1907,
-    "total": 1934,
+    "covered": 1908,
+    "total": 1935,
     "percent": 99
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/fast-dds.md",
-      "detail_id": "entity-fast-dds",
-      "label": "Fast DDS（eProsima）",
-      "type": "entity",
+      "path": "wiki/concepts/rmw-interface.md",
+      "detail_id": "wiki-concepts-rmw-interface",
+      "label": "RMW（ROS Middleware Interface）",
+      "type": "concept",
       "recency": "2026-07-28",
       "source": "log.md",
       "action": "added",
@@ -20,10 +20,31 @@
       "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
     },
     {
+      "path": "wiki/concepts/ros2-basics.md",
+      "detail_id": "wiki-concepts-ros2-basics",
+      "label": "ROS 2 (Robot Operating System 2) 基础",
+      "type": "concept",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/concepts/dds-communication.md",
       "detail_id": "wiki-concepts-dds-communication",
       "label": "DDS 通信机制（Data Distribution Service）",
       "type": "concept",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/fast-dds.md",
+      "detail_id": "entity-fast-dds",
+      "label": "Fast DDS（eProsima）",
+      "type": "entity",
       "recency": "2026-07-28",
       "source": "log.md",
       "action": "added",
@@ -40,16 +61,6 @@
       "action": "added",
       "has_repo": true,
       "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/concepts/ros2-basics.md",
-      "detail_id": "wiki-concepts-ros2-basics",
-      "label": "ROS 2 (Robot Operating System 2) 基础",
-      "type": "concept",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
     },
     {
       "path": "wiki/comparisons/ros2-vs-lcm.md",
@@ -201,22 +212,13 @@
       "recency": "2026-07-28",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/concepts/curriculum-learning.md",
-      "detail_id": "wiki-concepts-curriculum-learning",
-      "label": "Curriculum Learning（课程学习）",
-      "type": "concept",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/fast-dds.md",
-    "detail_id": "entity-fast-dds",
-    "label": "Fast DDS（eProsima）",
-    "type": "entity",
+    "path": "wiki/concepts/rmw-interface.md",
+    "detail_id": "wiki-concepts-rmw-interface",
+    "label": "RMW（ROS Middleware Interface）",
+    "type": "concept",
     "recency": "2026-07-28",
     "source": "log.md",
     "action": "added",
