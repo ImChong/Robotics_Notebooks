@@ -2,8 +2,9 @@
 type: overview
 tags: [humanoid, motion-control, motion-cerebellum, survey, whole-body-control, loco-manipulation, foundation-model]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-28
 related:
+  - ../entities/humanoid-motion-intelligence.md
   - ./motion-cerebellum-category-01-locomotion-base.md
   - ./motion-cerebellum-category-02-motion-imitation.md
   - ./motion-cerebellum-category-03-data-pipeline.md
@@ -25,6 +26,7 @@ sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
   - ../../sources/raw/wechat_motion_cerebellum_64_survey_2026-06-18.md
   - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/repos/humanoid-motion-intelligence.md
 summary: "依据具身智能研究室 2026-06 运动小脑长文，把 64 篇人形运控论文整理为 A–I 九组技术地图；核心判断：VLA 负责想、世界模型负责预演，但真正让机器人动起来的是夹在二者与身体之间的动作小脑基础设施。"
 ---
 
@@ -151,6 +153,7 @@ flowchart TB
 
 ## 关联页面
 
+- [Humanoid Motion Intelligence 知识库](../entities/humanoid-motion-intelligence.md) — 同策展方 GitHub 总仓（六条路线 + 开源主表）
 - [人形 RL 身体系统栈](./humanoid-rl-motion-control-body-system-stack.md) — 42 篇姊妹篇（八层管线）
 - [BFM 41 篇技术地图](./bfm-41-papers-technology-map.md) — 运控基座横切面
 - [Loco-Manip 8 篇技术地图](./loco-manip-8-papers-technology-map.md) — 数据入口周报
@@ -164,8 +167,10 @@ flowchart TB
 - [具身智能研究室：运动小脑 64 篇长文](../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md)
 - [motion_cerebellum_64_catalog.md](../../sources/papers/motion_cerebellum_64_catalog.md)
 - [原始抓取](../../sources/raw/wechat_motion_cerebellum_64_survey_2026-06-18.md)
+- [Humanoid Motion Intelligence（GitHub 知识库归档）](../../sources/repos/humanoid-motion-intelligence.md)
 
 ## 推荐继续阅读
 
 - [微信公众号原文](https://mp.weixin.qq.com/s/Kx9myecE1Z0eGqOapoqQnA)（可能需订阅）
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
+- [GitHub：人形机器人运动智能知识库](https://github.com/RealXiaoze/humanoid-motion-intelligence)

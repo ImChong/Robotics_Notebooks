@@ -2,8 +2,9 @@
 type: overview
 tags: [humanoid, rl, motion-control, survey, body-system-stack, vla, world-model]
 status: complete
-updated: 2026-07-24
+updated: 2026-07-28
 related:
+  - ../entities/humanoid-motion-intelligence.md
   - ./robot-training-stack-layers-technology-map.md
   - ./robot-world-models-training-loop-taxonomy.md
   - ./humanoid-motion-control-know-how.md
@@ -35,6 +36,7 @@ sources:
   - ../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/sites/wechat-embodied-ai-lab-humanoid-rl-motion-survey-2026-05-18.md
+  - ../../sources/repos/humanoid-motion-intelligence.md
 summary: "把 42 篇 humanoid RL 运动控制 / 移动操作论文整理成一套八层身体系统栈（数据 → 跟踪 → 控制 → 感知 → 接触 → 安全 → 任务接口 → 世界模型），并据此给出 6 个研究判断；核心主张：动作不是能力，动作在真实世界精细交互闭环里才是能力，VLA 调用是这层成熟后的结果，不是起点。"
 ---
 
@@ -102,6 +104,7 @@ summary: "把 42 篇 humanoid RL 运动控制 / 移动操作论文整理成一�
 
 ## 关联页面
 
+- [Humanoid Motion Intelligence 知识库](../entities/humanoid-motion-intelligence.md) — 同策展方 GitHub 总仓（六条路线 + 论文/开源双索引；勿镜像）
 - [训练栈分层技术地图](./robot-training-stack-layers-technology-map.md) — 工具链六层（与本文「身体能力八层」互补）
 - [人形 AMP 运动先验综述](./humanoid-amp-motion-prior-survey.md) — 19 篇 AMP / 运动先验论文的姊妹篇导航（与本文 42 篇栈互补）
 - [运动小脑 64 篇技术地图](./humanoid-motion-cerebellum-technology-map.md) — 同一公众号 2026-06 姊妹篇：论文高度重叠，按「动作小脑」A–I 九组重框（**复用** 本文 `paper-hrl-stack-*` 等节点，不重复建页）
@@ -170,3 +173,4 @@ summary: "把 42 篇 humanoid RL 运动控制 / 移动操作论文整理成一�
 
 - [两万字长文，读懂人形机器人强化学习运动控制：42 篇论文搭起的算法圣经（微信公众号原文）](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA)
 - [具身智能研究室 · 人形机器人 RL 运动控制 42 篇综述（仓库内归档）](../../sources/sites/wechat-embodied-ai-lab-humanoid-rl-motion-survey-2026-05-18.md)
+- [Humanoid Motion Intelligence（GitHub 知识库归档）](../../sources/repos/humanoid-motion-intelligence.md)

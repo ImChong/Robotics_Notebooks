@@ -1954,6 +1954,14 @@
         "reconova",
         "reconova-information-technology"
       ]
+    },
+    "embodied-ai-lab": {
+      "label": "具身智能研究室（Embodied AI Lab）",
+      "aliases": [
+        "embodied-ai-lab",
+        "wechat-embodied-ai-lab",
+        "realxiaoze"
+      ]
     }
   }
 }
