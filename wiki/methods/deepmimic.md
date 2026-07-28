@@ -2,7 +2,7 @@
 type: method
 tags: [imitation-learning, tracking, rl, xbpeng, paper, humanoid, motion-control, body-system-stack, ubc, berkeley]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-28
 code: https://github.com/xbpeng/DeepMimic
 venue: curated
 related:
@@ -96,6 +96,8 @@ sequenceDiagram
 - [protomotions](../entities/protomotions.md) — 提供大规模并行训练支持。
 - [amp-reward](amp-reward.md) — 后续的“无奖励设计”版本。
 - [mimickit](../entities/mimickit.md) — 现代化的实现框架。
+- [RFC（Residual Force Control）](../entities/paper-rfc-residual-force-control.md) — 同栈对位工作：在动作空间注入根部残差外力补偿动力学失配，芭蕾等动作超越 DeepMimic（NeurIPS 2020）。
+- [Residual Policy Learning（方法页）](./residual-policy-learning.md) — base + 残差谱系总览。
 
 ## 参考来源
 - [sources/papers/deepmimic.md](../../sources/papers/deepmimic.md)

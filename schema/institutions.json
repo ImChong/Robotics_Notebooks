@@ -2127,6 +2127,37 @@
         "nudt",
         "national-university-of-defense-technology"
       ]
+    },
+    "siemens": {
+      "label": "西门子（Siemens）",
+      "aliases": [
+        "siemens",
+        "siemens-corporation"
+      ]
+    },
+    "qut": {
+      "label": "昆士兰科技大学（QUT）",
+      "aliases": [
+        "qut",
+        "queensland-university-of-technology",
+        "qcr"
+      ]
+    },
+    "csiro": {
+      "label": "联邦科学与工业研究组织（CSIRO）",
+      "aliases": [
+        "csiro",
+        "data61",
+        "csiro-data61"
+      ]
+    },
+    "ttic": {
+      "label": "丰田工业大学芝加哥分校（TTIC）",
+      "aliases": [
+        "ttic",
+        "toyota-technological-institute-at-chicago",
+        "toyota-technological-institute"
+      ]
     }
   }
 }

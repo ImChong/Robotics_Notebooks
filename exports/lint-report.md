@@ -2,7 +2,7 @@
 
 ## [2026-07-28] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **8** 条信息型预警）：
+共发现 **0** 个问题（另含 **9** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -93,7 +93,8 @@
 ### ❌ 工具实体缺少可派生的所属机构（0 个）
 - 无
 
-### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（1 个）
+### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（2 个）
+- wiki/methods/residual-policy-learning.md（被 13 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/safe-rl.md（被 5 个页面引用，无 queries/comparisons 落地）
 
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
@@ -102,7 +103,7 @@
 ### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（649 个）
+### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（648 个）
 - wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md
 - wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md
 - wiki/entities/paper-adaptive-humanoid-control.md
@@ -118,7 +119,7 @@
 - wiki/entities/paper-anymal-walk-minutes-parallel-drl.md
 - wiki/entities/paper-apt-rl-agile-perceptive-quadruped-locomotion.md
 - wiki/entities/paper-argus-dynamic-symmetry.md
-- … 另有 634 个（历史 backlog；新建 / 大幅改写的 paper-* 必须含 `## 结论`）
+- … 另有 633 个（历史 backlog；新建 / 大幅改写的 paper-* 必须含 `## 结论`）
 
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无
@@ -143,4 +144,4 @@
 ### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：1915/1941 (99%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1923/1949 (99%) wiki/entity 页有 ingest 来源

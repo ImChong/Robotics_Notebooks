@@ -1,5 +1,15 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-28] ingest | sources/personal/residual-policy-reading-list.md — Residual Policy / Residual RL 九篇谱系入库：新增方法枢纽页 + 7 个论文实体页，RuN 原地升格完整详情页（非 stub、不建重复节点），ResMimic 交叉补强；机构注册 +4（siemens/qut/csiro/ttic）
+
+- **归档：** [`sources/personal/residual-policy-reading-list.md`](sources/personal/residual-policy-reading-list.md)；sites ×7（residualrl / rpl / rfc / learning-to-jump / multimodal / reskill / rsa）、repos ×5（residual-policy-learning / rfc / cheetah-trainer / reskill / rsa-shared-autonomy）
+- **开源核查（2026-07-28，步骤 2.5）：** 已开源 5（RPL、RFC 非商用、ARRL 三仓、ReSkill MIT、RSA）；未开源/未见 3（Johannink Residual RL、Versatile Jumping、RuN）；ResMimic 此前已归档
+- **方法枢纽：** [`wiki/methods/residual-policy-learning.md`](wiki/methods/residual-policy-learning.md) — a=a_base+Δa 统一形式、九篇谱系表、工程三件套与选型建议
+- **论文实体（新建 ×7）：** [`wiki/entities/paper-residual-rl-robot-control.md`](wiki/entities/paper-residual-rl-robot-control.md)（Johannink，ICRA 2019）、[`wiki/entities/paper-residual-policy-learning.md`](wiki/entities/paper-residual-policy-learning.md)（Silver RPL）、[`wiki/entities/paper-rfc-residual-force-control.md`](wiki/entities/paper-rfc-residual-force-control.md)（NeurIPS 2020）、[`wiki/entities/paper-versatile-jumping-action-residuals.md`](wiki/entities/paper-versatile-jumping-action-residuals.md)（L4DC 2022）、[`wiki/entities/paper-multimodal-legged-arrl.md`](wiki/entities/paper-multimodal-legged-arrl.md)（RA-L/IROS 2022）、[`wiki/entities/paper-reskill-residual-skill-policies.md`](wiki/entities/paper-reskill-residual-skill-policies.md)（CoRL 2022）、[`wiki/entities/paper-residual-policy-shared-autonomy.md`](wiki/entities/paper-residual-policy-shared-autonomy.md)（ICRA 2020）
+- **原地升格（planned→complete，非重复节点）：** [`wiki/entities/paper-notebook-run-residual-policy-for-natural-humanoid-locomot.md`](wiki/entities/paper-notebook-run-residual-policy-for-natural-humanoid-locomot.md)（RuN，G1 0–2.5 m/s 走跑；保留 paper-notebook 索引关系）
+- **交叉补强：** [`wiki/entities/paper-resmimic.md`](wiki/entities/paper-resmimic.md)、[`wiki/methods/reinforcement-learning.md`](wiki/methods/reinforcement-learning.md)、[`wiki/methods/deepmimic.md`](wiki/methods/deepmimic.md)、[`wiki/entities/unitree-g1.md`](wiki/entities/unitree-g1.md)、[`wiki/overview/paper-notebook-category-05-locomotion.md`](wiki/overview/paper-notebook-category-05-locomotion.md)、[`index.md`](index.md)
+- **机构注册：** `siemens`（西门子）、`qut`（昆士兰科技大学）、`csiro`（联邦科学与工业研究组织）、`ttic`（丰田工业大学芝加哥分校）
+
 ## [2026-07-28] ingest | sources/personal/humanoid-loco-policy-reward-functions-faq.md — 新增概念页 wiki/concepts/humanoid-policy-reward-functions.md（人形运控常见奖励函数六类划分与权重量级，与观测输入页互为对偶）；交叉 reward-design / humanoid-policy-observation-inputs / queries/locomotion-reward-design-guide / queries/humanoid-rl-cookbook / tasks/humanoid-locomotion
 
 ## [2026-07-28] ingest | sources/repos/mimickit.md — 复核 xbpeng/MimicKit（Apache-2.0，已开源）并充实归档：引擎版本 pin（Isaac Lab 2ed331a / Newton v1.0.0）、分布式训练、logger/预训练模型、GMR+SMPL 重定向工具链；补充 wiki/entities/mimickit.md 工程信息速查与 GMR 交叉

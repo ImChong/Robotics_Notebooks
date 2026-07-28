@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, motion-tracking, residual-learning, reinforcement-learning, ppo, gmt, sim2real, unitree-g1, amazon-far, whole-body]
 status: complete
-updated: 2026-07-24
+updated: 2026-07-28
 arxiv: "2510.05070"
 code: https://github.com/amazon-far/ResMimic
 related:
@@ -183,6 +183,9 @@ sequenceDiagram
 
 ## 关联页面
 
+- [Residual Policy Learning（方法页）](../methods/residual-policy-learning.md) — base + 残差谱系总览（ResMimic 为 G1 分支代表）
+- [RuN](./paper-notebook-run-residual-policy-for-natural-humanoid-locomot.md) — CMG 运动先验 + 轻量残差的 G1 自然走跑（arXiv:2509.20696）
+- [Residual RL（Johannink）](./paper-residual-rl-robot-control.md) / [RPL（Silver）](./paper-residual-policy-learning.md) — 残差谱系经典两篇
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md)
 - [Motion Retargeting](../concepts/motion-retargeting.md)

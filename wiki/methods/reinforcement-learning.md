@@ -2,7 +2,7 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-07-27
+updated: 2026-07-28
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-rl-intelligent-control.md
@@ -205,6 +205,7 @@ flowchart LR
 - **vs 最优控制**：RL model-free，最优控制 model-based。两者在 [Model-Based RL](./model-based-rl.md) 中逐渐融合。
 - **vs 深度学习**：现代机器人 RL 通常用 [深度学习基础](../concepts/deep-learning-foundations.md) 中的神经网络做策略/价值函数逼近。
 - **vs WBC**：RL 学习型，WBC 优化型。见 [WBC vs RL](../comparisons/wbc-vs-rl.md)。
+- **残差式用法**：已有控制器/先验打底时，RL 只学补偿量 $a=a_{\text{base}}+\Delta a$，样本效率与安全性同时改善。见 [Residual Policy Learning](./residual-policy-learning.md) 及谱系论文（[Residual RL](../entities/paper-residual-rl-robot-control.md)、[RPL](../entities/paper-residual-policy-learning.md)、[ResMimic](../entities/paper-resmimic.md)、[RuN](../entities/paper-notebook-run-residual-policy-for-natural-humanoid-locomot.md)）。
 
 ## 参考来源
 - [sources/papers/intentional_streaming_rl.md](../../sources/papers/intentional_streaming_rl.md) — 流式 RL 意图更新（Intentional TD / PG）ingest 档案
@@ -222,6 +223,7 @@ flowchart LR
 - [sources/papers/barkour_arxiv_2305_14654.md](../../sources/papers/barkour_arxiv_2305_14654.md) — Barkour：三专长 PPO + Locomotion-Transformer 通才蒸馏（LeggedGym / Isaac Gym）ingest 档案
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — sim2real 与策略迁移相关论文摘录
 - [sources/papers/resmimic_arxiv_2510_05070.md](../../sources/papers/resmimic_arxiv_2510_05070.md) — ResMimic：GMT 预训练 + PPO 残差后训练的人形 loco-manipulation（arXiv:2510.05070）
+- [sources/personal/residual-policy-reading-list.md](../../sources/personal/residual-policy-reading-list.md) — Residual Policy / Residual RL 九篇论文精读清单（残差谱系编译来源）
 - [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md) — 机器人 RL 应用论文集合
 - [机器人论文阅读笔记：PPO](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/PPO_Proximal_Policy_Optimization/PPO_Proximal_Policy_Optimization.html)
 - [机器人论文阅读笔记：AMP](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Character_Control/AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Character_Control.html)
@@ -238,6 +240,8 @@ flowchart LR
 - [InterPrior（论文实体）](../entities/paper-interprior.md) — 模仿初始化 + RL 微调巩固 HOI 先验（arXiv:2602.06035）
 - [E-SDS（论文实体）](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) — 地形统计条件化 VLM 奖励 + 人形感知行走 PPO（arXiv:2512.16446）
 - [ResMimic（论文实体）](../entities/paper-resmimic.md) — GMT 先验 + 物体条件残差 PPO 的两阶段 loco-manipulation（arXiv:2510.05070）
+- [Residual Policy Learning（方法页）](./residual-policy-learning.md) — base + 残差统一框架与九篇谱系论文导航
+- [RuN（论文实体）](../entities/paper-notebook-run-residual-policy-for-natural-humanoid-locomot.md) — CMG 运动先验 + 轻量残差的 G1 自然走跑（arXiv:2509.20696）
 - [TSIL（论文实体）](../entities/paper-tsil-temporal-self-imitation-learning.md) — 长时域操作 PPO：自适应时间目标 + 效率加权自模仿（arXiv:2606.19752）
 - [Sim2Real](../concepts/sim2real.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
