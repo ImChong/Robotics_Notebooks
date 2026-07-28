@@ -42,7 +42,7 @@
 | 族群 | 示例 URL | 角色 |
 |------|----------|------|
 | ament | `ament/ament_cmake` 等 | 构建与包索引 |
-| RMW / DDS | `eProsima/Fast-DDS`、`eclipse-cyclonedds/cyclonedds` | 默认中间件实现 |
+| RMW / DDS | `eProsima/Fast-DDS`、`eclipse-cyclonedds/cyclonedds` | 默认中间件实现（归档：[fast-dds.md](fast-dds.md)、[cyclonedds.md](cyclonedds.md)） |
 | 共享内存 | `eclipse-iceoryx/iceoryx` | 同机零拷贝路径相关 |
 | 客户端库 | `ros2/rcl`、`ros2/rclcpp`、`ros2/rclpy`（清单内） | C/C++/Python API |
 | 消息与接口 | `ros2/common_interfaces`、`ros2/unique_identifier_msgs` 等 | `.msg` / `.srv` / `.action` |
@@ -67,10 +67,12 @@ colcon build --symlink-install
 
 - [ROS 2 基础](../../wiki/concepts/ros2-basics.md) — 中间件定位与组件
 - [DDS 通信](../../wiki/concepts/dds-communication.md) — RMW / Fast DDS / Cyclone
+- [Fast DDS](../../wiki/entities/fast-dds.md) · [Cyclone DDS](../../wiki/entities/cyclone-dds.md)
 - [ROS 2 vs LCM](../../wiki/comparisons/ros2-vs-lcm.md)
 - [tech-map ROS 2 模块](../../tech-map/modules/system/ros2.md)
 - 组织索引：[ros2-github-org.md](../sites/ros2-github-org.md)
 - 文档站：[ros2-official-documentation.md](../sites/ros2-official-documentation.md)
+- DDS 规范：[omg-dds-spec.md](../sites/omg-dds-spec.md)
 
 ## 与本库其他条目的关系
 

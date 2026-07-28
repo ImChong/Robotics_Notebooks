@@ -2,25 +2,29 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, ros2, dds, sdk, humanoid, quadruped]
 status: complete
-updated: 2026-07-24
+updated: 2026-07-28
 related:
   - ./unitree.md
   - ./unitree-sdk2.md
   - ./unitree-ros.md
   - ./unitree-mujoco.md
   - ./unitree-g1-software-stack.md
+  - ./cyclone-dds.md
   - ../concepts/ros2-basics.md
+  - ../concepts/dds-communication.md
   - ../concepts/sim2real.md
 sources:
   - ../../sources/repos/unitree_ros2.md
   - ../../sources/repos/unitree_ros2_to_real.md
   - ../../sources/repos/unitree.md
+  - ../../sources/repos/cyclonedds.md
+  - ../../sources/sites/cyclonedds-io.md
 summary: "unitree_ros2 让 ROS 2 直接使用 Unitree DDS 消息控制 Go2/B2/H1 等机型，无需再包一层 SDK 调用；推荐 Ubuntu 22.04 + Humble。Go1 专用的 unitree_ros2_to_real 为代际偏旧示例，不单独建页。"
 ---
 
 # unitree_ros2
 
-**unitree_ros2** 是宇树官方 ROS 2 功能包：底层与 SDK2 一样走 CycloneDDS，因此 **ROS 2 msg 可直接用于通信与控制**，而不必把每个调用再 wrap 一层 C++ SDK。
+**unitree_ros2** 是宇树官方 ROS 2 功能包：底层与 SDK2 一样走 [Cyclone DDS](./cyclone-dds.md)，因此 **ROS 2 msg 可直接用于通信与控制**，而不必把每个调用再 wrap 一层 C++ SDK。
 
 ## 一句话定义
 
@@ -42,6 +46,7 @@ summary: "unitree_ros2 让 ROS 2 直接使用 Unitree DDS 消息控制 Go2/B2/H1
 - 实验室大量工具（RViz2、rosbag2、Nav2）默认 ROS 2；本仓是「不丢弃 ROS 生态」时的官方入口。
 - 与 [`unitree_sdk2`](./unitree-sdk2.md) **同语义**：选型是语言/生态偏好，不是两套互斥协议。
 - 对照 [`unitree_ros`](./unitree-ros.md)（ROS1 + Gazebo）可清晰划分 **遗产仿真栈** vs **现行真机 ROS 2 栈**。
+- 底层实现细节见 [Cyclone DDS](./cyclone-dds.md) 实体页（版本钉定、Domain 隔离）。
 
 ## 核心原理
 
@@ -73,6 +78,8 @@ summary: "unitree_ros2 让 ROS 2 直接使用 Unitree DDS 消息控制 Go2/B2/H1
 - [unitree_sdk2](./unitree-sdk2.md)
 - [unitree_ros（ROS1）](./unitree-ros.md)
 - [unitree_mujoco](./unitree-mujoco.md)
+- [Cyclone DDS](./cyclone-dds.md)
+- [DDS 通信机制](../concepts/dds-communication.md)
 - [ROS 2 基础](../concepts/ros2-basics.md)
 - [Unitree](./unitree.md)
 
@@ -80,9 +87,10 @@ summary: "unitree_ros2 让 ROS 2 直接使用 Unitree DDS 消息控制 Go2/B2/H1
 
 - [sources/repos/unitree_ros2.md](../../sources/repos/unitree_ros2.md)
 - [sources/repos/unitree_ros2_to_real.md](../../sources/repos/unitree_ros2_to_real.md)
+- [sources/repos/cyclonedds.md](../../sources/repos/cyclonedds.md) · [cyclonedds.io](../../sources/sites/cyclonedds-io.md)
 - 上游：<https://github.com/unitreerobotics/unitree_ros2>
 
 ## 推荐继续阅读
 
 - SDK2 文档：<https://support.unitree.com/home/zh/developer>
-
+- Cyclone 文档索引：<https://cyclonedds.io/docs/>
