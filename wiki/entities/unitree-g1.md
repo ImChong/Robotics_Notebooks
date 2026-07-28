@@ -2,7 +2,7 @@
 type: entity
 tags: [hardware, humanoid, platform, unitree]
 status: complete
-updated: 2026-07-26
+updated: 2026-07-28
 related:
   - ./humanoid-robot.md
   - ./rek.md

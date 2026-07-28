@@ -2,7 +2,7 @@
 type: method
 tags: [rl, imitation-learning, perception, soccer, humanoid, unitree-g1]
 status: drafting
-updated: 2026-06-10
+updated: 2026-07-28
 related:
   - ../tasks/humanoid-soccer.md
   - ../entities/unitree-g1.md
@@ -13,6 +13,7 @@ related:
 sources:
   - ../../sources/repos/humanoid_soccer.md
   - ../../sources/papers/robonaldo_arxiv_2606_11092.md
+  - ../../sources/repos/robonaldo.md
 summary: "PAiD (Perception-Action integrated Decision-making) 是一种渐进式的人形机器人技能学习框架，通过模仿学习与感知-动作融合实现鲁棒的类人化踢球。"
 ---
 
@@ -65,6 +66,7 @@ PAiD 的成功关键在于其结构化的训练方案：
 | **瞄准目标** | goal-region / 成功率导向 | **点级误差**（3 m 平均 **0.73 m**） |
 | **功率** | 未主打触球球速叙事 | 触球后最高 **13.10 m/s** |
 | **感知** | 第一视角 RGB 融合 | **LiDAR 近距 + IR 远距** 球定位 |
+| **开源（2026-07）** | 见 [HumanoidSoccer 仓](../../sources/repos/humanoid_soccer.md) | **已开源** [RoboNaldo](https://github.com/OpenDriveLab/RoboNaldo) + [Deploy](https://github.com/OpenDriveLab/RoboNaldo_Deploy) |
 
 二者可并读：PAiD 代表 **感知–动作渐进融合** 范式；RoboNaldo 代表 **motion scaffold + 高冲量课程** 范式。
 

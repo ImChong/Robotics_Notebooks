@@ -6,14 +6,19 @@
 - **类型：** site / project-page
 - **官方入口：** <https://opendrivelab.com/RoboNaldo/>
 - **入库日期：** 2026-06-10
+- **再核日期：** 2026-07-28
 - **一句话说明：** 论文配套站点：强调 **通用场景下亚米级人形射门**、**单条人类参考 → 跟踪 → 偏离适应** 的三阶段课程，以及 **G1 机载感知 + 室外多场地** 真机演示（任意球 / 来球、多目标高度与球位 sweep）。
+- **开源状态（2026-07-28 项目页核查）：** **已开源** — 头部资源区提供 **paper / Video / Code**；Code → [OpenDriveLab/RoboNaldo](https://github.com/opendrivelab/RoboNaldo)（训练）；部署见配套 [RoboNaldo_Deploy](https://github.com/OpenDriveLab/RoboNaldo_Deploy)。
 
-## 页面公开信息（检索自 2026-06-10）
+## 页面公开信息（检索自 2026-07-28）
 
 | 资源 | URL |
 |------|-----|
 | 项目首页 | <https://opendrivelab.com/RoboNaldo/> |
-| arXiv | <https://arxiv.org/abs/2606.11092> |
+| arXiv / paper | <https://arxiv.org/abs/2606.11092> |
+| Video | <https://youtu.be/BuHNzqebIqc> |
+| Code（训练） | <https://github.com/opendrivelab/RoboNaldo> |
+| Deploy（README / 子模块） | <https://github.com/OpenDriveLab/RoboNaldo_Deploy> |
 
 ## 与论文一致的公开主张（便于 wiki 溯源）
 
@@ -22,7 +27,11 @@
 3. **真机亮点：** 3 m 距离 **0.73 m / 0.86 m** 点级误差（静止 / 来球）；最佳 **17 cm @ 3 m**、**13.10 m/s** 球速；**egocentric onboard** 球与目标感知。
 4. **演示矩阵：** 低/中高/超高目标 × 左中右；球位横向与远近 sweep；来球速度 sweep；人工草 / 曲棍球场 / 天然草等室外场地。
 5. **仿真：** 3 m 射门距离、8 m×2 m 目标面 **shot-quality heatmap**；Stage 2 覆盖任意球 regime，Stage 3 略牺牲精度换来球泛化。
+6. **BibTeX：** 项目页给出 `zhong2026robonaldo`（eprint `2606.11092`）。
 
 ## 对 wiki 的映射
 
-- [`wiki/entities/paper-robonaldo-humanoid-soccer-shooting.md`](../../wiki/entities/paper-robonaldo-humanoid-soccer-shooting.md) — 方法栈、实验、与 PAiD 等对照及部署归纳
+- [`wiki/entities/paper-robonaldo-humanoid-soccer-shooting.md`](../../wiki/entities/paper-robonaldo-humanoid-soccer-shooting.md) — 方法栈、实验、开源复现路径与 PAiD 对照
+- [`sources/repos/robonaldo.md`](../repos/robonaldo.md) — 训练仓
+- [`sources/repos/robonaldo-deploy.md`](../repos/robonaldo-deploy.md) — 部署仓
+- [`sources/papers/robonaldo_arxiv_2606_11092.md`](../papers/robonaldo_arxiv_2606_11092.md) — 论文摘录

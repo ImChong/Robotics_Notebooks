@@ -1,5 +1,14 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-28] ingest | sources/sites/opendrivelab-robonaldo.md + repos/robonaldo.md + repos/robonaldo-deploy.md — 项目页再核：Code 已挂 OpenDriveLab/RoboNaldo（训练 MIT）与 RoboNaldo_Deploy；升格更新 wiki/entities/paper-robonaldo-humanoid-soccer-shooting.md（开源状态/工程实践/源码运行时序图/结论）；交叉 wiki/tasks/humanoid-soccer.md、wiki/methods/paid-framework.md、wiki/queries/humanoid-soccer-skill-learning-method-selection.md；注册 schema/institutions.json → archon-robotics（源策未来）
+
+- **一手入口：** 项目页 [opendrivelab.com/RoboNaldo](https://opendrivelab.com/RoboNaldo/) · 论文 [arXiv:2606.11092](https://arxiv.org/abs/2606.11092) · Video [youtu.be/BuHNzqebIqc](https://youtu.be/BuHNzqebIqc)
+- **开源核查（2026-07-28）：** **已开源** — 项目页 Code → [OpenDriveLab/RoboNaldo](https://github.com/OpenDriveLab/RoboNaldo)（训练，MIT，~32★）；配套 [RoboNaldo_Deploy](https://github.com/OpenDriveLab/RoboNaldo_Deploy)（真机/MuJoCo FSM；根目录未声明 LICENSE）
+- **归档：** [`sources/sites/opendrivelab-robonaldo.md`](sources/sites/opendrivelab-robonaldo.md)、[`sources/repos/robonaldo.md`](sources/repos/robonaldo.md)、[`sources/repos/robonaldo-deploy.md`](sources/repos/robonaldo-deploy.md)；更新 [`sources/papers/robonaldo_arxiv_2606_11092.md`](sources/papers/robonaldo_arxiv_2606_11092.md)、[`sources/README.md`](sources/README.md)、[`references/repos/humanoid-projects.md`](references/repos/humanoid-projects.md)
+- **主升格：** [`wiki/entities/paper-robonaldo-humanoid-soccer-shooting.md`](wiki/entities/paper-robonaldo-humanoid-soccer-shooting.md) — 补齐开源状态、工程实践、源码运行时序图、结论；机构 tags `hku`/`cuhk`/`opendrivelab`/`archon-robotics`
+- **交叉：** [`wiki/tasks/humanoid-soccer.md`](wiki/tasks/humanoid-soccer.md)、[`wiki/methods/paid-framework.md`](wiki/methods/paid-framework.md)、[`wiki/queries/humanoid-soccer-skill-learning-method-selection.md`](wiki/queries/humanoid-soccer-skill-learning-method-selection.md)
+- **机构注册：** `schema/institutions.json` → `archon-robotics`（源策未来（Archon Robotics））
+
 ## [2026-07-28] ingest | sources/repos/drawio-scientific-illustrator.md — Draw.io Scientific Illustrator（Codex 插件 + MCP 可见操控 draw.io）；升格 wiki/entities/drawio-scientific-illustrator.md；交叉 freecad-mcp / cad-skills / img2threejs / gsap-skills / manim
 
 - **一手入口：** [icebird1998/drawio-scientific-illustrator](https://github.com/icebird1998/drawio-scientific-illustrator)（~1.0k★，MIT，v1.0.0；Codex plugin = `drawio-live`/`drawio-file-utils` MCP + Skill `recreate-scientific-figure-in-drawio`）

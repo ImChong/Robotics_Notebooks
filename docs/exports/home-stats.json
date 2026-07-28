@@ -1,13 +1,55 @@
 {
   "generated_at": "2026-07-28",
   "node_count": 1962,
-  "edge_count": 17101,
+  "edge_count": 17102,
   "coverage": {
     "covered": 1912,
     "total": 1938,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-robonaldo-humanoid-soccer-shooting.md",
+      "detail_id": "entity-paper-robonaldo-humanoid-soccer-shooting",
+      "label": "RoboNaldo（人形足球射门 · Motion-Guided Curriculum RL）",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/tasks/humanoid-soccer.md",
+      "detail_id": "wiki-tasks-humanoid-soccer",
+      "label": "Humanoid Soccer",
+      "type": "task",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/methods/paid-framework.md",
+      "detail_id": "wiki-methods-paid-framework",
+      "label": "PAiD Framework",
+      "type": "method",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/queries/humanoid-soccer-skill-learning-method-selection.md",
+      "detail_id": "wiki-queries-humanoid-soccer-skill-learning-method-selection",
+      "label": "人形足球技能学习方法选型指南",
+      "type": "query",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/drawio-scientific-illustrator.md",
       "detail_id": "entity-drawio-scientific-illustrator",
@@ -179,61 +221,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/comparisons/ros2-vs-lcm.md",
-      "detail_id": "wiki-comparisons-ros2-vs-lcm",
-      "label": "ROS 2 vs LCM (机器人中间件选型)",
-      "type": "comparison",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/unitree-ros2.md",
-      "detail_id": "entity-unitree-ros2",
-      "label": "unitree_ros2",
-      "type": "entity",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/concepts/lcm-basics.md",
-      "detail_id": "wiki-concepts-lcm-basics",
-      "label": "LCM (Lightweight Communications and Marshalling) 基础",
-      "type": "concept",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-learning-to-ball.md",
-      "detail_id": "entity-paper-notebook-learning-to-ball",
-      "label": "Learning to Ball（Composing Policies for Long-Horizon Basketball Moves）",
-      "type": "entity",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/drawio-scientific-illustrator.md",
-    "detail_id": "entity-drawio-scientific-illustrator",
-    "label": "Draw.io Scientific Illustrator",
+    "path": "wiki/entities/paper-robonaldo-humanoid-soccer-shooting.md",
+    "detail_id": "entity-paper-robonaldo-humanoid-soccer-shooting",
+    "label": "RoboNaldo（人形足球射门 · Motion-Guided Curriculum RL）",
     "type": "entity",
     "recency": "2026-07-28",
     "source": "log.md",
-    "action": "added",
+    "action": "maintained",
     "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "community_label": "模仿学习（Imitation Learning, IL） 社区"
   },
   "top_communities": [
     {
