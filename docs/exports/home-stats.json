@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-28",
-  "node_count": 1963,
-  "edge_count": 17331,
+  "node_count": 1964,
+  "edge_count": 17356,
   "coverage": {
-    "covered": 1913,
-    "total": 1939,
+    "covered": 1914,
+    "total": 1940,
     "percent": 99
   },
   "latest_wiki_nodes": [
@@ -85,6 +85,15 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    },
+    {
+      "path": "wiki/concepts/humanoid-policy-observation-inputs.md",
+      "detail_id": "wiki-concepts-humanoid-policy-observation-inputs",
+      "label": "人形机器人运控策略的观测输入（Humanoid Policy Observation Inputs）",
+      "type": "concept",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-raven-rl-adaptive-visibility-graph-mpc.md",
@@ -188,15 +197,6 @@
       "recency": "2026-07-28",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-motion-generation.md",
-      "detail_id": "roadmap-depth-motion-generation",
-      "label": "路线（纵深）：如果目标是动作生成（文本/多模态 → 人形动作）",
-      "type": "roadmap_page",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
@@ -211,27 +211,27 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 313
+      "size": 296
     },
     {
       "label": "人形论文深读笔记",
-      "size": 205
+      "size": 213
     },
     {
       "label": "模仿学习",
-      "size": 198
+      "size": 180
     },
     {
       "label": "移动操作",
       "size": 179
     },
     {
-      "label": "操作",
-      "size": 120
+      "label": "仿真到现实",
+      "size": 123
     },
     {
-      "label": "仿真到现实",
-      "size": 106
+      "label": "操作",
+      "size": 120
     }
   ],
   "top_hubs": [
@@ -317,14 +317,14 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 122,
+      "degree": 123,
       "has_repo": true
     },
     {
       "detail_id": "wiki-methods-beyondmimic",
       "label": "BeyondMimic",
       "type": "method",
-      "degree": 60,
+      "degree": 61,
       "has_repo": true
     },
     {

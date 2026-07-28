@@ -9,6 +9,7 @@
 - **交叉：** [`wiki/tasks/teleoperation.md`](wiki/tasks/teleoperation.md)、[`wiki/concepts/contact-rich-manipulation.md`](wiki/concepts/contact-rich-manipulation.md)、[`wiki/methods/in-hand-reorientation.md`](wiki/methods/in-hand-reorientation.md)、[`wiki/methods/diffusion-policy.md`](wiki/methods/diffusion-policy.md)、[`wiki/queries/dexterous-data-collection-guide.md`](wiki/queries/dexterous-data-collection-guide.md)、[`roadmap/depth-teleoperation.md`](roadmap/depth-teleoperation.md)、[`wiki/entities/paper-hrl-stack-06-hdmi.md`](wiki/entities/paper-hrl-stack-06-hdmi.md)
 - **机构 tags：** `bigai` / `tsinghua` / `pku`（已在 institutions.json）
 
+## [2026-07-28] ingest | sources/personal/humanoid-loco-policy-observation-inputs-faq.md — 新增概念页 wiki/concepts/humanoid-policy-observation-inputs.md（人形运控策略观测输入五类划分与获取链路）；交叉 state-estimation / privileged-training / terrain-latent-representation / humanoid-policy-network-architecture / tasks/humanoid-locomotion / queries/humanoid-rl-cookbook
 
 ## [2026-07-28] ingest | sources/papers/raven_rl_adaptive_visibility_graph_arxiv_2607_15701.md — UCLA RoMeLa RAVEN（arXiv:2607.15701）复核升格：补结论/开源再核；wiki/entities/paper-raven-rl-adaptive-visibility-graph-mpc.md；交叉 far-planner / mpc-vs-rl / humanoid-locomotion；roadmap/depth-navigation.md Stage 3
 

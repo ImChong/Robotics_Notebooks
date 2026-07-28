@@ -2,7 +2,7 @@
 type: concept
 tags: [state-estimation, ekf, kalman, imu, contact]
 status: complete
-updated: 2026-07-25
+updated: 2026-07-28
 summary: "State Estimation 负责从传感器中恢复机器人姿态、速度和接触状态，是控制闭环的前提。"
 related:
   - ../queries/contact-wrench-closed-loop.md
@@ -10,6 +10,7 @@ related:
   - ../entities/paper-glob3r.md
   - ../entities/dreamwaq-plus.md
   - ../entities/paper-x-ionet-cross-platform-inertial-odometry.md
+  - ./humanoid-policy-observation-inputs.md
 sources:
   - ../../sources/papers/kalman_filter_ekf_primary_refs.md
   - ../../sources/papers/state_estimation.md
@@ -297,6 +298,7 @@ MPC / Centroidal Planner / TSID / WBC / Policy
 
 ## 和已有页面的关系
 
+- [人形机器人运控策略的观测输入](./humanoid-policy-observation-inputs.md)（本页回答 A 类本体感知中「不可直测量」（基座线速度、接触）如何获得；该页给出五类观测输入的全景分类）
 - [System Identification](./system-identification.md)（状态估计依赖机器人动力学模型，SysID 是模型可信度的前提）
 - [Floating Base Dynamics](./floating-base-dynamics.md)（floating base 状态估计是 state estimation 最难的部分之一）
 - [Kalman Filter (KF)](../formalizations/kalman-filter.md) — 线性递推估计模板

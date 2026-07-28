@@ -6,6 +6,7 @@ updated: 2026-07-28
 summary: "Privileged Training 让 teacher 使用仿真特权信息训练，再蒸馏给真实可观测 student，是 sim2real 常见套路；蒸馏本质是把 RL 探索问题转为 Teacher 标注的监督学习。"
 related:
   - ./terrain-latent-representation.md
+  - ./humanoid-policy-observation-inputs.md
   - ./sim2real.md
   - ../methods/imitation-learning.md
   - ../methods/dagger.md
@@ -232,6 +233,7 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 ## 关联页面
 
 - [地形 Latent 表征](./terrain-latent-representation.md) — Student 深度编码向量通常不是可读高度图
+- [人形机器人运控策略的观测输入](./humanoid-policy-observation-inputs.md) — 特权信息（E 类）与其余四类部署可得观测的全景分类
 - [Sim2Real](./sim2real.md) — 特权训练是 sim2real 的核心技术之一，解决训练-部署感知差异
 - [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md) — 观测设计：学生仅用机载可得通道
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — Teacher 阶段用标准 RL 训练
