@@ -2,17 +2,19 @@
 type: query
 tags: [dexterity, data-collection, teleoperation, simulation, robot-hand]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-28
 related:
   - ../entities/allegro-hand.md
   - ../entities/ruka-v2-hand.md
   - ../entities/midas-hand.md
   - ../entities/mimic-wearable-u1.md
+  - ../entities/paper-teledexter.md
   - ../comparisons/data-gloves-vs-vision-teleop.md
   - ../methods/behavior-cloning.md
   - ./demo-data-collection-guide.md
 sources:
   - ../../sources/papers/imitation_learning.md
+  - ../../sources/papers/teledexter_arxiv_2607_11481.md
 summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、Allegro Hand 或低成本遥操作装置采集高质量、多模态的灵巧抓取与操作演示数据。"
 ---
 
@@ -62,6 +64,7 @@ summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、A
 - **方案 A：VR 交互**：人类佩戴 VR 头显在 MuJoCo 仿真环境里操纵灵巧手。
 - **方案 B：RL 专家导出**：先用强化学习练出一个“完美策略”，再利用该策略生成轨迹作为模仿学习的负样本（Data Aggregation）。
 - **方案 C：视觉重构**：从海量的人类操作视频（YouTube/Epic Kitchens）中，利用计算机视觉算法逆向推导出手的位姿序列。
+- **方案 D：学习式接触执行层采数**：[TeleDexter](../entities/paper-teledexter.md) 用 MoCap 给出指尖+物体目标，仿真训好的 co-tracking 控制器在真机上完成 finger gaiting / 工具切换，从而采到运动学遥操作采不到的接触丰富示范（每任务约 50 条即可训 Diffusion Policy）。代价是 **物体专用策略 + 重型动捕**，且截至 2026-07-28 **未开源**。
 
 ## 采集质量的 Checklist
 
@@ -77,9 +80,11 @@ summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、A
 - [MediaPipe 实体](../entities/mediapipe.md) — 低成本 21 点手部关键点感知框架
 - [mimic wearable U1](../entities/mimic-wearable-u1.md) — 固定 M1 运动学的被动外骨骼中层采集
 - [Behavior Cloning](../methods/behavior-cloning.md)
+- [TeleDexter（论文实体）](../entities/paper-teledexter.md) — co-tracking 灵巧遥操作数据引擎
 - [多模态融合技巧](./multimodal-fusion-tricks.md)
 - [操作演示数据采集总指南](./demo-data-collection-guide.md)
 
 ## 参考来源
 - Qin, B., et al. (2023). *AnyTeleop: A Unified and General Framework for Bimanual Dexterous Teleoperation*.
 - [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md)
+- [sources/papers/teledexter_arxiv_2607_11481.md](../../sources/papers/teledexter_arxiv_2607_11481.md)

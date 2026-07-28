@@ -2,7 +2,7 @@
 type: concept
 tags: [manipulation, contact, force-control, impedance-control, tsid]
 status: complete
-updated: 2026-07-27
+updated: 2026-07-28
 summary: "Contact-Rich Manipulation 指需要持续建模接触、摩擦和力约束的操作任务，难点不在于碰到物体，而在于控制接触过程本身。"
 related:
   - ../queries/contact-wrench-closed-loop.md
@@ -15,6 +15,7 @@ related:
   - ../entities/paper-vtap-gripper.md
   - ../entities/paper-taco-tactile-sensor-benchmark.md
   - ../entities/paper-fm-vla.md
+  - ../entities/paper-teledexter.md
   - ../entities/yale-openhand.md
   - ../entities/neoteai.md
   - ../entities/paper-n0-foundation.md
@@ -37,6 +38,7 @@ sources:
   - ../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md
   - ../../sources/papers/n0_foundation.md
   - ../../sources/papers/n0_twam.md
+  - ../../sources/papers/teledexter_arxiv_2607_11481.md
 ---
 
 # Contact-Rich Manipulation（接触丰富型操作）
@@ -116,6 +118,7 @@ sources:
 - [TSID](./tsid.md) / [Whole-Body Control](./whole-body-control.md) 提供多任务和力约束执行层。
 - [SceneBot](../entities/paper-scenebot.md) — 人形 **contact-prompted tracking** 侧接触接口。
 - [CHORD](../entities/paper-chord-contact-wrench-dexterous-manipulation.md) — **接触位置 vs 接触力旋量** 的演示迁移；CWS 奖励覆盖推/撬/滑等瞬态接触阶段。
+- [TeleDexter](../entities/paper-teledexter.md) — 灵巧遥操作的 **hand–object co-tracking**：操作员给指尖+物体目标，仿真 RL 学接触切换；工具使用与手内重定向真机平均 **75.2% SR**。
 - [T-Rex](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md) — **学习式触觉反应 VLA**：12 项双手力控/形变/协调真机任务与 **开源触觉 play 数据集**；强调 **异步高频触觉专家** 而非朴素模态拼接。
 - [OmniTacTune](../entities/paper-omnitactune-tactile-residual-adaptation.md) — **冻结视觉 + 触觉残差真机 RL**：单臂 xArm7 上四接触丰富任务（插装/开盖/杠杆），**40–80 min** 在线练习、**无需离线触觉演示**；与 T-Rex 形成「短预算插件式适应」vs「大规模触觉 mid-training」对照。
 - [TouchWorld](../entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md) — **预测–反应式触觉基础模型**：人形 **Wuji** 平台上 **六任务长程** benchmark（浇花/清桌面/杯与插头插入/擦锅/抽纸巾），含 **人为扰动** 设置；**Tactile World Model** 预测视触觉子目标 + **TRT** 高频残差，干净 **65.0%**、扰动 **53.7%** 宏平均。
@@ -139,6 +142,7 @@ sources:
 - [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md) — 接触力、摩擦约束与动力学建模基础
 - [sources/papers/vtap_gripper_arxiv_2607_15448.md](../../sources/papers/vtap_gripper_arxiv_2607_15448.md) — VTAP 指–掌协同接触丰富夹爪
 - [sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md](../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md) — TacO 跨模态触觉真机 IL 基准
+- [sources/papers/teledexter_arxiv_2607_11481.md](../../sources/papers/teledexter_arxiv_2607_11481.md) — TeleDexter hand–object co-tracking 灵巧遥操作
 - Mordatch et al., *Contact-Invariant Optimization for Hand Manipulations*
 
 ## 关联页面

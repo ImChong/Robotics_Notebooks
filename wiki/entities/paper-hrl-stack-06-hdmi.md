@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, loco-manipulation, loco-manip-161-survey, loco-manip-contact-survey, human-video, contact-data, robot-object-co-tracking, sim2real, unitree-g1, cmu]
 status: complete
-updated: 2026-07-24
+updated: 2026-07-28
 arxiv: "2509.16757"
 venue: "arXiv 2025"
 summary: "HDMI（HumanoiD iMitation for Interaction，arXiv:2509.16757，CMU/LeCAR）从单目 RGB 人类 HOI 视频抽取人体、物体轨迹与接触点，重定向为结构化 motion.npz，再用 robot-object co-tracking RL、统一物体表示、残差动作空间与接触奖励训练 G1 策略；真机实现 67 次连续双向开门穿越、6 类真实 loco-manip 任务与 14 类仿真任务，官方 LeCAR-Lab/HDMI 已开放 IsaacLab 训练代码。"
@@ -21,6 +21,7 @@ related:
   - ./paper-hrl-stack-05-humanx.md
   - ./paper-omnicontact-humanoid-loco-manipulation.md
   - ./paper-loco-manip-03-genhoi.md
+  - ./paper-teledexter.md
 sources:
   - ../../sources/papers/humanoid_rl_stack_06_hdmi_learning_interactive_humanoid_whole_body_co.md
   - ../../sources/papers/loco_manip_161_survey_110_hdmi.md
@@ -217,6 +218,7 @@ HDMI 在关联页面里主要与三条 HOI 路线对照：同样从人类视频�
 - [HumanX](./paper-hrl-stack-05-humanx.md) — 同样从人类视频获取 HOI 先验的相邻路线。
 - [OmniContact](./paper-omnicontact-humanoid-loco-manipulation.md) — 将 HDMI dense HOI tracking 抽象为可组合 Contact Flow 的后续对照。
 - [GenHOI](./paper-loco-manip-03-genhoi.md) — 用生成视频做零样本接触规划，对比 HDMI 的每技能训练路线。
+- [TeleDexter](./paper-teledexter.md) — 灵巧手侧的 hand–object co-tracking 遥操作对照（物体进闭环同构，任务面与具身不同）。
 
 ## 参考来源
 
