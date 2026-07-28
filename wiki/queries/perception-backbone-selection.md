@@ -7,6 +7,7 @@ summary: "机器人感知骨干/表征选型 Query：从「分类骨干 / 检测
 related:
   - ../concepts/vision-backbones.md
   - ../concepts/visual-representation-for-policy.md
+  - robot-perception-stack-selection-loop.md
   - ../comparisons/cnn-vs-vit-backbones.md
   - ../methods/object-detection.md
   - ../methods/vla.md

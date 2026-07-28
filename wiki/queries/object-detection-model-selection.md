@@ -8,6 +8,8 @@ related:
   - ../methods/object-detection.md
   - ../concepts/vision-backbones.md
   - perception-backbone-selection.md
+  - robot-perception-stack-selection-loop.md
+  - ../concepts/2d-to-3d-semantic-lifting-gap.md
   - ../entities/paper-yolo-unified-realtime-detection.md
   - ../entities/ultralytics.md
   - ../entities/paper-resnet-deep-residual-learning.md
