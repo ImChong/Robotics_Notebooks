@@ -7,6 +7,8 @@ related:
   - ../comparisons/ros2-vs-lcm.md
   - ../concepts/ros2-basics.md
   - ../concepts/lcm-basics.md
+  - ../concepts/remote-procedure-call.md
+  - ../entities/grpc.md
   - ../comparisons/can-vs-ethercat-joint-bus.md
   - ../concepts/can-bus-protocol.md
   - ../concepts/ethercat-protocol.md
@@ -79,6 +81,9 @@ ROS 2 底层使用的是 [DDS](../concepts/dds-communication.md) 协议（常见
 - **最高优解**：如果在同一台物理机内，感知进程和控制进程最好通过**共享内存**直接交互。无锁队列（Lock-free ring buffer）是极限性能的首选。
 - **跨板通信**：如果需要在控制器和计算主板间跨网线通信，首选 **LCM (UDP 组播)**。它几乎没有开销，即发即弃，完全满足底层“只要最新鲜的数据，丢包无所谓”的逻辑。官方入口：[LCM 文档](https://lcm-proj.github.io/lcm/) / [lcm-proj/lcm](https://github.com/lcm-proj/lcm)；概念见 [LCM 基础](../concepts/lcm-basics.md)。
 
+### 不要用 gRPC / 阻塞 RPC 跑控制环
+[gRPC](../entities/grpc.md)（HTTP/2）与阻塞式 [RPC](../concepts/remote-procedure-call.md) / ROS Service 适合**服务面**（标定、模式切换、边云推理），不适合 500–1000 Hz 关节设定。队头阻塞与重传会把「丢一帧」变成「迟到一串」。
+
 详见：[ROS 2 vs LCM 选型对比](../comparisons/ros2-vs-lcm.md)
 
 ## 4. C/C++ 代码本身的禁忌
@@ -95,6 +100,7 @@ ROS 2 底层使用的是 [DDS](../concepts/dds-communication.md) 协议（常见
 - [CAN 总线（经典）](../concepts/can-bus-protocol.md)
 - [ROS 2 基础](../concepts/ros2-basics.md)
 - [DDS 通信机制](../concepts/dds-communication.md)
+- [远程过程调用（RPC）](../concepts/remote-procedure-call.md) · [gRPC](../entities/grpc.md)
 - [Fast DDS](../entities/fast-dds.md) · [Cyclone DDS](../entities/cyclone-dds.md)
 - [LCM 基础](../concepts/lcm-basics.md)
 - [ROS 2 vs LCM (中间件选型)](../comparisons/ros2-vs-lcm.md)
@@ -108,3 +114,4 @@ ROS 2 底层使用的是 [DDS](../concepts/dds-communication.md) 协议（常见
 - [LCM 官方文档 / 仓](../../sources/sites/lcm-proj-github-io.md) · [repos/lcm.md](../../sources/repos/lcm.md)
 - [ROS 2 组织 / 元仓](../../sources/sites/ros2-github-org.md) · [repos/ros2.md](../../sources/repos/ros2.md)
 - [OMG DDS / Fast DDS / Cyclone](../../sources/sites/omg-dds-spec.md) · [fast-dds](../../sources/repos/fast-dds.md) · [cyclonedds](../../sources/repos/cyclonedds.md)
+- [gRPC 文档 / 仓](../../sources/sites/grpc-io-docs.md) · [repos/grpc.md](../../sources/repos/grpc.md)

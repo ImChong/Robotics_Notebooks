@@ -6,6 +6,8 @@ updated: 2026-07-28
 related:
   - ./ros2-basics.md
   - ./rmw-interface.md
+  - ./remote-procedure-call.md
+  - ../entities/grpc.md
   - ../entities/fast-dds.md
   - ../entities/cyclone-dds.md
   - ../comparisons/ros2-vs-lcm.md
@@ -115,6 +117,8 @@ flowchart LR
 
 - [ROS 2 基础](./ros2-basics.md)
 - [RMW 接口](./rmw-interface.md)
+- [远程过程调用（RPC）](./remote-procedure-call.md)（请求/响应 vs 本页 pub/sub）
+- [gRPC](../entities/grpc.md)
 - [Fast DDS](../entities/fast-dds.md)
 - [Cyclone DDS](../entities/cyclone-dds.md)
 - [ROS 2 vs LCM](../comparisons/ros2-vs-lcm.md)

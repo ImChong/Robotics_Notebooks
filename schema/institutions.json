@@ -2013,6 +2013,26 @@
         "omg",
         "object-management-group"
       ]
+    },
+    "ietf": {
+      "label": "互联网工程任务组（Internet Engineering Task Force）",
+      "aliases": [
+        "ietf"
+      ]
+    },
+    "cncf": {
+      "label": "云原生计算基金会（Cloud Native Computing Foundation）",
+      "aliases": [
+        "cncf",
+        "cloud-native-computing-foundation"
+      ]
+    },
+    "xerox-parc": {
+      "label": "施乐帕洛阿尔托研究中心（Xerox PARC）",
+      "aliases": [
+        "xerox-parc",
+        "xerox"
+      ]
     }
   }
 }

@@ -10,6 +10,8 @@ related:
   - ../queries/real-time-control-middleware-guide.md
   - ./dds-communication.md
   - ./rmw-interface.md
+  - ./remote-procedure-call.md
+  - ../entities/grpc.md
   - ../entities/fast-dds.md
   - ../entities/cyclone-dds.md
   - ./lcm-basics.md
@@ -25,6 +27,8 @@ sources:
   - ../../sources/repos/fast-dds.md
   - ../../sources/repos/cyclonedds.md
   - ../../sources/sites/dds_omg_rtos_edge_ota_safety_primary_refs.md
+  - ../../sources/papers/birrell_nelson_implementing_rpc_tocs_1984.md
+  - ../../sources/sites/grpc-io-docs.md
 summary: "ROS 2 是机器人系统集成的事实标准中间件栈：节点图 + DDS/RMW 通信 + 工具链与海量生态包；中高层感知/规划首选，底层 1 kHz 硬环路通常另走 LCM/共享内存。"
 ---
 
@@ -73,7 +77,7 @@ flowchart TB
 |------|------|
 | **Nodes** | 执行计算的进程（或组件容器内的节点） |
 | **Topics** | 异步 pub/sub 数据流 |
-| **Services** | 同步请求/响应 |
+| **Services** | 同步请求/响应（[RPC](./remote-procedure-call.md) 风格；实现经 RMW/DDS，不是 [gRPC](../entities/grpc.md)） |
 | **Actions** | 长时任务：目标、反馈、可取消 |
 | **Parameters** | 节点级运行时配置 |
 | **tf2** | 坐标系树与时间戳变换 |

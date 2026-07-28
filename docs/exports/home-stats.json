@@ -1,18 +1,29 @@
 {
   "generated_at": "2026-07-28",
-  "node_count": 1959,
-  "edge_count": 17055,
+  "node_count": 1961,
+  "edge_count": 17085,
   "coverage": {
-    "covered": 1908,
-    "total": 1935,
+    "covered": 1911,
+    "total": 1937,
     "percent": 99
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/concepts/rmw-interface.md",
-      "detail_id": "wiki-concepts-rmw-interface",
-      "label": "RMW（ROS Middleware Interface）",
+      "path": "wiki/concepts/remote-procedure-call.md",
+      "detail_id": "wiki-concepts-remote-procedure-call",
+      "label": "远程过程调用（Remote Procedure Call, RPC）",
       "type": "concept",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/grpc.md",
+      "detail_id": "entity-grpc",
+      "label": "gRPC",
+      "type": "entity",
       "recency": "2026-07-28",
       "source": "log.md",
       "action": "added",
@@ -33,6 +44,59 @@
       "path": "wiki/concepts/dds-communication.md",
       "detail_id": "wiki-concepts-dds-communication",
       "label": "DDS 通信机制（Data Distribution Service）",
+      "type": "concept",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/concepts/network-protocol-stack.md",
+      "detail_id": "wiki-concepts-network-protocol-stack",
+      "label": "网络协议栈基础（TCP / UDP / HTTP / DNS / TLS / 负载均衡）",
+      "type": "concept",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/overview/topic-communication.md",
+      "detail_id": "wiki-overview-topic-communication",
+      "label": "硬件通信与协议（专题汇总）",
+      "type": "overview",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/queries/real-time-control-middleware-guide.md",
+      "detail_id": "wiki-queries-real-time-control-middleware-guide",
+      "label": "实时运控中间件配置指南",
+      "type": "query",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/freecad-mcp.md",
+      "detail_id": "entity-freecad-mcp",
+      "label": "FreeCAD MCP",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/rmw-interface.md",
+      "detail_id": "wiki-concepts-rmw-interface",
+      "label": "RMW（ROS Middleware Interface）",
       "type": "concept",
       "recency": "2026-07-28",
       "source": "log.md",
@@ -82,17 +146,6 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/queries/real-time-control-middleware-guide.md",
-      "detail_id": "wiki-queries-real-time-control-middleware-guide",
-      "label": "实时运控中间件配置指南",
-      "type": "query",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/concepts/lcm-basics.md",
@@ -165,59 +218,12 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
-    },
-    {
-      "path": "wiki/methods/ase.md",
-      "detail_id": "wiki-methods-ase",
-      "label": "ASE: 对抗性技能嵌入",
-      "type": "method",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/queries/sim2real-closed-loop-engineering.md",
-      "detail_id": "wiki-queries-sim2real-closed-loop-engineering",
-      "label": "Sim2Real 闭环误差分层工程",
-      "type": "query",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/concepts/system-identification.md",
-      "detail_id": "wiki-concepts-system-identification",
-      "label": "System Identification",
-      "type": "concept",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/concepts/domain-randomization.md",
-      "detail_id": "wiki-concepts-domain-randomization",
-      "label": "Domain Randomization",
-      "type": "concept",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/rmw-interface.md",
-    "detail_id": "wiki-concepts-rmw-interface",
-    "label": "RMW（ROS Middleware Interface）",
+    "path": "wiki/concepts/remote-procedure-call.md",
+    "detail_id": "wiki-concepts-remote-procedure-call",
+    "label": "远程过程调用（Remote Procedure Call, RPC）",
     "type": "concept",
     "recency": "2026-07-28",
     "source": "log.md",
@@ -228,7 +234,7 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 441
+      "size": 439
     },
     {
       "label": "人形论文深读笔记",
@@ -244,11 +250,11 @@
     },
     {
       "label": "全身控制",
-      "size": 117
+      "size": 119
     },
     {
       "label": "仿真训练",
-      "size": 85
+      "size": 86
     }
   ],
   "top_hubs": [
