@@ -1,13 +1,55 @@
 {
   "generated_at": "2026-07-28",
-  "node_count": 1950,
-  "edge_count": 16871,
+  "node_count": 1951,
+  "edge_count": 16880,
   "coverage": {
-    "covered": 1898,
-    "total": 1926,
+    "covered": 1899,
+    "total": 1927,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/llada2-2-flash.md",
+      "detail_id": "entity-llada2-2-flash",
+      "label": "LLaDA2.2-flash",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/diffusion-model.md",
+      "detail_id": "wiki-concepts-diffusion-model",
+      "label": "Diffusion Model（扩散模型）",
+      "type": "concept",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/kimi-k3.md",
+      "detail_id": "entity-kimi-k3",
+      "label": "Kimi K3",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/queries/real-robot-policy-autoresearch-harness.md",
+      "detail_id": "wiki-queries-real-robot-policy-autoresearch-harness",
+      "label": "真机策略 autoresearch 闭环搭建指南",
+      "type": "query",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/adams.md",
       "detail_id": "entity-adams",
@@ -71,17 +113,6 @@
       "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
-      "path": "wiki/entities/kimi-k3.md",
-      "detail_id": "entity-kimi-k3",
-      "label": "Kimi K3",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
       "path": "wiki/methods/muon.md",
       "detail_id": "wiki-methods-muon",
       "label": "Muon（MomentUm Orthogonalized by Newton–Schulz）",
@@ -97,16 +128,6 @@
       "detail_id": "wiki-methods-enpire",
       "label": "ENPIRE",
       "type": "method",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/queries/real-robot-policy-autoresearch-harness.md",
-      "detail_id": "wiki-queries-real-robot-policy-autoresearch-harness",
-      "label": "真机策略 autoresearch 闭环搭建指南",
-      "type": "query",
       "recency": "2026-07-27",
       "source": "log.md",
       "action": "maintained",
@@ -197,44 +218,23 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/human-humanoid-tools.md",
-      "detail_id": "entity-human-humanoid-tools",
-      "label": "human-humanoid-tools（hhtools）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/soma-retargeter.md",
-      "detail_id": "entity-soma-retargeter",
-      "label": "SOMA Retargeter",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/adams.md",
-    "detail_id": "entity-adams",
-    "label": "ADAMS（Automatic Dynamic Analysis of Mechanical Systems）",
+    "path": "wiki/entities/llada2-2-flash.md",
+    "detail_id": "entity-llada2-2-flash",
+    "label": "LLaDA2.2-flash",
     "type": "entity",
     "recency": "2026-07-28",
     "source": "log.md",
     "action": "added",
-    "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+    "has_repo": true,
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 455
+      "size": 456
     },
     {
       "label": "人形论文深读笔记",

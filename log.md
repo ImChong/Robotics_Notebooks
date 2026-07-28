@@ -1,5 +1,17 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-28] ingest | sources/papers/llada2_2_tech_report.md + sources/repos/llada2-x.md + HF/ModelScope — 接入 LLaDA2.2-flash（Inclusion AI / Ant Group）：Levenshtein Editing dLLM；升格 wiki/entities/llada2-2-flash.md
+
+- **一手开源面（2026-07-28 核查）：**
+  - GitHub [`inclusionAI/LLaDA2.X`](https://github.com/inclusionAI/LLaDA2.X) → [`sources/repos/llada2-x.md`](sources/repos/llada2-x.md)（README / Apache-2.0 / 多版 tech report；仓内无训练脚本）
+  - HF [`inclusionAI/LLaDA2.2-flash`](https://huggingface.co/inclusionAI/LLaDA2.2-flash) → [`sources/sites/huggingface-inclusionai-llada2-2-flash.md`](sources/sites/huggingface-inclusionai-llada2-2-flash.md)（32× safetensors，约 **192 GiB**；custom `generate` + DELETE/SPLIT）
+  - ModelScope [`inclusionAI/LLaDA2.2-flash`](https://modelscope.cn/models/inclusionAI/LLaDA2.2-flash) → [`sources/sites/modelscope-inclusionai-llada2-2-flash.md`](sources/sites/modelscope-inclusionai-llada2-2-flash.md)
+  - 技术报告 PDF → [`sources/papers/llada2_2_tech_report.md`](sources/papers/llada2_2_tech_report.md)（11 页；无独立 arXiv；CPT 128K + Block Routing + L-EBPO）
+- **主升格：** [`wiki/entities/llada2-2-flash.md`](wiki/entities/llada2-2-flash.md) — 100B MoE dLLM；Levenshtein Editing；agentic 评测与吞吐；部署时序图
+- **交叉：** [`wiki/concepts/diffusion-model.md`](wiki/concepts/diffusion-model.md)、[`wiki/entities/kimi-k3.md`](wiki/entities/kimi-k3.md)、[`wiki/queries/real-robot-policy-autoresearch-harness.md`](wiki/queries/real-robot-policy-autoresearch-harness.md)
+- **机构注册：** `schema/institutions.json` → `inclusion-ai`、`ant-group`、`westlake`
+- **开源结论：** **开放权重 + 技术报告 + HF custom 推理已开源**（Apache-2.0）；训练代码/数据未随公开仓发布；SGLang 对 2.2 标 coming soon；系列推理/微调见 dInfer / dFactory
+
 ## [2026-07-28] ingest | sources/papers/adams_orlandea_primary_refs.md — 接入 ADAMS（Automatic Dynamic Analysis of Mechanical Systems）一手学术链并升格 wiki/entities/adams.md
 
 - **一手学术：** [`sources/papers/adams_orlandea_primary_refs.md`](sources/papers/adams_orlandea_primary_refs.md)

@@ -1911,6 +1911,32 @@
         "mechanical-dynamics",
         "mechanical-dynamics-inc"
       ]
+    },
+    "inclusion-ai": {
+      "label": "包容智能（Inclusion AI）",
+      "aliases": [
+        "inclusion-ai",
+        "inclusionai",
+        "inclusion"
+      ]
+    },
+    "ant-group": {
+      "label": "蚂蚁集团（Ant Group）",
+      "aliases": [
+        "ant-group",
+        "ant",
+        "antgroup",
+        "ant-digital",
+        "ant-digital-technologies"
+      ]
+    },
+    "westlake": {
+      "label": "西湖大学（Westlake University）",
+      "aliases": [
+        "westlake",
+        "westlake-university",
+        "westlake-scitrain"
+      ]
     }
   }
 }

@@ -2,7 +2,7 @@
 type: entity
 tags: [foundation-model, llm, moonshot, coding-agents, multimodal, moe, open-source]
 status: complete
-updated: 2026-07-27
+updated: 2026-07-28
 related:
   - ../methods/muon.md
   - ../queries/real-robot-policy-autoresearch-harness.md
@@ -10,6 +10,7 @@ related:
   - ./karpathy-autoresearch.md
   - ./paper-muon-scalable-llm-training.md
   - ../concepts/ai-auto-research.md
+  - ./llada2-2-flash.md
 sources:
   - ../../sources/blogs/kimi_k3_tech_blog.md
   - ../../sources/courses/kimi_k3_api_quickstart.md
@@ -182,6 +183,7 @@ sequenceDiagram
 - [ENPIRE](../methods/enpire.md) — AutoEnvBench 与 Kimi Code 评测语境
 - [autoresearch（karpathy/autoresearch）](./karpathy-autoresearch.md) — 固定预算 LLM 实验环结构可迁移
 - [AI Auto-Research](../concepts/ai-auto-research.md) — 研究自动化阶段论
+- [LLaDA2.2-flash](./llada2-2-flash.md) — 开放权重 dLLM / 高吞吐 agent 后端对照（Apache-2.0）
 
 ## 推荐继续阅读
 

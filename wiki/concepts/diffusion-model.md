@@ -2,12 +2,13 @@
 type: concept
 tags: [generative-model, diffusion, machine-learning]
 status: complete
-updated: 2026-07-04
+updated: 2026-07-28
 related:
   - ../formalizations/generative-foundations.md
   - ../methods/diffusion-policy.md
   - ../methods/diffusion-motion-generation.md
   - ../formalizations/probability-flow.md
+  - ../entities/llada2-2-flash.md
 sources:
   - ../../sources/blogs/wechat_human_five_diffusion_model_intro.md
 summary: "扩散模型通过固定前向加噪与可学习逆向降噪，把高难度一次性生成拆解为稳定的多步监督子任务；是 Diffusion Policy、运动扩散与世界模型等机器人生成式路线的共同底座。"
@@ -127,6 +128,7 @@ flowchart LR
 - [基于扩散的运动生成](../methods/diffusion-motion-generation.md)
 - [概率流 (Probability Flow)](../formalizations/probability-flow.md)
 - [模仿学习](../methods/imitation-learning.md)
+- [LLaDA2.2-flash](../entities/llada2-2-flash.md) — 离散文本 block-diffusion MoE（dLLM）与 agentic 编辑推理
 
 ## 参考来源
 
