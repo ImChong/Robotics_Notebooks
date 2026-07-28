@@ -9,6 +9,15 @@
 - **交叉：** [`wiki/concepts/sim2real.md`](wiki/concepts/sim2real.md)、[`wiki/concepts/system-identification.md`](wiki/concepts/system-identification.md)、[`wiki/concepts/domain-randomization.md`](wiki/concepts/domain-randomization.md)、[`wiki/concepts/curriculum-learning.md`](wiki/concepts/curriculum-learning.md)、[`wiki/concepts/privileged-training.md`](wiki/concepts/privileged-training.md)、[`wiki/entities/paper-rma-rapid-motor-adaptation.md`](wiki/entities/paper-rma-rapid-motor-adaptation.md)、[`wiki/queries/sim2real-checklist.md`](wiki/queries/sim2real-checklist.md)、[`wiki/queries/sim2real-gap-reduction.md`](wiki/queries/sim2real-gap-reduction.md)、[`wiki/overview/topic-sim2real.md`](wiki/overview/topic-sim2real.md)
 - **开源核查：** 课程宣传综述，无独立项目仓；文内锚点开源状态以各实体页为准
 
+## [2026-07-28] ingest | sources/repos/humanoid-motion-intelligence.md — 接入具身智能研究室「人形机器人运动智能知识库」；升格 wiki/entities/humanoid-motion-intelligence.md
+
+- **一手入口：** [RealXiaoze/humanoid-motion-intelligence](https://github.com/RealXiaoze/humanoid-motion-intelligence)（`main`；约 22★；分层许可 CC BY-NC-SA 4.0 + MIT 校验脚本）
+- **归档：** [`sources/repos/humanoid-motion-intelligence.md`](sources/repos/humanoid-motion-intelligence.md)
+- **主升格：** [`wiki/entities/humanoid-motion-intelligence.md`](wiki/entities/humanoid-motion-intelligence.md) — 六条技术路线 + ~145 论文解读 + ~166 开源主表 + 产业/求职；与微信策展同源
+- **交叉：** [`wiki/overview/humanoid-rl-motion-control-body-system-stack.md`](wiki/overview/humanoid-rl-motion-control-body-system-stack.md)、[`wiki/overview/humanoid-motion-cerebellum-technology-map.md`](wiki/overview/humanoid-motion-cerebellum-technology-map.md)、[`wiki/queries/open-source-motion-control-projects.md`](wiki/queries/open-source-motion-control-projects.md)、[`sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md`](sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)、[`sources/repos/awesome-humanoid-robot-learning.md`](sources/repos/awesome-humanoid-robot-learning.md)
+- **机构注册：** `schema/institutions.json` → `embodied-ai-lab`（具身智能研究室）
+- **开源核查（2026-07-28）：** 知识库 **已公开**；**无可运行训练入口**（策展仓，复现走各论文官方仓）
+
 ## [2026-07-28] ingest | sources/papers/icrowdnav_arxiv_2606_26047.md、sources/repos/icrowdnav.md、sources/sites/broln7-socialbev-io.md — iCrowdNav（arXiv:2606.26047，RA-L 2026）视觉人群导航；升格 wiki/entities/paper-icrowdnav.md；交叉 wiki/concepts/sim2real.md、wiki/methods/dwa.md、wiki/comparisons/mobile-robot-navigation-planning-methods.md、wiki/overview/navigation-slam-autonomy-stack.md、wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md、wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md、wiki/entities/paper-notebook-learning-social-navigation-from-positive-and-neg.md、roadmap/depth-navigation.md；注册 peng-cheng-lab / reconova；代码仓待发布
 
 - **论文：** *Learning Robot Visual Navigation in Crowds via Intention-Aware Scene Representations*（SUSTech × Reconova × 鹏城实验室；RA-L 2026）

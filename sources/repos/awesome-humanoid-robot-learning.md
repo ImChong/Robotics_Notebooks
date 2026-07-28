@@ -32,3 +32,4 @@
 - [loco-manipulation](../../wiki/tasks/loco-manipulation.md)
 - [whole-body-control](../../wiki/concepts/whole-body-control.md)
 - [diffusion-motion-generation](../../wiki/methods/diffusion-motion-generation.md)
+- [humanoid-motion-intelligence](../../wiki/entities/humanoid-motion-intelligence.md) — 具身智能研究室：六条路线 + 论文解读 + 开源主表（互补策展仓）

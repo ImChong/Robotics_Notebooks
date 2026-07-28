@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-28",
-  "node_count": 1955,
-  "edge_count": 16963,
+  "node_count": 1956,
+  "edge_count": 16979,
   "coverage": {
-    "covered": 1904,
-    "total": 1931,
+    "covered": 1905,
+    "total": 1932,
     "percent": 99
   },
   "latest_wiki_nodes": [
@@ -102,6 +102,47 @@
       "action": "added"
     },
     {
+      "path": "wiki/entities/humanoid-motion-intelligence.md",
+      "detail_id": "entity-humanoid-motion-intelligence",
+      "label": "Humanoid Motion Intelligence（人形机器人运动智能知识库）",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
+      "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
+      "label": "人形机器人 RL 运动控制：身体系统栈视角",
+      "type": "overview",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/overview/humanoid-motion-cerebellum-technology-map.md",
+      "detail_id": "wiki-overview-humanoid-motion-cerebellum-technology-map",
+      "label": "运动小脑技术地图：64 篇论文的九组视角",
+      "type": "overview",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/queries/open-source-motion-control-projects.md",
+      "detail_id": "wiki-queries-open-source-motion-control-projects",
+      "label": "开源运动控制项目结构化摘要",
+      "type": "query",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
       "path": "wiki/entities/paper-icrowdnav.md",
       "detail_id": "entity-paper-icrowdnav",
       "label": "iCrowdNav（意图感知场景表征的视觉人群导航）",
@@ -163,45 +204,6 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-learning-social-navigation-from-positive-and-neg.md",
-      "detail_id": "entity-paper-notebook-learning-social-navigation-from-positive-and-neg",
-      "label": "Learning Social Navigation from Positive and Negative Demonstrations and Rule-Based Specifications",
-      "type": "entity",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-navigation.md",
-      "detail_id": "roadmap-depth-navigation",
-      "label": "路线（纵深）：如果目标是导航（SLAM → Nav2 → VLN → 导航 VLA）",
-      "type": "roadmap_page",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/llada2-2-flash.md",
-      "detail_id": "entity-llada2-2-flash",
-      "label": "LLaDA2.2-flash",
-      "type": "entity",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/diffusion-model.md",
-      "detail_id": "wiki-concepts-diffusion-model",
-      "label": "Diffusion Model（扩散模型）",
-      "type": "concept",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -251,7 +253,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 356,
+      "degree": 357,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -259,7 +261,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 355,
+      "degree": 356,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -275,7 +277,7 @@
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
-      "degree": 294,
+      "degree": 295,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
