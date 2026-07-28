@@ -2,12 +2,13 @@
 type: query
 tags: [simulator, mujoco, isaac-lab, genesis, locomotion, rl]
 status: complete
-updated: 2026-07-02
-summary: MuJoCo、Isaac Lab、Genesis 三款主流 RL 仿真器的横向对比与选型指南，聚焦 locomotion 训练场景；并挂接六层训练栈地图与十年仿真平台史以区分「同层竞争」与「分层互补」。
+updated: 2026-07-28
+summary: MuJoCo、Isaac Lab、Genesis 三款主流 RL 仿真器的横向对比与选型指南，聚焦 locomotion 训练场景；并挂接工业 ADAMS/MBD 对照、六层训练栈地图与十年仿真平台史以区分「同层竞争」与「分层互补」。
 sources:
   - ../../sources/papers/sim2real.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
   - ../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md
+  - ../../sources/papers/adams_orlandea_primary_refs.md
 related:
   - ../overview/sim-platforms-decade-technology-map.md
   - ../overview/robot-training-stack-layers-technology-map.md
@@ -23,6 +24,7 @@ related:
   - ../entities/newton-physics.md
   - ../entities/mjlab.md
   - ../entities/spear-sim.md
+  - ../entities/adams.md
   - ../entities/autodl.md
   - ../entities/gpufree.md
   - ../comparisons/china-gpu-cloud-platforms.md
@@ -48,6 +50,7 @@ related:
 | 需求 | 推荐选型 |
 |------|---------|
 | 学术研究 / 精确物理 / 算法验证 | **MuJoCo** |
+| 工业整机 K&C / 耐久 / NVH 虚拟样机（非 RL） | **[ADAMS / Cadence Adams](../entities/adams.md)**（商业 CAE；勿当 RL backend） |
 | 大规模并行训练 / 产业化部署 | **Isaac Lab** |
 | 四足课程 / MuJoCo+UE 联合 / 智身 SDK 闭环 | **[MATRiX](../entities/matrix-simulation-platform.md)** |
 | 极速原型验证 / 新兴框架尝鲜 | **Genesis** |

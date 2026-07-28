@@ -1,13 +1,126 @@
 {
-  "generated_at": "2026-07-27",
-  "node_count": 1951,
-  "edge_count": 16888,
+  "generated_at": "2026-07-28",
+  "node_count": 1952,
+  "edge_count": 16903,
   "coverage": {
-    "covered": 1899,
-    "total": 1927,
+    "covered": 1900,
+    "total": 1928,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/adams.md",
+      "detail_id": "entity-adams",
+      "label": "ADAMS（Automatic Dynamic Analysis of Mechanical Systems）",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+    },
+    {
+      "path": "wiki/entities/mujoco.md",
+      "detail_id": "entity-mujoco",
+      "label": "MuJoCo (物理引擎)",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+    },
+    {
+      "path": "wiki/entities/drake.md",
+      "detail_id": "entity-drake",
+      "label": "Drake (机器人工具箱)",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/overview/sim-platforms-decade-technology-map.md",
+      "detail_id": "wiki-overview-sim-platforms-decade-technology-map",
+      "label": "十年仿真平台技术地图（TOP 8）",
+      "type": "overview",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+    },
+    {
+      "path": "wiki/queries/simulator-selection-guide.md",
+      "detail_id": "wiki-queries-simulator-selection-guide",
+      "label": "Locomotion RL 仿真器选型指南：MuJoCo vs Isaac Lab vs Genesis",
+      "type": "query",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-yahmp.md",
+      "detail_id": "entity-paper-yahmp",
+      "label": "YAHMP：人形通用运动跟踪里什么真的重要？",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/queries/robot-perception-stack-selection-loop.md",
+      "detail_id": "wiki-queries-robot-perception-stack-selection-loop",
+      "label": "Query：机器人视觉感知栈选型闭环知识链",
+      "type": "query",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/concepts/2d-to-3d-semantic-lifting-gap.md",
+      "detail_id": "wiki-concepts-2d-to-3d-semantic-lifting-gap",
+      "label": "2D→3D 语义提升 Gap（2D 检测/分割 ↔ 3D 语义几何）",
+      "type": "concept",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/queries/actuator-drive-chain-selection-loop.md",
+      "detail_id": "wiki-queries-actuator-drive-chain-selection-loop",
+      "label": "Query：执行器驱动链选型闭环知识链",
+      "type": "query",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/queries/object-detection-model-selection.md",
+      "detail_id": "wiki-queries-object-detection-model-selection",
+      "label": "Query：目标检测模型选型（机载实时 vs 服务器侧 / 单阶段 vs 两阶段 / 2D 框 vs 级联位姿）",
+      "type": "query",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/queries/perception-backbone-selection.md",
+      "detail_id": "wiki-queries-perception-backbone-selection",
+      "label": "Query：机器人感知骨干/表征选型（分类骨干 vs 检测头 vs 通用预训练表征）",
+      "type": "query",
+      "recency": "2026-07-27",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/kimi-k3.md",
       "detail_id": "entity-kimi-k3",
@@ -104,136 +217,17 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/freecad-mcp.md",
-      "detail_id": "entity-freecad-mcp",
-      "label": "FreeCAD MCP",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "roadmap/depth-motion-retargeting.md",
-      "detail_id": "roadmap-depth-motion-retargeting",
-      "label": "路线（纵深）：如果目标是动作重定向（人体动作 → 机器人参考轨迹）",
-      "type": "roadmap_page",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/robot-motion-keyframe-editors.md",
-      "detail_id": "entity-robot-motion-keyframe-editors",
-      "label": "机器人关键帧与运动编辑工具（选型入口）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/human-humanoid-tools.md",
-      "detail_id": "entity-human-humanoid-tools",
-      "label": "human-humanoid-tools（hhtools）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/soma-retargeter.md",
-      "detail_id": "entity-soma-retargeter",
-      "label": "SOMA Retargeter",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/robot-retargeter.md",
-      "detail_id": "entity-robot-retargeter",
-      "label": "robot_retargeter",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/mocap-retarget.md",
-      "detail_id": "entity-mocap-retarget",
-      "label": "mocap_retarget",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/human2humanoid.md",
-      "detail_id": "entity-human2humanoid",
-      "label": "human2humanoid（LeCAR-Lab）",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/mimickit.md",
-      "detail_id": "entity-mimickit",
-      "label": "MimicKit: 运动模仿与控制研究套件",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/fairmotion.md",
-      "detail_id": "entity-fairmotion",
-      "label": "fairmotion",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/robot-viewer.md",
-      "detail_id": "entity-robot-viewer",
-      "label": "Robot Viewer",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/kimi-k3.md",
-    "detail_id": "entity-kimi-k3",
-    "label": "Kimi K3",
+    "path": "wiki/entities/adams.md",
+    "detail_id": "entity-adams",
+    "label": "ADAMS（Automatic Dynamic Analysis of Mechanical Systems）",
     "type": "entity",
-    "recency": "2026-07-27",
+    "recency": "2026-07-28",
     "source": "log.md",
-    "action": "maintained",
-    "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "action": "added",
+    "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
   },
   "top_communities": [
     {
@@ -281,7 +275,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 351,
+      "degree": 352,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

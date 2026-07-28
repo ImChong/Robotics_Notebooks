@@ -98,6 +98,10 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # arxiv：预印本托管/出版平台（基础设施），非机器人概念/方法/形式化，
     # 不应建独立 concepts/methods 页；与 http/https/main 同类基础设施停用词。
     "arxiv",
+    # license：各页正文里的 `LICENSE` 均为仓库许可证文件名 / SPDX 口径引用
+    # （如「仓库 `LICENSE` 文件」「以 LICENSE 为准」），是法务/文件名 token，
+    # 非机器人概念/方法/形式化，不应建独立页；与 md/arxiv 同类基础设施停用词。
+    "license",
 }
 
 # 高频术语但「已在 entities/ 或非同名 stem 的 methods 页有恰当归属」，

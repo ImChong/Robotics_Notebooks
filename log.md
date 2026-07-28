@@ -1,5 +1,26 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-28] ingest | sources/papers/adams_orlandea_primary_refs.md — 接入 ADAMS（Automatic Dynamic Analysis of Mechanical Systems）一手学术链并升格 wiki/entities/adams.md
+
+- **一手学术：** [`sources/papers/adams_orlandea_primary_refs.md`](sources/papers/adams_orlandea_primary_refs.md)
+  - Orlandea 1973 密歇根博士论文（DOI [10.7302/10731](https://doi.org/10.7302/10731)；Deep Blue 校园限制 PDF）
+  - Maros & Orlandea 1971（DOI [10.1115/1.3427874](https://doi.org/10.1115/1.3427874)）
+  - Orlandea–Chace–Calahan 1977 ASME Part 1 / Part 2（DOI [10.1115/1.3439312](https://doi.org/10.1115/1.3439312) · [10.1115/1.3439313](https://doi.org/10.1115/1.3439313)）
+  - Orlandea 2016 *Multibody Systems History of ADAMS*（DOI [10.1115/1.4034296](https://doi.org/10.1115/1.4034296)）
+- **站点 / 交叉叙述：** [`sources/sites/umich-deepblue-orlandea-adams-thesis.md`](sources/sites/umich-deepblue-orlandea-adams-thesis.md) · [`sources/sites/cadence-msc-adams.md`](sources/sites/cadence-msc-adams.md) · [`sources/blogs/janevic_orlandea_adams_memorial.md`](sources/blogs/janevic_orlandea_adams_memorial.md)
+- **主升格：** [`wiki/entities/adams.md`](wiki/entities/adams.md) — 工业 MBD 谱系；与 MuJoCo/Drake/RL 仿真栈分工
+- **交叉：** [`wiki/entities/mujoco.md`](wiki/entities/mujoco.md)、[`wiki/entities/drake.md`](wiki/entities/drake.md)、[`wiki/overview/sim-platforms-decade-technology-map.md`](wiki/overview/sim-platforms-decade-technology-map.md)、[`wiki/queries/simulator-selection-guide.md`](wiki/queries/simulator-selection-guide.md)
+- **机构注册：** `schema/institutions.json` → `university-of-michigan`、`iowa-state`、`cadence`、`msc-software`、`mechanical-dynamics`
+- **开源核查（2026-07-28）：** 方法论文已发表；当代 Adams **确认未开源**（商业 CAE）；源码运行时序图不适用
+
+## [2026-07-28] ingest | sources/papers/yahmp_arxiv_2607_19903.md + sources/repos/yahmp.md — 复核 YAHMP（arXiv:2607.19903，2026-07-22）：对齐论文声明代码 hucebot/yahmp；刷新 wiki/entities/paper-yahmp.md
+
+- **论文：** *What Matters in Humanoid General Motion Tracking? An Empirical Study*（Inria / Université de Lorraine / CNRS · HUCEBOT；Submitted 2026-07-22）
+- **开源状态（2026-07-28 再核）：** **已开源** — 论文声明 <https://github.com/hucebot/yahmp>（Apache-2.0）；开发上游 <https://github.com/fabio-amadio/yahmp>（parent，tip 领先 1 commit：`expand_npz_motion_dataset`）
+- **刷新 papers / repos：** [`sources/papers/yahmp_arxiv_2607_19903.md`](sources/papers/yahmp_arxiv_2607_19903.md)、[`sources/repos/yahmp.md`](sources/repos/yahmp.md) — 双仓 tip 关系、手部力 ≤20 N、真机更硬 PD 踝振荡
+- **主刷新 wiki：** [`wiki/entities/paper-yahmp.md`](wiki/entities/paper-yahmp.md) — `code` 对齐 hucebot；补 Table II 绝对量级与真机踝振荡读点；双仓选型说明
+- **说明：** 该文已于 2026-07-24 首次 ingest；本次为对齐用户给定项目链接与开源再核的刷新，不重复造页
+
 ## [2026-07-27] query | wiki/queries/robot-perception-stack-selection-loop.md + wiki/concepts/2d-to-3d-semantic-lifting-gap.md — 沉淀「机器人视觉感知栈选型闭环」知识链（V31 P1 首项）；从 object-detection-model-selection / perception-backbone-selection 双向回链消孤儿
 
 - **背景（V31 P1）：** 近周密集 ingest 了一批目标检测 / 分割 / 2D→3D 语义建图资料（Ultralytics YOLO、RF-DETR、SAM/SAM2、FindAnything、OV-SAM3D、CMU MSCV Semantic 3D 等），但各页独立、缺一条贯通的感知栈选型视角。本次把它们沉淀为一条位于策略**输入端**的四层选型链，与[执行器驱动链选型闭环](wiki/queries/actuator-drive-chain-selection-loop.md)（输出端）互为镜像。

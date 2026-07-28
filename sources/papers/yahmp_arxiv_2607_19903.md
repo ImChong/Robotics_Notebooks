@@ -6,23 +6,25 @@
 - **缩写 / 框架：** **YAHMP**（Yet Another Humanoid Motion tracking Policy）
 - **类型：** paper / humanoid / motion-tracking / empirical-study / sim2real / onnx-deploy
 - **arXiv：** <https://arxiv.org/abs/2607.19903>（Submitted 2026-07-22；PDF：<https://arxiv.org/pdf/2607.19903>）
-- **代码：** <https://github.com/fabio-amadio/yahmp>（Apache-2.0；论文亦写 `hucebot/yahmp`，为同仓库 org fork）— 归档见 [`sources/repos/yahmp.md`](../repos/yahmp.md)
+- **代码（论文声明）：** <https://github.com/hucebot/yahmp>（Apache-2.0）— 归档见 [`sources/repos/yahmp.md`](../repos/yahmp.md)
+- **开发上游：** <https://github.com/fabio-amadio/yahmp>（`hucebot/yahmp` 的 parent；截至 2026-07-28 tip 领先 1 commit：`expand_npz_motion_dataset`）
 - **补充视频：** <https://youtu.be/BH6FpQzwm8M>
-- **作者：** Fabio Amadio、Enrico Mingo Hoffman
+- **作者：** Fabio Amadio、Enrico Mingo Hoffman（HUCEBOT）
 - **机构：** Inria / Université de Lorraine / CNRS（Nancy, France）；ANR MeRLin（ANR-24-CE33-0753-01）资助
 - **入库日期：** 2026-07-24
+- **再核日期：** 2026-07-28（对齐论文声明的 `hucebot/yahmp` 项目链接；复核开源与 tip 差异）
 - **一句话说明：** 在 Unitree G1 上用开源模块化框架 **YAHMP**（基于 mjlab）做受控消融：命令表示、观测历史、动作表示、驱动剖面、手部力随机化、Teacher–Student；与同数据重训的 TWIST2 对照，并 zero-shot ONNX/真机部署。
 
 ## 开源状态（步骤 2.5）
 
-- **仓库核查（2026-07-24）：** [fabio-amadio/yahmp](https://github.com/fabio-amadio/yahmp) 公开：`uv sync` 训练、`export_checkpoint_to_onnx`、`run_yahmp_onnx_mujoco`、预置 `assets/models/g1_yahmp.onnx` 与 TWIST2 ONNX 对照脚本；运动资产需自下 Google Drive（OMOMO+AMASS 重定向包）。
-- **结论：** **已开源**（训练 / 评测 / ONNX 部署入口齐全）。
+- **仓库核查（2026-07-28）：** 论文贡献声明代码为 [hucebot/yahmp](https://github.com/hucebot/yahmp)（HuCeBot Inria/Loria org）。GitHub 元数据：该仓为 [fabio-amadio/yahmp](https://github.com/fabio-amadio/yahmp) 的 fork；两仓 README 内容一致，但 **fabio tip（2026-06-18）领先 hucebot tip（2026-05-06）1 commit**（`expand_npz_motion_dataset`）。两仓均含 `uv sync` 训练、`export_checkpoint_to_onnx`、`run_yahmp_onnx_mujoco`、预置 `assets/models/g1_yahmp.onnx` 与 TWIST2 ONNX 对照脚本；运动资产需自下 Google Drive（OMOMO+AMASS 重定向包）。
+- **结论：** **已开源**（训练 / 评测 / ONNX 部署入口齐全）。选型链接：论文/引用用 `hucebot/yahmp`；跟最新脚本优先 clone `fabio-amadio/yahmp`。
 
 ## 摘录 1：问题与主张（§I）
 
 - **痛点：** 近年全身 GMT 管线设计选择多，但消融常绑死单一方法；跨方法对比又只比整系统，难拆出「哪些选择真影响跟踪」。
 - **主张：** 固定 nominal 配置，一次只改一个因素：**(i) motion command**（是否含参考关节速度）**(ii) observation history**（0/10/20）**(iii) action**（残差相对参考 vs 相对默认姿态）**(iv) actuation profile**（力学启发 PD vs 更硬固定尺度）**(v) hand-force randomization** **(vi) Teacher–Student vs 标准 PPO**。
-- **产物：** 开源 YAHMP + 仿真消融 + 真机 zero-shot / 抗扰 / 手部持力实验。
+- **产物：** 开源 YAHMP（论文 URL：`hucebot/yahmp`）+ 仿真消融 + 真机 zero-shot / 抗扰 / 手部持力实验。
 
 **对 wiki 的映射：** 升格 [`wiki/entities/paper-yahmp.md`](../../wiki/entities/paper-yahmp.md)；与 [TWIST2](../../wiki/entities/paper-twist2.md)、[mjlab](../../wiki/entities/mjlab.md)、[Extreme-RGMT](../../wiki/entities/paper-extreme-rgmt.md) 互链。
 
@@ -32,26 +34,27 @@
 - **观测：** 本体 \(p_t\)（基座角速度、重力方向、相对默认姿态关节、关节速度、上一步动作）+ 名义 motion command \(c_t\)（参考关节位姿/速度、平面基座速度、偏航率、高度、roll/pitch）+ 可选历史 \(H=10\)。
 - **动作：** 名义为相对参考关节的残差，经 PD 变关节目标。
 - **数据：** 过滤后 AMASS+OMOMO 共 **12,175** 条；训练 **11,151** / 测试 **1,024**（分劈在消融前固定）。
-- **训练：** 8192 并行环境 × 20k PPO 迭代；单卡 RTX 4090 ≈25 h/run；Teacher–Student 先训特权 teacher，再 KL 正则 student。
+- **训练：** 8192 并行环境 × 20k PPO 迭代；单卡 RTX 4090 ≈25 h/run；Teacher–Student 先训特权 teacher，再 KL 正则 student（\(\lambda: 0.1\to 0.07\)）。
+- **手部力随机化范围（附录）：** duration \([0.5,2.0]\) s，力上限 **20 N**。
 
 **对 wiki 的映射：** 实体页画训练→ONNX→真机时序图；强调「可复现对照框架」定位。
 
-## 摘录 3：仿真与真机要点（§III–§V）
+## 摘录 3：仿真与真机要点（§III–§V / Table II–III）
 
 | 发现 | 要点（相对 Nominal；测试集 1024 条全成功） |
 |------|---------------------------------------------|
 | 参考关节速度 | Pos-ref-only：基座误差 **+7–14%**，关节速度误差 **+15%** → 应显式进 command |
-| 观测历史 | No history：基座误差 **+38–50%**；History-20 无一致收益 → **H=10** 足够 |
-| 残差动作 | 对 key-body / 关节位姿略好；基座混杂 |
-| 驱动剖面 | 更硬固定尺度跟踪增益有限，但全身最大力矩 **+13%**、上肢 **+41%** → 力学启发剖面更省力矩峰值 |
-| Teacher–Student | 相对标准 PPO **仅轻微**改善，训练成本更高 |
-| vs TWIST2（同数据重训） | TWIST2 key-body 位置略好（−10%）；基座 / 朝向 / 关节误差明显更大（基座 **+32–36%**，关节速度 **+81%**） |
+| 观测历史 | No history：基座误差 **+38–50%**；History-20 基座略好（−6–7%）但 key-body/关节约 **+4%** → **H=10** 足够 |
+| 残差动作 | 对 key-body / 关节位姿略好（约 −5%）；基座混杂 |
+| 驱动剖面 | 更硬固定尺度跟踪增益有限，但全身最大力矩 **+13%**、上肢 **+41%**；真机蹲姿踝关节振荡更明显 |
+| Teacher–Student | 相对标准 PPO **仅轻微**改善（部分误差 −3–8%，基座朝向 +8%），训练成本更高 |
+| vs TWIST2（同数据重训） | TWIST2 key-body 位置略好（−10%；0.039 vs 0.044 m）；基座 / 朝向 / 关节误差明显更大（基座 **+32–36%**，关节速度 **+81%**） |
 | 真机 | Nominal **zero-shot**（无真机微调）；软垫上仍可蹲/操作式双支撑；手部力随机化使 4 kg 肘偏角 **15.5°→6.6°**，并可撑到 5–6 kg |
 
-**对 wiki 的映射：** 用「设计选择→跟踪 vs 力矩 vs 交互力」表写清选型读法。
+**对 wiki 的映射：** 用「设计选择→跟踪 vs 力矩 vs 交互力」表写清选型读法；补真机更硬 PD 的踝振荡读点。
 
 ## 建议 wiki 动作
 
-- 新建 **`wiki/entities/paper-yahmp.md`**（含流程总览 + 源码运行时序图）。
-- 新建 **`sources/repos/yahmp.md`**。
-- 交叉更新 TWIST2、mjlab、Extreme-RGMT、身体系统栈 overview。
+- 已有 **`wiki/entities/paper-yahmp.md`**（含流程总览 + 源码运行时序图）— 本次刷新对齐论文代码 URL 与再核结论。
+- 已有 **`sources/repos/yahmp.md`** — 同步双仓 tip 说明。
+- 交叉页（TWIST2、mjlab、Extreme-RGMT、身体系统栈）已互链，无需重复造页。

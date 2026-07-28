@@ -1876,6 +1876,41 @@
         "3dgenstudio",
         "visualbruno"
       ]
+    },
+    "university-of-michigan": {
+      "label": "密歇根大学（University of Michigan）",
+      "aliases": [
+        "university-of-michigan",
+        "umich"
+      ]
+    },
+    "iowa-state": {
+      "label": "艾奥瓦州立大学（Iowa State University）",
+      "aliases": [
+        "iowa-state",
+        "iowa-state-university"
+      ]
+    },
+    "cadence": {
+      "label": "楷登电子（Cadence Design Systems）",
+      "aliases": [
+        "cadence",
+        "cadence-design-systems"
+      ]
+    },
+    "msc-software": {
+      "label": "麦克尼尔施文德勒软件（MSC Software）",
+      "aliases": [
+        "msc-software",
+        "msc-adams"
+      ]
+    },
+    "mechanical-dynamics": {
+      "label": "机械动力学公司（Mechanical Dynamics, Inc.）",
+      "aliases": [
+        "mechanical-dynamics",
+        "mechanical-dynamics-inc"
+      ]
     }
   }
 }
