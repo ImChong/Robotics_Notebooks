@@ -8,6 +8,8 @@ related:
   - ../concepts/ros2-basics.md
   - ../concepts/lcm-basics.md
   - ../concepts/dds-communication.md
+  - ../entities/fast-dds.md
+  - ../entities/cyclone-dds.md
   - ../tasks/locomotion.md
   - ../formalizations/udp-multicast-dynamics.md
 sources:
@@ -16,6 +18,9 @@ sources:
   - ../../sources/sites/ros2-github-org.md
   - ../../sources/repos/ros2.md
   - ../../sources/sites/ros2-official-documentation.md
+  - ../../sources/sites/omg-dds-spec.md
+  - ../../sources/repos/fast-dds.md
+  - ../../sources/repos/cyclonedds.md
 summary: "选型结论：中高层感知/规划与生态集成用 ROS 2；500Hz+ 最新优先的运控总线用 LCM（或同机共享内存）；先进系统采用分层混合而非二选一。"
 ---
 
@@ -45,7 +50,7 @@ summary: "选型结论：中高层感知/规划与生态集成用 ROS 2；500Hz+
 | 维度 | ROS 2（DDS / RMW） | LCM |
 |------|---------------------|-----|
 | **官方定位** | 机器人应用库与工具的 meta OS | 高带宽低延迟实时系统的消息 + marshalling |
-| **底层** | DDS（Fast DDS / Cyclone 等） | UDP Multicast |
+| **底层** | DDS（[Fast DDS](../entities/fast-dds.md) / [Cyclone](../entities/cyclone-dds.md) 等） | UDP Multicast |
 | **拓扑** | 去中心发现；无 ROS 1 Master | 无 hub、无 daemon，对等直连 |
 | **高频行为** | 吞吐可观，但 >500 Hz 易抖动 | 面向最新样本；控制环友好 |
 | **工具 / 生态** | RViz、rosbag2、tf2、Nav2、MoveIt… | spy / logger / logplayer 等基础工具 |
@@ -112,6 +117,7 @@ flowchart TB
 - [ROS 2 基础](../concepts/ros2-basics.md)
 - [LCM 基础](../concepts/lcm-basics.md)
 - [DDS 通信机制](../concepts/dds-communication.md)
+- [Fast DDS](../entities/fast-dds.md) · [Cyclone DDS](../entities/cyclone-dds.md)
 - [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)
 - [Locomotion 任务](../tasks/locomotion.md)
 - [UDP 组播动力学](../formalizations/udp-multicast-dynamics.md)
@@ -122,6 +128,7 @@ flowchart TB
 - [LCM 官方文档](../../sources/sites/lcm-proj-github-io.md) · [lcm-proj/lcm](../../sources/repos/lcm.md)
 - [ROS 2 GitHub 组织](../../sources/sites/ros2-github-org.md) · [ros2/ros2 元仓](../../sources/repos/ros2.md)
 - [ROS 2 官方文档（Humble）](../../sources/sites/ros2-official-documentation.md)
+- [OMG DDS / RTPS](../../sources/sites/omg-dds-spec.md) · [Fast DDS](../../sources/repos/fast-dds.md) · [Cyclone](../../sources/repos/cyclonedds.md)
 
 ## 推荐继续阅读
 

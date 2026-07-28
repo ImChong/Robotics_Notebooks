@@ -71,8 +71,9 @@ summary: "实时运控中间件配置指南：详细解答在真机部署中如�
 即使你的进程是实时的，如果你的进程间通信（IPC）机制拉胯，整个系统依然会卡顿。
 
 ### 避坑 ROS 2 的 DDS
-ROS 2 底层使用的是 DDS 协议，它极其庞杂，包含大量的多线程动态内存分配、TCP 握手和 QoS 确认机制。**绝不要把 1000Hz 的底层关节反馈和力矩指令发在 ROS 2 上**。
+ROS 2 底层使用的是 [DDS](../concepts/dds-communication.md) 协议（常见实现：[Fast DDS](../entities/fast-dds.md)、[Cyclone DDS](../entities/cyclone-dds.md)），它极其庞杂，包含大量的多线程动态内存分配、TCP 握手和 QoS 确认机制。**绝不要把 1000Hz 的底层关节反馈和力矩指令发在 ROS 2 上**。
 - **后果**：你会在示波器里看到原本应是 1ms 间隔的指令，经常聚集成一坨，然后空窗 3ms。
+- **一手入口**：[OMG DDS/RTPS](../../sources/sites/omg-dds-spec.md) · [Fast DDS](../../sources/repos/fast-dds.md) · [Cyclone](../../sources/repos/cyclonedds.md)
 
 ### 采用共享内存 (Shared Memory) 或 LCM
 - **最高优解**：如果在同一台物理机内，感知进程和控制进程最好通过**共享内存**直接交互。无锁队列（Lock-free ring buffer）是极限性能的首选。
@@ -93,6 +94,8 @@ ROS 2 底层使用的是 DDS 协议，它极其庞杂，包含大量的多线程
 - [CAN vs EtherCAT：关节总线选型](../comparisons/can-vs-ethercat-joint-bus.md)
 - [CAN 总线（经典）](../concepts/can-bus-protocol.md)
 - [ROS 2 基础](../concepts/ros2-basics.md)
+- [DDS 通信机制](../concepts/dds-communication.md)
+- [Fast DDS](../entities/fast-dds.md) · [Cyclone DDS](../entities/cyclone-dds.md)
 - [LCM 基础](../concepts/lcm-basics.md)
 - [ROS 2 vs LCM (中间件选型)](../comparisons/ros2-vs-lcm.md)
 - [Sim2Real 工程 Checklist](./sim2real-checklist.md#快速部署检查)
@@ -104,3 +107,4 @@ ROS 2 底层使用的是 DDS 协议，它极其庞杂，包含大量的多线程
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md)
 - [LCM 官方文档 / 仓](../../sources/sites/lcm-proj-github-io.md) · [repos/lcm.md](../../sources/repos/lcm.md)
 - [ROS 2 组织 / 元仓](../../sources/sites/ros2-github-org.md) · [repos/ros2.md](../../sources/repos/ros2.md)
+- [OMG DDS / Fast DDS / Cyclone](../../sources/sites/omg-dds-spec.md) · [fast-dds](../../sources/repos/fast-dds.md) · [cyclonedds](../../sources/repos/cyclonedds.md)

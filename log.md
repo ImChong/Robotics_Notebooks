@@ -1,5 +1,18 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-28] ingest | sources/sites/omg-dds-spec.md + fast-dds-docs.md + cyclonedds-io.md + sources/repos/fast-dds.md + cyclonedds.md — DDS 标准与 Fast/Cyclone 一手入库；升格 wiki/entities/fast-dds.md、cyclone-dds.md；深化 wiki/concepts/dds-communication.md
+
+- **一手入口：**
+  - OMG [DDS 1.4](https://www.omg.org/spec/DDS/1.4) · [DDSI-RTPS 2.5](https://www.omg.org/spec/DDSI-RTPS/2.5)
+  - Fast DDS 文档 [fast-dds.docs.eprosima.com](https://fast-dds.docs.eprosima.com/) · 仓 [eProsima/Fast-DDS](https://github.com/eProsima/Fast-DDS)（~2.9k★，Apache-2.0，v3.6.2）
+  - Cyclone DDS [cyclonedds.io](https://cyclonedds.io/) · 仓 [eclipse-cyclonedds/cyclonedds](https://github.com/eclipse-cyclonedds/cyclonedds)（~1.3k★，EPL-2.0/EDL-1.0，11.0.1）
+- **归档：** [`sources/sites/omg-dds-spec.md`](sources/sites/omg-dds-spec.md)、[`sources/sites/fast-dds-docs.md`](sources/sites/fast-dds-docs.md)、[`sources/sites/cyclonedds-io.md`](sources/sites/cyclonedds-io.md)、[`sources/repos/fast-dds.md`](sources/repos/fast-dds.md)、[`sources/repos/cyclonedds.md`](sources/repos/cyclonedds.md)；更新合集 [`sources/sites/dds_omg_rtos_edge_ota_safety_primary_refs.md`](sources/sites/dds_omg_rtos_edge_ota_safety_primary_refs.md)、[`sources/repos/ros2.md`](sources/repos/ros2.md)
+- **主升格：** [`wiki/entities/fast-dds.md`](wiki/entities/fast-dds.md)、[`wiki/entities/cyclone-dds.md`](wiki/entities/cyclone-dds.md)
+- **主深化：** [`wiki/concepts/dds-communication.md`](wiki/concepts/dds-communication.md) — 标准两层 + vendor 表 + 一手来源
+- **交叉：** [`wiki/concepts/ros2-basics.md`](wiki/concepts/ros2-basics.md)、[`wiki/comparisons/ros2-vs-lcm.md`](wiki/comparisons/ros2-vs-lcm.md)、[`wiki/entities/unitree-ros2.md`](wiki/entities/unitree-ros2.md)、[`wiki/queries/real-time-control-middleware-guide.md`](wiki/queries/real-time-control-middleware-guide.md)
+- **机构注册：** `schema/institutions.json` → `eprosima`、`eclipse`、`omg`
+- **开源核查（2026-07-28）：** Fast DDS 社区版 **已开源**（Apache-2.0；Pro 为商业扩展）；Cyclone DDS **已开源**（EPL-2.0/EDL-1.0）；OMG 规范 **公开可读**（非软件许可）
+
 ## [2026-07-28] ingest | sources/sites/lcm-proj-github-io.md + sources/repos/lcm.md + sources/sites/ros2-github-org.md + sources/repos/ros2.md — LCM 官方文档/仓与 ROS 2 组织/元仓一手入库；深化 wiki/concepts/lcm-basics.md、ros2-basics.md、comparisons/ros2-vs-lcm.md
 
 - **一手入口：**

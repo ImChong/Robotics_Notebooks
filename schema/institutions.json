@@ -1992,6 +1992,27 @@
         "open-source-robotics-foundation",
         "openrobotics"
       ]
+    },
+    "eprosima": {
+      "label": "易普罗西玛（eProsima）",
+      "aliases": [
+        "eprosima"
+      ]
+    },
+    "eclipse": {
+      "label": "伊克利普斯基金会（Eclipse Foundation）",
+      "aliases": [
+        "eclipse",
+        "eclipse-foundation",
+        "eclipse-iot"
+      ]
+    },
+    "omg": {
+      "label": "对象管理组织（Object Management Group）",
+      "aliases": [
+        "omg",
+        "object-management-group"
+      ]
     }
   }
 }

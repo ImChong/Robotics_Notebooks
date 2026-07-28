@@ -47,11 +47,12 @@ ROS 2 系统集成层  ← 本模块
 
 ### 1. 通信与中间件（DDS）
 
-ROS 2 相对 ROS 1 的最大变化是采用 **DDS** 作为默认中间件实现：
+ROS 2 相对 ROS 1 的最大变化是采用 **DDS** 作为默认中间件实现（概念见 [DDS 通信机制](../../../wiki/concepts/dds-communication.md)；实现见 [Fast DDS](../../../wiki/entities/fast-dds.md)、[Cyclone DDS](../../../wiki/entities/cyclone-dds.md)）：
 
 - **去中心化**：无 `roscore` Master，单节点崩溃不拖垮全网。
 - **QoS 可配**：可靠性、历史深度、deadline 等；同一 topic 两端策略须兼容。
 - **代价**：协议栈较重；**不宜**承载 500 Hz 以上的硬实时关节闭环（见对比页）。
+- **一手标准**：OMG [DDS 1.4](https://www.omg.org/spec/DDS/1.4) / [DDSI-RTPS 2.5](https://www.omg.org/spec/DDSI-RTPS/2.5)（归档 [omg-dds-spec](../../../sources/sites/omg-dds-spec.md)）。
 
 ### 2. 硬件与控制接口（ros2_control）
 

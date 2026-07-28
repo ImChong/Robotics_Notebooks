@@ -74,6 +74,7 @@
 - [Curr-0（Current Robotics · Loco-Dexterous Manipulation）](wiki/entities/current-robotics-curr0.md) — Curr-0** 是 **Current Robotics**（2026-06 博客发布）对外阐述的 **第一代人形 loco-dexterous manipulation 基础系统**：把  `📅unknown` `[entity_page]`
 - [Cyclo Intelligence](wiki/entities/cyclo-intelligence.md) — Cyclo Intelligence** 是 ROBOTIS 发布的 **开源 Physical AI 全栈平台**（[ROBOTIS-GI `📅unknown` `[entity_page]`
 - [Cycloidal Quasi-Direct Drive Actuator（Jeong 双摆线 QDD）](wiki/entities/cycloidal-quasi-direct-drive-actuator.md) — Cycloidal Quasi-Direct Drive Actuator**（[JeongSeoJin/quasi-direct-drive-actuator](https://github.c `📅unknown` `[entity_page]`
+- [Cyclone DDS（Eclipse）](wiki/entities/cyclone-dds.md) — Cyclone DDS** 是 Eclipse IoT 下的开源 **OMG DDS** 实现（C 核心 + 独立 C++/Python 绑定）：强调低延迟与可互操作 RTPS，是 ROS 2  `📅unknown` `[entity_page]`
 - [Darwin Skill（达尔文.skill）](wiki/entities/darwin-skill.md) — Darwin Skill** 是 alchaincyf/darwin-skill 仓库分发的 **元 s `📅unknown` `[entity_page]`
 - [BABEL（BFM 行为数据）](wiki/entities/dataset-bfm-babel.md) — BABEL** 列入 awesome-bfm-papers 数据集表（2021 · C `📅unknown` `[entity_page]`
 - [HumanML3D（BFM 行为数据）](wiki/entities/dataset-bfm-humanml3d.md) — HumanML3D** 列入 awesome-bfm-papers 数据集表（2022 `📅unknown` `[entity_page]`
@@ -105,6 +106,7 @@
 - [Extreme Parkour（端到端四足感知跑酷）](wiki/entities/extreme-parkour.md) — Extreme Parkour**（Cheng et al., arXiv:2309.14341，**ICRA 2024 `📅unknown` `[entity_page]`
 - [fairmotion](wiki/entities/fairmotion.md) — fairmotion**（<https://github.com/facebookresearch/fairmotion>）是 Meta Research 的通用**动捕数据处理库**：统一管理运 `📅unknown` `[entity_page]`
 - [FAR Planner](wiki/entities/far-planner.md) — FAR Planner**（Fast, Attemptable Route Planner）用 **动态更新的可见图（visibility graph）** 在已知或未知环境中做长距离快速重规划： `📅unknown` `[entity_page]`
+- [Fast DDS（eProsima）](wiki/entities/fast-dds.md) — Fast DDS**（原 Fast RTPS）是 eProsima 的开源 **OMG DDS / RTPS** C++ 实现：提供 DCPS API 与底层 RTPS 访问，经 `rmw_fas `📅unknown` `[entity_page]`
 - [FAST-LIO](wiki/entities/fast-lio.md) — FAST-LIO** 以 **紧耦合迭代卡尔曼滤波** 实现低延迟 3D LiDAR-惯性里程计。 `📅unknown` `[entity_page]`
 - [Featurize（蒜粒方块）](wiki/entities/featurize.md) — Featurize**（featurize.cn）定位 **机器学习在线实验室**：预装 PyTorch 等环境，提供 RTX 3090/4090 `📅unknown` `[entity_page]`
 - [FEMM-FOC-Simulation（FEMM 磁场定向控制教学仿真）](wiki/entities/femm-foc-simulation.md) — FEMM-FOC-Simulation**（[yoga-cycle/FEMM-FOC-Simulation](https://github.com/yoga-cycle/FEMM-FOC-Simu `📅unknown` `[entity_page]`
@@ -1279,7 +1281,7 @@
 - [unitree_rl_lab](wiki/entities/unitree-rl-lab.md) — unitree_rl_lab** 在 Isaac Lab 之上提供 Unitree 机器人的强化学习环境；徽章显示 `📅unknown` `[entity_page]`
 - [unitree_rl_mjlab (Unitree 官方 RL 框架)](wiki/entities/unitree-rl-mjlab.md) — unitree_rl_mjlab** 是由 Unitree Robotics 官方维护的强化学习训练框架，以 **mjlab**（Isaac Lab API + MuJoCo Warp）为底层，覆 `📅unknown` `[entity_page]`
 - [unitree_ros（Unitree 官方 ROS1 / Gazebo 栈）](wiki/entities/unitree-ros.md) — unitree_ros** 与配套的 **unitree_ros_to_real** 代表宇树在 **ROS1 + Gazebo** 时代的官方开源组合：前者提供多机型 **URDF/xacro `📅unknown` `[entity_page]`
-- [unitree_ros2](wiki/entities/unitree-ros2.md) — unitree_ros2** 是宇树官方 ROS 2 功能包：底层与 SDK2 一样走 CycloneDDS，因此 **ROS 2 msg 可直接用于通信与控制**，而不必把每个调用再 wrap  `📅unknown` `[entity_page]`
+- [unitree_ros2](wiki/entities/unitree-ros2.md) — unitree_ros2** 是宇树官方 ROS 2 功能包：底层与 SDK2 一样走 Cyclone DDS，因此 **ROS 2 msg 可直接用于通信 `📅unknown` `[entity_page]`
 - [unitree_sdk2（含 Python 绑定）](wiki/entities/unitree-sdk2.md) — unitree_sdk2** 是 Unitree 面向 Go2 / B2 / H1 / G1 等新机型的 **SDK v2（C++，CycloneDDS）**；官方同步维护 **unitree_s `📅unknown` `[entity_page]`
 - [unitree_sim_isaaclab](wiki/entities/unitree-sim-isaaclab.md) — unitree_sim_isaaclab** 基于 Isaac Lab，为 Unitree **G1 / H1-2**（夹爪、Dex3、Inspire 等执行器组合）提供多任务仿真，服务数据采集、 `📅unknown` `[entity_page]`
 - [UniStore（宇树应用平台）](wiki/entities/unitree-unistore.md) — UniStore**（<https://unistore.unitree.com/>）是宇树科技推出的 **机器人任务与动作应用商店**。用户无需手写底层控制代码，即可像安装手机 App 一样，从 `📅unknown` `[entity_page]`
@@ -1350,7 +1352,7 @@
 - [Curriculum Learning（课程学习）](wiki/concepts/curriculum-learning.md) — Curriculum Learning 是一种训练策略：在学习早期提供更简单的任务或环境，随着策略能力提升逐渐增加难度，模拟人类"从简单到复杂"的学习过程。 `📅unknown` `[wiki_page]`
 - [Data Flywheel (具身数据飞轮)](wiki/concepts/data-flywheel.md) — 具身数据飞轮 (Data Flywheel)** 指的是机器人学习中通过**自动化闭环**实现数据规模化与性能持续提升的机制。它的核心逻辑是：更强的模型吸引更多场景使用 → 产生更多样化的数据 → `📅unknown` `[wiki_page]`
 - [数据库基础（索引 / 事务 / 锁 / 隔离级别 / 复制 / 分片）](wiki/concepts/database-fundamentals.md) — 数据库基础** 说明如何在机器人研发数据面里 **正确存、正确并发写、正确扩展读**，并明确它不属于力矩闭环路径。 `📅unknown` `[wiki_page]`
-- [DDS 通信机制（Data Distribution Service）](wiki/concepts/dds-communication.md) — DDS** 是 OMG 标准化的 **数据中心化发布订阅** 中间件：用 Topic、类型系统与 **QoS** 在去中心化发现下分发数据；ROS 2 通过 RMW 使用其实现（Fast DDS、 `📅unknown` `[wiki_page]`
+- [DDS 通信机制（Data Distribution Service）](wiki/concepts/dds-communication.md) — DDS** 是 OMG 标准化的 **数据中心化发布订阅** 中间件：用 Topic、类型系统与 **QoS** 在去中心化发现下分发数据；线上互操作靠 **DDSI-RTPS**。ROS 2 通 `📅unknown` `[wiki_page]`
 - [深度学习基础 (Deep Learning Foundations)](wiki/concepts/deep-learning-foundations.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[wiki_page]`
 - [深度强化学习游戏里程碑（DQN / AlphaGo）](wiki/concepts/deep-rl-game-milestones.md) — 深度强化学习游戏里程碑**：以 Atari DQN 与围棋 AlphaGo 为代表的一系列工作，用端到端神经网络从像素或棋盘状态映射到动作，证明了规模化数据驱动方法在**离散或结构化动作空间**任 `📅unknown` `[wiki_page]`
 - [Dexterous Kinematics (灵巧手运动学)](wiki/concepts/dexterous-kinematics.md) — 灵巧手运动学 (Dexterous Kinematics)** 是机器人学中研究多指协同操作的理论基础。与传统的单臂串联运动学不同，灵巧手在抓取物体时，多个手指通过接触点与物体共同构成了一个**闭 `📅unknown` `[wiki_page]`

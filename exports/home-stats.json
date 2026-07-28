@@ -1,18 +1,40 @@
 {
   "generated_at": "2026-07-28",
-  "node_count": 1956,
-  "edge_count": 17018,
+  "node_count": 1958,
+  "edge_count": 17044,
   "coverage": {
-    "covered": 1905,
-    "total": 1932,
+    "covered": 1907,
+    "total": 1934,
     "percent": 99
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/concepts/lcm-basics.md",
-      "detail_id": "wiki-concepts-lcm-basics",
-      "label": "LCM (Lightweight Communications and Marshalling) 基础",
+      "path": "wiki/entities/fast-dds.md",
+      "detail_id": "entity-fast-dds",
+      "label": "Fast DDS（eProsima）",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/concepts/dds-communication.md",
+      "detail_id": "wiki-concepts-dds-communication",
+      "label": "DDS 通信机制（Data Distribution Service）",
       "type": "concept",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/cyclone-dds.md",
+      "detail_id": "entity-cyclone-dds",
+      "label": "Cyclone DDS（Eclipse）",
+      "type": "entity",
       "recency": "2026-07-28",
       "source": "log.md",
       "action": "added",
@@ -41,15 +63,14 @@
       "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
     },
     {
-      "path": "wiki/concepts/dds-communication.md",
-      "detail_id": "wiki-concepts-dds-communication",
-      "label": "DDS 通信机制（Data Distribution Service）",
-      "type": "concept",
+      "path": "wiki/entities/unitree-ros2.md",
+      "detail_id": "entity-unitree-ros2",
+      "label": "unitree_ros2",
+      "type": "entity",
       "recency": "2026-07-28",
       "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+      "action": "maintained",
+      "has_repo": true
     },
     {
       "path": "wiki/queries/real-time-control-middleware-guide.md",
@@ -59,6 +80,17 @@
       "recency": "2026-07-28",
       "source": "log.md",
       "action": "maintained",
+      "has_repo": true,
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/concepts/lcm-basics.md",
+      "detail_id": "wiki-concepts-lcm-basics",
+      "label": "LCM (Lightweight Communications and Marshalling) 基础",
+      "type": "concept",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "added",
       "has_repo": true,
       "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
     },
@@ -178,41 +210,13 @@
       "recency": "2026-07-28",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/concepts/privileged-training.md",
-      "detail_id": "wiki-concepts-privileged-training",
-      "label": "Privileged Training（特权信息训练）",
-      "type": "concept",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-rma-rapid-motor-adaptation.md",
-      "detail_id": "entity-paper-rma-rapid-motor-adaptation",
-      "label": "RMA: Rapid Motor Adaptation for Legged Robots",
-      "type": "entity",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/queries/sim2real-checklist.md",
-      "detail_id": "wiki-queries-sim2real-checklist",
-      "label": "Sim2Real 工程 Checklist",
-      "type": "query",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/lcm-basics.md",
-    "detail_id": "wiki-concepts-lcm-basics",
-    "label": "LCM (Lightweight Communications and Marshalling) 基础",
-    "type": "concept",
+    "path": "wiki/entities/fast-dds.md",
+    "detail_id": "entity-fast-dds",
+    "label": "Fast DDS（eProsima）",
+    "type": "entity",
     "recency": "2026-07-28",
     "source": "log.md",
     "action": "added",
