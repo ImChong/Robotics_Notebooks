@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-07-10
+updated: 2026-07-28
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 13：物理动画（27 篇深读笔记索引）。"
@@ -47,7 +47,7 @@ summary: "Paper Notebooks 分类 13：物理动画（27 篇深读笔记索引）
 - [RL from Physical Feedback](../entities/paper-notebook-rl-from-physical-feedback-aligning-large-motion.md) — 待深读
 - [RobotDancing](../entities/paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/RobotDancing__Residual-Action_RL_Enables_Robust_Long-Horizon_Motion_Tracking/RobotDancing__Residual-Action_RL_Enables_Robust_Long-Horizon_Motion_Tracking.html)
 - [SimGenHOI](../entities/paper-notebook-simgenhoi-physically-realistic-whole-body-humano.md) — 待深读
-- [SkillMimic](../entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md) — 待深读
+- [SkillMimic](../entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md) — 见 wiki 实体页（CVPR 2025 Highlight；统一 HOI 模仿 + HLC）
 - [Spatial Relationship Preserving Character Motion Adaptation](../entities/paper-notebook-spatial-relationship-preserving-character-motion.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Spatial_Relationship_Preserving_Character_Motion_Adaptation/Spatial_Relationship_Preserving_Character_Motion_Adaptation.html)
 
 ## 与其他页面的关系

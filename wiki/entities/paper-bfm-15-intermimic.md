@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, sjtu]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-28
 arxiv: "2502.20390"
 venue: "2025 · CVPR"
 code: https://github.com/Sirui-Xu/InterMimic
@@ -32,6 +32,7 @@ sources:
 |------|----------|----------|
 | BFM | Behavior Foundation Model | 大规模行为数据预训练的可复用全身行为先验 |
 | AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| HOI | Human–Object Interaction | 人–物交互与接触结果建模 |
 
 ## 为什么重要
 
@@ -75,6 +76,7 @@ sources:
 
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
+- 篮球 HOI 技能模仿对照：[SkillMimic](./paper-notebook-skillmimic-learning-basketball-interaction-skill.md)
 - 原始 source：[bfm_awesome_intermimic_arxiv_2502_20390.md](../../sources/papers/bfm_awesome_intermimic_arxiv_2502_20390.md)
 
 ## 参考来源
