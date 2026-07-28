@@ -1962,6 +1962,27 @@
         "wechat-embodied-ai-lab",
         "realxiaoze"
       ]
+    },
+    "uc-riverside": {
+      "label": "加州大学河滨分校（UC Riverside）",
+      "aliases": [
+        "uc-riverside",
+        "ucr",
+        "university-of-california-riverside"
+      ]
+    },
+    "roblox": {
+      "label": "罗布乐思（Roblox）",
+      "aliases": [
+        "roblox"
+      ]
+    },
+    "clemson": {
+      "label": "克莱姆森大学（Clemson University）",
+      "aliases": [
+        "clemson",
+        "clemson-university"
+      ]
     }
   }
 }
