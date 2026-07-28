@@ -1,13 +1,91 @@
 {
   "generated_at": "2026-07-28",
-  "node_count": 1962,
-  "edge_count": 17311,
+  "node_count": 1963,
+  "edge_count": 17331,
   "coverage": {
-    "covered": 1912,
-    "total": 1938,
+    "covered": 1913,
+    "total": 1939,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-teledexter.md",
+      "detail_id": "entity-paper-teledexter",
+      "label": "TeleDexter：接近人类水平的灵巧遥操作",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/tasks/teleoperation.md",
+      "detail_id": "wiki-tasks-teleoperation",
+      "label": "Teleoperation（遥操作）",
+      "type": "task",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/concepts/contact-rich-manipulation.md",
+      "detail_id": "wiki-concepts-contact-rich-manipulation",
+      "label": "Contact-Rich Manipulation（接触丰富型操作）",
+      "type": "concept",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/methods/in-hand-reorientation.md",
+      "detail_id": "wiki-methods-in-hand-reorientation",
+      "label": "In-hand Reorientation (手内重定向)",
+      "type": "method",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/methods/diffusion-policy.md",
+      "detail_id": "wiki-methods-diffusion-policy",
+      "label": "Diffusion Policy",
+      "type": "method",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/queries/dexterous-data-collection-guide.md",
+      "detail_id": "wiki-queries-dexterous-data-collection-guide",
+      "label": "灵巧操作数据采集指南",
+      "type": "query",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "roadmap/depth-teleoperation.md",
+      "detail_id": "roadmap-depth-teleoperation",
+      "label": "路线（纵深）：如果目标是遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）",
+      "type": "roadmap_page",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-hrl-stack-06-hdmi.md",
+      "detail_id": "entity-paper-hrl-stack-06-hdmi",
+      "label": "HDMI",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    },
     {
       "path": "wiki/entities/paper-raven-rl-adaptive-visibility-graph-mpc.md",
       "detail_id": "entity-paper-raven-rl-adaptive-visibility-graph-mpc",
@@ -119,89 +197,12 @@
       "recency": "2026-07-28",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-motion-retargeting.md",
-      "detail_id": "roadmap-depth-motion-retargeting",
-      "label": "路线（纵深）：如果目标是动作重定向（人体动作 → 机器人参考轨迹）",
-      "type": "roadmap_page",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "roadmap/depth-perceptive-locomotion.md",
-      "detail_id": "roadmap-depth-perceptive-locomotion",
-      "label": "路线（纵深）：如果目标是感知越障（Perceptive Locomotion）",
-      "type": "roadmap_page",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-real2sim.md",
-      "detail_id": "roadmap-depth-real2sim",
-      "label": "路线（纵深）：如果目标是 Real2Sim（真实世界 → 可仿真资产/场景/孪生）",
-      "type": "roadmap_page",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "roadmap/depth-rl-locomotion.md",
-      "detail_id": "roadmap-depth-rl-locomotion",
-      "label": "路线（纵深）：如果目标是人形 RL 运动控制",
-      "type": "roadmap_page",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-safe-control.md",
-      "detail_id": "roadmap-depth-safe-control",
-      "label": "路线（纵深）：如果目标是安全控制（CLF / CBF / Safe RL）",
-      "type": "roadmap_page",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-sim2real.md",
-      "detail_id": "roadmap-depth-sim2real",
-      "label": "路线（纵深）：如果目标是 Sim2Real（仿真到真机迁移）",
-      "type": "roadmap_page",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "roadmap/depth-teleoperation.md",
-      "detail_id": "roadmap-depth-teleoperation",
-      "label": "路线（纵深）：如果目标是遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）",
-      "type": "roadmap_page",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-torque-motor-design.md",
-      "detail_id": "roadmap-depth-torque-motor-design",
-      "label": "路线（纵深）：如果目标是力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环 → 关节模组）",
-      "type": "roadmap_page",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-raven-rl-adaptive-visibility-graph-mpc.md",
-    "detail_id": "entity-paper-raven-rl-adaptive-visibility-graph-mpc",
-    "label": "RAVEN：强化学习自适应可见图规划 + 无碰撞 MPC",
+    "path": "wiki/entities/paper-teledexter.md",
+    "detail_id": "entity-paper-teledexter",
+    "label": "TeleDexter：接近人类水平的灵巧遥操作",
     "type": "entity",
     "recency": "2026-07-28",
     "source": "log.md",
@@ -210,7 +211,7 @@
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 307
+      "size": 313
     },
     {
       "label": "人形论文深读笔记",
@@ -226,7 +227,7 @@
     },
     {
       "label": "操作",
-      "size": 122
+      "size": 120
     },
     {
       "label": "仿真到现实",
@@ -245,7 +246,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 362,
+      "degree": 363,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
