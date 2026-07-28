@@ -2,7 +2,7 @@
 type: entity
 tags: [software, simulation, physics-engine, reinforcement-learning, deepmind]
 status: complete
-updated: 2026-06-30
+updated: 2026-07-28
 related:
   - ../overview/sim-platforms-decade-technology-map.md
   - ./mujoco-wasm.md
@@ -20,6 +20,7 @@ related:
   - ./newton-physics.md
   - ../methods/reinforcement-learning.md
   - ../concepts/sim2real.md
+  - ./adams.md
 sources:
   - ../../sources/papers/simulation.md
   - ../../sources/repos/mujoco.md
@@ -69,6 +70,7 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
   - **浏览器 WASM**（[`@mujoco/mujoco`](./mujoco-wasm.md)）适合 demo、教学与轻量 Sim2Sim，吞吐与 API 完备度仍弱于原生绑定；多线程版另需 COOP/COEP 隔离头。
 
 ## 关联页面
+- [ADAMS（Automatic Dynamic Analysis of Mechanical Systems）](./adams.md) — 工业 MBD 程序谱系原点（Orlandea 1973/1977）；与开源 RL 引擎分工不同
 - [MuJoCo WASM（浏览器绑定）](./mujoco-wasm.md) — 官方 `@mujoco/mujoco` 与社区 demo（zalo/mujoco_wasm）生态
 - [MuJoCo Playground](./mujoco-playground.md) — MJX 上的任务入口层，强调 time-to-robot 与 sim2real 短链路
 - [训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md) — MuJoCo 在物理/sim2sim 层的定位
