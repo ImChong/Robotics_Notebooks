@@ -124,7 +124,7 @@
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（3 个）
 - wiki/entities/paper-progress-reward-modeling-survey.md（含绝对化措辞「SOTA」，updated=2026-07-27；同主题更新页 wiki/entities/paper-icrowdnav.md updated=2026-07-28）
-- wiki/entities/paper-shenlan-wm-13-dreamerv3.md（含绝对化措辞「SOTA」，updated=2026-07-27；同主题更新页 wiki/entities/paper-icrowdnav.md updated=2026-07-28）
+- wiki/entities/paper-shenlan-wm-13-dreamerv3.md（含绝对化措辞「SOTA」，updated=2026-07-27；同主题更新页 wiki/entities/drawio-scientific-illustrator.md updated=2026-07-28）
 - wiki/entities/paper-vjepa2.md（含绝对化措辞「SOTA」，updated=2026-07-27；同主题更新页 wiki/entities/paper-icrowdnav.md updated=2026-07-28）
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」专题枢纽（信息型，不阻塞 CI）（0 个）
@@ -142,4 +142,4 @@
 ### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：1911/1937 (99%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1912/1938 (99%) wiki/entity 页有 ingest 来源

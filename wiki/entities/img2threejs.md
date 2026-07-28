@@ -11,12 +11,13 @@ tags:
   - frontend
   - agent-infrastructure
 status: complete
-updated: 2026-07-27
+updated: 2026-07-28
 related:
   - ./cad-skills.md
   - ./articraft.md
   - ./3dgenstudio.md
   - ./gsap-skills.md
+  - ./drawio-scientific-illustrator.md
   - ./mattpocock-skills.md
   - ./superpowers-obra.md
   - ../concepts/text-to-cad.md
@@ -149,6 +150,7 @@ sequenceDiagram
 - [Articraft](./articraft.md) — **仿真就绪可关节 3D** 的 agent + SDK + harness；对照「程序化但偏物理」
 - [3D Gen Studio](./3dgenstudio.md) — **ComfyUI 网格生产编排**（GLB/OBJ）；同属视觉 3D 资产，产物是网格文件而非可 diff 的 TS 工厂
 - [GSAP Skills](./gsap-skills.md) — **Web 动效** 官方 Agent Skills；同属前端垂直技能
+- [Draw.io Scientific Illustrator](./drawio-scientific-illustrator.md) — **图像→可编辑 draw.io 科研图**（Codex MCP）；同属「参考图重绘」，产物是矢量框图而非 Three.js
 - [Skills For Real Engineers（mattpocock）](./mattpocock-skills.md) — 通用编码工程技能对照
 - [Superpowers（obra）](./superpowers-obra.md) — 重流程交付技能库
 - [文字生成 CAD（Text-to-CAD）](../concepts/text-to-cad.md) — 制造 CAD vs 网格/Web 3D 工具谱系

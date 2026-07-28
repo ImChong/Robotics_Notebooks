@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-28] ingest | sources/repos/drawio-scientific-illustrator.md — Draw.io Scientific Illustrator（Codex 插件 + MCP 可见操控 draw.io）；升格 wiki/entities/drawio-scientific-illustrator.md；交叉 freecad-mcp / cad-skills / img2threejs / gsap-skills / manim
+
+- **一手入口：** [icebird1998/drawio-scientific-illustrator](https://github.com/icebird1998/drawio-scientific-illustrator)（~1.0k★，MIT，v1.0.0；Codex plugin = `drawio-live`/`drawio-file-utils` MCP + Skill `recreate-scientific-figure-in-drawio`）
+- **归档：** [`sources/repos/drawio-scientific-illustrator.md`](sources/repos/drawio-scientific-illustrator.md)；索引 [`sources/README.md`](sources/README.md)、[`references/repos/utilities.md`](references/repos/utilities.md)
+- **主升格：** [`wiki/entities/drawio-scientific-illustrator.md`](wiki/entities/drawio-scientific-illustrator.md) — 可见逐步绘制、硬边界（禁 OS 自动化 / XML-first）、流程与源码运行时序图
+- **交叉：** [`wiki/entities/freecad-mcp.md`](wiki/entities/freecad-mcp.md)、[`wiki/entities/cad-skills.md`](wiki/entities/cad-skills.md)、[`wiki/entities/img2threejs.md`](wiki/entities/img2threejs.md)、[`wiki/entities/gsap-skills.md`](wiki/entities/gsap-skills.md)、[`wiki/entities/manim.md`](wiki/entities/manim.md)
+- **开源核查（2026-07-28）：** **已开源**（MIT）；无独立项目页，以 GitHub README / Release 为准；Windows 充分测试，macOS/Linux 尽力支持
+
 ## [2026-07-28] ingest | sources/papers/birrell_nelson_implementing_rpc_tocs_1984.md + sites/rfc-5531-onc-rpc.md + grpc-io-docs.md + sources/repos/grpc.md — Remote Procedure Call 一手入库；升格 wiki/concepts/remote-procedure-call.md、wiki/entities/grpc.md
 
 - **一手入口：**

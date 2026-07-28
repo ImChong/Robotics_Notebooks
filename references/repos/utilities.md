@@ -17,3 +17,9 @@
 - **[step2urdf](../../wiki/entities/step2urdf.md)**: 浏览器端 STEP→URDF 转换；OpenCascade.js 本地解析、几何驱动关节识别与惯量估算，在线版 [step2urdf.top](https://step2urdf.top/)。
 - **[Tnkr](../../wiki/entities/tnkr.md)**: 开源整机项目协作平台（CAD/线束/代码/部署一体），对接 GitHub、Onshape 与 AI 助手 Leonardo。
 
+## Agent 驱动的图示与 CAD 桥
+- **[Draw.io Scientific Illustrator](../../wiki/entities/drawio-scientific-illustrator.md)**: Codex 插件；本机 MCP 可见操控 draw.io 画布，逐步重绘可编辑科研插图。
+- **[FreeCAD MCP](../../wiki/entities/freecad-mcp.md)**: FreeCAD Addon RPC + MCP server，自然语言驱动桌面 CAD。
+- **[CAD Skills](../../wiki/entities/cad-skills.md)**: build123d STEP-first Agent Skills（CAD/URDF/制造交接）。
+- **[Manim](../../wiki/entities/manim.md)**: Python 程序化数学/技术讲解动画（对外沟通层）。
+

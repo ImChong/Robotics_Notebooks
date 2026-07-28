@@ -9,6 +9,7 @@ related:
   - ./step2urdf.md
   - ./urdf-studio.md
   - ./3dgenstudio.md
+  - ./drawio-scientific-illustrator.md
   - ../concepts/text-to-cad.md
   - ../concepts/urdf-robot-description.md
   - ../concepts/remote-procedure-call.md
@@ -93,6 +94,7 @@ flowchart LR
 |------|----------|----------|------|
 | **FreeCAD MCP** | 桌面 **FreeCAD** | MCP + RPC | 零脚本栈迁移、GUI 真值、FEM/Robot 插件生态 |
 | [CAD Skills](./cad-skills.md) | **build123d**（OCP） | Agent Skills + CLI | 无头 CI、`gen_urdf()`、制造/打印 skill 链 |
+| [Draw.io Scientific Illustrator](./drawio-scientific-illustrator.md) | 桌面 **draw.io** | Codex Skill + MCP | 可见逐步科研插图、可编辑 `.drawio` |
 | [文字生成 CAD](../concepts/text-to-cad.md) 商业路线 | Zoo / Fusion 等 | 厂商 API | 制造向 B-rep、企业工作流 |
 | 纯 OpenSCAD/CadQuery + LLM | 脚本执行 | 终端/代码 | Git 友好、参数化极强 |
 
@@ -120,6 +122,7 @@ flowchart LR
 - [step2urdf（STEP→URDF 浏览器转换）](./step2urdf.md)
 - [URDF-Studio（URDF/MJCF 设计工作站）](./urdf-studio.md)
 - [3D Gen Studio（ComfyUI 网格生产 + MCP）](./3dgenstudio.md) — 同属 MCP 自动化，但目标是 **mesh 管线** 而非 FreeCAD B-rep
+- [Draw.io Scientific Illustrator](./drawio-scientific-illustrator.md) — **桌面 draw.io** 的 live MCP 科研插图；同属「代理驱动本机 GUI」，目标是 2D 矢量框图而非 CAD
 - [文字生成 CAD（Text-to-CAD）](../concepts/text-to-cad.md)
 - [URDF（统一机器人描述格式）](../concepts/urdf-robot-description.md)
 - [远程过程调用（RPC）](../concepts/remote-procedure-call.md) · [gRPC](./grpc.md)
