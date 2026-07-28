@@ -168,6 +168,7 @@
 - [HumanNet](wiki/entities/humannet.md) — HumanNet** 是一套把 **互联网级人中心视频** 加工成「可喂给大规模模型」的具身向语料：强调 **第一人称与第三人称并存**、**物理相关行为** 的策展、以及 **手体几何 + 语言 `📅unknown` `[entity_page]`
 - [Humanoid Everyday](wiki/entities/humanoid-everyday-dataset.md) — Humanoid Everyday**（Zhao et al., arXiv:2510.08807，2025）是 USC 与 `📅unknown` `[entity_page]`
 - [Humanoid-Gym（人形零样本 Sim2Real 训练框架）](wiki/entities/humanoid-gym.md) — Humanoid-Gym**（Gu / Wang / Chen，arXiv:2404.05695，RobotEra）是在  `📅unknown` `[entity_page]`
+- [Humanoid Motion Intelligence（人形机器人运动智能知识库）](wiki/entities/humanoid-motion-intelligence.md) — Humanoid Motion Intelligence**（GitHub：[`RealXiaoze/humanoid-motion-intelligence`](https://github.c `📅unknown` `[entity_page]`
 - [人形机器人（Humanoid Robot）](wiki/entities/humanoid-robot.md) — 人形机器人是具有双足步行能力和类人形态（躯干 + 双臂 + 双腿）的机器人平台，兼顾移动能力与操作能力，是当前具身智能研究的核心载体。 `📅unknown` `[entity_page]`
 - [人形机器人系统学习策展（G1 → 导航 → 足球 → 大模型）](wiki/entities/humanoid-system-curriculum.md) — 一句话：** 把深蓝学院「人形机器人系统 - 理论与实践」八章大纲落成可交叉引用的知识图：以 Unitree G1 为平台，从 **行走 RL** 走到  `📅unknown` `[entity_page]`
 - [iGibson](wiki/entities/igibson.md) — iGibson** 是斯坦福大学等机构 2020 年发布的 **交互式室内仿真环境**，强调 **真实感视觉场景** 与 **高保真物理交互** 的融合。 `📅unknown` `[entity_page]`
@@ -946,7 +947,7 @@
 - [SimGenHOI](wiki/entities/paper-notebook-simgenhoi-physically-realistic-whole-body-humano.md) — SimGenHOI: Physically Realistic Whole-Body Humanoid-Object Interaction via Generative Modeling and `📅unknown` `[entity_page]`
 - [Simulator Adaptation for Sim-to-Real Learning of Legged Locomotion via Proprioceptive Distribution Matching](wiki/entities/paper-notebook-simulator-adaptation-via-proprioceptive-distribu.md) — Simulator Adaptation for Sim-to-Real Learning of Legged Locomotion via Proprioceptive Distribution `📅unknown` `[entity_page]`
 - [SKATER](wiki/entities/paper-notebook-skater-synthesized-kinematics-for-advanced-trave.md) — SKATER: Synthesized Kinematics for Advanced Traversing Efficiency on a Humanoid Robot via Roller S `📅unknown` `[entity_page]`
-- [SkillMimic](wiki/entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md) — SkillMimic: Learning Basketball Interaction Skills from Demonstrations** 已列入 [Humanoid Robot Learn `📅unknown` `[entity_page]`
+- [SkillMimic（Learning Basketball Interaction Skills from Demonstrations）](wiki/entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md) — SkillMimic**（arXiv:2408.15270，**CVPR 2025 Highlight**；[项目页](ht `📅unknown` `[entity_page]`
 - [SLAC](wiki/entities/paper-notebook-slac.md) — SLAC: Simulation-Pretrained Latent Action Space for Whole-Body Real-World Reinforcement Learning `📅unknown` `[entity_page]`
 - [SMAP](wiki/entities/paper-notebook-smap.md) — SMAP: Self-supervised Motion Adaptation for Physically Plausible Humanoid Whole-body Control** 已列入 `📅unknown` `[entity_page]`
 - [SoccerDiffusion](wiki/entities/paper-notebook-soccerdiffusion-toward-learning-end-to-end-human.md) — SoccerDiffusion: Toward Learning End-to-End Humanoid Robot Soccer from Gameplay Recordings** 已列入  `📅unknown` `[entity_page]`

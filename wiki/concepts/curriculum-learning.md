@@ -3,7 +3,7 @@ title: Curriculum Learning（课程学习）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-07-25
+updated: 2026-07-28
 summary: 从简单到复杂的渐进式训练策略，在机器人 RL 中用于解决稀疏奖励、地形多样性和任务复杂度梯度问题。
 ---
 
@@ -142,6 +142,7 @@ terrain_level = clip(terrain_level + delta, 0, max_level)
 
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — 课程学习是 RL 的训练策略，不改变算法本身
 - [Sim2Real](./sim2real.md) — 域随机化课程化是 sim2real 的关键手段
+- [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md) — 课程与 DR 同属训练段泛化手段
 - [Locomotion](../tasks/locomotion.md) — 地形课程在 locomotion 训练中普遍使用
 - [Reward Design](./reward-design.md) — 课程与奖励稀疏性密切相关，配合 reward shaping 使用
 - [legged_gym](../entities/legged-gym.md) — legged_gym 内置地形课程实现

@@ -1,7 +1,7 @@
 ---
 type: concept
 summary: "Domain Randomization 通过在仿真中随机化参数扩大训练分布，是 sim2real 的主流鲁棒化手段。"
-updated: 2026-07-24
+updated: 2026-07-28
 ---
 
 # Domain Randomization
@@ -118,10 +118,11 @@ Sim2Real 的核心问题是 **domain gap**——仿真和现实的差异。
 
 ## 常见误区
 
-1. **随机化范围越大越好**：不一定，范围太大策略训练不出来
+1. **随机化范围越大越好**：不一定，范围太大策略训练不出来；应先 [SysID](./system-identification.md) 定基准，再围绕公差扩 DR（见 [闭环误差分层](../queries/sim2real-closed-loop-engineering.md)）
 2. **所有维度均匀随机化**：应该优先随机化对任务影响最大的维度
 3. **只看仿真指标**：最终目标是真实机器人表现，仿真 reward 高不等于迁移成功
 4. **忽略动作延迟**：人形机器人动作延迟对稳定性影响很大，是 DR 里的高频坑
+5. **一失败就盲目扩大 DR**：先分解可建模参数 / 难建模动态 / 观测误差，再决定校准还是随机化
 
 ## 和其他方法的关系
 
@@ -138,10 +139,12 @@ Sim2Real 的核心问题是 **domain gap**——仿真和现实的差异。
 - **ingest 档案：** [sources/papers/simulation_tools.md](../../sources/papers/simulation_tools.md) — Genesis/Isaac Gym 仿真平台（DR 的执行环境）
 - **ingest 档案：** [sources/papers/barkour_arxiv_2305_14654.md](../../sources/papers/barkour_arxiv_2305_14654.md) — Barkour 在 Rudin 默认 DR 之外，对 >1m/s 敏捷动作补充躯干惯量 / 电机建模 / 关节静摩擦随机化（Table II）
 - **ingest 档案：** [sources/papers/aware_arxiv_2604_23761.md](../../sources/papers/aware_arxiv_2604_23761.md) — AWARE 轮足反射避障 DR 表与真机 ASR 落差
+- **ingest 档案：** [sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md](../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md) — DR 应围绕 SysID 基准，忌盲目扩范围
 
 ## 关联页面
 
 - [Sim2Real](./sim2real.md)
+- [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md) — 误差分流：可建模→校准，难建模→DR
 - [Procedural Terrain Generation](./procedural-terrain-generation.md) — DR 的地形载体（坡、台阶、碎石）
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Whole-Body Control](./whole-body-control.md)

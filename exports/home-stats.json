@@ -1,139 +1,56 @@
 {
   "generated_at": "2026-07-28",
-  "node_count": 1954,
-  "edge_count": 16943,
+  "node_count": 1956,
+  "edge_count": 17002,
   "coverage": {
-    "covered": 1902,
-    "total": 1930,
+    "covered": 1905,
+    "total": 1932,
     "percent": 99
   },
   "latest_wiki_nodes": [
     {
-      "path": "roadmap/motion-control.md",
-      "detail_id": "roadmap-motion-control",
-      "label": "主路线：运动控制算法工程师成长路线",
-      "type": "roadmap_page",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/concepts/motion-retargeting.md",
-      "detail_id": "wiki-concepts-motion-retargeting",
-      "label": "Motion Retargeting（动作重定向）",
-      "type": "concept",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/concepts/motion-retargeting-pipeline.md",
-      "detail_id": "wiki-concepts-motion-retargeting-pipeline",
-      "label": "Motion Retargeting Pipeline（动作重定向流水线）",
-      "type": "concept",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/formalizations/motion-retargeting-objective.md",
-      "detail_id": "wiki-formalizations-motion-retargeting-objective",
-      "label": "Motion Retargeting Objective（动作重定向目标函数形式化）",
-      "type": "formalization",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/comparisons/gmr-vs-nmr-vs-reactor.md",
-      "detail_id": "wiki-comparisons-gmr-vs-nmr-vs-reactor",
-      "label": "GMR vs NMR vs ReActor：动作重定向方法谱系对比",
-      "type": "comparison",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/concepts/kinematic-vs-dynamic-feasibility.md",
-      "detail_id": "wiki-concepts-kinematic-vs-dynamic-feasibility",
-      "label": "运动学可行与动力学可行",
-      "type": "concept",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/concepts/motion-data-quality.md",
-      "detail_id": "wiki-concepts-motion-data-quality",
-      "label": "Motion Data Quality（动作数据质量维度）",
-      "type": "concept",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/comparisons/humanoid-reference-motion-datasets.md",
-      "detail_id": "wiki-comparisons-humanoid-reference-motion-datasets",
-      "label": "人形参考运动与操作数据集选型",
-      "type": "comparison",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/methods/motion-retargeting-gmr.md",
-      "detail_id": "wiki-methods-motion-retargeting-gmr",
-      "label": "GMR: 通用动作重定向",
-      "type": "method",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/methods/deepmimic.md",
-      "detail_id": "wiki-methods-deepmimic",
-      "label": "DeepMimic: 示例引导的技能学习",
-      "type": "method",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/amp-reward.md",
-      "detail_id": "wiki-methods-amp-reward",
-      "label": "AMP & HumanX: 判别器驱动的风格学习",
-      "type": "method",
+      "path": "wiki/entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md",
+      "detail_id": "entity-paper-notebook-skillmimic-learning-basketball-interaction-skill",
+      "label": "SkillMimic（Learning Basketball Interaction Skills from Demonstrations）",
+      "type": "entity",
       "recency": "2026-07-28",
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
     },
     {
-      "path": "wiki/entities/amass.md",
-      "detail_id": "entity-amass",
-      "label": "AMASS（Archive of Motion Capture as Surface Shapes）",
-      "type": "entity",
+      "path": "wiki/overview/paper-notebook-category-13-physics-based-animation.md",
+      "detail_id": "wiki-overview-paper-notebook-category-13-physics-based-animation",
+      "label": "Paper Notebooks · Physics-Based Animation",
+      "type": "overview",
       "recency": "2026-07-28",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
     },
     {
-      "path": "wiki/entities/lafan1-dataset.md",
-      "detail_id": "entity-lafan1-dataset",
-      "label": "LaFAN1（Ubisoft La Forge Animation Dataset）",
-      "type": "entity",
+      "path": "wiki/methods/ase.md",
+      "detail_id": "wiki-methods-ase",
+      "label": "ASE: 对抗性技能嵌入",
+      "type": "method",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/methods/hierarchical-reinforcement-learning.md",
+      "detail_id": "wiki-methods-hierarchical-reinforcement-learning",
+      "label": "Hierarchical Reinforcement Learning（分层强化学习，HRL）",
+      "type": "method",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/methods/imitation-learning.md",
+      "detail_id": "wiki-methods-imitation-learning",
+      "label": "Imitation Learning (IL, 模仿学习)",
+      "type": "method",
       "recency": "2026-07-28",
       "source": "log.md",
       "action": "maintained",
@@ -141,25 +58,23 @@
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
-      "path": "roadmap/depth-motion-retargeting.md",
-      "detail_id": "roadmap-depth-motion-retargeting",
-      "label": "路线（纵深）：如果目标是动作重定向（人体动作 → 机器人参考轨迹）",
-      "type": "roadmap_page",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-icrowdnav.md",
-      "detail_id": "entity-paper-icrowdnav",
-      "label": "iCrowdNav（意图感知场景表征的视觉人群导航）",
+      "path": "wiki/entities/paper-notebook-learning-to-ball.md",
+      "detail_id": "entity-paper-notebook-learning-to-ball",
+      "label": "Learning to Ball",
       "type": "entity",
       "recency": "2026-07-28",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
+    },
+    {
+      "path": "wiki/queries/sim2real-closed-loop-engineering.md",
+      "detail_id": "wiki-queries-sim2real-closed-loop-engineering",
+      "label": "Sim2Real 闭环误差分层工程",
+      "type": "query",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained"
     },
     {
       "path": "wiki/concepts/sim2real.md",
@@ -173,56 +88,129 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/methods/dwa.md",
-      "detail_id": "wiki-methods-dwa",
-      "label": "DWA（Dynamic Window Approach）局部路径规划",
-      "type": "method",
+      "path": "wiki/concepts/system-identification.md",
+      "detail_id": "wiki-concepts-system-identification",
+      "label": "System Identification",
+      "type": "concept",
       "recency": "2026-07-28",
       "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+      "action": "maintained"
     },
     {
-      "path": "wiki/comparisons/mobile-robot-navigation-planning-methods.md",
-      "detail_id": "wiki-comparisons-mobile-robot-navigation-planning-methods",
-      "label": "移动机器人导航规划方法对比：全局搜索 · 局部避障 · 路径平滑",
-      "type": "comparison",
+      "path": "wiki/concepts/domain-randomization.md",
+      "detail_id": "wiki-concepts-domain-randomization",
+      "label": "Domain Randomization",
+      "type": "concept",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/curriculum-learning.md",
+      "detail_id": "wiki-concepts-curriculum-learning",
+      "label": "Curriculum Learning（课程学习）",
+      "type": "concept",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/privileged-training.md",
+      "detail_id": "wiki-concepts-privileged-training",
+      "label": "Privileged Training（特权信息训练）",
+      "type": "concept",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-rma-rapid-motor-adaptation.md",
+      "detail_id": "entity-paper-rma-rapid-motor-adaptation",
+      "label": "RMA: Rapid Motor Adaptation for Legged Robots",
+      "type": "entity",
       "recency": "2026-07-28",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+      "has_repo": true
     },
     {
-      "path": "wiki/overview/navigation-slam-autonomy-stack.md",
-      "detail_id": "wiki-overview-navigation-slam-autonomy-stack",
-      "label": "导航·SLAM·自动驾驶开源栈总览",
+      "path": "wiki/queries/sim2real-checklist.md",
+      "detail_id": "wiki-queries-sim2real-checklist",
+      "label": "Sim2Real 工程 Checklist",
+      "type": "query",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/queries/sim2real-gap-reduction.md",
+      "detail_id": "wiki-queries-sim2real-gap-reduction",
+      "label": "Sim2Real Gap 缩减实战指南",
+      "type": "query",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/overview/topic-sim2real.md",
+      "detail_id": "wiki-overview-topic-sim2real",
+      "label": "Sim2Real（专题汇总）",
+      "type": "overview",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/humanoid-motion-intelligence.md",
+      "detail_id": "entity-humanoid-motion-intelligence",
+      "label": "Humanoid Motion Intelligence（人形机器人运动智能知识库）",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
+      "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
+      "label": "人形机器人 RL 运动控制：身体系统栈视角",
       "type": "overview",
       "recency": "2026-07-28",
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
-      "path": "wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md",
-      "detail_id": "entity-paper-sru-spatially-enhanced-recurrent-memory",
-      "label": "SRU（Spatially-Enhanced Recurrent Memory）",
-      "type": "entity",
+      "path": "wiki/overview/humanoid-motion-cerebellum-technology-map.md",
+      "detail_id": "wiki-overview-humanoid-motion-cerebellum-technology-map",
+      "label": "运动小脑技术地图：64 篇论文的九组视角",
+      "type": "overview",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/queries/open-source-motion-control-projects.md",
+      "detail_id": "wiki-queries-open-source-motion-control-projects",
+      "label": "开源运动控制项目结构化摘要",
+      "type": "query",
       "recency": "2026-07-28",
       "source": "log.md",
       "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "roadmap/motion-control.md",
-    "detail_id": "roadmap-motion-control",
-    "label": "主路线：运动控制算法工程师成长路线",
-    "type": "roadmap_page",
+    "path": "wiki/entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md",
+    "detail_id": "entity-paper-notebook-skillmimic-learning-basketball-interaction-skill",
+    "label": "SkillMimic（Learning Basketball Interaction Skills from Demonstrations）",
+    "type": "entity",
     "recency": "2026-07-28",
     "source": "log.md",
-    "action": "maintained"
+    "action": "maintained",
+    "has_repo": true
   },
   "top_communities": [
     {
@@ -231,7 +219,7 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 224
+      "size": 223
     },
     {
       "label": "移动操作",
@@ -243,7 +231,7 @@
     },
     {
       "label": "全身控制",
-      "size": 120
+      "size": 114
     },
     {
       "label": "模仿学习",
@@ -259,20 +247,20 @@
       "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
     },
     {
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "degree": 355,
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 354,
+      "degree": 357,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "degree": 356,
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "detail_id": "wiki-tasks-manipulation",
@@ -286,7 +274,7 @@
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
-      "degree": 294,
+      "degree": 295,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
@@ -294,14 +282,14 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 275,
+      "degree": 276,
       "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 255,
+      "degree": 256,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
@@ -316,7 +304,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 203,
+      "degree": 205,
       "has_repo": true,
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },

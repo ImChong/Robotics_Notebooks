@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-06-26
+updated: 2026-07-28
 arxiv: "2306.14874"
 related:
   - ../overview/paper-notebook-category-05-locomotion.md
@@ -49,6 +49,7 @@ summary: "宇树（ETH Zurich）团队通过分层分层的强化学习，让 AN
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md) — 技能库 + 高层选技的敏捷迁移读法
 
 ## 参考来源
 

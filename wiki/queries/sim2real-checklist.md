@@ -3,13 +3,15 @@ type: query
 tags: [sim2real, deployment, locomotion, humanoid, rl]
 status: complete
 summary: "从仿真到真机部署的完整工程清单（含快速部署检查 3 分钟版）。"
-updated: 2026-06-30
+updated: 2026-07-28
 related:
   - ./sim2real-gap-reduction.md
+  - ./sim2real-closed-loop-engineering.md
   - ./robot-policy-debug-playbook.md
   - ../concepts/sim2real.md
 sources:
   - ../../sources/papers/sim2real.md
+  - ../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「从仿真到真机部署，有哪些必须检查的工程事项？」（含原「真机部署 RL 策略前后要检查什么？」）
@@ -191,6 +193,7 @@ sources:
 
 - [Sim2Real](../concepts/sim2real.md) — 理论方法总览
 - [Sim2Real Gap 缩减指南](./sim2real-gap-reduction.md) — 迁移失败根因分类与修复决策树
+- [Sim2Real 闭环误差分层工程](./sim2real-closed-loop-engineering.md) — 从 SysID 到在线适应与分层安全的叙事骨架
 - [RL 策略真机调试 Playbook](./robot-policy-debug-playbook.md) — 已上机后的系统排查
 - [Domain Randomization](../concepts/domain-randomization.md) — 随机化策略详解
 - [System Identification](../concepts/system-identification.md) — 参数辨识方法
@@ -204,3 +207,4 @@ sources:
 - Tobin et al., *Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World* (2017) — 域随机化基础
 - Lee et al., *Learning Quadrupedal Locomotion over Challenging Terrain* (Science Robotics, 2020) — 足式 sim2real 完整 pipeline
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — DR / RMA / InEKF ingest 摘要
+- [sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md](../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md) — 闭环六段与分层安全要点

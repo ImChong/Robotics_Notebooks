@@ -3,18 +3,19 @@ type: query
 tags: [sim2real, domain-randomization, locomotion, deployment, training]
 status: complete
 summary: "Sim2Real Gap 缩减实战指南"
-updated: 2026-05-28
+updated: 2026-07-28
 sources:
   - ../../sources/papers/sim2real.md
   - ../../sources/papers/privileged_training.md
   - ../../sources/papers/simulation_tools.md
   - ../../sources/papers/system_identification.md
+  - ../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md
 ---
 
 # Sim2Real Gap 缩减实战指南
 
 > **Query 产物**：本页由以下问题触发：「sim2real transfer 失败的根因分类，以及对应的缩减策略？」
-> 综合来源：[sim2real](../concepts/sim2real.md)、[domain-randomization](../concepts/domain-randomization.md)、[privileged-training](../concepts/privileged-training.md)、[sim2real-checklist](./sim2real-checklist.md)
+> 综合来源：[sim2real](../concepts/sim2real.md)、[domain-randomization](../concepts/domain-randomization.md)、[privileged-training](../concepts/privileged-training.md)、[sim2real-checklist](./sim2real-checklist.md)、[闭环误差分层](./sim2real-closed-loop-engineering.md)
 
 ## TL;DR 决策路径
 
@@ -151,6 +152,7 @@ contact_noise:  0.05            # 接触检测误报率
 - [Domain Randomization](../concepts/domain-randomization.md) — DR 方法详解
 - [Privileged Training](../concepts/privileged-training.md) — teacher-student 蒸馏
 - [Sim2Real Checklist](./sim2real-checklist.md) — 部署前完整检查清单（含快速部署检查）
+- [Sim2Real 闭环误差分层工程](./sim2real-closed-loop-engineering.md) — 误差类型 → 校准/DR/适应/安全的时序闭环
 - [RL 策略真机调试 Playbook](./robot-policy-debug-playbook.md) — 已上机后的症状排查
 
 ## 一句话记忆

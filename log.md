@@ -1,5 +1,32 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-28] ingest | sources/papers/skillmimic_arxiv_2408_15270.md + sources/repos/skillmimic.md + sources/sites/ingrid789-skillmimic-github-io.md — SkillMimic（arXiv:2408.15270，CVPR 2025 Highlight）；升格 wiki/entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md；交叉 wiki/overview/paper-notebook-category-13-physics-based-animation.md、wiki/methods/ase.md、wiki/methods/hierarchical-reinforcement-learning.md、wiki/methods/imitation-learning.md、wiki/entities/paper-notebook-learning-to-ball.md
+
+- **论文：** *SkillMimic: Learning Basketball Interaction Skills from Demonstrations*（HKUST × Unitree × PKU × Tsinghua × IDEA × Tencent × CMU；CVPR 2025 Highlight）
+- **一手入口：** [arXiv:2408.15270](https://arxiv.org/abs/2408.15270) · 项目页 [ingrid789.github.io/SkillMimic](https://ingrid789.github.io/SkillMimic/) · 仓 [wyhuai/SkillMimic](https://github.com/wyhuai/SkillMimic)
+- **归档：** [`sources/papers/skillmimic_arxiv_2408_15270.md`](sources/papers/skillmimic_arxiv_2408_15270.md)、[`sources/repos/skillmimic.md`](sources/repos/skillmimic.md)、[`sources/sites/ingrid789-skillmimic-github-io.md`](sources/sites/ingrid789-skillmimic-github-io.md)；更新 [`sources/papers/humanoid_pnb_skillmimic-learning-basketball-interaction-skill.md`](sources/papers/humanoid_pnb_skillmimic-learning-basketball-interaction-skill.md)
+- **主升格：** [`wiki/entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md`](wiki/entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md) — 统一 HOI 模仿 + Contact Graph + HLC；结论 / 源码运行时序图
+- **交叉：** [`wiki/overview/paper-notebook-category-13-physics-based-animation.md`](wiki/overview/paper-notebook-category-13-physics-based-animation.md)、[`wiki/methods/ase.md`](wiki/methods/ase.md)、[`wiki/methods/hierarchical-reinforcement-learning.md`](wiki/methods/hierarchical-reinforcement-learning.md)、[`wiki/methods/imitation-learning.md`](wiki/methods/imitation-learning.md)、[`wiki/entities/paper-notebook-learning-to-ball.md`](wiki/entities/paper-notebook-learning-to-ball.md)
+- **开源核查（2026-07-28）：** 项目页链 GitHub；仓 **已开源** 训练/评测/预训练 LLC·HLC/BallPlay-M 子集/Blender（Apache-2.0）；完整原始 BallPlay-M + 数据处理 **TODO**
+
+## [2026-07-28] ingest | sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md — 深蓝具身智能：Sim2Real 非训后一步；升格 wiki/queries/sim2real-closed-loop-engineering.md；交叉 wiki/concepts/sim2real.md、wiki/concepts/system-identification.md、wiki/concepts/domain-randomization.md、wiki/concepts/curriculum-learning.md、wiki/concepts/privileged-training.md、wiki/entities/paper-rma-rapid-motor-adaptation.md、wiki/queries/sim2real-checklist.md、wiki/queries/sim2real-gap-reduction.md、wiki/overview/topic-sim2real.md
+
+- **公众号：** [最大误区：Sim-to-Real 不是训完之后的事情](https://mp.weixin.qq.com/s/6rbLz_6nQz9z6kma9K4BFQ)（深蓝具身智能，2026-07-28）
+- **抓取：** Agent Reach v1.5.0 + wechat-article-for-ai（Camoufox；`--no-images`）
+- **归档：** [`sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md`](sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md) · raw [`sources/raw/wechat_shenlan_sim2real_sysid_to_adaptation_2026-07-28.md`](sources/raw/wechat_shenlan_sim2real_sysid_to_adaptation_2026-07-28.md)
+- **主升格：** [`wiki/queries/sim2real-closed-loop-engineering.md`](wiki/queries/sim2real-closed-loop-engineering.md) — 误差分流 + SysID→训练→前馈/RMA→分层安全闭环
+- **交叉：** [`wiki/concepts/sim2real.md`](wiki/concepts/sim2real.md)、[`wiki/concepts/system-identification.md`](wiki/concepts/system-identification.md)、[`wiki/concepts/domain-randomization.md`](wiki/concepts/domain-randomization.md)、[`wiki/concepts/curriculum-learning.md`](wiki/concepts/curriculum-learning.md)、[`wiki/concepts/privileged-training.md`](wiki/concepts/privileged-training.md)、[`wiki/entities/paper-rma-rapid-motor-adaptation.md`](wiki/entities/paper-rma-rapid-motor-adaptation.md)、[`wiki/queries/sim2real-checklist.md`](wiki/queries/sim2real-checklist.md)、[`wiki/queries/sim2real-gap-reduction.md`](wiki/queries/sim2real-gap-reduction.md)、[`wiki/overview/topic-sim2real.md`](wiki/overview/topic-sim2real.md)
+- **开源核查：** 课程宣传综述，无独立项目仓；文内锚点开源状态以各实体页为准
+
+## [2026-07-28] ingest | sources/repos/humanoid-motion-intelligence.md — 接入具身智能研究室「人形机器人运动智能知识库」；升格 wiki/entities/humanoid-motion-intelligence.md
+
+- **一手入口：** [RealXiaoze/humanoid-motion-intelligence](https://github.com/RealXiaoze/humanoid-motion-intelligence)（`main`；约 22★；分层许可 CC BY-NC-SA 4.0 + MIT 校验脚本）
+- **归档：** [`sources/repos/humanoid-motion-intelligence.md`](sources/repos/humanoid-motion-intelligence.md)
+- **主升格：** [`wiki/entities/humanoid-motion-intelligence.md`](wiki/entities/humanoid-motion-intelligence.md) — 六条技术路线 + ~145 论文解读 + ~166 开源主表 + 产业/求职；与微信策展同源
+- **交叉：** [`wiki/overview/humanoid-rl-motion-control-body-system-stack.md`](wiki/overview/humanoid-rl-motion-control-body-system-stack.md)、[`wiki/overview/humanoid-motion-cerebellum-technology-map.md`](wiki/overview/humanoid-motion-cerebellum-technology-map.md)、[`wiki/queries/open-source-motion-control-projects.md`](wiki/queries/open-source-motion-control-projects.md)、[`sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md`](sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)、[`sources/repos/awesome-humanoid-robot-learning.md`](sources/repos/awesome-humanoid-robot-learning.md)
+- **机构注册：** `schema/institutions.json` → `embodied-ai-lab`（具身智能研究室）
+- **开源核查（2026-07-28）：** 知识库 **已公开**；**无可运行训练入口**（策展仓，复现走各论文官方仓）
+
 ## [2026-07-28] structural | roadmap/motion-control.md — 主路线补齐 L5.4 动作重定向（此前只在 L5.3 模仿学习里以一条 bullet 出现，主干缺独立章节）
 
 - **主更新：** [`roadmap/motion-control.md`](roadmap/motion-control.md) — L5.3 与 L6 之间新增 **L5.4 动作重定向**：场景隐喻 / 上一层局限 + 英文缩写速查（L5.4）+ 前置知识 → 核心问题 → 推荐做什么 → 推荐读什么 → 学完输出什么 + 3 道自测题（目标函数与硬约束、运动学可行 ≠ 动力学可行、遥操作 vs 批量造数据的选型）与 mermaid 参考答案

@@ -9,7 +9,7 @@ tags:
   - privileged-training
   - online-adaptation
 status: complete
-updated: 2026-07-25
+updated: 2026-07-28
 arxiv: "2107.04034"
 venue: "RSS 2021"
 related:
@@ -18,12 +18,14 @@ related:
   - ../concepts/domain-randomization.md
   - ../tasks/locomotion.md
   - ../queries/sim2real-gap-reduction.md
+  - ../queries/sim2real-closed-loop-engineering.md
   - ./unitree.md
   - ./extreme-parkour.md
 sources:
   - ../../sources/papers/rma_arxiv_2107_04034.md
   - ../../sources/sites/rma-legged-robots-github-io.md
   - ../../sources/repos/antonilo_rl_locomotion.md
+  - ../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md
 summary: "RMA（RSS 2021）：特权环境 extrinsics 训练 base policy，历史本体–动作监督训练 adaptation module；A1 异步 10/100 Hz 零微调部署，秒级适应变地形与载荷。"
 tags: [quadruped, reinforcement-learning, locomotion, sim2real, privileged-training, online-adaptation, berkeley, cmu]
 
@@ -147,6 +149,7 @@ flowchart TB
 - [Sim2Real](../concepts/sim2real.md) — 在线适应缩小动力学与地形 gap
 - [Locomotion](../tasks/locomotion.md) — 四足盲走 / 自适应行走任务谱系
 - [Sim2Real gap 缩小 query](../queries/sim2real-gap-reduction.md) — RMA 列为在线适应路线
+- [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md) — 时变工况段用 RMA 接力 SysID/前馈
 - [Extreme Parkour](./extreme-parkour.md) — RMA 式历史估计用于跑酷 Teacher
 - [Unitree](./unitree.md) — A1 硬件平台
 
