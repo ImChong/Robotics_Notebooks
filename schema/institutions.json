@@ -2040,6 +2040,22 @@
         "xerox-parc",
         "xerox"
       ]
+    },
+    "uni-hamburg": {
+      "label": "汉堡大学（University of Hamburg）",
+      "aliases": [
+        "hamburg",
+        "university-of-hamburg",
+        "uhh",
+        "uni hamburg"
+      ]
+    },
+    "bit-bots": {
+      "label": "汉堡比特机器人队（Hamburg Bit-Bots）",
+      "aliases": [
+        "bitbots",
+        "hamburg-bit-bots"
+      ]
     }
   }
 }

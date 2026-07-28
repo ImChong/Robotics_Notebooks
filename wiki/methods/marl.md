@@ -2,7 +2,7 @@
 type: method
 tags: [rl, multi-agent, swarm, coordination]
 status: complete
-updated: 2026-06-12
+updated: 2026-07-28
 related:
   - ./reinforcement-learning.md
   - ../tasks/humanoid-soccer.md

@@ -9,7 +9,7 @@ tags:
   - decentralized-control
   - marl
 status: complete
-updated: 2026-07-23
+updated: 2026-07-28
 related:
   - ../tasks/humanoid-soccer.md
   - ../methods/marl.md

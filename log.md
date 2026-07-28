@@ -1,5 +1,25 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-28] ingest | roadmap/depth-humanoid-soccer 链接论文 stub/planned/draft 升格为详细节点 — wiki/entities/paper-notebook-learning-soccer-skills-for-humanoid-robots.md 等；roadmap/depth-humanoid-soccer.md
+
+- **触发：** 确保 [人形足球纵深](roadmap/depth-humanoid-soccer.md)（`roadmap-depth-humanoid-soccer`）链接的论文节点均为详细页，而非 stub/planned/draft
+- **主升格（status → complete）：**
+  - [`wiki/entities/paper-notebook-learning-soccer-skills-for-humanoid-robots.md`](wiki/entities/paper-notebook-learning-soccer-skills-for-humanoid-robots.md) — PAiD（原 stub）
+  - [`wiki/entities/paper-notebook-learning-agile-striker-skills-for-humanoid-socce.md`](wiki/entities/paper-notebook-learning-agile-striker-skills-for-humanoid-socce.md) — Agile Striker（原 stub）
+  - [`wiki/entities/paper-notebook-soccerdiffusion-toward-learning-end-to-end-human.md`](wiki/entities/paper-notebook-soccerdiffusion-toward-learning-end-to-end-human.md) — SoccerDiffusion（原 planned）
+  - [`wiki/entities/paper-notebook-humanoid-whole-body-badminton-via-multi-stage-re.md`](wiki/entities/paper-notebook-humanoid-whole-body-badminton-via-multi-stage-re.md) — 全身羽毛球（原 stub）
+  - [`wiki/entities/paper-notebook-a-hierarchical-model-based-system-for-high-perfo.md`](wiki/entities/paper-notebook-a-hierarchical-model-based-system-for-high-perfo.md) — ARTEMIS（原 draft，补结论）
+  - [`wiki/entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md`](wiki/entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md) — Vision-Driven Reactive Soccer（索引级→详细）
+  - [`wiki/entities/paper-humanoid-soccer-swarm-intelligence.md`](wiki/entities/paper-humanoid-soccer-swarm-intelligence.md) — 补 `## 结论`
+- **开源核查归档：**
+  - PAiD：[soccer-humanoid-paid.md](sources/sites/soccer-humanoid-paid.md) + 更新 [humanoid_soccer.md](sources/repos/humanoid_soccer.md)（**已开源**）
+  - Agile Striker：[humanoidsoccer-agile-striker.md](sources/sites/humanoidsoccer-agile-striker.md) + [humanoid-soccer-agile-striker.md](sources/repos/humanoid-soccer-agile-striker.md)（**已开源**）
+  - SoccerDiffusion：[bit-bots-soccerdiffusion.md](sources/sites/bit-bots-soccerdiffusion.md) + [soccerdiffusion.md](sources/repos/soccerdiffusion.md)（**已开源** MIT）
+  - Badminton：[humanoid-badminton-multi-stage-rl.md](sources/sites/humanoid-badminton-multi-stage-rl.md)（**待发布**）
+  - Vision kick：[humanoid-kick-vision-driven-soccer.md](sources/sites/humanoid-kick-vision-driven-soccer.md)（**暂无 Code**）
+- **机构注册：** `schema/institutions.json` → `uni-hamburg`、`bit-bots`
+- **路线入口：** [`roadmap/depth-humanoid-soccer.md`](roadmap/depth-humanoid-soccer.md)
+
 ## [2026-07-28] ingest | sources/sites/opendrivelab-robonaldo.md + repos/robonaldo.md + repos/robonaldo-deploy.md — 项目页再核：Code 已挂 OpenDriveLab/RoboNaldo（训练 MIT）与 RoboNaldo_Deploy；升格更新 wiki/entities/paper-robonaldo-humanoid-soccer-shooting.md（开源状态/工程实践/源码运行时序图/结论）；交叉 wiki/tasks/humanoid-soccer.md、wiki/methods/paid-framework.md、wiki/queries/humanoid-soccer-skill-learning-method-selection.md；注册 schema/institutions.json → archon-robotics（源策未来）
 
 - **一手入口：** 项目页 [opendrivelab.com/RoboNaldo](https://opendrivelab.com/RoboNaldo/) · 论文 [arXiv:2606.11092](https://arxiv.org/abs/2606.11092) · Video [youtu.be/BuHNzqebIqc](https://youtu.be/BuHNzqebIqc)
