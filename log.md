@@ -1,5 +1,14 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-28] ingest | sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md — 深蓝具身智能：Sim2Real 非训后一步；升格 wiki/queries/sim2real-closed-loop-engineering.md；交叉 wiki/concepts/sim2real.md、wiki/concepts/system-identification.md、wiki/concepts/domain-randomization.md、wiki/concepts/curriculum-learning.md、wiki/concepts/privileged-training.md、wiki/entities/paper-rma-rapid-motor-adaptation.md、wiki/queries/sim2real-checklist.md、wiki/queries/sim2real-gap-reduction.md、wiki/overview/topic-sim2real.md
+
+- **公众号：** [最大误区：Sim-to-Real 不是训完之后的事情](https://mp.weixin.qq.com/s/6rbLz_6nQz9z6kma9K4BFQ)（深蓝具身智能，2026-07-28）
+- **抓取：** Agent Reach v1.5.0 + wechat-article-for-ai（Camoufox；`--no-images`）
+- **归档：** [`sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md`](sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md) · raw [`sources/raw/wechat_shenlan_sim2real_sysid_to_adaptation_2026-07-28.md`](sources/raw/wechat_shenlan_sim2real_sysid_to_adaptation_2026-07-28.md)
+- **主升格：** [`wiki/queries/sim2real-closed-loop-engineering.md`](wiki/queries/sim2real-closed-loop-engineering.md) — 误差分流 + SysID→训练→前馈/RMA→分层安全闭环
+- **交叉：** [`wiki/concepts/sim2real.md`](wiki/concepts/sim2real.md)、[`wiki/concepts/system-identification.md`](wiki/concepts/system-identification.md)、[`wiki/concepts/domain-randomization.md`](wiki/concepts/domain-randomization.md)、[`wiki/concepts/curriculum-learning.md`](wiki/concepts/curriculum-learning.md)、[`wiki/concepts/privileged-training.md`](wiki/concepts/privileged-training.md)、[`wiki/entities/paper-rma-rapid-motor-adaptation.md`](wiki/entities/paper-rma-rapid-motor-adaptation.md)、[`wiki/queries/sim2real-checklist.md`](wiki/queries/sim2real-checklist.md)、[`wiki/queries/sim2real-gap-reduction.md`](wiki/queries/sim2real-gap-reduction.md)、[`wiki/overview/topic-sim2real.md`](wiki/overview/topic-sim2real.md)
+- **开源核查：** 课程宣传综述，无独立项目仓；文内锚点开源状态以各实体页为准
+
 ## [2026-07-28] ingest | sources/repos/humanoid-motion-intelligence.md — 接入具身智能研究室「人形机器人运动智能知识库」；升格 wiki/entities/humanoid-motion-intelligence.md
 
 - **一手入口：** [RealXiaoze/humanoid-motion-intelligence](https://github.com/RealXiaoze/humanoid-motion-intelligence)（`main`；约 22★；分层许可 CC BY-NC-SA 4.0 + MIT 校验脚本）

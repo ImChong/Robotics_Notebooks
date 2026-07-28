@@ -1,15 +1,18 @@
 ---
 type: concept
 summary: "System Identification 通过估计动力学和执行器参数缩小模型误差，是高性能控制和 sim2real 的关键支撑。"
-updated: 2026-07-15
+updated: 2026-07-28
 related:
   - ./robot-link-and-rotor-inertia.md
   - ../entities/paper-bam-extended-friction-servo-actuators.md
   - ../entities/bam-better-actuator-models.md
   - ../entities/paper-pace-sim2real-legged-robots.md
+  - ../queries/sim2real-closed-loop-engineering.md
+  - ./sim2real.md
 sources:
   - ../../sources/papers/robot_link_rotor_inertia_primary_refs.md
   - ../../sources/papers/system_identification.md
+  - ../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md
 ---
 
 # System Identification
@@ -271,6 +274,9 @@ MPC 的预测质量高度依赖模型质量。模型错得离谱，预测再漂�
 - SysID 给中心
 - DR 给鲁棒性
 
+### 6. 在错误默认模型上放大 DR
+厂商 URDF 未校准就大幅放宽质量/摩擦/时延随机范围，策略易过度保守。先用激励轨迹校准可建模项，再围绕该基准做 DR；闭环读法见 [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md)。
+
 ## 在人形机器人里为什么更难
 
 因为人形机器人同时有：
@@ -301,10 +307,12 @@ MPC 的预测质量高度依赖模型质量。模型错得离谱，预测再漂�
 - [Joint Friction Models](./joint-friction-models.md)、[Friction Compensation](./friction-compensation.md)
 - [Quadruped Control Curriculum](../entities/quadruped-control-curriculum.md)
 - [PACE（足式系统化 Sim2Real）](../entities/paper-pace-sim2real-legged-robots.md) — chirp 悬空数据 + CMA-ES 紧凑关节参数辨识（arXiv:2509.06342）
+- [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md) — SysID → 训练 → 前馈/适应 → 安全的持续校准闭环
 
 ## 参考来源
 
 - [sources/papers/system_identification.md](../../sources/papers/system_identification.md) — ingest 档案（Nguyen 2011 / Gautier 激励轨迹 / Hwangbo ActuatorNet 2019）
+- [sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md](../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md) — SysID 作为 Sim2Real 起点、勿在默认 URDF 上盲目扩 DR
 - Gautier & Khalil, *Direct calculation of minimum set of inertial parameters of serial robots* — 最小参数集辨识经典
 - Wensing et al., *Linear Matrix Inequalities for Physically Consistent Inertial Parameter Identification* (2018) — 物理一致性约束辨识
 - Hwangbo et al., *Learning Agile and Dynamic Motor Skills for Legged Robots* (2019) — 执行器网络用于模型 gap 处理

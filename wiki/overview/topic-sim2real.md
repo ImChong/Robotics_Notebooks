@@ -2,7 +2,7 @@
 type: overview
 tags: [topic, topic-sim2real, deployment, domain-randomization, transfer]
 status: complete
-updated: 2026-06-30
+updated: 2026-07-28
 summary: "Sim2Real 专题汇总：图谱专题锚点；详细知识见 concepts/sim2real，本页仅作专题导航。"
 ---
 
@@ -41,6 +41,7 @@ summary: "Sim2Real 专题汇总：图谱专题锚点；详细知识见 concepts/
 | 对比 | 迁移路线选型 | [Sim2Real Approaches](../comparisons/sim2real-approaches.md) |
 | 对比 | 残差 vs Real2Sim vs 真机 RL | [Sim2Real vs Real2Sim Fine-Tuning](../comparisons/sim2real-vs-real2sim-fine-tuning.md) |
 | 工程 | 部署清单 | [Sim2Real Checklist](../queries/sim2real-checklist.md)（含快速部署检查） |
+| 工程 | 闭环误差分层 | [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md) |
 | 工程 | 处理器在环 | [Processor-in-the-Loop Sim2Real](../concepts/processor-in-the-loop-sim2real.md) |
 
 ## 与其他专题的关系
@@ -54,8 +55,10 @@ summary: "Sim2Real 专题汇总：图谱专题锚点；详细知识见 concepts/
 - [System Identification](../concepts/system-identification.md)
 - [Privileged Training](../concepts/privileged-training.md)
 - [Data Flywheel](../concepts/data-flywheel.md)
+- [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md)
 
 ## 参考来源
 
 - 本库归纳自 [Sim2Real](../concepts/sim2real.md) 及 comparisons/queries 迁移系列页
+- [深蓝具身智能公众号文归档](../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md) — 闭环叙事入口
 - 图谱专题定义：[docs/topic-filters.js](../../docs/topic-filters.js)（`sim2real` 命中规则）

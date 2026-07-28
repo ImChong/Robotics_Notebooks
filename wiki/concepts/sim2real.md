@@ -48,6 +48,7 @@ related:
   - ../entities/paper-zonda.md
   - ../entities/paper-mujica-wheel-legged-multi-skill.md
   - ../entities/paper-aware-wheeled-legged-reflexive-evasion.md
+  - ../queries/sim2real-closed-loop-engineering.md
 summary: "Sim2Real 关注如何把仿真中学到的策略稳定迁移到真实机器人，是机器人学习落地的核心鸿沟。"
 updated: 2026-07-28
 sources:
@@ -57,6 +58,7 @@ sources:
   - ../../sources/papers/zonda_arxiv_2607_21025.md
   - ../../sources/papers/agentic_real2sim_arxiv_2607_19190.md
   - ../../sources/papers/aware_arxiv_2604_23761.md
+  - ../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md
 ---
 
 # Sim2Real
@@ -153,6 +155,8 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - **以为仿真越逼真越好**：太精确的仿真不一定更好，domain randomization 可能更 robust
 - **忽略动作延迟**：仿真中动作瞬时执行，现实中有延迟
 - **只看 reward 不看安全性**：sim2real 部署初期容易损坏硬件
+- **把 Sim2Real 当成训完之后的独立步骤**：辨识、训练、部署因此彼此割裂；正确读法是从 [SysID](./system-identification.md) 启动、经 DR/课程与部署前馈/在线适应、再在运行中持续校准的闭环——见 [闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md)
+- **一失败就盲目扩大 DR**：应先分解可建模参数 / 难建模动态 / 观测误差 / 时变工况，再分流到校准、随机化或适应，避免策略过度保守
 
 ## 在人形机器人中的应用
 
@@ -205,6 +209,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - Peng et al. 2018, *Sim-to-Real Transfer of Robotic Control with Dynamics Randomization* — locomotion 控制迁移基线
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — DR / RMA / InEKF ingest 摘要
 - [sources/papers/rma_arxiv_2107_04034.md](../../sources/papers/rma_arxiv_2107_04034.md) — RMA 一手论文摘录（RSS 2021）
+- [sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md](../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md) — 「非训后一步」闭环叙事与误差分流（深蓝具身智能，2026-07-28）
 - [Sim2Real 方法横向对比](../comparisons/sim2real-approaches.md) — 迁移路线与代表工作
 - [Deployment-Ready RL: Pitfalls, Lessons, and Best Practices](https://thehumanoid.ai/deployment-ready-rl-pitfalls-lessons-and-best-practices/) — 工程实践
 - [机器人论文阅读笔记：Domain Randomization](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Domain_Randomization_Understanding_Sim-to-Real_Transfer/Domain_Randomization_Understanding_Sim-to-Real_Transfer.html)
@@ -234,6 +239,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [跨具身策略迁移选型指南](../queries/cross-embodiment-transfer-strategy.md) — 三段流水线末段；换机体后是否需重跨 domain gap
 - [Locomotion](../tasks/locomotion.md)
 - [System Identification](./system-identification.md)（减少物理参数和执行器模型的 sim2real gap）
+- [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md) — 从辨识到适应的持续校准叙事与误差分流
 - [Actuator Network 执行器网络](../methods/actuator-network.md) — 用神经网络拟合电机非线性特性
 - [Privileged Training](./privileged-training.md)（Teacher-Student 训练是 sim2real 的核心技术之一）
 - [RMA（论文实体）](../entities/paper-rma-rapid-motor-adaptation.md) — 特权 extrinsics + 历史适应模块；A1 异步 10/100 Hz 部署

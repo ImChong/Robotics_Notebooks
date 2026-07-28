@@ -4,7 +4,7 @@ type: entity
 tags: [quadruped, sim2real, reinforcement-learning, legged, mit]
 status: stable
 summary: "RSS 2018：随机化动力学与感知，在仿真中学敏捷四足运动并迁移真机；建立早期 sim2real 扭矩/敏捷控制参照系。"
-updated: 2026-05-22
+updated: 2026-07-28
 venue: "RSS 2018"
 related:
   - ../queries/legged-humanoid-rl-pd-gain-setting.md
@@ -72,6 +72,7 @@ flowchart LR
 ## 关联页面
 
 - [Sim2Real](../concepts/sim2real.md)
+- [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md) — SysID 后再 DR 的早期敏捷迁移参照
 - [Locomotion](../tasks/locomotion.md)
 - [四足扭矩控制 RL](./paper-quadruped-torque-control-rl.md)
 - [Legged / Humanoid RL 中 Kp/Kd 设置](../queries/legged-humanoid-rl-pd-gain-setting.md)
