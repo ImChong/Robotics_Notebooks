@@ -2,9 +2,11 @@
 type: query
 tags: [real-time, middleware, deployment, linux, ros2, lcm]
 status: complete
-updated: 2026-07-21
+updated: 2026-07-28
 related:
   - ../comparisons/ros2-vs-lcm.md
+  - ../concepts/ros2-basics.md
+  - ../concepts/lcm-basics.md
   - ../comparisons/can-vs-ethercat-joint-bus.md
   - ../concepts/can-bus-protocol.md
   - ../concepts/ethercat-protocol.md
@@ -74,7 +76,7 @@ ROS 2 底层使用的是 DDS 协议，它极其庞杂，包含大量的多线程
 
 ### 采用共享内存 (Shared Memory) 或 LCM
 - **最高优解**：如果在同一台物理机内，感知进程和控制进程最好通过**共享内存**直接交互。无锁队列（Lock-free ring buffer）是极限性能的首选。
-- **跨板通信**：如果需要在控制器和计算主板间跨网线通信，首选 **LCM (UDP 组播)**。它几乎没有开销，即发即弃，完全满足底层“只要最新鲜的数据，丢包无所谓”的逻辑。
+- **跨板通信**：如果需要在控制器和计算主板间跨网线通信，首选 **LCM (UDP 组播)**。它几乎没有开销，即发即弃，完全满足底层“只要最新鲜的数据，丢包无所谓”的逻辑。官方入口：[LCM 文档](https://lcm-proj.github.io/lcm/) / [lcm-proj/lcm](https://github.com/lcm-proj/lcm)；概念见 [LCM 基础](../concepts/lcm-basics.md)。
 
 详见：[ROS 2 vs LCM 选型对比](../comparisons/ros2-vs-lcm.md)
 
@@ -90,6 +92,8 @@ ROS 2 底层使用的是 DDS 协议，它极其庞杂，包含大量的多线程
 ## 关联页面
 - [CAN vs EtherCAT：关节总线选型](../comparisons/can-vs-ethercat-joint-bus.md)
 - [CAN 总线（经典）](../concepts/can-bus-protocol.md)
+- [ROS 2 基础](../concepts/ros2-basics.md)
+- [LCM 基础](../concepts/lcm-basics.md)
 - [ROS 2 vs LCM (中间件选型)](../comparisons/ros2-vs-lcm.md)
 - [Sim2Real 工程 Checklist](./sim2real-checklist.md#快速部署检查)
 - [Sim2Real 概念](../concepts/sim2real.md)
@@ -98,3 +102,5 @@ ROS 2 底层使用的是 DDS 协议，它极其庞杂，包含大量的多线程
 
 ## 参考来源
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md)
+- [LCM 官方文档 / 仓](../../sources/sites/lcm-proj-github-io.md) · [repos/lcm.md](../../sources/repos/lcm.md)
+- [ROS 2 组织 / 元仓](../../sources/sites/ros2-github-org.md) · [repos/ros2.md](../../sources/repos/ros2.md)

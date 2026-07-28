@@ -1389,7 +1389,7 @@
 - [Joint Friction Models（关节摩擦模型）](wiki/concepts/joint-friction-models.md) — 关节摩擦模型** 描述传动与轴承中 **与速度、负载相关的非线性阻力**，是 URDF 默认参数往往缺失、却强烈影响 **力矩跟踪与 Sim2Real** 的关键项。 `📅unknown` `[wiki_page]`
 - [运动学可行与动力学可行](wiki/concepts/kinematic-vs-dynamic-feasibility.md) — 飞书 Know-How 将 **运动学可行和动力学可行** 列为控制问题框架的核心分叉：前者回答「关节角度/末端轨迹是否存在」，后者回答「在给定力矩、摩擦与接触下是否稳定可执行」。 `📅unknown` `[wiki_page]`
 - [Latent Imagination (潜空间想象)](wiki/concepts/latent-imagination.md) — 潜空间想象 (Latent Imagination)** 是现代 Model-Based 强化学习（尤其是 **Dreamer** 系列）的灵魂。它彻底改变了机器人学习的范式：不再是在真实世界或沉 `📅unknown` `[wiki_page]`
-- [LCM (Lightweight Communications and Marshalling) 基础](wiki/concepts/lcm-basics.md) — LCM** 是一款由 MIT 团队开发的通信库，专门针对**高频、低延迟、高带宽**的机器人控制场景设计。在人形机器人和四足机器人的“脊髓级”控制中，LCM 是优于 ROS 2 的首选方案。 `📅unknown` `[wiki_page]`
+- [LCM (Lightweight Communications and Marshalling) 基础](wiki/concepts/lcm-basics.md) — LCM** 是一套面向实时系统的消息传递与数据编解码库：提供 publish/subscribe，并用类型描述语言自动生成多语言的强类型序列化代码；传输默认走 **UDP 组播**，无中心数据库、 `📅unknown` `[wiki_page]`
 - [LIP / ZMP](wiki/concepts/lip-zmp.md) — LIP（Linear Inverted Pendulum, 线性倒立摆）** 和 **ZMP（Zero Moment Point, 零力矩点）** 是双足机器人行走控制里最经典的一对基础模型与稳定 `📅unknown` `[wiki_page]`
 - [LoRA (Low-Rank Adaptation，低秩适配)](wiki/concepts/lora.md) — LoRA** 是一种参数高效微调（PEFT）方法：不改动预训练权重，只在其旁路上训练一对低秩矩阵，使大模型能以极小的可训练参数量适配新任务、新形态或新动力学。 `📅unknown` `[wiki_page]`
 - [消息队列可靠性（队列 / 重复消费 / 顺序 / 幂等）](wiki/concepts/message-queue-reliability.md) — 消息队列可靠性** 处理「异步投递」下的 **至少一次、重复、乱序** 现实，要求消费者 **幂等**——适用于任务调度与遥测，不替代实时中间件。 `📅unknown` `[wiki_page]`
@@ -1422,7 +1422,7 @@
 - [机器人整机配电架构（电池 → 母线 → DC/DC → 线束 → 安全回路）](wiki/concepts/robot-power-distribution-architecture.md) — 整机配电架构**回答：电池里的能量经过哪些开关、变换与导线，才能在**几十个关节同时爆发力矩**时既不掉压、不烧线、不干扰编码器，又能在异常时**以可预期的方式停下来**。 `📅unknown` `[wiki_page]`
 - [机器人安全状态机（硬件 / 通信故障）](wiki/concepts/robot-safety-state-machine.md) — 机器人安全状态机** 用确定性有限状态机，在 **驱动器报错、总线超时、控制 deadline miss、估计发散** 时切到预定义安全态（阻尼、无力矩、冻结姿态），保证故障响应不依赖网络。 `📅unknown` `[wiki_page]`
 - [Robotics Solve 标准](wiki/concepts/robotics-solve-standard.md) — Solve** 是 Sunday Robotics 在 2026 年提出的机器人能力 **声明格式**：在明确 **Scope（适用分布）** 与 **Adaptation cost（部署适配成本 `📅unknown` `[wiki_page]`
-- [ROS 2 (Robot Operating System 2) 基础](wiki/concepts/ros2-basics.md) — ROS 2** 是全球机器人社区中最广泛使用的开源框架。它并非真正的操作系统，而是一套运行在 Linux 之上的**中间件 (Middleware)**，提供了标准化的通信协议、开发工具和海量的算 `📅unknown` `[wiki_page]`
+- [ROS 2 (Robot Operating System 2) 基础](wiki/concepts/ros2-basics.md) — ROS 2** 是一套开源的机器人软件库与工具（官方称 *meta operating system*）：跑在 Linux 等通用 OS 之上，用标准化通信、包管理与开发工具把驱动、算法与调试器接 `📅unknown` `[wiki_page]`
 - [RS-232 串行接口（TIA/EIA-232）](wiki/concepts/rs-232-serial-interface.md) — RS-232**（现行标准名 **TIA-232-F**）是 1960 年代起用于 **数据终端设备（DTE）与数据电路终端设备（DCE）** 之间串行二进制交换的 **电气与机械接口标准**。它 `📅unknown` `[wiki_page]`
 - [RS-485 串行总线（TIA/EIA-485）](wiki/concepts/rs-485-serial-bus.md) — RS-485**（**TIA-485-A**）定义 **平衡数字多点系统** 中驱动器与接收器的电气特性。它只规定 **物理层**——比特如何变成差分电压——**不规定** 帧格式或主从协议；机器 `📅unknown` `[wiki_page]`
 - [RTOS 与实时调度](wiki/concepts/rtos-realtime-scheduling.md) — RTOS 与实时调度** 保证任务在 **截止时间前** 完成：MCU 侧常用 FreeRTOS/裸机，主控侧常用 PREEMPT_RT Linux + 隔离核与 FIFO 优先级。 `📅unknown` `[wiki_page]`
@@ -1718,7 +1718,7 @@
 - [RL vs 模仿学习（Imitation Learning）](wiki/comparisons/rl-vs-il.md) — RL 和 IL 是机器人策略学习的两条主干路线。两者都在学"策略 $\pi(a|s)$"，但监督信号、数据需求、能达到的行为质量完全不同。 `📅unknown` `[comparison_page]`
 - [八大机器人控制体系分类](wiki/comparisons/robot-control-eight-paradigms-taxonomy.md) — 从机器人 **任务规划 → 控制算法 → 伺服执行** 的分层闭环出发，控制算法层可划分为 **八大体系**；前四类侧重 **显式建模**，后四类分别面向 **接触作业、约束优化、数据补偿与自主习得 `📅unknown` `[comparison_page]`
 - [机器人顶会顶刊发表渠道对比](wiki/comparisons/robotics-research-venues.md) — 在机器人学习与系统方向投稿或引用时，**会议**（ICRA、IROS、CoRL、RSS）与 **期刊**（T-RO、IJRR、Science Robotics）的 **主办方、审稿节奏、论文集托管 `📅unknown` `[comparison_page]`
-- [ROS 2 vs LCM (机器人中间件选型)](wiki/comparisons/ros2-vs-lcm.md) — 在机器人真机部署中，如何让分布在不同进程（甚至不同计算板）上的节点进行可靠、低延迟的数据通信？**ROS 2 (Robot Operating System 2)** 和 **LCM (Lightwe `📅unknown` `[comparison_page]`
+- [ROS 2 vs LCM (机器人中间件选型)](wiki/comparisons/ros2-vs-lcm.md) — 一句话结论：** 需要驱动/导航/规划/可视化生态与可靠工具链时选 **ROS 2**；需要跨进程或跨板的 **高频、低抖动、最新优先** 状态与力矩总线时选 **LCM**（同机极限路径优先共享 `📅unknown` `[comparison_page]`
 - [Second-Order Optimizers：选型对比](wiki/comparisons/second-order-optimizers.md) — 背景**：机器人 Trajectory Optimization、IK、标定与 NMPC 打靶后，常归结为 **非 `📅unknown` `[comparison_page]`
 - [Sim2Real 方法横向对比](wiki/comparisons/sim2real-approaches.md) — Sim2Real gap 的应对策略有三大类：**Domain Randomization（仿真端随机化）**、**Domain Adaptation（领域自适应）**、**Real-World Fi `📅unknown` `[comparison_page]`
 - [Sim2Real 残差适配 vs Real2Sim 真机回放 vs 真机直接 RL 微调](wiki/comparisons/sim2real-vs-real2sim-fine-tuning.md) — 背景**：当一台机器人已经在仿真里训出可用策略、但真机上还差最后几成性能时，Sim2Real 链路的**最后一公里**有三种本质不同的修补思路 `📅unknown` `[comparison_page]`

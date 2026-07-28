@@ -1983,6 +1983,15 @@
         "clemson",
         "clemson-university"
       ]
+    },
+    "open-robotics": {
+      "label": "开源机器人基金会（Open Source Robotics Foundation）",
+      "aliases": [
+        "open-robotics",
+        "osrf",
+        "open-source-robotics-foundation",
+        "openrobotics"
+      ]
     }
   }
 }

@@ -1,5 +1,16 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-28] ingest | sources/sites/lcm-proj-github-io.md + sources/repos/lcm.md + sources/sites/ros2-github-org.md + sources/repos/ros2.md — LCM 官方文档/仓与 ROS 2 组织/元仓一手入库；深化 wiki/concepts/lcm-basics.md、ros2-basics.md、comparisons/ros2-vs-lcm.md
+
+- **一手入口：**
+  - LCM 文档 [lcm-proj.github.io/lcm](https://lcm-proj.github.io/lcm/) · 仓 [lcm-proj/lcm](https://github.com/lcm-proj/lcm)（~1.2k★，LGPL-2.1，v1.5.2）
+  - ROS 2 组织 [github.com/ros2](https://github.com/ros2)（~146 公开仓）· 元仓 [ros2/ros2](https://github.com/ros2/ros2)（~5.8k★，`ros2.repos`）
+- **归档：** [`sources/sites/lcm-proj-github-io.md`](sources/sites/lcm-proj-github-io.md)、[`sources/repos/lcm.md`](sources/repos/lcm.md)、[`sources/sites/ros2-github-org.md`](sources/sites/ros2-github-org.md)、[`sources/repos/ros2.md`](sources/repos/ros2.md)；交叉更新 [`sources/sites/ros2-official-documentation.md`](sources/sites/ros2-official-documentation.md)
+- **主深化：** [`wiki/concepts/lcm-basics.md`](wiki/concepts/lcm-basics.md)、[`wiki/concepts/ros2-basics.md`](wiki/concepts/ros2-basics.md)、[`wiki/comparisons/ros2-vs-lcm.md`](wiki/comparisons/ros2-vs-lcm.md) — 补一手特性/安装/上游拓扑、开源核查、统一骨架与选型结论
+- **交叉：** [`wiki/concepts/dds-communication.md`](wiki/concepts/dds-communication.md)、[`wiki/queries/real-time-control-middleware-guide.md`](wiki/queries/real-time-control-middleware-guide.md)、[`tech-map/modules/system/ros2.md`](tech-map/modules/system/ros2.md)
+- **机构注册：** `schema/institutions.json` → `open-robotics`（OSRF）；`mit` 已有
+- **开源核查（2026-07-28）：** LCM **已开源**；ROS 2 组织与元仓 **已开源**（日常部署仍推荐发行版二进制）
+
 ## [2026-07-28] ingest | sources/papers/learning_to_ball_arxiv_2509_22442.md + sources/repos/learning-to-ball.md + sources/sites/pei-xu-basketball-github-io.md — Learning to Ball（arXiv:2509.22442，SIGGRAPH Asia 2025）；升格 wiki/entities/paper-notebook-learning-to-ball.md；交叉 wiki/overview/paper-notebook-category-13-physics-based-animation.md、wiki/methods/hierarchical-reinforcement-learning.md、wiki/methods/imitation-learning.md、wiki/entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md、wiki/entities/paper-notebook-composite-motion-learning-with-task-control.md
 
 - **论文：** *Learning to Ball: Composing Policies for Long-Horizon Basketball Moves*（Stanford × UC Riverside × Roblox × Clemson；ACM TOG / SIGGRAPH Asia 2025）
