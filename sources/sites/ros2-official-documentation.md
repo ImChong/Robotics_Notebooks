@@ -21,7 +21,7 @@
 |------|------|
 | **Nodes** | 执行计算的独立进程；通过话题/服务/动作互联 |
 | **Topics** | 发布/订阅异步数据流；底层由 DDS 分发 |
-| **Services** | 请求/响应同步 RPC |
+| **Services** | 请求/响应同步 RPC（概念一手见 [Birrell & Nelson](../papers/birrell_nelson_implementing_rpc_tocs_1984.md)；现代框架对照 [gRPC](grpc-io-docs.md)；wiki：[remote-procedure-call](../../wiki/concepts/remote-procedure-call.md)） |
 | **Actions** | 长时任务：目标、反馈、可取消 |
 | **Parameters** | 节点级运行时配置 |
 | **QoS** | 可靠性、历史深度、deadline 等策略；同一 topic 发布者与订阅者须兼容 |

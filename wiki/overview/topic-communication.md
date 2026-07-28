@@ -1,9 +1,9 @@
 ---
 type: overview
-tags: [topic, topic-communication, ethercat, can, ros2, firmware, bus]
+tags: [topic, topic-communication, ethercat, can, ros2, firmware, bus, rpc, grpc]
 status: complete
-updated: 2026-07-21
-summary: "硬件通信与协议专题汇总：从电机驱动固件、现场总线（EtherCAT/CAN/UART）到 ROS 2 / LCM 软件中间件，覆盖人形与移动机器人底层数据链路选型。"
+updated: 2026-07-28
+summary: "硬件通信与协议专题汇总：从电机驱动固件、现场总线（EtherCAT/CAN/UART）到 ROS 2 / LCM / RPC 软件中间件，覆盖人形与移动机器人底层数据链路选型。"
 ---
 
 # 硬件通信与协议（专题汇总）
@@ -23,6 +23,8 @@ summary: "硬件通信与协议专题汇总：从电机驱动固件、现场总�
 | CAN-FD | CAN with Flexible Data-Rate | 更高带宽 CAN 变体 |
 | ROS 2 | Robot Operating System 2 | 机器人软件中间件（DDS 传输） |
 | LCM | Lightweight Communications Marshaling | 轻量 pub/sub，常用于低延迟控制 |
+| RPC | Remote Procedure Call | 请求/响应远程调用；见 [RPC 概念](../concepts/remote-procedure-call.md) |
+| gRPC | gRPC Remote Procedure Calls | 现代 RPC 框架（HTTP/2）；见 [gRPC](../entities/grpc.md) |
 
 ## 为什么重要
 
@@ -39,6 +41,7 @@ summary: "硬件通信与协议专题汇总：从电机驱动固件、现场总�
 | 串口层 | RS-485 / UART | [RS-485](../concepts/rs-485-serial-bus.md)、[UART](../concepts/uart-serial-communication.md) |
 | 中间件 | ROS 2 vs LCM | [ROS2 Basics](../concepts/ros2-basics.md)、[ROS2 vs LCM](../comparisons/ros2-vs-lcm.md) |
 | DDS | ROS 2 底层 QoS/RTPS | [DDS 通信机制](../concepts/dds-communication.md) |
+| RPC | 请求/响应服务面 | [远程过程调用](../concepts/remote-procedure-call.md)、[gRPC](../entities/grpc.md) |
 | 时钟 | 分布式同步 | [Clock Synchronization](../concepts/clock-synchronization-algorithms.md) |
 | 整机架构 | 分域/拓扑/延迟预算 | [机器人整机通信架构](../concepts/robot-onboard-communication-architecture.md) |
 | 系统工程 | OS/边云/OTA/安全 FSM | [系统工程专题](./topic-systems-engineering.md) |
@@ -59,4 +62,5 @@ summary: "硬件通信与协议专题汇总：从电机驱动固件、现场总�
 ## 参考来源
 
 - 本库归纳自 [Motor Drive / Firmware / Bus Protocols](./motor-drive-firmware-bus-protocols.md) 及 `wiki/concepts/*protocol*` 系列页
+- RPC 一手：[Birrell & Nelson 1984](../../sources/papers/birrell_nelson_implementing_rpc_tocs_1984.md) · [RFC 5531](../../sources/sites/rfc-5531-onc-rpc.md) · [gRPC 文档](../../sources/sites/grpc-io-docs.md)
 - 图谱专题定义：[docs/topic-filters.js](../../docs/topic-filters.js)（`communication` 命中规则）

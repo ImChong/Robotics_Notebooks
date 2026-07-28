@@ -2,7 +2,7 @@
 type: entity
 tags: [software, cad, mcp, llm-agents, freecad, parametric-modeling, open-source, hardware, fem]
 status: complete
-updated: 2026-07-27
+updated: 2026-07-28
 related:
   - ./freecad.md
   - ./cad-skills.md
@@ -11,10 +11,13 @@ related:
   - ./3dgenstudio.md
   - ../concepts/text-to-cad.md
   - ../concepts/urdf-robot-description.md
+  - ../concepts/remote-procedure-call.md
+  - ./grpc.md
   - ../queries/simulation-physics-fidelity.md
 sources:
   - ../../sources/repos/freecad-mcp.md
   - ../../sources/repos/3dgenstudio.md
+  - ../../sources/papers/birrell_nelson_implementing_rpc_tocs_1984.md
 summary: "FreeCAD MCP（neka-nat/freecad-mcp）用 Addon RPC + PyPI MCP server 把桌面 FreeCAD 暴露给 Claude 等代理：建改对象、执行 Python、截图审图、插标准件与 CalculiX FEM，是机器人硬件链路中「自然语言驱动已有 CAD」的轻量桥接。"
 ---
 
@@ -28,7 +31,7 @@ summary: "FreeCAD MCP（neka-nat/freecad-mcp）用 Addon RPC + PyPI MCP server �
 |------|----------|----------|
 | MCP | Model Context Protocol | 代理与外部工具/数据源的开放互操作协议 |
 | CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
-| RPC | Remote Procedure Call | 远程过程调用；Addon 在 FreeCAD 内暴露 Python API |
+| RPC | Remote Procedure Call | 远程过程调用；Addon 在 FreeCAD 内暴露 Python API（概念见 [RPC](../concepts/remote-procedure-call.md)） |
 | FEM | Finite Element Method | 有限元法，结构应力/变形分析 |
 | URDF | Unified Robot Description Format | ROS 生态统一的机器人连杆/关节描述格式 |
 | STEP | Standard for the Exchange of Product model data | 工业 B-rep 零件/装配交换格式 |
@@ -119,12 +122,14 @@ flowchart LR
 - [3D Gen Studio（ComfyUI 网格生产 + MCP）](./3dgenstudio.md) — 同属 MCP 自动化，但目标是 **mesh 管线** 而非 FreeCAD B-rep
 - [文字生成 CAD（Text-to-CAD）](../concepts/text-to-cad.md)
 - [URDF（统一机器人描述格式）](../concepts/urdf-robot-description.md)
+- [远程过程调用（RPC）](../concepts/remote-procedure-call.md) · [gRPC](./grpc.md)
 - [仿真物理保真度链路](../queries/simulation-physics-fidelity.md)
 
 ## 参考来源
 
 - [freecad-mcp 仓库源归档](../../sources/repos/freecad-mcp.md)
 - [FreeCAD MCP GitHub README](https://github.com/neka-nat/freecad-mcp)
+- [RPC 概念源头（Birrell & Nelson）](../../sources/papers/birrell_nelson_implementing_rpc_tocs_1984.md)
 - [FreeCAD 用户 Wiki](https://wiki.freecad.org)
 - [Model Context Protocol](https://modelcontextprotocol.io)
 

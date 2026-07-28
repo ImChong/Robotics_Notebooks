@@ -2,15 +2,19 @@
 type: concept
 tags: [systems-engineering, networking, tcp, udp, http, tls, dns, load-balancing]
 status: complete
-updated: 2026-07-21
+updated: 2026-07-28
 related:
   - ./operating-system-basics.md
   - ./dds-communication.md
+  - ./remote-procedure-call.md
+  - ../entities/grpc.md
   - ../formalizations/udp-multicast-dynamics.md
   - ./lcm-basics.md
   - ../overview/topic-systems-engineering.md
 sources:
   - ../../sources/sites/systems_engineering_os_network_primary_refs.md
+  - ../../sources/sites/grpc-io-docs.md
+  - ../../sources/sites/rfc-5531-onc-rpc.md
 summary: "网络协议栈基础（TCP、UDP、HTTP、DNS、TLS、负载均衡）：区分机器人可靠回传面与实时数据面，避免把 TCP/TLS 语义误用于力矩环。"
 ---
 
@@ -44,6 +48,7 @@ summary: "网络协议栈基础（TCP、UDP、HTTP、DNS、TLS、负载均衡）
 | **UDP** | 尽力而为 | LCM、DDS、传感广播 | 需要强顺序持久化的账单/审计 |
 | **TCP** | 可靠、有序 | SSH、日志汇聚、权重下载 | 1 kHz 力矩、最新状态话题 |
 | **HTTP(S)** | 请求语义 +（常）TLS | 机器人服务 API、模型仓库 | 硬实时 |
+| **HTTP/2 + gRPC** | 多路复用 RPC | 边云推理 / 工具 API（见 [gRPC](../entities/grpc.md)） | 1 kHz 控制环 |
 | **DNS** | 名称解析 | 服务发现前置 | 完全离线现场需静态配置 |
 | **TLS** | 机密性与完整性 | 云边通道、OTA | 握手成本不可进控制环 |
 | **LB** | 分发与健康检查 | 训练集群、仿真 farm | 机载实时总线 |
@@ -66,12 +71,17 @@ summary: "网络协议栈基础（TCP、UDP、HTTP、DNS、TLS、负载均衡）
 - [操作系统基础](./operating-system-basics.md)
 - [LCM 基础](./lcm-basics.md)
 - [DDS 通信机制](./dds-communication.md)
+- [远程过程调用（RPC）](./remote-procedure-call.md)
+- [gRPC](../entities/grpc.md)
 - [系统工程专题](../overview/topic-systems-engineering.md)
 
 ## 参考来源
 
 - [OS 与网络一手资料](../../sources/sites/systems_engineering_os_network_primary_refs.md)
+- [gRPC 官方文档](../../sources/sites/grpc-io-docs.md)
+- [RFC 5531 ONC RPC](../../sources/sites/rfc-5531-onc-rpc.md)
 
 ## 推荐继续阅读
 
 - IETF RFC 768 / 9293 / 9110 / 8446
+- RFC 5531：<https://www.rfc-editor.org/rfc/rfc5531>

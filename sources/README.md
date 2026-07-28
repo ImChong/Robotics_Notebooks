@@ -36,6 +36,7 @@
 | [x] [modern_robotics_textbook.md](papers/modern_robotics_textbook.md) | Lynch & Park《Modern Robotics》教材：李群/螺旋理论统一描述运动学/动力学/控制（13 章） |
 | [x] [robot_link_rotor_inertia_primary_refs.md](papers/robot_link_rotor_inertia_primary_refs.md) | 连杆 URDF 惯量 + 转子反射惯量（MuJoCo armature / Gautier–Khalil 1990）一手资料索引 |
 | [x] [kalman_filter_ekf_primary_refs.md](papers/kalman_filter_ekf_primary_refs.md) | KF / EKF 一手论文与教材索引（Kalman 1960；Gelb 1974；Simon 2006 等） |
+| [x] [birrell_nelson_implementing_rpc_tocs_1984.md](papers/birrell_nelson_implementing_rpc_tocs_1984.md) | Birrell & Nelson《Implementing Remote Procedure Calls》（TOCS 1984）RPC 概念源头 |
 | [x] [lqr_ilqr_primary_refs.md](papers/lqr_ilqr_primary_refs.md) | LQR / iLQR 一手论文与课程索引（Bryson & Ho 1975；Li & Todorov 2004 等） |
 | [x] [universal_skeleton.md](papers/universal_skeleton.md) | HOVL：异构骨架开放词汇动作识别，多粒度动作-文本对齐（arXiv:2604.17013） |
 | [x] [doorman_opening_sim2real_arxiv_2512_01061.md](papers/doorman_opening_sim2real_arxiv_2512_01061.md) | DoorMan：人形纯 RGB 开门 loco-manipulation（arXiv:2512.01061，CVPR 2026）摘录与 wiki 映射 |
@@ -232,6 +233,7 @@
 | [x] [navigation2.md](repos/navigation2.md) | Navigation2：ROS 2 导航框架 |
 | [x] [ros-planning-srdfdom.md](repos/ros-planning-srdfdom.md) | ros-planning/srdfdom：SRDF 解析/写入（MoveIt 语义配置） |
 | [x] [rmw.md](repos/rmw.md) | ros2/rmw：ROS Middleware Interface C API（Quality Level 1） |
+| [x] [grpc.md](repos/grpc.md) | grpc/grpc：多语言 gRPC 运行时与 C++ 核心（Apache-2.0，CNCF） |
 | [x] [slam_toolbox.md](repos/slam_toolbox.md) | SLAM Toolbox：2D lifelong SLAM |
 | [x] [cartographer.md](repos/cartographer.md) | Google Cartographer 2D/3D SLAM |
 | [x] [fast_lio.md](repos/fast_lio.md) | FAST-LIO：LiDAR-惯性里程计 |
@@ -424,6 +426,8 @@
 | [x] [ros2-official-documentation.md](sites/ros2-official-documentation.md) | ROS 2 Humble 官方文档、ros2_control / Nav2 / Design 一手索引 |
 | [x] [ros2-design-rmw-interface.md](sites/ros2-design-rmw-interface.md) | ROS 2 Design：Middleware Interface（RMW 抽象动机） |
 | [x] [ros2-rmw-middleware-vendors.md](sites/ros2-rmw-middleware-vendors.md) | 不同 DDS/RMW vendor 矩阵与多 RMW 切换 How-To |
+| [x] [rfc-5531-onc-rpc.md](sites/rfc-5531-onc-rpc.md) | IETF RFC 5531：ONC RPC Protocol Version 2 |
+| [x] [grpc-io-docs.md](sites/grpc-io-docs.md) | gRPC 官方文档 grpc.io（Introduction / Core Concepts） |
 | [x] [sirui-xu-interprior-github-io.md](sites/sirui-xu-interprior-github-io.md) | InterPrior 项目页 sirui-xu.github.io/InterPrior（能力演示、BibTeX、Inter-line 姊妹链） |
 | [x] [altium-designer-primary-refs.md](sites/altium-designer-primary-refs.md) | Altium Designer 官方技术文档一手索引（QuickStart、ECO、Rules/Constraint Manager、制造 OutJob、ECAD-MCAD CoDesigner） |
 | [x] [simplefoc_documentation.md](sites/simplefoc_documentation.md) | docs.simplefoc.com：Arduino SimpleFOC 官方文档（理论、运动/扭矩环、硬件与 v2.4 发布说明） |

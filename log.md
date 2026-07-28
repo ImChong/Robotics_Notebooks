@@ -1,5 +1,18 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-28] ingest | sources/papers/birrell_nelson_implementing_rpc_tocs_1984.md + sites/rfc-5531-onc-rpc.md + grpc-io-docs.md + sources/repos/grpc.md — Remote Procedure Call 一手入库；升格 wiki/concepts/remote-procedure-call.md、wiki/entities/grpc.md
+
+- **一手入口：**
+  - Birrell & Nelson, *Implementing Remote Procedure Calls*（ACM TOCS 1984；[PDF](http://birrell.org/andrew/papers/ImplementingRPC.pdf)）
+  - IETF [RFC 5531](https://www.rfc-editor.org/rfc/rfc5531) ONC RPC v2
+  - gRPC 文档 [Introduction](https://grpc.io/docs/what-is-grpc/introduction/) · [Core concepts](https://grpc.io/docs/what-is-grpc/core-concepts/) · 仓 [grpc/grpc](https://github.com/grpc/grpc)（~45.2k★，Apache-2.0，v1.83.0）
+- **归档：** [`sources/papers/birrell_nelson_implementing_rpc_tocs_1984.md`](sources/papers/birrell_nelson_implementing_rpc_tocs_1984.md)、[`sources/sites/rfc-5531-onc-rpc.md`](sources/sites/rfc-5531-onc-rpc.md)、[`sources/sites/grpc-io-docs.md`](sources/sites/grpc-io-docs.md)、[`sources/repos/grpc.md`](sources/repos/grpc.md)；交叉 [`sources/sites/ros2-official-documentation.md`](sources/sites/ros2-official-documentation.md)、[`sources/README.md`](sources/README.md)
+- **主升格：** [`wiki/concepts/remote-procedure-call.md`](wiki/concepts/remote-procedure-call.md)、[`wiki/entities/grpc.md`](wiki/entities/grpc.md)
+- **交叉：** [`wiki/concepts/ros2-basics.md`](wiki/concepts/ros2-basics.md)、[`wiki/concepts/dds-communication.md`](wiki/concepts/dds-communication.md)、[`wiki/concepts/network-protocol-stack.md`](wiki/concepts/network-protocol-stack.md)、[`wiki/overview/topic-communication.md`](wiki/overview/topic-communication.md)、[`wiki/queries/real-time-control-middleware-guide.md`](wiki/queries/real-time-control-middleware-guide.md)、[`wiki/entities/freecad-mcp.md`](wiki/entities/freecad-mcp.md)
+- **机构注册：** `schema/institutions.json` → `ietf`、`cncf`、`xerox-parc`（`google` 已有）
+- **开源核查（2026-07-28）：** Birrell 论文 / RFC **公开可读**；gRPC **已开源**（Apache-2.0）
+- **缩写提示：** 本库另有 Regularized Predictive Control（RPC）腿足控制线；本条专指 Remote Procedure Call
+
 ## [2026-07-28] ingest | sources/sites/ros2-design-rmw-interface.md + ros2-rmw-middleware-vendors.md + sources/repos/rmw.md — RMW（ROS Middleware Interface）一手入库；升格 wiki/concepts/rmw-interface.md
 
 - **一手入口：**
