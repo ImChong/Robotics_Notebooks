@@ -2,7 +2,7 @@
 type: concept
 tags: [systems-engineering, dds, ros2, middleware, qos, realtime]
 status: complete
-updated: 2026-07-21
+updated: 2026-07-28
 related:
   - ./ros2-basics.md
   - ../comparisons/ros2-vs-lcm.md
@@ -14,6 +14,8 @@ related:
 sources:
   - ../../sources/sites/dds_omg_rtos_edge_ota_safety_primary_refs.md
   - ../../sources/sites/ros2-official-documentation.md
+  - ../../sources/sites/ros2-github-org.md
+  - ../../sources/repos/ros2.md
 summary: "DDS（Data Distribution Service）通信机制：OMG DCPS/QoS 与 RTPS 线协议；ROS 2 RMW 的底层，解释可靠性与实时性权衡。"
 ---
 
@@ -83,7 +85,9 @@ flowchart LR
 
 - [DDS/RTOS/边云/OTA/安全 FSM 一手资料](../../sources/sites/dds_omg_rtos_edge_ota_safety_primary_refs.md)
 - [ROS 2 官方文档归档](../../sources/sites/ros2-official-documentation.md)
+- [ROS 2 GitHub 组织](../../sources/sites/ros2-github-org.md) · [ros2/ros2 元仓](../../sources/repos/ros2.md)（`ros2.repos` 钉定 Fast DDS / Cyclone 等 vendor）
 
 ## 推荐继续阅读
 
 - OMG DDS 1.4：<https://www.omg.org/spec/DDS/1.4>
+- ros2/ros2 `ros2.repos`：<https://github.com/ros2/ros2>

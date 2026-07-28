@@ -100,6 +100,9 @@ ROS 2 相对 ROS 1 的最大变化是采用 **DDS** 作为默认中间件实现�
 ## 推荐一手资料
 
 - [ROS 2 官方文档（Humble）](https://docs.ros.org/en/humble/) — 概念、安装、工具链（本仓库归档：[sources/sites/ros2-official-documentation.md](../../../sources/sites/ros2-official-documentation.md)）
+- [ROS 2 GitHub 组织](https://github.com/ros2) — 上游仓索引（归档：[sources/sites/ros2-github-org.md](../../../sources/sites/ros2-github-org.md)）
+- [ros2/ros2 元仓库](https://github.com/ros2/ros2) — `ros2.repos` 整树清单（归档：[sources/repos/ros2.md](../../../sources/repos/ros2.md)）
+- [LCM 文档 / 仓](https://lcm-proj.github.io/lcm/) — 底层运控对照（归档：[lcm-proj-github-io](../../../sources/sites/lcm-proj-github-io.md)、[repos/lcm](../../../sources/repos/lcm.md)）
 - [ROS 2 Design](https://design.ros2.org/) — 架构决策记录
 - [ros2_control 文档](https://control.ros.org/humble/) — 硬件抽象与控制器
 - [Navigation2 文档](https://navigation.ros.org/) — 移动机器人导航栈

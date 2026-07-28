@@ -1,13 +1,67 @@
 {
   "generated_at": "2026-07-28",
   "node_count": 1956,
-  "edge_count": 17010,
+  "edge_count": 17018,
   "coverage": {
     "covered": 1905,
     "total": 1932,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/lcm-basics.md",
+      "detail_id": "wiki-concepts-lcm-basics",
+      "label": "LCM (Lightweight Communications and Marshalling) 基础",
+      "type": "concept",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/concepts/ros2-basics.md",
+      "detail_id": "wiki-concepts-ros2-basics",
+      "label": "ROS 2 (Robot Operating System 2) 基础",
+      "type": "concept",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/comparisons/ros2-vs-lcm.md",
+      "detail_id": "wiki-comparisons-ros2-vs-lcm",
+      "label": "ROS 2 vs LCM (机器人中间件选型)",
+      "type": "comparison",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/concepts/dds-communication.md",
+      "detail_id": "wiki-concepts-dds-communication",
+      "label": "DDS 通信机制（Data Distribution Service）",
+      "type": "concept",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/queries/real-time-control-middleware-guide.md",
+      "detail_id": "wiki-queries-real-time-control-middleware-guide",
+      "label": "实时运控中间件配置指南",
+      "type": "query",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
     {
       "path": "wiki/entities/paper-notebook-learning-to-ball.md",
       "detail_id": "entity-paper-notebook-learning-to-ball",
@@ -152,68 +206,18 @@
       "recency": "2026-07-28",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/queries/sim2real-gap-reduction.md",
-      "detail_id": "wiki-queries-sim2real-gap-reduction",
-      "label": "Sim2Real Gap 缩减实战指南",
-      "type": "query",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/overview/topic-sim2real.md",
-      "detail_id": "wiki-overview-topic-sim2real",
-      "label": "Sim2Real（专题汇总）",
-      "type": "overview",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/humanoid-motion-intelligence.md",
-      "detail_id": "entity-humanoid-motion-intelligence",
-      "label": "Humanoid Motion Intelligence（人形机器人运动智能知识库）",
-      "type": "entity",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
-      "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
-      "label": "人形机器人 RL 运动控制：身体系统栈视角",
-      "type": "overview",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/overview/humanoid-motion-cerebellum-technology-map.md",
-      "detail_id": "wiki-overview-humanoid-motion-cerebellum-technology-map",
-      "label": "运动小脑技术地图：64 篇论文的九组视角",
-      "type": "overview",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-notebook-learning-to-ball.md",
-    "detail_id": "entity-paper-notebook-learning-to-ball",
-    "label": "Learning to Ball（Composing Policies for Long-Horizon Basketball Moves）",
-    "type": "entity",
+    "path": "wiki/concepts/lcm-basics.md",
+    "detail_id": "wiki-concepts-lcm-basics",
+    "label": "LCM (Lightweight Communications and Marshalling) 基础",
+    "type": "concept",
     "recency": "2026-07-28",
     "source": "log.md",
-    "action": "maintained",
+    "action": "added",
     "has_repo": true,
-    "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
+    "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
   },
   "top_communities": [
     {
@@ -238,7 +242,7 @@
     },
     {
       "label": "仿真训练",
-      "size": 87
+      "size": 85
     }
   ],
   "top_hubs": [

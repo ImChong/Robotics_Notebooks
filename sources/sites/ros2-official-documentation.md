@@ -44,10 +44,12 @@
 - 部署实践索引：[sim2real.md](../sim2real.md)（Humble、ros2_control、ATOM01 等）
 - 概念页：[ros2-basics](../../wiki/concepts/ros2-basics.md)
 - 选型对比：[ros2-vs-lcm](../../wiki/comparisons/ros2-vs-lcm.md)
+- 源码组织 / 元仓：[ros2-github-org.md](ros2-github-org.md)、[repos/ros2.md](../repos/ros2.md)
+- LCM 对照一手：[lcm-proj-github-io.md](lcm-proj-github-io.md)、[repos/lcm.md](../repos/lcm.md)
 - 实体案例：[navigation2](../../wiki/entities/navigation2.md)、[moveit2](../../wiki/entities/moveit2.md)、[booster-robocup-demo](../../wiki/entities/booster-robocup-demo.md)、[autoware](../../wiki/entities/autoware.md)
 - 技术栈模块：[tech-map/modules/system/ros2.md](../../tech-map/modules/system/ros2.md)
 
 ## 对 wiki 的映射
 
-- 已沉淀：[ros2-basics](../../wiki/concepts/ros2-basics.md)、[ros2-vs-lcm](../../wiki/comparisons/ros2-vs-lcm.md)
+- 已沉淀：[ros2-basics](../../wiki/concepts/ros2-basics.md)、[ros2-vs-lcm](../../wiki/comparisons/ros2-vs-lcm.md)、[dds-communication](../../wiki/concepts/dds-communication.md)
 - 技术地图入口：本页支撑 [tech-node-system-ros2](../../tech-map/modules/system/ros2.md) 模块正文
