@@ -1,86 +1,180 @@
 ---
 type: entity
-tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
-status: stub
-updated: 2026-07-10
+tags:
+  - paper
+  - dexterous-manipulation
+  - motion-capture
+  - hand-object-interaction
+  - dataset
+  - mano
+  - computer-vision
+  - pku
+  - tencent
+  - humanoid-paper-notebooks
+status: complete
+updated: 2026-07-28
 arxiv: "2601.05844"
+code: https://github.com/PKU-MoCCA/dextercap
 related:
   - ../overview/paper-notebook-category-06-manipulation.md
-  - ../overview/humanoid-paper-notebooks-index.md
+  - ../concepts/dexterous-kinematics.md
+  - ../concepts/motion-retargeting-pipeline.md
+  - ../tasks/teleoperation.md
+  - ./paper-notebook-dexumi-using-human-hand-as-the-universal-manipul.md
+  - ../../roadmap/depth-teleoperation.md
 sources:
   - ../../sources/papers/humanoid_pnb_dextercap.md
-summary: "精细的「在手」灵巧操作很难采集：手指挨得很近导致严重自遮挡，且动作幅度细微，传统光学动捕要么相机昂贵、要么后处理人工成本巨大。DexterCap 用密集的「字符编码」标记贴片（高对比棋盘格，每格带唯一双字符 ID）贴满手部各刚性区域，配合三级（marker → edge → tag）检测识别模型在自遮挡下稳定追踪，再用自动化重建流水线把 3D 标记拟合到 MANO 手模型与物体模型，恢复逐帧手参数与物体位姿/铰接状态——低成本、少人工地采到从简单基元到魔方等复杂铰接物的精细手-物交互，并发布 DexterHand 数据集与代码。"
+  - ../../sources/sites/dextercap.md
+  - ../../sources/repos/dextercap.md
+summary: "DexterCap（Eurographics 2026）：用 19 片字符编码密集标记、同步多相机与 Corner→Edge→Block 识别，在遮挡下重建 MANO 手和物体状态；代码/最终参数公开，但原始视频和完整中间数据未发。"
 ---
 
-# DexterCap
+# DexterCap：低成本自动化灵巧手—物运动捕获
 
-**DexterCap: An Affordable and Automated System for Capturing Dexterous Hand-Object Manipulation** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：06_Manipulation），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**DexterCap**（*An Affordable and Automated System for Capturing Dexterous Hand-Object Manipulation*，[arXiv:2601.05844](https://arxiv.org/abs/2601.05844)）由北京大学与腾讯 Robotics X 提出，入选 Eurographics 2026。
 
 ## 一句话定义
 
-精细的「在手」灵巧操作很难采集：手指挨得很近导致严重自遮挡，且动作幅度细微，传统光学动捕要么相机昂贵、要么后处理人工成本巨大。DexterCap 用密集的「字符编码」标记贴片（高对比棋盘格，每格带唯一双字符 ID）贴满手部各刚性区域，配合三级（marker → edge → tag）检测识别模型在自遮挡下稳定追踪，再用自动化重建流水线把 3D 标记拟合到 MANO 手模型与物体模型，恢复逐帧手参数与物体位姿/铰接状态——低成本、少人工地采到从简单基元到魔方等复杂铰接物的精细手-物交互，并发布 DexterHand 数据集与代码。
+**DexterCap 把唯一字符编码的密集标记直接贴到手指刚性区域，以多视角识别、三角化和 MANO/物体拟合自动恢复细粒度在手操作轨迹。**
 
 ## 英文缩写速查
 
-| 缩写 | 全称 | 解释 |
-|---|---|---|
-| DexterCap | Dexterous Capture | 本文的低成本光学动捕系统 |
-| DexterHand | — | 本文配套发布的精细手-物交互数据集 |
-| MANO | hand Model with Articulated and Non-rigid defOrmations | 业界标准的可微参数化手模型 |
-| Marker Patch | 标记贴片 | 贴在手部刚性区域的高对比棋盘格标记 |
-| Character-Coded | 字符编码 | 每个白格内含唯一双字符 ID，用于自动标号 |
-| Self-Occlusion | 自遮挡 | 手指相互遮挡，是手-物动捕的核心难点 |
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| HOI | Hand-Object Interaction | DexterHand 聚焦的细粒度手—物交互 |
+| MANO | Model with Articulated and Non-rigid deformations | 被 3D 手部 markers 拟合的参数手模型 |
+| MRE | Marker Reconstruction Error | MANO 表面预测 marker 与观测 3D marker 的距离 |
+| MSNR | Motion Signal-to-Noise Ratio | 衡量重建轨迹信噪与平滑质量 |
+| FPS | Frames Per Second | 官方系统以 20 FPS 采集多视角灰度视频 |
 
 ## 为什么重要
 
-- **为灵巧操作攒数据**：精确的手-物轨迹是 dexterous manipulation / 模仿学习的稀缺燃料，本系统把采集成本与人工大幅压低。
-- **抗自遮挡的标记设计可迁移**：字符编码 + 三级检测的思路，可用于其它密集、易遮挡的标记动捕场景（如脚、面部、柔性物）。
-- **MANO 输出对接生态**：逐帧 MANO 参数能直接喂给手部重定向 / 仿真，衔接现有手-物交互工具链。
-- **限制**：仍需贴片（对真实「裸手」野外采集不适用）；极端遮挡或贴片磨损会影响识别；物体需有可拟合的模型。
-
-## 解决什么问题
-
-1. **手-物精细交互采集难**：手指间距小 → **严重自遮挡**；在手操作动作**细微**，普通视觉重建容易丢失指节位姿。 2. **传统光学动捕成本高**：高端商业系统相机昂贵；而且标记**自动标号（auto-labeling）失败率高**，需要大量人工逐帧修正。 3. **缺乏高质量精细数据**：下游灵巧操作学习（dexterous manipulation）渴求大规模、精确的手-物交互数据，但采集管线缺位。
-
-**目标**：用**廉价硬件 + 自动化流水线**，稳健采集严重自遮挡下的灵巧手-物交互，并开源数据与代码。
-
-## 核心机制
-
-1. **字符编码密集标记**：每格唯一双字符 ID（324 标签），在严重自遮挡下也能可靠区分与自动标号，解决传统 auto-labeling 易错的痛点。
-2. **三级检测识别模型**：marker → edge → tag 级联，鲁棒提取部分可见标记。
-3. **自动化重建流水线**：3D 标记 → MANO 手 + 物体模型拟合，逐帧恢复手参数与物体位姿/铰接，少人工。
-4. **低成本硬件**：同步工业灰度相机即可，显著降低采集门槛。
-5. **DexterHand 数据集 + 开源**：覆盖从基元到魔方等复杂铰接物的精细手-物交互。
-
-方法拆解（深读笔记小节）：字符编码标记贴片（Character-Coded Marker Patches）；采集硬件（低成本）；三级检测与识别（Marker → Edge → Tag）；自动化重建流水线（Automated Reconstruction）；DexterHand 数据集。
+- **补足在手操作数据缺口：** 多数 HOI 数据偏抓取/搬运，DexterCap覆盖重抓、滑动、旋转和魔方关节状态。
+- **遮挡时身份仍可恢复：** 每个 block 的字符 ID 避免同质圆点被交换，减少逐帧人工 relabel。
+- **输出能接学习/重定向：** 手部为 MANO 参数、物体为位姿或铰接状态，便于后续生成、仿真与机器人映射。
+- **不把“低成本”误写成单目：** 它仍是同步工业多相机笼，只是相对商业 Vicon 降低硬件与后处理成本。
 
 ## 核心信息
 
-| 字段 | 内容 |
-|------|------|
-| 分类 | 06_Manipulation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DexterCap__An_Affordable_and_Automated_System_for_Capturing_Dexterous_Hand-Object/DexterCap__An_Affordable_and_Automated_System_for_Capturing_Dexterous_Hand-Object.html> |
-| arXiv | <https://arxiv.org/abs/2601.05844> |
-| 发表 | 2026-01-09 (arXiv) |
-| 项目主页 | [pku-mocca.github.io/Dextercap-Page](https://pku-mocca.github.io/Dextercap-Page/) |
-| 源码 | [PKU-MoCCA/dextercap](https://github.com/PKU-MoCCA/dextercap) |
-| 笔记阅读日期 | 2026-06-15 |
+| 项 | 内容 |
+|----|------|
+| 机构 | 北京大学（Peking University）；腾讯 Robotics X |
+| 发表 | Eurographics 2026 / Computer Graphics Forum |
+| 采集 | 2048×2448 灰度、20 FPS、1 ms 曝光、多相机同步 |
+| 场地 | 约 2×1×2 m 相机框架 |
+| 标记 | 每手 19 片、超过 500 个可检测角点 |
+| 输出 | MANO 手参数；刚体 6D 位姿；魔方铰接状态；`.npz` |
+| 数据 | DexterHand，基元至 2×2×2 魔方，多数序列 >10 min |
+| 开源 | 处理代码和最终参数公开；原始/中间数据缺失，许可未声明 |
+
+## 流程总览
+
+```mermaid
+flowchart LR
+  capture["同步多视角灰度视频"] --> corner["CornerNet：候选角点"]
+  corner --> edge["EdgeNet：边分类"]
+  edge --> block["BlockNet：字符/方向识别"]
+  block --> tri["相机标定 + 3D 三角化"]
+  tri --> hand["MANO 手拟合"]
+  tri --> object["刚体/魔方状态拟合"]
+  hand --> pack["统一 .npz 打包"]
+  object --> pack
+  pack --> data["DexterHand"]
+```
+
+## 核心机制（方法栈）
+
+### 1）字符编码密集贴片
+
+贴片固定在指节、手背和手掌等较刚性区域，避免整只手套拉伸/滑动；白格字符与方向构成唯一标签。超过 500 个角点提供冗余，使部分 marker 被手指/物体遮挡时仍可三角化。
+
+### 2）Corner→Edge→Block 三级识别
+
+CornerNet 用低阈值优先召回角点；EdgeNet 判断候选点之间是否为模板邻边；BlockNet 分类字符与朝向。后两级剔除前级假阳性，邻块 voting 平均纠正约 1.825% 标签。
+
+### 3）手与物体分路重建
+
+3D 手 marker 通过形状标定与逐帧优化拟合 MANO；刚体用 marker 对模型注册，2×2×2 魔方则按共面性检测面旋转、拆分子块并用 Kabsch 求位姿，最后吸附到 90° 离散状态。
+
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Video as VideoProcess/
+  participant Mocap as MocapSystem/
+  participant Hand as HandReconstruction/
+  participant Object as ObjectReconstruction/
+  participant Dataset as Dataset/
+  Video->>Mocap: 多视角 2D 标签
+  Mocap->>Hand: pts_hand 3D 轨迹
+  Mocap->>Object: pts_obj 3D 轨迹
+  Hand->>Hand: python -m HandReconstruction.main
+  Object->>Object: 刚体/魔方状态求解
+  Hand->>Dataset: frame_*.npz
+  Object->>Dataset: pose/state .npy/.npz
+  Dataset->>Dataset: python -m Dataset.generate_dataset
+```
+
+可先下载 DexterHand 并运行 `Dataset.visualize`；完整重建需另行下载 MANO。公开数据不含原始视频/中间 marker track，因此不能仅凭发布资产端到端复跑官方 capture。
+
+## 与其他工作对比
+
+| 维度 | DexterCap | 商业 Vicon 数据 | 单目 HaMeR |
+|------|-----------|-----------------|------------|
+| 身份跟踪 | 字符编码密集贴片 | 同质 marker + 人工清理 | 无 marker |
+| 遮挡 | 多视角冗余 | 多视角但易交换 | 严重退化 |
+| 输出 | MANO + 物体/铰接状态 | marker/拟合轨迹 | 单手姿态 |
+| 使用成本 | 自建多相机 + 自动处理 | 设备昂贵 | 硬件低但精度弱 |
+
+## 工程实践
+
+- **先做一次性标定：** 相机内外参、用户 MANO shape、物体模型与 marker 模板是后续自动化的前提。
+- **保留 raw→3D 可追溯链：** 生产采集应保存视频、2D 标签、3D marker 与最终参数，避免只剩 `.npz` 无法诊断。
+- **滤波不可替代物理检查：** 官方对 20 Hz 数据用 5 Hz Butterworth；还要检查穿透、速度尖峰与 marker visibility。
+- **开源状态：** [仓库](https://github.com/PKU-MoCCA/dextercap)公开五阶段代码，[Hugging Face](https://huggingface.co/datasets/pku-mocca/DexterHand)公开最终参数；截至 2026-07-28 全量数据仍标 coming soon，且原始视频/中间轨迹未发、仓库无许可证。
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- 3D marker 三角化重投影误差 **1.42 px**（相机标定为 0.4 px）。
+- MANO MRE：高可见标定阶段 **0.77±0.28 mm**，动态遮挡阶段 **2.06±1.09 mm**。
+- 刚体 object marker 重建误差 **1.512 mm**；手—物平均穿透 **3.8±3.1 mm**。
+- 轨迹 MSNR **9.31±0.22**、jerk **0.76±0.18 m/s³**，优于文中若干商业/视觉数据基线；coherence 0.68 并非最高。
+- 数据覆盖 cuboid、cylinder、plate、prism、ring 与 Rubik's Cube，但规模/主体数量仍有限。
+
+## 结论
+
+**DexterCap 的核心不是“给手贴更多点”，而是用可识别身份的稠密标记把遮挡下的自动标号与模型重建变成可扩展流水线。**
+
+1. **动态阶段 MRE 才是实用指标** — 2.06 mm 比标定阶段 0.77 mm 更接近真实遮挡条件。
+2. **低 jerk 不等于接触真实** — 仍需结合 3.8 mm 穿透和物体状态检查物理合理性。
+3. **MANO 输出利于生态衔接** — 但没有力、触觉和接触语义，不能直接等同机器人示范。
+4. **魔方展示了铰接扩展性** — 每类复杂物体仍需专用 marker 模型和求解逻辑。
+5. **当前开放资产不是完整复现包** — 可运行重建模块，但缺 raw/intermediate 使官方数据链不可完全重放。
+
+## 局限与风险
+
+- 所有视角同时严重遮挡时仍会出现穿透和错误姿态；贴片也会干扰裸手接触。
+- 系统需要同步工业相机、较大框架和较亮环境，不适合随身/野外实时遥操作。
+- 数据集中主体、物体和双手/工具任务多样性有限，且缺少力、接触区域与意图标注。
+- 仓库许可证未声明，数据与代码的再分发/商业使用需要额外核查。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-06-manipulation](../overview/paper-notebook-category-06-manipulation.md)
-- 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- 路线定位：[遥操作纵深 Stage 4/5](../../roadmap/depth-teleoperation.md) 的离线手部数据采集支线，而非实时遥操作器。
+- 手部表示：[Dexterous Kinematics](../concepts/dexterous-kinematics.md)。
+- 数据到机器人：[Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md)。
+- 无机器人策略学习对照：[DexUMI](./paper-notebook-dexumi-using-human-hand-as-the-universal-manipul.md)。
+- 主任务背景：[Teleoperation](../tasks/teleoperation.md)。
 
 ## 参考来源
 
-- [humanoid_pnb_dextercap.md](../../sources/papers/humanoid_pnb_dextercap.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DexterCap__An_Affordable_and_Automated_System_for_Capturing_Dexterous_Hand-Object/DexterCap__An_Affordable_and_Automated_System_for_Capturing_Dexterous_Hand-Object.html>
+- [Humanoid Paper Notebooks 来源归档](../../sources/papers/humanoid_pnb_dextercap.md)
+- [DexterCap 项目页核查](../../sources/sites/dextercap.md)
+- [DexterCap 代码/数据核查](../../sources/repos/dextercap.md)
 - 论文：<https://arxiv.org/abs/2601.05844>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：DexterCap](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DexterCap__An_Affordable_and_Automated_System_for_Capturing_Dexterous_Hand-Object/DexterCap__An_Affordable_and_Automated_System_for_Capturing_Dexterous_Hand-Object.html)
+- 项目页：<https://pku-mocca.github.io/Dextercap-Page/>
+- DexterHand：<https://huggingface.co/datasets/pku-mocca/DexterHand>

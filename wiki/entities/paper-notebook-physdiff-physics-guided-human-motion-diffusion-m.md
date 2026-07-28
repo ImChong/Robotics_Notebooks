@@ -1,85 +1,165 @@
 ---
 type: entity
-tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
-status: stub
-updated: 2026-07-10
+tags: [paper, human-motion, motion-generation, diffusion, physics-guided, motion-imitation, iccv, humanoid-paper-notebooks, nvidia]
+status: complete
+updated: 2026-07-28
 arxiv: "2212.02500"
 related:
+  - ../methods/diffusion-motion-generation.md
+  - ./paper-notebook-guided-motion-diffusion-for-controllable-human-m.md
+  - ./paper-notebook-omnicontrol-control-any-joint-at-any-time-for-hu.md
+  - ./paper-notebook-flexible-motion-in-betweening-with-diffusion-mod.md
+  - ./paper-phygile.md
+  - ./paper-gpc-generative-pretrained-controllers.md
   - ../overview/paper-notebook-category-14-human-motion.md
-  - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_physdiff.md
-summary: "去噪扩散模型在人体动作生成上效果很好，但现有动作扩散模型忽视物理定律，常生成带明显伪影的动作——漂浮（floating）、脚滑（foot sliding/skating）、地面穿插（ground penetration）等。PhysDiff 把物理约束注入扩散过程：提出一个物理引导的动作投影（physics-guided motion projection）模块——在扩散的去噪步中，借物理仿真器里的动作模仿（motion imitation），把当前扩散出的（含噪）动作投影成一个物理可行的动作，再用它引导下一步去噪。如此生成的动作物理可信、自然，大幅减少上述伪影，在大规模人体动作数据集上取得SOTA 的动作质量与物理可信度。ICCV 2023 Oral。"
+  - ../../sources/sites/physdiff-project.md
+summary: "PhysDiff（ICCV 2023 Oral，arXiv:2212.02500）在扩散采样的若干后期步调用物理仿真 motion-imitation policy，把 denoised motion 投影回可行动作并继续去噪；HumanML3D 物理误差降 86%+，但截至 2026-07-28 官方未开源代码。"
 ---
 
-# PhysDiff
+# PhysDiff：Physics-Guided Human Motion Diffusion Model
 
-**PhysDiff: Physics-Guided Human Motion Diffusion Model** 收录于 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页为 **深读笔记索引实体**，正文要点编译自笔记；细节以笔记页与论文 PDF 为准。
+**PhysDiff**（ICCV 2023 Oral，[arXiv:2212.02500](https://arxiv.org/abs/2212.02500)）由英伟达提出：不重训 MDM/MotionDiffuse denoiser，而是在扩散采样中插入由物理仿真 motion-imitation policy 实现的投影，让后续去噪在更物理可信的轨迹附近继续。
 
 ## 一句话定义
 
-去噪扩散模型在人体动作生成上效果很好，但现有动作扩散模型忽视物理定律，常生成带明显伪影的动作——漂浮（floating）、脚滑（foot sliding/skating）、地面穿插（ground penetration）等。PhysDiff 把物理约束注入扩散过程：提出一个物理引导的动作投影（physics-guided motion projection）模块——在扩散的去噪步中，借物理仿真器里的动作模仿（motion imitation），把当前扩散出的（含噪）动作投影成一个物理可行的动作，再用它引导下一步去噪。如此生成的动作物理可信、自然，大幅减少上述伪影，在大规模人体动作数据集上取得SOTA 的动作质量与物理可信度。ICCV 2023 Oral。
+**不是生成完再“修脚”，而是在多个后期去噪步把当前 clean-motion estimate 送入物理仿真跟踪，再用仿真输出反复拉回可行流形。**
 
 ## 英文缩写速查
 
-| 缩写 | 含义 |
-|---|---|
-| PhysDiff | 物理引导的动作扩散模型 |
-| Motion Projection | 物理引导动作投影 |
-| Motion Imitation | 物理仿真器里的动作模仿 |
-| Floating / Foot Sliding | 漂浮 / 脚滑（被消除的伪影） |
-| Ground Penetration | 地面穿插 |
-| Denoising Step | 扩散去噪步 |
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| PhysDiff | Physics-Guided Human Motion Diffusion Model | 本文物理引导动作扩散框架 |
+| MDM | Human Motion Diffusion Model | 论文接入的预训练文本动作 denoiser |
+| DDIM | Denoising Diffusion Implicit Model | 插入物理投影的基础采样形式 |
+| RL | Reinforcement Learning | 训练物理仿真 motion-imitation policy 的方法 |
+| FID | Fréchet Inception Distance | 衡量生成动作分布质量 |
+| Phys-Err | Physics Error | penetration、floating、skating 的组合物理误差 |
 
 ## 为什么重要
 
-- **"生成 + 物理投影"是把生成动作变可执行的关键范式**，与 SafeFlow（物理引导整流流）、Heracles 等"物理可执行生成"一脉相承；
-- **用物理仿真器的动作模仿做投影**，直接把"可被机器人执行"注入生成；
-- 去脚滑/穿地正是人形动作重定向/跟踪要解决的；
-- 物理可信动作可作人形参考运动，减少 sim-to-real 风险。
-
-## 解决什么问题
-
-动作扩散模型**不懂物理**： - 生成动作有**漂浮、脚滑、穿地**等伪影； - 纯数据驱动**无物理约束**，难保证可信。
-
-PhysDiff 要：把**物理**注入扩散，生成**物理可信、少伪影**的动作。
-
-## 核心机制
-
-1. **把物理注入动作扩散**：物理引导动作投影模块；
-2. **去噪步内物理投影 + 引导**：用仿真器动作模仿拉回可行流形；
-3. **大减伪影**：漂浮/脚滑/穿地；
-4. **SOTA 物理可信度**：大规模动作数据集（ICCV 2023 Oral）。
-
-方法拆解（深读笔记小节）：物理引导动作投影（核心）；用投影结果引导下一步去噪；结果；🧭 整体流程（mermaid）。
+- **物理约束进入采样过程：** 接触与动力学通过仿真器投影表达，不要求可微分解析损失。
+- **兼容已有 denoiser：** 物理模块只在 inference 使用，可包装 MDM、MotionDiffuse 等预训练动作扩散模型。
+- **避免事后修正失败：** 最终运动若离可行流形太远，单次 post-processing 会产生突变；迭代投影让 denoiser参与折中。
+- **给机器人动作生成提供历史锚点：** 后续 [PhyGile](./paper-phygile.md) 进一步把生成空间改成 robot-native 并与 tracker 共闭环。
 
 ## 核心信息
 
-| 字段 | 内容 |
-|------|------|
-| 分类 | 14_Human_Motion |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/PhysDiff__Physics-Guided_Human_Motion_Diffusion_Model/PhysDiff__Physics-Guided_Human_Motion_Diffusion_Model.html> |
-| arXiv | <https://arxiv.org/abs/2212.02500> |
-| 作者 | Ye Yuan、Jiaman Li、Yang Zou、Xiaolong Wang、Umar Iqbal、Sifei Liu、Jan Kautz（NVIDIA / Stanford） |
-| 发表 | 2022 年 12 月 |
-| 会议 | ICCV 2023（Oral） |
-| 笔记阅读日期 | 2026-06-21 |
+| 项 | 内容 |
+|----|------|
+| **机构** | 英伟达（NVIDIA） |
+| **作者** | Ye Yuan、Jiaming Song、Umar Iqbal、Arash Vahdat、Jan Kautz |
+| **发表** | ICCV 2023 Oral |
+| **任务** | HumanML3D text-to-motion；HumanAct12/UESTC action-to-motion |
+| **denoiser** | MDM、MotionDiffuse；PhysDiff 对网络架构无关 |
+| **物理模块** | 仿真角色 + 大规模 motion-imitation policy |
+| **开源** | **未开源**（核查日 2026-07-28）：项目页未列 GitHub；`NVlabs/PhysDiff` 不存在；仅论文、视频与可视化公开 |
+
+## 流程总览
+
+```mermaid
+flowchart LR
+  cond["文本 / 动作标签 c"]
+  noise["噪声动作 x_T"]
+  denoise["预训练 denoiser D<br/>估计 clean motion"]
+  schedule{"当前步是否<br/>执行投影?"}
+  imitate["Physics projection Pπ<br/>仿真 motion imitation"]
+  update["DDIM 更新下一步"]
+  out["物理更可信的动作"]
+  cond --> denoise
+  noise --> denoise --> schedule
+  schedule -- 是 --> imitate --> update
+  schedule -- 否 --> update
+  update --> denoise
+  update --> out
+```
+
+## 核心机制（方法栈）
+
+### 1）Physics-based motion projection
+
+投影 \(P_\pi\) 接收长度 \(H\) 的 denoised motion；策略 \(\pi\) 在物理仿真中控制角色模仿该轨迹，仿真 rollout 因满足动力学和接触方程而作为 projected motion。它不是欧式最近点投影，而是“该策略实际能跟出的轨迹”。
+
+### 2）投影回写扩散
+
+在 DDIM 更新前，将 clean estimate 与 projected motion 按噪声日程融合，再采样下一时刻。后续 denoiser 可恢复数据分布自然性，形成“生成先验 ↔ 物理执行”交替。
+
+### 3）投影调度
+
+物理仿真昂贵，且高噪声早期的 clean estimate 接近均值、缺少具体动作信息。论文发现后期投影优于早期投影，**连续最后 4 步**在 FID 与 Phys-Err 间取得较好折中。
+
+### 4）Plug-and-play 边界
+
+无需重训 denoiser，不等于无需训练：motion-imitation policy 本身依赖大规模 MoCap、物理角色和 RL 训练；骨架/形体/接触配置变化可能要求重训投影器。
+
+## 工程实践
+
+| 项 | 内容 |
+|----|------|
+| **开源状态** | **未开源**（截至 **2026-07-28**）：项目页见 [physdiff-project](../../sources/sites/physdiff-project.md)，未列可运行官方仓库 |
+| **复现入口** | **不适用** — 无可对齐训练/推理脚本；算法级对照论文投影调度（连续最后约 4 步） |
+| **选型提示** | 人体动力学伪影优先 PhysDiff 思路；机器人可执行闭环改看 [PhyGile](./paper-phygile.md) |
+| **源码运行时序图** | **不适用**（见下一节） |
+
+## 源码运行时序图
+
+**不适用：截至 2026-07-28 官方项目页未列可运行代码仓库。** 论文给出算法与项目视频，但没有可对齐的训练、推理或部署入口，因此本页不伪造源码时序；上图只表达论文算法数据流。
+
+## 与其他工作对比
+
+| 方法 | 约束来源 | 作用时机 | 输出空间 |
+|------|----------|----------|----------|
+| **PhysDiff** | 物理仿真 imitation policy | 扩散采样中多次投影 | 人体运动学 |
+| [GMD](./paper-notebook-guided-motion-diffusion-for-controllable-human-m.md) | 可微空间目标函数 | 每步 guidance | 人体 root + pose |
+| [OmniControl](./paper-notebook-omnicontrol-control-any-joint-at-any-time-for-hu.md) | 任意关节 xyz + realism branch | 每步 hybrid guidance | 人体运动学 |
+| [CondMDI](./paper-notebook-flexible-motion-in-betweening-with-diffusion-mod.md) | 训练期关键帧 mask | 条件去噪 | 人体运动学 |
+| [PhyGile](./paper-phygile.md) | physics-prefix + GMT | robot-native 生成–跟踪闭环 | 机器人 262D |
+
+PhysDiff 的“physics-guided”比脚滑滤波强，但仍是特定仿真人体的可跟踪性，不等于目标人形机器人能直接执行。
 
 ## 实验与评测
 
-- 本页为 **深读笔记编译** 的索引级摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- **HumanML3D text-to-motion：** 接 MDM 后物理误差降低 **86%+**，FID 改善 **20%+**；End-4/Space-1 调度 FID **0.433**、Phys-Err **4.111**。
+- **HumanAct12 action-to-motion：** Phys-Err 相对基线降低 **78%+**，同时维持竞争性 FID。
+- **UESTC action-to-motion：** Phys-Err 降低 **94%+**。
+- **调度消融：** 投影次数越多，Phys-Err 单调改善；FID/R-Precision 先改善后恶化，说明“更守物理”可能离数据自然动作分布更远。
+- **运行代价：** 单动作生成约 **51.6 s vs MDM 19.6 s**，约慢 **2.5×**；并行 batch 可缩小比例差距，但在线控制仍不可直接承受。
+
+## 结论
+
+**PhysDiff 证明物理投影应参与生成迭代而非只做末端修补，但其收益以仿真器、tracker 训练和显著采样延迟为代价。**
+
+1. **投影放后期** — 高噪声阶段没有值得物理化的具体轨迹，早投影反而伤 FID。
+2. **四次投影是论文折中点** — 更多投影继续降 Phys-Err，却可能让动作不自然。
+3. **plug-and-play 仅指 denoiser** — imitation policy 仍需单独训练并绑定角色动力学。
+4. **物理误差与任务成功不是一回事** — 少穿地/少脚滑不保证机器人平衡、接触任务或真机鲁棒。
+5. **开源是当前硬限制** — 官方无代码，完整复现难以核验 simulator、policy 与调度细节。
+
+## 局限与风险
+
+- 官方未开源代码、策略权重或仿真配置；无法按仓库入口验证论文全链路。
+- 物理 projection 比普通 denoising 昂贵，论文单样本约慢 2.5×。
+- imitation policy 的能力上限构成投影上限；训练分布外动作可能被拉成错误但“可跟踪”的轨迹。
+- 评测是仿真人体动作，不是 Unitree 等机器人真机；形体、关节、质量和接触模型均不同。
+- Phys-Err 是代理指标，不能替代任务成功率、能耗、扭矩裕量与真实接触安全。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)
-- 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- 方法总览：[Diffusion-based Motion Generation](../methods/diffusion-motion-generation.md)
+- 空间可控生成：[GMD](./paper-notebook-guided-motion-diffusion-for-controllable-human-m.md)、[OmniControl](./paper-notebook-omnicontrol-control-any-joint-at-any-time-for-hu.md)、[CondMDI](./paper-notebook-flexible-motion-in-betweening-with-diffusion-mod.md)
+- robot-native 后继对照：[PhyGile](./paper-phygile.md)
+- 物理生成式控制对照：[GPC](./paper-gpc-generative-pretrained-controllers.md)
+- 跟踪管线：[Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md)
+- 学习路线：[动作生成纵深](../../roadmap/depth-motion-generation.md)
 
 ## 参考来源
 
-- [humanoid_pnb_physdiff.md](../../sources/papers/humanoid_pnb_physdiff.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/PhysDiff__Physics-Guided_Human_Motion_Diffusion_Model/PhysDiff__Physics-Guided_Human_Motion_Diffusion_Model.html>
+- [Paper Notebooks 来源归档](../../sources/papers/humanoid_pnb_physdiff.md)
+- [PhysDiff 项目页与开源核查](../../sources/sites/physdiff-project.md)
 - 论文：<https://arxiv.org/abs/2212.02500>
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：PhysDiff](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/PhysDiff__Physics-Guided_Human_Motion_Diffusion_Model/PhysDiff__Physics-Guided_Human_Motion_Diffusion_Model.html)
+- [官方项目页](https://nvlabs.github.io/PhysDiff/)
+- [机器人论文阅读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/PhysDiff__Physics-Guided_Human_Motion_Diffusion_Model/PhysDiff__Physics-Guided_Human_Motion_Diffusion_Model.html)

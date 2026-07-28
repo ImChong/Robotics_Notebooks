@@ -7,17 +7,23 @@
 - **笔记链接：** <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/Learning_Social_Navigation_from_Positive_and_Negative_Demonstrations_and_Rule-Based_Specifications/Learning_Social_Navigation_from_Positive_and_Negative_Demonstrations_and_Rule-Based_Specifications.html>
 - **分类：** 08_Navigation
 - **arXiv：** <https://arxiv.org/abs/2510.12215>
+- **项目页：** <https://chanwookim971024.github.io/PioneeR/>
+- **代码：** **未开源**（2026-07-28 核查：项目页有视频与方法说明，未列 GitHub、权重或数据下载）
 - **入库日期：** 2026-07-10
 - **一句话说明：** 移动机器人在动态人群环境导航，需要策略既能适应多样人类行为、又遵守安全约束。本文从正示范与负示范（positive and negative demonstrations）学一个密度型奖励（density-based reward），并叠加基于规则的目标（避障、到达目标）。一个基于采样的前瞻控制器（sampling-based lookahead controller）产出既安全又自适应的监督动作，再蒸馏成一个紧凑学生策略，可实时运行并给出不确定性估计。在合成与电梯共乘（elevator co-boarding）仿真中，成功率与时间效率一致优于基线；真人参与的真实实验验证了可部署性。
 
 ## 核心摘录（策展，非全文）
 
-- 本文件为 **Paper Notebooks → 本库 wiki** 的溯源锚点；方法细节请读笔记页与论文 PDF。
+- **奖励：** 正 / 负示范拟合密度奖励，并叠加 obstacle / goal 规则项；负样本压低人体附近不期望行为。
+- **teacher–student：** 10 Hz、3 s sampling lookahead teacher 以特权 rollout 选动作；DAgger 蒸馏为 10-component MDN。
+- **结果：** 电梯共乘仿真 teacher SR 99.4–99.6%，MDN 学生 SR 98–100%；risky frames 的 epistemic / aleatoric uncertainty 更高。
+- **边界：** 真机仅给四轮机器人 + 真人定性 demo，无规模化 SR；项目页未开放代码。
 - 知识归纳见 wiki 实体页：[paper-notebook-learning-social-navigation-from-positive-and-neg](../../wiki/entities/paper-notebook-learning-social-navigation-from-positive-and-neg.md).
 
 ## 对 wiki 的映射
 
 - [paper-notebook-learning-social-navigation-from-positive-and-neg](../../wiki/entities/paper-notebook-learning-social-navigation-from-positive-and-neg.md)
+- [PioneeR 项目页归档](../sites/pioneer-social-navigation.md)
 - 分类父节点：[paper-notebook-category-08-navigation](../../wiki/overview/paper-notebook-category-08-navigation.md)
 
 ## 参考来源（原始）
