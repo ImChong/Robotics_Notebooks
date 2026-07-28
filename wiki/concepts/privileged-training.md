@@ -2,7 +2,7 @@
 type: concept
 tags: [rl, sim2real, training, humanoid, policy-optimization]
 status: complete
-updated: 2026-07-25
+updated: 2026-07-28
 summary: "Privileged Training 让 teacher 使用仿真特权信息训练，再蒸馏给真实可观测 student，是 sim2real 常见套路；蒸馏本质是把 RL 探索问题转为 Teacher 标注的监督学习。"
 related:
   - ./terrain-latent-representation.md
@@ -21,9 +21,11 @@ related:
   - ../entities/paper-fada-humanoid.md
   - ../formalizations/gae.md
   - ../formalizations/mdp.md
+  - ../queries/sim2real-closed-loop-engineering.md
 sources:
   - ../../sources/papers/privileged_training.md
   - ../../sources/personal/perceptive_locomotion_representation_essence.md
+  - ../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md
 ---
 
 # Privileged Training（特权信息训练）
@@ -231,6 +233,7 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 
 - [地形 Latent 表征](./terrain-latent-representation.md) — Student 深度编码向量通常不是可读高度图
 - [Sim2Real](./sim2real.md) — 特权训练是 sim2real 的核心技术之一，解决训练-部署感知差异
+- [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md) — 观测设计：学生仅用机载可得通道
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — Teacher 阶段用标准 RL 训练
 - [Imitation Learning](../methods/imitation-learning.md) — Student 阶段本质上是模仿 Teacher 的行为克隆
 - [Domain Randomization](./domain-randomization.md) — 常与特权训练结合，增强策略鲁棒性

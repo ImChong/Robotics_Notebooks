@@ -1,23 +1,21 @@
 {
   "generated_at": "2026-07-28",
-  "node_count": 1954,
-  "edge_count": 16932,
+  "node_count": 1955,
+  "edge_count": 16963,
   "coverage": {
-    "covered": 1902,
-    "total": 1930,
+    "covered": 1904,
+    "total": 1931,
     "percent": 99
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-icrowdnav.md",
-      "detail_id": "entity-paper-icrowdnav",
-      "label": "iCrowdNav（意图感知场景表征的视觉人群导航）",
-      "type": "entity",
+      "path": "wiki/queries/sim2real-closed-loop-engineering.md",
+      "detail_id": "wiki-queries-sim2real-closed-loop-engineering",
+      "label": "Sim2Real 闭环误差分层工程",
+      "type": "query",
       "recency": "2026-07-28",
       "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+      "action": "maintained"
     },
     {
       "path": "wiki/concepts/sim2real.md",
@@ -29,6 +27,90 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/concepts/system-identification.md",
+      "detail_id": "wiki-concepts-system-identification",
+      "label": "System Identification",
+      "type": "concept",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/domain-randomization.md",
+      "detail_id": "wiki-concepts-domain-randomization",
+      "label": "Domain Randomization",
+      "type": "concept",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/curriculum-learning.md",
+      "detail_id": "wiki-concepts-curriculum-learning",
+      "label": "Curriculum Learning（课程学习）",
+      "type": "concept",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/privileged-training.md",
+      "detail_id": "wiki-concepts-privileged-training",
+      "label": "Privileged Training（特权信息训练）",
+      "type": "concept",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-rma-rapid-motor-adaptation.md",
+      "detail_id": "entity-paper-rma-rapid-motor-adaptation",
+      "label": "RMA: Rapid Motor Adaptation for Legged Robots",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/queries/sim2real-checklist.md",
+      "detail_id": "wiki-queries-sim2real-checklist",
+      "label": "Sim2Real 工程 Checklist",
+      "type": "query",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/queries/sim2real-gap-reduction.md",
+      "detail_id": "wiki-queries-sim2real-gap-reduction",
+      "label": "Sim2Real Gap 缩减实战指南",
+      "type": "query",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/overview/topic-sim2real.md",
+      "detail_id": "wiki-overview-topic-sim2real",
+      "label": "Sim2Real（专题汇总）",
+      "type": "overview",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-icrowdnav.md",
+      "detail_id": "entity-paper-icrowdnav",
+      "label": "iCrowdNav（意图感知场景表征的视觉人群导航）",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
     },
     {
       "path": "wiki/methods/dwa.md",
@@ -120,111 +202,16 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/kimi-k3.md",
-      "detail_id": "entity-kimi-k3",
-      "label": "Kimi K3",
-      "type": "entity",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/queries/real-robot-policy-autoresearch-harness.md",
-      "detail_id": "wiki-queries-real-robot-policy-autoresearch-harness",
-      "label": "真机策略 autoresearch 闭环搭建指南",
-      "type": "query",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/adams.md",
-      "detail_id": "entity-adams",
-      "label": "ADAMS（Automatic Dynamic Analysis of Mechanical Systems）",
-      "type": "entity",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
-    },
-    {
-      "path": "wiki/entities/mujoco.md",
-      "detail_id": "entity-mujoco",
-      "label": "MuJoCo (物理引擎)",
-      "type": "entity",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
-    },
-    {
-      "path": "wiki/entities/drake.md",
-      "detail_id": "entity-drake",
-      "label": "Drake (机器人工具箱)",
-      "type": "entity",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/overview/sim-platforms-decade-technology-map.md",
-      "detail_id": "wiki-overview-sim-platforms-decade-technology-map",
-      "label": "十年仿真平台技术地图（TOP 8）",
-      "type": "overview",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
-    },
-    {
-      "path": "wiki/queries/simulator-selection-guide.md",
-      "detail_id": "wiki-queries-simulator-selection-guide",
-      "label": "Locomotion RL 仿真器选型指南：MuJoCo vs Isaac Lab vs Genesis",
-      "type": "query",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-yahmp.md",
-      "detail_id": "entity-paper-yahmp",
-      "label": "YAHMP：人形通用运动跟踪里什么真的重要？",
-      "type": "entity",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/queries/robot-perception-stack-selection-loop.md",
-      "detail_id": "wiki-queries-robot-perception-stack-selection-loop",
-      "label": "Query：机器人视觉感知栈选型闭环知识链",
-      "type": "query",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-icrowdnav.md",
-    "detail_id": "entity-paper-icrowdnav",
-    "label": "iCrowdNav（意图感知场景表征的视觉人群导航）",
-    "type": "entity",
+    "path": "wiki/queries/sim2real-closed-loop-engineering.md",
+    "detail_id": "wiki-queries-sim2real-closed-loop-engineering",
+    "label": "Sim2Real 闭环误差分层工程",
+    "type": "query",
     "recency": "2026-07-28",
     "source": "log.md",
-    "action": "maintained",
-    "has_repo": true,
-    "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    "action": "maintained"
   },
   "top_communities": [
     {
@@ -245,7 +232,7 @@
     },
     {
       "label": "全身控制",
-      "size": 120
+      "size": 114
     },
     {
       "label": "模仿学习",
@@ -261,20 +248,20 @@
       "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
     },
     {
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "degree": 356,
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
       "degree": 355,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "degree": 354,
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "detail_id": "wiki-tasks-manipulation",
@@ -296,7 +283,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 275,
+      "degree": 276,
       "community_label": "运动控制（Locomotion） 社区"
     },
     {

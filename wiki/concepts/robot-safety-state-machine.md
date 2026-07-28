@@ -2,7 +2,7 @@
 type: concept
 tags: [systems-engineering, safety, fsm, fault-tolerance, realtime, deployment]
 status: complete
-updated: 2026-07-21
+updated: 2026-07-28
 related:
   - ../entities/wbc-fsm.md
   - ./safety-filter.md
@@ -77,6 +77,7 @@ stateDiagram-v2
 
 - [wbc_fsm 实体](../entities/wbc-fsm.md)
 - [Safety Filter](./safety-filter.md)
+- [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md) — 急停 / 限幅 / 跌倒检测等与 FSM 互补
 - [EtherCAT](./ethercat-protocol.md) / [CAN](./can-bus-protocol.md)
 - [系统工程专题](../overview/topic-systems-engineering.md)
 
