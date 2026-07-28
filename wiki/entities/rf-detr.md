@@ -16,6 +16,7 @@ arxiv: "2511.09554"
 venue: "ICLR 2026"
 code: https://github.com/roboflow/rf-detr
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../methods/object-detection.md
   - ../concepts/vision-backbones.md
   - ../queries/object-detection-model-selection.md
@@ -121,6 +122,7 @@ flowchart TB
 
 ## 关联页面
 
+- [Query：机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页属**第②层 2D 检测/分割选型**（端到端 DETR 代表）
 - [目标检测（方法）](../methods/object-detection.md)
 - [视觉骨干（概念）](../concepts/vision-backbones.md)
 - [Query：目标检测模型选型](../queries/object-detection-model-selection.md)

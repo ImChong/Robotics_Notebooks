@@ -4,6 +4,7 @@ tags: [site, project, semantic-mapping, open-vocabulary, sam, tum, eth]
 status: complete
 updated: 2026-07-26
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../queries/go2-3d-semantic-mapping-sam-pipeline.md
   - ./dualmap.md
   - ./ovo-semantic-mapping.md
@@ -74,6 +75,7 @@ summary: "FindAnything 项目页：对象级开放词汇体素子地图，强调
 
 ## 关联页面
 
+- [Query：机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页属**第③层 2D→3D 提升与语义建图**（对象级开放词汇 3D 语义建图）
 - [GO2 三维语义建图与 SAM 流水线](../queries/go2-3d-semantic-mapping-sam-pipeline.md)
 - [DualMap](./dualmap.md)
 - [OVO](./ovo-semantic-mapping.md)

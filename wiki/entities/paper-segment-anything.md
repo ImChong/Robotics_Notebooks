@@ -6,6 +6,7 @@ updated: 2026-07-26
 arxiv: "2304.02643"
 code: https://github.com/facebookresearch/segment-anything
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ./paper-sam2.md
   - ../queries/go2-3d-semantic-mapping-sam-pipeline.md
   - ./ovo-semantic-mapping.md
@@ -163,6 +164,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [Query：机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页属**第②层 2D 检测/分割选型**（可提示分割，掩码强但缺类别语义）
 - [SAM 2](./paper-sam2.md) — 图像+视频统一继任
 - [GO2 三维语义建图与 SAM 流水线](../queries/go2-3d-semantic-mapping-sam-pipeline.md) — 四足 2D→3D 选型
 - [OVO](./ovo-semantic-mapping.md) / [DualMap](./dualmap.md) / [OV-SAM3D](./ov-sam3d.md) — 语义建图消费方

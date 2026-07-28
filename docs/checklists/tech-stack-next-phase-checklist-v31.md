@@ -33,8 +33,8 @@
     - [x] `wiki/queries/robot-perception-stack-selection-loop.md`（端到端 Query：传感与标定 → 2D 检测/分割选型 → 2D→3D 提升与语义建图 → 下游策略消费 四层感知栈选型的取舍决策树，覆盖每层选什么模型/方案、单阶段 vs 两阶段 vs DETR、闭集 vs 开放词汇、实时机载 vs 服务器侧、2D 框 vs 3D 语义几何、在线 vs 离线建图、感知频率与控制频率对齐的典型误判，配 Mermaid 决策流程图）。建页后从 `object-detection-model-selection` query 页与 `perception-backbone-selection` query 页回链（消孤儿，`graph-stats.json` 0 orphans）。
     - [x] `wiki/concepts/2d-to-3d-semantic-lifting-gap.md`（「2D 检测/分割结果」↔「可供策略消费的 3D 语义几何」取舍概念页：明示把 2D 框/掩码提升到 3D 语义地图时的信息损失与歧义——尺度不确定、遮挡、时序一致性、类别语义 vs 几何占据的分离——并把这条 gap 讲成「感知输出能否被下游导航/操作忠实消费」的物理根因；配 lifting 成立条件表、缩小 gap 的三条工程路线（深度融合 / 多视角一致性 / 语义-几何联合建图）与常见误判速查）。与 Query 页双向回链。
 
-- [ ] **感知栈层级专题交叉补强**：
-    - [ ] 在 `wiki/entities/ultralytics.md` / `wiki/entities/rf-detr.md`（2D 检测层）、`wiki/entities/paper-segment-anything.md` / `wiki/entities/paper-sam2.md`（分割层）、`wiki/entities/findanything.md` / `wiki/entities/cmu-mscv-semantic-3d-mapping.md`（2D→3D 语义建图层）等页与 P1 新页（`queries/robot-perception-stack-selection-loop.md`）形成双向回链：各页在 `related` 与「关联页面」补入感知栈选型闭环 Query 页并标注本页所在感知栈层；Query 页 `related` 含全部相关感知页，双向闭合，消除孤儿页。
+- [x] **感知栈层级专题交叉补强**：（2026-07-28 完成，+7 边）
+    - [x] 在 `wiki/entities/ultralytics.md` / `wiki/entities/rf-detr.md` / `wiki/entities/paper-yolo-unified-realtime-detection.md`（②2D 检测层）、`wiki/entities/paper-segment-anything.md` / `wiki/entities/paper-sam2.md`（②分割层）、`wiki/entities/findanything.md` / `wiki/entities/cmu-mscv-semantic-3d-mapping.md`（③2D→3D 语义建图层）等页与 P1 新页（`queries/robot-perception-stack-selection-loop.md`）形成双向回链：各页在 `related` frontmatter 与「关联页面」正文均补入感知栈选型闭环 Query 页并标注本页所在感知栈层（②/③），Query 页 `related` 已含全部相关感知页，双向闭合。`make ci-preflight` 通过：`graph-stats.json` 0 orphans、边数 17456 → 17463、`community_quality_warning: false`（`largest_community_ratio: 0.145`）。
 
 ## P2: 事实库与矛盾检测扩展 (Quantity)
 
