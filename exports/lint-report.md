@@ -2,7 +2,7 @@
 
 ## [2026-07-28] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **6** 条信息型预警）：
+共发现 **0** 个问题（另含 **7** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -52,7 +52,8 @@
 ### 💡 频繁提及但缺少 wiki 页面的概念（0 个）
 - 无
 
-### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（2 个）
+### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（3 个）
+- CMA-ES（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 - SMPL-X（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 - train（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 
@@ -101,7 +102,7 @@
 ### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（687 个）
+### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（680 个）
 - wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md
 - wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md
 - wiki/entities/paper-adaptive-humanoid-control.md
@@ -117,15 +118,15 @@
 - wiki/entities/paper-anymal-walk-minutes-parallel-drl.md
 - wiki/entities/paper-apt-rl-agile-perceptive-quadruped-locomotion.md
 - wiki/entities/paper-argus-dynamic-symmetry.md
-- … 另有 672 个（历史 backlog；新建 / 大幅改写的 paper-* 必须含 `## 结论`）
+- … 另有 665 个（历史 backlog；新建 / 大幅改写的 paper-* 必须含 `## 结论`）
 
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（3 个）
-- wiki/entities/paper-progress-reward-modeling-survey.md（含绝对化措辞「SOTA」，updated=2026-07-27；同主题更新页 wiki/entities/paper-icrowdnav.md updated=2026-07-28）
+- wiki/entities/paper-progress-reward-modeling-survey.md（含绝对化措辞「SOTA」，updated=2026-07-27；同主题更新页 wiki/entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md updated=2026-07-28）
 - wiki/entities/paper-shenlan-wm-13-dreamerv3.md（含绝对化措辞「SOTA」，updated=2026-07-27；同主题更新页 wiki/entities/drawio-scientific-illustrator.md updated=2026-07-28）
-- wiki/entities/paper-vjepa2.md（含绝对化措辞「SOTA」，updated=2026-07-27；同主题更新页 wiki/entities/paper-icrowdnav.md updated=2026-07-28）
+- wiki/entities/paper-vjepa2.md（含绝对化措辞「SOTA」，updated=2026-07-27；同主题更新页 wiki/entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md updated=2026-07-28）
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无

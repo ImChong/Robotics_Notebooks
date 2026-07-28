@@ -6,9 +6,13 @@
 - **类型：** repo / paper-code
 - **来源：** TeleHuman (Research Group)
 - **链接：** https://github.com/TeleHuman/HumanoidSoccer
+- **项目页：** <https://soccer-humanoid.github.io/>
+- **论文：** <https://arxiv.org/abs/2602.05310>
 - **入库日期：** 2026-04-27
+- **再核日期：** 2026-07-28
 - **一句话说明：** 基于 PAiD 框架的人形机器人足球技能学习系统，支持 Unitree G1 机器人的类人化踢球动作。
-- **沉淀到 wiki：** [paid-framework](../../wiki/methods/paid-framework.md), [humanoid-soccer](../../wiki/tasks/humanoid-soccer.md)
+- **开源状态：** **已开源**（项目页 Code 链指向本仓；Isaac Lab v2.1.1 + `shell/progressive_soccer_train_play.sh`）。
+- **沉淀到 wiki：** [paper-notebook-learning-soccer-skills-for-humanoid-robots](../../wiki/entities/paper-notebook-learning-soccer-skills-for-humanoid-robots.md), [paid-framework](../../wiki/methods/paid-framework.md), [humanoid-soccer](../../wiki/tasks/humanoid-soccer.md)
 
 ---
 

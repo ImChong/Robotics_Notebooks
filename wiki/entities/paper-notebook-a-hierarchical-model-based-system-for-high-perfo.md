@@ -9,15 +9,19 @@ tags:
   - perception
   - model-based
   - humanoid-paper-notebooks
-status: draft
-updated: 2026-07-21
+  - ucla
+status: complete
+updated: 2026-07-28
 arxiv: "2512.09431"
 related:
   - ../tasks/humanoid-soccer.md
   - ../concepts/humanoid-multi-robot-coordination.md
   - ./paper-humanoid-soccer-swarm-intelligence.md
+  - ./paper-notebook-soccerdiffusion-toward-learning-end-to-end-human.md
+  - ./paper-notebook-learning-soccer-skills-for-humanoid-robots.md
   - ../overview/paper-notebook-category-05-locomotion.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ../../roadmap/depth-humanoid-soccer.md
 sources:
   - ../../sources/papers/artemis_humanoid_soccer_team_coordination_arxiv_2512_09431.md
   - ../../sources/papers/humanoid_pnb_a-hierarchical-model-based-system-for-high-perfo.md
@@ -112,6 +116,22 @@ flowchart TB
 - **RoboCup 2024 Adult-Size：** 冠军；真机对抗下 in-gait 踢球、避障与战术切换。
 - **受控实验：** 论文另报告定量/定性消融（细节见 arXiv 正文 §IV–VII）。
 - **与 swarm 论文不可直接比数值：** 联赛规则、机体尺寸、对手强度不同；选型应看 **部署形态**（真机联赛 vs 仿真 swarm 基准）。
+
+## 结论
+
+**ARTEMIS 证明：成人尺寸真机联赛冠军仍然依赖「强感知 + 中层避障 + 集中战术」全栈，单机 RL 射门只是可嵌入模块。**
+
+1. **战术层正交于技能层** — behavior planner 决定角色/位姿/是否踢；Kick Manager 才调用踢球原语。
+2. **队友与对手必须进状态** — 检测管道与 cf-MPC 移动障碍，是相对纯射门 RL 的核心增量。
+3. **通信不是本文卖点** — 主要靠机载视觉互见；极限低带宽另见 SPL 拍卖路线。
+4. **选型读法** — 要赢真机 Adult-Size 对抗 → 集中式全栈参照 ARTEMIS；要仿真快角色重分配 → [Swarm](./paper-humanoid-soccer-swarm-intelligence.md)。
+5. **开源边界** — 论文引用平台仓表述含糊；入库时勿默认「可一键复现整队软件」，以项目/仓库实际链接为准。
+
+## 局限与风险
+
+- Paper Notebooks 深读笔记仍可能标记待补全；本页以 arXiv 群控相关章节为主编译。
+- 与 RL 技能论文的成功率数字 **不可横向硬比**（规则/机体/对手不同）。
+- 集中式行为逻辑在丢视、遮挡与通信失效时的降级策略需读者自行追问工程细节。
 
 ## 与其他页面的关系
 

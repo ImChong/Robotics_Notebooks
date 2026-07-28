@@ -1,26 +1,36 @@
 # Learning Agile Striker Skills for Humanoid Soccer Robots from Noisy Sensory Input
 
-> 来源归档（ingest · Humanoid Paper Notebooks 深读笔记）
+> 来源归档（ingest · Humanoid Paper Notebooks 深读笔记 + 项目页/代码核查）
 
 - **标题：** Learning Agile Striker Skills for Humanoid Soccer Robots from Noisy Sensory Input
 - **类型：** paper
 - **笔记链接：** <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Agile_Striker_Skills_for_Humanoid_Soccer_Robots_from_Noisy_Sensory_Input/Learning_Agile_Striker_Skills_for_Humanoid_Soccer_Robots_from_Noisy_Sensory_Input.html>
 - **分类：** 04_Loco-Manipulation_and_WBC
 - **arXiv：** <https://arxiv.org/abs/2512.06571>
+- **项目页：** <https://humanoidsoccer.github.io>
+- **代码：** <https://github.com/Daffan/humanoid-soccer>
+- **机构：** UT Austin · Sony AI
 - **入库日期：** 2026-07-10
-- **一句话说明：** 学又快又稳的踢球技能是人形足球机器人的核心能力，但很难：需要快速摆腿、单脚支撑下的姿态稳定，还要在含噪感知与外部扰动（如对手）下鲁棒。本文用四阶段训练流水线：① 长距离追球（教师，用真值）；② 定向踢球（教师，用真值）；③ 教师蒸馏给只用含噪感知的学生；④ 学生自适应/精修（约束 RL）。配合真实噪声建模与定制奖励，系统在多样球-门配置下取得强射门精度与进球成功率，并成功真机部署，为全身控制中的视觉运动技能学习树立基准。
+- **再核日期：** 2026-07-28
+- **一句话说明：** 四阶段教师–学生连续踢球；仿真 SR 79.5%；Booster T1 真机 66.7%；已开源。
 
 ## 核心摘录（策展，非全文）
 
-- 本文件为 **Paper Notebooks → 本库 wiki** 的溯源锚点；方法细节请读笔记页与论文 PDF。
-- 知识归纳见 wiki 实体页：[paper-notebook-learning-agile-striker-skills-for-humanoid-socce](../../wiki/entities/paper-notebook-learning-agile-striker-skills-for-humanoid-socce.md).
+- Stage 1–2：特权教师追球 + 定向踢（Booster Gym 观测扩展）。
+- Stage 3：DAgger；噪声 = 速度相关 + 延迟/异步 + 遮挡丢帧。
+- Stage 4：N-P3O 约束精修；消融显示相对 PPO / 无 adaptation 显著增益。
+- 真机：ZED 2i + YOLOv8 球检测；腿惯导门位；AGX Orin；五球位总 SR 66.7%。
+- **开源核查（2026-07-28）：** 官方仓 Daffan/humanoid-soccer（`run.py` 四阶段入口）。
 
 ## 对 wiki 的映射
 
 - [paper-notebook-learning-agile-striker-skills-for-humanoid-socce](../../wiki/entities/paper-notebook-learning-agile-striker-skills-for-humanoid-socce.md)
+- [humanoid-soccer](../../wiki/tasks/humanoid-soccer.md)
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../../wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 
 ## 参考来源（原始）
 
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Agile_Striker_Skills_for_Humanoid_Soccer_Robots_from_Noisy_Sensory_Input/Learning_Agile_Striker_Skills_for_Humanoid_Soccer_Robots_from_Noisy_Sensory_Input.html>
+- 深读笔记：见上
+- 项目页：[humanoidsoccer-agile-striker.md](../sites/humanoidsoccer-agile-striker.md)
+- 仓：[humanoid-soccer-agile-striker.md](../repos/humanoid-soccer-agile-striker.md)
 - 论文：<https://arxiv.org/abs/2512.06571>
