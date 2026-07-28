@@ -3,8 +3,7 @@ type: entity
 tags: [cad, generative-ai, llm-agents, skills, build123d, urdf, robotics, hardware, manufacturing]
 status: complete
 date: 2026-06-15
-updated: 2026-07-23
-updated: 2026-07-23
+updated: 2026-07-28
 related:
   - ../concepts/text-to-cad.md
   - ../concepts/sim2real.md
@@ -12,6 +11,8 @@ related:
   - ./step2urdf.md
   - ./articraft.md
   - ./img2threejs.md
+  - ./drawio-scientific-illustrator.md
+  - ./freecad-mcp.md
   - ./mattpocock-skills.md
   - ./sensenova-skills.md
 sources:
@@ -98,6 +99,8 @@ flowchart TB
 - [step2urdf](./step2urdf.md) — 已有 STEP 装配体的浏览器 STEP→URDF；与 `gen_urdf()` CLI 路线互补
 - [Articraft](./articraft.md) — 可关节 3D 资产生成 agent；偏仿真网格而非 STEP 加工链
 - [img2threejs](./img2threejs.md) — 图像→程序化 Three.js Agent Skill；WebGL 代码资产，非 STEP/URDF
+- [Draw.io Scientific Illustrator](./drawio-scientific-illustrator.md) — 图像→可编辑 draw.io 科研插图（Codex Skill + MCP）；示意图交付，非 CAD/URDF
+- [FreeCAD MCP](./freecad-mcp.md) — 桌面 FreeCAD 的 MCP 桥；与本库 **build123d skill** 路线互补
 - [Skills For Real Engineers（mattpocock）](./mattpocock-skills.md) — 通用编码 Agent Skills 对照
 - [Sim2Real](../concepts/sim2real.md) — CAD/URDF 与仿真/真机几何一致性
 

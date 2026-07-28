@@ -160,6 +160,7 @@
 | [x] [defi-logos-robotics.md](repos/defi-logos-robotics.md) | LogosRoboticsGroup/DeFi：解耦前向/逆动力学 VLA 官方实现（arXiv:2604.16391） |
 | [x] [easy_quadruped.md](repos/easy_quadruped.md) | Xzgz718/easy_quadruped：StanfordQuadruped 二次开发，Pupper 步态控制 + MuJoCo 浮动机身闭环仿真 |
 | [x] [earthtojake-text-to-cad.md](repos/earthtojake-text-to-cad.md) | earthtojake/text-to-cad（CAD Skills）：CAD/URDF/制造 Agent Skills 库（build123d STEP-first + 10 项 benchmark） |
+| [x] [drawio-scientific-illustrator.md](repos/drawio-scientific-illustrator.md) | icebird1998/drawio-scientific-illustrator：Codex 插件 + MCP 可见操控 draw.io 科研插图（MIT） |
 | [x] [img2threejs.md](repos/img2threejs.md) | hoainho/img2threejs：单图→质量门控程序化 Three.js 工厂（Agent Skill + Python stdlib forge，MIT） |
 | [x] [go2_motion_imitation.md](repos/go2_motion_imitation.md) | TSUITUENYUE/motion-imitation：Go2 retarget_motion + Genesis 关节速度匹配模仿 |
 | [x] [pupperv3_monorepo.md](repos/pupperv3_monorepo.md) | Nate711/pupperv3-monorepo：Pupper v3 机载 ROS 2 软件（与官方文档 ~/pupperv3-monorepo 一致） |

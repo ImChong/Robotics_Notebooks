@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-28] ingest | sources/repos/drawio-scientific-illustrator.md — Draw.io Scientific Illustrator（Codex 插件 + MCP 可见操控 draw.io）；升格 wiki/entities/drawio-scientific-illustrator.md；交叉 freecad-mcp / cad-skills / img2threejs / gsap-skills / manim
+
 ## [2026-07-28] ingest | sources/papers/birrell_nelson_implementing_rpc_tocs_1984.md + sites/rfc-5531-onc-rpc.md + grpc-io-docs.md + sources/repos/grpc.md — Remote Procedure Call 一手入库；升格 wiki/concepts/remote-procedure-call.md、wiki/entities/grpc.md
 
 - **一手入口：**
