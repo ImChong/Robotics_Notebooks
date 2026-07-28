@@ -32,7 +32,7 @@ flowchart LR
 - 每个阶段都有前置知识、核心问题、推荐做什么、推荐读什么、学完输出什么
 
 **和主路线的关系：**
-- 本路线是主路线 L2（运动学）与 L5（RL 与模仿学习）之间偏"数据侧"的展开：L2 的 FK/IK 是 Stage 1 的直接前置
+- 本路线是主路线 [L5.4 动作重定向](motion-control.md#l54-动作重定向) 的展开：L2 的 FK/IK 是 Stage 1 的直接前置，L5.3 的模仿学习是下游消费者
 - [模仿学习纵深](depth-imitation-learning.md) Stage 2 与 [BFM 纵深](depth-bfm.md) Stage 1 都只给了重定向一个阶段的篇幅；本路线把这一步展开成完整谱系
 - 如果关心"参考动作从哪来"的上游问题（文本/多模态生成动作），走 [动作生成纵深](depth-motion-generation.md)
 

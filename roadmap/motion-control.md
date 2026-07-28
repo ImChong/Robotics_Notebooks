@@ -12,7 +12,7 @@
 - **L−1**：建立机器人技术栈全景心智地图与必备术语。
 - **L0–L3**：数学、运动学、动力学、控制基础打底。
 - **L4**：传统控制主干（LIP/ZMP → Centroidal → MPC → TSID/WBC）。
-- **L5**：RL / IL 扩展层。
+- **L5**：RL / IL / 动作重定向扩展层。
 - **L6**：sim2real 闭环。
 - **L7**：全栈视角与 2024–2026 前沿地图交还给你。
 
@@ -123,7 +123,7 @@ flowchart LR
 
 **两条主线不要混着学：**
 - **传统控制主线（L0–L4 + L6）：** OCP → LIP/ZMP → Centroidal → MPC → TSID/WBC → State Estimation → Sim2Real
-- **Learning-based 主线（L5）：** RL 基础 → locomotion RL → imitation learning / motion prior → teacher-student
+- **Learning-based 主线（L5）：** RL 基础 → locomotion RL → imitation learning / motion prior → motion retargeting → teacher-student
 - 优先把传统主线学通，再把 RL / IL 当作扩展层接上去；否则容易只会调超参数、不理解控制结构为什么这样设计。
 
 ### 英文缩写速查（L−1 全路线鸟瞰）
@@ -898,6 +898,7 @@ flowchart TD
 | DAgger | Dataset Aggregation | 交互式纠错标注缓解分布漂移。 |
 | AMP | Adversarial Motion Priors | 对抗式运动先验；风格化 locomotion。 |
 | MoCap | Motion Capture | 人体动作捕捉数据。 |
+| Retarget | Motion Retargeting | 把人体动作映射成机器人可执行参考轨迹。 |
 
 这一阶段最容易踩的坑，是把 RL / IL 当成“跳过建模”的捷径。更稳的学习方式是：
 - 把 RL / IL 看成**能力扩展层**，不是替代所有控制结构的万能钥匙
@@ -1094,7 +1095,7 @@ flowchart TD
 **核心问题：** 用人类动作数据教机器人做动作
 
 **推荐做什么：**
-- 用 MoCap 数据做 motion retargeting
+- 用 MoCap 数据做 motion retargeting（展开见 [L5.4 动作重定向](#l54-动作重定向)）
 - 尝试 Behavior Cloning + DAgger
 
 **推荐读什么：**
@@ -1132,6 +1133,77 @@ flowchart TD
 <li><strong>BC 的 compounding error：</strong> 训练只见专家访问过的状态分布，部署时策略自身的小误差把它带到没见过的状态，误差沿时间累积（covariate shift / 状态分布漂移）。数学上若每步误差为 \(\epsilon\)，总误差随时域 \(T\) 呈 \(O(\epsilon T^2)\) 二次放大——一旦偏离，后续状态分布与训练分布失配，错误自我强化。</li>
 <li><strong>DAgger 为何缓解、代价：</strong> DAgger 让策略在自己访问的状态上 roll-out，再请 expert 对这些状态标注正确动作并聚合进数据集迭代，使训练分布逐渐覆盖策略实际遭遇的状态，消除 covariate shift，把误差从 \(O(\epsilon T^2)\) 降到 \(O(\epsilon T)\)。代价：需要一个可随时查询的在线 expert 持续标注（成本高），且在真机上 roll-out 不成熟策略可能不安全。</li>
 <li><strong>Motion Retargeting 的两类问题：</strong> 骨骼比例不同——照搬关节角会使末端（手 / 脚）错位、脚穿地 / 打滑，应按比例缩放并用 IK 匹配末端 / 接触关键点而非照抄关节角；关节限位不同——源动作可能超出物理限位致不可行 / 饱和，应裁剪 / 重映射到可行范围或在优化中加限位约束并重分配。工程上多用 IK + 优化的 retargeting（匹配 CoM / 脚接触 / 末端轨迹）并叠加接触与限位约束。</li>
+</ol>
+</details>
+
+---
+
+### L5.4 动作重定向
+
+> **场景隐喻：** 动捕里那具"人"和你的机器人不是同一副骨架——腿长比例不同、关节更少、限位更严。把人的关节角直接抄过去，机器人会脚滑、穿地、姿态扭曲。L5.4 就是这道"翻译闸"：把人的动作译成机器人**能执行**的参考轨迹。
+
+> **上一层的局限：** L5.3 默认"示范数据已经是机器人能执行的动作"。现实里绝大部分示范来自人（动捕 / 单目视频 / 生成模型），必须先跨骨架映射成机器人参考轨迹，tracking 奖励与 BC 标签才有东西可对齐。这一步的误差会原样传给下游策略，并在 L6 的 sim2real 阶段被继续放大。
+
+### 英文缩写速查（L5.4）
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Retarget | Motion Retargeting | 把人体 / 动物动作映射到目标机器人骨架。 |
+| MoCap | Motion Capture | 最常见的参考动作来源。 |
+| SMPL | Skinned Multi-Person Linear Model | 常用人体参数化模型；重定向的典型输入。 |
+| IK | Inverse Kinematics | 用末端 / 关键点目标反解关节角。 |
+| QP | Quadratic Programming | 把重定向写成带约束二次规划的常用求解形式。 |
+| GMR | General Motion Retargeting | 关键点 IK + QP 的运动学重定向基线。 |
+| NMR | Neural Motion Retargeting | 学习式整段映射，用仿真锚定的配对数据训练。 |
+| WBT | Whole-Body Tracking | 重定向产物的下游消费者：全身跟踪训练。 |
+| AMP | Adversarial Motion Prior | 用参考动作约束 RL 策略风格的判别式奖励。 |
+
+**前置知识：** L1（FK / IK、SE(3)）+ L2（浮动基与接触）+ L5.3
+
+**核心问题：** 怎么把"人怎么动"翻译成"机器人跟得住"的参考轨迹
+
+**推荐做什么：**
+- 先做反例实验：取一段 [AMASS](../wiki/entities/amass.md) / [LAFAN1](../wiki/entities/lafan1-dataset.md) 动作，把人体关节角直接拷到人形 URDF 上播放，量一下脚滑、足底穿透与限位越界——建立"为什么不能不做重定向"的第一手直觉
+- 跑通一条运动学基线：关键点 IK + QP（[GMR](../wiki/methods/motion-retargeting-gmr.md) 一类工具），把末端 / 脚接触当代价项、关节限位当硬约束
+- 给产物加质量门禁：脚滑速度、穿透深度、关节速度 / 加速度尖峰、根轨迹漂移，先过滤再进训练集
+- 把重定向产物接到一个跟踪策略上（[DeepMimic](../wiki/methods/deepmimic.md) / [AMP 奖励](../wiki/methods/amp-reward.md) 风格），用"策略跟不跟得住"反过来验证重定向质量
+
+**推荐读什么：**
+- [Motion Retargeting](../wiki/concepts/motion-retargeting.md)（本仓库）— 概念主入口
+- [Motion Retargeting Pipeline](../wiki/concepts/motion-retargeting-pipeline.md)（本仓库）— 采集 → 对齐 → 求解 → 筛选的端到端链路
+- [Motion Retargeting Objective](../wiki/formalizations/motion-retargeting-objective.md)（本仓库）— 目标函数与约束的形式化
+- [GMR vs NMR vs ReActor](../wiki/comparisons/gmr-vs-nmr-vs-reactor.md)（本仓库）— 三条路线选型
+- [运动学可行与动力学可行](../wiki/concepts/kinematic-vs-dynamic-feasibility.md)（本仓库）— 本节最容易踩的认知坑
+- [Motion Data Quality](../wiki/concepts/motion-data-quality.md)、[人形参考动作数据集对比](../wiki/comparisons/humanoid-reference-motion-datasets.md)（本仓库）
+- 想继续深入：[纵深路线：动作重定向](depth-motion-retargeting.md)（Stage 0–6 完整谱系，含四足支线与轨迹编辑器工具链）
+
+**学完输出什么：**
+- 能把一段公开 MoCap 重定向到指定人形模型，并给出脚滑 / 穿透 / 限位的量化质量报告
+- 能说清运动学优化、学习式映射、物理感知三条路线的取舍，并为"实时遥操作"与"离线批量造训练数据"分别选型
+- 能把重定向产物喂进跟踪训练，并判断失败是数据问题还是策略问题
+
+**自测题：**
+- 重定向的目标函数通常由哪几项组成？其中哪些必须写成硬约束而不是罚项，为什么？
+- 一段重定向结果"看起来很像人"，但跟踪策略怎么训都跟不住，可能的原因是什么？
+- 实时全身遥操作 vs 离线批量生产 BFM 训练数据，两个场景分别该选哪类重定向路线？
+
+<details class="selftest-answers">
+<summary>参考答案（点击展开）</summary>
+
+```mermaid
+flowchart TD
+  Src[人体参考: MoCap / 视频 / 生成] --> Align[骨架与坐标对齐]
+  Align --> Opt[IK/QP: 姿态相似 + 末端接触 + 平滑]
+  Opt --> Hard[硬约束: 关节限位 / 自碰 / 足底不穿地]
+  Hard --> QC[质量门禁: 脚滑 / 穿透 / 速度尖峰 / 根漂移]
+  QC --> Track[跟踪训练: DeepMimic / AMP / WBT]
+  Track -->|跟不住则回修参考| Opt
+```
+
+<ol>
+<li><strong>目标函数与硬约束：</strong> 典型形态是加权和——姿态相似项（关节角 / 关键点位置对齐）、末端与接触项（手脚位置、支撑足零滑移）、平衡项（CoM / ZMP 落在支撑域内）、平滑项（关节速度 / 加速度正则），再加关节限位与自碰。其中**关节限位、自碰、足底不穿地属于可行性约束，必须写成硬约束**：写成罚项时求解器会为了降低姿态误差而"买断"惩罚，产出一条物理上根本执行不了的参考，错误直接进训练集；而相似度、平滑度是偏好，适合当代价项加权取舍。</li>
+<li><strong>"很像"却跟不住：</strong> 典型的<strong>运动学可行 ≠ 动力学可行</strong>。重定向只对齐了几何（关键点误差小），但没约束质量分布与接触力：机器人质量分布、执行器力矩 / 速度上限与人不同，参考里的加速度可能超出关节能力；支撑足接触时序被拉伸或存在毫米级穿透 / 脚滑，跟踪时接触力求解发散；根轨迹（基座高度 / 朝向）由源数据漂移带来，导致参考本身"站不住"。排查顺序：先量参考自身的物理指标（所需力矩、CoM/ZMP 是否出支撑域、足端滑移速度），再看跟踪策略的奖励与增益；用物理感知重定向（仿真内闭环）或在参考上做动力学后处理，比继续调 tracking 超参更对症。</li>
+<li><strong>两个场景的选型：</strong> <strong>实时遥操作</strong>要毫秒级、单帧 / 滑窗输入、可随时换机型 → 选运动学优化路线（GMR 式 IK + QP，CPU 实时、无需训练），物理可行性交给下游 WBC / 跟踪策略兜底。<strong>离线批量造 BFM / WBT 训练数据</strong>没有实时预算但要求物理一致、规模大 → 选学习式整段映射（NMR 式，用仿真锚定的配对数据训练前向网络，吞吐高）或物理感知重定向（ReActor / SPIDER 式，在仿真里联合优化参考与跟踪策略），换来的是接触与自碰在数据阶段就被内生化，下游训练不用反复清洗。</li>
 </ol>
 </details>
 
@@ -1394,7 +1466,7 @@ flowchart TD
 | [如果目标是 RL 运动控制](depth-rl-locomotion.md) | 想用 RL 让人形走起来、不愿从头啃控制理论 | L3 → L5.2 |
 | [如果目标是 Loco-Manipulation（移动操作）](depth-loco-manipulation.md) | 想让机器人边走边动手（搬箱、开门、端托盘）| L4 + L5 之后 |
 | [如果目标是人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md) | 想让机器人追球、射门、打整场比赛 | L5 之后 |
-| [如果目标是动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md) | 想搭"人体动作 → 机器人可执行参考"的数据管线 | L2 + L5.3 之后 |
+| [如果目标是动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md) | 想搭"人体动作 → 机器人可执行参考"的数据管线 | L5.4 展开（L2 的 FK/IK 为前置） |
 | [如果目标是人形群控展演（群舞同步 → 编队走位 → 群体特技）](depth-humanoid-swarm-performance.md) | 想让一群人形同台跳舞、变队形、协同炫技 | L5.3 之后 |
 | [如果目标是 Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md) | 想把仿真里训好的策略稳定搬上真机 | L5.2 → L6（L6 的展开版）|
 | [如果目标是人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md) | 想让两台人形在擂台上像人一样对打 | L5.3 之后 |

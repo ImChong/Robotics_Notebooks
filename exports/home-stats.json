@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-28",
   "node_count": 1956,
-  "edge_count": 16991,
+  "edge_count": 17002,
   "coverage": {
     "covered": 1905,
     "total": 1932,
@@ -358,7 +358,7 @@
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
-      "degree": 46
+      "degree": 47
     },
     {
       "detail_id": "entity-paper-twist2",
