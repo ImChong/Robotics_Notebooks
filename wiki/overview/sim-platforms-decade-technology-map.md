@@ -2,7 +2,7 @@
 type: overview
 tags: [simulation, embodied-ai, survey, mujoco, habitat, isaac-gym, benchmark]
 status: complete
-updated: 2026-06-22
+updated: 2026-07-28
 related:
   - ../entities/mujoco.md
   - ../entities/ai2-thor.md
@@ -17,6 +17,7 @@ related:
   - ../entities/robogen.md
   - ../entities/genesis-sim.md
   - ../entities/sapien.md
+  - ../entities/adams.md
   - ../overview/robot-training-stack-layers-technology-map.md
   - ../queries/simulator-selection-guide.md
   - ../tasks/vision-language-navigation.md
@@ -82,6 +83,7 @@ flowchart LR
 | RoboGen | [robogen](../entities/robogen.md) | LLM 驱动任务/数据生成 |
 | Genesis | [genesis-sim](../entities/genesis-sim.md) | 新兴多物理并行仿真 |
 | SAPIEN（ManiSkill2 后端） | [sapien](../entities/sapien.md) | 关节体操作引擎 |
+| ADAMS（工业 MBD 谱系，1970s–） | [adams](../entities/adams.md) | Orlandea 稀疏约束 DAE → 当代 Cadence MSC Adams；**非**本表「机器人学习平台史」主线，作工业 CAE 对照 |
 
 ## 文内收束判断（策展）
 

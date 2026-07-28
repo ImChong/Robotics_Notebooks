@@ -3,12 +3,13 @@
 type: entity
 tags: [software, simulation, optimization, trajectory-optimization, c++, toyota-research, mit]
 status: complete
-updated: 2026-04-21
+updated: 2026-07-28
 related:
   - ../methods/trajectory-optimization.md
   - ../concepts/whole-body-control.md
   - ../tasks/locomotion.md
   - ./mujoco.md
+  - ./adams.md
 sources:
   - ../../sources/papers/simulation.md
 summary: "Drake 是由丰田研究院（TRI）主导开发的开源 C++ 机器人工具箱，以其在轨迹优化（直接配点法）和严谨动力学建模方面的统治力而闻名。"
@@ -46,6 +47,7 @@ summary: "Drake 是由丰田研究院（TRI）主导开发的开源 C++ 机器�
 - [Trajectory Optimization](../methods/trajectory-optimization.md)
 - [Whole-Body Control (WBC)](../concepts/whole-body-control.md)
 - [MuJoCo 物理引擎](./mujoco.md)
+- [ADAMS（工业多体动力学谱系）](./adams.md) — 稀疏约束 DAE / 工业虚拟样机对照；非 RL 训练栈
 - [Locomotion](../tasks/locomotion.md)
 
 ## 参考来源
