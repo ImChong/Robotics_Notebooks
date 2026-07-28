@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-27",
+  "generated_at": "2026-07-28",
   "node_count": 1949,
   "edge_count": 16858,
   "coverage": {
@@ -8,6 +8,17 @@
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-yahmp.md",
+      "detail_id": "entity-paper-yahmp",
+      "label": "YAHMP：人形通用运动跟踪里什么真的重要？",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
     {
       "path": "wiki/entities/kimi-k3.md",
       "detail_id": "entity-kimi-k3",
@@ -211,29 +222,18 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/robot-viewer.md",
-      "detail_id": "entity-robot-viewer",
-      "label": "Robot Viewer",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/kimi-k3.md",
-    "detail_id": "entity-kimi-k3",
-    "label": "Kimi K3",
+    "path": "wiki/entities/paper-yahmp.md",
+    "detail_id": "entity-paper-yahmp",
+    "label": "YAHMP：人形通用运动跟踪里什么真的重要？",
     "type": "entity",
-    "recency": "2026-07-27",
+    "recency": "2026-07-28",
     "source": "log.md",
     "action": "maintained",
     "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
   },
   "top_communities": [
     {

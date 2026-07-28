@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-28] ingest | sources/papers/yahmp_arxiv_2607_19903.md + sources/repos/yahmp.md — 复核 YAHMP（arXiv:2607.19903，2026-07-22）：对齐论文声明代码 hucebot/yahmp；刷新 wiki/entities/paper-yahmp.md
+
+- **论文：** *What Matters in Humanoid General Motion Tracking? An Empirical Study*（Inria / Université de Lorraine / CNRS · HUCEBOT；Submitted 2026-07-22）
+- **开源状态（2026-07-28 再核）：** **已开源** — 论文声明 <https://github.com/hucebot/yahmp>（Apache-2.0）；开发上游 <https://github.com/fabio-amadio/yahmp>（parent，tip 领先 1 commit：`expand_npz_motion_dataset`）
+- **刷新 papers / repos：** [`sources/papers/yahmp_arxiv_2607_19903.md`](sources/papers/yahmp_arxiv_2607_19903.md)、[`sources/repos/yahmp.md`](sources/repos/yahmp.md) — 双仓 tip 关系、手部力 ≤20 N、真机更硬 PD 踝振荡
+- **主刷新 wiki：** [`wiki/entities/paper-yahmp.md`](wiki/entities/paper-yahmp.md) — `code` 对齐 hucebot；补 Table II 绝对量级与真机踝振荡读点；双仓选型说明
+- **说明：** 该文已于 2026-07-24 首次 ingest；本次为对齐用户给定项目链接与开源再核的刷新，不重复造页
+
 ## [2026-07-27] ingest | sources/repos/kimi-k3.md + HF/ModelScope/tech report — Kimi K3 开放权重与技术报告一手资料；刷新 wiki/entities/kimi-k3.md；交叉 muon / enpire / autoresearch harness
 
 - **一手开源面（2026-07-27 核查）：**

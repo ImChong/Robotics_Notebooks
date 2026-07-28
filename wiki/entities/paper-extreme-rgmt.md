@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-tracking, continual-learning, whole-body-control, teleoperation, unitree-g1, bit, openloong, sdu]
 status: complete
-updated: 2026-07-24
+updated: 2026-07-28
 arxiv: "2607.20110"
 related:
   - ./paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md
