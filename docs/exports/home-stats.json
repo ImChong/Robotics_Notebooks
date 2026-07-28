@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-07-28",
   "node_count": 1964,
-  "edge_count": 17356,
+  "edge_count": 17357,
   "coverage": {
     "covered": 1914,
     "total": 1940,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/mimickit.md",
+      "detail_id": "entity-mimickit",
+      "label": "MimicKit: 运动模仿与控制研究套件",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
     {
       "path": "wiki/entities/paper-teledexter.md",
       "detail_id": "entity-paper-teledexter",
@@ -188,25 +199,18 @@
       "recency": "2026-07-28",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-loco-manipulation.md",
-      "detail_id": "roadmap-depth-loco-manipulation",
-      "label": "路线（纵深）：如果目标是 Loco-Manipulation（移动操作）",
-      "type": "roadmap_page",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-teledexter.md",
-    "detail_id": "entity-paper-teledexter",
-    "label": "TeleDexter：接近人类水平的灵巧遥操作",
+    "path": "wiki/entities/mimickit.md",
+    "detail_id": "entity-mimickit",
+    "label": "MimicKit: 运动模仿与控制研究套件",
     "type": "entity",
     "recency": "2026-07-28",
     "source": "log.md",
-    "action": "maintained"
+    "action": "maintained",
+    "has_repo": true,
+    "community_label": "模仿学习（Imitation Learning, IL） 社区"
   },
   "top_communities": [
     {

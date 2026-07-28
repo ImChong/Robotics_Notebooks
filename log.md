@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-28] ingest | sources/repos/mimickit.md — 复核 xbpeng/MimicKit（Apache-2.0，已开源）并充实归档：引擎版本 pin（Isaac Lab 2ed331a / Newton v1.0.0）、分布式训练、logger/预训练模型、GMR+SMPL 重定向工具链；补充 wiki/entities/mimickit.md 工程信息速查与 GMR 交叉
+
 ## [2026-07-28] ingest | sources/papers/teledexter_arxiv_2607_11481.md + sites/teledexter-project.md — TeleDexter（arXiv:2607.11481）手–物 co-tracking 灵巧遥操作入库；升格 wiki/entities/paper-teledexter.md；交叉 teleoperation / contact-rich / in-hand-reorientation / dexterous-data-collection / depth-teleoperation / HDMI；未开源
 
 - **一手入口：** 项目页 [bigai-dex.github.io/blog/teledexter](https://bigai-dex.github.io/blog/teledexter/) · 论文 [arXiv:2607.11481](https://arxiv.org/abs/2607.11481) · PDF [paper_teledexter.pdf](https://bigai-dex.github.io/blog/teledexter/paper_teledexter.pdf)
