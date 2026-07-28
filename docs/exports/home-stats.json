@@ -60,6 +60,17 @@
       "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
     },
     {
+      "path": "wiki/entities/paper-yahmp.md",
+      "detail_id": "entity-paper-yahmp",
+      "label": "YAHMP：人形通用运动跟踪里什么真的重要？",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
       "path": "wiki/entities/kimi-k3.md",
       "detail_id": "entity-kimi-k3",
       "label": "Kimi K3",
@@ -202,17 +213,6 @@
       "path": "wiki/entities/soma-retargeter.md",
       "detail_id": "entity-soma-retargeter",
       "label": "SOMA Retargeter",
-      "type": "entity",
-      "recency": "2026-07-27",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/robot-retargeter.md",
-      "detail_id": "entity-robot-retargeter",
-      "label": "robot_retargeter",
       "type": "entity",
       "recency": "2026-07-27",
       "source": "log.md",
