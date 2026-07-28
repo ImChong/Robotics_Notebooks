@@ -1,13 +1,32 @@
 {
   "generated_at": "2026-07-28",
   "node_count": 1962,
-  "edge_count": 17307,
+  "edge_count": 17311,
   "coverage": {
     "covered": 1912,
     "total": 1938,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-raven-rl-adaptive-visibility-graph-mpc.md",
+      "detail_id": "entity-paper-raven-rl-adaptive-visibility-graph-mpc",
+      "label": "RAVEN：强化学习自适应可见图规划 + 无碰撞 MPC",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "roadmap/depth-navigation.md",
+      "detail_id": "roadmap-depth-navigation",
+      "label": "路线（纵深）：如果目标是导航（SLAM → Nav2 → VLN → 导航 VLA）",
+      "type": "roadmap_page",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
+    },
     {
       "path": "roadmap/depth-bfm.md",
       "detail_id": "roadmap-depth-bfm",
@@ -113,16 +132,6 @@
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
-      "path": "roadmap/depth-navigation.md",
-      "detail_id": "roadmap-depth-navigation",
-      "label": "路线（纵深）：如果目标是导航（SLAM → Nav2 → VLN → 导航 VLA）",
-      "type": "roadmap_page",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
-    },
-    {
       "path": "roadmap/depth-perceptive-locomotion.md",
       "detail_id": "roadmap-depth-perceptive-locomotion",
       "label": "路线（纵深）：如果目标是感知越障（Perceptive Locomotion）",
@@ -187,23 +196,13 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "roadmap/depth-vla.md",
-      "detail_id": "roadmap-depth-vla",
-      "label": "路线（纵深）：如果目标是 VLA（视觉-语言-动作模型）",
-      "type": "roadmap_page",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "roadmap/depth-bfm.md",
-    "detail_id": "roadmap-depth-bfm",
-    "label": "路线（纵深）：如果目标是 BFM（人形行为基础模型）",
-    "type": "roadmap_page",
+    "path": "wiki/entities/paper-raven-rl-adaptive-visibility-graph-mpc.md",
+    "detail_id": "entity-paper-raven-rl-adaptive-visibility-graph-mpc",
+    "label": "RAVEN：强化学习自适应可见图规划 + 无碰撞 MPC",
+    "type": "entity",
     "recency": "2026-07-28",
     "source": "log.md",
     "action": "maintained"
@@ -219,7 +218,7 @@
     },
     {
       "label": "模仿学习",
-      "size": 201
+      "size": 198
     },
     {
       "label": "移动操作",
@@ -230,8 +229,8 @@
       "size": 122
     },
     {
-      "label": "人形强化学习运动控制",
-      "size": 105
+      "label": "仿真到现实",
+      "size": 106
     }
   ],
   "top_hubs": [
@@ -278,8 +277,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 278,
-      "community_label": "运动控制（Locomotion） 社区"
+      "degree": 278
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",

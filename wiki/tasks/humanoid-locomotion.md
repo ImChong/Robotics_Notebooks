@@ -2,7 +2,7 @@
 type: task
 tags: [humanoid, locomotion, whole-body-control]
 status: complete
-updated: 2026-07-22
+updated: 2026-07-28
 related:
   - ./locomotion.md
   - ./stair-obstacle-perceptive-locomotion.md

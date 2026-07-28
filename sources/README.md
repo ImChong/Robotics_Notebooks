@@ -78,6 +78,7 @@
 | [x] [now_you_see_that_arxiv_2602_06382.md](papers/now_you_see_that_arxiv_2602_06382.md) | Now You See That：8 步立体深度增广 + 多 critic/discriminator 特权 RL + vision-aware DAgger 蒸馏（arXiv:2602.06382，RSS 2026，HIT/HONOR）摘录与 wiki 映射 |
 | [x] [php_parkour_arxiv_2602_15827.md](papers/php_parkour_arxiv_2602_15827.md) | PHP：motion matching 长程跑酷参考 + DAgger+PPO 深度多技能策略（arXiv:2602.15827，RSS 2026，Amazon FAR）摘录与 wiki 映射 |
 | [x] [rpl_arxiv_2602_03002.md](papers/rpl_arxiv_2602_03002.md) | RPL：分地形高程专家 + 多视角深度 DAgger 蒸馏 + DFSV/RSM 多向感知行走（arXiv:2602.03002，Amazon FAR / G1）摘录与 wiki 映射 |
+| [x] [raven_rl_adaptive_visibility_graph_arxiv_2607_15701.md](papers/raven_rl_adaptive_visibility_graph_arxiv_2607_15701.md) | RAVEN：RL 自适应可见图障碍膨胀 + DAVG-cfMPC + Booster Gym（arXiv:2607.15701，UCLA RoMeLa / T1；**未开源**）摘录与 wiki 映射 |
 | [x] [midas_hand_arxiv_2607_14487.md](papers/midas_hand_arxiv_2607_14487.md) | MIDAS Hand：UCLA 开源直驱低阻抗仿人触觉灵巧手（283 taxel、BOM <3K USD，arXiv:2607.14487）摘录与 wiki 映射 |
 | [x] [ruka_v2_arxiv_2603_26660.md](papers/ruka_v2_arxiv_2603_26660.md) | RUKA-v2：NYU 全开源腱驱动灵巧手（2-DoF 腕 + 指根外展/内收，arXiv:2603.26660）摘录与 wiki 映射 |
 | [x] [resmimic_arxiv_2510_05070.md](papers/resmimic_arxiv_2510_05070.md) | ResMimic：GMT 预训练 + 残差后训练的人形全身 loco-manipulation（arXiv:2510.05070，Amazon FAR / G1）摘录与 wiki 映射 |

@@ -143,9 +143,10 @@ flowchart LR
 - [分层四足导航栈](../wiki/concepts/hierarchical-quadruped-navigation-stack.md) 与 [HiPAN](../wiki/methods/hipan.md)（本仓库）
 - [NoMaD](../wiki/entities/paper-notebook-nomad-goal-masked-diffusion-policies-for-navigat.md) 与 [NavDP](../wiki/entities/paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md)（本仓库）
 - [EgoNav](../wiki/entities/paper-notebook-egonav.md)、[LookOut](../wiki/entities/paper-notebook-lookout.md)、[FocusNav](../wiki/entities/paper-notebook-focusnav.md)（本仓库）— 人形导航深读锚点
+- [RAVEN](../wiki/entities/paper-raven-rl-adaptive-visibility-graph-mpc.md)（本仓库）— RL 只改可见图障碍膨胀，cf-MPC 保约束的人形混合导航（Booster T1；未开源）
 - [SRU](../wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md)（本仓库）— 给 RNN 补空间配准能力的循环单元，端到端 RL 无地图导航，Unitree B2W 真机零样本 50–120 m 长程目标导航
 - [iCrowdNav](../wiki/entities/paper-icrowdnav.md)（本仓库）— RGB-D **BEV + I²Former 姿态意图** 的人群导航 PPO；相对 DWA/DRL-VO 提升私人空间合规，真机零样本（代码待发布）
-- [Paper Notebooks · Navigation 分类](../wiki/overview/paper-notebook-category-08-navigation.md)（本仓库）— 深读论文全景入口
+- [Paper Notebooks · Navigation 分类](../wiki/overview/paper-notebook-category-08-navigation.md)（本仓库）— 深读论文全景入口 |
 
 ### 学完输出什么
 - 一个"经典全局 + 学习局部"的混合导航 demo
