@@ -11,7 +11,7 @@ tags:
   - sim2real
   - ethz
 status: complete
-updated: 2026-07-15
+updated: 2026-07-28
 arxiv: "2506.05997"
 doi: "10.1177/02783649251401926"
 related:
@@ -21,6 +21,7 @@ related:
   - ./isaac-gym-isaac-lab.md
   - ./unitree.md
   - ./paper-navwam-goal-conditioned-visual-navigation-wam.md
+  - ./paper-icrowdnav.md
   - ./sru-odin.md
 sources:
   - ../../sources/papers/sru_spatially_enhanced_recurrent_memory_ijrr_2025.md
@@ -129,6 +130,7 @@ flowchart LR
 - [isaac-gym-isaac-lab](./isaac-gym-isaac-lab.md) — 训练仿真底座
 - [Unitree](./unitree.md) — B2W / Go2 硬件族
 - [NavWAM](./paper-navwam-goal-conditioned-visual-navigation-wam.md) — image-goal WAM 导航对照
+- [iCrowdNav](./paper-icrowdnav.md) — 人群社交意图 + BEV 视觉导航对照（坐标目标，非长程记忆主线）
 - [视觉–语言导航](../tasks/vision-language-navigation.md) — 语言条件导航任务族
 
 ## 推荐继续阅读

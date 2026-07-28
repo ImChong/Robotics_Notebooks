@@ -1937,6 +1937,23 @@
         "westlake-university",
         "westlake-scitrain"
       ]
+    },
+    "peng-cheng-lab": {
+      "label": "鹏城实验室（Peng Cheng Laboratory）",
+      "aliases": [
+        "peng-cheng-lab",
+        "pengcheng-lab",
+        "peng-cheng-laboratory",
+        "pcl",
+        "pengcheng"
+      ]
+    },
+    "reconova": {
+      "label": "锐冠信息（Reconova）",
+      "aliases": [
+        "reconova",
+        "reconova-information-technology"
+      ]
     }
   }
 }

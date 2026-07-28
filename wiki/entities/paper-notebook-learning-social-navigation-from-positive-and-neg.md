@@ -2,11 +2,12 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-07-10
+updated: 2026-07-28
 arxiv: "2510.12215"
 related:
   - ../overview/paper-notebook-category-08-navigation.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ./paper-icrowdnav.md
 sources:
   - ../../sources/papers/humanoid_pnb_learning-social-navigation-from-positive-and-neg.md
 summary: "移动机器人在动态人群环境导航，需要策略既能适应多样人类行为、又遵守安全约束。本文从正示范与负示范（positive and negative demonstrations）学一个密度型奖励（density-based reward），并叠加基于规则的目标（避障、到达目标）。一个基于采样的前瞻控制器（sampling-based lookahead controller）产出既安全又自适应的监督动作，再蒸馏成一个紧凑学生策略，可实时运行并给出不确定性估计。在合成与电梯共乘（elevator co-boarding）仿真中，成功率与时间效率一致优于基线；真人参与的真实实验验证了可部署性。"
@@ -72,6 +73,7 @@ summary: "移动机器人在动态人群环境导航，需要策略既能适应�
 
 - 分类父节点：[paper-notebook-category-08-navigation](../overview/paper-notebook-category-08-navigation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- 对照：[iCrowdNav](./paper-icrowdnav.md) — 视觉 BEV + 姿态意图的 DRL 人群导航（非正负示范蒸馏路线）
 
 ## 参考来源
 

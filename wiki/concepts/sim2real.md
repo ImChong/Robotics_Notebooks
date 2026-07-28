@@ -42,13 +42,14 @@ related:
   - ../entities/physx-omni.md
   - ../entities/paper-sru-spatially-enhanced-recurrent-memory.md
   - ../entities/sru-odin.md
+  - ../entities/paper-icrowdnav.md
   - ../entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md
   - ../entities/paper-da-nav.md
   - ../entities/paper-zonda.md
   - ../entities/paper-mujica-wheel-legged-multi-skill.md
   - ../entities/paper-aware-wheeled-legged-reflexive-evasion.md
 summary: "Sim2Real 关注如何把仿真中学到的策略稳定迁移到真实机器人，是机器人学习落地的核心鸿沟。"
-updated: 2026-07-27
+updated: 2026-07-28
 sources:
   - ../../sources/papers/physx_omni_arxiv_2605_21572.md
   - ../../sources/courses/isaac_lab_implicit_explicit_actuators.md
@@ -181,6 +182,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - **补充参照（学习式管线）：** [LIFT](../entities/lift-humanoid.md) 将「预训练期高随机性探索」与「微调期真机侧确定性动作」拆开，并把随机探索主要约束在 **物理知情世界模型** 的 rollout 中，用于讨论 **安全–样本效率** 折中；其站点亦给出 **预训练任务设计不当 → 零样本 sim2real 失败**、再靠短时段实机数据恢复的案例叙事。
 - **补充参照（低成本双足 / 舵机）：** [Open Duck Mini](../entities/open-duck-mini.md) 在 **Feetech 舵机 + BAM 电机辨识 + MuJoCo Playground** 管线上公开 sim2real 行走；强调 MJCF 执行器参数与真机一致、模仿奖励与参考运动分仓迭代，机载部署在 Pi Zero 2W（见 [Open Duck Mini Runtime](../entities/open-duck-mini-runtime.md)）。
 - **补充参照（无地图导航 · 合成深度预训练）：** [SRU](../entities/paper-sru-spatially-enhanced-recurrent-memory.md)（IJRR 2025，ETH RSL）在 **TartanAir 等 10 万+ 合成深度** 上预训练 RegNet+FPN 编码器，并配合 **并行深度噪声增强**，使 **单目前向深度 + 循环 SRU 记忆** 的策略在 **B2W** 上 **零样本** 部署办公室/森林等场景（70 m+ 目标）；工程移植见 [SRU-Odin](../entities/sru-odin.md)（Go2 + Odin1，ONNX + ROS1）。
+- **补充参照（视觉人群导航 · BEV+姿态意图）：** [iCrowdNav](../entities/paper-icrowdnav.md)（arXiv:2606.26047，RA-L 2026）在 Isaac Sim **SocNav-Gym** 用 **时空 BEV + I²Former（3D 姿态意图）** 训 PPO，再 **零样本** 部署 Clearpath Dingo（健身房/地铁站/商场，板载 RTX 2060 ~15 Hz）；强调 **冻结预训练视觉骨干** 与简单奖励，而非手调 proxemics——与 SRU 的「长程空间记忆」互补（截至 2026-07-28 官方代码待发布）。
 - **补充参照（城市户外 VLN · CARLA→足式/人形）：** [DA-Nav](../entities/paper-da-nav.md)（arXiv:2607.11638）在 CARLA 训 **方向感知 + CoT 恢复** 策略后，**无真机微调** 迁移 Unitree Go2 与乐聚 Kuavo-V，报告公里级户外闭环；强调 **图像平面离散 grounding** 与 recovery 数据，而非仅动力学域随机化——与 SRU 的「合成深度→坐标目标」路线互补（截至入库日方法未开源）。
 - **补充参照（室内 ObjectNav · Habitat→轮腿双足）：** [ZONDA](../entities/paper-zonda.md)（arXiv:2607.21025）在 Habitat 离散动作空间评测后，真机用 **同一非平台参数 + MPPI 连续跟踪** 部署 Direct Drive Tech TITA；迁移重点在 \(H_{\text{agent}}\) / 膨胀半径与离板 VLM，而非重训低层 RL（截至入库日方法未开源）。
 - **补充参照（人形 · Planner–IDM 少样本适应）：** [FADA](../entities/paper-fada-humanoid.md)（arXiv:2606.28476，CMU）把策略分解为 **规划器 + 逆动力学模型（IDM）**：源域 oracle+DAgger 训练后，部署 **冻结 planner**、仅用约 **2 分钟** 目标域 rollout 的观测–动作对 **LoRA 微调 IDM** 对齐动力学；G1/T1 真机高精度全身任务成功率 **20%→90%**，无需目标 reward 或仿真重标定——适合讨论「**只改执行映射、不改任务意图**」的 few-shot sim2real。
@@ -251,6 +253,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [Agentic Real2Sim](../entities/paper-agentic-real2sim.md) — VLM agent 编排 DROID→MuJoCo episode twin；可变形/人形适配（arXiv:2607.19190，代码待开放）
 - [Flexion × Niantic × NVIDIA RGB Sim2Real 管线](../entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md) — 部署现场 3DGS 数字孪生 + 纯 RGB 导航 RL 零样本真机（2026-07 产业联合文）
 - [DA-Nav](../entities/paper-da-nav.md) — CARLA 方向感知 VLN → Go2 / Kuavo-V 零样本户外导航（arXiv:2607.11638）
+- [iCrowdNav](../entities/paper-icrowdnav.md) — SocNav-Gym 视觉人群导航 → Dingo 零样本（BEV+姿态意图；代码待发布）
 - [ZONDA](../entities/paper-zonda.md) — Habitat ObjectNav → TITA 轮腿双足（离散→MPPI；arXiv:2607.21025）
 - [SLowRL（安全 LoRA 真机微调）](../entities/paper-slowrl-safe-lora-locomotion-sim2real.md) — 四足动态策略的低秩 + Recovery 安全层
 - [FADA（Planner–IDM 少样本动力学对齐）](../entities/paper-fada-humanoid.md) — 冻结 planner、LoRA 微调 IDM；约 2 min 目标 rollout（arXiv:2606.28476）

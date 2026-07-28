@@ -2,7 +2,7 @@
 type: comparison
 tags: [path-planning, navigation, local-planning, motion-planning, mobile-robot, comparison, engineering-selection]
 status: complete
-updated: 2026-07-23
+updated: 2026-07-28
 related:
   - ../methods/a-star.md
   - ../methods/dwa.md
@@ -10,6 +10,7 @@ related:
   - ../entities/navigation2.md
   - ../entities/python-robotics.md
   - ../entities/humanoid-system-curriculum.md
+  - ../entities/paper-icrowdnav.md
 sources:
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
   - ../../sources/repos/python_robotics.md
@@ -71,6 +72,7 @@ summary: "移动机器人分层导航规划选型：全局 A* 搜折线、局部
 - **误以为 DWA 能替代建图/全局层**：没有静态地图和 A\* 骨架，DWA 只有局部视野，远程目标不可达，还容易陷 U 形陷阱。DWA 是「跟线 + 兜瞬态」，不是「找路」。
 - **把平滑当避障**：平滑层只改几何、让路径可跟踪，不理解动态障碍。动态避障始终是 DWA（或 TEB/MPC）每周期重规划的职责，别指望一次平滑消除碰撞。
 - **归因错层**：全局穿墙常是 costmap 未膨胀或坐标系错，而非 A\* 逻辑坏；DWA 撞障常是 footprint 偏小或 costmap 未更新，而非评分公式错。先分清是哪一层的输入脏了。
+- **把学习型社交导航当成「第四层全局搜索」：** [iCrowdNav](../entities/paper-icrowdnav.md) 一类 DRL 人群策略更接近 **局部层替代/增强**（相对 DWA 学让行），长程仍常外挂拓扑或 Nav2 全局路点，不要用它顶替 A\* 找路。
 
 ## 参考来源
 
@@ -88,3 +90,4 @@ summary: "移动机器人分层导航规划选型：全局 A* 搜折线、局部
 - [Navigation2](../entities/navigation2.md) — 三层落地的默认工程框架（planner_server + DWB + 平滑插件）
 - [PythonRobotics](../entities/python-robotics.md) — 三层算法的教学级动画实现入口
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md) — A\* + DWA 分层导航所属的课程主线
+- [iCrowdNav](../entities/paper-icrowdnav.md) — 视觉人群导航 DRL；相对 DWA 的学习型局部社交对照（代码待发布）

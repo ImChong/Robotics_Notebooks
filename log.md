@@ -1,5 +1,15 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-28] ingest | sources/papers/icrowdnav_arxiv_2606_26047.md、sources/repos/icrowdnav.md、sources/sites/broln7-socialbev-io.md — iCrowdNav（arXiv:2606.26047，RA-L 2026）视觉人群导航；升格 wiki/entities/paper-icrowdnav.md；交叉 wiki/concepts/sim2real.md、wiki/methods/dwa.md、wiki/comparisons/mobile-robot-navigation-planning-methods.md、wiki/overview/navigation-slam-autonomy-stack.md、wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md、wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md、wiki/entities/paper-notebook-learning-social-navigation-from-positive-and-neg.md、roadmap/depth-navigation.md；注册 peng-cheng-lab / reconova；代码仓待发布
+
+- **论文：** *Learning Robot Visual Navigation in Crowds via Intention-Aware Scene Representations*（SUSTech × Reconova × 鹏城实验室；RA-L 2026）
+- **一手入口：** [arXiv:2606.26047](https://arxiv.org/abs/2606.26047) · 项目页 [socialbev.io](https://broln7.github.io/socialbev.io/) · 仓 [BRoln7/icrowdnav](https://github.com/BRoln7/icrowdnav)
+- **归档：** [`sources/papers/icrowdnav_arxiv_2606_26047.md`](sources/papers/icrowdnav_arxiv_2606_26047.md)、[`sources/repos/icrowdnav.md`](sources/repos/icrowdnav.md)、[`sources/sites/broln7-socialbev-io.md`](sources/sites/broln7-socialbev-io.md)
+- **主升格：** [`wiki/entities/paper-icrowdnav.md`](wiki/entities/paper-icrowdnav.md) — 时空 BEV + I²Former；SocNav-Gym；真机零样本；结论 / 源码时序图（不适用）
+- **交叉：** [`wiki/concepts/sim2real.md`](wiki/concepts/sim2real.md)、[`wiki/methods/dwa.md`](wiki/methods/dwa.md)、[`wiki/comparisons/mobile-robot-navigation-planning-methods.md`](wiki/comparisons/mobile-robot-navigation-planning-methods.md)、[`wiki/overview/navigation-slam-autonomy-stack.md`](wiki/overview/navigation-slam-autonomy-stack.md)、[`wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md`](wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md)、[`wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md`](wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md)、[`wiki/entities/paper-notebook-learning-social-navigation-from-positive-and-neg.md`](wiki/entities/paper-notebook-learning-social-navigation-from-positive-and-neg.md)、[`roadmap/depth-navigation.md`](roadmap/depth-navigation.md)
+- **机构注册：** `schema/institutions.json` → `peng-cheng-lab`、`reconova`（`sustech` 已有）
+- **开源核查（2026-07-28）：** 仓仅 README + 附录 + 演示 GIF；**TODO: Release codes of iCrowdNav** → **待发布**
+
 ## [2026-07-28] ingest | sources/papers/llada2_2_tech_report.md + sources/repos/llada2-x.md + HF/ModelScope — 接入 LLaDA2.2-flash（Inclusion AI / Ant Group）：Levenshtein Editing dLLM；升格 wiki/entities/llada2-2-flash.md
 
 - **一手开源面（2026-07-28 核查）：**
