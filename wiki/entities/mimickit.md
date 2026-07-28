@@ -1,9 +1,9 @@
 ---
 
 type: entity
-tags: [framework, rl, motion-imitation, isaac-gym, isaac-lab, newton, xbpeng, nvidia, berkeley, stanford]
+tags: [framework, rl, motion-imitation, isaac-gym, isaac-lab, newton, xbpeng, nvidia, berkeley, stanford, sfu]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-28
 related:
   - ../methods/deepmimic.md
   - ../methods/amp-reward.md
@@ -122,9 +122,19 @@ MimicKit 采用高度解耦设计：更换仿真后端、替换环境模板或�
 
 ## 典型工作流
 
-1. **数据准备**：MoCap / AMASS(SMPL) 等 → 重定向到目标骨架 → MimicKit 可读动作格式。
+1. **数据准备**：MoCap / AMASS(SMPL) 等 → 重定向到目标骨架 → MimicKit 可读动作格式（`.pkl`，3D 指数映射表示旋转）。官方内置两条转换链：`tools/smpl_to_mimickit/`（AMASS SMPL 直转）与 `tools/gmr_to_mimickit/`（经 [GMR](../methods/motion-retargeting-gmr.md) 输出转格式）。
 2. **算法选择**：见上文流程图；从 `view_motion` / `dof_test` 类配置起步熟悉观测与动作维度。
-3. **训练与回放**：`train` 模式堆样本至 `max_samples`；`test` 模式加载 `model_file` 做策略检验与可视化。
+3. **训练与回放**：`train` 模式堆样本至 `max_samples`；`test` 模式加载 `model_file` 做策略检验与可视化。仓库在 `data/models/` 附带 **预训练模型**、在 `data/logs/` 附带对应训练日志，便于先跑通再复现。
+
+### 工程信息速查
+
+| 项 | 内容 |
+|----|------|
+| License | Apache-2.0 |
+| 引擎版本基线 | Isaac Lab 测试过 commit `2ed331a`、Newton 测试过 `v1.0.0`（Isaac Gym 为官方发行版） |
+| 分布式训练 | `--devices cuda:0 cuda:1 ...` 多 CPU / 多 GPU 多进程 |
+| 日志 | `--logger txt/tb/wandb`；`--video true` 无头录像；`tools/plot_log/plot_log.py` 绘制 `log.txt` |
+| 参数管理 | 全算法预置 `args/*.txt`（`--arg_file` 与命令行等价）；环境 / 引擎 / 智能体三层 YAML |
 
 ## 局限与注意
 

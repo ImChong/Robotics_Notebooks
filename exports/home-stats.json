@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-28",
   "node_count": 1965,
-  "edge_count": 17375,
+  "edge_count": 17376,
   "coverage": {
     "covered": 1915,
     "total": 1941,
@@ -17,6 +17,17 @@
       "source": "log.md",
       "action": "added",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/mimickit.md",
+      "detail_id": "entity-mimickit",
+      "label": "MimicKit: 运动模仿与控制研究套件",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "path": "wiki/entities/paper-teledexter.md",
@@ -186,15 +197,6 @@
       "path": "roadmap/depth-humanoid-swarm-performance.md",
       "detail_id": "roadmap-depth-humanoid-swarm-performance",
       "label": "路线（纵深）：如果目标是人形群控展演（群舞同步 → 编队走位 → 群体特技）",
-      "type": "roadmap_page",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-imitation-learning.md",
-      "detail_id": "roadmap-depth-imitation-learning",
-      "label": "路线（纵深）：如果目标是模仿学习与技能迁移",
       "type": "roadmap_page",
       "recency": "2026-07-28",
       "source": "log.md",
