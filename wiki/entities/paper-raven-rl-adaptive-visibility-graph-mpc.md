@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, navigation, mpc, reinforcement-learning, visibility-graph, hierarchical-control, sim2real, ucla, booster-t1]
 status: complete
-updated: 2026-07-21
+updated: 2026-07-28
 arxiv: "2607.15701"
 related:
   - ../comparisons/mpc-vs-rl.md
@@ -11,9 +11,10 @@ related:
   - ./paper-notebook-a-hierarchical-model-based-system-for-high-perfo.md
   - ./paper-notebook-booster-gym-an-end-to-end-rl-framework-for-human.md
   - ../concepts/mpc-wbc-integration.md
+  - ./far-planner.md
 sources:
   - ../../sources/papers/raven_rl_adaptive_visibility_graph_arxiv_2607_15701.md
-summary: "RAVEN（UCLA RoMeLa，arXiv:2607.15701）：RL meta-policy 在线调节可见图障碍膨胀半径，DAVG+cf-MPC 跟踪并接 Booster Gym 底层行走；相对固定膨胀 MPC 与端到端 RL，在延迟下路径更短、穿透可控，Booster T1 真机验证；截至入库日未开源。"
+summary: "RAVEN（UCLA RoMeLa，arXiv:2607.15701）：RL meta-policy 在线调节可见图障碍膨胀半径，DAVG+cf-MPC 跟踪并接 Booster Gym 底层行走；相对固定膨胀 MPC 与端到端 RL，在延迟下路径更短、穿透可控，Booster T1 真机验证；截至 2026-07-28 未开源。"
 ---
 
 # RAVEN：强化学习自适应可见图规划 + 无碰撞 MPC
@@ -79,10 +80,11 @@ flowchart TB
 
 | 组件 | 要点 |
 |------|------|
-| **观测** | 世界/本体坐标系下的机器人与目标位姿、最近 **K** 个障碍位置、上一步 MPC 速度指令与 meta action；默认 **K=3**，actor 维 **15+5K** |
-| **动作** | \(a_t\in[-1,1]^K\) → \(r_{t,i}=\frac12(a_{t,i}+1)(r_{\max}-r_{\min})+r_{\min}\) |
+| **观测** | 世界/本体坐标系下的机器人与目标位姿、最近 **K** 个障碍位置、上一步 MPC 速度指令与 meta action；默认 **K=3**，actor 维 \(d=15+5K\)（**30**），critic 特权 \(2d\) |
+| **动作** | \(a_t\in[-1,1]^K\) → \(r_{t,i}=\frac12(a_{t,i}+1)(r_{\max}-r_{\min})+r_{\min}\)；改的是 **规划膨胀**，不是 `cmd_vel` |
 | **不对称 critic** | Actor 见延迟/噪声态；Critic 见噪声+干净特权态 |
-| **奖励** | 时间/路径惩罚、碰撞与穿透、动作变化率、成功 **+5000**、摔倒 **-50000** |
+| **网络** | MLP **(512, 256, 128)** + Swish；tanh-squashed 对角高斯；Brax PPO（\(\lambda=0.95\)，\(\epsilon=0.2\)） |
+| **奖励（关键权重）** | 时间 **-5**、路径长 **-20**、碰撞 **-8**、穿透 **-80**、动作变化率 **-0.5**；成功 **+5000**、摔倒 **-50000** |
 
 ### 与基线的结构差
 
@@ -96,19 +98,34 @@ flowchart TB
 
 | 维度 | 要点 |
 |------|------|
-| **仿真栈** | **MuJoCo Playground MJX** + **Brax PPO**；cf-MPC 用 **JAX / JAXopt** 投影梯度，GPU 并行 |
+| **仿真栈** | **MuJoCo Playground MJX** + **Brax PPO**；cf-MPC 用 **JAX / JAXopt** 投影梯度，GPU 并行（文中 RTX **5090** 训练） |
 | **吞吐** | RAVEN ~**10k SPS**（MPC 瓶颈）；纯 RL ~**100k SPS**；步数 **1e8** vs **1e9** 对齐训练墙钟 |
-| **延迟设定** | 主评测注入 **0.06 s** 驱动延迟 + 观测噪声 |
-| **真机** | 外部 **RTX 4050** 跑 RAVEN，**ROS 2** 下发至 T1 机载机；关节环 **500 Hz**、策略 **50 Hz** |
+| **并行** | **1024** 环境、unroll **32** |
+| **延迟设定** | 主评测注入 **0.06 s** 驱动延迟 + 观测噪声；固定膨胀基线障碍半径 **1 m** |
+| **真机** | 外部 **RTX 4050** 跑 RAVEN，**ROS 2** 下发至 T1 机载 Express-i7；关节环 **500 Hz**、locomotion **50 Hz**；mocap 覆盖约 \(x\in[2,6]\)、\(y\in[-2.5,2.5]\) m |
 | **评测指标（0.06 s 延迟）** | 路径长：MPC **11.25** / RL **9.80** / RAVEN **9.33** m；最大穿透：MPC **0.128** / RL **0** / RAVEN **0.03** m |
+| **源码运行时序图** | **不适用**（截至 2026-07-28 无官方可运行代码） |
 
 ## 实验评测
 
 | 设定 | 相对固定 DAVG-cfMPC | 相对端到端 RL |
 |------|---------------------|---------------|
-| **无延迟** | 更短路径与更短完成时间 | 路径略短 |
+| **无延迟** | 路径 **9.84→9.23 m**，时间 **11.43→11.28 s** | 路径略短（**9.23** vs **9.65 m**） |
 | **0.06 s 延迟** | 穿透 **0.128→0.03 m**，路径 **11.25→9.33 m** | 完成时间更快（**11.58** vs **12.21 s**），穿透略高（**0.03** vs **0**） |
 | **真机 T1** | 仿真–真机轨迹一致性接近固定 MPC | 纯 RL 真机侧向振荡更大，sim2real 差距更明显 |
+
+行为读法：逼近障碍时 meta-policy **抬高对应膨胀**，窄通道两侧同时抬高引导切向通过；出通道后 **降低膨胀** 以更直指目标——用拓扑切换换延迟裕度，而不是事后硬刹。
+
+## 结论
+
+**真影响指标是「用 RL 改可见图障碍膨胀拓扑」；次要代价是嵌入 MPC 把训练吞吐压到约 10k SPS，且全栈尚未开源。**
+
+1. **杠杆在几何，不在代价矩阵** — 相对可微 MPC / RL 调 Q，直接改膨胀能换路径族（绕行拓扑），对 **0.06 s** 延迟超调更直观。
+2. **延迟下相对固定 DAVG-cfMPC** — 最大穿透 **0.128→0.03 m**，路径 **11.25→9.33 m**；固定 1 m 膨胀扛不住跟踪滞后。
+3. **相对端到端 RL** — RL 穿透可到 **0**，但更慢（**12.21** vs **11.58 s**）；RAVEN 借最短路先验保留效率，穿透略高可接受。
+4. **sim2real 读法** — MPC 骨干使 RAVEN/固定 MPC 轨迹比纯 RL 更贴仿真；真机侧向振荡是纯 RL 的主要差距信号。
+5. **部署边界** — 规划侧约 **100 Hz**（cf-MPC alone ~120 Hz）足够；底层靠开源 [Booster Gym](./paper-notebook-booster-gym-an-end-to-end-rl-framework-for-human.md)，高层 meta 未开源。
+6. **选型** — 需要可解释约束 + 延迟鲁棒的人形导航时，优先「RL 适配规划几何 + cf-MPC」混合，而不是端到端出速度或可微 QP。
 
 ## 与其他工作对比
 
@@ -118,26 +135,30 @@ flowchart TB
 | **端到端导航 RL** | 不黑盒出速度；保留可见图最短路先验与 cf-MPC 硬约束 |
 | **可微 / RL 调 MPC 代价权重** | 不反传 QP；只调 **几何参数**，计算更轻、空间行为更直观 |
 | **[ARTEMIS](./paper-notebook-a-hierarchical-model-based-system-for-high-perfo.md)** | 同实验室足球全栈用 DAVG-cfMPC 避障；RAVEN 聚焦 **单机导航鲁棒性** 而非群控战术 |
+| **[FAR Planner](./far-planner.md)** | FAR 做动态可见图长距路由（探索）；RAVEN 在已知圆形障碍上用 **RL 自适应膨胀** 对接人形 cf-MPC |
 
 ## 源码运行时序图
 
-**不适用。** 截至 2026-07-21 arXiv 正文与摘要 **未提供** 官方代码或项目页；无可运行训练/推理入口。底层 [Booster Gym](./paper-notebook-booster-gym-an-end-to-end-rl-framework-for-human.md) 可单独复现 locomotion，但不包含 RAVEN meta-policy 与 DAVG-cfMPC 全栈。
+**不适用。** 截至 **2026-07-28** 复核：arXiv abs / HTML /「Code, Data, Media」页均 **未列** 官方 GitHub 或项目页；无可运行训练/推理入口。底层 [Booster Gym](./paper-notebook-booster-gym-an-end-to-end-rl-framework-for-human.md) 可单独复现 locomotion，但不包含 RAVEN meta-policy 与 DAVG-cfMPC 全栈。
 
 ## 局限与风险
 
-- **开源状态：未开源** — 无 GitHub / 项目页；复现需自行实现 DAVG-cfMPC（参见 ICRA 2025 前作）与 Brax 训练环。
+- **开源状态：未开源**（2026-07-28 再核）— 无 GitHub / 项目页；复现需自行实现 DAVG-cfMPC（参见 ICRA 2025 前作）与 Brax/MJX 训练环。
 - **静态障碍假设：** 结论写明未来才扩到 **动态障碍**；当前膨胀适应主要服务延迟与跟踪误差，而非移动对手。
-- **障碍模型简化：** 规划空间按 **圆形障碍** 处理；复杂非凸几何需额外近似。
+- **障碍模型简化：** 规划空间按 **圆形障碍** 处理；复杂非凸几何需额外近似（相对 [FAR](./far-planner.md) 的多边形可见图）。
+- **训练吞吐瓶颈：** 嵌入 QP 使 SPS 约为纯 RL 的 **1/10**；大规模扫参成本更高。
 - **误区：** 把 RAVEN 当成「可微 MPC」——中层是 **标准非可微 QP**，学习只动高层几何参数，故意避开端到端可微求解开销。
 
 ## 关联页面
 
 - [ARTEMIS 人形足球全栈](./paper-notebook-a-hierarchical-model-based-system-for-high-perfo.md) — 同实验室 **DAVG+cf-MPC** 导航骨干与群控语境
 - [Booster Gym](./paper-notebook-booster-gym-an-end-to-end-rl-framework-for-human.md) — 真机底层 locomotion 策略来源
+- [FAR Planner](./far-planner.md) — 可见图路由对照（探索 / 多边形 vs RL 膨胀 / 圆形）
 - [MPC vs RL](../comparisons/mpc-vs-rl.md) — 「RL 适配规划 / MPC 保约束」选型对照
 - [PPO](../methods/ppo.md) — meta-policy 与端到端基线算法
 - [Humanoid locomotion](../tasks/humanoid-locomotion.md) — 导航层与行走层解耦任务语境
 - [MPC–WBC 集成](../concepts/mpc-wbc-integration.md) — 模型预测层在全身控制栈中的位置
+- [导航纵深路线 · Stage 3](../../roadmap/depth-navigation.md) — 学习型 / 混合导航入口
 
 ## 参考来源
 

@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-28] ingest | sources/papers/raven_rl_adaptive_visibility_graph_arxiv_2607_15701.md — UCLA RoMeLa RAVEN（arXiv:2607.15701）复核升格：补结论/开源再核；wiki/entities/paper-raven-rl-adaptive-visibility-graph-mpc.md；交叉 far-planner / mpc-vs-rl / humanoid-locomotion；roadmap/depth-navigation.md Stage 3
+
 ## [2026-07-28] structural | 主路线与全部纵深路线链接的论文节点 stub/planned → 详细 complete — roadmap/motion-control + depth-*（30 篇升格）
 
 - **触发：** 确保所有纵深路线与主路线中链接的论文节点均为详细页，而非 stub/planned/draft

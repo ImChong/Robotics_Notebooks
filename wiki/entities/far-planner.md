@@ -2,7 +2,7 @@
 type: entity
 tags: [planning, navigation, visibility-graph, cmu, open-source, exploration]
 status: complete
-updated: 2026-07-23
+updated: 2026-07-28
 related:
   - ./tare-planner.md
   - ../tasks/autonomous-exploration.md
@@ -10,6 +10,7 @@ related:
   - ../methods/dwa.md
   - ../overview/navigation-slam-autonomy-stack.md
   - ../entities/humanoid-system-curriculum.md
+  - ./paper-raven-rl-adaptive-visibility-graph-mpc.md
 sources:
   - ../../sources/repos/far_planner.md
   - ../../sources/sites/cmu-exploration.md
@@ -123,6 +124,7 @@ RViz 可设 Goalpoint、重置可见图、读写 `.vgh`；`Planning Attemptable`
 - [A\*](../methods/a-star.md)
 - [DWA](../methods/dwa.md)
 - [人形系统课程策展](./humanoid-system-curriculum.md)
+- [RAVEN](./paper-raven-rl-adaptive-visibility-graph-mpc.md) — 人形侧：RL 自适应圆形障碍膨胀 + cf-MPC（对照本页多边形可见图路由）
 
 ## 参考来源
 

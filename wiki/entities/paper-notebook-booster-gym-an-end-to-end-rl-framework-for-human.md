@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned, booster]
 status: planned
-updated: 2026-07-21
+updated: 2026-07-28
 arxiv: "2506.15132"
 related:
   - ../overview/paper-notebook-category-05-locomotion.md
