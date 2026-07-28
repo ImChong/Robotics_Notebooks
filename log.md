@@ -1,5 +1,18 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-28] ingest | sources/papers/adams_orlandea_primary_refs.md — 接入 ADAMS（Automatic Dynamic Analysis of Mechanical Systems）一手学术链并升格 wiki/entities/adams.md
+
+- **一手学术：** [`sources/papers/adams_orlandea_primary_refs.md`](sources/papers/adams_orlandea_primary_refs.md)
+  - Orlandea 1973 密歇根博士论文（DOI [10.7302/10731](https://doi.org/10.7302/10731)；Deep Blue 校园限制 PDF）
+  - Maros & Orlandea 1971（DOI [10.1115/1.3427874](https://doi.org/10.1115/1.3427874)）
+  - Orlandea–Chace–Calahan 1977 ASME Part 1 / Part 2（DOI [10.1115/1.3439312](https://doi.org/10.1115/1.3439312) · [10.1115/1.3439313](https://doi.org/10.1115/1.3439313)）
+  - Orlandea 2016 *Multibody Systems History of ADAMS*（DOI [10.1115/1.4034296](https://doi.org/10.1115/1.4034296)）
+- **站点 / 交叉叙述：** [`sources/sites/umich-deepblue-orlandea-adams-thesis.md`](sources/sites/umich-deepblue-orlandea-adams-thesis.md) · [`sources/sites/cadence-msc-adams.md`](sources/sites/cadence-msc-adams.md) · [`sources/blogs/janevic_orlandea_adams_memorial.md`](sources/blogs/janevic_orlandea_adams_memorial.md)
+- **主升格：** [`wiki/entities/adams.md`](wiki/entities/adams.md) — 工业 MBD 谱系；与 MuJoCo/Drake/RL 仿真栈分工
+- **交叉：** [`wiki/entities/mujoco.md`](wiki/entities/mujoco.md)、[`wiki/entities/drake.md`](wiki/entities/drake.md)、[`wiki/overview/sim-platforms-decade-technology-map.md`](wiki/overview/sim-platforms-decade-technology-map.md)、[`wiki/queries/simulator-selection-guide.md`](wiki/queries/simulator-selection-guide.md)
+- **机构注册：** `schema/institutions.json` → `university-of-michigan`、`iowa-state`、`cadence`、`msc-software`、`mechanical-dynamics`
+- **开源核查（2026-07-28）：** 方法论文已发表；当代 Adams **确认未开源**（商业 CAE）；源码运行时序图不适用
+
 ## [2026-07-27] ingest | sources/repos/kimi-k3.md + HF/ModelScope/tech report — Kimi K3 开放权重与技术报告一手资料；刷新 wiki/entities/kimi-k3.md；交叉 muon / enpire / autoresearch harness
 
 - **一手开源面（2026-07-27 核查）：**
