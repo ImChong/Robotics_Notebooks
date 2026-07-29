@@ -1725,6 +1725,14 @@
         </label>
       </div>
 
+      <div class="slider-row">
+        <label class="physics-toggle" for="check-recency-dim"
+               title="按节点更新时间调整明暗：最新节点最亮，越旧越暗；无更新日期的节点按最暗显示（均保持可见）">
+          <input type="checkbox" id="check-recency-dim" />
+          <span>🕰 更新明度渐变</span>
+        </label>
+      </div>
+
       <div class="slider-divider"></div>
       <div class="physics-section-title">视图模式</div>
       <div class="view-mode-toggle" role="group" aria-label="2D / 3D 视图切换">
@@ -2187,6 +2195,17 @@
     let label = null;
     const checkNodeLabelsEl = document.getElementById('check-node-labels');
 
+    /* ── 更新明度渐变：按 recency 把节点明暗映射到 [RECENCY_DIM_MIN, 1]；
+       最暗下限保证旧节点仍然可见；2D / 3D 共享同一开关 ── */
+    const RECENCY_DIM_MIN = 0.35;
+    let recencyDimEnabled = false;
+    const checkRecencyDimEl = document.getElementById('check-recency-dim');
+
+    function recencyDimOf(d) {
+      if (!recencyDimEnabled) return 1;
+      return d._recencyDim != null ? d._recencyDim : 1;
+    }
+
     function isMagneticForCurrentView() {
       return is3DView() ? isMagnetic3D : isMagnetic2D;
     }
@@ -2268,6 +2287,7 @@
         edges,
         resolveSourceNode: (id) => nodes.find(n => n.id === id),
         getNodeColor: nodeColor,
+        getNodeDim: recencyDimOf,
         getNodeRadius: scaledRadius,
         getLinkColor: edgeBaseColor,
         getLinkWidth: () => linkWidthBase,
@@ -2441,7 +2461,7 @@
         return;
       }
       const k = d3.zoomTransform(svg.node()).k;
-      label.style('opacity', d => computeNodeLabelOpacity(d, k, true, userZoomed2D));
+      label.style('opacity', d => computeNodeLabelOpacity(d, k, true, userZoomed2D) * recencyDimOf(d));
     }
 
     function setShowNodeLabels(on) {
@@ -2682,6 +2702,32 @@
       _info: { title: n.label || n.id, summary: n.summary || '' },
     }));
     const edges = graphData.edges.map(e => ({ ...e }));
+
+    /* ── 更新明度渐变：节点时间口径对齐「更新记录」页（log.md 最近活跃日 activity），
+       把明暗系数线性映射到 [RECENCY_DIM_MIN, 1]；
+       无更新日期（无 activity）的节点按最暗 RECENCY_DIM_MIN 处理 ── */
+    (function assignRecencyDim() {
+      let minTs = Infinity;
+      let maxTs = -Infinity;
+      nodes.forEach(n => {
+        const t = n.activity ? Date.parse(n.activity) : NaN;
+        n._recencyTs = Number.isFinite(t) && t > 0 ? t : null;
+        if (n._recencyTs !== null) {
+          if (n._recencyTs < minTs) minTs = n._recencyTs;
+          if (n._recencyTs > maxTs) maxTs = n._recencyTs;
+        }
+      });
+      const span = maxTs - minTs;
+      nodes.forEach(n => {
+        if (n._recencyTs === null) {
+          n._recencyDim = RECENCY_DIM_MIN;
+          return;
+        }
+        n._recencyDim = span > 0
+          ? RECENCY_DIM_MIN + (1 - RECENCY_DIM_MIN) * ((n._recencyTs - minTs) / span)
+          : 1;
+      });
+    })();
 
     /* ── 连接数 Top N 筛选（滑动条）── */
     const totalNodeCount = nodes.length;
@@ -3369,10 +3415,10 @@
         node.select('.node-circle').attr('fill-opacity', n => {
           // 过滤后被隐藏的节点保持原始低透明度，不被 hover 恢复
           if (hasFilter && !visibleNodeIds.has(n.id)) return 0.06;
-          return neighborSet.has(n.id) ? 1 : 0.15;
+          return (neighborSet.has(n.id) ? 1 : 0.15) * recencyDimOf(n);
         });
         node.select('.node-glow').attr('fill-opacity', n =>
-          n.id === d.id ? 0.18 : 0);
+          n.id === d.id ? 0.18 * recencyDimOf(n) : 0);
         link
           .attr('stroke', e => {
             const dimColor = isDark() ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.06)';
@@ -3776,11 +3822,11 @@
         const hubR = hub ? scaledRadius(d) * 1.28 : scaledRadius(d);
         d3.select(this).select('.node-glow')
           .attr('r', hubR + 8)
-          .attr('fill-opacity', hub && ok ? 0.28 : 0);
+          .attr('fill-opacity', hub && ok ? 0.28 * recencyDimOf(d) : 0);
         d3.select(this).select('.node-circle')
           .attr('r', hubR)
-          .attr('fill-opacity', ok ? 1 : 0.06)
-          .attr('stroke-opacity', ok ? (hub ? 0.85 : 0.35) : 0.05)
+          .attr('fill-opacity', ok ? recencyDimOf(d) : 0.06)
+          .attr('stroke-opacity', ok ? (hub ? 0.85 : 0.35) * recencyDimOf(d) : 0.05)
           .attr('stroke-width', hub ? 2.5 : 1.5);
         d3.select(this).select('.node-label')
           .style('font-weight', hub ? 700 : null);
@@ -4462,6 +4508,16 @@
       });
     }
 
+    /* 更新明度渐变（2D / 3D 共享同一开关）：applyFilters 会一并刷新
+       2D 节点/标签透明度与 3D 的 syncFilters */
+    if (checkRecencyDimEl) {
+      checkRecencyDimEl.checked = recencyDimEnabled;
+      checkRecencyDimEl.addEventListener('change', ev => {
+        recencyDimEnabled = !!ev.target.checked;
+        applyFilters();
+      });
+    }
+
     if (viewMode2dBtn) {
       viewMode2dBtn.addEventListener('click', () => setSpatialViewMode('2d'));
     }
@@ -4540,11 +4596,11 @@
       sidebarNode = d;
 
       const tlShown = id => !timelineAnimating || timelineRevealedIds.has(id);
-      node.select('.node-glow').attr('fill-opacity', n => (n.id === d.id && tlShown(n.id)) ? 0.2 : 0);
-      node.select('.node-circle').attr('fill-opacity', n => tlShown(n.id) ? 1 : 0);
+      node.select('.node-glow').attr('fill-opacity', n => (n.id === d.id && tlShown(n.id)) ? 0.2 * recencyDimOf(n) : 0);
+      node.select('.node-circle').attr('fill-opacity', n => tlShown(n.id) ? recencyDimOf(n) : 0);
       node.style('opacity', n => {
         if (!tlShown(n.id)) return 0;
-        return (n.id === d.id || direct.has(n.id)) ? 1 : (secondary.has(n.id) ? 0.4 : 0.05);
+        return ((n.id === d.id || direct.has(n.id)) ? 1 : (secondary.has(n.id) ? 0.4 : 0.05)) * recencyDimOf(n);
       });
       link
         .style('opacity', null)

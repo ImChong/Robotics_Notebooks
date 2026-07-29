@@ -450,6 +450,36 @@ def wiki_first_log_dates(nodes: list[dict[str, Any]]) -> dict[str, str]:
     return first_dates
 
 
+def wiki_last_log_dates(nodes: list[dict[str, Any]]) -> dict[str, str]:
+    """Map 图谱节点 id → 该节点在 ``log.md`` 中**最近一次出现**的日历日。
+
+    与 ``wiki_activity_from_log``（「更新记录」页数据源）使用同一套路径解析与
+    校验规则：全量 op、glob 展开、仅保留仓库现存且在图谱节点中的路径。
+    log.md 新记录在上，自新向旧扫描，每个节点的首次命中即最近活跃日；
+    从未在日志中出现的节点不收录（前端按「无更新日期」处理）。
+    """
+    if not LOG_MD_PATH.is_file():
+        return {}
+    sections = _log_sections(LOG_MD_PATH.read_text(encoding="utf-8"))
+    node_by_id: dict[str, dict[str, Any]] = {str(n["id"]): n for n in nodes}
+    last_dates: dict[str, str] = {}
+    for chunk in sections:
+        date_m = re.match(r"^## \[(\d{4}-\d{2}-\d{2})\]", chunk)
+        if not date_m:
+            continue
+        log_date = date_m.group(1)
+        try:
+            date.fromisoformat(log_date)
+        except ValueError:
+            continue
+        for rel in _collect_wiki_paths_from_chunk(
+            chunk, node_by_id=node_by_id, expand_globs=True
+        ):
+            if rel not in last_dates:
+                last_dates[rel] = log_date
+    return last_dates
+
+
 _GIT_LOG_BOUNDARY = "\x01"
 _WIKI_GIT_ADDED_DATES_CACHE: dict[str, str] | None = None
 
@@ -1570,12 +1600,18 @@ def main() -> None:
     )
     hub_rankings = stats.pop("_hub_rankings")
 
+    # activity：节点在 log.md 中的最近活跃日（口径对齐「更新记录」页），
+    # 供图谱「更新明度渐变」等按维护时间着色的前端能力使用；无日志记录的节点不写出。
+    last_log_dates = wiki_last_log_dates(nodes)
     for node in nodes:
         node.pop("_is_paper", None)
         node.pop("_has_repo_source", None)
         recency = node.pop("_recency", None)
         if recency:
             node["recency"] = recency
+        activity = last_log_dates.get(str(node["id"]))
+        if activity:
+            node["activity"] = activity
 
     institutions = build_institutions_summary(nodes)
 
