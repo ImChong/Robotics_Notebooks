@@ -1176,7 +1176,11 @@
         // 用基于节点数据坐标的安全 fit：库自带 zoomToFit 在场景对象尚未生成时
         // （getGraphBbox 返回 null）会静默 no-op，首次切换易停在未取景的相机上。
         zoomFitToNodes(duration);
-        markLabelsLayoutReady();
+        // 等相机飞行动画结束再记基线，否则社区标签 scale 会相对「半路距离」漂移
+        window.setTimeout(function () {
+          markLabelsLayoutReady();
+          syncCommunityLabelPositions();
+        }, Math.max(0, duration) + 60);
       }
       if (typeof graph.onEngineStop === 'function') {
         graph.onEngineStop(function () { runFit(); });
@@ -1496,18 +1500,24 @@
       },
 
       fitToScreen: function (ms) {
-        zoomFitToNodes(ms == null ? 650 : ms);
-        captureBaselineCameraDist();
-        cameraZoomInteracted = false;
-        syncLabels();
+        var duration = ms == null ? 650 : ms;
+        zoomFitToNodes(duration);
+        window.setTimeout(function () {
+          captureBaselineCameraDist();
+          cameraZoomInteracted = false;
+          syncLabels();
+        }, Math.max(0, duration) + 60);
       },
 
       fitToVisible: function (ms) {
         var visible = getVisibleNodeIds();
-        zoomFitToNodes(ms == null ? 650 : ms, function (n) { return visible.has(n.id); });
-        captureBaselineCameraDist();
-        cameraZoomInteracted = false;
-        syncLabels();
+        var duration = ms == null ? 650 : ms;
+        zoomFitToNodes(duration, function (n) { return visible.has(n.id); });
+        window.setTimeout(function () {
+          captureBaselineCameraDist();
+          cameraZoomInteracted = false;
+          syncLabels();
+        }, Math.max(0, duration) + 60);
       },
 
       focusNode: function (node, ms) {
