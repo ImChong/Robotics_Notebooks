@@ -360,6 +360,28 @@
         syncLabelPositions();
         syncLabelStyles();
       });
+      bindCameraLabelSync();
+    }
+
+    var cameraLabelSyncBound = false;
+    // 引擎收敛（alpha < d3AlphaMin）后 onEngineTick 停发；相机旋转/缩放/飞行动画只走渲染环，
+    // 不重投影则标签冻结在旧屏幕坐标。TrackballControls 的 'change' 事件覆盖一切相机位移
+    // （手动拖拽、滚轮缩放、cameraPosition 飞行动画），在此同步标签。
+    // controls 与 renderer 同在库 init digest 创建，未就绪时下一帧重试（有上限兜底）。
+    function bindCameraLabelSync(attempt) {
+      if (cameraLabelSyncBound || !graph) return;
+      var controls = (typeof graph.controls === 'function') ? graph.controls() : null;
+      if (!controls || typeof controls.addEventListener !== 'function') {
+        var next = (attempt || 0) + 1;
+        if (next < 240) window.requestAnimationFrame(function () { bindCameraLabelSync(next); });
+        return;
+      }
+      cameraLabelSyncBound = true;
+      controls.addEventListener('change', function () {
+        if (container.hidden) return;
+        syncCommunityLabelPositions();
+        if (areNodeLabelsVisible()) syncLabelPositions();
+      });
     }
 
     function resetLabelsLayoutState() {
