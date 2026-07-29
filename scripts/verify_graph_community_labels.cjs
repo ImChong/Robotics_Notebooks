@@ -1,5 +1,5 @@
 // Verify graph.html 「显示社区标签」勾选框行为：
-//  1. 按社区模式勾选 → 各聚类中心出现社区名称标签
+//  1. 按社区模式默认开启 → 各聚类中心出现社区名称标签
 //  2. 取消勾选 → 标签消失
 //  3. 切到按类型/按健康度筛选 → 勾选框置灰不可选、标签不显示
 //  4. 切回按社区 → 勾选框恢复可选，勾选状态下标签重现
@@ -78,19 +78,14 @@ const path = require('path');
     // 打开参数面板
     await page.click('#physics-toggle');
 
-    // ── 1. 初始状态：按社区模式，勾选框可用、未勾选、无标签 ──
+    // ── 1. 初始状态：按社区模式，默认开启社区标签 ──
     let s = await labelState();
     check('初始：勾选框可用（按社区模式）', s.disabled === false && s.toggleDisabledClass === false);
-    check('初始：未勾选且无社区标签', s.checked === false && s.count === 0);
-
-    // ── 2. 勾选 → 聚类中心出现社区标签（短名，不含括号英文）──
-    await page.click('#check-community-labels');
-    await new Promise((r) => setTimeout(r, 800));
-    s = await labelState();
-    check('勾选后：出现社区标签', s.checked === true && s.count >= 3, `count=${s.count} labels=${s.labels.join('|')}`);
-    check('勾选后：标签为短名（无括号英文/无“社区”后缀）',
+    check('初始：默认勾选且有社区标签', s.checked === true && s.count >= 3,
+      `count=${s.count} labels=${s.labels.join('|')}`);
+    check('默认开启：标签为短名（无括号英文/无“社区”后缀）',
       s.labels.every((t) => !t.includes('（') && !t.includes('社区')));
-    check('勾选后：标签为胶囊卡片（rect 底 + rx=height/2 + 社区色填充）',
+    check('默认开启：标签为胶囊卡片（rect 底 + rx=height/2 + 社区色填充）',
       s.pillOk === true && s.pillFillColored === true);
     const expectedCommunities = await page.evaluate(() => {
       const set = new Set();
@@ -98,12 +93,12 @@ const path = require('path');
         .forEach((row) => set.add(row.getAttribute('data-community-id')));
       return set.size;
     });
-    check('勾选后：标签数与社区数一致', s.count === expectedCommunities,
+    check('默认开启：标签数与社区数一致', s.count === expectedCommunities,
       `labels=${s.count} communities=${expectedCommunities}`);
     console.log('  标签示例:', JSON.stringify(s.sample));
     await page.screenshot({ path: path.join(outDir, 'graph-community-labels-on.png') });
 
-    // ── 3. 取消勾选 → 标签消失 ──
+    // ── 2. 取消勾选 → 标签消失 ──
     await page.click('#check-community-labels');
     await new Promise((r) => setTimeout(r, 400));
     s = await labelState();
@@ -113,7 +108,7 @@ const path = require('path');
     await page.click('#check-community-labels');
     await new Promise((r) => setTimeout(r, 400));
 
-    // ── 4. 切到按类型筛选 → 勾选框置灰、标签隐藏 ──
+    // ── 3. 切到按类型筛选 → 勾选框置灰、标签隐藏 ──
     await page.click('#filter-toggle');
     await page.click('#filter-mode-type');
     await new Promise((r) => setTimeout(r, 500));
@@ -134,14 +129,14 @@ const path = require('path');
       clip: panelBox,
     });
 
-    // ── 4b. 切到按健康度筛选 → 同样置灰 ──
+    // ── 3b. 切到按健康度筛选 → 同样置灰 ──
     // （上一步重开参数面板会触发全局点击收起筛选面板，改用 DOM click 触发 tab 切换）
     await page.evaluate(() => document.getElementById('filter-mode-health').click());
     await new Promise((r) => setTimeout(r, 500));
     s = await labelState();
     check('按健康度筛选：勾选框置灰不可选', s.disabled === true && s.toggleDisabledClass === true);
 
-    // ── 5. 切回按社区 → 勾选框恢复、勾选状态下标签重现 ──
+    // ── 4. 切回按社区 → 勾选框恢复、勾选状态下标签重现 ──
     await page.evaluate(() => document.getElementById('filter-mode-community').click());
     await new Promise((r) => setTimeout(r, 500));
     s = await labelState();
@@ -149,7 +144,7 @@ const path = require('path');
     check('切回按社区：勾选状态保留且标签重现', s.checked === true && s.count === expectedCommunities,
       `count=${s.count}`);
 
-    // ── 6. 勾选具体社区 → 只剩该社区标签 ──
+    // ── 5. 勾选具体社区 → 只剩该社区标签 ──
     const firstCommunity = await page.evaluate(() => {
       const cb = document.querySelector('#filter-panel-body input[type="checkbox"]');
       if (!cb) return null;

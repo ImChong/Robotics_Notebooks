@@ -51,8 +51,8 @@ const WEBGL_ARGS = ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsaf
       return c3d && !c3d.hidden && !!c3d.querySelector('canvas');
     }, { timeout: 90000 });
 
+    // 社区标签默认开启；打开参数面板仅便于人工对照，无需再勾选
     await page.click('#physics-toggle');
-    await page.click('#check-community-labels');
 
     const read3dLabels = () => page.evaluate(() => {
       const els = Array.from(document.querySelectorAll('#graph-canvas-3d .graph-3d-community-label'));
@@ -105,9 +105,8 @@ const WEBGL_ARGS = ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsaf
     page2.on('pageerror', (e) => console.log('PAGEERROR(2D):', e.message));
     await page2.goto(baseUrl, { waitUntil: 'domcontentloaded', timeout: 60000 });
     await waitGraphLoaded(page2);
-    await sleep(4000);   // 等 2D 力布局收敛
+    await sleep(4000);   // 等 2D 力布局收敛；社区标签默认开启
     await page2.click('#physics-toggle');
-    await page2.click('#check-community-labels');
     await sleep(600);
 
     const gluedCheck = () => page2.evaluate(() => {

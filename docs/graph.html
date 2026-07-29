@@ -1768,8 +1768,8 @@
 
       <div class="slider-row">
         <label class="physics-toggle" for="check-community-labels" id="community-labels-toggle"
-               title="在各社区聚类的中心点漂浮显示社区名称（仅「按社区」筛选/着色时可用）">
-          <input type="checkbox" id="check-community-labels" />
+               title="在各社区聚类的中心点漂浮显示社区名称（仅「按社区」筛选/着色时可用；默认开启，可在此关闭）">
+          <input type="checkbox" id="check-community-labels" checked />
           <span>🏘 显示社区标签</span>
         </label>
       </div>
@@ -2243,8 +2243,8 @@
     let userZoomed2D = false;
     let label = null;
     const checkNodeLabelsEl = document.getElementById('check-node-labels');
-    // 社区聚类中心漂浮标签：仅「按社区」着色/筛选时可勾选；其余模式下勾选框置灰
-    let showCommunityLabels = false;
+    // 社区聚类中心漂浮标签：默认开启；仅「按社区」着色/筛选时可勾选，其余模式下勾选框置灰
+    let showCommunityLabels = true;
     const checkCommunityLabelsEl = document.getElementById('check-community-labels');
     const communityLabelsToggleEl = document.getElementById('community-labels-toggle');
 
