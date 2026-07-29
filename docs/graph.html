@@ -2442,6 +2442,8 @@
           closeSidebar();
         },
       });
+        // 供验证脚本程序化 dolly / 读取 zoom scale（非业务 UI）
+        window.__RN_GRAPH3D_VIEW__ = graph3dView;
       } catch (err) {
         console.error('3D graph init failed:', err);
         graph3dView = null;

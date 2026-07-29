@@ -101,6 +101,11 @@ const path = require('path');
       const els = Array.from(document.querySelectorAll('#graph-canvas-3d .graph-3d-community-label'));
       return els.some((el) => el.style.visibility === 'visible');
     }, { timeout: 20000 });
+    // 等首次取景写入 baselineCameraDist，否则 scale 会一直停在 1
+    await page.waitForFunction(() => {
+      const view = window.__RN_GRAPH3D_VIEW__;
+      return !!(view && view.getBaselineCameraDist && view.getBaselineCameraDist());
+    }, { timeout: 20000 });
     await new Promise((r) => setTimeout(r, 800));
 
     let s = await labelState();
@@ -126,29 +131,45 @@ const path = require('path');
     console.log('  标签示例:', JSON.stringify(s.sample));
     await page.screenshot({ path: path.join(outDir, 'graph-community-labels-3d-on.png') });
 
-    // 滚轮放大：胶囊 scale 应变大（与节点一起放大）
+    // 程序化推进相机：胶囊 scale 应随距离变化（比 headless 滚轮更稳）
     const scaleBeforeZoomIn = s.sampleScale;
-    await page.mouse.move(720, 450);
-    for (let i = 0; i < 8; i++) {
-      await page.mouse.wheel({ deltaY: -120 });
-      await new Promise((r) => setTimeout(r, 80));
-    }
-    await new Promise((r) => setTimeout(r, 500));
+    const dollyInfo = await page.evaluate(() => {
+      const view = window.__RN_GRAPH3D_VIEW__;
+      if (!view || typeof view.dollyZoom !== 'function') {
+        return { ok: false, reason: 'no-view' };
+      }
+      const before = {
+        scale: view.getCommunityLabelZoomScale && view.getCommunityLabelZoomScale(),
+        dist: view.getCameraDistance && view.getCameraDistance(),
+        baseline: view.getBaselineCameraDist && view.getBaselineCameraDist(),
+      };
+      const ok = view.dollyZoom(1.8, 0);
+      return {
+        ok: !!ok,
+        before,
+        afterImmediate: {
+          scale: view.getCommunityLabelZoomScale && view.getCommunityLabelZoomScale(),
+          dist: view.getCameraDistance && view.getCameraDistance(),
+        },
+      };
+    });
+    await new Promise((r) => setTimeout(r, 400));
     s = await labelState();
-    check('3D 滚轮放大：社区标签 scale 增大',
+    check('3D 程序化放大：dollyZoom 可用', dollyInfo.ok === true, JSON.stringify(dollyInfo));
+    check('3D 程序化放大：社区标签 scale 增大',
       s.sampleScale != null && scaleBeforeZoomIn != null && s.sampleScale > scaleBeforeZoomIn + 0.05,
-      `before=${scaleBeforeZoomIn} after=${s.sampleScale}`);
+      `before=${scaleBeforeZoomIn} after=${s.sampleScale} info=${JSON.stringify(dollyInfo)}`);
     await page.screenshot({ path: path.join(outDir, 'graph-community-labels-3d-zoomed-in.png') });
 
-    // 滚轮缩小：相对放大后应变小
+    // 再拉远：相对放大后应变小
     const scaleAfterZoomIn = s.sampleScale;
-    for (let i = 0; i < 16; i++) {
-      await page.mouse.wheel({ deltaY: 120 });
-      await new Promise((r) => setTimeout(r, 80));
-    }
-    await new Promise((r) => setTimeout(r, 500));
+    await page.evaluate(() => {
+      const view = window.__RN_GRAPH3D_VIEW__;
+      if (view && view.dollyZoom) view.dollyZoom(1 / 2.2, 0);
+    });
+    await new Promise((r) => setTimeout(r, 400));
     s = await labelState();
-    check('3D 滚轮缩小：社区标签 scale 减小',
+    check('3D 程序化缩小：社区标签 scale 减小',
       s.sampleScale != null && scaleAfterZoomIn != null && s.sampleScale < scaleAfterZoomIn - 0.05,
       `before=${scaleAfterZoomIn} after=${s.sampleScale}`);
     await page.screenshot({ path: path.join(outDir, 'graph-community-labels-3d-zoomed-out.png') });
