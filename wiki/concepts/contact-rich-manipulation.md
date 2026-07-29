@@ -2,7 +2,7 @@
 type: concept
 tags: [manipulation, contact, force-control, impedance-control, tsid]
 status: complete
-updated: 2026-07-28
+updated: 2026-07-29
 summary: "Contact-Rich Manipulation 指需要持续建模接触、摩擦和力约束的操作任务，难点不在于碰到物体，而在于控制接触过程本身。"
 related:
   - ../queries/contact-wrench-closed-loop.md
@@ -14,6 +14,7 @@ related:
   - ../entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md
   - ../entities/paper-vtap-gripper.md
   - ../entities/paper-taco-tactile-sensor-benchmark.md
+  - ../entities/paper-softvtbench.md
   - ../entities/paper-fm-vla.md
   - ../entities/paper-teledexter.md
   - ../entities/yale-openhand.md
@@ -36,6 +37,7 @@ sources:
   - ../../sources/papers/chord_nvidia_video_to_data_2026.md
   - ../../sources/papers/vtap_gripper_arxiv_2607_15448.md
   - ../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md
+  - ../../sources/papers/softvtbench_arxiv_2607_04234.md
   - ../../sources/papers/n0_foundation.md
   - ../../sources/papers/n0_twam.md
   - ../../sources/papers/teledexter_arxiv_2607_11481.md
@@ -124,6 +126,7 @@ sources:
 - [TouchWorld](../entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md) — **预测–反应式触觉基础模型**：人形 **Wuji** 平台上 **六任务长程** benchmark（浇花/清桌面/杯与插头插入/擦锅/抽纸巾），含 **人为扰动** 设置；**Tactile World Model** 预测视触觉子目标 + **TRT** 高频残差，干净 **65.0%**、扰动 **53.7%** 宏平均。
 - [VTAP Gripper](../entities/paper-vtap-gripper.md) — **硬件级指–掌协同**：视触觉主动掌 + FlexiTac 指尖；反应抓取 / 手内 singulation / 1 mm peg-in-hole（arXiv:2607.15448，确认未开源）。
 - [TacO](../entities/paper-taco-tactile-sensor-benchmark.md) — **跨模态触觉传感器选型基准**：六硬件 × 三真机任务统一 ACT；插入/重定向等接触丰富场景上 **无通用最佳传感器**。
+- [SoftVTBench](../entities/paper-softvtbench.md) — **可变形过程安全评测**：Goal vs Safety Success；FEM 特权态暴露过压「虚假成功」，触觉主要抬高 Safety。
 - [Flying Knots](../entities/paper-flying-knots.md) — 绳段 **自碰撞（critical point）** 的动态操作；用 **任务级 ILC + 逆模型 QP** 而非阻抗执行层直接闭环。
 - [Manipulation](../tasks/manipulation.md) 是更上层的任务总览；本页强调其中“最难的接触子域”。
 
@@ -142,6 +145,7 @@ sources:
 - [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md) — 接触力、摩擦约束与动力学建模基础
 - [sources/papers/vtap_gripper_arxiv_2607_15448.md](../../sources/papers/vtap_gripper_arxiv_2607_15448.md) — VTAP 指–掌协同接触丰富夹爪
 - [sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md](../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md) — TacO 跨模态触觉真机 IL 基准
+- [sources/papers/softvtbench_arxiv_2607_04234.md](../../sources/papers/softvtbench_arxiv_2607_04234.md) — SoftVTBench 可变形视触觉安全基准
 - [sources/papers/teledexter_arxiv_2607_11481.md](../../sources/papers/teledexter_arxiv_2607_11481.md) — TeleDexter hand–object co-tracking 灵巧遥操作
 - Mordatch et al., *Contact-Invariant Optimization for Hand Manipulations*
 
@@ -162,6 +166,7 @@ sources:
 - [Hybrid Force-Position Control](./hybrid-force-position-control.md)
 - [Visuo-Tactile Fusion](./visuo-tactile-fusion.md)
 - [TacO（触觉传感器操作基准）](../entities/paper-taco-tactile-sensor-benchmark.md) — 接触丰富任务上的跨模态触觉选型证据
+- [SoftVTBench（可变形视触觉安全基准）](../entities/paper-softvtbench.md) — 过程级物理安全 vs 终端 Goal
 - [NeoteAI 𝒩₀-Foundation / TWAM](../entities/neoteai.md) — NeoReal/NeoSim 接触套件 + 触觉原生 WAM
 - [FM-VLA](../entities/paper-fm-vla.md) — 力觉长程记忆 VLA：接触事件计数与非马尔可夫接触操作（arXiv:2607.18231）
 - [Yale OpenHand Model F3](../entities/yale-openhand.md) — 腕相机形变估力、免 FT 力控擦拭/插销/书法（硬件已开源，力估论文审稿中）

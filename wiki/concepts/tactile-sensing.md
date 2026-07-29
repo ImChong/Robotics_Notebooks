@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, manipulation, contact-rich, hardware, sensing]
 status: complete
-updated: 2026-07-27
+updated: 2026-07-29
 related:
   - ../queries/contact-wrench-closed-loop.md
   - ./contact-rich-manipulation.md
@@ -14,12 +14,14 @@ related:
   - ../entities/paper-tacrefinenet-tactile-grasp-refinement.md
   - ../entities/paper-vtap-gripper.md
   - ../entities/paper-taco-tactile-sensor-benchmark.md
+  - ../entities/paper-softvtbench.md
 sources:
   - ../../sources/papers/contact_dynamics.md
   - ../../sources/papers/humanoid_touch_dream.md
   - ../../sources/papers/tacrefinenet_arxiv_2509_25746.md
   - ../../sources/papers/vtap_gripper_arxiv_2607_15448.md
   - ../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md
+  - ../../sources/papers/softvtbench_arxiv_2607_04234.md
 summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上的法向力和切向力、滑动分布及材质纹理，是实现接触丰富操作和高精度抓取的核心感官。"
 ---
 
@@ -84,6 +86,7 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - [TacRefineNet（论文实体）](../entities/paper-tacrefinenet-tactile-grasp-refinement.md) — 纯触觉抓取精修 / 外在灵巧伺服
 - [VTAP Gripper（论文实体）](../entities/paper-vtap-gripper.md) — 指尖 FlexiTac 阵列 + 掌上光学视触主动掌
 - [TacO（触觉传感器操作基准）](../entities/paper-taco-tactile-sensor-benchmark.md) — 六传感器 × 三任务真机 ACT 对比；无通用最佳模态
+- [SoftVTBench（可变形视触觉安全基准）](../entities/paper-softvtbench.md) — GelSight 仿真栈上 Goal/Safety；触觉抬高软体安全率
 - [Manipulation 任务](../tasks/manipulation.md)
 - [Visual Servoing (视觉伺服)](../methods/visual-servoing.md)
 - [Friction Cone (摩擦锥) 形式化](../formalizations/friction-cone.md)
@@ -96,3 +99,4 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - [sources/papers/tacrefinenet_arxiv_2509_25746.md](../../sources/papers/tacrefinenet_arxiv_2509_25746.md) — TacRefineNet 压阻多指触觉抓取精修
 - [sources/papers/vtap_gripper_arxiv_2607_15448.md](../../sources/papers/vtap_gripper_arxiv_2607_15448.md) — VTAP FlexiTac 指尖 + 视触觉主动掌
 - [sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md](../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md) — TacO 跨模态触觉传感器真机 IL 基准
+- [sources/papers/softvtbench_arxiv_2607_04234.md](../../sources/papers/softvtbench_arxiv_2607_04234.md) — SoftVTBench 可变形视触觉安全基准

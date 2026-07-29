@@ -14,7 +14,7 @@ tags:
   - cmu
   - snu
 status: complete
-updated: 2026-07-27
+updated: 2026-07-29
 arxiv: "2605.21976"
 code: https://github.com/TacObench/TacO
 related:
@@ -28,6 +28,7 @@ related:
   - ../tasks/teleoperation.md
   - ./paper-vtap-gripper.md
   - ./paper-taco-tactile-wm-vla-posttrain.md
+  - ./paper-softvtbench.md
   - ./paper-trex-tactile-reactive-dexterous-manipulation.md
   - ./paper-omnitactune-tactile-residual-adaptation.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
@@ -176,11 +177,11 @@ sequenceDiagram
 
 ## 与相邻工作的对比（分界）
 
-| 对比轴 | TacO（本页） | [TACO WM](./paper-taco-tactile-wm-vla-posttrain.md) | [T-Rex](./paper-trex-tactile-reactive-dexterous-manipulation.md) | [VTAP](./paper-vtap-gripper.md) |
-|--------|--------------|------------------------------------------------------|------------------------------------------------------------------|----------------------------------|
-| **问题** | 传感器硬件选型 | 失败轨迹 → VLA 纠错数据 | 高频触觉写入灵巧 VLA | 指–掌视触觉夹爪硬件 |
-| **评测** | 6 传感器 × 3 任务真机 IL | 接触丰富后训练增益 | 12 双手任务 | 反应抓取 / peg-in-hole 等 |
-| **开源** | 代码+硬件；数据待链 | 见该页 | 数据集+模型 | 截至入库未开源 |
+| 对比轴 | TacO（本页） | [SoftVTBench](./paper-softvtbench.md) | [TACO WM](./paper-taco-tactile-wm-vla-posttrain.md) | [T-Rex](./paper-trex-tactile-reactive-dexterous-manipulation.md) |
+|--------|--------------|----------------------------------------|------------------------------------------------------|------------------------------------------------------------------|
+| **问题** | 传感器硬件选型 | 可变形过程安全评测 | 失败轨迹 → VLA 纠错数据 | 高频触觉写入灵巧 VLA |
+| **评测** | 6 传感器 × 3 任务真机 IL | Goal + Safety + FEM GT | 接触丰富后训练增益 | 12 双手任务 |
+| **开源** | 代码+硬件；数据待链 | 代码+数据；ckpt 待发 | 见该页 | 数据集+模型 |
 
 ## 关联页面
 
@@ -191,6 +192,7 @@ sequenceDiagram
 - [触觉专题](../overview/topic-tactile.md)
 - [VTAP Gripper](./paper-vtap-gripper.md) — 同用 FlexiTac
 - [TACO（触觉 WM · 消歧）](./paper-taco-tactile-wm-vla-posttrain.md)
+- [SoftVTBench](./paper-softvtbench.md) — 可变形 Goal/Safety；互补「怎么测安全」而非「选哪种传感器」
 - [T-Rex](./paper-trex-tactile-reactive-dexterous-manipulation.md) / [OmniTacTune](./paper-omnitactune-tactile-residual-adaptation.md)
 - [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) / [具身评测基准专题](../overview/topic-embodied-eval-benchmark.md)
 
