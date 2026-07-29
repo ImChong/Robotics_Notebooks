@@ -50,18 +50,27 @@ const path = require('path');
     const labelState = () => page.evaluate(() => {
       const cb = document.getElementById('check-community-labels');
       const toggle = document.getElementById('community-labels-toggle');
-      const texts = Array.from(document.querySelectorAll('#graph-canvas text.community-label'));
+      const groups = Array.from(document.querySelectorAll('#graph-canvas g.community-label'));
+      const texts = groups.map((g) => g.querySelector('text.community-label-text')).filter(Boolean);
+      const pills = groups.map((g) => g.querySelector('rect.community-label-bg')).filter(Boolean);
       return {
         disabled: cb ? cb.disabled : null,
         checked: cb ? cb.checked : null,
         toggleDisabledClass: toggle ? toggle.classList.contains('is-disabled') : null,
-        count: texts.length,
+        count: groups.length,
         labels: texts.map((t) => t.textContent),
-        sample: texts.slice(0, 3).map((t) => ({
-          text: t.textContent,
-          x: Number(t.getAttribute('x')).toFixed(1),
-          y: Number(t.getAttribute('y')).toFixed(1),
-          fill: t.getAttribute('fill'),
+        pillOk: pills.length === groups.length && pills.every((r) => {
+          const h = Number(r.getAttribute('height'));
+          const rx = Number(r.getAttribute('rx'));
+          const w = Number(r.getAttribute('width'));
+          return h > 0 && w > 0 && Math.abs(rx - h / 2) < 0.01;
+        }),
+        pillFillColored: pills.every((r) => /^#[0-9a-f]{6}$/i.test(r.getAttribute('fill') || '')),
+        sample: groups.slice(0, 3).map((g) => ({
+          text: g.querySelector('text.community-label-text')?.textContent,
+          transform: g.getAttribute('transform'),
+          fill: g.querySelector('rect.community-label-bg')?.getAttribute('fill'),
+          textFill: g.querySelector('text.community-label-text')?.getAttribute('fill'),
         })),
       };
     });
@@ -81,6 +90,8 @@ const path = require('path');
     check('勾选后：出现社区标签', s.checked === true && s.count >= 3, `count=${s.count} labels=${s.labels.join('|')}`);
     check('勾选后：标签为短名（无括号英文/无“社区”后缀）',
       s.labels.every((t) => !t.includes('（') && !t.includes('社区')));
+    check('勾选后：标签为胶囊卡片（rect 底 + rx=height/2 + 社区色填充）',
+      s.pillOk === true && s.pillFillColored === true);
     const expectedCommunities = await page.evaluate(() => {
       const set = new Set();
       document.querySelectorAll('#graph-legend .legend-row[data-community-id]')

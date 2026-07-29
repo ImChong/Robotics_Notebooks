@@ -705,17 +705,15 @@
     .node-circle { transition: r .15s, fill-opacity .15s; }
     .node-label { transition: opacity .15s; }
 
-    /* 社区聚类中心漂浮标签（2D 画布，paint-order 描边做光晕保证可读性） */
-    .community-label {
-      font-size: 16px;
+    /* 社区聚类中心漂浮标签（2D 画布）：胶囊卡片 = 社区色圆角底 + 亮度自适应文字 */
+    .community-label { pointer-events: none; user-select: none; }
+    .community-label-bg {
+      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.35));
+    }
+    .community-label-text {
+      font-size: 13px;
       font-weight: 700;
       letter-spacing: .02em;
-      paint-order: stroke;
-      stroke: rgba(13, 17, 23, 0.85);
-      stroke-width: 4px;
-      stroke-linejoin: round;
-      pointer-events: none;
-      user-select: none;
     }
 
     /* ════════════════════════════════════════════
@@ -780,7 +778,9 @@
     [data-theme="light"] .topic-intro-link { color: #1659b4; }
     [data-theme="light"] .node-topic-hub .node-label { fill: rgba(15, 23, 42, 0.88) !important; }
     [data-theme="light"] .graph-3d-label.is-topic-hub { color: rgba(15, 23, 42, 0.88) !important; }
-    [data-theme="light"] .community-label { stroke: rgba(255, 255, 255, 0.92); }
+    [data-theme="light"] .community-label-bg {
+      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.18));
+    }
     [data-theme="light"] .toolbar-sep { background: rgba(0,0,0,0.1); }
     [data-theme="light"] #graph-node-count { color: rgba(0,0,0,0.38); }
     [data-theme="light"] #graph-back {
@@ -3049,22 +3049,54 @@
       return out;
     }
 
+    // 胶囊底色为社区色，文字色按底色亮度自适应（深色底白字 / 浅色底深色字）
+    function communityLabelTextColor(bgHex) {
+      const m = /^#?([0-9a-f]{6})$/i.exec(bgHex || '');
+      if (!m) return 'rgba(255,255,255,0.95)';
+      const n = parseInt(m[1], 16);
+      const lum = 0.2126 * ((n >> 16) & 255) + 0.7152 * ((n >> 8) & 255) + 0.0722 * (n & 255);
+      return lum > 150 ? 'rgba(15,23,42,0.88)' : 'rgba(255,255,255,0.95)';
+    }
+
     function updateCommunityLabels() {
       const data = communityLabelsVisible() ? computeCommunityCentroids() : [];
-      gCommunityLabels.selectAll('text.community-label')
+      const PAD_X = 9;
+      const PAD_Y = 4.5;
+      const sel = gCommunityLabels.selectAll('g.community-label')
         .data(data, d => d.id)
         .join(
-          enter => enter.append('text')
-            .attr('class', 'community-label')
-            .attr('text-anchor', 'middle')
-            .attr('dominant-baseline', 'central')
-            .attr('fill', d => communityColorMap.get(d.id) || COMMUNITY_COLORS[9])
-            .text(d => shortCommunityLabel(d.id)),
+          enter => {
+            const g = enter.append('g').attr('class', 'community-label');
+            g.append('rect').attr('class', 'community-label-bg');
+            g.append('text')
+              .attr('class', 'community-label-text')
+              .attr('text-anchor', 'middle')
+              .attr('dominant-baseline', 'central');
+            return g;
+          },
           update => update,
           exit => exit.remove()
-        )
-        .attr('x', d => d.x)
-        .attr('y', d => d.y);
+        );
+      sel.select('text.community-label-text')
+        .text(d => shortCommunityLabel(d.id))
+        .attr('fill', d => communityLabelTextColor(communityColorMap.get(d.id)));
+      sel.select('rect.community-label-bg')
+        .attr('fill', d => communityColorMap.get(d.id) || COMMUNITY_COLORS[9])
+        .attr('fill-opacity', 0.92);
+      // 仅在文本内容变化的 enter 节点上量一次 bbox，按文字尺寸撑出胶囊底
+      sel.filter(function () { return !this.__labelSized; })
+        .each(function () {
+          const textEl = this.querySelector('text.community-label-text');
+          const bb = textEl.getBBox();
+          d3.select(this).select('rect.community-label-bg')
+            .attr('x', bb.x - PAD_X)
+            .attr('y', bb.y - PAD_Y)
+            .attr('width', bb.width + PAD_X * 2)
+            .attr('height', bb.height + PAD_Y * 2)
+            .attr('rx', (bb.height + PAD_Y * 2) / 2);
+          this.__labelSized = true;
+        });
+      sel.attr('transform', d => `translate(${d.x},${d.y})`);
     }
 
     let entered3dOnLoad = false;
