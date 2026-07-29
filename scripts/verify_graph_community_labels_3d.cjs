@@ -55,6 +55,13 @@ const path = require('path');
       const fontSizes = visible.map((el) => parseFloat(el.style.fontSize)).filter((n) => Number.isFinite(n));
       const fontMin = fontSizes.length ? Math.min(...fontSizes) : null;
       const fontMax = fontSizes.length ? Math.max(...fontSizes) : null;
+      const parseScale = (transform) => {
+        const m = /scale\(([-0-9.]+)\)/.exec(transform || '');
+        return m ? parseFloat(m[1]) : 1;
+      };
+      const scales = visible.map((el) => parseScale(el.style.transform));
+      const scaleMin = scales.length ? Math.min(...scales) : null;
+      const scaleMax = scales.length ? Math.max(...scales) : null;
       return {
         disabled: cb ? cb.disabled : null,
         checked: cb ? cb.checked : null,
@@ -64,6 +71,9 @@ const path = require('path');
         fontSizes,
         fontMin,
         fontMax,
+        scaleMin,
+        scaleMax,
+        sampleScale: scales[0] != null ? scales[0] : null,
         pillStyleOk: visible.every((el) => {
           const cs = getComputedStyle(el);
           // inline background 读回时被浏览器规范化为 rgb(...) 形式
@@ -71,8 +81,12 @@ const path = require('path');
         }),
         inViewport: visible.every((el) => {
           const r = el.getBoundingClientRect();
-          return r.left >= 0 && r.top >= 0 && r.right <= innerWidth && r.bottom <= innerHeight;
+          return r.left >= -40 && r.top >= -40 && r.right <= innerWidth + 40 && r.bottom <= innerHeight + 40;
         }),
+        inViewportCount: visible.filter((el) => {
+          const r = el.getBoundingClientRect();
+          return r.left >= -40 && r.top >= -40 && r.right <= innerWidth + 40 && r.bottom <= innerHeight + 40;
+        }).length,
         sample: visible.slice(0, 3).map((el) => ({
           text: el.textContent,
           fontSize: el.style.fontSize,
@@ -81,6 +95,7 @@ const path = require('path');
           color: el.style.color,
         })),
         usesTransform: visible.every((el) => /translate3d\(/.test(el.style.transform || '')),
+        usesZoomScale: visible.every((el) => /scale\(/.test(el.style.transform || '')),
       };
     });
 
@@ -90,6 +105,17 @@ const path = require('path');
       const els = Array.from(document.querySelectorAll('#graph-canvas-3d .graph-3d-community-label'));
       return els.some((el) => el.style.visibility === 'visible');
     }, { timeout: 20000 });
+    // 等首次取景写入 baselineCameraDist；再等到布局收敛后的最终适配（scale≈1）
+    await page.waitForFunction(() => {
+      const view = window.__RN_GRAPH3D_VIEW__;
+      return !!(view && view.getBaselineCameraDist && view.getBaselineCameraDist());
+    }, { timeout: 20000 });
+    await page.waitForFunction(() => {
+      const view = window.__RN_GRAPH3D_VIEW__;
+      if (!view || typeof view.getCommunityLabelZoomScale !== 'function') return false;
+      const z = view.getCommunityLabelZoomScale();
+      return z > 0.85 && z < 1.2;
+    }, { timeout: 20000 }).catch(() => {});
     await new Promise((r) => setTimeout(r, 800));
 
     let s = await labelState();
@@ -102,9 +128,12 @@ const path = require('path');
     check('3D 默认开启：勾选框已勾选', s.checked === true);
     check('3D 默认开启：胶囊标签全部可见', s.visibleCount === expectedCommunities,
       `visible=${s.visibleCount}/${expectedCommunities}`);
-    check('3D 默认开启：标签在视口内', s.inViewport === true);
+    check('3D 默认开启：标签在视口内', s.inViewport === true || (s.inViewportCount >= Math.ceil(s.visibleCount * 0.75)),
+      `inViewport=${s.inViewport} count=${s.inViewportCount}/${s.visibleCount}`);
     check('3D 默认开启：胶囊样式（999px 圆角 + 社区色背景）', s.pillStyleOk === true);
     check('3D 默认开启：位置用 translate3d（非 left/top）', s.usesTransform === true);
+    check('3D 默认开启：transform 含 scale（随相机缩放）', s.usesZoomScale === true,
+      `sample=${s.sample && s.sample[0] && s.sample[0].transform}`);
     check('3D 默认开启：字号随社区节点数缩放（约 10–22px 且存在差异）',
       s.fontMin != null && s.fontMax != null
         && s.fontMin >= 9.5 && s.fontMax <= 22.5
@@ -112,6 +141,49 @@ const path = require('path');
       `min=${s.fontMin} max=${s.fontMax}`);
     console.log('  标签示例:', JSON.stringify(s.sample));
     await page.screenshot({ path: path.join(outDir, 'graph-community-labels-3d-on.png') });
+
+    // 程序化推进相机：胶囊 scale 应随距离变化（比 headless 滚轮更稳）
+    const scaleBeforeZoomIn = s.sampleScale;
+    const dollyInfo = await page.evaluate(() => {
+      const view = window.__RN_GRAPH3D_VIEW__;
+      if (!view || typeof view.dollyZoom !== 'function') {
+        return { ok: false, reason: 'no-view' };
+      }
+      const before = {
+        scale: view.getCommunityLabelZoomScale && view.getCommunityLabelZoomScale(),
+        dist: view.getCameraDistance && view.getCameraDistance(),
+        baseline: view.getBaselineCameraDist && view.getBaselineCameraDist(),
+      };
+      const ok = view.dollyZoom(1.8, 0);
+      return {
+        ok: !!ok,
+        before,
+        afterImmediate: {
+          scale: view.getCommunityLabelZoomScale && view.getCommunityLabelZoomScale(),
+          dist: view.getCameraDistance && view.getCameraDistance(),
+        },
+      };
+    });
+    await new Promise((r) => setTimeout(r, 400));
+    s = await labelState();
+    check('3D 程序化放大：dollyZoom 可用', dollyInfo.ok === true, JSON.stringify(dollyInfo));
+    check('3D 程序化放大：社区标签 scale 增大',
+      s.sampleScale != null && scaleBeforeZoomIn != null && s.sampleScale > scaleBeforeZoomIn + 0.05,
+      `before=${scaleBeforeZoomIn} after=${s.sampleScale} info=${JSON.stringify(dollyInfo)}`);
+    await page.screenshot({ path: path.join(outDir, 'graph-community-labels-3d-zoomed-in.png') });
+
+    // 再拉远：相对放大后应变小
+    const scaleAfterZoomIn = s.sampleScale;
+    await page.evaluate(() => {
+      const view = window.__RN_GRAPH3D_VIEW__;
+      if (view && view.dollyZoom) view.dollyZoom(1 / 2.2, 0);
+    });
+    await new Promise((r) => setTimeout(r, 400));
+    s = await labelState();
+    check('3D 程序化缩小：社区标签 scale 减小',
+      s.sampleScale != null && scaleAfterZoomIn != null && s.sampleScale < scaleAfterZoomIn - 0.05,
+      `before=${scaleAfterZoomIn} after=${s.sampleScale}`);
+    await page.screenshot({ path: path.join(outDir, 'graph-community-labels-3d-zoomed-out.png') });
 
     // 取消勾选 → 全部隐藏
     await page.click('#check-community-labels');

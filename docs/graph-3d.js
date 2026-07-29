@@ -248,13 +248,47 @@
     }
 
     function getCameraDistance() {
-      if (!graph || typeof graph.cameraPosition !== 'function') return null;
-      var cam = graph.cameraPosition();
-      if (!cam || !cam.lookAt) return null;
-      var dx = cam.x - cam.lookAt.x;
-      var dy = cam.y - cam.lookAt.y;
-      var dz = cam.z - cam.lookAt.z;
-      return Math.sqrt(dx * dx + dy * dy + dz * dz);
+      if (!graph) return null;
+      var px;
+      var py;
+      var pz;
+      var tx;
+      var ty;
+      var tz;
+      var cam3d = (typeof graph.camera === 'function') ? graph.camera() : null;
+      if (cam3d && cam3d.position) {
+        px = cam3d.position.x;
+        py = cam3d.position.y;
+        pz = cam3d.position.z;
+      } else if (typeof graph.cameraPosition === 'function') {
+        var cam = graph.cameraPosition();
+        if (!cam) return null;
+        px = cam.x;
+        py = cam.y;
+        pz = cam.z;
+      } else {
+        return null;
+      }
+      // 滚轮缩放时 TrackballControls.target 比 cameraPosition().lookAt 更可靠
+      var controls = (typeof graph.controls === 'function') ? graph.controls() : null;
+      if (controls && controls.target) {
+        tx = controls.target.x;
+        ty = controls.target.y;
+        tz = controls.target.z;
+      } else if (typeof graph.cameraPosition === 'function') {
+        var camLook = graph.cameraPosition();
+        if (!camLook || !camLook.lookAt) return null;
+        tx = camLook.lookAt.x;
+        ty = camLook.lookAt.y;
+        tz = camLook.lookAt.z;
+      } else {
+        return null;
+      }
+      var dx = px - tx;
+      var dy = py - ty;
+      var dz = pz - tz;
+      var dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+      return (isFinite(dist) && dist > 1e-3) ? dist : null;
     }
 
     function getLabelZoomFactor() {
@@ -355,14 +389,18 @@
       });
     }
 
-    function setLabelScreenPos(el, x, y, transformValue) {
+    function setLabelScreenPos(el, x, y, transformValue, scaleKey) {
+      var sk = (scaleKey != null && isFinite(scaleKey)) ? scaleKey : 1;
       if (el._lx != null
           && Math.abs(el._lx - x) < LABEL_POS_EPS
-          && Math.abs(el._ly - y) < LABEL_POS_EPS) {
+          && Math.abs(el._ly - y) < LABEL_POS_EPS
+          && el._lz != null
+          && Math.abs(el._lz - sk) < 0.002) {
         return;
       }
       el._lx = x;
       el._ly = y;
+      el._lz = sk;
       el.style.transform = transformValue;
     }
 
@@ -500,11 +538,41 @@
       return communityCentroidsCache;
     }
 
+    function communityLabelZoomScale() {
+      // 首次适配前不懒捕获（避免把「已缩放后的距离」误记为基线）
+      if (!baselineCameraDist) return 1;
+      var zf = getLabelZoomFactor();
+      if (!isFinite(zf) || zf <= 0) return 1;
+      // 与节点一起放大缩小；钳制避免滚轮极限下胶囊过大/过小
+      return Math.max(0.35, Math.min(2.75, zf));
+    }
+
+    // 沿视线推进/拉远相机（factor>1 放大），供验证与程序化缩放
+    function dollyCameraByFactor(factor, durationMs) {
+      if (!graph || !isFinite(factor) || factor <= 0) return false;
+      var dist = getCameraDistance();
+      var controls = (typeof graph.controls === 'function') ? graph.controls() : null;
+      var cam3d = (typeof graph.camera === 'function') ? graph.camera() : null;
+      if (!dist || !controls || !controls.target || !cam3d || !cam3d.position) return false;
+      var tx = controls.target.x;
+      var ty = controls.target.y;
+      var tz = controls.target.z;
+      var s = 1 / factor;
+      var next = {
+        x: tx + (cam3d.position.x - tx) * s,
+        y: ty + (cam3d.position.y - ty) * s,
+        z: tz + (cam3d.position.z - tz) * s,
+      };
+      graph.cameraPosition(next, { x: tx, y: ty, z: tz }, durationMs == null ? 0 : durationMs);
+      return true;
+    }
+
     function syncCommunityLabelPositions() {
       if (!labelLayer || communityLabelEls.size === 0) return;
       var hide = !areCommunityLabelsVisible() || container.hidden || timelineActive() || !graph;
       var seen = new Set();
       if (!hide) {
+        var zf = communityLabelZoomScale();
         // 相机旋转路径只读缓存；引擎 tick / syncLabels 会先 invalidate。
         getCommunityCentroids3D().forEach(function (c) {
           var el = communityLabelEls.get(c.id);
@@ -514,7 +582,8 @@
           seen.add(c.id);
           setLabelScreenPos(
             el, p.x, p.y,
-            'translate3d(' + p.x + 'px,' + p.y + 'px,0) translate(-50%,-50%)'
+            'translate3d(' + p.x + 'px,' + p.y + 'px,0) translate(-50%,-50%) scale(' + zf + ')',
+            zf
           );
         });
       }
@@ -1107,7 +1176,11 @@
         // 用基于节点数据坐标的安全 fit：库自带 zoomToFit 在场景对象尚未生成时
         // （getGraphBbox 返回 null）会静默 no-op，首次切换易停在未取景的相机上。
         zoomFitToNodes(duration);
-        markLabelsLayoutReady();
+        // 等相机飞行动画结束再记基线，否则社区标签 scale 会相对「半路距离」漂移
+        window.setTimeout(function () {
+          markLabelsLayoutReady();
+          syncCommunityLabelPositions();
+        }, Math.max(0, duration) + 60);
       }
       if (typeof graph.onEngineStop === 'function') {
         graph.onEngineStop(function () { runFit(); });
@@ -1277,6 +1350,8 @@
           // 首次进入时先框住初始布局，便于观看力模拟震荡收敛全过程；收敛完成（onEngineStop）
           // 后由 scheduleInitialFit 再适配一次最终结果。仅首次，re-entry/交互不触发。
           if (!initialFitDone) zoomFitToNodes(0);
+          // 首帧取景后立刻记下基线，社区标签即可随后续滚轮缩放（不等 onEngineStop）
+          captureBaselineCameraDist();
           // 默认渲染把 nodeOpacity 当标量，传入函数会得到 NaN 不透明度（节点全透明不可见）。
           // 装上自定义 mesh 后由 createNodeMesh / updateNodeMeshes 写入逐节点数值不透明度。
           scheduleCustomMeshInstall(function () {
@@ -1425,18 +1500,24 @@
       },
 
       fitToScreen: function (ms) {
-        zoomFitToNodes(ms == null ? 650 : ms);
-        captureBaselineCameraDist();
-        cameraZoomInteracted = false;
-        syncLabels();
+        var duration = ms == null ? 650 : ms;
+        zoomFitToNodes(duration);
+        window.setTimeout(function () {
+          captureBaselineCameraDist();
+          cameraZoomInteracted = false;
+          syncLabels();
+        }, Math.max(0, duration) + 60);
       },
 
       fitToVisible: function (ms) {
         var visible = getVisibleNodeIds();
-        zoomFitToNodes(ms == null ? 650 : ms, function (n) { return visible.has(n.id); });
-        captureBaselineCameraDist();
-        cameraZoomInteracted = false;
-        syncLabels();
+        var duration = ms == null ? 650 : ms;
+        zoomFitToNodes(duration, function (n) { return visible.has(n.id); });
+        window.setTimeout(function () {
+          captureBaselineCameraDist();
+          cameraZoomInteracted = false;
+          syncLabels();
+        }, Math.max(0, duration) + 60);
       },
 
       focusNode: function (node, ms) {
@@ -1453,6 +1534,35 @@
           cameraZoomInteracted = true;
           syncLabels();
         }, (ms == null ? 700 : ms) + 40);
+      },
+
+      // 程序化推进相机并刷新社区标签 scale（验证 / 调试）
+      dollyZoom: function (factor, ms) {
+        if (!dollyCameraByFactor(factor, ms == null ? 0 : ms)) return false;
+        cameraZoomInteracted = true;
+        var delay = ms == null ? 0 : ms;
+        if (delay <= 0) {
+          syncCommunityLabelPositions();
+          if (areNodeLabelsVisible()) syncLabelPositions();
+          return true;
+        }
+        window.setTimeout(function () {
+          syncCommunityLabelPositions();
+          if (areNodeLabelsVisible()) syncLabelPositions();
+        }, delay + 40);
+        return true;
+      },
+
+      getCommunityLabelZoomScale: function () {
+        return communityLabelZoomScale();
+      },
+
+      getCameraDistance: function () {
+        return getCameraDistance();
+      },
+
+      getBaselineCameraDist: function () {
+        return baselineCameraDist;
       },
 
       applySidebarHighlight: function (d, direct, secondary) {

@@ -79,6 +79,7 @@
   - [x] 图谱页 `graph.html`：修复 3D 社区标签在力引擎收敛后冻结的问题——标签重投影原仅由 `onEngineTick` 驱动（alpha 收敛即停发），现同时挂 `controls` 的 `change` 事件，相机旋转/缩放/飞行动画期间持续跟随（3D 节点名称标签同因并修）；2D 标签在 `gRoot` 组变换内天然跟随，实证无此问题。
   - [x] 图谱页 `graph-3d.js`：修复 3D 社区标签旋转/平移卡顿——相机 `change` 路径改为 rAF 合并 + 缓存世界坐标质心后只做屏幕重投影（避免每帧 O(N) 重算）；定位由 `left/top` 改为 `translate3d`（`will-change: transform`），减少 layout thrash。
   - [x] 图谱页社区漂浮标签：字号随社区节点数缩放（√n 插值，最小 **10px** / 最大 **22px**），胶囊内边距等比跟随；2D SVG `font-size` + 3D HTML overlay 双端一致。
+  - [x] 图谱页 3D 社区漂浮标签：随相机距离（滚轮缩放）与节点一起放大缩小（`translate3d` + `scale`，相对首次适配基线距离，钳制约 0.35–2.75）；2D 标签在 `gRoot` 变换内天然跟随。
 - [x] 首页「互链枢纽 · Top 10」底部入口改为「查看完整榜单 →」，新增 `docs/hubs.html` 全量互链榜单页（数据源 `exports/hub-rankings.json`，全站 / 论文双 tab）。
 ---
 
