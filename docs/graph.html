@@ -327,6 +327,26 @@
     .graph-3d-label.is-topic-hub {
       font-weight: 700;
     }
+    /* 3D 社区聚类中心胶囊标签（HTML overlay，样式对齐 2D .community-label） */
+    .graph-3d-community-label {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .02em;
+      padding: 5px 11px;
+      border-radius: 999px;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+      user-select: none;
+      pointer-events: none;
+      transition: opacity .15s;
+      opacity: 0;
+      visibility: hidden;
+    }
+    [data-theme="light"] .graph-3d-community-label {
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.18);
+    }
 
     /* dot-grid overlay (CSS only) */
     #graph-wrap::before {
@@ -2328,6 +2348,16 @@
         getNodeLabelColor: labelFill,
         getNodeLabelOpacity: computeNodeLabelOpacity,
         isNodeLabelHub: isCurrentTopicHub,
+        areCommunityLabelsVisible: () => communityLabelsVisible(),
+        getCommunityLabelDescriptors: () => getSortedCommunities().map((community) => {
+          const color = communityColorMap.get(community.id) || COMMUNITY_COLORS[9];
+          return {
+            id: community.id,
+            label: shortCommunityLabel(community.id),
+            color,
+            textColor: communityLabelTextColor(color),
+          };
+        }),
         onNodeClick: (d, ev) => {
           if (timelinePlaying) return;
           if (isMobile) {
@@ -4590,13 +4620,16 @@
       });
     }
 
-    /* 显示社区标签（仅「按社区」筛选/着色时可勾选，其余模式置灰；2D 画布聚类中心漂浮显示） */
+    /* 显示社区标签（仅「按社区」筛选/着色时可勾选，其余模式置灰；2D / 3D 聚类中心胶囊显示） */
     if (checkCommunityLabelsEl) {
       syncCommunityLabelsCheckbox();
       checkCommunityLabelsEl.addEventListener('change', ev => {
         showCommunityLabels = !!ev.target.checked;
         syncCommunityLabelsCheckbox();
         updateCommunityLabels();
+        if (graph3dView && typeof graph3dView.syncLabels === 'function') {
+          graph3dView.syncLabels();
+        }
       });
     }
 
