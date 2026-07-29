@@ -330,7 +330,8 @@
     .graph-3d-label.is-topic-hub {
       font-weight: 700;
     }
-    /* 3D 社区聚类中心胶囊标签（HTML overlay，样式对齐 2D .community-label） */
+    /* 3D 社区聚类中心胶囊标签（HTML overlay，样式对齐 2D .community-label）
+       字号/内边距由 JS 按社区节点数缩放（10–18px），此处仅作兜底 */
     .graph-3d-community-label {
       position: absolute;
       left: 0;
@@ -731,7 +732,8 @@
     .node-circle { transition: r .15s, fill-opacity .15s; }
     .node-label { transition: opacity .15s; }
 
-    /* 社区聚类中心漂浮标签（2D 画布）：胶囊卡片 = 社区色圆角底 + 亮度自适应文字 */
+    /* 社区聚类中心漂浮标签（2D 画布）：胶囊卡片 = 社区色圆角底 + 亮度自适应文字
+       字号由 JS 按社区节点数在 10–18px 间缩放，此处仅作兜底 */
     .community-label { pointer-events: none; user-select: none; }
     .community-label-bg {
       filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.35));
@@ -2378,15 +2380,21 @@
         getNodeLabelOpacity: computeNodeLabelOpacity,
         isNodeLabelHub: isCurrentTopicHub,
         areCommunityLabelsVisible: () => communityLabelsVisible(),
-        getCommunityLabelDescriptors: () => getSortedCommunities().map((community) => {
-          const color = communityColorMap.get(community.id) || COMMUNITY_COLORS[9];
-          return {
-            id: community.id,
-            label: shortCommunityLabel(community.id),
-            color,
-            textColor: communityLabelTextColor(color),
-          };
-        }),
+        getCommunityLabelDescriptors: () => {
+          const sizeRange = communityLabelSizeRange();
+          return getSortedCommunities().map((community) => {
+            const color = communityColorMap.get(community.id) || COMMUNITY_COLORS[9];
+            const count = community.size || 0;
+            return {
+              id: community.id,
+              label: shortCommunityLabel(community.id),
+              color,
+              textColor: communityLabelTextColor(color),
+              count,
+              fontSize: communityLabelFontSize(count, sizeRange.min, sizeRange.max),
+            };
+          });
+        },
         onNodeClick: (d, ev) => {
           if (timelinePlaying) return;
           if (isMobile) {
@@ -3130,8 +3138,32 @@
         a.sx += d.x; a.sy += d.y; a.n += 1;
       }
       const out = [];
-      acc.forEach((a, id) => out.push({ id, x: a.sx / a.n, y: a.sy / a.n }));
+      acc.forEach((a, id) => out.push({ id, x: a.sx / a.n, y: a.sy / a.n, n: a.n }));
       return out;
+    }
+
+    // 漂浮标签字号随社区节点数变化：最小 10px / 最大 18px，按 √n 插值（缓和大小社区落差）
+    const COMMUNITY_LABEL_FONT_MIN = 10;
+    const COMMUNITY_LABEL_FONT_MAX = 18;
+
+    function communityLabelSizeRange() {
+      const sizes = getSortedCommunities()
+        .map((c) => c.size || 0)
+        .filter((n) => n > 0);
+      if (!sizes.length) return { min: 1, max: 1 };
+      return { min: Math.min(...sizes), max: Math.max(...sizes) };
+    }
+
+    function communityLabelFontSize(count, countMin, countMax) {
+      const n = Math.max(0, Number(count) || 0);
+      if (countMax <= countMin) {
+        return (COMMUNITY_LABEL_FONT_MIN + COMMUNITY_LABEL_FONT_MAX) / 2;
+      }
+      const clamped = Math.max(countMin, Math.min(countMax, n));
+      const t = (Math.sqrt(clamped) - Math.sqrt(countMin))
+        / (Math.sqrt(countMax) - Math.sqrt(countMin));
+      return COMMUNITY_LABEL_FONT_MIN
+        + Math.max(0, Math.min(1, t)) * (COMMUNITY_LABEL_FONT_MAX - COMMUNITY_LABEL_FONT_MIN);
     }
 
     // 胶囊底色为社区色，文字色按底色亮度自适应（深色底白字 / 浅色底深色字）
@@ -3145,8 +3177,7 @@
 
     function updateCommunityLabels() {
       const data = communityLabelsVisible() ? computeCommunityCentroids() : [];
-      const PAD_X = 9;
-      const PAD_Y = 4.5;
+      const sizeRange = communityLabelSizeRange();
       const sel = gCommunityLabels.selectAll('g.community-label')
         .data(data, d => d.id)
         .join(
@@ -3164,23 +3195,36 @@
         );
       sel.select('text.community-label-text')
         .text(d => shortCommunityLabel(d.id))
+        .attr('font-size', d => {
+          const meta = communityMetaMap.get(d.id);
+          const count = (meta && meta.size != null) ? meta.size : d.n;
+          return communityLabelFontSize(count, sizeRange.min, sizeRange.max) + 'px';
+        })
         .attr('fill', d => communityLabelTextColor(communityColorMap.get(d.id)));
       sel.select('rect.community-label-bg')
         .attr('fill', d => communityColorMap.get(d.id) || COMMUNITY_COLORS[9])
         .attr('fill-opacity', 0.92);
-      // 仅在文本内容变化的 enter 节点上量一次 bbox，按文字尺寸撑出胶囊底
-      sel.filter(function () { return !this.__labelSized; })
-        .each(function () {
-          const textEl = this.querySelector('text.community-label-text');
-          const bb = textEl.getBBox();
-          d3.select(this).select('rect.community-label-bg')
-            .attr('x', bb.x - PAD_X)
-            .attr('y', bb.y - PAD_Y)
-            .attr('width', bb.width + PAD_X * 2)
-            .attr('height', bb.height + PAD_Y * 2)
-            .attr('rx', (bb.height + PAD_Y * 2) / 2);
-          this.__labelSized = true;
-        });
+      // 字号或文本变化时重测 bbox；内边距随字号相对 13px 基准略缩放
+      sel.each(function (d) {
+        const textEl = this.querySelector('text.community-label-text');
+        if (!textEl) return;
+        const meta = communityMetaMap.get(d.id);
+        const count = (meta && meta.size != null) ? meta.size : d.n;
+        const fontSize = communityLabelFontSize(count, sizeRange.min, sizeRange.max);
+        const sizedKey = shortCommunityLabel(d.id) + '|' + fontSize.toFixed(2);
+        if (this.__labelSizedKey === sizedKey) return;
+        const scale = fontSize / 13;
+        const padX = 9 * scale;
+        const padY = 4.5 * scale;
+        const bb = textEl.getBBox();
+        d3.select(this).select('rect.community-label-bg')
+          .attr('x', bb.x - padX)
+          .attr('y', bb.y - padY)
+          .attr('width', bb.width + padX * 2)
+          .attr('height', bb.height + padY * 2)
+          .attr('rx', (bb.height + padY * 2) / 2);
+        this.__labelSizedKey = sizedKey;
+      });
       sel.attr('transform', d => `translate(${d.x},${d.y})`);
     }
 
