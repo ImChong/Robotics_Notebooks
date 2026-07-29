@@ -193,6 +193,12 @@
     var labelsLayoutReady = false;
     var baselineCameraDist = null;
     var cameraZoomInteracted = false;
+    // 社区质心世界坐标缓存：相机旋转时节点坐标不变，避免每帧 O(N) 重算。
+    var communityCentroidsCache = null;
+    var communityCentroidsDirty = true;
+    var cameraLabelSyncRaf = 0;
+    // 屏幕坐标写入阈值（px）：亚像素抖动不写 DOM，减轻 layout/compositor 压力。
+    var LABEL_POS_EPS = 0.35;
 
     var nodes3d = sourceNodes.map(cloneNodeFor3D);
     var sidebarNodeId = null;
@@ -276,6 +282,7 @@
       if (!layer) return;
       labelEls.clear();
       communityLabelEls.clear();   // innerHTML='' 会一并清掉社区胶囊，重建时重新创建
+      invalidateCommunityCentroids3D();
       layer.innerHTML = '';
       sourceNodes.forEach(function (src) {
         var el = document.createElement('div');
@@ -310,8 +317,8 @@
         el.style.fontSize = getNodeLabelFontSize(src) + 'px';
         el.classList.toggle('is-topic-hub', !!isNodeLabelHub(src));
         var opacity = effectiveLabelOpacity(d);
-        el.style.opacity = String(opacity);
-        el.style.visibility = opacity > 0.02 ? 'visible' : 'hidden';
+        var on = opacity > 0.02;
+        setLabelVisible(el, on, on ? String(opacity) : '0');
       });
     }
 
@@ -319,8 +326,7 @@
       if (!graph || container.hidden || !labelLayer) return;
       if (!areNodeLabelsVisible()) {
         labelEls.forEach(function (el) {
-          el.style.opacity = '0';
-          el.style.visibility = 'hidden';
+          setLabelVisible(el, false);
         });
         return;
       }
@@ -336,24 +342,45 @@
         var src = resolveSourceNode(d.id) || d;
         var center = graph.graph2ScreenCoords(d.x, d.y, z);
         if (!center || !isFinite(center.x) || !isFinite(center.y)) {
-          el.style.visibility = 'hidden';
+          setLabelVisible(el, false);
           return;
         }
         var rimY = getNodeRadius(src) + 13;
         var bottom = graph.graph2ScreenCoords(d.x, d.y + rimY, z);
         var topY = bottom && isFinite(bottom.y) ? bottom.y : center.y + 12;
-        el.style.left = center.x + 'px';
-        el.style.top = topY + 'px';
+        setLabelScreenPos(el, center.x, topY, 'translate3d(' + center.x + 'px,' + topY + 'px,0) translate(-50%,0)');
         var opacity = effectiveLabelOpacity(d);
-        el.style.opacity = String(opacity);
-        el.style.visibility = opacity > 0.02 ? 'visible' : 'hidden';
+        var on = opacity > 0.02;
+        setLabelVisible(el, on, on ? String(opacity) : '0');
       });
+    }
+
+    function setLabelScreenPos(el, x, y, transformValue) {
+      if (el._lx != null
+          && Math.abs(el._lx - x) < LABEL_POS_EPS
+          && Math.abs(el._ly - y) < LABEL_POS_EPS) {
+        return;
+      }
+      el._lx = x;
+      el._ly = y;
+      el.style.transform = transformValue;
+    }
+
+    function setLabelVisible(el, on, opacityStr) {
+      var nextOpacity = on ? (opacityStr != null ? opacityStr : '1') : '0';
+      if (el._on === on && el._op === nextOpacity) return;
+      el._on = on;
+      el._op = nextOpacity;
+      el.style.opacity = nextOpacity;
+      el.style.visibility = on ? 'visible' : 'hidden';
     }
 
     function bindLabelTick() {
       if (labelTickBound || !graph) return;
       labelTickBound = true;
       graph.onEngineTick(function () {
+        // 力引擎推进时节点世界坐标在变 → 质心缓存失效
+        invalidateCommunityCentroids3D();
         syncCommunityLabelPositions();
         if (!areNodeLabelsVisible()) return;
         maybeMarkLabelsLayoutReady();
@@ -367,6 +394,7 @@
     // 引擎收敛（alpha < d3AlphaMin）后 onEngineTick 停发；相机旋转/缩放/飞行动画只走渲染环，
     // 不重投影则标签冻结在旧屏幕坐标。TrackballControls 的 'change' 事件覆盖一切相机位移
     // （手动拖拽、滚轮缩放、cameraPosition 飞行动画），在此同步标签。
+    // 用 rAF 合并同帧多次 change，且只做「缓存质心 → 屏幕投影」，避免每帧 O(N) 重算质心。
     // controls 与 renderer 同在库 init digest 创建，未就绪时下一帧重试（有上限兜底）。
     function bindCameraLabelSync(attempt) {
       if (cameraLabelSyncBound || !graph) return;
@@ -379,8 +407,13 @@
       cameraLabelSyncBound = true;
       controls.addEventListener('change', function () {
         if (container.hidden) return;
-        syncCommunityLabelPositions();
-        if (areNodeLabelsVisible()) syncLabelPositions();
+        if (cameraLabelSyncRaf) return;
+        cameraLabelSyncRaf = window.requestAnimationFrame(function () {
+          cameraLabelSyncRaf = 0;
+          if (!graph || container.hidden) return;
+          syncCommunityLabelPositions();
+          if (areNodeLabelsVisible()) syncLabelPositions();
+        });
       });
     }
 
@@ -413,6 +446,11 @@
     }
 
     /* ── 社区聚类中心胶囊标签 ── */
+    function invalidateCommunityCentroids3D() {
+      communityCentroidsDirty = true;
+      communityCentroidsCache = null;
+    }
+
     function ensureCommunityLabelEls() {
       var layer = ensureLabelLayer();
       if (!layer) return;
@@ -450,30 +488,40 @@
       return out;
     }
 
+    function getCommunityCentroids3D() {
+      if (!communityCentroidsDirty && communityCentroidsCache) return communityCentroidsCache;
+      communityCentroidsCache = computeCommunityCentroids3D();
+      communityCentroidsDirty = false;
+      return communityCentroidsCache;
+    }
+
     function syncCommunityLabelPositions() {
       if (!labelLayer || communityLabelEls.size === 0) return;
       var hide = !areCommunityLabelsVisible() || container.hidden || timelineActive() || !graph;
       var seen = new Set();
       if (!hide) {
-        computeCommunityCentroids3D().forEach(function (c) {
+        // 相机旋转路径只读缓存；引擎 tick / syncLabels 会先 invalidate。
+        getCommunityCentroids3D().forEach(function (c) {
           var el = communityLabelEls.get(c.id);
           if (!el) return;
           var p = graph.graph2ScreenCoords(c.x, c.y, c.z);
           if (!p || !isFinite(p.x) || !isFinite(p.y)) return;
           seen.add(c.id);
-          el.style.left = p.x + 'px';
-          el.style.top = p.y + 'px';
+          setLabelScreenPos(
+            el, p.x, p.y,
+            'translate3d(' + p.x + 'px,' + p.y + 'px,0) translate(-50%,-50%)'
+          );
         });
       }
       communityLabelEls.forEach(function (el, id) {
-        var on = !hide && seen.has(id);
-        el.style.opacity = on ? '1' : '0';
-        el.style.visibility = on ? 'visible' : 'hidden';
+        setLabelVisible(el, !hide && seen.has(id));
       });
     }
 
     function syncLabels() {
       ensureCommunityLabelEls();
+      // 全量同步（筛选/外观/数据变更）时质心可能变，强制重算一次。
+      invalidateCommunityCentroids3D();
       syncLabelPositions();
       syncLabelStyles();
       syncCommunityLabelPositions();
@@ -1421,11 +1469,18 @@
         container.removeEventListener('mousemove', onContainerPointerMove);
         container.removeEventListener('pointermove', onContainerPointerMove);
         window.removeEventListener('error', reviveRenderLoopOnError);
+        if (cameraLabelSyncRaf) {
+          window.cancelAnimationFrame(cameraLabelSyncRaf);
+          cameraLabelSyncRaf = 0;
+        }
         if (graph && graph._destructor) graph._destructor();
         graph = null;
         labelLayer = null;
         labelEls.clear();
+        communityLabelEls.clear();
+        invalidateCommunityCentroids3D();
         labelTickBound = false;
+        cameraLabelSyncBound = false;
         container.replaceChildren();
       },
     };

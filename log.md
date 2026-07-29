@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-29] structural | docs/graph-3d.js — 修复 3D 社区标签旋转/平移卡顿：质心缓存 + rAF 合并 + translate3d 定位
+
+- **根因：** 相机 `controls.change` 每事件同步调用 `computeCommunityCentroids3D()`（O(节点数)）并写 `left/top`，拖拽时同帧多次触发 → 标签一卡一卡
+- **修复：** [`docs/graph-3d.js`](docs/graph-3d.js) — 世界坐标质心缓存（仅引擎 tick / 全量 sync 失效）；`change` 经 rAF 合并后只做屏幕重投影；[`docs/graph.html`](docs/graph.html) 标签改 `translate3d` + `will-change: transform`
+- **验证：** [`scripts/verify_graph_3d_label_smooth.cjs`](scripts/verify_graph_3d_label_smooth.cjs)；同步更新 3D/跟随验证脚本读 transform 坐标
+
 ## [2026-07-29] structural | docs/graph.html — 图谱「显示社区标签」改为默认开启，用户可在参数浮窗自行关闭
 
 - **改动：** [`docs/graph.html`](docs/graph.html) — `showCommunityLabels` 默认 `true`，参数面板勾选框默认 `checked`；非「按社区」模式仍置灰不可选
