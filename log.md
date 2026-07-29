@@ -3,6 +3,7 @@
 ## [2026-07-29] structural | docs/graph.html — 图谱「显示社区标签」改为默认开启，用户可在参数浮窗自行关闭
 
 - **改动：** [`docs/graph.html`](docs/graph.html) — `showCommunityLabels` 默认 `true`，参数面板勾选框默认 `checked`；非「按社区」模式仍置灰不可选
+- **附带修复：** 将 `searchQuery` 提前声明，避免默认开启后 simulation tick → `hasActiveGraphFilter` 踩 `let` TDZ 导致图谱加载卡住
 - **验证脚本：** [`scripts/verify_graph_community_labels.cjs`](scripts/verify_graph_community_labels.cjs)、[`scripts/verify_graph_community_labels_3d.cjs`](scripts/verify_graph_community_labels_3d.cjs)、[`scripts/verify_graph_community_labels_follow.cjs`](scripts/verify_graph_community_labels_follow.cjs) — 对齐默认开启口径
 - **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md)
 

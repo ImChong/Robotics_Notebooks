@@ -2247,6 +2247,9 @@
     let showCommunityLabels = true;
     const checkCommunityLabelsEl = document.getElementById('check-community-labels');
     const communityLabelsToggleEl = document.getElementById('community-labels-toggle');
+    // 提前声明：社区标签默认开启后，simulation tick → updateCommunityLabels → hasActiveGraphFilter
+    // 会在下方「搜索」区块初始化前读到 searchQuery；用 let 晚声明会踩 TDZ。
+    let searchQuery = '';
 
     function communityLabelsVisible() {
       return showCommunityLabels && colorMode === 'community' && !timelineAnimating;
@@ -3884,7 +3887,6 @@
     }
 
     /* ── 搜索 ── */
-    let searchQuery = '';
     document.getElementById('graph-search').addEventListener('input', ev => {
       searchQuery = ev.target.value.trim().toLowerCase();
       applyFilters();
