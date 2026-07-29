@@ -355,14 +355,18 @@
       });
     }
 
-    function setLabelScreenPos(el, x, y, transformValue) {
+    function setLabelScreenPos(el, x, y, transformValue, scaleKey) {
+      var sk = (scaleKey != null && isFinite(scaleKey)) ? scaleKey : 1;
       if (el._lx != null
           && Math.abs(el._lx - x) < LABEL_POS_EPS
-          && Math.abs(el._ly - y) < LABEL_POS_EPS) {
+          && Math.abs(el._ly - y) < LABEL_POS_EPS
+          && el._lz != null
+          && Math.abs(el._lz - sk) < 0.002) {
         return;
       }
       el._lx = x;
       el._ly = y;
+      el._lz = sk;
       el.style.transform = transformValue;
     }
 
@@ -500,11 +504,21 @@
       return communityCentroidsCache;
     }
 
+    function communityLabelZoomScale() {
+      // 节点名称关闭时也可能只显示社区胶囊，仍需有缩放基准
+      if (!baselineCameraDist) captureBaselineCameraDist();
+      var zf = getLabelZoomFactor();
+      if (!isFinite(zf) || zf <= 0) return 1;
+      // 与节点一起放大缩小；钳制避免滚轮极限下胶囊过大/过小
+      return Math.max(0.35, Math.min(2.75, zf));
+    }
+
     function syncCommunityLabelPositions() {
       if (!labelLayer || communityLabelEls.size === 0) return;
       var hide = !areCommunityLabelsVisible() || container.hidden || timelineActive() || !graph;
       var seen = new Set();
       if (!hide) {
+        var zf = communityLabelZoomScale();
         // 相机旋转路径只读缓存；引擎 tick / syncLabels 会先 invalidate。
         getCommunityCentroids3D().forEach(function (c) {
           var el = communityLabelEls.get(c.id);
@@ -514,7 +528,8 @@
           seen.add(c.id);
           setLabelScreenPos(
             el, p.x, p.y,
-            'translate3d(' + p.x + 'px,' + p.y + 'px,0) translate(-50%,-50%)'
+            'translate3d(' + p.x + 'px,' + p.y + 'px,0) translate(-50%,-50%) scale(' + zf + ')',
+            zf
           );
         });
       }

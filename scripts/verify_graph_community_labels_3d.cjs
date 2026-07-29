@@ -55,6 +55,13 @@ const path = require('path');
       const fontSizes = visible.map((el) => parseFloat(el.style.fontSize)).filter((n) => Number.isFinite(n));
       const fontMin = fontSizes.length ? Math.min(...fontSizes) : null;
       const fontMax = fontSizes.length ? Math.max(...fontSizes) : null;
+      const parseScale = (transform) => {
+        const m = /scale\(([-0-9.]+)\)/.exec(transform || '');
+        return m ? parseFloat(m[1]) : 1;
+      };
+      const scales = visible.map((el) => parseScale(el.style.transform));
+      const scaleMin = scales.length ? Math.min(...scales) : null;
+      const scaleMax = scales.length ? Math.max(...scales) : null;
       return {
         disabled: cb ? cb.disabled : null,
         checked: cb ? cb.checked : null,
@@ -64,6 +71,9 @@ const path = require('path');
         fontSizes,
         fontMin,
         fontMax,
+        scaleMin,
+        scaleMax,
+        sampleScale: scales[0] != null ? scales[0] : null,
         pillStyleOk: visible.every((el) => {
           const cs = getComputedStyle(el);
           // inline background 读回时被浏览器规范化为 rgb(...) 形式
@@ -81,6 +91,7 @@ const path = require('path');
           color: el.style.color,
         })),
         usesTransform: visible.every((el) => /translate3d\(/.test(el.style.transform || '')),
+        usesZoomScale: visible.every((el) => /scale\(/.test(el.style.transform || '')),
       };
     });
 
@@ -105,6 +116,8 @@ const path = require('path');
     check('3D 默认开启：标签在视口内', s.inViewport === true);
     check('3D 默认开启：胶囊样式（999px 圆角 + 社区色背景）', s.pillStyleOk === true);
     check('3D 默认开启：位置用 translate3d（非 left/top）', s.usesTransform === true);
+    check('3D 默认开启：transform 含 scale（随相机缩放）', s.usesZoomScale === true,
+      `sample=${s.sample && s.sample[0] && s.sample[0].transform}`);
     check('3D 默认开启：字号随社区节点数缩放（约 10–22px 且存在差异）',
       s.fontMin != null && s.fontMax != null
         && s.fontMin >= 9.5 && s.fontMax <= 22.5
@@ -112,6 +125,33 @@ const path = require('path');
       `min=${s.fontMin} max=${s.fontMax}`);
     console.log('  标签示例:', JSON.stringify(s.sample));
     await page.screenshot({ path: path.join(outDir, 'graph-community-labels-3d-on.png') });
+
+    // 滚轮放大：胶囊 scale 应变大（与节点一起放大）
+    const scaleBeforeZoomIn = s.sampleScale;
+    await page.mouse.move(720, 450);
+    for (let i = 0; i < 8; i++) {
+      await page.mouse.wheel({ deltaY: -120 });
+      await new Promise((r) => setTimeout(r, 80));
+    }
+    await new Promise((r) => setTimeout(r, 500));
+    s = await labelState();
+    check('3D 滚轮放大：社区标签 scale 增大',
+      s.sampleScale != null && scaleBeforeZoomIn != null && s.sampleScale > scaleBeforeZoomIn + 0.05,
+      `before=${scaleBeforeZoomIn} after=${s.sampleScale}`);
+    await page.screenshot({ path: path.join(outDir, 'graph-community-labels-3d-zoomed-in.png') });
+
+    // 滚轮缩小：相对放大后应变小
+    const scaleAfterZoomIn = s.sampleScale;
+    for (let i = 0; i < 16; i++) {
+      await page.mouse.wheel({ deltaY: 120 });
+      await new Promise((r) => setTimeout(r, 80));
+    }
+    await new Promise((r) => setTimeout(r, 500));
+    s = await labelState();
+    check('3D 滚轮缩小：社区标签 scale 减小',
+      s.sampleScale != null && scaleAfterZoomIn != null && s.sampleScale < scaleAfterZoomIn - 0.05,
+      `before=${scaleAfterZoomIn} after=${s.sampleScale}`);
+    await page.screenshot({ path: path.join(outDir, 'graph-community-labels-3d-zoomed-out.png') });
 
     // 取消勾选 → 全部隐藏
     await page.click('#check-community-labels');
