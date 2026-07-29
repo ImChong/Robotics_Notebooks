@@ -191,5 +191,80 @@ class WikiActivityFromLogTest(unittest.TestCase):
         self.assertEqual([d["date"] for d in out], ["2026-05-27"])
 
 
+class WikiLastLogDatesTest(unittest.TestCase):
+    """wiki_last_log_dates：节点 → log.md 最近活跃日（「更新明度渐变」时间口径）。"""
+
+    def setUp(self) -> None:
+        self.existing_paths: list[str] = []
+        for candidate in [
+            "wiki/concepts/sim2real.md",
+            "wiki/concepts/system-identification.md",
+            "wiki/tasks/locomotion.md",
+            "wiki/methods/reinforcement-learning.md",
+        ]:
+            if _wiki_path_for(candidate).is_file():
+                self.existing_paths.append(candidate)
+        if len(self.existing_paths) < 3:
+            self.skipTest("仓库中可用 wiki 节点不足以执行测试")
+        self.nodes = [_node(rel) for rel in self.existing_paths]
+        self._tmpdir = tempfile.TemporaryDirectory()
+        self.addCleanup(self._tmpdir.cleanup)
+        self._fake_log_path = Path(self._tmpdir.name) / "log.md"
+
+    def _write_log(self, blocks: list[tuple[str, list[str]]]) -> None:
+        chunks: list[str] = []
+        for log_date, paths in blocks:
+            lines = [f"## [{log_date}] ingest"]
+            for p in paths:
+                lines.append(f"- 接入 {p}")
+            chunks.append("\n".join(lines) + "\n")
+        self._fake_log_path.write_text("\n".join(chunks), encoding="utf-8")
+
+    def _patched_log(self):
+        return mock.patch.object(glg, "LOG_MD_PATH", self._fake_log_path)
+
+    def test_returns_latest_date_per_node(self) -> None:
+        # log.md 约定新记录在上：首块为最近日期
+        self._write_log(
+            [
+                ("2026-05-28", self.existing_paths[:2]),
+                ("2026-05-27", self.existing_paths[:3]),
+            ]
+        )
+        with self._patched_log():
+            out = glg.wiki_last_log_dates(self.nodes)
+        self.assertEqual(out[self.existing_paths[0]], "2026-05-28")
+        self.assertEqual(out[self.existing_paths[1]], "2026-05-28")
+        self.assertEqual(out[self.existing_paths[2]], "2026-05-27")
+
+    def test_nodes_absent_from_log_are_omitted(self) -> None:
+        self._write_log([("2026-05-28", self.existing_paths[:1])])
+        with self._patched_log():
+            out = glg.wiki_last_log_dates(self.nodes)
+        self.assertEqual(sorted(out), self.existing_paths[:1])
+
+    def test_unknown_paths_are_dropped(self) -> None:
+        self._write_log(
+            [
+                (
+                    "2026-05-28",
+                    ["wiki/concepts/definitely-not-a-page.md", self.existing_paths[0]],
+                )
+            ]
+        )
+        with self._patched_log():
+            out = glg.wiki_last_log_dates(self.nodes)
+        self.assertEqual(sorted(out), self.existing_paths[:1])
+
+    def test_glob_patterns_expand(self) -> None:
+        self._write_log([("2026-05-28", ["`wiki/concepts/*.md`"])])
+        with self._patched_log():
+            out = glg.wiki_last_log_dates(self.nodes)
+        concept_nodes = [p for p in self.existing_paths if p.startswith("wiki/concepts/")]
+        self.assertTrue(concept_nodes)
+        for rel in concept_nodes:
+            self.assertEqual(out.get(rel), "2026-05-28")
+
+
 if __name__ == "__main__":  # pragma: no cover
     unittest.main()

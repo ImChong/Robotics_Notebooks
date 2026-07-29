@@ -155,6 +155,8 @@
     var sourceNodes = opts.nodes || [];
     var edges = opts.edges || [];
     var getNodeColor = opts.getNodeColor || function () { return '#64748b'; };
+    // 更新明度渐变系数（1 = 全亮）：由 graph.html 按节点 recency 注入，关闭时恒为 1。
+    var getNodeDim = opts.getNodeDim || function () { return 1; };
     var getNodeRadius = opts.getNodeRadius || function () { return 6; };
     var getLinkColor = opts.getLinkColor || function () { return 'rgba(255,255,255,0.07)'; };
     var getLinkWidth = opts.getLinkWidth || function () { return 1; };
@@ -512,21 +514,23 @@
     function nodeOpacityFor(d) {
       // 时序激活模式下子集内节点全部点亮（不参与 hover/侧栏淡化），未激活节点根本不在图里。
       if (timelineActive()) return 1;
+      // 更新明度渐变：按节点 recency 注入的明暗系数，关闭时恒为 1 不影响既有淡化逻辑。
+      var dim = getNodeDim(d);
       var visible = getVisibleNodeIds();
       var filtered = hasActiveFilter();
       var ok = visible.has(d.id);
       if (sidebarNodeId) {
-        if (d.id === sidebarNodeId || sidebarDirect.has(d.id)) return 1;
-        if (sidebarSecondary.has(d.id)) return 0.4;
-        return 0.05;
+        if (d.id === sidebarNodeId || sidebarDirect.has(d.id)) return dim;
+        if (sidebarSecondary.has(d.id)) return 0.4 * dim;
+        return 0.05 * dim;
       }
       if (hoverNodeId) {
-        if (!filtered) return hoverNodeId === d.id || isNeighborOf(hoverNodeId, d.id) ? 1 : 0.15;
-        if (!ok) return 0.08;
-        return hoverNodeId === d.id || isNeighborOf(hoverNodeId, d.id) ? 1 : 0.15;
+        if (!filtered) return (hoverNodeId === d.id || isNeighborOf(hoverNodeId, d.id) ? 1 : 0.15) * dim;
+        if (!ok) return 0.08 * dim;
+        return (hoverNodeId === d.id || isNeighborOf(hoverNodeId, d.id) ? 1 : 0.15) * dim;
       }
-      if (!filtered) return 1;
-      return ok ? 1 : 0.08;
+      if (!filtered) return dim;
+      return (ok ? 1 : 0.08) * dim;
     }
 
     function isNeighborOf(nodeId, otherId) {
