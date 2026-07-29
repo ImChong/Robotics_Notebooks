@@ -159,6 +159,7 @@ INFO_ONLY_KEYS: set[str] = {
     "embodied_fm_crosslink",
     "eval_benchmark_crosslink",
     "actuator_drive_chain_crosslink",
+    "perception_stack_crosslink",
 }
 
 
@@ -322,6 +323,7 @@ def _empty_results() -> dict[str, Any]:
         "embodied_fm_crosslink": [],
         "eval_benchmark_crosslink": [],
         "actuator_drive_chain_crosslink": [],
+        "perception_stack_crosslink": [],
         "_ingest_covered": 0,
         "_ingest_total": 0,
     }
@@ -1458,6 +1460,59 @@ def _check_actuator_drive_chain_crosslink(pages: list[Path], results: dict[str, 
             results["actuator_drive_chain_crosslink"].append(str(rel))
 
 
+PERCEPTION_STACK_HUBS: tuple[str, ...] = (
+    "robot-perception-stack-selection-loop",
+    "topic-perception-stack",
+)
+
+# 关键词以连字符 token 前缀方式匹配 tag，覆盖 object-detection / instance-segmentation
+# / semantic-mapping / promptable-segmentation 等派生标签，避免裸子串误判
+PERCEPTION_STACK_TAG_KEYWORDS: tuple[str, ...] = (
+    "detection",
+    "segmentation",
+    "perception",
+    "semantic",
+)
+
+
+def _check_perception_stack_crosslink(pages: list[Path], results: dict[str, Any]) -> None:
+    """V31: 感知栈页交叉链路巡检 V1（信息型，不阻塞 CI）。
+
+    对 frontmatter ``tags`` 含 ``detection`` / ``segmentation`` / ``perception`` /
+    ``semantic``(-mapping)（以连字符 token 前缀方式匹配派生标签）的
+    ``wiki/entities/*`` / ``wiki/comparisons/*`` / ``wiki/concepts/*`` /
+    ``wiki/methods/*`` 页，检查正文是否回链到「机器人视觉感知栈选型闭环」专题枢纽页
+    （``robot-perception-stack-selection-loop`` / ``topic-perception-stack``）。
+    缺失回链作为 INFO 级提示写入 lint 报告，沉淀机器人视觉感知栈选型闭环知识链的
+    交叉链路基线，不计入 lint 失败总数。枢纽页自身豁免。
+    """
+    for page in pages:
+        rel = page.relative_to(REPO_ROOT)
+        parts = rel.parts
+        if (
+            len(parts) < 3
+            or parts[0] != "wiki"
+            or parts[1] not in ("entities", "comparisons", "concepts", "methods")
+        ):
+            continue
+        if page.stem in PERCEPTION_STACK_HUBS:
+            continue
+
+        content = page.read_text(encoding="utf-8")
+        fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
+        fm_block = fm_match.group(1) if fm_match else ""
+        # tags 既支持列表式（- object-detection），也支持内联式 [object-detection, ...]
+        tags = _frontmatter_tags(fm_block)
+        inline = re.search(r"^tags:\s*\[([^\]]*)\]", fm_block, re.MULTILINE)
+        if inline:
+            tags |= {t.strip().lower() for t in inline.group(1).split(",")}
+        if not _tag_keyword_match(tags, PERCEPTION_STACK_TAG_KEYWORDS):
+            continue
+
+        if not any(hub in content for hub in PERCEPTION_STACK_HUBS):
+            results["perception_stack_crosslink"].append(str(rel))
+
+
 def _check_tool_institutions(pages: list[Path], results: dict[str, Any]) -> None:
     """entities/ 软件工具页须能派生至少一个所属机构（见 schema/institutions.json）。"""
     from bump_institution_tags import (
@@ -1552,6 +1607,7 @@ def lint() -> dict[str, Any]:
     _check_embodied_fm_crosslink(pages, results)
     _check_eval_benchmark_crosslink(pages, results)
     _check_actuator_drive_chain_crosslink(pages, results)
+    _check_perception_stack_crosslink(pages, results)
     _check_tool_institutions(pages, results)
 
     return results
@@ -1692,6 +1748,11 @@ def format_report(results: dict[str, Any]) -> str:
         (
             "actuator_drive_chain_crosslink",
             "actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」专题枢纽（信息型，不阻塞 CI）",
+            "💡",
+        ),
+        (
+            "perception_stack_crosslink",
+            "detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」专题枢纽（信息型，不阻塞 CI）",
             "💡",
         ),
     ]

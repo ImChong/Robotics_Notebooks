@@ -2,7 +2,7 @@
 
 ## [2026-07-29] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **3** 条信息型预警）：
+共发现 **0** 个问题（另含 **75** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -138,5 +138,79 @@
 
 ### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
+
+### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」专题枢纽（信息型，不阻塞 CI）（72 个）
+- wiki/comparisons/anygrasp-vs-graspnet.md
+- wiki/comparisons/cnn-vs-vit-backbones.md
+- wiki/comparisons/kalman-filter-vs-optimization-based-estimation.md
+- wiki/concepts/generative-vision-pretraining.md
+- wiki/concepts/perception-coordinate-postprocessing.md
+- wiki/concepts/sensor-fusion.md
+- wiki/concepts/soccer-field-simulation.md
+- wiki/concepts/tactile-sensing.md
+- wiki/concepts/terrain-adaptation.md
+- wiki/concepts/terrain-latent-representation.md
+- wiki/concepts/vision-backbones.md
+- wiki/concepts/vision-transformer.md
+- wiki/concepts/visual-representation-for-policy.md
+- wiki/concepts/visuo-tactile-fusion.md
+- wiki/entities/aeris-10-plfm-radar.md
+- wiki/entities/agibot-agile.md
+- wiki/entities/anygrasp.md
+- wiki/entities/april-tag.md
+- wiki/entities/autoware.md
+- wiki/entities/booster-robocup-demo.md
+- wiki/entities/dreamwaq-plus.md
+- wiki/entities/dualmap.md
+- wiki/entities/extreme-parkour.md
+- wiki/entities/flexion-reflect-v1.md
+- wiki/entities/gel-slim.md
+- wiki/entities/genception.md
+- wiki/entities/gnm-head.md
+- wiki/entities/intel-realsense.md
+- wiki/entities/kimera.md
+- wiki/entities/mediapipe.md
+- wiki/entities/ov-sam3d.md
+- wiki/entities/ovo-semantic-mapping.md
+- wiki/entities/paper-argus-dynamic-symmetry.md
+- wiki/entities/paper-autonomous-spot-nebula-exploration.md
+- wiki/entities/paper-clothtransformer-unified-latent-cloth-simulation.md
+- wiki/entities/paper-co-calib-multi-fisheye-calibration.md
+- wiki/entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md
+- wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md
+- wiki/entities/paper-flap-fov-active-perception-3d-navigation.md
+- wiki/entities/paper-halomi-humanoid-loco-manipulation.md
+- wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md
+- wiki/entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md
+- wiki/entities/paper-microsaccade-inspired-event-camera.md
+- wiki/entities/paper-notebook-a-hierarchical-model-based-system-for-high-perfo.md
+- wiki/entities/paper-notebook-lookout.md
+- wiki/entities/paper-now-you-see-that-humanoid-vision-locomotion.md
+- wiki/entities/paper-pilot-perceptive-loco-manipulation.md
+- wiki/entities/paper-resnet-deep-residual-learning.md
+- wiki/entities/paper-robonaldo-humanoid-soccer-shooting.md
+- wiki/entities/paper-robustness-robotic-manipulation-survey.md
+- wiki/entities/paper-ssr-humanoid-open-world-traversal.md
+- wiki/entities/paper-swap-parkour.md
+- wiki/entities/paper-vidihand.md
+- wiki/entities/paper-vision-aided-dynamic-exploration-mini-cheetah.md
+- wiki/entities/paper-vs-graphs-visual-slam-scene-graph.md
+- wiki/entities/project-instinct.md
+- wiki/entities/roboflow-sports.md
+- wiki/entities/sam-3d-body.md
+- wiki/entities/sam3dbody-cpp.md
+- wiki/entities/unilidar-sdk2.md
+- wiki/entities/vision-banana.md
+- wiki/methods/attention-foot-placement.md
+- wiki/methods/contact-net.md
+- wiki/methods/genmo.md
+- wiki/methods/grasp-pose-estimation.md
+- wiki/methods/lingbot-map.md
+- wiki/methods/object-detection.md
+- wiki/methods/paid-framework.md
+- wiki/methods/pie-perceptive-locomotion.md
+- wiki/methods/soccer-field-line-detection.md
+- wiki/methods/visual-servoing.md
+- wiki/methods/wilor.md
 
 📊 Sources 覆盖率：1927/1953 (99%) wiki/entity 页有 ingest 来源
