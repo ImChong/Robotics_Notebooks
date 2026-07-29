@@ -142,7 +142,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 
 **Implicit vs Explicit 执行器模型：** 在 Isaac Lab / mjlab 等栈中，**implicit** 由物理引擎内部积分 PD 并算力矩，训练常更稳；**explicit** 由用户侧模型（理想 PD、DC 电机、[Actuator Network](../methods/actuator-network.md) 等）先算 $\tau$ 再写入仿真，更贴近真机饱和与延迟，但数值更挑参。官方文档明确：**implicit 上训练的策略换到 explicit 模型不一定直接迁移**；不稳定时可增大 [Armature](./armature-modeling.md)。详见 [Implicit / Explicit 执行器建模](./implicit-explicit-actuator-modeling.md)。
 
-**解析摩擦扩展（舵机 / 伺服）：** [BAM](../entities/paper-bam-extended-friction-servo-actuators.md)（ICRA 2025，[Rhoban/bam](https://github.com/Rhoban/bam)）在 MuJoCo 等默认 Coulomb–Viscous 之外，用 **M1–M6 可辨识摩擦上界**（Stribeck、负载相关、谐波二次项）与摆锤台架 **CMA-ES** 标定，在 Dynamixel / eRob 2R 臂上可将轨迹 MAE 降至约一半——尤其适合 **RL 低 PD 增益** 下执行器滞后明显的场景；与 [Actuator Network](../methods/actuator-network.md)（数据驱动）及 [SAGE](../entities/sage-sim2real-actuator-gap-estimator.md)（gap 度量）可组合使用。
+**解析摩擦扩展（舵机 / 伺服）：** [BAM](../entities/paper-bam-extended-friction-servo-actuators.md)（ICRA 2025，[Rhoban/bam](https://github.com/Rhoban/bam)）在 MuJoCo 等默认 Coulomb–Viscous 之外，用 **M1–M6 可辨识摩擦上界**（Stribeck、负载相关、谐波二次项）与摆锤台架 **[CMA-ES](../methods/cma-es.md)** 标定，在 Dynamixel / eRob 2R 臂上可将轨迹 MAE 降至约一半——尤其适合 **RL 低 PD 增益** 下执行器滞后明显的场景；与 [Actuator Network](../methods/actuator-network.md)（数据驱动）及 [SAGE](../entities/sage-sim2real-actuator-gap-estimator.md)（gap 度量）可组合使用。
 
 根据 [zest](../methods/zest.md) 的实践，缩小动力学差距的关键在于精确处理闭链执行器（如膝盖、脚踝）的物理特性。通过基于电枢（Armature）分析值的增益选择程序，可以在不使用反馈补偿器的情况下，实现高动态动作的零样本迁移。机构层闭链几何、驱动—关节力映射与「训练用开环树 / 真机串并联」落差，可对照 [人形机器人并联关节解算](./humanoid-parallel-joint-kinematics.md)（含 LiPS、Kinematic Actuation Models 等文献锚点）。
 

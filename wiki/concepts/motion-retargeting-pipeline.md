@@ -108,7 +108,7 @@ flowchart TD
 - **单位与坐标**：统一为 SI 单位、Z-up 或 Y-up、根坐标朝向对齐。
 - **时间采样**：重采样到目标控制频率（常见 30/50/60 Hz），处理可变帧率与丢帧。
 - **格式归并**：BVH / FBX / SMPL（含 SMPL-H / SMPL-X）/ 自定义 JSON 等统一到内部表示。
-- **多视角 SMPL-X 采集**：棚拍可用 **[MAMMA](../entities/paper-mamma-markerless-motion-capture.md)** 等 markerless 多相机管线直接产出 **SMPL-X 时序**（双人交互场景相对单目 HMR 噪声更低），与 AMASS 离线库互补。
+- **多视角 SMPL-X 采集**：棚拍可用 **[MAMMA](../entities/paper-mamma-markerless-motion-capture.md)** 等 markerless 多相机管线直接产出 **[SMPL-X](./smpl-x.md) 时序**（双人交互场景相对单目 HMR 噪声更低），与 AMASS 离线库互补。
 - **双人→双机 kinematic conflict**：异构人体 MoCap 映射到 **同构双 humanoid** 时，**个体缩放流形** 与 **统一交互流形** 不可兼得；[Rhythm](../entities/paper-rhythm-dual-humanoid-interaction.md) 的 **IAMR** 通过 $\mathcal{E}_{self}$ / $\mathcal{E}_{inter}$ 解耦能量并导出交互图，是 MAGIC 数据集与下游 IGRL 的上游环节。
 - **视频 HMR 可选精炼**：对 GVHMR / TRAM 等输出的 world-space SMPL，可在进入拓扑映射前接入 **[HTD-Refine](../entities/paper-htd-refine-monocular-hmr.md)** 类 **速度–加速度对齐后处理**，减轻 jitter 与脚滑（不改变 HMR 骨干本身）。
 - **2D→3D 关键点提升（非 SMPL）：** **[FMPose3D](../entities/paper-fmpose3d-monocular-3d-pose-flow-matching.md)** 用 **Flow Matching** 从 2D 关节生成 **3D 关键点多假设** 再 RPEA 聚合；**已集成 DeepLabCut** 动物管线，适合「DLC 2D → 稀疏 3D 骨架 → IK/重定向」链路，推理比扩散 lifter 快一个数量级，但需自行映射到机器人骨架拓扑。

@@ -190,6 +190,8 @@ Adaptation Module（学生）：
 - [DreamWaQ](../methods/dreamwaq.md) — 盲走一阶段：本体历史隐式估计地形/体速的 obs 设计范例
 - [PIE 感知一阶段鲁棒行走](../methods/pie-perceptive-locomotion.md) — 深度+本体多头估计器的显式/隐式 obs 设计范例
 - [Curriculum Learning](../concepts/curriculum-learning.md) — 课程式训练加速收敛
+- [Residual Policy Learning（残差策略学习）](../methods/residual-policy-learning.md) — 「有参考动作」分支的落地范式：base（控制器/参考轨迹/运动先验）+ RL 残差，收窄探索、提样本效率
+- [Safe RL（安全强化学习）](../methods/safe-rl.md) — Stage 6 安全停机之外的硬约束路线：奖励塑形之外用 CMDP/安全层给策略加安全保证
 - [GAE（广义优势估计）](../formalizations/gae.md) — PPO 标准实现使用 GAE 计算优势函数
 - [Bellman 方程](../formalizations/bellman-equation.md) — RL 所有值函数估计的数学基础
 

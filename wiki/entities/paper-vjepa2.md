@@ -164,7 +164,7 @@ sequenceDiagram
 | 轴 | 报告口径（以论文为准） |
 |----|------------------------|
 | 运动理解 | SSv2 attentive probe **77.3** top-1 |
-| 动作预期 | EK100 **39.7** recall@5（相对前 SOTA 大幅提升） |
+| 动作预期 | EK100 **39.7** recall@5（相对此前最优结果大幅提升） |
 | 视频 QA | 对齐 8B LLM：PerceptionTest **84.0**、TempCompass **76.9** 等 |
 | 机器人 | Droid **<62 h** 后训练；两实验室 Franka 零样本 grasp / pick-and-place |
 | 缩放消融 | 数据 / 模型 / 训练时长 / 分辨率递进提升六任务平均精度 |
