@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-29] ingest | sources/papers/pot_vla_arxiv_2607_18016.md — 复核查 arXiv:2607.18016v2（科学内容无实质变更，仅 DeepCybo 实习脚注）；开源仍未发布；刷新 wiki/entities/paper-pot-vla.md 与交叉页状态日
+
+- **来源归档：** [`sources/papers/pot_vla_arxiv_2607_18016.md`](sources/papers/pot_vla_arxiv_2607_18016.md) — 标注当前 **v2**、v1→v2 差分（仅实习脚注）、开源复核查日 **2026-07-29**
+- **主实体刷新：** [`wiki/entities/paper-pot-vla.md`](wiki/entities/paper-pot-vla.md) — 已有完整升格（2026-07-22/26）；本次不重造页，更新版本/开源状态与 HTML 链至 v2
+- **开源核查（步骤 2.5）：** **确认未开源** — arXiv Code 区无入口；GitHub / DeepCybo 无官方仓；源码运行时序图仍 **不适用**
+- **既有交叉（未改内容）：** [`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/tasks/loco-manipulation.md`](wiki/tasks/loco-manipulation.md)、[`wiki/entities/unitree-g1.md`](wiki/entities/unitree-g1.md)、[`wiki/entities/isaac-gr00t.md`](wiki/entities/isaac-gr00t.md)、[`wiki/entities/paper-hrl-stack-34-gr00t_n1.md`](wiki/entities/paper-hrl-stack-34-gr00t_n1.md)、[`wiki/entities/paper-loco-manip-161-057-being-0.md`](wiki/entities/paper-loco-manip-161-057-being-0.md)
+
 ## [2026-07-29] ingest | sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md + sites/embodied-data-pyramid + repos/awesome-embodied-data-pyramid — 具身数据金字塔综述（arXiv:2607.24744）入库：五层数据生态 × 六维属性 × 基础模型数据配方；升格 wiki/entities/paper-data-pyramid-embodied-manipulation.md；交叉 OXE / GR00T N1 / scaling-laws / WAM / vla / depth-vla
 
 - **归档：** [`sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md`](sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md)、[`sources/sites/embodied-data-pyramid.md`](sources/sites/embodied-data-pyramid.md)、[`sources/repos/awesome-embodied-data-pyramid.md`](sources/repos/awesome-embodied-data-pyramid.md)；索引 [`sources/README.md`](sources/README.md)

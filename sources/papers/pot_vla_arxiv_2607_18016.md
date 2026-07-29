@@ -6,17 +6,22 @@
 - **类型：** paper
 - **来源：** arXiv abs / HTML / PDF
 - **原始链接：**
-  - <https://arxiv.org/abs/2607.18016>（2026-07-20 提交）
-  - HTML：<https://arxiv.org/html/2607.18016v1>
+  - <https://arxiv.org/abs/2607.18016>（2026-07-20 提交；**当前 v2**，2026-07-26 更新）
+  - HTML：<https://arxiv.org/html/2607.18016v2>（v1：<https://arxiv.org/html/2607.18016v1>）
   - PDF：<https://arxiv.org/pdf/2607.18016>
 - **作者：** Peng Ren\*, Haoyang Ge\*, Jiang Zhao, Cong Huang, Yukun Shi, Pei Chi†, Kai Chen†（\*Equal contribution；†Corresponding：peichi@buaa.edu.cn / kaichen@zgci.ac.cn）
 - **机构：** 北京航空航天大学（BUAA）；北京中关村学院（BZA / Zhongguancun Academy）；天津大学（TJU）；机智赛博（DeepCybo）；中关村人工智能研究院（ZGCI / ZGCA）
-- **入库日期：** 2026-07-22（初版）；**深读补全：** 2026-07-26
+- **入库日期：** 2026-07-22（初版）；**深读补全：** 2026-07-26；**复核查：** 2026-07-29（v2 差分 + 开源状态）
 - **一句话说明：** 针对人形长时程 loco-manipulation 中的 **object-state divergence**，用 Persistent Object Tokenization（POT）从 RGB-D 维护角色索引的持久 3D 对象记录；同一记录同时条件化 GR00T-N1.7 全身动作专家与几何谓词验收，在 Unitree G1 八类任务上由匹配基线 **39/80 → 71/80**。
 
-## 开源状态（核查 2026-07-26）
+## 版本差分（v1 → v2）
 
-- **确认未开源：** arXiv abs/HTML 未列项目页、GitHub、Hugging Face 或数据集入口；第三方综述页亦仅链 arXiv。
+- **科学内容无实质变更：** 摘要、方法、Table 1–2 数字与消融结论与 v1 一致。
+- **元数据：** v2 补充作者脚注「This work was conducted during an internship at DeepCybo.」；无新增实验、无项目页/代码链接。
+
+## 开源状态（核查 2026-07-29）
+
+- **确认未开源：** arXiv abs / HTML（v1/v2）未列项目页、GitHub、Hugging Face 或数据集入口；GitHub 检索 `POT-VLA` / `Persistent Object Tokenization` / `2607.18016` 无官方仓库；DeepCybo org/user 亦无公开相关仓。
 - **复现边界：** 动作骨干可对照公开 [Isaac GR00T / GR00T-N1.7](../../wiki/entities/isaac-gr00t.md)；POT 的角色化 RGB-D 记录、token sidecar 与谓词监督实现 **无公开代码**。
 - **源码运行时序图：** **不适用**（无可运行官方实现）。
 
