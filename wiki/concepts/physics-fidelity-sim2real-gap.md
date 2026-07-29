@@ -2,7 +2,7 @@
 type: concept
 tags: [simulation, sim2real, physics, dynamics, contact, friction, fidelity]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-29
 related:
   - ../queries/contact-wrench-closed-loop.md
   - ../queries/simulation-physics-fidelity.md

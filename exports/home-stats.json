@@ -1,13 +1,87 @@
 {
   "generated_at": "2026-07-29",
-  "node_count": 1975,
-  "edge_count": 17482,
+  "node_count": 1976,
+  "edge_count": 17501,
   "coverage": {
-    "covered": 1925,
-    "total": 1951,
+    "covered": 1926,
+    "total": 1952,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-data-pyramid-embodied-manipulation.md",
+      "detail_id": "entity-paper-data-pyramid-embodied-manipulation",
+      "label": "Data Pyramid for Embodied Manipulation（具身数据金字塔综述）",
+      "type": "entity",
+      "recency": "2026-07-29",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/open-x-embodiment.md",
+      "detail_id": "wiki-concepts-open-x-embodiment",
+      "label": "Open X-Embodiment（OXE）",
+      "type": "concept",
+      "recency": "2026-07-29",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-hrl-stack-34-gr00t_n1.md",
+      "detail_id": "entity-paper-hrl-stack-34-gr00t_n1",
+      "label": "GR00T N1",
+      "type": "entity",
+      "recency": "2026-07-29",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/embodied-scaling-laws.md",
+      "detail_id": "wiki-concepts-embodied-scaling-laws",
+      "label": "Embodied Scaling Laws (具身规模法则)",
+      "type": "concept",
+      "recency": "2026-07-29",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/world-action-models.md",
+      "detail_id": "wiki-concepts-world-action-models",
+      "label": "World Action Models（WAM，世界–动作模型）",
+      "type": "concept",
+      "recency": "2026-07-29",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-07-29",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "roadmap/depth-vla.md",
+      "detail_id": "roadmap-depth-vla",
+      "label": "路线（纵深）：如果目标是 VLA（视觉-语言-动作模型）",
+      "type": "roadmap_page",
+      "recency": "2026-07-29",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/ultralytics.md",
       "detail_id": "entity-ultralytics",
@@ -145,95 +219,23 @@
       "recency": "2026-07-28",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-multimodal-legged-arrl.md",
-      "detail_id": "entity-paper-multimodal-legged-arrl",
-      "label": "Multi-Modal Legged Locomotion Framework with Automated Residual RL（ARRL，RA-L/IROS 2022）",
-      "type": "entity",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-reskill-residual-skill-policies.md",
-      "detail_id": "entity-paper-reskill-residual-skill-policies",
-      "label": "Residual Skill Policies（ReSkill，CoRL 2022）",
-      "type": "entity",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-residual-policy-shared-autonomy.md",
-      "detail_id": "entity-paper-residual-policy-shared-autonomy",
-      "label": "Residual Policy Learning for Shared Autonomy（RSA，ICRA 2020）",
-      "type": "entity",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-run-residual-policy-for-natural-humanoid-locomot.md",
-      "detail_id": "entity-paper-notebook-run-residual-policy-for-natural-humanoid-locomot",
-      "label": "RuN（Residual Policy for Natural Humanoid Locomotion，2025）",
-      "type": "entity",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-resmimic.md",
-      "detail_id": "entity-paper-resmimic",
-      "label": "ResMimic（GMT → 人形全身 Loco-Manipulation 残差学习）",
-      "type": "entity",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/methods/reinforcement-learning.md",
-      "detail_id": "wiki-methods-reinforcement-learning",
-      "label": "Reinforcement Learning (RL, 强化学习)",
-      "type": "method",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "path": "wiki/methods/deepmimic.md",
-      "detail_id": "wiki-methods-deepmimic",
-      "label": "DeepMimic: 示例引导的技能学习",
-      "type": "method",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/ultralytics.md",
-    "detail_id": "entity-ultralytics",
-    "label": "Ultralytics YOLO",
+    "path": "wiki/entities/paper-data-pyramid-embodied-manipulation.md",
+    "detail_id": "entity-paper-data-pyramid-embodied-manipulation",
+    "label": "Data Pyramid for Embodied Manipulation（具身数据金字塔综述）",
     "type": "entity",
-    "recency": "2026-07-28",
+    "recency": "2026-07-29",
     "source": "log.md",
     "action": "maintained",
     "has_repo": true,
-    "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
-      "label": "操作",
-      "size": 223
+      "label": "仿真到现实",
+      "size": 206
     },
     {
       "label": "人形论文深读笔记",
@@ -241,19 +243,19 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 194
+      "size": 189
     },
     {
       "label": "移动操作",
       "size": 182
     },
     {
-      "label": "仿真到现实",
-      "size": 153
-    },
-    {
       "label": "模仿学习",
       "size": 151
+    },
+    {
+      "label": "人形强化学习运动控制",
+      "size": 128
     }
   ],
   "top_hubs": [
@@ -268,7 +270,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 366,
+      "degree": 367,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -276,7 +278,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 357,
+      "degree": 359,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -284,7 +286,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 327,
+      "degree": 328,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -300,15 +302,15 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 282
+      "degree": 282,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
       "degree": 273,
-      "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",
@@ -331,7 +333,7 @@
       "type": "method",
       "degree": 200,
       "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "生成式世界模型（Generative World Models） 社区"
     }
   ],
   "top_paper_hubs": [
@@ -359,8 +361,7 @@
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
       "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
       "type": "entity",
-      "degree": 50,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "degree": 50
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",
@@ -396,7 +397,7 @@
       "type": "entity",
       "degree": 38,
       "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "生成式世界模型（Generative World Models） 社区"
     },
     {
       "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",

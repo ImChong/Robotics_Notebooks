@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-07-26
+updated: 2026-07-29
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型。"
 related:
   - ../../roadmap/depth-wam.md
@@ -42,10 +42,12 @@ related:
   - ../entities/dexmal-dw05.md
   - ../entities/paper-kairos-native-world-model-stack.md
   - ../entities/paper-internvla-a15-unified-vla.md
+  - ../entities/paper-data-pyramid-embodied-manipulation.md
   - ../tasks/loco-manipulation.md
   - ./ai-auto-research.md
 sources:
   - ../../sources/papers/world_action_models_survey_2605.md
+  - ../../sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md
   - ../../sources/papers/dit4dit_arxiv_2603_10448.md
   - ../../sources/papers/motionwam_arxiv_2606_09215.md
   - ../../sources/papers/abot_m05_arxiv_2607_00678.md
@@ -163,7 +165,7 @@ flowchart TB
 
 ## 数据与评测（概念层归纳）
 
-- **数据**：高对齐机器人轨迹、便携人类示教、仿真特权信号、互联网/自我中心视频——关键是 **混合比例与监督对齐**，而非单一来源堆量。
+- **数据**：高对齐机器人轨迹、便携人类示教、仿真特权信号、互联网/自我中心视频——关键是 **混合比例与监督对齐**，而非单一来源堆量。类目级的五层数据生态与「WAM 如何消费 action-free / action-labeled 两层数据」的横切分析见 [具身数据金字塔综述](../entities/paper-data-pyramid-embodied-manipulation.md)。
 - **评测**：需同时看 **世界侧**（保真、物理常识、动作可推断性）与 **策略侧**（任务成功率、长程、sim2real、形态相关基准）；避免只用视觉逼真度或只用任务成功率 **单侧代理** 评价 WAM。
 
 ## 常见误区

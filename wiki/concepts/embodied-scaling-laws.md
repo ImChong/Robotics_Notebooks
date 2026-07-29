@@ -2,7 +2,7 @@
 type: concept
 tags: [scaling-laws, data-engine, foundation-policy, machine-learning]
 status: complete
-updated: 2026-07-24
+updated: 2026-07-29
 related:
   - ./bitter-lesson.md
   - ./open-x-embodiment.md
@@ -19,6 +19,7 @@ sources:
   - ../../sources/papers/rl_foundation_models.md
   - ../../sources/papers/egoscale_arxiv_2602_16710.md
   - ../../sources/papers/rynnbrain_1_1_arxiv_2607_17977.md
+  - ../../sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md
 summary: "具身规模法则（Embodied Scaling Laws）探讨了具身智能模型中数据规模、模型参数量与下游任务泛化能力之间的幂律关系，是指导大规模具身预训练的核心理论。"
 ---
 
@@ -67,6 +68,7 @@ DeepMind 技术报告 [*From AGI to ASI*](../entities/paper-from-agi-to-asi.md)�
 
 ## 关联页面
 - [The Bitter Lesson](./bitter-lesson.md) — 宏观方法论：可扩展 search/learning vs 人类先验
+- [具身数据金字塔综述](../entities/paper-data-pyramid-embodied-manipulation.md) — 五层数据生态 × 六维属性的类目级坐标系；数据配方的「该扩哪一层」决策入口
 - [VLA (Vision-Language-Action Models)](../methods/vla.md)
 - [RynnBrain 1.1](../entities/paper-rynnbrain-1-1.md) — 统一配方下相对 Qwen3.5 的非均匀具身 scaling
 - [EgoScale（人视频规模预训练 VLA）](../methods/egoscale.md)
