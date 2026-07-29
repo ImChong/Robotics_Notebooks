@@ -57,9 +57,23 @@ const WEBGL_ARGS = ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsaf
     const read3dLabels = () => page.evaluate(() => {
       const els = Array.from(document.querySelectorAll('#graph-canvas-3d .graph-3d-community-label'));
       const vis = els.filter((el) => el.style.visibility === 'visible');
+      const screenPos = (el) => {
+        const t = el.style.transform || '';
+        const m = t.match(/translate3d\(\s*([-\d.]+)px\s*,\s*([-\d.]+)px/);
+        if (m) return { left: m[1] + 'px', top: m[2] + 'px', via: 'transform' };
+        const r = el.getBoundingClientRect();
+        return {
+          left: (r.left + r.width / 2) + 'px',
+          top: (r.top + r.height / 2) + 'px',
+          via: 'rect',
+        };
+      };
       return {
         count: vis.length,
-        pos: vis.slice(0, 5).map((el) => ({ text: el.textContent, left: el.style.left, top: el.style.top })),
+        pos: vis.slice(0, 5).map((el) => {
+          const p = screenPos(el);
+          return { text: el.textContent, left: p.left, top: p.top, via: p.via };
+        }),
       };
     });
 

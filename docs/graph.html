@@ -317,9 +317,12 @@
     }
     .graph-3d-label {
       position: absolute;
+      left: 0;
+      top: 0;
       text-align: center;
       white-space: nowrap;
-      transform: translate(-50%, 0);
+      transform: translate3d(-50%, 0, 0);
+      will-change: transform;
       user-select: none;
       transition: opacity .15s;
       pointer-events: none;
@@ -330,7 +333,10 @@
     /* 3D 社区聚类中心胶囊标签（HTML overlay，样式对齐 2D .community-label） */
     .graph-3d-community-label {
       position: absolute;
-      transform: translate(-50%, -50%);
+      left: 0;
+      top: 0;
+      transform: translate3d(-50%, -50%, 0);
+      will-change: transform;
       white-space: nowrap;
       font-size: 13px;
       font-weight: 700;

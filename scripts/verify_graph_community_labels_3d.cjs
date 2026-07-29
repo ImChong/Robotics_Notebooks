@@ -69,11 +69,11 @@ const path = require('path');
         }),
         sample: visible.slice(0, 3).map((el) => ({
           text: el.textContent,
-          left: el.style.left,
-          top: el.style.top,
+          transform: el.style.transform,
           background: el.style.background,
           color: el.style.color,
         })),
+        usesTransform: visible.every((el) => /translate3d\(/.test(el.style.transform || '')),
       };
     });
 
@@ -90,6 +90,7 @@ const path = require('path');
     check('3D 默认开启：胶囊标签全部可见', s.visibleCount === 15, `visible=${s.visibleCount}/15`);
     check('3D 默认开启：标签在视口内', s.inViewport === true);
     check('3D 默认开启：胶囊样式（999px 圆角 + 社区色背景）', s.pillStyleOk === true);
+    check('3D 默认开启：位置用 translate3d（非 left/top）', s.usesTransform === true);
     console.log('  标签示例:', JSON.stringify(s.sample));
     await page.screenshot({ path: path.join(outDir, 'graph-community-labels-3d-on.png') });
 
