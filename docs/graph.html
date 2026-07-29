@@ -705,6 +705,19 @@
     .node-circle { transition: r .15s, fill-opacity .15s; }
     .node-label { transition: opacity .15s; }
 
+    /* 社区聚类中心漂浮标签（2D 画布，paint-order 描边做光晕保证可读性） */
+    .community-label {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: .02em;
+      paint-order: stroke;
+      stroke: rgba(13, 17, 23, 0.85);
+      stroke-width: 4px;
+      stroke-linejoin: round;
+      pointer-events: none;
+      user-select: none;
+    }
+
     /* ════════════════════════════════════════════
        白天模式覆盖（[data-theme="light"]）
     ════════════════════════════════════════════ */
@@ -767,6 +780,7 @@
     [data-theme="light"] .topic-intro-link { color: #1659b4; }
     [data-theme="light"] .node-topic-hub .node-label { fill: rgba(15, 23, 42, 0.88) !important; }
     [data-theme="light"] .graph-3d-label.is-topic-hub { color: rgba(15, 23, 42, 0.88) !important; }
+    [data-theme="light"] .community-label { stroke: rgba(255, 255, 255, 0.92); }
     [data-theme="light"] .toolbar-sep { background: rgba(0,0,0,0.1); }
     [data-theme="light"] #graph-node-count { color: rgba(0,0,0,0.38); }
     [data-theme="light"] #graph-back {
@@ -1038,6 +1052,13 @@
       accent-color: #60a5fa;
       cursor: pointer;
       flex-shrink: 0;
+    }
+    .physics-toggle.is-disabled {
+      opacity: 0.42;
+      cursor: not-allowed;
+    }
+    .physics-toggle.is-disabled input[type=checkbox] {
+      cursor: not-allowed;
     }
     .physics-section-title {
       padding: 10px 14px 4px;
@@ -1725,6 +1746,14 @@
         </label>
       </div>
 
+      <div class="slider-row">
+        <label class="physics-toggle" for="check-community-labels" id="community-labels-toggle"
+               title="在各社区聚类的中心点漂浮显示社区名称（仅「按社区」筛选/着色时可用）">
+          <input type="checkbox" id="check-community-labels" />
+          <span>🏘 显示社区标签</span>
+        </label>
+      </div>
+
       <div class="slider-divider"></div>
       <div class="physics-section-title">视图模式</div>
       <div class="view-mode-toggle" role="group" aria-label="2D / 3D 视图切换">
@@ -2186,6 +2215,22 @@
     let userZoomed2D = false;
     let label = null;
     const checkNodeLabelsEl = document.getElementById('check-node-labels');
+    // 社区聚类中心漂浮标签：仅「按社区」着色/筛选时可勾选；其余模式下勾选框置灰
+    let showCommunityLabels = false;
+    const checkCommunityLabelsEl = document.getElementById('check-community-labels');
+    const communityLabelsToggleEl = document.getElementById('community-labels-toggle');
+
+    function communityLabelsVisible() {
+      return showCommunityLabels && colorMode === 'community' && !timelineAnimating;
+    }
+
+    function syncCommunityLabelsCheckbox() {
+      if (!checkCommunityLabelsEl) return;
+      const enabled = colorMode === 'community';
+      checkCommunityLabelsEl.disabled = !enabled;
+      checkCommunityLabelsEl.checked = showCommunityLabels;
+      if (communityLabelsToggleEl) communityLabelsToggleEl.classList.toggle('is-disabled', !enabled);
+    }
 
     function isMagneticForCurrentView() {
       return is3DView() ? isMagnetic3D : isMagnetic2D;
@@ -2975,6 +3020,53 @@
       .attr('pointer-events', 'none')
       .style('opacity', 0);
 
+    /* ── 社区聚类中心漂浮标签层（2D，置于节点层之上）── */
+    const gCommunityLabels = gRoot.append('g')
+      .attr('class', 'community-labels')
+      .attr('pointer-events', 'none');
+
+    // 画布上漂浮的标签用简称：剥掉括号英文与末尾「社区」，避免长串在聚类中心互相重叠
+    function shortCommunityLabel(id) {
+      const label = communityLabelMap.get(id) || id;
+      const short = label.replace(/（[^）]*）/g, '').replace(/\s*社区\s*$/, '').trim();
+      return short || label;
+    }
+
+    // 质心只统计当前「有效可见」节点（无筛选时全部；有筛选时取 visibleNodeIds），
+    // 这样勾选具体社区 / 专题 / Top N 后标签位置始终贴合实际可见聚类。
+    function computeCommunityCentroids() {
+      const acc = new Map();
+      const hasFilter = hasActiveGraphFilter();
+      for (const d of nodes) {
+        if (!d.community) continue;
+        if (hasFilter && !visibleNodeIds.has(d.id)) continue;
+        let a = acc.get(d.community);
+        if (!a) { a = { sx: 0, sy: 0, n: 0 }; acc.set(d.community, a); }
+        a.sx += d.x; a.sy += d.y; a.n += 1;
+      }
+      const out = [];
+      acc.forEach((a, id) => out.push({ id, x: a.sx / a.n, y: a.sy / a.n }));
+      return out;
+    }
+
+    function updateCommunityLabels() {
+      const data = communityLabelsVisible() ? computeCommunityCentroids() : [];
+      gCommunityLabels.selectAll('text.community-label')
+        .data(data, d => d.id)
+        .join(
+          enter => enter.append('text')
+            .attr('class', 'community-label')
+            .attr('text-anchor', 'middle')
+            .attr('dominant-baseline', 'central')
+            .attr('fill', d => communityColorMap.get(d.id) || COMMUNITY_COLORS[9])
+            .text(d => shortCommunityLabel(d.id)),
+          update => update,
+          exit => exit.remove()
+        )
+        .attr('x', d => d.x)
+        .attr('y', d => d.y);
+    }
+
     let entered3dOnLoad = false;
     function enter3dOnLoadOnce() {
       if (entered3dOnLoad) return;
@@ -3082,6 +3174,7 @@
       if (areFiltersLocked()) return;
       if (colorMode === mode) return;
       colorMode = mode;
+      syncCommunityLabelsCheckbox();
       activeFilters.clear();
       focusedCommunityId = null;
       focusedType = null;
@@ -3101,6 +3194,7 @@
         .attr('x1', d => d.source.x).attr('y1', d => d.source.y)
         .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
       node.attr('transform', d => `translate(${d.x},${d.y})`);
+      updateCommunityLabels();
     }
 
     function finishSimulationLoad() {
@@ -3786,6 +3880,7 @@
           .style('font-weight', hub ? 700 : null);
       });
       sync2DNodeLabels();
+      updateCommunityLabels();
 
       link
         .style('opacity', null) // V21 修复：清除 openSidebar 的内联 style 干扰
@@ -4097,6 +4192,7 @@
         .attr('fill-opacity', 0)
         .attr('stroke-opacity', 0);
       node.select('.node-label').style('opacity', 0);
+      updateCommunityLabels();         // 时序模式下隐藏社区漂浮标签（退出时由 applyFilters 恢复）
       link.interrupt().attr('stroke-opacity', 0);
       syncTimelineSimulation();
       simulation.stop();
@@ -4459,6 +4555,16 @@
       checkNodeLabelsEl.checked = showNodeLabels;
       checkNodeLabelsEl.addEventListener('change', ev => {
         setShowNodeLabels(ev.target.checked);
+      });
+    }
+
+    /* 显示社区标签（仅「按社区」筛选/着色时可勾选，其余模式置灰；2D 画布聚类中心漂浮显示） */
+    if (checkCommunityLabelsEl) {
+      syncCommunityLabelsCheckbox();
+      checkCommunityLabelsEl.addEventListener('change', ev => {
+        showCommunityLabels = !!ev.target.checked;
+        syncCommunityLabelsCheckbox();
+        updateCommunityLabels();
       });
     }
 
