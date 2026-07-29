@@ -472,9 +472,7 @@ def wiki_last_log_dates(nodes: list[dict[str, Any]]) -> dict[str, str]:
             date.fromisoformat(log_date)
         except ValueError:
             continue
-        for rel in _collect_wiki_paths_from_chunk(
-            chunk, node_by_id=node_by_id, expand_globs=True
-        ):
+        for rel in _collect_wiki_paths_from_chunk(chunk, node_by_id=node_by_id, expand_globs=True):
             if rel not in last_dates:
                 last_dates[rel] = log_date
     return last_dates
@@ -1609,9 +1607,9 @@ def main() -> None:
         recency = node.pop("_recency", None)
         if recency:
             node["recency"] = recency
-        activity = last_log_dates.get(str(node["id"]))
-        if activity:
-            node["activity"] = activity
+        last_activity = last_log_dates.get(str(node["id"]))
+        if last_activity:
+            node["activity"] = last_activity
 
     institutions = build_institutions_summary(nodes)
 
