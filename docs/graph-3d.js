@@ -182,9 +182,13 @@
     };
     var getNodeLabelOpacity = opts.getNodeLabelOpacity || function () { return 0.85; };
     var isNodeLabelHub = opts.isNodeLabelHub || function () { return false; };
+    // 社区聚类中心胶囊标签（HTML overlay，投影自 3D 质心）
+    var areCommunityLabelsVisible = opts.areCommunityLabelsVisible || function () { return false; };
+    var getCommunityLabelDescriptors = opts.getCommunityLabelDescriptors || function () { return []; };
 
     var labelLayer = null;
     var labelEls = new Map();
+    var communityLabelEls = new Map();
     var labelTickBound = false;
     var labelsLayoutReady = false;
     var baselineCameraDist = null;
@@ -271,6 +275,7 @@
       var layer = ensureLabelLayer();
       if (!layer) return;
       labelEls.clear();
+      communityLabelEls.clear();   // innerHTML='' 会一并清掉社区胶囊，重建时重新创建
       layer.innerHTML = '';
       sourceNodes.forEach(function (src) {
         var el = document.createElement('div');
@@ -349,6 +354,7 @@
       if (labelTickBound || !graph) return;
       labelTickBound = true;
       graph.onEngineTick(function () {
+        syncCommunityLabelPositions();
         if (!areNodeLabelsVisible()) return;
         maybeMarkLabelsLayoutReady();
         syncLabelPositions();
@@ -384,9 +390,71 @@
       if (labelLayer) labelLayer.style.display = 'none';
     }
 
+    /* ── 社区聚类中心胶囊标签 ── */
+    function ensureCommunityLabelEls() {
+      var layer = ensureLabelLayer();
+      if (!layer) return;
+      getCommunityLabelDescriptors().forEach(function (desc) {
+        var el = communityLabelEls.get(desc.id);
+        if (!el) {
+          el = document.createElement('div');
+          el.className = 'graph-3d-community-label';
+          layer.appendChild(el);
+          communityLabelEls.set(desc.id, el);
+        }
+        el.textContent = desc.label;
+        el.style.background = desc.color;
+        el.style.color = desc.textColor;
+      });
+    }
+
+    // 质心只统计「有效可见」节点（语义与 2D 一致：无筛选全部；有筛选取 getVisibleNodeIds）
+    function computeCommunityCentroids3D() {
+      var acc = new Map();
+      if (!graph) return [];
+      var filtered = hasActiveFilter();
+      var visible = filtered ? getVisibleNodeIds() : null;
+      (graph.graphData().nodes || []).forEach(function (d) {
+        if (!d.community || d.x == null || d.y == null) return;
+        if (filtered && visible && !visible.has(d.id)) return;
+        var a = acc.get(d.community);
+        if (!a) { a = { sx: 0, sy: 0, sz: 0, n: 0 }; acc.set(d.community, a); }
+        a.sx += d.x; a.sy += d.y; a.sz += (d.z != null ? d.z : 0); a.n += 1;
+      });
+      var out = [];
+      acc.forEach(function (a, id) {
+        out.push({ id: id, x: a.sx / a.n, y: a.sy / a.n, z: a.sz / a.n });
+      });
+      return out;
+    }
+
+    function syncCommunityLabelPositions() {
+      if (!labelLayer || communityLabelEls.size === 0) return;
+      var hide = !areCommunityLabelsVisible() || container.hidden || timelineActive() || !graph;
+      var seen = new Set();
+      if (!hide) {
+        computeCommunityCentroids3D().forEach(function (c) {
+          var el = communityLabelEls.get(c.id);
+          if (!el) return;
+          var p = graph.graph2ScreenCoords(c.x, c.y, c.z);
+          if (!p || !isFinite(p.x) || !isFinite(p.y)) return;
+          seen.add(c.id);
+          el.style.left = p.x + 'px';
+          el.style.top = p.y + 'px';
+        });
+      }
+      communityLabelEls.forEach(function (el, id) {
+        var on = !hide && seen.has(id);
+        el.style.opacity = on ? '1' : '0';
+        el.style.visibility = on ? 'visible' : 'hidden';
+      });
+    }
+
     function syncLabels() {
+      ensureCommunityLabelEls();
       syncLabelPositions();
       syncLabelStyles();
+      syncCommunityLabelPositions();
     }
 
     function buildLinks() {
