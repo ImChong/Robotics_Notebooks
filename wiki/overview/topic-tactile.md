@@ -2,7 +2,7 @@
 type: overview
 tags: [topic, topic-tactile, haptic, force, contact, visuo-tactile]
 status: complete
-updated: 2026-07-27
+updated: 2026-07-29
 summary: "触觉与力觉闭环专题汇总：覆盖触觉传感、视触觉融合、阻抗/力控与接触估计，强调「摸得着」对抓取与 loco-manip 稳定性的作用。"
 ---
 
@@ -42,6 +42,7 @@ summary: "触觉与力觉闭环专题汇总：覆盖触觉传感、视触觉融�
 | 操作员渲染 | 可穿戴力触觉显示 | [HapMorph](../entities/paper-hapmorph-pneumatic-haptic-render.md)（气动 AFPA 解耦尺寸+刚度） |
 | 抓取精修 | 纯触觉目标条件伺服 | [TacRefineNet](../entities/paper-tacrefinenet-tactile-grasp-refinement.md)（Siamese · 外在灵巧 regrasp · arXiv:2509.25746） |
 | 传感器选型基准 | 跨模态真机 IL 对比 | [TacO](../entities/paper-taco-tactile-sensor-benchmark.md)（六传感器 × 三任务 ACT；无通用最佳模态 · arXiv:2605.21976） |
+| 可变形接触安全评测 | Goal vs Safety Success | [SoftVTBench](../entities/paper-softvtbench.md)（Isaac Sim FEM + GelSight；π₀.₅ VO/VT · arXiv:2607.04234） |
 | 数据+策略栈 | 力场表征 / VTLA / 触觉 WAM | [NeoteAI 𝒩₀](../entities/neoteai.md)（OpenNeoData 5k h；Foundation / VTLA / TWAM） |
 
 ## 与其他专题的关系
@@ -55,6 +56,7 @@ summary: "触觉与力觉闭环专题汇总：覆盖触觉传感、视触觉融�
 - [HapMorph（论文实体）](../entities/paper-hapmorph-pneumatic-haptic-render.md) — VR/遥操作操作员侧可穿戴气动触觉
 - [TacRefineNet（论文实体）](../entities/paper-tacrefinenet-tactile-grasp-refinement.md) — 边缘突出物体的纯触觉抓取精修
 - [TacO（触觉传感器操作基准）](../entities/paper-taco-tactile-sensor-benchmark.md) — 跨模态触觉硬件 × 真机 ACT 选型证据
+- [SoftVTBench（可变形视触觉安全基准）](../entities/paper-softvtbench.md) — Goal/Safety Success；触觉抬高软体安全率
 - [NeoteAI / 𝒩₀ 三件套](../entities/neoteai.md) — OpenNeoData + NeoForce + VTLA/TWAM
 - [Teleoperation](../tasks/teleoperation.md) — 操作员力反馈与示范采集
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
@@ -67,5 +69,6 @@ summary: "触觉与力觉闭环专题汇总：覆盖触觉传感、视触觉融�
 - **ingest 档案：** [sources/papers/hapmorph_arxiv_2509_05433.md](../../sources/papers/hapmorph_arxiv_2509_05433.md) — HapMorph 可穿戴气动多维触觉渲染（arXiv:2509.05433）
 - **ingest 档案：** [sources/papers/tacrefinenet_arxiv_2509_25746.md](../../sources/papers/tacrefinenet_arxiv_2509_25746.md) — TacRefineNet 多指触觉抓取精修（arXiv:2509.25746）
 - **ingest 档案：** [sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md](../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md) — TacO 触觉传感器真机 IL 基准（arXiv:2605.21976）
+- **ingest 档案：** [sources/papers/softvtbench_arxiv_2607_04234.md](../../sources/papers/softvtbench_arxiv_2607_04234.md) — SoftVTBench 可变形视触觉安全基准（arXiv:2607.04234）
 - **ingest 档案：** [sources/papers/n0_foundation.md](../../sources/papers/n0_foundation.md) — 𝒩₀-Foundation / OpenNeoData
 - 图谱专题定义：[docs/topic-filters.js](../../docs/topic-filters.js)（`tactile` 命中规则）

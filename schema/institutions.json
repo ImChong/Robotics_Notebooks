@@ -2158,6 +2158,45 @@
         "toyota-technological-institute-at-chicago",
         "toyota-technological-institute"
       ]
+    },
+    "seu": {
+      "label": "东南大学（Southeast University）",
+      "aliases": [
+        "seu",
+        "southeast-university",
+        "southeast"
+      ]
+    },
+    "kcl": {
+      "label": "伦敦国王学院（King's College London）",
+      "aliases": [
+        "kcl",
+        "kings-college-london",
+        "king-s-college-london"
+      ]
+    },
+    "stevens": {
+      "label": "史蒂文斯理工学院（Stevens Institute of Technology）",
+      "aliases": [
+        "stevens",
+        "stevens-institute",
+        "stevens-institute-of-technology"
+      ]
+    },
+    "tuojing": {
+      "label": "拓境智能（Tuojing Intelligence）",
+      "aliases": [
+        "tuojing",
+        "tuojing-intelligence",
+        "tuojingai"
+      ]
+    },
+    "simple-ai": {
+      "label": "简易人工智能（Simple AI）",
+      "aliases": [
+        "simple-ai",
+        "simpleai"
+      ]
     }
   }
 }

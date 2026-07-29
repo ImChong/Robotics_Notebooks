@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-07-27
+updated: 2026-07-29
 related:
   - ../entities/paper-clothtransformer-unified-latent-cloth-simulation.md
   - ../entities/paper-flying-knots.md
@@ -42,6 +42,7 @@ related:
   - ../entities/sunday-robotics-act2.md
   - ../entities/generalist-gen1-thousand-hands.md
   - ../concepts/robotics-solve-standard.md
+  - ../entities/paper-softvtbench.md
 sources:
   - ../../sources/papers/fastgrasp_arxiv_2604_12879.md
   - ../../sources/papers/imitation_learning.md
@@ -50,6 +51,7 @@ sources:
   - ../../sources/repos/ssik.md
   - ../../sources/blogs/wechat_shenlan_tro_manip_5_papers_survey.md
   - ../../sources/papers/vtap_gripper_arxiv_2607_15448.md
+  - ../../sources/papers/softvtbench_arxiv_2607_04234.md
   - ../../sources/blogs/generalist_thousand_hands.md
 summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核心难点是感知、接触和全身协同。"
 ---
@@ -216,6 +218,7 @@ flowchart TD
 - [HRDexDB](../entities/hrdexdb-dataset.md) — 同物体配对的人–灵巧机器人抓取序列集（100+ 物体 · 23 相机 · 3D + 触觉）
 - [OmniTacTune](../entities/paper-omnitactune-tactile-residual-adaptation.md) — 冻结视觉基策略 + 触觉残差真机 RL（arXiv:2607.03723）
 - [VTAP Gripper](../entities/paper-vtap-gripper.md) — 视触觉主动掌三指夹爪 + FlexiTac；遥操作重定向参考架构（arXiv:2607.15448）
+- [SoftVTBench](../entities/paper-softvtbench.md) — 可变形视触觉安全基准：Goal vs Safety Success（arXiv:2607.04234）
 - [NeoteAI / 𝒩₀](../entities/neoteai.md) — OpenNeoData + NeoForce；[𝒩₀-VTLA](../entities/paper-n0-vtla.md) · [𝒩₀-TWAM](../entities/paper-n0-twam.md)
 - [FastGrasp](../entities/paper-fastgrasp-mobile-dexterous-grasping.md) — Agilex 移动操作器 + LeapHand 高速灵巧抓取（arXiv:2604.12879）
 - [PhysisForcing](../entities/paper-physisforcing.md) — 操纵视频 DiT 训练期分层物理对齐；R-Bench / WorldArena / Fast-WAM 下游增益（arXiv:2606.28128）

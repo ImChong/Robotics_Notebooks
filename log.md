@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-29] ingest | sources/papers/softvtbench_arxiv_2607_04234.md + sites/softvtbench-github-io + repos/softvtbench — SoftVTBench（arXiv:2607.04234）入库：Goal/Safety 视触觉可变形基准；升格 wiki/entities/paper-softvtbench.md；交叉 tactile / visuo-tactile / contact-rich / topic-tactile / manipulation / embodied-eval；开源代码+数据，参考权重待发
+
+- **归档：** [`sources/papers/softvtbench_arxiv_2607_04234.md`](sources/papers/softvtbench_arxiv_2607_04234.md)、[`sources/sites/softvtbench-github-io.md`](sources/sites/softvtbench-github-io.md)、[`sources/repos/softvtbench.md`](sources/repos/softvtbench.md)；索引 [`sources/README.md`](sources/README.md)
+- **开源核查（2026-07-29，步骤 2.5）：** **已开源** — 代码 [TuojingAI/SoftVTBench](https://github.com/TuojingAI/SoftVTBench)（Apache-2.0）+ HF/ModelScope 数据；项目页 Dataset 按钮文案滞后；**参考 SoftVTBench checkpoint 待发**
+- **主升格：** [`wiki/entities/paper-softvtbench.md`](wiki/entities/paper-softvtbench.md) — Goal/Safety 协议、2×2 套件、π₀.₅ VO/VT 结果、流程与源码运行时序图、结论六要点
+- **交叉：** [`wiki/concepts/visuo-tactile-fusion.md`](wiki/concepts/visuo-tactile-fusion.md)、[`wiki/concepts/tactile-sensing.md`](wiki/concepts/tactile-sensing.md)、[`wiki/concepts/contact-rich-manipulation.md`](wiki/concepts/contact-rich-manipulation.md)、[`wiki/overview/topic-tactile.md`](wiki/overview/topic-tactile.md)、[`wiki/overview/topic-embodied-eval-benchmark.md`](wiki/overview/topic-embodied-eval-benchmark.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`wiki/queries/embodied-eval-benchmark-selection-loop.md`](wiki/queries/embodied-eval-benchmark-selection-loop.md)、[`wiki/entities/paper-taco-tactile-sensor-benchmark.md`](wiki/entities/paper-taco-tactile-sensor-benchmark.md)
+- **机构注册：** `seu` / `kcl` / `stevens` / `tuojing` / `simple-ai`（写入 `schema/institutions.json`）
+
 ## [2026-07-29] structural | docs/graph-3d.js — 修复 3D 社区标签旋转/平移卡顿：质心缓存 + rAF 合并 + translate3d 定位
 
 - **根因：** 相机 `controls.change` 每事件同步调用 `computeCommunityCentroids3D()`（O(节点数)）并写 `left/top`，拖拽时同帧多次触发 → 标签一卡一卡
