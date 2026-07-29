@@ -102,6 +102,10 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # （如「仓库 `LICENSE` 文件」「以 LICENSE 为准」），是法务/文件名 token，
     # 非机器人概念/方法/形式化，不应建独立页；与 md/arxiv 同类基础设施停用词。
     "license",
+    # train：正文里的 `train` / **train** 均为动词「训练」或 `train/eval` 数据
+    # 划分口径（如「先 train 再 eval」「train split」），非可成页的机器人概念，
+    # 与 clip（限幅动词）同类语义噪声，作停用词不再误报为「缺独立页」。
+    "train",
 }
 
 # 高频术语但「已在 entities/ 或非同名 stem 的 methods 页有恰当归属」，

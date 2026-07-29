@@ -306,7 +306,7 @@ MPC 的预测质量高度依赖模型质量。模型错得离谱，预测再漂�
 - [Differentiable Simulation](./differentiable-simulation.md) — 可微仿真 + 梯度 SysID（四足课程 Ch3）
 - [Joint Friction Models](./joint-friction-models.md)、[Friction Compensation](./friction-compensation.md)
 - [Quadruped Control Curriculum](../entities/quadruped-control-curriculum.md)
-- [PACE（足式系统化 Sim2Real）](../entities/paper-pace-sim2real-legged-robots.md) — chirp 悬空数据 + CMA-ES 紧凑关节参数辨识（arXiv:2509.06342）
+- [PACE（足式系统化 Sim2Real）](../entities/paper-pace-sim2real-legged-robots.md) — chirp 悬空数据 + [CMA-ES](../methods/cma-es.md) 紧凑关节参数辨识（arXiv:2509.06342）
 - [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md) — SysID → 训练 → 前馈/适应 → 安全的持续校准闭环
 
 ## 参考来源
