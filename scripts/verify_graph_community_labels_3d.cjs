@@ -52,12 +52,18 @@ const path = require('path');
       const cb = document.getElementById('check-community-labels');
       const els = Array.from(document.querySelectorAll('#graph-canvas-3d .graph-3d-community-label'));
       const visible = els.filter((el) => el.style.visibility === 'visible' && el.style.opacity === '1');
+      const fontSizes = visible.map((el) => parseFloat(el.style.fontSize)).filter((n) => Number.isFinite(n));
+      const fontMin = fontSizes.length ? Math.min(...fontSizes) : null;
+      const fontMax = fontSizes.length ? Math.max(...fontSizes) : null;
       return {
         disabled: cb ? cb.disabled : null,
         checked: cb ? cb.checked : null,
         total: els.length,
         visibleCount: visible.length,
         labels: visible.map((el) => el.textContent),
+        fontSizes,
+        fontMin,
+        fontMax,
         pillStyleOk: visible.every((el) => {
           const cs = getComputedStyle(el);
           // inline background 读回时被浏览器规范化为 rgb(...) 形式
@@ -69,6 +75,7 @@ const path = require('path');
         }),
         sample: visible.slice(0, 3).map((el) => ({
           text: el.textContent,
+          fontSize: el.style.fontSize,
           transform: el.style.transform,
           background: el.style.background,
           color: el.style.color,
@@ -86,11 +93,23 @@ const path = require('path');
     await new Promise((r) => setTimeout(r, 800));
 
     let s = await labelState();
+    const expectedCommunities = await page.evaluate(() => {
+      const set = new Set();
+      document.querySelectorAll('#graph-legend .legend-row[data-community-id]')
+        .forEach((row) => set.add(row.getAttribute('data-community-id')));
+      return set.size || 16;
+    });
     check('3D 默认开启：勾选框已勾选', s.checked === true);
-    check('3D 默认开启：胶囊标签全部可见', s.visibleCount === 15, `visible=${s.visibleCount}/15`);
+    check('3D 默认开启：胶囊标签全部可见', s.visibleCount === expectedCommunities,
+      `visible=${s.visibleCount}/${expectedCommunities}`);
     check('3D 默认开启：标签在视口内', s.inViewport === true);
     check('3D 默认开启：胶囊样式（999px 圆角 + 社区色背景）', s.pillStyleOk === true);
     check('3D 默认开启：位置用 translate3d（非 left/top）', s.usesTransform === true);
+    check('3D 默认开启：字号随社区节点数缩放（约 10–22px 且存在差异）',
+      s.fontMin != null && s.fontMax != null
+        && s.fontMin >= 9.5 && s.fontMax <= 22.5
+        && (s.fontMax - s.fontMin) >= 6,
+      `min=${s.fontMin} max=${s.fontMax}`);
     console.log('  标签示例:', JSON.stringify(s.sample));
     await page.screenshot({ path: path.join(outDir, 'graph-community-labels-3d-on.png') });
 
@@ -113,7 +132,8 @@ const path = require('path');
     await page.evaluate(() => document.getElementById('filter-mode-community').click());
     await new Promise((r) => setTimeout(r, 600));
     s = await labelState();
-    check('3D 切回按社区：勾选框恢复且标签重现', s.disabled === false && s.visibleCount === 15,
+    check('3D 切回按社区：勾选框恢复且标签重现',
+      s.disabled === false && s.visibleCount === expectedCommunities,
       `visible=${s.visibleCount}`);
 
     const failed = results.filter((r) => !r.ok);

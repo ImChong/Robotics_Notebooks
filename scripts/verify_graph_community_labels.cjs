@@ -44,6 +44,16 @@ const path = require('path');
       const countReady = count && count.textContent && !count.textContent.includes('加载中');
       return loadingHidden && countReady;
     }, { timeout: 90000 });
+    // 页面默认进 3D；本脚本验证 2D SVG 社区标签，先切回 2D
+    await page.evaluate(() => {
+      const btn = document.getElementById('view-mode-2d');
+      if (btn) btn.click();
+    });
+    await page.waitForFunction(() => {
+      const canvas = document.getElementById('graph-canvas');
+      if (!canvas) return false;
+      return window.getComputedStyle(canvas).display !== 'none';
+    }, { timeout: 15000 }).catch(() => {});
     // 等力导向布局收敛，聚类形状稳定
     await new Promise((r) => setTimeout(r, 4500));
 
@@ -53,12 +63,18 @@ const path = require('path');
       const groups = Array.from(document.querySelectorAll('#graph-canvas g.community-label'));
       const texts = groups.map((g) => g.querySelector('text.community-label-text')).filter(Boolean);
       const pills = groups.map((g) => g.querySelector('rect.community-label-bg')).filter(Boolean);
+      const fontSizes = texts.map((t) => parseFloat(t.getAttribute('font-size'))).filter((n) => Number.isFinite(n));
+      const fontMin = fontSizes.length ? Math.min(...fontSizes) : null;
+      const fontMax = fontSizes.length ? Math.max(...fontSizes) : null;
       return {
         disabled: cb ? cb.disabled : null,
         checked: cb ? cb.checked : null,
         toggleDisabledClass: toggle ? toggle.classList.contains('is-disabled') : null,
         count: groups.length,
         labels: texts.map((t) => t.textContent),
+        fontSizes,
+        fontMin,
+        fontMax,
         pillOk: pills.length === groups.length && pills.every((r) => {
           const h = Number(r.getAttribute('height'));
           const rx = Number(r.getAttribute('rx'));
@@ -68,6 +84,7 @@ const path = require('path');
         pillFillColored: pills.every((r) => /^#[0-9a-f]{6}$/i.test(r.getAttribute('fill') || '')),
         sample: groups.slice(0, 3).map((g) => ({
           text: g.querySelector('text.community-label-text')?.textContent,
+          fontSize: g.querySelector('text.community-label-text')?.getAttribute('font-size'),
           transform: g.getAttribute('transform'),
           fill: g.querySelector('rect.community-label-bg')?.getAttribute('fill'),
           textFill: g.querySelector('text.community-label-text')?.getAttribute('fill'),
@@ -87,6 +104,11 @@ const path = require('path');
       s.labels.every((t) => !t.includes('（') && !t.includes('社区')));
     check('默认开启：标签为胶囊卡片（rect 底 + rx=height/2 + 社区色填充）',
       s.pillOk === true && s.pillFillColored === true);
+    check('默认开启：字号随社区节点数缩放（约 10–22px 且存在差异）',
+      s.fontMin != null && s.fontMax != null
+        && s.fontMin >= 9.5 && s.fontMax <= 22.5
+        && (s.fontMax - s.fontMin) >= 6,
+      `min=${s.fontMin} max=${s.fontMax}`);
     const expectedCommunities = await page.evaluate(() => {
       const set = new Set();
       document.querySelectorAll('#graph-legend .legend-row[data-community-id]')
