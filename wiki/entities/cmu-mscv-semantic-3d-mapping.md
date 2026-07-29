@@ -4,6 +4,7 @@ tags: [site, project, semantic-mapping, sam, lidar, cmu, detr]
 status: complete
 updated: 2026-07-26
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../queries/go2-3d-semantic-mapping-sam-pipeline.md
   - ./autonomy-stack-go2.md
   - ./point-lio-unilidar.md
@@ -78,6 +79,7 @@ summary: "CMU MSCV Semantic 3D Mapping（F23 Team 17）项目页：DETR→SAM→
 
 ## 关联页面
 
+- [Query：机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页属**第③层 2D→3D 提升与语义建图**（DETR+SAM 投影语义建图示例）
 - [GO2 三维语义建图与 SAM 流水线](../queries/go2-3d-semantic-mapping-sam-pipeline.md)
 - [autonomy_stack_go2](./autonomy-stack-go2.md) — CMU 几何线，勿混同
 - [point_lio_unilidar](./point-lio-unilidar.md)

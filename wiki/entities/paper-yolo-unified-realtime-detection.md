@@ -14,6 +14,7 @@ arxiv: "1506.02640"
 venue: "CVPR 2016"
 code: https://github.com/pjreddie/darknet
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../methods/object-detection.md
   - ../concepts/vision-backbones.md
   - ./paper-resnet-deep-residual-learning.md
@@ -101,6 +102,7 @@ flowchart LR
 
 ## 关联页面
 
+- [Query：机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页属**第②层 2D 检测/分割选型**（单阶段实时检测奠基范式）
 - [目标检测（方法）](../methods/object-detection.md)
 - [视觉骨干（概念）](../concepts/vision-backbones.md)
 - [ResNet（论文实体）](./paper-resnet-deep-residual-learning.md)

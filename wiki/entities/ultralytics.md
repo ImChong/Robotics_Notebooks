@@ -5,6 +5,7 @@ status: complete
 updated: 2026-07-27
 code: https://github.com/ultralytics/ultralytics
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../methods/object-detection.md
   - ../queries/object-detection-model-selection.md
   - ./paper-yolo-unified-realtime-detection.md
@@ -164,6 +165,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [Query：机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页属**第②层 2D 检测/分割选型**（单阶段实时检测代表）
 - [目标检测（方法）](../methods/object-detection.md)
 - [目标检测模型选型](../queries/object-detection-model-selection.md)
 - [YOLO v1](./paper-yolo-unified-realtime-detection.md) — 范式原点

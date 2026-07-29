@@ -1,13 +1,99 @@
 {
   "generated_at": "2026-07-29",
   "node_count": 1975,
-  "edge_count": 17475,
+  "edge_count": 17482,
   "coverage": {
     "covered": 1925,
     "total": 1951,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/ultralytics.md",
+      "detail_id": "entity-ultralytics",
+      "label": "Ultralytics YOLO",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/entities/rf-detr.md",
+      "detail_id": "entity-rf-detr",
+      "label": "RF-DETR（Roboflow Detection Transformer）",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-yolo-unified-realtime-detection.md",
+      "detail_id": "entity-paper-yolo-unified-realtime-detection",
+      "label": "YOLO v1（You Only Look Once）",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-segment-anything.md",
+      "detail_id": "entity-paper-segment-anything",
+      "label": "Segment Anything（SAM）",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-sam2.md",
+      "detail_id": "entity-paper-sam2",
+      "label": "SAM 2：图像与视频中的 Segment Anything",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/findanything.md",
+      "detail_id": "entity-findanything",
+      "label": "FindAnything",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/cmu-mscv-semantic-3d-mapping.md",
+      "detail_id": "entity-cmu-mscv-semantic-3d-mapping",
+      "label": "CMU MSCV Semantic 3D Mapping",
+      "type": "entity",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/queries/robot-perception-stack-selection-loop.md",
+      "detail_id": "wiki-queries-robot-perception-stack-selection-loop",
+      "label": "Query：机器人视觉感知栈选型闭环知识链",
+      "type": "query",
+      "recency": "2026-07-28",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
     {
       "path": "wiki/methods/residual-policy-learning.md",
       "detail_id": "wiki-methods-residual-policy-learning",
@@ -131,98 +217,18 @@
       "recency": "2026-07-28",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/unitree-g1.md",
-      "detail_id": "entity-unitree-g1",
-      "label": "Unitree G1 (人形机器人)",
-      "type": "entity",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-05-locomotion.md",
-      "detail_id": "wiki-overview-paper-notebook-category-05-locomotion",
-      "label": "Paper Notebooks · Locomotion",
-      "type": "overview",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
-    },
-    {
-      "path": "wiki/concepts/humanoid-policy-reward-functions.md",
-      "detail_id": "wiki-concepts-humanoid-policy-reward-functions",
-      "label": "人形机器人运控常见奖励函数分类（Humanoid Policy Reward Functions）",
-      "type": "concept",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/mimickit.md",
-      "detail_id": "entity-mimickit",
-      "label": "MimicKit: 运动模仿与控制研究套件",
-      "type": "entity",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-teledexter.md",
-      "detail_id": "entity-paper-teledexter",
-      "label": "TeleDexter：接近人类水平的灵巧遥操作",
-      "type": "entity",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/tasks/teleoperation.md",
-      "detail_id": "wiki-tasks-teleoperation",
-      "label": "Teleoperation（遥操作）",
-      "type": "task",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/concepts/contact-rich-manipulation.md",
-      "detail_id": "wiki-concepts-contact-rich-manipulation",
-      "label": "Contact-Rich Manipulation（接触丰富型操作）",
-      "type": "concept",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/methods/in-hand-reorientation.md",
-      "detail_id": "wiki-methods-in-hand-reorientation",
-      "label": "In-hand Reorientation (手内重定向)",
-      "type": "method",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/methods/residual-policy-learning.md",
-    "detail_id": "wiki-methods-residual-policy-learning",
-    "label": "Residual Policy Learning（残差策略学习）",
-    "type": "method",
+    "path": "wiki/entities/ultralytics.md",
+    "detail_id": "entity-ultralytics",
+    "label": "Ultralytics YOLO",
+    "type": "entity",
     "recency": "2026-07-28",
     "source": "log.md",
-    "action": "added",
-    "has_repo": true
+    "action": "maintained",
+    "has_repo": true,
+    "community_label": "模仿学习（Imitation Learning, IL） 社区"
   },
   "top_communities": [
     {

@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-28] structural | V31 P1 感知栈层级专题交叉补强 — 7 个感知实体页与「机器人视觉感知栈选型闭环」Query 页双向回链，标注各页所在感知栈层（②2D 检测/分割 · ③2D→3D 语义建图）
+
+- **执行清单：** [`docs/checklists/tech-stack-next-phase-checklist-v31.md`](docs/checklists/tech-stack-next-phase-checklist-v31.md) P1 第二项打勾
+- **补回链的实体页（各页 `related` frontmatter + 「关联页面」正文均补入 Query 页并标注层级）：** [`wiki/entities/ultralytics.md`](wiki/entities/ultralytics.md)（②单阶段实时检测）、[`wiki/entities/rf-detr.md`](wiki/entities/rf-detr.md)（②端到端 DETR）、[`wiki/entities/paper-yolo-unified-realtime-detection.md`](wiki/entities/paper-yolo-unified-realtime-detection.md)（②单阶段奠基）、[`wiki/entities/paper-segment-anything.md`](wiki/entities/paper-segment-anything.md)（②可提示分割）、[`wiki/entities/paper-sam2.md`](wiki/entities/paper-sam2.md)（②视频可提示分割）、[`wiki/entities/findanything.md`](wiki/entities/findanything.md)（③对象级开放词汇 3D 语义建图）、[`wiki/entities/cmu-mscv-semantic-3d-mapping.md`](wiki/entities/cmu-mscv-semantic-3d-mapping.md)（③DETR+SAM 投影建图）
+- **枢纽 Query 页：** [`wiki/queries/robot-perception-stack-selection-loop.md`](wiki/queries/robot-perception-stack-selection-loop.md)（`related` 此前已含全部感知页，本次补齐反向边，双向闭合）
+- **门禁：** `make ci-preflight` 通过；`graph-stats.json` 0 orphans、边数 17456 → 17463（+7）、`community_quality_warning: false`（`largest_community_ratio: 0.145`）
+
 ## [2026-07-28] ingest | sources/personal/residual-policy-reading-list.md — Residual Policy / Residual RL 九篇谱系入库：新增方法枢纽页 + 7 个论文实体页，RuN 原地升格完整详情页（非 stub、不建重复节点），ResMimic 交叉补强；机构注册 +4（siemens/qut/csiro/ttic）
 
 - **归档：** [`sources/personal/residual-policy-reading-list.md`](sources/personal/residual-policy-reading-list.md)；sites ×7（residualrl / rpl / rfc / learning-to-jump / multimodal / reskill / rsa）、repos ×5（residual-policy-learning / rfc / cheetah-trainer / reskill / rsa-shared-autonomy）
