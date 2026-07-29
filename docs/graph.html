@@ -331,7 +331,7 @@
       font-weight: 700;
     }
     /* 3D 社区聚类中心胶囊标签（HTML overlay，样式对齐 2D .community-label）
-       字号/内边距由 JS 按社区节点数缩放（10–18px），此处仅作兜底 */
+       字号/内边距由 JS 按社区节点数缩放（10–22px），此处仅作兜底 */
     .graph-3d-community-label {
       position: absolute;
       left: 0;
@@ -733,7 +733,7 @@
     .node-label { transition: opacity .15s; }
 
     /* 社区聚类中心漂浮标签（2D 画布）：胶囊卡片 = 社区色圆角底 + 亮度自适应文字
-       字号由 JS 按社区节点数在 10–18px 间缩放，此处仅作兜底 */
+       字号由 JS 按社区节点数在 10–22px 间缩放，此处仅作兜底 */
     .community-label { pointer-events: none; user-select: none; }
     .community-label-bg {
       filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.35));
@@ -3142,9 +3142,9 @@
       return out;
     }
 
-    // 漂浮标签字号随社区节点数变化：最小 10px / 最大 18px，按 √n 插值（缓和大小社区落差）
+    // 漂浮标签字号随社区节点数变化：最小 10px / 最大 22px，按 √n 插值（缓和大小社区落差）
     const COMMUNITY_LABEL_FONT_MIN = 10;
-    const COMMUNITY_LABEL_FONT_MAX = 18;
+    const COMMUNITY_LABEL_FONT_MAX = 22;
 
     function communityLabelSizeRange() {
       const sizes = getSortedCommunities()

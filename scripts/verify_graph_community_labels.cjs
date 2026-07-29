@@ -104,10 +104,10 @@ const path = require('path');
       s.labels.every((t) => !t.includes('（') && !t.includes('社区')));
     check('默认开启：标签为胶囊卡片（rect 底 + rx=height/2 + 社区色填充）',
       s.pillOk === true && s.pillFillColored === true);
-    check('默认开启：字号随社区节点数缩放（约 10–18px 且存在差异）',
+    check('默认开启：字号随社区节点数缩放（约 10–22px 且存在差异）',
       s.fontMin != null && s.fontMax != null
-        && s.fontMin >= 9.5 && s.fontMax <= 18.5
-        && (s.fontMax - s.fontMin) >= 4,
+        && s.fontMin >= 9.5 && s.fontMax <= 22.5
+        && (s.fontMax - s.fontMin) >= 6,
       `min=${s.fontMin} max=${s.fontMax}`);
     const expectedCommunities = await page.evaluate(() => {
       const set = new Set();

@@ -465,7 +465,7 @@
         el.textContent = desc.label;
         el.style.background = desc.color;
         el.style.color = desc.textColor;
-        // 字号随社区节点数缩放（由 graph.html 按 10–18px / √n 算好传入）；内边距相对 13px 基准等比
+        // 字号随社区节点数缩放（由 graph.html 按 10–22px / √n 算好传入）；内边距相对 13px 基准等比
         var fontSize = (desc.fontSize != null && isFinite(desc.fontSize)) ? desc.fontSize : 13;
         var scale = fontSize / 13;
         el.style.fontSize = fontSize + 'px';
