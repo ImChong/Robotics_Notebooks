@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-29] structural | docs/graph.html — 图谱「显示社区标签」改为默认开启，用户可在参数浮窗自行关闭
+
+- **改动：** [`docs/graph.html`](docs/graph.html) — `showCommunityLabels` 默认 `true`，参数面板勾选框默认 `checked`；非「按社区」模式仍置灰不可选
+- **附带修复：** 将 `searchQuery` 提前声明，避免默认开启后 simulation tick → `hasActiveGraphFilter` 踩 `let` TDZ 导致图谱加载卡住
+- **验证脚本：** [`scripts/verify_graph_community_labels.cjs`](scripts/verify_graph_community_labels.cjs)、[`scripts/verify_graph_community_labels_3d.cjs`](scripts/verify_graph_community_labels_3d.cjs)、[`scripts/verify_graph_community_labels_follow.cjs`](scripts/verify_graph_community_labels_follow.cjs) — 对齐默认开启口径
+- **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md)
+
 ## [2026-07-29] ingest | sources/papers/pot_vla_arxiv_2607_18016.md — 复核查 arXiv:2607.18016v2（科学内容无实质变更，仅 DeepCybo 实习脚注）；开源仍未发布；刷新 wiki/entities/paper-pot-vla.md 与交叉页状态日
 
 - **来源归档：** [`sources/papers/pot_vla_arxiv_2607_18016.md`](sources/papers/pot_vla_arxiv_2607_18016.md) — 标注当前 **v2**、v1→v2 差分（仅实习脚注）、开源复核查日 **2026-07-29**

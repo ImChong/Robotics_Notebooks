@@ -1,5 +1,5 @@
 // Verify graph.html 3D 视图下的社区胶囊标签：
-//  1. 3D 视图中勾选 → HTML overlay 胶囊标签出现在各社区 3D 质心投影位置
+//  1. 3D 视图默认开启 → HTML overlay 胶囊标签出现在各社区 3D 质心投影位置
 //  2. 取消勾选 → 标签隐藏
 //  3. 3D 中切到按类型筛选 → 勾选框置灰且标签隐藏；切回按社区恢复
 // Usage: node scripts/verify_graph_community_labels_3d.cjs [baseUrl] [outDir]
@@ -77,9 +77,8 @@ const path = require('path');
       };
     });
 
-    // 打开参数面板并勾选
+    // 打开参数面板；社区标签默认开启，等待 3D overlay 可见
     await page.click('#physics-toggle');
-    await page.click('#check-community-labels');
     await page.waitForFunction(() => {
       const els = Array.from(document.querySelectorAll('#graph-canvas-3d .graph-3d-community-label'));
       return els.some((el) => el.style.visibility === 'visible');
@@ -87,9 +86,10 @@ const path = require('path');
     await new Promise((r) => setTimeout(r, 800));
 
     let s = await labelState();
-    check('3D 勾选后：胶囊标签全部可见', s.visibleCount === 15, `visible=${s.visibleCount}/15`);
-    check('3D 勾选后：标签在视口内', s.inViewport === true);
-    check('3D 勾选后：胶囊样式（999px 圆角 + 社区色背景）', s.pillStyleOk === true);
+    check('3D 默认开启：勾选框已勾选', s.checked === true);
+    check('3D 默认开启：胶囊标签全部可见', s.visibleCount === 15, `visible=${s.visibleCount}/15`);
+    check('3D 默认开启：标签在视口内', s.inViewport === true);
+    check('3D 默认开启：胶囊样式（999px 圆角 + 社区色背景）', s.pillStyleOk === true);
     console.log('  标签示例:', JSON.stringify(s.sample));
     await page.screenshot({ path: path.join(outDir, 'graph-community-labels-3d-on.png') });
 
