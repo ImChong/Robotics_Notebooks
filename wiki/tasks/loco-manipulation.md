@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-07-26
+updated: 2026-07-29
 sources:
   - ../../sources/papers/pot_vla_arxiv_2607_18016.md
   - ../../sources/papers/faro_arxiv_2607_18362.md

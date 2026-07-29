@@ -9,6 +9,80 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-pot-vla.md",
+      "detail_id": "entity-paper-pot-vla",
+      "label": "POT-VLA（Persistent 3D Object Tokens · 可验证人形 Loco-Manipulation）",
+      "type": "entity",
+      "recency": "2026-07-29",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-07-29",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/loco-manipulation.md",
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "recency": "2026-07-29",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    },
+    {
+      "path": "wiki/entities/unitree-g1.md",
+      "detail_id": "entity-unitree-g1",
+      "label": "Unitree G1 (人形机器人)",
+      "type": "entity",
+      "recency": "2026-07-29",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/isaac-gr00t.md",
+      "detail_id": "entity-isaac-gr00t",
+      "label": "Isaac GR00T（人形 VLA 开发平台）",
+      "type": "entity",
+      "recency": "2026-07-29",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-hrl-stack-34-gr00t_n1.md",
+      "detail_id": "entity-paper-hrl-stack-34-gr00t_n1",
+      "label": "GR00T N1",
+      "type": "entity",
+      "recency": "2026-07-29",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-loco-manip-161-057-being-0.md",
+      "detail_id": "entity-paper-loco-manip-161-057-being-0",
+      "label": "Being-0",
+      "type": "entity",
+      "recency": "2026-07-29",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    },
+    {
       "path": "wiki/entities/paper-data-pyramid-embodied-manipulation.md",
       "detail_id": "entity-paper-data-pyramid-embodied-manipulation",
       "label": "Data Pyramid for Embodied Manipulation（具身数据金字塔综述）",
@@ -27,17 +101,6 @@
       "recency": "2026-07-29",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-hrl-stack-34-gr00t_n1.md",
-      "detail_id": "entity-paper-hrl-stack-34-gr00t_n1",
-      "label": "GR00T N1",
-      "type": "entity",
-      "recency": "2026-07-29",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
@@ -60,17 +123,6 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-07-29",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "roadmap/depth-vla.md",
@@ -167,69 +219,16 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/methods/residual-policy-learning.md",
-      "detail_id": "wiki-methods-residual-policy-learning",
-      "label": "Residual Policy Learning（残差策略学习）",
-      "type": "method",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-residual-rl-robot-control.md",
-      "detail_id": "entity-paper-residual-rl-robot-control",
-      "label": "Residual Reinforcement Learning for Robot Control（Residual RL，ICRA 2019）",
-      "type": "entity",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-residual-policy-learning.md",
-      "detail_id": "entity-paper-residual-policy-learning",
-      "label": "Residual Policy Learning（RPL，Silver et al. 2018）",
-      "type": "entity",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rfc-residual-force-control.md",
-      "detail_id": "entity-paper-rfc-residual-force-control",
-      "label": "Residual Force Control（RFC，NeurIPS 2020）",
-      "type": "entity",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-versatile-jumping-action-residuals.md",
-      "detail_id": "entity-paper-versatile-jumping-action-residuals",
-      "label": "Continuous Versatile Jumping Using Learned Action Residuals（L4DC 2022）",
-      "type": "entity",
-      "recency": "2026-07-28",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-data-pyramid-embodied-manipulation.md",
-    "detail_id": "entity-paper-data-pyramid-embodied-manipulation",
-    "label": "Data Pyramid for Embodied Manipulation（具身数据金字塔综述）",
+    "path": "wiki/entities/paper-pot-vla.md",
+    "detail_id": "entity-paper-pot-vla",
+    "label": "POT-VLA（Persistent 3D Object Tokens · 可验证人形 Loco-Manipulation）",
     "type": "entity",
     "recency": "2026-07-29",
     "source": "log.md",
     "action": "maintained",
-    "has_repo": true,
     "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [

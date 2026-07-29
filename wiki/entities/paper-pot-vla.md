@@ -16,7 +16,7 @@ tags:
   - deepcybo
   - zgca
 status: complete
-updated: 2026-07-26
+updated: 2026-07-29
 arxiv: "2607.18016"
 related:
   - ../methods/vla.md
@@ -29,12 +29,12 @@ related:
   - ./paper-harness-vla.md
 sources:
   - ../../sources/papers/pot_vla_arxiv_2607_18016.md
-summary: "POT-VLA（arXiv:2607.18016，北航/中关村学院/天大/DeepCybo/ZGCI）：Persistent Object Tokenization 用 RGB-D 维护角色索引持久 3D 对象记录，同一状态条件化 GR00T-N1.7 全身动作并做几何谓词验收；Unitree G1 八类真机 39/80→71/80，Being-0 对齐 44/50；截至 2026-07-26 未开源。"
+summary: "POT-VLA（arXiv:2607.18016v2，北航/中关村学院/天大/DeepCybo/ZGCI）：Persistent Object Tokenization 用 RGB-D 维护角色索引持久 3D 对象记录，同一状态条件化 GR00T-N1.7 全身动作并做几何谓词验收；Unitree G1 八类真机 39/80→71/80，Being-0 对齐 44/50；截至 2026-07-29 仍未开源。"
 ---
 
 # POT-VLA（Persistent 3D Object Tokens · 可验证人形 Loco-Manipulation）
 
-**POT-VLA**（*Closing the Loop in Humanoid VLA: Persistent 3D Object Tokens for Verifiable Loco-Manipulation*，[arXiv:2607.18016](https://arxiv.org/abs/2607.18016)，2026-07-20）由 **北航 / 北京中关村学院 / 天津大学 / 机智赛博（DeepCybo） / 中关村人工智能研究院（ZGCI）** 提出：把长时程人形移动操作中的 **object-state divergence**（动作条件用的对象状态 ≠ 验收用的对象状态）显式建模，用 **Persistent Object Tokenization（POT）** 从 RGB-D 维护角色索引的度量 3D 对象记录，序列化为 Persistent 3D Object Tokens，插入 **GR00T-N1.7** 全身动作头；同一刷新记忆再驱动几何谓词监督与局部恢复。
+**POT-VLA**（*Closing the Loop in Humanoid VLA: Persistent 3D Object Tokens for Verifiable Loco-Manipulation*，[arXiv:2607.18016](https://arxiv.org/abs/2607.18016) **v2**，2026-07-20 / v2@2026-07-26）由 **北航 / 北京中关村学院 / 天津大学 / 机智赛博（DeepCybo） / 中关村人工智能研究院（ZGCI）** 提出：把长时程人形移动操作中的 **object-state divergence**（动作条件用的对象状态 ≠ 验收用的对象状态）显式建模，用 **Persistent Object Tokenization（POT）** 从 RGB-D 维护角色索引的度量 3D 对象记录，序列化为 Persistent 3D Object Tokens，插入 **GR00T-N1.7** 全身动作头；同一刷新记忆再驱动几何谓词监督与局部恢复。
 
 ## 一句话定义
 
@@ -57,10 +57,10 @@ summary: "POT-VLA（arXiv:2607.18016，北航/中关村学院/天大/DeepCybo/ZG
 |------|------|
 | **机构** | 北京航空航天大学（BUAA）；北京中关村学院（Zhongguancun Academy / BZA）；天津大学（TJU）；机智赛博（DeepCybo）；中关村人工智能研究院（ZGCI / ZGCA） |
 | **作者** | Peng Ren\*、Haoyang Ge\*、Jiang Zhao、Cong Huang、Yukun Shi、Pei Chi†、Kai Chen† |
-| **arXiv** | [2607.18016](https://arxiv.org/abs/2607.18016)（cs.RO，2026-07-20） |
+| **arXiv** | [2607.18016](https://arxiv.org/abs/2607.18016)（cs.RO；v1@2026-07-20，**v2@2026-07-26**） |
 | **动作骨干** | GR00T-N1.7（匹配 Direct 基线同 embodiment / runtime） |
 | **实机** | Unitree G1；八类办公室长时程任务 + Being-0 对齐服务任务套件 |
-| **开源** | **确认未开源**（截至 2026-07-26；无项目页/代码/权重） |
+| **开源** | **确认未开源**（截至 2026-07-29；无项目页/代码/权重；v2 仅补 DeepCybo 实习脚注） |
 
 ## 为什么重要
 
@@ -116,7 +116,7 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用。** 截至 **2026-07-26**，arXiv 与公开检索均未发现官方项目页、训练/推理代码或权重；无法对齐仓库模块画运行时序。动作骨干可对照公开 [Isaac GR00T](./isaac-gr00t.md) / [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md)，但 **POT 侧车与谓词环无公开入口**。
+**不适用。** 截至 **2026-07-29**，arXiv v2 与公开检索（含 GitHub `POT-VLA` / DeepCybo）均未发现官方项目页、训练/推理代码或权重；无法对齐仓库模块画运行时序。动作骨干可对照公开 [Isaac GR00T](./isaac-gr00t.md) / [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md)，但 **POT 侧车与谓词环无公开入口**。
 
 ## 工程实践
 
@@ -209,5 +209,5 @@ flowchart TB
 ## 推荐继续阅读
 
 - [论文 PDF](https://arxiv.org/pdf/2607.18016)
-- [论文 HTML](https://arxiv.org/html/2607.18016v1)
+- [论文 HTML（v2）](https://arxiv.org/html/2607.18016v2)
 - [NVIDIA Isaac GR00T / GR00T-N1.7 权重入口](https://huggingface.co/nvidia/GR00T-N1.7-3B)（仅动作骨干，非 POT 系统）
