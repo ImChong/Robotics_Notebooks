@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-07-27
+updated: 2026-07-29
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作。"
 related:
   - ../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md
@@ -75,6 +75,7 @@ related:
   - ../entities/paper-uni-lavira.md
   - ../entities/lumina-embodied.md
   - ../entities/waytoagi.md
+  - ../entities/paper-data-pyramid-embodied-manipulation.md
 sources:
   - ../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md
   - ../../sources/papers/rl_foundation_models.md
@@ -116,6 +117,7 @@ sources:
   - ../../sources/papers/lingbot_vla_v2_tech_report.md
   - ../../sources/repos/lingbot-vla-v2.md
   - ../../sources/papers/chronos_arxiv_2606_30318.md
+  - ../../sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md
 ---
 
 # VLA（Vision-Language-Action）
@@ -240,6 +242,8 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 
 ### 2. 数据规模要求高
 想要稳健泛化，通常需要大量多样化演示数据。十几条示教可以做 task-specific BC，但远不足以支撑通用 VLA。除跨机构机器人日志外，**人中心互联网视频**（经策展与交互标注，如 [HumanNet](../entities/humannet.md)）正在成为持续预训练的一种规模化来源，但其分布与真机仍不同，需要与 Sim2Real 与执行层栈联合评估。
+
+「该补哪一层数据」的类目级选型框架见 [具身数据金字塔综述](../entities/paper-data-pyramid-embodied-manipulation.md)（arXiv:2607.24744）：真机 / UMI / Ego-Exo / 仿真 / 通用五层 × 可扩展性、机器人对齐等六维属性，并把 70+ VLA/WAM 的数据配方趋势（异构混合化、规模陡增、ego 数据主料化）统一解读。
 
 另一条被系统讨论的路线是让 **视频模态大模型** 直接提供 **时序物理先验**，把「语义 + 动力学」从静态 VLM 中部分解耦出去，再用轻量动作头吸收机器人轨迹；代表叙述见 [mimic-video（VAM）](./mimic-video.md) 与论文中的 oracle 缩放实验读法。
 

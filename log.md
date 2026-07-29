@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-29] ingest | sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md + sites/embodied-data-pyramid + repos/awesome-embodied-data-pyramid — 具身数据金字塔综述（arXiv:2607.24744）入库：五层数据生态 × 六维属性 × 基础模型数据配方；升格 wiki/entities/paper-data-pyramid-embodied-manipulation.md；交叉 OXE / GR00T N1 / scaling-laws / WAM / vla / depth-vla
+
+- **归档：** [`sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md`](sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md)、[`sources/sites/embodied-data-pyramid.md`](sources/sites/embodied-data-pyramid.md)、[`sources/repos/awesome-embodied-data-pyramid.md`](sources/repos/awesome-embodied-data-pyramid.md)；索引 [`sources/README.md`](sources/README.md)
+- **开源核查（2026-07-29，步骤 2.5）：** **资源型开源**——Awesome 策展清单 `worldbench/awesome-embodied-data-pyramid` + 项目页五层数据集检索表；综述无训练/推理代码（源码运行时序图不适用，已在实体页注明）
+- **主升格：** [`wiki/entities/paper-data-pyramid-embodied-manipulation.md`](wiki/entities/paper-data-pyramid-embodied-manipulation.md) — 两主轴+四辅维组织原则、五层金字塔 Mermaid、各层采集管线归纳、70+ 模型数据配方三趋势、动作空间对齐三策略、结论六要点与六大开放挑战
+- **交叉：** [`wiki/concepts/open-x-embodiment.md`](wiki/concepts/open-x-embodiment.md)、[`wiki/entities/paper-hrl-stack-34-gr00t_n1.md`](wiki/entities/paper-hrl-stack-34-gr00t_n1.md)（模型专属金字塔 vs 类目级系统化）、[`wiki/concepts/embodied-scaling-laws.md`](wiki/concepts/embodied-scaling-laws.md)、[`wiki/concepts/world-action-models.md`](wiki/concepts/world-action-models.md)、[`wiki/methods/vla.md`](wiki/methods/vla.md)、[`roadmap/depth-vla.md`](roadmap/depth-vla.md) Stage 3
+- **机构 tags：** `pku`/`ntu`/`hkust`/`nus`/`cuhk`/`hku`/`duke`/`ucb`/`gbu`/`nju`/`sjtu`（均已在 institutions.json，无需新增注册）
+
 ## [2026-07-28] structural | V31 P1 感知栈层级专题交叉补强 — 7 个感知实体页与「机器人视觉感知栈选型闭环」Query 页双向回链，标注各页所在感知栈层（②2D 检测/分割 · ③2D→3D 语义建图）
 
 - **执行清单：** [`docs/checklists/tech-stack-next-phase-checklist-v31.md`](docs/checklists/tech-stack-next-phase-checklist-v31.md) P1 第二项打勾

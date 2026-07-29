@@ -2,7 +2,7 @@
 type: concept
 tags: [dataset, scaling, cross-embodiment, manipulation, community]
 status: complete
-updated: 2026-07-27
+updated: 2026-07-29
 related:
   - ../queries/contact-wrench-closed-loop.md
   - ./foundation-policy.md
@@ -10,9 +10,11 @@ related:
   - ../methods/octo-model.md
   - ../methods/vla.md
   - ../entities/paper-topreward.md
+  - ../entities/paper-data-pyramid-embodied-manipulation.md
 sources:
   - ../../sources/blogs/ted_xiao_embodied_three_eras_primary_refs.md
   - ../../sources/papers/topreward_arxiv_2602_19313.md
+  - ../../sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md
 summary: "Open X-Embodiment（OXE）联合多机构把异构机器人演示数据规范化并开源，支撑跨本体规模化学习与通用策略预训练。"
 ---
 
@@ -40,6 +42,7 @@ summary: "Open X-Embodiment（OXE）联合多机构把异构机器人演示数�
 - [Octo Model](../methods/octo-model.md)
 - [Foundation Policy](./foundation-policy.md)
 - [TOPReward](../entities/paper-topreward.md) — 在 OXE 39 数据集上评测零样本进度奖励（Mean VOC）
+- [具身数据金字塔综述](../entities/paper-data-pyramid-embodied-manipulation.md) — 把 OXE 定位为五层金字塔真机层的聚合代表，并给出跨层数据选型坐标系
 
 ## 参考来源
 

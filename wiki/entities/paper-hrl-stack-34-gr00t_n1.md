@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, loco-manipulation, loco-manip-161-survey, nvidia, vla]
 status: complete
-updated: 2026-07-26
+updated: 2026-07-29
 arxiv: "2503.14734"
 venue: "2025 · arXiv"
 code: https://github.com/NVIDIA/Isaac-GR00T
@@ -19,8 +19,10 @@ related:
   - ../entities/gr00t-wholebodycontrol.md
   - ../entities/isaac-gr00t.md
   - ./paper-deed.md
+  - ./paper-data-pyramid-embodied-manipulation.md
 sources:
   - ../../sources/papers/gr00t_n1_arxiv_2503_14734.md
+  - ../../sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md
   - ../../sources/repos/isaac_gr00t.md
   - ../../sources/papers/humanoid_rl_stack_34_gr00t_n1_an_open_foundation_model_for_generalist.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
@@ -120,6 +122,7 @@ flowchart TB
 - **无动作标签视频：** 训练 VQ-VAE **latent action**（LAPA embodiment）与 **IDM 伪动作**，把人类/神经视频当作额外 embodiment 纳入 flow-matching。
 - **神经轨迹：** 在 88 小时 GR-1 遥操作上微调 image-to-video 模型，生成约 **827 小时**（≈10×）反事实语言条件轨迹；后训练可与真机轨迹 **1:1** 共采样。
 - **仿真轨迹：** DexMimicGen 在 RoboCasa 框架下将少量人类 demo 扩为大规模人形操作数据；预训练阶段约 **54 万条 / 6500 小时**（11 小时生成）。
+- **类目级系统化：** 本节为 **单模型配方视角** 的三层金字塔；[具身数据金字塔综述](./paper-data-pyramid-embodied-manipulation.md)（arXiv:2607.24744）将其与 Motus 等模型专属金字塔统一为 **五层类目级坐标系**（真机/UMI/Ego-Exo/仿真/通用 × 六维属性），作跨模型数据选型对照阅读。
 
 ### 3）预训练与后训练
 

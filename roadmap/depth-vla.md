@@ -144,6 +144,7 @@ flowchart LR
 
 ### 推荐读什么
 - [VLA 开源复现全景 2025](../wiki/overview/vla-open-source-repro-landscape-2025.md)（本仓库）
+- [具身数据金字塔综述](../wiki/entities/paper-data-pyramid-embodied-manipulation.md)（本仓库）— 五层数据生态 × 六维属性的类目级坐标系；「该补哪一层数据」的选型框架
 - [EgoScale](../wiki/methods/egoscale.md)、[HumanNet](../wiki/entities/humannet.md)、[mimic-video](../wiki/methods/mimic-video.md)（本仓库）
 - [World Action Models（WAM）](../wiki/concepts/world-action-models.md) 与 [Pelican-Unified 1.0](../wiki/methods/pelican-unified-1.md)（本仓库）
 - [DeFI](../wiki/methods/defi-decoupled-dynamics-vla.md) 与 [具身 Scaling Laws](../wiki/concepts/embodied-scaling-laws.md)（本仓库）
