@@ -3,7 +3,7 @@ type: task
 tags: [teleoperation, manipulation, loco-manipulation, data-collection, humanoid]
 status: complete
 summary: "Teleoperation 让人类通过远程接口直接操作机器人，是数据采集和复杂任务执行的重要桥梁。"
-updated: 2026-07-29
+updated: 2026-07-30
 sources:
   - ../../sources/papers/teledexter_arxiv_2607_11481.md
   - ../../sources/sites/teledexter-project.md
@@ -212,6 +212,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - [TeleDexter（论文实体）](../entities/paper-teledexter.md) — hand–object co-tracking 灵巧遥操作与采数引擎
 - [UME-EXO（论文实体）](../entities/paper-ume-exo.md) — 外骨骼力矩反馈 + 全身臂形示教 → ACT 主动柔顺策略
 - [BifrostUMI（论文实体）](../entities/paper-bifrost-umi.md) — 无机器人示范 → 人形全身扩散策略 + SKR
+- [Transformer Transformer（论文实体）](../entities/paper-transformer-transformer.md) — UMI 示范 → 运动条件机体共设计（ALOHA/双臂）
 - [HandUMI](../entities/handumi.md) — 开源无机器人示教；一次采集多臂重定向
 - [DEUX / Glove X（XYZ）](../entities/xyz-deux.md) — 商业手套–三指手 1:1 零样本重定向采数（闭源）
 - [Manipulation](./manipulation.md) — 操作任务整体视角

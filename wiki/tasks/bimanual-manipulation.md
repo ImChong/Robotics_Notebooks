@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, bimanual, humanoid, dual-arm, whole-body, imitation-learning, teleoperation]
 status: complete
-updated: 2026-07-27
+updated: 2026-07-30
 summary: "双臂协调操作（Bimanual Manipulation）要求两只手臂在力学和时序上协同完成单臂无法完成的任务，是人形机器人操作能力的核心挑战之一。"
 sources:
   - ../../sources/papers/imitation_learning.md
@@ -138,6 +138,7 @@ $${}^A T_{obj} \cdot {}^{obj} T_B = {}^A T_B$$
 | GELLO（2023） | 低成本遥操作 | 各类机械臂 | 降低双臂数据采集门槛 |
 | HandUMI（2026） | 无机器人示教 + 重定向 | 平行夹爪双臂（PiPER / OpenArm / TRLC-DK1 / YAM 等） | 一次采集、多臂复用；换 tip 即开录；LeRobot v3 + 内置 QA；见 [HandUMI](../entities/handumi.md) |
 | MEVION（2026） | Leader–Follower + ACT | 四条 6-DoF 臂 | 约 $14k 的开源高力高速采集系统；见 [MEVION](../entities/paper-mevion.md) |
+| Transformer Transformer（2026） | DiT 共设计 + 跨具身控制 | 轮式双臂 / ALOHA2 | 按洗碗/抛布运动优化完整机体；见 [实体页](../entities/paper-transformer-transformer.md) |
 
 ## 与 Loco-Manipulation 的区别
 
@@ -171,6 +172,7 @@ $${}^A T_{obj} \cdot {}^{obj} T_B = {}^A T_B$$
 - [Action Chunking](../methods/action-chunking.md) — 双臂协调常依赖动作块输出保持短时同步
 - [ALOHA](../entities/aloha.md) — 开源双臂遥操作硬件标准
 - [RoboTwin 2.0](../entities/robotwin.md) — 双臂自动化数据生成与仿真平台
+- [Transformer Transformer](../entities/paper-transformer-transformer.md) — 运动条件双臂机体共设计（洗碗 / ALOHA 抛布）
 
 ## 参考来源
 
@@ -178,6 +180,7 @@ $${}^A T_{obj} \cdot {}^{obj} T_B = {}^A T_B$$
 - Fu et al., *Mobile ALOHA* (2024) — 移动双臂操作
 - [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md) — 具身智能能力栈与硬件选型
 - [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md) — ACT / ALOHA / Diffusion Policy 摘要
+- [Transformer Transformer 论文摘录](../../sources/papers/transformer_transformer_arxiv_2607_25798.md) — 轮式双臂洗碗共设计与 ALOHA2 真机
 
 ## 推荐继续阅读
 

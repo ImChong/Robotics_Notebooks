@@ -1,8 +1,8 @@
 # Wiki 健康报告
 
-## [2026-07-29] lint | health-check | 自动化 wiki 健康检查
+## [2026-07-30] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **3** 条信息型预警）：
+共发现 **0** 个问题（另含 **4** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -53,7 +53,7 @@
 - 无
 
 ### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（1 个）
-- uv（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
+- uv（被 7 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
 
 ### ⚠️ Frontmatter 缺少 type 字段（0 个）
 - 无
@@ -121,7 +121,8 @@
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（1 个）
+### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（2 个）
+- wiki/entities/paper-data-pyramid-embodied-manipulation.md（含绝对化措辞「最新」，updated=2026-07-29；同主题更新页 wiki/entities/paper-transformer-transformer.md updated=2026-07-30）
 - wiki/entities/paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md（含绝对化措辞「最新」，updated=2026-07-28；同主题更新页 wiki/entities/paper-data-pyramid-embodied-manipulation.md updated=2026-07-29）
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」专题枢纽（信息型，不阻塞 CI）（0 个）
@@ -139,4 +140,4 @@
 ### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：1927/1953 (99%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1928/1954 (99%) wiki/entity 页有 ingest 来源

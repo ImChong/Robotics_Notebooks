@@ -3,14 +3,15 @@ title: 跨具身策略迁移选型指南
 type: query
 status: complete
 created: 2026-05-31
-updated: 2026-07-24
-summary: 在人形 WBT 栈中，把一份运动控制策略搬到新机体的三条主流路径——单具身重训 + 重定向迁移 vs Any2Any 高效后训练 vs 多具身联合训练——的成本/数据/泛化三维选型决策树与典型故障模式；灵巧手层可对照 UHAS；末端/工具接口轴对照 GEN-1 千手。
+updated: 2026-07-30
+summary: 在人形 WBT 栈中，把一份运动控制策略搬到新机体的三条主流路径——单具身重训 + 重定向迁移 vs Any2Any 高效后训练 vs 多具身联合训练——的成本/数据/泛化三维选型决策树与典型故障模式；灵巧手层可对照 UHAS；末端/工具接口轴对照 GEN-1 千手；设计侧生成机体可对照 Transformer Transformer。
 sources:
   - ../../sources/papers/any2any_arxiv_2605_23733.md
   - ../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md
   - ../../sources/papers/humanoid_rl_stack_17_sonic_supersizing_motion_tracking_for_natural_hu.md
   - ../../sources/papers/uhas_arxiv_2607_03570.md
   - ../../sources/blogs/generalist_thousand_hands.md
+  - ../../sources/papers/transformer_transformer_arxiv_2607_25798.md
 related:
   - ../concepts/whole-body-tracking-pipeline.md
   - ../concepts/motion-retargeting-pipeline.md
@@ -19,6 +20,7 @@ related:
   - ../concepts/behavior-foundation-model.md
   - ../entities/paper-any2any-cross-embodiment-wbt.md
   - ../entities/generalist-gen1-thousand-hands.md
+  - ../entities/paper-transformer-transformer.md
   - ../methods/sonic-motion-tracking.md
   - ../methods/uhas-unified-hand-action-space.md
   - ../comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md
@@ -200,6 +202,7 @@ flowchart TD
 - [SONIC vs BeyondMimic vs SD-AMP vs Heracles](../comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md) — WBT 策略学习阶段的方法谱系对比
 - [人形运动跟踪方法选型指南](./humanoid-motion-tracking-method-selection.md) — 方法选型（阶段 4），本页接其阶段 5
 - [GEN-1 千手：跨末端执行器泛化](../entities/generalist-gen1-thousand-hands.md) — 末端/工具接口多样性（与整机 WBT 迁移正交）
+- [Transformer Transformer](../entities/paper-transformer-transformer.md) — **设计侧**生成机体 + 同模型跨具身控制（与本页「策略迁移」正交）
 
 ## 一句话记忆
 
