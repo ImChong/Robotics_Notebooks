@@ -1,5 +1,14 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-29] lint | scripts/lint_wiki.py + tests/test_lint_wiki_perception_stack_crosslink.py — V31 P0 感知栈页交叉链路巡检 V1（信息型，不阻塞 CI）
+
+- **新增检查：** [`scripts/lint_wiki.py`](scripts/lint_wiki.py) `_check_perception_stack_crosslink` — 对 `tags` 含 `detection` / `segmentation` / `perception` / `semantic`(-mapping)（连字符 token 前缀匹配，覆盖 `object-detection` / `instance-segmentation` / `promptable-segmentation` / `semantic-mapping`，规避 `reception` / `impedance` 裸子串误判）的 `entities/` / `comparisons/` / `concepts/` / `methods/` 页，检查正文是否回链「机器人视觉感知栈选型闭环」专题枢纽（`robot-perception-stack-selection-loop` / `topic-perception-stack`），枢纽页豁免；缺失记 INFO 级 `perception_stack_crosslink`
+- **登记：** `INFO_ONLY_KEYS` / `_empty_results` / `format_report` / `lint()` 四处对齐 V30 `_check_actuator_drive_chain_crosslink` 模式
+- **基线快照：** [`exports/lint-report.md`](exports/lint-report.md) — 当前 **72 项**待补感知栈回链页（信息型，供后续 P1/P3 交叉补强收敛）
+- **测试：** [`tests/test_lint_wiki_perception_stack_crosslink.py`](tests/test_lint_wiki_perception_stack_crosslink.py) 13 例全绿（四类目录、内联/列表 tag、query/topic/双枢纽回链、枢纽豁免、裸子串/无关标签不误判、复数与派生 tag、INFO 不计失败）
+- **门禁：** `make ci-preflight` 通过（lint 0 errors、导出质量 12/12）
+- **清单：** [`docs/checklists/tech-stack-next-phase-checklist-v31.md`](docs/checklists/tech-stack-next-phase-checklist-v31.md) V31 P0 打勾
+
 ## [2026-07-29] ingest | sources/papers/softvtbench_arxiv_2607_04234.md + sites/softvtbench-github-io + repos/softvtbench — SoftVTBench（arXiv:2607.04234）入库：Goal/Safety 视触觉可变形基准；升格 wiki/entities/paper-softvtbench.md；交叉 tactile / visuo-tactile / contact-rich / topic-tactile / manipulation / embodied-eval；开源代码+数据，参考权重待发
 
 - **归档：** [`sources/papers/softvtbench_arxiv_2607_04234.md`](sources/papers/softvtbench_arxiv_2607_04234.md)、[`sources/sites/softvtbench-github-io.md`](sources/sites/softvtbench-github-io.md)、[`sources/repos/softvtbench.md`](sources/repos/softvtbench.md)；索引 [`sources/README.md`](sources/README.md)

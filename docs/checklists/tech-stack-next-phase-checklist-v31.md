@@ -24,8 +24,8 @@
 
 ## P0: 自动化与工具链深度强化 (Engineering)
 
-- [ ] **感知栈页交叉链路巡检 V1**：
-    - [ ] `scripts/lint_wiki.py` 新增 `_check_perception_stack_crosslink`：对 `tags` 含 `detection` / `segmentation` / `perception` / `semantic-mapping`（子串匹配派生标签）的 `entities/` / `comparisons/` / `concepts/` / `methods/` 页，检查正文是否回链到「机器人视觉感知栈选型闭环」专题枢纽（`robot-perception-stack-selection-loop` / `topic-perception-stack`，缺失给 INFO 级 `perception_stack_crosslink` 提示，不阻塞 CI），枢纽页自身豁免；写入 lint 报告基线快照（`exports/lint-report.md`）；新增 `tests/test_lint_wiki_perception_stack_crosslink.py` 用例覆盖（列表式/内联式 tag、有/无回链、双枢纽、枢纽豁免、INFO 不计失败）。参照 V30 `_check_actuator_drive_chain_crosslink` 的常量登记方式（`INFO_ONLY_KEYS`/`_empty_results`/`format_report`）。
+- [x] **感知栈页交叉链路巡检 V1**：（2026-07-29 完成，基线 72 项 INFO）
+    - [x] `scripts/lint_wiki.py` 新增 `_check_perception_stack_crosslink`：对 `tags` 含 `detection` / `segmentation` / `perception` / `semantic-mapping`（连字符 token 前缀匹配派生标签，覆盖 `object-detection` / `instance-segmentation` / `promptable-segmentation` / `semantic-mapping` 等，避免 `reception` / `impedance` 裸子串误判）的 `entities/` / `comparisons/` / `concepts/` / `methods/` 页，检查正文是否回链到「机器人视觉感知栈选型闭环」专题枢纽（`robot-perception-stack-selection-loop` / `topic-perception-stack`，缺失给 INFO 级 `perception_stack_crosslink` 提示，不阻塞 CI），枢纽页自身豁免；已登记 `INFO_ONLY_KEYS`/`_empty_results`/`format_report` 并写入 lint 报告基线快照（`exports/lint-report.md`，当前 72 项待补回链页）；新增 `tests/test_lint_wiki_perception_stack_crosslink.py`（13 例：列表式/内联式 tag、entities/comparisons/concepts/methods 四类、query 枢纽/topic 枢纽/双枢纽回链、枢纽豁免、无关标签/裸子串不误判、复数与派生 tag、INFO 不计失败）。`make ci-preflight` 通过（0 errors，导出质量 12/12）。参照 V30 `_check_actuator_drive_chain_crosslink` 的常量登记方式（`INFO_ONLY_KEYS`/`_empty_results`/`format_report`）。
 
 ## P1: 机器人视觉感知栈选型闭环知识链专题 (Quality)
 
