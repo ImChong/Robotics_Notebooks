@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, inria]
 status: draft
 updated: 2026-07-30
 summary: "mc_rtc：有限状态机负责行为切换，任务栈和接触管理在实时循环内共同求解姿态、行走与操作目标。日志、GUI和机器人模块把学习策略接入WBC时的命令、约束和失败位置完整暴露出来。"

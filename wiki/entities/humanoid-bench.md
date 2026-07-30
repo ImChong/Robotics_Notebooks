@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, berkeley]
 status: draft
 updated: 2026-07-30
 summary: "HumanoidBench：在人形仿真中提供十五项全身操作与十二项运动任务，并附Dreamer、SAC、PPO和TD-MPC2等训练代码；统一MuJoCo环境适合检验算法能否同时处理高维身体控制与任务交互。"

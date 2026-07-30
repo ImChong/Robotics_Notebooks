@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, tsinghua, shanghai-pil]
 status: draft
 updated: 2026-07-30
 summary: "project-instinct/instinct_rl：承担Project Instinct的算法侧，实现PPO、AMP、WASABI、MoE、VAE和DAgger等训练组件，并与InstinctLab环境接口分离；便于在不改任务定义的情况下替换策略结构与辅助损失。"

@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [vla, world-model, imitation-learning, hmi-opensource-table, repo]
+tags: [vla, world-model, imitation-learning, hmi-opensource-table, repo, tsinghua]
 status: draft
 updated: 2026-07-30
 summary: "WorldArena：十六项感知指标与功能任务把“视频生成更像”拆成可测能力，2.0又跨RoboTwin、LIBERO和真实ALOHA检查这些指标能否转化为策略收益。把新模型接入数据引擎、策略排序和动作规划三条路径，可以检验视觉质量是否真正转成控制收益。"

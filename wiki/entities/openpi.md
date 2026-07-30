@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [vla, world-model, imitation-learning, hmi-opensource-table, repo]
+tags: [vla, world-model, imitation-learning, hmi-opensource-table, repo, physical-intelligence]
 status: draft
 updated: 2026-07-30
 summary: "openpi：仓库同时维护流匹配式π0、快速自回归π0-FAST和π0.5，并提供检查点、数据配置、微调与推理服务。接入新机器人时最关键的工作是动作归一化、数据字段映射和推理频率对齐。"

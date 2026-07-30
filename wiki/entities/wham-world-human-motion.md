@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [motion-retargeting, humanoid, mocap, hmi-opensource-table, repo]
+tags: [motion-retargeting, humanoid, mocap, hmi-opensource-table, repo, linux-foundation]
 status: draft
 updated: 2026-07-30
 summary: "WHAM：从移动相机单目视频联合恢复SMPL人体姿态、像素对齐运动和世界坐标轨迹，显式利用相机运动与足地约束减少漂移；官方实现适合产生重定向前的人体参考，不输出机器人控制。"

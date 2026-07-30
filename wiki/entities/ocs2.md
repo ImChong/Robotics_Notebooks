@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, eth]
 status: draft
 updated: 2026-07-30
 summary: "OCS2：动力学、代价和约束经过统一接口进入滚动最优控制求解器，仓库给出腿式机器人和机械臂示例。它能把在线MPC、状态估计和真实执行接起来，用于检验学习策略是否真的需要替代整段模型控制。"

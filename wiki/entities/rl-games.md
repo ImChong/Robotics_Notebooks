@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
 updated: 2026-07-30
 summary: "rl_games：提供面向GPU环境的PPO、A2C等训练实现，强调大批量采样、RNN策略、分布式训练和Isaac任务适配；适合需要直接查看训练循环、归一化与多设备组织方式的工程基线。"

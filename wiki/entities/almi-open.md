@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [whole-body-tracking, humanoid, rl, hmi-opensource-table, repo]
+tags: [whole-body-tracking, humanoid, rl, hmi-opensource-table, repo, linux-foundation]
 status: draft
 updated: 2026-07-30
 summary: "ALMI-Open：先独立训练下肢行走和上肢模仿策略，再让两者在联合训练中互相施加扰动，最终蒸馏为统一全身模型；这里的对抗指策略间适应，不是AMP判别器，仓库还开放ALMI-X数据。"

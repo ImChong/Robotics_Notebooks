@@ -1,13 +1,34 @@
 {
   "generated_at": "2026-07-30",
-  "node_count": 1983,
-  "edge_count": 17612,
+  "node_count": 2044,
+  "edge_count": 18036,
   "coverage": {
-    "covered": 1933,
-    "total": 1959,
+    "covered": 1994,
+    "total": 2020,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/queries/hmi-opensource-projects-coverage.md",
+      "detail_id": "wiki-queries-hmi-opensource-projects-coverage",
+      "label": "HMI 开源项目主表覆盖索引",
+      "type": "query",
+      "recency": "2026-07-30",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/humanoid-motion-intelligence.md",
+      "detail_id": "entity-humanoid-motion-intelligence",
+      "label": "Humanoid Motion Intelligence（人形机器人运动智能知识库）",
+      "type": "entity",
+      "recency": "2026-07-30",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/paper-intact.md",
       "detail_id": "entity-paper-intact",
@@ -37,8 +58,7 @@
       "recency": "2026-07-30",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-dwm-separating-world-effects.md",
@@ -79,8 +99,7 @@
       "type": "concept",
       "recency": "2026-07-30",
       "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "action": "maintained"
     },
     {
       "path": "wiki/overview/world-model-physics-fidelity-outputs.md",
@@ -110,7 +129,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/tasks/teleoperation.md",
@@ -197,66 +216,53 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-shells-layered-surface-sampling.md",
-      "detail_id": "entity-paper-shells-layered-surface-sampling",
-      "label": "SHELLS（分层采样多视角人头重建）",
-      "type": "entity",
-      "recency": "2026-07-30",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-face-anything-4d-face-reconstruction.md",
-      "detail_id": "entity-paper-face-anything-4d-face-reconstruction",
-      "label": "Face Anything",
-      "type": "entity",
-      "recency": "2026-07-30",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-intact.md",
-    "detail_id": "entity-paper-intact",
-    "label": "INTACT（Search-Free Intent-to-Action World Model）",
-    "type": "entity",
+    "path": "wiki/queries/hmi-opensource-projects-coverage.md",
+    "detail_id": "wiki-queries-hmi-opensource-projects-coverage",
+    "label": "HMI 开源项目主表覆盖索引",
+    "type": "query",
     "recency": "2026-07-30",
     "source": "log.md",
     "action": "maintained",
-    "has_repo": true,
-    "community_label": "生成式世界模型（Generative World Models） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
       "label": "移动操作",
-      "size": 182
+      "size": 191
     },
     {
-      "label": "模仿学习",
-      "size": 153
+      "label": "动作重定向",
+      "size": 183
     },
     {
-      "label": "仿真到现实",
-      "size": 149
+      "label": "操作",
+      "size": 176
     },
     {
       "label": "视觉-语言-动作",
-      "size": 146
+      "size": 164
     },
     {
       "label": "人形论文深读笔记",
-      "size": 142
+      "size": 144
     },
     {
-      "label": "人形强化学习运动控制",
-      "size": 128
+      "label": "全身控制",
+      "size": 135
     }
   ],
   "top_hubs": [
+    {
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "degree": 405,
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "detail_id": "wiki-overview-humanoid-paper-notebooks-index",
       "label": "Humanoid Paper Notebooks 知识库索引",
@@ -265,18 +271,10 @@
       "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
     },
     {
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "degree": 369,
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 364,
+      "degree": 370,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -292,7 +290,7 @@
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
-      "degree": 297,
+      "degree": 299,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
@@ -300,15 +298,30 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 284
+      "degree": 284,
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 275,
+      "degree": 282,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "detail_id": "wiki-queries-hmi-opensource-projects-coverage",
+      "label": "HMI 开源项目主表覆盖索引",
+      "type": "query",
+      "degree": 232,
+      "has_repo": true
+    },
+    {
+      "detail_id": "wiki-methods-imitation-learning",
+      "label": "Imitation Learning (IL, 模仿学习)",
+      "type": "method",
+      "degree": 223,
+      "has_repo": true
     },
     {
       "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",
@@ -316,22 +329,6 @@
       "type": "overview",
       "degree": 223,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "detail_id": "wiki-methods-imitation-learning",
-      "label": "Imitation Learning (IL, 模仿学习)",
-      "type": "method",
-      "degree": 216,
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "detail_id": "wiki-methods-generative-world-models",
-      "label": "Generative World Models (生成式世界模型)",
-      "type": "method",
-      "degree": 202,
-      "has_repo": true,
-      "community_label": "生成式世界模型（Generative World Models） 社区"
     }
   ],
   "top_paper_hubs": [
@@ -346,27 +343,29 @@
       "detail_id": "wiki-methods-beyondmimic",
       "label": "BeyondMimic",
       "type": "method",
-      "degree": 62,
+      "degree": 69,
       "has_repo": true
     },
     {
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
-      "degree": 52
+      "degree": 53,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "detail_id": "entity-paper-hrl-stack-03-omniretarget",
+      "label": "OmniRetarget",
+      "type": "entity",
+      "degree": 50,
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
     },
     {
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
       "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
       "type": "entity",
       "degree": 50
-    },
-    {
-      "detail_id": "entity-paper-hrl-stack-03-omniretarget",
-      "label": "OmniRetarget",
-      "type": "entity",
-      "degree": 49,
-      "has_repo": true
     },
     {
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",
@@ -379,9 +378,8 @@
       "detail_id": "entity-paper-twist2",
       "label": "TWIST2",
       "type": "entity",
-      "degree": 41,
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "degree": 42,
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
@@ -401,8 +399,7 @@
       "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",
       "label": "SD-AMP：统一走、跑与起身的对抗运动先验",
       "type": "entity",
-      "degree": 38,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "degree": 38
     }
   ]
 }

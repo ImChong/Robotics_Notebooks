@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [whole-body-tracking, humanoid, rl, hmi-opensource-table, repo]
+tags: [whole-body-tracking, humanoid, rl, hmi-opensource-table, repo, linux-foundation]
 status: draft
 updated: 2026-07-30
 summary: "TrackerLab：多种本体、动作数据和跟踪配置共享实验接口，可把参考表示、奖励与机器人模型的影响分开比较。已有Tracker迁移到新本体后若突然退化，这个统一基线有助于先排除环境差异。"

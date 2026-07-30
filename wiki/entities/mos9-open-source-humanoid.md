@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
 updated: 2026-07-30
 summary: "MOS9 开源人形机器人：机械STEP与电气工程、SocketCAN电机驱动、机器人IPC、GMR重定向、Isaac Lab AMP训练、MuJoCo验证及运行部署分布在配套仓库中。它提供RoboCup Kid-Size人形从本体设计到策略上机的工程参照，而非单一运…"

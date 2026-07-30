@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
 updated: 2026-07-30
 summary: "rerun：以列式多模态数据层记录图像、点云、变换、关节和视频，并支持流式查询与可视化；它可连接在线调试、MCAP或LeRobot数据和训练管线，减少日志格式之间的重复转换。"

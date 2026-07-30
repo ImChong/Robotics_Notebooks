@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, stanford]
 status: draft
 updated: 2026-07-30
 summary: "OmniGibson：在Omniverse场景与物理层上加入可交互家庭资产、对象状态、导航和操作任务接口，为长时序日常活动提供仿真执行环境；与BEHAVIOR-1K的区别在于这里侧重模拟器与任务运行层。"

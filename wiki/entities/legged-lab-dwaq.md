@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [locomotion, rl, humanoid, motion-prior, hmi-opensource-table, repo]
+tags: [locomotion, rl, humanoid, motion-prior, hmi-opensource-table, repo, unitree]
 status: draft
 updated: 2026-07-30
 summary: "Legged Lab DWAQ（Unitree G1）：G1 Actor读取100维当前本体观测，五帧历史经VAE估计速度和环境潜变量，再与PPO联合优化29维关节位置目标。代码属于DreamWaQ式盲走实现，缺少AdaBoot和实机通信链路。"

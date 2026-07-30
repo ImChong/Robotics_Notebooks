@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
 updated: 2026-07-30
 summary: "CleanRL：把每个强化学习算法压缩到单文件训练实现，显式展示采样、优势估计、损失和日志过程；它更适合审阅PPO等算法的真实计算顺序、制作最小复现和排查框架封装造成的差异。"

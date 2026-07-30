@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [whole-body-tracking, humanoid, rl, hmi-opensource-table, repo]
+tags: [whole-body-tracking, humanoid, rl, hmi-opensource-table, repo, linux-foundation]
 status: draft
 updated: 2026-07-30
 summary: "BeyondMimic-Reproduction：复现将教师rollout、条件动作VAE、状态潜变量窗口、Transformer扩散和测试时引导拆成可单测接口。160维观测契约与合成数据便于逐段排错，当前尚未接通Isaac闭环、正式指标和真机。"

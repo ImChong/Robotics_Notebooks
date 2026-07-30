@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, nvidia]
 status: draft
 updated: 2026-07-30
 summary: "IsaacGymEnvs：汇集Isaac Gym时代的GPU向量化强化学习任务、训练配置和多算法接入方式，便于复现早期官方基线；其价值主要在历史任务实现与性能对照，新任务开发应优先评估Isaac Lab迁移路径。"

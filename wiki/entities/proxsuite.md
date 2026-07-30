@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, inria]
 status: draft
 updated: 2026-07-30
 summary: "ProxSuite：提供面向稠密和稀疏二次规划、锥规划的近端求解器，并针对重复求解和机器人实时控制优化接口；可作为全身控制或轨迹优化中需要低延迟热启动的数值组件。"

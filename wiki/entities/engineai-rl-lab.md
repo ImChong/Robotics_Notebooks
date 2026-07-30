@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [whole-body-tracking, humanoid, rl, hmi-opensource-table, repo]
+tags: [whole-body-tracking, humanoid, rl, hmi-opensource-table, repo, engineai]
 status: draft
 updated: 2026-07-30
 summary: "engineai_rl_lab：单段参考轨迹进入Isaac Lab的PPO跟踪任务，PM01与T800配置特权Critic、失败片段采样和全身奖励。T800额外随机化执行延迟，导出的MNN策略可接配套SDK，但仓库没有VAE与扩散阶段。"

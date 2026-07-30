@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, google-deepmind]
 status: draft
 updated: 2026-07-30
 summary: "MuJoCo Menagerie：仓库为常见机器人维护可直接运行的MJCF资产，网格、执行器、传感器、默认姿态和关键参数已经过人工整理。算法对照复用同一资产，可减少模型适配差异对实验结论的干扰。"

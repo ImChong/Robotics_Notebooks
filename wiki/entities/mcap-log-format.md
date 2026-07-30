@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
 updated: 2026-07-30
 summary: "MCAP：定义可索引的多通道机器人日志容器，并提供跨语言库和检查、合并、切分等命令行工具；高吞吐记录与按时间读取适合长期保存相机、状态和控制命令供回放分析。"

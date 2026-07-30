@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [locomotion, rl, humanoid, motion-prior, hmi-opensource-table, repo]
+tags: [locomotion, rl, humanoid, motion-prior, hmi-opensource-table, repo, roboparty]
 status: draft
 updated: 2026-07-30
 summary: "roboparty_train：以两个Git子模块组织Roboparty训练生态，串起GMR动作准备、AMP与BeyondMimic训练、跑酷任务、ONNX导出和MuJoCo Sim2Sim；适合从工程目录理解数据、算法与部署前验证的分工。"

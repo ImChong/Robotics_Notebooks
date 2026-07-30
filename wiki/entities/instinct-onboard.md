@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, tsinghua, shanghai-pil, unitree]
 status: draft
 updated: 2026-07-30
 summary: "project-instinct/instinct_onboard：在Ubuntu 22.04与ROS 2 Humble上读取Unitree G1 29自由度状态，用Jetson Orin NX执行ONNX策略并向机器人接口发送控制命令；它是生态中仿真策略落到板载实时循环的部署层。"

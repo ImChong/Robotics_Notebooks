@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, stanford]
 status: draft
 updated: 2026-07-30
 summary: "robosuite：基于MuJoCo构建可组合机器人、夹爪、对象和操作任务，当前版本还提供复合控制器与全身控制接口；它位于策略算法下方，适合精确控制动作定义、控制频率与任务成功判据。"

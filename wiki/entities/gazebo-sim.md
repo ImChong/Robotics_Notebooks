@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, open-robotics]
 status: draft
 updated: 2026-07-30
 summary: "Gazebo Sim：在ROS生态中承担场景、物理、传感器和插件运行层，传输与组件接口便于把导航、感知、控制节点接入同一仿真系统；适合验证消息时序和系统集成，不以GPU强化学习吞吐为首要目标。"

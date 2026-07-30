@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
 updated: 2026-07-30
 summary: "RLBench：在CoppeliaSim中封装多类视觉操作任务、动作模式和示范生成接口，可用于强化学习、模仿学习与少样本研究；任务构建API便于新增对象流程，并保持统一观测与成功判据。"

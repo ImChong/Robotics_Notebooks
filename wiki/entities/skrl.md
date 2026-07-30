@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
 updated: 2026-07-30
 summary: "skrl：以统一代理、内存、模型和训练器接口覆盖PyTorch、JAX及多种仿真环境，允许在相同任务上切换PPO、SAC等算法；模块化结构便于插入自定义网络与记录器做受控比较。"

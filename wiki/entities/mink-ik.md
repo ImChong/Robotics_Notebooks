@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
 updated: 2026-07-30
 summary: "Mink：直接利用MuJoCo模型构建微分逆运动学，将末端位姿、质心和姿态任务转为带速度与配置限制的二次规划；它减少模型转换成本，适合在仿真控制或动作重定向中快速迭代任务权重。"

@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
 updated: 2026-07-30
 summary: "MLflow：提供可自托管的实验记录、参数与工件追踪、模型注册和部署生命周期管理，当前生态也扩展到LLM与Agent；机器人团队可用其统一保存训练运行与候选模型，而不绑定单一云平台。"

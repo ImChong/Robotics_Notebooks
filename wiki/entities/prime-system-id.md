@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
 updated: 2026-07-30
 summary: "PRIME：从关节状态、速度和执行器命令反推动力学一致轨迹、接触力与惯性参数，C++实现直接复用Crocoddyl/FDDP。日志看似正常却无法解释接触或载荷时，可把它用于数据清洗与系统辨识。"

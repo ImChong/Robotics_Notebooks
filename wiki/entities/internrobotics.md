@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [locomotion, rl, humanoid, motion-prior, hmi-opensource-table, repo]
+tags: [locomotion, rl, humanoid, motion-prior, hmi-opensource-table, repo, shanghai-ai-lab]
 status: draft
 updated: 2026-07-30
 summary: "InternRobotics运动控制开源生态：组织内的HIMLoco、OpenHomie等仓库分别覆盖感知行走和同构外骨骼Loco-Manip，可沿各自代码库比较训练框架、遥操作接口与真机部署边界，不能把组织主页当作单一算法实现。"

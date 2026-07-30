@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [vla, world-model, imitation-learning, hmi-opensource-table, repo]
+tags: [vla, world-model, imitation-learning, hmi-opensource-table, repo, stanford]
 status: draft
 updated: 2026-07-30
 summary: "ACT（Action Chunking Transformer）：以条件变分自编码器和Transformer一次预测动作块，再用时间集成平滑连续控制，减少长任务中的逐步误差累积；低成本双臂数据采集与真实部署代码使其成为模仿学习常用基线。"

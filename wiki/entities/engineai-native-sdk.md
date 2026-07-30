@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, engineai]
 status: draft
 updated: 2026-07-30
 summary: "EngineAI Native SDK：配置文件定义FSM、机器人参数和策略资源，Runner把IMU与关节反馈整理成观测，再发送PD关节命令。MuJoCo回放、远程下发、ROS 2监测和紧急回退共同构成模型导出后的部署检查链。"

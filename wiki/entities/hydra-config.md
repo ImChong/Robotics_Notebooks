@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, meta]
 status: draft
 updated: 2026-07-30
 summary: "Hydra：通过分层配置组合、命令行覆盖和多运行扫描管理训练实验，可将机器人、任务、奖励与算法配置拆开复用；启动器插件还能把同一实验提交到本机、集群或调度系统。"

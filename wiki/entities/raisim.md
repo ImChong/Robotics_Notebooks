@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
 updated: 2026-07-30
 summary: "RaiSim：曾以高效接触动力学和腿式机器人训练接口形成一套常用仿真基线，现有仓库已停止支持并引导迁移至RaiSim2；旧任务仍有复现价值，新工程应先评估新版模型与授权兼容性。"

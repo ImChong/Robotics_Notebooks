@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [locomotion, rl, humanoid, motion-prior, hmi-opensource-table, repo]
+tags: [locomotion, rl, humanoid, motion-prior, hmi-opensource-table, repo, linux-foundation]
 status: draft
 updated: 2026-07-30
 summary: "PULSE：在物理人体控制器之上学习潜在动作空间，再由高层策略组合潜变量完成目标任务；它把低层自然运动约束与任务学习分离，适合研究可复用技能表示而非直接机器人部署。"

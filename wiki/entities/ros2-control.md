@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, open-robotics]
 status: draft
 updated: 2026-07-30
 summary: "ros2_control：硬件接口负责读写状态，Controller Manager管理控制器生命周期，同一控制器因此可以切换仿真与真实设备。策略部署可沿这条接口检查关节命令、反馈时间戳和安全切换是否一致。"

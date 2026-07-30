@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, inria]
 status: draft
 updated: 2026-07-30
 summary: "Pink：在Pinocchio运动学之上提供轻量级任务空间逆运动学，用加权任务和关节限制求广义速度；适合交互式姿态生成、重定向原型和控制前处理，代码结构便于增加自定义任务。"

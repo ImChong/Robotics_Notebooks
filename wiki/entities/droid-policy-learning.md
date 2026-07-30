@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [vla, world-model, imitation-learning, hmi-opensource-table, repo]
+tags: [vla, world-model, imitation-learning, hmi-opensource-table, repo, berkeley]
 status: draft
 updated: 2026-07-30
 summary: "DROID Policy Learning：在robomimic基础上增加DROID的RLDS数据读取、训练和评测流程，并保留可选真实机器人控制接口；它把大规模异构真实示范转成可训练批次，是复现DROID策略学习的数据层入口。"

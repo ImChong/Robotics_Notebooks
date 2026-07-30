@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
 updated: 2026-07-30
 summary: "CoppeliaSim：通过场景对象脚本、远程API和多物理后端组织机器人任务，能够快速组合机械臂、传感器与交互物体；其可编程场景层是RLBench等多任务操作环境的基础，也便于做流程型原型。"

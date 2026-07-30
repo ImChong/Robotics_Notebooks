@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, stanford]
 status: draft
 updated: 2026-07-30
 summary: "robomimic：统一离线示范数据格式、BC、BC-RNN及多种离线强化学习算法，并提供训练、评测和可视化接口；算法与环境解耦，便于在同一数据集上比较序列模型、观测编码和损失设计。"

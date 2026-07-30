@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, nvidia]
 status: draft
 updated: 2026-07-30
 summary: "MimicGen：物体相对运动片段从少量人工示范中切出，再在随机初始布局中重组为四万八千余条轨迹和十二类任务数据。它提供了一条可测量的数据扩增基线，能直接比较新增轨迹是否真正提高模仿策略成功率。"

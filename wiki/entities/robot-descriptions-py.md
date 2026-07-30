@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
 updated: 2026-07-30
 summary: "robot_descriptions.py：用Python包统一下载和暴露多个机器人URDF、MJCF及网格资源，并为不同后端提供一致的模型入口；它解决实验代码中资产地址与版本分散的问题，适合搭建可复现的模型适配流程。"

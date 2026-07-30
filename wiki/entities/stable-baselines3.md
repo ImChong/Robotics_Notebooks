@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
 updated: 2026-07-30
 summary: "Stable-Baselines3：提供经过测试的常用深度强化学习算法、Gymnasium接口和标准化训练API，便于快速建立非机器人专用对照；在人形项目中更适合验证算法假设和小规模环境，而非替代专用并行训练栈。"

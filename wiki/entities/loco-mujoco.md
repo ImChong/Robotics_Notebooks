@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
 updated: 2026-07-30
 summary: "LocoMuJoCo：面向运动模仿统一十二种人形与四足模型、每种人形两万余动作样本以及MuJoCo、MJX和MuJoCo Warp后端，并集成PPO、GAIL、AMP与DeepMimic，便于做跨本体算法比较。"

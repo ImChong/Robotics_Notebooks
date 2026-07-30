@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
 updated: 2026-07-30
 summary: "OSQP：用算子分裂求解稀疏凸二次规划，并支持热启动、代码生成与多语言绑定；在人形控制中常承载接触力分配、约束逆动力学和MPC子问题，稳定的状态复用有利于实时循环。"

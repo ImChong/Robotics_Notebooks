@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo]
+tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, tsinghua, shanghai-pil]
 status: draft
 updated: 2026-07-30
 summary: "Project Instinct InstinctLab：作为Project Instinct的Isaac Lab环境层，它把任务注册、实验目录和ONNX导出连接到instinct_rl训练器及instinct_onboard部署链路，可沿同一实验记录追踪策略从仿真训练到本体执行。"

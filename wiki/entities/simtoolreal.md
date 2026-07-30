@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [loco-manipulation, humanoid, contact, hmi-opensource-table, repo]
+tags: [loco-manipulation, humanoid, contact, hmi-opensource-table, repo, linux-foundation]
 status: draft
 updated: 2026-07-30
 summary: "SimToolReal：程序化工具随机化几何和动力学，KUKA iiwa14与22自由度SHARPA手跟踪统一6D目标轨迹。140维状态输入和SAPG训练可用于研究跨工具Sim2Real，真实闭环仍依赖外部视觉与机械臂控制仓库。"

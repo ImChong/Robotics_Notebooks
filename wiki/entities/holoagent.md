@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [vla, world-model, imitation-learning, hmi-opensource-table, repo]
+tags: [vla, world-model, imitation-learning, hmi-opensource-table, repo, horizon-robotics]
 status: draft
 updated: 2026-07-30
 summary: "HoloAgent：AgentOS把语言任务展开为受监控的技能图，三维空间记忆负责保存环境变化并在失败后触发重规划。当前开放的导航组件已经露出记忆更新、技能调用和异常恢复之间的接口，新能力仍有一部分停留在发布路线图。"
