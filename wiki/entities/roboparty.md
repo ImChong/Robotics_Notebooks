@@ -16,6 +16,7 @@ related:
   - ./paper-intact.md
   - ./unitree.md
 sources:
+  - ../../sources/repos/roboparty-train.md
   - ../../sources/sites/roboparty_com.md
   - ../../sources/sites/lab_roboparty_com.md
   - ../../sources/sites/roboparty_com_roboto_origin_doc.md
@@ -98,6 +99,14 @@ flowchart TB
 - **误区 1：把 RoboParty 等同于单一仓库。** 整机开发在 `rpo_*` / `roboparty_*` 子仓；Lab 工具在 MimicLite、UFO、hhtools 等独立仓；聚合仓仅作导航。
 - **误区 2：认为开源即低成本量产。** 文档强调淘宝采购 + 嘉立创打样可复刻，但仍需较强 Linux/ROS2/硬件调试能力；工业级可靠性与认证不在当前公开范围。
 - **局限：** 商业产品线（如 Roboto 01）与 RP1 发布节奏在公开资料中仍在演进，wiki 以已开源模块与 Lab 已发布工具为准。
+
+## HMI 开源主表入口
+
+[roboparty_train](https://github.com/Roboparty/roboparty_train) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)。
+
+主表定位：以 Git 子模块组织训练生态，串起 GMR 动作准备、AMP/BeyondMimic、跑酷任务、ONNX 导出与 MuJoCo Sim2Sim。本库以 RoboParty 组织页承载该训练入口，不另建 `roboparty-train` 实体。
+
+覆盖核对见 [HMI 开源项目主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)。
 
 ## 关联页面
 

@@ -10,7 +10,7 @@
 - **一句话说明：** 当前全身动力学、接触状态与高层目标构型共同条件化二阶段Motion-Between模型，输出连续的状态间过渡。它为VLA提供身体层执行接口，公开证据尚不足以判断控制频率和跨本体范围。
 - **开源状态（据主表）：** 以项目页/论文为准；入库时按主表定位归档
 - **策展入口：** [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)
-- **沉淀到 wiki：** 是 → [`wiki/entities/motion-between-bfm-2.md`](../../wiki/entities/motion-between-bfm-2.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/agibot-bfm-2.md`](../../wiki/entities/agibot-bfm-2.md)（不另建重复实体；合并入已有节点）
 
 ## 为什么值得保留
 
@@ -18,5 +18,5 @@
 
 ## 对 wiki 的映射
 
-- [Motion-Between BFM-2](../../wiki/entities/motion-between-bfm-2.md)
+- [agibot-bfm-2](../../wiki/entities/agibot-bfm-2.md) — HMI 开源主表「Motion-Between BFM-2」即智元运控基座公开材料入口
 - [Humanoid Motion Intelligence](../../wiki/entities/humanoid-motion-intelligence.md)

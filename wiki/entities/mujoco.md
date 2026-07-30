@@ -2,7 +2,7 @@
 type: entity
 tags: [software, simulation, physics-engine, reinforcement-learning, deepmind]
 status: complete
-updated: 2026-07-28
+updated: 2026-07-30
 related:
   - ../overview/sim-platforms-decade-technology-map.md
   - ./mujoco-wasm.md
@@ -22,6 +22,7 @@ related:
   - ../concepts/sim2real.md
   - ./adams.md
 sources:
+  - ../../sources/repos/mujoco-menagerie.md
   - ../../sources/papers/simulation.md
   - ../../sources/repos/mujoco.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
@@ -68,6 +69,14 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
   - 原生 CPU MuJoCo 在单机多 GPU **环境复制数** 上，仍常逊色于 Isaac Gym 类专并行栈；需要 JAX/GPU 批量路径时，应评估 [**MuJoCo MJX**](./mujoco-mjx.md)（及官方文档中的 feature parity）。
   - 对流体、软体（Soft body）和极其复杂的传感器渲染（如高保真相机）支持较弱；大规模 **壳/体 FEM + 亿级接触** 的离线路径见 [ppf-contact-solver](./ppf-contact-solver.md)。
   - **浏览器 WASM**（[`@mujoco/mujoco`](./mujoco-wasm.md)）适合 demo、教学与轻量 Sim2Sim，吞吐与 API 完备度仍弱于原生绑定；多线程版另需 COOP/COEP 隔离头。
+
+## HMI 开源主表入口
+
+[MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)。
+
+主表定位：为常见机器人维护可直接运行的 MJCF 资产（网格、执行器、传感器、默认姿态）。算法对照应复用同一资产以减少模型适配差异。本库在本页索引 Menagerie，不另建重复实体；Barkour 等机体见 [Barkour](./paper-barkour-quadruped-agility-benchmark.md)。
+
+覆盖核对见 [HMI 开源项目主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)。
 
 ## 关联页面
 - [ADAMS（Automatic Dynamic Analysis of Mechanical Systems）](./adams.md) — 工业 MBD 程序谱系原点（Orlandea 1973/1977）；与开源 RL 引擎分工不同

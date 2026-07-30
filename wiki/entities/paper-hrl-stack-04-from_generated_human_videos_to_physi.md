@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, jku, nyu, berkeley]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-30
 venue: curated
 summary: "这篇论文关注一个很值得追踪的问题：视频生成模型越来越强，可以生成各种人类动作视频，那机器人能不能直接执行生成视频里的动作？"
 related:
@@ -11,12 +11,14 @@ related:
   - ../overview/motion-cerebellum-category-03-data-pipeline.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/humanoid-amp-motion-prior-survey.md
+  - ../queries/hmi-opensource-projects-coverage.md
 sources:
   - ../../sources/papers/humanoid_rl_stack_04_from_generated_human_videos_to_physically_plausi.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
+  - ../../sources/sites/genmimic.md
 ---
 
 # From Generated Human Videos to Physically Plausible Robot Trajectories
@@ -84,12 +86,19 @@ sources:
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
 - 原始 source：[humanoid_rl_stack_04_from_generated_human_videos_to_physically_plausi.md](../../sources/papers/humanoid_rl_stack_04_from_generated_human_videos_to_physically_plausi.md)
 
+## HMI 开源主表入口
+
+[GenMimic](https://genmimic.github.io/) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)（动作跟踪与全身控制）。本库以本页为唯一详情节点，不另建 `genmimic` 平行实体。开源边界以项目页为准（公开材料常见为项目页 / 论文入口，训练代码待发布时需再核）。
+
+覆盖核对见 [HMI 开源项目主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)。
+
 ## 参考来源
 
 - [humanoid_rl_stack_04_from_generated_human_videos_to_physically_plausi.md](../../sources/papers/humanoid_rl_stack_04_from_generated_human_videos_to_physically_plausi.md) — 42 篇栈策展摘录
 - [humanoid_rl_stack_42_catalog.md](../../sources/papers/humanoid_rl_stack_42_catalog.md) — 总表
 - [wechat_embodied_ai_lab_humanoid_rl_motion_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md) — 微信公众号编译导读
 - 原始抓取：[wechat_humanoid_rl_42_survey_2026-05-26.md](../../sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md)
+- [sources/sites/genmimic.md](../../sources/sites/genmimic.md) — HMI 主表项目页入口归档
 
 ## 推荐继续阅读
 

@@ -4,7 +4,7 @@ type: query
 status: complete
 created: 2026-07-30
 updated: 2026-07-30
-summary: 将 RealXiaoze/humanoid-motion-intelligence 开源项目主表（166 项）逐条映射到本库独立 wiki 详情节点，便于核对覆盖与下钻。
+summary: 将 RealXiaoze/humanoid-motion-intelligence 开源项目主表（166 项）逐条映射到本库已有或必要新建的 wiki 详情节点；禁止与已有 paper/method/entity 重复造页。
 sources:
   - ../../sources/repos/humanoid-motion-intelligence.md
 ---
@@ -30,11 +30,13 @@ sources:
 | 指标 | 数值 |
 |------|------|
 | 主表项目数 | 166 |
-| 已映射独立详情节点 | 166 |
-| 本次新建节点 | 60 |
+| 已映射详情节点 | 166 |
+| 复用已有节点 | 120 |
+| 其中合并撤销重复新建 | 18 |
+| 确无已有页而新建 | 46 |
 | 未覆盖 | 0 |
 
-规则：**每个主表项目至少对应一个本库 wiki 页面**（`entities` / `methods` / `comparisons` 等），用作详情下钻；本页是覆盖核对表，不替代各详情页的方法学内容。
+**规则：** 库内已有同主题详情页时 **只更新原节点并挂链**，禁止再剪平行实体；仅当确实不存在可复用页时才新建。
 
 ## 覆盖总表（按主表分组）
 
@@ -64,19 +66,19 @@ sources:
 | [BFM-Zero](https://github.com/LeCAR-Lab/BFM-Zero) | [paper-bfm-zero](../entities/paper-bfm-zero.md) | 已有 |
 | [Booster Gym](https://github.com/BoosterRobotics/booster_gym) | [paper-notebook-booster-gym-an-end-to-end-rl-framework-for-human](../entities/paper-notebook-booster-gym-an-end-to-end-rl-framework-for-human.md) | 已有 |
 | [DBHL窄地形全身运动](https://whole-body-loco.github.io/) | [dbhl-whole-body-loco](../entities/dbhl-whole-body-loco.md) | 新建 |
-| [DreamWaQ（社区实现）](https://github.com/Manaro-Alpha/DreamWaQ) | [dreamwaq-plus](../entities/dreamwaq-plus.md) | 已有 |
+| [DreamWaQ（社区实现）](https://github.com/Manaro-Alpha/DreamWaQ) | [dreamwaq](../methods/dreamwaq.md) | 已有（合并） |
 | [Generative Motion Prior](https://sites.google.com/view/humanoid-gmp) | [paper-motion-cerebellum-t-gmp](../entities/paper-motion-cerebellum-t-gmp.md) | 已有 |
 | [Hiking in the Wild](https://project-instinct.github.io/hiking-in-the-wild/) | [paper-hiking-in-the-wild](../entities/paper-hiking-in-the-wild.md) | 已有 |
 | [Humanoid Parkour Learning](https://humanoid4parkour.github.io/) | [paper-notebook-humanoid-parkour-learning](../entities/paper-notebook-humanoid-parkour-learning.md) | 已有 |
 | [Humanoid-Gym](https://github.com/roboterax/humanoid-gym) | [humanoid-gym](../entities/humanoid-gym.md) | 已有 |
 | [InternRobotics运动控制开源生态](https://github.com/InternRobotics) | [internrobotics](../entities/internrobotics.md) | 新建 |
-| [Legged Lab DWAQ（Unitree G1）](https://gitee.com/chaomingsanhua/legged_lab) | [legged-lab-dwaq](../entities/legged-lab-dwaq.md) | 新建 |
+| [Legged Lab DWAQ（Unitree G1）](https://gitee.com/chaomingsanhua/legged_lab) | [dreamwaq](../methods/dreamwaq.md) | 已有（合并） |
 | [legged_gym](https://github.com/leggedrobotics/legged_gym) | [legged-gym](../entities/legged-gym.md) | 已有 |
 | [MoRE](https://github.com/TeleHuman/MoRE) | [paper-amp-survey-08-more](../entities/paper-amp-survey-08-more.md) | 已有 |
 | [Perceptive Humanoid Parkour](https://php-parkour.github.io/) | [paper-hrl-stack-22-perceptive_humanoid_parkour](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) | 已有 |
-| [Project Instinct](https://project-instinct.github.io/) | [project-instinct](../entities/project-instinct.md) | 已有 |
+| [Project Instinct](https://project-instinct.github.io/) | [project-instinct](../entities/project-instinct.md) | 已有（合并） |
 | [PULSE](https://github.com/ZhengyiLuo/PULSE) | [pulse-physics](../entities/pulse-physics.md) | 新建 |
-| [roboparty_train](https://github.com/Roboparty/roboparty_train) | [roboparty-train](../entities/roboparty-train.md) | 新建 |
+| [roboparty_train](https://github.com/Roboparty/roboparty_train) | [roboparty](../entities/roboparty.md) | 已有（合并） |
 | [Robot Parkour Learning](https://robot-parkour.github.io/) | [extreme-parkour](../entities/extreme-parkour.md) | 已有 |
 | [SafeFall](https://safefall.github.io/) | [paper-hrl-stack-41-safefall](../entities/paper-hrl-stack-41-safefall.md) | 已有 |
 | [UFO](https://github.com/Roboparty/UFO) | [roboparty-ufo](../entities/roboparty-ufo.md) | 已有 |
@@ -89,14 +91,14 @@ sources:
 
 | 项目 | 本库详情节点 | 状态 |
 | --- | --- | --- |
-| [ALMI-Open](https://github.com/TeleHuman/ALMI-Open) | [almi-open](../entities/almi-open.md) | 新建 |
-| [BeyondMimic](https://github.com/HybridRobotics/whole_body_tracking) | [beyondmimic](../methods/beyondmimic.md) | 已有 |
-| [BeyondMimic-Reproduction](https://github.com/hunter20041220/BeyondMimic-Reproduction) | [beyondmimic-reproduction](../entities/beyondmimic-reproduction.md) | 新建 |
+| [ALMI-Open](https://github.com/TeleHuman/ALMI-Open) | [paper-amp-survey-07-adversarial_locomotion_and_motion_im](../entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md) | 已有（合并） |
+| [BeyondMimic](https://github.com/HybridRobotics/whole_body_tracking) | [beyondmimic](../methods/beyondmimic.md) | 已有（合并） |
+| [BeyondMimic-Reproduction](https://github.com/hunter20041220/BeyondMimic-Reproduction) | [beyondmimic](../methods/beyondmimic.md) | 已有（合并） |
 | [Deep Whole-Body Parkour](https://project-instinct.github.io/deep-whole-body-parkour/) | [paper-deep-whole-body-parkour](../entities/paper-deep-whole-body-parkour.md) | 已有 |
 | [DeepMimic](https://github.com/xbpeng/DeepMimic) | [deepmimic](../methods/deepmimic.md) | 已有 |
 | [Embrace Collisions](https://project-instinct.github.io/embrace-collisions/) | [paper-amp-survey-19-embrace_collisions](../entities/paper-amp-survey-19-embrace_collisions.md) | 已有 |
 | [engineai_rl_lab](https://github.com/engineai-robotics/engineai_rl_lab) | [engineai-rl-lab](../entities/engineai-rl-lab.md) | 新建 |
-| [GenMimic](https://genmimic.github.io/) | [genmimic](../entities/genmimic.md) | 新建 |
+| [GenMimic](https://genmimic.github.io/) | [paper-hrl-stack-04 GenMimic](../entities/paper-hrl-stack-04-from_generated_human_videos_to_physi.md) | 已有（合并） |
 | [GMT](https://github.com/zixuan417/humanoid-general-motion-tracking) | [paper-gmt](../entities/paper-gmt.md) | 已有 |
 | [H2O / human2humanoid](https://github.com/LeCAR-Lab/human2humanoid) | [paper-hrl-stack-07-learning_human_to_humanoid_real_time](../entities/paper-hrl-stack-07-learning_human_to_humanoid_real_time.md) | 已有 |
 | [Heracles](https://heracles-humanoid-control.github.io/) | [paper-heracles-humanoid-diffusion](../entities/paper-heracles-humanoid-diffusion.md) | 已有 |
@@ -105,7 +107,7 @@ sources:
 | [LIMMT / GQS](https://github.com/GalaxyGeneralRobotics/Humanoid-GPT) | [paper-humanoid-gpt](../entities/paper-humanoid-gpt.md) | 已有 |
 | [MaskedMimic / ProtoMotions](https://github.com/NVlabs/ProtoMotions) | [protomotions](../entities/protomotions.md) | 已有 |
 | [MimicKit](https://github.com/xbpeng/MimicKit) | [mimickit](../entities/mimickit.md) | 已有 |
-| [Motion-Between BFM-2](https://www.agibot.com.cn/article/315/detail/161.html) | [motion-between-bfm-2](../entities/motion-between-bfm-2.md) | 新建 |
+| [Motion-Between BFM-2](https://www.agibot.com.cn/article/315/detail/161.html) | [agibot-bfm-2](../entities/agibot-bfm-2.md) | 已有（合并） |
 | [OmniH2O](https://omni.human2humanoid.com/) | [paper-hrl-stack-08-omnih2o](../entities/paper-hrl-stack-08-omnih2o.md) | 已有 |
 | [OmniTrack](https://omnitrack-humanoid.github.io/) | [paper-hrl-stack-12-omnitrack](../entities/paper-hrl-stack-12-omnitrack.md) | 已有 |
 | [OmniXtreme](https://github.com/Perkins729/OmniXtreme) | [paper-hrl-stack-16-omnixtreme](../entities/paper-hrl-stack-16-omnixtreme.md) | 已有 |
@@ -144,7 +146,7 @@ sources:
 
 | 项目 | 本库详情节点 | 状态 |
 | --- | --- | --- |
-| [ACT](https://github.com/tonyzhaozh/act) | [act-aloha](../entities/act-aloha.md) | 新建 |
+| [ACT](https://github.com/tonyzhaozh/act) | [action-chunking](../methods/action-chunking.md) | 已有（合并） |
 | [Diffusion Policy](https://github.com/real-stanford/diffusion_policy) | [diffusion-policy](../methods/diffusion-policy.md) | 已有 |
 | [DreamDojo](https://github.com/NVIDIA/DreamDojo) | [paper-hrl-stack-35-dreamdojo](../entities/paper-hrl-stack-35-dreamdojo.md) | 已有 |
 | [DreamZero](https://github.com/dreamzero0/dreamzero) | [paper-notebook-dreamzero-world-action-models-are-zero-shot-poli](../entities/paper-notebook-dreamzero-world-action-models-are-zero-shot-poli.md) | 已有 |
@@ -155,7 +157,7 @@ sources:
 | [HoloAgent](https://github.com/HorizonRobotics/HoloAgent) | [holoagent](../entities/holoagent.md) | 新建 |
 | [Isaac-GR00T / GR00T N1.7](https://github.com/NVIDIA/Isaac-GR00T) | [paper-hrl-stack-34-gr00t_n1](../entities/paper-hrl-stack-34-gr00t_n1.md) | 已有 |
 | [Octo](https://github.com/octo-models/octo) | [octo-model](../methods/octo-model.md) | 已有 |
-| [openpi](https://github.com/Physical-Intelligence/openpi) | [openpi](../entities/openpi.md) | 新建 |
+| [openpi](https://github.com/Physical-Intelligence/openpi) | [π0-policy](../methods/π0-policy.md) | 已有（合并） |
 | [OpenVLA](https://github.com/openvla/openvla) | [openvla](../entities/openvla.md) | 已有 |
 | [WholeBodyVLA](https://github.com/OpenDriveLab/WholebodyVLA) | [paper-hrl-stack-30-wholebodyvla](../entities/paper-hrl-stack-30-wholebodyvla.md) | 已有 |
 | [WorldArena](https://github.com/tsinghua-fib-lab/WorldArena) | [worldarena](../entities/worldarena.md) | 新建 |
@@ -165,7 +167,7 @@ sources:
 | 项目 | 本库详情节点 | 状态 |
 | --- | --- | --- |
 | [ASAP](https://github.com/LeCAR-Lab/ASAP) | [paper-notebook-asap-aligning-simulation-and-real-world-physics](../entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md) | 已有 |
-| [BEHAVIOR / OmniGibson](https://github.com/StanfordVL/BEHAVIOR-1K) | [behavior-1k](../entities/behavior-1k.md) | 已有 |
+| [BEHAVIOR / OmniGibson](https://github.com/StanfordVL/BEHAVIOR-1K) | [behavior-1k](../entities/behavior-1k.md) | 已有（合并） |
 | [Brax](https://github.com/google/brax) | [brax](../entities/brax.md) | 已有 |
 | [CALVIN](https://github.com/mees/calvin) | [calvin-benchmark](../entities/calvin-benchmark.md) | 新建 |
 | [CleanRL](https://github.com/vwxyzjn/cleanrl) | [cleanrl](../entities/cleanrl.md) | 新建 |
@@ -186,7 +188,7 @@ sources:
 | [Hydra](https://github.com/facebookresearch/hydra) | [hydra-config](../entities/hydra-config.md) | 新建 |
 | [Isaac Lab](https://github.com/isaac-sim/IsaacLab) | [isaac-lab](../entities/isaac-lab.md) | 已有 |
 | [Isaac Sim](https://github.com/isaac-sim/IsaacSim) | [isaac-sim](../entities/isaac-sim.md) | 已有 |
-| [IsaacGymEnvs](https://github.com/isaac-sim/IsaacGymEnvs) | [isaac-gym-envs](../entities/isaac-gym-envs.md) | 新建 |
+| [IsaacGymEnvs](https://github.com/isaac-sim/IsaacGymEnvs) | [isaac-gym](../entities/isaac-gym.md) | 已有（合并） |
 | [LeRobot](https://github.com/huggingface/lerobot) | [lerobot](../entities/lerobot.md) | 已有 |
 | [LIBERO](https://github.com/Lifelong-Robot-Learning/LIBERO) | [libero-benchmark](../entities/libero-benchmark.md) | 新建 |
 | [LocoMuJoCo](https://github.com/robfiras/loco-mujoco) | [loco-mujoco](../entities/loco-mujoco.md) | 新建 |
@@ -201,18 +203,18 @@ sources:
 | [MOS9 开源人形机器人](https://github.com/THMOS2025/MOS-9-Open-Source-Humanoid-Robot) | [mos9-open-source-humanoid](../entities/mos9-open-source-humanoid.md) | 新建 |
 | [MoveIt 2](https://github.com/moveit/moveit2) | [moveit2](../entities/moveit2.md) | 已有 |
 | [MuJoCo](https://github.com/google-deepmind/mujoco) | [mujoco](../entities/mujoco.md) | 已有 |
-| [MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie) | [mujoco-menagerie](../entities/mujoco-menagerie.md) | 新建 |
+| [MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie) | [mujoco](../entities/mujoco.md) | 已有（合并） |
 | [OCS2](https://github.com/leggedrobotics/ocs2) | [ocs2](../entities/ocs2.md) | 新建 |
-| [OmniGibson](https://github.com/StanfordVL/OmniGibson) | [omnigibson](../entities/omnigibson.md) | 新建 |
+| [OmniGibson](https://github.com/StanfordVL/OmniGibson) | [behavior-1k](../entities/behavior-1k.md) | 已有（合并） |
 | [OSQP](https://github.com/osqp/osqp) | [osqp](../entities/osqp.md) | 新建 |
 | [Pink](https://github.com/stephane-caron/pink) | [pink-ik](../entities/pink-ik.md) | 新建 |
 | [Pinocchio](https://github.com/stack-of-tasks/pinocchio) | [pinocchio](../entities/pinocchio.md) | 已有 |
 | [PlotJuggler](https://github.com/facontidavide/PlotJuggler) | [plotjuggler](../entities/plotjuggler.md) | 已有 |
 | [PRIME](https://github.com/well-robotics/PRIME) | [prime-system-id](../entities/prime-system-id.md) | 新建 |
-| [Project Instinct InstinctLab](https://github.com/project-instinct/instinctlab) | [instinctlab](../entities/instinctlab.md) | 新建 |
+| [Project Instinct InstinctLab](https://github.com/project-instinct/instinctlab) | [project-instinct](../entities/project-instinct.md) | 已有（合并） |
 | [Project Instinct Robot Motion Editor](https://github.com/project-instinct/robot-motion-editor) | [robot-motion-keyframe-editors](../entities/robot-motion-keyframe-editors.md) | 已有 |
-| [project-instinct/instinct_onboard](https://github.com/project-instinct/instinct_onboard) | [instinct-onboard](../entities/instinct-onboard.md) | 新建 |
-| [project-instinct/instinct_rl](https://github.com/project-instinct/instinct_rl) | [instinct-rl](../entities/instinct-rl.md) | 新建 |
+| [project-instinct/instinct_onboard](https://github.com/project-instinct/instinct_onboard) | [project-instinct](../entities/project-instinct.md) | 已有（合并） |
+| [project-instinct/instinct_rl](https://github.com/project-instinct/instinct_rl) | [project-instinct](../entities/project-instinct.md) | 已有（合并） |
 | [ProxSuite](https://github.com/Simple-Robotics/proxsuite) | [proxsuite](../entities/proxsuite.md) | 新建 |
 | [PyBullet](https://github.com/bulletphysics/bullet3) | [pybullet](../entities/pybullet.md) | 已有 |
 | [RaiSim](https://github.com/raisimTech/raisimLib) | [raisim](../entities/raisim.md) | 新建 |
@@ -241,23 +243,33 @@ sources:
 ```mermaid
 flowchart TD
   A["主表项目"] --> B{{"本库是否已有同主题详情页?"}}
-  B -->|是| C["复用 entities/methods 页并在本表挂链"]
-  B -->|否| D["新建 sources 归档 + wiki/entities 详情节点"]
-  C --> E["make ci-preflight 同步 catalog/exports"]
+  B -->|是| C["更新原节点 + 本表挂链（禁止平行新建）"]
+  B -->|否| D["新建 sources 归档 + 唯一 wiki 详情节点"]
+  C --> E["make ci-preflight"]
   D --> E
 ```
 
-## 详细说明
+## 已合并撤销的重复新建（摘要）
 
-- **新建页**多为工程工具、仿真中间件与主表独有入口：内容以主表定位 + 官方入口为准，`status: draft`，后续可按需深读升格。
-- **已有页**优先复用论文实体 / 方法页（例如 BeyondMimic、GMR、ASAP），避免重复造页。
-- **Instinct 三仓**（InstinctLab / instinct_rl / instinct_onboard）在主表分列，故各自独立节点，并回链 [Project Instinct](../entities/project-instinct.md)。
-- **OmniGibson** 与 **BEHAVIOR-1K** 分列：后者侧重任务规范，前者侧重模拟器运行层。
-- **ACT** 对应仓库实体 [act-aloha](../entities/act-aloha.md)；方法学见 [Action Chunking](../methods/action-chunking.md)。
+| 曾误建 | 收敛到 |
+|--------|--------|
+| act-aloha | [action-chunking](../methods/action-chunking.md) |
+| openpi | [π0-policy](../methods/π0-policy.md) |
+| isaac-gym-envs | [isaac-gym](../entities/isaac-gym.md) |
+| omnigibson | [behavior-1k](../entities/behavior-1k.md) |
+| instinctlab / instinct-rl / instinct-onboard | [project-instinct](../entities/project-instinct.md) |
+| legged-lab-dwaq | [dreamwaq](../methods/dreamwaq.md) |
+| roboparty-train | [roboparty](../entities/roboparty.md) |
+| beyondmimic-reproduction | [beyondmimic](../methods/beyondmimic.md) |
+| motion-between-bfm-2 | [agibot-bfm-2](../entities/agibot-bfm-2.md) |
+| mujoco-menagerie | [mujoco](../entities/mujoco.md) |
+| almi-open | [paper-amp-survey-07 ALMI](../entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md) |
+| genmimic | [paper-hrl-stack-04 GenMimic](../entities/paper-hrl-stack-04-from_generated_human_videos_to_physi.md) |
+| DreamWaQ 社区实现（曾误挂 dreamwaq-plus） | [dreamwaq](../methods/dreamwaq.md) |
 
 ## 一句话记忆
 
-主表负责策展地图；本库负责每个入口都有可链接的详情节点——先覆盖，再按研究优先级加深。
+主表负责策展地图；本库优先 **复用并更新** 已有详情节点，只在真正缺失时新建。
 
 ## 关联页面
 

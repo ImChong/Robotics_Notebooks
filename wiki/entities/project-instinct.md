@@ -15,6 +15,9 @@ related:
   - ../methods/reinforcement-learning.md
   - ../tasks/locomotion.md
 sources:
+  - ../../sources/repos/instinct-onboard.md
+  - ../../sources/repos/instinct-rl.md
+  - ../../sources/repos/instinctlab.md
   - ../../sources/sites/project_instinct.md
 summary: "Project Instinct 是清华 IIIS 与上海期智等团队公开的人形「本能级全身控制」研究站群，站点把算法—仿真—数据—部署串成一条叙事，并分项目展示接触丰富 Shadowing、深度感知跑酷与野外徒步等方向。"
 ---
@@ -42,7 +45,21 @@ summary: "Project Instinct 是清华 IIIS 与上海期智等团队公开的人�
 - **问题覆盖面全**：同时触及 **接触丰富全身**（非仅限手脚）、**Sim2Real 人形 RL**、**外感受闭环里的全身跟踪** 与 **端到端深度策略**，是理解当前「高动态人形 + 感知 + 单策略多技能」论文群的方便入口。
 - **工程闭环叙事清楚**：站点反复出现 **GPU 刚体仿真**、**机载深度**、**蒸馏 / 下游用例** 等关键词，便于和本库 [Sim2Real](../concepts/sim2real.md)、[Terrain Adaptation](../concepts/terrain-adaptation.md)、[Reinforcement Learning](../methods/reinforcement-learning.md) 对照阅读。
 - **可追溯性强**：各子页给出 **会议或 arXiv 标识**，适合作为 curator 进一步精读论文时的 **一级索引**（正文仍以 PDF 为准）。
-- **配套工具链**：同组织维护的浏览器侧 **NPZ 运动曲线编辑器**（Flask 后端解析/写回）已单独归档，见 [机器人关键帧与运动编辑工具](./robot-motion-keyframe-editors.md)；Isaac Lab 环境层、训练器与板载部署见独立节点 [InstinctLab](./instinctlab.md)、[instinct_rl](./instinct-rl.md)、[instinct_onboard](./instinct-onboard.md)。
+- **配套工具链**：同组织维护的浏览器侧 **NPZ 运动曲线编辑器**（Flask 后端解析/写回）已单独归档，见 [机器人关键帧与运动编辑工具](./robot-motion-keyframe-editors.md)。
+
+
+## 开源工程栈（HMI 主表分列入口）
+
+主表将下列三仓与本站群分列；**本库统一收敛到本页**，不另建重复实体：
+
+| 仓库 | 角色 | 链接 |
+|------|------|------|
+| **InstinctLab** | Isaac Lab 环境/任务注册、实验目录、ONNX 导出 | <https://github.com/project-instinct/instinctlab> |
+| **instinct_rl** | PPO / AMP / WASABI / MoE / VAE / DAgger 等训练组件 | <https://github.com/project-instinct/instinct_rl> |
+| **instinct_onboard** | Ubuntu 22.04 + ROS 2 Humble，G1 板载 ONNX 推理与下发 | <https://github.com/project-instinct/instinct_onboard> |
+| **Robot Motion Editor** | 重定向后、训练前的 NPZ/URDF 检查 | 见 [关键帧与运动编辑工具](./robot-motion-keyframe-editors.md) |
+
+覆盖核对见 [HMI 开源项目主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)。
 
 ## 核心结构（据站点归纳）
 

@@ -10,7 +10,7 @@
 - **一句话说明：** 作为Project Instinct的Isaac Lab环境层，它把任务注册、实验目录和ONNX导出连接到instinct_rl训练器及instinct_onboard部署链路，可沿同一实验记录追踪策略从仿真训练到本体执行。
 - **开源状态（据主表）：** 已开源（以官方仓库 README 为准）
 - **策展入口：** [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)
-- **沉淀到 wiki：** 是 → [`wiki/entities/instinctlab.md`](../../wiki/entities/instinctlab.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/project-instinct.md`](../../wiki/entities/project-instinct.md)（不另建重复实体；合并入已有节点）
 
 ## 为什么值得保留
 
@@ -18,5 +18,5 @@
 
 ## 对 wiki 的映射
 
-- [Project Instinct InstinctLab](../../wiki/entities/instinctlab.md)
+- [project-instinct](../../wiki/entities/project-instinct.md) — InstinctLab：project-instinct/instinctlab — Isaac Lab 环境/任务与 ONNX 导出层
 - [Humanoid Motion Intelligence](../../wiki/entities/humanoid-motion-intelligence.md)

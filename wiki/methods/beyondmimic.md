@@ -2,7 +2,7 @@
 type: method
 tags: [rl, imitation-learning, locomotion, humanoid, sampling, diffusion, paper, motion-control, body-system-stack, bfm, behavior-foundation-model, stanford, berkeley]
 status: complete
-updated: 2026-07-28
+updated: 2026-07-30
 code: https://github.com/HybridRobotics/whole_body_tracking
 venue: "2025 · arXiv"
 arxiv: "2508.08241"
@@ -23,6 +23,7 @@ related:
   - ../concepts/reward-design.md
   - ../entities/paper-extreme-rgmt.md
 sources:
+  - ../../sources/repos/beyondmimic-reproduction.md
   - ../../sources/papers/motion_control_projects.md
   - ../../sources/papers/bfm_awesome_beyondmimic_arxiv_2508_08241.md
   - ../../sources/papers/loco_manip_161_survey_004_beyondmimic.md
@@ -323,6 +324,14 @@ BeyondMimic 已经成为许多人形机器人项目的底层基座：
 - Hybrid Robotics，[whole_body_tracking](https://github.com/HybridRobotics/whole_body_tracking) — 上游开源实现与 issue 讨论入口（张量命名以仓库为准）。
 - 论文：<https://arxiv.org/abs/2508.08241>（v4，2025-11-13）；项目页：<https://beyondmimic.github.io/>（阶段划分、LAFAN1 实验与下游任务演示，2026-07-11 对照）。
 - 原始抓取：[wechat_humanoid_rl_42_survey_2026-05-26.md](../../sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md)
+
+## HMI 开源主表入口
+
+[BeyondMimic / BeyondMimic-Reproduction](https://github.com/HybridRobotics/whole_body_tracking) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)。
+
+官方跟踪基线见 HybridRobotics/whole_body_tracking。主表另列社区复现 [BeyondMimic-Reproduction](https://github.com/hunter20041220/BeyondMimic-Reproduction)（教师 rollout、条件动作 VAE、扩散与测试时引导拆成可单测接口；尚未接通完整 Isaac/真机）。本库不另建复现实体，统一挂本方法页。
+
+覆盖核对见 [HMI 开源项目主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)。
 
 ## 关联页面
 

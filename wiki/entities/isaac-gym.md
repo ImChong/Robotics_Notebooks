@@ -3,7 +3,7 @@
 type: entity
 tags: [entity, simulator, isaac, gpu-simulation, reinforcement-learning, sim2real, legacy, nvidia]
 status: stable
-updated: 2026-07-21
+updated: 2026-07-30
 related:
   - ../overview/sim-platforms-decade-technology-map.md
   - ./isaac-gym-isaac-lab.md
@@ -14,6 +14,7 @@ related:
   - ../tasks/locomotion.md
   - ../concepts/domain-randomization.md
 sources:
+  - ../../sources/repos/isaac-gym-envs.md
   - ../../sources/repos/isaac_gym.md
   - ../../sources/papers/simulation_tools.md
   - ../../sources/papers/policy_optimization.md
@@ -269,6 +270,14 @@ Isaac Gym 当年就因为易于做大规模随机化而很受欢迎，这条能�
 - **ingest 档案：** [sources/repos/isaac_gym.md](../../sources/repos/isaac_gym.md)
 - **ingest 档案：** [sources/papers/simulation_tools.md](../../sources/papers/simulation_tools.md) — Isaac Gym 原论文摘录
 - **ingest 档案：** [sources/repos/isaac_gym_isaac_lab.md](../../sources/repos/isaac_gym_isaac_lab.md) — 三代产品联合索引
+
+## HMI 开源主表入口
+
+[IsaacGymEnvs](https://github.com/isaac-sim/IsaacGymEnvs) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)。
+
+主表定位：汇集 Isaac Gym 时代 GPU 向量化 RL 任务与训练配置，便于复现早期官方基线；新任务应优先评估 [Isaac Lab](./isaac-lab.md) 迁移。本库以本页 + [Isaac Gym / Lab 对照](./isaac-gym-isaac-lab.md) 承载，不另建 `isaac-gym-envs` 实体。
+
+覆盖核对见 [HMI 开源项目主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)。
 
 ## 关联页面
 

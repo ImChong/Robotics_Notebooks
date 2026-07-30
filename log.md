@@ -1,5 +1,17 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-30] structural | wiki — 续：撤销 genmimic 重复实体并修正 DreamWaQ 社区实现挂链
+
+- **删除：** [`wiki/entities/genmimic.md`](wiki/entities/genmimic.md) → 合并入 [`wiki/entities/paper-hrl-stack-04-from_generated_human_videos_to_physi.md`](wiki/entities/paper-hrl-stack-04-from_generated_human_videos_to_physi.md)
+- **修正：** 主表「DreamWaQ（社区实现）」由误挂 [`dreamwaq-plus`](wiki/entities/dreamwaq-plus.md) 改回 [`wiki/methods/dreamwaq.md`](wiki/methods/dreamwaq.md)
+- **覆盖索引：** [`wiki/queries/hmi-opensource-projects-coverage.md`](wiki/queries/hmi-opensource-projects-coverage.md)（复用 120 / 合并 18 / 新建 46）
+
+## [2026-07-30] structural | wiki — 撤销 13 个与已有节点重复的 HMI 新建实体，合并回 action-chunking / π0-policy / isaac-gym / behavior-1k / project-instinct / dreamwaq / roboparty / beyondmimic / agibot-bfm-2 / mujoco / ALMI 论文页；更新覆盖索引
+
+- **原则：** 库内已有详情节点则只更新原页并挂 HMI 主表入口，禁止平行造页
+- **覆盖索引：** [`wiki/queries/hmi-opensource-projects-coverage.md`](wiki/queries/hmi-opensource-projects-coverage.md)
+- **删除实体：** act-aloha、openpi、isaac-gym-envs、omnigibson、instinctlab、instinct-rl、instinct-onboard、legged-lab-dwaq、roboparty-train、beyondmimic-reproduction、motion-between-bfm-2、mujoco-menagerie、almi-open（sources 保留并改指 canonical）
+
 ## [2026-07-30] query | wiki/queries/hmi-opensource-projects-coverage.md — 确保 HMI 开源项目主表 166 项均有本库独立详情节点；新建 60 个 sources+entities，复用 106 个已有页
 
 - **触发：** 用户要求覆盖 [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md) 全部项目

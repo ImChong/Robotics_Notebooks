@@ -10,7 +10,7 @@
 - **一句话说明：** 先独立训练下肢行走和上肢模仿策略，再让两者在联合训练中互相施加扰动，最终蒸馏为统一全身模型；这里的对抗指策略间适应，不是AMP判别器，仓库还开放ALMI-X数据。
 - **开源状态（据主表）：** 已开源（以官方仓库 README 为准）
 - **策展入口：** [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)
-- **沉淀到 wiki：** 是 → [`wiki/entities/almi-open.md`](../../wiki/entities/almi-open.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md`](../../wiki/entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md)（不另建重复实体；合并入已有节点）
 
 ## 为什么值得保留
 
@@ -18,5 +18,5 @@
 
 ## 对 wiki 的映射
 
-- [ALMI-Open](../../wiki/entities/almi-open.md)
+- [paper-amp-survey-07-adversarial_locomotion_and_motion_im](../../wiki/entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md) — HMI 开源主表代码入口 TeleHuman/ALMI-Open（含 ALMI-X；对抗指策略间适应）
 - [Humanoid Motion Intelligence](../../wiki/entities/humanoid-motion-intelligence.md)

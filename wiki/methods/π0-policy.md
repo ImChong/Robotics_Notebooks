@@ -2,7 +2,7 @@
 type: method
 tags: [vla, foundation-policy, deepmind, flow-matching, manipulation]
 status: complete
-updated: 2026-07-27
+updated: 2026-07-30
 related:
   - ./vla.md
   - ./pi07-policy.md
@@ -10,6 +10,7 @@ related:
   - ../formalizations/vla-tokenization.md
   - ../formalizations/cross-modal-attention.md
 sources:
+  - ../../sources/repos/openpi.md
   - ../../sources/papers/diffusion_and_gen.md
 summary: "π₀ (Pi-zero) 是由 Physical Intelligence 提出的一种通用的 Vision-Language-Action 模型，通过结合流匹配（Flow Matching）与大规模预训练，实现了对复杂机器人操作任务的高效建模。"
 ---
@@ -46,6 +47,14 @@ summary: "π₀ (Pi-zero) 是由 Physical Intelligence 提出的一种通用的 
 - **多任务泛化**：能够处理从折衣服到整理餐具等完全不同的任务。
 - **跨平台通用**：同一模型可以无缝适配不同厂商的机械臂，证明了动作表征的普适性。
 - **鲁棒性**：面对视觉背景的变化和物体的轻微位移，展现出了极强的闭环纠错能力。
+
+## HMI 开源主表入口
+
+[openpi](https://github.com/Physical-Intelligence/openpi) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)。
+
+主表定位：官方仓同时维护流匹配 π0、π0-FAST 与 π0.5，并提供检查点、数据配置、微调与推理服务。接入新本体时关键是动作归一化、字段映射与推理频率对齐。本库以本方法页（及 [π0.7](./pi07-policy.md)）承载 openpi 入口，不另建重复实体。
+
+覆盖核对见 [HMI 开源项目主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)。
 
 ## 关联页面
 - [VLA (Vision-Language-Action Models)](./vla.md)

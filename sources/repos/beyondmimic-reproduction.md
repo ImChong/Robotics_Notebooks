@@ -10,7 +10,7 @@
 - **一句话说明：** 复现将教师rollout、条件动作VAE、状态潜变量窗口、Transformer扩散和测试时引导拆成可单测接口。160维观测契约与合成数据便于逐段排错，当前尚未接通Isaac闭环、正式指标和真机。
 - **开源状态（据主表）：** 已开源（以官方仓库 README 为准）
 - **策展入口：** [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)
-- **沉淀到 wiki：** 是 → [`wiki/entities/beyondmimic-reproduction.md`](../../wiki/entities/beyondmimic-reproduction.md)
+- **沉淀到 wiki：** 是 → [`wiki/methods/beyondmimic.md`](../../wiki/methods/beyondmimic.md)（不另建重复实体；合并入已有节点）
 
 ## 为什么值得保留
 
@@ -18,5 +18,5 @@
 
 ## 对 wiki 的映射
 
-- [BeyondMimic-Reproduction](../../wiki/entities/beyondmimic-reproduction.md)
+- [beyondmimic](../../wiki/methods/beyondmimic.md) — 社区复现仓 hunter20041220/BeyondMimic-Reproduction（模块化接口；尚未接通完整 Isaac/真机）
 - [Humanoid Motion Intelligence](../../wiki/entities/humanoid-motion-intelligence.md)

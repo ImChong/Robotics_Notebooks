@@ -8,7 +8,6 @@
 - [1X Technologies](wiki/entities/1x-technologies.md) — 1X Technologies** 专注于「能在真实环境里长期运行的人形机器人」，当前公开产品线以 **轮式人形 EVE**（面向仓储 / 安防 / 医疗等结构化场景）与 **双足 NEO**（强 `📅unknown` `[entity_page]`
 - [3D Gen Studio](wiki/entities/3dgenstudio.md) — 3D Gen Studio**（visualbruno/3DGenStudio，官网 [3dgenstu `📅unknown` `[entity_page]`
 - [ACMOP（交流电机自动优化框架）](wiki/entities/acmop.md) — ACMOP**（horychen/ACMOP，*Alternating Current Machine Optimizat `📅unknown` `[entity_page]`
-- [ACT（Action Chunking Transformer）](wiki/entities/act-aloha.md) — ACT](https://github.com/tonyzhaozh/act) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid- `📅unknown` `[entity_page]`
 - [ADAMS（Automatic Dynamic Analysis of Mechanical Systems）](wiki/entities/adams.md) — ADAMS** 是面向三维机械系统的 **多体动力学（Multibody Dynamics, MBD）** 自动建模与数值仿真程序谱系：名称与核心数值配方来自 Nicolae Orlandea 在 `📅unknown` `[entity_page]`
 - [AERIS-10（PLFM_RADAR）](wiki/entities/aeris-10-plfm-radar.md) — AERIS-10** 是 GitHub 上高关注度的 **开源脉冲线性调频（PLFM）相控阵雷达** 全栈：从原理图、PCB、FPGA 固件到 Python 可视化一应俱全，适合研究 **波束赋形 `📅unknown` `[entity_page]`
 - [Agent Reach（Panniantong）](wiki/entities/agent-reach.md) — Agent Reach 是面向编码代理的开源安装脚手架：把网页、社媒、视频字幕、GitHub、RSS 与语义搜索等能力所依赖的上游 CLI 与 MCP 依赖收拢到可重复的安装与诊断路径；凭据默认仅存本 `📅2026-05-21` `[entity_page]`
@@ -21,7 +20,6 @@
 - [AI2-THOR](wiki/entities/ai2-thor.md) — AI2-THOR**（An Interactive 3D Environment for Visual AI）是艾伦人工智能研究所（AI2）于 2017 年推出的早期代表性 **交互式 3D 室内 `📅unknown` `[entity_page]`
 - [AirSim](wiki/entities/airsim.md) — AirSim**（microsoft/AirSim）是微软开源的 **高保真视觉仿真平台**，基于 **[Unreal `📅unknown` `[entity_page]`
 - [Allegro Hand (灵巧手)](wiki/entities/allegro-hand.md) — Allegro Hand** 是由 Wonik Robotics 开发的一款高性能四指灵巧手（Dexterous Hand）。它在机器人科研界（特别是强化学习和模仿学习领域）享有极高的普及率，被视 `📅unknown` `[entity_page]`
-- [ALMI-Open](wiki/entities/almi-open.md) — ALMI-Open](https://github.com/TeleHuman/ALMI-Open) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoz `📅unknown` `[entity_page]`
 - [ALOHA (双臂遥操作硬件)](wiki/entities/aloha.md) — ALOHA** (A Low-cost Open-source Hardware System for Bimanual Teleoperation) 是由 Google DeepMind (To `📅unknown` `[entity_page]`
 - [Altium Designer](wiki/entities/altium-designer.md) — Altium Designer** 是 Altium 旗下的 **商业 PCB EDA 套件**，在单一 **Unified Design Environment** 内完成原理图 → PCB → `📅2026-07-18` `[entity_page]`
 - [AMASS（Archive of Motion Capture as Surface Shapes）](wiki/entities/amass.md) — AMASS** 是 MPI-IS Perceiving Systems 维护的 **人体运动元数据集**：把多份独立 **光学标记动捕** 序列转换到统一的 **SMPL**（及网格）参数化上，使 `📅unknown` `[entity_page]`
@@ -54,7 +52,6 @@
 - [Benjamin Katz（Ben Katz）](wiki/entities/benjamin-katz.md) — Benjamin Katz** 是 **MIT Mini Cheetah** 的主设计者与早期交付工程师：把 hobby BLDC + 定制驱动做成可背驱模块化执行器与整机平台，并以 [Robot `📅unknown` `[entity_page]`
 - [Berkeley Humanoid Lite（BHL）](wiki/entities/berkeley-humanoid-lite.md) — Berkeley Humanoid Lite** 是 **UC Berkeley Hybrid Robotics** 的 **轻量人形** 开源方案：门户 **[lite.berkeley-hum `📅unknown` `[entity_page]`
 - [Betaflight](wiki/entities/betaflight.md) — Betaflight**（betaflight/betaflight）是面向 **FPV 手飞、竞速与自由式 `📅unknown` `[entity_page]`
-- [BeyondMimic-Reproduction](wiki/entities/beyondmimic-reproduction.md) — BeyondMimic-Reproduction](https://github.com/hunter20041220/BeyondMimic-Reproduction) 收录于具身智能研究室 [开 `📅unknown` `[entity_page]`
 - [Blender（开源 3D 创作套件）](wiki/entities/blender.md) — Blender** 是由 **Blender Foundation** 维护的 **免费开源 3D 创作套件**，覆盖建模、雕刻、UV、绑定、动画、物理模拟、路径追踪渲染、合成、运动跟踪与视频编辑 `📅unknown` `[entity_page]`
 - [Booster Robotics RoboCup Demo](wiki/entities/booster-robocup-demo.md) — Booster Robotics RoboCup Demo** 是由 Booster Robotics 官方维护的开源项 `📅unknown` `[entity_page]`
 - [Boston Dynamics（波士顿动力）](wiki/entities/boston-dynamics.md) — Boston Dynamics** 是一家全球顶尖的机器人工程公司，以其在足式机器人运动控制、平衡和动力学领域的卓越成就而闻名。从 1992 年从 MIT 的 Leg Laboratory 独立至 `📅unknown` `[entity_page]`
@@ -153,7 +150,6 @@
 - [Genesis World 1.0（Genesis AI 仿真基础设施）](wiki/entities/genesis-world-10.md) — Genesis World 1.0** 是 **Genesis AI**（机器人全栈公司，博客域名 genesis.ai）对外阐述的**仿真基础设施**版本：在初版开源 **Genesis** 仿 `📅unknown` `[entity_page]`
 - [Genie Sim 3.0](wiki/entities/genie-sim-3.md) — Genie Sim 3.0** 是智元 AgibotTech/genie_sim 开源的 **高保真综合仿真平 `📅unknown` `[entity_page]`
 - [Genie Studio Agent](wiki/entities/genie-studio-agent.md) — Genie Studio Agent** 是智元在 2026-06 发布地图 中 `📅unknown` `[entity_page]`
-- [GenMimic](wiki/entities/genmimic.md) — GenMimic](https://genmimic.github.io/) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-m `📅unknown` `[entity_page]`
 - [GigaWorld-0](wiki/entities/gigaworld-0.md) — GigaWorld-0](https://giga-world-0.github.io/) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hum `📅unknown` `[entity_page]`
 - [GNM Head（GNM 生态）](wiki/entities/gnm-head.md) — GNM**（**G**enerative a**N**thropometric **M**odel，读音类比 genome）是 Google 推进的 **参数化人体统计模型生态**；截至 2026 `📅unknown` `[entity_page]`
 - [GO-2（智元执行基座）](wiki/entities/go-2.md) — GO-2**（arXiv:2601.11404，项目页：<https://libra-vla.github.io/>）是智元 `📅unknown` `[entity_page]`
@@ -197,15 +193,11 @@
 - [iGibson](wiki/entities/igibson.md) — iGibson** 是斯坦福大学等机构 2020 年发布的 **交互式室内仿真环境**，强调 **真实感视觉场景** 与 **高保真物理交互** 的融合。 `📅unknown` `[entity_page]`
 - [img2threejs](wiki/entities/img2threejs.md) — img2threejs**（hoainho/img2threejs，MIT）是一套 **Agent Skill `📅unknown` `[entity_page]`
 - [InMoov（开源 3D 打印人形）](wiki/entities/inmoov-humanoid.md) — InMoov** 是 **Gael Langevin** 自 2012 年起维护的 **全球首个开源 3D 打印真人比例人形** 项目：以 **Arduino** 控制、**MyRobotLab `📅unknown` `[entity_page]`
-- [project-instinct/instinct_onboard](wiki/entities/instinct-onboard.md) — project-instinct/instinct_onboard](https://github.com/project-instinct/instinct_onboard) 收录于具身智能研究室 `📅unknown` `[entity_page]`
-- [project-instinct/instinct_rl](wiki/entities/instinct-rl.md) — project-instinct/instinct_rl](https://github.com/project-instinct/instinct_rl) 收录于具身智能研究室 [开源项目主表 `📅unknown` `[entity_page]`
-- [Project Instinct InstinctLab](wiki/entities/instinctlab.md) — Project Instinct InstinctLab](https://github.com/project-instinct/instinctlab) 收录于具身智能研究室 [开源项目主表 `📅unknown` `[entity_page]`
 - [Intel RealSense 深度相机](wiki/entities/intel-realsense.md) — Intel RealSense** 是一族消费级 **RGB-D 深度相机**（主动红外立体等方案），输出对齐的彩色与深度，是人形系统课感知章与大量 G1 真 `📅unknown` `[entity_page]`
 - [Internal Cycloidal Actuator（内嵌摆线一体执行器）](wiki/entities/internal-cycloidal-actuator.md) — Internal Cycloidal Actuator** 是 Aaed Musa 的开源一体关节：[GitHub CAD/BOM](https://github.com/aaedmusa/Int `📅unknown` `[entity_page]`
 - [InternRobotics运动控制开源生态](wiki/entities/internrobotics.md) — InternRobotics运动控制开源生态](https://github.com/InternRobotics) 收录于具身智能研究室 [开源项目主表](https://github.com/R `📅unknown` `[entity_page]`
 - [Ironless QDD Actuator（无铁芯转子摆线—行星执行器）](wiki/entities/ironless-qdd-actuator.md) — Ironless QDD Actuator**（[CKraft11/Ironless-QDD-Actuator](https://github.com/CKraft11/Ironless-QDD- `📅unknown` `[entity_page]`
 - [Isaac GR00T（人形 VLA 开发平台）](wiki/entities/isaac-gr00t.md) — Isaac GR00T** 是 NVIDIA 面向通用人形机器人的 **开源开发平台**：以 [Isaac-GR00T](https://github.com/NVIDIA/Isaac-GR00T `📅unknown` `[entity_page]`
-- [IsaacGymEnvs](wiki/entities/isaac-gym-envs.md) — IsaacGymEnvs](https://github.com/isaac-sim/IsaacGymEnvs) 收录于具身智能研究室 [开源项目主表](https://github.com/Rea `📅unknown` `[entity_page]`
 - [Isaac Gym / Isaac Sim / Isaac Lab](wiki/entities/isaac-gym-isaac-lab.md) — Isaac Gym**、**Isaac Sim** 与 **Isaac Lab** 是 NVIDIA 机器人仿真与学习生态里需要分开理解的三个产品节点。 `📅unknown` `[entity_page]`
 - [Isaac Gym](wiki/entities/isaac-gym.md) — Isaac Gym** 是 NVIDIA 早期推出的 GPU 加速机器人强化学习仿真框架，主打「在单张 GPU 上同时跑几千到上万个环境」的大规模并行训练。 `📅unknown` `[entity_page]`
 - [Isaac Lab](wiki/entities/isaac-lab.md) — Isaac Lab** 是 NVIDIA 当前官方主推的机器人学习框架，建立在 **Isaac Sim** 之上，用于 robot learning、locomotion、manipulation `📅unknown` `[entity_page]`
@@ -233,7 +225,6 @@
 - [Lambda Cloud](wiki/entities/lambda-cloud.md) — Lambda Cloud**（lambda.ai）是 **AI 专用 GPU 云**，以 **Lambda Stack `📅unknown` `[entity_page]`
 - [开源机器人学学习指南（qqfly）](wiki/entities/learn-robotics-qqfly-guide.md) — 一句话：** learn-robotics.qqfly.net 是 qqfly 维护的 **CC BY 4.0 中文自学手 `📅unknown` `[entity_page]`
 - [legged_gym](wiki/entities/legged-gym.md) — legged_gym** 是 ETH Zurich RSL（Robotic Systems Lab）开源的足式机器人强化学习训练框架，建立在 **Isaac Gym** 之上。 `📅unknown` `[entity_page]`
-- [Legged Lab DWAQ（Unitree G1）](wiki/entities/legged-lab-dwaq.md) — Legged Lab DWAQ（Unitree G1）](https://gitee.com/chaomingsanhua/legged_lab) 收录于具身智能研究室 [开源项目主表](https `📅unknown` `[entity_page]`
 - [LeggedGym-Ex](wiki/entities/leggedgym-ex.md) — LeggedGym-Ex**（<https://github.com/lupinjia/LeggedGym-Ex>）在 legged_gym 范式上扩展  `📅unknown` `[entity_page]`
 - [LeGO-LOAM](wiki/entities/lego-loam.md) — LeGO-LOAM** 在 LOAM 基础上增加 **地面分割与地面优化**，降低起伏地形的漂移。 `📅unknown` `[entity_page]`
 - [乐聚机器人（Leju Robotics）](wiki/entities/leju-robotics.md) — 乐聚机器人**（lejurobot.com）是国内 **全尺寸人形机器人产业化** 代表厂商之一：以 **KUAVO（夸父）** 系 `📅unknown` `[entity_page]`
@@ -281,12 +272,10 @@
 - [MolmoMotion](wiki/entities/molmo-motion.md) — MolmoMotion**（Ai2 博客 | [arXiv:2606.18558](https://arxiv.o `📅unknown` `[entity_page]`
 - [MOS9 开源人形机器人](wiki/entities/mos9-open-source-humanoid.md) — MOS9 开源人形机器人](https://github.com/THMOS2025/MOS-9-Open-Source-Humanoid-Robot) 收录于具身智能研究室 [开源项目主表](ht `📅unknown` `[entity_page]`
 - [moteus（mjbots 关节驱动器）](wiki/entities/moteus.md) — moteus** 是 mjbots 的开源无刷伺服控制器栈（GitHub）：多板 `📅unknown` `[entity_page]`
-- [Motion-Between BFM-2](wiki/entities/motion-between-bfm-2.md) — Motion-Between BFM-2](https://www.agibot.com.cn/article/315/detail/161.html) 收录于具身智能研究室 [开源项目主表](ht `📅unknown` `[entity_page]`
 - [motion_imitation（四足模仿动物）](wiki/entities/motion-imitation-quadruped.md) — motion_imitation**（<https://github.com/erwincoumans/motion_imitation>）是 Xue Bin Peng 等论文 [*Learnin `📅unknown` `[entity_page]`
 - [MotionCode™](wiki/entities/motioncode.md) — MotionCode**（官网 motioncode.ai）将自身定位为「解码人体运动」的实体，公开业务拆为 **Move / Media /  `📅2026-05-07` `[entity_page]`
 - [Motrix (Motphys 机器人仿真与训练平台)](wiki/entities/motrix.md) — Motrix** 是由 Motphys 开发的高性能机器人物理仿真与强化学习训练平台。它由核心仿真引擎 **MotrixSim** 和上层学习框架 **MotrixLab** 组成，旨在为机器人研 `📅unknown` `[entity_page]`
 - [MoveIt 2](wiki/entities/moveit2.md) — MoveIt 2** 是面向 **ROS 2** 的开源 **运动规划、操作与运动学** 框架（[moveit/moveit2](https://github.com/moveit/moveit2 `📅2026-06-15` `[entity_page]`
-- [MuJoCo Menagerie](wiki/entities/mujoco-menagerie.md) — MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie) 收录于具身智能研究室 [开源项目主表](https:// `📅unknown` `[entity_page]`
 - [MuJoCo MJX（MuJoCo XLA）](wiki/entities/mujoco-mjx.md) — MuJoCo MJX**（常写作 **MJX**）是 Google DeepMind 在 **JAX** 上对 MuJoCo 物理引擎的 **重实现**：通过 PyP `📅2026-05-18` `[entity_page]`
 - [MuJoCo Playground](wiki/entities/mujoco-playground.md) — MuJoCo Playground**（[google-deepmind/mujoco_playground](https://github.com/google-deepmind/mujoco_ `📅unknown` `[entity_page]`
 - [MuJoCo WASM（浏览器物理仿真）](wiki/entities/mujoco-wasm.md) — MuJoCo WASM** 是把 MuJoCo C 核心编译为 **WebAssembly**、并通过 **JavaScript/TypeScript** 暴露 `M `📅unknown` `[entity_page]`
@@ -306,7 +295,6 @@
 - [Meta Quest (Oculus) 遥操作](wiki/entities/oculust-quest-teleop.md) — 在机器人模仿学习（Imitation Learning）和 VLA 模型训练中，**Meta Quest (原 Oculus Quest)** 系列 VR 头显已成为获取大规模高质量人类演示数据的核心 `📅unknown` `[entity_page]`
 - [ODRI Solo / Bolt（开源腿式平台）](wiki/entities/odri-solo-and-bolt.md) — ODRI（Open Dynamic Robot Initiative）** 提供面向研究的开源 **扭矩控制** 腿足平台：**Solo**（四足）与 **Bolt**（双足）常被引作 **低惯量 `📅unknown` `[entity_page]`
 - [OmniContact sim2sim](wiki/entities/omnicontact-sim2sim.md) — OmniContact_sim2sim**（GitHub）是 [OmniContact](. `📅unknown` `[entity_page]`
-- [OmniGibson](wiki/entities/omnigibson.md) — OmniGibson](https://github.com/StanfordVL/OmniGibson) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXi `📅unknown` `[entity_page]`
 - [OmniRetarget Dataset（G1 交互重定向轨迹）](wiki/entities/omniretarget-dataset.md) — OmniRetarget Dataset**（<https://huggingface.co/datasets/omniretarget/OmniRetarget_Dataset>）是 Amazo `📅unknown` `[entity_page]`
 - [OMOMO（Object Motion Guided Human Motion Synthesis）](wiki/entities/omomo-dataset.md) — OMOMO** 是 Li et al.（Stanford，SIGGRAPH Asia 2023）发布的人–物交互（HOI）**动捕数据集与合成代码**：以 **物体运动序列为条件** 生成/记录人 `📅unknown` `[entity_page]`
 - [ONNX](wiki/entities/onnx.md) — ONNX**（**Open Neural Network Exchange**）是由社区维护、托管于 **LF AI & Data Foundation**（Linux Foundation 旗下 `📅2026-06-25` `[entity_page]`
@@ -323,7 +311,6 @@
 - [OpenLET 具身智能开源数据集社区](wiki/entities/openlet.md) — OpenLET**（<https://openlet.openatom.tech/>）是由 **开放原子开源基金会** 孵化、**乐聚机器人**牵头运营的 **具身智能真机数据枢纽**：遵循开放协 `📅unknown` `[entity_page]`
 - [OpenLoong-Dyn-Control](wiki/entities/openloong-dyn-control.md) — OpenLoong-Dyn-Control** 提供青龙人形在 **MuJoCo** 上的 **MPC + 全身控制** 研究与仿真 demo。 `📅unknown` `[entity_page]`
 - [OpenLoong（青龙·公版机）](wiki/entities/openloong.md) — OpenLoong** 是面向「青龙」全尺寸公版人形机器人的 **四层全栈开源** 项目（云端大脑 / 具身小脑 / 具身实体 / 具身数据），由 [OpenLoong 社区](https://w `📅unknown` `[entity_page]`
-- [openpi（Physical Intelligence）](wiki/entities/openpi.md) — openpi](https://github.com/Physical-Intelligence/openpi) 收录于具身智能研究室 [开源项目主表](https://github.com/Rea `📅unknown` `[entity_page]`
 - [OpenTorque Actuator（开源准直驱关节）](wiki/entities/opentorque-actuator.md) — OpenTorque Actuator**（[G-Levine/OpenTorque-Actuator](https://github.com/G-Levine/OpenTorque-Actuat `📅unknown` `[entity_page]`
 - [OpenVINO](wiki/entities/openvino.md) — OpenVINO**（Open Visual Inference and Neural network Optimization）是 **Intel** 开源的 **AI 推理部署工具包**，面向 `📅2026-06-25` `[entity_page]`
 - [OpenVLA](wiki/entities/openvla.md) — OpenVLA**（openvla/openvla）提供可复现的 **Vision-Language-Action（VL `📅unknown` `[entity_page]`
@@ -1275,7 +1262,6 @@
 - [Roboflow Sports](wiki/entities/roboflow-sports.md) — Roboflow Sports**（roboflow/sports）是 Roboflow 开源的 **体育计算机视觉工具 `📅unknown` `[entity_page]`
 - [RoboGen](wiki/entities/robogen.md) — RoboGen** 是面向 **机器人学习数据扩展** 的 **自动生成框架**，利用大语言模型与仿真器联动 **程序化生成任务、场景与演示轨迹**。 `📅unknown` `[entity_page]`
 - [robomimic](wiki/entities/robomimic.md) — robomimic](https://github.com/ARISE-Initiative/robomimic) 收录于具身智能研究室 [开源项目主表](https://github.com/Re `📅unknown` `[entity_page]`
-- [roboparty_train](wiki/entities/roboparty-train.md) — roboparty_train](https://github.com/Roboparty/roboparty_train) 收录于具身智能研究室 [开源项目主表](https://github.c `📅unknown` `[entity_page]`
 - [UFO（Roboparty 无监督 RL 控制框架）](wiki/entities/roboparty-ufo.md) — UFO**（*Unsupervised RL Control Development Framework*）是 Party OS 首批开源的 **无监督强化学习控 `📅unknown` `[entity_page]`
 - [RoboParty（萝博派对）](wiki/entities/roboparty.md) — RoboParty（上海萝博派对科技有限公司）** 是国内少数将「全栈开源双足人形」作为公司主线的创业团队：先以 Roboto Origin 开源整机与 `📅unknown` `[entity_page]`
 - [VLOA（RoboScience · Visics 通用具身栈）](wiki/entities/roboscience-vloa.md) — VLOA**（*Vision-Language-Object-Action*）是 **RoboScience**（北京机科未来科技有限公司，2024-12 成立）对外披露的 **端到端通用具身大模 `📅unknown` `[entity_page]`
