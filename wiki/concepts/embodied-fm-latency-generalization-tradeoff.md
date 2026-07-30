@@ -2,7 +2,7 @@
 type: concept
 tags: [vla, vlm, world-model, embodied-ai, foundation-model, real-time-control, generalization, taxonomy]
 status: complete
-updated: 2026-07-08
+updated: 2026-07-30
 summary: "具身大模型实时性 ↔ 泛化能力取舍概念页：明示模型规模、多模态跨度、世界模型推演步长如何共同决定推理时延与控制带宽的可达边界，以及这条边界如何反向约束分层 / 端到端的选型分界。"
 related:
   - ../queries/embodied-fm-taxonomy-loop.md
@@ -88,6 +88,8 @@ sources:
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 世界模型「联合建模」如何把长推演红利转成执行策略
 - [生成式世界模型](../methods/generative-world-models.md) — 世界模型「级联预演」的规划层定位
 - [人形策略网络架构](./humanoid-policy-network-architecture.md) — 分层方案里承接高频控制的 WBC 底座
+- [πR²](../entities/paper-pi-r2.md) — 大 flow VLA 上拆快/慢通道并对齐推理延迟的实时闭环实例（约 25 Hz）
+- [INTACT](../entities/paper-intact.md) — 世界模型 Direct 读出毫秒级、削弱测试时 CEM 搜索
 
 ## 参考来源
 

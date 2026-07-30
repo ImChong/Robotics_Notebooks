@@ -3,7 +3,7 @@ type: entity
 title: HandUMI
 tags: [hardware, software, teleoperation, dual-arm, bimanual, data-collection, robot-free, retargeting, lerobot, open-source, parallel-gripper, robonet]
 status: complete
-updated: 2026-07-27
+updated: 2026-07-30
 related:
   - ../tasks/teleoperation.md
   - ../tasks/bimanual-manipulation.md
@@ -12,6 +12,7 @@ related:
   - ./mimic-wearable-u1.md
   - ./paper-bifrost-umi.md
   - ./paper-halomi-humanoid-loco-manipulation.md
+  - ./paper-hifi-umi.md
   - ./xyz-deux.md
 sources:
   - ../../sources/repos/handumi-sw.md
@@ -171,6 +172,7 @@ flowchart LR
 - [ALOHA (双臂遥操作硬件)](./aloha.md) — 传统 leader–follower 双臂采集对照
 - [mimic wearable U1](./mimic-wearable-u1.md) — 固定运动学外骨骼 / 无 retargeting 对照
 - [BifrostUMI](./paper-bifrost-umi.md) — 无机器人示范 → 人形全身对照
+- [HiFi-UMI / HiFi-UMI-2K](./paper-hifi-umi.md) — 高保真双臂 UMI 2000 h；zero-robot 后训练（数据已开）
 - [DEUX / Glove X（XYZ）](./xyz-deux.md) — 商业 1:1 手套绑定对照（闭源、不可跨臂迁移）
 
 ## 参考来源
