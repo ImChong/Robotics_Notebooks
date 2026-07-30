@@ -135,6 +135,7 @@ flowchart TB
 | [V-JEPA 2](../entities/paper-vjepa2.md) | <62h Droid → latent 规划；MIT |
 | [WorldWeaver](../entities/paper-worldweaver.md) | world score 81.0→105.1；coming soon |
 | [DWM Separating](../entities/paper-dwm-separating-world-effects.md) | CEM +13.1pp；未开源 |
+| [INTACT](../entities/paper-intact.md) | 意图→动作 Direct 2.9–5.5 ms；文档仓 Coming Soon |
 | [Masked Visual Actions](../entities/paper-masked-visual-actions.md) | RoboCasa r=0.982 |
 | [RynnWorld-4D](../entities/paper-rynnworld-4d-rgb-depth-flow.md) | RGB-DF + Policy ~9Hz |
 | [MECo-WAM](../entities/paper-meco-wam-4d-geometry-cotraining.md) / [VT-WAM](../entities/paper-vt-wam-visuotactile-contact-rich.md) | 训练期 4D；触觉联合 WAM |
@@ -177,6 +178,7 @@ flowchart TB
 - [V-JEPA 2](../entities/paper-vjepa2.md)
 - [WorldWeaver](../entities/paper-worldweaver.md)
 - [DWM（Separating World Effects）](../entities/paper-dwm-separating-world-effects.md)
+- [INTACT](../entities/paper-intact.md) — 意图→动作无搜索接口（LeWM 族对照）
 - [Masked Visual Actions](../entities/paper-masked-visual-actions.md)
 - [RynnWorld-4D](../entities/paper-rynnworld-4d-rgb-depth-flow.md)
 - [MECo-WAM](../entities/paper-meco-wam-4d-geometry-cotraining.md) / [VT-WAM](../entities/paper-vt-wam-visuotactile-contact-rich.md)

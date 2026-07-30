@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-30",
   "node_count": 1983,
-  "edge_count": 17606,
+  "edge_count": 17612,
   "coverage": {
     "covered": 1933,
     "total": 1959,
@@ -18,6 +18,27 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/entities/roboparty.md",
+      "detail_id": "entity-roboparty",
+      "label": "RoboParty（萝博派对）",
+      "type": "entity",
+      "recency": "2026-07-30",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/overview/roboparty-lab-party-os-technology-map.md",
+      "detail_id": "wiki-overview-roboparty-lab-party-os-technology-map",
+      "label": "RoboParty Lab / Party OS 技术地图",
+      "type": "overview",
+      "recency": "2026-07-30",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
       "path": "wiki/entities/paper-dwm-separating-world-effects.md",
@@ -196,27 +217,6 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/gnm-head.md",
-      "detail_id": "entity-gnm-head",
-      "label": "GNM Head（GNM 生态）",
-      "type": "entity",
-      "recency": "2026-07-30",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/concepts/visual-representation-for-policy.md",
-      "detail_id": "wiki-concepts-visual-representation-for-policy",
-      "label": "视觉表征作为策略输入（Visual Representation for Policy）",
-      "type": "concept",
-      "recency": "2026-07-30",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -253,7 +253,7 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 129
+      "size": 128
     }
   ],
   "top_hubs": [
@@ -329,7 +329,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 201,
+      "degree": 202,
       "has_repo": true,
       "community_label": "生成式世界模型（Generative World Models） 社区"
     }
