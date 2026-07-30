@@ -1,5 +1,29 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-30] ingest | sources/papers/intact_arxiv_2607_26056.md + sites/intact-jepa-github-io + repos/intact-jepa — INTACT（arXiv:2607.26056）入库：无搜索意图→动作 WM；升格 wiki/entities/paper-intact.md；交叉 paper-dwm-separating / vjepa2 / world-action-models / latency-tradeoff；代码 Coming Soon
+
+- **归档：** [`sources/papers/intact_arxiv_2607_26056.md`](sources/papers/intact_arxiv_2607_26056.md)、[`sources/sites/intact-jepa-github-io.md`](sources/sites/intact-jepa-github-io.md)、[`sources/repos/intact-jepa.md`](sources/repos/intact-jepa.md)；索引 [`sources/README.md`](sources/README.md)
+- **开源核查（2026-07-30，步骤 2.5）：** **部分开源** — 项目页 <https://zju3dv.github.io/INTACT-JEPA/> + [`zju3dv/INTACT-JEPA`](https://github.com/zju3dv/INTACT-JEPA)（MIT）文档齐全；训练/权重徽章 **Coming Soon**（`docs/RELEASE.md` Stage 0–2）
+- **主升格：** [`wiki/entities/paper-intact.md`](wiki/entities/paper-intact.md) — 四槽语法、Direct/Guarded、LeWM 四任务数字、结论六要点；源码运行时序图标注不适用
+- **交叉：** [`wiki/entities/paper-dwm-separating-world-effects.md`](wiki/entities/paper-dwm-separating-world-effects.md)、[`wiki/entities/paper-vjepa2.md`](wiki/entities/paper-vjepa2.md)、[`wiki/concepts/world-action-models.md`](wiki/concepts/world-action-models.md)、[`wiki/concepts/embodied-fm-latency-generalization-tradeoff.md`](wiki/concepts/embodied-fm-latency-generalization-tradeoff.md)、[`wiki/overview/world-model-physics-fidelity-outputs.md`](wiki/overview/world-model-physics-fidelity-outputs.md)
+- **机构 tags：** `zju` / `tsinghua` / `roboparty`
+
+## [2026-07-30] ingest | sources/papers/hifi_umi_arxiv_2607_25895.md + sites/hifi-umi-project + datasets/hifi-umi-2k — HiFi-UMI（arXiv:2607.25895）入库：2000h 双臂 UMI；升格 wiki/entities/paper-hifi-umi.md；交叉 teleoperation / handumi / bimanual / wam；数据已开、系统代码未列
+
+- **归档：** [`sources/papers/hifi_umi_arxiv_2607_25895.md`](sources/papers/hifi_umi_arxiv_2607_25895.md)、[`sources/sites/hifi-umi-project.md`](sources/sites/hifi-umi-project.md)、[`sources/datasets/hifi-umi-2k.md`](sources/datasets/hifi-umi-2k.md)；索引 [`sources/README.md`](sources/README.md)
+- **开源核查（2026-07-30，步骤 2.5）：** **部分开源（数据）** — HF [`simple-world-lab/HiFi-UMI-2K`](https://huggingface.co/datasets/simple-world-lab/HiFi-UMI-2K)（CC BY 4.0）；项目页 <https://cloud.simpleai.tech/simple-world-lab/hifi-umi/> 未列采数/训练 GitHub
+- **主升格：** [`wiki/entities/paper-hifi-umi.md`](wiki/entities/paper-hifi-umi.md) — 采数共设计、zero-robot 后训练三骨干、2k h 数据集、结论六点；源码运行时序图标注不适用
+- **交叉：** [`wiki/entities/handumi.md`](wiki/entities/handumi.md)、[`wiki/tasks/teleoperation.md`](wiki/tasks/teleoperation.md)、[`wiki/tasks/bimanual-manipulation.md`](wiki/tasks/bimanual-manipulation.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/concepts/world-action-models.md`](wiki/concepts/world-action-models.md)
+- **机构 tags：** `simple-ai`
+
+## [2026-07-30] ingest | sources/papers/pi_r2_arxiv_2607_26055.md + sites/pi-r2-flow-github-io + repos/pi-r2-flow — πR²（arXiv:2607.26055）入库：GR00T 反应式实时 flow；升格 wiki/entities/paper-pi-r2.md；交叉 action-chunking / vla / latency-tradeoff / manipulation；训练+部署已开源
+
+- **归档：** [`sources/papers/pi_r2_arxiv_2607_26055.md`](sources/papers/pi_r2_arxiv_2607_26055.md)、[`sources/sites/pi-r2-flow-github-io.md`](sources/sites/pi-r2-flow-github-io.md)、[`sources/repos/pi-r2-flow.md`](sources/repos/pi-r2-flow.md)；索引 [`sources/README.md`](sources/README.md)
+- **开源核查（2026-07-30，步骤 2.5）：** **已开源** — 项目页 → [`pi-r2-flow/pi-r2-flow`](https://github.com/pi-r2-flow/pi-r2-flow)；`deployment/apps/run_policy.py` + `learning/Isaac-GR00T` 微调入口
+- **主升格：** [`wiki/entities/paper-pi-r2.md`](wiki/entities/paper-pi-r2.md) — 快/慢通道、staircase、真机 25 Hz、流程与源码运行时序图、结论六要点
+- **交叉：** [`wiki/methods/action-chunking.md`](wiki/methods/action-chunking.md)、[`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/concepts/embodied-fm-latency-generalization-tradeoff.md`](wiki/concepts/embodied-fm-latency-generalization-tradeoff.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`wiki/entities/paper-hrl-stack-34-gr00t_n1.md`](wiki/entities/paper-hrl-stack-34-gr00t_n1.md)、[`wiki/queries/vla-deployment-guide.md`](wiki/queries/vla-deployment-guide.md)
+- **机构 tags：** `cmu`
+
 ## [2026-07-30] ingest | sources/papers/shells_arxiv_2605_31283.md + sites/shells-project — SHELLS（arXiv:2605.31283）入库：粗引导分层采样前馈多视角人头；升格 wiki/entities/paper-shells-layered-surface-sampling.md；交叉 Face Anything / GNM Head / visual-representation / humanoid-training-data-pipeline / teleoperation；截至入库日未开源
 
 - **归档：** [`sources/papers/shells_arxiv_2605_31283.md`](sources/papers/shells_arxiv_2605_31283.md)、[`sources/sites/shells-project.md`](sources/sites/shells-project.md)；索引 [`sources/README.md`](sources/README.md)

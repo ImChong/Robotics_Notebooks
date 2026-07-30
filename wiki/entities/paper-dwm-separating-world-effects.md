@@ -9,7 +9,7 @@ tags:
   - action-invariant
   - pku
 status: complete
-updated: 2026-07-27
+updated: 2026-07-30
 arxiv: "2607.18715"
 related:
   - ../overview/world-model-physics-fidelity-outputs.md
@@ -19,6 +19,7 @@ related:
   - ./paper-vjepa2.md
   - ./paper-irasim.md
   - ./paper-worldweaver.md
+  - ./paper-intact.md
   - ../methods/generative-world-models.md
   - ../concepts/video-as-simulation.md
 sources:
@@ -185,6 +186,7 @@ flowchart TB
 - [世界模型物理保真：输出阅读轴](../overview/world-model-physics-fidelity-outputs.md) — **动作 vs 世界效应分解** 代表
 - [Dexterous World Models（DWM）](../methods/dwm.md) — **同名消歧（勿合并）**
 - [V-JEPA 2](./paper-vjepa2.md) — latent 规划对照
+- [INTACT](./paper-intact.md) — 意图→动作无搜索接口（LeWM 族对照，arXiv:2607.26056）
 - [IRASim](./paper-irasim.md) / [Masked Visual Actions](./paper-masked-visual-actions.md) — 像素 WM 对照
 - [RynnWorld-4D](./paper-rynnworld-4d-rgb-depth-flow.md) — 几何运动信号对照
 - [WorldWeaver](./paper-worldweaver.md) — 持续状态对照

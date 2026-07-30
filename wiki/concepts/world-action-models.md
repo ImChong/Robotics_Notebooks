@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-07-29
+updated: 2026-07-30
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型。"
 related:
   - ../../roadmap/depth-wam.md
@@ -220,6 +220,8 @@ flowchart TB
 - [EgoWAM（野外 egocentric 人数据 · WAM 协同训练）](../entities/paper-egowam-egocentric-human-wam-co-training.md)
 - [WAM-TTT（人视频 · 测试时训练 steering）](../entities/paper-wam-ttt-human-video-test-time-steering.md)
 - [τ₀-World Model（τ0-WM）](../entities/tau0-world-model.md)
+- [HiFi-UMI](../entities/paper-hifi-umi.md) — UMI-only 后训练覆盖 VLA/WAM（LingBot-VA）骨干；2000 h 公开数据
+- [INTACT](../entities/paper-intact.md) — 意图→动作无搜索 JEPA（相对 CEM 搜索的延迟对照）
 - [Dexmal DW05（OpenDW）](../entities/dexmal-dw05.md)
 - [X-Foresight](../entities/paper-x-foresight.md) — 驾驶域 Joint：chunk-wise 世界因果 + 动作同训（小鹏；未开源）
 - [X-Mind](../entities/paper-x-mind.md) — 驾驶域 Visual CoT：PWM 内化为压缩 sketch（小鹏；未开源）

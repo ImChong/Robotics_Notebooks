@@ -211,6 +211,9 @@ flowchart TD
 - [EventVLA](../entities/paper-eventvla-visual-evidence-memory.md) — 稀疏视觉证据记忆 + RoboTwin-MeM（arXiv:2606.20092）
 - [Chronos](../entities/paper-chronos.md) — 全历史 SSM + IMLE + 二阶加速度桥；RMBench 73.6%、真机 78%（arXiv:2606.30318）
 - [RoboTTT](../entities/paper-robottt-test-time-training-vla-context.md) — GR00T N1.7 内嵌 TTT fast weights，8K 步 visuomotor 上下文 + 部署后在线学习（NVIDIA GEAR 项目页）
+- [πR²](../entities/paper-pi-r2.md) — GR00T-N1.7 反应式实时 flow 闭环（约 25 Hz；训练+部署已开源，arXiv:2607.26055）
+- [HiFi-UMI / HiFi-UMI-2K](../entities/paper-hifi-umi.md) — 2000 h 高保真无机器人双臂数据；zero-robot 后训练（arXiv:2607.25895）
+- [INTACT](../entities/paper-intact.md) — 意图→动作无搜索 latent WM；Direct 2.9–5.5 ms（arXiv:2607.26056）
 - [KinetIQ Ascend](../entities/kinetiq-ascend.md) — 产线 CFM-VLA 真机 PPO 后训练（Humanoid, 2026）
 - [MolmoMotion](../entities/molmo-motion.md) — 语言条件 3D 点轨迹预测与 DROID 微调规划先验（arXiv:2606.18558）
 - [EN02-OP](../entities/en02-op.md) — Westwood 开源三指 7-DoF 夹爪（Dynamixel + 3D 打印，DIY 约 $200 量级）

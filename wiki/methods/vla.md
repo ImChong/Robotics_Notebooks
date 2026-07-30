@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-07-29
+updated: 2026-07-30
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作。"
 related:
   - ../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md
@@ -417,6 +417,8 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 ## 推荐继续阅读
 
 - [POT-VLA](../entities/paper-pot-vla.md) — Persistent Object Tokenization：共享角色化 3D 对象记忆条件化 GR00T-N1.7 并做几何谓词验收；G1 **39/80→71/80**（arXiv:2607.18016）
+- [πR²](../entities/paper-pi-r2.md) — GR00T-N1.7 反应式实时 flow 闭环部署（约 25 Hz；代码已开，arXiv:2607.26055）
+- [HiFi-UMI](../entities/paper-hifi-umi.md) — 高保真 UMI-only 后训练匹配 teleop；HiFi-UMI-2K 2000 h（arXiv:2607.25895）
 - [Patch Policy](../entities/paper-patch-policy.md) — 直接消费密集 ViT patch token 的轻量高频控制策略
 - RT-2 / π₀ 原论文或项目博客
 - [OpenVLA](../entities/openvla.md) / Octo 开源实现

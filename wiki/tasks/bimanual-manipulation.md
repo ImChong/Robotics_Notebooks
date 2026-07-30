@@ -137,6 +137,7 @@ $${}^A T_{obj} \cdot {}^{obj} T_B = {}^A T_B$$
 | π₀（2024） | VLA + Flow Matching | 人形/桌面 | 统一 loco-manip 的双臂策略 |
 | GELLO（2023） | 低成本遥操作 | 各类机械臂 | 降低双臂数据采集门槛 |
 | HandUMI（2026） | 无机器人示教 + 重定向 | 平行夹爪双臂（PiPER / OpenArm / TRLC-DK1 / YAM 等） | 一次采集、多臂复用；换 tip 即开录；LeRobot v3 + 内置 QA；见 [HandUMI](../entities/handumi.md) |
+| HiFi-UMI-2K（2026） | 高保真无机器人双臂 UMI | 真机双臂部署评测 | 公开 **2000 h**；zero-robot 后训练对齐 teleop；见 [HiFi-UMI](../entities/paper-hifi-umi.md) |
 | MEVION（2026） | Leader–Follower + ACT | 四条 6-DoF 臂 | 约 $14k 的开源高力高速采集系统；见 [MEVION](../entities/paper-mevion.md) |
 | Transformer Transformer（2026） | DiT 共设计 + 跨具身控制 | 轮式双臂 / ALOHA2 | 按洗碗/抛布运动优化完整机体；见 [实体页](../entities/paper-transformer-transformer.md) |
 
