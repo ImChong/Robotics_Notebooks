@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-30] query | wiki/queries/hmi-opensource-projects-coverage.md — 确保 HMI 开源项目主表 166 项均有本库独立详情节点；新建 60 个 sources+entities，复用 106 个已有页
+
+- **触发：** 用户要求覆盖 [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md) 全部项目
+- **Query 产物：** [`wiki/queries/hmi-opensource-projects-coverage.md`](wiki/queries/hmi-opensource-projects-coverage.md)（166/166 映射；注册 [`wiki/queries/README.md`](wiki/queries/README.md)）
+- **新建详情节点（60）：** 含 ACT、openpi、WHAM、PULSE、Mink、OmniGibson、InstinctLab / instinct_rl / instinct_onboard、工程中间件（CleanRL、LIBERO、ros2_control、Webots 等）— 见覆盖索引「新建」列；对应 `sources/repos|sites|papers/*`
+- **交叉：** [`wiki/entities/humanoid-motion-intelligence.md`](wiki/entities/humanoid-motion-intelligence.md) 导航挂接覆盖索引
+- **说明：** 新建页为 draft 级工程入口节点（主表定位 + 官方链接），方法深读仍优先复用已有 `paper-*` / `methods/*`
+
 ## [2026-07-30] ingest | sources/repos/roboparty-intact-jepa.md + papers/intact_arxiv_2607_26056 — 补充 RoboParty 组织镜像与 Lab 交叉：wiki/entities/paper-intact.md、wiki/entities/roboparty.md、wiki/overview/roboparty-lab-party-os-technology-map.md；规范仓仍为 zju3dv/INTACT-JEPA，训练代码 Coming Soon
 
 - **触发：** 用户提供 Roboparty/INTACT-JEPA + lab.roboparty.com 口径（LeWM 学动作效果 / INTACT 补意图→动作；Direct 宏 ~95.33%，2.9–5.5 ms，约 300×）

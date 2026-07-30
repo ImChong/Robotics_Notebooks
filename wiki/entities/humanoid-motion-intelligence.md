@@ -2,13 +2,14 @@
 type: entity
 tags: [repo, curated-list, humanoid, motion-control, locomotion, loco-manipulation, vla, sim2real, survey, career, embodied-ai-lab]
 status: complete
-updated: 2026-07-28
+updated: 2026-07-30
 related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/humanoid-amp-motion-prior-survey.md
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../queries/open-source-motion-control-projects.md
+  - ../queries/hmi-opensource-projects-coverage.md
   - ../queries/humanoid-motion-tracking-method-selection.md
   - ../tasks/loco-manipulation.md
   - ../tasks/humanoid-locomotion.md
@@ -95,7 +96,7 @@ flowchart TB
 |------------|----------|
 | 建立完整技术路线 / 新手路径 | [`技术路线/README.md`](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E6%8A%80%E6%9C%AF%E8%B7%AF%E7%BA%BF/README.md) |
 | 查论文与稳定 ID（Pxxx） | [`论文与项目/README.md`](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/README.md)（约 145 条） |
-| 找代码与复现入口 | [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)（约 166 项） |
+| 找代码与复现入口 | [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)（约 166 项）→ 本库逐条映射见 [HMI 开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md) |
 | 产业信号 / 求职面经 | [`公司与产业/`](https://github.com/RealXiaoze/humanoid-motion-intelligence/tree/main/%E5%85%AC%E5%8F%B8%E4%B8%8E%E4%BA%A7%E4%B8%9A)、[`求职与岗位/`](https://github.com/RealXiaoze/humanoid-motion-intelligence/tree/main/%E6%B1%82%E8%81%8C%E4%B8%8E%E5%B2%97%E4%BD%8D) |
 
 ## 工程实践
@@ -122,6 +123,7 @@ flowchart TB
 - [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) — 动作小脑横切面
 - [AMP 运动先验综述](../overview/humanoid-amp-motion-prior-survey.md) — 运动先验姊妹篇
 - [人形 Loco-Manip 161 篇技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md) — 移动操作全谱
+- [HMI 开源项目主表覆盖索引](../queries/hmi-opensource-projects-coverage.md) — 主表 166 项 ↔ 本库独立详情节点
 - [开源运动控制项目结构化摘要](../queries/open-source-motion-control-projects.md) — 本库另一条开源项目方法地图
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
 - [运动控制主路线](../../roadmap/motion-control.md)

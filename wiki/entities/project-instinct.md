@@ -4,7 +4,7 @@ type: entity
 tags: [humanoid, rl, sim2real, perception, whole-body-control, research-program, shanghai-pil, tsinghua]
 status: complete
 date: 2026-05-12
-updated: 2026-05-28
+updated: 2026-07-30
 related:
   - ./paper-amp-survey-19-embrace_collisions.md
   - ./robot-motion-keyframe-editors.md
@@ -42,7 +42,7 @@ summary: "Project Instinct 是清华 IIIS 与上海期智等团队公开的人�
 - **问题覆盖面全**：同时触及 **接触丰富全身**（非仅限手脚）、**Sim2Real 人形 RL**、**外感受闭环里的全身跟踪** 与 **端到端深度策略**，是理解当前「高动态人形 + 感知 + 单策略多技能」论文群的方便入口。
 - **工程闭环叙事清楚**：站点反复出现 **GPU 刚体仿真**、**机载深度**、**蒸馏 / 下游用例** 等关键词，便于和本库 [Sim2Real](../concepts/sim2real.md)、[Terrain Adaptation](../concepts/terrain-adaptation.md)、[Reinforcement Learning](../methods/reinforcement-learning.md) 对照阅读。
 - **可追溯性强**：各子页给出 **会议或 arXiv 标识**，适合作为 curator 进一步精读论文时的 **一级索引**（正文仍以 PDF 为准）。
-- **配套工具链**：同组织维护的浏览器侧 **NPZ 运动曲线编辑器**（Flask 后端解析/写回）已单独归档，见 [机器人关键帧与运动编辑工具](./robot-motion-keyframe-editors.md)。
+- **配套工具链**：同组织维护的浏览器侧 **NPZ 运动曲线编辑器**（Flask 后端解析/写回）已单独归档，见 [机器人关键帧与运动编辑工具](./robot-motion-keyframe-editors.md)；Isaac Lab 环境层、训练器与板载部署见独立节点 [InstinctLab](./instinctlab.md)、[instinct_rl](./instinct-rl.md)、[instinct_onboard](./instinct-onboard.md)。
 
 ## 核心结构（据站点归纳）
 
