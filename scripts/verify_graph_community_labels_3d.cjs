@@ -122,22 +122,28 @@ const path = require('path');
     const expectedCommunities = await page.evaluate(() => {
       const set = new Set();
       document.querySelectorAll('#graph-legend .legend-row[data-community-id]')
-        .forEach((row) => set.add(row.getAttribute('data-community-id')));
-      return set.size || 16;
+        .forEach((row) => {
+          const id = row.getAttribute('data-community-id');
+          if (id && id !== 'community-other') set.add(id);
+        });
+      return set.size || 15;
     });
     check('3D 默认开启：勾选框已勾选', s.checked === true);
-    check('3D 默认开启：胶囊标签全部可见', s.visibleCount === expectedCommunities,
+    check('3D 默认开启：命名社区胶囊可见（排除其他）', s.visibleCount === expectedCommunities,
       `visible=${s.visibleCount}/${expectedCommunities}`);
+    check('3D 默认开启：不含「其他」兜底社区标签',
+      s.labels.every((t) => t !== '其他' && !/^其他/.test(t)),
+      `labels=${s.labels.join('|')}`);
     check('3D 默认开启：标签在视口内', s.inViewport === true || (s.inViewportCount >= Math.ceil(s.visibleCount * 0.75)),
       `inViewport=${s.inViewport} count=${s.inViewportCount}/${s.visibleCount}`);
     check('3D 默认开启：胶囊样式（999px 圆角 + 社区色背景）', s.pillStyleOk === true);
     check('3D 默认开启：位置用 translate3d（非 left/top）', s.usesTransform === true);
     check('3D 默认开启：transform 含 scale（随相机缩放）', s.usesZoomScale === true,
       `sample=${s.sample && s.sample[0] && s.sample[0].transform}`);
-    check('3D 默认开启：字号随社区节点数缩放（约 10–22px 且存在差异）',
+    check('3D 默认开启：字号随社区节点数缩放（3D 专用约 8–16px，小于 2D）',
       s.fontMin != null && s.fontMax != null
-        && s.fontMin >= 9.5 && s.fontMax <= 22.5
-        && (s.fontMax - s.fontMin) >= 6,
+        && s.fontMin >= 7.5 && s.fontMax <= 16.5
+        && (s.fontMax - s.fontMin) >= 4,
       `min=${s.fontMin} max=${s.fontMax}`);
     console.log('  标签示例:', JSON.stringify(s.sample));
     await page.screenshot({ path: path.join(outDir, 'graph-community-labels-3d-on.png') });

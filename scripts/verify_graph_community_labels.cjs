@@ -104,18 +104,24 @@ const path = require('path');
       s.labels.every((t) => !t.includes('（') && !t.includes('社区')));
     check('默认开启：标签为胶囊卡片（rect 底 + rx=height/2 + 社区色填充）',
       s.pillOk === true && s.pillFillColored === true);
-    check('默认开启：字号随社区节点数缩放（约 10–22px 且存在差异）',
+    check('默认开启：字号随社区节点数缩放（约 8–28px 且差异更明显）',
       s.fontMin != null && s.fontMax != null
-        && s.fontMin >= 9.5 && s.fontMax <= 22.5
-        && (s.fontMax - s.fontMin) >= 6,
+        && s.fontMin >= 7.5 && s.fontMax <= 28.5
+        && (s.fontMax - s.fontMin) >= 12,
       `min=${s.fontMin} max=${s.fontMax}`);
+    check('默认开启：不含「其他」兜底社区标签',
+      s.labels.every((t) => t !== '其他' && !/^其他/.test(t)),
+      `labels=${s.labels.join('|')}`);
     const expectedCommunities = await page.evaluate(() => {
       const set = new Set();
       document.querySelectorAll('#graph-legend .legend-row[data-community-id]')
-        .forEach((row) => set.add(row.getAttribute('data-community-id')));
+        .forEach((row) => {
+          const id = row.getAttribute('data-community-id');
+          if (id && id !== 'community-other') set.add(id);
+        });
       return set.size;
     });
-    check('默认开启：标签数与社区数一致', s.count === expectedCommunities,
+    check('默认开启：标签数与命名社区数一致（排除其他）', s.count === expectedCommunities,
       `labels=${s.count} communities=${expectedCommunities}`);
     console.log('  标签示例:', JSON.stringify(s.sample));
     await page.screenshot({ path: path.join(outDir, 'graph-community-labels-on.png') });
@@ -166,9 +172,10 @@ const path = require('path');
     check('切回按社区：勾选状态保留且标签重现', s.checked === true && s.count === expectedCommunities,
       `count=${s.count}`);
 
-    // ── 5. 勾选具体社区 → 只剩该社区标签 ──
+    // ── 5. 勾选具体命名社区 → 只剩该社区标签 ──
     const firstCommunity = await page.evaluate(() => {
-      const cb = document.querySelector('#filter-panel-body input[type="checkbox"]');
+      const cbs = Array.from(document.querySelectorAll('#filter-panel-body input[type="checkbox"]'));
+      const cb = cbs.find((el) => el.value && el.value !== 'community-other') || cbs[0];
       if (!cb) return null;
       cb.click();
       return cb.value;
@@ -177,6 +184,19 @@ const path = require('path');
     s = await labelState();
     check('勾选具体社区：只剩一个社区标签', s.count === 1, `community=${firstCommunity} labels=${s.labels.join('|')}`);
     await page.screenshot({ path: path.join(outDir, 'graph-community-labels-single-community.png') });
+
+    // ── 6. 只勾选「其他」兜底社区 → 无漂浮标签 ──
+    await page.evaluate(() => {
+      document.querySelectorAll('#filter-panel-body input[type="checkbox"]').forEach((cb) => {
+        if (cb.checked) cb.click();
+      });
+      const other = Array.from(document.querySelectorAll('#filter-panel-body input[type="checkbox"]'))
+        .find((el) => el.value === 'community-other');
+      if (other && !other.checked) other.click();
+    });
+    await new Promise((r) => setTimeout(r, 600));
+    s = await labelState();
+    check('只勾选「其他」：无漂浮社区标签', s.count === 0, `labels=${s.labels.join('|')}`);
 
     const failed = results.filter((r) => !r.ok);
     console.log(failed.length ? `\n${failed.length} 项失败` : '\n全部通过');

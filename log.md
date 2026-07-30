@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-30] structural | scripts/generate_link_graph.py + docs/graph.html — 命名社区上限 16→21（显示总数目标约 20，含其他）；社区漂浮标签 2D/3D 字号分离，排除「其他」漂浮
+
+- **社区上限：** `PRIMARY_COMMUNITY_CAP` / `MAX_COMMUNITIES` **16 → 21**（命名席位不含兜底桶；含 `community-other` 时图例总数 = 命名 + 1，目标约 20）
+- **漂浮标签：** 2D 保持 8–28px；3D 专用 8–16px + 相机 scale 钳制收窄至约 0.4–1.85；`community-other` 不漂浮
+- **页面：** [`docs/graph.html`](docs/graph.html)、[`docs/graph-3d.js`](docs/graph-3d.js)
+
 ## [2026-07-30] ingest | sources/papers/intact_arxiv_2607_26056.md + sites/intact-jepa-github-io + repos/intact-jepa — INTACT（arXiv:2607.26056）入库：无搜索意图→动作 WM；升格 wiki/entities/paper-intact.md；交叉 paper-dwm-separating / vjepa2 / world-action-models / latency-tradeoff；代码 Coming Soon
 
 - **归档：** [`sources/papers/intact_arxiv_2607_26056.md`](sources/papers/intact_arxiv_2607_26056.md)、[`sources/sites/intact-jepa-github-io.md`](sources/sites/intact-jepa-github-io.md)、[`sources/repos/intact-jepa.md`](sources/repos/intact-jepa.md)；索引 [`sources/README.md`](sources/README.md)
