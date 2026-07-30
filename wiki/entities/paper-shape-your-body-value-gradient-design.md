@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, robot-design, co-design, multi-embodiment, reinforcement-learning, ppo, urma, value-function, locomotion, mujoco, mjx, quadruped, humanoid, tu-darmstadt, dfki]
 status: complete
-updated: 2026-06-02
+updated: 2026-07-30
 arxiv: "2606.00702"
 related:
   - ../methods/reinforcement-learning.md
@@ -12,6 +12,7 @@ related:
   - ../queries/cross-embodiment-transfer-strategy.md
   - ./paper-any2any-cross-embodiment-wbt.md
   - ./paper-slowrl-safe-lora-locomotion-sim2real.md
+  - ./paper-transformer-transformer.md
 sources:
   - ../../sources/papers/shape_your_body_arxiv_2606_00702.md
   - ../../sources/sites/shape-your-body-nico-bohlinger.md
@@ -110,12 +111,12 @@ $$\hat{J}_\lambda(f)=\frac{1}{M}\sum_{m=1}^{M}\bar{V}(s_m,\Phi(f))-\lambda\frac{
 
 ## 与其他路线对比（定性）
 
-| 维度 | RL 共设计（Transform2Act 等） | VGDS（本文） | 跨具身 WBT 迁移（如 Any2Any） |
-|------|------------------------------|--------------|------------------------------|
-| 优化变量 | 机体 + 分阶段控制策略 | 机体（策略冻结） | 策略权重 / LoRA（机体给定） |
-| 每新初值成本 | 完整或大规模 RL | 分钟级梯度搜索 | 后训练（~1% 全量） |
-| 需要的数据 | 共设计 episode | 多具身 RL 预训练 | 源机 WBT 专家 + 目标机少量数据 |
-| 典型任务 | 与内环 RL 同任务 | URMA 速度跟踪 | 参考运动跟踪 |
+| 维度 | RL 共设计（Transform2Act 等） | VGDS（本文） | [Transformer Transformer](./paper-transformer-transformer.md) | 跨具身 WBT 迁移（如 Any2Any） |
+|------|------------------------------|--------------|---------------------------------------------------------------|------------------------------|
+| 优化变量 | 机体 + 分阶段控制策略 | 机体（策略冻结） | 离散+连续完整机体（+同模型控制） | 策略权重 / LoRA（机体给定） |
+| 每新初值成本 | 完整或大规模 RL | 分钟级梯度搜索 | 秒～约 1 分钟扩散采样 | 后训练（~1% 全量） |
+| 需要的数据 | 共设计 episode | 多具身 RL 预训练 | RoboTokens 动力学数据集（Mink/RL） | 源机 WBT 专家 + 目标机少量数据 |
+| 典型任务 | 与内环 RL 同任务 | URMA 速度跟踪 | 末端轨迹跟踪操作共设计 | 参考运动跟踪 |
 
 ## 参考来源
 
@@ -130,6 +131,7 @@ $$\hat{J}_\lambda(f)=\frac{1}{M}\sum_{m=1}^{M}\bar{V}(s_m,\Phi(f))-\lambda\frac{
 - [跨具身策略迁移选型](../queries/cross-embodiment-transfer-strategy.md) — 控制侧跨机 vs 本文设计侧
 - [Any2Any](./paper-any2any-cross-embodiment-wbt.md) — 人形 WBT 跨机后训练对照
 - [SLowRL / Go2](./paper-slowrl-safe-lora-locomotion-sim2real.md) — 四足真机微调（正交但共享 Go2 平台语境）
+- [Transformer Transformer](./paper-transformer-transformer.md) — 运动条件扩散共设计 + 跨具身控制（对照 VGDS）
 
 ## 推荐继续阅读
 

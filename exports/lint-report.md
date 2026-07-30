@@ -2,7 +2,7 @@
 
 ## [2026-07-30] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **73** 条信息型预警）：
+共发现 **0** 个问题（另含 **74** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -121,8 +121,8 @@
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（1 个）
+- wiki/entities/paper-data-pyramid-embodied-manipulation.md（含绝对化措辞「最新」，updated=2026-07-29；同主题更新页 wiki/entities/paper-transformer-transformer.md updated=2026-07-30）
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -213,4 +213,4 @@
 - wiki/methods/visual-servoing.md
 - wiki/methods/wilor.md
 
-📊 Sources 覆盖率：1927/1953 (99%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1928/1954 (99%) wiki/entity 页有 ingest 来源

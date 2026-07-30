@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-30] ingest | sources/papers/transformer_transformer_arxiv_2607_25798.md + sites/transformer-transformer-github-io + repos/transformer-transformer — Transformer Transformer（arXiv:2607.25798）入库：RoboTokens+DiT 运动条件共设计与跨具身控制；升格 wiki/entities/paper-transformer-transformer.md；交叉 Shape Your Body / ALOHA / diffusion-model / cross-embodiment / bimanual / teleoperation；已开源全栈+ckpt
+
+- **归档：** [`sources/papers/transformer_transformer_arxiv_2607_25798.md`](sources/papers/transformer_transformer_arxiv_2607_25798.md)、[`sources/sites/transformer-transformer-github-io.md`](sources/sites/transformer-transformer-github-io.md)、[`sources/repos/transformer-transformer.md`](sources/repos/transformer-transformer.md)；索引 [`sources/README.md`](sources/README.md)
+- **开源核查（2026-07-30，步骤 2.5）：** **已开源** — 代码 [real-stanford/transformer-transformer](https://github.com/real-stanford/transformer-transformer)（MIT+上游例外）+ lab ckpt/data + HF 训练 Zarr
+- **主升格：** [`wiki/entities/paper-transformer-transformer.md`](wiki/entities/paper-transformer-transformer.md) — RoboTokens、DSG、三设计空间、ALOHA 真机、流程与源码运行时序图、结论六要点
+- **交叉：** [`wiki/entities/paper-shape-your-body-value-gradient-design.md`](wiki/entities/paper-shape-your-body-value-gradient-design.md)、[`wiki/entities/aloha.md`](wiki/entities/aloha.md)、[`wiki/concepts/diffusion-model.md`](wiki/concepts/diffusion-model.md)、[`wiki/queries/cross-embodiment-transfer-strategy.md`](wiki/queries/cross-embodiment-transfer-strategy.md)、[`wiki/tasks/bimanual-manipulation.md`](wiki/tasks/bimanual-manipulation.md)、[`wiki/tasks/teleoperation.md`](wiki/tasks/teleoperation.md)
+- **机构 tags：** `stanford` / `columbia`（已在 institutions.json）
+
 ## [2026-07-29] lint | scripts/lint_wiki.py + tests/test_lint_wiki_perception_stack_crosslink.py — V31 P0 感知栈页交叉链路巡检 V1（信息型，不阻塞 CI）
 
 - **新增检查：** [`scripts/lint_wiki.py`](scripts/lint_wiki.py) `_check_perception_stack_crosslink` — 对 `tags` 含 `detection` / `segmentation` / `perception` / `semantic`(-mapping)（连字符 token 前缀匹配，覆盖 `object-detection` / `instance-segmentation` / `promptable-segmentation` / `semantic-mapping`，规避 `reception` / `impedance` 裸子串误判）的 `entities/` / `comparisons/` / `concepts/` / `methods/` 页，检查正文是否回链「机器人视觉感知栈选型闭环」专题枢纽（`robot-perception-stack-selection-loop` / `topic-perception-stack`），枢纽页豁免；缺失记 INFO 级 `perception_stack_crosslink`

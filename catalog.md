@@ -1108,6 +1108,7 @@
 - [TianjicX：面向多任务机器人的时空弹性神经形态芯片](wiki/entities/paper-tianjicx-neuromorphic-chip-robots.md) — Neuromorphic computing chip with spatiotemporal elasticity for multi-intelligent-tasking robots**（ `📅unknown` `[entity_page]`
 - [TOPReward：Token 概率作零样本机器人进度奖励](wiki/entities/paper-topreward.md) — TOPReward**（*Token Probabilities as Hidden Zero-Shot Rewards for Robotics*，[arXiv:2602.19313](http `📅unknown` `[entity_page]`
 - [TouchWorld：预测–反应式触觉基础模型（灵巧操作）](wiki/entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md) — TouchWorld**（*A Predictive and Reactive Tactile Foundation Model for Dexterous Manipulation*，arXiv `📅unknown` `[entity_page]`
+- [Transformer Transformer（运动条件机器人共设计 · arXiv:2607.25798）](wiki/entities/paper-transformer-transformer.md) — Transformer Transformer**（Ha、Liu、Song；Stanford / Columbia；[项目页](https://transformer-transformer.gi `📅unknown` `[entity_page]`
 - [T-Rex：触觉反应式灵巧操作](wiki/entities/paper-trex-tactile-reactive-dexterous-manipulation.md) — T-Rex**（Tactile-Reactive Dexterous Manipulation，arXiv:[2606.17055](https://arxiv.org/abs/2606.1705 `📅unknown` `[entity_page]`
 - [Is Diversity All You Need for Scalable Robotic Manipulation?](wiki/entities/paper-tro-manip-01-diversity-scaling.md) — Is Diversity All You Need** 收录于 [深蓝具身智能 · T-RO 2026 操作学习精选](https://mp.weixin.qq.com/s/nswA-jCGC3k `📅unknown` `[entity_page]`
 - [Canonical Policy](wiki/entities/paper-tro-manip-02-canonical-policy.md) — Canonical Policy** 收录于 [深蓝具身智能 · T-RO 2026 操作学习精选](https://mp.weixin.qq.com/s/nswA-jCGC3kr9iQjhRRu `📅unknown` `[entity_page]`
