@@ -204,12 +204,11 @@ const path = require('path');
       const before = view.getCommunityLabelZoomScale();
       btn.click();
       const samples = [];
-      const start = performance.now();
-      while (performance.now() - start < 750) {
+      // 用固定间隔采样，避免单帧 rAF 在 evaluate 里被合并成一次
+      for (let i = 0; i < 16; i++) {
         samples.push(view.getCommunityLabelZoomScale());
-        await new Promise((r) => requestAnimationFrame(r));
+        await new Promise((r) => setTimeout(r, 40));
       }
-      // 再等解锁 + 收尾 capture
       await new Promise((r) => setTimeout(r, 120));
       const after = view.getCommunityLabelZoomScale();
       const min = Math.min(...samples);
@@ -231,14 +230,23 @@ const path = require('path');
       JSON.stringify(fitFlash));
     await page.screenshot({ path: path.join(outDir, 'graph-community-labels-3d-after-fit.png') });
 
-    // 取消勾选 → 全部隐藏
-    await page.click('#check-community-labels');
+    // 取消勾选 → 全部隐藏（参数面板可能被工具条遮挡，用 JS 切换更稳）
+    await page.evaluate(() => {
+      const panel = document.getElementById('physics-panel');
+      const toggle = document.getElementById('physics-toggle');
+      if (panel && panel.hidden && toggle) toggle.click();
+      const cb = document.getElementById('check-community-labels');
+      if (cb && cb.checked) cb.click();
+    });
     await new Promise((r) => setTimeout(r, 500));
     s = await labelState();
     check('3D 取消勾选：标签全部隐藏', s.visibleCount === 0, `visible=${s.visibleCount}`);
 
     // 重新勾选，切到按类型 → 置灰 + 隐藏
-    await page.click('#check-community-labels');
+    await page.evaluate(() => {
+      const cb = document.getElementById('check-community-labels');
+      if (cb && !cb.checked) cb.click();
+    });
     await new Promise((r) => setTimeout(r, 400));
     await page.evaluate(() => document.getElementById('filter-mode-type').click());
     await new Promise((r) => setTimeout(r, 600));
