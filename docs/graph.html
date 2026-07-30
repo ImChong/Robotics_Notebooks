@@ -2281,7 +2281,7 @@
     /* ── 更新明度渐变：按 activity 把节点明暗映射到 [RECENCY_DIM_MIN, 1]；
        使用指数曲线（越新越亮、近期更陡）；最暗下限保证旧节点仍可见；
        2D / 3D 共享同一开关 ── */
-    const RECENCY_DIM_MIN = 0.35;
+    const RECENCY_DIM_MIN = 0.2;
     /* 指数陡度：越大则明暗越集中在最近更新；k=3 时中位时间约 0.18 相对亮度 */
     const RECENCY_DIM_EXP_K = 3;
     let recencyDimEnabled = false;
