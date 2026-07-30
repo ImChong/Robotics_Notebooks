@@ -9,6 +9,24 @@
     return typeof window.ForceGraph3D === 'function';
   }
 
+  /** 移动端 / 窄屏：3D 社区胶囊易挡节点，字号与缩放需单独收紧 */
+  function isMobileCommunityLabelLayout() {
+    try {
+      return window.matchMedia('(max-width: 768px), ((hover: none) and (pointer: coarse))').matches;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  var MOBILE_COMMUNITY_LABEL_FONT_SCALE = 0.55;
+  var MOBILE_COMMUNITY_LABEL_FONT_MIN_PX = 6;
+  // 相机缩放另乘系数，避免 fit/dolly 后胶囊再次放大盖住节点
+  var MOBILE_COMMUNITY_LABEL_ZOOM_FACTOR = 0.55;
+  var MOBILE_COMMUNITY_LABEL_ZOOM_MIN = 0.22;
+  var MOBILE_COMMUNITY_LABEL_ZOOM_MAX = 0.9;
+  var MOBILE_COMMUNITY_LABEL_PAD_Y = 3.5;
+  var MOBILE_COMMUNITY_LABEL_PAD_X = 7.5;
+
   function edgeEndpointId(endpoint) {
     return typeof endpoint === 'object' ? endpoint.id : endpoint;
   }
@@ -504,10 +522,20 @@
         el.style.background = desc.color;
         el.style.color = desc.textColor;
         // 字号随社区节点数缩放（由 graph.html 按 10–22px / √n 算好传入）；内边距相对 13px 基准等比
+        // 移动端再乘系数并收紧内边距，避免胶囊挡住大量节点
         var fontSize = (desc.fontSize != null && isFinite(desc.fontSize)) ? desc.fontSize : 13;
+        var mobile = isMobileCommunityLabelLayout();
+        if (mobile) {
+          fontSize = Math.max(
+            MOBILE_COMMUNITY_LABEL_FONT_MIN_PX,
+            fontSize * MOBILE_COMMUNITY_LABEL_FONT_SCALE
+          );
+        }
         var scale = fontSize / 13;
+        var padY = (mobile ? MOBILE_COMMUNITY_LABEL_PAD_Y : 5) * scale;
+        var padX = (mobile ? MOBILE_COMMUNITY_LABEL_PAD_X : 11) * scale;
         el.style.fontSize = fontSize + 'px';
-        el.style.padding = (5 * scale).toFixed(2) + 'px ' + (11 * scale).toFixed(2) + 'px';
+        el.style.padding = padY.toFixed(2) + 'px ' + padX.toFixed(2) + 'px';
       });
     }
 
@@ -544,6 +572,13 @@
       var zf = getLabelZoomFactor();
       if (!isFinite(zf) || zf <= 0) return 1;
       // 与节点一起放大缩小；钳制避免滚轮极限下胶囊过大/过小
+      // 移动端再乘系数并收紧上下限，防止 fit/pinch 后胶囊再次盖住节点
+      if (isMobileCommunityLabelLayout()) {
+        return Math.max(
+          MOBILE_COMMUNITY_LABEL_ZOOM_MIN,
+          Math.min(MOBILE_COMMUNITY_LABEL_ZOOM_MAX, zf * MOBILE_COMMUNITY_LABEL_ZOOM_FACTOR)
+        );
+      }
       return Math.max(0.35, Math.min(2.75, zf));
     }
 

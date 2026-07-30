@@ -331,7 +331,7 @@
       font-weight: 700;
     }
     /* 3D 社区聚类中心胶囊标签（HTML overlay，样式对齐 2D .community-label）
-       字号/内边距由 JS 按社区节点数缩放（10–22px），此处仅作兜底 */
+       字号/内边距由 JS 按社区节点数缩放（桌面 10–22px；移动端字号 ×0.55 + 缩放 ×0.55，下限 6px），此处仅作兜底 */
     .graph-3d-community-label {
       position: absolute;
       left: 0;
@@ -350,6 +350,13 @@
       transition: opacity .15s;
       opacity: 0;
       visibility: hidden;
+    }
+    @media (max-width: 768px), ((hover: none) and (pointer: coarse)) {
+      .graph-3d-community-label {
+        font-size: 7px;
+        padding: 2px 5px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
+      }
     }
     [data-theme="light"] .graph-3d-community-label {
       box-shadow: 0 1px 6px rgba(0, 0, 0, 0.18);
