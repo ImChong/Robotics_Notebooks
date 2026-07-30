@@ -27,6 +27,9 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     ),
     "wiki/concepts/contact-rich-manipulation.md": "接触丰富型操作（Contact-Rich Manipulation）",
     "wiki/methods/vla.md": "视觉-语言-动作（Vision-Language-Action, VLA）",
+    "wiki/tasks/vision-language-navigation.md": (
+        "视觉-语言导航（Vision-and-Language Navigation, VLN）"
+    ),
     "wiki/concepts/motion-retargeting.md": "动作重定向（Motion Retargeting）",
     "wiki/concepts/whole-body-tracking-pipeline.md": (
         "全身运动跟踪流水线（Whole-Body Tracking Pipeline, WBT）"

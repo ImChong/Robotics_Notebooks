@@ -34,6 +34,7 @@ class CommunityHubNamePatternTest(unittest.TestCase):
             "机器人学习（Robot Learning）",
             "行为基础模型技术地图（Behavior Foundation Model, BFM）",
             "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM）",
+            "视觉-语言导航（Vision-and-Language Navigation, VLN）",
         ]
         for name in valid:
             with self.subTest(name=name):
