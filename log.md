@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-30] structural | wiki/queries/hmi-opensource-projects-coverage.md — 覆盖索引改写为读者向「本库导读」
+
+- **改动：** 去掉维护者黑话（新建/合并/ci-preflight/曾误建）；改为怎么用、规模说明、可读标题链接、同主题共用提示
+- **交叉：** [`wiki/entities/humanoid-motion-intelligence.md`](wiki/entities/humanoid-motion-intelligence.md)、[`wiki/queries/README.md`](wiki/queries/README.md)
+
 ## [2026-07-30] structural | wiki — 续：撤销 genmimic 重复实体并修正 DreamWaQ 社区实现挂链
 
 - **删除：** [`wiki/entities/genmimic.md`](wiki/entities/genmimic.md) → 合并入 [`wiki/entities/paper-hrl-stack-04-from_generated_human_videos_to_physi.md`](wiki/entities/paper-hrl-stack-04-from_generated_human_videos_to_physi.md)

@@ -9,6 +9,28 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/queries/hmi-opensource-projects-coverage.md",
+      "detail_id": "wiki-queries-hmi-opensource-projects-coverage",
+      "label": "HMI 开源项目主表 · 本库导读",
+      "type": "query",
+      "recency": "2026-07-30",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "HMI 开源项目主表 · 本库导读 社区"
+    },
+    {
+      "path": "wiki/entities/humanoid-motion-intelligence.md",
+      "detail_id": "entity-humanoid-motion-intelligence",
+      "label": "Humanoid Motion Intelligence（人形机器人运动智能知识库）",
+      "type": "entity",
+      "recency": "2026-07-30",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "HMI 开源项目主表 · 本库导读 社区"
+    },
+    {
       "path": "wiki/entities/paper-hrl-stack-04-from_generated_human_videos_to_physi.md",
       "detail_id": "entity-paper-hrl-stack-04-from_generated_human_videos_to_physi",
       "label": "From Generated Human Videos to Physically Plausible Robot Trajectories",
@@ -38,28 +60,6 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/queries/hmi-opensource-projects-coverage.md",
-      "detail_id": "wiki-queries-hmi-opensource-projects-coverage",
-      "label": "HMI 开源项目主表覆盖索引",
-      "type": "query",
-      "recency": "2026-07-30",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "HMI 开源项目主表覆盖索引 社区"
-    },
-    {
-      "path": "wiki/entities/humanoid-motion-intelligence.md",
-      "detail_id": "entity-humanoid-motion-intelligence",
-      "label": "Humanoid Motion Intelligence（人形机器人运动智能知识库）",
-      "type": "entity",
-      "recency": "2026-07-30",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "HMI 开源项目主表覆盖索引 社区"
     },
     {
       "path": "wiki/entities/paper-daily-omni.md",
@@ -217,14 +217,15 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-hrl-stack-04-from_generated_human_videos_to_physi.md",
-    "detail_id": "entity-paper-hrl-stack-04-from_generated_human_videos_to_physi",
-    "label": "From Generated Human Videos to Physically Plausible Robot Trajectories",
-    "type": "entity",
+    "path": "wiki/queries/hmi-opensource-projects-coverage.md",
+    "detail_id": "wiki-queries-hmi-opensource-projects-coverage",
+    "label": "HMI 开源项目主表 · 本库导读",
+    "type": "query",
     "recency": "2026-07-30",
     "source": "log.md",
     "action": "maintained",
-    "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    "has_repo": true,
+    "community_label": "HMI 开源项目主表 · 本库导读 社区"
   },
   "top_communities": [
     {
@@ -315,11 +316,11 @@
     },
     {
       "detail_id": "wiki-queries-hmi-opensource-projects-coverage",
-      "label": "HMI 开源项目主表覆盖索引",
+      "label": "HMI 开源项目主表 · 本库导读",
       "type": "query",
       "degree": 222,
       "has_repo": true,
-      "community_label": "HMI 开源项目主表覆盖索引 社区"
+      "community_label": "HMI 开源项目主表 · 本库导读 社区"
     },
     {
       "detail_id": "wiki-methods-imitation-learning",
