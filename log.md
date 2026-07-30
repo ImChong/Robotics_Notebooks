@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-30] structural | schema/canonical-facts.json — V31 P2 事实库扩展 250 → 260 条，补 10 条感知栈选型矛盾检测规则
+
+- **新增 10 条：** 单阶段检测快 vs 两阶段精度高、闭集检测准 vs 开放词汇泛化、实时机载算力受限 vs 服务器侧精度、2D 框够用 vs 必须 3D 语义几何、稠密语义建图信息全 vs 内存/时延、SAM 零样本分割强 vs 类别语义缺失、深度传感精度 vs 成本、在线建图实时 vs 离线建图完整、感知帧率高 ≠ 控制闭环带宽高、DETR 端到端简洁 vs 收敛慢/小目标弱
+- **校验方式：** 每条 `terms`/`pos_claims` 逐条对现存感知栈页（[`robot-perception-stack-selection-loop`](wiki/queries/robot-perception-stack-selection-loop.md) / [`2d-to-3d-semantic-lifting-gap`](wiki/concepts/2d-to-3d-semantic-lifting-gap.md) / `object-detection-model-selection` 等）有 pos 命中；`neg_claims` 取朴素错误全句、不命中任何页（含未被 `strip_misconception_sections` 剥离的「误判速查」表），保证 0 误报
+- **门禁：** `make lint` 0 errors、潜在矛盾 **0 个**；`make ci-preflight` **12/12**（`graph-stats.json` 0 orphans、`community_quality_warning: false`）
+- 勾选 v31 P2「事实库扩展」及 DoD「事实库扩展至 260 条」；v31 P3（图谱专题视图 / 详情页徽标）待后续推进
+
 ## [2026-07-30] structural | media/site-demo.gif — 按最新图谱重录 README 演示 GIF
 
 - **脚本：** [`scripts/record_readme_demo.cjs`](scripts/record_readme_demo.cjs)（70 frames / 3.21 MB；图谱 **2031** 节点 / **17987** 边）

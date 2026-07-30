@@ -38,8 +38,8 @@
 
 ## P2: 事实库与矛盾检测扩展 (Quantity)
 
-- [ ] **事实库扩展**：
-    - [ ] `schema/canonical-facts.json` 由 250 → **260 条**：新增 10 条感知栈选型矛盾检测规则（单阶段检测快 vs 两阶段精度高、闭集检测准 vs 开放词汇泛化、实时机载算力受限 vs 服务器侧精度、2D 框够用 vs 必须 3D 语义几何、稠密语义建图信息全 vs 内存/时延、SAM 零样本分割强 vs 类别语义缺失、深度传感精度 vs 成本、在线建图实时 vs 离线建图完整、感知频率高 ≠ 控制闭环带宽高、DETR 端到端简洁 vs 收敛慢/小目标弱 等）；逐条经脚本校验对现存 wiki 页有 pos 命中且 0 误报（`make lint` 潜在矛盾 0 个、0 errors）。
+- [x] **事实库扩展**：（2026-07-30 完成，250 → 260 条）
+    - [x] `schema/canonical-facts.json` 由 250 → **260 条**：新增 10 条感知栈选型矛盾检测规则（单阶段检测快 vs 两阶段精度高、闭集检测准 vs 开放词汇泛化、实时机载算力受限 vs 服务器侧精度、2D 框够用 vs 必须 3D 语义几何、稠密语义建图信息全 vs 内存/时延、SAM 零样本分割强 vs 类别语义缺失、深度传感精度 vs 成本、在线建图实时 vs 离线建图完整、感知频率高 ≠ 控制闭环带宽高、DETR 端到端简洁 vs 收敛慢/小目标弱）；每条 `terms`/`pos_claims` 均逐条经脚本校验对现存感知栈页（`robot-perception-stack-selection-loop` / `2d-to-3d-semantic-lifting-gap` / `object-detection-model-selection` 等）有 pos 命中，`neg_claims` 采用朴素错误全句、不命中任何页（含未被剥离的「误判速查」表），保证 0 误报。`make lint` 通过：潜在矛盾 0 个、0 errors；`make ci-preflight` 12/12（`graph-stats.json` 0 orphans、`community_quality_warning: false`）。
 
 ## P3: 交互层"机器人感知栈"增强 (UX/UI)
 
@@ -54,7 +54,7 @@
 
 - [ ] `make lint`: 0 errors（新引入的 `perception_stack_crosslink` 为 INFO 级，不阻塞 CI）。
 - [ ] 知识图谱节点数 **≥ 1924**，边数 **≥ 16460**（见 `exports/graph-stats.json`）。
-- [ ] 事实库扩展至 **260 条**（补齐 单阶段 vs 两阶段 / 闭集 vs 开放词汇 / 感知频率 ≠ 控制带宽 等 10 条感知栈选型矛盾检测规则）。
+- [x] 事实库扩展至 **260 条**（补齐 单阶段 vs 两阶段 / 闭集 vs 开放词汇 / 感知频率 ≠ 控制带宽 等 10 条感知栈选型矛盾检测规则）。（2026-07-30 完成）
 - [ ] `community_quality_warning` 保持 `false` 且 `largest_community_ratio ≤ 0.25`。
 - [ ] `log.md` 记录 V31 关键改动。
 
