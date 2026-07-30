@@ -5,6 +5,7 @@ status: complete
 updated: 2026-07-19
 arxiv: "2606.19928"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/locomotion.md
   - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ../concepts/terrain-adaptation.md

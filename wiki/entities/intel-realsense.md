@@ -4,6 +4,7 @@ tags: [sensor, depth-camera, realsense, perception, rgb-d, humanoid]
 status: complete
 updated: 2026-07-23
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../methods/object-detection.md
   - ../methods/soccer-field-line-detection.md
   - ../concepts/soccer-field-simulation.md

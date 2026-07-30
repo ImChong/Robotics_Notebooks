@@ -9,6 +9,7 @@ tags:
 status: complete
 updated: 2026-07-26
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../concepts/vision-backbones.md
   - ../comparisons/cnn-vs-vit-backbones.md
   - ../concepts/visual-representation-for-policy.md

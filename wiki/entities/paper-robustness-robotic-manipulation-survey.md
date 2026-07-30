@@ -6,6 +6,7 @@ updated: 2026-07-01
 arxiv: "2606.31494"
 venue: "arXiv 2026"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/manipulation.md
   - ../concepts/impedance-control.md
   - ../concepts/domain-randomization.md

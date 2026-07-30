@@ -5,6 +5,7 @@ status: complete
 updated: 2026-07-25
 venue: "ICRA 2020"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ./mit-mini-cheetah.md
   - ./paper-wbic-mpc-mini-cheetah.md
   - ./paper-robust-autonomous-navigation-mini-cheetah-vision.md

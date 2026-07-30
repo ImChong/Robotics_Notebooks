@@ -5,6 +5,7 @@ status: complete
 updated: 2026-07-28
 summary: "感知行走里 Encoder 输出的 terrain latent 通常不是可读的高度图，而是深度/高程经 CNN 压缩后的地形摘要向量；Policy 只需足够支撑正确落脚的动作，不必重建显式 64×64 栅格。"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ./terrain-adaptation.md
   - ./privileged-training.md
   - ./humanoid-policy-observation-inputs.md

@@ -4,6 +4,7 @@ tags: [repo, semantic-slam, vio, mit, spark]
 status: complete
 updated: 2026-05-27
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../entities/orb-slam3.md
   - ../comparisons/lidar-slam-lio-vio-selection.md
 sources:

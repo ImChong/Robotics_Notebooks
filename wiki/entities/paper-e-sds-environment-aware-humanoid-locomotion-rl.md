@@ -14,6 +14,7 @@ status: complete
 updated: 2026-06-05
 arxiv: "2512.16446"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/locomotion.md
   - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ../methods/reinforcement-learning.md

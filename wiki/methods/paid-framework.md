@@ -4,6 +4,7 @@ tags: [rl, imitation-learning, perception, soccer, humanoid, unitree-g1]
 status: drafting
 updated: 2026-07-28
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/humanoid-soccer.md
   - ../entities/unitree-g1.md
   - ../entities/paper-robonaldo-humanoid-soccer-shooting.md

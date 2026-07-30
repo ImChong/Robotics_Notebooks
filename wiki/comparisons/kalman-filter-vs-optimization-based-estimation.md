@@ -4,6 +4,7 @@ tags: [estimation, perception, math, optimization, filter, sensor-fusion]
 status: complete
 updated: 2026-04-21
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../concepts/state-estimation.md
   - ../formalizations/mdp.md
   - ../concepts/whole-body-control.md

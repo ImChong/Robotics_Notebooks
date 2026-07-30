@@ -10,6 +10,7 @@ tags:
 status: complete
 updated: 2026-07-15
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ./vision-backbones.md
   - ./visual-representation-for-policy.md
   - ../entities/vision-banana.md

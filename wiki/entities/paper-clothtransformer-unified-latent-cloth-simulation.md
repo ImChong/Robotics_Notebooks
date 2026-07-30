@@ -14,6 +14,7 @@ status: complete
 updated: 2026-07-27
 arxiv: "2605.27852"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../entities/paper-deform360-deformable-visuotactile-dataset.md
   - ../entities/paper-flying-knots.md
   - ../entities/paper-diffgi.md

@@ -6,6 +6,7 @@ updated: 2026-07-15
 arxiv: "2607.09024"
 venue: ECCV 2026
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../concepts/generative-vision-pretraining.md
   - ../concepts/vision-backbones.md
   - ../concepts/visual-representation-for-policy.md

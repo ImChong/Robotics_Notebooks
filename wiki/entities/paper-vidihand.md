@@ -7,6 +7,7 @@ updated: 2026-07-13
 arxiv: "2606.30308"
 venue: "arXiv 2026"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../methods/wilor.md
   - ../methods/mimic-video.md
   - ../tasks/manipulation.md

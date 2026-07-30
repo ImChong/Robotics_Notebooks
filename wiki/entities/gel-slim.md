@@ -5,6 +5,7 @@ tags: [hardware, perception, tactile-sensing, vision-based-tactile, manipulation
 status: complete
 updated: 2026-07-24
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../concepts/tactile-sensing.md
   - ../concepts/visuo-tactile-fusion.md
   - ../concepts/contact-rich-manipulation.md

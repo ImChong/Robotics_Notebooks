@@ -5,6 +5,7 @@ status: complete
 updated: 2026-07-14
 summary: "Attention 落足点优化：用注意力机制在机器人中心高程图或候选落脚点集合上选择可行走区域，是飞书 Know-How 中感知 loco 与落足规划交叉模块；站内代表实现含 AME 等。"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../entities/paper-ame-attention-based-map-encoding.md
   - ../concepts/footstep-planning.md
   - ../tasks/stair-obstacle-perceptive-locomotion.md

@@ -14,6 +14,7 @@ arxiv: "1512.03385"
 venue: "CVPR 2016"
 code: https://github.com/KaimingHe/deep-residual-networks
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../concepts/vision-backbones.md
   - ../concepts/deep-learning-foundations.md
   - ../methods/object-detection.md

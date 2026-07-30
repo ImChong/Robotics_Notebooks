@@ -6,6 +6,7 @@ updated: 2026-07-24
 arxiv: "2606.18772"
 venue: "arXiv 2026"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/loco-manipulation.md
   - ../tasks/teleoperation.md
   - ../tasks/manipulation.md

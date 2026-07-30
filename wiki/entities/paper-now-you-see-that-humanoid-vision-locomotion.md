@@ -7,6 +7,7 @@ updated: 2026-07-24
 arxiv: "2602.06382"
 venue: "RSS 2026"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ../tasks/humanoid-locomotion.md
   - ../tasks/locomotion.md

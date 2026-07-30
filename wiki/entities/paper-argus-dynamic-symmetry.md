@@ -7,6 +7,7 @@ doi: "10.1126/scirobotics.aec1725"
 venue: "Science Robotics 2026"
 code: "https://github.com/generalroboticslab/Argus"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/locomotion.md
   - ../tasks/loco-manipulation.md
   - ../tasks/balance-recovery.md

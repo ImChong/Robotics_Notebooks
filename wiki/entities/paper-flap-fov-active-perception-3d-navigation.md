@@ -15,6 +15,7 @@ updated: 2026-06-28
 arxiv: "2606.17630"
 venue: arXiv 2026
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../overview/multirotor-simulation-planning-control-stack.md
   - ./ego-planner-swarm.md
   - ./paper-mighty-hermite-spline-trajectory-planning.md

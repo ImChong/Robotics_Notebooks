@@ -4,6 +4,7 @@ tags: [perception, manipulation, contact-rich, multimodal, tactile-sensing, fusi
 status: complete
 updated: 2026-07-29
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ./tactile-sensing.md
   - ./contact-rich-manipulation.md
   - ./contact-estimation.md

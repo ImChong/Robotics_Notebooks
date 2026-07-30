@@ -14,6 +14,7 @@ updated: 2026-07-25
 arxiv: "2409.19709"
 venue: "IEEE T-RO 2026"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../concepts/privileged-training.md
   - ../concepts/terrain-adaptation.md
   - ../concepts/sim2real.md

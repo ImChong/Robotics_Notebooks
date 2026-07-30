@@ -14,6 +14,7 @@ updated: 2026-07-16
 arxiv: "2607.05777"
 venue: "arXiv 2026"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../formalizations/3d-coordinate-transforms-vision-robotics.md
   - ../entities/april-tag.md
   - ../entities/vins-fusion.md

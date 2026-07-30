@@ -4,6 +4,7 @@ tags: [perception, computer-vision, hand-tracking, pose-estimation, open-source,
 status: complete
 updated: 2026-07-20
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../queries/dexterous-data-collection-guide.md
   - ./midas-hand.md
   - ../methods/toporetarget-interaction-preserving-dexterous-retargeting.md

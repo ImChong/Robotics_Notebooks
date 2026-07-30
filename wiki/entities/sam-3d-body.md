@@ -4,6 +4,7 @@ tags: [perception, human-mesh-recovery, mhr, foundation-model, meta, single-imag
 status: complete
 updated: 2026-07-11
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ./sam3dbody-cpp.md
   - ../methods/wilor.md
   - ../methods/genmo.md

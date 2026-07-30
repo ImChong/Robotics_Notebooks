@@ -4,6 +4,7 @@ tags: [perception, 3dmm, face-model, human-mesh, open-source, google, parametric
 status: complete
 updated: 2026-07-30
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ./sam-3d-body.md
   - ./paper-face-anything-4d-face-reconstruction.md
   - ./paper-shells-layered-surface-sampling.md

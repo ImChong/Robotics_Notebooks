@@ -6,6 +6,7 @@ updated: 2026-07-24
 arxiv: "2602.15827"
 venue: "RSS 2026"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-01-locomotion-base.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md

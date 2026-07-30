@@ -4,6 +4,7 @@ tags: [humanoid, soccer, simulation, robocup, perception, education, sim2real]
 status: complete
 updated: 2026-07-23
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/humanoid-soccer.md
   - ../methods/soccer-field-line-detection.md
   - ../entities/intel-realsense.md

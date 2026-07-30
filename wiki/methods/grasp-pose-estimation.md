@@ -4,6 +4,7 @@ tags: [perception, grasping, manipulation, point-cloud, rgbd, 6dof, deep-learnin
 status: complete
 updated: 2026-05-20
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/manipulation.md
   - ../entities/anygrasp.md
   - ./contact-net.md

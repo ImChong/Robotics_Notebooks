@@ -4,6 +4,7 @@ tags: [repo, radar, open-hardware, perception, uav, sdr, phased-array, abac-indu
 status: complete
 updated: 2026-07-08
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../overview/navigation-slam-autonomy-stack.md
   - ../overview/multirotor-simulation-planning-control-stack.md
   - ../overview/topic-state-estimation.md

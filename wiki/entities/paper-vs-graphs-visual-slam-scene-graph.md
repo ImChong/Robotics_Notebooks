@@ -15,6 +15,7 @@ updated: 2026-07-02
 arxiv: "2503.01783"
 venue: "IEEE RA-L 2026"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../entities/orb-slam3.md
   - ../overview/navigation-slam-autonomy-stack.md
   - ../comparisons/lidar-slam-lio-vio-selection.md

@@ -107,6 +107,9 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "wiki/queries/hmi-opensource-projects-coverage.md": (
         "开源项目本库导读（HMI Open-Source Projects Guide）"
     ),
+    "wiki/queries/robot-perception-stack-selection-loop.md": (
+        "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop）"
+    ),
 }
 
 COMMUNITY_LABEL_SUFFIX = " 社区"

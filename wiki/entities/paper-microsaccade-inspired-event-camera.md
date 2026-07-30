@@ -15,6 +15,7 @@ doi: "10.1126/scirobotics.adj8124"
 arxiv: "2405.17769"
 venue: "Science Robotics 2024"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ./paper-kemo-event-driven-keyframe-memory-vla.md
   - ../concepts/sim2real.md
 sources:

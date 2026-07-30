@@ -11,6 +11,7 @@ updated: 2026-07-05
 arxiv: "2010.09259"
 venue: "arXiv 2020"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ./boston-dynamics.md
   - ./quadruped-robot.md
   - ../tasks/locomotion.md

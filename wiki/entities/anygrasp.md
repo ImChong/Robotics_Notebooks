@@ -4,6 +4,7 @@ tags: [grasping, perception, parallel-gripper, point-cloud, manipulation, sjtu, 
 status: complete
 updated: 2026-05-13
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/manipulation.md
   - ../methods/wilor.md
   - ../methods/grasp-pose-estimation.md

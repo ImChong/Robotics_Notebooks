@@ -4,6 +4,7 @@ tags: [paper, computer-vision, foundation-model, image-generation, segmentation,
 status: complete
 updated: 2026-07-15
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../concepts/generative-vision-pretraining.md
   - ../concepts/vision-backbones.md
   - ../concepts/visual-representation-for-policy.md

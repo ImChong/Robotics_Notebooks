@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-30",
   "node_count": 2031,
-  "edge_count": 17987,
+  "edge_count": 18059,
   "coverage": {
     "covered": 1981,
     "total": 2007,
@@ -16,8 +16,7 @@
       "recency": "2026-07-30",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true,
-      "community_label": "开源项目本库导读（HMI Open-Source Projects Guide） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/humanoid-motion-intelligence.md",
@@ -28,7 +27,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "开源项目本库导读（HMI Open-Source Projects Guide） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/paper-hrl-stack-04-from_generated_human_videos_to_physi.md",
@@ -38,7 +37,7 @@
       "recency": "2026-07-30",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/dreamwaq-plus.md",
@@ -48,7 +47,7 @@
       "recency": "2026-07-30",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "path": "wiki/methods/dreamwaq.md",
@@ -59,7 +58,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "path": "wiki/entities/paper-daily-omni.md",
@@ -121,7 +120,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "生成式世界模型（Generative World Models） 社区"
     },
     {
       "path": "wiki/entities/roboparty.md",
@@ -142,7 +141,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-dwm-separating-world-effects.md",
@@ -152,7 +151,7 @@
       "recency": "2026-07-30",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "生成式世界模型（Generative World Models） 社区"
     },
     {
       "path": "wiki/entities/paper-vjepa2.md",
@@ -163,7 +162,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "生成式世界模型（Generative World Models） 社区"
     },
     {
       "path": "wiki/concepts/world-action-models.md",
@@ -174,7 +173,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "生成式世界模型（Generative World Models） 社区"
     },
     {
       "path": "wiki/concepts/embodied-fm-latency-generalization-tradeoff.md",
@@ -193,7 +192,7 @@
       "recency": "2026-07-30",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "生成式世界模型（Generative World Models） 社区"
     },
     {
       "path": "wiki/entities/paper-hifi-umi.md",
@@ -224,33 +223,32 @@
     "recency": "2026-07-30",
     "source": "log.md",
     "action": "maintained",
-    "has_repo": true,
-    "community_label": "开源项目本库导读（HMI Open-Source Projects Guide） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
-      "label": "模仿学习",
-      "size": 202
-    },
-    {
-      "label": "操作",
-      "size": 173
-    },
-    {
       "label": "视觉-语言-动作",
-      "size": 171
+      "size": 273
     },
     {
-      "label": "移动操作",
+      "label": "模仿学习",
       "size": 159
     },
     {
-      "label": "仿真到现实",
+      "label": "操作",
       "size": 149
     },
     {
-      "label": "人形强化学习运动控制",
-      "size": 143
+      "label": "移动操作",
+      "size": 145
+    },
+    {
+      "label": "人形论文深读笔记",
+      "size": 142
+    },
+    {
+      "label": "全身控制",
+      "size": 135
     }
   ],
   "top_hubs": [
@@ -297,7 +295,8 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 284
+      "degree": 284,
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
@@ -319,8 +318,7 @@
       "label": "HMI 开源项目主表 · 本库导读",
       "type": "query",
       "degree": 222,
-      "has_repo": true,
-      "community_label": "开源项目本库导读（HMI Open-Source Projects Guide） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "wiki-methods-imitation-learning",
@@ -365,8 +363,7 @@
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
       "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
       "type": "entity",
-      "degree": 50,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "degree": 50
     },
     {
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",
@@ -394,7 +391,7 @@
       "type": "entity",
       "degree": 38,
       "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "生成式世界模型（Generative World Models） 社区"
     },
     {
       "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",

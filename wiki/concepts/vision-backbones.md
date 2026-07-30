@@ -9,6 +9,7 @@ tags:
 status: complete
 updated: 2026-07-21
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ./vision-transformer.md
   - ./deep-learning-foundations.md
   - ./generative-vision-pretraining.md
