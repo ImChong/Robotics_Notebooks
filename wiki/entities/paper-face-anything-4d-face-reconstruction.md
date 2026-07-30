@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, computer-vision, face-reconstruction, 4d-tracking, depth-estimation, feed-forward, transformer, tum, huawei, canonical-coordinates]
 status: complete
-updated: 2026-07-09
+updated: 2026-07-30
 arxiv: "2604.19702"
 related:
   - ../concepts/visual-representation-for-policy.md
@@ -11,6 +11,7 @@ related:
   - ../entities/gvhmr.md
   - ../entities/vision-banana.md
   - ./gnm-head.md
+  - ./paper-shells-layered-surface-sampling.md
   - ../tasks/teleoperation.md
 sources:
   - ../../sources/papers/face_anything_arxiv_2604_19702.md
@@ -113,6 +114,7 @@ flowchart TB
 
 - [GVHMR](./gvhmr.md) — **全身** 单目视频→SMPL；Face Anything 覆盖 **面部 4D** 分支
 - [GNM Head](./gnm-head.md) — 参数化头脸统计模型（生成式先验，非单目 HMR）
+- [SHELLS](./paper-shells-layered-surface-sampling.md) — **标定多视角** 固定拓扑 ~18k 顶点前馈注册（棚拍度量）；与本文任意序列 4D 互补
 - [Vision Banana](./vision-banana.md) — 另一路 **前馈 3D 感知**（分割/深度/法线）；面部动态对应未覆盖
 - [视觉表征作为策略输入](../concepts/visual-representation-for-policy.md) — 机器人策略如何选择 **前馈几何/对应** 上游
 - [生成式视觉预训练](../concepts/generative-vision-pretraining.md) — 前馈 3D 与生成式统一感知范式背景

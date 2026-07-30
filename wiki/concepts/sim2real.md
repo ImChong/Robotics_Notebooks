@@ -50,7 +50,7 @@ related:
   - ../entities/paper-aware-wheeled-legged-reflexive-evasion.md
   - ../queries/sim2real-closed-loop-engineering.md
 summary: "Sim2Real 关注如何把仿真中学到的策略稳定迁移到真实机器人，是机器人学习落地的核心鸿沟。"
-updated: 2026-07-29
+updated: 2026-07-30
 sources:
   - ../../sources/papers/physx_omni_arxiv_2605_21572.md
   - ../../sources/courses/isaac_lab_implicit_explicit_actuators.md
@@ -245,6 +245,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [RMA（论文实体）](../entities/paper-rma-rapid-motor-adaptation.md) — 特权 extrinsics + 历史适应模块；A1 异步 10/100 Hz 部署
 - [Query：RL 策略真机调试 Playbook](../queries/robot-policy-debug-playbook.md) — 真机部署阶段系统排障指南
 - [LEGS（论文实体）](../entities/paper-legs-embodied-gaussian-splatting-vla.md) — 3DGS 缩小 **视觉** sim2real gap 以合成 VLA 训练数据（arXiv:2606.01458）
+- [SHELLS（论文实体）](../entities/paper-shells-layered-surface-sampling.md) — 纯合成多视角训练 → 真实棚拍人头注册泛化（视觉/几何域，非策略控制）
 - [OASIS（论文实体）](../entities/paper-loco-manip-04-oasis.md) — 仿真 VR teleop + Path-Tracing 视觉域随机化；**纯仿真数据** 训练 G1 loco-manip 零样本可 ≥ 等量真机 teleop（arXiv:2606.08548）
 - [NVIDIA SO-101 Sim2Real 实验 workflow](../entities/nvidia-so101-sim2real-lab-workflow.md) — 官方动手课：四类 sim2real 策略 + GR00T N1.6 VLA + LeRobot/Isaac Lab
 - [Learning to Fold（LeHome 2026）](../entities/paper-lehome-learning-to-fold.md) — 廉价双臂叠衣：仿真 AWR/RECAP → 真机三桶 BC+DAgger（arXiv:2606.27163，全链路开源）

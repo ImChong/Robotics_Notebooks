@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-30] ingest | sources/papers/shells_arxiv_2605_31283.md + sites/shells-project — SHELLS（arXiv:2605.31283）入库：粗引导分层采样前馈多视角人头；升格 wiki/entities/paper-shells-layered-surface-sampling.md；交叉 Face Anything / GNM Head / visual-representation / humanoid-training-data-pipeline / teleoperation；截至入库日未开源
+
+- **归档：** [`sources/papers/shells_arxiv_2605_31283.md`](sources/papers/shells_arxiv_2605_31283.md)、[`sources/sites/shells-project.md`](sources/sites/shells-project.md)；索引 [`sources/README.md`](sources/README.md)
+- **开源核查（2026-07-30，步骤 2.5）：** **未开源** — 项目页 <https://syntec-research.github.io/SHELLS/> 仅 arXiv / PDF / BibTeX，无 GitHub / HF；论文未列代码 URL
+- **主升格：** [`wiki/entities/paper-shells-layered-surface-sampling.md`](wiki/entities/paper-shells-layered-surface-sampling.md) — 分层壳方法、0.08s / −88% 显存、少视角与遮挡、结论七要点；源码运行时序图标注不适用
+- **交叉：** [`wiki/entities/paper-face-anything-4d-face-reconstruction.md`](wiki/entities/paper-face-anything-4d-face-reconstruction.md)、[`wiki/entities/gnm-head.md`](wiki/entities/gnm-head.md)、[`wiki/concepts/visual-representation-for-policy.md`](wiki/concepts/visual-representation-for-policy.md)、[`wiki/concepts/sim2real.md`](wiki/concepts/sim2real.md)、[`wiki/queries/humanoid-training-data-pipeline.md`](wiki/queries/humanoid-training-data-pipeline.md)、[`wiki/tasks/teleoperation.md`](wiki/tasks/teleoperation.md)
+- **机构 tags：** `google`（已在 institutions.json）
+
 ## [2026-07-30] ingest | sources/papers/prism_arxiv_2607_23473.md + sites/lsh3163-prism-github-io + repos/prism — PRISM（arXiv:2607.23473）入库：因式分解多项式本体表征；升格 wiki/entities/paper-prism.md；交叉 BFM-Zero / Humanoid-Gym / Diffusion Policy；已开源 conditioner+补丁
 
 - **归档：** [`sources/papers/prism_arxiv_2607_23473.md`](sources/papers/prism_arxiv_2607_23473.md)、[`sources/sites/lsh3163-prism-github-io.md`](sources/sites/lsh3163-prism-github-io.md)、[`sources/repos/prism.md`](sources/repos/prism.md)；索引 [`sources/README.md`](sources/README.md)

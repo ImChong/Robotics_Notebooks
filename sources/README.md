@@ -10,6 +10,7 @@
 
 | 文件 | 内容 |
 |------|------|
+| [x] [shells_arxiv_2605_31283.md](papers/shells_arxiv_2605_31283.md) | SHELLS：粗引导分层采样前馈多视角人头重建（arXiv:2605.31283，Google，SIGGRAPH 2026；截至入库日未开源） |
 | [x] [prism_arxiv_2607_23473.md](papers/prism_arxiv_2607_23473.md) | PRISM：因式分解多项式本体表征用于交互结构电机控制（arXiv:2607.23473，UMich；代码已开源） |
 | [x] [transformer_transformer_arxiv_2607_25798.md](papers/transformer_transformer_arxiv_2607_25798.md) | Transformer Transformer：RoboTokens+DiT 运动条件共设计与跨具身控制（arXiv:2607.25798，Stanford/Columbia；代码+ckpt 已开源） |
 | [x] [softvtbench_arxiv_2607_04234.md](papers/softvtbench_arxiv_2607_04234.md) | SoftVTBench：Isaac Sim FEM 视触觉可变形操作安全基准 Goal/Safety Success（arXiv:2607.04234；代码+数据已开，参考权重待发） |
@@ -373,6 +374,7 @@
 ### sites/ — 网站与在线工具归档
 | 文件 | 内容 |
 |------|------|
+| [x] [shells-project.md](sites/shells-project.md) | SHELLS 项目页 syntec-research.github.io/SHELLS（多视角人头；截至入库日未开源） |
 | [x] [lsh3163-prism-github-io.md](sites/lsh3163-prism-github-io.md) | PRISM 项目页（多项式本体交互；代码已开，arXiv:2607.23473） |
 | [x] [transformer-transformer-github-io.md](sites/transformer-transformer-github-io.md) | Transformer Transformer 项目页（运动条件共设计；代码+ckpt 已开，arXiv:2607.25798） |
 | [x] [softvtbench-github-io.md](sites/softvtbench-github-io.md) | SoftVTBench 项目页 softvtbench.github.io（Goal/Safety；代码已开，页头 Dataset 文案滞后） |
