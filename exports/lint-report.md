@@ -213,4 +213,4 @@
 - wiki/methods/visual-servoing.md
 - wiki/methods/wilor.md
 
-📊 Sources 覆盖率：1933/1959 (99%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1934/1960 (99%) wiki/entity 页有 ingest 来源

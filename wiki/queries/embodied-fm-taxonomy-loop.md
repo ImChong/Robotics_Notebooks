@@ -2,7 +2,7 @@
 type: query
 tags: [vlm, vln, vla, vlx, world-model, embodied-ai, multimodal, taxonomy, foundation-model]
 status: complete
-updated: 2026-07-08
+updated: 2026-07-30
 summary: "具身大模型分类学选型闭环知识链：把 VLM 感知理解 → VLN 空间导航 → VLA 动作执行 → VLX 一体化扩展 → WM 世界模型推演 五层，从分散的家族概念页沉淀为一条端到端选型决策链，逐层说明 I/O 边界、数据需求、泛化能力、实时性/控制带宽与闭环稳定性的取舍及典型失败模式。"
 sources:
   - ../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md
@@ -19,6 +19,8 @@ related:
   - ../methods/generative-world-models.md
   - ../methods/unified-multimodal-tokens.md
   - ../overview/topic-vla.md
+  - ../entities/paper-daily-omni.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 ---
 
 # Query：具身大模型分类学选型闭环知识链
@@ -74,7 +76,7 @@ flowchart TD
 
 整条闭环的入口是**把像素与指令翻译成可被下游消化的语义**（详见[五大分类对比页](../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md)「VLM 能力边界」）：
 
-- **I/O 边界**：输入图像/视频 + 语言，输出语义、物体关系、指令解析——**没有动作、没有轨迹**，是纯认知层。
+- **I/O 边界**：输入图像/视频 + 语言，输出语义、物体关系、指令解析——**没有动作、没有轨迹**，是纯认知层。若输入扩展到 **同步音频**，还需额外考核跨模态时序对齐（见 [Daily-Omni](../entities/paper-daily-omni.md)）。
 - **数据需求**：主要吃图文对与海量互联网弱标注，是五层里**采集最便宜、泛化最广**的一层。
 - **选型陷阱**：把 VLM 的语义直接当「动作接口」用是最常见错误——语义理解 ≠ 可执行控制量，中间必须由 VLN/VLA 头补上从语义到动作的映射。工程上常**冻结 VLM 骨干**只训下游头，以省算力并保留泛化。
 
@@ -167,4 +169,6 @@ VLX（Vision-Language-X，X = 可扩展任务）把感知/导航/执行收进**�
 - [World Action Models（WAM）](../concepts/world-action-models.md) — ⑤ 世界模型「联合建模」范式
 - [生成式世界模型](../methods/generative-world-models.md) — ⑤ 世界模型「级联预演」范式
 - [统一多模态 token](../methods/unified-multimodal-tokens.md) — ④ VLX 一体化的表征接口
+- [Daily-Omni](../entities/paper-daily-omni.md) — ① 层 omni-modal **音视频时序对齐** 诊断基准
+- 姊妹 Query：[具身大模型评测基准选型闭环](./embodied-eval-benchmark-selection-loop.md) — 「选完怎么评测」
 - 专题汇总：[VLA（专题汇总）](../overview/topic-vla.md) — ③ 执行层在图谱专题视图的统一入口

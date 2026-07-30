@@ -10,6 +10,7 @@
 
 | 文件 | 内容 |
 |------|------|
+| [x] [daily_omni_arxiv_2505_17862.md](papers/daily_omni_arxiv_2505_17862.md) | Daily-Omni：日常音视频跨模态时序 AVQA 基准（arXiv:2505.17862，复旦；代码+HF 数据已开源；榜首含 AGIBOT WITA-Omni） |
 | [x] [pi_r2_arxiv_2607_26055.md](papers/pi_r2_arxiv_2607_26055.md) | πR²：反应式实时 flow 策略，GR00T-N1.7 闭环约 25 Hz（arXiv:2607.26055，CMU；训练+部署已开源） |
 | [x] [hifi_umi_arxiv_2607_25895.md](papers/hifi_umi_arxiv_2607_25895.md) | HiFi-UMI：高保真无机器人双臂 UMI 与 zero-robot 后训练（arXiv:2607.25895，Simple AI；HiFi-UMI-2K 数据已开） |
 | [x] [intact_arxiv_2607_26056.md](papers/intact_arxiv_2607_26056.md) | INTACT：同构意图→动作无搜索世界模型（arXiv:2607.26056，ZJU/清华AIR/RoboParty Lab；规范仓+Roboparty 镜像；代码 Coming Soon） |
@@ -135,6 +136,7 @@
 ### repos/ — 代码仓库来源归档
 | 文件 | 内容 |
 |------|------|
+| [x] [daily-omni.md](repos/daily-omni.md) | Lliar-liar/Daily-Omni：AVQA 管线 + 评测 + Agent 基线（arXiv:2505.17862，GPL-3.0） |
 | [x] [pi-r2-flow.md](repos/pi-r2-flow.md) | pi-r2-flow/pi-r2-flow：πR² GR00T 微调 + xArm6/XHand 部署（arXiv:2607.26055） |
 | [x] [intact-jepa.md](repos/intact-jepa.md) | zju3dv/INTACT-JEPA：INTACT **规范仓**；训练/权重 Coming Soon（arXiv:2607.26056，MIT） |
 | [x] [roboparty-intact-jepa.md](repos/roboparty-intact-jepa.md) | Roboparty/INTACT-JEPA：规范仓 fork 镜像（Lab 导航；同 Coming Soon） |
@@ -380,6 +382,7 @@
 ### sites/ — 网站与在线工具归档
 | 文件 | 内容 |
 |------|------|
+| [x] [daily-omni-github-io.md](sites/daily-omni-github-io.md) | Daily-Omni 项目页 lliar-liar.github.io/Daily-Omni（Leaderboard；代码+数据已开） |
 | [x] [pi-r2-flow-github-io.md](sites/pi-r2-flow-github-io.md) | πR² 项目页 pi-r2-flow.github.io（反应式实时 flow；代码已开） |
 | [x] [hifi-umi-project.md](sites/hifi-umi-project.md) | HiFi-UMI 项目页 cloud.simpleai.tech（2000 h 数据已开；系统代码未列） |
 | [x] [intact-jepa-github-io.md](sites/intact-jepa-github-io.md) | INTACT 项目页 zju3dv.github.io/INTACT-JEPA（代码 Coming Soon） |
