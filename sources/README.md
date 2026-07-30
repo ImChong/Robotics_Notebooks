@@ -10,6 +10,7 @@
 
 | 文件 | 内容 |
 |------|------|
+| [x] [prism_arxiv_2607_23473.md](papers/prism_arxiv_2607_23473.md) | PRISM：因式分解多项式本体表征用于交互结构电机控制（arXiv:2607.23473，UMich；代码已开源） |
 | [x] [transformer_transformer_arxiv_2607_25798.md](papers/transformer_transformer_arxiv_2607_25798.md) | Transformer Transformer：RoboTokens+DiT 运动条件共设计与跨具身控制（arXiv:2607.25798，Stanford/Columbia；代码+ckpt 已开源） |
 | [x] [softvtbench_arxiv_2607_04234.md](papers/softvtbench_arxiv_2607_04234.md) | SoftVTBench：Isaac Sim FEM 视触觉可变形操作安全基准 Goal/Safety Success（arXiv:2607.04234；代码+数据已开，参考权重待发） |
 | [x] [data_pyramid_embodied_manipulation_arxiv_2607_24744.md](papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md) | 具身数据金字塔综述：五层数据生态（真机/UMI/Ego-Exo/仿真/通用）× 六维属性 × 基础模型数据配方（arXiv:2607.24744，PKU 牵头 11 机构；Awesome 清单已开源） |
@@ -130,6 +131,7 @@
 ### repos/ — 代码仓库来源归档
 | 文件 | 内容 |
 |------|------|
+| [x] [prism.md](repos/prism.md) | lsh3163/prism：PRISM 多项式本体 conditioner + BFM-Zero/SmolVLA 补丁（arXiv:2607.23473） |
 | [x] [transformer-transformer.md](repos/transformer-transformer.md) | real-stanford/transformer-transformer：RoboTokens+DiT 共设计/跨具身控制全栈（arXiv:2607.25798；MIT+ckpt） |
 | [x] [softvtbench.md](repos/softvtbench.md) | TuojingAI/SoftVTBench：Isaac Lab 视触觉可变形安全基准 + π₀.₅ 训练/评测（arXiv:2607.04234；Apache-2.0） |
 | [x] [awesome-embodied-data-pyramid.md](repos/awesome-embodied-data-pyramid.md) | worldbench/awesome-embodied-data-pyramid：数据金字塔综述配套五层数据集策展清单（arXiv:2607.24744） |
@@ -371,6 +373,7 @@
 ### sites/ — 网站与在线工具归档
 | 文件 | 内容 |
 |------|------|
+| [x] [lsh3163-prism-github-io.md](sites/lsh3163-prism-github-io.md) | PRISM 项目页（多项式本体交互；代码已开，arXiv:2607.23473） |
 | [x] [transformer-transformer-github-io.md](sites/transformer-transformer-github-io.md) | Transformer Transformer 项目页（运动条件共设计；代码+ckpt 已开，arXiv:2607.25798） |
 | [x] [softvtbench-github-io.md](sites/softvtbench-github-io.md) | SoftVTBench 项目页 softvtbench.github.io（Goal/Safety；代码已开，页头 Dataset 文案滞后） |
 | [x] [embodied-data-pyramid.md](sites/embodied-data-pyramid.md) | Embodied Data Pyramid 项目页 jasper-aaa.github.io/embodied-data-pyramid（五层数据集检索表；综述配套，无代码） |

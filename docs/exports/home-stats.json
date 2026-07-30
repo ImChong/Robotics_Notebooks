@@ -1,13 +1,84 @@
 {
   "generated_at": "2026-07-30",
-  "node_count": 1978,
-  "edge_count": 17536,
+  "node_count": 1979,
+  "edge_count": 17550,
   "coverage": {
-    "covered": 1928,
-    "total": 1954,
+    "covered": 1929,
+    "total": 1955,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-prism.md",
+      "detail_id": "entity-paper-prism",
+      "label": "PRISM：交互结构的多项式本体表征",
+      "type": "entity",
+      "recency": "2026-07-30",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-bfm-zero.md",
+      "detail_id": "entity-paper-bfm-zero",
+      "label": "BFM-Zero",
+      "type": "entity",
+      "recency": "2026-07-30",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/humanoid-gym.md",
+      "detail_id": "entity-humanoid-gym",
+      "label": "Humanoid-Gym（人形零样本 Sim2Real 训练框架）",
+      "type": "entity",
+      "recency": "2026-07-30",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/methods/diffusion-policy.md",
+      "detail_id": "wiki-methods-diffusion-policy",
+      "label": "Diffusion Policy",
+      "type": "method",
+      "recency": "2026-07-30",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/tasks/locomotion.md",
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "recency": "2026-07-30",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-07-30",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/concepts/contact-rich-manipulation.md",
+      "detail_id": "wiki-concepts-contact-rich-manipulation",
+      "label": "Contact-Rich Manipulation（接触丰富型操作）",
+      "type": "concept",
+      "recency": "2026-07-30",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "操作（Manipulation） 社区"
+    },
     {
       "path": "wiki/entities/paper-transformer-transformer.md",
       "detail_id": "entity-paper-transformer-transformer",
@@ -85,7 +156,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/concepts/visuo-tactile-fusion.md",
@@ -95,7 +166,7 @@
       "recency": "2026-07-29",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/concepts/tactile-sensing.md",
@@ -105,17 +176,7 @@
       "recency": "2026-07-29",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/concepts/contact-rich-manipulation.md",
-      "detail_id": "wiki-concepts-contact-rich-manipulation",
-      "label": "Contact-Rich Manipulation（接触丰富型操作）",
-      "type": "concept",
-      "recency": "2026-07-29",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/overview/topic-tactile.md",
@@ -125,7 +186,7 @@
       "recency": "2026-07-29",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "path": "wiki/overview/topic-embodied-eval-benchmark.md",
@@ -137,17 +198,6 @@
       "action": "maintained"
     },
     {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-07-29",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
       "path": "wiki/queries/embodied-eval-benchmark-selection-loop.md",
       "detail_id": "wiki-queries-embodied-eval-benchmark-selection-loop",
       "label": "Query：具身大模型评测基准选型闭环知识链",
@@ -155,65 +205,12 @@
       "recency": "2026-07-29",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-taco-tactile-sensor-benchmark.md",
-      "detail_id": "entity-paper-taco-tactile-sensor-benchmark",
-      "label": "TacO（触觉传感器操作基准 · arXiv:2605.21976）",
-      "type": "entity",
-      "recency": "2026-07-29",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-pot-vla.md",
-      "detail_id": "entity-paper-pot-vla",
-      "label": "POT-VLA（Persistent 3D Object Tokens · 可验证人形 Loco-Manipulation）",
-      "type": "entity",
-      "recency": "2026-07-29",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-07-29",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/tasks/loco-manipulation.md",
-      "detail_id": "wiki-tasks-loco-manipulation",
-      "label": "Loco-Manipulation (移动操作)",
-      "type": "task",
-      "recency": "2026-07-29",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/entities/unitree-g1.md",
-      "detail_id": "entity-unitree-g1",
-      "label": "Unitree G1 (人形机器人)",
-      "type": "entity",
-      "recency": "2026-07-29",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-transformer-transformer.md",
-    "detail_id": "entity-paper-transformer-transformer",
-    "label": "Transformer Transformer（运动条件机器人共设计 · arXiv:2607.25798）",
+    "path": "wiki/entities/paper-prism.md",
+    "detail_id": "entity-paper-prism",
+    "label": "PRISM：交互结构的多项式本体表征",
     "type": "entity",
     "recency": "2026-07-30",
     "source": "log.md",
@@ -222,16 +219,16 @@
   },
   "top_communities": [
     {
-      "label": "视觉-语言-动作",
-      "size": 226
-    },
-    {
       "label": "仿真到现实",
-      "size": 208
+      "size": 206
     },
     {
       "label": "人形论文深读笔记",
       "size": 200
+    },
+    {
+      "label": "视觉-语言-动作",
+      "size": 189
     },
     {
       "label": "移动操作",
@@ -239,7 +236,7 @@
     },
     {
       "label": "模仿学习",
-      "size": 129
+      "size": 156
     },
     {
       "label": "人形强化学习运动控制",
@@ -274,9 +271,9 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 330,
+      "degree": 332,
       "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
       "detail_id": "wiki-tasks-loco-manipulation",
@@ -290,14 +287,14 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 282,
+      "degree": 284,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 274,
+      "degree": 275,
       "has_repo": true
     },
     {
@@ -311,7 +308,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 215,
+      "degree": 216,
       "has_repo": true,
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },

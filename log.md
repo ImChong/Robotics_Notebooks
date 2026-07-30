@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-30] ingest | sources/papers/prism_arxiv_2607_23473.md + sites/lsh3163-prism-github-io + repos/prism — PRISM（arXiv:2607.23473）入库：因式分解多项式本体表征；升格 wiki/entities/paper-prism.md；交叉 BFM-Zero / Humanoid-Gym / Diffusion Policy；已开源 conditioner+补丁
+
+- **归档：** [`sources/papers/prism_arxiv_2607_23473.md`](sources/papers/prism_arxiv_2607_23473.md)、[`sources/sites/lsh3163-prism-github-io.md`](sources/sites/lsh3163-prism-github-io.md)、[`sources/repos/prism.md`](sources/repos/prism.md)；索引 [`sources/README.md`](sources/README.md)
+- **开源核查（2026-07-30，步骤 2.5）：** **已开源** — 项目页 Code → [`lsh3163/prism`](https://github.com/lsh3163/prism)；`PRISMConditioner` + BFM-Zero / SmolVLA 补丁；上游数据/权重不随仓分发；LICENSE finalize 中
+- **主升格：** [`wiki/entities/paper-prism.md`](wiki/entities/paper-prism.md) — 方法、Humanoid-Gym/LIBERO/BFM-Zero/SmolVLA 结果、流程与源码运行时序图、结论六要点
+- **交叉：** [`wiki/entities/paper-bfm-zero.md`](wiki/entities/paper-bfm-zero.md)、[`wiki/entities/humanoid-gym.md`](wiki/entities/humanoid-gym.md)、[`wiki/methods/diffusion-policy.md`](wiki/methods/diffusion-policy.md)、[`wiki/tasks/locomotion.md`](wiki/tasks/locomotion.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`wiki/concepts/contact-rich-manipulation.md`](wiki/concepts/contact-rich-manipulation.md)
+- **机构 tags：** `umich`（已在 institutions.json）
+
 ## [2026-07-30] ingest | sources/papers/transformer_transformer_arxiv_2607_25798.md + sites/transformer-transformer-github-io + repos/transformer-transformer — Transformer Transformer（arXiv:2607.25798）入库：RoboTokens+DiT 运动条件共设计与跨具身控制；升格 wiki/entities/paper-transformer-transformer.md；交叉 Shape Your Body / ALOHA / diffusion-model / cross-embodiment / bimanual / teleoperation；已开源全栈+ckpt
 
 - **归档：** [`sources/papers/transformer_transformer_arxiv_2607_25798.md`](sources/papers/transformer_transformer_arxiv_2607_25798.md)、[`sources/sites/transformer-transformer-github-io.md`](sources/sites/transformer-transformer-github-io.md)、[`sources/repos/transformer-transformer.md`](sources/repos/transformer-transformer.md)；索引 [`sources/README.md`](sources/README.md)
