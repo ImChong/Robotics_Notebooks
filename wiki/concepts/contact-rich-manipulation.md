@@ -2,7 +2,7 @@
 type: concept
 tags: [manipulation, contact, force-control, impedance-control, tsid]
 status: complete
-updated: 2026-07-29
+updated: 2026-07-30
 summary: "Contact-Rich Manipulation 指需要持续建模接触、摩擦和力约束的操作任务，难点不在于碰到物体，而在于控制接触过程本身。"
 related:
   - ../queries/contact-wrench-closed-loop.md
@@ -172,6 +172,7 @@ sources:
 - [Yale OpenHand Model F3](../entities/yale-openhand.md) — 腕相机形变估力、免 FT 力控擦拭/插销/书法（硬件已开源，力估论文审稿中）
 - [Query：接触丰富操作实践指南](../queries/contact-rich-manipulation-guide.md)
 - [DAPL 杂乱场景外在灵巧](../entities/paper-dapl-extrinsic-dexterity-clutter.md)
+- [PRISM](../entities/paper-prism.md) — 无 force/触觉输入的多项式本体柔顺；LIBERO 接触力曲线（arXiv:2607.23473）
 
 
 ## 推荐继续阅读

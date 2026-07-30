@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-07-28
+updated: 2026-07-30
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -331,6 +331,7 @@ flowchart TD
 - [EgoHTR](../entities/paper-egohtr.md) — rough-terrain 人–场景 4D 演示 → G1 感知 mimic（数据/代码待发布）
 - [ADP](../entities/paper-adp.md) — 对抗动力学先验（SRBD-TO + 动力学窗），抗扰相对 AMP 提升；代码待发布
 - [SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md) — 重力门控双 AMP，走跑起身统一策略
+- [PRISM](../entities/paper-prism.md) — 多项式本体交互；Humanoid-Gym 生存率大幅高于同容量更大 MLP（arXiv:2607.23473）
 
 ## 推荐继续阅读
 

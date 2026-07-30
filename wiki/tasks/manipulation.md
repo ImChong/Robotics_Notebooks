@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-07-29
+updated: 2026-07-30
 related:
   - ../entities/paper-clothtransformer-unified-latent-cloth-simulation.md
   - ../entities/paper-flying-knots.md
@@ -279,6 +279,7 @@ flowchart TD
 - [自动化仿生对话面部机构合成](../entities/paper-automated-facial-mechanisms-animatronic.md)
 - [Deimel 柔顺欠驱动灵巧手（RSS ToT）](../entities/paper-deimel-compliant-underactuated-robotic-hand.md)
 - [Yale OpenHand](../entities/yale-openhand.md) — 打印件 + Dynamixel 腱驱欠驱动开源手族（对照气动软体路线）
+- [PRISM](../entities/paper-prism.md) — 多项式本体条件；LIBERO 无 force 输入达 91% 成功率（arXiv:2607.23473）
 
 
 ## 推荐继续阅读

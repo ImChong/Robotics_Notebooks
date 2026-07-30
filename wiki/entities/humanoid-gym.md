@@ -11,7 +11,7 @@ tags:
   - ppo
   - domain-randomization
 status: complete
-updated: 2026-06-09
+updated: 2026-07-30
 arxiv: "2404.05695"
 related:
   - ../concepts/sim2real.md
@@ -145,6 +145,7 @@ flowchart TB
 - [Humanoid Locomotion](../tasks/humanoid-locomotion.md) — 人形行走任务语境
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [SPRINT（人形冲刺对照基线）](./paper-sprint-humanoid-athletic-sprints.md)
+- [PRISM（多项式本体表征）](./paper-prism.md) — 在本框架上证明交互结构优于同容量更大 MLP（arXiv:2607.23473）
 
 ## 推荐继续阅读
 

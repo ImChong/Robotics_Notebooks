@@ -4,7 +4,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model, meta, cmu]
 status: complete
-updated: 2026-07-24
+updated: 2026-07-30
 arxiv: "2511.04131"
 venue: "2025 · arXiv"
 code: https://github.com/LeCAR-Lab/BFM-Zero
@@ -157,6 +157,7 @@ sequenceDiagram
 - 同实验室少样本域适应：[FADA（Planner–IDM）](./paper-fada-humanoid.md)（arXiv:2606.28476）
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
 - Real2Sim 适配器语境：[Agentic Real2Sim](./paper-agentic-real2sim.md) — 人形适配器引用 BFM-Zero 风格运动上下文（arXiv:2607.19190）
+- 本体多项式条件插件：[PRISM](./paper-prism.md) — 对 `history_actor` 做因式分解多项式交互，降低跟踪 EMD（arXiv:2607.23473）
 
 ## 参考来源
 
