@@ -1,13 +1,62 @@
 {
   "generated_at": "2026-07-30",
-  "node_count": 1983,
-  "edge_count": 17612,
+  "node_count": 1984,
+  "edge_count": 17627,
   "coverage": {
-    "covered": 1933,
-    "total": 1959,
+    "covered": 1934,
+    "total": 1960,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-daily-omni.md",
+      "detail_id": "entity-paper-daily-omni",
+      "label": "Daily-Omni（日常音视频跨模态时序推理基准）",
+      "type": "entity",
+      "recency": "2026-07-30",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/queries/embodied-eval-benchmark-selection-loop.md",
+      "detail_id": "wiki-queries-embodied-eval-benchmark-selection-loop",
+      "label": "Query：具身大模型评测基准选型闭环知识链",
+      "type": "query",
+      "recency": "2026-07-30",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/overview/topic-embodied-eval-benchmark.md",
+      "detail_id": "wiki-overview-topic-embodied-eval-benchmark",
+      "label": "具身评测基准选型闭环（专题汇总）",
+      "type": "overview",
+      "recency": "2026-07-30",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/robo-bench.md",
+      "detail_id": "entity-robo-bench",
+      "label": "RoboBench（MLLM 具身大脑综合评测）",
+      "type": "entity",
+      "recency": "2026-07-30",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/agibot-lingxi-x1.md",
+      "detail_id": "entity-agibot-lingxi-x1",
+      "label": "智元灵犀 X1（Agibot 开源人形）",
+      "type": "entity",
+      "recency": "2026-07-30",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "人形机器人（Humanoid Robot） 社区"
+    },
     {
       "path": "wiki/entities/paper-intact.md",
       "detail_id": "entity-paper-intact",
@@ -164,71 +213,17 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/action-chunking.md",
-      "detail_id": "wiki-methods-action-chunking",
-      "label": "Action Chunking（动作块输出）",
-      "type": "method",
-      "recency": "2026-07-30",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-hrl-stack-34-gr00t_n1.md",
-      "detail_id": "entity-paper-hrl-stack-34-gr00t_n1",
-      "label": "GR00T N1",
-      "type": "entity",
-      "recency": "2026-07-30",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/queries/vla-deployment-guide.md",
-      "detail_id": "wiki-queries-vla-deployment-guide",
-      "label": "VLA 真机部署指南：延迟、异步与加速",
-      "type": "query",
-      "recency": "2026-07-30",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-shells-layered-surface-sampling.md",
-      "detail_id": "entity-paper-shells-layered-surface-sampling",
-      "label": "SHELLS（分层采样多视角人头重建）",
-      "type": "entity",
-      "recency": "2026-07-30",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-face-anything-4d-face-reconstruction.md",
-      "detail_id": "entity-paper-face-anything-4d-face-reconstruction",
-      "label": "Face Anything",
-      "type": "entity",
-      "recency": "2026-07-30",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-intact.md",
-    "detail_id": "entity-paper-intact",
-    "label": "INTACT（Search-Free Intent-to-Action World Model）",
+    "path": "wiki/entities/paper-daily-omni.md",
+    "detail_id": "entity-paper-daily-omni",
+    "label": "Daily-Omni（日常音视频跨模态时序推理基准）",
     "type": "entity",
     "recency": "2026-07-30",
     "source": "log.md",
     "action": "maintained",
-    "has_repo": true,
-    "community_label": "生成式世界模型（Generative World Models） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
@@ -236,24 +231,24 @@
       "size": 182
     },
     {
+      "label": "视觉-语言-动作",
+      "size": 163
+    },
+    {
       "label": "模仿学习",
-      "size": 153
+      "size": 157
     },
     {
       "label": "仿真到现实",
       "size": 149
     },
     {
-      "label": "视觉-语言-动作",
-      "size": 146
-    },
-    {
       "label": "人形论文深读笔记",
-      "size": 142
+      "size": 143
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 128
+      "size": 129
     }
   ],
   "top_hubs": [

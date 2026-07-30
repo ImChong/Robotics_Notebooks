@@ -1,9 +1,8 @@
 ---
-
 type: entity
 tags: [benchmark, embodied-ai, spatial-intelligence, mllm, omnigibson, behavior-1k, evaluation, vlm, huggingface]
 status: complete
-updated: 2026-07-12
+updated: 2026-07-30
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/3d-spatial-vqa.md
@@ -12,6 +11,7 @@ related:
   - ./paper-wem-world-ego-modeling.md
   - ./ewmbench.md
   - ./robo-bench.md
+  - ./paper-daily-omni.md
 sources:
   - ../../sources/papers/esi_bench_arxiv_2605_18746.md
   - ../../sources/sites/esi-bench-project.md
@@ -91,6 +91,7 @@ summary: "ESI-Bench（arXiv:2605.18746）在 OmniGibson 上评测具身空间智
 | EmbodiedBench / EmbodiedEval | ✓ | ✓ | L+P+M | ✗ | 导航/操作/QA 综合，少测 **遮挡/容纳/透明** 等隐藏空间属性 |
 | CHAIN | ✓ | ✓ | P+M | ✓ | 机械谜题闭环物理推理；任务域更窄 |
 | [RoboBench](./robo-bench.md) | ✗（被动 QA） | ✗ | 仅 P（多图 QA） | 部分 | 评 **操纵流水线 System 2** 五维认知；与 CALVIN/LIBERO VLA 相关 |
+| [Daily-Omni](./paper-daily-omni.md) | ✗（被动 AV QA） | ✗ | 仅 P（音+视） | ✗ | 评 **日常跨模态时序对齐**；与 ESI 的主动空间探索正交 |
 | **ESI-Bench** | ✓ | ✓ | **L+P+M** | **✓** | **10 类空间 faculty** + **主动传感** + **隐藏结构** 三合一 |
 
 ## 流程总览（感知–行动环）
@@ -153,6 +154,7 @@ flowchart LR
 - [WEM / HTEWorld](./paper-wem-world-ego-modeling.md) — 共享 **BEHAVIOR-1K / OmniGibson** 生态的不同评测切面
 - [EWMBench](./ewmbench.md) — 具身 **视频世界模型** 生成质量评测，互补
 - [RoboBench](./robo-bench.md) — 操纵流水线 **MLLM embodied brain** 五维 QA；与下游 VLA 分数相关
+- [Daily-Omni](./paper-daily-omni.md) — 日常 **音视频时序对齐** 被动 MCQA；与本页主动空间探索互补
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是其 ① 具身大脑 / MLLM 认知评测层的代表基准，双向回链
 
 ## 参考来源

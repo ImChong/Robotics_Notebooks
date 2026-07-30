@@ -2,13 +2,14 @@
 type: query
 tags: [benchmark, evaluation, embodied-ai, mllm, world-model, vla, sim2real, taxonomy]
 status: complete
-updated: 2026-07-29
+updated: 2026-07-30
 summary: "具身大模型评测基准选型闭环知识链：把具身大脑/MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准 四层评测，从分散的评测基准实体页沉淀为一条端到端选型决策链，逐层说明测什么、用什么代表性基准、指标的可复现性/真实代表性/过程 vs 结果/成本如何取舍及典型误判。"
 sources:
   - ../../sources/papers/robo_bench_arxiv_2510_17801.md
   - ../../sources/papers/ewmbench.md
   - ../../sources/papers/worldscore_arxiv_2504_00983.md
   - ../../sources/papers/esi_bench_arxiv_2605_18746.md
+  - ../../sources/papers/daily_omni_arxiv_2505_17862.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
   - ../../sources/papers/driftworld_arxiv_2607_15065.md
   - ../../sources/papers/ctrl_world_arxiv_2510_10125.md
@@ -18,6 +19,7 @@ related:
   - ../concepts/sim-vs-real-eval-gap.md
   - ../entities/robo-bench.md
   - ../entities/esi-bench.md
+  - ../entities/paper-daily-omni.md
   - ../entities/ewmbench.md
   - ../entities/paper-worldscore.md
   - ../entities/paper-gigaworld-1-policy-evaluation.md
@@ -37,7 +39,7 @@ related:
 # Query：具身大模型评测基准选型闭环知识链
 
 > **Query 产物**：本页由以下问题触发：「我训了一个具身大模型，接下来到底怎么『测/证明它』——从『大脑看懂没』到『真机能不能做成』中间分几层评测、每层测什么、用哪个代表性基准、指标要复现性还是真实代表性、看过程指标还是结果指标、哪一层评测结论最容易骗人？」
-> 综合来源：[RoboBench（MLLM 具身大脑评测）](../entities/robo-bench.md)、[ESI-Bench（具身空间智能）](../entities/esi-bench.md)、[EWMBench（世界模型生成评测）](../entities/ewmbench.md)、[WorldScore（开放域世界生成）](../entities/paper-worldscore.md)、[GigaWorld-1（策略评估器）](../entities/paper-gigaworld-1-policy-evaluation.md)、[仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)。它是[具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md)（选哪一类模型）的姊妹链——回答「选完之后怎么评测/证明它」。
+> 综合来源：[RoboBench（MLLM 具身大脑评测）](../entities/robo-bench.md)、[ESI-Bench（具身空间智能）](../entities/esi-bench.md)、[Daily-Omni（日常 AV 时序对齐）](../entities/paper-daily-omni.md)、[EWMBench（世界模型生成评测）](../entities/ewmbench.md)、[WorldScore（开放域世界生成）](../entities/paper-worldscore.md)、[GigaWorld-1（策略评估器）](../entities/paper-gigaworld-1-policy-evaluation.md)、[仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)。它是[具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md)（选哪一类模型）的姊妹链——回答「选完之后怎么评测/证明它」。
 
 ## TL;DR：四层评测选型闭环一句话定位
 
@@ -45,7 +47,7 @@ related:
 
 | 层 | 测什么 | 代表性基准 | 主指标 | 这一层评测最容易骗人的地方 |
 |----|--------|-----------|--------|--------------------------|
-| ① 具身大脑/MLLM 认知 | System 2 高层认知：意图理解、场景感知、规划、affordance、失败诊断 | [RoboBench](../entities/robo-bench.md)、[ESI-Bench](../entities/esi-bench.md) | QA 正确率 / 认知维度分 | 认知评分高 ≠ 能下发可执行动作 |
+| ① 具身大脑/MLLM 认知 | System 2 高层认知：意图理解、场景感知、规划、affordance、失败诊断；另含 **日常音视频时序对齐** | [RoboBench](../entities/robo-bench.md)、[ESI-Bench](../entities/esi-bench.md)、[Daily-Omni](../entities/paper-daily-omni.md) | QA 正确率 / 认知维度分 / AV Align | 认知评分高 ≠ 能下发可执行动作；AV 高分 ≠ 操纵 affordance |
 | ② 世界模型预测保真度 | 给定动作，模型能否忠实推演未来帧/物理状态 | [EWMBench](../entities/ewmbench.md)、[GigaWorld-1 / WMBench](../entities/paper-gigaworld-1-policy-evaluation.md)；开放域多场景另见 [WorldScore](../entities/paper-worldscore.md) | 场景守恒 / 轨迹一致 / 语义对齐；（WorldScore：相机可控 / 质量 / 动态） | 短时视觉逼真 ≠ 长时序动作忠实 ≠ 下游策略收益；WorldScore 高分 ≠ 操纵保真 |
 | ③ 策略任务成功率 | 策略在任务上真做成没有 | [ManiSkill-HAB](../entities/paper-notebook-maniskill-hab-a-benchmark-for-low-level-manipula.md)、[Mimicking-Bench](../entities/paper-notebook-mimicking-bench-a-benchmark-for-generalizable-hu.md)、[Barkour](../entities/paper-barkour-quadruped-agility-benchmark.md)；桌面 VLA 相对位次见 [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md)；**接触安全**另见 [SoftVTBench](../entities/paper-softvtbench.md) | 任务成功率 / 敏捷分；软体另报 Safety Success | 成功率均值掩盖长尾失败；魔法抓取虚高；跨基准直接比榜；**只报 Goal 掩盖过压** |
 | ④ sim↔real 评测 gap 校准 | 仿真评测结论能否外推到真机 | [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md) + real-to-sim 相关性 | sim↔real 排名相关性 | 仿真可复现 ≠ 真机代表性；评测集与训练分布重叠 |
@@ -60,7 +62,7 @@ related:
 flowchart TD
   start[要评测一个具身大模型: 从哪层测起?]
   start --> l1{① 先证 System 2 大脑认知合格吗?}
-  l1 -->|是 · MLLM 高层认知| brain[RoboBench: 意图/感知/规划/affordance/失败诊断<br/>ESI-Bench: 主动探索式空间智能]
+  l1 -->|是 · MLLM 高层认知| brain[RoboBench: 意图/感知/规划/affordance/失败诊断<br/>ESI-Bench: 主动探索式空间智能<br/>Daily-Omni: 日常 AV 跨模态时序对齐]
   l1 -->|大脑已达标| l2
   brain --> l2{② 用世界模型当评估器/前瞻吗?}
   l2 -->|是 · 视频 WM 保真度| wm[EWMBench: 场景守恒/轨迹/语义对齐<br/>GigaWorld-1: 长时序动作忠实 rollout]
@@ -81,9 +83,9 @@ flowchart TD
 
 整条评测链的入口是**在双系统范式下把 MLLM 当 embodied brain 单独考核**，把「机器人最终能不能做成」拆出「System 2 是否具备操纵所需的完整高层认知」这一前置问题：
 
-- **测什么**：意图理解 → 场景感知 → 规划与泛化 → affordance 细化 → 失败诊断的全流水线认知。[RoboBench](../entities/robo-bench.md) 沿五维 14 能力 25 任务 6092 QA 出题，并用 **MLLM-as-world-simulator** 检验规划是否能在物理/视觉约束下达成关键物体状态变化；[ESI-Bench](../entities/esi-bench.md) 进一步把空间智能从「被动看图」推进到「观察者即行动者」，要求主动感知–行动闭环。
+- **测什么**：意图理解 → 场景感知 → 规划与泛化 → affordance 细化 → 失败诊断的全流水线认知。[RoboBench](../entities/robo-bench.md) 沿五维 14 能力 25 任务 6092 QA 出题，并用 **MLLM-as-world-simulator** 检验规划是否能在物理/视觉约束下达成关键物体状态变化；[ESI-Bench](../entities/esi-bench.md) 进一步把空间智能从「被动看图」推进到「观察者即行动者」，要求主动感知–行动闭环。[Daily-Omni](../entities/paper-daily-omni.md) 则专测 **日常场景音视频跨模态时序对齐**（684 视频 / 1197 MCQA；模态消融常掉 10–28 个百分点），补上「环境声与画面是否对齐理解」这一维。
 - **可复现 vs 代表性**：QA 式评分**高度可复现、可自动打分**，是四层里最便宜的一层；代价是它测的是**认知代理**而非动作能力。
-- **典型误判**：把认知评分当动作能力用——RoboBench 的价值恰恰在于它证明了「认知分与 CALVIN/LIBERO-10 下游 VLA 成功率显著相关」这件事**需要专门验证**，而不是默认成立。认知评分只是**下游成功率的必要不充分条件**。
+- **典型误判**：把认知评分当动作能力用——RoboBench 的价值恰恰在于它证明了「认知分与 CALVIN/LIBERO-10 下游 VLA 成功率显著相关」这件事**需要专门验证**，而不是默认成立。认知评分只是**下游成功率的必要不充分条件**。同理，Daily-Omni 全模态高分只说明 **AV 时序对齐推理**，不证明操纵 affordance 或可下发动作指令。
 
 ## 2. ② 世界模型预测保真度评测层：视频逼真 ≠ 策略收益
 
@@ -153,6 +155,7 @@ flowchart TD
 - [ewmbench.md](../../sources/papers/ewmbench.md) — EWMBench，②层具身世界模型视频生成三轴评测
 - [worldscore_arxiv_2504_00983.md](../../sources/papers/worldscore_arxiv_2504_00983.md) — WorldScore，②层相邻：开放域多场景世界生成统一评测
 - [esi_bench_arxiv_2605_18746.md](../../sources/papers/esi_bench_arxiv_2605_18746.md) — ESI-Bench，①层主动探索式具身空间智能评测
+- [daily_omni_arxiv_2505_17862.md](../../sources/papers/daily_omni_arxiv_2505_17862.md) — Daily-Omni，①层日常音视频跨模态时序对齐 AVQA
 - [wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md](../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md) — GigaWorld-1「长时序动作忠实 > 短时视觉逼真」策略评估器结论
 - [robodojo_arxiv_2607_04434.md](../../sources/papers/robodojo_arxiv_2607_04434.md) — RoboDojo，③/④ 层统一 sim-and-real 操纵评测
 - [softvtbench_arxiv_2607_04234.md](../../sources/papers/softvtbench_arxiv_2607_04234.md) — SoftVTBench，③ 层可变形接触安全 Goal/Safety
@@ -164,6 +167,7 @@ flowchart TD
 - [仿真评测可复现性 ↔ 真实代表性取舍（sim↔real 评测 gap）](../concepts/sim-vs-real-eval-gap.md) — ④层 gap 校准的姊妹概念页，双向回链
 - [RoboBench（MLLM 具身大脑综合评测）](../entities/robo-bench.md) — ①层 MLLM 认知评测代表基准
 - [ESI-Bench（具身空间智能基准）](../entities/esi-bench.md) — ①层主动探索式空间智能评测
+- [Daily-Omni（日常 AV 时序对齐）](../entities/paper-daily-omni.md) — ①层音视频跨模态时序对齐诊断
 - [EWMBench（具身世界模型生成评测）](../entities/ewmbench.md) — ②层世界模型预测保真度评测
 - [WorldScore](../entities/paper-worldscore.md) — ②层相邻：3D/4D/视频多场景世界生成统一榜
 - [GigaWorld-1（世界模型策略评估器）](../entities/paper-gigaworld-1-policy-evaluation.md) — ②层「动作忠实 > 视觉逼真」策略评估器
