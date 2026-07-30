@@ -106,6 +106,10 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # 划分口径（如「先 train 再 eval」「train split」），非可成页的机器人概念，
     # 与 clip（限幅动词）同类语义噪声，作停用词不再误报为「缺独立页」。
     "train",
+    # uv：各页正文里的 `uv` 均为 Astral 的 Python 包管理器命令（`uv run` /
+    # `uv sync` / `uv pip install`，复现路径工具链引用），是打包/环境基础设施，
+    # 非机器人概念/方法/形式化，不应建独立页；与 arxiv/license/md 同类基础设施停用词。
+    "uv",
 }
 
 # 高频术语但「已在 entities/ 或非同名 stem 的 methods 页有恰当归属」，
