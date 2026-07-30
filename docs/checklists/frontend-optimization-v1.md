@@ -98,6 +98,7 @@
 - [x] 删除搜索区副标题（与输入框 placeholder 重复），Hero 副标题改为面向读者的引导语。
 - [x] 删除目标入口区标题「选择你的入口」与副标题「按当前目标进入最短路径…」：与 Hero「先选一个入口」重复，入口卡本身已自解释。
 - [x] 同步刷新 README `media/site-demo.gif`（`scripts/record_readme_demo.cjs`，1933 节点；首页帧已无入口区标题/副标题）。
+- [x] 再次同步刷新 README `media/site-demo.gif`（`scripts/record_readme_demo.cjs`，2031 节点 / 17987 边；70 frames / 3.21 MB）。
 
 ---
 
