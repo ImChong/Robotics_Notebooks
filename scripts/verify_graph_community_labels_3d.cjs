@@ -191,6 +191,46 @@ const path = require('path');
       `before=${scaleAfterZoomIn} after=${s.sampleScale}`);
     await page.screenshot({ path: path.join(outDir, 'graph-community-labels-3d-zoomed-out.png') });
 
+    // 适配屏幕飞行期间胶囊 scale 应锁定为落稳尺寸，不再忽大忽小闪一下
+    await page.evaluate(() => {
+      const view = window.__RN_GRAPH3D_VIEW__;
+      if (view && view.dollyZoom) view.dollyZoom(1.6, 0);
+    });
+    await new Promise((r) => setTimeout(r, 200));
+    const fitFlash = await page.evaluate(async () => {
+      const view = window.__RN_GRAPH3D_VIEW__;
+      const btn = document.getElementById('fit-to-screen');
+      if (!view || !btn) return { ok: false, reason: 'missing-view-or-btn' };
+      const before = view.getCommunityLabelZoomScale();
+      btn.click();
+      const samples = [];
+      const start = performance.now();
+      while (performance.now() - start < 750) {
+        samples.push(view.getCommunityLabelZoomScale());
+        await new Promise((r) => requestAnimationFrame(r));
+      }
+      // 再等解锁 + 收尾 capture
+      await new Promise((r) => setTimeout(r, 120));
+      const after = view.getCommunityLabelZoomScale();
+      const min = Math.min(...samples);
+      const max = Math.max(...samples);
+      return {
+        ok: true,
+        before,
+        after,
+        sampleCount: samples.length,
+        min,
+        max,
+        span: max - min,
+        // 飞行中应贴近落稳 scale≈1（桌面），允许极小数值噪声
+        stable: max - min < 0.08 && min > 0.85 && max < 1.15,
+      };
+    });
+    check('3D 适配屏幕：飞行中社区标签 scale 不闪烁',
+      fitFlash.ok === true && fitFlash.stable === true,
+      JSON.stringify(fitFlash));
+    await page.screenshot({ path: path.join(outDir, 'graph-community-labels-3d-after-fit.png') });
+
     // 取消勾选 → 全部隐藏
     await page.click('#check-community-labels');
     await new Promise((r) => setTimeout(r, 500));

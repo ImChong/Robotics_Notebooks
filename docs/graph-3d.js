@@ -211,6 +211,10 @@
     var labelsLayoutReady = false;
     var baselineCameraDist = null;
     var cameraZoomInteracted = false;
+    // 程序化取景（适配屏幕）期间锁定胶囊 scale，避免飞行动画中途
+    // |cam−lookAt| 瞬时偏离基线导致标签忽大忽小，结束再猛跳回 1。
+    var fitLabelZoomLocked = false;
+    var fitLabelZoomUnlockTimer = 0;
     // 社区质心世界坐标缓存：相机旋转时节点坐标不变，避免每帧 O(N) 重算。
     var communityCentroidsCache = null;
     var communityCentroidsDirty = true;
@@ -477,6 +481,11 @@
       labelsLayoutReady = false;
       baselineCameraDist = null;
       cameraZoomInteracted = false;
+      fitLabelZoomLocked = false;
+      if (fitLabelZoomUnlockTimer) {
+        window.clearTimeout(fitLabelZoomUnlockTimer);
+        fitLabelZoomUnlockTimer = 0;
+      }
       syncLabelStyles();
     }
 
@@ -566,7 +575,20 @@
       return communityCentroidsCache;
     }
 
+    /** 取景落稳后的胶囊 scale（zf=1 时的钳制结果；移动端含收紧系数） */
+    function communityLabelZoomAtBaseline() {
+      if (isMobileCommunityLabelLayout()) {
+        return Math.max(
+          MOBILE_COMMUNITY_LABEL_ZOOM_MIN,
+          Math.min(MOBILE_COMMUNITY_LABEL_ZOOM_MAX, MOBILE_COMMUNITY_LABEL_ZOOM_FACTOR)
+        );
+      }
+      return 1;
+    }
+
     function communityLabelZoomScale() {
+      // 取景飞行中锁定为落稳尺寸，不跟中途错误距离漂移
+      if (fitLabelZoomLocked) return communityLabelZoomAtBaseline();
       // 首次适配前不懒捕获（避免把「已缩放后的距离」误记为基线）
       if (!baselineCameraDist) return 1;
       var zf = getLabelZoomFactor();
@@ -581,6 +603,49 @@
       }
       // 桌面端相机缩放钳制收窄（原 2.75 偏夸张，与字号区间收窄配套）
       return Math.max(0.4, Math.min(1.85, zf));
+    }
+
+    function invalidateCommunityLabelScaleCache() {
+      communityLabelEls.forEach(function (el) { el._lz = null; });
+    }
+
+    /**
+     * 程序化取景：起飞前把缩放基线设为目标距离，并在动画期间锁定胶囊为落稳尺寸。
+     * 这样飞行动画中 controls.change 重投影不会把标签拉成忽大忽小，结束也无需猛跳。
+     */
+    function beginFitLabelZoomLock(targetDist, durationMs) {
+      if (targetDist && isFinite(targetDist) && targetDist > 1e-3) {
+        baselineCameraDist = targetDist;
+        labelsLayoutReady = true;
+      }
+      if (fitLabelZoomUnlockTimer) {
+        window.clearTimeout(fitLabelZoomUnlockTimer);
+        fitLabelZoomUnlockTimer = 0;
+      }
+      var duration = Math.max(0, durationMs == null ? 0 : durationMs);
+      if (duration <= 0) {
+        // 瞬时取景：保留上方写入的目标基线，不在此处 capture（相机可能尚未落到目标）
+        fitLabelZoomLocked = false;
+        cameraZoomInteracted = false;
+        invalidateCommunityLabelScaleCache();
+        syncCommunityLabelPositions();
+        return;
+      }
+      fitLabelZoomLocked = true;
+      invalidateCommunityLabelScaleCache();
+      syncCommunityLabelPositions();
+      fitLabelZoomUnlockTimer = window.setTimeout(function () {
+        fitLabelZoomUnlockTimer = 0;
+        fitLabelZoomLocked = false;
+        captureBaselineCameraDist();
+        cameraZoomInteracted = false;
+        invalidateCommunityLabelScaleCache();
+        syncCommunityLabelPositions();
+        if (areNodeLabelsVisible()) {
+          syncLabelPositions();
+          syncLabelStyles();
+        }
+      }, duration + 60);
     }
 
     // 沿视线推进/拉远相机（factor>1 放大），供验证与程序化缩放
@@ -1174,11 +1239,20 @@
         dz = 1.0;
         len = Math.sqrt(dx * dx + dy * dy + dz * dz);
       }
+      var durationMs = duration == null ? 650 : duration;
+      // 起飞前锁定胶囊为落稳尺寸，并把基线设为目标距离（避免飞行中途 scale 闪烁）
+      beginFitLabelZoomLock(dist, durationMs);
       graph.cameraPosition(
         { x: cx + (dx / len) * dist, y: cy + (dy / len) * dist, z: cz + (dz / len) * dist },
         lookAt,
-        duration == null ? 650 : duration
+        durationMs
       );
+      // 瞬时取景：相机已落到目标后再用实测距离微调基线
+      if (durationMs <= 0) {
+        captureBaselineCameraDist();
+        invalidateCommunityLabelScaleCache();
+        syncCommunityLabelPositions();
+      }
       return true;
     }
 
@@ -1197,7 +1271,14 @@
       }
       if (bbox) bbox = inflateBbox(bbox);
       if (!fitCameraToBbox(bbox, duration)) {
-        graph.zoomToFit(duration, graphFitPadPx() / 2, filterFn);
+        var durationMs = duration == null ? 650 : duration;
+        beginFitLabelZoomLock(null, durationMs);
+        graph.zoomToFit(durationMs, graphFitPadPx() / 2, filterFn);
+        if (durationMs <= 0) {
+          captureBaselineCameraDist();
+          invalidateCommunityLabelScaleCache();
+          syncCommunityLabelPositions();
+        }
       }
     }
 
@@ -1476,8 +1557,8 @@
       // 相机适配到「已激活」子集（生长时随之缩放，类似 2D fitToTimelineNodes）。
       timelineFit: function (ms) {
         if (timelineRevealedIds === null) return;
+        // beginFitLabelZoomLock 在 fitCameraToBbox 内处理基线与飞行期锁定
         zoomFitToNodes(ms == null ? 500 : ms, function (n) { return timelineRevealedIds.has(n.id); });
-        captureBaselineCameraDist();
         syncLabels();
       },
 
@@ -1536,24 +1617,13 @@
       },
 
       fitToScreen: function (ms) {
-        var duration = ms == null ? 650 : ms;
-        zoomFitToNodes(duration);
-        window.setTimeout(function () {
-          captureBaselineCameraDist();
-          cameraZoomInteracted = false;
-          syncLabels();
-        }, Math.max(0, duration) + 60);
+        // 飞行期胶囊缩放锁定与基线写入由 fitCameraToBbox → beginFitLabelZoomLock 负责
+        zoomFitToNodes(ms == null ? 650 : ms);
       },
 
       fitToVisible: function (ms) {
         var visible = getVisibleNodeIds();
-        var duration = ms == null ? 650 : ms;
-        zoomFitToNodes(duration, function (n) { return visible.has(n.id); });
-        window.setTimeout(function () {
-          captureBaselineCameraDist();
-          cameraZoomInteracted = false;
-          syncLabels();
-        }, Math.max(0, duration) + 60);
+        zoomFitToNodes(ms == null ? 650 : ms, function (n) { return visible.has(n.id); });
       },
 
       focusNode: function (node, ms) {
@@ -1620,6 +1690,11 @@
         container.removeEventListener('mousemove', onContainerPointerMove);
         container.removeEventListener('pointermove', onContainerPointerMove);
         window.removeEventListener('error', reviveRenderLoopOnError);
+        if (fitLabelZoomUnlockTimer) {
+          window.clearTimeout(fitLabelZoomUnlockTimer);
+          fitLabelZoomUnlockTimer = 0;
+        }
+        fitLabelZoomLocked = false;
         if (cameraLabelSyncRaf) {
           window.cancelAnimationFrame(cameraLabelSyncRaf);
           cameraLabelSyncRaf = 0;
