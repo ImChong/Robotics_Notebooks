@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, locomotion, loco-manipulation, adversarial-rl, teleai, shanghaitech, neurips]
 status: complete
-updated: 2026-07-16
+updated: 2026-07-30
 arxiv: "2504.14305"
 venue: NeurIPS 2025
 summary: "ALMI（NeurIPS 2025）将人形拆为下半身 locomotion 与上半身 mimic 两策略，用互相对抗的迭代 RL 达到走跑稳健与上肢跟踪的纳什均衡，并发布 ALMI-X 数据集。"
@@ -16,6 +16,7 @@ related:
   - ./paper-hiking-in-the-wild.md
   - ./unitree-h1.md
 sources:
+  - ../../sources/repos/almi-open.md
   - ../../sources/papers/almi_adversarial_locomotion_motion_imitation_arxiv_2504_14305.md
   - ../../sources/papers/humanoid_amp_survey_07_adversarial_locomotion_and_motion_imitation_for.md
   - ../../sources/papers/humanoid_amp_survey_19_catalog.md
@@ -116,6 +117,14 @@ flowchart TB
 - 同段姊妹：[GMP #06](./paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md)、[MoRE #08](./paper-amp-survey-08-more.md)、[Hiking #09](./paper-hiking-in-the-wild.md)
 - 任务：[locomotion.md](../tasks/locomotion.md)、[loco-manipulation.md](../tasks/loco-manipulation.md)
 - AMP 专题：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)（#07/19）
+
+## HMI 开源主表入口
+
+[ALMI-Open](https://github.com/TeleHuman/ALMI-Open) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)。
+
+主表代码入口：TeleHuman/ALMI-Open（上下肢分训→联合扰动→蒸馏全身；开放 ALMI-X）。本库以本 ALMI 论文实体页为详情节点，不另建 `almi-open` 实体。
+
+覆盖核对见 [HMI 开源项目主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)。
 
 ## 参考来源
 

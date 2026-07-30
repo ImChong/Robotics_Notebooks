@@ -67,6 +67,7 @@
 | [vla-deployment-guide](./vla-deployment-guide.md) | 如何在真机上部署 VLA 策略？推理延迟怎么控制？ | VLA、Foundation Policy、Manipulation、Loco-Manipulation、Deployment |
 | [foundation-policy-for-humanoids](./foundation-policy-for-humanoids.md) | 人形机器人 foundation policy 现在适合什么，不适合什么？ | Foundation Policy、VLA、Loco-Manipulation、Manipulation、Locomotion |
 | [open-source-motion-control-projects](./open-source-motion-control-projects.md) | 飞书公开文档《开源运动控制项目》里抽出了哪些可复用的方法模式？ | RL、IL、Model-Based RL、Locomotion、Manipulation、Motion Retargeting |
+| [hmi-opensource-projects-coverage](./hmi-opensource-projects-coverage.md) | 开源项目主表里的项目，在本库分别对应哪一页、该怎么读？ | Humanoid Motion Intelligence、开源运动控制项目摘要、上游开源主表 |
 | [humanoid-motion-control-know-how](./humanoid-motion-control-know-how.md) | 飞书公开文档《人形机器人运动控制 Know-How》对技术栈项目最有价值的结构是什么？ | OCP、LIP/ZMP、WBC、TSID、State Estimation、Sim2Real |
 | [robot-policy-debug-playbook](./robot-policy-debug-playbook.md) | RL 策略在仿真中好但真机差，如何系统排查？ | Sim2Real、Domain Randomization、Privileged Training、Deployment |
 | [simulator-selection-guide](./simulator-selection-guide.md) | MuJoCo vs Isaac Lab vs Genesis，做 locomotion RL 选哪个？ | Locomotion、Sim2Real、RL、Humanoid Robot |

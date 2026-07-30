@@ -3,7 +3,7 @@
 type: entity
 tags: [entity, simulator, benchmark, embodied-ai, omniverse, everyday-activities, nvidia]
 status: complete
-updated: 2026-06-22
+updated: 2026-07-30
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./nvidia-omniverse.md
@@ -11,6 +11,7 @@ related:
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../overview/sim-platforms-decade-technology-map.md
 sources:
+  - ../../sources/repos/omnigibson.md
   - ../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md
 summary: "斯坦福等 2023 年推出的具身 AI 基准：基于社会调查筛选 1000 种人类日常活动，在 Omniverse 上构建高逼真多物理仿真环境，评估开放世界综合能力。"
 ---
@@ -51,6 +52,14 @@ summary: "斯坦福等 2023 年推出的具身 AI 基准：基于社会调查筛
 
 - **误区：BEHAVIOR-1K = 单一仿真器品牌** — 它是 **基准 + 任务本体**；底层依赖 Omniverse 生态（见 [NVIDIA Omniverse](./nvidia-omniverse.md)）。
 - **局限：入门成本** — 环境与资产重；快速 loco 原型见 [MuJoCo Playground](./mujoco-playground.md)。
+
+## HMI 开源主表入口
+
+[OmniGibson / BEHAVIOR-1K](https://github.com/StanfordVL/OmniGibson) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)。
+
+主表分列「BEHAVIOR / OmniGibson」（任务规范与评测）与「OmniGibson」（仿真运行层）。二者同属 StanfordVL 生态：本页承载任务基准叙事；运行层代码入口为 [StanfordVL/OmniGibson](https://github.com/StanfordVL/OmniGibson)（及 BEHAVIOR-1K 仓）。不另建重复 `omnigibson` 实体。
+
+覆盖核对见 [HMI 开源项目主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)。
 
 ## 关联页面
 

@@ -1,5 +1,35 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-30] fix | scripts/utils/community_labels.py — 为 HMI 本库导读页补 COMMUNITY_NAME_OVERRIDES，修复 Tests 社区命名断言
+
+- **原因：** 枢纽 H1「HMI 开源项目主表 · 本库导读」不符合 `中文（English）` 社区命名正则（须以中文开头）
+- **修复：** override → `开源项目本库导读（HMI Open-Source Projects Guide）`；同步 `graph-stats.json`
+
+## [2026-07-30] structural | wiki/queries/hmi-opensource-projects-coverage.md — 覆盖索引改写为读者向「本库导读」
+
+- **改动：** 去掉维护者黑话（新建/合并/ci-preflight/曾误建）；改为怎么用、规模说明、可读标题链接、同主题共用提示
+- **交叉：** [`wiki/entities/humanoid-motion-intelligence.md`](wiki/entities/humanoid-motion-intelligence.md)、[`wiki/queries/README.md`](wiki/queries/README.md)
+
+## [2026-07-30] structural | wiki — 续：撤销 genmimic 重复实体并修正 DreamWaQ 社区实现挂链
+
+- **删除：** [`wiki/entities/genmimic.md`](wiki/entities/genmimic.md) → 合并入 [`wiki/entities/paper-hrl-stack-04-from_generated_human_videos_to_physi.md`](wiki/entities/paper-hrl-stack-04-from_generated_human_videos_to_physi.md)
+- **修正：** 主表「DreamWaQ（社区实现）」由误挂 [`dreamwaq-plus`](wiki/entities/dreamwaq-plus.md) 改回 [`wiki/methods/dreamwaq.md`](wiki/methods/dreamwaq.md)
+- **覆盖索引：** [`wiki/queries/hmi-opensource-projects-coverage.md`](wiki/queries/hmi-opensource-projects-coverage.md)（复用 120 / 合并 18 / 新建 46）
+
+## [2026-07-30] structural | wiki — 撤销 13 个与已有节点重复的 HMI 新建实体，合并回 action-chunking / π0-policy / isaac-gym / behavior-1k / project-instinct / dreamwaq / roboparty / beyondmimic / agibot-bfm-2 / mujoco / ALMI 论文页；更新覆盖索引
+
+- **原则：** 库内已有详情节点则只更新原页并挂 HMI 主表入口，禁止平行造页
+- **覆盖索引：** [`wiki/queries/hmi-opensource-projects-coverage.md`](wiki/queries/hmi-opensource-projects-coverage.md)
+- **删除实体：** act-aloha、openpi、isaac-gym-envs、omnigibson、instinctlab、instinct-rl、instinct-onboard、legged-lab-dwaq、roboparty-train、beyondmimic-reproduction、motion-between-bfm-2、mujoco-menagerie、almi-open（sources 保留并改指 canonical）
+
+## [2026-07-30] query | wiki/queries/hmi-opensource-projects-coverage.md — 确保 HMI 开源项目主表 166 项均有本库独立详情节点；新建 60 个 sources+entities，复用 106 个已有页
+
+- **触发：** 用户要求覆盖 [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md) 全部项目
+- **Query 产物：** [`wiki/queries/hmi-opensource-projects-coverage.md`](wiki/queries/hmi-opensource-projects-coverage.md)（166/166 映射；注册 [`wiki/queries/README.md`](wiki/queries/README.md)）
+- **新建详情节点（60）：** 含 ACT、openpi、WHAM、PULSE、Mink、OmniGibson、InstinctLab / instinct_rl / instinct_onboard、工程中间件（CleanRL、LIBERO、ros2_control、Webots 等）— 见覆盖索引「新建」列；对应 `sources/repos|sites|papers/*`
+- **交叉：** [`wiki/entities/humanoid-motion-intelligence.md`](wiki/entities/humanoid-motion-intelligence.md) 导航挂接覆盖索引
+- **说明：** 新建页为 draft 级工程入口节点（主表定位 + 官方链接），方法深读仍优先复用已有 `paper-*` / `methods/*`
+
 ## [2026-07-30] ingest | sources/repos/daily-omni.md + papers/daily_omni_arxiv_2505_17862 + sites/daily-omni-github-io — Daily-Omni（arXiv:2505.17862）入库：日常 AV 时序对齐基准；升格 wiki/entities/paper-daily-omni.md；交叉 wiki/queries/embodied-eval-benchmark-selection-loop.md、wiki/overview/topic-embodied-eval-benchmark.md、wiki/entities/robo-bench.md、wiki/entities/agibot-lingxi-x1.md；代码 GPL-3.0 + HF 数据已开源
 
 - **触发：** 用户提供 <https://github.com/Lliar-liar/Daily-Omni>（及项目页 Leaderboard）

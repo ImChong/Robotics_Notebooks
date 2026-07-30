@@ -104,6 +104,9 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "wiki/comparisons/robot-control-eight-paradigms-taxonomy.md": (
         "八大机器人控制体系分类（Eight Robot Control Paradigms Taxonomy）"
     ),
+    "wiki/queries/hmi-opensource-projects-coverage.md": (
+        "开源项目本库导读（HMI Open-Source Projects Guide）"
+    ),
 }
 
 COMMUNITY_LABEL_SUFFIX = " 社区"

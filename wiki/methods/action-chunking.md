@@ -5,6 +5,7 @@ status: complete
 updated: 2026-07-30
 summary: "Action Chunking 让策略一次输出未来多步动作序列，以降低长时序误差并缓解高延迟模型与高频控制器之间的时域错配。"
 sources:
+  - ../../sources/repos/act-aloha.md
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/diffusion_and_gen.md
   - ../../sources/papers/humanoid_touch_dream.md
@@ -149,6 +150,14 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
 - Zhao et al., *Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware* — ACT 的代表性工作
 - [sources/papers/defi_arxiv_2604_16391.md](../../sources/papers/defi_arxiv_2604_16391.md) — DeFI：2D 视频预测与 3D 动作推理拆分预训练，扩散适配器输出动作 chunk
 - [sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md](../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md) — TacO：ACT + 模态特异触觉编码器的跨传感器基准
+
+## HMI 开源主表入口
+
+[ACT](https://github.com/tonyzhaozh/act) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)。
+
+主表定位：条件 VAE + Transformer 一次预测动作块，时间集成平滑控制；低成本双臂采数与真机部署代码，是模仿学习常用基线。本库以本方法页为 ACT 详情节点，不另建 `act-aloha` 实体。
+
+覆盖核对见 [HMI 开源项目主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)。
 
 ## 关联页面
 

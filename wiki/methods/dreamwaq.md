@@ -2,7 +2,7 @@
 type: method
 tags: [locomotion, blind-locomotion, reinforcement-learning, quadruped, terrain-imagination]
 status: complete
-updated: 2026-07-14
+updated: 2026-07-30
 summary: "DreamWaQ（ICRA 2023）四足盲走单阶段 RL：CENet 从本体历史想象隐式地形并估计体速，非对称 Actor–Critic 实现无外感知的鲁棒行走，是 DreamWaQ++ 与飞书「盲走一阶段」模块的基线。"
 related:
   - ../entities/dreamwaq-plus.md
@@ -12,6 +12,7 @@ related:
   - ../concepts/state-estimation.md
   - ../overview/humanoid-rl-motion-control-methods.md
 sources:
+  - ../../sources/repos/legged-lab-dwaq.md
   - ../../sources/papers/dreamwaq_arxiv_2301_10602.md
   - ../../sources/raw/feishu_humanoid_motion_control_know_how_full_2026-07-14.md
   - ../../sources/papers/humanoid_motion_control_know_how.md
@@ -72,6 +73,17 @@ sources:
 - **无前瞻**：障碍需接触后才能调整，极限楼梯/沟槽弱于显式感知方法。
 - **隐式表征难解释**：CENet 失效时调试成本高，需记录 $\mathbf{z}$ 分布与 OOD 场景。
 - **四足论文**：人形双足/contact 切换更复杂，迁移非平凡。
+
+## HMI 开源主表入口
+
+下列两项均收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)；**本库统一收敛到本方法页**，不另建平行实体，也不挂到 [DreamWaQ++](../entities/dreamwaq-plus.md)（++ 是点云多模态扩展，不是盲走社区实现）：
+
+| 主表条目 | 链接 | 备注 |
+|----------|------|------|
+| DreamWaQ（社区实现） | <https://github.com/Manaro-Alpha/DreamWaQ> | 社区盲走复现入口 |
+| Legged Lab DWAQ（Unitree G1） | <https://gitee.com/chaomingsanhua/legged_lab> | G1：本体+VAE 潜变量 + PPO 关节位置；缺 AdaBoot/实机链路 |
+
+覆盖核对见 [HMI 开源项目主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)。
 
 ## 关联页面
 
