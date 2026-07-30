@@ -17,7 +17,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "HMI 开源项目主表 · 本库导读 社区"
+      "community_label": "开源项目本库导读（HMI Open-Source Projects Guide） 社区"
     },
     {
       "path": "wiki/entities/humanoid-motion-intelligence.md",
@@ -28,7 +28,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "HMI 开源项目主表 · 本库导读 社区"
+      "community_label": "开源项目本库导读（HMI Open-Source Projects Guide） 社区"
     },
     {
       "path": "wiki/entities/paper-hrl-stack-04-from_generated_human_videos_to_physi.md",
@@ -225,7 +225,7 @@
     "source": "log.md",
     "action": "maintained",
     "has_repo": true,
-    "community_label": "HMI 开源项目主表 · 本库导读 社区"
+    "community_label": "开源项目本库导读（HMI Open-Source Projects Guide） 社区"
   },
   "top_communities": [
     {
@@ -320,7 +320,7 @@
       "type": "query",
       "degree": 222,
       "has_repo": true,
-      "community_label": "HMI 开源项目主表 · 本库导读 社区"
+      "community_label": "开源项目本库导读（HMI Open-Source Projects Guide） 社区"
     },
     {
       "detail_id": "wiki-methods-imitation-learning",

@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-30] fix | scripts/utils/community_labels.py — 为 HMI 本库导读页补 COMMUNITY_NAME_OVERRIDES，修复 Tests 社区命名断言
+
+- **原因：** 枢纽 H1「HMI 开源项目主表 · 本库导读」不符合 `中文（English）` 社区命名正则（须以中文开头）
+- **修复：** override → `开源项目本库导读（HMI Open-Source Projects Guide）`；同步 `graph-stats.json`
+
 ## [2026-07-30] structural | wiki/queries/hmi-opensource-projects-coverage.md — 覆盖索引改写为读者向「本库导读」
 
 - **改动：** 去掉维护者黑话（新建/合并/ci-preflight/曾误建）；改为怎么用、规模说明、可读标题链接、同主题共用提示
