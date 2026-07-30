@@ -8,6 +8,15 @@
 - **交叉：** [`wiki/entities/humanoid-motion-intelligence.md`](wiki/entities/humanoid-motion-intelligence.md) 导航挂接覆盖索引
 - **说明：** 新建页为 draft 级工程入口节点（主表定位 + 官方链接），方法深读仍优先复用已有 `paper-*` / `methods/*`
 
+## [2026-07-30] ingest | sources/repos/daily-omni.md + papers/daily_omni_arxiv_2505_17862 + sites/daily-omni-github-io — Daily-Omni（arXiv:2505.17862）入库：日常 AV 时序对齐基准；升格 wiki/entities/paper-daily-omni.md；交叉 wiki/queries/embodied-eval-benchmark-selection-loop.md、wiki/overview/topic-embodied-eval-benchmark.md、wiki/entities/robo-bench.md、wiki/entities/agibot-lingxi-x1.md；代码 GPL-3.0 + HF 数据已开源
+
+- **触发：** 用户提供 <https://github.com/Lliar-liar/Daily-Omni>（及项目页 Leaderboard）
+- **开源核查（步骤 2.5）：** **已开源** — 项目页徽章 → GitHub（GPL-3.0）+ HF [`liarliar/Daily-Omni`](https://huggingface.co/datasets/liarliar/Daily-Omni)（CC BY-NC-SA 4.0，`Videos.tar` + `qa.json`）；仓含 `run_pipeline.py` / `test_model*` / `baseline/`
+- **新增归档：** [`sources/papers/daily_omni_arxiv_2505_17862.md`](sources/papers/daily_omni_arxiv_2505_17862.md)、[`sources/sites/daily-omni-github-io.md`](sources/sites/daily-omni-github-io.md)、[`sources/repos/daily-omni.md`](sources/repos/daily-omni.md)；索引 [`sources/README.md`](sources/README.md)
+- **主升格：** [`wiki/entities/paper-daily-omni.md`](wiki/entities/paper-daily-omni.md) — 六任务族、半自动管线、Agent 基线、榜单快照（WITA-Omni 85.21%）、流程与源码时序图、结论六点
+- **交叉：** [`wiki/queries/embodied-eval-benchmark-selection-loop.md`](wiki/queries/embodied-eval-benchmark-selection-loop.md)、[`wiki/overview/topic-embodied-eval-benchmark.md`](wiki/overview/topic-embodied-eval-benchmark.md)、[`wiki/entities/robo-bench.md`](wiki/entities/robo-bench.md)、[`wiki/entities/agibot-lingxi-x1.md`](wiki/entities/agibot-lingxi-x1.md)
+- **机构 tags：** `fudan` / `agibot`
+
 ## [2026-07-30] ingest | sources/repos/roboparty-intact-jepa.md + papers/intact_arxiv_2607_26056 — 补充 RoboParty 组织镜像与 Lab 交叉：wiki/entities/paper-intact.md、wiki/entities/roboparty.md、wiki/overview/roboparty-lab-party-os-technology-map.md；规范仓仍为 zju3dv/INTACT-JEPA，训练代码 Coming Soon
 
 - **触发：** 用户提供 Roboparty/INTACT-JEPA + lab.roboparty.com 口径（LeWM 学动作效果 / INTACT 补意图→动作；Direct 宏 ~95.33%，2.9–5.5 ms，约 300×）
