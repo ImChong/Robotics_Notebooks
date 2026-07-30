@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-30] ingest | sources/repos/roboparty-intact-jepa.md + papers/intact_arxiv_2607_26056 — 补充 RoboParty 组织镜像与 Lab 交叉：wiki/entities/paper-intact.md、wiki/entities/roboparty.md、wiki/overview/roboparty-lab-party-os-technology-map.md；规范仓仍为 zju3dv/INTACT-JEPA，训练代码 Coming Soon
+
+- **触发：** 用户提供 Roboparty/INTACT-JEPA + lab.roboparty.com 口径（LeWM 学动作效果 / INTACT 补意图→动作；Direct 宏 ~95.33%，2.9–5.5 ms，约 300×）
+- **开源复核（步骤 2.5）：** `Roboparty/INTACT-JEPA` 为 `zju3dv/INTACT-JEPA` 的 **fork 镜像**（文档同构；训练/权重仍 Coming Soon）
+- **新增归档：** [`sources/repos/roboparty-intact-jepa.md`](sources/repos/roboparty-intact-jepa.md)；同步 [`intact-jepa.md`](sources/repos/intact-jepa.md)、[`intact_arxiv_2607_26056.md`](sources/papers/intact_arxiv_2607_26056.md)、[`intact-jepa-github-io.md`](sources/sites/intact-jepa-github-io.md)、[`lab_roboparty_com.md`](sources/sites/lab_roboparty_com.md)、[`sources/README.md`](sources/README.md)
+- **wiki：** [`wiki/entities/paper-intact.md`](wiki/entities/paper-intact.md) 强化 LeWM↔INTACT 叙事与双仓链接；[`wiki/entities/roboparty.md`](wiki/entities/roboparty.md)、[`wiki/overview/roboparty-lab-party-os-technology-map.md`](wiki/overview/roboparty-lab-party-os-technology-map.md) 挂接 Lab 成果
+
 ## [2026-07-30] structural | scripts/generate_link_graph.py + docs/graph.html — 命名社区上限 16→21（显示总数目标约 20，含其他）；社区漂浮标签 2D/3D 字号分离，排除「其他」漂浮
 
 - **社区上限：** `PRIMARY_COMMUNITY_CAP` / `MAX_COMMUNITIES` **16 → 21**（命名席位不含兜底桶；含 `community-other` 时图例总数 = 命名 + 1，目标约 20）

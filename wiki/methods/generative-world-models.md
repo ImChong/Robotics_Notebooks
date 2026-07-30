@@ -279,6 +279,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [Spark（Web 3DGS）](../entities/spark-3dgs-renderer.md) — LoD splat 树、.RAD 流式与 splat 分页（Spark 2.0）。
 - [Aholo Viewer](../entities/aholo-viewer.md) — Chunked Streaming LoD + 3DGS/Mesh 混渲。
 - [DWM（Dexterous World Models）](./dwm.md) — 已知静态 3D 场景上的场景–手条件视频扩散与残差动力学学习。
+- [INTACT](../entities/paper-intact.md) — 同构意图→动作无搜索 JEPA（相对 LeWM+CEM；文档仓 Coming Soon）。
 - [mimic-video（Video-Action Model）](./mimic-video.md) — 互联网视频骨干潜计划 + 流匹配动作解码器的操作策略。
 - [MolmoMotion](../entities/molmo-motion.md) — 语言条件 **3D 点轨迹** 预测 + MolmoMotion-1M / PointMotionBench（arXiv:2606.18558）。
 - [X-World](../entities/paper-x-world.md) — 小鹏 **7 摄动作条件** 驾驶世界模型（arXiv:2603.19979）。

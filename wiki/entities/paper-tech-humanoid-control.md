@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, reinforcement-learning, unsupervised-rl, bfm, behavior-foundation-model, motion-tracking, contrastive-learning, temporal-distance, whole-body-control, unitree-g1, roboparty, mjlab]
 status: complete
-updated: 2026-07-14
+updated: 2026-07-30
 venue: "2026 · RoboParty Lab"
 code: https://github.com/Roboparty/UFO
 summary: "TeCH：RoboParty Lab 基于 TLDR 对比时间距离表征的无监督人形全身控制；隐空间密集进度奖励 + off-policy 训练，零样本跟踪/目标到达；G1 上跟踪精度对标 SONIC(TER.) 且 GPU 小时降近两个数量级，真机抗扰与跌倒恢复优于监督跟踪基线。"

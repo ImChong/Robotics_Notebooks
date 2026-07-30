@@ -10,8 +10,10 @@
 - **入库日期：** 2026-07-30
 - **最后更新：** 2026-07-30
 - **项目页：** <https://zju3dv.github.io/INTACT-JEPA/>
-- **代码：** <https://github.com/zju3dv/INTACT-JEPA>（MIT；**代码/权重 Coming Soon**，文档与结果审计已上）
-- **一句话说明：** 端到端 JEPA：共享四槽语法把物理意图与部署意图映射为动作律，使条件均值成为无搜索策略；LeWM 四任务 Direct 2.9–5.5 ms，宏成功率约 95%。
+- **代码（规范仓）：** <https://github.com/zju3dv/INTACT-JEPA>（MIT；**代码/权重 Coming Soon**，文档与结果审计已上）
+- **代码（RoboParty 镜像）：** <https://github.com/Roboparty/INTACT-JEPA>（fork；同内容）
+- **Lab：** <https://lab.roboparty.com/>
+- **一句话说明：** 端到端 JEPA：共享四槽语法把物理意图与部署意图映射为动作律，使条件均值成为无搜索策略；LeWM 四任务 Direct 2.9–5.5 ms，宏成功率约 95%（相对宽搜索 CEM 延迟约 **300×**）。
 
 ## 核心论文摘录（MVP）
 
@@ -46,7 +48,8 @@
 ### 4) 局限与开源（§6 / 步骤 2.5）
 
 - **局限：** 三 seed 粗糙；动作商仅在示范支撑上可辨；Direct 高斯可能掩盖多模态；gauge 等价依赖任务流形。
-- **开源核查（2026-07-30）：** 项目页 <https://zju3dv.github.io/INTACT-JEPA/> + 仓 `zju3dv/INTACT-JEPA`（MIT）已上线方法/结果/复现文档；`docs/RELEASE.md` 标明训练代码与 checkpoint **Coming Soon / Stage 0–1** → **部分开源（文档与仓库骨架；可运行训练/推理入口待发）**。
+- **开源核查（2026-07-30）：** 项目页 <https://zju3dv.github.io/INTACT-JEPA/> + 规范仓 `zju3dv/INTACT-JEPA`（MIT）已上线方法/结果/复现文档；`docs/RELEASE.md` 标明训练代码与 checkpoint **Coming Soon / Stage 0–1** → **部分开源（文档与仓库骨架；可运行训练/推理入口待发）**。RoboParty 组织另有 fork 镜像 `Roboparty/INTACT-JEPA`（同 Stage，便于 Lab 导航）。
+- **与 LeWM 的分工（宣传/README_CN 口径）：** LeWM 类前向 latent WM 学「动作会产生什么效果」；INTACT 补「为了实现意图应执行什么动作」的同构读出，使部署不必再宽搜动作序列。
 
 ## 关键数字速查
 
@@ -62,7 +65,9 @@
 ## 其他公开资料
 
 - **项目页：** [sites/intact-jepa-github-io.md](../sites/intact-jepa-github-io.md)
-- **仓库：** [repos/intact-jepa.md](../repos/intact-jepa.md)
+- **规范仓：** [repos/intact-jepa.md](../repos/intact-jepa.md)
+- **RoboParty 镜像：** [repos/roboparty-intact-jepa.md](../repos/roboparty-intact-jepa.md)
+- **Lab：** [sites/lab_roboparty_com.md](../sites/lab_roboparty_com.md)
 - **arXiv HTML：** <https://arxiv.org/html/2607.26056>
 
 ## 当前提炼状态
