@@ -123,7 +123,7 @@ flowchart LR
 | benchmark | IsaacSim 4.2.0.2 + IsaacLab 1.2.0；HTTP API 将 planner 与异步 MPC follower 解耦 |
 | 评测 | `eval_nogoal_wheeled.py`、`eval_pointgoal_wheeled.py`、`eval_imagegoal_wheeled.py` |
 | 资产 | InternScene-N1 / InternData-N1 在 Hugging Face；大体积且版本依赖严格 |
-| checkpoint | README 的最新 checkpoint 需要 Google Form 获取，故“代码已开源”不等于无门槛离线复现 |
+| checkpoint | README 当前提供的 checkpoint 需要 Google Form 获取，故“代码已开源”不等于无门槛离线复现 |
 | 许可 | 仓库 API 未声明 license 文件；README 明确称 open-sourced code 为 **CC BY-NC-SA 4.0**，商用需特别核查 |
 
 ## 源码运行时序图
