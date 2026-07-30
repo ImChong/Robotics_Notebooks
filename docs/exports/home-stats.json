@@ -1,13 +1,86 @@
 {
   "generated_at": "2026-07-30",
-  "node_count": 1979,
-  "edge_count": 17550,
+  "node_count": 1980,
+  "edge_count": 17562,
   "coverage": {
-    "covered": 1929,
-    "total": 1955,
+    "covered": 1930,
+    "total": 1956,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-shells-layered-surface-sampling.md",
+      "detail_id": "entity-paper-shells-layered-surface-sampling",
+      "label": "SHELLS（分层采样多视角人头重建）",
+      "type": "entity",
+      "recency": "2026-07-30",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-face-anything-4d-face-reconstruction.md",
+      "detail_id": "entity-paper-face-anything-4d-face-reconstruction",
+      "label": "Face Anything",
+      "type": "entity",
+      "recency": "2026-07-30",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/entities/gnm-head.md",
+      "detail_id": "entity-gnm-head",
+      "label": "GNM Head（GNM 生态）",
+      "type": "entity",
+      "recency": "2026-07-30",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/concepts/visual-representation-for-policy.md",
+      "detail_id": "wiki-concepts-visual-representation-for-policy",
+      "label": "视觉表征作为策略输入（Visual Representation for Policy）",
+      "type": "concept",
+      "recency": "2026-07-30",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-07-30",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/queries/humanoid-training-data-pipeline.md",
+      "detail_id": "wiki-queries-humanoid-training-data-pipeline",
+      "label": "人形训练数据管线选型指南",
+      "type": "query",
+      "recency": "2026-07-30",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/tasks/teleoperation.md",
+      "detail_id": "wiki-tasks-teleoperation",
+      "label": "Teleoperation（遥操作）",
+      "type": "task",
+      "recency": "2026-07-30",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/paper-prism.md",
       "detail_id": "entity-paper-prism",
@@ -136,86 +209,17 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/tasks/teleoperation.md",
-      "detail_id": "wiki-tasks-teleoperation",
-      "label": "Teleoperation（遥操作）",
-      "type": "task",
-      "recency": "2026-07-30",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-softvtbench.md",
-      "detail_id": "entity-paper-softvtbench",
-      "label": "SoftVTBench（安全感知视触觉可变形操作基准 · arXiv:2607.04234）",
-      "type": "entity",
-      "recency": "2026-07-29",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/concepts/visuo-tactile-fusion.md",
-      "detail_id": "wiki-concepts-visuo-tactile-fusion",
-      "label": "视触觉融合（Visuo-Tactile Fusion）",
-      "type": "concept",
-      "recency": "2026-07-29",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/concepts/tactile-sensing.md",
-      "detail_id": "wiki-concepts-tactile-sensing",
-      "label": "Tactile Sensing（触觉感知）",
-      "type": "concept",
-      "recency": "2026-07-29",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/overview/topic-tactile.md",
-      "detail_id": "wiki-overview-topic-tactile",
-      "label": "触觉与力觉（专题汇总）",
-      "type": "overview",
-      "recency": "2026-07-29",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/overview/topic-embodied-eval-benchmark.md",
-      "detail_id": "wiki-overview-topic-embodied-eval-benchmark",
-      "label": "具身评测基准选型闭环（专题汇总）",
-      "type": "overview",
-      "recency": "2026-07-29",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/queries/embodied-eval-benchmark-selection-loop.md",
-      "detail_id": "wiki-queries-embodied-eval-benchmark-selection-loop",
-      "label": "Query：具身大模型评测基准选型闭环知识链",
-      "type": "query",
-      "recency": "2026-07-29",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-prism.md",
-    "detail_id": "entity-paper-prism",
-    "label": "PRISM：交互结构的多项式本体表征",
+    "path": "wiki/entities/paper-shells-layered-surface-sampling.md",
+    "detail_id": "entity-paper-shells-layered-surface-sampling",
+    "label": "SHELLS（分层采样多视角人头重建）",
     "type": "entity",
     "recency": "2026-07-30",
     "source": "log.md",
     "action": "maintained",
-    "has_repo": true
+    "community_label": "模仿学习（Imitation Learning, IL） 社区"
   },
   "top_communities": [
     {
@@ -236,7 +240,7 @@
     },
     {
       "label": "模仿学习",
-      "size": 156
+      "size": 157
     },
     {
       "label": "人形强化学习运动控制",
@@ -255,7 +259,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 367,
+      "degree": 369,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

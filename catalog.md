@@ -1071,6 +1071,7 @@
 - [Senna（Senna: Bridging Large Vision-Language Models and End-to-End Autonomous Driving · arXiv:2410.22313）](wiki/entities/paper-senna.md) — Senna**（*Senna: Bridging Large Vision-Language Models and End-to-End Autonomous Driving*，[2410.223 `📅unknown` `[entity_page]`
 - [SENTINEL](wiki/entities/paper-sentinel.md) — SENTINEL**（*A Fully End-to-End Language-Action Model for Humanoid Robots*，arXiv:2511.19236）将自然语言与本 `📅unknown` `[entity_page]`
 - [Shape Your Body：多具身价值梯度机器人共设计](wiki/entities/paper-shape-your-body-value-gradient-design.md) — Shape Your Body**（Bohlinger & Peters，TU Darmstadt；[项目页](https://nico-bohlinger.github.io/shape-you `📅unknown` `[entity_page]`
+- [SHELLS（分层采样多视角人头重建）](wiki/entities/paper-shells-layered-surface-sampling.md) — SHELLS**（*Semantic Head Estimation via Layered Local Sampling*；论文 *Topologically Consistent Multi- `📅unknown` `[entity_page]`
 - [TesserAct](wiki/entities/paper-shenlan-wm-01-tesseract.md) — TesserAct: Learning 4D Embodied World Models** 收录于 [深蓝具身智能 · 世界模型 15 开源项目专题](https://mp.weixin.qq. `📅unknown` `[entity_page]`
 - [Video Prediction Policy (VPP)](wiki/entities/paper-shenlan-wm-02-vpp.md) — Video Prediction Policy (VPP)** 收录于 [深蓝具身智能 · 世界模型 15 开源项目专题](https://mp.weixin.qq.com/s/KZT8sI4n7 `📅unknown` `[entity_page]`
 - [LaPA](wiki/entities/paper-shenlan-wm-03-lapa.md) — LaPA: Latent Action Pretraining from Videos** 收录于 [深蓝具身智能 · 世界模型 15 开源项目专题](https://mp.weixin.qq.c `📅unknown` `[entity_page]`

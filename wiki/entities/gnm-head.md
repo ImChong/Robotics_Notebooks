@@ -2,10 +2,11 @@
 type: entity
 tags: [perception, 3dmm, face-model, human-mesh, open-source, google, parametric-model]
 status: complete
-updated: 2026-07-20
+updated: 2026-07-30
 related:
   - ./sam-3d-body.md
   - ./paper-face-anything-4d-face-reconstruction.md
+  - ./paper-shells-layered-surface-sampling.md
   - ../concepts/motion-retargeting-pipeline.md
   - ../methods/wilor.md
 sources:
@@ -77,6 +78,7 @@ flowchart LR
 
 - [SAM 3D Body](./sam-3d-body.md) — 全身 MHR 网格恢复，与头脸专用 3DMM 互补
 - [FaceAnything（4D 脸重建）](./paper-face-anything-4d-face-reconstruction.md) — 单目视频 4D 脸管线，上游可用 MediaPipe 等采样
+- [SHELLS](./paper-shells-layered-surface-sampling.md) — 多视角前馈注册稠密语义网格；论文展示可作快速建 3DMM 的上游
 - [WiLoR](../methods/wilor.md) — 手部精细 MANO 估计，与头脸模型常并联
 - [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) — 人体感知 → 机器人参考运动总览
 
