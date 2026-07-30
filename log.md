@@ -1,8 +1,8 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
-## [2026-07-30] structural | scripts/generate_link_graph.py + docs/graph.html — 命名社区上限 16→20；社区漂浮标签 2D/3D 字号缩放分离（2D 8–28 / 3D 8–16），排除「其他」漂浮
+## [2026-07-30] structural | scripts/generate_link_graph.py + docs/graph.html — 命名社区上限 16→21（显示总数目标约 20，含其他）；社区漂浮标签 2D/3D 字号分离，排除「其他」漂浮
 
-- **社区上限：** `PRIMARY_COMMUNITY_CAP` / `MAX_COMMUNITIES` **16 → 20**（兜底桶 `community-other` 仍单独存在）
+- **社区上限：** `PRIMARY_COMMUNITY_CAP` / `MAX_COMMUNITIES` **16 → 21**（命名席位不含兜底桶；含 `community-other` 时图例总数 = 命名 + 1，目标约 20）
 - **漂浮标签：** 2D 保持 8–28px；3D 专用 8–16px + 相机 scale 钳制收窄至约 0.4–1.85；`community-other` 不漂浮
 - **页面：** [`docs/graph.html`](docs/graph.html)、[`docs/graph-3d.js`](docs/graph-3d.js)
 

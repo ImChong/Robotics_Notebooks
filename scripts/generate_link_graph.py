@@ -101,9 +101,10 @@ INSTITUTION_REGISTRY: dict[str, dict[str, Any]] = _load_institution_registry(
 INSTITUTION_ALIAS_MAP: dict[str, str] = _build_institution_alias_map(INSTITUTION_REGISTRY)
 
 # 主社区检测（Louvain）合并后的目标社区数上限（与 MAX_COMMUNITIES 命名席位对齐）。
-PRIMARY_COMMUNITY_CAP = 20
-# 输出中显式命名的最多社区数：二级拆分后给细分社区更多席位，避免大量节点落入"其他社区"。
-MAX_COMMUNITIES = 20
+# 命名席位上限 21（不含兜底桶）；含 community-other 时图例总数 = 命名数 + 1，目标显示约 20。
+PRIMARY_COMMUNITY_CAP = 21
+# 显式命名席位上限（不含 community-other）；溢出并入「其他」。
+MAX_COMMUNITIES = 21
 OTHER_COMMUNITY_ID = "community-other"
 OTHER_COMMUNITY_LABEL = "其他（Other） 社区"
 
