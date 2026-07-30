@@ -740,7 +740,7 @@
     .node-label { transition: opacity .15s; }
 
     /* 社区聚类中心漂浮标签（2D 画布）：胶囊卡片 = 社区色圆角底 + 亮度自适应文字
-       字号由 JS 按社区节点数在 10–22px 间缩放，此处仅作兜底 */
+       字号由 JS 按社区节点数在 8–28px 间缩放（排除「其他」兜底社区），此处仅作兜底 */
     .community-label { pointer-events: none; user-select: none; }
     .community-label-bg {
       filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.35));
@@ -2265,6 +2265,11 @@
     // 提前声明：社区标签默认开启后，simulation tick → updateCommunityLabels → hasActiveGraphFilter
     // 会在下方「搜索」区块初始化前读到 searchQuery；用 let 晚声明会踩 TDZ。
     let searchQuery = '';
+    // 兜底桶不漂浮（与 scripts/generate_link_graph.py OTHER_COMMUNITY_ID 对齐）；图例/筛选仍显示
+    const OTHER_COMMUNITY_ID = 'community-other';
+    function isFloatingCommunityLabelId(id) {
+      return !!id && id !== OTHER_COMMUNITY_ID;
+    }
 
     function communityLabelsVisible() {
       return showCommunityLabels && colorMode === 'community' && !timelineAnimating;
@@ -2392,18 +2397,20 @@
         areCommunityLabelsVisible: () => communityLabelsVisible(),
         getCommunityLabelDescriptors: () => {
           const sizeRange = communityLabelSizeRange();
-          return getSortedCommunities().map((community) => {
-            const color = communityColorMap.get(community.id) || COMMUNITY_COLORS[9];
-            const count = community.size || 0;
-            return {
-              id: community.id,
-              label: shortCommunityLabel(community.id),
-              color,
-              textColor: communityLabelTextColor(color),
-              count,
-              fontSize: communityLabelFontSize(count, sizeRange.min, sizeRange.max),
-            };
-          });
+          return getSortedCommunities()
+            .filter((community) => isFloatingCommunityLabelId(community.id))
+            .map((community) => {
+              const color = communityColorMap.get(community.id) || COMMUNITY_COLORS[9];
+              const count = community.size || 0;
+              return {
+                id: community.id,
+                label: shortCommunityLabel(community.id),
+                color,
+                textColor: communityLabelTextColor(color),
+                count,
+                fontSize: communityLabelFontSize(count, sizeRange.min, sizeRange.max),
+              };
+            });
         },
         onNodeClick: (d, ev) => {
           if (timelinePlaying) return;
@@ -3150,7 +3157,7 @@
       const acc = new Map();
       const hasFilter = hasActiveGraphFilter();
       for (const d of nodes) {
-        if (!d.community) continue;
+        if (!d.community || !isFloatingCommunityLabelId(d.community)) continue;
         if (hasFilter && !visibleNodeIds.has(d.id)) continue;
         let a = acc.get(d.community);
         if (!a) { a = { sx: 0, sy: 0, n: 0 }; acc.set(d.community, a); }
@@ -3161,12 +3168,14 @@
       return out;
     }
 
-    // 漂浮标签字号随社区节点数变化：最小 10px / 最大 22px，按 √n 插值（缓和大小社区落差）
-    const COMMUNITY_LABEL_FONT_MIN = 10;
-    const COMMUNITY_LABEL_FONT_MAX = 22;
+    // 漂浮标签字号随社区节点数变化：最小 8px / 最大 28px，按 √n 插值（2D 一眼可辨大小社区）
+    const COMMUNITY_LABEL_FONT_MIN = 8;
+    const COMMUNITY_LABEL_FONT_MAX = 28;
 
     function communityLabelSizeRange() {
+      // 字号区间只看会漂浮的命名社区，排除「其他」兜底桶以免拉高上界
       const sizes = getSortedCommunities()
+        .filter((c) => isFloatingCommunityLabelId(c.id))
         .map((c) => c.size || 0)
         .filter((n) => n > 0);
       if (!sizes.length) return { min: 1, max: 1 };

@@ -521,7 +521,7 @@
         el.textContent = desc.label;
         el.style.background = desc.color;
         el.style.color = desc.textColor;
-        // 字号随社区节点数缩放（由 graph.html 按 10–22px / √n 算好传入）；内边距相对 13px 基准等比
+        // 字号随社区节点数缩放（由 graph.html 按 8–28px / √n 算好传入，已排除「其他」）；内边距相对 13px 基准等比
         // 移动端再乘系数并收紧内边距，避免胶囊挡住大量节点
         var fontSize = (desc.fontSize != null && isFinite(desc.fontSize)) ? desc.fontSize : 13;
         var mobile = isMobileCommunityLabelLayout();
