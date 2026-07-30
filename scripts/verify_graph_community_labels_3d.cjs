@@ -191,14 +191,62 @@ const path = require('path');
       `before=${scaleAfterZoomIn} after=${s.sampleScale}`);
     await page.screenshot({ path: path.join(outDir, 'graph-community-labels-3d-zoomed-out.png') });
 
-    // 取消勾选 → 全部隐藏
-    await page.click('#check-community-labels');
+    // 适配屏幕飞行期间胶囊 scale 应锁定为落稳尺寸，不再忽大忽小闪一下
+    await page.evaluate(() => {
+      const view = window.__RN_GRAPH3D_VIEW__;
+      if (view && view.dollyZoom) view.dollyZoom(1.6, 0);
+    });
+    await new Promise((r) => setTimeout(r, 200));
+    const fitFlash = await page.evaluate(async () => {
+      const view = window.__RN_GRAPH3D_VIEW__;
+      const btn = document.getElementById('fit-to-screen');
+      if (!view || !btn) return { ok: false, reason: 'missing-view-or-btn' };
+      const before = view.getCommunityLabelZoomScale();
+      btn.click();
+      const samples = [];
+      // 用固定间隔采样，避免单帧 rAF 在 evaluate 里被合并成一次
+      for (let i = 0; i < 16; i++) {
+        samples.push(view.getCommunityLabelZoomScale());
+        await new Promise((r) => setTimeout(r, 40));
+      }
+      await new Promise((r) => setTimeout(r, 120));
+      const after = view.getCommunityLabelZoomScale();
+      const min = Math.min(...samples);
+      const max = Math.max(...samples);
+      return {
+        ok: true,
+        before,
+        after,
+        sampleCount: samples.length,
+        min,
+        max,
+        span: max - min,
+        // 飞行中应贴近落稳 scale≈1（桌面），允许极小数值噪声
+        stable: max - min < 0.08 && min > 0.85 && max < 1.15,
+      };
+    });
+    check('3D 适配屏幕：飞行中社区标签 scale 不闪烁',
+      fitFlash.ok === true && fitFlash.stable === true,
+      JSON.stringify(fitFlash));
+    await page.screenshot({ path: path.join(outDir, 'graph-community-labels-3d-after-fit.png') });
+
+    // 取消勾选 → 全部隐藏（参数面板可能被工具条遮挡，用 JS 切换更稳）
+    await page.evaluate(() => {
+      const panel = document.getElementById('physics-panel');
+      const toggle = document.getElementById('physics-toggle');
+      if (panel && panel.hidden && toggle) toggle.click();
+      const cb = document.getElementById('check-community-labels');
+      if (cb && cb.checked) cb.click();
+    });
     await new Promise((r) => setTimeout(r, 500));
     s = await labelState();
     check('3D 取消勾选：标签全部隐藏', s.visibleCount === 0, `visible=${s.visibleCount}`);
 
     // 重新勾选，切到按类型 → 置灰 + 隐藏
-    await page.click('#check-community-labels');
+    await page.evaluate(() => {
+      const cb = document.getElementById('check-community-labels');
+      if (cb && !cb.checked) cb.click();
+    });
     await new Promise((r) => setTimeout(r, 400));
     await page.evaluate(() => document.getElementById('filter-mode-type').click());
     await new Promise((r) => setTimeout(r, 600));
