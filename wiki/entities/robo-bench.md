@@ -2,11 +2,12 @@
 type: entity
 tags: [benchmark, embodied-ai, mllm, vla, manipulation, evaluation, pku, baai, huggingface, open-source]
 status: complete
-updated: 2026-07-27
+updated: 2026-07-30
 related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
   - ./esi-bench.md
+  - ./paper-daily-omni.md
   - ./ewmbench.md
   - ./paper-vesta-generalist-embodied-reasoning.md
   - ./paper-hrl-stack-34-gr00t_n1.md
@@ -72,6 +73,7 @@ summary: "RoboBench（arXiv:2510.17801，ECCV 2026）系统评测 MLLM 作为操
 |------|----------|----------|-------------------|
 | **RoboBench** | MLLM 作为 **embodied brain** | 被动 QA（多图 + 语言） | 操纵流水线 **五维认知** + 规划世界模拟 |
 | [ESI-Bench](./esi-bench.md) | MLLM **空间智能** | **主动探索** 闭环（OmniGibson） | 强调遮挡/容纳等 **隐藏空间结构**；少覆盖操纵 affordance 与失败诊断 |
+| [Daily-Omni](./paper-daily-omni.md) | OLM/MLLM **跨模态时序对齐** | 被动 **音视频** MCQA | 日常开放域 AV Align；不覆盖操纵 affordance / 失败诊断 |
 | [EWMBench](./ewmbench.md) | **具身世界模型** 视频生成 | 开环视频 rollout | 评场景/运动/语义一致性，非 MLLM 高层推理题集 |
 | EmbodiedBench / EmbodiedEval | 导航+操作+QA 综合 | 具身环境交互 | 更偏 **端到端 agent**；RoboBench 更细粒度拆 **System 2 认知轴** |
 
@@ -133,6 +135,7 @@ flowchart TB
 - [VLA（Vision-Language-Action）](../methods/vla.md) — 双系统架构与 RoboBench 所评 System 2 骨干
 - [Manipulation（操作任务）](../tasks/manipulation.md) — 任务域与 CALVIN / LIBERO 等下游评测背景
 - [ESI-Bench（具身空间智能基准）](./esi-bench.md) — 主动空间探索 vs 操纵流水线认知的互补基准
+- [Daily-Omni（日常 AV 时序对齐）](./paper-daily-omni.md) — 音视频跨模态同步诊断 vs 操纵五维认知
 - [EWMBench（具身世界模型生成评测）](./ewmbench.md) — 像素域世界模型质量评测对照
 - [Vesta（通用具身推理）](./paper-vesta-generalist-embodied-reasoning.md) — 同类「高层 cognition + 低层 actor」分层路线
 - [Manipulation VLA 架构选型](../queries/manipulation-vla-architecture-selection.md) — VLM 骨干选型时可参考 RoboBench 维度分数

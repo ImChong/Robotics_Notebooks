@@ -2,12 +2,13 @@
 type: entity
 tags: [humanoid, hardware, open-source, agibot, zhiyuan]
 status: complete
-updated: 2026-05-18
+updated: 2026-07-30
 related:
   - ./humanoid-robot.md
   - ./open-source-humanoid-hardware.md
   - ../overview/robot-open-source-wechat-issue01-curator.md
   - ./ewmbench.md
+  - ./paper-daily-omni.md
 sources:
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md
 summary: "智元机器人（Agibot）灵犀 X1：硬件设计资料、训练/推理代码与搭建指南集中在官网文档中心；GitHub 以 AgibotTech 组织为入口。"
@@ -25,11 +26,13 @@ summary: "智元机器人（Agibot）灵犀 X1：硬件设计资料、训练/推
 |------|----------|----------|
 | BOM | Bill of Materials | 物料清单，硬件零部件列表 |
 | SOP | Standard Operating Procedure | 标准操作流程，如渐进式真机验证 |
+| AVQA | Audio-Visual Question Answering | 音视频问答；X-Lab omni 预览模型曾登 Daily-Omni 榜 |
 
 ## 为什么重要
 
 - **整机 + 工具链叙事**：与具身学习里 **Agibot-World** 等数据子集可在同一研究语境下出现（见 [EWMBench](./ewmbench.md)）。
 - **复现前 checklist**：文档中心将组装、调试、部署串成流程，适合实验室 onboarding。
+- **多模态读榜**：AGIBOT X-Lab **WITA-Omni Preview** 曾登 [Daily-Omni](./paper-daily-omni.md) AV 全模态榜首（闭源预览，非本页硬件仓）。
 
 ## 开源入口（策展摘录）
 
@@ -43,6 +46,7 @@ summary: "智元机器人（Agibot）灵犀 X1：硬件设计资料、训练/推
 - [人形机器人](./humanoid-robot.md)
 - [开源人形硬件方案对比](./open-source-humanoid-hardware.md)
 - [机器人开源宝库（微信策展第01期）索引](../overview/robot-open-source-wechat-issue01-curator.md)
+- [Daily-Omni](./paper-daily-omni.md) — X-Lab WITA-Omni Preview 登榜语境
 
 ## 推荐继续阅读
 

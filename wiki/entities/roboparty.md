@@ -2,7 +2,7 @@
 type: entity
 tags: [roboparty, humanoid, open-source, hardware, infrastructure]
 status: complete
-updated: 2026-07-14
+updated: 2026-07-30
 related:
   - ./roboto-origin.md
   - ./party-os.md
@@ -13,15 +13,18 @@ related:
   - ./roboparty-ufo.md
   - ./human-humanoid-tools.md
   - ./paper-tech-humanoid-control.md
+  - ./paper-intact.md
   - ./unitree.md
 sources:
+  - ../../sources/repos/roboparty-train.md
   - ../../sources/sites/roboparty_com.md
   - ../../sources/sites/lab_roboparty_com.md
   - ../../sources/sites/roboparty_com_roboto_origin_doc.md
   - ../../sources/repos/roboto_origin.md
   - ../../sources/repos/party_os.md
+  - ../../sources/repos/roboparty-intact-jepa.md
   - ../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md
-summary: "RoboParty（上海萝博派对科技）是国内专注全栈开源双足人形的创业公司：Roboto Origin 整机开源基线 + RoboParty Lab / Party OS 研发基础设施（MimicLite、UFO、hhtools）。"
+summary: "RoboParty（上海萝博派对科技）是国内专注全栈开源双足人形的创业公司：Roboto Origin 整机开源基线 + RoboParty Lab / Party OS 研发基础设施（MimicLite、UFO、hhtools）；Lab 联署 INTACT 等世界模型工作。"
 ---
 
 # RoboParty（萝博派对）
@@ -44,7 +47,7 @@ summary: "RoboParty（上海萝博派对科技）是国内专注全栈开源双�
 
 1. **开源人形的新范式**：不只开源代码片段，而是公开硬件 BOM、训练、部署与 Know-How 文档，把「黑盒整机」拆成可学习、可复现的工程系统。
 2. **整机 → 基础设施的演进**：2026 年起从 [Roboto Origin](./roboto-origin.md) 走向 [Party OS](./party-os.md)，显式解决年轻研究者「idea 输在基建」的问题。
-3. **工程与学术双线**：Lab 侧同时推进 MimicLite（监督跟踪）、UFO（无监督 RL）、[TeCH](./paper-tech-humanoid-control.md) 等可对标 SONIC / BFM-Zero 的产出，并与 [mjlab](./mjlab.md) 等训练栈对齐。
+3. **工程与学术双线**：Lab 侧同时推进 MimicLite（监督跟踪）、UFO（无监督 RL）、[TeCH](./paper-tech-humanoid-control.md) 等可对标 SONIC / BFM-Zero 的产出，并与 [mjlab](./mjlab.md) 等训练栈对齐；另联署 [INTACT](./paper-intact.md)（意图→动作无搜索世界模型，组织镜像 [Roboparty/INTACT-JEPA](https://github.com/Roboparty/INTACT-JEPA)）。
 4. **生态位**：在国内开源人形谱系中与 [OpenLoong](./openloong.md)、[Berkeley Humanoid Lite](./berkeley-humanoid-lite.md) 等形成不同门槛与软件栈的对照（见 [开源人形硬件对比](./open-source-humanoid-hardware.md)）。
 
 ## 核心结构
@@ -89,13 +92,21 @@ flowchart TB
 | 2026-01 | 全栈开源 Roboto Origin |
 | 2026-04 | AGIBOT World Challenge Reasoning to Action **全球第三** |
 | 2026-05 | 天使+轮（顺为领投、小米战投追加） |
-| 2026-07 | RoboParty Lab 成立；Party OS 首批三项工具链开源（见公众号一手） |
+| 2026-07 | RoboParty Lab 成立；Party OS 首批三项工具链开源（见公众号一手）；Lab 联署 [INTACT](./paper-intact.md)（arXiv:2607.26056） |
 
 ## 常见误区 / 局限
 
 - **误区 1：把 RoboParty 等同于单一仓库。** 整机开发在 `rpo_*` / `roboparty_*` 子仓；Lab 工具在 MimicLite、UFO、hhtools 等独立仓；聚合仓仅作导航。
 - **误区 2：认为开源即低成本量产。** 文档强调淘宝采购 + 嘉立创打样可复刻，但仍需较强 Linux/ROS2/硬件调试能力；工业级可靠性与认证不在当前公开范围。
 - **局限：** 商业产品线（如 Roboto 01）与 RP1 发布节奏在公开资料中仍在演进，wiki 以已开源模块与 Lab 已发布工具为准。
+
+## HMI 开源主表入口
+
+[roboparty_train](https://github.com/Roboparty/roboparty_train) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)。
+
+主表定位：以 Git 子模块组织训练生态，串起 GMR 动作准备、AMP/BeyondMimic、跑酷任务、ONNX 导出与 MuJoCo Sim2Sim。本库以 RoboParty 组织页承载该训练入口，不另建 `roboparty-train` 实体。
+
+覆盖核对见 [HMI 开源项目主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)。
 
 ## 关联页面
 
@@ -105,6 +116,7 @@ flowchart TB
 - [开源人形机器人硬件方案对比](./open-source-humanoid-hardware.md)
 - [MimicLite](./mimiclite.md) · [UFO](./roboparty-ufo.md) · [human-humanoid-tools](./human-humanoid-tools.md)
 - [TeCH 论文实体](./paper-tech-humanoid-control.md)
+- [INTACT 论文实体](./paper-intact.md) — Lab 联署意图→动作无搜索 WM
 
 ## 推荐继续阅读
 
@@ -112,6 +124,7 @@ flowchart TB
 - [Roboto Origin 文档站](https://roboparty.com/roboto_origin/doc)
 - [RoboParty Lab](https://lab.roboparty.com)
 - [Party OS GitHub](https://github.com/Roboparty/Party_OS)
+- [INTACT 组织镜像](https://github.com/Roboparty/INTACT-JEPA)
 
 ## 参考来源
 
@@ -120,4 +133,5 @@ flowchart TB
 - [roboparty_com_roboto_origin_doc.md](../../sources/sites/roboparty_com_roboto_origin_doc.md)
 - [roboto_origin.md](../../sources/repos/roboto_origin.md)
 - [party_os.md](../../sources/repos/party_os.md)
+- [roboparty-intact-jepa.md](../../sources/repos/roboparty-intact-jepa.md)
 - [wechat_roboparty_lab_party_os_3_tools.md](../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md)

@@ -7,7 +7,8 @@
 - **机构：** 机器人派对（RoboParty）· RoboParty Lab
 - **类型：** site（实验室门户）
 - **入库日期：** 2026-07-14
-- **一句话说明：** RoboParty 面向全球开发者的人形机器人开放实验室站点：Party OS 四方向路线图、MimicLite/UFO/hhtools 三项开源项目入口、TeCH 等成果展示与荣誉列表。
+- **最后更新：** 2026-07-30
+- **一句话说明：** RoboParty 面向全球开发者的人形机器人开放实验室站点：Party OS 四方向路线图、MimicLite/UFO/hhtools 三项开源项目入口、TeCH / INTACT 等成果展示与荣誉列表。
 
 ## 为什么值得保留
 
@@ -45,6 +46,7 @@
 ### 最新成果
 
 - **TeCH**：时间距离建模 + 对比表征学习的人形全身运动基础模型 → 详情见 [roboparty_lab_tech_humanoid_control.md](roboparty_lab_tech_humanoid_control.md)
+- **INTACT**（Lab 联署，arXiv:2607.26056）：同构意图→动作无搜索世界模型；规范仓 [zju3dv/INTACT-JEPA](https://github.com/zju3dv/INTACT-JEPA)，组织镜像 [Roboparty/INTACT-JEPA](https://github.com/Roboparty/INTACT-JEPA)；训练代码 Coming Soon → 见 [intact_arxiv_2607_26056.md](../papers/intact_arxiv_2607_26056.md)、[roboparty-intact-jepa.md](../repos/roboparty-intact-jepa.md)
 
 ### 荣誉与认可（页面列表）
 
@@ -64,4 +66,4 @@
 ## 对 wiki 的映射
 
 - 交叉更新：[`wiki/entities/roboparty.md`](../../wiki/entities/roboparty.md)、[`wiki/entities/party-os.md`](../../wiki/entities/party-os.md)、[`wiki/overview/roboparty-lab-party-os-technology-map.md`](../../wiki/overview/roboparty-lab-party-os-technology-map.md)
-- 子实体：[`mimiclite`](../../wiki/entities/mimiclite.md)、[`roboparty-ufo`](../../wiki/entities/roboparty-ufo.md)、[`human-humanoid-tools`](../../wiki/entities/human-humanoid-tools.md)、[`paper-tech-humanoid-control`](../../wiki/entities/paper-tech-humanoid-control.md)
+- 子实体：[`mimiclite`](../../wiki/entities/mimiclite.md)、[`roboparty-ufo`](../../wiki/entities/roboparty-ufo.md)、[`human-humanoid-tools`](../../wiki/entities/human-humanoid-tools.md)、[`paper-tech-humanoid-control`](../../wiki/entities/paper-tech-humanoid-control.md)、[`paper-intact`](../../wiki/entities/paper-intact.md)

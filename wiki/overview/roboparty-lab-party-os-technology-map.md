@@ -2,13 +2,14 @@
 type: overview
 tags: [roboparty, humanoid, open-source, infrastructure, motion-tracking, unsupervised-rl, motion-retargeting, survey]
 status: complete
-updated: 2026-07-14
+updated: 2026-07-30
 related:
   - ../entities/roboparty.md
   - ../entities/party-os.md
   - ../entities/mimiclite.md
   - ../entities/roboparty-ufo.md
   - ../entities/paper-tech-humanoid-control.md
+  - ../entities/paper-intact.md
   - ../entities/human-humanoid-tools.md
   - ../entities/roboto-origin.md
   - ./bfm-41-papers-technology-map.md
@@ -24,9 +25,10 @@ sources:
   - ../../sources/repos/party_os.md
   - ../../sources/repos/mimiclite.md
   - ../../sources/repos/roboparty_ufo.md
+  - ../../sources/repos/roboparty-intact-jepa.md
   - ../../sources/sites/roboparty_lab_tech_humanoid_control.md
   - ../../sources/repos/human_humanoid_tools.md
-summary: "依据 RoboParty 2026-07 Lab 成立公众号，把 Party OS 首批三项开源工具整理为「数据/重定向 → 监督跟踪 → 无监督控制 → 跨 codebase 部署」技术地图；核心判断：从 ROBOTO Origin 单机开源走向可复用人形研发基础设施。"
+summary: "依据 RoboParty 2026-07 Lab 成立公众号，把 Party OS 首批三项开源工具整理为「数据/重定向 → 监督跟踪 → 无监督控制 → 跨 codebase 部署」技术地图；并挂接 Lab 联署的 INTACT 无搜索世界模型；核心判断：从 ROBOTO Origin 单机开源走向可复用人形研发基础设施。"
 ---
 
 # RoboParty Lab / Party OS 技术地图
@@ -104,6 +106,14 @@ flowchart LR
 | Humanoid Whole-Body Manipulation | BFM 运控基座 + 可 scale 的 VLA / World Model |
 | Agentic Humanoid | Agent + Skills 低成本高智能 |
 
+## Lab 联署：意图→动作世界模型
+
+| 工作 | 一句话 | Wiki |
+|------|--------|------|
+| **INTACT**（arXiv:2607.26056） | LeWM 学「动作→效果」；INTACT 补「意图→动作」同构读出，Direct **2.9–5.5 ms**、四任务宏 SR ~**95%**（相对宽搜约 **300×**） | [paper-intact](../entities/paper-intact.md) |
+
+开源边界：规范仓 [zju3dv/INTACT-JEPA](https://github.com/zju3dv/INTACT-JEPA) + 组织镜像 [Roboparty/INTACT-JEPA](https://github.com/Roboparty/INTACT-JEPA)；训练/权重 **Coming Soon**（文档仓，非可训通实现）。
+
 ## 文内收束判断（策展）
 
 | 判断 | 含义 |
@@ -113,6 +123,7 @@ flowchart LR
 | UFO 补无监督线 | 与 MimicLite 监督跟踪形成 **互补**；集成 BFM-Zero 与 [TeCH](../entities/paper-tech-humanoid-control.md)（TLDR 时间距离表征） |
 | hhtools 降上游摩擦 | Any Motion / Any URDF / R2R 把 retarget 从「每机型定制脚本」推向 **工作台** |
 | 演进叙事 | ROBOTO Origin → RoboParty Lab：从单机开源到 **持续生长的开放技术系统** |
+| WM 接口 | [INTACT](../entities/paper-intact.md) 把 Manipulation 方向的 World Model 从「预测+搜索」推进到 **无搜索意图读出**（代码仍 Coming Soon） |
 
 ## 关联页面
 
@@ -120,6 +131,7 @@ flowchart LR
 - [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md)
 - [mjlab](../entities/mjlab.md)
 - [BFM-Zero（论文实体）](../entities/paper-bfm-zero.md)
+- [INTACT（意图→动作无搜索 WM）](../entities/paper-intact.md)
 - [行为基础模型](../concepts/behavior-foundation-model.md)
 - [Newton Physics](../entities/newton-physics.md)
 - [Teleoperation](../tasks/teleoperation.md)
@@ -132,6 +144,7 @@ flowchart LR
 - [party_os.md](../../sources/repos/party_os.md)
 - [mimiclite.md](../../sources/repos/mimiclite.md)
 - [roboparty_ufo.md](../../sources/repos/roboparty_ufo.md)
+- [roboparty-intact-jepa.md](../../sources/repos/roboparty-intact-jepa.md)
 - [roboparty_lab_tech_humanoid_control.md](../../sources/sites/roboparty_lab_tech_humanoid_control.md)
 - [human_humanoid_tools.md](../../sources/repos/human_humanoid_tools.md)
 
@@ -139,6 +152,7 @@ flowchart LR
 
 - [RoboParty Lab 官网](https://lab.roboparty.com)
 - [TeCH 成果页（RoboParty Lab）](https://lab.roboparty.com/outputs/tech)
+- [INTACT 项目页](https://zju3dv.github.io/INTACT-JEPA/)
 - [Party OS GitHub](https://github.com/Roboparty/Party_OS)
 - [Roboto Origin 实体页](../entities/roboto-origin.md)
 - [RoboParty 公司实体页](../entities/roboparty.md)

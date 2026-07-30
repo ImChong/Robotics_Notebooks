@@ -2,7 +2,7 @@
 type: entity
 tags: [agibot, motion-control, bfm, whole-body-control]
 status: complete
-updated: 2026-06-26
+updated: 2026-07-30
 related:
   - ../overview/agibot-june-2026-release-technology-map.md
   - ../overview/agibot-release-category-05-body-foundations.md
@@ -10,6 +10,7 @@ related:
   - ../concepts/behavior-foundation-model.md
   - ./agibot-agile.md
 sources:
+  - ../../sources/sites/motion-between-bfm-2.md
   - ../../sources/blogs/wechat_embodied_ai_lab_agibot_june_2026_release.md
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
 summary: "BFM-2 是智元公开的运动小脑运控基座：二阶段 Motion-Between 设计，强调动作间稳定过渡与动态任务闭环；与 awesome-bfm-papers 学术索引及 paper-bfm-* 实体不同物。"
@@ -48,6 +49,14 @@ summary: "BFM-2 是智元公开的运动小脑运控基座：二阶段 Motion-Be
 ## 信息边界
 
 - 截至 ingest 时，公开材料主要为 **视频标题与简介**（无字幕全文）；技术细节须以后续论文/仓库为准。
+
+## HMI 开源主表入口
+
+[Motion-Between BFM-2](https://www.agibot.com.cn/article/315/detail/161.html) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)。
+
+主表定位：当前全身动力学、接触状态与高层目标构型条件化二阶段 Motion-Between，为 VLA 提供身体层执行接口；公开材料尚不足以判断控制频率与跨本体范围。本库以本页为详情节点，不另建重复实体。
+
+覆盖核对见 [HMI 开源项目主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)。
 
 ## 关联页面
 

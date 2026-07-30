@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, open-source, infrastructure, roboparty, motion-tracking, reinforcement-learning, motion-retargeting]
 status: complete
-updated: 2026-07-14
+updated: 2026-07-30
 related:
   - ./roboparty.md
   - ../overview/roboparty-lab-party-os-technology-map.md
