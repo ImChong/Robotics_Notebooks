@@ -1784,7 +1784,7 @@
 
       <div class="slider-row">
         <label class="physics-toggle" for="check-recency-dim"
-               title="按节点更新时间调整明暗：最新节点最亮，越旧越暗；无更新日期的节点按最暗显示（均保持可见）">
+               title="按节点更新时间指数调整明暗：越新越亮（近期更陡），越旧越暗；无更新日期的节点按最暗显示（均保持可见）">
           <input type="checkbox" id="check-recency-dim" />
           <span>🕰 更新明度渐变</span>
         </label>
@@ -2271,9 +2271,12 @@
       if (communityLabelsToggleEl) communityLabelsToggleEl.classList.toggle('is-disabled', !enabled);
     }
 
-    /* ── 更新明度渐变：按 recency 把节点明暗映射到 [RECENCY_DIM_MIN, 1]；
-       最暗下限保证旧节点仍然可见；2D / 3D 共享同一开关 ── */
+    /* ── 更新明度渐变：按 activity 把节点明暗映射到 [RECENCY_DIM_MIN, 1]；
+       使用指数曲线（越新越亮、近期更陡）；最暗下限保证旧节点仍可见；
+       2D / 3D 共享同一开关 ── */
     const RECENCY_DIM_MIN = 0.35;
+    /* 指数陡度：越大则明暗越集中在最近更新；k=3 时中位时间约 0.18 相对亮度 */
+    const RECENCY_DIM_EXP_K = 3;
     let recencyDimEnabled = false;
     const checkRecencyDimEl = document.getElementById('check-recency-dim');
 
@@ -2798,7 +2801,9 @@
     const edges = graphData.edges.map(e => ({ ...e }));
 
     /* ── 更新明度渐变：节点时间口径对齐「更新记录」页（log.md 最近活跃日 activity），
-       把明暗系数线性映射到 [RECENCY_DIM_MIN, 1]；
+       把归一化时间 t∈[0,1]（0=最旧，1=最新）经指数曲线
+         f(t)=(e^{k t}-1)/(e^k-1)
+       映射到 [RECENCY_DIM_MIN, 1]，使越新的节点越明亮、近期对比更陡；
        无更新日期（无 activity）的节点按最暗 RECENCY_DIM_MIN 处理 ── */
     (function assignRecencyDim() {
       let minTs = Infinity;
@@ -2812,14 +2817,19 @@
         }
       });
       const span = maxTs - minTs;
+      const expDen = Math.expm1(RECENCY_DIM_EXP_K);
       nodes.forEach(n => {
         if (n._recencyTs === null) {
           n._recencyDim = RECENCY_DIM_MIN;
           return;
         }
-        n._recencyDim = span > 0
-          ? RECENCY_DIM_MIN + (1 - RECENCY_DIM_MIN) * ((n._recencyTs - minTs) / span)
-          : 1;
+        if (!(span > 0)) {
+          n._recencyDim = 1;
+          return;
+        }
+        const tNorm = (n._recencyTs - minTs) / span;
+        const curve = Math.expm1(RECENCY_DIM_EXP_K * tNorm) / expDen;
+        n._recencyDim = RECENCY_DIM_MIN + (1 - RECENCY_DIM_MIN) * curve;
       });
     })();
 
