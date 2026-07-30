@@ -140,10 +140,10 @@ const path = require('path');
     check('3D 默认开启：位置用 translate3d（非 left/top）', s.usesTransform === true);
     check('3D 默认开启：transform 含 scale（随相机缩放）', s.usesZoomScale === true,
       `sample=${s.sample && s.sample[0] && s.sample[0].transform}`);
-    check('3D 默认开启：字号随社区节点数缩放（约 8–28px 且差异更明显）',
+    check('3D 默认开启：字号随社区节点数缩放（3D 专用约 8–16px，小于 2D）',
       s.fontMin != null && s.fontMax != null
-        && s.fontMin >= 7.5 && s.fontMax <= 28.5
-        && (s.fontMax - s.fontMin) >= 12,
+        && s.fontMin >= 7.5 && s.fontMax <= 16.5
+        && (s.fontMax - s.fontMin) >= 4,
       `min=${s.fontMin} max=${s.fontMax}`);
     console.log('  标签示例:', JSON.stringify(s.sample));
     await page.screenshot({ path: path.join(outDir, 'graph-community-labels-3d-on.png') });

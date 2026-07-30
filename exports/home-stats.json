@@ -232,24 +232,24 @@
   },
   "top_communities": [
     {
-      "label": "仿真到现实",
-      "size": 203
-    },
-    {
-      "label": "人形论文深读笔记",
-      "size": 200
-    },
-    {
       "label": "移动操作",
       "size": 182
     },
     {
-      "label": "视觉-语言-动作",
-      "size": 175
+      "label": "仿真到现实",
+      "size": 157
     },
     {
       "label": "模仿学习",
       "size": 153
+    },
+    {
+      "label": "视觉-语言-动作",
+      "size": 146
+    },
+    {
+      "label": "人形论文深读笔记",
+      "size": 142
     },
     {
       "label": "人形强化学习运动控制",
@@ -300,15 +300,15 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 284,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "degree": 284
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
       "degree": 275,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
     {
       "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",

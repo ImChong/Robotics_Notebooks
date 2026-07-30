@@ -521,7 +521,7 @@
         el.textContent = desc.label;
         el.style.background = desc.color;
         el.style.color = desc.textColor;
-        // 字号随社区节点数缩放（由 graph.html 按 8–28px / √n 算好传入，已排除「其他」）；内边距相对 13px 基准等比
+        // 字号随社区节点数缩放（由 graph.html 按 3D 专用 8–16px / √n 算好传入，已排除「其他」）；内边距相对 13px 基准等比
         // 移动端再乘系数并收紧内边距，避免胶囊挡住大量节点
         var fontSize = (desc.fontSize != null && isFinite(desc.fontSize)) ? desc.fontSize : 13;
         var mobile = isMobileCommunityLabelLayout();
@@ -579,7 +579,8 @@
           Math.min(MOBILE_COMMUNITY_LABEL_ZOOM_MAX, zf * MOBILE_COMMUNITY_LABEL_ZOOM_FACTOR)
         );
       }
-      return Math.max(0.35, Math.min(2.75, zf));
+      // 桌面端相机缩放钳制收窄（原 2.75 偏夸张，与字号区间收窄配套）
+      return Math.max(0.4, Math.min(1.85, zf));
     }
 
     // 沿视线推进/拉远相机（factor>1 放大），供验证与程序化缩放

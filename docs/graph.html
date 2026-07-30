@@ -740,7 +740,7 @@
     .node-label { transition: opacity .15s; }
 
     /* 社区聚类中心漂浮标签（2D 画布）：胶囊卡片 = 社区色圆角底 + 亮度自适应文字
-       字号由 JS 按社区节点数在 8–28px 间缩放（排除「其他」兜底社区），此处仅作兜底 */
+       2D 字号 8–28px；3D 另用 8–16px（排除「其他」兜底社区），此处仅作 2D 兜底 */
     .community-label { pointer-events: none; user-select: none; }
     .community-label-bg {
       filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.35));
@@ -2408,7 +2408,7 @@
                 color,
                 textColor: communityLabelTextColor(color),
                 count,
-                fontSize: communityLabelFontSize(count, sizeRange.min, sizeRange.max),
+                fontSize: communityLabelFontSize3D(count, sizeRange.min, sizeRange.max),
               };
             });
         },
@@ -3168,9 +3168,11 @@
       return out;
     }
 
-    // 漂浮标签字号随社区节点数变化：最小 8px / 最大 28px，按 √n 插值（2D 一眼可辨大小社区）
-    const COMMUNITY_LABEL_FONT_MIN = 8;
-    const COMMUNITY_LABEL_FONT_MAX = 28;
+    // 漂浮标签字号：2D / 3D 分开。2D 8–28px 便于分辨大小社区；3D 另叠加相机 scale，字号收窄为 8–16px
+    const COMMUNITY_LABEL_FONT_MIN_2D = 8;
+    const COMMUNITY_LABEL_FONT_MAX_2D = 28;
+    const COMMUNITY_LABEL_FONT_MIN_3D = 8;
+    const COMMUNITY_LABEL_FONT_MAX_3D = 16;
 
     function communityLabelSizeRange() {
       // 字号区间只看会漂浮的命名社区，排除「其他」兜底桶以免拉高上界
@@ -3182,16 +3184,31 @@
       return { min: Math.min(...sizes), max: Math.max(...sizes) };
     }
 
-    function communityLabelFontSize(count, countMin, countMax) {
+    function communityLabelFontSize(count, countMin, countMax, fontMin, fontMax) {
+      const lo = fontMin != null ? fontMin : COMMUNITY_LABEL_FONT_MIN_2D;
+      const hi = fontMax != null ? fontMax : COMMUNITY_LABEL_FONT_MAX_2D;
       const n = Math.max(0, Number(count) || 0);
       if (countMax <= countMin) {
-        return (COMMUNITY_LABEL_FONT_MIN + COMMUNITY_LABEL_FONT_MAX) / 2;
+        return (lo + hi) / 2;
       }
       const clamped = Math.max(countMin, Math.min(countMax, n));
       const t = (Math.sqrt(clamped) - Math.sqrt(countMin))
         / (Math.sqrt(countMax) - Math.sqrt(countMin));
-      return COMMUNITY_LABEL_FONT_MIN
-        + Math.max(0, Math.min(1, t)) * (COMMUNITY_LABEL_FONT_MAX - COMMUNITY_LABEL_FONT_MIN);
+      return lo + Math.max(0, Math.min(1, t)) * (hi - lo);
+    }
+
+    function communityLabelFontSize2D(count, countMin, countMax) {
+      return communityLabelFontSize(
+        count, countMin, countMax,
+        COMMUNITY_LABEL_FONT_MIN_2D, COMMUNITY_LABEL_FONT_MAX_2D
+      );
+    }
+
+    function communityLabelFontSize3D(count, countMin, countMax) {
+      return communityLabelFontSize(
+        count, countMin, countMax,
+        COMMUNITY_LABEL_FONT_MIN_3D, COMMUNITY_LABEL_FONT_MAX_3D
+      );
     }
 
     // 胶囊底色为社区色，文字色按底色亮度自适应（深色底白字 / 浅色底深色字）
@@ -3226,7 +3243,7 @@
         .attr('font-size', d => {
           const meta = communityMetaMap.get(d.id);
           const count = (meta && meta.size != null) ? meta.size : d.n;
-          return communityLabelFontSize(count, sizeRange.min, sizeRange.max) + 'px';
+          return communityLabelFontSize2D(count, sizeRange.min, sizeRange.max) + 'px';
         })
         .attr('fill', d => communityLabelTextColor(communityColorMap.get(d.id)));
       sel.select('rect.community-label-bg')
@@ -3238,7 +3255,7 @@
         if (!textEl) return;
         const meta = communityMetaMap.get(d.id);
         const count = (meta && meta.size != null) ? meta.size : d.n;
-        const fontSize = communityLabelFontSize(count, sizeRange.min, sizeRange.max);
+        const fontSize = communityLabelFontSize2D(count, sizeRange.min, sizeRange.max);
         const sizedKey = shortCommunityLabel(d.id) + '|' + fontSize.toFixed(2);
         if (this.__labelSizedKey === sizedKey) return;
         const scale = fontSize / 13;
