@@ -222,7 +222,87 @@ body.sponsor-dialog-open {
   padding: 12px 20px 20px;
 }
 
-.hero { padding: 40px 0 40px; }
+/* ── 首页 Landing 首屏 ─────────────────────────────────────────────
+   .hero 只用于 index.html（其余页面用 .page-hero），可独立调整。
+   与 #home-start 的 padding-top:0 配合，Hero + 入口卡片读作同一屏。 */
+.hero {
+  position: relative;
+  padding: 68px 0 44px;
+  isolation: isolate;
+}
+/* 氛围层：左上角柔光 + 向下渐隐的点阵，给首屏一点「地图 / 图纸」质感 */
+.hero-backdrop {
+  position: absolute;
+  inset: calc(var(--header-h) * -1) 0 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  background: radial-gradient(
+    76% 116% at 4% -14%,
+    color-mix(in srgb, var(--accent) 18%, transparent) 0%,
+    transparent 60%
+  );
+}
+.hero-backdrop::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--border-strong) 1px, transparent 1px);
+  background-size: 26px 26px;
+  opacity: 0.2;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 78%);
+  mask-image: linear-gradient(180deg, #000 0%, transparent 78%);
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 22px;
+  padding: 5px 14px 5px 11px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.hero-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+.hero .hero-title {
+  font-size: clamp(2.05rem, 5vw, 3.35rem);
+  margin-bottom: 18px;
+}
+.hero .hero-subtitle {
+  font-size: clamp(1rem, 1.5vw, 1.18rem);
+  max-width: 48ch;
+  margin-bottom: 30px;
+}
+.hero .hero-subtitle strong { color: var(--text); font-weight: 650; }
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 44px;
+  max-width: 560px;
+  margin: 0;
+  padding: 22px 0 0;
+  list-style: none;
+  border-top: 1px solid var(--border);
+}
+.hero-stat { display: flex; flex-direction: column; gap: 3px; }
+.hero-stat-num {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.hero-stat-label { font-size: 0.82rem; font-weight: 500; color: var(--text-muted); }
 .hero-kicker {
   font-size: 0.85rem;
   color: var(--text-muted);
@@ -243,16 +323,6 @@ body.sponsor-dialog-open {
   margin-bottom: 20px; 
   max-width: 62ch;
   line-height: 1.4;
-}
-.hero-stat-row-mini {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  display: flex;
-  gap: 20px;
-}
-.hero-stat-row-mini span {
-  color: var(--text);
-  font-weight: 600;
 }
 .cta-row {
   display: flex;
@@ -2261,8 +2331,12 @@ button.home-wiki-heatmap-cell.is-active {
     line-height: 1;
   }
   .hero {
-    padding: 28px 0 28px;
+    padding: 38px 0 30px;
   }
+  .hero-badge { margin-bottom: 16px; }
+  .hero .hero-subtitle { margin-bottom: 24px; }
+  .hero-stats { gap: 14px 28px; padding-top: 18px; }
+  .hero-stat-num { font-size: 1.4rem; }
   .page-hero {
     padding: 34px 0 12px;
   }
@@ -2287,7 +2361,7 @@ button.home-wiki-heatmap-cell.is-active {
   .section {
     padding: 30px 0;
   }
-  .hero-grid, .card-grid, .preview-home-layout, .preview-split-grid, .detail-hero-top, .route-card-grid { grid-template-columns: 1fr; }
+  .card-grid, .preview-home-layout, .preview-split-grid, .detail-hero-top, .route-card-grid { grid-template-columns: 1fr; }
   .home-entry-route-links {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
