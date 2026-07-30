@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-30] structural | media/site-demo.gif — 按最新图谱重录 README 演示 GIF
+
+- **脚本：** [`scripts/record_readme_demo.cjs`](scripts/record_readme_demo.cjs)（70 frames / 3.21 MB；图谱 **2031** 节点 / **17987** 边）
+- **流程：** `make export graph` → `docs/` 本地 `http.server 8765` → 录制首页入口 / 搜索 / 迷你图谱 / 全图悬停·缩放·侧栏 / 3D 切换
+- **引用：** [`README.md`](README.md)「在线演示」仍指向 `media/site-demo.gif`
+
 ## [2026-07-30] fix | scripts/utils/community_labels.py — 为 HMI 本库导读页补 COMMUNITY_NAME_OVERRIDES，修复 Tests 社区命名断言
 
 - **原因：** 枢纽 H1「HMI 开源项目主表 · 本库导读」不符合 `中文（English）` 社区命名正则（须以中文开头）
