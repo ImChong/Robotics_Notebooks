@@ -1,3 +1,9 @@
+## [2026-07-31] fix | docs/main.js + docs/style.css — 首页「项目查询」点击卡顿：立刻聚焦、近中心即描边、静默预取搜索索引
+
+- **问题：** 点击「项目查询」后需等 `scrollend`（或 700ms fallback）才聚焦/播描边；同时 focus 同步写「加载中…」并拉取解析大体积 `search-index.json`，主线程卡一下再跳
+- **修复：** 点击立刻 `focus({preventScroll})`；rAF 检测接近视口中心即 `playCardBorderTrace`；空查询静默预取；`pointerdown`/`mouseenter`/idle 预取索引；描边布局推迟到下一帧；去掉描边 `drop-shadow`
+- **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md)
+
 ## [2026-07-31] fix | docs/graph-3d.js — 3D 社区漂浮标签按画布分辨率连续缩放，避免过小/过大
 
 - **问题：** 旧逻辑在移动端/粗指针上字号×0.55 且相机 zoom 再×0.55，手机/平板有效字号可落到 ~3–5px；桌面端字号固定 8–16px，900–2560 宽度几乎不变，大屏相对过小

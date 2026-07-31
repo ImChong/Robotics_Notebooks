@@ -519,7 +519,7 @@ a.hero-stat-num:focus-visible {
   stroke-width: 2.5;
   stroke-linecap: round;
   vector-effect: non-scaling-stroke;
-  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--accent) 70%, transparent));
+  /* 避免对动画中的 dashoffset 每帧做 drop-shadow（主线程/合成开销大，点击后易卡） */
   stroke-dasharray: 14 86;
   stroke-dashoffset: 0;
   animation: home-border-trace-dash 2.1s linear forwards;
