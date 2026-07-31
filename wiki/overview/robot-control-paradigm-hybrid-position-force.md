@@ -16,7 +16,7 @@ related:
   - ../methods/admittance-control.md
   - ../concepts/hybrid-force-position-control.md
   - ../methods/direct-force-feedback-control.md
-  - ../overview/topic-contact-force-control.md
+  - ../overview/depth-contact-force-control.md
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
 ---
@@ -66,7 +66,7 @@ sources:
 ## 关联页面
 
 - [Impedance Control](../concepts/impedance-control.md)
-- [Topic: Contact Force Control](../overview/topic-contact-force-control.md)
+- [Topic: Contact Force Control](../overview/depth-contact-force-control.md)
 
 ## 参考来源
 

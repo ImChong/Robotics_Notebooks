@@ -113,7 +113,7 @@ flowchart LR
 ### 推荐读什么
 - [时钟同步算法](../wiki/concepts/clock-synchronization-algorithms.md)（本仓库）— PTP / 分布式时钟统一框架
 - [UDP 组播动力学](../wiki/formalizations/udp-multicast-dynamics.md)（本仓库）— 丢包-迟到-乱序-不一致四类随机过程
-- [硬件通信与协议专题](../wiki/overview/topic-communication.md)（本仓库）— 底层数据链路选型
+- [硬件通信与协议纵深](../wiki/overview/depth-communication.md)（本仓库）— 底层数据链路选型
 - [Balance Recovery 任务页](../wiki/tasks/balance-recovery.md)（本仓库）— 摔倒恢复是失步容错的底座
 
 ### 学完输出什么

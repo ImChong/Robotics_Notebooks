@@ -1,14 +1,14 @@
 ---
 type: overview
-tags: [topic, topic-vla, vision-language-action, foundation, manipulation]
+tags: [depth, depth-vla, vision-language-action, foundation, manipulation]
 status: complete
-updated: 2026-07-23
-summary: "VLA 与基础策略专题汇总：视觉-语言-动作统一建模、OpenVLA/π0/GR00T 等开源谱系，以及 BFM 身体接口与 loco-manip 任务接口；含社区多基准榜入口与驾驶 VLA（S²-VLA）锚点。"
+updated: 2026-07-31
+summary: "VLA 与基础策略纵深汇总：视觉-语言-动作统一建模、OpenVLA/π0/GR00T 等开源谱系，以及 BFM 身体接口与 loco-manip 任务接口；含社区多基准榜入口与驾驶 VLA（S²-VLA）锚点。"
 ---
 
-# VLA 与基础策略（专题汇总）
+# VLA 与基础策略（纵深汇总）
 
-> **图谱专题视图**：本页是知识图谱「👀 视觉-语言-动作 (VLA)」专题的统一入口；在 [图谱专题视图](../../docs/graph.html?topic=vla) 筛选时，本节点为汇总锚点。
+> **图谱纵深视图**：本页是知识图谱「👀 视觉-语言-动作 (VLA)」纵深的统一入口；在 [图谱纵深视图](../../docs/graph.html?depth=vla) 筛选时，本节点为汇总锚点。
 
 ## 一句话定义
 
@@ -30,7 +30,7 @@ summary: "VLA 与基础策略专题汇总：视觉-语言-动作统一建模、O
 - **与人形产业叙事同向**：「运控基座 + 任务头」分层部署。
 - **与 WBT / 抓取 / Sim2Real 交叉**：VLA 常作为高层，WBC/低层控制负责执行。
 
-## 本专题覆盖什么
+## 本纵深覆盖什么
 
 | 层次 | 典型问题 | 站内入口 |
 |------|----------|----------|
@@ -45,11 +45,11 @@ summary: "VLA 与基础策略专题汇总：视觉-语言-动作统一建模、O
 | 驾驶 VLA | 语义∥空间双流规划（NAVSIM） | [S²-VLA](../entities/paper-s-squared-vla.md) |
 | 数据 | 跨具身数据倡议 | [Open X-Embodiment](../concepts/open-x-embodiment.md) |
 
-## 与其他专题的关系
+## 与其他纵深的关系
 
-- **[IL/RL](./topic-learning.md)**：VLA 训练常混合 IL 与 RLHF/微调。
-- **[视觉骨干](./topic-vision-backbone.md)**：感知表征质量影响 VLA 上限。
-- **[WBT](./topic-wbt.md)**：全身技能与 VLA 任务接口的分层。
+- **[IL/RL](./depth-learning.md)**：VLA 训练常混合 IL 与 RLHF/微调。
+- **[视觉骨干](./depth-vision-backbone.md)**：感知表征质量影响 VLA 上限。
+- **[WBT](./depth-wbt.md)**：全身技能与 VLA 任务接口的分层。
 
 ## 关联页面
 
@@ -60,4 +60,4 @@ summary: "VLA 与基础策略专题汇总：视觉-语言-动作统一建模、O
 ## 参考来源
 
 - 本库归纳自 [VLA](../methods/vla.md)、[Behavior Foundation Model](../concepts/behavior-foundation-model.md)、[BFM 技术地图](./bfm-41-papers-technology-map.md)
-- 图谱专题定义：[docs/topic-filters.js](../../docs/topic-filters.js)（`vla` 命中规则）
+- 图谱纵深定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`vla` 命中规则）

@@ -21,7 +21,7 @@ related:
   - ./qwen-robot-nav.md
   - ../tasks/vision-language-navigation.md
   - ../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md
-  - ../overview/topic-vla.md
+  - ../overview/depth-vla.md
 sources:
   - ../../sources/papers/s_squared_vla_arxiv_2607_13926.md
 summary: "S²-VLA（arXiv:2607.13926，武汉理工）：语义流∥空间流解耦驾驶 VLA，缓解 spatial representation collapse；Dual-Stream Planning Adapter 融合；NAVSIM 纯 SFT PDMS 87.1 / NC 98.4；截至入库日未开源。"

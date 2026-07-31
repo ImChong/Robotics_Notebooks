@@ -148,22 +148,22 @@
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」专题枢纽（信息型，不阻塞 CI）（0 个）
+### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」纵深枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 接触/力控/操作概念页缺回链「接触力旋量闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
+### 💡 接触/力控/操作概念页缺回链「接触力旋量闭环」纵深枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
+### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」纵深枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
+### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」纵深枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
+### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」纵深枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」专题枢纽（信息型，不阻塞 CI）（72 个）
+### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」纵深枢纽（信息型，不阻塞 CI）（72 个）
 - wiki/comparisons/anygrasp-vs-graspnet.md
 - wiki/comparisons/cnn-vs-vit-backbones.md
 - wiki/comparisons/kalman-filter-vs-optimization-based-estimation.md

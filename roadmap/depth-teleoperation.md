@@ -150,7 +150,7 @@ flowchart LR
 - 对同一段全身遥操作分别用"逐帧硬跟踪"与"运动流形约束"低层，对比稳定性与可行域
 
 ### 推荐读什么
-- [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md) 与 [WBT 专题汇总](../wiki/overview/topic-wbt.md)（本仓库）— 全身跟踪主链路
+- [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md) 与 [WBT 纵深汇总](../wiki/overview/depth-wbt.md)（本仓库）— 全身跟踪主链路
 - [SONIC（规模化运动跟踪）](../wiki/methods/sonic-motion-tracking.md) 与 [TWIST2](../wiki/entities/paper-twist2.md)（本仓库）— 双 GMT 后端，头手三点驱动上身 + 规划补下身
 - [BFM-Zero](../wiki/entities/paper-bfm-zero.md)（本仓库）与 [BFM 纵深](depth-bfm.md)— 运动流形约束的低层，VR 遥操作是其接口之一
 - [HEFT](../wiki/entities/paper-heft.md)（本仓库）— 嘈杂 raw VR + WPC 双手负载，全尺寸 L7 重载遥操作

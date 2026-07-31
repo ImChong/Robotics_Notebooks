@@ -12,7 +12,7 @@ related:
   - ./motioncode.md
   - ../concepts/motion-retargeting.md
   - ../concepts/character-animation-vs-robotics.md
-  - ../overview/topic-motion-retargeting.md
+  - ../overview/depth-motion-retargeting.md
 sources:
   - ../../sources/sites/metahuman-com.md
   - ../../sources/sites/metahuman-epic-docs.md
@@ -111,7 +111,7 @@ flowchart LR
 - [Blender（开源 DCC 枢纽）](./blender.md)
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md)
-- [动作重定向专题汇总](../overview/topic-motion-retargeting.md)
+- [动作重定向纵深汇总](../overview/depth-motion-retargeting.md)
 - [AirSim（UE 无人机/自驾视觉仿真）](./airsim.md)
 - [MotionCode（产业侧运动数据）](./motioncode.md)
 

@@ -1,18 +1,18 @@
 ---
 type: overview
-tags: [topic, topic-systems-engineering, os, networking, distributed, deployment, realtime, security]
+tags: [depth, depth-systems-engineering, os, networking, distributed, deployment, realtime, security]
 status: complete
-updated: 2026-07-21
-summary: "机器人系统工程专题：操作系统/网络/数据面/分布式/容器可观测安全，以及 RTOS、DDS、边云、频率解耦、OTA 与安全状态机；标注已有独立节点与本次新建节点。"
+updated: 2026-07-31
+summary: "机器人系统工程纵深：操作系统/网络/数据面/分布式/容器可观测安全，以及 RTOS、DDS、边云、频率解耦、OTA 与安全状态机；标注已有独立节点与本次新建节点。"
 ---
 
-# 机器人系统工程（专题汇总）
+# 机器人系统工程（纵深汇总）
 
-> **图谱专题视图**：本页是「系统工程 / Systems Engineering」知识链入口，覆盖从 Linux 主控到云边发布的非算法基座能力。
+> **图谱纵深视图**：本页是「系统工程 / Systems Engineering」知识链入口，覆盖从 Linux 主控到云边发布的非算法基座能力。
 
 ## 一句话定义
 
-**机器人系统工程专题** 回答：策略与控制之外，真机与研发栈还依赖哪些 **操作系统、网络、数据、分布式、部署、实时与安全** 能力，以及它们在运控环路中的边界。
+**机器人系统工程纵深** 回答：策略与控制之外，真机与研发栈还依赖哪些 **操作系统、网络、数据、分布式、部署、实时与安全** 能力，以及它们在运控环路中的边界。
 
 ## 英文缩写速查
 
@@ -67,11 +67,11 @@ flowchart TB
 
 - **数据面**（DB/缓存/消息/分布式/容器/安全）服务云与边。
 - **控制面**（RTOS、总线、频率解耦、安全 FSM）服务机载截止时间。
-- 中间件选型见 [通信协议专题](./topic-communication.md)。
+- 中间件选型见 [通信协议纵深](./depth-communication.md)。
 
 ## 关联页面
 
-- [硬件通信与协议专题](./topic-communication.md)
+- [硬件通信与协议纵深](./depth-communication.md)
 - [机器人整机配电架构](../concepts/robot-power-distribution-architecture.md) · [机器人整机通信架构](../concepts/robot-onboard-communication-architecture.md)
 - [人形整机硬件设计纵深路线](../../roadmap/depth-humanoid-hardware-design.md)
 - [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md)

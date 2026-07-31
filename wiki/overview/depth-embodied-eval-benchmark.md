@@ -1,8 +1,8 @@
 ---
 type: overview
-tags: [topic, embodied-eval-benchmark, benchmark, evaluation, mllm, world-model, sim2real]
+tags: [depth, embodied-eval-benchmark, benchmark, evaluation, mllm, world-model, sim2real]
 status: complete
-updated: 2026-07-30
+updated: 2026-07-31
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/sim-vs-real-eval-gap.md
@@ -24,12 +24,12 @@ sources:
   - ../../sources/papers/daily_omni_arxiv_2505_17862.md
   - ../../sources/papers/robodojo_arxiv_2607_04434.md
   - ../../sources/papers/softvtbench_arxiv_2607_04234.md
-summary: "具身评测基准选型闭环专题枢纽：把具身大脑/MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准 四层评测，从分散的评测基准实体页收拢为一条可导航的选型链，统一各层测什么、用什么代表性基准、指标的可复现性/真实代表性/过程 vs 结果/成本取舍入口。"
+summary: "具身评测基准选型闭环纵深枢纽：把具身大脑/MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准 四层评测，从分散的评测基准实体页收拢为一条可导航的选型链，统一各层测什么、用什么代表性基准、指标的可复现性/真实代表性/过程 vs 结果/成本取舍入口。"
 ---
 
-# 具身评测基准选型闭环（专题汇总）
+# 具身评测基准选型闭环（纵深汇总）
 
-> **专题定位**：本页是「MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准」四层具身评测基准的统一入口，把近周密集 ingest 的 RoboBench / ESI-Bench / Daily-Omni / EWMBench / GigaWorld-1 等评测基准从分散的实体页收拢为一条可导航的选型链。它是「[具身大模型分类学选型闭环](./topic-embodied-foundation-model.md)」的评测姊妹篇——前者回答「选哪一类具身大模型」，本专题回答「怎么评测/证明它」。
+> **纵深定位**：本页是「MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准」四层具身评测基准的统一入口，把近周密集 ingest 的 RoboBench / ESI-Bench / Daily-Omni / EWMBench / GigaWorld-1 等评测基准从分散的实体页收拢为一条可导航的选型链。它是「[具身大模型分类学选型闭环](./depth-embodied-foundation-model.md)」的评测姊妹篇——前者回答「选哪一类具身大模型」，本纵深回答「怎么评测/证明它」。
 
 ## 一句话定义
 
@@ -69,10 +69,10 @@ summary: "具身评测基准选型闭环专题枢纽：把具身大脑/MLLM 认�
 - **代理指标 ≠ 下游收益**：世界模型视频质量高 ≠ 下游策略收益高、MLLM 认知评分高 ≠ 可执行动作能力强，跨层用代理指标要警惕。
 - **单任务过拟合 vs 跨任务泛化**：基准饱和 ≠ 真实场景就绪，评测集泄漏与分布漂移会致虚高。
 
-## 与其他专题的关系
+## 与其他纵深的关系
 
-- **[具身大模型分类学选型闭环](./topic-embodied-foundation-model.md)**：模型选型的家族谱系，本专题为其验收环节。
-- **[仿真到现实（Sim2Real）](./topic-sim2real.md)**：④ 层 sim↔real gap 校准与 sim2real 迁移共享同一物理根因。
+- **[具身大模型分类学选型闭环](./depth-embodied-foundation-model.md)**：模型选型的家族谱系，本纵深为其验收环节。
+- **[仿真到现实（Sim2Real）](./depth-sim2real.md)**：④ 层 sim↔real gap 校准与 sim2real 迁移共享同一物理根因。
 
 ## 关联页面
 

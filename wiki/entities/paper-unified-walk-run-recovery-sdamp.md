@@ -65,7 +65,7 @@ summary: "SD-AMP（arXiv:2605.18611）用投影重力门控在训练期切换 re
 | 分组 | 02 人形走跑 |
 | 索引来源 | [具身智能研究室 · AMP 运动先验专题长文](https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w) |
 
-策展导读称此文 **「最贴近人形 AMP 未来」** 之一。同专题对照：[MoRE #08](./paper-amp-survey-08-more.md) 按 **gait command** 路由多判别器 + 深度地形，SD-AMP 按 **倾角** 路由 recovery/loco、**无步态命令**；多技能姊妹篇见 [AHC #11](./paper-adaptive-humanoid-control.md)。
+策展导读称此文 **「最贴近人形 AMP 未来」** 之一。同纵深对照：[MoRE #08](./paper-amp-survey-08-more.md) 按 **gait command** 路由多判别器 + 深度地形，SD-AMP 按 **倾角** 路由 recovery/loco、**无步态命令**；多技能姊妹篇见 [AHC #11](./paper-adaptive-humanoid-control.md)。
 
 ## 流程总览
 

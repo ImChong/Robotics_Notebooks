@@ -113,9 +113,9 @@
       "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
-      "path": "wiki/overview/topic-embodied-eval-benchmark.md",
-      "detail_id": "wiki-overview-topic-embodied-eval-benchmark",
-      "label": "具身评测基准选型闭环（专题汇总）",
+      "path": "wiki/overview/depth-embodied-eval-benchmark.md",
+      "detail_id": "wiki-overview-depth-embodied-eval-benchmark",
+      "label": "具身评测基准选型闭环（纵深汇总）",
       "type": "overview",
       "recency": "2026-07-30",
       "source": "log.md",

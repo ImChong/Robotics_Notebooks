@@ -8,7 +8,7 @@ related:
   - ./dds-communication.md
   - ./lcm-basics.md
   - ./database-fundamentals.md
-  - ../overview/topic-systems-engineering.md
+  - ../overview/depth-systems-engineering.md
 sources:
   - ../../sources/sites/systems_engineering_data_distributed_primary_refs.md
 summary: "消息系统可靠性（队列、重复消费、顺序、幂等）：云边任务与遥测管道语义；对比 DDS/LCM 的实时发布订阅。"

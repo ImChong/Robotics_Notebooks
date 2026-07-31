@@ -80,7 +80,7 @@ flowchart LR
 - 对比"逐帧跟踪 reward"与"跟踪 + AMP 风格"两种训法下出拳动作的力量感差异
 
 ### 推荐读什么
-- [WBT 专题](../wiki/overview/topic-wbt.md) 与 [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md)（本仓库）
+- [WBT 纵深](../wiki/overview/depth-wbt.md) 与 [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md)（本仓库）
 - [GMR 重定向](../wiki/methods/motion-retargeting-gmr.md) 与 [Motion Retargeting](../wiki/concepts/motion-retargeting.md)（本仓库）
 - [DeepMimic](../wiki/methods/deepmimic.md) 与 [AMP](../wiki/methods/amp-reward.md)（本仓库）
 - [Query：人形运动跟踪方法选型](../wiki/queries/humanoid-motion-tracking-method-selection.md)（本仓库）

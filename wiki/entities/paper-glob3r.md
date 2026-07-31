@@ -8,7 +8,7 @@ venue: "arXiv 2026"
 related:
   - ../methods/lingbot-map.md
   - ../concepts/state-estimation.md
-  - ../overview/topic-state-estimation.md
+  - ../overview/depth-state-estimation.md
   - ../overview/navigation-slam-autonomy-stack.md
   - ../concepts/3d-spatial-vqa.md
   - ../formalizations/se3-representation.md
@@ -142,7 +142,7 @@ pose graph 边携带相对位姿与 track 权重：先稳健旋转平均，再�
 
 - [LingBot-Map](../methods/lingbot-map.md) — 流式前馈 3D 重建对照（论文基线之一）
 - [State Estimation](../concepts/state-estimation.md) — 视觉几何估计在控制链上游的位置
-- [状态估计专题](../overview/topic-state-estimation.md) — SLAM / VIO 入口
+- [状态估计纵深](../overview/depth-state-estimation.md) — SLAM / VIO 入口
 - [导航·SLAM 开源栈总览](../overview/navigation-slam-autonomy-stack.md) — 经典 SLAM 工程栈对照
 - [3D 空间 VQA](../concepts/3d-spatial-vqa.md) — 几何先验与空间推理下游
 - [SE(3) 表示](../formalizations/se3-representation.md) — 位姿形式化底座

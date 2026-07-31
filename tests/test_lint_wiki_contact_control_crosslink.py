@@ -61,7 +61,7 @@ def test_topic_hub_backlink_also_passes(tmp_path: Path, monkeypatch) -> None:
     page = wiki / "concepts" / "force-control-basics.md"
     page.write_text(
         "---\ntype: concept\ntags: [control, manipulation, force-control]\n---\n"
-        "力控基础，见专题 [接触力控](../overview/topic-contact-force-control.md)。\n",
+        "力控基础，见纵深 [接触力控](../overview/depth-contact-force-control.md)。\n",
         encoding="utf-8",
     )
     results = _run([page])

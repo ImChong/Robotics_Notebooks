@@ -120,7 +120,7 @@ flowchart TB
 ## 与其他页面的关系
 
 - [wm-action-consequence-category-01-wam-action-prediction](../overview/wm-action-consequence-category-01-wam-action-prediction.md) — WAM 直接执行/修正/筛选分类 hub
-- [动作后果技术地图](../overview/robot-world-models-action-consequence-technology-map.md) — 本专题总览
+- [动作后果技术地图](../overview/robot-world-models-action-consequence-technology-map.md) — 本纵深总览
 - [World Action Models](../concepts/world-action-models.md) — Joint WAM 概念坐标
 - [VLA](../methods/vla.md) — DeMaVLA / π 系反应式对照
 - [Generative World Models](../methods/generative-world-models.md) — 视频 co-training 与部署解耦语境

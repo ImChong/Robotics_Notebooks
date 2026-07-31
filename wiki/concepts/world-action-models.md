@@ -228,7 +228,7 @@ flowchart TB
 - [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md)
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [Model-Based RL](../methods/model-based-rl.md)
-- [具身大模型分类学选型闭环（专题枢纽）](../overview/topic-embodied-foundation-model.md) — WAM 对应五层闭环的世界模型推演层
+- [具身大模型分类学选型闭环（纵深枢纽）](../overview/depth-embodied-foundation-model.md) — WAM 对应五层闭环的世界模型推演层
 - [Query：具身大模型分类学选型闭环知识链](../queries/embodied-fm-taxonomy-loop.md) — WAM 是五层选型闭环 **⑤ 世界模型推演层** 的 **联合建模** 范式（`p(o',a|o,l)` 前向预测与动作生成耦合），与生成式世界模型的「级联预演」范式并列
 
 ## 推荐继续阅读

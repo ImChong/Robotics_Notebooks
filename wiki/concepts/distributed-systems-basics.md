@@ -8,7 +8,7 @@ related:
   - ./database-fundamentals.md
   - ./container-orchestration-cicd.md
   - ./robot-safety-state-machine.md
-  - ../overview/topic-systems-engineering.md
+  - ../overview/depth-systems-engineering.md
 sources:
   - ../../sources/sites/systems_engineering_data_distributed_primary_refs.md
 summary: "分布式系统基础（CAP、选主、一致性、超时、重试）：云边与多机协同的取舍框架；强调机载安全逻辑不可依赖网络选主。"

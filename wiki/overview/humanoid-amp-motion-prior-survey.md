@@ -186,7 +186,7 @@ flowchart TB
 ## 参考来源
 
 - [万字长文，读懂人形机器人 AMP：20 篇论文搭起的运动先验圣经（微信公众号原文）](https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w)
-- [具身智能研究室 · AMP 专题（仓库内归档）](../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md)
+- [具身智能研究室 · AMP 纵深（仓库内归档）](../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md)
 - [AMP 原始论文索引（SIGGRAPH 2021）](../../sources/papers/amp.md)
 - [42 篇 RL 运动控制姊妹篇（仓库内归档）](../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)
 

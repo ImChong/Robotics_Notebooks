@@ -46,7 +46,7 @@ sources:
 
 - **野外可持续穿越：** 相对 PHP、Deep Whole-body Parkour 等，更强调 **楼梯、沟壑、高台、坡地、边缘密集区** 的**持续通过**而非单障碍特技。
 - **开源可复现：** 训练与部署代码开源（项目页）；相对同类工作「少开源」的痛点。
-- **AMP 专题交叉：** 总奖励 $R=r_{\mathrm{task}}+r_{\mathrm{reg}}+r_{\mathrm{safe}}+r_{\mathrm{amp}}$；消融去掉 AMP 在 Small Box 上 **0% vs 99.09%**——说明感知跑酷仍需要 **运动先验/自然性** 正则。
+- **AMP 纵深交叉：** 总奖励 $R=r_{\mathrm{task}}+r_{\mathrm{reg}}+r_{\mathrm{safe}}+r_{\mathrm{amp}}$；消融去掉 AMP 在 Small Box 上 **0% vs 99.09%**——说明感知跑酷仍需要 **运动先验/自然性** 正则。
 - **与 MoRE 姊妹：** [MoRE #08](./paper-amp-survey-08-more.md) 两阶段「先穿越再 AMP」；Hiking **单阶段** 深度 E2E + AMP 项并联。
 
 ## 流程总览

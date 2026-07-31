@@ -11,7 +11,7 @@ related:
   - ../concepts/contact-rich-manipulation.md
   - ../concepts/world-action-models.md
   - ../methods/vla.md
-  - ../overview/topic-tactile.md
+  - ../overview/depth-tactile.md
   - ./paper-vt-wam-visuotactile-contact-rich.md
   - ./roboscience-vloa.md
 sources:
@@ -135,7 +135,7 @@ flowchart LR
 
 - [𝒩₀-Foundation](./paper-n0-foundation.md) · [𝒩₀-VTLA](./paper-n0-vtla.md) · [𝒩₀-TWAM](./paper-n0-twam.md)
 - [视触觉融合](../concepts/visuo-tactile-fusion.md) · [接触丰富操作](../concepts/contact-rich-manipulation.md)
-- [触觉专题](../overview/topic-tactile.md) · [VT-WAM](./paper-vt-wam-visuotactile-contact-rich.md)
+- [触觉纵深](../overview/depth-tactile.md) · [VT-WAM](./paper-vt-wam-visuotactile-contact-rich.md)
 
 ## 参考来源
 

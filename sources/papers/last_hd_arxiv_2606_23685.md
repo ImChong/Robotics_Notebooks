@@ -43,7 +43,7 @@
 
 **对 wiki 的映射：**
 - [LaST-HD](../../wiki/entities/paper-last-hd-latent-physical-reasoning.md) — 数据采集硬件与两阶段训练配方
-- [跨具身迁移专题](../../wiki/overview/topic-cross-embodiment.md) — 人→机器人数据缩放案例
+- [跨具身迁移专题](../../wiki/overview/depth-cross-embodiment.md) — 人→机器人数据缩放案例
 
 ## 摘录 4：实验设置与主要结论（§4）
 

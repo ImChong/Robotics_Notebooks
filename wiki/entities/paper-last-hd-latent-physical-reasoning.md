@@ -9,7 +9,7 @@ related:
   - ../methods/vla.md
   - ../methods/imitation-learning.md
   - ../concepts/world-action-models.md
-  - ../overview/topic-cross-embodiment.md
+  - ../overview/depth-cross-embodiment.md
   - ./paper-ego-03-egomimic.md
   - ../tasks/manipulation.md
 sources:
@@ -116,7 +116,7 @@ flowchart TB
 - [VLA（Vision-Language-Action）](../methods/vla.md) — reasoning-before-acting 与人数据缩放语境。
 - [Imitation Learning](../methods/imitation-learning.md) — 人手演示、DAgger 纠偏与 IL 管线。
 - [World Action Models](../concepts/world-action-models.md) — 动作条件前向动力学作为跨具身接口。
-- [跨具身迁移（专题）](../overview/topic-cross-embodiment.md) — 人→机器人迁移案例。
+- [跨具身迁移（纵深）](../overview/depth-cross-embodiment.md) — 人→机器人迁移案例。
 - [EgoMimic](./paper-ego-03-egomimic.md) — 第一视角人数据进 IL 的相邻路线。
 - [Manipulation（任务）](../tasks/manipulation.md) — 桌面/灵巧操作评测背景。
 

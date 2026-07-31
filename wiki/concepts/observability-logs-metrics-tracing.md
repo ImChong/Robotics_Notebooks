@@ -7,7 +7,7 @@ related:
   - ./container-orchestration-cicd.md
   - ./operating-system-basics.md
   - ../formalizations/control-loop-latency-modeling.md
-  - ../overview/topic-systems-engineering.md
+  - ../overview/depth-systems-engineering.md
 sources:
   - ../../sources/sites/systems_engineering_deploy_obs_security_primary_refs.md
 summary: "可观测性（日志、Metrics、Tracing）：云边服务用 OpenTelemetry 三支柱；运控环路用周期/抖动直方图，避免同步埋点拖垮实时性。"
@@ -58,7 +58,7 @@ summary: "可观测性（日志、Metrics、Tracing）：云边服务用 OpenTel
 
 - [操作系统基础](./operating-system-basics.md)
 - [容器编排与 CI/CD](./container-orchestration-cicd.md)
-- [系统工程专题](../overview/topic-systems-engineering.md)
+- [系统工程纵深](../overview/depth-systems-engineering.md)
 
 ## 参考来源
 

@@ -23,7 +23,7 @@ related:
   - ./domain-randomization-guide.md
   - ../concepts/safety-filter.md
   - ../concepts/robot-safety-state-machine.md
-  - ../overview/topic-sim2real.md
+  - ../overview/depth-sim2real.md
   - ../entities/paper-notebook-anymal-parkour-robust-perceptive-locomotion.md
   - ../entities/paper-quadruped-agile-sim2real-rss2018.md
   - ../tasks/locomotion.md
@@ -133,7 +133,7 @@ flowchart TD
 
 ## 局限与风险
 
-- **本页是工程叙事骨架**，不是替代各专题深页；具体 DR 数值、SysID 实验设计、RMA 训练细节以对应 wiki / 论文为准。
+- **本页是工程叙事骨架**，不是替代各纵深深页；具体 DR 数值、SysID 实验设计、RMA 训练细节以对应 wiki / 论文为准。
 - **综述文来自课程宣传编译**，文内插图与表述为二次整理；量化结论请回到原始论文与站内实体页。
 - **闭环不等于无限真机 SysID**：激励轨迹本身有安全成本；实践上常「粗校准 + DR + 轻量在线适应」组合。
 - **前馈标定会漂移**（温升、磨损）：需要周期性再辨识或适应模块接力，否则前馈会从「帮忙」变成「系统性偏置」。
@@ -148,7 +148,7 @@ flowchart TD
 - [RMA](../entities/paper-rma-rapid-motor-adaptation.md)
 - [Sim2Real Checklist](./sim2real-checklist.md) / [Gap 缩减](./sim2real-gap-reduction.md)
 - [Safety Filter](../concepts/safety-filter.md) / [Robot Safety FSM](../concepts/robot-safety-state-machine.md)
-- [Sim2Real 专题](../overview/topic-sim2real.md)
+- [Sim2Real 纵深](../overview/depth-sim2real.md)
 - [Locomotion](../tasks/locomotion.md)
 
 ## 参考来源

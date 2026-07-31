@@ -134,7 +134,7 @@ flowchart TB
 
 - [wm-action-consequence-category-01-wam-action-prediction](../overview/wm-action-consequence-category-01-wam-action-prediction.md) — 部署筛选类 WAM
 - [wm-action-consequence-category-04-eval-posttrain](../overview/wm-action-consequence-category-04-eval-posttrain.md) — 与 GigaWorld 评估链路相邻
-- [动作后果技术地图](../overview/robot-world-models-action-consequence-technology-map.md) — 专题总览
+- [动作后果技术地图](../overview/robot-world-models-action-consequence-technology-map.md) — 纵深总览
 - [World Action Models](../concepts/world-action-models.md) — WM 预演动作后果概念
 - [VLA](../methods/vla.md) — $\pi_0$ / GR00T 等被 steering 的策略
 - [Harness VLA](./paper-harness-vla.md) — 原语级 agentic harness + 记忆；同属冻结 VLA 部署路线

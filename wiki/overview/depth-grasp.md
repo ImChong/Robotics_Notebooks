@@ -1,18 +1,18 @@
 ---
 type: overview
-tags: [topic, topic-grasp, manipulation, dexterous, grasp]
+tags: [depth, depth-grasp, manipulation, dexterous, grasp]
 status: complete
-updated: 2026-07-26
-summary: "抓取与操作感知专题汇总：从接触建模、灵巧手运动学到 GraspNet/AnyGrasp 等感知抓取栈，覆盖 pick-place、双手协作与 loco-manip 中的操作子问题。"
+updated: 2026-07-31
+summary: "抓取与操作感知纵深汇总：从接触建模、灵巧手运动学到 GraspNet/AnyGrasp 等感知抓取栈，覆盖 pick-place、双手协作与 loco-manip 中的操作子问题。"
 ---
 
-# 抓取与操作（专题汇总）
+# 抓取与操作（纵深汇总）
 
-> **图谱专题视图**：本页是知识图谱「🤏 抓取 (Grasp)」专题的统一入口；在 [图谱专题视图](../../docs/graph.html?topic=grasp) 筛选时，本节点为汇总锚点。
+> **图谱纵深视图**：本页是知识图谱「🤏 抓取 (Grasp)」纵深的统一入口；在 [图谱纵深视图](../../docs/graph.html?depth=grasp) 筛选时，本节点为汇总锚点。
 
 ## 一句话定义
 
-**抓取专题** 关注机器人如何通过感知与规划，在接触丰富的环境中稳定地 **抓取、持握并操纵物体**，是人形 loco-manip 与桌面操作的核心子栈。
+**抓取纵深** 关注机器人如何通过感知与规划，在接触丰富的环境中稳定地 **抓取、持握并操纵物体**，是人形 loco-manip 与桌面操作的核心子栈。
 
 ## 英文缩写速查
 
@@ -30,7 +30,7 @@ summary: "抓取与操作感知专题汇总：从接触建模、灵巧手运动�
 - **接触是主要不确定性来源**：滑移、形变、遮挡让纯位置控制不够。
 - **感知-规划-控制需闭环**：从点云/深度到抓取姿态，再到力位混合执行。
 
-## 本专题覆盖什么
+## 本纵深覆盖什么
 
 | 层次 | 典型问题 | 站内入口 |
 |------|----------|----------|
@@ -45,11 +45,11 @@ summary: "抓取与操作感知专题汇总：从接触建模、灵巧手运动�
 | 方法 | 移动高速灵巧抓取 + 全身 RL | [FastGrasp](../entities/paper-fastgrasp-mobile-dexterous-grasping.md)（CVAE 引导 · 二值触觉 · arXiv:2604.12879） |
 | 末段精修 | 纯触觉目标条件 regrasp | [TacRefineNet](../entities/paper-tacrefinenet-tactile-grasp-refinement.md)（板/盘/杆 · Siamese · arXiv:2509.25746） |
 
-## 与其他专题的关系
+## 与其他纵深的关系
 
-- **[触觉](./topic-tactile.md)**：抓取稳定常依赖力/触觉反馈。
-- **[WBC](./topic-wbc.md)**：全身协调下手臂与躯干的分工。
-- **[VLA](./topic-vla.md)**：语言条件下的抓取与放置。
+- **[触觉](./depth-tactile.md)**：抓取稳定常依赖力/触觉反馈。
+- **[WBC](./depth-wbc.md)**：全身协调下手臂与躯干的分工。
+- **[VLA](./depth-vla.md)**：语言条件下的抓取与放置。
 
 ## 关联页面
 
@@ -62,4 +62,4 @@ summary: "抓取与操作感知专题汇总：从接触建模、灵巧手运动�
 
 - 本库归纳自 [Manipulation 任务页](../tasks/manipulation.md)、[接触丰富操作](../concepts/contact-rich-manipulation.md)、[AnyGrasp vs GraspNet](../comparisons/anygrasp-vs-graspnet.md)
 - **ingest 档案：** [sources/papers/tacrefinenet_arxiv_2509_25746.md](../../sources/papers/tacrefinenet_arxiv_2509_25746.md) — TacRefineNet（arXiv:2509.25746）
-- 图谱专题定义：[docs/topic-filters.js](../../docs/topic-filters.js)（`grasp` 命中规则）
+- 图谱纵深定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`grasp` 命中规则）

@@ -7,7 +7,7 @@ related:
   - ./model-versioning-ota.md
   - ./container-orchestration-cicd.md
   - ./edge-cloud-robotics.md
-  - ../overview/topic-systems-engineering.md
+  - ../overview/depth-systems-engineering.md
 sources:
   - ../../sources/sites/systems_engineering_deploy_obs_security_primary_refs.md
 summary: "软件安全基础（身份认证、授权、密钥管理、供应链安全）：机器人云边通道与制品发布的最小安全基线。"

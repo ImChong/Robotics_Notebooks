@@ -1,14 +1,14 @@
 ---
 type: overview
-tags: [topic, topic-safe-fine-tuning, safe-rl, cbf, lora, deployment]
+tags: [depth, depth-safe-fine-tuning, safe-rl, cbf, lora, deployment]
 status: complete
-updated: 2026-06-17
-summary: "真机安全微调专题汇总：Sim2Real 部署后的在线 RL 适配，低秩残差（SLowRL）、CBF/CLF 安全壳与生成式兜底，避免训练期硬件损伤。"
+updated: 2026-07-31
+summary: "真机安全微调纵深汇总：Sim2Real 部署后的在线 RL 适配，低秩残差（SLowRL）、CBF/CLF 安全壳与生成式兜底，避免训练期硬件损伤。"
 ---
 
-# 真机安全微调（专题汇总）
+# 真机安全微调（纵深汇总）
 
-> **图谱专题视图**：本页是知识图谱「🛡️ 安全微调 (Safe Fine-Tuning)」专题的统一入口；在 [图谱专题视图](../../docs/graph.html?topic=safe-fine-tuning) 筛选时，本节点为汇总锚点。
+> **图谱纵深视图**：本页是知识图谱「🛡️ 安全微调 (Safe Fine-Tuning)」纵深的统一入口；在 [图谱纵深视图](../../docs/graph.html?depth=safe-fine-tuning) 筛选时，本节点为汇总锚点。
 
 ## 一句话定义
 
@@ -27,10 +27,10 @@ summary: "真机安全微调专题汇总：Sim2Real 部署后的在线 RL 适配
 ## 为什么重要
 
 - **最后 10% 性能常在真机上抠**：但标准 RL 探索代价是摔机。
-- **V23 专题主线**：SLowRL、Heracles 等给出可复现工程谱系。
+- **V23 纵深主线**：SLowRL、Heracles 等给出可复现工程谱系。
 - **与 WBC/CBF 交叉**：安全壳可在策略外或策略内实现。
 
-## 本专题覆盖什么
+## 本纵深覆盖什么
 
 | 层次 | 典型问题 | 站内入口 |
 |------|----------|----------|
@@ -40,11 +40,11 @@ summary: "真机安全微调专题汇总：Sim2Real 部署后的在线 RL 适配
 | 形式化 | 安全 LoRA 投影 | [Safe LoRA Update Projection](../formalizations/safe-lora-update-projection.md) |
 | 实例 | SLowRL | [SLowRL Paper Entity](../entities/paper-slowrl-safe-lora-locomotion-sim2real.md) |
 
-## 与其他专题的关系
+## 与其他纵深的关系
 
-- **[Sim2Real](./topic-sim2real.md)**：安全微调是部署链延伸。
-- **[WBC](./topic-wbc.md)**：CBF/CLF 常作为执行层安全壳。
-- **[IL/RL](./topic-learning.md)**：在线 RL 与离线 IL 的边界。
+- **[Sim2Real](./depth-sim2real.md)**：安全微调是部署链延伸。
+- **[WBC](./depth-wbc.md)**：CBF/CLF 常作为执行层安全壳。
+- **[IL/RL](./depth-learning.md)**：在线 RL 与离线 IL 的边界。
 
 ## 关联页面
 
@@ -55,4 +55,4 @@ summary: "真机安全微调专题汇总：Sim2Real 部署后的在线 RL 适配
 ## 参考来源
 
 - 本库归纳自 [Safe Real-World RL Fine-Tuning](../concepts/safe-real-world-rl-fine-tuning.md) 及 CBF/SLowRL 系列页
-- 图谱专题定义：[docs/topic-filters.js](../../docs/topic-filters.js)（`safe-fine-tuning` 命中规则）
+- 图谱纵深定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`safe-fine-tuning` 命中规则）

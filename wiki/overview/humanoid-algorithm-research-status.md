@@ -6,7 +6,7 @@ updated: 2026-07-23
 related:
   - ./humanoid-robot-history.md
   - ../roadmaps/humanoid-control-roadmap.md
-  - ./topic-locomotion.md
+  - ./depth-locomotion.md
   - ./large-model-empowered-humanoids.md
   - ./navigation-slam-autonomy-stack.md
   - ../tasks/humanoid-locomotion.md
@@ -79,7 +79,7 @@ flowchart TB
 
 1. **用课程当坐标轴**：每章对应上表一行，先建立地图再钻单篇论文。
 2. **跟踪开源与可复现**：有代码/权重的工作优先（课程强调系统可跑）。
-3. **综述入口**：具身智能研究室人形 RL 长文等（见参考来源）；本库 [topic-locomotion](./topic-locomotion.md) 作运动专题索引。
+3. **综述入口**：具身智能研究室人形 RL 长文等（见参考来源）；本库 [depth-locomotion](./depth-locomotion.md) 作运动纵深索引。
 4. **写调研时分层引用**：勿把导航 SLAM 论文与全身 VLA 论文塞进同一「SOTA 表」而不声明任务。
 
 ## 与课程章节的显式映射
@@ -95,7 +95,7 @@ flowchart TB
 
 ## 局限与风险
 
-- 「现状」更新极快，本页只做分层导航；细节以专题 overview / 论文实体为准。
+- 「现状」更新极快，本页只做分层导航；细节以纵深 overview / 论文实体为准。
 - 商业演示 ≠ 可复现算法；以论文设定与开源为准。
 - 指标不可跨任务横比（进球率 ≠ 导航成功率 ≠ 操作成功率）。
 
@@ -103,7 +103,7 @@ flowchart TB
 
 - [人形发展历史](./humanoid-robot-history.md)
 - [人形控制学习路线图](../roadmaps/humanoid-control-roadmap.md)
-- [运动控制专题](./topic-locomotion.md)
+- [运动控制纵深](./depth-locomotion.md)
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md)
 
 ## 参考来源

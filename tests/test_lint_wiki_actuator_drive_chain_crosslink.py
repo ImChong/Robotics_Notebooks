@@ -64,7 +64,7 @@ def test_comparison_page_flagged(tmp_path: Path, monkeypatch) -> None:
     wiki = _setup_wiki(tmp_path, monkeypatch)
     page = wiki / "comparisons" / "kicad-vs-altium.md"
     page.write_text(
-        "---\ntype: comparison\ntags: [eda, pcb]\n---\nEDA 工具对比正文，未回链专题枢纽。\n",
+        "---\ntype: comparison\ntags: [eda, pcb]\n---\nEDA 工具对比正文，未回链纵深枢纽。\n",
         encoding="utf-8",
     )
     results = _run([page])
@@ -90,8 +90,8 @@ def test_topic_hub_backlink_also_passes(tmp_path: Path, monkeypatch) -> None:
     page = wiki / "entities" / "altium-designer.md"
     page.write_text(
         "---\ntype: entity\ntags: [eda, pcb]\n---\n"
-        "Altium Designer，见专题 "
-        "[执行器驱动链](../overview/topic-actuator-drive-chain.md)。\n",
+        "Altium Designer，见纵深 "
+        "[执行器驱动链](../overview/depth-actuator-drive-chain.md)。\n",
         encoding="utf-8",
     )
     results = _run([page])
@@ -116,7 +116,7 @@ def test_both_hubs_present_passes(tmp_path: Path, monkeypatch) -> None:
         "---\ntype: concept\ntags: [actuator, realtime-bus, foc]\n---\n"
         "EtherCAT 实时总线层，见 "
         "[Query](../queries/actuator-drive-chain-selection-loop.md) 与 "
-        "[专题](../overview/topic-actuator-drive-chain.md)。\n",
+        "[纵深](../overview/depth-actuator-drive-chain.md)。\n",
         encoding="utf-8",
     )
     results = _run([page])

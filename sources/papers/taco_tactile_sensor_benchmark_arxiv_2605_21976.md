@@ -54,7 +54,7 @@
 - **对 wiki 的映射：**
   - [TacO 触觉传感器基准](../../wiki/entities/paper-taco-tactile-sensor-benchmark.md)
   - [接触丰富操作](../../wiki/concepts/contact-rich-manipulation.md)
-  - [触觉专题](../../wiki/overview/topic-tactile.md)
+  - [触觉专题](../../wiki/overview/depth-tactile.md)
 
 ## BibTeX
 
@@ -75,4 +75,4 @@
 - 主实体页：[`wiki/entities/paper-taco-tactile-sensor-benchmark.md`](../../wiki/entities/paper-taco-tactile-sensor-benchmark.md)
 - 项目页归档：[`sources/sites/tacobench-github-io.md`](../sites/tacobench-github-io.md)
 - 代码归档：[`sources/repos/taco-bench.md`](../repos/taco-bench.md)
-- 互链：[Tactile Sensing](../../wiki/concepts/tactile-sensing.md)、[视触觉融合](../../wiki/concepts/visuo-tactile-fusion.md)、[Action Chunking](../../wiki/methods/action-chunking.md)、[Imitation Learning](../../wiki/methods/imitation-learning.md)、[触觉专题](../../wiki/overview/topic-tactile.md)、[VTAP Gripper](../../wiki/entities/paper-vtap-gripper.md)（同用 FlexiTac）、[TACO WM（消歧）](../../wiki/entities/paper-taco-tactile-wm-vla-posttrain.md)
+- 互链：[Tactile Sensing](../../wiki/concepts/tactile-sensing.md)、[视触觉融合](../../wiki/concepts/visuo-tactile-fusion.md)、[Action Chunking](../../wiki/methods/action-chunking.md)、[Imitation Learning](../../wiki/methods/imitation-learning.md)、[触觉专题](../../wiki/overview/depth-tactile.md)、[VTAP Gripper](../../wiki/entities/paper-vtap-gripper.md)（同用 FlexiTac）、[TACO WM（消歧）](../../wiki/entities/paper-taco-tactile-wm-vla-posttrain.md)

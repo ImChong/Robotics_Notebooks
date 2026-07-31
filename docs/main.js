@@ -4218,38 +4218,38 @@
     link.hidden = false;
   }
 
-  // 专题徽标：复用 graph.html 的专题命中规则（topic-filters.js），rowId 可复用于路线页等。
-  function renderMetaTopicBadges(currentPath, rowId) {
-    var topicRowId = rowId || 'detailMetaTopic';
-    var TF = window.RNTopicFilters;
+  // 纵深徽标：复用 graph.html 的纵深命中规则（depth-filters.js），rowId 可复用于路线页等。
+  function renderMetaDepthBadges(currentPath, rowId) {
+    var depthRowId = rowId || 'detailMetaDepth';
+    var TF = window.RNDepthFilters;
     if (!TF || !currentPath) {
-      renderDetailMetaItemRow(topicRowId, '所属专题', '');
+      renderDetailMetaItemRow(depthRowId, '所属纵深', '');
       return Promise.resolve();
     }
 
     return fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
       var node = (gd.nodes || []).find(function (n) { return n.id === currentPath; });
-      if (!node) { renderDetailMetaItemRow(topicRowId, '所属专题', ''); return; }
-      var topics = TF.topicsForNode({ id: node.id, community: node.community });
-      if (!topics.length) { renderDetailMetaItemRow(topicRowId, '所属专题', ''); return; }
+      if (!node) { renderDetailMetaItemRow(depthRowId, '所属纵深', ''); return; }
+      var topics = TF.depthsForNode({ id: node.id, community: node.community });
+      if (!topics.length) { renderDetailMetaItemRow(depthRowId, '所属纵深', ''); return; }
 
       // ⚡ Bolt Optimization: Replace .map().join('') with string concatenation in for loop
       // Expected impact: Eliminates closure creation and array allocation during layout generation.
       var html = '';
       for (var i = 0; i < topics.length; i++) {
         var key = topics[i];
-        var meta = TF.TOPIC_META[key] || { emoji: '🏷️', label: key };
-        html += '<a class="detail-meta-badge" href="graph.html?topic=' + encodeURIComponent(key) +
-          '" title="在知识图谱中查看「' + escapeHtml(meta.label) + '」专题视图">' +
+        var meta = TF.DEPTH_META[key] || { emoji: '🏷️', label: key };
+        html += '<a class="detail-meta-badge" href="graph.html?depth=' + encodeURIComponent(key) +
+          '" title="在知识图谱中查看「' + escapeHtml(meta.label) + '」纵深视图">' +
           '<span>' + meta.emoji + '</span><span>' + escapeHtml(meta.label) + '</span></a>';
       }
 
-      renderDetailMetaItemRow(topicRowId, '所属专题', html);
-    }).catch(function () { renderDetailMetaItemRow(topicRowId, '所属专题', ''); });
+      renderDetailMetaItemRow(depthRowId, '所属纵深', html);
+    }).catch(function () { renderDetailMetaItemRow(depthRowId, '所属纵深', ''); });
   }
 
   function renderDetailTopicBadges(detailPage) {
-    return renderMetaTopicBadges((detailPage && detailPage.path) || '', 'detailMetaTopic');
+    return renderMetaDepthBadges((detailPage && detailPage.path) || '', 'detailMetaDepth');
   }
 
   // 社区徽标：复用 link-graph.json 的社区划分，rowId 可复用于路线页等。
@@ -4384,14 +4384,14 @@
     }
 
     renderDetailMetaItemRow('roadmapMetaCommunity', '所属社区', '');
-    renderDetailMetaItemRow('roadmapMetaTopic', '所属专题', '');
+    renderDetailMetaItemRow('roadmapMetaDepth', '所属纵深', '');
     renderDetailMetaItemRow('roadmapMetaInstitution', '所属机构', '');
     if (metaEl) removeLoadingState(metaEl);
 
     var graphPath = detail.path || (roadmapPage && roadmapPage.path) || '';
     return Promise.all([
       renderMetaCommunityBadge(graphPath, 'roadmapMetaCommunity'),
-      renderMetaTopicBadges(graphPath, 'roadmapMetaTopic'),
+      renderMetaDepthBadges(graphPath, 'roadmapMetaDepth'),
       renderMetaInstitutionBadges(graphPath, 'roadmapMetaInstitution')
     ]);
   }
@@ -4658,7 +4658,7 @@
       renderDetailMetaSource(null);
       setDetailMetaReadyState('true');
       renderDetailMetaItemRow('detailMetaCommunity', '所属社区', '');
-      renderDetailMetaItemRow('detailMetaTopic', '所属专题', '');
+      renderDetailMetaItemRow('detailMetaDepth', '所属纵深', '');
       renderDetailMetaItemRow('detailMetaInstitution', '所属机构', '');
       if (tocSectionEl) tocSectionEl.hidden = true;
       if (tocEl) {
@@ -4728,7 +4728,7 @@
         detailPage.updated ? renderDetailMetaDateBadge(detailPage.updated) : ''
       );
       renderDetailMetaItemRow('detailMetaCommunity', '所属社区', '');
-      renderDetailMetaItemRow('detailMetaTopic', '所属专题', '');
+      renderDetailMetaItemRow('detailMetaDepth', '所属纵深', '');
       renderDetailMetaItemRow('detailMetaInstitution', '所属机构', '');
       removeLoadingState(metaEl);
     }

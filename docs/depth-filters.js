@@ -1,43 +1,43 @@
 /*
- * 专题视图（Topic Filters）单一事实源。
- * 由 graph.html（专题筛选）与 detail.html / main.js（详情页"属于 X 专题"徽标）共享，
+ * 纵深视图（Depth Filters）单一事实源。
+ * 由 graph.html（纵深筛选）与 detail.html / main.js（详情页"属于 X 纵深"徽标）共享，
  * 避免两处各写一份命中规则导致漂移。
  *
- * 命中优先级（与 graph.html nodeMatchesTopic 一致）：
+ * 命中优先级（与 graph.html nodeMatchesDepth 一致）：
  *   excludeSegments 命中 → 直接排除；ids 显式纳入 → 命中；
  *   communities 命中 → 命中；segments 命中任一 → 命中。
  *
- * 每个专题在 wiki/overview/topic-*.md 有对应「汇总节点」（TOPIC_META.wikiPath），
- * 并写入 TOPIC_FILTERS[key].ids 以保证专题视图下始终可见。
+ * 每个纵深在 wiki/overview/depth-*.md 有对应「汇总节点」（DEPTH_META.wikiPath），
+ * 并写入 DEPTH_FILTERS[key].ids 以保证纵深视图下始终可见。
  */
 (function (global) {
   'use strict';
 
-  var TOPIC_HUB_IDS = {
-    'motion-retargeting': 'wiki/overview/topic-motion-retargeting.md',
-    'grasp': 'wiki/overview/topic-grasp.md',
-    'tactile': 'wiki/overview/topic-tactile.md',
-    'communication': 'wiki/overview/topic-communication.md',
-    'wbc': 'wiki/overview/topic-wbc.md',
-    'locomotion': 'wiki/overview/topic-locomotion.md',
-    'vla': 'wiki/overview/topic-vla.md',
-    'learning': 'wiki/overview/topic-learning.md',
-    'sim2real': 'wiki/overview/topic-sim2real.md',
-    'state-estimation': 'wiki/overview/topic-state-estimation.md',
-    'wbt': 'wiki/overview/topic-wbt.md',
-    'cross-embodiment': 'wiki/overview/topic-cross-embodiment.md',
-    'safe-fine-tuning': 'wiki/overview/topic-safe-fine-tuning.md',
-    'vision-backbone': 'wiki/overview/topic-vision-backbone.md',
-    'data-pipeline': 'wiki/overview/topic-data-pipeline.md',
-    'physics-fidelity': 'wiki/overview/topic-physics-fidelity.md',
-    'contact-force-control': 'wiki/overview/topic-contact-force-control.md',
-    'embodied-foundation-model': 'wiki/overview/topic-embodied-foundation-model.md',
-    'embodied-eval-benchmark': 'wiki/overview/topic-embodied-eval-benchmark.md',
-    'actuator-drive-chain': 'wiki/overview/topic-actuator-drive-chain.md'
+  var DEPTH_HUB_IDS = {
+    'motion-retargeting': 'wiki/overview/depth-motion-retargeting.md',
+    'grasp': 'wiki/overview/depth-grasp.md',
+    'tactile': 'wiki/overview/depth-tactile.md',
+    'communication': 'wiki/overview/depth-communication.md',
+    'wbc': 'wiki/overview/depth-wbc.md',
+    'locomotion': 'wiki/overview/depth-locomotion.md',
+    'vla': 'wiki/overview/depth-vla.md',
+    'learning': 'wiki/overview/depth-learning.md',
+    'sim2real': 'wiki/overview/depth-sim2real.md',
+    'state-estimation': 'wiki/overview/depth-state-estimation.md',
+    'wbt': 'wiki/overview/depth-wbt.md',
+    'cross-embodiment': 'wiki/overview/depth-cross-embodiment.md',
+    'safe-fine-tuning': 'wiki/overview/depth-safe-fine-tuning.md',
+    'vision-backbone': 'wiki/overview/depth-vision-backbone.md',
+    'data-pipeline': 'wiki/overview/depth-data-pipeline.md',
+    'physics-fidelity': 'wiki/overview/depth-physics-fidelity.md',
+    'contact-force-control': 'wiki/overview/depth-contact-force-control.md',
+    'embodied-foundation-model': 'wiki/overview/depth-embodied-foundation-model.md',
+    'embodied-eval-benchmark': 'wiki/overview/depth-embodied-eval-benchmark.md',
+    'actuator-drive-chain': 'wiki/overview/depth-actuator-drive-chain.md'
   };
 
   function hubIdSet(key) {
-    var hub = TOPIC_HUB_IDS[key];
+    var hub = DEPTH_HUB_IDS[key];
     return hub ? new Set([hub]) : null;
   }
 
@@ -50,7 +50,7 @@
     return merged;
   }
 
-  var TOPIC_FILTERS = {
+  var DEPTH_FILTERS = {
     'motion-retargeting': {
       communities: new Set(['community-3']),
       segments: new Set([
@@ -192,7 +192,7 @@
     },
     'embodied-foundation-model': {
       /* 五大具身模型家族选型闭环（VLM→VLN→VLA→VLX→WM）。刻意剔除过宽的 `vla`
-         片段（归 topic-vla），改用 `ids` 精选纳入执行层与世界模型层家族页，
+         片段（归 depth-vla），改用 `ids` 精选纳入执行层与世界模型层家族页，
          与 vla / vision-backbone 保持最小重叠；`vlm`/`vln`/`vlx` 为干净片段。 */
       segments: new Set([
         'vlm', 'vln', 'vlx', 'worldmodel', 'worldaction'
@@ -258,126 +258,126 @@
     }
   };
 
-  /* 专题展示元信息（emoji + 简称 + 汇总节点 + 导读），与 graph.html chips 顺序一致。 */
-  var TOPIC_META = {
+  /* 纵深展示元信息（emoji + 简称 + 汇总节点 + 导读），与 graph.html chips 顺序一致。 */
+  var DEPTH_META = {
     'motion-retargeting': {
       emoji: '🤸',
       label: '动作重定向 (Motion Retargeting)',
-      wikiPath: TOPIC_HUB_IDS['motion-retargeting'],
+      wikiPath: DEPTH_HUB_IDS['motion-retargeting'],
       description: '把人体/动物参考动作映射到异构机器人骨架，衔接 MoCap、IK 重定向与 WBT 训练数据。'
     },
     'grasp': {
       emoji: '🤏',
       label: '抓取 (Grasp)',
-      wikiPath: TOPIC_HUB_IDS.grasp,
+      wikiPath: DEPTH_HUB_IDS.grasp,
       description: '接触丰富环境下的感知抓取、灵巧操作与 loco-manip 操作子栈。'
     },
     'tactile': {
       emoji: '✋',
       label: '触觉 (Tactile)',
-      wikiPath: TOPIC_HUB_IDS.tactile,
+      wikiPath: DEPTH_HUB_IDS.tactile,
       description: '触觉传感、视触觉融合与阻抗/力控闭环，支撑稳定抓取与交互。'
     },
     'communication': {
       emoji: '🔌',
       label: '通信协议 (Communication)',
-      wikiPath: TOPIC_HUB_IDS.communication,
+      wikiPath: DEPTH_HUB_IDS.communication,
       description: '电机驱动、EtherCAT/CAN 现场总线与 ROS 2 / LCM 中间件的底层数据链路。'
     },
     'wbc': {
       emoji: '🦾',
       label: '全身控制 (WBC)',
-      wikiPath: TOPIC_HUB_IDS.wbc,
+      wikiPath: DEPTH_HUB_IDS.wbc,
       description: '浮基人形上的全身任务/力分配，TSID、HQP 与 CBF 安全约束。'
     },
     'locomotion': {
       emoji: '🚶',
       label: '步态与移动 (Locomotion)',
-      wikiPath: TOPIC_HUB_IDS.locomotion,
+      wikiPath: DEPTH_HUB_IDS.locomotion,
       description: '腿式与人形在不同地形上的步态生成、平衡与感知式移动。'
     },
     'vla': {
       emoji: '👀',
       label: '视觉-语言-动作 (VLA)',
-      wikiPath: TOPIC_HUB_IDS.vla,
+      wikiPath: DEPTH_HUB_IDS.vla,
       description: '视觉-语言-动作统一建模与 BFM 身体接口，面向多任务 loco-manip。'
     },
     'learning': {
       emoji: '🎓',
       label: '模仿/强化学习 (IL/RL)',
-      wikiPath: TOPIC_HUB_IDS.learning,
+      wikiPath: DEPTH_HUB_IDS.learning,
       description: '强化学习、模仿学习及 PPO/SAC 等范式的选型与机器人落地要点。'
     },
     'sim2real': {
       emoji: '🔁',
       label: '仿真到现实 (Sim2Real)',
-      wikiPath: TOPIC_HUB_IDS.sim2real,
+      wikiPath: DEPTH_HUB_IDS.sim2real,
       description: '仿真策略迁移真机：域随机化、系统辨识与残差适配路线。'
     },
     'state-estimation': {
       emoji: '📊',
       label: '状态估计 (State Estimation)',
-      wikiPath: TOPIC_HUB_IDS['state-estimation'],
+      wikiPath: DEPTH_HUB_IDS['state-estimation'],
       description: '多传感器融合、SLAM/VIO/LIO 与 Kalman/优化估计框架。'
     },
     'wbt': {
       emoji: '🕺',
       label: '全身运动跟踪 (WBT)',
-      wikiPath: TOPIC_HUB_IDS.wbt,
+      wikiPath: DEPTH_HUB_IDS.wbt,
       description: '全身参考动作跟踪：重定向→训练→跨具身→真机部署的端到端流水线。'
     },
     'cross-embodiment': {
       emoji: '🔀',
       label: '跨具身迁移 (Cross-Embodiment)',
-      wikiPath: TOPIC_HUB_IDS['cross-embodiment'],
+      wikiPath: DEPTH_HUB_IDS['cross-embodiment'],
       description: '跨机器人形态/仿真-真机的技能与动作迁移策略。'
     },
     'safe-fine-tuning': {
       emoji: '🛡️',
       label: '安全微调 (Safe Fine-Tuning)',
-      wikiPath: TOPIC_HUB_IDS['safe-fine-tuning'],
+      wikiPath: DEPTH_HUB_IDS['safe-fine-tuning'],
       description: '真机在线 RL 适配：低秩残差、CBF/CLF 安全壳与 Recovery 兜底。'
     },
     'vision-backbone': {
       emoji: '👁️',
       label: '视觉骨干 (Vision Backbone)',
-      wikiPath: TOPIC_HUB_IDS['vision-backbone'],
+      wikiPath: DEPTH_HUB_IDS['vision-backbone'],
       description: 'CNN/ViT 骨干→检测头→策略输入的视觉表征与选型。'
     },
     'data-pipeline': {
       emoji: '📦',
       label: '训练数据 (Data Pipeline)',
-      wikiPath: TOPIC_HUB_IDS['data-pipeline'],
+      wikiPath: DEPTH_HUB_IDS['data-pipeline'],
       description: '原始动作捕捉/视频→质量评估→重定向→RL/IL 策略输入的端到端数据链路。'
     },
     'physics-fidelity': {
       emoji: '⚙️',
       label: '物理保真度 (Physics Fidelity)',
-      wikiPath: TOPIC_HUB_IDS['physics-fidelity'],
+      wikiPath: DEPTH_HUB_IDS['physics-fidelity'],
       description: '几何/URDF→刚体动力学→接触/摩擦→执行器四层仿真物理保真度与各层 sim2real gap 取舍。'
     },
     'contact-force-control': {
       emoji: '🤝',
       label: '接触力控 (Contact Force Control)',
-      wikiPath: TOPIC_HUB_IDS['contact-force-control'],
+      wikiPath: DEPTH_HUB_IDS['contact-force-control'],
       description: '接触感知/估计→力旋量表示→阻抗/导纳/混合力位控制→接触丰富操作四层力控闭环与带宽/刚度/时延取舍。'
     },
     'embodied-foundation-model': {
       emoji: '🧠',
       label: '具身大模型 (Embodied Foundation Model)',
-      wikiPath: TOPIC_HUB_IDS['embodied-foundation-model'],
+      wikiPath: DEPTH_HUB_IDS['embodied-foundation-model'],
       description: 'VLM 感知理解→VLN 空间导航→VLA 动作执行→VLX 一体化扩展→世界模型时序推演五层家族选型闭环与泛化/实时性取舍。'
     },
     'embodied-eval-benchmark': {
       emoji: '🧪',
       label: '具身评测基准 (Embodied Eval Benchmark)',
-      wikiPath: TOPIC_HUB_IDS['embodied-eval-benchmark'],
+      wikiPath: DEPTH_HUB_IDS['embodied-eval-benchmark'],
       description: 'MLLM 认知评测→世界模型预测保真度评测→策略任务成功率评测→sim↔real 评测 gap 校准四层评测选型闭环与可复现性/真实代表性/过程 vs 结果取舍。'
     },
     'actuator-drive-chain': {
       emoji: '⚡',
       label: '执行器驱动链 (Actuator Drive Chain)',
-      wikiPath: TOPIC_HUB_IDS['actuator-drive-chain'],
+      wikiPath: DEPTH_HUB_IDS['actuator-drive-chain'],
       description: 'EDA 电路设计→电机驱动固件 FOC→执行器建模与摩擦辨识→实时总线闭环集成四层驱动链选型闭环与标称 vs 实测、建模保真度 vs 辨识成本、总线周期 vs 闭环带宽取舍。'
     }
   };
@@ -390,10 +390,10 @@
     return segs;
   }
 
-  /* 判定单个节点是否命中某专题（topicKey 为 'all' 时恒真）。 */
+  /* 判定单个节点是否命中某纵深（topicKey 为 'all' 时恒真）。 */
   function matches(node, topicKey) {
     if (topicKey === 'all') return true;
-    var cfg = TOPIC_FILTERS[topicKey];
+    var cfg = DEPTH_FILTERS[topicKey];
     if (!cfg) return true;
     var segs = nodeSegments(node);
     if (cfg.excludeSegments) {
@@ -407,40 +407,48 @@
     return false;
   }
 
-  /* 返回节点命中的全部专题 key 列表（不含 'all'）。 */
-  function topicsForNode(node) {
+  /* 返回节点命中的全部纵深 key 列表（不含 'all'）。 */
+  function depthsForNode(node) {
     var out = [];
-    for (var key in TOPIC_FILTERS) {
+    for (var key in DEPTH_FILTERS) {
       if (matches(node, key)) out.push(key);
     }
     return out;
   }
 
-  /* 某专题的汇总节点 wiki 路径；无则 null。 */
-  function topicHubPath(topicKey) {
-    return TOPIC_HUB_IDS[topicKey] || null;
+  /* 某纵深的汇总节点 wiki 路径；无则 null。 */
+  function depthHubPath(topicKey) {
+    return DEPTH_HUB_IDS[topicKey] || null;
   }
 
-  /* 节点是否为任一专题（或指定专题）的汇总锚点。 */
-  function isTopicHub(node, topicKey) {
+  /* 节点是否为任一纵深（或指定纵深）的汇总锚点。 */
+  function isDepthHub(node, topicKey) {
     if (!node || !node.id) return false;
     if (topicKey && topicKey !== 'all') {
-      return TOPIC_HUB_IDS[topicKey] === node.id;
+      return DEPTH_HUB_IDS[topicKey] === node.id;
     }
-    for (var k in TOPIC_HUB_IDS) {
-      if (TOPIC_HUB_IDS[k] === node.id) return true;
+    for (var k in DEPTH_HUB_IDS) {
+      if (DEPTH_HUB_IDS[k] === node.id) return true;
     }
     return false;
   }
 
-  global.RNTopicFilters = {
-    TOPIC_FILTERS: TOPIC_FILTERS,
-    TOPIC_META: TOPIC_META,
-    TOPIC_HUB_IDS: TOPIC_HUB_IDS,
+  global.RNDepthFilters = {
+    DEPTH_FILTERS: DEPTH_FILTERS,
+    DEPTH_META: DEPTH_META,
+    DEPTH_HUB_IDS: DEPTH_HUB_IDS,
     nodeSegments: nodeSegments,
     matches: matches,
-    topicsForNode: topicsForNode,
-    topicHubPath: topicHubPath,
-    isTopicHub: isTopicHub
+    depthsForNode: depthsForNode,
+    depthHubPath: depthHubPath,
+    isDepthHub: isDepthHub,
+    // 兼容旧名（专题 → 纵深）
+    TOPIC_FILTERS: DEPTH_FILTERS,
+    TOPIC_META: DEPTH_META,
+    TOPIC_HUB_IDS: DEPTH_HUB_IDS,
+    topicsForNode: depthsForNode,
+    topicHubPath: depthHubPath,
+    isTopicHub: isDepthHub
   };
+  global.RNTopicFilters = global.RNDepthFilters;
 })(typeof window !== 'undefined' ? window : this);

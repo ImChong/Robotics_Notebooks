@@ -162,7 +162,7 @@ flowchart TB
 - [World Model for Robot Learning 综述（arXiv:2605.00080）](../../sources/papers/wm_robot_survey_arxiv_2605_00080.md)
 - [NTUMARS 综述项目站](../../sources/sites/wm-robot-survey-ntumars.md)
 - [具身智能研究室 · 训练闭环解读（微信公众号）](../../sources/blogs/wechat_embodied_ai_lab_robot_world_model_training_loop.md)
-- [具身智能研究室 · 动作后果专题（微信公众号）](../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md)
+- [具身智能研究室 · 动作后果纵深（微信公众号）](../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md)
 - [WorldVLN 归档（arXiv:2605.15964）](../../sources/papers/worldvln_arxiv_2605_15964.md)
 
 ## 推荐继续阅读

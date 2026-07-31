@@ -15,7 +15,7 @@ sources:
   - ../../sources/papers/ctrl_world_arxiv_2510_10125.md
   - ../../sources/papers/softvtbench_arxiv_2607_04234.md
 related:
-  - ../overview/topic-embodied-eval-benchmark.md
+  - ../overview/depth-embodied-eval-benchmark.md
   - ../concepts/sim-vs-real-eval-gap.md
   - ../entities/robo-bench.md
   - ../entities/esi-bench.md
@@ -163,7 +163,7 @@ flowchart TD
 
 ## 关联页面
 
-- 所属专题：[具身评测基准选型闭环（专题汇总）](../overview/topic-embodied-eval-benchmark.md) — 四层评测基准的统一入口与图谱专题枢纽
+- 所属纵深：[具身评测基准选型闭环（纵深汇总）](../overview/depth-embodied-eval-benchmark.md) — 四层评测基准的统一入口与图谱纵深枢纽
 - [仿真评测可复现性 ↔ 真实代表性取舍（sim↔real 评测 gap）](../concepts/sim-vs-real-eval-gap.md) — ④层 gap 校准的姊妹概念页，双向回链
 - [RoboBench（MLLM 具身大脑综合评测）](../entities/robo-bench.md) — ①层 MLLM 认知评测代表基准
 - [ESI-Bench（具身空间智能基准）](../entities/esi-bench.md) — ①层主动探索式空间智能评测

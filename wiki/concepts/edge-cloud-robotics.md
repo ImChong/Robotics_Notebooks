@@ -9,7 +9,7 @@ related:
   - ./network-protocol-stack.md
   - ./distributed-systems-basics.md
   - ./control-inference-frequency-decoupling.md
-  - ../overview/topic-systems-engineering.md
+  - ../overview/depth-systems-engineering.md
 sources:
   - ../../sources/sites/dds_omg_rtos_edge_ota_safety_primary_refs.md
 summary: "边缘计算与云端协同：机载/边缘闭环保实时，云端负责训练、大规模仿真、队级分析与 OTA；断网为默认假设。"

@@ -1,18 +1,18 @@
 ---
 type: overview
-tags: [topic, topic-communication, ethercat, can, ros2, firmware, bus, rpc, grpc]
+tags: [depth, depth-communication, ethercat, can, ros2, firmware, bus, rpc, grpc]
 status: complete
-updated: 2026-07-28
-summary: "硬件通信与协议专题汇总：从电机驱动固件、现场总线（EtherCAT/CAN/UART）到 ROS 2 / LCM / RPC 软件中间件，覆盖人形与移动机器人底层数据链路选型。"
+updated: 2026-07-31
+summary: "硬件通信与协议纵深汇总：从电机驱动固件、现场总线（EtherCAT/CAN/UART）到 ROS 2 / LCM / RPC 软件中间件，覆盖人形与移动机器人底层数据链路选型。"
 ---
 
-# 硬件通信与协议（专题汇总）
+# 硬件通信与协议（纵深汇总）
 
-> **图谱专题视图**：本页是知识图谱「🔌 通信协议 (Communication)」专题的统一入口；在 [图谱专题视图](../../docs/graph.html?topic=communication) 筛选时，本节点为汇总锚点。
+> **图谱纵深视图**：本页是知识图谱「🔌 通信协议 (Communication)」纵深的统一入口；在 [图谱纵深视图](../../docs/graph.html?depth=communication) 筛选时，本节点为汇总锚点。
 
 ## 一句话定义
 
-**通信协议专题** 回答机器人 **关节驱动、传感器与上层控制器之间** 用什么物理层/协议传数据，以及如何在延迟、带宽、同步与生态之间选型。
+**通信协议纵深** 回答机器人 **关节驱动、传感器与上层控制器之间** 用什么物理层/协议传数据，以及如何在延迟、带宽、同步与生态之间选型。
 
 ## 英文缩写速查
 
@@ -32,7 +32,7 @@ summary: "硬件通信与协议专题汇总：从电机驱动固件、现场总�
 - **软硬件分层**：同一策略可在 ROS 2 跑规划，在 EtherCAT 跑关节伺服。
 - **V21 硬件链路形式化**：本库把「驱动固件 → 总线 → 中间件」作为独立知识链维护。
 
-## 本专题覆盖什么
+## 本纵深覆盖什么
 
 | 层次 | 典型问题 | 站内入口 |
 |------|----------|----------|
@@ -44,13 +44,13 @@ summary: "硬件通信与协议专题汇总：从电机驱动固件、现场总�
 | RPC | 请求/响应服务面 | [远程过程调用](../concepts/remote-procedure-call.md)、[gRPC](../entities/grpc.md) |
 | 时钟 | 分布式同步 | [Clock Synchronization](../concepts/clock-synchronization-algorithms.md) |
 | 整机架构 | 分域/拓扑/延迟预算 | [机器人整机通信架构](../concepts/robot-onboard-communication-architecture.md) |
-| 系统工程 | OS/边云/OTA/安全 FSM | [系统工程专题](./topic-systems-engineering.md) |
+| 系统工程 | OS/边云/OTA/安全 FSM | [系统工程纵深](./depth-systems-engineering.md) |
 
-## 与其他专题的关系
+## 与其他纵深的关系
 
-- **[触觉](./topic-tactile.md)**：力控环对总线延迟敏感。
-- **[WBC](./topic-wbc.md)**：全身控制在实时层需稳定关节接口。
-- **[状态估计](./topic-state-estimation.md)**：多传感器时间对齐依赖时钟同步。
+- **[触觉](./depth-tactile.md)**：力控环对总线延迟敏感。
+- **[WBC](./depth-wbc.md)**：全身控制在实时层需稳定关节接口。
+- **[状态估计](./depth-state-estimation.md)**：多传感器时间对齐依赖时钟同步。
 
 ## 关联页面
 
@@ -63,4 +63,4 @@ summary: "硬件通信与协议专题汇总：从电机驱动固件、现场总�
 
 - 本库归纳自 [Motor Drive / Firmware / Bus Protocols](./motor-drive-firmware-bus-protocols.md) 及 `wiki/concepts/*protocol*` 系列页
 - RPC 一手：[Birrell & Nelson 1984](../../sources/papers/birrell_nelson_implementing_rpc_tocs_1984.md) · [RFC 5531](../../sources/sites/rfc-5531-onc-rpc.md) · [gRPC 文档](../../sources/sites/grpc-io-docs.md)
-- 图谱专题定义：[docs/topic-filters.js](../../docs/topic-filters.js)（`communication` 命中规则）
+- 图谱纵深定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`communication` 命中规则）

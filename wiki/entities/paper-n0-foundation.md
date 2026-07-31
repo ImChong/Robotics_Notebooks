@@ -12,7 +12,7 @@ related:
   - ../concepts/visuo-tactile-fusion.md
   - ../concepts/contact-rich-manipulation.md
   - ../methods/vla.md
-  - ../overview/topic-tactile.md
+  - ../overview/depth-tactile.md
   - ./paper-deform360-deformable-visuotactile-dataset.md
   - ./paper-vt-wam-visuotactile-contact-rich.md
   - ../queries/embodied-eval-benchmark-selection-loop.md

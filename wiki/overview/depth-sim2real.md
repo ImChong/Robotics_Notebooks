@@ -1,16 +1,16 @@
 ---
 type: overview
-tags: [topic, topic-sim2real, deployment, domain-randomization, transfer]
+tags: [depth, depth-sim2real, deployment, domain-randomization, transfer]
 status: complete
-updated: 2026-07-28
-summary: "Sim2Real 专题汇总：图谱专题锚点；详细知识见 concepts/sim2real，本页仅作专题导航。"
+updated: 2026-07-31
+summary: "Sim2Real 纵深汇总：图谱纵深锚点；详细知识见 concepts/sim2real，本页仅作纵深导航。"
 ---
 
-# Sim2Real（专题汇总）
+# Sim2Real（纵深汇总）
 
-> **主内容页**：[Sim2Real（概念总览）](../concepts/sim2real.md) — 方法、工程流程与交叉引用以该页为准；本页仅服务图谱专题筛选锚点。
+> **主内容页**：[Sim2Real（概念总览）](../concepts/sim2real.md) — 方法、工程流程与交叉引用以该页为准；本页仅服务图谱纵深筛选锚点。
 >
-> **图谱专题视图**：本页是知识图谱「🔁 仿真到现实 (Sim2Real)」专题的统一入口；在 [图谱专题视图](../../docs/graph.html?topic=sim2real) 筛选时，本节点为汇总锚点。
+> **图谱纵深视图**：本页是知识图谱「🔁 仿真到现实 (Sim2Real)」纵深的统一入口；在 [图谱纵深视图](../../docs/graph.html?depth=sim2real) 筛选时，本节点为汇总锚点。
 
 ## 一句话定义
 
@@ -32,7 +32,7 @@ summary: "Sim2Real 专题汇总：图谱专题锚点；详细知识见 concepts/
 - **「能跑仿真 ≠ 能跑真机」**：差距常出现在执行器、接触与感知延迟。
 - **与 WBT / Locomotion 全栈相关**：高动态技能对 Sim2Real 更敏感。
 
-## 本专题覆盖什么
+## 本纵深覆盖什么
 
 | 层次 | 典型问题 | 站内入口 |
 |------|----------|----------|
@@ -44,11 +44,11 @@ summary: "Sim2Real 专题汇总：图谱专题锚点；详细知识见 concepts/
 | 工程 | 闭环误差分层 | [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md) |
 | 工程 | 处理器在环 | [Processor-in-the-Loop Sim2Real](../concepts/processor-in-the-loop-sim2real.md) |
 
-## 与其他专题的关系
+## 与其他纵深的关系
 
-- **[安全微调](./topic-safe-fine-tuning.md)**：Sim2Real 链路的最后一段在线适配。
-- **[IL/RL](./topic-learning.md)**：训练范式与迁移策略 jointly 设计。
-- **[通信协议](./topic-communication.md)**：真机延迟与仿真假设对齐。
+- **[安全微调](./depth-safe-fine-tuning.md)**：Sim2Real 链路的最后一段在线适配。
+- **[IL/RL](./depth-learning.md)**：训练范式与迁移策略 jointly 设计。
+- **[通信协议](./depth-communication.md)**：真机延迟与仿真假设对齐。
 
 ## 关联页面
 
@@ -61,4 +61,4 @@ summary: "Sim2Real 专题汇总：图谱专题锚点；详细知识见 concepts/
 
 - 本库归纳自 [Sim2Real](../concepts/sim2real.md) 及 comparisons/queries 迁移系列页
 - [深蓝具身智能公众号文归档](../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md) — 闭环叙事入口
-- 图谱专题定义：[docs/topic-filters.js](../../docs/topic-filters.js)（`sim2real` 命中规则）
+- 图谱纵深定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`sim2real` 命中规则）

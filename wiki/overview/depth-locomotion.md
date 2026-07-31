@@ -1,14 +1,14 @@
 ---
 type: overview
-tags: [topic, topic-locomotion, gait, bipedal, walking, humanoid]
+tags: [depth, depth-locomotion, gait, bipedal, walking, humanoid]
 status: complete
-updated: 2026-06-17
-summary: "Locomotion 步态专题汇总：双足/人形/四足在不同地形上的稳定移动，覆盖步态生成、ZMP/LIP、MPC 与 RL 路线及感知式越障。"
+updated: 2026-07-31
+summary: "Locomotion 步态纵深汇总：双足/人形/四足在不同地形上的稳定移动，覆盖步态生成、ZMP/LIP、MPC 与 RL 路线及感知式越障。"
 ---
 
-# Locomotion 步态（专题汇总）
+# Locomotion 步态（纵深汇总）
 
-> **图谱专题视图**：本页是知识图谱「🚶 步态与移动 (Locomotion)」专题的统一入口；在 [图谱专题视图](../../docs/graph.html?topic=locomotion) 筛选时，本节点为汇总锚点。
+> **图谱纵深视图**：本页是知识图谱「🚶 步态与移动 (Locomotion)」纵深的统一入口；在 [图谱纵深视图](../../docs/graph.html?depth=locomotion) 筛选时，本节点为汇总锚点。
 
 ## 一句话定义
 
@@ -30,7 +30,7 @@ summary: "Locomotion 步态专题汇总：双足/人形/四足在不同地形上
 - **方法谱系广**：从 ZMP 经典控制到 RL 端到端，再到 MPC+WBC 混合。
 - **Sim2Real 高发区**：接触与地形随机性导致迁移难度高。
 
-## 本专题覆盖什么
+## 本纵深覆盖什么
 
 | 层次 | 典型问题 | 站内入口 |
 |------|----------|----------|
@@ -40,11 +40,11 @@ summary: "Locomotion 步态专题汇总：双足/人形/四足在不同地形上
 | 规划 | 落足与地形 | [Footstep Planning](../concepts/footstep-planning.md)、[Terrain Adaptation](../concepts/terrain-adaptation.md) |
 | 越障 | 楼梯/跑酷索引 | [Stair & Obstacle Locomotion](../tasks/stair-obstacle-perceptive-locomotion.md) |
 
-## 与其他专题的关系
+## 与其他纵深的关系
 
-- **[WBC](./topic-wbc.md)**：执行层协调全身满足行走约束。
-- **[Sim2Real](./topic-sim2real.md)**：行走策略迁移是典型难题。
-- **[状态估计](./topic-state-estimation.md)**：感知式 locomotion 依赖里程计/地形估计。
+- **[WBC](./depth-wbc.md)**：执行层协调全身满足行走约束。
+- **[Sim2Real](./depth-sim2real.md)**：行走策略迁移是典型难题。
+- **[状态估计](./depth-state-estimation.md)**：感知式 locomotion 依赖里程计/地形估计。
 
 ## 关联页面
 
@@ -55,4 +55,4 @@ summary: "Locomotion 步态专题汇总：双足/人形/四足在不同地形上
 ## 参考来源
 
 - 本库归纳自 [Locomotion 任务页](../tasks/locomotion.md) 及相关概念/方法页
-- 图谱专题定义：[docs/topic-filters.js](../../docs/topic-filters.js)（`locomotion` 命中规则）
+- 图谱纵深定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`locomotion` 命中规则）

@@ -109,7 +109,7 @@ flowchart TB
 
 - 方法归纳（主阅读）：[amp-reward.md](../methods/amp-reward.md)
 - 作者线演进：[ADD #02](../methods/add.md)、[SMP #03](../methods/smp.md)
-- AMP 专题总览：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)（#01/19）
+- AMP 纵深总览：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)（#01/19）
 - 身体系统栈：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 
 ## 参考来源

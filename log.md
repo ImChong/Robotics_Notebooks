@@ -9,12 +9,21 @@
 - **交叉：** [`wiki/entities/humanoid-motion-intelligence.md`](wiki/entities/humanoid-motion-intelligence.md)、[`wiki/queries/hmi-opensource-projects-coverage.md`](wiki/queries/hmi-opensource-projects-coverage.md)、[`scripts/utils/community_labels.py`](scripts/utils/community_labels.py)
 - **说明：** 开源项目主表 166 项此前已覆盖；本轮补齐论文侧缺口并修正两处错误挂接
 
+## [2026-07-31] structural | 专题合并至纵深 — 图谱「专题视图」全面更名为「纵深视图」，枢纽页 topic-* → depth-*
+
+- **产品概念：** 取消独立「专题」概念；图谱筛选、详情徽标、枢纽汇总页统一称「纵深 / 纵深视图」，与 `roadmap/depth-*.md` 纵深路线同一命名空间
+- **文件重命名：** [`docs/topic-filters.js`](docs/depth-filters.js) → `docs/depth-filters.js`；21 个 [`wiki/overview/topic-*.md`](wiki/overview/) → `wiki/overview/depth-*.md`；[`scripts/screenshot_graph_topic.cjs`](scripts/screenshot_graph_depth.cjs) → `screenshot_graph_depth.cjs`
+- **前端：** `docs/graph.html` / `docs/main.js` / `docs/detail.html` / `docs/roadmap.html` — UI 文案「专题视图 / 所属专题 / 专题汇总」→「纵深视图 / 所属纵深 / 纵深汇总」；URL 主参数 `?depth=`，兼容旧 `?topic=`；`RNDepthFilters` 为主 API，保留 `RNTopicFilters` 别名
+- **别名：** [`schema/page-aliases.json`](schema/page-aliases.json) 登记 `wiki-overview-topic-*` → `wiki-overview-depth-*`，避免旧详情 URL 断链
+- **联动：** lint 枢纽常量、交叉回链测试、schema 目录说明、v31 checklist、站内 wiki 回链文案同步；历史 archive checklist / `log.md` 旧条目 / 外部文章标题中的「专题」保留为史料
+- **涉及路径：** `wiki/overview/depth-*.md`、`docs/depth-filters.js`、`docs/graph.html`、`docs/main.js`
+
 ## [2026-07-30] structural | schema/canonical-facts.json — V31 P2 事实库扩展 250 → 260 条，补 10 条感知栈选型矛盾检测规则
 
 - **新增 10 条：** 单阶段检测快 vs 两阶段精度高、闭集检测准 vs 开放词汇泛化、实时机载算力受限 vs 服务器侧精度、2D 框够用 vs 必须 3D 语义几何、稠密语义建图信息全 vs 内存/时延、SAM 零样本分割强 vs 类别语义缺失、深度传感精度 vs 成本、在线建图实时 vs 离线建图完整、感知帧率高 ≠ 控制闭环带宽高、DETR 端到端简洁 vs 收敛慢/小目标弱
 - **校验方式：** 每条 `terms`/`pos_claims` 逐条对现存感知栈页（[`robot-perception-stack-selection-loop`](wiki/queries/robot-perception-stack-selection-loop.md) / [`2d-to-3d-semantic-lifting-gap`](wiki/concepts/2d-to-3d-semantic-lifting-gap.md) / `object-detection-model-selection` 等）有 pos 命中；`neg_claims` 取朴素错误全句、不命中任何页（含未被 `strip_misconception_sections` 剥离的「误判速查」表），保证 0 误报
 - **门禁：** `make lint` 0 errors、潜在矛盾 **0 个**；`make ci-preflight` **12/12**（`graph-stats.json` 0 orphans、`community_quality_warning: false`）
-- 勾选 v31 P2「事实库扩展」及 DoD「事实库扩展至 260 条」；v31 P3（图谱专题视图 / 详情页徽标）待后续推进
+- 勾选 v31 P2「事实库扩展」及 DoD「事实库扩展至 260 条」；v31 P3（图谱纵深视图 / 详情页徽标）待后续推进
 
 ## [2026-07-30] structural | media/site-demo.gif — 按最新图谱重录 README 演示 GIF
 

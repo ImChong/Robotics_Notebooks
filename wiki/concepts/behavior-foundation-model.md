@@ -142,7 +142,7 @@ flowchart TB
 
 ## 参考来源
 
-- [具身智能研究室 · BFM 41 篇专题（微信公众号）](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)
+- [具身智能研究室 · BFM 41 篇纵深（微信公众号）](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)
 - [BFM 综述（arXiv:2506.20487）](../../sources/papers/bfm_survey_arxiv_2506_20487.md)
 - [awesome-bfm-papers 精选列表](../../sources/repos/awesome_bfm_papers.md)
 - [BFM 论文 ingest（arXiv:2509.13780）](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md)

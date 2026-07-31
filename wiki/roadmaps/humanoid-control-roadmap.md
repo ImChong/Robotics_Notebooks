@@ -2,7 +2,7 @@
 type: roadmap_page
 tags: [roadmap, locomotion, humanoid, rl, sim2real]
 status: active
-summary: "面向人形机器人运动控制算法工程师的四阶段学习路线：建模控制 → 仿真训练 → Sim2Real → 进阶专题。"
+summary: "面向人形机器人运动控制算法工程师的四阶段学习路线：建模控制 → 仿真训练 → Sim2Real → 进阶纵深。"
 updated: 2026-04-20
 ---
 
@@ -38,7 +38,7 @@ updated: 2026-04-20
 | 阶段一 | 建模与控制 | Pinocchio, TSID, WBC |
 | 阶段二 | 仿真与训练 | IsaacGym, legged_gym, PPO |
 | 阶段三 | Sim2Real | Domain Randomization, [SAGE](../entities/sage-sim2real-actuator-gap-estimator.md) |
-| 阶段四 | 进阶专题 | 按方向选：足式/loco-manip/视觉/模仿学习 |
+| 阶段四 | 进阶纵深 | 按方向选：足式/loco-manip/视觉/模仿学习 |
 
 ## 推荐论文路线（按时间）
 

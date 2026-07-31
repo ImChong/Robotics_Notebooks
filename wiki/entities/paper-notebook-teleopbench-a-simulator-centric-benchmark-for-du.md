@@ -17,7 +17,7 @@ arxiv: "2505.12748"
 code: https://github.com/cyjdlhy/TeleOpBench
 related:
   - ../overview/paper-notebook-category-07-teleoperation.md
-  - ../overview/topic-embodied-eval-benchmark.md
+  - ../overview/depth-embodied-eval-benchmark.md
   - ../tasks/teleoperation.md
   - ../comparisons/data-gloves-vs-vision-teleop.md
   - ../concepts/motion-retargeting.md
@@ -168,7 +168,7 @@ README 给出的最小入口是配置相机/VR 采集端后，在 `teleop/` 运�
 ## 与其他页面的关系
 
 - 任务入口：[Teleoperation](../tasks/teleoperation.md)
-- 基准专题：[具身大模型评测基准](../overview/topic-embodied-eval-benchmark.md)
+- 基准纵深：[具身大模型评测基准](../overview/depth-embodied-eval-benchmark.md)
 - 接口取舍：[数据手套 vs 视觉遥操作](../comparisons/data-gloves-vs-vision-teleop.md)
 - 映射基础：[Motion Retargeting](../concepts/motion-retargeting.md)
 - 路线位置：[遥操作纵深 Stage 5](../../roadmap/depth-teleoperation.md)

@@ -34,8 +34,8 @@ related:
   - ../concepts/visuo-tactile-fusion.md
   - ../concepts/tactile-sensing.md
   - ../concepts/contact-rich-manipulation.md
-  - ../overview/topic-tactile.md
-  - ../overview/topic-embodied-eval-benchmark.md
+  - ../overview/depth-tactile.md
+  - ../overview/depth-embodied-eval-benchmark.md
   - ../tasks/manipulation.md
   - ../methods/vla.md
   - ../methods/imitation-learning.md
@@ -222,7 +222,7 @@ sequenceDiagram
 - [视触觉融合](../concepts/visuo-tactile-fusion.md) — VO/VT 消融语境
 - [Tactile Sensing](../concepts/tactile-sensing.md) — GelSight / marker 模态
 - [接触丰富操作](../concepts/contact-rich-manipulation.md) — 过程级接触约束
-- [触觉专题](../overview/topic-tactile.md) / [具身评测基准专题](../overview/topic-embodied-eval-benchmark.md)
+- [触觉纵深](../overview/depth-tactile.md) / [具身评测基准纵深](../overview/depth-embodied-eval-benchmark.md)
 - [Manipulation](../tasks/manipulation.md) / [VLA](../methods/vla.md) / [Imitation Learning](../methods/imitation-learning.md)
 - [TacO（传感器基准）](./paper-taco-tactile-sensor-benchmark.md) — 互补选型证据
 - [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 第③层策略成功率读法

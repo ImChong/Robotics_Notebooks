@@ -18,7 +18,7 @@ related:
   - ../concepts/world-action-models.md
   - ../methods/generative-world-models.md
   - ../methods/unified-multimodal-tokens.md
-  - ../overview/topic-vla.md
+  - ../overview/depth-vla.md
   - ../entities/paper-daily-omni.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
 ---
@@ -171,4 +171,4 @@ VLX（Vision-Language-X，X = 可扩展任务）把感知/导航/执行收进**�
 - [统一多模态 token](../methods/unified-multimodal-tokens.md) — ④ VLX 一体化的表征接口
 - [Daily-Omni](../entities/paper-daily-omni.md) — ① 层 omni-modal **音视频时序对齐** 诊断基准
 - 姊妹 Query：[具身大模型评测基准选型闭环](./embodied-eval-benchmark-selection-loop.md) — 「选完怎么评测」
-- 专题汇总：[VLA（专题汇总）](../overview/topic-vla.md) — ③ 执行层在图谱专题视图的统一入口
+- 纵深汇总：[VLA（纵深汇总）](../overview/depth-vla.md) — ③ 执行层在图谱纵深视图的统一入口

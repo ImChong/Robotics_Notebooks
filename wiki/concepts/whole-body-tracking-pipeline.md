@@ -198,7 +198,7 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 
 - **推理层**：[ONNX](../entities/onnx.md) / [ONNX Runtime](../entities/onnxruntime.md) / TensorRT（选型见 [对比页](../comparisons/onnxruntime-vs-mnn-vs-tensorrt.md)），控制频率通常 50 Hz；策略冻结。
 - **安全监督层**：力矩限位、关节速度护栏、跌倒检测、故障切换到安全姿态；详见 [Balance Recovery](../tasks/balance-recovery.md)。
-- **在线适配层**：残差策略（residual policy）、安全 LoRA 微调、CBF/CLF 安全壳。这是后续真机 RL 微调的入口（见 V23 P2 真机安全微调专题）。
+- **在线适配层**：残差策略（residual policy）、安全 LoRA 微调、CBF/CLF 安全壳。这是后续真机 RL 微调的入口（见 V23 P2 真机安全微调纵深）。
 
 ## 六条主流落地路径对比
 
