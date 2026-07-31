@@ -5814,7 +5814,12 @@
   // ── 首页「更多路线」折叠：默认只展示里程碑最新的 4 条纵深路线 ──────────────
   var routeToggle = document.getElementById('homeRouteToggle');
   var routeLinks = document.getElementById('homeRouteLinks');
+  var mainRouteCount = document.getElementById('heroMainRouteCount');
   var depthRouteCount = document.getElementById('heroDepthRouteCount');
+  var mainRouteCard = document.getElementById('home-start-main-route');
+  var moreRoutesCard = document.getElementById('home-more-routes');
+  var BORDER_TRACE_MS = 1200;
+  var TOGGLE_HINT_MS = 900;
 
   function setHomeRoutesExpanded(expanded) {
     if (!routeToggle) return;
@@ -5829,6 +5834,69 @@
     }
   }
 
+  function playCardBorderTrace(card, onDone) {
+    if (!card) {
+      if (onDone) onDone();
+      return;
+    }
+    var finished = false;
+    var prevSvg = card.querySelector('.home-border-trace-svg');
+    if (prevSvg) prevSvg.remove();
+
+    // 用像素坐标画圆角矩形，避免 preserveAspectRatio=none 把圆角拉扁
+    var pad = 2;
+    var stroke = 2.5;
+    var w = Math.max(card.offsetWidth + pad * 2, 1);
+    var h = Math.max(card.offsetHeight + pad * 2, 1);
+    var radius = 14; // var(--radius) 12px + 外扩
+    var inset = stroke / 2;
+
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('class', 'home-border-trace-svg');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('width', String(w));
+    svg.setAttribute('height', String(h));
+    svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+
+    var rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    rect.setAttribute('x', String(inset));
+    rect.setAttribute('y', String(inset));
+    rect.setAttribute('width', String(Math.max(w - stroke, 0)));
+    rect.setAttribute('height', String(Math.max(h - stroke, 0)));
+    rect.setAttribute('rx', String(radius));
+    rect.setAttribute('ry', String(radius));
+    rect.setAttribute('pathLength', '100');
+    svg.appendChild(rect);
+
+    function finish() {
+      if (finished) return;
+      finished = true;
+      card.classList.remove('is-border-tracing');
+      if (svg.parentNode) svg.parentNode.removeChild(svg);
+      rect.removeEventListener('animationend', onAnimEnd);
+      window.clearTimeout(fallbackTimer);
+      if (onDone) onDone();
+    }
+    function onAnimEnd(event) {
+      if (event.animationName === 'home-border-trace-dash') finish();
+    }
+
+    card.classList.add('is-border-tracing');
+    card.appendChild(svg);
+    rect.addEventListener('animationend', onAnimEnd);
+    var fallbackTimer = window.setTimeout(finish, BORDER_TRACE_MS);
+  }
+
+  function pulseRouteToggleHint() {
+    if (!routeToggle) return;
+    routeToggle.classList.remove('is-pulse-hint');
+    void routeToggle.offsetWidth;
+    routeToggle.classList.add('is-pulse-hint');
+    window.setTimeout(function () {
+      routeToggle.classList.remove('is-pulse-hint');
+    }, TOGGLE_HINT_MS);
+  }
+
   if (routeToggle) {
     routeToggle.addEventListener('click', function () {
       var expanded = routeToggle.getAttribute('aria-expanded') === 'true';
@@ -5836,14 +5904,27 @@
     });
   }
 
-  // Hero「纵深路线」数字：跳转到「更多路线」模块并展开全部路线
-  if (depthRouteCount) {
-    depthRouteCount.addEventListener('click', function () {
-      setHomeRoutesExpanded(true);
+  // Hero「主路线」数字：定位到「从零开始」卡并顺时针描边一圈
+  if (mainRouteCount && mainRouteCard) {
+    mainRouteCount.addEventListener('click', function () {
+      window.setTimeout(function () {
+        playCardBorderTrace(mainRouteCard);
+      }, 0);
     });
   }
-  if (window.location.hash === '#home-more-routes') {
-    setHomeRoutesExpanded(true);
+
+  // Hero「纵深路线」数字：定位到「更多路线」卡描边一圈（不展开），随后高亮展开按钮文案
+  if (depthRouteCount && moreRoutesCard) {
+    depthRouteCount.addEventListener('click', function () {
+      window.setTimeout(function () {
+        playCardBorderTrace(moreRoutesCard, pulseRouteToggleHint);
+      }, 0);
+    });
+  }
+  if (window.location.hash === '#home-start-main-route' && mainRouteCard) {
+    playCardBorderTrace(mainRouteCard);
+  } else if (window.location.hash === '#home-more-routes' && moreRoutesCard) {
+    playCardBorderTrace(moreRoutesCard, pulseRouteToggleHint);
   }
 
   // ── Wiki 全文搜索（index.html 搜索框） ────────────────────────────────────

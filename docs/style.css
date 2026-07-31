@@ -494,7 +494,63 @@ a.hero-stat-num:focus-visible {
 .section { padding: 44px 0; }
 /* 首页入口区与 Hero 同底色、语义相连：去掉自身顶距，只保留 Hero 底部留白 */
 #home-start.section { padding-top: 0; }
+#home-start-main-route,
 #home-more-routes { scroll-margin-top: calc(var(--header-h) + 12px); }
+
+/* Hero 盘点数字定位入口卡：SVG 短弧沿边框顺时针扫一圈 */
+.home-entry-card.is-border-tracing {
+  position: relative;
+  z-index: 1;
+}
+.home-border-trace-svg {
+  position: absolute;
+  inset: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  pointer-events: none;
+  z-index: 4;
+  overflow: visible;
+}
+.home-border-trace-svg rect {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--accent) 70%, transparent));
+  stroke-dasharray: 14 86;
+  stroke-dashoffset: 0;
+  animation: home-border-trace-dash 1.05s linear forwards;
+}
+@keyframes home-border-trace-dash {
+  to { stroke-dashoffset: -100; }
+}
+.home-route-toggle.is-pulse-hint {
+  animation: home-route-toggle-hint 0.85s ease;
+}
+@keyframes home-route-toggle-hint {
+  0%, 100% {
+    color: var(--accent);
+    text-shadow: none;
+    filter: none;
+  }
+  35%, 65% {
+    color: var(--accent-hover);
+    text-shadow: 0 0 14px color-mix(in srgb, var(--accent) 55%, transparent);
+    filter: brightness(1.25);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-border-trace-svg rect {
+    animation: none;
+    stroke-dasharray: none;
+    opacity: 0.95;
+  }
+  .home-route-toggle.is-pulse-hint {
+    animation: none;
+    color: var(--accent-hover);
+  }
+}
 .section-alt {
   background: linear-gradient(180deg, rgba(255,255,255,.25), rgba(255,255,255,.1)), var(--bg-alt);
   border-top: 1px solid var(--border);

@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-31] structural | docs/index.html — Hero 主路线/纵深路线改为锚到入口卡+顺时针描边；纵深不再自动展开，描边后高亮展开按钮
+
+- **主路线数字：** `#home-start-main-route`（从零开始卡）+ 边框顺时针高亮一圈后移除
+- **纵深路线数字：** `#home-more-routes` 同样描边，**不**自动展开；描边结束后短时高亮 `#homeRouteToggle` 文案
+- **实现：** `docs/style.css` `@property --home-trace-angle` + `conic-gradient`；`docs/main.js` `playCardBorderTrace` / `pulseRouteToggleHint`
+
 ## [2026-07-31] structural | docs/index.html — Hero 盘点新增主路线(1)，四项数字可点跳转图谱/主路线/展开纵深路线
 
 - **改动：** `docs/index.html` Hero 盘点由三项改为四项：知识节点 / 互链关系 / **主路线(1)** / 纵深路线(21)；主路线插在互链关系与纵深路线之间
