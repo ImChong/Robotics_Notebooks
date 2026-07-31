@@ -1,5 +1,14 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-31] query | wiki/queries/hmi-papers-coverage.md — 确保 HMI 论文与项目目录 145 篇论文均有本库独立详情节点；新建 23 个 sources+entities，复用 122 个已有页；修正开源主表 Robot Parkour / ASAP 挂接
+
+- **触发：** 用户要求覆盖 [论文与项目](https://github.com/RealXiaoze/humanoid-motion-intelligence/tree/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE) 列出的论文与项目详情独立节点（不重复造页）
+- **Query 产物：** [`wiki/queries/hmi-papers-coverage.md`](wiki/queries/hmi-papers-coverage.md)（145/145 映射；注册 [`wiki/queries/README.md`](wiki/queries/README.md)）
+- **新建详情节点（21）+ 升格占位（2）：** 新建含 OSF、Stack of Tasks、ExBody、XHugWBC、AnyBody、PaLM-E、Open X、π0.5、Dreamer、GR00T-Dreams、Robot Parkour 等；P017/P018 升格原 Paper Notebooks planned 占位（避免 arXiv 双节点）— 对应 `sources/papers/hmi_p*.md`
+- **复用与升格：** 含 PULSE（`pulse-physics.md`）、Challenging Terrain、Contact-Aided InEKF、Octo、Gemini Robotics 等；开源主表 Robot Parkour 改挂新页、ASAP 改挂 `paper-hrl-stack-25-asap`
+- **交叉：** [`wiki/entities/humanoid-motion-intelligence.md`](wiki/entities/humanoid-motion-intelligence.md)、[`wiki/queries/hmi-opensource-projects-coverage.md`](wiki/queries/hmi-opensource-projects-coverage.md)、[`scripts/utils/community_labels.py`](scripts/utils/community_labels.py)
+- **说明：** 开源项目主表 166 项此前已覆盖；本轮补齐论文侧缺口并修正两处错误挂接
+
 ## [2026-07-30] structural | schema/canonical-facts.json — V31 P2 事实库扩展 250 → 260 条，补 10 条感知栈选型矛盾检测规则
 
 - **新增 10 条：** 单阶段检测快 vs 两阶段精度高、闭集检测准 vs 开放词汇泛化、实时机载算力受限 vs 服务器侧精度、2D 框够用 vs 必须 3D 语义几何、稠密语义建图信息全 vs 内存/时延、SAM 零样本分割强 vs 类别语义缺失、深度传感精度 vs 成本、在线建图实时 vs 离线建图完整、感知帧率高 ≠ 控制闭环带宽高、DETR 端到端简洁 vs 收敛慢/小目标弱

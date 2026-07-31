@@ -10,6 +10,7 @@
 
 | 文件 | 内容 |
 |------|------|
+| [x] [hmi_p001_operational-space-formulation.md](papers/hmi_p001_operational-space-formulation.md) 等 23 篇 | HMI 论文缺口批量归档（P001–P005/P012/P017–P018/P023/P028/P037/P039/P042–P043/P053/P055/P059/P064/P068–P072/P130）；导读见 `wiki/queries/hmi-papers-coverage.md` |
 | [x] [daily_omni_arxiv_2505_17862.md](papers/daily_omni_arxiv_2505_17862.md) | Daily-Omni：日常音视频跨模态时序 AVQA 基准（arXiv:2505.17862，复旦；代码+HF 数据已开源；榜首含 AGIBOT WITA-Omni） |
 | [x] [pi_r2_arxiv_2607_26055.md](papers/pi_r2_arxiv_2607_26055.md) | πR²：反应式实时 flow 策略，GR00T-N1.7 闭环约 25 Hz（arXiv:2607.26055，CMU；训练+部署已开源） |
 | [x] [hifi_umi_arxiv_2607_25895.md](papers/hifi_umi_arxiv_2607_25895.md) | HiFi-UMI：高保真无机器人双臂 UMI 与 zero-robot 后训练（arXiv:2607.25895，Simple AI；HiFi-UMI-2K 数据已开） |

@@ -107,6 +107,10 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "wiki/queries/hmi-opensource-projects-coverage.md": (
         "开源项目本库导读（HMI Open-Source Projects Guide）"
     ),
+    "wiki/queries/hmi-papers-coverage.md": ("论文总索引导读（HMI Papers Coverage Guide）"),
+    "wiki/queries/embodied-eval-benchmark-selection-loop.md": (
+        "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop）"
+    ),
 }
 
 COMMUNITY_LABEL_SUFFIX = " 社区"
