@@ -151,6 +151,17 @@ sequenceDiagram
 | **3D：WildDet3D AP3D** | 2B **17.36** → 9B **23.44** |
 | **Scaling 叙事** | 推理密集型认知：RynnBrain 升、Qwen3.5 **负缩放**；定位：最大 Qwen 仍低于最小 RynnBrain |
 
+## 结论
+
+**RynnBrain 1.1 真正的主张不是「模型更大所以更强」，而是「具身预训练脑决定了 VLA 的起点」：把接触点与 3D 框写进输出空间、再用 81 维统一动作空间接到真机，才是成功率跃升的来源。**
+
+- 最硬的证据是受控对照而非榜单：同演示、同 60k 后训练下只换初始化，成功率 **60% → 86.67%**、process **68.33% → 91.28%**；统一 81D + mask 的 Generalist 再抬到 **91.67%**，说明增益来自预训练配方与跨本体联合训练，不是骨干参数量。
+- 具身 scaling 是 **非均匀** 的：推理密集型认知上 RynnBrain 升而 Qwen3.5 负缩放，定位上最大 Qwen 仍低于最小 RynnBrain——参数轴替代不了显式空间监督这条数据轴。
+- 适用边界要分清尺度：3D grounding 目前主推 **2B/9B**，122B 的领先证据在认知/定位基准，真机 VLA 实验并未宣称用 122B 作策略骨干。
+- 主要局限在验证与迁移：接触点缺标准化功能有效性指标、以定性为主；G1 依赖 [SONIC](../methods/sonic-motion-tracking.md) 低层与平台特有 64D 输出，换人形栈需重做 embodiment layer。
+- 开源侧要按「基础模型可复现、VLA 不可复现」来读：权重与推理/cookbook 可跑感知/定位/3D/接触点，VLA 训练码与权重未随仓发布。
+- 对照定位：与 [InternVLA-A1.5](./paper-internvla-a15-unified-vla.md) 同属 Qwen3.5 族但后者走 latent foresight，本页走 **大规模具身脑 + 统一跨本体动作空间**；与 [RynnWorld-4D](./paper-rynnworld-4d-rgb-depth-flow.md) 构成同院系「脑 / 4D 世界模型」的分工。
+
 ## 常见误区或局限
 
 - **误区：** 以为 GitHub = 可复现全部真机 VLA——**公开资产是基础模型推理与权重**；跨本体 VLA 与遥操作数据 **未随仓给出**。

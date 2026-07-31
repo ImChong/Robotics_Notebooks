@@ -46,6 +46,14 @@ Reference-Free Sampling-Based Model Predictive Control 的人形机器人学习�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是这篇「无参考采样式 MPC」的占位子节点：它被放进 03_High_Impact_Selection 说明策展上认为值得优先深读，但页面本身还没有可引用的结论。**
+
+- 页面上唯一确定的信息是归类与计划路径：分类 03_High_Impact_Selection、计划文件夹 `papers/03_High_Impact_Selection/reference-free-sampling-based-model-predictive-c`，深读状态仍为「待撰写」。
+- 适用边界：可用于分类检索与优先级排序，不可当作方法或指标依据——本页未给出采样策略、代价设计或实机结果。
+- 主要风险是被误当成已消化的笔记：本页「实验与评测」已明确 benchmark、消融与实机指标待补，引用前应回到 PROGRESS.md 与 <https://arxiv.org/abs/2511.19204>。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-03-high-impact-selection](../overview/paper-notebook-category-03-high-impact-selection.md)

@@ -46,6 +46,14 @@ RoboMirror 的人形机器人学习论文条目，当前处于 Paper Notebooks �
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是 RoboMirror 的占位子节点：标题里「先理解再模仿」的主张暗示了视频到人形运动这条路线的关键分歧点，但页面尚未提供可引用的机制与证据。**
+
+- 页面上唯一确定的信息是归类与计划路径：分类 05_Locomotion、计划文件夹 `papers/05_Locomotion/robomirror-understand-before-you-imitate-for-vid`，深读状态仍为「待撰写」。
+- 适用边界：可用于分类检索与交叉链接，不可当作方法或指标依据——本页未给出「理解」环节的具体实现与任何量化结果。
+- 主要风险是被误当成已消化的笔记：本页「实验与评测」已明确 benchmark、消融与实机指标待补，引用前应回到 PROGRESS.md 与 <https://arxiv.org/abs/2512.23649>。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

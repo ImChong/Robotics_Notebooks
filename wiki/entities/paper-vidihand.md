@@ -129,6 +129,15 @@ flowchart TB
 
 - **定性**：同一段 egocentric 输入下，WiLoR **检测掉帧 + 姿态闪烁**；OmniHands **减闪烁** 但遮挡与大运动仍差；ViDiHand **双手 identity 稳定、遮挡下连贯**。
 
+## 结论
+
+**ViDiHand 真正的主张是「预训练 video diffusion 的中间激活已经是一份可用的 4D 手部先验」：只用 hand-overlay 渲染做轻量适配，就能把 detector、infiller 与 test-time optimization 三段流水线一起砍掉。**
+
+- 起作用的是适配目标而非推理时拟合：用半透明手部渲染（含物体完全遮挡手的帧）做 flow-matching 监督，且 **不向扩散骨干回传 MANO 损失**，迫使模型在遮挡下维持 per-hand 3D 状态；推理只需单次 VACE 前向。
+- 双分支 decoder 把归纳偏置分开——articulated pose 作整体的 hand-token 分支、图像坐标逐关节局部的 heatmap 分支，再以 mixed-projection 闭式解 in-plane 平移得到 metric 尺度；射线空间位置编码使其跨鱼眼/针孔数据集泛化。
+- 评测协议本身是贡献的一部分：对 FN 注入 identity MANO 占位误差，让「检测」与「重建」在同一口径下可比；ARCTIC 上 jitter 3.18 对 [WiLoR](../methods/wilor.md) 的 24.1，正是无 detector 路线的直接体现。
+- 边界与代价：能力与 **Wan2.1-VACE** 规模绑定，decoder 训练不反传骨干，换骨干需重新适配；输出专精双手 MANO，与全身 SMPL 或机器人 retarget 的集成仍需额外标定/语义层。
+
 ## 与其他路线对比
 
 | 路线 | 代表 | 遮挡 / 时序 | 场景上下文 | 本文 |

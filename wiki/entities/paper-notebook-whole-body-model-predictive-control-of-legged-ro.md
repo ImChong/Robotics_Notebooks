@@ -47,6 +47,14 @@ Whole-Body Model-Predictive Control of Legged Robots with MuJoCo 的人形机器
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页目前只是图谱里的占位节点：题名指向「以 MuJoCo 作为动力学后端做腿足机器人全身 MPC」这条工程路线，但页面本身尚未给出任何方法细节或结果。**
+
+- 本页可确认的只有条目级信息：分类 04_Loco-Manipulation_and_WBC、arXiv 2503.04613、发表 2025.03、深读状态「待撰写」。
+- 求解器设置、实时性预算、与学习式控制的取舍等均未涉及，不应据此页判断该路线的可行性或成本。
+- 当前职责只是维持与 [分类父节点](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md) / [总索引](../overview/humanoid-paper-notebooks-index.md) 的交叉检索；实质结论待深读笔记完成后回填。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

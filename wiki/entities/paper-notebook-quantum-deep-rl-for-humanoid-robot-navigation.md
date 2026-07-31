@@ -45,6 +45,15 @@ summary: "本文提出 变分量子 Soft Actor-Critic（QuantumSAC）：在经�
 
 - 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
+## 结论
+
+**QuantumSAC 的实际贡献是「把参数化量子电路塞进 SAC 的 actor 并在大观测/大动作任务上跑通」，而不是主张量子在人形导航上已经取得优势。**
+
+- 真正起作用的是替换范围的克制：只把 actor 的核心网络换成 PQC（编码电路 + 变分电路），量子测量结果仍由一层经典网络映射成连续动作的均值与方差，SAC 框架的其余部分不动。
+- 定位上它绕开传统建图 / 规划，直接在高维状态空间里学控制；这也意味着它继承的是 SAC 的训练特性，而非量子算法本身带来的保证。
+- 适用边界由基准决定：Humanoid-v4 / Walker2d-v4 是 MuJoCo 里的仿真人形 / 双足任务，本页未涉及真机导航，不能据此推断 Sim2Real 可用性。
+- 本页为 **策展索引级** 摘要（分类 08_Navigation），量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准（见 [参考来源](#参考来源)）。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-08-navigation](../overview/paper-notebook-category-08-navigation.md)

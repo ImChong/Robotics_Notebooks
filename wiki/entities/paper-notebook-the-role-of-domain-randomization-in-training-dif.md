@@ -46,6 +46,14 @@ The Role of Domain Randomization in Training Diffusion Policies for Whole-Body H
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**这条目前只是图谱里的占位节点：标题指向「域随机化在全身人形控制扩散策略训练中到底扮演什么角色」这一问题，而本页尚未给出任何答案。**
+
+- 本页可确认的只有条目级信息：分类 14_Human_Motion、arXiv 2411.01349、深读状态「待撰写」。
+- 域随机化的具体设置、扩散策略结构与任何量化结果均未涉及，不能据此页判断 DR 在该设定下是否有效、代价几何。
+- 定位是 **占位子节点**，作用是避免图谱缺失该实体并保持与 [分类父节点](../overview/paper-notebook-category-14-human-motion.md) / [总索引](../overview/humanoid-paper-notebooks-index.md) 的交叉检索；实质结论待深读笔记完成后回填。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)

@@ -46,6 +46,14 @@ Gait-Adaptive Perceptive Humanoid Locomotion with Real-Time Under-Base Terrain R
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**Gait-Adaptive Perceptive Humanoid Locomotion with Real-Time Under-Base Terrain Reconstruction 在本库目前只是一条「已排期、未深读」的占位实体：它补的是知识图谱的完整性，而不是可直接引用的方法结论。**
+
+- 本页能确认的只有索引层信息——arXiv 2512.07464、分类 03_High_Impact_Selection、计划中的笔记文件夹；论文的方法机制、评测口径与实机结果在本页一概未展开。
+- 适用边界：适合经[分类父节点](../overview/paper-notebook-category-03-high-impact-selection.md)与[人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)做检索与交叉定位，不适合作为技术选型或方法对比的依据。
+- 主要风险是把占位页误读成已消化的结论：量化 benchmark、消融与实机指标本页全部缺失，深读状态须回到 progress.json 跟踪，结论以论文原文为准。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-03-high-impact-selection](../overview/paper-notebook-category-03-high-impact-selection.md)

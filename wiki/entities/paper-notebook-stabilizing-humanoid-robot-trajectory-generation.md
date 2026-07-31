@@ -46,6 +46,14 @@ Stabilizing Humanoid Robot Trajectory Generation via Physics-Informed Learning �
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是这篇「物理约束入学习」工作的占位子节点：它在图谱里占住了 physics-informed 轨迹生成这条线，但稳定性从何而来仍待笔记回答。**
+
+- 页面上唯一确定的信息是归类与计划路径：分类 05_Locomotion、计划文件夹 `papers/05_Locomotion/stabilizing-humanoid-robot-trajectory-generation`，深读状态仍为「待撰写」。
+- 适用边界：可用于分类检索与交叉链接，不可当作方法或指标依据——本页未说明物理先验以何种形式进入学习，也未给出任何量化结果。
+- 主要风险是被误当成已消化的笔记：本页「实验与评测」已明确 benchmark、消融与实机指标待补，引用前应回到 PROGRESS.md 与 <https://arxiv.org/abs/2509.24697>。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

@@ -47,6 +47,14 @@ SPARK 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是 SPARK 的占位子节点：它标记的是一个「工具箱」类条目——安全自主与遥操作的工程基础设施，而非一篇给出新方法结论的论文页。**
+
+- 页面上唯一确定的信息是归类与计划路径：分类 04_Loco-Manipulation_and_WBC、计划文件夹 `papers/04_Loco-Manipulation_and_WBC/SPARK__A_Toolbox_for_Safe_Humanoid_Autonomy_and_Teleoperation`，深读状态仍为「待撰写」。
+- 适用边界：可用于分类检索与交叉链接，不可当作工具箱能力、接口或安全保证的依据——本页未给出任何模块说明与量化结果。
+- 主要风险是被误当成已消化的笔记：本页「实验与评测」已明确 benchmark、消融与实机指标待补，引用前应回到 progress.json 与原论文。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
