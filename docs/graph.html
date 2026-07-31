@@ -1322,6 +1322,13 @@
       transition: color .12s;
     }
     .filter-close:hover { color: rgba(255,255,255,0.75); }
+    .filter-mode-tabs {
+      display: flex;
+      gap: 6px;
+      padding: 10px 14px 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      flex-wrap: wrap;
+    }
     .filter-subtitle {
       padding: 10px 14px 2px;
       font-size: .72rem;
@@ -1391,12 +1398,8 @@
     [data-theme="light"] .filter-institution-list::-webkit-scrollbar-thumb {
       background-color: rgba(0,0,0,0.28);
     }
-    /* 当前着色维度：折叠标题略微高亮，提示「着色与筛选」落点 */
-    .filter-depth-section.is-color-mode > .filter-depth-summary .filter-depth-summary-label {
-      color: rgba(125, 211, 252, 0.85);
-    }
-    [data-theme="light"] .filter-depth-section.is-color-mode > .filter-depth-summary .filter-depth-summary-label {
-      color: #1659b4;
+    [data-theme="light"] .filter-mode-tabs {
+      border-bottom-color: rgba(0,0,0,0.07);
     }
     .filter-section-title {
       padding: 8px 14px 4px;
@@ -1846,6 +1849,11 @@
         <span id="filter-panel-title">🔍 图谱筛选</span>
         <button id="filter-close" class="filter-close" aria-label="关闭面板">✕</button>
       </div>
+      <div class="filter-mode-tabs" id="filter-mode-tabs" aria-label="筛选维度">
+        <button id="filter-mode-type" class="chip" type="button">按类型</button>
+        <button id="filter-mode-community" class="chip active" type="button">按社区</button>
+        <button id="filter-mode-health" class="chip" type="button">按健康度</button>
+      </div>
       <div class="filter-subtitle" id="filter-subtitle">当前按社区着色与筛选</div>
       <div id="filter-degree-section" class="filter-degree-section">
         <div class="filter-section-title">连接数 Top N</div>
@@ -1860,26 +1868,12 @@
         </div>
       </div>
       <div class="filter-sections-scroll" id="filter-dimension-sections">
-        <details class="filter-depth-section" id="filter-type-section" data-color-mode="type">
+        <details class="filter-depth-section" id="filter-dimension-section">
           <summary class="filter-depth-summary">
-            <span class="filter-depth-summary-label">按类型</span>
-            <span class="filter-depth-summary-current" id="filter-type-current"><span>🏷️</span><span>全部</span></span>
+            <span class="filter-depth-summary-label" id="filter-dimension-label">按社区</span>
+            <span class="filter-depth-summary-current" id="filter-dimension-current"><span>🧩</span><span>全部</span></span>
           </summary>
-          <div class="filter-dimension-list" id="filter-type-list"></div>
-        </details>
-        <details class="filter-depth-section" id="filter-community-section" data-color-mode="community">
-          <summary class="filter-depth-summary">
-            <span class="filter-depth-summary-label">按社区</span>
-            <span class="filter-depth-summary-current" id="filter-community-current"><span>🧩</span><span>全部</span></span>
-          </summary>
-          <div class="filter-dimension-list" id="filter-community-list"></div>
-        </details>
-        <details class="filter-depth-section" id="filter-health-section" data-color-mode="health">
-          <summary class="filter-depth-summary">
-            <span class="filter-depth-summary-label">按健康度</span>
-            <span class="filter-depth-summary-current" id="filter-health-current"><span>💚</span><span>全部</span></span>
-          </summary>
-          <div class="filter-dimension-list" id="filter-health-list"></div>
+          <div class="filter-dimension-list" id="filter-panel-body"></div>
         </details>
         <details class="filter-depth-section" id="filter-depth-section">
           <summary class="filter-depth-summary">
@@ -2054,24 +2048,18 @@
     const filterPanel = document.getElementById('filter-panel');
     const filterPanelTitle = document.getElementById('filter-panel-title');
     const filterSubtitle = document.getElementById('filter-subtitle');
-    const filterTypeSection = document.getElementById('filter-type-section');
-    const filterCommunitySection = document.getElementById('filter-community-section');
-    const filterHealthSection = document.getElementById('filter-health-section');
-    const filterTypeList = document.getElementById('filter-type-list');
-    const filterCommunityList = document.getElementById('filter-community-list');
-    const filterHealthList = document.getElementById('filter-health-list');
+    const filterModeTypeBtn = document.getElementById('filter-mode-type');
+    const filterModeCommunityBtn = document.getElementById('filter-mode-community');
+    const filterModeHealthBtn = document.getElementById('filter-mode-health');
+    const filterPanelBody = document.getElementById('filter-panel-body');
+    const filterDimensionLabel = document.getElementById('filter-dimension-label');
+    const filterDimensionCurrent = document.getElementById('filter-dimension-current');
     const filterPanelScrim = document.getElementById('filter-panel-scrim');
     const FILTER_DIMENSION_META = {
-      type: { emoji: '🏷️', unit: '项', listEl: null, currentId: 'filter-type-current', section: null },
-      community: { emoji: '🧩', unit: '个社区', listEl: null, currentId: 'filter-community-current', section: null },
-      health: { emoji: '💚', unit: '项', listEl: null, currentId: 'filter-health-current', section: null },
+      type: { emoji: '🏷️', unit: '项' },
+      community: { emoji: '🧩', unit: '个社区' },
+      health: { emoji: '💚', unit: '项' },
     };
-    FILTER_DIMENSION_META.type.listEl = filterTypeList;
-    FILTER_DIMENSION_META.type.section = filterTypeSection;
-    FILTER_DIMENSION_META.community.listEl = filterCommunityList;
-    FILTER_DIMENSION_META.community.section = filterCommunitySection;
-    FILTER_DIMENSION_META.health.listEl = filterHealthList;
-    FILTER_DIMENSION_META.health.section = filterHealthSection;
 
     function isFilterPanelMobileMode() {
       return window.matchMedia('(max-width: 768px)').matches;
@@ -2099,15 +2087,7 @@
     }
 
     let colorMode = 'community';
-    // 各着色维度独立多选集合；仅当前 colorMode 对应集合参与节点过滤，折叠标题各自显示数量
-    const filtersByMode = {
-      type: new Set(),
-      community: new Set(),
-      health: new Set(),
-    };
-    function activeFilterSet() {
-      return filtersByMode[colorMode] || filtersByMode.community;
-    }
+    let activeFilters = new Set();
     let timelineAnimating = false;   // 处于时序模式（播放 / 暂停 / 拖拽中均为 true）
     let timeline3D = false;          // 当前时序模式跑在 3D 视图（决定走 3D 还是 2D 推进逻辑）
     let timelinePlaying = false;     // 计时器是否正在推进
@@ -3341,15 +3321,15 @@
     syncGraphDomFromSimulation();
     whenGraphViewportReady(() => finishGraphRenderLoad());
 
-    function getFilterOptionsForMode(mode) {
-      if (mode === 'community') {
+    function getFilterOptions() {
+      if (colorMode === 'community') {
         return getSortedCommunities().map((community) => ({
           value: community.id,
           label: formatCommunityOptionLabel(community.id),
           color: communityColorMap.get(community.id) || COMMUNITY_COLORS[9]
         }));
       }
-      if (mode === 'health') {
+      if (colorMode === 'health') {
         return HEALTH_FILTER_OPTIONS;
       }
       return TYPE_FILTER_OPTIONS;
@@ -3361,73 +3341,14 @@
       return '按类型';
     }
 
-    function updateDimensionFilterSummary(mode) {
-      const meta = FILTER_DIMENSION_META[mode];
-      if (!meta) return;
-      const cur = document.getElementById(meta.currentId);
-      if (!cur) return;
-      const n = filtersByMode[mode] ? filtersByMode[mode].size : 0;
+    function updateDimensionFilterSummary() {
+      const meta = FILTER_DIMENSION_META[colorMode] || FILTER_DIMENSION_META.community;
+      const n = activeFilters.size;
       const text = n ? (n + ' ' + meta.unit) : '全部';
-      cur.innerHTML = '<span>' + meta.emoji + '</span><span>' + text + '</span>';
-    }
-
-    function syncColorModeSectionHighlight() {
-      Object.keys(FILTER_DIMENSION_META).forEach((mode) => {
-        const section = FILTER_DIMENSION_META[mode].section;
-        if (section) section.classList.toggle('is-color-mode', colorMode === mode);
-      });
-    }
-
-    function renderDimensionFilterList(mode) {
-      const meta = FILTER_DIMENSION_META[mode];
-      const listEl = meta && meta.listEl;
-      if (!listEl) return;
-      const options = getFilterOptionsForMode(mode);
-      const selected = filtersByMode[mode] || new Set();
-      if (!options.length) {
-        listEl.innerHTML = '<div class="filter-empty">当前暂无可筛选项</div>';
-        updateDimensionFilterSummary(mode);
-        return;
+      if (filterDimensionLabel) filterDimensionLabel.textContent = getColorModeLabel(colorMode);
+      if (filterDimensionCurrent) {
+        filterDimensionCurrent.innerHTML = '<span>' + meta.emoji + '</span><span>' + text + '</span>';
       }
-      listEl.innerHTML = options.map((option) => {
-        const checked = selected.has(option.value) ? ' checked' : '';
-        const communityMeta = mode === 'community' ? communityMetaMap.get(option.value) : null;
-        const countBadge = communityMeta && communityMeta.size != null
-          ? '<span class="filter-count-badge">' + escapeHtml(String(communityMeta.size)) + '</span>'
-          : '';
-        return '<label class="filter-item">'
-          + '<input type="checkbox" data-dimension-filter="' + escapeHtml(mode) + '" value="'
-          + escapeHtml(option.value) + '"' + checked + ' /> '
-          + '<span class="filter-dot" style="background:' + escapeHtml(option.color) + '"></span>'
-          + '<span class="filter-item-label">' + escapeHtml(option.label) + '</span>'
-          + countBadge
-          + '</label>';
-      }).join('');
-      listEl.querySelectorAll('input[data-dimension-filter]').forEach((cb) => {
-        cb.addEventListener('change', () => {
-          if (areFiltersLocked()) return;
-          const dim = cb.getAttribute('data-dimension-filter');
-          if (!dim || !filtersByMode[dim]) return;
-          // 三选一：先清其它维度，再写入当前维度，最后切着色（避免重渲染丢掉本次勾选）
-          clearOtherDimensionFilters(dim);
-          if (cb.checked) filtersByMode[dim].add(cb.value);
-          else filtersByMode[dim].delete(cb.value);
-          if (colorMode !== dim) {
-            setColorMode(dim, { keepSelection: true });
-            return;
-          }
-          updateDimensionFilterSummary('type');
-          updateDimensionFilterSummary('community');
-          updateDimensionFilterSummary('health');
-          // 同步其它维度列表的勾选态（已清空）
-          if (dim !== 'type') renderDimensionFilterList('type');
-          if (dim !== 'community') renderDimensionFilterList('community');
-          if (dim !== 'health') renderDimensionFilterList('health');
-          applyFilters();
-          updateFilterCount();
-        });
-      });
-      updateDimensionFilterSummary(mode);
     }
 
     function renderFilterPanel() {
@@ -3436,10 +3357,43 @@
       if (filterPanelTitle) filterPanelTitle.textContent = title;
       if (filterLabel) filterLabel.textContent = '筛选';
       if (filterSubtitle) filterSubtitle.textContent = '当前' + getColorModeLabel(colorMode) + '着色与筛选';
-      syncColorModeSectionHighlight();
-      renderDimensionFilterList('type');
-      renderDimensionFilterList('community');
-      renderDimensionFilterList('health');
+      if (filterModeTypeBtn) filterModeTypeBtn.classList.toggle('active', colorMode === 'type');
+      if (filterModeCommunityBtn) filterModeCommunityBtn.classList.toggle('active', colorMode === 'community');
+      if (filterModeHealthBtn) filterModeHealthBtn.classList.toggle('active', colorMode === 'health');
+      updateDimensionFilterSummary();
+      if (!filterPanelBody) return;
+      const options = getFilterOptions();
+      if (!options.length) {
+        filterPanelBody.innerHTML = '<div class="filter-empty">当前暂无可筛选项</div>';
+      } else {
+        filterPanelBody.innerHTML = options.map(option => {
+          const checked = activeFilters.has(option.value) ? ' checked' : '';
+          const meta = colorMode === 'community' ? communityMetaMap.get(option.value) : null;
+          const countBadge = meta && meta.size != null
+            ? '<span class="filter-count-badge">' + escapeHtml(String(meta.size)) + '</span>'
+            : '';
+          return '<label class="filter-item">'
+            + '<input type="checkbox" value="' + escapeHtml(option.value) + '"' + checked + ' /> '
+            + '<span class="filter-dot" style="background:' + escapeHtml(option.color) + '"></span>'
+            + '<span class="filter-item-label">' + escapeHtml(option.label) + '</span>'
+            + countBadge
+            + '</label>';
+        }).join('');
+      }
+
+      filterPanelBody.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+        cb.addEventListener('change', () => {
+          if (areFiltersLocked()) return;
+          if (cb.checked) {
+            activeFilters.add(cb.value);
+          } else {
+            activeFilters.delete(cb.value);
+          }
+          updateDimensionFilterSummary();
+          applyFilters();
+          updateFilterCount();
+        });
+      });
     }
 
     function refreshNodeColors() {
@@ -3462,36 +3416,12 @@
       }
     }
 
-    /** 类型 / 社区 / 健康度三选一：清空除 keepMode 以外的维度勾选 */
-    function clearOtherDimensionFilters(keepMode) {
-      Object.keys(filtersByMode).forEach((mode) => {
-        if (mode !== keepMode) filtersByMode[mode].clear();
-      });
-    }
-
-    function closeOtherDimensionSections(keepMode) {
-      Object.keys(FILTER_DIMENSION_META).forEach((mode) => {
-        if (mode === keepMode) return;
-        const section = FILTER_DIMENSION_META[mode].section;
-        if (section && section.open) section.open = false;
-      });
-    }
-
-    function setColorMode(mode, opts) {
+    function setColorMode(mode) {
       if (areFiltersLocked()) return;
-      if (!FILTER_DIMENSION_META[mode]) return;
-      const keepSelection = !!(opts && opts.keepSelection);
-      if (colorMode === mode) {
-        clearOtherDimensionFilters(mode);
-        syncColorModeSectionHighlight();
-        if (filterSubtitle) filterSubtitle.textContent = '当前' + getColorModeLabel(colorMode) + '着色与筛选';
-        return;
-      }
+      if (colorMode === mode) return;
       colorMode = mode;
       syncCommunityLabelsCheckbox();
-      // 三选一：始终清空其它维度；默认连当前维度一并清空（展开切换），勾选触发时 keepSelection 保留当前维度
-      clearOtherDimensionFilters(mode);
-      if (!keepSelection) filtersByMode[mode].clear();
+      activeFilters.clear();
       focusedCommunityId = null;
       focusedType = null;
       focusedHealth = null;
@@ -3501,28 +3431,9 @@
       if (isMagneticForCurrentView()) updateForces();
     }
 
-    // 展开某一维度折叠区时切换着色维度，并收起其它维度（三选一）
-    ['type', 'community', 'health'].forEach((mode) => {
-      const section = FILTER_DIMENSION_META[mode].section;
-      if (!section) return;
-      section.addEventListener('toggle', () => {
-        if (!section.open || areFiltersLocked()) return;
-        closeOtherDimensionSections(mode);
-        if (colorMode !== mode) setColorMode(mode);
-        else {
-          // 同维度再次展开：仍清掉其它维度残留勾选并刷新摘要
-          clearOtherDimensionFilters(mode);
-          updateDimensionFilterSummary('type');
-          updateDimensionFilterSummary('community');
-          updateDimensionFilterSummary('health');
-          renderDimensionFilterList('type');
-          renderDimensionFilterList('community');
-          renderDimensionFilterList('health');
-          applyFilters();
-          updateFilterCount();
-        }
-      });
-    });
+    if (filterModeTypeBtn) filterModeTypeBtn.addEventListener('click', () => setColorMode('type'));
+    if (filterModeCommunityBtn) filterModeCommunityBtn.addEventListener('click', () => setColorMode('community'));
+    if (filterModeHealthBtn) filterModeHealthBtn.addEventListener('click', () => setColorMode('health'));
 
     function syncGraphDomFromSimulation() {
       link
@@ -3762,7 +3673,7 @@
     }
 
     function hasActiveGraphFilter() {
-      return topDegreeIds !== null || activeFilterSet().size > 0 || searchQuery.length > 0
+      return topDegreeIds !== null || activeFilters.size > 0 || searchQuery.length > 0
         || focusedCommunityId || focusedType || focusedHealth !== null
         || activeInstitutions.size > 0 || currentDepth !== 'all';
     }
@@ -4087,9 +3998,7 @@
     });
     document.getElementById('filter-clear').addEventListener('click', () => {
       if (areFiltersLocked()) return;
-      filtersByMode.type.clear();
-      filtersByMode.community.clear();
-      filtersByMode.health.clear();
+      activeFilters.clear();
       activeInstitutions.clear();
       topDegreeLimit = totalNodeCount;
       topDegreeIds = null;
@@ -4102,8 +4011,7 @@
 
     /* ── checkbox 筛选 ── */
     function updateFilterCount() {
-      // 类型/社区/健康度三选一，只计当前着色维度勾选数
-      const count = activeFilterSet().size + activeInstitutions.size
+      const count = activeFilters.size + activeInstitutions.size
         + (topDegreeIds ? 1 : 0)
         + (currentDepth && currentDepth !== 'all' ? 1 : 0);
       const countEl = document.getElementById('filter-count');
@@ -4157,7 +4065,6 @@
       if (focusedCommunityId) return d.community === focusedCommunityId;
       if (focusedType) return d.type === focusedType;
       if (focusedHealth !== null) return String(d.health_score != null ? d.health_score : 0) === focusedHealth;
-      const activeFilters = activeFilterSet();
       if (!activeFilters.size) return true;
       if (colorMode === 'community') {
         return activeFilters.has(d.community);
@@ -4172,7 +4079,6 @@
       if (focusedCommunityId) return n.community === focusedCommunityId;
       if (focusedType) return n.type === focusedType;
       if (focusedHealth !== null) return String(n.health_score != null ? n.health_score : 0) === focusedHealth;
-      const activeFilters = activeFilterSet();
       if (!activeFilters.size) return true;
       if (colorMode === 'community') {
         return activeFilters.has(n.community);
@@ -5261,10 +5167,8 @@
     if (communityParam && communityMetaMap.has(communityParam)) {
       focusedCommunityId = communityParam;
       if (colorMode !== 'community') setColorMode('community');
-      if (filterCommunitySection) {
-        closeOtherDimensionSections('community');
-        filterCommunitySection.open = true;
-      }
+      const dimSection = document.getElementById('filter-dimension-section');
+      if (dimSection) dimSection.open = true;
       renderLegend();
       renderFilterPanel();
       applyFilters();
