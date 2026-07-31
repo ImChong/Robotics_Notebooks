@@ -5852,6 +5852,9 @@
     var pad = 2;
     var stroke = 2.5;
     var inset = stroke / 2;
+    // 图谱预览等模块常带 overflow:hidden，描边外扩时需临时放开以免被裁切
+    var prevOverflow = card.style.overflow;
+    var overflowWasForced = false;
 
     var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.setAttribute('class', 'home-border-trace-svg');
@@ -5893,6 +5896,10 @@
       if (finished) return;
       finished = true;
       card.classList.remove('is-border-tracing');
+      if (overflowWasForced) {
+        if (prevOverflow) card.style.overflow = prevOverflow;
+        else card.style.removeProperty('overflow');
+      }
       if (resizeObserver) {
         try { resizeObserver.disconnect(); } catch { /* ignore */ }
         resizeObserver = null;
@@ -5908,6 +5915,10 @@
 
     var resizeObserver = null;
     card.classList.add('is-border-tracing');
+    if (window.getComputedStyle(card).overflow !== 'visible') {
+      card.style.overflow = 'visible';
+      overflowWasForced = true;
+    }
     layoutTraceSvg();
     card.appendChild(svg);
     if (typeof ResizeObserver !== 'undefined') {
@@ -5979,6 +5990,29 @@
       });
     });
   }
+
+  // 入口卡「项目查询 / 知识图谱」：滚到对应模块中心并顺时针描边；项目查询额外聚焦搜索框
+  var searchInput = document.getElementById('wikiSearchInput');
+  var homeTraceTriggers = document.querySelectorAll('[data-trace-target]');
+  for (var htti = 0; htti < homeTraceTriggers.length; htti++) {
+    (function (trigger) {
+      var targetId = trigger.getAttribute('data-trace-target');
+      var target = targetId ? document.getElementById(targetId) : null;
+      if (!target) return;
+      var hash = trigger.getAttribute('href') || '';
+      var shouldFocusSearch = trigger.hasAttribute('data-focus-search');
+      trigger.addEventListener('click', function (event) {
+        event.preventDefault();
+        scrollEntryCardToCenter(target, hash.charAt(0) === '#' ? hash : null, function () {
+          playCardBorderTrace(target);
+          if (shouldFocusSearch && searchInput) {
+            searchInput.focus({ preventScroll: true });
+          }
+        });
+      });
+    })(homeTraceTriggers[htti]);
+  }
+
   if (window.location.hash === '#home-start-main-route' && mainRouteCard) {
     scrollEntryCardToCenter(mainRouteCard, null, function () {
       playCardBorderTrace(mainRouteCard);
@@ -5987,23 +6021,27 @@
     scrollEntryCardToCenter(moreRoutesCard, null, function () {
       playCardBorderTrace(moreRoutesCard, pulseRouteToggleHint);
     });
+  } else if (window.location.hash === '#wiki-search') {
+    var searchPanel = document.getElementById('wiki-search-panel');
+    if (searchPanel) {
+      scrollEntryCardToCenter(searchPanel, null, function () {
+        playCardBorderTrace(searchPanel);
+        if (searchInput) searchInput.focus({ preventScroll: true });
+      });
+    }
+  } else if (window.location.hash === '#mini-graph-section') {
+    var miniGraphPanel = document.getElementById('mini-graph-wrap');
+    if (miniGraphPanel) {
+      scrollEntryCardToCenter(miniGraphPanel, null, function () {
+        playCardBorderTrace(miniGraphPanel);
+      });
+    }
   }
 
   // ── Wiki 全文搜索（index.html 搜索框） ────────────────────────────────────
-  var searchInput = document.getElementById('wikiSearchInput');
   var searchResults = document.getElementById('wikiSearchResults');
   var communityFilter = document.getElementById('wikiCommunityFilter');
   if (searchInput && searchResults) {
-    // 首页「项目查询」入口卡：锚点跳转到搜索区后直接聚焦输入框
-    var focusSearchTriggers = document.querySelectorAll('[data-focus-search]');
-    for (var fsti = 0; fsti < focusSearchTriggers.length; fsti++) {
-      focusSearchTriggers[fsti].addEventListener('click', function () {
-        window.setTimeout(function () {
-          searchInput.focus({ preventScroll: true });
-        }, 0);
-      });
-    }
-
     var _selectedIndex = -1;  // 键盘导航当前选中项
 
     var _searchIndex = null;

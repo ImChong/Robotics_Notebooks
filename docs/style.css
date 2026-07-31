@@ -496,8 +496,8 @@ a.hero-stat-num:focus-visible {
 #home-start.section { padding-top: 0; }
 /* 路线数字用 JS scrollIntoView(block:center)，不再用 scroll-margin 顶对齐 */
 
-/* Hero 盘点数字定位入口卡：SVG 短弧沿边框顺时针扫一圈 */
-.home-entry-card.is-border-tracing {
+/* Hero 盘点 / 入口卡定位模块：SVG 短弧沿边框顺时针扫一圈 */
+.is-border-tracing {
   position: relative;
   z-index: 1;
 }
