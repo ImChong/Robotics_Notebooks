@@ -3,11 +3,12 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub, unitree]
 status: stub
-updated: 2026-06-26
+updated: 2026-07-31
 arxiv: "2512.17183"
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ./paper-diffsheg.md
 sources:
   - ../../sources/papers/humanoid_pnb_semantic-co-speech-gesture-synthesis-and-real-ti.md
 summary: "论文把\"机器人讲话的同时做出语义对齐的手势\"这件事拆成 语义检索 + 自回归生成 + 人到机重定向 + 全身跟踪 四段流水线：用 LLM 从语料库里检索与语义高度相关的人体手势片段、用 Motion-GPT 自回归补全长时间序列、用 General Motion Retargeting (GMR) 把人体动作迁到 Unitree G1 上，最后用强化学习训出的 MotionTracker 把这套带有语义的参考动作在真机上稳定、实时地跟出来。"
@@ -59,6 +60,7 @@ summary: "论文把\"机器人讲话的同时做出语义对齐的手势\"这件
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- 人体/数字人侧共语生成对照：[DiffSHEG](./paper-diffsheg.md)（CVPR 2024：语音→3D 表情+手势联合扩散；停在角色资产，无 G1 跟踪）
 
 ## 参考来源
 

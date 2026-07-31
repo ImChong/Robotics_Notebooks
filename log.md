@@ -1,3 +1,5 @@
+## [2026-07-31] ingest | sources/repos/diffsheg.md — 接入 JeremyCJM/DiffSHEG（CVPR 2024）语音驱动整体 3D 表情+手势联合扩散；升格 wiki/entities/paper-diffsheg.md；交叉更新 wiki/methods/diffusion-motion-generation.md、wiki/concepts/diffusion-model.md、wiki/entities/paper-notebook-semantic-co-speech-gesture-synthesis-and-real-ti.md；sources/papers/diffsheg_arxiv_2401_04747.md、sources/sites/diffsheg.md
+
 ## [2026-07-31] ingest | sources/repos/spi-active.md — 接入 LeCAR-Lab/SPI-Active（CoRL 2025 Oral）采样式 SysID+主动探索；升格 wiki/entities/paper-notebook-sampling-based-system-identification-with-active.md；交叉更新 wiki/concepts/system-identification.md、wiki/methods/cma-es.md、wiki/queries/sim2real-gap-reduction.md、wiki/entities/paper-pace-sim2real-legged-robots.md；sources/papers/spi_active_arxiv_2505_14266.md、sources/sites/spi-active.md
 
 ## [2026-07-31] structural | docs/main.js + docs/style.css — 首页入口卡边框描边按 border-box 像素对齐，修复多分辨率错位

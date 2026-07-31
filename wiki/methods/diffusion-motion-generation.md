@@ -2,7 +2,7 @@
 type: method
 tags: [locomotion, diffusion, generative-model, humanoid]
 status: complete
-updated: 2026-07-27
+updated: 2026-07-31
 related:
   - ../entities/kimodo.md
   - ../entities/ardy.md
@@ -11,6 +11,7 @@ related:
   - ../entities/paper-muninn-trajectory-diffusion-acceleration.md
   - ../entities/paper-molingo.md
   - ../entities/paper-phygile.md
+  - ../entities/paper-diffsheg.md
 summary: "利用扩散模型生成机器人全身运动序列，通过闭环微调解决分布偏移，实现复杂地形下的实时运动规划。"
 ---
 
@@ -30,6 +31,10 @@ summary: "利用扩散模型生成机器人全身运动序列，通过闭环微�
 1. **多峰分布建模**：能够捕获人类运动的多样性，解决传统确定性模型在复杂决策点的“均值平滑”问题。
 2. **长程一致性**：相比于逐帧预测，轨迹生成能够保证运动在时间窗口内的物理连贯性。
 3. **条件约束**：可以轻松整合地形图（Elevation Maps）、任务目标或文本指令作为生成条件。
+
+## 语音驱动整体表情+手势（DiffSHEG，CVPR 2024）
+
+[DiffSHEG](../entities/paper-diffsheg.md)（arXiv:2401.04747）把扩散用在 **共语 3D 表情（blendshape）+ 手势（轴角）联合生成**：UniEG-Transformer 强制 **表情→手势单向条件流** 以匹配联合分布，测试时用 **FOPPAS**（Repaint 式 outpainting + DDIM25）做任意长、近实时流式采样（报告 ~31.5 FPS@3090）。产出是数字人/角色资产，进真机仍需 retarget + 跟踪——与下文 **机器人原生 / 地形条件扩散规划** 对照，同属「条件扩散运动生成」，但条件是语音而非地形或文本技能指令。
 
 ## 控制环内的生成式中间件（Heracles）
 
@@ -123,6 +128,7 @@ summary: "利用扩散模型生成机器人全身运动序列，通过闭环微�
 - [sources/repos/zilize-awesome-text-to-motion.md](../../sources/repos/zilize-awesome-text-to-motion.md) — Zilize 维护的文本驱动人体运动生成综述/数据集/模型精选与交互式项目页索引。
 - [PhyGile（arXiv:2603.19305）](../../sources/papers/phygile_arxiv_2603_19305.md) — physics-prefix 引导的 262D 机器人原生扩散 + GMT 闭环（真机高动态）
 - [MoLingo（arXiv:2512.13840）](../../sources/papers/molingo_arxiv_2512_13840.md) — 语义对齐连续 latent + 掩码自回归 rectified flow（CVPR 2026；G1+PHC 演示）
+- [DiffSHEG（arXiv:2401.04747）](../../sources/papers/diffsheg_arxiv_2401_04747.md) — 语音驱动整体 3D 表情+手势联合扩散；UniEG + FOPPAS 实时任意长采样（CVPR 2024）
 - [Diffusion Policy](./diffusion-policy.md) — 扩散策略在操作任务中的应用。
 - [GENMO（统一人体运动估计与生成）](./genmo.md) — 人体运动域的扩散生成代表实现，与机器人控制域的扩散运动生成相互参照（估计 ↔ 生成的双向收益）。
 
@@ -133,6 +139,7 @@ summary: "利用扩散模型生成机器人全身运动序列，通过闭环微�
 - [Heracles](../entities/paper-heracles-humanoid-diffusion.md) — 控制环内生成式中间件（flow matching + tracking）
 - [PhyGile](../entities/paper-phygile.md) — 文本→262D robot-native 扩散 + GMT 生成–跟踪闭环
 - [MoLingo](../entities/paper-molingo.md) — 语义对齐连续 latent + AR flow 人体 T2M；retarget→PHC→G1
+- [DiffSHEG](../entities/paper-diffsheg.md) — 语音→3D 表情+手势联合扩散（数字人资产；非机器人策略）
 - [DIMOS](../entities/paper-dimos-human-scene-motion-synthesis.md) — RL + CVAE 潜空间，室内人–场景交互运动合成（非扩散）
 - [HY-Motion 1.0](./hy-motion-1.md) — 十亿级 DiT+流匹配的人体文本→运动开源系列（腾讯混元）
 - [DART（DartControl）](./dart-control.md) — 自回归原语潜扩散 + 在线文本与空间控制（ICLR 2025，ETH）
