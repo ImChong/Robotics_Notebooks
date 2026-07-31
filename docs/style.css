@@ -525,7 +525,7 @@ a.hero-stat-num:focus-visible {
   to { stroke-dashoffset: -100; }
 }
 .home-route-toggle.is-pulse-hint {
-  animation: home-route-toggle-hint 0.85s ease;
+  animation: home-route-toggle-hint 0.85s ease 2;
 }
 @keyframes home-route-toggle-hint {
   0%, 100% {

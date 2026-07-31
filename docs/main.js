@@ -5821,7 +5821,7 @@
   var mainRouteCard = document.getElementById('home-start-main-route');
   var moreRoutesCard = document.getElementById('home-more-routes');
   var BORDER_TRACE_MS = 2400;
-  var TOGGLE_HINT_MS = 900;
+  var TOGGLE_HINT_MS = 1800;
   var SCROLL_CENTER_FALLBACK_MS = 700;
 
   function setHomeRoutesExpanded(expanded) {
