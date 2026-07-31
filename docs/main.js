@@ -5822,7 +5822,17 @@
   var moreRoutesCard = document.getElementById('home-more-routes');
   var BORDER_TRACE_MS = 2400;
   var TOGGLE_HINT_MS = 1800;
-  var SCROLL_CENTER_FALLBACK_MS = 700;
+  // 目标接近视口中心即开启动画，避免干等 scrollend / 长 fallback 造成「点一下卡住」
+  var SCROLL_CENTER_TOLERANCE_PX = 56;
+  var SCROLL_CENTER_FALLBACK_MS = 420;
+  var prefersReducedMotion = false;
+  try {
+    prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  } catch {
+    prefersReducedMotion = false;
+  }
+  // 搜索索引预取钩子：搜索模块初始化后替换；供入口卡 pointerdown / idle 调用
+  var prefetchWikiSearchIndex = function () {};
 
   function setHomeRoutesExpanded(expanded) {
     if (!routeToggle) return;
@@ -5843,6 +5853,9 @@
       return;
     }
     var finished = false;
+    // 取消上一轮尚未挂载的 rAF 描边，避免连点叠多个 SVG
+    var traceGen = (card._homeBorderTraceGen || 0) + 1;
+    card._homeBorderTraceGen = traceGen;
     var prevSvg = card.querySelector('.home-border-trace-svg');
     if (prevSvg) prevSvg.remove();
 
@@ -5865,8 +5878,8 @@
     rect.setAttribute('pathLength', '100');
     svg.appendChild(rect);
 
-    function layoutTraceSvg() {
-      var style = window.getComputedStyle(card);
+    function layoutTraceSvg(style) {
+      style = style || window.getComputedStyle(card);
       var bl = parseFloat(style.borderLeftWidth) || 0;
       var bt = parseFloat(style.borderTopWidth) || 0;
       var box = card.getBoundingClientRect();
@@ -5892,10 +5905,12 @@
       rect.setAttribute('ry', String(radius));
     }
 
-    function finish() {
+    function finish(fromCancel) {
       if (finished) return;
       finished = true;
-      card.classList.remove('is-border-tracing');
+      if (card._homeBorderTraceGen === traceGen) {
+        card.classList.remove('is-border-tracing');
+      }
       if (overflowWasForced) {
         if (prevOverflow) card.style.overflow = prevOverflow;
         else card.style.removeProperty('overflow');
@@ -5907,28 +5922,38 @@
       if (svg.parentNode) svg.parentNode.removeChild(svg);
       rect.removeEventListener('animationend', onAnimEnd);
       window.clearTimeout(fallbackTimer);
-      if (onDone) onDone();
+      if (onDone && !fromCancel) onDone();
     }
     function onAnimEnd(event) {
-      if (event.animationName === 'home-border-trace-dash') finish();
+      if (event.animationName === 'home-border-trace-dash') finish(false);
     }
 
     var resizeObserver = null;
+    var fallbackTimer = 0;
     card.classList.add('is-border-tracing');
-    if (window.getComputedStyle(card).overflow !== 'visible') {
-      card.style.overflow = 'visible';
-      overflowWasForced = true;
-    }
-    layoutTraceSvg();
-    card.appendChild(svg);
-    if (typeof ResizeObserver !== 'undefined') {
-      resizeObserver = new ResizeObserver(function () {
-        if (!finished) layoutTraceSvg();
-      });
-      resizeObserver.observe(card);
-    }
-    rect.addEventListener('animationend', onAnimEnd);
-    var fallbackTimer = window.setTimeout(finish, BORDER_TRACE_MS);
+
+    // 推迟到下一帧再读样式/挂载 SVG，避免与 scrollIntoView 首帧抢主线程造成点击卡顿
+    requestAnimationFrame(function () {
+      if (finished || card._homeBorderTraceGen !== traceGen) {
+        finish(true);
+        return;
+      }
+      var style = window.getComputedStyle(card);
+      if (style.overflow !== 'visible') {
+        card.style.overflow = 'visible';
+        overflowWasForced = true;
+      }
+      layoutTraceSvg(style);
+      card.appendChild(svg);
+      if (typeof ResizeObserver !== 'undefined') {
+        resizeObserver = new ResizeObserver(function () {
+          if (!finished && card._homeBorderTraceGen === traceGen) layoutTraceSvg();
+        });
+        resizeObserver.observe(card);
+      }
+      rect.addEventListener('animationend', onAnimEnd);
+      fallbackTimer = window.setTimeout(function () { finish(false); }, BORDER_TRACE_MS);
+    });
   }
 
   function pulseRouteToggleHint() {
@@ -5941,7 +5966,16 @@
     }, TOGGLE_HINT_MS);
   }
 
-  /** 将入口卡滚到视口垂直中心，再回调（避免锚点默认顶对齐） */
+  function isEntryCardNearCenter(card) {
+    var rect = card.getBoundingClientRect();
+    var viewH = window.innerHeight || document.documentElement.clientHeight || 0;
+    if (viewH <= 0) return true;
+    var cardMid = rect.top + rect.height / 2;
+    var viewMid = viewH / 2;
+    return Math.abs(cardMid - viewMid) <= SCROLL_CENTER_TOLERANCE_PX;
+  }
+
+  /** 将入口卡滚到视口垂直中心，接近中心即回调（避免干等 scrollend） */
   function scrollEntryCardToCenter(card, hash, onReady) {
     if (!card) {
       if (onReady) onReady();
@@ -5951,17 +5985,45 @@
       window.history.replaceState(null, '', hash);
     }
     var done = false;
+    var rafId = 0;
+    var fallbackTimer = 0;
     function ready() {
       if (done) return;
       done = true;
       window.clearTimeout(fallbackTimer);
       window.removeEventListener('scrollend', onScrollEnd);
+      if (rafId) window.cancelAnimationFrame(rafId);
       if (onReady) onReady();
     }
     function onScrollEnd() { ready(); }
-    card.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+
+    if (isEntryCardNearCenter(card)) {
+      rafId = window.requestAnimationFrame(function () { ready(); });
+      return;
+    }
+
+    card.scrollIntoView({
+      behavior: prefersReducedMotion ? 'auto' : 'smooth',
+      block: 'center',
+      inline: 'nearest'
+    });
+
+    if (prefersReducedMotion) {
+      rafId = window.requestAnimationFrame(function () { ready(); });
+      return;
+    }
+
     window.addEventListener('scrollend', onScrollEnd, { once: true });
-    var fallbackTimer = window.setTimeout(ready, SCROLL_CENTER_FALLBACK_MS);
+    function pollNearCenter() {
+      if (done) return;
+      if (isEntryCardNearCenter(card)) {
+        ready();
+        return;
+      }
+      rafId = window.requestAnimationFrame(pollNearCenter);
+    }
+    rafId = window.requestAnimationFrame(pollNearCenter);
+    fallbackTimer = window.setTimeout(ready, SCROLL_CENTER_FALLBACK_MS);
   }
 
   if (routeToggle) {
@@ -6001,13 +6063,21 @@
       if (!target) return;
       var hash = trigger.getAttribute('href') || '';
       var shouldFocusSearch = trigger.hasAttribute('data-focus-search');
+      // 悬停/按下时预取搜索索引，避免 focus 时才开始拉大 JSON 造成卡顿
+      if (shouldFocusSearch) {
+        var prefetchOnce = function () { prefetchWikiSearchIndex(); };
+        trigger.addEventListener('pointerdown', prefetchOnce, { passive: true });
+        trigger.addEventListener('mouseenter', prefetchOnce, { passive: true });
+      }
       trigger.addEventListener('click', function (event) {
         event.preventDefault();
+        // 项目查询：立刻聚焦，不把 focus 排在滚动/描边之后（旧路径会「卡一下再跳」）
+        if (shouldFocusSearch && searchInput) {
+          prefetchWikiSearchIndex();
+          searchInput.focus({ preventScroll: true });
+        }
         scrollEntryCardToCenter(target, hash.charAt(0) === '#' ? hash : null, function () {
           playCardBorderTrace(target);
-          if (shouldFocusSearch && searchInput) {
-            searchInput.focus({ preventScroll: true });
-          }
         });
       });
     })(homeTraceTriggers[htti]);
@@ -6024,9 +6094,9 @@
   } else if (window.location.hash === '#wiki-search') {
     var searchPanel = document.getElementById('wiki-search-panel');
     if (searchPanel) {
+      // focus/预取放到搜索模块初始化之后，避免监听器尚未挂上
       scrollEntryCardToCenter(searchPanel, null, function () {
         playCardBorderTrace(searchPanel);
-        if (searchInput) searchInput.focus({ preventScroll: true });
       });
     }
   } else if (window.location.hash === '#mini-graph-section') {
@@ -6123,6 +6193,21 @@
           throw error;
         });
       return _searchIndexPromise;
+    }
+
+    // 供入口卡 pointerdown / 首页 idle 预取；失败静默，不影响后续正式搜索
+    prefetchWikiSearchIndex = function () {
+      ensureSearchIndex().catch(function () {});
+    };
+    if (typeof window.requestIdleCallback === 'function') {
+      window.requestIdleCallback(function () { prefetchWikiSearchIndex(); }, { timeout: 2500 });
+    } else {
+      window.setTimeout(function () { prefetchWikiSearchIndex(); }, 1200);
+    }
+    // 深链 #wiki-search：搜索模块就绪后再聚焦并预取
+    if (window.location.hash === '#wiki-search') {
+      prefetchWikiSearchIndex();
+      searchInput.focus({ preventScroll: true });
     }
 
     function tokenizeQuery(text) {
@@ -6518,15 +6603,19 @@
 
     searchInput.addEventListener('focus', function() {
       if (_searchIndex || _searchIndexFailed || _searchIndexPromise) return;
-      searchResults.innerHTML = '<p style="color:var(--text-muted);grid-column:1/-1">加载中…</p>';
+      // 空查询静默预取，不写「加载中…」以免与入口卡滚动/描边同帧抢布局
+      var hadQuery = !!searchInput.value.trim();
+      if (hadQuery) {
+        searchResults.innerHTML = '<p style="color:var(--text-muted);grid-column:1/-1">加载中…</p>';
+      }
       ensureSearchIndex().then(function() {
         if (searchInput.value.trim()) {
           triggerSearch();
-        } else {
+        } else if (hadQuery) {
           searchResults.innerHTML = '';
         }
       }).catch(function() {
-        searchResults.innerHTML = '';
+        if (hadQuery) searchResults.innerHTML = '';
       });
     });
 

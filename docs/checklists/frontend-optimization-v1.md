@@ -99,6 +99,7 @@
 - [x] 去重收敛：删除独立「学习路线」区块，纵深路线（强化学习 / 传统控制 / 模仿学习 / 安全控制 / 接触操作）统一并入目标入口区的「更多路线」卡。
 - [x] 「项目查询」入口卡点击后直接聚焦搜索输入框（`data-focus-search`），减少锚点跳转后的二次寻找。
 - [x] 「项目查询 / 知识图谱」入口卡：滚到对应模块（`#wiki-search-panel` / `#mini-graph-wrap`）中心并顺时针描边一圈；项目查询仍额外聚焦搜索框；深链 `#wiki-search` / `#mini-graph-section` 同效。
+- [x] 「项目查询」点击卡顿优化：点击后立刻 `focus`（不再等 scrollend）；滚动接近视口中心即开描边（rAF 轮询，fallback 420ms）；空查询 focus 静默预取搜索索引（不写「加载中…」）；`pointerdown`/`mouseenter`/idle 预取 `search-index.json`；描边 SVG 推迟到下一帧挂载；去掉描边 `drop-shadow` 滤镜以免动画期掉帧。
 - [x] 删除搜索区副标题（与输入框 placeholder 重复），Hero 副标题改为面向读者的引导语。
 - [x] 删除目标入口区标题「选择你的入口」与副标题「按当前目标进入最短路径…」：与 Hero「先选一个入口」重复，入口卡本身已自解释。
 - [x] 同步刷新 README `media/site-demo.gif`（`scripts/record_readme_demo.cjs`，1933 节点；首页帧已无入口区标题/副标题）。
