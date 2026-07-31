@@ -1,3 +1,10 @@
+## [2026-07-31] fix | docs/graph-3d.js — 3D 社区漂浮标签按画布分辨率连续缩放，避免过小/过大
+
+- **问题：** 旧逻辑在移动端/粗指针上字号×0.55 且相机 zoom 再×0.55，手机/平板有效字号可落到 ~3–5px；桌面端字号固定 8–16px，900–2560 宽度几乎不变，大屏相对过小
+- **修复：** 以画布短边相对 ~800px 做 √ 连续缩放（约 0.78–1.28），绝对字号钳制 7–22px；zoom 钳制随短边略调；窄屏仅收紧内边距
+- **验证：** [`scripts/verify_graph_community_labels_3d_responsive.cjs`](scripts/verify_graph_community_labels_3d_responsive.cjs)
+- **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md)
+
 ## [2026-07-31] ingest | sources/blogs/wechat_robot_lecture_legged_robots_survey_2026-07-31.md — Agent Reach 抓取机器人大讲堂导读加深 Frey et al. SciRobotics 腿式综述；更新 wiki/entities/paper-legged-robots-advances-challenges.md（DSL/可反驱/价格/四项政策）；raw sources/raw/wechat_robot_lecture_legged_robots_survey_2026-07-31/
 
 ## [2026-07-31] ingest | sources/papers/legged_robots_advances_challenges_scirobotics_2026.md — OA/PDF 全路径复查仍 closed（Unpaywall/OpenAlex/PMC/arXiv/Zenodo/IA/作者站/ETH RC）；更新 wiki/entities/paper-legged-robots-advances-challenges.md 局限与核查表
