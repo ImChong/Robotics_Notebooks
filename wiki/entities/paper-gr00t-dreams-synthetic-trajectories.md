@@ -100,6 +100,15 @@ flowchart LR
 - 勿把 HMI 解读中的工程判断直接写成论文作者承诺。
 - 经典控制论文与现代 RL/VLA 论文的「可复现」标准不同，选型时分开评估。
 
+## 与其他工作对比
+
+| 维度 | 本工作（GR00T-Dreams） | [DreamGen](paper-notebook-dreamgen-unlocking-generalization-in-robot-learn.md) | [GR00T N1](paper-hrl-stack-34-gr00t_n1.md) | [DreamDojo](paper-hrl-stack-35-dreamdojo.md) |
+|------|------------------------|-------------------------------------------------------------------------------|--------------------------------------------|----------------------------------------------|
+| 定位 | 合成轨迹数据生成 blueprint | 合成轨迹数据生成流水线 | 被训练的人形通才 VLA 策略 | robot world model（预测下一观测） |
+| 世界模型用法 | post-train Cosmos 生成视频 dreams | 图像到视频生成模型产 neural trajectories | 数据消费方，不产数据 | 给定观测+动作预测未来 |
+| 动作还原 | IDM 从前后帧反推 3D 动作段 | IDM 或 latent action model 恢复伪动作 | 直接由 flow-matching 动作头输出 | 不还原动作，做预测/规划底座 |
+| 关系/取舍 | 与真数据共训 VLA；靠语义筛选，需查动作可执行性 | 同思路的相近工作，单任务数据泛化到 22 行为 | GR00T-Dreams 产的数据可喂给它 | 用途在规划/评估，既非策略也非数据生成 |
+
 ## 关联页面
 
 - [HMI 论文覆盖导读](../queries/hmi-papers-coverage.md)
