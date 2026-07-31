@@ -1,13 +1,64 @@
 {
   "generated_at": "2026-07-31",
-  "node_count": 2055,
-  "edge_count": 18426,
+  "node_count": 2056,
+  "edge_count": 18439,
   "coverage": {
-    "covered": 2005,
-    "total": 2031,
+    "covered": 2006,
+    "total": 2032,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-legged-robots-advances-challenges.md",
+      "detail_id": "entity-paper-legged-robots-advances-challenges",
+      "label": "腿式机器人进展、挑战与机遇综述",
+      "type": "entity",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "运动控制（Locomotion） 社区"
+    },
+    {
+      "path": "wiki/tasks/locomotion.md",
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "运动控制（Locomotion） 社区"
+    },
+    {
+      "path": "wiki/entities/quadruped-robot.md",
+      "detail_id": "entity-quadruped-robot",
+      "label": "四足机器人（Quadruped Robot）",
+      "type": "entity",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-bioinspired-multimodal-robotics.md",
+      "detail_id": "entity-paper-bioinspired-multimodal-robotics",
+      "label": "仿生多模态机器人综述：五项指标与软硬智能融合",
+      "type": "entity",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "运动控制（Locomotion） 社区"
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/paper-diffsheg.md",
       "detail_id": "entity-paper-diffsheg",
@@ -57,7 +108,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
       "path": "wiki/concepts/system-identification.md",
@@ -66,7 +117,8 @@
       "type": "concept",
       "recency": "2026-07-31",
       "source": "log.md",
-      "action": "maintained"
+      "action": "maintained",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
       "path": "wiki/methods/cma-es.md",
@@ -75,8 +127,7 @@
       "type": "method",
       "recency": "2026-07-31",
       "source": "log.md",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "action": "added"
     },
     {
       "path": "wiki/queries/sim2real-gap-reduction.md",
@@ -85,8 +136,7 @@
       "type": "query",
       "recency": "2026-07-31",
       "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "action": "maintained"
     },
     {
       "path": "wiki/entities/paper-pace-sim2real-legged-robots.md",
@@ -96,8 +146,7 @@
       "recency": "2026-07-31",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/paper-wan-dancer.md",
@@ -162,94 +211,42 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/queries/hmi-papers-coverage.md",
-      "detail_id": "wiki-queries-hmi-papers-coverage",
-      "label": "HMI 论文总索引 · 本库导读",
-      "type": "query",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/humanoid-motion-intelligence.md",
-      "detail_id": "entity-humanoid-motion-intelligence",
-      "label": "Humanoid Motion Intelligence（人形机器人运动智能知识库）",
-      "type": "entity",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "开源项目本库导读（HMI Open-Source Projects Guide） 社区"
-    },
-    {
-      "path": "wiki/queries/hmi-opensource-projects-coverage.md",
-      "detail_id": "wiki-queries-hmi-opensource-projects-coverage",
-      "label": "HMI 开源项目主表 · 本库导读",
-      "type": "query",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "开源项目本库导读（HMI Open-Source Projects Guide） 社区"
-    },
-    {
-      "path": "roadmap/depth-bfm.md",
-      "detail_id": "roadmap-depth-bfm",
-      "label": "路线（纵深）：如果目标是 BFM（人形行为基础模型）",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-classical-control.md",
-      "detail_id": "roadmap-depth-classical-control",
-      "label": "路线（纵深）：如果目标是传统模型控制（LIP/ZMP → MPC → WBC）",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-diffsheg.md",
-    "detail_id": "entity-paper-diffsheg",
-    "label": "DiffSHEG（语音驱动整体 3D 表情与手势扩散生成）",
+    "path": "wiki/entities/paper-legged-robots-advances-challenges.md",
+    "detail_id": "entity-paper-legged-robots-advances-challenges",
+    "label": "腿式机器人进展、挑战与机遇综述",
     "type": "entity",
     "recency": "2026-07-31",
     "source": "log.md",
     "action": "maintained",
-    "has_repo": true,
-    "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    "community_label": "运动控制（Locomotion） 社区"
   },
   "top_communities": [
     {
-      "label": "仿真到现实",
-      "size": 194
-    },
-    {
       "label": "视觉-语言-动作",
-      "size": 169
+      "size": 183
     },
     {
-      "label": "移动操作",
+      "label": "模仿学习",
       "size": 156
+    },
+    {
+      "label": "全身控制",
+      "size": 153
     },
     {
       "label": "操作",
       "size": 141
     },
     {
-      "label": "模仿学习",
-      "size": 140
+      "label": "移动操作",
+      "size": 141
     },
     {
       "label": "人形论文深读笔记",
-      "size": 137
+      "size": 139
     }
   ],
   "top_hubs": [
@@ -257,7 +254,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 401,
+      "degree": 403,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -296,13 +293,14 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 287
+      "degree": 289,
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 280,
+      "degree": 281,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
@@ -311,8 +309,7 @@
       "label": "HMI 开源项目主表 · 本库导读",
       "type": "query",
       "degree": 225,
-      "has_repo": true,
-      "community_label": "开源项目本库导读（HMI Open-Source Projects Guide） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",

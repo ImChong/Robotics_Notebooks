@@ -1,3 +1,5 @@
+## [2026-07-31] ingest | sources/papers/legged_robots_advances_challenges_scirobotics_2026.md — Frey et al. Science Robotics 2026 腿式机器人五柱综述；升格 wiki/entities/paper-legged-robots-advances-challenges.md；交叉 wiki/tasks/locomotion.md、wiki/entities/quadruped-robot.md、wiki/entities/paper-bioinspired-multimodal-robotics.md、wiki/concepts/sim2real.md；通稿 sources/blogs/techxplore_legged_robots_ethics_monash_2026-07-30.md；注册 edinburgh/monash
+
 ## [2026-07-31] structural | docs/index.html + docs/main.js — 「项目查询 / 知识图谱」入口卡跳转目标模块顺时针描边
 
 - **项目查询：** 滚到 `#wiki-search-panel`（搜索栏）中心 → 边框顺时针描边一圈 → 聚焦搜索输入框

@@ -2197,6 +2197,23 @@
         "simple-ai",
         "simpleai"
       ]
+    },
+    "edinburgh": {
+      "label": "爱丁堡大学（University of Edinburgh）",
+      "aliases": [
+        "edinburgh",
+        "university-of-edinburgh",
+        "uoe",
+        "edinburgh-informatics"
+      ]
+    },
+    "monash": {
+      "label": "莫纳什大学（Monash University）",
+      "aliases": [
+        "monash",
+        "monash-university",
+        "monash-uni"
+      ]
     }
   }
 }
