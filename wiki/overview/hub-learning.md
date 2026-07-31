@@ -8,7 +8,7 @@ summary: "IL/RL 学习范式知识链汇总：强化学习、模仿学习、行�
 
 # IL/RL 学习范式（知识链汇总）
 
-> **知识链汇总**：本页是相关概念/方法的统一入口；对应策展纵深见图谱 [纵深视图](../../docs/graph.html?depth=imitation-learning) 与 [路线页](../../roadmap/depth-imitation-learning.md)。
+> **知识链汇总**：本页是相关概念/方法的统一入口；对应策展纵深见图谱 [路线视图](../../docs/graph.html?depth=imitation-learning) 与 [路线页](../../roadmap/depth-imitation-learning.md)。
 
 ## 一句话定义
 

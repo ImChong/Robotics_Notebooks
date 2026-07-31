@@ -8,7 +8,7 @@ summary: "硬件通信与协议知识链汇总：从电机驱动固件、现场�
 
 # 硬件通信与协议（知识链汇总）
 
-> **知识链汇总**：本页是相关概念/方法的统一入口；对应策展纵深见图谱 [纵深视图](../../docs/graph.html?depth=humanoid-hardware-design) 与 [路线页](../../roadmap/depth-humanoid-hardware-design.md)。
+> **知识链汇总**：本页是相关概念/方法的统一入口；对应策展纵深见图谱 [路线视图](../../docs/graph.html?depth=humanoid-hardware-design) 与 [路线页](../../roadmap/depth-humanoid-hardware-design.md)。
 
 ## 一句话定义
 

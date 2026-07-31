@@ -2750,7 +2750,7 @@
       parts.push('<li class="roadmap-kmap-stage roadmap-kmap-stage-depth">');
       parts.push('<a class="roadmap-kmap-stage-head" href="#depth-optional-index">');
       parts.push('<span class="roadmap-kmap-badge">纵深</span>');
-      parts.push('<span class="roadmap-kmap-stage-title">可选纵深路线</span>');
+      parts.push('<span class="roadmap-kmap-stage-title">可选路线</span>');
       parts.push('<span class="roadmap-kmap-stage-count">' + escapeHtml(String(depthBranches.length)) + '</span>');
       parts.push('</a>');
       parts.push('<ul class="roadmap-kmap-leaves">');
@@ -4218,20 +4218,20 @@
     link.hidden = false;
   }
 
-  // 纵深徽标：复用 graph.html 的纵深命中规则（depth-filters.js），rowId 可复用于路线页等。
+  // 路线徽标：复用 graph.html 的纵深命中规则（depth-filters.js），rowId 可复用于路线页等。
   function renderMetaDepthBadges(currentPath, rowId) {
     var depthRowId = rowId || 'detailMetaDepth';
     var TF = window.RNDepthFilters;
     if (!TF || !currentPath) {
-      renderDetailMetaItemRow(depthRowId, '所属纵深', '');
+      renderDetailMetaItemRow(depthRowId, '所属路线', '');
       return Promise.resolve();
     }
 
     return fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
       var node = (gd.nodes || []).find(function (n) { return n.id === currentPath; });
-      if (!node) { renderDetailMetaItemRow(depthRowId, '所属纵深', ''); return; }
+      if (!node) { renderDetailMetaItemRow(depthRowId, '所属路线', ''); return; }
       var topics = TF.depthsForNode({ id: node.id, community: node.community });
-      if (!topics.length) { renderDetailMetaItemRow(depthRowId, '所属纵深', ''); return; }
+      if (!topics.length) { renderDetailMetaItemRow(depthRowId, '所属路线', ''); return; }
 
       // ⚡ Bolt Optimization: Replace .map().join('') with string concatenation in for loop
       // Expected impact: Eliminates closure creation and array allocation during layout generation.
@@ -4240,12 +4240,12 @@
         var key = topics[i];
         var meta = TF.DEPTH_META[key] || { emoji: '🏷️', label: key };
         html += '<a class="detail-meta-badge" href="graph.html?depth=' + encodeURIComponent(key) +
-          '" title="在知识图谱中查看「' + escapeHtml(meta.label) + '」纵深视图">' +
+          '" title="在知识图谱中查看「' + escapeHtml(meta.label) + '」路线视图">' +
           '<span>' + meta.emoji + '</span><span>' + escapeHtml(meta.label) + '</span></a>';
       }
 
-      renderDetailMetaItemRow(depthRowId, '所属纵深', html);
-    }).catch(function () { renderDetailMetaItemRow(depthRowId, '所属纵深', ''); });
+      renderDetailMetaItemRow(depthRowId, '所属路线', html);
+    }).catch(function () { renderDetailMetaItemRow(depthRowId, '所属路线', ''); });
   }
 
   function renderDetailTopicBadges(detailPage) {
@@ -4384,7 +4384,7 @@
     }
 
     renderDetailMetaItemRow('roadmapMetaCommunity', '所属社区', '');
-    renderDetailMetaItemRow('roadmapMetaDepth', '所属纵深', '');
+    renderDetailMetaItemRow('roadmapMetaDepth', '所属路线', '');
     renderDetailMetaItemRow('roadmapMetaInstitution', '所属机构', '');
     if (metaEl) removeLoadingState(metaEl);
 
@@ -4658,7 +4658,7 @@
       renderDetailMetaSource(null);
       setDetailMetaReadyState('true');
       renderDetailMetaItemRow('detailMetaCommunity', '所属社区', '');
-      renderDetailMetaItemRow('detailMetaDepth', '所属纵深', '');
+      renderDetailMetaItemRow('detailMetaDepth', '所属路线', '');
       renderDetailMetaItemRow('detailMetaInstitution', '所属机构', '');
       if (tocSectionEl) tocSectionEl.hidden = true;
       if (tocEl) {
@@ -4728,7 +4728,7 @@
         detailPage.updated ? renderDetailMetaDateBadge(detailPage.updated) : ''
       );
       renderDetailMetaItemRow('detailMetaCommunity', '所属社区', '');
-      renderDetailMetaItemRow('detailMetaDepth', '所属纵深', '');
+      renderDetailMetaItemRow('detailMetaDepth', '所属路线', '');
       renderDetailMetaItemRow('detailMetaInstitution', '所属机构', '');
       removeLoadingState(metaEl);
     }

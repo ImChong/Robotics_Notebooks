@@ -10,7 +10,7 @@ summary: "Sim2Real 知识链汇总：图谱知识链锚点；详细知识见 con
 
 > **主内容页**：[Sim2Real（概念总览）](../concepts/sim2real.md) — 方法、工程流程与交叉引用以该页为准；本页仅服务图谱知识链筛选锚点。
 >
-> **知识链汇总**：本页是相关概念/方法的统一入口；对应策展纵深见图谱 [纵深视图](../../docs/graph.html?depth=sim2real) 与 [路线页](../../roadmap/depth-sim2real.md)。
+> **知识链汇总**：本页是相关概念/方法的统一入口；对应策展纵深见图谱 [路线视图](../../docs/graph.html?depth=sim2real) 与 [路线页](../../roadmap/depth-sim2real.md)。
 
 ## 一句话定义
 

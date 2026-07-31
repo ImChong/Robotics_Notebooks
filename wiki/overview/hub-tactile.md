@@ -8,7 +8,7 @@ summary: "触觉与力觉闭环知识链汇总：覆盖触觉传感、视触觉�
 
 # 触觉与力觉（知识链汇总）
 
-> **知识链汇总**：本页是相关概念/方法的统一入口；对应策展纵深见图谱 [纵深视图](../../docs/graph.html?depth=contact-manipulation) 与 [路线页](../../roadmap/depth-contact-manipulation.md)。
+> **知识链汇总**：本页是相关概念/方法的统一入口；对应策展纵深见图谱 [路线视图](../../docs/graph.html?depth=contact-manipulation) 与 [路线页](../../roadmap/depth-contact-manipulation.md)。
 
 ## 一句话定义
 

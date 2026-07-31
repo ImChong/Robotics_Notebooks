@@ -8,7 +8,7 @@ summary: "动作重定向知识链汇总：把人体/动物参考动作映射到
 
 # 动作重定向（知识链汇总）
 
-> **知识链汇总**：本页是相关概念/方法的统一入口；对应策展纵深见图谱 [纵深视图](../../docs/graph.html?depth=motion-retargeting) 与 [路线页](../../roadmap/depth-motion-retargeting.md)。
+> **知识链汇总**：本页是相关概念/方法的统一入口；对应策展纵深见图谱 [路线视图](../../docs/graph.html?depth=motion-retargeting) 与 [路线页](../../roadmap/depth-motion-retargeting.md)。
 
 ## 一句话定义
 

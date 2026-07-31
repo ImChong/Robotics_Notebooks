@@ -8,7 +8,7 @@ summary: "Locomotion 步态知识链汇总：双足/人形/四足在不同地形
 
 # Locomotion 步态（知识链汇总）
 
-> **知识链汇总**：本页是相关概念/方法的统一入口；对应策展纵深见图谱 [纵深视图](../../docs/graph.html?depth=rl-locomotion) 与 [路线页](../../roadmap/depth-rl-locomotion.md)。
+> **知识链汇总**：本页是相关概念/方法的统一入口；对应策展纵深见图谱 [路线视图](../../docs/graph.html?depth=rl-locomotion) 与 [路线页](../../roadmap/depth-rl-locomotion.md)。
 
 ## 一句话定义
 

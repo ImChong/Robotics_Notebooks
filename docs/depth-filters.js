@@ -1,14 +1,14 @@
 /*
- * 纵深视图（Depth Filters）单一事实源。
+ * 路线视图（Depth Filters）单一事实源。
  * 仅包含策展的 21 条 roadmap/depth-*.md 纵深路线；
- * 由 graph.html（纵深筛选）与 detail.html / main.js（详情页「所属纵深」徽标）共享。
+ * 由 graph.html（路线筛选）与 detail.html / main.js（详情页「所属路线」徽标）共享。
  *
  * 命中优先级（与 graph.html nodeMatchesDepth 一致）：
  *   excludeSegments 命中 → 直接排除；ids 显式纳入 → 命中；
  *   communities 命中 → 命中；segments 命中任一 → 命中。
  *
  * 每个纵深的汇总锚点是对应 roadmap/depth-*.md（DEPTH_META.wikiPath），
- * 并写入 DEPTH_FILTERS[key].ids 以保证纵深视图下始终可见。
+ * 并写入 DEPTH_FILTERS[key].ids 以保证路线视图下始终可见。
  */
 (function (global) {
   'use strict';

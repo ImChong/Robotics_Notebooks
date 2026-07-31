@@ -163,7 +163,7 @@ flowchart TD
 
 ## 关联页面
 
-- 所属纵深：[具身评测基准选型闭环（知识链汇总）](../overview/hub-embodied-eval-benchmark.md) — 四层评测基准的统一入口与图谱纵深枢纽
+- 所属路线：[具身评测基准选型闭环（知识链汇总）](../overview/hub-embodied-eval-benchmark.md) — 四层评测基准的统一入口与图谱纵深枢纽
 - [仿真评测可复现性 ↔ 真实代表性取舍（sim↔real 评测 gap）](../concepts/sim-vs-real-eval-gap.md) — ④层 gap 校准的姊妹概念页，双向回链
 - [RoboBench（MLLM 具身大脑综合评测）](../entities/robo-bench.md) — ①层 MLLM 认知评测代表基准
 - [ESI-Bench（具身空间智能基准）](../entities/esi-bench.md) — ①层主动探索式空间智能评测

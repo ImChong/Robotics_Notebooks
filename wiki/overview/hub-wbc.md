@@ -8,7 +8,7 @@ summary: "全身控制（WBC）知识链汇总：质心/接触约束下的层级
 
 # 全身控制 WBC（知识链汇总）
 
-> **知识链汇总**：本页是相关概念/方法的统一入口；对应策展纵深见图谱 [纵深视图](../../docs/graph.html?depth=classical-control) 与 [路线页](../../roadmap/depth-classical-control.md)。
+> **知识链汇总**：本页是相关概念/方法的统一入口；对应策展纵深见图谱 [路线视图](../../docs/graph.html?depth=classical-control) 与 [路线页](../../roadmap/depth-classical-control.md)。
 
 ## 一句话定义
 

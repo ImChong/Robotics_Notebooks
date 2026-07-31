@@ -1,6 +1,6 @@
 # 技术栈项目执行清单 v31
 
-最后更新：2026-07-26（v30 全数完成后新建：聚焦「机器人视觉感知栈选型闭环」知识链——把近周密集 ingest 的一批**目标检测 / 分割 / 2D→3D 语义建图**资料，从分散的实体页沉淀为一条贯通的「传感与标定 → 2D 检测/分割选型 → 2D→3D 提升与语义建图 → 下游策略消费」感知栈选型链，补感知栈层间矛盾检测规则与纵深视图）
+最后更新：2026-07-26（v30 全数完成后新建：聚焦「机器人视觉感知栈选型闭环」知识链——把近周密集 ingest 的一批**目标检测 / 分割 / 2D→3D 语义建图**资料，从分散的实体页沉淀为一条贯通的「传感与标定 → 2D 检测/分割选型 → 2D→3D 提升与语义建图 → 下游策略消费」感知栈选型链，补感知栈层间矛盾检测规则与路线视图）
 项目仓库：<https://github.com/ImChong/Robotics_Notebooks>
 上一版清单：[`tech-stack-next-phase-checklist-v30.md`](archive/tech-stack-next-phase-checklist-v30.md)
 方法论参考：[Karpathy LLM Wiki](../../wiki/references/llm-wiki-karpathy.md)
@@ -16,7 +16,7 @@
 | 事实库 (CANONICAL_FACTS) | 250 条 | **≥ 260 条** |
 | 社区结构 | 16 社区，最大社区占 21.6%（`community_quality_warning: false`） | **保持 ≤ 25%，新增纵深不破坏均衡** |
 | 技术纵深 | 执行器驱动链选型闭环链路（V30 交付） | **建立"机器人视觉感知栈选型闭环"知识链** |
-| 图谱纵深视图 | V30 扩至 20 项（新增「执行器驱动链」） | **新增「机器人感知栈」纵深至 21 项** |
+| 图谱路线视图 | V30 扩至 20 项（新增「执行器驱动链」） | **新增「机器人感知栈」纵深至 21 项** |
 
 > 背景：V28 沉淀了「选哪一类具身大模型」（VLM/VLN/VLA/VLX/World-Model 五层选型链），V29 沉淀了「怎么评测/证明它」（认知→预测保真度→策略成功率→sim↔real gap 四层评测选型链），V30 沉淀了「策略输出的力矩指令由什么样的电子硬件驱动链落地」（EDA→FOC→执行器建模→实时总线四层驱动链）。与之互补、位于策略**输入端**的问题是**「策略/操作/导航消费的视觉感知信号从哪来、怎么选感知栈」**。近周密集 ingest 了一批**目标检测 / 分割 / 2D→3D 语义建图**资料——Ultralytics YOLO（单阶段实时检测）、RF-DETR（端到端 DETR）、YOLO v1（单阶段检测奠基论文）、Segment Anything / SAM2（可提示分割）、FindAnything / OV-SAM3D / OVO Semantic Mapping（开放词汇 3D 语义建图）、CMU MSCV Semantic 3D Mapping、GO2 三维语义建图（SAM 2D→3D 流水线）、Booster RoboCup Demo 与足球场线/球门检测等；仓库既有储备还包括 `object-detection` / `object-detection-model-selection`（检测选型 query）、`perception-backbone-selection` / `vision-backbones` / `vision-transformer`（骨干层）、`perception-coordinate-postprocessing`（坐标后处理）、`lovon`（腿式开放词汇导航）等。这些页各自独立（多为 `entities/` 实体页或零散 `methods/` `queries/`），但**缺一条贯通的感知栈选型视角**——从**传感与标定（RGB / RGB-D / LiDAR 输入模态、相机内外参标定、深度精度 vs 成本）→ 2D 检测/分割选型（单阶段 YOLO vs 两阶段、DETR 端到端 vs anchor、闭集检测 vs 开放词汇分割、实时机载 vs 服务器侧）→ 2D→3D 提升与语义建图（深度融合、点云语义、在线 vs 离线建图、稠密 vs 稀疏）→ 下游策略消费（导航/操作/WBC 如何消费感知输出、坐标后处理与感知-控制频率对齐）**逐层「每层选什么、精度 vs 时延/算力如何取舍、闭集准 vs 开放词汇泛、2D 框够用 vs 必须 3D 语义几何、感知频率 ≠ 控制频率」，尚未沉淀为独立 query / concept；事实库也缺「感知栈选型矛盾」的矛盾检测规则。V31 优先补齐这条机器人视觉感知栈选型闭环知识链，并把分散的感知页交叉链路规范化。
 
@@ -43,10 +43,10 @@
 
 ## P3: 交互层"机器人感知栈"增强 (UX/UI)
 
-- [ ] **图谱页"机器人感知栈"纵深视图**：
-    - [ ] `docs/depth-filters.js` 单一事实源新增「机器人感知栈」纵深（`perception-stack`，👁 emoji），复用 path 片段并集机制（`detection` / `segment` / `perception` 等干净片段，与既有 `vision-backbone` 纵深保持最小重叠——后者聚焦特征骨干，本纵深聚焦任务级感知流水线）并用 `ids` 显式纳入未被片段命中的感知页（`robot-perception-stack-selection-loop` / `2d-to-3d-semantic-lifting-gap` / `ultralytics` / `rf-detr` / `paper-yolo-unified-realtime-detection` / `paper-segment-anything` / `paper-sam2` / `findanything` / `cmu-mscv-semantic-3d-mapping` / `object-detection-model-selection` 等）；同步在 `docs/graph.html` `#filter-depth-chips` 增加对应 chip。纵深汇总枢纽页 `wiki/overview/hub-perception-stack.md` 需新建（从相关感知/query 页交叉回链），`graph-stats.json` 0 orphans。纵深视图落稳后截图归档至 `.cursor-artifacts/screenshots/graph-hub-perception-stack.png`。
+- [ ] **图谱页"机器人感知栈"路线视图**：
+    - [ ] `docs/depth-filters.js` 单一事实源新增「机器人感知栈」纵深（`perception-stack`，👁 emoji），复用 path 片段并集机制（`detection` / `segment` / `perception` 等干净片段，与既有 `vision-backbone` 纵深保持最小重叠——后者聚焦特征骨干，本纵深聚焦任务级感知流水线）并用 `ids` 显式纳入未被片段命中的感知页（`robot-perception-stack-selection-loop` / `2d-to-3d-semantic-lifting-gap` / `ultralytics` / `rf-detr` / `paper-yolo-unified-realtime-detection` / `paper-segment-anything` / `paper-sam2` / `findanything` / `cmu-mscv-semantic-3d-mapping` / `object-detection-model-selection` 等）；同步在 `docs/graph.html` `#filter-depth-chips` 增加对应 chip。纵深汇总枢纽页 `wiki/overview/hub-perception-stack.md` 需新建（从相关感知/query 页交叉回链），`graph-stats.json` 0 orphans。路线视图落稳后截图归档至 `.cursor-artifacts/screenshots/graph-hub-perception-stack.png`。
 - [ ] **详情页"同纵深相关页"提示**：
-    - [ ] 复用 `docs/depth-filters.js` 单一事实源（`renderMetaDepthBadges` → `depthsForNode` 已数据驱动），感知/新建页命中「机器人感知栈」纵深时自动渲染对应轻量徽标 + 跳转 `graph.html?depth=perception-stack`（空态降级隐藏）。P3① 把 `perception-stack` 写入单一事实源后，详情页「所属纵深」徽标行即自动联动；选一页感知实体页端到端验证并归档截图至 `.cursor-artifacts/screenshots/detail-hub-perception-stack.png`。
+    - [ ] 复用 `docs/depth-filters.js` 单一事实源（`renderMetaDepthBadges` → `depthsForNode` 已数据驱动），感知/新建页命中「机器人感知栈」纵深时自动渲染对应轻量徽标 + 跳转 `graph.html?depth=perception-stack`（空态降级隐藏）。P3① 把 `perception-stack` 写入单一事实源后，详情页「所属路线」徽标行即自动联动；选一页感知实体页端到端验证并归档截图至 `.cursor-artifacts/screenshots/detail-hub-perception-stack.png`。
 
 ---
 

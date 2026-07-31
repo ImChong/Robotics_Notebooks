@@ -8,7 +8,7 @@ summary: "VLA 与基础策略知识链汇总：视觉-语言-动作统一建模�
 
 # VLA 与基础策略（知识链汇总）
 
-> **知识链汇总**：本页是相关概念/方法的统一入口；对应策展纵深见图谱 [纵深视图](../../docs/graph.html?depth=vla) 与 [路线页](../../roadmap/depth-vla.md)。
+> **知识链汇总**：本页是相关概念/方法的统一入口；对应策展纵深见图谱 [路线视图](../../docs/graph.html?depth=vla) 与 [路线页](../../roadmap/depth-vla.md)。
 
 ## 一句话定义
 
