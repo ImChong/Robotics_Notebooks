@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-31",
   "node_count": 2057,
-  "edge_count": 18456,
+  "edge_count": 18458,
   "coverage": {
     "covered": 2007,
     "total": 2033,
@@ -11,7 +11,7 @@
     {
       "path": "wiki/entities/paper-legged-robots-advances-challenges.md",
       "detail_id": "entity-paper-legged-robots-advances-challenges",
-      "label": "note: OA/PDF recheck same day — still closed",
+      "label": "腿式机器人进展、挑战与机遇综述",
       "type": "entity",
       "recency": "2026-07-31",
       "source": "log.md",
@@ -210,7 +210,7 @@
   "latest_wiki_node": {
     "path": "wiki/entities/paper-legged-robots-advances-challenges.md",
     "detail_id": "entity-paper-legged-robots-advances-challenges",
-    "label": "note: OA/PDF recheck same day — still closed",
+    "label": "腿式机器人进展、挑战与机遇综述",
     "type": "entity",
     "recency": "2026-07-31",
     "source": "log.md",

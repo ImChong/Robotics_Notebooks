@@ -1,3 +1,5 @@
+## [2026-07-31] ingest | sources/blogs/wechat_robot_lecture_legged_robots_survey_2026-07-31.md — Agent Reach 抓取机器人大讲堂导读加深 Frey et al. SciRobotics 腿式综述；更新 wiki/entities/paper-legged-robots-advances-challenges.md（DSL/可反驱/价格/四项政策）；raw sources/raw/wechat_robot_lecture_legged_robots_survey_2026-07-31/
+
 ## [2026-07-31] ingest | sources/papers/legged_robots_advances_challenges_scirobotics_2026.md — OA/PDF 全路径复查仍 closed（Unpaywall/OpenAlex/PMC/arXiv/Zenodo/IA/作者站/ETH RC）；更新 wiki/entities/paper-legged-robots-advances-challenges.md 局限与核查表
 
 ## [2026-07-31] ingest | sources/papers/legged_robots_advances_challenges_scirobotics_2026.md — Frey et al. Science Robotics 2026 腿式机器人五柱综述；升格 wiki/entities/paper-legged-robots-advances-challenges.md；交叉 wiki/tasks/locomotion.md、wiki/entities/quadruped-robot.md、wiki/entities/paper-bioinspired-multimodal-robotics.md、wiki/concepts/sim2real.md；通稿 sources/blogs/techxplore_legged_robots_ethics_monash_2026-07-30.md；注册 edinburgh/monash
