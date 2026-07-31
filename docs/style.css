@@ -494,8 +494,7 @@ a.hero-stat-num:focus-visible {
 .section { padding: 44px 0; }
 /* 首页入口区与 Hero 同底色、语义相连：去掉自身顶距，只保留 Hero 底部留白 */
 #home-start.section { padding-top: 0; }
-#home-start-main-route,
-#home-more-routes { scroll-margin-top: calc(var(--header-h) + 12px); }
+/* 路线数字用 JS scrollIntoView(block:center)，不再用 scroll-margin 顶对齐 */
 
 /* Hero 盘点数字定位入口卡：SVG 短弧沿边框顺时针扫一圈 */
 .home-entry-card.is-border-tracing {
@@ -520,7 +519,7 @@ a.hero-stat-num:focus-visible {
   filter: drop-shadow(0 0 4px color-mix(in srgb, var(--accent) 70%, transparent));
   stroke-dasharray: 14 86;
   stroke-dashoffset: 0;
-  animation: home-border-trace-dash 1.05s linear forwards;
+  animation: home-border-trace-dash 2.1s linear forwards;
 }
 @keyframes home-border-trace-dash {
   to { stroke-dashoffset: -100; }
