@@ -1,3 +1,5 @@
+## [2026-07-31] ingest | sources/blogs/gemini_robotics_2_whole_body.md — Gemini Robotics 2 全身智能；升格 wiki/entities/gemini-robotics.md；交叉 foundation-policy / WBC / loco-manip / hub-cross-embodiment / vla
+
 ## [2026-07-31] structural | docs/main.js — Hero 路线数字描边时长×2；跳转改为 scrollIntoView 居中
 
 - **时长：** 边框顺时针描边 `1.05s → 2.1s`（`BORDER_TRACE_MS` 1200→2400）

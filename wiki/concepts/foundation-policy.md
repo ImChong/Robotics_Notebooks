@@ -1,7 +1,7 @@
 ---
 type: concept
 tags: [foundation-policy, vla, rt1, rt2, pi0, pi07, octo, generalist, pretraining, manipulation]
-updated: 2026-07-27
+updated: 2026-07-31
 related:
   - ../queries/contact-wrench-closed-loop.md
   - ./humanoid-policy-network-architecture.md
@@ -16,6 +16,7 @@ related:
   - ../methods/octo-model.md
   - ../methods/robotics-transformer-rt-series.md
   - ../entities/gemini-robotics.md
+  - ../overview/hub-cross-embodiment.md
   - ../methods/imitation-learning.md
   - ../methods/diffusion-policy.md
   - ../methods/pi07-policy.md
@@ -99,6 +100,10 @@ summary: "Foundation Policy 指在大规模多任务机器人数据上预训练�
 - **叙事：** GEN-0 主张机器人 scaling laws；GEN-1 强调 mastery 与半百万小时级交互数据；2026-07「千手」博文把多样性轴推到 **~9k 末端/工具变体** 与任务中途换手（见 [Generalist AI](../entities/generalist-ai-robotics.md)、[GEN-1 千手](../entities/generalist-gen1-thousand-hands.md)）
 - **定位：** 与 Octo / OXE **开源可复现** 路线对照的产业样本；**确认未开源**，不可替代开源基线做实验
 
+### Gemini Robotics 2（Google DeepMind，闭源 VLA + 可调用 ER）
+- **叙事：** 2026-07 发布 **VLA 2 / ER 2 / On-Device 2**：全身人形控制、多指/夹爪灵巧、多机协作、端侧数小时跨本体适配（见 [Gemini Robotics](../entities/gemini-robotics.md)）
+- **开放边界：** ER 2 为 API public preview + [`robotics-samples`](https://github.com/google-gemini/robotics-samples)；**VLA/On-Device 权重未开源**——对照实验仍应优先 Octo / OpenVLA / π 等可复现栈
+
 ### TD-MPC2（Hansen et al., 2024）
 - **架构**：隐空间世界模型 + Temporal Difference Learning
 - **创新**：单一模型在 80+ 任务上统一训练；model-based RL 在样本效率上的突破
@@ -181,10 +186,12 @@ flowchart TD
 - [BFM（Behavior Foundation Model 论文实体）](../entities/paper-behavior-foundation-model-humanoid.md) — humanoid WBC 系基础策略（CVAE + 掩码控制接口）
 - [具身大模型分类学选型闭环（知识链枢纽）](../overview/hub-embodied-foundation-model.md) — 基础策略是五层闭环的 VLA 动作执行层基座
 - [Generalist AI / GEN-1 千手](../entities/generalist-gen1-thousand-hands.md) — 闭源通才策略的多末端扩展叙事
+- [Gemini Robotics](../entities/gemini-robotics.md) — DeepMind 闭源全身 VLA + 可调用 ER 2
 
 ## 参考来源
 - [rl_foundation_models.md](../../sources/papers/rl_foundation_models.md)
 - [generalist_thousand_hands.md](../../sources/blogs/generalist_thousand_hands.md) — GEN-1 跨末端「千手」博客归档
+- [gemini_robotics_2_whole_body.md](../../sources/blogs/gemini_robotics_2_whole_body.md) — Gemini Robotics 2 全身智能发布归档
 - [sources/papers/bfm_survey_arxiv_2506_20487.md](../../sources/papers/bfm_survey_arxiv_2506_20487.md) — BFM 综述 taxonomy（arXiv:2506.20487）
 - [sources/repos/awesome_bfm_papers.md](../../sources/repos/awesome_bfm_papers.md) — awesome-bfm-papers 精选列表
 - [sources/papers/bfm_humanoid_arxiv_2509_13780.md](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md) — BFM (arXiv:2509.13780) ingest 摘要

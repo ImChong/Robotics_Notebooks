@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-07-31",
   "node_count": 2053,
-  "edge_count": 18382,
+  "edge_count": 18391,
   "coverage": {
     "covered": 2003,
     "total": 2029,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/gemini-robotics.md",
+      "detail_id": "entity-gemini-robotics",
+      "label": "Gemini Robotics",
+      "type": "entity",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/queries/hmi-papers-coverage.md",
       "detail_id": "wiki-queries-hmi-papers-coverage",
@@ -190,27 +201,18 @@
       "recency": "2026-07-31",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-sim2real.md",
-      "detail_id": "roadmap-depth-sim2real",
-      "label": "路线（纵深）：如果目标是 Sim2Real（仿真到真机迁移）",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/queries/hmi-papers-coverage.md",
-    "detail_id": "wiki-queries-hmi-papers-coverage",
-    "label": "HMI 论文总索引 · 本库导读",
-    "type": "query",
+    "path": "wiki/entities/gemini-robotics.md",
+    "detail_id": "entity-gemini-robotics",
+    "label": "Gemini Robotics",
+    "type": "entity",
     "recency": "2026-07-31",
     "source": "log.md",
     "action": "maintained",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
@@ -251,7 +253,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 371,
+      "degree": 372,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -274,7 +276,7 @@
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
-      "degree": 302,
+      "degree": 304,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },

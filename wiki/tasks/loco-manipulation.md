@@ -36,6 +36,7 @@ sources:
   - ../../sources/blogs/flexion_reflect_v1_0.md
   - ../../sources/papers/humanoidmimicgen_arxiv_2605_27724.md
   - ../../sources/papers/3d_ic_icml_2026.md
+  - ../../sources/blogs/gemini_robotics_2_whole_body.md
 ---
 
 # Loco-Manipulation (移动操作)
@@ -239,6 +240,7 @@ flowchart TD
 - [Diffusion-based Motion Generation](../methods/diffusion-motion-generation.md) — 2026 年的主流高层运动生成技术
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [VLA](../methods/vla.md)
+- [Gemini Robotics](../entities/gemini-robotics.md) — DeepMind GR2：闭源全身 VLA + ER 编排的产业对照（权重未开源）
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 联合未来–动作建模与 VLA/世界模型分界（综述资源入口）
 - [Teleoperation](./teleoperation.md)
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
@@ -287,6 +289,7 @@ flowchart TD
 - [POT-VLA（论文实体）](../entities/paper-pot-vla.md) — 持久 3D 对象 token + 几何谓词可验证闭环；G1 上 GR00T-N1.7 **39/80→71/80**（arXiv:2607.18016）
 
 ## 参考来源
+- [gemini_robotics_2_whole_body.md](../../sources/blogs/gemini_robotics_2_whole_body.md) — Gemini Robotics 2 全身 loco-manip 产品叙事归档
 - [awesome-humanoid-robot-learning](../../sources/repos/awesome-humanoid-robot-learning.md) — 持续更新的人形机器人学习论文集
 - [ULTRA survey](./ultra-survey.md) — 统一多模态 loco-manipulation 综述 (2026)
 - [arXiv 2603.23983](https://arxiv.org/abs/2603.23983), *SafeFlow: Real-Time Text-Driven Humanoid Whole-Body Control* (2026)
