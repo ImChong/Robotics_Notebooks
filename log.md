@@ -1,3 +1,5 @@
+## [2026-07-31] structural | docs/style.css — 纵深路线描边后「展开全部…」文案高亮改为两次
+
 ## [2026-07-31] structural | docs/main.js — Hero 路线数字描边时长×2；跳转改为 scrollIntoView 居中
 
 - **时长：** 边框顺时针描边 `1.05s → 2.1s`（`BORDER_TRACE_MS` 1200→2400）
