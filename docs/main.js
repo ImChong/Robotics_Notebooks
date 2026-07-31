@@ -5846,35 +5846,57 @@
     var prevSvg = card.querySelector('.home-border-trace-svg');
     if (prevSvg) prevSvg.remove();
 
-    // 用像素坐标画圆角矩形，避免 preserveAspectRatio=none 把圆角拉扁
+    // 绝对定位含块是 padding edge，而可见描边应对齐 border-box。
+    // 旧实现用 offsetWidth 画 viewBox、CSS 用 padding-box 的 inset/% 定尺寸，
+    // 在亚像素宽度与各分辨率下会左右/上下不对称外扩并缩放错位。
     var pad = 2;
     var stroke = 2.5;
-    var w = Math.max(card.offsetWidth + pad * 2, 1);
-    var h = Math.max(card.offsetHeight + pad * 2, 1);
-    var radius = 14; // var(--radius) 12px + 外扩
     var inset = stroke / 2;
 
     var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.setAttribute('class', 'home-border-trace-svg');
     svg.setAttribute('aria-hidden', 'true');
-    svg.setAttribute('width', String(w));
-    svg.setAttribute('height', String(h));
-    svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+    svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
 
     var rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-    rect.setAttribute('x', String(inset));
-    rect.setAttribute('y', String(inset));
-    rect.setAttribute('width', String(Math.max(w - stroke, 0)));
-    rect.setAttribute('height', String(Math.max(h - stroke, 0)));
-    rect.setAttribute('rx', String(radius));
-    rect.setAttribute('ry', String(radius));
     rect.setAttribute('pathLength', '100');
     svg.appendChild(rect);
+
+    function layoutTraceSvg() {
+      var style = window.getComputedStyle(card);
+      var bl = parseFloat(style.borderLeftWidth) || 0;
+      var bt = parseFloat(style.borderTopWidth) || 0;
+      var box = card.getBoundingClientRect();
+      var bw = Math.max(box.width, 0);
+      var bh = Math.max(box.height, 0);
+      var w = Math.max(bw + pad * 2, 1);
+      var h = Math.max(bh + pad * 2, 1);
+      var cardRadius = parseFloat(style.borderTopLeftRadius) || 12;
+      var radius = Math.min(cardRadius + pad, w / 2, h / 2);
+
+      svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+      // 相对 padding edge 左移 border+pad，使 SVG 对称外扩于 border-box
+      svg.style.left = (-bl - pad) + 'px';
+      svg.style.top = (-bt - pad) + 'px';
+      svg.style.width = w + 'px';
+      svg.style.height = h + 'px';
+
+      rect.setAttribute('x', String(inset));
+      rect.setAttribute('y', String(inset));
+      rect.setAttribute('width', String(Math.max(w - stroke, 0)));
+      rect.setAttribute('height', String(Math.max(h - stroke, 0)));
+      rect.setAttribute('rx', String(radius));
+      rect.setAttribute('ry', String(radius));
+    }
 
     function finish() {
       if (finished) return;
       finished = true;
       card.classList.remove('is-border-tracing');
+      if (resizeObserver) {
+        try { resizeObserver.disconnect(); } catch { /* ignore */ }
+        resizeObserver = null;
+      }
       if (svg.parentNode) svg.parentNode.removeChild(svg);
       rect.removeEventListener('animationend', onAnimEnd);
       window.clearTimeout(fallbackTimer);
@@ -5884,8 +5906,16 @@
       if (event.animationName === 'home-border-trace-dash') finish();
     }
 
+    var resizeObserver = null;
     card.classList.add('is-border-tracing');
+    layoutTraceSvg();
     card.appendChild(svg);
+    if (typeof ResizeObserver !== 'undefined') {
+      resizeObserver = new ResizeObserver(function () {
+        if (!finished) layoutTraceSvg();
+      });
+      resizeObserver.observe(card);
+    }
     rect.addEventListener('animationend', onAnimEnd);
     var fallbackTimer = window.setTimeout(finish, BORDER_TRACE_MS);
   }

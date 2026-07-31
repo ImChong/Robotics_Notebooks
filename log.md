@@ -1,3 +1,9 @@
+## [2026-07-31] structural | docs/main.js + docs/style.css — 首页入口卡边框描边按 border-box 像素对齐，修复多分辨率错位
+
+- **问题：** 描边 SVG 用 `offsetWidth`（border-box）写 viewBox，CSS 用 padding-box 的 `inset`/`%` 定尺寸，亚像素宽度下左右/上下外扩不对称，且 viewBox 被缩放导致圆角偏离卡片边框
+- **修复：** JS 以 `getBoundingClientRect` + 边框宽度写入 `left/top/width/height`，对称外扩于 border-box；圆角取自 computed `border-radius`；动画期间 `ResizeObserver` 跟随卡片尺寸变化
+- **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md)
+
 ## [2026-07-31] ingest | sources/repos/wan-dancer.md + sources/papers/wan_dancer_arxiv_2607_09581.md — Wan-Dancer 分钟级 music-to-dance；升格 wiki/entities/paper-wan-dancer.md；交叉 Wan / Wan-Move / generative-world-models / hub-wbt
 
 - **触发：** 用户给出 `https://github.com/Wan-AI/Wan-Dancer-14B`（**404**）；核实为 HF/ModelScope 权重 ID，代码仓为 [`Wan-Video/Wan-Dancer`](https://github.com/Wan-Video/Wan-Dancer)
