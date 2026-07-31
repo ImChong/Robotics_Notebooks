@@ -77,7 +77,7 @@ def test_topic_hub_backlink_also_passes(tmp_path: Path, monkeypatch) -> None:
     page.write_text(
         "---\ntype: concept\ntags: [vlx, multimodal]\n---\n"
         "统一多模态 token，见纵深 "
-        "[具身大模型](../overview/depth-embodied-foundation-model.md)。\n",
+        "[具身大模型](../overview/hub-embodied-foundation-model.md)。\n",
         encoding="utf-8",
     )
     results = _run([page])

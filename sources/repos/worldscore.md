@@ -57,7 +57,7 @@
 ## 对 wiki 的映射
 
 - 新建 **`wiki/entities/paper-worldscore.md`**：论文 + 基准 + 工具链实体页（流程 mermaid、十项指标、论文表与活榜读法、源码时序图）。
-- 轻量交叉更新 EWMBench / generative-world-models / depth-embodied-eval-benchmark / embodied-eval-benchmark-selection-loop / video-as-simulation。
+- 轻量交叉更新 EWMBench / generative-world-models / hub-embodied-eval-benchmark / embodied-eval-benchmark-selection-loop / video-as-simulation。
 
 ---
 

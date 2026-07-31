@@ -5,7 +5,7 @@ status: complete
 updated: 2026-07-26
 related:
   - ../tasks/manipulation.md
-  - ../overview/depth-grasp.md
+  - ../overview/hub-grasp.md
   - ../concepts/contact-rich-manipulation.md
   - ./en02-op.md
   - ./allegro-hand.md
@@ -156,7 +156,7 @@ sequenceDiagram
 ## 关联页面
 
 - [Manipulation](../tasks/manipulation.md) — 操作任务与末端选型语境
-- [抓取纵深汇总](../overview/depth-grasp.md) — 感知–规划–执行与硬件入口
+- [抓取知识链汇总](../overview/hub-grasp.md) — 感知–规划–执行与硬件入口
 - [接触丰富操作](../concepts/contact-rich-manipulation.md) — F3 免 FT 力控任务所属问题族
 - [EN02-OP](./en02-op.md) — 低成本开源三指全驱动对照
 - [Allegro Hand](./allegro-hand.md) / [RUKA-v2 Hand](./ruka-v2-hand.md) — 高 DoF 灵巧手对照

@@ -14,8 +14,8 @@ related:
   - ./lcm-basics.md
   - ./network-protocol-stack.md
   - ./message-queue-reliability.md
-  - ../overview/depth-systems-engineering.md
-  - ../overview/depth-communication.md
+  - ../overview/hub-systems-engineering.md
+  - ../overview/hub-communication.md
   - ../queries/real-time-control-middleware-guide.md
 sources:
   - ../../sources/sites/omg-dds-spec.md
@@ -124,7 +124,7 @@ flowchart LR
 - [ROS 2 vs LCM](../comparisons/ros2-vs-lcm.md)
 - [LCM 基础](./lcm-basics.md)
 - [网络协议栈](./network-protocol-stack.md)
-- [通信协议纵深](../overview/depth-communication.md)
+- [通信协议知识链](../overview/hub-communication.md)
 - [实时运控中间件指南](../queries/real-time-control-middleware-guide.md)
 
 ## 参考来源

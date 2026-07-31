@@ -1,18 +1,18 @@
 ---
 type: overview
-tags: [depth, depth-learning, rl, il, imitation, reinforcement]
+tags: [hub, hub-learning, rl, il, imitation, reinforcement]
 status: complete
 updated: 2026-07-31
-summary: "IL/RL 学习范式纵深汇总：强化学习、模仿学习、行为克隆与 model-based 路线的选型、数据需求与机器人落地注意点。"
+summary: "IL/RL 学习范式知识链汇总：强化学习、模仿学习、行为克隆与 model-based 路线的选型、数据需求与机器人落地注意点。"
 ---
 
-# IL/RL 学习范式（纵深汇总）
+# IL/RL 学习范式（知识链汇总）
 
-> **图谱纵深视图**：本页是知识图谱「🎓 模仿/强化学习 (IL/RL)」纵深的统一入口；在 [图谱纵深视图](../../docs/graph.html?depth=learning) 筛选时，本节点为汇总锚点。
+> **知识链汇总**：本页是相关概念/方法的统一入口；对应策展纵深见图谱 [纵深视图](../../docs/graph.html?depth=imitation-learning) 与 [路线页](../../roadmap/depth-imitation-learning.md)。
 
 ## 一句话定义
 
-**机器人学习纵深** 覆盖 **从数据或交互中习得策略** 的主要范式：强化学习（RL）、模仿学习（IL）及其与 model-based、离线 RL、基础模型的组合。
+**机器人学习知识链** 覆盖 **从数据或交互中习得策略** 的主要范式：强化学习（RL）、模仿学习（IL）及其与 model-based、离线 RL、基础模型的组合。
 
 ## 英文缩写速查
 
@@ -30,7 +30,7 @@ summary: "IL/RL 学习范式纵深汇总：强化学习、模仿学习、行为�
 - **范式选型决定数据与工程成本**：有示范优先 IL，需探索用 RL，有模型走 MBRL。
 - **与 Sim2Real / 安全微调强耦合**：学习只在仿真完成一半，落地还有后半段。
 
-## 本纵深覆盖什么
+## 本知识链覆盖什么
 
 | 层次 | 典型问题 | 站内入口 |
 |------|----------|----------|
@@ -40,11 +40,11 @@ summary: "IL/RL 学习范式纵深汇总：强化学习、模仿学习、行为�
 | 概念 | 奖励设计 / 课程 | [Reward Design](../concepts/reward-design.md)、[Curriculum Learning](../concepts/curriculum-learning.md) |
 | 概念 | 特权训练 / 想象 | [Privileged Training](../concepts/privileged-training.md) |
 
-## 与其他纵深的关系
+## 与其他知识链的关系
 
-- **[Sim2Real](./depth-sim2real.md)**：学习策略如何上真机。
-- **[WBT](./depth-wbt.md)**：跟踪与 AMP 大量用 RL。
-- **[安全微调](./depth-safe-fine-tuning.md)**：部署后在线 RL 的安全边界。
+- **[Sim2Real](./hub-sim2real.md)**：学习策略如何上真机。
+- **[WBT](./hub-wbt.md)**：跟踪与 AMP 大量用 RL。
+- **[安全微调](./hub-safe-fine-tuning.md)**：部署后在线 RL 的安全边界。
 
 ## 关联页面
 
@@ -55,4 +55,4 @@ summary: "IL/RL 学习范式纵深汇总：强化学习、模仿学习、行为�
 ## 参考来源
 
 - 本库归纳自 [Robot Learning Overview](./robot-learning-overview.md) 及 methods/comparisons 学习系列页
-- 图谱纵深定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`learning` 命中规则）
+- 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`learning` 命中规则）

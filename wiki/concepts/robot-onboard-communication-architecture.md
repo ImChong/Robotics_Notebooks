@@ -131,7 +131,7 @@ flowchart TB
 - [时钟同步算法](./clock-synchronization-algorithms.md) · [DDS 通信机制](./dds-communication.md)
 - [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md)
 - [Query：EtherCAT 主站优化](../queries/ethercat-master-optimization.md) · [Query：实时运控中间件配置](../queries/real-time-control-middleware-guide.md)
-- [硬件通信与协议纵深](../overview/depth-communication.md)
+- [硬件通信与协议知识链](../overview/hub-communication.md)
 
 ## 参考来源
 

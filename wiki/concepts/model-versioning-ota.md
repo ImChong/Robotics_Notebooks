@@ -9,7 +9,7 @@ related:
   - ./robot-safety-state-machine.md
   - ./container-orchestration-cicd.md
   - ./cache-consistency-pitfalls.md
-  - ../overview/depth-systems-engineering.md
+  - ../overview/hub-systems-engineering.md
 sources:
   - ../../sources/sites/dds_omg_rtos_edge_ota_safety_primary_refs.md
   - ../../sources/sites/systems_engineering_deploy_obs_security_primary_refs.md

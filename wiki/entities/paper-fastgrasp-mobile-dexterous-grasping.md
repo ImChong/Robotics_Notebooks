@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, mobile-manipulation, dexterous-grasping, reinforcement-learning, tactile-sensing, whole-body-control, sim2real, shanghaitech, leap-hand]
 status: complete
-updated: 2026-07-12
+updated: 2026-07-31
 arxiv: "2604.12879"
 related:
   - ../tasks/manipulation.md
@@ -11,7 +11,7 @@ related:
   - ../concepts/contact-rich-manipulation.md
   - ../methods/reinforcement-learning.md
   - ../methods/grasp-pose-estimation.md
-  - ../overview/depth-grasp.md
+  - ../overview/hub-grasp.md
   - ./hrdexdb-dataset.md
   - ./isaac-gym-isaac-lab.md
 sources:
@@ -124,7 +124,7 @@ flowchart TB
 
 - [Manipulation](../tasks/manipulation.md) — 灵巧操作与触觉增强学习路线总览
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 轮式移动 + 上肢操作的全身协调（非人形双足）
-- [抓取纵深](../overview/depth-grasp.md) — 动态高速抓取的数据与感知锚点
+- [抓取知识链](../overview/hub-grasp.md) — 动态高速抓取的数据与感知锚点
 - [Tactile Sensing](../concepts/tactile-sensing.md) — 二值/压力触觉在冲击抓取中的角色
 - [Grasp Pose Estimation](../methods/grasp-pose-estimation.md) — 点云 → 6-DoF/手型抓取的感知栈背景
 - [HRDexDB](./hrdexdb-dataset.md) — 互补的 **静态/台架** 多模态灵巧抓取数据（本文偏 **动态移动执行**）

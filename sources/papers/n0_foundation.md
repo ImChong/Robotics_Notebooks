@@ -53,7 +53,7 @@
 ## 对 wiki 的映射（汇总）
 
 - 实体：[paper-n0-foundation.md](../../wiki/entities/paper-n0-foundation.md) · [neoteai.md](../../wiki/entities/neoteai.md)
-- 交叉：[visuo-tactile-fusion.md](../../wiki/concepts/visuo-tactile-fusion.md) · [contact-rich-manipulation.md](../../wiki/concepts/contact-rich-manipulation.md) · [depth-tactile.md](../../wiki/overview/depth-tactile.md)
+- 交叉：[visuo-tactile-fusion.md](../../wiki/concepts/visuo-tactile-fusion.md) · [contact-rich-manipulation.md](../../wiki/concepts/contact-rich-manipulation.md) · [hub-tactile.md](../../wiki/overview/hub-tactile.md)
 - 站点 / 仓：[research-neoteai-com.md](../sites/research-neoteai-com.md) · [n0-foundation.md](../repos/n0-foundation.md)
 
 ## 当前提炼状态

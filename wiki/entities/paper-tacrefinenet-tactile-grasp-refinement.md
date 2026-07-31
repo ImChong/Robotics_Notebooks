@@ -22,8 +22,8 @@ related:
   - ../methods/in-hand-reorientation.md
   - ../methods/grasp-pose-estimation.md
   - ../tasks/manipulation.md
-  - ../overview/depth-tactile.md
-  - ../overview/depth-grasp.md
+  - ../overview/hub-tactile.md
+  - ../overview/hub-grasp.md
   - ../queries/grasp-policy-selection.md
   - ../entities/paper-omnitactune-tactile-residual-adaptation.md
   - ../entities/paper-trex-tactile-reactive-dexterous-manipulation.md
@@ -199,7 +199,7 @@ flowchart TB
 - [Sim2Real](../concepts/sim2real.md) — 触觉仿真零样本边界  
 - [OmniTacTune](./paper-omnitactune-tactile-residual-adaptation.md) — 真机触觉残差 RL  
 - [T-Rex](./paper-trex-tactile-reactive-dexterous-manipulation.md) — 大规模触觉反应式 VLA  
-- [触觉纵深](../overview/depth-tactile.md) / [抓取纵深](../overview/depth-grasp.md)
+- [触觉知识链](../overview/hub-tactile.md) / [抓取知识链](../overview/hub-grasp.md)
 
 ## 参考来源
 

@@ -59,4 +59,4 @@
 | [Vision Transformer（概念）](../../wiki/concepts/vision-transformer.md) | **主沉淀页**：机制、训练/推理链路与误区 |
 | [CNN vs ViT 骨干对比](../../wiki/comparisons/cnn-vs-vit-backbones.md) | 归纳偏置与机器人感知取舍 |
 | [视觉骨干](../../wiki/concepts/vision-backbones.md) | 预训练→检测/VLA 上游链条 |
-| [视觉感知骨干专题](../../wiki/overview/depth-vision-backbone.md) | 专题入口交叉引用 |
+| [视觉感知骨干专题](../../wiki/overview/hub-vision-backbone.md) | 专题入口交叉引用 |

@@ -6,7 +6,7 @@ updated: 2026-07-22
 related:
   - ../comparisons/cnn-vs-vit-backbones.md
   - ./vision-backbones.md
-  - ../overview/depth-vision-backbone.md
+  - ../overview/hub-vision-backbone.md
   - ./generative-vision-pretraining.md
   - ../methods/unified-multimodal-tokens.md
   - ../queries/perception-backbone-selection.md

@@ -8,7 +8,7 @@ related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
-  - ../overview/depth-embodied-eval-benchmark.md
+  - ../overview/hub-embodied-eval-benchmark.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../concepts/sim-vs-real-eval-gap.md
   - ./robo-bench.md
@@ -176,7 +176,7 @@ sequenceDiagram
 - [VLA](../methods/vla.md) — 通用操纵策略方法总览
 - [Manipulation](../tasks/manipulation.md) — 操纵任务域
 - [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页落在策略成功率层与 sim↔real 层
-- [具身评测基准纵深](../overview/depth-embodied-eval-benchmark.md) — 四层评测枢纽
+- [具身评测基准知识链](../overview/hub-embodied-eval-benchmark.md) — 四层评测枢纽
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md) — 闭环仿真评测方法论
 - [仿真 vs 真机评测 gap](../concepts/sim-vs-real-eval-gap.md) — 外推校准
 - [RoboBench](./robo-bench.md) — MLLM 认知评测对照

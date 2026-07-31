@@ -61,4 +61,4 @@ $$\mathcal{T}^{\mathrm{robot}}=\left\{\{\mathbf{I}^{c_{i}}_{t}\}_{c_{i}=1}^{21},
 - **wiki/tasks/manipulation.md**：灵巧操作数据与跨 embodiment 学习入口
 - **wiki/queries/dexterous-data-collection-guide.md**：多模态采集系统与配对协议对照
 - **wiki/entities/allegro-hand.md**：Allegro 作为采集 embodiment 之一
-- **wiki/overview/depth-grasp.md**：抓取专题下的配对 HOI 数据锚点
+- **wiki/overview/hub-grasp.md**：抓取专题下的配对 HOI 数据锚点

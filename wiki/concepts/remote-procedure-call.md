@@ -12,7 +12,7 @@ related:
   - ./lcm-basics.md
   - ../comparisons/ros2-vs-lcm.md
   - ../queries/real-time-control-middleware-guide.md
-  - ../overview/depth-communication.md
+  - ../overview/hub-communication.md
   - ../entities/freecad-mcp.md
 sources:
   - ../../sources/papers/birrell_nelson_implementing_rpc_tocs_1984.md
@@ -128,7 +128,7 @@ flowchart LR
 - [RMW 接口](./rmw-interface.md)
 - [网络协议栈](./network-protocol-stack.md)
 - [LCM 基础](./lcm-basics.md)
-- [通信协议纵深](../overview/depth-communication.md)
+- [通信协议知识链](../overview/hub-communication.md)
 - [FreeCAD MCP](../entities/freecad-mcp.md)（本地 Addon RPC 暴露）
 
 ## 参考来源

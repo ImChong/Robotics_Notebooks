@@ -14,7 +14,7 @@ venue: "1X Technologies Technical Progress Report 2025"
 code: https://github.com/1x-technologies/1xgpt
 related:
   - ../overview/wam-motion-control-five-paths.md
-  - ../overview/depth-embodied-eval-benchmark.md
+  - ../overview/hub-embodied-eval-benchmark.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./1x-technologies.md
   - ../methods/generative-world-models.md
@@ -154,7 +154,7 @@ sequenceDiagram
 ## 关联页面
 
 - [WAM×运动控制五路径](../overview/wam-motion-control-five-paths.md)
-- [具身评测基准选型闭环（纵深）](../overview/depth-embodied-eval-benchmark.md)
+- [具身评测基准选型闭环（知识链）](../overview/hub-embodied-eval-benchmark.md)
 - [Query：具身大模型评测基准选型](../queries/embodied-eval-benchmark-selection-loop.md)
 - [1X Technologies](./1x-technologies.md)
 - [Generative World Models](../methods/generative-world-models.md)

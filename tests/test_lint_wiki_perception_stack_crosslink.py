@@ -104,7 +104,7 @@ def test_topic_hub_backlink_also_passes(tmp_path: Path, monkeypatch) -> None:
     page.write_text(
         "---\ntype: entity\ntags: [foundation-model, segmentation]\n---\n"
         "Segment Anything，见纵深 "
-        "[机器人感知栈](../overview/depth-perception-stack.md)。\n",
+        "[机器人感知栈](../overview/hub-perception-stack.md)。\n",
         encoding="utf-8",
     )
     results = _run([page])
@@ -129,7 +129,7 @@ def test_both_hubs_present_passes(tmp_path: Path, monkeypatch) -> None:
         "---\ntype: entity\ntags: [segmentation, video-segmentation]\n---\n"
         "SAM2 可提示分割层，见 "
         "[Query](../queries/robot-perception-stack-selection-loop.md) 与 "
-        "[纵深](../overview/depth-perception-stack.md)。\n",
+        "[纵深](../overview/hub-perception-stack.md)。\n",
         encoding="utf-8",
     )
     results = _run([page])

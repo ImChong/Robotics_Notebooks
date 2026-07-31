@@ -93,7 +93,7 @@ def test_topic_hub_backlink_also_passes(tmp_path: Path, monkeypatch) -> None:
     page.write_text(
         "---\ntype: entity\ntags: [benchmark, evaluation]\n---\n"
         "ESI-Bench，见纵深 "
-        "[具身评测基准](../overview/depth-embodied-eval-benchmark.md)。\n",
+        "[具身评测基准](../overview/hub-embodied-eval-benchmark.md)。\n",
         encoding="utf-8",
     )
     results = _run([page])

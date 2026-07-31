@@ -20,7 +20,7 @@ related:
   - ../concepts/rtos-realtime-scheduling.md
   - ../concepts/control-inference-frequency-decoupling.md
   - ../concepts/operating-system-basics.md
-  - ../overview/depth-systems-engineering.md
+  - ../overview/hub-systems-engineering.md
 summary: "实时运控中间件配置指南：详细解答在真机部署中如何配置 Linux PREEMPT_RT 补丁、隔离 CPU 核心以及合理选择中间件，以彻底消除系统抖动。"
 ---
 

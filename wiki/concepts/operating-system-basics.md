@@ -7,7 +7,7 @@ related:
   - ./rtos-realtime-scheduling.md
   - ./network-protocol-stack.md
   - ../queries/real-time-control-middleware-guide.md
-  - ../overview/depth-systems-engineering.md
+  - ../overview/hub-systems-engineering.md
   - ../formalizations/control-loop-latency-modeling.md
 sources:
   - ../../sources/sites/systems_engineering_os_network_primary_refs.md
@@ -62,7 +62,7 @@ summary: "操作系统基础（进程、线程、内存、文件系统、调度�
 
 - [RTOS 与实时调度](./rtos-realtime-scheduling.md)
 - [网络协议栈基础](./network-protocol-stack.md)
-- [系统工程纵深](../overview/depth-systems-engineering.md)
+- [系统工程知识链](../overview/hub-systems-engineering.md)
 
 ## 参考来源
 

@@ -5,7 +5,7 @@ status: complete
 updated: 2026-07-26
 related:
   - ../tasks/manipulation.md
-  - ../overview/depth-grasp.md
+  - ../overview/hub-grasp.md
   - ./orca-hand.md
   - ./ruka-v2-hand.md
   - ./allegro-hand.md
@@ -82,7 +82,7 @@ flowchart LR
 ## 关联页面
 
 - [Manipulation](../tasks/manipulation.md) — 操作任务与末端硬件选型语境
-- [抓取纵深汇总](../overview/depth-grasp.md) — 感知–规划–执行闭环
+- [抓取知识链汇总](../overview/hub-grasp.md) — 感知–规划–执行闭环
 - [Orca Hand](./orca-hand.md) / [RUKA-v2 Hand](./ruka-v2-hand.md) — 更高 DoF 开源手对照
 - [Yale OpenHand](./yale-openhand.md) — 欠驱动腱驱开源手族（与全驱动三指对照）
 - [Query：抓取策略选型](../queries/grasp-policy-selection.md)

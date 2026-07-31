@@ -9,9 +9,9 @@ related:
   - ./edge-cloud-robotics.md
   - ../queries/vla-with-low-level-controller.md
   - ../queries/embodied-fm-taxonomy-loop.md
-  - ../overview/depth-embodied-foundation-model.md
+  - ../overview/hub-embodied-foundation-model.md
   - ../entities/jackhan-yobotics-e3-algorithm-template.md
-  - ../overview/depth-systems-engineering.md
+  - ../overview/hub-systems-engineering.md
 sources:
   - ../../sources/sites/dds_omg_rtos_edge_ota_safety_primary_refs.md
 summary: "控制频率与推理频率解耦：高频执行环（PD/WBC）与低频策略/VLA 推理通过动作块、零阶保持或残差接口连接。"

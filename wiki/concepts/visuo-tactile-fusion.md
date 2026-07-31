@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, manipulation, contact-rich, multimodal, tactile-sensing, fusion]
 status: complete
-updated: 2026-07-29
+updated: 2026-07-31
 related:
   - ./tactile-sensing.md
   - ./contact-rich-manipulation.md

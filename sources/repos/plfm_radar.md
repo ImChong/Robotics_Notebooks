@@ -52,7 +52,7 @@
 - 实体页：[aeris-10-plfm-radar](../../wiki/entities/aeris-10-plfm-radar.md)
 - 导航栈对照（LiDAR/VIO 之外的 **主动测距** 硬件参考）：[navigation-slam-autonomy-stack](../../wiki/overview/navigation-slam-autonomy-stack.md)
 - 多旋翼栈（README 明确面向 **drone developers**）：[multirotor-simulation-planning-control-stack](../../wiki/overview/multirotor-simulation-planning-control-stack.md)
-- 状态估计专题（雷达测距与 GPS/IMU 融合）：[depth-state-estimation](../../wiki/overview/depth-state-estimation.md)
+- 状态估计专题（雷达测距与 GPS/IMU 融合）：[hub-state-estimation](../../wiki/overview/hub-state-estimation.md)
 
 ---
 

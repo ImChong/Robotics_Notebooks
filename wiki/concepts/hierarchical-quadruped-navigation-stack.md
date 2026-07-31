@@ -83,7 +83,7 @@ summary: "四足自主系统常采用 VLN→导航→RL loco→PD→硬件 分�
 - [Navigation SLAM Autonomy Stack](../overview/navigation-slam-autonomy-stack.md)
 - [Quadruped Control Curriculum](../entities/quadruped-control-curriculum.md)
 - [Gait Generation](./gait-generation.md)
-- [具身大模型分类学选型闭环（纵深枢纽）](../overview/depth-embodied-foundation-model.md) — 分层导航栈对应五层闭环的 VLN 空间导航层
+- [具身大模型分类学选型闭环（知识链枢纽）](../overview/hub-embodied-foundation-model.md) — 分层导航栈对应五层闭环的 VLN 空间导航层
 
 ## 推荐继续阅读
 

@@ -8,7 +8,7 @@ related:
   - ../tasks/vision-language-navigation.md
   - ../concepts/world-action-models.md
   - ../methods/generative-world-models.md
-  - ../overview/depth-vla.md
+  - ../overview/hub-vla.md
   - ../overview/world-models-15-open-source-technology-map.md
   - ../concepts/humanoid-policy-network-architecture.md
   - ../methods/unified-multimodal-tokens.md
@@ -111,7 +111,7 @@ flowchart TB
 - 深蓝具身智能原文（微信公众号）：<https://mp.weixin.qq.com/s/xj-rc6v64Ge6onoUPvkHLg>
 - [VLA Open-Source Landscape 2025](../overview/vla-open-source-repro-landscape-2025.md)
 - [世界模型 15 项开源技术地图](../overview/world-models-15-open-source-technology-map.md)
-- [具身大模型分类学选型闭环（纵深枢纽）](../overview/depth-embodied-foundation-model.md) — 把本页五大家族沉淀为一条贯通的选型链
+- [具身大模型分类学选型闭环（知识链枢纽）](../overview/hub-embodied-foundation-model.md) — 把本页五大家族沉淀为一条贯通的选型链
 
 ## 参考来源
 

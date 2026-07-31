@@ -144,7 +144,7 @@
       scrollbar-width: thin;
       scrollbar-color: rgba(255,255,255,0.28) transparent;
     }
-    /* 纵深汇总导读条（画布右下角、操作提示条上方，选中非「全量」纵深时显示；
+    /* 纵深路线导读条（画布右下角、操作提示条上方，选中非「全量」纵深时显示；
        左上角会被筛选浮窗遮挡、左下有图例 FAB、右上有参数面板，故固定右下；
        bottom 抬高 72px 避开操作提示条（约 61px），也天然高于图例 FAB（约 60px） */
     .depth-intro-banner {
@@ -1741,10 +1741,10 @@
     <div id="depth-intro-banner" class="depth-intro-banner" hidden>
       <div class="depth-intro-head">
         <span class="depth-intro-badge" id="depth-intro-badge"></span>
-        <span class="depth-intro-hub-tag">纵深汇总</span>
+        <span class="depth-intro-hub-tag">纵深路线</span>
       </div>
       <p class="depth-intro-text" id="depth-intro-text"></p>
-      <a id="depth-intro-link" class="depth-intro-link" href="#">打开纵深汇总页 →</a>
+      <a id="depth-intro-link" class="depth-intro-link" href="#">打开纵深路线页 →</a>
     </div>
     <button id="graph-legend-fab" type="button" aria-label="打开图例" aria-expanded="false" aria-controls="graph-legend" title="图例">🎨</button>
     <div id="graph-legend-scrim" hidden aria-hidden="true"></div>
@@ -1862,26 +1862,27 @@
         </summary>
         <div class="filter-depth-chips" id="filter-depth-chips">
           <button class="filter-depth-chip is-active" type="button" data-depth="all" title="全量"><span>🌐</span><span>全量</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="motion-retargeting" title="动作重定向 (Motion Retargeting)"><span>🤸</span><span>动作重定向 (Motion Retargeting)</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="grasp" title="抓取 (Grasp)"><span>🤏</span><span>抓取 (Grasp)</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="tactile" title="触觉 (Tactile)"><span>✋</span><span>触觉 (Tactile)</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="communication" title="通信协议 (Communication)"><span>🔌</span><span>通信协议 (Communication)</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="wbc" title="全身控制 (WBC)"><span>🦾</span><span>全身控制 (WBC)</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="locomotion" title="步态与移动 (Locomotion)"><span>🚶</span><span>步态与移动 (Locomotion)</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="vla" title="视觉-语言-动作 (VLA)"><span>👀</span><span>视觉-语言-动作 (VLA)</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="learning" title="模仿/强化学习 (IL/RL)"><span>🎓</span><span>模仿/强化学习 (IL/RL)</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="sim2real" title="仿真到现实 (Sim2Real)"><span>🔁</span><span>仿真到现实 (Sim2Real)</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="state-estimation" title="状态估计 (State Estimation)"><span>📊</span><span>状态估计 (State Estimation)</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="wbt" title="全身运动跟踪 (WBT)"><span>🕺</span><span>全身运动跟踪 (WBT)</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="cross-embodiment" title="跨具身迁移 (Cross-Embodiment)"><span>🔀</span><span>跨具身迁移 (Cross-Embodiment)</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="safe-fine-tuning" title="安全微调 (Safe Fine-Tuning)"><span>🛡️</span><span>安全微调 (Safe Fine-Tuning)</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="vision-backbone" title="视觉骨干 (Vision Backbone)"><span>👁️</span><span>视觉骨干 (Vision Backbone)</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="data-pipeline" title="训练数据 (Data Pipeline)"><span>📦</span><span>训练数据 (Data Pipeline)</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="physics-fidelity" title="物理保真度 (Physics Fidelity)"><span>⚙️</span><span>物理保真度 (Physics Fidelity)</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="contact-force-control" title="接触力控 (Contact Force Control)"><span>🤝</span><span>接触力控 (Contact Force Control)</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="embodied-foundation-model" title="具身大模型 (Embodied Foundation Model)"><span>🧠</span><span>具身大模型 (Embodied Foundation Model)</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="embodied-eval-benchmark" title="具身评测基准 (Embodied Eval Benchmark)"><span>🧪</span><span>具身评测基准 (Embodied Eval Benchmark)</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="actuator-drive-chain" title="执行器驱动链 (Actuator Drive Chain)"><span>⚡</span><span>执行器驱动链 (Actuator Drive Chain)</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="teleoperation" title="遥操作"><span>🎮</span><span>遥操作</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="torque-motor-design" title="力矩电机设计"><span>⚙️</span><span>力矩电机设计</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="classical-control" title="传统控制"><span>📐</span><span>传统控制</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="humanoid-hardware-design" title="整机硬件"><span>🛠️</span><span>整机硬件</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="safe-control" title="安全控制"><span>🛡️</span><span>安全控制</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="contact-manipulation" title="接触操作"><span>🤏</span><span>接触操作</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="navigation" title="导航"><span>🗺️</span><span>导航</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="imitation-learning" title="模仿学习"><span>🎓</span><span>模仿学习</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="rl-locomotion" title="RL 运动控制"><span>🚶</span><span>RL 运动控制</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="loco-manipulation" title="Loco-Manip"><span>🤖</span><span>Loco-Manip</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="humanoid-soccer" title="人形足球"><span>⚽</span><span>人形足球</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="motion-retargeting" title="动作重定向"><span>🤸</span><span>动作重定向</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="humanoid-swarm-performance" title="人形群控展演"><span>🕺</span><span>人形群控展演</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="sim2real" title="Sim2Real"><span>🔁</span><span>Sim2Real</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="humanoid-boxing" title="人形拳击"><span>🥊</span><span>人形拳击</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="bfm" title="BFM"><span>🧠</span><span>BFM</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="perceptive-locomotion" title="感知越障"><span>👁️</span><span>感知越障</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="motion-generation" title="动作生成"><span>✨</span><span>动作生成</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="vla" title="VLA"><span>👀</span><span>VLA</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="real2sim" title="Real2Sim"><span>🌍</span><span>Real2Sim</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="wam" title="WAM"><span>🔮</span><span>WAM</span></button>
         </div>
       </details>
       <details class="filter-depth-section" id="filter-institution-section">

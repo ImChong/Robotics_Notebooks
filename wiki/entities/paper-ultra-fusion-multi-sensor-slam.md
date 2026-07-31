@@ -16,14 +16,14 @@ tags:
   - cqu
   - scu
 status: complete
-updated: 2026-07-01
+updated: 2026-07-31
 arxiv: "2606.21223"
 venue: "arXiv 2026"
 related:
   - ../concepts/sensor-fusion.md
   - ../concepts/state-estimation.md
   - ../comparisons/lidar-slam-lio-vio-selection.md
-  - ../overview/depth-state-estimation.md
+  - ../overview/hub-state-estimation.md
   - ../overview/navigation-slam-autonomy-stack.md
   - ./fast-lio.md
 sources:
@@ -143,7 +143,7 @@ flowchart TB
 - [State Estimation（概念）](../concepts/state-estimation.md) — 位姿/速度估计在控制栈中的位置
 - [LiDAR SLAM / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md) — 开源系统横向对照；本文提供 **退化与标定扰动** 维度的补充证据
 - [导航·SLAM 栈总览](../overview/navigation-slam-autonomy-stack.md) — Nav2 上游里程计/SLAM 分层
-- [状态估计纵深汇总](../overview/depth-state-estimation.md) — 纵深入口
+- [状态估计知识链汇总](../overview/hub-state-estimation.md) — 纵深入口
 - [FAST-LIO（实体）](./fast-lio.md) — 3D LIO 轻量基线对照
 
 ## 参考来源

@@ -7,7 +7,7 @@ arxiv: "2603.19305"
 venue: "2026 · arXiv"
 related:
   - ../overview/motion-cerebellum-category-04-wbt-base.md
-  - ../overview/depth-wbt.md
+  - ../overview/hub-wbt.md
   - ../methods/diffusion-motion-generation.md
   - ../methods/diffusion-policy.md
   - ../methods/motion-retargeting-gmr.md

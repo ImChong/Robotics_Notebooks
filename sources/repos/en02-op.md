@@ -53,4 +53,4 @@
 ## 对 wiki 的映射
 
 - 新建 [`wiki/entities/en02-op.md`](../../wiki/entities/en02-op.md)：硬件规格、制造链、与仿人五指/平行夹爪的对照。
-- 交叉更新 [`wiki/overview/depth-grasp.md`](../../wiki/overview/depth-grasp.md)、[`wiki/tasks/manipulation.md`](../../wiki/tasks/manipulation.md) 的低成本开源末端入口。
+- 交叉更新 [`wiki/overview/hub-grasp.md`](../../wiki/overview/hub-grasp.md)、[`wiki/tasks/manipulation.md`](../../wiki/tasks/manipulation.md) 的低成本开源末端入口。

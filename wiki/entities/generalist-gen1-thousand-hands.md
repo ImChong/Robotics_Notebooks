@@ -6,7 +6,7 @@ title: GEN-1 千手（跨末端执行器泛化）
 updated: 2026-07-24
 related:
   - ./generalist-ai-robotics.md
-  - ../overview/depth-cross-embodiment.md
+  - ../overview/hub-cross-embodiment.md
   - ../concepts/foundation-policy.md
   - ../concepts/embodied-scaling-laws.md
   - ../tasks/manipulation.md
@@ -131,7 +131,7 @@ flowchart LR
 ## 关联页面
 
 - [Generalist AI（公司入口）](./generalist-ai-robotics.md)
-- [跨具身迁移（纵深）](../overview/depth-cross-embodiment.md)
+- [跨具身迁移（知识链）](../overview/hub-cross-embodiment.md)
 - [跨具身策略迁移选型指南](../queries/cross-embodiment-transfer-strategy.md)
 - [Foundation Policy](../concepts/foundation-policy.md)
 - [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)

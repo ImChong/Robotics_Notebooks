@@ -10,7 +10,7 @@ tags:
   - manipulation
   - pku
 status: complete
-updated: 2026-07-27
+updated: 2026-07-31
 arxiv: "2607.02840"
 related:
   - ../overview/wm-action-consequence-category-02-contact-modeling.md

@@ -9,7 +9,7 @@ related:
   - ../concepts/network-protocol-stack.md
   - ../concepts/dds-communication.md
   - ../queries/real-time-control-middleware-guide.md
-  - ../overview/depth-communication.md
+  - ../overview/hub-communication.md
   - ./freecad-mcp.md
 sources:
   - ../../sources/repos/grpc.md
@@ -100,7 +100,7 @@ sequenceDiagram
 - [网络协议栈](../concepts/network-protocol-stack.md)
 - [DDS 通信机制](../concepts/dds-communication.md)
 - [实时运控中间件指南](../queries/real-time-control-middleware-guide.md)
-- [通信协议纵深](../overview/depth-communication.md)
+- [通信协议知识链](../overview/hub-communication.md)
 
 ## 参考来源
 

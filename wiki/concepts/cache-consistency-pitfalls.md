@@ -7,7 +7,7 @@ related:
   - ./database-fundamentals.md
   - ./distributed-systems-basics.md
   - ./model-versioning-ota.md
-  - ../overview/depth-systems-engineering.md
+  - ../overview/hub-systems-engineering.md
 sources:
   - ../../sources/sites/systems_engineering_data_distributed_primary_refs.md
 summary: "缓存穿透、雪崩、击穿与一致性：机器人服务/模型元数据加速层的经典失效模式与工程对策。"

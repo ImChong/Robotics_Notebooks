@@ -8,7 +8,7 @@ related:
   - ./software-security-basics.md
   - ./model-versioning-ota.md
   - ./edge-cloud-robotics.md
-  - ../overview/depth-systems-engineering.md
+  - ../overview/hub-systems-engineering.md
 sources:
   - ../../sources/sites/systems_engineering_deploy_obs_security_primary_refs.md
 summary: "容器与部署（Docker、Kubernetes、CI/CD）：训练/仿真 farm 与服务发布基座；明确不承担硬实时力矩环。"

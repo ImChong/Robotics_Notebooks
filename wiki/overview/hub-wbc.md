@@ -1,14 +1,14 @@
 ---
 type: overview
-tags: [depth, depth-wbc, whole-body-control, humanoid, balance, tsid]
+tags: [hub, hub-wbc, whole-body-control, humanoid, balance, tsid]
 status: complete
 updated: 2026-07-31
-summary: "全身控制（WBC）纵深汇总：质心/接触约束下的层级 QP、TSID/HQP 与 CBF 安全过滤，衔接 MPC 与 RL 策略的执行层。"
+summary: "全身控制（WBC）知识链汇总：质心/接触约束下的层级 QP、TSID/HQP 与 CBF 安全过滤，衔接 MPC 与 RL 策略的执行层。"
 ---
 
-# 全身控制 WBC（纵深汇总）
+# 全身控制 WBC（知识链汇总）
 
-> **图谱纵深视图**：本页是知识图谱「🦾 全身控制 (WBC)」纵深的统一入口；在 [图谱纵深视图](../../docs/graph.html?depth=wbc) 筛选时，本节点为汇总锚点。
+> **知识链汇总**：本页是相关概念/方法的统一入口；对应策展纵深见图谱 [纵深视图](../../docs/graph.html?depth=classical-control) 与 [路线页](../../roadmap/depth-classical-control.md)。
 
 ## 一句话定义
 
@@ -30,7 +30,7 @@ summary: "全身控制（WBC）纵深汇总：质心/接触约束下的层级 QP
 - **RL 策略的「执行壳」**：很多学习策略输出参考，由 WBC 保证可行与安全。
 - **loco-manip 交汇点**：行走与操作共享同一动力学与接触约束。
 
-## 本纵深覆盖什么
+## 本知识链覆盖什么
 
 | 层次 | 典型问题 | 站内入口 |
 |------|----------|----------|
@@ -40,11 +40,11 @@ summary: "全身控制（WBC）纵深汇总：质心/接触约束下的层级 QP
 | 集成 | MPC 与 WBC | [MPC-WBC Integration](../concepts/mpc-wbc-integration.md) |
 | 对比 | WBC vs 端到端 RL | [WBC vs RL](../comparisons/wbc-vs-rl.md) |
 
-## 与其他纵深的关系
+## 与其他知识链的关系
 
-- **[Locomotion](./depth-locomotion.md)**：步态与平衡是 WBC 典型应用。
-- **[WBT](./depth-wbt.md)**：跟踪策略常与 WBC/PD 层叠。
-- **[安全微调](./depth-safe-fine-tuning.md)**：CBF/CLF 常作为真机 RL 安全壳。
+- **[Locomotion](./hub-locomotion.md)**：步态与平衡是 WBC 典型应用。
+- **[WBT](./hub-wbt.md)**：跟踪策略常与 WBC/PD 层叠。
+- **[安全微调](./hub-safe-fine-tuning.md)**：CBF/CLF 常作为真机 RL 安全壳。
 
 ## 关联页面
 
@@ -55,4 +55,4 @@ summary: "全身控制（WBC）纵深汇总：质心/接触约束下的层级 QP
 ## 参考来源
 
 - 本库归纳自 [Whole-Body Control](../concepts/whole-body-control.md)、[TSID](../concepts/tsid.md)、[HQP](../concepts/hqp.md)
-- 图谱纵深定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`wbc` 命中规则）
+- 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`wbc` 命中规则）

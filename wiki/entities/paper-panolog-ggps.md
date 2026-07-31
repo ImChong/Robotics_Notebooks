@@ -14,7 +14,7 @@ related:
   - ./spark-3dgs-renderer.md
   - ./unreal-engine-5.md
   - ../overview/navigation-slam-autonomy-stack.md
-  - ../overview/depth-state-estimation.md
+  - ../overview/hub-state-estimation.md
 sources:
   - ../../sources/papers/ggps_panolog_arxiv_2607_08769.md
   - ../../sources/sites/insta360-research-team-ggps-website.md
@@ -209,7 +209,7 @@ sequenceDiagram
 - [Spark](./spark-3dgs-renderer.md) — Web 端大规模 3DGS 浏览
 - [Unreal Engine 5](./unreal-engine-5.md) — 官方预告 3DGS 插件目标引擎
 - [导航·SLAM 开源栈总览](../overview/navigation-slam-autonomy-stack.md) — 建图/定位工程栈对照
-- [状态估计纵深](../overview/depth-state-estimation.md) — 几何估计在感知链中的位置
+- [状态估计知识链](../overview/hub-state-estimation.md) — 几何估计在感知链中的位置
 
 ## 参考来源
 

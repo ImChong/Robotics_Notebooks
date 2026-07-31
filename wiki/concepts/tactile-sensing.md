@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, manipulation, contact-rich, hardware, sensing]
 status: complete
-updated: 2026-07-29
+updated: 2026-07-31
 related:
   - ../queries/contact-wrench-closed-loop.md
   - ./contact-rich-manipulation.md

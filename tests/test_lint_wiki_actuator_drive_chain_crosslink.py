@@ -91,7 +91,7 @@ def test_topic_hub_backlink_also_passes(tmp_path: Path, monkeypatch) -> None:
     page.write_text(
         "---\ntype: entity\ntags: [eda, pcb]\n---\n"
         "Altium Designer，见纵深 "
-        "[执行器驱动链](../overview/depth-actuator-drive-chain.md)。\n",
+        "[执行器驱动链](../overview/hub-actuator-drive-chain.md)。\n",
         encoding="utf-8",
     )
     results = _run([page])
@@ -116,7 +116,7 @@ def test_both_hubs_present_passes(tmp_path: Path, monkeypatch) -> None:
         "---\ntype: concept\ntags: [actuator, realtime-bus, foc]\n---\n"
         "EtherCAT 实时总线层，见 "
         "[Query](../queries/actuator-drive-chain-selection-loop.md) 与 "
-        "[纵深](../overview/depth-actuator-drive-chain.md)。\n",
+        "[纵深](../overview/hub-actuator-drive-chain.md)。\n",
         encoding="utf-8",
     )
     results = _run([page])

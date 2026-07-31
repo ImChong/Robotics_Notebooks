@@ -51,10 +51,10 @@
 - **对 wiki 的映射：**
   - 同上 — 扩展架构、感知结果与局限。
   - [Teleoperation 任务页](../../wiki/tasks/teleoperation.md) — 操作员侧可穿戴力反馈与 VR 渲染交叉引用。
-  - [触觉专题汇总](../../wiki/overview/depth-tactile.md) — 可穿戴 haptic rendering 入口。
+  - [触觉专题汇总](../../wiki/overview/hub-tactile.md) — 可穿戴 haptic rendering 入口。
 
 ## 当前提炼状态
 
 - [x] arXiv HTML §1–4 + 方法节已摘录
 - [x] wiki 映射：`wiki/entities/paper-hapmorph-pneumatic-haptic-render.md`
-- [x] 交叉更新：`wiki/tasks/teleoperation.md`、`wiki/overview/depth-tactile.md`
+- [x] 交叉更新：`wiki/tasks/teleoperation.md`、`wiki/overview/hub-tactile.md`

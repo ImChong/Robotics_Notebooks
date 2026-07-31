@@ -7,7 +7,7 @@ related:
   - ./cache-consistency-pitfalls.md
   - ./message-queue-reliability.md
   - ./distributed-systems-basics.md
-  - ../overview/depth-systems-engineering.md
+  - ../overview/hub-systems-engineering.md
 sources:
   - ../../sources/sites/systems_engineering_data_distributed_primary_refs.md
 summary: "数据库基础（索引、事务、锁、隔离级别、复制、分片）：服务机器人实验元数据、遥测与队级数据面，而非 1 kHz 运控环。"

@@ -23,7 +23,7 @@ related:
   - ./domain-randomization-guide.md
   - ../concepts/safety-filter.md
   - ../concepts/robot-safety-state-machine.md
-  - ../overview/depth-sim2real.md
+  - ../overview/hub-sim2real.md
   - ../entities/paper-notebook-anymal-parkour-robust-perceptive-locomotion.md
   - ../entities/paper-quadruped-agile-sim2real-rss2018.md
   - ../tasks/locomotion.md
@@ -148,7 +148,7 @@ flowchart TD
 - [RMA](../entities/paper-rma-rapid-motor-adaptation.md)
 - [Sim2Real Checklist](./sim2real-checklist.md) / [Gap 缩减](./sim2real-gap-reduction.md)
 - [Safety Filter](../concepts/safety-filter.md) / [Robot Safety FSM](../concepts/robot-safety-state-machine.md)
-- [Sim2Real 纵深](../overview/depth-sim2real.md)
+- [Sim2Real 知识链](../overview/hub-sim2real.md)
 - [Locomotion](../tasks/locomotion.md)
 
 ## 参考来源

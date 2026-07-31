@@ -395,14 +395,14 @@ flowchart TB
             "../methods/admittance-control.md",
             "../concepts/hybrid-force-position-control.md",
             "../methods/direct-force-feedback-control.md",
-            "../overview/depth-contact-force-control.md",
+            "../overview/hub-contact-force-control.md",
         ],
         "插拔、恒力打磨、协作推送等任务必须在 **力维度** 上可控，否则毫米级误差即可产生破坏级接触力。",
         "阻抗调节末端等效刚度阻尼；导纳以力为输入修正位置；力位混合在约束/自由方向分别闭环位置与力；直接力反馈跟踪目标接触力。",
         "配置六维力传感器与滤波；按任务选阻抗刚度；装配任务在约束方向力控、自由方向位控。",
         "力传感噪声与延迟限制带宽；高刚度环境仍需准确环境模型或柔顺策略。",
         "| 算法 | 节点 |\n|------|------|\n| 阻抗 | [impedance-control.md](../concepts/impedance-control.md) |\n| 导纳 | [admittance-control.md](../methods/admittance-control.md) |\n| 力位混合 | [hybrid-force-position-control.md](../concepts/hybrid-force-position-control.md) |\n| 直接力反馈 | [direct-force-feedback-control.md](../methods/direct-force-feedback-control.md) |",
-        "- [Impedance Control](../concepts/impedance-control.md)\n- [Topic: Contact Force Control](../overview/depth-contact-force-control.md)",
+        "- [Impedance Control](../concepts/impedance-control.md)\n- [Topic: Contact Force Control](../overview/hub-contact-force-control.md)",
     )
 
     overview_page(

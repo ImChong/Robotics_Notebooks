@@ -17,7 +17,7 @@ venue: "IEEE RA-L 2026"
 related:
   - ../concepts/state-estimation.md
   - ../formalizations/ekf.md
-  - ../overview/depth-state-estimation.md
+  - ../overview/hub-state-estimation.md
   - ./unitree.md
   - ../tasks/locomotion.md
 sources:
@@ -101,7 +101,7 @@ flowchart TB
 
 - [State Estimation（概念总览）](../concepts/state-estimation.md) — IMU 融合与足式状态估计语境
 - [EKF（形式化）](../formalizations/ekf.md) — 本文滤波后端与 TLIO 范式
-- [状态估计纵深汇总](../overview/depth-state-estimation.md) — SLAM/VIO/LIO 与纯 IMU 路线对照
+- [状态估计知识链汇总](../overview/hub-state-estimation.md) — SLAM/VIO/LIO 与纯 IMU 路线对照
 - [Unitree（平台）](./unitree.md) — Go2 自采数据集硬件语境
 - [Locomotion（任务）](../tasks/locomotion.md) — 腿式运动产生 distinct 惯性签名
 

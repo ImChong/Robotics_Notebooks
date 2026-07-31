@@ -1,39 +1,65 @@
 /*
  * 纵深视图（Depth Filters）单一事实源。
- * 由 graph.html（纵深筛选）与 detail.html / main.js（详情页"属于 X 纵深"徽标）共享，
- * 避免两处各写一份命中规则导致漂移。
+ * 仅包含策展的 21 条 roadmap/depth-*.md 纵深路线；
+ * 由 graph.html（纵深筛选）与 detail.html / main.js（详情页「所属纵深」徽标）共享。
  *
  * 命中优先级（与 graph.html nodeMatchesDepth 一致）：
  *   excludeSegments 命中 → 直接排除；ids 显式纳入 → 命中；
  *   communities 命中 → 命中；segments 命中任一 → 命中。
  *
- * 每个纵深在 wiki/overview/depth-*.md 有对应「汇总节点」（DEPTH_META.wikiPath），
+ * 每个纵深的汇总锚点是对应 roadmap/depth-*.md（DEPTH_META.wikiPath），
  * 并写入 DEPTH_FILTERS[key].ids 以保证纵深视图下始终可见。
  */
 (function (global) {
   'use strict';
 
+  /* 与首页 / roadmap/README 一致的历史顺序（21 条）。 */
+  var DEPTH_ORDER = [
+    'teleoperation',
+    'torque-motor-design',
+    'classical-control',
+    'humanoid-hardware-design',
+    'safe-control',
+    'contact-manipulation',
+    'navigation',
+    'imitation-learning',
+    'rl-locomotion',
+    'loco-manipulation',
+    'humanoid-soccer',
+    'motion-retargeting',
+    'humanoid-swarm-performance',
+    'sim2real',
+    'humanoid-boxing',
+    'bfm',
+    'perceptive-locomotion',
+    'motion-generation',
+    'vla',
+    'real2sim',
+    'wam'
+  ];
+
   var DEPTH_HUB_IDS = {
-    'motion-retargeting': 'wiki/overview/depth-motion-retargeting.md',
-    'grasp': 'wiki/overview/depth-grasp.md',
-    'tactile': 'wiki/overview/depth-tactile.md',
-    'communication': 'wiki/overview/depth-communication.md',
-    'wbc': 'wiki/overview/depth-wbc.md',
-    'locomotion': 'wiki/overview/depth-locomotion.md',
-    'vla': 'wiki/overview/depth-vla.md',
-    'learning': 'wiki/overview/depth-learning.md',
-    'sim2real': 'wiki/overview/depth-sim2real.md',
-    'state-estimation': 'wiki/overview/depth-state-estimation.md',
-    'wbt': 'wiki/overview/depth-wbt.md',
-    'cross-embodiment': 'wiki/overview/depth-cross-embodiment.md',
-    'safe-fine-tuning': 'wiki/overview/depth-safe-fine-tuning.md',
-    'vision-backbone': 'wiki/overview/depth-vision-backbone.md',
-    'data-pipeline': 'wiki/overview/depth-data-pipeline.md',
-    'physics-fidelity': 'wiki/overview/depth-physics-fidelity.md',
-    'contact-force-control': 'wiki/overview/depth-contact-force-control.md',
-    'embodied-foundation-model': 'wiki/overview/depth-embodied-foundation-model.md',
-    'embodied-eval-benchmark': 'wiki/overview/depth-embodied-eval-benchmark.md',
-    'actuator-drive-chain': 'wiki/overview/depth-actuator-drive-chain.md'
+    'teleoperation': 'roadmap/depth-teleoperation.md',
+    'torque-motor-design': 'roadmap/depth-torque-motor-design.md',
+    'classical-control': 'roadmap/depth-classical-control.md',
+    'humanoid-hardware-design': 'roadmap/depth-humanoid-hardware-design.md',
+    'safe-control': 'roadmap/depth-safe-control.md',
+    'contact-manipulation': 'roadmap/depth-contact-manipulation.md',
+    'navigation': 'roadmap/depth-navigation.md',
+    'imitation-learning': 'roadmap/depth-imitation-learning.md',
+    'rl-locomotion': 'roadmap/depth-rl-locomotion.md',
+    'loco-manipulation': 'roadmap/depth-loco-manipulation.md',
+    'humanoid-soccer': 'roadmap/depth-humanoid-soccer.md',
+    'motion-retargeting': 'roadmap/depth-motion-retargeting.md',
+    'humanoid-swarm-performance': 'roadmap/depth-humanoid-swarm-performance.md',
+    'sim2real': 'roadmap/depth-sim2real.md',
+    'humanoid-boxing': 'roadmap/depth-humanoid-boxing.md',
+    'bfm': 'roadmap/depth-bfm.md',
+    'perceptive-locomotion': 'roadmap/depth-perceptive-locomotion.md',
+    'motion-generation': 'roadmap/depth-motion-generation.md',
+    'vla': 'roadmap/depth-vla.md',
+    'real2sim': 'roadmap/depth-real2sim.md',
+    'wam': 'roadmap/depth-wam.md'
   };
 
   function hubIdSet(key) {
@@ -51,334 +77,345 @@
   }
 
   var DEPTH_FILTERS = {
+    'teleoperation': {
+      segments: new Set([
+        'teleoperation', 'teleop', 'teleoperate', 'exoskeleton', 'mocap',
+        'visionpro', 'open-television', 'homie', 'textop', 'dexumi', 'osmo'
+      ]),
+      ids: mergeIds('teleoperation')
+    },
+    'torque-motor-design': {
+      segments: new Set([
+        'torque', 'motor', 'actuator', 'foc', 'qdd', 'electromagnetic',
+        'winding', 'dynamometer', 'simplefoc', 'pyleecan', 'femm'
+      ]),
+      ids: mergeIds('torque-motor-design', [
+        'wiki/overview/hub-actuator-drive-chain.md',
+        'wiki/queries/actuator-drive-chain-selection-loop.md',
+        'wiki/entities/simplefoc.md',
+        'wiki/entities/kicad.md',
+        'wiki/entities/altium-designer.md'
+      ])
+    },
+    'classical-control': {
+      segments: new Set([
+        'wbc', 'tsid', 'hqp', 'mpc', 'zmp', 'lip', 'centroidal', 'whole',
+        'body', 'balance', 'hierarchical', 'model-predictive'
+      ]),
+      ids: mergeIds('classical-control', [
+        'wiki/overview/hub-wbc.md',
+        'wiki/concepts/whole-body-control.md',
+        'wiki/methods/model-predictive-control.md'
+      ])
+    },
+    'humanoid-hardware-design': {
+      segments: new Set([
+        'hardware', 'mechanical', 'chassis', 'ethercat', 'can', 'uart',
+        'dds', 'rs485', 'communication', 'protocol', 'bus', 'firmware',
+        'power', 'electronics', 'kicad', 'altium'
+      ]),
+      ids: mergeIds('humanoid-hardware-design', [
+        'wiki/overview/hub-communication.md',
+        'wiki/overview/hub-systems-engineering.md',
+        'wiki/overview/hub-actuator-drive-chain.md'
+      ])
+    },
+    'safe-control': {
+      segments: new Set([
+        'cbf', 'clf', 'safe', 'safety', 'barrier', 'lyapunov', 'cmdp',
+        'recovery', 'shield'
+      ]),
+      ids: mergeIds('safe-control', [
+        'wiki/overview/hub-safe-fine-tuning.md',
+        'wiki/concepts/control-barrier-function.md'
+      ])
+    },
+    'contact-manipulation': {
+      segments: new Set([
+        'grasp', 'graspnet', 'anygrasp', 'dexterous', 'manipulation',
+        'tactile', 'haptic', 'impedance', 'admittance', 'wrench',
+        'force', 'compliance', 'contact', 'pick', 'place', 'bimanual'
+      ]),
+      excludeSegments: new Set(['reinforcement']),
+      ids: mergeIds('contact-manipulation', [
+        'wiki/overview/hub-grasp.md',
+        'wiki/overview/hub-tactile.md',
+        'wiki/overview/hub-contact-force-control.md',
+        'wiki/queries/contact-wrench-closed-loop.md'
+      ])
+    },
+    'navigation': {
+      segments: new Set([
+        'navigation', 'slam', 'vio', 'lio', 'nav2', 'vln', 'localize',
+        'odometry', 'mapping', 'path', 'planning'
+      ]),
+      ids: mergeIds('navigation', [
+        'wiki/overview/hub-state-estimation.md',
+        'wiki/concepts/state-estimation.md'
+      ])
+    },
+    'imitation-learning': {
+      segments: new Set([
+        'imitation', 'behavior', 'cloning', 'dagger', 'demonstration',
+        'il', 'bc', 'act', 'diffusion-policy', 'cross-embodiment'
+      ]),
+      ids: mergeIds('imitation-learning', [
+        'wiki/overview/hub-learning.md',
+        'wiki/overview/hub-cross-embodiment.md',
+        'wiki/overview/hub-data-pipeline.md',
+        'wiki/methods/imitation-learning.md'
+      ])
+    },
+    'rl-locomotion': {
+      segments: new Set([
+        'locomotion', 'gait', 'walking', 'swing', 'stance', 'ppo', 'sac',
+        'reinforcement', 'rl', 'amp', 'deepmimic'
+      ]),
+      ids: mergeIds('rl-locomotion', [
+        'wiki/overview/hub-locomotion.md',
+        'wiki/overview/hub-learning.md',
+        'wiki/methods/reinforcement-learning.md'
+      ])
+    },
+    'loco-manipulation': {
+      segments: new Set([
+        'loco-manip', 'locomanip', 'loco_manip', 'mobile-manip',
+        'whole-body-manip'
+      ]),
+      ids: mergeIds('loco-manipulation', [
+        'wiki/tasks/loco-manipulation.md'
+      ])
+    },
+    'humanoid-soccer': {
+      segments: new Set([
+        'soccer', 'football', 'robocup', 'goalkeeper', 'striker', 'ball'
+      ]),
+      ids: mergeIds('humanoid-soccer')
+    },
     'motion-retargeting': {
       communities: new Set(['community-3']),
       segments: new Set([
-        'retargeting', 'retarget', 'gmr', 'nmr', 'reactor', 'sonic', 'exoactor',
-        'spider', 'wilor', 'mocap', 'teleoperation', 'deepmimic', 'amp',
-        'character', 'animation', 'keyframe', 'pipeline'
+        'retargeting', 'retarget', 'gmr', 'nmr', 'reactor', 'sonic',
+        'exoactor', 'spider', 'wilor', 'mocap', 'keyframe', 'animation'
       ]),
-      ids: mergeIds('motion-retargeting')
+      ids: mergeIds('motion-retargeting', [
+        'wiki/overview/hub-motion-retargeting.md',
+        'wiki/overview/hub-data-pipeline.md'
+      ])
     },
-    'grasp': {
+    'humanoid-swarm-performance': {
       segments: new Set([
-        'grasp', 'graspnet', 'anygrasp', 'dexterous', 'manipulation',
-        'pick', 'place', 'bimanual', 'curobo'
+        'swarm', 'multi-robot', 'formation', 'choreography', 'performance',
+        'coordination'
       ]),
-      ids: mergeIds('grasp')
+      ids: mergeIds('humanoid-swarm-performance')
     },
-    'tactile': {
+    'sim2real': {
       segments: new Set([
-        'tactile', 'haptic', 'impedance', 'force', 'contact', 'visuo'
+        'sim2real', 'sim-to-real', 'domain', 'randomization', 'system-id',
+        'sysid', 'residual', 'adaptation', 'physics-fidelity'
       ]),
-      excludeSegments: new Set(['reinforcement']),
-      ids: mergeIds('tactile')
+      ids: mergeIds('sim2real', [
+        'wiki/overview/hub-sim2real.md',
+        'wiki/overview/hub-physics-fidelity.md',
+        'wiki/concepts/sim2real.md',
+        'wiki/queries/simulation-physics-fidelity.md'
+      ])
     },
-    'communication': {
+    'humanoid-boxing': {
       segments: new Set([
-        'ethercat', 'can', 'uart', 'dds', 'foxglove', 'rs485', 'rs232',
-        'serial', 'communication', 'protocol', 'bus', 'protocols', 'firmware'
+        'boxing', 'combat', 'adversarial', 'sparring', 'punch'
       ]),
-      ids: mergeIds('communication')
+      ids: mergeIds('humanoid-boxing')
     },
-    'wbc': {
-      communities: new Set(['community-0']),
+    'bfm': {
       segments: new Set([
-        'wbc', 'tsid', 'hqp', 'cbf', 'clf', 'whole', 'body', 'balance', 'hierarchical'
+        'bfm', 'behavior-foundation', 'ase', 'phc', 'wbt', 'motion-tracking',
+        'shadowing'
       ]),
-      ids: mergeIds('wbc')
+      ids: mergeIds('bfm', [
+        'wiki/overview/hub-wbt.md',
+        'wiki/concepts/behavior-foundation-model.md'
+      ])
     },
-    'locomotion': {
-      communities: new Set(['community-11', 'community-9']),
+    'perceptive-locomotion': {
       segments: new Set([
-        'locomotion', 'gait', 'mpc', 'zmp', 'lip', 'walking', 'swing', 'stance', 'capture'
+        'perceptive', 'parkour', 'stair', 'terrain', 'elevation', 'obstacle',
+        'vision-locomotion'
       ]),
-      ids: mergeIds('locomotion')
+      ids: mergeIds('perceptive-locomotion', [
+        'wiki/overview/hub-vision-backbone.md'
+      ])
+    },
+    'motion-generation': {
+      segments: new Set([
+        'motion-generation', 'motion-diffusion', 'mdm', 'text-to-motion',
+        'generative-motion', 'human-motion'
+      ]),
+      ids: mergeIds('motion-generation')
     },
     'vla': {
       communities: new Set(['community-5']),
       segments: new Set([
-        'vla', 'foundation', 'octo', 'openvla', 'rt', 'pi0', 'gr00t'
+        'vla', 'vision-language-action', 'openvla', 'rt-2', 'pi0', 'gr00t',
+        'foundation-policy'
       ]),
-      ids: mergeIds('vla')
-    },
-    'learning': {
-      communities: new Set(['community-4', 'community-6']),
-      segments: new Set([
-        'imitation', 'reinforcement', 'ppo', 'sac', 'behavior', 'cloning', 'dreamer'
-      ]),
-      ids: mergeIds('learning')
-    },
-    'sim2real': {
-      segments: new Set([
-        'sim2real', 'randomization'
-      ]),
-      ids: mergeIds('sim2real')
-    },
-    'state-estimation': {
-      segments: new Set([
-        'estimation', 'ekf', 'ukf', 'slam', 'vio', 'odometry'
-      ]),
-      ids: mergeIds('state-estimation')
-    },
-    'wbt': {
-      segments: new Set([
-        'wbt', 'tracking', 'beyondmimic', 'sdamp', 'heracles', 'opentrack',
-        'maskedmimic', 'sonic', 'any2any', 'twist', 'twist2'
-      ]),
-      ids: mergeIds('wbt')
-    },
-    'cross-embodiment': {
-      segments: new Set([
-        'embodiment', 'any2any', 'transfer'
-      ]),
-      ids: mergeIds('cross-embodiment')
-    },
-    'safe-fine-tuning': {
-      communities: new Set(['community-13']),
-      segments: new Set([
-        'safe', 'safety', 'cbf', 'clf', 'barrier', 'lyapunov', 'slowrl', 'lora', 'cmdp'
-      ]),
-      ids: mergeIds('safe-fine-tuning')
-    },
-    'vision-backbone': {
-      segments: new Set([
-        'backbone', 'backbones', 'cnn', 'vit', 'resnet', 'yolo', 'detection'
-      ]),
-      ids: mergeIds('vision-backbone', new Set([
-        'wiki/concepts/visual-representation-for-policy.md',
-        'wiki/concepts/generative-vision-pretraining.md'
-      ]))
-    },
-    'data-pipeline': {
-      segments: new Set([
-        'dataset', 'datasets', 'amass', 'lafan1', 'lafan', 'omomo',
-        'phuma', 'everyday', 'retargeting', 'retarget', 'retargeter',
-        'omniretarget', 'mocap', 'freemocap'
-      ]),
-      ids: mergeIds('data-pipeline', new Set([
-        'wiki/queries/humanoid-training-data-pipeline.md',
-        'wiki/concepts/motion-data-quality.md',
-        'wiki/concepts/motion-retargeting.md',
-        'wiki/comparisons/humanoid-reference-motion-datasets.md'
-      ]))
-    },
-    'physics-fidelity': {
-      segments: new Set([
-        'dynamics', 'contact', 'friction', 'articulated', 'body',
-        'differentiable', 'simulation', 'urdf', 'floating', 'centroidal', 'fidelity'
-      ]),
-      ids: mergeIds('physics-fidelity', new Set([
-        'wiki/queries/simulation-physics-fidelity.md',
-        'wiki/concepts/physics-fidelity-sim2real-gap.md',
-        'wiki/formalizations/articulated-body-algorithms.md'
-      ]))
-    },
-    'contact-force-control': {
-      /* 与 tactile / physics-fidelity 刻意保持最小重叠：仅取「力控」专有片段
-         （impedance/admittance/wrench/force/compliance），不并入宽泛的 'contact'
-         （归 physics-fidelity）；四层闭环里未被片段命中的感知/操作页用 ids 显式纳入。 */
-      segments: new Set([
-        'impedance', 'admittance', 'wrench', 'force', 'compliance', 'forcecontrol'
-      ]),
-      ids: mergeIds('contact-force-control', new Set([
-        'wiki/queries/contact-wrench-closed-loop.md',
-        'wiki/queries/contact-rich-manipulation-guide.md',
-        'wiki/concepts/contact-force-loop-bandwidth.md',
-        'wiki/concepts/contact-estimation.md',
-        'wiki/concepts/visuo-tactile-fusion.md',
-        'wiki/concepts/contact-rich-manipulation.md'
-      ]))
-    },
-    'embodied-foundation-model': {
-      /* 五大具身模型家族选型闭环（VLM→VLN→VLA→VLX→WM）。刻意剔除过宽的 `vla`
-         片段（归 depth-vla），改用 `ids` 精选纳入执行层与世界模型层家族页，
-         与 vla / vision-backbone 保持最小重叠；`vlm`/`vln`/`vlx` 为干净片段。 */
-      segments: new Set([
-        'vlm', 'vln', 'vlx', 'worldmodel', 'worldaction'
-      ]),
-      ids: mergeIds('embodied-foundation-model', new Set([
-        'wiki/queries/embodied-fm-taxonomy-loop.md',
-        'wiki/concepts/embodied-fm-latency-generalization-tradeoff.md',
-        'wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md',
-        'wiki/concepts/behavior-foundation-model.md',
-        'wiki/methods/unified-multimodal-tokens.md',
+      ids: mergeIds('vla', [
+        'wiki/overview/hub-vla.md',
+        'wiki/overview/hub-embodied-foundation-model.md',
+        'wiki/overview/hub-vision-backbone.md',
         'wiki/methods/vla.md',
-        'wiki/tasks/vision-language-navigation.md',
+        'wiki/queries/embodied-fm-taxonomy-loop.md'
+      ])
+    },
+    'real2sim': {
+      segments: new Set([
+        'real2sim', 'real-to-sim', 'gaussian', 'splatting', 'reconstruction',
+        'digital-twin', 'nerf'
+      ]),
+      ids: mergeIds('real2sim')
+    },
+    'wam': {
+      segments: new Set([
+        'wam', 'world-action', 'world-model', 'worldmodel', 'video-prediction',
+        'imagination'
+      ]),
+      ids: mergeIds('wam', [
+        'wiki/overview/hub-embodied-foundation-model.md',
+        'wiki/overview/hub-embodied-eval-benchmark.md',
         'wiki/concepts/world-action-models.md',
-        'wiki/methods/generative-world-models.md',
-        'wiki/concepts/foundation-policy.md',
-        'wiki/concepts/behavior-tree-vla-orchestration.md',
-        'wiki/concepts/3d-spatial-vqa.md'
-      ]))
-    },
-    'embodied-eval-benchmark': {
-      /* 四层评测选型闭环（认知→预测保真度→策略成功率→sim↔real gap）。片段取
-         干净的 `bench` / `eval` / `benchmark`（仅命中评测/基准专有页），未被片段
-         命中的评测页（无连字符的 ewmbench、含 evaluation 的 gigaworld / 评测基建）
-         用 ids 显式纳入，与 sim2real / physics-fidelity 保持最小重叠。 */
-      segments: new Set([
-        'bench', 'eval', 'benchmark'
-      ]),
-      ids: mergeIds('embodied-eval-benchmark', new Set([
-        'wiki/queries/embodied-eval-benchmark-selection-loop.md',
-        'wiki/concepts/sim-vs-real-eval-gap.md',
-        'wiki/entities/robo-bench.md',
-        'wiki/entities/esi-bench.md',
-        'wiki/entities/ewmbench.md',
-        'wiki/entities/paper-gigaworld-1-policy-evaluation.md',
-        'wiki/concepts/simulation-evaluation-infrastructure.md'
-      ]))
-    },
-    'actuator-drive-chain': {
-      /* 执行器驱动链选型闭环（EDA 电路 → FOC 固件 → 执行器建模/摩擦辨识 → 实时总线）。
-         片段取干净的 `actuator` / `foc`（命中执行器建模页与 FOC 驱动页），未被片段
-         命中的四层驱动链页（EDA 工具、总线协议、电机曲线、传动等）用 ids 显式纳入；
-         与 communication（总线）/ physics-fidelity（执行器建模）保持最小重叠。 */
-      segments: new Set([
-        'actuator', 'foc'
-      ]),
-      ids: mergeIds('actuator-drive-chain', new Set([
-        'wiki/queries/actuator-drive-chain-selection-loop.md',
-        'wiki/concepts/torque-source-abstraction-gap.md',
-        'wiki/concepts/implicit-explicit-actuator-modeling.md',
-        'wiki/concepts/ethercat-protocol.md',
-        'wiki/concepts/field-oriented-control.md',
-        'wiki/concepts/joint-friction-models.md',
-        'wiki/concepts/motor-torque-current-curve.md',
-        'wiki/concepts/motor-torque-speed-curve.md',
-        'wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md',
-        'wiki/entities/kicad.md',
-        'wiki/entities/altium-designer.md',
-        'wiki/entities/simplefoc.md',
-        'wiki/entities/paper-neuralactuator-neural-actuation-modeling.md',
-        'wiki/queries/ethercat-master-optimization.md',
-        'wiki/overview/motor-drive-firmware-bus-protocols.md'
-      ]))
+        'wiki/queries/embodied-eval-benchmark-selection-loop.md'
+      ])
     }
   };
 
-  /* 纵深展示元信息（emoji + 简称 + 汇总节点 + 导读），与 graph.html chips 顺序一致。 */
+  /* 纵深展示元信息（emoji + 简称 + 路线锚点 + 导读），与 graph.html chips / 首页顺序一致。 */
   var DEPTH_META = {
+    'teleoperation': {
+      emoji: '🎮',
+      label: '遥操作',
+      wikiPath: DEPTH_HUB_IDS.teleoperation,
+      description: '人形全身与手指遥操作，采集高质量示范数据并支持实时接管。'
+    },
+    'torque-motor-design': {
+      emoji: '⚙️',
+      label: '力矩电机设计',
+      wikiPath: DEPTH_HUB_IDS['torque-motor-design'],
+      description: '从任务指标到电磁热、FOC 力矩闭环与可验收关节模组。'
+    },
+    'classical-control': {
+      emoji: '📐',
+      label: '传统控制',
+      wikiPath: DEPTH_HUB_IDS['classical-control'],
+      description: 'LIP/ZMP → Centroidal → MPC → TSID/WBC 的 model-based 主干。'
+    },
+    'humanoid-hardware-design': {
+      emoji: '🛠️',
+      label: '整机硬件',
+      wikiPath: DEPTH_HUB_IDS['humanoid-hardware-design'],
+      description: '指标预算 → 机械 → 电气 → 通信 → 整机验收的硬件交付链。'
+    },
+    'safe-control': {
+      emoji: '🛡️',
+      label: '安全控制',
+      wikiPath: DEPTH_HUB_IDS['safe-control'],
+      description: 'CLF / CBF / Safe RL：把可证明安全约束接进控制与学习环。'
+    },
+    'contact-manipulation': {
+      emoji: '🤏',
+      label: '接触操作',
+      wikiPath: DEPTH_HUB_IDS['contact-manipulation'],
+      description: '装配、插拔、双臂协同等接触丰富操作与力控闭环。'
+    },
+    'navigation': {
+      emoji: '🗺️',
+      label: '导航',
+      wikiPath: DEPTH_HUB_IDS.navigation,
+      description: 'SLAM → Nav2 → VLN → 导航 VLA：定位、规划与语义导航。'
+    },
+    'imitation-learning': {
+      emoji: '🎓',
+      label: '模仿学习',
+      wikiPath: DEPTH_HUB_IDS['imitation-learning'],
+      description: '从人类演示学习技能：BC / ACT / Diffusion Policy 与数据管线。'
+    },
+    'rl-locomotion': {
+      emoji: '🚶',
+      label: 'RL 运动控制',
+      wikiPath: DEPTH_HUB_IDS['rl-locomotion'],
+      description: '用强化学习驱动人形 locomotion 与多地形步态。'
+    },
+    'loco-manipulation': {
+      emoji: '🤖',
+      label: 'Loco-Manip',
+      wikiPath: DEPTH_HUB_IDS['loco-manipulation'],
+      description: '边走边动手的移动操作：全身协调与接触任务。'
+    },
+    'humanoid-soccer': {
+      emoji: '⚽',
+      label: '人形足球',
+      wikiPath: DEPTH_HUB_IDS['humanoid-soccer'],
+      description: '全向行走 → 感知踢球 → 多机战术的整场比赛能力。'
+    },
     'motion-retargeting': {
       emoji: '🤸',
-      label: '动作重定向 (Motion Retargeting)',
+      label: '动作重定向',
       wikiPath: DEPTH_HUB_IDS['motion-retargeting'],
-      description: '把人体/动物参考动作映射到异构机器人骨架，衔接 MoCap、IK 重定向与 WBT 训练数据。'
+      description: '把人体/动物参考动作映射到异构机器人可执行轨迹。'
     },
-    'grasp': {
-      emoji: '🤏',
-      label: '抓取 (Grasp)',
-      wikiPath: DEPTH_HUB_IDS.grasp,
-      description: '接触丰富环境下的感知抓取、灵巧操作与 loco-manip 操作子栈。'
-    },
-    'tactile': {
-      emoji: '✋',
-      label: '触觉 (Tactile)',
-      wikiPath: DEPTH_HUB_IDS.tactile,
-      description: '触觉传感、视触觉融合与阻抗/力控闭环，支撑稳定抓取与交互。'
-    },
-    'communication': {
-      emoji: '🔌',
-      label: '通信协议 (Communication)',
-      wikiPath: DEPTH_HUB_IDS.communication,
-      description: '电机驱动、EtherCAT/CAN 现场总线与 ROS 2 / LCM 中间件的底层数据链路。'
-    },
-    'wbc': {
-      emoji: '🦾',
-      label: '全身控制 (WBC)',
-      wikiPath: DEPTH_HUB_IDS.wbc,
-      description: '浮基人形上的全身任务/力分配，TSID、HQP 与 CBF 安全约束。'
-    },
-    'locomotion': {
-      emoji: '🚶',
-      label: '步态与移动 (Locomotion)',
-      wikiPath: DEPTH_HUB_IDS.locomotion,
-      description: '腿式与人形在不同地形上的步态生成、平衡与感知式移动。'
-    },
-    'vla': {
-      emoji: '👀',
-      label: '视觉-语言-动作 (VLA)',
-      wikiPath: DEPTH_HUB_IDS.vla,
-      description: '视觉-语言-动作统一建模与 BFM 身体接口，面向多任务 loco-manip。'
-    },
-    'learning': {
-      emoji: '🎓',
-      label: '模仿/强化学习 (IL/RL)',
-      wikiPath: DEPTH_HUB_IDS.learning,
-      description: '强化学习、模仿学习及 PPO/SAC 等范式的选型与机器人落地要点。'
+    'humanoid-swarm-performance': {
+      emoji: '🕺',
+      label: '人形群控展演',
+      wikiPath: DEPTH_HUB_IDS['humanoid-swarm-performance'],
+      description: '群舞同步、编队走位与群体特技的多机协同展演。'
     },
     'sim2real': {
       emoji: '🔁',
-      label: '仿真到现实 (Sim2Real)',
+      label: 'Sim2Real',
       wikiPath: DEPTH_HUB_IDS.sim2real,
-      description: '仿真策略迁移真机：域随机化、系统辨识与残差适配路线。'
+      description: '域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署。'
     },
-    'state-estimation': {
-      emoji: '📊',
-      label: '状态估计 (State Estimation)',
-      wikiPath: DEPTH_HUB_IDS['state-estimation'],
-      description: '多传感器融合、SLAM/VIO/LIO 与 Kalman/优化估计框架。'
+    'humanoid-boxing': {
+      emoji: '🥊',
+      label: '人形拳击',
+      wikiPath: DEPTH_HUB_IDS['humanoid-boxing'],
+      description: '动作跟踪 → 潜空间技能 → 对抗自博弈的擂台对打。'
     },
-    'wbt': {
-      emoji: '🕺',
-      label: '全身运动跟踪 (WBT)',
-      wikiPath: DEPTH_HUB_IDS.wbt,
-      description: '全身参考动作跟踪：重定向→训练→跨具身→真机部署的端到端流水线。'
-    },
-    'cross-embodiment': {
-      emoji: '🔀',
-      label: '跨具身迁移 (Cross-Embodiment)',
-      wikiPath: DEPTH_HUB_IDS['cross-embodiment'],
-      description: '跨机器人形态/仿真-真机的技能与动作迁移策略。'
-    },
-    'safe-fine-tuning': {
-      emoji: '🛡️',
-      label: '安全微调 (Safe Fine-Tuning)',
-      wikiPath: DEPTH_HUB_IDS['safe-fine-tuning'],
-      description: '真机在线 RL 适配：低秩残差、CBF/CLF 安全壳与 Recovery 兜底。'
-    },
-    'vision-backbone': {
-      emoji: '👁️',
-      label: '视觉骨干 (Vision Backbone)',
-      wikiPath: DEPTH_HUB_IDS['vision-backbone'],
-      description: 'CNN/ViT 骨干→检测头→策略输入的视觉表征与选型。'
-    },
-    'data-pipeline': {
-      emoji: '📦',
-      label: '训练数据 (Data Pipeline)',
-      wikiPath: DEPTH_HUB_IDS['data-pipeline'],
-      description: '原始动作捕捉/视频→质量评估→重定向→RL/IL 策略输入的端到端数据链路。'
-    },
-    'physics-fidelity': {
-      emoji: '⚙️',
-      label: '物理保真度 (Physics Fidelity)',
-      wikiPath: DEPTH_HUB_IDS['physics-fidelity'],
-      description: '几何/URDF→刚体动力学→接触/摩擦→执行器四层仿真物理保真度与各层 sim2real gap 取舍。'
-    },
-    'contact-force-control': {
-      emoji: '🤝',
-      label: '接触力控 (Contact Force Control)',
-      wikiPath: DEPTH_HUB_IDS['contact-force-control'],
-      description: '接触感知/估计→力旋量表示→阻抗/导纳/混合力位控制→接触丰富操作四层力控闭环与带宽/刚度/时延取舍。'
-    },
-    'embodied-foundation-model': {
+    'bfm': {
       emoji: '🧠',
-      label: '具身大模型 (Embodied Foundation Model)',
-      wikiPath: DEPTH_HUB_IDS['embodied-foundation-model'],
-      description: 'VLM 感知理解→VLN 空间导航→VLA 动作执行→VLX 一体化扩展→世界模型时序推演五层家族选型闭环与泛化/实时性取舍。'
+      label: 'BFM',
+      wikiPath: DEPTH_HUB_IDS.bfm,
+      description: '人形行为基础模型：一个 checkpoint 控住全身协调。'
     },
-    'embodied-eval-benchmark': {
-      emoji: '🧪',
-      label: '具身评测基准 (Embodied Eval Benchmark)',
-      wikiPath: DEPTH_HUB_IDS['embodied-eval-benchmark'],
-      description: 'MLLM 认知评测→世界模型预测保真度评测→策略任务成功率评测→sim↔real 评测 gap 校准四层评测选型闭环与可复现性/真实代表性/过程 vs 结果取舍。'
+    'perceptive-locomotion': {
+      emoji: '👁️',
+      label: '感知越障',
+      wikiPath: DEPTH_HUB_IDS['perceptive-locomotion'],
+      description: '看着地形上楼梯、跨障碍、跑酷的感知式移动。'
     },
-    'actuator-drive-chain': {
-      emoji: '⚡',
-      label: '执行器驱动链 (Actuator Drive Chain)',
-      wikiPath: DEPTH_HUB_IDS['actuator-drive-chain'],
-      description: 'EDA 电路设计→电机驱动固件 FOC→执行器建模与摩擦辨识→实时总线闭环集成四层驱动链选型闭环与标称 vs 实测、建模保真度 vs 辨识成本、总线周期 vs 闭环带宽取舍。'
+    'motion-generation': {
+      emoji: '✨',
+      label: '动作生成',
+      wikiPath: DEPTH_HUB_IDS['motion-generation'],
+      description: '文本/多模态条件的人体与人形动作生成。'
+    },
+    'vla': {
+      emoji: '👀',
+      label: 'VLA',
+      wikiPath: DEPTH_HUB_IDS.vla,
+      description: '视觉-语言-动作统一建模：听懂指令并完成操作任务。'
+    },
+    'real2sim': {
+      emoji: '🌍',
+      label: 'Real2Sim',
+      wikiPath: DEPTH_HUB_IDS.real2sim,
+      description: '把真实世界压成可训练/可评测的仿真资产与场景孪生。'
+    },
+    'wam': {
+      emoji: '🔮',
+      label: 'WAM',
+      wikiPath: DEPTH_HUB_IDS.wam,
+      description: '世界–动作模型：出动作前显式预知世界如何变化。'
     }
   };
 
@@ -390,10 +427,10 @@
     return segs;
   }
 
-  /* 判定单个节点是否命中某纵深（topicKey 为 'all' 时恒真）。 */
-  function matches(node, topicKey) {
-    if (topicKey === 'all') return true;
-    var cfg = DEPTH_FILTERS[topicKey];
+  /* 判定单个节点是否命中某纵深（depthKey 为 'all' 时恒真）。 */
+  function matches(node, depthKey) {
+    if (depthKey === 'all') return true;
+    var cfg = DEPTH_FILTERS[depthKey];
     if (!cfg) return true;
     var segs = nodeSegments(node);
     if (cfg.excludeSegments) {
@@ -407,25 +444,26 @@
     return false;
   }
 
-  /* 返回节点命中的全部纵深 key 列表（不含 'all'）。 */
+  /* 返回节点命中的全部纵深 key 列表（不含 'all'；按 DEPTH_ORDER）。 */
   function depthsForNode(node) {
     var out = [];
-    for (var key in DEPTH_FILTERS) {
-      if (matches(node, key)) out.push(key);
+    for (var i = 0; i < DEPTH_ORDER.length; i++) {
+      var key = DEPTH_ORDER[i];
+      if (DEPTH_FILTERS[key] && matches(node, key)) out.push(key);
     }
     return out;
   }
 
-  /* 某纵深的汇总节点 wiki 路径；无则 null。 */
-  function depthHubPath(topicKey) {
-    return DEPTH_HUB_IDS[topicKey] || null;
+  /* 某纵深的路线锚点路径；无则 null。 */
+  function depthHubPath(depthKey) {
+    return DEPTH_HUB_IDS[depthKey] || null;
   }
 
-  /* 节点是否为任一纵深（或指定纵深）的汇总锚点。 */
-  function isDepthHub(node, topicKey) {
+  /* 节点是否为任一纵深（或指定纵深）的路线锚点。 */
+  function isDepthHub(node, depthKey) {
     if (!node || !node.id) return false;
-    if (topicKey && topicKey !== 'all') {
-      return DEPTH_HUB_IDS[topicKey] === node.id;
+    if (depthKey && depthKey !== 'all') {
+      return DEPTH_HUB_IDS[depthKey] === node.id;
     }
     for (var k in DEPTH_HUB_IDS) {
       if (DEPTH_HUB_IDS[k] === node.id) return true;
@@ -434,6 +472,7 @@
   }
 
   global.RNDepthFilters = {
+    DEPTH_ORDER: DEPTH_ORDER,
     DEPTH_FILTERS: DEPTH_FILTERS,
     DEPTH_META: DEPTH_META,
     DEPTH_HUB_IDS: DEPTH_HUB_IDS,
@@ -442,7 +481,7 @@
     depthsForNode: depthsForNode,
     depthHubPath: depthHubPath,
     isDepthHub: isDepthHub,
-    // 兼容旧名（专题 → 纵深）
+    // 兼容旧名
     TOPIC_FILTERS: DEPTH_FILTERS,
     TOPIC_META: DEPTH_META,
     TOPIC_HUB_IDS: DEPTH_HUB_IDS,

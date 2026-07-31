@@ -8,7 +8,7 @@ related:
   - ../queries/real-time-control-middleware-guide.md
   - ../formalizations/control-loop-latency-modeling.md
   - ./control-inference-frequency-decoupling.md
-  - ../overview/depth-systems-engineering.md
+  - ../overview/hub-systems-engineering.md
 sources:
   - ../../sources/sites/dds_omg_rtos_edge_ota_safety_primary_refs.md
 summary: "实时操作系统与实时调度：硬/软实时、优先级调度、FreeRTOS 与 PREEMPT_RT Linux 在机器人分层中的位置。"

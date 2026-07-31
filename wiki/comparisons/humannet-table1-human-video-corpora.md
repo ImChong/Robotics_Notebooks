@@ -80,7 +80,7 @@ sources:
 - [VLA](../methods/vla.md)
 - [Imitation Learning](../methods/imitation-learning.md)
 - [EgoScale](../methods/egoscale.md)
-- [具身大模型分类学选型闭环（纵深枢纽）](../overview/depth-embodied-foundation-model.md) — 人类视频语料作为五层选型闭环的跨层数据底座
+- [具身大模型分类学选型闭环（知识链枢纽）](../overview/hub-embodied-foundation-model.md) — 人类视频语料作为五层选型闭环的跨层数据底座
 
 ## 推荐继续阅读
 

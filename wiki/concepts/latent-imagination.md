@@ -71,7 +71,7 @@ Actor-Critic 策略直接在这条“想象轨迹”上运行：
 - [Open Dreamer](../entities/open-dreamer.md)
 - [虚拟沙盒路线](../overview/world-models-route-03-virtual-sandbox.md)
 - [变分目标函数 (ELBO)](../formalizations/variational-objective.md)
-- [具身大模型分类学选型闭环（纵深枢纽）](../overview/depth-embodied-foundation-model.md) — 潜空间想象属五层闭环的世界模型推演层
+- [具身大模型分类学选型闭环（知识链枢纽）](../overview/hub-embodied-foundation-model.md) — 潜空间想象属五层闭环的世界模型推演层
 
 ## 参考来源
 - Hafner, D., et al. (2019). *Dream to Control: Learning Behaviors by Latent Imagination*.

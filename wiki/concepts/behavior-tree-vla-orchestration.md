@@ -130,7 +130,7 @@ BT 节点可传入：
 - [VLA 与低级控制器融合（Query）](../queries/vla-with-low-level-controller.md) — 执行层接口
 - [Action Chunking（方法）](../methods/action-chunking.md) — RESUME 阶段的 chunk 语义
 - [Harness VLA（论文实体）](../entities/paper-harness-vla.md) — agentic JSON 原语 + 记忆；与 BT 确定性编排对照
-- [具身大模型分类学选型闭环（纵深枢纽）](../overview/depth-embodied-foundation-model.md) — 行为树编排对应五层闭环的 VLX 一体化扩展层
+- [具身大模型分类学选型闭环（知识链枢纽）](../overview/hub-embodied-foundation-model.md) — 行为树编排对应五层闭环的 VLX 一体化扩展层
 
 ## 推荐继续阅读
 

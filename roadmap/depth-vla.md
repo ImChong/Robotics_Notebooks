@@ -53,7 +53,7 @@ flowchart LR
 ### 推荐读什么
 - [VLM / VLN / VLA / VLX / 世界模型分类学](../wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md)（本仓库）
 - [Foundation Policy](../wiki/concepts/foundation-policy.md)（本仓库）— VLA 的母概念页
-- [具身基础模型纵深](../wiki/overview/depth-embodied-foundation-model.md)（本仓库）
+- [具身基础模型纵深](../wiki/overview/hub-embodied-foundation-model.md)（本仓库）
 - [Query：具身大模型家族分类学闭环](../wiki/queries/embodied-fm-taxonomy-loop.md)（本仓库）
 - [LLMs-from-scratch（Raschka）](../wiki/entities/llms-from-scratch-raschka.md)（本仓库）— **可选前置**：Transformer/GPT 从零实现；配套 [YouTube 播放列表](https://www.youtube.com/playlist?list=PLTKMiZHVd_2IIEsoJrWACkIxLRdfMlw11)
 - [Karpathy Zero to Hero（YouTube）](../wiki/entities/andrej-karpathy.md)（本仓库）— **可选技术轨前置**：[10 集播放列表](https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ)（micrograd → GPT → GPT-2）；配套 [`nn-zero-to-hero`](https://github.com/karpathy/nn-zero-to-hero)
@@ -112,7 +112,7 @@ flowchart LR
 - 用 LoRA 把一个小 VLA 微调到自己的数据上，记录数据量–成功率曲线
 
 ### 推荐读什么
-- [VLA](../wiki/methods/vla.md) 与 [VLA 纵深](../wiki/overview/depth-vla.md)（本仓库）— 主线索引页
+- [VLA](../wiki/methods/vla.md) 与 [VLA 知识链汇总](../wiki/overview/hub-vla.md)（本仓库）— 主线索引页
 - [Robotics Transformer（RT 系列）](../wiki/methods/robotics-transformer-rt-series.md)、[OpenVLA](../wiki/entities/openvla.md)、[Octo](../wiki/methods/octo-model.md)（本仓库）
 - [π0](../wiki/methods/π0-policy.md) 与 [π0.7](../wiki/methods/pi07-policy.md)（本仓库）
 - [SayCan](../wiki/methods/saycan.md) 与 [DIAL 指令增强](../wiki/methods/dial-instruction-augmentation.md)（本仓库）
@@ -253,7 +253,7 @@ flowchart LR
 
 本路线基于以下原始资料的归纳：
 
-- [VLA](../wiki/methods/vla.md) 与 [VLA 纵深](../wiki/overview/depth-vla.md)
+- [VLA](../wiki/methods/vla.md) 与 [VLA 知识链汇总](../wiki/overview/hub-vla.md)
 - [VLA 开源复现全景 2025](../wiki/overview/vla-open-source-repro-landscape-2025.md)
 - "RT-2: Vision-Language-Action Models" (Brohan et al., 2023) — VLA 概念确立
 - "π0: A Vision-Language-Action Flow Model" (Black et al., 2024) — flow matching 动作专家代表

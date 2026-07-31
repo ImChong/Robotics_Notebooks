@@ -1,5 +1,3 @@
-> 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
-
 ## [2026-07-31] query | wiki/queries/hmi-papers-coverage.md — 确保 HMI 论文与项目目录 145 篇论文均有本库独立详情节点；新建 23 个 sources+entities，复用 122 个已有页；修正开源主表 Robot Parkour / ASAP 挂接
 
 - **触发：** 用户要求覆盖 [论文与项目](https://github.com/RealXiaoze/humanoid-motion-intelligence/tree/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE) 列出的论文与项目详情独立节点（不重复造页）
@@ -9,14 +7,12 @@
 - **交叉：** [`wiki/entities/humanoid-motion-intelligence.md`](wiki/entities/humanoid-motion-intelligence.md)、[`wiki/queries/hmi-opensource-projects-coverage.md`](wiki/queries/hmi-opensource-projects-coverage.md)、[`scripts/utils/community_labels.py`](scripts/utils/community_labels.py)
 - **说明：** 开源项目主表 166 项此前已覆盖；本轮补齐论文侧缺口并修正两处错误挂接
 
-## [2026-07-31] structural | 专题合并至纵深 — 图谱「专题视图」全面更名为「纵深视图」，枢纽页 topic-* → depth-*
+## [2026-07-31] structural | 纵深视图仅保留 21 条策展路线；原专题枢纽改为 hub-* 知识链
 
-- **产品概念：** 取消独立「专题」概念；图谱筛选、详情徽标、枢纽汇总页统一称「纵深 / 纵深视图」，与 `roadmap/depth-*.md` 纵深路线同一命名空间
-- **文件重命名：** [`docs/topic-filters.js`](docs/depth-filters.js) → `docs/depth-filters.js`；21 个 [`wiki/overview/topic-*.md`](wiki/overview/) → `wiki/overview/depth-*.md`；[`scripts/screenshot_graph_topic.cjs`](scripts/screenshot_graph_depth.cjs) → `screenshot_graph_depth.cjs`
-- **前端：** `docs/graph.html` / `docs/main.js` / `docs/detail.html` / `docs/roadmap.html` — UI 文案「专题视图 / 所属专题 / 专题汇总」→「纵深视图 / 所属纵深 / 纵深汇总」；URL 主参数 `?depth=`，兼容旧 `?topic=`；`RNDepthFilters` 为主 API，保留 `RNTopicFilters` 别名
-- **别名：** [`schema/page-aliases.json`](schema/page-aliases.json) 登记 `wiki-overview-topic-*` → `wiki-overview-depth-*`，避免旧详情 URL 断链
-- **联动：** lint 枢纽常量、交叉回链测试、schema 目录说明、v31 checklist、站内 wiki 回链文案同步；历史 archive checklist / `log.md` 旧条目 / 外部文章标题中的「专题」保留为史料
-- **涉及路径：** `wiki/overview/depth-*.md`、`docs/depth-filters.js`、`docs/graph.html`、`docs/main.js`
+- **产品概念：** 「纵深 / 纵深视图」**只**对应 [`roadmap/depth-*.md`](roadmap/) 策展的 21 条路线；取消独立「专题」概念
+- **图谱：** [`docs/depth-filters.js`](docs/depth-filters.js) 与 `graph.html` chips 仅含 21 条；锚点为 `roadmap/depth-*.md`；详情页「所属纵深」同步
+- **原专题枢纽：** `wiki/overview/topic-*` → `wiki/overview/hub-*`（称「知识链汇总」，不再叫纵深）；旧 `topic-*` / 误改的 `overview/depth-*` 详情 ID 写入 [`schema/page-aliases.json`](schema/page-aliases.json)
+- **涉及路径：** `docs/depth-filters.js`、`docs/graph.html`、`wiki/overview/hub-*.md`、`roadmap/depth-*.md`
 
 ## [2026-07-30] structural | schema/canonical-facts.json — V31 P2 事实库扩展 250 → 260 条，补 10 条感知栈选型矛盾检测规则
 
@@ -168,7 +164,7 @@
 - **开源核查（步骤 2.5）：** **确认未开源** — arXiv Code 区无入口；GitHub / DeepCybo 无官方仓；源码运行时序图仍 **不适用**
 - **既有交叉（未改内容）：** [`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/tasks/loco-manipulation.md`](wiki/tasks/loco-manipulation.md)、[`wiki/entities/unitree-g1.md`](wiki/entities/unitree-g1.md)、[`wiki/entities/isaac-gr00t.md`](wiki/entities/isaac-gr00t.md)、[`wiki/entities/paper-hrl-stack-34-gr00t_n1.md`](wiki/entities/paper-hrl-stack-34-gr00t_n1.md)、[`wiki/entities/paper-loco-manip-161-057-being-0.md`](wiki/entities/paper-loco-manip-161-057-being-0.md)
 
-## [2026-07-29] ingest | sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md + sites/embodied-data-pyramid + repos/awesome-embodied-data-pyramid — 具身数据金字塔综述（arXiv:2607.24744）入库：五层数据生态 × 六维属性 × 基础模型数据配方；升格 wiki/entities/paper-data-pyramid-embodied-manipulation.md；交叉 OXE / GR00T N1 / scaling-laws / WAM / vla / depth-vla
+## [2026-07-29] ingest | sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md + sites/embodied-data-pyramid + repos/awesome-embodied-data-pyramid — 具身数据金字塔综述（arXiv:2607.24744）入库：五层数据生态 × 六维属性 × 基础模型数据配方；升格 wiki/entities/paper-data-pyramid-embodied-manipulation.md；交叉 OXE / GR00T N1 / scaling-laws / WAM / vla / hub-vla
 
 - **归档：** [`sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md`](sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md)、[`sources/sites/embodied-data-pyramid.md`](sources/sites/embodied-data-pyramid.md)、[`sources/repos/awesome-embodied-data-pyramid.md`](sources/repos/awesome-embodied-data-pyramid.md)；索引 [`sources/README.md`](sources/README.md)
 - **开源核查（2026-07-29，步骤 2.5）：** **资源型开源**——Awesome 策展清单 `worldbench/awesome-embodied-data-pyramid` + 项目页五层数据集检索表；综述无训练/推理代码（源码运行时序图不适用，已在实体页注明）
@@ -1931,7 +1927,7 @@
 
 ## [2026-07-20] structural | wiki 链接 Top-10 论文节点新增「源码运行时序图」模块 — beyondmimic（whole_body_tracking）/ paper-hrl-stack-03-omniretarget（holosoma）/ paper-twist2（amazon-far/TWIST2）/ deepmimic（xbpeng/DeepMimic）四页各加 mermaid sequenceDiagram；其余 5 个 Top-10 论文节点（BFM / MotionWAM / LEGS / SD-AMP / PHP）官方源码未发布，不适用；**SONIC 已开源（NVlabs/GR00T-WholeBodyControl），时序图见同日后续 structural 条目**
 
-## [2026-07-20] ingest | sources/papers/actuator_constrained_rl_high_speed_quadruped_arxiv_2312_17507.md — 执行器约束 RL 高速四足 MOR；wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md；交叉 sim2real / locomotion / APT-RL / depth-sim2real
+## [2026-07-20] ingest | sources/papers/actuator_constrained_rl_high_speed_quadruped_arxiv_2312_17507.md — 执行器约束 RL 高速四足 MOR；wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md；交叉 sim2real / locomotion / APT-RL / hub-sim2real
 
 ## [2026-07-20] ingest | sources/sites/chingmu.md — 青瞳视觉光学动捕全栈与 MotionDecode 数据计划；wiki/entities/chingmu.md；交叉更新 notable-commercial-robot-platforms
 
