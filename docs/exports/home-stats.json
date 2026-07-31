@@ -1,13 +1,83 @@
 {
   "generated_at": "2026-07-31",
-  "node_count": 2055,
-  "edge_count": 18426,
+  "node_count": 2056,
+  "edge_count": 18443,
   "coverage": {
-    "covered": 2005,
-    "total": 2031,
+    "covered": 2006,
+    "total": 2032,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-humoslope-physics-guided-slope-locomotion.md",
+      "detail_id": "entity-paper-humoslope-physics-guided-slope-locomotion",
+      "label": "HumoSlope：极端坡面物理引导生物力学步态适应",
+      "type": "entity",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/tasks/humanoid-locomotion.md",
+      "detail_id": "wiki-tasks-humanoid-locomotion",
+      "label": "Humanoid Locomotion (人形机器人移动)",
+      "type": "task",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/lip-zmp.md",
+      "detail_id": "wiki-concepts-lip-zmp",
+      "label": "LIP / ZMP",
+      "type": "concept",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/concepts/terrain-adaptation.md",
+      "detail_id": "wiki-concepts-terrain-adaptation",
+      "label": "Terrain Adaptation（地形适应）",
+      "type": "concept",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/concepts/privileged-training.md",
+      "detail_id": "wiki-concepts-privileged-training",
+      "label": "Privileged Training（特权信息训练）",
+      "type": "concept",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/unitree-g1.md",
+      "detail_id": "entity-unitree-g1",
+      "label": "Unitree G1 (人形机器人)",
+      "type": "entity",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/unitree-rl-lab.md",
+      "detail_id": "entity-unitree-rl-lab",
+      "label": "unitree_rl_lab",
+      "type": "entity",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/paper-diffsheg.md",
       "detail_id": "entity-paper-diffsheg",
@@ -142,94 +212,22 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/overview/hub-wbt.md",
-      "detail_id": "wiki-overview-hub-wbt",
-      "label": "全身运动跟踪 WBT（知识链汇总）",
-      "type": "overview",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/gemini-robotics.md",
-      "detail_id": "entity-gemini-robotics",
-      "label": "Gemini Robotics",
-      "type": "entity",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/queries/hmi-papers-coverage.md",
-      "detail_id": "wiki-queries-hmi-papers-coverage",
-      "label": "HMI 论文总索引 · 本库导读",
-      "type": "query",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/humanoid-motion-intelligence.md",
-      "detail_id": "entity-humanoid-motion-intelligence",
-      "label": "Humanoid Motion Intelligence（人形机器人运动智能知识库）",
-      "type": "entity",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "开源项目本库导读（HMI Open-Source Projects Guide） 社区"
-    },
-    {
-      "path": "wiki/queries/hmi-opensource-projects-coverage.md",
-      "detail_id": "wiki-queries-hmi-opensource-projects-coverage",
-      "label": "HMI 开源项目主表 · 本库导读",
-      "type": "query",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "开源项目本库导读（HMI Open-Source Projects Guide） 社区"
-    },
-    {
-      "path": "roadmap/depth-bfm.md",
-      "detail_id": "roadmap-depth-bfm",
-      "label": "路线（纵深）：如果目标是 BFM（人形行为基础模型）",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-classical-control.md",
-      "detail_id": "roadmap-depth-classical-control",
-      "label": "路线（纵深）：如果目标是传统模型控制（LIP/ZMP → MPC → WBC）",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-diffsheg.md",
-    "detail_id": "entity-paper-diffsheg",
-    "label": "DiffSHEG（语音驱动整体 3D 表情与手势扩散生成）",
+    "path": "wiki/entities/paper-humoslope-physics-guided-slope-locomotion.md",
+    "detail_id": "entity-paper-humoslope-physics-guided-slope-locomotion",
+    "label": "HumoSlope：极端坡面物理引导生物力学步态适应",
     "type": "entity",
     "recency": "2026-07-31",
     "source": "log.md",
     "action": "maintained",
-    "has_repo": true,
-    "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 194
+      "size": 195
     },
     {
       "label": "视觉-语言-动作",
@@ -257,7 +255,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 401,
+      "degree": 402,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -296,7 +294,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 287
+      "degree": 288
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
