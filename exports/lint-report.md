@@ -2,7 +2,7 @@
 
 ## [2026-07-31] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **98** 条信息型预警）：
+共发现 **0** 个问题（另含 **100** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -145,25 +145,26 @@
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
+### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（2 个）
+- wiki/entities/paper-daily-omni.md（含绝对化措辞「SOTA」，updated=2026-07-30；同主题更新页 wiki/entities/paper-softvtbench.md updated=2026-07-31）
+- wiki/entities/paper-data-pyramid-embodied-manipulation.md（含绝对化措辞「最新」，updated=2026-07-30；同主题更新页 wiki/entities/paper-softvtbench.md updated=2026-07-31）
+
+### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」纵深枢纽（信息型，不阻塞 CI）（0 个）
+### 💡 接触/力控/操作概念页缺回链「接触力旋量闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 接触/力控/操作概念页缺回链「接触力旋量闭环」纵深枢纽（信息型，不阻塞 CI）（0 个）
+### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」纵深枢纽（信息型，不阻塞 CI）（0 个）
+### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」纵深枢纽（信息型，不阻塞 CI）（0 个）
+### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」纵深枢纽（信息型，不阻塞 CI）（0 个）
-- 无
-
-### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」纵深枢纽（信息型，不阻塞 CI）（72 个）
+### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（72 个）
 - wiki/comparisons/anygrasp-vs-graspnet.md
 - wiki/comparisons/cnn-vs-vit-backbones.md
 - wiki/comparisons/kalman-filter-vs-optimization-based-estimation.md
