@@ -4218,20 +4218,22 @@
     link.hidden = false;
   }
 
-  // 路线徽标：复用 graph.html 的纵深命中规则（depth-filters.js），rowId 可复用于路线页等。
-  function renderMetaDepthBadges(currentPath, rowId) {
+  // 路线徽标：复用 graph.html 的命中规则（depth-filters.js）。
+  // 详情页标签「所属路线」；路线页元信息标签「路线视图」——功能相同，均跳转 graph.html?depth=。
+  function renderMetaDepthBadges(currentPath, rowId, labelText) {
     var depthRowId = rowId || 'detailMetaDepth';
+    var rowLabel = labelText || '所属路线';
     var TF = window.RNDepthFilters;
     if (!TF || !currentPath) {
-      renderDetailMetaItemRow(depthRowId, '所属路线', '');
+      renderDetailMetaItemRow(depthRowId, rowLabel, '');
       return Promise.resolve();
     }
 
     return fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
       var node = (gd.nodes || []).find(function (n) { return n.id === currentPath; });
-      if (!node) { renderDetailMetaItemRow(depthRowId, '所属路线', ''); return; }
+      if (!node) { renderDetailMetaItemRow(depthRowId, rowLabel, ''); return; }
       var topics = TF.depthsForNode({ id: node.id, community: node.community });
-      if (!topics.length) { renderDetailMetaItemRow(depthRowId, '所属路线', ''); return; }
+      if (!topics.length) { renderDetailMetaItemRow(depthRowId, rowLabel, ''); return; }
 
       // ⚡ Bolt Optimization: Replace .map().join('') with string concatenation in for loop
       // Expected impact: Eliminates closure creation and array allocation during layout generation.
@@ -4244,8 +4246,8 @@
           '<span>' + meta.emoji + '</span><span>' + escapeHtml(meta.label) + '</span></a>';
       }
 
-      renderDetailMetaItemRow(depthRowId, '所属路线', html);
-    }).catch(function () { renderDetailMetaItemRow(depthRowId, '所属路线', ''); });
+      renderDetailMetaItemRow(depthRowId, rowLabel, html);
+    }).catch(function () { renderDetailMetaItemRow(depthRowId, rowLabel, ''); });
   }
 
   function renderDetailTopicBadges(detailPage) {
@@ -4384,14 +4386,14 @@
     }
 
     renderDetailMetaItemRow('roadmapMetaCommunity', '所属社区', '');
-    renderDetailMetaItemRow('roadmapMetaDepth', '所属路线', '');
+    renderDetailMetaItemRow('roadmapMetaDepth', '路线视图', '');
     renderDetailMetaItemRow('roadmapMetaInstitution', '所属机构', '');
     if (metaEl) removeLoadingState(metaEl);
 
     var graphPath = detail.path || (roadmapPage && roadmapPage.path) || '';
     return Promise.all([
       renderMetaCommunityBadge(graphPath, 'roadmapMetaCommunity'),
-      renderMetaDepthBadges(graphPath, 'roadmapMetaDepth'),
+      renderMetaDepthBadges(graphPath, 'roadmapMetaDepth', '路线视图'),
       renderMetaInstitutionBadges(graphPath, 'roadmapMetaInstitution')
     ]);
   }
