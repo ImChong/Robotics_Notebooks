@@ -3408,14 +3408,21 @@
           if (areFiltersLocked()) return;
           const dim = cb.getAttribute('data-dimension-filter');
           if (!dim || !filtersByMode[dim]) return;
-          // 先写入集合，再切维度/重渲染，避免 refresh 时勾选状态丢失
+          // 三选一：先清其它维度，再写入当前维度，最后切着色（避免重渲染丢掉本次勾选）
+          clearOtherDimensionFilters(dim);
           if (cb.checked) filtersByMode[dim].add(cb.value);
           else filtersByMode[dim].delete(cb.value);
           if (colorMode !== dim) {
-            setColorMode(dim, { preserveFilters: true });
+            setColorMode(dim, { keepSelection: true });
             return;
           }
-          updateDimensionFilterSummary(dim);
+          updateDimensionFilterSummary('type');
+          updateDimensionFilterSummary('community');
+          updateDimensionFilterSummary('health');
+          // 同步其它维度列表的勾选态（已清空）
+          if (dim !== 'type') renderDimensionFilterList('type');
+          if (dim !== 'community') renderDimensionFilterList('community');
+          if (dim !== 'health') renderDimensionFilterList('health');
           applyFilters();
           updateFilterCount();
         });
@@ -3455,23 +3462,36 @@
       }
     }
 
+    /** 类型 / 社区 / 健康度三选一：清空除 keepMode 以外的维度勾选 */
+    function clearOtherDimensionFilters(keepMode) {
+      Object.keys(filtersByMode).forEach((mode) => {
+        if (mode !== keepMode) filtersByMode[mode].clear();
+      });
+    }
+
+    function closeOtherDimensionSections(keepMode) {
+      Object.keys(FILTER_DIMENSION_META).forEach((mode) => {
+        if (mode === keepMode) return;
+        const section = FILTER_DIMENSION_META[mode].section;
+        if (section && section.open) section.open = false;
+      });
+    }
+
     function setColorMode(mode, opts) {
       if (areFiltersLocked()) return;
       if (!FILTER_DIMENSION_META[mode]) return;
-      const preserveFilters = !!(opts && opts.preserveFilters);
+      const keepSelection = !!(opts && opts.keepSelection);
       if (colorMode === mode) {
+        clearOtherDimensionFilters(mode);
         syncColorModeSectionHighlight();
         if (filterSubtitle) filterSubtitle.textContent = '当前' + getColorModeLabel(colorMode) + '着色与筛选';
         return;
       }
       colorMode = mode;
       syncCommunityLabelsCheckbox();
-      if (!preserveFilters) {
-        // 切换着色维度时清空各维度勾选（与旧 tab 行为一致）；勾选触发的切换保留各维度状态
-        filtersByMode.type.clear();
-        filtersByMode.community.clear();
-        filtersByMode.health.clear();
-      }
+      // 三选一：始终清空其它维度；默认连当前维度一并清空（展开切换），勾选触发时 keepSelection 保留当前维度
+      clearOtherDimensionFilters(mode);
+      if (!keepSelection) filtersByMode[mode].clear();
       focusedCommunityId = null;
       focusedType = null;
       focusedHealth = null;
@@ -3481,13 +3501,26 @@
       if (isMagneticForCurrentView()) updateForces();
     }
 
-    // 展开某一维度折叠区时切换着色维度（不清空其它维度已选，便于对照数量）
+    // 展开某一维度折叠区时切换着色维度，并收起其它维度（三选一）
     ['type', 'community', 'health'].forEach((mode) => {
       const section = FILTER_DIMENSION_META[mode].section;
       if (!section) return;
       section.addEventListener('toggle', () => {
         if (!section.open || areFiltersLocked()) return;
-        if (colorMode !== mode) setColorMode(mode, { preserveFilters: true });
+        closeOtherDimensionSections(mode);
+        if (colorMode !== mode) setColorMode(mode);
+        else {
+          // 同维度再次展开：仍清掉其它维度残留勾选并刷新摘要
+          clearOtherDimensionFilters(mode);
+          updateDimensionFilterSummary('type');
+          updateDimensionFilterSummary('community');
+          updateDimensionFilterSummary('health');
+          renderDimensionFilterList('type');
+          renderDimensionFilterList('community');
+          renderDimensionFilterList('health');
+          applyFilters();
+          updateFilterCount();
+        }
       });
     });
 
@@ -4069,10 +4102,8 @@
 
     /* ── checkbox 筛选 ── */
     function updateFilterCount() {
-      const dimensionCount = filtersByMode.type.size
-        + filtersByMode.community.size
-        + filtersByMode.health.size;
-      const count = dimensionCount + activeInstitutions.size
+      // 类型/社区/健康度三选一，只计当前着色维度勾选数
+      const count = activeFilterSet().size + activeInstitutions.size
         + (topDegreeIds ? 1 : 0)
         + (currentDepth && currentDepth !== 'all' ? 1 : 0);
       const countEl = document.getElementById('filter-count');
@@ -5229,8 +5260,11 @@
     const communityParam = new URLSearchParams(location.search).get('community');
     if (communityParam && communityMetaMap.has(communityParam)) {
       focusedCommunityId = communityParam;
-      if (colorMode !== 'community') setColorMode('community', { preserveFilters: true });
-      if (filterCommunitySection) filterCommunitySection.open = true;
+      if (colorMode !== 'community') setColorMode('community');
+      if (filterCommunitySection) {
+        closeOtherDimensionSections('community');
+        filterCommunitySection.open = true;
+      }
       renderLegend();
       renderFilterPanel();
       applyFilters();

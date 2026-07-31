@@ -121,63 +121,102 @@ function copyToArtifacts(src, name) {
       throw new Error('Community collapse header missing selected count: ' + communitySummary);
     }
 
-    // Also select 1 type, verify type header count while collapsed
+    // 3) 三选一：切换到类型并勾选 1 项后，社区数量应被清空回「全部」
     await page.evaluate(() => {
       const sec = document.getElementById('filter-type-section');
       if (sec) sec.open = true;
     });
     await new Promise((r) => setTimeout(r, 300));
-    await page.evaluate(() => {
+    const exclusiveState = await page.evaluate(() => {
       const list = document.getElementById('filter-type-list');
       const cb = list && list.querySelector('input[type="checkbox"]');
       if (cb && !cb.checked) {
         cb.checked = true;
         cb.dispatchEvent(new Event('change', { bubbles: true }));
       }
+      return {
+        typeOpen: !!(document.getElementById('filter-type-section') || {}).open,
+        communityOpen: !!(document.getElementById('filter-community-section') || {}).open,
+        healthOpen: !!(document.getElementById('filter-health-section') || {}).open,
+        type: (document.getElementById('filter-type-current') || {}).textContent || '',
+        community: (document.getElementById('filter-community-current') || {}).textContent || '',
+        health: (document.getElementById('filter-health-current') || {}).textContent || '',
+        badge: (document.getElementById('filter-count') || {}).textContent || '',
+        subtitle: (document.getElementById('filter-subtitle') || {}).textContent || '',
+      };
+    });
+    console.log('After switch to type:', exclusiveState);
+    if (!exclusiveState.type.includes('1')) {
+      throw new Error('Type collapse header missing count: ' + exclusiveState.type);
+    }
+    if (!exclusiveState.community.includes('全部')) {
+      throw new Error('Community should clear on exclusive switch: ' + exclusiveState.community);
+    }
+    if (!exclusiveState.health.includes('全部')) {
+      throw new Error('Health should remain 全部: ' + exclusiveState.health);
+    }
+    if (exclusiveState.communityOpen || exclusiveState.healthOpen) {
+      throw new Error('Other dimension sections should auto-collapse');
+    }
+    if (!exclusiveState.subtitle.includes('按类型')) {
+      throw new Error('Subtitle should switch to 按类型: ' + exclusiveState.subtitle);
+    }
+    if (exclusiveState.badge !== '1') {
+      throw new Error('Filter badge should be 1 after exclusive switch, got: ' + exclusiveState.badge);
+    }
+
+    await page.evaluate(() => {
       const sec = document.getElementById('filter-type-section');
       if (sec) sec.open = false;
-      const community = document.getElementById('filter-community-section');
-      if (community) community.open = false;
     });
-    await new Promise((r) => setTimeout(r, 400));
-
-    const summaries = await page.evaluate(() => ({
-      type: (document.getElementById('filter-type-current') || {}).textContent || '',
-      community: (document.getElementById('filter-community-current') || {}).textContent || '',
-      health: (document.getElementById('filter-health-current') || {}).textContent || '',
-      badge: (document.getElementById('filter-count') || {}).textContent || '',
-      badgeDisplay: document.getElementById('filter-count')
-        ? getComputedStyle(document.getElementById('filter-count')).display
-        : '',
-    }));
-    console.log('Summaries:', summaries);
-    if (!summaries.type.includes('1')) {
-      throw new Error('Type collapse header missing count: ' + summaries.type);
-    }
-    if (!summaries.community.includes('2')) {
-      throw new Error('Community collapse header lost count: ' + summaries.community);
-    }
-    if (!summaries.health.includes('全部')) {
-      throw new Error('Health should remain 全部: ' + summaries.health);
-    }
+    await new Promise((r) => setTimeout(r, 200));
 
     const countedOut = path.join(OUT_DIR, 'graph-filter-collapse-counts.png');
     await page.screenshot({ path: countedOut, fullPage: false });
     copyToArtifacts(countedOut, 'graph-filter-collapse-counts.png');
     console.log('Saved:', countedOut);
 
-    // 3) Expand community with selections visible
+    // 4) 再切回社区并勾选 2 项，类型应清空
     await page.evaluate(() => {
       const sec = document.getElementById('filter-community-section');
       if (sec) sec.open = true;
     });
     await new Promise((r) => setTimeout(r, 300));
+    await page.evaluate(() => {
+      const list = document.getElementById('filter-community-list');
+      const boxes = Array.from((list && list.querySelectorAll('input[type="checkbox"]')) || []).slice(0, 2);
+      boxes.forEach((cb) => {
+        if (!cb.checked) {
+          cb.checked = true;
+          cb.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      });
+    });
+    await new Promise((r) => setTimeout(r, 400));
+    const backToCommunity = await page.evaluate(() => ({
+      type: (document.getElementById('filter-type-current') || {}).textContent || '',
+      community: (document.getElementById('filter-community-current') || {}).textContent || '',
+      typeOpen: !!(document.getElementById('filter-type-section') || {}).open,
+      communityOpen: !!(document.getElementById('filter-community-section') || {}).open,
+      badge: (document.getElementById('filter-count') || {}).textContent || '',
+    }));
+    console.log('Back to community:', backToCommunity);
+    if (!backToCommunity.community.includes('2')) {
+      throw new Error('Community count missing after reselect: ' + backToCommunity.community);
+    }
+    if (!backToCommunity.type.includes('全部')) {
+      throw new Error('Type should clear when switching back to community: ' + backToCommunity.type);
+    }
+    if (backToCommunity.typeOpen) {
+      throw new Error('Type section should be closed while community is active');
+    }
+
     const openOut = path.join(OUT_DIR, 'graph-filter-collapse-community-open.png');
     await page.screenshot({ path: openOut, fullPage: false });
     copyToArtifacts(openOut, 'graph-filter-collapse-community-open.png');
     console.log('Saved:', openOut);
 
-    console.log('OK: filter collapse + counts verified');
+    console.log('OK: filter collapse + exclusive counts verified');
   } finally {
     await browser.close();
   }
