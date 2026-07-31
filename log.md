@@ -1,3 +1,10 @@
+## [2026-07-31] fix | docs/graph-3d.js — 3D 社区漂浮标签按画布分辨率连续缩放，避免过小/过大
+
+- **问题：** 旧逻辑在移动端/粗指针上字号×0.55 且相机 zoom 再×0.55，手机/平板有效字号可落到 ~3–5px；桌面端字号固定 8–16px，900–2560 宽度几乎不变，大屏相对过小
+- **修复：** 以画布短边相对 ~800px 做 √ 连续缩放（约 0.78–1.28），绝对字号钳制 7–22px；zoom 钳制随短边略调；窄屏仅收紧内边距
+- **验证：** [`scripts/verify_graph_community_labels_3d_responsive.cjs`](scripts/verify_graph_community_labels_3d_responsive.cjs)
+- **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md)
+
 ## [2026-07-31] ingest | sources/papers/humoslope_arxiv_2607_07830.md — HumoSlope（arXiv:2607.07830）NTU/A*STAR 两阶段坡面 locomotion；升格 wiki/entities/paper-humoslope-physics-guided-slope-locomotion.md；交叉更新 wiki/tasks/humanoid-locomotion.md、wiki/concepts/lip-zmp.md、wiki/concepts/terrain-adaptation.md、wiki/concepts/privileged-training.md、wiki/entities/unitree-g1.md、wiki/entities/unitree-rl-lab.md；注册 schema/institutions.json astar
 
 ## [2026-07-31] structural | docs/index.html + docs/main.js — 「项目查询 / 知识图谱」入口卡跳转目标模块顺时针描边
