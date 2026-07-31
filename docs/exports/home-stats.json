@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-07-31",
-  "node_count": 2054,
-  "edge_count": 18417,
+  "node_count": 2055,
+  "edge_count": 18426,
   "coverage": {
-    "covered": 2004,
-    "total": 2030,
+    "covered": 2005,
+    "total": 2031,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-diffsheg.md",
+      "detail_id": "entity-paper-diffsheg",
+      "label": "DiffSHEG（语音驱动整体 3D 表情与手势扩散生成）",
+      "type": "entity",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/methods/diffusion-motion-generation.md",
+      "detail_id": "wiki-methods-diffusion-motion-generation",
+      "label": "Diffusion-based Motion Generation (基于扩散模型的运动生成)",
+      "type": "method",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/concepts/diffusion-model.md",
+      "detail_id": "wiki-concepts-diffusion-model",
+      "label": "Diffusion Model（扩散模型）",
+      "type": "concept",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-semantic-co-speech-gesture-synthesis-and-real-ti.md",
+      "detail_id": "entity-paper-notebook-semantic-co-speech-gesture-synthesis-and-real-ti",
+      "label": "Semantic Co-Speech Gesture Synthesis and Real-Time Control for Humanoid Robots",
+      "type": "entity",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained"
+    },
     {
       "path": "wiki/entities/paper-notebook-sampling-based-system-identification-with-active.md",
       "detail_id": "entity-paper-notebook-sampling-based-system-identification-with-active",
@@ -173,56 +213,18 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "roadmap/depth-contact-manipulation.md",
-      "detail_id": "roadmap-depth-contact-manipulation",
-      "label": "路线（纵深）：如果目标是接触丰富的操作任务",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-humanoid-boxing.md",
-      "detail_id": "roadmap-depth-humanoid-boxing",
-      "label": "路线（纵深）：如果目标是人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "roadmap/depth-humanoid-hardware-design.md",
-      "detail_id": "roadmap-depth-humanoid-hardware-design",
-      "label": "路线（纵深）：如果目标是人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "roadmap/depth-humanoid-soccer.md",
-      "detail_id": "roadmap-depth-humanoid-soccer",
-      "label": "路线（纵深）：如果目标是人形足球（全向行走 → 感知踢球 → 多机战术）",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-notebook-sampling-based-system-identification-with-active.md",
-    "detail_id": "entity-paper-notebook-sampling-based-system-identification-with-active",
-    "label": "SPI-Active（采样式 SysID + 主动探索）",
+    "path": "wiki/entities/paper-diffsheg.md",
+    "detail_id": "entity-paper-diffsheg",
+    "label": "DiffSHEG（语音驱动整体 3D 表情与手势扩散生成）",
     "type": "entity",
     "recency": "2026-07-31",
     "source": "log.md",
     "action": "maintained",
     "has_repo": true,
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "community_label": "模仿学习（Imitation Learning, IL） 社区"
   },
   "top_communities": [
     {
@@ -235,7 +237,7 @@
     },
     {
       "label": "移动操作",
-      "size": 157
+      "size": 156
     },
     {
       "label": "操作",
@@ -243,7 +245,7 @@
     },
     {
       "label": "模仿学习",
-      "size": 139
+      "size": 140
     },
     {
       "label": "人形论文深读笔记",
