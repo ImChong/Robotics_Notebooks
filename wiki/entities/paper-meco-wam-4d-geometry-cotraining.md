@@ -114,6 +114,16 @@ flowchart TB
 | **消融** | 去 read-mask / 去 distillation / 去 4D expert 均 **降点** |
 | **机构** | Midea AI Research、同济大学；[meco-wam.github.io](https://meco-wam.github.io/) |
 
+## 结论
+
+**MECo-WAM 的取舍很干净：几何监督全部留在训练期，部署推理图一个组件都不加——用训练时的算力换推理时的零额外延迟。**
+
+- 真正起作用的是三件套的组合：冻结 **VGGT** 提供关系监督、**衰减 4D read-mask** 让 action 路径从「早期可读当前帧几何」逐步撤依赖、**动作感知时序几何蒸馏** 加权与动作相关的 token 对；消融显示三者去掉任一都降点。
+- 关键指标是「不增延迟前提下的成功率」：LIBERO 平均 **98.2%**、RoboTwin 2.0 平均 **92.6%**，且 action-chunk 推理延迟与 base WAM 持平。
+- 因果性是这条路线的隐患，作者用 **asymmetric expert visibility** 把未来几何主要限制在 loss 侧，防止 action 生成走非因果捷径。
+- 主要风险来自教师本身：VGGT 冻结，其几何错误会被直接蒸馏进 policy；极接触丰富的真机任务增益仍待更多验证，与触觉 WM 也尚未融合。
+- 适用边界：需要在部署期真的输出 depth/pointmap 的场景用不上这条路线，那属于 [RynnWorld-4D](./paper-rynnworld-4d-rgb-depth-flow.md) 式显式 4D 生成的一端。
+
 ## 与其他工作对比
 
 | 工作 | 关系 |

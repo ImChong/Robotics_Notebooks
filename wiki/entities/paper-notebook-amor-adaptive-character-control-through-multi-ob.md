@@ -46,6 +46,14 @@ AMOR 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是 AMOR 的占位索引节点：能被引用的只有归档事实（13_Physics-Based_Animation、待深读、arXiv 入口），技术结论一概尚未成立。**
+
+- 可依赖的信息限于分类、计划文件夹路径与 <https://arxiv.org/abs/2505.23708>；机制与指标待深读笔记补齐。
+- 适用边界：用于按分类检索与保持图谱连边完整，**不可**作为该论文结论的引用来源。
+- 升格条件：PROGRESS.md 中该条完成深读后，本页应链向笔记站并把占位式「一句话定义」替换为实质归纳。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)

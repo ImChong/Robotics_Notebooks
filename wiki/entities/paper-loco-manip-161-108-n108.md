@@ -59,6 +59,15 @@ sources:
 - 评测原始出处：[原文 / 项目页](https://vfishc.github.io/schur/)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-04-generative-language-trajectory.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**这篇的被测对象不是某个新控制器，而是「数据规模与模型规模」本身——它要回答扩到多大才对人形高层控制真正有用。**
+
+- 方法链路刻意保持简单：人类视频/动捕轨迹 → 场景/目标/运动表征 → 扩散策略/流匹配生成全身轨迹，链路越干净，规模才越接近唯一变量。
+- 作用层是 high-level control，不承诺底层 WBC 鲁棒性，须与运控/接触控制条目对照阅读。
+- 这类工作的价值全在曲线与拐点上，而本页作为索引级摘录未搬运任何量化结果——结论必须回到 [原文 / 项目页](https://vfishc.github.io/schur/)。
+- 在 161 篇里归入 **04 生成式运动、语言控制与轨迹规划**，可作为该分支的 scaling 参照系，横向对照见 [分类 hub](../overview/loco-manip-161-category-04-generative-language-trajectory.md)。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

@@ -45,6 +45,15 @@ summary: "这篇 Science Robotics 论文证明了一个重要事实：只依赖�
 
 - 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
+## 结论
+
+**这篇 Science Robotics 工作的分量不在算法花哨，而在一个「减法」结论：只靠本体感知、在相对简单的仿真域里训练，RL 控制器就能零样本走进泥地、雪地、碎石、植被和流水。**
+
+- 真正起作用的是「仅本体感知 + 相对简单仿真域」这一组合本身：它把复杂地形行走的难点从外感受感知栈拉回到控制策略与 sim2real 训练。
+- 零样本迁移是本页强调的关键性质——仿真到 ANYmal 真机之间没有额外的真机训练环节，这正是该结果被收进 03_High_Impact_Selection 的原因。
+- 适用边界：本页只是索引级实体，量化 benchmark、消融与实机指标一律以深读笔记与论文 PDF 为准（见 [参考来源](#参考来源)），不要拿本页当评测证据引用。
+- 图谱定位：作为 [paper-notebook-category-03-high-impact-selection](../overview/paper-notebook-category-03-high-impact-selection.md) 下的高影响力样本，也是四足侧对照人形 locomotion 工作的基线参照。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-03-high-impact-selection](../overview/paper-notebook-category-03-high-impact-selection.md)

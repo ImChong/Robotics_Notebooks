@@ -58,6 +58,14 @@ sources:
 
 为后续 goal-conditioned 或 imitation 提供 **可迁移的探索先验**，降低冷启动样本需求。
 
+## 结论
+
+**APS 把「任务到来之前先攒可迁移经验」当成一等公民：用 successor features 做主动预训练，为下游省掉冷启动成本。**
+
+- 起作用的机制是无外部任务时用 **intrinsic reward**（探索、多样性、后继态）预训练身体策略，产出的是 **可迁移探索先验** 而非可直接交付的技能。
+- 收益点落在下游：给后续 **goal-conditioned 或 imitation** 降低冷启动样本需求，这也是它在 BFM taxonomy 中 **03 Intrinsic reward 预训练** 的位置。
+- 边界：intrinsic 预训练 **不替代任务奖励**，下游仍需任务或示范对齐；本页为 #26/41 索引级策展编译，有 url_benchmark 开源实现可作对照基线，量化指标以原文 PDF 为准。
+
 ## 常见误区
 
 1. Intrinsic 预训练不替代任务奖励；它提供 **探索覆盖**，下游仍需任务或示范对齐。

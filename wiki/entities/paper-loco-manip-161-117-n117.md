@@ -59,6 +59,16 @@ sources:
 - 评测原始出处：[原文 / 项目页](https://humanoid-badminton.github.io/Humanoid-Whole-Body-Badminton-via-Multi-Stage-Reinforcement-Learning/)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-05-mocap-human-video.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**羽毛球逼出的是「高层意图与低层全身动作必须同拍」这个问题；这篇的答案是多阶段 RL，把运动先验和全身控制压进同一条训练/部署链路，专治高层到低层的断点。**
+
+- 真正起作用的不是某个单一算法，而是 PPO/RL 与 AMP 运动先验共处一条链路，减少高层目标传到低层动作时的信息丢失与阶段失配。
+- 感知侧同时用相机图像/多视角观测与本体状态，说明它是有外部目标驱动的闭环任务，而非只跟踪一条给定参考轨迹。
+- 输出既有全身轨迹/动作序列也有低层控制器目标，中间仍靠 WBC/MPC 承接，底层控制鲁棒性不由本工作保证。
+- 适用边界是 **05 动捕、人类视频与交互动作规划** 里的高动态交互任务，结论不宜直接外推到准静态操作场景。
+- 「多阶段」具体分几阶段、各阶段指标如何，本页未搬运，以 [原文 / 项目页](https://humanoid-badminton.github.io/Humanoid-Whole-Body-Badminton-via-Multi-Stage-Reinforcement-Learning/) 为准。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

@@ -59,6 +59,14 @@ MOSAIC 主要解决数据闭环：用本体状态与关节序列、遥操作/外
 - 评测原始出处：[原文 / 项目页](https://baai-humanoid.github.io/MOSAIC/)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-01-motion-base-wbt.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**MOSAIC 在 161 篇里落在「运控基座与通用全身跟踪」：原文题目指向 sim-to-real 差距与快速残差适应，而策展视角把它读成一条从多源采集到条件生成动作的数据闭环。**
+
+- 策展口径的机制主线是：本体状态与关节序列、遥操作/外骨骼数据、仿真交互数据 → 扩散策略或流匹配 → 可复用全身轨迹与低层控制器目标，即把动作生成当作在多模态分布中采样可执行轨迹的条件生成问题。
+- 两层叙述存在落差：题名强调 generalist motion tracking / teleoperation 与 rapid residual adaptation，本页摘要偏采集与生成侧；引用机制细节前应以原文 PDF / [项目页](https://baai-humanoid.github.io/MOSAIC/) 为准。
+- 本条目是 **索引级坐标**（014/161，TUM / 清华 / 南京大学 / IO-AI.TECH，2026-02-11），未搬运量化 benchmark 与实机指标；且单篇 loco-manip 工作不自动解决底层 WBC 鲁棒性，须与运控/接触控制对照。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

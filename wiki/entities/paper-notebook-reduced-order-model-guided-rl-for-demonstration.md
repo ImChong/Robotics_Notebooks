@@ -46,6 +46,14 @@ Reduced-Order Model-Guided RL for Demonstration-Free Humanoid Locomotion 的人�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页目前是占位实体而非内容实体：这篇「降阶模型引导、免示范的人形行走 RL」已进入 Paper Notebooks 待深读清单，但页面尚未承载任何机制级归纳。**
+
+- 现阶段可确认的只有策展元数据：分类 05_Locomotion、arXiv 2509.19023、深读笔记待撰写。
+- 从标题可读出的定位是「用降阶模型代替动作示范来引导 RL」，但引导的具体形式与代价本页没有展开，不能据此下判断。
+- 页面的作用是保持知识图谱完整；机制、实验与适用边界须等深读笔记完成后回填。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

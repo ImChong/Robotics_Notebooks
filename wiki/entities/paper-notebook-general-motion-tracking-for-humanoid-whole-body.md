@@ -51,6 +51,15 @@ summary: "Paper Notebooks progress 待深读占位：General Motion Tracking / G
 
 - 量化与真机结论见 [paper-gmt.md](./paper-gmt.md)；姊妹仓笔记完成后可补笔记站深读链接。
 
+## 结论
+
+**本页的职责是「进度占位 + 转发」，不是 GMT 的方法归纳：跨主题知识已经沉淀在正式实体页，本页只负责别让图谱在 Paper Notebooks 侧断链。**
+
+- 可引用的方法与真机结论都在 [paper-gmt.md](./paper-gmt.md)；本页只承载分类（04_Loco-Manipulation_and_WBC）、arXiv 入口与计划文件夹路径。
+- 适用边界：仅用于阅读进度追踪与分类交叉检索，不要把本页当作 GMT 的方法结论来引用。
+- 与 [paper-loco-manip-161-009-gmt.md](./paper-loco-manip-161-009-gmt.md) 的分工是：那边记 161 索引位次，本页记姊妹仓深读队列位次，两者都回指同一个正式实体。
+- 状态依赖：深读状态仍为「待撰写」，笔记完成后应回链笔记站升级本页，而不是在此另起一份方法叙述。
+
 ## 与其他页面的关系
 
 - 正式实体：[paper-gmt.md](./paper-gmt.md)

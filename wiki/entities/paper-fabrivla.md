@@ -155,6 +155,17 @@ sequenceDiagram
 | **动作头消融**（冻 VLM、50k） | gated SA 相对 base 提升最大；+TR/+TC 无额外收益 |
 | **弱项** | tool-mediated、coarse transport、grasp&place 桶较低 |
 
+## 结论
+
+**FabriVLA 证明的是：0.89B 级 VLA 不做机器人预训练、只走单阶段联合微调，靠「浅层空间 ⊕ 深层语义融合 + 门控自注意力动作头」也能在 Meta-World MT50 打到 90%——代价是评测面窄。**
+
+- 真正起作用的是 **shallow fusion**：deep-only 82.9% → 加 layer 6 空间特征后 90.0%；gated SA 在冻 VLM 设定下相对 base 提升最大，而可选的 TR / TC 无额外收益、未进入发布配置。
+- 训练配方本身是结论的一部分：DeepSpeed ZeRO-2 **必须**配 FP32 master weights，否则 BF16 下 VLM 几乎不更新——这是复现该成绩的硬前提，不是可选优化。
+- 适用边界：全部主实验在公开 Evo-1 Meta-World（2500 traj）与 MT50 仿真上，论文未报 LIBERO / 真机全栈，90% 不可外推。
+- 失败模式集中在 **tool-mediated、coarse transport、grasp&place** 桶，说明工具介导与粗运输仍是这类轻量 VLA 的短板。
+- 工程状态是其最强项：代码、配置与 93k checkpoint 已 Apache-2.0 开源，可直接跑 `evaluate_mt50.py`；数据仍依赖外部 Evo-1 Meta-World 资源，无独立项目页。
+- 对照定位：相对 [Evo-1](./paper-evo1-lightweight-vla.md) 的「两阶段语义保持 + 纯 cross-attn DiT」，本页是「单阶段 + gated SA + shallow fusion」的对照臂，适合做轻量 VLA 结构消融的参照。
+
 ## 与其他工作对比
 
 | 对照对象 | FabriVLA 的差异 |

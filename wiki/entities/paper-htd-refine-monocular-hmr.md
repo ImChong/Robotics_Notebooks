@@ -107,6 +107,16 @@ flowchart LR
 
 完整表格见 [参考来源](#参考来源) 与 [项目页](https://zju3dv.github.io/htd-refine/)。
 
+## 结论
+
+**HTD-Refine 把「运动自不自然」从平滑先验的隐式副产品变成可显式监督的优化目标：不换 HMR 骨干，只加一层与骨干解耦的高阶动力学后处理。**
+
+- 真正起作用的是 PVA-Net 的 **相机系速度/加速度场 + 2D 关键点** 共同构成的 $E_V/E_A/E_K$；$E_{\text{jerk}}$ 与 $E_{\text{reg}}$ 是配角。选加速度而非只做速度匹配，是为绕开单目 **全局尺度歧义** 与 **低频相机漂移**。
+- 关键指标从 MPJPE/RTE 扩到 **Jitter、MPJVE、MPJAE**：EMDB-2 上 GVHMR Jitter **17.2→7.2**、WA-MPJPE **118.7→69.2**，RICH 上 TRAM Jitter **18.7→4.2**，各 baseline MPJAE 降 **24–72%**。
+- 适用边界：它是 **后处理**，必须由 TRAM/GVHMR/Human3R 提供 world-space 初值与相机外参，且 $E_{\text{reg}}$ 要求贴近初始化——精炼上限受初值质量约束，不能单独从像素回归 world SMPL。
+- 与 HuMoR/RoHM 类生成先验的分野：那条路线靠隐式采样/平滑整段序列，本方法显式对齐视频预测的高阶场并强约束 2D 重投影，算力上也更轻。
+- 下游落地：可插在 GVHMR 输出与 [GMR](../methods/motion-retargeting-gmr.md) 之间，但动态质量提升 ≠ 几何 retarget 可行，仍需 [物理可行性门控](../concepts/motion-retargeting-pipeline.md) 与 tracking 消融。
+
 ## 与其他工作对比
 
 | 维度 | HTD-Refine | 隐式时序 HMR（GVHMR / WHAM / TRAM） | 生成/平滑先验（HuMoR / RoHM / LEMO） |

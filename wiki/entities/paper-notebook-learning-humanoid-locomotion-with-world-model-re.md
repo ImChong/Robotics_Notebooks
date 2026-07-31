@@ -46,6 +46,14 @@ Learning Humanoid Locomotion with World Model Reconstruction 的人形机器人�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**这是一条「世界模型重建 + 人形行走」的待深读占位条目：标题指向用重建式世界模型辅助 locomotion 学习，但本页没有任何可验证的机制或指标。**
+
+- 可确认的事实只有三项：分类 05_Locomotion、arXiv 2502.16230、深读状态「待撰写」。
+- 页面自己给出的定位就是「避免知识图谱缺失该论文实体」的占位子节点——功能是溯源与检索，不是技术结论。
+- 边界很明确：任何关于重建目标、模型结构或 sim2real 表现的判断都无本页依据，必须回到 arXiv 原文，或等 PROGRESS.md 上的深读笔记完成后再引用。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

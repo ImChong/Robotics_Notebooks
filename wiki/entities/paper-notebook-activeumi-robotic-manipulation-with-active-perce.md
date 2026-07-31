@@ -46,6 +46,14 @@ ActiveUMI 的人形机器人学习论文条目，当前处于 Paper Notebooks �
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是 ActiveUMI 的占位索引节点，当前唯一确定的结论是它的归档位置（06_Manipulation）与阅读状态（待深读），而非任何技术判断。**
+
+- 可依赖的信息仅有分类与计划文件夹路径；本页连 arXiv 链接都尚未落位，机制与指标全部待深读笔记补齐。
+- 适用边界：用于按分类检索、保持图谱连边不缺口，**不可**作为该论文结论的引用来源。
+- 升格条件：PROGRESS.md 中该条完成深读后，本页应链向笔记站并把占位式「一句话定义」替换为实质归纳。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-06-manipulation](../overview/paper-notebook-category-06-manipulation.md)

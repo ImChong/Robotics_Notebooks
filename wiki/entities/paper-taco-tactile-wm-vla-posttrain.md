@@ -102,6 +102,16 @@ flowchart TB
 | **任务例** | Wipe Whiteboard、Twist Bottle Cap、Insert Flower 等 |
 | **项目** | [taco-wm.github.io](https://taco-wm.github.io/) |
 
+## 结论
+
+**TACO 的定位是「数据引擎」而不是新策略架构：它把真机失败 rollout 回收成纠错监督，解决的是「接触恢复行为在成功示范里天然缺席」这个数据问题。**
+
+- 真正起作用的是 **力参与全链路**：想象段联合去噪视频 + 12-D force（temporal RoPE 对齐），去触觉生成 SR 掉到 **~28%**、去触觉标注掉到 **~65%**——纯视觉想象画面 plausible 但接触不一致，根本无法标注。
+- 第二个关键设计是 **知识隔离**：仅 VLM backbone stop-gradient、触觉学习路由到 action expert；缺了它增益从 **+44pp** 退到 **+32pp**，说明保住 VLM 先验比多灌触觉数据更重要。
+- 想象数据可 scaling 但有前提：Insert Flower 真实:想象 **1:2→1:4→1:8** 对应 SR **70%→93%→97%**，收益取决于 WM 物理 fidelity 与进度标注质量，不能当作无限替代真人纠错。
+- 失败模式与边界：多轮迭代可能 **分布漂移**；12-D 力矩绑定特定硬件；覆盖的是 **短窗口局部修正**，长程全任务纠错未涉及；WM 幻觉仍可能标注出不可执行动作。
+- 定位对照：[DreamSteer](./paper-dreamsteer-vla-deployment-steering.md) 在推理时筛选、不动权重，[VT-WAM](./paper-vt-wam-visuotactile-contact-rich.md) 是端到端 tactile WAM，TACO 改的是 **后训练权重**。
+
 ## 与其他工作对比
 
 | 工作 | 关系 |

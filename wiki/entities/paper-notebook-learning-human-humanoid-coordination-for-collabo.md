@@ -47,6 +47,14 @@ Learning Human-Humanoid Coordination for Collaborative Object Carrying 的人形
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是 04_Loco-Manipulation_and_WBC 分类下的占位子节点，尚不构成对这篇工作的归纳：它保证知识图谱不缺该实体，内容深化留给深读笔记。**
+
+- 页面可确证的信息仅限分类归属、progress.json 上的「待深读」状态与计划文件夹路径；人-人形协同搬运的机制、评测与实机结果均未记录。
+- 适用边界：适合按分类或总索引检索时的落点，不适合作为技术依据引用。
+- 主要风险是把占位页当成已完成摘要；深读状态以上游 progress.json 为准，笔记完成后本页应升格重写并链向笔记站。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

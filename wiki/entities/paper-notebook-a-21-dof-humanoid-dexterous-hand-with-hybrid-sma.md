@@ -46,6 +46,14 @@ A 21-DOF Humanoid Dexterous Hand with Hybrid SMA-Motor Actuation 的人形机器
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是知识图谱里的占位节点，不是对 CYJ Hand-0 的技术判断——它当前只锁定了「这篇论文归 12_Hardware_Design、尚待深读」这一条事实。**
+
+- 可依赖的信息仅限分类、计划文件夹路径与 arXiv 入口（<https://arxiv.org/abs/2507.14538>）；机制、指标、消融一律待深读笔记补齐。
+- 适用边界：可用于按分类检索与保持图谱连边完整，**不可**作为该论文结论的引用来源。
+- 升格条件明确：PROGRESS.md 中该条完成深读后，本页应链向笔记站，并把「一句话定义 / 核心机制」替换为实质归纳。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)

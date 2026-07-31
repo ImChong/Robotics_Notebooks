@@ -131,6 +131,16 @@ flowchart LR
 - **部分 / 待补全：** GitHub 仓 **无训练推理实现与预训练权重**；复现需跟踪仓库更新或联系作者。
 - 归档：[`sources/sites/yucrazing-clothtransformer-github-io.md`](../../sources/sites/yucrazing-clothtransformer-github-io.md)、[`sources/repos/YuCrazing-ClothTransformer.md`](../../sources/repos/YuCrazing-ClothTransformer.md)。
 
+## 结论
+
+**ClothTransformer 的关键取舍是把布料动力学搬到固定长度 latent 上：用「计算与网格分辨率解耦」换来单模型跨三类场景，代价是物理参数不再显式可控。**
+
+- 真正起作用的是 cross-attention 压出的固定 latent token（默认 \(K=1024\)）：核心动力学复杂度 \(O(N_{latents}^2)\)、约 **4.9 ms/frame**，~3.6k 顶点训练却能在 **40k 顶点** 上推理并仍优于 mesh 耦合基线。
+- 精度口径是 **单统一模型** 三场景 test MVE **~6.5–15 cm** vs 最强基线 **~31–149 cm**（约 4–9×）；但碰撞率必须与 MVE 和视觉一起读——低碰撞率也可能是布料整体漂移的退化解。
+- 严格 CCD 监督的前置条件是 **干净 GT**：**493.4k 帧 GIPC 无穿透数据集** 才让 detect-then-regress 可微 loss 训得起来，自研数据须有同等 IPC 级无穿透保证。
+- 失败模式与边界：材质刚度 **未显式条件化**、拓扑固定 **不支持撕裂**、自回归长程仍可能漂移；Robotic Manipulation 子集是 **仿真夹爪**，论文未报真机闭环。
+- 开源状态是「数据全、代码空」：数据集已上 Hugging Face，GitHub 仓截至 2026-07-20 **仅 README**，无训练/推理入口与权重；与 [Deform360](./paper-deform360-deformable-visuotactile-dataset.md) 的真实视触觉数据、[Flying Knots](./paper-flying-knots.md) 的真机绳操纵分属不同层，不互相替代。
+
 ## 局限与风险
 
 - **材质隐式：** 刚度等物理参数 **未显式条件化**，艺术向可控性弱于参数化 PBS。

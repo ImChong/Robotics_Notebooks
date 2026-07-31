@@ -119,6 +119,17 @@ flowchart TB
 
 > 完整数值与视频以 [PDF](https://la.disneyresearch.com/wp-content/uploads/VMP_paper.pdf) 为准。
 
+## 结论
+
+**VMP 的核心取舍是把「表征」与「控制」拆开：先自监督学 kinematic latent、再用显式跟踪奖励训策略，换来跨大库单策略泛化与可直接对接动画工作流的接口，代价是放弃对抗式风格分布建模。**
+
+- 真正起作用的是条件本身，而非某一阶段：$c_t=(m_t,z_t)$ 中 $m_t$ 给瞬时目标、$z_t$ 给近过去/未来上下文；消融显示只留一个都明显更差（Dance 关节 MAE **5.80°** vs M-only **12.79°** / L-only **10.45°**）。
+- 解耦的收益是可量化的工程收益：latent 可分性 LDA **0.854 vs 0.687**，训练 RTX 4090 **<3 天** vs CALM A100 **~2 周**，并规避对抗训练的 mode collapse。
+- 适用边界由接口决定：控制输入是**全身运动学参考序列**而非高层任务指令——适合艺术家做空间组合、剪辑排序与风格化编辑，不适合当高层任务策略用。
+- 主要失败模式是**记忆上限**：单 MLP 对即时跟踪够用，对后空翻这类长飞行相特技需带 hidden state；未过滤动捕下极端不可行参考只能「尽量跟踪且不倒」。
+- 真机侧 LIME（20-DoF、0.84 m、16.2 kg）证明这条路径能落地物理双足，但硬件缺踝 roll 时靠脚尖触地等自适应姿态逼近参考——是风格与平衡的折中，不是精确复现。
+- 对照定位：与 [ASE](../methods/ase.md)/[AMP](../methods/amp-reward.md) 的判别器路线目标不同（参考贴合 vs 风格分布）；相对 [SONIC](../methods/sonic-motion-tracking.md) 等人形 scaling 线，VMP 强在动画接口与角色真机而非 AMASS 级工程栈。
+
 ## 常见误区或局限
 
 - **不是对抗 motion prior：** VMP 走 **显式跟踪 + 预训练 kinematic latent**，与 [AMP](../methods/amp-reward.md)/[ASE](../methods/ase.md) 的判别器路线目标不同——前者偏 **参考贴合**，后者偏 **风格分布**。

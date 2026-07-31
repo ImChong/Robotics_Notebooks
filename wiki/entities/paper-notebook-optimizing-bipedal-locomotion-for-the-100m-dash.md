@@ -46,6 +46,14 @@ Optimizing Bipedal Locomotion for The 100m Dash With Comparison to Human Running
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是 05_Locomotion 下的计划索引实体：只登记了这篇「百米冲刺双足运动优化 + 与人类跑步对比」的存在，优化方法与对比结论均待深读笔记补齐。**
+
+- 页面可确证的只有分类归属、PROGRESS.md 上的「待深读」状态与 arXiv 编号 2508.03070；速度指标、优化目标与人机对比数据全部无记录。
+- 适用边界：可用于分类检索与图谱连边，不能作为速度成绩或人机差距的引用来源。
+- 深读状态以上游 PROGRESS.md 为准；笔记完成后本页需升格为完整索引实体并深化归纳。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

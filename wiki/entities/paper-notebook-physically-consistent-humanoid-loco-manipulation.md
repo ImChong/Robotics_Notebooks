@@ -47,6 +47,14 @@ Physically Consistent Humanoid Loco-Manipulation using Latent Diffusion Models �
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页当前提供的是「图谱占位」而不是「论文结论」：它确定的只是这篇工作在 04_Loco-Manipulation_and_WBC 下的归属与待深读状态，真正的方法取舍要等笔记落地后才谈得上。**
+
+- 页面上唯一确定的信息是归类与计划路径：分类 04_Loco-Manipulation_and_WBC、计划文件夹 `papers/04_Loco-Manipulation_and_WBC/Physically_Consistent_Humanoid_Loco-Manipulation_using_Latent_Diffusion_Models`，深读状态仍为「待撰写」。
+- 适用边界：可用于按分类检索、查缺补漏和交叉链接，不可当作该论文机制或指标的依据——本页未给出任何机制描述与量化结果。
+- 主要风险是被误当成已消化的笔记：本页「实验与评测」已明确 benchmark、消融与实机指标待补，引用前应回到 progress.json 与原论文。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

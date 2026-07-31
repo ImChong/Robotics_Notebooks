@@ -46,6 +46,14 @@ CAD-Driven Co-Design for Flight-Ready Jet-Powered Humanoids 的人形机器人�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页当前提供的是「图谱占位」而不是论文解读：它把这条 12_Hardware_Design 条目挂进知识库以保持检索连通，实质技术判断要等深读笔记落地。**
+
+- 页面已确认的信息仅有分类（12_Hardware_Design）、arXiv 编号与计划文件夹路径；CAD 驱动的协同设计流程与喷气动力人形的量化指标均尚未记录。
+- 适用边界很窄：可用于交叉检索与图谱完整性，不能作为该论文技术结论的引用依据。
+- 升格条件明确——PROGRESS.md 中该条目的深读笔记完成后，本页应链向笔记站并重写为完整索引实体。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)

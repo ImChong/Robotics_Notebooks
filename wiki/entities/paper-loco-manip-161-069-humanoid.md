@@ -59,6 +59,14 @@ Humanoid 主要解决数据闭环：用语言指令、相机图像/多视角观�
 - 评测原始出处：[原文 / 项目页](https://humanoideveryday.github.io)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-03-visuomotor.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**这条 069/161 的原文是数据集工作——Humanoid Everyday（USC / Toyota Research Institute），面向开放世界人形操作；策展摘要谈的扩散/流匹配动作生成其实是它的下游用法。**
+
+- 策展口径的机制主线：语言指令、相机/多视角观测、遥操作/外骨骼数据构成采集侧，扩散策略/流匹配把它们转成可执行动作命令，即在多模态动作分布里采样可执行轨迹。
+- 数据集类工作的价值取决于覆盖度与标注口径，而本页是索引级摘录，未搬运任何规模、任务分布与实机指标；判断可用性须回 [原文 / 项目页](https://humanoideveryday.github.io)。
+- 页面标题「Humanoid」只是 161 策展的截断名，检索与引用时应使用全称 **Humanoid Everyday**，避免与其他人形条目混淆；分组为 03 视觉感知驱动的人形移动操作，2026-06-17。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

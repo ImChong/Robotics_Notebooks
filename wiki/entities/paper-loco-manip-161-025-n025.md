@@ -59,6 +59,14 @@ sources:
 - 评测原始出处：[原文 / 项目页](https://humanoid-manipulation-interface.github.io)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-01-motion-base-wbt.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**这条 025/161 的题眼是 robot-free demonstrations 驱动的人形全身操作，策展视角则把它归到「多源采集 + 分层技能路由」的数据闭环那一格。**
+
+- 策展口径的机制主线：人类视频/动捕轨迹、遥操作/外骨骼数据、接触力/触觉信号 → PPO/RL 策略训练与分层技能/专家策略 → 可复用全身轨迹与低层控制器目标；关键是把任务拆成可路由技能，由高层在执行中选择与组合。
+- 题名的 robot-free demonstrations 与摘要里含触觉/接触力的多源采集指向同一诉求：把人类示范转成可训练的机器人状态-动作数据，而不是先有机器人再采数据。
+- 本条目为 **索引级坐标**（025/161 · 01 运控基座与通用全身跟踪，清华 / 上海期智 / Spirit.AI，2026-02-12），未搬运量化 benchmark 与实机指标；单篇工作不自动解决底层 WBC 鲁棒性，须与运控/接触控制对照。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

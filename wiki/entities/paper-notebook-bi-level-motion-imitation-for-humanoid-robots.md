@@ -46,6 +46,14 @@ Bi-Level Motion Imitation for Humanoid Robots 的人形机器人学习论文条�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是该论文的占位索引节点：当前确定的只有归档位置（05_Locomotion）与阅读状态（待深读），双层结构究竟怎么切分尚未经本库核验。**
+
+- 可依赖的信息仅有分类与计划文件夹路径；本页未落 arXiv 链接，机制、消融与实机指标全部待深读笔记补齐。
+- 适用边界：用于按分类检索与保持图谱连边完整，**不可**作为该论文结论的引用来源。
+- 升格条件：PROGRESS.md 中该条完成深读后，本页应链向笔记站并把占位式「一句话定义」替换为实质归纳。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

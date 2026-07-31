@@ -172,6 +172,17 @@ sequenceDiagram
 
 定量细节与消融以 **论文 PDF / Table II** 为准。
 
+## 结论
+
+**XRoboToolkit 的价值在于把 XR 遥操作做成可替换的「标准化中间层」，而不是又一个演示 demo：用 OpenXR 姿态流当窄腰解耦头显与机器人，再用下游 VLA 训练结果反证采到的示范可训。**
+
+- 它把「框架好不好用」换算成两个可验证量：同硬件视频流延迟相对 Open-TeleVision 约 −22%（121.5→94.5 ms，ZED→PICO 最低均值 82 ms），以及 100 条折毯示范 LoRA 微调 π₀ 后连续 30 min 自主成功率 100% 并出现自主 regrasping。
+- 分层设计是可复用的部分：头显侧 Unity Client 出 90 Hz OpenXR JSON，PC 侧 C++ Service + Pybind，机器人侧 PlaCo QP-IK 与 `dex_retargeting`；换臂或换头显只动末端模块。手柄采相对运动（grip 瞬间锁存参考）以降低奇异与初始对齐负担。
+- 适用边界：公开支持 PICO 4 Ultra 与 Meta Quest 3，仿真主推 MuJoCo；24 关节全身流跟随 PICO 约定，论文明确 **未做全身→人形重定向验证**，跨品牌骨骼不能假定兼容。
+- 主要失败模式在手部：重定向假设各关节独立可控，对 INSPIRE 等欠驱动耦合手不准确。
+- 开源状态要分层看：代码全栈开源（[XR-Robotics](https://github.com/XR-Robotics)），但 VLA 实验用的 100 条数据与 π₀ 权重未单独发布，想复现「论文同款策略」仍需自采。
+- 定位对照：与绑定 Isaac Lab/Sim 生态的 [Isaac Teleop](./isaac-teleop.md) 不同，本套件是跨臂、跨仿真的通用 XR 入口，[TWIST2](./paper-twist2.md)、[HumanoidUMI](./paper-humanoidumi.md) 已把它当上游流依赖——这也是它值得单独建实体的理由。
+
 ## 与其他工作对比
 
 | 维度 | XRoboToolkit | Open-TeleVision | Isaac Teleop | TWIST2 |

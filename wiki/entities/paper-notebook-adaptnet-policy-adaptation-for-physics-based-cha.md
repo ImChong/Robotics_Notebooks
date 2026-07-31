@@ -46,6 +46,14 @@ AdaptNet 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是 AdaptNet 的占位索引节点：它当前承载的是归档信息（13_Physics-Based_Animation、待深读），而不是对该方法的任何技术判断。**
+
+- 可依赖的信息仅有分类与计划文件夹路径；本页未落 arXiv 链接，机制、指标与消融全部待深读笔记补齐。
+- 适用边界：用于按分类检索与保持图谱连边完整，**不可**作为该论文结论的引用来源。
+- 升格条件：PROGRESS.md 中该条完成深读后，本页应链向笔记站并把占位式「一句话定义」替换为实质归纳。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)

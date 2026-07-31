@@ -46,6 +46,15 @@ Whole-body Humanoid Robot Locomotion with Human Reference 的人形机器人学�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页当前的价值是图谱占位与检索锚点，而不是对这篇「人类参考驱动全身运动」工作的技术判断——真正的结论要等深读笔记落地后重写。**
+
+- 页面能确定的只有元信息：分类 05_Locomotion、PROGRESS.md 标记为待深读、计划文件夹路径与 arXiv 入口；人类参考的使用方式、量化 benchmark、消融与实机指标均尚未编译。
+- 因此不应把本页当作引用该工作的技术依据；需要结论时请回到 arXiv 原文，或等待笔记站的深读页。
+- 适用边界很窄：本页只服务于 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类父节点之间的交叉检索，避免知识图谱缺失该论文实体。
+- 升格条件明确：深读笔记完成后本页应链向笔记站并补齐「实验与评测」，届时本节需整体重写。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

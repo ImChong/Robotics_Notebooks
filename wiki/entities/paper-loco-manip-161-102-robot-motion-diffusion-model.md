@@ -59,6 +59,15 @@ Robot Motion Diffusion Model 先从本体状态与关节序列、仿真交互数
 - 评测原始出处：[原文 / 项目页](https://la.disneyresearch.com/publication/robot-motion-diffusion-model-motion-generation-for-robotic-characters/)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-04-generative-language-trajectory.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**这是把生成式运动模型对准「角色机器人」的一次落地：扩散负责在多模态动作分布里给出可选解，RL 与行为克隆负责把这些解压回可执行范围。**
+
+- 真正起作用的是条件生成：一个指令对应多种合理运动时，扩散/流匹配采样比确定性回归更贴合问题结构。
+- 输入含接触力/触觉信号与仿真交互数据，说明生成不是纯运动学层面的，还要顾及接触可行性。
+- 服务对象是 robotic characters 而非通用操作平台，这决定了它在 161 篇里落在 **04 生成式运动、语言控制与轨迹规划**，而非视觉操作或遥操作分支。
+- 本页机构与发表日期均标注「见原文」，量化 benchmark 与实机指标同样以 [原文 / 项目页](https://la.disneyresearch.com/publication/robot-motion-diffusion-model-motion-generation-for-robotic-characters/) 为准。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

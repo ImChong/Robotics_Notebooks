@@ -55,6 +55,16 @@ sources:
 
 机构：哈尔滨工业大学、乐聚机器人
 
+## 结论
+
+**T-GMP 的取舍是「先学地形条件下的生成式运动先验，再拿它去约束 RL」，把「步态自然」和「地形适配」放进同一套约束里，而不是靠奖励调参在两者之间二选一。**
+
+- 真正起作用的是 **地形条件** 这个限定词：先验同时携带步态风格与地形信息，策略才可能在多地形上同时守住两条要求。
+- 定位是 **A 走路底座**（64 篇中 #02），解决的是身体层的走路问题，不承担任务级规划。
+- 本页是策展编译的索引级条目，量化 benchmark、消融与实机指标均未在此给出，需回到项目页 <https://t-gmp.github.io> 与原文 PDF。
+- 机构侧是哈尔滨工业大学 + 乐聚机器人的组合；本页未给出开源状态，勿假设可直接复现。
+- 与同栈姊妹篇的相对位置请回到 [humanoid-motion-cerebellum-technology-map.md](../overview/humanoid-motion-cerebellum-technology-map.md) 与 [motion-cerebellum-category-01-locomotion-base.md](../overview/motion-cerebellum-category-01-locomotion-base.md) 判断。
+
 ## 常见误区
 
 1. 运动小脑条目解决 **身体层** 问题，不替代 VLA/世界模型的任务规划。

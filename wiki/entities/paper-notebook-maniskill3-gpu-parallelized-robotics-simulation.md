@@ -46,6 +46,14 @@ ManiSkill3 的人形机器人学习论文条目，当前处于 Paper Notebooks �
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是 11_Simulation_Benchmark 分类下的占位子节点，不是对 ManiSkill3 的归纳：GPU 并行仿真与渲染的具体设计与数据全部待深读笔记补齐。**
+
+- 页面可确证的只有分类归属、PROGRESS.md 上的「待深读」状态与 arXiv 编号 2410.00425；吞吐、渲染能力与任务覆盖等关键卖点均无记录。
+- 适用边界：可用于按分类检索与图谱连边，不能当作选型依据——仿真栈选型必须回到论文与官方文档。
+- 深读状态以上游 PROGRESS.md 为准；笔记完成后本页需升格为完整索引实体，并与同分类下已完成深读的条目对齐写法。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-11-simulation-benchmark](../overview/paper-notebook-category-11-simulation-benchmark.md)

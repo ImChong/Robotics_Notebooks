@@ -45,6 +45,15 @@ summary: "把 Diffusion Forcing（每个 token 独立加噪/独立去噪的自�
 
 - 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
+## 结论
+
+**MAGNet 的核心动作是一次表征上的搬运：把 Diffusion Forcing 的「每 token 独立噪声」从单序列的时间轴扩展到「人 × 时间」两个轴，多任务能力是这一步的副产品而非各自单独设计。**
+
+- 起作用的机制链条是三段：VQ-VAE 把每个人的姿态压成 token → 多人 token 交错送进同一个 Transformer → 训练时每个 token 独立采噪声、推理时按人/按时刻分别指定噪声等级。
+- 一个模型能同时覆盖双人/三人/N 人预测、Partner Inpainting、Partner Prediction 与超长动作生成，靠的正是推理期噪声等级的自由指定，而不是为每个任务单独训练一套模型。
+- 适用边界：本页归在 14_Human_Motion，属于人体交互动作序列建模，不要直接当成可上机的人形控制方法读。
+- 量化口径缺位：本页为策展索引级摘要，benchmark 与消融以深读笔记和论文 PDF 为准（见 [参考来源](#参考来源)）。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)

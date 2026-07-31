@@ -61,6 +61,14 @@ HEX 的实现路径是先把本体状态与关节序列编码成多模态表征�
 - 评测原始出处：[原文 / 项目页](https://hex-humanoid.github.io/)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-02-upper-body-interface.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**HEX 的题眼是 humanoid-aligned experts 与 cross-embodiment：策展视角强调它在保留 VLM 语义理解的同时补上机器人状态与动作头，不让规划停在语言层。**
+
+- 机制主线：先把本体状态与关节序列编码成多模态表征，再由 PPO/RL 训练、VLA 动作模型与 VLM 语义规划/路由共同产出全身轨迹与低层控制器目标——「专家」这一层是跨本体对齐的落点。
+- 工程侧有明确入口：本页关系区给出官方仓 [Open-X-Humanoid/HEX](https://github.com/Open-X-Humanoid/HEX) 与机构生态页 [X-Humanoid](./x-humanoid.md)，比纯索引条目多一条可复现路径。
+- 本条目为 **索引级坐标**（038/161 · 02 上半身中心控制与移动操作接口，北京人形机器人创新中心等，2026-05-19）：cross-embodiment 的实际迁移代价与量化指标以原文 PDF / 项目页为准；单篇工作不自动解决底层 WBC 鲁棒性。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

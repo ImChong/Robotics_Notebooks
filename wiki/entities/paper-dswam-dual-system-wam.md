@@ -101,6 +101,16 @@ flowchart TB
 | **机构** | AIRC Midea Group、同济大学 |
 | **代码/权重** | [ds-wam.github.io](https://ds-wam.github.io/) |
 
+## 结论
+
+**DSWAM 的关键不是「WAM 后面接一个 VLM」，而是把语义规划设为可选、把 System 1 做成推理直出动作块的执行器，并第一次在匹配协议下与 VLA 公平比执行能力。**
+
+- 真正的增益来自 **执行器建模**：折叠 benchmark 明确关闭 System 2，成功率 92.5% → 96.3%、完成时间 2′18″ → 1′44″，因此不能归因于平台或数据差异。
+- 部署哲学是「训练学世界、推理不想象」：视频 co-training 只在训练期提供时序监督，推理路径无显式未来视频去噪，再靠 TensorRT + RTC 异步分块保证 policy query 不阻塞控制环。
+- System 2 的收益有条件：依赖 **指令粒度与子任务标注质量**；原子指令或执行器已可靠的任务默认走 WAM-only，硬上规划只会引入额外延迟。
+- 主要局限：跨本体 / 跨平台仍受动作接口碎片化约束，长程误差与动作忠实度是开放问题；RoboTwin 2.0 的 92.38% 不能替代真机可变形折叠这条论文强调的主战场。
+- 三角定位：相对 [DynaWM](./paper-dynawm-vla-online-correction.md)（冻结 VLA + 在线重写）与 [DreamSteer](./paper-dreamsteer-vla-deployment-steering.md)（部署时筛选候选块），DSWAM 属于「直接接管动作生成」的 foundation 路线；与 [MECo-WAM](./paper-meco-wam-4d-geometry-cotraining.md) 同生态但加的是语义–执行解耦而非训练期几何。
+
 ## 与其他工作对比
 
 | 工作 | 关系 |
