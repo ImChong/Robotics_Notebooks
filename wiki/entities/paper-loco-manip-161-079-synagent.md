@@ -59,6 +59,14 @@ SynAgent 先从相机图像/多视角观测恢复场景、目标或运动表征�
 - 评测原始出处：[原文 / 项目页](https://yw0208.github.io/synagent/)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-03-visuomotor.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**SynAgent 处理的是协作而非单体能力：把 solo 已有的人形操作能力经 agent synergy 扩展到多体协作，再用教师-学生蒸馏把特权信息下的策略压回部署观测。**
+
+- 真正起作用的是 **solo-to-cooperative 的迁移路径**：协作能力不从零训，这也是它宣称 generalizable 的来源。
+- 部署可行性靠 **教师-学生知识迁移**：训练期用特权信息，学生只从相机图像/多视角观测恢复场景、目标与地形/场景表征。
+- 本页为 161 篇索引级条目，未搬运原文量化 benchmark；协作成功率与评测口径以 [原文 / 项目页](https://yw0208.github.io/synagent/) 为准。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

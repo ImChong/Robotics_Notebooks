@@ -99,6 +99,16 @@ HOIST 冻结 VLA 本身，只学习 flow-matching action expert 的 initial-nois
 | 低层 | 固定 GR00T Whole-Body Control stack |
 | 观测 | ego RGB-D + side RGB + proprioception + language + nav history |
 
+## 结论
+
+**HOIST 的关键判断是「示范补不上的那部分误差得用自主 rollout 补」：冻结 VLA 与低层 WBC，只在部署分布上后训练高层命令，就把悬挂负载的定位误差压了下来。**
+
+- 真正起作用的是对 flow-matching action expert 的 initial-noise steering 做 batched actor-critic：50 demos + 30 条自主 rollout 在真机把 `|Δx|+|Δy|` 从 9.28 cm 降到 6.38 cm，而把示范从 50 加到 80 只做到 8.57 cm。
+- 任务设定本身就是贡献：对象是欠驱动的摆动负载，机器人只能靠身体移动、双手接触与停止时机间接施力，因此主指标落在负载终端 `Δx, Δy, Δψ`，而非机器人自身的跟踪精度。
+- 适用边界：低层 GR00T WBC 被固定且未针对悬挂负载微调，接口无法显式适配不同重量；观测依赖 side RGB，真实工地未必布得下外部视角。
+- 主要风险：奖励只含位置/yaw 误差，不含显式安全约束，而 struck-by/caught-between 恰恰是这个场景最需要防的；官方可运行代码亦未确认。
+- 对照定位：[FALCON](./paper-loco-manip-161-109-falcon.md)、[Thor](./paper-hrl-stack-42-thor.md)、[CHIP](./paper-hrl-stack-36-chip.md) 都在改全身策略去应对主动力，HOIST 反其道而行——不动低层，只做任务层后训练。
+
 ## 与其他工作对比
 
 HOIST 面向**欠驱动悬挂负载**的间接定位，与同库的强接触/受力工作 [FALCON](./paper-loco-manip-161-109-falcon.md)、[Thor](./paper-hrl-stack-42-thor.md)、[CHIP](./paper-hrl-stack-36-chip.md) 在「接触/力」议题上相邻，但对象与控制层次都不同。下表为定性对照。
