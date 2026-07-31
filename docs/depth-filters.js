@@ -1,7 +1,7 @@
 /*
  * 路线视图（Depth Filters）单一事实源。
  * 包含主路线 roadmap/motion-control.md + 策展的 21 条 roadmap/depth-*.md 纵深路线；
- * 由 graph.html（路线筛选）与 detail.html / main.js（详情页「所属路线」徽标）共享。
+ * 由 graph.html（路线筛选）、detail.html（「所属路线」）与 roadmap.html（「路线视图」徽标）共享。
  *
  * 命中优先级（与 graph.html nodeMatchesDepth 一致）：
  *   excludeSegments 命中 → 直接排除；ids 显式纳入 → 命中；
