@@ -2,7 +2,7 @@
 type: concept
 tags: [simulation, video-generation, deepmind, computer-vision, robotics]
 status: complete
-updated: 2026-07-27
+updated: 2026-07-31
 related:
   - ../methods/generative-world-models.md
   - ../entities/ewmbench.md
@@ -20,6 +20,7 @@ related:
   - ../entities/paper-masked-visual-actions.md
   - ../entities/paper-ctrl-world.md
   - ../entities/paper-wan-move.md
+  - ../entities/paper-wan-dancer.md
   - ../entities/paper-wan-video.md
   - ../entities/paper-robointer-1-5.md
   - ../entities/paper-m4world.md
@@ -111,7 +112,7 @@ UniSim 把视频生成模型当作可交互的物理引擎来训练视觉策略�
 
 当瓶颈是 **与现代多视角 VLA 闭环兼容**（腕部相机 + 高维动作块）时，[Ctrl-World](../entities/paper-ctrl-world.md)（arXiv:2510.10125，ICLR 2026）用帧级动作条件与位姿记忆，在想象中做策略排序与合成轨迹 SFT（新指令 **38.7%→83.4%**）。
 
-通用开源视频先验侧，[Wan](../entities/paper-wan-video.md) / [Wan-Move](../entities/paper-wan-move.md) 提供可微调的 I2V 与点轨迹运动控制；它们不是操纵仿真器，但是像素条件 WM 的常见上游（MVA 对照基线）。
+通用开源视频先验侧，[Wan](../entities/paper-wan-video.md) / [Wan-Move](../entities/paper-wan-move.md) / [Wan-Dancer](../entities/paper-wan-dancer.md) 提供可微调的 I2V、点轨迹运动控制与分钟级 music-to-dance；它们不是操纵仿真器，但是像素条件 WM / 参考视频先验的常见上游（MVA 对照基线）。
 
 当瓶颈是 **多类型中间表示如何同时服务 VLA 与长程像素推演** 时，[RoboInter1.5](../entities/paper-robointer-1-5.md)（arXiv:2607.18709）用稠密 IR 渲染控制视频条件化 **RoboInter-World**，并把同一 IR 接到 plan-then-execute VLA——与「纯语言/原始动作条件」形成对照。
 
@@ -137,7 +138,7 @@ UniSim 把视频生成模型当作可交互的物理引擎来训练视觉策略�
 - [DriftWorld](../entities/paper-driftworld.md) — 1-step drifting 动作条件视频 WM：推理时搜索 + 离线评估（arXiv:2607.15065）。
 - [Masked Visual Actions](../entities/paper-masked-visual-actions.md) — 掩码视觉动作统一前向/逆向 + 策略评估（arXiv:2607.19343）。
 - [Ctrl-World](../entities/paper-ctrl-world.md) — 多视角可控 WM：VLA 闭环评估 + 合成 SFT（ICLR 2026）。
-- [Wan](../entities/paper-wan-video.md) / [Wan-Move](../entities/paper-wan-move.md) — 开源视频基础模型与 latent 轨迹运动控制。
+- [Wan](../entities/paper-wan-video.md) / [Wan-Move](../entities/paper-wan-move.md) / [Wan-Dancer](../entities/paper-wan-dancer.md) — 开源视频基础模型、轨迹运动控制与分钟级 music-to-dance。
 - [RoboInter1.5](../entities/paper-robointer-1-5.md) — IR 控制视频条件世界模型 + 操作 VLA 套件（arXiv:2607.18709）。
 - [X-World](../entities/paper-x-world.md) — 小鹏 **7 摄动作条件** 驾驶视频世界模型（arXiv:2603.19979；未开源）。
 - [X-Cache](../entities/paper-x-cache.md) — 少步 AR 世界模型跨 chunk 加速（arXiv:2604.20289）。

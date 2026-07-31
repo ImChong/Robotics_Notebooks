@@ -1,3 +1,11 @@
+## [2026-07-31] ingest | sources/repos/wan-dancer.md + sources/papers/wan_dancer_arxiv_2607_09581.md — Wan-Dancer 分钟级 music-to-dance；升格 wiki/entities/paper-wan-dancer.md；交叉 Wan / Wan-Move / generative-world-models / hub-wbt
+
+- **触发：** 用户给出 `https://github.com/Wan-AI/Wan-Dancer-14B`（**404**）；核实为 HF/ModelScope 权重 ID，代码仓为 [`Wan-Video/Wan-Dancer`](https://github.com/Wan-Video/Wan-Dancer)
+- **Sources：** [`sources/repos/wan-dancer.md`](sources/repos/wan-dancer.md)、[`sources/papers/wan_dancer_arxiv_2607_09581.md`](sources/papers/wan_dancer_arxiv_2607_09581.md)、[`sources/sites/wan-dancer-project.md`](sources/sites/wan-dancer-project.md)
+- **Wiki：** [`wiki/entities/paper-wan-dancer.md`](wiki/entities/paper-wan-dancer.md)（分层 Global→Local、开源状态、源码运行时序图、结论）
+- **交叉：** [`paper-wan-video`](wiki/entities/paper-wan-video.md)、[`paper-wan-move`](wiki/entities/paper-wan-move.md)、[`generative-world-models`](wiki/methods/generative-world-models.md)、[`hub-wbt`](wiki/overview/hub-wbt.md)、[`sources/repos/wan2.1.md`](sources/repos/wan2.1.md)
+- **开源：** Apache-2.0 推理仓 + HF `Wan-AI/Wan-Dancer-14B`（global/local）+ 项目页；论文 arXiv:2607.09581
+
 ## [2026-07-31] ingest | sources/blogs/gemini_robotics_2_whole_body.md — Gemini Robotics 2 全身智能；升格 wiki/entities/gemini-robotics.md；交叉 foundation-policy / WBC / loco-manip / hub-cross-embodiment / vla
 
 ## [2026-07-31] structural | docs/style.css — 纵深路线描边后「展开全部…」文案高亮改为两次

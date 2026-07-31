@@ -9,10 +9,11 @@ tags:
   - world-models
   - alibaba
 status: complete
-updated: 2026-07-26
+updated: 2026-07-31
 arxiv: "2503.20314"
 related:
   - ./paper-wan-move.md
+  - ./paper-wan-dancer.md
   - ./paper-masked-visual-actions.md
   - ./paper-ctrl-world.md
   - ./paper-abot-world-0.md
@@ -26,12 +27,13 @@ sources:
   - ../../sources/repos/wan2.1.md
   - ../../sources/sites/wan-video.md
   - ../../sources/papers/abot_world_0_arxiv_2607_19191.md
-summary: "Wan（arXiv:2503.20314，Alibaba）：开源大规模视频基础模型技术报告；DiT + Wan-VAE，1.3B/14B 等覆盖 T2V/I2V；Wan2.1/2.2 已开源，是 Wan-Move、MVA、ABot-World-0 等机器人/交互视频 WM 的上游先验。"
+  - ../../sources/papers/wan_dancer_arxiv_2607_09581.md
+summary: "Wan（arXiv:2503.20314，Alibaba）：开源大规模视频基础模型技术报告；DiT + Wan-VAE，1.3B/14B 等覆盖 T2V/I2V；Wan2.1/2.2 已开源，是 Wan-Move、Wan-Dancer、MVA、ABot-World-0 等派生可控/交互视频工作的上游先验。"
 ---
 
 # Wan（开源大规模视频生成基础模型）
 
-**Wan**（*Wan: Open and Advanced Large-Scale Video Generative Models*，[arXiv:2503.20314](https://arxiv.org/abs/2503.20314)，2025，**Wan Team** · **阿里巴巴（Alibaba）**；[站点](https://wan.video)，[Wan2.1](https://github.com/Wan-Video/Wan2.1) / [Wan2.2](https://github.com/Wan-Video/Wan2.2)）是一套 **开源视频基础模型** 技术报告与实现：在 DiT 范式上用新型 **Wan-VAE**、可扩展预训练与大规模数据策展，提供 **1.3B / 14B** 等规模及 T2V、I2V 等多任务能力。对本库而言，它的价值主要是 **机器人视频世界模型的上游视觉先验**——[Wan-Move](./paper-wan-move.md)、[Masked Visual Actions](./paper-masked-visual-actions.md)（Wan2.2-Fun-Control）以及多篇 WAM/WM 工作均建立在 Wan 族之上。
+**Wan**（*Wan: Open and Advanced Large-Scale Video Generative Models*，[arXiv:2503.20314](https://arxiv.org/abs/2503.20314)，2025，**Wan Team** · **阿里巴巴（Alibaba）**；[站点](https://wan.video)，[Wan2.1](https://github.com/Wan-Video/Wan2.1) / [Wan2.2](https://github.com/Wan-Video/Wan2.2)）是一套 **开源视频基础模型** 技术报告与实现：在 DiT 范式上用新型 **Wan-VAE**、可扩展预训练与大规模数据策展，提供 **1.3B / 14B** 等规模及 T2V、I2V 等多任务能力。对本库而言，它的价值主要是 **机器人视频世界模型的上游视觉先验**——[Wan-Move](./paper-wan-move.md)、[Wan-Dancer](./paper-wan-dancer.md)、[Masked Visual Actions](./paper-masked-visual-actions.md)（Wan2.2-Fun-Control）以及多篇 WAM/WM 工作均建立在 Wan 族之上。
 
 ## 一句话定义
 
@@ -172,6 +174,7 @@ Wan 在本库的定位是**上游视觉先验**，而非终端机器人世界模
 | 对照对象 | 骨干关系 | 条件接口 | 定位差异 |
 |----------|----------|----------|----------|
 | [Wan-Move](./paper-wan-move.md) | Wan-I2V-14B（2.1 线） | latent 点轨迹 | 在 Wan 上加通用运动刷，不改骨干 |
+| [Wan-Dancer](./paper-wan-dancer.md) | Wan-I2V（2.1 线） | 音乐 + 文本 + 参考形象 | 分层分钟级 music-to-dance，非机器人动作接口 |
 | [Masked Visual Actions](./paper-masked-visual-actions.md) | Wan2.2-Fun-A14B-Control | 实体占据掩码 | 机器人像素 WM，走 Fun-Control 条件线 |
 | [Ctrl-World](./paper-ctrl-world.md) | **非 Wan（SVD）** | 低维动作 + 多视角 | 骨干对照项，说明可控 WM 不必绑定 Wan |
 | [ABot-M0.5](./paper-abot-m05-mobile-manipulation-wam.md) / [τ₀ World Model](./tau0-world-model.md) | Wan2.2 系 | 具身动作/观测 | 其他 Wan2.2 具身衍生，共享上游先验 |
@@ -182,6 +185,7 @@ Wan 在本库的定位是**上游视觉先验**，而非终端机器人世界模
 ## 关联页面
 
 - [Wan-Move](./paper-wan-move.md) — latent 轨迹运动控制（I2V-14B）
+- [Wan-Dancer](./paper-wan-dancer.md) — 分层分钟级 music-to-dance（I2V + 音乐）
 - [Masked Visual Actions](./paper-masked-visual-actions.md) — Wan2.2-Fun-Control 机器人掩码 WM
 - [Ctrl-World](./paper-ctrl-world.md) — 非 Wan 骨干的对照（SVD）可控操纵 WM
 - [Generative World Models](../methods/generative-world-models.md) — 方法谱系

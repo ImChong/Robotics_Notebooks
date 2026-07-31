@@ -52,6 +52,7 @@ summary: "全身运动跟踪（WBT）知识链汇总：参考采集→重定向�
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [Behavior Foundation Model](../concepts/behavior-foundation-model.md)
 - [Humanoid AMP Motion Prior Survey](./humanoid-amp-motion-prior-survey.md)
+- [Wan-Dancer](../entities/paper-wan-dancer.md) — 分钟级 music-to-dance 参考视频先验（非可部署控制器）
 
 ## 参考来源
 
