@@ -2,10 +2,11 @@
 type: entity
 tags: [quadruped, legged, hardware, platform, locomotion]
 status: complete
-updated: 2026-07-25
+updated: 2026-07-31
 related:
   - ./humanoid-robot.md
   - ./anymal.md
+  - ./paper-legged-robots-advances-challenges.md
   - ./mit-mini-cheetah.md
   - ./paper-discrete-terrain-minimal-proximity-sensing.md
   - ./boston-dynamics.md
@@ -97,6 +98,7 @@ summary: "四足机器人是以四条腿与环境间歇接触的腿足平台，�
 - [Unitree](./unitree.md)
 - [Legged Gym](./legged-gym.md)
 - [Locomotion 任务](../tasks/locomotion.md)
+- [腿式机器人进展/挑战/机遇综述](./paper-legged-robots-advances-challenges.md) — Science Robotics 2026 五柱盘点（含四足）
 - [HiPAN（四足分层导航）](../methods/hipan.md)
 - [Barkour（敏捷评测与开源四足）](./paper-barkour-quadruped-agility-benchmark.md)
 - [离散地形最小感知（足底 ToF）](./paper-discrete-terrain-minimal-proximity-sensing.md)

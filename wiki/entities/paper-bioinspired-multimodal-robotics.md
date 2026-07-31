@@ -14,12 +14,13 @@ tags:
   - dut
   - epfl
 status: complete
-updated: 2026-07-25
+updated: 2026-07-31
 doi: "10.1126/scirobotics.aea7639"
 venue: "Science Robotics 2026"
 related:
   - ../tasks/locomotion.md
   - ../tasks/hybrid-locomotion.md
+  - ./paper-legged-robots-advances-challenges.md
   - ./paper-aerial-aquatic-remora-hitchhiking-robot.md
   - ./paper-miniature-deep-sea-morphable-robot.md
   - ./paper-octopus-inspired-esoam-soft-arm.md
@@ -201,6 +202,7 @@ flowchart TB
 ## 关联页面
 
 - [Locomotion](../tasks/locomotion.md) — 运动任务中心；多模态 / 跨介质入口
+- [腿式机器人进展/挑战/机遇综述](./paper-legged-robots-advances-challenges.md) — 同刊 Issue 116：人形+四足陆地五柱与社会展望对照
 - [Hybrid Locomotion](../tasks/hybrid-locomotion.md) — 轮腿与可变形态混合运动对照
 - [空–水印鱼搭便车机器人](./paper-aerial-aquatic-remora-hitchhiking-robot.md) — 结构复用 + 被动桨 + 界面 Tij 实例
 - [深海软体可变形机器人](./paper-miniature-deep-sea-morphable-robot.md) — 软材料 + CRP 实例
