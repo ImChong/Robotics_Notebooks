@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, reinforcement-learning, isaac-lab, locomotion, sim2real]
 status: complete
-updated: 2026-07-24
+updated: 2026-07-31
 related:
   - ./unitree.md
   - ./unitree-rl-gym.md
@@ -10,11 +10,13 @@ related:
   - ./unitree-mujoco.md
   - ./unitree-ros.md
   - ./unitree-model.md
+  - ./paper-humoslope-physics-guided-slope-locomotion.md
   - ../tasks/locomotion.md
   - ../concepts/sim2real.md
 sources:
   - ../../sources/repos/unitree_rl_lab.md
   - ../../sources/repos/unitree.md
+  - ../../sources/papers/humoslope_arxiv_2607_07830.md
 summary: "unitree_rl_lab 是基于 Isaac Lab 的官方 Unitree RL 环境扩展，支持 Go2/H1/G1-29dof；资产可从 Hugging Face USD 或 unitree_ros URDF 引入，与 Isaac Gym 版 unitree_rl_gym 并行。"
 ---
 
@@ -72,11 +74,13 @@ summary: "unitree_rl_lab 是基于 Isaac Lab 的官方 Unitree RL 环境扩展�
 - [unitree_model](./unitree-model.md)
 - [unitree_ros](./unitree-ros.md)
 - [Unitree](./unitree.md)
+- [HumoSlope](./paper-humoslope-physics-guided-slope-locomotion.md) — 以本仓库为本体感知基线，对比陡坡专用 ZMP/BSGA 管线
 
 ## 参考来源
 
 - [sources/repos/unitree_rl_lab.md](../../sources/repos/unitree_rl_lab.md)
 - 上游：<https://github.com/unitreerobotics/unitree_rl_lab>
+- [HumoSlope（arXiv:2607.07830）](../../sources/papers/humoslope_arxiv_2607_07830.md) — 论文将 Unitree RL Lab 作 proprioception-only 基线
 
 ## 推荐继续阅读
 

@@ -1,3 +1,5 @@
+## [2026-07-31] ingest | sources/papers/humoslope_arxiv_2607_07830.md — HumoSlope（arXiv:2607.07830）NTU/A*STAR 两阶段坡面 locomotion；升格 wiki/entities/paper-humoslope-physics-guided-slope-locomotion.md；交叉更新 wiki/tasks/humanoid-locomotion.md、wiki/concepts/lip-zmp.md、wiki/concepts/terrain-adaptation.md、wiki/concepts/privileged-training.md、wiki/entities/unitree-g1.md、wiki/entities/unitree-rl-lab.md；注册 schema/institutions.json astar
+
 ## [2026-07-31] structural | docs/index.html + docs/main.js — 「项目查询 / 知识图谱」入口卡跳转目标模块顺时针描边
 
 - **项目查询：** 滚到 `#wiki-search-panel`（搜索栏）中心 → 边框顺时针描边一圈 → 聚焦搜索输入框
