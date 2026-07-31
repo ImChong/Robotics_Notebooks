@@ -59,6 +59,14 @@ sources:
 - 评测原始出处：[原文 / 项目页](https://humanoid-manipulation-interface.github.io)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-03-visuomotor.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**这篇工作的赌注押在「数据来源」而不是控制器：把人类侧的无机器人示范转成可训练的全身轨迹，再靠技能路由把长任务拆开执行。**
+
+- 真正起作用的是数据闭环加技能分解：多视角图像、人类视频/动捕、遥操作/外骨骼数据先转成可复用的全身动作序列，再由高层模块在执行中选择并组合技能或专家策略。
+- 适用边界在「地图坐标」这一档：本条目是 161 篇策展索引级摘录，未搬运量化 benchmark 与实机指标，引用前须回到项目页 <https://humanoid-manipulation-interface.github.io> 核对。
+- 分工要分清：这类工作不自动解决底层 WBC 鲁棒性，横向定位请对照 [分类 hub](../overview/loco-manip-161-category-03-visuomotor.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

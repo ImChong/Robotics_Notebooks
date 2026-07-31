@@ -47,6 +47,14 @@ Unleashing Humanoid Reaching Potential via Real-world-Ready Skill Space 的人�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是一个尚未展开的占位节点：题名把技能空间限定为「real-world-ready」，暗示其取舍在于放弃仿真中好看但不可迁移的技能，但深读笔记未撰写，机制无从核实。**
+
+- 从题名可确定的定位是 **以技能空间（skill space）为中介释放人形 reaching 能力**，且强调该空间需对真机可用，被归入 04_Loco-Manipulation_and_WBC 分类。
+- 当前处于 Paper Notebooks **progress 待深读** 阶段，技能空间的构造方式、reaching 成功率与实机结果均缺失。
+- 使用方式：仅作分类子节点入口；实质内容请走 [参考来源](#参考来源) 中的 progress.json 与原始论文。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

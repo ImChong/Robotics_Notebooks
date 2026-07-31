@@ -59,6 +59,14 @@ sources:
 - 评测原始出处：[原文 / 项目页](https://soccer-humanoid.github.io/)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-06-contact-tasks.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**足球是「视觉闭环加接触」的压力测试：这篇不硬训一个端到端策略，而是用渐进式的感知-行动框架，把技能分层与条件生成动作组合起来。**
+
+- 起作用的是三段拼装：多视角视觉与人类视频/仿真交互数据 → 扩散策略/流匹配的条件生成 → IK/动作重定向落到可执行动作命令，分层技能或专家策略负责执行中的路由。
+- 归入 06 类（[特殊任务、接触规划与视觉闭环](../overview/loco-manip-161-category-06-contact-tasks.md)）意味着评价重心在特定任务的接触与闭环质量，而不是通用操作泛化。
+- 边界：索引级摘录未搬运射门成功率等量化指标，评测口径以 <https://soccer-humanoid.github.io/> 为准。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

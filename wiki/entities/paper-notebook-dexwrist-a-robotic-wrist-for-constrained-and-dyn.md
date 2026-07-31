@@ -46,6 +46,14 @@ DexWrist 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**DexWrist 在本库目前只是一条「已排期、未深读」的占位实体：它补的是硬件设计这一分支的图谱完整性，而不是可直接引用的设计结论。**
+
+- 本页能确认的只有索引层信息——策展来源、分类 12_Hardware_Design 与计划中的笔记文件夹；标题指向"面向受限与动态操作的机器人手腕"这一子问题，本页未给出自由度配置、传动方案等任何机械细节，也未附论文链接。
+- 适用边界：适合经[分类父节点](../overview/paper-notebook-category-12-hardware-design.md)与[人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)做检索与交叉定位，不适合作为硬件选型或方案对比的依据。
+- 主要风险是把占位页误读成已消化的结论：量化 benchmark、消融与实机指标本页全部缺失，深读状态须回到 PROGRESS.md 跟踪，结论以论文原文为准。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)

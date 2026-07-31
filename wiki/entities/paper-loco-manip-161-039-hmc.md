@@ -97,6 +97,16 @@ ACT 适合动作 chunk imitation，但如果输出只落在单一控制 profile�
 | 策略 | shared transformer trunk + multi-expert heads + soft router |
 | 报告效果 | 真机 challenging tasks 相对 baselines **over 50% relative improvement** |
 
+## 结论
+
+**HMC 的关键判断是：contact-rich 任务的难点不在动作序列本身，而在控制模式——所以它把 position / impedance / hybrid 力位这三种 profile 显式放进动作空间，用 torque-space 连续混合替代硬切状态机。**
+
+- 真正起作用的是控制器与策略两侧同时改：controller 侧允许 stiffness/force profile 平滑变化，policy 侧用 soft router 在不同接触阶段混合专家输出，把物理补偿从「网络隐式承担」变成「显式建模」。
+- 数据配方比结构更具现实意义：大量 position-only 示范预训练 shared trunk 与 position expert 拿到 free-space prior，再用少量 force-aware 多专家数据微调全部参数与 router；论文口径是真机 challenging 任务相对基线 **超过 50% 相对提升**。
+- 同一套 HMC-Controller 同时服务人类示范采集与自主策略部署，减少示范接口与执行接口不一致——这是它比 ACT(meta) 类单 profile 模仿更适配接触任务的另一层原因。
+- 适用边界是低层力矩/阻抗可控的平台；高层任务分解不在本文范围，它回答「接触时怎么用力」，不回答「该做哪一步」。
+- 复现风险明确：项目页未公开逐任务量化表与可运行代码，profile blending 细节难以复核；与 [WT-UMI](./paper-loco-manip-07-wt-umi.md) 从触觉力监督与 admittance 执行侧切入是互补关系，不是替代。
+
 ## 与其他工作对比
 
 对照本页 [核心原理](#核心原理详细) 中明确点名的基线与 [关联页面](#关联页面) 的相关工作，均为定性维度：

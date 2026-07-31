@@ -47,6 +47,15 @@ Learning Bipedal Locomotion on Gear-Driven Humanoid Robot Using Foot-Mounted IMU
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是「齿轮传动人形 + 足部 IMU」这条线索在知识图谱中的占位锚点，而不是一份可引用的技术结论。**
+
+- 目前唯一可核验的是元信息：分类 05_Locomotion、arXiv 2504.00614、计划笔记文件夹路径与 PROGRESS.md 中的待深读状态。
+- 标题给出的线索（齿轮传动人形、足部安装 IMU）在正文中尚未展开，机制、消融与实机指标全部空缺。
+- 适用边界：只适合作为检索入口与图谱连边（分类父节点 / 总索引），任何技术判断都应回到 PROGRESS.md 与论文原文。
+- 升格条件明确：深读笔记完成后本页应由 planned 升级为完整索引实体并回链笔记站。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

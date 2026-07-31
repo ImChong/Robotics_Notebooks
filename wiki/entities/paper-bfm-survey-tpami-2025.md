@@ -123,6 +123,16 @@ flowchart TB
 - **与既有 WBC 综述：** 早期综述多按 **控制方法（MPC/WBC 优化/RL）** 组织；本文首次以 **预训练三线 + 适应两线** 的 **基础模型** 视角重排文献，形成社区共识坐标。
 - **与本库其他入口分工：** [BFM 技术地图](../overview/bfm-41-papers-technology-map.md) 按五类问题导读、[Behavior Foundation Model 概念页](../concepts/behavior-foundation-model.md) 做机制归纳，本页保留 **综述元信息与 taxonomy 原貌**。
 
+## 结论
+
+**这篇综述的真正产出是一套坐标系：把人形 WBC 从「任务专用 RL/IL」重排成「一次大规模预训练 + 适应」，并用预训练三线 + 适应两线固定住社区的讨论框架。**
+
+- 起作用的不是新方法而是 **taxonomy 与活索引**：goal-conditioned / intrinsic-reward / forward–backward 三线加微调、层次化两线，已被 awesome-bfm-papers 与本库 [BFM 技术地图](../overview/bfm-41-papers-technology-map.md) 对齐采用。
+- 边界划得清楚：BFM 主攻 **locomotion / 操作 / 交互的全身低层控制**，VLA 主攻视觉–语言–动作的操作侧，二者常 **分层组合** 而非互相替代。
+- 综述自陈的最大缺口在 **评测**：三线各用各的口径（跟踪误差与成功率、技能覆盖度、测试时 zero-shot 回报），互不通约，统一 WBC benchmark 仍缺位。
+- 其余开放问题集中在数据与接口：动捕/遥操作成本与真机安全限制 scaling，语言/子目标 → 低层 BFM 的协议尚未标准化。
+- 用法提示：本页保留 **综述元信息与 taxonomy 原貌**，机制归纳看 [Behavior Foundation Model 概念页](../concepts/behavior-foundation-model.md)，逐篇导读走技术地图；索引本身在动（截至 2026-07 已 42 篇 + 10 数据集）。
+
 ## 关联页面
 
 - [Behavior Foundation Model](../concepts/behavior-foundation-model.md) — 本库 BFM 概念归纳（编译自本综述）

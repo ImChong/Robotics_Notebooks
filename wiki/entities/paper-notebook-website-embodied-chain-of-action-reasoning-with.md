@@ -45,6 +45,14 @@ Embodied Chain of Action Reasoning 的人形机器人学习论文条目，当前
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是一个仅有题名定位的占位节点：这条工作把「chain-of-thought」式推理搬到动作层（chain of action），由多模态基础模型驱动人形 loco-manipulation，但深读笔记未撰写，机制与效果均无从核实。**
+
+- 从题名可确定的定位是 **多模态基础模型 + 具身动作链推理 → 人形 loco-manipulation**，归入 04_Loco-Manipulation_and_WBC 分类，与本页速查表中的 VLA 接口属同一问题域。
+- 当前处于 Paper Notebooks **progress 待深读** 阶段，且本页 venue 标为 curated、未登记 arXiv 编号，连稳定的论文标识都尚未固定。
+- 使用方式：仅作分类子节点入口，避免知识图谱缺口；实质内容请走 [参考来源](#参考来源) 中的 progress.json。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

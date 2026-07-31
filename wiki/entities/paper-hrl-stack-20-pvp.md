@@ -66,6 +66,15 @@ PvP 的全称是 Proprioceptive-Privileged Contrastive Representations。它关�
 
 我的判断**这种 proprioceptive-privileged 表示学习会越来越常见，因为它正好连接了仿真训练和真实部署之间的信息落差。**
 
+## 结论
+
+**PvP 处理的不是「控制器不够强」，而是仿真与真机之间的信息落差：把训练时看得到、部署时看不到的 privileged 状态，压成部署时仍然有用的表征。**
+
+- 机制是用 **对比学习** 桥接两类观测：部署侧只有 proprioception（关节角、关节速度、IMU、历史动作），仿真侧还有身体速度、接触状态、地形信息等 privileged states，二者的互补关系被压成 **紧凑、任务相关的 latent**。
+- 它瞄准的是 whole-body control 的 **样本效率与部分可观测** 这类基础问题——视频冲击力不如跑酷/开门，但复用面更宽，因此这类表示学习大概率会越来越常见。
+- 边界：motion tracking 类工作所说的泛化常指 **参考分布内**，换数据源或接触条件仍可能崩塌。
+- 本页为策展编译，量化 benchmark、消融与实机指标以原文 / 项目页为准（代码见 SRL4Humanoid 仓库）。
+
 ## 常见误区
 
 1. Motion tracking 论文的泛化常指 **参考分布内**；换数据源或接触条件仍可能崩塌。

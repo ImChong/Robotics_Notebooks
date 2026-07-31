@@ -61,6 +61,14 @@ sources:
 
 为后续 goal-conditioned 或 imitation 提供 **可迁移的探索先验**，降低冷启动样本需求。
 
+## 结论
+
+**RND 在这份 BFM 书单里的角色是「无任务阶段的燃料」：它解决的是没有外部奖励时身体如何自发现新状态，而不是如何完成任务。**
+
+- 机制定位清晰：用 **intrinsic reward**（探索、多样性、后继态等）预训练身体策略，为后续 goal-conditioned 或 imitation 提供**可迁移的探索先验**，降低冷启动样本需求。
+- 边界同样清晰：内在预训练**不替代任务奖励**，下游仍需任务或示范对齐才能收敛到有用行为。
+- 本页只保留 survey 坐标与交叉引用，方法背景挂在通用的 [reinforcement-learning](../methods/reinforcement-learning.md) 方法页，机制与实验以 ICLR 2019 原文为准。
+
 ## 常见误区
 
 1. Intrinsic 预训练不替代任务奖励；它提供 **探索覆盖**，下游仍需任务或示范对齐。

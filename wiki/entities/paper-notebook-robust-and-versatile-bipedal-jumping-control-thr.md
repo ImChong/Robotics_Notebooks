@@ -46,6 +46,14 @@ Robust and Versatile Bipedal Jumping Control through Reinforcement Learning 的�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是该论文的占位索引：一篇用 RL 做双足跳跃控制、同时主打「鲁棒」与「多样」的工作，但本库尚未深读其奖励设计与迁移细节。**
+
+- 可确认的只有分类归属（05_Locomotion）与 arXiv 出处；核心机制、消融与实机指标全部待深读补齐。
+- 跳跃是高动态、对 Sim2Real 差异最敏感的技能之一，「鲁棒」与「多样」如何同时达成正是该被追问的地方——本页尚无答案。
+- 当前价值是图谱可检索性；引用任何跳跃距离或成功率数字前请回到论文原文。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

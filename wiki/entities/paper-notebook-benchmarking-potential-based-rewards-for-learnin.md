@@ -46,6 +46,14 @@ Benchmarking Potential Based Rewards for Learning Humanoid Locomotion 的人形�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是该 benchmark 类工作的占位索引实体，只登记了它在阅读计划中的位置，尚不构成对其奖励设计结论的任何转述。**
+
+- 现状：列入 Paper Notebooks 的 **PROGRESS.md 待深读** 清单，分类 05_Locomotion，深读笔记尚未撰写。
+- 因此本页 **不含任何量化结论**：benchmark、消融与实机指标待笔记完成后补充——对一篇以对比实验为主体的工作，这一点尤其需要注意。
+- 可用之处只有检索：经 [分类父节点](../overview/paper-notebook-category-05-locomotion.md) 与 [总索引](../overview/humanoid-paper-notebooks-index.md) 交叉定位，原文入口为 arXiv 2307.10142。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

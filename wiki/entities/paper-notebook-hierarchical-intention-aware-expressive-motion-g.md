@@ -47,6 +47,14 @@ Hierarchical Intention-Aware Expressive Motion Generation for Humanoid Robots �
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页当前是占位实体而非论文归纳：它只保证这条「意图感知的表达性动作生成」条目在图谱中有节点，实质结论要等深读笔记。**
+
+- 页面现状：status 为 planned，正文只有分类归属与 progress.json 待深读状态，没有可供提炼的机制、指标或实验内容。
+- 从标题能读出的定位仅限于「分层 + 意图感知 + 人形表达性动作生成」，归入 04_Loco-Manipulation_and_WBC；分层如何切分、意图从哪来在本页均无依据。
+- 使用方式：把本页当检索入口——分类父节点 [paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md) 与 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)；要读实质内容请直接走原文。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

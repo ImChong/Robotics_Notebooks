@@ -112,6 +112,16 @@ flowchart TB
 4. **调试信号：** 若初始化失败，检查 **Schur 条件数轨迹** 与 anchor 帧的 $s_{\mathrm{drs}}$，而非先 blame 检测器 recall。
 5. **与 [AprilTag](../entities/april-tag.md) / 棋盘格：** 框架面向 **标定 target 角点**；需与下游 BA 的 target 模型一致。
 
+## 结论
+
+**CO-Calib 把多鱼眼标定的失败归因从「角点检测不够好」改写成「内参初始化病态」，并据此选了最省事的落地位置：不动 BA 后端，只重构喂进去的观测序列。**
+
+- 真正起作用的是 $s_{\mathrm{iso}}$ / $s_{\mathrm{drs}}$ 两个可观测性判据加 Anchor→Co-visible→Mono-fill 三阶段选帧：同规模随机子集 SR 仅 **30.9%**、去掉 initialization 仅 **13.5%**，说明增益来自 **帧序与可观测性对齐**，不是帧数或图像均匀性。
+- 调试顺序应当反过来：先看 Schur 条件数轨迹与 anchor 帧的 $s_{\mathrm{drs}}$，再怀疑检测器 recall——论文用 **全 GT 观测反而降低成功率** 反证了「参数不可分」才是主因。
+- 适用边界清楚：标准双目各 yaw 上 Kalibr 已 5/5，收益集中在 **宽 FoV 与多相机** 配置（合成 68.1%→**99.3%**，Hex-Fisheye 0/10→**10/10**）。
+- 局限：未覆盖 IMU–相机时空标定，对非鱼眼 pinhole 多相机的迁移需另验证；代码 **即将开源**，ingest 时 API 尚未验证。
+- 与 TartanCalib（改检测）、MC-Calib（改 target）对照：CO-Calib 只做 **前置数据构造**，因此定位是 Kalibr / Basalt 的 **plug-in**，而非另起一套求解栈。
+
 ## 与其他工作对比
 
 | 方法 | 改动范围 | 观测构造 | 宽 FoV 鲁棒性 | 与现有 BA 关系 |

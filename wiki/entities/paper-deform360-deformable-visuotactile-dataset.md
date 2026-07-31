@@ -104,6 +104,16 @@ flowchart TB
 | **发布** | 代码、pipeline、交互 4D 查看器、BibTeX |
 | **会议** | ECCV 2026 |
 
+## 结论
+
+**Deform360 的贡献不是又一个可变形体模型，而是把「2D 视频可扩展 vs 3D 粒子结构先验」这场范式之争放进同分布数据里裁决——而裁决结果是依赖数据量的 trade-off，不是单一赢家。**
+
+- 真正的门槛在 **采集与标注管线**：41 路环绕相机 + 双手触觉 UMI，经 3DGS → 无标记 2D tracking → 3D lifting → physics-informed 优化产出 dense 粒子，让两条 WM 路线第一次吃到同一批数据。
+- 核心结论是 **数据量依赖**：低数据下 3D 粒子模型凭结构先验占优，大数据下 2D 视频 WM 泛化更好——把「谁更强」改写成「在什么规模下更强」。
+- 数据确实能下游：PhysTwin + MPC 在 **未见 xArm 的第二实验室** 做 cloth/rope **零微调** 迁移，说明它不止是渲染 benchmark。
+- 触觉的覆盖面是硬边界：只给 **法向压力 cue**，**切向 micro-slip 未观测**；采集为 lab 固定，动作空间以 human UMI 原语为主。
+- 定位上与 [VT-WAM](./paper-vt-wam-visuotactile-contact-rich.md) 的真机闭环互补——本页是 **offline benchmark**；开放获取走项目页与 HF 仓库，条款以其为准。
+
 ## 与其他工作对比
 
 | 数据集 / 工作 | 关系 |

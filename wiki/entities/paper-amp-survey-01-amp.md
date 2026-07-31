@@ -92,6 +92,16 @@ flowchart TB
 | 参考 | 无任务标签的 MoCap 库（走、跑、跳等多风格） |
 | 输出 | 单一策略覆盖任务空间 + 自然风格 |
 
+## 结论
+
+**AMP 的真正贡献是把「像人」从逐帧跟踪改写成状态转移的分布匹配，于是风格变成可与任意任务奖励并联的可插拔模块，而不是一条必须复现的参考轨迹。**
+
+- 起作用的机制很窄也很关键：判别器只看短窗口状态转移，策略不必满足 $s_t \approx s_t^{\mathrm{ref}}$，因此偏离参考轨迹时仍能拿风格奖励，同一策略可完成参考库中未出现的任务与速度。
+- 复合奖励 $r = w_g r^g + w_{\mathrm{amp}} r^{\mathrm{amp}}$ 的工程收益是替掉大量手工平滑与关节速度惩罚；去掉风格项通常直接退化为高频抖动、滑步与不自然姿态，判别器窗口长度与状态维度则影响训练稳定性。
+- 适用边界要说清：原文对象是 **physics-based character** 而非机器人本体，且判别器与策略 **共训**；把 AMP 当「预训练冻结先验」用属于另一条工程路线（[SMP](../methods/smp.md)）。
+- 主要风险是单一全局判别器硬套全身：[Selective AMP](../methods/amp-reward.md) 与 [SD-AMP](./paper-unified-walk-run-recovery-sdamp.md) 表明稳态 walk 与高动态 recovery 可能需要不同先验或门控。
+- 今天它的角色更像 **模块而非完整方案**：MimicKit / ProtoMotions 等栈已把 AMP 奖励标准化，[AMP_mjlab](../entities/amp-mjlab.md) 与 SD-AMP 在 G1 上仍把它当 loco+recovery 的常用正则，而具体任务配方由后续工作各自补齐。
+
 ## 常见误区
 
 1. **AMP = 动作克隆：** 核心是**分布匹配**，不是 replay 某条参考；同一策略可完成参考库中未出现的任务（如 dodge、新速度）。

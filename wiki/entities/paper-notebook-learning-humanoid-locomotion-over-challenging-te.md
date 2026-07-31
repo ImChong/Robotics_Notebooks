@@ -46,6 +46,14 @@ Learning Humanoid Locomotion over Challenging Terrain 的人形机器人学习�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是「复杂地形人形行走」这一条目的占位索引，结论性内容需等深读笔记落地后才成立。**
+
+- 目前只有元信息可用：分类 05_Locomotion、arXiv 2410.03654、计划笔记文件夹路径与 PROGRESS.md 待深读状态。
+- 地形适应究竟依赖何种机制，本页未给出任何依据，不要据标题下判断。
+- 适用边界：作为 05_Locomotion 分类父节点下的连边节点存在；量化 benchmark、消融与实机指标以论文原文为准。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

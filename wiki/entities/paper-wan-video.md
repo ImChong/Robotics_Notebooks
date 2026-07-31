@@ -135,6 +135,16 @@ sequenceDiagram
 | 机器人适配层 | 在 Wan 上加 **动作 / 掩码 / 轨迹 / IR**，不要期望裸 I2V 给出可执行动作 |
 | 版本钉扎 | 派生论文写明 2.1 vs 2.2 vs Fun-Control；权重与 DiffSynth commit 需一并记录 |
 
+## 结论
+
+**Wan 在本库的价值不在单点 SOTA，而在「可微调的开源视频先验」这一生态位：它把骨干与许可做成公共品，把动作语义留给机器人适配层。**
+
+- 真正让它成为事实标准骨干的是组合拳——高效 **Wan-VAE**、1.3B/14B 双档覆盖、Apache-2.0 权重与 Diffusers/ComfyUI 生态，而非某个基准分数；报告主线本就是「能力覆盖 + 缩放 + 可部署」。
+- 最硬的可部署实证点是 T2V-1.3B 约 **8.19 GB VRAM** 消费级可跑，这是「效果 vs 显存」权衡的锚，也是原型选型的默认起点。
+- 适用边界：无原生动作接口与接触保证，裸 I2V 不会给出可执行动作；要走 [Video-as-Simulation](../concepts/video-as-simulation.md) 仍需额外条件与校准。
+- 主要引用风险是版本混淆：arXiv:2503.20314 对应 Wan2.1 主叙事，Wan2.2 的 MoE 分时专家与 TI2V-5B 须另标官方来源；派生工作必须钉扎版本（[Wan-Move](./paper-wan-move.md) 用 I2V-14B，[Masked Visual Actions](./paper-masked-visual-actions.md) 用 Wan2.2-Fun-A14B-Control）。
+- 与 [Ctrl-World](./paper-ctrl-world.md) 对照可见边界：可控世界模型并不必然绑定 Wan，选它是为了先验与生态，不是唯一解。
+
 ## 局限与风险
 
 - **不是机器人仿真器：** 无原生动作接口与接触保证；[Video-as-Simulation](../concepts/video-as-simulation.md) 仍需额外条件与校准。

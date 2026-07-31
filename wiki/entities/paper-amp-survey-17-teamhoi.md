@@ -97,6 +97,16 @@ flowchart TB
 - $r_{\text{ang}}$：相邻队友角间隔趋近 $2\pi/m$。
 - $r_{\text{cov}}$：支撑凸包相对桌 CoM **主轴覆盖**；$r_{\text{form}}=0.25 r_{\text{ang}}+0.75 r_{\text{cov}}$。
 
+## 结论
+
+**TeamHOI 用「遮蔽先验 + 队友 token」绕开多人协作 MoCap 的缺口：不是去补数据，而是把单人参考只用在它仍然成立的那部分身体上。**
+
+- 关键机制是 **masked AMP**：$D_{\text{full}}$ 管全身风格，$D_{\text{mask}}$ 剔除与物体接触的部位后再判别，交互指示 $\alpha_t$ 经 sigmoid 连续混合两路风格奖，手–桌接触交给任务奖塑形。
+- 任意队形的可扩展性来自结构而非多套 checkpoint：本地观测 + 队友 cross-attention，训练时并行 2/4/8 人环境并**按队形分别归一化 PPO advantage**，单一策略覆盖 OOD 队形。
+- 最可复用的工程件是 formation 奖励 $r_{\text{form}}=0.25 r_{\text{ang}}+0.75 r_{\text{cov}}$：对桌形与人数 agnostic，且接触点用桌缘 64 候选而非 oracle 手位。
+- 边界：仍是**去中心化执行的仿真工作**，勿当作硬件多机部署已解决；真机侧的单人 HSI 由 [PhysHSI #15](./paper-amp-survey-15-physhsi.md) 承担。
+- 与 CooHOI 对照：后者每队形一策略、无显式队友状态；TeamHOI 接受统一参数化带来的混合训练复杂度，换来的是**任意 N**。
+
 ## 常见误区
 
 1. **不是 centralized critic 指挥：** 每 agent **独立执行同一参数策略**，仅通过 **局部可观测量 + 队友 token** 协调。

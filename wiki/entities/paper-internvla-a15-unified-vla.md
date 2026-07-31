@@ -133,6 +133,16 @@ flowchart TB
 
 **消融（Table 8）：** 去掉 video loss 或 foresight tokens → LIBERO-Plus / DOMINO 跌幅最大，说明 **潜式前瞻** 主要服务 **分布偏移与动态交互**。
 
+## 结论
+
+**A1.5 的核心取舍是把世界模型放在训练侧当「潜式教师」、推理侧整段丢弃：用一次性的动力学蒸馏换实时闭环，同时靠持续语言共训避免动作目标侵蚀语义。**
+
+- 起作用的是两个可消融的开关：**50 个 foresight token 查询冻结 WAN2.2 的 video loss**，以及 Stage 1–2 的 **持续 VQA/子任务共训**（机器人:多模态 0.15:0.85）。Table 8 显示去掉 video loss 或 foresight token 时 LIBERO-Plus / DOMINO 跌幅最大——潜式前瞻主要服务 **分布偏移与动态交互**，语义共训则对应 **组合指令 OOD 绑定**。
+- 部署形态是它与同族 WAM 的真正分水岭：推理不滚像素、**~0.1s/步**，真机 MOF **76.4%** vs π₀.₅ 29.3%、Motus 0%——差距更多来自「不付像素想象的延迟税」，而非单纯模型规模。
+- 适用边界明确：foresight 视界 **≤ 一个 action chunk**，没有长程显式规划或在线 world-model roll；长程能力来自子任务分解，不要指望它做远期推演。
+- 上界受教师约束：WAN 冻结且通用，embodied 场景覆盖受其预训练分布限制；代码/权重截至 ingest 尚未公开。
+- 最容易误读的两点：它不是测试期仍滚 WAN 的 WAM；持续 VQA 也不是可选正则，而是论文当作组合 grounding 的核心设计。
+
 ## 常见误区或局限
 
 - **误区：** 把 A1.5 当成测试期仍滚 WAN 的 WAM——**视频 生成器仅训练期监督 foresight token，推理接口是纯 VLA + flow head**。

@@ -59,6 +59,14 @@ AGILE 先从相机图像/多视角观测、本体状态与关节序列、仿真�
 - 评测原始出处：[原文 / 项目页](https://github.com/nvidia-isaac/WBC-AGILE)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-03-visuomotor.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**AGILE 的定位是 workflow 而非单点方法：它把从视觉观测、本体状态到低层控制器目标的各段拼成一条可复用的人形 loco-manipulation 学习流程。**
+
+- 起作用的机制是分层技能/专家策略加高层路由，训练侧用 PPO/RL 与全身控制器/WBC/MPC，输入侧同时吃相机图像/多视角观测、本体状态与仿真交互数据。
+- 归在 **03 视觉感知驱动的人形移动操作**，工程属性明显：论文/项目入口直接指向 GitHub 仓库 <https://github.com/nvidia-isaac/WBC-AGILE>，而不是纯论文页。
+- 适用边界：本页是索引级策展摘录，量化 benchmark 与实机指标以原文 / 仓库为准；workflow 本身不替代底层 WBC 鲁棒性。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

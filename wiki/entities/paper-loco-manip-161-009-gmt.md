@@ -63,6 +63,14 @@ sources:
 - 量化指标与真机视频见 [paper-gmt.md](./paper-gmt.md) 与 [项目页](https://gmt-humanoid.github.io/)。
 - 横向地图：[分类 hub](../overview/loco-manip-161-category-01-motion-base-wbt.md)、[技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**这一页的价值是「纠错型索引」：它给出 GMT 在 161 篇地图中的坐标，同时明确否掉公众号一句话里的扩散/流匹配误述。**
+
+- GMT 本体是 **RL 跟踪策略**：两阶段教师–学生，**Adaptive Sampling** 平衡难易片段，**Motion MoE** 拓宽动作表达，输入含局部 key body 与未来窗运动，数据为 AMASS+LAFAN1 策展约 **8925 clips**。
+- 误述的代价是实的：把它当扩散动作生成器会错配下游用法——MDM 只是它的下游跟踪试验对象，不是它的本体。
+- 本页不承载量化指标：方法深读、开源边界与真机视频请走 [paper-gmt.md](./paper-gmt.md) 与项目页；地图上它常被 ResMimic / PhyGile / EGM 等当作「通用 tracker」参照。
+
 ## 常见误区
 
 1. 把 161 篇一句话当方法定义 → 先读 [paper-gmt.md](./paper-gmt.md)。

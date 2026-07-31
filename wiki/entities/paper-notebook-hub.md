@@ -47,6 +47,15 @@ HuB 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**HuB（Learning Extreme Humanoid Balance）在本库被挂在 loco-manipulation/WBC 分类下，作为「极限平衡」方向的占位节点存在，实质内容尚未写入。**
+
+- 唯一的方向线索来自标题与分类：极限平衡问题，归入 **04_Loco-Manipulation_and_WBC**，与全身控制主线同族。
+- 「极限平衡」如何定义、用什么任务与指标衡量，本页均无依据，不应据此下效果判断。
+- 与同分类多数条目不同，本页的深读进度追踪指向 **progress.json** 而非 PROGRESS.md，后续 ingest 时注意来源差异。
+- 计划文件夹路径已定，笔记完成后应把本页升格为完整索引实体并重写本节。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

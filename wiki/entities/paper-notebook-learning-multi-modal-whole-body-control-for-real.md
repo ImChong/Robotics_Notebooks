@@ -46,6 +46,14 @@ Learning Multi-Modal Whole-Body Control for Real-World Humanoid Robots 的人形
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页只是「真机人形多模态全身控制」条目的占位节点，尚不承载任何机制或指标结论。**
+
+- 可核验信息仅有分类 04_Loco-Manipulation_and_WBC、arXiv 2408.07295 与计划笔记文件夹路径。
+- 「多模态」具体指哪些模态、如何与 WBC 结合，正文完全未展开，属于待深读的空白。
+- 适用边界：仅用于检索与图谱补全，避免在综述或横向对比中把本页当作已消化的证据。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

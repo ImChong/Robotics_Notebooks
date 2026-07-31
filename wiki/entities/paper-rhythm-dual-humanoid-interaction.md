@@ -101,6 +101,16 @@ flowchart TB
 - **观测重建**：LCM 广播全局 $\{P,R\}$，各机转 ego 系得到与仿真一致的 $o_{peer}$。
 - **时间对齐**：以 motion phase $\phi$ 为进度变量，**软同步** $\dot{\phi}_{ego}=1+k(\phi_{peer}-\phi_{ego})$，避免硬重置带来的动作跳变。
 
+## 结论
+
+**Rhythm 把双 humanoid 交互从仿真推到真机，难点不在单机跟踪，而在重定向层的 kinematic conflict 与部署层的机间定位/相位对齐——IAMR、IGRL、部署栈三段缺一不可。**
+
+- 重定向层是真正的胜负手：IAMR 把 Interaction Mesh 边集拆成 self / inter，用距离衰减弹簧（近距变硬、远距变软）在个体流形与统一交互流形之间取舍，并顺带导出交互图与接触图供奖励对齐；Table I 中它在 Intensive Contact 上做到 IPR=0。
+- 策略层的收益来自显式建模伙伴：peer 相对位姿观测 + 继承 IAMR 权重的图奖励；ablation 显示去掉 peer obs、interaction reward 或 contact reward 都显著损伤成功率。
+- 真机能跑靠的是基础设施：POINT-LIO + GICP + Kalman 融合定位、LCM 广播重建 $o_{peer}$、以 motion phase 做软同步——这也是最硬的适用边界，预建地图 LiDAR 定位与可靠机间通信在非结构化野外仍是瓶颈。
+- 前提是双机同构（两台 G1 级人形）；异构双机或人–机混合需重新设计观测与接触图。
+- 与 [AssistMimic](./paper-assistmimic.md) 别混：后者是护理 assistive 力交换、以仿真 avatar 为主证据，Rhythm 是对称社交/协调交互、以真机为主证据；开源侧 MAGIC 声明将公开，但 ingest 时未挂独立 GitHub。
+
 ## 常见误区或局限
 
 - **双机同构前提**：框架针对 **两台 G1 级同构人形**；异构双机或人–机混合需重新设计观测与接触图。

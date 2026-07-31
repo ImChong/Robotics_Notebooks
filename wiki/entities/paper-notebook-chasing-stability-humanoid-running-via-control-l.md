@@ -46,6 +46,14 @@ Chasing Stability 的人形机器人学习论文条目，当前处于 Paper Note
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页当前是知识图谱里的占位节点，而不是对 Chasing Stability 的归纳——它记录的是「这篇该读、归在哪一类、还没读」。**
+
+- 页面能给出的确定信息只有四项：分类为 05_Locomotion、深读状态为待撰写、计划文件夹路径已预留、arXiv 入口已登记。
+- 论文本身的机制、量化 benchmark 与实机结论 **本页均未涵盖**，不要把这里的任何表述当作对该工作的评价。
+- 它的作用是保持图谱完整、可从 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类父节点交叉检索到该实体；深读笔记完成后本页应链向笔记站并升格为完整索引实体。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

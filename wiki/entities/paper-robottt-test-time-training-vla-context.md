@@ -106,6 +106,17 @@ flowchart TB
 
 平台：**YAM 双臂** dexterous setup；基线含 **GR00T N1.7**（单步）、**+1 历史帧**、**GDN** 固定状态记忆。
 
+## 结论
+
+**RoboTTT 把「长上下文」从 KV cache 换成层内 fast weights：用每步一次自监督梯度更新买到相对上下文长度恒定的推理成本，代价是记忆内容不可枚举、训练配方敏感。**
+
+- 真正起作用的是 **上下文 scaling 趋势**——128→8K 步时完成分单调上升且未饱和，而 GDN 固定状态记忆与 +1 历史帧基线没有这条趋势，说明增益来自 TTT 递推本身而非多喂一帧。
+- 同一套 **context masking** 配方买到两种能力：人视频作纯上下文 → 未见配置 one-shot 装配；失败 rollout + 人工纠正作上下文 → 部署后无人工在线自纠偏。
+- 适用边界是 **长程、需跨分钟记忆的双臂装配**（~5 min 级任务上 ~89 vs ~42）；短程单步任务本就差距有限，8K 上下文的收益无从体现。
+- 主要风险在工程侧：TBPTT 段长、门控 \(\alpha\) 与 masking 配方对稳定性敏感；「记住 8K 步」是压缩进固定大小权重，能记什么由自监督目标与 meta-learned 更新动力学决定。
+- 落地状态保守：入库时无 arXiv、无公开代码，真机证据仅项目页列出的 YAM 双臂装配域；与 KV / 关键帧记忆类 VLA 尚无同 benchmark 系统对比。
+- 与 [TTT-Parkour](./paper-notebook-ttt-parkour.md)、[WAM-TTT](./paper-wam-ttt-human-video-test-time-steering.md) 同名不同物：那两者是部署前或批次级的离线 TTT，本页是 **训练与部署都在线** 的层内递推。
+
 ## 常见误区或局限
 
 - **误区：** 把 RoboTTT 等同于 **测试时全模型 fine-tune** 或 [TTT-Parkour](./paper-notebook-ttt-parkour.md) 式 **离线仿真微调**——RoboTTT 更新的是 **层内 fast weights**，主慢权重与预训练 VLA 骨干通过门控保留。

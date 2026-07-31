@@ -59,6 +59,14 @@ UniTracker 把相机图像/多视角观测、本体状态与关节序列、仿�
 - 评测原始出处：[原文 / 项目页](https://yinkangning0124.github.io/Humanoid-UniTracker/)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-01-motion-base-wbt.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**UniTracker 追求的是「通用」而非某一类动作的最优跟踪：用特权信息训出教师，再把能力蒸馏到只有部署观测的学生，把全身跟踪从仿真的理想观测搬到真机可得的观测上。**
+
+- 真正起作用的是 **教师–学生的观测降级**：训练期吃仿真特权信息，部署期只留本体状态与关节序列等可得量。
+- 定位在 **01 运控基座与通用全身跟踪**，是供上层 loco-manip 工作复用的底座，本身不解决任务级语义。
+- 本页为 161 篇索引级条目，未搬运量化 benchmark；跟踪精度与动作覆盖范围以 [原文 / 项目页](https://yinkangning0124.github.io/Humanoid-UniTracker/) 为准。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

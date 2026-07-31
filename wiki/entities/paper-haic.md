@@ -114,6 +114,16 @@ sequenceDiagram
 | 任务入口 | `python scripts/train.py algo=ppo_haic_train task=G1/haic/skateboard` |
 | 导出 | `python scripts/play.py ... export_policy=true` |
 
+## 结论
+
+**HAIC 把「世界模型」用来预测物理后果而不是预测图像：从本体历史推断对象速度/加速度，再投影到几何先验成 dynamic occupancy，用于在视觉盲区里做接触决策。**
+
+- 真正起作用的是 **可部署的输入选择**：预测只吃 proprioceptive history，不依赖外部状态估计或视觉，因此箱体/车体遮挡时策略仍有依据推断接触后果。
+- 训练侧的关键是 **非对称微调**：world model 持续适配 student policy 的探索分布，避免 teacher 监督与 student rollout 分布错位。
+- 能力边界由泛化区间划出：拉车 **0–20 kg**、推车 **0–70 kg**、箱子 **0.5–1.3 kg / 30–40 cm**、地形旋转 **0°/30°/45°**；world model 依赖训练分布，极端接触或新几何仍可能失效。
+- 定位是 **身体层 / 世界模型控制而非任务规划**：对象类别限于滑板、推车、拉车这类欠驱动非完整系统，离柔性、流体、多人协作仍远。
+- 工程可复现度相对高：`ldt29/HAIC` 已开放 asset、world model、训练/评估/play 与 ONNX 导出，Sim2Sim 由 HOIC-baseline 承接；但 setup/usage 文档仍标为待补充。
+
 ## 与其他工作对比
 
 | 维度 | HAIC | 末端位姿跟踪（刚性物体假设） | 图像预测世界模型（Dreamer 类） | 外部 / 视觉状态估计 |

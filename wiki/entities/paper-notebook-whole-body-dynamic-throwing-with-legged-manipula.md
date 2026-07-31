@@ -47,6 +47,14 @@ Whole-Body Dynamic Throwing with Legged Manipulators 的人形机器人学习论
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是待深读占位节点，登记的是这篇 04_Loco-Manipulation_and_WBC 论文的阅读进度，而非对其方法的评价。**
+
+- 页面可确证的信息只有分类归属与「待深读」状态；标题层面指向足式机械臂平台上的全身动态投掷。
+- 「实验与评测」明确留空，投掷精度、距离等任何指标都需回到原文。
+- 深读笔记完成后本页应升格为完整索引实体并链向笔记站。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

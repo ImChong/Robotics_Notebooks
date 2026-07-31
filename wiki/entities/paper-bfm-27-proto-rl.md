@@ -58,6 +58,14 @@ sources:
 
 为后续 goal-conditioned 或 imitation 提供 **可迁移的探索先验**，降低冷启动样本需求。
 
+## 结论
+
+**Proto-RL 属于 BFM 栈的「冷启动」层：它不负责完成任务，而是用原型表示把无外部奖励阶段探索到的行为组织成可检索的空间，供下游 goal-conditioned 或模仿阶段复用。**
+
+- 起作用的是 **intrinsic reward**（探索、多样性、后继态等）驱动的无任务预训练，产出可迁移的探索先验，从而降低下游冷启动的样本需求。
+- 边界很硬：intrinsic 预训练不替代任务奖励，它提供的是 **探索覆盖**，下游仍需任务信号或示范对齐才能定向到具体行为。
+- 本页为索引级坐标（awesome-bfm #27/41，**03 Intrinsic reward 预训练**，2021 · ICML，代码 <https://github.com/denisyarats/proto>）；量化 benchmark、消融与实机指标以原文 PDF 为准。
+
 ## 常见误区
 
 1. Intrinsic 预训练不替代任务奖励；它提供 **探索覆盖**，下游仍需任务或示范对齐。

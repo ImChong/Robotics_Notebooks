@@ -63,6 +63,15 @@ sources:
 
 在 BFM taxonomy 中回答「身体能覆盖多少目标条件技能」。
 
+## 结论
+
+**InterMimic 把 goal-conditioned 的条件对象从身体自身推到人–物交互与接触结果：衡量标准不再是姿态像不像，而是交互成不成立。**
+
+- 机制仍属 **02 Goal-conditioned** 路线——以 goal / reference / command 为条件训练全身跟踪或交互策略；差异在数据侧融合 HOI、控制侧强调抗扰、恢复与跨参考泛化。
+- 边界很实在：条件化跟踪不等于 unlimited skills，仍受**数据分布、接触建模与实机 Sim2Real** 三重约束。
+- 在 BFM taxonomy 中它回答的是「身体能覆盖多少目标条件技能」；同类接触技能可与 [SkillMimic](./paper-notebook-skillmimic-learning-basketball-interaction-skill.md) 的篮球 HOI 模仿对照阅读。
+- 本页为索引级策展编译，量化 benchmark 与消融以原文 PDF 及 `Sirui-Xu/InterMimic` 为准。
+
 ## 常见误区
 
 1. Goal-conditioned 跟踪不等于 unlimited skills：仍受数据分布、接触建模与实机 Sim2Real 约束。

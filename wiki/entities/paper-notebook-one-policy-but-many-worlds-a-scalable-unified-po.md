@@ -46,6 +46,14 @@ One Policy but Many Worlds 的人形机器人学习论文条目，当前处于 P
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是尚未深读的占位实体：它承担的是图谱完整性，而不是对这篇工作的评价。**
+
+- 该条目已列入 Paper Notebooks 的 PROGRESS.md 待深读清单，分类为 05_Locomotion，可从总索引与分类父节点检索到。
+- 深读笔记尚未撰写，本页不含机制拆解、量化 benchmark 或实机指标，不应作为技术结论的依据。
+- 升格路径清晰：笔记写入计划文件夹后，本页需链向笔记站并深化归纳。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

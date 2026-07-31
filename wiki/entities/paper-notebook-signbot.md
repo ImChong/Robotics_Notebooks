@@ -47,6 +47,14 @@ SignBot 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是 SignBot 的待深读占位节点；目前可确认的主要是一个归类判断——「人到人形的手语交互」被放进 04_Loco-Manipulation_and_WBC，而不是纯感知或语言类目。**
+
+- 标题界定的问题是双向的手语交互，即以表达为目的的上肢/全身动作，这解释了它落在全身控制类目下的原因。
+- 深读笔记尚未撰写、「实验与评测」明确留空，本页不可作为任何量化指标或实机结论的出处。
+- 核心信息表未给 arXiv 行，深读状态与计划文件夹以 progress.json 为准；上溯路径为 [04_Loco-Manipulation_and_WBC 分类父节点](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md) 与 [总索引](../overview/humanoid-paper-notebooks-index.md)。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

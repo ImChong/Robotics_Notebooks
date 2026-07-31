@@ -47,6 +47,14 @@ SLAC 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是 SLAC 的占位索引：一条「先在仿真里预训练潜动作空间，再拿到真机上做全身 RL」的路线，但本库尚未深读其潜空间设计与真机代价。**
+
+- 可确认的只有分类归属（04_Loco-Manipulation_and_WBC）与计划文件夹路径；核心机制、量化指标与真机结果全部待深读补齐。
+- 标题已点出这条路线的赌注——用仿真预训练的 **潜动作空间** 压缩真机 RL 的探索维度——而这一压缩是否损失可达动作集，正是深读时该追问的。
+- 当前价值是图谱可检索性；深读笔记完成前，不宜把本页当作方法结论的来源。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

@@ -59,6 +59,14 @@ SkillBlender 先从相机图像/多视角观测、本体状态与关节序列、
 - 评测原始出处：[原文 / 项目页](https://usc-gvl.github.io/SkillBlender-web/)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-03-visuomotor.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**SkillBlender 走的是技能复用路线：先有一组全身基础技能，再通过 skill blending 组合出多样的 loco-manipulation 行为，而不是为每个任务从头重训一个全身策略。**
+
+- 起作用的机制是 PPO/RL 训练的技能/专家策略加扩散策略/流匹配的条件生成，再由全身控制器/WBC/MPC 落地——动作生成被当作在多模态分布里采样可执行轨迹的问题。
+- 输入侧同时用相机图像/多视角观测、本体状态与接触力/触觉信号恢复场景、目标或运动表征，输出是全身轨迹/动作序列。
+- 适用边界：本页是索引级坐标（**#077**，03 视觉感知驱动的人形移动操作），versatility 的量化口径与实机指标以原文 / 项目页为准。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

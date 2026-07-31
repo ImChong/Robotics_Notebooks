@@ -46,6 +46,14 @@ FLAM 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**FLAM 在本库目前只是一条「已排期、未深读」的占位实体：它保证"基础模型用于人形躯干稳定"这一线索在图谱中不缺节点，但还给不出可引用的方法结论。**
+
+- 本页能确认的只有索引层信息——arXiv 2503.22249、分类 14_Human_Motion 与计划中的笔记文件夹；标题指向"基于基础模型的身体稳定，服务于人形运动与操作"这一命题，基础模型具体承担何种角色、如何与底层控制衔接，页内均未展开。
+- 适用边界：适合经[分类父节点](../overview/paper-notebook-category-14-human-motion.md)与[人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)做检索与交叉定位，不适合作为方案对比或工程选型的依据。
+- 主要风险是把占位页误读成已消化的结论：量化 benchmark、消融与实机指标本页全部缺失，深读状态须回到 PROGRESS.md 跟踪，结论以论文原文为准。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)

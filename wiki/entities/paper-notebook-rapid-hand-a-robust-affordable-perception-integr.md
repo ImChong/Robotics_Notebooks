@@ -46,6 +46,14 @@ RAPID Hand 的人形机器人学习论文条目，当前处于 Paper Notebooks �
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是 RAPID Hand 的占位索引：一个面向通用机器人自主性的「鲁棒 + 可负担 + 感知一体化」灵巧操作平台，但本库尚未深读其硬件取舍与实测表现。**
+
+- 可确认的只有定位：12_Hardware_Design 之下的灵巧手／操作平台工作，标题自陈的三个卖点是鲁棒性、成本可负担与感知集成。
+- 这类硬件平台真正的看点是取舍——成本 vs 自由度 vs 传感覆盖——而本页尚未记录任何取舍细节与实测数据。
+- 当前价值是图谱可检索性；引用硬件参数或成本结论前请回到论文原文。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)

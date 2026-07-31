@@ -60,6 +60,14 @@ REFINE-DP 的实现路径是先把语言指令、相机图像/多视角观测、
 - 评测原始出处：[原文 / 项目页](https://refine-dp.github.io/REFINE-DP/)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-09-vla-world-models.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**REFINE-DP 的取舍是「先模仿再强化」：扩散策略提供可执行的动作先验，RL 只负责把它在 loco-manip 的实际分布上微调回来。**
+
+- 起作用的机制链是：语言指令、相机图像/多视角观测、本体状态与关节序列编码成多模态表征，再由 PPO/RL 策略训练、ACT/行为克隆与扩散策略/流匹配预测关节位置/力矩命令与低层控制器目标。
+- 适用边界在 **09 人形 VLA、世界模型与通用操作**：微调的是动作生成层，不代表底层 WBC 鲁棒性随之改善。
+- 索引级局限与溯源注意：本页未搬运量化 benchmark，数值以 [原文 / 项目页](https://refine-dp.github.io/REFINE-DP/) 为准；且「机构」一栏填的是期刊名（IEEE ROBOTICS AND AUTOMATION LETTERS）而非研究单位，引用时勿直接照抄。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

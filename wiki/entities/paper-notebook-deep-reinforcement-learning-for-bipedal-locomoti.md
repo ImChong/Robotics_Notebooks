@@ -46,6 +46,14 @@ Deep Reinforcement Learning for Bipedal Locomotion 的人形机器人学习论�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页目前只能支撑一个结论：这是一条已进入 05_Locomotion 深读队列、但尚未产出笔记的条目，它现在的价值是图谱可达性，而不是内容。**
+
+- 页面能确证的信息仅限分类（05_Locomotion）、arXiv 编号与计划文件夹路径；该综述的覆盖范围、方法分类与结论均未经消化。
+- 因此本页 **不可作为技术判断依据**：任何关于双足 RL 现状的引用都应回到论文原文，或等 PROGRESS.md 追踪的深读笔记完成。
+- 定位是 **占位子节点**，保证知识图谱不缺该实体；笔记完成后应升格为完整索引实体，并重写本节为面向内容的结论。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

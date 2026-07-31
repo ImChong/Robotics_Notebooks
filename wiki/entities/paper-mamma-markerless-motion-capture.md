@@ -129,6 +129,16 @@ flowchart TB
 - **Vicon 对标：** 额外 37 marker/人作独立 GT；markerless vs MoSh++ held-out 误差差 ~1.6 mm。
 - **局限：** 当前聚焦 **最多两人**；需 **标定多相机**；非商业科研许可；真机部署仍需 [GMR](../methods/motion-retargeting-gmr.md) 等重定向与物理筛选。
 
+## 结论
+
+**MAMMA 用「稠密虚拟 marker + 多视角几何」换掉了贴标与人工后处理：它买到的是双人近距离交互下与 Vicon 可比的精度，付出的是必须标定多相机、且最多两人的硬约束。**
+
+- 真正起作用的是 MammaNet 的 512 稠密 landmark 与 per-landmark query，输出 μ、σ、可见性概率（及接触概率），使 SMPL-X 拟合能按 p_vis 加权、σ 归一化自动降权遮挡点——这是三阶段 L-BFGS 在不用 HMR 回归初始化的情况下仍能收敛的前提。
+- 关键指标是 held-out marker 相对 MoSh++ 管线仅差 ~1.6 mm，以及 3D 拟合在双人 Harmony4D/CHI3D 上的明显增益；训练完全来自 MAMMASyn 合成数据，仍能泛化到 MOYO 等极端 OOD 姿态。
+- 适用边界与失败模式：需同步多视角与标定（32 相机棚拍或 4×iPhone）、当前最多两人、非商业科研许可；野外仍受标定与遮挡限制，它不是单目手机方案。
+- 输出是 SMPL-X 运动学序列而非关节指令，上机器人必须经 [Motion Retargeting](../concepts/motion-retargeting.md) 与 [GMR](../methods/motion-retargeting-gmr.md) 及接触/平衡筛选。
+- 生态定位：相对 [GVHMR](./gvhmr.md) 的单目便捷与 [AMASS](./amass.md) 的大库离线，MAMMA 占「现场采集 + 研究级精度」这一格；与 [FreeMoCap](./freemocap.md) 的低成本教学取向在许可与硬件假设上都不重叠。
+
 ## 常见误区
 
 1. **MAMMA = 单目手机 HMR：** 核心是 **同步多视角**（虽可用 4 iPhone，但仍需标定与几何一致）；与 [GVHMR](./gvhmr.md) 单目深度歧义问题不同。

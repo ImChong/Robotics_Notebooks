@@ -167,6 +167,16 @@ BFM backbone 主要来自非交互运动，缺少抓/推物体的细节。Stage 
 | [Humanoid-DART](./paper-humanoid-dart.md) | 稀疏示范 + 扩散轨迹自举 | 需要 seed demonstrations 与物理仿真 | RL motion tracker |
 | [VLK](./paper-vlk-synthetic-loco-manipulation.md) | 3DGS 重建场景合成数据 | 依赖场景标注与 G1 interaction synthesis | SceneBot tracker |
 
+## 结论
+
+**Imagine2Real 的取舍是「用统一 4D 点轨迹换掉 CAD/6D pose 与稠密重定向，再用 BFM 潜空间把自然性买回来」：生成视频提供任务意图与粗物理过程，真正的执行能力来自 tracker、adaptor 与 mocap 支架。**
+
+- 真正起作用的是表示与搜索空间的双重收窄：机器人与物体统一成同一视频空间的 4D 点（只追 base、双手、物体），动作搜索被限制在 **32 维 BFM latent** 的 residual 上，而不是直接在关节空间追点。
+- 消融清楚地标出代价：Direct tracking 点误差最低（手 **1.95 cm**、基座 **1.66 cm**），但 action rate **1.65**、smoothness **0.64**；BFM 版本点误差变大，却把 MPJAE 压到 **0.25**、action rate 压到 **0.22**——换来的是自然性与可执行性。
+- 接触能力来自 Interaction Adaptor 而非 BFM 本身：Carry Box 无 adaptor 成功率 **0.00** → **82.65%**，Push Box **29.82%** → **64.91%**，说明 68.5h 非交互运动先验里没有推/搬物体的细节。
+- 适用边界是 mocap 场地内：mocap 既提供实时 keypoints，又用初始帧位置解决生成视频缺 metric depth 的尺度歧义；离开它需要 onboard SLAM 或多相机替代，close-contact pushing 还会受 marker 遮挡影响。
+- 主要风险在链路两端：上游是开环、闭源且物理一致性不稳的视频生成，下游是不含接触力、物体朝向与手指姿态的稀疏点表示；与 [GenHOI](./paper-loco-manip-03-genhoi.md) 同属生成式补数，但后者靠几何校正兜底，本页靠 BFM 潜空间兜底。
+
 ## 局限与风险
 
 - **依赖 mocap**：marker occlusion 会影响 close-contact pushing；离开 mocap 场地需要 onboard SLAM、多相机或自跟踪替代。
