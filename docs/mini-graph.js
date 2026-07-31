@@ -251,6 +251,47 @@
       .attr('font-size','10px')
       .attr('pointer-events','none');
 
+    // ── 搜索联动：首页搜索框输入时，背景图谱高亮相关节点、其余淡出 ──
+    function tokenizeMini(q) {
+      return String(q || '').toLowerCase().split(/[^a-z0-9一-鿿]+/i)
+        .filter(function(t){ return t.length >= 2; });
+    }
+    function clearHighlight() {
+      nodeG.classed('mini-node-dim', false).classed('mini-node-hit', false);
+      line.classed('mini-edge-dim', false);
+    }
+    function highlightNodes(idList, query) {
+      var idSet = {};
+      (idList || []).forEach(function(id){ idSet[id] = true; });
+      var tokens = tokenizeMini(query);
+      var hitSet = {};
+      var hitCount = 0;
+      nodes.forEach(function(n) {
+        var hit = !!idSet[n.id];
+        if (!hit && tokens.length) {
+          var lab = String(n.label || '').toLowerCase();
+          for (var i = 0; i < tokens.length; i++) {
+            if (lab.indexOf(tokens[i]) >= 0) { hit = true; break; }
+          }
+        }
+        if (hit) { hitSet[n.id] = true; hitCount++; }
+      });
+      // 预览图只含前 50 度数节点，命中可能为空；此时不淡出，避免整图变暗却无高亮的困惑
+      if (!hitCount) { clearHighlight(); return; }
+      nodeG.classed('mini-node-dim', function(d){ return !hitSet[d.id]; });
+      nodeG.classed('mini-node-hit', function(d){ return !!hitSet[d.id]; });
+      line.classed('mini-edge-dim', function(d){
+        var s = (d.source && d.source.id) || d.source;
+        var t = (d.target && d.target.id) || d.target;
+        return !(hitSet[s] && hitSet[t]);
+      });
+    }
+    window.RNMiniGraph = { highlight: highlightNodes, clear: clearHighlight };
+    var pending = window.__miniGraphPendingQuery;
+    if (pending && (pending.query || (pending.ids && pending.ids.length))) {
+      highlightNodes(pending.ids || [], pending.query || '');
+    }
+
     applyMiniGraphTheme();
 
     var observer = new MutationObserver(function() {

@@ -568,6 +568,15 @@ a.hero-stat-num:focus-visible {
 #mini-graph-section #mini-graph-wrap {
   margin-top: 18px;
 }
+/* 搜索联动：输入关键词时背景图谱高亮相关节点、其余淡出 */
+.mini-graph-node { transition: opacity var(--transition, .2s) ease; }
+.mini-graph-node.mini-node-dim { opacity: .15; }
+.mini-graph-node.mini-node-hit circle {
+  stroke: var(--accent);
+  stroke-width: 2;
+  paint-order: stroke;
+}
+#mini-graph-svg line.mini-edge-dim { opacity: .08; transition: opacity var(--transition, .2s) ease; }
 /* 首页图谱预览 2D / 3D 切换（3D 画布懒加载，容器与 SVG 同位叠放） */
 #mini-graph-3d { position: absolute; inset: 0; }
 #mini-graph-3d[hidden] { display: none; }
