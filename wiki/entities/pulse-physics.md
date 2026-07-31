@@ -1,14 +1,19 @@
 ---
 type: entity
-tags: [locomotion, rl, humanoid, motion-prior, hmi-opensource-table, repo, linux-foundation]
-status: draft
-updated: 2026-07-30
-summary: "PULSE：在物理人体控制器之上学习潜在动作空间，再由高层策略组合潜变量完成目标任务；它把低层自然运动约束与任务学习分离，适合研究可复用技能表示而非直接机器人部署。"
+tags: [locomotion, rl, humanoid, motion-prior, hmi-opensource-table, repo, paper, hmi-papers, nvidia, berkeley]
+status: complete
+updated: 2026-07-31
+arxiv: "2310.04582"
+code: https://github.com/ZhengyiLuo/PULSE
+summary: "PULSE（arXiv:2310.04582）：把 PHC 等物理跟踪教师蒸馏为状态条件潜变量策略，下游只需输出潜动作即可复用运动技能；HMI P027 / 开源主表同入口。"
 related:
   - ../tasks/humanoid-locomotion.md
   - ../methods/reinforcement-learning.md
+  - ./phc.md
+  - ./zhengyi-luo.md
   - ../entities/humanoid-motion-intelligence.md
   - ../queries/hmi-opensource-projects-coverage.md
+  - ../queries/hmi-papers-coverage.md
 sources:
   - ../../sources/repos/pulse-physics.md
   - ../../sources/repos/humanoid-motion-intelligence.md
@@ -16,7 +21,7 @@ sources:
 
 # PULSE
 
-[PULSE](https://github.com/ZhengyiLuo/PULSE) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md) 的「Locomotion与运动先验」分组，是本库为该入口建立的独立详情节点。
+**PULSE**（*Universal Humanoid Motion Representations for Physics-Based Control*，[arXiv:2310.04582](https://arxiv.org/abs/2310.04582)，[代码](https://github.com/ZhengyiLuo/PULSE)）收录于 HMI 开源主表与论文总索引 **P027**。本页是该论文/仓库的**唯一详情节点**（文件名历史原因含 `physics`，内容即 ZhengyiLuo/PULSE，而非无关物理引擎）。
 
 ## 一句话定义
 
@@ -26,10 +31,10 @@ sources:
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| PULSE | PULSE | PULSE 相关缩写，详见正文 |
-| RL | Reinforcement Learning | 并行仿真中学习运动策略 |
-| AMP | Adversarial Motion Prior | 对抗约束动作接近人类分布 |
-| PPO | Proximal Policy Optimization | 腿式/人形 RL 常用算法 |
+| PULSE | Physics-based Universal Latent Skill Embedding | 状态条件潜变量运动表征 |
+| PHC | Perpetual Humanoid Control | 常用教师跟踪系统 |
+| RL | Reinforcement Learning | 下游任务在潜空间上学习 |
+| VAE | Variational Autoencoder | 信息瓶颈/潜变量训练结构族 |
 
 ## 为什么重要
 
@@ -82,12 +87,40 @@ flowchart LR
 - **开源状态可能变化**：标为待发布的项目后续可能放码；已开源仓库也可能拆分或迁移路径。
 - **不要与同名论文页混淆**：若本库另有 `paper-*` 深读页，以论文页承载方法细节，本实体页侧重工程入口与选型。
 
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant U as 用户
+  participant R as ZhengyiLuo/PULSE
+  participant T as 教师跟踪器/数据
+  participant D as 潜变量 Decoder
+  participant H as 下游任务策略
+  U->>R: clone + 按 README 安装
+  U->>T: 准备/加载物理跟踪教师
+  U->>D: 训练或加载 latent decoder
+  H->>D: 任务目标 → 潜变量 z
+  D-->>H: 关节动作
+```
+
+## 结论
+
+**PULSE 的关键是「把已会跟踪的身体能力压成可调用潜空间」，而不是再训一个更大的逐帧 tracker。**
+
+- 下游应学习输出 z，而不是重新模仿整段参考。
+- 所谓通用仍受 SMPL 仿真人与训练动作分布限制。
+- 本页同时服务开源主表与论文 P027，勿再平行建页。
+- 复现以官方 README 与 arXiv:2310.04582 为准。
+
 ## 关联页面
 
 - [humanoid-locomotion](../tasks/humanoid-locomotion.md)
 - [reinforcement-learning](../methods/reinforcement-learning.md)
+- [PHC](./phc.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
+- [论文总索引导读](../queries/hmi-papers-coverage.md)
 
 ## 参考来源
 
@@ -98,4 +131,5 @@ flowchart LR
 ## 推荐继续阅读
 
 - [官方入口](https://github.com/ZhengyiLuo/PULSE)
+- [arXiv:2310.04582](https://arxiv.org/abs/2310.04582)
 - [Humanoid Motion Intelligence 知识库实体页](./humanoid-motion-intelligence.md)
