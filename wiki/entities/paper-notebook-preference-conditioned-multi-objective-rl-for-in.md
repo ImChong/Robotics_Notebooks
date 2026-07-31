@@ -46,6 +46,14 @@ Preference-Conditioned Multi-Objective RL for Integrated Command Tracking and Fo
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是「指令跟踪 vs. 力顺应」这一多目标权衡议题在图谱里的占位子节点，尚不构成对该方法的判断。**
+
+- 页面上唯一确定的信息是归类与计划路径：分类 05_Locomotion、计划文件夹 `papers/05_Locomotion/preference-conditioned-multi-objective-rl-for-in`，深读状态仍为「待撰写」。
+- 适用边界：可用于按分类检索与交叉链接，不可当作该论文机制或指标的依据——本页未给出偏好条件化的具体形式，也没有任何量化结果。
+- 主要风险是被误当成已消化的笔记：本页「实验与评测」已明确 benchmark、消融与实机指标待补，引用前应回到 PROGRESS.md 与 <https://arxiv.org/abs/2510.10851>。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

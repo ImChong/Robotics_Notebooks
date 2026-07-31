@@ -46,6 +46,14 @@ PIMBS 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是 PIMBS 的占位子节点，价值在于让肌骨人形（12_Hardware_Design）这一分支在图谱里不缺项，而不是给出 body schema 学习的结论。**
+
+- 页面上唯一确定的信息是归类与计划路径：分类 12_Hardware_Design、计划文件夹 `papers/12_Hardware_Design/pimbs-efficient-body-schema-learning-for-musculo`，深读状态仍为「待撰写」。
+- 适用边界：可用于分类检索与 ingest 起点，不可当作方法或指标依据——本页未给出任何机制描述与量化结果。
+- 主要风险是被误当成已消化的笔记：本页「实验与评测」已明确 benchmark、消融与实机指标待补，引用前应回到 PROGRESS.md 与 <https://arxiv.org/abs/2506.20343>。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)
