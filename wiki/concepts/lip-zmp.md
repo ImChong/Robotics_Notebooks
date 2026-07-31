@@ -3,9 +3,16 @@ type: concept
 tags: [locomotion, control, dynamics, bipedal]
 status: complete
 summary: "LIP/ZMP 用简化倒立摆和零力矩点刻画双足稳定性，是经典 humanoid 行走控制的理论基础。"
-updated: 2026-04-25
+updated: 2026-07-31
 sources:
   - ../../sources/papers/footstep_and_balance.md
+  - ../../sources/papers/humoslope_arxiv_2607_07830.md
+related:
+  - ../tasks/locomotion.md
+  - ../methods/model-predictive-control.md
+  - ./whole-body-control.md
+  - ./optimal-control.md
+  - ../entities/paper-humoslope-physics-guided-slope-locomotion.md
 ---
 
 # LIP / ZMP
@@ -197,6 +204,10 @@ LIP 太简化，忽略了：
 
 所以别把 ZMP 神化。它很经典，但不是终点。
 
+### 5. 陡坡上别默认世界水平面参考
+
+多数 RL/规划里的 ZMP 偏差在 **世界水平面** 上评估；坡度变大时，支撑平面与重力方向错位，水平面偏差会系统性偏离真实接触几何。[HumoSlope](../entities/paper-humoslope-physics-guided-slope-locomotion.md) 把正则改到**局部倾斜支撑平面**，并用接触力加权锚点做稠密奖励——这是把经典 ZMP 嵌进 model-free RL 时更物理一致的做法。
+
 ## 最小代码骨架
 
 这段代码展示了 LIP / ZMP 的最小闭环：
@@ -238,6 +249,7 @@ print("final com state:", traj[-1])
 - Kajita et al., *Biped walking pattern generation by using preview control of zero-moment point* — preview control 经典论文
 - Wieber, *Trajectory Free Linear Model Predictive Control for Stable Walking in the Presence of Strong Perturbations* — LIP 与 MPC 的理论连接
 - **ingest 档案：** [sources/papers/footstep_and_balance.md](../../sources/papers/footstep_and_balance.md) — ZMP / CP / DCM / Herdt 在线步位规划
+- [HumoSlope（arXiv:2607.07830）](../../sources/papers/humoslope_arxiv_2607_07830.md) — 局部支撑平面 slope-adaptive ZMP 正则 + BSGA；G1 盲坡面 locomotion
 
 ## 和已有页面的关系
 
@@ -260,6 +272,11 @@ LIP / ZMP 常用于上层步态规划，WBC 负责下层把这些目标变成全
 当你把 ZMP 约束、CoM 轨迹、落脚点规划写进代价函数和约束里，本质上就是一个简化最优控制问题。
 
 见：[Optimal Control (OCP)](./optimal-control.md)
+
+### 和 HumoSlope 的关系
+HumoSlope 把 ZMP 从水平面参考改写为**局部支撑平面偏差奖励**，再接生物力学门控以抑制蹲姿退化——是本页理论在陡坡 RL 中的直接延伸。
+
+见：[HumoSlope 极端坡面物理引导步态](../entities/paper-humoslope-physics-guided-slope-locomotion.md)
 
 ## 推荐继续阅读
 

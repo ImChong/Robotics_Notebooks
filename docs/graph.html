@@ -969,9 +969,6 @@
       background: rgba(0,0,0,0.04);
       color: rgba(0,0,0,0.9);
     }
-    [data-theme="light"] .filter-mode-tabs {
-      border-bottom-color: rgba(0,0,0,0.07);
-    }
     [data-theme="light"] .filter-subtitle {
       color: rgba(0,0,0,0.35);
     }
@@ -1306,7 +1303,7 @@
       box-shadow: 0 8px 32px rgba(0,0,0,0.55);
       overflow: hidden;
     }
-    .filter-panel > :not(.filter-resize-handle):not(.filter-body) {
+    .filter-panel > :not(.filter-resize-handle):not(.filter-sections-scroll) {
       flex-shrink: 0;
     }
     .filter-header {
@@ -1351,18 +1348,29 @@
       line-height: 1.35;
       margin: 0 14px 6px;
     }
-    .filter-body {
-      padding: 8px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
+    /* 按类型 / 按社区 / 按健康度：可折叠区滚动容器（对齐路线视图 / 机构） */
+    .filter-sections-scroll {
       flex: 1 1 auto;
-      min-height: 160px;
+      min-height: 120px;
       overflow-y: auto;
       scrollbar-width: thin;
       scrollbar-color: rgba(255,255,255,0.28) transparent;
     }
-    /* 研究机构筛选列表：独立于着色维度，限高滚动，避免面板过长 */
+    .filter-sections-scroll::-webkit-scrollbar { width: 8px; }
+    .filter-sections-scroll::-webkit-scrollbar-track { background: transparent; }
+    .filter-sections-scroll::-webkit-scrollbar-thumb {
+      background-color: rgba(255,255,255,0.28);
+      border-radius: 999px;
+    }
+    .filter-sections-scroll::-webkit-scrollbar-corner { background: transparent; }
+    [data-theme="light"] .filter-sections-scroll {
+      scrollbar-color: rgba(0,0,0,0.28) transparent;
+    }
+    [data-theme="light"] .filter-sections-scroll::-webkit-scrollbar-thumb {
+      background-color: rgba(0,0,0,0.28);
+    }
+    /* 维度 / 机构筛选列表：限高滚动，避免面板过长 */
+    .filter-dimension-list,
     .filter-institution-list {
       display: flex;
       flex-direction: column;
@@ -1373,24 +1381,25 @@
       scrollbar-color: rgba(255,255,255,0.28) transparent;
       padding: 4px 0 8px;
     }
-    .filter-body::-webkit-scrollbar {
-      width: 8px;
-    }
-    .filter-body::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    .filter-body::-webkit-scrollbar-thumb {
+    .filter-dimension-list::-webkit-scrollbar,
+    .filter-institution-list::-webkit-scrollbar { width: 8px; }
+    .filter-dimension-list::-webkit-scrollbar-track,
+    .filter-institution-list::-webkit-scrollbar-track { background: transparent; }
+    .filter-dimension-list::-webkit-scrollbar-thumb,
+    .filter-institution-list::-webkit-scrollbar-thumb {
       background-color: rgba(255,255,255,0.28);
       border-radius: 999px;
     }
-    .filter-body::-webkit-scrollbar-corner {
-      background: transparent;
-    }
-    [data-theme="light"] .filter-body {
+    [data-theme="light"] .filter-dimension-list,
+    [data-theme="light"] .filter-institution-list {
       scrollbar-color: rgba(0,0,0,0.28) transparent;
     }
-    [data-theme="light"] .filter-body::-webkit-scrollbar-thumb {
+    [data-theme="light"] .filter-dimension-list::-webkit-scrollbar-thumb,
+    [data-theme="light"] .filter-institution-list::-webkit-scrollbar-thumb {
       background-color: rgba(0,0,0,0.28);
+    }
+    [data-theme="light"] .filter-mode-tabs {
+      border-bottom-color: rgba(0,0,0,0.07);
     }
     .filter-section-title {
       padding: 8px 14px 4px;
@@ -1541,11 +1550,15 @@
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
       }
-      .filter-body {
+      .filter-sections-scroll {
         flex: 1 1 auto;
         min-height: 0;
         max-height: none;
         overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .filter-dimension-list {
+        max-height: 180px;
         -webkit-overflow-scrolling: touch;
       }
       .filter-footer {
@@ -1854,45 +1867,53 @@
                  aria-label="按连接数显示前 N 个节点" />
         </div>
       </div>
-      <div id="filter-panel-body" class="filter-body"></div>
-      <details class="filter-depth-section" id="filter-depth-section">
-        <summary class="filter-depth-summary">
-          <span class="filter-depth-summary-label">路线视图</span>
-          <span class="filter-depth-summary-current" id="filter-depth-current"><span>🌐</span><span>全量</span></span>
-        </summary>
-        <div class="filter-depth-chips" id="filter-depth-chips">
-          <button class="filter-depth-chip is-active" type="button" data-depth="all" title="全量"><span>🌐</span><span>全量</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="motion-control" title="主路线-运动控制"><span>🧭</span><span>主路线-运动控制</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="teleoperation" title="遥操作"><span>🎮</span><span>遥操作</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="torque-motor-design" title="力矩电机设计"><span>⚙️</span><span>力矩电机设计</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="classical-control" title="传统控制"><span>📐</span><span>传统控制</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="humanoid-hardware-design" title="整机硬件"><span>🛠️</span><span>整机硬件</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="safe-control" title="安全控制"><span>🛡️</span><span>安全控制</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="contact-manipulation" title="接触操作"><span>🤏</span><span>接触操作</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="navigation" title="导航"><span>🗺️</span><span>导航</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="imitation-learning" title="模仿学习"><span>🎓</span><span>模仿学习</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="rl-locomotion" title="RL 运动控制"><span>🚶</span><span>RL 运动控制</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="loco-manipulation" title="Loco-Manip"><span>🤖</span><span>Loco-Manip</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="humanoid-soccer" title="人形足球"><span>⚽</span><span>人形足球</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="motion-retargeting" title="动作重定向"><span>🤸</span><span>动作重定向</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="humanoid-swarm-performance" title="人形群控展演"><span>🕺</span><span>人形群控展演</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="sim2real" title="Sim2Real"><span>🔁</span><span>Sim2Real</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="humanoid-boxing" title="人形拳击"><span>🥊</span><span>人形拳击</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="bfm" title="BFM"><span>🧠</span><span>BFM</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="perceptive-locomotion" title="感知越障"><span>👁️</span><span>感知越障</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="motion-generation" title="动作生成"><span>✨</span><span>动作生成</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="vla" title="VLA"><span>👀</span><span>VLA</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="real2sim" title="Real2Sim"><span>🌍</span><span>Real2Sim</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="wam" title="WAM"><span>🔮</span><span>WAM</span></button>
-        </div>
-      </details>
-      <details class="filter-depth-section" id="filter-institution-section">
-        <summary class="filter-depth-summary">
-          <span class="filter-depth-summary-label">研究机构</span>
-          <span class="filter-depth-summary-current" id="filter-institution-current"><span>🏛️</span><span>全部</span></span>
-        </summary>
-        <div class="filter-institution-list" id="filter-institution-list"></div>
-      </details>
+      <div class="filter-sections-scroll" id="filter-dimension-sections">
+        <details class="filter-depth-section" id="filter-dimension-section">
+          <summary class="filter-depth-summary">
+            <span class="filter-depth-summary-label" id="filter-dimension-label">按社区</span>
+            <span class="filter-depth-summary-current" id="filter-dimension-current"><span>🧩</span><span>全部</span></span>
+          </summary>
+          <div class="filter-dimension-list" id="filter-panel-body"></div>
+        </details>
+        <details class="filter-depth-section" id="filter-depth-section">
+          <summary class="filter-depth-summary">
+            <span class="filter-depth-summary-label">路线视图</span>
+            <span class="filter-depth-summary-current" id="filter-depth-current"><span>🌐</span><span>全量</span></span>
+          </summary>
+          <div class="filter-depth-chips" id="filter-depth-chips">
+            <button class="filter-depth-chip is-active" type="button" data-depth="all" title="全量"><span>🌐</span><span>全量</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="motion-control" title="主路线-运动控制"><span>🧭</span><span>主路线-运动控制</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="teleoperation" title="遥操作"><span>🎮</span><span>遥操作</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="torque-motor-design" title="力矩电机设计"><span>⚙️</span><span>力矩电机设计</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="classical-control" title="传统控制"><span>📐</span><span>传统控制</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="humanoid-hardware-design" title="整机硬件"><span>🛠️</span><span>整机硬件</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="safe-control" title="安全控制"><span>🛡️</span><span>安全控制</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="contact-manipulation" title="接触操作"><span>🤏</span><span>接触操作</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="navigation" title="导航"><span>🗺️</span><span>导航</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="imitation-learning" title="模仿学习"><span>🎓</span><span>模仿学习</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="rl-locomotion" title="RL 运动控制"><span>🚶</span><span>RL 运动控制</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="loco-manipulation" title="Loco-Manip"><span>🤖</span><span>Loco-Manip</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="humanoid-soccer" title="人形足球"><span>⚽</span><span>人形足球</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="motion-retargeting" title="动作重定向"><span>🤸</span><span>动作重定向</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="humanoid-swarm-performance" title="人形群控展演"><span>🕺</span><span>人形群控展演</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="sim2real" title="Sim2Real"><span>🔁</span><span>Sim2Real</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="humanoid-boxing" title="人形拳击"><span>🥊</span><span>人形拳击</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="bfm" title="BFM"><span>🧠</span><span>BFM</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="perceptive-locomotion" title="感知越障"><span>👁️</span><span>感知越障</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="motion-generation" title="动作生成"><span>✨</span><span>动作生成</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="vla" title="VLA"><span>👀</span><span>VLA</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="real2sim" title="Real2Sim"><span>🌍</span><span>Real2Sim</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="wam" title="WAM"><span>🔮</span><span>WAM</span></button>
+          </div>
+        </details>
+        <details class="filter-depth-section" id="filter-institution-section">
+          <summary class="filter-depth-summary">
+            <span class="filter-depth-summary-label">研究机构</span>
+            <span class="filter-depth-summary-current" id="filter-institution-current"><span>🏛️</span><span>全部</span></span>
+          </summary>
+          <div class="filter-institution-list" id="filter-institution-list"></div>
+        </details>
+      </div>
       <div class="filter-footer">
         <button id="filter-clear" class="filter-clear">清除全部</button>
       </div>
@@ -2031,7 +2052,14 @@
     const filterModeCommunityBtn = document.getElementById('filter-mode-community');
     const filterModeHealthBtn = document.getElementById('filter-mode-health');
     const filterPanelBody = document.getElementById('filter-panel-body');
+    const filterDimensionLabel = document.getElementById('filter-dimension-label');
+    const filterDimensionCurrent = document.getElementById('filter-dimension-current');
     const filterPanelScrim = document.getElementById('filter-panel-scrim');
+    const FILTER_DIMENSION_META = {
+      type: { emoji: '🏷️', unit: '项' },
+      community: { emoji: '🧩', unit: '个社区' },
+      health: { emoji: '💚', unit: '项' },
+    };
 
     function isFilterPanelMobileMode() {
       return window.matchMedia('(max-width: 768px)').matches;
@@ -3313,6 +3341,16 @@
       return '按类型';
     }
 
+    function updateDimensionFilterSummary() {
+      const meta = FILTER_DIMENSION_META[colorMode] || FILTER_DIMENSION_META.community;
+      const n = activeFilters.size;
+      const text = n ? (n + ' ' + meta.unit) : '全部';
+      if (filterDimensionLabel) filterDimensionLabel.textContent = getColorModeLabel(colorMode);
+      if (filterDimensionCurrent) {
+        filterDimensionCurrent.innerHTML = '<span>' + meta.emoji + '</span><span>' + text + '</span>';
+      }
+    }
+
     function renderFilterPanel() {
       const title = '🔍 图谱筛选';
       if (filterToggle) filterToggle.title = '图谱筛选（当前' + getColorModeLabel(colorMode) + '）';
@@ -3322,26 +3360,25 @@
       if (filterModeTypeBtn) filterModeTypeBtn.classList.toggle('active', colorMode === 'type');
       if (filterModeCommunityBtn) filterModeCommunityBtn.classList.toggle('active', colorMode === 'community');
       if (filterModeHealthBtn) filterModeHealthBtn.classList.toggle('active', colorMode === 'health');
+      updateDimensionFilterSummary();
       if (!filterPanelBody) return;
       const options = getFilterOptions();
       if (!options.length) {
         filterPanelBody.innerHTML = '<div class="filter-empty">当前暂无可筛选项</div>';
       } else {
-        filterPanelBody.innerHTML =
-          '<div class="filter-section-title">' + escapeHtml(getColorModeLabel(colorMode)) + '筛选</div>'
-          + options.map(option => {
-              const checked = activeFilters.has(option.value) ? ' checked' : '';
-              const meta = colorMode === 'community' ? communityMetaMap.get(option.value) : null;
-              const countBadge = meta && meta.size != null
-                ? '<span class="filter-count-badge">' + escapeHtml(String(meta.size)) + '</span>'
-                : '';
-              return '<label class="filter-item">'
-                + '<input type="checkbox" value="' + escapeHtml(option.value) + '"' + checked + ' /> '
-                + '<span class="filter-dot" style="background:' + escapeHtml(option.color) + '"></span>'
-                + '<span class="filter-item-label">' + escapeHtml(option.label) + '</span>'
-                + countBadge
-                + '</label>';
-            }).join('');
+        filterPanelBody.innerHTML = options.map(option => {
+          const checked = activeFilters.has(option.value) ? ' checked' : '';
+          const meta = colorMode === 'community' ? communityMetaMap.get(option.value) : null;
+          const countBadge = meta && meta.size != null
+            ? '<span class="filter-count-badge">' + escapeHtml(String(meta.size)) + '</span>'
+            : '';
+          return '<label class="filter-item">'
+            + '<input type="checkbox" value="' + escapeHtml(option.value) + '"' + checked + ' /> '
+            + '<span class="filter-dot" style="background:' + escapeHtml(option.color) + '"></span>'
+            + '<span class="filter-item-label">' + escapeHtml(option.label) + '</span>'
+            + countBadge
+            + '</label>';
+        }).join('');
       }
 
       filterPanelBody.querySelectorAll('input[type="checkbox"]').forEach(cb => {
@@ -3352,6 +3389,7 @@
           } else {
             activeFilters.delete(cb.value);
           }
+          updateDimensionFilterSummary();
           applyFilters();
           updateFilterCount();
         });
@@ -3973,7 +4011,9 @@
 
     /* ── checkbox 筛选 ── */
     function updateFilterCount() {
-      const count = activeFilters.size + activeInstitutions.size + (topDegreeIds ? 1 : 0) + (currentDepth && currentDepth !== 'all' ? 1 : 0);
+      const count = activeFilters.size + activeInstitutions.size
+        + (topDegreeIds ? 1 : 0)
+        + (currentDepth && currentDepth !== 'all' ? 1 : 0);
       const countEl = document.getElementById('filter-count');
       if (count > 0) {
         countEl.textContent = count;
@@ -5126,6 +5166,9 @@
     const communityParam = new URLSearchParams(location.search).get('community');
     if (communityParam && communityMetaMap.has(communityParam)) {
       focusedCommunityId = communityParam;
+      if (colorMode !== 'community') setColorMode('community');
+      const dimSection = document.getElementById('filter-dimension-section');
+      if (dimSection) dimSection.open = true;
       renderLegend();
       renderFilterPanel();
       applyFilters();
