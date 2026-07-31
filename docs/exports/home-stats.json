@@ -110,7 +110,7 @@
       "recency": "2026-07-30",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "Query：具身大模型评测基准选型闭环知识链 社区"
+      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
     },
     {
       "path": "wiki/overview/topic-embodied-eval-benchmark.md",
