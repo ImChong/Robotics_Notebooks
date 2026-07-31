@@ -1,14 +1,14 @@
 ---
 type: overview
-tags: [topic, topic-wbt, whole-body-tracking, motion-tracking, humanoid]
+tags: [hub, hub-wbt, whole-body-tracking, motion-tracking, humanoid]
 status: complete
-updated: 2026-06-17
-summary: "全身运动跟踪（WBT）专题汇总：参考采集→重定向→跟踪训练→跨具身→真机部署的端到端流水线，对比 SONIC/BeyondMimic/SD-AMP/Heracles 等路线。"
+updated: 2026-07-31
+summary: "全身运动跟踪（WBT）知识链汇总：参考采集→重定向→跟踪训练→跨具身→真机部署的端到端流水线，对比 SONIC/BeyondMimic/SD-AMP/Heracles 等路线。"
 ---
 
-# 全身运动跟踪 WBT（专题汇总）
+# 全身运动跟踪 WBT（知识链汇总）
 
-> **图谱专题视图**：本页是知识图谱「🕺 全身运动跟踪 (WBT)」专题的统一入口；在 [图谱专题视图](../../docs/graph.html?topic=wbt) 筛选时，本节点为汇总锚点。
+> **知识链汇总**：本页是相关概念/方法的统一入口；对应策展纵深见图谱 [路线视图](../../docs/graph.html?depth=bfm) 与 [路线页](../../roadmap/depth-bfm.md)。
 
 ## 一句话定义
 
@@ -30,7 +30,7 @@ summary: "全身运动跟踪（WBT）专题汇总：参考采集→重定向→�
 - **2024–2026 论文爆发区**：SONIC、BeyondMimic、Heracles 等形成可复现谱系。
 - **与重定向 / Sim2Real 强耦合**：WBT 质量上限由参考与迁移共同决定。
 
-## 本专题覆盖什么
+## 本知识链覆盖什么
 
 | 层次 | 典型问题 | 站内入口 |
 |------|----------|----------|
@@ -40,12 +40,12 @@ summary: "全身运动跟踪（WBT）专题汇总：参考采集→重定向→�
 | Query | 方法选型 | [Humanoid Motion Tracking Method Selection](../queries/humanoid-motion-tracking-method-selection.md) |
 | 栈 | 42 篇 RL 运动控制 | [Humanoid RL Motion Control Body System Stack](./humanoid-rl-motion-control-body-system-stack.md) |
 
-## 与其他专题的关系
+## 与其他知识链的关系
 
-- **[动作重定向](./topic-motion-retargeting.md)**：WBT 上游参考来源。
-- **[跨具身](./topic-cross-embodiment.md)**：Any2Any 等跨形态跟踪。
-- **[IL/RL](./topic-learning.md)**：跟踪策略主流用 RL + 模仿奖励。
-- **[训练数据](./topic-data-pipeline.md)**：WBT 的参考动作由训练数据管线产出（来源→质量→重定向）。
+- **[动作重定向](./hub-motion-retargeting.md)**：WBT 上游参考来源。
+- **[跨具身](./hub-cross-embodiment.md)**：Any2Any 等跨形态跟踪。
+- **[IL/RL](./hub-learning.md)**：跟踪策略主流用 RL + 模仿奖励。
+- **[训练数据](./hub-data-pipeline.md)**：WBT 的参考动作由训练数据管线产出（来源→质量→重定向）。
 
 ## 关联页面
 
@@ -56,4 +56,4 @@ summary: "全身运动跟踪（WBT）专题汇总：参考采集→重定向→�
 ## 参考来源
 
 - 本库归纳自 [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) 及 WBT 方法/对比页
-- 图谱专题定义：[docs/topic-filters.js](../../docs/topic-filters.js)（`wbt` 命中规则）
+- 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`wbt` 命中规则）

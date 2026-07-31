@@ -1222,10 +1222,11 @@ def _tag_keyword_match(tags: set[str], keywords: tuple[str, ...]) -> bool:
     return False
 
 
-# 物理保真度专题枢纽页：动力学/仿真/物理概念页应回链至少一个，形成保真度链路闭环
+# 物理保真度知识链枢纽页：动力学/仿真/物理概念页应回链至少一个，形成保真度链路闭环
 PHYSICS_FIDELITY_HUBS: tuple[str, ...] = (
     "simulation-physics-fidelity",
     "physics-fidelity-sim2real-gap",
+    "hub-physics-fidelity",
 )
 
 
@@ -1234,7 +1235,7 @@ def _check_physics_concept_crosslink(pages: list[Path], results: dict[str, Any])
 
     对 frontmatter ``tags`` 含 ``dynamics`` / ``simulation`` / ``physics`` 的
     ``wiki/concepts/*`` 与 ``wiki/formalizations/*`` 概念页，检查正文是否回链到
-    「仿真物理保真度」专题枢纽页（``simulation-physics-fidelity`` /
+    「仿真物理保真度」知识链枢纽页（``simulation-physics-fidelity`` /
     ``physics-fidelity-sim2real-gap``）。缺失回链作为 INFO 级提示写入 lint 报告，
     沉淀物理保真度知识链的交叉链路基线，不计入 lint 失败总数。枢纽页自身豁免。
     """
@@ -1262,10 +1263,10 @@ def _check_physics_concept_crosslink(pages: list[Path], results: dict[str, Any])
             results["physics_concept_crosslink"].append(str(rel))
 
 
-# 接触力控专题枢纽页：接触/力控/阻抗/操作/触觉概念页应回链至少一个，形成力旋量闭环链路
+# 接触力控知识链枢纽页：接触/力控/阻抗/操作/触觉概念页应回链至少一个，形成力旋量闭环链路
 CONTACT_FORCE_CONTROL_HUBS: tuple[str, ...] = (
     "contact-wrench-closed-loop",
-    "topic-contact-force-control",
+    "hub-contact-force-control",
 )
 
 # 关键词以子串方式匹配 tag，覆盖 force-control / impedance-control / tactile-sensing /
@@ -1284,8 +1285,8 @@ def _check_contact_control_crosslink(pages: list[Path], results: dict[str, Any])
 
     对 frontmatter ``tags`` 含 ``contact`` / ``force-control`` / ``impedance`` /
     ``manipulation`` / ``tactile``（以子串方式匹配派生标签）的 ``wiki/concepts/*``
-    概念页，检查正文是否回链到「接触力旋量闭环」专题枢纽页
-    （``contact-wrench-closed-loop`` / ``topic-contact-force-control``）。缺失回链
+    概念页，检查正文是否回链到「接触力旋量闭环」知识链枢纽页
+    （``contact-wrench-closed-loop`` / ``hub-contact-force-control``）。缺失回链
     作为 INFO 级提示写入 lint 报告，沉淀接触力旋量闭环知识链的交叉链路基线，不计入
     lint 失败总数。枢纽页自身豁免。
     """
@@ -1312,11 +1313,11 @@ def _check_contact_control_crosslink(pages: list[Path], results: dict[str, Any])
             results["contact_control_crosslink"].append(str(rel))
 
 
-# 具身大模型分类学选型闭环专题枢纽页：VLM/VLN/VLA/VLX/World-Model 家族概念/对比页
+# 具身大模型分类学选型闭环知识链枢纽页：VLM/VLN/VLA/VLX/World-Model 家族概念/对比页
 # 应回链至少一个，形成「感知 → 导航 → 执行 → 扩展 → 推演」五层选型闭环链路
 EMBODIED_FM_HUBS: tuple[str, ...] = (
     "embodied-fm-taxonomy-loop",
-    "topic-embodied-foundation-model",
+    "hub-embodied-foundation-model",
 )
 
 # 关键词以子串方式匹配 tag，覆盖 vla-model / vision-language-navigation /
@@ -1336,7 +1337,7 @@ def _check_embodied_fm_crosslink(pages: list[Path], results: dict[str, Any]) -> 
     对 frontmatter ``tags`` 含 ``vlm`` / ``vln`` / ``vla`` / ``vlx`` /
     ``world-model``（以子串方式匹配派生标签）的 ``wiki/concepts/*`` 与
     ``wiki/comparisons/*`` 页，检查正文是否回链到「具身大模型分类学选型闭环」
-    专题枢纽页（``embodied-fm-taxonomy-loop`` / ``topic-embodied-foundation-model``）。
+    知识链枢纽页（``embodied-fm-taxonomy-loop`` / ``hub-embodied-foundation-model``）。
     缺失回链作为 INFO 级提示写入 lint 报告，沉淀具身大模型选型闭环知识链的交叉
     链路基线，不计入 lint 失败总数。枢纽页自身豁免。
     """
@@ -1365,7 +1366,7 @@ def _check_embodied_fm_crosslink(pages: list[Path], results: dict[str, Any]) -> 
 
 EVAL_BENCHMARK_HUBS: tuple[str, ...] = (
     "embodied-eval-benchmark-selection-loop",
-    "topic-embodied-eval-benchmark",
+    "hub-embodied-eval-benchmark",
 )
 
 # 关键词以子串方式匹配 tag，覆盖 benchmark-suite / policy-evaluation /
@@ -1381,8 +1382,8 @@ def _check_eval_benchmark_crosslink(pages: list[Path], results: dict[str, Any]) 
 
     对 frontmatter ``tags`` 含 ``benchmark`` / ``evaluation``（以子串方式匹配
     派生标签）的 ``wiki/entities/*`` / ``wiki/comparisons/*`` / ``wiki/concepts/*``
-    页，检查正文是否回链到「具身大模型评测基准选型闭环」专题枢纽页
-    （``embodied-eval-benchmark-selection-loop`` / ``topic-embodied-eval-benchmark``）。
+    页，检查正文是否回链到「具身大模型评测基准选型闭环」知识链枢纽页
+    （``embodied-eval-benchmark-selection-loop`` / ``hub-embodied-eval-benchmark``）。
     缺失回链作为 INFO 级提示写入 lint 报告，沉淀评测基准选型闭环知识链的交叉
     链路基线，不计入 lint 失败总数。枢纽页自身豁免。
     """
@@ -1415,7 +1416,7 @@ def _check_eval_benchmark_crosslink(pages: list[Path], results: dict[str, Any]) 
 
 ACTUATOR_DRIVE_CHAIN_HUBS: tuple[str, ...] = (
     "actuator-drive-chain-selection-loop",
-    "topic-actuator-drive-chain",
+    "hub-actuator-drive-chain",
 )
 
 # 关键词以子串方式匹配 tag，覆盖 actuator-modeling / eda-tool / foc-driver
@@ -1432,8 +1433,8 @@ def _check_actuator_drive_chain_crosslink(pages: list[Path], results: dict[str, 
 
     对 frontmatter ``tags`` 含 ``actuator`` / ``eda`` / ``foc``（以子串方式匹配
     派生标签）的 ``wiki/entities/*`` / ``wiki/comparisons/*`` / ``wiki/concepts/*``
-    页，检查正文是否回链到「执行器驱动链选型闭环」专题枢纽页
-    （``actuator-drive-chain-selection-loop`` / ``topic-actuator-drive-chain``）。
+    页，检查正文是否回链到「执行器驱动链选型闭环」知识链枢纽页
+    （``actuator-drive-chain-selection-loop`` / ``hub-actuator-drive-chain``）。
     缺失回链作为 INFO 级提示写入 lint 报告，沉淀执行器驱动链选型闭环知识链的
     交叉链路基线，不计入 lint 失败总数。枢纽页自身豁免。
     """
@@ -1466,7 +1467,7 @@ def _check_actuator_drive_chain_crosslink(pages: list[Path], results: dict[str, 
 
 PERCEPTION_STACK_HUBS: tuple[str, ...] = (
     "robot-perception-stack-selection-loop",
-    "topic-perception-stack",
+    "hub-perception-stack",
 )
 
 # 关键词以连字符 token 前缀方式匹配 tag，覆盖 object-detection / instance-segmentation
@@ -1485,8 +1486,8 @@ def _check_perception_stack_crosslink(pages: list[Path], results: dict[str, Any]
     对 frontmatter ``tags`` 含 ``detection`` / ``segmentation`` / ``perception`` /
     ``semantic``(-mapping)（以连字符 token 前缀方式匹配派生标签）的
     ``wiki/entities/*`` / ``wiki/comparisons/*`` / ``wiki/concepts/*`` /
-    ``wiki/methods/*`` 页，检查正文是否回链到「机器人视觉感知栈选型闭环」专题枢纽页
-    （``robot-perception-stack-selection-loop`` / ``topic-perception-stack``）。
+    ``wiki/methods/*`` 页，检查正文是否回链到「机器人视觉感知栈选型闭环」知识链枢纽页
+    （``robot-perception-stack-selection-loop`` / ``hub-perception-stack``）。
     缺失回链作为 INFO 级提示写入 lint 报告，沉淀机器人视觉感知栈选型闭环知识链的
     交叉链路基线，不计入 lint 失败总数。枢纽页自身豁免。
     """
@@ -1731,32 +1732,32 @@ def format_report(results: dict[str, Any]) -> str:
         ),
         (
             "physics_concept_crosslink",
-            "动力学/仿真/物理概念页缺回链「仿真物理保真度」专题枢纽（信息型，不阻塞 CI）",
+            "动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）",
             "💡",
         ),
         (
             "contact_control_crosslink",
-            "接触/力控/操作概念页缺回链「接触力旋量闭环」专题枢纽（信息型，不阻塞 CI）",
+            "接触/力控/操作概念页缺回链「接触力旋量闭环」知识链枢纽（信息型，不阻塞 CI）",
             "💡",
         ),
         (
             "embodied_fm_crosslink",
-            "VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」专题枢纽（信息型，不阻塞 CI）",
+            "VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」知识链枢纽（信息型，不阻塞 CI）",
             "💡",
         ),
         (
             "eval_benchmark_crosslink",
-            "benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」专题枢纽（信息型，不阻塞 CI）",
+            "benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）",
             "💡",
         ),
         (
             "actuator_drive_chain_crosslink",
-            "actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」专题枢纽（信息型，不阻塞 CI）",
+            "actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）",
             "💡",
         ),
         (
             "perception_stack_crosslink",
-            "detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」专题枢纽（信息型，不阻塞 CI）",
+            "detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）",
             "💡",
         ),
     ]

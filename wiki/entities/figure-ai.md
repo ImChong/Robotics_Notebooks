@@ -61,4 +61,4 @@ summary: "Figure AI 是美国人形机器人公司，以 Figure 02 整机与自�
 ## 推荐继续阅读
 
 - [Figure AI News](https://www.figure.ai/news)
-- [Helix 专题页](https://www.figure.ai/helix)
+- [Helix 纵深页](https://www.figure.ai/helix)

@@ -67,4 +67,4 @@
 ## 对 wiki 的映射
 
 - [Yale OpenHand](../../wiki/entities/yale-openhand.md)
-- 交叉：[EN02-OP](../../wiki/entities/en02-op.md)、[Deimel 欠驱动柔顺手](../../wiki/entities/paper-deimel-compliant-underactuated-robotic-hand.md)、[Manipulation](../../wiki/tasks/manipulation.md)、[抓取专题](../../wiki/overview/topic-grasp.md)
+- 交叉：[EN02-OP](../../wiki/entities/en02-op.md)、[Deimel 欠驱动柔顺手](../../wiki/entities/paper-deimel-compliant-underactuated-robotic-hand.md)、[Manipulation](../../wiki/tasks/manipulation.md)、[抓取专题](../../wiki/overview/hub-grasp.md)

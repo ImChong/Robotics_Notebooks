@@ -45,13 +45,13 @@ const fs = require('fs');
     await new Promise(r => setTimeout(r, 400));
     // open the collapsed topic <details> so chips are visible / clickable
     await page.evaluate(() => {
-      const det = document.getElementById('filter-topic-section');
+      const det = document.getElementById('filter-depth-section');
       if (det && !det.open) det.open = true;
     });
     await new Promise(r => setTimeout(r, 300));
     // optionally select a topic chip
     if (topic && topic !== 'all') {
-      await page.click(`.filter-topic-chip[data-topic="${topic}"]`);
+      await page.click(`.filter-depth-chip[data-depth="${topic}"]`);
       await new Promise(r => setTimeout(r, 1200));
     }
     await page.screenshot({ path: path.resolve(outPath), fullPage: false });

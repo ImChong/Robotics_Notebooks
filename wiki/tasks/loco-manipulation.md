@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-07-29
+updated: 2026-07-31
 sources:
   - ../../sources/papers/pot_vla_arxiv_2607_18016.md
   - ../../sources/papers/faro_arxiv_2607_18362.md
@@ -267,7 +267,7 @@ flowchart TD
 - [ABot-M0.5（论文实体）](../entities/paper-abot-m05-mobile-manipulation-wam.md) — 移动操作 WAM：latent action + D-MoT + Dream Forcing（arXiv:2607.00678）
 - [Loco-Manip 8 篇数据入口技术地图](../overview/loco-manip-8-papers-technology-map.md) — 2026-06 周报：四组数据入口（Ego-Pi/OASIS/VAIC/WT-UMI 等 8 篇）
 - [人形 Loco-Manip 161 篇技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md) — 2026-06 长文：十类能力形成顺序（94+ 篇已挂接既有实体）
-- [Loco-Manip 接触五段链路技术地图](../overview/loco-manip-contact-technology-map.md) — 2026-07 专题：接触数据→表示→生成补数→接触后稳定→VLA/WM（复用既有论文实体，不重复建节点）
+- [Loco-Manip 接触五段链路技术地图](../overview/loco-manip-contact-technology-map.md) — 2026-07 纵深：接触数据→表示→生成补数→接触后稳定→VLA/WM（复用既有论文实体，不重复建节点）
 - [Curr-0（Current Robotics）](../entities/current-robotics-curr0.md) — HumanEx 可穿戴数据 + 三系统单策略 + 世界模型评测/后训练全栈（2026-06 博客）
 - [MotionDisco（论文实体）](../entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md) — LLM 进化接触计划搜索 + TO 反馈 + G1 真机运动发现（arXiv:2606.06139）
 - [FARO（论文实体）](../entities/paper-faro-feasibility-aware-robot-motion-optimization.md) — 嵌套可行性剪枝（mode/edge→KSO→TO）加速接触搜索（arXiv:2607.18362）

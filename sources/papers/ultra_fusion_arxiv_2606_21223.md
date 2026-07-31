@@ -33,7 +33,7 @@
 ### 4) 大规模基准与跨平台验证
 
 - **要点：** 扩展 **M3DGR**（含仿真退化轨迹），系统对比 **60+** 代表 SLAM 系统；轮式 **M2DGR-Plus** 上 LVWIO 配置平均漂移 **0.59% / 0.24 m**（FAST-LIVO2 **2.32% / 1.48 m**）；**KAIST** 高速城市场景、**GrandTour** 四足、**MARS-LVIG** UAV 均报告领先或前列；单步优化 **5.48–10.73 ms**（i9-14900K，实时配置）。
-- **对 wiki 的映射：** 同上实体页；[`wiki/overview/topic-state-estimation.md`](../../wiki/overview/topic-state-estimation.md)
+- **对 wiki 的映射：** 同上实体页；[`wiki/overview/hub-state-estimation.md`](../../wiki/overview/hub-state-estimation.md)
 
 ### 5) 与既有融合 SLAM 的对照定位
 

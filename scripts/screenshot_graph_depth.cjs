@@ -1,5 +1,5 @@
 // Headless screenshot of docs/graph.html, exercising the V22 topic-view dropdown.
-// Usage: node screenshot_graph_topic.cjs <url> <out.png> [topicValue]
+// Usage: node screenshot_graph_depth.cjs <url> <out.png> [topicValue]
 const puppeteer = require('puppeteer-core');
 const path = require('path');
 const fs = require('fs');
@@ -7,7 +7,7 @@ const fs = require('fs');
 (async () => {
   const [, , url, out, topic] = process.argv;
   if (!url || !out) {
-    console.error('Usage: node screenshot_graph_topic.cjs <url> <out.png> [topic]');
+    console.error('Usage: node screenshot_graph_depth.cjs <url> <out.png> [topic]');
     process.exit(2);
   }
   const exe = process.env.PUPPETEER_EXECUTABLE_PATH || '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
@@ -59,9 +59,9 @@ const fs = require('fs');
     });
     if (topic && topic !== 'all') {
       await page.evaluate((t) => {
-        const sec = document.getElementById('filter-topic-section');
+        const sec = document.getElementById('filter-depth-section');
         if (sec) sec.open = true;
-        const btn = document.querySelector('[data-topic="' + t + '"]');
+        const btn = document.querySelector('[data-depth="' + t + '"]');
         if (btn) btn.click();
       }, topic);
       await new Promise(r => setTimeout(r, 1800));

@@ -1,18 +1,18 @@
 ---
 type: overview
-tags: [topic, topic-tactile, haptic, force, contact, visuo-tactile]
+tags: [hub, hub-tactile, haptic, force, contact, visuo-tactile]
 status: complete
-updated: 2026-07-29
-summary: "触觉与力觉闭环专题汇总：覆盖触觉传感、视触觉融合、阻抗/力控与接触估计，强调「摸得着」对抓取与 loco-manip 稳定性的作用。"
+updated: 2026-07-31
+summary: "触觉与力觉闭环知识链汇总：覆盖触觉传感、视触觉融合、阻抗/力控与接触估计，强调「摸得着」对抓取与 loco-manip 稳定性的作用。"
 ---
 
-# 触觉与力觉（专题汇总）
+# 触觉与力觉（知识链汇总）
 
-> **图谱专题视图**：本页是知识图谱「✋ 触觉 (Tactile)」专题的统一入口；在 [图谱专题视图](../../docs/graph.html?topic=tactile) 筛选时，本节点为汇总锚点。
+> **知识链汇总**：本页是相关概念/方法的统一入口；对应策展纵深见图谱 [路线视图](../../docs/graph.html?depth=contact-manipulation) 与 [路线页](../../roadmap/depth-contact-manipulation.md)。
 
 ## 一句话定义
 
-**触觉专题** 研究机器人如何通过 **力、触觉与接触状态** 闭环调节交互，使抓取、装配与 loco-manip 在不确定接触下仍稳定可控。
+**触觉知识链** 研究机器人如何通过 **力、触觉与接触状态** 闭环调节交互，使抓取、装配与 loco-manip 在不确定接触下仍稳定可控。
 
 ## 英文缩写速查
 
@@ -28,9 +28,9 @@ summary: "触觉与力觉闭环专题汇总：覆盖触觉传感、视触觉融�
 
 - **视觉有盲区**：遮挡、反光、透明物体下，触觉是接触真相。
 - **硬位置控制在接触瞬间易崩**：需要阻抗/力控与接触估计。
-- **V21 专题主线**：从 GelSight 类传感器到全身 loco-manip 的力闭环。
+- **V21 知识链主线**：从 GelSight 类传感器到全身 loco-manip 的力闭环。
 
-## 本专题覆盖什么
+## 本知识链覆盖什么
 
 | 层次 | 典型问题 | 站内入口 |
 |------|----------|----------|
@@ -45,11 +45,11 @@ summary: "触觉与力觉闭环专题汇总：覆盖触觉传感、视触觉融�
 | 可变形接触安全评测 | Goal vs Safety Success | [SoftVTBench](../entities/paper-softvtbench.md)（Isaac Sim FEM + GelSight；π₀.₅ VO/VT · arXiv:2607.04234） |
 | 数据+策略栈 | 力场表征 / VTLA / 触觉 WAM | [NeoteAI 𝒩₀](../entities/neoteai.md)（OpenNeoData 5k h；Foundation / VTLA / TWAM） |
 
-## 与其他专题的关系
+## 与其他知识链的关系
 
-- **[抓取](./topic-grasp.md)**：稳定抓取依赖力闭环。
-- **[WBC](./topic-wbc.md)**：全身力分配与接触约束。
-- **[通信协议](./topic-communication.md)**：EtherCAT 等低延迟总线服务力控环路。
+- **[抓取](./hub-grasp.md)**：稳定抓取依赖力闭环。
+- **[WBC](./hub-wbc.md)**：全身力分配与接触约束。
+- **[通信协议](./hub-communication.md)**：EtherCAT 等低延迟总线服务力控环路。
 
 ## 关联页面
 
@@ -71,4 +71,4 @@ summary: "触觉与力觉闭环专题汇总：覆盖触觉传感、视触觉融�
 - **ingest 档案：** [sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md](../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md) — TacO 触觉传感器真机 IL 基准（arXiv:2605.21976）
 - **ingest 档案：** [sources/papers/softvtbench_arxiv_2607_04234.md](../../sources/papers/softvtbench_arxiv_2607_04234.md) — SoftVTBench 可变形视触觉安全基准（arXiv:2607.04234）
 - **ingest 档案：** [sources/papers/n0_foundation.md](../../sources/papers/n0_foundation.md) — 𝒩₀-Foundation / OpenNeoData
-- 图谱专题定义：[docs/topic-filters.js](../../docs/topic-filters.js)（`tactile` 命中规则）
+- 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`tactile` 命中规则）

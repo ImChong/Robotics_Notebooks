@@ -14,7 +14,7 @@ tags:
   - purdue
   - columbia
 status: complete
-updated: 2026-07-27
+updated: 2026-07-31
 arxiv: "2607.15448"
 related:
   - ../concepts/visuo-tactile-fusion.md

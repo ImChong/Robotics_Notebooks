@@ -65,7 +65,7 @@ def test_comparison_page_flagged(tmp_path: Path, monkeypatch) -> None:
     page = wiki / "comparisons" / "embodied-benchmark-family-compare.md"
     page.write_text(
         "---\ntype: comparison\ntags: [benchmark, evaluation]\n---\n"
-        "评测基准家族对比正文，未回链专题枢纽。\n",
+        "评测基准家族对比正文，未回链纵深枢纽。\n",
         encoding="utf-8",
     )
     results = _run([page])
@@ -92,8 +92,8 @@ def test_topic_hub_backlink_also_passes(tmp_path: Path, monkeypatch) -> None:
     page = wiki / "entities" / "esi-bench.md"
     page.write_text(
         "---\ntype: entity\ntags: [benchmark, evaluation]\n---\n"
-        "ESI-Bench，见专题 "
-        "[具身评测基准](../overview/topic-embodied-eval-benchmark.md)。\n",
+        "ESI-Bench，见纵深 "
+        "[具身评测基准](../overview/hub-embodied-eval-benchmark.md)。\n",
         encoding="utf-8",
     )
     results = _run([page])

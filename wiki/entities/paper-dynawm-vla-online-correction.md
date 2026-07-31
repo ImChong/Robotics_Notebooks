@@ -129,7 +129,7 @@ flowchart LR
 ## 与其他页面的关系
 
 - [wm-action-consequence-category-01-wam-action-prediction](../overview/wm-action-consequence-category-01-wam-action-prediction.md) — WAM 修正类代表
-- [动作后果技术地图](../overview/robot-world-models-action-consequence-technology-map.md) — 专题总览
+- [动作后果技术地图](../overview/robot-world-models-action-consequence-technology-map.md) — 纵深总览
 - [World Action Models](../concepts/world-action-models.md) — 世界模型条件化动作生成
 - [VLA](../methods/vla.md) — 被修正的冻结基础策略族
 - [Manipulation](../tasks/manipulation.md) — 动态抓取与拦截任务语境

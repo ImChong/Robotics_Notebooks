@@ -1,8 +1,8 @@
 ---
 type: overview
-tags: [topic, actuator-drive-chain, actuator, eda, foc, motor-control, ethercat, sim2real, hardware]
+tags: [hub, actuator-drive-chain, actuator, eda, foc, motor-control, ethercat, sim2real, hardware]
 status: complete
-updated: 2026-07-25
+updated: 2026-07-31
 related:
   - ../queries/actuator-drive-chain-selection-loop.md
   - ../concepts/torque-source-abstraction-gap.md
@@ -28,12 +28,12 @@ sources:
   - ../../sources/repos/simplefoc_arduino_foc.md
   - ../../sources/papers/neuralactuator_arxiv_2607_11734.md
   - ../../sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md
-summary: "执行器驱动链选型闭环专题枢纽：把 EDA 电路设计 → 电机驱动固件 FOC → 执行器建模与摩擦辨识 → 实时总线闭环集成 四层驱动链，从分散的电子硬件/驱动固件/执行器建模实体页收拢为一条可导航的选型链，统一各层选什么、数据手册标称参数与实测曲线差在哪、建模保真度 vs 辨识成本如何取舍、总线周期 ≠ 闭环带宽的入口。"
+summary: "执行器驱动链选型闭环知识链枢纽：把 EDA 电路设计 → 电机驱动固件 FOC → 执行器建模与摩擦辨识 → 实时总线闭环集成 四层驱动链，从分散的电子硬件/驱动固件/执行器建模实体页收拢为一条可导航的选型链，统一各层选什么、数据手册标称参数与实测曲线差在哪、建模保真度 vs 辨识成本如何取舍、总线周期 ≠ 闭环带宽的入口。"
 ---
 
-# 执行器驱动链选型闭环（专题汇总）
+# 执行器驱动链选型闭环（知识链汇总）
 
-> **专题定位**：本页是「EDA 电路设计 → 电机驱动固件 FOC → 执行器建模与摩擦辨识 → 实时总线闭环集成」四层驱动链的统一入口，把近周密集 ingest 的 KiCad / Altium / SimpleFOC / NeuralActuator / BAM / SAGE 等电子硬件与执行器建模页从分散的实体页收拢为一条可导航的选型链。它是「[具身大模型分类学选型闭环](./topic-embodied-foundation-model.md)」（选哪一类策略）与「[具身评测基准选型闭环](./topic-embodied-eval-benchmark.md)」（怎么评测/证明它）的**硬件侧姊妹链**——回答「策略算出的力矩指令能不能被真实驱动链忠实执行」。
+> **知识链定位**：本页是「EDA 电路设计 → 电机驱动固件 FOC → 执行器建模与摩擦辨识 → 实时总线闭环集成」四层驱动链的统一入口，把近周密集 ingest 的 KiCad / Altium / SimpleFOC / NeuralActuator / BAM / SAGE 等电子硬件与执行器建模页从分散的实体页收拢为一条可导航的选型链。它是「[具身大模型分类学选型闭环](./hub-embodied-foundation-model.md)」（选哪一类策略）与「[具身评测基准选型闭环](./hub-embodied-eval-benchmark.md)」（怎么评测/证明它）的**硬件侧姊妹链**——回答「策略算出的力矩指令能不能被真实驱动链忠实执行」。
 
 ## 一句话定义
 
@@ -74,11 +74,11 @@ summary: "执行器驱动链选型闭环专题枢纽：把 EDA 电路设计 → 
 - **总线周期 vs 闭环带宽**：总线周期快 ≠ 闭环带宽高，抖动与相位裕度才是控制带宽的真实约束。
 - **高减速比 vs 反驱透明度**：高减速比力矩大，但反驱透明度损失、反射惯量上升，QDD 走另一条取舍路线。
 
-## 与其他专题的关系
+## 与其他知识链的关系
 
-- **[通信协议（Communication）](./topic-communication.md)**：④ 层 EtherCAT/CAN 现场总线与通信专题共享底层数据链路。
-- **[物理保真度（Physics Fidelity）](./topic-physics-fidelity.md)**：③ 层执行器建模是物理保真度四层里最靠近硬件的一层，共享 sim2real gap 归因。
-- **[接触力控（Contact Force Control）](./topic-contact-force-control.md)**：力矩指令能否忠实执行直接决定力控闭环的下限。
+- **[通信协议（Communication）](./hub-communication.md)**：④ 层 EtherCAT/CAN 现场总线与通信知识链共享底层数据链路。
+- **[物理保真度（Physics Fidelity）](./hub-physics-fidelity.md)**：③ 层执行器建模是物理保真度四层里最靠近硬件的一层，共享 sim2real gap 归因。
+- **[接触力控（Contact Force Control）](./hub-contact-force-control.md)**：力矩指令能否忠实执行直接决定力控闭环的下限。
 
 ## 关联页面
 

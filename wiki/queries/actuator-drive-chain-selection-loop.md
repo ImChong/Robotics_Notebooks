@@ -11,7 +11,7 @@ sources:
   - ../../sources/papers/neuralactuator_arxiv_2607_11734.md
   - ../../sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md
 related:
-  - ../overview/topic-actuator-drive-chain.md
+  - ../overview/hub-actuator-drive-chain.md
   - ../concepts/implicit-explicit-actuator-modeling.md
   - ../concepts/torque-source-abstraction-gap.md
   - ../concepts/ethercat-protocol.md
@@ -157,7 +157,7 @@ flowchart TD
 
 ## 关联页面
 
-- 所属专题：[执行器驱动链选型闭环（专题汇总）](../overview/topic-actuator-drive-chain.md) — 四层驱动链的统一入口与图谱专题枢纽
+- 所属路线：[执行器驱动链选型闭环（知识链汇总）](../overview/hub-actuator-drive-chain.md) — 四层驱动链的统一入口与图谱纵深枢纽
 - 姊妹 Query：[具身大模型分类学选型闭环](./embodied-fm-taxonomy-loop.md) — 「选哪一类策略」，本页承接「策略力矩指令怎么被硬件执行」
 - 姊妹 Query：[具身大模型评测基准选型闭环](./embodied-eval-benchmark-selection-loop.md) — 「怎么评测/证明它」，与本页共同兜底 sim↔real
 - [EtherCAT 主站优化](./ethercat-master-optimization.md) — ④层实时总线闭环集成的深度调优
@@ -177,4 +177,4 @@ flowchart TD
 - [Actuator Network](../methods/actuator-network.md) — ③层执行器网络方法页
 - [力矩-电流曲线](../concepts/motor-torque-current-curve.md) — ②层力矩标称非线性的物理背景
 - [力矩-转速曲线](../concepts/motor-torque-speed-curve.md) — ②层弱磁/饱和区偏离线性的背景
-- [电机驱动固件与总线协议（专题）](../overview/motor-drive-firmware-bus-protocols.md) — 驱动链各层的专题汇总入口
+- [电机驱动固件与总线协议（纵深）](../overview/motor-drive-firmware-bus-protocols.md) — 驱动链各层的纵深汇总入口

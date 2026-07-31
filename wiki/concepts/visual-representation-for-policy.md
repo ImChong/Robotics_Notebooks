@@ -101,7 +101,7 @@ flowchart TB
 - [Vision Banana（实体）](../entities/vision-banana.md)
 - [Face Anything（实体）](../entities/paper-face-anything-4d-face-reconstruction.md) — 面部 4D 前馈几何/对应，与全身 HMR 互补
 - [SHELLS（实体）](../entities/paper-shells-layered-surface-sampling.md) — 标定多视角前馈固定拓扑人头；DINOv2 特征聚合对照
-- [具身大模型分类学选型闭环（专题枢纽）](../overview/topic-embodied-foundation-model.md) — 策略视觉表征支撑五层闭环的 VLM 感知理解层
+- [具身大模型分类学选型闭环（知识链枢纽）](../overview/hub-embodied-foundation-model.md) — 策略视觉表征支撑五层闭环的 VLM 感知理解层
 
 ## 参考来源
 

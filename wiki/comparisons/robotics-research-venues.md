@@ -114,7 +114,7 @@ flowchart LR
 ## 与本知识库其他页面的关系
 
 - **[arXiv](../entities/arxiv.md)** — 开放获取预印本平台宏观节点；本库论文 ingest 的默认外链层。
-- **[Reinforcement Learning](../methods/reinforcement-learning.md)**、**[Sim2Real](../concepts/sim2real.md)** — 大量近期学习类工作常见于 CoRL、RSS、ICRA/IROS 学习专题。
+- **[Reinforcement Learning](../methods/reinforcement-learning.md)**、**[Sim2Real](../concepts/sim2real.md)** — 大量近期学习类工作常见于 CoRL、RSS、ICRA/IROS 学习分会场。
 - **[Xue Bin Peng](../entities/xue-bin-peng.md)** 等学者页 — 个人主页列会刊时，应回查上述 **官方论文集** 核对最终版本。
 
 ## 推荐继续阅读

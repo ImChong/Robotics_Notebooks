@@ -163,7 +163,7 @@ flowchart TD
 - [World Action Models](./world-action-models.md)
 - [Foundation Policy](./foundation-policy.md)
 - [Diffusion Policy](../methods/diffusion-policy.md)
-- [具身大模型分类学选型闭环（专题枢纽）](../overview/topic-embodied-foundation-model.md) — 策略网络架构支撑五层闭环的 VLA 动作执行层
+- [具身大模型分类学选型闭环（知识链枢纽）](../overview/hub-embodied-foundation-model.md) — 策略网络架构支撑五层闭环的 VLA 动作执行层
 
 ## 参考来源
 

@@ -371,7 +371,7 @@
         el.textContent = getNodeLabelText(src);
         el.style.color = color;
         el.style.fontSize = getNodeLabelFontSize(src) + 'px';
-        el.classList.toggle('is-topic-hub', !!isNodeLabelHub(src));
+        el.classList.toggle('is-depth-hub', !!isNodeLabelHub(src));
         var opacity = effectiveLabelOpacity(d);
         var on = opacity > 0.02;
         setLabelVisible(el, on, on ? String(opacity) : '0');

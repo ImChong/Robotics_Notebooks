@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, neoteai, fudan, tactile, visuo-tactile, dataset, foundation-model, contact-rich, neoforce, benchmark]
 status: complete
-updated: 2026-07-26
+updated: 2026-07-31
 venue: "Technical Report"
 code: "https://github.com/neoteai/N0-Foundation"
 related:
@@ -12,7 +12,7 @@ related:
   - ../concepts/visuo-tactile-fusion.md
   - ../concepts/contact-rich-manipulation.md
   - ../methods/vla.md
-  - ../overview/topic-tactile.md
+  - ../overview/hub-tactile.md
   - ./paper-deform360-deformable-visuotactile-dataset.md
   - ./paper-vt-wam-visuotactile-contact-rich.md
   - ../queries/embodied-eval-benchmark-selection-loop.md

@@ -63,7 +63,7 @@
 
 - [generalist-gen1-thousand-hands](../../wiki/entities/generalist-gen1-thousand-hands.md) — 本篇升格实体页
 - [generalist-ai-robotics](../../wiki/entities/generalist-ai-robotics.md) — 公司入口页更新
-- [topic-cross-embodiment](../../wiki/overview/topic-cross-embodiment.md) — 跨末端 / 跨接口作为跨具身特例
+- [hub-cross-embodiment](../../wiki/overview/hub-cross-embodiment.md) — 跨末端 / 跨接口作为跨具身特例
 - [foundation-policy](../../wiki/concepts/foundation-policy.md) — 商业通才策略对照
 - [embodied-scaling-laws](../../wiki/concepts/embodied-scaling-laws.md) — 多接口数据多样性 scaling
 - [manipulation](../../wiki/tasks/manipulation.md) — 多工具 / 多末端操作
