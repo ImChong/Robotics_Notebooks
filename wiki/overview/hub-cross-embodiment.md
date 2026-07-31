@@ -8,7 +8,8 @@ related:
   - ../entities/paper-any2any-cross-embodiment-wbt.md
   - ../entities/paper-last-hd-latent-physical-reasoning.md
   - ../entities/generalist-gen1-thousand-hands.md
-summary: "跨具身迁移知识链汇总：不同机器人形态、仿真与真机之间的策略/动作迁移，重定向、域随机与 Any2Any 类方法的选型与失败模式；含末端/工具接口多样性（如 GEN-1 千手）轴。"
+  - ../entities/gemini-robotics.md
+summary: "跨具身迁移知识链汇总：不同机器人形态、仿真与真机之间的策略/动作迁移，重定向、域随机与 Any2Any 类方法的选型与失败模式；含末端/工具接口多样性（如 GEN-1 千手）与闭源 On-Device 快速适配（Gemini Robotics 2）轴。"
 ---
 
 # 跨具身迁移（知识链汇总）
@@ -44,6 +45,7 @@ summary: "跨具身迁移知识链汇总：不同机器人形态、仿真与真�
 | 实体 | Any2Any WBT | [Any2Any Cross-Embodiment WBT](../entities/paper-any2any-cross-embodiment-wbt.md) |
 | 实体 | LaST-HD 人手→机器人 VLA | [LaST-HD](../entities/paper-last-hd-latent-physical-reasoning.md) |
 | 实体 | GEN-1 千手（跨末端/工具） | [GEN-1 千手](../entities/generalist-gen1-thousand-hands.md) — 闭源产业样本；同一基座跨 ~9k 末端变体 |
+| 实体 | Gemini Robotics 2 On-Device | [Gemini Robotics](../entities/gemini-robotics.md) — 闭源；博客称新双臂本体数小时 / &lt;200 例适配 |
 | 概念 | 角色动画 vs 机器人 | [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md) |
 | 数据 | 跨具身数据集 | [Open X-Embodiment](../concepts/open-x-embodiment.md) |
 
@@ -59,9 +61,11 @@ summary: "跨具身迁移知识链汇总：不同机器人形态、仿真与真�
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md)
 - [Domain Randomization](../concepts/domain-randomization.md)
 - [GEN-1 千手：跨末端执行器泛化](../entities/generalist-gen1-thousand-hands.md) — 末端接口多样性（产业闭源对照）
+- [Gemini Robotics](../entities/gemini-robotics.md) — On-Device 2 快速跨本体叙事（权重未开源）
 
 ## 参考来源
 
 - 本库归纳自 [Cross-Embodiment Transfer Strategy](../queries/cross-embodiment-transfer-strategy.md) 及 motion-retargeting / sim2real 交叉页
 - [Towards Machines with a Thousand Hands（来源归档）](../../sources/blogs/generalist_thousand_hands.md) — 跨末端「千手」产业样本
+- [Gemini Robotics 2 全身智能（来源归档）](../../sources/blogs/gemini_robotics_2_whole_body.md) — On-Device 跨本体适配声明
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`cross-embodiment` 命中规则）

@@ -109,7 +109,9 @@
 |------|-----------|
 | Gemini Robotics & Gemini Robotics-ER（首次集中发布） | Google DeepMind Blog — https://deepmind.google/blog/gemini-robotics-brings-ai-into-the-physical-world/ |
 | Gemini Robotics 1.5 / ER 1.5 | Google DeepMind Blog — https://deepmind.google/blog/gemini-robotics-15-brings-ai-agents-into-the-physical-world/ |
-| 技术报告 PDF（长文细节） | https://storage.googleapis.com/deepmind-media/gemini-robotics/Gemini-Robotics-1.5-Tech-Report.pdf |
+| Gemini Robotics 2 / ER 2 / On-Device 2（全身 + 多机） | Google DeepMind Blog — https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/ ；开发者博文 https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-robotics-er-2/ ；本库归档 [gemini_robotics_2_whole_body.md](./gemini_robotics_2_whole_body.md) |
+| 技术报告 PDF（1.5 长文细节） | https://storage.googleapis.com/deepmind-media/gemini-robotics/Gemini-Robotics-1.5-Tech-Report.pdf |
+| 安全技术报告 PDF（2） | https://storage.googleapis.com/deepmind-media/gemini-robotics/Gemini-Robotics-2-Safety.pdf |
 
 ### 分布式真实世界评测
 

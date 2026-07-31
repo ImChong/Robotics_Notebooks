@@ -76,6 +76,7 @@ related:
   - ../entities/lumina-embodied.md
   - ../entities/waytoagi.md
   - ../entities/paper-data-pyramid-embodied-manipulation.md
+  - ../entities/gemini-robotics.md
 sources:
   - ../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md
   - ../../sources/papers/rl_foundation_models.md
@@ -118,6 +119,7 @@ sources:
   - ../../sources/repos/lingbot-vla-v2.md
   - ../../sources/papers/chronos_arxiv_2606_30318.md
   - ../../sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md
+  - ../../sources/blogs/gemini_robotics_2_whole_body.md
 ---
 
 # VLA（Vision-Language-Action）
@@ -163,6 +165,7 @@ flowchart TD
 - **π₀**：在 VLA 上加入 Flow Matching，生成连续动作序列
 - **π₀.₇**：在 π 系 VLA 上系统化**多模态提示条件**（子任务语言、片段元数据、控制模态、视觉子目标）以合并异质数据并支持推理时 **steering**；官方报告开箱 dexterity 对标 RL 专精与组合/跨本体泛化迹象（见 [π₀.₇](./pi07-policy.md)）
 - **OpenVLA / Octo**：更强调开源数据、跨任务泛化和 fine-tune 流程
+- **Gemini Robotics 2（闭源对照）**：DeepMind 全身人形 VLA + 公开预览 ER 2 agent + On-Device 快速跨本体；**VLA 权重未开源**，ER 编排样例见 [`robotics-samples`](https://github.com/google-gemini/robotics-samples)（[实体页](../entities/gemini-robotics.md)）
 - **CapVector**：在 **参数空间** 用 **辅助目标 SFT** 与 **标准 SFT** 两枚同分布 checkpoint 的差 **\(\theta_{\text{ao}}-\theta_{\text{ft}}\)** 抽取 **capability vector**，合并回 **\(\theta_{\text{pt}}\)** 得 **\(\theta_{\text{meta}}\)**；下游仅用 **标准 SFT + 轻量正交正则** 以接近纯 SFT 的开销复现 **Spatial Forcing、LaRA-VLA** 等辅助微调带来的收敛与成功率收益，并在 **LIBERO / RoboTwin** 与多 VLA 骨干上讨论 **跨域与真机** 迁移（见 [CapVector 论文实体页](../entities/paper-capvector-capability-vectors-vla.md)）
 - **StarVLA**：证明强 VLM 底座（Qwen3-VL）配合简单 MLP 动作头即可在多项基准上打破 SOTA，代表极简主义路线
 - **Pelican-Unified 1.0**：在 Qwen3-VL 上叠 **推理末态潜变量 \(z\)** 与 **Wan 系 UFG**，用 **同一扩散去噪** 联合生成未来视频与动作块，语言 / 视频 / 动作损失回传共享表示；定位为 **统一具身智能（UEI）** 闭环而非 VLA+世界模型流水线拼接（见 [Pelican-Unified 1.0](./pelican-unified-1.md)）
@@ -372,6 +375,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [RoboTwin 2.0](../entities/robotwin.md) — 具身智能自动化数据生成平台
 - [Lumina 具身智能社区](../entities/lumina-embodied.md) — Talks / Guide 社区雷达（与 Embodied-AI-Guide 同源）
 - [LeRobot](../entities/lerobot.md) — Hugging Face 具身智能全栈框架
+- [Gemini Robotics](../entities/gemini-robotics.md) — DeepMind 闭源全身 VLA + 可调用 ER 2（GR2）
 - [OpenVLA](../entities/openvla.md) — 开源 Prismatic VLA 与 LoRA/OFT 微调
 - [NVIDIA SO-101 Sim2Real 实验 workflow](../entities/nvidia-so101-sim2real-lab-workflow.md) — GR00T N1.6 教程级 VLA + 四类 sim2real 策略对照
 - [RLDX-1](../entities/rldx-1.md) — 多流扩散动作头 + 可选触觉/力矩与 RTC 推理栈的工程参考

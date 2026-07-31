@@ -2,7 +2,7 @@
 type: concept
 tags: [control, wbc, humanoid, optimization]
 status: complete
-updated: 2026-07-26
+updated: 2026-07-31
 related:
   - ../tasks/locomotion.md
   - ../methods/imitation-learning.md
@@ -10,6 +10,7 @@ related:
   - ./sim2real.md
   - ./contact-estimation.md
   - ./foundation-policy.md
+  - ../entities/gemini-robotics.md
   - ../entities/paper-behavior-foundation-model-humanoid.md
   - ./behavior-foundation-model.md
   - ../formalizations/lie-group-rigid-body-motions.md
@@ -158,6 +159,7 @@ print("joint acceleration command:", qdd_star)
 - [sources/papers/learn_weightlessness.md](../../sources/papers/learn_weightlessness.md) — Learn Weightlessness (WM) ingest 摘要
 - [sources/papers/bfm_survey_arxiv_2506_20487.md](../../sources/papers/bfm_survey_arxiv_2506_20487.md) — BFM 综述（arXiv:2506.20487，TPAMI 2025）
 - [sources/repos/awesome_bfm_papers.md](../../sources/repos/awesome_bfm_papers.md) — awesome-bfm-papers 精选列表
+- [sources/blogs/gemini_robotics_2_whole_body.md](../../sources/blogs/gemini_robotics_2_whole_body.md) — Gemini Robotics 2 全身控制产品叙事（闭源对照）
 - [sources/papers/bfm_humanoid_arxiv_2509_13780.md](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md) — BFM 论文摘要（CVAE + 位级掩码 + 在线蒸馏的人形 WBC 基础模型，arXiv:2509.13780）
 - [sources/papers/pilot_arxiv_2601_17440.md](../../sources/papers/pilot_arxiv_2601_17440.md) — PILOT：感知统一 loco-manipulation 低层控制器（arXiv:2601.17440）
 - [机器人论文阅读笔记：GentleHumanoid](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object/GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object.html)
@@ -183,6 +185,7 @@ print("joint acceleration command:", qdd_star)
 - [KungfuBot 2 / VMS](../entities/paper-notebook-kungfubot-2.md) — OMoE 单策略多技能低层全身控制器，可作 text-to-motion 执行层（[PBHC](../../sources/repos/pbhc.md)）
 - [KungfuBot](../entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) — 高动态武术/舞蹈 physics-based WBT 真机案例
 - [ergoCub Shared Embodied Intelligence](../entities/paper-ergocub-shared-embodied-intelligence.md) — 人因指标驱动的硬件–分层 WBC 联合优化（*Nat Mach Intell* 2026；adam + shared-controllers）
+- [Gemini Robotics](../entities/gemini-robotics.md) — 学习式「全身 VLA」产业对照；**不替代** QP/分层 WBC 与接触约束栈
 
 ## 继续深挖入口
 
