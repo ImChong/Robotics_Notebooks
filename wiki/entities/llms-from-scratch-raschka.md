@@ -49,7 +49,7 @@ flowchart LR
   C5["Ch 5<br/>预训练"]
   C6["Ch 6<br/>分类微调"]
   C7["Ch 7<br/>指令 SFT"]
-  VLA["本库纵深<br/>depth-vla Stage 0+"]
+  VLA["本库纵深<br/>hub-vla Stage 0+"]
 
   C2 --> C3 --> C4 --> C5 --> C6 --> C7
   C3 --> VLA
@@ -94,7 +94,7 @@ flowchart LR
 
 ## 局限（相对机器人研究）
 
-- **不涉及** 视觉编码、机器人动作空间或 sim 环境 —— 读完应接 [depth-vla](../../roadmap/depth-vla.md) 与 [LeRobot](./lerobot.md) 等具身栈。
+- **不涉及** 视觉编码、机器人动作空间或 sim 环境 —— 读完应接 [hub-vla](../../roadmap/depth-vla.md) 与 [LeRobot](./lerobot.md) 等具身栈。
 - **不覆盖** 扩散策略、ACT、WBC 等本库运动控制主线。
 - Bonus 中的 Llama/Qwen from-scratch 用于 **架构直觉**，不等价于能在真机上部署 VLA。
 

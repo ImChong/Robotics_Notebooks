@@ -50,7 +50,7 @@ python3 scripts/export_anki.py --deck concepts-core
 Robotics
 ├── formalization   # 公式推导
 ├── concept         # 概念定义
-└── control-stability # 控制稳定性专题
+└── control-stability # 控制稳定性纵深
 ```
 
 ---

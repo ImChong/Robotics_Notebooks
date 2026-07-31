@@ -93,7 +93,7 @@ flowchart LR
 ## 局限（相对机器人研究）
 
 - **环境以经典 Gym 为主**，不包含 Isaac Lab、人形 URDF、接触丰富仿真。
-- **不覆盖** AMP/DeepMimic、WBC+RL 分层、域随机化 sim2real 等本库运动控制专题——需在 Stage 0 之后转入 [`depth-rl-locomotion`](../../roadmap/depth-rl-locomotion.md) 与 [`Locomotion`](../tasks/locomotion.md)。
+- **不覆盖** AMP/DeepMimic、WBC+RL 分层、域随机化 sim2real 等本库运动控制纵深——需在 Stage 0 之后转入 [`depth-rl-locomotion`](../../roadmap/depth-rl-locomotion.md) 与 [`Locomotion`](../tasks/locomotion.md)。
 - 与 [`Modern Robotics`](./modern-robotics-book.md) 互补：后者补刚体运动学与经典控制，蘑菇书补 RL 算法与深度 RL 训练。
 
 ## 推荐使用方式

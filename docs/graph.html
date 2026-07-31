@@ -63,11 +63,11 @@
     }
     #graph-search::placeholder { color: rgba(255,255,255,0.3); }
     #graph-search:focus { border-color: rgba(0,212,255,0.5); width: 240px; }
-    /* 专题视图区块（在筛选面板里，可折叠 <details>）*/
-    .filter-topic-section {
+    /* 路线视图区块（在筛选面板里，可折叠 <details>）*/
+    .filter-depth-section {
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
-    .filter-topic-summary {
+    .filter-depth-summary {
       display: flex;
       align-items: center;
       gap: 10px;
@@ -77,26 +77,26 @@
       user-select: none;
       transition: background .12s;
     }
-    .filter-topic-summary:hover { background: rgba(255,255,255,0.03); }
-    .filter-topic-summary::-webkit-details-marker { display: none; }
-    .filter-topic-summary::after {
+    .filter-depth-summary:hover { background: rgba(255,255,255,0.03); }
+    .filter-depth-summary::-webkit-details-marker { display: none; }
+    .filter-depth-summary::after {
       content: '▾';
       margin-left: auto;
       font-size: 10px;
       color: rgba(255,255,255,0.45);
       transition: transform .18s;
     }
-    .filter-topic-section[open] .filter-topic-summary::after {
+    .filter-depth-section[open] .filter-depth-summary::after {
       transform: rotate(180deg);
     }
-    .filter-topic-summary-label {
+    .filter-depth-summary-label {
       font-size: .68rem;
       font-weight: 700;
       color: rgba(255,255,255,0.34);
       text-transform: uppercase;
       letter-spacing: .06em;
     }
-    .filter-topic-summary-current {
+    .filter-depth-summary-current {
       display: inline-flex;
       align-items: center;
       gap: 5px;
@@ -104,14 +104,14 @@
       font-weight: 600;
       color: rgba(255,255,255,0.78);
     }
-    .filter-topic-summary-current span:first-child { font-size: .92rem; line-height: 1; }
-    .filter-topic-chips {
+    .filter-depth-summary-current span:first-child { font-size: .92rem; line-height: 1; }
+    .filter-depth-chips {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
       padding: 2px 14px 12px;
     }
-    .filter-topic-chip {
+    .filter-depth-chip {
       display: inline-flex;
       align-items: center;
       gap: 5px;
@@ -127,27 +127,27 @@
       transition: border-color .15s, color .15s, background .15s;
       white-space: nowrap;
     }
-    .filter-topic-chip:hover {
+    .filter-depth-chip:hover {
       border-color: rgba(255,255,255,0.3);
       color: rgba(255,255,255,0.92);
     }
-    .filter-topic-chip.is-active {
+    .filter-depth-chip.is-active {
       background: rgba(0,212,255,0.16);
       border-color: rgba(0,212,255,0.55);
       color: #e6edf3;
     }
-    .filter-topic-chip span:first-child { font-size: .9rem; line-height: 1; }
-    /* PC：展开专题 chip 区限高滚动，避免挤占社区/类型列表 */
-    .filter-topic-section[open] .filter-topic-chips {
+    .filter-depth-chip span:first-child { font-size: .9rem; line-height: 1; }
+    /* PC：展开纵深 chip 区限高滚动，避免挤占社区/类型列表 */
+    .filter-depth-section[open] .filter-depth-chips {
       max-height: 128px;
       overflow-y: auto;
       scrollbar-width: thin;
       scrollbar-color: rgba(255,255,255,0.28) transparent;
     }
-    /* 专题汇总导读条（画布右下角、操作提示条上方，选中非「全量」专题时显示；
+    /* 路线导读条（画布右下角、操作提示条上方，选中非「全量」纵深时显示；
        左上角会被筛选浮窗遮挡、左下有图例 FAB、右上有参数面板，故固定右下；
        bottom 抬高 72px 避开操作提示条（约 61px），也天然高于图例 FAB（约 60px） */
-    .topic-intro-banner {
+    .depth-intro-banner {
       position: absolute;
       bottom: 72px;
       right: 20px;
@@ -161,13 +161,13 @@
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
       pointer-events: auto;
     }
-    .topic-intro-head {
+    .depth-intro-head {
       display: flex;
       align-items: center;
       gap: 8px;
       margin-bottom: 6px;
     }
-    .topic-intro-badge {
+    .depth-intro-badge {
       display: inline-flex;
       align-items: center;
       gap: 5px;
@@ -176,7 +176,7 @@
       color: #7dd3fc;
       letter-spacing: .02em;
     }
-    .topic-intro-hub-tag {
+    .depth-intro-hub-tag {
       font-size: .62rem;
       font-weight: 600;
       padding: 2px 6px;
@@ -186,13 +186,13 @@
       text-transform: uppercase;
       letter-spacing: .04em;
     }
-    .topic-intro-text {
+    .depth-intro-text {
       margin: 0 0 8px;
       font-size: .76rem;
       line-height: 1.55;
       color: rgba(255, 255, 255, 0.62);
     }
-    .topic-intro-link {
+    .depth-intro-link {
       display: inline-flex;
       align-items: center;
       gap: 4px;
@@ -201,14 +201,14 @@
       color: #38bdf8;
       text-decoration: none;
     }
-    .topic-intro-link:hover { color: #7dd3fc; text-decoration: underline; }
-    .node-topic-hub .node-glow { fill-opacity: 0.28 !important; }
-    .node-topic-hub .node-circle {
+    .depth-intro-link:hover { color: #7dd3fc; text-decoration: underline; }
+    .node-depth-hub .node-glow { fill-opacity: 0.28 !important; }
+    .node-depth-hub .node-circle {
       stroke-width: 2.5px !important;
       stroke-opacity: 0.85 !important;
       filter: drop-shadow(0 0 6px rgba(0, 212, 255, 0.45));
     }
-    .node-topic-hub .node-label {
+    .node-depth-hub .node-label {
       font-weight: 700;
       fill: rgba(255, 255, 255, 0.92) !important;
     }
@@ -327,7 +327,7 @@
       transition: opacity .15s;
       pointer-events: none;
     }
-    .graph-3d-label.is-topic-hub {
+    .graph-3d-label.is-depth-hub {
       font-weight: 700;
     }
     /* 3D 社区聚类中心胶囊标签（HTML overlay，样式对齐 2D .community-label）
@@ -778,41 +778,41 @@
       border-color: rgba(22,89,180,0.45);
       color: #1659b4;
     }
-    [data-theme="light"] .filter-topic-section {
+    [data-theme="light"] .filter-depth-section {
       border-bottom-color: rgba(0,0,0,0.07);
     }
-    [data-theme="light"] .filter-topic-summary:hover { background: rgba(0,0,0,0.03); }
-    [data-theme="light"] .filter-topic-summary::after { color: rgba(0,0,0,0.45); }
-    [data-theme="light"] .filter-topic-summary-label { color: rgba(0,0,0,0.4); }
-    [data-theme="light"] .filter-topic-summary-current { color: rgba(0,0,0,0.7); }
-    [data-theme="light"] .filter-topic-chip {
+    [data-theme="light"] .filter-depth-summary:hover { background: rgba(0,0,0,0.03); }
+    [data-theme="light"] .filter-depth-summary::after { color: rgba(0,0,0,0.45); }
+    [data-theme="light"] .filter-depth-summary-label { color: rgba(0,0,0,0.4); }
+    [data-theme="light"] .filter-depth-summary-current { color: rgba(0,0,0,0.7); }
+    [data-theme="light"] .filter-depth-chip {
       border-color: rgba(0,0,0,0.1);
       background: rgba(0,0,0,0.04);
       color: rgba(0,0,0,0.62);
     }
-    [data-theme="light"] .filter-topic-chip:hover {
+    [data-theme="light"] .filter-depth-chip:hover {
       border-color: rgba(0,0,0,0.28);
       color: rgba(0,0,0,0.85);
     }
-    [data-theme="light"] .filter-topic-chip.is-active {
+    [data-theme="light"] .filter-depth-chip.is-active {
       background: #e6f7ff;
       border-color: rgba(22,90,180,0.45);
       color: #1659b4;
     }
-    [data-theme="light"] .topic-intro-banner {
+    [data-theme="light"] .depth-intro-banner {
       background: rgba(255, 255, 255, 0.94);
       border-color: rgba(22, 89, 180, 0.25);
       box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
     }
-    [data-theme="light"] .topic-intro-badge { color: #1659b4; }
-    [data-theme="light"] .topic-intro-hub-tag {
+    [data-theme="light"] .depth-intro-badge { color: #1659b4; }
+    [data-theme="light"] .depth-intro-hub-tag {
       background: rgba(22, 89, 180, 0.1);
       color: rgba(15, 23, 42, 0.65);
     }
-    [data-theme="light"] .topic-intro-text { color: rgba(15, 23, 42, 0.68); }
-    [data-theme="light"] .topic-intro-link { color: #1659b4; }
-    [data-theme="light"] .node-topic-hub .node-label { fill: rgba(15, 23, 42, 0.88) !important; }
-    [data-theme="light"] .graph-3d-label.is-topic-hub { color: rgba(15, 23, 42, 0.88) !important; }
+    [data-theme="light"] .depth-intro-text { color: rgba(15, 23, 42, 0.68); }
+    [data-theme="light"] .depth-intro-link { color: #1659b4; }
+    [data-theme="light"] .node-depth-hub .node-label { fill: rgba(15, 23, 42, 0.88) !important; }
+    [data-theme="light"] .graph-3d-label.is-depth-hub { color: rgba(15, 23, 42, 0.88) !important; }
     [data-theme="light"] .community-label-bg {
       filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.18));
     }
@@ -1258,7 +1258,7 @@
       opacity: 0.55;
       pointer-events: none;
     }
-    .filter-panel.filters-locked .filter-topic-section {
+    .filter-panel.filters-locked .filter-depth-section {
       pointer-events: none;
     }
     .timeline-scrub-label {
@@ -1536,7 +1536,7 @@
         max-height: min(520px, calc(100dvh - var(--header-h) - 46px - 20px));
         z-index: 31;
       }
-      .filter-topic-section[open] .filter-topic-chips {
+      .filter-depth-section[open] .filter-depth-chips {
         max-height: 96px;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
@@ -1738,13 +1738,13 @@
     <svg id="graph-canvas"></svg>
     <div id="graph-canvas-3d" hidden aria-label="3D 知识图谱"></div>
     <div id="graph-tooltip" class="hidden" role="tooltip"></div>
-    <div id="topic-intro-banner" class="topic-intro-banner" hidden>
-      <div class="topic-intro-head">
-        <span class="topic-intro-badge" id="topic-intro-badge"></span>
-        <span class="topic-intro-hub-tag">专题汇总</span>
+    <div id="depth-intro-banner" class="depth-intro-banner" hidden>
+      <div class="depth-intro-head">
+        <span class="depth-intro-badge" id="depth-intro-badge"></span>
+        <span class="depth-intro-hub-tag">路线</span>
       </div>
-      <p class="topic-intro-text" id="topic-intro-text"></p>
-      <a id="topic-intro-link" class="topic-intro-link" href="#">打开专题汇总页 →</a>
+      <p class="depth-intro-text" id="depth-intro-text"></p>
+      <a id="depth-intro-link" class="depth-intro-link" href="#">打开路线页 →</a>
     </div>
     <button id="graph-legend-fab" type="button" aria-label="打开图例" aria-expanded="false" aria-controls="graph-legend" title="图例">🎨</button>
     <div id="graph-legend-scrim" hidden aria-hidden="true"></div>
@@ -1855,39 +1855,40 @@
         </div>
       </div>
       <div id="filter-panel-body" class="filter-body"></div>
-      <details class="filter-topic-section" id="filter-topic-section">
-        <summary class="filter-topic-summary">
-          <span class="filter-topic-summary-label">专题视图</span>
-          <span class="filter-topic-summary-current" id="filter-topic-current"><span>🌐</span><span>全量</span></span>
+      <details class="filter-depth-section" id="filter-depth-section">
+        <summary class="filter-depth-summary">
+          <span class="filter-depth-summary-label">路线视图</span>
+          <span class="filter-depth-summary-current" id="filter-depth-current"><span>🌐</span><span>全量</span></span>
         </summary>
-        <div class="filter-topic-chips" id="filter-topic-chips">
-          <button class="filter-topic-chip is-active" type="button" data-topic="all" title="全量"><span>🌐</span><span>全量</span></button>
-          <button class="filter-topic-chip" type="button" data-topic="motion-retargeting" title="动作重定向 (Motion Retargeting)"><span>🤸</span><span>动作重定向 (Motion Retargeting)</span></button>
-          <button class="filter-topic-chip" type="button" data-topic="grasp" title="抓取 (Grasp)"><span>🤏</span><span>抓取 (Grasp)</span></button>
-          <button class="filter-topic-chip" type="button" data-topic="tactile" title="触觉 (Tactile)"><span>✋</span><span>触觉 (Tactile)</span></button>
-          <button class="filter-topic-chip" type="button" data-topic="communication" title="通信协议 (Communication)"><span>🔌</span><span>通信协议 (Communication)</span></button>
-          <button class="filter-topic-chip" type="button" data-topic="wbc" title="全身控制 (WBC)"><span>🦾</span><span>全身控制 (WBC)</span></button>
-          <button class="filter-topic-chip" type="button" data-topic="locomotion" title="步态与移动 (Locomotion)"><span>🚶</span><span>步态与移动 (Locomotion)</span></button>
-          <button class="filter-topic-chip" type="button" data-topic="vla" title="视觉-语言-动作 (VLA)"><span>👀</span><span>视觉-语言-动作 (VLA)</span></button>
-          <button class="filter-topic-chip" type="button" data-topic="learning" title="模仿/强化学习 (IL/RL)"><span>🎓</span><span>模仿/强化学习 (IL/RL)</span></button>
-          <button class="filter-topic-chip" type="button" data-topic="sim2real" title="仿真到现实 (Sim2Real)"><span>🔁</span><span>仿真到现实 (Sim2Real)</span></button>
-          <button class="filter-topic-chip" type="button" data-topic="state-estimation" title="状态估计 (State Estimation)"><span>📊</span><span>状态估计 (State Estimation)</span></button>
-          <button class="filter-topic-chip" type="button" data-topic="wbt" title="全身运动跟踪 (WBT)"><span>🕺</span><span>全身运动跟踪 (WBT)</span></button>
-          <button class="filter-topic-chip" type="button" data-topic="cross-embodiment" title="跨具身迁移 (Cross-Embodiment)"><span>🔀</span><span>跨具身迁移 (Cross-Embodiment)</span></button>
-          <button class="filter-topic-chip" type="button" data-topic="safe-fine-tuning" title="安全微调 (Safe Fine-Tuning)"><span>🛡️</span><span>安全微调 (Safe Fine-Tuning)</span></button>
-          <button class="filter-topic-chip" type="button" data-topic="vision-backbone" title="视觉骨干 (Vision Backbone)"><span>👁️</span><span>视觉骨干 (Vision Backbone)</span></button>
-          <button class="filter-topic-chip" type="button" data-topic="data-pipeline" title="训练数据 (Data Pipeline)"><span>📦</span><span>训练数据 (Data Pipeline)</span></button>
-          <button class="filter-topic-chip" type="button" data-topic="physics-fidelity" title="物理保真度 (Physics Fidelity)"><span>⚙️</span><span>物理保真度 (Physics Fidelity)</span></button>
-          <button class="filter-topic-chip" type="button" data-topic="contact-force-control" title="接触力控 (Contact Force Control)"><span>🤝</span><span>接触力控 (Contact Force Control)</span></button>
-          <button class="filter-topic-chip" type="button" data-topic="embodied-foundation-model" title="具身大模型 (Embodied Foundation Model)"><span>🧠</span><span>具身大模型 (Embodied Foundation Model)</span></button>
-          <button class="filter-topic-chip" type="button" data-topic="embodied-eval-benchmark" title="具身评测基准 (Embodied Eval Benchmark)"><span>🧪</span><span>具身评测基准 (Embodied Eval Benchmark)</span></button>
-          <button class="filter-topic-chip" type="button" data-topic="actuator-drive-chain" title="执行器驱动链 (Actuator Drive Chain)"><span>⚡</span><span>执行器驱动链 (Actuator Drive Chain)</span></button>
+        <div class="filter-depth-chips" id="filter-depth-chips">
+          <button class="filter-depth-chip is-active" type="button" data-depth="all" title="全量"><span>🌐</span><span>全量</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="teleoperation" title="遥操作"><span>🎮</span><span>遥操作</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="torque-motor-design" title="力矩电机设计"><span>⚙️</span><span>力矩电机设计</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="classical-control" title="传统控制"><span>📐</span><span>传统控制</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="humanoid-hardware-design" title="整机硬件"><span>🛠️</span><span>整机硬件</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="safe-control" title="安全控制"><span>🛡️</span><span>安全控制</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="contact-manipulation" title="接触操作"><span>🤏</span><span>接触操作</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="navigation" title="导航"><span>🗺️</span><span>导航</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="imitation-learning" title="模仿学习"><span>🎓</span><span>模仿学习</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="rl-locomotion" title="RL 运动控制"><span>🚶</span><span>RL 运动控制</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="loco-manipulation" title="Loco-Manip"><span>🤖</span><span>Loco-Manip</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="humanoid-soccer" title="人形足球"><span>⚽</span><span>人形足球</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="motion-retargeting" title="动作重定向"><span>🤸</span><span>动作重定向</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="humanoid-swarm-performance" title="人形群控展演"><span>🕺</span><span>人形群控展演</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="sim2real" title="Sim2Real"><span>🔁</span><span>Sim2Real</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="humanoid-boxing" title="人形拳击"><span>🥊</span><span>人形拳击</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="bfm" title="BFM"><span>🧠</span><span>BFM</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="perceptive-locomotion" title="感知越障"><span>👁️</span><span>感知越障</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="motion-generation" title="动作生成"><span>✨</span><span>动作生成</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="vla" title="VLA"><span>👀</span><span>VLA</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="real2sim" title="Real2Sim"><span>🌍</span><span>Real2Sim</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="wam" title="WAM"><span>🔮</span><span>WAM</span></button>
         </div>
       </details>
-      <details class="filter-topic-section" id="filter-institution-section">
-        <summary class="filter-topic-summary">
-          <span class="filter-topic-summary-label">研究机构</span>
-          <span class="filter-topic-summary-current" id="filter-institution-current"><span>🏛️</span><span>全部</span></span>
+      <details class="filter-depth-section" id="filter-institution-section">
+        <summary class="filter-depth-summary">
+          <span class="filter-depth-summary-label">研究机构</span>
+          <span class="filter-depth-summary-current" id="filter-institution-current"><span>🏛️</span><span>全部</span></span>
         </summary>
         <div class="filter-institution-list" id="filter-institution-list"></div>
       </details>
@@ -1946,7 +1947,7 @@
   <script src="graph-tooltip.js"></script>
   <script src="graph-node-size.js"></script>
   <script src="graph-3d.js"></script>
-  <script src="topic-filters.js"></script>
+  <script src="depth-filters.js"></script>
   <script>
   (async function () {
     /* ── 颜色 & 类型标签 ── */
@@ -2144,7 +2145,7 @@
       return Array.isArray(d.institutions) ? d.institutions : [];
     }
 
-    // 研究机构筛选：独立于着色维度的过滤面（与「专题视图」同类），多选；命中任一
+    // 研究机构筛选：独立于着色维度的过滤面（与「路线视图」同类），多选；命中任一
     // 所选机构即保留，着色仍由 colorMode 决定（社区/类型/健康度），不改图例配色。
     const activeInstitutions = new Set();
 
@@ -2199,29 +2200,29 @@
     let focusedType = null;
     let focusedHealth = null;
 
-    /* ── 专题视图（V22 P3）：复用 link-graph.json 的 path / community 元数据 ── */
-    // 每个专题给一组路径片段或 community id，命中即视为属于该专题（叠加关系，任一命中即可）。
-    // 专题命中规则迁移至共享模块 topic-filters.js（与详情页徽标同源）。
-    const TOPIC_FILTERS = window.RNTopicFilters.TOPIC_FILTERS;
-    const TOPIC_META = window.RNTopicFilters.TOPIC_META;
-    let currentTopic = 'all';
-    const topicIntroBanner = document.getElementById('topic-intro-banner');
-    const topicIntroBadge = document.getElementById('topic-intro-badge');
-    const topicIntroText = document.getElementById('topic-intro-text');
-    const topicIntroLink = document.getElementById('topic-intro-link');
+    /* ── 路线视图（V22 P3）：复用 link-graph.json 的 path / community 元数据 ── */
+    // 每个纵深给一组路径片段或 community id，命中即视为属于该纵深（叠加关系，任一命中即可）。
+    // 纵深命中规则迁移至共享模块 depth-filters.js（与详情页徽标同源）。
+    const DEPTH_FILTERS = window.RNDepthFilters.DEPTH_FILTERS;
+    const DEPTH_META = window.RNDepthFilters.DEPTH_META;
+    let currentDepth = 'all';
+    const topicIntroBanner = document.getElementById('depth-intro-banner');
+    const topicIntroBadge = document.getElementById('depth-intro-badge');
+    const topicIntroText = document.getElementById('depth-intro-text');
+    const topicIntroLink = document.getElementById('depth-intro-link');
 
     function isCurrentTopicHub(d) {
-      return currentTopic !== 'all'
-        && window.RNTopicFilters.isTopicHub(d, currentTopic);
+      return currentDepth !== 'all'
+        && window.RNDepthFilters.isDepthHub(d, currentDepth);
     }
 
     function updateTopicIntroBanner() {
       if (!topicIntroBanner) return;
-      if (!currentTopic || currentTopic === 'all') {
+      if (!currentDepth || currentDepth === 'all') {
         topicIntroBanner.hidden = true;
         return;
       }
-      const meta = TOPIC_META[currentTopic];
+      const meta = DEPTH_META[currentDepth];
       if (!meta) {
         topicIntroBanner.hidden = true;
         return;
@@ -2229,7 +2230,7 @@
       topicIntroBanner.hidden = false;
       if (topicIntroBadge) {
         topicIntroBadge.innerHTML = '<span>' + (meta.emoji || '🏷️') + '</span><span>'
-          + escapeHtml(meta.label || currentTopic) + '</span>';
+          + escapeHtml(meta.label || currentDepth) + '</span>';
       }
       if (topicIntroText) topicIntroText.textContent = meta.description || '';
       if (topicIntroLink && meta.wikiPath) {
@@ -2240,8 +2241,8 @@
       }
     }
 
-    function nodeMatchesTopic(d) {
-      return window.RNTopicFilters.matches(d, currentTopic);
+    function nodeMatchesDepth(d) {
+      return window.RNDepthFilters.matches(d, currentDepth);
     }
 
     /* ── 可变物理参数 ── */
@@ -2551,7 +2552,7 @@
 
     function nodeLabelVisible(d) {
       return nodeMatchesDegreeTop(d) && nodeMatchesCurrentFilter(d)
-        && nodeMatchesSearch(d) && nodeMatchesTopic(d) && nodeMatchesInstitutionFilter(d);
+        && nodeMatchesSearch(d) && nodeMatchesDepth(d) && nodeMatchesInstitutionFilter(d);
     }
 
     function computeNodeLabelOpacity(d, zoomK, labelsReady, cameraMoved) {
@@ -3152,7 +3153,7 @@
     }
 
     // 质心只统计当前「有效可见」节点（无筛选时全部；有筛选时取 visibleNodeIds），
-    // 这样勾选具体社区 / 专题 / Top N 后标签位置始终贴合实际可见聚类。
+    // 这样勾选具体社区 / 纵深 / Top N 后标签位置始终贴合实际可见聚类。
     function computeCommunityCentroids() {
       const acc = new Map();
       const hasFilter = hasActiveGraphFilter();
@@ -3635,7 +3636,7 @@
     function hasActiveGraphFilter() {
       return topDegreeIds !== null || activeFilters.size > 0 || searchQuery.length > 0
         || focusedCommunityId || focusedType || focusedHealth !== null
-        || activeInstitutions.size > 0 || currentTopic !== 'all';
+        || activeInstitutions.size > 0 || currentDepth !== 'all';
     }
 
     function edgeNodeId(endpoint) {
@@ -3971,7 +3972,7 @@
 
     /* ── checkbox 筛选 ── */
     function updateFilterCount() {
-      const count = activeFilters.size + activeInstitutions.size + (topDegreeIds ? 1 : 0) + (currentTopic && currentTopic !== 'all' ? 1 : 0);
+      const count = activeFilters.size + activeInstitutions.size + (topDegreeIds ? 1 : 0) + (currentDepth && currentDepth !== 'all' ? 1 : 0);
       const countEl = document.getElementById('filter-count');
       if (count > 0) {
         countEl.textContent = count;
@@ -3987,15 +3988,15 @@
       applyFilters();
     });
 
-    /* ── 专题视图切换（已合入筛选面板内 <details> 区块）── */
-    const topicChipsEl = document.getElementById('filter-topic-chips');
-    const topicCurrentEl = document.getElementById('filter-topic-current');
+    /* ── 路线视图切换（已合入筛选面板内 <details> 区块）── */
+    const topicChipsEl = document.getElementById('filter-depth-chips');
+    const topicCurrentEl = document.getElementById('filter-depth-current');
     function setActiveTopic(topic) {
-      currentTopic = topic || 'all';
+      currentDepth = topic || 'all';
       let activeBtn = null;
       if (topicChipsEl) {
-        topicChipsEl.querySelectorAll('.filter-topic-chip').forEach(btn => {
-          const on = btn.getAttribute('data-topic') === currentTopic;
+        topicChipsEl.querySelectorAll('.filter-depth-chip').forEach(btn => {
+          const on = btn.getAttribute('data-depth') === currentDepth;
           btn.classList.toggle('is-active', on);
           if (on) activeBtn = btn;
         });
@@ -4004,15 +4005,15 @@
       updateTopicIntroBanner();
       applyFilters();
       updateFilterCount();
-      if (currentTopic !== 'all') fitToVisibleNodes();
+      if (currentDepth !== 'all') fitToVisibleNodes();
       else fitToScreen();
     }
     if (topicChipsEl) {
       topicChipsEl.addEventListener('click', ev => {
         if (areFiltersLocked()) return;
-        const btn = ev.target.closest('.filter-topic-chip');
+        const btn = ev.target.closest('.filter-depth-chip');
         if (!btn) return;
-        setActiveTopic(btn.getAttribute('data-topic'));
+        setActiveTopic(btn.getAttribute('data-depth'));
       });
     }
 
@@ -4061,13 +4062,13 @@
 
       node.each(function(d) {
         const ok = nodeMatchesDegreeTop(d) && nodeMatchesCurrentFilter(d)
-          && nodeMatchesSearch(d) && nodeMatchesTopic(d) && nodeMatchesInstitutionFilter(d);
+          && nodeMatchesSearch(d) && nodeMatchesDepth(d) && nodeMatchesInstitutionFilter(d);
         if (ok) { visible++; visibleNodeIds.add(d.id); }
 
         // V21 修复：显式重置节点整体 opacity (移除 openSidebar 可能留下的残留)
         const g = d3.select(this);
         const hub = isCurrentTopicHub(d);
-        g.classed('node-topic-hub', hub);
+        g.classed('node-depth-hub', hub);
         g.style('opacity', hasFilter ? (ok ? 1 : 0.08) : 1);
         // 灰色节点不捕获指针，避免触发浮窗/点击；解除筛选后恢复
         g.style('pointer-events', hasFilter && !ok ? 'none' : null);
@@ -4095,8 +4096,8 @@
           const t = typeof e.target === 'object' ? e.target : nodes.find(n => n.id === e.target);
           if (!s || !t) return 0.2;
           return (nodeMatchesDegreeTop(s) && nodeMatchesDegreeTop(t)
-                  && edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s) && nodeMatchesTopic(s) && nodeMatchesInstitutionFilter(s)
-                  && edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t) && nodeMatchesTopic(t) && nodeMatchesInstitutionFilter(t)) ? 1 : 0.2;
+                  && edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s) && nodeMatchesDepth(s) && nodeMatchesInstitutionFilter(s)
+                  && edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t) && nodeMatchesDepth(t) && nodeMatchesInstitutionFilter(t)) ? 1 : 0.2;
         })
         .attr('stroke-width', e => {
           if (!hasFilter) return linkWidthBase;
@@ -4104,8 +4105,8 @@
           const t = typeof e.target === 'object' ? e.target : nodes.find(n => n.id === e.target);
           if (!s || !t) return linkWidthBase * 0.5;
           const edgeOk = nodeMatchesDegreeTop(s) && nodeMatchesDegreeTop(t)
-            && edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s) && nodeMatchesTopic(s) && nodeMatchesInstitutionFilter(s)
-            && edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t) && nodeMatchesTopic(t) && nodeMatchesInstitutionFilter(t);
+            && edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s) && nodeMatchesDepth(s) && nodeMatchesInstitutionFilter(s)
+            && edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t) && nodeMatchesDepth(t) && nodeMatchesInstitutionFilter(t);
           return edgeOk ? linkWidthBase : linkWidthBase * 0.5;
         });
       updateCount(visible);
@@ -4677,7 +4678,7 @@
         return;
       }
       if (isMobile) {
-        if (currentTopic !== 'all') fitToVisibleNodes();
+        if (currentDepth !== 'all') fitToVisibleNodes();
         else fitToScreen();
         return;
       }
@@ -5112,9 +5113,10 @@
        ?focus=<id> URL 参数：页面加载后飞行定位
     ════════════════════════════════════════════ */
 
-    /* ?topic=<key> URL 参数：从详情页"专题徽标"跳入时自动激活对应专题视图 */
-    const topicParam = new URLSearchParams(location.search).get('topic');
-    if (topicParam && TOPIC_FILTERS[topicParam]) {
+    /* ?depth=<key> URL 参数：从详情页"路线徽标"跳入时自动激活对应路线视图；兼容旧 ?topic= */
+    const _depthParams = new URLSearchParams(location.search);
+    const topicParam = _depthParams.get('depth') || _depthParams.get('topic');
+    if (topicParam && DEPTH_FILTERS[topicParam]) {
       setActiveTopic(topicParam);
     }
 

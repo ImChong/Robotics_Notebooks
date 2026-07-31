@@ -42,11 +42,11 @@ const fs = require('fs');
     await page.click('#filter-toggle');
     await new Promise(r => setTimeout(r, 300));
     await page.evaluate(() => {
-      const det = document.getElementById('filter-topic-section');
+      const det = document.getElementById('filter-depth-section');
       if (det && !det.open) det.open = true;
     });
     await new Promise(r => setTimeout(r, 200));
-    await page.click('.filter-topic-chip[data-topic="motion-retargeting"]');
+    await page.click('.filter-depth-chip[data-depth="motion-retargeting"]');
     await new Promise(r => setTimeout(r, 800));
     await page.click('#filter-close');
     await new Promise(r => setTimeout(r, 200));

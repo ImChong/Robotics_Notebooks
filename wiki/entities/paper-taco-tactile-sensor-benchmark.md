@@ -14,7 +14,7 @@ tags:
   - cmu
   - snu
 status: complete
-updated: 2026-07-29
+updated: 2026-07-31
 arxiv: "2605.21976"
 code: https://github.com/TacObench/TacO
 related:
@@ -23,7 +23,7 @@ related:
   - ../concepts/contact-rich-manipulation.md
   - ../methods/imitation-learning.md
   - ../methods/action-chunking.md
-  - ../overview/topic-tactile.md
+  - ../overview/hub-tactile.md
   - ../tasks/manipulation.md
   - ../tasks/teleoperation.md
   - ./paper-vtap-gripper.md
@@ -32,7 +32,7 @@ related:
   - ./paper-trex-tactile-reactive-dexterous-manipulation.md
   - ./paper-omnitactune-tactile-residual-adaptation.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
-  - ../overview/topic-embodied-eval-benchmark.md
+  - ../overview/hub-embodied-eval-benchmark.md
 sources:
   - ../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md
   - ../../sources/sites/tacobench-github-io.md
@@ -189,12 +189,12 @@ sequenceDiagram
 - [视触觉融合](../concepts/visuo-tactile-fusion.md) — vision-only vs visuotactile 消融语境
 - [接触丰富操作](../concepts/contact-rich-manipulation.md)
 - [Action Chunking](../methods/action-chunking.md) / [Imitation Learning](../methods/imitation-learning.md)
-- [触觉专题](../overview/topic-tactile.md)
+- [触觉知识链](../overview/hub-tactile.md)
 - [VTAP Gripper](./paper-vtap-gripper.md) — 同用 FlexiTac
 - [TACO（触觉 WM · 消歧）](./paper-taco-tactile-wm-vla-posttrain.md)
 - [SoftVTBench](./paper-softvtbench.md) — 可变形 Goal/Safety；互补「怎么测安全」而非「选哪种传感器」
 - [T-Rex](./paper-trex-tactile-reactive-dexterous-manipulation.md) / [OmniTacTune](./paper-omnitactune-tactile-residual-adaptation.md)
-- [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) / [具身评测基准专题](../overview/topic-embodied-eval-benchmark.md)
+- [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) / [具身评测基准知识链](../overview/hub-embodied-eval-benchmark.md)
 
 ## 参考来源
 

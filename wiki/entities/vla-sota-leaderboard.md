@@ -8,7 +8,7 @@ related:
   - ../tasks/manipulation.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../overview/vla-open-source-repro-landscape-2025.md
-  - ../overview/topic-vla.md
+  - ../overview/hub-vla.md
   - ./paper-evo1-lightweight-vla.md
   - ./paper-fabrivla.md
   - ./paper-mint-vla.md

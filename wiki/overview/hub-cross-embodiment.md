@@ -1,19 +1,19 @@
 ---
 type: overview
-tags: [topic, topic-cross-embodiment, transfer, any2any, retargeting]
+tags: [hub, hub-cross-embodiment, transfer, any2any, retargeting]
 status: complete
-updated: 2026-07-24
+updated: 2026-07-31
 related:
   - ../queries/cross-embodiment-transfer-strategy.md
   - ../entities/paper-any2any-cross-embodiment-wbt.md
   - ../entities/paper-last-hd-latent-physical-reasoning.md
   - ../entities/generalist-gen1-thousand-hands.md
-summary: "跨具身迁移专题汇总：不同机器人形态、仿真与真机之间的策略/动作迁移，重定向、域随机与 Any2Any 类方法的选型与失败模式；含末端/工具接口多样性（如 GEN-1 千手）轴。"
+summary: "跨具身迁移知识链汇总：不同机器人形态、仿真与真机之间的策略/动作迁移，重定向、域随机与 Any2Any 类方法的选型与失败模式；含末端/工具接口多样性（如 GEN-1 千手）轴。"
 ---
 
-# 跨具身迁移（专题汇总）
+# 跨具身迁移（知识链汇总）
 
-> **图谱专题视图**：本页是知识图谱「🔀 跨具身迁移 (Cross-Embodiment)」专题的统一入口；在 [图谱专题视图](../../docs/graph.html?topic=cross-embodiment) 筛选时，本节点为汇总锚点。
+> **知识链汇总**：本页是相关概念/方法的统一入口；对应策展纵深见图谱 [路线视图](../../docs/graph.html?depth=imitation-learning) 与 [路线页](../../roadmap/depth-imitation-learning.md)。
 
 ## 一句话定义
 
@@ -35,7 +35,7 @@ summary: "跨具身迁移专题汇总：不同机器人形态、仿真与真机�
 - **Sim2Real 的姊妹问题**：不仅是 sim→real，还有 human→robot、大→小人形。
 - **WBT 与 VLA 共同痛点**：参考动作与策略接口需对齐目标机体。
 
-## 本专题覆盖什么
+## 本知识链覆盖什么
 
 | 层次 | 典型问题 | 站内入口 |
 |------|----------|----------|
@@ -47,11 +47,11 @@ summary: "跨具身迁移专题汇总：不同机器人形态、仿真与真机�
 | 概念 | 角色动画 vs 机器人 | [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md) |
 | 数据 | 跨具身数据集 | [Open X-Embodiment](../concepts/open-x-embodiment.md) |
 
-## 与其他专题的关系
+## 与其他知识链的关系
 
-- **[动作重定向](./topic-motion-retargeting.md)**：跨骨架动作对齐。
-- **[WBT](./topic-wbt.md)**：跟踪策略的跨形态扩展。
-- **[Sim2Real](./topic-sim2real.md)**：仿真-真机是跨具身特例。
+- **[动作重定向](./hub-motion-retargeting.md)**：跨骨架动作对齐。
+- **[WBT](./hub-wbt.md)**：跟踪策略的跨形态扩展。
+- **[Sim2Real](./hub-sim2real.md)**：仿真-真机是跨具身特例。
 
 ## 关联页面
 
@@ -64,4 +64,4 @@ summary: "跨具身迁移专题汇总：不同机器人形态、仿真与真机�
 
 - 本库归纳自 [Cross-Embodiment Transfer Strategy](../queries/cross-embodiment-transfer-strategy.md) 及 motion-retargeting / sim2real 交叉页
 - [Towards Machines with a Thousand Hands（来源归档）](../../sources/blogs/generalist_thousand_hands.md) — 跨末端「千手」产业样本
-- 图谱专题定义：[docs/topic-filters.js](../../docs/topic-filters.js)（`cross-embodiment` 命中规则）
+- 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`cross-embodiment` 命中规则）

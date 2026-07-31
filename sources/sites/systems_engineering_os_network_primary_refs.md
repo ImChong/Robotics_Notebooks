@@ -6,7 +6,7 @@
 - **类型：** book / RFC / standard（合集）
 - **入库日期：** 2026-07-21
 - **一句话说明：** 为人形/移动机器人「主控 Linux + 感知板 + 云端服务」提供操作系统与网络基线概念的原始依据，沉淀到系统工程专题。
-- **沉淀到 wiki：** 是 → [operating-system-basics](../../wiki/concepts/operating-system-basics.md)、[network-protocol-stack](../../wiki/concepts/network-protocol-stack.md)、[topic-systems-engineering](../../wiki/overview/topic-systems-engineering.md)
+- **沉淀到 wiki：** 是 → [operating-system-basics](../../wiki/concepts/operating-system-basics.md)、[network-protocol-stack](../../wiki/concepts/network-protocol-stack.md)、[hub-systems-engineering](../../wiki/overview/hub-systems-engineering.md)
 
 ## 为什么值得保留
 

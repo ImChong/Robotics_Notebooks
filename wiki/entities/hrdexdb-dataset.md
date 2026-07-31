@@ -11,7 +11,7 @@ related:
   - ../queries/cross-embodiment-transfer-strategy.md
   - ../concepts/tactile-sensing.md
   - ./allegro-hand.md
-  - ../overview/topic-grasp.md
+  - ../overview/hub-grasp.md
 sources:
   - ../../sources/papers/hrdexdb_arxiv_2604_14944.md
   - ../../sources/sites/snuvclab-hrdexdb-github-io.md
@@ -100,7 +100,7 @@ flowchart LR
 - **硬件**：[Allegro Hand](./allegro-hand.md) — 三套机器人手之一
 - **采集指南**：[灵巧操作数据采集指南](../queries/dexterous-data-collection-guide.md) — 多模态采集与重定向背景
 - **跨具身迁移**：[跨具身策略迁移选型指南](../queries/cross-embodiment-transfer-strategy.md) — 配对数据如何服务 embodiment gap
-- **任务域**：[Manipulation](../tasks/manipulation.md)、[抓取专题](../overview/topic-grasp.md)
+- **任务域**：[Manipulation](../tasks/manipulation.md)、[抓取知识链](../overview/hub-grasp.md)
 - **触觉**：[触觉感知](../concepts/tactile-sensing.md)
 
 ## 参考来源

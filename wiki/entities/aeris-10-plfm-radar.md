@@ -6,7 +6,7 @@ updated: 2026-07-08
 related:
   - ../overview/navigation-slam-autonomy-stack.md
   - ../overview/multirotor-simulation-planning-control-stack.md
-  - ../overview/topic-state-estimation.md
+  - ../overview/hub-state-estimation.md
   - ../entities/fast-lio.md
   - ../entities/px4-autopilot.md
   - ../queries/field-robotics-troubleshooting.md
@@ -103,7 +103,7 @@ flowchart LR
 
 - [导航·SLAM·自动驾驶开源栈总览](../overview/navigation-slam-autonomy-stack.md)
 - [多旋翼仿真—规划—飞控开源栈总览](../overview/multirotor-simulation-planning-control-stack.md)
-- [状态估计（专题汇总）](../overview/topic-state-estimation.md)
+- [状态估计（知识链汇总）](../overview/hub-state-estimation.md)
 - [野外机器人排障指南](../queries/field-robotics-troubleshooting.md)
 
 ## 推荐继续阅读

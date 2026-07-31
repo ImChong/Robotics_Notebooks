@@ -1846,6 +1846,27 @@
 - [Ego 分类 02：人→机器人](wiki/overview/ego-category-02-human-to-robot.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [Ego 分类 03：世界模型](wiki/overview/ego-category-03-world-models.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [Ego 分类 04：Ego+Exo 融合](wiki/overview/ego-category-04-ego-exo-fusion.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
+- [执行器驱动链选型闭环（知识链汇总）](wiki/overview/hub-actuator-drive-chain.md) — 执行器驱动链选型闭环** 指把策略（RL/MPC）输出的关节力矩指令落到真机时，按 **EDA 电路设计 → 电机驱动固件 FOC → 执行器建模与摩擦辨识 → 实时总线闭环集成** 逐层分工的硬 `📅unknown` `[overview_page]`
+- [硬件通信与协议（知识链汇总）](wiki/overview/hub-communication.md) — 通信协议知识链** 回答机器人 **关节驱动、传感器与上层控制器之间** 用什么物理层/协议传数据，以及如何在延迟、带宽、同步与生态之间选型。 `📅unknown` `[overview_page]`
+- [接触力控（知识链汇总）](wiki/overview/hub-contact-force-control.md) — 接触力控知识链** 关注「机器人如何在接触中稳住力」这条**纵向闭环**：从**接触感知/估计**，经**力旋量表示**与**阻抗/导纳/混合力位控制**，到**接触丰富操作策略**，逐层分析每层 `📅unknown` `[overview_page]`
+- [跨具身迁移（知识链汇总）](wiki/overview/hub-cross-embodiment.md) — 跨具身迁移** 研究如何把在 **某一机器人形态、仿真环境或数据源** 上学到的技能，迁移到 **不同骨架、尺寸或硬件平台**，而不完全重训。 `📅unknown` `[overview_page]`
+- [训练数据管线（知识链汇总）](wiki/overview/hub-data-pipeline.md) — 训练数据管线知识链** 关注人形策略训练的**上游数据链路**：从原始动作捕捉 / 人体视频，经**质量评估**与**重定向**，到 RL/IL **策略可用的训练输入**。 `📅unknown` `[overview_page]`
+- [具身评测基准选型闭环（知识链汇总）](wiki/overview/hub-embodied-eval-benchmark.md) — 具身评测基准选型闭环** 指按 **具身大脑/MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准** 逐层分工的评测谱系，各层共享「测 `📅unknown` `[overview_page]`
+- [具身大模型分类学选型闭环（知识链汇总）](wiki/overview/hub-embodied-foundation-model.md) — 具身大模型分类学选型闭环** 指按 **跨模态感知（VLM）→ 空间导航（VLN）→ 动作执行（VLA）→ 一体化多任务扩展（VLX）→ 世界模型时序推演（WM）** 逐层分工的家族谱系，各层共享 `📅unknown` `[overview_page]`
+- [抓取与操作（知识链汇总）](wiki/overview/hub-grasp.md) — 抓取知识链** 关注机器人如何通过感知与规划，在接触丰富的环境中稳定地 **抓取、持握并操纵物体**，是人形 loco-manip 与桌面操作的核心子栈。 `📅unknown` `[overview_page]`
+- [IL/RL 学习范式（知识链汇总）](wiki/overview/hub-learning.md) — 机器人学习知识链** 覆盖 **从数据或交互中习得策略** 的主要范式：强化学习（RL）、模仿学习（IL）及其与 model-based、离线 RL、基础模型的组合。 `📅unknown` `[overview_page]`
+- [Locomotion 步态（知识链汇总）](wiki/overview/hub-locomotion.md) — Locomotion** 研究腿式与人形机器人如何在 **平地、楼梯与复杂地形** 上稳定、高效地移动，是运动控制最基础也最难的任务之一。 `📅unknown` `[overview_page]`
+- [动作重定向（知识链汇总）](wiki/overview/hub-motion-retargeting.md) — 动作重定向（Motion Retargeting）** 把来自人体动捕、视频或动画的参考运动，转换成目标机器人可执行、且仍保留运动语义与风格的关节/末端轨迹。 `📅unknown` `[overview_page]`
+- [仿真物理保真度（知识链汇总）](wiki/overview/hub-physics-fidelity.md) — 仿真物理保真度知识链** 关注「仿真把物理建到多准」这条**纵向链路**：从**几何/URDF 精度**，经**刚体动力学算法**与**接触/摩擦模型**，到**执行器模型**，逐层分析每层简化各 `📅unknown` `[overview_page]`
+- [真机安全微调（知识链汇总）](wiki/overview/hub-safe-fine-tuning.md) — 真机安全 RL 微调** 在已有 sim2real 策略能跑的基础上，于 **真实机器人上继续在线优化**，并用 **安全集约束、低秩更新或 Recovery 策略** 限制探索导致的摔倒与硬件风 `📅unknown` `[overview_page]`
+- [Sim2Real（知识链汇总）](wiki/overview/hub-sim2real.md) — Sim2Real（Simulation to Real）** 研究如何把 **仿真里训练好的策略** 稳定迁移到真实机器人，弥合动力学、感知、延迟与接触上的分布差距。 `📅unknown` `[overview_page]`
+- [状态估计（知识链汇总）](wiki/overview/hub-state-estimation.md) — 状态估计** 从 **IMU、关节编码器、相机、LiDAR、雷达等传感器** 融合出机器人位姿、速度与接触/地形状态，是感知式 locomotion 与导航的控制输入基础。 `📅unknown` `[overview_page]`
+- [机器人系统工程（知识链汇总）](wiki/overview/hub-systems-engineering.md) — 机器人系统工程知识链** 回答：策略与控制之外，真机与研发栈还依赖哪些 **操作系统、网络、数据、分布式、部署、实时与安全** 能力，以及它们在运控环路中的边界。 `📅unknown` `[overview_page]`
+- [触觉与力觉（知识链汇总）](wiki/overview/hub-tactile.md) — 触觉知识链** 研究机器人如何通过 **力、触觉与接触状态** 闭环调节交互，使抓取、装配与 loco-manip 在不确定接触下仍稳定可控。 `📅unknown` `[overview_page]`
+- [视觉感知骨干（知识链汇总）](wiki/overview/hub-vision-backbone.md) — 视觉感知骨干知识链** 关注机器人策略与 VLA **上游的视觉表征**：从 CNN/ViT 骨干到检测/分割头，再到 **policy 可用的特征接口**。 `📅unknown` `[overview_page]`
+- [VLA 与基础策略（知识链汇总）](wiki/overview/hub-vla.md) — VLA（Vision-Language-Action）** 把 **视觉观测、自然语言指令与机器人动作** 统一到同一策略或基础模型中，面向多任务操作与 loco-manip 的「一个模型多种技能 `📅unknown` `[overview_page]`
+- [全身控制 WBC（知识链汇总）](wiki/overview/hub-wbc.md) — Whole-Body Control（WBC）** 在浮基人形/移动操作机器人上，同时满足 **平衡、接触、关节限位与任务优先级**，把高层目标转成可执行的全身关节/力矩指令。 `📅unknown` `[overview_page]`
+- [全身运动跟踪 WBT（知识链汇总）](wiki/overview/hub-wbt.md) — Whole-Body Tracking（WBT）** 让人形机器人 **全身** 跟踪一段参考动作（舞蹈、格斗、日常动作等），覆盖从参考数据到可部署跟踪策略的完整工程链。 `📅unknown` `[overview_page]`
 - [Actuator 102 · 05：柔顺与感知反馈](wiki/overview/humanoid-actuator-102-compliance-sensing.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [Actuator 102 · 07：决策矩阵与三大物种](wiki/overview/humanoid-actuator-102-decision-species.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [Actuator 102 · 08：人工肌肉与未来](wiki/overview/humanoid-actuator-102-future-artificial-muscle.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
@@ -1944,27 +1965,6 @@
 - [机器人世界模型：训练闭环与三线 taxonomy](wiki/overview/robot-world-models-training-loop-taxonomy.md) — 机器人世界模型的下一步，不是继续证明「会生成未来视频」，而是证明 **预测出的未来能进入策略学习、任务评估与闭环决策**——开环像不像真，不足以说明机器人有没有变强。 `📅unknown` `[overview_page]`
 - [《具身智能基础》专栏技术地图](wiki/overview/shenlan-embodied-ai-fundamentals-series.md) — 具身智能的大模型叙事容易掩盖一条暗线：**所有「能交互」的智能，最终都要在多个坐标系与弯曲状态空间之间做对变换**——先用齐次坐标把刚体运动写进可连乘的 $4\times4$ 矩阵（L0 工程底座）， `📅unknown` `[overview_page]`
 - [十年仿真平台技术地图（TOP 8）](wiki/overview/sim-platforms-decade-technology-map.md) — 仿真平台的发展轨迹清晰反映具身智能研究重心的演进：**没有单一「赢家通吃」**，而是从 MuJoCo 的物理奠基，经 [AI2-THOR](../en `📅unknown` `[overview_page]`
-- [执行器驱动链选型闭环（专题汇总）](wiki/overview/topic-actuator-drive-chain.md) — 执行器驱动链选型闭环** 指把策略（RL/MPC）输出的关节力矩指令落到真机时，按 **EDA 电路设计 → 电机驱动固件 FOC → 执行器建模与摩擦辨识 → 实时总线闭环集成** 逐层分工的硬 `📅unknown` `[overview_page]`
-- [硬件通信与协议（专题汇总）](wiki/overview/topic-communication.md) — 通信协议专题** 回答机器人 **关节驱动、传感器与上层控制器之间** 用什么物理层/协议传数据，以及如何在延迟、带宽、同步与生态之间选型。 `📅unknown` `[overview_page]`
-- [接触力控（专题汇总）](wiki/overview/topic-contact-force-control.md) — 接触力控专题** 关注「机器人如何在接触中稳住力」这条**纵向闭环**：从**接触感知/估计**，经**力旋量表示**与**阻抗/导纳/混合力位控制**，到**接触丰富操作策略**，逐层分析每层如 `📅unknown` `[overview_page]`
-- [跨具身迁移（专题汇总）](wiki/overview/topic-cross-embodiment.md) — 跨具身迁移** 研究如何把在 **某一机器人形态、仿真环境或数据源** 上学到的技能，迁移到 **不同骨架、尺寸或硬件平台**，而不完全重训。 `📅unknown` `[overview_page]`
-- [训练数据管线（专题汇总）](wiki/overview/topic-data-pipeline.md) — 训练数据管线专题** 关注人形策略训练的**上游数据链路**：从原始动作捕捉 / 人体视频，经**质量评估**与**重定向**，到 RL/IL **策略可用的训练输入**。 `📅unknown` `[overview_page]`
-- [具身评测基准选型闭环（专题汇总）](wiki/overview/topic-embodied-eval-benchmark.md) — 具身评测基准选型闭环** 指按 **具身大脑/MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准** 逐层分工的评测谱系，各层共享「测 `📅unknown` `[overview_page]`
-- [具身大模型分类学选型闭环（专题汇总）](wiki/overview/topic-embodied-foundation-model.md) — 具身大模型分类学选型闭环** 指按 **跨模态感知（VLM）→ 空间导航（VLN）→ 动作执行（VLA）→ 一体化多任务扩展（VLX）→ 世界模型时序推演（WM）** 逐层分工的家族谱系，各层共享 `📅unknown` `[overview_page]`
-- [抓取与操作（专题汇总）](wiki/overview/topic-grasp.md) — 抓取专题** 关注机器人如何通过感知与规划，在接触丰富的环境中稳定地 **抓取、持握并操纵物体**，是人形 loco-manip 与桌面操作的核心子栈。 `📅unknown` `[overview_page]`
-- [IL/RL 学习范式（专题汇总）](wiki/overview/topic-learning.md) — 机器人学习专题** 覆盖 **从数据或交互中习得策略** 的主要范式：强化学习（RL）、模仿学习（IL）及其与 model-based、离线 RL、基础模型的组合。 `📅unknown` `[overview_page]`
-- [Locomotion 步态（专题汇总）](wiki/overview/topic-locomotion.md) — Locomotion** 研究腿式与人形机器人如何在 **平地、楼梯与复杂地形** 上稳定、高效地移动，是运动控制最基础也最难的任务之一。 `📅unknown` `[overview_page]`
-- [动作重定向（专题汇总）](wiki/overview/topic-motion-retargeting.md) — 动作重定向（Motion Retargeting）** 把来自人体动捕、视频或动画的参考运动，转换成目标机器人可执行、且仍保留运动语义与风格的关节/末端轨迹。 `📅unknown` `[overview_page]`
-- [仿真物理保真度（专题汇总）](wiki/overview/topic-physics-fidelity.md) — 仿真物理保真度专题** 关注「仿真把物理建到多准」这条**纵向链路**：从**几何/URDF 精度**，经**刚体动力学算法**与**接触/摩擦模型**，到**执行器模型**，逐层分析每层简化各自 `📅unknown` `[overview_page]`
-- [真机安全微调（专题汇总）](wiki/overview/topic-safe-fine-tuning.md) — 真机安全 RL 微调** 在已有 sim2real 策略能跑的基础上，于 **真实机器人上继续在线优化**，并用 **安全集约束、低秩更新或 Recovery 策略** 限制探索导致的摔倒与硬件风 `📅unknown` `[overview_page]`
-- [Sim2Real（专题汇总）](wiki/overview/topic-sim2real.md) — Sim2Real（Simulation to Real）** 研究如何把 **仿真里训练好的策略** 稳定迁移到真实机器人，弥合动力学、感知、延迟与接触上的分布差距。 `📅unknown` `[overview_page]`
-- [状态估计（专题汇总）](wiki/overview/topic-state-estimation.md) — 状态估计** 从 **IMU、关节编码器、相机、LiDAR、雷达等传感器** 融合出机器人位姿、速度与接触/地形状态，是感知式 locomotion 与导航的控制输入基础。 `📅unknown` `[overview_page]`
-- [机器人系统工程（专题汇总）](wiki/overview/topic-systems-engineering.md) — 机器人系统工程专题** 回答：策略与控制之外，真机与研发栈还依赖哪些 **操作系统、网络、数据、分布式、部署、实时与安全** 能力，以及它们在运控环路中的边界。 `📅unknown` `[overview_page]`
-- [触觉与力觉（专题汇总）](wiki/overview/topic-tactile.md) — 触觉专题** 研究机器人如何通过 **力、触觉与接触状态** 闭环调节交互，使抓取、装配与 loco-manip 在不确定接触下仍稳定可控。 `📅unknown` `[overview_page]`
-- [视觉感知骨干（专题汇总）](wiki/overview/topic-vision-backbone.md) — 视觉感知骨干专题** 关注机器人策略与 VLA **上游的视觉表征**：从 CNN/ViT 骨干到检测/分割头，再到 **policy 可用的特征接口**。 `📅unknown` `[overview_page]`
-- [VLA 与基础策略（专题汇总）](wiki/overview/topic-vla.md) — VLA（Vision-Language-Action）** 把 **视觉观测、自然语言指令与机器人动作** 统一到同一策略或基础模型中，面向多任务操作与 loco-manip 的「一个模型多种技能 `📅unknown` `[overview_page]`
-- [全身控制 WBC（专题汇总）](wiki/overview/topic-wbc.md) — Whole-Body Control（WBC）** 在浮基人形/移动操作机器人上，同时满足 **平衡、接触、关节限位与任务优先级**，把高层目标转成可执行的全身关节/力矩指令。 `📅unknown` `[overview_page]`
-- [全身运动跟踪 WBT（专题汇总）](wiki/overview/topic-wbt.md) — Whole-Body Tracking（WBT）** 让人形机器人 **全身** 跟踪一段参考动作（舞蹈、格斗、日常动作等），覆盖从参考数据到可部署跟踪策略的完整工程链。 `📅unknown` `[overview_page]`
 - [T-RO 2026 操作学习：5 篇论文技术地图](wiki/overview/tro-manip-5-papers-technology-map.md) — 2026 年上半年 T-RO 操作学习代表作共同指向：**规模化数据 + 更高级表征（SE(3) 等变、手物几何）+ 无标签视频结构化预训练 + 生成式策略** 正在并行重塑泛化能力；同时 **任务/ `📅unknown` `[overview_page]`
 - [T-RO 分类 01：数据规模化](wiki/overview/tro-manip-category-01-data-scaling.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [T-RO 分类 02：三维与手物表征](wiki/overview/tro-manip-category-02-representation.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`

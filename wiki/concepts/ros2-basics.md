@@ -15,7 +15,7 @@ related:
   - ../entities/fast-dds.md
   - ../entities/cyclone-dds.md
   - ./lcm-basics.md
-  - ../overview/topic-systems-engineering.md
+  - ../overview/hub-systems-engineering.md
 sources:
   - ../../sources/sites/ros2-official-documentation.md
   - ../../sources/sites/ros2-github-org.md
@@ -137,7 +137,7 @@ flowchart TB
 - [PlotJuggler](../entities/plotjuggler.md)
 - [导航·SLAM·自动驾驶栈总览](../overview/navigation-slam-autonomy-stack.md)
 - [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)
-- [系统工程专题](../overview/topic-systems-engineering.md)
+- [系统工程知识链](../overview/hub-systems-engineering.md)
 - [技术地图：ROS 2 模块](../../tech-map/modules/system/ros2.md)
 
 ## 参考来源

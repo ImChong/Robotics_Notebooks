@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-31",
   "node_count": 2053,
-  "edge_count": 18294,
+  "edge_count": 18310,
   "coverage": {
     "covered": 2003,
     "total": 2029,
@@ -41,179 +41,167 @@
       "community_label": "开源项目本库导读（HMI Open-Source Projects Guide） 社区"
     },
     {
-      "path": "wiki/queries/robot-perception-stack-selection-loop.md",
-      "detail_id": "wiki-queries-robot-perception-stack-selection-loop",
-      "label": "Query：机器人视觉感知栈选型闭环知识链",
-      "type": "query",
-      "recency": "2026-07-30",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/concepts/2d-to-3d-semantic-lifting-gap.md",
-      "detail_id": "wiki-concepts-2d-to-3d-semantic-lifting-gap",
-      "label": "2D→3D 语义提升 Gap（2D 检测/分割 ↔ 3D 语义几何）",
-      "type": "concept",
-      "recency": "2026-07-30",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-hrl-stack-04-from_generated_human_videos_to_physi.md",
-      "detail_id": "entity-paper-hrl-stack-04-from_generated_human_videos_to_physi",
-      "label": "From Generated Human Videos to Physically Plausible Robot Trajectories",
-      "type": "entity",
-      "recency": "2026-07-30",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/dreamwaq-plus.md",
-      "detail_id": "entity-dreamwaq-plus",
-      "label": "DreamWaQ++（障碍感知四足多模态强化学习）",
-      "type": "entity",
-      "recency": "2026-07-30",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/methods/dreamwaq.md",
-      "detail_id": "wiki-methods-dreamwaq",
-      "label": "DreamWaQ：盲走一阶段鲁棒行走",
-      "type": "method",
-      "recency": "2026-07-30",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-daily-omni.md",
-      "detail_id": "entity-paper-daily-omni",
-      "label": "Daily-Omni（日常音视频跨模态时序推理基准）",
-      "type": "entity",
-      "recency": "2026-07-30",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/queries/embodied-eval-benchmark-selection-loop.md",
-      "detail_id": "wiki-queries-embodied-eval-benchmark-selection-loop",
-      "label": "Query：具身大模型评测基准选型闭环知识链",
-      "type": "query",
-      "recency": "2026-07-30",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop） 社区"
-    },
-    {
-      "path": "wiki/overview/topic-embodied-eval-benchmark.md",
-      "detail_id": "wiki-overview-topic-embodied-eval-benchmark",
-      "label": "具身评测基准选型闭环（专题汇总）",
-      "type": "overview",
-      "recency": "2026-07-30",
+      "path": "roadmap/depth-bfm.md",
+      "detail_id": "roadmap-depth-bfm",
+      "label": "路线（纵深）：如果目标是 BFM（人形行为基础模型）",
+      "type": "roadmap_page",
+      "recency": "2026-07-31",
       "source": "log.md",
       "action": "maintained"
     },
     {
-      "path": "wiki/entities/robo-bench.md",
-      "detail_id": "entity-robo-bench",
-      "label": "RoboBench（MLLM 具身大脑综合评测）",
-      "type": "entity",
-      "recency": "2026-07-30",
+      "path": "roadmap/depth-classical-control.md",
+      "detail_id": "roadmap-depth-classical-control",
+      "label": "路线（纵深）：如果目标是传统模型控制（LIP/ZMP → MPC → WBC）",
+      "type": "roadmap_page",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "roadmap/depth-contact-manipulation.md",
+      "detail_id": "roadmap-depth-contact-manipulation",
+      "label": "路线（纵深）：如果目标是接触丰富的操作任务",
+      "type": "roadmap_page",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "roadmap/depth-humanoid-boxing.md",
+      "detail_id": "roadmap-depth-humanoid-boxing",
+      "label": "路线（纵深）：如果目标是人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）",
+      "type": "roadmap_page",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "roadmap/depth-humanoid-hardware-design.md",
+      "detail_id": "roadmap-depth-humanoid-hardware-design",
+      "label": "路线（纵深）：如果目标是人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）",
+      "type": "roadmap_page",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "roadmap/depth-humanoid-soccer.md",
+      "detail_id": "roadmap-depth-humanoid-soccer",
+      "label": "路线（纵深）：如果目标是人形足球（全向行走 → 感知踢球 → 多机战术）",
+      "type": "roadmap_page",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "roadmap/depth-humanoid-swarm-performance.md",
+      "detail_id": "roadmap-depth-humanoid-swarm-performance",
+      "label": "路线（纵深）：如果目标是人形群控展演（群舞同步 → 编队走位 → 群体特技）",
+      "type": "roadmap_page",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "roadmap/depth-imitation-learning.md",
+      "detail_id": "roadmap-depth-imitation-learning",
+      "label": "路线（纵深）：如果目标是模仿学习与技能迁移",
+      "type": "roadmap_page",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "roadmap/depth-loco-manipulation.md",
+      "detail_id": "roadmap-depth-loco-manipulation",
+      "label": "路线（纵深）：如果目标是 Loco-Manipulation（移动操作）",
+      "type": "roadmap_page",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "roadmap/depth-motion-generation.md",
+      "detail_id": "roadmap-depth-motion-generation",
+      "label": "路线（纵深）：如果目标是动作生成（文本/多模态 → 人形动作）",
+      "type": "roadmap_page",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "roadmap/depth-motion-retargeting.md",
+      "detail_id": "roadmap-depth-motion-retargeting",
+      "label": "路线（纵深）：如果目标是动作重定向（人体动作 → 机器人参考轨迹）",
+      "type": "roadmap_page",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "roadmap/depth-navigation.md",
+      "detail_id": "roadmap-depth-navigation",
+      "label": "路线（纵深）：如果目标是导航（SLAM → Nav2 → VLN → 导航 VLA）",
+      "type": "roadmap_page",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "roadmap/depth-perceptive-locomotion.md",
+      "detail_id": "roadmap-depth-perceptive-locomotion",
+      "label": "路线（纵深）：如果目标是感知越障（Perceptive Locomotion）",
+      "type": "roadmap_page",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "roadmap/depth-real2sim.md",
+      "detail_id": "roadmap-depth-real2sim",
+      "label": "路线（纵深）：如果目标是 Real2Sim（真实世界 → 可仿真资产/场景/孪生）",
+      "type": "roadmap_page",
+      "recency": "2026-07-31",
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
     },
     {
-      "path": "wiki/entities/agibot-lingxi-x1.md",
-      "detail_id": "entity-agibot-lingxi-x1",
-      "label": "智元灵犀 X1（Agibot 开源人形）",
-      "type": "entity",
-      "recency": "2026-07-30",
+      "path": "roadmap/depth-rl-locomotion.md",
+      "detail_id": "roadmap-depth-rl-locomotion",
+      "label": "路线（纵深）：如果目标是人形 RL 运动控制",
+      "type": "roadmap_page",
+      "recency": "2026-07-31",
       "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形机器人（Humanoid Robot） 社区"
+      "action": "maintained"
     },
     {
-      "path": "wiki/entities/paper-intact.md",
-      "detail_id": "entity-paper-intact",
-      "label": "INTACT（Search-Free Intent-to-Action World Model）",
-      "type": "entity",
-      "recency": "2026-07-30",
+      "path": "roadmap/depth-safe-control.md",
+      "detail_id": "roadmap-depth-safe-control",
+      "label": "路线（纵深）：如果目标是安全控制（CLF / CBF / Safe RL）",
+      "type": "roadmap_page",
+      "recency": "2026-07-31",
       "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "action": "maintained"
     },
     {
-      "path": "wiki/entities/roboparty.md",
-      "detail_id": "entity-roboparty",
-      "label": "RoboParty（萝博派对）",
-      "type": "entity",
-      "recency": "2026-07-30",
+      "path": "roadmap/depth-sim2real.md",
+      "detail_id": "roadmap-depth-sim2real",
+      "label": "路线（纵深）：如果目标是 Sim2Real（仿真到真机迁移）",
+      "type": "roadmap_page",
+      "recency": "2026-07-31",
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/overview/roboparty-lab-party-os-technology-map.md",
-      "detail_id": "wiki-overview-roboparty-lab-party-os-technology-map",
-      "label": "RoboParty Lab / Party OS 技术地图",
-      "type": "overview",
-      "recency": "2026-07-30",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dwm-separating-world-effects.md",
-      "detail_id": "entity-paper-dwm-separating-world-effects",
-      "label": "DWM（Separating World Effects · arXiv:2607.18715）",
-      "type": "entity",
-      "recency": "2026-07-30",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-vjepa2.md",
-      "detail_id": "entity-paper-vjepa2",
-      "label": "V-JEPA 2（自监督视频世界模型 · arXiv:2506.09985）",
-      "type": "entity",
-      "recency": "2026-07-30",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/world-action-models.md",
-      "detail_id": "wiki-concepts-world-action-models",
-      "label": "World Action Models（WAM，世界–动作模型）",
-      "type": "concept",
-      "recency": "2026-07-30",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/embodied-fm-latency-generalization-tradeoff.md",
-      "detail_id": "wiki-concepts-embodied-fm-latency-generalization-tradeoff",
-      "label": "概念：具身大模型实时性 ↔ 泛化能力取舍",
-      "type": "concept",
-      "recency": "2026-07-30",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -228,28 +216,28 @@
   },
   "top_communities": [
     {
-      "label": "视觉-语言-动作",
-      "size": 210
-    },
-    {
       "label": "模仿学习",
-      "size": 197
+      "size": 200
     },
     {
-      "label": "操作",
-      "size": 150
+      "label": "人形强化学习运动控制",
+      "size": 142
     },
     {
       "label": "移动操作",
       "size": 142
     },
     {
-      "label": "全身控制",
+      "label": "操作",
       "size": 141
     },
     {
-      "label": "仿真到现实",
-      "size": 139
+      "label": "全身控制",
+      "size": 140
+    },
+    {
+      "label": "人形论文深读笔记",
+      "size": 137
     }
   ],
   "top_hubs": [
@@ -364,8 +352,7 @@
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
       "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
       "type": "entity",
-      "degree": 51,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "degree": 51
     },
     {
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",
@@ -400,7 +387,7 @@
       "type": "entity",
       "degree": 38,
       "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "生成式世界模型（Generative World Models） 社区"
     }
   ]
 }

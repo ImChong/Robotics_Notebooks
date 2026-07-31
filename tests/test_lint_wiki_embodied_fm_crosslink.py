@@ -62,7 +62,7 @@ def test_comparison_page_flagged(tmp_path: Path, monkeypatch) -> None:
     page = wiki / "comparisons" / "vlm-vln-vla-vlx-world-model-taxonomy.md"
     page.write_text(
         "---\ntype: comparison\ntags: [vlm, vln, vla, vlx, world-model]\n---\n"
-        "五大具身模型家族对比正文，未回链专题枢纽。\n",
+        "五大具身模型家族对比正文，未回链纵深枢纽。\n",
         encoding="utf-8",
     )
     results = _run([page])
@@ -76,8 +76,8 @@ def test_topic_hub_backlink_also_passes(tmp_path: Path, monkeypatch) -> None:
     page = wiki / "concepts" / "unified-multimodal-tokens.md"
     page.write_text(
         "---\ntype: concept\ntags: [vlx, multimodal]\n---\n"
-        "统一多模态 token，见专题 "
-        "[具身大模型](../overview/topic-embodied-foundation-model.md)。\n",
+        "统一多模态 token，见纵深 "
+        "[具身大模型](../overview/hub-embodied-foundation-model.md)。\n",
         encoding="utf-8",
     )
     results = _run([page])
