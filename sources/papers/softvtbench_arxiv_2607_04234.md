@@ -55,7 +55,7 @@
 - **摘录要点：** Object-Soft Safety 21.4%→35.6%；Spatial-Soft 32.6%→44.6%；刚体 Object-Rigid VT 反低于 VO。形变 mean/median/P95 全面下降。
 - **对 wiki 的映射：**
   - [SoftVTBench 实体页](../../wiki/entities/paper-softvtbench.md)
-  - [触觉专题](../../wiki/overview/topic-tactile.md)
+  - [触觉专题](../../wiki/overview/hub-tactile.md)
   - [TacO 传感器基准](../../wiki/entities/paper-taco-tactile-sensor-benchmark.md)（互补：硬件选型 vs 安全指标）
 
 ## BibTeX
@@ -79,4 +79,4 @@
 - 主实体页：[`wiki/entities/paper-softvtbench.md`](../../wiki/entities/paper-softvtbench.md)
 - 项目页归档：[`sources/sites/softvtbench-github-io.md`](../sites/softvtbench-github-io.md)
 - 代码归档：[`sources/repos/softvtbench.md`](../repos/softvtbench.md)
-- 互链：[视触觉融合](../../wiki/concepts/visuo-tactile-fusion.md)、[Tactile Sensing](../../wiki/concepts/tactile-sensing.md)、[接触丰富操作](../../wiki/concepts/contact-rich-manipulation.md)、[触觉专题](../../wiki/overview/topic-tactile.md)、[Manipulation](../../wiki/tasks/manipulation.md)、[TacO](../../wiki/entities/paper-taco-tactile-sensor-benchmark.md)、[具身评测基准选型闭环](../../wiki/queries/embodied-eval-benchmark-selection-loop.md)、[VLA](../../wiki/methods/vla.md)
+- 互链：[视触觉融合](../../wiki/concepts/visuo-tactile-fusion.md)、[Tactile Sensing](../../wiki/concepts/tactile-sensing.md)、[接触丰富操作](../../wiki/concepts/contact-rich-manipulation.md)、[触觉专题](../../wiki/overview/hub-tactile.md)、[Manipulation](../../wiki/tasks/manipulation.md)、[TacO](../../wiki/entities/paper-taco-tactile-sensor-benchmark.md)、[具身评测基准选型闭环](../../wiki/queries/embodied-eval-benchmark-selection-loop.md)、[VLA](../../wiki/methods/vla.md)

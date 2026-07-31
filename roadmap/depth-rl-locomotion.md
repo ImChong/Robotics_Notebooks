@@ -209,7 +209,7 @@ flowchart LR
 - 选型参考：[Query：跨形态迁移策略](../wiki/queries/cross-embodiment-transfer-strategy.md)
 
 ### 推荐读什么
-- 参考 [Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md) 的进阶专题部分
+- 参考 [Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md) 的进阶纵深部分
 
 ---
 

@@ -129,7 +129,7 @@ flowchart TB
 
 ## 与其他页面的关系
 
-- AMP 专题总览：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)（#13/19）
+- AMP 纵深总览：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)（#13/19）
 - 方法：[amp-reward.md](../methods/amp-reward.md)
 - 同段姊妹篇：[PhysHSI #15](./paper-amp-survey-15-physhsi.md)、[HUSKY #14](./paper-amp-survey-14-husky.md)、[TeamHOI #17](./paper-amp-survey-17-teamhoi.md)
 - 多判别器对照：[MoRE #08](./paper-amp-survey-08-more.md)

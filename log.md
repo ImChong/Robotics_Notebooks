@@ -1,4 +1,43 @@
-> 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
+## [2026-07-31] structural | docs/main.js — Hero 路线数字描边时长×2；跳转改为 scrollIntoView 居中
+
+- **时长：** 边框顺时针描边 `1.05s → 2.1s`（`BORDER_TRACE_MS` 1200→2400）
+- **滚动：** 主路线/纵深路线数字 `preventDefault` 后 `scrollIntoView({ block: 'center' })`，卡片落在视口垂直中心再播特效
+
+## [2026-07-31] structural | docs/index.html — Hero 主路线/纵深路线改为锚到入口卡+顺时针描边；纵深不再自动展开，描边后高亮展开按钮
+
+- **主路线数字：** `#home-start-main-route`（从零开始卡）+ 边框顺时针高亮一圈后移除
+- **纵深路线数字：** `#home-more-routes` 同样描边，**不**自动展开；描边结束后短时高亮 `#homeRouteToggle` 文案
+- **实现：** `docs/main.js` 注入 SVG `rect[pathLength=100]` + `stroke-dashoffset` 顺时针扫边；`pulseRouteToggleHint` 提醒展开按钮
+
+## [2026-07-31] structural | docs/index.html — Hero 盘点新增主路线(1)，四项数字可点跳转图谱/主路线/展开纵深路线
+
+- **改动：** `docs/index.html` Hero 盘点由三项改为四项：知识节点 / 互链关系 / **主路线(1)** / 纵深路线(21)；主路线插在互链关系与纵深路线之间
+- **跳转：** 知识节点与互链关系数字 → `graph.html`；主路线数字 → `roadmap.html?id=roadmap-motion-control`；纵深路线数字 → `#home-more-routes` 并展开全部纵深路线（`docs/main.js` `setHomeRoutesExpanded`）
+- **样式：** `docs/style.css` 为可点数字补 hover/focus，并放宽 `.hero-stats` 宽度以容纳四项
+- **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md)
+
+## [2026-07-31] query | wiki/queries/hmi-papers-coverage.md — 确保 HMI 论文与项目目录 145 篇论文均有本库独立详情节点；新建 23 个 sources+entities，复用 122 个已有页；修正开源主表 Robot Parkour / ASAP 挂接
+
+- **触发：** 用户要求覆盖 [论文与项目](https://github.com/RealXiaoze/humanoid-motion-intelligence/tree/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE) 列出的论文与项目详情独立节点（不重复造页）
+- **Query 产物：** [`wiki/queries/hmi-papers-coverage.md`](wiki/queries/hmi-papers-coverage.md)（145/145 映射；注册 [`wiki/queries/README.md`](wiki/queries/README.md)）
+- **新建详情节点（21）+ 升格占位（2）：** 新建含 OSF、Stack of Tasks、ExBody、XHugWBC、AnyBody、PaLM-E、Open X、π0.5、Dreamer、GR00T-Dreams、Robot Parkour 等；P017/P018 升格原 Paper Notebooks planned 占位（避免 arXiv 双节点）— 对应 `sources/papers/hmi_p*.md`
+- **复用与升格：** 含 PULSE（`pulse-physics.md`）、Challenging Terrain、Contact-Aided InEKF、Octo、Gemini Robotics 等；开源主表 Robot Parkour 改挂新页、ASAP 改挂 `paper-hrl-stack-25-asap`
+- **交叉：** [`wiki/entities/humanoid-motion-intelligence.md`](wiki/entities/humanoid-motion-intelligence.md)、[`wiki/queries/hmi-opensource-projects-coverage.md`](wiki/queries/hmi-opensource-projects-coverage.md)、[`scripts/utils/community_labels.py`](scripts/utils/community_labels.py)
+- **说明：** 开源项目主表 166 项此前已覆盖；本轮补齐论文侧缺口并修正两处错误挂接
+
+## [2026-07-31] structural | 图谱「路线视图」纳入主路线 + 21 条策展纵深；原专题枢纽改为 hub-* 知识链
+
+- **产品概念：** 图谱侧栏与详情徽标统一称「**路线视图** / **所属路线**」；路线集 = 主路线 [`roadmap/motion-control.md`](roadmap/motion-control.md) + 21 条纵深 [`roadmap/depth-*.md`](roadmap/)；取消独立「专题」概念
+- **图谱：** [`docs/depth-filters.js`](docs/depth-filters.js) 与 `graph.html` chips：主路线置顶（命中集=主路线正文链出的 wiki 节点），其后 21 条纵深；详情页「所属路线」徽标同步
+- **原专题枢纽：** `wiki/overview/topic-*` → `wiki/overview/hub-*`（称「知识链汇总」，不再叫纵深）；旧 `topic-*` / 误改的 `overview/depth-*` 详情 ID 写入 [`schema/page-aliases.json`](schema/page-aliases.json)
+- **涉及路径：** `docs/depth-filters.js`、`docs/graph.html`、`docs/main.js`、`wiki/overview/hub-*.md`、`roadmap/depth-*.md`、`roadmap/motion-control.md`
+
+## [2026-07-30] structural | schema/canonical-facts.json — V31 P2 事实库扩展 250 → 260 条，补 10 条感知栈选型矛盾检测规则
+
+- **新增 10 条：** 单阶段检测快 vs 两阶段精度高、闭集检测准 vs 开放词汇泛化、实时机载算力受限 vs 服务器侧精度、2D 框够用 vs 必须 3D 语义几何、稠密语义建图信息全 vs 内存/时延、SAM 零样本分割强 vs 类别语义缺失、深度传感精度 vs 成本、在线建图实时 vs 离线建图完整、感知帧率高 ≠ 控制闭环带宽高、DETR 端到端简洁 vs 收敛慢/小目标弱
+- **校验方式：** 每条 `terms`/`pos_claims` 逐条对现存感知栈页（[`robot-perception-stack-selection-loop`](wiki/queries/robot-perception-stack-selection-loop.md) / [`2d-to-3d-semantic-lifting-gap`](wiki/concepts/2d-to-3d-semantic-lifting-gap.md) / `object-detection-model-selection` 等）有 pos 命中；`neg_claims` 取朴素错误全句、不命中任何页（含未被 `strip_misconception_sections` 剥离的「误判速查」表），保证 0 误报
+- **门禁：** `make lint` 0 errors、潜在矛盾 **0 个**；`make ci-preflight` **12/12**（`graph-stats.json` 0 orphans、`community_quality_warning: false`）
+- 勾选 v31 P2「事实库扩展」及 DoD「事实库扩展至 260 条」；v31 P3（图谱路线视图 / 详情页徽标）待后续推进
 
 ## [2026-07-30] structural | media/site-demo.gif — 按最新图谱重录 README 演示 GIF
 
@@ -143,7 +182,7 @@
 - **开源核查（步骤 2.5）：** **确认未开源** — arXiv Code 区无入口；GitHub / DeepCybo 无官方仓；源码运行时序图仍 **不适用**
 - **既有交叉（未改内容）：** [`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/tasks/loco-manipulation.md`](wiki/tasks/loco-manipulation.md)、[`wiki/entities/unitree-g1.md`](wiki/entities/unitree-g1.md)、[`wiki/entities/isaac-gr00t.md`](wiki/entities/isaac-gr00t.md)、[`wiki/entities/paper-hrl-stack-34-gr00t_n1.md`](wiki/entities/paper-hrl-stack-34-gr00t_n1.md)、[`wiki/entities/paper-loco-manip-161-057-being-0.md`](wiki/entities/paper-loco-manip-161-057-being-0.md)
 
-## [2026-07-29] ingest | sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md + sites/embodied-data-pyramid + repos/awesome-embodied-data-pyramid — 具身数据金字塔综述（arXiv:2607.24744）入库：五层数据生态 × 六维属性 × 基础模型数据配方；升格 wiki/entities/paper-data-pyramid-embodied-manipulation.md；交叉 OXE / GR00T N1 / scaling-laws / WAM / vla / depth-vla
+## [2026-07-29] ingest | sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md + sites/embodied-data-pyramid + repos/awesome-embodied-data-pyramid — 具身数据金字塔综述（arXiv:2607.24744）入库：五层数据生态 × 六维属性 × 基础模型数据配方；升格 wiki/entities/paper-data-pyramid-embodied-manipulation.md；交叉 OXE / GR00T N1 / scaling-laws / WAM / vla / hub-vla
 
 - **归档：** [`sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md`](sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md)、[`sources/sites/embodied-data-pyramid.md`](sources/sites/embodied-data-pyramid.md)、[`sources/repos/awesome-embodied-data-pyramid.md`](sources/repos/awesome-embodied-data-pyramid.md)；索引 [`sources/README.md`](sources/README.md)
 - **开源核查（2026-07-29，步骤 2.5）：** **资源型开源**——Awesome 策展清单 `worldbench/awesome-embodied-data-pyramid` + 项目页五层数据集检索表；综述无训练/推理代码（源码运行时序图不适用，已在实体页注明）
@@ -1906,7 +1945,7 @@
 
 ## [2026-07-20] structural | wiki 链接 Top-10 论文节点新增「源码运行时序图」模块 — beyondmimic（whole_body_tracking）/ paper-hrl-stack-03-omniretarget（holosoma）/ paper-twist2（amazon-far/TWIST2）/ deepmimic（xbpeng/DeepMimic）四页各加 mermaid sequenceDiagram；其余 5 个 Top-10 论文节点（BFM / MotionWAM / LEGS / SD-AMP / PHP）官方源码未发布，不适用；**SONIC 已开源（NVlabs/GR00T-WholeBodyControl），时序图见同日后续 structural 条目**
 
-## [2026-07-20] ingest | sources/papers/actuator_constrained_rl_high_speed_quadruped_arxiv_2312_17507.md — 执行器约束 RL 高速四足 MOR；wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md；交叉 sim2real / locomotion / APT-RL / depth-sim2real
+## [2026-07-20] ingest | sources/papers/actuator_constrained_rl_high_speed_quadruped_arxiv_2312_17507.md — 执行器约束 RL 高速四足 MOR；wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md；交叉 sim2real / locomotion / APT-RL / hub-sim2real
 
 ## [2026-07-20] ingest | sources/sites/chingmu.md — 青瞳视觉光学动捕全栈与 MotionDecode 数据计划；wiki/entities/chingmu.md；交叉更新 notable-commercial-robot-platforms
 

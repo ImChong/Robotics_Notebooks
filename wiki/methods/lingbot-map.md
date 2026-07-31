@@ -2,7 +2,7 @@
 type: method
 tags: [3d-reconstruction, foundation-model, transformer, slam, streaming-perception]
 status: drafting
-updated: 2026-07-21
+updated: 2026-07-31
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../concepts/state-estimation.md

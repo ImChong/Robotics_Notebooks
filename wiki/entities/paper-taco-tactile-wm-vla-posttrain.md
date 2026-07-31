@@ -10,7 +10,7 @@ tags:
   - manipulation
   - pku
 status: complete
-updated: 2026-07-27
+updated: 2026-07-31
 arxiv: "2607.02840"
 related:
   - ../overview/wm-action-consequence-category-02-contact-modeling.md
@@ -132,7 +132,7 @@ flowchart TB
 
 - [wm-action-consequence-category-02-contact-modeling](../overview/wm-action-consequence-category-02-contact-modeling.md) — 触觉 WM 方法层
 - [wm-action-consequence-category-04-eval-posttrain](../overview/wm-action-consequence-category-04-eval-posttrain.md) — 失败→后训练入口
-- [动作后果技术地图](../overview/robot-world-models-action-consequence-technology-map.md) — 专题总览
+- [动作后果技术地图](../overview/robot-world-models-action-consequence-technology-map.md) — 纵深总览
 - [VT-WAM](./paper-vt-wam-visuotactile-contact-rich.md) — 联合预测 WAM 对照
 - [VLA](../methods/vla.md) — 被后训练的基础 VLA 族
 

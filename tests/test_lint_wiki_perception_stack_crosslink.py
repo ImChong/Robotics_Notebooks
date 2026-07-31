@@ -65,7 +65,7 @@ def test_comparison_page_flagged(tmp_path: Path, monkeypatch) -> None:
     page = wiki / "comparisons" / "yolo-vs-detr.md"
     page.write_text(
         "---\ntype: comparison\ntags: [object-detection, real-time]\n---\n"
-        "单阶段 vs DETR 对比正文，未回链专题枢纽。\n",
+        "单阶段 vs DETR 对比正文，未回链纵深枢纽。\n",
         encoding="utf-8",
     )
     results = _run([page])
@@ -91,7 +91,7 @@ def test_method_page_flagged(tmp_path: Path, monkeypatch) -> None:
     page = wiki / "methods" / "object-detection.md"
     page.write_text(
         "---\ntype: method\ntags: [object-detection, computer-vision]\n---\n"
-        "目标检测方法页正文，未回链专题枢纽。\n",
+        "目标检测方法页正文，未回链纵深枢纽。\n",
         encoding="utf-8",
     )
     results = _run([page])
@@ -103,8 +103,8 @@ def test_topic_hub_backlink_also_passes(tmp_path: Path, monkeypatch) -> None:
     page = wiki / "entities" / "paper-segment-anything.md"
     page.write_text(
         "---\ntype: entity\ntags: [foundation-model, segmentation]\n---\n"
-        "Segment Anything，见专题 "
-        "[机器人感知栈](../overview/topic-perception-stack.md)。\n",
+        "Segment Anything，见纵深 "
+        "[机器人感知栈](../overview/hub-perception-stack.md)。\n",
         encoding="utf-8",
     )
     results = _run([page])
@@ -129,7 +129,7 @@ def test_both_hubs_present_passes(tmp_path: Path, monkeypatch) -> None:
         "---\ntype: entity\ntags: [segmentation, video-segmentation]\n---\n"
         "SAM2 可提示分割层，见 "
         "[Query](../queries/robot-perception-stack-selection-loop.md) 与 "
-        "[专题](../overview/topic-perception-stack.md)。\n",
+        "[纵深](../overview/hub-perception-stack.md)。\n",
         encoding="utf-8",
     )
     results = _run([page])

@@ -10,7 +10,7 @@ related:
   - ../concepts/embodied-scaling-laws.md
   - ../concepts/foundation-policy.md
   - ../methods/octo-model.md
-  - ../overview/topic-cross-embodiment.md
+  - ../overview/hub-cross-embodiment.md
 sources:
   - ../../sources/blogs/generalist_thousand_hands.md
   - ../../sources/blogs/ted_xiao_embodied_three_eras_primary_refs.md
@@ -60,7 +60,7 @@ sources:
 公司不公开架构配方；外部读者可核对的主张主要是：
 
 1. **规模化真实交互预训练** 驱动通才物理策略（对照 [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)）。
-2. **末端多样性** 作为接触物理数据轴（对照 [跨具身专题](../overview/topic-cross-embodiment.md)）。
+2. **末端多样性** 作为接触物理数据轴（对照 [跨具身知识链](../overview/hub-cross-embodiment.md)）。
 3. **与开源 foundation policy** 的选型分工：要复现选 OXE/Octo/π 系开源代码；本页仅作产业对照。
 
 ## 工程实践
@@ -82,7 +82,7 @@ sources:
 - [GEN-1 千手：跨末端执行器泛化](./generalist-gen1-thousand-hands.md)
 - [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)
 - [Foundation Policy](../concepts/foundation-policy.md)
-- [跨具身迁移（专题）](../overview/topic-cross-embodiment.md)
+- [跨具身迁移（知识链）](../overview/hub-cross-embodiment.md)
 - [Octo](../methods/octo-model.md)
 
 ## 参考来源

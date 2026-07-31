@@ -73,7 +73,7 @@
 - [FastGrasp（移动灵巧快速抓取）](../../wiki/entities/paper-fastgrasp-mobile-dexterous-grasping.md) — 论文实体归纳页
 - [Manipulation](../../wiki/tasks/manipulation.md) — 灵巧抓取与触觉闭环
 - [Loco-Manipulation](../../wiki/tasks/loco-manipulation.md) — 移动底盘 + 臂 + 手的全身协调
-- [抓取专题](../../wiki/overview/topic-grasp.md) — 高速动态抓取锚点
+- [抓取专题](../../wiki/overview/hub-grasp.md) — 高速动态抓取锚点
 - [Tactile Sensing](../../wiki/concepts/tactile-sensing.md) — 二值压力触觉与冲击稳定
 
 ## BibTeX（arXiv 页）

@@ -10,7 +10,7 @@ related:
   - ./ewmbench.md
   - ../methods/generative-world-models.md
   - ../concepts/video-as-simulation.md
-  - ../overview/topic-embodied-eval-benchmark.md
+  - ../overview/hub-embodied-eval-benchmark.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./paper-gigaworld-1-policy-evaluation.md
   - ./paper-homeworld-whole-home-scene-generation.md
@@ -254,7 +254,7 @@ sequenceDiagram
 - [EWMBench](./ewmbench.md) — 具身视频世界模型三轴评测（操纵轴）
 - [Generative World Models](../methods/generative-world-models.md) — 生成式世界模型方法谱系
 - [Video-as-Simulation](../concepts/video-as-simulation.md) — 视频作仿真接口时的失效模式
-- [具身评测基准选型闭环（专题）](../overview/topic-embodied-eval-benchmark.md) — 四层评测入口；本页作 ② 层相邻的世界生成统一榜
+- [具身评测基准选型闭环（知识链）](../overview/hub-embodied-eval-benchmark.md) — 四层评测入口；本页作 ② 层相邻的世界生成统一榜
 - [具身大模型评测基准选型闭环（Query）](../queries/embodied-eval-benchmark-selection-loop.md) — 选型决策链
 - [GigaWorld-1](./paper-gigaworld-1-policy-evaluation.md) — WM 作策略评估器的动作忠实轴
 

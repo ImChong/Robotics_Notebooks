@@ -13,7 +13,7 @@
 | [`references/`](../references/) | **按主题索引的深挖入口**（论文列表、repo 清单、benchmark）；在已懂概念后继续扩展阅读。 |
 | [`resources/`](../resources/) | **资源沉淀层**：课程笔记、训练计划、长笔记等，不追求与全站 wiki 同粒度互链。 |
 | [`roadmap/`](../roadmap/) | **主学习路径**与条件分支路线；首页与读者默认入口。 |
-| [`wiki/roadmaps/`](../wiki/roadmaps/) | 与 wiki 主题**强绑定**的专题路线（见 ingest 步骤 4 后的说明）。 |
+| [`wiki/roadmaps/`](../wiki/roadmaps/) | 与 wiki 主题**强绑定**的纵深路线（见 ingest 步骤 4 后的说明）。 |
 | [`tech-map/`](../tech-map/) | **技术地图**模块依赖与栈全景，与路线页互补。 |
 | [`exports/`](../exports/) | **脚本生成**的 JSON 等；勿手改。站点可读副本见 `docs/exports/`（见 [contributing-ci.md](../docs/contributing-ci.md)）。 |
 

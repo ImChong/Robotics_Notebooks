@@ -53,12 +53,12 @@ flowchart LR
 - 目标形态不同，难点也不同：人形是"同构但比例/限位不同"，四足是"异构骨架 + 腿部 DoF 更少"，后者常连源数据的全局基座轨迹都要反推
 
 ### 推荐做什么
-- 读专题汇总页，把"概念 / 流水线 / 选型 / 数据 / 下游"五层入口过一遍
+- 读纵深汇总页，把"概念 / 流水线 / 选型 / 数据 / 下游"五层入口过一遍
 - 找一段公开动捕数据，直接把人体关节角复制到人形模型上，观察脚滑与穿模——建立"为什么必须重定向"的第一手直觉
 
 ### 推荐读什么
 - [Motion Retargeting](../wiki/concepts/motion-retargeting.md)（本仓库）— 概念主入口
-- [动作重定向专题汇总](../wiki/overview/topic-motion-retargeting.md)（本仓库）
+- [动作重定向知识链汇总](../wiki/overview/hub-motion-retargeting.md)（本仓库）
 - [Character Animation vs Robotics](../wiki/concepts/character-animation-vs-robotics.md)（本仓库）— 两界评价标准差异
 - [运动学可行与动力学可行](../wiki/concepts/kinematic-vs-dynamic-feasibility.md)（本仓库）— 「能摆出这个姿势」≠「站得住、跟得上」，与本页动画/机器人评价线差异同源
 - [Motion Retargeting Pipeline](../wiki/concepts/motion-retargeting-pipeline.md)（本仓库）— 管线定位
@@ -267,7 +267,7 @@ flowchart LR
 - 四足方向：在 legged_gym / Genesis 上复现一条"动物片段 → 跟踪策略"，并对比同一段动作在时间缩放前后的跟踪成功率——这是 TMR 有没有用的最直接实验
 
 ### 推荐读什么
-- [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md) 与 [WBT 专题汇总](../wiki/overview/topic-wbt.md)（本仓库）
+- [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md) 与 [WBT 纵深汇总](../wiki/overview/hub-wbt.md)（本仓库）
 - [SONIC](../wiki/methods/sonic-motion-tracking.md) 与 [BeyondMimic](../wiki/methods/beyondmimic.md)（本仓库）— 跟踪侧消费者
 - [Query：人形动作跟踪方法选型](../wiki/queries/humanoid-motion-tracking-method-selection.md)（本仓库）
 - [Teleoperation](../wiki/tasks/teleoperation.md)（本仓库）— 实时重定向的应用面
@@ -286,7 +286,7 @@ flowchart LR
 
 **方向 A：跨具身重定向**
 - 把同一套参考动作映射到异构形态（四足、异构人形、机械臂）；Stage 3 支线解决的是"动物动作 → 某一台四足"，本方向进一步解决"一份参考 → 多机型复用"，包括人形↔四足互映射
-- 关键词：[STMR 四足重定向](../wiki/entities/stmr-quadruped-retargeting.md)、[PAN Motion Retargeting](../wiki/entities/pan-motion-retargeting.md)、[Any2Any 跨具身 WBT](../wiki/entities/paper-any2any-cross-embodiment-wbt.md)、[跨具身专题](../wiki/overview/topic-cross-embodiment.md)、[Query：跨具身迁移策略](../wiki/queries/cross-embodiment-transfer-strategy.md)
+- 关键词：[STMR 四足重定向](../wiki/entities/stmr-quadruped-retargeting.md)、[PAN Motion Retargeting](../wiki/entities/pan-motion-retargeting.md)、[Any2Any 跨具身 WBT](../wiki/entities/paper-any2any-cross-embodiment-wbt.md)、[跨具身纵深](../wiki/overview/hub-cross-embodiment.md)、[Query：跨具身迁移策略](../wiki/queries/cross-embodiment-transfer-strategy.md)
 
 **方向 B：灵巧手与交互保留重定向**
 - 手-物接触的拓扑保持：从全身骨架级映射细化到接触级映射
@@ -313,7 +313,7 @@ flowchart LR
 | Stage 3 支线 | 动物/关键点 → 四足参考 | [STMR 四足时空重定向](../wiki/entities/stmr-quadruped-retargeting.md) |
 | Stage 4 | 工具链与轨迹编辑器 | [机器人关键帧与运动编辑工具](../wiki/entities/robot-motion-keyframe-editors.md) |
 | Stage 5 | 下游跟踪闭环 | [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md) |
-| Stage 6 | 进阶方向 | [动作重定向专题汇总](../wiki/overview/topic-motion-retargeting.md) |
+| Stage 6 | 进阶方向 | [动作重定向知识链汇总](../wiki/overview/hub-motion-retargeting.md) |
 
 ## 和其他页面的关系
 
@@ -346,7 +346,7 @@ flowchart LR
 
 本路线基于以下原始资料的归纳：
 
-- [Motion Retargeting](../wiki/concepts/motion-retargeting.md) 与 [动作重定向专题汇总](../wiki/overview/topic-motion-retargeting.md)
+- [Motion Retargeting](../wiki/concepts/motion-retargeting.md) 与 [动作重定向知识链汇总](../wiki/overview/hub-motion-retargeting.md)
 - [GMR vs NMR vs ReActor 选型对比](../wiki/comparisons/gmr-vs-nmr-vs-reactor.md)
 - [STMR 四足时空重定向](../wiki/entities/stmr-quadruped-retargeting.md)、[motion_imitation（四足）](../wiki/entities/motion-imitation-quadruped.md)、[Go2 Motion Imitation](../wiki/entities/go2-motion-imitation.md)、[PAN Motion Retargeting](../wiki/entities/pan-motion-retargeting.md) — 四足支线来源
 - [机器人关键帧与运动编辑工具](../wiki/entities/robot-motion-keyframe-editors.md)、[human-humanoid-tools](../wiki/entities/human-humanoid-tools.md)、[SOMA Retargeter](../wiki/entities/soma-retargeter.md)、[robot_retargeter](../wiki/entities/robot-retargeter.md)、[mocap_retarget](../wiki/entities/mocap-retarget.md) — Stage 4 工具链来源

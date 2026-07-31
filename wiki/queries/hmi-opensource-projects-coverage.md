@@ -3,7 +3,7 @@ title: HMI 开源项目主表 · 本库导读
 type: query
 status: complete
 created: 2026-07-30
-updated: 2026-07-30
+updated: 2026-07-31
 summary: 把具身智能研究室开源项目主表（166 项）逐条接到本库对应详情页：左侧是上游策展入口，右侧是可继续深读的 wiki 节点；同主题多入口会共用同一页。
 sources:
   - ../../sources/repos/humanoid-motion-intelligence.md
@@ -88,7 +88,7 @@ sources:
 | [Project Instinct](https://project-instinct.github.io/) | [Project Instinct](../entities/project-instinct.md) · 同主题共用 |
 | [PULSE](https://github.com/ZhengyiLuo/PULSE) | [PULSE](../entities/pulse-physics.md) |
 | [roboparty_train](https://github.com/Roboparty/roboparty_train) | [RoboParty（萝博派对）](../entities/roboparty.md) |
-| [Robot Parkour Learning](https://robot-parkour.github.io/) | [Extreme Parkour（端到端四足感知跑酷）](../entities/extreme-parkour.md) |
+| [Robot Parkour Learning](https://robot-parkour.github.io/) | [Robot Parkour Learning](../entities/paper-robot-parkour-learning.md) · 勿与 [Extreme Parkour](../entities/extreme-parkour.md) 混淆 |
 | [SafeFall](https://safefall.github.io/) | [SafeFall](../entities/paper-hrl-stack-41-safefall.md) |
 | [UFO](https://github.com/Roboparty/UFO) | [UFO（Roboparty 无监督 RL 控制框架）](../entities/roboparty-ufo.md) |
 | [Unitree RL Gym](https://github.com/unitreerobotics/unitree_rl_gym) | [unitree_rl_gym](../entities/unitree-rl-gym.md) |
@@ -175,7 +175,7 @@ sources:
 
 | 上游项目 | 本库详情 |
 | --- | --- |
-| [ASAP](https://github.com/LeCAR-Lab/ASAP) | [ASAP Aligning Simulation and Real-World Physics for Agile Humanoid Sk…](../entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md) |
+| [ASAP](https://github.com/LeCAR-Lab/ASAP) | [ASAP](../entities/paper-hrl-stack-25-asap.md) · 索引级笔记见 [paper-notebook-asap](../entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md) |
 | [BEHAVIOR / OmniGibson](https://github.com/StanfordVL/BEHAVIOR-1K) | [BEHAVIOR-1K](../entities/behavior-1k.md) · 同主题共用 |
 | [Brax](https://github.com/google/brax) | [Brax（JAX 可微物理与 RL 训练）](../entities/brax.md) |
 | [CALVIN](https://github.com/mees/calvin) | [CALVIN](../entities/calvin-benchmark.md) |

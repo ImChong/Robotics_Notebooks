@@ -110,7 +110,7 @@ flowchart TB
 - [Humanoid Soccer](../tasks/humanoid-soccer.md)
 - [htwk-gym](../methods/htwk-gym.md)
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md)
-- [物理保真度 ↔ Sim2Real Gap](./physics-fidelity-sim2real-gap.md) — 本页「保真度分层」表（几何/视觉/物理）是该专题在足球场景的具体落点
+- [物理保真度 ↔ Sim2Real Gap](./physics-fidelity-sim2real-gap.md) — 本页「保真度分层」表（几何/视觉/物理）是该纵深在足球场景的具体落点
 
 ## 参考来源
 

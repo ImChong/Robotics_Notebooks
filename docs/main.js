@@ -2750,7 +2750,7 @@
       parts.push('<li class="roadmap-kmap-stage roadmap-kmap-stage-depth">');
       parts.push('<a class="roadmap-kmap-stage-head" href="#depth-optional-index">');
       parts.push('<span class="roadmap-kmap-badge">纵深</span>');
-      parts.push('<span class="roadmap-kmap-stage-title">可选纵深路线</span>');
+      parts.push('<span class="roadmap-kmap-stage-title">可选路线</span>');
       parts.push('<span class="roadmap-kmap-stage-count">' + escapeHtml(String(depthBranches.length)) + '</span>');
       parts.push('</a>');
       parts.push('<ul class="roadmap-kmap-leaves">');
@@ -4218,38 +4218,38 @@
     link.hidden = false;
   }
 
-  // 专题徽标：复用 graph.html 的专题命中规则（topic-filters.js），rowId 可复用于路线页等。
-  function renderMetaTopicBadges(currentPath, rowId) {
-    var topicRowId = rowId || 'detailMetaTopic';
-    var TF = window.RNTopicFilters;
+  // 路线徽标：复用 graph.html 的纵深命中规则（depth-filters.js），rowId 可复用于路线页等。
+  function renderMetaDepthBadges(currentPath, rowId) {
+    var depthRowId = rowId || 'detailMetaDepth';
+    var TF = window.RNDepthFilters;
     if (!TF || !currentPath) {
-      renderDetailMetaItemRow(topicRowId, '所属专题', '');
+      renderDetailMetaItemRow(depthRowId, '所属路线', '');
       return Promise.resolve();
     }
 
     return fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
       var node = (gd.nodes || []).find(function (n) { return n.id === currentPath; });
-      if (!node) { renderDetailMetaItemRow(topicRowId, '所属专题', ''); return; }
-      var topics = TF.topicsForNode({ id: node.id, community: node.community });
-      if (!topics.length) { renderDetailMetaItemRow(topicRowId, '所属专题', ''); return; }
+      if (!node) { renderDetailMetaItemRow(depthRowId, '所属路线', ''); return; }
+      var topics = TF.depthsForNode({ id: node.id, community: node.community });
+      if (!topics.length) { renderDetailMetaItemRow(depthRowId, '所属路线', ''); return; }
 
       // ⚡ Bolt Optimization: Replace .map().join('') with string concatenation in for loop
       // Expected impact: Eliminates closure creation and array allocation during layout generation.
       var html = '';
       for (var i = 0; i < topics.length; i++) {
         var key = topics[i];
-        var meta = TF.TOPIC_META[key] || { emoji: '🏷️', label: key };
-        html += '<a class="detail-meta-badge" href="graph.html?topic=' + encodeURIComponent(key) +
-          '" title="在知识图谱中查看「' + escapeHtml(meta.label) + '」专题视图">' +
+        var meta = TF.DEPTH_META[key] || { emoji: '🏷️', label: key };
+        html += '<a class="detail-meta-badge" href="graph.html?depth=' + encodeURIComponent(key) +
+          '" title="在知识图谱中查看「' + escapeHtml(meta.label) + '」路线视图">' +
           '<span>' + meta.emoji + '</span><span>' + escapeHtml(meta.label) + '</span></a>';
       }
 
-      renderDetailMetaItemRow(topicRowId, '所属专题', html);
-    }).catch(function () { renderDetailMetaItemRow(topicRowId, '所属专题', ''); });
+      renderDetailMetaItemRow(depthRowId, '所属路线', html);
+    }).catch(function () { renderDetailMetaItemRow(depthRowId, '所属路线', ''); });
   }
 
   function renderDetailTopicBadges(detailPage) {
-    return renderMetaTopicBadges((detailPage && detailPage.path) || '', 'detailMetaTopic');
+    return renderMetaDepthBadges((detailPage && detailPage.path) || '', 'detailMetaDepth');
   }
 
   // 社区徽标：复用 link-graph.json 的社区划分，rowId 可复用于路线页等。
@@ -4384,14 +4384,14 @@
     }
 
     renderDetailMetaItemRow('roadmapMetaCommunity', '所属社区', '');
-    renderDetailMetaItemRow('roadmapMetaTopic', '所属专题', '');
+    renderDetailMetaItemRow('roadmapMetaDepth', '所属路线', '');
     renderDetailMetaItemRow('roadmapMetaInstitution', '所属机构', '');
     if (metaEl) removeLoadingState(metaEl);
 
     var graphPath = detail.path || (roadmapPage && roadmapPage.path) || '';
     return Promise.all([
       renderMetaCommunityBadge(graphPath, 'roadmapMetaCommunity'),
-      renderMetaTopicBadges(graphPath, 'roadmapMetaTopic'),
+      renderMetaDepthBadges(graphPath, 'roadmapMetaDepth'),
       renderMetaInstitutionBadges(graphPath, 'roadmapMetaInstitution')
     ]);
   }
@@ -4658,7 +4658,7 @@
       renderDetailMetaSource(null);
       setDetailMetaReadyState('true');
       renderDetailMetaItemRow('detailMetaCommunity', '所属社区', '');
-      renderDetailMetaItemRow('detailMetaTopic', '所属专题', '');
+      renderDetailMetaItemRow('detailMetaDepth', '所属路线', '');
       renderDetailMetaItemRow('detailMetaInstitution', '所属机构', '');
       if (tocSectionEl) tocSectionEl.hidden = true;
       if (tocEl) {
@@ -4728,7 +4728,7 @@
         detailPage.updated ? renderDetailMetaDateBadge(detailPage.updated) : ''
       );
       renderDetailMetaItemRow('detailMetaCommunity', '所属社区', '');
-      renderDetailMetaItemRow('detailMetaTopic', '所属专题', '');
+      renderDetailMetaItemRow('detailMetaDepth', '所属路线', '');
       renderDetailMetaItemRow('detailMetaInstitution', '所属机构', '');
       removeLoadingState(metaEl);
     }
@@ -5814,18 +5814,146 @@
   // ── 首页「更多路线」折叠：默认只展示里程碑最新的 4 条纵深路线 ──────────────
   var routeToggle = document.getElementById('homeRouteToggle');
   var routeLinks = document.getElementById('homeRouteLinks');
+  var mainRouteCount = document.getElementById('heroMainRouteCount');
+  var depthRouteCount = document.getElementById('heroDepthRouteCount');
+  var mainRouteCard = document.getElementById('home-start-main-route');
+  var moreRoutesCard = document.getElementById('home-more-routes');
+  var BORDER_TRACE_MS = 2400;
+  var TOGGLE_HINT_MS = 900;
+  var SCROLL_CENTER_FALLBACK_MS = 700;
+
+  function setHomeRoutesExpanded(expanded) {
+    if (!routeToggle) return;
+    var extras = document.querySelectorAll('#homeRouteLinks [data-route-extra]');
+    for (var rti = 0; rti < extras.length; rti++) {
+      extras[rti].hidden = !expanded;
+    }
+    routeToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    routeToggle.textContent = expanded ? '收起纵深路线 ↑' : '展开全部 21 条纵深路线 ↓';
+    if (routeLinks) {
+      routeLinks.classList.toggle('is-expanded', !!expanded);
+    }
+  }
+
+  function playCardBorderTrace(card, onDone) {
+    if (!card) {
+      if (onDone) onDone();
+      return;
+    }
+    var finished = false;
+    var prevSvg = card.querySelector('.home-border-trace-svg');
+    if (prevSvg) prevSvg.remove();
+
+    // 用像素坐标画圆角矩形，避免 preserveAspectRatio=none 把圆角拉扁
+    var pad = 2;
+    var stroke = 2.5;
+    var w = Math.max(card.offsetWidth + pad * 2, 1);
+    var h = Math.max(card.offsetHeight + pad * 2, 1);
+    var radius = 14; // var(--radius) 12px + 外扩
+    var inset = stroke / 2;
+
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('class', 'home-border-trace-svg');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('width', String(w));
+    svg.setAttribute('height', String(h));
+    svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+
+    var rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    rect.setAttribute('x', String(inset));
+    rect.setAttribute('y', String(inset));
+    rect.setAttribute('width', String(Math.max(w - stroke, 0)));
+    rect.setAttribute('height', String(Math.max(h - stroke, 0)));
+    rect.setAttribute('rx', String(radius));
+    rect.setAttribute('ry', String(radius));
+    rect.setAttribute('pathLength', '100');
+    svg.appendChild(rect);
+
+    function finish() {
+      if (finished) return;
+      finished = true;
+      card.classList.remove('is-border-tracing');
+      if (svg.parentNode) svg.parentNode.removeChild(svg);
+      rect.removeEventListener('animationend', onAnimEnd);
+      window.clearTimeout(fallbackTimer);
+      if (onDone) onDone();
+    }
+    function onAnimEnd(event) {
+      if (event.animationName === 'home-border-trace-dash') finish();
+    }
+
+    card.classList.add('is-border-tracing');
+    card.appendChild(svg);
+    rect.addEventListener('animationend', onAnimEnd);
+    var fallbackTimer = window.setTimeout(finish, BORDER_TRACE_MS);
+  }
+
+  function pulseRouteToggleHint() {
+    if (!routeToggle) return;
+    routeToggle.classList.remove('is-pulse-hint');
+    void routeToggle.offsetWidth;
+    routeToggle.classList.add('is-pulse-hint');
+    window.setTimeout(function () {
+      routeToggle.classList.remove('is-pulse-hint');
+    }, TOGGLE_HINT_MS);
+  }
+
+  /** 将入口卡滚到视口垂直中心，再回调（避免锚点默认顶对齐） */
+  function scrollEntryCardToCenter(card, hash, onReady) {
+    if (!card) {
+      if (onReady) onReady();
+      return;
+    }
+    if (hash && window.history && typeof window.history.replaceState === 'function') {
+      window.history.replaceState(null, '', hash);
+    }
+    var done = false;
+    function ready() {
+      if (done) return;
+      done = true;
+      window.clearTimeout(fallbackTimer);
+      window.removeEventListener('scrollend', onScrollEnd);
+      if (onReady) onReady();
+    }
+    function onScrollEnd() { ready(); }
+    card.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+    window.addEventListener('scrollend', onScrollEnd, { once: true });
+    var fallbackTimer = window.setTimeout(ready, SCROLL_CENTER_FALLBACK_MS);
+  }
+
   if (routeToggle) {
     routeToggle.addEventListener('click', function () {
       var expanded = routeToggle.getAttribute('aria-expanded') === 'true';
-      var extras = document.querySelectorAll('#homeRouteLinks [data-route-extra]');
-      for (var rti = 0; rti < extras.length; rti++) {
-        extras[rti].hidden = expanded;
-      }
-      routeToggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-      routeToggle.textContent = expanded ? '展开全部 21 条纵深路线 ↓' : '收起纵深路线 ↑';
-      if (routeLinks) {
-        routeLinks.classList.toggle('is-expanded', !expanded);
-      }
+      setHomeRoutesExpanded(!expanded);
+    });
+  }
+
+  // Hero「主路线」数字：滚到「从零开始」卡中心并顺时针描边一圈
+  if (mainRouteCount && mainRouteCard) {
+    mainRouteCount.addEventListener('click', function (event) {
+      event.preventDefault();
+      scrollEntryCardToCenter(mainRouteCard, '#home-start-main-route', function () {
+        playCardBorderTrace(mainRouteCard);
+      });
+    });
+  }
+
+  // Hero「纵深路线」数字：滚到「更多路线」卡中心描边一圈（不展开），随后高亮展开按钮文案
+  if (depthRouteCount && moreRoutesCard) {
+    depthRouteCount.addEventListener('click', function (event) {
+      event.preventDefault();
+      scrollEntryCardToCenter(moreRoutesCard, '#home-more-routes', function () {
+        playCardBorderTrace(moreRoutesCard, pulseRouteToggleHint);
+      });
+    });
+  }
+  if (window.location.hash === '#home-start-main-route' && mainRouteCard) {
+    scrollEntryCardToCenter(mainRouteCard, null, function () {
+      playCardBorderTrace(mainRouteCard);
+    });
+  } else if (window.location.hash === '#home-more-routes' && moreRoutesCard) {
+    scrollEntryCardToCenter(moreRoutesCard, null, function () {
+      playCardBorderTrace(moreRoutesCard, pulseRouteToggleHint);
     });
   }
 

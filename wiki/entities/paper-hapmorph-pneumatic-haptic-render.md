@@ -2,11 +2,11 @@
 type: entity
 tags: [paper, haptic, wearable, pneumatic, soft-robotics, vr, teleoperation, human-robot-interaction, sssa]
 status: complete
-updated: 2026-06-29
+updated: 2026-07-31
 arxiv: "2509.05433"
 related:
   - ../tasks/teleoperation.md
-  - ../overview/topic-tactile.md
+  - ../overview/hub-tactile.md
   - ../concepts/tactile-sensing.md
   - ../queries/tactile-feedback-in-rl.md
   - ../comparisons/data-gloves-vs-vision-teleop.md
@@ -141,7 +141,7 @@ flowchart LR
 ## 关联页面
 
 - [Teleoperation（遥操作）](../tasks/teleoperation.md) — 操作员侧 VR/力反馈与示范采集主线
-- [触觉与力觉专题汇总](../overview/topic-tactile.md) — 机器人触觉闭环 vs 可穿戴 haptic rendering
+- [触觉与力觉知识链汇总](../overview/hub-tactile.md) — 机器人触觉闭环 vs 可穿戴 haptic rendering
 - [Tactile Sensing](../concepts/tactile-sensing.md) — 机器人端接触感知（正交维度）
 - [在 RL 中利用触觉反馈](../queries/tactile-feedback-in-rl.md) — 机器人策略侧触觉，非操作员渲染
 - [数据手套 vs 视觉遥操作](../comparisons/data-gloves-vs-vision-teleop.md) — 采集通道选型对照

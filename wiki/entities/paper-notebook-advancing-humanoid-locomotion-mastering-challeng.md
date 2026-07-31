@@ -1,70 +1,102 @@
 ---
 type: entity
-tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
-status: planned
-updated: 2026-06-26
+tags: [paper, humanoid, world-model, locomotion, denoising, hmi-papers, humanoid-paper-notebooks]
+status: complete
+updated: 2026-07-31
 arxiv: "2408.14472"
+venue: "HMI curated · Paper Notebooks"
 related:
+  - ../concepts/world-action-models.md
+  - ../methods/dreamwaq.md
+  - ../tasks/humanoid-locomotion.md
+  - ./paper-notebook-one-policy-but-many-worlds-a-scalable-unified-po.md
+  - ../queries/hmi-papers-coverage.md
   - ../overview/paper-notebook-category-05-locomotion.md
-  - ../overview/humanoid-paper-notebooks-index.md
 sources:
+  - ../../sources/papers/hmi_p017_denoising-world-model-locomotion.md
   - ../../sources/papers/humanoid_pnb_advancing-humanoid-locomotion-mastering-challeng.md
-summary: "Advancing Humanoid Locomotion：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+  - ../../sources/repos/humanoid-motion-intelligence.md
+summary: "Denoising World Model Locomotion（arXiv:2408.14472，HMI P017）：用去噪世界模型在复杂地形上学习人形运动表征/策略，强调对噪声观测与地形不确定性的鲁棒性。"
 ---
 
-# Advancing Humanoid Locomotion
+# Denoising World Model Locomotion（HMI P017）
 
-**Advancing Humanoid Locomotion: Mastering Challenging Terrains with Denoising World Model Learning** 已列入 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**Advancing Humanoid Locomotion: Mastering Challenging Terrains with Denoising World Model Learning**（[arXiv:2408.14472](https://arxiv.org/abs/2408.14472)）收录于 HMI **P017**，并已在 Paper Notebooks locomotion 分类占位。本页为该 arXiv 的**唯一详情节点**。
 
 ## 一句话定义
 
-Advancing Humanoid Locomotion 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读进度（待深读）阶段。
+用去噪世界模型在复杂地形上学习人形运动表征/策略，强调对噪声观测与地形不确定性的鲁棒性。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| WM | World Model | 学习环境/身体动态用于想象或表征 |
+| PPO | Proximal Policy Optimization | 策略优化常用算法 |
+| Sim2Real | Simulation to Real | 仿真到真机 |
+| RL | Reinforcement Learning | 策略学习主线 |
 
 ## 为什么重要
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- 把「世界模型去噪」接到人形复杂地形 locomotion，而不是只做视频生成。
+- 与 DreamPolicy / DreamWaQ 同属世界模型运动线，便于对照「生成状态 vs 隐式地形」。
+- HMI 与 Paper Notebooks 双入口共用本页，避免重复节点。
 
-## 核心信息
+## 核心原理
 
-| 字段 | 内容 |
-|------|------|
-| 分类 | 05_Locomotion |
-| 深读状态 | 待撰写（[PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)） |
-| 计划文件夹 | `papers/05_Locomotion/advancing-humanoid-locomotion-mastering-challeng` |
-| arXiv | <https://arxiv.org/abs/2408.14472> |
+去噪世界模型从带噪本体/地形观测中恢复对控制有用的潜在动态，再支撑策略在挑战地形上决策。阅读时抓住：输入噪声模型、去噪目标、以及策略如何消费世界模型表征。
 
-## 实验与评测
+```mermaid
+flowchart LR
+  A["带噪观测"] --> B["去噪世界模型"]
+  B --> C["潜在动态 / 表征"]
+  C --> D["Locomotion 策略"]
+  D --> E["关节目标 / 真机"]
+```
 
-- 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
+## 工程实践
+
+| 检查项 | 建议 |
+|--------|------|
+| 开源 | 以项目页/作者声明再核 |
+| 对照 | 与 DreamPolicy、感知跑酷线分开记账 |
+| 一手来源 | arXiv PDF + HMI P017 |
+
+## 源码运行时序图
+
+**不适用**（截至本库升格日未绑定单一可运行官方训练仓为复现入口）。
+
+## 实验与评测读法
+
+- 分清仿真地形通过率与真机证据。
+- 关注噪声/遮挡设定是否匹配部署传感器。
 
 ## 结论
 
-**本页当前是知识图谱里的占位节点，而不是对这篇论文的归纳——它记录的是「这篇该读、归在哪一类、还没读」。**
+**P017 应作为「去噪世界模型 → 人形复杂地形」节点阅读，并与 DreamPolicy 对照问题接口。**
 
-- 页面能给出的确定信息只有四项：分类为 05_Locomotion、深读状态为待撰写、计划文件夹路径已预留、arXiv 入口已登记。
-- 论文本身的机制、量化 benchmark 与实机结论 **本页均未涵盖**，不要把这里的任何表述当作对该工作的评价。
-- 它的作用是保持图谱完整、可从 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类父节点交叉检索到该实体；深读笔记完成后本页应链向笔记站并升格为完整索引实体。
+- 先核对噪声模型与观测契约，再谈策略结构。
+- 本页同时承接 Paper Notebooks 占位，不再另建平行实体。
+- 开源与数值以一手来源为准。
 
-## 与其他页面的关系
+## 局限与风险
 
-- 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
-- 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- 计划索引阶段遗留信息可能过时；以 PDF 为准。
+- 世界模型误差会传导到策略；需看失败模式是否被报告。
+
+## 关联页面
+
+- [DreamPolicy / One Policy but Many Worlds](./paper-notebook-one-policy-but-many-worlds-a-scalable-unified-po.md)
+- [World Action Models](../concepts/world-action-models.md)
+- [HMI 论文导读](../queries/hmi-papers-coverage.md)
 
 ## 参考来源
 
+- [hmi_p017_denoising-world-model-locomotion.md](../../sources/papers/hmi_p017_denoising-world-model-locomotion.md)
 - [humanoid_pnb_advancing-humanoid-locomotion-mastering-challeng.md](../../sources/papers/humanoid_pnb_advancing-humanoid-locomotion-mastering-challeng.md)
-- [Humanoid Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
-- 论文：<https://arxiv.org/abs/2408.14472>
+- [humanoid-motion-intelligence.md](../../sources/repos/humanoid-motion-intelligence.md)
 
 ## 推荐继续阅读
 
-- [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [arXiv:2408.14472](https://arxiv.org/abs/2408.14472)
+- [HMI P017](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P017.md)

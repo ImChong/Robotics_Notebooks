@@ -48,7 +48,7 @@ summary: "Deform360（arXiv:2607.05390）：198 类可变形物体、1980 序列
 ## 为什么重要
 
 - **可变形体 WM 的「范式之争」缺数据：** 纯 2D 视频 WM **可扩展但长程 3D 不一致**；3D 粒子/物理 WM **结构先验强但缺大规模预训练**；Deform360 提供 **同分布对照**（策展文几何/接触层数据缺口）。
-- **补齐接触专题数据层：** 与 [VT-WAM](./paper-vt-wam-visuotactile-contact-rich.md) / [TACO](./paper-taco-tactile-wm-vla-posttrain.md) **方法层** 互补；支持 **contact prediction** 与 **visuotactile coupling** 评测。
+- **补齐接触纵深数据层：** 与 [VT-WAM](./paper-vt-wam-visuotactile-contact-rich.md) / [TACO](./paper-taco-tactile-wm-vla-posttrain.md) **方法层** 互补；支持 **contact prediction** 与 **visuotactile coupling** 评测。
 - **规模显著超越 prior real-world deformable sets：** 相对 Robo360 / PokeFlex / DOT 等（见论文 Table 1），**198 物体 / 23.3M 帧 / 41 views / 触觉** 组合唯一。
 - **真实机器人规划 demo：** Deform360 训练的 PhysTwin 在 **未见 xArm 第二实验室** 做 cloth/rope MPC **零微调迁移**——证明数据 **可下游规划**。
 
@@ -135,7 +135,7 @@ flowchart TB
 
 - [wm-action-consequence-category-02-contact-modeling](../overview/wm-action-consequence-category-02-contact-modeling.md) — 数据层支柱
 - [wm-action-consequence-category-03-geometry-4d](../overview/wm-action-consequence-category-03-geometry-4d.md) — 2D/3D/4D WM 对照语境
-- [动作后果技术地图](../overview/robot-world-models-action-consequence-technology-map.md) — 专题总览
+- [动作后果技术地图](../overview/robot-world-models-action-consequence-technology-map.md) — 纵深总览
 - [Generative World Models](../methods/generative-world-models.md) — 2D 视频 WM 方法栈
 - [VT-WAM](./paper-vt-wam-visuotactile-contact-rich.md) — 视触觉操纵对照
 

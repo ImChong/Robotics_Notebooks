@@ -286,8 +286,8 @@ body.sponsor-dialog-open {
 .hero-stats {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px 44px;
-  max-width: 560px;
+  gap: 16px 36px;
+  max-width: 720px;
   margin: 0;
   padding: 22px 0 0;
   list-style: none;
@@ -301,6 +301,19 @@ body.sponsor-dialog-open {
   color: var(--text);
   letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums;
+  text-decoration: none;
+  width: fit-content;
+  border-radius: 4px;
+  transition: color 0.15s ease, box-shadow 0.15s ease;
+}
+a.hero-stat-num:hover,
+a.hero-stat-num:focus-visible {
+  color: var(--accent);
+  text-decoration: none;
+}
+a.hero-stat-num:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 .hero-stat-label { font-size: 0.82rem; font-weight: 500; color: var(--text-muted); }
 .hero-kicker {
@@ -481,6 +494,62 @@ body.sponsor-dialog-open {
 .section { padding: 44px 0; }
 /* 首页入口区与 Hero 同底色、语义相连：去掉自身顶距，只保留 Hero 底部留白 */
 #home-start.section { padding-top: 0; }
+/* 路线数字用 JS scrollIntoView(block:center)，不再用 scroll-margin 顶对齐 */
+
+/* Hero 盘点数字定位入口卡：SVG 短弧沿边框顺时针扫一圈 */
+.home-entry-card.is-border-tracing {
+  position: relative;
+  z-index: 1;
+}
+.home-border-trace-svg {
+  position: absolute;
+  inset: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  pointer-events: none;
+  z-index: 4;
+  overflow: visible;
+}
+.home-border-trace-svg rect {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--accent) 70%, transparent));
+  stroke-dasharray: 14 86;
+  stroke-dashoffset: 0;
+  animation: home-border-trace-dash 2.1s linear forwards;
+}
+@keyframes home-border-trace-dash {
+  to { stroke-dashoffset: -100; }
+}
+.home-route-toggle.is-pulse-hint {
+  animation: home-route-toggle-hint 0.85s ease;
+}
+@keyframes home-route-toggle-hint {
+  0%, 100% {
+    color: var(--accent);
+    text-shadow: none;
+    filter: none;
+  }
+  35%, 65% {
+    color: var(--accent-hover);
+    text-shadow: 0 0 14px color-mix(in srgb, var(--accent) 55%, transparent);
+    filter: brightness(1.25);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-border-trace-svg rect {
+    animation: none;
+    stroke-dasharray: none;
+    opacity: 0.95;
+  }
+  .home-route-toggle.is-pulse-hint {
+    animation: none;
+    color: var(--accent-hover);
+  }
+}
 .section-alt {
   background: linear-gradient(180deg, rgba(255,255,255,.25), rgba(255,255,255,.1)), var(--bg-alt);
   border-top: 1px solid var(--border);
@@ -1368,7 +1437,7 @@ button.home-wiki-heatmap-cell.is-active {
   align-items: center;
   gap: 6px 8px;
 }
-/* hidden 行若仍参与 grid/flex 布局会多占一行 gap（如「所属专题」未命中时） */
+/* hidden 行若仍参与 grid/flex 布局会多占一行 gap（如「所属路线」未命中时） */
 .detail-meta-item[hidden] {
   display: none !important;
 }

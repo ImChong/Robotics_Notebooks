@@ -1,7 +1,7 @@
 ---
 type: concept
 tags: [sensor-fusion, perception, localization, vio, ekf, state-estimation]
-updated: 2026-07-01
+updated: 2026-07-31
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./state-estimation.md

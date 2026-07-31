@@ -2,14 +2,14 @@
 type: entity
 tags: [paper, vla, manipulation, imitation-learning, human-to-robot, cross-embodiment, world-model, teleoperation, pku, cuhk, baai-aether]
 status: complete
-updated: 2026-07-06
+updated: 2026-07-31
 arxiv: "2606.23685"
 code: https://siriyep.github.io/last-hd-project-page/
 related:
   - ../methods/vla.md
   - ../methods/imitation-learning.md
   - ../concepts/world-action-models.md
-  - ../overview/topic-cross-embodiment.md
+  - ../overview/hub-cross-embodiment.md
   - ./paper-ego-03-egomimic.md
   - ../tasks/manipulation.md
 sources:
@@ -126,7 +126,7 @@ flowchart TB
 - [VLA（Vision-Language-Action）](../methods/vla.md) — reasoning-before-acting 与人数据缩放语境。
 - [Imitation Learning](../methods/imitation-learning.md) — 人手演示、DAgger 纠偏与 IL 管线。
 - [World Action Models](../concepts/world-action-models.md) — 动作条件前向动力学作为跨具身接口。
-- [跨具身迁移（专题）](../overview/topic-cross-embodiment.md) — 人→机器人迁移案例。
+- [跨具身迁移（知识链）](../overview/hub-cross-embodiment.md) — 人→机器人迁移案例。
 - [EgoMimic](./paper-ego-03-egomimic.md) — 第一视角人数据进 IL 的相邻路线。
 - [Manipulation（任务）](../tasks/manipulation.md) — 桌面/灵巧操作评测背景。
 

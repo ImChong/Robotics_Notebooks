@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, neoteai, fudan, world-action-models, tactile, flow-matching, mixture-of-transformers, contact-rich, twam]
 status: complete
-updated: 2026-07-26
+updated: 2026-07-31
 venue: "Technical Report"
 code: "https://github.com/neoteai/N0-TWAM"
 related:

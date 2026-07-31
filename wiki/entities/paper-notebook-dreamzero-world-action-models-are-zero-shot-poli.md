@@ -1,8 +1,8 @@
 ---
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
-status: stub
-updated: 2026-07-10
+status: complete
+updated: 2026-07-31
 arxiv: "2602.15922"
 related:
   - ../overview/paper-notebook-category-06-manipulation.md
@@ -83,6 +83,15 @@ SOTA **VLA** 擅长语义泛化（换物体、换语言指令），但在**新�
 
 - 分类父节点：[paper-notebook-category-06-manipulation](../overview/paper-notebook-category-06-manipulation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+
+
+## 结论
+
+**本页为 HMI 开源主表对应的独立详情节点：先抓住问题接口与开源边界，再决定是否深挖训练细节。**
+
+- 数值与消融以论文 PDF / 官方仓库为准。
+- 与相邻 VLA / 仿真 / 数据生成页交叉阅读，避免重复造页。
+- 若仅有索引级摘要，部署前必须回一手 README。
 
 ## 参考来源
 

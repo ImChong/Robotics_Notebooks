@@ -2,7 +2,7 @@
 
 ## [2026-07-31] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **0** 条信息型预警）：
+共发现 **0** 个问题（另含 **27** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -97,8 +97,32 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（25 个）
+- wiki/entities/paper-amp-locomotion-quadruped-rewards.md（缺 对比）
+- wiki/entities/paper-anybody-keypoint-humanoid-control.md（缺 对比）
+- wiki/entities/paper-atlas-locomotion-optimization-stack.md（缺 对比）
+- wiki/entities/paper-deep-whole-body-control-loco-manip.md（缺 对比）
+- wiki/entities/paper-dreamer-latent-imagination.md（缺 对比）
+- wiki/entities/paper-embodied-world-model-survey.md（缺 对比）
+- wiki/entities/paper-exbody-expressive-humanoid.md（缺 对比）
+- wiki/entities/paper-gr00t-dreams-synthetic-trajectories.md（缺 对比）
+- wiki/entities/paper-hmi-stack-of-tasks.md（缺 对比）
+- wiki/entities/paper-humanoid-loco-manipulation-survey.md（缺 对比）
+- wiki/entities/paper-momentum-control-hierarchical-id.md（缺 对比）
+- wiki/entities/paper-notebook-advancing-humanoid-locomotion-mastering-challeng.md（缺 方法 / 对比）
+- wiki/entities/paper-notebook-contact-aided-invariant-ekf-for-legged-robots.md（缺 方法 / 对比）
+- wiki/entities/paper-notebook-learning-quadrupedal-locomotion-over-challenging.md（缺 方法 / 对比）
+- wiki/entities/paper-notebook-one-policy-but-many-worlds-a-scalable-unified-po.md（缺 方法 / 对比）
+- wiki/entities/paper-open-x-embodiment.md（缺 对比）
+- wiki/entities/paper-operational-space-formulation.md（缺 对比）
+- wiki/entities/paper-palm-e-embodied-language-model.md（缺 对比）
+- wiki/entities/paper-pi05-open-world-vla.md（缺 对比）
+- wiki/entities/paper-robot-parkour-learning.md（缺 对比）
+- wiki/entities/paper-robust-perceptive-locomotion-wild.md（缺 对比）
+- wiki/entities/paper-visual-whole-body-control-vbc.md（缺 对比）
+- wiki/entities/paper-vla-survey-embodied.md（缺 对比）
+- wiki/entities/paper-whole-body-behaviors-primitives.md（缺 对比）
+- wiki/entities/paper-xhugwbc-cross-humanoid.md（缺 对比）
 
 ### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（0 个）
 - 无
@@ -106,25 +130,26 @@
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
+### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（2 个）
+- wiki/entities/paper-daily-omni.md（含绝对化措辞「SOTA」，updated=2026-07-30；同主题更新页 wiki/entities/paper-softvtbench.md updated=2026-07-31）
+- wiki/entities/paper-data-pyramid-embodied-manipulation.md（含绝对化措辞「最新」，updated=2026-07-30；同主题更新页 wiki/entities/paper-softvtbench.md updated=2026-07-31）
+
+### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」专题枢纽（信息型，不阻塞 CI）（0 个）
+### 💡 接触/力控/操作概念页缺回链「接触力旋量闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 接触/力控/操作概念页缺回链「接触力旋量闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
+### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
+### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
+### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
+### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」专题枢纽（信息型，不阻塞 CI）（0 个）
-- 无
-
-📊 Sources 覆盖率：1981/2007 (99%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：2003/2029 (99%) wiki/entity 页有 ingest 来源

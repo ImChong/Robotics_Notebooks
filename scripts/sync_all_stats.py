@@ -127,24 +127,22 @@ def main():
         README_MD.write_text(content, encoding="utf-8")
         print("✅ README.md 更新完成")
 
-    # 5. 更新 docs/index.html (硬编码部分)
+    # 5. 更新 docs/index.html（Hero 盘点硬编码数字；结构由前端维护，此处只刷 node/edge）
     if INDEX_HTML.exists():
         print("📝 更新 docs/index.html...")
         content = INDEX_HTML.read_text(encoding="utf-8")
 
-        # 匹配 <span id="heroNodeCount">...</span> 等（与 docs/index.html 的中文两项格式保持一致）
-        new_stats_html = (
-            f'<div class="hero-stat-row-mini" aria-label="知识库当前规模">\n'
-            f'            <span id="heroNodeCount">{nodes}</span> 个节点 ·\n'
-            f'            <span id="heroEdgeCount">{edges}</span> 条连接\n'
-            f"          </div>"
-        )
-
         content = re.sub(
-            r'<div class="hero-stat-row-mini" aria-label="知识库当前规模">.*?</div>',
-            new_stats_html,
+            r'(id="heroNodeCount"[^>]*>)\d+',
+            rf"\g<1>{nodes}",
             content,
-            flags=re.DOTALL,
+            count=1,
+        )
+        content = re.sub(
+            r'(id="heroEdgeCount"[^>]*>)\d+',
+            rf"\g<1>{edges}",
+            content,
+            count=1,
         )
 
         INDEX_HTML.write_text(content, encoding="utf-8")
