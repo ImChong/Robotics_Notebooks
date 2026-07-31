@@ -13,8 +13,9 @@
 - **机构：** ETH Zurich；Stanford；UC Berkeley；University of Edinburgh；KAIST；NVIDIA；University of Tübingen；Max Planck Institute for Intelligent Systems；University of Oxford；Monash University；RAI Institute
 - **代码与数据：** **未开源 / 不适用**（综述，无单一可运行实现）
 - **入库日期：** 2026-07-31
-- **最后更新：** 2026-07-31
+- **最后更新：** 2026-07-31（补 OA/PDF 全路径核查：仍无合法全文）
 - **一句话说明：** Science Robotics **Review**：沿 **硬件 / locomotion / 自主 / 数据 / 应用** 五柱评估人形与四足腿式系统的能力与开放挑战，并展望伦理、经济、政策与社会影响。
+- **开放全文（PDF）：** **未找到**（截至 **2026-07-31**；见下方「OA / PDF 核查」）
 
 ## 相关资料（策展）
 
@@ -23,11 +24,33 @@
 | DOI | [10.1126/scirobotics.aee0787](https://doi.org/10.1126/scirobotics.aee0787) | Science Robotics 原文入口（付费墙） |
 | PubMed | [42525724](https://pubmed.ncbi.nlm.nih.gov/42525724/) | 摘要全文（开放） |
 | Crossref | [works API](https://api.crossref.org/works/10.1126/scirobotics.aee0787) | 元数据与 JATS 摘要 |
-| OpenAlex | [W7171713488](https://openalex.org/W7171713488) | 引用图（约 113 篇参考文献） |
+| OpenAlex | [W7171713488](https://openalex.org/W7171713488) | 引用图（约 113 篇参考文献）；`is_oa=false` |
+| Unpaywall | [API](https://api.unpaywall.org/v2/10.1126/scirobotics.aee0787) | `oa_status=closed`，无 `best_oa_location` |
 | 机构通稿解读 | [`techxplore_legged_robots_ethics_monash_2026-07-30.md`](../blogs/techxplore_legged_robots_ethics_monash_2026-07-30.md) | Monash / TechXplore：伦理–经济–政策侧复述 |
 | 同期综述对照 | [`bioinspired_multimodal_robotics_scirobotics_2026.md`](./bioinspired_multimodal_robotics_scirobotics_2026.md) | 同刊 Issue 116 仿生多模态 Review |
 | 运动任务 | [`wiki/tasks/locomotion.md`](../../wiki/tasks/locomotion.md) | 腿式 locomotion 任务中心 |
 | 四足实体 | [`wiki/entities/quadruped-robot.md`](../../wiki/entities/quadruped-robot.md) | 四足平台总览 |
+
+## OA / PDF 核查（2026-07-31）
+
+合法开放途径逐项排查，**均无全文 PDF**：
+
+| 渠道 | 结果 |
+|------|------|
+| Unpaywall | `is_oa=false` / `oa_status=closed` / `oa_locations=[]` |
+| OpenAlex locations | 仅 publisher landing；`pdf_url=null`；`any_repository_has_fulltext=false` |
+| EuropePMC | `isOpenAccess=N`；`hasPDF=N`；无 PMCID；全文 URL 标注 Subscription required |
+| PubMed Central | DOI 检索无 PMC 全文条目 |
+| arXiv / OpenAlex preprint | 无对应预印本（标题精确检索 0 命中） |
+| Zenodo | 标题精确检索 0 条 |
+| Internet Archive | 标题精确检索 `numFound=0` |
+| Science.org pdf/epdf/full/reader | 本环境均 **403** |
+| ETH Research Collection | 标题检索未命中本篇（命中其它「Advances, challenges…」同名异文） |
+| 一作站点 [jonasfrey96.github.io](https://jonasfrey96.github.io/publications/) | 出版物列表与 [`papers.bib`](https://github.com/JonasFrey96/jonasfrey96.github.io/blob/master/_bibliography/papers.bib) **尚未收录**本篇；CV PDF 仍写 UNDER REVIEW（Science Robotics 2025） |
+| Mayank Mittal 主页 | 未见本篇 PDF |
+| RSL 出版物页 | 未见 `aee0787` / 本标题条目 |
+
+**结论：** 截至核查日，**无作者自存档、机构库绿 OA、预印本或出版社开放 PDF**；wiki 编译继续以开放摘要 + 引用图 + Monash/TechXplore 通稿为准。若后续出现 author accepted manuscript / ETH RC 入库 / AAAS eprint，应回填本表并加深 wiki 技术节。
 
 ## 摘要级要点
 
@@ -74,8 +97,9 @@ OpenAlex 引用约 **113** 篇，重心包括：
 ### 4) 开源与复现边界
 
 - **综述文章**，无单一官方代码 / 数据集 / 项目页（截至 2026-07-31）。
-- Science.org PDF 在本环境 **403**；细节以开放摘要 + 机构通稿 + 引用图为准。
-- **对 wiki 的映射：** 「源码运行时序图」**不适用**。
+- **全文 PDF：** 合法 OA 路径核查仍为 **closed**（见上文「OA / PDF 核查」）；Science.org 在本环境 **403**。
+- 细节以开放摘要 + 机构通稿 + 引用图为准；**勿**用盗版镜像代替 OA。
+- **对 wiki 的映射：** 「源码运行时序图」**不适用**；技术节待合法全文后加深。
 
 ## 对 wiki 的映射
 
@@ -90,4 +114,5 @@ OpenAlex 引用约 **113** 篇，重心包括：
 - [x] 引用图抽样（OpenAlex referenced_works）辅助五柱技术线索
 - [x] wiki 页面映射确认
 - [x] 项目页 / 源码开放核查：无项目页；综述无代码（写入局限）
-- [ ] 全文付费墙解除后可补各节精确主张与图表数值
+- [x] OA/PDF 全路径核查（2026-07-31）：Unpaywall/OpenAlex/PMC/arXiv/Zenodo/IA/作者站/ETH RC — **无合法全文**
+- [ ] 合法全文出现后可补各节精确主张与图表数值

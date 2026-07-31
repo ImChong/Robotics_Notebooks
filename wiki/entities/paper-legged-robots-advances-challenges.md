@@ -24,6 +24,7 @@ tags:
 status: complete
 updated: 2026-07-31
 doi: "10.1126/scirobotics.aee0787"
+# note: OA/PDF recheck same day — still closed
 venue: "Science Robotics 2026"
 related:
   - ../tasks/locomotion.md
@@ -187,7 +188,7 @@ flowchart TB
 
 ## 局限与风险
 
-- **全文付费墙：** Science.org PDF 在入库环境 **403**；技术节细节主要编译自 **开放摘要 + OpenAlex 引用图 + Monash/TechXplore 通稿**。解除付费墙后应回填各节精确主张。
+- **全文付费墙 / 无合法 OA PDF：** 2026-07-31 复查 Unpaywall、OpenAlex、EuropePMC/PMC、arXiv、Zenodo、Internet Archive、Science.org、ETH Research Collection、一作站点与 `papers.bib`、RSL 出版物页 — **均无开放全文**（详见 [sources OA 核查表](../../sources/papers/legged_robots_advances_challenges_scirobotics_2026.md)）。技术节细节主要编译自 **开放摘要 + 引用图 + Monash/TechXplore 通稿**；合法全文出现后应回填各节精确主张。
 - **通稿偏伦理侧：** Sparrow 发言不能替代全文对硬件/控制的定量判断。
 - **引用图 ≠ 章节提纲：** 上表「技术侧线索」是推断，避免当作原文小标题。
 - **综述无单一基线实现：** 五柱落地仍需各系统自报口径。
