@@ -95,7 +95,7 @@ flowchart TB
 - 真正的贡献层是 **任务级自主**——信念地图与不确定性、长程目标分解、重规划、地下组网；低层步态与平衡被当作已有能力调用。
 - 评测形态是 **系统演示** 而非 benchmark 表：看的是连续探索的距离与时长、低光照/GPS 拒止下的信念感知定位建图，以及楼梯、碎石、狭窄通道的通过率。
 - 最需要澄清的边界：这些能力来自 **NeBula 研究集成，不是 Spot 出厂软件栈**；论文也不展开低层力矩控制与在线轨迹优化（见 [BD 足式控制专利栈](./patent-boston-dynamics-legged-control-stack.md)）。
-- 定位与时效：2020 年工作，宜作 **历史系统参考** 而非 SOTA 算法目录；同平台的低层 RL locomotion 见 [Spot RL 分布距离 Sim2Real](./paper-spot-rl-distributional-sim2real.md)，两者在栈层级上互补。
+- 定位与时效：2020 年工作，宜作 **历史系统参考** 而非当下可直接选型的算法目录；同平台的低层 RL locomotion 见 [Spot RL 分布距离 Sim2Real](./paper-spot-rl-distributional-sim2real.md)，两者在栈层级上互补。
 
 ## 与其他工作对比
 

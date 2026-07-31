@@ -104,7 +104,7 @@ flowchart TB
 - 两阶段分工明确：Teacher 可用特权信息，上真机的是仅依赖 **堆叠历史本体** 的 Student，减少全局速度估计依赖；G1 机载 **100 Hz**、延迟 **15–25 ms**。
 - 适用边界：技能标签是 **clip 级粗粒度 one-hot** 且自动赋值，覆盖面取决于 MoCap 技能库规模，而非标注语义精度。
 - 评测口径是 **技能覆盖率 / 转移覆盖率 / 运动真实感**，不是单条参考的跟踪误差——要比「跟得准不准」需换其他工作。
-- 与姊妹篇分工：[MoRE #08](./paper-amp-survey-08-more.md)、[SD-AMP #10](./paper-unified-walk-run-recovery-sdamp.md) 走 **多判别器单阶段**，[AHC #11](./paper-adaptive-humanoid-control.md) 是 **专精蒸馏 + 地形微调**，HAML 占 **条件单判别器 + 两阶段蒸馏** 这一格。
+- 与姊妹篇分工：[MoRE #08](./paper-amp-survey-08-more.md)、[SD-AMP #10](./paper-unified-walk-run-recovery-sdamp.md) 走 **多判别器单阶段**，[AHC #11](./paper-adaptive-humanoid-control.md) 是 **专精蒸馏 + 地形微调**，HAML 占 **单条件判别器 + 两阶段蒸馏** 这一格。
 
 ## 常见误区
 
