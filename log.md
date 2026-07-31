@@ -1,3 +1,16 @@
+## [2026-07-31] structural | docs/index.html — Hero 主路线/纵深路线改为锚到入口卡+顺时针描边；纵深不再自动展开，描边后高亮展开按钮
+
+- **主路线数字：** `#home-start-main-route`（从零开始卡）+ 边框顺时针高亮一圈后移除
+- **纵深路线数字：** `#home-more-routes` 同样描边，**不**自动展开；描边结束后短时高亮 `#homeRouteToggle` 文案
+- **实现：** `docs/main.js` 注入 SVG `rect[pathLength=100]` + `stroke-dashoffset` 顺时针扫边；`pulseRouteToggleHint` 提醒展开按钮
+
+## [2026-07-31] structural | docs/index.html — Hero 盘点新增主路线(1)，四项数字可点跳转图谱/主路线/展开纵深路线
+
+- **改动：** `docs/index.html` Hero 盘点由三项改为四项：知识节点 / 互链关系 / **主路线(1)** / 纵深路线(21)；主路线插在互链关系与纵深路线之间
+- **跳转：** 知识节点与互链关系数字 → `graph.html`；主路线数字 → `roadmap.html?id=roadmap-motion-control`；纵深路线数字 → `#home-more-routes` 并展开全部纵深路线（`docs/main.js` `setHomeRoutesExpanded`）
+- **样式：** `docs/style.css` 为可点数字补 hover/focus，并放宽 `.hero-stats` 宽度以容纳四项
+- **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md)
+
 ## [2026-07-31] query | wiki/queries/hmi-papers-coverage.md — 确保 HMI 论文与项目目录 145 篇论文均有本库独立详情节点；新建 23 个 sources+entities，复用 122 个已有页；修正开源主表 Robot Parkour / ASAP 挂接
 
 - **触发：** 用户要求覆盖 [论文与项目](https://github.com/RealXiaoze/humanoid-motion-intelligence/tree/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE) 列出的论文与项目详情独立节点（不重复造页）
