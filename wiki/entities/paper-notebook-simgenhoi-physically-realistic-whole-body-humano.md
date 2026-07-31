@@ -46,6 +46,14 @@ SimGenHOI 的人形机器人学习论文条目，当前处于 Paper Notebooks �
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**SimGenHOI 在本库尚处占位阶段：本页只固定了它「生成式建模 + RL 做全身人–物交互」的坐标，并未给出可引用的机制或指标。**
+
+- 可确认的仅索引层信息——arXiv 2508.14120、分类 13_Physics-Based_Animation 与计划中的笔记文件夹；标题点出的取舍是「生成动作」与「物理可行」两侧要同时兼顾，但具体如何配合页内未展开。
+- 归类落在物理动画而非真机 locomotion 一侧，说明它与本库[分类父节点](../overview/paper-notebook-category-13-physics-based-animation.md)下的仿真/角色动画工作同栈；把它直接当作 Sim2Real 落地方案是误用。
+- 主要风险是把占位页当结论：量化 benchmark、消融与实机指标全部缺失，深读进度以 PROGRESS.md 为准，判断请回到 arXiv 原文。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)

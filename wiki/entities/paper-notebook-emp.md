@@ -47,6 +47,14 @@ EMP 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**EMP 在本库目前只是一条「已排期、未深读」的占位实体：它补的是知识图谱的完整性，而不是可直接引用的方法结论。**
+
+- 本页能确认的只有索引层信息——arXiv 2507.15649（2025.07）、分类 04_Loco-Manipulation_and_WBC 与计划中的笔记文件夹；标题指向「站立姿态下的上半身动作模仿」这一子问题，但机制与实验细节页内一概未展开。
+- 适用边界：适合经[分类父节点](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)与[人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)做检索与交叉定位，不适合作为技术选型或方法对比的依据。
+- 主要风险是把占位页误读成已消化的结论：量化 benchmark、消融与实机指标本页全部缺失，深读状态须回到 progress.json 跟踪，结论以论文原文为准。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
