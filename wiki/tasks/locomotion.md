@@ -2,10 +2,11 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-07-30
+updated: 2026-07-31
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
+  - ../entities/paper-legged-robots-advances-challenges.md
   - ../entities/paper-rma-rapid-motor-adaptation.md
   - ../entities/paper-amp-survey-08-more.md
   - ../entities/paper-adp.md
@@ -309,6 +310,7 @@ flowchart TD
 - [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md)
 - [Argus（动态对称 / 球形腿式全向移动）](../entities/paper-argus-dynamic-symmetry.md) — Science Robotics 2026；动态各向同性 η 与 20 腿无朝向偏好 locomotion
 - [仿生多模态机器人综述（Science Robotics 2026）](../entities/paper-bioinspired-multimodal-robotics.md) — 跨介质仿生多模态定义 + 五项评测指标（MCM/CRP/TC 等）+ 物理×计算智能路线图
+- [腿式机器人进展/挑战/机遇综述（Science Robotics 2026）](../entities/paper-legged-robots-advances-challenges.md) — 硬件/locomotion/自主/数据/应用五柱 + 伦理–政策展望（ETH 牵头）
 
 ### Benchmark 入口
 - [Locomotion Benchmarks](../../references/benchmarks/locomotion-benchmarks.md)

@@ -48,6 +48,7 @@ related:
   - ../entities/paper-zonda.md
   - ../entities/paper-mujica-wheel-legged-multi-skill.md
   - ../entities/paper-aware-wheeled-legged-reflexive-evasion.md
+  - ../entities/paper-legged-robots-advances-challenges.md
   - ../queries/sim2real-closed-loop-engineering.md
 summary: "Sim2Real 关注如何把仿真中学到的策略稳定迁移到真实机器人，是机器人学习落地的核心鸿沟。"
 updated: 2026-07-31
@@ -59,6 +60,7 @@ sources:
   - ../../sources/papers/agentic_real2sim_arxiv_2607_19190.md
   - ../../sources/papers/aware_arxiv_2604_23761.md
   - ../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md
+  - ../../sources/papers/legged_robots_advances_challenges_scirobotics_2026.md
 ---
 
 # Sim2Real
@@ -238,6 +240,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [Whole-Body Tracking Pipeline](./whole-body-tracking-pipeline.md) — 三段流水线中段；Sim2Real 横切其「训练 → 真机」落地
 - [跨具身策略迁移选型指南](../queries/cross-embodiment-transfer-strategy.md) — 三段流水线末段；换机体后是否需重跨 domain gap
 - [Locomotion](../tasks/locomotion.md)
+- [腿式机器人进展/挑战/机遇综述](../entities/paper-legged-robots-advances-challenges.md) — SciRobotics 2026：把 Sim2Real 放进硬件/运动/数据五柱坐标系
 - [System Identification](./system-identification.md)（减少物理参数和执行器模型的 sim2real gap）
 - [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md) — 从辨识到适应的持续校准叙事与误差分流
 - [Actuator Network 执行器网络](../methods/actuator-network.md) — 用神经网络拟合电机非线性特性
