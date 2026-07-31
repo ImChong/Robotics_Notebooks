@@ -286,8 +286,8 @@ body.sponsor-dialog-open {
 .hero-stats {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px 44px;
-  max-width: 560px;
+  gap: 16px 36px;
+  max-width: 720px;
   margin: 0;
   padding: 22px 0 0;
   list-style: none;
@@ -301,6 +301,19 @@ body.sponsor-dialog-open {
   color: var(--text);
   letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums;
+  text-decoration: none;
+  width: fit-content;
+  border-radius: 4px;
+  transition: color 0.15s ease, box-shadow 0.15s ease;
+}
+a.hero-stat-num:hover,
+a.hero-stat-num:focus-visible {
+  color: var(--accent);
+  text-decoration: none;
+}
+a.hero-stat-num:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 .hero-stat-label { font-size: 0.82rem; font-weight: 500; color: var(--text-muted); }
 .hero-kicker {
@@ -481,6 +494,7 @@ body.sponsor-dialog-open {
 .section { padding: 44px 0; }
 /* 首页入口区与 Hero 同底色、语义相连：去掉自身顶距，只保留 Hero 底部留白 */
 #home-start.section { padding-top: 0; }
+#home-more-routes { scroll-margin-top: calc(var(--header-h) + 12px); }
 .section-alt {
   background: linear-gradient(180deg, rgba(255,255,255,.25), rgba(255,255,255,.1)), var(--bg-alt);
   border-top: 1px solid var(--border);

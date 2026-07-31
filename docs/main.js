@@ -5814,19 +5814,36 @@
   // ── 首页「更多路线」折叠：默认只展示里程碑最新的 4 条纵深路线 ──────────────
   var routeToggle = document.getElementById('homeRouteToggle');
   var routeLinks = document.getElementById('homeRouteLinks');
+  var depthRouteCount = document.getElementById('heroDepthRouteCount');
+
+  function setHomeRoutesExpanded(expanded) {
+    if (!routeToggle) return;
+    var extras = document.querySelectorAll('#homeRouteLinks [data-route-extra]');
+    for (var rti = 0; rti < extras.length; rti++) {
+      extras[rti].hidden = !expanded;
+    }
+    routeToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    routeToggle.textContent = expanded ? '收起纵深路线 ↑' : '展开全部 21 条纵深路线 ↓';
+    if (routeLinks) {
+      routeLinks.classList.toggle('is-expanded', !!expanded);
+    }
+  }
+
   if (routeToggle) {
     routeToggle.addEventListener('click', function () {
       var expanded = routeToggle.getAttribute('aria-expanded') === 'true';
-      var extras = document.querySelectorAll('#homeRouteLinks [data-route-extra]');
-      for (var rti = 0; rti < extras.length; rti++) {
-        extras[rti].hidden = expanded;
-      }
-      routeToggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-      routeToggle.textContent = expanded ? '展开全部 21 条纵深路线 ↓' : '收起纵深路线 ↑';
-      if (routeLinks) {
-        routeLinks.classList.toggle('is-expanded', !expanded);
-      }
+      setHomeRoutesExpanded(!expanded);
     });
+  }
+
+  // Hero「纵深路线」数字：跳转到「更多路线」模块并展开全部路线
+  if (depthRouteCount) {
+    depthRouteCount.addEventListener('click', function () {
+      setHomeRoutesExpanded(true);
+    });
+  }
+  if (window.location.hash === '#home-more-routes') {
+    setHomeRoutesExpanded(true);
   }
 
   // ── Wiki 全文搜索（index.html 搜索框） ────────────────────────────────────
