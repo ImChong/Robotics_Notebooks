@@ -502,10 +502,13 @@ a.hero-stat-num:focus-visible {
   z-index: 1;
 }
 .home-border-trace-svg {
+  /* left/top/width/height 由 JS 按 border-box + 外扩像素写入，
+     避免 padding-box 的 inset/% 与 offsetWidth 在亚像素宽度下错位 */
   position: absolute;
-  inset: -2px;
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
+  inset: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
   pointer-events: none;
   z-index: 4;
   overflow: visible;
