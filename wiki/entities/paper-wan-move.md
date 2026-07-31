@@ -11,10 +11,11 @@ tags:
   - hku
   - cuhk
 status: complete
-updated: 2026-07-23
+updated: 2026-07-31
 arxiv: "2512.08765"
 related:
   - ./paper-wan-video.md
+  - ./paper-wan-dancer.md
   - ./paper-masked-visual-actions.md
   - ./paper-ctrl-world.md
   - ../methods/generative-world-models.md
@@ -178,6 +179,7 @@ sequenceDiagram
 | 对照对象 | 运动条件接口 | 是否改动骨干 | 与本页关系 |
 |----------|--------------|--------------|-----------|
 | [Wan-I2V-14B（基座）](./paper-wan-video.md) | 仅首帧图像 | — | Wan-Move 在其上微调，**不新增运动编码器/ControlNet** |
+| [Wan-Dancer](./paper-wan-dancer.md) | 音乐 + 文本 + 参考形象 | 改条件与分层推理 | 同族 Wan-I2V 派生；面向分钟级编舞视频，非点轨迹运动刷 |
 | Kling 1.5 Pro Motion Brush（商用） | 交互点级运动刷 | 闭源 | 用户研究里 Wan-Move 运动可控性对标它，但**开源可复现** |
 | [Masked Visual Actions](./paper-masked-visual-actions.md) | 实体占据**掩码** | Wan2.2-Fun-Control | 掩码强调「物体占据」，Wan-Move 的**点轨迹**强调局部运动，二者是选型两端 |
 | [Ctrl-World](./paper-ctrl-world.md) | **低维动作** + 多视角 | 非 Wan 骨干 | 面向操纵策略评估沙盒；Wan-Move 面向通用运动刷、非闭环物理 |
@@ -188,6 +190,7 @@ sequenceDiagram
 ## 关联页面
 
 - [Wan](./paper-wan-video.md) — 开源视频基础模型上游
+- [Wan-Dancer](./paper-wan-dancer.md) — 同族 music-to-dance（分层分钟级）
 - [Masked Visual Actions](./paper-masked-visual-actions.md) — 机器人掩码条件；文中对照基线之一
 - [Ctrl-World](./paper-ctrl-world.md) — 低维动作多视角操纵 WM
 - [Generative World Models](../methods/generative-world-models.md) — 条件注入谱系

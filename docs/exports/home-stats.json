@@ -1,13 +1,66 @@
 {
   "generated_at": "2026-07-31",
-  "node_count": 2053,
-  "edge_count": 18391,
+  "node_count": 2054,
+  "edge_count": 18403,
   "coverage": {
-    "covered": 2003,
-    "total": 2029,
+    "covered": 2004,
+    "total": 2030,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-wan-dancer.md",
+      "detail_id": "entity-paper-wan-dancer",
+      "label": "Wan-Dancer（分钟级连贯 Music-to-Dance 视频生成）",
+      "type": "entity",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-wan-video.md",
+      "detail_id": "entity-paper-wan-video",
+      "label": "Wan（开源大规模视频生成基础模型）",
+      "type": "entity",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-wan-move.md",
+      "detail_id": "entity-paper-wan-move",
+      "label": "Wan-Move（潜空间轨迹引导的运动可控视频生成）",
+      "type": "entity",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/methods/generative-world-models.md",
+      "detail_id": "wiki-methods-generative-world-models",
+      "label": "Generative World Models (生成式世界模型)",
+      "type": "method",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/overview/hub-wbt.md",
+      "detail_id": "wiki-overview-hub-wbt",
+      "label": "全身运动跟踪 WBT（知识链汇总）",
+      "type": "overview",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "added"
+    },
     {
       "path": "wiki/entities/gemini-robotics.md",
       "detail_id": "entity-gemini-robotics",
@@ -153,66 +206,18 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "roadmap/depth-navigation.md",
-      "detail_id": "roadmap-depth-navigation",
-      "label": "路线（纵深）：如果目标是导航（SLAM → Nav2 → VLN → 导航 VLA）",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "roadmap/depth-perceptive-locomotion.md",
-      "detail_id": "roadmap-depth-perceptive-locomotion",
-      "label": "路线（纵深）：如果目标是感知越障（Perceptive Locomotion）",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "roadmap/depth-real2sim.md",
-      "detail_id": "roadmap-depth-real2sim",
-      "label": "路线（纵深）：如果目标是 Real2Sim（真实世界 → 可仿真资产/场景/孪生）",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "roadmap/depth-rl-locomotion.md",
-      "detail_id": "roadmap-depth-rl-locomotion",
-      "label": "路线（纵深）：如果目标是人形 RL 运动控制",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-safe-control.md",
-      "detail_id": "roadmap-depth-safe-control",
-      "label": "路线（纵深）：如果目标是安全控制（CLF / CBF / Safe RL）",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/gemini-robotics.md",
-    "detail_id": "entity-gemini-robotics",
-    "label": "Gemini Robotics",
+    "path": "wiki/entities/paper-wan-dancer.md",
+    "detail_id": "entity-paper-wan-dancer",
+    "label": "Wan-Dancer（分钟级连贯 Music-to-Dance 视频生成）",
     "type": "entity",
     "recency": "2026-07-31",
     "source": "log.md",
     "action": "maintained",
     "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "community_label": "生成式世界模型（Generative World Models） 社区"
   },
   "top_communities": [
     {
@@ -375,19 +380,19 @@
       "degree": 40
     },
     {
+      "detail_id": "entity-paper-masked-visual-actions",
+      "label": "Masked Visual Actions（统一世界建模的掩码视觉动作）",
+      "type": "entity",
+      "degree": 39,
+      "has_repo": true,
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
       "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",
       "label": "SD-AMP：统一走、跑与起身的对抗运动先验",
       "type": "entity",
       "degree": 39,
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "detail_id": "entity-paper-masked-visual-actions",
-      "label": "Masked Visual Actions（统一世界建模的掩码视觉动作）",
-      "type": "entity",
-      "degree": 38,
-      "has_repo": true,
-      "community_label": "生成式世界模型（Generative World Models） 社区"
     }
   ]
 }
