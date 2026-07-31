@@ -1862,6 +1862,7 @@
         </summary>
         <div class="filter-depth-chips" id="filter-depth-chips">
           <button class="filter-depth-chip is-active" type="button" data-depth="all" title="全量"><span>🌐</span><span>全量</span></button>
+          <button class="filter-depth-chip" type="button" data-depth="motion-control" title="主路线"><span>🧭</span><span>主路线</span></button>
           <button class="filter-depth-chip" type="button" data-depth="teleoperation" title="遥操作"><span>🎮</span><span>遥操作</span></button>
           <button class="filter-depth-chip" type="button" data-depth="torque-motor-design" title="力矩电机设计"><span>⚙️</span><span>力矩电机设计</span></button>
           <button class="filter-depth-chip" type="button" data-depth="classical-control" title="传统控制"><span>📐</span><span>传统控制</span></button>
@@ -2234,7 +2235,7 @@
       }
       if (topicIntroText) topicIntroText.textContent = meta.description || '';
       if (topicIntroLink && meta.wikiPath) {
-        topicIntroLink.href = 'detail.html?id=' + encodeURIComponent(toDetailId(meta.wikiPath));
+        topicIntroLink.href = pageUrlForPath(meta.wikiPath);
         topicIntroLink.hidden = false;
       } else if (topicIntroLink) {
         topicIntroLink.hidden = true;
