@@ -46,6 +46,14 @@ ORCA 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**ORCA 的标题本身就是一张取舍清单：开源、可靠、低成本、拟人四项并列，并用「Uninterrupted」把「灵巧任务学习不被硬件打断」写成了设计目标；但本页仍是待深读占位。**
+
+- 可确认信息：分类 12_Hardware_Design、arXiv 2504.04259、深读状态「待撰写」；本页对结构、驱动方式与成本数字均无任何记录。
+- 值得先记住的是定位而非性能：这是硬件设计条目，衡量它的标尺应是可复制性与可靠性，而不是策略层面的任务成功率。
+- 开源状态在本页仅由标题声明，没有仓库、BOM 或复现说明的链接；引用前必须回到 arXiv 原文，或等 PROGRESS.md 上的深读笔记落地。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)

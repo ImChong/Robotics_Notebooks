@@ -46,6 +46,14 @@ Robust Humanoid Walking on Compliant and Uneven Terrain with Deep RL 的人形�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是该论文的待深读占位节点：标题锁定的问题——柔顺且不平地形上的鲁棒行走——本库已认可其归属，但方法与证据尚未消化。**
+
+- 已确定的信息仅为分类 05_Locomotion 与 arXiv 2504.13619；「实验与评测」明确留空。
+- 柔顺地形（compliant）与不平地形（uneven）本是两类不同扰动，标题把它们并列，但本页没有依据说明论文如何区分处理，引用时不要替它下结论。
+- 当前用途是图谱占位与路由：上溯 [05_Locomotion 分类父节点](../overview/paper-notebook-category-05-locomotion.md) 与 [总索引](../overview/humanoid-paper-notebooks-index.md)，指标一律以 arXiv 原文为准。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

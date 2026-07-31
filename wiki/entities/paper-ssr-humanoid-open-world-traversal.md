@@ -5,6 +5,7 @@ status: complete
 updated: 2026-07-24
 arxiv: "2605.30770"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-01-locomotion-base.md
   - ../tasks/stair-obstacle-perceptive-locomotion.md

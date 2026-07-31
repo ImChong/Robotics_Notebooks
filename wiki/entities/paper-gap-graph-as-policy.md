@@ -164,6 +164,16 @@ flowchart TB
 - 工业洗箱：GaP **0.953** vs 专家手工图 **0.987**
 - **周期时间：** 仍低于 ~**7 s/instance** 工业标准；需减 VLM 调用、加速 IK/规划
 
+## 结论
+
+**GaP 的赌注是把策略表示换成可静态验证的计算图：LLM 只出现在编译期与排练期，运行期交给无 agent 的 edge 解释器 — 用图级可解释性换 VA 任务上的持久可靠。**
+
+- 消融说明 **结构本身是必要条件**，不是 prompt 技巧：去掉图或把多 agent 合并成单 LLM，成功率均为 **0%**。
+- 把可用性推上去的是 **仿真自学习排练**：节点前后状态 + 接触反馈定位失败节点再改拓扑/参数，Make Popcorn 从 **33% → sim 94% / real 90%**。
+- 与 VLA 是互补而非替代：图式 staging 让 π₀.₅ 在 Pack varied 上 **0.17 → 0.67**、MolmoAct2 在 mixed_all 上 **0.20 → 0.66**，角色是「用可解释图把 VLA 送进分布」。
+- 差距与边界仍明确：benchmark 以 **准静态 pick-and-place** 为主、力控与可变形体覆盖少；工业洗箱 **0.953** 仍略低于专家手工图 **0.987**；周期时间尚未达 **~7 s/instance** 的工业标准；Beta 代码的 API/schema 短期可能变动。
+- 选型对照：**CaP** 是自由 Python、[ASPIRE](../methods/aspire.md) 优化程序 + 技能库进化、GaP 是 ROS 式图 + 仿真排练 — 判断依据是任务是否落在 [变体自动化](../concepts/variational-automation.md) 的 VA 假设内。
+
 ## 常见误区
 
 - **误区 1：「GaP 是又一个 VLA。」** GaP 主策略是 **计算图**；VLA 出现在 **MORSL 原语** 与 **staging 末端**，角色是 **补泛化** 而非核心表示。

@@ -47,6 +47,14 @@ PyRoki 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页目前是占位实体而非内容实体：PyRoki 已进入 Paper Notebooks 待深读清单，但页面尚未承载任何机制级归纳。**
+
+- 现阶段可确认的只有策展元数据：分类 04_Loco-Manipulation_and_WBC、深读笔记待撰写、计划文件夹已预留。
+- 页面的作用是保持知识图谱完整，让分类父节点与总索引不至于缺失该论文实体。
+- 这是一篇工具箱型工作（模块化的机器人运动学优化），其真正价值取决于 API 与求解器细节——恰恰是本页尚未展开的部分，须等深读笔记完成后再引用。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

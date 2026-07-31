@@ -46,6 +46,14 @@ Is imitation learning the route to humanoid robots? 的人形机器人学习论�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页记录的是一个尚未展开的路线之问——模仿学习是否是通往人形机器人的路径；页面当前只提供占位，不提供答案。**
+
+- 归入 06_Manipulation，说明这一追问在本库中被放在操作能力的语境下考察。
+- 本页作用是保持知识图谱完整，避免该论文实体缺失。
+- 深读笔记尚未撰写，关于该问题的任何结论都不应从本页引用，论证与量化待笔记补充。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-06-manipulation](../overview/paper-notebook-category-06-manipulation.md)

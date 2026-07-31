@@ -6,6 +6,7 @@ updated: 2026-07-01
 arxiv: "2606.31494"
 venue: "arXiv 2026"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/manipulation.md
   - ../concepts/impedance-control.md
   - ../concepts/domain-randomization.md
@@ -102,6 +103,16 @@ flowchart TB
 - **经验：** Eq. (8) 期望目标满足概率 → 多 trial 成功率；阶段式子目标；任务语义 rubric。
 - **解析：** 抓取质量（力/形 closure、拓扑 caging）；裕度 $\mathrm{dist}(x,\partial\mathcal{G})$ 与 safety tube；STL 鲁棒性分数；动力学收敛特征值。
 - **缺口：** 仿真 benchmark 任务分布窄、sim2real 受限；真机 benchmark 在多样性/规模/一致性间权衡；**显式 robustness 轴** 仍稀缺。
+
+## 结论
+
+**这篇综述真正的贡献不是罗列鲁棒机制，而是给「鲁棒」一词定坐标：任何鲁棒性主张都必须同时说清目标、挑战、机制与评测四要素，否则无法比较。**
+
+- 组织骨架是 **两轴原则**——不确定性与变异的「减少 vs 容忍」× 失败的「预防 vs 恢复/局部容忍」；它把 closure 抓取、柔顺控制、域随机化、DAgger 这些异质方法对齐到同一坐标系，实践准则是 **能减则减、不能减则容**，两轴并不互斥。
+- 形式化给出 **概率视角（POMDP，belief 上的期望回报）与鲁棒控制视角（有界扰动集 min-max）** 双读法，对应工程上「平均可靠」与「最坏情况约束满足」两种截然不同的验收口径——口径选错比算法选错更致命。
+- 最尖锐的缺口在评测：经验成功率与解析度量（力/形 closure、裕度与 safety tube、STL、收敛特征值）各自成立，但现有 benchmark 几乎没有 **显式的 robustness 轴**，仿真任务分布窄、真机在多样性与规模间被迫取舍。
+- 适用边界由论文自己划出：**鲁棒性 ≠ 泛化 ≠ 安全**——VLA 可能泛化强却对微小接触扰动脆弱；照搬泛化 benchmark 的结论会系统性高估可靠性。
+- 对未来的判断落在 **know-how（数据经验）与 know-why（模型/先验）融合** 与硬件–控制共设计，而非单押学习或单押模型；按模块深入可从 [Manipulation](../tasks/manipulation.md)、[Impedance Control](../concepts/impedance-control.md)、[Domain Randomization](../concepts/domain-randomization.md) 进入。
 
 ## 常见误区
 

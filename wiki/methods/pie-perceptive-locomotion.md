@@ -5,6 +5,7 @@ status: complete
 updated: 2026-07-14
 summary: "PIE（Parkour with Implicit-Explicit Learning）单阶段端到端 RL：深度图+本体经多头估计器输出显式高度图/速度/足端离地量与隐式环境表征，实现低成本四足挑战地形零样本跑酷。"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ./dreamwaq.md
   - ../entities/dreamwaq-plus.md
   - ../entities/extreme-parkour.md

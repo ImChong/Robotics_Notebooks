@@ -47,6 +47,14 @@ JAEGER 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**JAEGER（Dual-Level Humanoid Whole-Body Controller）在本库作为「双层全身控制器」方向的占位节点存在，双层究竟如何切分尚无页面依据。**
+
+- 标题给出的唯一机制线索是 **dual-level** 结构，分类为 04_Loco-Manipulation_and_WBC，属 WBC 主线。
+- 页面无核心机制与实验区块，任何关于其效果的判断都应等深读笔记完成后再下。
+- 深读进度追踪指向 **progress.json** 而非 PROGRESS.md，后续 ingest 时注意来源差异。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

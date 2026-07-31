@@ -128,6 +128,17 @@ flowchart TB
 - †BONES 随机子集可能与 SONIC 训练集重叠；Ours 为跨源未见动作，更能体现 **异质数据 scaling** 价值。
 - 基线还包括 GMT、TWIST；全面落后于本文 BFM-Global。
 
+## 结论
+
+**ScaleBFM 的主张不是「人形控制器越大越好」，而是 motion tracking 可以当作可扩展的预训练代理任务——前提是奖励在全局坐标系下整体跟踪，且 on-policy 数据量与参考运动多样性沿两条独立的轴一起扩。**
+
+- 真正起作用的机制是 **integrated global whole-body tracking**：相对 BeyondMimic 式 reward（BFM-Bym 消融）与根–姿态解耦惯例，它在 BONES / Ours 双测试集上一致降低 G-MPKPE（相对 SONIC 约 54% / 82%），说明「行为语义」与「全身协调」要在同一个奖励里学。
+- 数据扩展分两种 regime：**同质扩展**（域内 occupancy 已 ~0.94）只有边际收益，**异质扩展**（S→L，occupancy→0.9995）才在跨源未见动作的 Ours Test 上大幅提升；on-policy 侧则需 GPU width 与 rollout horizon **联合扩维**，单扩一维不稳定。
+- 架构确实 matters，但不是单调「越大越好」：3M 参数的 Humanoid Transformer 已优于显著更大的 MLP，继续放大则出现 **跨控制模式的 trade-off**，与共享 RMSNorm 超球面潜空间的模式收敛直接相关。
+- 适用边界在部署侧：**Global 模式依赖外部根定位**（VIVE Ultimate Tracker），换到无全局定位的 Local 模式后 whole-body Succ 掉到 0.73；读表必须把指标绑定「模式 + G-/L-MPKPE 口径」，否则容易得出相反结论。
+- 工程与开源：训练在 IsaacLab、评测走 MuJoCo sim-to-sim，真机为 [Unitree G1](./unitree-g1.md) 50 Hz BFM + 200 Hz PD；截至 2026-07-18 **代码待发布**，属部分开源，勿假设可即刻复现。
+- 定位上它与 [BFM（CVAE）](./paper-behavior-foundation-model-humanoid.md) 是互补路线而非 v2，相对 [SONIC](../methods/sonic-motion-tracking.md) 的增量在于把 scaling 拆成可分别度量的三轴，而 [ReactiveBFM](./paper-reactivebfm.md) 在这层基座上叠高层闭环规划。
+
 ## 与其他工作的关系
 
 - **[BFM（CVAE，arXiv:2509.13780）](./paper-behavior-foundation-model-humanoid.md)**：同作者团队、同「掩码多接口」哲学，但 ScaleBFM 走 **PPO + Transformer + 全局 tracking scaling 实证**，BFM 走 **CVAE 在线蒸馏**；二者是 **互补技术路线** 而非同一模型的 v2。

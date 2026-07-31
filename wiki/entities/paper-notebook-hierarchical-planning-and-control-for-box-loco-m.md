@@ -46,6 +46,14 @@ Hierarchical Planning and Control for Box Loco-Manipulation 的人形机器人�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本条目被本库归到「物理动画」而不是控制或 loco-manipulation 分类，这本身就是理解它取向的最强线索；页面目前仍是占位。**
+
+- 分类落在 **13_Physics-Based_Animation**，提示应把它与偏真机落地的 loco-manipulation 条目区分开来读。
+- 页面无核心机制与实验区块：分层结构如何切分规划与控制、箱体搬运如何评测，都待笔记补齐。
+- 现阶段用途限于图谱占位，以及从分类父节点与总索引做交叉检索。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)

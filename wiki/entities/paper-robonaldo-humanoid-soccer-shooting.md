@@ -20,6 +20,7 @@ updated: 2026-07-28
 arxiv: "2606.11092"
 code: https://github.com/OpenDriveLab/RoboNaldo
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/humanoid-soccer.md
   - ../methods/paid-framework.md
   - ../methods/beyondmimic.md

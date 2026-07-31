@@ -59,6 +59,14 @@ SafeFlow 先从本体状态与关节序列恢复场景、目标或运动表征�
 - 评测原始出处：[原文 / 项目页](https://hanbyelcho.info/safeflow/)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-04-generative-language-trajectory.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**SafeFlow 的取舍是「实时优先，安全内置」：文本驱动的全身动作用 rectified flow 快速采样，物理引导与选择性安全门控被做进生成链路本身，而不是事后再修。**
+
+- 关键机制是条件生成：在多模态动作分布中采样可执行的全身轨迹，再与全身控制器/WBC/MPC、分层技能或专家策略串起来下发。
+- 标题里的两个限定词才是重点——physics-guided 保证生成不脱离物理，selective gating 只在需要时介入，二者共同服务于实时性。
+- 边界：本条目为索引级摘录，实时性、安全率等评测口径以 <https://hanbyelcho.info/safeflow/> 为准；横向定位见 [分类 hub](../overview/loco-manip-161-category-04-generative-language-trajectory.md)。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

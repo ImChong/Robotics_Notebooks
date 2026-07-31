@@ -59,6 +59,15 @@ sources:
 - 评测原始出处：[原文 / 项目页](（见原文）)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-03-visuomotor.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**这条目在 161 篇地图里占的是「视觉条件下的动作生成」坐标：把观测到动作的映射当成条件生成问题，而不是把感知与控制拆成两段各自为政的模块。**
+
+- 真正起作用的是条件生成式动作头——扩散策略/流匹配在多模态动作分布里采样，再由 ACT/行为克隆与 WBC/MPC 落成可执行命令。
+- 观测侧同时用到图像/多视角、本体状态与关节序列、接触力/触觉，意味着它假定了较完整的传感配置；只有单目 RGB 的平台不能照搬这条链路。
+- 本页「论文/项目」一栏为「（见原文）」，没有公开项目页入口，想复现须先定位原文 PDF。
+- 索引级摘录不含量化 benchmark 与实机指标，横向对照请回 [分类 hub](../overview/loco-manip-161-category-03-visuomotor.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

@@ -46,6 +46,14 @@ MASH 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**标题里的张力就是这条目当前的全部看点：多智能体 RL 被用在「单个」人形机器人的行走上；但本页处于待深读，说不清这种拆分具体怎么做。**
+
+- 可确认信息：分类 05_Locomotion、arXiv 2508.10423、深读状态「待撰写」；机制线索仅为「合作-异构的多智能体 RL 用于单人形 locomotion」。
+- 本页无法回答的关键问题恰恰是最要紧的几个：智能体如何划分、「异构」体现在哪里、协作信号怎么设计——这些都要等深读笔记或原文。
+- 因此当前正当用途只有占位与交叉检索，挂在 [paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md) 之下；量化 benchmark 与实机指标一律待补。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

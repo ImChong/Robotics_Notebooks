@@ -47,6 +47,15 @@ GBC 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**GBC 在本库当前只是「占位索引」而非结论性笔记：它标记了一个待深读的全身人形模仿行为克隆框架，真正的机制与数字尚未进入知识图谱。**
+
+- 本页的价值在图谱完整性——让 04_Loco-Manipulation_and_WBC 分类下不缺这一实体，而不是提供可引用的技术判断。
+- 从标题可读出的定位是「面向全身人形模仿的通用行为克隆框架」，落在 loco-manipulation 与 WBC 这条脉络内。
+- 适用边界很明确：量化 benchmark、消融与实机指标本页一概不提供，需以 progress.json 与后续深读笔记为准。
+- 深读笔记完成前，不宜把本页当作方法对比的依据引用。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

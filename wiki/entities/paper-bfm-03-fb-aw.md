@@ -60,6 +60,14 @@ sources:
 
 与单技能 motion tracking 对照：BFM 关心 **覆盖面与可组合性**，不只单一参考跟踪成功率。
 
+## 结论
+
+**FB-AW 的主张是 BFM 的瓶颈在潜空间的「粒度」：只有足够细的 forward-backward 表征，上层才能精确调用身体；粗表征限制的不是覆盖面而是可控性。**
+
+- 起作用的是 FB / successor 结构把异构任务压进同一身体潜空间，上层用 **目标姿态、奖励向量或 latent prompt** 检索与组合行为，而不是为每个技能单独训策略。
+- 评价维度与单技能 motion tracking 不同：BFM 关心 **覆盖面与可组合性**，用「单条参考跟得多准」去衡量它会得出错误结论。
+- 本页是索引级坐标（awesome-bfm #03/41，**01 Forward-backward 表征**，2024 · arXiv）；连续控制 benchmark 的具体数值、消融与实机指标需回原文 PDF 与 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 的实验段落。
+
 ## 常见误区
 
 1. BFM-Zero 类工作不是「更大动作数据集」本身，而是 **潜空间可被 prompt 检索** 的身体接口。

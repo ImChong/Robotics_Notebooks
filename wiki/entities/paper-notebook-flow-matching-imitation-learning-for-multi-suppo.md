@@ -46,6 +46,14 @@ Flow Matching Imitation Learning for Multi-Support Manipulation 的人形机器�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页目前只能支撑一个结论：这是一条已进入 14_Human_Motion 深读队列、但尚未产出笔记的条目，它现在的价值是图谱可达性，而不是内容。**
+
+- 页面能确证的信息仅限分类（14_Human_Motion）、arXiv 编号与计划文件夹路径；flow matching 如何用于多支撑操作、相对扩散策略的取舍如何，本页均无依据。
+- 因此本页 **不可作为技术判断依据**：机制与指标应回到论文原文，或等 PROGRESS.md 追踪的深读笔记完成后再引用。
+- 定位是 **占位子节点**，保证知识图谱不缺该实体；笔记完成后应升格为完整索引实体，并重写本节为面向内容的结论。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)

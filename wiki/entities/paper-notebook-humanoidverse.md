@@ -47,6 +47,14 @@ HumanoidVerse 的人形机器人学习论文条目，当前处于 Paper Notebook
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页当前是占位实体而非论文归纳：它只保证 HumanoidVerse 这条条目在图谱中有节点，实质结论要等深读笔记。**
+
+- 页面现状：status 为 planned，正文只有分类归属与 progress.json 待深读状态，没有可供提炼的机制、指标或实验内容。
+- 从标题能读出的定位仅限于「视觉-语言引导的多物体重排 + 通用人形」，归入 04_Loco-Manipulation_and_WBC；语言接口如何与全身控制衔接、评测在仿真还是真机，本页均无依据。
+- 使用方式：把本页当检索入口——分类父节点 [paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md) 与 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)；要读实质内容请直接走原文。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

@@ -59,6 +59,14 @@ AMO 把本体状态与关节序列、仿真交互数据、接触力/触觉信号
 - 评测原始出处：[原文 / 项目页](https://amo-humanoid.github.io/)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-08-hardware-deployment.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**AMO 的关键顺序是「先把目标做成可跟踪的身体指令，再谈学策略」：把本体状态、仿真交互与接触力/触觉统一成身体目标，让 RL、行为克隆与 WBC/MPC 在同一套目标表示上协作。**
+
+- 真正起作用的是目标表示加动作 chunk：示范被压成可监督的动作预测问题，再靠动作 chunk 或闭环执行压住时序抖动。
+- 训练栈是混合的（PPO/RL + ACT/行为克隆 + 全身控制器/WBC/MPC），调试面比单一端到端策略大，但也更容易在某一层单独替换。
+- 边界：归入 08 类（[硬件平台、感知配置与部署扩展](../overview/loco-manip-161-category-08-hardware-deployment.md)），本页为索引级摘录，hyper-dexterous 全身控制的量化口径以 <https://amo-humanoid.github.io/> 为准。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

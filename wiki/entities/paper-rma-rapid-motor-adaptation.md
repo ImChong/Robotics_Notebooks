@@ -127,6 +127,17 @@ flowchart TB
 | [vision_locomotion](https://github.com/antonilo/vision_locomotion) | 同作者 **真机视觉** 部署栈（与本文代码分工） |
 | Isaac / legged_gym 生态 | 后续 Extreme Parkour 等走 **Isaac Gym** 栈，但 **ROA / 历史估计** 思路同源 |
 
+## 结论
+
+**RMA 的核心主张是「不必辨识物理参数」：只需回归一个能让策略做对动作的低维 extrinsics，就把 sim2real 适应从分钟级真机采样压到亚秒级历史推断。**
+
+- 起作用的是两阶段特权蒸馏的分工：17 维特权 $e_t$ 经 $\mu$ 压成 8 维 $z_t$ 与 $\pi$ 联合 PPO；$\phi$ 再从约 0.5 s（k=50）本体–动作历史回归 $\hat{z}_t$，且**不要求与真值物理参数一一对应**。
+- 最容易被抄错的一步是 $\phi$ 必须 **on-policy** 训练：只用专家 $\pi(\mu(e_t))$ 轨迹会对部署偏差脆弱，需用随机初始化 $\phi$ 的 rollout 迭代到收敛（DAgger 精神）。
+- 与域随机化的关系是分工而非替代：DR 负责覆盖训练分布，$\phi$ 负责在分布内/边界快速插值——这正是它不必像纯保守 DR 那样用最优性换鲁棒的原因。
+- 适用边界写在实验里：A1 级四足、前进速度上限 0.35 m/s、无参考轨迹与足端生成器；消融显示 w/o adaptation 在变形地面与重载荷下明显更差（完整 RMA 可背 **~12 kg**，无适应约 **8 kg** 即难前进）。
+- 工程可部署性来自 **10/100 Hz 异步双频 + 零微调**，适配 onboard 算力；复现走 RaiSim 的 [antonilo/rl_locomotion](https://github.com/antonilo/rl_locomotion)，与后续 Isaac Gym 生态不同栈但同源。
+- 作为母题它已被继承：[Extreme Parkour](./extreme-parkour.md) 的 ROA 与深度蒸馏、CMS 的视觉扩展都建立在「历史估计 extrinsics」这一结构上。
+
 ## 与其他工作对比
 
 | 工作 | 与 RMA 的差异 |

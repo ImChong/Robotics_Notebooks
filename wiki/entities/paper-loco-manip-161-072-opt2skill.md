@@ -59,6 +59,15 @@ Opt2Skill 先从相机图像/多视角观测、仿真交互数据、接触力/�
 - 评测原始出处：[原文 / 项目页](https://opt2skill.github.io)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-03-visuomotor.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**Opt2Skill 的关键词是 dynamically-feasible：先拿到动力学可行的全身轨迹，再让策略去模仿它，而不是让策略从零探索接触。**
+
+- 起作用的是「可行轨迹先行」：IK/动作重定向产出关节位置/力矩命令与全身轨迹，ACT/行为克隆与 PPO/RL 在其上模仿与微调，学习负担被前移到轨迹侧。
+- 输入侧显式包含 **接触力/触觉信号**，说明它面向接触丰富的 loco-manipulation，而不是只靠视觉闭环的抓放任务。
+- versatile 来自组合而非单一大策略：任务被拆成可路由的技能或专家策略，由高层在执行中选择与组合。
+- 本页为 161 篇 **#072/161** 索引级摘录，量化 benchmark 与实机指标以 [原文 / 项目页](https://opt2skill.github.io) 为准。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

@@ -47,6 +47,14 @@ Sim-to-Real Learning for Humanoid Box Loco-Manipulation 的人形机器人学习
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是这篇搬箱子 loco-manipulation 工作的占位子节点：它在图谱里确定了归属与待深读状态，Sim2Real 的具体做法与代价仍待笔记补齐。**
+
+- 页面上唯一确定的信息是归类与计划路径：分类 04_Loco-Manipulation_and_WBC、计划文件夹 `papers/04_Loco-Manipulation_and_WBC/Sim-to-Real_Learning_for_Humanoid_Box_Loco-Manipulation`，深读状态仍为「待撰写」。
+- 适用边界：可用于分类检索与交叉链接，不可当作方法或指标依据——本页未给出训练设置、迁移手段与任何量化结果。
+- 主要风险是被误当成已消化的笔记：本页「实验与评测」已明确 benchmark、消融与实机指标待补，引用前应回到 progress.json 与原论文。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

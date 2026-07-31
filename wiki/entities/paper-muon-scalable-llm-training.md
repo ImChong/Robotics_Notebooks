@@ -104,6 +104,16 @@ flowchart TD
 | 规模化 | 成熟基线 | 需 WD + per-param scale |
 | 效率 | 基线 | ~2× FLOPs 效率（scaling law） |
 
+## 结论
+
+**这篇论文的贡献不是提出 Muon，而是证明它在 Billion 规模上「开箱可训」：两个工程约束——解耦 Weight Decay 与 per-parameter update scale——把一个博客级优化器推进了 LLM 预训练主线。**
+
+- 真正起作用的是配置而非算法变体：解耦 WD 是大模型稳定的必要条件，按参数形状调节步长则把超参搜索成本压了下来。
+- 效率结论有明确口径——compute-optimal 训练下相对 [AdamW](../methods/adamw.md) 约 **2×** FLOPs 效率，由 scaling law 与 Moonlight 3B/16B MoE（5.7T tokens）双线支撑。
+- 适用边界：Muon 主要覆盖 2D 隐藏层参数，其余仍与 AdamW 混用，不是全参数替换方案。
+- 工程落地完整：分布式 Muon 实现（内存最优、通信高效）与预训练 / 指令微调 / 中间 checkpoint 一并开源，这是它影响力大于同期理论工作的直接原因。
+- 归属需要说清：算法首发是 Keller Jordan 的博客，本文是规模化验证，引用时不应把两者混为一谈。
+
 ## 关联页面
 
 - [Muon（方法页）](../methods/muon.md)

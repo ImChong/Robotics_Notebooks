@@ -46,6 +46,14 @@ Multi-task Deep Reinforcement Learning with PopArt 的人形机器人学习论�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**这条目的信息量集中在归类本身：一篇多任务深度强化学习的方法论文被挂在 13_Physics-Based_Animation 之下，本库是把它当作该方向的上游方法参考来占位的。**
+
+- 可确认的只有分类 13_Physics-Based_Animation、arXiv 1809.04474、深读状态「待撰写」；标题之外本页没有任何机制描述。
+- 它与本库多数条目的性质不同：这是训练方法层面的工作，而非某个具体的人形控制系统，读它的价值在于方法迁移而不是照搬结论。
+- 本页「实验与评测」已声明量化与实机指标待笔记补充，因此当前只应作为 [humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md) 下的检索入口使用。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)

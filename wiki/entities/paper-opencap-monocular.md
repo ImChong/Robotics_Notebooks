@@ -126,6 +126,16 @@ flowchart TB
 
 > **选型提示：** 若目标是 **人形策略训练参考轨迹**，优先 [GVHMR](./gvhmr.md) + [GMR](../methods/motion-retargeting-gmr.md)。若需要 **带动力学标注的人体运动**（力矩/GRF）或 **临床可比指标**，OpenCap Monocular 更合适。
 
+## 结论
+
+**OpenCap Monocular 真正卖的不是单目姿态估计，而是 WHAM 之后补上的那层物理约束优化 + OpenSim：它把一台手机推到「临床可比的动力学指标」，代价是必须接受静态机位与已验证活动类型这组强前提。**
+
+- 起作用的是优化层而非视觉骨干：相对「CV + OpenSim IK」基线，旋转精度 +48%、平移 +69%，改善的正是纯回归残留的脚滑、穿地与平移漂移。
+- 值得看的指标在动力学侧：坐站膝伸展力矩误差低于 ~11 Nm 衰弱阈值、行走膝内收力矩低于 ~0.5% BW·ht、行走 GRF 可达双相机 OpenCap 水准——这才是它区别于纯 SMPL 世界轨迹类上游的地方。
+- 适用边界很硬：相机需静止、被试 <5 m 且全程全身入画、身高须录入、iOS 内参依赖机型数据库；已验证行走/深蹲/坐站，跳跃当前不可靠，宽松衣物与强阴影是已知失败诱因。
+- 不要把它当人形策略的重定向上游：输出是 OpenSim 骨架的关节角与力矩，与机器人 DoF/接触模型不同，上机器人仍需 [Motion Retargeting](../concepts/motion-retargeting.md)；训练参考轨迹优先 [GVHMR](./gvhmr.md) + [GMR](../methods/motion-retargeting-gmr.md)。
+- 工程可用性是它的另一半价值：云端 <2 分钟出运动学、代码开源，`.trc`/`.mot` 可作 [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) 的生物力学约束运动学源（需额外坐标/骨架映射）。
+
 ## 常见误区
 
 1. **= 单目 WHAM：** WHAM 只是初始化；价值在 **全序列物理优化 + OpenSim + 动力学**。

@@ -59,6 +59,14 @@ sources:
 - 评测原始出处：[原文 / 项目页](https://humanoid-manipulation.github.io)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-03-visuomotor.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**这条目在 161 篇地图上的坐标是「用 3D 扩散策略打通人形操作的数据闭环」——本页给的是定位与方法族，不是可复现的实验结论。**
+
+- 真正被归纳出来的机制是把动作生成当条件生成：相机图像/多视角观测、遥操作/外骨骼数据、深度/点云/高度图构成输入，经 ACT/行为克隆、扩散策略/流匹配与分层技能/专家策略，在多模态动作分布里采样可执行轨迹。
+- 适用边界在 **03 视觉感知驱动的人形移动操作** 这一格：它回答「感知到动作怎么生成」，不自动解决底层 WBC 鲁棒性，须与运控/接触控制条目对照。
+- 主要使用风险是溯源：本页未搬运原文量化 benchmark 与实机指标，任何数值需回 [原文 / 项目页](https://humanoid-manipulation.github.io) 核对，横向对照走 [分类 hub](../overview/loco-manip-161-category-03-visuomotor.md)。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

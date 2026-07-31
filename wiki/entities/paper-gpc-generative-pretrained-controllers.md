@@ -119,6 +119,16 @@ flowchart TB
 - **相对 [BFM](./paper-behavior-foundation-model-humanoid.md) / [ReactiveBFM](./paper-reactivebfm.md)：** BFM 系解决 **人形多接口跟踪 + 真机闭环规划**；GPC 解决 **仿真角色技能库上的生成式预训练与 token 微调**——二者可组合想象为「GPC 式离散技能先验 + BFM 式执行器」，但 **本文未做人形机器人实验**。
 - **工程底座：** 训练与评估基于 **Isaac Gym + [ProtoMotions](./protomotions.md)**；主数据 **BONES-SEED**，对照 **AMASS** 子集。
 
+## 结论
+
+**GPC 说明「预训练 + 微调」范式可以搬到物理可执行的运动控制上，但前提是词表由端到端 RL 学出来——离散 token 的价值不在压缩序列，而在每个 token 都对应可物理执行的技能。**
+
+- 最能定位关键机制的是 FSQ-K 消融：把 encoder 换成运动学监督后冻结，MPJPE 从 **34.90 mm** 劣化到 **78.26 mm**——真正起作用的是 **端到端 RL 学词表**，而非量化器本身。
+- FSQ 相对 VQ-VAE 的收益更多是工程性的：省掉 dead-code 重初始化等 codebook 启发式，同时跟踪成功率（**99.98%**）与 MPJPE 更优；grouped token 的 $G$ 则是 **多样性 vs FPS** 的显式旋钮（$G{=}4$ → 约 **115 FPS**）。
+- 行为侧的实际差异在于 **多样性没有被微调掉**：涌现的侧手翻/前滚起身无专门恢复奖励，CoLA（**<1%** 新参）适配后仍保留同任务多次 rollout 的随机性与扰动鲁棒性。
+- 边界必须说死：对象是 **物理仿真角色**、**无语言接口**、下游只覆盖 locomotion 与场景几何（转向/轨迹/障碍/平台），**不含抓取与人–物交互**，与真机 WBC 结果不可直接类比。
+- 与 [SONIC](../methods/sonic-motion-tracking.md) / [BFM](./paper-behavior-foundation-model-humanoid.md) 的分工是「**仿真动画生成式先验 vs 机器人部署执行器**」；两者组合可以想象，但本文未做人形机器人实验。
+
 ## 常见误区或局限
 
 - **不是人形机器人真机论文：** 角色为 **物理仿真人体**；与 Unitree G1 等 **真机 WBC** 结果不可直接类比。

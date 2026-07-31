@@ -134,6 +134,16 @@ flowchart TB
 - **复现入口：** 以 `physical-superintelligence-lab/SIMPLE` README 为准；底层依赖 AMO/SONIC 全身 tracking 与 Isaac Sim 渲染栈。
 - **与 Ψ₀ 关系：** SIMPLE 由同一 PSI Lab 维护，benchmark 表将 **Ψ₀** 作为强基线；Ψ₀ 模型细节见 [Psi0（161 #156）](./paper-loco-manip-161-156-psi0.md)。
 
+## 结论
+
+**SIMPLE 卖的不是策略而是地基：MuJoCo 管接触物理、Isaac Sim 管光追渲染，把人形 loco-manipulation 的评测、采集与训练收进同一栈。**
+
+- 决定它有没有工程价值的指标是 **sim↔real 排序相关性**（9 策略 × 6 任务族上仿真成功率排序与真机强相关），而不是某个任务的绝对成功率——「先在 SIMPLE 里筛 checkpoint」正是靠这一条成立。
+- 它同时是数据源而非只是尺子：仅用仿真数据微调的单一策略 Pick & Place **0.90→0.80**、Handover **1.00→0.80**，无真机 fine-tune。
+- 采集侧结论直接：仿真内 VR 遥操作 **310 demos/hr** 对运动规划 **59 demos/hr**，且 teleop-only 训练平均 **7.56/10** 优于 MP-only **5.00/10**——自动化管线便宜但替代不了人类演示。
+- 边界在 L2 与底层运控：GR00T N1.6、InternVLA 在 Mobile P&P 等高动态任务 L2 骤降；所有策略仍依赖 AMO/SONIC tracking，换运控栈或 embodiment 需重新标定。
+- 工程状态是它相对多数 161 条目的优势：代码已开源、OOD 评测场景托管在 HF；与同 lab 的 [Psi0](./paper-loco-manip-161-156-psi0.md) 是「基准与被测强基线」的关系，引用时注意 161 策展初稿曾把它误述为 VLA + 世界模型。
+
 ## 常见误区
 
 1. **SIMPLE 不是 VLA 论文**——它是 **仿真 benchmark + 数据/评测基础设施**；VLA/WAM 是被评测的对象。

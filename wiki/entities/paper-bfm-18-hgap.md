@@ -62,6 +62,14 @@ generalist planner 管理低层人形控制；BFM 进入系统后的分层问题
 
 在 BFM taxonomy 中回答「身体能覆盖多少目标条件技能」。
 
+## 结论
+
+**H-GAP 关心的不是身体能做什么，而是「基座进入系统之后谁来指挥」：用 generalist planner 管理低层人形控制的分层问题。**
+
+- 归位在 **02 Goal-conditioned 学习**（#18/41）：以 goal / reference / command 条件化全身策略，扩展人形可执行动作库。
+- 分层视角下瓶颈仍在底层——抗扰、恢复与跨参考泛化决定上层规划器能不能稳定使唤这具身体。
+- 代码公开（<https://github.com/facebookresearch/hgap>），但本页只保留 survey 坐标与机制归纳，实验与消融请回原文。
+
 ## 常见误区
 
 1. Goal-conditioned 跟踪不等于 unlimited skills：仍受数据分布、接触建模与实机 Sim2Real 约束。

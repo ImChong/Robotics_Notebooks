@@ -46,6 +46,14 @@ A Gait Driven RL Framework for Humanoid Robots 的人形机器人学习论文条
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页当前是知识图谱里的占位节点，而不是对这篇工作的评价——它的作用是先把实体挂上分类树，等深读笔记落地后再升格为完整索引实体。**
+
+- 现状：列入 Paper Notebooks 的 **PROGRESS.md 待深读** 清单，分类 05_Locomotion，深读笔记尚未撰写。
+- 因此本页 **不含任何量化结论**：benchmark、消融与实机指标要等笔记完成后补充，不要据此判断方法优劣。
+- 可用之处只有检索：经 [分类父节点](../overview/paper-notebook-category-05-locomotion.md) 与 [总索引](../overview/humanoid-paper-notebooks-index.md) 交叉定位，原文入口为 arXiv 2506.08416。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

@@ -15,6 +15,7 @@ updated: 2026-07-02
 arxiv: "2503.01783"
 venue: "IEEE RA-L 2026"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../entities/orb-slam3.md
   - ../overview/navigation-slam-autonomy-stack.md
   - ../comparisons/lidar-slam-lio-vio-selection.md
@@ -112,6 +113,17 @@ flowchart TB
 | 传感器 | 单/双/ RGB-D + IMU | 多模态 | LiDAR | **RGB-D** |
 | 布局实体 | 无 | 房间等 | 墙/房间/楼层 | **墙/地面/房间/楼层** |
 | 标记依赖 | 无 | 无 | 无 | **无（ArUco 可选）** |
+
+## 结论
+
+**vS-Graphs 的关键动作不是「给 SLAM 加一层语义可视化」，而是把墙/地面与房间/楼层作为可优化节点写进 BA——语义因此反向收紧位姿，代价是让出约四分之一的实时余量。**
+
+- 真正起作用的是 **结构约束进 Local/Global BA**：全库平均 ATE 改善 **15.22%**，且增益集中在多房间与回环序列（MR 序列 9.39–16.47%，个别如 deer-w 达 75.38%）；分割骨干（pFCN vs YOSO）只是边际项。
+- 精度不是靠更稠密的地图换来的：AutoSense 上点云规模约 **−10.15%**，中位 RMSE 反而更低——收益来源是几何/布局约束，而非重建量。
+- 适用边界是 **平面化室内布局**：曲面墙、复杂凹房间超出当前建模；低纹理走廊、快速运动与噪声深度会先破坏分割与 RANSAC 平面拟合，再传导到房间/楼层推断。
+- 代价与依赖要说清：帧率 **22±3 FPS**（基线 29±3），ArUco 仅用于房间/走廊命名，**不是定位必需**，不应被当成部署前提。
+- 与 Hydra / HOV-SG 对照，本页的差别在「在线且可优化」而非「构图更强」；与 **LiDAR S-Graphs** 对照，RGB-D 已能把墙/房间检测做到精度 0.86–0.96、召回 0.92–1.00 的接近水平。
+- 工程侧开源且基于成熟 [ORB-SLAM3](./orb-slam3.md)，但 ROS 2 / Nav2 对接与坐标系对齐需自行完成（见 [导航栈总览](../overview/navigation-slam-autonomy-stack.md)）。
 
 ## 常见误区或局限
 

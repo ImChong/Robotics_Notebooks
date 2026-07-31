@@ -47,6 +47,14 @@ Learning Gentle Humanoid Locomotion and End-Effector Stabilization Control 的�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页当前的定位是知识图谱里的占位子节点，而不是一份可引用的论文归纳：它的价值在于「不缺这个节点」，不在于「已经读懂这篇工作」。**
+
+- 该条目已进入 Paper Notebooks 的 progress 待深读清单，归在 04_Loco-Manipulation_and_WBC 分类下，可与总索引及分类父节点交叉检索。
+- 深读笔记尚未撰写，本页因此没有任何机制描述、量化 benchmark 或实机指标；引用时不要把它当作结论来源。
+- 后续动作明确：笔记在计划文件夹落地后，本页应链向笔记站并升格为完整索引实体。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

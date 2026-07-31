@@ -46,6 +46,14 @@ Sim-to-Real Reinforcement Learning for Vision-Based Dexterous Manipulation on Hu
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是该 sim-to-real 灵巧操作工作的待深读占位节点：标题把三个约束叠在一起——人形本体、视觉输入、真机迁移——但本库尚未核验其中任何一条的做法。**
+
+- 已确定的只有分类 06_Manipulation 与正文标题给出的项目主页入口；核心信息表没有 arXiv 行，深读状态以 PROGRESS.md 为准。
+- 「实验与评测」明确留空，任何关于成功率、泛化范围或迁移代价的说法都不能引用本页。
+- 当前用途是保持图谱连通：上溯 [06_Manipulation 分类父节点](../overview/paper-notebook-category-06-manipulation.md) 与 [总索引](../overview/humanoid-paper-notebooks-index.md)，细节走项目主页与原文。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-06-manipulation](../overview/paper-notebook-category-06-manipulation.md)

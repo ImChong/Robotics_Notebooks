@@ -59,6 +59,14 @@ HYPERmotion 先从语言指令、相机图像/多视角观测、本体状态与�
 - 评测原始出处：[原文 / 项目页](https://hy-motion.github.io/)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-03-visuomotor.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**HYPERmotion 做的是混合行为规划：VLM 负责语义路由，PPO/RL 策略与 WBC/MPC 负责执行，把自主 loco-manipulation 拆成「选技能 + 组合技能」两段。**
+
+- 起作用的是高层在执行中选择与组合技能这一机制，而非单一端到端策略；感知侧同时用语言指令、多视角观测与本体状态恢复场景、目标或运动表征。
+- 本页记录的发表日期是 **2024 年 6 月**：读这条目时应把它当作这条 VLM 规划 + 全身控制路线的早期形态，而不是当前能力上界。
+- 本页为 161 篇 **#065/161**（03 视觉感知驱动的人形移动操作）索引级摘录，量化 benchmark 与实机指标以 [原文 / 项目页](https://hy-motion.github.io/) 为准；分层规划本身不解决底层 WBC 鲁棒性。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

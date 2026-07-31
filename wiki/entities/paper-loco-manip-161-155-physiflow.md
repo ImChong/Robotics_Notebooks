@@ -59,6 +59,14 @@ PhysiFlow 的实现路径是先把语言指令、相机图像/多视角观测、
 - 评测原始出处：[原文 / 项目页](（见原文）)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-09-vla-world-models.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**PhysiFlow 针对的是 VLA 落到人形全身时的老问题——语义看得懂但动作不可执行：保留 VLM 语义的同时补上机器人状态与动作头，用 latent flow matching 生成，再交给鲁棒跟踪层执行。**
+
+- 关键取舍是「多脑分工」：VLM 负责语义规划与路由，扩散/流匹配负责在潜空间产出全身轨迹与动作 chunk/token，跟踪层负责物理可执行，从而避免只停在语言规划。
+- 归入 09 类（[人形 VLA、世界模型与通用操作](../overview/loco-manip-161-category-09-vla-world-models.md)），价值主张在全身而非桌面臂操作。
+- 边界最需注意：本页为索引级摘录，机构与项目页字段均为「见原文」，physics-aware 与 robust tracking 的具体口径必须回原文核对。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

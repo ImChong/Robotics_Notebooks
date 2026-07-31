@@ -17,6 +17,7 @@ status: complete
 updated: 2026-07-28
 arxiv: "2511.03996"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/humanoid-amp-motion-prior-survey.md
   - ../tasks/humanoid-soccer.md

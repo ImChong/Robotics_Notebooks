@@ -102,6 +102,16 @@ flowchart TB
 - 初始化 $\pi^{ft}\leftarrow\pi^d$；walk / recovery **双 GPU** 并行 PPO。
 - **共享 actor、分行为 critic**；**PCGrad**；地形课程 + **继续 AMP**。
 
+## 结论
+
+**AHC 的关键取舍是「先专精、再压进一个身体、最后用 RL 补地形」：蒸馏只负责统一多行为，真正让控制器能上复杂地形的是第二阶段的多任务强化微调。**
+
+- 真正起作用的是 Stage 2 而非蒸馏本身：$\pi^d$ 在 hurdle/discrete 仅 **0.756 / 0.702**，加上双 critic + **PCGrad** + 地形课程后 $\pi^{\mathrm{AHC}}$ 达 **0.922 / 0.969**。
+- **AMP 贯穿两阶段**：Stage 1 用起身 MoCap 与 LAFAN1 做风格正则，Stage 2 继续保留人形性——相对 [HoST](./paper-host-humanoid-standingup.md) 关节加速度更平滑正是这一先验的产物。
+- 适用边界：专精策略 $\pi^b_w$ 在坡地成功率 **0.000**，单行为策略不具地形泛化；AHC 的收益也集中在「专精阶段已覆盖的行为 + 地形自适应」，新行为仍需回到 Stage 1。
+- 蒸馏后策略只吃 **69 维本体**、无特权输入，这是它能直接落到 G1（50 Hz 策略 / 500 Hz PD）的前提；真机验证范围限于跌倒起身续走与楼梯/坡地/障碍。
+- 与 [SD-AMP](./paper-unified-walk-run-recovery-sdamp.md) 对照：后者是训练期门控的**单策略端到端**，AHC 多出的「专精→蒸馏→微调」两段，换来的是坡地/障碍等**地形覆盖**。
+
 ## 常见误区
 
 1. **蒸馏一次即终点：** Table 1 显示 $\pi^d$ 在 hurdle/discrete **显著弱于** $\pi^{\mathrm{AHC}}$——第二阶段不可省。

@@ -46,6 +46,14 @@ Learning Perceptive Humanoid Locomotion over Challenging Terrain 的人形机器
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是 05_Locomotion 下的计划索引实体，价值在于占位而非归纳：真正的技术内容要等深读笔记写完才会出现。**
+
+- 页面可确证的只有分类归属、PROGRESS.md 上的「待深读」状态与 arXiv 编号 2503.00692；复杂地形感知行走的机制与实机指标均无记录。
+- 适用边界：适合按分类父节点与总索引检索时的落点，不适合作为技术依据引用。
+- 主要风险是被误读成已完成摘要；深读状态以上游 PROGRESS.md 为准，笔记完成后本页需升格重写。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

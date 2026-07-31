@@ -46,6 +46,14 @@ GTSAM 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页把「因子图做机器人传感器融合」的 GTSAM 收成状态估计方向的占位节点，但它目前不承载任何方法性判断。**
+
+- 深读状态为待撰写：页面没有核心机制、流程与实验区块，量化指标与消融全部缺席。
+- 本条目在本库归入 **09_State_Estimation**，且来源标注为 `curated` 而非 arXiv 条目，检索时应从分类父节点进入。
+- 现阶段唯一可靠的用途是图谱占位与交叉检索；因子图的具体实现细节需回到 PROGRESS.md 与上游资料。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-09-state-estimation](../overview/paper-notebook-category-09-state-estimation.md)

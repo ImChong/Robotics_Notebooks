@@ -46,6 +46,14 @@ Whole-body Multi-contact Motion Control for Humanoid Robots Based on Distributed
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是一个占位节点：题名把这条工作定位为「靠分布式触觉传感支撑人形全身多接触运动控制」，即让身体各处的接触都成为可测量、可利用的支撑，而非只依赖足底；但深读笔记未撰写，实现与效果无从核实。**
+
+- 从题名可确定的定位是 **分布式触觉传感 → 全身多接触运动控制**，属于硬件传感与控制耦合的路线，而非纯策略学习。
+- 当前处于 PROGRESS.md **待深读** 阶段，传感器布置、控制器形式与实机指标均缺失。
+- 检索时需注意：本页在笔记站被归入 **14_Human_Motion** 而非 WBC 分类，按分类父节点查找可能遗漏，建议同时从总索引进入。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)

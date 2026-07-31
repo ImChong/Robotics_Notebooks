@@ -59,6 +59,15 @@ sources:
 - 评测原始出处：[原文 / 项目页](https://github.com/purdue-tracelab/TTRL-)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-05-mocap-human-video.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**PACE 走的是与分层规划相反的路线：用统一的端到端 RL 加物理增强，把高层目标到低层动作之间的断点直接消掉，而不是用接口把它缝起来。**
+
+- 真正的机制是单条 RL 链路直接输出关节位置/力矩命令，并顺带产出地形/场景表征，训练与部署共用同一条路径。
+- 条件输入横跨图像/多视角观测、本体状态与关节序列、人类视频/动捕轨迹，协调性由训练而非手工调度获得。
+- 代价是模块性：端到端换来的协调，意味着无法像分层方案那样单独替换或调试某一层。
+- 本页「论文/项目」给出的 GitHub 链接末尾带 `-`，看似截断，取用前需核对实际可访问性；量化指标以原文为准，横向对照回 [分类 hub](../overview/loco-manip-161-category-05-mocap-human-video.md)。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

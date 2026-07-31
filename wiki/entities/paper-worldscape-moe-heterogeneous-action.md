@@ -108,6 +108,16 @@ flowchart TB
 | **机构** | 清华大学、Manifold AI |
 | **项目** | [worldscape-moe.com](https://worldscape-moe.com) |
 
+## 结论
+
+**Worldscape-MoE 的核心不是把 DiT 做大，而是把「世界规律共享」与「控制语义专属」在结构上因子化——让相机轨迹、双臂关节、hand-map 这三类原本各自成岛的监督互相增强而不是互相干扰。**
+
+- 真正起作用的是 **结构因子化**：dense 混训会出现跨模态干扰，MoE 才能三模态一致提升；w/o MoE 消融仍有 EWM **61.88**（本文 **62.84**），说明增益来自分工而非单纯加容量。
+- 路由统计支持这一解释：共享专家承担约 **69.5%** gate 负载，专属专家负载按 manipulation **~48%** > hand **~36%** > locomotion **~21%** 排列，与「接触与手物交互更依赖专属接口」一致。
+- 指标口径需分轴看：locomotion（iWorld-Bench）综合 **0.7556** vs 最强 baseline **0.7443**，manipulation WorldArena EWM **62.84** vs CtrlWorld **59.98**，hand（EgoDex）FID-VID **3.80** / FVD **110.94**——每一轴的领先幅度都不大，价值在于**同一模型同时拿下三轴**。
+- 适用边界：这是 **上游可控视频 WM**，不直接输出策略，动作需另接 IDM 或 VLA；与 [GigaWorld-1](./paper-gigaworld-1-policy-evaluation.md) 的 faithful 评估定位互补而非替代。
+- 主要风险是可扩展性的兑现程度：渐进接入新模态仍有 **短暂能力回撤**（RQ3 中 locomotion 先退化后恢复），OOD 与 loco-manip 耦合仅到定性可行，真机 closed-loop 的策略级验证有限，距离通用跨本体接口仍远。
+
 ## 与其他工作对比
 
 | 工作 | 关系 |

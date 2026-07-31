@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-31",
   "node_count": 2053,
-  "edge_count": 18310,
+  "edge_count": 18382,
   "coverage": {
     "covered": 2003,
     "total": 2029,
@@ -94,8 +94,7 @@
       "type": "roadmap_page",
       "recency": "2026-07-31",
       "source": "log.md",
-      "action": "maintained",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "action": "maintained"
     },
     {
       "path": "roadmap/depth-humanoid-swarm-performance.md",
@@ -131,8 +130,7 @@
       "type": "roadmap_page",
       "recency": "2026-07-31",
       "source": "log.md",
-      "action": "maintained",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+      "action": "maintained"
     },
     {
       "path": "roadmap/depth-motion-retargeting.md",
@@ -216,8 +214,12 @@
   },
   "top_communities": [
     {
-      "label": "模仿学习",
-      "size": 200
+      "label": "视觉-语言-动作",
+      "size": 157
+    },
+    {
+      "label": "仿真到现实",
+      "size": 150
     },
     {
       "label": "人形强化学习运动控制",
@@ -232,12 +234,8 @@
       "size": 141
     },
     {
-      "label": "全身控制",
-      "size": 140
-    },
-    {
-      "label": "人形论文深读笔记",
-      "size": 137
+      "label": "模仿学习",
+      "size": 139
     }
   ],
   "top_hubs": [

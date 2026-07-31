@@ -128,6 +128,16 @@ flowchart TB
 - **已发布：** Sim2Sim 管线、真机任务 checkpoints（`sim2sim.py --task kick_ball|kick_box|push_box|lift_box`）。
 - **待发布：** 低/高层训练代码、Sim2Real 全流程（README：论文接收后全面开源）。
 
+## 结论
+
+**VisualMimic 的核心不是视觉策略本身，而是 root + 5 关键点这条窄接口：它把「任务无关的全身跟踪」与「任务专用的视觉决策」切开，低层训一次多任务复用，高层只需在低维命令空间里探索。**
+
+- 真正起作用的是双段蒸馏 + 窄命令接口：低层由 motion tracker 教师经 DAgger 蒸馏出 keypoint tracker，高层由特权物体状态教师蒸馏出 depth visuomotor 学生；消融显示无蒸馏时 tracker 能跟点但不够类人，仅 3 关键点的接口则表达力不足。
+- 三个训练稳定器才是把两段真正接起来的胶水：低层训练加命令噪声以容忍高层的非理想探索，高层动作做 HMS clip 防止命令超出人类动作统计，深度 masking 缩小 visual sim2real gap。
+- 成本优势在数据侧：任务奖励只需 approach / forward progress 等轻量 shaping，无需配对人–物 MoCap，与 [ResMimic](./paper-resmimic.md) 等依赖 OptiTrack 人–物轨迹的路线形成对照。
+- 边界同样来自这套设计：学生依赖 depth 而非 RGB，换传感模态需重做 visual gap 处理（与 [VIRAL](./paper-viral-humanoid-visual-sim2real.md) 的 RGB 大规模蒸馏不同）；HMS clip 会抑制极端非人形接触策略。
+- 复现的主要阻碍是开源节奏：截至入库仅放出 Sim2Sim 管线与真机任务 checkpoint，低/高层训练代码与 Sim2Real 全流程待论文接收后发布。
+
 ## 常见误区或局限
 
 - **深度而非 RGB：** 学生策略依赖 **depth**；更换传感模态需重新做 visual gap 处理，与 [VIRAL](./paper-viral-humanoid-visual-sim2real.md) 的 RGB 大规模蒸馏路线不同。

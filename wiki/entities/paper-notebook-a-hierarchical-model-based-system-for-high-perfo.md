@@ -14,6 +14,7 @@ status: complete
 updated: 2026-07-28
 arxiv: "2512.09431"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/humanoid-soccer.md
   - ../concepts/humanoid-multi-robot-coordination.md
   - ./paper-humanoid-soccer-swarm-intelligence.md

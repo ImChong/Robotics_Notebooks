@@ -47,6 +47,14 @@ From Experts to a Generalist 的人形机器人学习论文条目，当前处于
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页当前是一条「已排期、未深读」的占位实体：它保证了「专家策略 → 通用全身控制」这条线在图谱中不缺节点，但还给不出可引用的方法结论。**
+
+- 可确认的只有索引层信息——arXiv 2506.12779（2025.06）、分类 04_Loco-Manipulation_and_WBC 与计划中的笔记文件夹；标题指向「从多个专家汇聚为通用 WBC」这一命题，具体的专家蒸馏/统一策略机制页内未展开。
+- 适用边界：可作为检索入口，经[分类父节点](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)与[人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)交叉定位同类工作；不足以支撑方案对比或工程选型。
+- 风险提示：量化 benchmark、消融与实机指标本页均缺失，深读状态以 progress.json 为准，任何结论都应回到论文原文核对。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

@@ -4,6 +4,7 @@ tags: [humanoid, loco-manipulation, vla, vlm, reinforcement-learning, whole-body
 status: complete
 updated: 2026-07-20
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ./flexion-niantic-nvidia-rgb-sim2real-pipeline.md
   - ../methods/vla.md
   - ../methods/reinforcement-learning.md

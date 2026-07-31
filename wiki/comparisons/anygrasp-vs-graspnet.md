@@ -7,6 +7,7 @@ sources:
   - ../../sources/repos/anygrasp-sdk.md
   - ../../sources/papers/perception.md
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../methods/grasp-pose-estimation.md
   - ../entities/anygrasp.md
   - ../methods/contact-net.md

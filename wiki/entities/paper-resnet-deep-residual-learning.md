@@ -14,6 +14,7 @@ arxiv: "1512.03385"
 venue: "CVPR 2016"
 code: https://github.com/KaimingHe/deep-residual-networks
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../concepts/vision-backbones.md
   - ../concepts/deep-learning-foundations.md
   - ../methods/object-detection.md
@@ -80,6 +81,16 @@ flowchart LR
 - ImageNet val：**ResNet-152** top-5 **4.49%**（单模型），集成 test **3.57%**（ILSVRC 2015 分类第一）。
 - CIFAR-10：成功训练 **100+ 层** 乃至探索 **1000 层** 模型。
 - COCO 检测：极深表征带来约 **28% 相对提升**；同一骨干支撑 2015 检测/定位/分割多项第一。
+
+## 结论
+
+**ResNet 真正的贡献是一次 reformulation：把「学完整映射 $\mathcal{H}(\mathbf{x})$」改写成「学扰动 $\mathcal{F}(\mathbf{x}) = \mathcal{H}(\mathbf{x}) - \mathbf{x}$」，使最优解被预条件到接近零映射，深度才第一次真正兑现为精度收益。**
+
+- 起作用的是 **无参恒等捷径**：它不引入门控与额外参数，仅改变优化目标的形状；bottleneck 块（1×1 → 3×3 → 1×1）则负责把这种深度的算力代价压住。
+- 关键指标是 **ResNet-152 top-5 4.49%（单模型）、集成 3.57%**，以及同一表征在 **COCO 检测上约 28% 的相对提升**——后者才是它成为机器人感知默认骨干的真正原因：可迁移的深度表征，而非分类分数本身。
+- 论文的证据链值得注意：退化现象是在 **BN 已经稳住梯度** 的设定下观察到的，因此「残差 = 解决梯度消失」是误读；真正被解决的是 **恒等映射难学、优化难度随深度上升**。
+- 适用边界：越深并非越好，工程上仍需在 **深度、宽度、分辨率** 间权衡；原始工作只覆盖 2D 图像分类，3D 点云与时序触觉需要改编块结构（1D ResNet、稀疏卷积）。
+- 在感知栈中的位置：与 [YOLO v1](./paper-yolo-unified-realtime-detection.md) 形成 **深度 vs 延迟** 的互补——机器人上用哪一端，取决于是要表征质量还是要实时预算。
 
 ## 与其他工作对比
 

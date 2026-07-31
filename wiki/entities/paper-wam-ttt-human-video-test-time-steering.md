@@ -110,6 +110,17 @@ flowchart TB
 | **消融亮点** | 去 meta-training 或换 [LoRA](../concepts/lora.md) 大幅下降；**memory recon.** 与 **TTT** 均关键 |
 | **扰动** | Deliver Drink 光照/空间扰动下 WAM-TTT **66% / 56%**，WAM-ICL **12% / 20%** |
 
+## 结论
+
+**WAM-TTT 把人视频从「可模仿的轨迹」改写成「部署期可写的记忆」：主干与 action expert 全程冻结，只在 video 分支写 fast weights，用无标注人视频换来新任务的 steering 能力。**
+
+- 真正起作用的是 **fast-weight 写入** 而非上下文条件化：喂相同人视频时，New 家庭场景平均 **46.2% vs WAM-ICL 7.1%**；消融中去掉 meta-training 或换成 [LoRA](../concepts/lora.md) 均大幅下降，说明 **memory recon. 与 TTT 缺一不可**。
+- 冻结主干换来的是 **预训练动作先验不被覆盖**：Deliver Drink 光照/空间扰动下仍有 **66% / 56%**，而 ICL 只有 12% / 20%。
+- 适用边界由 **meta-training 的配对数据** 定义：需要 2286 对相位同步的人–机 episode，接口仅 **egocentric RGB**，未融合手姿/接触/3D。
+- 主要失败模式是 **相位错位无声劣化**；fast-weight 容量与分布外任务的边界未被充分刻画。
+- 落地状态保守：截至 ingest **代码与项目页未公开**，不宜假设可直接复现。
+- 与 [EgoWAM](./paper-egowam-egocentric-human-wam-co-training.md) 对照是 **时间尺度之分**（训练期共训 vs 部署期记忆）；与 [RoboTTT](./paper-robottt-test-time-training-vla-context.md) 对照是 **信息源与层位置之分**（机器人 visuomotor 流 vs 人视频批次 TTT）。
+
 ## 常见误区或局限
 
 - **误区：** 把 WAM-TTT 等同于 **人视频 BC / 模仿学习**——论文明确 **不** 把人轨迹当可执行监督，而是作 **部署时记忆**。

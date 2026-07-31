@@ -2,7 +2,7 @@
 
 ## [2026-07-31] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **100** 条信息型预警）：
+共发现 **0** 个问题（另含 **27** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -124,23 +124,8 @@
 - wiki/entities/paper-whole-body-behaviors-primitives.md（缺 对比）
 - wiki/entities/paper-xhugwbc-cross-humanoid.md（缺 对比）
 
-### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（641 个）
-- wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md
-- wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md
-- wiki/entities/paper-adaptive-humanoid-control.md
-- wiki/entities/paper-aerial-aquatic-remora-hitchhiking-robot.md
-- wiki/entities/paper-amp-survey-01-amp.md
-- wiki/entities/paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md
-- wiki/entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md
-- wiki/entities/paper-amp-survey-12-haml.md
-- wiki/entities/paper-amp-survey-13-humanoid_goalkeeper.md
-- wiki/entities/paper-amp-survey-14-husky.md
-- wiki/entities/paper-amp-survey-17-teamhoi.md
-- wiki/entities/paper-amp-survey-19-embrace_collisions.md
-- wiki/entities/paper-anymal-walk-minutes-parallel-drl.md
-- wiki/entities/paper-apt-rl-agile-perceptive-quadruped-locomotion.md
-- wiki/entities/paper-argus-dynamic-symmetry.md
-- … 另有 626 个（历史 backlog；新建 / 大幅改写的 paper-* 必须含 `## 结论`）
+### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（0 个）
+- 无
 
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无
@@ -164,78 +149,7 @@
 ### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（72 个）
-- wiki/comparisons/anygrasp-vs-graspnet.md
-- wiki/comparisons/cnn-vs-vit-backbones.md
-- wiki/comparisons/kalman-filter-vs-optimization-based-estimation.md
-- wiki/concepts/generative-vision-pretraining.md
-- wiki/concepts/perception-coordinate-postprocessing.md
-- wiki/concepts/sensor-fusion.md
-- wiki/concepts/soccer-field-simulation.md
-- wiki/concepts/tactile-sensing.md
-- wiki/concepts/terrain-adaptation.md
-- wiki/concepts/terrain-latent-representation.md
-- wiki/concepts/vision-backbones.md
-- wiki/concepts/vision-transformer.md
-- wiki/concepts/visual-representation-for-policy.md
-- wiki/concepts/visuo-tactile-fusion.md
-- wiki/entities/aeris-10-plfm-radar.md
-- wiki/entities/agibot-agile.md
-- wiki/entities/anygrasp.md
-- wiki/entities/april-tag.md
-- wiki/entities/autoware.md
-- wiki/entities/booster-robocup-demo.md
-- wiki/entities/dreamwaq-plus.md
-- wiki/entities/dualmap.md
-- wiki/entities/extreme-parkour.md
-- wiki/entities/flexion-reflect-v1.md
-- wiki/entities/gel-slim.md
-- wiki/entities/genception.md
-- wiki/entities/gnm-head.md
-- wiki/entities/intel-realsense.md
-- wiki/entities/kimera.md
-- wiki/entities/mediapipe.md
-- wiki/entities/ov-sam3d.md
-- wiki/entities/ovo-semantic-mapping.md
-- wiki/entities/paper-argus-dynamic-symmetry.md
-- wiki/entities/paper-autonomous-spot-nebula-exploration.md
-- wiki/entities/paper-clothtransformer-unified-latent-cloth-simulation.md
-- wiki/entities/paper-co-calib-multi-fisheye-calibration.md
-- wiki/entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md
-- wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md
-- wiki/entities/paper-flap-fov-active-perception-3d-navigation.md
-- wiki/entities/paper-halomi-humanoid-loco-manipulation.md
-- wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md
-- wiki/entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md
-- wiki/entities/paper-microsaccade-inspired-event-camera.md
-- wiki/entities/paper-notebook-a-hierarchical-model-based-system-for-high-perfo.md
-- wiki/entities/paper-notebook-lookout.md
-- wiki/entities/paper-now-you-see-that-humanoid-vision-locomotion.md
-- wiki/entities/paper-pilot-perceptive-loco-manipulation.md
-- wiki/entities/paper-resnet-deep-residual-learning.md
-- wiki/entities/paper-robonaldo-humanoid-soccer-shooting.md
-- wiki/entities/paper-robustness-robotic-manipulation-survey.md
-- wiki/entities/paper-ssr-humanoid-open-world-traversal.md
-- wiki/entities/paper-swap-parkour.md
-- wiki/entities/paper-vidihand.md
-- wiki/entities/paper-vision-aided-dynamic-exploration-mini-cheetah.md
-- wiki/entities/paper-vs-graphs-visual-slam-scene-graph.md
-- wiki/entities/project-instinct.md
-- wiki/entities/roboflow-sports.md
-- wiki/entities/sam-3d-body.md
-- wiki/entities/sam3dbody-cpp.md
-- wiki/entities/unilidar-sdk2.md
-- wiki/entities/vision-banana.md
-- wiki/methods/attention-foot-placement.md
-- wiki/methods/contact-net.md
-- wiki/methods/genmo.md
-- wiki/methods/grasp-pose-estimation.md
-- wiki/methods/lingbot-map.md
-- wiki/methods/object-detection.md
-- wiki/methods/paid-framework.md
-- wiki/methods/pie-perceptive-locomotion.md
-- wiki/methods/soccer-field-line-detection.md
-- wiki/methods/visual-servoing.md
-- wiki/methods/wilor.md
+### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
+- 无
 
 📊 Sources 覆盖率：2003/2029 (99%) wiki/entity 页有 ingest 来源

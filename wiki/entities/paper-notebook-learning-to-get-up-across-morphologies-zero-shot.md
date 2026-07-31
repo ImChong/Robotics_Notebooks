@@ -46,6 +46,14 @@ Learning to Get Up Across Morphologies 的人形机器人学习论文条目，�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页只是把这篇「跨形态起身」的工作挂进 05_Locomotion 图谱的占位节点，尚不构成对其方法与结论的归纳。**
+
+- 页面可确证的只有分类归属、PROGRESS.md 上的「待深读」状态与 arXiv 编号 2512.12230；统一策略如何做到零样本恢复、在哪些形态上验证，页面均未记录。
+- 适用边界：可用于分类检索与图谱连边，不能作为技术依据或引用来源。
+- 主要风险是把占位页当成已完成摘要；深读状态以上游 PROGRESS.md 为准，笔记完成后应升格重写并链向笔记站。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

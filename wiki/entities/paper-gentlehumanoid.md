@@ -108,6 +108,16 @@ sequenceDiagram
 | 部署 | ONNX/PT 导出，sim2sim / real deploy |
 | 许可/状态 | 以各仓库 README 为准；站内工程摘录见 `sources/repos/axellwppr_motion_tracking.md` |
 
+## 结论
+
+**GentleHumanoid 不换控制器范式，而是在参考轨迹这一层注入阻抗动力学——柔顺被建模成上身多连杆的「参考量」，而不是末端的力控律。**
+
+- 真正起作用的是 **参考动力学**：每个上身关键点满足 `M x_ddot = f_drive + f_interact`，交互力用 **同一个弹簧** 同时覆盖 resistive（锚点取初次接触位置）与 guiding（锚点从完整上身姿态分布采样），避免各 link 独立随机受力导致运动学不一致。
+- 安全力阈值被做成 **可部署旋钮**：训练随机化 `τ_safe ∈ [5,15] N`、`K_spring ~ U(5,250)`、约 40% 样本无外力；部署按任务取握手/气球 5 N、拥抱 10 N、坐站辅助 15 N。
+- 感知依赖被压到最低：teacher 用 privileged 的交互力/力矩，student 只看部署可得观测，输出 29 维关节位置目标交给底层 PD——**不需要全身 tactile**。
+- 主要风险来自训练分布：接触模型是 **仿真合成**，真实人体/软物体的接触分布可能超出随机化；阈值太软失去任务力、太硬产生冲击；它也不决定「要做什么」。
+- 工程侧较完整：项目页、训练/部署仓与 `motion_tracking` compliance 分支均已归档，支持 ONNX/PT 导出与 sim2sim / real 部署，许可以各仓库 README 为准。
+
 ## 与其他工作对比
 
 | 维度 | GentleHumanoid | 标准全身 motion tracking | 经典阻抗 / 导纳控制 | 全身触觉路线（WT-UMI 类） |

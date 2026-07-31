@@ -5,6 +5,7 @@ tags: [humanoid, robocup, ros2, booster-robotics, perception, rl, booster]
 status: drafting
 updated: 2026-07-26
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ./robot-lab.md
   - ../concepts/ros2-basics.md
   - ../methods/auto-labeling-pipelines.md

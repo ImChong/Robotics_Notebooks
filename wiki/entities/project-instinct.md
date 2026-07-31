@@ -6,6 +6,7 @@ status: complete
 date: 2026-05-12
 updated: 2026-07-30
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ./paper-amp-survey-19-embrace_collisions.md
   - ./robot-motion-keyframe-editors.md
   - ./humanoid-robot.md

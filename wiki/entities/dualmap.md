@@ -4,6 +4,7 @@ tags: [repo, semantic-mapping, open-vocabulary, sam, ros, navigation, clip, hkus
 status: complete
 updated: 2026-07-26
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../queries/go2-3d-semantic-mapping-sam-pipeline.md
   - ./ovo-semantic-mapping.md
   - ./ov-sam3d.md

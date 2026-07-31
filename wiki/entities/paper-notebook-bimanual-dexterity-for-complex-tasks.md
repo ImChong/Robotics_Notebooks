@@ -46,6 +46,14 @@ Bimanual Dexterity for Complex Tasks 的人形机器人学习论文条目，当�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是待深读的占位实体，作用是让这条双臂灵巧操作条目在图谱中有位可依，而不是对其方法给出判断。**
+
+- 现状：列入 Paper Notebooks 的 **PROGRESS.md 待深读** 清单，分类 06_Manipulation，深读笔记尚未撰写。
+- 因此本页 **不含任何量化结论**：benchmark、消融与实机指标待笔记完成后补充。
+- 检索路径为 [分类父节点](../overview/paper-notebook-category-06-manipulation.md) 与 [总索引](../overview/humanoid-paper-notebooks-index.md)；本页未登记论文直链，需经 PROGRESS.md 回溯原文。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-06-manipulation](../overview/paper-notebook-category-06-manipulation.md)

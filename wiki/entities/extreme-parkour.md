@@ -14,6 +14,7 @@ updated: 2026-07-25
 arxiv: "2309.14341"
 venue: "ICRA 2024"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../concepts/privileged-training.md
   - ../concepts/sim2real.md
   - ../concepts/terrain-adaptation.md

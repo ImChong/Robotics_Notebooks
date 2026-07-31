@@ -46,6 +46,14 @@ Let Humanoids Hike! Integrative Skill Development on Complex Trails 的人形机
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页目前只是「让人形去徒步」这条复杂地形 locomotion 线索的占位节点：坐标已定，方法结论未定。**
+
+- 可确认的只有索引层信息——arXiv 2505.06218、分类 05_Locomotion 与计划中的笔记文件夹；标题强调的是「在复杂步道上做整合式技能培养」，即多技能协同而非单一步态，但整合方式页内未展开。
+- 适用边界：可作为检索入口，经[分类父节点](../overview/paper-notebook-category-05-locomotion.md)与[人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)与其他 locomotion 工作交叉定位；不足以支撑地形泛化能力的横向比较。
+- 风险提示：量化 benchmark、消融与实机指标本页均无，深读状态以 PROGRESS.md 为准，结论须回到 arXiv 原文核对。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

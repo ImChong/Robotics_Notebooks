@@ -47,6 +47,14 @@ Keep on Going 的人形机器人学习论文条目，当前处于 Paper Notebook
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**Keep on Going 在本库是待深读占位：标题指向用「选择性对抗训练」提升人形运动技能的鲁棒性，机制细节尚未进入本页。**
+
+- 本页价值在图谱完整性，是 04_Loco-Manipulation_and_WBC 分类下的子节点。
+- 从标题可读出的定位是鲁棒性导向的运动技能学习，手段是选择性对抗训练。
+- 量化 benchmark、消融与实机指标待深读笔记撰写后补充，当前请以 progress.json 与原文为准。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

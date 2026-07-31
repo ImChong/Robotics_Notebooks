@@ -47,6 +47,15 @@ Composite Motion Learning with Task Control 的人形机器人学习论文条目
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是 Composite Motion Learning 的占位实体，但它在本库不是孤立节点：它被标注为[Learning to Ball](./paper-notebook-learning-to-ball.md) 官方实现的方法底座，这是目前页内最有价值的一条信息。**
+
+- 可确认的只有索引层信息——分类 13_Physics-Based_Animation、策展来源与计划中的笔记文件夹；本条目无 arXiv 字段，标题指向「组合式动作学习 + 任务控制」，具体的组合与任务奖励机制页内未展开。
+- 真正的定位线索来自下游：[Learning to Ball](./paper-notebook-learning-to-ball.md) 的官方实现建立在本方法与 ICCGAN 之上，说明它更像可复用的动作合成基座，而不是某个单点任务的解法。
+- 适用边界：属于物理动画一侧（见[分类父节点](../overview/paper-notebook-category-13-physics-based-animation.md)），不要直接当作真机控制方案引用。
+- 风险提示：量化 benchmark、消融与实机指标本页均缺失，深读状态以 PROGRESS.md 为准。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)

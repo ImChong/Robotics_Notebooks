@@ -112,6 +112,15 @@ flowchart TB
 | **硬件** | 腕部相机 + 双触觉形变传感（见项目页） |
 | **项目** | [vt-wam.github.io](https://vt-wam.github.io/) |
 
+## 结论
+
+**VT-WAM 的主张不是「再加一路触觉输入」，而是把触觉形变当成必须被预测的动力学量，并用注意力门控强行把接触窗口的因果信号绑进动作生成。**
+
+- 真正起作用的是两件事叠加：**预测触觉形变演化** 与 **AVTAG 接触门控**；消融显示去掉任一都显著降点，六任务平均 **71.67%**（较 Fast-WAM **+26.67pp**、较 OmniVTLA **+35.84pp**）。
+- 代价被压在训练侧：AVTAG 是训练期 hinge ranking 辅助损失，推理零额外模块；非对称 MoT 的「首帧视觉锚 + 全触觉序列」还让部署可缓存视觉而不丢接触动力学。
+- 适用边界很窄：依赖 **高分辨率双面 3D 形变传感** 这一特定硬件与表示；长程任务的误差累积未充分验证，跨物体泛化仍受数据规模约束。
+- 与 [TACO](./paper-taco-tactile-wm-vla-posttrain.md)（VLA 后训练纠错）、[Current as Touch](./paper-current-as-touch-proprioceptive-contact.md)（本体电流替代外置触觉）对照：本页是 **原生联合出动作** 的闭环策略；与 [ViTacWorld](./paper-vitacworld.md) 对照：后者把视触觉 WM 当 dream 数据生成器/评估器，不直出动作。
+
 ## 与其他工作对比
 
 | 工作 | 关系 |

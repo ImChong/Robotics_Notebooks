@@ -46,6 +46,14 @@ SHIELD 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是 SHIELD 的占位索引：一条「在学习到的动力学上、以期望意义施加 CBF」的人形安全路线，但本库尚未深读其安全保证的强度与成立前提。**
+
+- 可确认的只有分类归属（05_Locomotion）与 arXiv 出处；核心机制、量化指标与真机验证全部待深读补齐。
+- 值得追问的正是标题里的两个限定词——**learned dynamics** 与 **in expectation**：保证既建立在学习模型之上，又只在期望意义成立，其边界需要论文原文来界定。
+- 当前价值是图谱可检索性；深读笔记完成前，不宜把本页当作安全性结论的来源。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

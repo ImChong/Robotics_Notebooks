@@ -47,6 +47,14 @@ SMAP 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是 SMAP 的待深读占位节点：标题把自监督、动作适配与「物理可行的全身控制」三件事绑在一起，但本库尚未核验它们是如何被串起来的。**
+
+- 归类为 04_Loco-Manipulation_and_WBC，说明本库把它读作全身控制侧的方法，而非纯动作生成方法。
+- 深读笔记尚未撰写、「实验与评测」留空，核心信息表也未列 arXiv 行，深读状态以 progress.json 为准。
+- 本页仅作占位与路由：上溯 [04_Loco-Manipulation_and_WBC 分类父节点](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md) 与 [总索引](../overview/humanoid-paper-notebooks-index.md)，指标与实现一律以原文为准。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

@@ -188,6 +188,17 @@ Humanoid-DART 覆盖更广，但部分任务 average fitness 不一定最高，�
 | [GRAIL](./paper-grail.md) | 3D assets + video priors 生成大规模 4D HOI | tracker 与 sim2real 验证 | 全数字数据工厂 |
 | Parameterised Motion | 参数化单技能族 | 局部高质量但覆盖窄 | 低维目标变化 |
 
+## 结论
+
+**Humanoid-DART 把扩散模型定位成「目标空间探索器」而不是控制器：生成只负责给出 kinematic reference，物理 tracker 与 fitness 决定什么能进 archive，从而把 2–4 条稀疏示范自举成覆盖连续目标空间的技能族。**
+
+- 真正起作用的是闭环三件套：dual-branch DiT 的结构分解（single-branch 消融 success 从 **1.00** 掉到 **0.25**）、RL tracker + fitness 的物理过滤、goal relabeling 回收 near-miss。
+- 它优化的主指标是 **覆盖率** 而非平均质量：pick-and-place 覆盖 **96.4** vs Parameterised Motion 5.7 / Hierarchical Diff.+RL 6.2；代价是覆盖大时 average fitness 不一定最高，窄目标区间上参数化方法仍可更精。
+- **seed 的动力学可行性比数量更关键**：DF 4 demos 达 96.4 覆盖 / 4.9 fitness，KF 2 demos 只有 28.8 / 1.37；archive 会放大初始示范偏差，带接触穿透瑕疵的 kinematic seed 不适合自举。
+- 适用边界窄：单一 box geometry + 平地，fitness 权重靠手工设计，G1 上主要验证生成轨迹可执行，感知/规划闭环不在范围内。
+- 开源状态是复现风险：论文称接收后开源，截至 2026-07-22 未见官方仓库，curriculum 参数、reward terms 与 sim2real 设置无法复查。
+- 分工定位：[GRAIL](./paper-grail.md) 与 [VLK](./paper-vlk-synthetic-loco-manipulation.md) 偏数据工厂，[HumanoidMimicGen](./paper-humanoidmimicgen.md) 偏固定技能结构下的合成，本页偏 **目标空间自举与 curriculum**。
+
 ## 局限与风险
 
 - **对象和地形范围窄**：评测集中在单一 box geometry 与平地；多物体、多材质、非平坦地形仍待扩展。

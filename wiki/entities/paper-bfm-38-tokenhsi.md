@@ -59,6 +59,14 @@ sources:
 
 接口设计（命令空间、时序、安全层）决定上层智能能否稳定使用身体。
 
+## 结论
+
+**TokenHSI 的立场是把人–场景交互当成可 token 化的结构化事件（坐下、跨越等），由上层调用已封装的底层全身能力，而不是端到端重学交互。**
+
+- 归位在 **05 Hierarchical control**（#38/41）：语言、VLA、扩散或规划器在上，tracking / WBC / latent skill 在下，**接口设计（命令空间、时序、安全层）** 决定上层智能能否稳定使用身体。
+- 常见误判是把瓶颈全算在 token 设计上——实际上限往往在 **底层跟踪鲁棒性**。
+- 与 [COINS](./paper-coins-compositional-human-scene-interaction.md) 的对照定位：后者做静态语义姿态生成，本文是 **task token 驱动的控制**；代码见 <https://github.com/liangpan99/TokenHSI>。
+
 ## 常见误区
 
 1. 语言/VLA 调用身体时，瓶颈往往在 **底层跟踪鲁棒性**，而非上层 token 设计 alone。

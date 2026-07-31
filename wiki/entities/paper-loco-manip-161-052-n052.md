@@ -59,6 +59,14 @@ sources:
 - 评测原始出处：[原文 / 项目页](（见原文）)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-02-upper-body-interface.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**这篇工作把问题收窄到一个常被当作实现细节的地方：人形 loco-manipulation 的 RL 训练里价值网络该用 dual critic 还是 unified critic——它做的是架构对照，不是新框架。**
+
+- 论点即标题：**critic 架构对结果有实质影响**，双 critic 与统一 critic 不是可随意互换的工程选择。
+- 位置在 **02 上半身中心控制与移动操作接口** 分组，读它是为了给已有的全身 RL 策略调训练配方，而非替换控制器或命令接口。
+- 本页为 161 篇索引级条目，且「论文/项目」一栏标注（见原文）；双 vs 统一 critic 的具体对照数值必须回到原文 PDF。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

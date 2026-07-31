@@ -46,6 +46,14 @@ Predictive Sampling 的人形机器人学习论文条目，当前处于 Paper No
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页目前是占位实体而非内容实体：Predictive Sampling 已进入 Paper Notebooks 待深读清单，但页面尚未承载任何机制级归纳。**
+
+- 现阶段可确认的只有策展元数据：分类 14_Human_Motion、arXiv 2212.00541、深读笔记待撰写。
+- 页面的作用是保持知识图谱完整，让分类父节点与总索引不至于缺失该论文实体。
+- 机制、实验与适用边界须等深读笔记完成后回填；在此之前不宜把本页当作可引用的技术结论来源。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)

@@ -47,6 +47,15 @@ HuBE 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**HuBE 在本库当前只是待深读的占位实体：它标记了「跨本体类人行为执行」这一方向，但页面本身不提供可引用的机制或结论。**
+
+- 本页作用是保持知识图谱在 04_Loco-Manipulation_and_WBC 分类下不缺该论文节点。
+- 从标题可读出的定位是面向人形机器人的跨本体类人行为执行，属 loco-manipulation 与 WBC 脉络。
+- 量化 benchmark、消融与实机指标本页一概没有，待深读笔记撰写后补充。
+- 引用注意：深读完成前不宜把本页当作方法对比的依据。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

@@ -99,6 +99,16 @@ flowchart TB
 
 测试时沿 GAMMA 做法，每步采样多个潜动作，用训练同款奖励保留 **top-K** 分支，提升目标到达与交互质量。
 
+## 结论
+
+**DIMOS 的取舍是「用 RL 在运动基元潜空间里补上场景感知与物体交互，换掉人体–场景配对采集」，代价是整套方法停留在运动学层面。**
+
+- 真正起作用的是三处改写：**目标写成奖励、感知写成状态**（局部可走性图 / 物体 SDF 值与梯度）、**CVAE 运动基元潜变量当动作**，再用 PPO + KL 正则保住运动自然度。
+- 交互策略的 **双向训练**（随机交换初始/目标姿态）同时学会坐/躺与站起，是长程序列能在 locomotion 与 interaction 之间来回切换的前提；推理端的树采样只是质量增益，不是能力来源。
+- 主要局限是运动学范式本身：**人–场景穿透仍存在**，躺姿数据不足；这类问题不会随奖励调参消失。
+- 「不需要任何场景数据」不成立 — interaction 策略训练仍用 **PROX 静态交互 retarget 到 ShapeNet**，marker 目标来自 [COINS](./paper-coins-compositional-human-scene-interaction.md)。
+- 与 [PhysHSI](./paper-amp-survey-15-physhsi.md) 任务重叠但 **平台与物理层级不同**；输出是 SMPL-X marker 轨迹，上机器人需重定向与接触/平衡约束，与 [CRISP](../methods/crisp-real2sim.md) 构成互补的上下游而非竞争。
+
 ## 常见误区
 
 1. **DIMOS = 物理仿真角色：** 方法是 **运动学** 的，项目页承认仍有人–场景穿透；不等于 Isaac/MuJoCo 里的动力学人形控制。

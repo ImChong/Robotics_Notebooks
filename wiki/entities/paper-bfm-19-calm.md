@@ -61,6 +61,15 @@ sources:
 
 在 BFM taxonomy 中回答「身体能覆盖多少目标条件技能」。
 
+## 结论
+
+**CALM 属于 BFM 的前史：它先把「latent skill 空间可以被上层指挥」做实，技能空间这一层因此出现在大基座之前。**
+
+- 机制沿 **02 Goal-conditioned** 路线：以 goal / reference / command 为条件训练全身策略、扩展可执行动作库，上层通过 latent 指令调用而非逐技能单独训练。
+- 它的价值定位在**接口**而不是规模——回答的是「身体能覆盖多少目标条件技能」，大规模预训练由后续 BFM 工作承接。
+- 局限与同族一致：条件化跟踪不等于 unlimited skills，仍受数据分布、接触建模与实机 Sim2Real 约束。
+- 本页为索引级策展编译，机制细节与实验以 SIGGRAPH 原文 PDF 及 `NVlabs/CALM` 为准。
+
 ## 常见误区
 
 1. Goal-conditioned 跟踪不等于 unlimited skills：仍受数据分布、接触建模与实机 Sim2Real 约束。

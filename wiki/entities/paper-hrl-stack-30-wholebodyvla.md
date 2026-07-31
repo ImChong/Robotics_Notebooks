@@ -89,6 +89,16 @@ WholeBodyVLA 的公开证据以项目页演示为主，量化指标较少，因�
 | 运行频率 | latent 解码约 10 Hz；LMO 低层 50 Hz |
 | 典型能力 | Bag packing、box loading、cart pushing >50 kg、terrain generalization |
 
+## 结论
+
+**WholeBodyVLA 的关键设计不在 VLA 本身，而在把底层 locomotion 重新定义成「为操作服务的身体位姿调节器」，再用 action-free 视频学到的 latent action 把上下两级缝起来。**
+
+- 起作用的结构是 **频率解耦**：VLM 约 **10 Hz** 解码 latent action token，分流为双臂 joint actions 与 locomotion commands，LMO 策略以 **50 Hz** 跟踪——实时性来自分层，而不是让单个模型跑更快。
+- **LAM** 从无动作标注的 manipulation 与 manipulation-aware locomotion 视频学监督信号，降低对机器人动作标签的依赖，这是该配方的主要规模化杠杆。
+- 证据强度必须按口径读：Agibot X2 推 **>50 kg** 车与 Bag Packing / Cart Pushing 等任务广度均属 **项目页 demonstration 级**，无逐任务成功率、无跨 baseline 统一对照。
+- 落地风险集中在可复现性与系统耦合：GitHub 仓存在但 **无开源时间表**，LAM 训练视频与 LMO 细节未完全透明；VLA、latent decoder、LMO 与硬件需整体对齐，换平台成本高。
+- 与 [OpenHLM](./paper-loco-manip-161-154-openhlm.md)（全身原生 VLA 配方与消融）、[HAIC](./paper-haic.md)（对象动力学感知的接触控制）并列时，本页占的是 **「统一 latent VLA + 面向操作 locomotion」** 这一格。
+
 ## 与其他工作对比
 
 WholeBodyVLA 在「为什么重要」里主要针对传统解耦 VLA（固定臂 / 移动底座假设），关联页面则把它与全身原生 VLA 配方 OpenHLM、以及面向欠驱动对象的 HAIC 并列。下表为定性对照，不含跨论文可比的统一指标。

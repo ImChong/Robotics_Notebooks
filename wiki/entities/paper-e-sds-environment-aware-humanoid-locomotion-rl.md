@@ -14,6 +14,7 @@ status: complete
 updated: 2026-06-05
 arxiv: "2512.16446"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/locomotion.md
   - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ../methods/reinforcement-learning.md
@@ -96,6 +97,16 @@ flowchart TB
   out[输出：精炼后的感知策略 π]
   pick --> out
 ```
+
+## 结论
+
+**E-SDS 的关键不在于给机器人加了 LiDAR，而在于把地形统计前置进奖励生成，让自动合成的奖励真的把外感受写进可优化目标。**
+
+- 真正起作用的机制是 **环境分析智能体**：用 **1000** 台机器人短时 rollout 聚合缺口比 / 障碍密度 / 崎岖度等标量，与视频侧 SUS 抽出的步态与任务目标一起进入代码生成提示；随后 **3 轮 × 2 候选 × 500 iter PPO** 的反馈闭环负责筛选与纠错。
+- 论文自己的对照说明了因果归属：**同感知配置的手工 13 项基线** 仍可能在梯顶不动，**Foundation-Only（奖励不经环境分析）** 则高摔率 — 差别来自 **奖励结构**，不是传感器数量。
+- 适用边界很硬：**每地形一套策略**、评估 **仅在仿真**、首轮 prompt 仍需人工；混合地形与 [Sim2Real](../concepts/sim2real.md) 都是未解决项。
+- 工程量纲是本页最可复用的部分（**792 维观测**含 27×21 扫描 + 144 LiDAR、**3000 并行**、**~99 min/地形**），便于与既有 Isaac Lab 人形 RL 管线直接对照。
+- 与 [FastStair](./paper-faststair-humanoid-stair-ascent.md) 的 **规划式落脚点引导** 相比，E-SDS 属于「语言模型侧生成奖励」分支，两者解决的是同一能力的不同环节。
 
 ## 常见误区或局限
 

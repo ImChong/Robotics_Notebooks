@@ -171,6 +171,17 @@ WOLF-VLA 主模型从 **GR00T-N1.5-3B** 初始化：
 - 去掉 vision：WF 只剩约 5%，WA 0%，楼梯任务约 11%，说明 ego vision 是环境感知的关键。
 - paraphrased instruction：平均约 54，说明语言鲁棒性相对可接受。
 
+## 结论
+
+**WOLF-VLA 的赌注在数据侧而非模型侧：用多相 OCP 当「数据工厂」换来动态一致、接触可行的人形 locomotion 示范，代价是任务被限死在行走类技能、且绑死 RH5 形态。**
+
+- 真正的新东西是数据生成链（Crocoddyl + Pinocchio + Box-FDDP 多相 OCP → MuJoCo 执行 → ego RGB/语言/关节轨迹对齐），策略侧只是 GR00T-N1.5-3B 冻结 LLM/vision、训 action diffusion 的常规微调。
+- 消融把模态权重排得很清楚：去 vision 后 WF 仅剩约 5%、WA 归零，视觉是主 grounding；去 spatial tags 从 55.3 掉到约 48，paraphrase 后仍约 54——语言提供高层任务信息，但不是唯一 grounding。
+- 能力边界不均匀且必须逐任务看：WF 99%，WA 仅 27%，楼梯 SSR 51%/44%，总均值 55.3%；ACT 1.4%、π0.5 0% 说明这份数据并非任何 VLA 底座都吃得下。
+- 数据是 **RH5 形态专属**（25 actuated joints 的 delta joint rotation + RH5 骨架本体感），换 Unitree G1 等异构人形必须先做 motion retargeting；好处是 OCP 轨迹本身满足扭矩/关节约束，作重定向源质量高于纯 mocap/teleop。
+- 落地风险有两条：全部结果在仿真 benchmark 内，未展示 sim2real 闭环；开源只是摘要承诺，截至入库日无官方仓库或 checkpoint，不要按「可复现资产」排计划。
+- 与 [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) 对照：后者靠 egocentric video + 遥操作微调、验在 G1 真机 loco-manip；本页是 OC 合成数据 + 仿真 benchmark，评的是动作质量是否贴合 OC 参考（ΔROM）而非真机成败。
+
 ## 与相邻路线对比
 
 | 路线 | 数据来源 | 主要接口 | 主要验证 |

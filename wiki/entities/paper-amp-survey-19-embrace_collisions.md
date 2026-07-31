@@ -102,6 +102,16 @@ flowchart TB
 | 里程计 | 不依赖全局 MoCap；基座目标用仿真录制基座系轨迹 + IMU yaw 对齐 |
 | FK | PyTorch Kinematics → ONNX  onboard |
 
+## 结论
+
+**这篇的关键动作是把「摔倒」从 fail state 里拿掉：重写终止条件、改用基座系关键帧命令，让人形敢用膝、肘、髋、躯干触地去完成 shadowing。**
+
+- 真正起作用的是两件基础设施：**相对目标偏差的终止判据**（不再用绝对高度/倾角），以及 **三 critic 的 advantage mixing**——Table I 中 multi-critic 起身 **94.3%** vs single-critic **65.1%**。
+- 数据比算法更卡：同为 multi-critic，全 AMASS 起身仅 **1.45%**，需 **extreme-action** 精选数据才到 94.3%；参考不必物理可行，靠宽松终止 + RL 探索补人–G1 尺度差。
+- 命令接口是 **可变长基座系目标序列 + Transformer 编码**，站立与躺卧统一表达；高层命令可离线生成/回放，**不是实时上层规划**。
+- 部署边界：仿真用简化凸碰撞体、不建模橡胶手，真机差异在讨论中单列；不依赖全局 MoCap，基座目标靠仿真录制轨迹 + IMU yaw 对齐。
+- 定位澄清：它是 AMP 专题 **#19 收束篇但本身无对抗判别器**；与 [CLOT #16](./paper-amp-survey-16-clot.md) 的 AMP + 全局闭环遥操作互补，与 [Deep Parkour](./paper-deep-whole-body-parkour.md) 组成地面多接触 × 障碍感知双翼。
+
 ## 常见误区
 
 1. **不是 AMP / 对抗先验：** 专题 #19 强调的是 **接触无关 shadowing 系统**；勿在文中强行写成判别器方法。

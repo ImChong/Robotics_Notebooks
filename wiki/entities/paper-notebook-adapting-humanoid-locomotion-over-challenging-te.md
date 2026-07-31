@@ -46,6 +46,14 @@ Adapting Humanoid Locomotion over Challenging Terrain via Two-Phase Training 的
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是待深读的占位实体，价值在于占住图谱位置与提供检索入口，而不是给出对「两阶段训练」这一做法的判断。**
+
+- 现状：列入 Paper Notebooks 的 **PROGRESS.md 待深读** 清单，分类 03_High_Impact_Selection，深读笔记尚未撰写。
+- 因此本页 **不含任何量化结论**：benchmark、消融与实机指标待笔记完成后补充。
+- 检索路径为 [分类父节点](../overview/paper-notebook-category-03-high-impact-selection.md) 与 [总索引](../overview/humanoid-paper-notebooks-index.md)；本页未登记论文直链，需经 PROGRESS.md 回溯原文。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-03-high-impact-selection](../overview/paper-notebook-category-03-high-impact-selection.md)

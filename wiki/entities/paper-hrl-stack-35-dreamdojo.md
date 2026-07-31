@@ -66,6 +66,15 @@ DreamDojo 也是这次新增材料里非常值得单独放大的工作。它做�
 
 DreamDojo 的下游实验也很有意思。它不只是拿世界模型做长视频生成，而是拿来做 live teleoperation、policy evaluation 和 model-based planning。
 
+## 结论
+
+**DreamDojo 要的不是一个会生成视频的模型，而是一个动作可控、物理可用的机器人世界模型——它的成败由下游用途来判定，而不是画面质量。**
+
+- 三段式配方回答了「人类视频没有机器人动作标签」这个卡点：**44K 小时** 第一视角人类视频预训练 → **continuous latent action** 补上动作标签 → 少量目标机器人数据 post-train，使模型对具体 embodiment 与 action space 变得可控。
+- 判据落在 **可控性而非观感**：关键是让世界模型具备机器人策略可用的物理与动作可控性，「会生成视频」本身不构成贡献。
+- 下游三种用法——**live teleoperation、policy evaluation、model-based planning**——说明它被定位成基础设施，而不是长视频生成 demo。
+- 边界：世界模型解决的是 **接口与预测**，不自动替代已封装的底层 WBC 能力；本页为策展编译，量化 benchmark 与实机指标以原文 / 项目页为准。
+
 ## 常见误区
 
 1. VLA/世界模型条目解决 **接口与预测**，不自动替代已封装的底层 WBC 能力。

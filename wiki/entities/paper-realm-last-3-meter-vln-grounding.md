@@ -97,6 +97,16 @@ flowchart LR
 - **一致增益：** REALM Full 在各骨干上全面提升 ONS/GS/OracleGS；ETPNav-ZS ONS@0.1m **相对翻倍**（7.07%→14.66%）；VSP 消融在各设置均带来稳定提升。
 - **真机：** Stretch + RealSense D435if，12 episode；UniNaVid+REALM 相对 vanilla 在 ONS@0.5m、GS、OracleGS 均约 **3–4×** 量级提升（样本量小，作初步证据）。
 
+## 结论
+
+**REALM 真正的贡献是一次评测判据的修正：REVERIE 类连续 VLN 的高 SR 只证明「到了区域」，没证明「看得见实例」——它把这最后数米单独拎出来，用可插拔模块解决，而不是去做更强的长视界规划。**
+
+- 鸿沟是被量化出来的：REVERIE-AIM 上 ETPNav-FT 的 SR 达 34.67% 时 ONS@0.1m 仅 6.32%，而 Human 上界 ONS@0.5m 为 74.71%，说明多数「成功」并未真正贴近实例。
+- 起作用的机制是 **stop 后接管 + 可见性感知**：π_ref（UniNaVid + LoRA）只做短视界重定位，VSP 损失惩罚目标不可见时的过早停车，再由 BERT 短语抽取与 OWLv2 输出边界框。
+- 最大的工程优势是 **上游冻结、架构无关**：在 ETPNav-ZS/FT、UniNaVid-ZS、SmartWay 四类骨干上一致提升 ONS/GS/OracleGS，ETPNav-ZS 的 ONS@0.1m 相对翻倍（7.07%→14.66%）。
+- 失败模式是级联的：开放词汇检测与短语抽取的错误会直接传导到 GS；真机（Stretch，12 episode）虽有约 3–4× 提升，但样本量小，只能作初步证据。
+- 定位互补而非竞争：绝对性能仍远低于 Human 上界，且未覆盖室外与 manipulator 级后续交互；与 [3D-IC](./paper-3d-ic-joint-navigation-manipulation-planning.md) 的全链导航–操作联合规划可叠加使用。
+
 ## 常见误区或局限
 
 - **误区：** REVERIE / REVERIE-CE 的 **SR** 可直接代表「找到并看清目标」；本文表明应并列报告 **ONS / OracleGS**。

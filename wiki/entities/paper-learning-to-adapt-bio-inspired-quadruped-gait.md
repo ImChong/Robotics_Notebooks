@@ -132,6 +132,17 @@ flowchart TB
 | 效率 | 草地 **CoT** 相对固定 trot / run **−18% / −30%** |
 | 代码 | [ihcr/learning_to_adapt](https://github.com/ihcr/learning_to_adapt) + **bio_gait** 子模块；含 **sprint / stresstest / planks / allgaits** 等 demo 与 **figure 复现数据** |
 
+## 结论
+
+**这篇工作的真正贡献不是「能跑 8 种步态」，而是把 gait 切换的决策权交给生物力学指标，并用 BGS 参考 + 状态估计让一条盲策略在非名义接触下仍能改摆腿。**
+
+- 三层分工缺一不可：πG 输出 **Γ\* ∈ [0,7]**，BGS 给出 **βL/βG** 与步态对过渡参考，SE + πL 做名义摆腿之外的微调；消融里去掉 **βL** 或 **SE** 都会在高速/高 roughness 大量失败。
+- 切换判据必须是复合的：**CoT + τ% + Wext + c_avg^err** 联合优化才复现动物的 **过渡相**，单指标训练会出现过早切换、无过渡相或过度混 gait。
+- 泛化机制与「堆 domain randomization」不同：πL **仅平地训练**，靠 BGS 摆腿参考 + πL 微调实现盲零样本迁移到十余类实机地形；草地 CoT 相对固定 trot / run 降 **18% / 30%**。
+- 适用边界：**仅本体感知**，在深坑/悬空等需前瞻的任务上有上限；**8 gait** 仍是手工枚举 + BGS 设计；RaiSim 栈与 legged_gym / Isaac 生态不直接互通。
+- 与 [Walk These Ways（MoB）](./paper-walk-these-ways-quadruped-mob.md) 的分界在接口语义：后者用连续行为参数 **b** 索引多样解、由上层调参；本页用离散 **Γ\*** + 指标驱动的自主切换，并把辅助步态当作稳定性恢复手段。
+- 工程侧可复现性较好：[ihcr/learning_to_adapt](https://github.com/ihcr/learning_to_adapt) + **bio_gait** 子模块含 sprint / stresstest / planks / allgaits demo 与 figure 复现数据。
+
 ## 常见误区或局限
 
 - **误区：「多步态 = Walk These Ways 换名」。** [MoB](./paper-walk-these-ways-quadruped-mob.md) 用 **连续行为参数 b** 索引多样解；本文用 **离散 Γ\* + BGS 参考 + πG 生物力学切换**，且强调 **辅助步态恢复** 与 **动物指标对齐**。
