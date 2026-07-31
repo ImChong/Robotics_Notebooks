@@ -5818,8 +5818,9 @@
   var depthRouteCount = document.getElementById('heroDepthRouteCount');
   var mainRouteCard = document.getElementById('home-start-main-route');
   var moreRoutesCard = document.getElementById('home-more-routes');
-  var BORDER_TRACE_MS = 1200;
+  var BORDER_TRACE_MS = 2400;
   var TOGGLE_HINT_MS = 900;
+  var SCROLL_CENTER_FALLBACK_MS = 700;
 
   function setHomeRoutesExpanded(expanded) {
     if (!routeToggle) return;
@@ -5897,6 +5898,29 @@
     }, TOGGLE_HINT_MS);
   }
 
+  /** 将入口卡滚到视口垂直中心，再回调（避免锚点默认顶对齐） */
+  function scrollEntryCardToCenter(card, hash, onReady) {
+    if (!card) {
+      if (onReady) onReady();
+      return;
+    }
+    if (hash && window.history && typeof window.history.replaceState === 'function') {
+      window.history.replaceState(null, '', hash);
+    }
+    var done = false;
+    function ready() {
+      if (done) return;
+      done = true;
+      window.clearTimeout(fallbackTimer);
+      window.removeEventListener('scrollend', onScrollEnd);
+      if (onReady) onReady();
+    }
+    function onScrollEnd() { ready(); }
+    card.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+    window.addEventListener('scrollend', onScrollEnd, { once: true });
+    var fallbackTimer = window.setTimeout(ready, SCROLL_CENTER_FALLBACK_MS);
+  }
+
   if (routeToggle) {
     routeToggle.addEventListener('click', function () {
       var expanded = routeToggle.getAttribute('aria-expanded') === 'true';
@@ -5904,27 +5928,33 @@
     });
   }
 
-  // Hero「主路线」数字：定位到「从零开始」卡并顺时针描边一圈
+  // Hero「主路线」数字：滚到「从零开始」卡中心并顺时针描边一圈
   if (mainRouteCount && mainRouteCard) {
-    mainRouteCount.addEventListener('click', function () {
-      window.setTimeout(function () {
+    mainRouteCount.addEventListener('click', function (event) {
+      event.preventDefault();
+      scrollEntryCardToCenter(mainRouteCard, '#home-start-main-route', function () {
         playCardBorderTrace(mainRouteCard);
-      }, 0);
+      });
     });
   }
 
-  // Hero「纵深路线」数字：定位到「更多路线」卡描边一圈（不展开），随后高亮展开按钮文案
+  // Hero「纵深路线」数字：滚到「更多路线」卡中心描边一圈（不展开），随后高亮展开按钮文案
   if (depthRouteCount && moreRoutesCard) {
-    depthRouteCount.addEventListener('click', function () {
-      window.setTimeout(function () {
+    depthRouteCount.addEventListener('click', function (event) {
+      event.preventDefault();
+      scrollEntryCardToCenter(moreRoutesCard, '#home-more-routes', function () {
         playCardBorderTrace(moreRoutesCard, pulseRouteToggleHint);
-      }, 0);
+      });
     });
   }
   if (window.location.hash === '#home-start-main-route' && mainRouteCard) {
-    playCardBorderTrace(mainRouteCard);
+    scrollEntryCardToCenter(mainRouteCard, null, function () {
+      playCardBorderTrace(mainRouteCard);
+    });
   } else if (window.location.hash === '#home-more-routes' && moreRoutesCard) {
-    playCardBorderTrace(moreRoutesCard, pulseRouteToggleHint);
+    scrollEntryCardToCenter(moreRoutesCard, null, function () {
+      playCardBorderTrace(moreRoutesCard, pulseRouteToggleHint);
+    });
   }
 
   // ── Wiki 全文搜索（index.html 搜索框） ────────────────────────────────────

@@ -1,3 +1,8 @@
+## [2026-07-31] structural | docs/main.js — Hero 路线数字描边时长×2；跳转改为 scrollIntoView 居中
+
+- **时长：** 边框顺时针描边 `1.05s → 2.1s`（`BORDER_TRACE_MS` 1200→2400）
+- **滚动：** 主路线/纵深路线数字 `preventDefault` 后 `scrollIntoView({ block: 'center' })`，卡片落在视口垂直中心再播特效
+
 ## [2026-07-31] structural | docs/index.html — Hero 主路线/纵深路线改为锚到入口卡+顺时针描边；纵深不再自动展开，描边后高亮展开按钮
 
 - **主路线数字：** `#home-start-main-route`（从零开始卡）+ 边框顺时针高亮一圈后移除
