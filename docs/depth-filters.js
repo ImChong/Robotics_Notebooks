@@ -1,20 +1,21 @@
 /*
  * 路线视图（Depth Filters）单一事实源。
- * 仅包含策展的 21 条 roadmap/depth-*.md 纵深路线；
+ * 包含主路线 roadmap/motion-control.md + 策展的 21 条 roadmap/depth-*.md 纵深路线；
  * 由 graph.html（路线筛选）与 detail.html / main.js（详情页「所属路线」徽标）共享。
  *
  * 命中优先级（与 graph.html nodeMatchesDepth 一致）：
  *   excludeSegments 命中 → 直接排除；ids 显式纳入 → 命中；
  *   communities 命中 → 命中；segments 命中任一 → 命中。
  *
- * 每个纵深的汇总锚点是对应 roadmap/depth-*.md（DEPTH_META.wikiPath），
+ * 每条路线的汇总锚点是对应 roadmap/*.md（DEPTH_META.wikiPath），
  * 并写入 DEPTH_FILTERS[key].ids 以保证路线视图下始终可见。
  */
 (function (global) {
   'use strict';
 
-  /* 与首页 / roadmap/README 一致的历史顺序（21 条）。 */
+  /* 主路线置顶，其后与首页 / roadmap/README 一致的纵深历史顺序（21 条）。 */
   var DEPTH_ORDER = [
+    'motion-control',
     'teleoperation',
     'torque-motor-design',
     'classical-control',
@@ -39,6 +40,7 @@
   ];
 
   var DEPTH_HUB_IDS = {
+    'motion-control': 'roadmap/motion-control.md',
     'teleoperation': 'roadmap/depth-teleoperation.md',
     'torque-motor-design': 'roadmap/depth-torque-motor-design.md',
     'classical-control': 'roadmap/depth-classical-control.md',
@@ -77,6 +79,83 @@
   }
 
   var DEPTH_FILTERS = {
+    /* 主路线：以 motion-control.md 正文链出的 wiki 节点为命中集（不含 depth-* 纵深页）。 */
+    'motion-control': {
+      segments: new Set(),
+      ids: mergeIds('motion-control', [
+        'wiki/comparisons/gmr-vs-nmr-vs-reactor.md',
+        'wiki/comparisons/humanoid-reference-motion-datasets.md',
+        'wiki/comparisons/mpc-vs-rl.md',
+        'wiki/comparisons/ppo-vs-sac.md',
+        'wiki/comparisons/wbc-vs-rl.md',
+        'wiki/concepts/capture-point-dcm.md',
+        'wiki/concepts/centroidal-dynamics.md',
+        'wiki/concepts/contact-dynamics.md',
+        'wiki/concepts/domain-randomization.md',
+        'wiki/concepts/embodied-rl-minimal-closed-loop.md',
+        'wiki/concepts/floating-base-dynamics.md',
+        'wiki/concepts/hqp.md',
+        'wiki/concepts/kinematic-vs-dynamic-feasibility.md',
+        'wiki/concepts/lip-zmp.md',
+        'wiki/concepts/motion-data-quality.md',
+        'wiki/concepts/motion-retargeting-pipeline.md',
+        'wiki/concepts/motion-retargeting.md',
+        'wiki/concepts/optimal-control.md',
+        'wiki/concepts/sim2real.md',
+        'wiki/concepts/state-estimation.md',
+        'wiki/concepts/system-identification.md',
+        'wiki/concepts/tsid.md',
+        'wiki/concepts/whole-body-control.md',
+        'wiki/entities/amass.md',
+        'wiki/entities/crocoddyl.md',
+        'wiki/entities/dreamwaq-plus.md',
+        'wiki/entities/extreme-parkour.md',
+        'wiki/entities/hands-on-rl-book.md',
+        'wiki/entities/humanoid-robot.md',
+        'wiki/entities/isaac-gym-isaac-lab.md',
+        'wiki/entities/lafan1-dataset.md',
+        'wiki/entities/learn-robotics-qqfly-guide.md',
+        'wiki/entities/legged-gym.md',
+        'wiki/entities/linear-algebra-curriculum.md',
+        'wiki/entities/modern-robotics-book.md',
+        'wiki/entities/numerical-optimization-curriculum.md',
+        'wiki/entities/pinocchio.md',
+        'wiki/entities/pybullet.md',
+        'wiki/formalizations/contact-wrench-cone.md',
+        'wiki/formalizations/lqr.md',
+        'wiki/formalizations/mdp.md',
+        'wiki/formalizations/motion-retargeting-objective.md',
+        'wiki/formalizations/pomdp.md',
+        'wiki/formalizations/se3-representation.md',
+        'wiki/formalizations/tsid-formulation.md',
+        'wiki/formalizations/zmp-lip.md',
+        'wiki/methods/amp-reward.md',
+        'wiki/methods/behavior-cloning.md',
+        'wiki/methods/dagger.md',
+        'wiki/methods/deepmimic.md',
+        'wiki/methods/her.md',
+        'wiki/methods/imitation-learning.md',
+        'wiki/methods/model-predictive-control.md',
+        'wiki/methods/motion-retargeting-gmr.md',
+        'wiki/methods/policy-optimization.md',
+        'wiki/methods/reinforcement-learning.md',
+        'wiki/methods/trajectory-optimization.md',
+        'wiki/methods/vla.md',
+        'wiki/overview/bfm-category-03-intrinsic-reward-pretraining.md',
+        'wiki/overview/shenlan-embodied-ai-fundamentals-series.md',
+        'wiki/queries/humanoid-motion-control-know-how.md',
+        'wiki/queries/mpc-solver-selection.md',
+        'wiki/queries/mpc-tuning-guide.md',
+        'wiki/queries/open-source-motion-control-projects.md',
+        'wiki/queries/robot-policy-debug-playbook.md',
+        'wiki/queries/sim2real-checklist.md',
+        'wiki/queries/wbc-implementation-guide.md',
+        'wiki/queries/wbc-tuning-guide.md',
+        'wiki/roadmaps/humanoid-control-roadmap.md',
+        'wiki/tasks/locomotion.md',
+        'wiki/tasks/manipulation.md'
+      ])
+    },
     'teleoperation': {
       segments: new Set([
         'teleoperation', 'teleop', 'teleoperate', 'exoskeleton', 'mocap',
@@ -289,8 +368,14 @@
     }
   };
 
-  /* 纵深展示元信息（emoji + 简称 + 路线锚点 + 导读），与 graph.html chips / 首页顺序一致。 */
+  /* 路线展示元信息（emoji + 简称 + 路线锚点 + 导读），与 graph.html chips 顺序一致。 */
   var DEPTH_META = {
+    'motion-control': {
+      emoji: '🧭',
+      label: '主路线-运动控制',
+      wikiPath: DEPTH_HUB_IDS['motion-control'],
+      description: '运动控制算法工程师成长路线：L−1 全景 → L0–L7 主干与全栈出口。'
+    },
     'teleoperation': {
       emoji: '🎮',
       label: '遥操作',

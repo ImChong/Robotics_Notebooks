@@ -25,12 +25,12 @@
 - **交叉：** [`wiki/entities/humanoid-motion-intelligence.md`](wiki/entities/humanoid-motion-intelligence.md)、[`wiki/queries/hmi-opensource-projects-coverage.md`](wiki/queries/hmi-opensource-projects-coverage.md)、[`scripts/utils/community_labels.py`](scripts/utils/community_labels.py)
 - **说明：** 开源项目主表 166 项此前已覆盖；本轮补齐论文侧缺口并修正两处错误挂接
 
-## [2026-07-31] structural | 图谱「路线视图」仅保留 21 条策展纵深；原专题枢纽改为 hub-* 知识链
+## [2026-07-31] structural | 图谱「路线视图」纳入主路线 + 21 条策展纵深；原专题枢纽改为 hub-* 知识链
 
-- **产品概念：** 策展学习路径仍称「纵深路线」（[`roadmap/depth-*.md`](roadmap/) 共 21 条）；图谱侧栏与详情徽标统一称「**路线视图** / **所属路线**」，取消独立「专题」概念
-- **图谱：** [`docs/depth-filters.js`](docs/depth-filters.js) 与 `graph.html` chips 仅含 21 条；锚点为 `roadmap/depth-*.md`；详情页元数据标签为「所属路线」
+- **产品概念：** 图谱侧栏与详情徽标统一称「**路线视图** / **所属路线**」；路线集 = 主路线 [`roadmap/motion-control.md`](roadmap/motion-control.md) + 21 条纵深 [`roadmap/depth-*.md`](roadmap/)；取消独立「专题」概念
+- **图谱：** [`docs/depth-filters.js`](docs/depth-filters.js) 与 `graph.html` chips：主路线置顶（命中集=主路线正文链出的 wiki 节点），其后 21 条纵深；详情页「所属路线」徽标同步
 - **原专题枢纽：** `wiki/overview/topic-*` → `wiki/overview/hub-*`（称「知识链汇总」，不再叫纵深）；旧 `topic-*` / 误改的 `overview/depth-*` 详情 ID 写入 [`schema/page-aliases.json`](schema/page-aliases.json)
-- **涉及路径：** `docs/depth-filters.js`、`docs/graph.html`、`docs/main.js`、`wiki/overview/hub-*.md`、`roadmap/depth-*.md`
+- **涉及路径：** `docs/depth-filters.js`、`docs/graph.html`、`docs/main.js`、`wiki/overview/hub-*.md`、`roadmap/depth-*.md`、`roadmap/motion-control.md`
 
 ## [2026-07-30] structural | schema/canonical-facts.json — V31 P2 事实库扩展 250 → 260 条，补 10 条感知栈选型矛盾检测规则
 
