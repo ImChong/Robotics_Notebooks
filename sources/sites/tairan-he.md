@@ -47,7 +47,7 @@
 | 力自适应 loco-manipulation | FALCON | **L4DC 2026**；arXiv:2505.06776；<https://lecar-lab.github.io/falcon-humanoid/> |
 | 视觉驱动的全身灵巧（仿真） | PDC | arXiv:2505.12278；<https://www.zhengyiluo.com/PDC-Site/> |
 | 人–人形跨本体模仿 | Humanoid Policy ~ Human Policy | CoRL 2025；arXiv:2503.13441；<https://human-as-robot.github.io/> |
-| 主动探索式系统辨识 Sim2Real | SPI-Active | CoRL 2025；arXiv:2505.14266；<https://lecar-lab.github.io/spi-active_/> |
+| 主动探索式系统辨识 Sim2Real | SPI-Active | CoRL 2025 Oral；arXiv:2505.14266；<https://lecar-lab.github.io/spi-active_/>；代码 <https://github.com/LeCAR-Lab/SPI-Active>；wiki [实体页](../../wiki/entities/paper-notebook-sampling-based-system-identification-with-active.md) |
 | 慢–快双智能体、端部稳定行走 | SoFTA（Hold My Beer） | CoRL 2025 / RSS 2025 Workshop；<https://lecar-lab.github.io/SoFTA/> |
 | 仿真–真机动力学对齐（残差动作等） | ASAP | **RSS 2025**；<https://agile.human2humanoid.com/> |
 | 多模式全身神经控制蒸馏 | HOVER | ICRA 2025；arXiv:2410.21229；<https://hover-versatile-humanoid.github.io/> |

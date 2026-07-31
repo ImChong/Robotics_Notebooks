@@ -1,13 +1,64 @@
 {
   "generated_at": "2026-07-31",
   "node_count": 2054,
-  "edge_count": 18403,
+  "edge_count": 18417,
   "coverage": {
     "covered": 2004,
     "total": 2030,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-notebook-sampling-based-system-identification-with-active.md",
+      "detail_id": "entity-paper-notebook-sampling-based-system-identification-with-active",
+      "label": "SPI-Active（采样式 SysID + 主动探索）",
+      "type": "entity",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/concepts/system-identification.md",
+      "detail_id": "wiki-concepts-system-identification",
+      "label": "System Identification",
+      "type": "concept",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/methods/cma-es.md",
+      "detail_id": "wiki-methods-cma-es",
+      "label": "CMA-ES（协方差矩阵自适应进化策略）",
+      "type": "method",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/queries/sim2real-gap-reduction.md",
+      "detail_id": "wiki-queries-sim2real-gap-reduction",
+      "label": "Sim2Real Gap 缩减实战指南",
+      "type": "query",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-pace-sim2real-legged-robots.md",
+      "detail_id": "entity-paper-pace-sim2real-legged-robots",
+      "label": "PACE（足式系统化 Sim2Real）",
+      "type": "entity",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/paper-wan-dancer.md",
       "detail_id": "entity-paper-wan-dancer",
@@ -149,7 +200,8 @@
       "type": "roadmap_page",
       "recency": "2026-07-31",
       "source": "log.md",
-      "action": "maintained"
+      "action": "maintained",
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "roadmap/depth-humanoid-soccer.md",
@@ -159,82 +211,31 @@
       "recency": "2026-07-31",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-humanoid-swarm-performance.md",
-      "detail_id": "roadmap-depth-humanoid-swarm-performance",
-      "label": "路线（纵深）：如果目标是人形群控展演（群舞同步 → 编队走位 → 群体特技）",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-imitation-learning.md",
-      "detail_id": "roadmap-depth-imitation-learning",
-      "label": "路线（纵深）：如果目标是模仿学习与技能迁移",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-loco-manipulation.md",
-      "detail_id": "roadmap-depth-loco-manipulation",
-      "label": "路线（纵深）：如果目标是 Loco-Manipulation（移动操作）",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-motion-generation.md",
-      "detail_id": "roadmap-depth-motion-generation",
-      "label": "路线（纵深）：如果目标是动作生成（文本/多模态 → 人形动作）",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-motion-retargeting.md",
-      "detail_id": "roadmap-depth-motion-retargeting",
-      "label": "路线（纵深）：如果目标是动作重定向（人体动作 → 机器人参考轨迹）",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-wan-dancer.md",
-    "detail_id": "entity-paper-wan-dancer",
-    "label": "Wan-Dancer（分钟级连贯 Music-to-Dance 视频生成）",
+    "path": "wiki/entities/paper-notebook-sampling-based-system-identification-with-active.md",
+    "detail_id": "entity-paper-notebook-sampling-based-system-identification-with-active",
+    "label": "SPI-Active（采样式 SysID + 主动探索）",
     "type": "entity",
     "recency": "2026-07-31",
     "source": "log.md",
     "action": "maintained",
     "has_repo": true,
-    "community_label": "生成式世界模型（Generative World Models） 社区"
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
-      "label": "视觉-语言-动作",
-      "size": 157
-    },
-    {
       "label": "仿真到现实",
-      "size": 150
+      "size": 194
     },
     {
-      "label": "人形强化学习运动控制",
-      "size": 142
+      "label": "视觉-语言-动作",
+      "size": 169
     },
     {
       "label": "移动操作",
-      "size": 142
+      "size": 157
     },
     {
       "label": "操作",
@@ -243,6 +244,10 @@
     {
       "label": "模仿学习",
       "size": 139
+    },
+    {
+      "label": "人形论文深读笔记",
+      "size": 137
     }
   ],
   "top_hubs": [
@@ -250,7 +255,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 400,
+      "degree": 401,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

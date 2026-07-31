@@ -1,18 +1,20 @@
 ---
 type: concept
 summary: "System Identification 通过估计动力学和执行器参数缩小模型误差，是高性能控制和 sim2real 的关键支撑。"
-updated: 2026-07-28
+updated: 2026-07-31
 related:
   - ./robot-link-and-rotor-inertia.md
   - ../entities/paper-bam-extended-friction-servo-actuators.md
   - ../entities/bam-better-actuator-models.md
   - ../entities/paper-pace-sim2real-legged-robots.md
+  - ../entities/paper-notebook-sampling-based-system-identification-with-active.md
   - ../queries/sim2real-closed-loop-engineering.md
   - ./sim2real.md
 sources:
   - ../../sources/papers/robot_link_rotor_inertia_primary_refs.md
   - ../../sources/papers/system_identification.md
   - ../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md
+  - ../../sources/papers/spi_active_arxiv_2505_14266.md
 ---
 
 # System Identification
@@ -307,12 +309,14 @@ MPC 的预测质量高度依赖模型质量。模型错得离谱，预测再漂�
 - [Joint Friction Models](./joint-friction-models.md)、[Friction Compensation](./friction-compensation.md)
 - [Quadruped Control Curriculum](../entities/quadruped-control-curriculum.md)
 - [PACE（足式系统化 Sim2Real）](../entities/paper-pace-sim2real-legged-robots.md) — chirp 悬空数据 + [CMA-ES](../methods/cma-es.md) 紧凑关节参数辨识（arXiv:2509.06342）
+- [SPI-Active（采样式 SysID + 主动探索）](../entities/paper-notebook-sampling-based-system-identification-with-active.md) — GPU 并行采样辨识 Go2 质量/惯量 + 最大化 FIM 的主动激励（CoRL 2025 Oral）
 - [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md) — SysID → 训练 → 前馈/适应 → 安全的持续校准闭环
 
 ## 参考来源
 
 - [sources/papers/system_identification.md](../../sources/papers/system_identification.md) — ingest 档案（Nguyen 2011 / Gautier 激励轨迹 / Hwangbo ActuatorNet 2019）
 - [sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md](../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md) — SysID 作为 Sim2Real 起点、勿在默认 URDF 上盲目扩 DR
+- [sources/papers/spi_active_arxiv_2505_14266.md](../../sources/papers/spi_active_arxiv_2505_14266.md) — SPI-Active：采样式辨识 + 主动探索最大化 FIM（CoRL 2025）
 - Gautier & Khalil, *Direct calculation of minimum set of inertial parameters of serial robots* — 最小参数集辨识经典
 - Wensing et al., *Linear Matrix Inequalities for Physically Consistent Inertial Parameter Identification* (2018) — 物理一致性约束辨识
 - Hwangbo et al., *Learning Agile and Dynamic Motor Skills for Legged Robots* (2019) — 执行器网络用于模型 gap 处理

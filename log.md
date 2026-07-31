@@ -1,3 +1,5 @@
+## [2026-07-31] ingest | sources/repos/spi-active.md — 接入 LeCAR-Lab/SPI-Active（CoRL 2025 Oral）采样式 SysID+主动探索；升格 wiki/entities/paper-notebook-sampling-based-system-identification-with-active.md；交叉更新 wiki/concepts/system-identification.md、wiki/methods/cma-es.md、wiki/queries/sim2real-gap-reduction.md、wiki/entities/paper-pace-sim2real-legged-robots.md；sources/papers/spi_active_arxiv_2505_14266.md、sources/sites/spi-active.md
+
 ## [2026-07-31] structural | docs/main.js + docs/style.css — 首页入口卡边框描边按 border-box 像素对齐，修复多分辨率错位
 
 - **问题：** 描边 SVG 用 `offsetWidth`（border-box）写 viewBox，CSS 用 padding-box 的 `inset`/`%` 定尺寸，亚像素宽度下左右/上下外扩不对称，且 viewBox 被缩放导致圆角偏离卡片边框

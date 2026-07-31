@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, repo, sim2real, system-identification, actuator, locomotion, isaac-lab, anymal, quadruped, energy-efficiency, eth, ppo]
 status: complete
-updated: 2026-07-24
+updated: 2026-07-31
 arxiv: "2509.06342"
 venue: IJRR (submitted)
 code: https://github.com/leggedrobotics/pace-sim2real
@@ -17,6 +17,7 @@ related:
   - ./anymal.md
   - ./sage-sim2real-actuator-gap-estimator.md
   - ./paper-bam-extended-friction-servo-actuators.md
+  - ./paper-notebook-sampling-based-system-identification-with-active.md
   - ./robotic-world-model-eth-rsl.md
   - ../queries/actuator-drive-chain-selection-loop.md
 sources:
@@ -166,6 +167,7 @@ flowchart TB
 
 - **[Sim2Real](../concepts/sim2real.md)：** PACE 代表 **SysID 对齐 + 紧凑物理 reward** 路线，与 DR、RMA、处理器在环等可组合但论文强调 **无需动力学 DR**。
 - **[System Identification](../concepts/system-identification.md)：** 执行器层 moderate-data 辨识实例；参数有明确物理含义。
+- **[SPI-Active](./paper-notebook-sampling-based-system-identification-with-active.md)：** 同为足式采样/CMA-ES SysID；PACE 偏悬空关节动力学，SPI-Active 偏 base 惯量 + 主动激励（FIM）。
 - **[Actuator Network](../methods/actuator-network.md)：** 论文主要黑盒对照；PACE 用可解释参数达到更接近真机的悬空轨迹。
 - **[Sim2Real 方法对比](../comparisons/sim2real-approaches.md)：** 可归入 moderate-data / 残差物理先验谱系。
 
