@@ -1,3 +1,12 @@
+## [2026-07-31] ingest | sources/repos/video-shotcraft.md — 接入 Vincentwei1021/video-shotcraft（Trendshift 上榜 AI 动效技能库）；升格 wiki/entities/video-shotcraft.md
+
+- **触发：** 用户给出 `trendshift/video-shotcraft`（**404**）；核实为 [Trendshift](https://trendshift.io/repositories/88911) 榜单徽章，官方仓为 [`Vincentwei1021/video-shotcraft`](https://github.com/Vincentwei1021/video-shotcraft)
+- **Sources：** [`sources/repos/video-shotcraft.md`](sources/repos/video-shotcraft.md)、[`sources/sites/video-shotcraft-gallery.md`](sources/sites/video-shotcraft-gallery.md)
+- **Wiki：** [`wiki/entities/video-shotcraft.md`](wiki/entities/video-shotcraft.md)（104 镜头卡 / 161 样片 / Ink Press 模板、三种模式、八阶段流水线、开源与 Remotion 许可边界）
+- **交叉：** [`gsap-skills`](wiki/entities/gsap-skills.md)、[`mattpocock-skills`](wiki/entities/mattpocock-skills.md)、[`img2threejs`](wiki/entities/img2threejs.md)、[`manim`](wiki/entities/manim.md)、[`sensenova-skills`](wiki/entities/sensenova-skills.md)
+- **开源：** Apache-2.0 技能库 + Gallery Pages；Remotion / Mixkit 另有条款
+
+
 ## [2026-07-31] fix | docs/main.js + docs/style.css — 首页「项目查询」点击卡顿：立刻聚焦、近中心即描边、静默预取搜索索引
 
 - **问题：** 点击「项目查询」后需等 `scrollend`（或 700ms fallback）才聚焦/播描边；同时 focus 同步写「加载中…」并拉取解析大体积 `search-index.json`，主线程卡一下再跳

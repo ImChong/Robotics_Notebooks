@@ -9,10 +9,11 @@ tags:
   - deep-research
   - data-analysis
 status: complete
-updated: 2026-05-21
+updated: 2026-07-31
 related:
   - ./hermes-agent.md
   - ./mattpocock-skills.md
+  - ./video-shotcraft.md
   - ./agent-reach.md
   - ./superpowers-obra.md
   - ../references/llm-wiki-karpathy.md
@@ -93,6 +94,7 @@ flowchart LR
 
 - [Hermes Agent](hermes-agent.md) — 推荐运行时之一，`~/.hermes/skills/` 安装位
 - [Skills For Real Engineers（mattpocock）](mattpocock-skills.md) — **编码工程** 向 Agent Skills 对照
+- [video-shotcraft](video-shotcraft.md) — **Remotion 产品宣传片** 垂直 Agent Skill（与办公 PPT/信息图互补的成片层）
 - [Agent Reach](agent-reach.md) — 外网读搜渠道脚手架
 - [Superpowers（obra）](superpowers-obra.md) — **重流程编码交付** 技能方法论
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 持久知识编译范式

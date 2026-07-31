@@ -1378,6 +1378,7 @@
 - [URKL（Ultimate Robot Knock-out Legend · EngineAI 人形格斗联赛）](wiki/entities/urkl.md) — URKL** 是深圳 **众擎机器人（ENGINEAI）** 发起并主办的 **全尺寸人形机器人格斗联赛**：全球队伍在 **同一 T800 硬件平台** 上比拼 **运控、平衡、感知与战术算法 `📅unknown` `[entity_page]`
 - [Vast.ai](wiki/entities/vast-ai.md) — Vast.ai**（vast.ai）运营 **GPU 算力市场**：分散主机报价，用户按价格、显存、可靠性分数租卡，是国外 **极致低价** 实验路径。 `📅unknown` `[entity_page]`
 - [VESC（开源大电流电机驱动）](wiki/entities/vesc.md) — VESC**（vesc-project.com）是 Benjamin Vedder 发起的开源电机控制器生态：固件仓 [vedderb/b `📅unknown` `[entity_page]`
+- [video-shotcraft（Vincentwei1021/video-shotcraft）](wiki/entities/video-shotcraft.md) — video-shotcraft** 是 [Vincentwei1021/video-shotcraft](https://github.com/Vincentwei1021/video-shotc `📅unknown` `[entity_page]`
 - [VideoMimic](wiki/entities/videomimic.md) — VideoMimic**（<https://github.com/hongsukchoi/VideoMimic>，<https://videomimic.github.io/>）实现 **视频驱动 `📅unknown` `[entity_page]`
 - [VINS-Fusion](wiki/entities/vins-fusion.md) — VINS-Fusion** 提供 **滑动窗口优化** 的视觉-惯性里程计与可选 GPS 融合。 `📅unknown` `[entity_page]`
 - [Vision Banana](wiki/entities/vision-banana.md) — Vision Banana**（*Image Generators are Generalist Vision Learners*，arXiv:2604.20329，[项目页](https://v `📅unknown` `[entity_page]`
