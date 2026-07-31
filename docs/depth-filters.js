@@ -372,7 +372,7 @@
   var DEPTH_META = {
     'motion-control': {
       emoji: '🧭',
-      label: '主路线',
+      label: '主路线-运动控制',
       wikiPath: DEPTH_HUB_IDS['motion-control'],
       description: '运动控制算法工程师成长路线：L−1 全景 → L0–L7 主干与全栈出口。'
     },
