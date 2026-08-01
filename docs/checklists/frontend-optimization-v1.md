@@ -52,7 +52,7 @@
 - [x] 重构 Hero 区布局，引入 D3 动态背景。
 
 ### Phase 3: 体验打磨 (UX)
-- [ ] 搜索结果列表优化：支持卡片式快速预览。
+- [x] 搜索结果列表优化：支持卡片式快速预览。首页搜索结果卡片摘要默认按 2 行 `-webkit-line-clamp` 收起（仅摘要长度 > 120 字符时），卡片内提供「预览全文 / 收起」就地展开开关（`.result-preview-toggle`，`aria-expanded` 同步），无需跳转详情页即可快速预览完整摘要；短摘要卡片不显示开关。验证脚本 `scripts/verify_search_preview.cjs`（`slam` → 10 张卡片 / 4 个预览开关；收起态 clientH 45 < scrollH 89、展开后全显 89）。
 - [ ] 详情页浮窗联动。
 - [x] 图谱页移动端动态视口：Chrome 底栏显隐时 `#graph-wrap` 用 `--app-vh`（`visualViewport.height`）撑满，消除下方空白条。
 - [x] 详情页 Markdown 渲染修复：正文独立 `---` 行渲染为分隔线，并按整行分隔符剥离 YAML frontmatter。
