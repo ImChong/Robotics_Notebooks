@@ -107,6 +107,7 @@
 - [x] 同步刷新 README `media/site-demo.gif`（`scripts/record_readme_demo.cjs`，1933 节点；首页帧已无入口区标题/副标题）。
 - [x] 再次同步刷新 README `media/site-demo.gif`（`scripts/record_readme_demo.cjs`，2031 节点 / 17987 边；70 frames / 3.21 MB）。
 - [x] 再次同步刷新 README `media/site-demo.gif`（`scripts/record_readme_demo.cjs`，2058 节点 / 18475 边；70 frames / 3.12 MB）。
+- [x] 再次同步刷新 README `media/site-demo.gif`：录制脚本真实点击「项目查询 / 知识图谱」入口卡并纳入顺时针描框特效（`scripts/record_readme_demo.cjs`，2060 节点 / 18500 边；88 frames / 3.48 MB）。
 
 ---
 

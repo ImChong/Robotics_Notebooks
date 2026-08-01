@@ -1,3 +1,10 @@
+## [2026-08-01] structural | media/site-demo.gif — 重录 README 演示 GIF，纳入入口卡顺时针描边
+
+- **脚本：** [`scripts/record_readme_demo.cjs`](scripts/record_readme_demo.cjs)（88 frames / 3.48 MB；图谱 **2060** 节点 / **18500** 边）
+- **变更：** 首页段改为真实点击「项目查询 / 知识图谱」入口卡，录制滚动落点后的顺时针描框特效；字幕同步为 ①–⑩
+- **流程：** `make export graph` → `docs/` 本地 `http.server 8765` → 重录并写回 `media/site-demo.gif`
+- **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md)
+
 ## [2026-08-01] fix | docs/mini-graph.js — 首页预览剔除 Top-N 诱导子图孤儿并回填
 
 - **问题：** 预览取全站度数 Top-50 后只保留诱导边；如「机器人视觉感知栈选型闭环」全局度数高但邻居都不在 Top-50，会以孤立点漂浮
