@@ -3,7 +3,7 @@ type: method
 tags: [robotics, motion-retargeting, reinforcement-learning, bilevel-optimization, humanoid, quadruped, imitation-learning, paper, humanoid-paper-notebooks]
 status: complete
 date: 2026-05-13
-updated: 2026-07-16
+updated: 2026-08-01
 arxiv: "2605.06593"
 related:
   - ../overview/paper-notebook-category-02-motion-retargeting.md
@@ -14,9 +14,11 @@ related:
   - ./deepmimic.md
   - ./imitation-learning.md
   - ../tasks/locomotion.md
+  - ../entities/disney-research-la.md
 sources:
   - ../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md
   - ../../sources/papers/humanoid_pnb_reactor.md
+  - ../../sources/sites/disney-research-la.md
 summary: "ReActor 将跨具身运动重定向建成物理仿真中的双层问题：上层优化少量语义刚体对应下的参数化参考轨迹，下层用 RL 跟踪该参考；用问题结构导出可计算的上层近似梯度，并与残差根力、相位式启动等工程细节结合，在强异构人形与四足上生成少伪影的可跟踪参考。"
 ---
 
@@ -106,6 +108,7 @@ flowchart LR
 - [DeepMimic](./deepmimic.md) — 「跟踪固定参考」的经典 RL 设定，可与本文「先造参考」对照。
 - [Imitation Learning](./imitation-learning.md) — 下游如何利用高质量参考与奖励 shaping。
 - [Locomotion](../tasks/locomotion.md) — 四足与人形步态参考在任务层的落点。
+- [Disney Research LA](../entities/disney-research-la.md) — 官方 publication 门户与角色机器人论文簇枢纽。
 
 ## 推荐继续阅读
 
@@ -116,5 +119,6 @@ flowchart LR
 ## 参考来源
 
 - [reactor_rl_physics_aware_motion_retargeting（本入库摘录）](../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md)
+- [Disney Research LA Research 总览归档](../../sources/sites/disney-research-la.md)
 - 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/02_Motion_Retargeting/ReActor__Reinforcement_Learning_for_Physics-Aware_Motion_Retargeting/ReActor__Reinforcement_Learning_for_Physics-Aware_Motion_Retargeting.html>
 - 论文：<https://arxiv.org/abs/2605.06593v1>

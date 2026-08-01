@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, motion-tracking, motion-prior, physics-based-animation, reinforcement-learning, character-animation, eth, disney, sim2real]
 status: complete
-updated: 2026-06-29
+updated: 2026-08-01
 venue: "SCA 2024"
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md

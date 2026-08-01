@@ -1,13 +1,83 @@
 {
   "generated_at": "2026-08-01",
-  "node_count": 2058,
-  "edge_count": 18475,
+  "node_count": 2060,
+  "edge_count": 18500,
   "coverage": {
-    "covered": 2008,
-    "total": 2034,
+    "covered": 2010,
+    "total": 2036,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/disney-research-la.md",
+      "detail_id": "entity-disney-research-la",
+      "label": "Disney Research LA（研究门户）",
+      "type": "entity",
+      "recency": "2026-08-01",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/entities/disney-holotile.md",
+      "detail_id": "entity-disney-holotile",
+      "label": "Disney Holotile（全向活动地板）",
+      "type": "entity",
+      "recency": "2026-08-01",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/methods/disney-olaf-character-robot.md",
+      "detail_id": "wiki-methods-disney-olaf-character-robot",
+      "label": "Disney Olaf 角色机器人（实机动画角色）",
+      "type": "method",
+      "recency": "2026-08-01",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/methods/reactor-physics-aware-motion-retargeting.md",
+      "detail_id": "wiki-methods-reactor-physics-aware-motion-retargeting",
+      "label": "ReActor（物理感知 RL 运动重定向）",
+      "type": "method",
+      "recency": "2026-08-01",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/concepts/character-animation-vs-robotics.md",
+      "detail_id": "wiki-concepts-character-animation-vs-robotics",
+      "label": "Character Animation vs Robotics（角色动画与机器人控制的边界）",
+      "type": "concept",
+      "recency": "2026-08-01",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/entities/open-duck-mini.md",
+      "detail_id": "entity-open-duck-mini",
+      "label": "Open Duck Mini",
+      "type": "entity",
+      "recency": "2026-08-01",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/tasks/locomotion.md",
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "recency": "2026-08-01",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "运动控制（Locomotion） 社区"
+    },
     {
       "path": "wiki/references/llm-wiki-karpathy.md",
       "detail_id": "wiki-references-llm-wiki-karpathy",
@@ -94,16 +164,6 @@
       "community_label": "运动控制（Locomotion） 社区"
     },
     {
-      "path": "wiki/tasks/locomotion.md",
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
       "path": "wiki/entities/quadruped-robot.md",
       "detail_id": "entity-quadruped-robot",
       "label": "四足机器人（Quadruped Robot）",
@@ -152,79 +212,17 @@
       "recency": "2026-07-31",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/concepts/lip-zmp.md",
-      "detail_id": "wiki-concepts-lip-zmp",
-      "label": "LIP / ZMP",
-      "type": "concept",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/concepts/terrain-adaptation.md",
-      "detail_id": "wiki-concepts-terrain-adaptation",
-      "label": "Terrain Adaptation（地形适应）",
-      "type": "concept",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/concepts/privileged-training.md",
-      "detail_id": "wiki-concepts-privileged-training",
-      "label": "Privileged Training（特权信息训练）",
-      "type": "concept",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/unitree-g1.md",
-      "detail_id": "entity-unitree-g1",
-      "label": "Unitree G1 (人形机器人)",
-      "type": "entity",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/unitree-rl-lab.md",
-      "detail_id": "entity-unitree-rl-lab",
-      "label": "unitree_rl_lab",
-      "type": "entity",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-diffsheg.md",
-      "detail_id": "entity-paper-diffsheg",
-      "label": "DiffSHEG（语音驱动整体 3D 表情与手势扩散生成）",
-      "type": "entity",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/references/llm-wiki-karpathy.md",
-    "detail_id": "wiki-references-llm-wiki-karpathy",
-    "label": "LLM Wiki",
-    "type": "reference",
+    "path": "wiki/entities/disney-research-la.md",
+    "detail_id": "entity-disney-research-la",
+    "label": "Disney Research LA（研究门户）",
+    "type": "entity",
     "recency": "2026-08-01",
     "source": "log.md",
-    "action": "maintained",
-    "community_label": "大语言模型维基（LLM Wiki） 社区"
+    "action": "added",
+    "community_label": "模仿学习（Imitation Learning, IL） 社区"
   },
   "top_communities": [
     {
@@ -233,7 +231,7 @@
     },
     {
       "label": "模仿学习",
-      "size": 158
+      "size": 156
     },
     {
       "label": "操作",
@@ -245,11 +243,11 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 139
+      "size": 137
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 134
+      "size": 135
     }
   ],
   "top_hubs": [
@@ -296,7 +294,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 290,
+      "degree": 293,
       "community_label": "运动控制（Locomotion） 社区"
     },
     {

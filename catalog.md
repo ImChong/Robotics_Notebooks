@@ -94,6 +94,8 @@
 - [Dexmal DM0.5](wiki/entities/dexmal-dm05.md) — DM0.5**（Dexmal 官方博客）是 [Dexmal](https://www.dexmal. `📅unknown` `[entity_page]`
 - [Dexmal DW05（OpenDW）](wiki/entities/dexmal-dw05.md) — DW05**（2026-07，GitHub `dexmal/opendw`，[DW05-Base](https://hugg `📅unknown` `[entity_page]`
 - [DimOS（Dimensional 物理空间 Agent OS）](wiki/entities/dimensionalos-dimos.md) — DimOS** 是 Dimensional 推出的 **agent-native 物理空间操作系统**：用 **Python Module + Blueprint** 把相机/LiDAR 感知、S `📅unknown` `[entity_page]`
+- [Disney Holotile（全向活动地板）](wiki/entities/disney-holotile.md) — 一句话定义：** Holotile 是 Disney Research / Imagineering 的 **模块化全向地板**：用大量六边形地砖单元形成可 **被动全向行走** 与 **主动可编 `📅unknown` `[entity_page]`
+- [Disney Research LA（研究门户）](wiki/entities/disney-research-la.md) — 一句话定义：** Disney Research Los Angeles 是迪士尼面向全球研究社区的 **产业 `📅unknown` `[entity_page]`
 - [dm_control（DeepMind Control Suite 与 MuJoCo Python 栈）](wiki/entities/dm-control.md) — dm_control** 指 GitHub 上的 [`google-deepmind/dm_control`](https://github.com/google-deepmind/dm_cont `📅unknown` `[entity_page]`
 - [Drake (机器人工具箱)](wiki/entities/drake.md) — Drake** 是由丰田研究院（Toyota Research Institute, TRI）主导开发，由 Russ Tedrake（MIT 教授）团队深度参与的核心开源机器人软件库。它并非单纯的 `📅unknown` `[entity_page]`
 - [Draw.io Scientific Illustrator](wiki/entities/drawio-scientific-illustrator.md) — Draw.io Scientific Illustrator**（[icebird1998/drawio-scientific-illustrator](https://github.com/ic `📅unknown` `[entity_page]`
