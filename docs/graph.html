@@ -3039,11 +3039,17 @@
       svg.attr('width', W).attr('height', H);
     }
 
-    // Obsidian 风格稳态：用黄金角叶序铺开初始位置，避免把 2k+ 节点塞进
-    // 80px 小团后被 charge=-800 炸开再被 1.8 万条弹簧拉回 → 长时间欠阻尼震荡。
-    const FORCE_CENTER_STRENGTH = 0.05;
-    const FORCE_VELOCITY_DECAY = 0.6;   // 默认 0.4；提高摩擦抑制弹簧回弹
-    const FORCE_ALPHA_DECAY = 0.035;    // 略快冷却，减少「一直在抖」的尾巴
+    // Obsidian 风格稳态（2D）：
+    // 1) 叶序铺开，避免中心小团爆炸；
+    // 2) 高摩擦 + 度数加权弹簧，抑制密图回弹；
+    // 3) 静默 warmup 后再以低 alpha 可见落稳——用户看不到剧烈震荡阶段。
+    const FORCE_CENTER_STRENGTH = 0.07;
+    const FORCE_VELOCITY_DECAY = 0.82;
+    const FORCE_ALPHA_DECAY = 0.055;
+    const FORCE_LINK_STRENGTH = 0.65;   // 实际强度 = 该值 / sqrt(min(deg_s, deg_t))
+    const FORCE_COLLIDE_STRENGTH = 0.35;
+    const FORCE_WARMUP_TICKS = 140;
+    const FORCE_REHEAT_ALPHA = 0.15;
 
     function seedNodePositionsPhyllotaxis(targetNodes) {
       const list = targetNodes || nodes;
@@ -3068,6 +3074,13 @@
       seedNodePositionsPhyllotaxis(nodes);
     }
 
+    function linkStrengthFor(link) {
+      const s = typeof link.source === 'object' ? link.source.id : link.source;
+      const t = typeof link.target === 'object' ? link.target.id : link.target;
+      const deg = Math.min(degreeMap[s] || 1, degreeMap[t] || 1);
+      return FORCE_LINK_STRENGTH / Math.max(1, Math.sqrt(deg));
+    }
+
     function applyCenterGravity2D() {
       // 类似 Obsidian「Center force」：弱向心位置力抑制整图漂移/晃动；
       // forceCenter 只平移质心，本身不提供阻尼。
@@ -3078,16 +3091,17 @@
     // 首帧前先铺开，避免 d3 默认绕原点叶序 + 弱 forceCenter 造成的额外平移震荡。
     seedNodePositionsPhyllotaxis(nodes);
 
-    /* ── 力模拟 ── */
+    /* ── 力模拟（先 stop；DOM 挂好后再静默 warmup + 低 alpha 可见落稳）── */
     const simulation = d3.forceSimulation(nodes)
-      .force('link', d3.forceLink(edges).id(d => d.id).distance(80).strength(0.28))
+      .force('link', d3.forceLink(edges).id(d => d.id).distance(80).strength(linkStrengthFor))
       .force('charge', d3.forceManyBody().strength(chargeStrength).distanceMax(400))
       .force('center', d3.forceCenter(W / 2, H / 2).strength(FORCE_CENTER_STRENGTH))
-      .force('collision', d3.forceCollide().radius(d => scaledRadius(d) + 5).strength(0.6))
+      .force('collision', d3.forceCollide().radius(d => scaledRadius(d) + 5).strength(FORCE_COLLIDE_STRENGTH))
       .force('x', d3.forceX(W / 2).strength(FORCE_CENTER_STRENGTH))
       .force('y', d3.forceY(H / 2).strength(FORCE_CENTER_STRENGTH))
       .velocityDecay(FORCE_VELOCITY_DECAY)
-      .alphaDecay(FORCE_ALPHA_DECAY);
+      .alphaDecay(FORCE_ALPHA_DECAY)
+      .stop();
 
     function pauseSimulation2D() {
       simulation.stop();
@@ -3137,7 +3151,7 @@
       } else {
         applyCenterGravity2D();
       }
-      simulation.alpha(0.3).restart();
+      simulation.alpha(0.15).restart();
     }
 
     /* ── 渲染边 ── */
@@ -3159,7 +3173,7 @@
       .call(d3.drag()
         .on('start', (ev, d) => {
           if (is3DView()) return;
-          if (!ev.active) simulation.alphaTarget(0.3).restart();
+          if (!ev.active) simulation.alphaTarget(0.12).restart();
           d.fx = d.x; d.fy = d.y;
         })
         .on('drag', (ev, d) => {
@@ -3348,8 +3362,8 @@
       }
     }
 
-    syncGraphDomFromSimulation();
-    whenGraphViewportReady(() => finishGraphRenderLoad());
+    // 首屏力布局在下方 runStabilizedLayout2D() 静默预热完成后再 finishLoading，
+    // 避免 loading 消失后主线程被 warmup 卡住、用户看到剧烈震荡。
 
     function getFilterOptions() {
       if (colorMode === 'community') {
@@ -3479,6 +3493,43 @@
       whenGraphViewportReady(() => fitToScreen());
     }
 
+    /** 静默预热再低 alpha 可见落稳：把剧烈膨胀留在离屏 tick，避免初始震荡观感。 */
+    function runStabilizedLayout2D(options) {
+      const opts = options || {};
+      if (opts.reseed) seedNodePositionsPhyllotaxis(nodes);
+      simulation.stop();
+      simulation.alphaTarget(0);
+      simulation.alpha(1);
+
+      const finishWarmup = () => {
+        for (const n of simulation.nodes()) {
+          n.vx = 0;
+          n.vy = 0;
+        }
+        syncGraphDomFromSimulation();
+        simulation.alpha(FORCE_REHEAT_ALPHA).restart();
+      };
+
+      // 交互「刷新布局」分片 warmup，避免主线程卡死；首屏 loading 遮罩下可同步跑完。
+      if (opts.async) {
+        let i = 0;
+        const step = () => {
+          const end = Math.min(i + 20, FORCE_WARMUP_TICKS);
+          for (; i < end; i++) simulation.tick();
+          if (i < FORCE_WARMUP_TICKS) {
+            requestAnimationFrame(step);
+            return;
+          }
+          finishWarmup();
+        };
+        requestAnimationFrame(step);
+        return;
+      }
+
+      for (let i = 0; i < FORCE_WARMUP_TICKS; i++) simulation.tick();
+      finishWarmup();
+    }
+
     function restartForceSimulation() {
       if (is3DView() && graph3dView) {
         graph3dView.restartSimulation();
@@ -3489,9 +3540,7 @@
       userZoomed2D = false;
       label.style('opacity', 0);
       updateGraphViewport();
-      randomizeNodePositions();
-      syncGraphDomFromSimulation();
-      simulation.alpha(1).restart();
+      runStabilizedLayout2D({ reseed: true, async: true });
     }
 
     /* ── Tick ── */
@@ -3506,10 +3555,15 @@
       finishSimulationLoad();
     });
 
+    // 首屏：在 loading 遮罩下静默 warmup，再低 alpha 可见落稳（约 1–2s）。
+    setLoadingProgress(96);
+    runStabilizedLayout2D();
+    whenGraphViewportReady(() => finishGraphRenderLoad());
+
     setTimeout(() => {
       if (simulation.alpha() > 0.01) return;
       finishSimulationLoad();
-    }, 1200);
+    }, 1600);
 
     const restartSimulationBtn = document.getElementById('restart-simulation');
     if (restartSimulationBtn) {
