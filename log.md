@@ -1,3 +1,9 @@
+## [2026-08-01] fix | docs/mini-graph.js — 首页预览剔除 Top-N 诱导子图孤儿并回填
+
+- **问题：** 预览取全站度数 Top-50 后只保留诱导边；如「机器人视觉感知栈选型闭环」全局度数高但邻居都不在 Top-50，会以孤立点漂浮
+- **修复：** 剔除诱导度数为 0 的节点，再按度数序回填能连上当前集合的候选，保持约 50 且无孤儿
+- **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md)
+
 ## [2026-08-01] fix | docs/main.js — 详情页关联迷你图：按规模优先邻居 + 近=重要弹簧
 
 - **问题：** 1-hop 邻居按中文 label 字母序截断 12，重要大节点可能被裁掉；弹簧距离/强度对所有邻居均一，无法表达层级

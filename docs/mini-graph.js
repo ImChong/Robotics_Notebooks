@@ -151,10 +151,45 @@
       return window.RNGraphNodeSize.radiusForDegree(d._degree, maxDegree);
     }
 
+    // 邻接表：预览取 Top-N 诱导子图后，可能出现「全局度数高但邻居都不在 Top-N」的孤立点
+    var adj = {};
+    (gd.edges || []).forEach(function (e) {
+      if (e.source === e.target) return;
+      if (!adj[e.source]) adj[e.source] = [];
+      if (!adj[e.target]) adj[e.target] = [];
+      adj[e.source].push(e.target);
+      adj[e.target].push(e.source);
+    });
+    function hasNeighborInSet(id, idSet) {
+      var neighbors = adj[id] || [];
+      for (var i = 0; i < neighbors.length; i++) {
+        if (idSet.has(neighbors[i])) return true;
+      }
+      return false;
+    }
+
+    var ranked = gd.nodes.slice().sort(function (a, b) {
+      return (degreeMap[b.id] || 0) - (degreeMap[a.id] || 0);
+    });
     var topIds = new Set(
-      gd.nodes.slice().sort(function(a,b){ return (degreeMap[b.id]||0)-(degreeMap[a.id]||0); })
-      .slice(0, PREVIEW_TOP_N).map(function(n){ return n.id; })
+      ranked.slice(0, PREVIEW_TOP_N).map(function (n) { return n.id; })
     );
+    // 剔除诱导子图孤立点（迭代至稳定，避免级联），再按度数序回填可连通候选
+    var dropped = true;
+    while (dropped) {
+      dropped = false;
+      Array.from(topIds).forEach(function (id) {
+        if (!hasNeighborInSet(id, topIds)) {
+          topIds.delete(id);
+          dropped = true;
+        }
+      });
+    }
+    for (var ri = 0; ri < ranked.length && topIds.size < PREVIEW_TOP_N; ri++) {
+      var cand = ranked[ri].id;
+      if (topIds.has(cand)) continue;
+      if (hasNeighborInSet(cand, topIds)) topIds.add(cand);
+    }
 
     var nodes = gd.nodes.filter(function(n){ return topIds.has(n.id); }).map(function(n){
       return {
@@ -168,7 +203,7 @@
     });
     var nodeIdSet = new Set(nodes.map(function(n){ return n.id; }));
     var edges = gd.edges.filter(function(e){
-      return nodeIdSet.has(e.source) && nodeIdSet.has(e.target);
+      return e.source !== e.target && nodeIdSet.has(e.source) && nodeIdSet.has(e.target);
     }).map(function(e){ return {source:e.source, target:e.target}; });
 
     var W = miniWrap.clientWidth || 700, H = 480;
