@@ -92,6 +92,7 @@
 - [x] 首页「互链枢纽 · Top 10」底部入口改为「查看完整榜单 →」，新增 `docs/hubs.html` 全量互链榜单页（数据源 `exports/hub-rankings.json`，全站 / 论文双 tab）。
 - [x] 首页 Hero 盘点条新增「主路线」（数字 1，位于「互链关系」与「纵深路线」之间）；四项数字可点：知识节点 / 互链关系 → `graph.html`，主路线 → 锚到「从零开始」卡并顺时针描边一圈，纵深路线 → 锚到「更多路线」卡描边一圈（不展开）后短时高亮「展开全部…」文案。
 - [x] 首页入口卡边框描边多分辨率对齐：SVG 改为按 border-box 像素定位（计入 border 宽度与亚像素 `getBoundingClientRect`），去掉 padding-box `inset`/`%` 尺寸冲突；圆角跟随 computed `border-radius`；动画期间 ResizeObserver 跟随卡片尺寸。
+- [x] 首页 Hero 顶栏下方留白收紧：桌面 `.hero` padding `68px 0 44px` → `32px 0 28px`，移动端 `38px 0 30px` → `24px 0 22px`，减少「持续更新的机器人技术栈地图」徽章上方空档，入口卡更易落在首屏。
 ---
 
 ### Phase 4: 信息架构优化 (Information Architecture) - [x] *已完成*
