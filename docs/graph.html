@@ -3042,8 +3042,8 @@
     // Obsidian 风格稳态：用黄金角叶序铺开初始位置，避免把 2k+ 节点塞进
     // 80px 小团后被 charge=-800 炸开再被 1.8 万条弹簧拉回 → 长时间欠阻尼震荡。
     const FORCE_CENTER_STRENGTH = 0.05;
-    const FORCE_VELOCITY_DECAY = 0.55;  // 默认 0.4；提高摩擦抑制弹簧回弹
-    const FORCE_ALPHA_DECAY = 0.03;     // 略快冷却，减少「一直在抖」的尾巴
+    const FORCE_VELOCITY_DECAY = 0.6;   // 默认 0.4；提高摩擦抑制弹簧回弹
+    const FORCE_ALPHA_DECAY = 0.035;    // 略快冷却，减少「一直在抖」的尾巴
 
     function seedNodePositionsPhyllotaxis(targetNodes) {
       const list = targetNodes || nodes;

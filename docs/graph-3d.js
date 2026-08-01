@@ -1379,9 +1379,9 @@
         // 因此下方 onNodeDrag / onNodeDragEnd 需在手势期间 d3ReheatSimulation()。
         .warmupTicks(0)
         .cooldownTicks(Infinity)
-        .d3AlphaDecay(0.03)
+        .d3AlphaDecay(0.035)
         .d3AlphaMin(0.001)
-        .d3VelocityDecay(0.55)
+        .d3VelocityDecay(0.6)
         .nodeId('id')
         .nodeRelSize(1)
         .nodeResolution(8)

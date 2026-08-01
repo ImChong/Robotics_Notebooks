@@ -240,8 +240,8 @@
       .force('collision', d3.forceCollide().radius(function(d){ return nodeRadius(d) + 4; }).strength(0.55))
       .force('x', d3.forceX(W/2).strength(0.06))
       .force('y', d3.forceY(H/2).strength(0.06))
-      .velocityDecay(0.55)
-      .alphaDecay(0.035);
+      .velocityDecay(0.6)
+      .alphaDecay(0.04);
 
     line = lineLayer.selectAll('line').data(edges).join('line')
       .attr('stroke-width',1);
