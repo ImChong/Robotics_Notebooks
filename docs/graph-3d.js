@@ -1379,9 +1379,9 @@
         // 因此下方 onNodeDrag / onNodeDragEnd 需在手势期间 d3ReheatSimulation()。
         .warmupTicks(0)
         .cooldownTicks(Infinity)
-        .d3AlphaDecay(0.035)
+        .d3AlphaDecay(0.055)
         .d3AlphaMin(0.001)
-        .d3VelocityDecay(0.6)
+        .d3VelocityDecay(0.82)
         .nodeId('id')
         .nodeRelSize(1)
         .nodeResolution(8)
@@ -1431,7 +1431,7 @@
       if (chargeForce && chargeForce.strength) chargeForce.strength(getChargeStrength());
       // 与 2D 对齐：略降弹簧强度，减轻密图下的回弹震荡。
       var linkForce = graph.d3Force('link');
-      if (linkForce && typeof linkForce.strength === 'function') linkForce.strength(0.28);
+      if (linkForce && typeof linkForce.strength === 'function') linkForce.strength(0.2);
       if (linkForce && typeof linkForce.distance === 'function') linkForce.distance(80);
     }
 
