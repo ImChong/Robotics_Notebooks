@@ -1,3 +1,15 @@
+## [2026-08-01] fix | docs/mini-graph.js — 首页预览剔除 Top-N 诱导子图孤儿并回填
+
+- **问题：** 预览取全站度数 Top-50 后只保留诱导边；如「机器人视觉感知栈选型闭环」全局度数高但邻居都不在 Top-50，会以孤立点漂浮
+- **修复：** 剔除诱导度数为 0 的节点，再按度数序回填能连上当前集合的候选，保持约 50 且无孤儿
+- **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md)
+
+## [2026-08-01] fix | docs/main.js — 详情页关联迷你图：按规模优先邻居 + 近=重要弹簧
+
+- **问题：** 1-hop 邻居按中文 label 字母序截断 12，重要大节点可能被裁掉；弹簧距离/强度对所有邻居均一，无法表达层级
+- **修复：** 按全图度数降序取 Top-16（≤16 全显示）；`forceLink` 距离/强度随邻居半径变化（大邻居更近、吸力更强）；meta 文案标明「近=重要」；完整列表仍走 `graph.html?focus=`
+- **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md)
+
 ## [2026-08-01] fix | docs/main.js — 首页「项目查询 / 知识图谱」入口卡改回窗口顶端对齐
 
 - **问题：** 与 Hero 路线数字共用 `block: 'center'` 后，点击入口卡会把搜索区 / 图谱预览滚到视口中心，不再像旧锚点那样顶对齐

@@ -4434,11 +4434,15 @@
       var neighborIds = Object.keys(neighborSet).filter(function (id) {
         return id !== currentPath && nodeMap[id];
       });
+      // 按全图度数（=节点大小）降序；同度数再按中文 label，保证稳定
       neighborIds.sort(function (a, b) {
+        var da = degreeMap[a] || 0;
+        var db = degreeMap[b] || 0;
+        if (db !== da) return db - da;
         return String(nodeMap[a].label || a).localeCompare(String(nodeMap[b].label || b), 'zh-CN');
       });
-      // 限制最多 12 个邻居，避免拥挤
-      var MAX_NEIGHBORS = 12;
+      // 低度数全显示；高度数取规模 Top-K，避免 180px 迷你图拥挤
+      var MAX_NEIGHBORS = 16;
       if (neighborIds.length > MAX_NEIGHBORS) neighborIds = neighborIds.slice(0, MAX_NEIGHBORS);
 
       wrap.hidden = false;
@@ -4479,6 +4483,26 @@
         return base * (scale || 1);
       }
 
+      // 近 = 重要：邻居半径归一化到 [0,1]，用于弹簧距离/强度
+      function neighborImportanceT(d) {
+        var rMin = window.RNGraphNodeSize.R_MIN;
+        var rMax = window.RNGraphNodeSize.R_MAX;
+        var r = window.RNGraphNodeSize.radiusForDegree(d._degree || 0, maxDegree);
+        var t = (r - rMin) / (rMax - rMin || 1);
+        if (t < 0) t = 0;
+        if (t > 1) t = 1;
+        return t;
+      }
+
+      // 星图边恒为 current → neighbor；兼容 forceLink 解析前后的 id / 节点对象
+      function linkNeighborNode(link) {
+        var t = link.target;
+        if (t && typeof t === 'object') return t;
+        for (var i = 0; i < nodes.length; i++) {
+          if (nodes[i].id === t) return nodes[i];
+        }
+        return { _degree: 0 };
+      }
 
       svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
       svgEl.innerHTML = '';
@@ -4500,7 +4524,15 @@
       svg.call(zoom).on('dblclick.zoom', null);
 
       var sim = window.d3.forceSimulation(nodes)
-        .force('link', window.d3.forceLink(edges).id(function (d) { return d.id; }).distance(54).strength(0.5))
+        .force('link', window.d3.forceLink(edges).id(function (d) { return d.id; })
+          .distance(function (link) {
+            // 大邻居更短弹簧（约 40–72）
+            return 72 - neighborImportanceT(linkNeighborNode(link)) * 32;
+          })
+          .strength(function (link) {
+            // 大邻居更强吸引（约 0.35–0.85）
+            return 0.35 + neighborImportanceT(linkNeighborNode(link)) * 0.5;
+          }))
         .force('charge', window.d3.forceManyBody().strength(-160).distanceMax(220))
         .force('center', window.d3.forceCenter(W / 2, H / 2).strength(0.12))
         .force('collision', window.d3.forceCollide().radius(function (d) { return detailMiniNodeRadius(d) + 8; }).strength(0.7))
@@ -4586,7 +4618,11 @@
       var totalDeg = Object.keys(neighborSet).length;
       var shown = neighborIds.length;
       if (metaEl) {
-        metaEl.textContent = shown + ' / ' + totalDeg + ' 个 1-hop 邻居 · 悬停预览 · 拖拽平移 · 点击跳转';
+        if (shown < totalDeg) {
+          metaEl.textContent = '规模最大的 ' + shown + ' / ' + totalDeg + ' 个 1-hop 邻居（近=重要）· 悬停预览 · 拖拽平移 · 点击跳转';
+        } else {
+          metaEl.textContent = shown + ' 个 1-hop 邻居（近=重要）· 悬停预览 · 拖拽平移 · 点击跳转';
+        }
       }
       if (allNeighborsLink) {
         if (totalDeg > 0) {
