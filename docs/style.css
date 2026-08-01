@@ -224,10 +224,11 @@ body.sponsor-dialog-open {
 
 /* ── 首页 Landing 首屏 ─────────────────────────────────────────────
    .hero 只用于 index.html（其余页面用 .page-hero），可独立调整。
-   与 #home-start 的 padding-top:0 配合，Hero + 入口卡片读作同一屏。 */
+   与 #home-start 的 padding-top:0 配合，Hero + 入口卡片读作同一屏。
+   顶距刻意压到 ~32px：避免顶栏下方大块留白把入口卡挤出首屏。 */
 .hero {
   position: relative;
-  padding: 68px 0 44px;
+  padding: 32px 0 28px;
   isolation: isolate;
 }
 /* 氛围层：左上角柔光 + 向下渐隐的点阵，给首屏一点「地图 / 图纸」质感 */
@@ -2414,7 +2415,7 @@ button.home-wiki-heatmap-cell.is-active {
     line-height: 1;
   }
   .hero {
-    padding: 38px 0 30px;
+    padding: 24px 0 22px;
   }
   .hero-badge { margin-bottom: 16px; }
   .hero .hero-subtitle { margin-bottom: 24px; }
