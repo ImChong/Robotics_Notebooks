@@ -2991,7 +2991,14 @@
     function updateGraphViewport() {
       if (!measureGraphViewport()) return false;
       if (simulation) {
-        simulation.force('center', d3.forceCenter(W / 2, H / 2).strength(0.05));
+        simulation.force('center', d3.forceCenter(W / 2, H / 2).strength(FORCE_CENTER_STRENGTH));
+        // 非磁吸时同步向心位置力目标；磁吸模式下 x/y 指向类别中心，勿覆盖。
+        if (!isMagnetic2D) {
+          const fx = simulation.force('x');
+          const fy = simulation.force('y');
+          if (fx && typeof fx.x === 'function') fx.x(W / 2);
+          if (fy && typeof fy.y === 'function') fy.y(H / 2);
+        }
       }
       return true;
     }
@@ -3032,26 +3039,55 @@
       svg.attr('width', W).attr('height', H);
     }
 
-    function randomizeNodePositions() {
+    // Obsidian 风格稳态：用黄金角叶序铺开初始位置，避免把 2k+ 节点塞进
+    // 80px 小团后被 charge=-800 炸开再被 1.8 万条弹簧拉回 → 长时间欠阻尼震荡。
+    const FORCE_CENTER_STRENGTH = 0.05;
+    const FORCE_VELOCITY_DECAY = 0.55;  // 默认 0.4；提高摩擦抑制弹簧回弹
+    const FORCE_ALPHA_DECAY = 0.03;     // 略快冷却，减少「一直在抖」的尾巴
+
+    function seedNodePositionsPhyllotaxis(targetNodes) {
+      const list = targetNodes || nodes;
       const cx = W / 2;
       const cy = H / 2;
-      for (const n of nodes) {
+      const initialRadius = 14;
+      const goldenAngle = Math.PI * (3 - Math.sqrt(5));
+      for (let i = 0; i < list.length; i++) {
+        const n = list[i];
         n.fx = null;
         n.fy = null;
         n.vx = 0;
         n.vy = 0;
-        n.x = cx + (Math.random() - 0.5) * 80;
-        n.y = cy + (Math.random() - 0.5) * 80;
+        const r = initialRadius * Math.sqrt(0.5 + i);
+        const a = i * goldenAngle;
+        n.x = cx + r * Math.cos(a);
+        n.y = cy + r * Math.sin(a);
       }
     }
 
+    function randomizeNodePositions() {
+      seedNodePositionsPhyllotaxis(nodes);
+    }
+
+    function applyCenterGravity2D() {
+      // 类似 Obsidian「Center force」：弱向心位置力抑制整图漂移/晃动；
+      // forceCenter 只平移质心，本身不提供阻尼。
+      simulation.force('x', d3.forceX(W / 2).strength(FORCE_CENTER_STRENGTH));
+      simulation.force('y', d3.forceY(H / 2).strength(FORCE_CENTER_STRENGTH));
+    }
+
+    // 首帧前先铺开，避免 d3 默认绕原点叶序 + 弱 forceCenter 造成的额外平移震荡。
+    seedNodePositionsPhyllotaxis(nodes);
+
     /* ── 力模拟 ── */
     const simulation = d3.forceSimulation(nodes)
-      .force('link', d3.forceLink(edges).id(d => d.id).distance(80).strength(0.35))
+      .force('link', d3.forceLink(edges).id(d => d.id).distance(80).strength(0.28))
       .force('charge', d3.forceManyBody().strength(chargeStrength).distanceMax(400))
-      .force('center', d3.forceCenter(W / 2, H / 2).strength(0.05))
-      .force('collision', d3.forceCollide().radius(d => scaledRadius(d) + 5).strength(0.7))
-      .alphaDecay(0.025);
+      .force('center', d3.forceCenter(W / 2, H / 2).strength(FORCE_CENTER_STRENGTH))
+      .force('collision', d3.forceCollide().radius(d => scaledRadius(d) + 5).strength(0.6))
+      .force('x', d3.forceX(W / 2).strength(FORCE_CENTER_STRENGTH))
+      .force('y', d3.forceY(H / 2).strength(FORCE_CENTER_STRENGTH))
+      .velocityDecay(FORCE_VELOCITY_DECAY)
+      .alphaDecay(FORCE_ALPHA_DECAY);
 
     function pauseSimulation2D() {
       simulation.stop();
@@ -3099,8 +3135,7 @@
         simulation.force('x', d3.forceX(getTargetX).strength(0.18));
         simulation.force('y', d3.forceY(getTargetY).strength(0.18));
       } else {
-        simulation.force('x', null);
-        simulation.force('y', null);
+        applyCenterGravity2D();
       }
       simulation.alpha(0.3).restart();
     }
@@ -4949,7 +4984,11 @@
         updateGraphViewport();
         const cx = (wrap.clientWidth || W) / 2;
         const cy = (wrap.clientHeight || H) / 2;
-        simulation.force('center', d3.forceCenter(cx, cy).strength(0.05));
+        simulation.force('center', d3.forceCenter(cx, cy).strength(FORCE_CENTER_STRENGTH));
+        if (!isMagnetic2D) {
+          simulation.force('x', d3.forceX(cx).strength(FORCE_CENTER_STRENGTH));
+          simulation.force('y', d3.forceY(cy).strength(FORCE_CENTER_STRENGTH));
+        }
         simulation.alpha(0.1).restart();
         simulation.on('end.sidebar', () => {
           simulation.on('end.sidebar', null);
