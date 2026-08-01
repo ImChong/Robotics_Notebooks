@@ -6230,6 +6230,17 @@
       return Array.from(searchResults.querySelectorAll('article.card[data-result-url]'));
     }
 
+    // 搜索联动首页背景图谱：命中节点高亮、其余淡出（图谱未就绪时暂存待应用）
+    function miniGraphHighlight(query, ids) {
+      var active = !!(query || (ids && ids.length));
+      if (window.RNMiniGraph && window.RNMiniGraph.highlight) {
+        if (active) window.RNMiniGraph.highlight(ids || [], query || '');
+        else window.RNMiniGraph.clear();
+      } else {
+        window.__miniGraphPendingQuery = active ? { query: query || '', ids: ids || [] } : null;
+      }
+    }
+
     function setSelectedIndex(idx) {
       var cards = getResultCards();
       if (!cards.length) return;
@@ -6494,7 +6505,7 @@
       var q = query.trim();
       var communityVal = communityFilter ? communityFilter.value : '';
       // 空查询：结果区留白（热门词入口是搜索框下方常驻的 tag-chip 行）
-      if (!q && !communityVal) { searchResults.innerHTML = ''; return; }
+      if (!q && !communityVal) { searchResults.innerHTML = ''; miniGraphHighlight('', []); return; }
       searchResults.innerHTML = '<p style="color:var(--text-muted);grid-column:1/-1">加载离线搜索索引中…</p>';
       Promise.all([ensureSearchIndex(), ensureCommunityByPath()])
         .then(function(results) {
@@ -6555,6 +6566,7 @@
             if (queryTokens.length && b._score !== a._score) return b._score - a._score;
             return String(a.title || '').localeCompare(String(b.title || ''));
           }).slice(0, 10);
+          miniGraphHighlight(q, matched.map(function(m){ return m.id; }));
           if (!matched.length) {
             if (communityVal && !q) {
               searchResults.innerHTML = '<div style="grid-column:1/-1;color:var(--text-muted)">'
@@ -6598,6 +6610,7 @@
         searchResults.innerHTML = '';
         _selectedIndex = -1;
         if (communityFilter) communityFilter.value = '';
+        miniGraphHighlight('', []);
       }
     });
 

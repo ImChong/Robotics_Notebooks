@@ -22,7 +22,7 @@
     - [x] 增加搜索框的视觉权重（更大、带有毛玻璃效果、更明显的聚焦反馈）。
 - [x] **图谱深度集成 (Graph Integration)**：
     - [x] 将 `mini-graph` 移至英雄区背景或作为右侧核心视觉元素。
-    - [ ] 实现图谱节点与搜索框的联动：在搜索时，背景图谱自动高亮相关节点。
+    - [x] 实现图谱节点与搜索框的联动：在搜索时，背景图谱自动高亮相关节点。`mini-graph.js` 暴露 `window.RNMiniGraph.highlight(ids, query)/clear()`；首页 `main.js` 搜索命中后按结果 id + 标签词命中高亮相关节点、其余淡出（`.mini-node-dim`/`.mini-node-hit`），命中为空则不淡出避免整图变暗；清空/Esc 复原。验证脚本 `scripts/screenshot_home_search_graph_link.cjs`（`slam` → 命中 2 / 淡出 48 / 共 50）。
 - [x] **全局导航精简**：
     - [x] Header 仅保留：Logo、搜索图标（移动端）、图谱入口、GitHub。
     - [x] **约束**：保留当前 `site-header` 的基础视觉设计（毛玻璃效果与布局），仅精简文字。
