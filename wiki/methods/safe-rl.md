@@ -2,15 +2,17 @@
 type: method
 tags: [rl, safety, control, cmdp, optimization]
 status: complete
-updated: 2026-04-21
+updated: 2026-08-01
 related:
   - ./reinforcement-learning.md
   - ../concepts/control-barrier-function.md
   - ../concepts/safety-filter.md
   - ../formalizations/cmdp.md
   - ../queries/robot-policy-debug-playbook.md
+  - ../entities/paper-importance-sampling-pca-av-failures.md
 sources:
   - ../../sources/papers/privileged_training.md
+  - ../../sources/papers/importance_sampling_pca_av_failures_arxiv_2607_18106.md
 summary: "安全强化学习（Safe RL）旨在满足显式安全约束的前提下优化策略，常用方法包括 Lagrangian 优化、受限策略投影和安全层屏蔽。它是机器人部署至物理世界的必经之路。"
 ---
 
@@ -78,6 +80,7 @@ CPO 是一种更为严谨的自然梯度法。它在每次更新策略参数 $\t
 - **四足与双足机器人**：保证质心投影始终在可恢复区域内，避免侧翻损伤结构。
 - **机械臂柔性人机协作**：在接触丰富（Contact-rich）或有人类工程师协同装配的场景中，保证任何非预期动作下的力矩突变不会造成人员伤害。
 - **自动驾驶**：在变道、并线模型中设定无法逾越的安全距离。
+- **验证侧互补：** 在线 Safe RL / 安全层管「部署时别越界」；商业栈上用 AST/DiFS + PCA 挖稀有碰撞与 eigenfailures 见 [Importance Sampling + PCA（商业 AV）](../entities/paper-importance-sampling-pca-av-failures.md)（离线验证，不替代硬约束）。
 
 ## 关联页面
 - [Reinforcement Learning](./reinforcement-learning.md)
@@ -85,6 +88,7 @@ CPO 是一种更为严谨的自然梯度法。它在每次更新策略参数 $\t
 - [Safety Filter](../concepts/safety-filter.md)
 - [Constrained MDP](../formalizations/cmdp.md)
 - [Query：机器人策略排障手册](../queries/robot-policy-debug-playbook.md)
+- [Importance Sampling + PCA（商业 AV 失败挖掘）](../entities/paper-importance-sampling-pca-av-failures.md)
 
 ## 参考来源
 - [机器人论文阅读笔记：RMA](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/RMA_Rapid_Motor_Adaptation/RMA_Rapid_Motor_Adaptation.html)

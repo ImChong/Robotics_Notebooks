@@ -1,3 +1,12 @@
+## [2026-08-01] ingest | sources/papers/importance_sampling_pca_av_failures_arxiv_2607_18106.md — Stanford×Torc AST/DiFS+PCA 商业卡车 AV 稀有失败挖掘
+
+- **触发：** 用户指定论文 *Importance Sampling and PCA for Finding Failures in Commercial Autonomous Vehicles*（arXiv:2607.18106；IEEE ICVES 2026 submitted；Stanford × Torc；Kochenderfer 等）
+- **Sources：** [`sources/papers/importance_sampling_pca_av_failures_arxiv_2607_18106.md`](sources/papers/importance_sampling_pca_av_failures_arxiv_2607_18106.md)
+- **Wiki：** [`wiki/entities/paper-importance-sampling-pca-av-failures.md`](wiki/entities/paper-importance-sampling-pca-av-failures.md)
+- **交叉：** [`wiki/methods/safe-rl.md`](wiki/methods/safe-rl.md)、[`wiki/methods/sac.md`](wiki/methods/sac.md)、[`wiki/concepts/safety-filter.md`](wiki/concepts/safety-filter.md)、[`wiki/concepts/diffusion-model.md`](wiki/concepts/diffusion-model.md)、[`wiki/overview/autonomous-driving-core-algorithms-series.md`](wiki/overview/autonomous-driving-core-algorithms-series.md)、[`wiki/concepts/robot-safety-state-machine.md`](wiki/concepts/robot-safety-state-machine.md)
+- **机构：** 注册 [`schema/institutions.json`](schema/institutions.json) `torc`（托克机器人（Torc Robotics））；`stanford` 已有
+- **开源：** **确认未开源**（无项目页/GitHub；商业卡车规划栈 + Object Sim 黑盒）
+
 ## [2026-08-01] structural | media/site-demo.gif — 重录 README 演示 GIF，纳入入口卡顺时针描边
 
 - **脚本：** [`scripts/record_readme_demo.cjs`](scripts/record_readme_demo.cjs)（88 frames / 3.48 MB；图谱 **2060** 节点 / **18500** 边）

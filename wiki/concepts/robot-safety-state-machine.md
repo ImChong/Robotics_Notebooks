@@ -2,7 +2,7 @@
 type: concept
 tags: [systems-engineering, safety, fsm, fault-tolerance, realtime, deployment]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-01
 related:
   - ../entities/wbc-fsm.md
   - ./safety-filter.md
@@ -11,8 +11,10 @@ related:
   - ./ethercat-protocol.md
   - ./can-bus-protocol.md
   - ../overview/hub-systems-engineering.md
+  - ../entities/paper-importance-sampling-pca-av-failures.md
 sources:
   - ../../sources/sites/dds_omg_rtos_edge_ota_safety_primary_refs.md
+  - ../../sources/papers/importance_sampling_pca_av_failures_arxiv_2607_18106.md
 summary: "硬件故障、通信故障与安全状态机：看门狗与总线超时驱动确定性 FSM 进入阻尼/无力矩等安全态，本地完成不依赖云端选主。"
 ---
 
@@ -80,6 +82,7 @@ stateDiagram-v2
 - [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md) — 急停 / 限幅 / 跌倒检测等与 FSM 互补
 - [EtherCAT](./ethercat-protocol.md) / [CAN](./can-bus-protocol.md)
 - [系统工程知识链](../overview/hub-systems-engineering.md)
+- [Importance Sampling + PCA（商业 AV）](../entities/paper-importance-sampling-pca-av-failures.md) — 离线稀有失败挖掘；与运行时 FSM 降级不同层
 
 ## 参考来源
 

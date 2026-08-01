@@ -2,7 +2,7 @@
 type: method
 tags: [rl, policy-optimization, sac, off-policy, maximum-entropy, manipulation]
 status: complete
-updated: 2026-07-16
+updated: 2026-08-01
 summary: "SAC 是连续控制中最主流的 off-policy 最大熵算法：用 Replay Buffer 反复利用经验、双 Q 抑制高估、自动调温度平衡探索与利用，样本效率远高于 PPO，是真机 RL 与精细操作的首选。"
 related:
   - ./flashsac.md
@@ -18,8 +18,10 @@ related:
   - ../concepts/reward-design.md
   - ../formalizations/mdp.md
   - ../formalizations/bellman-equation.md
+  - ../entities/paper-importance-sampling-pca-av-failures.md
 sources:
   - ../../sources/papers/policy_optimization.md
+  - ../../sources/papers/importance_sampling_pca_av_failures_arxiv_2607_18106.md
 ---
 
 # SAC（Soft Actor-Critic）
@@ -106,6 +108,7 @@ $$
 - **奖励与探索**：SAC 的最大熵框架与 [奖励设计](../concepts/reward-design.md) 紧密耦合——熵正则缓解稀疏/欺骗性奖励下的过早坍缩。
 - **算法族定位**：SAC 是 [Policy Optimization](./policy-optimization.md) 家族中 off-policy 的主力，建立在 [强化学习基础](./reinforcement-learning.md) 与 [MDP](../formalizations/mdp.md) 之上。
 - **超参数选型**：连续控制 RL 的通用调参思路见 [RL 超参数指南](../queries/rl-hyperparameter-guide.md)。
+- **安全验证侧用法**：Adaptive Stress Testing 可用 SAC 作对抗策略，在商业 AV 黑盒上搜索致撞感知噪声轨迹（见 [Importance Sampling + PCA（商业 AV）](../entities/paper-importance-sampling-pca-av-failures.md)）。
 
 ## 关联页面
 - [Policy Optimization（算法族总览）](./policy-optimization.md)
@@ -118,6 +121,7 @@ $$
 - [Locomotion（任务）](../tasks/locomotion.md)
 - [MDP（形式化）](../formalizations/mdp.md)
 - [Bellman 方程（形式化）](../formalizations/bellman-equation.md)
+- [Importance Sampling + PCA（商业 AV 失败挖掘）](../entities/paper-importance-sampling-pca-av-failures.md)
 
 ## 参考来源
 - [Policy Optimization 来源归档（PPO/SAC/TD3/TRPO/Rudin/BRRL）](../../sources/papers/policy_optimization.md)

@@ -339,6 +339,13 @@
         "tri"
       ]
     },
+    "torc": {
+      "label": "托克机器人（Torc Robotics）",
+      "aliases": [
+        "torc",
+        "torc-robotics"
+      ]
+    },
     "sfu": {
       "label": "西蒙菲莎大学（SFU）",
       "aliases": [
