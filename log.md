@@ -1,3 +1,9 @@
+## [2026-08-01] structural | media/site-demo.gif — 按最新图谱重录 README 演示 GIF
+
+- **脚本：** [`scripts/record_readme_demo.cjs`](scripts/record_readme_demo.cjs)（70 frames / 3.12 MB；图谱 **2058** 节点 / **18475** 边）
+- **流程：** `make export graph` → `docs/` 本地 `http.server 8765` → 录制首页入口 / 搜索 / 迷你图谱 / 全图悬停·缩放·侧栏 / 3D 切换
+- **引用：** [`README.md`](README.md)「在线演示」仍指向 `media/site-demo.gif`
+
 ## [2026-08-01] fix | scripts/utils/community_labels.py — 为 llm-wiki-karpathy 枢纽补 COMMUNITY_NAME_OVERRIDES，修复 Tests community-17 命名断言
 
 - **原因：** video-shotcraft ingest 后 Agent Skills 簇枢纽落在 `wiki/references/llm-wiki-karpathy.md`，H1「LLM Wiki」不符合 `中文（English） 社区` 正则
