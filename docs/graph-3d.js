@@ -1096,21 +1096,15 @@
     }
 
     function resetNodePositionsInPlace() {
-      // 「刷新布局」：与 2D phyllotaxis 种子对齐，三轴均匀铺开，避免 80px 小团爆炸后震荡。
+      // 「刷新布局」时每个节点都重新随机散布在中心附近（与 2D randomizeNodePositions 对齐）。
       // sourceNodes 与 2D 力模拟共用同一批对象，src.x/src.y 早被 2D 布局写满；若沿用 src 坐标，
-      // 刷新只会重随机 z，x/y 仍钉在上次布局——观感上几乎不变。
-      var initialRadius = 14;
-      var goldenAngle = Math.PI * (3 - Math.sqrt(5));
-      sourceNodes.forEach(function (src, i) {
+      // 刷新只会重随机 z，x/y 仍钉在上次布局——观感上几乎不变。这里三轴一律重随机，得到全新布局。
+      sourceNodes.forEach(function (src) {
         var n3 = nodeById.get(src.id);
         if (!n3) return;
-        var r = initialRadius * Math.sqrt(0.5 + i);
-        var a = i * goldenAngle;
-        // 球面叶序：极角由 golden angle 给出，方位角用第二黄金角，z 同步铺开。
-        var a2 = i * (Math.PI * (3 - Math.sqrt(5)) * 0.5);
-        n3.x = r * Math.cos(a) * Math.cos(a2);
-        n3.y = r * Math.sin(a) * Math.cos(a2);
-        n3.z = r * Math.sin(a2);
+        n3.x = (Math.random() - 0.5) * 80;
+        n3.y = (Math.random() - 0.5) * 80;
+        n3.z = (Math.random() - 0.5) * 80;
         n3.vx = 0;
         n3.vy = 0;
         n3.vz = 0;
@@ -1368,10 +1362,10 @@
         .height(size.height)
         .backgroundColor(backgroundColor())
         .showNavInfo(false)
-        // 与 2D 对齐：提高 velocityDecay、略加快 alphaDecay，抑制欠阻尼弹簧震荡；
-        // 仍让 alpha 从 1 自然衰减到 alphaMin 再停（不再 24 tick 硬停）。
-        // 三方库默认 cooldownTicks=∞ 且 d3AlphaMin=0（永不因 alpha 停，只会跑满
-        // cooldownTime），故显式开启 alpha 收敛阈值；warmup 设 0 以便首帧可见演化。
+        // 像 2D 那样自然震荡收敛：不再 24 tick 硬停，而是让 alpha 从 1 自然衰减到
+        // alphaMin 再停（≈270 tick）。三方库默认 cooldownTicks=∞ 且 d3AlphaMin=0
+        // （永不因 alpha 停，只会跑满 cooldownTime），故显式开启 alpha 收敛阈值并对齐
+        // 2D 的 alphaDecay(0.025)；warmup 设 0 以便从第一帧就能看到力模拟过程。
         //
         // 注意：three-forcegraph 的 tickFrame 在 layout.tick() 之前就判断
         // alpha < d3AlphaMin；引擎冷却后库内拖拽只做 d3AlphaTarget(0.3).resetCountdown()，
@@ -1379,9 +1373,9 @@
         // 因此下方 onNodeDrag / onNodeDragEnd 需在手势期间 d3ReheatSimulation()。
         .warmupTicks(0)
         .cooldownTicks(Infinity)
-        .d3AlphaDecay(0.055)
+        .d3AlphaDecay(0.025)
         .d3AlphaMin(0.001)
-        .d3VelocityDecay(0.82)
+        .d3VelocityDecay(0.4)
         .nodeId('id')
         .nodeRelSize(1)
         .nodeResolution(8)
@@ -1429,10 +1423,6 @@
         });
       var chargeForce = graph.d3Force('charge');
       if (chargeForce && chargeForce.strength) chargeForce.strength(getChargeStrength());
-      // 与 2D 对齐：略降弹簧强度，减轻密图下的回弹震荡。
-      var linkForce = graph.d3Force('link');
-      if (linkForce && typeof linkForce.strength === 'function') linkForce.strength(0.2);
-      if (linkForce && typeof linkForce.distance === 'function') linkForce.distance(80);
     }
 
     function ensureGraph() {
