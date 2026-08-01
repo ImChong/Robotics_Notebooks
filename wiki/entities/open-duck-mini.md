@@ -3,7 +3,7 @@
 type: entity
 tags: [biped, open-source, hardware, entertainment-robotics, sim2real, diy, disney-bdx, disney, open-duck]
 status: complete
-updated: 2026-07-01
+updated: 2026-08-01
 related:
   - ./open-duck-playground.md
   - ./open-duck-reference-motion-generator.md
@@ -13,9 +13,11 @@ related:
   - ../concepts/sim2real.md
   - ../tasks/locomotion.md
   - ./open-source-humanoid-hardware.md
+  - ./disney-research-la.md
 sources:
   - ../../sources/repos/open_duck_mini.md
   - ../../sources/sites/tnkr-open-duck-mini-v2.md
+  - ../../sources/sites/disney-research-la.md
 summary: "Open Duck Mini 是 Disney BDX 双足角色的开源迷你复刻（v2 约 42 cm、BOM 目标 <$400）：Onshape CAD + Feetech 舵机 + 四仓分工（Hub / Playground / 参考运动 / Runtime），完整覆盖 CAD→MJX→RL→Pi Zero 2W 真机。"
 ---
 
@@ -119,6 +121,7 @@ flowchart TD
 - [Tnkr Open Duck Mini V2 项目文档](../../sources/sites/tnkr-open-duck-mini-v2.md)
 - [apirrone/Open_Duck_Mini](https://github.com/apirrone/Open_Duck_Mini)（v2 分支）
 - Disney Research：[Design and Control of a Bipedal Robotic Character (BDX)](https://la.disneyresearch.com/publication/design-and-control-of-a-bipedal-robotic-character/)
+- [Disney Research LA Research 总览归档](../../sources/sites/disney-research-la.md)
 
 ## 关联页面
 
@@ -127,6 +130,7 @@ flowchart TD
 - [Open Duck Mini Runtime](./open-duck-mini-runtime.md)
 - [Tnkr](./tnkr.md) — 平台级文档与 Open Duck v2 范例项目
 - [Disney Olaf 角色机器人](../methods/disney-olaf-character-robot.md)
+- [Disney Research LA](./disney-research-la.md) — BDX / Olaf 等官方论文门户
 - [Sim2Real](../concepts/sim2real.md)
 - [Locomotion](../tasks/locomotion.md)
 

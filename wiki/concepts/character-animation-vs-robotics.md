@@ -3,7 +3,7 @@ type: concept
 tags: [humanoid, character-animation, entertainment-robotics, motion-retargeting, reward-design, style-prior]
 status: complete
 created: 2026-05-19
-updated: 2026-07-23
+updated: 2026-08-01
 related:
   - ./motion-retargeting.md
   - ./motion-retargeting-pipeline.md
@@ -24,6 +24,8 @@ related:
   - ../entities/rigmo.md
   - ../entities/blender.md
   - ../entities/manim.md
+  - ../entities/disney-research-la.md
+  - ../entities/disney-holotile.md
 sources:
   - ../../sources/sites/blender-org.md
   - ../../sources/repos/blender.md
@@ -36,6 +38,8 @@ sources:
   - ../../sources/papers/deeprl_locomotion_action_space_sca2017.md
   - ../../sources/papers/generative_motion_rig_siggraph_talks_2026.md
   - ../../sources/papers/rigmo_arxiv_2601_06378.md
+  - ../../sources/sites/disney-research-la.md
+  - ../../sources/sites/disney-research-la-holotile.md
 summary: "Character Animation vs Robotics：澄清「角色化人形（character humanoid）」与「研究/工业型人形」在目标函数、机构约束、表演意图与物理可控性之间的张力——以 Disney Olaf / DeepMimic-AMP-ASE 谱系 / BotLab MotionCanvas / Roboto Origin 等案例为切片。"
 ---
 
@@ -202,6 +206,7 @@ flowchart LR
 - 风格先验方法：[DeepMimic](../methods/deepmimic.md)、[AMP](../methods/amp-reward.md)、[ASE](../methods/ase.md)；原作者索引 [Xue Bin Peng](../entities/xue-bin-peng.md)。
 - **室内人–场景交互合成（运动学角色）：** [DIMOS](../entities/paper-dimos-human-scene-motion-synthesis.md)（ICCV 2023）用 RL 在 CVAE 运动基元潜空间上合成走–坐–躺序列，服务 AR/VR 与训练数据规模化；上真机需经重定向与接触动力学重建模，与 DeepMimic/AMP 的「仿真物理角色 → 机器人」迁移链正交。
 - 工具层：[BotLab / MotionCanvas](../entities/botlab-motioncanvas.md)、[机器人关键帧与运动编辑工具](../entities/robot-motion-keyframe-editors.md)、[Generative Motion Rig（Disney）](../entities/generative-motion-rig.md)、[RigMo](../entities/rigmo.md)。
+- 机构枢纽与 Immersive 对照：[Disney Research LA](../entities/disney-research-la.md)；地面代偿行走（非角色自己走）见 [Holotile](../entities/disney-holotile.md)。
 
 ## 推荐继续阅读
 
@@ -218,3 +223,5 @@ flowchart LR
 - [sources/sites/botlab_motioncanvas.md](../../sources/sites/botlab_motioncanvas.md) — BotLab / MotionCanvas 浏览器节点图
 - [sources/sites/xue-bin-peng.md](../../sources/sites/xue-bin-peng.md) — 角色动画 → 机器人控制研究脉络索引
 - [sources/papers/deeprl_locomotion_action_space_sca2017.md](../../sources/papers/deeprl_locomotion_action_space_sca2017.md) — SCA 2017 四种动作空间对照
+- [sources/sites/disney-research-la.md](../../sources/sites/disney-research-la.md) — Disney Research LA 研究门户
+- [sources/sites/disney-research-la-holotile.md](../../sources/sites/disney-research-la-holotile.md) — Holotile 项目页归档

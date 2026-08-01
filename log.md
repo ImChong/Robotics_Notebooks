@@ -1,3 +1,11 @@
+## [2026-08-01] ingest | sources/sites/disney-research-la.md + sources/sites/disney-research-la-holotile.md — Disney Research LA 门户与 Holotile；升格 wiki/entities/disney-research-la.md、wiki/entities/disney-holotile.md
+
+- **触发：** 用户给出 <https://la.disneyresearch.com/holotile/>、<https://la.disneyresearch.com/research/>
+- **Sources：** [`sources/sites/disney-research-la.md`](sources/sites/disney-research-la.md)、[`sources/sites/disney-research-la-holotile.md`](sources/sites/disney-research-la-holotile.md)
+- **Wiki：** [`wiki/entities/disney-research-la.md`](wiki/entities/disney-research-la.md)（三大方向 + 出版物映射枢纽）、[`wiki/entities/disney-holotile.md`](wiki/entities/disney-holotile.md)（全向地板；专利 US10416754B2；确认未开源）
+- **交叉：** [`disney-olaf-character-robot`](wiki/methods/disney-olaf-character-robot.md)、[`reactor-physics-aware-motion-retargeting`](wiki/methods/reactor-physics-aware-motion-retargeting.md)、[`character-animation-vs-robotics`](wiki/concepts/character-animation-vs-robotics.md)、[`open-duck-mini`](wiki/entities/open-duck-mini.md)、[`locomotion`](wiki/tasks/locomotion.md)
+- **开源：** Holotile / 门户级角色硬件 **未开源**；复现对照走 Open Duck；多数 publication 仅 PDF
+
 ## [2026-08-01] structural | media/site-demo.gif — 按最新图谱重录 README 演示 GIF
 
 - **脚本：** [`scripts/record_readme_demo.cjs`](scripts/record_readme_demo.cjs)（70 frames / 3.12 MB；图谱 **2058** 节点 / **18475** 边）

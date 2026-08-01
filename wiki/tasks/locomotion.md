@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-01
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -32,6 +32,8 @@ related:
   - ../entities/paper-aware-wheeled-legged-reflexive-evasion.md
   - ../entities/quadruped-robot.md
   - ../entities/open-duck-mini.md
+  - ../entities/disney-holotile.md
+  - ../entities/disney-research-la.md
   - ../entities/paper-digit-humanoid-locomotion-rl.md
   - ../entities/paper-faststair-humanoid-stair-ascent.md
   - ../entities/paper-explicit-stair-geometry-humanoid-locomotion.md
@@ -275,6 +277,7 @@ flowchart TD
 - [HiPAN](../methods/hipan.md)（四足在非结构化 3D 环境中的分层深度导航 + 姿态自适应低层跟踪）
 - [四足机器人](../entities/quadruped-robot.md)（四足形态与典型平台的实体入口）
 - [Open Duck Mini](../entities/open-duck-mini.md)（BDX 风格迷你双足 DIY：MuJoCo Playground RL + 舵机 sim2real）
+- [Disney Holotile](../entities/disney-holotile.md)（全向活动地板：地面代偿行走，对照「机器人自身 locomotion」）
 - [Unitree](../entities/unitree.md)（当前主流人形/四足研究硬件平台）
 - [unitree_ros（ROS1 / Gazebo）](../entities/unitree-ros.md)（官方 URDF + Gazebo 关节级仿真；高层行走不在 Gazebo 包承诺内）
 - [ULTRA：统一多模态 loco-manipulation 控制](./ultra-survey.md)（UIUC 2026，新一代全身移动操作统一控制器）
