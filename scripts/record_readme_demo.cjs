@@ -112,6 +112,28 @@ async function recordHomeAndGraph(browser, frameDir) {
     }
   };
 
+  /** Capture a clockwise border-trace animation on a target module. */
+  const shotBorderTrace = async (targetId, frames = 12, delayMs = 180) => {
+    await page.waitForFunction(
+      (id) => {
+        const el = document.getElementById(id);
+        return el && (el.classList.contains('is-border-tracing') || el.querySelector('.home-border-trace-svg'));
+      },
+      { timeout: 4000 },
+      targetId
+    ).catch(() => {});
+    await shotN(frames, delayMs);
+    await page.waitForFunction(
+      (id) => {
+        const el = document.getElementById(id);
+        return el && !el.classList.contains('is-border-tracing') && !el.querySelector('.home-border-trace-svg');
+      },
+      { timeout: 4000 },
+      targetId
+    ).catch(() => {});
+    await shot();
+  };
+
   // ── Part 1: homepage ──────────────────────────────────────────────
   await page.goto(`${baseUrl}/index.html?demo=${Date.now()}`, {
     waitUntil: 'networkidle2',
@@ -121,15 +143,14 @@ async function recordHomeAndGraph(browser, frameDir) {
   await sleep(1200);
 
   await setCaption(page, '① 首页：按目标选入口 — 路线 / 搜索 / 图谱');
-  await shotN(7, 220);
+  await shotN(5, 220);
 
-  // Scroll down to the search section and run a live search.
-  await page.evaluate(() => {
-    const el = document.getElementById('wiki-search');
-    if (el) el.scrollIntoView({ behavior: 'auto', block: 'start' });
-  });
-  await sleep(500);
-  await setCaption(page, '② 全库即时搜索：输入关键词直接命中知识页');
+  // Click「项目查询」→ scroll to search panel + clockwise border trace.
+  await setCaption(page, '② 点「项目查询」：滚到搜索区并顺时针描边');
+  await page.click('a.home-entry-card[data-trace-target="wiki-search-panel"]');
+  await shotBorderTrace('wiki-search-panel', 12, 180);
+
+  await setCaption(page, '③ 全库即时搜索：输入关键词直接命中知识页');
   await shot();
   await page.click('#wikiSearchInput');
   for (const ch of 'MPC') {
@@ -145,16 +166,21 @@ async function recordHomeAndGraph(browser, frameDir) {
     { timeout: 15000 }
   );
   await sleep(400);
-  await shotN(7, 240);
+  await shotN(5, 240);
 
-  // Mini knowledge-graph preview at the bottom of the homepage.
+  // Back to entry cards, then click「知识图谱」→ mini-graph border trace.
   await page.evaluate(() => {
-    const el = document.getElementById('mini-graph-section');
+    const el = document.getElementById('home-start');
     if (el) el.scrollIntoView({ behavior: 'auto', block: 'start' });
   });
-  await sleep(2600);
-  await setCaption(page, '③ 首页图谱预览 → 「打开完整图谱」进入交互视图');
-  await shotN(6, 240);
+  await sleep(500);
+  await setCaption(page, '④ 点「知识图谱」：预览区顺时针描边高亮');
+  await shot();
+  await page.click('a.home-entry-card[data-trace-target="mini-graph-wrap"]');
+  await shotBorderTrace('mini-graph-wrap', 12, 180);
+  await sleep(800);
+  await setCaption(page, '⑤ 首页图谱预览 → 「打开完整图谱」进入交互视图');
+  await shotN(5, 240);
 
   // ── Part 2: full graph view ───────────────────────────────────────
   await page.goto(`${baseUrl}/graph.html?demo=${Date.now()}`, {
@@ -168,11 +194,11 @@ async function recordHomeAndGraph(browser, frameDir) {
     if (btn) btn.click();
   });
   await sleep(900);
-  await setCaption(page, '④ 知识图谱：颜色 = 技术社区，连线 = 页面互链');
-  await shotN(8, 220);
+  await setCaption(page, '⑥ 知识图谱：颜色 = 技术社区，连线 = 页面互链');
+  await shotN(6, 220);
 
   // Hover a few nodes to show the tooltip.
-  await setCaption(page, '⑤ 悬停节点查看简介与关联边');
+  await setCaption(page, '⑦ 悬停节点查看简介与关联边');
   const hoverTargets = await page.evaluate(() => {
     const nodes = Array.from(document.querySelectorAll('#graph-canvas .node-circle'));
     const pts = [];
@@ -195,7 +221,7 @@ async function recordHomeAndGraph(browser, frameDir) {
   }
 
   // Wheel zoom in / out around the centre of the canvas.
-  await setCaption(page, '⑥ 滚轮缩放、拖拽平移，自由探索');
+  await setCaption(page, '⑧ 滚轮缩放、拖拽平移，自由探索');
   await page.mouse.move(VIEW_W / 2, VIEW_H / 2 - 20);
   for (let i = 0; i < 5; i++) {
     await page.mouse.wheel({ deltaY: -110 });
@@ -209,7 +235,7 @@ async function recordHomeAndGraph(browser, frameDir) {
   }
 
   // Click a node to open the detail sidebar.
-  await setCaption(page, '⑦ 点击节点：右侧详情栏 + 一键进知识页');
+  await setCaption(page, '⑨ 点击节点：右侧详情栏 + 一键进知识页');
   const clickTarget = await page.evaluate(() => {
     const nodes = Array.from(document.querySelectorAll('#graph-canvas .node-circle'));
     let best = null;
@@ -253,9 +279,9 @@ async function recordHomeAndGraph(browser, frameDir) {
     return true;
   });
   if (has3d) {
-    await setCaption(page, '⑧ 一键切换 3D 立体视图');
+    await setCaption(page, '⑩ 一键切换 3D 立体视图');
     await sleep(2200);
-    await shotN(9, 240);
+    await shotN(7, 240);
   }
 
   await page.close();
