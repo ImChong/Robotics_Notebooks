@@ -2,9 +2,8 @@
 type: concept
 tags: [control, safety, cbf, qp, optimization, humanoid, whole-body-control]
 status: complete
+updated: 2026-08-01
 summary: "Control Barrier Function（控制屏障函数）通过维持 h(x)≥0 来为机器人系统提供可证明的安全保证，常与 QP 结合嵌入实时控制回路。"
-sources:
-  - ../../sources/papers/optimal_control_theory.md
 related:
   - ./whole-body-control.md
   - ./contact-dynamics.md
@@ -13,6 +12,10 @@ related:
   - ../formalizations/control-lyapunov-function.md
   - ../comparisons/clf-vs-cbf.md
   - ../methods/disney-olaf-character-robot.md
+  - ../entities/paper-pac-man-perceptive-cbf-rl.md
+sources:
+  - ../../sources/papers/optimal_control_theory.md
+  - ../../sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md
 ---
 
 # Control Barrier Function（控制屏障函数）
@@ -123,6 +126,10 @@ $$h_{coll}(x) = d(x) - d_{safe}$$
 
 当 $d(x) \to d_{safe}$ 时，CBF 自动减小接近速度，实现软减速。
 
+### 感知感知躲避球（CBF-RL，无部署滤波）
+
+[PAC-MAN](../entities/paper-pac-man-perceptive-cbf-rl.md) 把每连杆–球 clearance 写成训练期 Link-CBF 奖励，部署只吃机载掩膜深度：屏障结构在策略里内化，而不是依赖运行时 CBF-QP。更强的 Joint-CBF 投影只有在球足够可观测时才划算——说明 **$h$ 的可用强度受感知约束**。
+
 ## 高阶 CBF（HOCBF）
 
 当系统的相对阶（relative degree）大于 1 时（即控制输入需要经过多次微分才能出现在 $\dot{h}$ 中），需要用**高阶 CBF**。对于机器人动力学（位置约束的相对阶通常为 2），定义中间量：
@@ -147,6 +154,7 @@ $$\psi_1(x) = \dot{\psi}_0 + \alpha_1(\psi_0)$$
 - Ames et al., *Control Barrier Function Based Quadratic Programs for Safety Critical Systems* (IEEE TAC, 2017) — CBF-QP 奠基论文
 - Ames et al., *Control Barrier Functions: Theory and Applications* (ECC, 2019) — 综述
 - [sources/papers/optimal_control_theory.md](../../sources/papers/optimal_control_theory.md) — 最优控制与安全约束背景
+- [PAC-MAN 论文策展](../../sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md) — 感知感知 CBF-RL 人形躲避球
 
 ## 关联页面
 
@@ -156,6 +164,7 @@ $$\psi_1(x) = \dot{\psi}_0 + \alpha_1(\psi_0)$$
 - [LQR](../formalizations/lqr.md) — CBF-QP 与 LQR 都是基于 QP 的实时优化，可结合使用
 - [Control Lyapunov Function](../formalizations/control-lyapunov-function.md) — CLF 负责稳定性，CBF 负责安全性，联合形成 CLF-CBF-QP
 - [CLF vs CBF](../comparisons/clf-vs-cbf.md) — 两者的详细对比与选型指南
+- [PAC-MAN](../entities/paper-pac-man-perceptive-cbf-rl.md) — 训练期全身 CBF 奖励 + 机载深度部署的人形躲避球
 
 ## 推荐继续阅读
 

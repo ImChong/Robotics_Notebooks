@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, amp, imitation-learning, mjlab, rsl-rl, unitree, humanoid, locomotion, recovery]
 status: complete
-updated: 2026-07-20
+updated: 2026-08-01
 related:
   - ../concepts/neural-feedback-controller.md
   - ../methods/amp-reward.md
@@ -13,10 +13,12 @@ related:
   - ../methods/imitation-learning.md
   - ../tasks/locomotion.md
   - ./paper-unified-walk-run-recovery-sdamp.md
+  - ./paper-pac-man-perceptive-cbf-rl.md
 sources:
   - ../../sources/repos/amp_mjlab.md
   - ../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md
   - ../../sources/personal/amp_mjlab_policy_training_essence.md
+  - ../../sources/repos/perceptive_cbf_rl.md
 summary: "AMP_mjlab 是基于 mjlab + rsl_rl 的 Unitree G1 统一 AMP 策略实现，用单一 actor-critic + 判别器同时覆盖 locomotion 与 fall-recovery，消除模式切换断裂。"
 ---
 
@@ -357,6 +359,7 @@ README 明确提示约 `2w`（20k）iterations 附近会出现多个指标突变
 - [legged_gym](./legged-gym.md) — 同为 rsl_rl + 并行仿真，基于 IsaacGym
 - [Imitation Learning](../methods/imitation-learning.md) — AMP 属于模仿学习范式
 - [Locomotion](../tasks/locomotion.md) — 任务方向
+- [PAC-MAN](./paper-pac-man-perceptive-cbf-rl.md) — 官方仓声明 AMP 实现适配自 AMP_mjlab；在 mjlab 上做感知感知躲避球
 
 ## 参考来源
 

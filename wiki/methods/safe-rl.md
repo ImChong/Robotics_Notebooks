@@ -10,9 +10,11 @@ related:
   - ../formalizations/cmdp.md
   - ../queries/robot-policy-debug-playbook.md
   - ../entities/paper-importance-sampling-pca-av-failures.md
+  - ../entities/paper-pac-man-perceptive-cbf-rl.md
 sources:
   - ../../sources/papers/privileged_training.md
   - ../../sources/papers/importance_sampling_pca_av_failures_arxiv_2607_18106.md
+  - ../../sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md
 summary: "安全强化学习（Safe RL）旨在满足显式安全约束的前提下优化策略，常用方法包括 Lagrangian 优化、受限策略投影和安全层屏蔽。它是机器人部署至物理世界的必经之路。"
 ---
 
@@ -81,6 +83,7 @@ CPO 是一种更为严谨的自然梯度法。它在每次更新策略参数 $\t
 - **机械臂柔性人机协作**：在接触丰富（Contact-rich）或有人类工程师协同装配的场景中，保证任何非预期动作下的力矩突变不会造成人员伤害。
 - **自动驾驶**：在变道、并线模型中设定无法逾越的安全距离。
 - **验证侧互补：** 在线 Safe RL / 安全层管「部署时别越界」；商业栈上用 AST/DiFS + PCA 挖稀有碰撞与 eigenfailures 见 [Importance Sampling + PCA（商业 AV）](../entities/paper-importance-sampling-pca-av-failures.md)（离线验证，不替代硬约束）。
+- **感知感知 CBF-RL：** [PAC-MAN](../entities/paper-pac-man-perceptive-cbf-rl.md) 把全身 Link-CBF 写进训练奖励、部署去掉运行时滤波，在 Unitree G1 上用机载掩膜深度零样本躲避球（19/20）。
 
 ## 关联页面
 - [Reinforcement Learning](./reinforcement-learning.md)
@@ -89,9 +92,11 @@ CPO 是一种更为严谨的自然梯度法。它在每次更新策略参数 $\t
 - [Constrained MDP](../formalizations/cmdp.md)
 - [Query：机器人策略排障手册](../queries/robot-policy-debug-playbook.md)
 - [Importance Sampling + PCA（商业 AV 失败挖掘）](../entities/paper-importance-sampling-pca-av-failures.md)
+- [PAC-MAN（感知感知 CBF-RL 躲避球）](../entities/paper-pac-man-perceptive-cbf-rl.md)
 
 ## 参考来源
 - [机器人论文阅读笔记：RMA](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/RMA_Rapid_Motor_Adaptation/RMA_Rapid_Motor_Adaptation.html)
 - Achiam, J., et al. (2017). *Constrained Policy Optimization*.
 - Ray, A., et al. (2019). *Benchmarking Safe Deep Reinforcement Learning*.
 - [sources/papers/privileged_training.md](../../sources/papers/privileged_training.md)
+- [PAC-MAN 论文策展](../../sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md)
