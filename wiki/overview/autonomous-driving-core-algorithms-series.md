@@ -2,7 +2,7 @@
 type: overview
 tags: [autonomous-driving, perception, planning, control, slam, hd-map, tracking, trajectory-prediction, shenlan]
 status: complete
-updated: 2026-07-24
+updated: 2026-08-01
 related:
   - ../overview/navigation-slam-autonomy-stack.md
   - ./e2e-autonomous-driving-top10-algorithms.md
@@ -21,6 +21,7 @@ related:
   - ../entities/paper-m4world.md
   - ../entities/paper-s-squared-vla.md
   - ../methods/vla.md
+  - ../entities/paper-importance-sampling-pca-av-failures.md
 sources:
   - ../../sources/blogs/wechat_shenlan_ai_ad_2d_detection.md
   - ../../sources/blogs/wechat_shenlan_ai_ad_3d_detection.md
@@ -30,6 +31,7 @@ sources:
   - ../../sources/blogs/wechat_shenlan_ai_ad_e2e_top10.md
   - ../../sources/raw/wechat_shenlan_ai_ad_core_algorithms_album_2026.json
   - ../../sources/papers/m4world_arxiv_2607_14005.md
+  - ../../sources/papers/importance_sampling_pca_av_failures_arxiv_2607_18106.md
 summary: "深蓝AI《自动驾驶核心算法盘点》专辑技术地图：2D/3D 检测→规划控制→SLAM/高精地图→跟踪与轨迹预测；5/5 篇正文已入库；端到端续篇见十大算法地图。"
 ---
 
@@ -148,6 +150,7 @@ flowchart TB
 | SLAM/定位 | [导航·SLAM·自动驾驶开源栈](./navigation-slam-autonomy-stack.md)、[Autoware](../entities/autoware.md) | ORB-SLAM 不能直接当 Nav2 全局规划器 |
 | 检测 | [Object Detection](../methods/object-detection.md)、[选型 Query](../queries/object-detection-model-selection.md) | 机器人抓取检测 vs 车载 3D MOT 评测集不同 |
 | 预测/端到端 | 专辑收束提到 E2E/RL 渗透；系统盘点见 [端到端十大算法地图](./e2e-autonomous-driving-top10-algorithms.md)；驾驶 VLA 锚点见 [S²-VLA](../entities/paper-s-squared-vla.md)、[X-Foresight](../entities/paper-x-foresight.md) | 具身 [VLA](../methods/vla.md) 与车端 E2E 共享叙事但栈不同 |
+| 安全验证（稀有失败） | [AST + DiFS + PCA（商业卡车栈）](../entities/paper-importance-sampling-pca-av-failures.md) | 在线 Safety Filter / Safe RL 不替代离线失败挖掘 |
 
 ## 为什么重要
 
@@ -175,6 +178,7 @@ flowchart TB
 - [S²-VLA](../entities/paper-s-squared-vla.md) — 端到端驾驶 VLA：语义∥空间双流（NAVSIM；未开源）
 - [X-Foresight](../entities/paper-x-foresight.md) — 驾驶 VLA 内嵌预测式世界模型（小鹏；未开源）
 - [VLA](../methods/vla.md) — 视觉–语言–动作方法纵览（含驾驶条目）
+- [Importance Sampling + PCA（商业 AV 失败挖掘）](../entities/paper-importance-sampling-pca-av-failures.md) — AST/DiFS 稀有碰撞 + eigenfailure 诊断
 
 ## 参考来源
 

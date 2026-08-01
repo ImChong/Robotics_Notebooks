@@ -1,13 +1,79 @@
 {
   "generated_at": "2026-08-01",
-  "node_count": 2060,
-  "edge_count": 18500,
+  "node_count": 2061,
+  "edge_count": 18513,
   "coverage": {
-    "covered": 2010,
-    "total": 2036,
+    "covered": 2011,
+    "total": 2037,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-importance-sampling-pca-av-failures.md",
+      "detail_id": "entity-paper-importance-sampling-pca-av-failures",
+      "label": "Importance Sampling + PCA：商业自动驾驶失败挖掘与 eigenfailure 诊断",
+      "type": "entity",
+      "recency": "2026-08-01",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/methods/safe-rl.md",
+      "detail_id": "wiki-methods-safe-rl",
+      "label": "Safe RL（安全强化学习）",
+      "type": "method",
+      "recency": "2026-08-01",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/methods/sac.md",
+      "detail_id": "wiki-methods-sac",
+      "label": "SAC（Soft Actor-Critic）",
+      "type": "method",
+      "recency": "2026-08-01",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/concepts/safety-filter.md",
+      "detail_id": "wiki-concepts-safety-filter",
+      "label": "Safety Filter（安全过滤器）",
+      "type": "concept",
+      "recency": "2026-08-01",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/concepts/diffusion-model.md",
+      "detail_id": "wiki-concepts-diffusion-model",
+      "label": "Diffusion Model（扩散模型）",
+      "type": "concept",
+      "recency": "2026-08-01",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/overview/autonomous-driving-core-algorithms-series.md",
+      "detail_id": "wiki-overview-autonomous-driving-core-algorithms-series",
+      "label": "《自动驾驶核心算法盘点》专栏技术地图",
+      "type": "overview",
+      "recency": "2026-08-01",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/robot-safety-state-machine.md",
+      "detail_id": "wiki-concepts-robot-safety-state-machine",
+      "label": "机器人安全状态机（硬件 / 通信故障）",
+      "type": "concept",
+      "recency": "2026-08-01",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
     {
       "path": "wiki/entities/disney-research-la.md",
       "detail_id": "entity-disney-research-la",
@@ -141,88 +207,16 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/sensenova-skills.md",
-      "detail_id": "entity-sensenova-skills",
-      "label": "SenseNova-Skills（OpenSenseNova）",
-      "type": "entity",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-legged-robots-advances-challenges.md",
-      "detail_id": "entity-paper-legged-robots-advances-challenges",
-      "label": "腿式机器人进展、挑战与机遇综述",
-      "type": "entity",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/quadruped-robot.md",
-      "detail_id": "entity-quadruped-robot",
-      "label": "四足机器人（Quadruped Robot）",
-      "type": "entity",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-bioinspired-multimodal-robotics.md",
-      "detail_id": "entity-paper-bioinspired-multimodal-robotics",
-      "label": "仿生多模态机器人综述：五项指标与软硬智能融合",
-      "type": "entity",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-humoslope-physics-guided-slope-locomotion.md",
-      "detail_id": "entity-paper-humoslope-physics-guided-slope-locomotion",
-      "label": "HumoSlope：极端坡面物理引导生物力学步态适应",
-      "type": "entity",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/tasks/humanoid-locomotion.md",
-      "detail_id": "wiki-tasks-humanoid-locomotion",
-      "label": "Humanoid Locomotion (人形机器人移动)",
-      "type": "task",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/disney-research-la.md",
-    "detail_id": "entity-disney-research-la",
-    "label": "Disney Research LA（研究门户）",
+    "path": "wiki/entities/paper-importance-sampling-pca-av-failures.md",
+    "detail_id": "entity-paper-importance-sampling-pca-av-failures",
+    "label": "Importance Sampling + PCA：商业自动驾驶失败挖掘与 eigenfailure 诊断",
     "type": "entity",
     "recency": "2026-08-01",
     "source": "log.md",
-    "action": "added",
-    "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    "action": "maintained"
   },
   "top_communities": [
     {
@@ -255,7 +249,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 404,
+      "degree": 405,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

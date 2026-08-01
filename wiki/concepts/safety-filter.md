@@ -2,7 +2,7 @@
 type: concept
 tags: [safety, control, cbf, safe-rl, wbc, deployment]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-01
 summary: "Safety Filter 指位于高层策略与低层执行器之间的安全过滤层，用最小修改把名义动作投影回可执行安全集。"
 related:
   - ./control-barrier-function.md
@@ -10,9 +10,11 @@ related:
   - ../formalizations/control-lyapunov-function.md
   - ../queries/clf-cbf-in-wbc.md
   - ../queries/robot-policy-debug-playbook.md
+  - ../entities/paper-importance-sampling-pca-av-failures.md
 sources:
   - ../../sources/papers/optimal_control.md
   - ../../sources/papers/sim2real.md
+  - ../../sources/papers/importance_sampling_pca_av_failures_arxiv_2607_18106.md
 ---
 
 # Safety Filter（安全过滤器）
@@ -130,3 +132,4 @@ Safety Filter
 - [Query：RL 策略真机调试 Playbook](../queries/robot-policy-debug-playbook.md)
 - [真机安全 RL 微调](./safe-real-world-rl-fine-tuning.md) — 安全过滤作为真机微调三路径之一（CBF/CLF 安全壳）
 - [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md) — 部署段分层安全独立于策略
+- [Importance Sampling + PCA（商业 AV 失败挖掘）](../entities/paper-importance-sampling-pca-av-failures.md) — 离线稀有失败发现与 eigenfailure 诊断；与在线过滤互补
