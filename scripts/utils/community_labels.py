@@ -115,6 +115,7 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "wiki/queries/embodied-eval-benchmark-selection-loop.md": (
         "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop）"
     ),
+    "wiki/references/llm-wiki-karpathy.md": "大语言模型维基（LLM Wiki）",
 }
 
 COMMUNITY_LABEL_SUFFIX = " 社区"

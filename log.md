@@ -1,3 +1,9 @@
+## [2026-08-01] fix | scripts/utils/community_labels.py — 为 llm-wiki-karpathy 枢纽补 COMMUNITY_NAME_OVERRIDES，修复 Tests community-17 命名断言
+
+- **原因：** video-shotcraft ingest 后 Agent Skills 簇枢纽落在 `wiki/references/llm-wiki-karpathy.md`，H1「LLM Wiki」不符合 `中文（English） 社区` 正则
+- **修复：** override → `大语言模型维基（LLM Wiki）`；同步 `graph-stats` / `link-graph` 导出
+- **验证：** `pytest tests/test_community_naming.py`
+
 ## [2026-07-31] ingest | sources/repos/video-shotcraft.md — 接入 Vincentwei1021/video-shotcraft（Trendshift 上榜 AI 动效技能库）；升格 wiki/entities/video-shotcraft.md
 
 - **触发：** 用户给出 `trendshift/video-shotcraft`（**404**）；核实为 [Trendshift](https://trendshift.io/repositories/88911) 榜单徽章，官方仓为 [`Vincentwei1021/video-shotcraft`](https://github.com/Vincentwei1021/video-shotcraft)

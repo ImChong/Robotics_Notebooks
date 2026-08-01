@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-31",
+  "generated_at": "2026-08-01",
   "node_count": 2058,
   "edge_count": 18473,
   "coverage": {
@@ -17,7 +17,7 @@
       "source": "log.md",
       "action": "added",
       "has_repo": true,
-      "community_label": "LLM Wiki 社区"
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
     },
     {
       "path": "wiki/entities/gsap-skills.md",
@@ -28,7 +28,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "LLM Wiki 社区"
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
     },
     {
       "path": "wiki/entities/mattpocock-skills.md",
@@ -39,7 +39,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "LLM Wiki 社区"
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
     },
     {
       "path": "wiki/entities/img2threejs.md",
@@ -50,7 +50,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "LLM Wiki 社区"
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
     },
     {
       "path": "wiki/entities/manim.md",
@@ -71,7 +71,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "LLM Wiki 社区"
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
     },
     {
       "path": "wiki/entities/paper-legged-robots-advances-challenges.md",
@@ -226,7 +226,7 @@
     "source": "log.md",
     "action": "added",
     "has_repo": true,
-    "community_label": "LLM Wiki 社区"
+    "community_label": "大语言模型维基（LLM Wiki） 社区"
   },
   "top_communities": [
     {
