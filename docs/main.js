@@ -5822,9 +5822,9 @@
   var moreRoutesCard = document.getElementById('home-more-routes');
   var BORDER_TRACE_MS = 2400;
   var TOGGLE_HINT_MS = 1800;
-  // 目标接近视口中心即开启动画，避免干等 scrollend / 长 fallback 造成「点一下卡住」
-  var SCROLL_CENTER_TOLERANCE_PX = 56;
-  var SCROLL_CENTER_FALLBACK_MS = 420;
+  // 目标接近落点即开启动画，避免干等 scrollend / 长 fallback 造成「点一下卡住」
+  var SCROLL_ALIGN_TOLERANCE_PX = 56;
+  var SCROLL_ALIGN_FALLBACK_MS = 420;
   var prefersReducedMotion = false;
   try {
     prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -5966,17 +5966,36 @@
     }, TOGGLE_HINT_MS);
   }
 
-  function isEntryCardNearCenter(card) {
+  function getScrollPaddingTopPx() {
+    try {
+      var raw = window.getComputedStyle(document.documentElement).scrollPaddingTop;
+      var px = parseFloat(raw);
+      return Number.isFinite(px) ? px : 0;
+    } catch {
+      return 0;
+    }
+  }
+
+  /** block: 'center' | 'start' — 判断目标是否已接近 scrollIntoView 落点 */
+  function isEntryCardNearAlign(card, block) {
     var rect = card.getBoundingClientRect();
     var viewH = window.innerHeight || document.documentElement.clientHeight || 0;
     if (viewH <= 0) return true;
+    if (block === 'start') {
+      var expectedTop = getScrollPaddingTopPx();
+      return Math.abs(rect.top - expectedTop) <= SCROLL_ALIGN_TOLERANCE_PX;
+    }
     var cardMid = rect.top + rect.height / 2;
     var viewMid = viewH / 2;
-    return Math.abs(cardMid - viewMid) <= SCROLL_CENTER_TOLERANCE_PX;
+    return Math.abs(cardMid - viewMid) <= SCROLL_ALIGN_TOLERANCE_PX;
   }
 
-  /** 将入口卡滚到视口垂直中心，接近中心即回调（避免干等 scrollend） */
-  function scrollEntryCardToCenter(card, hash, onReady) {
+  /**
+   * 将入口卡滚入视口后回调（接近落点即触发，避免干等 scrollend）。
+   * @param {string} [block='center'] 'center'（Hero 路线数字）或 'start'（项目查询 / 知识图谱顶对齐）
+   */
+  function scrollEntryCardIntoView(card, hash, onReady, block) {
+    block = block === 'start' ? 'start' : 'center';
     if (!card) {
       if (onReady) onReady();
       return;
@@ -5997,14 +6016,14 @@
     }
     function onScrollEnd() { ready(); }
 
-    if (isEntryCardNearCenter(card)) {
+    if (isEntryCardNearAlign(card, block)) {
       rafId = window.requestAnimationFrame(function () { ready(); });
       return;
     }
 
     card.scrollIntoView({
       behavior: prefersReducedMotion ? 'auto' : 'smooth',
-      block: 'center',
+      block: block,
       inline: 'nearest'
     });
 
@@ -6014,16 +6033,21 @@
     }
 
     window.addEventListener('scrollend', onScrollEnd, { once: true });
-    function pollNearCenter() {
+    function pollNearAlign() {
       if (done) return;
-      if (isEntryCardNearCenter(card)) {
+      if (isEntryCardNearAlign(card, block)) {
         ready();
         return;
       }
-      rafId = window.requestAnimationFrame(pollNearCenter);
+      rafId = window.requestAnimationFrame(pollNearAlign);
     }
-    rafId = window.requestAnimationFrame(pollNearCenter);
-    fallbackTimer = window.setTimeout(ready, SCROLL_CENTER_FALLBACK_MS);
+    rafId = window.requestAnimationFrame(pollNearAlign);
+    fallbackTimer = window.setTimeout(ready, SCROLL_ALIGN_FALLBACK_MS);
+  }
+
+  /** Hero 主路线 / 纵深路线：滚到视口垂直中心 */
+  function scrollEntryCardToCenter(card, hash, onReady) {
+    scrollEntryCardIntoView(card, hash, onReady, 'center');
   }
 
   if (routeToggle) {
@@ -6053,7 +6077,7 @@
     });
   }
 
-  // 入口卡「项目查询 / 知识图谱」：滚到对应模块中心并顺时针描边；项目查询额外聚焦搜索框
+  // 入口卡「项目查询 / 知识图谱」：区块顶对齐（同旧锚点），模块描边特效保持；项目查询额外聚焦搜索框
   var searchInput = document.getElementById('wikiSearchInput');
   var homeTraceTriggers = document.querySelectorAll('[data-trace-target]');
   for (var htti = 0; htti < homeTraceTriggers.length; htti++) {
@@ -6062,6 +6086,9 @@
       var target = targetId ? document.getElementById(targetId) : null;
       if (!target) return;
       var hash = trigger.getAttribute('href') || '';
+      var hashId = hash.charAt(0) === '#' ? hash.slice(1) : '';
+      // 滚动锚到 href 区块（顶对齐）；描边仍画在 data-trace-target 模块上
+      var scrollTarget = (hashId && document.getElementById(hashId)) || target;
       var shouldFocusSearch = trigger.hasAttribute('data-focus-search');
       // 悬停/按下时预取搜索索引，避免 focus 时才开始拉大 JSON 造成卡顿
       if (shouldFocusSearch) {
@@ -6076,9 +6103,9 @@
           prefetchWikiSearchIndex();
           searchInput.focus({ preventScroll: true });
         }
-        scrollEntryCardToCenter(target, hash.charAt(0) === '#' ? hash : null, function () {
+        scrollEntryCardIntoView(scrollTarget, hashId ? hash : null, function () {
           playCardBorderTrace(target);
-        });
+        }, 'start');
       });
     })(homeTraceTriggers[htti]);
   }
@@ -6092,19 +6119,21 @@
       playCardBorderTrace(moreRoutesCard, pulseRouteToggleHint);
     });
   } else if (window.location.hash === '#wiki-search') {
+    var searchSection = document.getElementById('wiki-search');
     var searchPanel = document.getElementById('wiki-search-panel');
-    if (searchPanel) {
+    if (searchSection || searchPanel) {
       // focus/预取放到搜索模块初始化之后，避免监听器尚未挂上
-      scrollEntryCardToCenter(searchPanel, null, function () {
-        playCardBorderTrace(searchPanel);
-      });
+      scrollEntryCardIntoView(searchSection || searchPanel, null, function () {
+        if (searchPanel) playCardBorderTrace(searchPanel);
+      }, 'start');
     }
   } else if (window.location.hash === '#mini-graph-section') {
+    var miniGraphSection = document.getElementById('mini-graph-section');
     var miniGraphPanel = document.getElementById('mini-graph-wrap');
-    if (miniGraphPanel) {
-      scrollEntryCardToCenter(miniGraphPanel, null, function () {
-        playCardBorderTrace(miniGraphPanel);
-      });
+    if (miniGraphSection || miniGraphPanel) {
+      scrollEntryCardIntoView(miniGraphSection || miniGraphPanel, null, function () {
+        if (miniGraphPanel) playCardBorderTrace(miniGraphPanel);
+      }, 'start');
     }
   }
 

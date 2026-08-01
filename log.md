@@ -1,3 +1,9 @@
+## [2026-08-01] fix | docs/main.js — 首页「项目查询 / 知识图谱」入口卡改回窗口顶端对齐
+
+- **问题：** 与 Hero 路线数字共用 `block: 'center'` 后，点击入口卡会把搜索区 / 图谱预览滚到视口中心，不再像旧锚点那样顶对齐
+- **修复：** 入口卡滚动锚到 `#wiki-search` / `#mini-graph-section`，`scrollIntoView({ block: 'start' })`；描边仍画在 `#wiki-search-panel` / `#mini-graph-wrap`；Hero「主路线 / 纵深路线」保持居中
+- **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md)
+
 ## [2026-08-01] ingest | sources/sites/disney-research-la.md + sources/sites/disney-research-la-holotile.md — Disney Research LA 门户与 Holotile；升格 wiki/entities/disney-research-la.md、wiki/entities/disney-holotile.md
 
 - **触发：** 用户给出 <https://la.disneyresearch.com/holotile/>、<https://la.disneyresearch.com/research/>
