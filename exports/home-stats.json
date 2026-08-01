@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/references/llm-wiki-karpathy.md",
+      "detail_id": "wiki-references-llm-wiki-karpathy",
+      "label": "LLM Wiki",
+      "type": "reference",
+      "recency": "2026-08-01",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
+    {
       "path": "wiki/entities/video-shotcraft.md",
       "detail_id": "entity-video-shotcraft",
       "label": "video-shotcraft（Vincentwei1021/video-shotcraft）",
@@ -204,28 +214,16 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/methods/diffusion-motion-generation.md",
-      "detail_id": "wiki-methods-diffusion-motion-generation",
-      "label": "Diffusion-based Motion Generation (基于扩散模型的运动生成)",
-      "type": "method",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/video-shotcraft.md",
-    "detail_id": "entity-video-shotcraft",
-    "label": "video-shotcraft（Vincentwei1021/video-shotcraft）",
-    "type": "entity",
-    "recency": "2026-07-31",
+    "path": "wiki/references/llm-wiki-karpathy.md",
+    "detail_id": "wiki-references-llm-wiki-karpathy",
+    "label": "LLM Wiki",
+    "type": "reference",
+    "recency": "2026-08-01",
     "source": "log.md",
-    "action": "added",
-    "has_repo": true,
+    "action": "maintained",
     "community_label": "大语言模型维基（LLM Wiki） 社区"
   },
   "top_communities": [
