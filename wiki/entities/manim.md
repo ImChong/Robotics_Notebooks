@@ -3,12 +3,13 @@
 type: entity
 tags: [software, animation, python, visualization, education, open-source, math, mit]
 status: complete
-updated: 2026-07-28
+updated: 2026-07-31
 related:
   - ./blender.md
   - ./botlab-motioncanvas.md
   - ./drawio-scientific-illustrator.md
   - ./gsap-skills.md
+  - ./video-shotcraft.md
   - ../concepts/character-animation-vs-robotics.md
   - ../methods/deepmimic.md
 sources:
@@ -114,6 +115,7 @@ flowchart LR
 - [BotLab / MotionCanvas（浏览器策略–仿真编排）](./botlab-motioncanvas.md)
 - [Draw.io Scientific Illustrator](./drawio-scientific-illustrator.md) — **可编辑静态科研框图**（Codex + draw.io MCP）；与 Manim **讲解动画**互补
 - [GSAP Skills](./gsap-skills.md) — **Web UI 动效** Agent Skills，亦属可视化沟通层
+- [video-shotcraft](./video-shotcraft.md) — **Remotion 产品宣传片** Agent Skill（镜头卡 + 成片模板；与 Manim 数学讲解片不同栈）
 - [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md)
 - [DeepMimic（图形学起源的模仿学习）](../methods/deepmimic.md)
 
