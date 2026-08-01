@@ -60,6 +60,7 @@
 - [x] 技术路线页 `roadmap.html`：基于导出阶段数据渲染可折叠阶段树（垂直 `<details>` 列表）；已移除折叠 Mermaid 线框总图与路线页内 Mermaid CDN。
 - [x] 技术路线页 `roadmap.html`：favicon、顶栏统一为 🚀（与首页「技术路线指南」CTA 一致）；主题切换仍为 ☀️/🌙。
 - [x] 技术路线页侧栏 TOC（桌面 ≥1632px）：卡片封顶 `min(76vh, 680px)`，列表区内滚动；移动端抽屉保持原样全高滚动。
+- [x] 详情页「关联知识图谱」迷你图：1-hop 邻居按全图度数（节点大小）优先；≤16 全显示、超出取 Top-16；弹簧距离/强度随邻居大小变化（近=重要）；完整邻居仍走 `graph.html?focus=`。
 - [x] 详情页 Mermaid：正文 14px / 移动端 12px，增大节点 `padding` 与 `wrappingWidth`，减轻大字贴边与单行裁切；灯箱仍按 1.75× 离屏高清重绘。
 - [x] 详情页 Mermaid 标签裁切：`htmlLabels` 下 `foreignObject` 比 `nodeLabel` 略窄时 post-render 扩框 + CSS `overflow: visible`，修复如 world-models-15 技术地图等长标签贴边裁切。
 - [x] 纵深路线「路线一览」Mermaid：节点标签 `**Stage N**` 改为 `<b>Stage N</b>`（与已有 `<br/>`/`<em>` 对齐）；`main.js` 渲染前将残留 Markdown `**…**` 规范为 `<b>`，避免星号原样显示。

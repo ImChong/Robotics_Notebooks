@@ -1,3 +1,9 @@
+## [2026-08-01] fix | docs/main.js — 详情页关联迷你图：按规模优先邻居 + 近=重要弹簧
+
+- **问题：** 1-hop 邻居按中文 label 字母序截断 12，重要大节点可能被裁掉；弹簧距离/强度对所有邻居均一，无法表达层级
+- **修复：** 按全图度数降序取 Top-16（≤16 全显示）；`forceLink` 距离/强度随邻居半径变化（大邻居更近、吸力更强）；meta 文案标明「近=重要」；完整列表仍走 `graph.html?focus=`
+- **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md)
+
 ## [2026-08-01] fix | docs/main.js — 首页「项目查询 / 知识图谱」入口卡改回窗口顶端对齐
 
 - **问题：** 与 Hero 路线数字共用 `block: 'center'` 后，点击入口卡会把搜索区 / 图谱预览滚到视口中心，不再像旧锚点那样顶对齐
