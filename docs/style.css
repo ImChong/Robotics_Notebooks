@@ -527,7 +527,8 @@ a.hero-stat-num:focus-visible {
 @keyframes home-border-trace-dash {
   to { stroke-dashoffset: -100; }
 }
-.home-route-toggle.is-pulse-hint {
+.home-route-toggle.is-pulse-hint,
+#mini-graph-expand.is-pulse-hint {
   animation: home-route-toggle-hint 0.85s ease 2;
 }
 @keyframes home-route-toggle-hint {
@@ -548,7 +549,8 @@ a.hero-stat-num:focus-visible {
     stroke-dasharray: none;
     opacity: 0.95;
   }
-  .home-route-toggle.is-pulse-hint {
+  .home-route-toggle.is-pulse-hint,
+  #mini-graph-expand.is-pulse-hint {
     animation: none;
     color: var(--accent-hover);
   }

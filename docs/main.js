@@ -5992,14 +5992,23 @@
     });
   }
 
-  function pulseRouteToggleHint() {
-    if (!routeToggle) return;
-    routeToggle.classList.remove('is-pulse-hint');
-    void routeToggle.offsetWidth;
-    routeToggle.classList.add('is-pulse-hint');
+  /** 描边结束后对 CTA 文案闪两下（纵深「展开…」/ 图谱「打开完整图谱」共用） */
+  function pulseHintElement(el) {
+    if (!el) return;
+    el.classList.remove('is-pulse-hint');
+    void el.offsetWidth;
+    el.classList.add('is-pulse-hint');
     window.setTimeout(function () {
-      routeToggle.classList.remove('is-pulse-hint');
+      el.classList.remove('is-pulse-hint');
     }, TOGGLE_HINT_MS);
+  }
+
+  function pulseRouteToggleHint() {
+    pulseHintElement(routeToggle);
+  }
+
+  function pulseMiniGraphExpandHint() {
+    pulseHintElement(document.getElementById('mini-graph-expand'));
   }
 
   function getScrollPaddingTopPx() {
@@ -6126,6 +6135,7 @@
       // 滚动锚到 href 区块（顶对齐）；描边仍画在 data-trace-target 模块上
       var scrollTarget = (hashId && document.getElementById(hashId)) || target;
       var shouldFocusSearch = trigger.hasAttribute('data-focus-search');
+      var pulseHintId = trigger.getAttribute('data-pulse-hint');
       // 悬停/按下时预取搜索索引，避免 focus 时才开始拉大 JSON 造成卡顿
       if (shouldFocusSearch) {
         var prefetchOnce = function () { prefetchWikiSearchIndex(); };
@@ -6140,7 +6150,12 @@
           searchInput.focus({ preventScroll: true });
         }
         scrollEntryCardIntoView(scrollTarget, hashId ? hash : null, function () {
-          playCardBorderTrace(target);
+          var onTraceDone = null;
+          if (pulseHintId) {
+            var hintEl = document.getElementById(pulseHintId);
+            if (hintEl) onTraceDone = function () { pulseHintElement(hintEl); };
+          }
+          playCardBorderTrace(target, onTraceDone);
         }, 'start');
       });
     })(homeTraceTriggers[htti]);
@@ -6168,7 +6183,7 @@
     var miniGraphPanel = document.getElementById('mini-graph-wrap');
     if (miniGraphSection || miniGraphPanel) {
       scrollEntryCardIntoView(miniGraphSection || miniGraphPanel, null, function () {
-        if (miniGraphPanel) playCardBorderTrace(miniGraphPanel);
+        if (miniGraphPanel) playCardBorderTrace(miniGraphPanel, pulseMiniGraphExpandHint);
       }, 'start');
     }
   }
