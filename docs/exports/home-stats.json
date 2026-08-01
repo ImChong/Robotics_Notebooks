@@ -1,13 +1,78 @@
 {
-  "generated_at": "2026-07-31",
-  "node_count": 2057,
-  "edge_count": 18458,
+  "generated_at": "2026-08-01",
+  "node_count": 2058,
+  "edge_count": 18473,
   "coverage": {
-    "covered": 2007,
-    "total": 2033,
+    "covered": 2008,
+    "total": 2034,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/video-shotcraft.md",
+      "detail_id": "entity-video-shotcraft",
+      "label": "video-shotcraft（Vincentwei1021/video-shotcraft）",
+      "type": "entity",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
+    {
+      "path": "wiki/entities/gsap-skills.md",
+      "detail_id": "entity-gsap-skills",
+      "label": "GSAP AI Skills（greensock/gsap-skills）",
+      "type": "entity",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
+    {
+      "path": "wiki/entities/mattpocock-skills.md",
+      "detail_id": "entity-mattpocock-skills",
+      "label": "Skills For Real Engineers（mattpocock）",
+      "type": "entity",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
+    {
+      "path": "wiki/entities/img2threejs.md",
+      "detail_id": "entity-img2threejs",
+      "label": "img2threejs",
+      "type": "entity",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
+    {
+      "path": "wiki/entities/manim.md",
+      "detail_id": "entity-manim",
+      "label": "Manim（程序化数学动画引擎）",
+      "type": "entity",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/sensenova-skills.md",
+      "detail_id": "entity-sensenova-skills",
+      "label": "SenseNova-Skills（OpenSenseNova）",
+      "type": "entity",
+      "recency": "2026-07-31",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
     {
       "path": "wiki/entities/paper-legged-robots-advances-challenges.md",
       "detail_id": "entity-paper-legged-robots-advances-challenges",
@@ -36,7 +101,8 @@
       "recency": "2026-07-31",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "运动控制（Locomotion） 社区"
     },
     {
       "path": "wiki/entities/paper-bioinspired-multimodal-robotics.md",
@@ -149,78 +215,23 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "wiki/concepts/diffusion-model.md",
-      "detail_id": "wiki-concepts-diffusion-model",
-      "label": "Diffusion Model（扩散模型）",
-      "type": "concept",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-semantic-co-speech-gesture-synthesis-and-real-ti.md",
-      "detail_id": "entity-paper-notebook-semantic-co-speech-gesture-synthesis-and-real-ti",
-      "label": "Semantic Co-Speech Gesture Synthesis and Real-Time Control for Humanoid Robots",
-      "type": "entity",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-sampling-based-system-identification-with-active.md",
-      "detail_id": "entity-paper-notebook-sampling-based-system-identification-with-active",
-      "label": "SPI-Active（采样式 SysID + 主动探索）",
-      "type": "entity",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/concepts/system-identification.md",
-      "detail_id": "wiki-concepts-system-identification",
-      "label": "System Identification",
-      "type": "concept",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/cma-es.md",
-      "detail_id": "wiki-methods-cma-es",
-      "label": "CMA-ES（协方差矩阵自适应进化策略）",
-      "type": "method",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/queries/sim2real-gap-reduction.md",
-      "detail_id": "wiki-queries-sim2real-gap-reduction",
-      "label": "Sim2Real Gap 缩减实战指南",
-      "type": "query",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-legged-robots-advances-challenges.md",
-    "detail_id": "entity-paper-legged-robots-advances-challenges",
-    "label": "腿式机器人进展、挑战与机遇综述",
+    "path": "wiki/entities/video-shotcraft.md",
+    "detail_id": "entity-video-shotcraft",
+    "label": "video-shotcraft（Vincentwei1021/video-shotcraft）",
     "type": "entity",
     "recency": "2026-07-31",
     "source": "log.md",
-    "action": "maintained",
-    "community_label": "运动控制（Locomotion） 社区"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "大语言模型维基（LLM Wiki） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 183
+      "size": 166
     },
     {
       "label": "模仿学习",
@@ -239,8 +250,8 @@
       "size": 139
     },
     {
-      "label": "全身控制",
-      "size": 139
+      "label": "人形强化学习运动控制",
+      "size": 134
     }
   ],
   "top_hubs": [
