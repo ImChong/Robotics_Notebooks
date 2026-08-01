@@ -2,7 +2,7 @@
 type: entity
 tags: [hardware, humanoid, platform, unitree]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-01
 related:
   - ./humanoid-robot.md
   - ./rek.md
@@ -15,12 +15,14 @@ related:
   - ./paper-adp.md
   - ./paper-humoslope-physics-guided-slope-locomotion.md
   - ./paper-uni-lavira.md
+  - ./paper-pac-man-perceptive-cbf-rl.md
   - ../roadmaps/humanoid-control-roadmap.md
 sources:
   - ../../sources/papers/humanoid_hardware.md
   - ../../sources/papers/adp_arxiv_2607_03454.md
   - ../../sources/papers/humoslope_arxiv_2607_07830.md
   - ../../sources/papers/uni_lavira_arxiv_2605_27582.md
+  - ../../sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
 summary: "Unitree G1 是一款由宇树科技推出的入门级教育科研用人形机器人，以其极高的性价比、高集成度以及对仿真学习框架的良好支持而备受关注。"
 ---
@@ -85,6 +87,7 @@ G1 的出现极大地加速了大规模数据的采集。由于其成本低廉�
 - [LEGS（论文实体）](./paper-legs-embodied-gaussian-splatting-vla.md) — G1 上 3DGS 合成 loco-manip VLA 数据（arXiv:2606.01458）
 - [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md)
 - [ExoActor](../methods/exoactor.md) — G1 上的视频生成驱动的零样本交互控制系统。
+- [PAC-MAN](./paper-pac-man-perceptive-cbf-rl.md) — G1 机载深度零样本躲避球（CBF-RL，19/20）
 - [BifrostUMI（论文实体）](./paper-bifrost-umi.md) — 无机器人示范 + SKR + WBC 的全身 visuomotor 管线。
 - [BotLab / MotionCanvas](./botlab-motioncanvas.md) — 浏览器内 G1 相关策略与 MuJoCo 可视化编排入口。
 - [显式楼梯几何条件化（论文实体）](./paper-explicit-stair-geometry-humanoid-locomotion.md) — G1 楼梯几何 token + PPO（arXiv:2605.09944）。

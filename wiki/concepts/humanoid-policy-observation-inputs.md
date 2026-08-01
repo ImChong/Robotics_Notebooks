@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, locomotion, rl, observation, proprioception, exteroception, state-estimation, privileged-training, sim2real]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-01
 summary: "主流人形运控策略（RL/IL/跟踪系）的输入按「部署是否可得」分五类：本体感知、指令与参考、历史上下文、外部感知、特权信息（仅训练）；每类的关键工程问题是真机上如何获得——直读、滤波估计、学习估计、感知管线还是上层给定。"
 related:
   - ./state-estimation.md
@@ -17,6 +17,7 @@ related:
   - ./motion-retargeting.md
   - ../tasks/humanoid-locomotion.md
   - ../queries/humanoid-rl-cookbook.md
+  - ../entities/paper-pac-man-perceptive-cbf-rl.md
 sources:
   - ../../sources/personal/humanoid-loco-policy-observation-inputs-faq.md
   - ../../sources/papers/privileged_training.md
@@ -195,6 +196,7 @@ flowchart LR
 - [Domain Randomization](./domain-randomization.md) — 观测噪声与延迟的随机化
 - [人形机器人 RL 策略训练 Checklist](../queries/humanoid-rl-cookbook.md) — Stage 2 Observation 设计的操作版
 - [Humanoid Locomotion](../tasks/humanoid-locomotion.md) — 任务层入口
+- [PAC-MAN](../entities/paper-pac-man-perceptive-cbf-rl.md) — 部署观测仅球-only 掩膜深度堆叠 + 本体感觉；球态永不进策略
 
 ## 参考来源
 

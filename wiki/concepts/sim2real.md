@@ -16,6 +16,7 @@ related:
   - ../methods/actuator-network.md
   - ./privileged-training.md
   - ../entities/genesis-sim.md
+  - ../entities/paper-pac-man-perceptive-cbf-rl.md
   - ./data-flywheel.md
   - ../queries/sim2real-gap-reduction.md
   - ../entities/gr00t-visual-sim2real.md
@@ -51,7 +52,7 @@ related:
   - ../entities/paper-legged-robots-advances-challenges.md
   - ../queries/sim2real-closed-loop-engineering.md
 summary: "Sim2Real 关注如何把仿真中学到的策略稳定迁移到真实机器人，是机器人学习落地的核心鸿沟。"
-updated: 2026-07-31
+updated: 2026-08-01
 sources:
   - ../../sources/papers/physx_omni_arxiv_2605_21572.md
   - ../../sources/courses/isaac_lab_implicit_explicit_actuators.md
@@ -234,6 +235,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [TacRefineNet](../entities/paper-tacrefinenet-tactile-grasp-refinement.md) — 多指触觉策略仿真 BC 零样本上真机
+- [PAC-MAN](../entities/paper-pac-man-perceptive-cbf-rl.md) — 掩膜深度观测契约对齐后 G1 零样本躲避球（CBF-RL）
 - [ergoCub Shared Embodied Intelligence](../entities/paper-ergocub-shared-embodied-intelligence.md) — 优化模型几何/密度假设与制造延长件之间的硬件 sim-to-real 缺口讨论
 - [真机安全 RL 微调](./safe-real-world-rl-fine-tuning.md) — 部署后真机在线适配的安全边界：低秩残差 / 生成兜底 / CBF 安全壳三条路径
 - [Motion Retargeting](./motion-retargeting.md) — 「映射 → 训练 → 迁移」三段流水线首段：Sim2Real 消费其物理可执行参考产物

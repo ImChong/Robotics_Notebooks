@@ -5,11 +5,13 @@ status: stub
 summary: "CLF 负责稳定性（驱动系统到达目标），CBF 负责安全性（阻止系统进入危险区域），两者互补，联合构成 CLF-CBF-QP 实时安全控制框架。"
 sources:
   - ../../sources/papers/optimal_control_theory.md
+updated: 2026-08-01
 related:
   - ../concepts/control-barrier-function.md
   - ../formalizations/control-lyapunov-function.md
   - ../concepts/whole-body-control.md
   - ../formalizations/lqr.md
+  - ../entities/paper-pac-man-perceptive-cbf-rl.md
 ---
 
 # CLF vs CBF：稳定性与安全性的对偶工具
@@ -188,6 +190,7 @@ CBF 保证系统**留在安全集内**，但安全集内的行为完全取决于
 - [Control Lyapunov Function（CLF）](../formalizations/control-lyapunov-function.md) — CLF 详细介绍
 - [Whole-Body Control](../concepts/whole-body-control.md) — CLF-CBF-QP 在全身控制中的应用
 - [LQR](../formalizations/lqr.md) — CLF 的线性系统特例
+- [PAC-MAN](../entities/paper-pac-man-perceptive-cbf-rl.md) — 训练期 CBF 奖励、部署无 CLF/CBF-QP 的感知感知躲避球
 
 ## 推荐继续阅读
 

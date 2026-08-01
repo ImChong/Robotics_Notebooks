@@ -2,7 +2,7 @@
 type: concept
 tags: [rl, sim2real, training, humanoid, policy-optimization]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-01
 summary: "Privileged Training 让 teacher 使用仿真特权信息训练，再蒸馏给真实可观测 student，是 sim2real 常见套路；蒸馏本质是把 RL 探索问题转为 Teacher 标注的监督学习。"
 related:
   - ./terrain-latent-representation.md
@@ -20,6 +20,7 @@ related:
   - ../entities/dreamwaq-plus.md
   - ../entities/paper-perceptive-bfm.md
   - ../entities/paper-fada-humanoid.md
+  - ../entities/paper-pac-man-perceptive-cbf-rl.md
   - ../formalizations/gae.md
   - ../formalizations/mdp.md
   - ../queries/sim2real-closed-loop-engineering.md
@@ -27,6 +28,7 @@ sources:
   - ../../sources/papers/privileged_training.md
   - ../../sources/personal/perceptive_locomotion_representation_essence.md
   - ../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md
+  - ../../sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md
 ---
 
 # Privileged Training（特权信息训练）
@@ -243,6 +245,7 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 - [DreamWaQ++](../entities/dreamwaq-plus.md) — 四足多模态非对称 AC 与 CENet 谱系
 - [RMA](../entities/paper-rma-rapid-motor-adaptation.md) — 特权 extrinsics + 历史适应模块的经典两阶段框架
 - [Extreme Parkour](../entities/extreme-parkour.md) — 四足跑酷 scandots/航向双重蒸馏范例（ROA 继承 RMA）
+- [PAC-MAN](../entities/paper-pac-man-perceptive-cbf-rl.md) — 训练用特权球/连杆几何算 CBF，部署仅机载掩膜深度（非对称 AC，无 teacher 蒸馏）
 - [RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) — 人形分地形高程专家 → 多视角深度学生
 - [LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) — 单参考 hybrid tracking 专家 → 深度 visuomotor 学生
 - [Perceptive BFM](../entities/paper-perceptive-bfm.md) — TCRS 合成 **地形一致 adapted 参考** 作盲 teacher 监督；部署仍用 **raw 参考 + 视觉学生**

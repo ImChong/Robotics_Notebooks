@@ -1,3 +1,12 @@
+## [2026-08-01] ingest | sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md — PAC-MAN 感知感知 CBF-RL 人形躲避球
+
+- **触发：** 用户指定论文 *PAC-MAN: Perception-Aware CBF-RL for Whole-Body Safety in Humanoid Dodgeball*（arXiv:2607.28623；Caltech AMBER；Yang / Li / Ames）+ 项目页 / 浏览器 Demo / GitHub
+- **Sources：** [`sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md`](sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md)、[`sources/sites/perceptive-cbf-rl-github-io.md`](sources/sites/perceptive-cbf-rl-github-io.md)、[`sources/repos/perceptive_cbf_rl.md`](sources/repos/perceptive_cbf_rl.md)
+- **Wiki：** [`wiki/entities/paper-pac-man-perceptive-cbf-rl.md`](wiki/entities/paper-pac-man-perceptive-cbf-rl.md)
+- **交叉：** [`wiki/concepts/control-barrier-function.md`](wiki/concepts/control-barrier-function.md)、[`wiki/methods/safe-rl.md`](wiki/methods/safe-rl.md)、[`wiki/concepts/safety-filter.md`](wiki/concepts/safety-filter.md)、[`wiki/concepts/privileged-training.md`](wiki/concepts/privileged-training.md)、[`wiki/methods/amp-reward.md`](wiki/methods/amp-reward.md)、[`wiki/entities/unitree-g1.md`](wiki/entities/unitree-g1.md)、[`wiki/entities/amp-mjlab.md`](wiki/entities/amp-mjlab.md)、[`wiki/entities/mjlab.md`](wiki/entities/mjlab.md)
+- **机构：** `caltech` 已注册
+- **开源：** **已开源（MIT）** — 项目页列 Code；训练 + benchmark + `deploy/` 硬件栈与 ONNX；浏览器 Demo 可玩
+
 ## [2026-08-01] ingest | sources/papers/importance_sampling_pca_av_failures_arxiv_2607_18106.md — Stanford×Torc AST/DiFS+PCA 商业卡车 AV 稀有失败挖掘
 
 - **触发：** 用户指定论文 *Importance Sampling and PCA for Finding Failures in Commercial Autonomous Vehicles*（arXiv:2607.18106；IEEE ICVES 2026 submitted；Stanford × Torc；Kochenderfer 等）
