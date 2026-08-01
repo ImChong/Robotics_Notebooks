@@ -1,13 +1,130 @@
 {
   "generated_at": "2026-08-01",
-  "node_count": 2062,
-  "edge_count": 18539,
+  "node_count": 2064,
+  "edge_count": 18583,
   "coverage": {
-    "covered": 2012,
-    "total": 2038,
+    "covered": 2014,
+    "total": 2040,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/overseas-embodied-ai-labs-landscape-2026.md",
+      "detail_id": "wiki-overview-overseas-embodied-ai-labs-landscape-2026",
+      "label": "海外具身智能实验室地图（2026）",
+      "type": "overview",
+      "recency": "2026-08-01",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/overview/china-embodied-ai-labs-landscape-2026.md",
+      "detail_id": "wiki-overview-china-embodied-ai-labs-landscape-2026",
+      "label": "国内具身智能实验室三层地图（2026）",
+      "type": "overview",
+      "recency": "2026-08-01",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/overview/notable-commercial-robot-platforms.md",
+      "detail_id": "wiki-overview-notable-commercial-robot-platforms",
+      "label": "市面知名机器人平台纵览",
+      "type": "overview",
+      "recency": "2026-08-01",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/methods/diffusion-policy.md",
+      "detail_id": "wiki-methods-diffusion-policy",
+      "label": "Diffusion Policy",
+      "type": "method",
+      "recency": "2026-08-01",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/aloha.md",
+      "detail_id": "entity-aloha",
+      "label": "ALOHA (双臂遥操作硬件)",
+      "type": "entity",
+      "recency": "2026-08-01",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/π0-policy.md",
+      "detail_id": "wiki-methods-π0-policy",
+      "label": "π₀ (Pi-zero) 策略模型",
+      "type": "method",
+      "recency": "2026-08-01",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/anymal.md",
+      "detail_id": "entity-anymal",
+      "label": "ANYmal 四足机器人",
+      "type": "entity",
+      "recency": "2026-08-01",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "运动控制（Locomotion） 社区"
+    },
+    {
+      "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
+      "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
+      "label": "VLA 开源复现景观（2025 策展）",
+      "type": "overview",
+      "recency": "2026-08-01",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/agibot-world-2026.md",
+      "detail_id": "entity-agibot-world-2026",
+      "label": "AGIBOT WORLD 2026",
+      "type": "entity",
+      "recency": "2026-08-01",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/x-humanoid.md",
+      "detail_id": "entity-x-humanoid",
+      "label": "X-Humanoid（北京人形机器人创新中心）",
+      "type": "entity",
+      "recency": "2026-08-01",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/limx-cosa.md",
+      "detail_id": "entity-limx-cosa",
+      "label": "LimX COSA（人形大脑操作系统）",
+      "type": "entity",
+      "recency": "2026-08-01",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/overview/robot-learning-overview.md",
+      "detail_id": "wiki-overview-robot-learning-overview",
+      "label": "Robot Learning Overview",
+      "type": "overview",
+      "recency": "2026-08-01",
+      "source": "log.md",
+      "action": "maintained"
+    },
     {
       "path": "wiki/entities/paper-pac-man-perceptive-cbf-rl.md",
       "detail_id": "entity-paper-pac-man-perceptive-cbf-rl",
@@ -87,147 +204,29 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/entities/mjlab.md",
-      "detail_id": "entity-mjlab",
-      "label": "mjlab (轻量 GPU 加速 RL 框架)",
-      "type": "entity",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-importance-sampling-pca-av-failures.md",
-      "detail_id": "entity-paper-importance-sampling-pca-av-failures",
-      "label": "Importance Sampling + PCA：商业自动驾驶失败挖掘与 eigenfailure 诊断",
-      "type": "entity",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/sac.md",
-      "detail_id": "wiki-methods-sac",
-      "label": "SAC（Soft Actor-Critic）",
-      "type": "method",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "path": "wiki/concepts/diffusion-model.md",
-      "detail_id": "wiki-concepts-diffusion-model",
-      "label": "Diffusion Model（扩散模型）",
-      "type": "concept",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/overview/autonomous-driving-core-algorithms-series.md",
-      "detail_id": "wiki-overview-autonomous-driving-core-algorithms-series",
-      "label": "《自动驾驶核心算法盘点》专栏技术地图",
-      "type": "overview",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/concepts/robot-safety-state-machine.md",
-      "detail_id": "wiki-concepts-robot-safety-state-machine",
-      "label": "机器人安全状态机（硬件 / 通信故障）",
-      "type": "concept",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/disney-research-la.md",
-      "detail_id": "entity-disney-research-la",
-      "label": "Disney Research LA（研究门户）",
-      "type": "entity",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/entities/disney-holotile.md",
-      "detail_id": "entity-disney-holotile",
-      "label": "Disney Holotile（全向活动地板）",
-      "type": "entity",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/methods/disney-olaf-character-robot.md",
-      "detail_id": "wiki-methods-disney-olaf-character-robot",
-      "label": "Disney Olaf 角色机器人（实机动画角色）",
-      "type": "method",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/reactor-physics-aware-motion-retargeting.md",
-      "detail_id": "wiki-methods-reactor-physics-aware-motion-retargeting",
-      "label": "ReActor（物理感知 RL 运动重定向）",
-      "type": "method",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/concepts/character-animation-vs-robotics.md",
-      "detail_id": "wiki-concepts-character-animation-vs-robotics",
-      "label": "Character Animation vs Robotics（角色动画与机器人控制的边界）",
-      "type": "concept",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/entities/open-duck-mini.md",
-      "detail_id": "entity-open-duck-mini",
-      "label": "Open Duck Mini",
-      "type": "entity",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-pac-man-perceptive-cbf-rl.md",
-    "detail_id": "entity-paper-pac-man-perceptive-cbf-rl",
-    "label": "PAC-MAN",
-    "type": "entity",
+    "path": "wiki/overview/overseas-embodied-ai-labs-landscape-2026.md",
+    "detail_id": "wiki-overview-overseas-embodied-ai-labs-landscape-2026",
+    "label": "海外具身智能实验室地图（2026）",
+    "type": "overview",
     "recency": "2026-08-01",
     "source": "log.md",
-    "action": "maintained",
-    "has_repo": true
+    "action": "added"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 190
+      "size": 194
     },
     {
       "label": "动作重定向",
       "size": 167
     },
     {
-      "label": "操作",
-      "size": 141
+      "label": "全身控制",
+      "size": 153
     },
     {
       "label": "移动操作",
@@ -235,11 +234,11 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 137
+      "size": 138
     },
     {
-      "label": "全身控制",
-      "size": 131
+      "label": "操作",
+      "size": 138
     }
   ],
   "top_hubs": [
@@ -247,7 +246,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 407,
+      "degree": 409,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -255,7 +254,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 372,
+      "degree": 374,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -270,7 +269,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 337,
+      "degree": 339,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -286,7 +285,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 293,
+      "degree": 294,
       "community_label": "运动控制（Locomotion） 社区"
     },
     {

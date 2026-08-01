@@ -1,3 +1,19 @@
+## [2026-08-01] ingest | sources/blogs/wechat_shenlan_overseas_embodied_labs_43_2026.md — 海外 43 所具身实验室地图；wiki/overview/overseas-embodied-ai-labs-landscape-2026.md
+
+- **触发：** 用户指定微信 <https://mp.weixin.qq.com/s/_zoU9Q-KXHJAUZ041iBuCw>（深蓝具身智能 · 2026 海外 43 所，姊妹国内篇）
+- **抓取：** Agent Reach v1.5.0 + `wechat-article-for-ai`（已确认安装）；`--no-images`
+- **Sources：** [`sources/blogs/wechat_shenlan_overseas_embodied_labs_43_2026.md`](sources/blogs/wechat_shenlan_overseas_embodied_labs_43_2026.md)、[`sources/raw/wechat_shenlan_overseas_embodied_labs_43_2026-08-01/`](sources/raw/wechat_shenlan_overseas_embodied_labs_43_2026-08-01/)
+- **Wiki：** [`wiki/overview/overseas-embodied-ai-labs-landscape-2026.md`](wiki/overview/overseas-embodied-ai-labs-landscape-2026.md)
+- **交叉：** [`china-embodied-ai-labs-landscape-2026`](wiki/overview/china-embodied-ai-labs-landscape-2026.md)、[`notable-commercial-robot-platforms`](wiki/overview/notable-commercial-robot-platforms.md)、[`diffusion-policy`](wiki/methods/diffusion-policy.md)、[`aloha`](wiki/entities/aloha.md)、[`π0-policy`](wiki/methods/π0-policy.md)、[`anymal`](wiki/entities/anymal.md)、[`vla-open-source-repro-landscape-2025`](wiki/overview/vla-open-source-repro-landscape-2025.md)
+
+## [2026-08-01] ingest | sources/blogs/wechat_shenlan_china_embodied_labs_50_2026.md — 国内 50 所具身实验室三层地图；wiki/overview/china-embodied-ai-labs-landscape-2026.md
+
+- **触发：** 用户指定微信 <https://mp.weixin.qq.com/s/58c4CgN9XVmtS_RMKbqeKw>（深蓝具身智能 · 国内 50 所盘点，附全景图）
+- **抓取：** Agent Reach v1.5.0 + `wechat-article-for-ai`（已确认安装）；`--no-images`
+- **Sources：** [`sources/blogs/wechat_shenlan_china_embodied_labs_50_2026.md`](sources/blogs/wechat_shenlan_china_embodied_labs_50_2026.md)、[`sources/raw/wechat_shenlan_china_embodied_labs_50_2026-07-26/`](sources/raw/wechat_shenlan_china_embodied_labs_50_2026-07-26/)
+- **Wiki：** [`wiki/overview/china-embodied-ai-labs-landscape-2026.md`](wiki/overview/china-embodied-ai-labs-landscape-2026.md)
+- **交叉：** [`overseas-embodied-ai-labs-landscape-2026`](wiki/overview/overseas-embodied-ai-labs-landscape-2026.md)、[`notable-commercial-robot-platforms`](wiki/overview/notable-commercial-robot-platforms.md)、[`agibot-world-2026`](wiki/entities/agibot-world-2026.md)、[`x-humanoid`](wiki/entities/x-humanoid.md)、[`limx-cosa`](wiki/entities/limx-cosa.md)、[`robot-learning-overview`](wiki/overview/robot-learning-overview.md)
+
 ## [2026-08-01] ingest | sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md — PAC-MAN 感知感知 CBF-RL 人形躲避球
 
 - **触发：** 用户指定论文 *PAC-MAN: Perception-Aware CBF-RL for Whole-Body Safety in Humanoid Dodgeball*（arXiv:2607.28623；Caltech AMBER；Yang / Li / Ames）+ 项目页 / 浏览器 Demo / GitHub

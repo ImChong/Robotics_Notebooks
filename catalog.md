@@ -1849,6 +1849,7 @@
 - [BFM 分类 03：Intrinsic reward 预训练](wiki/overview/bfm-category-03-intrinsic-reward-pretraining.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [BFM 分类 04：Adaptation](wiki/overview/bfm-category-04-adaptation.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [BFM 分类 05：Hierarchical control](wiki/overview/bfm-category-05-hierarchical-control.md) — 语言、VLA、扩散与规划器如何通过**层次接口**（技能 token、latent action、action chunk）调用已训练好的底层身体，并由 WBC / 技能执行器承担关节级闭环？（工程分 `📅unknown` `[overview_page]`
+- [国内具身智能实验室三层地图（2026）](wiki/overview/china-embodied-ai-labs-landscape-2026.md) — 国内具身智能高校实验室可按公开产学研现状粗分为 **技术孵化层（组→公司）、深度合作层（校企联合实验室）、基础研究层（重点科研平台）**——三股力量共同构成从论文到产品、从算法到本体的转化链条；划分边 `📅unknown` `[overview_page]`
 - [端到端自动驾驶：十大前沿算法技术地图](wiki/overview/e2e-autonomous-driving-top10-algorithms.md) — 端到端自动驾驶正从「规划导向的可解释联合优化」分化为 **向量化/稀疏化算力路线、VLM 常识路线、生成式世界模型路线、帧间一致性量产路线、并行 Transformer 与截断扩散规划路线**；选型时 `📅unknown` `[overview_page]`
 - [Ego 技术地图：9 篇论文的四类问题视角](wiki/overview/ego-9-papers-technology-map.md) — Ego 的价值不在「视频很多」，而在它同时记录视线、手、身体、遮挡、接触与临场决策——更接近人类真实执行过程，也更贴近机器人从自身传感器看世界；但第一视角素材必须经过采集系统、人→机对齐与世界模型 `📅unknown` `[overview_page]`
 - [Ego 分类 01：数据采集](wiki/overview/ego-category-01-data-collection.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
@@ -1943,6 +1944,7 @@
 - [多旋翼仿真—规划—飞控开源栈总览](wiki/overview/multirotor-simulation-planning-control-stack.md) — 飞控与通信** 分两支：**自主导航 / 研究** 以 PX4 + MAVSDK  `📅unknown` `[overview_page]`
 - [导航·SLAM·自动驾驶开源栈总览](wiki/overview/navigation-slam-autonomy-stack.md) — ROS 2 导航闭环** 以 Navigation2 为中枢，上游接 **2D SLAM**（[slam_toolbox](https: `📅unknown` `[overview_page]`
 - [市面知名机器人平台纵览](wiki/overview/notable-commercial-robot-platforms.md) — 本页回答：**除了少数明星项目外，产业与新闻里还经常出现哪些人形、四足与腿足平台**，它们大致属于哪条技术–商业路线，以及在本知识库里应去哪里深挖。 `📅unknown` `[overview_page]`
+- [海外具身智能实验室地图（2026）](wiki/overview/overseas-embodied-ai-labs-landscape-2026.md) — 海外具身智能与机器人实验室呈现 **「顶尖高校研究所 + PI 衍生 AI/机器人公司」** 格局：美国以斯坦福 / MIT / CMU / Berkeley 为方法策源，欧洲以牛津–帝国理工–ETH `📅unknown` `[overview_page]`
 - [Paper Notebooks · Foundational RL](wiki/overview/paper-notebook-category-01-foundational-rl.md) — Foundational RL**（`01_Foundational_RL`）是 [Humanoid Robot Learning Paper Notebooks](https://imchong `📅unknown` `[overview_page]`
 - [Paper Notebooks · Motion Retargeting](wiki/overview/paper-notebook-category-02-motion-retargeting.md) — Motion Retargeting**（`02_Motion_Retargeting`）是 [Humanoid Robot Learning Paper Notebooks](https://i `📅unknown` `[overview_page]`
 - [Paper Notebooks · High Impact Selection](wiki/overview/paper-notebook-category-03-high-impact-selection.md) — High Impact Selection**（`03_High_Impact_Selection`）是 [Humanoid Robot Learning Paper Notebooks](htt `📅unknown` `[overview_page]`
