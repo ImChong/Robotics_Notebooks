@@ -90,6 +90,7 @@
   - [x] 图谱页 3D 社区漂浮标签：按画布短边相对 ~800px 参考值 **连续缩放**字号（√ 比例，钳制约 **0.78–1.28**，绝对字号约 **7–22px**），取代旧的「移动端字号×0.55 + zoom×0.55」二元收紧，避免手机/平板有效字号落到 ~3–5px、大屏却完全不放大；验证脚本 `scripts/verify_graph_community_labels_3d_responsive.cjs`。
   - [x] 图谱页 3D 社区漂浮标签：点「适配屏幕」飞行动画期间锁定胶囊 scale 为落稳尺寸，并提前写入目标距离基线，避免中途 `|cam−lookAt|` 偏离导致标签大小闪一下。
   - [x] 图谱页 `graph.html`：筛选浮窗保留顶部「按类型 / 按社区 / 按健康度」按钮三选一；当前维度的勾选项改为与「路线视图 / 研究机构」一致的可折叠 `<details>`，折叠标题在有选中时显示数量（如 `3 个社区`）。
+  - [x] 图谱页 `graph.html`：筛选浮窗内「按社区（当前维度）/ 路线视图 / 研究机构」三区改为手风琴——同时仅展开一个，默认展开「按社区」；展开区吃满中间剩余高度，收起项靠在上方或下方；验证脚本 `scripts/verify_graph_filter_accordion.cjs`。
   - [x] 图谱页 2D 力模拟：略欠阻尼、**最多一次回弹**（验收以「刷新布局」为准，不用时序动画）——`velocityDecay=0.54`、极短 warmup 20 tick 后 `alpha=0.9` 开场、度数加权弹簧；3D 力参数保持对话前原状。
   - [x] 图谱页 2D 时序动画：退出时清零 `alpha`/`alphaTarget` 并停模拟（不再走 pause 路径把加热目标钉在 0.3）；`closeSidebar` 仅在侧栏确实打开时才 viewport sync / relayout restart，避免「退出后点空白 → 力模拟自振抖动」；验证脚本 `scripts/verify_graph_timeline_exit_settle.cjs`。
 - [x] 首页「互链枢纽 · Top 10」底部入口改为「查看完整榜单 →」，新增 `docs/hubs.html` 全量互链榜单页（数据源 `exports/hub-rankings.json`，全站 / 论文双 tab）。

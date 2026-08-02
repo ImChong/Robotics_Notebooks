@@ -87,8 +87,12 @@ function copyToArtifacts(src, name) {
     if (chromeState.sections.some((s) => !s.exists)) {
       throw new Error('Missing collapsible sections');
     }
-    if (chromeState.sections.some((s) => s.open)) {
-      console.warn('Warning: some sections open by default');
+    const openSections = chromeState.sections.filter((s) => s.open);
+    if (openSections.length !== 1 || openSections[0].id !== 'filter-dimension-section') {
+      throw new Error(
+        'Default accordion should open only filter-dimension-section, got: ' +
+          JSON.stringify(openSections)
+      );
     }
 
     const collapsedOut = path.join(OUT_DIR, 'graph-filter-collapse-default.png');
@@ -96,12 +100,8 @@ function copyToArtifacts(src, name) {
     copyToArtifacts(collapsedOut, 'graph-filter-collapse-default.png');
     console.log('Saved:', collapsedOut);
 
-    // Open dimension section, select 2 communities, collapse, verify count
-    await page.evaluate(() => {
-      const sec = document.getElementById('filter-dimension-section');
-      if (sec) sec.open = true;
-    });
-    await new Promise((r) => setTimeout(r, 300));
+    // Dimension section already open by default; select 2 communities, switch to depth
+    // (accordion keeps exactly one open), then verify count remains on dimension summary
     await page.evaluate(() => {
       const list = document.getElementById('filter-panel-body');
       const boxes = Array.from((list && list.querySelectorAll('input[type="checkbox"]')) || []).slice(0, 2);
@@ -111,9 +111,8 @@ function copyToArtifacts(src, name) {
           cb.dispatchEvent(new Event('change', { bubbles: true }));
         }
       });
-      const sec = document.getElementById('filter-dimension-section');
-      if (sec) sec.open = false;
     });
+    await page.click('#filter-depth-section > summary');
     await new Promise((r) => setTimeout(r, 300));
 
     let summary = await page.evaluate(() => ({
@@ -121,10 +120,15 @@ function copyToArtifacts(src, name) {
       current: (document.getElementById('filter-dimension-current') || {}).textContent || '',
       badge: (document.getElementById('filter-count') || {}).textContent || '',
       subtitle: (document.getElementById('filter-subtitle') || {}).textContent || '',
+      dimOpen: !!document.getElementById('filter-dimension-section')?.open,
+      depthOpen: !!document.getElementById('filter-depth-section')?.open,
     }));
-    console.log('After community select:', summary);
+    console.log('After community select + depth open:', summary);
     if (summary.label !== '按社区') throw new Error('Label should be 按社区: ' + summary.label);
     if (!summary.current.includes('2')) throw new Error('Missing community count: ' + summary.current);
+    if (summary.dimOpen || !summary.depthOpen) {
+      throw new Error('Accordion should switch open pane to depth');
+    }
 
     const countedOut = path.join(OUT_DIR, 'graph-filter-collapse-counts.png');
     await page.screenshot({ path: countedOut, fullPage: false });
