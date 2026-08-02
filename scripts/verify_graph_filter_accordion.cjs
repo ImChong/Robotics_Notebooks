@@ -57,6 +57,12 @@ async function sectionLayout(page) {
         bodyScrollH: body ? body.scrollHeight : 0,
         bodyCanScroll: !!(body && body.scrollHeight > body.clientHeight + 1),
         bodyOverflowY: body ? getComputedStyle(body).overflowY : '',
+        chromeVisible: (() => {
+          const chrome = el.querySelector(':scope > .filter-scroll-chrome');
+          if (!chrome || chrome.hidden) return false;
+          const thumb = chrome.querySelector('.filter-scroll-thumb');
+          return !!(thumb && thumb.getBoundingClientRect().height >= 20);
+        })(),
       };
     });
     return {
@@ -99,6 +105,13 @@ function assertExclusive(layout, expectedOpenId) {
     throw new Error(
       `Open pane not clamped: bodyClient=${open.bodyClientH} section=${open.height} summary=${open.summaryH}`
     );
+  }
+  if (
+    (expectedOpenId === 'filter-dimension-section' ||
+      expectedOpenId === 'filter-institution-section') &&
+    !open.chromeVisible
+  ) {
+    throw new Error(`Open ${expectedOpenId} should show custom scroll thumb`);
   }
   const openIdx = layout.items.findIndex((i) => i.id === expectedOpenId);
   layout.items.forEach((item, idx) => {
