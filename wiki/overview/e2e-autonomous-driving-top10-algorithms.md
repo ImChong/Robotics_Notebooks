@@ -9,13 +9,14 @@ tags:
   - diffusion
   - shenlan
 status: complete
-updated: 2026-07-24
+updated: 2026-08-02
 related:
   - ./autonomous-driving-core-algorithms-series.md
   - ../methods/generative-world-models.md
   - ../methods/vla.md
   - ../entities/paper-s-squared-vla.md
   - ../entities/paper-m4world.md
+  - ../entities/paper-mmhu.md
   - ../entities/paper-uniad.md
   - ../entities/paper-diffusiondrive.md
 sources:
@@ -107,6 +108,7 @@ flowchart TB
 - [VLA](../methods/vla.md)
 - [S²-VLA](../entities/paper-s-squared-vla.md)
 - [M⁴World](../entities/paper-m4world.md)
+- [MMHU](../entities/paper-mmhu.md) — 驾驶人本 Behavior VQA / 运动基准（VLM 零样本仍难）
 
 ## 参考来源
 

@@ -2,7 +2,7 @@
 type: method
 tags: [locomotion, diffusion, generative-model, humanoid]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-02
 related:
   - ../entities/kimodo.md
   - ../entities/ardy.md
@@ -12,6 +12,7 @@ related:
   - ../entities/paper-molingo.md
   - ../entities/paper-phygile.md
   - ../entities/paper-diffsheg.md
+  - ../entities/paper-mmhu.md
 summary: "利用扩散模型生成机器人全身运动序列，通过闭环微调解决分布偏移，实现复杂地形下的实时运动规划。"
 ---
 
@@ -149,6 +150,7 @@ summary: "利用扩散模型生成机器人全身运动序列，通过闭环微�
 - [Generative Motion Rig（Disney）](../entities/generative-motion-rig.md) — DCC 集成的 generative keyframing（非新 backbone）
 - [Muninn](../entities/paper-muninn-trajectory-diffusion-acceleration.md) — 轨迹扩散/扩散策略的免训练缓存加速与 conformal 偏差证书
 - [Awesome Text-to-Motion（Zilize）](../entities/awesome-text-to-motion-zilize.md) — 人体文本–运动文献与数据集的 curated 入口（单人、无 HOI）
+- [MMHU](../entities/paper-mmhu.md) — 驾驶街景 text-to-motion 域差证据（通用 T2M FID 极高，微调后显著下降）
 - [Humanoid Locomotion](../tasks/humanoid-locomotion.md)
 - [Motion Retargeting](../methods/motion-retargeting-gmr.md)
 - [PPO](./policy-optimization.md)
