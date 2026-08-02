@@ -12,9 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 class ExportHasRepoTests(unittest.TestCase):
     def test_page_has_repo_source_detects_relative_repo_link(self) -> None:
-        self.assertTrue(
-            page_has_repo_source("见 [PBHC](../../sources/repos/pbhc.md) 仓库")
-        )
+        self.assertTrue(page_has_repo_source("见 [PBHC](../../sources/repos/pbhc.md) 仓库"))
         self.assertFalse(page_has_repo_source("仅有 [wiki](../concepts/sim2real.md)"))
 
     def test_build_item_sets_has_repo_for_sim2real(self) -> None:
