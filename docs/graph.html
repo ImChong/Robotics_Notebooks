@@ -4469,6 +4469,15 @@
       updateTimelineProgress(timelineIdx, timelineTotal);
     }
 
+    function stopTimelineTimer() {
+      if (timelineAnimTimer) {
+        clearInterval(timelineAnimTimer);
+        timelineAnimTimer = null;
+      }
+      timelinePlaying = false;
+      svg.interrupt('tlfit');
+    }
+
     function startTimelinePlayback() {
       if (!timelineAnimating || timelinePlaying) return;
       if (timelineIdx >= timelineTotal) seekTimeline(0, false); // 已到末尾再播放则从头开始
@@ -4484,21 +4493,17 @@
     }
 
     function onTimelinePlaybackComplete() {
-      if (timelineAnimTimer) { clearInterval(timelineAnimTimer); timelineAnimTimer = null; }
-      timelinePlaying = false;
+      stopTimelineTimer();
       updateTimelineControls();
       simulation.alphaTarget(0);     // 缓缓收敛（最后一批节点落位），不立即冻结
       fitToTimelineNodes();
     }
 
     function pauseTimelinePlayback() {
-      if (timelineAnimTimer) {
-        clearInterval(timelineAnimTimer);
-        timelineAnimTimer = null;
-      }
-      timelinePlaying = false;
-      svg.interrupt('tlfit');
-      simulation.alphaTarget(0.3).restart();   // 仅停计时器，力导向布局继续演化
+      stopTimelineTimer();
+      // 仅停计时器：力导向继续演化（alphaTarget>0）。退出时序绝不能走这条路径，
+      // 否则 stop() 后仍残留加热目标，空白点击 restart 会永久自振。
+      simulation.alphaTarget(0.3).restart();
       updateTimelineControls();
     }
 
@@ -4546,7 +4551,10 @@
     // 拆除时序模式：停播、恢复完整力模拟成员、复位节点显隐（供退出与「刷新布局」共用）
     function teardownTimelineMode() {
       if (timeline3D) { teardownTimelineMode3D(); return; }
-      pauseTimelinePlayback();
+      // 只停计时器，不要走 pauseTimelinePlayback（会把 alphaTarget 钉在 0.3）
+      stopTimelineTimer();
+      simulation.alphaTarget(0);
+      simulation.stop();
       timelineAnimating = false;
       timelineRevealedIds.clear();
       timelineIdx = 0;
@@ -4565,9 +4573,11 @@
 
     function exitTimelineMode() {
       teardownTimelineMode();
-      // 还原进入前布局并定格
+      // 还原进入前布局并定格；再次清零加热目标，避免后续空白点击 restart 后无法冷却
       restoreTimelinePositions();
+      simulation.alphaTarget(0);
       simulation.stop();
+      for (const n of simulation.nodes()) { n.vx = 0; n.vy = 0; }
       syncGraphDomFromSimulation();
       labelsSettled2D = true;
       sync2DNodeLabels();
@@ -5313,6 +5323,13 @@
         setTimeout(flyToFocus, 1400);
       }
     }
+
+    // 供验证脚本读取 2D 力模拟加热态（非业务 UI）
+    window.__RN_GRAPH2D_DEBUG__ = {
+      alpha: () => simulation.alpha(),
+      alphaTarget: () => simulation.alphaTarget(),
+      timelineAnimating: () => timelineAnimating,
+    };
 
   })();
   </script>
