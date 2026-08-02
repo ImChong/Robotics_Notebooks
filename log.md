@@ -1,3 +1,12 @@
+## [2026-08-02] ingest | sources/papers/refine_dp_arxiv_2603_13707.md + sites/refine-dp-github-io.md — REFINE-DP（arXiv:2603.13707，Georgia Tech / IEEE RA-L）深度升格
+
+- **触发：** 用户指定 *REFINE-DP: Diffusion Policy Fine-tuning for Humanoid Loco-manipulation via Reinforcement Learning*（IEEE RA-L；Georgia Tech；Gu / Chen / Chai / Zhao 等）
+- **Sources：** [`sources/papers/refine_dp_arxiv_2603_13707.md`](sources/papers/refine_dp_arxiv_2603_13707.md)、[`sources/sites/refine-dp-github-io.md`](sources/sites/refine-dp-github-io.md)；同步策展槽位 [`loco_manip_161_survey_157_refine-dp.md`](sources/papers/loco_manip_161_survey_157_refine-dp.md)
+- **Wiki：** [`wiki/entities/paper-loco-manip-161-157-refine-dp.md`](wiki/entities/paper-loco-manip-161-157-refine-dp.md)（161 #157 原地升格完整实体）
+- **交叉：** [`wiki/tasks/loco-manipulation.md`](wiki/tasks/loco-manipulation.md)、[`wiki/methods/diffusion-policy.md`](wiki/methods/diffusion-policy.md)、[`wiki/methods/reinforcement-learning.md`](wiki/methods/reinforcement-learning.md)、[`wiki/methods/residual-policy-learning.md`](wiki/methods/residual-policy-learning.md)、[`wiki/overview/loco-manip-161-category-09-vla-world-models.md`](wiki/overview/loco-manip-161-category-09-vla-world-models.md)、[`wiki/entities/paper-doorman-opening-sim2real-door.md`](wiki/entities/paper-doorman-opening-sim2real-door.md)
+- **机构：** `georgia-tech` 已注册
+- **开源：** **未开源** — 项目页 Code 为无链接占位；`REFINE-DP/REFINE-DP` 仅为站点源
+
 ## [2026-08-01] ingest | sources/blogs/wechat_shenlan_overseas_embodied_labs_43_2026.md — 海外 43 所具身实验室地图；wiki/overview/overseas-embodied-ai-labs-landscape-2026.md
 
 - **触发：** 用户指定微信 <https://mp.weixin.qq.com/s/_zoU9Q-KXHJAUZ041iBuCw>（深蓝具身智能 · 2026 海外 43 所，姊妹国内篇）

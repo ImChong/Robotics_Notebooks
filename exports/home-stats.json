@@ -1,13 +1,81 @@
 {
   "generated_at": "2026-08-02",
   "node_count": 2064,
-  "edge_count": 18583,
+  "edge_count": 18597,
   "coverage": {
     "covered": 2014,
     "total": 2040,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-loco-manip-161-157-refine-dp.md",
+      "detail_id": "entity-paper-loco-manip-161-157-refine-dp",
+      "label": "REFINE-DP",
+      "type": "entity",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/tasks/loco-manipulation.md",
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    },
+    {
+      "path": "wiki/methods/diffusion-policy.md",
+      "detail_id": "wiki-methods-diffusion-policy",
+      "label": "Diffusion Policy",
+      "type": "method",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/methods/reinforcement-learning.md",
+      "detail_id": "wiki-methods-reinforcement-learning",
+      "label": "Reinforcement Learning (RL, 强化学习)",
+      "type": "method",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/methods/residual-policy-learning.md",
+      "detail_id": "wiki-methods-residual-policy-learning",
+      "label": "Residual Policy Learning（残差策略学习）",
+      "type": "method",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/overview/loco-manip-161-category-09-vla-world-models.md",
+      "detail_id": "wiki-overview-loco-manip-161-category-09-vla-world-models",
+      "label": "Loco-Manip 161 分类 09：人形 VLA、世界模型与通用操作",
+      "type": "overview",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-doorman-opening-sim2real-door.md",
+      "detail_id": "entity-paper-doorman-opening-sim2real-door",
+      "label": "DoorMan（Opening the Sim-to-Real Door for Humanoid Pixel-to-Action Policy Transfer）",
+      "type": "entity",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained"
+    },
     {
       "path": "wiki/overview/overseas-embodied-ai-labs-landscape-2026.md",
       "detail_id": "wiki-overview-overseas-embodied-ai-labs-landscape-2026",
@@ -37,15 +105,6 @@
       "has_repo": true
     },
     {
-      "path": "wiki/methods/diffusion-policy.md",
-      "detail_id": "wiki-methods-diffusion-policy",
-      "label": "Diffusion Policy",
-      "type": "method",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
       "path": "wiki/entities/aloha.md",
       "detail_id": "entity-aloha",
       "label": "ALOHA (双臂遥操作硬件)",
@@ -53,8 +112,7 @@
       "recency": "2026-08-01",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/methods/π0-policy.md",
@@ -144,101 +202,41 @@
       "source": "log.md",
       "action": "added",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/methods/safe-rl.md",
-      "detail_id": "wiki-methods-safe-rl",
-      "label": "Safe RL（安全强化学习）",
-      "type": "method",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/concepts/safety-filter.md",
-      "detail_id": "wiki-concepts-safety-filter",
-      "label": "Safety Filter（安全过滤器）",
-      "type": "concept",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/concepts/privileged-training.md",
-      "detail_id": "wiki-concepts-privileged-training",
-      "label": "Privileged Training（特权信息训练）",
-      "type": "concept",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/amp-reward.md",
-      "detail_id": "wiki-methods-amp-reward",
-      "label": "AMP & HumanX: 判别器驱动的风格学习",
-      "type": "method",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/entities/unitree-g1.md",
-      "detail_id": "entity-unitree-g1",
-      "label": "Unitree G1 (人形机器人)",
-      "type": "entity",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/amp-mjlab.md",
-      "detail_id": "entity-amp-mjlab",
-      "label": "AMP_mjlab (G1 统一 AMP 策略)",
-      "type": "entity",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/overseas-embodied-ai-labs-landscape-2026.md",
-    "detail_id": "wiki-overview-overseas-embodied-ai-labs-landscape-2026",
-    "label": "海外具身智能实验室地图（2026）",
-    "type": "overview",
-    "recency": "2026-08-01",
+    "path": "wiki/entities/paper-loco-manip-161-157-refine-dp.md",
+    "detail_id": "entity-paper-loco-manip-161-157-refine-dp",
+    "label": "REFINE-DP",
+    "type": "entity",
+    "recency": "2026-08-02",
     "source": "log.md",
-    "action": "added"
+    "action": "maintained"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 194
+      "size": 189
     },
     {
       "label": "动作重定向",
       "size": 167
     },
     {
-      "label": "全身控制",
-      "size": 153
+      "label": "人形论文深读笔记",
+      "size": 165
     },
     {
       "label": "移动操作",
-      "size": 141
-    },
-    {
-      "label": "人形论文深读笔记",
-      "size": 138
+      "size": 140
     },
     {
       "label": "操作",
-      "size": 138
+      "size": 139
+    },
+    {
+      "label": "人形强化学习运动控制",
+      "size": 131
     }
   ],
   "top_hubs": [
@@ -246,7 +244,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 409,
+      "degree": 410,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -277,7 +275,7 @@
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
-      "degree": 304,
+      "degree": 305,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
@@ -292,7 +290,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 282,
+      "degree": 284,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },

@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, sim2real, visual-rl, loco-manipulation, teacher-student, dagger, grpo, ppo, unitree-g1, isaac-lab, door-opening, cvpr2026, nvidia, gear, body-system-stack]
 status: complete
-updated: 2026-07-24
+updated: 2026-08-02
 arxiv: "2512.01061"
 venue: "CVPR 2026"
 code: https://github.com/NVlabs/GR00T-VisualSim2Real
@@ -181,6 +181,7 @@ sequenceDiagram
 - [Domain Randomization](../concepts/domain-randomization.md)
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
+- [REFINE-DP（论文实体）](./paper-loco-manip-161-157-refine-dp.md) — DP 分层规划 + RL 联合微调的开门/搬箱对照（Booster T1，arXiv:2603.13707）
 - [Unitree G1](./unitree-g1.md)
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
 - [Tairan He](./tairan-he.md)

@@ -19,7 +19,7 @@ related:
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
 summary: "Policy Optimization 汇总 PPO、SAC、TD3 等主流策略更新方法，是机器人 RL 的算法核心。"
-updated: 2026-07-18
+updated: 2026-08-02
 ---
 
 # Policy Optimization
@@ -185,6 +185,7 @@ SAC 常用于：
 - [PPO（Proximal Policy Optimization）](./ppo.md) — clip 代理目标的 on-policy 主力算法
 - [SAC（软演员-评论家）](./sac.md) — 最大熵 off-policy 主力
 - [FlashSAC](./flashsac.md) — 高维机器人 scaling 式 off-policy（2026）
+- [REFINE-DP（论文实体）](../entities/paper-loco-manip-161-157-refine-dp.md) — DPPO（去噪增广 MDP 上的 PPO）+ 低层 PPO 联合微调
 - [Reinforcement Learning](./reinforcement-learning.md)
 - [Imitation Learning](./imitation-learning.md)
 - [Locomotion](../tasks/locomotion.md)

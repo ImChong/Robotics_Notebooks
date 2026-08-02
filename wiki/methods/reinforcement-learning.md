@@ -2,7 +2,7 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-02
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-rl-intelligent-control.md
@@ -240,6 +240,7 @@ flowchart LR
 - [InterPrior（论文实体）](../entities/paper-interprior.md) — 模仿初始化 + RL 微调巩固 HOI 先验（arXiv:2602.06035）
 - [E-SDS（论文实体）](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) — 地形统计条件化 VLM 奖励 + 人形感知行走 PPO（arXiv:2512.16446）
 - [ResMimic（论文实体）](../entities/paper-resmimic.md) — GMT 先验 + 物体条件残差 PPO 的两阶段 loco-manipulation（arXiv:2510.05070）
+- [REFINE-DP（论文实体）](../entities/paper-loco-manip-161-157-refine-dp.md) — 扩散规划器 DPPO 微调 + 低层 PPO 联合优化（arXiv:2603.13707）
 - [Residual Policy Learning（方法页）](./residual-policy-learning.md) — base + 残差统一框架与九篇谱系论文导航
 - [RuN（论文实体）](../entities/paper-notebook-run-residual-policy-for-natural-humanoid-locomot.md) — CMG 运动先验 + 轻量残差的 G1 自然走跑（arXiv:2509.20696）
 - [TSIL（论文实体）](../entities/paper-tsil-temporal-self-imitation-learning.md) — 长时域操作 PPO：自适应时间目标 + 效率加权自模仿（arXiv:2606.19752）
