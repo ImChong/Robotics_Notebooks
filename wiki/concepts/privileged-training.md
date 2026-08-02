@@ -2,7 +2,7 @@
 type: concept
 tags: [rl, sim2real, training, humanoid, policy-optimization]
 status: complete
-updated: 2026-08-01
+updated: 2026-08-02
 summary: "Privileged Training 让 teacher 使用仿真特权信息训练，再蒸馏给真实可观测 student，是 sim2real 常见套路；蒸馏本质是把 RL 探索问题转为 Teacher 标注的监督学习。"
 related:
   - ./terrain-latent-representation.md
@@ -14,6 +14,7 @@ related:
   - ./domain-randomization.md
   - ../tasks/loco-manipulation.md
   - ../entities/paper-rma-rapid-motor-adaptation.md
+  - ../entities/paper-legged-load-adapt-unknown-dynamic-load.md
   - ../entities/extreme-parkour.md
   - ../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md
   - ../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md
@@ -29,6 +30,7 @@ sources:
   - ../../sources/personal/perceptive_locomotion_representation_essence.md
   - ../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md
   - ../../sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md
+  - ../../sources/papers/legged_load_adapt_arxiv_2507_07825.md
 ---
 
 # Privileged Training（特权信息训练）
@@ -184,6 +186,12 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 - **DreamWaQ（ICRA 2023）**：盲走 + **CENet** 估计隐式地形上下文；单阶段非对称 AC，不依赖显式高度图。
 - **DreamWaQ++（T-RO 2026，[实体页](../entities/dreamwaq-plus.md)）**：在 DreamWaQ 上加入 **3D 点云外感知**、分层记忆与多模态 Mixer；仍用 **特权 critic + 部分观测 actor**，但 actor 输入含学习到的 $\mathbf{z}^{pe}$，实现障碍前瞻与传感器失效时的本体回退。
 
+### Legged Load Adapt（四足箱载动态载荷，Chang et al. 2025）
+
+- **特权对象：** 不只是地形/摩擦 extrinsics，而是 **load characteristics**（质量、摩擦、位置、速度）。
+- **管线：** teacher–student 重建特权 latent + **concurrent load estimator**（本体历史监督回归）+ **student reinforce**；部署仅 IMU/关节。
+- **读法：** 证明「只靠 DR 鲁棒性」对重动态滑移载荷不够；见 [实体页](../entities/paper-legged-load-adapt-unknown-dynamic-load.md)。
+
 ---
 
 ## 和标准 Sim2Real 的关系
@@ -244,6 +252,7 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 复杂操作任务需要特权训练处理感知遮挡
 - [DreamWaQ++](../entities/dreamwaq-plus.md) — 四足多模态非对称 AC 与 CENet 谱系
 - [RMA](../entities/paper-rma-rapid-motor-adaptation.md) — 特权 extrinsics + 历史适应模块的经典两阶段框架
+- [Legged Load Adapt](../entities/paper-legged-load-adapt-unknown-dynamic-load.md) — 箱载动态载荷特征特权 + concurrent estimator
 - [Extreme Parkour](../entities/extreme-parkour.md) — 四足跑酷 scandots/航向双重蒸馏范例（ROA 继承 RMA）
 - [PAC-MAN](../entities/paper-pac-man-perceptive-cbf-rl.md) — 训练用特权球/连杆几何算 CBF，部署仅机载掩膜深度（非对称 AC，无 teacher 蒸馏）
 - [RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) — 人形分地形高程专家 → 多视角深度学生

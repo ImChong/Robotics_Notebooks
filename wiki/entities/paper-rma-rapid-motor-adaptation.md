@@ -9,7 +9,7 @@ tags:
   - privileged-training
   - online-adaptation
 status: complete
-updated: 2026-07-28
+updated: 2026-08-02
 arxiv: "2107.04034"
 venue: "RSS 2021"
 related:
@@ -21,6 +21,7 @@ related:
   - ../queries/sim2real-closed-loop-engineering.md
   - ./unitree.md
   - ./extreme-parkour.md
+  - ./paper-legged-load-adapt-unknown-dynamic-load.md
 sources:
   - ../../sources/papers/rma_arxiv_2107_04034.md
   - ../../sources/sites/rma-legged-robots-github-io.md
@@ -146,6 +147,7 @@ flowchart TB
 | Peng et al. 2018 在线 latent 优化 | 需 **数分钟** 真机 rollout；RMA **<1 s** 历史即可 |
 | Lee et al. Science Robotics 2020 | 依赖 **预定义轨迹生成器** + 手工领域知识；RMA **无参考轨迹** |
 | [Extreme Parkour](./extreme-parkour.md) | **ROA + 深度蒸馏** 扩展 RMA 到 **感知跑酷**；Phase 2 用 DAgger 而非纯 MSE |
+| [Legged Load Adapt](./paper-legged-load-adapt-unknown-dynamic-load.md) | 显式 **load characteristics**（质量/摩擦/位姿/速度）+ concurrent estimator；焦点是箱载动态载荷而非通用环境 extrinsics |
 
 ## 参考来源
 
@@ -162,6 +164,7 @@ flowchart TB
 - [Sim2Real gap 缩小 query](../queries/sim2real-gap-reduction.md) — RMA 列为在线适应路线
 - [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md) — 时变工况段用 RMA 接力 SysID/前馈
 - [Extreme Parkour](./extreme-parkour.md) — RMA 式历史估计用于跑酷 Teacher
+- [Legged Load Adapt](./paper-legged-load-adapt-unknown-dynamic-load.md) — 箱载动态载荷特征估计的四足扩展
 - [Unitree](./unitree.md) — A1 硬件平台
 
 ## 推荐继续阅读

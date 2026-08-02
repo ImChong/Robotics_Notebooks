@@ -1,3 +1,12 @@
+## [2026-08-02] ingest | sources/papers/legged_load_adapt_arxiv_2507_07825.md — Legged Load Adapt（arXiv:2507.07825，ZJU-UIUC）未知动态载荷四足适应
+
+- **触发：** 用户指定项目页 <https://leixinjonaschang.github.io/leggedloadadapt.github.io/>；同时给出的 `arxiv.org/abs/2109.12343` 为同名起首 *Beyond Robustness* 多机器人韧性综述（Prorok et al.），与项目页无关——以项目页 BibTeX 校正为 **arXiv:2507.07825**（Chang / Nai / Chen / Yang · ZJU-UIUC）
+- **Sources：** [`sources/papers/legged_load_adapt_arxiv_2507_07825.md`](sources/papers/legged_load_adapt_arxiv_2507_07825.md)、[`sources/sites/leggedloadadapt-github-io.md`](sources/sites/leggedloadadapt-github-io.md)
+- **Wiki：** [`wiki/entities/paper-legged-load-adapt-unknown-dynamic-load.md`](wiki/entities/paper-legged-load-adapt-unknown-dynamic-load.md)
+- **交叉：** [`wiki/concepts/privileged-training.md`](wiki/concepts/privileged-training.md)、[`wiki/tasks/locomotion.md`](wiki/tasks/locomotion.md)、[`wiki/concepts/terrain-adaptation.md`](wiki/concepts/terrain-adaptation.md)、[`wiki/entities/paper-rma-rapid-motor-adaptation.md`](wiki/entities/paper-rma-rapid-motor-adaptation.md)、[`wiki/entities/paper-splitadapter-load-aware-loco-manipulation.md`](wiki/entities/paper-splitadapter-load-aware-loco-manipulation.md)
+- **机构：** `zju` / `uiuc` / `unitree` 已注册
+- **开源：** **宣称将开源 / 待发布** — 项目页 Code (coming soon)，无独立仓库
+
 ## [2026-08-02] ingest | sources/papers/emergent_transfer_cross_config_arxiv_2607_25593.md — Emergent Transfer（arXiv:2607.25593，HUST / Spirit AI / PKU / SJTU / HIT / 清华）跨配置遗留示教三相迁移
 
 - **触发：** 用户指定 *When Does Legacy Data Start to Help? Emergent Transfer in Cross-Configuration Robot Learning*（arXiv:2607.25593；华中科技大学 / 千寻智能 / 北京大学 / 上海交通大学 / 哈尔滨工业大学 / 清华大学；Wang / Hou / Hu / Gao 等）
