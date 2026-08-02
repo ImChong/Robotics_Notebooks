@@ -65,12 +65,18 @@ const path = require('path');
     const exitPath = path.join(outDir, 'graph-timeline-exit.png');
     await page.screenshot({ path: exitPath, fullPage: false });
 
-    // Click blank area on SVG (triggers closeSidebar → mild reheat)
+    // Close physics panel so blank click lands on the graph canvas itself
+    await page.evaluate(() => {
+      const panel = document.getElementById('physics-panel');
+      if (panel) panel.hidden = true;
+    });
+
+    // Click blank area on SVG (closeSidebar; should NOT reheat if sidebar was closed)
     const canvas = await page.$('#graph-canvas');
     const box = await canvas.boundingBox();
     await page.mouse.click(box.x + 40, box.y + 40);
 
-    // Sample residual motion; must cool down, not stay elevated (self-oscillation)
+    // After blank click with sidebar closed: sim must stay frozen (no stealth reheat)
     const samples = await page.evaluate(async () => {
       function stats() {
         const gs = [...document.querySelectorAll('#graph-canvas .nodes g.node-g')];
@@ -90,7 +96,7 @@ const path = require('path');
       }
       const out = [];
       const t0 = performance.now();
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < 20; i++) {
         out.push({ tMs: Math.round(performance.now() - t0), ...stats() });
         await new Promise((r) => setTimeout(r, 100));
       }
@@ -100,20 +106,17 @@ const path = require('path');
     const settlePath = path.join(outDir, 'graph-timeline-exit-blank-settled.png');
     await page.screenshot({ path: settlePath, fullPage: false });
 
-    const early = samples.slice(0, 5);
-    const late = samples.slice(-8);
-    const earlyMaxAlpha = Math.max(...early.map((s) => s.alpha || 0));
-    const lateMeanSpeed = late.reduce((a, s) => a + (s.meanSpeed || 0), 0) / late.length;
-    const lateMeanAlpha = late.reduce((a, s) => a + (s.alpha || 0), 0) / late.length;
+    const alphas = samples.map((s) => s.alpha || 0);
+    const alphaDrift = Math.max(...alphas) - Math.min(...alphas);
     const anyHotTarget = samples.some((s) => (s.alphaTarget || 0) > 1e-6);
+    const lateMeanSpeed = samples.slice(-5).reduce((a, s) => a + (s.meanSpeed || 0), 0) / 5;
 
     const report = {
       afterExit,
-      earlyMaxAlpha,
+      alphaDrift,
       lateMeanSpeed,
-      lateMeanAlpha,
       anyHotTarget,
-      samplesTail: late,
+      samplesTail: samples.slice(-5),
       exitPath,
       settlePath,
     };
@@ -122,15 +125,15 @@ const path = require('path');
     if (anyHotTarget) {
       throw new Error('alphaTarget stayed hot after blank click — self-oscillation risk');
     }
-    // Mild blank-click reheat is OK, but must cool: late alpha near floor, speed tiny
-    if (lateMeanAlpha > 0.05) {
-      throw new Error('late mean alpha too high (not cooling): ' + lateMeanAlpha);
+    // Sidebar was closed: blank click must not restart the force sim
+    if (alphaDrift > 1e-6) {
+      throw new Error('alpha drifted after blank click (unexpected reheat): ' + alphaDrift);
     }
-    if (lateMeanSpeed > 0.35) {
-      throw new Error('late mean speed too high (self-oscillation): ' + lateMeanSpeed);
+    if (lateMeanSpeed > 0.05) {
+      throw new Error('nodes still moving after exit+blank (should be frozen): ' + lateMeanSpeed);
     }
 
-    console.log('OK: timeline exit + blank click settles without self-oscillation');
+    console.log('OK: timeline exit + blank click stays settled (no self-oscillation)');
   } finally {
     await browser.close();
   }

@@ -4573,9 +4573,10 @@
 
     function exitTimelineMode() {
       teardownTimelineMode();
-      // 还原进入前布局并定格；再次清零加热目标，避免后续空白点击 restart 后无法冷却
+      // 还原进入前布局并完全冷却：alpha/alphaTarget 归零，避免后续任意 restart 残留加热
       restoreTimelinePositions();
       simulation.alphaTarget(0);
+      simulation.alpha(0);
       simulation.stop();
       for (const n of simulation.nodes()) { n.vx = 0; n.vy = 0; }
       syncGraphDomFromSimulation();
@@ -5180,11 +5181,19 @@
       scheduleSidebarViewportSync();
     }
     function closeSidebar() {
+      const wasOpen = sidebar.classList.contains('open');
       sidebar.classList.remove('open');
       wrap.classList.remove('sidebar-open');
-      scheduleSidebarViewportSync();
       if (isMobile) hideTooltip();
-      clearNodeNeighborHighlight({ relayout: true });
+      // 侧栏未开时空白点击也会走到这里：不要 scheduleSidebarViewportSync /
+      // relayout（二者都会 alpha().restart()）。曾与时序退出残留的
+      // alphaTarget=0.3 叠加，导致整图永久自振。
+      if (wasOpen) {
+        scheduleSidebarViewportSync();
+        clearNodeNeighborHighlight({ relayout: true });
+      } else {
+        clearNodeNeighborHighlight({ relayout: false });
+      }
     }
 
     sbClose.addEventListener('click', closeSidebar);
