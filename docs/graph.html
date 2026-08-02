@@ -3231,8 +3231,19 @@
       }
     }
 
+    /** 「刷新布局」：真随机重铺（与 3D resetNodePositionsInPlace 同尺度）。
+     *  首屏仍用叶序；若这里也走确定性叶序，每次刷新会收敛到几乎同一布局。 */
     function randomizeNodePositions() {
-      seedNodePositionsPhyllotaxis(nodes);
+      const cx = W / 2;
+      const cy = H / 2;
+      for (const n of nodes) {
+        n.fx = null;
+        n.fy = null;
+        n.vx = 0;
+        n.vy = 0;
+        n.x = cx + (Math.random() - 0.5) * 80;
+        n.y = cy + (Math.random() - 0.5) * 80;
+      }
     }
 
     function linkStrengthFor(link) {
@@ -3654,10 +3665,11 @@
       whenGraphViewportReady(() => fitToScreen());
     }
 
-    /** 叶序种子 + 极短 warmup 后开场：可见一次扩张/回弹，再靠摩擦与冷却落稳。 */
+    /** 极短 warmup 后开场：可见一次扩张/回弹，再靠摩擦与冷却落稳。
+     *  reseed=true（刷新布局）走真随机；首屏不传 reseed，沿用已铺好的叶序种子。 */
     function runStabilizedLayout2D(options) {
       const opts = options || {};
-      if (opts.reseed) seedNodePositionsPhyllotaxis(nodes);
+      if (opts.reseed) randomizeNodePositions();
       simulation.stop();
       simulation.alphaTarget(0);
       for (const n of simulation.nodes()) {
