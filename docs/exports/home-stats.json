@@ -1,13 +1,72 @@
 {
   "generated_at": "2026-08-02",
-  "node_count": 2068,
-  "edge_count": 18653,
+  "node_count": 2069,
+  "edge_count": 18668,
   "coverage": {
-    "covered": 2018,
-    "total": 2044,
+    "covered": 2019,
+    "total": 2045,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-legged-load-adapt-unknown-dynamic-load.md",
+      "detail_id": "entity-paper-legged-load-adapt-unknown-dynamic-load",
+      "label": "Legged Load Adapt（未知动态载荷四足行走）",
+      "type": "entity",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/concepts/privileged-training.md",
+      "detail_id": "wiki-concepts-privileged-training",
+      "label": "Privileged Training（特权信息训练）",
+      "type": "concept",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/tasks/locomotion.md",
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/terrain-adaptation.md",
+      "detail_id": "wiki-concepts-terrain-adaptation",
+      "label": "Terrain Adaptation（地形适应）",
+      "type": "concept",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-rma-rapid-motor-adaptation.md",
+      "detail_id": "entity-paper-rma-rapid-motor-adaptation",
+      "label": "RMA: Rapid Motor Adaptation for Legged Robots",
+      "type": "entity",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-splitadapter-load-aware-loco-manipulation.md",
+      "detail_id": "entity-paper-splitadapter-load-aware-loco-manipulation",
+      "label": "SplitAdapter（Load-Aware Humanoid Loco-Manipulation via Factorized Adaptation）",
+      "type": "entity",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained"
+    },
     {
       "path": "wiki/entities/paper-mmhu.md",
       "detail_id": "entity-paper-mmhu",
@@ -145,106 +204,42 @@
       "recency": "2026-08-02",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/concepts/contact-rich-manipulation.md",
-      "detail_id": "wiki-concepts-contact-rich-manipulation",
-      "label": "Contact-Rich Manipulation（接触丰富型操作）",
-      "type": "concept",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-world-action-planner.md",
-      "detail_id": "entity-paper-world-action-planner",
-      "label": "World Action Planner",
-      "type": "entity",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/concepts/world-action-models.md",
-      "detail_id": "wiki-concepts-world-action-models",
-      "label": "World Action Models（WAM，世界–动作模型）",
-      "type": "concept",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/methods/generative-world-models.md",
-      "detail_id": "wiki-methods-generative-world-models",
-      "label": "Generative World Models (生成式世界模型)",
-      "type": "method",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-mmhu.md",
-    "detail_id": "entity-paper-mmhu",
-    "label": "MMHU（驾驶场景人体行为理解基准 · arXiv:2507.12463）",
+    "path": "wiki/entities/paper-legged-load-adapt-unknown-dynamic-load.md",
+    "detail_id": "entity-paper-legged-load-adapt-unknown-dynamic-load",
+    "label": "Legged Load Adapt（未知动态载荷四足行走）",
     "type": "entity",
     "recency": "2026-08-02",
     "source": "log.md",
-    "action": "maintained"
+    "action": "maintained",
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
-      "label": "动作重定向",
-      "size": 182
+      "label": "仿真到现实",
+      "size": 208
     },
     {
       "label": "视觉-语言-动作",
-      "size": 168
+      "size": 175
+    },
+    {
+      "label": "人形强化学习运动控制",
+      "size": 142
     },
     {
       "label": "操作",
-      "size": 145
+      "size": 142
+    },
+    {
+      "label": "动作重定向",
+      "size": 140
     },
     {
       "label": "移动操作",
       "size": 140
-    },
-    {
-      "label": "人形论文深读笔记",
-      "size": 137
-    },
-    {
-      "label": "人形强化学习运动控制",
-      "size": 135
     }
   ],
   "top_hubs": [
@@ -252,7 +247,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 410,
+      "degree": 411,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -291,8 +286,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 294,
-      "community_label": "运动控制（Locomotion） 社区"
+      "degree": 296
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
@@ -307,7 +301,8 @@
       "label": "HMI 开源项目主表 · 本库导读",
       "type": "query",
       "degree": 225,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "开源项目本库导读（HMI Open-Source Projects Guide） 社区"
     },
     {
       "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",
@@ -343,8 +338,7 @@
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
-      "degree": 54,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
+      "degree": 54
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",

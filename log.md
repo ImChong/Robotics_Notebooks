@@ -1,3 +1,12 @@
+## [2026-08-02] ingest | sources/papers/legged_load_adapt_arxiv_2507_07825.md — Legged Load Adapt（arXiv:2507.07825，ZJU-UIUC）未知动态载荷四足适应
+
+- **触发：** 用户指定项目页 <https://leixinjonaschang.github.io/leggedloadadapt.github.io/>；同时给出的 `arxiv.org/abs/2109.12343` 为同名起首 *Beyond Robustness* 多机器人韧性综述（Prorok et al.），与项目页无关——以项目页 BibTeX 校正为 **arXiv:2507.07825**（Chang / Nai / Chen / Yang · ZJU-UIUC）
+- **Sources：** [`sources/papers/legged_load_adapt_arxiv_2507_07825.md`](sources/papers/legged_load_adapt_arxiv_2507_07825.md)、[`sources/sites/leggedloadadapt-github-io.md`](sources/sites/leggedloadadapt-github-io.md)
+- **Wiki：** [`wiki/entities/paper-legged-load-adapt-unknown-dynamic-load.md`](wiki/entities/paper-legged-load-adapt-unknown-dynamic-load.md)
+- **交叉：** [`wiki/concepts/privileged-training.md`](wiki/concepts/privileged-training.md)、[`wiki/tasks/locomotion.md`](wiki/tasks/locomotion.md)、[`wiki/concepts/terrain-adaptation.md`](wiki/concepts/terrain-adaptation.md)、[`wiki/entities/paper-rma-rapid-motor-adaptation.md`](wiki/entities/paper-rma-rapid-motor-adaptation.md)、[`wiki/entities/paper-splitadapter-load-aware-loco-manipulation.md`](wiki/entities/paper-splitadapter-load-aware-loco-manipulation.md)
+- **机构：** `zju` / `uiuc` / `unitree` 已注册
+- **开源：** **宣称将开源 / 待发布** — 项目页 Code (coming soon)，无独立仓库
+
 ## [2026-08-02] ingest | sources/papers/mmhu_arxiv_2507_12463.md + sites/mmhu-benchmark-github-io.md — MMHU（arXiv:2507.12463，TAMU / Brown / JHU / UT Austin）驾驶人体行为多模态基准
 
 - **触发：** 用户指定 *MMHU: A Massive-Scale Multimodal Benchmark for Human Behavior Understanding*（arXiv:2507.12463；Texas A&M / Brown / Johns Hopkins / UT Austin；Li / Ye / Wu / Yang / Fan / Hu / Tu）

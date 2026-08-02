@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, sim2real, online-adaptation, world-model, film, grl, amp, physhsi, unitree-g1, isaac-gym, mujoco, box-manipulation, samsung]
 status: complete
-updated: 2026-07-24
+updated: 2026-08-02
 arxiv: "2606.03297"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
@@ -18,6 +18,7 @@ related:
   - ./isaac-gym-isaac-lab.md
   - ./paper-doorman-opening-sim2real-door.md
   - ./paper-legs-embodied-gaussian-splatting-vla.md
+  - ./paper-legged-load-adapt-unknown-dynamic-load.md
 sources:
   - ../../sources/papers/splitadapter_arxiv_2606_03297.md
   - ../../sources/sites/splitadapter-github-io.md
@@ -166,6 +167,7 @@ flowchart TB
 - [PhysHSI（AMP 交互）](./paper-amp-survey-15-physhsi.md) — 冻结基策略来源族
 - [Unitree G1](./unitree-g1.md) — 真机平台
 - [DoorMan](./paper-doorman-opening-sim2real-door.md) / [LEGS](./paper-legs-embodied-gaussian-splatting-vla.md) — 对照：视觉 Sim2Real 开门 vs 合成数据 VLA 路线
+- [Legged Load Adapt](./paper-legged-load-adapt-unknown-dynamic-load.md) — 四足箱载动态载荷（端到端特权估计，非冻结策略适配器）
 
 ## 推荐继续阅读
 
