@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-02",
-  "node_count": 2068,
-  "edge_count": 18663,
+  "node_count": 2070,
+  "edge_count": 18690,
   "coverage": {
-    "covered": 2018,
-    "total": 2044,
+    "covered": 2020,
+    "total": 2046,
     "percent": 99
   },
   "latest_wiki_nodes": [
@@ -106,104 +106,102 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-emergent-transfer-cross-config.md",
-      "detail_id": "entity-paper-emergent-transfer-cross-config",
-      "label": "Emergent Transfer（跨配置遗留数据何时开始有用）",
+      "path": "wiki/entities/paper-legged-load-adapt-unknown-dynamic-load.md",
+      "detail_id": "entity-paper-legged-load-adapt-unknown-dynamic-load",
+      "label": "Legged Load Adapt（未知动态载荷四足行走）",
       "type": "entity",
       "recency": "2026-08-02",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/overview/hub-cross-embodiment.md",
-      "detail_id": "wiki-overview-hub-cross-embodiment",
-      "label": "跨具身迁移（知识链汇总）",
+      "path": "wiki/concepts/privileged-training.md",
+      "detail_id": "wiki-concepts-privileged-training",
+      "label": "Privileged Training（特权信息训练）",
+      "type": "concept",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/concepts/terrain-adaptation.md",
+      "detail_id": "wiki-concepts-terrain-adaptation",
+      "label": "Terrain Adaptation（地形适应）",
+      "type": "concept",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-rma-rapid-motor-adaptation.md",
+      "detail_id": "entity-paper-rma-rapid-motor-adaptation",
+      "label": "RMA: Rapid Motor Adaptation for Legged Robots",
+      "type": "entity",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-splitadapter-load-aware-loco-manipulation.md",
+      "detail_id": "entity-paper-splitadapter-load-aware-loco-manipulation",
+      "label": "SplitAdapter（Load-Aware Humanoid Loco-Manipulation via Factorized Adaptation）",
+      "type": "entity",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-mmhu.md",
+      "detail_id": "entity-paper-mmhu",
+      "label": "MMHU（驾驶场景人体行为理解基准 · arXiv:2507.12463）",
+      "type": "entity",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/overview/autonomous-driving-core-algorithms-series.md",
+      "detail_id": "wiki-overview-autonomous-driving-core-algorithms-series",
+      "label": "《自动驾驶核心算法盘点》专栏技术地图",
       "type": "overview",
       "recency": "2026-08-02",
       "source": "log.md",
       "action": "maintained"
     },
     {
-      "path": "wiki/queries/cross-embodiment-transfer-strategy.md",
-      "detail_id": "wiki-queries-cross-embodiment-transfer-strategy",
-      "label": "跨具身策略迁移选型指南",
-      "type": "query",
+      "path": "wiki/overview/e2e-autonomous-driving-top10-algorithms.md",
+      "detail_id": "wiki-overview-e2e-autonomous-driving-top10-algorithms",
+      "label": "端到端自动驾驶：十大前沿算法技术地图",
+      "type": "overview",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/overview/hub-embodied-eval-benchmark.md",
+      "detail_id": "wiki-overview-hub-embodied-eval-benchmark",
+      "label": "具身评测基准选型闭环（知识链汇总）",
+      "type": "overview",
       "recency": "2026-08-02",
       "source": "log.md",
       "action": "maintained"
     },
     {
-      "path": "wiki/queries/humanoid-training-data-pipeline.md",
-      "detail_id": "wiki-queries-humanoid-training-data-pipeline",
-      "label": "人形训练数据管线选型指南",
-      "type": "query",
+      "path": "wiki/methods/diffusion-motion-generation.md",
+      "detail_id": "wiki-methods-diffusion-motion-generation",
+      "label": "Diffusion-based Motion Generation (基于扩散模型的运动生成)",
+      "type": "method",
       "recency": "2026-08-02",
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
       "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-pi05-open-world-vla.md",
-      "detail_id": "entity-paper-pi05-open-world-vla",
-      "label": "π0.5（HMI P059）",
-      "type": "entity",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/behavior-cloning.md",
-      "detail_id": "wiki-methods-behavior-cloning",
-      "label": "Behavior Cloning（行为克隆）",
-      "type": "method",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-fa-rdp.md",
-      "detail_id": "entity-paper-fa-rdp",
-      "label": "FA-RDP",
-      "type": "entity",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/methods/diffusion-policy.md",
-      "detail_id": "wiki-methods-diffusion-policy",
-      "label": "Diffusion Policy",
-      "type": "method",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/concepts/contact-rich-manipulation.md",
-      "detail_id": "wiki-concepts-contact-rich-manipulation",
-      "label": "Contact-Rich Manipulation（接触丰富型操作）",
-      "type": "concept",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -219,11 +217,11 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 203
+      "size": 209
     },
     {
       "label": "视觉-语言-动作",
-      "size": 187
+      "size": 186
     },
     {
       "label": "操作",
@@ -247,7 +245,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 411,
+      "degree": 412,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -286,7 +284,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 297
+      "degree": 299
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",

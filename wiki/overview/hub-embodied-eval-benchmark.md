@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, embodied-eval-benchmark, benchmark, evaluation, mllm, world-model, sim2real]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-02
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/sim-vs-real-eval-gap.md
@@ -15,6 +15,7 @@ related:
   - ../entities/robodojo.md
   - ../entities/xpolicylab.md
   - ../entities/paper-softvtbench.md
+  - ../entities/paper-mmhu.md
   - ../concepts/simulation-evaluation-infrastructure.md
 sources:
   - ../../sources/papers/robo_bench_arxiv_2510_17801.md
@@ -24,6 +25,7 @@ sources:
   - ../../sources/papers/daily_omni_arxiv_2505_17862.md
   - ../../sources/papers/robodojo_arxiv_2607_04434.md
   - ../../sources/papers/softvtbench_arxiv_2607_04234.md
+  - ../../sources/papers/mmhu_arxiv_2507_12463.md
 summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准 四层评测，从分散的评测基准实体页收拢为一条可导航的选型链，统一各层测什么、用什么代表性基准、指标的可复现性/真实代表性/过程 vs 结果/成本取舍入口。"
 ---
 
@@ -56,7 +58,7 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 
 | 层次 | 测什么 | 代表基准 | 站内入口 |
 |------|--------|----------|----------|
-| ① 认知评测 | MLLM 作为 embodied brain 的感知/规划/推理能力；另含日常 AV 时序对齐 | RoboBench、ESI-Bench、Daily-Omni | [RoboBench](../entities/robo-bench.md)、[ESI-Bench](../entities/esi-bench.md)、[Daily-Omni](../entities/paper-daily-omni.md) |
+| ① 认知评测 | MLLM 作为 embodied brain 的感知/规划/推理能力；另含日常 AV 时序对齐；驾驶人本 Behavior VQA 见 MMHU | RoboBench、ESI-Bench、Daily-Omni；驾驶相邻 **MMHU** | [RoboBench](../entities/robo-bench.md)、[ESI-Bench](../entities/esi-bench.md)、[Daily-Omni](../entities/paper-daily-omni.md)、[MMHU](../entities/paper-mmhu.md) |
 | ② 预测保真度评测 | 世界模型视频生成的时序/轨迹/语义保真度；开放域多场景世界生成另见 WorldScore | EWMBench、GigaWorld-1 WMBench；WorldScore（相邻） | [EWMBench](../entities/ewmbench.md)、[GigaWorld-1 策略评估](../entities/paper-gigaworld-1-policy-evaluation.md)、[WorldScore](../entities/paper-worldscore.md) |
 | ③ 策略成功率评测 | 下游 VLA/策略的任务成功率与泛化 | GigaWorld-1 评估器、仿真闭环、**RoboDojo**；接触安全另见 **SoftVTBench** | [GigaWorld-1 策略评估](../entities/paper-gigaworld-1-policy-evaluation.md)、[RoboDojo](../entities/robodojo.md)、[SoftVTBench](../entities/paper-softvtbench.md)、[仿真评测基建](../concepts/simulation-evaluation-infrastructure.md) |
 | ④ sim↔real gap 校准 | 评测结论能否外推到真机 | real-to-sim 相关性、RoboDojo RealEval、代表性代价 | [仿真 vs 真机评测 gap](../concepts/sim-vs-real-eval-gap.md)、[RoboDojo](../entities/robodojo.md) |
@@ -86,6 +88,7 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 - [GigaWorld-1 策略评估](../entities/paper-gigaworld-1-policy-evaluation.md)
 - [RoboDojo](../entities/robodojo.md)
 - [SoftVTBench](../entities/paper-softvtbench.md) — 可变形视触觉 Goal/Safety Success（③ 层过程安全）
+- [MMHU](../entities/paper-mmhu.md) — 驾驶场景人体行为多模态基准（① 层相邻）
 - [XPolicyLab](../entities/xpolicylab.md)
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)
 
@@ -98,4 +101,5 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 - [Daily-Omni 论文](../../sources/papers/daily_omni_arxiv_2505_17862.md) — 日常 AV 跨模态时序对齐
 - [RoboDojo 论文](../../sources/papers/robodojo_arxiv_2607_04434.md) — 统一 sim-and-real 通用操纵评测
 - [SoftVTBench 论文](../../sources/papers/softvtbench_arxiv_2607_04234.md) — 可变形视触觉 Goal/Safety Success
+- [MMHU 论文](../../sources/papers/mmhu_arxiv_2507_12463.md) — 驾驶人本 Behavior VQA / 运动评测
 - 本页归纳自 [评测基准选型闭环 Query](../queries/embodied-eval-benchmark-selection-loop.md) 及各评测基准实体/概念页

@@ -8,6 +8,7 @@ related:
   - ../concepts/sim2real.md
   - ../entities/paper-legged-robots-advances-challenges.md
   - ../entities/paper-rma-rapid-motor-adaptation.md
+  - ../entities/paper-legged-load-adapt-unknown-dynamic-load.md
   - ../entities/paper-amp-survey-08-more.md
   - ../entities/paper-adp.md
   - ../concepts/state-estimation.md
@@ -197,7 +198,7 @@ flowchart TD
 
 - **RL policy + PD/阻抗底层**：策略输出关节位置增量或期望角度，PD/阻抗层保证高频执行稳定。
 - **MPC/WBC baseline + learned residual**：模型控制提供安全可解释的主干，学习模块补偿摩擦、冲击或模型误差。
-- **Teacher-student / privileged learning**：训练时 teacher 使用高度图、真实速度等 privileged information；部署时 student 只用机载传感器。经典 **在线适应** 实例：[RMA](../entities/paper-rma-rapid-motor-adaptation.md)（特权 extrinsics → 历史 $\hat{z}_t$ 估计，A1 零微调）。
+- **Teacher-student / privileged learning**：训练时 teacher 使用高度图、真实速度等 privileged information；部署时 student 只用机载传感器。经典 **在线适应** 实例：[RMA](../entities/paper-rma-rapid-motor-adaptation.md)（特权 extrinsics → 历史 $\hat{z}_t$ 估计，A1 零微调）。**箱载动态载荷** 实例：[Legged Load Adapt](../entities/paper-legged-load-adapt-unknown-dynamic-load.md)（load characteristics 特权 + concurrent estimator，Go2 零样本）。
 - **Motion prior + task RL**：先用 MoCap/视频/重定向得到自然运动先验，再用任务奖励获得速度、转向和地形适应能力。
 
 ## 方法选型速查
@@ -262,6 +263,7 @@ flowchart TD
 - **ingest 档案：** [sources/papers/deeprl_locomotion_action_space_sca2017.md](../../sources/papers/deeprl_locomotion_action_space_sca2017.md) — Peng SCA 2017 四动作空间对照
 - **ingest 档案：** [sources/papers/rma_arxiv_2107_04034.md](../../sources/papers/rma_arxiv_2107_04034.md) — RMA：四足快速运动自适应（RSS 2021）
 - **ingest 档案：** [sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md](../../sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md) — Sony aibo 低噪行走（ICRA 2025）
+- **ingest 档案：** [sources/papers/legged_load_adapt_arxiv_2507_07825.md](../../sources/papers/legged_load_adapt_arxiv_2507_07825.md) — Legged Load Adapt：未知动态载荷四足崎岖地形适应（arXiv:2507.07825）
 
 ## 关联系统/方法
 

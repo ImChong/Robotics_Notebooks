@@ -2,7 +2,7 @@
 type: overview
 tags: [autonomous-driving, perception, planning, control, slam, hd-map, tracking, trajectory-prediction, shenlan]
 status: complete
-updated: 2026-08-01
+updated: 2026-08-02
 related:
   - ../overview/navigation-slam-autonomy-stack.md
   - ./e2e-autonomous-driving-top10-algorithms.md
@@ -22,6 +22,7 @@ related:
   - ../entities/paper-s-squared-vla.md
   - ../methods/vla.md
   - ../entities/paper-importance-sampling-pca-av-failures.md
+  - ../entities/paper-mmhu.md
 sources:
   - ../../sources/blogs/wechat_shenlan_ai_ad_2d_detection.md
   - ../../sources/blogs/wechat_shenlan_ai_ad_3d_detection.md
@@ -32,6 +33,7 @@ sources:
   - ../../sources/raw/wechat_shenlan_ai_ad_core_algorithms_album_2026.json
   - ../../sources/papers/m4world_arxiv_2607_14005.md
   - ../../sources/papers/importance_sampling_pca_av_failures_arxiv_2607_18106.md
+  - ../../sources/papers/mmhu_arxiv_2507_12463.md
 summary: "深蓝AI《自动驾驶核心算法盘点》专辑技术地图：2D/3D 检测→规划控制→SLAM/高精地图→跟踪与轨迹预测；5/5 篇正文已入库；端到端续篇见十大算法地图。"
 ---
 
@@ -179,6 +181,7 @@ flowchart TB
 - [X-Foresight](../entities/paper-x-foresight.md) — 驾驶 VLA 内嵌预测式世界模型（小鹏；未开源）
 - [VLA](../methods/vla.md) — 视觉–语言–动作方法纵览（含驾驶条目）
 - [Importance Sampling + PCA（商业 AV 失败挖掘）](../entities/paper-importance-sampling-pca-av-failures.md) — AST/DiFS 稀有碰撞 + eigenfailure 诊断
+- [MMHU](../entities/paper-mmhu.md) — 驾驶人本行为多模态基准（SMPL + 13 类安全行为 + Behavior VQA）
 
 ## 参考来源
 
