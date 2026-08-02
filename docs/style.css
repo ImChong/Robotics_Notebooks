@@ -1404,6 +1404,13 @@ button.home-wiki-heatmap-cell.is-active {
   gap: 12px;
   align-items: start;
 }
+/* 详情页标题末尾开源 ⭐️：与首页/更新记录列表行同标记 */
+.detail-hero h1 .updates-item-opensource {
+  margin-left: 0.2em;
+  padding-right: 0;
+  font-size: 0.82em;
+  vertical-align: 0.05em;
+}
 .detail-breadcrumb {
   display: flex;
   flex-wrap: wrap;

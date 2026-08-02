@@ -35,6 +35,13 @@ PAPER_NOTEBOOK_MD_LINK_RE = re.compile(
     r"\((https://imchong\.github\.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/[^)]+\.html)\)",
     re.IGNORECASE,
 )
+# 与 generate_link_graph.wiki_has_repo_source 同口径：关联 sources/repos/ 源码归档
+REPO_SOURCE_LINK_RE = re.compile(r"(?:\.\./)*sources/repos/[^)\s]+\.md\b")
+
+
+def page_has_repo_source(text: str) -> bool:
+    """页面正文/frontmatter 是否关联开源仓库源码归档（sources/repos/）。"""
+    return bool(REPO_SOURCE_LINK_RE.search(text or ""))
 
 
 def build_ingest_index() -> Dict[str, str]:
@@ -771,6 +778,8 @@ def build_item(path: Path) -> dict[str, Any]:
         "status": "active",
         "updated": resolve_page_updated(path, fm),
     }
+    if page_has_repo_source(text):
+        item["has_repo"] = True
 
     parts = path.relative_to(ROOT).parts
     if parts[0] == "wiki":
@@ -1020,8 +1029,9 @@ def build_site_data(items: List[Dict]) -> Dict:
         ],
     }
 
-    detail_pages = {
-        item["id"]: {
+    detail_pages = {}
+    for item in items:
+        entry: dict[str, Any] = {
             "id": item["id"],
             "title": item["title"],
             "type": item.get("type"),
@@ -1034,8 +1044,9 @@ def build_site_data(items: List[Dict]) -> Dict:
             "status": item.get("status", "active"),
             "updated": item.get("updated"),
         }
-        for item in items
-    }
+        if item.get("has_repo"):
+            entry["has_repo"] = True
+        detail_pages[item["id"]] = entry
 
     home_page = {
         "hero": {
