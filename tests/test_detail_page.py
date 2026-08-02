@@ -36,6 +36,13 @@ class DetailPageScaffoldTests(unittest.TestCase):
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
 
+    def test_detail_title_renders_repo_star_for_opensource_pages(self):
+        content = MAIN_JS.read_text(encoding="utf-8")
+        self.assertIn("function detailPageHasRepo", content)
+        self.assertIn("function renderDetailTitleWithRepoStar", content)
+        self.assertIn("renderDetailTitleWithRepoStar(titleEl", content)
+        self.assertIn(r"sources\/repos\/", content)
+
     def test_detail_page_redirects_roadmap_pages_to_roadmap_html(self):
         content = MAIN_JS.read_text(encoding="utf-8")
         self.assertIn("detailPage.type === 'roadmap_page'", content)

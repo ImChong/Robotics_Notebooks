@@ -313,6 +313,23 @@
     return '<span class="updates-item-opensource" aria-label="含开源仓库" title="含开源仓库">⭐️</span>';
   }
 
+  // 详情页标题：有 sources/repos 关联时在标题末尾加 ⭐️（与列表行同口径）
+  function detailPageHasRepo(detailPage) {
+    if (!detailPage) return false;
+    if (detailPage.has_repo) return true;
+    return /(?:\.\.\/)*sources\/repos\/[^)\s]+\.md\b/.test(detailPage.content_markdown || '');
+  }
+
+  function renderDetailTitleWithRepoStar(titleEl, titleText, hasRepo) {
+    if (!titleEl) return;
+    var text = titleText || '';
+    if (hasRepo) {
+      titleEl.innerHTML = escapeHtml(text) + renderUpdatesItemRepoStar({ has_repo: true });
+    } else {
+      titleEl.textContent = text;
+    }
+  }
+
   function renderUpdatesItemCommunityCat(meta) {
     if (!meta || !meta.community_label) return '';
     var label = typeof shortenCommunityLabel === 'function'
@@ -4744,7 +4761,7 @@
       return /^type:\s*[\w-]+[。.]?$/i.test(String(summary || '').trim());
     }
 
-    if (titleEl) titleEl.textContent = detailPage.title || detailId;
+    renderDetailTitleWithRepoStar(titleEl, detailPage.title || detailId, detailPageHasRepo(detailPage));
     if (summaryEl) {
       const summaryText = detailPage.summary || '';
       if (summaryText && !isMetadataOnlySummary(summaryText)) {

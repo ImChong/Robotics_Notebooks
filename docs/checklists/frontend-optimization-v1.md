@@ -74,7 +74,8 @@
 - [x] 修复合并冲突冲掉的「人形群控展演」首页按钮：`docs/index.html` 补回入口，默认折叠态文案「17 → 18」。
 - [x] 修复移动端折叠态 WAM 通栏：末行居中规则改为仅 `.is-expanded` 时生效，避免 hidden 节点被 `:nth-child` 计入导致第 13 项误判孤行。
 - [x] 更新记录页 `change-log.html`：超量日先预览 10 条；提供「再展开 10 项 / 展开全部 N 项 / 收起至前 10 项」，视觉沿用箭头+文案样式（PR#1245）。
-  - [x] 详情页 Mermaid 灯箱：加载态文案 + `stage-pending` 在 `fit` 完成前隐藏，消除「空面板 / 先大后缩」闪烁。
+- [x] 详情页标题：有 `sources/repos/` 源码关联的节点在 `#detailTitle` 末尾显示 ⭐️（与首页「最新知识节点」/更新记录/互链榜同口径；`site-data` 写出 `has_repo`，前端 `detailPageHasRepo` 另有正文回退检测）。
+- [x] 详情页 Mermaid 灯箱：加载态文案 + `stage-pending` 在 `fit` 完成前隐藏，消除「空面板 / 先大后缩」闪烁。
   - [x] 图谱页 `graph.html`：参数面板新增「显示节点名称」开关（默认关闭）；2D SVG 标签与 3D HTML 叠加层共享同一状态，开启后两端同时显示。
   - [x] 图谱页 `graph.html`：参数浮窗去掉「显示节点名称」勾选项；`showNodeLabels` / `setShowNodeLabels` / 2D·3D 标签同步逻辑源码保留（默认仍关闭，无 UI 入口）。
   - [x] 图谱页 `graph.html`：参数面板新增「更新明度渐变」开关（默认关闭）；节点时间口径对齐「更新记录」页（`link-graph.json` 新增节点级 `activity` 字段，取 log.md 最近活跃日），开启后最新节点全亮、越旧越暗（下限 0.2 保持可见），无更新日期的节点按最暗显示；2D SVG 与 3D 视图共享同一开关。
