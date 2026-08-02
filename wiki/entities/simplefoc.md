@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, framework, motor-control, foc, bldc, embedded, open-source, simplefoc]
 status: complete
-updated: 2026-07-25
+updated: 2026-08-02
 related:
   - ../queries/actuator-drive-chain-selection-loop.md
   - ../comparisons/open-source-qdd-actuator-projects.md
@@ -13,6 +13,7 @@ related:
   - ./tinymovr.md
   - ./atom01-firmware.md
   - ./wokwi.md
+  - ./tinkercad.md
   - ./kicad.md
   - ../concepts/can-bus-protocol.md
   - ../../roadmap/depth-torque-motor-design.md
@@ -104,6 +105,7 @@ flowchart TB
 - [电机驱动器底软通信协议总览](../overview/motor-drive-firmware-bus-protocols.md)
 - [Atom01 Firmware](./atom01-firmware.md)（开源人形底层固件对照）
 - [Wokwi](./wokwi.md) — 无硬件时在浏览器验证 Arduino/ESP32/STM32 外设与 FOC 原型
+- [Tinkercad](./tinkercad.md) — Arduino/micro:bit 课堂级电路与积木入门（再迁移真板）
 - [KiCad](./kicad.md) — 自研驱动板原理图与 PCB layout
 - [力矩电机设计纵深](../../roadmap/depth-torque-motor-design.md)
 

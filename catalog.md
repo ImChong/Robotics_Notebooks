@@ -1355,6 +1355,7 @@
 - [TensorRT](wiki/entities/tensorrt.md) — NVIDIA TensorRT** 是 NVIDIA 的 **深度学习推理加速 SDK 生态**：在 **build 阶段**将训练好的网络（常见入口为 ONNX 或 P `📅2026-06-25` `[entity_page]`
 - [TidyBot2](wiki/entities/tidybot2.md) — TidyBot2** 是一个面向 **家庭场景物品整理** 的 **移动操作机器人** 研究平台：项目主页 **[tidybot2.github.io](https://tidybot2.gith `📅unknown` `[entity_page]`
 - [天工 Lite / Pro（开源人形）](wiki/entities/tienkung-humanoid-open-source.md) — 天工（TienKung）** Lite / Pro 是**北京人形机器人创新中心（X-Humanoid）**推动的开源人形母平台：云端文档总览、[官网开源页 `📅unknown` `[entity_page]`
+- [Tinkercad](wiki/entities/tinkercad.md) — Tinkercad**（tinkercad.com）是 **Autodesk** 提供的 **免费 Web 应用**：在同一账号与课堂体 `📅unknown` `[entity_page]`
 - [Tinymovr（紧凑开源关节驱动）](wiki/entities/tinymovr.md) — Tinymovr**（现属 Motion Layer，仓 [motionlayer/Tinymovr](https://github. `📅unknown` `[entity_page]`
 - [Tnkr](wiki/entities/tnkr.md) — Tnkr**（tnkr.ai）公开定位为 **「robotics 的 GitHub」**：把机器人项目里长期分散的 **机械设计、电气接线、控制软件、现场部 `📅unknown` `[entity_page]`
 - [TrackerLab](wiki/entities/trackerlab.md) — TrackerLab](https://github.com/Renforce-Dynamics/trackerLab) 收录于具身智能研究室 [开源项目主表](https://github.com `📅unknown` `[entity_page]`

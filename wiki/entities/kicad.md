@@ -2,7 +2,7 @@
 type: entity
 tags: [software, eda, pcb, hardware, open-source, embedded, manufacturing, kicad]
 status: complete
-updated: 2026-07-27
+updated: 2026-08-02
 related:
   - ../queries/actuator-drive-chain-selection-loop.md
   - ../overview/humanoid-hardware-101-power-compute-electronics.md
@@ -10,6 +10,7 @@ related:
   - ./freecad.md
   - ./simplefoc.md
   - ./wokwi.md
+  - ./tinkercad.md
   - ./en02-op.md
   - ./open-source-humanoid-hardware.md
   - ../concepts/field-oriented-control.md
@@ -108,7 +109,7 @@ flowchart TB
 ## 局限与风险
 
 - **不是机械 CAD**：机加工件、公差与装配仍用 [FreeCAD](./freecad.md) 等；KiCad 3D 主要用于 **板级** 干涉。
-- **不是固件仿真器**：SPICE 适合模拟前端与电源粗仿，**不能** 替代 [Wokwi](./wokwi.md) 的 MCU 外设行为或 kHz 级 CAN 抖动验证。
+- **不是固件仿真器**：SPICE 适合模拟前端与电源粗仿，**不能** 替代 [Wokwi](./wokwi.md) 的 MCU 外设行为或 kHz 级 CAN 抖动验证；[Tinkercad](./tinkercad.md) Circuits 仅覆盖 Arduino/micro:bit **课堂级** 行为仿真，同样不产出 Gerber。
 - **高功率/高电压经验门槛**：kV 级隔离爬电、EMI 与安规认证仍需资深硬件评审；工具不自动保证可量产。
 - **生态分裂**：部分创客板（如部分 SimpleFOC 参考设计）历史使用 EasyEDA；迁移到 KiCad 需重导符号/封装并复测。
 - **GitHub 镜像误用**：向 GitHub 镜像提 PR **不会被合并**；贡献须遵循 GitLab 流程。
@@ -122,6 +123,7 @@ flowchart TB
 - [FreeCAD（机械 CAD）](./freecad.md)
 - [SimpleFOC](./simplefoc.md)
 - [Wokwi](./wokwi.md)
+- [Tinkercad](./tinkercad.md) — 浏览器端 Arduino/micro:bit 入门仿真（非 PCB 真值）
 - [EN02-OP](./en02-op.md)
 - [开源人形机器人硬件方案对比](./open-source-humanoid-hardware.md)
 - [磁场定向控制（FOC）](../concepts/field-oriented-control.md)

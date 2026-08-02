@@ -1,13 +1,72 @@
 {
   "generated_at": "2026-08-02",
-  "node_count": 2071,
-  "edge_count": 18706,
+  "node_count": 2072,
+  "edge_count": 18719,
   "coverage": {
-    "covered": 2021,
-    "total": 2047,
+    "covered": 2022,
+    "total": 2048,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/tinkercad.md",
+      "detail_id": "entity-tinkercad",
+      "label": "Tinkercad",
+      "type": "entity",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/wokwi.md",
+      "detail_id": "entity-wokwi",
+      "label": "Wokwi",
+      "type": "entity",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/freecad.md",
+      "detail_id": "entity-freecad",
+      "label": "FreeCAD（开源参数化机械 CAD）",
+      "type": "entity",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/entities/kicad.md",
+      "detail_id": "entity-kicad",
+      "label": "KiCad（开源 PCB 与原理图 EDA）",
+      "type": "entity",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/simplefoc.md",
+      "detail_id": "entity-simplefoc",
+      "label": "SimpleFOC（Arduino-FOC 生态）",
+      "type": "entity",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/overview/motor-drive-firmware-bus-protocols.md",
+      "detail_id": "wiki-overview-motor-drive-firmware-bus-protocols",
+      "label": "电机驱动器底软通信协议总览",
+      "type": "overview",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
     {
       "path": "wiki/concepts/embodied-perception-six-spatial-representations.md",
       "detail_id": "wiki-concepts-embodied-perception-six-spatial-representations",
@@ -149,77 +208,16 @@
       "recency": "2026-08-02",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/disney-olaf-character-robot.md",
-      "detail_id": "wiki-methods-disney-olaf-character-robot",
-      "label": "Disney Olaf 角色机器人（实机动画角色）",
-      "type": "method",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-variable-impedance-contact-rl.md",
-      "detail_id": "entity-paper-variable-impedance-contact-rl",
-      "label": "Learning Variable Impedance Control for Contact Sensitive Tasks",
-      "type": "entity",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-legged-load-adapt-unknown-dynamic-load.md",
-      "detail_id": "entity-paper-legged-load-adapt-unknown-dynamic-load",
-      "label": "Legged Load Adapt（未知动态载荷四足行走）",
-      "type": "entity",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/concepts/privileged-training.md",
-      "detail_id": "wiki-concepts-privileged-training",
-      "label": "Privileged Training（特权信息训练）",
-      "type": "concept",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/concepts/terrain-adaptation.md",
-      "detail_id": "wiki-concepts-terrain-adaptation",
-      "label": "Terrain Adaptation（地形适应）",
-      "type": "concept",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rma-rapid-motor-adaptation.md",
-      "detail_id": "entity-paper-rma-rapid-motor-adaptation",
-      "label": "RMA: Rapid Motor Adaptation for Legged Robots",
-      "type": "entity",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/embodied-perception-six-spatial-representations.md",
-    "detail_id": "wiki-concepts-embodied-perception-six-spatial-representations",
-    "label": "具身感知六种空间表征",
-    "type": "concept",
+    "path": "wiki/entities/tinkercad.md",
+    "detail_id": "entity-tinkercad",
+    "label": "Tinkercad",
+    "type": "entity",
     "recency": "2026-08-02",
     "source": "log.md",
-    "action": "added",
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "action": "added"
   },
   "top_communities": [
     {

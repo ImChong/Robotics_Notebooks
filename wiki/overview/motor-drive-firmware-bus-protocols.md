@@ -3,7 +3,7 @@
 type: overview
 tags: [hardware, firmware, motor-drive, fieldbus, can-bus, canopen, ethercat, embedded, robotics, mit]
 status: complete
-updated: 2026-06-24
+updated: 2026-08-02
 related:
   - ../concepts/can-bus-protocol.md
   - ../concepts/can-fd.md
@@ -14,6 +14,7 @@ related:
   - ../concepts/field-oriented-control.md
   - ../entities/simplefoc.md
   - ../entities/wokwi.md
+  - ../entities/tinkercad.md
   - ../comparisons/can-vs-ethercat-joint-bus.md
   - ../formalizations/control-loop-latency-modeling.md
   - ../concepts/processor-in-the-loop-sim2real.md
@@ -142,7 +143,7 @@ flowchart TB
    L1 CAN FD → L2 **DroneCAN** → 与关节 CANopen **分总线** 或网关隔离。
 
 5. **Bring-up 阶段**  
-   L1 UART → 标定、读版本、产测；**不替代** 关节闭环总线。无硬件时可先用 [Wokwi](../entities/wokwi.md) 等 **MCU 外设仿真** 做 I2C/UART/PWM 冒烟，再焊板联调。
+   L1 UART → 标定、读版本、产测；**不替代** 关节闭环总线。无硬件时可先用 [Wokwi](../entities/wokwi.md) 等 **MCU 外设仿真** 做 I2C/UART/PWM 冒烟，再焊板联调；纯 Arduino/micro:bit 课堂入门亦可用 [Tinkercad](../entities/tinkercad.md) Circuits。
 
 ## 选型决策（简图）
 
@@ -178,6 +179,7 @@ flowchart TD
 - [磁场定向控制（FOC）](../concepts/field-oriented-control.md)
 - [SimpleFOC](../entities/simplefoc.md)
 - [Wokwi](../entities/wokwi.md) — 浏览器端 MCU/外设仿真，固件 bring-up 与教学
+- [Tinkercad](../entities/tinkercad.md) — Arduino/micro:bit 课堂级电路入门仿真
 - [CAN 总线（经典）](../concepts/can-bus-protocol.md)
 - [CAN FD](../concepts/can-fd.md)
 - [EtherCAT 协议基础](../concepts/ethercat-protocol.md)

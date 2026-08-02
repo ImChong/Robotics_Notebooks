@@ -2,12 +2,13 @@
 type: entity
 tags: [software, simulation, embedded, firmware, iot, arduino, esp32, education, wokwi]
 status: complete
-updated: 2026-06-24
+updated: 2026-08-02
 related:
   - ../overview/motor-drive-firmware-bus-protocols.md
   - ./simplefoc.md
   - ./betaflight.md
   - ./inmoov-humanoid.md
+  - ./tinkercad.md
   - ../concepts/uart-serial-communication.md
   - ../concepts/processor-in-the-loop-sim2real.md
 sources:
@@ -80,6 +81,7 @@ flowchart LR
 - **误区：Wi-Fi 仿真等于真机射频环境** — 协议栈可跑通，但延迟、丢包与天线遮挡与实物仍有差距。
 - **局限：实时硬约束** — 不适合验证 EtherCAT DC、kHz 级全关节 CAN 同步等 **硬实时总线** 细节；该层见 [电机底软通信总览](../overview/motor-drive-firmware-bus-protocols.md)。
 - **局限：商业授权** — 个人免费；团队 CI、高级调试与 Classroom 需付费计划。
+- **与 Tinkercad 对照**：[Tinkercad](./tinkercad.md) Circuits 更偏 **Arduino/micro:bit 课堂一体（含 3D）**；需要 ESP32/STM32、GDB 或 `wokwi-cli` CI 时优先 Wokwi。
 
 ## 参考来源
 
@@ -95,6 +97,7 @@ flowchart LR
 - [InMoov](./inmoov-humanoid.md)
 - [UART 串行通信](../concepts/uart-serial-communication.md)
 - [处理器在环 Sim2Real](../concepts/processor-in-the-loop-sim2real.md)
+- [Tinkercad](./tinkercad.md) — Autodesk 浏览器端 3D + Arduino/micro:bit 入门仿真
 
 ## 推荐继续阅读
 
