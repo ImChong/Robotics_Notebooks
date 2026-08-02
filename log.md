@@ -1,3 +1,12 @@
+## [2026-08-02] ingest | sources/papers/mmhu_arxiv_2507_12463.md + sites/mmhu-benchmark-github-io.md — MMHU（arXiv:2507.12463，TAMU / Brown / JHU / UT Austin）驾驶人体行为多模态基准
+
+- **触发：** 用户指定 *MMHU: A Massive-Scale Multimodal Benchmark for Human Behavior Understanding*（arXiv:2507.12463；Texas A&M / Brown / Johns Hopkins / UT Austin；Li / Ye / Wu / Yang / Fan / Hu / Tu）
+- **Sources：** [`sources/papers/mmhu_arxiv_2507_12463.md`](sources/papers/mmhu_arxiv_2507_12463.md)、[`sources/sites/mmhu-benchmark-github-io.md`](sources/sites/mmhu-benchmark-github-io.md)
+- **Wiki：** [`wiki/entities/paper-mmhu.md`](wiki/entities/paper-mmhu.md)
+- **交叉：** [`wiki/overview/autonomous-driving-core-algorithms-series.md`](wiki/overview/autonomous-driving-core-algorithms-series.md)、[`wiki/overview/e2e-autonomous-driving-top10-algorithms.md`](wiki/overview/e2e-autonomous-driving-top10-algorithms.md)、[`wiki/overview/hub-embodied-eval-benchmark.md`](wiki/overview/hub-embodied-eval-benchmark.md)、[`wiki/methods/diffusion-motion-generation.md`](wiki/methods/diffusion-motion-generation.md)、[`wiki/concepts/3d-spatial-vqa.md`](wiki/concepts/3d-spatial-vqa.md)
+- **机构：** 注册 [`schema/institutions.json`](schema/institutions.json) `texas-am` / `brown`；`jhu` / `ut-austin` 已有
+- **开源：** **部分开源** — HF Dataset [`jerryye0110/MMHU`](https://huggingface.co/datasets/jerryye0110/MMHU) 已发；项目页截至入库日 **未列 GitHub / 训练代码**
+
 ## [2026-08-02] ingest | sources/papers/emergent_transfer_cross_config_arxiv_2607_25593.md — Emergent Transfer（arXiv:2607.25593，HUST / Spirit AI / PKU / SJTU / HIT / 清华）跨配置遗留示教三相迁移
 
 - **触发：** 用户指定 *When Does Legacy Data Start to Help? Emergent Transfer in Cross-Configuration Robot Learning*（arXiv:2607.25593；华中科技大学 / 千寻智能 / 北京大学 / 上海交通大学 / 哈尔滨工业大学 / 清华大学；Wang / Hou / Hu / Gao 等）
