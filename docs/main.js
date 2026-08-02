@@ -6436,10 +6436,19 @@
       var graphBtn = '<a href="' + escapeHtml(graphUrl) + '" class="js-graph-btn" '
         + 'style="font-size:.75rem;opacity:.6;margin-left:8px;text-decoration:none" '
         + 'title="查看图谱邻居" tabindex="-1">🔗图谱</a>';
+      var fullSummary = item.summary || '';
+      var needsPreview = fullSummary.length > 120;
+      var summaryHtml = fullSummary
+        ? '<p class="result-summary' + (needsPreview ? ' is-clamped' : '') + '">'
+          + escapeHtml(fullSummary) + '</p>'
+          + (needsPreview
+            ? '<button type="button" class="result-preview-toggle" aria-expanded="false">预览全文</button>'
+            : '')
+        : '';
       return '<article class="card" data-result-url="' + escapeHtml(detailUrl) + '">'
         + '<p class="card-meta" style="font-size:.75rem;margin-bottom:.25rem">' + escapeHtml(typeLabel) + explain + '</p>'
         + '<h3><a href="' + escapeHtml(detailUrl) + '">' + escapeHtml(item.title || item.id) + '</a>' + graphBtn + '</h3>'
-        + '<p>' + escapeHtml((item.summary || '').slice(0, 120)) + '</p>'
+        + summaryHtml
         + (tagLine ? '<div class="chip-list">' + tagLine + '</div>' : '')
         + '</article>';
     }
@@ -6734,6 +6743,18 @@
       var graphBtn = e.target.closest('.js-graph-btn');
       if (graphBtn) {
         e.stopPropagation();
+        return;
+      }
+      var previewToggle = e.target.closest('.result-preview-toggle');
+      if (previewToggle) {
+        e.stopPropagation();
+        var card = previewToggle.closest('.card');
+        var summary = card && card.querySelector('.result-summary');
+        if (summary) {
+          var clamped = summary.classList.toggle('is-clamped');
+          previewToggle.setAttribute('aria-expanded', clamped ? 'false' : 'true');
+          previewToggle.textContent = clamped ? '预览全文' : '收起';
+        }
         return;
       }
     });
