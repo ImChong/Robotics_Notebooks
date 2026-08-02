@@ -6,6 +6,13 @@
 - **Wiki：** [`wiki/concepts/embodied-perception-six-spatial-representations.md`](wiki/concepts/embodied-perception-six-spatial-representations.md)
 - **交叉：** [`2d-to-3d-semantic-lifting-gap`](wiki/concepts/2d-to-3d-semantic-lifting-gap.md)、[`robot-perception-stack-selection-loop`](wiki/queries/robot-perception-stack-selection-loop.md)、[`navigation-slam-autonomy-stack`](wiki/overview/navigation-slam-autonomy-stack.md)、[`isaac-ros-nvblox`](wiki/entities/isaac-ros-nvblox.md)、[`go2-3d-semantic-mapping-sam-pipeline`](wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md)
 
+## [2026-08-02] structural | docs/depth-filters.js — 修复路线视图多 token 片段漏匹配并补齐各纵深命中集
+
+- **问题：** `nodeSegments` 按 `/._-` 切词后，`loco-manip` / `motion-generation` / `sim-to-real` 等带连字符的 segments 几乎永不命中；Loco-Manip 路线视图仅剩枢纽+任务页（约 2 节点），动作生成等路线同样偏空
+- **修复：** `segmentHits` 对多 token segment 改为归一路径子串命中（`loco-manip` 可命中 `.../loco-manipulation...`）；单 token 仍精确匹配；并补齐 boxing / soccer / motion-generation / real2sim / wam 等路线的 segments 与显式 `ids`
+- **涉及路径：** [`docs/depth-filters.js`](docs/depth-filters.js)、[`tests/test_depth_filters.py`](tests/test_depth_filters.py)
+- **验证：** `pytest tests/test_depth_filters.py`；loco-manip 命名语料 129/129 命中
+
 ## [2026-08-02] ingest | sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md — Sony aibo QuietWalk（ICRA 2025）低噪行走
 
 - **触发：** 用户指定 *Learning Quiet Walking for a Small Home Robot*（arXiv:2502.10983；ETH / Sony / NUS 等；Watanabe / Miki / Shi / Hutter 等；ICRA 2025）
