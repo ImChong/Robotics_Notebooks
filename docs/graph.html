@@ -63,9 +63,28 @@
     }
     #graph-search::placeholder { color: rgba(255,255,255,0.3); }
     #graph-search:focus { border-color: rgba(0,212,255,0.5); width: 240px; }
-    /* 路线视图区块（在筛选面板里，可折叠 <details>）*/
+    /* 路线视图区块（在筛选面板里，可折叠 <details>）
+       手风琴：三区（维度 / 路线 / 机构）同时仅展开一个；
+       展开区吃满中间剩余高度，收起项自然靠在上方或下方 */
     .filter-depth-section {
+      flex: 0 0 auto;
       border-bottom: 1px solid rgba(255,255,255,0.06);
+      min-height: 0;
+    }
+    .filter-depth-section[open] {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      overflow: hidden;
+    }
+    .filter-depth-section[open] > .filter-dimension-list,
+    .filter-depth-section[open] > .filter-depth-chips,
+    .filter-depth-section[open] > .filter-institution-list {
+      flex: 1 1 auto;
+      min-height: 0;
+      max-height: none;
+      overflow-y: auto;
     }
     .filter-depth-summary {
       display: flex;
@@ -76,6 +95,7 @@
       list-style: none;
       user-select: none;
       transition: background .12s;
+      flex-shrink: 0;
     }
     .filter-depth-summary:hover { background: rgba(255,255,255,0.03); }
     .filter-depth-summary::-webkit-details-marker { display: none; }
@@ -137,9 +157,9 @@
       color: #e6edf3;
     }
     .filter-depth-chip span:first-child { font-size: .9rem; line-height: 1; }
-    /* PC：展开纵深 chip 区限高滚动，避免挤占社区/类型列表 */
+    /* PC：展开区由手风琴吃满剩余高度，chip 列表在区内滚动 */
     .filter-depth-section[open] .filter-depth-chips {
-      max-height: 128px;
+      max-height: none;
       overflow-y: auto;
       scrollbar-width: thin;
       scrollbar-color: rgba(255,255,255,0.28) transparent;
@@ -1348,11 +1368,13 @@
       line-height: 1.35;
       margin: 0 14px 6px;
     }
-    /* 按类型 / 按社区 / 按健康度：可折叠区滚动容器（对齐路线视图 / 机构） */
+    /* 按类型 / 按社区 / 按健康度：手风琴容器（对齐路线视图 / 机构） */
     .filter-sections-scroll {
       flex: 1 1 auto;
       min-height: 120px;
-      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
       scrollbar-width: thin;
       scrollbar-color: rgba(255,255,255,0.28) transparent;
     }
@@ -1369,13 +1391,13 @@
     [data-theme="light"] .filter-sections-scroll::-webkit-scrollbar-thumb {
       background-color: rgba(0,0,0,0.28);
     }
-    /* 维度 / 机构筛选列表：限高滚动，避免面板过长 */
+    /* 维度 / 机构筛选列表：在展开的手风琴区内滚动 */
     .filter-dimension-list,
     .filter-institution-list {
       display: flex;
       flex-direction: column;
       gap: 1px;
-      max-height: 220px;
+      max-height: none;
       overflow-y: auto;
       scrollbar-width: thin;
       scrollbar-color: rgba(255,255,255,0.28) transparent;
@@ -1546,7 +1568,7 @@
         z-index: 31;
       }
       .filter-depth-section[open] .filter-depth-chips {
-        max-height: 96px;
+        max-height: none;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
       }
@@ -1554,11 +1576,13 @@
         flex: 1 1 auto;
         min-height: 0;
         max-height: none;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
       }
-      .filter-dimension-list {
-        max-height: 180px;
+      .filter-dimension-list,
+      .filter-institution-list {
+        max-height: none;
         -webkit-overflow-scrolling: touch;
       }
       .filter-footer {
@@ -1863,7 +1887,7 @@
         </div>
       </div>
       <div class="filter-sections-scroll" id="filter-dimension-sections">
-        <details class="filter-depth-section" id="filter-dimension-section">
+        <details class="filter-depth-section" id="filter-dimension-section" open>
           <summary class="filter-depth-summary">
             <span class="filter-depth-summary-label" id="filter-dimension-label">按社区</span>
             <span class="filter-depth-summary-current" id="filter-dimension-current"><span>🧩</span><span>全部</span></span>
@@ -2055,6 +2079,61 @@
       community: { emoji: '🧩', unit: '个社区' },
       health: { emoji: '💚', unit: '项' },
     };
+
+    /* 筛选浮窗三区手风琴：维度 / 路线视图 / 研究机构 同时仅展开一个；默认「按社区」 */
+    const FILTER_ACCORDION_DEFAULT_ID = 'filter-dimension-section';
+    const FILTER_ACCORDION_SECTION_IDS = [
+      'filter-dimension-section',
+      'filter-depth-section',
+      'filter-institution-section',
+    ];
+    let filterAccordionLock = false;
+
+    function getFilterAccordionSections() {
+      return FILTER_ACCORDION_SECTION_IDS
+        .map((id) => document.getElementById(id))
+        .filter(Boolean);
+    }
+
+    function openFilterAccordionSection(sectionId) {
+      const sections = getFilterAccordionSections();
+      if (!sections.length) return;
+      const target =
+        sections.find((s) => s.id === sectionId) ||
+        sections.find((s) => s.id === FILTER_ACCORDION_DEFAULT_ID) ||
+        sections[0];
+      filterAccordionLock = true;
+      sections.forEach((s) => { s.open = (s === target); });
+      filterAccordionLock = false;
+    }
+
+    function initFilterAccordion() {
+      const sections = getFilterAccordionSections();
+      if (!sections.length) return;
+      openFilterAccordionSection(FILTER_ACCORDION_DEFAULT_ID);
+      sections.forEach((section) => {
+        const summary = section.querySelector(':scope > summary');
+        if (summary) {
+          summary.addEventListener('click', (ev) => {
+            // 保持始终有一个展开区，避免收起后顶部/底部锚定失效
+            if (section.open) ev.preventDefault();
+          });
+        }
+        section.addEventListener('toggle', () => {
+          if (filterAccordionLock) return;
+          if (section.open) {
+            filterAccordionLock = true;
+            sections.forEach((s) => { if (s !== section) s.open = false; });
+            filterAccordionLock = false;
+            return;
+          }
+          if (!sections.some((s) => s.open)) {
+            openFilterAccordionSection(FILTER_ACCORDION_DEFAULT_ID);
+          }
+        });
+      });
+    }
+    initFilterAccordion();
 
     function isFilterPanelMobileMode() {
       return window.matchMedia('(max-width: 768px)').matches;
@@ -5274,6 +5353,7 @@
     const topicParam = _depthParams.get('depth') || _depthParams.get('topic');
     if (topicParam && DEPTH_FILTERS[topicParam]) {
       setActiveTopic(topicParam);
+      openFilterAccordionSection('filter-depth-section');
     }
 
     /* ?community=<id> URL 参数：从详情页"所属社区"徽标跳入时聚焦该社区，
@@ -5282,8 +5362,7 @@
     if (communityParam && communityMetaMap.has(communityParam)) {
       focusedCommunityId = communityParam;
       if (colorMode !== 'community') setColorMode('community');
-      const dimSection = document.getElementById('filter-dimension-section');
-      if (dimSection) dimSection.open = true;
+      openFilterAccordionSection('filter-dimension-section');
       renderLegend();
       renderFilterPanel();
       applyFilters();
@@ -5301,8 +5380,7 @@
       renderInstitutionFilterSection();
       applyFilters();
       updateFilterCount();
-      const instSection = document.getElementById('filter-institution-section');
-      if (instSection) instSection.open = true;
+      openFilterAccordionSection('filter-institution-section');
       const fitFocusedInstitution = () => fitToVisibleNodes();
       simulation.on('end.institution', () => { fitFocusedInstitution(); simulation.on('end.institution', null); });
       setTimeout(fitFocusedInstitution, 1400);
