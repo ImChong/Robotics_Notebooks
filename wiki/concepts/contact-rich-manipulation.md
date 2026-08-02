@@ -2,7 +2,7 @@
 type: concept
 tags: [manipulation, contact, force-control, impedance-control, tsid]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-02
 summary: "Contact-Rich Manipulation 指需要持续建模接触、摩擦和力约束的操作任务，难点不在于碰到物体，而在于控制接触过程本身。"
 related:
   - ../queries/contact-wrench-closed-loop.md
@@ -16,6 +16,7 @@ related:
   - ../entities/paper-taco-tactile-sensor-benchmark.md
   - ../entities/paper-softvtbench.md
   - ../entities/paper-fm-vla.md
+  - ../entities/paper-fa-rdp.md
   - ../entities/paper-teledexter.md
   - ../entities/yale-openhand.md
   - ../entities/neoteai.md
@@ -41,6 +42,7 @@ sources:
   - ../../sources/papers/n0_foundation.md
   - ../../sources/papers/n0_twam.md
   - ../../sources/papers/teledexter_arxiv_2607_11481.md
+  - ../../sources/papers/fa_rdp_arxiv_2607_28596.md
 ---
 
 # Contact-Rich Manipulation（接触丰富型操作）
@@ -123,6 +125,7 @@ sources:
 - [TeleDexter](../entities/paper-teledexter.md) — 灵巧遥操作的 **hand–object co-tracking**：操作员给指尖+物体目标，仿真 RL 学接触切换；工具使用与手内重定向真机平均 **75.2% SR**。
 - [T-Rex](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md) — **学习式触觉反应 VLA**：12 项双手力控/形变/协调真机任务与 **开源触觉 play 数据集**；强调 **异步高频触觉专家** 而非朴素模态拼接。
 - [OmniTacTune](../entities/paper-omnitactune-tactile-residual-adaptation.md) — **冻结视觉 + 触觉残差真机 RL**：单臂 xArm7 上四接触丰富任务（插装/开盖/杠杆），**40–80 min** 在线练习、**无需离线触觉演示**；与 T-Rex 形成「短预算插件式适应」vs「大规模触觉 mid-training」对照。
+- [FA-RDP](../entities/paper-fa-rdp.md) — **频率自适应视觉–力扩散**：接触前低频多步保接近模态，接触后指示器切 30 Hz 流形蒸馏一步采样；Flexiv 三任务平均 **81.7%**（代码 coming soon）。
 - [TouchWorld](../entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md) — **预测–反应式触觉基础模型**：人形 **Wuji** 平台上 **六任务长程** benchmark（浇花/清桌面/杯与插头插入/擦锅/抽纸巾），含 **人为扰动** 设置；**Tactile World Model** 预测视触觉子目标 + **TRT** 高频残差，干净 **65.0%**、扰动 **53.7%** 宏平均。
 - [VTAP Gripper](../entities/paper-vtap-gripper.md) — **硬件级指–掌协同**：视触觉主动掌 + FlexiTac 指尖；反应抓取 / 手内 singulation / 1 mm peg-in-hole（arXiv:2607.15448，确认未开源）。
 - [TacO](../entities/paper-taco-tactile-sensor-benchmark.md) — **跨模态触觉传感器选型基准**：六硬件 × 三真机任务统一 ACT；插入/重定向等接触丰富场景上 **无通用最佳传感器**。
@@ -147,6 +150,7 @@ sources:
 - [sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md](../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md) — TacO 跨模态触觉真机 IL 基准
 - [sources/papers/softvtbench_arxiv_2607_04234.md](../../sources/papers/softvtbench_arxiv_2607_04234.md) — SoftVTBench 可变形视触觉安全基准
 - [sources/papers/teledexter_arxiv_2607_11481.md](../../sources/papers/teledexter_arxiv_2607_11481.md) — TeleDexter hand–object co-tracking 灵巧遥操作
+- [sources/papers/fa_rdp_arxiv_2607_28596.md](../../sources/papers/fa_rdp_arxiv_2607_28596.md) — FA-RDP 频率自适应反应扩散
 - Mordatch et al., *Contact-Invariant Optimization for Hand Manipulations*
 
 ## 关联页面
@@ -169,6 +173,7 @@ sources:
 - [SoftVTBench（可变形视触觉安全基准）](../entities/paper-softvtbench.md) — 过程级物理安全 vs 终端 Goal
 - [NeoteAI 𝒩₀-Foundation / TWAM](../entities/neoteai.md) — NeoReal/NeoSim 接触套件 + 触觉原生 WAM
 - [FM-VLA](../entities/paper-fm-vla.md) — 力觉长程记忆 VLA：接触事件计数与非马尔可夫接触操作（arXiv:2607.18231）
+- [FA-RDP](../entities/paper-fa-rdp.md) — 频率自适应视觉–力扩散：接触前保多模态、接触后 30 Hz 一步反应（arXiv:2607.28596）
 - [Yale OpenHand Model F3](../entities/yale-openhand.md) — 腕相机形变估力、免 FT 力控擦拭/插销/书法（硬件已开源，力估论文审稿中）
 - [Query：接触丰富操作实践指南](../queries/contact-rich-manipulation-guide.md)
 - [DAPL 杂乱场景外在灵巧](../entities/paper-dapl-extrinsic-dexterity-clutter.md)

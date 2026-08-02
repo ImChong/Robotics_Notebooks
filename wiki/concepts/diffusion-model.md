@@ -2,7 +2,7 @@
 type: concept
 tags: [generative-model, diffusion, machine-learning]
 status: complete
-updated: 2026-08-01
+updated: 2026-08-02
 related:
   - ../formalizations/generative-foundations.md
   - ../methods/diffusion-policy.md

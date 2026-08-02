@@ -9,7 +9,7 @@ tags:
   - world-models
   - alibaba
 status: complete
-updated: 2026-07-31
+updated: 2026-08-02
 arxiv: "2503.20314"
 related:
   - ./paper-wan-move.md

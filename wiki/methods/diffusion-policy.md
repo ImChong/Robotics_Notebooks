@@ -112,6 +112,8 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 
 **免训练缓存加速（Muninn，RSS 2026）**：[Muninn](../entities/paper-muninn-trajectory-diffusion-acceleration.md) 把逐步 denoiser 当作可预算复用：用廉价 **probe** + 采样器 **解析灵敏度** 经 conformal 标定，在可证轨迹偏离界下跳过冗余 forward；论文在 RLBench / Meta-World / DP3 上报告约 **40%** 推理延迟下降且成功率接近 Full，且可与蒸馏少步模型叠加。
 
+**频率自适应力反馈（FA-RDP，2026）**：[FA-RDP](../entities/paper-fa-rdp.md) 指出接触丰富任务上固定推理频率会在「接触前多模态」与「接触后力反应」之间折中；用多模态指示器在 **10 Hz 多步 DDIM** 与 **30 Hz 流形一致性蒸馏一步采样** 间切换，Flexiv 三任务真机平均 **81.7%**（代码 coming soon）。
+
 ### Sim2Real 挑战
 扩散策略对观测分布非常敏感，从仿真迁移到真实时视觉 gap 尤为明显。
 常见做法：真实数据微调、领域随机化、sim2real 感知适配。
@@ -129,6 +131,7 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 - **ingest 档案：** [sources/papers/bifrost_umi_arxiv_2605_03452.md](../../sources/papers/bifrost_umi_arxiv_2605_03452.md) — BifrostUMI：全身 47-D 稀疏关键点 + DINOv2 条件的扩散高层（arXiv:2605.03452）
 - **ingest 档案：** [sources/papers/muninn_arxiv_2605_09999.md](../../sources/papers/muninn_arxiv_2605_09999.md) — Muninn：免训练轨迹扩散缓存包装器，visuomotor DP 推理加速与可证偏差预算（RSS 2026）
 - **ingest 档案：** [sources/papers/refine_dp_arxiv_2603_13707.md](../../sources/papers/refine_dp_arxiv_2603_13707.md) — REFINE-DP：人形 loco-manip DP+RL 联合微调（arXiv:2603.13707）
+- **ingest 档案：** [sources/papers/fa_rdp_arxiv_2607_28596.md](../../sources/papers/fa_rdp_arxiv_2607_28596.md) — FA-RDP：频率自适应视觉–力反应扩散（arXiv:2607.28596）
 
 ## 关联页面
 
@@ -146,6 +149,7 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 - [Chronos](../entities/paper-chronos.md) — ALOHA 上相对 diffusion/flow 动作头的二阶加速度桥对照（arXiv:2606.30318）
 - [PRISM](../entities/paper-prism.md) — 用因式分解多项式替换线性本体条件，LIBERO 无 force 柔顺（arXiv:2607.23473）
 - [REFINE-DP（论文实体）](../entities/paper-loco-manip-161-157-refine-dp.md) — 人形 loco-manip 上 DP 规划器与 RL 跟踪器联合 PPO/DPPO 微调（arXiv:2603.13707）
+- [FA-RDP（论文实体）](../entities/paper-fa-rdp.md) — 接触丰富操作上频率自适应视觉–力扩散（arXiv:2607.28596）
 
 ## 推荐继续阅读
 

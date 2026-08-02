@@ -1,3 +1,21 @@
+## [2026-08-02] ingest | sources/papers/fa_rdp_arxiv_2607_28596.md + sites/fa-rdp-github-io.md — FA-RDP（arXiv:2607.28596，SJTU / 创智 / Noematrix）频率自适应反应扩散
+
+- **触发：** 用户指定 *FA-RDP: A Frequency-Adaptive Reactive Diffusion Policy for Contact-Rich Manipulation*（arXiv:2607.28596；SJTU / Shanghai Innovation Institute / Noematrix；Zhuo / Chen / Xue / Tang / Lv / Lu / Wen）+ 项目页
+- **Sources：** [`sources/papers/fa_rdp_arxiv_2607_28596.md`](sources/papers/fa_rdp_arxiv_2607_28596.md)、[`sources/sites/fa-rdp-github-io.md`](sources/sites/fa-rdp-github-io.md)
+- **Wiki：** [`wiki/entities/paper-fa-rdp.md`](wiki/entities/paper-fa-rdp.md)
+- **交叉：** [`wiki/methods/diffusion-policy.md`](wiki/methods/diffusion-policy.md)、[`wiki/concepts/contact-rich-manipulation.md`](wiki/concepts/contact-rich-manipulation.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)
+- **机构：** 注册 [`schema/institutions.json`](schema/institutions.json) `noematrix`（诺玛矩阵（Noematrix））；`sjtu` / `shanghai-innovation-institute` 已有
+- **开源：** **未开源（coming soon）** — 项目页 Code 为 `href="#"`；`zhuolifeng/FA-RDP` 仅为站点源 + Releases 视频
+
+## [2026-08-02] ingest | sources/papers/world_action_planner_arxiv_2607_27599.md + sites/worldactionplanner-github-io.md + repos/world-action-planner.md — World Action Planner（arXiv:2607.27599，Harvard）深度升格
+
+- **触发：** 用户指定 *World Action Planner: Generalizable Decision-Making with Action-Conditioned World Models*（arXiv:2607.27599；Harvard；Zhang / Du）+ GitHub / 项目页 / Hugging Face
+- **Sources：** [`sources/papers/world_action_planner_arxiv_2607_27599.md`](sources/papers/world_action_planner_arxiv_2607_27599.md)、[`sources/sites/worldactionplanner-github-io.md`](sources/sites/worldactionplanner-github-io.md)、[`sources/repos/world-action-planner.md`](sources/repos/world-action-planner.md)、[`sources/sites/huggingface-xiangchengzhang-world-action-planner.md`](sources/sites/huggingface-xiangchengzhang-world-action-planner.md)
+- **Wiki：** [`wiki/entities/paper-world-action-planner.md`](wiki/entities/paper-world-action-planner.md)
+- **交叉：** [`wiki/concepts/world-action-models.md`](wiki/concepts/world-action-models.md)、[`wiki/methods/generative-world-models.md`](wiki/methods/generative-world-models.md)、[`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/methods/diffusion-policy.md`](wiki/methods/diffusion-policy.md)、[`wiki/entities/libero-benchmark.md`](wiki/entities/libero-benchmark.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)
+- **机构：** `harvard` 已注册
+- **开源：** **已开源** — GitHub 训练/服务 + HF 世界模型与 DP/IDM 权重
+
 ## [2026-08-02] ingest | sources/papers/refine_dp_arxiv_2603_13707.md + sites/refine-dp-github-io.md — REFINE-DP（arXiv:2603.13707，Georgia Tech / IEEE RA-L）深度升格
 
 - **触发：** 用户指定 *REFINE-DP: Diffusion Policy Fine-tuning for Humanoid Loco-manipulation via Reinforcement Learning*（IEEE RA-L；Georgia Tech；Gu / Chen / Chai / Zhao 等）

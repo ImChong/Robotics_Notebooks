@@ -2,7 +2,7 @@
 type: concept
 tags: [control, manipulation, force-control, position-control, contact-rich, assembly]
 status: complete
-updated: 2026-07-18
+updated: 2026-08-02
 summary: "力位混合控制把不同方向上的控制目标拆分为位置跟踪与力跟踪两类，是接触丰富操作中最常见的执行层结构之一。"
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md

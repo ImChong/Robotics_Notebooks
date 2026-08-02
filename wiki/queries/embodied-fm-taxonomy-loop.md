@@ -2,7 +2,7 @@
 type: query
 tags: [vlm, vln, vla, vlx, world-model, embodied-ai, multimodal, taxonomy, foundation-model]
 status: complete
-updated: 2026-07-30
+updated: 2026-08-02
 summary: "具身大模型分类学选型闭环知识链：把 VLM 感知理解 → VLN 空间导航 → VLA 动作执行 → VLX 一体化扩展 → WM 世界模型推演 五层，从分散的家族概念页沉淀为一条端到端选型决策链，逐层说明 I/O 边界、数据需求、泛化能力、实时性/控制带宽与闭环稳定性的取舍及典型失败模式。"
 sources:
   - ../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md

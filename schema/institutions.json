@@ -2228,6 +2228,13 @@
         "monash-university",
         "monash-uni"
       ]
+    },
+    "noematrix": {
+      "label": "诺玛矩阵（Noematrix）",
+      "aliases": [
+        "noematrix",
+        "noematrix-ltd"
+      ]
     }
   }
 }

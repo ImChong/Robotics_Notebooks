@@ -1,13 +1,108 @@
 {
   "generated_at": "2026-08-02",
-  "node_count": 2064,
-  "edge_count": 18597,
+  "node_count": 2066,
+  "edge_count": 18628,
   "coverage": {
-    "covered": 2014,
-    "total": 2040,
+    "covered": 2016,
+    "total": 2042,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-fa-rdp.md",
+      "detail_id": "entity-paper-fa-rdp",
+      "label": "FA-RDP",
+      "type": "entity",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/methods/diffusion-policy.md",
+      "detail_id": "wiki-methods-diffusion-policy",
+      "label": "Diffusion Policy",
+      "type": "method",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/contact-rich-manipulation.md",
+      "detail_id": "wiki-concepts-contact-rich-manipulation",
+      "label": "Contact-Rich Manipulation（接触丰富型操作）",
+      "type": "concept",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-world-action-planner.md",
+      "detail_id": "entity-paper-world-action-planner",
+      "label": "World Action Planner",
+      "type": "entity",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/concepts/world-action-models.md",
+      "detail_id": "wiki-concepts-world-action-models",
+      "label": "World Action Models（WAM，世界–动作模型）",
+      "type": "concept",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/methods/generative-world-models.md",
+      "detail_id": "wiki-methods-generative-world-models",
+      "label": "Generative World Models (生成式世界模型)",
+      "type": "method",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/libero-benchmark.md",
+      "detail_id": "entity-libero-benchmark",
+      "label": "LIBERO",
+      "type": "entity",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/paper-loco-manip-161-157-refine-dp.md",
       "detail_id": "entity-paper-loco-manip-161-157-refine-dp",
@@ -27,15 +122,6 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/methods/diffusion-policy.md",
-      "detail_id": "wiki-methods-diffusion-policy",
-      "label": "Diffusion Policy",
-      "type": "method",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained"
     },
     {
       "path": "wiki/methods/reinforcement-learning.md",
@@ -124,94 +210,17 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/anymal.md",
-      "detail_id": "entity-anymal",
-      "label": "ANYmal 四足机器人",
-      "type": "entity",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
-      "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
-      "label": "VLA 开源复现景观（2025 策展）",
-      "type": "overview",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/agibot-world-2026.md",
-      "detail_id": "entity-agibot-world-2026",
-      "label": "AGIBOT WORLD 2026",
-      "type": "entity",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/x-humanoid.md",
-      "detail_id": "entity-x-humanoid",
-      "label": "X-Humanoid（北京人形机器人创新中心）",
-      "type": "entity",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/limx-cosa.md",
-      "detail_id": "entity-limx-cosa",
-      "label": "LimX COSA（人形大脑操作系统）",
-      "type": "entity",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/overview/robot-learning-overview.md",
-      "detail_id": "wiki-overview-robot-learning-overview",
-      "label": "Robot Learning Overview",
-      "type": "overview",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-pac-man-perceptive-cbf-rl.md",
-      "detail_id": "entity-paper-pac-man-perceptive-cbf-rl",
-      "label": "PAC-MAN",
-      "type": "entity",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/concepts/control-barrier-function.md",
-      "detail_id": "wiki-concepts-control-barrier-function",
-      "label": "Control Barrier Function（控制屏障函数）",
-      "type": "concept",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-loco-manip-161-157-refine-dp.md",
-    "detail_id": "entity-paper-loco-manip-161-157-refine-dp",
-    "label": "REFINE-DP",
+    "path": "wiki/entities/paper-fa-rdp.md",
+    "detail_id": "entity-paper-fa-rdp",
+    "label": "FA-RDP",
     "type": "entity",
     "recency": "2026-08-02",
     "source": "log.md",
-    "action": "maintained"
+    "action": "maintained",
+    "community_label": "操作（Manipulation） 社区"
   },
   "top_communities": [
     {
@@ -220,23 +229,23 @@
     },
     {
       "label": "动作重定向",
-      "size": 167
+      "size": 182
     },
     {
       "label": "人形论文深读笔记",
-      "size": 165
+      "size": 166
+    },
+    {
+      "label": "操作",
+      "size": 140
     },
     {
       "label": "移动操作",
       "size": 140
     },
     {
-      "label": "操作",
-      "size": 139
-    },
-    {
       "label": "人形强化学习运动控制",
-      "size": 131
+      "size": 129
     }
   ],
   "top_hubs": [
@@ -252,7 +261,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 374,
+      "degree": 376,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -267,7 +276,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 339,
+      "degree": 343,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -312,7 +321,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 221,
+      "degree": 222,
       "has_repo": true
     }
   ],

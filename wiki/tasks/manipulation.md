@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-07-31
+updated: 2026-08-02
 related:
   - ../entities/paper-clothtransformer-unified-latent-cloth-simulation.md
   - ../entities/paper-flying-knots.md
@@ -133,6 +133,8 @@ flowchart TD
 - **T-Rex**（[实体页](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md)，arXiv:2606.17055）：**触觉反应式灵巧操作**——人视频预训练 + **100 h 触觉 play mid-training** + 变频率 MoT；开源触觉数据集与 **12 任务** 双手真机基准
 - **OmniTacTune**（[实体页](../entities/paper-omnitactune-tactile-residual-adaptation.md)，arXiv:2607.03723）：**策略无关触觉残差真机 RL**——冻结 Flow/ACT/DP/π₀.₅ 视觉基策略，**40–80 min** 在线练习把接触丰富任务 **5–40% → 85–100%**；**无需离线触觉演示**
 - **FM-VLA**（[实体页](../entities/paper-fm-vla.md)，arXiv:2607.18231）：**力觉长程记忆**——冻结 Force-VAE 压缩整集腕部 wrench 为 **K=8** token（+短窗状态）注入 **π₀.₅**；智元 G1 三项记忆依赖接触任务平均 **83.3%**，推理仅 **+3.3 ms**（官方代码 coming soon）
+- **FA-RDP**（[实体页](../entities/paper-fa-rdp.md)，arXiv:2607.28596）：**频率自适应反应扩散**——接触前 10 Hz 多步保多模态，接触后指示器切 30 Hz MCD 一步采样；Flexiv 翻箱/拨开关/按按钮平均 **81.7%**（代码 coming soon）
+- **World Action Planner**（[实体页](../entities/paper-world-action-planner.md)，arXiv:2607.27599）：**VLM + pose-image 世界模型规划**——想象 rollout 上优化/搜索，LIBERO 组合与新布局显著优于 π₀.₅ / cosmos-policy；代码与 HF 权重已开源
 - **Chronos**（[实体页](../entities/paper-chronos.md)，arXiv:2606.30318）：**全历史 SSM + IMLE + 二阶加速度桥**——历史作策略潜状态；RMBench **73.6%**（相对 π₀.₅ **+62.4 pt**），真机双臂平均 **78%**；RMBench+UR3 代码与 HF ckpt 已开源
 - **VTAP Gripper**（[实体页](../entities/paper-vtap-gripper.md)，arXiv:2607.15448）：**视触觉主动掌 + FlexiTac 三指夹爪**——硬件级指–掌协同与手势条件遥操作重定向；反应抓取 **93.3%**、peg-in-hole **70%**（确认未开源）
 - **NeoteAI 𝒩₀**（[公司实体](../entities/neoteai.md)）：OpenNeoData **5k h** + NeoForce 力场；[𝒩₀-VTLA](../entities/paper-n0-vtla.md) NeoReal **47.2%**；[𝒩₀-TWAM](../entities/paper-n0-twam.md) 真机接触均 **46.3%**（模型代码待 2026-07-31）
@@ -283,6 +285,8 @@ flowchart TD
 - [Deimel 柔顺欠驱动灵巧手（RSS ToT）](../entities/paper-deimel-compliant-underactuated-robotic-hand.md)
 - [Yale OpenHand](../entities/yale-openhand.md) — 打印件 + Dynamixel 腱驱欠驱动开源手族（对照气动软体路线）
 - [PRISM](../entities/paper-prism.md) — 多项式本体条件；LIBERO 无 force 输入达 91% 成功率（arXiv:2607.23473）
+- [FA-RDP](../entities/paper-fa-rdp.md) — 频率自适应视觉–力反应扩散；Flexiv 接触丰富三任务 81.7%（arXiv:2607.28596）
+- [World Action Planner](../entities/paper-world-action-planner.md) — pose-image WM + VLM 规划；LIBERO 组合/新布局泛化（arXiv:2607.27599）
 
 
 ## 推荐继续阅读
