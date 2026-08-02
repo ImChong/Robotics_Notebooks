@@ -89,7 +89,7 @@
   - [x] 图谱页 3D 社区漂浮标签：按画布短边相对 ~800px 参考值 **连续缩放**字号（√ 比例，钳制约 **0.78–1.28**，绝对字号约 **7–22px**），取代旧的「移动端字号×0.55 + zoom×0.55」二元收紧，避免手机/平板有效字号落到 ~3–5px、大屏却完全不放大；验证脚本 `scripts/verify_graph_community_labels_3d_responsive.cjs`。
   - [x] 图谱页 3D 社区漂浮标签：点「适配屏幕」飞行动画期间锁定胶囊 scale 为落稳尺寸，并提前写入目标距离基线，避免中途 `|cam−lookAt|` 偏离导致标签大小闪一下。
   - [x] 图谱页 `graph.html`：筛选浮窗保留顶部「按类型 / 按社区 / 按健康度」按钮三选一；当前维度的勾选项改为与「路线视图 / 研究机构」一致的可折叠 `<details>`，折叠标题在有选中时显示数量（如 `3 个社区`）。
-  - [x] 图谱页 2D 力模拟稳态（Obsidian 风格）：`velocityDecay`→0.82、`alphaDecay`→0.055；弹簧改为度数加权（`0.65/√minDeg`）；初始/刷新先静默 warmup 140 tick 再以 alpha=0.15 可见落稳；叶序铺开 + 弱向心位置力；首页 mini-graph 同步基础阻尼。**3D 力参数保持对话前原状**（`d3VelocityDecay=0.4` / `d3AlphaDecay=0.025` / 中心 80px 随机刷新），不做跟随改动。
+  - [x] 图谱页 2D 力模拟：略欠阻尼、**最多一次回弹**——`velocityDecay=0.52`、`alphaDecay=0.04`、度数加权弹簧 `0.75/√minDeg`；叶序种子（R=10）后以 `alpha=1` 开场（取消长静默 warmup）；3D 力参数保持对话前原状。
 - [x] 首页「互链枢纽 · Top 10」底部入口改为「查看完整榜单 →」，新增 `docs/hubs.html` 全量互链榜单页（数据源 `exports/hub-rankings.json`，全站 / 论文双 tab）。
 - [x] 首页 Hero 盘点条新增「主路线」（数字 1，位于「互链关系」与「纵深路线」之间）；四项数字可点：知识节点 / 互链关系 → `graph.html`，主路线 → 锚到「从零开始」卡并顺时针描边一圈，纵深路线 → 锚到「更多路线」卡描边一圈（不展开）后短时高亮「展开全部…」文案。
 - [x] 首页入口卡边框描边多分辨率对齐：SVG 改为按 border-box 像素定位（计入 border 宽度与亚像素 `getBoundingClientRect`），去掉 padding-box `inset`/`%` 尺寸冲突；圆角跟随 computed `border-radius`；动画期间 ResizeObserver 跟随卡片尺寸。

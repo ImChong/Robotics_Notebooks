@@ -3039,23 +3039,24 @@
       svg.attr('width', W).attr('height', H);
     }
 
-    // Obsidian 风格稳态（2D）：
-    // 1) 叶序铺开，避免中心小团爆炸；
-    // 2) 高摩擦 + 度数加权弹簧，抑制密图回弹；
-    // 3) 静默 warmup 后再以低 alpha 可见落稳——用户看不到剧烈震荡阶段。
-    const FORCE_CENTER_STRENGTH = 0.07;
-    const FORCE_VELOCITY_DECAY = 0.82;
-    const FORCE_ALPHA_DECAY = 0.055;
-    const FORCE_LINK_STRENGTH = 0.65;   // 实际强度 = 该值 / sqrt(min(deg_s, deg_t))
-    const FORCE_COLLIDE_STRENGTH = 0.35;
-    const FORCE_WARMUP_TICKS = 140;
-    const FORCE_REHEAT_ALPHA = 0.15;
+    // 2D 力模拟：略欠阻尼，允许「最多一次」回弹后落稳。
+    // 1) 叶序铺开（避免中心小团爆炸成多轮震荡）；
+    // 2) 中等摩擦 + 度数加权弹簧（保活力，抑制密图连震）；
+    // 3) 不做长静默 warmup——把一次扩张/回弹播给用户看。
+    const FORCE_CENTER_STRENGTH = 0.05;
+    const FORCE_VELOCITY_DECAY = 0.52;
+    const FORCE_ALPHA_DECAY = 0.042;
+    const FORCE_LINK_STRENGTH = 0.75;   // 实际强度 = 该值 / sqrt(min(deg_s, deg_t))
+    const FORCE_COLLIDE_STRENGTH = 0.45;
+    const FORCE_WARMUP_TICKS = 0;
+    const FORCE_REHEAT_ALPHA = 1;
 
     function seedNodePositionsPhyllotaxis(targetNodes) {
       const list = targetNodes || nodes;
       const cx = W / 2;
       const cy = H / 2;
-      const initialRadius = 14;
+      // 略紧于完全舒展叶序，给首帧可见扩张动能，但仍远宽于旧 80px 小团。
+      const initialRadius = 10;
       const goldenAngle = Math.PI * (3 - Math.sqrt(5));
       for (let i = 0; i < list.length; i++) {
         const n = list[i];
@@ -3091,7 +3092,7 @@
     // 首帧前先铺开，避免 d3 默认绕原点叶序 + 弱 forceCenter 造成的额外平移震荡。
     seedNodePositionsPhyllotaxis(nodes);
 
-    /* ── 力模拟（先 stop；DOM 挂好后再静默 warmup + 低 alpha 可见落稳）── */
+    /* ── 力模拟（先 stop；DOM 挂好后再以完整 alpha 开场，保留一次回弹）── */
     const simulation = d3.forceSimulation(nodes)
       .force('link', d3.forceLink(edges).id(d => d.id).distance(80).strength(linkStrengthFor))
       .force('charge', d3.forceManyBody().strength(chargeStrength).distanceMax(400))
@@ -3111,7 +3112,7 @@
     function resumeSimulation2D() {
       if (is3DView()) return;
       simulation.alphaTarget(0);
-      simulation.alpha(0.18).restart();
+      simulation.alpha(0.25).restart();
     }
 
     function updateForces() {
@@ -3151,7 +3152,7 @@
       } else {
         applyCenterGravity2D();
       }
-      simulation.alpha(0.15).restart();
+      simulation.alpha(0.25).restart();
     }
 
     /* ── 渲染边 ── */
@@ -3173,7 +3174,7 @@
       .call(d3.drag()
         .on('start', (ev, d) => {
           if (is3DView()) return;
-          if (!ev.active) simulation.alphaTarget(0.12).restart();
+          if (!ev.active) simulation.alphaTarget(0.2).restart();
           d.fx = d.x; d.fy = d.y;
         })
         .on('drag', (ev, d) => {
@@ -3362,8 +3363,7 @@
       }
     }
 
-    // 首屏力布局在下方 runStabilizedLayout2D() 静默预热完成后再 finishLoading，
-    // 避免 loading 消失后主线程被 warmup 卡住、用户看到剧烈震荡。
+    // 首屏力布局在下方 runStabilizedLayout2D() 就位后再 finishLoading。
 
     function getFilterOptions() {
       if (colorMode === 'community') {
@@ -3493,41 +3493,28 @@
       whenGraphViewportReady(() => fitToScreen());
     }
 
-    /** 静默预热再低 alpha 可见落稳：把剧烈膨胀留在离屏 tick，避免初始震荡观感。 */
+    /** 叶序种子后以完整 alpha 开场：可见一次扩张/回弹，再靠摩擦与冷却落稳。 */
     function runStabilizedLayout2D(options) {
       const opts = options || {};
       if (opts.reseed) seedNodePositionsPhyllotaxis(nodes);
       simulation.stop();
       simulation.alphaTarget(0);
-      simulation.alpha(1);
-
-      const finishWarmup = () => {
+      for (const n of simulation.nodes()) {
+        n.vx = 0;
+        n.vy = 0;
+      }
+      syncGraphDomFromSimulation();
+      // 可选极短 warmup（当前为 0）：只用于跳过数值毛刺，不吃掉可见活力。
+      if (FORCE_WARMUP_TICKS > 0) {
+        simulation.alpha(1);
+        for (let i = 0; i < FORCE_WARMUP_TICKS; i++) simulation.tick();
         for (const n of simulation.nodes()) {
           n.vx = 0;
           n.vy = 0;
         }
         syncGraphDomFromSimulation();
-        simulation.alpha(FORCE_REHEAT_ALPHA).restart();
-      };
-
-      // 交互「刷新布局」分片 warmup，避免主线程卡死；首屏 loading 遮罩下可同步跑完。
-      if (opts.async) {
-        let i = 0;
-        const step = () => {
-          const end = Math.min(i + 20, FORCE_WARMUP_TICKS);
-          for (; i < end; i++) simulation.tick();
-          if (i < FORCE_WARMUP_TICKS) {
-            requestAnimationFrame(step);
-            return;
-          }
-          finishWarmup();
-        };
-        requestAnimationFrame(step);
-        return;
       }
-
-      for (let i = 0; i < FORCE_WARMUP_TICKS; i++) simulation.tick();
-      finishWarmup();
+      simulation.alpha(FORCE_REHEAT_ALPHA).restart();
     }
 
     function restartForceSimulation() {
@@ -3540,7 +3527,7 @@
       userZoomed2D = false;
       label.style('opacity', 0);
       updateGraphViewport();
-      runStabilizedLayout2D({ reseed: true, async: true });
+      runStabilizedLayout2D({ reseed: true });
     }
 
     /* ── Tick ── */
@@ -3555,7 +3542,7 @@
       finishSimulationLoad();
     });
 
-    // 首屏：在 loading 遮罩下静默 warmup，再低 alpha 可见落稳（约 1–2s）。
+    // 首屏：种子就位后直接开场（约 2–3s 内完成一次回弹并落稳）。
     setLoadingProgress(96);
     runStabilizedLayout2D();
     whenGraphViewportReady(() => finishGraphRenderLoad());
@@ -3563,7 +3550,7 @@
     setTimeout(() => {
       if (simulation.alpha() > 0.01) return;
       finishSimulationLoad();
-    }, 1600);
+    }, 2200);
 
     const restartSimulationBtn = document.getElementById('restart-simulation');
     if (restartSimulationBtn) {
