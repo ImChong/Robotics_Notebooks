@@ -1,13 +1,73 @@
 {
   "generated_at": "2026-08-02",
-  "node_count": 2066,
-  "edge_count": 18628,
+  "node_count": 2067,
+  "edge_count": 18641,
   "coverage": {
-    "covered": 2016,
-    "total": 2042,
+    "covered": 2017,
+    "total": 2043,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-emergent-transfer-cross-config.md",
+      "detail_id": "entity-paper-emergent-transfer-cross-config",
+      "label": "Emergent Transfer（跨配置遗留数据何时开始有用）",
+      "type": "entity",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/hub-cross-embodiment.md",
+      "detail_id": "wiki-overview-hub-cross-embodiment",
+      "label": "跨具身迁移（知识链汇总）",
+      "type": "overview",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/queries/cross-embodiment-transfer-strategy.md",
+      "detail_id": "wiki-queries-cross-embodiment-transfer-strategy",
+      "label": "跨具身策略迁移选型指南",
+      "type": "query",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/queries/humanoid-training-data-pipeline.md",
+      "detail_id": "wiki-queries-humanoid-training-data-pipeline",
+      "label": "人形训练数据管线选型指南",
+      "type": "query",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-pi05-open-world-vla.md",
+      "detail_id": "entity-paper-pi05-open-world-vla",
+      "label": "π0.5（HMI P059）",
+      "type": "entity",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/behavior-cloning.md",
+      "detail_id": "wiki-methods-behavior-cloning",
+      "label": "Behavior Cloning（行为克隆）",
+      "type": "method",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-fa-rdp.md",
       "detail_id": "entity-paper-fa-rdp",
@@ -152,100 +212,42 @@
       "recency": "2026-08-02",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-doorman-opening-sim2real-door.md",
-      "detail_id": "entity-paper-doorman-opening-sim2real-door",
-      "label": "DoorMan（Opening the Sim-to-Real Door for Humanoid Pixel-to-Action Policy Transfer）",
-      "type": "entity",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/overview/overseas-embodied-ai-labs-landscape-2026.md",
-      "detail_id": "wiki-overview-overseas-embodied-ai-labs-landscape-2026",
-      "label": "海外具身智能实验室地图（2026）",
-      "type": "overview",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/overview/china-embodied-ai-labs-landscape-2026.md",
-      "detail_id": "wiki-overview-china-embodied-ai-labs-landscape-2026",
-      "label": "国内具身智能实验室三层地图（2026）",
-      "type": "overview",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/overview/notable-commercial-robot-platforms.md",
-      "detail_id": "wiki-overview-notable-commercial-robot-platforms",
-      "label": "市面知名机器人平台纵览",
-      "type": "overview",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/aloha.md",
-      "detail_id": "entity-aloha",
-      "label": "ALOHA (双臂遥操作硬件)",
-      "type": "entity",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/methods/π0-policy.md",
-      "detail_id": "wiki-methods-π0-policy",
-      "label": "π₀ (Pi-zero) 策略模型",
-      "type": "method",
-      "recency": "2026-08-01",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-fa-rdp.md",
-    "detail_id": "entity-paper-fa-rdp",
-    "label": "FA-RDP",
+    "path": "wiki/entities/paper-emergent-transfer-cross-config.md",
+    "detail_id": "entity-paper-emergent-transfer-cross-config",
+    "label": "Emergent Transfer（跨配置遗留数据何时开始有用）",
     "type": "entity",
     "recency": "2026-08-02",
     "source": "log.md",
     "action": "maintained",
-    "community_label": "操作（Manipulation） 社区"
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
-    {
-      "label": "视觉-语言-动作",
-      "size": 189
-    },
     {
       "label": "动作重定向",
       "size": 182
     },
     {
-      "label": "人形论文深读笔记",
-      "size": 166
+      "label": "视觉-语言-动作",
+      "size": 169
     },
     {
       "label": "操作",
-      "size": 140
+      "size": 145
     },
     {
       "label": "移动操作",
       "size": 140
     },
     {
+      "label": "人形论文深读笔记",
+      "size": 137
+    },
+    {
       "label": "人形强化学习运动控制",
-      "size": 129
+      "size": 135
     }
   ],
   "top_hubs": [
@@ -261,7 +263,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 376,
+      "degree": 377,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

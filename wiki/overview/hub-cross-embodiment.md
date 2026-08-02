@@ -2,14 +2,15 @@
 type: overview
 tags: [hub, hub-cross-embodiment, transfer, any2any, retargeting]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-02
 related:
   - ../queries/cross-embodiment-transfer-strategy.md
   - ../entities/paper-any2any-cross-embodiment-wbt.md
+  - ../entities/paper-emergent-transfer-cross-config.md
   - ../entities/paper-last-hd-latent-physical-reasoning.md
   - ../entities/generalist-gen1-thousand-hands.md
   - ../entities/gemini-robotics.md
-summary: "跨具身迁移知识链汇总：不同机器人形态、仿真与真机之间的策略/动作迁移，重定向、域随机与 Any2Any 类方法的选型与失败模式；含末端/工具接口多样性（如 GEN-1 千手）与闭源 On-Device 快速适配（Gemini Robotics 2）轴。"
+summary: "跨具身迁移知识链汇总：不同机器人形态、仿真与真机之间的策略/动作迁移，重定向、域随机与 Any2Any 类方法的选型与失败模式；含同形态跨配置遗留数据三相迁移（Emergent Transfer）、末端/工具接口多样性（如 GEN-1 千手）与闭源 On-Device 快速适配（Gemini Robotics 2）轴。"
 ---
 
 # 跨具身迁移（知识链汇总）
@@ -43,6 +44,7 @@ summary: "跨具身迁移知识链汇总：不同机器人形态、仿真与真�
 | Query | 迁移策略决策树 | [Cross-Embodiment Transfer Strategy](../queries/cross-embodiment-transfer-strategy.md) |
 | 概念 | 重定向与迁移 | [Motion Retargeting](../concepts/motion-retargeting.md) |
 | 实体 | Any2Any WBT | [Any2Any Cross-Embodiment WBT](../entities/paper-any2any-cross-embodiment-wbt.md) |
+| 实体 | Emergent Transfer（同形态跨配置） | [Emergent Transfer](../entities/paper-emergent-transfer-cross-config.md) — 遗留示教在 τ(T) 前无效、越过后陡升 |
 | 实体 | LaST-HD 人手→机器人 VLA | [LaST-HD](../entities/paper-last-hd-latent-physical-reasoning.md) |
 | 实体 | GEN-1 千手（跨末端/工具） | [GEN-1 千手](../entities/generalist-gen1-thousand-hands.md) — 闭源产业样本；同一基座跨 ~9k 末端变体 |
 | 实体 | Gemini Robotics 2 On-Device | [Gemini Robotics](../entities/gemini-robotics.md) — 闭源；博客称新双臂本体数小时 / &lt;200 例适配 |
@@ -60,6 +62,7 @@ summary: "跨具身迁移知识链汇总：不同机器人形态、仿真与真�
 - [Sim2Real](../concepts/sim2real.md)
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md)
 - [Domain Randomization](../concepts/domain-randomization.md)
+- [Emergent Transfer：跨配置遗留数据何时开始有用](../entities/paper-emergent-transfer-cross-config.md) — 同形态换相机/夹爪后的三相共训
 - [GEN-1 千手：跨末端执行器泛化](../entities/generalist-gen1-thousand-hands.md) — 末端接口多样性（产业闭源对照）
 - [Gemini Robotics](../entities/gemini-robotics.md) — On-Device 2 快速跨本体叙事（权重未开源）
 
