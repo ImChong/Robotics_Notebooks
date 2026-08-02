@@ -1,7 +1,7 @@
 ## [2026-08-02] structural | docs/graph.html — 筛选浮窗三区手风琴（按社区 / 路线视图 / 研究机构）
 
 - **改动：** [`docs/graph.html`](docs/graph.html) — 「按社区（当前维度）/ 路线视图 / 研究机构」同时仅展开一个，默认展开「按社区」；展开区吃满剩余高度，收起项靠上或靠下；`?depth=` / `?community=` / `?institution=` 深链同步打开对应区
-- **跟进：** Chromium 下对 `<details>` 设 flex/grid 会导致列表不被限高、溢出被裁切且无滑块；展开态改为 absolute 铺满 summary 下方以恢复区内滚动
+- **跟进：** Chromium 下对 `<details>` 设 flex/grid 会导致列表不被限高、溢出被裁切且无滑块；展开态改为 absolute 铺满 summary 下方，并以 `.filter-scroll-chrome` 常驻滑块替代不可见的原生 overlay 滚动条
 - **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md)
 - **验证：** [`scripts/verify_graph_filter_accordion.cjs`](scripts/verify_graph_filter_accordion.cjs)
 
