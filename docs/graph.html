@@ -3039,17 +3039,17 @@
       svg.attr('width', W).attr('height', H);
     }
 
-    // 2D 力模拟：略欠阻尼，允许「最多一次」回弹后落稳。
-    // 1) 叶序铺开（避免中心小团爆炸成多轮震荡）；
+    // 2D 力模拟：略欠阻尼，允许「最多一次」回弹后落稳（以「刷新布局」手感为准）。
+    // 1) 叶序铺开（避免中心 80px 小团炸成多轮震荡）；
     // 2) 中等摩擦 + 度数加权弹簧（保活力，抑制密图连震）；
-    // 3) 不做长静默 warmup——把一次扩张/回弹播给用户看。
+    // 3) 极短 warmup（~20 tick）只吃掉最凶的首段爆炸，可见阶段仍有一次回弹。
     const FORCE_CENTER_STRENGTH = 0.05;
-    const FORCE_VELOCITY_DECAY = 0.52;
-    const FORCE_ALPHA_DECAY = 0.042;
-    const FORCE_LINK_STRENGTH = 0.75;   // 实际强度 = 该值 / sqrt(min(deg_s, deg_t))
+    const FORCE_VELOCITY_DECAY = 0.54;
+    const FORCE_ALPHA_DECAY = 0.04;
+    const FORCE_LINK_STRENGTH = 0.72;   // 实际强度 = 该值 / sqrt(min(deg_s, deg_t))
     const FORCE_COLLIDE_STRENGTH = 0.45;
-    const FORCE_WARMUP_TICKS = 0;
-    const FORCE_REHEAT_ALPHA = 1;
+    const FORCE_WARMUP_TICKS = 20;
+    const FORCE_REHEAT_ALPHA = 0.9;
 
     function seedNodePositionsPhyllotaxis(targetNodes) {
       const list = targetNodes || nodes;
@@ -3493,7 +3493,7 @@
       whenGraphViewportReady(() => fitToScreen());
     }
 
-    /** 叶序种子后以完整 alpha 开场：可见一次扩张/回弹，再靠摩擦与冷却落稳。 */
+    /** 叶序种子 + 极短 warmup 后开场：可见一次扩张/回弹，再靠摩擦与冷却落稳。 */
     function runStabilizedLayout2D(options) {
       const opts = options || {};
       if (opts.reseed) seedNodePositionsPhyllotaxis(nodes);
@@ -3504,17 +3504,37 @@
         n.vy = 0;
       }
       syncGraphDomFromSimulation();
-      // 可选极短 warmup（当前为 0）：只用于跳过数值毛刺，不吃掉可见活力。
-      if (FORCE_WARMUP_TICKS > 0) {
-        simulation.alpha(1);
-        for (let i = 0; i < FORCE_WARMUP_TICKS; i++) simulation.tick();
-        for (const n of simulation.nodes()) {
-          n.vx = 0;
-          n.vy = 0;
-        }
+
+      const finishAndReheat = () => {
+        // 不清零速度：保留一小段动量，形成「最多一次」回弹，而不是过阻尼发死。
         syncGraphDomFromSimulation();
+        simulation.alpha(FORCE_REHEAT_ALPHA).restart();
+      };
+
+      if (FORCE_WARMUP_TICKS <= 0) {
+        finishAndReheat();
+        return;
       }
-      simulation.alpha(FORCE_REHEAT_ALPHA).restart();
+
+      simulation.alpha(1);
+      // 「刷新布局」用 rAF 分片，避免主线程卡顿；首屏可同步跑完。
+      if (opts.async) {
+        let i = 0;
+        const step = () => {
+          const end = Math.min(i + 10, FORCE_WARMUP_TICKS);
+          for (; i < end; i++) simulation.tick();
+          if (i < FORCE_WARMUP_TICKS) {
+            requestAnimationFrame(step);
+            return;
+          }
+          finishAndReheat();
+        };
+        requestAnimationFrame(step);
+        return;
+      }
+
+      for (let i = 0; i < FORCE_WARMUP_TICKS; i++) simulation.tick();
+      finishAndReheat();
     }
 
     function restartForceSimulation() {
@@ -3527,6 +3547,7 @@
       userZoomed2D = false;
       label.style('opacity', 0);
       updateGraphViewport();
+      // 刷新布局：同步短 warmup（仅 20 tick），验收以该按钮手感为准（不用时序动画）。
       runStabilizedLayout2D({ reseed: true });
     }
 
