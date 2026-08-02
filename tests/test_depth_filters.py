@@ -30,9 +30,7 @@ const DF = sandbox.RNDepthFilters;
         check=False,
     )
     if proc.returncode != 0:
-        raise AssertionError(
-            f"node failed ({proc.returncode}):\n{proc.stderr}\n{proc.stdout}"
-        )
+        raise AssertionError(f"node failed ({proc.returncode}):\n{proc.stderr}\n{proc.stdout}")
     return proc.stdout
 
 
