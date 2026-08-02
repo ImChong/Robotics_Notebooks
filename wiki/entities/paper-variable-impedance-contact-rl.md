@@ -4,15 +4,17 @@ type: entity
 tags: [manipulation, reinforcement-learning, impedance, contact, sim2real, max-planck, nyu]
 status: stable
 summary: "RA-L：关节空间同时学习期望轨迹与可变阻抗参数，并加正则以改善接触敏感任务中的样本效率与真机迁移；为可变刚度腿足提供思想前史。"
-updated: 2026-05-22
+updated: 2026-08-02
 arxiv: "1907.07500"
 related:
   - ../entities/paper-variable-stiffness-locomotion-rl.md
+  - ../entities/paper-learning-quiet-walking-aibo.md
   - ../queries/legged-humanoid-rl-pd-gain-setting.md
   - ../concepts/force-control-basics.md
   - ../methods/reinforcement-learning.md
 sources:
   - ../../sources/papers/rl_pd_action_interface_locomotion.md
+  - ../../sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md
 ---
 
 # Learning Variable Impedance Control for Contact Sensitive Tasks
@@ -35,6 +37,7 @@ sources:
 
 - 把 **「位置通道 + 阻抗通道」联合作为动作** 的思想讲清楚，是后来 **可变刚度腿足 loco** 与 **VLA+阻抗** 等路线的 **概念前史**。
 - 与 [Variable Stiffness for Robust Locomotion…](./paper-variable-stiffness-locomotion-rl.md) 对照：前者偏 **接触敏感操作与弹跳**，后者偏 **户外腿足鲁棒行走**。
+- 四足低噪部署上，[Learning Quiet Walking（aibo）](./paper-learning-quiet-walking-aibo.md) 把 **目标位置 + PD gain scale** 用到脚步降噪，是同一「学增益」思想在家用 locomotion 上的实例。
 
 ## 核心机制（提炼）
 
@@ -84,6 +87,7 @@ flowchart TB
 ## 关联页面
 
 - [可变刚度腿足 RL](./paper-variable-stiffness-locomotion-rl.md)
+- [Learning Quiet Walking（aibo）](./paper-learning-quiet-walking-aibo.md)
 - [Force Control Basics](../concepts/force-control-basics.md)
 - [Legged / Humanoid RL 中 Kp/Kd 设置](../queries/legged-humanoid-rl-pd-gain-setting.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)

@@ -1,13 +1,110 @@
 {
   "generated_at": "2026-08-02",
-  "node_count": 2069,
-  "edge_count": 18668,
+  "node_count": 2070,
+  "edge_count": 18690,
   "coverage": {
-    "covered": 2019,
-    "total": 2045,
+    "covered": 2020,
+    "total": 2046,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-learning-quiet-walking-aibo.md",
+      "detail_id": "entity-paper-learning-quiet-walking-aibo",
+      "label": "Learning Quiet Walking：Sony aibo 家庭四足低噪行走",
+      "type": "entity",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-quietwalk-humanoid-locomotion.md",
+      "detail_id": "entity-paper-quietwalk-humanoid-locomotion",
+      "label": "QuietWalk：面向多样鞋型的物理感知低噪人形行走",
+      "type": "entity",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/tasks/locomotion.md",
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/quadruped-robot.md",
+      "detail_id": "entity-quadruped-robot",
+      "label": "四足机器人（Quadruped Robot）",
+      "type": "entity",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/queries/locomotion-reward-design-guide.md",
+      "detail_id": "wiki-queries-locomotion-reward-design-guide",
+      "label": "Locomotion 奖励函数设计指南",
+      "type": "query",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/queries/legged-humanoid-rl-pd-gain-setting.md",
+      "detail_id": "wiki-queries-legged-humanoid-rl-pd-gain-setting",
+      "label": "Legged / Humanoid RL 中 Kp/Kd（刚度阻尼）设置",
+      "type": "query",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/concepts/humanoid-policy-reward-functions.md",
+      "detail_id": "wiki-concepts-humanoid-policy-reward-functions",
+      "label": "人形机器人运控常见奖励函数分类（Humanoid Policy Reward Functions）",
+      "type": "concept",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/tasks/humanoid-locomotion.md",
+      "detail_id": "wiki-tasks-humanoid-locomotion",
+      "label": "Humanoid Locomotion (人形机器人移动)",
+      "type": "task",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/methods/disney-olaf-character-robot.md",
+      "detail_id": "wiki-methods-disney-olaf-character-robot",
+      "label": "Disney Olaf 角色机器人（实机动画角色）",
+      "type": "method",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-variable-impedance-contact-rl.md",
+      "detail_id": "entity-paper-variable-impedance-contact-rl",
+      "label": "Learning Variable Impedance Control for Contact Sensitive Tasks",
+      "type": "entity",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/paper-legged-load-adapt-unknown-dynamic-load.md",
       "detail_id": "entity-paper-legged-load-adapt-unknown-dynamic-load",
@@ -27,15 +124,6 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/tasks/locomotion.md",
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained"
     },
     {
       "path": "wiki/concepts/terrain-adaptation.md",
@@ -114,102 +202,12 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/concepts/3d-spatial-vqa.md",
-      "detail_id": "wiki-concepts-3d-spatial-vqa",
-      "label": "3D 空间 VQA（3D Spatial Visual Question Answering）",
-      "type": "concept",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-emergent-transfer-cross-config.md",
-      "detail_id": "entity-paper-emergent-transfer-cross-config",
-      "label": "Emergent Transfer（跨配置遗留数据何时开始有用）",
-      "type": "entity",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/hub-cross-embodiment.md",
-      "detail_id": "wiki-overview-hub-cross-embodiment",
-      "label": "跨具身迁移（知识链汇总）",
-      "type": "overview",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/queries/cross-embodiment-transfer-strategy.md",
-      "detail_id": "wiki-queries-cross-embodiment-transfer-strategy",
-      "label": "跨具身策略迁移选型指南",
-      "type": "query",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/queries/humanoid-training-data-pipeline.md",
-      "detail_id": "wiki-queries-humanoid-training-data-pipeline",
-      "label": "人形训练数据管线选型指南",
-      "type": "query",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-pi05-open-world-vla.md",
-      "detail_id": "entity-paper-pi05-open-world-vla",
-      "label": "π0.5（HMI P059）",
-      "type": "entity",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/behavior-cloning.md",
-      "detail_id": "wiki-methods-behavior-cloning",
-      "label": "Behavior Cloning（行为克隆）",
-      "type": "method",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-fa-rdp.md",
-      "detail_id": "entity-paper-fa-rdp",
-      "label": "FA-RDP",
-      "type": "entity",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/methods/diffusion-policy.md",
-      "detail_id": "wiki-methods-diffusion-policy",
-      "label": "Diffusion Policy",
-      "type": "method",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-legged-load-adapt-unknown-dynamic-load.md",
-    "detail_id": "entity-paper-legged-load-adapt-unknown-dynamic-load",
-    "label": "Legged Load Adapt（未知动态载荷四足行走）",
+    "path": "wiki/entities/paper-learning-quiet-walking-aibo.md",
+    "detail_id": "entity-paper-learning-quiet-walking-aibo",
+    "label": "Learning Quiet Walking：Sony aibo 家庭四足低噪行走",
     "type": "entity",
     "recency": "2026-08-02",
     "source": "log.md",
@@ -219,15 +217,11 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 208
+      "size": 209
     },
     {
       "label": "视觉-语言-动作",
-      "size": 175
-    },
-    {
-      "label": "人形强化学习运动控制",
-      "size": 142
+      "size": 186
     },
     {
       "label": "操作",
@@ -240,6 +234,10 @@
     {
       "label": "移动操作",
       "size": 140
+    },
+    {
+      "label": "人形强化学习运动控制",
+      "size": 137
     }
   ],
   "top_hubs": [
@@ -247,7 +245,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 411,
+      "degree": 412,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -286,13 +284,13 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 296
+      "degree": 299
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 284,
+      "degree": 285,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },

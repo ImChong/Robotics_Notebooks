@@ -1,3 +1,12 @@
+## [2026-08-02] ingest | sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md — Sony aibo QuietWalk（ICRA 2025）低噪行走
+
+- **触发：** 用户指定 *Learning Quiet Walking for a Small Home Robot*（arXiv:2502.10983；ETH / Sony / NUS 等；Watanabe / Miki / Shi / Hutter 等；ICRA 2025）
+- **Sources：** [`sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md`](sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md)、[`sources/sites/sony-quietwalk-github-io.md`](sources/sites/sony-quietwalk-github-io.md)
+- **Wiki：** [`wiki/entities/paper-learning-quiet-walking-aibo.md`](wiki/entities/paper-learning-quiet-walking-aibo.md)
+- **交叉：** [`wiki/entities/paper-quietwalk-humanoid-locomotion.md`](wiki/entities/paper-quietwalk-humanoid-locomotion.md)、[`wiki/tasks/locomotion.md`](wiki/tasks/locomotion.md)、[`wiki/entities/quadruped-robot.md`](wiki/entities/quadruped-robot.md)、[`wiki/queries/locomotion-reward-design-guide.md`](wiki/queries/locomotion-reward-design-guide.md)、[`wiki/queries/legged-humanoid-rl-pd-gain-setting.md`](wiki/queries/legged-humanoid-rl-pd-gain-setting.md)、[`wiki/concepts/humanoid-policy-reward-functions.md`](wiki/concepts/humanoid-policy-reward-functions.md)、[`wiki/tasks/humanoid-locomotion.md`](wiki/tasks/humanoid-locomotion.md)、[`wiki/methods/disney-olaf-character-robot.md`](wiki/methods/disney-olaf-character-robot.md)、[`wiki/entities/paper-variable-impedance-contact-rl.md`](wiki/entities/paper-variable-impedance-contact-rl.md)
+- **机构：** `eth` / `sony` / `nus` 已注册
+- **开源：** **确认未开源可运行实现** — 项目页与 `sony/QuietWalk` 仅为静态展示仓
+
 ## [2026-08-02] ingest | sources/papers/legged_load_adapt_arxiv_2507_07825.md — Legged Load Adapt（arXiv:2507.07825，ZJU-UIUC）未知动态载荷四足适应
 
 - **触发：** 用户指定项目页 <https://leixinjonaschang.github.io/leggedloadadapt.github.io/>；同时给出的 `arxiv.org/abs/2109.12343` 为同名起首 *Beyond Robustness* 多机器人韧性综述（Prorok et al.），与项目页无关——以项目页 BibTeX 校正为 **arXiv:2507.07825**（Chang / Nai / Chen / Yang · ZJU-UIUC）
@@ -15,6 +24,7 @@
 - **交叉：** [`wiki/overview/autonomous-driving-core-algorithms-series.md`](wiki/overview/autonomous-driving-core-algorithms-series.md)、[`wiki/overview/e2e-autonomous-driving-top10-algorithms.md`](wiki/overview/e2e-autonomous-driving-top10-algorithms.md)、[`wiki/overview/hub-embodied-eval-benchmark.md`](wiki/overview/hub-embodied-eval-benchmark.md)、[`wiki/methods/diffusion-motion-generation.md`](wiki/methods/diffusion-motion-generation.md)、[`wiki/concepts/3d-spatial-vqa.md`](wiki/concepts/3d-spatial-vqa.md)
 - **机构：** 注册 [`schema/institutions.json`](schema/institutions.json) `texas-am` / `brown`；`jhu` / `ut-austin` 已有
 - **开源：** **部分开源** — HF Dataset [`jerryye0110/MMHU`](https://huggingface.co/datasets/jerryye0110/MMHU) 已发；项目页截至入库日 **未列 GitHub / 训练代码**
+
 
 ## [2026-08-02] ingest | sources/papers/emergent_transfer_cross_config_arxiv_2607_25593.md — Emergent Transfer（arXiv:2607.25593，HUST / Spirit AI / PKU / SJTU / HIT / 清华）跨配置遗留示教三相迁移
 

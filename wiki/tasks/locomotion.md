@@ -57,6 +57,7 @@ related:
   - ../methods/disney-olaf-character-robot.md
   - ../entities/paper-ergocub-shared-embodied-intelligence.md
   - ../entities/paper-egohtr.md
+  - ../entities/paper-learning-quiet-walking-aibo.md
 sources:
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/state_estimation.md
@@ -64,6 +65,7 @@ sources:
   - ../../sources/papers/multi-gait-learning.md
   - ../../sources/papers/egohtr_arxiv_2607_13472.md
   - ../../sources/papers/adp_arxiv_2607_03454.md
+  - ../../sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md
 summary: "Locomotion 研究机器人如何稳定、高效地在不同地形上移动，是腿式与人形控制的核心任务页。"
 ---
 
@@ -145,6 +147,7 @@ flowchart TD
 - **楼梯与离散接触上的学习案例：** [FastStair（论文实体页）](../entities/paper-faststair-humanoid-stair-ascent.md) 归纳 arXiv:2601.10365：用 **GPU 并行 DCM 落脚点离散搜索** 在 Isaac Lab RL 中提供显式可行落点监督，再以 **分速专家 + LoRA 融合** 缓解保守性与全速域动作分布差异，在 LimX Oli 上给出高速上楼梯实机叙事。
 - **显式楼梯几何条件化：** [Explicit Stair Geometry Conditioning（论文实体页）](../entities/paper-explicit-stair-geometry-humanoid-locomotion.md)（arXiv:2605.09944）从点云 BEV 预测 **踢面高度 / 踏面深度 / 航向 / 楼梯状态** 四维 token，直接条件化 **PPO**；在 **Unitree G1** 上零样本实机，户外 **连续 33 级** 上楼，训练分布外踢面高度优于视觉 **MoRE** 基线。
 - **四足真机安全微调：** [SLowRL（论文实体页）](../entities/paper-slowrl-safe-lora-locomotion-sim2real.md)（arXiv:2603.17092）在 **Unitree Go2** 上对 jump/trot 做 **冻结主策略 + rank-1 LoRA + Recovery 安全滤波** 真机 PPO 微调，相对全参微调显著降摔倒与墙钟时间（见 [Sim2Real](../concepts/sim2real.md)）。
+- **家用四足低噪行走：** [Learning Quiet Walking（aibo）](../entities/paper-learning-quiet-walking-aibo.md)（arXiv:2502.10983，ICRA 2025）用仿真 **足端接触速度** 作声学代理，配合可变 PD 与开关接触，真机安静度优于索尼商用 quiet 控制器（与人形 [QuietWalk GRF](../entities/paper-quietwalk-humanoid-locomotion.md) 对照）。
 - **轮足多技能盲走：** [MUJICA（论文实体页）](../entities/paper-mujica-wheel-legged-multi-skill.md)（arXiv:2605.13058）在 **Go2-W** 上用 **单策略 + 技能选择器** 联合全向移动、高台攀爬与摔倒恢复，并以 **DC 电机 P3O 约束** 零样本上真机（**1 m 高台**）。
 - **轮足高动态反射避障：** [AWARE](../entities/paper-aware-wheeled-legged-reflexive-evasion.md)（arXiv:2604.23761）在 **M20** 上用分层 RL + 双专家硬切换做快速障碍反射规避（导航全向 / 高动态逃逸），Isaac Lab 与真机抛箱/棍戳/脚踢验证。
 
@@ -246,6 +249,7 @@ flowchart TD
 - [Barkour（四足敏捷课 + 开源机体 / Menagerie）](../entities/paper-barkour-quadruped-agility-benchmark.md)
 - [DreamWaQ++（多模态点云 + 本体四足障碍感知行走）](../entities/dreamwaq-plus.md)
 - [可变阻抗接触任务 RL](../entities/paper-variable-impedance-contact-rl.md)
+- [Learning Quiet Walking（Sony aibo 低噪四足）](../entities/paper-learning-quiet-walking-aibo.md)
 
 ## 参考来源
 
@@ -258,6 +262,7 @@ flowchart TD
 - **ingest 档案：** [sources/papers/rl_pd_action_interface_locomotion.md](../../sources/papers/rl_pd_action_interface_locomotion.md) — RL + PD/阻抗/扭矩接口论文索引
 - **ingest 档案：** [sources/papers/deeprl_locomotion_action_space_sca2017.md](../../sources/papers/deeprl_locomotion_action_space_sca2017.md) — Peng SCA 2017 四动作空间对照
 - **ingest 档案：** [sources/papers/rma_arxiv_2107_04034.md](../../sources/papers/rma_arxiv_2107_04034.md) — RMA：四足快速运动自适应（RSS 2021）
+- **ingest 档案：** [sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md](../../sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md) — Sony aibo 低噪行走（ICRA 2025）
 - **ingest 档案：** [sources/papers/legged_load_adapt_arxiv_2507_07825.md](../../sources/papers/legged_load_adapt_arxiv_2507_07825.md) — Legged Load Adapt：未知动态载荷四足崎岖地形适应（arXiv:2507.07825）
 
 ## 关联系统/方法
