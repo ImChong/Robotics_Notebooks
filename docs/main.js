@@ -4415,6 +4415,94 @@
     ]);
   }
 
+  // 详情页「正文内链 ↔ 关联知识图谱迷你图」联动桥：
+  // 两侧渲染时机不同（正文同步、迷你图等 link-graph.json），各自注册回调，未就绪的一侧静默跳过。
+  var detailLinkBridge = {
+    highlightMiniNode: null,
+    highlightBodyLink: null,
+    graphNodeOf: null
+  };
+
+  function detailBridgeHighlightMini(path) {
+    if (detailLinkBridge.highlightMiniNode) detailLinkBridge.highlightMiniNode(path || '');
+  }
+
+  function detailBridgeHighlightBody(path) {
+    if (detailLinkBridge.highlightBodyLink) detailLinkBridge.highlightBodyLink(path || '');
+  }
+
+  function buildDetailInlineLinkTooltipHtml(pageId, page) {
+    var isRoadmap = page.type === 'roadmap_page';
+    var href = isRoadmap ? roadmapHref(pageId) : detailHref(pageId);
+    var linkHtml = '<a class="tt-link" href="' + escapeHtml(href) + '">' +
+      (isRoadmap ? '打开路线页 →' : '打开详情页 →') + '</a>';
+    // 图谱节点类型（concept / task / paper…）比 site-data 的 wiki_page 更细，
+    // 取到就用它，保证同一节点在正文浮窗与迷你图浮窗上徽标一致
+    var graphNode = detailLinkBridge.graphNodeOf ? detailLinkBridge.graphNodeOf(page.path || '') : null;
+    if (window.RNGraphTooltip && window.RNGraphTooltip.buildNodeTooltipHtml) {
+      return window.RNGraphTooltip.buildNodeTooltipHtml({
+        type: (graphNode && graphNode.type) || page.type || '',
+        title: page.title || pageId,
+        summary: formatGraphTooltipSummary(page.summary),
+        communityColor: (graphNode && graphNode.communityColor) || '',
+        linkHtml: linkHtml
+      });
+    }
+    return '';
+  }
+
+  // 正文内链悬停浮窗：复用图谱 hover 卡片，同时点亮迷你图中的同一节点
+  function setupDetailInlineLinkPreview(contentEl, detailPages) {
+    if (!contentEl) return;
+    var anchors = contentEl.querySelectorAll('a[href^="detail.html?id="], a[href^="roadmap.html?id="]');
+    var marked = [];
+    for (var i = 0; i < anchors.length; i++) {
+      var anchor = anchors[i];
+      var matched = /^(?:detail|roadmap)\.html\?id=([^&#]+)/.exec(anchor.getAttribute('href') || '');
+      if (!matched) continue;
+      var pid = decodeURIComponent(matched[1]);
+      var page = detailPages[pid];
+      if (!page || !page.path) continue;
+      anchor.classList.add('detail-inline-link');
+      anchor.dataset.wikiId = pid;
+      anchor.dataset.wikiPath = page.path;
+      marked.push(anchor);
+    }
+    if (!marked.length) return;
+
+    detailLinkBridge.highlightBodyLink = function (path) {
+      for (var k = 0; k < marked.length; k++) {
+        marked[k].classList.toggle('detail-inline-link-linked', !!path && marked[k].dataset.wikiPath === path);
+      }
+    };
+
+    var tooltipEl = document.getElementById('detail-inline-link-tooltip');
+    if (!tooltipEl) return;
+    var hoverTip = setupGraphHoverTooltip(tooltipEl);
+    if (hoverTip.isMobile) return; // 触屏无 hover，点击内链直接跳转即可
+
+    function inlineLinkOf(ev) {
+      return ev.target && ev.target.closest ? ev.target.closest('a.detail-inline-link') : null;
+    }
+
+    contentEl.addEventListener('mouseover', function (ev) {
+      var link = inlineLinkOf(ev);
+      if (!link) return;
+      hoverTip.show(ev, null, buildDetailInlineLinkTooltipHtml(link.dataset.wikiId, detailPages[link.dataset.wikiId] || {}));
+      detailBridgeHighlightMini(link.dataset.wikiPath);
+    });
+    contentEl.addEventListener('mousemove', function (ev) {
+      if (inlineLinkOf(ev)) hoverTip.move(ev);
+    });
+    contentEl.addEventListener('mouseout', function (ev) {
+      var link = inlineLinkOf(ev);
+      if (!link) return;
+      if (ev.relatedTarget && link.contains(ev.relatedTarget)) return;
+      hoverTip.hide();
+      detailBridgeHighlightMini('');
+    });
+  }
+
   function renderDetailMiniMap(detailPage, detailPages) {
     var wrap = document.getElementById('detailMiniMapWrap');
     var svgEl = document.getElementById('detailMiniMapSvg');
@@ -4437,6 +4525,16 @@
       (gd.nodes || []).forEach(function (n) { nodeMap[n.id] = n; });
       var current = nodeMap[currentPath];
       if (!current) return; // 当前节点不在图谱里
+
+      // 正文内链浮窗共用图谱节点类型与社区色，保证同一节点两处徽标一致
+      detailLinkBridge.graphNodeOf = function (path) {
+        var node = nodeMap[path];
+        if (!node) return null;
+        return {
+          type: node.type || '',
+          communityColor: (node.community && communityColor[node.community]) || ''
+        };
+      };
 
       // 节点半径继承 graph view 的标尺（graph-node-size.js），度数基准为全图
       var degreeMap = window.RNGraphNodeSize.computeDegreeMap(gd.edges);
@@ -4578,6 +4676,7 @@
           if (pid) window.location.href = pageHref(pid, detailPages);
         })
         .on('mouseenter', function (ev, d) {
+          detailBridgeHighlightBody(d.isCurrent ? '' : d.id);
           if (hoverTip.isMobile) return;
           window.d3.select(this).select('circle')
             .attr('fill-opacity', 1)
@@ -4589,12 +4688,18 @@
           if (!hoverTip.isMobile || !hoverTip.getPinned()) hoverTip.move(ev);
         })
         .on('mouseleave', function () {
+          detailBridgeHighlightBody('');
           if (hoverTip.isMobile) return;
           window.d3.select(this).select('circle')
             .attr('fill-opacity', 0.9)
             .attr('r', function (node) { return detailMiniNodeRadius(node); });
           if (!hoverTip.isMobile || !hoverTip.getPinned()) hoverTip.hide();
         });
+
+      // 正文内链悬停时点亮迷你图中的同一节点
+      detailLinkBridge.highlightMiniNode = function (path) {
+        nodeG.classed('mini-node-linked', function (d) { return !!path && d.id === path; });
+      };
 
       nodeG.append('circle')
         .attr('r', function (d) { return detailMiniNodeRadius(d); })
@@ -4836,6 +4941,7 @@
       });
       scrollToDetailHashTarget(contentEl);
       notifyTocSpyScrollSync();
+      setupDetailInlineLinkPreview(contentEl, detailPages);
       removeLoadingState(contentEl);
     }
 
