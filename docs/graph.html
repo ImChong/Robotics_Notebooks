@@ -71,20 +71,66 @@
       border-bottom: 1px solid rgba(255,255,255,0.06);
       min-height: 0;
     }
+    /* Chromium 对 <details> 设 flex/grid 时，非 summary 子项不会被限高，
+       列表会按内容撑开再被裁切，表现为「没有滑块」。
+       展开态用绝对定位把内容铺在 summary 下方，高度由手风琴 flex 分配。 */
     .filter-depth-section[open] {
       flex: 1 1 auto;
-      display: flex;
-      flex-direction: column;
       min-height: 0;
+      position: relative;
       overflow: hidden;
+    }
+    .filter-depth-section[open] > .filter-depth-summary {
+      position: relative;
+      z-index: 1;
     }
     .filter-depth-section[open] > .filter-dimension-list,
     .filter-depth-section[open] > .filter-depth-chips,
     .filter-depth-section[open] > .filter-institution-list {
-      flex: 1 1 auto;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: var(--filter-summary-h, 38px);
+      bottom: 0;
       min-height: 0;
       max-height: none;
+      overflow-x: hidden;
       overflow-y: auto;
+      overscroll-behavior: contain;
+      scrollbar-width: none; /* 隐藏原生 overlay；改用 .filter-scroll-chrome 常驻滑块 */
+      padding-right: 12px;
+    }
+    .filter-depth-section[open] > .filter-dimension-list::-webkit-scrollbar,
+    .filter-depth-section[open] > .filter-depth-chips::-webkit-scrollbar,
+    .filter-depth-section[open] > .filter-institution-list::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+    /* 自定义常驻滚动条（原生 overlay 在部分环境展开后看不到滑块） */
+    .filter-scroll-chrome {
+      position: absolute;
+      top: var(--filter-summary-h, 38px);
+      right: 4px;
+      bottom: 4px;
+      width: 6px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      z-index: 3;
+      pointer-events: none;
+    }
+    .filter-scroll-chrome[hidden] { display: none !important; }
+    .filter-depth-section:not([open]) > .filter-scroll-chrome { display: none !important; }
+    .filter-scroll-thumb {
+      width: 100%;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.58);
+      will-change: transform;
+    }
+    [data-theme="light"] .filter-scroll-chrome {
+      background: rgba(0,0,0,0.12);
+    }
+    [data-theme="light"] .filter-scroll-thumb {
+      background: rgba(0,0,0,0.42);
     }
     .filter-depth-summary {
       display: flex;
@@ -160,9 +206,6 @@
     /* PC：展开区由手风琴吃满剩余高度，chip 列表在区内滚动 */
     .filter-depth-section[open] .filter-depth-chips {
       max-height: none;
-      overflow-y: auto;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(255,255,255,0.28) transparent;
     }
     /* 路线导读条（画布右下角、操作提示条上方，选中非「全量」纵深时显示；
        左上角会被筛选浮窗遮挡、左下有图例 FAB、右上有参数面板，故固定右下；
@@ -1375,23 +1418,9 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(255,255,255,0.28) transparent;
+      /* 不在此设 scrollbar-*：该属性可继承，会让子列表滑块样式被覆盖/变透明 */
     }
-    .filter-sections-scroll::-webkit-scrollbar { width: 8px; }
-    .filter-sections-scroll::-webkit-scrollbar-track { background: transparent; }
-    .filter-sections-scroll::-webkit-scrollbar-thumb {
-      background-color: rgba(255,255,255,0.28);
-      border-radius: 999px;
-    }
-    .filter-sections-scroll::-webkit-scrollbar-corner { background: transparent; }
-    [data-theme="light"] .filter-sections-scroll {
-      scrollbar-color: rgba(0,0,0,0.28) transparent;
-    }
-    [data-theme="light"] .filter-sections-scroll::-webkit-scrollbar-thumb {
-      background-color: rgba(0,0,0,0.28);
-    }
-    /* 维度 / 机构筛选列表：在展开的手风琴区内滚动 */
+    /* 维度 / 机构筛选列表：在展开的手风琴区内滚动（滑块样式见 [open] 规则） */
     .filter-dimension-list,
     .filter-institution-list {
       display: flex;
@@ -1399,26 +1428,7 @@
       gap: 1px;
       max-height: none;
       overflow-y: auto;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(255,255,255,0.28) transparent;
       padding: 4px 0 8px;
-    }
-    .filter-dimension-list::-webkit-scrollbar,
-    .filter-institution-list::-webkit-scrollbar { width: 8px; }
-    .filter-dimension-list::-webkit-scrollbar-track,
-    .filter-institution-list::-webkit-scrollbar-track { background: transparent; }
-    .filter-dimension-list::-webkit-scrollbar-thumb,
-    .filter-institution-list::-webkit-scrollbar-thumb {
-      background-color: rgba(255,255,255,0.28);
-      border-radius: 999px;
-    }
-    [data-theme="light"] .filter-dimension-list,
-    [data-theme="light"] .filter-institution-list {
-      scrollbar-color: rgba(0,0,0,0.28) transparent;
-    }
-    [data-theme="light"] .filter-dimension-list::-webkit-scrollbar-thumb,
-    [data-theme="light"] .filter-institution-list::-webkit-scrollbar-thumb {
-      background-color: rgba(0,0,0,0.28);
     }
     [data-theme="light"] .filter-mode-tabs {
       border-bottom-color: rgba(0,0,0,0.07);
@@ -2095,6 +2105,63 @@
         .filter(Boolean);
     }
 
+    function getFilterAccordionPane(section) {
+      if (!section) return null;
+      return section.querySelector(
+        ':scope > .filter-dimension-list, :scope > .filter-depth-chips, :scope > .filter-institution-list'
+      );
+    }
+
+    function ensureFilterScrollChrome(section) {
+      let chrome = section.querySelector(':scope > .filter-scroll-chrome');
+      if (chrome) return chrome;
+      chrome = document.createElement('div');
+      chrome.className = 'filter-scroll-chrome';
+      chrome.hidden = true;
+      chrome.setAttribute('aria-hidden', 'true');
+      chrome.innerHTML = '<div class="filter-scroll-thumb"></div>';
+      section.appendChild(chrome);
+      return chrome;
+    }
+
+    function syncFilterPaneScrollbar(section) {
+      if (!section) return;
+      const pane = getFilterAccordionPane(section);
+      const chrome = ensureFilterScrollChrome(section);
+      const thumb = chrome.querySelector('.filter-scroll-thumb');
+      const summary = section.querySelector(':scope > summary');
+      if (summary) {
+        section.style.setProperty('--filter-summary-h', `${Math.round(summary.offsetHeight)}px`);
+      }
+      if (!section.open || !pane || !thumb) {
+        chrome.hidden = true;
+        return;
+      }
+      const scrollH = pane.scrollHeight;
+      const clientH = pane.clientHeight;
+      if (scrollH <= clientH + 1) {
+        chrome.hidden = true;
+        return;
+      }
+      chrome.hidden = false;
+      const trackH = chrome.clientHeight || Math.max(0, section.clientHeight - (summary ? summary.offsetHeight : 0));
+      const thumbH = Math.max(28, Math.round(trackH * clientH / scrollH));
+      const maxTop = Math.max(0, trackH - thumbH);
+      const top = maxTop * pane.scrollTop / Math.max(1, scrollH - clientH);
+      thumb.style.height = `${thumbH}px`;
+      thumb.style.transform = `translateY(${Math.round(top)}px)`;
+    }
+
+    function syncOpenFilterPaneScrollbar() {
+      getFilterAccordionSections().forEach((section) => {
+        if (section.open) syncFilterPaneScrollbar(section);
+        else {
+          const chrome = section.querySelector(':scope > .filter-scroll-chrome');
+          if (chrome) chrome.hidden = true;
+        }
+      });
+    }
+
     function openFilterAccordionSection(sectionId) {
       const sections = getFilterAccordionSections();
       if (!sections.length) return;
@@ -2105,6 +2172,7 @@
       filterAccordionLock = true;
       sections.forEach((s) => { s.open = (s === target); });
       filterAccordionLock = false;
+      requestAnimationFrame(syncOpenFilterPaneScrollbar);
     }
 
     function initFilterAccordion() {
@@ -2119,19 +2187,30 @@
             if (section.open) ev.preventDefault();
           });
         }
+        const pane = getFilterAccordionPane(section);
+        if (pane) {
+          pane.addEventListener('scroll', () => syncFilterPaneScrollbar(section), { passive: true });
+        }
         section.addEventListener('toggle', () => {
           if (filterAccordionLock) return;
           if (section.open) {
             filterAccordionLock = true;
             sections.forEach((s) => { if (s !== section) s.open = false; });
             filterAccordionLock = false;
+            requestAnimationFrame(syncOpenFilterPaneScrollbar);
             return;
           }
           if (!sections.some((s) => s.open)) {
             openFilterAccordionSection(FILTER_ACCORDION_DEFAULT_ID);
+          } else {
+            requestAnimationFrame(syncOpenFilterPaneScrollbar);
           }
         });
       });
+      window.addEventListener('resize', () => requestAnimationFrame(syncOpenFilterPaneScrollbar));
+      // 列表异步填入后补一次滑块尺寸
+      setTimeout(syncOpenFilterPaneScrollbar, 0);
+      setTimeout(syncOpenFilterPaneScrollbar, 800);
     }
     initFilterAccordion();
 
@@ -2144,6 +2223,7 @@
       if (!filterPanel) return;
       filterPanel.hidden = !open;
       filterPanel.setAttribute('aria-hidden', open ? 'false' : 'true');
+      if (open) requestAnimationFrame(syncOpenFilterPaneScrollbar);
       if (!filterPanelScrim) return;
       if (isFilterPanelMobileMode() && open) {
         filterPanelScrim.classList.add('is-visible');
@@ -2297,6 +2377,7 @@
         });
       });
       updateInstitutionFilterSummary();
+      requestAnimationFrame(syncOpenFilterPaneScrollbar);
     }
 
     let focusedCommunityId = null;
@@ -3517,6 +3598,7 @@
           updateFilterCount();
         });
       });
+      requestAnimationFrame(syncOpenFilterPaneScrollbar);
     }
 
     function refreshNodeColors() {
@@ -4111,6 +4193,7 @@
       document.removeEventListener('mouseup', endFilterPanelResize);
       document.body.classList.remove('filter-panel-resizing');
       document.body.style.cursor = '';
+      requestAnimationFrame(syncOpenFilterPaneScrollbar);
     }
 
     (function initFilterPanelSize() {

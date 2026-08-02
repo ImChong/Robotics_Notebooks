@@ -43,6 +43,9 @@ async function sectionLayout(page) {
     const items = ids.map((id) => {
       const el = document.getElementById(id);
       const r = el.getBoundingClientRect();
+      const body = el.querySelector(
+        ':scope > .filter-dimension-list, :scope > .filter-depth-chips, :scope > .filter-institution-list'
+      );
       return {
         id,
         open: !!el.open,
@@ -50,6 +53,16 @@ async function sectionLayout(page) {
         bottom: r.bottom,
         height: r.height,
         summaryH: el.querySelector('summary')?.getBoundingClientRect().height || 0,
+        bodyClientH: body ? body.clientHeight : 0,
+        bodyScrollH: body ? body.scrollHeight : 0,
+        bodyCanScroll: !!(body && body.scrollHeight > body.clientHeight + 1),
+        bodyOverflowY: body ? getComputedStyle(body).overflowY : '',
+        chromeVisible: (() => {
+          const chrome = el.querySelector(':scope > .filter-scroll-chrome');
+          if (!chrome || chrome.hidden) return false;
+          const thumb = chrome.querySelector('.filter-scroll-thumb');
+          return !!(thumb && thumb.getBoundingClientRect().height >= 20);
+        })(),
       };
     });
     return {
@@ -73,6 +86,32 @@ function assertExclusive(layout, expectedOpenId) {
   // Expanded pane should meaningfully fill remaining space (taller than a summary row)
   if (open.height < 120) {
     throw new Error(`Open section too short to fill accordion: ${open.height}`);
+  }
+  // Long lists (community / institution) must be height-clamped so the scrollbar appears
+  if (
+    (expectedOpenId === 'filter-dimension-section' ||
+      expectedOpenId === 'filter-institution-section') &&
+    !open.bodyCanScroll
+  ) {
+    throw new Error(
+      `Open ${expectedOpenId} should scroll (client=${open.bodyClientH}, scroll=${open.bodyScrollH})`
+    );
+  }
+  if (open.bodyOverflowY !== 'auto' && open.bodyOverflowY !== 'scroll') {
+    throw new Error(`Open pane overflow-y should allow scroll, got ${open.bodyOverflowY}`);
+  }
+  // Body must be height-clamped inside the open section (not content-sized then clipped)
+  if (open.bodyClientH > open.height - open.summaryH + 2) {
+    throw new Error(
+      `Open pane not clamped: bodyClient=${open.bodyClientH} section=${open.height} summary=${open.summaryH}`
+    );
+  }
+  if (
+    (expectedOpenId === 'filter-dimension-section' ||
+      expectedOpenId === 'filter-institution-section') &&
+    !open.chromeVisible
+  ) {
+    throw new Error(`Open ${expectedOpenId} should show custom scroll thumb`);
   }
   const openIdx = layout.items.findIndex((i) => i.id === expectedOpenId);
   layout.items.forEach((item, idx) => {
