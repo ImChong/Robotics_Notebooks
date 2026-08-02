@@ -2,7 +2,7 @@
 type: method
 tags: [locomotion, rl, imitation, entertainment-robotics, reward-shaping, thermal, sim2real, isaac-sim]
 status: complete
-updated: 2026-08-01
+updated: 2026-08-02
 related:
   - ../concepts/reward-design.md
   - ../tasks/locomotion.md
@@ -14,6 +14,7 @@ related:
   - ../entities/open-duck-mini.md
   - ../entities/disney-research-la.md
   - ../entities/disney-holotile.md
+  - ../entities/paper-learning-quiet-walking-aibo.md
 sources:
   - ../../sources/papers/disney_olaf_character_robot.md
   - ../../sources/sites/disney-research-la.md
@@ -106,6 +107,7 @@ flowchart LR
 - 「角色化人形 vs 研究/工业型人形」的边界澄清，见 [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md) — 把 Olaf 放在角色端，作为机构/奖励/分层全部受角色目标影响的范例。
 - 同系 **BDX 迷你复刻** 开源栈（MuJoCo Playground + Placo 参考运动 + Pi 部署），见 [Open Duck Mini](../entities/open-duck-mini.md) — 可与本文对照「工业级 Isaac + 热模型」与「社区 DIY + 舵机 + BAM」两条 entertainment biped 路线。
 - 机构门户与同站 Immersive 硬件切片，见 [Disney Research LA](../entities/disney-research-la.md)、[Holotile](../entities/disney-holotile.md)（地面代偿行走，与「角色自己走」正交）。
+- 家用四足侧的脚步降噪（接触速度代理 + 可变 PD）见 [Learning Quiet Walking（aibo）](../entities/paper-learning-quiet-walking-aibo.md)，可与本文「落地噪声写进奖励」对照。
 
 ## 推荐继续阅读
 

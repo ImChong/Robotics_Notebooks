@@ -2,7 +2,7 @@
 type: entity
 tags: [quadruped, legged, hardware, platform, locomotion]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-02
 related:
   - ./humanoid-robot.md
   - ./anymal.md
@@ -16,6 +16,7 @@ related:
   - ./unitree.md
   - ./paper-barkour-quadruped-agility-benchmark.md
   - ./paper-apt-rl-agile-perceptive-quadruped-locomotion.md
+  - ./paper-learning-quiet-walking-aibo.md
   - ./legged-gym.md
   - ../tasks/locomotion.md
   - ../tasks/hybrid-locomotion.md
@@ -25,6 +26,7 @@ related:
 sources:
   - ../../sources/repos/notable-commercial-robot-platforms.md
   - ../../sources/papers/locomotion_rl.md
+  - ../../sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md
 summary: "四足机器人是以四条腿与环境间歇接触的腿足平台，侧重崎岖地形移动与户外部署；常与 RL locomotion、Sim2Real、分层导航结合。"
 ---
 
@@ -59,6 +61,7 @@ summary: "四足机器人是以四条腿与环境间歇接触的腿足平台，�
 | **ANYmal** | ANYbotics / ETH | 高端工业与顶尖学术 RL 载体 | [ANYmal](./anymal.md) |
 | **Go2 / B2** | Unitree | 科研与量产带宽大、生态活跃 | [Unitree](./unitree.md) |
 | **Mini Cheetah** | MIT Biomimetic Robotics Lab | 学术高动态 / Convex MPC 与 RL 教材平台（**部分开源**） | [MIT Mini Cheetah](./mit-mini-cheetah.md) |
+| **aibo** | Sony | 家用陪伴四足；低噪行走见 [QuietWalk RL](./paper-learning-quiet-walking-aibo.md) | [Learning Quiet Walking](./paper-learning-quiet-walking-aibo.md) |
 
 更多品牌索引见 [市面知名机器人平台纵览](../overview/notable-commercial-robot-platforms.md)。
 
@@ -107,6 +110,7 @@ summary: "四足机器人是以四条腿与环境间歇接触的腿足平台，�
 - [四足控制学习策展](./quadruped-control-curriculum.md)
 - [MATRiX 仿真平台](./matrix-simulation-platform.md)
 - [RoamerX 导航栈](./roamerx-navigation.md)
+- [Learning Quiet Walking（aibo 低噪）](./paper-learning-quiet-walking-aibo.md) — 家用四足脚步降噪 RL（ICRA 2025）
 
 ## 关联页面
 

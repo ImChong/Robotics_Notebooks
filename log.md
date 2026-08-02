@@ -1,3 +1,12 @@
+## [2026-08-02] ingest | sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md — Sony aibo QuietWalk（ICRA 2025）低噪行走
+
+- **触发：** 用户指定 *Learning Quiet Walking for a Small Home Robot*（arXiv:2502.10983；ETH / Sony / NUS 等；Watanabe / Miki / Shi / Hutter 等；ICRA 2025）
+- **Sources：** [`sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md`](sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md)、[`sources/sites/sony-quietwalk-github-io.md`](sources/sites/sony-quietwalk-github-io.md)
+- **Wiki：** [`wiki/entities/paper-learning-quiet-walking-aibo.md`](wiki/entities/paper-learning-quiet-walking-aibo.md)
+- **交叉：** [`wiki/entities/paper-quietwalk-humanoid-locomotion.md`](wiki/entities/paper-quietwalk-humanoid-locomotion.md)、[`wiki/tasks/locomotion.md`](wiki/tasks/locomotion.md)、[`wiki/entities/quadruped-robot.md`](wiki/entities/quadruped-robot.md)、[`wiki/queries/locomotion-reward-design-guide.md`](wiki/queries/locomotion-reward-design-guide.md)、[`wiki/queries/legged-humanoid-rl-pd-gain-setting.md`](wiki/queries/legged-humanoid-rl-pd-gain-setting.md)、[`wiki/concepts/humanoid-policy-reward-functions.md`](wiki/concepts/humanoid-policy-reward-functions.md)、[`wiki/tasks/humanoid-locomotion.md`](wiki/tasks/humanoid-locomotion.md)、[`wiki/methods/disney-olaf-character-robot.md`](wiki/methods/disney-olaf-character-robot.md)、[`wiki/entities/paper-variable-impedance-contact-rl.md`](wiki/entities/paper-variable-impedance-contact-rl.md)
+- **机构：** `eth` / `sony` / `nus` 已注册
+- **开源：** **确认未开源可运行实现** — 项目页与 `sony/QuietWalk` 仅为静态展示仓
+
 ## [2026-08-02] ingest | sources/papers/emergent_transfer_cross_config_arxiv_2607_25593.md — Emergent Transfer（arXiv:2607.25593，HUST / Spirit AI / PKU / SJTU / HIT / 清华）跨配置遗留示教三相迁移
 
 - **触发：** 用户指定 *When Does Legacy Data Start to Help? Emergent Transfer in Cross-Configuration Robot Learning*（arXiv:2607.25593；华中科技大学 / 千寻智能 / 北京大学 / 上海交通大学 / 哈尔滨工业大学 / 清华大学；Wang / Hou / Hu / Gao 等）
