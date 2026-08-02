@@ -3,8 +3,9 @@
 type: overview
 tags: [navigation, slam, ros2, autoware, lidar, vio, mobile-robot, autonomous-driving, openloong]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-02
 related:
+  - ../concepts/embodied-perception-six-spatial-representations.md
   - ./autonomous-driving-core-algorithms-series.md
   - ../entities/python-robotics.md
   - ../entities/navigation2.md
@@ -210,6 +211,7 @@ flowchart TB
 
 ## 关联页面
 
+- [具身感知六种空间表征](../concepts/embodied-perception-six-spatial-representations.md) — 点云 / 占据 / TSDF·ESDF / 语义 / 隐式的层级边界（选型前先对齐「回答什么问题」）
 - [《自动驾驶核心算法盘点》专栏技术地图](./autonomous-driving-core-algorithms-series.md) — 感知/规控/SLAM/跟踪预测经典算法索引
 - [PythonRobotics](../entities/python-robotics.md) — 自主导航算法入门代码与教材
 - [A\*](../methods/a-star.md) / [DWA](../methods/dwa.md) / [里程计–激光融合](../methods/lidar-odometry-fusion.md) — 课程常用独立算法节点

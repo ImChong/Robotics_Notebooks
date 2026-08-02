@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, nvidia, ros2, tsdf, esdf, mapping, nav2]
 status: complete
-updated: 2026-05-27
+updated: 2026-08-02
 related:
   - ../entities/isaac-ros-visual-slam.md
   - ../entities/navigation2.md

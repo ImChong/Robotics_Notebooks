@@ -1,13 +1,77 @@
 {
   "generated_at": "2026-08-02",
-  "node_count": 2070,
-  "edge_count": 18690,
+  "node_count": 2071,
+  "edge_count": 18706,
   "coverage": {
-    "covered": 2020,
-    "total": 2046,
+    "covered": 2021,
+    "total": 2047,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/embodied-perception-six-spatial-representations.md",
+      "detail_id": "wiki-concepts-embodied-perception-six-spatial-representations",
+      "label": "具身感知六种空间表征",
+      "type": "concept",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/concepts/2d-to-3d-semantic-lifting-gap.md",
+      "detail_id": "wiki-concepts-2d-to-3d-semantic-lifting-gap",
+      "label": "2D→3D 语义提升 Gap（2D 检测/分割 ↔ 3D 语义几何）",
+      "type": "concept",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/queries/robot-perception-stack-selection-loop.md",
+      "detail_id": "wiki-queries-robot-perception-stack-selection-loop",
+      "label": "Query：机器人视觉感知栈选型闭环知识链",
+      "type": "query",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/overview/navigation-slam-autonomy-stack.md",
+      "detail_id": "wiki-overview-navigation-slam-autonomy-stack",
+      "label": "导航·SLAM·自动驾驶开源栈总览",
+      "type": "overview",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/isaac-ros-nvblox.md",
+      "detail_id": "entity-isaac-ros-nvblox",
+      "label": "Isaac ROS Nvblox",
+      "type": "entity",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md",
+      "detail_id": "wiki-queries-go2-3d-semantic-mapping-sam-pipeline",
+      "label": "GO2 三维语义建图与 SAM 流水线",
+      "type": "query",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/paper-learning-quiet-walking-aibo.md",
       "detail_id": "entity-paper-learning-quiet-walking-aibo",
@@ -145,91 +209,26 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-splitadapter-load-aware-loco-manipulation.md",
-      "detail_id": "entity-paper-splitadapter-load-aware-loco-manipulation",
-      "label": "SplitAdapter（Load-Aware Humanoid Loco-Manipulation via Factorized Adaptation）",
-      "type": "entity",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-mmhu.md",
-      "detail_id": "entity-paper-mmhu",
-      "label": "MMHU（驾驶场景人体行为理解基准 · arXiv:2507.12463）",
-      "type": "entity",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/overview/autonomous-driving-core-algorithms-series.md",
-      "detail_id": "wiki-overview-autonomous-driving-core-algorithms-series",
-      "label": "《自动驾驶核心算法盘点》专栏技术地图",
-      "type": "overview",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/overview/e2e-autonomous-driving-top10-algorithms.md",
-      "detail_id": "wiki-overview-e2e-autonomous-driving-top10-algorithms",
-      "label": "端到端自动驾驶：十大前沿算法技术地图",
-      "type": "overview",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/overview/hub-embodied-eval-benchmark.md",
-      "detail_id": "wiki-overview-hub-embodied-eval-benchmark",
-      "label": "具身评测基准选型闭环（知识链汇总）",
-      "type": "overview",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/diffusion-motion-generation.md",
-      "detail_id": "wiki-methods-diffusion-motion-generation",
-      "label": "Diffusion-based Motion Generation (基于扩散模型的运动生成)",
-      "type": "method",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-learning-quiet-walking-aibo.md",
-    "detail_id": "entity-paper-learning-quiet-walking-aibo",
-    "label": "Learning Quiet Walking：Sony aibo 家庭四足低噪行走",
-    "type": "entity",
+    "path": "wiki/concepts/embodied-perception-six-spatial-representations.md",
+    "detail_id": "wiki-concepts-embodied-perception-six-spatial-representations",
+    "label": "具身感知六种空间表征",
+    "type": "concept",
     "recency": "2026-08-02",
     "source": "log.md",
-    "action": "maintained",
+    "action": "added",
     "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 209
-    },
-    {
-      "label": "视觉-语言-动作",
-      "size": 186
+      "size": 278
     },
     {
       "label": "操作",
       "size": 142
-    },
-    {
-      "label": "动作重定向",
-      "size": 140
     },
     {
       "label": "移动操作",
@@ -237,6 +236,14 @@
     },
     {
       "label": "人形强化学习运动控制",
+      "size": 137
+    },
+    {
+      "label": "人形论文深读笔记",
+      "size": 137
+    },
+    {
+      "label": "视觉-语言-动作",
       "size": 137
     }
   ],

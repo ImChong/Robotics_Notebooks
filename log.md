@@ -1,3 +1,11 @@
+## [2026-08-02] ingest | sources/blogs/wechat_shenlan_six_spatial_representations_embodied_perception.md — 具身感知六种空间表征；wiki/concepts/embodied-perception-six-spatial-representations.md
+
+- **触发：** 用户指定微信 <https://mp.weixin.qq.com/s/lWvdz9cjuurS7ikBkZk0vQ>（深蓝具身智能 · 六种空间表征分层）
+- **抓取：** Agent Reach v1.5.0 + `wechat-article-for-ai`（已确认安装）；`--no-images`
+- **Sources：** [`sources/blogs/wechat_shenlan_six_spatial_representations_embodied_perception.md`](sources/blogs/wechat_shenlan_six_spatial_representations_embodied_perception.md)、[`sources/raw/wechat_shenlan_six_spatial_representations_2026-08-02/`](sources/raw/wechat_shenlan_six_spatial_representations_2026-08-02/)
+- **Wiki：** [`wiki/concepts/embodied-perception-six-spatial-representations.md`](wiki/concepts/embodied-perception-six-spatial-representations.md)
+- **交叉：** [`2d-to-3d-semantic-lifting-gap`](wiki/concepts/2d-to-3d-semantic-lifting-gap.md)、[`robot-perception-stack-selection-loop`](wiki/queries/robot-perception-stack-selection-loop.md)、[`navigation-slam-autonomy-stack`](wiki/overview/navigation-slam-autonomy-stack.md)、[`isaac-ros-nvblox`](wiki/entities/isaac-ros-nvblox.md)、[`go2-3d-semantic-mapping-sam-pipeline`](wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md)
+
 ## [2026-08-02] ingest | sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md — Sony aibo QuietWalk（ICRA 2025）低噪行走
 
 - **触发：** 用户指定 *Learning Quiet Walking for a Small Home Robot*（arXiv:2502.10983；ETH / Sony / NUS 等；Watanabe / Miki / Shi / Hutter 等；ICRA 2025）
