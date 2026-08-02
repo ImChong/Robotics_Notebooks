@@ -2,16 +2,18 @@
 type: concept
 tags: [vqa, 3d-scene-understanding, vlm, spatial-reasoning, embodied-ai]
 summary: "3D 空间 VQA 要求模型根据多视图或视频观测回答关于物体几何关系、距离、方位与房间尺度等问题，是检验视觉–语言模型空间推理能力的关键任务。"
-updated: 2026-06-07
+updated: 2026-08-02
 status: complete
 related:
   - ../entities/sceneverse-pp.md
   - ../entities/esi-bench.md
+  - ../entities/paper-mmhu.md
   - ../tasks/vision-language-navigation.md
   - ../methods/vla.md
 sources:
   - ../../sources/repos/sceneverse-pp.md
   - ../../sources/papers/esi_bench_arxiv_2605_18746.md
+  - ../../sources/papers/mmhu_arxiv_2507_12463.md
 ---
 
 # 3D 空间 VQA（3D Spatial Visual Question Answering）
@@ -54,17 +56,20 @@ sources:
 - **具身评测**：[ESI-Bench](../entities/esi-bench.md) 在 OmniGibson 上度量「为看见而行动」的空间能力，与被动 3D VQA 形成对照。
 - **兄弟任务**：[视觉–语言导航（VLN）](../tasks/vision-language-navigation.md) 同样依赖「语言 + 空间」，但更强调 **动作序列** 而非单一答案。
 - **模型范式**：[VLA](../methods/vla.md) 若承载高层「去哪、找什么」的语义，底层仍需可靠几何感知；3D 空间 VQA 可作为 **空间推理能力** 的中间监督或评测。
+- **驾驶人本相邻**：[MMHU](../entities/paper-mmhu.md) 把街景行人行为写成闭式 Behavior VQA（13 类安全属性），与几何空间问答互补。
 
 ## 参考来源
 
 - [SceneVerse++ 原始资料归档](../../sources/repos/sceneverse-pp.md)
 - [ESI-Bench 论文摘录](../../sources/papers/esi_bench_arxiv_2605_18746.md) — 主动探索 vs 被动多视角的具身空间智能基准（arXiv:2605.18746）
 - Chen et al., *Lifting Unlabeled Internet-level Data for 3D Scene Understanding* (arXiv:2604.01907) — 3D spatial VQA 数据生成与 VSI-Bench 实验设定
+- [MMHU 论文归档](../../sources/papers/mmhu_arxiv_2507_12463.md) — 驾驶人本 Behavior VQA（arXiv:2507.12463）
 
 ## 关联页面
 
 - [SceneVerse++](../entities/sceneverse-pp.md)
 - [ESI-Bench（具身空间智能基准）](../entities/esi-bench.md)
+- [MMHU](../entities/paper-mmhu.md) — 驾驶场景人体行为 VQA / 运动基准
 - [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md)
 - [VLA](../methods/vla.md)
 - [具身大模型分类学选型闭环（知识链枢纽）](../overview/hub-embodied-foundation-model.md) — 3D 空间 VQA 属五层闭环的 VLM 感知理解层

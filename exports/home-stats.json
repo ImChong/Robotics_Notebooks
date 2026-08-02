@@ -1,13 +1,72 @@
 {
   "generated_at": "2026-08-02",
-  "node_count": 2067,
-  "edge_count": 18641,
+  "node_count": 2068,
+  "edge_count": 18653,
   "coverage": {
-    "covered": 2017,
-    "total": 2043,
+    "covered": 2018,
+    "total": 2044,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-mmhu.md",
+      "detail_id": "entity-paper-mmhu",
+      "label": "MMHU（驾驶场景人体行为理解基准 · arXiv:2507.12463）",
+      "type": "entity",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/overview/autonomous-driving-core-algorithms-series.md",
+      "detail_id": "wiki-overview-autonomous-driving-core-algorithms-series",
+      "label": "《自动驾驶核心算法盘点》专栏技术地图",
+      "type": "overview",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/overview/e2e-autonomous-driving-top10-algorithms.md",
+      "detail_id": "wiki-overview-e2e-autonomous-driving-top10-algorithms",
+      "label": "端到端自动驾驶：十大前沿算法技术地图",
+      "type": "overview",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/overview/hub-embodied-eval-benchmark.md",
+      "detail_id": "wiki-overview-hub-embodied-eval-benchmark",
+      "label": "具身评测基准选型闭环（知识链汇总）",
+      "type": "overview",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/methods/diffusion-motion-generation.md",
+      "detail_id": "wiki-methods-diffusion-motion-generation",
+      "label": "Diffusion-based Motion Generation (基于扩散模型的运动生成)",
+      "type": "method",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/concepts/3d-spatial-vqa.md",
+      "detail_id": "wiki-concepts-3d-spatial-vqa",
+      "label": "3D 空间 VQA（3D Spatial Visual Question Answering）",
+      "type": "concept",
+      "recency": "2026-08-02",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-emergent-transfer-cross-config.md",
       "detail_id": "entity-paper-emergent-transfer-cross-config",
@@ -151,78 +210,16 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/libero-benchmark.md",
-      "detail_id": "entity-libero-benchmark",
-      "label": "LIBERO",
-      "type": "entity",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-loco-manip-161-157-refine-dp.md",
-      "detail_id": "entity-paper-loco-manip-161-157-refine-dp",
-      "label": "REFINE-DP",
-      "type": "entity",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/tasks/loco-manipulation.md",
-      "detail_id": "wiki-tasks-loco-manipulation",
-      "label": "Loco-Manipulation (移动操作)",
-      "type": "task",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/methods/reinforcement-learning.md",
-      "detail_id": "wiki-methods-reinforcement-learning",
-      "label": "Reinforcement Learning (RL, 强化学习)",
-      "type": "method",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "path": "wiki/methods/residual-policy-learning.md",
-      "detail_id": "wiki-methods-residual-policy-learning",
-      "label": "Residual Policy Learning（残差策略学习）",
-      "type": "method",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/overview/loco-manip-161-category-09-vla-world-models.md",
-      "detail_id": "wiki-overview-loco-manip-161-category-09-vla-world-models",
-      "label": "Loco-Manip 161 分类 09：人形 VLA、世界模型与通用操作",
-      "type": "overview",
-      "recency": "2026-08-02",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-emergent-transfer-cross-config.md",
-    "detail_id": "entity-paper-emergent-transfer-cross-config",
-    "label": "Emergent Transfer（跨配置遗留数据何时开始有用）",
+    "path": "wiki/entities/paper-mmhu.md",
+    "detail_id": "entity-paper-mmhu",
+    "label": "MMHU（驾驶场景人体行为理解基准 · arXiv:2507.12463）",
     "type": "entity",
     "recency": "2026-08-02",
     "source": "log.md",
-    "action": "maintained",
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "action": "maintained"
   },
   "top_communities": [
     {
@@ -231,7 +228,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 169
+      "size": 168
     },
     {
       "label": "操作",

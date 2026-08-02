@@ -2235,6 +2235,21 @@
         "noematrix",
         "noematrix-ltd"
       ]
+    },
+    "texas-am": {
+      "label": "德州农工大学（Texas A&M University）",
+      "aliases": [
+        "texas-am",
+        "tamu",
+        "texas-a-and-m"
+      ]
+    },
+    "brown": {
+      "label": "布朗大学（Brown University）",
+      "aliases": [
+        "brown",
+        "brown-university"
+      ]
     }
   }
 }
