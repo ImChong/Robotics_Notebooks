@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-02
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型。"
 related:
   - ../../roadmap/depth-wam.md
@@ -27,6 +27,7 @@ related:
   - ../entities/paper-wam-ttt-human-video-test-time-steering.md
   - ../entities/paper-x-foresight.md
   - ../entities/paper-x-mind.md
+  - ../entities/paper-world-action-planner.md
   - ../tasks/vision-language-navigation.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
   - ../overview/wam-motion-control-five-paths.md
@@ -59,6 +60,7 @@ sources:
   - ../../sources/papers/defi_arxiv_2604_16391.md
   - ../../sources/papers/x_foresight_arxiv_2605_24892.md
   - ../../sources/papers/x_mind_arxiv_2606_28758.md
+  - ../../sources/papers/world_action_planner_arxiv_2607_27599.md
   - ../../sources/repos/awesome-wam-openmoss.md
   - ../../sources/sites/awesome-wam-openmoss.md
   - ../../sources/repos/dexmal_opendw.md
@@ -173,6 +175,7 @@ flowchart TB
 - **误区 1：带 world-model loss 的 VLA 就等于 WAM。** 若未来分支仅作辅助表示、推理路径不依赖前向预测，则更宜归类为 **VLA + 辅助目标**，而非 WAM。
 - **误区 2：两阶段 pipeline（先仿真再 RL）就是 Cascaded WAM。** 若世界模块是 **外部** 可微仿真/引擎而非学习策略的一部分，边界上更接近 **经典 model-based RL / planning**，与综述定义的 WAM 不完全同构。
 - **误区 3：把视频生成当世界模型就自动解决控制。** 视频级预测与 **可执行、可闭环** 的控制仍隔着 **动作可识别性、因果一致性与延迟** 等工程约束。
+- **边界样本：World Action Planner。** [WAP](../entities/paper-world-action-planner.md)（arXiv:2607.27599）用 **动作条件 WM 想象 + VLM 外环优化/搜索**，并把 DP/VLA/WAM 当可选工具——更接近 **级联模型基规划**，不宜直接算作 Joint WAM 策略本体。
 
 ## 与其他页面的关系
 
@@ -180,6 +183,7 @@ flowchart TB
 - [VLA](../methods/vla.md) — 语言条件视觉策略的主线；WAM 可视为在目标分布与训练接口上的延伸讨论。
 - [Generative World Models](../methods/generative-world-models.md) — 像素/潜空间动态预测工具箱；WAM 强调 **与控制头的耦合位置**。
 - [Model-Based RL](../methods/model-based-rl.md) — 经典 **模型 + 规划/策略** 分解；对照理解 Cascaded WAM 的历史渊源。
+- [World Action Planner](../entities/paper-world-action-planner.md) — pose-image WM + VLM 规划；相对 E2E WAM/VLA 的模型基对照。
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 高 DoF 任务上 **长程协调** 与 **sim2real** 压力最集中，是 WAM 论文重点引用的评测语境之一。
 - [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md) — 语言条件空间决策；[WorldVLN](../entities/paper-worldvln-aerial-vln-wam.md) 提供 **UAV / 自回归 WAM** 实例。
 - [AI Auto-Research（学术研究自动化）](./ai-auto-research.md) — 另一篇 **领域综述 + Awesome 列表** 维护范式（学术全生命周期 vs 具身 WAM）。
@@ -187,6 +191,7 @@ flowchart TB
 ## 参考来源
 
 - [sources/papers/world_action_models_survey_2605.md](../../sources/papers/world_action_models_survey_2605.md)
+- [sources/papers/world_action_planner_arxiv_2607_27599.md](../../sources/papers/world_action_planner_arxiv_2607_27599.md)
 - [sources/papers/dit4dit_arxiv_2603_10448.md](../../sources/papers/dit4dit_arxiv_2603_10448.md)
 - [sources/papers/motionwam_arxiv_2606_09215.md](../../sources/papers/motionwam_arxiv_2606_09215.md)
 - [sources/papers/abot_m05_arxiv_2607_00678.md](../../sources/papers/abot_m05_arxiv_2607_00678.md)
@@ -219,6 +224,7 @@ flowchart TB
 - [NavWAM（image-goal 视觉导航 · WAM）](../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md)
 - [EgoWAM（野外 egocentric 人数据 · WAM 协同训练）](../entities/paper-egowam-egocentric-human-wam-co-training.md)
 - [WAM-TTT（人视频 · 测试时训练 steering）](../entities/paper-wam-ttt-human-video-test-time-steering.md)
+- [World Action Planner（VLM + pose-image WM 规划）](../entities/paper-world-action-planner.md)
 - [τ₀-World Model（τ0-WM）](../entities/tau0-world-model.md)
 - [HiFi-UMI](../entities/paper-hifi-umi.md) — UMI-only 后训练覆盖 VLA/WAM（LingBot-VA）骨干；2000 h 公开数据
 - [INTACT](../entities/paper-intact.md) — 意图→动作无搜索 JEPA（相对 CEM 搜索的延迟对照）

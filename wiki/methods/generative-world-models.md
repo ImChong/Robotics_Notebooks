@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-02
 related:
   - ../queries/embodied-fm-taxonomy-loop.md
   - ../entities/paper-motionwam-humanoid-loco-manipulation-wam.md
@@ -266,6 +266,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [DriftWorld](../entities/paper-driftworld.md) — **1-step drifting** 动作条件 WM：推理时搜索 + 离线评估（arXiv:2607.15065）。
 - [Masked Visual Actions](../entities/paper-masked-visual-actions.md) — **像素掩码轨迹** 统一前向/逆向；RoboCasa 策略评估 **r=0.982**（arXiv:2607.19343）。
 - [Ctrl-World](../entities/paper-ctrl-world.md) — **多视角** 可控 WM：VLA 闭环评估 + 合成 SFT（ICLR 2026）。
+- [World Action Planner](../entities/paper-world-action-planner.md) — **pose-image** 条件多视角 WM + VLM 想象规划（arXiv:2607.27599；代码/权重已开源）。
 - [Rofacto](../entities/paper-rofacto.md) — **名义轨迹 + URDF 渲染** 动作接口；相对向量条件提升场景响应（arXiv:2607.22535）。
 - [ViTacWorld](../entities/paper-vitacworld.md) — **视触觉** 动作条件 WM：dream 数据增强 + 策略评估（arXiv:2607.22530）。
 - [Wan](../entities/paper-wan-video.md) / [Wan-Move](../entities/paper-wan-move.md) / [Wan-Dancer](../entities/paper-wan-dancer.md) — 开源视频基础模型、轨迹运动控制与分钟级 music-to-dance。
@@ -314,6 +315,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - Zhao, B., et al. (2026). *X-Mind: Efficient Visual Chain-of-Thought via Predictive World Model for End-to-End Driving* — 见 [sources/papers/x_mind_arxiv_2606_28758.md](../../sources/papers/x_mind_arxiv_2606_28758.md)。
 - Zayer, H., et al. (2026). *Masked Visual Actions* — 见 [sources/papers/masked_visual_actions_arxiv_2607_19343.md](../../sources/papers/masked_visual_actions_arxiv_2607_19343.md)。
 - Guo, Y., et al. (2026). *Ctrl-World* — 见 [sources/papers/ctrl_world_arxiv_2510_10125.md](../../sources/papers/ctrl_world_arxiv_2510_10125.md)。
+- Zhang, X., & Du, Y. (2026). *World Action Planner* — 见 [sources/papers/world_action_planner_arxiv_2607_27599.md](../../sources/papers/world_action_planner_arxiv_2607_27599.md)。
 - Chu, R., et al. (2025). *Wan-Move* — 见 [sources/papers/wan_move_arxiv_2512_08765.md](../../sources/papers/wan_move_arxiv_2512_08765.md)。
 - Huang, M., et al. (2026). *Wan-Dancer* — 见 [sources/papers/wan_dancer_arxiv_2607_09581.md](../../sources/papers/wan_dancer_arxiv_2607_09581.md)。
 - Wan Team (2025). *Wan* — 见 [sources/papers/wan_video_arxiv_2503_20314.md](../../sources/papers/wan_video_arxiv_2503_20314.md)。

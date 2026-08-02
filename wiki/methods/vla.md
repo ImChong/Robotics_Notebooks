@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-02
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作。"
 related:
   - ../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md
@@ -403,6 +403,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [EgoSteer](../entities/paper-egosteer.md) — EgoSmith + HITL DAgger + WM 增强 flow-VLA 全栈（arXiv:2607.09701）
 - [HumanNet](../entities/humannet.md) — 百万小时人中心视频语料与管线级设计参照
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 联合未来–动作范式与 VLA/世界模型分界
+- [World Action Planner](../entities/paper-world-action-planner.md) — 相对 π₀.₅ / cosmos-policy 的模型基规划对照（arXiv:2607.27599）
 - [X-Foresight](../entities/paper-x-foresight.md) — 驾驶 VLA **内嵌** chunk-wise 预测式世界建模（小鹏；未开源）
 - [S²-VLA](../entities/paper-s-squared-vla.md) — 驾驶 VLA **语义∥空间双流** 解耦（武汉理工；NAVSIM SFT PDMS 87.1；未开源）
 - [X-Mind](../entities/paper-x-mind.md) — Visual CoT：PWM 压缩为 abstract sketch（小鹏；未开源）

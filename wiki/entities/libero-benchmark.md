@@ -2,16 +2,18 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
-updated: 2026-07-30
+updated: 2026-08-02
 summary: "LIBERO：用一百三十个机械臂任务控制对象、布局、目标和语言变化，专门评估终身学习与迁移中的分布偏移；固定任务套件和数据接口便于比较策略是记住训练场景还是获得可迁移能力。"
 related:
   - ../concepts/sim2real.md
   - ../entities/isaac-lab.md
   - ../entities/humanoid-motion-intelligence.md
+  - ../entities/paper-world-action-planner.md
   - ../queries/hmi-opensource-projects-coverage.md
 sources:
   - ../../sources/repos/libero-benchmark.md
   - ../../sources/repos/humanoid-motion-intelligence.md
+  - ../../sources/papers/world_action_planner_arxiv_2607_27599.md
 ---
 
 # LIBERO
@@ -88,11 +90,13 @@ flowchart LR
 - [isaac-lab](../entities/isaac-lab.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
+- [World Action Planner](./paper-world-action-planner.md) — LIBERO-Long / Object 上用 pose-image WM + VLM 规划测组合与新布局泛化
 
 ## 参考来源
 
 - [LIBERO 来源归档](../../sources/repos/libero-benchmark.md)
 - [Humanoid Motion Intelligence 仓库归档](../../sources/repos/humanoid-motion-intelligence.md)
+- [World Action Planner 论文策展](../../sources/papers/world_action_planner_arxiv_2607_27599.md)
 - [开源项目主表（上游）](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)
 
 ## 推荐继续阅读
