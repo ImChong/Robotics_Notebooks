@@ -1,3 +1,12 @@
+## [2026-08-02] ingest | sources/sites/tinkercad-com.md — Autodesk Tinkercad；wiki/entities/tinkercad.md；交叉 wiki/entities/wokwi.md、wiki/entities/freecad.md、wiki/entities/kicad.md、wiki/entities/simplefoc.md、wiki/overview/motor-drive-firmware-bus-protocols.md
+
+- **触发：** 用户指定 <https://www.tinkercad.com/>
+- **Sources：** [`sources/sites/tinkercad-com.md`](sources/sites/tinkercad-com.md)
+- **Wiki：** [`wiki/entities/tinkercad.md`](wiki/entities/tinkercad.md)
+- **交叉：** [`wiki/entities/wokwi.md`](wiki/entities/wokwi.md)、[`wiki/entities/freecad.md`](wiki/entities/freecad.md)、[`wiki/entities/kicad.md`](wiki/entities/kicad.md)、[`wiki/entities/simplefoc.md`](wiki/entities/simplefoc.md)、[`wiki/overview/motor-drive-firmware-bus-protocols.md`](wiki/overview/motor-drive-firmware-bus-protocols.md)
+- **机构：** `autodesk` 已注册
+- **开源：** **确认未开源** — Autodesk 闭源 SaaS；免费可用，设计可导出 STL/OBJ 等
+
 ## [2026-08-02] ingest | sources/blogs/wechat_shenlan_six_spatial_representations_embodied_perception.md — 具身感知六种空间表征；wiki/concepts/embodied-perception-six-spatial-representations.md
 
 - **触发：** 用户指定微信 <https://mp.weixin.qq.com/s/lWvdz9cjuurS7ikBkZk0vQ>（深蓝具身智能 · 六种空间表征分层）
