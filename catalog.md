@@ -643,7 +643,7 @@
 - [OpenHLM](wiki/entities/paper-loco-manip-161-154-openhlm.md) — OpenHLM**（*An Empirical Recipe for Whole-Body Humanoid Loco-Manipulation*，[项目页](https://openhlm-pr `📅unknown` `[entity_page]`
 - [PhysiFlow](wiki/entities/paper-loco-manip-161-155-physiflow.md) — PhysiFlow** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3 `📅unknown` `[entity_page]`
 - [Psi0](wiki/entities/paper-loco-manip-161-156-psi0.md) — Psi0** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
-- [REFINE-DP](wiki/entities/paper-loco-manip-161-157-refine-dp.md) — REFINE-DP** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3 `📅unknown` `[entity_page]`
+- [REFINE-DP](wiki/entities/paper-loco-manip-161-157-refine-dp.md) — REFINE-DP**（*REinforcement learning FINE-tuning of Diffusion Policy*，[arXiv:2603.13707](https://ar `📅unknown` `[entity_page]`
 - [世界行动模型是零样本策略](wiki/entities/paper-loco-manip-161-159-n159.md) — 世界行动模型是零样本策略** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR `📅unknown` `[entity_page]`
 - [通过主动空间大脑和通用动作小脑进行人形全身操作](wiki/entities/paper-loco-manip-161-160-n160.md) — 通过主动空间大脑和通用动作小脑进行人形全身操作** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9Eh `📅unknown` `[entity_page]`
 - [EgoVLA](wiki/entities/paper-loco-manip-161-161-egovla.md) — EgoVLA** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`

@@ -3,7 +3,7 @@
 type: entity
 tags: [entity, simulator, isaac, isaac-sim, gpu-simulation, reinforcement-learning, sim2real, nvidia]
 status: stable
-updated: 2026-07-31
+updated: 2026-08-02
 related:
   - ./isaac-gym-isaac-lab.md
   - ./isaac-sim.md
@@ -307,6 +307,7 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 - [训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md) — 大平台层定位；与 Playground/mjlab 非同一竞争平面
 - [MuJoCo Playground](./mujoco-playground.md) — 轻量 time-to-robot 入口，复杂任务可再迁移至 Lab
 - [mjlab](./mjlab.md) — 借用 Lab manager-based API 的 MuJoCo Warp 折中栈
+- [REFINE-DP（论文实体）](./paper-loco-manip-161-157-refine-dp.md) — Isaac Lab 上 DP 规划器与 RL loco-manip 联合微调（arXiv:2603.13707）
 - [legged_gym](./legged-gym.md) — 旧一代足式 RL 训练栈，工程经验可迁移
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Locomotion](../tasks/locomotion.md)

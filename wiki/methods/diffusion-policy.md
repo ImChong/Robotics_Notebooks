@@ -3,7 +3,7 @@ type: method
 tags: [il, diffusion, manipulation, generative-model]
 status: complete
 summary: "Diffusion Policy 用多步去噪生成动作序列，擅长处理多模态和长时序的机器人操作行为。"
-updated: 2026-07-30
+updated: 2026-08-02
 ---
 
 # Diffusion Policy
@@ -128,6 +128,7 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 - **ingest 档案：** [sources/papers/defi_arxiv_2604_16391.md](../../sources/papers/defi_arxiv_2604_16391.md) — DeFI：GFDM 前向 + GIDM 逆动力学解耦预训练后再用扩散适配器端到端耦合微调
 - **ingest 档案：** [sources/papers/bifrost_umi_arxiv_2605_03452.md](../../sources/papers/bifrost_umi_arxiv_2605_03452.md) — BifrostUMI：全身 47-D 稀疏关键点 + DINOv2 条件的扩散高层（arXiv:2605.03452）
 - **ingest 档案：** [sources/papers/muninn_arxiv_2605_09999.md](../../sources/papers/muninn_arxiv_2605_09999.md) — Muninn：免训练轨迹扩散缓存包装器，visuomotor DP 推理加速与可证偏差预算（RSS 2026）
+- **ingest 档案：** [sources/papers/refine_dp_arxiv_2603_13707.md](../../sources/papers/refine_dp_arxiv_2603_13707.md) — REFINE-DP：人形 loco-manip DP+RL 联合微调（arXiv:2603.13707）
 
 ## 关联页面
 
@@ -144,7 +145,7 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 - [OAT 有序动作 Tokenization](../entities/paper-oat-ordered-action-tokenization.md)
 - [Chronos](../entities/paper-chronos.md) — ALOHA 上相对 diffusion/flow 动作头的二阶加速度桥对照（arXiv:2606.30318）
 - [PRISM](../entities/paper-prism.md) — 用因式分解多项式替换线性本体条件，LIBERO 无 force 柔顺（arXiv:2607.23473）
-
+- [REFINE-DP（论文实体）](../entities/paper-loco-manip-161-157-refine-dp.md) — 人形 loco-manip 上 DP 规划器与 RL 跟踪器联合 PPO/DPPO 微调（arXiv:2603.13707）
 
 ## 推荐继续阅读
 

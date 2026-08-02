@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-07-31
+updated: 2026-08-02
 sources:
   - ../../sources/papers/pot_vla_arxiv_2607_18016.md
   - ../../sources/papers/faro_arxiv_2607_18362.md
@@ -142,6 +142,10 @@ flowchart TD
 - **核心**：采集阶段用便携 VR/夹爪设备记录 **稀疏关键点 + 腕部视觉**（无需目标人形）；高层 **Diffusion Policy** 预测任务空间轨迹，经 **SKR** 保留度量几何后接 **全身 IK + WBC** 在 G1 上执行 loco-manipulation。
 - **代表作**：[BifrostUMI](../entities/paper-bifrost-umi.md) (BAAI Aether, 2026) — 杂乱桌面 pick-place 与桌下全身处置；受 [UMI](https://arxiv.org/abs/2402.10329) 启发。
 
+### 9b. DP 规划器 + RL 跟踪器联合微调（REFINE-DP · 规划–控制同分布）
+- **核心**：高层 **Diffusion Policy** 只出 **基座速度 + 双手 SE(3)** 笛卡尔动作块；低层 **RL loco-manip**（足端落点 + 手姿跟踪）转关节参考；再用 **DPPO/PPO 联合微调** 两者，缩小规划命令与跟踪器输入的分布错配——相对「只扩示教」或「冻结 DP + 残差 RL」。
+- **代表作**：[REFINE-DP](../entities/paper-loco-manip-161-157-refine-dp.md) (Georgia Tech, IEEE RA-L / arXiv:2603.13707) — Booster T1 开门/长程搬箱等；仿真 **>90%** SR，约 **50** 条遥操作微调 ≈ 纯预训练 **1000** 条；真机 Task1–3 约 **70% / 50% / 75%**（N=20）；**训练代码截至 2026-08-02 未开源**。
+
 ### 10. 光真实感合成演示 + VLA 微调（3DGS × 程序化 motion）
 - **核心**：用 **3DGS 背景 + mesh 前景** 合成接近真机头摄的图像，在 **MuJoCo + 低层 WBC（SONIC）** 上程序化生成 loco-manip 演示；**motion 与外观解耦** 后可 GPU 重渲染增广，再微调预训练 **VLA**（ψ0 / π0.5 / GR00T 等）。
 - **代表作**：[LEGS](../entities/paper-legs-embodied-gaussian-splatting-vla.md) (Stanford, 2026, arXiv:2606.01458) — 无遥操作合成数据在 G1 上匹配或超过 50-demo teleop，长时程 Task 3 上 teleop 可全线失败而 LEGS 仍成功。
@@ -248,6 +252,7 @@ flowchart TD
 - [ExoActor](../methods/exoactor.md) — 视频生成驱动的零样本人形交互行为生成
 - [VIRAL（论文实体）](../entities/paper-viral-humanoid-visual-sim2real.md) — 人形 loco-manipulation 视觉 Sim2Real 全栈（arXiv:2511.15200）
 - [DoorMan（论文实体）](../entities/paper-doorman-opening-sim2real-door.md) — 人形纯 RGB 开门铰接操作与 GRPO 自举（arXiv:2512.01061）
+- [REFINE-DP（论文实体）](../entities/paper-loco-manip-161-157-refine-dp.md) — DP 规划器 + RL 跟踪器联合微调的人形 loco-manip（arXiv:2603.13707，Booster T1）
 - [InterPrior（论文实体）](../entities/paper-interprior.md) — 物理 HOI 生成式先验：模仿专家 → 变分蒸馏 → RL 微调（arXiv:2602.06035）
 - [WEM（论文实体）](../entities/paper-wem-world-ego-modeling.md) — 混合导航–操作长程 **视频世界模型** 与 **HTEWorld** 基准（arXiv:2605.19957，BEHAVIOR-1K）
 - [GR00T-VisualSim2Real](../entities/gr00t-visual-sim2real.md) — VIRAL / DoorMan 官方开源框架
@@ -298,6 +303,7 @@ flowchart TD
 - **ingest 档案：** [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md) — HTD / Touch Dreaming 触觉增强人形移动操作
 - **ingest 档案：** [sources/papers/exoactor.md](../../sources/papers/exoactor.md) — ExoActor 视频生成驱动的人形控制
 - **ingest 档案：** [sources/papers/doorman_opening_sim2real_arxiv_2512_01061.md](../../sources/papers/doorman_opening_sim2real_arxiv_2512_01061.md) — DoorMan：人形 RGB 开门视觉 Sim2Real（arXiv:2512.01061）
+- **ingest 档案：** [sources/papers/refine_dp_arxiv_2603_13707.md](../../sources/papers/refine_dp_arxiv_2603_13707.md) — REFINE-DP：DP+RL 联合微调人形 loco-manip（arXiv:2603.13707）
 - **ingest 档案：** [sources/papers/interprior_arxiv_2602_06035.md](../../sources/papers/interprior_arxiv_2602_06035.md) — InterPrior：物理 HOI 生成式控制（arXiv:2602.06035）
 - **ingest 档案：** [sources/papers/x2n_transformable.md](../../sources/papers/x2n_transformable.md) — 具有轮足混合双模态与上肢操作能力的可变形人形机器人，用于展示强化学习的统一控制。
 - **ingest 档案：** [sources/papers/bifrost_umi_arxiv_2605_03452.md](../../sources/papers/bifrost_umi_arxiv_2605_03452.md) — BifrostUMI：无机器人全身示范与 G1 部署（arXiv:2605.03452）
