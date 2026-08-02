@@ -3,7 +3,7 @@ title: 人形训练数据管线选型指南
 type: query
 status: complete
 created: 2026-06-19
-updated: 2026-07-30
+updated: 2026-08-02
 summary: 从原始动作捕捉 / 人体视频 → 重定向 → RL/IL 训练输入的端到端选型决策树，覆盖参考运动来源、重定向方案、训练范式三层取舍与典型失败模式。
 tags: [dataset, motion-retargeting, data-pipeline, humanoid, training-data]
 sources:
@@ -100,7 +100,7 @@ flowchart TD
 | AMP 风格先验 | 要保留运动风格 | [Motion Retargeting §与 AMP/ASE 关系](../concepts/motion-retargeting.md) |
 | IL / BC | 只有演示、奖励难定义 | [Imitation Learning](../methods/imitation-learning.md) |
 
-换机体时进入迁移阶段，见 [跨具身策略迁移选型指南](./cross-embodiment-transfer-strategy.md)。
+换机体时进入迁移阶段，见 [跨具身策略迁移选型指南](./cross-embodiment-transfer-strategy.md)。若只是同形态升级相机/夹爪并复用旧 teleop，先按 [Emergent Transfer](../entities/paper-emergent-transfer-cross-config.md) 把新机推过迁移阈值再混 legacy。
 
 ---
 
@@ -162,6 +162,7 @@ flowchart TD
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) — 第 3 层 RL/WBT 训练消费侧
 - [Imitation Learning](../methods/imitation-learning.md) — 仅有演示时的训练范式
 - [跨具身策略迁移选型指南](./cross-embodiment-transfer-strategy.md) — 换机体后的迁移决策
+- [Emergent Transfer](../entities/paper-emergent-transfer-cross-config.md) — 同形态跨配置时遗留示教的三相复用规则
 - [RL vs IL](../comparisons/rl-vs-il.md) — 第 3 层范式分流的总论
 - [OASIS（论文实体）](../entities/paper-loco-manip-04-oasis.md) — 纯仿真 VR teleop + 视觉域随机化 loco-manip 数据管线
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — loco-manip 任务定义与数据路线谱系

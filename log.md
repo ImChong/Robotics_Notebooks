@@ -1,3 +1,12 @@
+## [2026-08-02] ingest | sources/papers/emergent_transfer_cross_config_arxiv_2607_25593.md — Emergent Transfer（arXiv:2607.25593，HUST / Spirit AI / PKU / SJTU / HIT / 清华）跨配置遗留示教三相迁移
+
+- **触发：** 用户指定 *When Does Legacy Data Start to Help? Emergent Transfer in Cross-Configuration Robot Learning*（arXiv:2607.25593；华中科技大学 / 千寻智能 / 北京大学 / 上海交通大学 / 哈尔滨工业大学 / 清华大学；Wang / Hou / Hu / Gao 等）
+- **Sources：** [`sources/papers/emergent_transfer_cross_config_arxiv_2607_25593.md`](sources/papers/emergent_transfer_cross_config_arxiv_2607_25593.md)
+- **Wiki：** [`wiki/entities/paper-emergent-transfer-cross-config.md`](wiki/entities/paper-emergent-transfer-cross-config.md)
+- **交叉：** [`wiki/overview/hub-cross-embodiment.md`](wiki/overview/hub-cross-embodiment.md)、[`wiki/queries/cross-embodiment-transfer-strategy.md`](wiki/queries/cross-embodiment-transfer-strategy.md)、[`wiki/queries/humanoid-training-data-pipeline.md`](wiki/queries/humanoid-training-data-pipeline.md)、[`wiki/entities/paper-pi05-open-world-vla.md`](wiki/entities/paper-pi05-open-world-vla.md)、[`wiki/methods/behavior-cloning.md`](wiki/methods/behavior-cloning.md)
+- **机构：** `hust` / `spirit-ai` / `pku` / `sjtu` / `hit` / `tsinghua` 已注册
+- **开源：** **确认未开源** — 项目入口即为 arXiv；无独立项目页 / GitHub
+
 ## [2026-08-02] ingest | sources/papers/fa_rdp_arxiv_2607_28596.md + sites/fa-rdp-github-io.md — FA-RDP（arXiv:2607.28596，SJTU / 创智 / Noematrix）频率自适应反应扩散
 
 - **触发：** 用户指定 *FA-RDP: A Frequency-Adaptive Reactive Diffusion Policy for Contact-Rich Manipulation*（arXiv:2607.28596；SJTU / Shanghai Innovation Institute / Noematrix；Zhuo / Chen / Xue / Tang / Lv / Lu / Wen）+ 项目页
