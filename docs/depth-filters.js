@@ -7,6 +7,12 @@
  *   excludeSegments 命中 → 直接排除；ids 显式纳入 → 命中；
  *   communities 命中 → 命中；segments 命中任一 → 命中。
  *
+ * segments 匹配规则：
+ *   - 无分隔符的单 token：与 node id 按 [/._-] 切开后的词元集合做精确命中；
+ *   - 含 - / _ 的多 token：在把 id 分隔符归一为 '-' 后的路径串上做子串命中
+ *     （因此 loco-manip 可命中 .../loco-manipulation...，sim-to-real 可命中
+ *     ...closing_sim_to_real_gap...）。勿把过短词干放进多 token segments。
+ *
  * 每条路线的汇总锚点是对应 roadmap/*.md（DEPTH_META.wikiPath），
  * 并写入 DEPTH_FILTERS[key].ids 以保证路线视图下始终可见。
  */
@@ -159,32 +165,46 @@
     'teleoperation': {
       segments: new Set([
         'teleoperation', 'teleop', 'teleoperate', 'exoskeleton', 'mocap',
-        'visionpro', 'open-television', 'homie', 'textop', 'dexumi', 'osmo'
+        'visionpro', 'open-television', 'homie', 'textop', 'dexumi', 'osmo',
+        'data-gloves', 'vision-teleop'
       ]),
-      ids: mergeIds('teleoperation')
+      ids: mergeIds('teleoperation', [
+        'wiki/tasks/teleoperation.md',
+        'wiki/comparisons/data-gloves-vs-vision-teleop.md'
+      ])
     },
     'torque-motor-design': {
       segments: new Set([
         'torque', 'motor', 'actuator', 'foc', 'qdd', 'electromagnetic',
-        'winding', 'dynamometer', 'simplefoc', 'pyleecan', 'femm'
+        'winding', 'dynamometer', 'simplefoc', 'pyleecan', 'femm',
+        'field-oriented', 'armature', 'friction-compensation', 'roller-screw'
       ]),
       ids: mergeIds('torque-motor-design', [
         'wiki/overview/hub-actuator-drive-chain.md',
         'wiki/queries/actuator-drive-chain-selection-loop.md',
         'wiki/entities/simplefoc.md',
         'wiki/entities/kicad.md',
-        'wiki/entities/altium-designer.md'
+        'wiki/entities/altium-designer.md',
+        'wiki/concepts/field-oriented-control.md',
+        'wiki/concepts/armature-modeling.md',
+        'wiki/concepts/friction-compensation.md',
+        'wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md'
       ])
     },
     'classical-control': {
       segments: new Set([
         'wbc', 'tsid', 'hqp', 'mpc', 'zmp', 'lip', 'centroidal', 'whole',
-        'body', 'balance', 'hierarchical', 'model-predictive'
+        'body', 'balance', 'hierarchical', 'model-predictive',
+        'capture-point', 'floating-base', 'optimal-control', 'crocoddyl'
       ]),
       ids: mergeIds('classical-control', [
         'wiki/overview/hub-wbc.md',
         'wiki/concepts/whole-body-control.md',
-        'wiki/methods/model-predictive-control.md'
+        'wiki/methods/model-predictive-control.md',
+        'wiki/concepts/capture-point-dcm.md',
+        'wiki/concepts/floating-base-dynamics.md',
+        'wiki/concepts/optimal-control.md',
+        'wiki/entities/crocoddyl.md'
       ])
     },
     'humanoid-hardware-design': {
@@ -213,36 +233,53 @@
       segments: new Set([
         'grasp', 'graspnet', 'anygrasp', 'dexterous', 'manipulation',
         'tactile', 'haptic', 'impedance', 'admittance', 'wrench',
-        'force', 'compliance', 'contact', 'pick', 'place', 'bimanual'
+        'force', 'compliance', 'contact', 'pick', 'place', 'bimanual',
+        'contactmimic', 'dexverse', 'visuo-tactile'
       ]),
       excludeSegments: new Set(['reinforcement']),
       ids: mergeIds('contact-manipulation', [
         'wiki/overview/hub-grasp.md',
         'wiki/overview/hub-tactile.md',
         'wiki/overview/hub-contact-force-control.md',
-        'wiki/queries/contact-wrench-closed-loop.md'
+        'wiki/queries/contact-wrench-closed-loop.md',
+        'wiki/entities/paper-contactmimic.md',
+        'wiki/entities/paper-dexverse.md',
+        'wiki/concepts/visuo-tactile-fusion.md',
+        'wiki/concepts/impedance-control.md',
+        'wiki/tasks/manipulation.md'
       ])
     },
     'navigation': {
       segments: new Set([
-        'navigation', 'slam', 'vio', 'lio', 'nav2', 'vln', 'localize',
-        'odometry', 'mapping', 'path', 'planning'
+        'navigation', 'slam', 'vio', 'lio', 'nav2', 'navigation2', 'vln',
+        'localize', 'odometry', 'mapping', 'path', 'planning', 'cartographer',
+        'orb-slam', 'habitat', 'matterport'
       ]),
       ids: mergeIds('navigation', [
         'wiki/overview/hub-state-estimation.md',
-        'wiki/concepts/state-estimation.md'
+        'wiki/concepts/state-estimation.md',
+        'wiki/entities/navigation2.md',
+        'wiki/entities/cartographer.md',
+        'wiki/entities/orb-slam3.md',
+        'wiki/entities/habitat-sim.md',
+        'wiki/entities/matterport3d-simulator.md'
       ])
     },
     'imitation-learning': {
       segments: new Set([
         'imitation', 'behavior', 'cloning', 'dagger', 'demonstration',
-        'il', 'bc', 'act', 'diffusion-policy', 'cross-embodiment'
+        'il', 'bc', 'act', 'diffusion-policy', 'cross-embodiment',
+        'action-chunking', 'behavior-cloning'
       ]),
       ids: mergeIds('imitation-learning', [
         'wiki/overview/hub-learning.md',
         'wiki/overview/hub-cross-embodiment.md',
         'wiki/overview/hub-data-pipeline.md',
-        'wiki/methods/imitation-learning.md'
+        'wiki/methods/imitation-learning.md',
+        'wiki/methods/behavior-cloning.md',
+        'wiki/methods/dagger.md',
+        'wiki/methods/diffusion-policy.md',
+        'wiki/methods/action-chunking.md'
       ])
     },
     'rl-locomotion': {
@@ -258,80 +295,161 @@
     },
     'loco-manipulation': {
       segments: new Set([
-        'loco-manip', 'locomanip', 'loco_manip', 'mobile-manip',
-        'whole-body-manip'
+        'loco-manip', 'loco-manipulation', 'locomanip', 'loco_manip',
+        'mobile-manip', 'mobile-manipulation', 'whole-body-manip',
+        'whole-body-manipulation', 'locomanipulation', 'ultra-survey',
+        'humanoidmimicgen', 'resmimic', 'visualmimic', 'halomi', 'coordex',
+        'splitadapter'
       ]),
       ids: mergeIds('loco-manipulation', [
-        'wiki/tasks/loco-manipulation.md'
+        'wiki/tasks/loco-manipulation.md',
+        'wiki/tasks/ultra-survey.md',
+        'wiki/concepts/whole-body-coordination.md',
+        'wiki/entities/paper-resmimic.md',
+        'wiki/entities/paper-humanoidmimicgen.md',
+        'wiki/entities/paper-notebook-visualmimic.md',
+        'wiki/entities/paper-halomi-humanoid-loco-manipulation.md',
+        'wiki/entities/paper-coordex-dexterous-humanoid-loco-manipulation.md',
+        'wiki/entities/paper-splitadapter-load-aware-loco-manipulation.md',
+        'wiki/entities/paper-pilot-perceptive-loco-manipulation.md',
+        'wiki/entities/current-robotics-curr0.md',
+        'wiki/entities/flexion-reflect-v1.md'
       ])
     },
     'humanoid-soccer': {
       segments: new Set([
-        'soccer', 'football', 'robocup', 'goalkeeper', 'striker', 'ball'
+        'soccer', 'football', 'robocup', 'goalkeeper', 'striker', 'ball',
+        'soccerdiffusion', 'humanoidarena', 'robonaldo', 'socc'
       ]),
-      ids: mergeIds('humanoid-soccer')
+      ids: mergeIds('humanoid-soccer', [
+        'wiki/entities/paper-notebook-soccerdiffusion-toward-learning-end-to-end-human.md',
+        'wiki/entities/paper-humanoidarena.md',
+        'wiki/entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md',
+        'wiki/entities/smplolympics.md'
+      ])
     },
     'motion-retargeting': {
       communities: new Set(['community-3']),
       segments: new Set([
         'retargeting', 'retarget', 'gmr', 'nmr', 'reactor', 'sonic',
-        'exoactor', 'spider', 'wilor', 'mocap', 'keyframe', 'animation'
+        'exoactor', 'spider', 'wilor', 'mocap', 'keyframe', 'animation',
+        'freemocap', 'fairmotion', 'omniretarget'
       ]),
       ids: mergeIds('motion-retargeting', [
         'wiki/overview/hub-motion-retargeting.md',
-        'wiki/overview/hub-data-pipeline.md'
+        'wiki/overview/hub-data-pipeline.md',
+        'wiki/concepts/motion-retargeting.md',
+        'wiki/concepts/motion-retargeting-pipeline.md',
+        'wiki/concepts/motion-data-quality.md',
+        'wiki/methods/motion-retargeting-gmr.md',
+        'wiki/comparisons/gmr-vs-nmr-vs-reactor.md',
+        'wiki/comparisons/humanoid-reference-motion-datasets.md',
+        'wiki/entities/amass.md',
+        'wiki/entities/freemocap.md',
+        'wiki/entities/fairmotion.md',
+        'wiki/entities/lafan1-dataset.md'
       ])
     },
     'humanoid-swarm-performance': {
       segments: new Set([
         'swarm', 'multi-robot', 'formation', 'choreography', 'performance',
-        'coordination'
+        'coordination', 'crazyswarm', 'teamplay', 'teamhoi', 'marl'
       ]),
-      ids: mergeIds('humanoid-swarm-performance')
+      ids: mergeIds('humanoid-swarm-performance', [
+        'wiki/entities/crazyswarm2.md',
+        'wiki/entities/paper-bfm-23-teamplay.md',
+        'wiki/entities/paper-amp-survey-17-teamhoi.md',
+        'wiki/concepts/humanoid-multi-robot-coordination.md',
+        'wiki/comparisons/ctde-vs-decentralized-marl.md'
+      ])
     },
     'sim2real': {
       segments: new Set([
         'sim2real', 'sim-to-real', 'domain', 'randomization', 'system-id',
-        'sysid', 'residual', 'adaptation', 'physics-fidelity'
+        'sysid', 'residual', 'adaptation', 'physics-fidelity',
+        'domain-randomization', 'privileged-training', 'curriculum-learning'
       ]),
       ids: mergeIds('sim2real', [
         'wiki/overview/hub-sim2real.md',
         'wiki/overview/hub-physics-fidelity.md',
         'wiki/concepts/sim2real.md',
-        'wiki/queries/simulation-physics-fidelity.md'
+        'wiki/queries/simulation-physics-fidelity.md',
+        'wiki/concepts/domain-randomization.md',
+        'wiki/concepts/privileged-training.md',
+        'wiki/concepts/curriculum-learning.md',
+        'wiki/concepts/system-identification.md',
+        'wiki/concepts/sim-vs-real-eval-gap.md',
+        'wiki/queries/sim2real-checklist.md'
       ])
     },
     'humanoid-boxing': {
       segments: new Set([
-        'boxing', 'combat', 'adversarial', 'sparring', 'punch'
+        'boxing', 'combat', 'adversarial', 'sparring', 'punch',
+        'robostriker', 'smplolympics', 'urkl'
       ]),
-      ids: mergeIds('humanoid-boxing')
+      ids: mergeIds('humanoid-boxing', [
+        'wiki/entities/paper-notebook-robostriker.md',
+        'wiki/entities/rek.md',
+        'wiki/entities/urkl.md',
+        'wiki/entities/smplolympics.md',
+        'wiki/entities/paper-notebook-towards-motion-turing-test.md',
+        'wiki/entities/paper-hrl-stack-41-safefall.md'
+      ])
     },
     'bfm': {
       segments: new Set([
         'bfm', 'behavior-foundation', 'ase', 'phc', 'wbt', 'motion-tracking',
-        'shadowing'
+        'shadowing', 'whole-body-tracking', 'beyondmimic', 'deepmimic'
       ]),
       ids: mergeIds('bfm', [
         'wiki/overview/hub-wbt.md',
-        'wiki/concepts/behavior-foundation-model.md'
+        'wiki/concepts/behavior-foundation-model.md',
+        'wiki/concepts/whole-body-tracking-pipeline.md',
+        'wiki/methods/deepmimic.md',
+        'wiki/methods/amp-reward.md',
+        'wiki/queries/humanoid-motion-tracking-method-selection.md'
       ])
     },
     'perceptive-locomotion': {
       segments: new Set([
         'perceptive', 'parkour', 'stair', 'terrain', 'elevation', 'obstacle',
-        'vision-locomotion'
+        'vision-locomotion', 'extreme-parkour', 'dreamwaq', 'footstep'
       ]),
       ids: mergeIds('perceptive-locomotion', [
-        'wiki/overview/hub-vision-backbone.md'
+        'wiki/overview/hub-vision-backbone.md',
+        'wiki/entities/extreme-parkour.md',
+        'wiki/entities/dreamwaq-plus.md',
+        'wiki/concepts/footstep-planning.md',
+        'wiki/concepts/hierarchical-quadruped-navigation-stack.md'
       ])
     },
     'motion-generation': {
       segments: new Set([
         'motion-generation', 'motion-diffusion', 'mdm', 'text-to-motion',
-        'generative-motion', 'human-motion'
+        'generative-motion', 'human-motion', 'humanml', 'humanml3d',
+        'motion-x', 'posescript', 'kimodo', 'physdiff', 'phygile',
+        'omnicontrol', 'hy-motion', 'genmo', 'dimos', 'motionbricks',
+        'in-betweening'
       ]),
-      ids: mergeIds('motion-generation')
+      ids: mergeIds('motion-generation', [
+        'wiki/methods/diffusion-motion-generation.md',
+        'wiki/comparisons/hy-motion-vs-genmo-vs-kimodo.md',
+        'wiki/entities/awesome-text-to-motion-zilize.md',
+        'wiki/entities/dataset-bfm-humanml3d.md',
+        'wiki/entities/dataset-bfm-kit-ml.md',
+        'wiki/entities/dataset-bfm-babel.md',
+        'wiki/entities/dataset-bfm-motion-x.md',
+        'wiki/entities/dataset-bfm-posescript.md',
+        'wiki/entities/kimodo.md',
+        'wiki/entities/ardy.md',
+        'wiki/entities/gen2humanoid.md',
+        'wiki/entities/paper-phygile.md',
+        'wiki/entities/paper-dimos-human-scene-motion-synthesis.md',
+        'wiki/entities/paper-omg-omni-modal-humanoid-control.md',
+        'wiki/entities/paper-gpc-generative-pretrained-controllers.md',
+        'wiki/entities/paper-muninn-trajectory-diffusion-acceleration.md',
+        'wiki/entities/paper-heracles-humanoid-diffusion.md'
+      ])
     },
     'vla': {
       communities: new Set(['community-5']),
@@ -349,21 +467,41 @@
     },
     'real2sim': {
       segments: new Set([
-        'real2sim', 'real-to-sim', 'gaussian', 'splatting', 'reconstruction',
-        'digital-twin', 'nerf'
+        'real2sim', 'real-to-sim', 'gaussian', 'splatting', '3dgs',
+        'reconstruction', 'digital-twin', 'nerf', 'simfoundry', 'articraft',
+        'aholo', 'gs-playground'
       ]),
-      ids: mergeIds('real2sim')
+      ids: mergeIds('real2sim', [
+        'wiki/entities/paper-agentic-real2sim.md',
+        'wiki/entities/paper-simfoundry-real2sim-scene-generation.md',
+        'wiki/entities/articraft.md',
+        'wiki/entities/aholo-viewer.md',
+        'wiki/entities/gs-playground.md',
+        'wiki/entities/spark-3dgs-renderer.md',
+        'wiki/comparisons/spark-vs-aholo-web-3dgs-renderers.md',
+        'wiki/concepts/video-as-simulation.md'
+      ])
     },
     'wam': {
       segments: new Set([
         'wam', 'world-action', 'world-model', 'worldmodel', 'video-prediction',
-        'imagination'
+        'imagination', 'cosmos', 'dreamer', 'physisforcing', 'dynawm',
+        'dreamsteer'
       ]),
       ids: mergeIds('wam', [
         'wiki/overview/hub-embodied-foundation-model.md',
         'wiki/overview/hub-embodied-eval-benchmark.md',
         'wiki/concepts/world-action-models.md',
-        'wiki/queries/embodied-eval-benchmark-selection-loop.md'
+        'wiki/queries/embodied-eval-benchmark-selection-loop.md',
+        'wiki/entities/cosmos-3.md',
+        'wiki/entities/lumo-2.md',
+        'wiki/entities/dexmal-dw05.md',
+        'wiki/entities/xiaomi-robotics-u0.md',
+        'wiki/entities/paper-dit4dit-video-action-model.md',
+        'wiki/entities/paper-dreamsteer-vla-deployment-steering.md',
+        'wiki/entities/paper-dynawm-vla-online-correction.md',
+        'wiki/entities/paper-gigaworld-1-policy-evaluation.md',
+        'wiki/entities/paper-physisforcing.md'
       ])
     }
   };
@@ -512,6 +650,24 @@
     return segs;
   }
 
+  /* 把 id 中的 / . _ - 归一成 '-'，供多 token segment 做子串命中。 */
+  function nodePathKey(node) {
+    if (node && node._pathKey) return node._pathKey;
+    var key = ((node && node.id) || '').toLowerCase().replace(/\.md$/, '').replace(/[/._]+/g, '-');
+    if (node) node._pathKey = key;
+    return key;
+  }
+
+  /* 单 token → 精确词元；含分隔符 → 归一路径子串（兼容 loco-manip / loco-manipulation）。 */
+  function segmentHits(node, segs, segment) {
+    if (!segment) return false;
+    if (/[/._-]/.test(segment)) {
+      var needle = String(segment).toLowerCase().replace(/[/._]+/g, '-');
+      return needle.length > 0 && nodePathKey(node).indexOf(needle) !== -1;
+    }
+    return segs.has(segment);
+  }
+
   /* 判定单个节点是否命中某纵深（depthKey 为 'all' 时恒真）。 */
   function matches(node, depthKey) {
     if (depthKey === 'all') return true;
@@ -519,12 +675,16 @@
     if (!cfg) return true;
     var segs = nodeSegments(node);
     if (cfg.excludeSegments) {
-      for (var ex of cfg.excludeSegments) if (segs.has(ex)) return false;
+      for (var ex of cfg.excludeSegments) {
+        if (segmentHits(node, segs, ex)) return false;
+      }
     }
     if (cfg.ids && cfg.ids.has(node.id)) return true;
     if (cfg.communities && node.community && cfg.communities.has(node.community)) return true;
     if (cfg.segments) {
-      for (var seg of cfg.segments) if (segs.has(seg)) return true;
+      for (var seg of cfg.segments) {
+        if (segmentHits(node, segs, seg)) return true;
+      }
     }
     return false;
   }
@@ -562,6 +722,8 @@
     DEPTH_META: DEPTH_META,
     DEPTH_HUB_IDS: DEPTH_HUB_IDS,
     nodeSegments: nodeSegments,
+    nodePathKey: nodePathKey,
+    segmentHits: segmentHits,
     matches: matches,
     depthsForNode: depthsForNode,
     depthHubPath: depthHubPath,
