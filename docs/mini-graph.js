@@ -234,14 +234,14 @@
     svg.call(zoom).on('dblclick.zoom',null);
 
     var sim = d3.forceSimulation(nodes)
-      .force('link', d3.forceLink(edges).id(function(d){ return d.id; }).distance(60).strength(0.2))
+      .force('link', d3.forceLink(edges).id(function(d){ return d.id; }).distance(60).strength(0.32))
       .force('charge', d3.forceManyBody().strength(-200).distanceMax(300))
       .force('center', d3.forceCenter(W/2, H/2).strength(0.08))
-      .force('collision', d3.forceCollide().radius(function(d){ return nodeRadius(d) + 4; }).strength(0.35))
-      .force('x', d3.forceX(W/2).strength(0.08))
-      .force('y', d3.forceY(H/2).strength(0.08))
-      .velocityDecay(0.8)
-      .alphaDecay(0.06)
+      .force('collision', d3.forceCollide().radius(function(d){ return nodeRadius(d) + 4; }).strength(0.45))
+      .force('x', d3.forceX(W/2).strength(0.06))
+      .force('y', d3.forceY(H/2).strength(0.06))
+      .velocityDecay(0.52)
+      .alphaDecay(0.04)
       .stop();
 
     line = lineLayer.selectAll('line').data(edges).join('line')
@@ -348,15 +348,15 @@
       nodeG.attr('transform', function(d){ return 'translate('+d.x+','+d.y+')'; });
     });
 
-    // 静默预热后低 alpha 落稳，避免首页预览图初始震荡。
+    // 短预热去掉首帧毛刺后，以较高 alpha 开场，保留一次轻微回弹。
     sim.alpha(1);
-    for (var wi = 0; wi < 80; wi++) sim.tick();
+    for (var wi = 0; wi < 12; wi++) sim.tick();
     nodes.forEach(function (n) { n.vx = 0; n.vy = 0; });
     line
       .attr('x1', function(d){ return d.source.x; }).attr('y1', function(d){ return d.source.y; })
       .attr('x2', function(d){ return d.target.x; }).attr('y2', function(d){ return d.target.y; });
     nodeG.attr('transform', function(d){ return 'translate('+d.x+','+d.y+')'; });
-    sim.alpha(0.15).restart();
+    sim.alpha(0.7).restart();
 
     sim.on('end', function() {
       var allN = nodes.filter(function(n){ return n.x!=null; });
