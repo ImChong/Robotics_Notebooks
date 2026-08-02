@@ -2,7 +2,7 @@
 type: formalization
 tags: [kinematics, computer-vision, calibration, hand-eye, camera-model, embodied-ai, shenlan]
 status: complete
-updated: 2026-07-16
+updated: 2026-08-02
 related:
   - ../overview/shenlan-embodied-ai-fundamentals-series.md
   - ./homogeneous-coordinates-transform.md

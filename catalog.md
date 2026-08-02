@@ -1465,6 +1465,7 @@
 - [边缘计算与云端协同（Edge–Cloud Robotics）](wiki/concepts/edge-cloud-robotics.md) — 边缘–云端协同** 把机器人能力拆到 **低延迟本地闭环** 与 **高算力云端批处理**：边缘保安全与控制，云端保学习、存储与队级优化。 `📅unknown` `[wiki_page]`
 - [Embodied Data Cleaning (具身数据清洗)](wiki/concepts/embodied-data-cleaning.md) — 具身数据清洗**：在具身智能（Embodied AI）中，将人类示教或自动采集的原始“脏数据”转化为高质量、可用于训练的专家演示轨迹（Expert Trajectories）的过程。 `📅unknown` `[wiki_page]`
 - [概念：具身大模型实时性 ↔ 泛化能力取舍](wiki/concepts/embodied-fm-latency-generalization-tradeoff.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[wiki_page]`
+- [具身感知六种空间表征](wiki/concepts/embodied-perception-six-spatial-representations.md) — 具身感知六种空间表征**把常被并列混谈的 **2D 视觉、深度、点云、占据栅格/距离场、语义地图、隐式地图** 拆成感知栈上的不同层级：它们回答的问题不同（看见什么 → 多远 → 表面在哪 → 能 `📅unknown` `[wiki_page]`
 - [具身 RL 最小闭环（Embodied RL Minimal Closed Loop）](wiki/concepts/embodied-rl-minimal-closed-loop.md) — 在具身智能里，**最小闭环**指：智能体与仿真（或真机）环境之间，每一步都能完成 **观测 → 决策 → 执行 → 物理推进 → 奖励反馈** 的完整回合，且各变量与 [MDP](../formali `📅unknown` `[wiki_page]`
 - [Embodied Scaling Laws (具身规模法则)](wiki/concepts/embodied-scaling-laws.md) — 具身规模法则**：在机器人学习中，随着训练数据（演示轨迹、仿真经验）、模型参数量和计算资源的增加，模型在未见任务、未见物体和未见环境上的表现呈现出可预测的性能提升趋势（通常遵循幂律分布）。 `📅unknown` `[wiki_page]`
 - [EtherCAT 协议基础](wiki/concepts/ethercat-protocol.md) — EtherCAT (Ethernet for Control Automation Technology)** 是目前人形机器人底层总线的首选协议。它解决了标准以太网因冲突检测（CSMA/CD）而 `📅unknown` `[wiki_page]`

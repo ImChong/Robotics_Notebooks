@@ -2,7 +2,7 @@
 type: query
 tags: [go2, unitree, lidar, slam, sam, semantic-mapping, quadruped, perception, lio]
 status: complete
-updated: 2026-07-26
+updated: 2026-08-02
 related:
   - ../entities/point-lio-unilidar.md
   - ../entities/autonomy-stack-go2.md

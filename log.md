@@ -1,3 +1,11 @@
+## [2026-08-02] ingest | sources/blogs/wechat_shenlan_six_spatial_representations_embodied_perception.md — 具身感知六种空间表征；wiki/concepts/embodied-perception-six-spatial-representations.md
+
+- **触发：** 用户指定微信 <https://mp.weixin.qq.com/s/lWvdz9cjuurS7ikBkZk0vQ>（深蓝具身智能 · 六种空间表征分层）
+- **抓取：** Agent Reach v1.5.0 + `wechat-article-for-ai`（已确认安装）；`--no-images`
+- **Sources：** [`sources/blogs/wechat_shenlan_six_spatial_representations_embodied_perception.md`](sources/blogs/wechat_shenlan_six_spatial_representations_embodied_perception.md)、[`sources/raw/wechat_shenlan_six_spatial_representations_2026-08-02/`](sources/raw/wechat_shenlan_six_spatial_representations_2026-08-02/)
+- **Wiki：** [`wiki/concepts/embodied-perception-six-spatial-representations.md`](wiki/concepts/embodied-perception-six-spatial-representations.md)
+- **交叉：** [`2d-to-3d-semantic-lifting-gap`](wiki/concepts/2d-to-3d-semantic-lifting-gap.md)、[`robot-perception-stack-selection-loop`](wiki/queries/robot-perception-stack-selection-loop.md)、[`navigation-slam-autonomy-stack`](wiki/overview/navigation-slam-autonomy-stack.md)、[`isaac-ros-nvblox`](wiki/entities/isaac-ros-nvblox.md)、[`go2-3d-semantic-mapping-sam-pipeline`](wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md)
+
 ## [2026-08-02] structural | docs/depth-filters.js — 修复路线视图多 token 片段漏匹配并补齐各纵深命中集
 
 - **问题：** `nodeSegments` 按 `/._-` 切词后，`loco-manip` / `motion-generation` / `sim-to-real` 等带连字符的 segments 几乎永不命中；Loco-Manip 路线视图仅剩枢纽+任务页（约 2 节点），动作生成等路线同样偏空

@@ -2,7 +2,7 @@
 type: query
 tags: [perception, computer-vision, object-detection, segmentation, semantic-mapping, 2d-to-3d, robotics, selection-loop]
 status: complete
-updated: 2026-07-27
+updated: 2026-08-02
 summary: "机器人视觉感知栈选型闭环知识链：把 传感与标定 → 2D 检测/分割选型 → 2D→3D 提升与语义建图 → 下游策略消费 四层感知栈，从分散的检测/分割/语义建图实体页沉淀为一条端到端选型决策链，逐层说明每层选什么、精度 vs 时延/算力如何取舍、闭集准 vs 开放词汇泛、2D 框够用 vs 必须 3D 语义几何、感知频率 ≠ 控制闭环带宽。"
 sources:
   - ../../sources/papers/yolo_arxiv_1506_02640.md
@@ -11,7 +11,9 @@ sources:
   - ../../sources/papers/sam2_arxiv_2408_00714.md
   - ../../sources/repos/ultralytics.md
   - ../../sources/repos/ov-sam3d.md
+  - ../../sources/blogs/wechat_shenlan_six_spatial_representations_embodied_perception.md
 related:
+  - ../concepts/embodied-perception-six-spatial-representations.md
   - ../concepts/2d-to-3d-semantic-lifting-gap.md
   - ../concepts/vision-backbones.md
   - ../concepts/perception-coordinate-postprocessing.md
@@ -172,6 +174,7 @@ flowchart TD
 - 姊妹 Query（输出端）：[执行器驱动链选型闭环](./actuator-drive-chain-selection-loop.md) — 策略力矩指令怎么被硬件执行；本页是其**输入端镜像**（感知信号怎么被策略消费）
 - 姊妹 Query：[具身大模型分类学选型闭环](./embodied-fm-taxonomy-loop.md) — 选哪一类策略，本页承接「策略要消费的感知信号从哪来」
 - 姊妹 Query：[具身大模型评测基准选型闭环](./embodied-eval-benchmark-selection-loop.md) — 怎么评测/证明它
+- 表征语义分层：[具身感知六种空间表征](../concepts/embodied-perception-six-spatial-representations.md) — 2D/深度/点云/占据/语义/隐式各自回答什么；与本页工程选型链互补
 - 物理根因专页：[2D→3D 语义提升 Gap](../concepts/2d-to-3d-semantic-lifting-gap.md) — ③层「2D 结果提升到 3D 语义几何」的信息损失与歧义
 - 层内深化：[目标检测模型选型 Query](./object-detection-model-selection.md) — ②层检测器三轴选型
 - 层内深化：[机器人感知骨干/表征选型 Query](./perception-backbone-selection.md) — ②层骨干/表征选型（分类骨干 vs 检测头 vs 通用预训练表征）
