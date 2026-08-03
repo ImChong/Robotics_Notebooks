@@ -1,13 +1,78 @@
 {
   "generated_at": "2026-08-03",
-  "node_count": 2075,
-  "edge_count": 18764,
+  "node_count": 2076,
+  "edge_count": 18778,
   "coverage": {
-    "covered": 2051,
-    "total": 2051,
+    "covered": 2052,
+    "total": 2052,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-humanoid-leg-generative-design-dynamics.md",
+      "detail_id": "entity-paper-humanoid-leg-generative-design-dynamics",
+      "label": "动力学仿真驱动的人形机器人下肢衍生式设计",
+      "type": "entity",
+      "recency": "2026-08-03",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/humanoid-mechanical-layout-design.md",
+      "detail_id": "wiki-concepts-humanoid-mechanical-layout-design",
+      "label": "人形整机机械布局设计（构型 → 传动布置 → 质量分布 → 刚度与公差）",
+      "type": "concept",
+      "recency": "2026-08-03",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/overview/humanoid-hardware-101-chassis-materials.md",
+      "detail_id": "wiki-overview-humanoid-hardware-101-chassis-materials",
+      "label": "Humanoid Hardware 101 · 01：机身与材料",
+      "type": "overview",
+      "recency": "2026-08-03",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/overview/humanoid-actuator-102-load-and-mass-spiral.md",
+      "detail_id": "wiki-overview-humanoid-actuator-102-load-and-mass-spiral",
+      "label": "Actuator 102 · 01：负载与质量螺旋",
+      "type": "overview",
+      "recency": "2026-08-03",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "roadmap/depth-humanoid-hardware-design.md",
+      "detail_id": "roadmap-depth-humanoid-hardware-design",
+      "label": "路线（纵深）：如果目标是人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）",
+      "type": "roadmap_page",
+      "recency": "2026-08-03",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md",
+      "detail_id": "wiki-concepts-planetary-roller-screw-humanoid-leg-actuation",
+      "label": "人形腿部行星滚柱丝杠直线驱动（PRS 路线）",
+      "type": "concept",
+      "recency": "2026-08-03",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/queries/humanoid-hardware-selection.md",
+      "detail_id": "wiki-queries-humanoid-hardware-selection",
+      "label": "人形机器人硬件选型指南",
+      "type": "query",
+      "recency": "2026-08-03",
+      "source": "log.md",
+      "action": "maintained"
+    },
     {
       "path": "wiki/entities/paper-robo-harness.md",
       "detail_id": "entity-paper-robo-harness",
@@ -148,94 +213,21 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
-    },
-    {
-      "path": "wiki/entities/unreal-mcp.md",
-      "detail_id": "entity-unreal-mcp",
-      "label": "Unreal MCP（Unreal Editor 内嵌 MCP Server）",
-      "type": "entity",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
-    },
-    {
-      "path": "wiki/concepts/remote-procedure-call.md",
-      "detail_id": "wiki-concepts-remote-procedure-call",
-      "label": "远程过程调用（Remote Procedure Call, RPC）",
-      "type": "concept",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-01-foundational-rl.md",
-      "detail_id": "wiki-overview-paper-notebook-category-01-foundational-rl",
-      "label": "Paper Notebooks · Foundational RL",
-      "type": "overview",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-02-motion-retargeting.md",
-      "detail_id": "wiki-overview-paper-notebook-category-02-motion-retargeting",
-      "label": "Paper Notebooks · Motion Retargeting",
-      "type": "overview",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-03-high-impact-selection.md",
-      "detail_id": "wiki-overview-paper-notebook-category-03-high-impact-selection",
-      "label": "Paper Notebooks · High Impact Selection",
-      "type": "overview",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md",
-      "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",
-      "label": "Paper Notebooks · Loco-Manipulation and WBC",
-      "type": "overview",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-05-locomotion.md",
-      "detail_id": "wiki-overview-paper-notebook-category-05-locomotion",
-      "label": "Paper Notebooks · Locomotion",
-      "type": "overview",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-robo-harness.md",
-    "detail_id": "entity-paper-robo-harness",
-    "label": "RoboHarness（异构策略编排 · arXiv:2607.18060）",
+    "path": "wiki/entities/paper-humanoid-leg-generative-design-dynamics.md",
+    "detail_id": "entity-paper-humanoid-leg-generative-design-dynamics",
+    "label": "动力学仿真驱动的人形机器人下肢衍生式设计",
     "type": "entity",
     "recency": "2026-08-03",
     "source": "log.md",
-    "action": "maintained",
-    "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "action": "maintained"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 277
+      "size": 276
     },
     {
       "label": "操作",

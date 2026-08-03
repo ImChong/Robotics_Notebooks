@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, hardware, actuator, leg, linear-actuator, tesla]
 status: complete
-updated: 2026-05-18
+updated: 2026-08-03
 related:
   - ../entities/humanoid-robot.md
   - ../tasks/locomotion.md
@@ -11,8 +11,10 @@ related:
   - ./sim2real.md
   - ../concepts/humanoid-parallel-joint-kinematics.md
   - ../queries/actuator-drive-chain-selection-loop.md
+  - ../entities/paper-humanoid-leg-generative-design-dynamics.md
 sources:
   - ../../sources/blogs/wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md
+  - ../../sources/papers/humanoid_leg_generative_design_hust_j_260645.md
 summary: "人形腿部用行星滚柱丝杠（PRS）把电机旋转转为直线推力、再经连杆映射为关节角，是在负载/自锁/布置与力控路径上偏向「工业实用主义」的一类执行器路线，与高动态全旋转关节路线形成典型权衡。"
 ---
 
@@ -88,6 +90,7 @@ flowchart LR
 - [Sim2Real](./sim2real.md)：执行器非线性与摩擦对迁移的影响。
 - [Query：人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)：在多种路线间做决策时的检查清单入口。
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 行星滚柱丝杠是①层执行器传动机构（线性执行器）的一种选型方案
+- [动力学仿真驱动的人形下肢衍生式设计](../entities/paper-humanoid-leg-generative-design-dynamics.md) — 对照电液混合 EHA+连杆的直线推力布置
 
 ## 推荐继续阅读
 
@@ -98,3 +101,4 @@ flowchart LR
 
 - [特斯拉人形机器人腿部关节为什么选择行星滚柱丝杠？（微信公众号原文）](https://mp.weixin.qq.com/s/webqJRQJREZdABw8bdl68w)
 - [wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md（仓库内归档）](../../sources/blogs/wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md)
+- [人形下肢衍生式设计论文归档](../../sources/papers/humanoid_leg_generative_design_hust_j_260645.md) — EHA 直线推力对照案例

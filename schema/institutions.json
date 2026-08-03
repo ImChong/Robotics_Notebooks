@@ -311,6 +311,13 @@
         "allen-ai"
       ]
     },
+    "avic-facri": {
+      "label": "中航工业西安飞行自动控制研究所（AVIC FACRI）",
+      "aliases": [
+        "avic-facri",
+        "facri"
+      ]
+    },
     "amazon": {
       "label": "亚马逊（Amazon）",
       "aliases": [
