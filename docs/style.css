@@ -1565,6 +1565,16 @@ button.home-wiki-heatmap-cell.is-active {
   stroke: var(--accent);
   stroke-width: 2.4px;
 }
+/* 正文内链 ↔ 迷你图联动高亮：悬停一侧，另一侧同一节点点亮 */
+.detail-mini-map-svg .mini-node-linked circle {
+  stroke: var(--accent);
+  stroke-width: 2.4px;
+  fill-opacity: 1;
+}
+.detail-mini-map-svg .mini-node-linked text {
+  fill: var(--text);
+  font-weight: 700;
+}
 .detail-content-sync {
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -2080,6 +2090,11 @@ button.home-wiki-heatmap-cell.is-active {
 }
 .detail-markdown-body a {
   color: var(--accent);
+}
+.detail-markdown-body a.detail-inline-link-linked {
+  background: rgba(0, 212, 255, 0.14);
+  border-radius: 4px;
+  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.14);
 }
 .detail-markdown-body code {
   padding: .12em .38em;
