@@ -1231,6 +1231,7 @@
 - [World Action Planner](wiki/entities/paper-world-action-planner.md) — World Action Planner（WAP）**（*Generalizable Decision-Making with Action-Conditioned World Models*， `📅unknown` `[entity_page]`
 - [World Translation：反向动力学提取的 Sim2Real 域翻译](wiki/entities/paper-world-translation.md) — World Translation** 从观测到的状态转移反向抽取隐含动力学，再以无配对域翻译在仿真与现实间保留动力学内容、迁移域风格。 `📅unknown` `[entity_page]`
 - [Worldscape-MoE（Unified Mixture-of-Experts World Model · arXiv:2607.03964）](wiki/entities/paper-worldscape-moe-heterogeneous-action.md) — Worldscape-MoE**（*Worldscape-MoE: A Unified Mixture-of-Experts World Model for Scalable Heterogene `📅unknown` `[entity_page]`
+- [WorldScape Policy 2.0（Reasoning-Augmented Memory WAM · arXiv:2607.18840）](wiki/entities/paper-worldscape-policy-2.md) — WorldScape Policy 2.0**（*Empowering Steerable World Action Modeling with Reasoning-Augmented Memor `📅unknown` `[entity_page]`
 - [WorldScore（统一世界生成评测基准）](wiki/entities/paper-worldscore.md) — WorldScore**（arXiv:2504.00983，[项目页](https://haoyi-duan.github. `📅unknown` `[entity_page]`
 - [WorldVLN（空中 VLN · 自回归 World Action Model）](wiki/entities/paper-worldvln-aerial-vln-wam.md) — WorldVLN**（*Autoregressive World Action Model for Aerial Vision-Language Navigation*，arXiv:2605.15 `📅unknown` `[entity_page]`
 - [WorldWeaver（流式多智能体世界状态寄存器 · arXiv:2607.21594）](wiki/entities/paper-worldweaver.md) — WorldWeaver**（\(\mathbf{W}^{\mathbf{2}}\)，*Streaming Multi-Agent Autoregressive Diffusion Model wi `📅unknown` `[entity_page]`

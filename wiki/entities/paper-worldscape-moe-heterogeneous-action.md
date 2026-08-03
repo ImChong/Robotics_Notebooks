@@ -9,7 +9,7 @@ tags:
   - tsinghua
   - manifold
 status: complete
-updated: 2026-07-11
+updated: 2026-08-03
 arxiv: "2607.03964"
 related:
   - ../overview/wm-action-consequence-category-01-wam-action-prediction.md
@@ -18,6 +18,7 @@ related:
   - ../methods/vla.md
   - ../overview/robot-world-models-action-consequence-technology-map.md
   - ../entities/paper-gigaworld-1-policy-evaluation.md
+  - ../entities/paper-worldscape-policy-2.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
 summary: "Worldscape-MoE（arXiv:2607.03964）：DiT 共享专家学通用场景动力学 + 控制专属专家处理相机/关节/手部异构动作；WorldArena EWM 62.84、locomotion 0.7556；渐进 MoE 微调可扩展新模态。"
@@ -126,6 +127,7 @@ flowchart TB
 | **Genie / Matrix-Game / HY-World** | **仅 camera/nav 控制岛** |
 | **Ctrl-World / Cosmos-Predict** | **仅 robot action 岛** |
 | **Hand2World / Generated Reality** | **仅 egocentric hand 岛** |
+| **[WorldScape Policy 2.0](./paper-worldscape-policy-2.md)** | **同 Manifold AI 的下游 WAM 策略**：本文解异构动作**接口**，2.0 解长程**历史组织**（事件记忆 + 视觉记忆分层）并直出动作 |
 | **DSWAM / DynaWM** | **下游 WAM 策略**；Worldscape 偏 **上游可控视频 WM** |
 
 ## 常见误区或局限
@@ -141,6 +143,7 @@ flowchart TB
 - [World Action Models](../concepts/world-action-models.md) — 下游 WAM 与上游 WM 分层
 - [Generative World Models](../methods/generative-world-models.md) — DiT 视频 WM 技术栈
 - [GigaWorld-1](./paper-gigaworld-1-policy-evaluation.md) — 规模化评估对照
+- [WorldScape Policy 2.0](./paper-worldscape-policy-2.md) — 同团队下游 WAM 策略
 
 ## 推荐继续阅读
 

@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-08-02
+updated: 2026-08-03
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型。"
 related:
   - ../../roadmap/depth-wam.md
@@ -28,6 +28,7 @@ related:
   - ../entities/paper-x-foresight.md
   - ../entities/paper-x-mind.md
   - ../entities/paper-world-action-planner.md
+  - ../entities/paper-worldscape-policy-2.md
   - ../tasks/vision-language-navigation.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
   - ../overview/wam-motion-control-five-paths.md
@@ -61,6 +62,7 @@ sources:
   - ../../sources/papers/x_foresight_arxiv_2605_24892.md
   - ../../sources/papers/x_mind_arxiv_2606_28758.md
   - ../../sources/papers/world_action_planner_arxiv_2607_27599.md
+  - ../../sources/papers/worldscape_policy_2_arxiv_2607_18840.md
   - ../../sources/repos/awesome-wam-openmoss.md
   - ../../sources/sites/awesome-wam-openmoss.md
   - ../../sources/repos/dexmal_opendw.md
@@ -137,6 +139,8 @@ sources:
 **文献实例（Cascaded 族 + latent video-motion 先验 · 人形 loco-manip）**：[Being-M0.7](../entities/paper-being-m07-humanoid-latent-wam.md) 在 **>1 万小时** 人中心混合模态（配对 video–motion / 仅视频 / 仅动作）上预训练 **DINO 视觉 latent + head-root 紧凑 motion** 的 **video-motion MoT** 先验，再以 **future-conditioned action expert** 在 **G1 VR 全身遥操作** 轨迹上接地；推理 **低频刷新 prior 计划、高频复用 KV cache** 输出 action chunk，真机四任务定量 **7/15** vs GR00T-N1.6 **2/15**、Ψ0 **3/15**（BeingBeyond Technical Report，2026-07-14）。与 [Being-H0.7](../methods/being-h07.md) 同族「潜空间 WAM」，M0.7 显式面向 **全身 loco-manipulation** 与 **SONIC** 栈。
 
 **文献实例（Joint 族 + 移动操作三层对齐 · latent action + Dream Forcing）**：[ABot-M0.5](../entities/paper-abot-m05-mobile-manipulation-wam.md) 以 **Wan2.2** 视频骨干建立 **Video → 帧级 latent action → 可执行动作** 级联，用 **双层 D-MoT** 解耦 **移动/操作** 子空间，并以 **Dream Forcing** 在 **自生成视频 latent** 上训练逆动力学以对齐自回归 rollout；在 **RoboCasa365**（+Condensed Memory **46.6%**）、**RoboTwin 2.0**（**94.1%**）、**LIBERO-Plus 零样本 WAM 对照**（**83.4%**）与真机长程任务上报告领先表现（arXiv:2607.00678，AMAP CV Lab / 阿里巴巴）。
+
+**文献实例（Joint 族 + 语义/像素分层记忆 · 多模态可控接口）**：[WorldScape Policy 2.0](../entities/paper-worldscape-policy-2.md) 把「历史」拆成两条互不混用的通路——**VLM 分支** 维护 **长短期事件记忆**（global-history / local-active / event-boundary 三视图 + 紧凑全历史 bank，按 \(1-\cos\) 语义变化自动选边界，无需在线标注），检索后经**逐 token 门控**融合进 4 个隐式规划 token；**causal DiT 分支** 只留近 **4 个 chunk** 干净 VAE latent 作视觉 prefill，目标图/演示视频则作 **rollout 全程持久前缀**。训练用 **semantic forcing**（T5 事件字幕做 stop-grad 语义靶，\(\lambda_s=0.001\)）把 `fine` 模式的显式语义搬进 `auto` 模式隐通路。配套 **ManipEvent-5M**（4.89M 事件段 / 744K episode / 512M 帧）做事件级预训练。RoboTwin 2.0 标准榜 **94.3%**（已饱和，对同档仅 +0.2~+0.7），但 **C2R OOD 协议 47.9%**（Fast-WAM 39.1）与真机视觉提示任务（叠积木目标图/演示视频 **60%/70%** vs \(\pi_{0.5}\) 10%/20%）差距显著；消融显示记忆三件套的增益主要落在 randomized（**+8.81**）而非 clean（+5.14）。代码与权重截至 2026-08 未发布（arXiv:2607.18840，Manifold AI / 清华 / 上交）。
 
 **2026-07 动作后果横切面（策展）**：[动作后果技术地图](../overview/robot-world-models-action-consequence-technology-map.md) 将近期 WAM 按 **执行 / 修正 / 筛选** 三类接口归纳——[DSWAM](../entities/paper-dswam-dual-system-wam.md)（双系统直出动作块）、[DynaWM](../entities/paper-dynawm-vla-online-correction.md)（冻结 VLA + 在线流匹配修正）、[DreamSteer](../entities/paper-dreamsteer-vla-deployment-steering.md)（潜变量 WM 部署筛选）；接触与几何支路见 [VT-WAM](../entities/paper-vt-wam-visuotactile-contact-rich.md)、[𝒩₀-TWAM](../entities/paper-n0-twam.md)（触觉原生 Joint WAM，NeoData 规模化）、[MECo-WAM](../entities/paper-meco-wam-4d-geometry-cotraining.md)、[RynnWorld-4D](../entities/paper-rynnworld-4d-rgb-depth-flow.md)。
 

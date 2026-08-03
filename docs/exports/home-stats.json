@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-03",
-  "node_count": 2077,
-  "edge_count": 18789,
+  "node_count": 2078,
+  "edge_count": 18804,
   "coverage": {
-    "covered": 2053,
-    "total": 2053,
+    "covered": 2054,
+    "total": 2054,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -16,8 +16,7 @@
       "recency": "2026-08-03",
       "source": "log.md",
       "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/entities/sensenova-skills.md",
@@ -38,7 +37,7 @@
       "recency": "2026-08-03",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/methods/unified-multimodal-tokens.md",
@@ -47,8 +46,48 @@
       "type": "method",
       "recency": "2026-08-03",
       "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-worldscape-policy-2.md",
+      "detail_id": "entity-paper-worldscape-policy-2",
+      "label": "WorldScape Policy 2.0（Reasoning-Augmented Memory WAM · arXiv:2607.18840）",
+      "type": "entity",
+      "recency": "2026-08-03",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/concepts/world-action-models.md",
+      "detail_id": "wiki-concepts-world-action-models",
+      "label": "World Action Models（WAM，世界–动作模型）",
+      "type": "concept",
+      "recency": "2026-08-03",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/overview/wm-action-consequence-category-01-wam-action-prediction.md",
+      "detail_id": "wiki-overview-wm-action-consequence-category-01-wam-action-prediction",
+      "label": "世界模型动作后果分类 01：WAM 动作后果预测",
+      "type": "overview",
+      "recency": "2026-08-03",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-worldscape-moe-heterogeneous-action.md",
+      "detail_id": "entity-paper-worldscape-moe-heterogeneous-action",
+      "label": "Worldscape-MoE（Unified Mixture-of-Experts World Model · arXiv:2607.03964）",
+      "type": "entity",
+      "recency": "2026-08-03",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "生成式世界模型（Generative World Models） 社区"
     },
     {
       "path": "wiki/entities/paper-humanoid-leg-generative-design-dynamics.md",
@@ -168,49 +207,6 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
-      "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
-      "label": "VLA 开源复现景观（2025 策展）",
-      "type": "overview",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-pi05-open-world-vla.md",
-      "detail_id": "entity-paper-pi05-open-world-vla",
-      "label": "π0.5（HMI P059）",
-      "type": "entity",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/model-context-protocol.md",
-      "detail_id": "wiki-concepts-model-context-protocol",
-      "label": "Model Context Protocol（MCP）",
-      "type": "concept",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
-    },
-    {
-      "path": "wiki/entities/freecad-mcp.md",
-      "detail_id": "entity-freecad-mcp",
-      "label": "FreeCAD MCP",
-      "type": "entity",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -221,21 +217,20 @@
     "recency": "2026-08-03",
     "source": "log.md",
     "action": "added",
-    "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 214
-    },
-    {
-      "label": "人形强化学习运动控制",
-      "size": 142
+      "size": 229
     },
     {
       "label": "操作",
-      "size": 142
+      "size": 147
+    },
+    {
+      "label": "人形强化学习运动控制",
+      "size": 143
     },
     {
       "label": "移动操作",
@@ -263,7 +258,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 380,
+      "degree": 381,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
