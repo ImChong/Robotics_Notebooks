@@ -273,6 +273,24 @@ body.sponsor-dialog-open {
   border-radius: 50%;
   background: var(--accent);
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+  /* 「持续更新」语义：慢、弱呼吸；减动偏好见下方 media query */
+  animation: hero-badge-dot-breathe 2.6s ease-in-out infinite;
+}
+@keyframes hero-badge-dot-breathe {
+  0%, 100% {
+    opacity: 0.45;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 28%, transparent);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-badge-dot {
+    animation: none;
+    opacity: 1;
+  }
 }
 .hero .hero-title {
   font-size: clamp(2.05rem, 5vw, 3.35rem);
