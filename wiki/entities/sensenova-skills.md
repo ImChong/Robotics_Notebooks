@@ -9,8 +9,9 @@ tags:
   - deep-research
   - data-analysis
 status: complete
-updated: 2026-07-31
+updated: 2026-08-03
 related:
+  - ./sensenova-u1-5.md
   - ./hermes-agent.md
   - ./mattpocock-skills.md
   - ./video-shotcraft.md
@@ -92,6 +93,7 @@ flowchart LR
 
 ## 关联页面
 
+- [SenseNova-U1.5](sensenova-u1-5.md) — `sn-image-base` / `sn-infographic` 的模型后端（U1 系列，Apache-2.0，可自托管）
 - [Hermes Agent](hermes-agent.md) — 推荐运行时之一，`~/.hermes/skills/` 安装位
 - [Skills For Real Engineers（mattpocock）](mattpocock-skills.md) — **编码工程** 向 Agent Skills 对照
 - [video-shotcraft](video-shotcraft.md) — **Remotion 产品宣传片** 垂直 Agent Skill（与办公 PPT/信息图互补的成片层）

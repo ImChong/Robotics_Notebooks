@@ -41,6 +41,7 @@
 
 ## 与本站 sources 的其它锚点
 
+- 模型后端：[sensenova-u1.md](sensenova-u1.md) — `sn-image-base` / `sn-infographic` 背后的 SenseNova U1 系列开源仓
 - 运行时对照：[nousresearch_hermes_agent.md](nousresearch_hermes_agent.md)
 - 编码技能对照：[mattpocock-skills.md](mattpocock-skills.md)
 - 流程方法论对照：[obra-superpowers.md](obra-superpowers.md)
