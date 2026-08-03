@@ -2256,6 +2256,30 @@
         "brown",
         "brown-university"
       ]
+    },
+    "mcgill": {
+      "label": "麦吉尔大学（McGill University）",
+      "aliases": [
+        "mcgill",
+        "mcgill-university"
+      ]
+    },
+    "utoronto": {
+      "label": "多伦多大学（University of Toronto）",
+      "aliases": [
+        "utoronto",
+        "toronto",
+        "university-of-toronto",
+        "u-of-t"
+      ]
+    },
+    "2012-labs": {
+      "label": "二零一二实验室（2012 Labs）",
+      "aliases": [
+        "2012-labs",
+        "2012labs",
+        "foundation-model-2012-labs"
+      ]
     }
   }
 }

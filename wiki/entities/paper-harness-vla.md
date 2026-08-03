@@ -19,7 +19,7 @@ tags:
   - hkust
   - zgca
 status: complete
-updated: 2026-07-24
+updated: 2026-08-03
 arxiv: "2607.08448"
 code: https://github.com/RLinf/RPent
 related:
@@ -32,6 +32,7 @@ related:
   - ./lingbot-vla.md
   - ./rldx-1.md
   - ./paper-eventvla-visual-evidence-memory.md
+  - ./paper-robo-harness.md
 sources:
   - ../../sources/papers/harness_vla_arxiv_2607_08448.md
   - ../../sources/sites/harnessvla-github-io.md
@@ -202,6 +203,7 @@ sequenceDiagram
 
 - **误区：** 把 Harness VLA 当成「又训了一个更强 VLA」——增益来自 **harness + 记忆**，权重冻结。
 - **误区：** 与 [ASPIRE](../methods/aspire.md) 混同——ASPIRE **扩张**可验证技能库；本文 **固定**原语词汇。
+- **误区：** 与 [RoboHarness](./paper-robo-harness.md)（arXiv:2607.18060）混名——后者编排 **异构策略族**（VLA+RL+TAMP）并用 Memory Bridge 交接；本文是 **冻结单族 VLA** 的原语 harness。
 - **局限：** 规划器与低层 VLA 仍是 **开环反馈**（论文 §5）；缺联合 RL / 偏好微调；稠密场景下缺细粒度 caption 约束结构推理。
 - **工程风险：** 依赖商业 LLM API 与仿真/权重栈；Pre-Alpha 仓接口可能快速演进。
 
@@ -211,6 +213,7 @@ sequenceDiagram
 - [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md) — 确定性编排 vs agentic JSON 原语
 - [ASPIRE](../methods/aspire.md) — code-as-policy + 技能库扩张对照
 - [DreamSteer](./paper-dreamsteer-vla-deployment-steering.md) — 另一类零微调 VLA steering
+- [RoboHarness](./paper-robo-harness.md) — 异构策略族编排 + Memory Bridge（勿与本页混名）
 - [VLA 开源复现景观](../overview/vla-open-source-repro-landscape-2025.md) — RPent / RLinf 栈入口
 - [Manipulation](../tasks/manipulation.md) — LIBERO / RoboCasa / RoboTwin 任务背景
 - [LingBot-VLA](./lingbot-vla.md) — RoboTwin C2R 冻结后端

@@ -1,3 +1,12 @@
+## [2026-08-03] ingest | sources/papers/robo_harness_arxiv_2607_18060.md + sites/robo-harness-com.md + repos/robo-harness.md — RoboHarness 异构策略编排；升格 wiki/entities/paper-robo-harness.md
+
+- **触发：** 用户指定项目主页 <https://robo-harness.com> 与论文 <https://arxiv.org/abs/2607.18060>
+- **Sources：** [`sources/papers/robo_harness_arxiv_2607_18060.md`](sources/papers/robo_harness_arxiv_2607_18060.md)、[`sources/sites/robo-harness-com.md`](sources/sites/robo-harness-com.md)、[`sources/repos/robo-harness.md`](sources/repos/robo-harness.md)
+- **Wiki：** [`wiki/entities/paper-robo-harness.md`](wiki/entities/paper-robo-harness.md)
+- **交叉：** [`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/entities/paper-harness-vla.md`](wiki/entities/paper-harness-vla.md)、[`wiki/concepts/behavior-tree-vla-orchestration.md`](wiki/concepts/behavior-tree-vla-orchestration.md)、[`wiki/entities/paper-gap-graph-as-policy.md`](wiki/entities/paper-gap-graph-as-policy.md)、[`wiki/overview/vla-open-source-repro-landscape-2025.md`](wiki/overview/vla-open-source-repro-landscape-2025.md)、[`wiki/entities/paper-pi05-open-world-vla.md`](wiki/entities/paper-pi05-open-world-vla.md)
+- **机构：** 注册 `mcgill`、`utoronto`、`2012-labs`；已有 `huawei`、`ubc`
+- **开源：** **部分开源（占位仓）** — 项目页 Code → `markli1hoshipu/RoboHarness`，仓内为静态站镜像，无可运行 harness；底层 π₀.₅ / OpenVLA-OFT 权重另开源
+
 ## [2026-08-03] ingest | sources/sites/anthropic-model-context-protocol.md + modelcontextprotocol-io.md — MCP 协议一手资料；升格 wiki/concepts/model-context-protocol.md
 
 - **触发：** 用户要求查找并 ingest MCP 相关一手资料（此前库内仅有 FreeCAD/UE 等应用桥，缺协议层）
