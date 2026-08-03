@@ -2,7 +2,7 @@
 type: concept
 tags: [systems-engineering, networking, rpc, grpc, middleware, ros2, google, ietf, xerox-parc, cncf]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-03
 related:
   - ../entities/grpc.md
   - ./ros2-basics.md
@@ -10,6 +10,7 @@ related:
   - ./rmw-interface.md
   - ./network-protocol-stack.md
   - ./lcm-basics.md
+  - ./model-context-protocol.md
   - ../comparisons/ros2-vs-lcm.md
   - ../queries/real-time-control-middleware-guide.md
   - ../overview/hub-communication.md
@@ -20,6 +21,7 @@ sources:
   - ../../sources/sites/grpc-io-docs.md
   - ../../sources/repos/grpc.md
   - ../../sources/sites/ros2-official-documentation.md
+  - ../../sources/sites/modelcontextprotocol-io.md
 summary: "Remote Procedure Call（RPC）：把本地过程调用语义扩展到网络——请求/响应、stub、绑定与失败语义；现代默认见 gRPC，机器人中常对应 ROS Service 风格原语（勿与腿足 Regularized Predictive Control 的 RPC 缩写混淆）。"
 ---
 
@@ -130,6 +132,7 @@ flowchart LR
 - [LCM 基础](./lcm-basics.md)
 - [通信协议知识链](../overview/hub-communication.md)
 - [FreeCAD MCP](../entities/freecad-mcp.md)（本地 Addon RPC 暴露）
+- [Model Context Protocol（MCP）](./model-context-protocol.md)（JSON-RPC 上的 LLM 工具上下文标准）
 
 ## 参考来源
 
@@ -138,9 +141,11 @@ flowchart LR
 - [gRPC 官方文档](../../sources/sites/grpc-io-docs.md)
 - [sources/repos/grpc.md](../../sources/repos/grpc.md)
 - [ROS 2 官方文档索引](../../sources/sites/ros2-official-documentation.md)（Services = 请求/响应同步 RPC）
+- [MCP 官方文档归档](../../sources/sites/modelcontextprotocol-io.md)
 
 ## 推荐继续阅读
 
 - Birrell & Nelson PDF：<http://birrell.org/andrew/papers/ImplementingRPC.pdf>
 - RFC 5531：<https://www.rfc-editor.org/rfc/rfc5531>
 - gRPC Core concepts：<https://grpc.io/docs/what-is-grpc/core-concepts/>
+- MCP Architecture：<https://modelcontextprotocol.io/docs/2026-07-28/learn/architecture>

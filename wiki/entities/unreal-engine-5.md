@@ -2,7 +2,7 @@
 type: entity
 tags: [software, unreal-engine, epic-games, simulation, rendering, game-engine, photorealistic]
 status: complete
-updated: 2026-07-26
+updated: 2026-08-03
 related:
   - ./unity-engine.md
   - ./metahuman.md
@@ -10,6 +10,7 @@ related:
   - ./carla.md
   - ./spear-sim.md
   - ./matrix-simulation-platform.md
+  - ../concepts/model-context-protocol.md
   - ../concepts/sim2real.md
   - ../concepts/procedural-terrain-generation.md
   - ../queries/simulator-selection-guide.md
@@ -18,6 +19,7 @@ related:
 sources:
   - ../../sources/sites/unreal-engine-5-com.md
   - ../../sources/sites/unreal-engine-5-8-docs.md
+  - ../../sources/sites/modelcontextprotocol-io.md
   - ../../sources/repos/epicgames-github-org.md
   - ../../sources/repos/unrealengine-github.md
 summary: "Epic Unreal Engine 5 是跨游戏、影视与仿真的实时 3D 引擎：Nanite/Lumen/World Partition 支撑大规模高保真世界，Chaos 提供物理与破坏，5.8 起 MCP 插件连接 agentic AI；机器人栈中常作 AirSim/CARLA/SPEAR/MetaHuman/MATRiX 的视觉与场景宿主。"
@@ -35,7 +37,7 @@ summary: "Epic Unreal Engine 5 是跨游戏、影视与仿真的实时 3D 引擎
 | GI | Global Illumination | 全局光照；Lumen 提供动态 GI |
 | TSR | Temporal Super Resolution | 时域超分辨率升采样，平衡画质与帧率 |
 | PCG | Procedural Content Generation | 程序化内容生成，可脚本化场景布局 |
-| MCP | Model Context Protocol | 5.8 Experimental 插件，连接 LLM agent 与编辑器 |
+| MCP | Model Context Protocol | 5.8 Experimental 插件，连接 LLM agent 与编辑器；协议见 [MCP](../concepts/model-context-protocol.md) |
 | Chaos | Chaos Physics | UE 内置物理求解器（刚体、布料、破坏等） |
 | GT | Ground Truth | 仿真标注真值；SPEAR 等库在 UE 上导出深度/语义等 |
 
@@ -115,6 +117,7 @@ flowchart TB
 
 ## 关联页面
 
+- [Model Context Protocol（MCP）](../concepts/model-context-protocol.md) — 5.8 编辑器 MCP 插件所依的开放协议
 - [Unity Engine](./unity-engine.md) — 另一主流实时 3D 宿主（C# / 跨平台 / Flightmare 等）
 - [MetaHuman](./metahuman.md) — UE 生态内数字人创作与表演捕捉
 - [SPEAR](./spear-sim.md) — 任意 UE 项目的 Python 可编程仿真与 GT

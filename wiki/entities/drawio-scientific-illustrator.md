@@ -12,7 +12,7 @@ tags:
   - open-source
   - agent-infrastructure
 status: complete
-updated: 2026-07-28
+updated: 2026-08-03
 related:
   - ./freecad-mcp.md
   - ./cad-skills.md
@@ -21,11 +21,13 @@ related:
   - ./manim.md
   - ./3dgenstudio.md
   - ./mattpocock-skills.md
+  - ../concepts/model-context-protocol.md
   - ../concepts/remote-procedure-call.md
   - ../references/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
 sources:
   - ../../sources/repos/drawio-scientific-illustrator.md
+  - ../../sources/sites/modelcontextprotocol-io.md
 summary: "Draw.io Scientific Illustrator（icebird1998）是 Codex 插件：本机 MCP 直连可见 draw.io 画布的图模型 API，按步进绘制可编辑科研插图并导出 .drawio/PNG/SVG/PDF——拒绝 OS 键鼠自动化与 XML-first。"
 ---
 
@@ -41,7 +43,7 @@ summary: "Draw.io Scientific Illustrator（icebird1998）是 Codex 插件：本�
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| MCP | Model Context Protocol | 代理与外部工具/数据源的开放互操作协议 |
+| MCP | Model Context Protocol | 代理与外部工具/数据源的开放互操作协议；见 [MCP 概念页](../concepts/model-context-protocol.md) |
 | draw.io | diagrams.net desktop | 开源桌面矢量图编辑器；本插件的可见画布宿主 |
 | SKILL.md | Agent Skill Manifest | Agent Skills 约定下的技能入口与硬边界 |
 | PNG | Portable Network Graphics | 常用审图/交付位图格式；推荐导出宽度约 2000 px |
@@ -167,6 +169,7 @@ sequenceDiagram
 - [Manim](./manim.md) — **程序化数学/技术讲解动画**
 - [3D Gen Studio](./3dgenstudio.md) — ComfyUI 网格生产 + MCP（三维资产，非 2D 框图）
 - [Skills For Real Engineers（mattpocock）](./mattpocock-skills.md) — 通用编码工程技能对照
+- [Model Context Protocol（MCP）](../concepts/model-context-protocol.md) — 协议层 Host/Client/Server 与传输
 - [远程过程调用（RPC）](../concepts/remote-procedure-call.md) — 本地工具桥与过程调用概念同族
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 知识编译 vs Skill/MCP 规约编译
 - [ingest 工作流](../../schema/ingest-workflow.md) — 本站资料入库规范
@@ -175,11 +178,12 @@ sequenceDiagram
 
 - [drawio-scientific-illustrator 仓库源归档（本站）](../../sources/repos/drawio-scientific-illustrator.md)
 - [icebird1998/drawio-scientific-illustrator（GitHub README）](https://github.com/icebird1998/drawio-scientific-illustrator)
+- [MCP 官方文档归档](../../sources/sites/modelcontextprotocol-io.md)
 - [PRIVACY.md](https://github.com/icebird1998/drawio-scientific-illustrator/blob/main/PRIVACY.md)
 
 ## 推荐继续阅读
 
 - [icebird1998/drawio-scientific-illustrator](https://github.com/icebird1998/drawio-scientific-illustrator) — 安装、推荐提示词与故障排查
 - [draw.io desktop](https://www.drawio.com/) — 画布宿主
-- [Model Context Protocol](https://modelcontextprotocol.io) — MCP 规范
+- [Model Context Protocol](https://modelcontextprotocol.io) — MCP 规范一手入口
 - [Agent Skills](https://agentskills.io/) — `SKILL.md` 约定

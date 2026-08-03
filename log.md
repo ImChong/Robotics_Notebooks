@@ -1,3 +1,12 @@
+## [2026-08-03] ingest | sources/sites/anthropic-model-context-protocol.md + modelcontextprotocol-io.md — MCP 协议一手资料；升格 wiki/concepts/model-context-protocol.md
+
+- **触发：** 用户要求查找并 ingest MCP 相关一手资料（此前库内仅有 FreeCAD/UE 等应用桥，缺协议层）
+- **Sources：** [`sources/sites/anthropic-model-context-protocol.md`](sources/sites/anthropic-model-context-protocol.md)（2024-11-25 Anthropic 开源公告）、[`sources/sites/modelcontextprotocol-io.md`](sources/sites/modelcontextprotocol-io.md)（官方文档 / Spec `2026-07-28`）、[`sources/repos/modelcontextprotocol.md`](sources/repos/modelcontextprotocol.md)（规范仓 + org SDK/Inspector/servers 索引）
+- **Wiki：** [`wiki/concepts/model-context-protocol.md`](wiki/concepts/model-context-protocol.md)
+- **交叉：** [`wiki/entities/freecad-mcp.md`](wiki/entities/freecad-mcp.md)、[`wiki/entities/drawio-scientific-illustrator.md`](wiki/entities/drawio-scientific-illustrator.md)、[`wiki/entities/dimensionalos-dimos.md`](wiki/entities/dimensionalos-dimos.md)、[`wiki/entities/hermes-agent.md`](wiki/entities/hermes-agent.md)、[`wiki/entities/unreal-engine-5.md`](wiki/entities/unreal-engine-5.md)、[`wiki/concepts/remote-procedure-call.md`](wiki/concepts/remote-procedure-call.md)
+- **机构：** 注册 [`schema/institutions.json`](schema/institutions.json) `anthropic`（人类智能（Anthropic））
+- **开源：** **已开源** — 规范/SDK/参考 servers 公开；规范仓许可正从 MIT 过渡到 Apache-2.0
+
 ## [2026-08-03] ingest | sources/sites/humanoid-robot-learning-paper-notebooks.md — 姊妹论文笔记站归档；补齐 26 个 wiki/overview 汇总页的 sources ingest 锚点
 
 - **触发：** `make lint` 的 Sources 覆盖率长期停在 2022/2048 (99%)，缺口全部落在 `wiki/overview/` 汇总页

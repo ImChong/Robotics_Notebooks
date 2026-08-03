@@ -51,6 +51,12 @@
         "openai"
       ]
     },
+    "anthropic": {
+      "label": "人类智能（Anthropic）",
+      "aliases": [
+        "anthropic"
+      ]
+    },
     "physical-intelligence": {
       "label": "物理智能（Physical Intelligence）",
       "aliases": [
