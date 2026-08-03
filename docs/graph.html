@@ -1896,6 +1896,18 @@
                  aria-label="按连接数显示前 N 个节点" />
         </div>
       </div>
+      <div id="filter-recency-section" class="filter-degree-section">
+        <div class="filter-section-title">更新时间 Top N</div>
+        <p class="filter-degree-hint">按最近活跃日保留最新 N 个；滑到最左偏最新，滑到最右为全部节点。可与连接数 Top N 同时生效（取交集）。</p>
+        <div class="slider-row">
+          <div class="slider-label">
+            <span>最新节点数</span>
+            <span class="slider-val" id="val-recency-top">全部</span>
+          </div>
+          <input type="range" id="sl-recency-top" min="10" max="10" value="10" step="1"
+                 aria-label="按更新时间显示最新 N 个节点" />
+        </div>
+      </div>
       <div class="filter-sections-scroll" id="filter-dimension-sections">
         <details class="filter-depth-section" id="filter-dimension-section" open>
           <summary class="filter-depth-summary">
@@ -2735,7 +2747,7 @@
     }
 
     function nodeLabelVisible(d) {
-      return nodeMatchesDegreeTop(d) && nodeMatchesCurrentFilter(d)
+      return nodeMatchesDegreeTop(d) && nodeMatchesRecencyTop(d) && nodeMatchesCurrentFilter(d)
         && nodeMatchesSearch(d) && nodeMatchesDepth(d) && nodeMatchesInstitutionFilter(d);
     }
 
@@ -3086,6 +3098,69 @@
       });
       slDegreeTop.addEventListener('change', () => {
         if (topDegreeIds) fitToScreen();
+      });
+    }
+
+    /* ── 更新时间 Top N 筛选（滑动条）：左=最新子集，右=全部；
+       排序口径与「更新明度渐变」一致（log.md 最近活跃日 activity / _recencyTs）；
+       无 activity 的节点视为最旧。与连接数 Top N 同时生效时取交集 ── */
+    const recencyTopMin = Math.min(10, totalNodeCount);
+    let topRecencyLimit = totalNodeCount;
+    let topRecencyIds = null;
+
+    function computeTopRecencyIds(limit) {
+      if (limit >= totalNodeCount) return null;
+      return new Set(
+        nodes.slice()
+          .sort((a, b) => {
+            const ta = a._recencyTs != null ? a._recencyTs : -Infinity;
+            const tb = b._recencyTs != null ? b._recencyTs : -Infinity;
+            if (tb !== ta) return tb - ta;
+            return a.id < b.id ? -1 : (a.id > b.id ? 1 : 0);
+          })
+          .slice(0, limit)
+          .map(n => n.id)
+      );
+    }
+
+    function nodeMatchesRecencyTop(d) {
+      return !topRecencyIds || topRecencyIds.has(d.id);
+    }
+
+    function updateRecencyTopLabel() {
+      const valEl = document.getElementById('val-recency-top');
+      if (!valEl) return;
+      valEl.textContent = topRecencyLimit >= totalNodeCount ? '全部' : String(topRecencyLimit);
+    }
+
+    function initRecencyTopSlider() {
+      const slider = document.getElementById('sl-recency-top');
+      if (!slider) return;
+      slider.min = String(recencyTopMin);
+      slider.max = String(totalNodeCount);
+      slider.value = String(topRecencyLimit);
+      updateRecencyTopLabel();
+    }
+
+    function setTopRecencyLimit(limit) {
+      topRecencyLimit = Math.max(recencyTopMin, Math.min(totalNodeCount, Number(limit)));
+      topRecencyIds = computeTopRecencyIds(topRecencyLimit);
+      const slider = document.getElementById('sl-recency-top');
+      if (slider) slider.value = String(topRecencyLimit);
+      updateRecencyTopLabel();
+      applyFilters();
+      updateFilterCount();
+    }
+
+    initRecencyTopSlider();
+    const slRecencyTop = document.getElementById('sl-recency-top');
+    if (slRecencyTop) {
+      slRecencyTop.addEventListener('input', ev => {
+        if (areFiltersLocked()) return;
+        setTopRecencyLimit(ev.target.value);
+      });
+      slRecencyTop.addEventListener('change', () => {
+        if (topRecencyIds) fitToScreen();
       });
     }
 
@@ -3938,7 +4013,8 @@
     }
 
     function hasActiveGraphFilter() {
-      return topDegreeIds !== null || activeFilters.size > 0 || searchQuery.length > 0
+      return topDegreeIds !== null || topRecencyIds !== null
+        || activeFilters.size > 0 || searchQuery.length > 0
         || focusedCommunityId || focusedType || focusedHealth !== null
         || activeInstitutions.size > 0 || currentDepth !== 'all';
     }
@@ -4269,6 +4345,9 @@
       topDegreeLimit = totalNodeCount;
       topDegreeIds = null;
       initDegreeTopSlider();
+      topRecencyLimit = totalNodeCount;
+      topRecencyIds = null;
+      initRecencyTopSlider();
       renderFilterPanel();
       renderInstitutionFilterSection();
       setActiveTopic('all');
@@ -4279,6 +4358,7 @@
     function updateFilterCount() {
       const count = activeFilters.size + activeInstitutions.size
         + (topDegreeIds ? 1 : 0)
+        + (topRecencyIds ? 1 : 0)
         + (currentDepth && currentDepth !== 'all' ? 1 : 0);
       const countEl = document.getElementById('filter-count');
       if (count > 0) {
@@ -4368,7 +4448,8 @@
       let visible = 0;
 
       node.each(function(d) {
-        const ok = nodeMatchesDegreeTop(d) && nodeMatchesCurrentFilter(d)
+        const ok = nodeMatchesDegreeTop(d) && nodeMatchesRecencyTop(d)
+          && nodeMatchesCurrentFilter(d)
           && nodeMatchesSearch(d) && nodeMatchesDepth(d) && nodeMatchesInstitutionFilter(d);
         if (ok) { visible++; visibleNodeIds.add(d.id); }
 
@@ -4403,6 +4484,7 @@
           const t = typeof e.target === 'object' ? e.target : nodes.find(n => n.id === e.target);
           if (!s || !t) return 0.2;
           return (nodeMatchesDegreeTop(s) && nodeMatchesDegreeTop(t)
+                  && nodeMatchesRecencyTop(s) && nodeMatchesRecencyTop(t)
                   && edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s) && nodeMatchesDepth(s) && nodeMatchesInstitutionFilter(s)
                   && edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t) && nodeMatchesDepth(t) && nodeMatchesInstitutionFilter(t)) ? 1 : 0.2;
         })
@@ -4412,6 +4494,7 @@
           const t = typeof e.target === 'object' ? e.target : nodes.find(n => n.id === e.target);
           if (!s || !t) return linkWidthBase * 0.5;
           const edgeOk = nodeMatchesDegreeTop(s) && nodeMatchesDegreeTop(t)
+            && nodeMatchesRecencyTop(s) && nodeMatchesRecencyTop(t)
             && edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s) && nodeMatchesDepth(s) && nodeMatchesInstitutionFilter(s)
             && edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t) && nodeMatchesDepth(t) && nodeMatchesInstitutionFilter(t);
           return edgeOk ? linkWidthBase : linkWidthBase * 0.5;
