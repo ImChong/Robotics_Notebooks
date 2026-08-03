@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-03
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 03：高影响力精选（26 篇深读笔记索引）。"
@@ -75,6 +75,8 @@ summary: "Paper Notebooks 分类 03：高影响力精选（26 篇深读笔记索
 
 - [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)
 - [schema/paper-notebook-index.json](../../schema/paper-notebook-index.json)
+- 站点来源归档：[humanoid-robot-learning-paper-notebooks](../../sources/sites/humanoid-robot-learning-paper-notebooks.md)
+- 本类论文 ingest 归档（节选）：[BFM 综述（arXiv:2506.20487）](../../sources/papers/bfm_survey_arxiv_2506_20487.md)、[HOVER：人形通用全身控制器](../../sources/papers/bfm_awesome_hover_arxiv_2410_21229.md)、[awesome-bfm-papers](../../sources/repos/awesome_bfm_papers.md)
 
 ## 推荐继续阅读
 

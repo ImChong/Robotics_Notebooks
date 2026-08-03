@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-wbc, whole-body-control, humanoid, balance, tsid]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-03
 summary: "全身控制（WBC）知识链汇总：质心/接触约束下的层级 QP、TSID/HQP 与 CBF 安全过滤，衔接 MPC 与 RL 策略的执行层。"
 ---
 
@@ -56,3 +56,4 @@ summary: "全身控制（WBC）知识链汇总：质心/接触约束下的层级
 
 - 本库归纳自 [Whole-Body Control](../concepts/whole-body-control.md)、[TSID](../concepts/tsid.md)、[HQP](../concepts/hqp.md)
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`wbc` 命中规则）
+- 上游原始资料（本链概念页共同的 ingest 来源）：[Whole-Body Control / TSID / HQP 核心论文](../../sources/papers/whole_body_control.md)、[PAC-MAN：感知感知 CBF-RL 全身安全（arXiv:2607.28623）](../../sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md)、[GentleHumanoid：上肢柔顺接触交互](../../sources/papers/gentlehumanoid_upper_body_compliance.md)

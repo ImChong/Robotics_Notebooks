@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-locomotion, gait, bipedal, walking, humanoid]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-03
 summary: "Locomotion 步态知识链汇总：双足/人形/四足在不同地形上的稳定移动，覆盖步态生成、ZMP/LIP、MPC 与 RL 路线及感知式越障。"
 ---
 
@@ -56,3 +56,4 @@ summary: "Locomotion 步态知识链汇总：双足/人形/四足在不同地形
 
 - 本库归纳自 [Locomotion 任务页](../tasks/locomotion.md) 及相关概念/方法页
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`locomotion` 命中规则）
+- 上游原始资料（本链概念页共同的 ingest 来源）：[模型预测控制（MPC）理论与机器人应用](../../sources/papers/mpc.md)、[步态规划与平衡恢复核心论文（ZMP / Capture Point / DCM）](../../sources/papers/footstep_and_balance.md)、[腿足 / 人形 RL 的「位置目标 + 底层 PD」动作接口](../../sources/papers/rl_pd_action_interface_locomotion.md)

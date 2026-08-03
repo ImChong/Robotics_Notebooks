@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-motion-retargeting, motion-retargeting, mocap, humanoid]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-03
 summary: "动作重定向知识链汇总：把人体/动物参考动作映射到人形与异构机器人骨架，衔接 MoCap、IK/优化重定向、AMP 先验与 WBT 训练数据的全链路导读。"
 ---
 
@@ -57,3 +57,4 @@ summary: "动作重定向知识链汇总：把人体/动物参考动作映射到
 
 - 本库归纳自 [Motion Retargeting](../concepts/motion-retargeting.md)、[Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md)
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`motion-retargeting` 命中规则）
+- 上游原始资料（本链概念页共同的 ingest 来源）：[Make Tracking Easy：神经运动重定向](../../sources/papers/neural_motion_retargeting_nmr.md)、[ReActor：物理感知运动重定向](../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md)、[AMP（2021）](../../sources/papers/amp.md)

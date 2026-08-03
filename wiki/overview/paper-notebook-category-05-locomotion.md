@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-03
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 05：行走运动（82 篇深读笔记索引）。"
@@ -116,6 +116,8 @@ summary: "Paper Notebooks 分类 05：行走运动（82 篇深读笔记索引）
 
 - [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)
 - [schema/paper-notebook-index.json](../../schema/paper-notebook-index.json)
+- 站点来源归档：[humanoid-robot-learning-paper-notebooks](../../sources/sites/humanoid-robot-learning-paper-notebooks.md)
+- 本类论文 ingest 归档（节选）：[AME：面向泛化腿足运动的注意力地图编码（arXiv:2506.09588）](../../sources/papers/ame_arxiv_2506_09588.md)、[人形 AMP 运动先验：19 篇论文 source 索引](../../sources/papers/humanoid_amp_survey_19_catalog.md)、[Humanoid Motion Intelligence](../../sources/repos/humanoid-motion-intelligence.md)
 
 ## 推荐继续阅读
 

@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-07-10
+updated: 2026-08-03
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 14：人体动作分析与生成（39 篇深读笔记索引）。"
@@ -71,6 +71,8 @@ summary: "Paper Notebooks 分类 14：人体动作分析与生成（39 篇深读
 
 - [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)
 - [schema/paper-notebook-index.json](../../schema/paper-notebook-index.json)
+- 站点来源归档：[humanoid-robot-learning-paper-notebooks](../../sources/sites/humanoid-robot-learning-paper-notebooks.md)
+- 本类论文 ingest 归档（节选）：[GENMO：人体动作通用模型](../../sources/papers/genmo.md)、[MotionMillion-Codes](../../sources/repos/motionmillion-codes.md)、[CondMDI（扩散式动作补间）](../../sources/repos/condmdi.md)
 
 ## 推荐继续阅读
 

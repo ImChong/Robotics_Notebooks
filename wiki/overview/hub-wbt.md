@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-wbt, whole-body-tracking, motion-tracking, humanoid]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-03
 summary: "全身运动跟踪（WBT）知识链汇总：参考采集→重定向→跟踪训练→跨具身→真机部署的端到端流水线，对比 SONIC/BeyondMimic/SD-AMP/Heracles 等路线。"
 ---
 
@@ -58,3 +58,4 @@ summary: "全身运动跟踪（WBT）知识链汇总：参考采集→重定向�
 
 - 本库归纳自 [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) 及 WBT 方法/对比页
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`wbt` 命中规则）
+- 上游原始资料（本链概念页共同的 ingest 来源）：[Sonic：大规模自然人形全身运动跟踪](../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md)、[BeyondMimic：从运动跟踪到引导扩散通用控制](../../sources/papers/bfm_awesome_beyondmimic_arxiv_2508_08241.md)、[SDAMP：走 / 跑 / 恢复统一控制（arXiv:2605.18611）](../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md)

@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-07-16
+updated: 2026-08-03
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 02：运动重定向（4 篇深读笔记索引）。"
@@ -36,6 +36,8 @@ summary: "Paper Notebooks 分类 02：运动重定向（4 篇深读笔记索引�
 
 - [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)
 - [schema/paper-notebook-index.json](../../schema/paper-notebook-index.json)
+- 站点来源归档：[humanoid-robot-learning-paper-notebooks](../../sources/sites/humanoid-robot-learning-paper-notebooks.md)
+- 本类论文 ingest 归档（节选）：[Retargeting Matters](../../sources/papers/humanoid_rl_stack_01_retargeting_matters_general_motion_retargeting_f.md)、[Make Tracking Easy](../../sources/papers/humanoid_rl_stack_02_make_tracking_easy_neural_motion_retargeting_for.md)、[人形 RL 身体系统栈：42 篇论文 source 索引](../../sources/papers/humanoid_rl_stack_42_catalog.md)
 
 ## 推荐继续阅读
 
