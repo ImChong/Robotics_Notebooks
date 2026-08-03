@@ -30,7 +30,7 @@
 ## 三、 风格对齐 (Aesthetic Refinement)
 
 - [ ] **引入 Technical Blueprint 风格**：
-    - [ ] 背景：采用深色调 (#0d1117) 配合细密网格线 (Dot Grid)。
+    - [x] 背景：暗色主题底色改为 `#0d1117`（与 `graph-3d.js` 画布同色，2D/3D 切换无色差），配套调深 `--bg-alt`/`--surface-strong` `#161b22`、`--border` `#30363d`、`--border-strong` `#6e7681`、`--text` `#e6edf3`、`--text-muted` `#9ba4b0`，`theme-color` / `manifest.theme_color` 同步 `#0d1117`；全站叠加细密点阵（`--grid-size: 22px` + `--grid-dot`，`body` 背景图与 `.hero-backdrop::before` 共用同一尺寸、同为文档原点且随内容滚动，叠加不产生摩尔纹；亮色主题 `--grid-dot: transparent` 保持纯净底不变）。对比度实测（暗色）：正文 16.0:1 / 次要文字 7.5:1 / 链接 6.9:1，均高于改动前（6.2:1）。
     - [ ] 字体：标题切换为工程感更强的 `DM Mono`，正文优化衬线比例。
 - [x] **响应式体验优化**：
     - [x] 确保极简后的首页在手机端首屏就能看到搜索框和图谱入口。
