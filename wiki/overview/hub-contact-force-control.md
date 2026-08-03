@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-contact-force-control, contact, force-control, impedance, admittance, wrench, compliance, hybrid, manipulation]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-03
 summary: "接触力控知识链汇总：从接触感知/估计 → 力旋量表示 → 阻抗/导纳/混合力位控制 → 接触丰富操作策略四层力控闭环的统一入口，串起各层对操作稳定性/安全性的贡献与带宽/刚度/时延取舍，收纳分散的接触估计/力控/力旋量概念页。"
 ---
 
@@ -64,3 +64,4 @@ summary: "接触力控知识链汇总：从接触感知/估计 → 力旋量表�
 
 - 本库归纳自 [接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md)、[Contact Force Loop Bandwidth](../concepts/contact-force-loop-bandwidth.md)、[Impedance Control](../concepts/impedance-control.md)
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`contact-force-control` 命中规则）
+- 上游原始资料（本链概念页共同的 ingest 来源）：[接触动力学核心论文](../../sources/papers/contact_dynamics.md)、[接触规划与接触隐式优化核心论文](../../sources/papers/contact_planning.md)、[机器人控制算法八大体系详解](../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md)

@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-vision-backbone, cnn, vit, perception, detection]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-03
 summary: "视觉感知骨干知识链汇总：CNN/ViT 骨干、检测/分割头与策略输入的衔接，覆盖 ResNet/YOLO 选型与生成式视觉预训练对机器人表征的影响。"
 ---
 
@@ -57,3 +57,4 @@ summary: "视觉感知骨干知识链汇总：CNN/ViT 骨干、检测/分割头�
 
 - 本库归纳自 [Vision Backbones](../concepts/vision-backbones.md)、[Visual Representation for Policy](../concepts/visual-representation-for-policy.md)
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`vision-backbone` 命中规则）
+- 上游原始资料（本链概念页共同的 ingest 来源）：[ResNet：深度残差学习（arXiv:1512.03385）](../../sources/papers/resnet_arxiv_1512_03385.md)、[YOLO v1：统一实时目标检测（arXiv:1506.02640）](../../sources/papers/yolo_arxiv_1506_02640.md)、[经典视觉骨干与实时检测文献簇](../../sources/papers/vision_backbone_detection_classics.md)

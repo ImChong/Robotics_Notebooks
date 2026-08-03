@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-03
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 10：仿真到现实（10 篇深读笔记索引）。"
@@ -42,6 +42,8 @@ summary: "Paper Notebooks 分类 10：仿真到现实（10 篇深读笔记索引
 
 - [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)
 - [schema/paper-notebook-index.json](../../schema/paper-notebook-index.json)
+- 站点来源归档：[humanoid-robot-learning-paper-notebooks](../../sources/sites/humanoid-robot-learning-paper-notebooks.md)
+- 本类论文 ingest 归档（节选）：[SPI-Active（LeCAR-Lab）](../../sources/repos/spi-active.md)、[HALO：可微仿真闭合重载人形敏捷动作 sim2real 差距](../../sources/papers/humanoid_pnb_halo-closing-sim-to-real-gap-for-heavy-loaded-hu.md)、[DiffCoTune：跨域机器人控制的可微协同调参](../../sources/papers/humanoid_pnb_diffcotune.md)
 
 ## 推荐继续阅读
 

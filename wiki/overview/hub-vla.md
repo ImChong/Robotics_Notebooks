@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-vla, vision-language-action, foundation, manipulation]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-03
 summary: "VLA 与基础策略知识链汇总：视觉-语言-动作统一建模、OpenVLA/π0/GR00T 等开源谱系，以及 BFM 身体接口与 loco-manip 任务接口；含社区多基准榜入口与驾驶 VLA（S²-VLA）锚点。"
 ---
 
@@ -61,3 +61,4 @@ summary: "VLA 与基础策略知识链汇总：视觉-语言-动作统一建模�
 
 - 本库归纳自 [VLA](../methods/vla.md)、[Behavior Foundation Model](../concepts/behavior-foundation-model.md)、[BFM 技术地图](./bfm-41-papers-technology-map.md)
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`vla` 命中规则）
+- 上游原始资料（本链概念页共同的 ingest 来源）：[BFM 综述（arXiv:2506.20487）](../../sources/papers/bfm_survey_arxiv_2506_20487.md)、[BFM：人形机器人行为基础模型（arXiv:2509.13780）](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md)、[awesome-bfm-papers](../../sources/repos/awesome_bfm_papers.md)
