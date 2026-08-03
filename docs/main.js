@@ -235,6 +235,143 @@
     return out.join('\n');
   }
 
+  // 首页 Hero 规模数字：首次加载 count-up（同会话不重播；尊重 prefers-reduced-motion）
+  var HERO_STATS_COUNTUP_KEY = 'rn_home_hero_stats_countup_played';
+  var heroStatsCountUpEnabled = null;
+  var heroStatsCountUpFallbacks = null;
+
+  function prefersReducedMotionQuery() {
+    try {
+      return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    } catch {
+      return false;
+    }
+  }
+
+  function shouldPlayHeroStatsCountUp() {
+    if (prefersReducedMotionQuery()) return false;
+    try {
+      if (sessionStorage.getItem(HERO_STATS_COUNTUP_KEY) === '1') return false;
+    } catch {
+      /* private mode 等：仍允许本次播放 */
+    }
+    return true;
+  }
+
+  function markHeroStatsCountUpPlayed() {
+    try {
+      sessionStorage.setItem(HERO_STATS_COUNTUP_KEY, '1');
+    } catch {
+      /* ignore */
+    }
+  }
+
+  function getHeroStatsCountUpEnabled() {
+    if (heroStatsCountUpEnabled !== null) return heroStatsCountUpEnabled;
+    heroStatsCountUpEnabled = shouldPlayHeroStatsCountUp();
+    if (heroStatsCountUpEnabled) markHeroStatsCountUpPlayed();
+    return heroStatsCountUpEnabled;
+  }
+
+  function easeOutCubic(t) {
+    return 1 - Math.pow(1 - t, 3);
+  }
+
+  function animateCountUp(el, target, options) {
+    options = options || {};
+    var duration = typeof options.duration === 'number' ? options.duration : 1400;
+    var delay = typeof options.delay === 'number' ? options.delay : 0;
+    var onDone = options.onDone;
+    var end = Math.max(0, Math.round(Number(target) || 0));
+    var cancelled = false;
+    var timerId = 0;
+    var rafId = 0;
+
+    function finish() {
+      if (cancelled) return;
+      el.textContent = String(end);
+      el.classList.remove('is-counting');
+      if (onDone) onDone();
+    }
+
+    function start() {
+      if (cancelled) return;
+      var startTs = null;
+      el.classList.add('is-counting');
+      el.textContent = '0';
+      function frame(now) {
+        if (cancelled) return;
+        if (startTs === null) startTs = now;
+        var t = Math.min(1, (now - startTs) / duration);
+        el.textContent = String(Math.round(end * easeOutCubic(t)));
+        if (t < 1) {
+          rafId = requestAnimationFrame(frame);
+        } else {
+          finish();
+        }
+      }
+      rafId = requestAnimationFrame(frame);
+    }
+
+    if (delay > 0) {
+      timerId = window.setTimeout(start, delay);
+    } else {
+      start();
+    }
+
+    return function cancel() {
+      cancelled = true;
+      if (timerId) window.clearTimeout(timerId);
+      if (rafId) cancelAnimationFrame(rafId);
+      el.classList.remove('is-counting');
+    };
+  }
+
+  function setHeroStatNumber(el, value, animate, delay) {
+    if (!el) return;
+    var end = Math.max(0, Math.round(Number(value) || 0));
+    if (animate) {
+      animateCountUp(el, end, { duration: 1400, delay: delay || 0 });
+    } else {
+      el.textContent = String(end);
+      el.classList.remove('is-counting');
+    }
+  }
+
+  function parseHeroStatNumber(el, fallback) {
+    if (!el) return fallback;
+    var n = parseInt(String(el.textContent || '').replace(/[^\d]/g, ''), 10);
+    return Number.isFinite(n) ? n : fallback;
+  }
+
+  // 在 home-stats 到达前清零并启动主路线 / 纵深路线翻滚，避免先闪最终值再跳变
+  function initHeroStatCountUp() {
+    var nodeEl = document.getElementById('heroNodeCount');
+    var edgeEl = document.getElementById('heroEdgeCount');
+    var mainEl = document.getElementById('heroMainRouteCount');
+    var depthEl = document.getElementById('heroDepthRouteCount');
+    if (!nodeEl && !edgeEl && !mainEl && !depthEl) return;
+    if (!getHeroStatsCountUpEnabled()) return;
+
+    heroStatsCountUpFallbacks = {
+      nodes: parseHeroStatNumber(nodeEl, 0),
+      edges: parseHeroStatNumber(edgeEl, 0),
+      main: parseHeroStatNumber(mainEl, 1),
+      depth: parseHeroStatNumber(depthEl, 21)
+    };
+
+    if (nodeEl) nodeEl.textContent = '0';
+    if (edgeEl) edgeEl.textContent = '0';
+    if (mainEl) {
+      mainEl.textContent = '0';
+      animateCountUp(mainEl, heroStatsCountUpFallbacks.main, { duration: 1400, delay: 160 });
+    }
+    if (depthEl) {
+      depthEl.textContent = '0';
+      animateCountUp(depthEl, heroStatsCountUpFallbacks.depth, { duration: 1400, delay: 240 });
+    }
+  }
+
   function renderHomeStats(graphStats) {
     var heroNodeCount = document.getElementById('heroNodeCount');
     var heroEdgeCount = document.getElementById('heroEdgeCount');
@@ -243,9 +380,21 @@
 
     var nodeCount = graphStats && typeof graphStats.node_count === 'number' ? graphStats.node_count : null;
     var edgeCount = graphStats && typeof graphStats.edge_count === 'number' ? graphStats.edge_count : null;
+    var play = getHeroStatsCountUpEnabled();
+    var fallbacks = heroStatsCountUpFallbacks;
 
-    if (heroNodeCount && nodeCount !== null) heroNodeCount.textContent = String(nodeCount);
-    if (heroEdgeCount && edgeCount !== null) heroEdgeCount.textContent = String(edgeCount);
+    if (heroNodeCount) {
+      var nodeTarget = nodeCount !== null
+        ? nodeCount
+        : (fallbacks ? fallbacks.nodes : parseHeroStatNumber(heroNodeCount, 0));
+      setHeroStatNumber(heroNodeCount, nodeTarget, play, 0);
+    }
+    if (heroEdgeCount) {
+      var edgeTarget = edgeCount !== null
+        ? edgeCount
+        : (fallbacks ? fallbacks.edges : parseHeroStatNumber(heroEdgeCount, 0));
+      setHeroStatNumber(heroEdgeCount, edgeTarget, play, 80);
+    }
     if (wikiSearchSubtitle && nodeCount !== null) {
       wikiSearchSubtitle.textContent = '在 ' + nodeCount + ' 个知识节点中快速定位概念、方法或任务。↑↓ 键导航，Enter 打开，Esc 清空。';
     }
@@ -5917,6 +6066,7 @@
   }
 
   if (homeStatsRoot) {
+    initHeroStatCountUp();
     var homeStatsFetch = fetch('exports/home-stats.json').then(function (response) {
       if (!response.ok) throw new Error('HTTP ' + response.status);
       return response.json();
@@ -5941,6 +6091,8 @@
       })
       .catch(function (error) {
         console.warn('Home stats sync failed:', error);
+        // 统计失败时仍用 HTML 占位值完成翻滚，避免节点/边数停在 0
+        renderHomeStats(null);
         var failedMounts = [
           document.getElementById('homeLatestWikiModule'),
           document.getElementById('homeHubPanelAll')
