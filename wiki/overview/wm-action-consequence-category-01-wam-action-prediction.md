@@ -2,7 +2,7 @@
 type: overview
 tags: [world-models, world-action-models, category-hub, survey]
 status: complete
-updated: 2026-07-11
+updated: 2026-08-03
 summary: "世界模型动作后果专题 · 01（4 篇）— WAM 直接执行、修正基础 VLA 还是部署前筛选？"
 related:
   - ./robot-world-models-action-consequence-technology-map.md
@@ -33,6 +33,7 @@ sources:
 | DynaWM | [../entities/paper-dynawm-vla-online-correction](../entities/paper-dynawm-vla-online-correction.md) | 冻结 VLA + Mamba/V-JEPA 条件流匹配在线重生成动作块 |
 | DreamSteer | [../entities/paper-dreamsteer-vla-deployment-steering](../entities/paper-dreamsteer-vla-deployment-steering.md) | 潜变量 WM 预演候选动作 + 语言价值模型排序 |
 | Worldscape-MoE | [../entities/paper-worldscape-moe-heterogeneous-action](../entities/paper-worldscape-moe-heterogeneous-action.md) | 共享/专属 MoE 统一相机、关节、手部异构动作接口 |
+| WorldScape Policy 2.0 | [../entities/paper-worldscape-policy-2](../entities/paper-worldscape-policy-2.md) | 同团队下游 WAM 策略：事件记忆走 VLM、视觉记忆走 DiT，多模态提示可控执行 |
 
 ## 关联页面
 

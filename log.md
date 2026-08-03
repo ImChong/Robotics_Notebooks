@@ -1,3 +1,13 @@
+## [2026-08-03] ingest | sources/papers/worldscape_policy_2_arxiv_2607_18840.md + sites/manifoldai-research-worldscape-policy.md + repos/worldscape-policy.md — WorldScape Policy 2.0 推理增强长短期记忆 WAM；升格 wiki/entities/paper-worldscape-policy-2.md
+
+- **触发：** 用户指定论文 <https://arxiv.org/abs/2607.18840> 与仓库 <https://github.com/manifoldai-research/WorldScape-Policy>
+- **Sources：** [`sources/papers/worldscape_policy_2_arxiv_2607_18840.md`](sources/papers/worldscape_policy_2_arxiv_2607_18840.md)、[`sources/sites/manifoldai-research-worldscape-policy.md`](sources/sites/manifoldai-research-worldscape-policy.md)、[`sources/repos/worldscape-policy.md`](sources/repos/worldscape-policy.md)
+- **Wiki：** [`wiki/entities/paper-worldscape-policy-2.md`](wiki/entities/paper-worldscape-policy-2.md)
+- **交叉：** [`wiki/concepts/world-action-models.md`](wiki/concepts/world-action-models.md)、[`wiki/overview/wm-action-consequence-category-01-wam-action-prediction.md`](wiki/overview/wm-action-consequence-category-01-wam-action-prediction.md)、[`wiki/entities/paper-worldscape-moe-heterogeneous-action.md`](wiki/entities/paper-worldscape-moe-heterogeneous-action.md)
+- **机构：** 已有 `tsinghua`、`sjtu`；`manifold` 沿用 Worldscape-MoE 页既有 tag（`schema/institutions.json` 未注册，本次未改注册表）
+- **开源：** **宣称将开源 / 待发布** — GitHub 仅 `README.md` + `.gitignore`（"Code is coming soon"），HF `WorldScape-Policy-2` 仅模型卡（"Model is coming soon"，声明 Apache-2.0）；ManipEvent-5M 自采部分无发布计划 → 实体页 `## 源码运行时序图` 标注 **不适用**
+- **要点：** 事件记忆（VLM，global-history / local-active / event-boundary 三视图 + 门控）与视觉记忆（DiT，近 4 chunk causal prefill）分层；semantic forcing（\(\lambda_s=0.001\)、T5 靶 stop-grad）把事件字幕语义蒸馏进隐式子目标；RoboTwin 2.0 标准榜 **94.3%** 已饱和（同档仅 +0.2~+0.7），差异在 **C2R 47.9%**（Fast-WAM 39.1）与真机视觉提示任务（叠积木目标图/演示 **60%/70%** vs π₀.₅ 10%/20%）
+
 ## [2026-08-03] ingest | sources/papers/humanoid_leg_generative_design_hust_j_260645.md — 动力学仿真驱动人形下肢衍生式设计；升格 wiki/entities/paper-humanoid-leg-generative-design-dynamics.md
 
 - **触发：** 用户指定学报页 <http://xb.hust.edu.cn/thesisDetails#10.13245/j.hust.260645&lang=zh>（DOI `10.13245/j.hust.260645`）

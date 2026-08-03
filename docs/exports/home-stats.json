@@ -1,13 +1,54 @@
 {
   "generated_at": "2026-08-03",
-  "node_count": 2076,
-  "edge_count": 18778,
+  "node_count": 2077,
+  "edge_count": 18793,
   "coverage": {
-    "covered": 2052,
-    "total": 2052,
+    "covered": 2053,
+    "total": 2053,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-worldscape-policy-2.md",
+      "detail_id": "entity-paper-worldscape-policy-2",
+      "label": "WorldScape Policy 2.0（Reasoning-Augmented Memory WAM · arXiv:2607.18840）",
+      "type": "entity",
+      "recency": "2026-08-03",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/concepts/world-action-models.md",
+      "detail_id": "wiki-concepts-world-action-models",
+      "label": "World Action Models（WAM，世界–动作模型）",
+      "type": "concept",
+      "recency": "2026-08-03",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/overview/wm-action-consequence-category-01-wam-action-prediction.md",
+      "detail_id": "wiki-overview-wm-action-consequence-category-01-wam-action-prediction",
+      "label": "世界模型动作后果分类 01：WAM 动作后果预测",
+      "type": "overview",
+      "recency": "2026-08-03",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-worldscape-moe-heterogeneous-action.md",
+      "detail_id": "entity-paper-worldscape-moe-heterogeneous-action",
+      "label": "Worldscape-MoE（Unified Mixture-of-Experts World Model · arXiv:2607.03964）",
+      "type": "entity",
+      "recency": "2026-08-03",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
     {
       "path": "wiki/entities/paper-humanoid-leg-generative-design-dynamics.md",
       "detail_id": "entity-paper-humanoid-leg-generative-design-dynamics",
@@ -170,59 +211,17 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/drawio-scientific-illustrator.md",
-      "detail_id": "entity-drawio-scientific-illustrator",
-      "label": "Draw.io Scientific Illustrator",
-      "type": "entity",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
-    },
-    {
-      "path": "wiki/entities/dimensionalos-dimos.md",
-      "detail_id": "entity-dimensionalos-dimos",
-      "label": "DimOS（Dimensional 物理空间 Agent OS）",
-      "type": "entity",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/hermes-agent.md",
-      "detail_id": "entity-hermes-agent",
-      "label": "Hermes Agent（Nous Research）",
-      "type": "entity",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
-    },
-    {
-      "path": "wiki/entities/unreal-engine-5.md",
-      "detail_id": "entity-unreal-engine-5",
-      "label": "Unreal Engine 5（Epic 实时 3D 引擎）",
-      "type": "entity",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-humanoid-leg-generative-design-dynamics.md",
-    "detail_id": "entity-paper-humanoid-leg-generative-design-dynamics",
-    "label": "动力学仿真驱动的人形机器人下肢衍生式设计",
+    "path": "wiki/entities/paper-worldscape-policy-2.md",
+    "detail_id": "entity-paper-worldscape-policy-2",
+    "label": "WorldScape Policy 2.0（Reasoning-Augmented Memory WAM · arXiv:2607.18840）",
     "type": "entity",
     "recency": "2026-08-03",
     "source": "log.md",
-    "action": "maintained"
+    "action": "maintained",
+    "has_repo": true
   },
   "top_communities": [
     {
@@ -235,7 +234,7 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 140
+      "size": 141
     },
     {
       "label": "移动操作",
@@ -263,7 +262,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 379,
+      "degree": 380,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
