@@ -1399,7 +1399,7 @@
       font-family: inherit;
     }
     /* Top N 滑块区：与下方手风琴同款可折叠 <details>，默认收起；
-       独立开关（不进三区互斥），展开只占内容高度 */
+       两区互斥（同时仅展开一个，可全部收起），不进下方三区手风琴 */
     .filter-degree-section {
       padding: 0;
       border-bottom: 1px solid rgba(255,255,255,0.06);
@@ -2240,6 +2240,30 @@
       setTimeout(syncOpenFilterPaneScrollbar, 800);
     }
     initFilterAccordion();
+
+    /* 连接数 / 更新时间 Top N：二选一展开，允许全部收起 */
+    const FILTER_TOPN_SECTION_IDS = [
+      'filter-degree-section',
+      'filter-recency-section',
+    ];
+    let filterTopNAccordionLock = false;
+
+    function initFilterTopNAccordion() {
+      const sections = FILTER_TOPN_SECTION_IDS
+        .map((id) => document.getElementById(id))
+        .filter(Boolean);
+      if (sections.length < 2) return;
+      sections.forEach((section) => {
+        section.addEventListener('toggle', () => {
+          if (filterTopNAccordionLock) return;
+          if (!section.open) return;
+          filterTopNAccordionLock = true;
+          sections.forEach((s) => { if (s !== section) s.open = false; });
+          filterTopNAccordionLock = false;
+        });
+      });
+    }
+    initFilterTopNAccordion();
 
     function isFilterPanelMobileMode() {
       return window.matchMedia('(max-width: 768px)').matches;

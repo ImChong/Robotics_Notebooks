@@ -1,5 +1,6 @@
 // Verify graph filter Top N sections are collapsible <details>, default closed,
-// and summary shows current value (全部 / N). Independent of the 三区 accordion.
+// summary shows current value (全部 / N), and the two are mutually exclusive
+// (only one open at a time; both may be closed). Independent of the 三区 accordion.
 const puppeteer = require('puppeteer-core');
 const path = require('path');
 const fs = require('fs');
@@ -135,12 +136,23 @@ async function readTopN(page) {
     copyToArtifacts(degOpenOut, 'graph-filter-topn-degree-open.png');
     console.log('Saved:', degOpenOut);
 
-    // Expand 更新时间 Top N (independent — both may be open)
+    // Expand 更新时间 Top N → 连接数应收起（二选一）
     await page.click('#filter-recency-section > summary');
     await new Promise((r) => setTimeout(r, 250));
     state = await readTopN(page);
-    assert(state.degOpen && state.recOpen, 'both Top N can be open independently');
+    assert(!state.degOpen && state.recOpen, 'Top N should be exclusive: only recency open');
     assert(state.dimOpen, 'accordion still open');
+
+    const recOpenOut = path.join(OUT_DIR, 'graph-filter-topn-recency-open.png');
+    await page.screenshot({ path: recOpenOut, fullPage: false });
+    copyToArtifacts(recOpenOut, 'graph-filter-topn-recency-open.png');
+    console.log('Saved:', recOpenOut);
+
+    // Switch back to degree → recency closes
+    await page.click('#filter-degree-section > summary');
+    await new Promise((r) => setTimeout(r, 250));
+    state = await readTopN(page);
+    assert(state.degOpen && !state.recOpen, 'switching to degree should close recency');
 
     // Change slider → summary updates while open
     await page.$eval('#sl-degree-top', (el) => {
@@ -153,19 +165,19 @@ async function readTopN(page) {
     assert(state.degSummary === minLabel, `degree summary should be ${minLabel}, got ${state.degSummary}`);
     assert(state.degVal === minLabel, `degree slider label should be ${minLabel}`);
 
-    const bothOut = path.join(OUT_DIR, 'graph-filter-topn-both-open.png');
-    await page.screenshot({ path: bothOut, fullPage: false });
-    copyToArtifacts(bothOut, 'graph-filter-topn-both-open.png');
-    console.log('Saved:', bothOut);
+    const exclusiveOut = path.join(OUT_DIR, 'graph-filter-topn-exclusive.png');
+    await page.screenshot({ path: exclusiveOut, fullPage: false });
+    copyToArtifacts(exclusiveOut, 'graph-filter-topn-exclusive.png');
+    console.log('Saved:', exclusiveOut);
 
-    // Collapse degree again — summary still shows active N
+    // Collapse degree — both may be closed
     await page.click('#filter-degree-section > summary');
     await new Promise((r) => setTimeout(r, 200));
     state = await readTopN(page);
-    assert(!state.degOpen && state.recOpen, 'degree collapsed, recency still open');
+    assert(!state.degOpen && !state.recOpen, 'both Top N may collapse');
     assert(state.degSummary === minLabel, 'collapsed summary keeps active value');
 
-    console.log('OK: Top N collapse default + independent toggle verified');
+    console.log('OK: Top N collapse default + exclusive toggle verified');
   } finally {
     await browser.close();
   }
