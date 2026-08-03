@@ -344,7 +344,7 @@
     return Number.isFinite(n) ? n : fallback;
   }
 
-  // 在 home-stats 到达前清零并启动主路线 / 纵深路线翻滚，避免先闪最终值再跳变
+  // 在 home-stats 到达前先清零，避免闪最终值；四个数字等数据齐后一起翻滚
   function initHeroStatCountUp() {
     var nodeEl = document.getElementById('heroNodeCount');
     var edgeEl = document.getElementById('heroEdgeCount');
@@ -362,21 +362,19 @@
 
     if (nodeEl) nodeEl.textContent = '0';
     if (edgeEl) edgeEl.textContent = '0';
-    if (mainEl) {
-      mainEl.textContent = '0';
-      animateCountUp(mainEl, heroStatsCountUpFallbacks.main, { duration: 1400, delay: 160 });
-    }
-    if (depthEl) {
-      depthEl.textContent = '0';
-      animateCountUp(depthEl, heroStatsCountUpFallbacks.depth, { duration: 1400, delay: 240 });
-    }
+    if (mainEl) mainEl.textContent = '0';
+    if (depthEl) depthEl.textContent = '0';
   }
 
   function renderHomeStats(graphStats) {
     var heroNodeCount = document.getElementById('heroNodeCount');
     var heroEdgeCount = document.getElementById('heroEdgeCount');
+    var heroMainRouteCount = document.getElementById('heroMainRouteCount');
+    var heroDepthRouteCount = document.getElementById('heroDepthRouteCount');
     var wikiSearchSubtitle = document.getElementById('wikiSearchSubtitle');
-    if (!heroNodeCount && !heroEdgeCount && !wikiSearchSubtitle) return;
+    if (!heroNodeCount && !heroEdgeCount && !wikiSearchSubtitle && !heroMainRouteCount && !heroDepthRouteCount) {
+      return;
+    }
 
     var nodeCount = graphStats && typeof graphStats.node_count === 'number' ? graphStats.node_count : null;
     var edgeCount = graphStats && typeof graphStats.edge_count === 'number' ? graphStats.edge_count : null;
@@ -393,7 +391,16 @@
       var edgeTarget = edgeCount !== null
         ? edgeCount
         : (fallbacks ? fallbacks.edges : parseHeroStatNumber(heroEdgeCount, 0));
-      setHeroStatNumber(heroEdgeCount, edgeTarget, play, 80);
+      setHeroStatNumber(heroEdgeCount, edgeTarget, play, 0);
+    }
+    if (heroMainRouteCount) {
+      var mainTarget = fallbacks ? fallbacks.main : parseHeroStatNumber(heroMainRouteCount, 1);
+      // 二次进入时保持 HTML/已有终值，避免把「1」再写一遍造成闪烁
+      if (play || fallbacks) setHeroStatNumber(heroMainRouteCount, mainTarget, play, 0);
+    }
+    if (heroDepthRouteCount) {
+      var depthTarget = fallbacks ? fallbacks.depth : parseHeroStatNumber(heroDepthRouteCount, 21);
+      if (play || fallbacks) setHeroStatNumber(heroDepthRouteCount, depthTarget, play, 0);
     }
     if (wikiSearchSubtitle && nodeCount !== null) {
       wikiSearchSubtitle.textContent = '在 ' + nodeCount + ' 个知识节点中快速定位概念、方法或任务。↑↓ 键导航，Enter 打开，Esc 清空。';

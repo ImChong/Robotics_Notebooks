@@ -59,7 +59,7 @@ const path = require('path');
     await page.evaluate(() => sessionStorage.removeItem('rn_home_hero_stats_countup_played'));
     await page.reload({ waitUntil: 'domcontentloaded', timeout: 30000 });
 
-    // 动画进行中：数字应低于终值，且至少有一个 is-counting
+    // 动画进行中：节点/边同步翻滚且仍低于终值，便于截到「翻滚中」帧
     await page.waitForFunction(
       () => {
         const node = document.getElementById('heroNodeCount');
@@ -67,11 +67,16 @@ const path = require('path');
         if (!node || !edge) return false;
         const n = parseInt(node.textContent, 10);
         const e = parseInt(edge.textContent, 10);
-        const counting =
-          node.classList.contains('is-counting') ||
-          edge.classList.contains('is-counting') ||
-          document.querySelector('.hero-stat-num.is-counting');
-        return Number.isFinite(n) && Number.isFinite(e) && counting;
+        const counting = document.querySelectorAll('.hero-stat-num.is-counting').length;
+        return (
+          Number.isFinite(n) &&
+          Number.isFinite(e) &&
+          n > 200 &&
+          n < 1800 &&
+          e > 1000 &&
+          e < 16000 &&
+          counting >= 2
+        );
       },
       { timeout: 8000 }
     );
