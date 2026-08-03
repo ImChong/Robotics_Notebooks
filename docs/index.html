@@ -60,6 +60,24 @@
             <span class="hero-stat-label">纵深路线</span>
           </li>
         </ul>
+        <script>
+          /* 解析到数字后、首屏绘制前归零，避免「终值 → 0」闪跳；reduced-motion 保留终值 */
+          (function () {
+            try {
+              if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            } catch (e) { /* ignore */ }
+            var ids = ['heroNodeCount', 'heroEdgeCount', 'heroMainRouteCount', 'heroDepthRouteCount'];
+            for (var i = 0; i < ids.length; i++) {
+              var el = document.getElementById(ids[i]);
+              if (!el) continue;
+              if (!el.getAttribute('data-fallback')) {
+                el.setAttribute('data-fallback', String(el.textContent || '').trim());
+              }
+              el.textContent = '0';
+              el.classList.add('is-count-pending');
+            }
+          })();
+        </script>
       </div>
     </section>
 
