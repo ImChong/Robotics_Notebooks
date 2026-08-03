@@ -1,13 +1,90 @@
 {
   "generated_at": "2026-08-03",
-  "node_count": 2074,
-  "edge_count": 18750,
+  "node_count": 2075,
+  "edge_count": 18764,
   "coverage": {
-    "covered": 2050,
-    "total": 2050,
+    "covered": 2051,
+    "total": 2051,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-robo-harness.md",
+      "detail_id": "entity-paper-robo-harness",
+      "label": "RoboHarness（异构策略编排 · arXiv:2607.18060）",
+      "type": "entity",
+      "recency": "2026-08-03",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-08-03",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-harness-vla.md",
+      "detail_id": "entity-paper-harness-vla",
+      "label": "Harness VLA（Memory-Guided Agentic Manipulation · arXiv:2607.08448）",
+      "type": "entity",
+      "recency": "2026-08-03",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/behavior-tree-vla-orchestration.md",
+      "detail_id": "wiki-concepts-behavior-tree-vla-orchestration",
+      "label": "行为树 × VLA 编排",
+      "type": "concept",
+      "recency": "2026-08-03",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-gap-graph-as-policy.md",
+      "detail_id": "entity-paper-gap-graph-as-policy",
+      "label": "GaP（Graph-as-Policy）",
+      "type": "entity",
+      "recency": "2026-08-03",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
+      "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
+      "label": "VLA 开源复现景观（2025 策展）",
+      "type": "overview",
+      "recency": "2026-08-03",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-pi05-open-world-vla.md",
+      "detail_id": "entity-paper-pi05-open-world-vla",
+      "label": "π0.5（HMI P059）",
+      "type": "entity",
+      "recency": "2026-08-03",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/concepts/model-context-protocol.md",
       "detail_id": "wiki-concepts-model-context-protocol",
@@ -142,115 +219,43 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-06-manipulation.md",
-      "detail_id": "wiki-overview-paper-notebook-category-06-manipulation",
-      "label": "Paper Notebooks · Manipulation",
-      "type": "overview",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-07-teleoperation.md",
-      "detail_id": "wiki-overview-paper-notebook-category-07-teleoperation",
-      "label": "Paper Notebooks · Teleoperation",
-      "type": "overview",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-08-navigation.md",
-      "detail_id": "wiki-overview-paper-notebook-category-08-navigation",
-      "label": "Paper Notebooks · Navigation",
-      "type": "overview",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-09-state-estimation.md",
-      "detail_id": "wiki-overview-paper-notebook-category-09-state-estimation",
-      "label": "Paper Notebooks · State Estimation",
-      "type": "overview",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-10-sim-to-real.md",
-      "detail_id": "wiki-overview-paper-notebook-category-10-sim-to-real",
-      "label": "Paper Notebooks · Sim-to-Real",
-      "type": "overview",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-11-simulation-benchmark.md",
-      "detail_id": "wiki-overview-paper-notebook-category-11-simulation-benchmark",
-      "label": "Paper Notebooks · Simulation Benchmark",
-      "type": "overview",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-12-hardware-design.md",
-      "detail_id": "wiki-overview-paper-notebook-category-12-hardware-design",
-      "label": "Paper Notebooks · Hardware Design",
-      "type": "overview",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形硬件技术地图（Humanoid Hardware 101） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/model-context-protocol.md",
-    "detail_id": "wiki-concepts-model-context-protocol",
-    "label": "Model Context Protocol（MCP）",
-    "type": "concept",
+    "path": "wiki/entities/paper-robo-harness.md",
+    "detail_id": "entity-paper-robo-harness",
+    "label": "RoboHarness（异构策略编排 · arXiv:2607.18060）",
+    "type": "entity",
     "recency": "2026-08-03",
     "source": "log.md",
-    "action": "added",
+    "action": "maintained",
     "has_repo": true,
-    "community_label": "大语言模型维基（LLM Wiki） 社区"
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 278
+      "size": 277
     },
     {
       "label": "操作",
-      "size": 142
+      "size": 146
+    },
+    {
+      "label": "人形强化学习运动控制",
+      "size": 140
     },
     {
       "label": "移动操作",
       "size": 140
     },
     {
-      "label": "人形强化学习运动控制",
-      "size": 137
-    },
-    {
       "label": "人形论文深读笔记",
-      "size": 137
+      "size": 138
     },
     {
-      "label": "视觉-语言-动作",
-      "size": 137
+      "label": "动作重定向",
+      "size": 123
     }
   ],
   "top_hubs": [
@@ -266,7 +271,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 377,
+      "degree": 379,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -281,7 +286,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 343,
+      "degree": 344,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },

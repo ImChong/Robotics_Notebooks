@@ -11,7 +11,7 @@ tags:
   - berkeley
   - cmu
 status: complete
-updated: 2026-07-08
+updated: 2026-08-03
 arxiv: "2607.05369"
 code: https://github.com/graph-robots/graph-as-policy
 project: https://graph-robots.github.io/gap/
@@ -23,6 +23,7 @@ related:
   - ../entities/nvidia-gear-lab.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../queries/real-robot-policy-autoresearch-harness.md
+  - ./paper-robo-harness.md
 sources:
   - ../../sources/papers/gap_arxiv_2607_05369.md
   - ../../sources/sites/gap-graph-robots-project.md
@@ -191,6 +192,7 @@ flowchart TB
 - [变体自动化（VA）](../concepts/variational-automation.md) — FA/VA/GR 任务谱与形式化
 - [ASPIRE](../methods/aspire.md) — GEAR 姊妹 **code-as-policy** 路线（技能库 vs 计算图）
 - [VLA](../methods/vla.md) — GR 方向基线；GaP staging 的互补角色
+- [RoboHarness](./paper-robo-harness.md) — 异构策略编排 + Memory Bridge（相对 GaP 的图 staging）
 - [Manipulation](../tasks/manipulation.md) — 操作任务栈中的 agentic / 工业分支
 - [NVIDIA GEAR Lab](./nvidia-gear-lab.md) — 署名与 agentic 研究网络
 - [Simulation Evaluation Infrastructure](../concepts/simulation-evaluation-infrastructure.md) — Isaac 内环排练
