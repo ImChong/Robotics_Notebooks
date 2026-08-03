@@ -93,6 +93,7 @@
   - [x] 图谱页 `graph.html`：筛选浮窗内「按社区（当前维度）/ 路线视图 / 研究机构」三区改为手风琴——同时仅展开一个，默认展开「按社区」；展开区吃满中间剩余高度，收起项靠在上方或下方；验证脚本 `scripts/verify_graph_filter_accordion.cjs`。
   - [x] 图谱页 `graph.html`：筛选浮窗在「连接数 Top N」下方新增「更新时间 Top N」滑块——左=最新子集、右=全部（默认全部）；排序口径对齐 `activity` / 更新明度；与连接数 Top N 同时生效时取交集；清除筛选一并复位；验证脚本 `scripts/verify_graph_recency_topn.cjs`。
   - [x] 图谱页 `graph.html`：筛选浮窗「连接数 Top N / 更新时间 Top N」改为与下方手风琴同款可折叠 `<details>`（默认收起；折叠标题显示当前值如「全部」/`N`；独立开关，不进三区互斥）；验证脚本 `scripts/verify_graph_topn_collapse.cjs`。
+  - [x] 图谱页 `graph.html`：筛选浮窗「当前按…着色与筛选」文案上移到标题栏正下方（模式 tab 之上）。
   - [x] 图谱页 2D 力模拟：略欠阻尼、**最多一次回弹**（验收以「刷新布局」为准，不用时序动画）——`velocityDecay=0.54`、极短 warmup 20 tick 后 `alpha=0.9` 开场、度数加权弹簧；3D 力参数保持对话前原状。
   - [x] 图谱页 2D 时序动画：退出时清零 `alpha`/`alphaTarget` 并停模拟（不再走 pause 路径把加热目标钉在 0.3）；`closeSidebar` 仅在侧栏确实打开时才 viewport sync / relayout restart，避免「退出后点空白 → 力模拟自振抖动」；验证脚本 `scripts/verify_graph_timeline_exit_settle.cjs`。
 - [x] 首页「互链枢纽 · Top 10」底部入口改为「查看完整榜单 →」，新增 `docs/hubs.html` 全量互链榜单页（数据源 `exports/hub-rankings.json`，全站 / 论文双 tab）。
