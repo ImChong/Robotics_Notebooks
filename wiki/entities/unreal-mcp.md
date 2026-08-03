@@ -5,6 +5,7 @@ status: complete
 updated: 2026-08-03
 related:
   - ./unreal-engine-5.md
+  - ../concepts/model-context-protocol.md
   - ./freecad-mcp.md
   - ./drawio-scientific-illustrator.md
   - ./unity-engine.md
@@ -18,6 +19,7 @@ sources:
   - ../../sources/sites/unreal-mcp-in-unreal-editor.md
   - ../../sources/repos/unreal-engine-skills-for-claude-code-plugin.md
   - ../../sources/sites/unreal-engine-5-8-docs.md
+  - ../../sources/sites/modelcontextprotocol-io.md
   - ../../sources/repos/epicgames-github-org.md
 summary: "Unreal MCP（UE 5.8 Experimental）在编辑器进程内嵌 MCP HTTP server（默认 127.0.0.1:8000/mcp），经 Toolset Registry / AllToolsets 向 Claude Code、Cursor 等代理暴露场景与资产工具；官方 Claude 技能插件 MIT 开源，引擎插件本体随 UE 许可分发。"
 ---
@@ -30,7 +32,7 @@ summary: "Unreal MCP（UE 5.8 Experimental）在编辑器进程内嵌 MCP HTTP s
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| MCP | Model Context Protocol | 代理与工具/数据源的开放互操作协议（JSON-RPC） |
+| MCP | Model Context Protocol | 代理与工具/数据源的开放互操作协议；见 [MCP 概念页](../concepts/model-context-protocol.md) |
 | UE / UE5 | Unreal Engine 5 | Epic 实时 3D 引擎；本插件随 5.8 编辑器分发 |
 | SSE | Server-Sent Events | MCP 传输侧与 HTTP 搭配；本插件不支持 stdio/WebSocket |
 | UHT | Unreal Header Tool | C++ 反射生成；`AICallable` UFUNCTION 依赖反射 |
@@ -126,6 +128,7 @@ flowchart LR
 ## 关联页面
 
 - [Unreal Engine 5](./unreal-engine-5.md) — 引擎宿主与 5.8 里程碑总览
+- [Model Context Protocol（MCP）](../concepts/model-context-protocol.md) — Host/Client/Server 与传输协议层
 - [FreeCAD MCP](./freecad-mcp.md) — 第三方桌面 CAD MCP 对照
 - [Draw.io Scientific Illustrator](./drawio-scientific-illustrator.md) — 桌面矢量图 MCP 对照
 - [Unity Engine](./unity-engine.md) — 另一主流引擎的 AI/MCP 方向
@@ -139,6 +142,7 @@ flowchart LR
 - [Unreal MCP in Unreal Editor（官方文档归档）](../../sources/sites/unreal-mcp-in-unreal-editor.md)
 - [unreal-engine-skills-for-claude-code-plugin（仓库归档）](../../sources/repos/unreal-engine-skills-for-claude-code-plugin.md)
 - [UE 5.8 官方文档索引归档](../../sources/sites/unreal-engine-5-8-docs.md)
+- [MCP 官方文档归档](../../sources/sites/modelcontextprotocol-io.md)
 - [Epic Games GitHub 组织归档](../../sources/repos/epicgames-github-org.md)
 
 ## 推荐继续阅读
