@@ -1393,14 +1393,23 @@
       flex-wrap: wrap;
     }
     .filter-subtitle {
-      padding: 10px 14px 2px;
+      padding: 8px 14px 0;
       font-size: .72rem;
       color: rgba(255,255,255,0.4);
       font-family: inherit;
     }
+    /* Top N 滑块区：与下方手风琴同款可折叠 <details>，默认收起；
+       两区互斥（同时仅展开一个，可全部收起），不进下方三区手风琴 */
     .filter-degree-section {
-      padding: 0 0 4px;
+      padding: 0;
       border-bottom: 1px solid rgba(255,255,255,0.06);
+      flex-shrink: 0;
+    }
+    .filter-degree-section > .filter-depth-summary {
+      padding: 8px 14px;
+    }
+    .filter-degree-section[open] > .filter-depth-summary {
+      padding-bottom: 4px;
     }
     .filter-degree-section .slider-row {
       padding: 4px 14px 12px;
@@ -1878,14 +1887,17 @@
         <span id="filter-panel-title">🔍 图谱筛选</span>
         <button id="filter-close" class="filter-close" aria-label="关闭面板">✕</button>
       </div>
+      <div class="filter-subtitle" id="filter-subtitle">当前按社区着色与筛选</div>
       <div class="filter-mode-tabs" id="filter-mode-tabs" aria-label="筛选维度">
         <button id="filter-mode-type" class="chip" type="button">按类型</button>
         <button id="filter-mode-community" class="chip active" type="button">按社区</button>
         <button id="filter-mode-health" class="chip" type="button">按健康度</button>
       </div>
-      <div class="filter-subtitle" id="filter-subtitle">当前按社区着色与筛选</div>
-      <div id="filter-degree-section" class="filter-degree-section">
-        <div class="filter-section-title">连接数 Top N</div>
+      <details id="filter-degree-section" class="filter-degree-section">
+        <summary class="filter-depth-summary">
+          <span class="filter-depth-summary-label">连接数 Top N</span>
+          <span class="filter-depth-summary-current" id="filter-degree-current">全部</span>
+        </summary>
         <p class="filter-degree-hint">按节点连接数（度）保留前 N 个；滑到最右为全部节点。</p>
         <div class="slider-row">
           <div class="slider-label">
@@ -1895,9 +1907,12 @@
           <input type="range" id="sl-degree-top" min="10" max="10" value="10" step="1"
                  aria-label="按连接数显示前 N 个节点" />
         </div>
-      </div>
-      <div id="filter-recency-section" class="filter-degree-section">
-        <div class="filter-section-title">更新时间 Top N</div>
+      </details>
+      <details id="filter-recency-section" class="filter-degree-section">
+        <summary class="filter-depth-summary">
+          <span class="filter-depth-summary-label">更新时间 Top N</span>
+          <span class="filter-depth-summary-current" id="filter-recency-current">全部</span>
+        </summary>
         <p class="filter-degree-hint">按最近活跃日保留最新 N 个；滑到最左偏最新，滑到最右为全部节点。可与连接数 Top N 同时生效（取交集）。</p>
         <div class="slider-row">
           <div class="slider-label">
@@ -1907,7 +1922,7 @@
           <input type="range" id="sl-recency-top" min="10" max="10" value="10" step="1"
                  aria-label="按更新时间显示最新 N 个节点" />
         </div>
-      </div>
+      </details>
       <div class="filter-sections-scroll" id="filter-dimension-sections">
         <details class="filter-depth-section" id="filter-dimension-section" open>
           <summary class="filter-depth-summary">
@@ -2225,6 +2240,30 @@
       setTimeout(syncOpenFilterPaneScrollbar, 800);
     }
     initFilterAccordion();
+
+    /* 连接数 / 更新时间 Top N：二选一展开，允许全部收起 */
+    const FILTER_TOPN_SECTION_IDS = [
+      'filter-degree-section',
+      'filter-recency-section',
+    ];
+    let filterTopNAccordionLock = false;
+
+    function initFilterTopNAccordion() {
+      const sections = FILTER_TOPN_SECTION_IDS
+        .map((id) => document.getElementById(id))
+        .filter(Boolean);
+      if (sections.length < 2) return;
+      sections.forEach((section) => {
+        section.addEventListener('toggle', () => {
+          if (filterTopNAccordionLock) return;
+          if (!section.open) return;
+          filterTopNAccordionLock = true;
+          sections.forEach((s) => { if (s !== section) s.open = false; });
+          filterTopNAccordionLock = false;
+        });
+      });
+    }
+    initFilterTopNAccordion();
 
     function isFilterPanelMobileMode() {
       return window.matchMedia('(max-width: 768px)').matches;
@@ -3065,9 +3104,11 @@
     }
 
     function updateDegreeTopLabel() {
+      const text = topDegreeLimit >= totalNodeCount ? '全部' : String(topDegreeLimit);
       const valEl = document.getElementById('val-degree-top');
-      if (!valEl) return;
-      valEl.textContent = topDegreeLimit >= totalNodeCount ? '全部' : String(topDegreeLimit);
+      if (valEl) valEl.textContent = text;
+      const summaryEl = document.getElementById('filter-degree-current');
+      if (summaryEl) summaryEl.textContent = text;
     }
 
     function initDegreeTopSlider() {
@@ -3128,9 +3169,11 @@
     }
 
     function updateRecencyTopLabel() {
+      const text = topRecencyLimit >= totalNodeCount ? '全部' : String(topRecencyLimit);
       const valEl = document.getElementById('val-recency-top');
-      if (!valEl) return;
-      valEl.textContent = topRecencyLimit >= totalNodeCount ? '全部' : String(topRecencyLimit);
+      if (valEl) valEl.textContent = text;
+      const summaryEl = document.getElementById('filter-recency-current');
+      if (summaryEl) summaryEl.textContent = text;
     }
 
     function initRecencyTopSlider() {
