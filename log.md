@@ -7,6 +7,13 @@
 - **知识链汇总页（12）：** [`wiki/overview/hub-contact-force-control.md`](wiki/overview/hub-contact-force-control.md)、[`wiki/overview/hub-data-pipeline.md`](wiki/overview/hub-data-pipeline.md)、[`wiki/overview/hub-learning.md`](wiki/overview/hub-learning.md)、[`wiki/overview/hub-locomotion.md`](wiki/overview/hub-locomotion.md)、[`wiki/overview/hub-motion-retargeting.md`](wiki/overview/hub-motion-retargeting.md)、[`wiki/overview/hub-physics-fidelity.md`](wiki/overview/hub-physics-fidelity.md)、[`wiki/overview/hub-safe-fine-tuning.md`](wiki/overview/hub-safe-fine-tuning.md)、[`wiki/overview/hub-state-estimation.md`](wiki/overview/hub-state-estimation.md)、[`wiki/overview/hub-vision-backbone.md`](wiki/overview/hub-vision-backbone.md)、[`wiki/overview/hub-vla.md`](wiki/overview/hub-vla.md)、[`wiki/overview/hub-wbc.md`](wiki/overview/hub-wbc.md)、[`wiki/overview/hub-wbt.md`](wiki/overview/hub-wbt.md) — `参考来源` 增加「上游原始资料」，链到本链概念页共同的 ingest 来源
 - **口径说明：** 站点首页自述 305 篇、`schema/paper-notebook-index.json` 收录 289 条已成稿笔记、`schema/paper-notebook-categories.json` 合计 518 条清单项（含待深读与跨类重复计入），三者不等已在归档中写明
 - **结果：** Sources 覆盖率 2022/2048 (99%) → **2048/2048 (100%)**；lint 阻塞型 0、信息型 0
+## [2026-08-02] structural | docs/main.js — 详情页正文内链悬停浮窗，并与关联知识图谱迷你图双向联动
+
+- **改动：** [`docs/main.js`](docs/main.js) — 正文中指向站内知识页的内链标记为 `.detail-inline-link`，悬停弹出与图谱同款 hover 卡片（类型徽标 + 标题 + 摘要 + 「打开详情页 →」）；类型与社区色优先取 `link-graph.json` 的细类型（concept / task / paper…），与迷你图浮窗同口径
+- **联动：** 悬停正文内链 → 迷你图同一节点点亮（`.mini-node-linked`）；悬停迷你图节点 → 正文中指向它的内链点亮（`.detail-inline-link-linked`）；触屏（`hover: none`）不绑定，点击内链仍直接跳转
+- **涉及路径：** [`docs/detail.html`](docs/detail.html)（新增 `#detail-inline-link-tooltip`）、[`docs/style.css`](docs/style.css)
+- **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md) Phase 3「详情页浮窗联动」
+- **验证：** [`scripts/verify_detail_inline_link_preview.cjs`](scripts/verify_detail_inline_link_preview.cjs)（`wiki-concepts-sim2real` → 浮窗可见 / 迷你图点亮 1 节点；反向 → 正文点亮 1 条内链）；`make ci-preflight` 通过
 
 ## [2026-08-02] structural | docs/graph.html — 筛选浮窗三区手风琴（按社区 / 路线视图 / 研究机构）
 
