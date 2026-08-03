@@ -4,13 +4,15 @@ title: 人形机器人硬件选型指南
 type: query
 status: complete
 created: 2026-04-14
-updated: 2026-06-01
+updated: 2026-08-03
 summary: 对比当前主流人形机器人平台（G1 / H1 / Unitree B2 / Figure / Atlas），从研究场景和工程目标给出选型建议。
 related:
   - ../overview/humanoid-hardware-101-technology-map.md
+  - ../entities/paper-humanoid-leg-generative-design-dynamics.md
 sources:
   - ../../sources/papers/humanoid_hardware.md
   - ../../sources/blogs/wechat_human_five_humanoid_hardware_101.md
+  - ../../sources/papers/humanoid_leg_generative_design_hust_j_260645.md
 tags: [unitree]
 
 ---
@@ -175,3 +177,4 @@ tags: [unitree]
 - [Sim2Real](../concepts/sim2real.md) — 硬件特性影响 sim2real 策略（SEA vs 刚性关节）
 - [Isaac Gym / Isaac Lab](../entities/isaac-gym-isaac-lab.md) — 大规模并行训练平台，支持多种机器人型号
 - [legged_gym](../entities/legged-gym.md) — legged_gym 有主流平台的训练模板
+- [动力学仿真驱动的人形下肢衍生式设计](../entities/paper-humanoid-leg-generative-design-dynamics.md) — 自研电液混合腿的布置/减重案例（非货架整机选型）

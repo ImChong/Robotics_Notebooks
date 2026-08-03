@@ -534,6 +534,7 @@
 - [Human-as-Humanoid](wiki/entities/paper-human-as-humanoid.md) — Human-as-Humanoid: Enabling Zero-Shot Humanoid Learning from Ego-Exo Human Videos with Human-Align `📅unknown` `[entity_page]`
 - [Humanoid-DART](wiki/entities/paper-humanoid-dart.md) — Humanoid-DART: Humanoid Loco-Manipulation using Diffusion-guided Augmentation through Relabeling a `📅unknown` `[entity_page]`
 - [Humanoid-GPT（Scaling Data and Structure for Zero-Shot Motion Tracking）](wiki/entities/paper-humanoid-gpt.md) — Humanoid-GPT** 是清华、Galbot、上交、北大与期智等团队的 **人形全身在线 motion tracking** 工作（arXiv:2606.03985，项目页标注 **CVPR `📅unknown` `[entity_page]`
+- [动力学仿真驱动的人形机器人下肢衍生式设计](wiki/entities/paper-humanoid-leg-generative-design-dynamics.md) — 罗元春 / 纵怀志 / 周蕾\* / 张军辉**（浙江大学 流体动力基础件与机电系统全国重点实验室；[中航工业西安飞行自动控制研究所](htt `📅unknown` `[entity_page]`
 - [Humanoid Loco-Manipulation Survey（HMI P069）](wiki/entities/paper-humanoid-loco-manipulation-survey.md) — Humanoid Loco-Manipulation Survey**（*Humanoid Locomotion and Manipulation: Current Progress and Ch `📅unknown` `[entity_page]`
 - [Swarm Intelligence for Collaborative Play in Humanoid Soccer Teams](wiki/entities/paper-humanoid-soccer-swarm-intelligence.md) — Nadiri & Rad（Sensors 2025, 25(11):3496）** 提出面向 **人形足球机器人队** 的 **生物启发式去中心化群控框架**：在部分可观测、高动态对抗场上，用  `📅unknown` `[entity_page]`
 - [Humanoid Surgeon（In Vivo Laparoscopic Feasibility）](wiki/entities/paper-humanoid-surgeon-in-vivo-laparoscopy.md) — Humanoid Surgeon**（*In vivo feasibility study of humanoid robots in surgery*，Zekai Liang / Michael `📅unknown` `[entity_page]`

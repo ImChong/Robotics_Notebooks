@@ -1,3 +1,12 @@
+## [2026-08-03] ingest | sources/papers/humanoid_leg_generative_design_hust_j_260645.md — 动力学仿真驱动人形下肢衍生式设计；升格 wiki/entities/paper-humanoid-leg-generative-design-dynamics.md
+
+- **触发：** 用户指定学报页 <http://xb.hust.edu.cn/thesisDetails#10.13245/j.hust.260645&lang=zh>（DOI `10.13245/j.hust.260645`）
+- **Sources：** [`sources/papers/humanoid_leg_generative_design_hust_j_260645.md`](sources/papers/humanoid_leg_generative_design_hust_j_260645.md)
+- **Wiki：** [`wiki/entities/paper-humanoid-leg-generative-design-dynamics.md`](wiki/entities/paper-humanoid-leg-generative-design-dynamics.md)
+- **交叉：** [`wiki/concepts/humanoid-mechanical-layout-design.md`](wiki/concepts/humanoid-mechanical-layout-design.md)、[`wiki/overview/humanoid-hardware-101-chassis-materials.md`](wiki/overview/humanoid-hardware-101-chassis-materials.md)、[`wiki/overview/humanoid-actuator-102-load-and-mass-spiral.md`](wiki/overview/humanoid-actuator-102-load-and-mass-spiral.md)、[`roadmap/depth-humanoid-hardware-design.md`](roadmap/depth-humanoid-hardware-design.md)、[`wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md`](wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md)、[`wiki/queries/humanoid-hardware-selection.md`](wiki/queries/humanoid-hardware-selection.md)
+- **机构：** 已有 `zju`；新注册 `avic-facri`（中航工业西安飞行自动控制研究所（AVIC FACRI））
+- **开源：** **确认未开源** — 学报 PDF 可下载，无 GitHub/CAD/数据集
+
 ## [2026-08-03] ingest | sources/papers/robo_harness_arxiv_2607_18060.md + sites/robo-harness-com.md + repos/robo-harness.md — RoboHarness 异构策略编排；升格 wiki/entities/paper-robo-harness.md
 
 - **触发：** 用户指定项目主页 <https://robo-harness.com> 与论文 <https://arxiv.org/abs/2607.18060>
