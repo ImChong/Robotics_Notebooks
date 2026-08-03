@@ -1,4 +1,4 @@
-// 验证：首页 Hero 规模数字首次加载 count-up；同会话二次进入不重播。
+// 验证：首页 Hero 规模数字首次访问 count-up；刷新 / 新标签不重播（localStorage）。
 //
 // 前置：仓库根目录生成 home-stats 并起静态服务
 //   make export graph   # 或至少有 docs/exports/home-stats.json
@@ -43,8 +43,16 @@ const path = require('path');
             }
           : null;
       }
-      out.flag = sessionStorage.getItem('rn_home_hero_stats_countup_played');
+      out.flag = localStorage.getItem('rn_home_hero_stats_countup_played');
+      out.sessionFlag = sessionStorage.getItem('rn_home_hero_stats_countup_played');
       return out;
+    });
+  }
+
+  async function clearCountUpFlags(page) {
+    await page.evaluate(() => {
+      try { localStorage.removeItem('rn_home_hero_stats_countup_played'); } catch (_) { /* ignore */ }
+      try { sessionStorage.removeItem('rn_home_hero_stats_countup_played'); } catch (_) { /* ignore */ }
     });
   }
 
@@ -54,9 +62,9 @@ const path = require('path');
     const errs = [];
     page.on('pageerror', (e) => errs.push(String(e)));
 
-    // 清空会话标记，确保本次为「首次加载」
+    // 清空持久标记，确保本次为「首次访问」
     await page.goto(base + '/index.html', { waitUntil: 'domcontentloaded', timeout: 30000 });
-    await page.evaluate(() => sessionStorage.removeItem('rn_home_hero_stats_countup_played'));
+    await clearCountUpFlags(page);
     await page.reload({ waitUntil: 'domcontentloaded', timeout: 30000 });
 
     // 动画进行中：节点/边同步翻滚且仍低于终值，便于截到「翻滚中」帧
@@ -110,7 +118,7 @@ const path = require('path');
       fullPage: false,
     });
 
-    // 同会话二次进入：应直接落在终值，且全程不出现 is-counting
+    // 同页刷新：应直接落在终值，且全程不出现 is-counting
     await page.reload({ waitUntil: 'networkidle2', timeout: 30000 });
     await page.waitForFunction(
       () => {
@@ -135,6 +143,32 @@ const path = require('path');
       fullPage: false,
     });
 
+    // 新标签（共享 localStorage）：也不应重播
+    const page2 = await browser.newPage();
+    await page2.setViewport({ width: 1280, height: 900 });
+    await page2.goto(base + '/index.html', { waitUntil: 'domcontentloaded', timeout: 30000 });
+    let newTabHadCounting = false;
+    const newTabTexts = new Set();
+    for (let i = 0; i < 25; i++) {
+      const snap = await page2.evaluate(() => {
+        const node = document.getElementById('heroNodeCount');
+        return {
+          text: node ? String(node.textContent || '').trim() : '',
+          counting: !!document.querySelector('.hero-stat-num.is-counting'),
+          flag: localStorage.getItem('rn_home_hero_stats_countup_played'),
+        };
+      });
+      newTabTexts.add(snap.text);
+      if (snap.counting) newTabHadCounting = true;
+      await new Promise((r) => setTimeout(r, 40));
+    }
+    const newTabSample = await sampleHero(page2);
+    await page2.screenshot({
+      path: path.join(outDir, 'home-hero-stats-countup-new-tab.png'),
+      fullPage: false,
+    });
+    await page2.close();
+
     const midNode = parseInt(mid.heroNodeCount.text, 10);
     const doneNode = parseInt(settledB.heroNodeCount.text, 10);
     const midEdge = parseInt(mid.heroEdgeCount.text, 10);
@@ -148,17 +182,33 @@ const path = require('path');
       earlySecond.heroEdgeCount.text === lateSecond.heroEdgeCount.text &&
       earlySecond.heroNodeCount.text === settledB.heroNodeCount.text &&
       earlySecond.flag === '1';
+    const okNewTab =
+      !newTabHadCounting &&
+      newTabSample.flag === '1' &&
+      newTabSample.heroNodeCount.text === settledB.heroNodeCount.text &&
+      newTabTexts.size === 1;
 
     console.log('pageerrors:', errs.length ? errs : 'none');
     console.log('MID   :', JSON.stringify(mid));
     console.log('DONE  :', JSON.stringify(settledB));
     console.log('SECOND:', JSON.stringify({ earlySecond, lateSecond, secondHadCounting }));
+    console.log('NEWTAB:', JSON.stringify({ newTabSample, newTabHadCounting, texts: [...newTabTexts] }));
     console.log(
       'CHECKS:',
-      JSON.stringify({ okMid, okSettled, okFlag, okSecond, midNode, doneNode, midEdge, doneEdge })
+      JSON.stringify({
+        okMid,
+        okSettled,
+        okFlag,
+        okSecond,
+        okNewTab,
+        midNode,
+        doneNode,
+        midEdge,
+        doneEdge,
+      })
     );
 
-    if (!okMid || !okSettled || !okFlag || !okSecond || errs.length) {
+    if (!okMid || !okSettled || !okFlag || !okSecond || !okNewTab || errs.length) {
       process.exitCode = 1;
     } else {
       console.log('OK hero stats count-up');

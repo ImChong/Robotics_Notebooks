@@ -235,7 +235,7 @@
     return out.join('\n');
   }
 
-  // 首页 Hero 规模数字：首次加载 count-up（同会话不重播；尊重 prefers-reduced-motion）
+  // 首页 Hero 规模数字：仅首次访问 count-up（localStorage 跨刷新/标签不重播；尊重 prefers-reduced-motion）
   var HERO_STATS_COUNTUP_KEY = 'rn_home_hero_stats_countup_played';
   var heroStatsCountUpEnabled = null;
   var heroStatsCountUpFallbacks = null;
@@ -248,21 +248,36 @@
     }
   }
 
+  function readHeroStatsCountUpPlayed() {
+    try {
+      if (localStorage.getItem(HERO_STATS_COUNTUP_KEY) === '1') return true;
+    } catch {
+      /* private mode 等 */
+    }
+    // 兼容旧版 sessionStorage 标记，避免已看过的用户再播一次
+    try {
+      if (sessionStorage.getItem(HERO_STATS_COUNTUP_KEY) === '1') {
+        try { localStorage.setItem(HERO_STATS_COUNTUP_KEY, '1'); } catch { /* ignore */ }
+        return true;
+      }
+    } catch {
+      /* ignore */
+    }
+    return false;
+  }
+
   function shouldPlayHeroStatsCountUp() {
     if (prefersReducedMotionQuery()) return false;
-    try {
-      if (sessionStorage.getItem(HERO_STATS_COUNTUP_KEY) === '1') return false;
-    } catch {
-      /* private mode 等：仍允许本次播放 */
-    }
+    if (readHeroStatsCountUpPlayed()) return false;
     return true;
   }
 
   function markHeroStatsCountUpPlayed() {
     try {
-      sessionStorage.setItem(HERO_STATS_COUNTUP_KEY, '1');
+      localStorage.setItem(HERO_STATS_COUNTUP_KEY, '1');
     } catch {
-      /* ignore */
+      /* private mode：降级写 sessionStorage，至少同标签刷新不重播 */
+      try { sessionStorage.setItem(HERO_STATS_COUNTUP_KEY, '1'); } catch { /* ignore */ }
     }
   }
 
