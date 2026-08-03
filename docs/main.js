@@ -235,8 +235,7 @@
     return out.join('\n');
   }
 
-  // 首页 Hero 规模数字：首次加载 count-up（同会话不重播；尊重 prefers-reduced-motion）
-  var HERO_STATS_COUNTUP_KEY = 'rn_home_hero_stats_countup_played';
+  // 首页 Hero 规模数字：每次进入/刷新都 count-up（尊重 prefers-reduced-motion）
   var heroStatsCountUpEnabled = null;
   var heroStatsCountUpFallbacks = null;
 
@@ -249,27 +248,12 @@
   }
 
   function shouldPlayHeroStatsCountUp() {
-    if (prefersReducedMotionQuery()) return false;
-    try {
-      if (sessionStorage.getItem(HERO_STATS_COUNTUP_KEY) === '1') return false;
-    } catch {
-      /* private mode 等：仍允许本次播放 */
-    }
-    return true;
-  }
-
-  function markHeroStatsCountUpPlayed() {
-    try {
-      sessionStorage.setItem(HERO_STATS_COUNTUP_KEY, '1');
-    } catch {
-      /* ignore */
-    }
+    return !prefersReducedMotionQuery();
   }
 
   function getHeroStatsCountUpEnabled() {
     if (heroStatsCountUpEnabled !== null) return heroStatsCountUpEnabled;
     heroStatsCountUpEnabled = shouldPlayHeroStatsCountUp();
-    if (heroStatsCountUpEnabled) markHeroStatsCountUpPlayed();
     return heroStatsCountUpEnabled;
   }
 

@@ -1,4 +1,4 @@
-// 验证：首页 Hero 规模数字首次加载 count-up；同会话二次进入不重播。
+// 验证：首页 Hero 规模数字每次加载/刷新都 count-up。
 //
 // 前置：仓库根目录生成 home-stats 并起静态服务
 //   make export graph   # 或至少有 docs/exports/home-stats.json
@@ -43,23 +43,11 @@ const path = require('path');
             }
           : null;
       }
-      out.flag = sessionStorage.getItem('rn_home_hero_stats_countup_played');
       return out;
     });
   }
 
-  try {
-    const page = await browser.newPage();
-    await page.setViewport({ width: 1280, height: 900 });
-    const errs = [];
-    page.on('pageerror', (e) => errs.push(String(e)));
-
-    // 清空会话标记，确保本次为「首次加载」
-    await page.goto(base + '/index.html', { waitUntil: 'domcontentloaded', timeout: 30000 });
-    await page.evaluate(() => sessionStorage.removeItem('rn_home_hero_stats_countup_played'));
-    await page.reload({ waitUntil: 'domcontentloaded', timeout: 30000 });
-
-    // 动画进行中：节点/边同步翻滚且仍低于终值，便于截到「翻滚中」帧
+  async function waitForCountUpMid(page) {
     await page.waitForFunction(
       () => {
         const node = document.getElementById('heroNodeCount');
@@ -80,13 +68,9 @@ const path = require('path');
       },
       { timeout: 8000 }
     );
-    const mid = await sampleHero(page);
-    await page.screenshot({
-      path: path.join(outDir, 'home-hero-stats-countup-mid.png'),
-      fullPage: false,
-    });
+  }
 
-    // 等待翻滚结束：四个数字稳定且无 is-counting
+  async function waitForCountUpDone(page) {
     await page.waitForFunction(
       () => {
         const ids = ['heroNodeCount', 'heroEdgeCount', 'heroMainRouteCount', 'heroDepthRouteCount'];
@@ -101,7 +85,25 @@ const path = require('path');
       },
       { timeout: 10000 }
     );
-    // 再采一帧确保不再跳动
+  }
+
+  try {
+    const page = await browser.newPage();
+    await page.setViewport({ width: 1280, height: 900 });
+    const errs = [];
+    page.on('pageerror', (e) => errs.push(String(e)));
+
+    await page.goto(base + '/index.html', { waitUntil: 'domcontentloaded', timeout: 30000 });
+
+    // 首次加载：翻滚中
+    await waitForCountUpMid(page);
+    const mid = await sampleHero(page);
+    await page.screenshot({
+      path: path.join(outDir, 'home-hero-stats-countup-mid.png'),
+      fullPage: false,
+    });
+
+    await waitForCountUpDone(page);
     const settledA = await sampleHero(page);
     await new Promise((r) => setTimeout(r, 200));
     const settledB = await sampleHero(page);
@@ -110,28 +112,18 @@ const path = require('path');
       fullPage: false,
     });
 
-    // 同会话二次进入：应直接落在终值，且全程不出现 is-counting
-    await page.reload({ waitUntil: 'networkidle2', timeout: 30000 });
-    await page.waitForFunction(
-      () => {
-        const node = document.getElementById('heroNodeCount');
-        const edge = document.getElementById('heroEdgeCount');
-        if (!node || !edge) return false;
-        const n = parseInt(node.textContent, 10);
-        const e = parseInt(edge.textContent, 10);
-        return n > 100 && e > 100 && !document.querySelector('.hero-stat-num.is-counting');
-      },
-      { timeout: 10000 }
-    );
-    const earlySecond = await sampleHero(page);
-    await new Promise((r) => setTimeout(r, 500));
-    const lateSecond = await sampleHero(page);
-    const secondHadCounting = earlySecond.heroNodeCount.counting ||
-      earlySecond.heroEdgeCount.counting ||
-      lateSecond.heroNodeCount.counting ||
-      lateSecond.heroEdgeCount.counting;
+    // 刷新后应再次翻滚
+    await page.reload({ waitUntil: 'domcontentloaded', timeout: 30000 });
+    await waitForCountUpMid(page);
+    const midReload = await sampleHero(page);
     await page.screenshot({
-      path: path.join(outDir, 'home-hero-stats-countup-second-visit.png'),
+      path: path.join(outDir, 'home-hero-stats-countup-reload-mid.png'),
+      fullPage: false,
+    });
+    await waitForCountUpDone(page);
+    const settledReload = await sampleHero(page);
+    await page.screenshot({
+      path: path.join(outDir, 'home-hero-stats-countup-reload-done.png'),
       fullPage: false,
     });
 
@@ -139,29 +131,43 @@ const path = require('path');
     const doneNode = parseInt(settledB.heroNodeCount.text, 10);
     const midEdge = parseInt(mid.heroEdgeCount.text, 10);
     const doneEdge = parseInt(settledB.heroEdgeCount.text, 10);
+    const reloadMidNode = parseInt(midReload.heroNodeCount.text, 10);
+    const reloadDoneNode = parseInt(settledReload.heroNodeCount.text, 10);
+    const reloadMidEdge = parseInt(midReload.heroEdgeCount.text, 10);
+    const reloadDoneEdge = parseInt(settledReload.heroEdgeCount.text, 10);
+
     const okMid = midNode < doneNode && midEdge < doneEdge;
     const okSettled = settledA.heroNodeCount.text === settledB.heroNodeCount.text;
-    const okFlag = settledB.flag === '1';
-    const okSecond =
-      !secondHadCounting &&
-      earlySecond.heroNodeCount.text === lateSecond.heroNodeCount.text &&
-      earlySecond.heroEdgeCount.text === lateSecond.heroEdgeCount.text &&
-      earlySecond.heroNodeCount.text === settledB.heroNodeCount.text &&
-      earlySecond.flag === '1';
+    const okReload =
+      midReload.heroNodeCount.counting &&
+      midReload.heroEdgeCount.counting &&
+      reloadMidNode < reloadDoneNode &&
+      reloadMidEdge < reloadDoneEdge &&
+      settledReload.heroNodeCount.text === settledB.heroNodeCount.text;
 
     console.log('pageerrors:', errs.length ? errs : 'none');
     console.log('MID   :', JSON.stringify(mid));
     console.log('DONE  :', JSON.stringify(settledB));
-    console.log('SECOND:', JSON.stringify({ earlySecond, lateSecond, secondHadCounting }));
+    console.log('RELOAD:', JSON.stringify({ midReload, settledReload }));
     console.log(
       'CHECKS:',
-      JSON.stringify({ okMid, okSettled, okFlag, okSecond, midNode, doneNode, midEdge, doneEdge })
+      JSON.stringify({
+        okMid,
+        okSettled,
+        okReload,
+        midNode,
+        doneNode,
+        midEdge,
+        doneEdge,
+        reloadMidNode,
+        reloadDoneNode,
+      })
     );
 
-    if (!okMid || !okSettled || !okFlag || !okSecond || errs.length) {
+    if (!okMid || !okSettled || !okReload || errs.length) {
       process.exitCode = 1;
     } else {
-      console.log('OK hero stats count-up');
+      console.log('OK hero stats count-up (plays every load/refresh)');
     }
   } finally {
     await browser.close();
