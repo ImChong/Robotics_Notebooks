@@ -8,13 +8,14 @@ tags:
   - perception
   - deep-learning
 status: complete
-updated: 2026-07-15
+updated: 2026-08-03
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./vision-backbones.md
   - ./visual-representation-for-policy.md
   - ../entities/vision-banana.md
   - ../entities/genception.md
+  - ../entities/sensenova-u1-5.md
   - ../methods/object-detection.md
   - ../methods/vla.md
 sources:
@@ -55,6 +56,7 @@ summary: "生成式视觉预训练指以图像/视频生成为目标训练出的
 | **B. Zero-shot 可视化** | 不微调，直接 prompt 生成「像分割/深度图」的 RGB | 即开即用 | 格式不稳定，难定量 benchmark |
 | **C. 生成基座 + instruction-tuning（Vision Banana）** | 低比例混入 **可解码 RGB 格式** 的视觉任务数据 | **单权重多任务** + **保留生成** + **强 zero-shot** | 依赖 prompt 遵循与后处理解码；部分步骤需 MLLM |
 | **D. 视频生成基座 + feed-forward 后训练（GenCeption）** | 将 **T2V DiT** 改为 **t=0 单步前向**；稠密任务 **RGB/latent L2**，稀疏任务 **learnable token** | **视频时序一致** + **极高数据效率** + **合成→真实涌现** | 推理仍重（14B/81 帧）；稀疏 token 与预训练注意力冲突；代码待开源 |
+| **E. 原生统一预训练（[SenseNova-U1.5](../entities/sensenova-u1-5.md) / NEO-unify）** | **去掉预训练视觉编码器与 VAE**，理解与生成共用一条 token 序列，文本自回归 + **像素 flow matching** 联合训练 | 无编码器语义瓶颈；**冻结理解分支时编辑能力仍强**，说明语义定位来自共享表示 | 需自学像素级重建；理解侧上下文仅 32K；U1.5 技术报告未发布，架构主张缺 ablation |
 
 ```mermaid
 flowchart TB
@@ -94,6 +96,7 @@ Vision Banana 的关键设计是把任务输出 **参数化为 RGB 图像**：
 
 - [Vision Banana](../entities/vision-banana.md) — 图像域实证：NBP 基座 + instruction-tuning
 - [GenCeption](../entities/genception.md) — 视频域实证：WAN 2.1 + feed-forward 统一感知
+- [SenseNova-U1.5](../entities/sensenova-u1-5.md) — 原生统一（encoder-free）实证：同序列出文本与像素
 - [视觉骨干](./vision-backbones.md) — 判别式预训练传统主线
 - [视觉表征作为策略输入](./visual-representation-for-policy.md) — 机器人策略如何接入上游感知
 - [目标检测](../methods/object-detection.md) — 2D 感知任务谱系中的物体级输出

@@ -2,7 +2,7 @@
 
 ## [2026-08-03] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **0** 条信息型预警）：
+共发现 **1** 个问题（另含 **0** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -37,8 +37,8 @@
 ### ❌ Sources 孤儿（sources/papers 死链）（0 个）
 - 无
 
-### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（0 个）
-- 无
+### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（1 个）
+- wiki/methods/π0-policy.md (wiki:2026-07-31 < sources/fm_vla_arxiv_2607_18231.md:2026-08-01)
 
 ### ⚠️ 可能过期（updated: 距今 > 180 天）（0 个）
 - 无
@@ -127,4 +127,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：2053/2053 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：2054/2054 (100%) wiki/entity 页有 ingest 来源

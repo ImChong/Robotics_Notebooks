@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-08-03",
-  "node_count": 2077,
-  "edge_count": 18793,
+  "node_count": 2078,
+  "edge_count": 18804,
   "coverage": {
-    "covered": 2053,
-    "total": 2053,
+    "covered": 2054,
+    "total": 2054,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/sensenova-u1-5.md",
+      "detail_id": "entity-sensenova-u1-5",
+      "label": "SenseNova-U1.5（Preview · NEO-unify）",
+      "type": "entity",
+      "recency": "2026-08-03",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/sensenova-skills.md",
+      "detail_id": "entity-sensenova-skills",
+      "label": "SenseNova-Skills（OpenSenseNova）",
+      "type": "entity",
+      "recency": "2026-08-03",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+    },
+    {
+      "path": "wiki/concepts/generative-vision-pretraining.md",
+      "detail_id": "wiki-concepts-generative-vision-pretraining",
+      "label": "生成式视觉预训练（Generative Vision Pretraining）",
+      "type": "concept",
+      "recency": "2026-08-03",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/methods/unified-multimodal-tokens.md",
+      "detail_id": "wiki-methods-unified-multimodal-tokens",
+      "label": "Unified Multimodal Tokens (统一多模态 Token)",
+      "type": "method",
+      "recency": "2026-08-03",
+      "source": "log.md",
+      "action": "added"
+    },
     {
       "path": "wiki/entities/paper-worldscape-policy-2.md",
       "detail_id": "entity-paper-worldscape-policy-2",
@@ -166,75 +206,31 @@
       "recency": "2026-08-03",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
-      "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
-      "label": "VLA 开源复现景观（2025 策展）",
-      "type": "overview",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-pi05-open-world-vla.md",
-      "detail_id": "entity-paper-pi05-open-world-vla",
-      "label": "π0.5（HMI P059）",
-      "type": "entity",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/model-context-protocol.md",
-      "detail_id": "wiki-concepts-model-context-protocol",
-      "label": "Model Context Protocol（MCP）",
-      "type": "concept",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
-    },
-    {
-      "path": "wiki/entities/freecad-mcp.md",
-      "detail_id": "entity-freecad-mcp",
-      "label": "FreeCAD MCP",
-      "type": "entity",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "maintained",
       "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-worldscape-policy-2.md",
-    "detail_id": "entity-paper-worldscape-policy-2",
-    "label": "WorldScape Policy 2.0（Reasoning-Augmented Memory WAM · arXiv:2607.18840）",
+    "path": "wiki/entities/sensenova-u1-5.md",
+    "detail_id": "entity-sensenova-u1-5",
+    "label": "SenseNova-U1.5（Preview · NEO-unify）",
     "type": "entity",
     "recency": "2026-08-03",
     "source": "log.md",
-    "action": "maintained",
+    "action": "added",
     "has_repo": true
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 276
+      "size": 229
     },
     {
       "label": "操作",
-      "size": 146
+      "size": 147
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 141
+      "size": 143
     },
     {
       "label": "移动操作",
@@ -246,7 +242,7 @@
     },
     {
       "label": "动作重定向",
-      "size": 123
+      "size": 137
     }
   ],
   "top_hubs": [
@@ -262,7 +258,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 380,
+      "degree": 381,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -345,7 +341,8 @@
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
-      "degree": 54
+      "degree": 54,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",

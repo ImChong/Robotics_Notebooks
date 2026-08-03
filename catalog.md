@@ -1329,6 +1329,7 @@
 - [SceneVerse++](wiki/entities/sceneverse-pp.md) — SceneVerse++** 是一套面向 **3D 场景理解** 的互联网级训练数据：从海量无标注网络视频中重建相机位姿与稠密几何，再自动生成实例级分割与高层语义标注（含空间问答与导航指令），用于 `📅unknown` `[entity_page]`
 - [ScheduleStream](wiki/entities/schedulestream.md) — ScheduleStream**（项目页 · [NVlabs/schedulestream](https://github `📅unknown` `[entity_page]`
 - [SenseNova-Skills（OpenSenseNova）](wiki/entities/sensenova-skills.md) — SenseNova-Skills** 是 [OpenSenseNova/SenseNova-Skills](https://github.com/OpenSenseNova/SenseNova-S `📅unknown` `[entity_page]`
+- [SenseNova-U1.5（Preview · NEO-unify）](wiki/entities/sensenova-u1-5.md) — SenseNova-U1.5-8B-MoT (Preview)**（商汤科技，`2026-07-31`，[GitHub](h `📅unknown` `[entity_page]`
 - [Shadow Hand (灵巧手)](wiki/entities/shadow-hand.md) — Shadow Hand** 由英国 Shadow Robot Company 开发，是目前世界上最接近人类手部功能的灵巧手平台之一。它拥有 5 根手指和 20 个主动驱动关节（总计 24 个自由度 `📅unknown` `[entity_page]`
 - [SimpleFOC（Arduino-FOC 生态）](wiki/entities/simplefoc.md) — SimpleFOC** 指围绕 Arduino-FOC 库形成的开源项目：跨 MCU 的 **磁场定向控制 `📅unknown` `[entity_page]`
 - [SimToolReal](wiki/entities/simtoolreal.md) — SimToolReal](https://github.com/tylerlum/simtoolreal) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXi `📅unknown` `[entity_page]`

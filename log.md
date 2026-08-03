@@ -1,3 +1,14 @@
+## [2026-08-03] ingest | sources/repos/sensenova-u1.md + sites/huggingface-sensenova-u1-5-8b-mot-preview.md + sites/modelscope-sensenova-u1-5-8b-mot-preview.md — SenseNova-U1.5 Preview 原生统一多模态模型；升格 wiki/entities/sensenova-u1-5.md
+
+- **触发：** 用户指定三处一手入口 <https://github.com/OpenSenseNova/SenseNova-U1/blob/main/docs/u1.5_preview.md>、<https://huggingface.co/sensenova/SenseNova-U1.5-8B-MoT-Preview>、<https://modelscope.cn/models/SenseNova/SenseNova-U1.5-8B-MoT-Preview>
+- **Sources：** [`sources/repos/sensenova-u1.md`](sources/repos/sensenova-u1.md)、[`sources/sites/huggingface-sensenova-u1-5-8b-mot-preview.md`](sources/sites/huggingface-sensenova-u1-5-8b-mot-preview.md)、[`sources/sites/modelscope-sensenova-u1-5-8b-mot-preview.md`](sources/sites/modelscope-sensenova-u1-5-8b-mot-preview.md)
+- **Wiki：** [`wiki/entities/sensenova-u1-5.md`](wiki/entities/sensenova-u1-5.md)
+- **交叉：** [`wiki/entities/sensenova-skills.md`](wiki/entities/sensenova-skills.md)、[`wiki/concepts/generative-vision-pretraining.md`](wiki/concepts/generative-vision-pretraining.md)（新增谱系 E：原生统一预训练）、[`wiki/methods/unified-multimodal-tokens.md`](wiki/methods/unified-multimodal-tokens.md)
+- **机构：** 已有 `sensenova`（商汤科技（SenseNova）），无需新注册
+- **开源：** **已开源（Apache-2.0）** — 推理 `examples/{t2i,editing}/inference.py`、U1.5 生成侧预训练 `training/shell/train_u1/U1.5_8B.sh`、全参微调代码与权重全部公开；**训练数据未开源**，**U1.5 技术报告未发布**（现有 arXiv 2605.12500 对应 U1）
+- **核对要点：** `8B-MoT` 指「≈8B 理解 + ≈8B 生成」，官方脚本实测总参 **17.552B**（bf16 载入 ~35.1 GB，盘上 ~50.2 GB）；HF/ModelScope 分片后缀 `-of-00016` 但实际仅 13 个文件（`00002`–`00004` 缺号），`model.safetensors.index.json` 未引用缺号分片 → 权重完整，非下载失败；`max_pixels 16777216` 恰为 4096×4096，对应「原生 4K」口径
+- **口径提醒：** 评测带 † 的 55.17/55.22 含模型外部 PE 改写器，裸分为 49.93/50.25；编辑侧 WeEdit BP 子项反而低于 U1（6.752 vs 7.157）
+
 ## [2026-08-03] ingest | sources/papers/worldscape_policy_2_arxiv_2607_18840.md + sites/manifoldai-research-worldscape-policy.md + repos/worldscape-policy.md — WorldScape Policy 2.0 推理增强长短期记忆 WAM；升格 wiki/entities/paper-worldscape-policy-2.md
 
 - **触发：** 用户指定论文 <https://arxiv.org/abs/2607.18840> 与仓库 <https://github.com/manifoldai-research/WorldScape-Policy>
