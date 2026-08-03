@@ -302,10 +302,20 @@ body.sponsor-dialog-open {
   color: var(--text);
   letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
   text-decoration: none;
   width: fit-content;
   border-radius: 4px;
-  transition: color 0.15s ease, box-shadow 0.15s ease;
+  transition: color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  display: inline-block;
+}
+.hero-stat-num.is-counting {
+  color: var(--accent);
+  animation: hero-stat-count-roll 0.35s ease-out;
+}
+@keyframes hero-stat-count-roll {
+  from { transform: translateY(0.28em); opacity: 0.55; }
+  to { transform: translateY(0); opacity: 1; }
 }
 a.hero-stat-num:hover,
 a.hero-stat-num:focus-visible {
@@ -554,6 +564,10 @@ a.hero-stat-num:focus-visible {
   #mini-graph-expand.is-pulse-hint {
     animation: none;
     color: var(--accent-hover);
+  }
+  .hero-stat-num.is-counting {
+    animation: none;
+    color: var(--text);
   }
 }
 .section-alt {
