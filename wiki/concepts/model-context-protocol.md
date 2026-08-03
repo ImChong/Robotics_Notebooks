@@ -11,6 +11,7 @@ related:
   - ../entities/3dgenstudio.md
   - ../entities/graphify.md
   - ../entities/hermes-agent.md
+  - ../entities/unreal-mcp.md
   - ../entities/unreal-engine-5.md
   - ../entities/unity-engine.md
   - ../references/llm-wiki-karpathy.md
@@ -18,6 +19,7 @@ sources:
   - ../../sources/sites/anthropic-model-context-protocol.md
   - ../../sources/sites/modelcontextprotocol-io.md
   - ../../sources/repos/modelcontextprotocol.md
+  - ../../sources/sites/unreal-mcp-in-unreal-editor.md
 summary: "Model Context Protocol（MCP）是连接 AI 应用与外部数据/工具的开放标准：Host 经 Client 用 JSON-RPC 对接 Server；官方传输为 stdio 与 Streamable HTTP；Server 暴露 Tools / Resources / Prompts。2024-11 Anthropic 开源，规范与文档以 modelcontextprotocol.io 与 schema 版本目录为真源。"
 ---
 
@@ -41,7 +43,7 @@ summary: "Model Context Protocol（MCP）是连接 AI 应用与外部数据/工�
 ## 为什么重要
 
 1. **机器人维护与工程代理的公共接口：** 本库多条「代理驱动专业软件」链路——[FreeCAD MCP](../entities/freecad-mcp.md)、[Draw.io Scientific Illustrator](../entities/drawio-scientific-illustrator.md)、[DimOS](../entities/dimensionalos-dimos.md)、[3D Gen Studio](../entities/3dgenstudio.md)、[Graphify](../entities/graphify.md)——都建立在 MCP Tools 之上；协议层不清会导致传输/安全误判。
-2. **仿真与编辑器宿主正在原生接入：** [Unreal Engine 5](../entities/unreal-engine-5.md) 5.8 Experimental MCP、[Unity](../entities/unity-engine.md) AI/MCP 方向，把「场景搭建 / 资产巡检」交给同一套 Host（Claude Code、Cursor 等）。
+2. **仿真与编辑器宿主正在原生接入：** [Unreal MCP](../entities/unreal-mcp.md)（UE 5.8 Experimental）、[Unity](../entities/unity-engine.md) AI/MCP 方向，把「场景搭建 / 资产巡检」交给同一套 Host（Claude Code、Cursor 等）。
 3. **一次实现、多 Host 复用：** Intro 明确 Claude、ChatGPT、VS Code、Cursor 等广泛支持——机器人工具桥不必为每个 IDE 重写私有插件协议。
 4. **与 RPC 概念衔接：** MCP 数据层就是 JSON-RPC；但产品语义是 **LLM 工具上下文**，不是运控周期的实时 RPC。对照见 [远程过程调用](./remote-procedure-call.md)。
 5. **安全默认值会变：** 本地 stdio / loopback HTTP 常见于桌面 CAD 与编辑器桥；远程 Streamable HTTP 走 OAuth 等——部署前必须分清传输与信任边界。
@@ -119,7 +121,7 @@ flowchart TB
 | [Draw.io Scientific Illustrator](../entities/drawio-scientific-illustrator.md) | draw.io desktop | Codex Skill + MCP |
 | [DimOS](../entities/dimensionalos-dimos.md) | 机器人 OS | skills 暴露为 MCP tools |
 | [3D Gen Studio](../entities/3dgenstudio.md) | 网格生产台 | HTTP `/mcp` + stdio 桥 |
-| [UE 5.8 MCP 方向](../entities/unreal-engine-5.md) | Unreal Editor | 编辑器内嵌 HTTP MCP（Experimental） |
+| [Unreal MCP](../entities/unreal-mcp.md) | Unreal Editor | 编辑器内嵌 HTTP MCP（Experimental） |
 
 ## 局限与风险
 
@@ -137,6 +139,7 @@ flowchart TB
 - [Draw.io Scientific Illustrator](../entities/drawio-scientific-illustrator.md) — 科研插图 MCP
 - [DimOS](../entities/dimensionalos-dimos.md) — 机器人 skills 的 MCP 暴露
 - [3D Gen Studio](../entities/3dgenstudio.md) · [Graphify](../entities/graphify.md) · [Hermes Agent](../entities/hermes-agent.md)
+- [Unreal MCP](../entities/unreal-mcp.md) — UE 编辑器内嵌官方 MCP server
 - [Unreal Engine 5](../entities/unreal-engine-5.md) · [Unity Engine](../entities/unity-engine.md) — 引擎侧 MCP/AI 方向
 - [LLM Wiki（Karpathy）](../references/llm-wiki-karpathy.md) — 本库维护模式；检索侧亦可挂 MCP
 

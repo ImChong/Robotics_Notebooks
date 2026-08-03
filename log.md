@@ -3,9 +3,19 @@
 - **触发：** 用户要求查找并 ingest MCP 相关一手资料（此前库内仅有 FreeCAD/UE 等应用桥，缺协议层）
 - **Sources：** [`sources/sites/anthropic-model-context-protocol.md`](sources/sites/anthropic-model-context-protocol.md)（2024-11-25 Anthropic 开源公告）、[`sources/sites/modelcontextprotocol-io.md`](sources/sites/modelcontextprotocol-io.md)（官方文档 / Spec `2026-07-28`）、[`sources/repos/modelcontextprotocol.md`](sources/repos/modelcontextprotocol.md)（规范仓 + org SDK/Inspector/servers 索引）
 - **Wiki：** [`wiki/concepts/model-context-protocol.md`](wiki/concepts/model-context-protocol.md)
-- **交叉：** [`wiki/entities/freecad-mcp.md`](wiki/entities/freecad-mcp.md)、[`wiki/entities/drawio-scientific-illustrator.md`](wiki/entities/drawio-scientific-illustrator.md)、[`wiki/entities/dimensionalos-dimos.md`](wiki/entities/dimensionalos-dimos.md)、[`wiki/entities/hermes-agent.md`](wiki/entities/hermes-agent.md)、[`wiki/entities/unreal-engine-5.md`](wiki/entities/unreal-engine-5.md)、[`wiki/concepts/remote-procedure-call.md`](wiki/concepts/remote-procedure-call.md)
+- **交叉：** [`wiki/entities/freecad-mcp.md`](wiki/entities/freecad-mcp.md)、[`wiki/entities/drawio-scientific-illustrator.md`](wiki/entities/drawio-scientific-illustrator.md)、[`wiki/entities/dimensionalos-dimos.md`](wiki/entities/dimensionalos-dimos.md)、[`wiki/entities/hermes-agent.md`](wiki/entities/hermes-agent.md)、[`wiki/entities/unreal-engine-5.md`](wiki/entities/unreal-engine-5.md)、[`wiki/entities/unreal-mcp.md`](wiki/entities/unreal-mcp.md)、[`wiki/concepts/remote-procedure-call.md`](wiki/concepts/remote-procedure-call.md)
 - **机构：** 注册 [`schema/institutions.json`](schema/institutions.json) `anthropic`（人类智能（Anthropic））
 - **开源：** **已开源** — 规范/SDK/参考 servers 公开；规范仓许可正从 MIT 过渡到 Apache-2.0
+
+## [2026-08-03] ingest | sources/sites/unreal-mcp-in-unreal-editor.md — Unreal MCP（UE 5.8 Experimental）编辑器内嵌 MCP server
+
+- **触发：** 用户指定 <https://dev.epicgames.com/documentation/unreal-engine/unreal-mcp-in-unreal-editor>
+- **Sources：** [`sources/sites/unreal-mcp-in-unreal-editor.md`](sources/sites/unreal-mcp-in-unreal-editor.md)、[`sources/repos/unreal-engine-skills-for-claude-code-plugin.md`](sources/repos/unreal-engine-skills-for-claude-code-plugin.md)
+- **Wiki：** [`wiki/entities/unreal-mcp.md`](wiki/entities/unreal-mcp.md)
+- **交叉：** [`wiki/entities/unreal-engine-5.md`](wiki/entities/unreal-engine-5.md)、[`wiki/entities/freecad-mcp.md`](wiki/entities/freecad-mcp.md)、[`sources/sites/unreal-engine-5-8-docs.md`](sources/sites/unreal-engine-5-8-docs.md)、[`sources/repos/epicgames-github-org.md`](sources/repos/epicgames-github-org.md)
+- **机构：** `epic-games` 已注册
+- **开源：** **部分开源** — 引擎内 `ModelContextProtocol*` / Toolset Registry 随 UE 许可与私有 UnrealEngine 源码；Claude Code 技能插件 **MIT 已开源**（`EpicGames/unreal-engine-skills-for-claude-code-plugin`）
+
 
 ## [2026-08-03] ingest | sources/sites/humanoid-robot-learning-paper-notebooks.md — 姊妹论文笔记站归档；补齐 26 个 wiki/overview 汇总页的 sources ingest 锚点
 
