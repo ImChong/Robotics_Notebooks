@@ -309,10 +309,10 @@ body.sponsor-dialog-open {
   transition: color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
   display: inline-block;
 }
-/* count-up 期间只改色，不做位移动画，避免与数字刷新叠出「跳一下」 */
+/* count-up 期间保持终值文字色，不做变色/位移动画 */
 .hero-stat-num.is-counting,
 .hero-stat-num.is-count-pending {
-  color: var(--accent);
+  color: var(--text);
   transition: none;
 }
 a.hero-stat-num:hover,
@@ -562,10 +562,6 @@ a.hero-stat-num:focus-visible {
   #mini-graph-expand.is-pulse-hint {
     animation: none;
     color: var(--accent-hover);
-  }
-  .hero-stat-num.is-counting,
-  .hero-stat-num.is-count-pending {
-    color: var(--text);
   }
 }
 .section-alt {
