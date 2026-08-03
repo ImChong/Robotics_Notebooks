@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-08-03",
-  "node_count": 2072,
-  "edge_count": 18719,
+  "node_count": 2073,
+  "edge_count": 18731,
   "coverage": {
-    "covered": 2048,
-    "total": 2048,
+    "covered": 2049,
+    "total": 2049,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/unreal-mcp.md",
+      "detail_id": "entity-unreal-mcp",
+      "label": "Unreal MCP（Unreal Editor 内嵌 MCP Server）",
+      "type": "entity",
+      "recency": "2026-08-03",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+    },
+    {
+      "path": "wiki/entities/unreal-engine-5.md",
+      "detail_id": "entity-unreal-engine-5",
+      "label": "Unreal Engine 5（Epic 实时 3D 引擎）",
+      "type": "entity",
+      "recency": "2026-08-03",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+    },
+    {
+      "path": "wiki/entities/freecad-mcp.md",
+      "detail_id": "entity-freecad-mcp",
+      "label": "FreeCAD MCP",
+      "type": "entity",
+      "recency": "2026-08-03",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
     {
       "path": "wiki/overview/paper-notebook-category-01-foundational-rl.md",
       "detail_id": "wiki-overview-paper-notebook-category-01-foundational-rl",
@@ -180,45 +212,18 @@
       "recency": "2026-08-03",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/overview/hub-locomotion.md",
-      "detail_id": "wiki-overview-hub-locomotion",
-      "label": "Locomotion 步态（知识链汇总）",
-      "type": "overview",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/overview/hub-motion-retargeting.md",
-      "detail_id": "wiki-overview-hub-motion-retargeting",
-      "label": "动作重定向（知识链汇总）",
-      "type": "overview",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/overview/hub-physics-fidelity.md",
-      "detail_id": "wiki-overview-hub-physics-fidelity",
-      "label": "仿真物理保真度（知识链汇总）",
-      "type": "overview",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/paper-notebook-category-01-foundational-rl.md",
-    "detail_id": "wiki-overview-paper-notebook-category-01-foundational-rl",
-    "label": "Paper Notebooks · Foundational RL",
-    "type": "overview",
+    "path": "wiki/entities/unreal-mcp.md",
+    "detail_id": "entity-unreal-mcp",
+    "label": "Unreal MCP（Unreal Editor 内嵌 MCP Server）",
+    "type": "entity",
     "recency": "2026-08-03",
     "source": "log.md",
-    "action": "maintained"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
   },
   "top_communities": [
     {

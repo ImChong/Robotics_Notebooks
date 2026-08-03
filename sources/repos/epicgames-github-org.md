@@ -34,7 +34,7 @@
 | [BlenderTools](https://github.com/EpicGames/BlenderTools) | ~3.2k | Blender ↔ Unreal 工作流插件 |
 | [Signup](https://github.com/epicgames/Signup) | ~3.6k | Epic 账号注册与 **Unreal Engine 源码访问** 指引 |
 | [raddebugger](https://github.com/epicgames/raddebugger) | ~7.2k | 原生多进程图形调试器（RAD 合作） |
-| [unreal-engine-skills-for-claude-code-plugin](https://github.com/epicgames/unreal-engine-skills-for-claude-code-plugin) | ~133 | Claude Code 的 UE 技能插件（与 5.8 MCP 方向呼应） |
+| [unreal-engine-skills-for-claude-code-plugin](https://github.com/epicgames/unreal-engine-skills-for-claude-code-plugin) | ~169 | Claude Code 的 UE 技能插件（驱动 [Unreal MCP](../../wiki/entities/unreal-mcp.md)；[repos 归档](./unreal-engine-skills-for-claude-code-plugin.md)） |
 
 > **注**：`PixelStreamingInfrastructure-archived-2024` 已迁移至 [EpicGamesExt/PixelStreamingInfrastructure](https://github.com/EpicGamesExt/PixelStreamingInfrastructure)。
 
@@ -47,6 +47,7 @@
 | 主题 | 目标 wiki |
 |------|-----------|
 | UE5 引擎与开源生态边界 | `wiki/entities/unreal-engine-5.md` |
+| Unreal MCP + Claude Code 技能 | `wiki/entities/unreal-mcp.md` |
 | MetaHuman DNA / Devkit | `wiki/entities/metahuman.md` |
 
 ## 参考链接

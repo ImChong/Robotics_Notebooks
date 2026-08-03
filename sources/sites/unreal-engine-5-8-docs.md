@@ -101,6 +101,7 @@ Release Notes 注明本版本包含 GitHub 社区开发者提交的改进（需�
 | 主题 | 目标 wiki |
 |------|-----------|
 | UE5/5.8 引擎与 Chaos/MCP/渲染 | `wiki/entities/unreal-engine-5.md` |
+| Unreal MCP 编辑器内嵌协议细节 | `wiki/entities/unreal-mcp.md`（文档页归档见 [unreal-mcp-in-unreal-editor.md](./unreal-mcp-in-unreal-editor.md)） |
 | MetaHuman 子系统细节 | `wiki/entities/metahuman.md` |
 | 程序化地形概念 | `wiki/concepts/procedural-terrain-generation.md` |
 
