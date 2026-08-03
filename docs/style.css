@@ -273,17 +273,18 @@ body.sponsor-dialog-open {
   border-radius: 50%;
   background: var(--accent);
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
-  /* 「持续更新」语义：慢、弱呼吸；减动偏好见下方 media query */
-  animation: hero-badge-dot-breathe 2.6s ease-in-out infinite;
+  /* 慢呼吸（非闪烁）：窄幅 opacity + 正弦感曲线 + 峰谷短暂停留；减动见下方 */
+  animation: hero-badge-dot-breathe 3.6s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
 }
 @keyframes hero-badge-dot-breathe {
+  /* 下限保持可见，避免「灭灯」感；外环只做微强弱，不扩光晕 */
   0%, 100% {
-    opacity: 0.45;
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent);
+    opacity: 0.68;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 16%, transparent);
   }
-  50% {
+  40%, 55% {
     opacity: 1;
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 28%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 24%, transparent);
   }
 }
 @media (prefers-reduced-motion: reduce) {
