@@ -1,4 +1,4 @@
-// 验证：首页 Hero 规模数字每次加载/刷新都 count-up。
+// 验证：首页 Hero 规模数字每次加载/刷新都 count-up；无「终值→0」闪跳。
 //
 // 前置：仓库根目录生成 home-stats 并起静态服务
 //   make export graph   # 或至少有 docs/exports/home-stats.json
@@ -40,11 +40,66 @@ const path = require('path');
           ? {
               text: String(el.textContent || '').trim(),
               counting: el.classList.contains('is-counting'),
+              pending: el.classList.contains('is-count-pending'),
             }
           : null;
       }
       return out;
     });
+  }
+
+  async function installHeroTrace(page) {
+    await page.evaluateOnNewDocument(() => {
+      window.__heroTrace = [];
+      // 只从 DOMContentLoaded 起采样：此时内联归零脚本已执行，反映真实首屏，
+      // 避免解析中途读到 HTML 终值造成假阳性。
+      document.addEventListener('DOMContentLoaded', () => {
+        const push = () => {
+          const n = document.getElementById('heroNodeCount');
+          if (!n) return;
+          const text = String(n.textContent || '').trim();
+          const counting = n.classList.contains('is-counting');
+          const last = window.__heroTrace[window.__heroTrace.length - 1];
+          if (!last || last.text !== text || last.counting !== counting) {
+            window.__heroTrace.push({ t: performance.now(), text, counting });
+          }
+        };
+        push();
+        const n = document.getElementById('heroNodeCount');
+        if (n) {
+          new MutationObserver(push).observe(n, {
+            characterData: true,
+            childList: true,
+            subtree: true,
+            attributes: true,
+            attributeFilter: ['class'],
+          });
+        }
+        let ticks = 0;
+        const id = setInterval(() => {
+          push();
+          ticks += 1;
+          if (ticks > 80) clearInterval(id);
+        }, 8);
+      });
+    });
+  }
+
+  function assertNoFinalToZeroJump(trace) {
+    // 不允许出现「已经是大终值」紧接着掉回 0 的闪跳
+    for (let i = 1; i < trace.length; i++) {
+      const prev = parseInt(trace[i - 1].text, 10);
+      const cur = parseInt(trace[i].text, 10);
+      if (Number.isFinite(prev) && Number.isFinite(cur) && prev >= 1000 && cur === 0) {
+        return false;
+      }
+    }
+    // 首个可见数字应为 0 或递增中的值，不应先闪终值再归零
+    if (trace.length) {
+      const first = parseInt(trace[0].text, 10);
+      if (Number.isFinite(first) && first >= 1000) return false;
+    }
+    return true;
   }
 
   async function waitForCountUpMid(page) {
@@ -92,10 +147,10 @@ const path = require('path');
     await page.setViewport({ width: 1280, height: 900 });
     const errs = [];
     page.on('pageerror', (e) => errs.push(String(e)));
+    await installHeroTrace(page);
 
     await page.goto(base + '/index.html', { waitUntil: 'domcontentloaded', timeout: 30000 });
 
-    // 首次加载：翻滚中
     await waitForCountUpMid(page);
     const mid = await sampleHero(page);
     await page.screenshot({
@@ -107,12 +162,13 @@ const path = require('path');
     const settledA = await sampleHero(page);
     await new Promise((r) => setTimeout(r, 200));
     const settledB = await sampleHero(page);
+    const loadTrace = await page.evaluate(() => window.__heroTrace || []);
     await page.screenshot({
       path: path.join(outDir, 'home-hero-stats-countup-done.png'),
       fullPage: false,
     });
 
-    // 刷新后应再次翻滚
+    // 刷新后应再次翻滚，且仍无终值闪跳
     await page.reload({ waitUntil: 'domcontentloaded', timeout: 30000 });
     await waitForCountUpMid(page);
     const midReload = await sampleHero(page);
@@ -122,6 +178,7 @@ const path = require('path');
     });
     await waitForCountUpDone(page);
     const settledReload = await sampleHero(page);
+    const reloadTrace = await page.evaluate(() => window.__heroTrace || []);
     await page.screenshot({
       path: path.join(outDir, 'home-hero-stats-countup-reload-done.png'),
       fullPage: false,
@@ -144,17 +201,23 @@ const path = require('path');
       reloadMidNode < reloadDoneNode &&
       reloadMidEdge < reloadDoneEdge &&
       settledReload.heroNodeCount.text === settledB.heroNodeCount.text;
+    const okNoJumpLoad = assertNoFinalToZeroJump(loadTrace);
+    const okNoJumpReload = assertNoFinalToZeroJump(reloadTrace);
 
     console.log('pageerrors:', errs.length ? errs : 'none');
     console.log('MID   :', JSON.stringify(mid));
     console.log('DONE  :', JSON.stringify(settledB));
     console.log('RELOAD:', JSON.stringify({ midReload, settledReload }));
+    console.log('TRACE_LOAD_HEAD:', JSON.stringify(loadTrace.slice(0, 6)));
+    console.log('TRACE_RELOAD_HEAD:', JSON.stringify(reloadTrace.slice(0, 6)));
     console.log(
       'CHECKS:',
       JSON.stringify({
         okMid,
         okSettled,
         okReload,
+        okNoJumpLoad,
+        okNoJumpReload,
         midNode,
         doneNode,
         midEdge,
@@ -164,10 +227,10 @@ const path = require('path');
       })
     );
 
-    if (!okMid || !okSettled || !okReload || errs.length) {
+    if (!okMid || !okSettled || !okReload || !okNoJumpLoad || !okNoJumpReload || errs.length) {
       process.exitCode = 1;
     } else {
-      console.log('OK hero stats count-up (plays every load/refresh)');
+      console.log('OK hero stats count-up (smooth every load/refresh)');
     }
   } finally {
     await browser.close();

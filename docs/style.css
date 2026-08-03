@@ -309,13 +309,11 @@ body.sponsor-dialog-open {
   transition: color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
   display: inline-block;
 }
-.hero-stat-num.is-counting {
+/* count-up 期间只改色，不做位移动画，避免与数字刷新叠出「跳一下」 */
+.hero-stat-num.is-counting,
+.hero-stat-num.is-count-pending {
   color: var(--accent);
-  animation: hero-stat-count-roll 0.35s ease-out;
-}
-@keyframes hero-stat-count-roll {
-  from { transform: translateY(0.28em); opacity: 0.55; }
-  to { transform: translateY(0); opacity: 1; }
+  transition: none;
 }
 a.hero-stat-num:hover,
 a.hero-stat-num:focus-visible {
@@ -565,8 +563,8 @@ a.hero-stat-num:focus-visible {
     animation: none;
     color: var(--accent-hover);
   }
-  .hero-stat-num.is-counting {
-    animation: none;
+  .hero-stat-num.is-counting,
+  .hero-stat-num.is-count-pending {
     color: var(--text);
   }
 }
