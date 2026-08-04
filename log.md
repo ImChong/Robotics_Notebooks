@@ -1,3 +1,12 @@
+## [2026-08-04] structural | docs/style.css — Technical Blueprint 字体：标题/规模数字切 DM Mono（自托管），正文补 CJK 兜底族；前端优化清单 v1 收官
+
+- **改动：** [`docs/style.css`](docs/style.css) — 新增 `--font-display: "DM Mono", ui-monospace, …, var(--font-sans)`，作用于 `.site-title` / `.hero-title` / `.section-title` / `#detailTitle` / `.hero-stat-num` / 卡片 `h3` / `.detail-markdown-body h1–h6`；字重与字号层级不变
+- **字体自托管：** [`docs/vendor/fonts/`](docs/vendor/fonts/README.md) — DM Mono v16（SIL OFL 1.1），latin + latin-ext × 400/500 共 4 个 woff2 约 48KB。不引 Google Fonts CDN：不新增第三方源，且 `sw.js` 只缓存同源请求，同源托管才能进离线缓存（走已有 stale-while-revalidate 路径，无需改 `ASSETS_TO_CACHE`）
+- **CJK 回落：** `@font-face` 保留各子集 `unicode-range` + `font-display: swap`，中文字符不命中 DM Mono、按 `--font-sans` 正常渲染，纯中文页也不会下载拉丁字体
+- **正文比例：** `--font-sans` 在拉丁族之后补 `PingFang SC` / `Hiragino Sans GB` / `Microsoft YaHei` / `Source Han Sans SC` 显式兜底——旧栈只有 `Noto Sans SC`，Windows / Android 上中文实际落到系统默认字体、与拉丁字面高度比例不一致。未改用中文衬线体（暗色小字号下可读性反而下降）
+- **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md) 三「引入 Technical Blueprint 风格 · 字体」——本条打勾后 v1 全部条目完成，状态改「已完成」，[`docs/checklists/README.md`](docs/checklists/README.md) 同步标注（后续前端专项另起 v2）
+- **验证：** [`scripts/verify_display_font.cjs`](scripts/verify_display_font.cjs)（用 CDP `CSS.getPlatformFontsForNode` 读**实际参与渲染**的字体，而非 computed `font-family`）——规模数字 `2094` → DM Mono Medium；中文 `.hero-title` → 0 字命中 DM Mono；品牌栏中英混排两族并存；详情页 `BFM（Behavior Foundation Model for Humanoid Robots）` 标题 47 字命中 DM Mono；woff2 请求 0 失败、页面 0 报错。`make ci-preflight` 12/12 通过
+
 ## [2026-08-04] ingest | sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md — 知乎专栏：FB/BFM-Zero/INTACT/Mimic/VLA 任务空间表征对照；升格 wiki/comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md
 
 - **触发：** 用户指定 <https://zhuanlan.zhihu.com/p/2066468645300180732>

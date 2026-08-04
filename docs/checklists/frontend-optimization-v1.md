@@ -1,6 +1,6 @@
 # 前端体验优化清单 v1 (Frontend Optimization Checklist)
 
-状态：**进行中** (已完成结构重构)
+状态：**已完成** (2026-08-04 全部条目打勾；后续前端专项另起 v2，本文件作历史记录保留)
 目标：**极简化首页 (Minimalist Homepage)** —— 消除视觉噪音，突出目标入口、学习路线、搜索与知识图谱。
 
 ---
@@ -29,9 +29,9 @@
 
 ## 三、 风格对齐 (Aesthetic Refinement)
 
-- [ ] **引入 Technical Blueprint 风格**：
+- [x] **引入 Technical Blueprint 风格**：
     - [x] 背景：暗色主题底色改为 `#0d1117`（与 `graph-3d.js` 画布同色，2D/3D 切换无色差），配套调深 `--bg-alt`/`--surface-strong` `#161b22`、`--border` `#30363d`、`--border-strong` `#6e7681`、`--text` `#e6edf3`、`--text-muted` `#9ba4b0`，`theme-color` / `manifest.theme_color` 同步 `#0d1117`；全站叠加细密点阵（`--grid-size: 22px` + `--grid-dot`，`body` 背景图与 `.hero-backdrop::before` 共用同一尺寸、同为文档原点且随内容滚动，叠加不产生摩尔纹；亮色主题 `--grid-dot: transparent` 保持纯净底不变）。对比度实测（暗色）：正文 16.0:1 / 次要文字 7.5:1 / 链接 6.9:1，均高于改动前（6.2:1）。
-    - [ ] 字体：标题切换为工程感更强的 `DM Mono`，正文优化衬线比例。
+    - [x] 字体：标题切换为工程感更强的 `DM Mono`，正文优化衬线比例。新增 `--font-display: "DM Mono", ui-monospace, …, var(--font-sans)`，作用于 `.site-title` / `.hero-title` / `.section-title` / `#detailTitle` / `.hero-stat-num` / 卡片 `h3` / `.detail-markdown-body h1–h6`。字体自托管在 `docs/vendor/fonts/`（DM Mono v16，SIL OFL 1.1，latin + latin-ext × 400/500，共 4 个 woff2，约 48KB），不引 Google Fonts CDN：不新增第三方源，且 `sw.js` 只缓存同源请求，同源托管才能进离线缓存；`@font-face` 保留各子集 `unicode-range` + `font-display: swap`，CJK 字符不命中 DM Mono、按 `--font-sans` 正常渲染，也避免为纯中文页下载拉丁字体。正文一项按「中西混排字面比例」理解（未改为中文衬线体——暗色小字号下可读性反而下降）：`--font-sans` 在拉丁族之后补 `PingFang SC` / `Hiragino Sans GB` / `Microsoft YaHei` / `Source Han Sans SC` 显式兜底，旧栈只有 `Noto Sans SC`，Windows / Android 上中文实际落到系统默认字体、与拉丁字面高度比例不一致。验证脚本 `scripts/verify_display_font.cjs`（用 CDP `CSS.getPlatformFontsForNode` 读实际参与渲染的字体，而非 computed `font-family`）：规模数字 `2094` → DM Mono Medium / 中文 `.hero-title` → 回落 WenQuanYi Zen Hei（0 字命中 DM Mono）/ 品牌栏中英混排两族并存 / 详情页 `BFM（Behavior Foundation Model for Humanoid Robots）` 标题 47 字命中 DM Mono；woff2 请求 0 失败、页面 0 报错。
 - [x] **响应式体验优化**：
     - [x] 确保极简后的首页在手机端首屏就能看到搜索框和图谱入口。
     - [x] 图谱页 `graph.html`：「按社区着色」图例全端（PC + 移动）改为左下角 FAB，默认折叠；点击后自左侧滑出抽屉，点击空白/遮罩或 Esc 收起，避免遮挡画布。PC 端展开尺寸约为视口宽 1/4、高 1/3。

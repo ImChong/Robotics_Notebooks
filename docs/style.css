@@ -1,3 +1,38 @@
+/* DM Mono（SIL OFL 1.1）自托管：仅 latin / latin-ext 子集，CJK 由 unicode-range 兜回正文字体栈。
+   来源与许可见 vendor/fonts/README.md；同源托管使 sw.js 离线缓存与 CSP 口径不变。 */
+@font-face {
+  font-family: "DM Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("vendor/fonts/dm-mono-400-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "DM Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("vendor/fonts/dm-mono-400-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "DM Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("vendor/fonts/dm-mono-500-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "DM Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("vendor/fonts/dm-mono-500-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
 :root {
   color-scheme: dark;
   /* Dark Mode（默认）：与 https://imchong.github.io/ 同源配色（Notion 风中性灰 + 淡蓝点缀）
@@ -25,7 +60,12 @@
   --detail-toc-desktop-min: 1632px;
   /* 侧栏 / 抽屉 TOC 卡片封顶高度（列表区内部滚动，避免浮窗几乎铺满视口） */
   --detail-toc-panel-max-height: min(76vh, 680px);
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Noto Sans SC", sans-serif;
+  /* 正文：拉丁族在前、CJK 族显式兜底。旧栈只有 "Noto Sans SC"，Windows / Android 上
+     中文实际落到系统默认字体，与拉丁字面高度比例不一致；补 PingFang SC / Microsoft YaHei /
+     Source Han Sans SC 后，中西混排的字面比例在各平台一致。 */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans SC", "Noto Sans SC", sans-serif;
+  /* 标题 / 数字：Technical Blueprint 工程感等宽体，CJK 经 unicode-range 落回 --font-sans */
+  --font-display: "DM Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", var(--font-sans);
   --transition: 0.3s ease;
   /* 全站细密点阵底纹：body 与 .hero-backdrop 共用同一尺寸，
      两者定位原点都在文档 (0,0) 且随内容滚动，叠加时点位对齐、不出现摩尔纹 */
@@ -78,6 +118,25 @@ body {
 }
 a { color: var(--accent); text-decoration: none; transition: all var(--transition); }
 a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
+
+/* Technical Blueprint：标题与规模数字走 --font-display（DM Mono），
+   中文经 @font-face 的 unicode-range 自动落回 --font-sans，字重/字号层级不变。 */
+.site-title,
+.hero-title,
+.section-title,
+#detailTitle,
+.hero-stat-num,
+.card h3,
+.simple-card h3,
+.home-entry-card h3,
+.detail-markdown-body h1,
+.detail-markdown-body h2,
+.detail-markdown-body h3,
+.detail-markdown-body h4,
+.detail-markdown-body h5,
+.detail-markdown-body h6 {
+  font-family: var(--font-display);
+}
 .container { max-width: var(--content-max-width); margin: 0 auto; padding: 0 24px; }
 
 .site-header {
