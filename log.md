@@ -1,3 +1,13 @@
+## [2026-08-04] ingest | sources/papers/why_action_chunking_improves_bc_corl2026.md + sites/action-chunking-github-io — Why Action Chunking Improves BC（CoRL 2026）入库：Delay / RDE 机制消融；升格 wiki/entities/paper-why-action-chunking-improves-bc.md
+
+- **触发：** 用户指定项目页 <https://action-chunking.github.io/>
+- **来源：** [`sources/papers/why_action_chunking_improves_bc_corl2026.md`](sources/papers/why_action_chunking_improves_bc_corl2026.md)、[`sources/sites/action-chunking-github-io.md`](sources/sites/action-chunking-github-io.md)
+- **新建实体：** [`wiki/entities/paper-why-action-chunking-improves-bc.md`](wiki/entities/paper-why-action-chunking-improves-bc.md)（Polimi / UC Berkeley；CoRL 2026；暂无 arXiv）
+- **方法要点：** 否定 temporal consistency / horizon reduction / representation learning 作为充分解释；主因是 **delayed policy**（\(a_t\mid o_{t-n}\)）与 **隐式集成**；**RDE** 部署在多数设定匹配标准 AC；显式集成进一步抬升（Transport 12.6%→41.5%）
+- **开源核查（步骤 2.5）：** PDF / presentation 已发布；Code 与 arXiv 均 Coming soon → 判「宣称将开源」；`## 源码运行时序图` 写明**不适用**
+- **机构注册：** [`schema/institutions.json`](schema/institutions.json) 新增 `polimi`（米兰理工大学（Politecnico di Milano））
+- **交叉：** [`wiki/methods/action-chunking.md`](wiki/methods/action-chunking.md)、[`wiki/methods/behavior-cloning.md`](wiki/methods/behavior-cloning.md)、[`wiki/methods/diffusion-policy.md`](wiki/methods/diffusion-policy.md)、[`wiki/entities/libero-benchmark.md`](wiki/entities/libero-benchmark.md)
+
 ## [2026-08-04] ingest | sources/papers/clift_arxiv_2607_29172.md + sites/thomaschen98-clift — CLIFT（arXiv:2607.29172）入库：托管 SFT API 下的非侵入闭环迭代微调；升格 wiki/entities/paper-clift-closed-loop-iterative-finetuning.md
 
 - **来源：** [`sources/papers/clift_arxiv_2607_29172.md`](sources/papers/clift_arxiv_2607_29172.md)、[`sources/sites/thomaschen98-clift.md`](sources/sites/thomaschen98-clift.md)

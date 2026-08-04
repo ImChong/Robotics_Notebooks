@@ -9,11 +9,14 @@ related:
   - ../entities/isaac-lab.md
   - ../entities/humanoid-motion-intelligence.md
   - ../entities/paper-world-action-planner.md
+  - ../entities/paper-why-action-chunking-improves-bc.md
+  - ../entities/paper-actfovea.md
   - ../queries/hmi-opensource-projects-coverage.md
 sources:
   - ../../sources/repos/libero-benchmark.md
   - ../../sources/repos/humanoid-motion-intelligence.md
   - ../../sources/papers/world_action_planner_arxiv_2607_27599.md
+  - ../../sources/papers/why_action_chunking_improves_bc_corl2026.md
 ---
 
 # LIBERO
@@ -92,12 +95,14 @@ flowchart LR
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
 - [World Action Planner](./paper-world-action-planner.md) — LIBERO-Long / Object 上用 pose-image WM + VLM 规划测组合与新布局泛化
 - [ActFovea](./paper-actfovea.md) — 在本基准四套件（40 任务 / 2000 episodes）上做 VLA 运行时扰动与防护评测
+- [Why Action Chunking Improves BC](./paper-why-action-chunking-improves-bc.md) — Libero-90 上 Delay / RDE 相对 action chunking 的机制消融
 
 ## 参考来源
 
 - [LIBERO 来源归档](../../sources/repos/libero-benchmark.md)
 - [Humanoid Motion Intelligence 仓库归档](../../sources/repos/humanoid-motion-intelligence.md)
 - [World Action Planner 论文策展](../../sources/papers/world_action_planner_arxiv_2607_27599.md)
+- [Why Action Chunking Improves BC 论文策展](../../sources/papers/why_action_chunking_improves_bc_corl2026.md)
 - [开源项目主表（上游）](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)
 
 ## 推荐继续阅读

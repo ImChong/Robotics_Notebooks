@@ -1,13 +1,62 @@
 {
   "generated_at": "2026-08-04",
-  "node_count": 2081,
-  "edge_count": 18849,
+  "node_count": 2082,
+  "edge_count": 18862,
   "coverage": {
-    "covered": 2057,
-    "total": 2057,
+    "covered": 2058,
+    "total": 2058,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-why-action-chunking-improves-bc.md",
+      "detail_id": "entity-paper-why-action-chunking-improves-bc",
+      "label": "Why Action Chunking Improves BC（延迟策略与隐式集成）",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/methods/action-chunking.md",
+      "detail_id": "wiki-methods-action-chunking",
+      "label": "Action Chunking（动作块输出）",
+      "type": "method",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/behavior-cloning.md",
+      "detail_id": "wiki-methods-behavior-cloning",
+      "label": "Behavior Cloning（行为克隆）",
+      "type": "method",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/methods/diffusion-policy.md",
+      "detail_id": "wiki-methods-diffusion-policy",
+      "label": "Diffusion Policy",
+      "type": "method",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/libero-benchmark.md",
+      "detail_id": "entity-libero-benchmark",
+      "label": "LIBERO",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/paper-clift-closed-loop-iterative-finetuning.md",
       "detail_id": "entity-paper-clift-closed-loop-iterative-finetuning",
@@ -96,7 +145,8 @@
       "recency": "2026-08-04",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-wcm-world-critic-model.md",
@@ -106,7 +156,8 @@
       "recency": "2026-08-04",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/methods/model-based-rl.md",
@@ -136,8 +187,7 @@
       "type": "comparison",
       "recency": "2026-08-04",
       "source": "log.md",
-      "action": "maintained",
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+      "action": "maintained"
     },
     {
       "path": "wiki/entities/openvla.md",
@@ -147,7 +197,8 @@
       "recency": "2026-08-04",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-actfovea.md",
@@ -159,80 +210,30 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/safety-filter.md",
-      "detail_id": "wiki-concepts-safety-filter",
-      "label": "Safety Filter（安全过滤器）",
-      "type": "concept",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/concepts/robot-safety-state-machine.md",
-      "detail_id": "wiki-concepts-robot-safety-state-machine",
-      "label": "机器人安全状态机（硬件 / 通信故障）",
-      "type": "concept",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/queries/vla-deployment-guide.md",
-      "detail_id": "wiki-queries-vla-deployment-guide",
-      "label": "VLA 真机部署指南：延迟、异步与加速",
-      "type": "query",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/libero-benchmark.md",
-      "detail_id": "entity-libero-benchmark",
-      "label": "LIBERO",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/sensenova-u1-5.md",
-      "detail_id": "entity-sensenova-u1-5",
-      "label": "SenseNova-U1.5（Preview · NEO-unify）",
-      "type": "entity",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-clift-closed-loop-iterative-finetuning.md",
-    "detail_id": "entity-paper-clift-closed-loop-iterative-finetuning",
-    "label": "CLIFT：不打开模型盒子的闭环迭代微调",
+    "path": "wiki/entities/paper-why-action-chunking-improves-bc.md",
+    "detail_id": "entity-paper-why-action-chunking-improves-bc",
+    "label": "Why Action Chunking Improves BC（延迟策略与隐式集成）",
     "type": "entity",
     "recency": "2026-08-04",
     "source": "log.md",
     "action": "maintained",
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "community_label": "操作（Manipulation） 社区"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 253
+      "size": 226
     },
     {
       "label": "操作",
-      "size": 152
+      "size": 160
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 143
+      "size": 142
     },
     {
       "label": "移动操作",
@@ -310,18 +311,18 @@
       "community_label": "开源项目本库导读（HMI Open-Source Projects Guide） 社区"
     },
     {
+      "detail_id": "wiki-methods-imitation-learning",
+      "label": "Imitation Learning (IL, 模仿学习)",
+      "type": "method",
+      "degree": 223,
+      "has_repo": true
+    },
+    {
       "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",
       "label": "Paper Notebooks · Loco-Manipulation and WBC",
       "type": "overview",
       "degree": 223,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "detail_id": "wiki-methods-imitation-learning",
-      "label": "Imitation Learning (IL, 模仿学习)",
-      "type": "method",
-      "degree": 222,
-      "has_repo": true
     }
   ],
   "top_paper_hubs": [
