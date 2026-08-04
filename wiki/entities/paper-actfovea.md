@@ -11,6 +11,7 @@ related:
   - ../concepts/safety-filter.md
   - ../concepts/robot-safety-state-machine.md
   - ../queries/vla-deployment-guide.md
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../methods/vla.md
   - ./paper-wcm-world-critic-model.md
 sources:
@@ -238,6 +239,7 @@ sequenceDiagram
 - [安全滤波器](../concepts/safety-filter.md) — 控制侧安全约束的对照路线
 - [机器人安全状态机](../concepts/robot-safety-state-machine.md) — 安全态切换的工程骨架
 - [VLA 部署指南](../queries/vla-deployment-guide.md) — 部署链路上的其他议题
+- [Query：机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页属**第④层下游策略消费**的运行时侧：感知栈选完之后，「感知输出 = 策略可信输入」这个抽象在真机被遮挡 / 延迟 / 冻结破坏时怎么检出与兜底
 - [WCM 世界模型 Critic](./paper-wcm-world-critic-model.md) — 时序信息用于训练期价值估计的对照
 - [CLIFT 闭环迭代微调](./paper-clift-closed-loop-iterative-finetuning.md) — 同样在「模型不可见」约束下工作
 

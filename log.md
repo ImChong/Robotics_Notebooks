@@ -1,3 +1,11 @@
+## [2026-08-04] lint | scripts/lint_wiki.py + wiki/entities/paper-actfovea.md — 全量健康检查：阻塞型 0、信息型 3 → 0
+
+- **触发：** 全量知识库 lint 巡检，要求把信息型预警一并收敛
+- **基线：** `python3 scripts/lint_wiki.py` 阻塞型 **0**、信息型 **3**（缺页概念候选 2 + 感知栈回链缺失 1）
+- **内容补链：** [`wiki/entities/paper-actfovea.md`](wiki/entities/paper-actfovea.md) 回链 [`wiki/queries/robot-perception-stack-selection-loop.md`](wiki/queries/robot-perception-stack-selection-loop.md)（frontmatter `related` + 关联页面），定位为感知栈**第④层下游策略消费**的运行时侧：感知栈选完后，「感知输出 = 策略可信输入」这一抽象被遮挡 / 延迟 / 冻结重放破坏时如何检出与兜底
+- **误报收敛（缺页概念巡检 V1）：** `sequenceDiagram` 入 `MISSING_CONCEPT_STOPWORDS` — 7 处行内引用均为 Mermaid 图类型关键字（论文实体页「源码运行时序图」写作约定，如「代码发布后应补 `sequenceDiagram`」），属文档语法 token，与 `md` / `http` 同类；`qwen3-vl` 入 `MISSING_CONCEPT_COVERED_ELSEWHERE` — 外部通用 VLM 产品型号，与 DINOv2 / SigLIP / Wan2.2 / Qwen2.5-VL 同类，本库一律在 [`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/methods/star-vla.md`](wiki/methods/star-vla.md)、[`wiki/concepts/foundation-policy.md`](wiki/concepts/foundation-policy.md) 按「底座」维度记述，不单建概念页
+- **门禁：** `make ci-preflight` 通过（lint 阻塞型 0 + 信息型 0，导出质量 12/12）；`pytest` 全绿（覆盖率 62.44% ≥ 52%）、`ruff check` / `ruff format --check` / `mypy scripts` 干净；图谱 19041 → **19042 边**（本次新增回链）
+
 ## [2026-08-04] ingest | sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md — 知乎专栏：FB/BFM-Zero/INTACT/Mimic/VLA 任务空间表征对照；升格 wiki/comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md
 
 - **触发：** 用户指定 <https://zhuanlan.zhihu.com/p/2066468645300180732>
