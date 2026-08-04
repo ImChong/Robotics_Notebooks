@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dataset, umi, teleoperation, bimanual, manipulation, vla, wam, robot-free, simple-ai, imitation-learning]
 status: complete
-updated: 2026-07-30
+updated: 2026-08-04
 arxiv: "2607.25895"
 related:
   - ./handumi.md
@@ -20,7 +20,7 @@ sources:
   - ../../sources/papers/hifi_umi_arxiv_2607_25895.md
   - ../../sources/sites/hifi-umi-project.md
   - ../../sources/datasets/hifi-umi-2k.md
-summary: "HiFi-UMI（arXiv:2607.25895，Simple AI）：高保真无机器人双臂 UMI（~3 mm、<40 µs、六视角）；zero-robot 后训练匹配同域遥操作；开源 HiFi-UMI-2K（2000 h，CC BY 4.0）；采数系统代码截至入库日未列。"
+summary: "HiFi-UMI（arXiv:2607.25895，Simple AI）：高保真无机器人双臂 UMI（~3 mm、<40 µs、六视角）；zero-robot 后训练匹配同域遥操作；开源 HiFi-UMI-2K（2000 h，CC BY 4.0）；采数系统代码截至 2026-08-04 仍未列。"
 ---
 
 # HiFi-UMI / HiFi-UMI-2K
@@ -100,7 +100,7 @@ flowchart LR
 
 ## 源码运行时序图
 
-**不适用（完整训练/采数代码未发布）。** 截至 2026-07-30：可公开获取的是 **Hugging Face 数据集** 与论文/项目页；无官方 `train.py` / 硬件固件仓入口。数据侧用法对齐 LeRobot v3（Parquet + MP4）。若后续开放采数或训练仓库，应补 `sources/repos/` 并在本节约成 `sequenceDiagram`。
+**不适用（完整训练/采数代码未发布）。** 截至 **2026-08-04** 复检：可公开获取的是 **Hugging Face 数据集** 与论文/项目页；无官方 `train.py` / 硬件固件仓入口（与 2026-07-30 初检一致）。数据侧用法对齐 LeRobot v3（Parquet + MP4）。若后续开放采数或训练仓库，应补 `sources/repos/` 并在本节约成 `sequenceDiagram`。
 
 ## 工程实践
 
@@ -108,8 +108,12 @@ flowchart LR
 |----|----------------|
 | 数据入口 | `simple-world-lab/HiFi-UMI-2K`；按 `chunk-*/part-*/...parquet` 拉取 |
 | 格式 | LeRobot v3：帧级表 + MP4 + 任务文本 + 有效掩码 + 归一化统计 |
-| 质控读法 | 重建/回放成功率约 **98%**；仍需按任务过滤 episode |
-| 后训练对照 | 与「同场景真机 teleop 后训练」比 SR，而非只比离线 action error |
+| state / action | 各 **20** 维（右+左各 10d：`xyz + rot6d + gripper`）；导出 `action` 为 **绝对 next-state**，训练时再按骨干转相对动作 |
+| 有效帧 | 保留无效帧以对齐视频时间戳；训练过滤 `valid.frame == true` |
+| 六视角 key | `head_main`、`head_main_stereo_right`、`{left,right}_hand_{up,down}` |
+| 坐标系 | 单 episode 内头/双手共世界系；世界原点任意（跨录制勿比绝对位姿）；+Z≈重力 |
+| 质控读法 | 重建/回放约 **98%**；丢帧 **<2/h**；夹爪角误差 **<0.1°**；仍按任务过滤 episode |
+| 后训练对照 | 与「同场景真机 teleop 后训练」比 SR；VLA 协议约 **3200** UMI vs **300** teleop 轨迹/任务（管线对比，非等样本效率） |
 | 预训练 | 论文用同语料 **4000 h** 子集做 scaling（大于公开 2k 发布） |
 | 复现边界 | 骨干（StarVLA / OpenPI / LingBot）与真机栈需自备 |
 
@@ -128,8 +132,8 @@ flowchart LR
 2. **真影响：原生双手相对位姿 + 硬同步** — 双臂接触任务对相对几何与时间对齐极敏感。
 3. **真影响：回放校验进数据引擎** — 约 98% WBC 回放成功，降低不可执行示范进训练集。
 4. **次要代价：公开 2k < 源语料 20k+** — scaling 曲线论文用了更大内部切片。
-5. **部署读法：先吃 HF 数据做预训练/后训练** — 勿假设采数硬件可外购复刻（代码未列）。
-6. **对照读法：与 HandUMI 互补** — 后者开源硬件重定向；前者拼规模与保真指标。
+5. **部署读法：先吃 HF 数据做预训练/后训练** — 过滤 `valid.frame`、按需把绝对 action 转相对；勿假设采数硬件可外购复刻（代码截至 2026-08-04 仍未列）。
+6. **对照读法：与 HandUMI / 数据金字塔互补** — HandUMI 开源硬件重定向；HiFi-UMI 拼规模与保真；在 [数据金字塔](./paper-data-pyramid-embodied-manipulation.md) 落在 **UMI 层** 且挑战「UMI 只能预训练」叙事。
 
 ## 与其他工作对比
 
@@ -142,9 +146,10 @@ flowchart LR
 
 ## 局限与风险
 
-- **开源不完整：** 数据集已开；采数硬件固件、训练脚本官方 URL **未列**。
+- **开源不完整：** 数据集已开；采数硬件固件、训练脚本官方 URL **截至 2026-08-04 仍未列**。
 - **具身间隙仍在：** zero-robot 匹配的是论文评测双臂与任务套件，不保证任意机器人零适配。
-- **统计分辨率：** 讨论节提醒任务级方差；读单点 85% 需看试验次数。
+- **动作约定：** 导出为绝对 next-state；直接当相对动作喂 VLA/WAM 会 silently 错位。
+- **统计分辨率：** 讨论节提醒任务级方差；读单点 85% 需看试验次数；3200 vs 300 是管线对比而非等样本。
 - **预训练切片 > 公开集：** 复现 4000 h 曲线可能超出 HF 2k 发布。
 
 ## 关联页面

@@ -1,3 +1,12 @@
+## [2026-08-04] ingest | sources/papers/hifi_umi_arxiv_2607_25895.md + sites/hifi-umi-project + datasets/hifi-umi-2k — HiFi-UMI（arXiv:2607.25895）复检与接口补强：开源仍为数据-only；补 HF state/action/valid.frame；交叉 paper-data-pyramid；wiki/entities/paper-hifi-umi.md + paper-data-pyramid-embodied-manipulation.md
+
+- **触发：** 用户指定论文 <https://arxiv.org/pdf/2607.25895>、项目页 <https://cloud.simpleai.tech/simple-world-lab/hifi-umi/>、数据集 <https://huggingface.co/datasets/simple-world-lab/HiFi-UMI-2K>
+- **既有页：** 2026-07-30 已完整 ingest（PR #1367）；本次**不新建实体**，做开源复检 + HF 训练接口补强 + 金字塔交叉
+- **更新：** [`sources/papers/hifi_umi_arxiv_2607_25895.md`](sources/papers/hifi_umi_arxiv_2607_25895.md)、[`sources/sites/hifi-umi-project.md`](sources/sites/hifi-umi-project.md)、[`sources/datasets/hifi-umi-2k.md`](sources/datasets/hifi-umi-2k.md)、[`wiki/entities/paper-hifi-umi.md`](wiki/entities/paper-hifi-umi.md)、[`wiki/entities/paper-data-pyramid-embodied-manipulation.md`](wiki/entities/paper-data-pyramid-embodied-manipulation.md)
+- **开源核查（复检 2026-08-04，步骤 2.5）：** **部分开源（数据）** — HF 仍公开；项目页 / GitHub 检索仍无采数或训练仓
+- **接口补强：** 20 维绝对 next-state、`valid.frame`、六视角 key、世界系约定、丢帧/夹爪误差；VLA 协议约 3200 UMI vs 300 teleop
+- **交叉：** 数据金字塔 UMI 层表与「UMI-only 后训练」读法
+
 ## [2026-08-04] ingest | sources/papers/legged_robots_advances_challenges_scirobotics_2026.md — 补 arXiv:2607.28952 作者版；加深 wiki/entities/paper-legged-robots-advances-challenges.md
 
 - **触发：** 用户指定 <https://arxiv.org/abs/2607.28952>（Science Robotics 腿式综述；ETH / Stanford / Berkeley / Edinburgh / KAIST / NVIDIA / Tübingen / MPI-IS / Oxford / Monash / RAI）

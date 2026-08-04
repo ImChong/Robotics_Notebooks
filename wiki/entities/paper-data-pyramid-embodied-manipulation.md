@@ -24,7 +24,7 @@ tags:
   - nju
   - sjtu
 status: complete
-updated: 2026-07-30
+updated: 2026-08-04
 arxiv: "2607.24744"
 code: https://github.com/worldbench/awesome-embodied-data-pyramid
 related:
@@ -40,6 +40,7 @@ related:
   - ../tasks/manipulation.md
   - ./paper-hrl-stack-34-gr00t_n1.md
   - ./xiaomi-robotics-1.md
+  - ./paper-hifi-umi.md
   - ./paper-trex-tactile-reactive-dexterous-manipulation.md
 sources:
   - ../../sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md
@@ -130,7 +131,7 @@ flowchart TB
 | 层 | 监督强度 | 核心代价 | 代表数据集（论文表格） |
 |----|----------|----------|------------------------|
 | ① 真机 | 动作直接可执行，物理保真最高 | 硬件+操作员+复位；小时级成本 | RT-1、DROID、[OXE](../concepts/open-x-embodiment.md)、AgiBot World、RoboMIND 2.0 |
-| ② UMI | 末端 6-DoF + 夹爪状态（相对轨迹表示） | 视觉跟踪脆弱、无关节本体感知、需 IK 重定向 | UMI、FastUMI(-100K)、LEGATO、DexUMI、FreeTacMan |
+| ② UMI | 末端 6-DoF + 夹爪状态（相对轨迹表示） | 视觉跟踪脆弱、无关节本体感知、需 IK 重定向 | UMI、FastUMI(-100K)、LEGATO、DexUMI、FreeTacMan、[HiFi-UMI-2K](./paper-hifi-umi.md)（2000 h；主张 UMI-only 后训练可部署） |
 | ③ Ego/Exo | 语义/几何/多模态/机器人导向四类监督（需后处理） | 人–机形态鸿沟；手部遮挡；无本体感知 | EPIC-KITCHENS、Ego4D、Ego-Exo4D、HOT3D、EgoDex |
 | ④ 仿真 | 可执行动作 + 特权标签（位姿/接触/成功信号） | 物理近似；观测+交互双重 sim2real 差距 | RLBench、ManiSkill3、MimicGen、RoboTwin 2.0、InternData-A1 |
 | ⑤ 通用 | 语义/空间/时序/规划/物理推理（无动作） | 弱动作接地；自动标注幻觉需过滤 | LLaVA 系、SA-1B、ScanNet、RoboVQA、GraspNet-1B |
@@ -138,7 +139,7 @@ flowchart TB
 ### 各层采集管线要点（归纳）
 
 - **真机层三范式：** 脚本化（规则执行 / 轨迹回放 / 自主策略 rollout，QT-Opt 谱系）、遥操作（kinesthetic、leader-follower 含 GELLO/ALOHA、一体化 leader-follower、VR/SpaceMouse 设备中介、视觉估计、可穿戴动捕/外骨骼）、**人在环增强**（[DAgger](../methods/dagger.md) 谱系：ThriftyDAgger / Sirius / Fleet-DAgger / CR-DAgger——把部署失败变成恢复监督）。趋势：单臂→双臂/移动/人形/灵巧手；RGB-D→触觉/力觉/音频多模态；**多样性比条数更关键**。
-- **UMI 层：** 关键设计是 **相对轨迹动作表示**（未来末端目标相对当前位姿表示，抑漂移、具身无关）；灵巧化靠 DexUMI 外骨骼约束 + 视觉 inpainting 把人手换成机器人手。定位为真机数据的 **可扩展补充而非替代**。
+- **UMI 层：** 关键设计是 **相对轨迹动作表示**（未来末端目标相对当前位姿表示，抑漂移、具身无关）；灵巧化靠 DexUMI 外骨骼约束 + 视觉 inpainting 把人手换成机器人手。定位为真机数据的 **可扩展补充而非替代**。反例/升级：[HiFi-UMI](./paper-hifi-umi.md) 用毫米级轨迹 + 微秒同步 + 回放校验论证 **UMI-only 后训练** 可匹配同域 teleop，挑战「UMI 只适合预训练、后训练仍需真机锚」的默认配方。
 - **Ego/Exo 层：** 采集按「被测物理量」组织（视觉 / 运动跟踪 / 凝视·EMG·力触觉辅助传感）；监督构建有标注重建、模型预测+参数拟合、传感捕获三条几何路线；机器人导向监督（EgoVLA 重定向、EgoMimic 对齐、H-RDT）把人类演示映射进可学形式。
 - **仿真层：** 基础设施三件套（本体-传感、物体场景资产、物理渲染后端）；合成演示四类（人执行、规则执行、回放扩展 MimicGen、自主/生成式 rollout 含 LLM 数据工厂 GenSim/RoboGen）；**世界模型正从预测组件演化为「学习型仿真器」**（策略训练 World4RL、评估 WorldGym、数据引擎 DreamGen/GigaWorld-0）；sim2real 差距 = 观测失配 + 交互失配（运动学 gap 可修，动力学 gap 难消）。
 - **通用层：** 按能力贡献组织（视觉语言 / 分割定位 / 3D / 规划 / 时序记忆 / 物理因果失败推理 / 抓取）；价值是认知地基，必须由更对齐的层接地到物理执行。
@@ -217,6 +218,7 @@ flowchart TB
 - [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md) — 数据规模与性能的量化轴
 - [EgoScale](../methods/egoscale.md) — Ego 层数据规模化的受控证据
 - [Xiaomi-Robotics-1](xiaomi-robotics-1.md) — 10 万小时 UMI 预训练的配方样本
+- [HiFi-UMI / HiFi-UMI-2K](./paper-hifi-umi.md) — UMI 层 2000 h 公开集；zero-robot 后训练挑战「真机锚」默认配方
 - [Sim2Real](../concepts/sim2real.md) — 仿真层的核心局限轴
 - [DAgger](../methods/dagger.md) — 真机层人在环采集范式
 - [Teleoperation](../tasks/teleoperation.md) — 真机层遥操作采集谱系
