@@ -2,7 +2,7 @@
 type: method
 tags: [path-planning, local-planning, obstacle-avoidance, navigation, mobile-robot]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-04
 related:
   - ./a-star.md
   - ../entities/python-robotics.md

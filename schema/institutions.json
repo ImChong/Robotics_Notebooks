@@ -2295,6 +2295,12 @@
         "tongji-university"
       ]
     },
+    "salesforce": {
+      "label": "赛富时（Salesforce）",
+      "aliases": [
+        "salesforce"
+      ]
+    },
     "polimi": {
       "label": "米兰理工大学（Politecnico di Milano）",
       "aliases": [
