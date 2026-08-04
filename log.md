@@ -1,3 +1,5 @@
+## [2026-08-04] ingest | sources/papers/legged_robots_advances_challenges_scirobotics_2026.md — 发现 Frey et al. 腿式综述作者版预印本 arXiv:2607.28952，推翻 07-31「无合法 OA 全文」结论；更新 wiki/entities/paper-legged-robots-advances-challenges.md 开放全文/局限/参考来源，并标注技术数字仍待以全文逐表核对
+
 ## [2026-08-03] ingest | sources/repos/sensenova-u1.md + sites/huggingface-sensenova-u1-5-8b-mot-preview.md + sites/modelscope-sensenova-u1-5-8b-mot-preview.md — SenseNova-U1.5 Preview 原生统一多模态模型；升格 wiki/entities/sensenova-u1-5.md
 
 - **触发：** 用户指定三处一手入口 <https://github.com/OpenSenseNova/SenseNova-U1/blob/main/docs/u1.5_preview.md>、<https://huggingface.co/sensenova/SenseNova-U1.5-8B-MoT-Preview>、<https://modelscope.cn/models/SenseNova/SenseNova-U1.5-8B-MoT-Preview>

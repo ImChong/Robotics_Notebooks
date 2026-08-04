@@ -6,6 +6,7 @@
 - **类型：** paper / Review / legged robots / humanoid / quadruped / ethics & policy
 - **期刊：** Science Robotics, 2026（Vol. 11, Issue 116；article eaee0787）
 - **DOI：** <https://doi.org/10.1126/scirobotics.aee0787>
+- **arXiv：** <https://arxiv.org/abs/2607.28952>（HTML：<https://arxiv.org/html/2607.28952>；**2026-08-04 复查新发现**，2026-07-31 首次核查时尚未检索到）
 - **PubMed：** <https://pubmed.ncbi.nlm.nih.gov/42525724/>（PMID:42525724）
 - **OpenAlex：** <https://openalex.org/W7171713488>
 - **项目页 / GitHub：** **无**（领域综述；截至 **2026-07-31** 未见独立项目页、代码仓库或数据集发布）
@@ -13,9 +14,9 @@
 - **机构：** ETH Zurich；Stanford；UC Berkeley；University of Edinburgh；KAIST；NVIDIA；University of Tübingen；Max Planck Institute for Intelligent Systems；University of Oxford；Monash University；RAI Institute
 - **代码与数据：** **未开源 / 不适用**（综述，无单一可运行实现）
 - **入库日期：** 2026-07-31
-- **最后更新：** 2026-07-31（补微信导读加深五柱/政策；OA/PDF 仍 closed）
+- **最后更新：** 2026-08-04（**发现 arXiv 预印本 2607.28952**，推翻 07-31「无开放全文」结论；正文尚未逐表核对，原因见下）
 - **一句话说明：** Science Robotics **Review**：沿 **硬件 / locomotion / 自主 / 数据 / 应用** 五柱评估人形与四足腿式系统的能力与开放挑战，并展望伦理、经济、政策与社会影响。
-- **开放全文（PDF）：** **未找到**（截至 **2026-07-31**；见下方「OA / PDF 核查」）
+- **开放全文（PDF）：** **已可获取** — [arXiv:2607.28952](https://arxiv.org/abs/2607.28952)（作者版预印本，标注 accepted / published in Science Robotics Vol. 11 Issue 116）。**注意：本次核查环境的出口策略封禁 `arxiv.org`，仅通过检索确认条目存在，未能读取全文正文**；见下方「OA / PDF 核查」与「待办」。
 - **深度二手源：** [机器人大讲堂微信导读](../blogs/wechat_robot_lecture_legged_robots_survey_2026-07-31.md)（Agent Reach 抓取）
 
 ## 相关资料（策展）
@@ -23,6 +24,7 @@
 | 类型 | 链接 | 说明 |
 |------|------|------|
 | DOI | [10.1126/scirobotics.aee0787](https://doi.org/10.1126/scirobotics.aee0787) | Science Robotics 原文入口（付费墙） |
+| **arXiv** | [2607.28952](https://arxiv.org/abs/2607.28952) | **作者版开放预印本（2026-08-04 发现）**；[HTML 版](https://arxiv.org/html/2607.28952) 可逐节读 |
 | PubMed | [42525724](https://pubmed.ncbi.nlm.nih.gov/42525724/) | 摘要全文（开放） |
 | Crossref | [works API](https://api.crossref.org/works/10.1126/scirobotics.aee0787) | 元数据与 JATS 摘要 |
 | OpenAlex | [W7171713488](https://openalex.org/W7171713488) | 引用图（约 113 篇参考文献）；`is_oa=false` |
@@ -34,9 +36,15 @@
 | 运动任务 | [`wiki/tasks/locomotion.md`](../../wiki/tasks/locomotion.md) | 腿式 locomotion 任务中心 |
 | 四足实体 | [`wiki/entities/quadruped-robot.md`](../../wiki/entities/quadruped-robot.md) | 四足平台总览 |
 
-## OA / PDF 核查（2026-07-31）
+## OA / PDF 核查（2026-08-04 复查：**结论已翻转**）
 
-合法开放途径逐项排查，**均无全文 PDF**：
+**2026-08-04：** 作者版预印本 **[arXiv:2607.28952](https://arxiv.org/abs/2607.28952)** 已上线（`arxiv.org/html/2607.28952` 提供 HTML 全文），07-31「无任何合法开放全文」的结论 **不再成立**。arXiv 的 07-31 排查为 0 命中，说明预印本晚于 Science Robotics 正式见刊（2026-07-29 / 07-31）挂出，**并非当时检索失误**。
+
+> **本次未能读取正文：** 当前会话的出口代理策略封禁 `arxiv.org`（以及 `science.org`、`crossref.org`、`huggingface.co` 等），`WebFetch` 与 `curl` 对上述主机一律返回 403 / CONNECT tunnel failed。因此本次仅通过检索确认 **条目存在、标题与作者一致、摘要与 PubMed 版逐句吻合**，**未逐节阅读全文**。下方 07-31 表保留为历史记录，arXiv 行已更新。
+
+### 07-31 历史排查表（arXiv 行已翻转）
+
+合法开放途径逐项排查（除 arXiv 外结论未变）：
 
 | 渠道 | 结果 |
 |------|------|
@@ -44,7 +52,7 @@
 | OpenAlex locations | 仅 publisher landing；`pdf_url=null`；`any_repository_has_fulltext=false` |
 | EuropePMC | `isOpenAccess=N`；`hasPDF=N`；无 PMCID；全文 URL 标注 Subscription required |
 | PubMed Central | DOI 检索无 PMC 全文条目 |
-| arXiv / OpenAlex preprint | 无对应预印本（标题精确检索 0 命中） |
+| arXiv / OpenAlex preprint | ~~无对应预印本（标题精确检索 0 命中）~~ → **2026-08-04 已上线：[arXiv:2607.28952](https://arxiv.org/abs/2607.28952)**（cs.RO，作者版，注明 accepted by Science Robotics） |
 | Zenodo | 标题精确检索 0 条 |
 | Internet Archive | 标题精确检索 `numFound=0` |
 | Science.org pdf/epdf/full/reader | 本环境均 **403** |
@@ -53,7 +61,9 @@
 | Mayank Mittal 主页 | 未见本篇 PDF |
 | RSL 出版物页 | 未见 `aee0787` / 本标题条目 |
 
-**结论：** 截至核查日，**无作者自存档、机构库绿 OA、预印本或出版社开放 PDF**；wiki 编译继续以开放摘要 + 引用图 + Monash/TechXplore 通稿为准。若后续出现 author accepted manuscript / ETH RC 入库 / AAAS eprint，应回填本表并加深 wiki 技术节。
+**07-31 结论（已过期）：** 截至该日，无作者自存档、机构库绿 OA、预印本或出版社开放 PDF。
+
+**2026-08-04 结论：** **arXiv 预印本即 author accepted manuscript 路线的落地**，此前预留的「若后续出现 AAM 应回填本表并加深 wiki 技术节」条件 **已触发**。出版社 PDF 仍付费墙，PMC / Zenodo / IA 仍无条目，但技术核对不再需要依赖二手导读——**下一轮 ingest 应以 arXiv 全文为准，逐表核对当前 wiki 中来自微信导读的数字**（可反驱转折、频率分层 200–1000/50–200/<30 Hz、策略 <10M 参、DSL 命名、3–9 万美元价格带、90 min–6 h 续航 / 4–20 km 半径、服务业 ~80%、10–15 年窗口、四项政策优先）。
 
 ## 摘要级要点
 
@@ -93,9 +103,9 @@
 
 ### 4) 开源与复现边界
 
-- **综述文章**，无单一官方代码 / 数据集 / 项目页（截至 2026-07-31）。
-- **全文 PDF：** 合法 OA 仍 **closed**；当前最深开放技术源为微信导读。
-- **勿**用盗版镜像代替 OA。
+- **综述文章**，无单一官方代码 / 数据集 / 项目页（2026-08-04 复查仍如此）。
+- **全文：** 出版社版仍付费墙，但 **[arXiv:2607.28952](https://arxiv.org/abs/2607.28952) 作者版已开放**；导读不再是唯一技术源。
+- **勿**用盗版镜像代替 OA —— 现在也没有必要。
 - **对 wiki 的映射：** 「源码运行时序图」**不适用**。
 
 ## 对 wiki 的映射
@@ -114,4 +124,6 @@
 - [x] wiki 页面映射确认
 - [x] 项目页 / 源码开放核查：无项目页；综述无代码（写入局限）
 - [x] OA/PDF 全路径核查（2026-07-31）：**无合法全文**；以导读为最深开放技术源
-- [ ] 合法全文出现后可与导读数字逐表核对
+- [x] OA 复查（2026-08-04）：**arXiv:2607.28952 已上线**，合法全文条件达成；`sources`/`wiki` 的「无 OA」表述已更正
+- [ ] **逐表核对（下一轮 ingest 必做）**：以 arXiv 全文替换微信导读作为一手依据，核对五柱技术数字与 DSL 等命名；本次因出口策略封禁 `arxiv.org` **未能读取正文**
+- [ ] 核实完整作者名单与署名顺序（检索给出 8 人，与元数据行 11 家机构不完全对应；`Maike Osborne` 待原文确认）

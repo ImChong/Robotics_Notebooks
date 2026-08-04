@@ -2,7 +2,7 @@
 type: entity
 tags: [quadruped, legged, hardware, platform, locomotion]
 status: complete
-updated: 2026-08-02
+updated: 2026-08-04
 related:
   - ./humanoid-robot.md
   - ./anymal.md

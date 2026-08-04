@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-legged-robots-advances-challenges.md",
+      "detail_id": "entity-paper-legged-robots-advances-challenges",
+      "label": "腿式机器人进展、挑战与机遇综述",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/sensenova-u1-5.md",
       "detail_id": "entity-sensenova-u1-5",
       "label": "SenseNova-U1.5（Preview · NEO-unify）",
@@ -197,27 +207,17 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-gap-graph-as-policy.md",
-      "detail_id": "entity-paper-gap-graph-as-policy",
-      "label": "GaP（Graph-as-Policy）",
-      "type": "entity",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/sensenova-u1-5.md",
-    "detail_id": "entity-sensenova-u1-5",
-    "label": "SenseNova-U1.5（Preview · NEO-unify）",
+    "path": "wiki/entities/paper-legged-robots-advances-challenges.md",
+    "detail_id": "entity-paper-legged-robots-advances-challenges",
+    "label": "腿式机器人进展、挑战与机遇综述",
     "type": "entity",
-    "recency": "2026-08-03",
+    "recency": "2026-08-04",
     "source": "log.md",
-    "action": "added",
-    "has_repo": true
+    "action": "maintained",
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {

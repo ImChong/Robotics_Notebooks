@@ -22,8 +22,9 @@ tags:
   - max-planck
   - monash
 status: complete
-updated: 2026-07-31
+updated: 2026-08-04
 doi: "10.1126/scirobotics.aee0787"
+arxiv: "2607.28952"
 venue: "Science Robotics 2026"
 related:
   - ../tasks/locomotion.md
@@ -41,12 +42,12 @@ sources:
   - ../../sources/papers/legged_robots_advances_challenges_scirobotics_2026.md
   - ../../sources/blogs/wechat_robot_lecture_legged_robots_survey_2026-07-31.md
   - ../../sources/blogs/techxplore_legged_robots_ethics_monash_2026-07-30.md
-summary: "Science Robotics 2026 Review：五柱盘点腿式硬件/运动/自主/数据/应用；导读补可反驱转折、灵巧语义化运动、价格与四项政策优先；伦理–民主授权同页。"
+summary: "Science Robotics 2026 Review：五柱盘点腿式硬件/运动/自主/数据/应用；伦理–民主授权同页。作者版预印本 arXiv:2607.28952 已开放，本页技术数字仍待以全文逐表核对（当前来自微信导读）。"
 ---
 
 # 腿式机器人进展、挑战与机遇综述
 
-**Advances, challenges, and opportunities for legged robots**（Jonas Frey、Matías Mattamala、Hae-Won Park、Mayank Mittal、Georg Martius、Maike Osborne、Robert Sparrow、Marco Hutter；**ETH Zurich 牵头**，联合 Stanford / UC Berkeley / Edinburgh / KAIST / NVIDIA / Tübingen / MPI-IS / Oxford / Monash / RAI Institute；**Science Robotics 2026** Vol. 11 Issue 116，[DOI:10.1126/scirobotics.aee0787](https://doi.org/10.1126/scirobotics.aee0787)）是一篇 **Review**：沿 **硬件 · locomotion · 自主 · 数据 · 应用** 五柱评估人形与四足系统，并给出伦理、经济与政策展望。
+**Advances, challenges, and opportunities for legged robots**（Jonas Frey、Matías Mattamala、Hae-Won Park、Mayank Mittal、Georg Martius、Maike Osborne、Robert Sparrow、Marco Hutter；**ETH Zurich 牵头**，联合 Stanford / UC Berkeley / Edinburgh / KAIST / NVIDIA / Tübingen / MPI-IS / Oxford / Monash / RAI Institute；**Science Robotics 2026** Vol. 11 Issue 116，[DOI:10.1126/scirobotics.aee0787](https://doi.org/10.1126/scirobotics.aee0787)；作者版预印本 [arXiv:2607.28952](https://arxiv.org/abs/2607.28952)）是一篇 **Review**：沿 **硬件 · locomotion · 自主 · 数据 · 应用** 五柱评估人形与四足系统，并给出伦理、经济与政策展望。
 
 ## 一句话定义
 
@@ -68,7 +69,7 @@ summary: "Science Robotics 2026 Review：五柱盘点腿式硬件/运动/自主/
 ## 为什么重要
 
 - **五柱坐标对齐本库主线：** 硬件上限、运动栈、长程自主、数据瓶颈与落地用例同一张图。
-- **导读补齐可操作细节：** [机器人大讲堂](../../sources/blogs/wechat_robot_lecture_legged_robots_survey_2026-07-31.md) 给出可反驱转折、频率分层、策略规模、价格带与四项政策优先——在全文付费墙下是当前最深开放二手源。
+- **导读补齐可操作细节：** [机器人大讲堂](../../sources/blogs/wechat_robot_lecture_legged_robots_survey_2026-07-31.md) 给出可反驱转折、频率分层、策略规模、价格带与四项政策优先——**曾**是全文付费墙下最深的开放二手源；**自 2026-08-04 起应以 [arXiv:2607.28952](https://arxiv.org/abs/2607.28952) 全文为准**，导读降级为交叉校验材料。
 - **同刊对照：** 与 [仿生多模态综述](./paper-bioinspired-multimodal-robotics.md)（Issue 116）互补——本页聚焦陆地人形/四足，彼页聚焦跨介质评测语言。
 - **治理与技术同页：** 服务业约 **80%** 劳动力冲击叙事 + 民主授权，不宜只读 PPO 成功故事。
 
@@ -79,8 +80,8 @@ summary: "Science Robotics 2026 Review：五柱盘点腿式硬件/运动/自主/
 | **机构** | 苏黎世联邦理工（ETH Zürich）；斯坦福大学（Stanford）；加州大学伯克利分校（UC Berkeley）；爱丁堡大学（University of Edinburgh）；韩国科学技术院（KAIST）；英伟达（NVIDIA）；图宾根大学（University of Tübingen）；马克斯·普朗克智能系统研究所（MPI-IS）；牛津大学（University of Oxford）；莫纳什大学（Monash University）；RAI Institute |
 | **类型** | Science Robotics **Review**（非单一系统论文） |
 | **平台** | 综述覆盖人形与四足多类系统，无单一硬件 |
-| **开源** | **不适用** — 综述无官方代码 / 数据集 / 项目页（截至 2026-07-31） |
-| **开放全文** | **无合法 OA PDF**；技术细节主要编译自摘要 + [微信导读](../../sources/blogs/wechat_robot_lecture_legged_robots_survey_2026-07-31.md) + 通稿 |
+| **开源** | **不适用** — 综述无官方代码 / 数据集 / 项目页（2026-08-04 复查仍如此） |
+| **开放全文** | **已开放** — [arXiv:2607.28952](https://arxiv.org/abs/2607.28952)（2026-08-04 发现；出版社版仍付费墙）。**但本页下方技术数字仍编译自摘要 + [微信导读](../../sources/blogs/wechat_robot_lecture_legged_robots_survey_2026-07-31.md) + 通稿，尚未与全文逐表核对** |
 
 ## 核心原理
 
@@ -232,8 +233,9 @@ flowchart TB
 
 ## 局限与风险
 
-- **全文付费墙 / 无合法 OA PDF：** Unpaywall/OpenAlex/PMC/arXiv/作者站等复查仍 closed（见 [sources OA 核查](../../sources/papers/legged_robots_advances_challenges_scirobotics_2026.md)）。本页技术数字主要来自[微信导读](../../sources/blogs/wechat_robot_lecture_legged_robots_survey_2026-07-31.md)复述，精确图表请回原文。
-- **导读非逐字翻译：** 命名（如 DSL）与价格带以推文为准。
+- **本页数字尚未与全文对齐（当前最大风险）：** 2026-08-04 复查发现作者版预印本 **[arXiv:2607.28952](https://arxiv.org/abs/2607.28952)** 已上线，07-31「无合法 OA」的判断已推翻；但**本页「硬件 / 运动 / 自主 / 数据 / 应用」各表与经济政策数字仍来自[微信导读](../../sources/blogs/wechat_robot_lecture_legged_robots_survey_2026-07-31.md)的二手复述**，尚未逐条回原文核对（本次核查环境封禁 `arxiv.org`，仅确认条目存在）。**引用本页具体数值前请以 arXiv 全文为准**；核对进度见 [sources OA 核查](../../sources/papers/legged_robots_advances_challenges_scirobotics_2026.md)。
+- **导读非逐字翻译：** 命名（如 **DSL**）、频率分层、参数量与价格带均为推文转述，**存在译名与量级偏差风险**，属于优先核对项。
+- **作者名单待核：** 检索给出 8 位作者，与 11 家署名机构不完全对应（`Maike Osborne` 拼写待原文确认）。
 - **综述无单一基线实现：** 五柱落地仍需各系统自报口径。
 - **开源状态：** **确认无官方代码 / 项目页**。
 
@@ -257,10 +259,12 @@ flowchart TB
 - [微信导读：腿式机器人进展/挑战/机遇](../../sources/blogs/wechat_robot_lecture_legged_robots_survey_2026-07-31.md) — 五柱细节、DSL、价格与政策数字
 - [TechXplore / Monash 通稿](../../sources/blogs/techxplore_legged_robots_ethics_monash_2026-07-30.md) — 伦理–政策侧复述
 - Frey et al., *Advances, challenges, and opportunities for legged robots*, [Science Robotics 2026](https://doi.org/10.1126/scirobotics.aee0787)
+- [arXiv:2607.28952](https://arxiv.org/abs/2607.28952) — **作者版开放全文**（[HTML 版](https://arxiv.org/html/2607.28952)）；后续核对以此为一手依据
 - [PubMed:42525724](https://pubmed.ncbi.nlm.nih.gov/42525724/) — 开放摘要
 
 ## 推荐继续阅读
 
+- [arXiv:2607.28952 全文（推荐首选）](https://arxiv.org/abs/2607.28952) — 作者版，免付费墙，可逐节读五柱
 - [微信公众号原文](https://mp.weixin.qq.com/s/yFZs7SLN5naqty0PBTk0Xw)
 - [Science Robotics 原文](https://www.science.org/doi/10.1126/scirobotics.aee0787)
 - [TechXplore 通稿](https://techxplore.com/news/2026-07-legged-robots-surveillance-job-battlefield.html)
