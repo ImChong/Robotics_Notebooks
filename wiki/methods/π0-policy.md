@@ -2,7 +2,7 @@
 type: method
 tags: [vla, foundation-policy, deepmind, flow-matching, manipulation]
 status: complete
-updated: 2026-07-30
+updated: 2026-08-03
 related:
   - ./vla.md
   - ./pi07-policy.md
@@ -63,6 +63,8 @@ summary: "π₀ (Pi-zero) 是由 Physical Intelligence 提出的一种通用的 
 - [Action Tokenization (动作分词)](../formalizations/vla-tokenization.md)
 - [Cross-modal Attention (跨模态注意力)](../formalizations/cross-modal-attention.md)
 - [LWD（Learning while Deploying）](./lwd.md) — 其 QAM 组件正是为 flow-based 动作头（如 π₀）设计的策略抽取方法
+- [STEAM（自监督时序集成 advantage 建模）](../entities/paper-steam-advantage-modeling.md) — 以 π₀ 为策略骨干，用 CFGRL 做离线后训练提纯
+- [FM-VLA（力觉记忆 VLA）](../entities/paper-fm-vla.md) — 以 π₀.₅ 为骨干，在 flow-matching 动作专家后缀注入力觉长程记忆 token
 
 ## 参考来源
 - Black, K., et al. (2024). *π₀: A Vision-Language-Action Flow Model for General Robot Control*.
