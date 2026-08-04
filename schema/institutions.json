@@ -2287,6 +2287,13 @@
         "2012labs",
         "foundation-model-2012-labs"
       ]
+    },
+    "tongji": {
+      "label": "同济大学（Tongji）",
+      "aliases": [
+        "tongji",
+        "tongji-university"
+      ]
     }
   }
 }

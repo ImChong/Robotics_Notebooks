@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, vla, manipulation, open-source, vision-language-action, stanford]
 status: complete
-updated: 2026-07-12
+updated: 2026-08-04
 related:
   - ../methods/vla.md
   - ../entities/lerobot.md
@@ -59,6 +59,7 @@ summary: "OpenVLA 是开源视觉-语言-动作模型：Prismatic VLM 骨干 + �
 - [VLA](../methods/vla.md)
 - [LeRobot](./lerobot.md)
 - [VLA 开源复现景观 2025](../overview/vla-open-source-repro-landscape-2025.md)
+- [WCM 世界模型 Critic](./paper-wcm-world-critic-model.md) — 用世界模型 critic 做 RL 后训练，OpenVLA-OFT 上 ManiSkill IND 28.1%→99.0%（arXiv:2607.29613）
 
 ## 推荐继续阅读
 

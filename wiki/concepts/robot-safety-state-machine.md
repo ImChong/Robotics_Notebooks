@@ -2,7 +2,7 @@
 type: concept
 tags: [systems-engineering, safety, fsm, fault-tolerance, realtime, deployment]
 status: complete
-updated: 2026-08-01
+updated: 2026-08-04
 related:
   - ../entities/wbc-fsm.md
   - ./safety-filter.md
@@ -83,6 +83,7 @@ stateDiagram-v2
 - [EtherCAT](./ethercat-protocol.md) / [CAN](./can-bus-protocol.md)
 - [系统工程知识链](../overview/hub-systems-engineering.md)
 - [Importance Sampling + PCA（商业 AV）](../entities/paper-importance-sampling-pca-av-failures.md) — 离线稀有失败挖掘；与运行时 FSM 降级不同层
+- [ActFovea](../entities/paper-actfovea.md) — 给出「什么时候进安全态」的触发条件：风险分 + 威胁分型 + 有界安全失败
 
 ## 参考来源
 

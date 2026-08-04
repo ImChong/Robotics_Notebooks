@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-08-02
+updated: 2026-08-04
 related:
   - ../queries/embodied-fm-taxonomy-loop.md
   - ../entities/paper-motionwam-humanoid-loco-manipulation-wam.md
@@ -249,6 +249,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 ## 关联页面
 - [Query：具身大模型分类学选型闭环知识链](../queries/embodied-fm-taxonomy-loop.md) — 生成式世界模型是五层选型闭环 **⑤ 世界模型推演层** 的 **级联预演** 范式（VLA 出候选 → WM 逐帧推演择优 → 真机执行），与 WAM 的「联合建模」范式并列，注意推演步长↑累积误差↑
 - [Latent Imagination (潜空间想象)](../concepts/latent-imagination.md)
+- [WCM](../entities/paper-wcm-world-critic-model.md) — JEPA 隐空间预测路线：不生成像素，只用预测目标监督 critic 表征（靠 SIGReg 防坍塌）
 - [Model-Based RL](../methods/model-based-rl.md)
 - [Being-H0.7](./being-h07.md) — 潜空间世界–动作模型，测试时不滚未来像素。
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 世界预测与动作生成的联合范式与文献taxonomy

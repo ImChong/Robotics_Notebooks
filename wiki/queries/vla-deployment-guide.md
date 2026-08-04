@@ -2,7 +2,7 @@
 type: query
 tags: [vla, deployment, latency, manipulation, foundation-policy, real-robot, tensorrt]
 status: complete
-updated: 2026-07-30
+updated: 2026-08-04
 summary: "面向真机部署的 VLA 指南：深入探讨了如何利用 TensorRT 加速、异步推理架构、Action Chunking 以及安全回退机制解决大模型部署中的延迟与抖动问题。"
 related:
   - ../methods/vla.md
@@ -90,6 +90,7 @@ VLA 应当预测未来的一段轨迹（如未来 2 秒内的 16 步动作），
 - [VLA 与低级控制器融合架构](./vla-with-low-level-controller.md)
 - [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md)
 - [Cyclo Intelligence（实体）](../entities/cyclo-intelligence.md)
+- [ActFovea（实体）](../entities/paper-actfovea.md) — 部署期扰动（遮挡 / 延迟 / 动作漂移 / 观测冻结）的免训练运行时防护与安全失败
 
 ## 参考来源
 - [sources/papers/rl_foundation_models.md](../../sources/papers/rl_foundation_models.md)

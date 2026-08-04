@@ -1,3 +1,29 @@
+## [2026-08-04] ingest | sources/papers/clift_arxiv_2607_29172.md + sites/thomaschen98-clift — CLIFT（arXiv:2607.29172）入库：托管 SFT API 下的非侵入闭环迭代微调；升格 wiki/entities/paper-clift-closed-loop-iterative-finetuning.md
+
+- **来源：** [`sources/papers/clift_arxiv_2607_29172.md`](sources/papers/clift_arxiv_2607_29172.md)、[`sources/sites/thomaschen98-clift.md`](sources/sites/thomaschen98-clift.md)
+- **新建实体：** [`wiki/entities/paper-clift-closed-loop-iterative-finetuning.md`](wiki/entities/paper-clift-closed-loop-iterative-finetuning.md)（UC Berkeley / Google DeepMind / NVIDIA；Unitree G1 三任务两轮飞轮 100% / 98% / 96%）
+- **方法要点：** 奖励模型 select-then-distill（VLM K=12 候选 → ~100 组人类成对偏好筛选 → Qwen3-VL 蒸馏）+ DINOv3 检索式 chunk 级优势 token（1.8 s 前瞻、同侪前 30% 标正）+ 累积数据集回投托管 SFT API
+- **开源核查（步骤 2.5）：** 项目页列 Code 但**无可用链接**（`coming_soon`）→ 判「宣称将开源」；`## 源码运行时序图` 写明**不适用**及原因（真实门槛是 GROD API 访问权与 G1 真机）
+- **交叉：** [`wiki/entities/gemini-robotics.md`](wiki/entities/gemini-robotics.md)、[`wiki/entities/unitree-g1.md`](wiki/entities/unitree-g1.md)、[`wiki/concepts/safe-real-world-rl-fine-tuning.md`](wiki/concepts/safe-real-world-rl-fine-tuning.md)、[`wiki/overview/hub-safe-fine-tuning.md`](wiki/overview/hub-safe-fine-tuning.md)、[`wiki/tasks/bimanual-manipulation.md`](wiki/tasks/bimanual-manipulation.md)、[`wiki/concepts/reward-design.md`](wiki/concepts/reward-design.md)、[`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/entities/paper-pi05-open-world-vla.md`](wiki/entities/paper-pi05-open-world-vla.md)
+
+## [2026-08-04] ingest | sources/papers/wcm_world_critic_arxiv_2607_29613.md + repos/wcm-world-critic-model + sites/sylvestf-wcm-homepage — WCM（arXiv:2607.29613）入库：世界模型 Critic 修 VLA RL 的单帧价值估计错配；升格 wiki/entities/paper-wcm-world-critic-model.md
+
+- **来源：** [`sources/papers/wcm_world_critic_arxiv_2607_29613.md`](sources/papers/wcm_world_critic_arxiv_2607_29613.md)、[`sources/repos/wcm-world-critic-model.md`](sources/repos/wcm-world-critic-model.md)、[`sources/sites/sylvestf-wcm-homepage.md`](sources/sites/sylvestf-wcm-homepage.md)
+- **新建实体：** [`wiki/entities/paper-wcm-world-critic-model.md`](wiki/entities/paper-wcm-world-critic-model.md)（同济 / 上海创智 / 复旦；4 基准 149 任务；ManiSkill IND π₀ 38.4→84.4、π₀.₅ 47.0→91.9、OpenVLA-OFT 28.1→99.0）
+- **方法要点：** LeJEPA critic 联合 `L_value + λ·L_pred + η·L_SIGReg`；K=3 历史最优、λ∈[0.3,0.5]；消融显示 λ=0 的 ViT critic **仍无效**——起作用的是世界建模目标本身；零价值消融 OOD 反超 Flow-SDE
+- **开源核查（步骤 2.5）：** 代码 MIT 完整（四步 shell 脚本），权重/数据部分上 HF、其余「逐步开源」→ 判 **部分开源**；已画 `## 源码运行时序图`
+- **机构注册：** [`schema/institutions.json`](schema/institutions.json) 新增 `tongji`（同济大学（Tongji））；`make test` 全绿
+- **交叉：** [`wiki/methods/model-based-rl.md`](wiki/methods/model-based-rl.md)、[`wiki/methods/generative-world-models.md`](wiki/methods/generative-world-models.md)、[`wiki/comparisons/online-vs-offline-rl.md`](wiki/comparisons/online-vs-offline-rl.md)、[`wiki/entities/openvla.md`](wiki/entities/openvla.md)、[`wiki/methods/vla.md`](wiki/methods/vla.md)
+
+## [2026-08-04] ingest | sources/papers/actfovea_arxiv_2607_29169.md + repos/actfovea — ActFovea（arXiv:2607.29169）入库：VLA 运行时安全防护；升格 wiki/entities/paper-actfovea.md
+
+- **来源：** [`sources/papers/actfovea_arxiv_2607_29169.md`](sources/papers/actfovea_arxiv_2607_29169.md)、[`sources/repos/actfovea.md`](sources/repos/actfovea.md)
+- **新建实体：** [`wiki/entities/paper-actfovea.md`](wiki/entities/paper-actfovea.md)（冻结 π₀ + LIBERO 四套件 40 任务 / 2000 episodes；视觉叠加 49.3%→90.3%，NRR 93.7%；延迟 +9.8 pp；动作漂移 +7.0 pp；冻结重放 100% 及时安全失败）
+- **方法要点：** 动作条件中央凹（接触圆盘 + 运动走廊）+ 一致性风险分（几何 / 动态 / 时间 / 动作–本体）+ 候选库与动作块验证 + 两级仲裁受限执行 / hold latch 安全失败
+- **反例读点：** 纯时间戳 hold 在 3 帧视觉延迟下成功率 **0%**；固定裁剪/平滑无扰动即掉 10.8 pp；消融显示空间恢复靠候选构造、时间与动作侧恢复靠动作块验证
+- **开源核查（步骤 2.5）：** [SunnyYWD/ActFovea](https://github.com/SunnyYWD/ActFovea) Apache-2.0 完整实现（openpi 改造）→ 判 **已开源**；权重复用 π₀ 官方 checkpoint；已画 `## 源码运行时序图`
+- **交叉：** [`wiki/concepts/safety-filter.md`](wiki/concepts/safety-filter.md)、[`wiki/concepts/robot-safety-state-machine.md`](wiki/concepts/robot-safety-state-machine.md)、[`wiki/queries/vla-deployment-guide.md`](wiki/queries/vla-deployment-guide.md)、[`wiki/entities/libero-benchmark.md`](wiki/entities/libero-benchmark.md)、[`wiki/entities/paper-pi05-open-world-vla.md`](wiki/entities/paper-pi05-open-world-vla.md)、[`wiki/methods/vla.md`](wiki/methods/vla.md)
+
 ## [2026-08-03] ingest | sources/repos/sensenova-u1.md + sites/huggingface-sensenova-u1-5-8b-mot-preview.md + sites/modelscope-sensenova-u1-5-8b-mot-preview.md — SenseNova-U1.5 Preview 原生统一多模态模型；升格 wiki/entities/sensenova-u1-5.md
 
 - **触发：** 用户指定三处一手入口 <https://github.com/OpenSenseNova/SenseNova-U1/blob/main/docs/u1.5_preview.md>、<https://huggingface.co/sensenova/SenseNova-U1.5-8B-MoT-Preview>、<https://modelscope.cn/models/SenseNova/SenseNova-U1.5-8B-MoT-Preview>
@@ -323,7 +349,6 @@
 - **跳转：** 知识节点与互链关系数字 → `graph.html`；主路线数字 → `roadmap.html?id=roadmap-motion-control`；纵深路线数字 → `#home-more-routes` 并展开全部纵深路线（`docs/main.js` `setHomeRoutesExpanded`）
 - **样式：** `docs/style.css` 为可点数字补 hover/focus，并放宽 `.hero-stats` 宽度以容纳四项
 - **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md)
-
 ## [2026-07-31] query | wiki/queries/hmi-papers-coverage.md — 确保 HMI 论文与项目目录 145 篇论文均有本库独立详情节点；新建 23 个 sources+entities，复用 122 个已有页；修正开源主表 Robot Parkour / ASAP 挂接
 
 - **触发：** 用户要求覆盖 [论文与项目](https://github.com/RealXiaoze/humanoid-motion-intelligence/tree/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE) 列出的论文与项目详情独立节点（不重复造页）

@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-safe-fine-tuning, safe-rl, cbf, lora, deployment]
 status: complete
-updated: 2026-08-03
+updated: 2026-08-04
 summary: "真机安全微调知识链汇总：Sim2Real 部署后的在线 RL 适配，低秩残差（SLowRL）、CBF/CLF 安全壳与生成式兜底，避免训练期硬件损伤。"
 ---
 
@@ -51,6 +51,7 @@ summary: "真机安全微调知识链汇总：Sim2Real 部署后的在线 RL 适
 - [Safety Filter](../concepts/safety-filter.md)
 - [Balance Recovery](../tasks/balance-recovery.md)
 - [Query: CLF/CBF in WBC](../queries/clf-cbf-in-wbc.md)
+- [CLIFT](../entities/paper-clift-closed-loop-iterative-finetuning.md) — 闭权重模型只给托管 SFT API 时的真机闭环微调路线
 
 ## 参考来源
 

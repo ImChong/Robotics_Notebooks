@@ -2,7 +2,7 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
-updated: 2026-08-02
+updated: 2026-08-04
 summary: "LIBERO：用一百三十个机械臂任务控制对象、布局、目标和语言变化，专门评估终身学习与迁移中的分布偏移；固定任务套件和数据接口便于比较策略是记住训练场景还是获得可迁移能力。"
 related:
   - ../concepts/sim2real.md
@@ -91,6 +91,7 @@ flowchart LR
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
 - [World Action Planner](./paper-world-action-planner.md) — LIBERO-Long / Object 上用 pose-image WM + VLM 规划测组合与新布局泛化
+- [ActFovea](./paper-actfovea.md) — 在本基准四套件（40 任务 / 2000 episodes）上做 VLA 运行时扰动与防护评测
 
 ## 参考来源
 
