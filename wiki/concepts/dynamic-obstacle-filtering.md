@@ -2,7 +2,7 @@
 type: concept
 tags: [navigation, mapping, lidar, costmap, filtering, mobile-robot, slam]
 status: complete
-updated: 2026-07-23
+updated: 2026-08-04
 related:
   - ../methods/a-star.md
   - ../methods/dwa.md

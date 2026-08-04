@@ -2,12 +2,13 @@
 type: entity
 tags: [paper, foundation-model, segmentation, sam, sam2, video-segmentation, computer-vision, meta, promptable-segmentation]
 status: complete
-updated: 2026-07-26
+updated: 2026-08-04
 arxiv: "2408.00714"
 code: https://github.com/facebookresearch/sam2
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./paper-segment-anything.md
+  - ./paper-sam3.md
   - ../queries/go2-3d-semantic-mapping-sam-pipeline.md
   - ./ovo-semantic-mapping.md
   - ./dualmap.md

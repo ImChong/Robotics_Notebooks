@@ -2302,6 +2302,29 @@
         "lightorigins",
         "light-origins-robotics"
       ]
+    },
+    "rai-institute": {
+      "label": "机器人与人工智能研究所（RAI Institute）",
+      "aliases": [
+        "rai-institute",
+        "rai",
+        "robotics-ai-institute"
+      ]
+    },
+    "salesforce": {
+      "label": "赛富时（Salesforce）",
+      "aliases": [
+        "salesforce"
+      ]
+    },
+    "polimi": {
+      "label": "米兰理工大学（Politecnico di Milano）",
+      "aliases": [
+        "polimi",
+        "politecnico-di-milano",
+        "politecnico-milano",
+        "poli-mi"
+      ]
     }
   }
 }
