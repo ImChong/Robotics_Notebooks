@@ -2321,6 +2321,8 @@ button.home-wiki-heatmap-cell.is-active {
   padding: 24px 0;
   color: var(--text-muted);
   font-size: 0.85rem;
+  /* 铺纯色底盖住 body 的点阵，页脚不带点 */
+  background: var(--bg);
 }
 .footer .container {
   display: flex;
