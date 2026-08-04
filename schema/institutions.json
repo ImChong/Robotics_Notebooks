@@ -2294,6 +2294,14 @@
         "tongji",
         "tongji-university"
       ]
+    },
+    "rai-institute": {
+      "label": "机器人与人工智能研究所（RAI Institute）",
+      "aliases": [
+        "rai-institute",
+        "rai",
+        "robotics-ai-institute"
+      ]
     }
   }
 }

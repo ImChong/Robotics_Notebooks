@@ -21,8 +21,10 @@ tags:
   - university-of-tubingen
   - max-planck
   - monash
+  - rai-institute
 status: complete
-updated: 2026-07-31
+updated: 2026-08-04
+arxiv: "2607.28952"
 doi: "10.1126/scirobotics.aee0787"
 venue: "Science Robotics 2026"
 related:
@@ -41,12 +43,12 @@ sources:
   - ../../sources/papers/legged_robots_advances_challenges_scirobotics_2026.md
   - ../../sources/blogs/wechat_robot_lecture_legged_robots_survey_2026-07-31.md
   - ../../sources/blogs/techxplore_legged_robots_ethics_monash_2026-07-30.md
-summary: "Science Robotics 2026 Review：五柱盘点腿式硬件/运动/自主/数据/应用；导读补可反驱转折、灵巧语义化运动、价格与四项政策优先；伦理–民主授权同页。"
+summary: "Science Robotics 2026 Review（arXiv:2607.28952）：五柱盘点腿式硬件/运动/自主/数据/应用；可反驱转折、DSL、价格与四项政策优先；伦理–民主授权同页。"
 ---
 
 # 腿式机器人进展、挑战与机遇综述
 
-**Advances, challenges, and opportunities for legged robots**（Jonas Frey、Matías Mattamala、Hae-Won Park、Mayank Mittal、Georg Martius、Maike Osborne、Robert Sparrow、Marco Hutter；**ETH Zurich 牵头**，联合 Stanford / UC Berkeley / Edinburgh / KAIST / NVIDIA / Tübingen / MPI-IS / Oxford / Monash / RAI Institute；**Science Robotics 2026** Vol. 11 Issue 116，[DOI:10.1126/scirobotics.aee0787](https://doi.org/10.1126/scirobotics.aee0787)）是一篇 **Review**：沿 **硬件 · locomotion · 自主 · 数据 · 应用** 五柱评估人形与四足系统，并给出伦理、经济与政策展望。
+**Advances, challenges, and opportunities for legged robots**（Jonas Frey、Matías Mattamala、Hae-Won Park、Mayank Mittal、Georg Martius、Maike Osborne、Robert Sparrow、Marco Hutter；**ETH Zurich 牵头**，联合 Stanford / UC Berkeley / Edinburgh / KAIST / NVIDIA / Tübingen / MPI-IS / Oxford / Monash / RAI Institute；**Science Robotics 2026** Vol. 11 Issue 116，[DOI:10.1126/scirobotics.aee0787](https://doi.org/10.1126/scirobotics.aee0787)，作者版 [arXiv:2607.28952](https://arxiv.org/abs/2607.28952)）是一篇 **Review**：沿 **硬件 · locomotion · 自主 · 数据 · 应用** 五柱评估人形与四足系统，并给出伦理、经济与政策展望。
 
 ## 一句话定义
 
@@ -68,7 +70,7 @@ summary: "Science Robotics 2026 Review：五柱盘点腿式硬件/运动/自主/
 ## 为什么重要
 
 - **五柱坐标对齐本库主线：** 硬件上限、运动栈、长程自主、数据瓶颈与落地用例同一张图。
-- **导读补齐可操作细节：** [机器人大讲堂](../../sources/blogs/wechat_robot_lecture_legged_robots_survey_2026-07-31.md) 给出可反驱转折、频率分层、策略规模、价格带与四项政策优先——在全文付费墙下是当前最深开放二手源。
+- **作者版全文已开放：** [arXiv:2607.28952](https://arxiv.org/abs/2607.28952)（2026-07-31）可直接核对频率分层、DSL、价格带与四项政策；[微信导读](../../sources/blogs/wechat_robot_lecture_legged_robots_survey_2026-07-31.md) 仍可作中文交叉读。
 - **同刊对照：** 与 [仿生多模态综述](./paper-bioinspired-multimodal-robotics.md)（Issue 116）互补——本页聚焦陆地人形/四足，彼页聚焦跨介质评测语言。
 - **治理与技术同页：** 服务业约 **80%** 劳动力冲击叙事 + 民主授权，不宜只读 PPO 成功故事。
 
@@ -79,8 +81,8 @@ summary: "Science Robotics 2026 Review：五柱盘点腿式硬件/运动/自主/
 | **机构** | 苏黎世联邦理工（ETH Zürich）；斯坦福大学（Stanford）；加州大学伯克利分校（UC Berkeley）；爱丁堡大学（University of Edinburgh）；韩国科学技术院（KAIST）；英伟达（NVIDIA）；图宾根大学（University of Tübingen）；马克斯·普朗克智能系统研究所（MPI-IS）；牛津大学（University of Oxford）；莫纳什大学（Monash University）；RAI Institute |
 | **类型** | Science Robotics **Review**（非单一系统论文） |
 | **平台** | 综述覆盖人形与四足多类系统，无单一硬件 |
-| **开源** | **不适用** — 综述无官方代码 / 数据集 / 项目页（截至 2026-07-31） |
-| **开放全文** | **无合法 OA PDF**；技术细节主要编译自摘要 + [微信导读](../../sources/blogs/wechat_robot_lecture_legged_robots_survey_2026-07-31.md) + 通稿 |
+| **开源** | **不适用** — 综述无官方代码 / 数据集 / 项目页（截至 2026-08-04） |
+| **开放全文** | **有** — 作者版 [arXiv:2607.28952](https://arxiv.org/abs/2607.28952)；正式 DOI 另见出版社 |
 
 ## 核心原理
 
@@ -110,14 +112,14 @@ flowchart LR
 
 ### 硬件：可反驱电驱动是爆发起点
 
-据[微信导读](../../sources/blogs/wechat_robot_lecture_legged_robots_survey_2026-07-31.md)：
+据 [arXiv:2607.28952](https://arxiv.org/abs/2607.28952)（与[微信导读](../../sources/blogs/wechat_robot_lecture_legged_robots_survey_2026-07-31.md)交叉）：
 
 | 线索 | 要点 |
 |------|------|
-| 形态 | 四足偏承载/操作（部分负载 **>180 kg**）；人形工作空间大但更依赖动态稳定 |
+| 形态 | 四足偏承载/操作（负载可达 **180 kg**，Fig. 1E）；人形工作空间大但更依赖动态稳定 |
 | 执行器需求 | 高力矩 + 冲击响应 → **低阻抗、高可反驱**（异于工业臂） |
-| 历史路径 | 高减速比不可反驱 → SEA（带宽代价）→ 液压（BigDog/Atlas，成本/噪声/漏油后降温）→ **定制高力矩低减速比电驱动** |
-| 透明传动 | 力矩≈电流×Kt×减速比 → 可无额外 F/T 做高带宽力矩控制；Katz 等开源执行器助推宇树、ARTEMIS |
+| 历史路径 | 高减速比不可反驱 → SEA（带宽代价）→ 液压（BigDog/Atlas，成本/噪声/漏油后降温）→ **定制高力矩低减速比电驱动**（大间隙半径、短轴向长度电机 + 低减速比） |
+| 透明传动 | 力矩≈电流×Kt×减速比 → 可无额外 F/T 做高带宽力矩控制；Katz 等开源执行器助推 Unitree、ARTEMIS |
 | 传感 | 编码器+IMU；LiDAR / RGB-D；接触与多轴 F/T；触觉皮肤耐久/集成仍限 |
 | 软体/人工肌肉 | 潜力在紧凑与力重比，制造/耐久/控制未进商业系统 |
 
@@ -125,12 +127,12 @@ flowchart LR
 
 | 线索 | 要点 |
 |------|------|
-| 频率分层 | 执行器 **200–1000 Hz**；运动 **50–200 Hz**；高层 **<30 Hz** |
-| 经典栈 | 静态 CoM → ZMP → LIP/SLIP → MPC；今 MPC 多与 RL 混合 |
-| RL 范式 | 仿真 PPO；几何外感知优先；**位置目标+阻抗** 非直接力矩；SysID 零样本 + 域随机化 + 域自适应 |
-| 模型规模 | 普遍 MLP/RNN，参数多 **<1000 万**（非十亿级 VLM） |
-| 开放问题 | 奖励塑形、多阶段训练、多技能蒸馏、离线 RL 未证明；形式化安全（CBF / Lyapunov / HJ）与可实现行为鸿沟 |
-| 前沿命名 | **灵巧语义化运动（DSL）**：几何 + 交互预判 + 语义 + 施力意识 |
+| 频率分层 | 执行器 **∼200–1000 Hz**；运动 **∼50–200 Hz**；高层 **<30 Hz**（PDF） |
+| 经典栈 | 静态支撑多边形 → ZMP → LIP/SLIP → MPC；今 MPC 多与 RL 混合 |
+| RL 范式 | 仿真训策略输出 **执行器位置目标**，低层 PD/阻抗转力矩；SysID + 域随机化支撑零样本迁移（Fig. 2） |
+| 模型规模 | 普遍 MLP/RNN，参数 **below 10 million**（非十亿级 VLM）；偶见更小扩散/Transformer |
+| 开放问题 | 奖励塑形、多阶段训练、多技能蒸馏、离线 RL；形式化安全（CBF / Lyapunov / HJ）与可实现行为鸿沟 |
+| 前沿命名 | **dexterous semantic locomotion（DSL）**：多模态 affordance + 精细运动 + 长时程协作 |
 
 ### 自主：分层拆解还是端到端融合
 
@@ -164,16 +166,16 @@ flowchart LR
 
 伦理（导读 + [Monash 通稿](../../sources/blogs/techxplore_legged_robots_ethics_monash_2026-07-30.md)）：技术性失业与不平等；**民主授权**；养老意愿与情感需求；家中数据权；军事心理门槛与问责；伴侣机器人孤立；种族/性别编码。
 
-| 经济/政策数字（导读复述） | 值 |
-|---------------------------|-----|
-| 商用「只会走路」四足（2025） | 约 **3–9 万美元** |
-| 电池 / 半径 | **90 分钟–6 小时** / 约 **4–20 km** |
-| 入门小四足 / 人形起售 | 约 **2700 / 4900 美元** |
-| 服务业劳动力占比（部分发达经济体） | 约 **80%**（对照工业机器人主要冲击制造约 **7.5%**） |
+| 经济/政策数字（PDF，as of 2025） | 值 |
+|----------------------------------|-----|
+| Spot 等商用四足价带 | 约 **$30,000–$90,000** |
+| 电池 / 半径 | **90 min–6 h** / 约 **4–20 km** |
+| 入门小四足 / 人形起售 | 约 **$2700 / $4900** |
+| 服务业劳动力占比（部分发达经济体） | 约 **∼80%** |
 | 从「会走」到「会社交」窗口 | 约 **10–15 年** |
-| 四项政策优先 | 基于能力的监管 · 国际协调 · 战略性产业政策 · 前瞻性劳动力计划 |
+| 四项政策优先 | capability-based regulation · international coordination · strategic industrial policy · anticipatory workforce programs |
 
-监管分化：欧盟 AI Act；日本社会 5.0；中国工信部人形 **2025 量产 / 2027 领先**；美国分行业指引。IFR 语境：全球工业机器人约 **428 万**台，中国安装占比约 **51%**。
+监管分化：欧盟 AI Act；日本 Society 5.0；中国工信部人形路线；国际协调亦指向致命自主武器框架与 ISO/TC 299。IFR 语境：全球工业机器人约 **4.28M** 台，中国安装占比约 **51%**，亚洲部署约 **70%**；中国工业机器人密度约 **470 / 万人**。
 
 ## 流程总览
 
@@ -188,7 +190,7 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用。** 本文为 Science Robotics **Review**，截至入库日（2026-07-31）**无官方可运行代码、权重或项目页**。复现应落到被综述的具体系统论文。
+**不适用。** 本文为 Science Robotics **Review**，截至 **2026-08-04** **无官方可运行代码、权重或项目页**（有的是开源软件生态与被引系统，非本文仓）。复现应落到被综述的具体系统论文；全文读 [arXiv:2607.28952](https://arxiv.org/abs/2607.28952)。
 
 ## 工程实践
 
@@ -227,15 +229,15 @@ flowchart TB
 |------|--------------------------------|--------------------------------------------------------------|------------------------------------------------------------------|-----------------------------------------------|
 | 范围 | 人形+四足陆地五柱 + 社会/政策 | 跨介质仿生多模态 | 学习控制专向 | 本库任务索引 |
 | 贡献形态 | 能力盘点 + DSL 命名 + 四项政策优先 | 五指标 + 切换分类 + 三模块 | 方法谱系 | 工程导航 |
-| 社会层 | **显式**（导读+通稿） | 弱 | 弱 | 无 |
+| 社会层 | **显式**（PDF + 通稿） | 弱 | 弱 | 无 |
 | 代码 | 无 | 无 | 无（综述） | 指向各系统页 |
 
 ## 局限与风险
 
-- **全文付费墙 / 无合法 OA PDF：** Unpaywall/OpenAlex/PMC/arXiv/作者站等复查仍 closed（见 [sources OA 核查](../../sources/papers/legged_robots_advances_challenges_scirobotics_2026.md)）。本页技术数字主要来自[微信导读](../../sources/blogs/wechat_robot_lecture_legged_robots_survey_2026-07-31.md)复述，精确图表请回原文。
-- **导读非逐字翻译：** 命名（如 DSL）与价格带以推文为准。
-- **综述无单一基线实现：** 五柱落地仍需各系统自报口径。
-- **开源状态：** **确认无官方代码 / 项目页**。
+- **作者版 vs 正式版：** 技术数字以 [arXiv:2607.28952](https://arxiv.org/abs/2607.28952) 作者版为准；AAAS 声明个人使用、禁止再分发。出版社正式排版若有修订，以 DOI 为准。
+- **综述无单一基线实现：** 五柱落地仍需各系统自报口径；勿把本页当排行榜。
+- **开源状态：** **确认无官方代码 / 项目页**（综述）。
+- **社会层预测窗口宽：** 10–15 年「会社交」与价格带是展望性表述，不是保证交付时间表。
 
 ## 关联页面
 
@@ -253,16 +255,17 @@ flowchart TB
 
 ## 参考来源
 
-- [legged_robots_advances_challenges_scirobotics_2026.md](../../sources/papers/legged_robots_advances_challenges_scirobotics_2026.md) — 本库论文归档、OA 核查
-- [微信导读：腿式机器人进展/挑战/机遇](../../sources/blogs/wechat_robot_lecture_legged_robots_survey_2026-07-31.md) — 五柱细节、DSL、价格与政策数字
-- [TechXplore / Monash 通稿](../../sources/blogs/techxplore_legged_robots_ethics_monash_2026-07-30.md) — 伦理–政策侧复述
-- Frey et al., *Advances, challenges, and opportunities for legged robots*, [Science Robotics 2026](https://doi.org/10.1126/scirobotics.aee0787)
+- [legged_robots_advances_challenges_scirobotics_2026.md](../../sources/papers/legged_robots_advances_challenges_scirobotics_2026.md) — 本库论文归档、OA/arXiv 核查
+- Frey et al., *Advances, challenges, and opportunities for legged robots*, [arXiv:2607.28952](https://arxiv.org/abs/2607.28952) / [Science Robotics 2026](https://doi.org/10.1126/scirobotics.aee0787)
+- [微信导读：腿式机器人进展/挑战/机遇](../../sources/blogs/wechat_robot_lecture_legged_robots_survey_2026-07-31.md) — 中文交叉读
+- [TechXplore / Monash 通稿](../../sources/blogs/techxplore_legged_robots_ethics_monash_2026-07-30.md) — 伦理–经济侧复述
 - [PubMed:42525724](https://pubmed.ncbi.nlm.nih.gov/42525724/) — 开放摘要
 
 ## 推荐继续阅读
 
-- [微信公众号原文](https://mp.weixin.qq.com/s/yFZs7SLN5naqty0PBTk0Xw)
-- [Science Robotics 原文](https://www.science.org/doi/10.1126/scirobotics.aee0787)
+- [arXiv:2607.28952（作者版 PDF）](https://arxiv.org/abs/2607.28952)
+- [Science Robotics 正式版](https://www.science.org/doi/10.1126/scirobotics.aee0787)
+- [微信公众号导读](https://mp.weixin.qq.com/s/yFZs7SLN5naqty0PBTk0Xw)
 - [TechXplore 通稿](https://techxplore.com/news/2026-07-legged-robots-surveillance-job-battlefield.html)
 - Ha et al., *Learning-based legged locomotion*, [IJRR 2025](https://doi.org/10.1177/02783649241312698) — 学习控制专向对照
 - [仿生多模态机器人综述（同刊）](./paper-bioinspired-multimodal-robotics.md)

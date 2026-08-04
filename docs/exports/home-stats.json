@@ -9,6 +9,47 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-legged-robots-advances-challenges.md",
+      "detail_id": "entity-paper-legged-robots-advances-challenges",
+      "label": "腿式机器人进展、挑战与机遇综述",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/tasks/locomotion.md",
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/quadruped-robot.md",
+      "detail_id": "entity-quadruped-robot",
+      "label": "四足机器人（Quadruped Robot）",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/paper-clift-closed-loop-iterative-finetuning.md",
       "detail_id": "entity-paper-clift-closed-loop-iterative-finetuning",
       "label": "CLIFT：不打开模型盒子的闭环迭代微调",
@@ -169,57 +210,17 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/concepts/robot-safety-state-machine.md",
-      "detail_id": "wiki-concepts-robot-safety-state-machine",
-      "label": "机器人安全状态机（硬件 / 通信故障）",
-      "type": "concept",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/queries/vla-deployment-guide.md",
-      "detail_id": "wiki-queries-vla-deployment-guide",
-      "label": "VLA 真机部署指南：延迟、异步与加速",
-      "type": "query",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/libero-benchmark.md",
-      "detail_id": "entity-libero-benchmark",
-      "label": "LIBERO",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/sensenova-u1-5.md",
-      "detail_id": "entity-sensenova-u1-5",
-      "label": "SenseNova-U1.5（Preview · NEO-unify）",
-      "type": "entity",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-clift-closed-loop-iterative-finetuning.md",
-    "detail_id": "entity-paper-clift-closed-loop-iterative-finetuning",
-    "label": "CLIFT：不打开模型盒子的闭环迭代微调",
+    "path": "wiki/entities/paper-legged-robots-advances-challenges.md",
+    "detail_id": "entity-paper-legged-robots-advances-challenges",
+    "label": "腿式机器人进展、挑战与机遇综述",
     "type": "entity",
     "recency": "2026-08-04",
     "source": "log.md",
     "action": "maintained",
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
