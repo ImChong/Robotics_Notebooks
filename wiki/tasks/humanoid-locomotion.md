@@ -2,7 +2,7 @@
 type: task
 tags: [humanoid, locomotion, whole-body-control]
 status: complete
-updated: 2026-08-02
+updated: 2026-08-04
 related:
   - ./locomotion.md
   - ./stair-obstacle-perceptive-locomotion.md
@@ -14,6 +14,7 @@ related:
   - ../entities/paper-roller-skating-amp-humanoid-passive-wheels.md
   - ../entities/paper-now-you-see-that-humanoid-vision-locomotion.md
   - ../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md
+  - ../entities/paper-light-loco-parkour.md
   - ../entities/paper-adp.md
   - ../entities/paper-learning-quiet-walking-aibo.md
   - ../entities/paper-quietwalk-humanoid-locomotion.md
@@ -107,6 +108,7 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 - [MTRG / GfR](../methods/mtrg-reference-goal-driven-rl.md) — RSS 2026；G1 箱式跑酷：参考塑形 + goal 泛化（超越 ZEST tracking 的 OOD 鲁棒性）
 - [HIL](../methods/hil-hybrid-imitation-learning.md) — 物理角色跑酷：tracking + AMP 混合模仿（仿真）
 - [HIL vs MTRG vs ZEST 跑酷路线对比](../comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md) — 跑酷模仿三条路线选型
+- [Light-Loco-Parkour（LightLP）](../entities/paper-light-loco-parkour.md) — Light Origins / Lightbot 0；稀疏种子 Real2Sim2Real + 多专家蒸馏，无技能标签机载深度跑酷（代码未开源）
 - [Diffusion-based Motion Generation](../methods/diffusion-motion-generation.md)
 - [PPO](../methods/policy-optimization.md)
 - [Whole-Body Coordination](../concepts/whole-body-coordination.md)

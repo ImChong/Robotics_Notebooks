@@ -134,6 +134,7 @@ sources:
 ## 关联页面
 
 - [Query：具身大模型分类学选型闭环知识链](../queries/embodied-fm-taxonomy-loop.md) — VLN 是五层选型闭环的 **② 空间导航层**：在 VLM 语义之上加空间移动分支（`VLN ⊂ VLA`），仅底盘导航、无力控/操作，任务只需移动时比整套 VLA 更省更可解释
+- [Habitat-Sim](../entities/habitat-sim.md) — Meta 高速具身仿真宿主（HM3D/MP3D ObjectNav、VLN-CE 等；MIT；v0.3.4 后不再官方主动维护）
 - [VLN 10 篇论文技术地图](../overview/vln-10-papers-technology-map.md)
 - [VLN 开源复现：四范式学习路径](../overview/vln-open-source-repro-paradigms.md)
 - [WorldVLN（空中 VLN · WAM）](../entities/paper-worldvln-aerial-vln-wam.md)

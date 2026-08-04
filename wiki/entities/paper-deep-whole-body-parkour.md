@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, whole-body-tracking, perceptive-locomotion, parkour, sim2real, unitree-g1, tsinghua, shanghai-pil]
 status: complete
-updated: 2026-07-24
+updated: 2026-08-04
 arxiv: "2601.07701"
 venue: arXiv
 summary: "Deep Whole-body Parkour（arXiv:2601.07701）：深度感知 + 全身运动跟踪统一框架，单策略在多障碍几何上完成 vault、dive-roll 等多接触跑酷；Isaac Lab + 自定义分组 Warp 射线投射。"
@@ -129,6 +129,7 @@ flowchart TB
 - RL 栈：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)（#23/42）
 - AMP 专题：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)（#18/19）
 - 姊妹：[paper-hiking-in-the-wild.md](./paper-hiking-in-the-wild.md)、[paper-amp-survey-19-embrace_collisions.md](./paper-amp-survey-19-embrace_collisions.md)
+- 对照（无技能标签 / Lightbot 0）：[Light-Loco-Parkour（LightLP）](./paper-light-loco-parkour.md)
 - 任务：[stair-obstacle-perceptive-locomotion.md](../tasks/stair-obstacle-perceptive-locomotion.md)
 
 ## 参考来源

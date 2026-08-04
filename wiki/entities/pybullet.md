@@ -2,11 +2,12 @@
 type: entity
 tags: [simulation, physics-engine, reinforcement-learning, pybullet, bullet3, python]
 status: complete
-updated: 2026-06-22
+updated: 2026-08-04
 related:
   - ./gym-pybullet-drones.md
   - ./motion-imitation-quadruped.md
   - ./igibson.md
+  - ./habitat-sim.md
   - ../overview/sim-platforms-decade-technology-map.md
   - ./mujoco.md
   - ./isaac-gym-isaac-lab.md
@@ -18,6 +19,7 @@ sources:
   - ../../sources/repos/bullet3.md
   - ../../sources/sites/pybullet-org.md
   - ../../sources/blogs/wechat_shenlan_rl_embodied_minimal_closed_loop.md
+  - ../../sources/repos/habitat-sim.md
   - ../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md
 summary: "PyBullet 是 Bullet3 物理引擎的 Python 绑定：URDF 加载、关节驱动、碰撞与传感器接口轻量，pip 即可安装；常用于 RL 入门闭环、四足模仿与课程实验；精细接触与人形大规模并行不如 MuJoCo / Isaac Lab。"
 ---
@@ -70,7 +72,7 @@ flowchart TB
 ## 为什么重要
 
 - **教学与最小闭环**：在进 Isaac Lab / MuJoCo 大规模训练前，用 KUKA 臂定点、倒立摆等 **几十行脚本** 把 MDP 五元组与仿真步进对齐（见 [具身 RL 最小闭环](../concepts/embodied-rl-minimal-closed-loop.md)）。
-- **历史生态**：[motion_imitation](./motion-imitation-quadruped.md)（四足模仿动物，RSS 2020）、早期 DeepMimic 复现、[gym-pybullet-drones](./gym-pybullet-drones.md)（四旋翼 RL）均建立于 PyBullet；官方站亦索引 Assistive Gym、Habitat-Sim Bullet 集成等。
+- **历史生态**：[motion_imitation](./motion-imitation-quadruped.md)（四足模仿动物，RSS 2020）、早期 DeepMimic 复现、[gym-pybullet-drones](./gym-pybullet-drones.md)（四旋翼 RL）均建立于 PyBullet；官方站亦索引 Assistive Gym、[Habitat-Sim](./habitat-sim.md) Bullet 集成（conda `withbullet`）等。
 - **依赖轻**：Colab 上 `pip install pybullet` 约十几秒；适合课程与算法 ablation。
 
 ## 核心能力

@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-04",
-  "node_count": 2092,
-  "edge_count": 18994,
+  "node_count": 2093,
+  "edge_count": 19017,
   "coverage": {
-    "covered": 2068,
-    "total": 2068,
+    "covered": 2069,
+    "total": 2069,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -25,7 +25,148 @@
       "recency": "2026-08-04",
       "source": "log.md",
       "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/habitat-sim.md",
+      "detail_id": "entity-habitat-sim",
+      "label": "Habitat-Sim",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
       "has_repo": true
+    },
+    {
+      "path": "wiki/overview/sim-platforms-decade-technology-map.md",
+      "detail_id": "wiki-overview-sim-platforms-decade-technology-map",
+      "label": "十年仿真平台技术地图（TOP 8）",
+      "type": "overview",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+    },
+    {
+      "path": "wiki/entities/matterport3d-simulator.md",
+      "detail_id": "entity-matterport3d-simulator",
+      "label": "Matterport3D Simulator",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    },
+    {
+      "path": "wiki/entities/pybullet.md",
+      "detail_id": "entity-pybullet",
+      "label": "PyBullet",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+    },
+    {
+      "path": "wiki/tasks/vision-language-navigation.md",
+      "detail_id": "wiki-tasks-vision-language-navigation",
+      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
+      "type": "task",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-light-loco-parkour.md",
+      "detail_id": "entity-paper-light-loco-parkour",
+      "label": "Light-Loco-Parkour（LightLP）",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md",
+      "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
+      "label": "Perceptive Humanoid Parkour（PHP）",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/tasks/humanoid-locomotion.md",
+      "detail_id": "wiki-tasks-humanoid-locomotion",
+      "label": "Humanoid Locomotion (人形机器人移动)",
+      "type": "task",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/tasks/locomotion.md",
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/tasks/stair-obstacle-perceptive-locomotion.md",
+      "detail_id": "wiki-tasks-stair-obstacle-perceptive-locomotion",
+      "label": "楼梯与障碍 Locomotion（感知 / 盲走中心节点）",
+      "type": "task",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-deep-whole-body-parkour.md",
+      "detail_id": "entity-paper-deep-whole-body-parkour",
+      "label": "Deep Whole-body Parkour：感知式全身跑酷",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/methods/dagger.md",
+      "detail_id": "wiki-methods-dagger",
+      "label": "DAgger（Dataset Aggregation）",
+      "type": "method",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md",
+      "detail_id": "wiki-comparisons-hil-vs-mtrg-vs-zest-parkour-imitation",
+      "label": "HIL vs MTRG vs ZEST：跑酷模仿学习路线对比",
+      "type": "comparison",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/paper-legged-robots-advances-challenges.md",
@@ -38,30 +179,10 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/tasks/locomotion.md",
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
       "path": "wiki/entities/quadruped-robot.md",
       "detail_id": "entity-quadruped-robot",
       "label": "四足机器人（Quadruped Robot）",
       "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
       "recency": "2026-08-04",
       "source": "log.md",
       "action": "maintained",
@@ -87,126 +208,6 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
-    },
-    {
-      "path": "wiki/entities/openclaw.md",
-      "detail_id": "entity-openclaw",
-      "label": "OpenClaw",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-sam3.md",
-      "detail_id": "entity-paper-sam3",
-      "label": "SAM 3：Segment Anything with Concepts",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-blip2.md",
-      "detail_id": "entity-paper-blip2",
-      "label": "BLIP-2",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
-    },
-    {
-      "path": "wiki/entities/jetson-orin-nx.md",
-      "detail_id": "entity-jetson-orin-nx",
-      "label": "NVIDIA Jetson Orin NX",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/tasks/zero-shot-object-navigation.md",
-      "detail_id": "wiki-tasks-zero-shot-object-navigation",
-      "label": "零样本目标导航（Zero-Shot Object Navigation）",
-      "type": "task",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
-    },
-    {
-      "path": "wiki/concepts/embodied-semantic-cognitive-map.md",
-      "detail_id": "wiki-concepts-embodied-semantic-cognitive-map",
-      "label": "具身语义认知地图（Embodied Semantic Cognitive Map）",
-      "type": "concept",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/concepts/vision-language-feature-fusion.md",
-      "detail_id": "wiki-concepts-vision-language-feature-fusion",
-      "label": "视觉–语言特征融合与语义空间对齐",
-      "type": "concept",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
-    },
-    {
-      "path": "wiki/concepts/lidar-sensing.md",
-      "detail_id": "wiki-concepts-lidar-sensing",
-      "label": "LiDAR 传感（Light Detection and Ranging）",
-      "type": "concept",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-why-action-chunking-improves-bc.md",
-      "detail_id": "entity-paper-why-action-chunking-improves-bc",
-      "label": "Why Action Chunking Improves BC（延迟策略与隐式集成）",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/methods/action-chunking.md",
-      "detail_id": "wiki-methods-action-chunking",
-      "label": "Action Chunking（动作块输出）",
-      "type": "method",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/methods/behavior-cloning.md",
-      "detail_id": "wiki-methods-behavior-cloning",
-      "label": "Behavior Cloning（行为克隆）",
-      "type": "method",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/methods/diffusion-policy.md",
-      "detail_id": "wiki-methods-diffusion-policy",
-      "label": "Diffusion Policy",
-      "type": "method",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
@@ -221,11 +222,15 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 216
+      "size": 195
+    },
+    {
+      "label": "动作重定向",
+      "size": 195
     },
     {
       "label": "操作",
-      "size": 176
+      "size": 160
     },
     {
       "label": "人形强化学习运动控制",
@@ -236,12 +241,8 @@
       "size": 140
     },
     {
-      "label": "动作重定向",
-      "size": 137
-    },
-    {
       "label": "人形论文深读笔记",
-      "size": 136
+      "size": 117
     }
   ],
   "top_hubs": [
@@ -249,7 +250,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 414,
+      "degree": 416,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -288,7 +289,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 300
+      "degree": 302
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",

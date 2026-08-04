@@ -170,7 +170,7 @@
 - [GVHMR](wiki/entities/gvhmr.md) — GVHMR**（*World-Grounded Human Motion Recovery via Gravity-View Coordinates*，ZJU 3DV，SIGGRAPH Asia  `📅unknown` `[entity_page]`
 - [gym-pybullet-drones](wiki/entities/gym-pybullet-drones.md) — gym-pybullet-drones**（[utiasDSL/gym-pybullet-drones](https://github.com/utiasDSL/gym-pybullet-dron `📅unknown` `[entity_page]`
 - [Gymnasium（RL 环境 API 标准）](wiki/entities/gymnasium.md) — Gymnasium** 是 Farama Foundation 维护的 **单智能体强化学习环境接口** 与参考环境集合，官方文档见 [gymnasi `📅unknown` `[entity_page]`
-- [Habitat-Sim](wiki/entities/habitat-sim.md) — Habitat**（仿真核心常称 **Habitat-Sim**）是 Meta AI（原 Facebook AI Research）2019 年发布的 **具身 AI 研究平台**，以 **极致渲 `📅unknown` `[entity_page]`
+- [Habitat-Sim](wiki/entities/habitat-sim.md) — Habitat-Sim**（平台常简称 **Habitat**）是 Meta AI（原 Facebook AI Research）开源的 **高速 3D 具身仿真器**（[GitHub](http `📅unknown` `[entity_page]`
 - [Handroid](wiki/entities/handroid.md) — Handroid** 是北卡罗来纳大学教堂山分校与斯坦福大学团队提出的 **桌面级双形态机器人**：同一套 **27-DoF**、**0.33 m / 2.05 kg** 的 **3D 打印模块化 `📅unknown` `[entity_page]`
 - [动手学强化学习（Hands-on RL / 蘑菇书）](wiki/entities/hands-on-rl-book.md) — 《动手学强化学习》**（社区常称**蘑菇书**）由上海交通大学张伟楠、沈键、俞勇等编写，以 Jupyter Notebook + 图文形式系统讲解强化学习。官方在线阅读与代码运行入口为 [hrl. `📅unknown` `[entity_page]`
 - [HandUMI](wiki/entities/handumi.md) — HandUMI** 是一套面向 **固定基座双臂 + 平行夹爪（parallel-jaw gripper）** 的 **无机器人示教（robot-free demonstration）** 接口与 `📅unknown` `[entity_page]`
@@ -569,6 +569,7 @@
 - [腿式机器人进展、挑战与机遇综述](wiki/entities/paper-legged-robots-advances-challenges.md) — Advances, challenges, and opportunities for legged robots**（Jonas Frey、Matías Mattamala、Hae-Won Pa `📅unknown` `[entity_page]`
 - [LEGS（Loco-manipulation via Embodied Gaussian Splatting）](wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md) — LEGS** 是斯坦福团队提出的 **人形 loco-manipulation VLA 数据工厂**（arXiv:2606.01458，2026-05）：在 **无真人遥操作、无种子演示、无人视频 `📅unknown` `[entity_page]`
 - [Learning to Fold（LeHome Challenge 2026 · arXiv:2606.27163）](wiki/entities/paper-lehome-learning-to-fold.md) — Learning to Fold**（arXiv:2606.27163，[项目博客](https://ilialarchen `📅unknown` `[entity_page]`
+- [Light-Loco-Parkour（LightLP）](wiki/entities/paper-light-loco-parkour.md) — Light-Loco-Parkour**（*Versatile Perceptive Whole-Body Locomotion via Multi-Skill Distillation*，亦称  `📅unknown` `[entity_page]`
 - [Ego-Pi](wiki/entities/paper-loco-manip-01-ego-pi.md) — Ego-Pi** 收录于 具身智能研究室 · Loco-Manip 8 篇周报 **第 0 `📅unknown` `[entity_page]`
 - [EgoPriMo](wiki/entities/paper-loco-manip-02-egoprimo.md) — EgoPriMo** 收录于 具身智能研究室 · Loco-Manip 8 篇周报 **第 `📅unknown` `[entity_page]`
 - [GenHOI](wiki/entities/paper-loco-manip-03-genhoi.md) — GenHOI**（*Contact-Aware Humanoid-Object Interaction by Imitating Generated Videos without Task-Spe `📅unknown` `[entity_page]`
