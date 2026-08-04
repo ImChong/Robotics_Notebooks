@@ -3,12 +3,15 @@ type: comparison
 tags: [mpc, rl, control, locomotion, comparison, engineering-selection]
 status: stable
 summary: "MPC vs RL：控制策略选型对比"
-updated: 2026-07-28
+updated: 2026-08-04
 sources:
   - ../../sources/papers/mpc.md
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/mpc_rl_arxiv_2606_05687.md
   - ../../sources/papers/raven_rl_adaptive_visibility_graph_arxiv_2607_15701.md
+  - ../../sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md
+related:
+  - ./fb-bfm-zero-intact-mimic-vla-task-space.md
 ---
 
 # MPC vs RL：控制策略选型对比
@@ -178,6 +181,7 @@ sources:
 - [MPC-RL](../entities/paper-mpc-rl-humanoid-locomotion-manipulation.md) — 训练期 MPC 地标奖励 + 部署期纯 RL
 - [π MPC](../methods/pi-mpc.md) — parallel-in-horizon ADMM 求解器（MPC-RL 批训练后端）
 - [RAVEN](../entities/paper-raven-rl-adaptive-visibility-graph-mpc.md) — RL 只改可见图障碍膨胀，cf-MPC 保约束的人形导航混合栈
+- [FB / BFM-Zero / INTACT / Mimic / VLA 任务空间表征对比](./fb-bfm-zero-intact-mimic-vla-task-space.md) — 人形接触突变上「RL 采样平滑梯度」的旁支读法
 
 ---
 

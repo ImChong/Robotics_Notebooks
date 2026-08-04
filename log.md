@@ -1,3 +1,12 @@
+## [2026-08-04] ingest | sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md — 知乎专栏：FB/BFM-Zero/INTACT/Mimic/VLA 任务空间表征对照；升格 wiki/comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md
+
+- **触发：** 用户指定 <https://zhuanlan.zhihu.com/p/2066468645300180732>
+- **来源：** [`sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md`](sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md)（作者 Jagger；2026-08-02/04；Jina 403 → Camoufox 抓取）
+- **新建对比页：** [`wiki/comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md`](wiki/comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md)
+- **核心判断：** 数据之外，目标函数定义域决定学到的是正交任务球（FB/BFM-Zero）、Goal-Reach 子空间（INTACT）、欧氏跟踪曲线（Mimic）或稀疏语义点（VLA）；并附 RL 相对 MPC 的接触平滑读法
+- **开源核查（步骤 2.5）：** 博客对照文；所涉工作沿用既有归档——BFM-Zero / MimicLite / UFO **已开源**；INTACT 规范仓+镜像仍为文档仓（训练 Coming Soon）
+- **交叉更新：** [`wiki/entities/paper-bfm-zero.md`](wiki/entities/paper-bfm-zero.md)、[`wiki/entities/paper-intact.md`](wiki/entities/paper-intact.md)、[`wiki/entities/mimiclite.md`](wiki/entities/mimiclite.md)、[`wiki/entities/roboparty-ufo.md`](wiki/entities/roboparty-ufo.md)、[`wiki/overview/roboparty-lab-party-os-technology-map.md`](wiki/overview/roboparty-lab-party-os-technology-map.md)、[`wiki/concepts/behavior-foundation-model.md`](wiki/concepts/behavior-foundation-model.md)、[`wiki/overview/bfm-category-01-forward-backward-representation.md`](wiki/overview/bfm-category-01-forward-backward-representation.md)、[`wiki/comparisons/mpc-vs-rl.md`](wiki/comparisons/mpc-vs-rl.md)、[`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/methods/sonic-motion-tracking.md`](wiki/methods/sonic-motion-tracking.md)
+
 ## [2026-08-04] ingest | sources/papers/clift_arxiv_2607_29172.md + sites/thomaschen98-clift — CLIFT（arXiv:2607.29172）复检加深：补每轮从基础模型从头微调 / 1.6s chunk / 100-trial 评测=训练数据 / GPT-5.5→Qwen3-VL；wiki/entities/paper-clift-closed-loop-iterative-finetuning.md
 
 - **触发：** 用户指定论文 <https://arxiv.org/abs/2607.29172>、项目页 <https://thomaschen98.github.io/clift/>

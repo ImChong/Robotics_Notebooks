@@ -2,7 +2,7 @@
 type: overview
 tags: [roboparty, humanoid, open-source, infrastructure, motion-tracking, unsupervised-rl, motion-retargeting, survey]
 status: complete
-updated: 2026-07-30
+updated: 2026-08-04
 related:
   - ../entities/roboparty.md
   - ../entities/party-os.md
@@ -18,6 +18,7 @@ related:
   - ../concepts/motion-retargeting.md
   - ../entities/mjlab.md
   - ../entities/paper-bfm-zero.md
+  - ../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md
 sources:
   - ../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md
   - ../../sources/sites/roboparty_com.md
@@ -28,6 +29,7 @@ sources:
   - ../../sources/repos/roboparty-intact-jepa.md
   - ../../sources/sites/roboparty_lab_tech_humanoid_control.md
   - ../../sources/repos/human_humanoid_tools.md
+  - ../../sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md
 summary: "依据 RoboParty 2026-07 Lab 成立公众号，把 Party OS 首批三项开源工具整理为「数据/重定向 → 监督跟踪 → 无监督控制 → 跨 codebase 部署」技术地图；并挂接 Lab 联署的 INTACT 无搜索世界模型；核心判断：从 ROBOTO Origin 单机开源走向可复用人形研发基础设施。"
 ---
 
@@ -124,6 +126,7 @@ flowchart LR
 | hhtools 降上游摩擦 | Any Motion / Any URDF / R2R 把 retarget 从「每机型定制脚本」推向 **工作台** |
 | 演进叙事 | ROBOTO Origin → RoboParty Lab：从单机开源到 **持续生长的开放技术系统** |
 | WM 接口 | [INTACT](../entities/paper-intact.md) 把 Manipulation 方向的 World Model 从「预测+搜索」推进到 **无搜索意图读出**（代码仍 Coming Soon） |
+| 任务坐标对照 | [FB / BFM-Zero / INTACT / Mimic / VLA](../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md) 把 MimicLite、UFO/BFM-Zero、INTACT 读成三种 latent 几何赌注，而非三条无关 demo |
 
 ## 关联页面
 
@@ -135,10 +138,12 @@ flowchart LR
 - [行为基础模型](../concepts/behavior-foundation-model.md)
 - [Newton Physics](../entities/newton-physics.md)
 - [Teleoperation](../tasks/teleoperation.md)
+- [FB / BFM-Zero / INTACT / Mimic / VLA 任务空间表征对比](../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md)
 
 ## 参考来源
 
 - [wechat_roboparty_lab_party_os_3_tools.md](../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md)
+- [zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md](../../sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md)
 - [roboparty_com.md](../../sources/sites/roboparty_com.md)
 - [lab_roboparty_com.md](../../sources/sites/lab_roboparty_com.md)
 - [party_os.md](../../sources/repos/party_os.md)

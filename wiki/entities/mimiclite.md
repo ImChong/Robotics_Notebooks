@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, motion-tracking, imitation-learning, sim2real, teleoperation, open-source, roboparty]
 status: complete
-updated: 2026-07-30
+updated: 2026-08-04
 related:
   - ./party-os.md
   - ../overview/roboparty-lab-party-os-technology-map.md
@@ -12,9 +12,11 @@ related:
   - ./paper-bfm-zero.md
   - ./paper-twist2.md
   - ../concepts/sim2real.md
+  - ../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md
 sources:
   - ../../sources/repos/mimiclite.md
   - ../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md
+  - ../../sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md
 summary: "MimicLite 是 RoboParty 面向人形通用运动跟踪的开源训练与部署基础设施：any4hdmi 统一多来源动作，mjhub 保证资产一致性，支持小时级训练与跨 SONIC/BFM-Zero/TWIST2 等 codebase 的统一评测与 sim2real 部署。"
 ---
 
@@ -100,11 +102,13 @@ summary: "MimicLite 是 RoboParty 面向人形通用运动跟踪的开源训练�
 - [TWIST2（论文实体）](./paper-twist2.md)
 - [Teleoperation](../tasks/teleoperation.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [FB / BFM-Zero / INTACT / Mimic / VLA 任务空间表征对比](../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md) — Mimic 欧氏曲线投影、termination 与 FSQ 的读法
 
 ## 参考来源
 
 - [mimiclite.md](../../sources/repos/mimiclite.md)
 - [wechat_roboparty_lab_party_os_3_tools.md](../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md)
+- [zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md](../../sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md)
 
 ## 推荐继续阅读
 

@@ -4,7 +4,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model, meta, cmu]
 status: complete
-updated: 2026-07-30
+updated: 2026-08-04
 arxiv: "2511.04131"
 venue: "2025 · arXiv"
 code: https://github.com/LeCAR-Lab/BFM-Zero
@@ -19,6 +19,7 @@ related:
   - ../concepts/behavior-foundation-model.md
   - ../entities/paper-behavior-foundation-model-humanoid.md
   - ../entities/paper-tech-humanoid-control.md
+  - ../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md
 sources:
   - ../../sources/papers/humanoid_rl_stack_19_bfm_zero_a_promptable_behavioral_foundation_mode.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
@@ -28,6 +29,7 @@ sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
+  - ../../sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md
 ---
 
 # BFM-Zero
@@ -158,6 +160,7 @@ sequenceDiagram
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
 - Real2Sim 适配器语境：[Agentic Real2Sim](./paper-agentic-real2sim.md) — 人形适配器引用 BFM-Zero 风格运动上下文（arXiv:2607.19190）
 - 本体多项式条件插件：[PRISM](./paper-prism.md) — 对 `history_actor` 做因式分解多项式交互，降低跟踪 EMD（arXiv:2607.23473）
+- 任务空间坐标对照：[FB / BFM-Zero / INTACT / Mimic / VLA](../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md) — 拟人子流形 + 防坍缩 + off-policy \(Z\) 采样的统一读法
 
 ## 参考来源
 
@@ -169,6 +172,7 @@ sequenceDiagram
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — BFM 41 篇微信公众号编译导读
 - 原始抓取：[wechat_humanoid_rl_42_survey_2026-05-26.md](../../sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md)
 - 论文：<https://arxiv.org/abs/2511.04131>
+- [zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md](../../sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md) — 任务空间表征对照（知乎专栏）
 
 ## 推荐继续阅读
 
