@@ -3,7 +3,7 @@ type: method
 tags: [il, diffusion, manipulation, generative-model]
 status: complete
 summary: "Diffusion Policy 用多步去噪生成动作序列，擅长处理多模态和长时序的机器人操作行为。"
-updated: 2026-08-02
+updated: 2026-08-04
 ---
 
 # Diffusion Policy
@@ -150,6 +150,8 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 - [PRISM](../entities/paper-prism.md) — 用因式分解多项式替换线性本体条件，LIBERO 无 force 柔顺（arXiv:2607.23473）
 - [REFINE-DP（论文实体）](../entities/paper-loco-manip-161-157-refine-dp.md) — 人形 loco-manip 上 DP 规划器与 RL 跟踪器联合 PPO/DPPO 微调（arXiv:2603.13707）
 - [FA-RDP（论文实体）](../entities/paper-fa-rdp.md) — 接触丰富操作上频率自适应视觉–力扩散（arXiv:2607.28596）
+- [Why Action Chunking Improves BC](../entities/paper-why-action-chunking-improves-bc.md) — 以 DP 为载体消融 chunk 部署（Delay / RDE）；结论针对机制而非扩散本身
+- [Action Chunking](./action-chunking.md) — DP 默认输出动作块时的训练 / 部署读法
 
 ## 推荐继续阅读
 

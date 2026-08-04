@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-04",
-  "node_count": 2081,
-  "edge_count": 18855,
+  "node_count": 2093,
+  "edge_count": 19016,
   "coverage": {
-    "covered": 2057,
-    "total": 2057,
+    "covered": 2069,
+    "total": 2069,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -73,6 +73,82 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
+      "path": "wiki/entities/paper-light-loco-parkour.md",
+      "detail_id": "entity-paper-light-loco-parkour",
+      "label": "Light-Loco-Parkour（LightLP）",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md",
+      "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
+      "label": "Perceptive Humanoid Parkour（PHP）",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/tasks/humanoid-locomotion.md",
+      "detail_id": "wiki-tasks-humanoid-locomotion",
+      "label": "Humanoid Locomotion (人形机器人移动)",
+      "type": "task",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/tasks/locomotion.md",
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/tasks/stair-obstacle-perceptive-locomotion.md",
+      "detail_id": "wiki-tasks-stair-obstacle-perceptive-locomotion",
+      "label": "楼梯与障碍 Locomotion（感知 / 盲走中心节点）",
+      "type": "task",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-deep-whole-body-parkour.md",
+      "detail_id": "entity-paper-deep-whole-body-parkour",
+      "label": "Deep Whole-body Parkour：感知式全身跑酷",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/methods/dagger.md",
+      "detail_id": "wiki-methods-dagger",
+      "label": "DAgger（Dataset Aggregation）",
+      "type": "method",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md",
+      "detail_id": "wiki-comparisons-hil-vs-mtrg-vs-zest-parkour-imitation",
+      "label": "HIL vs MTRG vs ZEST：跑酷模仿学习路线对比",
+      "type": "comparison",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/paper-clift-closed-loop-iterative-finetuning.md",
       "detail_id": "entity-paper-clift-closed-loop-iterative-finetuning",
       "label": "CLIFT：不打开模型盒子的闭环迭代微调",
@@ -83,137 +159,55 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
-      "path": "wiki/entities/gemini-robotics.md",
-      "detail_id": "entity-gemini-robotics",
-      "label": "Gemini Robotics",
+      "path": "wiki/entities/paper-legged-robots-advances-challenges.md",
+      "detail_id": "entity-paper-legged-robots-advances-challenges",
+      "label": "腿式机器人进展、挑战与机遇综述",
       "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/unitree-g1.md",
-      "detail_id": "entity-unitree-g1",
-      "label": "Unitree G1 (人形机器人)",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/concepts/safe-real-world-rl-fine-tuning.md",
-      "detail_id": "wiki-concepts-safe-real-world-rl-fine-tuning",
-      "label": "Safe Real-World RL Fine-Tuning（真机安全 RL 微调）",
-      "type": "concept",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/overview/hub-safe-fine-tuning.md",
-      "detail_id": "wiki-overview-hub-safe-fine-tuning",
-      "label": "真机安全微调（知识链汇总）",
-      "type": "overview",
       "recency": "2026-08-04",
       "source": "log.md",
       "action": "maintained",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/tasks/bimanual-manipulation.md",
-      "detail_id": "wiki-tasks-bimanual-manipulation",
-      "label": "Bimanual Manipulation（双臂协调操作）",
-      "type": "task",
+      "path": "wiki/entities/quadruped-robot.md",
+      "detail_id": "entity-quadruped-robot",
+      "label": "四足机器人（Quadruped Robot）",
+      "type": "entity",
       "recency": "2026-08-04",
       "source": "log.md",
       "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/overview/quadruped-vln-embodied-workshop.md",
+      "detail_id": "wiki-overview-quadruped-vln-embodied-workshop",
+      "label": "四足 × VLN × 具身智能实战营（技术地图）",
+      "type": "overview",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-travexplorer.md",
+      "detail_id": "entity-paper-travexplorer",
+      "label": "TravExplorer（可通行感知跨楼层具身探索）",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    },
+    {
+      "path": "wiki/entities/openclaw.md",
+      "detail_id": "entity-openclaw",
+      "label": "OpenClaw",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/concepts/reward-design.md",
-      "detail_id": "wiki-concepts-reward-design",
-      "label": "Reward Design",
-      "type": "concept",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-pi05-open-world-vla.md",
-      "detail_id": "entity-paper-pi05-open-world-vla",
-      "label": "π0.5（HMI P059）",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-wcm-world-critic-model.md",
-      "detail_id": "entity-paper-wcm-world-critic-model",
-      "label": "WCM：给 VLA 强化学习换一个会预测世界的 Critic",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/model-based-rl.md",
-      "detail_id": "wiki-methods-model-based-rl",
-      "label": "Model-Based RL（基于模型的强化学习）",
-      "type": "method",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/methods/generative-world-models.md",
-      "detail_id": "wiki-methods-generative-world-models",
-      "label": "Generative World Models (生成式世界模型)",
-      "type": "method",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/comparisons/online-vs-offline-rl.md",
-      "detail_id": "wiki-comparisons-online-vs-offline-rl",
-      "label": "Online RL vs Offline RL",
-      "type": "comparison",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/openvla.md",
-      "detail_id": "entity-openvla",
-      "label": "OpenVLA",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -229,15 +223,19 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 224
+      "size": 195
+    },
+    {
+      "label": "动作重定向",
+      "size": 195
     },
     {
       "label": "操作",
-      "size": 147
+      "size": 160
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 143
+      "size": 142
     },
     {
       "label": "移动操作",
@@ -245,11 +243,7 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 138
-    },
-    {
-      "label": "动作重定向",
-      "size": 137
+      "size": 117
     }
   ],
   "top_hubs": [
@@ -257,7 +251,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 414,
+      "degree": 416,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -265,7 +259,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 386,
+      "degree": 388,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -296,7 +290,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 299
+      "degree": 302
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
@@ -315,18 +309,18 @@
       "community_label": "开源项目本库导读（HMI Open-Source Projects Guide） 社区"
     },
     {
+      "detail_id": "wiki-methods-imitation-learning",
+      "label": "Imitation Learning (IL, 模仿学习)",
+      "type": "method",
+      "degree": 223,
+      "has_repo": true
+    },
+    {
       "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",
       "label": "Paper Notebooks · Loco-Manipulation and WBC",
       "type": "overview",
       "degree": 223,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "detail_id": "wiki-methods-imitation-learning",
-      "label": "Imitation Learning (IL, 模仿学习)",
-      "type": "method",
-      "degree": 222,
-      "has_repo": true
     }
   ],
   "top_paper_hubs": [

@@ -14,8 +14,12 @@ related:
   - ./paper-zonda.md
   - ../tasks/vision-language-navigation.md
   - ../concepts/sim2real.md
+  - ../tasks/zero-shot-object-navigation.md
+  - ../concepts/embodied-semantic-cognitive-map.md
   - ../overview/sim-platforms-decade-technology-map.md
   - ../overview/vln-10-papers-technology-map.md
+  - ../overview/quadruped-vln-embodied-workshop.md
+  - ./paper-travexplorer.md
 sources:
   - ../../sources/repos/habitat-sim.md
   - ../../sources/sites/aihabitat-org.md
@@ -173,6 +177,9 @@ sequenceDiagram
 - [视觉–语言导航](../tasks/vision-language-navigation.md) — VLN-CE / ObjectNav 任务语境
 - [Sim2Real](../concepts/sim2real.md) — Habitat→真机迁移用例（如 ZONDA）
 - [ZONDA](./paper-zonda.md) — Habitat 多楼层 / 动态 ObjectNav
+- [TravExplorer](./paper-travexplorer.md) — Habitat HM3D 零样本 ObjectNav 对照
+- [零样本 ObjectNav 任务](../tasks/zero-shot-object-navigation.md) — ObjectNav 任务中心
+- [四足×VLN 实战营总览](../overview/quadruped-vln-embodied-workshop.md) — 课程侧 Habitat 宿主节点
 - [VLN-CE](./paper-vln-02-vln-ce.md) — 连续环境 VLN
 - [Isaac Lab](./isaac-lab.md) / [ManiSkill2](./maniskill2.md) — GPU 并行 loco / 操作泛化对照
 

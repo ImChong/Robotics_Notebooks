@@ -15,7 +15,7 @@ tags:
   - gbu
   - direct-drive-tech
 status: complete
-updated: 2026-07-24
+updated: 2026-08-04
 arxiv: "2607.21025"
 venue: "arXiv 2026"
 related:
@@ -25,6 +25,8 @@ related:
   - ./paper-uni-lavira.md
   - ./paper-da-nav.md
   - ./paper-notebook-lovon-legged-open-vocabulary-object-navigator.md
+  - ./paper-travexplorer.md
+  - ../tasks/zero-shot-object-navigation.md
   - ../concepts/sim2real.md
 sources:
   - ../../sources/papers/zonda_arxiv_2607_21025.md

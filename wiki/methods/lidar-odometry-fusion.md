@@ -2,7 +2,7 @@
 type: method
 tags: [localization, lidar, odometry, sensor-fusion, slam, navigation, ekf]
 status: complete
-updated: 2026-07-23
+updated: 2026-08-04
 related:
   - ../concepts/sensor-fusion.md
   - ../formalizations/ekf.md

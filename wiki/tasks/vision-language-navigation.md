@@ -9,6 +9,7 @@ related:
   - ../queries/embodied-fm-taxonomy-loop.md
   - ../overview/vln-10-papers-technology-map.md
   - ../overview/vln-open-source-repro-paradigms.md
+  - ./zero-shot-object-navigation.md
   - ../entities/sceneverse-pp.md
   - ../entities/esi-bench.md
   - ../entities/paper-worldvln-aerial-vln-wam.md
@@ -24,6 +25,7 @@ related:
   - ../entities/paper-3d-ic-joint-navigation-manipulation-planning.md
   - ../entities/paper-da-nav.md
   - ../entities/paper-zonda.md
+  - ../entities/paper-travexplorer.md
   - ../entities/paper-s-squared-vla.md
   - ../entities/qwen-robot-nav.md
   - locomotion.md

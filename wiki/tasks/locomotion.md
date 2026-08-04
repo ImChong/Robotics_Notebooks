@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-08-02
+updated: 2026-08-04
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -310,6 +310,7 @@ flowchart TD
 - [APT-RL（Science Robotics 2026 封面）](../entities/paper-apt-rl-agile-perceptive-quadruped-locomotion.md) — TO+TVAE 力矩先验 + 深度/LiDAR 蒸馏；HOUND 野外长程与 trot/bound 感知切换
 - [执行器约束 RL 高速四足（arXiv:2312.17507）](../entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md) — MOR 扭矩–转速包络进训练；HOUND **6.5 m/s** 跑步机纪录；无 MOR 策略 **5 m/s 实机摔倒**
 - [Perceptive Humanoid Parkour（PHP）](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) — arXiv:2602.15827（motion matching 长程参考 + 深度多技能蒸馏，G1 跑酷）
+- [Light-Loco-Parkour（LightLP）](../entities/paper-light-loco-parkour.md) — Light Origins 2026-08-03（稀疏种子 Real2Sim2Real + 转移组 RL；Lightbot 0 无技能标签深度跑酷；代码未开源）
 - [SMPLOlympics](../entities/smplolympics.md) — arXiv:2407.00187（SMPL 仿真人形 10 项奥运运动 benchmark；PPO/AMP/PULSE 基线）
 - [Table Tennis Strategy & Skill（PhysicsPingPong）](../methods/table-tennis-strategy-skill-learning.md) — arXiv:2407.16210（SIGGRAPH 2024 分层乒乓球 + VR 人–机）
 - [乒乓球分层技能选型指南](../queries/table-tennis-hierarchical-skill-learning-guide.md) — ASE 专家 + mixer + 策略层选型
