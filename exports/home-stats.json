@@ -1,13 +1,77 @@
 {
   "generated_at": "2026-08-04",
   "node_count": 2093,
-  "edge_count": 19010,
+  "edge_count": 19016,
   "coverage": {
     "covered": 2069,
     "total": 2069,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/habitat-sim.md",
+      "detail_id": "entity-habitat-sim",
+      "label": "Habitat-Sim",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/overview/sim-platforms-decade-technology-map.md",
+      "detail_id": "wiki-overview-sim-platforms-decade-technology-map",
+      "label": "十年仿真平台技术地图（TOP 8）",
+      "type": "overview",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+    },
+    {
+      "path": "wiki/entities/matterport3d-simulator.md",
+      "detail_id": "entity-matterport3d-simulator",
+      "label": "Matterport3D Simulator",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    },
+    {
+      "path": "wiki/entities/pybullet.md",
+      "detail_id": "entity-pybullet",
+      "label": "PyBullet",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
+    },
+    {
+      "path": "wiki/tasks/vision-language-navigation.md",
+      "detail_id": "wiki-tasks-vision-language-navigation",
+      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
+      "type": "task",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/paper-light-loco-parkour.md",
       "detail_id": "entity-paper-light-loco-parkour",
@@ -116,17 +180,6 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
       "path": "wiki/overview/quadruped-vln-embodied-workshop.md",
       "detail_id": "wiki-overview-quadruped-vln-embodied-workshop",
       "label": "四足 × VLN × 具身智能实战营（技术地图）",
@@ -155,81 +208,30 @@
       "source": "log.md",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-sam3.md",
-      "detail_id": "entity-paper-sam3",
-      "label": "SAM 3：Segment Anything with Concepts",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-blip2.md",
-      "detail_id": "entity-paper-blip2",
-      "label": "BLIP-2",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
-    },
-    {
-      "path": "wiki/entities/jetson-orin-nx.md",
-      "detail_id": "entity-jetson-orin-nx",
-      "label": "NVIDIA Jetson Orin NX",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/tasks/zero-shot-object-navigation.md",
-      "detail_id": "wiki-tasks-zero-shot-object-navigation",
-      "label": "零样本目标导航（Zero-Shot Object Navigation）",
-      "type": "task",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
-    },
-    {
-      "path": "wiki/concepts/embodied-semantic-cognitive-map.md",
-      "detail_id": "wiki-concepts-embodied-semantic-cognitive-map",
-      "label": "具身语义认知地图（Embodied Semantic Cognitive Map）",
-      "type": "concept",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-light-loco-parkour.md",
-    "detail_id": "entity-paper-light-loco-parkour",
-    "label": "Light-Loco-Parkour（LightLP）",
+    "path": "wiki/entities/habitat-sim.md",
+    "detail_id": "entity-habitat-sim",
+    "label": "Habitat-Sim",
     "type": "entity",
     "recency": "2026-08-04",
     "source": "log.md",
     "action": "maintained",
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 215
+      "size": 195
+    },
+    {
+      "label": "动作重定向",
+      "size": 195
     },
     {
       "label": "操作",
       "size": 160
-    },
-    {
-      "label": "视觉-语言-动作",
-      "size": 148
     },
     {
       "label": "人形强化学习运动控制",
@@ -241,7 +243,7 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 137
+      "size": 117
     }
   ],
   "top_hubs": [
@@ -249,7 +251,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 414,
+      "degree": 416,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },

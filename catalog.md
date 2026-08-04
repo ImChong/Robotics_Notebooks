@@ -170,7 +170,7 @@
 - [GVHMR](wiki/entities/gvhmr.md) — GVHMR**（*World-Grounded Human Motion Recovery via Gravity-View Coordinates*，ZJU 3DV，SIGGRAPH Asia  `📅unknown` `[entity_page]`
 - [gym-pybullet-drones](wiki/entities/gym-pybullet-drones.md) — gym-pybullet-drones**（[utiasDSL/gym-pybullet-drones](https://github.com/utiasDSL/gym-pybullet-dron `📅unknown` `[entity_page]`
 - [Gymnasium（RL 环境 API 标准）](wiki/entities/gymnasium.md) — Gymnasium** 是 Farama Foundation 维护的 **单智能体强化学习环境接口** 与参考环境集合，官方文档见 [gymnasi `📅unknown` `[entity_page]`
-- [Habitat-Sim](wiki/entities/habitat-sim.md) — Habitat**（仿真核心常称 **Habitat-Sim**）是 Meta AI（原 Facebook AI Research）2019 年发布的 **具身 AI 研究平台**，以 **极致渲 `📅unknown` `[entity_page]`
+- [Habitat-Sim](wiki/entities/habitat-sim.md) — Habitat-Sim**（平台常简称 **Habitat**）是 Meta AI（原 Facebook AI Research）开源的 **高速 3D 具身仿真器**（[GitHub](http `📅unknown` `[entity_page]`
 - [Handroid](wiki/entities/handroid.md) — Handroid** 是北卡罗来纳大学教堂山分校与斯坦福大学团队提出的 **桌面级双形态机器人**：同一套 **27-DoF**、**0.33 m / 2.05 kg** 的 **3D 打印模块化 `📅unknown` `[entity_page]`
 - [动手学强化学习（Hands-on RL / 蘑菇书）](wiki/entities/hands-on-rl-book.md) — 《动手学强化学习》**（社区常称**蘑菇书**）由上海交通大学张伟楠、沈键、俞勇等编写，以 Jupyter Notebook + 图文形式系统讲解强化学习。官方在线阅读与代码运行入口为 [hrl. `📅unknown` `[entity_page]`
 - [HandUMI](wiki/entities/handumi.md) — HandUMI** 是一套面向 **固定基座双臂 + 平行夹爪（parallel-jaw gripper）** 的 **无机器人示教（robot-free demonstration）** 接口与 `📅unknown` `[entity_page]`

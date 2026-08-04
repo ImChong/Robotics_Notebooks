@@ -3,7 +3,7 @@
 type: entity
 tags: [entity, simulator, vln, navigation, matterport3d, rgb-d, princeton]
 status: complete
-updated: 2026-06-22
+updated: 2026-08-04
 related:
   - ./paper-vln-01-r2r.md
   - ./habitat-sim.md
@@ -13,6 +13,7 @@ related:
   - ../overview/vln-10-papers-technology-map.md
 sources:
   - ../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md
+  - ../../sources/repos/habitat-sim.md
 summary: "基于 Matterport3D 真实室内扫描全景 RGB-D 的 VLN 仿真器（2018），与 R2R 基准一并确立视觉–语言导航标准评估流程。"
 ---
 
@@ -55,7 +56,7 @@ VLN 要求智能体在 **未知、逼真** 室内按语言导航。Matterport3D 
 ## 关联页面
 
 - [paper-vln-01-r2r](./paper-vln-01-r2r.md)
-- [Habitat-Sim](./habitat-sim.md)
+- [Habitat-Sim](./habitat-sim.md) — 高速加载 MP3D/Gibson 等扫描场景的主流宿主（MIT；v0.3.4 后 Meta 不再官方主动维护）
 - [VLN 10 篇技术地图](../overview/vln-10-papers-technology-map.md)
 - [视觉–语言导航](../tasks/vision-language-navigation.md)
 

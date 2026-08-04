@@ -1,3 +1,11 @@
+## [2026-08-04] ingest | sources/repos/habitat-sim.md + sites/aihabitat-org + sites/aihabitat-habitat-sim-docs — Habitat-Sim 官方仓/门户/文档入库：加深 wiki/entities/habitat-sim.md
+
+- **来源：** [`sources/repos/habitat-sim.md`](sources/repos/habitat-sim.md)、[`sources/sites/aihabitat-org.md`](sources/sites/aihabitat-org.md)、[`sources/sites/aihabitat-habitat-sim-docs.md`](sources/sites/aihabitat-habitat-sim-docs.md)
+- **加深实体：** [`wiki/entities/habitat-sim.md`](wiki/entities/habitat-sim.md)（MIT；Sim↔Lab 分层；>10k FPS / >8k SPS；conda `withbullet`；源码运行时序图）
+- **开源核查（步骤 2.5）：** GitHub MIT **已开源**；场景数据集需单独许可；README 声明 **Beyond v0.3.4 Meta 不再官方主动维护**
+- **纠错：** Habitat 1.0 arXiv 由误链 `1904.11121` 更正为 [`1904.01201`](https://arxiv.org/abs/1904.01201)
+- **交叉：** [`wiki/overview/sim-platforms-decade-technology-map.md`](wiki/overview/sim-platforms-decade-technology-map.md)、[`wiki/entities/matterport3d-simulator.md`](wiki/entities/matterport3d-simulator.md)、[`wiki/entities/pybullet.md`](wiki/entities/pybullet.md)、[`wiki/tasks/vision-language-navigation.md`](wiki/tasks/vision-language-navigation.md)、[`wiki/concepts/sim2real.md`](wiki/concepts/sim2real.md)
+
 ## [2026-08-04] ingest | sources/papers/light_loco_parkour_light_origins_2026.md + sites/light-loco-parkour-github-io — Light-Loco-Parkour（Light Origins, 2026-08-03）入库：稀疏种子 Real2Sim2Real + 多专家蒸馏无技能标签深度跑酷；升格 wiki/entities/paper-light-loco-parkour.md
 
 - **来源：** [`sources/papers/light_loco_parkour_light_origins_2026.md`](sources/papers/light_loco_parkour_light_origins_2026.md)、[`sources/sites/light-loco-parkour-github-io.md`](sources/sites/light-loco-parkour-github-io.md)
@@ -6,7 +14,6 @@
 - **开源核查（步骤 2.5）：** 项目页仅 PDF/视频；GitHub 组织仅为 github.io → **确认未开源**；`## 源码运行时序图` 写明不适用
 - **机构注册：** [`schema/institutions.json`](schema/institutions.json) 新增 `light-origins`（光原点（Light Origins））
 - **交叉：** [`wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md`](wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)、[`wiki/tasks/humanoid-locomotion.md`](wiki/tasks/humanoid-locomotion.md)、[`wiki/tasks/locomotion.md`](wiki/tasks/locomotion.md)、[`wiki/tasks/stair-obstacle-perceptive-locomotion.md`](wiki/tasks/stair-obstacle-perceptive-locomotion.md)、[`wiki/entities/paper-deep-whole-body-parkour.md`](wiki/entities/paper-deep-whole-body-parkour.md)、[`wiki/methods/dagger.md`](wiki/methods/dagger.md)、[`wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md`](wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md)
-
 ## [2026-08-04] ingest | sources/papers/clift_arxiv_2607_29172.md + sites/thomaschen98-clift — CLIFT（arXiv:2607.29172）入库：托管 SFT API 下的非侵入闭环迭代微调；升格 wiki/entities/paper-clift-closed-loop-iterative-finetuning.md
 
 ## [2026-08-04] ingest | sources/papers/legged_robots_advances_challenges_scirobotics_2026.md — 补 arXiv:2607.28952 作者版；加深 wiki/entities/paper-legged-robots-advances-challenges.md
