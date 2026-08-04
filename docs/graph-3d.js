@@ -301,7 +301,7 @@
     });
 
     function backgroundColor() {
-      return isDark() ? '#0d1117' : '#eef2f7';
+      return isDark() ? '#191919' : '#f7f6f3';
     }
 
     function getCameraDistance() {

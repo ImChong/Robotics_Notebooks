@@ -136,7 +136,7 @@
   }
 
   function colorBadgeHtml(className, label, bgColor, textColor) {
-    var fg = textColor || '#0d1117';
+    var fg = textColor || '#191919';
     return '<span class="' + className + '" style="background:' + escapeHtml(String(bgColor)) +
       ';color:' + escapeHtml(String(fg)) + '">' + escapeHtml(String(label)) + '</span>';
   }
