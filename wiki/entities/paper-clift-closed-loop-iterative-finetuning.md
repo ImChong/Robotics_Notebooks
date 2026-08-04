@@ -15,12 +15,12 @@ related:
 sources:
   - ../../sources/papers/clift_arxiv_2607_29172.md
   - ../../sources/sites/thomaschen98-clift.md
-summary: "CLIFT（arXiv:2607.29172）：UC Berkeley / Google DeepMind / NVIDIA 提出的非侵入闭环迭代微调——在只提供托管 SFT API 的闭权重机器人基础模型（GROD）上，把部署期奖励反馈转成 API 兼容的监督数据；Unitree G1 三个接触丰富任务两轮飞轮后 100% / 98% / 96%，并超过同管线的开放权重 π₀.₅。"
+summary: "CLIFT（arXiv:2607.29172）：UC Berkeley / Google DeepMind / NVIDIA 提出的非侵入闭环迭代微调——在只提供托管 SFT API 的闭权重机器人基础模型（GROD）上，把部署期奖励反馈转成 API 兼容的监督数据；每轮从基础模型从头微调；Unitree G1 三任务两轮飞轮后 100% / 98% / 96%，并超过同管线的开放权重 π₀.₅。"
 ---
 
 # CLIFT：不打开模型盒子的闭环迭代微调
 
-**CLIFT**（*Closed-Loop Iterative Fine-Tuning*；论文 *CLIFT: Turning Gemini Robotics On-Device into Humanoid Specialists via Non-Invasive Closed-Loop Iterative Fine-Tuning*，[arXiv:2607.29172](https://arxiv.org/abs/2607.29172)，[项目页](https://thomaschen98.github.io/clift)）由 **UC Berkeley / Google DeepMind / NVIDIA Research** 提出：在只暴露**托管 SFT API** 的闭权重机器人基础模型上，做出等效于闭环改进的效果。
+**CLIFT**（*Closed-Loop Iterative Fine-Tuning*；论文 *CLIFT: Turning Gemini Robotics On-Device into Humanoid Specialists via Non-Invasive Closed-Loop Iterative Fine-Tuning*，[arXiv:2607.29172](https://arxiv.org/abs/2607.29172)，[项目页](https://thomaschen98.github.io/clift)）由 **UC Berkeley / Google DeepMind / NVIDIA Research**（通讯作者 Ran "Thomas" Tian 等）提出：在只暴露**托管 SFT API** 的闭权重机器人基础模型上，做出等效于闭环改进的效果。
 
 ## 一句话定义
 
@@ -34,7 +34,8 @@ summary: "CLIFT（arXiv:2607.29172）：UC Berkeley / Google DeepMind / NVIDIA �
 | GROD | Gemini Robotics On-Device | 被适配的闭权重基础 VLA，仅经托管 API 访问 |
 | SFT | Supervised Fine-Tuning | 托管 API 唯一开放的训练形式 |
 | VLA | Vision-Language-Action | 视觉-语言-动作策略族 |
-| VLM | Vision-Language Model | 用于生成候选奖励序列并蒸馏为奖励模型 |
+| VLM | Vision-Language Model | 候选奖励用 GPT-5.5 生成，再蒸馏为 Qwen3-VL 奖励模型 |
+| DINOv3 | DINOv3 (ViT-S/16) | 冻结视觉编码器（d=384），检索相似初始观测 |
 | FiLM | Feature-wise Linear Modulation | 侵入式条件注入基线所用的架构手段 |
 
 ## 为什么重要
@@ -50,11 +51,12 @@ summary: "CLIFT（arXiv:2607.29172）：UC Berkeley / Google DeepMind / NVIDIA �
 |----|------|
 | **机构** | 加州大学伯克利分校（UC Berkeley）、谷歌 DeepMind（Google DeepMind）、英伟达（NVIDIA Research） |
 | **被适配模型** | **GROD**（Gemini Robotics On-Device），Gemma 主干，闭权重，仅托管 SFT API |
-| **机器人** | Unitree G1 人形，双灵巧臂 + 多指手，头部两路 RGB |
-| **控制分层** | 上半身（臂 / 手关节角）+ 下半身（平面速度 + 偏航），由 RL 学到的全身控制器跟踪 |
-| **数据** | 全身 VR 遥操作，每任务 **2 小时**演示 |
+| **机器人** | Unitree G1 人形，双灵巧臂 + 多指手，头部两路 RGB（常规 + 广角） |
+| **控制分层** | 上半身（臂 / 手关节角）+ 下半身（平面速度 + 偏航），由 RL 全身控制器跟踪；策略输出 **1.6 s** action chunk 后 replan |
+| **数据** | 全身 VR 遥操作（头显 + 双手柄 + 双踝 IMU → SMPL），每任务 **2 小时**演示 |
+| **评测协议** | 每轮每任务 **100** 次真机 rollout：既是成功率报告，也是下一轮训练数据 |
 | **任务** | Box Packing / Cup Insertion / Bimanual Plate Handover（均接触丰富、需全身平衡） |
-| **开源** | **宣称将开源**：项目页列出 Code 条目但**截至 2026-08-04 无可用链接**，论文标 `coming_soon` |
+| **开源** | **宣称将开源**：项目页列出 Code 条目但**截至 2026-08-04 复检仍无可用链接**，论文标 `coming_soon` |
 
 ## 核心原理
 
@@ -73,9 +75,9 @@ CLIFT 的设计目标就是**把闭环信号压进「数据」这一个可控自
 
 两个朴素做法都不行：VLM 零样本打分可扩展但**标定差**；逐步人工标注**太贵**。CLIFT 的折中：
 
-1. 对每个 rollout **对**，提示 VLM 生成 **K=12** 条候选逐步奖励序列；
-2. 只保留**诱导排序与人类成对偏好一致**的候选（用 100 组人工比较校准）；
-3. 把保留的候选**蒸馏**成一个可复用的生成式奖励模型（基于 Qwen3-VL）。
+1. 对每个 rollout **对**，提示 VLM（附录用 **GPT-5.5**）生成 **K=12** 条候选逐步奖励序列；
+2. 只保留**诱导排序与人类成对偏好一致**的候选（用 100 组人工比较校准；三视角并排回放：双 egocentric + 第三人称）；
+3. 把保留的候选**蒸馏**成跨任务共享的生成式奖励模型（**Qwen3-VL** + LoRA r=128，MSE，5 epoch）。
 
 该奖励模型**训练一次后固定**，不随飞轮更新。
 
@@ -83,10 +85,10 @@ CLIFT 的设计目标就是**把闭环信号压进「数据」这一个可控自
 
 给每个 action chunk 一个**二值 token**（正 / 负），含义是「它的回报是否高于**视觉相似状态下**的同侪 chunk」：
 
-1. 冻结 **DINOv3** 编码全部帧；
-2. 对查询 chunk，检索初始观测余弦相似度 > \(\delta\) 的 chunk 组成比较集；
+1. 冻结 **DINOv3**（ViT-S/16，d=384）编码全部帧；
+2. 对查询 chunk，**每个 donor rollout 只取最相似的一帧**，余弦相似度 ≥ \(\delta\) 才入比较集（避免同一轨迹近邻帧刷屏）；
 3. 用奖励模型在 **1.8 秒前瞻窗口**内算折扣回报；
-4. 回报落在比较集**前 30%** 则标正。
+4. 回报落在比较集**前 30%**（> Percentile₇₀）则标正。
 
 关键性质：**门槛随状态难度自适应**——难状态里表现「还行」的 chunk 也能被标正，从而**从失败 episode 里回收可用片段**。
 
@@ -94,16 +96,18 @@ CLIFT 的设计目标就是**把闭环信号压进「数据」这一个可控自
 
 第 k 轮：部署 \(\pi_k\) → 收 rollout → 打分与优势标注 → 并入累积数据集 \(\mathcal D_k=\mathcal D_{demo}\cup\mathcal D^{1:k}_{rollout}\) → 提交托管 API 得 \(\pi_{k+1}\)。**演示数据始终标正。**
 
+**关键 API 行为：** 托管接口**每轮从基础模型从头微调**（不是 continue from \(\pi_k\)），避免分布漂移并重新吃满预训练容量；每轮 10 epoch，两独立 run 取 held-out 演示 loss 最低者。
+
 ### 流程总览
 
 ```mermaid
 flowchart TB
   demo["VR 遥操作演示<br/>每任务 2 小时（恒为正例）"]
-  api["托管 SFT API<br/>F_SFT：数据 → 策略"]
-  pol["π_k 部署到 Unitree G1"]
-  roll["真机 rollout"]
-  rm["固定奖励模型<br/>VLM K=12 候选 → 人类偏好筛选 → Qwen3-VL 蒸馏"]
-  dino["DINOv3 帧编码<br/>检索相似初始观测"]
+  api["托管 SFT API<br/>每轮从基础模型从头微调"]
+  pol["π_k 部署到 Unitree G1<br/>1.6s action chunk"]
+  roll["真机 rollout ×100 / 任务<br/>评测 = 下一轮训练数据"]
+  rm["固定奖励模型<br/>GPT-5.5 K=12 → 偏好筛选 → Qwen3-VL 蒸馏"]
+  dino["DINOv3 帧编码<br/>每 donor 只取最相似帧"]
   adv["chunk 级优势 token<br/>1.8s 折扣回报 → 前 30% 标正"]
   ds["累积数据集<br/>D_demo ∪ D_rollout^1:k"]
   demo --> ds --> api --> pol --> roll
@@ -114,7 +118,7 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用。** 项目页列出 Code 条目但截至入库日（2026-08-04）**无可用链接**，论文标 `coming_soon`，无可辨识的训练 / 推理 / 部署入口可对齐。
+**不适用。** 项目页列出 Code 条目但截至 **2026-08-04 复检**仍**无可用链接**，论文标 `coming_soon`，无可辨识的训练 / 推理 / 部署入口可对齐。
 
 更重要的是：即使代码发布，复现的真实门槛也**不在代码**——需要 **GROD 托管微调 API 的访问权**、**Unitree G1 真机**与**全身 VR 遥操作栈**，其中第一项对社区基本不可得。归档见 [sources/sites/thomaschen98-clift.md](../../sources/sites/thomaschen98-clift.md)。
 
@@ -127,6 +131,8 @@ flowchart TB
 | 标注粒度选 chunk 不选 episode | episode 级筛选在最难任务上落后约 12 pp（~84% vs 96%）；chunk 级能从失败 rollout 里回收好片段 |
 | 优势门槛要自适应 | 用「视觉相似状态的同侪集前 30%」而非全局阈值，否则难状态里全是负例 |
 | 演示数据怎么标 | **恒为正例**，并保留在每一轮累积数据集里 |
+| API 怎么提交 | **每轮从基础模型从头微调**整份累积数据集，不要 continue；每轮 10 epoch、双 run 取 held-out loss 最低 |
+| 评测别另开一套 | 部署 rollout 即评测（每任务 100 次），重标后直接进下一轮——真机预算只花一次 |
 | 飞轮几轮够 | 论文两轮即接近饱和（100% / 98% / 96%）；每轮都要真机 rollout，成本与安全是主约束 |
 | 选型顺序 | 先比**基础模型强度**再比访问自由度——GROD 走受限 API 仍胜过 π₀.₅ 的侵入式 FiLM 适配 |
 
@@ -153,7 +159,8 @@ flowchart TB
 4. **奖励模型必须校准** — 零样本 VLM 打分不够；select-then-distill 用少量人类偏好（~100 组比较）就能把可扩展性与标定兼顾。
 5. **基础模型强度可能压过访问自由度** — 受限 API 的 GROD 胜过可任意改的 π₀.₅，这对"是否为了可改性而选弱模型"是直接反驳。
 6. **两轮飞轮接近饱和**，并涌现出演示里没有的重试 / 预操作行为。
-7. **主要代价是真机 rollout** — 每轮都要上真机，贵且涉及安全；论文自己把「control-aware world model 减少物理 rollout」列为未来方向。
+7. **每轮从基础模型从头微调是设计，不是妥协** — 托管 API 的 from-scratch 行为反而避免了 continue-finetune 的分布漂移。
+8. **主要代价是真机 rollout** — 每轮都要上真机，贵且涉及安全；论文自己把「control-aware world model 减少物理 rollout」列为未来方向。
 
 ## 与其他工作对比
 

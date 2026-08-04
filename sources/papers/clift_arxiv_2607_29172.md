@@ -8,15 +8,15 @@
 - **arXiv：** <https://arxiv.org/abs/2607.29172>（v1，Submitted 2026-07-31，cs.RO；PDF：<https://arxiv.org/pdf/2607.29172>）
 - **项目页：** <https://thomaschen98.github.io/clift> — 归档见 [`sources/sites/thomaschen98-clift.md`](../sites/thomaschen98-clift.md)
 - **代码：** 项目页列出 Code 条目但**无可用链接**（截至入库日 2026-08-04 未发布）
-- **作者：** Yuxin Chen、Hari Srikanth、Nathan Jew、Menglin Wu、Pengcheng Wang、Junli Ren、Masayoshi Tomizuka、Peng Xu、Jinyu Xie、Thomas Tian
+- **作者：** Yuxin Chen、Hari Srikanth、Nathan Jew、Menglin Wu、Pengcheng Wang、Junli Ren、Masayoshi Tomizuka、Peng Xu、Jinyu Xie、Ran "Thomas" Tian
 - **机构：** 加州大学伯克利分校（UC Berkeley）、谷歌 DeepMind（Google DeepMind）、英伟达（NVIDIA Research）
-- **入库日期：** 2026-08-04
+- **入库日期：** 2026-08-04（同日复检加深）
 - **一句话说明：** 闭权重机器人基础模型正在以「托管 SFT API」形式开放——用户交数据、拿回微调策略，但**拿不到权重 / 梯度 / loss / likelihood**，于是只能纯模仿。CLIFT 把**部署期的奖励反馈转成 API 兼容的监督数据**，在不「打开模型盒子」的前提下做闭环自改进，两个飞轮周期把 GROD 推到接近满分。
 
 ## 开源状态（步骤 2.5）
 
-- **项目页核查（2026-08-04）：** `thomaschen98.github.io/clift` 有 flywheel 示意图、演示视频、BibTeX、arXiv 链接；**Code 条目列出但无有效 URL**，论文正文标注 `coming_soon`。
-- **结论：** **宣称将开源 / 截至入库日未列可用链接**。且核心依赖是 **GROD 的托管 SFT API 访问权**与真机 Unitree G1，即使代码放出，复现门槛主要在**访问权与硬件**，不在代码。
+- **项目页核查（2026-08-04 初检；同日复检确认）：** `thomaschen98.github.io/clift` 有 flywheel 示意图、演示视频、BibTeX、arXiv 链接；**Code 条目列出但无有效 URL**，论文正文 / arXiv abstract 区标注 `coming_soon`；页面未列 GitHub / HF。
+- **结论：** **宣称将开源 / 截至复检日未列可用链接**。且核心依赖是 **GROD 的托管 SFT API 访问权**与真机 Unitree G1，即使代码放出，复现门槛主要在**访问权与硬件**，不在代码。
 
 ## 摘录 1：托管 SFT API 这个新访问层
 
@@ -31,23 +31,25 @@
 
 1. **偏好校准的稠密奖励模型（select-then-distill）**
    - 两个朴素做法都不行：VLM 零样本打分**可扩展但标定差**；逐步人工标注**贵**。
-   - 做法：对每个 rollout **对**，提示 VLM 生成 **K=12** 条候选逐步奖励序列；只保留那些**诱导出的排序与人类成对偏好一致**的候选（用 100 组人工比较）；再把这些候选**蒸馏**成一个可复用的生成式奖励模型（基于 **Qwen3-VL**）。
+   - 做法：对每个 rollout **对**，提示 VLM（论文附录用 **GPT-5.5**）生成 **K=12** 条候选逐步奖励序列；只保留那些**诱导出的排序与人类成对偏好一致**的候选（用 100 组人工比较；三视角并排回放）；再把这些候选**蒸馏**成一个可复用的生成式奖励模型（**Qwen3-VL** + LoRA r=128，跨任务共享，MSE 回归，5 epoch）。
    - 奖励模型**训练一次后固定**，不随飞轮更新。
 2. **基于检索的优势条件（retrieval-based advantage conditioning）**
    - 每个 action chunk 拿到一个**二值 token**（正 / 负），表示它的回报是否高于**视觉相似状态**下的同侪 chunk。
-   - 流程：(a) 用冻结 **DINOv3** 编码全部帧；(b) 对查询 chunk，检索初始观测余弦相似度超过阈值 \(\delta\) 的 chunk 作为比较集；(c) 用奖励模型在 **1.8 秒前瞻窗口**内算折扣回报；(d) 回报落在比较集 **前 30%** 则标正。
+   - 流程：(a) 用冻结 **DINOv3**（ViT-S/16，d=384）编码全部帧；(b) 对查询 chunk，**每个 donor rollout 只取最相似的一帧**，余弦相似度 ≥ \(\delta\) 才入比较集；(c) 用奖励模型在 **1.8 秒前瞻窗口**内算折扣回报；(d) 回报落在比较集 **前 30%**（> Percentile₇₀）则标正。
    - 关键性质：**门槛随状态难度自适应**——难状态里「还行」的 chunk 也能被标正。
 3. **迭代自改进（flywheel）**
    - 第 k 轮：部署 \(\pi_k\) → 收 rollout → 打分与优势标注 → 并入累积数据集 \(\mathcal D_k=\mathcal D_{demo}\cup\mathcal D^{1:k}_{rollout}\) → 提交托管 API 得 \(\pi_{k+1}\)。
    - **演示数据始终标正**。
+   - **关键 API 行为：** 托管 API **每轮从基础模型从头微调**（不是 continue from \(\pi_k\)），避免分布漂移并重新吃满预训练容量；每轮 10 epoch，两独立 run 取 held-out 演示 loss 最低者。
 
 **对 wiki 的映射：** 实体页画飞轮流程图；强调「优势信号被编码成输入侧的 token，而不是改 loss」——这是「非侵入」的技术核心。
 
 ## 摘录 3：平台与任务
 
-- **机器人：** Unitree G1 人形，双灵巧臂 + 多指手，头部两路 RGB。
-- **控制分层：** 动作拆成上半身（臂 / 手关节角）与下半身（平面速度 + 偏航），由 RL 学到的全身控制器跟踪。
-- **数据：** 全身 VR 遥操作，每任务 **2 小时** 演示。
+- **机器人：** Unitree G1 人形，双灵巧臂 + 多指手，头部两路 RGB（常规 + 广角）。
+- **控制分层：** 动作拆成上半身（臂 / 手关节角）与下半身（平面速度 + 偏航），由 RL 学到的全身控制器（xr-teleoperate）跟踪；策略每次输出 **1.6 s** action chunk，执行完再 replan。
+- **数据：** 全身 VR 遥操作（头显 + 双手柄 + 双踝 IMU → SMPL），每任务 **2 小时** 演示。
+- **评测 = 下一轮训练数据：** 每轮每任务部署 **100** 次 rollout，既报成功率，也经重标后并入 \(\mathcal D_{k+1}\)。
 - **三个接触丰富、需要全身平衡的任务：**
   - **Box Packing** — 抓取并放入箱中
   - **Cup Insertion** — 非对称双手协调：一手稳住、一手插入
@@ -80,6 +82,7 @@
 
 ## 建议 wiki 动作
 
-- 新建 **`wiki/entities/paper-clift-closed-loop-iterative-finetuning.md`**（含飞轮流程图 + 结论；源码运行时序图写「不适用」及原因）。
-- 新建 **`sources/sites/thomaschen98-clift.md`**。
+- ✅ 已升格 [`wiki/entities/paper-clift-closed-loop-iterative-finetuning.md`](../../wiki/entities/paper-clift-closed-loop-iterative-finetuning.md)（飞轮流程图 + 结论；源码运行时序图写「不适用」）。
+- ✅ 已建 [`sources/sites/thomaschen98-clift.md`](../sites/thomaschen98-clift.md)。
+- 2026-08-04 复检：补「每轮从基础模型从头微调」、1.6 s chunk / 1.8 s 优势前瞻、100-trial 评测=训练数据、GPT-5.5→Qwen3-VL 蒸馏细节。
 - 交叉：[`wiki/entities/gemini-robotics.md`](../../wiki/entities/gemini-robotics.md)、[`wiki/entities/unitree-g1.md`](../../wiki/entities/unitree-g1.md)、[`wiki/concepts/safe-real-world-rl-fine-tuning.md`](../../wiki/concepts/safe-real-world-rl-fine-tuning.md)、[`wiki/tasks/bimanual-manipulation.md`](../../wiki/tasks/bimanual-manipulation.md)、[`wiki/concepts/reward-design.md`](../../wiki/concepts/reward-design.md)。

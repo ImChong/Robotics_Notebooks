@@ -1,3 +1,12 @@
+## [2026-08-04] ingest | sources/papers/clift_arxiv_2607_29172.md + sites/thomaschen98-clift — CLIFT（arXiv:2607.29172）复检加深：补每轮从基础模型从头微调 / 1.6s chunk / 100-trial 评测=训练数据 / GPT-5.5→Qwen3-VL；wiki/entities/paper-clift-closed-loop-iterative-finetuning.md
+
+- **触发：** 用户指定论文 <https://arxiv.org/abs/2607.29172>、项目页 <https://thomaschen98.github.io/clift/>
+- **既有页：** 2026-08-04 已完整 ingest（PR #1448）；本次**不新建实体**，做开源复检 + 工程细节加深
+- **更新：** [`sources/papers/clift_arxiv_2607_29172.md`](sources/papers/clift_arxiv_2607_29172.md)、[`sources/sites/thomaschen98-clift.md`](sources/sites/thomaschen98-clift.md)、[`wiki/entities/paper-clift-closed-loop-iterative-finetuning.md`](wiki/entities/paper-clift-closed-loop-iterative-finetuning.md)
+- **开源核查（复检 2026-08-04，步骤 2.5）：** 项目页 / 论文仍标 `coming_soon`，**无 GitHub** → 维持「宣称将开源」；`## 源码运行时序图` 仍写不适用
+- **加深要点：** 托管 API **每轮从基础模型从头微调**；策略 **1.6 s** action chunk、优势前瞻 **1.8 s**；每任务 **100** 次 rollout 即评测亦为下一轮训练数据；候选奖励 **GPT-5.5** K=12 → 人类偏好筛选 → **Qwen3-VL** LoRA 蒸馏；DINOv3 ViT-S/16
+- **交叉（既有，未改）：** [`wiki/entities/gemini-robotics.md`](wiki/entities/gemini-robotics.md)、[`wiki/entities/unitree-g1.md`](wiki/entities/unitree-g1.md)、[`wiki/concepts/safe-real-world-rl-fine-tuning.md`](wiki/concepts/safe-real-world-rl-fine-tuning.md)、[`wiki/overview/hub-safe-fine-tuning.md`](wiki/overview/hub-safe-fine-tuning.md)、[`wiki/tasks/bimanual-manipulation.md`](wiki/tasks/bimanual-manipulation.md)、[`wiki/concepts/reward-design.md`](wiki/concepts/reward-design.md)、[`wiki/methods/vla.md`](wiki/methods/vla.md)
+
 ## [2026-08-04] ingest | sources/papers/hifi_umi_arxiv_2607_25895.md + sites/hifi-umi-project + datasets/hifi-umi-2k — HiFi-UMI（arXiv:2607.25895）复检与接口补强：开源仍为数据-only；补 HF state/action/valid.frame；交叉 paper-data-pyramid；wiki/entities/paper-hifi-umi.md + paper-data-pyramid-embodied-manipulation.md
 
 - **触发：** 用户指定论文 <https://arxiv.org/pdf/2607.25895>、项目页 <https://cloud.simpleai.tech/simple-world-lab/hifi-umi/>、数据集 <https://huggingface.co/datasets/simple-world-lab/HiFi-UMI-2K>

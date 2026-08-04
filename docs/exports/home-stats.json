@@ -9,6 +9,86 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-clift-closed-loop-iterative-finetuning.md",
+      "detail_id": "entity-paper-clift-closed-loop-iterative-finetuning",
+      "label": "CLIFT：不打开模型盒子的闭环迭代微调",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/gemini-robotics.md",
+      "detail_id": "entity-gemini-robotics",
+      "label": "Gemini Robotics",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/unitree-g1.md",
+      "detail_id": "entity-unitree-g1",
+      "label": "Unitree G1 (人形机器人)",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/concepts/safe-real-world-rl-fine-tuning.md",
+      "detail_id": "wiki-concepts-safe-real-world-rl-fine-tuning",
+      "label": "Safe Real-World RL Fine-Tuning（真机安全 RL 微调）",
+      "type": "concept",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/overview/hub-safe-fine-tuning.md",
+      "detail_id": "wiki-overview-hub-safe-fine-tuning",
+      "label": "真机安全微调（知识链汇总）",
+      "type": "overview",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/tasks/bimanual-manipulation.md",
+      "detail_id": "wiki-tasks-bimanual-manipulation",
+      "label": "Bimanual Manipulation（双臂协调操作）",
+      "type": "task",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/concepts/reward-design.md",
+      "detail_id": "wiki-concepts-reward-design",
+      "label": "Reward Design",
+      "type": "concept",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "path": "wiki/entities/paper-hifi-umi.md",
       "detail_id": "entity-paper-hifi-umi",
       "label": "HiFi-UMI / HiFi-UMI-2K",
@@ -128,96 +208,17 @@
       "recency": "2026-08-04",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/tasks/stair-obstacle-perceptive-locomotion.md",
-      "detail_id": "wiki-tasks-stair-obstacle-perceptive-locomotion",
-      "label": "楼梯与障碍 Locomotion（感知 / 盲走中心节点）",
-      "type": "task",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-deep-whole-body-parkour.md",
-      "detail_id": "entity-paper-deep-whole-body-parkour",
-      "label": "Deep Whole-body Parkour：感知式全身跑酷",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/methods/dagger.md",
-      "detail_id": "wiki-methods-dagger",
-      "label": "DAgger（Dataset Aggregation）",
-      "type": "method",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md",
-      "detail_id": "wiki-comparisons-hil-vs-mtrg-vs-zest-parkour-imitation",
-      "label": "HIL vs MTRG vs ZEST：跑酷模仿学习路线对比",
-      "type": "comparison",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-legged-robots-advances-challenges.md",
-      "detail_id": "entity-paper-legged-robots-advances-challenges",
-      "label": "腿式机器人进展、挑战与机遇综述",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/quadruped-robot.md",
-      "detail_id": "entity-quadruped-robot",
-      "label": "四足机器人（Quadruped Robot）",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/overview/quadruped-vln-embodied-workshop.md",
-      "detail_id": "wiki-overview-quadruped-vln-embodied-workshop",
-      "label": "四足 × VLN × 具身智能实战营（技术地图）",
-      "type": "overview",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-travexplorer.md",
-      "detail_id": "entity-paper-travexplorer",
-      "label": "TravExplorer（可通行感知跨楼层具身探索）",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-hifi-umi.md",
-    "detail_id": "entity-paper-hifi-umi",
-    "label": "HiFi-UMI / HiFi-UMI-2K",
+    "path": "wiki/entities/paper-clift-closed-loop-iterative-finetuning.md",
+    "detail_id": "entity-paper-clift-closed-loop-iterative-finetuning",
+    "label": "CLIFT：不打开模型盒子的闭环迭代微调",
     "type": "entity",
     "recency": "2026-08-04",
     "source": "log.md",
-    "action": "maintained"
+    "action": "maintained",
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
