@@ -1,3 +1,12 @@
+## [2026-08-04] ingest | sources/papers/legged_robots_advances_challenges_scirobotics_2026.md — 补 arXiv:2607.28952 作者版；加深 wiki/entities/paper-legged-robots-advances-challenges.md
+
+- **触发：** 用户指定 <https://arxiv.org/abs/2607.28952>（Science Robotics 腿式综述；ETH / Stanford / Berkeley / Edinburgh / KAIST / NVIDIA / Tübingen / MPI-IS / Oxford / Monash / RAI）
+- **既有页：** 2026-07-31 已 ingest，当时无合法全文；本次**不新建实体**，改为补 arXiv 作者版并核验数字
+- **更新：** [`sources/papers/legged_robots_advances_challenges_scirobotics_2026.md`](sources/papers/legged_robots_advances_challenges_scirobotics_2026.md)、[`wiki/entities/paper-legged-robots-advances-challenges.md`](wiki/entities/paper-legged-robots-advances-challenges.md)
+- **开源核查：** 仍无代码/项目页（综述）；全文改判 **作者版 OA（arXiv）**
+- **机构注册：** [`schema/institutions.json`](schema/institutions.json) 新增 `rai-institute`（机器人与人工智能研究所（RAI Institute））
+- **交叉（既有）：** [`wiki/tasks/locomotion.md`](wiki/tasks/locomotion.md)、[`wiki/entities/quadruped-robot.md`](wiki/entities/quadruped-robot.md)、[`wiki/concepts/sim2real.md`](wiki/concepts/sim2real.md)
+
 ## [2026-08-04] ingest | sources/courses/quadruped_vln_embodied_workshop_2day.md — 四足×VLN×具身实战营技术点/项目独立节点补齐
 
 - **触发：** 用户提供课程日程截图，要求技术点与对应项目在本库均有独立详情节点
@@ -20,8 +29,7 @@
 - **方法要点：** 否定 temporal consistency / horizon reduction / representation learning 作为充分解释；主因是 **delayed policy**（\(a_t\mid o_{t-n}\)）与 **隐式集成**；**RDE** 部署在多数设定匹配标准 AC；显式集成进一步抬升（Transport 12.6%→41.5%）
 - **开源核查（步骤 2.5）：** PDF / presentation 已发布；Code 与 arXiv 均 Coming soon → 判「宣称将开源」；`## 源码运行时序图` 写明**不适用**
 - **机构注册：** [`schema/institutions.json`](schema/institutions.json) 新增 `polimi`（米兰理工大学（Politecnico di Milano））
-- **交叉：** [`wiki/methods/action-chunking.md`](wiki/methods/action-chunking.md)、[`wiki/methods/behavior-cloning.md`](wiki/methods/behavior-cloning.md)、[`wiki/methods/diffusion-policy.md`](wiki/methods/diffusion-policy.md)、[`wiki/entities/libero-benchmark.md`](wiki/entities/libero-benchmark.md)
-## [2026-08-04] ingest | sources/papers/clift_arxiv_2607_29172.md + sites/thomaschen98-clift — CLIFT（arXiv:2607.29172）入库：托管 SFT API 下的非侵入闭环迭代微调；升格 wiki/entities/paper-clift-closed-loop-iterative-finetuning.md
+- **交叉：** [`wiki/methods/action-chunking.md`](wiki/methods/action-chunking.md)、[`wiki/methods/behavior-cloning.md`](wiki/methods/behavior-cloning.md)、[`wiki/methods/diffusion-policy.md`](wiki/methods/diffusion-policy.md)、[`wiki/entities/libero-benchmark.md`](wiki/entities/libero-benchmark.md)## [2026-08-04] ingest | sources/papers/clift_arxiv_2607_29172.md + sites/thomaschen98-clift — CLIFT（arXiv:2607.29172）入库：托管 SFT API 下的非侵入闭环迭代微调；升格 wiki/entities/paper-clift-closed-loop-iterative-finetuning.md
 
 - **来源：** [`sources/papers/clift_arxiv_2607_29172.md`](sources/papers/clift_arxiv_2607_29172.md)、[`sources/sites/thomaschen98-clift.md`](sources/sites/thomaschen98-clift.md)
 - **新建实体：** [`wiki/entities/paper-clift-closed-loop-iterative-finetuning.md`](wiki/entities/paper-clift-closed-loop-iterative-finetuning.md)（UC Berkeley / Google DeepMind / NVIDIA；Unitree G1 三任务两轮飞轮 100% / 98% / 96%）
