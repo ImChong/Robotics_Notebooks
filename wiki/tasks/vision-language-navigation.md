@@ -2,13 +2,14 @@
 type: task
 tags: [vln, navigation, embodied-ai, vision-language, matterport]
 summary: "视觉–语言导航（VLN）要求智能体在三维环境中依据自然语言指令执行一系列离散或连续动作到达目标，是连接语言理解与空间运动规划的基准任务。"
-updated: 2026-07-27
+updated: 2026-08-04
 status: complete
 related:
   - ../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md
   - ../queries/embodied-fm-taxonomy-loop.md
   - ../overview/vln-10-papers-technology-map.md
   - ../overview/vln-open-source-repro-paradigms.md
+  - ./zero-shot-object-navigation.md
   - ../entities/sceneverse-pp.md
   - ../entities/esi-bench.md
   - ../entities/paper-worldvln-aerial-vln-wam.md
@@ -24,6 +25,7 @@ related:
   - ../entities/paper-3d-ic-joint-navigation-manipulation-planning.md
   - ../entities/paper-da-nav.md
   - ../entities/paper-zonda.md
+  - ../entities/paper-travexplorer.md
   - ../entities/paper-s-squared-vla.md
   - ../entities/qwen-robot-nav.md
   - locomotion.md

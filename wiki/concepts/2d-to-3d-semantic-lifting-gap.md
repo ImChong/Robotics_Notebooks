@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, computer-vision, segmentation, semantic-mapping, 2d-to-3d, robotics, sim2real]
 status: complete
-updated: 2026-08-02
+updated: 2026-08-04
 related:
   - ./embodied-perception-six-spatial-representations.md
   - ./perception-coordinate-postprocessing.md
