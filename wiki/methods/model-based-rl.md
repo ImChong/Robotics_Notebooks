@@ -2,7 +2,7 @@
 type: method
 tags: [rl, model-based, planning, locomotion, sample-efficiency, horizon-robotics]
 status: complete
-updated: 2026-07-30
+updated: 2026-08-04
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-rl-intelligent-control.md
@@ -253,6 +253,7 @@ Dreamer 4（Hafner et al., 2025，[arXiv:2509.24527](https://arxiv.org/abs/2509.
 - [Model Predictive Control (MPC)](./model-predictive-control.md) — 基于模型规划的经典控制方法，MBRL 的"控制论版"
 - [Trajectory Optimization](./trajectory-optimization.md) — MBRL 规划阶段常用轨迹优化作为求解器
 - [Optimal Control (OCP)](../concepts/optimal-control.md) — MBRL 的数学基础，动力学模型 + 代价函数
+- [WCM](../entities/paper-wcm-world-critic-model.md) — 反例式对照：世界模型只做 **critic 表征的辅助监督**，不参与想象 rollout 或规划
 - [Sim2Real](../concepts/sim2real.md) — MBRL 的样本效率优势直接帮助真实机器人学习
 - [Imitation Learning](./imitation-learning.md) — 可以和 IL 结合：用演示数据初始化模型
 - [Model-Based vs Model-Free 对比](../comparisons/model-based-vs-model-free.md) — 两种范式的多维对比与选型建议

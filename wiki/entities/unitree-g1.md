@@ -2,7 +2,7 @@
 type: entity
 tags: [hardware, humanoid, platform, unitree]
 status: complete
-updated: 2026-07-29
+updated: 2026-08-04
 related:
   - ./humanoid-robot.md
   - ./rek.md
@@ -80,6 +80,7 @@ G1 的出现极大地加速了大规模数据的采集。由于其成本低廉�
 - [PAiD Framework (足球技能学习)](../methods/paid-framework.md)
 - [Humanoid Soccer (足球任务)](../tasks/humanoid-soccer.md)
 - [CLAW (宇树 G1 全身动作数据生成管线)](../methods/claw.md)
+- [CLIFT](./paper-clift-closed-loop-iterative-finetuning.md) — 在 G1 上做接触丰富双臂任务的闭环迭代微调（装箱 / 插杯 / 双臂交接）
 - [LEGS（论文实体）](./paper-legs-embodied-gaussian-splatting-vla.md) — G1 上 3DGS 合成 loco-manip VLA 数据（arXiv:2606.01458）
 - [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md)
 - [ExoActor](../methods/exoactor.md) — G1 上的视频生成驱动的零样本交互控制系统。

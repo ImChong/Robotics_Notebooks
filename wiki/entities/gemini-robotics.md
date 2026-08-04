@@ -4,7 +4,7 @@ tags: [google-deepmind, vla, gemini, embodied-ai, product, hmi-papers]
 title: Gemini Robotics
 status: complete
 summary: "Gemini Robotics 是 Google DeepMind 基于 Gemini 多模态栈发布的机器人视觉–语言–动作与具身推理模型族（含 ER / 1.5 等迭代），强调泛化、交互与自然语言指令。"
-updated: 2026-07-31
+updated: 2026-08-04
 related:
   - ../methods/vla.md
   - ../methods/robotics-transformer-rt-series.md
@@ -89,6 +89,7 @@ flowchart LR
 - [PaLM-E](./paper-palm-e-embodied-language-model.md)
 - [Perceptron Egocentric](./perceptron-egocentric.md)
 - [HMI 论文导读](../queries/hmi-papers-coverage.md)
+- [CLIFT](./paper-clift-closed-loop-iterative-finetuning.md) — 通过托管 SFT API 把 Gemini Robotics On-Device 适配成人形专才（arXiv:2607.29172）
 
 ## 参考来源
 

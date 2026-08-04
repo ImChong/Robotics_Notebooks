@@ -2,7 +2,7 @@
 type: comparison
 tags: [rl, offline-rl, online-rl, data-efficiency, distribution-shift, locomotion]
 status: complete
-updated: 2026-07-11
+updated: 2026-08-04
 related:
   - ../methods/intentional-updates-streaming-rl.md
   - ../methods/reinforcement-learning.md
@@ -170,3 +170,4 @@ Online RL 和 Offline RL 是两种根本不同的学习范式。两者都在优�
 - [ROVE（人形 VLA 干预后训练）](../entities/paper-rove-humanoid-vla-intervention.md) — 次优全身 MoCap 接管轨迹的 OVE + advantage conditioning
 - [Data Flywheel](../concepts/data-flywheel.md) — 数据飞轮的"模仿式"与"RL 式"两种范式
 - [MobileGym](../entities/mobilegym.md) — 移动 GUI Agent 场景下 GRPO + 数百并行浏览器实例的在线 RL 环境范例（arXiv:2605.26114）
+- [WCM](../entities/paper-wcm-world-critic-model.md) — 同一 critic 同时接 on-policy（Flow-SDE / PPO）与 off-policy（RECAP / AWR），说明瓶颈在 critic 表征而非算法族

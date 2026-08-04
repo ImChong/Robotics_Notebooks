@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "vla", "physical-intelligence", "flow-matching", "hmi-papers"]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-04
 arxiv: "2504.16054"
 code: https://github.com/Physical-Intelligence/openpi
 venue: "HMI curated · 2025"
@@ -110,6 +110,9 @@ FAST token保留一段动作的时序结构，使动作数据可以和“下一�
 - [pi07-policy](../methods/pi07-policy.md)
 - [vla](../methods/vla.md)
 - [foundation-policy](../concepts/foundation-policy.md)
+- [ActFovea](./paper-actfovea.md) — 对冻结 π₀ 加运行时防护（π 系列部署侧对照）
+- [WCM](./paper-wcm-world-critic-model.md) — 把 π₀.₅ 作为 flow matching 主干做 RL 后训练
+- [CLIFT](./paper-clift-closed-loop-iterative-finetuning.md) — 以 π₀.₅ 作开放权重对照，同管线下明显落后于托管 API 的 GROD
 
 ## 参考来源
 

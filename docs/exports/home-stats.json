@@ -1,13 +1,207 @@
 {
-  "generated_at": "2026-07-31",
-  "node_count": 2053,
-  "edge_count": 18310,
+  "generated_at": "2026-08-04",
+  "node_count": 2056,
+  "edge_count": 18353,
   "coverage": {
-    "covered": 2003,
-    "total": 2029,
+    "covered": 2006,
+    "total": 2032,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-clift-closed-loop-iterative-finetuning.md",
+      "detail_id": "entity-paper-clift-closed-loop-iterative-finetuning",
+      "label": "CLIFT：不打开模型盒子的闭环迭代微调",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/gemini-robotics.md",
+      "detail_id": "entity-gemini-robotics",
+      "label": "Gemini Robotics",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/unitree-g1.md",
+      "detail_id": "entity-unitree-g1",
+      "label": "Unitree G1 (人形机器人)",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/concepts/safe-real-world-rl-fine-tuning.md",
+      "detail_id": "wiki-concepts-safe-real-world-rl-fine-tuning",
+      "label": "Safe Real-World RL Fine-Tuning（真机安全 RL 微调）",
+      "type": "concept",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/overview/hub-safe-fine-tuning.md",
+      "detail_id": "wiki-overview-hub-safe-fine-tuning",
+      "label": "真机安全微调（知识链汇总）",
+      "type": "overview",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/tasks/bimanual-manipulation.md",
+      "detail_id": "wiki-tasks-bimanual-manipulation",
+      "label": "Bimanual Manipulation（双臂协调操作）",
+      "type": "task",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/concepts/reward-design.md",
+      "detail_id": "wiki-concepts-reward-design",
+      "label": "Reward Design",
+      "type": "concept",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-pi05-open-world-vla.md",
+      "detail_id": "entity-paper-pi05-open-world-vla",
+      "label": "π0.5（HMI P059）",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-wcm-world-critic-model.md",
+      "detail_id": "entity-paper-wcm-world-critic-model",
+      "label": "WCM：给 VLA 强化学习换一个会预测世界的 Critic",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/model-based-rl.md",
+      "detail_id": "wiki-methods-model-based-rl",
+      "label": "Model-Based RL（基于模型的强化学习）",
+      "type": "method",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/methods/generative-world-models.md",
+      "detail_id": "wiki-methods-generative-world-models",
+      "label": "Generative World Models (生成式世界模型)",
+      "type": "method",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/comparisons/online-vs-offline-rl.md",
+      "detail_id": "wiki-comparisons-online-vs-offline-rl",
+      "label": "Online RL vs Offline RL",
+      "type": "comparison",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/openvla.md",
+      "detail_id": "entity-openvla",
+      "label": "OpenVLA",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-actfovea.md",
+      "detail_id": "entity-paper-actfovea",
+      "label": "ActFovea：给 VLA 策略加一层运行时防护",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/safety-filter.md",
+      "detail_id": "wiki-concepts-safety-filter",
+      "label": "Safety Filter（安全过滤器）",
+      "type": "concept",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/concepts/robot-safety-state-machine.md",
+      "detail_id": "wiki-concepts-robot-safety-state-machine",
+      "label": "机器人安全状态机（硬件 / 通信故障）",
+      "type": "concept",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/queries/vla-deployment-guide.md",
+      "detail_id": "wiki-queries-vla-deployment-guide",
+      "label": "VLA 真机部署指南：延迟、异步与加速",
+      "type": "query",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/libero-benchmark.md",
+      "detail_id": "entity-libero-benchmark",
+      "label": "LIBERO",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true
+    },
     {
       "path": "wiki/queries/hmi-papers-coverage.md",
       "detail_id": "wiki-queries-hmi-papers-coverage",
@@ -17,202 +211,17 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/humanoid-motion-intelligence.md",
-      "detail_id": "entity-humanoid-motion-intelligence",
-      "label": "Humanoid Motion Intelligence（人形机器人运动智能知识库）",
-      "type": "entity",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "开源项目本库导读（HMI Open-Source Projects Guide） 社区"
-    },
-    {
-      "path": "wiki/queries/hmi-opensource-projects-coverage.md",
-      "detail_id": "wiki-queries-hmi-opensource-projects-coverage",
-      "label": "HMI 开源项目主表 · 本库导读",
-      "type": "query",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "开源项目本库导读（HMI Open-Source Projects Guide） 社区"
-    },
-    {
-      "path": "roadmap/depth-bfm.md",
-      "detail_id": "roadmap-depth-bfm",
-      "label": "路线（纵深）：如果目标是 BFM（人形行为基础模型）",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-classical-control.md",
-      "detail_id": "roadmap-depth-classical-control",
-      "label": "路线（纵深）：如果目标是传统模型控制（LIP/ZMP → MPC → WBC）",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "roadmap/depth-contact-manipulation.md",
-      "detail_id": "roadmap-depth-contact-manipulation",
-      "label": "路线（纵深）：如果目标是接触丰富的操作任务",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-humanoid-boxing.md",
-      "detail_id": "roadmap-depth-humanoid-boxing",
-      "label": "路线（纵深）：如果目标是人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "roadmap/depth-humanoid-hardware-design.md",
-      "detail_id": "roadmap-depth-humanoid-hardware-design",
-      "label": "路线（纵深）：如果目标是人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-humanoid-soccer.md",
-      "detail_id": "roadmap-depth-humanoid-soccer",
-      "label": "路线（纵深）：如果目标是人形足球（全向行走 → 感知踢球 → 多机战术）",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "roadmap/depth-humanoid-swarm-performance.md",
-      "detail_id": "roadmap-depth-humanoid-swarm-performance",
-      "label": "路线（纵深）：如果目标是人形群控展演（群舞同步 → 编队走位 → 群体特技）",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-imitation-learning.md",
-      "detail_id": "roadmap-depth-imitation-learning",
-      "label": "路线（纵深）：如果目标是模仿学习与技能迁移",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-loco-manipulation.md",
-      "detail_id": "roadmap-depth-loco-manipulation",
-      "label": "路线（纵深）：如果目标是 Loco-Manipulation（移动操作）",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-motion-generation.md",
-      "detail_id": "roadmap-depth-motion-generation",
-      "label": "路线（纵深）：如果目标是动作生成（文本/多模态 → 人形动作）",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "roadmap/depth-motion-retargeting.md",
-      "detail_id": "roadmap-depth-motion-retargeting",
-      "label": "路线（纵深）：如果目标是动作重定向（人体动作 → 机器人参考轨迹）",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "模仿学习（Imitation Learning, IL） 社区"
-    },
-    {
-      "path": "roadmap/depth-navigation.md",
-      "detail_id": "roadmap-depth-navigation",
-      "label": "路线（纵深）：如果目标是导航（SLAM → Nav2 → VLN → 导航 VLA）",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "导航纵深路线（Navigation Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "roadmap/depth-perceptive-locomotion.md",
-      "detail_id": "roadmap-depth-perceptive-locomotion",
-      "label": "路线（纵深）：如果目标是感知越障（Perceptive Locomotion）",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "roadmap/depth-real2sim.md",
-      "detail_id": "roadmap-depth-real2sim",
-      "label": "路线（纵深）：如果目标是 Real2Sim（真实世界 → 可仿真资产/场景/孪生）",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "roadmap/depth-rl-locomotion.md",
-      "detail_id": "roadmap-depth-rl-locomotion",
-      "label": "路线（纵深）：如果目标是人形 RL 运动控制",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-safe-control.md",
-      "detail_id": "roadmap-depth-safe-control",
-      "label": "路线（纵深）：如果目标是安全控制（CLF / CBF / Safe RL）",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-sim2real.md",
-      "detail_id": "roadmap-depth-sim2real",
-      "label": "路线（纵深）：如果目标是 Sim2Real（仿真到真机迁移）",
-      "type": "roadmap_page",
-      "recency": "2026-07-31",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/queries/hmi-papers-coverage.md",
-    "detail_id": "wiki-queries-hmi-papers-coverage",
-    "label": "HMI 论文总索引 · 本库导读",
-    "type": "query",
-    "recency": "2026-07-31",
+    "path": "wiki/entities/paper-clift-closed-loop-iterative-finetuning.md",
+    "detail_id": "entity-paper-clift-closed-loop-iterative-finetuning",
+    "label": "CLIFT：不打开模型盒子的闭环迭代微调",
+    "type": "entity",
+    "recency": "2026-08-04",
     "source": "log.md",
     "action": "maintained",
-    "has_repo": true
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
@@ -253,7 +262,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 371,
+      "degree": 376,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

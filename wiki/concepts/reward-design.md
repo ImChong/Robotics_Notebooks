@@ -2,7 +2,7 @@
 type: concept
 tags: [rl, reward, locomotion, humanoid, policy-optimization]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-04
 related:
   - ../formalizations/mdp.md
   - ../methods/reinforcement-learning.md
@@ -163,6 +163,11 @@ IL 的核心动机之一就是"奖励函数太难设计"——让 IL 从示范�
 DR 改变的是环境的物理参数分布；Reward Design 改变的是优化目标。两者都影响策略，但影响的层次不同。
 
 见：[Domain Randomization](./domain-randomization.md)
+
+### 和 VLM 奖励模型的关系
+当奖励来自 VLM 而非手写函数时，主要风险从「配比调不好」变成「打分标定差」。CLIFT 的 select-then-distill 给了一条低成本校准路线：VLM 生成 K=12 条候选奖励序列 → 用约 100 组人类成对偏好筛掉排序不一致的 → 蒸馏成固定的生成式奖励模型。
+
+见：[CLIFT](../entities/paper-clift-closed-loop-iterative-finetuning.md)
 
 ## 参考来源
 

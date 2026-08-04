@@ -2,7 +2,7 @@
 type: concept
 tags: [safety, control, cbf, safe-rl, wbc, deployment]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-04
 summary: "Safety Filter 指位于高层策略与低层执行器之间的安全过滤层，用最小修改把名义动作投影回可执行安全集。"
 related:
   - ./control-barrier-function.md
@@ -130,3 +130,4 @@ Safety Filter
 - [Query：RL 策略真机调试 Playbook](../queries/robot-policy-debug-playbook.md)
 - [真机安全 RL 微调](./safe-real-world-rl-fine-tuning.md) — 安全过滤作为真机微调三路径之一（CBF/CLF 安全壳）
 - [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md) — 部署段分层安全独立于策略
+- [ActFovea](../entities/paper-actfovea.md) — 感知侧一致性防护：不给几何安全保证，但覆盖安全滤波管不到的「观测本身失真/失效」

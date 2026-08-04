@@ -1,8 +1,8 @@
 # Wiki 健康报告
 
-## [2026-07-31] lint | health-check | 自动化 wiki 健康检查
+## [2026-08-04] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **100** 条信息型预警）：
+共发现 **0** 个问题（另含 **101** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -164,7 +164,7 @@
 ### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（72 个）
+### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（73 个）
 - wiki/comparisons/anygrasp-vs-graspnet.md
 - wiki/comparisons/cnn-vs-vit-backbones.md
 - wiki/comparisons/kalman-filter-vs-optimization-based-estimation.md
@@ -197,6 +197,7 @@
 - wiki/entities/mediapipe.md
 - wiki/entities/ov-sam3d.md
 - wiki/entities/ovo-semantic-mapping.md
+- wiki/entities/paper-actfovea.md
 - wiki/entities/paper-argus-dynamic-symmetry.md
 - wiki/entities/paper-autonomous-spot-nebula-exploration.md
 - wiki/entities/paper-clothtransformer-unified-latent-cloth-simulation.md
@@ -238,4 +239,4 @@
 - wiki/methods/visual-servoing.md
 - wiki/methods/wilor.md
 
-📊 Sources 覆盖率：2003/2029 (99%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：2006/2032 (99%) wiki/entity 页有 ingest 来源

@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-04
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作。"
 related:
   - ../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md
@@ -412,6 +412,9 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [LimX COSA（人形大脑 OS）](../entities/limx-cosa.md) — S2/S1/S0 调度 V³-0 VLA + LimX WBT 的产业长程 loco-manipulation 栈（2026-07）
 - [FluxVLA Engine](../entities/fluxvla-engine.md) — 逐际开源人形 VLA 训练/推理工程底座（π0.5/GR00T/OpenVLA 等）
 - [OAT 有序动作 Tokenization](../entities/paper-oat-ordered-action-tokenization.md)
+- [ActFovea](../entities/paper-actfovea.md) — 免训练的 VLA **运行时防护**：时空视觉–动作一致性检测 + 有界安全失败（arXiv:2607.29169）
+- [WCM 世界模型 Critic](../entities/paper-wcm-world-critic-model.md) — VLA **RL 后训练**的 critic 换成 LeJEPA 世界模型，修单帧价值估计的错配（arXiv:2607.29613）
+- [CLIFT 闭环迭代微调](../entities/paper-clift-closed-loop-iterative-finetuning.md) — 闭权重 VLA 只给托管 SFT API 时，把奖励反馈编码成 chunk 级优势 token（arXiv:2607.29172）
 
 
 ## 推荐继续阅读

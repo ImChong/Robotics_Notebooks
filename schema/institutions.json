@@ -2197,6 +2197,13 @@
         "simple-ai",
         "simpleai"
       ]
+    },
+    "tongji": {
+      "label": "同济大学（Tongji）",
+      "aliases": [
+        "tongji",
+        "tongji-university"
+      ]
     }
   }
 }

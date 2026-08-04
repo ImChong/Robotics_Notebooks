@@ -3,7 +3,7 @@ type: concept
 tags: [safe-rl, fine-tuning, sim2real, real-world-rl, lora, safety-filter, recovery, deployment]
 status: complete
 created: 2026-06-02
-updated: 2026-07-26
+updated: 2026-08-04
 summary: "真机安全 RL 微调：在已有 sim2real 策略上做真机在线适配时，如何用低秩残差、生成式兜底与 CBF/CLF 安全壳约束探索边界，避免训练期摔倒与硬件损坏。"
 related:
   - ./sim2real.md
@@ -145,4 +145,5 @@ $$
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [CLF vs CBF](../comparisons/clf-vs-cbf.md)、[CLF/CBF 在 WBC 中的联合使用](../queries/clf-cbf-in-wbc.md)
 - [Query：如何缩小 sim2real gap](../queries/sim2real-gap-reduction.md)
+- [CLIFT](../entities/paper-clift-closed-loop-iterative-finetuning.md) — 真机 rollout 驱动闭环改进，但不做在线策略更新，安全暴露集中在采集阶段
 - [Balance Recovery](../tasks/balance-recovery.md)
