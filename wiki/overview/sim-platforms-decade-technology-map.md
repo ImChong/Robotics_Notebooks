@@ -2,7 +2,7 @@
 type: overview
 tags: [simulation, embodied-ai, survey, mujoco, habitat, isaac-gym, benchmark]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-04
 related:
   - ../entities/mujoco.md
   - ../entities/ai2-thor.md
@@ -101,7 +101,7 @@ flowchart LR
 | 理解 RL 物理引擎为何选 MuJoCo | [MuJoCo](../entities/mujoco.md) |
 | 室内指令跟随与状态交互 | [AI2-THOR](../entities/ai2-thor.md) |
 | VLN 起源与 R2R | [Matterport3D Simulator](../entities/matterport3d-simulator.md) + [R2R 论文](../entities/paper-vln-01-r2r.md) |
-| 亿级步数导航 RL 训练 | [Habitat-Sim](../entities/habitat-sim.md) |
+| 亿级步数导航 RL 训练 | [Habitat-Sim](../entities/habitat-sim.md)（MIT；**v0.3.4 后 Meta 不再官方主动维护**，社区可继续用） |
 | 移动 + 物理操作室内任务 | [iGibson](../entities/igibson.md) |
 | 万环境 GPU 并行 loco | [Isaac Gym](../entities/isaac-gym.md) → 新实验 [Isaac Lab](../entities/isaac-lab.md) |
 | 机械臂操作泛化 leaderboard | [ManiSkill2](../entities/maniskill2.md) |

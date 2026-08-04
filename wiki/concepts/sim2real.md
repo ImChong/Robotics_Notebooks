@@ -52,7 +52,7 @@ related:
   - ../entities/paper-legged-robots-advances-challenges.md
   - ../queries/sim2real-closed-loop-engineering.md
 summary: "Sim2Real 关注如何把仿真中学到的策略稳定迁移到真实机器人，是机器人学习落地的核心鸿沟。"
-updated: 2026-08-02
+updated: 2026-08-04
 sources:
   - ../../sources/papers/physx_omni_arxiv_2605_21572.md
   - ../../sources/courses/isaac_lab_implicit_explicit_actuators.md
@@ -191,7 +191,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - **补充参照（无地图导航 · 合成深度预训练）：** [SRU](../entities/paper-sru-spatially-enhanced-recurrent-memory.md)（IJRR 2025，ETH RSL）在 **TartanAir 等 10 万+ 合成深度** 上预训练 RegNet+FPN 编码器，并配合 **并行深度噪声增强**，使 **单目前向深度 + 循环 SRU 记忆** 的策略在 **B2W** 上 **零样本** 部署办公室/森林等场景（70 m+ 目标）；工程移植见 [SRU-Odin](../entities/sru-odin.md)（Go2 + Odin1，ONNX + ROS1）。
 - **补充参照（视觉人群导航 · BEV+姿态意图）：** [iCrowdNav](../entities/paper-icrowdnav.md)（arXiv:2606.26047，RA-L 2026）在 Isaac Sim **SocNav-Gym** 用 **时空 BEV + I²Former（3D 姿态意图）** 训 PPO，再 **零样本** 部署 Clearpath Dingo（健身房/地铁站/商场，板载 RTX 2060 ~15 Hz）；强调 **冻结预训练视觉骨干** 与简单奖励，而非手调 proxemics——与 SRU 的「长程空间记忆」互补（截至 2026-07-28 官方代码待发布）。
 - **补充参照（城市户外 VLN · CARLA→足式/人形）：** [DA-Nav](../entities/paper-da-nav.md)（arXiv:2607.11638）在 CARLA 训 **方向感知 + CoT 恢复** 策略后，**无真机微调** 迁移 Unitree Go2 与乐聚 Kuavo-V，报告公里级户外闭环；强调 **图像平面离散 grounding** 与 recovery 数据，而非仅动力学域随机化——与 SRU 的「合成深度→坐标目标」路线互补（截至入库日方法未开源）。
-- **补充参照（室内 ObjectNav · Habitat→轮腿双足）：** [ZONDA](../entities/paper-zonda.md)（arXiv:2607.21025）在 Habitat 离散动作空间评测后，真机用 **同一非平台参数 + MPPI 连续跟踪** 部署 Direct Drive Tech TITA；迁移重点在 \(H_{\text{agent}}\) / 膨胀半径与离板 VLM，而非重训低层 RL（截至入库日方法未开源）。
+- **补充参照（室内 ObjectNav · Habitat→轮腿双足）：** [ZONDA](../entities/paper-zonda.md)（arXiv:2607.21025）在 [Habitat-Sim](../entities/habitat-sim.md) 离散动作空间评测后，真机用 **同一非平台参数 + MPPI 连续跟踪** 部署 Direct Drive Tech TITA；迁移重点在 \(H_{\text{agent}}\) / 膨胀半径与离板 VLM，而非重训低层 RL（截至入库日方法未开源）。
 - **补充参照（人形 · Planner–IDM 少样本适应）：** [FADA](../entities/paper-fada-humanoid.md)（arXiv:2606.28476，CMU）把策略分解为 **规划器 + 逆动力学模型（IDM）**：源域 oracle+DAgger 训练后，部署 **冻结 planner**、仅用约 **2 分钟** 目标域 rollout 的观测–动作对 **LoRA 微调 IDM** 对齐动力学；G1/T1 真机高精度全身任务成功率 **20%→90%**，无需目标 reward 或仿真重标定——适合讨论「**只改执行映射、不改任务意图**」的 few-shot sim2real。
 - **补充参照（人形 loco-manip · 冻结策略适配）：** [SplitAdapter](../entities/paper-splitadapter-load-aware-loco-manipulation.md)（arXiv:2606.03297）在 **冻结 AMP 搬箱策略** 上学习 **物体/负载** 与 **动力学** 双分支历史适配（分裂世界模型 + GRL + 分层 FiLM），针对 **载荷与搬放高度变化** 与 **sim–real 动力学差** 的耦合；MuJoCo sim-to-sim 与 **Unitree G1 零样本** 重载（6 kg）全流程成功率显著提升，可与 RMA 式「单 latent 外参估计」对照阅读。
 
@@ -226,6 +226,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - **ingest 档案：** [sources/papers/slowrl_arxiv_2603_17092.md](../../sources/papers/slowrl_arxiv_2603_17092.md) — SLowRL：LoRA + Recovery 安全真机微调（Go2）
 - **ingest 档案：** [sources/papers/da_nav_arxiv_2607_11638.md](../../sources/papers/da_nav_arxiv_2607_11638.md) — DA-Nav：CARLA→足式/人形零样本户外方向感知 VLN
 - **ingest 档案：** [sources/papers/zonda_arxiv_2607_21025.md](../../sources/papers/zonda_arxiv_2607_21025.md) — ZONDA：Habitat→TITA 零样本 ObjectNav（离散→MPPI）
+- **ingest 档案：** [sources/repos/habitat-sim.md](../../sources/repos/habitat-sim.md) — Habitat-Sim 官方仓（MIT；门户/文档）；v0.3.4 后 Meta 不再官方主动维护
 - **ingest 档案：** [sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md](../../sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md) — BAM：舵机扩展摩擦模型 + MuJoCo 2R 验证（arXiv:2410.08650，ICRA 2025）
 - **ingest 档案：** [sources/repos/rhoban_bam.md](../../sources/repos/rhoban_bam.md) — Rhoban/bam 开源辨识与仿真管线
 - **ingest 档案：** [sources/papers/tacrefinenet_arxiv_2509_25746.md](../../sources/papers/tacrefinenet_arxiv_2509_25746.md) — TacRefineNet：压阻触觉仿真全程训练 → 真机零样本抓取精修

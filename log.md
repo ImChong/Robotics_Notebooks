@@ -1,3 +1,11 @@
+## [2026-08-04] ingest | sources/repos/habitat-sim.md + sites/aihabitat-org + sites/aihabitat-habitat-sim-docs — Habitat-Sim 官方仓/门户/文档入库：加深 wiki/entities/habitat-sim.md
+
+- **来源：** [`sources/repos/habitat-sim.md`](sources/repos/habitat-sim.md)、[`sources/sites/aihabitat-org.md`](sources/sites/aihabitat-org.md)、[`sources/sites/aihabitat-habitat-sim-docs.md`](sources/sites/aihabitat-habitat-sim-docs.md)
+- **加深实体：** [`wiki/entities/habitat-sim.md`](wiki/entities/habitat-sim.md)（MIT；Sim↔Lab 分层；>10k FPS / >8k SPS；conda `withbullet`；源码运行时序图）
+- **开源核查（步骤 2.5）：** GitHub MIT **已开源**；场景数据集需单独许可；README 声明 **Beyond v0.3.4 Meta 不再官方主动维护**
+- **纠错：** Habitat 1.0 arXiv 由误链 `1904.11121` 更正为 [`1904.01201`](https://arxiv.org/abs/1904.01201)
+- **交叉：** [`wiki/overview/sim-platforms-decade-technology-map.md`](wiki/overview/sim-platforms-decade-technology-map.md)、[`wiki/entities/matterport3d-simulator.md`](wiki/entities/matterport3d-simulator.md)、[`wiki/entities/pybullet.md`](wiki/entities/pybullet.md)、[`wiki/tasks/vision-language-navigation.md`](wiki/tasks/vision-language-navigation.md)、[`wiki/concepts/sim2real.md`](wiki/concepts/sim2real.md)
+
 ## [2026-08-04] ingest | sources/papers/clift_arxiv_2607_29172.md + sites/thomaschen98-clift — CLIFT（arXiv:2607.29172）入库：托管 SFT API 下的非侵入闭环迭代微调；升格 wiki/entities/paper-clift-closed-loop-iterative-finetuning.md
 
 - **来源：** [`sources/papers/clift_arxiv_2607_29172.md`](sources/papers/clift_arxiv_2607_29172.md)、[`sources/sites/thomaschen98-clift.md`](sources/sites/thomaschen98-clift.md)
