@@ -13,6 +13,7 @@ related:
   - ../methods/vla.md
   - ../concepts/foundation-policy.md
   - ../entities/humanoid-motion-intelligence.md
+  - ./paper-emergent-transfer-cross-config.md
 sources:
   - ../../sources/papers/hmi_p059_pi05-open-world-vla.md
   - ../../sources/repos/humanoid-motion-intelligence.md
@@ -102,6 +103,15 @@ FAST token保留一段动作的时序结构，使动作数据可以和“下一�
 - 勿把 HMI 解读中的工程判断直接写成论文作者承诺。
 - 经典控制论文与现代 RL/VLA 论文的「可复现」标准不同，选型时分开评估。
 
+## 与其他工作对比
+
+| 维度 | 本工作（π0.5） | [π0](../methods/π0-policy.md) | [π0.7](../methods/pi07-policy.md) | [基础策略](../concepts/foundation-policy.md) |
+|------|----------------|------------------------------|----------------------------------|----------------------------------------------|
+| 动作表示 | 预训 FAST 离散 + 后训连续 flow 专家 | 单一 flow-matching 连续动作 | 多模态提示 steer，异质数据对齐 | 通才/基础策略的抽象概念 |
+| 目标场景 | 家庭移动操作长时任务、开放世界泛化 | 复杂操作的通用建模 | 组合任务 + 跨本体泛化 | 单一大模型覆盖多任务/本体 |
+| 分层 | 先出语义子任务再高频 action chunk | 无显式两阶段分层 | 训练/推理提示 steer | — |
+| 关系/取舍 | π0 的后继，加两阶段+分层；两种动作表示须对齐 | π0.5 的基座前身 | π 系更新代，蒸馏 RL 专精 | π 系均属其一种实现 |
+
 ## 关联页面
 
 - [HMI 论文覆盖导读](../queries/hmi-papers-coverage.md)
@@ -110,6 +120,8 @@ FAST token保留一段动作的时序结构，使动作数据可以和“下一�
 - [pi07-policy](../methods/pi07-policy.md)
 - [vla](../methods/vla.md)
 - [foundation-policy](../concepts/foundation-policy.md)
+- [Emergent Transfer](./paper-emergent-transfer-cross-config.md) — 以 π₀.₅ 为骨干的跨配置遗留数据三相共训研究
+- [RoboHarness](./paper-robo-harness.md) — 以 π₀.₅ 为异构策略库成员之一的长时程编排框架
 - [ActFovea](./paper-actfovea.md) — 对冻结 π₀ 加运行时防护（π 系列部署侧对照）
 - [WCM](./paper-wcm-world-critic-model.md) — 把 π₀.₅ 作为 flow matching 主干做 RL 后训练
 - [CLIFT](./paper-clift-closed-loop-iterative-finetuning.md) — 以 π₀.₅ 作开放权重对照，同管线下明显落后于托管 API 的 GROD

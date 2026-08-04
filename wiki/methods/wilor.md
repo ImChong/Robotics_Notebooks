@@ -4,6 +4,7 @@ tags: [hand-pose, 3d-vision, manipulation, perception, video-to-control]
 status: complete
 updated: 2026-07-13
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ./exoactor.md
   - ./genmo.md
   - ../entities/sam-3d-body.md

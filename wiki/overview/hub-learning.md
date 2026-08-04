@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-learning, rl, il, imitation, reinforcement]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-03
 summary: "IL/RL 学习范式知识链汇总：强化学习、模仿学习、行为克隆与 model-based 路线的选型、数据需求与机器人落地注意点。"
 ---
 
@@ -56,3 +56,4 @@ summary: "IL/RL 学习范式知识链汇总：强化学习、模仿学习、行�
 
 - 本库归纳自 [Robot Learning Overview](./robot-learning-overview.md) 及 methods/comparisons 学习系列页
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`learning` 命中规则）
+- 上游原始资料（本链概念页共同的 ingest 来源）：[Policy Optimization：PPO / SAC / TD3 及机器人应用](../../sources/papers/policy_optimization.md)、[特权信息训练（Teacher-Student / RMA）核心论文](../../sources/papers/privileged_training.md)、[Intentional Updates for Streaming RL](../../sources/papers/intentional_streaming_rl.md)

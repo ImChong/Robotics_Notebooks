@@ -46,6 +46,14 @@ iRonCub 3 的人形机器人学习论文条目，当前处于 Paper Notebooks �
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**iRonCub 3 在本库被归入硬件设计而非控制分类，这提示其重心是「喷气推进人形」这一整机形态本身；页面目前仍是占位。**
+
+- 可确认的只有标题与分类：**喷气动力飞行人形**，归入 12_Hardware_Design。
+- 深读笔记未撰写，推力配置、飞行控制方案与实机验证数据均不在本页，任何性能判断都无依据。
+- 现阶段用途是图谱占位与交叉检索；细节请回到 arXiv 原文与 PROGRESS.md 待深读清单。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)

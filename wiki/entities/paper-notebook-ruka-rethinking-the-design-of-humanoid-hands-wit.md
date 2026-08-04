@@ -47,6 +47,14 @@ RUKA 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是 RUKA v1 的占位实体：本库真正已 ingest 的内容在后继硬件 RUKA-v2，v1 自身的设计取舍仍待深读笔记补齐。**
+
+- 现阶段可确认的只有策展元数据：分类 12_Hardware_Design、arXiv 2504.13165、深读笔记待撰写。
+- 想看具体设计取舍，应先读本库已 ingest 的 [RUKA-v2 Hand](./ruka-v2-hand.md)——它在 v1 基础上增加 2-DoF 腕与指根外展/内收，并全栈开源。
+- 保留本页的意义在于不让知识图谱缺掉 v1 这个前置节点；在笔记完成前不宜把它当作可引用的技术结论来源。
+
 ## 与其他页面的关系
 
 - 后继硬件（本库已 ingest）：[RUKA-v2 Hand](./ruka-v2-hand.md) — 在 v1 基础上增加 **2-DoF 腕** 与 **指根外展/内收**，全栈开源（[ruka-hand-v2.github.io](https://ruka-hand-v2.github.io/)）

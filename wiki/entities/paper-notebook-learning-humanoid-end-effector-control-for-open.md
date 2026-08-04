@@ -45,6 +45,15 @@ HERO (Humanoid End-effector ContROl) 结合了大型视觉模型的开放词汇�
 
 - 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
+## 结论
+
+**HERO 的定位是把「开放词汇视觉识别」与「仿真训练出的全身控制」接成一条链路，让人形不再只在预定义物体清单上作业，而能对任意现实物体边走边抓。**
+
+- 起作用的是两段能力的组合：上游用大型视觉模型拿到开放词汇的目标识别，下游用高精度仿真训练的全身控制把移动与抓取合成同一个动作。
+- 「边走边抓」意味着 loco-manipulation 不被拆成先走后抓两段，这也是它被归入 04_Loco-Manipulation_and_WBC 的原因。
+- 适用边界同时受制于上游视觉模型的识别能力与仿真到真机的差距，本页未给出量化证据来界定这条边界。
+- 本页为策展索引级摘要，量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

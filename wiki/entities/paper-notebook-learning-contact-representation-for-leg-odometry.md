@@ -46,6 +46,14 @@ Learning Contact Representation for Leg Odometry 的人形机器人学习论文�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页当前是知识图谱里的占位节点，而不是对这篇论文的归纳：它先把实体在 09_State_Estimation 下的位置占住，实质内容要等深读笔记补齐。**
+
+- 页面可确证的只有三件事：分类归属 09_State_Estimation、PROGRESS.md 上的「待深读」状态、arXiv 编号 2606.05501；核心机制、量化指标与消融均无记录。
+- 适用边界：可用于按分类检索与占位链接，不能当作该工作的技术依据或引用来源。
+- 主要风险是被误读成已完成的摘要；深读状态以上游 PROGRESS.md 为准，笔记撰写完成后本页需按完整索引实体重写。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-09-state-estimation](../overview/paper-notebook-category-09-state-estimation.md)

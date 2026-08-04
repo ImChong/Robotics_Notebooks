@@ -63,6 +63,14 @@ sources:
 
 在 BFM taxonomy 中回答「身体能覆盖多少目标条件技能」。
 
+## 结论
+
+**HOVER 在 BFM 图谱里的位置是「接口」：把头、手、身体、根等异构目标收敛成一个神经全身控制入口，供上层规划器调用。**
+
+- 关键取舍是 **goal / reference / command 条件化**——一套策略覆盖多种目标条件技能，而不是每类目标各训一个控制器。
+- 边界写得很直白：goal-conditioned 跟踪 **不等于 unlimited skills**，仍受数据分布、接触建模与实机 Sim2Real 约束。
+- 工程可及性较好（代码 <https://github.com/NVlabs/HOVER/>），但本页属 **索引级归纳**（#14/41，02 Goal-conditioned 学习），量化指标以原文与项目页为准。
+
 ## 常见误区
 
 1. Goal-conditioned 跟踪不等于 unlimited skills：仍受数据分布、接触建模与实机 Sim2Real 约束。

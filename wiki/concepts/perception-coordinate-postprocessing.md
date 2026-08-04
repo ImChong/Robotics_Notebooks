@@ -4,6 +4,7 @@ tags: [perception, coordinate-transform, calibration, robotics, soccer, tf]
 status: complete
 updated: 2026-07-23
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../formalizations/3d-coordinate-transforms-vision-robotics.md
   - ../formalizations/homogeneous-coordinates-transform.md
   - ../methods/soccer-field-line-detection.md

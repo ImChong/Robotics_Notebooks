@@ -84,6 +84,8 @@ CANONICAL_TOPIC_PAGES: dict[str, str] = {
     "model predictive control": "wiki/methods/model-predictive-control.md",
     "cbf": "wiki/concepts/control-barrier-function.md",
     "control barrier function": "wiki/concepts/control-barrier-function.md",
+    "cmdp": "wiki/formalizations/cmdp.md",
+    "constrained mdp": "wiki/formalizations/cmdp.md",
     "vla": "wiki/methods/vla.md",
     "vision-language-action": "wiki/methods/vla.md",
     "sim2real": "wiki/concepts/sim2real.md",

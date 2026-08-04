@@ -46,6 +46,14 @@ Omni-Perception 的人形机器人学习论文条目，当前处于 Paper Notebo
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**这条目的两个关键词是「全向」和「动态环境」：标题把腿足避障从前向视野推到 360°、从静态地形推到会移动的障碍；但本页尚未深读，代价一侧完全空白。**
+
+- 可确认信息：分类 05_Locomotion、arXiv 2505.19214、深读状态「待撰写」；机制线索仅有「腿足运动的全向碰撞规避」。
+- 本页无法回答的恰是最要紧的几个问题：用什么传感配置实现全向覆盖、动态障碍下的反应延迟与成功率如何、是否真机验证。
+- 因此当前只能作为占位与检索入口，挂在 [paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md) 之下；量化 benchmark 与实机指标待深读笔记补充。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

@@ -51,6 +51,14 @@ SoftMimic 的人形机器人学习论文条目，当前处于 Paper Notebooks �
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页目前是双索引下的占位节点：SoftMimic 在运动小脑技术地图里已有明确定位，但论文自身的机制归纳仍待深读笔记补齐。**
+
+- 已确认的定位是：[运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 将其归入 **I 柔顺与接触**（60/64），对应「柔顺全身控制也在成为 tracking 条件」这一趋势判断。
+- 其余均为策展元数据：分类 14_Human_Motion、arXiv 2510.17792、深读笔记待撰写。
+- 页面的作用是保持知识图谱完整；机制、实验与适用边界须等深读笔记完成后回填，此前不宜作为技术结论引用。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)

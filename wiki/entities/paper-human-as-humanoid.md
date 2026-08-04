@@ -142,6 +142,16 @@ PhysDex 是 flow-matching DiT 结构的 VLA，条件来自 PhysBrain VLM tokens�
 | 开源状态 | 截至 2026-07-22，项目页未列官方 GitHub/代码仓库；只提供项目页、视频、摘要与 BibTeX |
 | 源码运行时序图 | **不适用**：没有可运行官方仓库或 README 入口，不能构造代码级运行时序 |
 
+## 结论
+
+**这篇工作真正的赌注下在硬件与接口层：先用人形对齐本体把 embodiment gap 前置消掉，人类 ego-exo 视频才可能直接当作 controller-aligned 动作标签使用，而不是事后再做一次有损重定向。**
+
+- 起作用的是三段耦合而非单一模块：PrimeU 60-DoF 人体比例本体（手长比 **1.00**、肩到中指尖 reach 比 **1.02**）、ego/exo 分工（ego 对齐部署观测、exo 负责抗遮挡运动恢复）、分阶段 IK 直接输出 60-DoF action chunks。
+- 关键指标不是任务成功率而是**动作接口诊断**：human-only → 真机 eval 的 normalized MAE **0.0080**、EE error **5.34 mm**，验证的是转换标签是否落在 PrimeU 可执行动作流形上；吞吐侧是约 **20 FPS** 转换与相对遥操作 **4.8–7.2×** 的示范产出。
+- zero-shot 的边界必须说清：指目标任务无机器人示范，不是无机器人模型、无标定、无真实部署验证。
+- 主要失败模式是误差级联与模态缺失：exo 姿态估计错误、手指遮挡、IK 局部最优都会被写进训练标签；力/触觉与物体受力根本不在这条链路里。
+- 工程侧绑定 PrimeU 的 URDF、关节顺序与控制器 convention，且截至 2026-07-22 无官方代码发布；与 [HumanoidUMI](./paper-humanoidumi.md)、[VLK](./paper-vlk-synthetic-loco-manipulation.md) 并列，是高 DoF 接触数据的第三种入口。
+
 ## 局限与风险
 
 - **绑定 PrimeU 形态与接口**：action labels 依赖 PrimeU URDF、关节顺序、控制器 convention；迁移到 G1、H1 或其他上身平台需要重新 retarget 与重新校验 FK 误差。

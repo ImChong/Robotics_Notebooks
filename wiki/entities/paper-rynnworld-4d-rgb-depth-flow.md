@@ -109,6 +109,16 @@ flowchart TB
 | **控制频率** | 推理 ~1.1s / chunk；执行 50 Hz；**~9 Hz** 重查询 |
 | **机构** | 阿里 DAMO、港中大、Hupan Lab 等 |
 
+## 结论
+
+**RynnWorld-4D 的赌注是「几何与运动必须与外观同步生成」，但真正让它能上机的是 Policy 只读一次 4D latent——把生成保真与控制频率解耦。**
+
+- 起作用的机制是 **三分支 DiT 共享 cross-attention + frame-wise 3D RoPE**；模态消融显示全 RGB-DF 优于任一子集（Depth 管空间精度、Flow 管运动敏感），去掉 4D latent 换 ResNet-18 后 Dual Picking 从 94.29 掉到 71.43%。
+- 增益集中在 **高 DoF 自遮挡** 任务：Hand-over 28.57% vs $\pi_0$ 2.86% / $\pi_{0.5}$ 0%，而 Dual Picking、Block Push 这类基线已近饱和的任务几乎拉不开差距——这是补短板而非全面超越。
+- 部署上 **$N{=}1$ 前向 + 4 步 ODE**（~1.1 s/chunk，~9 Hz 重规划）是相对「多步 denoise 再 IDM」路线的核心工程取舍：不必在线解码完整视频也能控制。
+- 主要局限：单 FPV RGB-D 遮挡敏感；254.4M 帧依赖 **伪 depth/flow 标注**，不能当真值；长 horizon 的 4D 一致性与动作忠实度尚未验证；算力门槛高。
+- 与 [MECo-WAM](./paper-meco-wam-4d-geometry-cotraining.md) 构成同一问题的两端：本页 **推理期保留 4D 生成**，后者 **训练加 4D、部署零几何**；指标口径以原文报告的任务与硬件为准，非跨库统一榜单。
+
 ## 与其他工作对比
 
 | 工作 | 关系 |

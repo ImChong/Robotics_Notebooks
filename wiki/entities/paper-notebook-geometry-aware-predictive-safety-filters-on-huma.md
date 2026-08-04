@@ -46,6 +46,14 @@ Geometry-Aware Predictive Safety Filters on Humanoids 的人形机器人学习�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页当前是知识图谱里的占位节点，而不是对这篇论文的判断：它的作用是先把该条目挂进 05_Locomotion 分类不丢链，实质结论要等深读笔记完成后回填。**
+
+- 页面现状：status 为 planned，正文只有分类归属与 PROGRESS.md 待深读状态，没有可供归纳的机制、指标或实验内容。
+- 从标题能读出的定位仅限于「人形 + 几何感知的预测式安全滤波」，归类在 05_Locomotion；任何关于方法细节或效果的判断在本页都缺乏依据。
+- 使用方式：把本页当检索入口——分类父节点 [paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md) 与 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)；要读实质内容请直接走 arXiv 原文。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

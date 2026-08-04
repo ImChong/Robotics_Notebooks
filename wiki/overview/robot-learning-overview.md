@@ -1,9 +1,12 @@
 ---
 type: overview
-updated: 2026-07-27
+updated: 2026-08-01
 summary: "Robot Learning Overview 是机器人学习知识库入口页，按控制层、学习层与系统层组织主干主题，并给出阅读顺序与问题驱动导航。"
 sources:
   - ../../sources/papers/survey_papers.md
+related:
+  - ./china-embodied-ai-labs-landscape-2026.md
+  - ./overseas-embodied-ai-labs-landscape-2026.md
 ---
 
 # Robot Learning Overview
@@ -206,6 +209,8 @@ sources:
 
 ## 关联页面
 
+- [国内具身智能实验室三层地图（2026）](./china-embodied-ai-labs-landscape-2026.md) — 国内产学研实验室导航
+- [海外具身智能实验室地图（2026）](./overseas-embodied-ai-labs-landscape-2026.md) — 海外实验室 → 方法 / 平台对照
 - [arXiv](../entities/arxiv.md) — 开放获取预印本平台宏观节点
 - [机器人顶会顶刊发表渠道对比](../comparisons/robotics-research-venues.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)

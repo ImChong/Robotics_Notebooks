@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, locomotion, rl, reward, reward-shaping, gait, energy-efficiency, safety, imitation-learning, sim2real]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-02
 summary: "人形运控 RL 的奖励项按「替谁说话」分六类：任务与跟踪、姿态与稳定、步态与接触、能效与平滑、安全与硬件、风格与模仿；总奖励为加权和 r=Σwᵢrᵢ，工程关键是权重量级排序与 exp 核跟踪项，且奖励只在训练期存在、可任意使用仿真特权真值（与观测输入互为对偶）。"
 related:
   - ./reward-design.md
@@ -16,11 +16,14 @@ related:
   - ../queries/locomotion-reward-design-guide.md
   - ../queries/humanoid-rl-cookbook.md
   - ../tasks/humanoid-locomotion.md
+  - ../entities/paper-quietwalk-humanoid-locomotion.md
+  - ../entities/paper-learning-quiet-walking-aibo.md
 sources:
   - ../../sources/personal/humanoid-loco-policy-reward-functions-faq.md
   - ../../sources/papers/reward_design.md
   - ../../sources/papers/locomotion_rl.md
   - ../../sources/papers/privileged_training.md
+  - ../../sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md
 ---
 
 # 人形机器人运控常见奖励函数分类（Humanoid Policy Reward Functions）
@@ -123,7 +126,7 @@ flowchart LR
 | 摆动相抬脚高度 | 摆动期 $\max z_{foot}$ 达标奖励 | 0.1–0.5 | 防拖脚；过强会高抬腿正步 |
 | feet air time | 单足悬空时长首次达标 $+c$ | 0.5–1.0 | legged_gym 默认项，诱导清晰迈步节律 |
 | 左右对称 / 双支撑 | 双足相位差 $\approx0.5$；双支撑占比窗口 | 0.05–0.1 | 双足步态质量项 |
-| 接触冲击 | $-(f_z)^2$ 或接触力变化率 | 0.1（宜课程渐增） | [QuietWalk](../entities/paper-quietwalk-humanoid-locomotion.md) 用冻结 PINN 从本体感知估计 GRF，无部署力传感器也能塑形冲击瞬态 |
+| 接触冲击 | $-(f_z)^2$ 或接触力变化率 | 0.1（宜课程渐增） | [人形 QuietWalk](../entities/paper-quietwalk-humanoid-locomotion.md) 用冻结 PINN 估计 GRF；运动学代理轴见 [aibo QuietWalk](../entities/paper-learning-quiet-walking-aibo.md) 的 $-\|\boldsymbol{v}_f\|^2$ |
 | 足端滑移 | $-\lVert v_{foot}\rVert^2\cdot\mathbb{1}_{contact}$ | 0.1–1.0 | 防滑脚；真机接触标志噪声大，权重宜保守 |
 
 ## D. 能效与平滑（Energy / Smoothness）

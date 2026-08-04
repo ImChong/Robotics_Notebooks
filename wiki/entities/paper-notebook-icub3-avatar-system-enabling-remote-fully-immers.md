@@ -46,6 +46,14 @@ iCub3 Avatar System 的人形机器人学习论文条目，当前处于 Paper No
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页把 iCub3 Avatar System 作为「远程全沉浸具身」这条遥操作路线的占位节点收入图谱，实质内容待深读补齐。**
+
+- 页面上最有价值的图谱信息其实是硬件演化线：[ergoCub Shared Embodied Intelligence](./paper-ergocub-shared-embodied-intelligence.md) 是自 iCub3 优化出的人因协作整机。
+- 深读笔记未撰写，沉浸式 avatar 的传感、反馈通道与延迟指标都不在本页，不能据此评估系统表现。
+- 分类为 **07_Teleoperation**，现阶段按分类父节点与总索引做交叉检索即可；细节请回到 arXiv 原文。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-07-teleoperation](../overview/paper-notebook-category-07-teleoperation.md)

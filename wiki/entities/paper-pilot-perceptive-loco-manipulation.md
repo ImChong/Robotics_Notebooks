@@ -17,6 +17,7 @@ status: complete
 updated: 2026-07-24
 arxiv: "2601.17440"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/loco-manipulation.md
   - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ../tasks/teleoperation.md

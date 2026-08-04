@@ -131,6 +131,16 @@ flowchart TB
 - **轨迹控制：** PSNR 全窗口领先；**ViPE** 从生成视频重建 pose，与 GT 对齐最紧。
 - **实时：** Causal Forcing 蒸馏后 **~8 s / 161 帧** vs 完整模型 **~4 min 48 s**。
 
+## 结论
+
+**PanoWorld 押的是几何先验而不是模型规模：把 ERP 旋转等变写进建模假设、只显式建模平移，才让一个 5B 骨干 + LoRA 同时拿到轨迹可控与长程一致。**
+
+- 真正起作用的是三件套的耦合：数据端旋转解耦让训练时 $\mathbf{R}_t=\mathbf{I}$、平移成为视觉变化的唯一驱动；DPRC 把全局平移投影为 per-ray SE(3) 射线场；GMA 在同一 PRoPE 流形按 3D 射线对应检索历史并做 confidence gating（消融 **+1.07 PSNR**，随机记忆则几何破碎）。
+- 差距集中在别人假设不成立的地方：Matrix-3D 的显式重建高延迟、高度变化易 void，OmniRoam 固定高度训练、竖向指令 ghosting——PanoWorld 在 multi-altitude 户外全面领先（480p $\mathrm{PSNR}_{75\text{-}80}$ **20.92 vs 18.02/17.02**，FID **27.64**）。
+- 适用边界由数据决定：World360 以 UAV 环视航拍为主，地面人形 egocentric 与手眼操纵覆盖有限；高 PSNR/FID 也**不保证**可用于 closed-loop 控制或 Sim2Real，仍需 [Video-as-Simulation](../concepts/video-as-simulation.md) 类交互/接触校验。
+- 明确不做的事同样重要：不做全局 mesh/GS 重建，持久 editable 3D 资产非目标，本工作是视频级 world rollout；重建侧对照见 [PanoLOG / G²PS](./paper-panolog-ggps.md)。
+- 工程与开源：Causal Forcing 蒸馏把 161 帧从 **~4 min 48 s** 压到 **~8 s**（单 H20），交互式全景探索才成立；模型/代码/World360 承诺公开，但以项目页与仓库实际上线为准。
+
 ## 局限与风险
 
 - **模态与平台：** 数据以 **UAV 环视航拍** 为主，**地面人形 egocentric / 操纵手眼** 覆盖有限；与 [HumanoidPano](./paper-notebook-humanoidpano-hybrid-spherical-panoramic-lidar-cr.md) 等 **机器人环视感知** 需额外 domain 适配。

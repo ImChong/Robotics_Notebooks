@@ -59,6 +59,16 @@ sources:
 - 评测原始出处：[原文 / 项目页](https://choice-policy.github.io)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-03-visuomotor.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**这是一条「采集—模仿—生成」的数据闭环工作：把协调的人形操作动作当成条件生成问题来采样，而不是去改底层控制器。**
+
+- 真正起作用的是条件生成这一步：用扩散/流匹配在多模态动作分布里采样可执行轨迹，而不是让行为克隆把多解动作平均掉。
+- 能力上限压在采集通道上：相机图像/多视角观测与遥操作/外骨骼数据既是输入，也是这套闭环的瓶颈。
+- 适用边界在 **03 视觉感知驱动的人形移动操作** 这一层；它不自动解决底层 WBC 鲁棒性，须与运控/接触控制工作对照。
+- 本页是 161 篇策展索引级摘录，未搬运原文量化 benchmark 与实机指标；判断有效性必须回到 [原文 / 项目页](https://choice-policy.github.io)。
+- 横向定位回到 [分类 hub](../overview/loco-manip-161-category-03-visuomotor.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

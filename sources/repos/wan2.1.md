@@ -11,7 +11,7 @@
 - **站点：** <https://wan.video>
 - **许可：** Apache-2.0
 - **入库日期：** 2026-07-23
-- **一句话说明：** 统一 `generate.py` 入口的开源视频 DiT 套件：T2V（1.3B/14B）、I2V、FLF2V、VACE 等；Wan2.2 增加 MoE、美学数据与 TI2V-5B。机器人侧 [Wan-Move](../../wiki/entities/paper-wan-move.md) / [Masked Visual Actions](../../wiki/entities/paper-masked-visual-actions.md) 等在此族上做可控微调。
+- **一句话说明：** 统一 `generate.py` 入口的开源视频 DiT 套件：T2V（1.3B/14B）、I2V、FLF2V、VACE 等；Wan2.2 增加 MoE、美学数据与 TI2V-5B。派生侧 [Wan-Move](../../wiki/entities/paper-wan-move.md) / [Wan-Dancer](../../wiki/entities/paper-wan-dancer.md) / [Masked Visual Actions](../../wiki/entities/paper-masked-visual-actions.md) 等在此族上做可控微调。
 
 ## 入口速查（对齐 Wan2.1 README）
 
@@ -36,6 +36,7 @@
 |------|------|
 | [Wan](../../wiki/entities/paper-wan-video.md) | 基础模型实体页 |
 | [Wan-Move](../../wiki/entities/paper-wan-move.md) | 轨迹可控微调（I2V-14B） |
+| [Wan-Dancer](../../wiki/entities/paper-wan-dancer.md) | 分层 music-to-dance（Wan-I2V + 音乐） |
 | [Masked Visual Actions](../../wiki/entities/paper-masked-visual-actions.md) | Wan2.2-Fun-Control + LoRA |
 | [Generative World Models](../../wiki/methods/generative-world-models.md) | 视频先验上游 |
 

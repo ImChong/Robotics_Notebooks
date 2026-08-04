@@ -49,6 +49,14 @@ Proprioceptive actuator design in the MIT Cheetah 的人形机器人学习论文
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是 MIT Cheetah 本体感受执行器一文的待深读占位节点；目前真正落地的信息只有它的定位——硬件设计线上的源头文献，以及它与 Katz thesis 的「设计理念 → 低成本落地」配对关系。**
+
+- 归类为 12_Hardware_Design，标题点明的两个诉求是冲击缓解与高带宽物理交互，这决定了它在本库属于硬件本体线而非策略学习线。
+- 与 [Katz Mini Cheetah 执行器 thesis](./paper-low-cost-modular-actuator-katz.md) 成对阅读：后者给出 COTS 电机 + 6:1 行星的低成本模块化落地路径。
+- 深读笔记尚未撰写、「实验与评测」留空，且核心信息表未列 arXiv 行；本页不能作为任何扭矩密度、带宽或冲击指标的引用出处，检索需走 PROGRESS.md 与来源归档。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)

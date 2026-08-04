@@ -101,6 +101,17 @@ $$\hat{J}_\lambda(f)=\frac{1}{M}\sum_{m=1}^{M}\bar{V}(s_m,\Phi(f))-\lambda\frac{
 
 **交互验证：** [项目页](https://nico-bohlinger.github.io/shape-your-body/) 可在浏览器内切换 Reference / Co-Design、种子与 VGDS 迭代，并用速度指令驱动**本地 URMA 策略**（与论文叙事一致，非替代 sim 指标）。
 
+## 结论
+
+**Shape Your Body 卖的不是更优的设计结果，而是共设计的成本结构：把一次多具身 RL 训练摊销成「每个新初值几分钟的价值梯度搜索」。**
+
+- 关键机制是 **direct-design critic**——description 向量不止进 attention 的键、还进值路径，$\nabla_f V$ 才对质量、PD、几何足够敏感；$K$ 头集成缓解单头过拟合。
+- 终性能相对 Schaff2019 / FEACRL / Transform2Act / BodyGen / Stackelberg PPO 只是 **持平或略优**，真正的差异是边际成本：一次 7–9 h 级训练之后每个 $f_{\mathrm{init}}$ 约 **1–2 min**。
+- 适用边界明确：仅 **固定运动链上的连续参数**（Go2 358 维 / MIT Humanoid 514 / Golem 688），加减连杆或关节没有梯度路径，且策略权重全程冻结。
+- 训练分布比训练规模更重要——六足 Golem 上 hexapod-only critic 反超 50 机全集；critic 一旦在外推区乐观，$\lambda$ 软信赖域也救不回来。
+- 副产品是 **工程诊断**：按 body part × 参数类型分解 $f^\star-f_{\mathrm{ref}}$ 可定位 PD、名义关节位、足几何、速度限等瓶颈，但更新是耦合高维的，单组参数不足以解释全部 $\Delta R$。
+- 证据全部停在 MJX 速度跟踪，未纳入制造 / 电子 / 材料约束，与 [Sim2Real](../concepts/sim2real.md) 仍是正交的下一步。
+
 ## 常见误区或局限
 
 1. **「等于再训一个共设计 RL」：** VGDS **不更新策略权重**；若 critic 在外推区乐观，信赖域也无法完全挽救——需要训练分布覆盖 $f_{\mathrm{ref}}$ 附近。

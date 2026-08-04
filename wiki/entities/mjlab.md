@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, framework, mujoco, mujoco-warp, isaac-lab-api, reinforcement-learning, gpu-simulation, nvidia, unitree]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-01
 related:
   - ./mujoco.md
   - ./mujoco-playground.md
@@ -17,6 +17,7 @@ related:
   - ./amp-mjlab.md
   - ./smp-g1-mjlab.md
   - ./unitree-rl-mjlab.md
+  - ./paper-pac-man-perceptive-cbf-rl.md
   - ./paper-yahmp.md
   - ./asimov-v1.md
   - ./weights-and-biases.md
@@ -106,6 +107,7 @@ mjlab 架构
 - [SMP on G1（mjlab）](./smp-g1-mjlab.md) — G1 上 score-matching 运动先验复现
 - [unitree-rl-mjlab](./unitree-rl-mjlab.md) — Unitree 官方以 mjlab 为底层的训练框架
 - [YAHMP](./paper-yahmp.md) — G1 全身 GMT 消融与 ONNX 部署（基于 mjlab）
+- [PAC-MAN](./paper-pac-man-perceptive-cbf-rl.md) — mjlab 上感知感知 CBF-RL 躲避球（全栈开源）
 - [Asimov v1](./asimov-v1.md) — 硬件与 MuJoCo 主仓；行走 RL 公开在 asimov-mjlab fork
 - [MuJoCo Playground](./mujoco-playground.md) — 上游任务参照；[mjlab_playground](./mjlab-playground.md) 端口
 - [训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md) — 任务与训练入口层

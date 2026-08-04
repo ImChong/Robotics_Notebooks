@@ -2,13 +2,14 @@
 type: method
 tags: [rl, imitation-learning, gan, motion-prior, humanoid]
 status: complete
-updated: 2026-07-22
+updated: 2026-08-01
 related:
   - ../overview/jason-peng-flexible-motion-skill-learning.md
   - ../entities/mimickit.md
   - ../entities/protomotions.md
   - ../entities/paper-amp-survey-08-more.md
   - ../entities/paper-adp.md
+  - ../entities/paper-pac-man-perceptive-cbf-rl.md
   - ./imitation-learning.md
   - ./beyondmimic.md
   - ./hil-hybrid-imitation-learning.md
@@ -18,6 +19,7 @@ sources:
   - ../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md
   - ../../sources/papers/more_mixture_residual_experts_arxiv_2506_08840.md
   - ../../sources/papers/adp_arxiv_2607_03454.md
+  - ../../sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
   - ../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md
   - ../../sources/papers/motion_control_projects.md
@@ -120,6 +122,7 @@ $$
 - [Behavior Cloning](../formalizations/behavior-cloning-loss.md) — HumanX 学生策略训练中使用了 BC 损失。
 - [BeyondMimic](./beyondmimic.md) — 同样是动作模仿，但 BeyondMimic 侧重于精确建模，AMP 侧重于风格判别。
 - [AMP_mjlab](../entities/amp-mjlab.md) — AMP 在 Unitree G1 + mjlab 上的工程实现，统一 locomotion+recovery。
+- [PAC-MAN](../entities/paper-pac-man-perceptive-cbf-rl.md) — AMP 正则躲避反射 + 训练期 CBF；官方仓适配 AMP_mjlab / mjlab。
 
 ## 进阶：MimicKit 与 ADD
 

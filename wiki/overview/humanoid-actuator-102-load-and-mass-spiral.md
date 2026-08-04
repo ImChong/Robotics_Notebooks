@@ -2,15 +2,17 @@
 type: overview
 tags: [humanoid, actuator, cost-of-transport, fatigue, category-hub]
 status: complete
-updated: 2026-06-02
+updated: 2026-08-03
 summary: "Actuator 102 · 01 — 每小时约 5000 步、2–3× 体重冲击、亚毫秒退让；CoT 与比力矩门槛（>10–15 Nm/kg）。"
 related:
   - ./humanoid-actuator-102-technology-map.md
   - ./humanoid-actuator-102-split-architecture.md
   - ./humanoid-hardware-101-integrated-actuators.md
+  - ../entities/paper-humanoid-leg-generative-design-dynamics.md
 sources:
   - ../../sources/blogs/wechat_human_five_humanoid_actuator_102.md
   - ../../sources/raw/wechat_humanoid_actuator_102_2026-06-02.md
+  - ../../sources/papers/humanoid_leg_generative_design_hust_j_260645.md
 ---
 
 # Actuator 102 · 01：负载与质量螺旋
@@ -52,8 +54,10 @@ sources:
 
 - [分离架构](./humanoid-actuator-102-split-architecture.md)
 - [Humanoid Hardware 101 · 集成执行器](./humanoid-hardware-101-integrated-actuators.md)
+- [动力学仿真驱动的人形下肢衍生式设计](../entities/paper-humanoid-leg-generative-design-dynamics.md) — 大/小腿连杆减重后跳跃高度提升的仿真闭环例证
 
 ## 参考来源
 
 - [wechat_human_five_humanoid_actuator_102.md](../../sources/blogs/wechat_human_five_humanoid_actuator_102.md)
 - [wechat_humanoid_actuator_102_2026-06-02.md](../../sources/raw/wechat_humanoid_actuator_102_2026-06-02.md)
+- [人形下肢衍生式设计论文归档](../../sources/papers/humanoid_leg_generative_design_hust_j_260645.md)

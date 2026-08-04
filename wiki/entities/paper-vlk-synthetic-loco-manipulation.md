@@ -152,6 +152,16 @@ VLK policy 输入当前 ego RGB、任务语言和当前 G1 kinematic state，输
 
 表明导航和地面箱体操作较稳，surface-level pick/place 更难，主要受 OMOMO/retargeted interaction 数据覆盖和不同支撑面高度影响。
 
+## 结论
+
+**VLK 的核心主张是：重建场景可以当数据工厂用——3DGS 场景一旦补上语义 boxes、walkable regions 与特权几何，就能自动合成 teleop、ego 视频、mocap 三者各缺一角的完整「视觉-语言-运动学」三元组，从而零真实微调地驱动 G1。**
+
+- 真正补上的是 **监督三元组的同步配对**：teleop 有动作但贵、ego 视频有视觉无 G1 运动学、mocap 有运动无机器人第一视角，hindsight egocentric rendering 让三者在同一条轨迹上对齐。
+- 视觉 sim2real 的成败几乎全押在 **domain randomization**：full randomization 把 lab walking 模式成功率从 **41% 拉到 90%**，这是本页最硬的单项消融证据，光靠 3DGS 的真实感并不够。
+- 接口切分显著降低了控制风险：高层只预测 1 秒、H=30 帧的全身运动学与腕接触标签，低层 [SceneBot](./paper-scenebot.md) 以 50 Hz 做接触感知跟踪；31 ms 推理、约 63 ms 端到端重规划远小于 chunk 覆盖的 1 秒。
+- 能力边界比标题窄得多：导航与地面箱体 pick/put 已稳（真机 18–20/20），**surface-level pick/place 明显更难**（真机低至 8/20），受 OMOMO/retarget 交互数据覆盖与支撑面高度限制；小物体、杯子、工具与灵巧抓取不在能力中心。
+- 落地风险集中在三处：**腕接触标签在真机不可观测、只能自回归预测**，预测错会影响稳定搬运；3D boxes 与 walkable regions 仍需人工标注，尚未是全自动数据工厂；代码标注 coming soon，48k 数据生成与部署栈无法独立验证。
+
 ## 与相邻路线对比
 
 | 路线 | 数据来源 | 策略输出 | 执行依赖 |

@@ -123,6 +123,16 @@ flowchart TB
 
 **在线 demo（HF Spaces）：** Image-to-3D、Text-to-3D、Texture-Gen 等，索引见[文档 Services](https://horizonrobotics.github.io/EmbodiedGen/docs/)。
 
+## 结论
+
+**EmbodiedGen V2 补的是世界模型缺的「环境层」：判据不是画面好不好看，而是生成出来的世界能不能直接拿去碰撞、在线 RL 与 sim-to-real。**
+
+- 真正的指标是 **可执行性** 而非视觉质量：资产接受率 96.5%、碰撞成功 98.6%、任务世界免改可用 83.3%，以及生成环境上 RL 仿真 9.7% → 79.8%、迁移真机 21.7% → 75.0%。
+- 起作用的机制是 **统一 sim-ready 表征**：几何 + 物理属性 + affordance + 任务语义 + 模拟器 portability 同一数据结构，NL → Scene Graph → 物理稳定性求解 → URDF / MJCF / USD 导出，才使跨模拟器直连成立。
+- 适用边界：83.3% 不等于任意自然语言都行，仍受生成后端失败与物理求解约束；生成分布与真机视觉域仍有 gap，接触丰富的失败模式未必覆盖，跨模拟器数值差异需额外校准。
+- 与视频 WM 是分工而非竞争：[GigaWorld-1](./paper-gigaworld-1-policy-evaluation.md) 类预测未来画面、做策略评估，本页产出可 RL 的 3D 状态；对「动作忠实 rollout」的评估问题正交、互不替代。
+- 开源程度是它相对经典 digital twin 的实际优势：GitHub、文档、约 4.1K 资产 / ~346 GB 的 EmbodiedGenData 与 `img3d/text3d/affordance/room/layout+sim` 等 CLI 齐全，但多数管线仍需自配 GPT 后端。
+
 ## 与其他工作对比
 
 | 工作 | 关系 |

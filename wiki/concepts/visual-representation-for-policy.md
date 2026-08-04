@@ -11,6 +11,7 @@ tags:
 status: complete
 updated: 2026-07-30
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ./vision-backbones.md
   - ./generative-vision-pretraining.md
   - ../comparisons/cnn-vs-vit-backbones.md

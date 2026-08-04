@@ -4,6 +4,7 @@ tags: [perception, control, visual-servoing, manipulation, camera]
 status: complete
 updated: 2026-07-23
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../concepts/tactile-sensing.md
   - ../tasks/manipulation.md
   - ../concepts/state-estimation.md

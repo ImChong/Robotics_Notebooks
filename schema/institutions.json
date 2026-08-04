@@ -1,6 +1,13 @@
 {
   "_doc": "研究机构注册表（单一事实源）。generate_link_graph.py 据此从每个 wiki 节点的 frontmatter tags 派生「所属机构」，页面也可用 frontmatter `institutions: [..]` 显式覆盖。aliases 为精确匹配的 tag token（小写），不做子串匹配以避免误命中。展示 label 统一为「中文（English）」格式（见 schema/naming.md § 研究机构命名）。新增机构在此追加即可，无需改前端。",
   "registry": {
+    "astar": {
+      "label": "新加坡科技研究局（A*STAR）",
+      "aliases": [
+        "astar",
+        "a-star"
+      ]
+    },
     "nvidia": {
       "label": "英伟达（NVIDIA）",
       "aliases": [
@@ -42,6 +49,12 @@
       "label": "开放人工智能（OpenAI）",
       "aliases": [
         "openai"
+      ]
+    },
+    "anthropic": {
+      "label": "人类智能（Anthropic）",
+      "aliases": [
+        "anthropic"
       ]
     },
     "physical-intelligence": {
@@ -298,6 +311,13 @@
         "allen-ai"
       ]
     },
+    "avic-facri": {
+      "label": "中航工业西安飞行自动控制研究所（AVIC FACRI）",
+      "aliases": [
+        "avic-facri",
+        "facri"
+      ]
+    },
     "amazon": {
       "label": "亚马逊（Amazon）",
       "aliases": [
@@ -330,6 +350,13 @@
       "aliases": [
         "toyota-research",
         "tri"
+      ]
+    },
+    "torc": {
+      "label": "托克机器人（Torc Robotics）",
+      "aliases": [
+        "torc",
+        "torc-robotics"
       ]
     },
     "sfu": {
@@ -2196,6 +2223,69 @@
       "aliases": [
         "simple-ai",
         "simpleai"
+      ]
+    },
+    "edinburgh": {
+      "label": "爱丁堡大学（University of Edinburgh）",
+      "aliases": [
+        "edinburgh",
+        "university-of-edinburgh",
+        "uoe",
+        "edinburgh-informatics"
+      ]
+    },
+    "monash": {
+      "label": "莫纳什大学（Monash University）",
+      "aliases": [
+        "monash",
+        "monash-university",
+        "monash-uni"
+      ]
+    },
+    "noematrix": {
+      "label": "诺玛矩阵（Noematrix）",
+      "aliases": [
+        "noematrix",
+        "noematrix-ltd"
+      ]
+    },
+    "texas-am": {
+      "label": "德州农工大学（Texas A&M University）",
+      "aliases": [
+        "texas-am",
+        "tamu",
+        "texas-a-and-m"
+      ]
+    },
+    "brown": {
+      "label": "布朗大学（Brown University）",
+      "aliases": [
+        "brown",
+        "brown-university"
+      ]
+    },
+    "mcgill": {
+      "label": "麦吉尔大学（McGill University）",
+      "aliases": [
+        "mcgill",
+        "mcgill-university"
+      ]
+    },
+    "utoronto": {
+      "label": "多伦多大学（University of Toronto）",
+      "aliases": [
+        "utoronto",
+        "toronto",
+        "university-of-toronto",
+        "u-of-t"
+      ]
+    },
+    "2012-labs": {
+      "label": "二零一二实验室（2012 Labs）",
+      "aliases": [
+        "2012-labs",
+        "2012labs",
+        "foundation-model-2012-labs"
       ]
     },
     "tongji": {

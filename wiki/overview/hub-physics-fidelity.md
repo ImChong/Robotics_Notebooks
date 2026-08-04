@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-physics-fidelity, simulation, physics, dynamics, contact, friction, sim2real, fidelity]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-03
 summary: "仿真物理保真度知识链汇总：从几何/URDF 精度 → 刚体动力学算法（ABA/RNEA）→ 接触/摩擦模型 → 执行器模型四层物理保真度的统一入口，串起各层对 sim2real gap 的贡献、建模成本与取舍，收纳分散的动力学/接触/摩擦/可微仿真概念页。"
 ---
 
@@ -66,3 +66,4 @@ summary: "仿真物理保真度知识链汇总：从几何/URDF 精度 → 刚�
 
 - 本库归纳自 [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md)、[Physics Fidelity ↔ Sim2Real Gap](../concepts/physics-fidelity-sim2real-gap.md)
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`physics-fidelity` 命中规则）
+- 上游原始资料（本链概念页共同的 ingest 来源）：[四足机器人：从动力学建模到强化学习](../../sources/courses/quadruped_control_simulation_rl_curriculum.md)、[BAM：舵机扩展摩擦模型辨识（arXiv:2410.08650）](../../sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md)、[SAGE：Sim2Real 执行器差距估计](../../sources/repos/sage-sim2real-actuator-gap.md)

@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-03
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 04：运动操作与全身控制（142 篇深读笔记索引）。"
@@ -174,6 +174,8 @@ summary: "Paper Notebooks 分类 04：运动操作与全身控制（142 篇深�
 
 - [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)
 - [schema/paper-notebook-index.json](../../schema/paper-notebook-index.json)
+- 站点来源归档：[humanoid-robot-learning-paper-notebooks](../../sources/sites/humanoid-robot-learning-paper-notebooks.md)
+- 本类论文 ingest 归档（节选）：[人形 Loco-Manip 161 篇论文 source 索引](../../sources/papers/humanoid_loco_manip_161_catalog.md)、[161 篇论文看人形移动操作技术版图](../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md)、[Loco-Manip 接触、力控与 VLA 梳理](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md)
 
 ## 推荐继续阅读
 

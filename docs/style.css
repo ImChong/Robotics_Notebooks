@@ -1,18 +1,19 @@
 :root {
   color-scheme: dark;
-  /* Dark Mode（默认）：柔和深灰 + 淡蓝点缀 */
-  --bg: #1c1c1e;
-  --bg-alt: #2c2c2e;
-  --surface: rgba(44, 44, 46, 0.85);
-  --surface-strong: #2c2c2e;
-  --border: #3a3a3c;
-  --border-strong: #6e6e73;
-  --text: #f5f5f7;
-  --text-muted: #9b9ba0;
-  --accent: #5ea0eb;
-  --accent-hover: #7fb6f0;
-  --quote-bg: rgba(94, 160, 235, 0.08);
-  --header-bg: rgba(28, 28, 30, 0.85);
+  /* Dark Mode（默认）：与 https://imchong.github.io/ 同源配色（Notion 风中性灰 + 淡蓝点缀）
+     底色与 3D 图谱画布 (graph-3d.js backgroundColor) 同为 #191919，2D/3D 切换无色差 */
+  --bg: #191919;
+  --bg-alt: #222222;
+  --surface: rgba(47, 47, 47, 0.85);
+  --surface-strong: #2f2f2f;
+  --border: #3d3d3d;
+  --border-strong: #6b6a67;
+  --text: #e8e8e4;
+  --text-muted: #9b9a97;
+  --accent: #5b9cf6;
+  --accent-hover: #7ab3ff;
+  --quote-bg: rgba(91, 156, 246, 0.08);
+  --header-bg: rgba(25, 25, 25, 0.85);
   --header-border: rgba(255, 255, 255, 0.08);
   --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.08);
@@ -26,24 +27,30 @@
   --detail-toc-panel-max-height: min(76vh, 680px);
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Noto Sans SC", sans-serif;
   --transition: 0.3s ease;
+  /* 全站细密点阵底纹：body 与 .hero-backdrop 共用同一尺寸，
+     两者定位原点都在文档 (0,0) 且随内容滚动，叠加时点位对齐、不出现摩尔纹 */
+  --grid-size: 22px;
+  --grid-dot: rgba(155, 154, 151, 0.2);
 }
 
 [data-theme="light"] {
   color-scheme: light;
-  /* Light Mode (imchong.github.io style + warm quote block) */
+  /* Light Mode：与 https://imchong.github.io/ 同源配色（Notion 风暖白） */
   --bg: #ffffff;
-  --bg-alt: #f5f5f7;
+  --bg-alt: #f7f6f3;
   --surface: rgba(255, 255, 255, 0.85);
   --surface-strong: #ffffff;
-  --border: #d2d2d7;
-  --border-strong: #86868b;
-  --text: #1d1d1f;
-  --text-muted: #86868b;
-  --accent: #0066cc;
-  --accent-hover: #004499;
-  --quote-bg: #fef7f5;
+  --border: #e8e8e4;
+  --border-strong: #787774;
+  --text: #37352f;
+  --text-muted: #787774;
+  --accent: #2d74da;
+  --accent-hover: #1a5bb8;
+  --quote-bg: rgba(45, 116, 218, 0.08);
   --header-bg: rgba(255, 255, 255, 0.8);
   --header-border: rgba(0, 0, 0, 0.1);
+  /* 亮色保持纯净底，仅首屏 .hero-backdrop 保留点阵 */
+  --grid-dot: transparent;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -57,7 +64,9 @@ html {
 }
 body {
   font-family: var(--font-sans);
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image: radial-gradient(circle, var(--grid-dot) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
   color: var(--text);
   line-height: 1.5;
   transition: background var(--transition), color var(--transition);
@@ -224,10 +233,11 @@ body.sponsor-dialog-open {
 
 /* ── 首页 Landing 首屏 ─────────────────────────────────────────────
    .hero 只用于 index.html（其余页面用 .page-hero），可独立调整。
-   与 #home-start 的 padding-top:0 配合，Hero + 入口卡片读作同一屏。 */
+   与 #home-start 的 padding-top:0 配合，Hero + 入口卡片读作同一屏。
+   顶距刻意压到 ~32px：避免顶栏下方大块留白把入口卡挤出首屏。 */
 .hero {
   position: relative;
-  padding: 68px 0 44px;
+  padding: 32px 0 28px;
   isolation: isolate;
 }
 /* 氛围层：左上角柔光 + 向下渐隐的点阵，给首屏一点「地图 / 图纸」质感 */
@@ -248,7 +258,7 @@ body.sponsor-dialog-open {
   position: absolute;
   inset: 0;
   background-image: radial-gradient(circle, var(--border-strong) 1px, transparent 1px);
-  background-size: 26px 26px;
+  background-size: var(--grid-size) var(--grid-size);
   opacity: 0.2;
   -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 78%);
   mask-image: linear-gradient(180deg, #000 0%, transparent 78%);
@@ -272,6 +282,25 @@ body.sponsor-dialog-open {
   border-radius: 50%;
   background: var(--accent);
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+  /* 慢呼吸（非闪烁）：窄幅 opacity + 正弦感曲线 + 峰谷短暂停留；减动见下方 */
+  animation: hero-badge-dot-breathe 3.6s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+@keyframes hero-badge-dot-breathe {
+  /* 下限保持可见，避免「灭灯」感；外环只做微强弱，不扩光晕 */
+  0%, 100% {
+    opacity: 0.68;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 16%, transparent);
+  }
+  40%, 55% {
+    opacity: 1;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 24%, transparent);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-badge-dot {
+    animation: none;
+    opacity: 1;
+  }
 }
 .hero .hero-title {
   font-size: clamp(2.05rem, 5vw, 3.35rem);
@@ -286,8 +315,8 @@ body.sponsor-dialog-open {
 .hero-stats {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px 44px;
-  max-width: 560px;
+  gap: 16px 36px;
+  max-width: 720px;
   margin: 0;
   padding: 22px 0 0;
   list-style: none;
@@ -301,6 +330,27 @@ body.sponsor-dialog-open {
   color: var(--text);
   letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+  text-decoration: none;
+  width: fit-content;
+  border-radius: 4px;
+  transition: color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  display: inline-block;
+}
+/* count-up 期间保持终值文字色，不做变色/位移动画 */
+.hero-stat-num.is-counting,
+.hero-stat-num.is-count-pending {
+  color: var(--text);
+  transition: none;
+}
+a.hero-stat-num:hover,
+a.hero-stat-num:focus-visible {
+  color: var(--accent);
+  text-decoration: none;
+}
+a.hero-stat-num:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 .hero-stat-label { font-size: 0.82rem; font-weight: 500; color: var(--text-muted); }
 .hero-kicker {
@@ -481,6 +531,67 @@ body.sponsor-dialog-open {
 .section { padding: 44px 0; }
 /* 首页入口区与 Hero 同底色、语义相连：去掉自身顶距，只保留 Hero 底部留白 */
 #home-start.section { padding-top: 0; }
+/* 路线数字用 JS scrollIntoView(block:center)，不再用 scroll-margin 顶对齐 */
+
+/* Hero 盘点 / 入口卡定位模块：SVG 短弧沿边框顺时针扫一圈 */
+.is-border-tracing {
+  position: relative;
+  z-index: 1;
+}
+.home-border-trace-svg {
+  /* left/top/width/height 由 JS 按 border-box + 外扩像素写入，
+     避免 padding-box 的 inset/% 与 offsetWidth 在亚像素宽度下错位 */
+  position: absolute;
+  inset: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  pointer-events: none;
+  z-index: 4;
+  overflow: visible;
+}
+.home-border-trace-svg rect {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+  /* 避免对动画中的 dashoffset 每帧做 drop-shadow（主线程/合成开销大，点击后易卡） */
+  stroke-dasharray: 14 86;
+  stroke-dashoffset: 0;
+  animation: home-border-trace-dash 2.1s linear forwards;
+}
+@keyframes home-border-trace-dash {
+  to { stroke-dashoffset: -100; }
+}
+.home-route-toggle.is-pulse-hint,
+#mini-graph-expand.is-pulse-hint {
+  animation: home-route-toggle-hint 0.85s ease 2;
+}
+@keyframes home-route-toggle-hint {
+  0%, 100% {
+    color: var(--accent);
+    text-shadow: none;
+    filter: none;
+  }
+  35%, 65% {
+    color: var(--accent-hover);
+    text-shadow: 0 0 14px color-mix(in srgb, var(--accent) 55%, transparent);
+    filter: brightness(1.25);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-border-trace-svg rect {
+    animation: none;
+    stroke-dasharray: none;
+    opacity: 0.95;
+  }
+  .home-route-toggle.is-pulse-hint,
+  #mini-graph-expand.is-pulse-hint {
+    animation: none;
+    color: var(--accent-hover);
+  }
+}
 .section-alt {
   background: linear-gradient(180deg, rgba(255,255,255,.25), rgba(255,255,255,.1)), var(--bg-alt);
   border-top: 1px solid var(--border);
@@ -496,6 +607,15 @@ body.sponsor-dialog-open {
 #mini-graph-section #mini-graph-wrap {
   margin-top: 18px;
 }
+/* 搜索联动：输入关键词时背景图谱高亮相关节点、其余淡出 */
+.mini-graph-node { transition: opacity var(--transition, .2s) ease; }
+.mini-graph-node.mini-node-dim { opacity: .15; }
+.mini-graph-node.mini-node-hit circle {
+  stroke: var(--accent);
+  stroke-width: 2;
+  paint-order: stroke;
+}
+#mini-graph-svg line.mini-edge-dim { opacity: .08; transition: opacity var(--transition, .2s) ease; }
 /* 首页图谱预览 2D / 3D 切换（3D 画布懒加载，容器与 SVG 同位叠放） */
 #mini-graph-3d { position: absolute; inset: 0; }
 #mini-graph-3d[hidden] { display: none; }
@@ -963,20 +1083,20 @@ a .updates-item-opensource {
   --hm-weeks: 53;
   --hm-cell-min: 8px; /* 格子宽度下限：低于则容器横向滚动 */
   --hm-gap: 3px;
-  --hm-level-0: #2c2c2e;
-  --hm-level-1: #1d4f8c;
-  --hm-level-2: #2a6cb4;
-  --hm-level-3: #4b8fd9;
-  --hm-level-4: #7fb6f0;
+  --hm-level-0: #2f2f2f;
+  --hm-level-1: #1e528f;
+  --hm-level-2: #2c72bd;
+  --hm-level-3: #4c93e0;
+  --hm-level-4: #7ab3ff;
   --hm-cell-line: rgba(255, 255, 255, 0.06);
   margin-bottom: 20px;
 }
 [data-theme="light"] .home-wiki-heatmap {
-  --hm-level-0: #ebedf0;
-  --hm-level-1: #6faede;
-  --hm-level-2: #3f8ad2;
-  --hm-level-3: #1a6cbe;
-  --hm-level-4: #084d99;
+  --hm-level-0: #eceae6;
+  --hm-level-1: #84b1ec;
+  --hm-level-2: #4e91ef;
+  --hm-level-3: #2d74da;
+  --hm-level-4: #17509f;
   --hm-cell-line: rgba(27, 31, 36, 0.06);
 }
 .home-wiki-heatmap-scroll {
@@ -1278,7 +1398,7 @@ button.home-wiki-heatmap-cell.is-active {
   max-width: none;
 }
 .roadmap-hero-summary li::marker {
-  color: var(--accent, #00d4ff);
+  color: var(--accent, #5b9cf6);
 }
 /* 路线页首屏：与面包屑 / 下方正文主栏同左缘（勿对 hero 单独加 TOC 缩进） */
 .page-hero.detail-hero .detail-hero-top > div:first-child {
@@ -1319,6 +1439,13 @@ button.home-wiki-heatmap-cell.is-active {
   grid-template-columns: minmax(0, 1fr);
   gap: 12px;
   align-items: start;
+}
+/* 详情页标题末尾开源 ⭐️：与首页/更新记录列表行同标记 */
+.detail-hero h1 .updates-item-opensource {
+  margin-left: 0.2em;
+  padding-right: 0;
+  font-size: 0.82em;
+  vertical-align: 0.05em;
 }
 .detail-breadcrumb {
   display: flex;
@@ -1381,8 +1508,8 @@ button.home-wiki-heatmap-cell.is-active {
   gap: 5px;
   padding: 2px 9px;
   border-radius: 999px;
-  border: 1px solid rgba(0, 212, 255, 0.3);
-  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid rgba(91, 156, 246, 0.3);
+  background: rgba(91, 156, 246, 0.06);
   color: var(--text);
   font-size: inherit;
   line-height: 1.35;
@@ -1390,8 +1517,8 @@ button.home-wiki-heatmap-cell.is-active {
   transition: background .15s ease, border-color .15s ease;
 }
 .detail-meta-badge:hover {
-  background: rgba(0, 212, 255, 0.14);
-  border-color: rgba(0, 212, 255, 0.5);
+  background: rgba(91, 156, 246, 0.14);
+  border-color: rgba(91, 156, 246, 0.5);
 }
 .detail-meta-badge span:first-child { font-size: .95em; line-height: 1; }
 .detail-community-badge {
@@ -1473,6 +1600,16 @@ button.home-wiki-heatmap-cell.is-active {
 .detail-mini-map-svg .mini-node-current circle {
   stroke: var(--accent);
   stroke-width: 2.4px;
+}
+/* 正文内链 ↔ 迷你图联动高亮：悬停一侧，另一侧同一节点点亮 */
+.detail-mini-map-svg .mini-node-linked circle {
+  stroke: var(--accent);
+  stroke-width: 2.4px;
+  fill-opacity: 1;
+}
+.detail-mini-map-svg .mini-node-linked text {
+  fill: var(--text);
+  font-weight: 700;
 }
 .detail-content-sync {
   border: 1px solid var(--border);
@@ -1990,6 +2127,11 @@ button.home-wiki-heatmap-cell.is-active {
 .detail-markdown-body a {
   color: var(--accent);
 }
+.detail-markdown-body a.detail-inline-link-linked {
+  background: rgba(91, 156, 246, 0.14);
+  border-radius: 4px;
+  box-shadow: 0 0 0 2px rgba(91, 156, 246, 0.14);
+}
 .detail-markdown-body code {
   padding: .12em .38em;
   border-radius: 6px;
@@ -2013,7 +2155,7 @@ button.home-wiki-heatmap-cell.is-active {
   overflow-x: auto;
   padding: 12px 0;
   border-radius: 8px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #e8e8e4;
   background: #ffffff;
   font-family: "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
   font-size: .875rem;
@@ -2021,8 +2163,8 @@ button.home-wiki-heatmap-cell.is-active {
   white-space: pre;
 }
 :root:not([data-theme="light"]) .detail-markdown-body .detail-code-block {
-  border-color: #3c3c3c;
-  background: #1e1e1e;
+  border-color: #3d3d3d;
+  background: #222222;
 }
 .detail-markdown-body .code-row {
   display: flex;
@@ -2038,13 +2180,13 @@ button.home-wiki-heatmap-cell.is-active {
   width: 3rem;
   padding-right: 12px;
   text-align: right;
-  color: #8c959f;
+  color: #787774;
   background: #ffffff;
   user-select: none;
 }
 :root:not([data-theme="light"]) .detail-markdown-body .code-ln {
-  color: #6e7681;
-  background: #1e1e1e;
+  color: #6b6a67;
+  background: #222222;
 }
 .detail-markdown-body .code-cell {
   flex: 1;
@@ -2179,6 +2321,8 @@ button.home-wiki-heatmap-cell.is-active {
   padding: 24px 0;
   color: var(--text-muted);
   font-size: 0.85rem;
+  /* 铺纯色底盖住 body 的点阵，页脚不带点 */
+  background: var(--bg);
 }
 .footer .container {
   display: flex;
@@ -2331,7 +2475,7 @@ button.home-wiki-heatmap-cell.is-active {
     line-height: 1;
   }
   .hero {
-    padding: 38px 0 30px;
+    padding: 24px 0 22px;
   }
   .hero-badge { margin-bottom: 16px; }
   .hero .hero-subtitle { margin-bottom: 24px; }
@@ -2557,11 +2701,11 @@ button.home-wiki-heatmap-cell.is-active {
   background:transparent; color:var(--text-muted, rgba(0,0,0,0.5));
   font-size:.76rem; cursor:pointer; transition:all .15s;
 }
-.tag-chip:hover { border-color:var(--accent, #1659b4); color:var(--accent, #1659b4); }
+.tag-chip:hover { border-color:var(--accent, #2d74da); color:var(--accent, #2d74da); }
 
 /* --- Search Result Keyboard Selection --- */
 .card.search-result-selected {
-  outline:2px solid var(--accent, #1659b4);
+  outline:2px solid var(--accent, #2d74da);
   outline-offset:2px;
 }
 
@@ -2578,8 +2722,29 @@ button.home-wiki-heatmap-cell.is-active {
   padding-top:8px;
 }
 .search-tier-heading:first-child { border-top:0; padding-top:0; margin-top:4px; }
-.search-tier-heading.search-tier-exact { color:var(--accent, #1659b4); }
+.search-tier-heading.search-tier-exact { color:var(--accent, #2d74da); }
 .search-tier-heading .data-meta { font-weight:400; opacity:.75; margin-left:4px; }
+
+/* --- Search Result Quick Preview（卡片式快速预览：默认收起摘要，可就地展开全文） --- */
+.result-summary { margin:0; }
+.result-summary.is-clamped {
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  overflow:hidden;
+}
+.result-preview-toggle {
+  margin-top:6px;
+  padding:0;
+  border:0;
+  background:none;
+  color:var(--accent);
+  font:inherit;
+  font-size:.75rem;
+  cursor:pointer;
+}
+.result-preview-toggle:hover { color:var(--accent-hover); text-decoration:underline; }
+.result-preview-toggle:focus-visible { outline:2px solid var(--accent); outline-offset:2px; border-radius:4px; }
 
 /* --- Roadmap page: vertical tree --- */
 .roadmap-flow-section {
@@ -3178,7 +3343,7 @@ button.home-wiki-heatmap-cell.is-active {
 }
 .related-community-bar-track {
   position: relative;
-  background: rgba(94, 160, 235, 0.10);
+  background: rgba(91, 156, 246, 0.10);
   border-radius: 4px;
   height: 10px;
   overflow: hidden;
@@ -3235,8 +3400,8 @@ button.home-wiki-heatmap-cell.is-active {
 }
 .graph-hover-tooltip.tt-pinned {
   pointer-events: auto;
-  border-color: rgba(0, 212, 255, 0.35);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(0, 212, 255, 0.15);
+  border-color: rgba(91, 156, 246, 0.35);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(91, 156, 246, 0.15);
 }
 .graph-hover-tooltip .tt-type {
   display: inline-block;
@@ -3268,7 +3433,7 @@ button.home-wiki-heatmap-cell.is-active {
 .graph-hover-tooltip .tt-title {
   font-size: 0.92rem;
   font-weight: 700;
-  color: #e6edf3;
+  color: #e8e8e4;
   margin-bottom: 5px;
   line-height: 1.3;
 }
@@ -3280,15 +3445,15 @@ button.home-wiki-heatmap-cell.is-active {
 .graph-hover-tooltip .tt-link {
   display: inline-block;
   font-size: 0.72rem;
-  color: rgba(0, 212, 255, 0.8);
+  color: rgba(91, 156, 246, 0.8);
   margin-top: 9px;
   text-decoration: none;
-  border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+  border-bottom: 1px solid rgba(91, 156, 246, 0.3);
   transition: color 0.12s, border-color 0.12s;
 }
 .graph-hover-tooltip .tt-link:hover {
-  color: #00d4ff;
-  border-color: rgba(0, 212, 255, 0.7);
+  color: #5b9cf6;
+  border-color: rgba(91, 156, 246, 0.7);
 }
 [data-theme="light"] .graph-hover-tooltip {
   background: rgba(255, 255, 255, 0.98);
@@ -3296,20 +3461,20 @@ button.home-wiki-heatmap-cell.is-active {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
 }
 [data-theme="light"] .graph-hover-tooltip .tt-title {
-  color: #1a1a1a;
+  color: #37352f;
 }
 [data-theme="light"] .graph-hover-tooltip .tt-summary {
   color: rgba(0, 0, 0, 0.5);
 }
 [data-theme="light"] .graph-hover-tooltip .tt-link {
-  color: rgba(22, 90, 180, 0.85);
-  border-color: rgba(22, 90, 180, 0.3);
+  color: rgba(45, 116, 218, 0.85);
+  border-color: rgba(45, 116, 218, 0.3);
 }
 [data-theme="light"] .graph-hover-tooltip .tt-link:hover {
-  color: #1659b4;
-  border-color: rgba(22, 90, 180, 0.7);
+  color: #2d74da;
+  border-color: rgba(45, 116, 218, 0.7);
 }
 [data-theme="light"] .graph-hover-tooltip.tt-pinned {
-  border-color: rgba(22, 90, 180, 0.35);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(22, 90, 180, 0.15);
+  border-color: rgba(45, 116, 218, 0.35);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(45, 116, 218, 0.15);
 }

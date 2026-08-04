@@ -59,6 +59,14 @@ Harmon 先从语言指令、本体状态与关节序列、人类视频/动捕轨
 - 评测原始出处：[原文 / 项目页](https://ut-austin-rpl.github.io/Harmon/)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-04-generative-language-trajectory.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**Harmon 的取舍是「语言先落成全身运动」：它把语言描述当作生成条件，产出的是全身轨迹/动作序列，而不是一套关节级控制策略。**
+
+- 关键机制是条件生成：语言指令、本体状态与关节序列、人类视频/动捕轨迹先恢复成运动表征，再由 AMP/运动先验、扩散策略/流匹配与 VLM 语义规划/路由采样全身轨迹。
+- 适用边界在 **04 生成式运动、语言控制与轨迹规划**：生成层可行不等于执行层稳定，底层 WBC 鲁棒性须与运控/接触控制条目对照。
+- 索引级局限：本页未搬运原文量化 benchmark 与实机指标，评测口径以 [原文 / 项目页](https://ut-austin-rpl.github.io/Harmon/) 为准。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

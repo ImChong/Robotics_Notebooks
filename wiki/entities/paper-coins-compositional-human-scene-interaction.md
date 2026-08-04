@@ -126,6 +126,16 @@ flowchart TB
 - **感知研究：** 二元强制选择中 COINS 显著优于 PiGraph-X / POSA-I。
 - **项目页补充：** 未见 action–object 组合、极端体型、噪声分割物体等定性案例。
 
+## 结论
+
+**COINS 把人–场景交互的可控性从「几何邻近」推进到「动作 + 物体实例」的语义组合，代价是只生成静态姿态、完全不碰动力学。**
+
+- 真正起作用的是把交互拆成可组合的 (action, object) 原子：动作 embedding 只加到配对物体 token（不泄漏到其他物体）、骨盆分布求交 + 接触统计驱动的部位级 attention mask，使 **仅用原子交互训练** 即可合成复合交互。
+- 适用边界是 **单帧静态 SMPL-X 交互姿态**：不建模连续 locomotion 或动态 manipulation，也不输出关节力矩或 RL 策略。
+- 主要失败模式是几何上难以同时自然接触的复合 action–object（如同时 touch 墙与地板），论文承认组合身体会略微牺牲语义接触分。
+- 数据侧贡献 **PROX-S**（实例分割 + 逐帧 action–object 语义）可能比方法本身更耐用；但部署依赖 SMPL-X / POSA `mesh_ds` / PROX 场景 SDF 等图形学栈。
+- 与 [TokenHSI](./paper-bfm-38-tokenhsi.md)、[PhysHSI](./paper-amp-survey-15-physhsi.md) 的人形 **控制** 路线不在同一层：COINS 的合理用法是 **合成数据 / 场景先验**，接下游还需经 [Sim2Real](../concepts/sim2real.md) 或跟踪控制器。
+
 ## 常见误区或局限
 
 - **静态姿态合成，非时序运动：** COINS 生成 **单帧/静态交互姿态**，不建模连续 locomotion 或动态 manipulation 轨迹；与 [TokenHSI](./paper-bfm-38-tokenhsi.md) 等人形 **控制** 路线问题设定不同。

@@ -50,6 +50,16 @@ World Translation 的方法链可拆成两步互补模块：
 - Unitree Go2 实机部署显示策略迁移改善。
 - 工程上适合作为 domain randomization / system identification 的补充，而不是替代安全约束和在线校准。
 
+## 结论
+
+**World Translation 针对的是一类被前向历史编码器默认排除掉的 Sim2Real 误差——隐变量在动作发生前根本没在历史里留痕；它的解法是先从结果回看反推动力学，再用无配对翻译只换域风格、不换动力学内容。**
+
+- 关键取舍在于 **放弃「动作前历史可辨识」这一假设**：突发接触、摩擦跳变正是该假设失效的场景，也是本方法唯一真正有优势的地方。
+- 机制上是两步互补：**BDE** 让 deterministic-but-imperfect 的模拟器与 accurate-but-underdetermined 的学习动力学互补，**UDT** 在缺配对样本时保内容、迁风格。
+- 定位是 **domain randomization / system identification 的补充**，不是替代安全约束与在线校准。
+- 证据面广但口径粗：人形/四足/机械臂评估加 Unitree Go2 实机迁移改善，但摘要未给统一量化幅度，选型前需精读任务定义与消融。
+- 工程可获得性受限：截至 2026-07-22 无官方项目页或代码，短期内只能作为思路参考而非可复用组件。
+
 ## 与其他工作对比
 
 | 维度 | World Translation | Domain Randomization | System Identification | 前向历史编码器 |

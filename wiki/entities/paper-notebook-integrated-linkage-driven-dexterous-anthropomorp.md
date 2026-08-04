@@ -46,6 +46,14 @@ Integrated linkage-driven dexterous anthropomorphic robotic hand 的人形机器
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**这一条目前只是硬件设计分类下的占位实体：标题指向一只集成连杆驱动的拟人灵巧手，但本页不含任何机构参数或实测结论。**
+
+- 本页作用是让 12_Hardware_Design 分类下不缺该论文节点，便于与总索引交叉检索。
+- 从标题可读出的路线是「集成连杆驱动」的拟人灵巧手，属硬件本体设计而非学习方法。
+- 深读笔记尚未撰写，量化指标与横向对比需等笔记完成后补充。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)

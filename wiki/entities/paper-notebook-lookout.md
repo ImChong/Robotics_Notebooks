@@ -14,6 +14,7 @@ status: complete
 updated: 2026-07-28
 arxiv: "2508.14466"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../overview/paper-notebook-category-08-navigation.md
   - ./paper-flap-fov-active-perception-3d-navigation.md
   - ../concepts/3d-spatial-vqa.md

@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-data-pipeline, dataset, motion-retargeting, training-data]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-03
 summary: "训练数据管线知识链汇总：从原始动作捕捉 / 人体视频 → 质量评估 → 重定向 → RL/IL 策略训练输入的端到端选型链路，统一收纳人形参考运动数据集、动作数据质量与重定向相关页面。"
 ---
 
@@ -58,3 +58,4 @@ summary: "训练数据管线知识链汇总：从原始动作捕捉 / 人体视�
 
 - 本库归纳自 [Humanoid Training Data Pipeline](../queries/humanoid-training-data-pipeline.md)、[Motion Data Quality](../concepts/motion-data-quality.md)
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`data-pipeline` 命中规则）
+- 上游原始资料（本链概念页共同的 ingest 来源）：[AMASS 动捕数据集](../../sources/sites/amass-dataset.md)、[PHUMA：物理可靠人形运动数据集](../../sources/repos/phuma.md)、[Humanoid Everyday](../../sources/sites/humanoideveryday.md)

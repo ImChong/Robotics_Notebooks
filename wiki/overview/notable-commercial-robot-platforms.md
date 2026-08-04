@@ -1,10 +1,14 @@
 ---
 type: overview
-updated: 2026-07-16
+updated: 2026-08-01
 summary: "按人形、四足与腿足梳理当前知名度高、常被产业与媒体报道的商业机器人平台，并指向本库已有实体页与深度对比页。"
 sources:
   - ../../sources/repos/notable-commercial-robot-platforms.md
+  - ../../sources/blogs/wechat_shenlan_china_embodied_labs_50_2026.md
+  - ../../sources/blogs/wechat_shenlan_overseas_embodied_labs_43_2026.md
 related:
+  - ./china-embodied-ai-labs-landscape-2026.md
+  - ./overseas-embodied-ai-labs-landscape-2026.md
   - ../entities/wuji-robotics.md
   - ../entities/kyber-labs.md
   - ../entities/humanoid-robot.md
@@ -98,6 +102,8 @@ related:
 
 ## 关联页面
 
+- [国内具身智能实验室三层地图（2026）](./china-embodied-ai-labs-landscape-2026.md) — 高校孵化 / 校企合作 → 公司叙事
+- [海外具身智能实验室地图（2026）](./overseas-embodied-ai-labs-landscape-2026.md) — PI 衍生企业（ANYbotics、π、Skild 等）对照
 - [四足机器人](../entities/quadruped-robot.md)
 - [人形机器人](../entities/humanoid-robot.md)
 - [主流人形机器人硬件对比](../queries/hardware-comparison.md)

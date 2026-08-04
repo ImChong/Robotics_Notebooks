@@ -15,6 +15,7 @@ status: complete
 updated: 2026-07-24
 arxiv: "2605.09944"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/locomotion.md
   - ../methods/reinforcement-learning.md
   - ../concepts/terrain-adaptation.md

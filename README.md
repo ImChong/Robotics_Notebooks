@@ -2,22 +2,22 @@
 
 机器人技术栈知识库 / Robotics research and engineering wiki.
 
-<!-- Last updated: 2026-08-04 (V31 自动更新：图谱 2056 节点 18353 边) -->
+<!-- Last updated: 2026-08-04 (V31 自动更新：图谱 2081 节点 18849 边) -->
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen?logo=github)](https://imchong.github.io/Robotics_Notebooks/)
 [![Deploy GitHub Pages](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml)
 [![Wiki Lint](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/lint.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/lint.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
-[![Knowledge Graph](https://img.shields.io/badge/知识图谱-2056节点_18353边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
-[![Sources Coverage](https://img.shields.io/badge/sources覆盖率-99%25-green)](docs/checklists/tech-stack-next-phase-checklist-v31.md)
+[![Knowledge Graph](https://img.shields.io/badge/知识图谱-2081节点_18849边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
+[![Sources Coverage](https://img.shields.io/badge/sources覆盖率-100%25-green)](docs/checklists/tech-stack-next-phase-checklist-v31.md)
 
 ---
 
 ## 在线演示
 
-[![站点使用演示：首页按目标选入口、全库即时搜索、图谱预览，进入知识图谱后悬停节点看简介、滚轮缩放、点击节点打开详情侧栏，并可切换 3D 立体视图](media/site-demo.gif)](https://imchong.github.io/Robotics_Notebooks/)
+[![站点使用演示：首页点「项目查询 / 知识图谱」入口卡滚到目标模块并顺时针描边高亮，再全库即时搜索与图谱预览；进入知识图谱后悬停节点看简介、滚轮缩放、点击节点打开详情侧栏，并可切换 3D 立体视图](media/site-demo.gif)](https://imchong.github.io/Robotics_Notebooks/)
 
-↑ [在线站点](https://imchong.github.io/Robotics_Notebooks/)使用方式：**首页**按目标选入口（路线 / 搜索 / 图谱），搜索框输入关键词即时命中知识页；[**知识图谱**](https://imchong.github.io/Robotics_Notebooks/graph.html)中每个点是一个知识页，颜色代表技术社区，连线是页面互链——悬停看简介，滚轮缩放、拖拽平移，点击节点打开详情侧栏并一键进知识页，支持 2D / 3D 视图切换。
+↑ [在线站点](https://imchong.github.io/Robotics_Notebooks/)使用方式：**首页**按目标选入口（路线 / 搜索 / 图谱）——点「项目查询 / 知识图谱」会滚到对应模块并顺时针描边高亮；搜索框输入关键词即时命中知识页；[**知识图谱**](https://imchong.github.io/Robotics_Notebooks/graph.html)中每个点是一个知识页，颜色代表技术社区，连线是页面互链——悬停看简介，滚轮缩放、拖拽平移，点击节点打开详情侧栏并一键进知识页，支持 2D / 3D 视图切换。
 
 ---
 

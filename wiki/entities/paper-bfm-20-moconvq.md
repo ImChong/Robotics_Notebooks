@@ -60,6 +60,15 @@ sources:
 
 在 BFM taxonomy 中回答「身体能覆盖多少目标条件技能」。
 
+## 结论
+
+**MoConVQ 的取舍是把连续全身运动量化成离散动作 token：上层规划器或语言模块因此能像组织符号一样组织连续物理轨迹。**
+
+- 起作用的是 **接口形态的改变**——上层不必直接输出连续控制量，而是在离散动作词表上做检索与拼接。
+- 分组共性仍在：以 **goal / reference / command** 为条件的全身跟踪，数据侧融合 MoCap、视频、遥操作与 HOI，控制侧看抗扰、恢复与跨参考泛化。
+- 边界：token 化不等于 unlimited skills，可覆盖范围仍受 **数据分布、接触建模与实机 Sim2Real** 约束。
+- 本页为 **#20/41 索引级策展编译**（2023 · TOG），量化 benchmark 与消融以原文 PDF 为准。
+
 ## 常见误区
 
 1. Goal-conditioned 跟踪不等于 unlimited skills：仍受数据分布、接触建模与实机 Sim2Real 约束。

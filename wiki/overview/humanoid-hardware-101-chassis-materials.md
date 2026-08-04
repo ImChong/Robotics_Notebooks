@@ -2,15 +2,17 @@
 type: overview
 tags: [humanoid, hardware, chassis, materials, category-hub]
 status: complete
-updated: 2026-06-01
+updated: 2026-08-03
 summary: "Humanoid Hardware 101 · 01 机身与材料 — 按载荷路径选材：铝合金承力骨架、钢耐磨、镁/钛减重、复材肢段、高分子外壳。"
 related:
   - ./humanoid-hardware-101-technology-map.md
   - ./humanoid-hardware-101-integrated-actuators.md
   - ../queries/humanoid-hardware-selection.md
+  - ../entities/paper-humanoid-leg-generative-design-dynamics.md
 sources:
   - ../../sources/blogs/wechat_human_five_humanoid_hardware_101.md
   - ../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md
+  - ../../sources/papers/humanoid_leg_generative_design_hust_j_260645.md
 ---
 
 # Humanoid Hardware 101 · 01：机身与材料
@@ -48,8 +50,10 @@ sources:
 - [人形整机机械布局设计](../concepts/humanoid-mechanical-layout-design.md) — 材料之上的构型、惯量分布与刚度公差决策
 - [集成执行器](./humanoid-hardware-101-integrated-actuators.md)
 - [产业与成本地缘](./humanoid-hardware-101-supply-chain-economics.md)
+- [动力学仿真驱动的人形下肢衍生式设计](../entities/paper-humanoid-leg-generative-design-dynamics.md) — Ti6Al4V 增材大/小腿连杆减重与模态验证案例
 
 ## 参考来源
 
 - [wechat_human_five_humanoid_hardware_101.md](../../sources/blogs/wechat_human_five_humanoid_hardware_101.md)
 - [wechat_humanoid_hardware_101_2026-06-01.md](../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md)
+- [人形下肢衍生式设计论文归档](../../sources/papers/humanoid_leg_generative_design_hust_j_260645.md)

@@ -100,6 +100,16 @@ GenHOI 先根据 onboard RGB-D 估计对象 6D pose（FoundationPose 或 AprilTa
 | 真机 | Unitree G1 + Mid360 LiDAR + RealSense D435i |
 | 主要风险 | 生成视频质量、接触关键帧检测、低层 tracking 误差 |
 
+## 结论
+
+**GenHOI 的核心主张是：生成视频只能当「可被几何校正的接触先验」，不能当可执行轨迹——接触检测、inward bias 与终端优化的作用，就是把 2D 视频的尺度与幻觉误差挡在下发之前。**
+
+- 真正决定成败的不是生成质量而是接触约束：去掉 contact detection（**41.7%**）、trajectory smoothing（**28.3%**）或 inward bias（**43.3%**）后平均成功率都跌破 50%，完整方法为 **76.7%**、平均手-接触点误差 **0.22 m**。
+- 优化被刻意收窄到终端 root position/yaw、root height、waist pitch 与 14 个上肢关节，而非全身轨迹；**δ=0.06 m** 的 inward bias 制造虚拟夹持趋势，**K=90 帧** quintic smoothstep 把终端修正平滑回传。
+- 最直接的工程收益是准备时间与位置泛化：**1 min 51 s** 对 HDMI 约 **70 min** 的单任务训练；-1.0/+1.5 m 相对偏移的 OOD 位置仍有 **8/10**，直接重定向的 ExoActor 为 0/10。
+- 适用边界是粗接触、包络与搬运：缺少 dexterous hands，且需要准确物体 mesh，未见物体要靠在线重建或 shape completion 补。
+- 失败集中在链路两端：生成侧的 camera drift、object deformation、hallucination，执行侧低层 tracker 能力决定上限——它换取的是跨物体快速部署，不是策略学习范式的替代品。
+
 ## 与其他工作对比
 
 对照论文在 [为什么重要](#为什么重要) 与 [关键实验数字](#关键实验数字) 中直接比较的工作，均为定性维度（具体数字见评测表）：

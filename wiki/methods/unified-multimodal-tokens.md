@@ -2,11 +2,12 @@
 type: method
 tags: [vla, transformers, tokenization, multi-modal, architecture]
 status: complete
-updated: 2026-07-20
+updated: 2026-08-03
 related:
   - ../formalizations/vla-tokenization.md
   - ../formalizations/cross-modal-attention.md
   - ../methods/vla.md
+  - ../entities/sensenova-u1-5.md
 sources:
   - ../../sources/papers/rl_foundation_models.md
 summary: "统一多模态 Token（Unified Multimodal Tokens）是现代 VLA 模型的架构趋势，通过将视觉 Patch、自然语言词向量和量化动作编码进同一个嵌入空间，实现了纯粹的序列建模。"
@@ -62,6 +63,7 @@ summary: "统一多模态 Token（Unified Multimodal Tokens）是现代 VLA 模�
 - [动作分词 (Action Tokenization)](../formalizations/vla-tokenization.md)
 - [跨模态注意力 (Cross-modal Attention)](../formalizations/cross-modal-attention.md)
 - [VLA (Vision-Language-Action Models)](./vla.md)
+- [SenseNova-U1.5](../entities/sensenova-u1-5.md) — 统一序列的极端形态：去掉视觉编码器，**视觉输出也从同一序列产生**（连续像素 flow matching，而非离散动作 token）
 
 ## 参考来源
 - Black, K., et al. (2024). *π₀: A Vision-Language-Action Flow Model for General Robot Control*.

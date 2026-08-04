@@ -59,6 +59,15 @@ sources:
 
 为后续 goal-conditioned 或 imitation 提供 **可迁移的探索先验**，降低冷启动样本需求。
 
+## 结论
+
+**DIAYN 是「先学技能、再服务任务」这条思路的早期原型：没有外部奖励也能长出一组彼此可区分的技能。**
+
+- 起作用的机制是以 **多样性作为 intrinsic reward** 预训练身体策略，属 BFM taxonomy 的 **03 Intrinsic reward 预训练**。
+- 价值不在单个技能好用，而在提供 **可迁移探索先验**，降低下游 goal-conditioned / imitation 的冷启动样本需求。
+- 边界：技能「多样」不等于「有用」——intrinsic 预训练不替代任务奖励，下游仍需任务或示范对齐。
+- 本页为 **#30/41 索引级策展编译**（2018 · ICLR），列有第三方 PyTorch 复现；量化 benchmark 与消融以原文 PDF 为准。
+
 ## 常见误区
 
 1. Intrinsic 预训练不替代任务奖励；它提供 **探索覆盖**，下游仍需任务或示范对齐。

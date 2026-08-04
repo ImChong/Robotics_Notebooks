@@ -51,6 +51,15 @@ PARC 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**PARC 的关键不是某个新网络，而是「生成器—跟踪器」互相喂数据的迭代闭环：让极少量初始运动数据在物理仿真反馈中自我扩张，直到长出原数据集里没有的技能。**
+
+- 真正起作用的机制是 **迭代数据增强**：14 分钟初始移动数据经多轮仿真反馈扩至 900+ 分钟，并涌现原数据集中不存在的攀爬策略。
+- 定位在物理动画（13_Physics-Based_Animation）：它回答的是「运动数据从哪来」，而不是直接交付一个可上真机的控制器。
+- 本页仍是 **计划索引实体**：深读笔记未撰写，量化 benchmark、消融与实机指标暂缺，引用数字请回到讲者视频与 human five 归纳的原文核对。
+- 机制总览可对照 [灵活运动技能学习技术地图](../overview/jason-peng-flexible-motion-skill-learning.md)。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)

@@ -11,6 +11,7 @@ tags:
 status: complete
 updated: 2026-07-05
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../concepts/vision-transformer.md
   - ../concepts/vision-backbones.md
   - ../methods/object-detection.md

@@ -119,6 +119,16 @@ flowchart TB
 | [CHORD](./paper-chord-contact-wrench-dexterous-manipulation.md) | 双手 | 4,739（RL） | 固定 | 人类演示→CWS | **RL + 接触力学奖励** 大规模库；与 DexVerse **IL/VLA 评测轴** 互补 |
 | **DexVerse** | 灵巧 | **100** | ✓ | ✓（VR） | **多具身 + 多模态观测 + 未饱和 IL 基线** |
 
+## 结论
+
+**DexVerse 的贡献不是又一个仿真环境，而是把「灵巧 + 多具身 + 视觉随机 + 专家示范」四轴拼进同一配置框架，并用 34% 的均值成功率把「通才灵巧操作」重新标注为未解决问题。**
+
+- 读这套 benchmark 的正确姿势是 **按技能族分解而非看总均值**：DP 擅 pick-lift、DP3 擅 tool use、π₀.₅ 擅 articulation 与精密对齐，**没有单一方法统治全部技能族**。
+- 互联网预训练在此不构成优势：π₀.₅ **0.34** 仅持平从零训练的 DP3，OpenVLA **0.19** 更低——web 图像与低 DoF 先验难迁移到高 DoF 多指流形。
+- 共同失败模式很集中：PushT 四维 **0.00**，InsertPen、SlideUtilityKnife、OpenLaptop 近零，指向 **BC 缺显式力反馈与闭环接触修正**，而非任务定义不清。
+- 读表要防具身偏斜：单目标示范 **50/55 来自 Shadow Hand**，跨手结论依赖 retarget 与每手少量轨迹；当前版本 **仿真-only**，与部署闭环需分开看。
+- 与 [DexMimicGen](./paper-notebook-dexmimicgen-automated-data-generation-for-bimanu.md)（示范扩增）、[CHORD](./paper-chord-contact-wrench-dexterous-manipulation.md)（RL + 接触力学奖励）互补：DexVerse 占的是 **IL/VLA 评测轴**，而非数据生成或 RL 训练轴。
+
 ## 常见误区或局限
 
 - **≠ 已解决 dexterous manipulation：** 34% 均值与多项零成功率说明 benchmark **远未饱和**，不宜把「跑通 DP」误读为通才灵巧已就绪。

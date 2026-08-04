@@ -2,9 +2,10 @@
 type: concept
 tags: [locomotion, terrain, perception, footstep-planning, sim2real]
 status: complete
-updated: 2026-07-27
+updated: 2026-08-02
 summary: "Terrain Adaptation 指机器人根据地形感知结果调整步位、身体姿态和接触策略，以在不平整环境中保持稳定移动。"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../entities/paper-ame-attention-based-map-encoding.md
   - ../entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md
   - ../entities/paper-discrete-terrain-minimal-proximity-sensing.md
@@ -15,6 +16,7 @@ related:
   - ./sim2real.md
   - ./privileged-training.md
   - ../tasks/balance-recovery.md
+  - ../entities/paper-humoslope-physics-guided-slope-locomotion.md
   - ../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md
   - ../entities/paper-faststair-humanoid-stair-ascent.md
   - ../entities/paper-explicit-stair-geometry-humanoid-locomotion.md
@@ -23,6 +25,7 @@ related:
   - ../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md
   - ../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md
   - ../entities/paper-egohtr.md
+  - ../entities/paper-legged-load-adapt-unknown-dynamic-load.md
 sources:
   - ../../sources/papers/footstep_and_balance.md
   - ../../sources/papers/privileged_training.md
@@ -34,6 +37,8 @@ sources:
   - ../../sources/papers/ame_arxiv_2506_09588.md
   - ../../sources/papers/humanoid_pnb_ame-2-agile-and-generalized-legged-locomotion-vi.md
   - ../../sources/papers/egohtr_arxiv_2607_13472.md
+  - ../../sources/papers/humoslope_arxiv_2607_07830.md
+  - ../../sources/papers/legged_load_adapt_arxiv_2507_07825.md
 ---
 
 # Terrain Adaptation（地形适应）
@@ -127,6 +132,7 @@ sources:
 - [Locomotion](../tasks/locomotion.md) 关注更完整的移动任务。
 - [楼梯与障碍 Locomotion（中心节点）](../tasks/stair-obstacle-perceptive-locomotion.md) 汇总楼梯/越障上的感知 vs 盲走文献索引。
 - [Privileged Training](./privileged-training.md) 展示了复杂地形上 teacher 用高度图、student 用本体感知的经典方案。
+- [Legged Load Adapt](../entities/paper-legged-load-adapt-unknown-dynamic-load.md) 在楼梯/rough/斜坡课程上叠加 **箱载动态载荷** 适应（盲本体 + load characteristics 估计）。
 - [DreamWaQ++](../entities/dreamwaq-plus.md) 把 **3D 点云** 与 **本体历史** 在单阶段 RL 中融合，是四足 **点云地形适应** 的代表实现。
 - [离散地形最小感知](../entities/paper-discrete-terrain-minimal-proximity-sensing.md) 展示四足 **足底 ToF** 在垫脚石/沟上的 **任务对齐最小传感** 路线。
 - [RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) 用 **多视角深度** 做 **双向/多向** 地形适应，并以 **DFSV/RSM** 处理非对称视野与未见窄地形宽度。
@@ -152,6 +158,8 @@ sources:
 - [sources/papers/explicit_stair_geometry_arxiv_2605_09944.md](../../sources/papers/explicit_stair_geometry_arxiv_2605_09944.md) — 显式楼梯几何条件化人形爬梯
 - [sources/papers/discrete_terrain_minimal_proximity_sensing_arxiv_2606_31912.md](../../sources/papers/discrete_terrain_minimal_proximity_sensing_arxiv_2606_31912.md) — ETH RSL 四足足底 ToF 离散地形
 - [sources/papers/egohtr_arxiv_2607_13472.md](../../sources/papers/egohtr_arxiv_2607_13472.md) — EgoHTR：rough-terrain 人–场景 4D 演示与 G1 感知 mimic
+- [sources/papers/humoslope_arxiv_2607_07830.md](../../sources/papers/humoslope_arxiv_2607_07830.md) — HumoSlope：盲策略下连续陡坡姿态/步态适应（局部平面 ZMP + BSGA）
+- [sources/papers/legged_load_adapt_arxiv_2507_07825.md](../../sources/papers/legged_load_adapt_arxiv_2507_07825.md) — Legged Load Adapt：崎岖地形 + 未知动态载荷
 
 ## 关联页面
 
@@ -163,6 +171,7 @@ sources:
 - [Balance Recovery](../tasks/balance-recovery.md)
 - [MoRE（复杂地形多步态 AMP）](../entities/paper-amp-survey-08-more.md) — 深度外感知 + 多判别器先验下的 gait 切换范例
 - [EgoHTR](../entities/paper-egohtr.md) — 场景对齐人演示支撑 foothold-critical 感知穿越
+- [HumoSlope](../entities/paper-humoslope-physics-guided-slope-locomotion.md) — 无在线外感知的连续陡坡适应：局部平面 ZMP + 生物力学门控
 
 ## 推荐继续阅读
 

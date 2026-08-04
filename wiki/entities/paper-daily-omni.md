@@ -82,7 +82,7 @@ summary: "Daily-Omni（arXiv:2505.17862，复旦）：684 视频 / 1197 AVQA，�
 
 ### 诊断基线：Daily-Omni Agent
 
-解耦流水线：分段视觉/音频标注（Qwen2.5-VL + Qwen2-Audio）+ Whisper 转写 → 视觉一致性修订 → 按题检索关键事件并做局部时序 grounding → Qwen2.5-14B 作答。用于证明 **把时序局部证据显式化** 的收益，而非宣称 SOTA。
+解耦流水线：分段视觉/音频标注（Qwen2.5-VL + Qwen2-Audio）+ Whisper 转写 → 视觉一致性修订 → 按题检索关键事件并做局部时序 grounding → Qwen2.5-14B 作答。用于证明 **把时序局部证据显式化** 的收益，而非追求刷新榜单最高分。
 
 ### 流程总览
 
@@ -224,5 +224,5 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
-- [Daily-Omni 项目页 Leaderboard](https://lliar-liar.github.io/Daily-Omni/#leaderboard) — 最新闭源/开源分数与模态消融表
+- [Daily-Omni 项目页 Leaderboard](https://lliar-liar.github.io/Daily-Omni/#leaderboard) — 持续更新的闭源/开源分数与模态消融表
 - [arXiv:2505.17862](https://arxiv.org/abs/2505.17862) — 管线、Agent 与消融全文

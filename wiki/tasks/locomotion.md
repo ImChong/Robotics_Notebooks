@@ -2,11 +2,13 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-07-30
+updated: 2026-08-02
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
+  - ../entities/paper-legged-robots-advances-challenges.md
   - ../entities/paper-rma-rapid-motor-adaptation.md
+  - ../entities/paper-legged-load-adapt-unknown-dynamic-load.md
   - ../entities/paper-amp-survey-08-more.md
   - ../entities/paper-adp.md
   - ../concepts/state-estimation.md
@@ -31,6 +33,8 @@ related:
   - ../entities/paper-aware-wheeled-legged-reflexive-evasion.md
   - ../entities/quadruped-robot.md
   - ../entities/open-duck-mini.md
+  - ../entities/disney-holotile.md
+  - ../entities/disney-research-la.md
   - ../entities/paper-digit-humanoid-locomotion-rl.md
   - ../entities/paper-faststair-humanoid-stair-ascent.md
   - ../entities/paper-explicit-stair-geometry-humanoid-locomotion.md
@@ -53,6 +57,7 @@ related:
   - ../methods/disney-olaf-character-robot.md
   - ../entities/paper-ergocub-shared-embodied-intelligence.md
   - ../entities/paper-egohtr.md
+  - ../entities/paper-learning-quiet-walking-aibo.md
 sources:
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/state_estimation.md
@@ -60,6 +65,7 @@ sources:
   - ../../sources/papers/multi-gait-learning.md
   - ../../sources/papers/egohtr_arxiv_2607_13472.md
   - ../../sources/papers/adp_arxiv_2607_03454.md
+  - ../../sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md
 summary: "Locomotion 研究机器人如何稳定、高效地在不同地形上移动，是腿式与人形控制的核心任务页。"
 ---
 
@@ -141,6 +147,7 @@ flowchart TD
 - **楼梯与离散接触上的学习案例：** [FastStair（论文实体页）](../entities/paper-faststair-humanoid-stair-ascent.md) 归纳 arXiv:2601.10365：用 **GPU 并行 DCM 落脚点离散搜索** 在 Isaac Lab RL 中提供显式可行落点监督，再以 **分速专家 + LoRA 融合** 缓解保守性与全速域动作分布差异，在 LimX Oli 上给出高速上楼梯实机叙事。
 - **显式楼梯几何条件化：** [Explicit Stair Geometry Conditioning（论文实体页）](../entities/paper-explicit-stair-geometry-humanoid-locomotion.md)（arXiv:2605.09944）从点云 BEV 预测 **踢面高度 / 踏面深度 / 航向 / 楼梯状态** 四维 token，直接条件化 **PPO**；在 **Unitree G1** 上零样本实机，户外 **连续 33 级** 上楼，训练分布外踢面高度优于视觉 **MoRE** 基线。
 - **四足真机安全微调：** [SLowRL（论文实体页）](../entities/paper-slowrl-safe-lora-locomotion-sim2real.md)（arXiv:2603.17092）在 **Unitree Go2** 上对 jump/trot 做 **冻结主策略 + rank-1 LoRA + Recovery 安全滤波** 真机 PPO 微调，相对全参微调显著降摔倒与墙钟时间（见 [Sim2Real](../concepts/sim2real.md)）。
+- **家用四足低噪行走：** [Learning Quiet Walking（aibo）](../entities/paper-learning-quiet-walking-aibo.md)（arXiv:2502.10983，ICRA 2025）用仿真 **足端接触速度** 作声学代理，配合可变 PD 与开关接触，真机安静度优于索尼商用 quiet 控制器（与人形 [QuietWalk GRF](../entities/paper-quietwalk-humanoid-locomotion.md) 对照）。
 - **轮足多技能盲走：** [MUJICA（论文实体页）](../entities/paper-mujica-wheel-legged-multi-skill.md)（arXiv:2605.13058）在 **Go2-W** 上用 **单策略 + 技能选择器** 联合全向移动、高台攀爬与摔倒恢复，并以 **DC 电机 P3O 约束** 零样本上真机（**1 m 高台**）。
 - **轮足高动态反射避障：** [AWARE](../entities/paper-aware-wheeled-legged-reflexive-evasion.md)（arXiv:2604.23761）在 **M20** 上用分层 RL + 双专家硬切换做快速障碍反射规避（导航全向 / 高动态逃逸），Isaac Lab 与真机抛箱/棍戳/脚踢验证。
 
@@ -191,7 +198,7 @@ flowchart TD
 
 - **RL policy + PD/阻抗底层**：策略输出关节位置增量或期望角度，PD/阻抗层保证高频执行稳定。
 - **MPC/WBC baseline + learned residual**：模型控制提供安全可解释的主干，学习模块补偿摩擦、冲击或模型误差。
-- **Teacher-student / privileged learning**：训练时 teacher 使用高度图、真实速度等 privileged information；部署时 student 只用机载传感器。经典 **在线适应** 实例：[RMA](../entities/paper-rma-rapid-motor-adaptation.md)（特权 extrinsics → 历史 $\hat{z}_t$ 估计，A1 零微调）。
+- **Teacher-student / privileged learning**：训练时 teacher 使用高度图、真实速度等 privileged information；部署时 student 只用机载传感器。经典 **在线适应** 实例：[RMA](../entities/paper-rma-rapid-motor-adaptation.md)（特权 extrinsics → 历史 $\hat{z}_t$ 估计，A1 零微调）。**箱载动态载荷** 实例：[Legged Load Adapt](../entities/paper-legged-load-adapt-unknown-dynamic-load.md)（load characteristics 特权 + concurrent estimator，Go2 零样本）。
 - **Motion prior + task RL**：先用 MoCap/视频/重定向得到自然运动先验，再用任务奖励获得速度、转向和地形适应能力。
 
 ## 方法选型速查
@@ -242,6 +249,7 @@ flowchart TD
 - [Barkour（四足敏捷课 + 开源机体 / Menagerie）](../entities/paper-barkour-quadruped-agility-benchmark.md)
 - [DreamWaQ++（多模态点云 + 本体四足障碍感知行走）](../entities/dreamwaq-plus.md)
 - [可变阻抗接触任务 RL](../entities/paper-variable-impedance-contact-rl.md)
+- [Learning Quiet Walking（Sony aibo 低噪四足）](../entities/paper-learning-quiet-walking-aibo.md)
 
 ## 参考来源
 
@@ -254,6 +262,8 @@ flowchart TD
 - **ingest 档案：** [sources/papers/rl_pd_action_interface_locomotion.md](../../sources/papers/rl_pd_action_interface_locomotion.md) — RL + PD/阻抗/扭矩接口论文索引
 - **ingest 档案：** [sources/papers/deeprl_locomotion_action_space_sca2017.md](../../sources/papers/deeprl_locomotion_action_space_sca2017.md) — Peng SCA 2017 四动作空间对照
 - **ingest 档案：** [sources/papers/rma_arxiv_2107_04034.md](../../sources/papers/rma_arxiv_2107_04034.md) — RMA：四足快速运动自适应（RSS 2021）
+- **ingest 档案：** [sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md](../../sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md) — Sony aibo 低噪行走（ICRA 2025）
+- **ingest 档案：** [sources/papers/legged_load_adapt_arxiv_2507_07825.md](../../sources/papers/legged_load_adapt_arxiv_2507_07825.md) — Legged Load Adapt：未知动态载荷四足崎岖地形适应（arXiv:2507.07825）
 
 ## 关联系统/方法
 
@@ -274,6 +284,7 @@ flowchart TD
 - [HiPAN](../methods/hipan.md)（四足在非结构化 3D 环境中的分层深度导航 + 姿态自适应低层跟踪）
 - [四足机器人](../entities/quadruped-robot.md)（四足形态与典型平台的实体入口）
 - [Open Duck Mini](../entities/open-duck-mini.md)（BDX 风格迷你双足 DIY：MuJoCo Playground RL + 舵机 sim2real）
+- [Disney Holotile](../entities/disney-holotile.md)（全向活动地板：地面代偿行走，对照「机器人自身 locomotion」）
 - [Unitree](../entities/unitree.md)（当前主流人形/四足研究硬件平台）
 - [unitree_ros（ROS1 / Gazebo）](../entities/unitree-ros.md)（官方 URDF + Gazebo 关节级仿真；高层行走不在 Gazebo 包承诺内）
 - [ULTRA：统一多模态 loco-manipulation 控制](./ultra-survey.md)（UIUC 2026，新一代全身移动操作统一控制器）
@@ -309,6 +320,7 @@ flowchart TD
 - [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md)
 - [Argus（动态对称 / 球形腿式全向移动）](../entities/paper-argus-dynamic-symmetry.md) — Science Robotics 2026；动态各向同性 η 与 20 腿无朝向偏好 locomotion
 - [仿生多模态机器人综述（Science Robotics 2026）](../entities/paper-bioinspired-multimodal-robotics.md) — 跨介质仿生多模态定义 + 五项评测指标（MCM/CRP/TC 等）+ 物理×计算智能路线图
+- [腿式机器人进展/挑战/机遇综述（Science Robotics 2026）](../entities/paper-legged-robots-advances-challenges.md) — 硬件/locomotion/自主/数据/应用五柱 + 伦理–政策展望（ETH 牵头）
 
 ### Benchmark 入口
 - [Locomotion Benchmarks](../../references/benchmarks/locomotion-benchmarks.md)

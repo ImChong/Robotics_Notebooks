@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-07-10
+updated: 2026-08-03
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 09：状态估计（14 篇深读笔记索引）。"
@@ -46,6 +46,8 @@ summary: "Paper Notebooks 分类 09：状态估计（14 篇深读笔记索引）
 
 - [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)
 - [schema/paper-notebook-index.json](../../schema/paper-notebook-index.json)
+- 站点来源归档：[humanoid-robot-learning-paper-notebooks](../../sources/sites/humanoid-robot-learning-paper-notebooks.md)
+- 本类论文 ingest 归档（节选）：[线性 / 扩展卡尔曼滤波一手资料索引](../../sources/papers/kalman_filter_ekf_primary_refs.md)、[Contact-Aided Invariant EKF](../../sources/papers/humanoid_pnb_contact-aided-invariant-ekf-for-legged-robots.md)、[AutoOdom：自回归本体感知里程计](../../sources/papers/humanoid_pnb_autoodom.md)
 
 ## 推荐继续阅读
 

@@ -93,6 +93,16 @@ flowchart TB
 | **CtrlAni3D** | 同上 | P-MPJPE **44.0** vs AniMer **44.1** |
 | **速度** | RTX 4090，单帧 | $S=3,N=1$ **160 FPS**；$N=40$ **145.6 FPS** vs DiffPose DDIM-5 **27.2 FPS** |
 
+## 结论
+
+**FMPose3D 的贡献是把单目 3D 姿态的一对多歧义交给流匹配：3 步 ODE 采多假设 + 重投影加权聚合，在扩散式 lifter 的精度点上换来数量级的推理成本下降。**
+
+- 真正起作用的是两段协作：**少步 CFM 采样** 制造假设多样性（多样性来自 $x_0$ 种子而非 SDE 随机性），**RPEA** 用重投影伪似然做 Bayes 近似期望聚合（joint-wise **MPJPE 47.3 mm**，$N=40$）；简单 Mean 随 $N$ 增益饱和。
+- 效率是核心卖点而非附带项：RTX 4090 上 $N=40$ 仍 **145.6 FPS**，对照 DiffPose DDIM-5 的 **27.2 FPS**，这才使「实时多假设感知」成立。
+- 适用边界清晰：**不是端到端 HMR**，需外部 2D 检测器（人域 CPN、动物 SuperAnimal）；输出 **3D 关键点而非 SMPL**，接人形重定向要额外骨架映射。
+- 开源状态好但有约束：代码 Apache-2.0、`pip install fmpose3d`、2026-03 已集成 DeepLabCut，但 **预训练权重为非商用许可**；动物侧 SOTA 未用 RPEA，增益主要来自 FM lifter 本身。
+- 定位在 [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) 的「视频/图像 → 稀疏 3D 骨架」分支，与 [HTD-Refine](../entities/paper-htd-refine-monocular-hmr.md) 的 SMPL 后处理、[GENMO](../methods/genmo.md) 的生成式 SMPL 序列互补而非竞争。
+
 ## 与其他工作对比
 
 | 维度 | FMPose3D | 扩散 lifter（DiffPose / D3DP） | 确定性 lifter（SimpleBaseline / GCN） |

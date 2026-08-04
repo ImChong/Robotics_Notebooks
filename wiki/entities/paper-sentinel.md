@@ -87,6 +87,15 @@ SENTINEL 直接把自然语言和本体感知映射到全身低层动作。它�
 
 论文用 Transformer + flow matching action head 预测 action chunk，并用 residual action head 做后训练，提升真实部署和扰动下稳定性。它还讨论了长期观测、done prediction、classifier-free guidance、action chunk horizon 等细节。
 
+## 结论
+
+**SENTINEL 的「端到端」是接口层面的端到端，而不是绕过运动控制：它把已训好的全身跟踪控制器当数据生成器，监督信号因此是「机器人在动力学里实际能怎么动」，而非「人体应该怎么动」。**
+
+- 真正起作用的是数据链路：先训能跟踪人类动作的全身控制器 → 在仿真里 rollout 得到机器人自己的 state-action 轨迹 → 加语言标注训练 language-action model。
+- 实现侧靠 Transformer + flow matching action head 预测 action chunk，再用 residual action head 做后训练，换取真实部署与扰动下的稳定性。
+- 适用边界：它解决的是语言到全身动作的 **接口与预测**，底层 WBC 能力仍是前置依赖，不会被这类条目自动替代。
+- 本页为策展编译级：量化 benchmark、消融与实机指标须回到原文；栈内定位见 [humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)（04 视觉闭环·任务接口·世界模型）与 [bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)（05 hierarchical control）。
+
 ## 常见误区
 
 1. VLA/世界模型条目解决 **接口与预测**，不自动替代已封装的底层 WBC 能力。

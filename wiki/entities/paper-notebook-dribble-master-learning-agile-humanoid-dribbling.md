@@ -46,6 +46,14 @@ Dribble Master 的人形机器人学习论文条目，当前处于 Paper Noteboo
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**Dribble Master 在本库目前只是一条「已排期、未深读」的占位实体：它保证"人形敏捷球类技能"这一话题在 locomotion 分支下不缺节点，但还给不出可引用的方法结论。**
+
+- 本页能确认的只有索引层信息——arXiv 2505.12679、分类 05_Locomotion 与计划中的笔记文件夹；标题指向"通过足式运动学习敏捷人形运球"这一命题，奖励设计、球体交互建模与 sim2real 细节页内一概未展开。
+- 适用边界：适合经[分类父节点](../overview/paper-notebook-category-05-locomotion.md)与[人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)做检索与交叉定位，不适合作为方案对比或复现依据。
+- 主要风险是把占位页误读成已消化的结论：量化 benchmark、消融与实机指标本页全部缺失，深读状态须回到 PROGRESS.md 跟踪，结论以论文原文为准。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

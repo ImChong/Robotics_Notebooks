@@ -59,6 +59,16 @@ DreamControl 先从本体状态与关节序列、人类视频/动捕轨迹、仿
 - 评测原始出处：[原文 / 项目页](https://genrobo.github.io/DreamControl/)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-04-generative-language-trajectory.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**DreamControl 把「人类先验」和「可执行性」分工开：引导扩散负责想出全身场景交互轨迹，RL 与分层技能策略负责让它在机器人上跑得动。**
+
+- 关键机制是条件生成而非确定性回归：扩散/流匹配在多模态动作分布里采样全身轨迹，保留同一目标下的多种合理解。
+- 输入混合本体状态与关节序列、人类视频/动捕轨迹与仿真交互数据，因此人类运动先验与机器人可执行性之间的对齐质量直接决定成败。
+- 输出不止动作序列，还包括地形/场景表征——说明「场景交互」是生成目标的一部分，而不是事后拼上的环境条件。
+- 生成式轨迹不等于底层 WBC 鲁棒；须与运控/接触控制类工作对照，见 [分类 hub](../overview/loco-manip-161-category-04-generative-language-trajectory.md)。
+- 本页为索引级摘录，量化 benchmark 与实机指标以 [原文 / 项目页](https://genrobo.github.io/DreamControl/) 为准。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

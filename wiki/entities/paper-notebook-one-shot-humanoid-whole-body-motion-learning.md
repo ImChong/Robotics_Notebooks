@@ -47,6 +47,14 @@ One-shot Humanoid Whole-body Motion Learning 的人形机器人学习论文条�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页把「One-shot 人形全身动作学习」这一条目先接入图谱，实质内容仍然是空的。**
+
+- 可用信息只有元数据：分类 04_Loco-Manipulation_and_WBC、arXiv 2510.25241、计划笔记文件夹与 progress.json 待深读状态。
+- 「one-shot」在本页未作任何界定，因此不宜拿它与其他少样本 / 单示范方法直接比较。
+- 适用边界：仅供检索与分类连边；结论、消融与实机表现待深读笔记补充后再行引用。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

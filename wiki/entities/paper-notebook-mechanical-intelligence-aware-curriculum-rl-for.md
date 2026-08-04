@@ -46,6 +46,14 @@ Mechanical Intelligence-Aware Curriculum RL for Humanoids with Parallel Actuatio
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是 05_Locomotion 下的计划索引实体：仅登记了这篇「并联驱动 + 课程式 RL」工作的存在，机制与结论整体留白。**
+
+- 页面可确证的只有分类归属、PROGRESS.md 上的「待深读」状态与 arXiv 编号 2507.00273；课程如何设计、并联驱动带来的机械智能如何被利用，页面均未记录。
+- 适用边界：可用于分类检索与占位链接，不能作为该工作的技术依据或引用来源。
+- 主要风险是被误读成已完成摘要；深读状态以上游 PROGRESS.md 为准，笔记完成后应升格重写并链向笔记站。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

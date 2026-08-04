@@ -59,6 +59,14 @@ sources:
 - 评测原始出处：[原文 / 项目页](https://humanoid-touch-dream.github.io/)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-03-visuomotor.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**这条目被放在数据闭环一侧：它的落点是让遥操作采到的操作经验变成可采样的动作 chunk，而不是提供一套现成的底层控制器。**
+
+- 起作用的机制链是：相机图像/多视角观测、本体状态与关节序列、遥操作/外骨骼数据作输入，经 PPO/RL 策略训练、扩散策略/流匹配与 MM-DiT/Transformer 动作头，输出末端执行器/腕手目标与动作 chunk/token。
+- 适用边界在 **03 视觉感知驱动的人形移动操作**：解决的是多模态动作分布上的采样问题，不代表底层 WBC 鲁棒性同时被解决。
+- 索引级局限：本页未搬运原文量化 benchmark 与实机指标，评测口径与数值以 [原文 / 项目页](https://humanoid-touch-dream.github.io/) 为准。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

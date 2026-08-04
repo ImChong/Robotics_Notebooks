@@ -92,6 +92,16 @@ flowchart TB
 | **真机** | 每任务约 **20 演示**；较 π₀.₅ 约 **+29%** |
 | **模型规模** | **MINT-30M**（Transformer 从头）与 **MINT-4B**（预训练 VLM + action head） |
 
+## 结论
+
+**MINT 把 VLA 的泛化瓶颈搬到动作表示层：与其模仿轨迹本身，不如在频域把「意图」和「执行」拆开，让粗尺度 token 承载可迁移的任务规格。**
+
+- 真正起作用的是 SDAT 的频域多尺度分词加 next-scale 自回归：\(S_1\) 单 token 即 Intent，\(S_2\sim S_K\) 为执行残差，逐尺度频域重建损失强制不同尺度分工。
+- 关键指标落在鲁棒性与小样本，而不是标准 LIBERO 分数：LIBERO→LIBERO-Plus 较 OpenVLA-OFT 约 **+15%**，真机每任务约 **20 演示** 较 π₀.₅ 约 **+29%**，one-shot 意图注入约 **+60%**（论文叙事）。
+- 适用边界：公开叙事以桌面/臂部操作为主，向人形全身 loco-manip 扩展仍需独立验证；MINT-Zero 注入的是任务级意图规格，目标域仍要具备执行 token 的生成能力。
+- 工程代价是两阶段管线：SDAT 与 policy 分训、尺度数 \(K\) 与码本大小等超参，使工程面比单阶段端到端 VLA 更碎。
+- 与 [DeFI](../methods/defi-decoupled-dynamics-vla.md)（解耦在视频动力学）、[CapVector](./paper-capvector-capability-vectors-vla.md)（迁移在参数空间）对照：MINT 的解耦与迁移都发生在动作频谱/表示空间。
+
 ## 常见误区或局限
 
 - **误区：** 把 MINT 等同于「数据增强换背景」——论文强调的是 **表示层意图–执行解耦** 与 **跨尺度推理**，域随机只是基线能力。

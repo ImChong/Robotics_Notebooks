@@ -119,6 +119,16 @@ sequenceDiagram
 | 评估入口 | `python humanoidverse/eval_agent.py +checkpoint=<path>` |
 | 典型任务 | Cart-Pulling、Door-Opening、Heavy-Lifting、Payloads-Transporting、Tug-of-War |
 
+## 结论
+
+**FALCON 的核心判断是「力是任务本体而不是扰动」：与其让单一全身策略同时解释外力与手部目标，不如把下肢稳定与上肢跟踪拆成两个 agent，再用力课程把两者绑在同一套力矩边界内。**
+
+- 真正起作用的是 torque-limit-aware 3D force curriculum：它不追求盲目输出更大力，而是在安全力矩边界内学姿态、步态与上肢补偿的协同；报告收益是相对「低层 RL locomotion + 上身 IK」基线约 **2×** 的 upper-body joint tracking。
+- 力的量级划出了适用面：真机覆盖载荷 **0-20 N**、拉车 **0-100 N**、开门 **0-40 N** 这类持续外力；精细接触、灵巧手与视觉语言任务规划都不是它的主贡献。
+- 跨平台一致性是双 agent 解耦的副产品：同一训练设置直接部署到 Unitree G1 与 Booster T1，无需 embodiment-specific reward/curriculum tuning。
+- 工程侧属于最完整的一档：LeCAR-Lab/FALCON 为 MIT 且 training/sim2sim/sim2real 齐全，代价是 IsaacGym Preview4 旧栈的维护成本，force curriculum 与 reward 配置仍是复现变量。
+- 与相邻工作的分工：[Thor](./paper-hrl-stack-42-thor.md) 押峰值大力、[HMC](./paper-loco-manip-161-039-hmc.md) 押力位模式切换、[WoCoCo](./paper-loco-manip-161-116-wococo.md) 押多端接触时序，FALCON 押的是持续外力下的稳定加末端跟踪。
+
 ## 与其他工作对比
 
 FALCON 属于「强力/受力 loco-manip」路线，与 [Thor](./paper-hrl-stack-42-thor.md)、[HMC](./paper-loco-manip-161-039-hmc.md)、[WoCoCo](./paper-loco-manip-161-116-wococo.md) 在接触/发力问题上相邻但侧重不同。下表为定性对照。

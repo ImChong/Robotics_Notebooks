@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, hardware, mechanical-design, layout, dof, inertia, tolerance, fea]
 status: complete
-updated: 2026-07-25
+updated: 2026-08-03
 related:
   - ./humanoid-parallel-joint-kinematics.md
   - ./robot-link-and-rotor-inertia.md
@@ -14,9 +14,11 @@ related:
   - ../overview/humanoid-actuator-102-load-and-mass-spiral.md
   - ../queries/humanoid-hardware-selection.md
   - ../../roadmap/depth-humanoid-hardware-design.md
+  - ../entities/paper-humanoid-leg-generative-design-dynamics.md
 sources:
   - ../../sources/blogs/wechat_human_five_humanoid_hardware_101.md
   - ../../sources/blogs/wechat_human_five_humanoid_actuator_102.md
+  - ../../sources/papers/humanoid_leg_generative_design_hust_j_260645.md
 summary: "人形整机机械布局设计把任务指标翻译成自由度分配、传动布置、质量/惯量分布与结构刚度公差四层决策；核心判据不是「零件够不够强」，而是质量分布与结构模态是否给控制留出可用带宽与可行域。"
 ---
 
@@ -111,15 +113,18 @@ flowchart TB
 - [Actuator 102 · 负载与质量螺旋](../overview/humanoid-actuator-102-load-and-mass-spiral.md)
 - [整机配电架构](./robot-power-distribution-architecture.md) · [整机通信架构](./robot-onboard-communication-architecture.md)
 - [接触力环带宽](./contact-force-loop-bandwidth.md)
+- [动力学仿真驱动的人形下肢衍生式设计](../entities/paper-humanoid-leg-generative-design-dynamics.md) — 电液混合 5-DoF 腿 + 仿真工况驱动衍生式减重案例
 
 ## 参考来源
 
 - [Humanoid Hardware 101 微信长文编译](../../sources/blogs/wechat_human_five_humanoid_hardware_101.md) — 机身材料、传动链与部件级 BOM 视角
 - [Humanoid 执行器 102 微信长文编译](../../sources/blogs/wechat_human_five_humanoid_actuator_102.md) — 质量惩罚螺旋、旋转-直线分离架构
 - [开源人形硬件对比](../entities/open-source-humanoid-hardware.md) — 可查阅真实图纸/BOM 的整机布局样本
+- [人形下肢衍生式设计论文归档](../../sources/papers/humanoid_leg_generative_design_hust_j_260645.md) — 跳跃仿真提载荷 → 衍生式连杆轻量化
 - ISO 1101（几何公差）、ISO 286 / ISO 2768（配合与未注公差）— [ISO 标准检索入口](https://www.iso.org/search.html?q=1101)
 
 ## 推荐继续阅读
 
 - Wensing et al., *Proprioceptive Actuator Design in the MIT Cheetah*（IEEE T-RO 2017）— 近端集中与低惯量腿部布局的经典论证
 - [Humanoid Robots: Modeling and Control 综述](https://arxiv.org/abs/2309.04329) — 从整机机械参数到控制模型的衔接
+- [学报原文：动力学仿真驱动的人形下肢衍生式设计](http://xb.hust.edu.cn/thesisDetails#10.13245/j.hust.260645&lang=zh)

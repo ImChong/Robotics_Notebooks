@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, sim2real, domain-adaptation, few-shot, privileged-training, dagger, lora, whole-body-control, locomotion, unitree-g1, cmu, planner-idm, inverse-dynamics]
 status: complete
-updated: 2026-07-01
+updated: 2026-07-31
 arxiv: "2606.28476"
 venue: "arXiv 2026"
 related:
@@ -142,6 +142,16 @@ $$
 - **相对 [BFM-Zero](./paper-bfm-zero.md)**：同 **LeCAR-Lab / CMU** 人形线；BFM-Zero 学 **可提示行为潜空间**；FADA 专注 **sim→target 动力学对齐** 的工程分解，可与之 **上下叠加**（高层 prompt / 参考 + FADA 式执行适应）。
 - **相对残差/ASAP 类**：残差多在 **最终动作或模型层** 加修正；FADA 在 **因子化策略内部** 只动 IDM，保留命令接口。
 - **相对 [SLowRL](./paper-slowrl-safe-lora-locomotion-sim2real.md)**：同为 **LoRA 真机适应**；SLowRL 用 **reward + Recovery 安全壳** 微调四足策略；FADA 用 **无 reward 监督 IDM** 做人形全身任务。
+
+## 结论
+
+**FADA 的判断是 sim2real 失配主要发生在「执行」而不是「意图」：冻结 planner、只用约 2 分钟目标域 rollout 对 IDM 做 LoRA 微调，就能把人形高精度全身任务从勉强能跑推到可用。**
+
+- 起作用的是 **Planner–IDM 分解 + 无 reward 监督**：监督信号仅为 rollout 上 **实际执行的首动作**，不要奖励、专家演示或 SysID，因此不完美的目标域数据同样可用。
+- 分解假设有直接证据支撑：载荷 0–5 kg 下各 planner RMSE 仅差 **≈7%**，而 IDM 适应使跟踪误差 **≈24%↓**、planner–执行一致性 gap **≈54%↓**；sim2sim 上只微调未来预测的 **TF-CoPred-ft 反而劣于零样本**。
+- 关键量纲：真机成功率任务平均 **20% → 90%**，跟踪误差相对 FADA-zs **−27.4%**；$K=6$ 优于 $K=1$，LoRA 比全参微调更稳，目标数据约 **6000 步（≈2 min）** 即达平台。
+- 边界：适应前的策略必须 **能跑够长** 以收集 rollout（FADA-zs 多项真机任务仅 **20%**）；未覆盖全身人–物交互与视觉/触觉条件；源域 oracle RL + DAgger + 域随机化的前置成本一分未省。
+- 定位上与 [RMA](./paper-rma-rapid-motor-adaptation.md) 的「不改权重、只改输入 latent」构成适应 taxonomy 的两支，与 [BFM-Zero](./paper-bfm-zero.md) 的可提示行为潜空间则可 **上下叠加**。
 
 ## 常见误区或局限
 

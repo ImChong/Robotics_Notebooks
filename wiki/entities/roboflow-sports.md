@@ -5,6 +5,7 @@ status: complete
 updated: 2026-07-27
 code: https://github.com/roboflow/sports
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../methods/soccer-field-line-detection.md
   - ../queries/soccer-visual-field-localization-pipeline.md
   - ../tasks/humanoid-soccer.md

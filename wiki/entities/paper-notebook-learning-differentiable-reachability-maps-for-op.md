@@ -46,6 +46,14 @@ Learning Differentiable Reachability Maps for Optimization-based Humanoid Motion
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是「可微可达性映射」这篇工作的占位索引节点：它现在能提供的是图谱位置与溯源入口，而不是可引用的方法结论。**
+
+- 页面可确认的信息只有三项：分类 14_Human_Motion、arXiv 2508.11275、深读状态「待撰写」；标题给出的唯一机制线索是把可达性映射做成可微形式、服务于基于优化的人形运动生成。
+- 适用边界很窄：可当检索入口与知识图谱占位用，不能当技术判断依据——本页「实验与评测」已明确量化 benchmark、消融与实机指标都要等深读笔记完成后才补。
+- 主要风险是把占位页误读成结论页；升格触发点是 PROGRESS.md 上的深读笔记落地，届时应改链笔记站并重写正文，向上仍挂在 [paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)

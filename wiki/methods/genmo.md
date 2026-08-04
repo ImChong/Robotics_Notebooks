@@ -4,6 +4,7 @@ tags: [human-motion, diffusion, smpl, perception, video-to-control, nvidia]
 status: complete
 updated: 2026-06-17
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ./hy-motion-1.md
   - ./exoactor.md
   - ./diffusion-motion-generation.md

@@ -2,9 +2,10 @@
 type: entity
 tags: [framework, open-source, agent, navigation, unitree, quadruped, humanoid, mcp, middleware]
 status: complete
-updated: 2026-07-09
+updated: 2026-08-03
 related:
   - ../concepts/ros2-basics.md
+  - ../concepts/model-context-protocol.md
   - ../comparisons/ros2-vs-lcm.md
   - ./unitree-g1.md
   - ./unitree.md
@@ -14,6 +15,7 @@ related:
   - ../tasks/teleoperation.md
 sources:
   - ../../sources/repos/dimensionalos_dimos.md
+  - ../../sources/sites/modelcontextprotocol-io.md
 summary: "DimOS（Dimensional）是 agent-native 的物理空间操作系统：Python Module + Blueprint 编排感知/导航/空间记忆/控制，默认无需 ROS，经 LCM 等传输对接 Unitree Go2/G1、机械臂与无人机，并内置 MCP 自然语言 agent 控制。"
 ---
 
@@ -98,6 +100,7 @@ flowchart LR
 ## 关联页面
 
 - [ROS 2 基础](../concepts/ros2-basics.md) — DimOS 宣称无需 ROS 即可起步；ROS 2 仍可作为传输与导航互操作层
+- [Model Context Protocol（MCP）](../concepts/model-context-protocol.md) — skills 暴露为 MCP Tools 的协议层
 - [ROS 2 vs LCM](../comparisons/ros2-vs-lcm.md) — DimOS 默认 **LCMTransport** 连模块流
 - [Unitree G1](./unitree-g1.md) — `dimos --simulation run unitree-g1-sim`；README 列 beta 支持
 - [Unitree 品牌](./unitree.md) — Go2/G1 官方 SDK 之外的集成路线
@@ -111,6 +114,7 @@ flowchart LR
 - [DimOS 仓库归档](../../sources/repos/dimensionalos_dimos.md)
 - [dimensionalOS/dimos（GitHub）](https://github.com/dimensionalOS/dimos)
 - [Dimensional 官网](https://dimensionalos.com/)
+- [MCP 官方文档归档](../../sources/sites/modelcontextprotocol-io.md)
 
 ## 推荐继续阅读
 

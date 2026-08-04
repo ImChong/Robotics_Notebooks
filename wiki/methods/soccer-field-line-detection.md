@@ -4,6 +4,7 @@ tags: [computer-vision, soccer, perception, yolo, geometry, humanoid, robocup]
 status: complete
 updated: 2026-07-27
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../methods/object-detection.md
   - ../concepts/soccer-field-simulation.md
   - ../methods/visual-line-matching-localization.md

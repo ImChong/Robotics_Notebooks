@@ -161,6 +161,16 @@ SKR 的核心思想是“少缩放，保几何”：
 | 编号不一致 | 项目页 BibTeX 写作 **BifrostUMI / arXiv:2605.03452**，而本页按用户指定与 arXiv 抓取记录维护 **HumanoidUMI / arXiv:2606.27239**；复现时需核对官方后续命名 |
 | 源码运行时序图 | **不适用**：没有可运行官方代码仓库；项目页只显示 code coming soon |
 
+## 结论
+
+**HumanoidUMI 的赌注是「采集端去掉机器人、表示端降到五个关键点」：用稀疏任务空间几何换来人到人形的数据入口，代价是把可行性全部押在 SKR 与低层 WBC 上。**
+
+- 真正起作用的是 SKR 的「少缩放、保几何」——只在 pelvis-local 垂直方向对腿部关键点乘 **0.75** 高度补偿，TCP 之间的度量关系不做全局 rescale；换成 GMR 后桌面操作成功率下降，说明被扭曲的正是「手到物体」的真实空间关系。
+- 高层 Diffusion Policy 预测的是 **47-D（七关键点 65-D）关键点动作块** 而非 29 个 G1 关节，形态耦合被推给 SKR + WBC；因此低层控制器不支持的姿态/接触就是硬边界。
+- 消融给出三条依赖：latency matching 之于 dynamic ball shooting、膝关键点之于 under-table / walking delivery、SKR 之于桌面操作，任一缺失对应任务即退化。
+- 采集效率是它相对 robot-in-the-loop 遥操作的主要论据（10 分钟有效示范数高于 TWIST2，novice walking coffee delivery **61 vs 1**），但仍需 PICO trackers + 双 gripper 及时间同步、相机/夹爪延迟标定。
+- 定位上与 [WT-UMI](./paper-loco-manip-07-wt-umi.md)（偏触觉/力监督的全身遥操作）互补；代码标注 Coming Soon，且项目页 BibTeX 的命名/编号与本页不一致，复现前须核对官方后续发布。
+
 ## 局限与风险
 
 - **关键点表示有上限**：五关键点适合大幅全身几何，但对手指灵巧操作、接触力和物体微姿态表达不足。

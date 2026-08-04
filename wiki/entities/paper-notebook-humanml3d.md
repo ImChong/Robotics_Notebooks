@@ -51,6 +51,16 @@ HumanML3D 是目前最主流的 3D 人体运动 - 文本数据集之一，提供
 
 - 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
+## 结论
+
+**HumanML3D 的分量不在方法而在「基座」：近 1.5 万动作剪辑配 4.5 万条自然语言描述，让文本生成动作从此有了共同的训练与评测锚点。**
+
+- 真正起作用的是规模 × 配对：动作剪辑与自然语言描述成对提供，构成 Text-to-Motion 最主流的训练素材。
+- 影响力体现在被持续沿用——[MoLingo](./paper-molingo.md) 仍以 HumanML3D 为训评锚点，并在其上扩展 MARDM-67 / MS-272 / TMR-263 等多协议对照。
+- 使用时注意评测协议并不唯一：跨论文比较 FID 等指标前需先对齐协议，否则数字不可直接并列。
+- 检索定位上与 [Awesome Text-to-Motion（Zilize）](./awesome-text-to-motion-zilize.md) 分工明确：那边是文献索引，本页是数据集本体。
+- 本页为策展索引级摘要，详细机制待从深读笔记消化，量化 benchmark 以笔记与论文 PDF 为准。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)

@@ -59,6 +59,15 @@ sources:
 - 评测原始出处：[原文 / 项目页](https://gentlefress.github.io/roboghost-proj/)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-04-generative-language-trajectory.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**这篇的关键主张是「免重定向」：用运动潜空间引导直接生成人形可执行轨迹，绕开人类动捕到机器人本体的重定向环节。**
+
+- 生成侧是扩散策略/流匹配加 MM-DiT/Transformer 动作头，把动作生成当成条件采样而非轨迹优化。
+- 条件来源跨模态——语言指令、图像/多视角观测、人类视频/动捕轨迹，属于外部驱动而非纯状态反馈控制。
+- 口径需要核对：原文题目标称 retargeting-free，本页策展摘要的方法栈里却仍列出 IK/动作重定向，以原文 PDF / 项目页为准。
+- 有公开项目页；本页未搬运量化 benchmark，横向对照回 [分类 hub](../overview/loco-manip-161-category-04-generative-language-trajectory.md)。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

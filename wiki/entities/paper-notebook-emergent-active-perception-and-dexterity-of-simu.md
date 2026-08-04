@@ -46,6 +46,14 @@ Emergent Active Perception and Dexterity of Simulated Humanoids from Visual Rein
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页当前是一条「已排期、未深读」的占位实体：它补的是"视觉 RL 下仿真人形涌现主动感知与灵巧性"这一话题在图谱中的位置，而不是可直接引用的方法结论。**
+
+- 本页能确认的只有索引层信息——arXiv 2505.12278、分类 13_Physics-Based_Animation 与计划中的笔记文件夹；标题指向"主动感知与灵巧性从视觉强化学习中涌现"这一命题，训练设置、涌现行为的判定方式与评测协议页内均未展开。
+- 适用边界：适合经[分类父节点](../overview/paper-notebook-category-13-physics-based-animation.md)与[人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)做检索与交叉定位；且本页归属物理动画分支，结论默认限于仿真，不应外推到真机。
+- 主要风险是把占位页误读成已消化的结论：量化 benchmark、消融与实机指标本页全部缺失，深读状态须回到 PROGRESS.md 跟踪，结论以论文原文为准。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)

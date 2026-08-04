@@ -102,6 +102,16 @@ flowchart TB
 - **Generalist**：DAgger 蒸馏多 specialist，覆盖 Inter-X 30 条多样 **扶起策略**。
 - **下游**：可将 **运动扩散模型** 输出的 kinematic 双人交互 **落地为 physics rollout**（站点演示）。
 
+## 结论
+
+**AssistMimic 的判断是：assistive 动作演不出来——recipient 在物理上无法独立执行参考，所以扶起、护理这类力交换必须写成 supporter/recipient 联合优化的 MARL，而不是 kinematic replay。**
+
+- 决定成败的不是网络而是三个稳定器：**PHC 权重零填充初始化**（去掉后 Inter-X SR **→ 0%**）、**动态 hand retargeting**、**contact-promoting reward**。
+- 评测口径是双 agent 与参考距离均 **< 0.5 m** 的 episode 比例；specialist Inter-X **74.9%** / HHI-Assist **85.8%**，DAgger generalist 在 Inter-X 反超（**83%**）而 HHI-Assist 回落（**73%**）——泛化与专精在两个基准上方向相反。
+- 主要风险是 **reward hacking**：去掉 contact reward 后 HHI-Assist seen SR 反升到 **97.7%**，说明高 SR 不等于交互正确，ablation 必须分数据集读。
+- 适用边界：主证据在 **物理引擎人形 avatar**，与真机护理部署仍隔 sim2real、感知与安全层；观测是本体 + 伙伴 kinematics/力，不解决视觉遮挡下的 online 估计；极端错误的 MoCap 参考仍会失败。
+- 与相邻工作的分工：[InterMimic](./paper-bfm-15-intermimic.md) / [InterPrior](./paper-interprior.md) 做 **人–物 HOI**，[Rhythm](./paper-rhythm-dual-humanoid-interaction.md) 做 **对称双 humanoid 社交且有双 G1 真机**；本文占 **非对称护理角色 + 力交换** 这一格。
+
 ## 常见误区或局限
 
 - **仿真 avatar 主证据**：论文在 **physics engine 人形** 上验证；与 **真机 humanoid 护理部署** 之间仍有 sim2real、感知与安全层 gap。

@@ -47,6 +47,14 @@ Learning Getting-Up Policies for Real-World Humanoid Robots 的人形机器人�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页先把「真机人形起身策略」这一条目占住图谱位置，技术内容仍待深读笔记补齐。**
+
+- 现有可核验信息仅为元数据：分类 04_Loco-Manipulation_and_WBC、计划笔记文件夹路径、progress.json 中的待深读状态。
+- 「实验与评测」自述量化 benchmark、消融与实机指标均未撰写，因此本页不构成对该工作效果的任何背书。
+- 适用边界：可用于分类检索与图谱连边，不适合作为起身（getting-up）方向的技术引用来源。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

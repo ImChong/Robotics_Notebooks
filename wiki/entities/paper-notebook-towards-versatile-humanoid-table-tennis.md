@@ -47,6 +47,14 @@ Towards Versatile Humanoid Table Tennis 的人形机器人学习论文条目，�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是待深读占位节点，登记的是这篇 04_Loco-Manipulation_and_WBC 论文的阅读进度，而不是对其方法的判断。**
+
+- 页面可确证的信息只有分类归属与「待深读」状态；标题层面的线索是「统一强化学习 + 预测增强」，具体机制页面未展开。
+- 「实验与评测」明确留空，任何回球成功率、消融或实机指标都需回到原文。
+- 深读笔记完成后本页应升格为完整索引实体并链向笔记站。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

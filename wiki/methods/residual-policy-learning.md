@@ -2,7 +2,7 @@
 type: method
 tags: [residual-learning, reinforcement-learning, control, locomotion, manipulation, motion-tracking, sim2real, shared-autonomy]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-02
 related:
   - ./reinforcement-learning.md
   - ./imitation-learning.md
@@ -10,8 +10,10 @@ related:
   - ../concepts/sim2real.md
   - ../concepts/whole-body-tracking-pipeline.md
   - ../tasks/locomotion.md
+  - ../entities/paper-loco-manip-161-157-refine-dp.md
 sources:
   - ../../sources/personal/residual-policy-reading-list.md
+  - ../../sources/papers/refine_dp_arxiv_2603_13707.md
 summary: "Residual Policy Learning（残差策略学习）：最终动作 = 基础动作 + 学习残差，a=a_base+Δa。基础部分可以是传统控制器、MPC、参考轨迹、技能解码器、运动生成器甚至人的输入；RL 只学补偿量，从而收窄探索空间、保住 base 先验、提升样本效率。本页给出统一形式、九篇代表论文谱系与选型建议。"
 ---
 
@@ -110,6 +112,7 @@ $$a_t = a_t^{\text{base}} + \Delta a_t,\qquad \Delta a_t \sim \pi_\theta(\cdot \
 | 微调（fine-tuning） | 参数初始化 | 需要 | 全动作空间 | 灾难性遗忘 base 先验 |
 | **Residual Policy** | **行为叠加** | **不需要** | **修正量级** | base 天花板、双组件非平稳 |
 | 分层/技能 RL | 时间抽象 | 不需要 | 技能空间 | 技能空间不含解则失败（ReSkill 的动机） |
+| [REFINE-DP](../entities/paper-loco-manip-161-157-refine-dp.md) 式联合 RLFT | 直接更新 DP 参数 + 同步低层跟踪器 | DP 可微（DPPO） | 规划命令空间 + 关节跟踪 | 规划–控制分布需一起拉齐；非加性残差 |
 
 ## 关联页面
 
@@ -120,6 +123,7 @@ $$a_t = a_t^{\text{base}} + \Delta a_t,\qquad \Delta a_t \sim \pi_\theta(\cdot \
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md)
 - [Safe Real-World RL Fine-Tuning](../concepts/safe-real-world-rl-fine-tuning.md)
 - [MPC vs RL](../comparisons/mpc-vs-rl.md)
+- [REFINE-DP（论文实体）](../entities/paper-loco-manip-161-157-refine-dp.md) — 直接微调 DP + 联合低层，对照冻结 DP + Residual RL
 
 ## 参考来源
 

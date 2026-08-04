@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-03
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 11：仿真与基准（22 篇深读笔记索引）。"
@@ -54,6 +54,8 @@ summary: "Paper Notebooks 分类 11：仿真与基准（22 篇深读笔记索引
 
 - [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)
 - [schema/paper-notebook-index.json](../../schema/paper-notebook-index.json)
+- 站点来源归档：[humanoid-robot-learning-paper-notebooks](../../sources/sites/humanoid-robot-learning-paper-notebooks.md)
+- 本类论文 ingest 归档（节选）：[mjlab / Newton / UniLab / Genesis 出现的原因](../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md)、[GRAIL（NVlabs）](../../sources/repos/grail_nvlabs.md)、[BiGym](../../sources/papers/humanoid_pnb_bigym.md)
 
 ## 推荐继续阅读
 

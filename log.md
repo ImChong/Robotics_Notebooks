@@ -24,6 +24,331 @@
 - **开源核查（步骤 2.5）：** [SunnyYWD/ActFovea](https://github.com/SunnyYWD/ActFovea) Apache-2.0 完整实现（openpi 改造）→ 判 **已开源**；权重复用 π₀ 官方 checkpoint；已画 `## 源码运行时序图`
 - **交叉：** [`wiki/concepts/safety-filter.md`](wiki/concepts/safety-filter.md)、[`wiki/concepts/robot-safety-state-machine.md`](wiki/concepts/robot-safety-state-machine.md)、[`wiki/queries/vla-deployment-guide.md`](wiki/queries/vla-deployment-guide.md)、[`wiki/entities/libero-benchmark.md`](wiki/entities/libero-benchmark.md)、[`wiki/entities/paper-pi05-open-world-vla.md`](wiki/entities/paper-pi05-open-world-vla.md)、[`wiki/methods/vla.md`](wiki/methods/vla.md)
 
+## [2026-08-03] ingest | sources/repos/sensenova-u1.md + sites/huggingface-sensenova-u1-5-8b-mot-preview.md + sites/modelscope-sensenova-u1-5-8b-mot-preview.md — SenseNova-U1.5 Preview 原生统一多模态模型；升格 wiki/entities/sensenova-u1-5.md
+
+- **触发：** 用户指定三处一手入口 <https://github.com/OpenSenseNova/SenseNova-U1/blob/main/docs/u1.5_preview.md>、<https://huggingface.co/sensenova/SenseNova-U1.5-8B-MoT-Preview>、<https://modelscope.cn/models/SenseNova/SenseNova-U1.5-8B-MoT-Preview>
+- **Sources：** [`sources/repos/sensenova-u1.md`](sources/repos/sensenova-u1.md)、[`sources/sites/huggingface-sensenova-u1-5-8b-mot-preview.md`](sources/sites/huggingface-sensenova-u1-5-8b-mot-preview.md)、[`sources/sites/modelscope-sensenova-u1-5-8b-mot-preview.md`](sources/sites/modelscope-sensenova-u1-5-8b-mot-preview.md)
+- **Wiki：** [`wiki/entities/sensenova-u1-5.md`](wiki/entities/sensenova-u1-5.md)
+- **交叉：** [`wiki/entities/sensenova-skills.md`](wiki/entities/sensenova-skills.md)、[`wiki/concepts/generative-vision-pretraining.md`](wiki/concepts/generative-vision-pretraining.md)（新增谱系 E：原生统一预训练）、[`wiki/methods/unified-multimodal-tokens.md`](wiki/methods/unified-multimodal-tokens.md)
+- **机构：** 已有 `sensenova`（商汤科技（SenseNova）），无需新注册
+- **开源：** **已开源（Apache-2.0）** — 推理 `examples/{t2i,editing}/inference.py`、U1.5 生成侧预训练 `training/shell/train_u1/U1.5_8B.sh`、全参微调代码与权重全部公开；**训练数据未开源**，**U1.5 技术报告未发布**（现有 arXiv 2605.12500 对应 U1）
+- **核对要点：** `8B-MoT` 指「≈8B 理解 + ≈8B 生成」，官方脚本实测总参 **17.552B**（bf16 载入 ~35.1 GB，盘上 ~50.2 GB）；HF/ModelScope 分片后缀 `-of-00016` 但实际仅 13 个文件（`00002`–`00004` 缺号），`model.safetensors.index.json` 未引用缺号分片 → 权重完整，非下载失败；`max_pixels 16777216` 恰为 4096×4096，对应「原生 4K」口径
+- **口径提醒：** 评测带 † 的 55.17/55.22 含模型外部 PE 改写器，裸分为 49.93/50.25；编辑侧 WeEdit BP 子项反而低于 U1（6.752 vs 7.157）
+
+## [2026-08-03] ingest | sources/papers/worldscape_policy_2_arxiv_2607_18840.md + sites/manifoldai-research-worldscape-policy.md + repos/worldscape-policy.md — WorldScape Policy 2.0 推理增强长短期记忆 WAM；升格 wiki/entities/paper-worldscape-policy-2.md
+
+- **触发：** 用户指定论文 <https://arxiv.org/abs/2607.18840> 与仓库 <https://github.com/manifoldai-research/WorldScape-Policy>
+- **Sources：** [`sources/papers/worldscape_policy_2_arxiv_2607_18840.md`](sources/papers/worldscape_policy_2_arxiv_2607_18840.md)、[`sources/sites/manifoldai-research-worldscape-policy.md`](sources/sites/manifoldai-research-worldscape-policy.md)、[`sources/repos/worldscape-policy.md`](sources/repos/worldscape-policy.md)
+- **Wiki：** [`wiki/entities/paper-worldscape-policy-2.md`](wiki/entities/paper-worldscape-policy-2.md)
+- **交叉：** [`wiki/concepts/world-action-models.md`](wiki/concepts/world-action-models.md)、[`wiki/overview/wm-action-consequence-category-01-wam-action-prediction.md`](wiki/overview/wm-action-consequence-category-01-wam-action-prediction.md)、[`wiki/entities/paper-worldscape-moe-heterogeneous-action.md`](wiki/entities/paper-worldscape-moe-heterogeneous-action.md)
+- **机构：** 已有 `tsinghua`、`sjtu`；`manifold` 沿用 Worldscape-MoE 页既有 tag（`schema/institutions.json` 未注册，本次未改注册表）
+- **开源：** **宣称将开源 / 待发布** — GitHub 仅 `README.md` + `.gitignore`（"Code is coming soon"），HF `WorldScape-Policy-2` 仅模型卡（"Model is coming soon"，声明 Apache-2.0）；ManipEvent-5M 自采部分无发布计划 → 实体页 `## 源码运行时序图` 标注 **不适用**
+- **要点：** 事件记忆（VLM，global-history / local-active / event-boundary 三视图 + 门控）与视觉记忆（DiT，近 4 chunk causal prefill）分层；semantic forcing（\(\lambda_s=0.001\)、T5 靶 stop-grad）把事件字幕语义蒸馏进隐式子目标；RoboTwin 2.0 标准榜 **94.3%** 已饱和（同档仅 +0.2~+0.7），差异在 **C2R 47.9%**（Fast-WAM 39.1）与真机视觉提示任务（叠积木目标图/演示 **60%/70%** vs π₀.₅ 10%/20%）
+
+## [2026-08-03] ingest | sources/papers/humanoid_leg_generative_design_hust_j_260645.md — 动力学仿真驱动人形下肢衍生式设计；升格 wiki/entities/paper-humanoid-leg-generative-design-dynamics.md
+
+- **触发：** 用户指定学报页 <http://xb.hust.edu.cn/thesisDetails#10.13245/j.hust.260645&lang=zh>（DOI `10.13245/j.hust.260645`）
+- **Sources：** [`sources/papers/humanoid_leg_generative_design_hust_j_260645.md`](sources/papers/humanoid_leg_generative_design_hust_j_260645.md)
+- **Wiki：** [`wiki/entities/paper-humanoid-leg-generative-design-dynamics.md`](wiki/entities/paper-humanoid-leg-generative-design-dynamics.md)
+- **交叉：** [`wiki/concepts/humanoid-mechanical-layout-design.md`](wiki/concepts/humanoid-mechanical-layout-design.md)、[`wiki/overview/humanoid-hardware-101-chassis-materials.md`](wiki/overview/humanoid-hardware-101-chassis-materials.md)、[`wiki/overview/humanoid-actuator-102-load-and-mass-spiral.md`](wiki/overview/humanoid-actuator-102-load-and-mass-spiral.md)、[`roadmap/depth-humanoid-hardware-design.md`](roadmap/depth-humanoid-hardware-design.md)、[`wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md`](wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md)、[`wiki/queries/humanoid-hardware-selection.md`](wiki/queries/humanoid-hardware-selection.md)
+- **机构：** 已有 `zju`；新注册 `avic-facri`（中航工业西安飞行自动控制研究所（AVIC FACRI））
+- **开源：** **确认未开源** — 学报 PDF 可下载，无 GitHub/CAD/数据集
+
+## [2026-08-03] ingest | sources/papers/robo_harness_arxiv_2607_18060.md + sites/robo-harness-com.md + repos/robo-harness.md — RoboHarness 异构策略编排；升格 wiki/entities/paper-robo-harness.md
+
+- **触发：** 用户指定项目主页 <https://robo-harness.com> 与论文 <https://arxiv.org/abs/2607.18060>
+- **Sources：** [`sources/papers/robo_harness_arxiv_2607_18060.md`](sources/papers/robo_harness_arxiv_2607_18060.md)、[`sources/sites/robo-harness-com.md`](sources/sites/robo-harness-com.md)、[`sources/repos/robo-harness.md`](sources/repos/robo-harness.md)
+- **Wiki：** [`wiki/entities/paper-robo-harness.md`](wiki/entities/paper-robo-harness.md)
+- **交叉：** [`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/entities/paper-harness-vla.md`](wiki/entities/paper-harness-vla.md)、[`wiki/concepts/behavior-tree-vla-orchestration.md`](wiki/concepts/behavior-tree-vla-orchestration.md)、[`wiki/entities/paper-gap-graph-as-policy.md`](wiki/entities/paper-gap-graph-as-policy.md)、[`wiki/overview/vla-open-source-repro-landscape-2025.md`](wiki/overview/vla-open-source-repro-landscape-2025.md)、[`wiki/entities/paper-pi05-open-world-vla.md`](wiki/entities/paper-pi05-open-world-vla.md)
+- **机构：** 注册 `mcgill`、`utoronto`、`2012-labs`；已有 `huawei`、`ubc`
+- **开源：** **部分开源（占位仓）** — 项目页 Code → `markli1hoshipu/RoboHarness`，仓内为静态站镜像，无可运行 harness；底层 π₀.₅ / OpenVLA-OFT 权重另开源
+
+## [2026-08-03] ingest | sources/sites/anthropic-model-context-protocol.md + modelcontextprotocol-io.md — MCP 协议一手资料；升格 wiki/concepts/model-context-protocol.md
+
+- **触发：** 用户要求查找并 ingest MCP 相关一手资料（此前库内仅有 FreeCAD/UE 等应用桥，缺协议层）
+- **Sources：** [`sources/sites/anthropic-model-context-protocol.md`](sources/sites/anthropic-model-context-protocol.md)（2024-11-25 Anthropic 开源公告）、[`sources/sites/modelcontextprotocol-io.md`](sources/sites/modelcontextprotocol-io.md)（官方文档 / Spec `2026-07-28`）、[`sources/repos/modelcontextprotocol.md`](sources/repos/modelcontextprotocol.md)（规范仓 + org SDK/Inspector/servers 索引）
+- **Wiki：** [`wiki/concepts/model-context-protocol.md`](wiki/concepts/model-context-protocol.md)
+- **交叉：** [`wiki/entities/freecad-mcp.md`](wiki/entities/freecad-mcp.md)、[`wiki/entities/drawio-scientific-illustrator.md`](wiki/entities/drawio-scientific-illustrator.md)、[`wiki/entities/dimensionalos-dimos.md`](wiki/entities/dimensionalos-dimos.md)、[`wiki/entities/hermes-agent.md`](wiki/entities/hermes-agent.md)、[`wiki/entities/unreal-engine-5.md`](wiki/entities/unreal-engine-5.md)、[`wiki/entities/unreal-mcp.md`](wiki/entities/unreal-mcp.md)、[`wiki/concepts/remote-procedure-call.md`](wiki/concepts/remote-procedure-call.md)
+- **机构：** 注册 [`schema/institutions.json`](schema/institutions.json) `anthropic`（人类智能（Anthropic））
+- **开源：** **已开源** — 规范/SDK/参考 servers 公开；规范仓许可正从 MIT 过渡到 Apache-2.0
+
+## [2026-08-03] ingest | sources/sites/unreal-mcp-in-unreal-editor.md — Unreal MCP（UE 5.8 Experimental）编辑器内嵌 MCP server
+
+- **触发：** 用户指定 <https://dev.epicgames.com/documentation/unreal-engine/unreal-mcp-in-unreal-editor>
+- **Sources：** [`sources/sites/unreal-mcp-in-unreal-editor.md`](sources/sites/unreal-mcp-in-unreal-editor.md)、[`sources/repos/unreal-engine-skills-for-claude-code-plugin.md`](sources/repos/unreal-engine-skills-for-claude-code-plugin.md)
+- **Wiki：** [`wiki/entities/unreal-mcp.md`](wiki/entities/unreal-mcp.md)
+- **交叉：** [`wiki/entities/unreal-engine-5.md`](wiki/entities/unreal-engine-5.md)、[`wiki/entities/freecad-mcp.md`](wiki/entities/freecad-mcp.md)、[`sources/sites/unreal-engine-5-8-docs.md`](sources/sites/unreal-engine-5-8-docs.md)、[`sources/repos/epicgames-github-org.md`](sources/repos/epicgames-github-org.md)
+- **机构：** `epic-games` 已注册
+- **开源：** **部分开源** — 引擎内 `ModelContextProtocol*` / Toolset Registry 随 UE 许可与私有 UnrealEngine 源码；Claude Code 技能插件 **MIT 已开源**（`EpicGames/unreal-engine-skills-for-claude-code-plugin`）
+
+
+## [2026-08-03] ingest | sources/sites/humanoid-robot-learning-paper-notebooks.md — 姊妹论文笔记站归档；补齐 26 个 wiki/overview 汇总页的 sources ingest 锚点
+
+- **触发：** `make lint` 的 Sources 覆盖率长期停在 2022/2048 (99%)，缺口全部落在 `wiki/overview/` 汇总页
+- **Sources：** [`sources/sites/humanoid-robot-learning-paper-notebooks.md`](sources/sites/humanoid-robot-learning-paper-notebooks.md) — 姊妹站 Humanoid Robot Learning Paper Notebooks（14 分类 / 站点自述 305 篇），此前是本库唯一未建归档的重要外部输入
+- **开源：** **已开源** — GitHub 仓库公开，BSD-3-Clause；含 `progress.json` 与 `papers/PROGRESS.md` 两份进度清单（2026-08-03 核对）
+- **分类页（14）：** [`wiki/overview/paper-notebook-category-01-foundational-rl.md`](wiki/overview/paper-notebook-category-01-foundational-rl.md)、[`wiki/overview/paper-notebook-category-02-motion-retargeting.md`](wiki/overview/paper-notebook-category-02-motion-retargeting.md)、[`wiki/overview/paper-notebook-category-03-high-impact-selection.md`](wiki/overview/paper-notebook-category-03-high-impact-selection.md)、[`wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md`](wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)、[`wiki/overview/paper-notebook-category-05-locomotion.md`](wiki/overview/paper-notebook-category-05-locomotion.md)、[`wiki/overview/paper-notebook-category-06-manipulation.md`](wiki/overview/paper-notebook-category-06-manipulation.md)、[`wiki/overview/paper-notebook-category-07-teleoperation.md`](wiki/overview/paper-notebook-category-07-teleoperation.md)、[`wiki/overview/paper-notebook-category-08-navigation.md`](wiki/overview/paper-notebook-category-08-navigation.md)、[`wiki/overview/paper-notebook-category-09-state-estimation.md`](wiki/overview/paper-notebook-category-09-state-estimation.md)、[`wiki/overview/paper-notebook-category-10-sim-to-real.md`](wiki/overview/paper-notebook-category-10-sim-to-real.md)、[`wiki/overview/paper-notebook-category-11-simulation-benchmark.md`](wiki/overview/paper-notebook-category-11-simulation-benchmark.md)、[`wiki/overview/paper-notebook-category-12-hardware-design.md`](wiki/overview/paper-notebook-category-12-hardware-design.md)、[`wiki/overview/paper-notebook-category-13-physics-based-animation.md`](wiki/overview/paper-notebook-category-13-physics-based-animation.md)、[`wiki/overview/paper-notebook-category-14-human-motion.md`](wiki/overview/paper-notebook-category-14-human-motion.md) — `参考来源` 增加站点归档 + 本类论文 ingest 归档（节选 3 条）
+- **知识链汇总页（12）：** [`wiki/overview/hub-contact-force-control.md`](wiki/overview/hub-contact-force-control.md)、[`wiki/overview/hub-data-pipeline.md`](wiki/overview/hub-data-pipeline.md)、[`wiki/overview/hub-learning.md`](wiki/overview/hub-learning.md)、[`wiki/overview/hub-locomotion.md`](wiki/overview/hub-locomotion.md)、[`wiki/overview/hub-motion-retargeting.md`](wiki/overview/hub-motion-retargeting.md)、[`wiki/overview/hub-physics-fidelity.md`](wiki/overview/hub-physics-fidelity.md)、[`wiki/overview/hub-safe-fine-tuning.md`](wiki/overview/hub-safe-fine-tuning.md)、[`wiki/overview/hub-state-estimation.md`](wiki/overview/hub-state-estimation.md)、[`wiki/overview/hub-vision-backbone.md`](wiki/overview/hub-vision-backbone.md)、[`wiki/overview/hub-vla.md`](wiki/overview/hub-vla.md)、[`wiki/overview/hub-wbc.md`](wiki/overview/hub-wbc.md)、[`wiki/overview/hub-wbt.md`](wiki/overview/hub-wbt.md) — `参考来源` 增加「上游原始资料」，链到本链概念页共同的 ingest 来源
+- **口径说明：** 站点首页自述 305 篇、`schema/paper-notebook-index.json` 收录 289 条已成稿笔记、`schema/paper-notebook-categories.json` 合计 518 条清单项（含待深读与跨类重复计入），三者不等已在归档中写明
+- **结果：** Sources 覆盖率 2022/2048 (99%) → **2048/2048 (100%)**；lint 阻塞型 0、信息型 0
+## [2026-08-02] structural | docs/main.js — 详情页正文内链悬停浮窗，并与关联知识图谱迷你图双向联动
+
+- **改动：** [`docs/main.js`](docs/main.js) — 正文中指向站内知识页的内链标记为 `.detail-inline-link`，悬停弹出与图谱同款 hover 卡片（类型徽标 + 标题 + 摘要 + 「打开详情页 →」）；类型与社区色优先取 `link-graph.json` 的细类型（concept / task / paper…），与迷你图浮窗同口径
+- **联动：** 悬停正文内链 → 迷你图同一节点点亮（`.mini-node-linked`）；悬停迷你图节点 → 正文中指向它的内链点亮（`.detail-inline-link-linked`）；触屏（`hover: none`）不绑定，点击内链仍直接跳转
+- **涉及路径：** [`docs/detail.html`](docs/detail.html)（新增 `#detail-inline-link-tooltip`）、[`docs/style.css`](docs/style.css)
+- **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md) Phase 3「详情页浮窗联动」
+- **验证：** [`scripts/verify_detail_inline_link_preview.cjs`](scripts/verify_detail_inline_link_preview.cjs)（`wiki-concepts-sim2real` → 浮窗可见 / 迷你图点亮 1 节点；反向 → 正文点亮 1 条内链）；`make ci-preflight` 通过
+
+## [2026-08-02] structural | docs/graph.html — 筛选浮窗三区手风琴（按社区 / 路线视图 / 研究机构）
+
+- **改动：** [`docs/graph.html`](docs/graph.html) — 「按社区（当前维度）/ 路线视图 / 研究机构」同时仅展开一个，默认展开「按社区」；展开区吃满剩余高度，收起项靠上或靠下；`?depth=` / `?community=` / `?institution=` 深链同步打开对应区
+- **跟进：** Chromium 下对 `<details>` 设 flex/grid 会导致列表不被限高、溢出被裁切且无滑块；展开态改为 absolute 铺满 summary 下方，并以 `.filter-scroll-chrome` 常驻滑块替代不可见的原生 overlay 滚动条
+- **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md)
+- **验证：** [`scripts/verify_graph_filter_accordion.cjs`](scripts/verify_graph_filter_accordion.cjs)
+
+## [2026-08-02] ingest | sources/sites/tinkercad-com.md — Autodesk Tinkercad；wiki/entities/tinkercad.md；交叉 wiki/entities/wokwi.md、wiki/entities/freecad.md、wiki/entities/kicad.md、wiki/entities/simplefoc.md、wiki/overview/motor-drive-firmware-bus-protocols.md
+
+- **触发：** 用户指定 <https://www.tinkercad.com/>
+- **Sources：** [`sources/sites/tinkercad-com.md`](sources/sites/tinkercad-com.md)
+- **Wiki：** [`wiki/entities/tinkercad.md`](wiki/entities/tinkercad.md)
+- **交叉：** [`wiki/entities/wokwi.md`](wiki/entities/wokwi.md)、[`wiki/entities/freecad.md`](wiki/entities/freecad.md)、[`wiki/entities/kicad.md`](wiki/entities/kicad.md)、[`wiki/entities/simplefoc.md`](wiki/entities/simplefoc.md)、[`wiki/overview/motor-drive-firmware-bus-protocols.md`](wiki/overview/motor-drive-firmware-bus-protocols.md)
+- **机构：** `autodesk` 已注册
+- **开源：** **确认未开源** — Autodesk 闭源 SaaS；免费可用，设计可导出 STL/OBJ 等
+
+## [2026-08-02] ingest | sources/blogs/wechat_shenlan_six_spatial_representations_embodied_perception.md — 具身感知六种空间表征；wiki/concepts/embodied-perception-six-spatial-representations.md
+
+- **触发：** 用户指定微信 <https://mp.weixin.qq.com/s/lWvdz9cjuurS7ikBkZk0vQ>（深蓝具身智能 · 六种空间表征分层）
+- **抓取：** Agent Reach v1.5.0 + `wechat-article-for-ai`（已确认安装）；`--no-images`
+- **Sources：** [`sources/blogs/wechat_shenlan_six_spatial_representations_embodied_perception.md`](sources/blogs/wechat_shenlan_six_spatial_representations_embodied_perception.md)、[`sources/raw/wechat_shenlan_six_spatial_representations_2026-08-02/`](sources/raw/wechat_shenlan_six_spatial_representations_2026-08-02/)
+- **Wiki：** [`wiki/concepts/embodied-perception-six-spatial-representations.md`](wiki/concepts/embodied-perception-six-spatial-representations.md)
+- **交叉：** [`2d-to-3d-semantic-lifting-gap`](wiki/concepts/2d-to-3d-semantic-lifting-gap.md)、[`robot-perception-stack-selection-loop`](wiki/queries/robot-perception-stack-selection-loop.md)、[`navigation-slam-autonomy-stack`](wiki/overview/navigation-slam-autonomy-stack.md)、[`isaac-ros-nvblox`](wiki/entities/isaac-ros-nvblox.md)、[`go2-3d-semantic-mapping-sam-pipeline`](wiki/queries/go2-3d-semantic-mapping-sam-pipeline.md)
+
+## [2026-08-02] structural | docs/depth-filters.js — 修复路线视图多 token 片段漏匹配并补齐各纵深命中集
+
+- **问题：** `nodeSegments` 按 `/._-` 切词后，`loco-manip` / `motion-generation` / `sim-to-real` 等带连字符的 segments 几乎永不命中；Loco-Manip 路线视图仅剩枢纽+任务页（约 2 节点），动作生成等路线同样偏空
+- **修复：** `segmentHits` 对多 token segment 改为归一路径子串命中（`loco-manip` 可命中 `.../loco-manipulation...`）；单 token 仍精确匹配；并补齐 boxing / soccer / motion-generation / real2sim / wam 等路线的 segments 与显式 `ids`
+- **涉及路径：** [`docs/depth-filters.js`](docs/depth-filters.js)、[`tests/test_depth_filters.py`](tests/test_depth_filters.py)
+- **验证：** `pytest tests/test_depth_filters.py`；loco-manip 命名语料 129/129 命中
+
+## [2026-08-02] ingest | sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md — Sony aibo QuietWalk（ICRA 2025）低噪行走
+
+- **触发：** 用户指定 *Learning Quiet Walking for a Small Home Robot*（arXiv:2502.10983；ETH / Sony / NUS 等；Watanabe / Miki / Shi / Hutter 等；ICRA 2025）
+- **Sources：** [`sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md`](sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md)、[`sources/sites/sony-quietwalk-github-io.md`](sources/sites/sony-quietwalk-github-io.md)
+- **Wiki：** [`wiki/entities/paper-learning-quiet-walking-aibo.md`](wiki/entities/paper-learning-quiet-walking-aibo.md)
+- **交叉：** [`wiki/entities/paper-quietwalk-humanoid-locomotion.md`](wiki/entities/paper-quietwalk-humanoid-locomotion.md)、[`wiki/tasks/locomotion.md`](wiki/tasks/locomotion.md)、[`wiki/entities/quadruped-robot.md`](wiki/entities/quadruped-robot.md)、[`wiki/queries/locomotion-reward-design-guide.md`](wiki/queries/locomotion-reward-design-guide.md)、[`wiki/queries/legged-humanoid-rl-pd-gain-setting.md`](wiki/queries/legged-humanoid-rl-pd-gain-setting.md)、[`wiki/concepts/humanoid-policy-reward-functions.md`](wiki/concepts/humanoid-policy-reward-functions.md)、[`wiki/tasks/humanoid-locomotion.md`](wiki/tasks/humanoid-locomotion.md)、[`wiki/methods/disney-olaf-character-robot.md`](wiki/methods/disney-olaf-character-robot.md)、[`wiki/entities/paper-variable-impedance-contact-rl.md`](wiki/entities/paper-variable-impedance-contact-rl.md)
+- **机构：** `eth` / `sony` / `nus` 已注册
+- **开源：** **确认未开源可运行实现** — 项目页与 `sony/QuietWalk` 仅为静态展示仓
+
+## [2026-08-02] ingest | sources/papers/legged_load_adapt_arxiv_2507_07825.md — Legged Load Adapt（arXiv:2507.07825，ZJU-UIUC）未知动态载荷四足适应
+
+- **触发：** 用户指定项目页 <https://leixinjonaschang.github.io/leggedloadadapt.github.io/>；同时给出的 `arxiv.org/abs/2109.12343` 为同名起首 *Beyond Robustness* 多机器人韧性综述（Prorok et al.），与项目页无关——以项目页 BibTeX 校正为 **arXiv:2507.07825**（Chang / Nai / Chen / Yang · ZJU-UIUC）
+- **Sources：** [`sources/papers/legged_load_adapt_arxiv_2507_07825.md`](sources/papers/legged_load_adapt_arxiv_2507_07825.md)、[`sources/sites/leggedloadadapt-github-io.md`](sources/sites/leggedloadadapt-github-io.md)
+- **Wiki：** [`wiki/entities/paper-legged-load-adapt-unknown-dynamic-load.md`](wiki/entities/paper-legged-load-adapt-unknown-dynamic-load.md)
+- **交叉：** [`wiki/concepts/privileged-training.md`](wiki/concepts/privileged-training.md)、[`wiki/tasks/locomotion.md`](wiki/tasks/locomotion.md)、[`wiki/concepts/terrain-adaptation.md`](wiki/concepts/terrain-adaptation.md)、[`wiki/entities/paper-rma-rapid-motor-adaptation.md`](wiki/entities/paper-rma-rapid-motor-adaptation.md)、[`wiki/entities/paper-splitadapter-load-aware-loco-manipulation.md`](wiki/entities/paper-splitadapter-load-aware-loco-manipulation.md)
+- **机构：** `zju` / `uiuc` / `unitree` 已注册
+- **开源：** **宣称将开源 / 待发布** — 项目页 Code (coming soon)，无独立仓库
+
+## [2026-08-02] ingest | sources/papers/mmhu_arxiv_2507_12463.md + sites/mmhu-benchmark-github-io.md — MMHU（arXiv:2507.12463，TAMU / Brown / JHU / UT Austin）驾驶人体行为多模态基准
+
+- **触发：** 用户指定 *MMHU: A Massive-Scale Multimodal Benchmark for Human Behavior Understanding*（arXiv:2507.12463；Texas A&M / Brown / Johns Hopkins / UT Austin；Li / Ye / Wu / Yang / Fan / Hu / Tu）
+- **Sources：** [`sources/papers/mmhu_arxiv_2507_12463.md`](sources/papers/mmhu_arxiv_2507_12463.md)、[`sources/sites/mmhu-benchmark-github-io.md`](sources/sites/mmhu-benchmark-github-io.md)
+- **Wiki：** [`wiki/entities/paper-mmhu.md`](wiki/entities/paper-mmhu.md)
+- **交叉：** [`wiki/overview/autonomous-driving-core-algorithms-series.md`](wiki/overview/autonomous-driving-core-algorithms-series.md)、[`wiki/overview/e2e-autonomous-driving-top10-algorithms.md`](wiki/overview/e2e-autonomous-driving-top10-algorithms.md)、[`wiki/overview/hub-embodied-eval-benchmark.md`](wiki/overview/hub-embodied-eval-benchmark.md)、[`wiki/methods/diffusion-motion-generation.md`](wiki/methods/diffusion-motion-generation.md)、[`wiki/concepts/3d-spatial-vqa.md`](wiki/concepts/3d-spatial-vqa.md)
+- **机构：** 注册 [`schema/institutions.json`](schema/institutions.json) `texas-am` / `brown`；`jhu` / `ut-austin` 已有
+- **开源：** **部分开源** — HF Dataset [`jerryye0110/MMHU`](https://huggingface.co/datasets/jerryye0110/MMHU) 已发；项目页截至入库日 **未列 GitHub / 训练代码**
+
+
+## [2026-08-02] ingest | sources/papers/emergent_transfer_cross_config_arxiv_2607_25593.md — Emergent Transfer（arXiv:2607.25593，HUST / Spirit AI / PKU / SJTU / HIT / 清华）跨配置遗留示教三相迁移
+
+- **触发：** 用户指定 *When Does Legacy Data Start to Help? Emergent Transfer in Cross-Configuration Robot Learning*（arXiv:2607.25593；华中科技大学 / 千寻智能 / 北京大学 / 上海交通大学 / 哈尔滨工业大学 / 清华大学；Wang / Hou / Hu / Gao 等）
+- **Sources：** [`sources/papers/emergent_transfer_cross_config_arxiv_2607_25593.md`](sources/papers/emergent_transfer_cross_config_arxiv_2607_25593.md)
+- **Wiki：** [`wiki/entities/paper-emergent-transfer-cross-config.md`](wiki/entities/paper-emergent-transfer-cross-config.md)
+- **交叉：** [`wiki/overview/hub-cross-embodiment.md`](wiki/overview/hub-cross-embodiment.md)、[`wiki/queries/cross-embodiment-transfer-strategy.md`](wiki/queries/cross-embodiment-transfer-strategy.md)、[`wiki/queries/humanoid-training-data-pipeline.md`](wiki/queries/humanoid-training-data-pipeline.md)、[`wiki/entities/paper-pi05-open-world-vla.md`](wiki/entities/paper-pi05-open-world-vla.md)、[`wiki/methods/behavior-cloning.md`](wiki/methods/behavior-cloning.md)
+- **机构：** `hust` / `spirit-ai` / `pku` / `sjtu` / `hit` / `tsinghua` 已注册
+- **开源：** **确认未开源** — 项目入口即为 arXiv；无独立项目页 / GitHub
+
+## [2026-08-02] ingest | sources/papers/fa_rdp_arxiv_2607_28596.md + sites/fa-rdp-github-io.md — FA-RDP（arXiv:2607.28596，SJTU / 创智 / Noematrix）频率自适应反应扩散
+
+- **触发：** 用户指定 *FA-RDP: A Frequency-Adaptive Reactive Diffusion Policy for Contact-Rich Manipulation*（arXiv:2607.28596；SJTU / Shanghai Innovation Institute / Noematrix；Zhuo / Chen / Xue / Tang / Lv / Lu / Wen）+ 项目页
+- **Sources：** [`sources/papers/fa_rdp_arxiv_2607_28596.md`](sources/papers/fa_rdp_arxiv_2607_28596.md)、[`sources/sites/fa-rdp-github-io.md`](sources/sites/fa-rdp-github-io.md)
+- **Wiki：** [`wiki/entities/paper-fa-rdp.md`](wiki/entities/paper-fa-rdp.md)
+- **交叉：** [`wiki/methods/diffusion-policy.md`](wiki/methods/diffusion-policy.md)、[`wiki/concepts/contact-rich-manipulation.md`](wiki/concepts/contact-rich-manipulation.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)
+- **机构：** 注册 [`schema/institutions.json`](schema/institutions.json) `noematrix`（诺玛矩阵（Noematrix））；`sjtu` / `shanghai-innovation-institute` 已有
+- **开源：** **未开源（coming soon）** — 项目页 Code 为 `href="#"`；`zhuolifeng/FA-RDP` 仅为站点源 + Releases 视频
+
+## [2026-08-02] ingest | sources/papers/world_action_planner_arxiv_2607_27599.md + sites/worldactionplanner-github-io.md + repos/world-action-planner.md — World Action Planner（arXiv:2607.27599，Harvard）深度升格
+
+- **触发：** 用户指定 *World Action Planner: Generalizable Decision-Making with Action-Conditioned World Models*（arXiv:2607.27599；Harvard；Zhang / Du）+ GitHub / 项目页 / Hugging Face
+- **Sources：** [`sources/papers/world_action_planner_arxiv_2607_27599.md`](sources/papers/world_action_planner_arxiv_2607_27599.md)、[`sources/sites/worldactionplanner-github-io.md`](sources/sites/worldactionplanner-github-io.md)、[`sources/repos/world-action-planner.md`](sources/repos/world-action-planner.md)、[`sources/sites/huggingface-xiangchengzhang-world-action-planner.md`](sources/sites/huggingface-xiangchengzhang-world-action-planner.md)
+- **Wiki：** [`wiki/entities/paper-world-action-planner.md`](wiki/entities/paper-world-action-planner.md)
+- **交叉：** [`wiki/concepts/world-action-models.md`](wiki/concepts/world-action-models.md)、[`wiki/methods/generative-world-models.md`](wiki/methods/generative-world-models.md)、[`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/methods/diffusion-policy.md`](wiki/methods/diffusion-policy.md)、[`wiki/entities/libero-benchmark.md`](wiki/entities/libero-benchmark.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)
+- **机构：** `harvard` 已注册
+- **开源：** **已开源** — GitHub 训练/服务 + HF 世界模型与 DP/IDM 权重
+
+## [2026-08-02] ingest | sources/papers/refine_dp_arxiv_2603_13707.md + sites/refine-dp-github-io.md — REFINE-DP（arXiv:2603.13707，Georgia Tech / IEEE RA-L）深度升格
+
+- **触发：** 用户指定 *REFINE-DP: Diffusion Policy Fine-tuning for Humanoid Loco-manipulation via Reinforcement Learning*（IEEE RA-L；Georgia Tech；Gu / Chen / Chai / Zhao 等）
+- **Sources：** [`sources/papers/refine_dp_arxiv_2603_13707.md`](sources/papers/refine_dp_arxiv_2603_13707.md)、[`sources/sites/refine-dp-github-io.md`](sources/sites/refine-dp-github-io.md)；同步策展槽位 [`loco_manip_161_survey_157_refine-dp.md`](sources/papers/loco_manip_161_survey_157_refine-dp.md)
+- **Wiki：** [`wiki/entities/paper-loco-manip-161-157-refine-dp.md`](wiki/entities/paper-loco-manip-161-157-refine-dp.md)（161 #157 原地升格完整实体）
+- **交叉：** [`wiki/tasks/loco-manipulation.md`](wiki/tasks/loco-manipulation.md)、[`wiki/methods/diffusion-policy.md`](wiki/methods/diffusion-policy.md)、[`wiki/methods/reinforcement-learning.md`](wiki/methods/reinforcement-learning.md)、[`wiki/methods/residual-policy-learning.md`](wiki/methods/residual-policy-learning.md)、[`wiki/overview/loco-manip-161-category-09-vla-world-models.md`](wiki/overview/loco-manip-161-category-09-vla-world-models.md)、[`wiki/entities/paper-doorman-opening-sim2real-door.md`](wiki/entities/paper-doorman-opening-sim2real-door.md)
+- **机构：** `georgia-tech` 已注册
+- **开源：** **未开源** — 项目页 Code 为无链接占位；`REFINE-DP/REFINE-DP` 仅为站点源
+
+## [2026-08-01] ingest | sources/blogs/wechat_shenlan_overseas_embodied_labs_43_2026.md — 海外 43 所具身实验室地图；wiki/overview/overseas-embodied-ai-labs-landscape-2026.md
+
+- **触发：** 用户指定微信 <https://mp.weixin.qq.com/s/_zoU9Q-KXHJAUZ041iBuCw>（深蓝具身智能 · 2026 海外 43 所，姊妹国内篇）
+- **抓取：** Agent Reach v1.5.0 + `wechat-article-for-ai`（已确认安装）；`--no-images`
+- **Sources：** [`sources/blogs/wechat_shenlan_overseas_embodied_labs_43_2026.md`](sources/blogs/wechat_shenlan_overseas_embodied_labs_43_2026.md)、[`sources/raw/wechat_shenlan_overseas_embodied_labs_43_2026-08-01/`](sources/raw/wechat_shenlan_overseas_embodied_labs_43_2026-08-01/)
+- **Wiki：** [`wiki/overview/overseas-embodied-ai-labs-landscape-2026.md`](wiki/overview/overseas-embodied-ai-labs-landscape-2026.md)
+- **交叉：** [`china-embodied-ai-labs-landscape-2026`](wiki/overview/china-embodied-ai-labs-landscape-2026.md)、[`notable-commercial-robot-platforms`](wiki/overview/notable-commercial-robot-platforms.md)、[`diffusion-policy`](wiki/methods/diffusion-policy.md)、[`aloha`](wiki/entities/aloha.md)、[`π0-policy`](wiki/methods/π0-policy.md)、[`anymal`](wiki/entities/anymal.md)、[`vla-open-source-repro-landscape-2025`](wiki/overview/vla-open-source-repro-landscape-2025.md)
+
+## [2026-08-01] ingest | sources/blogs/wechat_shenlan_china_embodied_labs_50_2026.md — 国内 50 所具身实验室三层地图；wiki/overview/china-embodied-ai-labs-landscape-2026.md
+
+- **触发：** 用户指定微信 <https://mp.weixin.qq.com/s/58c4CgN9XVmtS_RMKbqeKw>（深蓝具身智能 · 国内 50 所盘点，附全景图）
+- **抓取：** Agent Reach v1.5.0 + `wechat-article-for-ai`（已确认安装）；`--no-images`
+- **Sources：** [`sources/blogs/wechat_shenlan_china_embodied_labs_50_2026.md`](sources/blogs/wechat_shenlan_china_embodied_labs_50_2026.md)、[`sources/raw/wechat_shenlan_china_embodied_labs_50_2026-07-26/`](sources/raw/wechat_shenlan_china_embodied_labs_50_2026-07-26/)
+- **Wiki：** [`wiki/overview/china-embodied-ai-labs-landscape-2026.md`](wiki/overview/china-embodied-ai-labs-landscape-2026.md)
+- **交叉：** [`overseas-embodied-ai-labs-landscape-2026`](wiki/overview/overseas-embodied-ai-labs-landscape-2026.md)、[`notable-commercial-robot-platforms`](wiki/overview/notable-commercial-robot-platforms.md)、[`agibot-world-2026`](wiki/entities/agibot-world-2026.md)、[`x-humanoid`](wiki/entities/x-humanoid.md)、[`limx-cosa`](wiki/entities/limx-cosa.md)、[`robot-learning-overview`](wiki/overview/robot-learning-overview.md)
+
+## [2026-08-01] ingest | sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md — PAC-MAN 感知感知 CBF-RL 人形躲避球
+
+- **触发：** 用户指定论文 *PAC-MAN: Perception-Aware CBF-RL for Whole-Body Safety in Humanoid Dodgeball*（arXiv:2607.28623；Caltech AMBER；Yang / Li / Ames）+ 项目页 / 浏览器 Demo / GitHub
+- **Sources：** [`sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md`](sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md)、[`sources/sites/perceptive-cbf-rl-github-io.md`](sources/sites/perceptive-cbf-rl-github-io.md)、[`sources/repos/perceptive_cbf_rl.md`](sources/repos/perceptive_cbf_rl.md)
+- **Wiki：** [`wiki/entities/paper-pac-man-perceptive-cbf-rl.md`](wiki/entities/paper-pac-man-perceptive-cbf-rl.md)
+- **交叉：** [`wiki/concepts/control-barrier-function.md`](wiki/concepts/control-barrier-function.md)、[`wiki/methods/safe-rl.md`](wiki/methods/safe-rl.md)、[`wiki/concepts/safety-filter.md`](wiki/concepts/safety-filter.md)、[`wiki/concepts/privileged-training.md`](wiki/concepts/privileged-training.md)、[`wiki/methods/amp-reward.md`](wiki/methods/amp-reward.md)、[`wiki/entities/unitree-g1.md`](wiki/entities/unitree-g1.md)、[`wiki/entities/amp-mjlab.md`](wiki/entities/amp-mjlab.md)、[`wiki/entities/mjlab.md`](wiki/entities/mjlab.md)
+- **机构：** `caltech` 已注册
+- **开源：** **已开源（MIT）** — 项目页列 Code；训练 + benchmark + `deploy/` 硬件栈与 ONNX；浏览器 Demo 可玩
+
+## [2026-08-01] ingest | sources/papers/importance_sampling_pca_av_failures_arxiv_2607_18106.md — Stanford×Torc AST/DiFS+PCA 商业卡车 AV 稀有失败挖掘
+
+- **触发：** 用户指定论文 *Importance Sampling and PCA for Finding Failures in Commercial Autonomous Vehicles*（arXiv:2607.18106；IEEE ICVES 2026 submitted；Stanford × Torc；Kochenderfer 等）
+- **Sources：** [`sources/papers/importance_sampling_pca_av_failures_arxiv_2607_18106.md`](sources/papers/importance_sampling_pca_av_failures_arxiv_2607_18106.md)
+- **Wiki：** [`wiki/entities/paper-importance-sampling-pca-av-failures.md`](wiki/entities/paper-importance-sampling-pca-av-failures.md)
+- **交叉：** [`wiki/methods/safe-rl.md`](wiki/methods/safe-rl.md)、[`wiki/methods/sac.md`](wiki/methods/sac.md)、[`wiki/concepts/safety-filter.md`](wiki/concepts/safety-filter.md)、[`wiki/concepts/diffusion-model.md`](wiki/concepts/diffusion-model.md)、[`wiki/overview/autonomous-driving-core-algorithms-series.md`](wiki/overview/autonomous-driving-core-algorithms-series.md)、[`wiki/concepts/robot-safety-state-machine.md`](wiki/concepts/robot-safety-state-machine.md)
+- **机构：** 注册 [`schema/institutions.json`](schema/institutions.json) `torc`（托克机器人（Torc Robotics））；`stanford` 已有
+- **开源：** **确认未开源**（无项目页/GitHub；商业卡车规划栈 + Object Sim 黑盒）
+
+## [2026-08-01] structural | media/site-demo.gif — 重录 README 演示 GIF，纳入入口卡顺时针描边
+
+- **脚本：** [`scripts/record_readme_demo.cjs`](scripts/record_readme_demo.cjs)（88 frames / 3.48 MB；图谱 **2060** 节点 / **18500** 边）
+- **变更：** 首页段改为真实点击「项目查询 / 知识图谱」入口卡，录制滚动落点后的顺时针描框特效；字幕同步为 ①–⑩
+- **流程：** `make export graph` → `docs/` 本地 `http.server 8765` → 重录并写回 `media/site-demo.gif`
+- **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md)
+
+## [2026-08-01] fix | docs/mini-graph.js — 首页预览剔除 Top-N 诱导子图孤儿并回填
+
+- **问题：** 预览取全站度数 Top-50 后只保留诱导边；如「机器人视觉感知栈选型闭环」全局度数高但邻居都不在 Top-50，会以孤立点漂浮
+- **修复：** 剔除诱导度数为 0 的节点，再按度数序回填能连上当前集合的候选，保持约 50 且无孤儿
+- **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md)
+
+## [2026-08-01] fix | docs/main.js — 详情页关联迷你图：按规模优先邻居 + 近=重要弹簧
+
+- **问题：** 1-hop 邻居按中文 label 字母序截断 12，重要大节点可能被裁掉；弹簧距离/强度对所有邻居均一，无法表达层级
+- **修复：** 按全图度数降序取 Top-16（≤16 全显示）；`forceLink` 距离/强度随邻居半径变化（大邻居更近、吸力更强）；meta 文案标明「近=重要」；完整列表仍走 `graph.html?focus=`
+- **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md)
+
+## [2026-08-01] fix | docs/main.js — 首页「项目查询 / 知识图谱」入口卡改回窗口顶端对齐
+
+- **问题：** 与 Hero 路线数字共用 `block: 'center'` 后，点击入口卡会把搜索区 / 图谱预览滚到视口中心，不再像旧锚点那样顶对齐
+- **修复：** 入口卡滚动锚到 `#wiki-search` / `#mini-graph-section`，`scrollIntoView({ block: 'start' })`；描边仍画在 `#wiki-search-panel` / `#mini-graph-wrap`；Hero「主路线 / 纵深路线」保持居中
+- **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md)
+
+## [2026-08-01] ingest | sources/sites/disney-research-la.md + sources/sites/disney-research-la-holotile.md — Disney Research LA 门户与 Holotile；升格 wiki/entities/disney-research-la.md、wiki/entities/disney-holotile.md
+
+- **触发：** 用户给出 <https://la.disneyresearch.com/holotile/>、<https://la.disneyresearch.com/research/>
+- **Sources：** [`sources/sites/disney-research-la.md`](sources/sites/disney-research-la.md)、[`sources/sites/disney-research-la-holotile.md`](sources/sites/disney-research-la-holotile.md)
+- **Wiki：** [`wiki/entities/disney-research-la.md`](wiki/entities/disney-research-la.md)（三大方向 + 出版物映射枢纽）、[`wiki/entities/disney-holotile.md`](wiki/entities/disney-holotile.md)（全向地板；专利 US10416754B2；确认未开源）
+- **交叉：** [`disney-olaf-character-robot`](wiki/methods/disney-olaf-character-robot.md)、[`reactor-physics-aware-motion-retargeting`](wiki/methods/reactor-physics-aware-motion-retargeting.md)、[`character-animation-vs-robotics`](wiki/concepts/character-animation-vs-robotics.md)、[`open-duck-mini`](wiki/entities/open-duck-mini.md)、[`locomotion`](wiki/tasks/locomotion.md)
+- **开源：** Holotile / 门户级角色硬件 **未开源**；复现对照走 Open Duck；多数 publication 仅 PDF
+
+## [2026-08-01] structural | media/site-demo.gif — 按最新图谱重录 README 演示 GIF
+
+- **脚本：** [`scripts/record_readme_demo.cjs`](scripts/record_readme_demo.cjs)（70 frames / 3.12 MB；图谱 **2058** 节点 / **18475** 边）
+- **流程：** `make export graph` → `docs/` 本地 `http.server 8765` → 录制首页入口 / 搜索 / 迷你图谱 / 全图悬停·缩放·侧栏 / 3D 切换
+- **引用：** [`README.md`](README.md)「在线演示」仍指向 `media/site-demo.gif`
+
+## [2026-08-01] fix | scripts/utils/community_labels.py — 为 llm-wiki-karpathy 枢纽补 COMMUNITY_NAME_OVERRIDES，修复 Tests community-17 命名断言
+
+- **原因：** video-shotcraft ingest 后 Agent Skills 簇枢纽落在 `wiki/references/llm-wiki-karpathy.md`，H1「LLM Wiki」不符合 `中文（English） 社区` 正则
+- **修复：** override → `大语言模型维基（LLM Wiki）`；同步 `graph-stats` / `link-graph` 导出
+- **验证：** `pytest tests/test_community_naming.py`
+
+## [2026-07-31] ingest | sources/repos/video-shotcraft.md — 接入 Vincentwei1021/video-shotcraft（Trendshift 上榜 AI 动效技能库）；升格 wiki/entities/video-shotcraft.md
+
+- **触发：** 用户给出 `trendshift/video-shotcraft`（**404**）；核实为 [Trendshift](https://trendshift.io/repositories/88911) 榜单徽章，官方仓为 [`Vincentwei1021/video-shotcraft`](https://github.com/Vincentwei1021/video-shotcraft)
+- **Sources：** [`sources/repos/video-shotcraft.md`](sources/repos/video-shotcraft.md)、[`sources/sites/video-shotcraft-gallery.md`](sources/sites/video-shotcraft-gallery.md)
+- **Wiki：** [`wiki/entities/video-shotcraft.md`](wiki/entities/video-shotcraft.md)（104 镜头卡 / 161 样片 / Ink Press 模板、三种模式、八阶段流水线、开源与 Remotion 许可边界）
+- **交叉：** [`gsap-skills`](wiki/entities/gsap-skills.md)、[`mattpocock-skills`](wiki/entities/mattpocock-skills.md)、[`img2threejs`](wiki/entities/img2threejs.md)、[`manim`](wiki/entities/manim.md)、[`sensenova-skills`](wiki/entities/sensenova-skills.md)
+- **开源：** Apache-2.0 技能库 + Gallery Pages；Remotion / Mixkit 另有条款
+
+
+## [2026-07-31] fix | docs/main.js + docs/style.css — 首页「项目查询」点击卡顿：立刻聚焦、近中心即描边、静默预取搜索索引
+
+- **问题：** 点击「项目查询」后需等 `scrollend`（或 700ms fallback）才聚焦/播描边；同时 focus 同步写「加载中…」并拉取解析大体积 `search-index.json`，主线程卡一下再跳
+- **修复：** 点击立刻 `focus({preventScroll})`；rAF 检测接近视口中心即 `playCardBorderTrace`；空查询静默预取；`pointerdown`/`mouseenter`/idle 预取索引；描边布局推迟到下一帧；去掉描边 `drop-shadow`
+- **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md)
+
+## [2026-07-31] fix | docs/graph-3d.js — 3D 社区漂浮标签按画布分辨率连续缩放，避免过小/过大
+
+- **问题：** 旧逻辑在移动端/粗指针上字号×0.55 且相机 zoom 再×0.55，手机/平板有效字号可落到 ~3–5px；桌面端字号固定 8–16px，900–2560 宽度几乎不变，大屏相对过小
+- **修复：** 以画布短边相对 ~800px 做 √ 连续缩放（约 0.78–1.28），绝对字号钳制 7–22px；zoom 钳制随短边略调；窄屏仅收紧内边距
+- **验证：** [`scripts/verify_graph_community_labels_3d_responsive.cjs`](scripts/verify_graph_community_labels_3d_responsive.cjs)
+- **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md)
+
+## [2026-07-31] ingest | sources/blogs/wechat_robot_lecture_legged_robots_survey_2026-07-31.md — Agent Reach 抓取机器人大讲堂导读加深 Frey et al. SciRobotics 腿式综述；更新 wiki/entities/paper-legged-robots-advances-challenges.md（DSL/可反驱/价格/四项政策）；raw sources/raw/wechat_robot_lecture_legged_robots_survey_2026-07-31/
+
+## [2026-07-31] ingest | sources/papers/legged_robots_advances_challenges_scirobotics_2026.md — OA/PDF 全路径复查仍 closed（Unpaywall/OpenAlex/PMC/arXiv/Zenodo/IA/作者站/ETH RC）；更新 wiki/entities/paper-legged-robots-advances-challenges.md 局限与核查表
+
+## [2026-07-31] ingest | sources/papers/legged_robots_advances_challenges_scirobotics_2026.md — Frey et al. Science Robotics 2026 腿式机器人五柱综述；升格 wiki/entities/paper-legged-robots-advances-challenges.md；交叉 wiki/tasks/locomotion.md、wiki/entities/quadruped-robot.md、wiki/entities/paper-bioinspired-multimodal-robotics.md、wiki/concepts/sim2real.md；通稿 sources/blogs/techxplore_legged_robots_ethics_monash_2026-07-30.md；注册 edinburgh/monash
+
+## [2026-07-31] ingest | sources/papers/humoslope_arxiv_2607_07830.md — HumoSlope（arXiv:2607.07830）NTU/A*STAR 两阶段坡面 locomotion；升格 wiki/entities/paper-humoslope-physics-guided-slope-locomotion.md；交叉更新 wiki/tasks/humanoid-locomotion.md、wiki/concepts/lip-zmp.md、wiki/concepts/terrain-adaptation.md、wiki/concepts/privileged-training.md、wiki/entities/unitree-g1.md、wiki/entities/unitree-rl-lab.md；注册 schema/institutions.json astar
+
+## [2026-07-31] structural | docs/index.html + docs/main.js — 「项目查询 / 知识图谱」入口卡跳转目标模块顺时针描边
+
+- **项目查询：** 滚到 `#wiki-search-panel`（搜索栏）中心 → 边框顺时针描边一圈 → 聚焦搜索输入框
+- **知识图谱：** 滚到 `#mini-graph-wrap`（图谱预览）中心 → 边框顺时针描边一圈（描边期间临时放开 `overflow:hidden` 以免裁切）
+- **复用：** 与 Hero「主路线 / 纵深路线」同一套 `scrollEntryCardToCenter` + `playCardBorderTrace`；入口卡用 `data-trace-target`
+- **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md)
+
+## [2026-07-31] ingest | sources/repos/diffsheg.md — 接入 JeremyCJM/DiffSHEG（CVPR 2024）语音驱动整体 3D 表情+手势联合扩散；升格 wiki/entities/paper-diffsheg.md；交叉更新 wiki/methods/diffusion-motion-generation.md、wiki/concepts/diffusion-model.md、wiki/entities/paper-notebook-semantic-co-speech-gesture-synthesis-and-real-ti.md；sources/papers/diffsheg_arxiv_2401_04747.md、sources/sites/diffsheg.md
+
+## [2026-07-31] ingest | sources/repos/spi-active.md — 接入 LeCAR-Lab/SPI-Active（CoRL 2025 Oral）采样式 SysID+主动探索；升格 wiki/entities/paper-notebook-sampling-based-system-identification-with-active.md；交叉更新 wiki/concepts/system-identification.md、wiki/methods/cma-es.md、wiki/queries/sim2real-gap-reduction.md、wiki/entities/paper-pace-sim2real-legged-robots.md；sources/papers/spi_active_arxiv_2505_14266.md、sources/sites/spi-active.md
+
+## [2026-07-31] structural | docs/main.js + docs/style.css — 首页入口卡边框描边按 border-box 像素对齐，修复多分辨率错位
+
+- **问题：** 描边 SVG 用 `offsetWidth`（border-box）写 viewBox，CSS 用 padding-box 的 `inset`/`%` 定尺寸，亚像素宽度下左右/上下外扩不对称，且 viewBox 被缩放导致圆角偏离卡片边框
+- **修复：** JS 以 `getBoundingClientRect` + 边框宽度写入 `left/top/width/height`，对称外扩于 border-box；圆角取自 computed `border-radius`；动画期间 `ResizeObserver` 跟随卡片尺寸变化
+- **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md)
+
+## [2026-07-31] ingest | sources/repos/wan-dancer.md + sources/papers/wan_dancer_arxiv_2607_09581.md — Wan-Dancer 分钟级 music-to-dance；升格 wiki/entities/paper-wan-dancer.md；交叉 Wan / Wan-Move / generative-world-models / hub-wbt
+
+- **触发：** 用户给出 `https://github.com/Wan-AI/Wan-Dancer-14B`（**404**）；核实为 HF/ModelScope 权重 ID，代码仓为 [`Wan-Video/Wan-Dancer`](https://github.com/Wan-Video/Wan-Dancer)
+- **Sources：** [`sources/repos/wan-dancer.md`](sources/repos/wan-dancer.md)、[`sources/papers/wan_dancer_arxiv_2607_09581.md`](sources/papers/wan_dancer_arxiv_2607_09581.md)、[`sources/sites/wan-dancer-project.md`](sources/sites/wan-dancer-project.md)
+- **Wiki：** [`wiki/entities/paper-wan-dancer.md`](wiki/entities/paper-wan-dancer.md)（分层 Global→Local、开源状态、源码运行时序图、结论）
+- **交叉：** [`paper-wan-video`](wiki/entities/paper-wan-video.md)、[`paper-wan-move`](wiki/entities/paper-wan-move.md)、[`generative-world-models`](wiki/methods/generative-world-models.md)、[`hub-wbt`](wiki/overview/hub-wbt.md)、[`sources/repos/wan2.1.md`](sources/repos/wan2.1.md)
+- **开源：** Apache-2.0 推理仓 + HF `Wan-AI/Wan-Dancer-14B`（global/local）+ 项目页；论文 arXiv:2607.09581
+
+## [2026-07-31] ingest | sources/blogs/gemini_robotics_2_whole_body.md — Gemini Robotics 2 全身智能；升格 wiki/entities/gemini-robotics.md；交叉 foundation-policy / WBC / loco-manip / hub-cross-embodiment / vla
+
+## [2026-07-31] structural | docs/style.css — 纵深路线描边后「展开全部…」文案高亮改为两次
+
+## [2026-07-31] structural | docs/main.js — Hero 路线数字描边时长×2；跳转改为 scrollIntoView 居中
+
+- **时长：** 边框顺时针描边 `1.05s → 2.1s`（`BORDER_TRACE_MS` 1200→2400）
+- **滚动：** 主路线/纵深路线数字 `preventDefault` 后 `scrollIntoView({ block: 'center' })`，卡片落在视口垂直中心再播特效
+
+## [2026-07-31] structural | docs/index.html — Hero 主路线/纵深路线改为锚到入口卡+顺时针描边；纵深不再自动展开，描边后高亮展开按钮
+
+- **主路线数字：** `#home-start-main-route`（从零开始卡）+ 边框顺时针高亮一圈后移除
+- **纵深路线数字：** `#home-more-routes` 同样描边，**不**自动展开；描边结束后短时高亮 `#homeRouteToggle` 文案
+- **实现：** `docs/main.js` 注入 SVG `rect[pathLength=100]` + `stroke-dashoffset` 顺时针扫边；`pulseRouteToggleHint` 提醒展开按钮
+
+## [2026-07-31] structural | docs/index.html — Hero 盘点新增主路线(1)，四项数字可点跳转图谱/主路线/展开纵深路线
+
+- **改动：** `docs/index.html` Hero 盘点由三项改为四项：知识节点 / 互链关系 / **主路线(1)** / 纵深路线(21)；主路线插在互链关系与纵深路线之间
+- **跳转：** 知识节点与互链关系数字 → `graph.html`；主路线数字 → `roadmap.html?id=roadmap-motion-control`；纵深路线数字 → `#home-more-routes` 并展开全部纵深路线（`docs/main.js` `setHomeRoutesExpanded`）
+- **样式：** `docs/style.css` 为可点数字补 hover/focus，并放宽 `.hero-stats` 宽度以容纳四项
+- **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md)
 ## [2026-07-31] query | wiki/queries/hmi-papers-coverage.md — 确保 HMI 论文与项目目录 145 篇论文均有本库独立详情节点；新建 23 个 sources+entities，复用 122 个已有页；修正开源主表 Robot Parkour / ASAP 挂接
 
 - **触发：** 用户要求覆盖 [论文与项目](https://github.com/RealXiaoze/humanoid-motion-intelligence/tree/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE) 列出的论文与项目详情独立节点（不重复造页）
@@ -33,12 +358,12 @@
 - **交叉：** [`wiki/entities/humanoid-motion-intelligence.md`](wiki/entities/humanoid-motion-intelligence.md)、[`wiki/queries/hmi-opensource-projects-coverage.md`](wiki/queries/hmi-opensource-projects-coverage.md)、[`scripts/utils/community_labels.py`](scripts/utils/community_labels.py)
 - **说明：** 开源项目主表 166 项此前已覆盖；本轮补齐论文侧缺口并修正两处错误挂接
 
-## [2026-07-31] structural | 图谱「路线视图」仅保留 21 条策展纵深；原专题枢纽改为 hub-* 知识链
+## [2026-07-31] structural | 图谱「路线视图」纳入主路线 + 21 条策展纵深；原专题枢纽改为 hub-* 知识链
 
-- **产品概念：** 策展学习路径仍称「纵深路线」（[`roadmap/depth-*.md`](roadmap/) 共 21 条）；图谱侧栏与详情徽标统一称「**路线视图** / **所属路线**」，取消独立「专题」概念
-- **图谱：** [`docs/depth-filters.js`](docs/depth-filters.js) 与 `graph.html` chips 仅含 21 条；锚点为 `roadmap/depth-*.md`；详情页元数据标签为「所属路线」
+- **产品概念：** 图谱侧栏与详情徽标统一称「**路线视图** / **所属路线**」；路线集 = 主路线 [`roadmap/motion-control.md`](roadmap/motion-control.md) + 21 条纵深 [`roadmap/depth-*.md`](roadmap/)；取消独立「专题」概念
+- **图谱：** [`docs/depth-filters.js`](docs/depth-filters.js) 与 `graph.html` chips：主路线置顶（命中集=主路线正文链出的 wiki 节点），其后 21 条纵深；详情页「所属路线」徽标同步
 - **原专题枢纽：** `wiki/overview/topic-*` → `wiki/overview/hub-*`（称「知识链汇总」，不再叫纵深）；旧 `topic-*` / 误改的 `overview/depth-*` 详情 ID 写入 [`schema/page-aliases.json`](schema/page-aliases.json)
-- **涉及路径：** `docs/depth-filters.js`、`docs/graph.html`、`docs/main.js`、`wiki/overview/hub-*.md`、`roadmap/depth-*.md`
+- **涉及路径：** `docs/depth-filters.js`、`docs/graph.html`、`docs/main.js`、`wiki/overview/hub-*.md`、`roadmap/depth-*.md`、`roadmap/motion-control.md`
 
 ## [2026-07-30] structural | schema/canonical-facts.json — V31 P2 事实库扩展 250 → 260 条，补 10 条感知栈选型矛盾检测规则
 

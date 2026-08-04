@@ -46,6 +46,14 @@ Toward Humanoid Brain-Body Co-design 的人形机器人学习论文条目，当�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是待深读占位节点：它确定的只是这篇 12_Hardware_Design 论文已进入阅读队列，尚不构成对「控制与形态联合优化」这一命题的任何评价。**
+
+- 页面可确证的信息只有分类归属（12_Hardware_Design）、待深读状态与 arXiv 入口；标题层面指向面向跌倒恢复的控制—形态联合优化。
+- 「实验与评测」明确留空，跌倒恢复相关的量化结论需直接查原文，不应引用本页。
+- 深读笔记完成后本页应升格为完整索引实体并链向笔记站。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)

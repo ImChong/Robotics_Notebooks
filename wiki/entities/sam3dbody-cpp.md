@@ -5,6 +5,7 @@ tags: [perception, human-mesh-recovery, onnx, cpp, deployment, motion-capture, b
 status: complete
 updated: 2026-05-30
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ./sam-3d-body.md
   - ../concepts/motion-retargeting-pipeline.md
   - ./freemocap.md

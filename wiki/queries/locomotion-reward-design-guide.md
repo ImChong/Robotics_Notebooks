@@ -3,11 +3,12 @@ title: Locomotion 奖励函数设计指南
 type: query
 status: complete
 created: 2026-04-14
-updated: 2026-07-28
+updated: 2026-08-02
 summary: 系统整理 RL 训练足式/人形机器人 locomotion 的奖励函数设计原则、常用奖励项分类、调参策略和常见失败模式。
 sources:
   - ../../sources/papers/reward_design.md
   - ../../sources/papers/locomotion_rl.md
+  - ../../sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「怎么设计 locomotion RL 的奖励函数？」
@@ -66,9 +67,10 @@ sources:
 | 摆动脚高度 | 摆动相时足端离地 > 阈值 | 0.1 |
 | 双支撑时长 | 限制双支撑比例（行走） | 0.05 |
 | 接触冲击 | 惩罚大的接触力变化率 | 0.1 |
-| **预测竖直 GRF 平方和**（[QuietWalk](../entities/paper-quietwalk-humanoid-locomotion.md)） | $r_{\mathrm{impact}}=-\alpha\big((f_z^{(L)})^2+(f_z^{(R)})^2\big)$，$f_z$ 由 **冻结 PINN** 从本体感知估计 | $\alpha$ 课程渐增 |
+| **足端接触速度**（[aibo QuietWalk](../entities/paper-learning-quiet-walking-aibo.md)） | $-\|\boldsymbol{v}_{f,xyz}\|^2$（辅以关节/基座角加速度）；noisy→quiet 课程放大权重 | −5 → −25（文中 scale） |
+| **预测竖直 GRF 平方和**（[人形 QuietWalk](../entities/paper-quietwalk-humanoid-locomotion.md)） | $r_{\mathrm{impact}}=-\alpha\big((f_z^{(L)})^2+(f_z^{(R)})^2\big)$，$f_z$ 由 **冻结 PINN** 从本体感知估计 | $\alpha$ 课程渐增 |
 
-> **力感知低噪行走：** [QuietWalk](../entities/paper-quietwalk-humanoid-locomotion.md)（arXiv:2604.23702）用 **逆动力学约束 PINN** 替代仿真特权力传感或足端速度代理，在 **无部署力传感器** 时仍可对 **冲击瞬态** 塑形；$\alpha$ 过小则降噪不足，过大易牺牲速度跟踪与稳定性，宜分阶段课程。
+> **低噪行走两条代理轴：** [aibo QuietWalk](../entities/paper-learning-quiet-walking-aibo.md)（arXiv:2502.10983）用 **足端接触速度** 作声学代理，配合可变 PD 与开关接触；[人形 QuietWalk](../entities/paper-quietwalk-humanoid-locomotion.md)（arXiv:2604.23702）用 **逆动力学约束 PINN** 估计竖直 GRF，在 **无部署力传感器** 时塑形冲击瞬态。两者均依赖 **分阶段课程**：惩罚过早过重易学停走或牺牲速度/鲁棒。
 
 ### E. 安全约束（Safety Reward）
 防止关节过载和硬件损坏

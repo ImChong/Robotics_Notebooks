@@ -46,6 +46,14 @@ Physics-Based Motion Tracking of Contact-Rich Interacting Characters 的人形�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页目前只是知识图谱里的占位节点：论文已进入待深读队列，但「接触密集的交互角色动作跟踪」究竟怎么做、做到什么程度，本库尚无自己的判断。**
+
+- 可确认的只有分类归属（13_Physics-Based_Animation）与 arXiv 出处；核心机制、消融与实机指标全部待深读补齐。
+- 当前价值在于 **可检索性**：把该论文实体挂在分类父节点与总索引之下，避免知识图谱出现缺口。
+- 深读笔记完成前，本页不应被当作结论来源；判断请以 PROGRESS.md 与论文原文为准。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)

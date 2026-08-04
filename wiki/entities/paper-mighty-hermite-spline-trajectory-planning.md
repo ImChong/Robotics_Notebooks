@@ -92,6 +92,16 @@ flowchart LR
 - **真机**：LiDAR 感知定位；静态 clutter **最高 6.7 m/s**；长航时与 **在线新增动态障碍** 实验（见项目视频）。
 - **复现**：Ubuntu 22.04 + ROS 2 Humble；`docker/make run-interactive` 或 `setup.sh` + `run_sim.py`（细节见 [sources/repos/mighty.md](../../sources/repos/mighty.md)）。
 
+## 结论
+
+**MIGHTY 的核心取舍是换一种轨迹参数化：把 knot 的位置/速度/加速度与段时长一起塞进一次 NLP，用 Hermite 的局部可控性换 MINCO 式解析最优，用软惩罚换求解速度。**
+
+- 真正起作用的是「Hermite 决策变量 → Bézier 基代价评估 → 闭式梯度回传」这条链，配合 $T_s=\exp(\sigma_s)$ 保证正时长，使联合时空搜索仍能由 L-BFGS 一次解完。
+- 关键指标：静态复杂场景相对此前最优基线计算时间 **−9.3%**、飞行时间 **−13.1%**、成功率 100%；真机 LiDAR 感知下静态 clutter 最高 **6.7 m/s**。
+- 适用边界：软约束而非硬约束安全保证，极端场景仍需限速、禁飞区与人工接管；输出止于轨迹/设定点，姿态与推力跟踪仍交给飞控。
+- 工程状态：官方栈开源且可复现（Docker、Gazebo、`run_sim.py`），但锁定 ROS 2 Humble + Ubuntu 22.04，与 ROS 1 版 EGO 教程栈不能直接混用。
+- 对照定位：[EGO-Planner Swarm](./ego-planner-swarm.md) 胜在生态成熟与 swarm 扩展，MIGHTY 聚焦单机高效规划，多机协调需另加一层。
+
 ## 常见误区或局限
 
 - **误区：MIGHTY 是硬约束安全规划器** — 与 EGO 同类，靠 **软惩罚** 实现快速梯度优化；极端安全场景仍需限速、禁飞区、人工接管等外层。

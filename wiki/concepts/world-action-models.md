@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-03
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型。"
 related:
   - ../../roadmap/depth-wam.md
@@ -27,6 +27,8 @@ related:
   - ../entities/paper-wam-ttt-human-video-test-time-steering.md
   - ../entities/paper-x-foresight.md
   - ../entities/paper-x-mind.md
+  - ../entities/paper-world-action-planner.md
+  - ../entities/paper-worldscape-policy-2.md
   - ../tasks/vision-language-navigation.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
   - ../overview/wam-motion-control-five-paths.md
@@ -59,6 +61,8 @@ sources:
   - ../../sources/papers/defi_arxiv_2604_16391.md
   - ../../sources/papers/x_foresight_arxiv_2605_24892.md
   - ../../sources/papers/x_mind_arxiv_2606_28758.md
+  - ../../sources/papers/world_action_planner_arxiv_2607_27599.md
+  - ../../sources/papers/worldscape_policy_2_arxiv_2607_18840.md
   - ../../sources/repos/awesome-wam-openmoss.md
   - ../../sources/sites/awesome-wam-openmoss.md
   - ../../sources/repos/dexmal_opendw.md
@@ -136,6 +140,8 @@ sources:
 
 **文献实例（Joint 族 + 移动操作三层对齐 · latent action + Dream Forcing）**：[ABot-M0.5](../entities/paper-abot-m05-mobile-manipulation-wam.md) 以 **Wan2.2** 视频骨干建立 **Video → 帧级 latent action → 可执行动作** 级联，用 **双层 D-MoT** 解耦 **移动/操作** 子空间，并以 **Dream Forcing** 在 **自生成视频 latent** 上训练逆动力学以对齐自回归 rollout；在 **RoboCasa365**（+Condensed Memory **46.6%**）、**RoboTwin 2.0**（**94.1%**）、**LIBERO-Plus 零样本 WAM 对照**（**83.4%**）与真机长程任务上报告领先表现（arXiv:2607.00678，AMAP CV Lab / 阿里巴巴）。
 
+**文献实例（Joint 族 + 语义/像素分层记忆 · 多模态可控接口）**：[WorldScape Policy 2.0](../entities/paper-worldscape-policy-2.md) 把「历史」拆成两条互不混用的通路——**VLM 分支** 维护 **长短期事件记忆**（global-history / local-active / event-boundary 三视图 + 紧凑全历史 bank，按 \(1-\cos\) 语义变化自动选边界，无需在线标注），检索后经**逐 token 门控**融合进 4 个隐式规划 token；**causal DiT 分支** 只留近 **4 个 chunk** 干净 VAE latent 作视觉 prefill，目标图/演示视频则作 **rollout 全程持久前缀**。训练用 **semantic forcing**（T5 事件字幕做 stop-grad 语义靶，\(\lambda_s=0.001\)）把 `fine` 模式的显式语义搬进 `auto` 模式隐通路。配套 **ManipEvent-5M**（4.89M 事件段 / 744K episode / 512M 帧）做事件级预训练。RoboTwin 2.0 标准榜 **94.3%**（已饱和，对同档仅 +0.2~+0.7），但 **C2R OOD 协议 47.9%**（Fast-WAM 39.1）与真机视觉提示任务（叠积木目标图/演示视频 **60%/70%** vs \(\pi_{0.5}\) 10%/20%）差距显著；消融显示记忆三件套的增益主要落在 randomized（**+8.81**）而非 clean（+5.14）。代码与权重截至 2026-08 未发布（arXiv:2607.18840，Manifold AI / 清华 / 上交）。
+
 **2026-07 动作后果横切面（策展）**：[动作后果技术地图](../overview/robot-world-models-action-consequence-technology-map.md) 将近期 WAM 按 **执行 / 修正 / 筛选** 三类接口归纳——[DSWAM](../entities/paper-dswam-dual-system-wam.md)（双系统直出动作块）、[DynaWM](../entities/paper-dynawm-vla-online-correction.md)（冻结 VLA + 在线流匹配修正）、[DreamSteer](../entities/paper-dreamsteer-vla-deployment-steering.md)（潜变量 WM 部署筛选）；接触与几何支路见 [VT-WAM](../entities/paper-vt-wam-visuotactile-contact-rich.md)、[𝒩₀-TWAM](../entities/paper-n0-twam.md)（触觉原生 Joint WAM，NeoData 规模化）、[MECo-WAM](../entities/paper-meco-wam-4d-geometry-cotraining.md)、[RynnWorld-4D](../entities/paper-rynnworld-4d-rgb-depth-flow.md)。
 
 **文献实例（Joint 族 + 目标条件视觉导航 · Cosmos latent canvas）**：[NavWAM](../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md) 在 **Cosmos Predict 2（2B）** 上构建 **九帧共享 latent 序列**（条件：state / goal image / 当前 egocentric；预测：action chunk / future state / 两帧未来观测 / goal-progress value），以 **policy / world-model / value 三模式** 联合训练；推理 **policy 模式单次扩散** 直接输出 action chunk，**无需 CEM**，在 **go stanford image-goal** 与 **Diablo 真机 24 episode** 上优于 **NWM+CEM** 与 **OmniVLA**（arXiv:2606.13494，东京大学 / NII / ATR）。
@@ -173,6 +179,7 @@ flowchart TB
 - **误区 1：带 world-model loss 的 VLA 就等于 WAM。** 若未来分支仅作辅助表示、推理路径不依赖前向预测，则更宜归类为 **VLA + 辅助目标**，而非 WAM。
 - **误区 2：两阶段 pipeline（先仿真再 RL）就是 Cascaded WAM。** 若世界模块是 **外部** 可微仿真/引擎而非学习策略的一部分，边界上更接近 **经典 model-based RL / planning**，与综述定义的 WAM 不完全同构。
 - **误区 3：把视频生成当世界模型就自动解决控制。** 视频级预测与 **可执行、可闭环** 的控制仍隔着 **动作可识别性、因果一致性与延迟** 等工程约束。
+- **边界样本：World Action Planner。** [WAP](../entities/paper-world-action-planner.md)（arXiv:2607.27599）用 **动作条件 WM 想象 + VLM 外环优化/搜索**，并把 DP/VLA/WAM 当可选工具——更接近 **级联模型基规划**，不宜直接算作 Joint WAM 策略本体。
 
 ## 与其他页面的关系
 
@@ -180,6 +187,7 @@ flowchart TB
 - [VLA](../methods/vla.md) — 语言条件视觉策略的主线；WAM 可视为在目标分布与训练接口上的延伸讨论。
 - [Generative World Models](../methods/generative-world-models.md) — 像素/潜空间动态预测工具箱；WAM 强调 **与控制头的耦合位置**。
 - [Model-Based RL](../methods/model-based-rl.md) — 经典 **模型 + 规划/策略** 分解；对照理解 Cascaded WAM 的历史渊源。
+- [World Action Planner](../entities/paper-world-action-planner.md) — pose-image WM + VLM 规划；相对 E2E WAM/VLA 的模型基对照。
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 高 DoF 任务上 **长程协调** 与 **sim2real** 压力最集中，是 WAM 论文重点引用的评测语境之一。
 - [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md) — 语言条件空间决策；[WorldVLN](../entities/paper-worldvln-aerial-vln-wam.md) 提供 **UAV / 自回归 WAM** 实例。
 - [AI Auto-Research（学术研究自动化）](./ai-auto-research.md) — 另一篇 **领域综述 + Awesome 列表** 维护范式（学术全生命周期 vs 具身 WAM）。
@@ -187,6 +195,7 @@ flowchart TB
 ## 参考来源
 
 - [sources/papers/world_action_models_survey_2605.md](../../sources/papers/world_action_models_survey_2605.md)
+- [sources/papers/world_action_planner_arxiv_2607_27599.md](../../sources/papers/world_action_planner_arxiv_2607_27599.md)
 - [sources/papers/dit4dit_arxiv_2603_10448.md](../../sources/papers/dit4dit_arxiv_2603_10448.md)
 - [sources/papers/motionwam_arxiv_2606_09215.md](../../sources/papers/motionwam_arxiv_2606_09215.md)
 - [sources/papers/abot_m05_arxiv_2607_00678.md](../../sources/papers/abot_m05_arxiv_2607_00678.md)
@@ -219,6 +228,7 @@ flowchart TB
 - [NavWAM（image-goal 视觉导航 · WAM）](../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md)
 - [EgoWAM（野外 egocentric 人数据 · WAM 协同训练）](../entities/paper-egowam-egocentric-human-wam-co-training.md)
 - [WAM-TTT（人视频 · 测试时训练 steering）](../entities/paper-wam-ttt-human-video-test-time-steering.md)
+- [World Action Planner（VLM + pose-image WM 规划）](../entities/paper-world-action-planner.md)
 - [τ₀-World Model（τ0-WM）](../entities/tau0-world-model.md)
 - [HiFi-UMI](../entities/paper-hifi-umi.md) — UMI-only 后训练覆盖 VLA/WAM（LingBot-VA）骨干；2000 h 公开数据
 - [INTACT](../entities/paper-intact.md) — 意图→动作无搜索 JEPA（相对 CEM 搜索的延迟对照）

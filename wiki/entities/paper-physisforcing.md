@@ -114,6 +114,16 @@ flowchart TB
 | arXiv | [2606.28128](https://arxiv.org/abs/2606.28128) |
 | 项目页 | [dagroup-pku.github.io/PhysisForcing](https://dagroup-pku.github.io/PhysisForcing.github.io/) |
 
+## 结论
+
+**PhysisForcing 的取舍很明确：物理一致性用「训练期损失结构」买，而不是用推理期算力买——辅助 tracker 与编码器在推理时全部丢弃，零额外开销。**
+
+- 真正起作用的是 **区域聚焦 + 分层监督** 的组合：深度感知运动掩码把约束限制在操纵/接触区域，再在 DiT 中间层同时做像素级点轨迹对齐与语义级 token 关系对齐；只留一层就退回全帧几何或稀疏偏好对齐的老路。
+- 判断价值应看 **闭环侧** 而非开环视频分：WorldArena IDM 16.0%→24.0%、作 Fast-WAM 骨干时 RoboTwin 2.0 平均 +4.6%，比 R-Bench 63.8 更能说明它改善的是 **可执行表征**。
+- 可插拔性有证据但有前提：Wan2.2 与 Cosmos3-Nano 上均报告增益，说明不绑定单一视频栈；但增益依赖参考视频上 CoTracker3 轨迹与深度估计的质量。
+- 主要失败模式是 **掩码失准**：极端遮挡或高速运动下区域掩码可能漏标误标；形变物体与多体长程推理由论文自列为未来方向。
+- 与相邻路线是正交而非替代：相对 [Cosmos 3](./cosmos-3.md) 这类平台级全模态 WM，它是可叠加的后训练配方（PF-Cosmos）；相对 [Kairos](./paper-kairos-native-world-model-stack.md) 从数据课程注入物理，它从损失结构注入。
+
 ## 常见误区或局限
 
 - **误区：** 把 PhysisForcing 当成新推理期物理引擎；它是 **纯训练期正则**，不改变扩散采样图。

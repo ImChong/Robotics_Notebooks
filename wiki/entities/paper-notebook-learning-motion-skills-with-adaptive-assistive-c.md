@@ -47,6 +47,14 @@ Learning Motion Skills with Adaptive Assistive Curriculum Force in Humanoid Robo
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是尚未深读的占位实体：它承担的是图谱完整性，而不是对这篇工作的判断。**
+
+- 该条目已列入 Paper Notebooks 的 progress 待深读清单，分类为 04_Loco-Manipulation_and_WBC，可从总索引与分类父节点检索到。
+- 深读笔记尚未撰写，本页不含机制拆解、量化 benchmark 或实机指标，不应作为技术结论的依据。
+- 升格路径清晰：笔记写入计划文件夹后，本页需链向笔记站并补齐核心机制与评测归纳。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

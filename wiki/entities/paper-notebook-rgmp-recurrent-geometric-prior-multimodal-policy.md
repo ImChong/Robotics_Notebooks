@@ -46,6 +46,14 @@ RGMP 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是 RGMP 的待深读占位实体：标题给出了它的三个关键词——循环结构、几何先验、多模态策略——但本库尚未核验其中任何一条。**
+
+- 已落地的信息仅为分类 06_Manipulation 与 arXiv 2511.09141；「实验与评测」明确留空，可泛化操作的主张目前只有标题层面的依据。
+- 本页不能作为量化指标或消融结论的引用出处，需要数据时直接走 arXiv 原文。
+- 当前用途是保持知识图谱连通：上溯 [06_Manipulation 分类父节点](../overview/paper-notebook-category-06-manipulation.md) 与 [总索引](../overview/humanoid-paper-notebooks-index.md)；深读笔记完成后升格为完整索引实体。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-06-manipulation](../overview/paper-notebook-category-06-manipulation.md)

@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-07-10
+updated: 2026-08-03
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 01：基础强化学习（15 篇深读笔记索引）。"
@@ -47,6 +47,8 @@ summary: "Paper Notebooks 分类 01：基础强化学习（15 篇深读笔记索
 
 - [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)
 - [schema/paper-notebook-index.json](../../schema/paper-notebook-index.json)
+- 站点来源归档：[humanoid-robot-learning-paper-notebooks](../../sources/sites/humanoid-robot-learning-paper-notebooks.md)
+- 本类论文 ingest 归档（节选）：[CALM：可指挥虚拟角色的条件对抗隐变量模型](../../sources/papers/bfm_awesome_calm_siggraph_2024.md)、[人形 AMP 运动先验 19 篇综述](../../sources/raw/wechat_humanoid_amp_19_survey_2026-05-26.md)、[Jason Peng：更灵活的运动技能学习](../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md)
 
 ## 推荐继续阅读
 

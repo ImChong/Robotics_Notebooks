@@ -85,6 +85,16 @@ CHIP 的关键是 hindsight perturbation：训练时不用真的修改参考动�
 | 上层集成 | Gemini compliance prediction；GR00T N1.5 VLA finetune |
 | 典型任务 | Christmas gift delivery、wipe/write、phone room delivery、waste box disposal、multi-robot grasping |
 
+## 结论
+
+**CHIP 取巧在「事后解释」：不改参考动作、不加 reward，只在目标观测里扣除扰动偏移，就让通用 motion tracking 策略长出连续可调的末端柔顺。**
+
+- 真正起作用的是 hindsight perturbation 与 Hooke's law 参数化的组合：前者让策略既不一受力就硬拉回原位、也不放弃全局轨迹；后者让 `10/k` 有物理含义，因而能被人手调节，或由 VLM 从图像加少量 anchor examples 预测。
+- 柔顺必须 **连续可调** 才有意义：空箱、装湿巾、装哑铃各需不同刚度，箱内加哑铃时 0.25 合适而 0.15 太硬、0.425 太软——离散软硬开关覆盖不了这个谱，damper-only 局部跟随则是另一端。
+- 训练代价低是它相对 SoftMimic 式 IK 数据增广的主要优势；与 GentleHumanoid（阻抗参考动力学、安全优先）、Thor（强发力侧）落点不同，本页对照为定性表格，不含跨论文可比的统一指标。
+- 主要风险：compliance 值仍需任务语义，VLM 预测依赖 anchor examples，选错就太软或太硬；CHIP 是 compliance-aware tracking，**不等于力控传感闭环**，不一定显式测量或闭环控制接触力。
+- 工程状态：项目页标注 Code (Coming Soon)，截至 2026-07-22 未确认可运行仓库，hindsight target reconstruction 的实现无法验证；GR00T N1.5 + CHIP 数据的 80% / 60% / 90% 均为项目页口径。
+
 ## 与其他工作对比
 
 CHIP 在「为什么重要」和核心原理里明确对照 SoftMimic 式的 compliance 数据增广，关联页面又把它与上半身阻抗柔顺的 GentleHumanoid、强发力方向的 Thor 并列。三者同属接触/柔顺一线，但落点不同。下表为定性对照，不含跨论文可比的统一指标。

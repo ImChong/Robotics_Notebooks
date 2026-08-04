@@ -15,6 +15,7 @@ doi: "10.1126/scirobotics.adj8124"
 arxiv: "2405.17769"
 venue: "Science Robotics 2024"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ./paper-kemo-event-driven-keyframe-memory-vla.md
   - ../concepts/sim2real.md
 sources:
@@ -93,6 +94,16 @@ flowchart LR
 
 - **低层任务（特征检测与跟踪）：** 在三类场景下，AMI-EV 综合优于标准事件相机，极端光照下优于灰度相机。
 - **高层任务（人体检测 + 姿态估计）：** AMI-EV 在极端光照下成功，其他两种方案均失败。
+
+## 结论
+
+**AMI-EV 的关键判断是：事件相机「静止即失明」属于传感器物理内禀缺陷，软件补不回来，只能主动引入一个能被精确补偿的已知运动去换回纹理。**
+
+- 真正起作用的是「旋转楔形棱镜 + 几何光学补偿」这一对：补偿是可微几何变换而非神经网络，因此输出仍是标准事件格式 (x, y, t, p)，下游特征跟踪 / SLAM / 检测零改动即可受益。
+- 优势区间是有边界的：极端光照下它是三种方案里唯一鲁棒的，但非结构化环境的常规光照下普通灰度相机仍最优——它是补短板，不是全场景替代。
+- 代价是机械化：约 57 g 与电机功耗，且补偿精度绑死在棱镜绝对角度编码器上，高速或振动环境下残余伪影是主要失败模式。
+- 开源以 [Zenodo](https://zenodo.org/records/10542425) 的 Hardware/Software/Simulator/Dataset 压缩包为准，项目页不是 GitHub 主仓；推荐先跑 Simulator + Translator 再复现棱镜模块。
+- 与 [KEMO](./paper-kemo-event-driven-keyframe-memory-vla.md) 对照：后者在算法层用事件驱动的关键帧记忆，本页则在传感器层修补事件源本身，两条路线正交可叠加。
 
 ## 局限与风险
 

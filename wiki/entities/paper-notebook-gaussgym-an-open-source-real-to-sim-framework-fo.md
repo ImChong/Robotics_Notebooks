@@ -46,6 +46,15 @@ GaussGym 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页当前的价值不在于讲清 GaussGym 的方法，而在于先为「开源 real-to-sim + 从像素学运动」这个待深读条目在图谱里占好位置。**
+
+- 可确认的定位线索只有标题与分类：归入 **05_Locomotion**，主题是开源 real-to-sim 框架与从像素学习运动，与本库 Sim2Real 主线同向。
+- 深读笔记尚未撰写，量化 benchmark、消融与实机指标一律缺席，**不要把本页当作方法性判断的来源**。
+- 现阶段的可靠用途是检索入口与图谱占位；细节请走 arXiv 原文与 PROGRESS.md 待深读清单。
+- 笔记完成后本页应升格为完整索引实体，届时本节需整体重写。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

@@ -59,6 +59,15 @@ ToddlerBot 主要解决数据闭环：用本体状态与关节序列、遥操作
 - 评测原始出处：[原文 / 项目页](https://toddlerbot.github.io)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-08-hardware-deployment.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**ToddlerBot 的产出是「平台」而不是单一算法：把开源人形做成 ML 友好的采集-训练-部署载体，让遥操作数据与模仿/生成式策略能在同一台机器上跑通。**
+
+- 真正起作用的是数据闭环本身：遥操作/外骨骼、本体状态与仿真交互数据构成采集侧，ACT/行为克隆、扩散策略/流匹配与分层技能构成策略侧。
+- 适用边界在「开源可复制」这一侧——它给的是可搭建的实验载体与配套软件栈，而不是某项 loco-manip 指标的上限。
+- 同类可对照 [Handroid](./handroid.md)（桌面 ML 平台的双形态手/人形取舍）。
+- 边界：本条目为索引级摘录，硬件 BOM、成本与实机指标以 <https://toddlerbot.github.io> 为准。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

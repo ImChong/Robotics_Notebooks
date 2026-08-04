@@ -110,6 +110,16 @@ flowchart LR
 | **消融** | 去视觉历史：**−27.50%** 量级；去 action conditioning：**−45.44%** |
 | **数据** | DynaGrasp-1600：1600 traj / ~510K steps / 1.53M images |
 
+## 结论
+
+**DynaWM 把世界模型放到冻结 VLA 的下游做「动作重写」，用外挂模块换来跨异构 VLA 的可复用性——代价是修正只能是局部的，改不动 base 策略本身的语义决策。**
+
+- 真正起作用的是 **两个条件输入**而非未来像素预测：去视觉历史约 **−27.50%**、去 action conditioning **−45.44%**（成功率跌到 **29%**，低于 base 的 72.56%）；V-JEPA 只提运动特征，**不 rollout 未来帧**。
+- 收益结构强依赖 base checkpoint 质量：coarse-tuned 平均 **+35.25pp**，fine-tuned **+16.33pp**，而已经很强的 fine-tuned $\pi_0$（72.56%）只 **+1.88pp**——base 越强，外挂修正的边际越薄。
+- 主要失败模式是 **局部改写扰动已有序贯绑定**：多物体 Amount 任务出现 **14 个任务退步**。
+- 适用边界：面向 **移动目标拦截**（观测–执行延迟下的位置外推），以仿真 benchmark + 单臂 Franka 为主，未覆盖全身 loco-manip。
+- 与 [DSWAM](./paper-dswam-dual-system-wam.md)（端到端执行）、[DreamSteer](./paper-dreamsteer-vla-deployment-steering.md)（多样本想象 + 价值排序）构成 **执行 / 修正 / 筛选** 三角；DynaWM 是其中的 **单路径确定性重生成**。
+
 ## 与其他工作对比
 
 | 工作 | 关系 |

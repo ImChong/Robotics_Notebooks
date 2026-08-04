@@ -34,13 +34,13 @@
   function miniGraphTheme() {
     var dark = document.documentElement.getAttribute('data-theme') !== 'light';
     return {
-      background: dark ? '#0d1117' : '#eef2f7',
+      background: dark ? '#191919' : '#f7f6f3',
       edge: dark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.10)',
-      edge3d: dark ? '#aab6c4' : '#3c4756',
+      edge3d: dark ? '#a9a8a4' : '#4a4945',
       label: dark ? 'rgba(255,255,255,0.75)' : 'rgba(0,0,0,0.70)',
       stats: dark ? 'rgba(255,255,255,0.55)' : 'rgba(0,0,0,0.62)',
-      link: dark ? '#60a5fa' : '#2563eb',
-      linkBorder: dark ? 'rgba(96,165,250,0.30)' : 'rgba(37,99,235,0.30)'
+      link: dark ? '#5b9cf6' : '#2d74da',
+      linkBorder: dark ? 'rgba(91,156,246,0.30)' : 'rgba(45,116,218,0.30)'
     };
   }
 
@@ -151,10 +151,45 @@
       return window.RNGraphNodeSize.radiusForDegree(d._degree, maxDegree);
     }
 
+    // 邻接表：预览取 Top-N 诱导子图后，可能出现「全局度数高但邻居都不在 Top-N」的孤立点
+    var adj = {};
+    (gd.edges || []).forEach(function (e) {
+      if (e.source === e.target) return;
+      if (!adj[e.source]) adj[e.source] = [];
+      if (!adj[e.target]) adj[e.target] = [];
+      adj[e.source].push(e.target);
+      adj[e.target].push(e.source);
+    });
+    function hasNeighborInSet(id, idSet) {
+      var neighbors = adj[id] || [];
+      for (var i = 0; i < neighbors.length; i++) {
+        if (idSet.has(neighbors[i])) return true;
+      }
+      return false;
+    }
+
+    var ranked = gd.nodes.slice().sort(function (a, b) {
+      return (degreeMap[b.id] || 0) - (degreeMap[a.id] || 0);
+    });
     var topIds = new Set(
-      gd.nodes.slice().sort(function(a,b){ return (degreeMap[b.id]||0)-(degreeMap[a.id]||0); })
-      .slice(0, PREVIEW_TOP_N).map(function(n){ return n.id; })
+      ranked.slice(0, PREVIEW_TOP_N).map(function (n) { return n.id; })
     );
+    // 剔除诱导子图孤立点（迭代至稳定，避免级联），再按度数序回填可连通候选
+    var dropped = true;
+    while (dropped) {
+      dropped = false;
+      Array.from(topIds).forEach(function (id) {
+        if (!hasNeighborInSet(id, topIds)) {
+          topIds.delete(id);
+          dropped = true;
+        }
+      });
+    }
+    for (var ri = 0; ri < ranked.length && topIds.size < PREVIEW_TOP_N; ri++) {
+      var cand = ranked[ri].id;
+      if (topIds.has(cand)) continue;
+      if (hasNeighborInSet(cand, topIds)) topIds.add(cand);
+    }
 
     var nodes = gd.nodes.filter(function(n){ return topIds.has(n.id); }).map(function(n){
       return {
@@ -168,7 +203,7 @@
     });
     var nodeIdSet = new Set(nodes.map(function(n){ return n.id; }));
     var edges = gd.edges.filter(function(e){
-      return nodeIdSet.has(e.source) && nodeIdSet.has(e.target);
+      return e.source !== e.target && nodeIdSet.has(e.source) && nodeIdSet.has(e.target);
     }).map(function(e){ return {source:e.source, target:e.target}; });
 
     var W = miniWrap.clientWidth || 700, H = 480;
@@ -199,11 +234,15 @@
     svg.call(zoom).on('dblclick.zoom',null);
 
     var sim = d3.forceSimulation(nodes)
-      .force('link', d3.forceLink(edges).id(function(d){ return d.id; }).distance(60).strength(0.4))
+      .force('link', d3.forceLink(edges).id(function(d){ return d.id; }).distance(60).strength(0.32))
       .force('charge', d3.forceManyBody().strength(-200).distanceMax(300))
       .force('center', d3.forceCenter(W/2, H/2).strength(0.08))
-      .force('collision', d3.forceCollide().radius(function(d){ return nodeRadius(d) + 4; }).strength(0.6))
-      .alphaDecay(0.03);
+      .force('collision', d3.forceCollide().radius(function(d){ return nodeRadius(d) + 4; }).strength(0.45))
+      .force('x', d3.forceX(W/2).strength(0.06))
+      .force('y', d3.forceY(H/2).strength(0.06))
+      .velocityDecay(0.52)
+      .alphaDecay(0.04)
+      .stop();
 
     line = lineLayer.selectAll('line').data(edges).join('line')
       .attr('stroke-width',1);
@@ -251,6 +290,47 @@
       .attr('font-size','10px')
       .attr('pointer-events','none');
 
+    // ── 搜索联动：首页搜索框输入时，背景图谱高亮相关节点、其余淡出 ──
+    function tokenizeMini(q) {
+      return String(q || '').toLowerCase().split(/[^a-z0-9一-鿿]+/i)
+        .filter(function(t){ return t.length >= 2; });
+    }
+    function clearHighlight() {
+      nodeG.classed('mini-node-dim', false).classed('mini-node-hit', false);
+      line.classed('mini-edge-dim', false);
+    }
+    function highlightNodes(idList, query) {
+      var idSet = {};
+      (idList || []).forEach(function(id){ idSet[id] = true; });
+      var tokens = tokenizeMini(query);
+      var hitSet = {};
+      var hitCount = 0;
+      nodes.forEach(function(n) {
+        var hit = !!idSet[n.id];
+        if (!hit && tokens.length) {
+          var lab = String(n.label || '').toLowerCase();
+          for (var i = 0; i < tokens.length; i++) {
+            if (lab.indexOf(tokens[i]) >= 0) { hit = true; break; }
+          }
+        }
+        if (hit) { hitSet[n.id] = true; hitCount++; }
+      });
+      // 预览图只含前 50 度数节点，命中可能为空；此时不淡出，避免整图变暗却无高亮的困惑
+      if (!hitCount) { clearHighlight(); return; }
+      nodeG.classed('mini-node-dim', function(d){ return !hitSet[d.id]; });
+      nodeG.classed('mini-node-hit', function(d){ return !!hitSet[d.id]; });
+      line.classed('mini-edge-dim', function(d){
+        var s = (d.source && d.source.id) || d.source;
+        var t = (d.target && d.target.id) || d.target;
+        return !(hitSet[s] && hitSet[t]);
+      });
+    }
+    window.RNMiniGraph = { highlight: highlightNodes, clear: clearHighlight };
+    var pending = window.__miniGraphPendingQuery;
+    if (pending && (pending.query || (pending.ids && pending.ids.length))) {
+      highlightNodes(pending.ids || [], pending.query || '');
+    }
+
     applyMiniGraphTheme();
 
     var observer = new MutationObserver(function() {
@@ -267,6 +347,16 @@
         .attr('x2',function(d){ return d.target.x; }).attr('y2',function(d){ return d.target.y; });
       nodeG.attr('transform', function(d){ return 'translate('+d.x+','+d.y+')'; });
     });
+
+    // 短预热去掉首帧毛刺后，以较高 alpha 开场，保留一次轻微回弹。
+    sim.alpha(1);
+    for (var wi = 0; wi < 12; wi++) sim.tick();
+    nodes.forEach(function (n) { n.vx = 0; n.vy = 0; });
+    line
+      .attr('x1', function(d){ return d.source.x; }).attr('y1', function(d){ return d.source.y; })
+      .attr('x2', function(d){ return d.target.x; }).attr('y2', function(d){ return d.target.y; });
+    nodeG.attr('transform', function(d){ return 'translate('+d.x+','+d.y+')'; });
+    sim.alpha(0.7).restart();
 
     sim.on('end', function() {
       var allN = nodes.filter(function(n){ return n.x!=null; });

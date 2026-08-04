@@ -59,6 +59,14 @@ TrajBooster 的实现路径是先把相机图像/多视角观测、本体状态�
 - 评测原始出处：[原文 / 项目页](https://jiachengliu3.github.io/TrajBooster)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-03-visuomotor.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**TrajBooster 的题眼是 trajectory-centric learning：以轨迹为中心去 boost 人形全身操作，而策展视角把它归入多模态编码 + 模仿学习/VLA + IK 重定向的视觉驱动路线。**
+
+- 机制主线：相机/多视角观测、本体状态与关节序列、遥操作/外骨骼数据 → 多模态表征 → ACT/行为克隆、VLA 动作模型与 IK/动作重定向 → 全身轨迹与末端执行器/腕手目标；重定向是把轨迹这一层落到具体本体的关键接口。
+- 本页「机构」一栏填的是「Limited Teleoperation Data」，明显是抽取残留而非真实单位；引用作者与机构前必须回 [原文 / 项目页](https://jiachengliu3.github.io/TrajBooster) 核对。
+- 本条目为 **索引级坐标**（080/161 · 03 视觉感知驱动的人形移动操作，2026-03-19）：boosting 的实际增益幅度、数据规模与实机指标均未搬运；单篇工作不自动解决底层 WBC 鲁棒性。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

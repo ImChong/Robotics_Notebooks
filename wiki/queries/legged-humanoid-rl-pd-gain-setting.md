@@ -3,7 +3,7 @@ type: query
 tags: [rl, locomotion, humanoid, legged, sim2real, actuator, pd-control]
 status: stable
 summary: "腿足与人形 RL 中如何把 Kp/Kd（刚度/阻尼）与仿真步长、控制频率及 sim2real 对齐的工程要点与决策流程。"
-updated: 2026-07-09
+updated: 2026-08-02
 related:
   - ../entities/paper-digit-humanoid-locomotion-rl.md
   - ../concepts/implicit-explicit-actuator-modeling.md
@@ -16,6 +16,7 @@ related:
   - ../entities/paper-quadruped-torque-control-rl.md
   - ../entities/paper-quadruped-agile-sim2real-rss2018.md
   - ../entities/paper-variable-impedance-contact-rl.md
+  - ../entities/paper-learning-quiet-walking-aibo.md
   - ../entities/paper-deeprl-locomotion-action-space-sca2017.md
   - ../entities/legged-gym.md
   - ../entities/isaac-gym-isaac-lab.md
@@ -28,6 +29,7 @@ related:
 sources:
   - ../../sources/notes/legged_humanoid_rl_pd_gains.md
   - ../../sources/papers/rl_pd_action_interface_locomotion.md
+  - ../../sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「人形或腿足式机器人强化学习里，底层关节 Kp/Kd（或仿真里的 stiffness/damping）一般怎么设、和什么量绑定？」
@@ -82,6 +84,7 @@ sources:
 | 全尺寸人形真机里 **PD 怎样嵌进大规模 RL + sim2real 流水线**（含公开增益表锚点） | [Digit 人形 RL 行走](../entities/paper-digit-humanoid-locomotion-rl.md) · [arXiv:2303.03381](https://arxiv.org/abs/2303.03381) |
 | **固定标称增益 vs 随机化**、以及 **策略 Hz 与 PD 内环 Hz 的典型分频** | [Cassie 双足多技能 RL](../entities/paper-cassie-biped-versatile-locomotion-rl.md) · [arXiv:2401.16889](https://arxiv.org/abs/2401.16889) |
 | **RL 能否学刚度/增益**、分组 vs 逐关节 | [可变刚度腿足 RL](../entities/paper-variable-stiffness-locomotion-rl.md) · [arXiv:2502.09436](https://arxiv.org/abs/2502.09436) |
+| **为低噪触地学 PD gain scale**（触地前阻尼、支撑相加硬；消费级四足） | [Learning Quiet Walking（aibo）](../entities/paper-learning-quiet-walking-aibo.md) · [arXiv:2502.10983](https://arxiv.org/abs/2502.10983) |
 | **复现落地**：reward / observation / action **多轮迭代** 的真实记录 | [Cassie 迭代式 sim2real](../entities/paper-cassie-iterative-locomotion-sim2real.md) · [arXiv:1903.09537](https://arxiv.org/abs/1903.09537) |
 | **抄配置、跑消融、扫增益** 的并行仿真入口 | [ANYmal 分钟级并行 DRL](../entities/paper-anymal-walk-minutes-parallel-drl.md) · [arXiv:2109.11978](https://arxiv.org/abs/2109.11978) + [legged_gym](../entities/legged-gym.md) |
 | 已能跑通固定 PD，想接 **泛化部署、行为切换与安全** | [Walk These Ways（MoB）](../entities/paper-walk-these-ways-quadruped-mob.md) · [arXiv:2212.03238](https://arxiv.org/abs/2212.03238)（**非** Walk in Minutes） |
@@ -215,6 +218,7 @@ flowchart TB
 - [四足扭矩控制 RL](../entities/paper-quadruped-torque-control-rl.md)
 - [RSS 2018 敏捷四足 sim2real](../entities/paper-quadruped-agile-sim2real-rss2018.md)
 - [可变阻抗接触任务 RL](../entities/paper-variable-impedance-contact-rl.md)
+- [Learning Quiet Walking（aibo 可变 PD 低噪）](../entities/paper-learning-quiet-walking-aibo.md)
 
 ### 其他
 

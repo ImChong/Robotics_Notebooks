@@ -115,6 +115,16 @@ flowchart TB
 - **LeRobot SO100/SO101：** 官方主仓已内置；`lerobot-record --robot.type=so100_follower --policy.path=<checkpoint> ...`；权重 `MINT-SJTU/Evo1_SO100`。
 - **训练：** 数据转 **LeRobot v2.1** → DeepSpeed `accelerate launch` 两阶段 `train.py`；FlashAttention 安装对稳定性影响大。
 
+## 结论
+
+**Evo-1 的核心赌注是「别把 VLM 训坏」：用两阶段训练保住视觉–语言语义空间，从而在 0.77B、无机器人预训练的条件下，换来消费级 GPU 上可实时部署的策略。**
+
+- 真正起作用的是 **训练顺序** 而非模型规模：Stage 1 冻结 InternVL3-1B 只训集成模块与 cross-modulated DiT flow-matching 动作头，Stage 2 再解冻联合微调；论文用注意力图对比证明这与 **语义保持和泛化** 直接相关，不只是工程技巧。
+- 指标兑现在 **效率–性能平衡点**：Meta-World **80.6%**、LIBERO **94.8%**（long 92.3%）、RoboTwin **37.8%**、xArm6 真机 **78%**，同时 **2.3 GB / 16.4 Hz**（对照 OpenVLA 7B 的 15.1 GB / 7.9 Hz）。
+- 适用边界：公开叙事以 **单臂/双臂桌面操作** 为主，向人形全身 loco-manip 扩展需独立验证；RoboTwin 50 任务全量结果与评测脚本仍待官方发布。
+- 工程落地是这条路线的实际护城河：数据走 **LeRobot v2.1**、策略已并入官方 [LeRobot](./lerobot.md) 主仓，SO100/SO101 一条命令部署。
+- 与 [FabriVLA](./paper-fabrivla.md) 对照：同为轻量 InternVL+FM，后者单阶段、MT50 更高但报告面更窄；与 π₀ / OpenVLA 对照，Evo-1 用 **小模型 + 语义保持微调** 替代大规模机器人预训练。
+
 ## 常见误区或局限
 
 - **误区：** 把「轻量」等同于「牺牲 LIBERO 长程」——Evo-1 在 **long 子集 92.3%** 仍具竞争力。

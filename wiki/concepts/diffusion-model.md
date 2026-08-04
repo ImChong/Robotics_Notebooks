@@ -2,7 +2,7 @@
 type: concept
 tags: [generative-model, diffusion, machine-learning]
 status: complete
-updated: 2026-07-30
+updated: 2026-08-02
 related:
   - ../formalizations/generative-foundations.md
   - ../methods/diffusion-policy.md
@@ -10,8 +10,11 @@ related:
   - ../formalizations/probability-flow.md
   - ../entities/llada2-2-flash.md
   - ../entities/paper-transformer-transformer.md
+  - ../entities/paper-diffsheg.md
+  - ../entities/paper-importance-sampling-pca-av-failures.md
 sources:
   - ../../sources/blogs/wechat_human_five_diffusion_model_intro.md
+  - ../../sources/papers/importance_sampling_pca_av_failures_arxiv_2607_18106.md
 summary: "扩散模型通过固定前向加噪与可学习逆向降噪，把高难度一次性生成拆解为稳定的多步监督子任务；是 Diffusion Policy、运动扩散与世界模型等机器人生成式路线的共同底座。"
 ---
 
@@ -120,6 +123,7 @@ flowchart LR
 | 全身运动 | 地形、速度指令、文本 | 关节/笛卡尔轨迹 | [扩散运动生成](../methods/diffusion-motion-generation.md) |
 | 世界模型 | 动作、历史观测 | 下一帧潜状态 | [生成式世界模型](../methods/generative-world-models.md) |
 | 机体共设计 | 末端轨迹 + 奖励引导 | 完整机器人 embodiment | [Transformer Transformer](../entities/paper-transformer-transformer.md) |
+| 安全验证（稀有失败） | 鲁棒性阈值 / 噪声先验 | 致失败的感知噪声轨迹 | [DiFS on 商业 AV](../entities/paper-importance-sampling-pca-av-failures.md) |
 
 数学概率视角与 ELBO 对照见 [生成式模型基础](../formalizations/generative-foundations.md)。
 
@@ -128,10 +132,12 @@ flowchart LR
 - [生成式模型基础](../formalizations/generative-foundations.md)
 - [Diffusion Policy](../methods/diffusion-policy.md)
 - [基于扩散的运动生成](../methods/diffusion-motion-generation.md)
+- [DiffSHEG](../entities/paper-diffsheg.md) — 语音条件 3D 表情+手势联合扩散与 FOPPAS 实时采样
 - [概率流 (Probability Flow)](../formalizations/probability-flow.md)
 - [模仿学习](../methods/imitation-learning.md)
 - [LLaDA2.2-flash](../entities/llada2-2-flash.md) — 离散文本 block-diffusion MoE（dLLM）与 agentic 编辑推理
 - [Transformer Transformer](../entities/paper-transformer-transformer.md) — DiT 扩散完整机体 + Dynamics Self-Guidance
+- [Importance Sampling + PCA（商业 AV；DiFS）](../entities/paper-importance-sampling-pca-av-failures.md)
 
 ## 参考来源
 

@@ -45,6 +45,16 @@ summary: "这篇论文的核心不是“再堆一个更大的网络”，而是�
 
 - 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
+## 结论
+
+**这篇工作的核心取舍是「经典平衡控制的物理量只进训练、不进部署」：Capture Point、CoM 状态与质心动量用来塑形学习过程，推理时 actor 仍然只依赖本体感觉。**
+
+- 真正起作用的不是更大的网络，而是把可解释物理量同时用在两个位置：特权 critic 的输入，以及奖励塑形信号。
+- 这种非对称设计是它可落地的前提——若把这些量放进 actor 观测，部署就会绑死在难以在线获取的状态估计上。
+- 结果侧的关键在"统一"而非单点性能：一个策略覆盖从小扰动到大跌倒后恢复的完整行为链，本页报告 93.4% 的恢复成功率。
+- 适用边界：本页为索引级实体，93.4% 对应的实验条件、消融设置与真机验证细节须回到深读笔记与论文 PDF（见[参考来源](#参考来源)）。
+- 本页归入 04_Loco-Manipulation_and_WBC，可经[分类父节点](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)与[人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)与同类工作交叉检索。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

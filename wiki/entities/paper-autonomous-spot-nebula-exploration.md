@@ -11,6 +11,7 @@ updated: 2026-07-05
 arxiv: "2010.09259"
 venue: "arXiv 2020"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ./boston-dynamics.md
   - ./quadruped-robot.md
   - ../tasks/locomotion.md
@@ -86,6 +87,15 @@ flowchart TB
 - **验证形态：** 属 **系统演示型**评测，而非单一 benchmark 表——在 **真实物理系统** 与 **SubT 类极端地下场景** 中展示端到端自主，而非纯仿真跑分。
 - **核心指标维度：** **长距离 / 长时程** 连续探索能力、GPS 拒止与低光照下的 **信念感知定位建图**、以及在楼梯/碎石/狭窄通道上的 **地形通过率**。
 - **场景背景：** 面向 **DARPA Subterranean Challenge** 的隧道、城市地下与洞穴赛道，强调把足式机动性作为感知—规划闭环的物理载体推进 **state-of-practice**。
+
+## 结论
+
+**这篇的价值在系统集成而非算法：它证明「商业四足硬件 + 研究型信念感知自主栈」能在 GPS 拒止的地下环境撑起长距离、长时程探索。**
+
+- 真正的贡献层是 **任务级自主**——信念地图与不确定性、长程目标分解、重规划、地下组网；低层步态与平衡被当作已有能力调用。
+- 评测形态是 **系统演示** 而非 benchmark 表：看的是连续探索的距离与时长、低光照/GPS 拒止下的信念感知定位建图，以及楼梯、碎石、狭窄通道的通过率。
+- 最需要澄清的边界：这些能力来自 **NeBula 研究集成，不是 Spot 出厂软件栈**；论文也不展开低层力矩控制与在线轨迹优化（见 [BD 足式控制专利栈](./patent-boston-dynamics-legged-control-stack.md)）。
+- 定位与时效：2020 年工作，宜作 **历史系统参考** 而非当下可直接选型的算法目录；同平台的低层 RL locomotion 见 [Spot RL 分布距离 Sim2Real](./paper-spot-rl-distributional-sim2real.md)，两者在栈层级上互补。
 
 ## 与其他工作对比
 

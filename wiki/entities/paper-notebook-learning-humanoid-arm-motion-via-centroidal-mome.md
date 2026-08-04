@@ -46,6 +46,14 @@ Learning Humanoid Arm Motion via Centroidal Momentum Regularized Multi-Agent Rei
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**这条目最值得注意的是归类信号：一篇讲「手臂动作」的论文被放进 05_Locomotion，标题把手臂运动与质心动量正则化绑在一起；但本页仍处于待深读，这一读法尚无正文证据支撑。**
+
+- 可确认信息只有分类 05_Locomotion、arXiv 2507.04140 与深读状态「待撰写」；机制线索仅为「质心动量正则化的多智能体强化学习用于人形手臂动作」。
+- 分类与标题只能作为线索，不能替代结论：智能体如何划分、质心动量正则项怎么起作用，本页都无法回答。
+- 因此当前唯一正当用途是占位与交叉检索——本页「实验与评测」已声明 benchmark 与实机指标待笔记补充，引用前应回到 arXiv 原文或等 [humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md) 下的深读笔记落地。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

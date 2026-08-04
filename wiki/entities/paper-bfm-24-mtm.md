@@ -63,6 +63,15 @@ sources:
 
 在 BFM taxonomy 中回答「身体能覆盖多少目标条件技能」。
 
+## 结论
+
+**MTM 的取舍是把预训练对象从「与环境交互」换成「轨迹本身」：行为基座因此不再被传统 RL 的在线采样成本卡住。**
+
+- 起作用的是数据形态而非新控制器——轨迹直接作为预训练对象，goal / reference / command 的条件化能力从离线数据长出来。
+- 在 taxonomy 中归 **02 Goal-conditioned 学习**，回答的仍是「身体能覆盖多少目标条件技能」，而非覆盖面之外的实机鲁棒性。
+- 局限与同族一致：条件化跟踪不等于 unlimited skills，仍受数据分布、接触建模与实机 Sim2Real 约束。
+- 本页为索引级策展编译，量化 benchmark 与消融以 arXiv:2305.02968 原文及 `facebookresearch/mtm` 为准。
+
 ## 常见误区
 
 1. Goal-conditioned 跟踪不等于 unlimited skills：仍受数据分布、接触建模与实机 Sim2Real 约束。

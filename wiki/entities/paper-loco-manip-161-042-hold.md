@@ -59,6 +59,14 @@ Hold 先从相机图像/多视角观测恢复场景、目标或运动表征，�
 - 评测原始出处：[原文 / 项目页](https://lecar-lab.github.io/SoFTA/)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-02-upper-body-interface.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**Hold（Hold My Beer / SoFTA，CMU）针对的是「走起来手还得稳」：把 gentle locomotion 与末端执行器稳定当成同一个控制问题，而策展摘要把它读成一条从视觉观测到模仿学习动作预测的链路。**
+
+- 策展口径的机制主线：从相机图像/多视角观测恢复场景、目标或运动表征 → ACT/行为克隆 → 全身轨迹、末端执行器/腕手目标与低层控制器目标；动作 chunk 或闭环执行用于压时序抖动。
+- 两层叙述有落差：题名落在 locomotion 与 end-effector stabilization **控制**，本页摘要落在示范监督下的动作预测；机制细节以原文 PDF / [项目页](https://lecar-lab.github.io/SoFTA/) 为准。
+- 本条目为 **索引级坐标**（042/161 · 02 上半身中心控制与移动操作接口，CMU，2025-06-03），未搬运量化指标；末端稳定这类任务尤其依赖底层运控，须与运控/接触控制页对照，不能默认单篇工作已解决 WBC 鲁棒性。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

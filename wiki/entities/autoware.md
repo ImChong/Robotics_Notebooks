@@ -5,6 +5,7 @@ tags: [repo, autonomous-driving, ros2, perception, planning, open-source, linux-
 status: complete
 updated: 2026-05-27
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../overview/navigation-slam-autonomy-stack.md
   - ../entities/navigation2.md
   - ../concepts/ros2-basics.md

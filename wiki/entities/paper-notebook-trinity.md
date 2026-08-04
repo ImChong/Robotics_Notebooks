@@ -47,6 +47,14 @@ Trinity 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是「Trinity: A Modular Humanoid Robot AI System」的占位索引：题名摆出的立场是模块化系统而非端到端单体模型，但这一取舍在本页尚无任何展开。**
+
+- 本页可确认的只有条目级信息：分类 04_Loco-Manipulation_and_WBC、arXiv 2503.08338、发表 2025.03、深读状态「待撰写」。
+- 模块如何切分、接口如何定义、模块化相对端到端方案的代价，本页均未涉及；量化 benchmark 与实机指标同样待补。
+- 当前职责是占位子节点，维持与 [分类父节点](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md) / [总索引](../overview/humanoid-paper-notebooks-index.md) 的交叉检索；深读笔记完成后应链向笔记站并重写本节。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

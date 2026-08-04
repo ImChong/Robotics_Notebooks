@@ -47,6 +47,14 @@ Real-Time Polygonal Semantic Mapping for Humanoid Robot Stair Climbing 的人形
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是「人形爬楼实时多边形语义建图」一文的待深读占位节点，它当前最有用的信息其实是一条消歧指引，而不是方法归纳。**
+
+- 已确定的定位信息只有分类 05_Locomotion 与 arXiv 2411.01919；方法与指标尚未消化，「实验与评测」明确留空。
+- 页面显式给出消歧：若实际问题是 GO2 运动点云质量与 SAM 2D→3D，应改读 [GO2 三维语义建图与 SAM 流水线](../queries/go2-3d-semantic-mapping-sam-pipeline.md)，而不是把本页当答案。
+- 论文被放进 05_Locomotion 而非感知类目，提示本库关注的是「语义建图服务于爬楼落脚」这条线；深读笔记完成后本页应按该视角重写。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

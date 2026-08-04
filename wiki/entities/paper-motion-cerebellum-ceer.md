@@ -99,6 +99,17 @@ CEER 提供明确的**系统级评测**，同时覆盖末端跟踪质量与房�
 | 真机展示 | Box-on-wall Rotate、Write and Wipe、Cap Insertion、Box Transport、Cart Pulling |
 | 系统评测 | 3.3 cm EE 跟踪精度；房间级模拟单物体任务最高 70% 成功率 |
 
+## 结论
+
+**CEER 卖的是接口而不是技能：把人形 loco-manip 的高层 API 压缩成 root motion + EE pose + 柔顺低层策略，让 LLM skill manager、键盘遥操作与任务模块共用同一具身体。**
+
+- 真正起作用的机制是 teacher-student 蒸馏——把通用 motion-tracking controller 蒸成只消费 EE-root 命令的统一策略，因此写擦、插盖、搬箱、拉车共用一个底层，而不是每个任务重训。
+- 关键指标是 **3.3 cm** EE 跟踪精度与低于 baselines 的 jerk；房间级长时程任务在 **40 trials**（5 人 × 4 任务 × 2 次）下模拟最高 **70%** 成功率。
+- 适用边界：EE-root 命令低维到人能用键盘实时驱动，这既是它可插拔的原因，也是它的天花板——灵巧手接触与复杂多点身体接触需要更丰富的表示。
+- 主要风险：长程评测建立在 minimal skill set 与 single grasp primitive 之上，成功率高度依赖技能库；单物体到多物体/动态场景尚未验证。
+- 工程落地：项目页未列官方 GitHub，teacher-student 训练与 CEER policy 目前不可复现。
+- 对照定位：[Pro-HOI](./paper-loco-manip-161-074-pro-hoi.md) 的接触状态只到二值、[WT-UMI](./paper-loco-manip-07-wt-umi.md) 靠触觉导纳做闭环柔顺修正，CEER 则把柔顺直接写进接口本身。
+
 ## 与其他工作对比
 
 CEER 的贡献是 loco-manip 的**接口抽象**，与同样重新定义高层/示范接口的 [Pro-HOI](./paper-loco-manip-161-074-pro-hoi.md)、[WT-UMI](./paper-loco-manip-07-wt-umi.md) 相邻但落点不同。下表为定性对照。

@@ -47,6 +47,14 @@ TACT 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页当前的价值不在内容而在占位：TACT 已被标题定位为「用带触觉模态的深度模仿学习做人形全身接触操作」，但深读笔记未撰写，页面尚不承载任何可引用的机制或指标。**
+
+- 从题名可确定的定位是 **全身接触操作 + 触觉模态 + 模仿学习** 三者结合，被归入 04_Loco-Manipulation_and_WBC 分类。
+- 当前状态为 Paper Notebooks 的 **progress 待深读**，本页任何机制描述、benchmark 与实机结论都应视为缺失，而非「已确认为无」。
+- 使用方式：仅作知识图谱的子节点入口；需要实质内容时请直接走 [参考来源](#参考来源) 中的 progress.json 与原始论文。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

@@ -2,9 +2,10 @@
 type: entity
 tags: [software, cad, parametric-modeling, open-source, hardware, urdf, opencascade, manufacturing, freecad]
 status: complete
-updated: 2026-07-10
+updated: 2026-08-02
 related:
   - ./blender.md
+  - ./tinkercad.md
   - ./step2urdf.md
   - ./urdf-studio.md
   - ./cad-skills.md
@@ -81,6 +82,7 @@ flowchart LR
 ```
 
 - **与 Blender 对照**：[Blender](./blender.md) 擅长 **网格、绑定、动画、渲染**；FreeCAD 擅长 **制造级 B-rep、约束参数与工程图**——动捕与场景可视化偏前者，机械零件与公差沟通偏后者。
+- **与 Tinkercad 对照**：[Tinkercad](./tinkercad.md) 是浏览器端 **积木式草模 + 课堂电路**；适合零门槛定外形，再导出 STL 进入 FreeCAD/Fusion 做参数化与 STEP——二者串联，不互替。
 - **与 Web URDF 工具对照**：[step2urdf](./step2urdf.md) 适合 **已有 STEP 快速转 URDF**；[URDF-Studio](./urdf-studio.md) 适合 **描述文件深度编辑**；FreeCAD 适合 **从零设计或修改装配体真值**——三者常 **串联** 而非互斥。
 - **与控制实现对照**：[WBC 实现指南](../queries/wbc-implementation-guide.md) 第一步要求 **URDF/MJCF 与 CAD/实机一致**；FreeCAD 是开源团队完成该步的常见桌面工具。
 
@@ -94,6 +96,7 @@ flowchart LR
 ## 关联页面
 
 - [Blender（开源 3D 创作套件）](./blender.md)
+- [Tinkercad](./tinkercad.md) — Autodesk 浏览器端草模与 Arduino 入门（上游启蒙）
 - [step2urdf（STEP→URDF 浏览器转换）](./step2urdf.md)
 - [URDF-Studio（URDF/MJCF 设计工作站）](./urdf-studio.md)
 - [CAD Skills（LLM 驱动 CAD 技能）](./cad-skills.md)

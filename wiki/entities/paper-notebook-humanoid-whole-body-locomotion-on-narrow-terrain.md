@@ -46,6 +46,14 @@ Humanoid Whole-Body Locomotion on Narrow Terrain via Dynamic Balance and Reinfor
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页当前是占位实体而非论文归纳：它只保证这条「窄地形全身行走」条目在图谱中有节点，实质结论要等深读笔记。**
+
+- 页面现状：status 为 planned，正文只有分类归属与 PROGRESS.md 待深读状态，没有可供提炼的机制、指标或实验内容。
+- 从标题能读出的定位仅限于「动态平衡 + 强化学习，用于人形在窄地形上的全身运动」，归入 05_Locomotion；平衡判据怎么定义、真机验证到什么程度在本页无依据。
+- 使用方式：把本页当检索入口——分类父节点 [paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md) 与 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)；要读实质内容请直接走 arXiv 原文。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

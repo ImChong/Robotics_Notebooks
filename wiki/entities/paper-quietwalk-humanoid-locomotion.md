@@ -11,7 +11,7 @@ tags:
   - isaac-sim
   - ucas
 status: complete
-updated: 2026-07-07
+updated: 2026-08-02
 arxiv: "2604.23702"
 related:
   - ../tasks/humanoid-locomotion.md
@@ -23,12 +23,15 @@ related:
   - ./paper-mpc-rl-humanoid-locomotion-manipulation.md
   - ./paper-opencap-monocular.md
   - ./isaac-gym-isaac-lab.md
+  - ./paper-learning-quiet-walking-aibo.md
 sources:
   - ../../sources/papers/quietwalk_arxiv_2604_23702.md
 summary: "QuietWalk（arXiv:2604.23702，NIMTE·UCAS·Westlake）：逆动力学约束 PINN 从本体感知估计双足竖直 GRF，冻结后作 RL 冲击惩罚；G1 真机 1.2 m/s 下平均降噪 7.17 dB（MNL），跨赤脚/滑板鞋/运动鞋/高跟鞋与多地面材质鲁棒行走，部署无需力传感器。"
 ---
 
 # QuietWalk：面向多样鞋型的物理感知低噪人形行走
+
+> **同名辨析：** 本页为 **人形 G1 + PINN-GRF**（arXiv:2604.23702）。Sony aibo 上的 **足端接触速度** 低噪 RL 见 [Learning Quiet Walking（arXiv:2502.10983）](./paper-learning-quiet-walking-aibo.md)（项目页亦称 QuietWalk）。
 
 **QuietWalk**（*Physics-Informed Reinforcement Learning for Ground Reaction Force-Aware Humanoid Locomotion Under Diverse Footwear*，NIMTE / UCAS / Westlake 等，arXiv:[2604.23702](https://arxiv.org/abs/2604.23702)）提出 **「物理感知 GRF 估计 + 强化学习」** 耦合框架：先用 **逆动力学约束 PINN** 从 **6 帧本体感知历史** 估计双足 **竖直地面反力（GRF）**，再将 **冻结预测器** 嵌入 PPO 训练环作为 **冲击惩罚奖励**，使策略在 **无部署期力传感器** 时仍能 **显式抑制足地冲击**；配套 **足+鞋统一几何建模管线** 与 **分阶段课程**，在 **Unitree G1** 上实现跨 **赤脚 / 滑板鞋 / 运动鞋 / 高跟鞋** 与多地面材质的 **低噪鲁棒行走**。
 
@@ -65,7 +68,7 @@ summary: "QuietWalk（arXiv:2604.23702，NIMTE·UCAS·Westlake）：逆动力学
 ## 为什么重要
 
 - **填补「室内低噪行走」空白：** 多数人形 locomotion 论文优化速度/鲁棒/感知，较少把 **足地冲击噪声** 作为一等公民；QuietWalk 面向 **家庭/医院/办公室** 等人机共处场景的 **声学舒适度与硬件寿命**。
-- **比运动学代理更直接：** 传统低噪路线惩罚 **足端接触速度**（如 Aibo、Olaf），易牺牲敏捷与稳定；本文用 **物理一致的竖直 GRF 惩罚** $r_{\mathrm{impact}}=-\alpha\sum (f_z)^2$，在任务奖励之外 **直接对准冲击瞬态**。
+- **比运动学代理更直接：** 传统低噪路线惩罚 **足端接触速度**（如 [Sony aibo QuietWalk](./paper-learning-quiet-walking-aibo.md)、Olaf），易牺牲敏捷与稳定；本文用 **物理一致的竖直 GRF 惩罚** $r_{\mathrm{impact}}=-\alpha\sum (f_z)^2$，在任务奖励之外 **直接对准冲击瞬态**。
 - **传感器无关部署：** 力传感器噪声大、易损，直接进 RL 奖励常致训练不稳；**预训练 + 冻结 PINN** 在训练与部署间保持 **一致的力反馈语义**，且部署 **不需力传感硬件**。
 - **新鲁棒维度——鞋型：** 将 **鞋诱导的接触动力学变化** 系统纳入课程与评测（含 **高跟鞋** 极端情形），类比人类 **换鞋仍稳走** 的泛化能力，区别于仅关注 **外部地形** 的 locomotion 工作。
 - **与 [MPC-RL](./paper-mpc-rl-humanoid-locomotion-manipulation.md) 互补：** 后者在仿真 critic 中用 **特权真实 GRF** 做 `mpc_grf` 软对齐；QuietWalk 探索 **无特权传感、用学习力估计器作奖励 critic** 的第三条力感知 RL 轴。
@@ -128,6 +131,17 @@ flowchart TB
 | **户外** | 草地/碎石/鹅卵石/石板/沥青，多鞋型无显著失稳 |
 | **局限** | 仅竖直 GRF；声学为固定录制链相对比较；未建模切向接触 |
 
+## 结论
+
+**QuietWalk 的关键设计是把力传感器留在训练侧：用冻结的 PINN GRF 估计器当奖励 critic，让「安静」变成可直接优化的物理量，而部署端只剩本体感知。**
+
+- 真正起作用的是奖励对准了冲击本身：$r_{\mathrm{impact}}=-\alpha\sum (f_z)^2$ 比惩罚足端接触速度的运动学代理更直接，也避开了噪声力信号直接进奖励导致训练不稳的老问题；「预训练 + 冻结」保证训练与部署的力反馈语义一致。
+- 估计器的质量靠物理约束撑着，不是靠拟合：完整损失下左右 RMSE **14.5/14.0 N**、$R^2$ **0.99**；去掉动力学残差项 $\mathcal{L}_{\mathrm{dyn}}$ 后 RMSE 恶化 **6–7×**。
+- 效果口径需要看清：赤脚 1.2 m/s 四地面均值 MNL **−7.17 dB**、PNL **−4.98 dB**（vs 基线 RL），对宇树内置控制器 D3 约 **4.17/2.34 dB**；但这是固定录制链下的**相对比较**，跨平台绝对 dBA 不可比。
+- 本文新增的鲁棒轴是**鞋型**而非地形：高跟鞋是接触动力学的极端 stress test，其噪声仍显著高于缓冲鞋型（高跟鞋×木 vs 运动鞋×瑜伽垫差近 **20 dB**）——通过测试不等于适合穿高跟鞋作业。
+- 主要局限集中在建模范围与可复现性：只用竖直 GRF，切向摩擦与扭矩未入奖励；训练期力数据依赖专用传感鞋垫；暂无开源代码。
+- 定位上，与 [MPC-RL](./paper-mpc-rl-humanoid-locomotion-manipulation.md) 的仿真特权 GRF 路线互补，QuietWalk 代表「无特权传感、用学习到的力估计器充当奖励 critic」的第三条力感知 RL 轴。
+
 ## 常见误区或局限
 
 - **误区：「降噪 = 只调麦克风」。** 论文强调 A 加权 SPL 在 **一致录制设置** 下做 **相对比较**；跨平台绝对 dBA 可比性有限。
@@ -137,12 +151,12 @@ flowchart TB
 
 ## 与其他工作对比
 
-| 维度 | QuietWalk | 足端速度惩罚低噪 | MPC-RL | OpenCap Monocular |
-|------|-----------|------------------|--------|-------------------|
-| 目标 | **低冲击 + 低噪 + 跨鞋** | 低噪（运动学代理） | 训练期 MPC 地标 | 人体临床运动学/动力学 |
-| 力信号 | **PINN 估计竖直 GRF** | 接触速度 | 仿真特权 GRF | 仿真+ML 估计 GRF |
-| 部署传感 | **本体感知 only** | 本体感知 | 纯 RL | 单目手机视频 |
-| 平台 | **G1** | 四足/娱乐机器人 | Themis | 人体 |
+| 维度 | QuietWalk（本文） | [aibo QuietWalk](./paper-learning-quiet-walking-aibo.md) | MPC-RL | OpenCap Monocular |
+|------|-------------------|----------------------------------------------------------|--------|-------------------|
+| 目标 | **低冲击 + 低噪 + 跨鞋** | 家用四足低噪 | 训练期 MPC 地标 | 人体临床运动学/动力学 |
+| 力信号 | **PINN 估计竖直 GRF** | **足端接触速度** 代理 | 仿真特权 GRF | 仿真+ML 估计 GRF |
+| 部署传感 | **本体感知 only** | 本体感知 + 开关接触 | 纯 RL | 单目手机视频 |
+| 平台 | **G1** | Sony aibo | Themis | 人体 |
 
 ## 关联页面
 
@@ -150,6 +164,7 @@ flowchart TB
 - [Locomotion](../tasks/locomotion.md) — 足式移动广义任务
 - [Contact Dynamics](../concepts/contact-dynamics.md) — 接触建立/冲击与力反馈
 - [Locomotion 奖励设计指南](../queries/locomotion-reward-design-guide.md) — 接触冲击类奖励项
+- [Learning Quiet Walking（aibo）](./paper-learning-quiet-walking-aibo.md) — 足端接触速度代理的低噪四足对照
 - [MPC-RL](./paper-mpc-rl-humanoid-locomotion-manipulation.md) — 特权 GRF 训练期指导对照
 - [Unitree G1](./unitree-g1.md) — 实验平台
 

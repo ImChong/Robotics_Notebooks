@@ -2,7 +2,7 @@
 type: entity
 tags: [software, cad, mcp, llm-agents, freecad, parametric-modeling, open-source, hardware, fem]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-03
 related:
   - ./freecad.md
   - ./cad-skills.md
@@ -10,6 +10,8 @@ related:
   - ./urdf-studio.md
   - ./3dgenstudio.md
   - ./drawio-scientific-illustrator.md
+  - ../concepts/model-context-protocol.md
+  - ./unreal-mcp.md
   - ../concepts/text-to-cad.md
   - ../concepts/urdf-robot-description.md
   - ../concepts/remote-procedure-call.md
@@ -19,6 +21,8 @@ sources:
   - ../../sources/repos/freecad-mcp.md
   - ../../sources/repos/3dgenstudio.md
   - ../../sources/papers/birrell_nelson_implementing_rpc_tocs_1984.md
+  - ../../sources/sites/modelcontextprotocol-io.md
+  - ../../sources/sites/unreal-mcp-in-unreal-editor.md
 summary: "FreeCAD MCP（neka-nat/freecad-mcp）用 Addon RPC + PyPI MCP server 把桌面 FreeCAD 暴露给 Claude 等代理：建改对象、执行 Python、截图审图、插标准件与 CalculiX FEM，是机器人硬件链路中「自然语言驱动已有 CAD」的轻量桥接。"
 ---
 
@@ -30,7 +34,7 @@ summary: "FreeCAD MCP（neka-nat/freecad-mcp）用 Addon RPC + PyPI MCP server �
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| MCP | Model Context Protocol | 代理与外部工具/数据源的开放互操作协议 |
+| MCP | Model Context Protocol | 代理与外部工具/数据源的开放互操作协议；见 [MCP 概念页](../concepts/model-context-protocol.md) |
 | CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
 | RPC | Remote Procedure Call | 远程过程调用；Addon 在 FreeCAD 内暴露 Python API（概念见 [RPC](../concepts/remote-procedure-call.md)） |
 | FEM | Finite Element Method | 有限元法，结构应力/变形分析 |
@@ -95,6 +99,7 @@ flowchart LR
 | **FreeCAD MCP** | 桌面 **FreeCAD** | MCP + RPC | 零脚本栈迁移、GUI 真值、FEM/Robot 插件生态 |
 | [CAD Skills](./cad-skills.md) | **build123d**（OCP） | Agent Skills + CLI | 无头 CI、`gen_urdf()`、制造/打印 skill 链 |
 | [Draw.io Scientific Illustrator](./drawio-scientific-illustrator.md) | 桌面 **draw.io** | Codex Skill + MCP | 可见逐步科研插图、可编辑 `.drawio` |
+| [Unreal MCP](./unreal-mcp.md) | **Unreal Editor**（官方内嵌） | HTTP+SSE loopback | UE 场景/资产 Tools、Tool Search；非机械 CAD |
 | [文字生成 CAD](../concepts/text-to-cad.md) 商业路线 | Zoo / Fusion 等 | 厂商 API | 制造向 B-rep、企业工作流 |
 | 纯 OpenSCAD/CadQuery + LLM | 脚本执行 | 终端/代码 | Git 友好、参数化极强 |
 
@@ -123,8 +128,10 @@ flowchart LR
 - [URDF-Studio（URDF/MJCF 设计工作站）](./urdf-studio.md)
 - [3D Gen Studio（ComfyUI 网格生产 + MCP）](./3dgenstudio.md) — 同属 MCP 自动化，但目标是 **mesh 管线** 而非 FreeCAD B-rep
 - [Draw.io Scientific Illustrator](./drawio-scientific-illustrator.md) — **桌面 draw.io** 的 live MCP 科研插图；同属「代理驱动本机 GUI」，目标是 2D 矢量框图而非 CAD
+- [Unreal MCP](./unreal-mcp.md) — **UE 编辑器内嵌**官方 MCP（HTTP）；同属「代理驱动专业软件」，目标是实时 3D 场景而非 FreeCAD B-rep
 - [文字生成 CAD（Text-to-CAD）](../concepts/text-to-cad.md)
 - [URDF（统一机器人描述格式）](../concepts/urdf-robot-description.md)
+- [Model Context Protocol（MCP）](../concepts/model-context-protocol.md) — 协议层 Host/Client/Server 与传输
 - [远程过程调用（RPC）](../concepts/remote-procedure-call.md) · [gRPC](./grpc.md)
 - [仿真物理保真度链路](../queries/simulation-physics-fidelity.md)
 
@@ -133,11 +140,12 @@ flowchart LR
 - [freecad-mcp 仓库源归档](../../sources/repos/freecad-mcp.md)
 - [FreeCAD MCP GitHub README](https://github.com/neka-nat/freecad-mcp)
 - [RPC 概念源头（Birrell & Nelson）](../../sources/papers/birrell_nelson_implementing_rpc_tocs_1984.md)
+- [MCP 官方文档归档](../../sources/sites/modelcontextprotocol-io.md)
 - [FreeCAD 用户 Wiki](https://wiki.freecad.org)
-- [Model Context Protocol](https://modelcontextprotocol.io)
 
 ## 推荐继续阅读
 
 - [neka-nat/freecad-mcp](https://github.com/neka-nat/freecad-mcp) — 安装、Claude Desktop 配置与 demo GIF
+- [Model Context Protocol 文档](https://modelcontextprotocol.io) — 协议一手入口
 - [FreeCAD-library](https://github.com/FreeCAD/FreeCAD-library) — `insert_part_from_library` 标准件来源
 - [galou/freecad.cross](https://github.com/galou/freecad.cross) — FreeCAD 内 ROS URDF/xacro 工作台

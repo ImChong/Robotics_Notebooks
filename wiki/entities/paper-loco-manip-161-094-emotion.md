@@ -59,6 +59,14 @@ EMOTION 先从视觉、状态和动作数据恢复场景、目标或运动表征
 - 评测原始出处：[原文 / 项目页](（见原文）)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-04-generative-language-trajectory.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**EMOTION 的定位是「表达性动作序列生成」：用 in-context learning 产出人形可执行的动作序列，并把生成与控制放在同一条链路上，而不是追求 loco-manip 的负载或接触性能。**
+
+- 真正的机制点是链路不断裂：策略网络与控制模块同处一条训练/部署链，减少高层目标到低层动作之间的断点。
+- 归入 04 类（[生成式运动、语言控制与轨迹规划](../overview/loco-manip-161-category-04-generative-language-trajectory.md)），评价重心在动作的可表达性与可执行性。
+- 边界最需注意：本页为索引级摘录，机构与项目页字段均为「见原文」，量化评测缺失，任何引用都必须回到原文 PDF。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

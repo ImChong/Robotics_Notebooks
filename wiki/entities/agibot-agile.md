@@ -4,6 +4,7 @@ tags: [agibot, perception, whole-body-control, visuomotor]
 status: complete
 updated: 2026-06-26
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../overview/agibot-june-2026-release-technology-map.md
   - ../overview/agibot-release-category-05-body-foundations.md
   - ./agibot-bfm-2.md

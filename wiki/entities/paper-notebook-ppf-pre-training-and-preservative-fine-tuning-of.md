@@ -46,6 +46,14 @@ PPF 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页的价值不在讲清 PPF 的方法，而在占住知识图谱中的这个节点：它是「待深读」占位实体，任何方法性结论目前都没有本地依据。**
+
+- 页面已确定的只有三件事：论文归入 05_Locomotion、已进入 Paper Notebooks 的 PROGRESS.md 待深读清单、arXiv 编号 2504.09833。
+- 「实验与评测」一节明确留空，因此本页不应被引用为任何量化指标、消融或实机结论的出处。
+- 当前正确用法是当路由节点：上溯 [05_Locomotion 分类父节点](../overview/paper-notebook-category-05-locomotion.md) 与 [总索引](../overview/humanoid-paper-notebooks-index.md)，细节直接走 arXiv 原文；深读笔记落地后本页应升格重写。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

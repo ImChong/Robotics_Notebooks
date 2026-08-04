@@ -59,6 +59,14 @@ sources:
 - 评测原始出处：[原文 / 项目页](https://leungchaos.github.io/Humanoid-Whole-Body-Manipulation-via-Active-Spatial-Brain-and-Generalizable-Action-Cerebellum/)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-09-vla-world-models.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**这篇用「大脑-小脑」分工来组织人形全身操作：空间大脑负责把语言与视觉组织成空间表征，动作小脑负责把目标变成可执行全身动作，二者在同一条训练/部署链路上。**
+
+- 真正的主张是减少断点：策略网络与控制模块不分家，高层目标到低层动作之间不再靠人工接口拼接。
+- 命名点出两条卖点——空间侧强调「主动」，动作侧强调「可泛化」；本页只给到这一层，实现细节需回原文。
+- 边界：输入侧本页只列了语言指令与图像/多视角观测；量化 benchmark 与实机指标以 [项目页](https://leungchaos.github.io/Humanoid-Whole-Body-Manipulation-via-Active-Spatial-Brain-and-Generalizable-Action-Cerebellum/) 为准。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

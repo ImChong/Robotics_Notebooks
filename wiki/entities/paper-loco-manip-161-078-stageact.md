@@ -59,6 +59,15 @@ StageACT 主要解决数据闭环：用相机图像/多视角观测、本体状�
 - 评测原始出处：[原文 / 项目页](https://icradooropen.github.io/icradooropen/)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-03-visuomotor.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**StageACT 给模仿学习加了一个阶段变量：把开门这类分段明确的长流程按 stage 条件化，用结构先验换执行鲁棒性。**
+
+- 起作用的是 stage 条件化叠加条件生成：以 ACT/行为克隆为骨架，用扩散/流匹配在多模态动作分布里采样可执行轨迹，VLM 语义规划/路由承担上层。
+- 适用边界由任务形态决定：它验证在人形开门这一具体流程上，前提是阶段划分清晰；阶段难以界定的任务不宜直接套用这一先验。
+- 数据闭环是它的另一半：多视角观测 + 本体状态 + 遥操作/外骨骼数据构成训练语料，策略质量与遥操作数据质量绑定。
+- 本页为 161 篇 **#078/161** 索引级摘录，量化 benchmark 与实机指标以 [原文 / 项目页](https://icradooropen.github.io/icradooropen/) 为准。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

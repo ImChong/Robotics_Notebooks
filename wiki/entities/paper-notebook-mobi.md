@@ -47,6 +47,14 @@ Mobi-π 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是尚未深读的占位实体：Mobi-π 在图谱中已有节点，但本页还不提供任何可引用的技术结论。**
+
+- 该条目已列入 Paper Notebooks 的 progress 待深读清单，分类为 04_Loco-Manipulation_and_WBC，可从总索引与分类父节点检索到。
+- 深读笔记尚未撰写，本页不含机制拆解、量化 benchmark 或实机指标；需要判断这篇工作请直接回到 arXiv 原文。
+- 升格路径清晰：笔记写入计划文件夹后，本页应链向笔记站并深化归纳。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

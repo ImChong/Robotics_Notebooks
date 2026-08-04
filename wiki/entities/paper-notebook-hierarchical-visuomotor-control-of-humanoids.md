@@ -46,6 +46,14 @@ Hierarchical visuomotor control of humanoids 的人形机器人学习论文条�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是分层视觉运动控制这条线的阅读进度占位，不是方法归纳：页面里可确定的只有它被归入物理动画分类与论文入口，层级如何划分、视觉如何接入控制都待深读笔记补齐。**
+
+- 页面正文未给出任何方法、指标或消融，「实验与评测」已明确标注待笔记完成后补充。
+- 适用边界：可用于按 13_Physics-Based_Animation 分类检索与追踪阅读进度，不可当作该工作的结论来引用。
+- 后续动作是升格而非改写：笔记完成后本页应链向笔记站并深化归纳，成为完整索引实体。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)

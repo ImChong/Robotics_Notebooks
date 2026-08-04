@@ -235,17 +235,194 @@
     return out.join('\n');
   }
 
+  // 首页 Hero 规模数字：每次进入/刷新 count-up（尊重 prefers-reduced-motion）
+  // 内联脚本已在首屏前归零；此处立刻用 data-fallback 开播，fetch 只修正终值、不从 0 重播
+  var heroStatsCountUpEnabled = null;
+  var heroStatsCountUpFallbacks = null;
+  var heroStatsAnimators = null;
+
+  function prefersReducedMotionQuery() {
+    try {
+      return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    } catch {
+      return false;
+    }
+  }
+
+  function shouldPlayHeroStatsCountUp() {
+    return !prefersReducedMotionQuery();
+  }
+
+  function getHeroStatsCountUpEnabled() {
+    if (heroStatsCountUpEnabled !== null) return heroStatsCountUpEnabled;
+    heroStatsCountUpEnabled = shouldPlayHeroStatsCountUp();
+    return heroStatsCountUpEnabled;
+  }
+
+  function easeOutCubic(t) {
+    return 1 - Math.pow(1 - t, 3);
+  }
+
+  function parseHeroStatNumber(el, fallback) {
+    if (!el) return fallback;
+    var n = parseInt(String(el.textContent || '').replace(/[^\d]/g, ''), 10);
+    return Number.isFinite(n) ? n : fallback;
+  }
+
+  function readHeroStatFallback(el, fallback) {
+    if (!el) return fallback;
+    var raw = el.getAttribute('data-fallback');
+    if (raw != null && String(raw).trim() !== '') {
+      var fromData = parseInt(String(raw).replace(/[^\d]/g, ''), 10);
+      if (Number.isFinite(fromData)) return fromData;
+    }
+    return parseHeroStatNumber(el, fallback);
+  }
+
+  function animateCountUp(el, target, options) {
+    options = options || {};
+    var duration = typeof options.duration === 'number' ? options.duration : 1100;
+    var end = Math.max(0, Math.round(Number(target) || 0));
+    var cancelled = false;
+    var finished = false;
+    var rafId = 0;
+    var startTs = null;
+    var lastShown = -1;
+
+    el.classList.remove('is-count-pending');
+    el.classList.add('is-counting');
+    el.style.minWidth = Math.max(String(end).length, 1) + 'ch';
+    el.textContent = '0';
+    lastShown = 0;
+
+    function finish() {
+      if (cancelled || finished) return;
+      finished = true;
+      if (lastShown !== end) {
+        el.textContent = String(end);
+        lastShown = end;
+      }
+      el.classList.remove('is-counting');
+    }
+
+    function frame(now) {
+      if (cancelled) return;
+      if (startTs === null) startTs = now;
+      var t = Math.min(1, (now - startTs) / duration);
+      var value = Math.round(end * easeOutCubic(t));
+      if (value !== lastShown) {
+        el.textContent = String(value);
+        lastShown = value;
+      }
+      if (t < 1) {
+        rafId = requestAnimationFrame(frame);
+      } else {
+        finish();
+      }
+    }
+
+    rafId = requestAnimationFrame(frame);
+
+    return {
+      setTarget: function (next) {
+        end = Math.max(0, Math.round(Number(next) || 0));
+        el.style.minWidth = Math.max(String(end).length, 1) + 'ch';
+        if (finished) {
+          el.textContent = String(end);
+          lastShown = end;
+        }
+      },
+      cancel: function () {
+        cancelled = true;
+        if (rafId) cancelAnimationFrame(rafId);
+        el.classList.remove('is-counting');
+      }
+    };
+  }
+
+  function setHeroStatStatic(el, value) {
+    if (!el) return;
+    var end = Math.max(0, Math.round(Number(value) || 0));
+    el.textContent = String(end);
+    el.classList.remove('is-counting', 'is-count-pending');
+    el.style.minWidth = '';
+  }
+
+  // 立刻用 HTML/data-fallback 开播，不等 home-stats；避免停在 0 等待网络
+  function initHeroStatCountUp() {
+    var nodeEl = document.getElementById('heroNodeCount');
+    var edgeEl = document.getElementById('heroEdgeCount');
+    var mainEl = document.getElementById('heroMainRouteCount');
+    var depthEl = document.getElementById('heroDepthRouteCount');
+    if (!nodeEl && !edgeEl && !mainEl && !depthEl) return;
+
+    heroStatsCountUpFallbacks = {
+      nodes: readHeroStatFallback(nodeEl, 0),
+      edges: readHeroStatFallback(edgeEl, 0),
+      main: readHeroStatFallback(mainEl, 1),
+      depth: readHeroStatFallback(depthEl, 21)
+    };
+
+    if (!getHeroStatsCountUpEnabled()) {
+      setHeroStatStatic(nodeEl, heroStatsCountUpFallbacks.nodes);
+      setHeroStatStatic(edgeEl, heroStatsCountUpFallbacks.edges);
+      setHeroStatStatic(mainEl, heroStatsCountUpFallbacks.main);
+      setHeroStatStatic(depthEl, heroStatsCountUpFallbacks.depth);
+      return;
+    }
+
+    heroStatsAnimators = {};
+    if (nodeEl) heroStatsAnimators.nodes = animateCountUp(nodeEl, heroStatsCountUpFallbacks.nodes);
+    if (edgeEl) heroStatsAnimators.edges = animateCountUp(edgeEl, heroStatsCountUpFallbacks.edges);
+    if (mainEl) heroStatsAnimators.main = animateCountUp(mainEl, heroStatsCountUpFallbacks.main);
+    if (depthEl) heroStatsAnimators.depth = animateCountUp(depthEl, heroStatsCountUpFallbacks.depth);
+  }
+
   function renderHomeStats(graphStats) {
     var heroNodeCount = document.getElementById('heroNodeCount');
     var heroEdgeCount = document.getElementById('heroEdgeCount');
+    var heroMainRouteCount = document.getElementById('heroMainRouteCount');
+    var heroDepthRouteCount = document.getElementById('heroDepthRouteCount');
     var wikiSearchSubtitle = document.getElementById('wikiSearchSubtitle');
-    if (!heroNodeCount && !heroEdgeCount && !wikiSearchSubtitle) return;
+    if (!heroNodeCount && !heroEdgeCount && !wikiSearchSubtitle && !heroMainRouteCount && !heroDepthRouteCount) {
+      return;
+    }
 
     var nodeCount = graphStats && typeof graphStats.node_count === 'number' ? graphStats.node_count : null;
     var edgeCount = graphStats && typeof graphStats.edge_count === 'number' ? graphStats.edge_count : null;
+    var play = getHeroStatsCountUpEnabled();
+    var fallbacks = heroStatsCountUpFallbacks;
+    var anim = heroStatsAnimators;
 
-    if (heroNodeCount && nodeCount !== null) heroNodeCount.textContent = String(nodeCount);
-    if (heroEdgeCount && edgeCount !== null) heroEdgeCount.textContent = String(edgeCount);
+    function applyStat(el, key, target) {
+      if (!el) return;
+      if (play && anim && anim[key]) {
+        anim[key].setTarget(target);
+        return;
+      }
+      setHeroStatStatic(el, target);
+    }
+
+    if (heroNodeCount) {
+      var nodeTarget = nodeCount !== null
+        ? nodeCount
+        : (fallbacks ? fallbacks.nodes : parseHeroStatNumber(heroNodeCount, 0));
+      applyStat(heroNodeCount, 'nodes', nodeTarget);
+    }
+    if (heroEdgeCount) {
+      var edgeTarget = edgeCount !== null
+        ? edgeCount
+        : (fallbacks ? fallbacks.edges : parseHeroStatNumber(heroEdgeCount, 0));
+      applyStat(heroEdgeCount, 'edges', edgeTarget);
+    }
+    if (heroMainRouteCount) {
+      var mainTarget = fallbacks ? fallbacks.main : parseHeroStatNumber(heroMainRouteCount, 1);
+      if (play || fallbacks) applyStat(heroMainRouteCount, 'main', mainTarget);
+    }
+    if (heroDepthRouteCount) {
+      var depthTarget = fallbacks ? fallbacks.depth : parseHeroStatNumber(heroDepthRouteCount, 21);
+      if (play || fallbacks) applyStat(heroDepthRouteCount, 'depth', depthTarget);
+    }
     if (wikiSearchSubtitle && nodeCount !== null) {
       wikiSearchSubtitle.textContent = '在 ' + nodeCount + ' 个知识节点中快速定位概念、方法或任务。↑↓ 键导航，Enter 打开，Esc 清空。';
     }
@@ -311,6 +488,23 @@
   function renderUpdatesItemRepoStar(meta) {
     if (!meta || !meta.has_repo) return '';
     return '<span class="updates-item-opensource" aria-label="含开源仓库" title="含开源仓库">⭐️</span>';
+  }
+
+  // 详情页标题：有 sources/repos 关联时在标题末尾加 ⭐️（与列表行同口径）
+  function detailPageHasRepo(detailPage) {
+    if (!detailPage) return false;
+    if (detailPage.has_repo) return true;
+    return /(?:\.\.\/)*sources\/repos\/[^)\s]+\.md\b/.test(detailPage.content_markdown || '');
+  }
+
+  function renderDetailTitleWithRepoStar(titleEl, titleText, hasRepo) {
+    if (!titleEl) return;
+    var text = titleText || '';
+    if (hasRepo) {
+      titleEl.innerHTML = escapeHtml(text) + renderUpdatesItemRepoStar({ has_repo: true });
+    } else {
+      titleEl.textContent = text;
+    }
   }
 
   function renderUpdatesItemCommunityCat(meta) {
@@ -1717,34 +1911,34 @@
     var size = Math.max(11, Math.round(fontSizePx || getMermaidFontSizePx()));
     var fontSize = String(size) + 'px';
     var lightThemeVars = {
-      primaryColor: '#ECE8F8',
-      primaryTextColor: '#1a1a2e',
-      primaryBorderColor: '#9B89C7',
-      lineColor: '#444',
-      secondaryColor: '#F5F0FF',
-      tertiaryColor: '#FFFFFF',
-      mainBkg: '#ECE8F8',
-      nodeBorder: '#9B89C7',
-      clusterBkg: '#F5F0FF',
-      clusterBorder: '#9B89C7',
-      edgeLabelBackground: '#FFFFFF',
-      titleColor: '#1a1a2e',
+      primaryColor: '#eaf1fb',
+      primaryTextColor: '#37352f',
+      primaryBorderColor: '#7ea9e8',
+      lineColor: '#787774',
+      secondaryColor: '#f4f8fd',
+      tertiaryColor: '#ffffff',
+      mainBkg: '#eaf1fb',
+      nodeBorder: '#7ea9e8',
+      clusterBkg: '#f4f8fd',
+      clusterBorder: '#7ea9e8',
+      edgeLabelBackground: '#ffffff',
+      titleColor: '#37352f',
       fontFamily: 'inherit',
       fontSize: fontSize
     };
     var darkThemeVars = {
-      primaryColor: '#0d0d0d',
-      primaryTextColor: '#ffffff',
-      primaryBorderColor: '#ffffff',
-      lineColor: '#cccccc',
-      secondaryColor: '#161616',
-      tertiaryColor: '#0d0d0d',
-      mainBkg: '#0d0d0d',
-      nodeBorder: '#ffffff',
-      clusterBkg: '#161616',
-      clusterBorder: '#ffffff',
-      edgeLabelBackground: '#0d0d0d',
-      titleColor: '#ffffff',
+      primaryColor: '#191919',
+      primaryTextColor: '#e8e8e4',
+      primaryBorderColor: '#e8e8e4',
+      lineColor: '#9b9a97',
+      secondaryColor: '#222222',
+      tertiaryColor: '#191919',
+      mainBkg: '#191919',
+      nodeBorder: '#e8e8e4',
+      clusterBkg: '#222222',
+      clusterBorder: '#e8e8e4',
+      edgeLabelBackground: '#191919',
+      titleColor: '#e8e8e4',
       fontFamily: 'inherit',
       fontSize: fontSize
     };
@@ -4218,20 +4412,22 @@
     link.hidden = false;
   }
 
-  // 路线徽标：复用 graph.html 的纵深命中规则（depth-filters.js），rowId 可复用于路线页等。
-  function renderMetaDepthBadges(currentPath, rowId) {
+  // 路线徽标：复用 graph.html 的命中规则（depth-filters.js）。
+  // 详情页标签「所属路线」；路线页元信息标签「路线视图」——功能相同，均跳转 graph.html?depth=。
+  function renderMetaDepthBadges(currentPath, rowId, labelText) {
     var depthRowId = rowId || 'detailMetaDepth';
+    var rowLabel = labelText || '所属路线';
     var TF = window.RNDepthFilters;
     if (!TF || !currentPath) {
-      renderDetailMetaItemRow(depthRowId, '所属路线', '');
+      renderDetailMetaItemRow(depthRowId, rowLabel, '');
       return Promise.resolve();
     }
 
     return fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
       var node = (gd.nodes || []).find(function (n) { return n.id === currentPath; });
-      if (!node) { renderDetailMetaItemRow(depthRowId, '所属路线', ''); return; }
+      if (!node) { renderDetailMetaItemRow(depthRowId, rowLabel, ''); return; }
       var topics = TF.depthsForNode({ id: node.id, community: node.community });
-      if (!topics.length) { renderDetailMetaItemRow(depthRowId, '所属路线', ''); return; }
+      if (!topics.length) { renderDetailMetaItemRow(depthRowId, rowLabel, ''); return; }
 
       // ⚡ Bolt Optimization: Replace .map().join('') with string concatenation in for loop
       // Expected impact: Eliminates closure creation and array allocation during layout generation.
@@ -4244,8 +4440,8 @@
           '<span>' + meta.emoji + '</span><span>' + escapeHtml(meta.label) + '</span></a>';
       }
 
-      renderDetailMetaItemRow(depthRowId, '所属路线', html);
-    }).catch(function () { renderDetailMetaItemRow(depthRowId, '所属路线', ''); });
+      renderDetailMetaItemRow(depthRowId, rowLabel, html);
+    }).catch(function () { renderDetailMetaItemRow(depthRowId, rowLabel, ''); });
   }
 
   function renderDetailTopicBadges(detailPage) {
@@ -4384,16 +4580,104 @@
     }
 
     renderDetailMetaItemRow('roadmapMetaCommunity', '所属社区', '');
-    renderDetailMetaItemRow('roadmapMetaDepth', '所属路线', '');
+    renderDetailMetaItemRow('roadmapMetaDepth', '路线视图', '');
     renderDetailMetaItemRow('roadmapMetaInstitution', '所属机构', '');
     if (metaEl) removeLoadingState(metaEl);
 
     var graphPath = detail.path || (roadmapPage && roadmapPage.path) || '';
     return Promise.all([
       renderMetaCommunityBadge(graphPath, 'roadmapMetaCommunity'),
-      renderMetaDepthBadges(graphPath, 'roadmapMetaDepth'),
+      renderMetaDepthBadges(graphPath, 'roadmapMetaDepth', '路线视图'),
       renderMetaInstitutionBadges(graphPath, 'roadmapMetaInstitution')
     ]);
+  }
+
+  // 详情页「正文内链 ↔ 关联知识图谱迷你图」联动桥：
+  // 两侧渲染时机不同（正文同步、迷你图等 link-graph.json），各自注册回调，未就绪的一侧静默跳过。
+  var detailLinkBridge = {
+    highlightMiniNode: null,
+    highlightBodyLink: null,
+    graphNodeOf: null
+  };
+
+  function detailBridgeHighlightMini(path) {
+    if (detailLinkBridge.highlightMiniNode) detailLinkBridge.highlightMiniNode(path || '');
+  }
+
+  function detailBridgeHighlightBody(path) {
+    if (detailLinkBridge.highlightBodyLink) detailLinkBridge.highlightBodyLink(path || '');
+  }
+
+  function buildDetailInlineLinkTooltipHtml(pageId, page) {
+    var isRoadmap = page.type === 'roadmap_page';
+    var href = isRoadmap ? roadmapHref(pageId) : detailHref(pageId);
+    var linkHtml = '<a class="tt-link" href="' + escapeHtml(href) + '">' +
+      (isRoadmap ? '打开路线页 →' : '打开详情页 →') + '</a>';
+    // 图谱节点类型（concept / task / paper…）比 site-data 的 wiki_page 更细，
+    // 取到就用它，保证同一节点在正文浮窗与迷你图浮窗上徽标一致
+    var graphNode = detailLinkBridge.graphNodeOf ? detailLinkBridge.graphNodeOf(page.path || '') : null;
+    if (window.RNGraphTooltip && window.RNGraphTooltip.buildNodeTooltipHtml) {
+      return window.RNGraphTooltip.buildNodeTooltipHtml({
+        type: (graphNode && graphNode.type) || page.type || '',
+        title: page.title || pageId,
+        summary: formatGraphTooltipSummary(page.summary),
+        communityColor: (graphNode && graphNode.communityColor) || '',
+        linkHtml: linkHtml
+      });
+    }
+    return '';
+  }
+
+  // 正文内链悬停浮窗：复用图谱 hover 卡片，同时点亮迷你图中的同一节点
+  function setupDetailInlineLinkPreview(contentEl, detailPages) {
+    if (!contentEl) return;
+    var anchors = contentEl.querySelectorAll('a[href^="detail.html?id="], a[href^="roadmap.html?id="]');
+    var marked = [];
+    for (var i = 0; i < anchors.length; i++) {
+      var anchor = anchors[i];
+      var matched = /^(?:detail|roadmap)\.html\?id=([^&#]+)/.exec(anchor.getAttribute('href') || '');
+      if (!matched) continue;
+      var pid = decodeURIComponent(matched[1]);
+      var page = detailPages[pid];
+      if (!page || !page.path) continue;
+      anchor.classList.add('detail-inline-link');
+      anchor.dataset.wikiId = pid;
+      anchor.dataset.wikiPath = page.path;
+      marked.push(anchor);
+    }
+    if (!marked.length) return;
+
+    detailLinkBridge.highlightBodyLink = function (path) {
+      for (var k = 0; k < marked.length; k++) {
+        marked[k].classList.toggle('detail-inline-link-linked', !!path && marked[k].dataset.wikiPath === path);
+      }
+    };
+
+    var tooltipEl = document.getElementById('detail-inline-link-tooltip');
+    if (!tooltipEl) return;
+    var hoverTip = setupGraphHoverTooltip(tooltipEl);
+    if (hoverTip.isMobile) return; // 触屏无 hover，点击内链直接跳转即可
+
+    function inlineLinkOf(ev) {
+      return ev.target && ev.target.closest ? ev.target.closest('a.detail-inline-link') : null;
+    }
+
+    contentEl.addEventListener('mouseover', function (ev) {
+      var link = inlineLinkOf(ev);
+      if (!link) return;
+      hoverTip.show(ev, null, buildDetailInlineLinkTooltipHtml(link.dataset.wikiId, detailPages[link.dataset.wikiId] || {}));
+      detailBridgeHighlightMini(link.dataset.wikiPath);
+    });
+    contentEl.addEventListener('mousemove', function (ev) {
+      if (inlineLinkOf(ev)) hoverTip.move(ev);
+    });
+    contentEl.addEventListener('mouseout', function (ev) {
+      var link = inlineLinkOf(ev);
+      if (!link) return;
+      if (ev.relatedTarget && link.contains(ev.relatedTarget)) return;
+      hoverTip.hide();
+      detailBridgeHighlightMini('');
+    });
   }
 
   function renderDetailMiniMap(detailPage, detailPages) {
@@ -4419,6 +4703,16 @@
       var current = nodeMap[currentPath];
       if (!current) return; // 当前节点不在图谱里
 
+      // 正文内链浮窗共用图谱节点类型与社区色，保证同一节点两处徽标一致
+      detailLinkBridge.graphNodeOf = function (path) {
+        var node = nodeMap[path];
+        if (!node) return null;
+        return {
+          type: node.type || '',
+          communityColor: (node.community && communityColor[node.community]) || ''
+        };
+      };
+
       // 节点半径继承 graph view 的标尺（graph-node-size.js），度数基准为全图
       var degreeMap = window.RNGraphNodeSize.computeDegreeMap(gd.edges);
       var maxDegree = window.RNGraphNodeSize.maxDegreeOf(degreeMap);
@@ -4432,11 +4726,15 @@
       var neighborIds = Object.keys(neighborSet).filter(function (id) {
         return id !== currentPath && nodeMap[id];
       });
+      // 按全图度数（=节点大小）降序；同度数再按中文 label，保证稳定
       neighborIds.sort(function (a, b) {
+        var da = degreeMap[a] || 0;
+        var db = degreeMap[b] || 0;
+        if (db !== da) return db - da;
         return String(nodeMap[a].label || a).localeCompare(String(nodeMap[b].label || b), 'zh-CN');
       });
-      // 限制最多 12 个邻居，避免拥挤
-      var MAX_NEIGHBORS = 12;
+      // 低度数全显示；高度数取规模 Top-K，避免 180px 迷你图拥挤
+      var MAX_NEIGHBORS = 16;
       if (neighborIds.length > MAX_NEIGHBORS) neighborIds = neighborIds.slice(0, MAX_NEIGHBORS);
 
       wrap.hidden = false;
@@ -4477,6 +4775,26 @@
         return base * (scale || 1);
       }
 
+      // 近 = 重要：邻居半径归一化到 [0,1]，用于弹簧距离/强度
+      function neighborImportanceT(d) {
+        var rMin = window.RNGraphNodeSize.R_MIN;
+        var rMax = window.RNGraphNodeSize.R_MAX;
+        var r = window.RNGraphNodeSize.radiusForDegree(d._degree || 0, maxDegree);
+        var t = (r - rMin) / (rMax - rMin || 1);
+        if (t < 0) t = 0;
+        if (t > 1) t = 1;
+        return t;
+      }
+
+      // 星图边恒为 current → neighbor；兼容 forceLink 解析前后的 id / 节点对象
+      function linkNeighborNode(link) {
+        var t = link.target;
+        if (t && typeof t === 'object') return t;
+        for (var i = 0; i < nodes.length; i++) {
+          if (nodes[i].id === t) return nodes[i];
+        }
+        return { _degree: 0 };
+      }
 
       svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
       svgEl.innerHTML = '';
@@ -4498,7 +4816,15 @@
       svg.call(zoom).on('dblclick.zoom', null);
 
       var sim = window.d3.forceSimulation(nodes)
-        .force('link', window.d3.forceLink(edges).id(function (d) { return d.id; }).distance(54).strength(0.5))
+        .force('link', window.d3.forceLink(edges).id(function (d) { return d.id; })
+          .distance(function (link) {
+            // 大邻居更短弹簧（约 40–72）
+            return 72 - neighborImportanceT(linkNeighborNode(link)) * 32;
+          })
+          .strength(function (link) {
+            // 大邻居更强吸引（约 0.35–0.85）
+            return 0.35 + neighborImportanceT(linkNeighborNode(link)) * 0.5;
+          }))
         .force('charge', window.d3.forceManyBody().strength(-160).distanceMax(220))
         .force('center', window.d3.forceCenter(W / 2, H / 2).strength(0.12))
         .force('collision', window.d3.forceCollide().radius(function (d) { return detailMiniNodeRadius(d) + 8; }).strength(0.7))
@@ -4527,6 +4853,7 @@
           if (pid) window.location.href = pageHref(pid, detailPages);
         })
         .on('mouseenter', function (ev, d) {
+          detailBridgeHighlightBody(d.isCurrent ? '' : d.id);
           if (hoverTip.isMobile) return;
           window.d3.select(this).select('circle')
             .attr('fill-opacity', 1)
@@ -4538,12 +4865,18 @@
           if (!hoverTip.isMobile || !hoverTip.getPinned()) hoverTip.move(ev);
         })
         .on('mouseleave', function () {
+          detailBridgeHighlightBody('');
           if (hoverTip.isMobile) return;
           window.d3.select(this).select('circle')
             .attr('fill-opacity', 0.9)
             .attr('r', function (node) { return detailMiniNodeRadius(node); });
           if (!hoverTip.isMobile || !hoverTip.getPinned()) hoverTip.hide();
         });
+
+      // 正文内链悬停时点亮迷你图中的同一节点
+      detailLinkBridge.highlightMiniNode = function (path) {
+        nodeG.classed('mini-node-linked', function (d) { return !!path && d.id === path; });
+      };
 
       nodeG.append('circle')
         .attr('r', function (d) { return detailMiniNodeRadius(d); })
@@ -4584,7 +4917,11 @@
       var totalDeg = Object.keys(neighborSet).length;
       var shown = neighborIds.length;
       if (metaEl) {
-        metaEl.textContent = shown + ' / ' + totalDeg + ' 个 1-hop 邻居 · 悬停预览 · 拖拽平移 · 点击跳转';
+        if (shown < totalDeg) {
+          metaEl.textContent = '规模最大的 ' + shown + ' / ' + totalDeg + ' 个 1-hop 邻居（近=重要）· 悬停预览 · 拖拽平移 · 点击跳转';
+        } else {
+          metaEl.textContent = shown + ' 个 1-hop 邻居（近=重要）· 悬停预览 · 拖拽平移 · 点击跳转';
+        }
       }
       if (allNeighborsLink) {
         if (totalDeg > 0) {
@@ -4706,7 +5043,7 @@
       return /^type:\s*[\w-]+[。.]?$/i.test(String(summary || '').trim());
     }
 
-    if (titleEl) titleEl.textContent = detailPage.title || detailId;
+    renderDetailTitleWithRepoStar(titleEl, detailPage.title || detailId, detailPageHasRepo(detailPage));
     if (summaryEl) {
       const summaryText = detailPage.summary || '';
       if (summaryText && !isMetadataOnlySummary(summaryText)) {
@@ -4781,6 +5118,7 @@
       });
       scrollToDetailHashTarget(contentEl);
       notifyTocSpyScrollSync();
+      setupDetailInlineLinkPreview(contentEl, detailPages);
       removeLoadingState(contentEl);
     }
 
@@ -5756,6 +6094,7 @@
   }
 
   if (homeStatsRoot) {
+    initHeroStatCountUp();
     var homeStatsFetch = fetch('exports/home-stats.json').then(function (response) {
       if (!response.ok) throw new Error('HTTP ' + response.status);
       return response.json();
@@ -5773,13 +6112,19 @@
     Promise.all([homeStatsFetch, wikiActivityFetch])
       .then(function (results) {
         var stats = results[0];
+        // 轻量：只修正 count-up 终值，不重启动画
         renderHomeStats(stats);
-        renderHotTopics(stats);
-        renderHomeHubs(stats);
-        renderLatestWikiNode(stats, results[1]);
+        // 重 DOM（热门/枢纽/最新节点）延后，避免与数字翻滚抢主线程造成卡顿
+        window.setTimeout(function () {
+          renderHotTopics(stats);
+          renderHomeHubs(stats);
+          renderLatestWikiNode(stats, results[1]);
+        }, 0);
       })
       .catch(function (error) {
         console.warn('Home stats sync failed:', error);
+        // 统计失败时动画已用 HTML fallback 在跑；此处无需重播
+        renderHomeStats(null);
         var failedMounts = [
           document.getElementById('homeLatestWikiModule'),
           document.getElementById('homeHubPanelAll')
@@ -5814,36 +6159,346 @@
   // ── 首页「更多路线」折叠：默认只展示里程碑最新的 4 条纵深路线 ──────────────
   var routeToggle = document.getElementById('homeRouteToggle');
   var routeLinks = document.getElementById('homeRouteLinks');
-  if (routeToggle) {
-    routeToggle.addEventListener('click', function () {
-      var expanded = routeToggle.getAttribute('aria-expanded') === 'true';
-      var extras = document.querySelectorAll('#homeRouteLinks [data-route-extra]');
-      for (var rti = 0; rti < extras.length; rti++) {
-        extras[rti].hidden = expanded;
+  var mainRouteCount = document.getElementById('heroMainRouteCount');
+  var depthRouteCount = document.getElementById('heroDepthRouteCount');
+  var mainRouteCard = document.getElementById('home-start-main-route');
+  var moreRoutesCard = document.getElementById('home-more-routes');
+  var BORDER_TRACE_MS = 2400;
+  var TOGGLE_HINT_MS = 1800;
+  // 目标接近落点即开启动画，避免干等 scrollend / 长 fallback 造成「点一下卡住」
+  var SCROLL_ALIGN_TOLERANCE_PX = 56;
+  var SCROLL_ALIGN_FALLBACK_MS = 420;
+  var prefersReducedMotion = false;
+  try {
+    prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  } catch {
+    prefersReducedMotion = false;
+  }
+  // 搜索索引预取钩子：搜索模块初始化后替换；供入口卡 pointerdown / idle 调用
+  var prefetchWikiSearchIndex = function () {};
+
+  function setHomeRoutesExpanded(expanded) {
+    if (!routeToggle) return;
+    var extras = document.querySelectorAll('#homeRouteLinks [data-route-extra]');
+    for (var rti = 0; rti < extras.length; rti++) {
+      extras[rti].hidden = !expanded;
+    }
+    routeToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    routeToggle.textContent = expanded ? '收起纵深路线 ↑' : '展开全部 21 条纵深路线 ↓';
+    if (routeLinks) {
+      routeLinks.classList.toggle('is-expanded', !!expanded);
+    }
+  }
+
+  function playCardBorderTrace(card, onDone) {
+    if (!card) {
+      if (onDone) onDone();
+      return;
+    }
+    var finished = false;
+    // 取消上一轮尚未挂载的 rAF 描边，避免连点叠多个 SVG
+    var traceGen = (card._homeBorderTraceGen || 0) + 1;
+    card._homeBorderTraceGen = traceGen;
+    var prevSvg = card.querySelector('.home-border-trace-svg');
+    if (prevSvg) prevSvg.remove();
+
+    // 绝对定位含块是 padding edge，而可见描边应对齐 border-box。
+    // 旧实现用 offsetWidth 画 viewBox、CSS 用 padding-box 的 inset/% 定尺寸，
+    // 在亚像素宽度与各分辨率下会左右/上下不对称外扩并缩放错位。
+    var pad = 2;
+    var stroke = 2.5;
+    var inset = stroke / 2;
+    // 图谱预览等模块常带 overflow:hidden，描边外扩时需临时放开以免被裁切
+    var prevOverflow = card.style.overflow;
+    var overflowWasForced = false;
+
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('class', 'home-border-trace-svg');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+
+    var rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    rect.setAttribute('pathLength', '100');
+    svg.appendChild(rect);
+
+    function layoutTraceSvg(style) {
+      style = style || window.getComputedStyle(card);
+      var bl = parseFloat(style.borderLeftWidth) || 0;
+      var bt = parseFloat(style.borderTopWidth) || 0;
+      var box = card.getBoundingClientRect();
+      var bw = Math.max(box.width, 0);
+      var bh = Math.max(box.height, 0);
+      var w = Math.max(bw + pad * 2, 1);
+      var h = Math.max(bh + pad * 2, 1);
+      var cardRadius = parseFloat(style.borderTopLeftRadius) || 12;
+      var radius = Math.min(cardRadius + pad, w / 2, h / 2);
+
+      svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+      // 相对 padding edge 左移 border+pad，使 SVG 对称外扩于 border-box
+      svg.style.left = (-bl - pad) + 'px';
+      svg.style.top = (-bt - pad) + 'px';
+      svg.style.width = w + 'px';
+      svg.style.height = h + 'px';
+
+      rect.setAttribute('x', String(inset));
+      rect.setAttribute('y', String(inset));
+      rect.setAttribute('width', String(Math.max(w - stroke, 0)));
+      rect.setAttribute('height', String(Math.max(h - stroke, 0)));
+      rect.setAttribute('rx', String(radius));
+      rect.setAttribute('ry', String(radius));
+    }
+
+    function finish(fromCancel) {
+      if (finished) return;
+      finished = true;
+      if (card._homeBorderTraceGen === traceGen) {
+        card.classList.remove('is-border-tracing');
       }
-      routeToggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-      routeToggle.textContent = expanded ? '展开全部 21 条纵深路线 ↓' : '收起纵深路线 ↑';
-      if (routeLinks) {
-        routeLinks.classList.toggle('is-expanded', !expanded);
+      if (overflowWasForced) {
+        if (prevOverflow) card.style.overflow = prevOverflow;
+        else card.style.removeProperty('overflow');
       }
+      if (resizeObserver) {
+        try { resizeObserver.disconnect(); } catch { /* ignore */ }
+        resizeObserver = null;
+      }
+      if (svg.parentNode) svg.parentNode.removeChild(svg);
+      rect.removeEventListener('animationend', onAnimEnd);
+      window.clearTimeout(fallbackTimer);
+      if (onDone && !fromCancel) onDone();
+    }
+    function onAnimEnd(event) {
+      if (event.animationName === 'home-border-trace-dash') finish(false);
+    }
+
+    var resizeObserver = null;
+    var fallbackTimer = 0;
+    card.classList.add('is-border-tracing');
+
+    // 推迟到下一帧再读样式/挂载 SVG，避免与 scrollIntoView 首帧抢主线程造成点击卡顿
+    requestAnimationFrame(function () {
+      if (finished || card._homeBorderTraceGen !== traceGen) {
+        finish(true);
+        return;
+      }
+      var style = window.getComputedStyle(card);
+      if (style.overflow !== 'visible') {
+        card.style.overflow = 'visible';
+        overflowWasForced = true;
+      }
+      layoutTraceSvg(style);
+      card.appendChild(svg);
+      if (typeof ResizeObserver !== 'undefined') {
+        resizeObserver = new ResizeObserver(function () {
+          if (!finished && card._homeBorderTraceGen === traceGen) layoutTraceSvg();
+        });
+        resizeObserver.observe(card);
+      }
+      rect.addEventListener('animationend', onAnimEnd);
+      fallbackTimer = window.setTimeout(function () { finish(false); }, BORDER_TRACE_MS);
     });
   }
 
-  // ── Wiki 全文搜索（index.html 搜索框） ────────────────────────────────────
+  /** 描边结束后对 CTA 文案闪两下（纵深「展开…」/ 图谱「打开完整图谱」共用） */
+  function pulseHintElement(el) {
+    if (!el) return;
+    el.classList.remove('is-pulse-hint');
+    void el.offsetWidth;
+    el.classList.add('is-pulse-hint');
+    window.setTimeout(function () {
+      el.classList.remove('is-pulse-hint');
+    }, TOGGLE_HINT_MS);
+  }
+
+  function pulseRouteToggleHint() {
+    pulseHintElement(routeToggle);
+  }
+
+  function pulseMiniGraphExpandHint() {
+    pulseHintElement(document.getElementById('mini-graph-expand'));
+  }
+
+  function getScrollPaddingTopPx() {
+    try {
+      var raw = window.getComputedStyle(document.documentElement).scrollPaddingTop;
+      var px = parseFloat(raw);
+      return Number.isFinite(px) ? px : 0;
+    } catch {
+      return 0;
+    }
+  }
+
+  /** block: 'center' | 'start' — 判断目标是否已接近 scrollIntoView 落点 */
+  function isEntryCardNearAlign(card, block) {
+    var rect = card.getBoundingClientRect();
+    var viewH = window.innerHeight || document.documentElement.clientHeight || 0;
+    if (viewH <= 0) return true;
+    if (block === 'start') {
+      var expectedTop = getScrollPaddingTopPx();
+      return Math.abs(rect.top - expectedTop) <= SCROLL_ALIGN_TOLERANCE_PX;
+    }
+    var cardMid = rect.top + rect.height / 2;
+    var viewMid = viewH / 2;
+    return Math.abs(cardMid - viewMid) <= SCROLL_ALIGN_TOLERANCE_PX;
+  }
+
+  /**
+   * 将入口卡滚入视口后回调（接近落点即触发，避免干等 scrollend）。
+   * @param {string} [block='center'] 'center'（Hero 路线数字）或 'start'（项目查询 / 知识图谱顶对齐）
+   */
+  function scrollEntryCardIntoView(card, hash, onReady, block) {
+    block = block === 'start' ? 'start' : 'center';
+    if (!card) {
+      if (onReady) onReady();
+      return;
+    }
+    if (hash && window.history && typeof window.history.replaceState === 'function') {
+      window.history.replaceState(null, '', hash);
+    }
+    var done = false;
+    var rafId = 0;
+    var fallbackTimer = 0;
+    function ready() {
+      if (done) return;
+      done = true;
+      window.clearTimeout(fallbackTimer);
+      window.removeEventListener('scrollend', onScrollEnd);
+      if (rafId) window.cancelAnimationFrame(rafId);
+      if (onReady) onReady();
+    }
+    function onScrollEnd() { ready(); }
+
+    if (isEntryCardNearAlign(card, block)) {
+      rafId = window.requestAnimationFrame(function () { ready(); });
+      return;
+    }
+
+    card.scrollIntoView({
+      behavior: prefersReducedMotion ? 'auto' : 'smooth',
+      block: block,
+      inline: 'nearest'
+    });
+
+    if (prefersReducedMotion) {
+      rafId = window.requestAnimationFrame(function () { ready(); });
+      return;
+    }
+
+    window.addEventListener('scrollend', onScrollEnd, { once: true });
+    function pollNearAlign() {
+      if (done) return;
+      if (isEntryCardNearAlign(card, block)) {
+        ready();
+        return;
+      }
+      rafId = window.requestAnimationFrame(pollNearAlign);
+    }
+    rafId = window.requestAnimationFrame(pollNearAlign);
+    fallbackTimer = window.setTimeout(ready, SCROLL_ALIGN_FALLBACK_MS);
+  }
+
+  /** Hero 主路线 / 纵深路线：滚到视口垂直中心 */
+  function scrollEntryCardToCenter(card, hash, onReady) {
+    scrollEntryCardIntoView(card, hash, onReady, 'center');
+  }
+
+  if (routeToggle) {
+    routeToggle.addEventListener('click', function () {
+      var expanded = routeToggle.getAttribute('aria-expanded') === 'true';
+      setHomeRoutesExpanded(!expanded);
+    });
+  }
+
+  // Hero「主路线」数字：滚到「从零开始」卡中心并顺时针描边一圈
+  if (mainRouteCount && mainRouteCard) {
+    mainRouteCount.addEventListener('click', function (event) {
+      event.preventDefault();
+      scrollEntryCardToCenter(mainRouteCard, '#home-start-main-route', function () {
+        playCardBorderTrace(mainRouteCard);
+      });
+    });
+  }
+
+  // Hero「纵深路线」数字：滚到「更多路线」卡中心描边一圈（不展开），随后高亮展开按钮文案
+  if (depthRouteCount && moreRoutesCard) {
+    depthRouteCount.addEventListener('click', function (event) {
+      event.preventDefault();
+      scrollEntryCardToCenter(moreRoutesCard, '#home-more-routes', function () {
+        playCardBorderTrace(moreRoutesCard, pulseRouteToggleHint);
+      });
+    });
+  }
+
+  // 入口卡「项目查询 / 知识图谱」：区块顶对齐（同旧锚点），模块描边特效保持；项目查询额外聚焦搜索框
   var searchInput = document.getElementById('wikiSearchInput');
+  var homeTraceTriggers = document.querySelectorAll('[data-trace-target]');
+  for (var htti = 0; htti < homeTraceTriggers.length; htti++) {
+    (function (trigger) {
+      var targetId = trigger.getAttribute('data-trace-target');
+      var target = targetId ? document.getElementById(targetId) : null;
+      if (!target) return;
+      var hash = trigger.getAttribute('href') || '';
+      var hashId = hash.charAt(0) === '#' ? hash.slice(1) : '';
+      // 滚动锚到 href 区块（顶对齐）；描边仍画在 data-trace-target 模块上
+      var scrollTarget = (hashId && document.getElementById(hashId)) || target;
+      var shouldFocusSearch = trigger.hasAttribute('data-focus-search');
+      var pulseHintId = trigger.getAttribute('data-pulse-hint');
+      // 悬停/按下时预取搜索索引，避免 focus 时才开始拉大 JSON 造成卡顿
+      if (shouldFocusSearch) {
+        var prefetchOnce = function () { prefetchWikiSearchIndex(); };
+        trigger.addEventListener('pointerdown', prefetchOnce, { passive: true });
+        trigger.addEventListener('mouseenter', prefetchOnce, { passive: true });
+      }
+      trigger.addEventListener('click', function (event) {
+        event.preventDefault();
+        // 项目查询：立刻聚焦，不把 focus 排在滚动/描边之后（旧路径会「卡一下再跳」）
+        if (shouldFocusSearch && searchInput) {
+          prefetchWikiSearchIndex();
+          searchInput.focus({ preventScroll: true });
+        }
+        scrollEntryCardIntoView(scrollTarget, hashId ? hash : null, function () {
+          var onTraceDone = null;
+          if (pulseHintId) {
+            var hintEl = document.getElementById(pulseHintId);
+            if (hintEl) onTraceDone = function () { pulseHintElement(hintEl); };
+          }
+          playCardBorderTrace(target, onTraceDone);
+        }, 'start');
+      });
+    })(homeTraceTriggers[htti]);
+  }
+
+  if (window.location.hash === '#home-start-main-route' && mainRouteCard) {
+    scrollEntryCardToCenter(mainRouteCard, null, function () {
+      playCardBorderTrace(mainRouteCard);
+    });
+  } else if (window.location.hash === '#home-more-routes' && moreRoutesCard) {
+    scrollEntryCardToCenter(moreRoutesCard, null, function () {
+      playCardBorderTrace(moreRoutesCard, pulseRouteToggleHint);
+    });
+  } else if (window.location.hash === '#wiki-search') {
+    var searchSection = document.getElementById('wiki-search');
+    var searchPanel = document.getElementById('wiki-search-panel');
+    if (searchSection || searchPanel) {
+      // focus/预取放到搜索模块初始化之后，避免监听器尚未挂上
+      scrollEntryCardIntoView(searchSection || searchPanel, null, function () {
+        if (searchPanel) playCardBorderTrace(searchPanel);
+      }, 'start');
+    }
+  } else if (window.location.hash === '#mini-graph-section') {
+    var miniGraphSection = document.getElementById('mini-graph-section');
+    var miniGraphPanel = document.getElementById('mini-graph-wrap');
+    if (miniGraphSection || miniGraphPanel) {
+      scrollEntryCardIntoView(miniGraphSection || miniGraphPanel, null, function () {
+        if (miniGraphPanel) playCardBorderTrace(miniGraphPanel, pulseMiniGraphExpandHint);
+      }, 'start');
+    }
+  }
+
+  // ── Wiki 全文搜索（index.html 搜索框） ────────────────────────────────────
   var searchResults = document.getElementById('wikiSearchResults');
   var communityFilter = document.getElementById('wikiCommunityFilter');
   if (searchInput && searchResults) {
-    // 首页「项目查询」入口卡：锚点跳转到搜索区后直接聚焦输入框
-    var focusSearchTriggers = document.querySelectorAll('[data-focus-search]');
-    for (var fsti = 0; fsti < focusSearchTriggers.length; fsti++) {
-      focusSearchTriggers[fsti].addEventListener('click', function () {
-        window.setTimeout(function () {
-          searchInput.focus({ preventScroll: true });
-        }, 0);
-      });
-    }
-
     var _selectedIndex = -1;  // 键盘导航当前选中项
 
     var _searchIndex = null;
@@ -5927,6 +6582,21 @@
       return _searchIndexPromise;
     }
 
+    // 供入口卡 pointerdown / 首页 idle 预取；失败静默，不影响后续正式搜索
+    prefetchWikiSearchIndex = function () {
+      ensureSearchIndex().catch(function () {});
+    };
+    if (typeof window.requestIdleCallback === 'function') {
+      window.requestIdleCallback(function () { prefetchWikiSearchIndex(); }, { timeout: 2500 });
+    } else {
+      window.setTimeout(function () { prefetchWikiSearchIndex(); }, 1200);
+    }
+    // 深链 #wiki-search：搜索模块就绪后再聚焦并预取
+    if (window.location.hash === '#wiki-search') {
+      prefetchWikiSearchIndex();
+      searchInput.focus({ preventScroll: true });
+    }
+
     function tokenizeQuery(text) {
       var str = String(text || '').toLowerCase();
       var matches = str.match(/[a-z0-9_+\-.]+|[\u4e00-\u9fff]+/g);
@@ -5945,6 +6615,17 @@
 
     function getResultCards() {
       return Array.from(searchResults.querySelectorAll('article.card[data-result-url]'));
+    }
+
+    // 搜索联动首页背景图谱：命中节点高亮、其余淡出（图谱未就绪时暂存待应用）
+    function miniGraphHighlight(query, ids) {
+      var active = !!(query || (ids && ids.length));
+      if (window.RNMiniGraph && window.RNMiniGraph.highlight) {
+        if (active) window.RNMiniGraph.highlight(ids || [], query || '');
+        else window.RNMiniGraph.clear();
+      } else {
+        window.__miniGraphPendingQuery = active ? { query: query || '', ids: ids || [] } : null;
+      }
     }
 
     function setSelectedIndex(idx) {
@@ -6062,10 +6743,19 @@
       var graphBtn = '<a href="' + escapeHtml(graphUrl) + '" class="js-graph-btn" '
         + 'style="font-size:.75rem;opacity:.6;margin-left:8px;text-decoration:none" '
         + 'title="查看图谱邻居" tabindex="-1">🔗图谱</a>';
+      var fullSummary = item.summary || '';
+      var needsPreview = fullSummary.length > 120;
+      var summaryHtml = fullSummary
+        ? '<p class="result-summary' + (needsPreview ? ' is-clamped' : '') + '">'
+          + escapeHtml(fullSummary) + '</p>'
+          + (needsPreview
+            ? '<button type="button" class="result-preview-toggle" aria-expanded="false">预览全文</button>'
+            : '')
+        : '';
       return '<article class="card" data-result-url="' + escapeHtml(detailUrl) + '">'
         + '<p class="card-meta" style="font-size:.75rem;margin-bottom:.25rem">' + escapeHtml(typeLabel) + explain + '</p>'
         + '<h3><a href="' + escapeHtml(detailUrl) + '">' + escapeHtml(item.title || item.id) + '</a>' + graphBtn + '</h3>'
-        + '<p>' + escapeHtml((item.summary || '').slice(0, 120)) + '</p>'
+        + summaryHtml
         + (tagLine ? '<div class="chip-list">' + tagLine + '</div>' : '')
         + '</article>';
     }
@@ -6211,7 +6901,7 @@
       var q = query.trim();
       var communityVal = communityFilter ? communityFilter.value : '';
       // 空查询：结果区留白（热门词入口是搜索框下方常驻的 tag-chip 行）
-      if (!q && !communityVal) { searchResults.innerHTML = ''; return; }
+      if (!q && !communityVal) { searchResults.innerHTML = ''; miniGraphHighlight('', []); return; }
       searchResults.innerHTML = '<p style="color:var(--text-muted);grid-column:1/-1">加载离线搜索索引中…</p>';
       Promise.all([ensureSearchIndex(), ensureCommunityByPath()])
         .then(function(results) {
@@ -6272,6 +6962,7 @@
             if (queryTokens.length && b._score !== a._score) return b._score - a._score;
             return String(a.title || '').localeCompare(String(b.title || ''));
           }).slice(0, 10);
+          miniGraphHighlight(q, matched.map(function(m){ return m.id; }));
           if (!matched.length) {
             if (communityVal && !q) {
               searchResults.innerHTML = '<div style="grid-column:1/-1;color:var(--text-muted)">'
@@ -6315,20 +7006,25 @@
         searchResults.innerHTML = '';
         _selectedIndex = -1;
         if (communityFilter) communityFilter.value = '';
+        miniGraphHighlight('', []);
       }
     });
 
     searchInput.addEventListener('focus', function() {
       if (_searchIndex || _searchIndexFailed || _searchIndexPromise) return;
-      searchResults.innerHTML = '<p style="color:var(--text-muted);grid-column:1/-1">加载中…</p>';
+      // 空查询静默预取，不写「加载中…」以免与入口卡滚动/描边同帧抢布局
+      var hadQuery = !!searchInput.value.trim();
+      if (hadQuery) {
+        searchResults.innerHTML = '<p style="color:var(--text-muted);grid-column:1/-1">加载中…</p>';
+      }
       ensureSearchIndex().then(function() {
         if (searchInput.value.trim()) {
           triggerSearch();
-        } else {
+        } else if (hadQuery) {
           searchResults.innerHTML = '';
         }
       }).catch(function() {
-        searchResults.innerHTML = '';
+        if (hadQuery) searchResults.innerHTML = '';
       });
     });
 
@@ -6354,6 +7050,18 @@
       var graphBtn = e.target.closest('.js-graph-btn');
       if (graphBtn) {
         e.stopPropagation();
+        return;
+      }
+      var previewToggle = e.target.closest('.result-preview-toggle');
+      if (previewToggle) {
+        e.stopPropagation();
+        var card = previewToggle.closest('.card');
+        var summary = card && card.querySelector('.result-summary');
+        if (summary) {
+          var clamped = summary.classList.toggle('is-clamped');
+          previewToggle.setAttribute('aria-expanded', clamped ? 'false' : 'true');
+          previewToggle.textContent = clamped ? '预览全文' : '收起';
+        }
         return;
       }
     });

@@ -27,6 +27,7 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     ),
     "wiki/concepts/contact-rich-manipulation.md": "接触丰富型操作（Contact-Rich Manipulation）",
     "wiki/methods/vla.md": "视觉-语言-动作（Vision-Language-Action, VLA）",
+    "wiki/methods/action-chunking.md": "动作块输出（Action Chunking）",
     "wiki/tasks/vision-language-navigation.md": (
         "视觉-语言导航（Vision-and-Language Navigation, VLN）"
     ),
@@ -108,10 +109,14 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "wiki/queries/hmi-opensource-projects-coverage.md": (
         "开源项目本库导读（HMI Open-Source Projects Guide）"
     ),
+    "wiki/queries/robot-perception-stack-selection-loop.md": (
+        "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop）"
+    ),
     "wiki/queries/hmi-papers-coverage.md": ("论文总索引导读（HMI Papers Coverage Guide）"),
     "wiki/queries/embodied-eval-benchmark-selection-loop.md": (
         "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop）"
     ),
+    "wiki/references/llm-wiki-karpathy.md": "大语言模型维基（LLM Wiki）",
 }
 
 COMMUNITY_LABEL_SUFFIX = " 社区"

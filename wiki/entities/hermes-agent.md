@@ -10,7 +10,7 @@ tags:
   - persistent-memory
   - messaging-gateway
 status: complete
-updated: 2026-07-16
+updated: 2026-08-03
 related:
   - ./ponytail.md
   - ./caveman.md
@@ -18,12 +18,14 @@ related:
   - ./sensenova-skills.md
   - ./agent-reach.md
   - ./philia.md
+  - ../concepts/model-context-protocol.md
   - ../references/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
   - ../concepts/ai-auto-research.md
 sources:
   - ../../sources/repos/nousresearch_hermes_agent.md
   - ../../sources/sites/hermes-agent-nousresearch-docs.md
+  - ../../sources/sites/modelcontextprotocol-io.md
 summary: "Hermes Agent（NousResearch）是 MIT 开源的常驻自主代理运行时：单一 AIAgent 服务 CLI、20+ 消息网关与 ACP；SQLite+FTS5 会话、记忆/技能自举闭环与 Honcho 用户建模；70+ 工具、七类终端沙箱与 MCP 扩展；内置 cron 与子代理委托，并支持 ShareGPT 轨迹导出与 Atropos RL 研究管线。"
 tags: [llm-agents, coding-agents, agent-infrastructure, skills, mcp, persistent-memory, messaging-gateway, mit]
 
@@ -120,6 +122,7 @@ flowchart TB
 - [Ponytail](ponytail.md) — **少写代码** 必要性阶梯（Hermes 可 `plugins install`）
 - [Superpowers（obra）](superpowers-obra.md) — 编码代理 **软件工程流程** 技能库
 - [Agent Reach](agent-reach.md) — 编码代理 **外网读搜** 脚手架
+- [Model Context Protocol（MCP）](../concepts/model-context-protocol.md) — Hermes 工具扩展所依的开放协议
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — **持久 wiki 知识编译** 范式
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库维护操作规范
 
@@ -130,6 +133,7 @@ flowchart TB
 - [NousResearch/hermes-agent（GitHub）](https://github.com/NousResearch/hermes-agent)
 - [Hermes Agent 文档](https://hermes-agent.nousresearch.com/docs)
 - [Architecture（开发者指南）](https://hermes-agent.nousresearch.com/docs/developer-guide/architecture)
+- [MCP 官方文档归档](../../sources/sites/modelcontextprotocol-io.md)
 
 ## 推荐继续阅读
 

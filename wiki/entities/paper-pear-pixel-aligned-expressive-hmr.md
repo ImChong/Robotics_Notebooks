@@ -128,6 +128,17 @@ flowchart LR
 - **与 SAM 3D Body：** 同属 **Type-3 全身 HMR**；SAM3D 偏 **基础模型 + MHR + 可提示**；PEAR 偏 **SMPL-X/FLAME 生态 + 极致实时 + 像素对齐**。
 - **与 WiLoR：** 手部极精细语义可仍用 [WiLoR](../methods/wilor.md)；PEAR 提供 **全身一致** 的实时初值。
 
+## 结论
+
+**PEAR 的核心交易是「把分析–综合留在训练侧」：用 GUAVA 像素监督换取像素级对齐，推理端仍只跑一个 256×256 的单流 ViT-B，从而在同一前向里以 >100 FPS 同时吐出身、手、脸。**
+
+- 真正起作用的是 **两阶段训练**：Stage-1 用部件级伪标签（ProHMR / HAMER / TEASER + DWPose）做参数与关键点监督拿到粗网格，Stage-2 才绑高斯点做光度精炼；联合训练会导致外观–几何耦合失败，两阶段并非工程偏好而是必要条件。
+- 关键指标是 **速度与精度同时占优**：~100 FPS（对照 Multi-HMR ~10、OSX/SMPLest-X ~20），3DPW MPJPE **71.3** 优于 OSX 74.7，且输入分辨率仅 256×256 而非 896×896——省算力不是靠砍表达力，而是靠去掉部位裁剪与多分支。
+- EHM-s 的头尺度 $s$ 是表达力上的实质扩展：它把头身比从 SMPL-X 形状空间里解耦出来，才使儿童与风格化角色进入可覆盖分布。
+- 适用边界：**单图、无时序**。世界坐标与脚滑仍需 [GVHMR](./gvhmr.md) 或 [HTD-Refine](./paper-htd-refine-monocular-hmr.md) 级联；单目歧义未解，输出不可直接当真机力控指令，须经 [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) 筛选。
+- 落地状态：代码已开源，但 **训练数据集待发布**，加上自定义伪标签管线与 GUAVA 依赖（Stage-1 约 10 天 / 8×A6000），完全复现成本明显高于纯回归 HMR。
+- 与 [SAM 3D Body](./sam-3d-body.md) 同属 Type-3 全身 HMR，但取向相反：后者是可提示的重型基础模型，PEAR 则押注 SMPL-X/FLAME 生态下的极致实时，项目页给出约 100× 推理加速。
+
 ## 局限与风险
 
 - **Type-3 权衡：** 同时建模脸手会降低相对 **Type-1/2 纯体姿** 方法的部分肢体精度上限（论文 §5 讨论）。

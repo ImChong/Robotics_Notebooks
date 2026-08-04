@@ -79,6 +79,7 @@ flowchart LR
 ### 推荐读什么
 - [人形整机机械布局设计](../wiki/concepts/humanoid-mechanical-layout-design.md) — 本阶段主线知识页
 - [人形并联/连杆关节运动学](../wiki/concepts/humanoid-parallel-joint-kinematics.md) 与 [人形腿部行星滚柱丝杠直线驱动](../wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md)
+- [动力学仿真驱动的人形下肢衍生式设计](../wiki/entities/paper-humanoid-leg-generative-design-dynamics.md) — 电液混合 5-DoF + EHA/电机分工的布置实例
 - [Actuator 102 · 02：旋转-直线分离架构](../wiki/overview/humanoid-actuator-102-split-architecture.md)
 - [LIP/ZMP](../wiki/concepts/lip-zmp.md) 与 [Capture Point / DCM](../wiki/concepts/capture-point-dcm.md) — 布局参数在控制里以什么形式出现
 - [连杆与转子惯量](../wiki/concepts/robot-link-and-rotor-inertia.md) 与 [URDF 机器人描述](../wiki/concepts/urdf-robot-description.md)
@@ -105,6 +106,7 @@ flowchart LR
 ### 推荐读什么
 - [Hardware 101 · 01：机身与材料](../wiki/overview/humanoid-hardware-101-chassis-materials.md) 与 [Hardware 101 · 03：直线传动与轴承](../wiki/overview/humanoid-hardware-101-linear-transmission-bearings.md)
 - [人形整机机械布局设计](../wiki/concepts/humanoid-mechanical-layout-design.md) 的 L4 一节（刚度/强度/公差三张判据表）
+- [动力学仿真驱动的人形下肢衍生式设计](../wiki/entities/paper-humanoid-leg-generative-design-dynamics.md) — 跳跃工况 → 衍生式连杆 → FEA/疲劳/模态/重仿真闭环
 - [Actuator 102 · 06：工业执行器陷阱](../wiki/overview/humanoid-actuator-102-industrial-actuator-trap.md) — 货架件按平方律失效的机械原因
 - ISO 1101 / ASME Y14.5（几何公差）、ISO 286 / ISO 2768（配合与未注公差）— [ISO 检索入口](https://www.iso.org/search.html?q=1101)
 

@@ -46,6 +46,14 @@ Learning Humanoid Locomotion with Perceptive Internal Model 的人形机器人�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页目前只承担「实体存在性」这一件事：把这篇论文挂进 05_Locomotion 分类，技术归纳整体待深读笔记补齐。**
+
+- 页面可确证的只有分类归属、PROGRESS.md 上的「待深读」状态与 arXiv 编号 2411.14386；感知内部模型的具体做法、指标与消融均未记录。
+- 适用边界：可用于按分类检索与图谱连边，不能作为该工作的技术依据或引用来源。
+- 同分类下并列着多篇同样处于待深读状态的 locomotion 条目，本页的相对价值取决于笔记撰写顺序，不宜据此判断重要性。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

@@ -4,6 +4,7 @@ tags: [repo, unitree, unitreerobotics, lidar, perception, ros2]
 status: complete
 updated: 2026-07-24
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ./unitree.md
   - ./point-lio-unilidar.md
   - ../tasks/locomotion.md

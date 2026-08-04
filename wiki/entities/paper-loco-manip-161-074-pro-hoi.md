@@ -103,6 +103,16 @@ critic 可访问 privileged 信息，actor 只用真机可得观测；训练时�
 | 软件模块 | FoundationPose、FAST-LIO2、MuJoCo digital twin、TEB local planner、LCM 通信 |
 | 训练 | Isaac Lab，高性能平台 8×RTX 3090；PPO Actor MLP `[512,256,128]` |
 
+## 结论
+
+**Pro-HOI 的关键取舍是把参考动作从「观测」降级为「奖励」：高层只保留 root trajectory + desired contact state 这一可规划接口，用泛化换掉逐帧跟踪，再用数字孪生把物体掉落变成可恢复事件。**
+
+- 真正起作用的是接口替换：目标观测 `g_t = [Δp_root, Δr_root, c_t]` 让策略学「何时蹲、抓、走、放」，OOD 场景下 grasp success **99.93%**、task success **88.38%**，明显高于全身参考驱动的 [PhysHSI](./paper-amp-survey-15-physhsi.md)（82.54% / 70.17%）。
+- 恢复能力来自 **工程状态机 + MuJoCo 落点预测**，不是 learned recovery policy，复杂碰撞下可能误判落点。
+- 适用边界窄：核心实验围绕 box carrying，root-guided 接口对抽屉、门、工具等接触拓扑仍待验证；感知侧还依赖 FoundationPose 与数字孪生的对象模型假设。
+- 工程完整度是它的另一半价值：全部模块跑在 G1 onboard，控制环约 **50 Hz**、物体感知约 **40 Hz**、状态估计约 **200 Hz**，真机中速长测 21/28 grasp success。
+- 代码截至 2026-07-22 未确认官方可运行仓库，训练 pipeline 与部署细节暂不可复现。
+
 ## 与其他工作对比
 
 对照论文在 [关键实验数字](#关键实验数字) 中直接比较的基线与 [关联页面](#关联页面) 的相关工作，均为定性维度（具体数字见评测表）：

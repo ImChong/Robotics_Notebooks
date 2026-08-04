@@ -46,6 +46,14 @@ Symphony 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**Symphony 在本库还只是一个占位索引：条目已挂进 05_Locomotion 的图谱，但「启发式归一化校准优势」的 actor-critic 究竟改了什么、换来什么，本页给不出答案。**
+
+- 本页可确认的只有条目级信息：分类 05_Locomotion、arXiv 2512.10477、深读状态「待撰写」。
+- 算法改动点、与标准 actor-critic 的差异、在人形上的量化收益均未涉及，不应据此页做方法选型或效果判断。
+- 当前唯一职责是避免知识图谱缺失该实体，并维持与 [分类父节点](../overview/paper-notebook-category-05-locomotion.md) / [总索引](../overview/humanoid-paper-notebooks-index.md) 的交叉检索；深读笔记完成后本节应重写。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

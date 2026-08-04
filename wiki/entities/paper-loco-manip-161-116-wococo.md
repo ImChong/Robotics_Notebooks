@@ -100,6 +100,16 @@ sequenceDiagram
 | 入口 | `legged_gym/legged_gym/scripts/train.py --task=h1:jumpjack` |
 | 注意 | 非商业许可；示例框架需按任务工程化 |
 
+## 结论
+
+**WoCoCo 的贡献是把全身控制的问题设定从「一次接触」改写成「顺序接触」，代价是任务级 reward/MDP 仍要手写——它是模板，不是产品。**
+
+- 真正起作用的是任务级 contact schedule 加配套 MDP/reward，让策略主动建立、利用并退出接触；训练栈落在 IsaacGym + legged_gym + RSL-RL。
+- 证据形态是定性演示（clap dance、parkour jumping、bidirectional cliff traversal、anywhere-to-anywhere loco-manip），没有跨任务统一的量化成功率表；dino 用四足/头/尾多端控球说明该抽象不绑定人形手脚。
+- 主要局限来自官方自陈：代码「de-engineered」掉任务特定技巧，只给 clap-and-dance 示例，地形设计与 sim-to-real 需自行工程化。
+- 落地约束是 CC BY-NC 4.0 与继承许可证，商业使用受限；且它只解决身体层接触，不处理高层语义调度。
+- 对照定位：[OmniContact](./paper-omnicontact-humanoid-loco-manipulation.md) 把接触做成可组合、可在线重规划的接口，[FALCON](./paper-loco-manip-161-109-falcon.md) 走力课程与定量真机指标，WoCoCo 停在「顺序接触能否被表达」这一层。
+
 ## 与其他工作对比
 
 WoCoCo 关注身体层的顺序接触控制，与 [OmniContact](./paper-omnicontact-humanoid-loco-manipulation.md)、[FALCON](./paper-loco-manip-161-109-falcon.md) 在「接触如何被表示与组织」上相邻但取舍不同。下表为定性对照。

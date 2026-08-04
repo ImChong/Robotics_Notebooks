@@ -46,6 +46,14 @@ Spectral Normalization for Lipschitz-Constrained Policies on Learning Humanoid L
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是该工作的待深读占位节点：标题给出的路线很明确——用谱归一化给策略加 Lipschitz 约束来学人形行走——但这个约束带来的收益与代价，本库尚无依据评判。**
+
+- 已确定的信息仅为分类 05_Locomotion 与 arXiv 2504.08246；「实验与评测」明确留空。
+- 谱归一化是手段、Lipschitz 约束是性质、行走是任务，三者之间的因果链需要原文实验支撑，本页替代不了。
+- 当前用途是图谱占位与路由：上溯 [05_Locomotion 分类父节点](../overview/paper-notebook-category-05-locomotion.md) 与 [总索引](../overview/humanoid-paper-notebooks-index.md)；深读笔记完成后升格为完整索引实体。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

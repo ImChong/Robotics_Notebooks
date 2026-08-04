@@ -3,11 +3,12 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub, unitree]
 status: stub
-updated: 2026-06-26
+updated: 2026-07-31
 arxiv: "2512.17183"
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ./paper-diffsheg.md
 sources:
   - ../../sources/papers/humanoid_pnb_semantic-co-speech-gesture-synthesis-and-real-ti.md
 summary: "论文把\"机器人讲话的同时做出语义对齐的手势\"这件事拆成 语义检索 + 自回归生成 + 人到机重定向 + 全身跟踪 四段流水线：用 LLM 从语料库里检索与语义高度相关的人体手势片段、用 Motion-GPT 自回归补全长时间序列、用 General Motion Retargeting (GMR) 把人体动作迁到 Unitree G1 上，最后用强化学习训出的 MotionTracker 把这套带有语义的参考动作在真机上稳定、实时地跟出来。"
@@ -46,10 +47,20 @@ summary: "论文把\"机器人讲话的同时做出语义对齐的手势\"这件
 
 - 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
 
+## 结论
+
+**这篇工作的核心取舍是「不端到端」：把语义共语手势拆成检索 → 生成 → 重定向 → 跟踪四段可替换的流水线，用成熟模块换真机上的实时可控性。**
+
+- 真正起作用的是分工而非单一模型：LLM 负责从语料库里检索语义高度相关的人体手势片段，Motion-GPT 负责长时间序列的自回归补全，GMR 负责人到机的形态差异，RL 训出的 MotionTracker 负责在 Unitree G1 上把参考动作稳定实时地跟出来。
+- 这条链路的代价是误差逐级传递：检索不相关、生成漂移、重定向不可行、跟踪失稳中的任一环都会削弱最终的语义对齐，而本页未给出各段的贡献拆分。
+- 适用边界是「讲话时的手势表达」这类语义驱动场景，且落点绑定具体本体（G1）；换本体需要重做重定向与跟踪策略。
+- 本页为 **索引级实体**（分类 04_Loco-Manipulation_and_WBC），详细机制、量化 benchmark 与实机指标以深读笔记与论文 PDF 为准（见 [参考来源](#参考来源)）。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- 人体/数字人侧共语生成对照：[DiffSHEG](./paper-diffsheg.md)（CVPR 2024：语音→3D 表情+手势联合扩散；停在角色资产，无 G1 跟踪）
 
 ## 参考来源
 

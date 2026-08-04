@@ -22,10 +22,10 @@
       overflow: hidden;
       font-family: var(--font-sans);
       height: 100%;
-      background: #0d1117;
+      background: #191919;
     }
     [data-theme="light"] body {
-      background: #eef2f7;
+      background: #f7f6f3;
     }
 
     /* 显式声明字体以防部分浏览器组件继承失效 */
@@ -54,7 +54,7 @@
       border-radius: 8px;
       border: 1px solid rgba(255,255,255,0.12);
       background: rgba(255,255,255,0.06);
-      color: #e6edf3;
+      color: #e8e8e4;
       font-size: .85rem;
       font-family: inherit;
       width: 180px;
@@ -62,10 +62,75 @@
       transition: border-color .18s, width .22s;
     }
     #graph-search::placeholder { color: rgba(255,255,255,0.3); }
-    #graph-search:focus { border-color: rgba(0,212,255,0.5); width: 240px; }
-    /* 路线视图区块（在筛选面板里，可折叠 <details>）*/
+    #graph-search:focus { border-color: rgba(91,156,246,0.5); width: 240px; }
+    /* 路线视图区块（在筛选面板里，可折叠 <details>）
+       手风琴：三区（维度 / 路线 / 机构）同时仅展开一个；
+       展开区吃满中间剩余高度，收起项自然靠在上方或下方 */
     .filter-depth-section {
+      flex: 0 0 auto;
       border-bottom: 1px solid rgba(255,255,255,0.06);
+      min-height: 0;
+    }
+    /* Chromium 对 <details> 设 flex/grid 时，非 summary 子项不会被限高，
+       列表会按内容撑开再被裁切，表现为「没有滑块」。
+       展开态用绝对定位把内容铺在 summary 下方，高度由手风琴 flex 分配。 */
+    .filter-depth-section[open] {
+      flex: 1 1 auto;
+      min-height: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .filter-depth-section[open] > .filter-depth-summary {
+      position: relative;
+      z-index: 1;
+    }
+    .filter-depth-section[open] > .filter-dimension-list,
+    .filter-depth-section[open] > .filter-depth-chips,
+    .filter-depth-section[open] > .filter-institution-list {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: var(--filter-summary-h, 38px);
+      bottom: 0;
+      min-height: 0;
+      max-height: none;
+      overflow-x: hidden;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      scrollbar-width: none; /* 隐藏原生 overlay；改用 .filter-scroll-chrome 常驻滑块 */
+      padding-right: 12px;
+    }
+    .filter-depth-section[open] > .filter-dimension-list::-webkit-scrollbar,
+    .filter-depth-section[open] > .filter-depth-chips::-webkit-scrollbar,
+    .filter-depth-section[open] > .filter-institution-list::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+    /* 自定义常驻滚动条（原生 overlay 在部分环境展开后看不到滑块） */
+    .filter-scroll-chrome {
+      position: absolute;
+      top: var(--filter-summary-h, 38px);
+      right: 4px;
+      bottom: 4px;
+      width: 6px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      z-index: 3;
+      pointer-events: none;
+    }
+    .filter-scroll-chrome[hidden] { display: none !important; }
+    .filter-depth-section:not([open]) > .filter-scroll-chrome { display: none !important; }
+    .filter-scroll-thumb {
+      width: 100%;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.58);
+      will-change: transform;
+    }
+    [data-theme="light"] .filter-scroll-chrome {
+      background: rgba(0,0,0,0.12);
+    }
+    [data-theme="light"] .filter-scroll-thumb {
+      background: rgba(0,0,0,0.42);
     }
     .filter-depth-summary {
       display: flex;
@@ -76,6 +141,7 @@
       list-style: none;
       user-select: none;
       transition: background .12s;
+      flex-shrink: 0;
     }
     .filter-depth-summary:hover { background: rgba(255,255,255,0.03); }
     .filter-depth-summary::-webkit-details-marker { display: none; }
@@ -132,17 +198,14 @@
       color: rgba(255,255,255,0.92);
     }
     .filter-depth-chip.is-active {
-      background: rgba(0,212,255,0.16);
-      border-color: rgba(0,212,255,0.55);
-      color: #e6edf3;
+      background: rgba(91,156,246,0.16);
+      border-color: rgba(91,156,246,0.55);
+      color: #e8e8e4;
     }
     .filter-depth-chip span:first-child { font-size: .9rem; line-height: 1; }
-    /* PC：展开纵深 chip 区限高滚动，避免挤占社区/类型列表 */
+    /* PC：展开区由手风琴吃满剩余高度，chip 列表在区内滚动 */
     .filter-depth-section[open] .filter-depth-chips {
-      max-height: 128px;
-      overflow-y: auto;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(255,255,255,0.28) transparent;
+      max-height: none;
     }
     /* 路线导读条（画布右下角、操作提示条上方，选中非「全量」纵深时显示；
        左上角会被筛选浮窗遮挡、左下有图例 FAB、右上有参数面板，故固定右下；
@@ -155,7 +218,7 @@
       max-width: min(420px, calc(100% - 40px));
       padding: 10px 12px 10px 11px;
       border-radius: 10px;
-      border: 1px solid rgba(0, 212, 255, 0.28);
+      border: 1px solid rgba(91,156,246, 0.28);
       background: rgba(13, 17, 23, 0.88);
       backdrop-filter: blur(8px);
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
@@ -173,7 +236,7 @@
       gap: 5px;
       font-size: .78rem;
       font-weight: 700;
-      color: #7dd3fc;
+      color: #7ab3ff;
       letter-spacing: .02em;
     }
     .depth-intro-hub-tag {
@@ -181,7 +244,7 @@
       font-weight: 600;
       padding: 2px 6px;
       border-radius: 999px;
-      background: rgba(0, 212, 255, 0.12);
+      background: rgba(91,156,246, 0.12);
       color: rgba(255, 255, 255, 0.72);
       text-transform: uppercase;
       letter-spacing: .04em;
@@ -198,15 +261,15 @@
       gap: 4px;
       font-size: .74rem;
       font-weight: 600;
-      color: #38bdf8;
+      color: #5b9cf6;
       text-decoration: none;
     }
-    .depth-intro-link:hover { color: #7dd3fc; text-decoration: underline; }
+    .depth-intro-link:hover { color: #7ab3ff; text-decoration: underline; }
     .node-depth-hub .node-glow { fill-opacity: 0.28 !important; }
     .node-depth-hub .node-circle {
       stroke-width: 2.5px !important;
       stroke-opacity: 0.85 !important;
-      filter: drop-shadow(0 0 6px rgba(0, 212, 255, 0.45));
+      filter: drop-shadow(0 0 6px rgba(91,156,246, 0.45));
     }
     .node-depth-hub .node-label {
       font-weight: 700;
@@ -228,9 +291,9 @@
     }
     .chip:hover { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.8); }
     .chip.is-running {
-      background: rgba(0,212,255,0.16);
-      border-color: rgba(0,212,255,0.55);
-      color: #e6edf3;
+      background: rgba(91,156,246,0.16);
+      border-color: rgba(91,156,246,0.55);
+      color: #e8e8e4;
       cursor: wait;
     }
     .chip:disabled {
@@ -238,8 +301,8 @@
       cursor: wait;
     }
     .chip.active {
-      background: #00d4ff;
-      color: #0d1117;
+      background: #5b9cf6;
+      color: #191919;
       border-color: transparent;
       font-weight: 700;
     }
@@ -270,7 +333,7 @@
       transition: all .15s;
       white-space: nowrap;
     }
-    #graph-back:hover { border-color: rgba(255,255,255,0.3); color: #e6edf3; text-decoration: none; }
+    #graph-back:hover { border-color: rgba(255,255,255,0.3); color: #e8e8e4; text-decoration: none; }
 
     /* ── 画布 ── */
     #graph-wrap {
@@ -289,9 +352,9 @@
     #graph-canvas-3d {
       width: 100%; height: 100%;
       background:
-        radial-gradient(circle at 20% 20%, rgba(96,165,250,.04) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(52,211,153,.04) 0%, transparent 50%),
-        #0d1117;
+        radial-gradient(circle at 20% 20%, rgba(91,156,246,.04) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(122,179,255,.04) 0%, transparent 50%),
+        #191919;
       cursor: grab;
       display: block;
     }
@@ -331,7 +394,7 @@
       font-weight: 700;
     }
     /* 3D 社区聚类中心胶囊标签（HTML overlay，样式对齐 2D .community-label）
-       字号/内边距由 JS 按社区节点数缩放（桌面 10–22px；移动端字号 ×0.55 + 缩放 ×0.55，下限 6px），此处仅作兜底 */
+       字号/内边距由 graph-3d.js 按社区节点数 × 画布短边比例缩放（约 7–22px），此处仅作兜底 */
     .graph-3d-community-label {
       position: absolute;
       left: 0;
@@ -353,8 +416,8 @@
     }
     @media (max-width: 768px), ((hover: none) and (pointer: coarse)) {
       .graph-3d-community-label {
-        font-size: 7px;
-        padding: 2px 5px;
+        font-size: 10px;
+        padding: 3px 7px;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
       }
     }
@@ -397,8 +460,8 @@
     }
     #graph-tooltip.tt-pinned {
       pointer-events: auto;
-      border-color: rgba(0,212,255,0.35);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.7), 0 0 0 1px rgba(0,212,255,0.15);
+      border-color: rgba(91,156,246,0.35);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.7), 0 0 0 1px rgba(91,156,246,0.15);
     }
     .tt-type {
       display: inline-block;
@@ -427,18 +490,18 @@
     .tt-meta-badges .tt-community {
       margin-bottom: 0;
     }
-    .tt-title { font-size: .92rem; font-weight: 700; color: #e6edf3; margin-bottom: 5px; line-height: 1.3; }
+    .tt-title { font-size: .92rem; font-weight: 700; color: #e8e8e4; margin-bottom: 5px; line-height: 1.3; }
     .tt-summary { font-size: .78rem; color: rgba(255,255,255,0.45); line-height: 1.5; }
     .tt-link {
       display: inline-block;
       font-size: .72rem;
-      color: rgba(0,212,255,0.8);
+      color: rgba(91,156,246,0.8);
       margin-top: 9px;
       text-decoration: none;
-      border-bottom: 1px solid rgba(0,212,255,0.3);
+      border-bottom: 1px solid rgba(91,156,246,0.3);
       transition: color .12s, border-color .12s;
     }
-    .tt-link:hover { color: #00d4ff; border-color: rgba(0,212,255,0.7); }
+    .tt-link:hover { color: #5b9cf6; border-color: rgba(91,156,246,0.7); }
 
     /* ── 图例：全端默认折叠为左下角 FAB，点击后自左滑出 ── */
     #graph-legend-fab {
@@ -465,8 +528,8 @@
     }
     #graph-legend-fab:hover,
     #graph-legend-fab:focus-visible {
-      border-color: rgba(0,212,255,0.45);
-      box-shadow: 0 6px 22px rgba(0,212,255,0.18);
+      border-color: rgba(91,156,246,0.45);
+      box-shadow: 0 6px 22px rgba(91,156,246,0.18);
       outline: none;
     }
     #graph-legend-fab[aria-expanded="true"] {
@@ -546,7 +609,7 @@
       line-height: 1.35;
     }
     .legend-row:hover { background: rgba(255,255,255,0.05); color: #fff; }
-    .legend-row.active { background: rgba(0,212,255,0.15); color: #00d4ff; font-weight: 700; }
+    .legend-row.active { background: rgba(91,156,246,0.15); color: #5b9cf6; font-weight: 700; }
     .legend-title { font-size: .68rem; font-weight: 700; color: rgba(255,255,255,0.32); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px; }
     .legend-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
     .legend-count {
@@ -586,9 +649,9 @@
       align-items: center;
       justify-content: center;
       background:
-        radial-gradient(circle at 20% 20%, rgba(96,165,250,.06) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(52,211,153,.06) 0%, transparent 50%),
-        #0d1117;
+        radial-gradient(circle at 20% 20%, rgba(91,156,246,.06) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(122,179,255,.06) 0%, transparent 50%),
+        #191919;
       opacity: 1;
       transition: opacity .45s ease;
     }
@@ -607,14 +670,14 @@
       height: 38px;
       border-radius: 50%;
       border: 3px solid rgba(255,255,255,0.12);
-      border-top-color: #00d4ff;
+      border-top-color: #5b9cf6;
       animation: graph-loading-spin .8s linear infinite;
     }
     @keyframes graph-loading-spin { to { transform: rotate(360deg); } }
     .graph-loading-title {
       font-size: .92rem;
       font-weight: 600;
-      color: #e6edf3;
+      color: #e8e8e4;
       letter-spacing: .02em;
     }
     .graph-loading-bar {
@@ -628,7 +691,7 @@
       width: 0%;
       height: 100%;
       border-radius: 999px;
-      background: linear-gradient(90deg, #60a5fa, #34d399);
+      background: linear-gradient(90deg, #5b9cf6, #7ab3ff);
       transition: width .3s ease;
     }
     .graph-loading-pct {
@@ -656,7 +719,7 @@
         gap: 6px;
         /* 移动端工具栏内容仅 ~43px，但 #graph-wrap 顶部按 header+46px 定位；
            补足 min-height 让工具栏正好填满该 46px 带，避免底部露出比画布更浅的
-           页面背景(#1c1c1e)形成一条灰条。 */
+           页面背景(#191919)形成一条灰条。 */
         min-height: 46px;
       }
       #graph-search {
@@ -761,7 +824,7 @@
     [data-theme="light"] #graph-search {
       background: rgba(0,0,0,0.04);
       border-color: rgba(0,0,0,0.12);
-      color: #2f2d29;
+      color: #37352f;
     }
     [data-theme="light"] #graph-search::placeholder { color: rgba(0,0,0,0.3); }
     [data-theme="light"] .chip {
@@ -774,9 +837,9 @@
       color: rgba(0,0,0,0.8);
     }
     [data-theme="light"] .chip.is-running {
-      background: #e6f7ff;
-      border-color: rgba(22,89,180,0.45);
-      color: #1659b4;
+      background: #eaf1fb;
+      border-color: rgba(45,116,218,0.45);
+      color: #2d74da;
     }
     [data-theme="light"] .filter-depth-section {
       border-bottom-color: rgba(0,0,0,0.07);
@@ -795,22 +858,22 @@
       color: rgba(0,0,0,0.85);
     }
     [data-theme="light"] .filter-depth-chip.is-active {
-      background: #e6f7ff;
-      border-color: rgba(22,90,180,0.45);
-      color: #1659b4;
+      background: #eaf1fb;
+      border-color: rgba(45,116,218,0.45);
+      color: #2d74da;
     }
     [data-theme="light"] .depth-intro-banner {
       background: rgba(255, 255, 255, 0.94);
-      border-color: rgba(22, 89, 180, 0.25);
+      border-color: rgba(45,116,218, 0.25);
       box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
     }
-    [data-theme="light"] .depth-intro-badge { color: #1659b4; }
+    [data-theme="light"] .depth-intro-badge { color: #2d74da; }
     [data-theme="light"] .depth-intro-hub-tag {
-      background: rgba(22, 89, 180, 0.1);
+      background: rgba(45,116,218, 0.1);
       color: rgba(15, 23, 42, 0.65);
     }
     [data-theme="light"] .depth-intro-text { color: rgba(15, 23, 42, 0.68); }
-    [data-theme="light"] .depth-intro-link { color: #1659b4; }
+    [data-theme="light"] .depth-intro-link { color: #2d74da; }
     [data-theme="light"] .node-depth-hub .node-label { fill: rgba(15, 23, 42, 0.88) !important; }
     [data-theme="light"] .graph-3d-label.is-depth-hub { color: rgba(15, 23, 42, 0.88) !important; }
     [data-theme="light"] .community-label-bg {
@@ -825,15 +888,15 @@
     }
     [data-theme="light"] #graph-back:hover {
       border-color: rgba(0,0,0,0.28);
-      color: #2f2d29;
+      color: #37352f;
     }
     /* 画布背景 */
     [data-theme="light"] #graph-canvas,
     [data-theme="light"] #graph-canvas-3d {
       background:
-        radial-gradient(circle at 20% 20%, rgba(96,165,250,.07) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(52,211,153,.07) 0%, transparent 50%),
-        #eef2f7;
+        radial-gradient(circle at 20% 20%, rgba(91,156,246,.07) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(122,179,255,.07) 0%, transparent 50%),
+        #f7f6f3;
     }
     /* dot-grid：深色点改为浅色点 */
     [data-theme="light"] #graph-wrap::before {
@@ -842,14 +905,14 @@
     /* 加载页（浅色主题） */
     [data-theme="light"] #graph-loading {
       background:
-        radial-gradient(circle at 20% 20%, rgba(96,165,250,.09) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(52,211,153,.09) 0%, transparent 50%),
-        #eef2f7;
+        radial-gradient(circle at 20% 20%, rgba(91,156,246,.09) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(122,179,255,.09) 0%, transparent 50%),
+        #f7f6f3;
     }
-    [data-theme="light"] .graph-loading-title { color: #2f2d29; }
+    [data-theme="light"] .graph-loading-title { color: #37352f; }
     [data-theme="light"] .graph-loading-spinner {
       border-color: rgba(0,0,0,0.12);
-      border-top-color: #2563eb;
+      border-top-color: #2d74da;
     }
     [data-theme="light"] .graph-loading-bar { background: rgba(0,0,0,0.1); }
     [data-theme="light"] .graph-loading-pct { color: rgba(0,0,0,0.45); }
@@ -859,13 +922,13 @@
       border-color: rgba(0,0,0,0.1);
       box-shadow: 0 8px 32px rgba(0,0,0,0.12);
     }
-    [data-theme="light"] .tt-title   { color: #1a1a1a; }
+    [data-theme="light"] .tt-title   { color: #37352f; }
     [data-theme="light"] .tt-summary { color: rgba(0,0,0,0.5); }
-    [data-theme="light"] .tt-link    { color: rgba(22,90,180,0.85); border-color: rgba(22,90,180,0.3); }
-    [data-theme="light"] .tt-link:hover { color: #1659b4; border-color: rgba(22,90,180,0.7); }
+    [data-theme="light"] .tt-link    { color: rgba(45,116,218,0.85); border-color: rgba(45,116,218,0.3); }
+    [data-theme="light"] .tt-link:hover { color: #2d74da; border-color: rgba(45,116,218,0.7); }
     [data-theme="light"] #graph-tooltip.tt-pinned {
-      border-color: rgba(22,90,180,0.35);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 0 0 1px rgba(22,90,180,0.15);
+      border-color: rgba(45,116,218,0.35);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 0 0 1px rgba(45,116,218,0.15);
     }
     /* 图例 */
     [data-theme="light"] #graph-legend {
@@ -875,7 +938,7 @@
     [data-theme="light"] .legend-title { color: rgba(0,0,0,0.45); }
     [data-theme="light"] .legend-row { color: rgba(0,0,0,0.5); }
     [data-theme="light"] .legend-row:hover { background: rgba(0,0,0,0.04); }
-    [data-theme="light"] .legend-row.active { background: #e6f7ff; color: #1659b4; }
+    [data-theme="light"] .legend-row.active { background: #eaf1fb; color: #2d74da; }
     [data-theme="light"] .legend-count { color: rgba(0,0,0,0.38); }
     [data-theme="light"] .filter-count-badge { color: rgba(0,0,0,0.42); }
     [data-theme="light"] #graph-legend::-webkit-scrollbar-thumb {
@@ -888,8 +951,8 @@
       box-shadow: 0 4px 18px rgba(0,0,0,0.12);
     }
     [data-theme="light"] #graph-legend-fab[aria-expanded="true"] {
-      border-color: rgba(22,90,180,0.45);
-      background: #e6f7ff;
+      border-color: rgba(45,116,218,0.45);
+      background: #eaf1fb;
     }
     [data-theme="light"] #graph-legend-scrim.is-visible {
       background: rgba(0,0,0,0.28);
@@ -907,9 +970,9 @@
     [data-theme="light"] .physics-close { color: rgba(0,0,0,0.3); }
     [data-theme="light"] .physics-close:hover { color: rgba(0,0,0,0.72); }
     [data-theme="light"] .slider-label { color: rgba(0,0,0,0.45); }
-    [data-theme="light"] .slider-val { color: #1659b4; }
+    [data-theme="light"] .slider-val { color: #2d74da; }
     [data-theme="light"] .physics-toggle { color: rgba(0,0,0,0.45); }
-    [data-theme="light"] .physics-toggle input[type=checkbox] { accent-color: #1659b4; }
+    [data-theme="light"] .physics-toggle input[type=checkbox] { accent-color: #2d74da; }
     [data-theme="light"] .physics-section-title { color: rgba(0,0,0,0.4); }
     [data-theme="light"] .physics-action-btn {
       border-color: rgba(0,0,0,0.12);
@@ -917,13 +980,13 @@
       color: rgba(0,0,0,0.72);
     }
     [data-theme="light"] .physics-action-btn:hover:not(:disabled) {
-      border-color: rgba(22,89,180,0.45);
-      background: rgba(22,89,180,0.08);
-      color: #1659b4;
+      border-color: rgba(45,116,218,0.45);
+      background: rgba(45,116,218,0.08);
+      color: #2d74da;
     }
     [data-theme="light"] .physics-action-btn.is-running {
-      border-color: rgba(22,89,180,0.4);
-      background: rgba(22,89,180,0.1);
+      border-color: rgba(45,116,218,0.4);
+      background: rgba(45,116,218,0.1);
     }
     [data-theme="light"] .physics-action-btn:disabled {
       color: rgba(0,0,0,0.32);
@@ -933,19 +996,19 @@
     [data-theme="light"] .slider-divider { background: rgba(0,0,0,0.06); }
     [data-theme="light"] input[type=range] { background: rgba(0,0,0,0.1); }
     [data-theme="light"] .physics-action-btn.is-timeline-active {
-      border-color: rgba(22,89,180,0.5);
-      background: rgba(22,89,180,0.12);
-      color: #1659b4;
+      border-color: rgba(45,116,218,0.5);
+      background: rgba(45,116,218,0.12);
+      color: #2d74da;
     }
     [data-theme="light"] .timeline-ctrl-btn {
       color: rgba(0,0,0,0.72);
     }
     [data-theme="light"] .timeline-ctrl-btn:hover:not(:disabled) {
-      color: #1659b4;
+      color: #2d74da;
     }
     [data-theme="light"] .timeline-progress {
       background: linear-gradient(to right,
-        #1659b4 0%, #1659b4 var(--tl-pct, 0%),
+        #2d74da 0%, #2d74da var(--tl-pct, 0%),
         rgba(0,0,0,0.1) var(--tl-pct, 0%), rgba(0,0,0,0.1) 100%);
     }
     [data-theme="light"] .timeline-scrub-label { color: rgba(0,0,0,0.45); }
@@ -969,16 +1032,13 @@
       background: rgba(0,0,0,0.04);
       color: rgba(0,0,0,0.9);
     }
-    [data-theme="light"] .filter-mode-tabs {
-      border-bottom-color: rgba(0,0,0,0.07);
-    }
     [data-theme="light"] .filter-subtitle {
       color: rgba(0,0,0,0.35);
     }
     [data-theme="light"] .filter-section-title {
       color: rgba(0,0,0,0.35);
     }
-    [data-theme="light"] .filter-item input[type=checkbox] { accent-color: #1659b4; }
+    [data-theme="light"] .filter-item input[type=checkbox] { accent-color: #2d74da; }
     [data-theme="light"] .filter-footer {
       border-top-color: rgba(0,0,0,0.07);
       background: rgba(250,249,246,0.98);
@@ -993,7 +1053,7 @@
     }
     [data-theme="light"] .filter-empty { color: rgba(0,0,0,0.45); }
     [data-theme="light"] .filter-count {
-      background: #1659b4;
+      background: #2d74da;
       color: #fff;
     }
     [data-theme="light"] .filter-degree-section {
@@ -1002,7 +1062,7 @@
     [data-theme="light"] .filter-degree-hint {
       color: rgba(0,0,0,0.38);
     }
-    [data-theme="light"] .chip.active { color: #0d1117; font-weight: 700; border-color: transparent; }
+    [data-theme="light"] .chip.active { color: #191919; font-weight: 700; border-color: transparent; }
     [data-theme="light"] .chip[data-type="concept"].active    { background: #60a5fa; }
     [data-theme="light"] .chip[data-type="method"].active     { background: #34d399; }
     [data-theme="light"] .chip[data-type="task"].active       { background: #f472b6; }
@@ -1048,7 +1108,7 @@
       font-size: .74rem; color: rgba(255,255,255,0.4);
     }
     .slider-val {
-      color: #00d4ff; font-weight: 700; font-size: .72rem;
+      color: #5b9cf6; font-weight: 700; font-size: .72rem;
       font-variant-numeric: tabular-nums;
     }
     input[type=range] {
@@ -1060,18 +1120,18 @@
     input[type=range]::-webkit-slider-thumb {
       -webkit-appearance: none;
       width: 15px; height: 15px; border-radius: 50%;
-      background: #00d4ff; cursor: pointer;
-      box-shadow: 0 0 8px rgba(0,212,255,0.55);
+      background: #5b9cf6; cursor: pointer;
+      box-shadow: 0 0 8px rgba(91,156,246,0.55);
       transition: box-shadow .15s, transform .1s;
     }
     input[type=range]::-webkit-slider-thumb:hover {
-      box-shadow: 0 0 14px rgba(0,212,255,0.85);
+      box-shadow: 0 0 14px rgba(91,156,246,0.85);
       transform: scale(1.15);
     }
     input[type=range]::-moz-range-thumb {
       width: 15px; height: 15px; border-radius: 50%; border: none;
-      background: #00d4ff; cursor: pointer;
-      box-shadow: 0 0 8px rgba(0,212,255,0.55);
+      background: #5b9cf6; cursor: pointer;
+      box-shadow: 0 0 8px rgba(91,156,246,0.55);
     }
     .slider-divider {
       height: 1px; background: rgba(255,255,255,0.05);
@@ -1084,7 +1144,7 @@
     }
     .physics-toggle input[type=checkbox] {
       width: 18px; height: 18px;
-      accent-color: #60a5fa;
+      accent-color: #5b9cf6;
       cursor: pointer;
       flex-shrink: 0;
     }
@@ -1126,9 +1186,9 @@
       color: rgba(255,255,255,0.9);
     }
     .view-mode-btn.is-active {
-      background: rgba(0,212,255,0.16);
-      border-color: rgba(0,212,255,0.55);
-      color: #e6edf3;
+      background: rgba(91,156,246,0.16);
+      border-color: rgba(91,156,246,0.55);
+      color: #e8e8e4;
     }
     .view-mode-btn:disabled {
       opacity: 0.45;
@@ -1140,9 +1200,9 @@
       color: rgba(0,0,0,0.55);
     }
     [data-theme="light"] .view-mode-btn.is-active {
-      background: #e6f7ff;
-      border-color: rgba(22,89,180,0.45);
-      color: #1659b4;
+      background: #eaf1fb;
+      border-color: rgba(45,116,218,0.45);
+      color: #2d74da;
     }
     .physics-actions {
       display: flex;
@@ -1168,15 +1228,15 @@
       transition: border-color .15s, background .15s, color .15s;
     }
     .physics-action-btn:hover:not(:disabled) {
-      border-color: rgba(0,212,255,0.45);
-      color: #e6edf3;
-      background: rgba(0,212,255,0.08);
+      border-color: rgba(91,156,246,0.45);
+      color: #e8e8e4;
+      background: rgba(91,156,246,0.08);
     }
     .physics-action-btn.is-running {
       opacity: 0.72;
       cursor: wait;
-      border-color: rgba(0,212,255,0.55);
-      background: rgba(0,212,255,0.16);
+      border-color: rgba(91,156,246,0.55);
+      background: rgba(91,156,246,0.16);
     }
     .physics-action-btn:disabled {
       opacity: 0.4;
@@ -1186,9 +1246,9 @@
       background: rgba(255,255,255,0.03);
     }
     .physics-action-btn.is-timeline-active {
-      border-color: rgba(0,212,255,0.55);
-      background: rgba(0,212,255,0.16);
-      color: #e6edf3;
+      border-color: rgba(91,156,246,0.55);
+      background: rgba(91,156,246,0.16);
+      color: #e8e8e4;
     }
 
     /* ── 时序动画进度条控件 ── */
@@ -1217,7 +1277,7 @@
       transition: color .15s, opacity .15s;
     }
     .timeline-ctrl-btn:hover:not(:disabled) {
-      color: #00d4ff;
+      color: #5b9cf6;
     }
     .timeline-ctrl-btn:disabled {
       opacity: 0.35;
@@ -1241,7 +1301,7 @@
     .timeline-progress {
       flex: 1; min-width: 0;
       background: linear-gradient(to right,
-        #00d4ff 0%, #00d4ff var(--tl-pct, 0%),
+        #5b9cf6 0%, #5b9cf6 var(--tl-pct, 0%),
         rgba(255,255,255,0.1) var(--tl-pct, 0%), rgba(255,255,255,0.1) 100%);
     }
     .timeline-progress:disabled {
@@ -1277,8 +1337,8 @@
       height: 18px;
       padding: 0 5px;
       border-radius: 9px;
-      background: #60a5fa;
-      color: #0d1117;
+      background: #5b9cf6;
+      color: #191919;
       font-size: 11px;
       font-weight: 700;
       margin-left: 3px;
@@ -1306,7 +1366,7 @@
       box-shadow: 0 8px 32px rgba(0,0,0,0.55);
       overflow: hidden;
     }
-    .filter-panel > :not(.filter-resize-handle):not(.filter-body) {
+    .filter-panel > :not(.filter-resize-handle):not(.filter-sections-scroll) {
       flex-shrink: 0;
     }
     .filter-header {
@@ -1333,14 +1393,23 @@
       flex-wrap: wrap;
     }
     .filter-subtitle {
-      padding: 10px 14px 2px;
+      padding: 8px 14px 0;
       font-size: .72rem;
       color: rgba(255,255,255,0.4);
       font-family: inherit;
     }
+    /* Top N 滑块区：与下方手风琴同款可折叠 <details>，默认收起；
+       两区互斥（同时仅展开一个，可全部收起），不进下方三区手风琴 */
     .filter-degree-section {
-      padding: 0 0 4px;
+      padding: 0;
       border-bottom: 1px solid rgba(255,255,255,0.06);
+      flex-shrink: 0;
+    }
+    .filter-degree-section > .filter-depth-summary {
+      padding: 8px 14px;
+    }
+    .filter-degree-section[open] > .filter-depth-summary {
+      padding-bottom: 4px;
     }
     .filter-degree-section .slider-row {
       padding: 4px 14px 12px;
@@ -1351,46 +1420,27 @@
       line-height: 1.35;
       margin: 0 14px 6px;
     }
-    .filter-body {
-      padding: 8px 0;
+    /* 按类型 / 按社区 / 按健康度：手风琴容器（对齐路线视图 / 机构） */
+    .filter-sections-scroll {
+      flex: 1 1 auto;
+      min-height: 120px;
       display: flex;
       flex-direction: column;
-      gap: 1px;
-      flex: 1 1 auto;
-      min-height: 160px;
-      overflow-y: auto;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(255,255,255,0.28) transparent;
+      overflow: hidden;
+      /* 不在此设 scrollbar-*：该属性可继承，会让子列表滑块样式被覆盖/变透明 */
     }
-    /* 研究机构筛选列表：独立于着色维度，限高滚动，避免面板过长 */
+    /* 维度 / 机构筛选列表：在展开的手风琴区内滚动（滑块样式见 [open] 规则） */
+    .filter-dimension-list,
     .filter-institution-list {
       display: flex;
       flex-direction: column;
       gap: 1px;
-      max-height: 220px;
+      max-height: none;
       overflow-y: auto;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(255,255,255,0.28) transparent;
       padding: 4px 0 8px;
     }
-    .filter-body::-webkit-scrollbar {
-      width: 8px;
-    }
-    .filter-body::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    .filter-body::-webkit-scrollbar-thumb {
-      background-color: rgba(255,255,255,0.28);
-      border-radius: 999px;
-    }
-    .filter-body::-webkit-scrollbar-corner {
-      background: transparent;
-    }
-    [data-theme="light"] .filter-body {
-      scrollbar-color: rgba(0,0,0,0.28) transparent;
-    }
-    [data-theme="light"] .filter-body::-webkit-scrollbar-thumb {
-      background-color: rgba(0,0,0,0.28);
+    [data-theme="light"] .filter-mode-tabs {
+      border-bottom-color: rgba(0,0,0,0.07);
     }
     .filter-section-title {
       padding: 8px 14px 4px;
@@ -1412,7 +1462,7 @@
     .filter-item:hover { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.9); }
     .filter-item input[type=checkbox] {
       width: 15px; height: 15px;
-      accent-color: #60a5fa;
+      accent-color: #5b9cf6;
       cursor: pointer;
       flex-shrink: 0;
     }
@@ -1482,8 +1532,8 @@
       bottom: 4px;
       width: 8px;
       height: 8px;
-      border-right: 1.5px solid rgba(0, 212, 255, 0.45);
-      border-bottom: 1.5px solid rgba(0, 212, 255, 0.45);
+      border-right: 1.5px solid rgba(91,156,246, 0.45);
+      border-bottom: 1.5px solid rgba(91,156,246, 0.45);
       border-bottom-right-radius: 3px;
       pointer-events: none;
       transition: border-color .18s ease;
@@ -1492,24 +1542,24 @@
     .filter-resize-e:active,
     .filter-resize-s:hover,
     .filter-resize-s:active {
-      background-color: rgba(0, 212, 255, 0.12);
+      background-color: rgba(91,156,246, 0.12);
     }
     .filter-resize-se:hover::before,
     .filter-resize-se:active::before {
-      border-color: rgba(0, 212, 255, 0.9);
+      border-color: rgba(91,156,246, 0.9);
     }
     [data-theme="light"] .filter-resize-e:hover,
     [data-theme="light"] .filter-resize-e:active,
     [data-theme="light"] .filter-resize-s:hover,
     [data-theme="light"] .filter-resize-s:active {
-      background-color: rgba(22, 89, 180, 0.1);
+      background-color: rgba(45,116,218, 0.1);
     }
     [data-theme="light"] .filter-resize-se::before {
-      border-color: rgba(22, 89, 180, 0.45);
+      border-color: rgba(45,116,218, 0.45);
     }
     [data-theme="light"] .filter-resize-se:hover::before,
     [data-theme="light"] .filter-resize-se:active::before {
-      border-color: rgba(22, 89, 180, 0.85);
+      border-color: rgba(45,116,218, 0.85);
     }
     body.filter-panel-resizing {
       user-select: none;
@@ -1537,15 +1587,21 @@
         z-index: 31;
       }
       .filter-depth-section[open] .filter-depth-chips {
-        max-height: 96px;
+        max-height: none;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
       }
-      .filter-body {
+      .filter-sections-scroll {
         flex: 1 1 auto;
         min-height: 0;
         max-height: none;
-        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      .filter-dimension-list,
+      .filter-institution-list {
+        max-height: none;
         -webkit-overflow-scrolling: touch;
       }
       .filter-footer {
@@ -1619,7 +1675,7 @@
     .sb-community {
       margin-bottom: 6px;
     }
-    .sb-title { font-size: .92rem; font-weight: 700; color: #e6edf3; line-height: 1.3; }
+    .sb-title { font-size: .92rem; font-weight: 700; color: #e8e8e4; line-height: 1.3; }
     .sb-close {
       background: none; border: none; color: rgba(255,255,255,0.35);
       font-size: 1rem; cursor: pointer; padding: 2px 4px; border-radius: 4px;
@@ -1642,21 +1698,21 @@
     .sb-neighbors-list { max-height: 220px; overflow-y: auto; }
     .sb-neighbors-count { font-weight: 400; color: var(--text-muted, #94a3b8); }
     .sb-related-list li a {
-      font-size: .76rem; color: rgba(0,212,255,0.75);
+      font-size: .76rem; color: rgba(91,156,246,0.75);
       text-decoration: none; display: block;
       padding: 4px 8px; border-radius: 6px;
       transition: background .12s, color .12s;
     }
-    .sb-related-list li a:hover { background: rgba(0,212,255,0.08); color: #00d4ff; }
+    .sb-related-list li a:hover { background: rgba(91,156,246,0.08); color: #5b9cf6; }
     .sb-open-link {
       display: inline-flex; align-items: center; gap: 5px;
-      font-size: .78rem; color: rgba(0,212,255,0.8);
+      font-size: .78rem; color: rgba(91,156,246,0.8);
       font-family: inherit;
       text-decoration: none;
-      border: 1px solid rgba(0,212,255,0.25); border-radius: 7px;
+      border: 1px solid rgba(91,156,246,0.25); border-radius: 7px;
       padding: 6px 14px; transition: all .15s; margin-top: 4px;
     }
-    .sb-open-link:hover { background: rgba(0,212,255,0.08); border-color: rgba(0,212,255,0.6); color: #00d4ff; }
+    .sb-open-link:hover { background: rgba(91,156,246,0.08); border-color: rgba(91,156,246,0.6); color: #5b9cf6; }
 
     /* 当侧边栏打开时，缩小图谱画布右边界 */
     #graph-wrap.sidebar-open { right: 300px; }
@@ -1666,20 +1722,20 @@
       background: rgba(255,255,255,0.98);
       border-left-color: rgba(0,0,0,0.1);
     }
-    [data-theme="light"] .sb-title { color: #1a1a1a; }
+    [data-theme="light"] .sb-title { color: #37352f; }
     [data-theme="light"] .sb-summary { color: rgba(0,0,0,0.5); }
     [data-theme="light"] .sb-tag { background: rgba(0,0,0,0.06); color: rgba(0,0,0,0.5); }
     [data-theme="light"] .sb-section-title { color: rgba(0,0,0,0.35); }
     [data-theme="light"] .sb-close { color: rgba(0,0,0,0.35); }
     [data-theme="light"] .sb-close:hover { color: rgba(0,0,0,0.8); }
-    [data-theme="light"] .sb-related-list li a { color: #1659b4; }
-    [data-theme="light"] .sb-related-list li a:hover { background: rgba(22,89,180,0.06); }
-    [data-theme="light"] .sb-open-link { color: #1659b4; border-color: rgba(22,89,180,0.3); }
-    [data-theme="light"] .sb-open-link:hover { background: rgba(22,89,180,0.06); border-color: rgba(22,89,180,0.6); }
+    [data-theme="light"] .sb-related-list li a { color: #2d74da; }
+    [data-theme="light"] .sb-related-list li a:hover { background: rgba(45,116,218,0.06); }
+    [data-theme="light"] .sb-open-link { color: #2d74da; border-color: rgba(45,116,218,0.3); }
+    [data-theme="light"] .sb-open-link:hover { background: rgba(45,116,218,0.06); border-color: rgba(45,116,218,0.6); }
     [data-theme="light"] #graph-sidebar .sb-header { border-bottom-color: rgba(0,0,0,0.08); }
   </style>
   <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#1c1c1e" />
+  <meta name="theme-color" content="#191919" />
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -1774,12 +1830,7 @@
         </label>
       </div>
 
-      <div class="slider-row">
-        <label class="physics-toggle" for="check-node-labels">
-          <input type="checkbox" id="check-node-labels" />
-          <span>🏷 显示节点名称</span>
-        </label>
-      </div>
+      <!-- 「显示节点名称」浮窗选项已隐藏；开关逻辑仍由 showNodeLabels / setShowNodeLabels 保留 -->
 
       <div class="slider-row">
         <label class="physics-toggle" for="check-community-labels" id="community-labels-toggle"
@@ -1836,14 +1887,17 @@
         <span id="filter-panel-title">🔍 图谱筛选</span>
         <button id="filter-close" class="filter-close" aria-label="关闭面板">✕</button>
       </div>
+      <div class="filter-subtitle" id="filter-subtitle">当前按社区着色与筛选</div>
       <div class="filter-mode-tabs" id="filter-mode-tabs" aria-label="筛选维度">
         <button id="filter-mode-type" class="chip" type="button">按类型</button>
         <button id="filter-mode-community" class="chip active" type="button">按社区</button>
         <button id="filter-mode-health" class="chip" type="button">按健康度</button>
       </div>
-      <div class="filter-subtitle" id="filter-subtitle">当前按社区着色与筛选</div>
-      <div id="filter-degree-section" class="filter-degree-section">
-        <div class="filter-section-title">连接数 Top N</div>
+      <details id="filter-degree-section" class="filter-degree-section">
+        <summary class="filter-depth-summary">
+          <span class="filter-depth-summary-label">连接数 Top N</span>
+          <span class="filter-depth-summary-current" id="filter-degree-current">全部</span>
+        </summary>
         <p class="filter-degree-hint">按节点连接数（度）保留前 N 个；滑到最右为全部节点。</p>
         <div class="slider-row">
           <div class="slider-label">
@@ -1853,45 +1907,69 @@
           <input type="range" id="sl-degree-top" min="10" max="10" value="10" step="1"
                  aria-label="按连接数显示前 N 个节点" />
         </div>
-      </div>
-      <div id="filter-panel-body" class="filter-body"></div>
-      <details class="filter-depth-section" id="filter-depth-section">
+      </details>
+      <details id="filter-recency-section" class="filter-degree-section">
         <summary class="filter-depth-summary">
-          <span class="filter-depth-summary-label">路线视图</span>
-          <span class="filter-depth-summary-current" id="filter-depth-current"><span>🌐</span><span>全量</span></span>
+          <span class="filter-depth-summary-label">更新时间 Top N</span>
+          <span class="filter-depth-summary-current" id="filter-recency-current">全部</span>
         </summary>
-        <div class="filter-depth-chips" id="filter-depth-chips">
-          <button class="filter-depth-chip is-active" type="button" data-depth="all" title="全量"><span>🌐</span><span>全量</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="teleoperation" title="遥操作"><span>🎮</span><span>遥操作</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="torque-motor-design" title="力矩电机设计"><span>⚙️</span><span>力矩电机设计</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="classical-control" title="传统控制"><span>📐</span><span>传统控制</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="humanoid-hardware-design" title="整机硬件"><span>🛠️</span><span>整机硬件</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="safe-control" title="安全控制"><span>🛡️</span><span>安全控制</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="contact-manipulation" title="接触操作"><span>🤏</span><span>接触操作</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="navigation" title="导航"><span>🗺️</span><span>导航</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="imitation-learning" title="模仿学习"><span>🎓</span><span>模仿学习</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="rl-locomotion" title="RL 运动控制"><span>🚶</span><span>RL 运动控制</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="loco-manipulation" title="Loco-Manip"><span>🤖</span><span>Loco-Manip</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="humanoid-soccer" title="人形足球"><span>⚽</span><span>人形足球</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="motion-retargeting" title="动作重定向"><span>🤸</span><span>动作重定向</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="humanoid-swarm-performance" title="人形群控展演"><span>🕺</span><span>人形群控展演</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="sim2real" title="Sim2Real"><span>🔁</span><span>Sim2Real</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="humanoid-boxing" title="人形拳击"><span>🥊</span><span>人形拳击</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="bfm" title="BFM"><span>🧠</span><span>BFM</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="perceptive-locomotion" title="感知越障"><span>👁️</span><span>感知越障</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="motion-generation" title="动作生成"><span>✨</span><span>动作生成</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="vla" title="VLA"><span>👀</span><span>VLA</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="real2sim" title="Real2Sim"><span>🌍</span><span>Real2Sim</span></button>
-          <button class="filter-depth-chip" type="button" data-depth="wam" title="WAM"><span>🔮</span><span>WAM</span></button>
+        <p class="filter-degree-hint">按最近活跃日保留最新 N 个；滑到最左偏最新，滑到最右为全部节点。可与连接数 Top N 同时生效（取交集）。</p>
+        <div class="slider-row">
+          <div class="slider-label">
+            <span>最新节点数</span>
+            <span class="slider-val" id="val-recency-top">全部</span>
+          </div>
+          <input type="range" id="sl-recency-top" min="10" max="10" value="10" step="1"
+                 aria-label="按更新时间显示最新 N 个节点" />
         </div>
       </details>
-      <details class="filter-depth-section" id="filter-institution-section">
-        <summary class="filter-depth-summary">
-          <span class="filter-depth-summary-label">研究机构</span>
-          <span class="filter-depth-summary-current" id="filter-institution-current"><span>🏛️</span><span>全部</span></span>
-        </summary>
-        <div class="filter-institution-list" id="filter-institution-list"></div>
-      </details>
+      <div class="filter-sections-scroll" id="filter-dimension-sections">
+        <details class="filter-depth-section" id="filter-dimension-section" open>
+          <summary class="filter-depth-summary">
+            <span class="filter-depth-summary-label" id="filter-dimension-label">按社区</span>
+            <span class="filter-depth-summary-current" id="filter-dimension-current"><span>🧩</span><span>全部</span></span>
+          </summary>
+          <div class="filter-dimension-list" id="filter-panel-body"></div>
+        </details>
+        <details class="filter-depth-section" id="filter-depth-section">
+          <summary class="filter-depth-summary">
+            <span class="filter-depth-summary-label">路线视图</span>
+            <span class="filter-depth-summary-current" id="filter-depth-current"><span>🌐</span><span>全量</span></span>
+          </summary>
+          <div class="filter-depth-chips" id="filter-depth-chips">
+            <button class="filter-depth-chip is-active" type="button" data-depth="all" title="全量"><span>🌐</span><span>全量</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="motion-control" title="主路线-运动控制"><span>🧭</span><span>主路线-运动控制</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="teleoperation" title="遥操作"><span>🎮</span><span>遥操作</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="torque-motor-design" title="力矩电机设计"><span>⚙️</span><span>力矩电机设计</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="classical-control" title="传统控制"><span>📐</span><span>传统控制</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="humanoid-hardware-design" title="整机硬件"><span>🛠️</span><span>整机硬件</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="safe-control" title="安全控制"><span>🛡️</span><span>安全控制</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="contact-manipulation" title="接触操作"><span>🤏</span><span>接触操作</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="navigation" title="导航"><span>🗺️</span><span>导航</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="imitation-learning" title="模仿学习"><span>🎓</span><span>模仿学习</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="rl-locomotion" title="RL 运动控制"><span>🚶</span><span>RL 运动控制</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="loco-manipulation" title="Loco-Manip"><span>🤖</span><span>Loco-Manip</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="humanoid-soccer" title="人形足球"><span>⚽</span><span>人形足球</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="motion-retargeting" title="动作重定向"><span>🤸</span><span>动作重定向</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="humanoid-swarm-performance" title="人形群控展演"><span>🕺</span><span>人形群控展演</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="sim2real" title="Sim2Real"><span>🔁</span><span>Sim2Real</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="humanoid-boxing" title="人形拳击"><span>🥊</span><span>人形拳击</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="bfm" title="BFM"><span>🧠</span><span>BFM</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="perceptive-locomotion" title="感知越障"><span>👁️</span><span>感知越障</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="motion-generation" title="动作生成"><span>✨</span><span>动作生成</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="vla" title="VLA"><span>👀</span><span>VLA</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="real2sim" title="Real2Sim"><span>🌍</span><span>Real2Sim</span></button>
+            <button class="filter-depth-chip" type="button" data-depth="wam" title="WAM"><span>🔮</span><span>WAM</span></button>
+          </div>
+        </details>
+        <details class="filter-depth-section" id="filter-institution-section">
+          <summary class="filter-depth-summary">
+            <span class="filter-depth-summary-label">研究机构</span>
+            <span class="filter-depth-summary-current" id="filter-institution-current"><span>🏛️</span><span>全部</span></span>
+          </summary>
+          <div class="filter-institution-list" id="filter-institution-list"></div>
+        </details>
+      </div>
       <div class="filter-footer">
         <button id="filter-clear" class="filter-clear">清除全部</button>
       </div>
@@ -2030,7 +2108,162 @@
     const filterModeCommunityBtn = document.getElementById('filter-mode-community');
     const filterModeHealthBtn = document.getElementById('filter-mode-health');
     const filterPanelBody = document.getElementById('filter-panel-body');
+    const filterDimensionLabel = document.getElementById('filter-dimension-label');
+    const filterDimensionCurrent = document.getElementById('filter-dimension-current');
     const filterPanelScrim = document.getElementById('filter-panel-scrim');
+    const FILTER_DIMENSION_META = {
+      type: { emoji: '🏷️', unit: '项' },
+      community: { emoji: '🧩', unit: '个社区' },
+      health: { emoji: '💚', unit: '项' },
+    };
+
+    /* 筛选浮窗三区手风琴：维度 / 路线视图 / 研究机构 同时仅展开一个；默认「按社区」 */
+    const FILTER_ACCORDION_DEFAULT_ID = 'filter-dimension-section';
+    const FILTER_ACCORDION_SECTION_IDS = [
+      'filter-dimension-section',
+      'filter-depth-section',
+      'filter-institution-section',
+    ];
+    let filterAccordionLock = false;
+
+    function getFilterAccordionSections() {
+      return FILTER_ACCORDION_SECTION_IDS
+        .map((id) => document.getElementById(id))
+        .filter(Boolean);
+    }
+
+    function getFilterAccordionPane(section) {
+      if (!section) return null;
+      return section.querySelector(
+        ':scope > .filter-dimension-list, :scope > .filter-depth-chips, :scope > .filter-institution-list'
+      );
+    }
+
+    function ensureFilterScrollChrome(section) {
+      let chrome = section.querySelector(':scope > .filter-scroll-chrome');
+      if (chrome) return chrome;
+      chrome = document.createElement('div');
+      chrome.className = 'filter-scroll-chrome';
+      chrome.hidden = true;
+      chrome.setAttribute('aria-hidden', 'true');
+      chrome.innerHTML = '<div class="filter-scroll-thumb"></div>';
+      section.appendChild(chrome);
+      return chrome;
+    }
+
+    function syncFilterPaneScrollbar(section) {
+      if (!section) return;
+      const pane = getFilterAccordionPane(section);
+      const chrome = ensureFilterScrollChrome(section);
+      const thumb = chrome.querySelector('.filter-scroll-thumb');
+      const summary = section.querySelector(':scope > summary');
+      if (summary) {
+        section.style.setProperty('--filter-summary-h', `${Math.round(summary.offsetHeight)}px`);
+      }
+      if (!section.open || !pane || !thumb) {
+        chrome.hidden = true;
+        return;
+      }
+      const scrollH = pane.scrollHeight;
+      const clientH = pane.clientHeight;
+      if (scrollH <= clientH + 1) {
+        chrome.hidden = true;
+        return;
+      }
+      chrome.hidden = false;
+      const trackH = chrome.clientHeight || Math.max(0, section.clientHeight - (summary ? summary.offsetHeight : 0));
+      const thumbH = Math.max(28, Math.round(trackH * clientH / scrollH));
+      const maxTop = Math.max(0, trackH - thumbH);
+      const top = maxTop * pane.scrollTop / Math.max(1, scrollH - clientH);
+      thumb.style.height = `${thumbH}px`;
+      thumb.style.transform = `translateY(${Math.round(top)}px)`;
+    }
+
+    function syncOpenFilterPaneScrollbar() {
+      getFilterAccordionSections().forEach((section) => {
+        if (section.open) syncFilterPaneScrollbar(section);
+        else {
+          const chrome = section.querySelector(':scope > .filter-scroll-chrome');
+          if (chrome) chrome.hidden = true;
+        }
+      });
+    }
+
+    function openFilterAccordionSection(sectionId) {
+      const sections = getFilterAccordionSections();
+      if (!sections.length) return;
+      const target =
+        sections.find((s) => s.id === sectionId) ||
+        sections.find((s) => s.id === FILTER_ACCORDION_DEFAULT_ID) ||
+        sections[0];
+      filterAccordionLock = true;
+      sections.forEach((s) => { s.open = (s === target); });
+      filterAccordionLock = false;
+      requestAnimationFrame(syncOpenFilterPaneScrollbar);
+    }
+
+    function initFilterAccordion() {
+      const sections = getFilterAccordionSections();
+      if (!sections.length) return;
+      openFilterAccordionSection(FILTER_ACCORDION_DEFAULT_ID);
+      sections.forEach((section) => {
+        const summary = section.querySelector(':scope > summary');
+        if (summary) {
+          summary.addEventListener('click', (ev) => {
+            // 保持始终有一个展开区，避免收起后顶部/底部锚定失效
+            if (section.open) ev.preventDefault();
+          });
+        }
+        const pane = getFilterAccordionPane(section);
+        if (pane) {
+          pane.addEventListener('scroll', () => syncFilterPaneScrollbar(section), { passive: true });
+        }
+        section.addEventListener('toggle', () => {
+          if (filterAccordionLock) return;
+          if (section.open) {
+            filterAccordionLock = true;
+            sections.forEach((s) => { if (s !== section) s.open = false; });
+            filterAccordionLock = false;
+            requestAnimationFrame(syncOpenFilterPaneScrollbar);
+            return;
+          }
+          if (!sections.some((s) => s.open)) {
+            openFilterAccordionSection(FILTER_ACCORDION_DEFAULT_ID);
+          } else {
+            requestAnimationFrame(syncOpenFilterPaneScrollbar);
+          }
+        });
+      });
+      window.addEventListener('resize', () => requestAnimationFrame(syncOpenFilterPaneScrollbar));
+      // 列表异步填入后补一次滑块尺寸
+      setTimeout(syncOpenFilterPaneScrollbar, 0);
+      setTimeout(syncOpenFilterPaneScrollbar, 800);
+    }
+    initFilterAccordion();
+
+    /* 连接数 / 更新时间 Top N：二选一展开，允许全部收起 */
+    const FILTER_TOPN_SECTION_IDS = [
+      'filter-degree-section',
+      'filter-recency-section',
+    ];
+    let filterTopNAccordionLock = false;
+
+    function initFilterTopNAccordion() {
+      const sections = FILTER_TOPN_SECTION_IDS
+        .map((id) => document.getElementById(id))
+        .filter(Boolean);
+      if (sections.length < 2) return;
+      sections.forEach((section) => {
+        section.addEventListener('toggle', () => {
+          if (filterTopNAccordionLock) return;
+          if (!section.open) return;
+          filterTopNAccordionLock = true;
+          sections.forEach((s) => { if (s !== section) s.open = false; });
+          filterTopNAccordionLock = false;
+        });
+      });
+    }
+    initFilterTopNAccordion();
 
     function isFilterPanelMobileMode() {
       return window.matchMedia('(max-width: 768px)').matches;
@@ -2041,6 +2274,7 @@
       if (!filterPanel) return;
       filterPanel.hidden = !open;
       filterPanel.setAttribute('aria-hidden', open ? 'false' : 'true');
+      if (open) requestAnimationFrame(syncOpenFilterPaneScrollbar);
       if (!filterPanelScrim) return;
       if (isFilterPanelMobileMode() && open) {
         filterPanelScrim.classList.add('is-visible');
@@ -2194,6 +2428,7 @@
         });
       });
       updateInstitutionFilterSummary();
+      requestAnimationFrame(syncOpenFilterPaneScrollbar);
     }
 
     let focusedCommunityId = null;
@@ -2234,7 +2469,7 @@
       }
       if (topicIntroText) topicIntroText.textContent = meta.description || '';
       if (topicIntroLink && meta.wikiPath) {
-        topicIntroLink.href = 'detail.html?id=' + encodeURIComponent(toDetailId(meta.wikiPath));
+        topicIntroLink.href = pageUrlForPath(meta.wikiPath);
         topicIntroLink.hidden = false;
       } else if (topicIntroLink) {
         topicIntroLink.hidden = true;
@@ -2551,7 +2786,7 @@
     }
 
     function nodeLabelVisible(d) {
-      return nodeMatchesDegreeTop(d) && nodeMatchesCurrentFilter(d)
+      return nodeMatchesDegreeTop(d) && nodeMatchesRecencyTop(d) && nodeMatchesCurrentFilter(d)
         && nodeMatchesSearch(d) && nodeMatchesDepth(d) && nodeMatchesInstitutionFilter(d);
     }
 
@@ -2869,9 +3104,11 @@
     }
 
     function updateDegreeTopLabel() {
+      const text = topDegreeLimit >= totalNodeCount ? '全部' : String(topDegreeLimit);
       const valEl = document.getElementById('val-degree-top');
-      if (!valEl) return;
-      valEl.textContent = topDegreeLimit >= totalNodeCount ? '全部' : String(topDegreeLimit);
+      if (valEl) valEl.textContent = text;
+      const summaryEl = document.getElementById('filter-degree-current');
+      if (summaryEl) summaryEl.textContent = text;
     }
 
     function initDegreeTopSlider() {
@@ -2902,6 +3139,71 @@
       });
       slDegreeTop.addEventListener('change', () => {
         if (topDegreeIds) fitToScreen();
+      });
+    }
+
+    /* ── 更新时间 Top N 筛选（滑动条）：左=最新子集，右=全部；
+       排序口径与「更新明度渐变」一致（log.md 最近活跃日 activity / _recencyTs）；
+       无 activity 的节点视为最旧。与连接数 Top N 同时生效时取交集 ── */
+    const recencyTopMin = Math.min(10, totalNodeCount);
+    let topRecencyLimit = totalNodeCount;
+    let topRecencyIds = null;
+
+    function computeTopRecencyIds(limit) {
+      if (limit >= totalNodeCount) return null;
+      return new Set(
+        nodes.slice()
+          .sort((a, b) => {
+            const ta = a._recencyTs != null ? a._recencyTs : -Infinity;
+            const tb = b._recencyTs != null ? b._recencyTs : -Infinity;
+            if (tb !== ta) return tb - ta;
+            return a.id < b.id ? -1 : (a.id > b.id ? 1 : 0);
+          })
+          .slice(0, limit)
+          .map(n => n.id)
+      );
+    }
+
+    function nodeMatchesRecencyTop(d) {
+      return !topRecencyIds || topRecencyIds.has(d.id);
+    }
+
+    function updateRecencyTopLabel() {
+      const text = topRecencyLimit >= totalNodeCount ? '全部' : String(topRecencyLimit);
+      const valEl = document.getElementById('val-recency-top');
+      if (valEl) valEl.textContent = text;
+      const summaryEl = document.getElementById('filter-recency-current');
+      if (summaryEl) summaryEl.textContent = text;
+    }
+
+    function initRecencyTopSlider() {
+      const slider = document.getElementById('sl-recency-top');
+      if (!slider) return;
+      slider.min = String(recencyTopMin);
+      slider.max = String(totalNodeCount);
+      slider.value = String(topRecencyLimit);
+      updateRecencyTopLabel();
+    }
+
+    function setTopRecencyLimit(limit) {
+      topRecencyLimit = Math.max(recencyTopMin, Math.min(totalNodeCount, Number(limit)));
+      topRecencyIds = computeTopRecencyIds(topRecencyLimit);
+      const slider = document.getElementById('sl-recency-top');
+      if (slider) slider.value = String(topRecencyLimit);
+      updateRecencyTopLabel();
+      applyFilters();
+      updateFilterCount();
+    }
+
+    initRecencyTopSlider();
+    const slRecencyTop = document.getElementById('sl-recency-top');
+    if (slRecencyTop) {
+      slRecencyTop.addEventListener('input', ev => {
+        if (areFiltersLocked()) return;
+        setTopRecencyLimit(ev.target.value);
+      });
+      slRecencyTop.addEventListener('change', () => {
+        if (topRecencyIds) fitToScreen();
       });
     }
 
@@ -2967,7 +3269,14 @@
     function updateGraphViewport() {
       if (!measureGraphViewport()) return false;
       if (simulation) {
-        simulation.force('center', d3.forceCenter(W / 2, H / 2).strength(0.05));
+        simulation.force('center', d3.forceCenter(W / 2, H / 2).strength(FORCE_CENTER_STRENGTH));
+        // 非磁吸时同步向心位置力目标；磁吸模式下 x/y 指向类别中心，勿覆盖。
+        if (!isMagnetic2D) {
+          const fx = simulation.force('x');
+          const fy = simulation.force('y');
+          if (fx && typeof fx.x === 'function') fx.x(W / 2);
+          if (fy && typeof fy.y === 'function') fy.y(H / 2);
+        }
       }
       return true;
     }
@@ -3008,6 +3317,40 @@
       svg.attr('width', W).attr('height', H);
     }
 
+    // 2D 力模拟：略欠阻尼，允许「最多一次」回弹后落稳（以「刷新布局」手感为准）。
+    // 1) 叶序铺开（避免中心 80px 小团炸成多轮震荡）；
+    // 2) 中等摩擦 + 度数加权弹簧（保活力，抑制密图连震）；
+    // 3) 极短 warmup（~20 tick）只吃掉最凶的首段爆炸，可见阶段仍有一次回弹。
+    const FORCE_CENTER_STRENGTH = 0.05;
+    const FORCE_VELOCITY_DECAY = 0.54;
+    const FORCE_ALPHA_DECAY = 0.04;
+    const FORCE_LINK_STRENGTH = 0.72;   // 实际强度 = 该值 / sqrt(min(deg_s, deg_t))
+    const FORCE_COLLIDE_STRENGTH = 0.45;
+    const FORCE_WARMUP_TICKS = 20;
+    const FORCE_REHEAT_ALPHA = 0.9;
+
+    function seedNodePositionsPhyllotaxis(targetNodes) {
+      const list = targetNodes || nodes;
+      const cx = W / 2;
+      const cy = H / 2;
+      // 略紧于完全舒展叶序，给首帧可见扩张动能，但仍远宽于旧 80px 小团。
+      const initialRadius = 10;
+      const goldenAngle = Math.PI * (3 - Math.sqrt(5));
+      for (let i = 0; i < list.length; i++) {
+        const n = list[i];
+        n.fx = null;
+        n.fy = null;
+        n.vx = 0;
+        n.vy = 0;
+        const r = initialRadius * Math.sqrt(0.5 + i);
+        const a = i * goldenAngle;
+        n.x = cx + r * Math.cos(a);
+        n.y = cy + r * Math.sin(a);
+      }
+    }
+
+    /** 「刷新布局」：真随机重铺（与 3D resetNodePositionsInPlace 同尺度）。
+     *  首屏仍用叶序；若这里也走确定性叶序，每次刷新会收敛到几乎同一布局。 */
     function randomizeNodePositions() {
       const cx = W / 2;
       const cy = H / 2;
@@ -3021,13 +3364,34 @@
       }
     }
 
-    /* ── 力模拟 ── */
+    function linkStrengthFor(link) {
+      const s = typeof link.source === 'object' ? link.source.id : link.source;
+      const t = typeof link.target === 'object' ? link.target.id : link.target;
+      const deg = Math.min(degreeMap[s] || 1, degreeMap[t] || 1);
+      return FORCE_LINK_STRENGTH / Math.max(1, Math.sqrt(deg));
+    }
+
+    function applyCenterGravity2D() {
+      // 类似 Obsidian「Center force」：弱向心位置力抑制整图漂移/晃动；
+      // forceCenter 只平移质心，本身不提供阻尼。
+      simulation.force('x', d3.forceX(W / 2).strength(FORCE_CENTER_STRENGTH));
+      simulation.force('y', d3.forceY(H / 2).strength(FORCE_CENTER_STRENGTH));
+    }
+
+    // 首帧前先铺开，避免 d3 默认绕原点叶序 + 弱 forceCenter 造成的额外平移震荡。
+    seedNodePositionsPhyllotaxis(nodes);
+
+    /* ── 力模拟（先 stop；DOM 挂好后再以完整 alpha 开场，保留一次回弹）── */
     const simulation = d3.forceSimulation(nodes)
-      .force('link', d3.forceLink(edges).id(d => d.id).distance(80).strength(0.35))
+      .force('link', d3.forceLink(edges).id(d => d.id).distance(80).strength(linkStrengthFor))
       .force('charge', d3.forceManyBody().strength(chargeStrength).distanceMax(400))
-      .force('center', d3.forceCenter(W / 2, H / 2).strength(0.05))
-      .force('collision', d3.forceCollide().radius(d => scaledRadius(d) + 5).strength(0.7))
-      .alphaDecay(0.025);
+      .force('center', d3.forceCenter(W / 2, H / 2).strength(FORCE_CENTER_STRENGTH))
+      .force('collision', d3.forceCollide().radius(d => scaledRadius(d) + 5).strength(FORCE_COLLIDE_STRENGTH))
+      .force('x', d3.forceX(W / 2).strength(FORCE_CENTER_STRENGTH))
+      .force('y', d3.forceY(H / 2).strength(FORCE_CENTER_STRENGTH))
+      .velocityDecay(FORCE_VELOCITY_DECAY)
+      .alphaDecay(FORCE_ALPHA_DECAY)
+      .stop();
 
     function pauseSimulation2D() {
       simulation.stop();
@@ -3037,7 +3401,7 @@
     function resumeSimulation2D() {
       if (is3DView()) return;
       simulation.alphaTarget(0);
-      simulation.alpha(0.18).restart();
+      simulation.alpha(0.25).restart();
     }
 
     function updateForces() {
@@ -3075,10 +3439,9 @@
         simulation.force('x', d3.forceX(getTargetX).strength(0.18));
         simulation.force('y', d3.forceY(getTargetY).strength(0.18));
       } else {
-        simulation.force('x', null);
-        simulation.force('y', null);
+        applyCenterGravity2D();
       }
-      simulation.alpha(0.3).restart();
+      simulation.alpha(0.25).restart();
     }
 
     /* ── 渲染边 ── */
@@ -3100,7 +3463,7 @@
       .call(d3.drag()
         .on('start', (ev, d) => {
           if (is3DView()) return;
-          if (!ev.active) simulation.alphaTarget(0.3).restart();
+          if (!ev.active) simulation.alphaTarget(0.2).restart();
           d.fx = d.x; d.fy = d.y;
         })
         .on('drag', (ev, d) => {
@@ -3289,8 +3652,7 @@
       }
     }
 
-    syncGraphDomFromSimulation();
-    whenGraphViewportReady(() => finishGraphRenderLoad());
+    // 首屏力布局在下方 runStabilizedLayout2D() 就位后再 finishLoading。
 
     function getFilterOptions() {
       if (colorMode === 'community') {
@@ -3312,6 +3674,16 @@
       return '按类型';
     }
 
+    function updateDimensionFilterSummary() {
+      const meta = FILTER_DIMENSION_META[colorMode] || FILTER_DIMENSION_META.community;
+      const n = activeFilters.size;
+      const text = n ? (n + ' ' + meta.unit) : '全部';
+      if (filterDimensionLabel) filterDimensionLabel.textContent = getColorModeLabel(colorMode);
+      if (filterDimensionCurrent) {
+        filterDimensionCurrent.innerHTML = '<span>' + meta.emoji + '</span><span>' + text + '</span>';
+      }
+    }
+
     function renderFilterPanel() {
       const title = '🔍 图谱筛选';
       if (filterToggle) filterToggle.title = '图谱筛选（当前' + getColorModeLabel(colorMode) + '）';
@@ -3321,26 +3693,25 @@
       if (filterModeTypeBtn) filterModeTypeBtn.classList.toggle('active', colorMode === 'type');
       if (filterModeCommunityBtn) filterModeCommunityBtn.classList.toggle('active', colorMode === 'community');
       if (filterModeHealthBtn) filterModeHealthBtn.classList.toggle('active', colorMode === 'health');
+      updateDimensionFilterSummary();
       if (!filterPanelBody) return;
       const options = getFilterOptions();
       if (!options.length) {
         filterPanelBody.innerHTML = '<div class="filter-empty">当前暂无可筛选项</div>';
       } else {
-        filterPanelBody.innerHTML =
-          '<div class="filter-section-title">' + escapeHtml(getColorModeLabel(colorMode)) + '筛选</div>'
-          + options.map(option => {
-              const checked = activeFilters.has(option.value) ? ' checked' : '';
-              const meta = colorMode === 'community' ? communityMetaMap.get(option.value) : null;
-              const countBadge = meta && meta.size != null
-                ? '<span class="filter-count-badge">' + escapeHtml(String(meta.size)) + '</span>'
-                : '';
-              return '<label class="filter-item">'
-                + '<input type="checkbox" value="' + escapeHtml(option.value) + '"' + checked + ' /> '
-                + '<span class="filter-dot" style="background:' + escapeHtml(option.color) + '"></span>'
-                + '<span class="filter-item-label">' + escapeHtml(option.label) + '</span>'
-                + countBadge
-                + '</label>';
-            }).join('');
+        filterPanelBody.innerHTML = options.map(option => {
+          const checked = activeFilters.has(option.value) ? ' checked' : '';
+          const meta = colorMode === 'community' ? communityMetaMap.get(option.value) : null;
+          const countBadge = meta && meta.size != null
+            ? '<span class="filter-count-badge">' + escapeHtml(String(meta.size)) + '</span>'
+            : '';
+          return '<label class="filter-item">'
+            + '<input type="checkbox" value="' + escapeHtml(option.value) + '"' + checked + ' /> '
+            + '<span class="filter-dot" style="background:' + escapeHtml(option.color) + '"></span>'
+            + '<span class="filter-item-label">' + escapeHtml(option.label) + '</span>'
+            + countBadge
+            + '</label>';
+        }).join('');
       }
 
       filterPanelBody.querySelectorAll('input[type="checkbox"]').forEach(cb => {
@@ -3351,10 +3722,12 @@
           } else {
             activeFilters.delete(cb.value);
           }
+          updateDimensionFilterSummary();
           applyFilters();
           updateFilterCount();
         });
       });
+      requestAnimationFrame(syncOpenFilterPaneScrollbar);
     }
 
     function refreshNodeColors() {
@@ -3410,6 +3783,51 @@
       whenGraphViewportReady(() => fitToScreen());
     }
 
+    /** 极短 warmup 后开场：可见一次扩张/回弹，再靠摩擦与冷却落稳。
+     *  reseed=true（刷新布局）走真随机；首屏不传 reseed，沿用已铺好的叶序种子。 */
+    function runStabilizedLayout2D(options) {
+      const opts = options || {};
+      if (opts.reseed) randomizeNodePositions();
+      simulation.stop();
+      simulation.alphaTarget(0);
+      for (const n of simulation.nodes()) {
+        n.vx = 0;
+        n.vy = 0;
+      }
+      syncGraphDomFromSimulation();
+
+      const finishAndReheat = () => {
+        // 不清零速度：保留一小段动量，形成「最多一次」回弹，而不是过阻尼发死。
+        syncGraphDomFromSimulation();
+        simulation.alpha(FORCE_REHEAT_ALPHA).restart();
+      };
+
+      if (FORCE_WARMUP_TICKS <= 0) {
+        finishAndReheat();
+        return;
+      }
+
+      simulation.alpha(1);
+      // 「刷新布局」用 rAF 分片，避免主线程卡顿；首屏可同步跑完。
+      if (opts.async) {
+        let i = 0;
+        const step = () => {
+          const end = Math.min(i + 10, FORCE_WARMUP_TICKS);
+          for (; i < end; i++) simulation.tick();
+          if (i < FORCE_WARMUP_TICKS) {
+            requestAnimationFrame(step);
+            return;
+          }
+          finishAndReheat();
+        };
+        requestAnimationFrame(step);
+        return;
+      }
+
+      for (let i = 0; i < FORCE_WARMUP_TICKS; i++) simulation.tick();
+      finishAndReheat();
+    }
+
     function restartForceSimulation() {
       if (is3DView() && graph3dView) {
         graph3dView.restartSimulation();
@@ -3420,9 +3838,8 @@
       userZoomed2D = false;
       label.style('opacity', 0);
       updateGraphViewport();
-      randomizeNodePositions();
-      syncGraphDomFromSimulation();
-      simulation.alpha(1).restart();
+      // 刷新布局：同步短 warmup（仅 20 tick），验收以该按钮手感为准（不用时序动画）。
+      runStabilizedLayout2D({ reseed: true });
     }
 
     /* ── Tick ── */
@@ -3437,10 +3854,15 @@
       finishSimulationLoad();
     });
 
+    // 首屏：种子就位后直接开场（约 2–3s 内完成一次回弹并落稳）。
+    setLoadingProgress(96);
+    runStabilizedLayout2D();
+    whenGraphViewportReady(() => finishGraphRenderLoad());
+
     setTimeout(() => {
       if (simulation.alpha() > 0.01) return;
       finishSimulationLoad();
-    }, 1200);
+    }, 2200);
 
     const restartSimulationBtn = document.getElementById('restart-simulation');
     if (restartSimulationBtn) {
@@ -3634,7 +4056,8 @@
     }
 
     function hasActiveGraphFilter() {
-      return topDegreeIds !== null || activeFilters.size > 0 || searchQuery.length > 0
+      return topDegreeIds !== null || topRecencyIds !== null
+        || activeFilters.size > 0 || searchQuery.length > 0
         || focusedCommunityId || focusedType || focusedHealth !== null
         || activeInstitutions.size > 0 || currentDepth !== 'all';
     }
@@ -3901,6 +4324,7 @@
       document.removeEventListener('mouseup', endFilterPanelResize);
       document.body.classList.remove('filter-panel-resizing');
       document.body.style.cursor = '';
+      requestAnimationFrame(syncOpenFilterPaneScrollbar);
     }
 
     (function initFilterPanelSize() {
@@ -3964,6 +4388,9 @@
       topDegreeLimit = totalNodeCount;
       topDegreeIds = null;
       initDegreeTopSlider();
+      topRecencyLimit = totalNodeCount;
+      topRecencyIds = null;
+      initRecencyTopSlider();
       renderFilterPanel();
       renderInstitutionFilterSection();
       setActiveTopic('all');
@@ -3972,7 +4399,10 @@
 
     /* ── checkbox 筛选 ── */
     function updateFilterCount() {
-      const count = activeFilters.size + activeInstitutions.size + (topDegreeIds ? 1 : 0) + (currentDepth && currentDepth !== 'all' ? 1 : 0);
+      const count = activeFilters.size + activeInstitutions.size
+        + (topDegreeIds ? 1 : 0)
+        + (topRecencyIds ? 1 : 0)
+        + (currentDepth && currentDepth !== 'all' ? 1 : 0);
       const countEl = document.getElementById('filter-count');
       if (count > 0) {
         countEl.textContent = count;
@@ -4061,7 +4491,8 @@
       let visible = 0;
 
       node.each(function(d) {
-        const ok = nodeMatchesDegreeTop(d) && nodeMatchesCurrentFilter(d)
+        const ok = nodeMatchesDegreeTop(d) && nodeMatchesRecencyTop(d)
+          && nodeMatchesCurrentFilter(d)
           && nodeMatchesSearch(d) && nodeMatchesDepth(d) && nodeMatchesInstitutionFilter(d);
         if (ok) { visible++; visibleNodeIds.add(d.id); }
 
@@ -4096,6 +4527,7 @@
           const t = typeof e.target === 'object' ? e.target : nodes.find(n => n.id === e.target);
           if (!s || !t) return 0.2;
           return (nodeMatchesDegreeTop(s) && nodeMatchesDegreeTop(t)
+                  && nodeMatchesRecencyTop(s) && nodeMatchesRecencyTop(t)
                   && edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s) && nodeMatchesDepth(s) && nodeMatchesInstitutionFilter(s)
                   && edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t) && nodeMatchesDepth(t) && nodeMatchesInstitutionFilter(t)) ? 1 : 0.2;
         })
@@ -4105,6 +4537,7 @@
           const t = typeof e.target === 'object' ? e.target : nodes.find(n => n.id === e.target);
           if (!s || !t) return linkWidthBase * 0.5;
           const edgeOk = nodeMatchesDegreeTop(s) && nodeMatchesDegreeTop(t)
+            && nodeMatchesRecencyTop(s) && nodeMatchesRecencyTop(t)
             && edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s) && nodeMatchesDepth(s) && nodeMatchesInstitutionFilter(s)
             && edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t) && nodeMatchesDepth(t) && nodeMatchesInstitutionFilter(t);
           return edgeOk ? linkWidthBase : linkWidthBase * 0.5;
@@ -4336,6 +4769,15 @@
       updateTimelineProgress(timelineIdx, timelineTotal);
     }
 
+    function stopTimelineTimer() {
+      if (timelineAnimTimer) {
+        clearInterval(timelineAnimTimer);
+        timelineAnimTimer = null;
+      }
+      timelinePlaying = false;
+      svg.interrupt('tlfit');
+    }
+
     function startTimelinePlayback() {
       if (!timelineAnimating || timelinePlaying) return;
       if (timelineIdx >= timelineTotal) seekTimeline(0, false); // 已到末尾再播放则从头开始
@@ -4351,21 +4793,17 @@
     }
 
     function onTimelinePlaybackComplete() {
-      if (timelineAnimTimer) { clearInterval(timelineAnimTimer); timelineAnimTimer = null; }
-      timelinePlaying = false;
+      stopTimelineTimer();
       updateTimelineControls();
       simulation.alphaTarget(0);     // 缓缓收敛（最后一批节点落位），不立即冻结
       fitToTimelineNodes();
     }
 
     function pauseTimelinePlayback() {
-      if (timelineAnimTimer) {
-        clearInterval(timelineAnimTimer);
-        timelineAnimTimer = null;
-      }
-      timelinePlaying = false;
-      svg.interrupt('tlfit');
-      simulation.alphaTarget(0.3).restart();   // 仅停计时器，力导向布局继续演化
+      stopTimelineTimer();
+      // 仅停计时器：力导向继续演化（alphaTarget>0）。退出时序绝不能走这条路径，
+      // 否则 stop() 后仍残留加热目标，空白点击 restart 会永久自振。
+      simulation.alphaTarget(0.3).restart();
       updateTimelineControls();
     }
 
@@ -4413,7 +4851,10 @@
     // 拆除时序模式：停播、恢复完整力模拟成员、复位节点显隐（供退出与「刷新布局」共用）
     function teardownTimelineMode() {
       if (timeline3D) { teardownTimelineMode3D(); return; }
-      pauseTimelinePlayback();
+      // 只停计时器，不要走 pauseTimelinePlayback（会把 alphaTarget 钉在 0.3）
+      stopTimelineTimer();
+      simulation.alphaTarget(0);
+      simulation.stop();
       timelineAnimating = false;
       timelineRevealedIds.clear();
       timelineIdx = 0;
@@ -4432,9 +4873,12 @@
 
     function exitTimelineMode() {
       teardownTimelineMode();
-      // 还原进入前布局并定格
+      // 还原进入前布局并完全冷却：alpha/alphaTarget 归零，避免后续任意 restart 残留加热
       restoreTimelinePositions();
+      simulation.alphaTarget(0);
+      simulation.alpha(0);
       simulation.stop();
+      for (const n of simulation.nodes()) { n.vx = 0; n.vy = 0; }
       syncGraphDomFromSimulation();
       labelsSettled2D = true;
       sync2DNodeLabels();
@@ -4913,7 +5357,11 @@
         updateGraphViewport();
         const cx = (wrap.clientWidth || W) / 2;
         const cy = (wrap.clientHeight || H) / 2;
-        simulation.force('center', d3.forceCenter(cx, cy).strength(0.05));
+        simulation.force('center', d3.forceCenter(cx, cy).strength(FORCE_CENTER_STRENGTH));
+        if (!isMagnetic2D) {
+          simulation.force('x', d3.forceX(cx).strength(FORCE_CENTER_STRENGTH));
+          simulation.force('y', d3.forceY(cy).strength(FORCE_CENTER_STRENGTH));
+        }
         simulation.alpha(0.1).restart();
         simulation.on('end.sidebar', () => {
           simulation.on('end.sidebar', null);
@@ -5033,11 +5481,19 @@
       scheduleSidebarViewportSync();
     }
     function closeSidebar() {
+      const wasOpen = sidebar.classList.contains('open');
       sidebar.classList.remove('open');
       wrap.classList.remove('sidebar-open');
-      scheduleSidebarViewportSync();
       if (isMobile) hideTooltip();
-      clearNodeNeighborHighlight({ relayout: true });
+      // 侧栏未开时空白点击也会走到这里：不要 scheduleSidebarViewportSync /
+      // relayout（二者都会 alpha().restart()）。曾与时序退出残留的
+      // alphaTarget=0.3 叠加，导致整图永久自振。
+      if (wasOpen) {
+        scheduleSidebarViewportSync();
+        clearNodeNeighborHighlight({ relayout: true });
+      } else {
+        clearNodeNeighborHighlight({ relayout: false });
+      }
     }
 
     sbClose.addEventListener('click', closeSidebar);
@@ -5118,6 +5574,7 @@
     const topicParam = _depthParams.get('depth') || _depthParams.get('topic');
     if (topicParam && DEPTH_FILTERS[topicParam]) {
       setActiveTopic(topicParam);
+      openFilterAccordionSection('filter-depth-section');
     }
 
     /* ?community=<id> URL 参数：从详情页"所属社区"徽标跳入时聚焦该社区，
@@ -5125,6 +5582,8 @@
     const communityParam = new URLSearchParams(location.search).get('community');
     if (communityParam && communityMetaMap.has(communityParam)) {
       focusedCommunityId = communityParam;
+      if (colorMode !== 'community') setColorMode('community');
+      openFilterAccordionSection('filter-dimension-section');
       renderLegend();
       renderFilterPanel();
       applyFilters();
@@ -5142,8 +5601,7 @@
       renderInstitutionFilterSection();
       applyFilters();
       updateFilterCount();
-      const instSection = document.getElementById('filter-institution-section');
-      if (instSection) instSection.open = true;
+      openFilterAccordionSection('filter-institution-section');
       const fitFocusedInstitution = () => fitToVisibleNodes();
       simulation.on('end.institution', () => { fitFocusedInstitution(); simulation.on('end.institution', null); });
       setTimeout(fitFocusedInstitution, 1400);
@@ -5173,6 +5631,13 @@
         setTimeout(flyToFocus, 1400);
       }
     }
+
+    // 供验证脚本读取 2D 力模拟加热态（非业务 UI）
+    window.__RN_GRAPH2D_DEBUG__ = {
+      alpha: () => simulation.alpha(),
+      alphaTarget: () => simulation.alphaTarget(),
+      timelineAnimating: () => timelineAnimating,
+    };
 
   })();
   </script>

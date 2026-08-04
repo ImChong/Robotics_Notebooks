@@ -59,6 +59,15 @@ DemoHLM 主要解决数据闭环：用相机图像/多视角观测、本体状�
 - 评测原始出处：[原文 / 项目页](https://beingbeyond.github.io/DemoHLM/)（见上方「核心信息」表「论文/项目」一行）。
 - 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-08-hardware-deployment.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 结论
+
+**DemoHLM 把赌注押在「一条示范 + 数据放大」上：难点被摆在如何把单次示范扩成可训练、可复用的数据闭环，而不是设计新的策略结构。**
+
+- 起作用的是行为克隆加 WBC/MPC 再加闭环纠错/人类干预这条组合拳，把示范轨迹压成可监督的动作预测，用动作 chunk 或闭环执行压时序抖动。
+- 泛化上限受采集条件约束：数据来自遥操作/外骨骼与图像、本体状态，示范覆盖不到的物体与场景不会凭空泛化。
+- 本页归在 08 硬件平台、感知配置与部署扩展，说明其价值主张更偏部署可扩展性，而非新算法本身。
+- 有公开项目页；索引级条目不含量化指标，横向对照回 [分类 hub](../overview/loco-manip-161-category-08-hardware-deployment.md)。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

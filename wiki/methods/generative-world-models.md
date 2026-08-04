@@ -36,6 +36,7 @@ related:
   - ../entities/paper-rofacto.md
   - ../entities/paper-vitacworld.md
   - ../entities/paper-wan-move.md
+  - ../entities/paper-wan-dancer.md
   - ../entities/paper-wan-video.md
   - ../entities/paper-robointer-1-5.md
   - ../entities/molmo-motion.md
@@ -73,6 +74,7 @@ sources:
   - ../../sources/papers/masked_visual_actions_arxiv_2607_19343.md
   - ../../sources/papers/ctrl_world_arxiv_2510_10125.md
   - ../../sources/papers/wan_move_arxiv_2512_08765.md
+  - ../../sources/papers/wan_dancer_arxiv_2607_09581.md
   - ../../sources/papers/wan_video_arxiv_2503_20314.md
   - ../../sources/papers/m4world_arxiv_2607_14005.md
   - ../../sources/papers/abot_world_0_arxiv_2607_19191.md
@@ -162,9 +164,9 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 
 [Ctrl-World](../entities/paper-ctrl-world.md)（arXiv:2510.10125，ICLR 2026，Stanford×Tsinghua）从 **SVD** 初始化，用 **帧级动作条件 + 位姿记忆检索 + 第三人称/腕部联合预测**，把被动视频生成器改成可与 π₀ / π₀.₅ 等现代 VLA **policy-in-the-loop** 交互的想象环境；DROID 训练后可零样本到新机位，想象指令跟随排名对齐真机，并用合成成功轨迹 SFT 把新指令成功率 **38.7%→83.4%**（约 **+44.7 pt**）。与 MVA 同属「动作条件视频 WM + 虚拟评估」，但条件是 **低维动作/位姿**、强调 **多视角 VLA 接口**，而非像素掩码前向/逆向统一。
 
-### 开源视频先验与轨迹可控 I2V（示例：Wan / Wan-Move）
+### 开源视频先验与轨迹可控 I2V（示例：Wan / Wan-Move / Wan-Dancer）
 
-[Wan](../entities/paper-wan-video.md)（arXiv:2503.20314）提供开源 **DiT + Wan-VAE** 视频基础模型族（Wan2.1/2.2）；[Wan-Move](../entities/paper-wan-move.md)（arXiv:2512.08765，NeurIPS 2025）在 **不改 I2V 架构** 的前提下，把点轨迹映射到 latent 并复制首帧特征作运动引导，微调 **Wan-I2V-14B** 达到商用 Motion Brush 级可控性，并发布 **MoveBench**。二者本身不是操纵 WM，但是 MVA（Wan-Fun-Control）与大量机器人视频 WM 的 **上游先验 / 视觉对照基线**。
+[Wan](../entities/paper-wan-video.md)（arXiv:2503.20314）提供开源 **DiT + Wan-VAE** 视频基础模型族（Wan2.1/2.2）；[Wan-Move](../entities/paper-wan-move.md)（arXiv:2512.08765，NeurIPS 2025）在 **不改 I2V 架构** 的前提下，把点轨迹映射到 latent 并复制首帧特征作运动引导，微调 **Wan-I2V-14B** 达到商用 Motion Brush 级可控性，并发布 **MoveBench**；[Wan-Dancer](../entities/paper-wan-dancer.md)（arXiv:2607.09581）同在 Wan-I2V 上做分层 **music-to-dance**，把连贯生成推到 **分钟级 720p**。三者本身不是操纵 WM，但是 MVA（Wan-Fun-Control）与大量机器人视频 WM / 参考视频先验的 **上游对照**。
 
 ### 中间表示条件可控推演（示例：RoboInter-World）
 
@@ -265,9 +267,10 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [DriftWorld](../entities/paper-driftworld.md) — **1-step drifting** 动作条件 WM：推理时搜索 + 离线评估（arXiv:2607.15065）。
 - [Masked Visual Actions](../entities/paper-masked-visual-actions.md) — **像素掩码轨迹** 统一前向/逆向；RoboCasa 策略评估 **r=0.982**（arXiv:2607.19343）。
 - [Ctrl-World](../entities/paper-ctrl-world.md) — **多视角** 可控 WM：VLA 闭环评估 + 合成 SFT（ICLR 2026）。
+- [World Action Planner](../entities/paper-world-action-planner.md) — **pose-image** 条件多视角 WM + VLM 想象规划（arXiv:2607.27599；代码/权重已开源）。
 - [Rofacto](../entities/paper-rofacto.md) — **名义轨迹 + URDF 渲染** 动作接口；相对向量条件提升场景响应（arXiv:2607.22535）。
 - [ViTacWorld](../entities/paper-vitacworld.md) — **视触觉** 动作条件 WM：dream 数据增强 + 策略评估（arXiv:2607.22530）。
-- [Wan](../entities/paper-wan-video.md) / [Wan-Move](../entities/paper-wan-move.md) — 开源视频基础模型与 latent 轨迹运动控制。
+- [Wan](../entities/paper-wan-video.md) / [Wan-Move](../entities/paper-wan-move.md) / [Wan-Dancer](../entities/paper-wan-dancer.md) — 开源视频基础模型、轨迹运动控制与分钟级 music-to-dance。
 - [RoboInter1.5 / RoboInter-World](../entities/paper-robointer-1-5.md) — **IR 控制视频** 条件世界模型 + VLA 套件（arXiv:2607.18709）。
 - [τ₀-World Model（τ0-WM）](../entities/tau0-world-model.md) — Agibot **5B 统一视频–动作世界模型**：异构掩码预训练 + 测试时 propose–evaluate–revise（技术报告 2026-05-31）。
 - [Xiaomi-Robotics-U0](../entities/xiaomi-robotics-u0.md) — 小米 **38B 统一具身合成世界基础模型**：foundation T2I/X2I 与多视角场景/迁移/视频共训 + FlashAR+ 加速（arXiv:2607.11643）。
@@ -313,7 +316,9 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - Zhao, B., et al. (2026). *X-Mind: Efficient Visual Chain-of-Thought via Predictive World Model for End-to-End Driving* — 见 [sources/papers/x_mind_arxiv_2606_28758.md](../../sources/papers/x_mind_arxiv_2606_28758.md)。
 - Zayer, H., et al. (2026). *Masked Visual Actions* — 见 [sources/papers/masked_visual_actions_arxiv_2607_19343.md](../../sources/papers/masked_visual_actions_arxiv_2607_19343.md)。
 - Guo, Y., et al. (2026). *Ctrl-World* — 见 [sources/papers/ctrl_world_arxiv_2510_10125.md](../../sources/papers/ctrl_world_arxiv_2510_10125.md)。
+- Zhang, X., & Du, Y. (2026). *World Action Planner* — 见 [sources/papers/world_action_planner_arxiv_2607_27599.md](../../sources/papers/world_action_planner_arxiv_2607_27599.md)。
 - Chu, R., et al. (2025). *Wan-Move* — 见 [sources/papers/wan_move_arxiv_2512_08765.md](../../sources/papers/wan_move_arxiv_2512_08765.md)。
+- Huang, M., et al. (2026). *Wan-Dancer* — 见 [sources/papers/wan_dancer_arxiv_2607_09581.md](../../sources/papers/wan_dancer_arxiv_2607_09581.md)。
 - Wan Team (2025). *Wan* — 见 [sources/papers/wan_video_arxiv_2503_20314.md](../../sources/papers/wan_video_arxiv_2503_20314.md)。
 - Cheng, K., et al. (2026). *M⁴World: A Multi-view Multimodal Driving World Model for Interactive Object Manipulation and Minute-long Streaming* — 见 [sources/papers/m4world_arxiv_2607_14005.md](../../sources/papers/m4world_arxiv_2607_14005.md)。
 - Jiang, F., et al. (2026). *ABot-World-0: Infinite Interactive World Rollout on a Single Desktop GPU* — 见 [sources/papers/abot_world_0_arxiv_2607_19191.md](../../sources/papers/abot_world_0_arxiv_2607_19191.md)。

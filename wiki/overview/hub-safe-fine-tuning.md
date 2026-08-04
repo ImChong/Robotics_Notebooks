@@ -57,3 +57,4 @@ summary: "真机安全微调知识链汇总：Sim2Real 部署后的在线 RL 适
 
 - 本库归纳自 [Safe Real-World RL Fine-Tuning](../concepts/safe-real-world-rl-fine-tuning.md) 及 CBF/SLowRL 系列页
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`safe-fine-tuning` 命中规则）
+- 上游原始资料（本链概念页共同的 ingest 来源）：[SLowRL：运动控制的安全低秩自适应 RL（arXiv:2603.17092）](../../sources/papers/slowrl_arxiv_2603_17092.md)、[PAC-MAN：感知感知 CBF-RL 全身安全（arXiv:2607.28623）](../../sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md)、[最优控制理论](../../sources/papers/optimal_control_theory.md)

@@ -46,6 +46,14 @@ LocoFormer 的人形机器人学习论文条目，当前处于 Paper Notebooks �
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是 LocoFormer 在图谱中的占位条目，「长上下文自适应带来通用运动」目前只停留在标题层面。**
+
+- 页面未登记 arXiv 链接，可核验信息只有分类 05_Locomotion、计划笔记文件夹与 PROGRESS.md 待深读状态。
+- 长上下文自适应如何撑起「通用」这一主张，正文没有任何机制或指标支撑，不宜据此外推。
+- 适用边界：只作为 05_Locomotion 分类下的连边节点使用，深读笔记完成后再据此深化归纳。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

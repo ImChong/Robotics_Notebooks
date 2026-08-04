@@ -2,14 +2,16 @@
 type: entity
 tags: [software, unreal-engine, epic-games, simulation, rendering, game-engine, photorealistic]
 status: complete
-updated: 2026-07-26
+updated: 2026-08-03
 related:
   - ./unity-engine.md
+  - ./unreal-mcp.md
   - ./metahuman.md
   - ./airsim.md
   - ./carla.md
   - ./spear-sim.md
   - ./matrix-simulation-platform.md
+  - ../concepts/model-context-protocol.md
   - ../concepts/sim2real.md
   - ../concepts/procedural-terrain-generation.md
   - ../queries/simulator-selection-guide.md
@@ -18,6 +20,8 @@ related:
 sources:
   - ../../sources/sites/unreal-engine-5-com.md
   - ../../sources/sites/unreal-engine-5-8-docs.md
+  - ../../sources/sites/unreal-mcp-in-unreal-editor.md
+  - ../../sources/sites/modelcontextprotocol-io.md
   - ../../sources/repos/epicgames-github-org.md
   - ../../sources/repos/unrealengine-github.md
 summary: "Epic Unreal Engine 5 是跨游戏、影视与仿真的实时 3D 引擎：Nanite/Lumen/World Partition 支撑大规模高保真世界，Chaos 提供物理与破坏，5.8 起 MCP 插件连接 agentic AI；机器人栈中常作 AirSim/CARLA/SPEAR/MetaHuman/MATRiX 的视觉与场景宿主。"
@@ -35,7 +39,7 @@ summary: "Epic Unreal Engine 5 是跨游戏、影视与仿真的实时 3D 引擎
 | GI | Global Illumination | 全局光照；Lumen 提供动态 GI |
 | TSR | Temporal Super Resolution | 时域超分辨率升采样，平衡画质与帧率 |
 | PCG | Procedural Content Generation | 程序化内容生成，可脚本化场景布局 |
-| MCP | Model Context Protocol | 5.8 Experimental 插件，连接 LLM agent 与编辑器 |
+| MCP | Model Context Protocol | 5.8 Experimental；见 [Unreal MCP](./unreal-mcp.md) / 协议 [MCP](../concepts/model-context-protocol.md) |
 | Chaos | Chaos Physics | UE 内置物理求解器（刚体、布料、破坏等） |
 | GT | Ground Truth | 仿真标注真值；SPEAR 等库在 UE 上导出深度/语义等 |
 
@@ -44,7 +48,7 @@ summary: "Epic Unreal Engine 5 是跨游戏、影视与仿真的实时 3D 引擎
 1. **光真实感仿真宿主**：大量 **视觉 Sim2Real**、合成数据与 SLAM 工作流选择 UE 作渲染后端——[AirSim](./airsim.md)（UAV/AD）、[CARLA](./carla.md)（城市驾驶）、[SPEAR](./spear-sim.md)（通用 UE 反射 + 高速 GT）均建立在此之上。
 2. **人类参考与数字孪生可视化**：[MetaHuman](./metahuman.md) 提供写实数字人；[MATRiX](./matrix-simulation-platform.md) 将 **MuJoCo 物理** 与 **UE5 渲染** 联合，体现「控制物理 vs 视觉」分工。
 3. **大世界与传感器丰富度**：**World Partition** 流式加载、**Lumen/Nanite** 动态光照与几何细节、**Niagara/Sequencer** 与 **Mass** 框架，支撑户外场景、人群与多相机采集——适合 **域随机化** 与演示级数字孪生。
-4. **工程可扩展性**：C++ 模块、Blueprint、Python 脚本（项目/插件级）与 **Chaos Dataflow** 使研究者能定制传感器插件、物理与场景；**5.8 MCP 插件** 开始把 **agentic 场景编辑** 引入编辑器工作流。
+4. **工程可扩展性**：C++ 模块、Blueprint、Python 脚本（项目/插件级）与 **Chaos Dataflow** 使研究者能定制传感器插件、物理与场景；**5.8 [Unreal MCP](./unreal-mcp.md)** 把 **agentic 场景编辑** 嵌进编辑器进程（本机 HTTP Tools）。
 5. **获取形态清晰**：日常研发可用 **Launcher 二进制**（当前公开里程碑 **5.8**）；深度定制需 Epic 账号关联 GitHub 访问私有 [UnrealEngine 源码](https://github.com/EpicGames/UnrealEngine/tree/ue5-main)（见 [sources](../../sources/repos/unrealengine-github.md)）。
 
 ## 核心结构/机制
@@ -69,7 +73,7 @@ summary: "Epic Unreal Engine 5 是跨游戏、影视与仿真的实时 3D 引擎
 | 物理 | **Dataflow**（Cloth 等）、Chaos Destruction/CVD | 可编程破坏与布料；非足式接触金标准 |
 | 角色 | MetaHuman Crowds、Animator 全身无标记 (Exp.) | 人群视觉层、表演捕捉上游 |
 | 框架 | **Iris** 复制、Mass、Mover/ChaosMover | 多智能体/大规模实体模拟（偏视觉/NPC） |
-| 工具 | **MCP Server** (Experimental)、Movie Render Graph | LLM 驱动编辑器；离线高质量数据集渲染 |
+| 工具 | **[Unreal MCP](./unreal-mcp.md)** (Experimental)、Movie Render Graph | 编辑器内嵌 MCP HTTP server；离线高质量数据集渲染 |
 
 Epic 称 **5.8 为计划内最后一个 UE5 主版本**（保留 5.9 选项），并推进 **UE6**（目标 2027 年底 Early Access；Gameplay 向 **Verse** 演进）。
 
@@ -115,6 +119,8 @@ flowchart TB
 
 ## 关联页面
 
+- [Unreal MCP](./unreal-mcp.md) — UE 5.8 编辑器内嵌 MCP server（Experimental）与 Toolset 扩展
+- [Model Context Protocol（MCP）](../concepts/model-context-protocol.md) — 编辑器 MCP 插件所依的开放协议
 - [Unity Engine](./unity-engine.md) — 另一主流实时 3D 宿主（C# / 跨平台 / Flightmare 等）
 - [MetaHuman](./metahuman.md) — UE 生态内数字人创作与表演捕捉
 - [SPEAR](./spear-sim.md) — 任意 UE 项目的 Python 可编程仿真与 GT
@@ -130,6 +136,8 @@ flowchart TB
 
 - [sources/sites/unreal-engine-5-com.md](../../sources/sites/unreal-engine-5-com.md)
 - [sources/sites/unreal-engine-5-8-docs.md](../../sources/sites/unreal-engine-5-8-docs.md)
+- [sources/sites/unreal-mcp-in-unreal-editor.md](../../sources/sites/unreal-mcp-in-unreal-editor.md)
+- [sources/sites/modelcontextprotocol-io.md](../../sources/sites/modelcontextprotocol-io.md)
 - [sources/repos/epicgames-github-org.md](../../sources/repos/epicgames-github-org.md)
 - [sources/repos/unrealengine-github.md](../../sources/repos/unrealengine-github.md)
 
@@ -137,6 +145,7 @@ flowchart TB
 
 - [Unreal Engine 5 产品页](https://www.unrealengine.com/unreal-engine-5)
 - [UE 5.8 文档总索引](https://dev.epicgames.com/documentation/unreal-engine/unreal-engine-5-8-documentation)
+- [Unreal MCP in Unreal Editor](https://dev.epicgames.com/documentation/unreal-engine/unreal-mcp-in-unreal-editor)
 - [UE 5.8 Release Notes](https://dev.epicgames.com/documentation/unreal-engine/unreal-engine-5-8-release-notes)
 - [State of Unreal 2026 新闻稿](https://www.unrealengine.com/news/state-of-unreal-2026-top-news-from-the-show)
 - [Epic Games GitHub](https://github.com/epicgames)

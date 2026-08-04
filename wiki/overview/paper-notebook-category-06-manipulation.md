@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-03
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 06：灵巧操作（55 篇深读笔记索引）。"
@@ -87,6 +87,8 @@ summary: "Paper Notebooks 分类 06：灵巧操作（55 篇深读笔记索引）
 
 - [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)
 - [schema/paper-notebook-index.json](../../schema/paper-notebook-index.json)
+- 站点来源归档：[humanoid-robot-learning-paper-notebooks](../../sources/sites/humanoid-robot-learning-paper-notebooks.md)
+- 本类论文 ingest 归档（节选）：[人形 Loco-Manip 161 篇论文 source 索引](../../sources/papers/humanoid_loco_manip_161_catalog.md)、[EgoVLA](../../sources/papers/loco_manip_161_survey_161_egovla.md)、[DreamDojo：大规模人类视频通用机器人世界模型](../../sources/papers/humanoid_rl_stack_35_dreamdojo_a_generalist_robot_world_model_from_la.md)
 
 ## 推荐继续阅读
 

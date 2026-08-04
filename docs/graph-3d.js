@@ -9,23 +9,21 @@
     return typeof window.ForceGraph3D === 'function';
   }
 
-  /** 移动端 / 窄屏：3D 社区胶囊易挡节点，字号与缩放需单独收紧 */
-  function isMobileCommunityLabelLayout() {
-    try {
-      return window.matchMedia('(max-width: 768px), ((hover: none) and (pointer: coarse))').matches;
-    } catch (e) {
-      return false;
-    }
-  }
-
-  var MOBILE_COMMUNITY_LABEL_FONT_SCALE = 0.55;
-  var MOBILE_COMMUNITY_LABEL_FONT_MIN_PX = 6;
-  // 相机缩放另乘系数，避免 fit/dolly 后胶囊再次放大盖住节点
-  var MOBILE_COMMUNITY_LABEL_ZOOM_FACTOR = 0.55;
-  var MOBILE_COMMUNITY_LABEL_ZOOM_MIN = 0.22;
-  var MOBILE_COMMUNITY_LABEL_ZOOM_MAX = 0.9;
-  var MOBILE_COMMUNITY_LABEL_PAD_Y = 3.5;
-  var MOBILE_COMMUNITY_LABEL_PAD_X = 7.5;
+  /**
+   * 3D 社区胶囊按画布短边连续缩放（相对约 800px 的桌面参考短边）。
+   * 取代原先「≤768 / 粗指针 → 字号×0.55 且 zoom×0.55」的二元收紧：
+   * 那套在手机/平板上有效字号可落到 ~3–5px（难读），大屏又完全不放大。
+   */
+  var COMMUNITY_LABEL_REF_SHORT_PX = 800;
+  var COMMUNITY_LABEL_VP_SCALE_MIN = 0.78;
+  var COMMUNITY_LABEL_VP_SCALE_MAX = 1.28;
+  var COMMUNITY_LABEL_FONT_ABS_MIN_PX = 7;
+  var COMMUNITY_LABEL_FONT_ABS_MAX_PX = 22;
+  var COMMUNITY_LABEL_COMPACT_SHORT_PX = 520;
+  var COMMUNITY_LABEL_PAD_Y = 5;
+  var COMMUNITY_LABEL_PAD_X = 11;
+  var COMMUNITY_LABEL_COMPACT_PAD_Y = 3.5;
+  var COMMUNITY_LABEL_COMPACT_PAD_X = 7.5;
 
   function edgeEndpointId(endpoint) {
     return typeof endpoint === 'object' ? endpoint.id : endpoint;
@@ -204,6 +202,43 @@
     var areCommunityLabelsVisible = opts.areCommunityLabelsVisible || function () { return false; };
     var getCommunityLabelDescriptors = opts.getCommunityLabelDescriptors || function () { return []; };
 
+    function getCommunityLabelCanvasShortSide() {
+      var w = (container && container.clientWidth) || window.innerWidth || 1440;
+      var h = (container && container.clientHeight) || window.innerHeight || 900;
+      return Math.min(w, h);
+    }
+
+    /** 相对桌面参考短边的连续视口比例（sqrt 缓两端：手机抬底、大屏限顶） */
+    function communityLabelViewportScale() {
+      var shortSide = getCommunityLabelCanvasShortSide();
+      var raw = Math.sqrt(Math.max(1e-3, shortSide / COMMUNITY_LABEL_REF_SHORT_PX));
+      return Math.max(
+        COMMUNITY_LABEL_VP_SCALE_MIN,
+        Math.min(COMMUNITY_LABEL_VP_SCALE_MAX, raw)
+      );
+    }
+
+    function resolveCommunityLabelFontSize(baseFontSize) {
+      var base = (baseFontSize != null && isFinite(baseFontSize)) ? baseFontSize : 13;
+      var fontSize = base * communityLabelViewportScale();
+      return Math.max(
+        COMMUNITY_LABEL_FONT_ABS_MIN_PX,
+        Math.min(COMMUNITY_LABEL_FONT_ABS_MAX_PX, fontSize)
+      );
+    }
+
+    /** 相机 dolly 后的 scale 钳制：窄屏上限略紧，避免胶囊盖住节点 */
+    function communityLabelZoomClamps() {
+      var shortSide = getCommunityLabelCanvasShortSide();
+      if (shortSide < COMMUNITY_LABEL_COMPACT_SHORT_PX) {
+        return { min: 0.55, max: 1.25 };
+      }
+      if (shortSide < 900) {
+        return { min: 0.45, max: 1.55 };
+      }
+      return { min: 0.4, max: 1.75 };
+    }
+
     var labelLayer = null;
     var labelEls = new Map();
     var communityLabelEls = new Map();
@@ -266,7 +301,7 @@
     });
 
     function backgroundColor() {
-      return isDark() ? '#0d1117' : '#eef2f7';
+      return isDark() ? '#191919' : '#f7f6f3';
     }
 
     function getCameraDistance() {
@@ -530,19 +565,12 @@
         el.textContent = desc.label;
         el.style.background = desc.color;
         el.style.color = desc.textColor;
-        // 字号随社区节点数缩放（由 graph.html 按 3D 专用 8–16px / √n 算好传入，已排除「其他」）；内边距相对 13px 基准等比
-        // 移动端再乘系数并收紧内边距，避免胶囊挡住大量节点
-        var fontSize = (desc.fontSize != null && isFinite(desc.fontSize)) ? desc.fontSize : 13;
-        var mobile = isMobileCommunityLabelLayout();
-        if (mobile) {
-          fontSize = Math.max(
-            MOBILE_COMMUNITY_LABEL_FONT_MIN_PX,
-            fontSize * MOBILE_COMMUNITY_LABEL_FONT_SCALE
-          );
-        }
+        // 字号：graph.html 按社区节点数给出 3D 基准 8–16px，再乘视口短边比例并绝对钳制
+        var fontSize = resolveCommunityLabelFontSize(desc.fontSize);
         var scale = fontSize / 13;
-        var padY = (mobile ? MOBILE_COMMUNITY_LABEL_PAD_Y : 5) * scale;
-        var padX = (mobile ? MOBILE_COMMUNITY_LABEL_PAD_X : 11) * scale;
+        var compact = getCommunityLabelCanvasShortSide() < COMMUNITY_LABEL_COMPACT_SHORT_PX;
+        var padY = (compact ? COMMUNITY_LABEL_COMPACT_PAD_Y : COMMUNITY_LABEL_PAD_Y) * scale;
+        var padX = (compact ? COMMUNITY_LABEL_COMPACT_PAD_X : COMMUNITY_LABEL_PAD_X) * scale;
         el.style.fontSize = fontSize + 'px';
         el.style.padding = padY.toFixed(2) + 'px ' + padX.toFixed(2) + 'px';
       });
@@ -575,15 +603,10 @@
       return communityCentroidsCache;
     }
 
-    /** 取景落稳后的胶囊 scale（zf=1 时的钳制结果；移动端含收紧系数） */
+    /** 取景落稳后的胶囊 scale（zf=1 时的钳制结果；字号已按视口缩放，基线恒为 1） */
     function communityLabelZoomAtBaseline() {
-      if (isMobileCommunityLabelLayout()) {
-        return Math.max(
-          MOBILE_COMMUNITY_LABEL_ZOOM_MIN,
-          Math.min(MOBILE_COMMUNITY_LABEL_ZOOM_MAX, MOBILE_COMMUNITY_LABEL_ZOOM_FACTOR)
-        );
-      }
-      return 1;
+      var clamps = communityLabelZoomClamps();
+      return Math.max(clamps.min, Math.min(clamps.max, 1));
     }
 
     function communityLabelZoomScale() {
@@ -593,16 +616,9 @@
       if (!baselineCameraDist) return 1;
       var zf = getLabelZoomFactor();
       if (!isFinite(zf) || zf <= 0) return 1;
-      // 与节点一起放大缩小；钳制避免滚轮极限下胶囊过大/过小
-      // 移动端再乘系数并收紧上下限，防止 fit/pinch 后胶囊再次盖住节点
-      if (isMobileCommunityLabelLayout()) {
-        return Math.max(
-          MOBILE_COMMUNITY_LABEL_ZOOM_MIN,
-          Math.min(MOBILE_COMMUNITY_LABEL_ZOOM_MAX, zf * MOBILE_COMMUNITY_LABEL_ZOOM_FACTOR)
-        );
-      }
-      // 桌面端相机缩放钳制收窄（原 2.75 偏夸张，与字号区间收窄配套）
-      return Math.max(0.4, Math.min(1.85, zf));
+      // 与节点一起放大缩小；钳制随画布短边略调，避免滚轮极限下过大/过小
+      var clamps = communityLabelZoomClamps();
+      return Math.max(clamps.min, Math.min(clamps.max, zf));
     }
 
     function invalidateCommunityLabelScaleCache() {
@@ -1661,6 +1677,10 @@
 
       getCommunityLabelZoomScale: function () {
         return communityLabelZoomScale();
+      },
+
+      getCommunityLabelViewportScale: function () {
+        return communityLabelViewportScale();
       },
 
       getCameraDistance: function () {

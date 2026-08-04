@@ -16,6 +16,7 @@ related:
   - ../methods/actuator-network.md
   - ./privileged-training.md
   - ../entities/genesis-sim.md
+  - ../entities/paper-pac-man-perceptive-cbf-rl.md
   - ./data-flywheel.md
   - ../queries/sim2real-gap-reduction.md
   - ../entities/gr00t-visual-sim2real.md
@@ -48,9 +49,10 @@ related:
   - ../entities/paper-zonda.md
   - ../entities/paper-mujica-wheel-legged-multi-skill.md
   - ../entities/paper-aware-wheeled-legged-reflexive-evasion.md
+  - ../entities/paper-legged-robots-advances-challenges.md
   - ../queries/sim2real-closed-loop-engineering.md
 summary: "Sim2Real 关注如何把仿真中学到的策略稳定迁移到真实机器人，是机器人学习落地的核心鸿沟。"
-updated: 2026-07-30
+updated: 2026-08-02
 sources:
   - ../../sources/papers/physx_omni_arxiv_2605_21572.md
   - ../../sources/courses/isaac_lab_implicit_explicit_actuators.md
@@ -59,6 +61,7 @@ sources:
   - ../../sources/papers/agentic_real2sim_arxiv_2607_19190.md
   - ../../sources/papers/aware_arxiv_2604_23761.md
   - ../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md
+  - ../../sources/papers/legged_robots_advances_challenges_scirobotics_2026.md
 ---
 
 # Sim2Real
@@ -232,12 +235,14 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [TacRefineNet](../entities/paper-tacrefinenet-tactile-grasp-refinement.md) — 多指触觉策略仿真 BC 零样本上真机
+- [PAC-MAN](../entities/paper-pac-man-perceptive-cbf-rl.md) — 掩膜深度观测契约对齐后 G1 零样本躲避球（CBF-RL）
 - [ergoCub Shared Embodied Intelligence](../entities/paper-ergocub-shared-embodied-intelligence.md) — 优化模型几何/密度假设与制造延长件之间的硬件 sim-to-real 缺口讨论
 - [真机安全 RL 微调](./safe-real-world-rl-fine-tuning.md) — 部署后真机在线适配的安全边界：低秩残差 / 生成兜底 / CBF 安全壳三条路径
 - [Motion Retargeting](./motion-retargeting.md) — 「映射 → 训练 → 迁移」三段流水线首段：Sim2Real 消费其物理可执行参考产物
 - [Whole-Body Tracking Pipeline](./whole-body-tracking-pipeline.md) — 三段流水线中段；Sim2Real 横切其「训练 → 真机」落地
 - [跨具身策略迁移选型指南](../queries/cross-embodiment-transfer-strategy.md) — 三段流水线末段；换机体后是否需重跨 domain gap
 - [Locomotion](../tasks/locomotion.md)
+- [腿式机器人进展/挑战/机遇综述](../entities/paper-legged-robots-advances-challenges.md) — SciRobotics 2026：把 Sim2Real 放进硬件/运动/数据五柱坐标系
 - [System Identification](./system-identification.md)（减少物理参数和执行器模型的 sim2real gap）
 - [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md) — 从辨识到适应的持续校准叙事与误差分流
 - [Actuator Network 执行器网络](../methods/actuator-network.md) — 用神经网络拟合电机非线性特性

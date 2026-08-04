@@ -2,8 +2,9 @@
 type: concept
 tags: [perception, computer-vision, segmentation, semantic-mapping, 2d-to-3d, robotics, sim2real]
 status: complete
-updated: 2026-07-27
+updated: 2026-08-02
 related:
+  - ./embodied-perception-six-spatial-representations.md
   - ./perception-coordinate-postprocessing.md
   - ./vision-backbones.md
   - ../queries/robot-perception-stack-selection-loop.md
@@ -126,6 +127,7 @@ Gap 被定位后，收窄它有三条互补路线，成本与保真度递增：
 
 ## 关联页面
 
+- [具身感知六种空间表征](./embodied-perception-six-spatial-representations.md) — 2D/深度/点云/占据/语义/隐式的层级边界；本页聚焦其中「2D→可消费 3D 语义几何」的信息损失
 - [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — 本页是其③「2D→3D 提升与语义建图」层「2D 框够用还是必须 3D 语义几何」的物理根因专页
 - [感知坐标后处理](./perception-coordinate-postprocessing.md) — 提升后像素/3D 坐标转到策略坐标系的后处理
 - [目标检测模型选型 Query](../queries/object-detection-model-selection.md) — 2D 检测层选型，提升的上游输入

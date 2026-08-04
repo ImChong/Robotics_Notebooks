@@ -46,6 +46,14 @@ Learning Symmetric and Low-energy Locomotion 的人形机器人学习论文条�
 
 - 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
 
+## 结论
+
+**本页是 13_Physics-Based_Animation 分类下的占位条目，「对称」与「低能耗」这两个关键词还没有被展开成任何结论。**
+
+- 现有内容限于元信息：分类 13_Physics-Based_Animation、arXiv 1801.08093、计划笔记文件夹路径与 PROGRESS.md 待深读状态。
+- 检索时须注意其分类归属在物理动画一侧，而非 05_Locomotion，交叉引用时不要与真机行走工作混为一谈。
+- 适用边界：本页不提供任何机制描述与量化对比，细节须回到论文原文与深读笔记。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)

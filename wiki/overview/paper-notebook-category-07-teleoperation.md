@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-03
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 07：遥操作（24 篇深读笔记索引）。"
@@ -56,6 +56,8 @@ summary: "Paper Notebooks 分类 07：遥操作（24 篇深读笔记索引）。
 
 - [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html)
 - [schema/paper-notebook-index.json](../../schema/paper-notebook-index.json)
+- 站点来源归档：[humanoid-robot-learning-paper-notebooks](../../sources/sites/humanoid-robot-learning-paper-notebooks.md)
+- 本类论文 ingest 归档（节选）：[CLONE：长时程闭环全身人形遥操作](../../sources/papers/bfm_awesome_clone_corl_2025.md)、[TeleGate（arXiv:2602.09628）](../../sources/papers/telegate_arxiv_2602_09628.md)、[CLOT：全身人形遥操作闭环全局运动跟踪](../../sources/papers/clot_arxiv_2602_15060.md)
 
 ## 推荐继续阅读
 

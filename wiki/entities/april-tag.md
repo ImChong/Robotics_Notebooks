@@ -5,6 +5,7 @@ tags: [perception, computer-vision, calibration, fiducial, c, software, mit]
 status: complete
 updated: 2026-07-16
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../methods/visual-servoing.md
   - ../tasks/manipulation.md
 sources:

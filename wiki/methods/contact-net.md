@@ -4,6 +4,7 @@ tags: [perception, contact, deep-learning, point-cloud]
 status: complete
 updated: 2026-04-21
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../concepts/contact-estimation.md
   - ../concepts/terrain-adaptation.md
 sources:

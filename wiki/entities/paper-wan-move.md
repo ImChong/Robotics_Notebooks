@@ -11,10 +11,11 @@ tags:
   - hku
   - cuhk
 status: complete
-updated: 2026-07-23
+updated: 2026-07-31
 arxiv: "2512.08765"
 related:
   - ./paper-wan-video.md
+  - ./paper-wan-dancer.md
   - ./paper-masked-visual-actions.md
   - ./paper-ctrl-world.md
   - ../methods/generative-world-models.md
@@ -154,6 +155,16 @@ sequenceDiagram
 | 机器人迁移 | 通用运动刷 ≠ 闭环物理；机器人掩码/低维动作条件见 MVA / Ctrl-World |
 | 选型 | 要 **开源点级运动控制 + MoveBench** 用本页；要 **操纵策略评估沙盒** 转 [Ctrl-World](./paper-ctrl-world.md) / [Masked Visual Actions](./paper-masked-visual-actions.md) |
 
+## 结论
+
+**Wan-Move 的贡献是「条件接口的减法」：不加运动编码器、不加 ControlNet，只在 latent 里沿轨迹复制首帧特征，就把点级运动控制挂到 14B 级 I2V 上——换来可随骨干放大与开源可复现，但它是通用运动刷，不是机器人世界模型。**
+
+- 真正起作用的是 **latent 特征复制** 本身：消融显示其优于像素随机嵌入，而「不改骨干」正是它能在 Wan-I2V-14B 这种强基座上做可扩展微调的原因。
+- 可用性来自训练配方而非架构：约 **200 万** 720p 经质量与运动稳定性过滤、CoTracker 每步最多 200 条轨迹、**5%** 概率丢弃运动条件以保住原 I2V 能力。
+- 适用边界是 **5 秒 / 480p 的局部点级运动**：多条轨迹时空重叠时只随机选一条，复杂交互与遮挡会丢细节。
+- 工程落地成本明确：代码 Apache-2.0、权重与 MoveBench（1018 视频 / 54 类）全部开放，但 14B 推理与微调门槛高，单卡 40GB 需 `--t5_cpu --offload_model` 一类降显存手段。
+- 定位判据：需要 **可执行动作与闭环物理语义** 时本页不适用——本文不提供动作接口、成功判定或真机协议，应转向 [Masked Visual Actions](./paper-masked-visual-actions.md) 的实体掩码或 [Ctrl-World](./paper-ctrl-world.md) 的低维动作路线。
+
 ## 局限与风险
 
 - **非机器人专用：** 不提供动作接口、成功判定或真机协议；直接当 WM 会缺因果控制语义。
@@ -168,6 +179,7 @@ sequenceDiagram
 | 对照对象 | 运动条件接口 | 是否改动骨干 | 与本页关系 |
 |----------|--------------|--------------|-----------|
 | [Wan-I2V-14B（基座）](./paper-wan-video.md) | 仅首帧图像 | — | Wan-Move 在其上微调，**不新增运动编码器/ControlNet** |
+| [Wan-Dancer](./paper-wan-dancer.md) | 音乐 + 文本 + 参考形象 | 改条件与分层推理 | 同族 Wan-I2V 派生；面向分钟级编舞视频，非点轨迹运动刷 |
 | Kling 1.5 Pro Motion Brush（商用） | 交互点级运动刷 | 闭源 | 用户研究里 Wan-Move 运动可控性对标它，但**开源可复现** |
 | [Masked Visual Actions](./paper-masked-visual-actions.md) | 实体占据**掩码** | Wan2.2-Fun-Control | 掩码强调「物体占据」，Wan-Move 的**点轨迹**强调局部运动，二者是选型两端 |
 | [Ctrl-World](./paper-ctrl-world.md) | **低维动作** + 多视角 | 非 Wan 骨干 | 面向操纵策略评估沙盒；Wan-Move 面向通用运动刷、非闭环物理 |
@@ -178,6 +190,7 @@ sequenceDiagram
 ## 关联页面
 
 - [Wan](./paper-wan-video.md) — 开源视频基础模型上游
+- [Wan-Dancer](./paper-wan-dancer.md) — 同族 music-to-dance（分层分钟级）
 - [Masked Visual Actions](./paper-masked-visual-actions.md) — 机器人掩码条件；文中对照基线之一
 - [Ctrl-World](./paper-ctrl-world.md) — 低维动作多视角操纵 WM
 - [Generative World Models](../methods/generative-world-models.md) — 条件注入谱系

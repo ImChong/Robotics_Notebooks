@@ -2,17 +2,19 @@
 type: method
 tags: [optimization, black-box-optimization, evolution-strategy, sim2real, system-identification, actuator]
 status: complete
-updated: 2026-07-28
+updated: 2026-07-31
 related:
   - ../concepts/sim2real.md
   - ../concepts/system-identification.md
   - ./actuator-network.md
   - ../entities/bam-better-actuator-models.md
   - ../entities/paper-pace-sim2real-legged-robots.md
+  - ../entities/paper-notebook-sampling-based-system-identification-with-active.md
   - ../entities/paper-spot-rl-distributional-sim2real.md
 sources:
   - ../../sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md
   - ../../sources/papers/pace_sim2real_arxiv_2509_06342.md
+  - ../../sources/papers/spi_active_arxiv_2505_14266.md
   - ../../sources/papers/spot_rl_distributional_sim2real_arxiv_2504_17857.md
 summary: "CMA-ES（Covariance Matrix Adaptation Evolution Strategy）是一种无梯度、黑箱的连续优化算法：维护一个多元高斯搜索分布，按采样个体的适应度自适应更新均值、步长与协方差矩阵。在本库里，它是 sim2real 中标定摩擦/执行器等难测仿真参数的主力工具。"
 ---
@@ -74,6 +76,7 @@ summary: "CMA-ES（Covariance Matrix Adaptation Evolution Strategy）是一种�
 |------|------------------|--------|----------|
 | **扩展摩擦标定** | 舵机 M1–M6 摩擦/电机参数 | 摆锤台架轨迹 MAE | [BAM](../entities/bam-better-actuator-models.md) |
 | **足式关节动力学对齐** | ~49 维紧凑关节参数 | 悬空 chirp 轨迹误差 | [PACE](../entities/paper-pace-sim2real-legged-robots.md) |
+| **腿足 base 惯量 + 主动探索** | mass / CoM / 惯量 / 电机模型；指令序列 | 轨迹误差 + FIM（D-最优） | [SPI-Active](../entities/paper-notebook-sampling-based-system-identification-with-active.md) |
 | **难测仿真参数标定** | 摩擦、电机等难测项 | Wasserstein / MMD 分布差异 | [Spot RL 分布式 sim2real](../entities/paper-spot-rl-distributional-sim2real.md) |
 | **物理参数手感对齐** | 球 restitution / friction | 落球与滚动试验对齐 | 人形足球技能类工作 |
 
@@ -90,11 +93,13 @@ summary: "CMA-ES（Covariance Matrix Adaptation Evolution Strategy）是一种�
 - [Actuator Network](./actuator-network.md) — 数据驱动执行器建模，与解析参数标定互补
 - [BAM（扩展摩擦模型）](../entities/bam-better-actuator-models.md) — 摆锤台架 + CMA-ES 辨识 M1–M6
 - [PACE（足式 sim2real）](../entities/paper-pace-sim2real-legged-robots.md) — CMA-ES 拟合紧凑关节动力学
+- [SPI-Active（采样式 SysID + 主动探索）](../entities/paper-notebook-sampling-based-system-identification-with-active.md) — CMA-ES 用于参数辨识与 FIM 指令优化
 - [Spot RL 分布式 sim2real](../entities/paper-spot-rl-distributional-sim2real.md) — 以分布差异为适应度用 CMA-ES 标参
 
 ## 参考来源
 
 - [BAM 论文归档（arXiv:2410.08650）](../../sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md) — 摆锤 CMA-ES 摩擦辨识
 - [PACE 论文归档（arXiv:2509.06342）](../../sources/papers/pace_sim2real_arxiv_2509_06342.md) — CMA-ES 拟合关节动力学参数
+- [SPI-Active 论文归档（arXiv:2505.14266）](../../sources/papers/spi_active_arxiv_2505_14266.md) — 采样式 SysID + 主动探索
 - [Spot RL 分布式 sim2real 论文归档（arXiv:2504.17857）](../../sources/papers/spot_rl_distributional_sim2real_arxiv_2504_17857.md) — CMA-ES 标定难测参数
 - CMA-ES 方法综述：Hansen, *The CMA Evolution Strategy: A Tutorial* <https://arxiv.org/abs/1604.00772>

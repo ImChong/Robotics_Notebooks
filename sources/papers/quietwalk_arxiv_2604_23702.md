@@ -28,12 +28,12 @@
 
 ### 与运动学代理低噪路线的对比
 
-| 维度 | QuietWalk（本文） | 足端速度惩罚（Aibo / Olaf 等） | QuietPaw |
-|------|-------------------|-------------------------------|----------|
+| 维度 | QuietWalk（本文） | 足端速度惩罚（[aibo QuietWalk](../../wiki/entities/paper-learning-quiet-walking-aibo.md) / Olaf 等） | QuietPaw |
+|------|-------------------|----------------------------------------------------------------------------------------------------------|----------|
 | 冲击信号 | **PINN 预测竖直 GRF** | 接触速度/加速度代理 | 可调「安静度」约束 |
 | 物理一致性 | **逆动力学残差约束** | 无显式力模型 | 未强调力估计 |
-| 部署传感 | **仅本体感知** | 仅本体感知 | 环境相关 |
-| 额外维度 | **跨鞋型接触变化** | 未系统验证 | 未强调鞋型 |
+| 部署传感 | **仅本体感知** | 本体感知 +（aibo）开关接触 | 环境相关 |
+| 额外维度 | **跨鞋型接触变化** | 安静–鲁棒权衡 / 可变 PD（aibo） | 未强调鞋型 |
 
 ### 与 MPC-RL / 特权力反馈路线的关系
 
@@ -43,7 +43,7 @@
 ## 对 wiki 的映射
 
 - 沉淀实体页：[QuietWalk 物理感知低噪人形行走（arXiv:2604.23702）](../../wiki/entities/paper-quietwalk-humanoid-locomotion.md)
-- 交叉补强：[Humanoid Locomotion](../../wiki/tasks/humanoid-locomotion.md)、[Locomotion](../../wiki/tasks/locomotion.md)、[Contact Dynamics](../../wiki/concepts/contact-dynamics.md)、[Locomotion 奖励设计指南](../../wiki/queries/locomotion-reward-design-guide.md)、[Reinforcement Learning](../../wiki/methods/reinforcement-learning.md)、[Unitree G1](../../wiki/entities/unitree-g1.md)、[MPC-RL](../../wiki/entities/paper-mpc-rl-humanoid-locomotion-manipulation.md)
+- 交叉补强：[Humanoid Locomotion](../../wiki/tasks/humanoid-locomotion.md)、[Locomotion](../../wiki/tasks/locomotion.md)、[Contact Dynamics](../../wiki/concepts/contact-dynamics.md)、[Locomotion 奖励设计指南](../../wiki/queries/locomotion-reward-design-guide.md)、[Reinforcement Learning](../../wiki/methods/reinforcement-learning.md)、[Unitree G1](../../wiki/entities/unitree-g1.md)、[MPC-RL](../../wiki/entities/paper-mpc-rl-humanoid-locomotion-manipulation.md)、[Learning Quiet Walking（aibo，运动学代理对照）](../../wiki/entities/paper-learning-quiet-walking-aibo.md)
 
 ## 当前提炼状态
 

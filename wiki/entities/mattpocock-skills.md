@@ -9,7 +9,7 @@ tags:
   - software-engineering
   - agent-infrastructure
 status: complete
-updated: 2026-07-03
+updated: 2026-07-31
 related:
   - ./ponytail.md
   - ./nuwa-skill.md
@@ -21,6 +21,7 @@ related:
   - ./sensenova-skills.md
   - ./cad-skills.md
   - ./gsap-skills.md
+  - ./video-shotcraft.md
   - ./agent-reach.md
   - ../references/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
@@ -96,6 +97,7 @@ flowchart TD
 - [SenseNova-Skills](sensenova-skills.md) — **办公产出** 向 Agent Skills（与本文 **编码工程** 技能互补）
 - [CAD Skills](cad-skills.md) — **硬件/CAD/URDF** 垂直 Agent Skills（build123d STEP-first 与制造链）
 - [GSAP AI Skills](gsap-skills.md) — **Web 动效 / GSAP** 官方垂直 Agent Skills（timeline、ScrollTrigger、React cleanup）
+- [video-shotcraft](video-shotcraft.md) — **Remotion 产品宣传片** 垂直 Agent Skill（镜头配方卡 + Ink Press 模板）
 - [Agent Reach](agent-reach.md) — 外网读搜工具链脚手架
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 持久 wiki 知识编译范式
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库 ingest / query / lint 规范

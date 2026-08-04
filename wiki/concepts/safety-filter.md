@@ -10,9 +10,13 @@ related:
   - ../formalizations/control-lyapunov-function.md
   - ../queries/clf-cbf-in-wbc.md
   - ../queries/robot-policy-debug-playbook.md
+  - ../entities/paper-importance-sampling-pca-av-failures.md
+  - ../entities/paper-pac-man-perceptive-cbf-rl.md
 sources:
   - ../../sources/papers/optimal_control.md
   - ../../sources/papers/sim2real.md
+  - ../../sources/papers/importance_sampling_pca_av_failures_arxiv_2607_18106.md
+  - ../../sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md
 ---
 
 # Safety Filter（安全过滤器）
@@ -105,6 +109,7 @@ Safety Filter
 - **Safe RL**：策略输出先过安全过滤，再发给执行器
 - **WBC / MPC**：作为额外安全层，处理关节限位、碰撞避免、接触力锥
 - **VLA 部署**：对大模型输出的动作块做限幅、裁剪、回退
+- **对照：训练期屏障、部署无滤波** — [PAC-MAN](../entities/paper-pac-man-perceptive-cbf-rl.md) 把 Joint-CBF 投影仅作仿真 `+filter` 上限；真机部署的 Link-CBF 策略**不**走运行时安全层，靠训练内化避碰
 
 ## 常见误区
 
@@ -114,12 +119,15 @@ Safety Filter
   它只在接近危险边界时显著介入；设计得好时，正常区域内几乎不影响性能。
 - **误区 3：只有 RL 需要 safety filter。**  
   任何存在模型误差、噪声、延迟或黑盒模块的控制栈都需要它。
+- **误区 4：更强的在线 CBF 投影总能搬到真机。**  
+  若滤波器要读真值球态/完整威胁几何，而机载感知给不出，则只能当仿真上限（见 PAC-MAN Joint-CBF +filter）。
 
 ## 参考来源
 
 - [sources/papers/optimal_control.md](../../sources/papers/optimal_control.md) — QP 约束控制与安全约束背景
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — 真机部署中的安全与调试经验
 - Ames et al., *Control Barrier Function Based Quadratic Programs for Safety Critical Systems*
+- [PAC-MAN 论文策展](../../sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md) — 训练期 CBF vs 部署无滤波
 
 ## 关联页面
 
@@ -130,4 +138,6 @@ Safety Filter
 - [Query：RL 策略真机调试 Playbook](../queries/robot-policy-debug-playbook.md)
 - [真机安全 RL 微调](./safe-real-world-rl-fine-tuning.md) — 安全过滤作为真机微调三路径之一（CBF/CLF 安全壳）
 - [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md) — 部署段分层安全独立于策略
+- [Importance Sampling + PCA（商业 AV 失败挖掘）](../entities/paper-importance-sampling-pca-av-failures.md) — 离线稀有失败发现与 eigenfailure 诊断；与在线过滤互补
+- [PAC-MAN](../entities/paper-pac-man-perceptive-cbf-rl.md) — 感知感知 CBF-RL；部署刻意去掉运行时滤波
 - [ActFovea](../entities/paper-actfovea.md) — 感知侧一致性防护：不给几何安全保证，但覆盖安全滤波管不到的「观测本身失真/失效」

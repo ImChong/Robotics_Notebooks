@@ -2,18 +2,21 @@
 type: task
 tags: [humanoid, locomotion, whole-body-control]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-02
 related:
   - ./locomotion.md
   - ./stair-obstacle-perceptive-locomotion.md
   - ../concepts/humanoid-policy-observation-inputs.md
   - ../concepts/humanoid-policy-reward-functions.md
   - ../concepts/terrain-adaptation.md
+  - ../entities/paper-humoslope-physics-guided-slope-locomotion.md
   - ../entities/paper-gaitspan-humanoid-locomotion-walking-running.md
   - ../entities/paper-roller-skating-amp-humanoid-passive-wheels.md
   - ../entities/paper-now-you-see-that-humanoid-vision-locomotion.md
   - ../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md
   - ../entities/paper-adp.md
+  - ../entities/paper-learning-quiet-walking-aibo.md
+  - ../entities/paper-quietwalk-humanoid-locomotion.md
 summary: "人形机器人在复杂地形下的平衡与移动任务，强调高维动力学处理、环境感知以及全身肢体协调。"
 ---
 
@@ -41,6 +44,7 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 - **核心**：分层架构，高层负责技能规划（Skill Planning），底层负责电机指令跟踪。
 - **趋势**：通过奖励函数让机器人自主探索步态，解决非线性接触问题。
 - **技能生长（skill growth）：** [GaitSpan](../entities/paper-gaitspan-humanoid-locomotion-walking-running.md)（arXiv:2607.12114）把 **冻结行走策略** 当种子，用 GaitWave + H-SLIP + 残差在 **无人体演示** 下让走–慢跑–跑 **连续涌现**，覆盖 Booster T1/K1 与 Unitree G1 真机户外地形。
+- **陡坡物理引导：** [HumoSlope](../entities/paper-humoslope-physics-guided-slope-locomotion.md)（arXiv:2607.07830）用 **局部支撑平面 ZMP 正则 + BSGA 生物力学软先验** 抑制低 CoM 蹲姿，G1 **纯本体感知** 户外草地坡至 **32.1°**。
 
 ### 3. 生成式运动模型 (Generative Motion Models)
 - **核心**：利用扩散模型（Diffusion Models）从人类数据中学习自然的运动先验。
@@ -80,6 +84,7 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 - [被动轮轮滑 AMP（arXiv:2607.10815）](../../sources/papers/roller_skating_amp_arxiv_2607_10815.md) — Booster T1 被动轮滑，切片圆柱轮仿真 + 双 gait AMP-PPO，Pump/Push Glide 真机验证。
 - [RAVEN（arXiv:2607.15701）](../../sources/papers/raven_rl_adaptive_visibility_graph_arxiv_2607_15701.md) — RL 自适应可见图膨胀 + DAVG-cfMPC + Booster Gym，延迟下人形导航。
 - [ADP（arXiv:2607.03454）](../../sources/papers/adp_arxiv_2607_03454.md) — 动力学对抗先验抗扰 locomotion；代码待发布。
+- [HumoSlope（arXiv:2607.07830）](../../sources/papers/humoslope_arxiv_2607_07830.md) — 局部平面 ZMP + BSGA 坡条件步态；G1 盲穿户外草地坡 32.1°；代码未开源。
 
 ## 关联页面
 - [人形机器人运控策略的观测输入](../concepts/humanoid-policy-observation-inputs.md) — 主流运控策略输入的五类划分与获取链路
@@ -89,7 +94,9 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 - [SSR 开放世界人形穿越](../entities/paper-ssr-humanoid-open-world-traversal.md) — 想象落脚点 + 潜空间对称 + 分地形 AMP，楼梯/沟壑/高台与户外长程
 - [Now You See That 端到端视觉人形 locomotion](../entities/paper-now-you-see-that-humanoid-vision-locomotion.md) — 8 步立体深度增广 + 多 critic/discriminator 特权 RL + vision-aware DAgger 蒸馏，双向长楼梯与跑酷零样本
 - [QuietWalk 物理感知低噪行走](../entities/paper-quietwalk-humanoid-locomotion.md) — 逆动力学 PINN 估计 GRF 作冲击惩罚；G1 真机 1.2 m/s 降噪约 7 dB，跨赤脚/运动鞋/高跟鞋与多地面材质
+- [Learning Quiet Walking（aibo）](../entities/paper-learning-quiet-walking-aibo.md) — 足端接触速度代理的低噪四足对照（同名项目页 QuietWalk；ICRA 2025）
 - [GaitSpan 从行走到跑步的技能生长](../entities/paper-gaitspan-humanoid-locomotion-walking-running.md) — 冻结行走种子 + GaitWave 节律组合 + H-SLIP 动态步幅；Booster T1/K1、G1 真机户外走–慢跑–跑连续变速
+- [HumoSlope 极端坡面物理引导步态](../entities/paper-humoslope-physics-guided-slope-locomotion.md) — slope-adaptive ZMP + BSGA；G1 盲穿户外草地坡至 32.1°；代码未开源
 - [被动轮人形轮滑 AMP（Tsinghua）](../entities/paper-roller-skating-amp-humanoid-passive-wheels.md) — 被动轮滑 + 9 片圆柱碰撞模型；人体 MoCap→GMR→独立 AMP 学 Pump Glide / Push Glide
 - [ADP 对抗动力学先验](../entities/paper-adp.md) — SRBD-TO + 动力学窗对抗奖励，推扰相对 AMP 更稳；代码 coming soon
 - [RAVEN：RL 自适应可见图 + cf-MPC](../entities/paper-raven-rl-adaptive-visibility-graph-mpc.md) — 导航层 RL 改障碍膨胀，行走层 Booster Gym；延迟与噪声下鲁棒导航
