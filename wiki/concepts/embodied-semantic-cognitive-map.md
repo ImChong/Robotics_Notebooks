@@ -13,6 +13,8 @@ related:
   - ../entities/dualmap.md
   - ../entities/paper-travexplorer.md
   - ../overview/quadruped-vln-embodied-workshop.md
+  - ../queries/embodied-fm-taxonomy-loop.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/courses/quadruped_vln_embodied_workshop_2day.md
 summary: "具身语义认知地图：在可度量几何地图上叠开放词汇实体与语言可查询语义，使机器人能从像素提升到可导航、可问答的实体级世界模型。"

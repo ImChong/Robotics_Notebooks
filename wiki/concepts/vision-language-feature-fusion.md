@@ -12,6 +12,7 @@ related:
   - ../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md
   - ../methods/vla.md
   - ../overview/quadruped-vln-embodied-workshop.md
+  - ../queries/embodied-fm-taxonomy-loop.md
 sources:
   - ../../sources/courses/quadruped_vln_embodied_workshop_2day.md
   - ../../sources/papers/blip2_arxiv_2301_12597.md

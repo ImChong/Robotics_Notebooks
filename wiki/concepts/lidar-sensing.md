@@ -12,6 +12,7 @@ related:
   - ../entities/quadruped-robot.md
   - ../entities/point-lio-unilidar.md
   - ../overview/quadruped-vln-embodied-workshop.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/courses/quadruped_vln_embodied_workshop_2day.md
   - ../../sources/repos/point_lio_unilidar.md

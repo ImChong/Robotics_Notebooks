@@ -1,13 +1,114 @@
 {
   "generated_at": "2026-08-04",
-  "node_count": 2081,
-  "edge_count": 18849,
+  "node_count": 2091,
+  "edge_count": 18980,
   "coverage": {
-    "covered": 2057,
-    "total": 2057,
+    "covered": 2067,
+    "total": 2067,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/quadruped-vln-embodied-workshop.md",
+      "detail_id": "wiki-overview-quadruped-vln-embodied-workshop",
+      "label": "四足 × VLN × 具身智能实战营（技术地图）",
+      "type": "overview",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-travexplorer.md",
+      "detail_id": "entity-paper-travexplorer",
+      "label": "TravExplorer（可通行感知跨楼层具身探索）",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    },
+    {
+      "path": "wiki/entities/openclaw.md",
+      "detail_id": "entity-openclaw",
+      "label": "OpenClaw",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-sam3.md",
+      "detail_id": "entity-paper-sam3",
+      "label": "SAM 3：Segment Anything with Concepts",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-blip2.md",
+      "detail_id": "entity-paper-blip2",
+      "label": "BLIP-2",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    },
+    {
+      "path": "wiki/entities/jetson-orin-nx.md",
+      "detail_id": "entity-jetson-orin-nx",
+      "label": "NVIDIA Jetson Orin NX",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/tasks/zero-shot-object-navigation.md",
+      "detail_id": "wiki-tasks-zero-shot-object-navigation",
+      "label": "零样本目标导航（Zero-Shot Object Navigation）",
+      "type": "task",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    },
+    {
+      "path": "wiki/concepts/embodied-semantic-cognitive-map.md",
+      "detail_id": "wiki-concepts-embodied-semantic-cognitive-map",
+      "label": "具身语义认知地图（Embodied Semantic Cognitive Map）",
+      "type": "concept",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/concepts/vision-language-feature-fusion.md",
+      "detail_id": "wiki-concepts-vision-language-feature-fusion",
+      "label": "视觉–语言特征融合与语义空间对齐",
+      "type": "concept",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    },
+    {
+      "path": "wiki/concepts/lidar-sensing.md",
+      "detail_id": "wiki-concepts-lidar-sensing",
+      "label": "LiDAR 传感（Light Detection and Ranging）",
+      "type": "concept",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/paper-clift-closed-loop-iterative-finetuning.md",
       "detail_id": "entity-paper-clift-closed-loop-iterative-finetuning",
@@ -96,7 +197,8 @@
       "recency": "2026-08-04",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/entities/paper-wcm-world-critic-model.md",
@@ -106,145 +208,43 @@
       "recency": "2026-08-04",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/methods/model-based-rl.md",
-      "detail_id": "wiki-methods-model-based-rl",
-      "label": "Model-Based RL（基于模型的强化学习）",
-      "type": "method",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/methods/generative-world-models.md",
-      "detail_id": "wiki-methods-generative-world-models",
-      "label": "Generative World Models (生成式世界模型)",
-      "type": "method",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/comparisons/online-vs-offline-rl.md",
-      "detail_id": "wiki-comparisons-online-vs-offline-rl",
-      "label": "Online RL vs Offline RL",
-      "type": "comparison",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/openvla.md",
-      "detail_id": "entity-openvla",
-      "label": "OpenVLA",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-actfovea.md",
-      "detail_id": "entity-paper-actfovea",
-      "label": "ActFovea：给 VLA 策略加一层运行时防护",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/safety-filter.md",
-      "detail_id": "wiki-concepts-safety-filter",
-      "label": "Safety Filter（安全过滤器）",
-      "type": "concept",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/concepts/robot-safety-state-machine.md",
-      "detail_id": "wiki-concepts-robot-safety-state-machine",
-      "label": "机器人安全状态机（硬件 / 通信故障）",
-      "type": "concept",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/queries/vla-deployment-guide.md",
-      "detail_id": "wiki-queries-vla-deployment-guide",
-      "label": "VLA 真机部署指南：延迟、异步与加速",
-      "type": "query",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/libero-benchmark.md",
-      "detail_id": "entity-libero-benchmark",
-      "label": "LIBERO",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/sensenova-u1-5.md",
-      "detail_id": "entity-sensenova-u1-5",
-      "label": "SenseNova-U1.5（Preview · NEO-unify）",
-      "type": "entity",
-      "recency": "2026-08-03",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-clift-closed-loop-iterative-finetuning.md",
-    "detail_id": "entity-paper-clift-closed-loop-iterative-finetuning",
-    "label": "CLIFT：不打开模型盒子的闭环迭代微调",
-    "type": "entity",
+    "path": "wiki/overview/quadruped-vln-embodied-workshop.md",
+    "detail_id": "wiki-overview-quadruped-vln-embodied-workshop",
+    "label": "四足 × VLN × 具身智能实战营（技术地图）",
+    "type": "overview",
     "recency": "2026-08-04",
     "source": "log.md",
-    "action": "maintained",
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 253
+      "size": 214
+    },
+    {
+      "label": "动作重定向",
+      "size": 166
     },
     {
       "label": "操作",
-      "size": 152
+      "size": 146
+    },
+    {
+      "label": "视觉-语言-动作",
+      "size": 145
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 143
+      "size": 141
     },
     {
       "label": "移动操作",
       "size": 140
-    },
-    {
-      "label": "人形论文深读笔记",
-      "size": 137
-    },
-    {
-      "label": "动作重定向",
-      "size": 137
     }
   ],
   "top_hubs": [
@@ -252,7 +252,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 412,
+      "degree": 414,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -260,7 +260,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 386,
+      "degree": 388,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -291,7 +291,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 299
+      "degree": 300
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",

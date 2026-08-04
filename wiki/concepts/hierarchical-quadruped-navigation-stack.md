@@ -2,7 +2,7 @@
 type: concept
 tags: [quadruped, navigation, hierarchical-control, vln, reinforcement-learning, system-integration]
 status: complete
-updated: 2026-06-23
+updated: 2026-08-04
 related:
   - ../entities/roamerx-navigation.md
   - ../entities/matrix-simulation-platform.md
@@ -11,6 +11,8 @@ related:
   - ../methods/hipan.md
   - ../methods/ppo.md
   - ../entities/quadruped-control-curriculum.md
+  - ../entities/paper-travexplorer.md
+  - ../overview/quadruped-vln-embodied-workshop.md
 sources:
   - ../../sources/courses/quadruped_control_simulation_rl_curriculum.md
 summary: "四足自主系统常采用 VLN→导航→RL loco→PD→硬件 分层栈：高层语义与路径规划与底层步态策略解耦，RoamerX + MATRiX 是课程集成范例。"

@@ -214,6 +214,7 @@
 - [WalkE3-Dataset（E3 运动 CSV 与 MuJoCo 回放）](wiki/entities/jackhan-walke3-dataset.md) — 本仓库提供 E3 人形运动的 CSV 列定义、体坐标速度估计与 JSON 运动导出，并可在 MuJoCo 中回放轨迹。 `📅unknown` `[entity_page]`
 - [JackHan-Sdu WalkE3 / HumanoidE3 工具链生态](wiki/entities/jackhan-walke3-e3-ecosystem.md) — 将 JackHan-Sdu 维护的 WalkE3 数据、MuJoCo 手柄仿真、WalkE3 控制器、LCM 算法模板与两条 FEAP 部署仓组织成一条可读的人形工程工具链。 `📅unknown` `[entity_page]`
 - [Yobotics HumanoidE3 外接算法模板（LCM）](wiki/entities/jackhan-yobotics-e3-algorithm-template.md) — 本模板用 LCM 与 WalkE3-Controller 的 DEVELOPMENT 模式对接，提供 AlgorithmBase 双线程（约 50Hz 推理与 500Hz 发令）与 ONNX/PyTo `📅unknown` `[entity_page]`
+- [NVIDIA Jetson Orin NX](wiki/entities/jetson-orin-nx.md) — Jetson Orin NX** 是 NVIDIA **Jetson Orin** 产品线中的边缘 AI 模组形态，面向移动机器人机载推理：在功耗与体积约束下运行 CUDA/TensorRT 加速 `📅unknown` `[entity_page]`
 - [Linxi "Jim" Fan（范林熹）](wiki/entities/jim-fan.md) — Linxi "Jim" Fan** 是 **NVIDIA 具身智能与通才 agent** 方向的 **PI 级研究科学家**：与 Yuke Zhu 共 `📅unknown` `[entity_page]`
 - [autoresearch（karpathy/autoresearch）](wiki/entities/karpathy-autoresearch.md) — autoresearch** 是 Andrej Karpathy 的 [GitHub 仓库](https://github.com/k `📅unknown` `[entity_page]`
 - [KiCad（开源 PCB 与原理图 EDA）](wiki/entities/kicad.md) — KiCad**（kicad.org）是面向 **原理图 → PCB → 制造文件** 的 **免费开源电子设计自动化（EDA）套件**：跨 Wi `📅unknown` `[entity_page]`
@@ -310,6 +311,7 @@
 - [开源人形机器人“大脑” (主控电脑) 选型](wiki/entities/open-source-humanoid-brains.md) — 对于人形机器人，其“大脑”需要承担两类截然不同的计算任务：一是需要极高确定性的底层 **运控循环 (1kHz+)**；二是需要海量算力的 **感知与大模型推理 (5-30Hz)**。 `📅unknown` `[entity_page]`
 - [开源人形机器人硬件方案对比](wiki/entities/open-source-humanoid-hardware.md) — 随着具身智能的爆发，人形机器人的硬件门槛正在迅速降低。对于预算有限的实验室或个人研究者，**开源硬件方案 (Open-source Humanoid Hardware)** 是验证算法的首选。 `📅unknown` `[entity_page]`
 - [OpenVINS](wiki/entities/open-vins.md) — OpenVINS** 面向 **VIO 研究** 的可扩展滤波框架，强调可复现与模块配置。 `📅unknown` `[entity_page]`
+- [OpenClaw](wiki/entities/openclaw.md) — OpenClaw**（openclaw.ai，[GitHub: openclaw/openclaw](https://github.com/open `📅unknown` `[entity_page]`
 - [OpenLET 具身智能开源数据集社区](wiki/entities/openlet.md) — OpenLET**（<https://openlet.openatom.tech/>）是由 **开放原子开源基金会** 孵化、**乐聚机器人**牵头运营的 **具身智能真机数据枢纽**：遵循开放协 `📅unknown` `[entity_page]`
 - [OpenLoong-Dyn-Control](wiki/entities/openloong-dyn-control.md) — OpenLoong-Dyn-Control** 提供青龙人形在 **MuJoCo** 上的 **MPC + 全身控制** 研究与仿真 demo。 `📅unknown` `[entity_page]`
 - [OpenLoong（青龙·公版机）](wiki/entities/openloong.md) — OpenLoong** 是面向「青龙」全尺寸公版人形机器人的 **四层全栈开源** 项目（云端大脑 / 具身小脑 / 具身实体 / 具身数据），由 [OpenLoong 社区](https://w `📅unknown` `[entity_page]`
@@ -399,6 +401,7 @@
 - [仿生多模态机器人综述：五项指标与软硬智能融合](wiki/entities/paper-bioinspired-multimodal-robotics.md) — Bioinspired multimodal robotics**（共同一作：Ziyu Ren† / Youning Duo† / Haoyuan Xu†；Yihui Zhang、Xingjian `📅unknown` `[entity_page]`
 - [双稳态软跳跃机器人（Bistable Soft Jumper）](wiki/entities/paper-bistable-soft-jumper-magnetic.md) — Bistable soft jumper capable of fast response and high takeoff velocity**（Daofan Tang、Chengqian Zh `📅unknown` `[entity_page]`
 - [Regularized Predictive Control Framework（Bledt Thesis）](wiki/entities/paper-bledt-rpc-thesis.md) — Gerardo Bledt（MIT，2020 博士论文，dspace:1721.1/125485） `📅unknown` `[entity_page]`
+- [BLIP-2](wiki/entities/paper-blip2.md) — BLIP-2**（*Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language  `📅unknown` `[entity_page]`
 - [CapVector（VLA 参数空间可迁移能力向量）](wiki/entities/paper-capvector-capability-vectors-vla.md) — CapVector** 是 HKUST（广州）、浙江大学、西湖大学、清华大学与北京智源等合作者的论文工作（arXiv:2605.10903，项目页 [capvector.github.io](ht `📅unknown` `[entity_page]`
 - [Reinforcement Learning for Versatile, Dynamic, and Robust Bipedal Locomotion Control（Cassie）](wiki/entities/paper-cassie-biped-versatile-locomotion-rl.md) — 一句话定义**：在 Cassie 上，用 **长/短双历史** 的观测–动作序列输入统一表达周期与非周期运动，再配合 **任务层随机化**，在仿真中学会多技能并 **直接 sim2real** 到 `📅unknown` `[entity_page]`
 - [Feedback Control For Cassie With Deep Reinforcement Learning](wiki/entities/paper-cassie-feedback-control-drl.md) — 一句话定义**：在 **贴近硬件的 Cassie 仿真** 中，把 **反馈跟踪参考步态** 表述为 MDP，用深度 RL 学得 **关节级目标 + 底层跟踪（PD 语义）** 的策略，并系统测试 `📅unknown` `[entity_page]`
@@ -1127,6 +1130,7 @@
 - [RynnWorld-4D（4D Embodied World Models · arXiv:2607.06559）](wiki/entities/paper-rynnworld-4d-rgb-depth-flow.md) — RynnWorld-4D**（*RynnWorld-4D: 4D Embodied World Models for Robotic Manipulation*，[arXiv:2607.06559 `📅unknown` `[entity_page]`
 - [S²-VLA（Semantic–Spatial Dual-Stream · 驾驶 VLA · arXiv:2607.13926）](wiki/entities/paper-s-squared-vla.md) — S²-VLA**（*Decoupling Semantic and Spatial Streams in Vision-Language-Action Models for Autonomous  `📅unknown` `[entity_page]`
 - [SAM 2：图像与视频中的 Segment Anything](wiki/entities/paper-sam2.md) — SAM 2**（*Segment Anything Model 2*；论文 *SAM 2: Segment Anything in Images and Videos*，[arXiv:2408.0 `📅unknown` `[entity_page]`
+- [SAM 3：Segment Anything with Concepts](wiki/entities/paper-sam3.md) — SAM 3**（*Segment Anything Model 3*；论文 *SAM 3: Segment Anything with Concepts*，[arXiv:2511.16719](h `📅unknown` `[entity_page]`
 - [ScaleBFM（Scaling Behavior Foundation Model for Humanoid Robots）](wiki/entities/paper-scaling-bfm-humanoid.md) — ScaleBFM** 是上海人工智能实验室牵头、多校与 Galbot 合作的人形 **BFM scaling 技术报告**（arXiv:2607.15163，[项目页](https://scale `📅unknown` `[entity_page]`
 - [SceneBot（Contact-Prompted Whole-Body Tracking with Scene-Interaction）](wiki/entities/paper-scenebot.md) — SceneBot**（arXiv:2606.27581，Amazon FAR / Stanford / CMU）提出 **接触条件化（contact-prompted）** 的通用人形全身运动跟踪 `📅unknown` `[entity_page]`
 - [Segment Anything（SAM）](wiki/entities/paper-segment-anything.md) — SAM**（*Segment Anything Model*；论文 *Segment Anything*，[arXiv:2304.02643](https://arxiv.org/abs/2304 `📅unknown` `[entity_page]`
@@ -1174,6 +1178,7 @@
 - [TOPReward：Token 概率作零样本机器人进度奖励](wiki/entities/paper-topreward.md) — TOPReward**（*Token Probabilities as Hidden Zero-Shot Rewards for Robotics*，[arXiv:2602.19313](http `📅unknown` `[entity_page]`
 - [TouchWorld：预测–反应式触觉基础模型（灵巧操作）](wiki/entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md) — TouchWorld**（*A Predictive and Reactive Tactile Foundation Model for Dexterous Manipulation*，arXiv `📅unknown` `[entity_page]`
 - [Transformer Transformer（运动条件机器人共设计 · arXiv:2607.25798）](wiki/entities/paper-transformer-transformer.md) — Transformer Transformer**（Ha、Liu、Song；Stanford / Columbia；[项目页](https://transformer-transformer.gi `📅unknown` `[entity_page]`
+- [TravExplorer（可通行感知跨楼层具身探索）](wiki/entities/paper-travexplorer.md) — TravExplorer**（*Cross-Floor Embodied Exploration via Traversability-Aware 3-D Planning*，[arXiv:260 `📅unknown` `[entity_page]`
 - [T-Rex：触觉反应式灵巧操作](wiki/entities/paper-trex-tactile-reactive-dexterous-manipulation.md) — T-Rex**（Tactile-Reactive Dexterous Manipulation，arXiv:[2606.17055](https://arxiv.org/abs/2606.1705 `📅unknown` `[entity_page]`
 - [Is Diversity All You Need for Scalable Robotic Manipulation?](wiki/entities/paper-tro-manip-01-diversity-scaling.md) — Is Diversity All You Need** 收录于 [深蓝具身智能 · T-RO 2026 操作学习精选](https://mp.weixin.qq.com/s/nswA-jCGC3k `📅unknown` `[entity_page]`
 - [Canonical Policy](wiki/entities/paper-tro-manip-02-canonical-policy.md) — Canonical Policy** 收录于 [深蓝具身智能 · T-RO 2026 操作学习精选](https://mp.weixin.qq.com/s/nswA-jCGC3kr9iQjhRRu `📅unknown` `[entity_page]`
@@ -1477,6 +1482,7 @@
 - [具身感知六种空间表征](wiki/concepts/embodied-perception-six-spatial-representations.md) — 具身感知六种空间表征**把常被并列混谈的 **2D 视觉、深度、点云、占据栅格/距离场、语义地图、隐式地图** 拆成感知栈上的不同层级：它们回答的问题不同（看见什么 → 多远 → 表面在哪 → 能 `📅unknown` `[wiki_page]`
 - [具身 RL 最小闭环（Embodied RL Minimal Closed Loop）](wiki/concepts/embodied-rl-minimal-closed-loop.md) — 在具身智能里，**最小闭环**指：智能体与仿真（或真机）环境之间，每一步都能完成 **观测 → 决策 → 执行 → 物理推进 → 奖励反馈** 的完整回合，且各变量与 [MDP](../formali `📅unknown` `[wiki_page]`
 - [Embodied Scaling Laws (具身规模法则)](wiki/concepts/embodied-scaling-laws.md) — 具身规模法则**：在机器人学习中，随着训练数据（演示轨迹、仿真经验）、模型参数量和计算资源的增加，模型在未见任务、未见物体和未见环境上的表现呈现出可预测的性能提升趋势（通常遵循幂律分布）。 `📅unknown` `[wiki_page]`
+- [具身语义认知地图（Embodied Semantic Cognitive Map）](wiki/concepts/embodied-semantic-cognitive-map.md) — 具身语义认知地图** 指机器人在探索过程中维护的、同时包含 **度量几何** 与 **语言可寻址语义实体** 的空间记忆：不仅知道哪里可走，还知道「沙发 / 冰箱 / 楼梯」等实体及其不确定度，供 `📅unknown` `[wiki_page]`
 - [EtherCAT 协议基础](wiki/concepts/ethercat-protocol.md) — EtherCAT (Ethernet for Control Automation Technology)** 是目前人形机器人底层总线的首选协议。它解决了标准以太网因冲突检测（CSMA/CD）而 `📅unknown` `[wiki_page]`
 - [磁场定向控制（Field Oriented Control, FOC）](wiki/concepts/field-oriented-control.md) — FOC** 是一种在 **三相交流电机**（BLDC、PMSM）与部分 **步进电机** 上实现高效力矩控制的方法：用坐标变换把定子电流分解为与转子磁链对齐的 \(d\) 轴与正交的 \(q\)  `📅unknown` `[wiki_page]`
 - [Floating Base Dynamics](wiki/concepts/floating-base-dynamics.md) — Floating Base Dynamics（浮动基动力学）**：描述机器人在基座不固定于世界坐标系时，其整体动力学如何建模与控制的框架。 `📅unknown` `[wiki_page]`
@@ -1505,6 +1511,7 @@
 - [运动学可行与动力学可行](wiki/concepts/kinematic-vs-dynamic-feasibility.md) — 飞书 Know-How 将 **运动学可行和动力学可行** 列为控制问题框架的核心分叉：前者回答「关节角度/末端轨迹是否存在」，后者回答「在给定力矩、摩擦与接触下是否稳定可执行」。 `📅unknown` `[wiki_page]`
 - [Latent Imagination (潜空间想象)](wiki/concepts/latent-imagination.md) — 潜空间想象 (Latent Imagination)** 是现代 Model-Based 强化学习（尤其是 **Dreamer** 系列）的灵魂。它彻底改变了机器人学习的范式：不再是在真实世界或沉 `📅unknown` `[wiki_page]`
 - [LCM (Lightweight Communications and Marshalling) 基础](wiki/concepts/lcm-basics.md) — LCM** 是一套面向实时系统的消息传递与数据编解码库：提供 publish/subscribe，并用类型描述语言自动生成多语言的强类型序列化代码；传输默认走 **UDP 组播**，无中心数据库、 `📅unknown` `[wiki_page]`
+- [LiDAR 传感（Light Detection and Ranging）](wiki/concepts/lidar-sensing.md) — LiDAR** 通过发射激光并测量回波时间（或相位）获得环境的 **度量点云**，为移动机器人提供与纹理无关的几何观测。四足与 VLN 实战中，它通常与相机、IMU、机载 Orin 组成导航感知前 `📅unknown` `[wiki_page]`
 - [LIP / ZMP](wiki/concepts/lip-zmp.md) — LIP（Linear Inverted Pendulum, 线性倒立摆）** 和 **ZMP（Zero Moment Point, 零力矩点）** 是双足机器人行走控制里最经典的一对基础模型与稳定 `📅unknown` `[wiki_page]`
 - [LoRA (Low-Rank Adaptation，低秩适配)](wiki/concepts/lora.md) — LoRA** 是一种参数高效微调（PEFT）方法：不改动预训练权重，只在其旁路上训练一对低秩矩阵，使大模型能以极小的可训练参数量适配新任务、新形态或新动力学。 `📅unknown` `[wiki_page]`
 - [消息队列可靠性（队列 / 重复消费 / 顺序 / 幂等）](wiki/concepts/message-queue-reliability.md) — 消息队列可靠性** 处理「异步投递」下的 **至少一次、重复、乱序** 现实，要求消费者 **幂等**——适用于任务调度与遥测，不替代实时中间件。 `📅unknown` `[wiki_page]`
@@ -1569,6 +1576,7 @@
 - [变体自动化（Variational Automation, VA）](wiki/concepts/variational-automation.md) — 变体自动化（VA）** 由 GaP（NVIDIA / UC Berkeley 等，arXiv:[2607.0 `📅unknown` `[wiki_page]`
 - [Video-as-Simulation (视频即仿真)](wiki/concepts/video-as-simulation.md) — 视频即仿真 (Video-as-Simulation)** 是具身智能领域最激进也最前沿的技术范式。它的核心假设是：如果一个生成模型能够完美预测“给定当前动作后，下一帧图像应该长什么样”，那么这个 `📅unknown` `[wiki_page]`
 - [视觉骨干（Vision Backbones）](wiki/concepts/vision-backbones.md) — 视觉骨干**是感知管线中负责从 RGB/深度图提取 **层次化特征** 的神经网络主体；在机器人栈里，它常为 **检测头、策略网络、VLA 视觉塔** 提供可迁移的表征，典型训练路径是 **Ima `📅unknown` `[wiki_page]`
+- [视觉–语言特征融合与语义空间对齐](wiki/concepts/vision-language-feature-fusion.md) — 视觉–语言特征融合** 指将视觉编码器输出与文本编码器（或 LLM 词嵌入）结合，使跨模态信号可在同一任务头下计算相似度、检索或条件生成。**语义空间对齐** 强调训练或投影后，语义相近的图–文对 `📅unknown` `[wiki_page]`
 - [Vision Transformer（ViT，视觉 Transformer）](wiki/concepts/vision-transformer.md) — Vision Transformer（ViT）**：把图像划分为固定尺寸 **图像块（patch）**，将每块视作 **token**，经线性/卷积嵌入与 **可学习位置编码** 后送入 **Tr `📅unknown` `[wiki_page]`
 - [视觉表征作为策略输入（Visual Representation for Policy）](wiki/concepts/visual-representation-for-policy.md) — 视觉表征作为策略输入**指：把 视觉骨干 输出的图像特征接入控制/操作策略网络的方式选择——是 **随策略一起从头学**、**冻结一个通用预训练骨 `📅unknown` `[wiki_page]`
 - [视触觉融合（Visuo-Tactile Fusion）](wiki/concepts/visuo-tactile-fusion.md) — 视触觉融合 (Visuo-Tactile Fusion)** 研究如何在一次操作的不同阶段，让机器人在「视觉全局信息」与「触觉局部信息」之间动态切换权重，特别关注**接触瞬间**这一最难的窗口期。 `📅unknown` `[wiki_page]`
@@ -1760,6 +1768,7 @@
 - [Teleoperation（遥操作）](wiki/tasks/teleoperation.md) — 一句话定义**：操作员通过外部设备实时远程控制机器人完成任务，同时采集高质量示范数据用于后续策略学习。 `📅unknown` `[task_page]`
 - [ULTRA: Unified Multimodal Control for Autonomous Humanoid Whole-Body Loco-Manipulation](wiki/tasks/ultra-survey.md) — 统一多模态控制：实现人形机器人自主全身移动操作 `📅unknown` `[task_page]`
 - [视觉–语言导航（Vision-and-Language Navigation, VLN）](wiki/tasks/vision-language-navigation.md) — VLN**：智能体接收 **自然语言导航指令** 与 **第一人称（egocentric）视觉观测**（渲染视图或真实相机图像），在离散或连续动作空间中决策，最终到达指令描述的目标位置或物体。 `📅unknown` `[task_page]`
+- [零样本目标导航（Zero-Shot Object Navigation）](wiki/tasks/zero-shot-object-navigation.md) — 零样本目标导航**（Zero-Shot Object Navigation，**ZSON**；基准任务常称 **ObjectNav / Object-Goal Navigation**）要求智能体 `📅unknown` `[task_page]`
 
 ### Wiki Formalizations（形式化基础）
 
@@ -1976,6 +1985,7 @@
 - [Paper Notebooks · Hardware Design](wiki/overview/paper-notebook-category-12-hardware-design.md) — Hardware Design**（`12_Hardware_Design`）是 [Humanoid Robot Learning Paper Notebooks](https://imchong `📅unknown` `[overview_page]`
 - [Paper Notebooks · Physics-Based Animation](wiki/overview/paper-notebook-category-13-physics-based-animation.md) — Physics-Based Animation**（`13_Physics-Based_Animation`）是 [Humanoid Robot Learning Paper Notebooks `📅unknown` `[overview_page]`
 - [Paper Notebooks · Human Motion](wiki/overview/paper-notebook-category-14-human-motion.md) — Human Motion**（`14_Human_Motion`）是 [Humanoid Robot Learning Paper Notebooks](https://imchong.githu `📅unknown` `[overview_page]`
+- [四足 × VLN × 具身智能实战营（技术地图）](wiki/overview/quadruped-vln-embodied-workshop.md) — 本页把「2 天线下实战 + 1 月线上答疑」课程日程中的 **技术点与项目** 映射到本知识库的 **独立详情节点**，作为覆盖验收表与学习入口。硬件基线：每组 **四足 + LiDAR + 相机 + `📅unknown` `[overview_page]`
 - [RoboParty Lab / Party OS 技术地图](wiki/overview/roboparty-lab-party-os-technology-map.md) — RoboParty Lab 把「好 idea 输在基建」的问题显式产品化：**Party OS** 作为研发底座，首批开源 **hhtools（动作重定向）→ MimicLite（监督跟踪 infra `📅unknown` `[overview_page]`
 - [自适应控制（体系④）](wiki/overview/robot-control-paradigm-adaptive-control.md) — 在线辨识时变参数并修正控制律，解决负载变化、磨损与摩擦漂移，与鲁棒「被动抵抗」形成互补。 `📅unknown` `[overview_page]`
 - [经典线性反馈控制（体系①）](wiki/overview/robot-control-paradigm-classical-linear-feedback.md) — 针对线性、弱扰动系统的底层伺服闭环，是电机/舵机与单关节跟踪的标配。 `📅unknown` `[overview_page]`

@@ -133,6 +133,15 @@ SAM 3 把 Segment Anything 从「提示一个物体」推进到「提示一个�
 - **延迟：** 全概念穷尽比单目标 SAM2 更重，需按任务裁剪提示集。
 - **与 SAM 3D Body 区分：** [SAM 3D Body](./sam-3d-body.md) 是人体网格，不是本 PCS 模型。
 
+## 与其他工作对比
+
+| 工作 | 相对 SAM 3 |
+|------|------------|
+| [SAM](./paper-segment-anything.md) | 静态可提示单/少目标；无开放词汇概念穷尽 |
+| [SAM 2](./paper-sam2.md) | 视频 masklet 跟踪强；概念级「找出所有 X」仍弱于 SAM 3 |
+| [OV-SAM3D](./ov-sam3d.md) | 走向 3D 开放词汇分割；SAM 3 停在 2D/视频 PCS |
+| Grounding DINO 等 | 检测框为主；SAM 3 直接出概念级掩码与跟踪 |
+
 ## 关联页面
 
 - [SAM](./paper-segment-anything.md) · [SAM 2](./paper-sam2.md)
