@@ -2,18 +2,21 @@
 type: method
 tags: [il, behavior-cloning, supervised-learning, manipulation, covariate-shift]
 status: complete
-updated: 2026-08-02
+updated: 2026-08-04
 summary: "Behavior Cloning 把专家演示转成监督学习问题，是机器人模仿学习最简单也最常用的基线。"
 related:
   - ./imitation-learning.md
   - ./dagger.md
   - ./diffusion-policy.md
+  - ./action-chunking.md
   - ../comparisons/rl-vs-il.md
   - ../tasks/manipulation.md
   - ../entities/kinetiq-ascend.md
+  - ../entities/paper-why-action-chunking-improves-bc.md
 sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/diffusion_and_gen.md
+  - ../../sources/papers/why_action_chunking_improves_bc_corl2026.md
 ---
 
 # Behavior Cloning（行为克隆）
@@ -74,7 +77,7 @@ $$
 训练时看到的是专家访问到的状态，部署时策略一旦出错，就会进入训练集中没见过的状态分布。
 
 ### 2. Compounding Error
-单步小误差会沿着闭环执行不断累积，序列越长、任务越长 horizon，问题越明显。BC 并不是“每步都独立无害”的方法。
+单步小误差会沿着闭环执行不断累积，序列越长、任务越长 horizon，问题越明显。BC 并不是“每步都独立无害”的方法。[Why Action Chunking Improves BC](../entities/paper-why-action-chunking-improves-bc.md) 进一步给出尺度：Markov BC 可遭 \(\Omega(2^H\epsilon)\) 下界，而 **delayed policy**（\(a_t\mid o_{t-n}\)）与 action chunking 共享 \(\mathcal{O}((k+1)^{H/k}\epsilon)\) 上界——缓解复合误差不一定要「播放整段动作块」。
 
 ### 3. 受限于专家上界
 如果数据里没有恢复动作、异常姿态或罕见接触，BC 通常也学不会这些行为。[DA-Nav](../entities/paper-da-nav.md) 在户外 VLN 消融中给出定量对照：去掉 recovery 轨迹后 CSR 从约 **98%** 掉到 **15%**，说明「只仿完美专家」对闭环纠偏不足。
@@ -118,6 +121,7 @@ $$
 
 - [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md) — DAgger / BC / ACT / Diffusion Policy 的 ingest 档案
 - [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — 生成式模仿学习如何扩展传统 BC
+- [sources/papers/why_action_chunking_improves_bc_corl2026.md](../../sources/papers/why_action_chunking_improves_bc_corl2026.md) — chunk / delay 对 BC 复合误差与部署协议的机制分析
 - Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning* — 解释为什么纯 BC 会受到 covariate shift 影响
 
 ## 关联页面
@@ -131,9 +135,12 @@ $$
 - [KinetIQ Ascend](../entities/kinetiq-ascend.md) — BC 预训练 + 真机 PPO 突破工业可靠性/速度天花板
 - [DA-Nav](../entities/paper-da-nav.md) — 户外 VLN：专家+recovery 数据相对纯 BC 的纠偏消融
 - [Emergent Transfer](../entities/paper-emergent-transfer-cross-config.md) — 跨配置 BC 共训中遗留数据的三相有效性
+- [Action Chunking](./action-chunking.md) — 对单步 BC 的时间窗扩展；部署协议可与训练目标解耦
+- [Why Action Chunking Improves BC](../entities/paper-why-action-chunking-improves-bc.md) — Delay / RDE：何时不必真的执行 chunk
 
 ## 推荐继续阅读
 
 - Ross et al., *DAgger* — 经典交互式 IL 方法
 - Zhao et al., *ACT* — 用 action chunking 缓解长时序误差
 - Chi et al., *Diffusion Policy* — 生成式方法如何超越传统 BC
+- Lazzati et al., [*Why Does Action Chunking Improve BC?*](https://action-chunking.github.io/) — 机制消融与 RDE 部署
