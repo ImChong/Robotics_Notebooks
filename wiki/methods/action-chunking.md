@@ -2,8 +2,8 @@
 type: method
 tags: [imitation-learning, vla, action-chunking, latency, transformers, deployment]
 status: complete
-updated: 2026-07-31
-summary: "Action Chunking 让策略一次输出未来多步动作序列，以降低长时序误差并缓解高延迟模型与高频控制器之间的时域错配。"
+updated: 2026-08-04
+summary: "Action Chunking 让策略一次输出未来多步动作序列，以降低长时序误差并缓解高延迟模型与高频控制器之间的时域错配；机制上可拆为延迟观测条件化与隐式集成，部署不必等于播放整段 chunk。"
 sources:
   - ../../sources/repos/act-aloha.md
   - ../../sources/papers/imitation_learning.md
@@ -11,6 +11,7 @@ sources:
   - ../../sources/papers/humanoid_touch_dream.md
   - ../../sources/repos/xiaomi-robotics-0.md
   - ../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md
+  - ../../sources/papers/why_action_chunking_improves_bc_corl2026.md
 related:
   - ./behavior-cloning.md
   - ./humanoid-transformer-touch-dreaming.md
@@ -22,6 +23,7 @@ related:
   - ../entities/paper-taco-tactile-sensor-benchmark.md
   - ../entities/paper-chronos.md
   - ../entities/paper-pi-r2.md
+  - ../entities/paper-why-action-chunking-improves-bc.md
 ---
 
 # Action Chunking（动作块输出）
@@ -51,6 +53,8 @@ related:
 2. **缓解推理延迟**：当策略推理速度只有 5~20 Hz，而控制器需要 100~1000 Hz 时，动作块可以让低层在等待下一次推理结果时继续执行已有参考。
 
 这也是 ACT、部分 diffusion policy，以及 VLA 真机部署里经常出现 chunk / horizon / buffer 设计的原因。
+
+机制上要分开两件事：**训练时拟合动作块**，与 **部署时是否连续播放该块**。CoRL 2026 的 [Why Action Chunking Improves BC](../entities/paper-why-action-chunking-improves-bc.md) 表明：相对单步 BC 的成功率跃迁，主因更接近 **用过去观测预测动作（delayed policy）** 与 **同时学多种时延关系带来的隐式集成**；「时序一致性 / 有效地平线缩短 / 训长 chunk 的表征红利」不足以单独解释。同一 \(\hat\pi_k\) 可用 **Randomized Delay Ensemble（RDE）** 在多数设定匹配标准 chunk 执行——训练目标与执行协议可以解耦。
 
 ## 主要技术路线
 
@@ -136,9 +140,11 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
 - **误区 1：动作块等于规划。**  
   不完全是。它更像短时动作预测或执行缓冲，不等于全局任务规划。
 - **误区 2：用了 chunk 就不会有 compounding error。**  
-  只是在局部时域里更稳，长时间滚动执行仍会积累误差。
+  只是在局部时域里更稳，长时间滚动执行仍会积累误差；理论尺度上 AC 与 delayed policy 同为 \(\mathcal{O}((k+1)^{H/k}\epsilon)\)，并不能神奇消除指数复合（见 [Why AC Improves BC](../entities/paper-why-action-chunking-improves-bc.md)）。
 - **误区 3：chunk 越长越好。**  
   过长会削弱反馈，环境一变化就可能整段动作都过期。
+- **误区 4：成功了就一定是「时序一致性」或「有效地平线变短」。**  
+  对照实验里，只条件于过去观测的 Delay / 随机时延 RDE 常能匹配标准 AC；不要把部署协议误当成唯一因果。
 
 ## 参考来源
 
@@ -150,6 +156,7 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
 - Zhao et al., *Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware* — ACT 的代表性工作
 - [sources/papers/defi_arxiv_2604_16391.md](../../sources/papers/defi_arxiv_2604_16391.md) — DeFI：2D 视频预测与 3D 动作推理拆分预训练，扩散适配器输出动作 chunk
 - [sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md](../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md) — TacO：ACT + 模态特异触觉编码器的跨传感器基准
+- [sources/papers/why_action_chunking_improves_bc_corl2026.md](../../sources/papers/why_action_chunking_improves_bc_corl2026.md) — CoRL 2026：chunk 收益机制（Delay / RDE / 隐式集成）
 
 ## HMI 开源主表入口
 
@@ -174,3 +181,4 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
 - [TacO（触觉传感器操作基准）](../entities/paper-taco-tactile-sensor-benchmark.md) — ACT 作为跨模态触觉硬件评测骨干（chunk 64 / 执行 32）
 - [Chronos](../entities/paper-chronos.md) — 把 action chunk 当广义坐标，经 IMLE 先验 + 二阶加速度桥精炼（arXiv:2606.30318）
 - [πR²](../entities/paper-pi-r2.md) — 对 chunking flow 做本体感快通道 + 时延自适应日程，GR00T 约 25 Hz 闭环（arXiv:2607.26055）
+- [Why Action Chunking Improves BC](../entities/paper-why-action-chunking-improves-bc.md) — CoRL 2026：Delay / RDE 机制消融与「训练≠必须 chunk 执行」

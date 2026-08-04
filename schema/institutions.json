@@ -2300,6 +2300,15 @@
       "aliases": [
         "salesforce"
       ]
+    },
+    "polimi": {
+      "label": "米兰理工大学（Politecnico di Milano）",
+      "aliases": [
+        "polimi",
+        "politecnico-di-milano",
+        "politecnico-milano",
+        "poli-mi"
+      ]
     }
   }
 }
