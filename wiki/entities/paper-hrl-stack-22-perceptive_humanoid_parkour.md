@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, locomotion, parkour, motion-matching, depth, teacher-student, dagger, ppo, unitree-g1, perception, skill-chaining, amazon-far, body-system-stack]
 status: complete
-updated: 2026-07-24
+updated: 2026-08-04
 arxiv: "2602.15827"
 venue: "RSS 2026"
 related:
@@ -170,6 +170,7 @@ flowchart TB
 - 蒸馏算法：[DAgger](../methods/dagger.md)、[Imitation Learning](../methods/imitation-learning.md)
 - 任务语境：[Locomotion](../tasks/locomotion.md)、[Loco-Manipulation](../tasks/loco-manipulation.md)
 - 硬件：[Unitree G1](./unitree-g1.md)
+- 对照（无技能标签 / 无运行时 motion graph）：[Light-Loco-Parkour（LightLP）](./paper-light-loco-parkour.md) — Lightbot 0；稀疏种子 Real2Sim2Real 扩张 + 转移组 RL
 - 总索引：[人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)
 
 ## 参考来源

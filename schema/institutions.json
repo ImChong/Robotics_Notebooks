@@ -2295,6 +2295,14 @@
         "tongji-university"
       ]
     },
+    "light-origins": {
+      "label": "光原点（Light Origins）",
+      "aliases": [
+        "light-origins",
+        "lightorigins",
+        "light-origins-robotics"
+      ]
+    },
     "rai-institute": {
       "label": "机器人与人工智能研究所（RAI Institute）",
       "aliases": [

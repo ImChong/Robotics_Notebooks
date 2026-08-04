@@ -2,7 +2,7 @@
 type: comparison
 tags: [humanoid, parkour, imitation-learning, motion-tracking, amp, goal-conditioned, unitree-g1, character-animation]
 status: complete
-updated: 2026-06-19
+updated: 2026-08-04
 related:
   - ../methods/hil-hybrid-imitation-learning.md
   - ../methods/mtrg-reference-goal-driven-rl.md
@@ -89,6 +89,7 @@ flowchart LR
 
 - [Humanoid Locomotion](../tasks/humanoid-locomotion.md) — 人形跑酷任务挂接
 - [Locomotion](../tasks/locomotion.md) — 跑酷与障碍穿越总览
+- [Light-Loco-Parkour（LightLP）](../entities/paper-light-loco-parkour.md) — 感知深度蒸馏跑酷；消融称纯稀疏奖励（HIL 式无专家）难学暴力接触
 - [DeepMimic](../methods/deepmimic.md) — 显式 tracking 传统
 - [AMP & HumanX](../methods/amp-reward.md) — style reward 来源
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md) — 更广 WBT 选型
