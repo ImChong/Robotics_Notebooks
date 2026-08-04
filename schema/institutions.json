@@ -2294,6 +2294,12 @@
         "tongji",
         "tongji-university"
       ]
+    },
+    "salesforce": {
+      "label": "赛富时（Salesforce）",
+      "aliases": [
+        "salesforce"
+      ]
     }
   }
 }

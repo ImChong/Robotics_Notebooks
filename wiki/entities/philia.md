@@ -2,11 +2,12 @@
 type: entity
 tags: [llm-agents, agent-infrastructure, multi-robot, manipulation, humanoid, astribot, persistent-memory, messaging-gateway]
 status: complete
-updated: 2026-07-16
+updated: 2026-08-04
 arxiv: "2607.11377"
 related:
   - ./lumo-2.md
   - ./hermes-agent.md
+  - ./openclaw.md
   - ../tasks/manipulation.md
   - ../tasks/loco-manipulation.md
   - ../tasks/vision-language-navigation.md

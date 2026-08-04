@@ -2,15 +2,19 @@
 type: entity
 tags: [entity, simulator, embodied-ai, navigation, meta, habitat, gpu-rendering]
 status: complete
-updated: 2026-07-24
+updated: 2026-08-04
 related:
   - ./matterport3d-simulator.md
   - ./igibson.md
   - ./paper-vln-02-vln-ce.md
   - ../tasks/vision-language-navigation.md
+  - ../tasks/zero-shot-object-navigation.md
+  - ../concepts/embodied-semantic-cognitive-map.md
   - ../overview/sim-platforms-decade-technology-map.md
   - ../overview/vln-10-papers-technology-map.md
+  - ../overview/quadruped-vln-embodied-workshop.md
   - ./paper-zonda.md
+  - ./paper-travexplorer.md
 sources:
   - ../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md
   - ../../sources/papers/zonda_arxiv_2607_21025.md
