@@ -2294,6 +2294,14 @@
         "tongji",
         "tongji-university"
       ]
+    },
+    "light-origins": {
+      "label": "光原点（Light Origins）",
+      "aliases": [
+        "light-origins",
+        "lightorigins",
+        "light-origins-robotics"
+      ]
     }
   }
 }

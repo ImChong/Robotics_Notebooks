@@ -1,3 +1,12 @@
+## [2026-08-04] ingest | sources/papers/light_loco_parkour_light_origins_2026.md + sites/light-loco-parkour-github-io — Light-Loco-Parkour（Light Origins, 2026-08-03）入库：稀疏种子 Real2Sim2Real + 多专家蒸馏无技能标签深度跑酷；升格 wiki/entities/paper-light-loco-parkour.md
+
+- **来源：** [`sources/papers/light_loco_parkour_light_origins_2026.md`](sources/papers/light_loco_parkour_light_origins_2026.md)、[`sources/sites/light-loco-parkour-github-io.md`](sources/sites/light-loco-parkour-github-io.md)
+- **新建实体：** [`wiki/entities/paper-light-loco-parkour.md`](wiki/entities/paper-light-loco-parkour.md)（Light Origins；Lightbot 0 / 90 cm / 21 DoF；攀爬至 0.83H；踏石 99.9%；无 arXiv）
+- **方法要点：** Object-Interaction Mimic 物理修复 → 课程抬障（climb 45→75 cm）→ 多专家 DAgger → transition-group RL（去则 0%）→ GRU 深度蒸馏 + FT（IsaacLab / Orin Nano 50 Hz）
+- **开源核查（步骤 2.5）：** 项目页仅 PDF/视频；GitHub 组织仅为 github.io → **确认未开源**；`## 源码运行时序图` 写明不适用
+- **机构注册：** [`schema/institutions.json`](schema/institutions.json) 新增 `light-origins`（光原点（Light Origins））
+- **交叉：** [`wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md`](wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)、[`wiki/tasks/humanoid-locomotion.md`](wiki/tasks/humanoid-locomotion.md)、[`wiki/tasks/locomotion.md`](wiki/tasks/locomotion.md)、[`wiki/tasks/stair-obstacle-perceptive-locomotion.md`](wiki/tasks/stair-obstacle-perceptive-locomotion.md)、[`wiki/entities/paper-deep-whole-body-parkour.md`](wiki/entities/paper-deep-whole-body-parkour.md)、[`wiki/methods/dagger.md`](wiki/methods/dagger.md)、[`wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md`](wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md)
+
 ## [2026-08-04] ingest | sources/papers/clift_arxiv_2607_29172.md + sites/thomaschen98-clift — CLIFT（arXiv:2607.29172）入库：托管 SFT API 下的非侵入闭环迭代微调；升格 wiki/entities/paper-clift-closed-loop-iterative-finetuning.md
 
 - **来源：** [`sources/papers/clift_arxiv_2607_29172.md`](sources/papers/clift_arxiv_2607_29172.md)、[`sources/sites/thomaschen98-clift.md`](sources/sites/thomaschen98-clift.md)

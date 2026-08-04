@@ -566,6 +566,7 @@
 - [腿式机器人进展、挑战与机遇综述](wiki/entities/paper-legged-robots-advances-challenges.md) — Advances, challenges, and opportunities for legged robots**（Jonas Frey、Matías Mattamala、Hae-Won Pa `📅unknown` `[entity_page]`
 - [LEGS（Loco-manipulation via Embodied Gaussian Splatting）](wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md) — LEGS** 是斯坦福团队提出的 **人形 loco-manipulation VLA 数据工厂**（arXiv:2606.01458，2026-05）：在 **无真人遥操作、无种子演示、无人视频 `📅unknown` `[entity_page]`
 - [Learning to Fold（LeHome Challenge 2026 · arXiv:2606.27163）](wiki/entities/paper-lehome-learning-to-fold.md) — Learning to Fold**（arXiv:2606.27163，[项目博客](https://ilialarchen `📅unknown` `[entity_page]`
+- [Light-Loco-Parkour（LightLP）](wiki/entities/paper-light-loco-parkour.md) — Light-Loco-Parkour**（*Versatile Perceptive Whole-Body Locomotion via Multi-Skill Distillation*，亦称  `📅unknown` `[entity_page]`
 - [Ego-Pi](wiki/entities/paper-loco-manip-01-ego-pi.md) — Ego-Pi** 收录于 具身智能研究室 · Loco-Manip 8 篇周报 **第 0 `📅unknown` `[entity_page]`
 - [EgoPriMo](wiki/entities/paper-loco-manip-02-egoprimo.md) — EgoPriMo** 收录于 具身智能研究室 · Loco-Manip 8 篇周报 **第 `📅unknown` `[entity_page]`
 - [GenHOI](wiki/entities/paper-loco-manip-03-genhoi.md) — GenHOI**（*Contact-Aware Humanoid-Object Interaction by Imitating Generated Videos without Task-Spe `📅unknown` `[entity_page]`
