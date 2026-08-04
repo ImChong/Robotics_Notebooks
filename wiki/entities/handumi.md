@@ -3,7 +3,7 @@ type: entity
 title: HandUMI
 tags: [hardware, software, teleoperation, dual-arm, bimanual, data-collection, robot-free, retargeting, lerobot, open-source, parallel-gripper, robonet]
 status: complete
-updated: 2026-07-30
+updated: 2026-08-04
 related:
   - ../tasks/teleoperation.md
   - ../tasks/bimanual-manipulation.md

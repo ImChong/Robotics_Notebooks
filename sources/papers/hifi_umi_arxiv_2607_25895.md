@@ -8,7 +8,7 @@
 - **作者：** Simple AI（Yuteng Wei, Jinming Ma, Jiawei Wang 等）
 - **机构：** 简易人工智能（Simple AI）
 - **入库日期：** 2026-07-30
-- **最后更新：** 2026-07-30
+- **最后更新：** 2026-08-04
 - **项目页：** <https://cloud.simpleai.tech/simple-world-lab/hifi-umi/>
 - **数据集：** <https://huggingface.co/datasets/simple-world-lab/HiFi-UMI-2K>（CC BY 4.0；**已公开**）
 - **一句话说明：** 高保真无机器人双臂 UMI 采数系统（约 3 mm 轨迹精度、<40 µs 同步、六视角）；证明仅用 HiFi-UMI 后训练即可匹配同域真机遥操作；开源 2000 小时 HiFi-UMI-2K。
@@ -48,14 +48,24 @@
 - **对 wiki 的映射：**
   - [具身数据金字塔](../../wiki/entities/paper-data-pyramid-embodied-manipulation.md)（若存在）或 [manipulation](../../wiki/tasks/manipulation.md)
 
-### 5) 开源核查（步骤 2.5，2026-07-30）
+### 5) 开源核查（步骤 2.5；初检 2026-07-30，复检 2026-08-04）
 
 | 项 | 状态 |
 |----|------|
-| 项目页 | <https://cloud.simpleai.tech/simple-world-lab/hifi-umi/> — 数据叙事与媒体 |
-| Hugging Face | **已公开** `simple-world-lab/HiFi-UMI-2K`（CC BY 4.0，LeRobot v3 风格） |
-| 采数硬件/训练代码 | 项目页与论文 **未列** 完整硬件 BOM 或训练仓库 URL → **部分开源：数据已开，系统代码待核实/未列** |
+| 项目页 | <https://cloud.simpleai.tech/simple-world-lab/hifi-umi/> — 数据叙事与媒体；Resources 仅论文 + HF |
+| Hugging Face | **已公开** `simple-world-lab/HiFi-UMI-2K`（CC BY 4.0，LeRobot v3 风格；约 35k downloads） |
+| 采数硬件/训练代码 | 项目页 JS 资源与 GitHub 检索 **仍未列** 完整硬件 BOM 或训练仓库 URL → **部分开源：数据已开，系统代码未列** |
 | 结论 | 数据集可复用；「zero-robot」实验复现依赖自备骨干与部署栈 |
+
+### 6) 数据接口要点（HF card，训练消费）
+
+- **state/action：** 各 20 维 = 右 10d + 左 10d；每手 `[xyz(m), rot6d(6), gripper(rad)]`；`action` 为 **绝对 next-state 目标**（论文训练时可再转相对动作）。
+- **有效帧：** 保留 `valid.frame == false` 以对齐视频时间戳；训练应过滤为 `true`。
+- **六视角 key：** `head_main` / `head_main_stereo_right` / `left|right_hand_up|down`。
+- **评测规模提示：** VLA 对照约 **3200** 条 HiFi-UMI vs **300** 条 teleop / 任务（管线对比，非等样本效率）。
+- **对 wiki 的映射：**
+  - [HiFi-UMI 论文实体](../../wiki/entities/paper-hifi-umi.md)
+  - [具身数据金字塔](../../wiki/entities/paper-data-pyramid-embodied-manipulation.md)
 
 ## 关键数字速查
 

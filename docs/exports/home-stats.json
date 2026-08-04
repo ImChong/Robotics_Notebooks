@@ -1,13 +1,33 @@
 {
   "generated_at": "2026-08-04",
   "node_count": 2093,
-  "edge_count": 19016,
+  "edge_count": 19017,
   "coverage": {
     "covered": 2069,
     "total": 2069,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-hifi-umi.md",
+      "detail_id": "entity-paper-hifi-umi",
+      "label": "HiFi-UMI / HiFi-UMI-2K",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-data-pyramid-embodied-manipulation.md",
+      "detail_id": "entity-paper-data-pyramid-embodied-manipulation",
+      "label": "Data Pyramid for Embodied Manipulation（具身数据金字塔综述）",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/habitat-sim.md",
       "detail_id": "entity-habitat-sim",
@@ -149,16 +169,6 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-clift-closed-loop-iterative-finetuning.md",
-      "detail_id": "entity-paper-clift-closed-loop-iterative-finetuning",
-      "label": "CLIFT：不打开模型盒子的闭环迭代微调",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
       "path": "wiki/entities/paper-legged-robots-advances-challenges.md",
       "detail_id": "entity-paper-legged-robots-advances-challenges",
       "label": "腿式机器人进展、挑战与机遇综述",
@@ -198,27 +208,16 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
-    },
-    {
-      "path": "wiki/entities/openclaw.md",
-      "detail_id": "entity-openclaw",
-      "label": "OpenClaw",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/habitat-sim.md",
-    "detail_id": "entity-habitat-sim",
-    "label": "Habitat-Sim",
+    "path": "wiki/entities/paper-hifi-umi.md",
+    "detail_id": "entity-paper-hifi-umi",
+    "label": "HiFi-UMI / HiFi-UMI-2K",
     "type": "entity",
     "recency": "2026-08-04",
     "source": "log.md",
-    "action": "maintained",
-    "has_repo": true
+    "action": "maintained"
   },
   "top_communities": [
     {

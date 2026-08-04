@@ -1,3 +1,12 @@
+## [2026-08-04] ingest | sources/papers/hifi_umi_arxiv_2607_25895.md + sites/hifi-umi-project + datasets/hifi-umi-2k — HiFi-UMI（arXiv:2607.25895）复检与接口补强：开源仍为数据-only；补 HF state/action/valid.frame；交叉 paper-data-pyramid；wiki/entities/paper-hifi-umi.md + paper-data-pyramid-embodied-manipulation.md
+
+- **触发：** 用户指定论文 <https://arxiv.org/pdf/2607.25895>、项目页 <https://cloud.simpleai.tech/simple-world-lab/hifi-umi/>、数据集 <https://huggingface.co/datasets/simple-world-lab/HiFi-UMI-2K>
+- **既有页：** 2026-07-30 已完整 ingest（PR #1367）；本次**不新建实体**，做开源复检 + HF 训练接口补强 + 金字塔交叉
+- **更新：** [`sources/papers/hifi_umi_arxiv_2607_25895.md`](sources/papers/hifi_umi_arxiv_2607_25895.md)、[`sources/sites/hifi-umi-project.md`](sources/sites/hifi-umi-project.md)、[`sources/datasets/hifi-umi-2k.md`](sources/datasets/hifi-umi-2k.md)、[`wiki/entities/paper-hifi-umi.md`](wiki/entities/paper-hifi-umi.md)、[`wiki/entities/paper-data-pyramid-embodied-manipulation.md`](wiki/entities/paper-data-pyramid-embodied-manipulation.md)
+- **开源核查（复检 2026-08-04，步骤 2.5）：** **部分开源（数据）** — HF 仍公开；项目页 / GitHub 检索仍无采数或训练仓
+- **接口补强：** 20 维绝对 next-state、`valid.frame`、六视角 key、世界系约定、丢帧/夹爪误差；VLA 协议约 3200 UMI vs 300 teleop
+- **交叉：** 数据金字塔 UMI 层表与「UMI-only 后训练」读法
+
 ## [2026-08-04] ingest | sources/repos/habitat-sim.md + sites/aihabitat-org + sites/aihabitat-habitat-sim-docs — Habitat-Sim 官方仓/门户/文档入库：加深 wiki/entities/habitat-sim.md
 
 - **来源：** [`sources/repos/habitat-sim.md`](sources/repos/habitat-sim.md)、[`sources/sites/aihabitat-org.md`](sources/sites/aihabitat-org.md)、[`sources/sites/aihabitat-habitat-sim-docs.md`](sources/sites/aihabitat-habitat-sim-docs.md)
@@ -14,7 +23,6 @@
 - **开源核查（步骤 2.5）：** 项目页仅 PDF/视频；GitHub 组织仅为 github.io → **确认未开源**；`## 源码运行时序图` 写明不适用
 - **机构注册：** [`schema/institutions.json`](schema/institutions.json) 新增 `light-origins`（光原点（Light Origins））
 - **交叉：** [`wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md`](wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)、[`wiki/tasks/humanoid-locomotion.md`](wiki/tasks/humanoid-locomotion.md)、[`wiki/tasks/locomotion.md`](wiki/tasks/locomotion.md)、[`wiki/tasks/stair-obstacle-perceptive-locomotion.md`](wiki/tasks/stair-obstacle-perceptive-locomotion.md)、[`wiki/entities/paper-deep-whole-body-parkour.md`](wiki/entities/paper-deep-whole-body-parkour.md)、[`wiki/methods/dagger.md`](wiki/methods/dagger.md)、[`wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md`](wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md)
-## [2026-08-04] ingest | sources/papers/clift_arxiv_2607_29172.md + sites/thomaschen98-clift — CLIFT（arXiv:2607.29172）入库：托管 SFT API 下的非侵入闭环迭代微调；升格 wiki/entities/paper-clift-closed-loop-iterative-finetuning.md
 
 ## [2026-08-04] ingest | sources/papers/legged_robots_advances_challenges_scirobotics_2026.md — 补 arXiv:2607.28952 作者版；加深 wiki/entities/paper-legged-robots-advances-challenges.md
 
@@ -47,7 +55,10 @@
 - **方法要点：** 否定 temporal consistency / horizon reduction / representation learning 作为充分解释；主因是 **delayed policy**（\(a_t\mid o_{t-n}\)）与 **隐式集成**；**RDE** 部署在多数设定匹配标准 AC；显式集成进一步抬升（Transport 12.6%→41.5%）
 - **开源核查（步骤 2.5）：** PDF / presentation 已发布；Code 与 arXiv 均 Coming soon → 判「宣称将开源」；`## 源码运行时序图` 写明**不适用**
 - **机构注册：** [`schema/institutions.json`](schema/institutions.json) 新增 `polimi`（米兰理工大学（Politecnico di Milano））
-- **交叉：** [`wiki/methods/action-chunking.md`](wiki/methods/action-chunking.md)、[`wiki/methods/behavior-cloning.md`](wiki/methods/behavior-cloning.md)、[`wiki/methods/diffusion-policy.md`](wiki/methods/diffusion-policy.md)、[`wiki/entities/libero-benchmark.md`](wiki/entities/libero-benchmark.md)## [2026-08-04] ingest | sources/papers/clift_arxiv_2607_29172.md + sites/thomaschen98-clift — CLIFT（arXiv:2607.29172）入库：托管 SFT API 下的非侵入闭环迭代微调；升格 wiki/entities/paper-clift-closed-loop-iterative-finetuning.md
+- **交叉：** [`wiki/methods/action-chunking.md`](wiki/methods/action-chunking.md)、[`wiki/methods/behavior-cloning.md`](wiki/methods/behavior-cloning.md)、[`wiki/methods/diffusion-policy.md`](wiki/methods/diffusion-policy.md)、[`wiki/entities/libero-benchmark.md`](wiki/entities/libero-benchmark.md)
+
+## [2026-08-04] ingest | sources/papers/clift_arxiv_2607_29172.md + sites/thomaschen98-clift — CLIFT（arXiv:2607.29172）入库：托管 SFT API 下的非侵入闭环迭代微调；升格 wiki/entities/paper-clift-closed-loop-iterative-finetuning.md
+
 - **来源：** [`sources/papers/clift_arxiv_2607_29172.md`](sources/papers/clift_arxiv_2607_29172.md)、[`sources/sites/thomaschen98-clift.md`](sources/sites/thomaschen98-clift.md)
 - **新建实体：** [`wiki/entities/paper-clift-closed-loop-iterative-finetuning.md`](wiki/entities/paper-clift-closed-loop-iterative-finetuning.md)（UC Berkeley / Google DeepMind / NVIDIA；Unitree G1 三任务两轮飞轮 100% / 98% / 96%）
 - **方法要点：** 奖励模型 select-then-distill（VLM K=12 候选 → ~100 组人类成对偏好筛选 → Qwen3-VL 蒸馏）+ DINOv3 检索式 chunk 级优势 token（1.8 s 前瞻、同侪前 30% 标正）+ 累积数据集回投托管 SFT API
