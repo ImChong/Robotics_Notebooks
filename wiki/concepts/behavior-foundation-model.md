@@ -2,7 +2,7 @@
 type: concept
 tags: [bfm, behavior-foundation-model, humanoid, whole-body-control, foundation-policy, pretraining, survey]
 status: complete
-updated: 2026-07-22
+updated: 2026-08-04
 related:
   - ./foundation-policy.md
   - ./whole-body-control.md
@@ -19,11 +19,13 @@ related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../entities/amass.md
   - ../entities/gr00t-wholebodycontrol.md
+  - ../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md
 sources:
   - ../../sources/papers/bfm_survey_arxiv_2506_20487.md
   - ../../sources/repos/awesome_bfm_papers.md
   - ../../sources/papers/bfm_humanoid_arxiv_2509_13780.md
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
+  - ../../sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md
 summary: "Behavior Foundation Model（BFM）在大规模多样化行为数据上预训练广义行为先验，使人形全身控制可零样本或快速适应多下游任务；与 VLA 操作向基础策略互补，预训练常分 goal-conditioned、intrinsic-reward、forward-backward 三线，适应分微调与层次化控制两线。"
 ---
 
@@ -136,6 +138,7 @@ flowchart TB
 - [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md)
 - [BFM 分类 01：Forward-backward 表征](../overview/bfm-category-01-forward-backward-representation.md)
 - [BFM 分类 02：Goal-conditioned 学习](../overview/bfm-category-02-goal-conditioned-learning.md)
+- [FB / BFM-Zero / INTACT / Mimic / VLA 任务空间表征对比](../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md) — FB 球相对 Mimic 曲线 / VLA 语义点的选型坐标
 - [BFM 分类 03：Intrinsic reward 预训练](../overview/bfm-category-03-intrinsic-reward-pretraining.md)
 - [BFM 分类 04：Adaptation](../overview/bfm-category-04-adaptation.md)
 - [BFM 分类 05：Hierarchical control](../overview/bfm-category-05-hierarchical-control.md) — awesome 列表 + 公众号五类问题导读
@@ -146,6 +149,7 @@ flowchart TB
 - [BFM 综述（arXiv:2506.20487）](../../sources/papers/bfm_survey_arxiv_2506_20487.md)
 - [awesome-bfm-papers 精选列表](../../sources/repos/awesome_bfm_papers.md)
 - [BFM 论文 ingest（arXiv:2509.13780）](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md)
+- [zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md](../../sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md) — 任务空间表征对照（知乎专栏）
 
 ## 推荐继续阅读
 

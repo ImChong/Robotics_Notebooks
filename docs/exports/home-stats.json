@@ -1,13 +1,130 @@
 {
   "generated_at": "2026-08-04",
-  "node_count": 2093,
-  "edge_count": 19017,
+  "node_count": 2094,
+  "edge_count": 19041,
   "coverage": {
-    "covered": 2069,
-    "total": 2069,
+    "covered": 2070,
+    "total": 2070,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md",
+      "detail_id": "wiki-comparisons-fb-bfm-zero-intact-mimic-vla-task-space",
+      "label": "FB / BFM-Zero / INTACT / Mimic / VLA：任务空间表征对比",
+      "type": "comparison",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-bfm-zero.md",
+      "detail_id": "entity-paper-bfm-zero",
+      "label": "BFM-Zero",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-intact.md",
+      "detail_id": "entity-paper-intact",
+      "label": "INTACT（Search-Free Intent-to-Action World Model）",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/entities/mimiclite.md",
+      "detail_id": "entity-mimiclite",
+      "label": "MimicLite（监督运动跟踪基础设施）",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/roboparty-ufo.md",
+      "detail_id": "entity-roboparty-ufo",
+      "label": "UFO（Roboparty 无监督 RL 控制框架）",
+      "type": "entity",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/overview/roboparty-lab-party-os-technology-map.md",
+      "detail_id": "wiki-overview-roboparty-lab-party-os-technology-map",
+      "label": "RoboParty Lab / Party OS 技术地图",
+      "type": "overview",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/concepts/behavior-foundation-model.md",
+      "detail_id": "wiki-concepts-behavior-foundation-model",
+      "label": "Behavior Foundation Model（行为基础模型，BFM）",
+      "type": "concept",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/overview/bfm-category-01-forward-backward-representation.md",
+      "detail_id": "wiki-overview-bfm-category-01-forward-backward-representation",
+      "label": "BFM 分类 01：Forward-backward 表征",
+      "type": "overview",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/comparisons/mpc-vs-rl.md",
+      "detail_id": "wiki-comparisons-mpc-vs-rl",
+      "label": "MPC vs RL：控制策略选型对比",
+      "type": "comparison",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/sonic-motion-tracking.md",
+      "detail_id": "wiki-methods-sonic-motion-tracking",
+      "label": "SONIC（规模化运动跟踪人形控制）",
+      "type": "method",
+      "recency": "2026-08-04",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/paper-clift-closed-loop-iterative-finetuning.md",
       "detail_id": "entity-paper-clift-closed-loop-iterative-finetuning",
@@ -78,17 +195,6 @@
       "action": "maintained"
     },
     {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
       "path": "wiki/entities/paper-hifi-umi.md",
       "detail_id": "entity-paper-hifi-umi",
       "label": "HiFi-UMI / HiFi-UMI-2K",
@@ -107,118 +213,18 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/habitat-sim.md",
-      "detail_id": "entity-habitat-sim",
-      "label": "Habitat-Sim",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/overview/sim-platforms-decade-technology-map.md",
-      "detail_id": "wiki-overview-sim-platforms-decade-technology-map",
-      "label": "十年仿真平台技术地图（TOP 8）",
-      "type": "overview",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
-    },
-    {
-      "path": "wiki/entities/matterport3d-simulator.md",
-      "detail_id": "entity-matterport3d-simulator",
-      "label": "Matterport3D Simulator",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
-    },
-    {
-      "path": "wiki/entities/pybullet.md",
-      "detail_id": "entity-pybullet",
-      "label": "PyBullet",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真训练（Isaac Gym / Isaac Lab） 社区"
-    },
-    {
-      "path": "wiki/tasks/vision-language-navigation.md",
-      "detail_id": "wiki-tasks-vision-language-navigation",
-      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
-      "type": "task",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
-    },
-    {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-light-loco-parkour.md",
-      "detail_id": "entity-paper-light-loco-parkour",
-      "label": "Light-Loco-Parkour（LightLP）",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md",
-      "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
-      "label": "Perceptive Humanoid Parkour（PHP）",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/tasks/humanoid-locomotion.md",
-      "detail_id": "wiki-tasks-humanoid-locomotion",
-      "label": "Humanoid Locomotion (人形机器人移动)",
-      "type": "task",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/tasks/locomotion.md",
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-clift-closed-loop-iterative-finetuning.md",
-    "detail_id": "entity-paper-clift-closed-loop-iterative-finetuning",
-    "label": "CLIFT：不打开模型盒子的闭环迭代微调",
-    "type": "entity",
+    "path": "wiki/comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md",
+    "detail_id": "wiki-comparisons-fb-bfm-zero-intact-mimic-vla-task-space",
+    "label": "FB / BFM-Zero / INTACT / Mimic / VLA：任务空间表征对比",
+    "type": "comparison",
     "recency": "2026-08-04",
     "source": "log.md",
     "action": "maintained",
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "has_repo": true,
+    "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
   },
   "top_communities": [
     {
@@ -235,7 +241,7 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 142
+      "size": 143
     },
     {
       "label": "移动操作",
@@ -259,7 +265,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 388,
+      "degree": 390,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -328,7 +334,7 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 124,
+      "degree": 126,
       "has_repo": true
     },
     {

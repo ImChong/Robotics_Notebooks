@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, reinforcement-learning, unsupervised-rl, bfm, open-source, roboparty, teleoperation, mjlab]
 status: complete
-updated: 2026-07-30
+updated: 2026-08-04
 related:
   - ./party-os.md
   - ../overview/roboparty-lab-party-os-technology-map.md
@@ -13,10 +13,12 @@ related:
   - ../overview/bfm-41-papers-technology-map.md
   - ../tasks/teleoperation.md
   - ./mimiclite.md
+  - ../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md
 sources:
   - ../../sources/repos/roboparty_ufo.md
   - ../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md
   - ../../sources/sites/roboparty_lab_tech_humanoid_control.md
+  - ../../sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md
 summary: "UFO 是 Roboparty 面向人形机器人的开源无监督强化学习控制开发框架：以 MJLab 为训练 backend，覆盖数据管线、BFM-Zero/TeCH 等表征研究与真机遥操部署，宣称 8×4090 不到 12 小时完成 BFM-Zero 训练。"
 ---
 
@@ -102,12 +104,14 @@ UFO 定位为 **多种行为表征的无监督学习统一实验平台**，而�
 - [行为基础模型](../concepts/behavior-foundation-model.md)
 - [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md)
 - [Teleoperation](../tasks/teleoperation.md)
+- [FB / BFM-Zero / INTACT / Mimic / VLA 任务空间表征对比](../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md) — UFO/BFM-Zero 任务球读法
 
 ## 参考来源
 
 - [roboparty_ufo.md](../../sources/repos/roboparty_ufo.md)
 - [wechat_roboparty_lab_party_os_3_tools.md](../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md)
 - [roboparty_lab_tech_humanoid_control.md](../../sources/sites/roboparty_lab_tech_humanoid_control.md)
+- [zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md](../../sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md)
 
 ## 推荐继续阅读
 

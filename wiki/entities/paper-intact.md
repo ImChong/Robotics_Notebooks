@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, jepa, latent-dynamics, model-based-planning, cem, search-free, zju, tsinghua, roboparty]
 status: complete
-updated: 2026-07-30
+updated: 2026-08-04
 arxiv: "2607.26056"
 code: https://github.com/zju3dv/INTACT-JEPA
 related:
@@ -15,12 +15,14 @@ related:
   - ../overview/roboparty-lab-party-os-technology-map.md
   - ../concepts/world-action-models.md
   - ../concepts/embodied-fm-latency-generalization-tradeoff.md
+  - ../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md
 sources:
   - ../../sources/papers/intact_arxiv_2607_26056.md
   - ../../sources/sites/intact-jepa-github-io.md
   - ../../sources/repos/intact-jepa.md
   - ../../sources/repos/roboparty-intact-jepa.md
   - ../../sources/sites/lab_roboparty_com.md
+  - ../../sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md
 summary: "INTACT（arXiv:2607.26056，ZJU/清华AIR/RoboParty Lab）：同构四槽语法把物理意图与部署意图映射为动作律，条件均值作无搜索策略；LeWM 四任务 Direct 2.9–5.5 ms、宏约 95%（相对 CEM 约 300× 更快）；规范仓+Roboparty 镜像，训练代码 Coming Soon。"
 ---
 
@@ -160,6 +162,7 @@ flowchart TB
 - [物理保真输出轴](../overview/world-model-physics-fidelity-outputs.md) — 策展阅读轴
 - [World Action Models](../concepts/world-action-models.md) — 动作耦合 WM/WAM
 - [具身大模型实时性↔泛化取舍](../concepts/embodied-fm-latency-generalization-tradeoff.md) — 毫秒级 Direct 的带宽含义
+- [FB / BFM-Zero / INTACT / Mimic / VLA 任务空间表征对比](../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md) — Goal-Reach 子空间相对 FB 球与 Mimic 曲线的对照
 
 ## 参考来源
 

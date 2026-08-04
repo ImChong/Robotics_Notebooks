@@ -1828,6 +1828,7 @@
 - [Deep Learning Optimizers：选型对比](wiki/comparisons/deep-learning-optimizers.md) — 背景**：反向传播 算出梯度后，需用 **优化器** 决定如何更新参数。从经典 [SGD](../methods/sgd.md `📅unknown` `[comparison_page]`
 - [DynaRetarget vs TopoRetarget：接触保真重定向两条路线对比](wiki/comparisons/dynaretarget-vs-toporetarget-retargeting.md) — 背景**：把人–物体演示喂给机器人时，「像不像」往往不在关节角而在 **接触**——脚是否真踩实、指尖是否真贴物。2026 年两篇代表性工作分别从两端攻这道闸：[DynaRetarget](../ `📅unknown` `[comparison_page]`
 - [EtherCAT vs EtherNet/IP（工业总线选型对比）](wiki/comparisons/ethercat-vs-ethernet-ip.md) — 在人形机器人、工业机械臂、移动操作平台落地时，"主控板 ↔ 关节驱动器"的连接几乎都跑在工业以太网上。**EtherCAT** 和 **EtherNet/IP** 是当前装机量最大的两种以太网现场总线 `📅unknown` `[comparison_page]`
+- [FB / BFM-Zero / INTACT / Mimic / VLA：任务空间表征对比](wiki/comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md) — 背景**：围绕 RoboParty Lab 近期 MimicLite、[UFO](. `📅unknown` `[comparison_page]`
 - [GMR vs NMR vs ReActor：动作重定向方法谱系对比](wiki/comparisons/gmr-vs-nmr-vs-reactor.md) — 背景**：当源动作（动捕、视频估计、生成模型）要喂给目标人形 / 异构机器人时，重定向是必须穿过的一道闸。围绕「**像不像**」与「**能不能跟得上**」两条评价线，社区涌现了三类代表性路线——以 `📅unknown` `[comparison_page]`
 - [HIL vs MTRG vs ZEST：跑酷模仿学习路线对比](wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md) — 同一作者群从 **物理角色动画跑酷**（HIL）演进到 **人形 G1 箱式跑酷**（[GfR / MTR `📅unknown` `[comparison_page]`
 - [HumanNet Table 1：代表性人类视频语料与具身向关系](wiki/comparisons/humannet-table1-human-video-corpora.md) — HumanNet** 在与既有语料对比时，用一张表同时强调 **规模、视点、活动语义粒度** 以及论文中称为 **Embodied Use** 的定性列（与「能否直接支撑机器人学习接口」相关，但仍 `📅unknown` `[comparison_page]`

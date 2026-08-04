@@ -2,7 +2,7 @@
 type: overview
 tags: [bfm, behavior-foundation-model, category-hub, awesome-bfm-papers, forward-backward]
 status: complete
-updated: 2026-05-27
+updated: 2026-08-04
 summary: "具身智能研究室 BFM 41 篇专题 · 01 Forward-backward 表征（6 篇）— 多任务能否压进可调用的身体潜空间（latent prompt / FB 嵌入），而非每换一个任务就重训全身策略？"
 related:
   - ./bfm-41-papers-technology-map.md
@@ -19,10 +19,12 @@ related:
   - ../entities/paper-bfm-04-fast-imitation-bfm.md
   - ../entities/paper-bfm-05-learning-one-representation.md
   - ../entities/paper-bfm-06-successor-states.md
+  - ../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
   - ../../sources/papers/bfm_awesome_41_catalog.md
   - ../../sources/repos/awesome_bfm_papers.md
+  - ../../sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md
 ---
 
 # BFM 分类 01：Forward-backward 表征
@@ -69,6 +71,7 @@ sources:
 - [Behavior Foundation Model](../concepts/behavior-foundation-model.md)
 - [人形 RL 身体系统栈](./humanoid-rl-motion-control-body-system-stack.md)
 - [AMP 运动先验综述](./humanoid-amp-motion-prior-survey.md)
+- [FB / BFM-Zero / INTACT / Mimic / VLA 任务空间表征对比](../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md)
 
 ## 参考来源
 
@@ -76,3 +79,4 @@ sources:
 - [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md)
 - [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers)
 - [A Survey of Behavior Foundation Model](https://arxiv.org/abs/2506.20487)（TPAMI 2025）
+- [zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md](../../sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md) — FB 球相对 Mimic/VLA 的对照读法
