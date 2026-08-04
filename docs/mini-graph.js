@@ -34,13 +34,13 @@
   function miniGraphTheme() {
     var dark = document.documentElement.getAttribute('data-theme') !== 'light';
     return {
-      background: dark ? '#0d1117' : '#eef2f7',
+      background: dark ? '#191919' : '#f7f6f3',
       edge: dark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.10)',
-      edge3d: dark ? '#aab6c4' : '#3c4756',
+      edge3d: dark ? '#a9a8a4' : '#4a4945',
       label: dark ? 'rgba(255,255,255,0.75)' : 'rgba(0,0,0,0.70)',
       stats: dark ? 'rgba(255,255,255,0.55)' : 'rgba(0,0,0,0.62)',
-      link: dark ? '#60a5fa' : '#2563eb',
-      linkBorder: dark ? 'rgba(96,165,250,0.30)' : 'rgba(37,99,235,0.30)'
+      link: dark ? '#5b9cf6' : '#2d74da',
+      linkBorder: dark ? 'rgba(91,156,246,0.30)' : 'rgba(45,116,218,0.30)'
     };
   }
 
