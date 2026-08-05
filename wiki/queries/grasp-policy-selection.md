@@ -2,7 +2,7 @@
 type: query
 tags: [manipulation, grasping, perception, vla, il, rl, 6dof, anygrasp, graspnet]
 status: complete
-updated: 2026-07-23
+updated: 2026-08-05
 summary: "抓取策略选型 Query：从「开放场景 vs 已知物体」「稀疏 vs 稠密候选」「几何启发式 vs 学习方法 vs 端到端策略」三轴出发，给出真机抓取系统的方案选择与组合路径。"
 related:
   - ../methods/grasp-pose-estimation.md
@@ -63,7 +63,7 @@ sources:
 |------|---------|--------------|---------|------|
 | 单 SKU 工业件 | 6D 位姿估计 + 离线 grasp set | CAD + AprilTag / 模板匹配 / FoundationPose 类位姿网络 | 反光/相似件、相机标定漂移 | 触觉/电流反馈纠偏 |
 | 类别级（杯子、瓶子等） | 类别 6D / 关键点 → 模板抓取 | NOCS、Cat-NOCS 系；或类内 grasp set | 类内形状/材质差异大 | 检测式 grasp 接力 |
-| 开放词汇 / 未知物体 | 检测式 6-DoF/7-DoF grasp | [GraspNet-1Billion](../methods/grasp-pose-estimation.md)、[Contact-GraspNet](../methods/contact-net.md)、[AnyGrasp](../entities/anygrasp.md) | 透明/反光、薄片、长杆 | 触觉 + 重抓 / scripted recovery |
+| 开放词汇 / 未知物体 | 检测式 6-DoF/7-DoF grasp | [GraspNet-1Billion](../methods/grasp-pose-estimation.md)、[Contact-GraspNet](../methods/contact-net.md)、[AnyGrasp](../entities/anygrasp.md) | 透明/反光、薄片、长杆 | 触觉 + 重抓 / scripted recovery；含液透明器皿见 [TransGraspNet](../entities/paper-transgraspnet.md)（边界–深度一致 + 物理重打分） |
 | 语言指令 + 未知场景 | 开放词汇分割（SAM/Grounded SAM/OWL-ViT）+ 检测式 grasp | 分割掩码 → 区域抓取 | 文本到掩码歧义、远距离误检 | 让 VLM 多轮澄清 / 用户确认 |
 
 ### 轴 2：候选稠密度（稀疏 vs 稠密）
@@ -181,10 +181,12 @@ GraspNet AP / AP_novel 高，主要意味着「数据分布内匹配好」，但
 - Fang H. et al. (2020). *GraspNet-1Billion*. CVPR.
 - Sundermeyer M. et al. (2021). *Contact-GraspNet*. ICRA. — <https://arxiv.org/abs/2103.14127>
 - Fang H. et al. (2023). *AnyGrasp*. IEEE T-RO. — <https://arxiv.org/abs/2212.08333>
+- [sources/papers/transgraspnet_arxiv_2607_29567.md](../../sources/papers/transgraspnet_arxiv_2607_29567.md) — TransGraspNet：透明实验器皿几何–物理一致抓取（arXiv:2607.29567）
 
 ## 关联页面
 
 - [Grasp Pose Estimation（抓取位姿估计）](../methods/grasp-pose-estimation.md) — 本 Query 的方法谱系基础页
+- [TransGraspNet（论文实体）](../entities/paper-transgraspnet.md) — 透明含液器皿的边界/深度一致 + GraspNet 物理重打分闭环
 - [AnyGrasp（抓取感知 SDK）](../entities/anygrasp.md) — GraspNet 系第三代工程化代表
 - [ContactNet](../methods/contact-net.md) — 与 Contact-GraspNet 在「接触面预测」思路同源
 - [Manipulation](../tasks/manipulation.md) — 操作任务总览，抓取是其感知子问题

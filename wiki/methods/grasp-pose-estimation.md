@@ -2,11 +2,12 @@
 type: method
 tags: [perception, grasping, manipulation, point-cloud, rgbd, 6dof, deep-learning]
 status: complete
-updated: 2026-05-20
+updated: 2026-08-05
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/manipulation.md
   - ../entities/anygrasp.md
+  - ../entities/paper-transgraspnet.md
   - ./contact-net.md
   - ./visual-servoing.md
   - ../concepts/contact-rich-manipulation.md
@@ -15,6 +16,7 @@ related:
 sources:
   - ../../sources/repos/anygrasp-sdk.md
   - ../../sources/papers/perception.md
+  - ../../sources/papers/transgraspnet_arxiv_2607_29567.md
 summary: "抓取位姿估计是把 RGBD / 点云观测映射为 6-DoF（或 7-DoF）抓取候选的感知任务，主流路线沿 GraspNet → Contact-GraspNet → GSNet/Graspness/AnyGrasp 演进，从「采样+评估」逐步走向「全场景稠密预测 + 时序关联」。"
 ---
 
@@ -129,6 +131,7 @@ flowchart LR
 ## 关联页面
 
 - [Manipulation（操作任务）](../tasks/manipulation.md) — 抓取位姿估计在操作闭环中的位置
+- [TransGraspNet（论文实体）](../entities/paper-transgraspnet.md) — 透明含液器皿：边界/深度一致 + GraspNet 候选物理重打分（arXiv:2607.29567）
 - [AnyGrasp（抓取感知 SDK）](../entities/anygrasp.md) — GraspNet 系第三代代表，工程化 SDK
 - [ContactNet](./contact-net.md) — 与 Contact-GraspNet 在「接触面预测」思路上同源
 - [Visual Servoing](./visual-servoing.md) — 抓取位姿之后的亚毫米级对齐方案
@@ -144,4 +147,5 @@ flowchart LR
 - Wang C., Fang H., Gou M., et al. (2021). *Graspness Discovery in Clutters for Fast and Accurate Grasp Detection*. ICCV.
 - Fang H., et al. (2023). *AnyGrasp: Robust and Efficient Grasp Perception in Spatial and Temporal Domains*. IEEE T-RO. — <https://arxiv.org/abs/2212.08333>
 - [sources/repos/anygrasp-sdk.md](../../sources/repos/anygrasp-sdk.md) — GraspNet 生态资料索引
+- [sources/papers/transgraspnet_arxiv_2607_29567.md](../../sources/papers/transgraspnet_arxiv_2607_29567.md) — TransGraspNet：透明实验器皿几何–物理一致抓取
 - 项目页：<https://graspnet.net/>

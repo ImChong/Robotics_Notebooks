@@ -2,7 +2,7 @@
 type: comparison
 tags: [grasping, perception, manipulation, point-cloud, rgbd, 6dof, anygrasp, graspnet, comparison, engineering-selection]
 status: complete
-updated: 2026-05-21
+updated: 2026-08-05
 sources:
   - ../../sources/repos/anygrasp-sdk.md
   - ../../sources/papers/perception.md
@@ -206,6 +206,7 @@ flowchart LR
 
 - [Grasp Pose Estimation（抓取位姿估计）](../methods/grasp-pose-estimation.md) — 三代抓取检测方法谱系总览。
 - [AnyGrasp（抓取感知 SDK）](../entities/anygrasp.md) — SDK 形态与 License 申请细节。
+- [TransGraspNet（论文实体）](../entities/paper-transgraspnet.md) — GraspNet 候选 + 透明含液任务物理重打分（与 SDK 选型正交的域特化补丁）。
 - [ContactNet](../methods/contact-net.md) — 与 Contact-GraspNet 在「接触面预测」思路同源的相关方法。
 - [Manipulation（操作任务）](../tasks/manipulation.md) — 抓取检测在操作闭环中的位置。
 - [Query：抓取策略选型](../queries/grasp-policy-selection.md) — 三轴选型（物体已知度 / 候选稠密度 / 方法类型）与组合 pipeline 指南。

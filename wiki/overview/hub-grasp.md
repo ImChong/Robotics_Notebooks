@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-grasp, manipulation, dexterous, grasp]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-05
 summary: "抓取与操作感知知识链汇总：从接触建模、灵巧手运动学到 GraspNet/AnyGrasp 等感知抓取栈，覆盖 pick-place、双手协作与 loco-manip 中的操作子问题。"
 ---
 
@@ -43,6 +43,7 @@ summary: "抓取与操作感知知识链汇总：从接触建模、灵巧手运�
 | 硬件 | 开源欠驱动腱驱手族 | [Yale OpenHand](../entities/yale-openhand.md)（T/T42/O/F3；CAD CC BY-NC；F3 腕相机估力） |
 | 数据 | 同物体人–机配对灵巧抓取 | [HRDexDB](../entities/hrdexdb-dataset.md)（100+ 物体 · 多灵巧手 · 3D + 触觉） |
 | 方法 | 移动高速灵巧抓取 + 全身 RL | [FastGrasp](../entities/paper-fastgrasp-mobile-dexterous-grasping.md)（CVAE 引导 · 二值触觉 · arXiv:2604.12879） |
+| 方法 | 透明含液实验器皿抓取 | [TransGraspNet](../entities/paper-transgraspnet.md)（边界/深度一致 + 物理重打分 · arXiv:2607.29567） |
 | 末段精修 | 纯触觉目标条件 regrasp | [TacRefineNet](../entities/paper-tacrefinenet-tactile-grasp-refinement.md)（板/盘/杆 · Siamese · arXiv:2509.25746） |
 
 ## 与其他知识链的关系
@@ -57,9 +58,11 @@ summary: "抓取与操作感知知识链汇总：从接触建模、灵巧手运�
 - [Impedance Control](../concepts/impedance-control.md)
 - [Contact Dynamics](../concepts/contact-dynamics.md)
 - [TacRefineNet（论文实体）](../entities/paper-tacrefinenet-tactile-grasp-refinement.md) — 抓取末段纯触觉精修
+- [TransGraspNet（论文实体）](../entities/paper-transgraspnet.md) — 透明含液实验器皿几何–物理一致抓取
 
 ## 参考来源
 
 - 本库归纳自 [Manipulation 任务页](../tasks/manipulation.md)、[接触丰富操作](../concepts/contact-rich-manipulation.md)、[AnyGrasp vs GraspNet](../comparisons/anygrasp-vs-graspnet.md)
 - **ingest 档案：** [sources/papers/tacrefinenet_arxiv_2509_25746.md](../../sources/papers/tacrefinenet_arxiv_2509_25746.md) — TacRefineNet（arXiv:2509.25746）
+- **ingest 档案：** [sources/papers/transgraspnet_arxiv_2607_29567.md](../../sources/papers/transgraspnet_arxiv_2607_29567.md) — TransGraspNet（arXiv:2607.29567）
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`grasp` 命中规则）

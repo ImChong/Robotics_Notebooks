@@ -1,3 +1,12 @@
+## [2026-08-05] ingest | sources/papers/transgraspnet_arxiv_2607_29567.md — TransGraspNet（arXiv:2607.29567）透明含液实验器皿几何–物理一致抓取入库；升格 wiki/entities/paper-transgraspnet.md；交叉 grasp-pose-estimation / grasp-policy-selection / hub-grasp / manipulation / anygrasp / anygrasp-vs-graspnet
+
+- **触发：** 用户指定 <https://arxiv.org/abs/2607.29567>
+- **来源：** [`sources/papers/transgraspnet_arxiv_2607_29567.md`](sources/papers/transgraspnet_arxiv_2607_29567.md)（PKU / SJTU / SUSTech；2026-07-31）
+- **新建实体：** [`wiki/entities/paper-transgraspnet.md`](wiki/entities/paper-transgraspnet.md)
+- **开源核查（步骤 2.5）：** **确认未开源** — 无项目页 / 无官方仓 / RobotSci-Glass 未公开下载；`## 源码运行时序图` 写不适用
+- **方法要点：** E-CBAM+Edge Branch 分割 → EGAG 深度补全 → GraspNet 候选 + 质心/主轴/wrench 重打分；AUBO i5 真机 Simple 96% / Clutter 86%；0.5 m/s 运液零洒出
+- **交叉更新：** [`wiki/methods/grasp-pose-estimation.md`](wiki/methods/grasp-pose-estimation.md)、[`wiki/queries/grasp-policy-selection.md`](wiki/queries/grasp-policy-selection.md)、[`wiki/overview/hub-grasp.md`](wiki/overview/hub-grasp.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`wiki/entities/anygrasp.md`](wiki/entities/anygrasp.md)、[`wiki/comparisons/anygrasp-vs-graspnet.md`](wiki/comparisons/anygrasp-vs-graspnet.md)
+
 ## [2026-08-05] ingest | sources/papers/roamflow_arxiv_2606_29934.md — RoamFlow（arXiv:2606.29934）MeanFlow 一步 image-goal 导航入库；升格 wiki/entities/paper-roamflow.md；交叉 NoMaD/NavDP/NavWAM/Habitat/VLN/Orin NX
 
 - **触发：** 用户指定 <https://arxiv.org/abs/2606.29934>

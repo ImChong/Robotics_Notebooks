@@ -2,12 +2,13 @@
 type: entity
 tags: [grasping, perception, parallel-gripper, point-cloud, manipulation, sjtu, minkowski]
 status: complete
-updated: 2026-05-13
+updated: 2026-08-05
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/manipulation.md
   - ../methods/wilor.md
   - ../methods/grasp-pose-estimation.md
+  - ./paper-transgraspnet.md
   - ../entities/april-tag.md
   - ../comparisons/anygrasp-vs-graspnet.md
 sources:
@@ -85,6 +86,7 @@ flowchart LR
 
 - [Manipulation（操作任务）](../tasks/manipulation.md)
 - [Grasp Pose Estimation（抓取位姿估计）](../methods/grasp-pose-estimation.md) — GraspNet/Contact-GraspNet/GSNet/AnyGrasp 的方法谱系总览，AnyGrasp 在第三代位置上的工程化叙事
+- [TransGraspNet（论文实体）](./paper-transgraspnet.md) — 透明含液器皿上对 GraspNet 候选做物理重打分的任务特化补丁（未开源）
 - [Query：抓取策略选型](../queries/grasp-policy-selection.md) — AnyGrasp 在「检测式 + 时序关联」组合中的定位与替代关系
 - [AnyGrasp vs GraspNet：抓取检测家族选型对比](../comparisons/anygrasp-vs-graspnet.md) — SDK 工程闭环 vs 白盒基线的核心维度对比与决策矩阵
 - [WiLoR](../methods/wilor.md) — 另一路「视觉 → 手部几何」感知栈，可与抓取模块串联讨论人机操作数据

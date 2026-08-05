@@ -1,13 +1,88 @@
 {
   "generated_at": "2026-08-05",
-  "node_count": 2097,
-  "edge_count": 19096,
+  "node_count": 2098,
+  "edge_count": 19110,
   "coverage": {
-    "covered": 2073,
-    "total": 2073,
+    "covered": 2074,
+    "total": 2074,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-transgraspnet.md",
+      "detail_id": "entity-paper-transgraspnet",
+      "label": "TransGraspNet：透明实验器皿的几何–物理一致抓取",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/methods/grasp-pose-estimation.md",
+      "detail_id": "wiki-methods-grasp-pose-estimation",
+      "label": "Grasp Pose Estimation（抓取位姿估计）",
+      "type": "method",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/queries/grasp-policy-selection.md",
+      "detail_id": "wiki-queries-grasp-policy-selection",
+      "label": "Query：抓取策略选型（开放场景 vs 已知物体 / 稀疏 vs 稠密 / 几何 vs 学习）",
+      "type": "query",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/overview/hub-grasp.md",
+      "detail_id": "wiki-overview-hub-grasp",
+      "label": "抓取与操作（知识链汇总）",
+      "type": "overview",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/anygrasp.md",
+      "detail_id": "entity-anygrasp",
+      "label": "AnyGrasp（抓取感知 SDK）",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/comparisons/anygrasp-vs-graspnet.md",
+      "detail_id": "wiki-comparisons-anygrasp-vs-graspnet",
+      "label": "AnyGrasp vs GraspNet：抓取检测家族选型对比",
+      "type": "comparison",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
     {
       "path": "wiki/entities/paper-roamflow.md",
       "detail_id": "entity-paper-roamflow",
@@ -135,86 +210,17 @@
       "source": "log.md",
       "action": "added",
       "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/overview/loco-manip-contact-category-03-generative-data.md",
-      "detail_id": "wiki-overview-loco-manip-contact-category-03-generative-data",
-      "label": "Loco-Manip 接触分类 03：生成式路线补数据",
-      "type": "overview",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/methods/deepmimic.md",
-      "detail_id": "wiki-methods-deepmimic",
-      "label": "DeepMimic: 示例引导的技能学习",
-      "type": "method",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/motion-retargeting-gmr.md",
-      "detail_id": "wiki-methods-motion-retargeting-gmr",
-      "label": "GMR: 通用动作重定向",
-      "type": "method",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/entities/unitree-g1.md",
-      "detail_id": "entity-unitree-g1",
-      "label": "Unitree G1 (人形机器人)",
-      "type": "entity",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-teleopit.md",
-      "detail_id": "entity-paper-teleopit",
-      "label": "Teleopit",
-      "type": "entity",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/tasks/teleoperation.md",
-      "detail_id": "wiki-tasks-teleoperation",
-      "label": "Teleoperation（遥操作）",
-      "type": "task",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-twist2.md",
-      "detail_id": "entity-paper-twist2",
-      "label": "TWIST2",
-      "type": "entity",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-roamflow.md",
-    "detail_id": "entity-paper-roamflow",
-    "label": "RoamFlow",
+    "path": "wiki/entities/paper-transgraspnet.md",
+    "detail_id": "entity-paper-transgraspnet",
+    "label": "TransGraspNet：透明实验器皿的几何–物理一致抓取",
     "type": "entity",
     "recency": "2026-08-05",
     "source": "log.md",
-    "action": "maintained"
+    "action": "maintained",
+    "community_label": "操作（Manipulation） 社区"
   },
   "top_communities": [
     {
@@ -222,12 +228,8 @@
       "size": 196
     },
     {
-      "label": "动作重定向",
-      "size": 164
-    },
-    {
       "label": "操作",
-      "size": 156
+      "size": 187
     },
     {
       "label": "人形强化学习运动控制",
@@ -236,6 +238,10 @@
     {
       "label": "移动操作",
       "size": 140
+    },
+    {
+      "label": "动作重定向",
+      "size": 137
     },
     {
       "label": "人形论文深读笔记",
@@ -270,7 +276,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 344,
+      "degree": 346,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
