@@ -1,13 +1,62 @@
 {
   "generated_at": "2026-08-05",
   "node_count": 2099,
-  "edge_count": 19137,
+  "edge_count": 19149,
   "coverage": {
     "covered": 2075,
     "total": 2075,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md",
+      "detail_id": "entity-paper-notebook-robotdancing-residual-action-rl-enables-robust-l",
+      "label": "RobotDancing（残差动作长时程人形运动追踪，2025/2026）",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/methods/residual-policy-learning.md",
+      "detail_id": "wiki-methods-residual-policy-learning",
+      "label": "Residual Policy Learning（残差策略学习）",
+      "type": "method",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/overview/paper-notebook-category-13-physics-based-animation.md",
+      "detail_id": "wiki-overview-paper-notebook-category-13-physics-based-animation",
+      "label": "Paper Notebooks · Physics-Based Animation",
+      "type": "overview",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md",
+      "detail_id": "entity-paper-notebook-asap-aligning-simulation-and-real-world-physics",
+      "label": "ASAP Aligning Simulation and Real-World Physics for Agile Humanoid Skills",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md",
+      "detail_id": "entity-paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont",
+      "label": "KungfuBot（Physics-Based Highly-Dynamic WBT）",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/paper-transgraspnet.md",
       "detail_id": "entity-paper-transgraspnet",
@@ -161,65 +210,16 @@
       "recency": "2026-08-05",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-roamflow.md",
-      "detail_id": "entity-paper-roamflow",
-      "label": "RoamFlow",
-      "type": "entity",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-nomad-goal-masked-diffusion-policies-for-navigat.md",
-      "detail_id": "entity-paper-notebook-nomad-goal-masked-diffusion-policies-for-navigat",
-      "label": "NoMaD：目标掩码扩散导航与探索",
-      "type": "entity",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md",
-      "detail_id": "entity-paper-notebook-navdp-learning-sim-to-real-navigation-diffusion",
-      "label": "NavDP：特权信息引导的 Sim2Real 导航扩散策略",
-      "type": "entity",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md",
-      "detail_id": "entity-paper-navwam-goal-conditioned-visual-navigation-wam",
-      "label": "NavWAM（目标条件视觉导航 · Navigation World Action Model）",
-      "type": "entity",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/habitat-sim.md",
-      "detail_id": "entity-habitat-sim",
-      "label": "Habitat-Sim",
-      "type": "entity",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-transgraspnet.md",
-    "detail_id": "entity-paper-transgraspnet",
-    "label": "TransGraspNet：透明实验器皿的几何–物理一致抓取",
+    "path": "wiki/entities/paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md",
+    "detail_id": "entity-paper-notebook-robotdancing-residual-action-rl-enables-robust-l",
+    "label": "RobotDancing（残差动作长时程人形运动追踪，2025/2026）",
     "type": "entity",
     "recency": "2026-08-05",
     "source": "log.md",
-    "action": "maintained",
-    "community_label": "操作（Manipulation） 社区"
+    "action": "maintained"
   },
   "top_communities": [
     {
@@ -240,7 +240,7 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 137
+      "size": 136
     },
     {
       "label": "动作重定向",
@@ -252,7 +252,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 418,
+      "degree": 419,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -297,7 +297,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 287,
+      "degree": 288,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
