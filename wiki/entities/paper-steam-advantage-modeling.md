@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, offline-rl, advantage-modeling, vla, post-training, self-supervised, tsinghua, lerobot, manipulation, behavior-cloning]
 status: complete
-updated: 2026-07-24
+updated: 2026-08-05
 arxiv: "2606.29834"
 code: https://github.com/RLinf/RLinf
 related:
@@ -18,9 +18,11 @@ related:
   - ./paper-rove-humanoid-vla-intervention.md
   - ./paper-deed.md
   - ./paper-lehome-learning-to-fold.md
+  - ./paper-kai0.md
 sources:
   - ../../sources/papers/steam_arxiv_2606_29834.md
   - ../../sources/repos/rlinf.md
+  - ../../sources/papers/chi0_kai0_arxiv_2602_09021.md
 summary: "STEAM（arXiv:2606.29834，清华等）：从专家演示帧对的长度归一化时间偏移自监督训练 ensemble 进度 critic，worst-of-N min 保守标注混合质量 rollout/纠正帧，再经 CFGRL 提纯 π₀；四真机任务成功率 75–93.8%，较 BC 绝对 +16.2%–59%，超 RECAP/HG-DAgger；RLinf 提供三阶段 LeRobot 管线。"
 ---
 
@@ -166,6 +168,7 @@ flowchart LR
 - [ROVE](./paper-rove-humanoid-vla-intervention.md) — 人形干预轨迹的价值引导提取。
 - [LeRobot](./lerobot.md) — STEAM/RECAP 数据格式与 OpenPI 栈。
 - [Learning to Fold（LeHome 2026）](./paper-lehome-learning-to-fold.md) — 在线异步 AWR+RECAP 飞轮对照（竞赛全链路开源）。
+- [χ₀ / kai0](./paper-kai0.md) — 手标阶段 Stage Advantage + Heuristic DAgger；相对值差式 RECAP 的另一生产向配方。
 - [DEED](./paper-deed.md) — G1-Edu + GR00T N1.6 零售补货：Data-Efficient + 文本 advantage 前缀 RECAP（未开源）。
 - [Manipulation](../tasks/manipulation.md) — 长程桌面/零售操作任务背景。
 - [VLA 开源复现景观 2025](../overview/vla-open-source-repro-landscape-2025.md) — RLinf 系统定位。

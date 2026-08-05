@@ -2,16 +2,18 @@
 type: method
 tags: [rl, off-policy, regression, xbpeng]
 status: complete
-updated: 2026-07-27
+updated: 2026-08-05
 related:
   - ../entities/mimickit.md
   - ../entities/protomotions.md
   - ../entities/paper-topreward.md
+  - ../entities/paper-kai0.md
   - ./reinforcement-learning.md
   - ./policy-optimization.md
 sources:
   - ../../sources/papers/awr.md
   - ../../sources/papers/topreward_arxiv_2602_19313.md
+  - ../../sources/papers/chi0_kai0_arxiv_2602_09021.md
 summary: "AWR 是一种简单的离策 RL 算法，通过优势加权回归将策略优化转化为监督学习，避开了策略梯度的不稳定性。"
 ---
 
@@ -48,9 +50,11 @@ AWR 不直接计算策略梯度，而是通过对优势函数进行指数加权�
 - [policy-optimization](policy-optimization.md) — 算法对比。
 - [Learning to Fold（LeHome 2026）](../entities/paper-lehome-learning-to-fold.md) — 竞赛中把 AWR 重采样与 RECAP 条件化叠在 π₀.₅ 上。
 - [TOPReward](../entities/paper-topreward.md) — 用零样本 VLM 进度作 advantage 的 TOP-AWR 真机 BC。
+- [χ₀ / kai0](../entities/paper-kai0.md) — Stage Advantage → advantage-weighted BC，相对值差式 RECAP 更稳。
 
 ## 参考来源
 - [机器人论文阅读笔记：Advantage Weighted Regression](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/AWR_Advantage_Weighted_Regression/AWR_Advantage_Weighted_Regression.html)
 - [sources/papers/awr.md](../../sources/papers/awr.md)
 - [sources/papers/lehome_learning_to_fold_arxiv_2606_27163.md](../../sources/papers/lehome_learning_to_fold_arxiv_2606_27163.md) — AWR+RECAP 异步 RL 叠衣配方
 - [sources/papers/topreward_arxiv_2602_19313.md](../../sources/papers/topreward_arxiv_2602_19313.md) — TOP-AWR 下游
+- [sources/papers/chi0_kai0_arxiv_2602_09021.md](../../sources/papers/chi0_kai0_arxiv_2602_09021.md) — Stage Advantage / AWBC

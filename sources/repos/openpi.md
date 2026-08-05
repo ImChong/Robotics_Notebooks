@@ -20,3 +20,4 @@
 
 - [π0-policy](../../wiki/methods/π0-policy.md) — HMI 开源主表入口 Physical-Intelligence/openpi（π0 / π0-FAST / π0.5 官方代码与权重）
 - [Humanoid Motion Intelligence](../../wiki/entities/humanoid-motion-intelligence.md)
+- [χ₀ / kai0](../../wiki/entities/paper-kai0.md) — 基于 openpi 的协同叠衣后训练与部署对齐（OpenDriveLab/kai0）

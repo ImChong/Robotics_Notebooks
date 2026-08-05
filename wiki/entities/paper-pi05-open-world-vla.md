@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "vla", "physical-intelligence", "flow-matching", "hmi-papers"]
 status: complete
-updated: 2026-08-04
+updated: 2026-08-05
 arxiv: "2504.16054"
 code: https://github.com/Physical-Intelligence/openpi
 venue: "HMI curated · 2025"
@@ -14,9 +14,11 @@ related:
   - ../concepts/foundation-policy.md
   - ../entities/humanoid-motion-intelligence.md
   - ./paper-emergent-transfer-cross-config.md
+  - ./paper-kai0.md
 sources:
   - ../../sources/papers/hmi_p059_pi05-open-world-vla.md
   - ../../sources/repos/humanoid-motion-intelligence.md
+  - ../../sources/papers/chi0_kai0_arxiv_2602_09021.md
 ---
 
 # π0.5（HMI P059）
@@ -125,12 +127,14 @@ FAST token保留一段动作的时序结构，使动作数据可以和“下一�
 - [ActFovea](./paper-actfovea.md) — 对冻结 π₀ 加运行时防护（π 系列部署侧对照）
 - [WCM](./paper-wcm-world-critic-model.md) — 把 π₀.₅ 作为 flow matching 主干做 RL 后训练
 - [CLIFT](./paper-clift-closed-loop-iterative-finetuning.md) — 以 π₀.₅ 作开放权重对照，同管线下明显落后于托管 API 的 GROD
+- [χ₀ / kai0](./paper-kai0.md) — 以 π₀.₅ 为唯一可跑通骨干做协同叠衣后训练；相对基线 SR 约 +250%
 
 ## 参考来源
 
 - [sources/papers/hmi_p059_pi05-open-world-vla.md](../../sources/papers/hmi_p059_pi05-open-world-vla.md)
 - [sources/repos/humanoid-motion-intelligence.md](../../sources/repos/humanoid-motion-intelligence.md)
 - [HMI 论文总索引](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/README.md)
+- [sources/papers/chi0_kai0_arxiv_2602_09021.md](../../sources/papers/chi0_kai0_arxiv_2602_09021.md) — χ₀ 以 π₀.₅ 为生产向后训练基线
 
 ## 推荐继续阅读
 

@@ -1,13 +1,106 @@
 {
   "generated_at": "2026-08-05",
-  "node_count": 2099,
-  "edge_count": 19149,
+  "node_count": 2100,
+  "edge_count": 19166,
   "coverage": {
-    "covered": 2075,
-    "total": 2075,
+    "covered": 2076,
+    "total": 2076,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-kai0.md",
+      "detail_id": "entity-paper-kai0",
+      "label": "χ₀ / kai0：资源感知的分布对齐稳健操作",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/dagger.md",
+      "detail_id": "wiki-methods-dagger",
+      "label": "DAgger（Dataset Aggregation）",
+      "type": "method",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-pi05-open-world-vla.md",
+      "detail_id": "entity-paper-pi05-open-world-vla",
+      "label": "π0.5（HMI P059）",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/methods/awr.md",
+      "detail_id": "wiki-methods-awr",
+      "label": "AWR: 优势加权回归",
+      "type": "method",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/methods/π0-policy.md",
+      "detail_id": "wiki-methods-π0-policy",
+      "label": "π₀ (Pi-zero) 策略模型",
+      "type": "method",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-lehome-learning-to-fold.md",
+      "detail_id": "entity-paper-lehome-learning-to-fold",
+      "label": "Learning to Fold（LeHome Challenge 2026 · arXiv:2606.27163）",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-steam-advantage-modeling.md",
+      "detail_id": "entity-paper-steam-advantage-modeling",
+      "label": "STEAM：自监督时序 Ensemble Advantage 建模",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/aloha.md",
+      "detail_id": "entity-aloha",
+      "label": "ALOHA (双臂遥操作硬件)",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md",
       "detail_id": "entity-paper-notebook-robotdancing-residual-action-rl-enables-robust-l",
@@ -100,17 +193,6 @@
       "community_label": "操作（Manipulation） 社区"
     },
     {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
       "path": "wiki/entities/anygrasp.md",
       "detail_id": "entity-anygrasp",
       "label": "AnyGrasp（抓取感知 SDK）",
@@ -131,95 +213,18 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/comparisons/robot-learning-five-paradigms-taxonomy.md",
-      "detail_id": "wiki-comparisons-robot-learning-five-paradigms-taxonomy",
-      "label": "机器人学习五大范式：模仿、强化、视频、多模态与持续学习",
-      "type": "comparison",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/imitation-learning.md",
-      "detail_id": "wiki-methods-imitation-learning",
-      "label": "Imitation Learning (IL, 模仿学习)",
-      "type": "method",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/comparisons/rl-vs-il.md",
-      "detail_id": "wiki-comparisons-rl-vs-il",
-      "label": "RL vs 模仿学习（Imitation Learning）",
-      "type": "comparison",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/overview/robot-learning-overview.md",
-      "detail_id": "wiki-overview-robot-learning-overview",
-      "label": "Robot Learning Overview",
-      "type": "overview",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/reinforcement-learning.md",
-      "detail_id": "wiki-methods-reinforcement-learning",
-      "label": "Reinforcement Learning (RL, 强化学习)",
-      "type": "method",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md",
-      "detail_id": "wiki-comparisons-vlm-vln-vla-vlx-world-model-taxonomy",
-      "label": "五大具身模型分类：VLM、VLN、VLA、VLX 与世界模型",
-      "type": "comparison",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md",
-    "detail_id": "entity-paper-notebook-robotdancing-residual-action-rl-enables-robust-l",
-    "label": "RobotDancing（残差动作长时程人形运动追踪，2025/2026）",
+    "path": "wiki/entities/paper-kai0.md",
+    "detail_id": "entity-paper-kai0",
+    "label": "χ₀ / kai0：资源感知的分布对齐稳健操作",
     "type": "entity",
     "recency": "2026-08-05",
     "source": "log.md",
-    "action": "maintained"
+    "action": "maintained",
+    "has_repo": true,
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
@@ -260,7 +265,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 392,
+      "degree": 393,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -275,7 +280,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 346,
+      "degree": 348,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
