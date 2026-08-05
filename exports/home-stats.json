@@ -1,13 +1,91 @@
 {
-  "generated_at": "2026-08-04",
-  "node_count": 2094,
-  "edge_count": 19041,
+  "generated_at": "2026-08-05",
+  "node_count": 2095,
+  "edge_count": 19057,
   "coverage": {
-    "covered": 2070,
-    "total": 2070,
+    "covered": 2071,
+    "total": 2071,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-roamflow.md",
+      "detail_id": "entity-paper-roamflow",
+      "label": "RoamFlow",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-nomad-goal-masked-diffusion-policies-for-navigat.md",
+      "detail_id": "entity-paper-notebook-nomad-goal-masked-diffusion-policies-for-navigat",
+      "label": "NoMaD：目标掩码扩散导航与探索",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md",
+      "detail_id": "entity-paper-notebook-navdp-learning-sim-to-real-navigation-diffusion",
+      "label": "NavDP：特权信息引导的 Sim2Real 导航扩散策略",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md",
+      "detail_id": "entity-paper-navwam-goal-conditioned-visual-navigation-wam",
+      "label": "NavWAM（目标条件视觉导航 · Navigation World Action Model）",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/habitat-sim.md",
+      "detail_id": "entity-habitat-sim",
+      "label": "Habitat-Sim",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/jetson-orin-nx.md",
+      "detail_id": "entity-jetson-orin-nx",
+      "label": "NVIDIA Jetson Orin NX",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/tasks/vision-language-navigation.md",
+      "detail_id": "wiki-tasks-vision-language-navigation",
+      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
+      "type": "task",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    },
+    {
+      "path": "wiki/overview/vln-open-source-repro-paradigms.md",
+      "detail_id": "wiki-overview-vln-open-source-repro-paradigms",
+      "label": "VLN 开源复现：四范式学习路径",
+      "type": "overview",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    },
     {
       "path": "wiki/comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md",
       "detail_id": "wiki-comparisons-fb-bfm-zero-intact-mimic-vla-task-space",
@@ -134,97 +212,16 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/gemini-robotics.md",
-      "detail_id": "entity-gemini-robotics",
-      "label": "Gemini Robotics",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/unitree-g1.md",
-      "detail_id": "entity-unitree-g1",
-      "label": "Unitree G1 (人形机器人)",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/concepts/safe-real-world-rl-fine-tuning.md",
-      "detail_id": "wiki-concepts-safe-real-world-rl-fine-tuning",
-      "label": "Safe Real-World RL Fine-Tuning（真机安全 RL 微调）",
-      "type": "concept",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/overview/hub-safe-fine-tuning.md",
-      "detail_id": "wiki-overview-hub-safe-fine-tuning",
-      "label": "真机安全微调（知识链汇总）",
-      "type": "overview",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/tasks/bimanual-manipulation.md",
-      "detail_id": "wiki-tasks-bimanual-manipulation",
-      "label": "Bimanual Manipulation（双臂协调操作）",
-      "type": "task",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/concepts/reward-design.md",
-      "detail_id": "wiki-concepts-reward-design",
-      "label": "Reward Design",
-      "type": "concept",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-hifi-umi.md",
-      "detail_id": "entity-paper-hifi-umi",
-      "label": "HiFi-UMI / HiFi-UMI-2K",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-data-pyramid-embodied-manipulation.md",
-      "detail_id": "entity-paper-data-pyramid-embodied-manipulation",
-      "label": "Data Pyramid for Embodied Manipulation（具身数据金字塔综述）",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md",
-    "detail_id": "wiki-comparisons-fb-bfm-zero-intact-mimic-vla-task-space",
-    "label": "FB / BFM-Zero / INTACT / Mimic / VLA：任务空间表征对比",
-    "type": "comparison",
-    "recency": "2026-08-04",
+    "path": "wiki/entities/paper-roamflow.md",
+    "detail_id": "entity-paper-roamflow",
+    "label": "RoamFlow",
+    "type": "entity",
+    "recency": "2026-08-05",
     "source": "log.md",
-    "action": "maintained",
-    "has_repo": true,
-    "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    "action": "maintained"
   },
   "top_communities": [
     {
