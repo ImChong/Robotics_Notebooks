@@ -2,13 +2,14 @@
 type: method
 tags: [robotics, kinematics, retargeting, humanoid]
 status: complete
-updated: 2026-07-27
+updated: 2026-08-05
 related:
   - ../concepts/motion-retargeting.md
   - ./neural-motion-retargeting-nmr.md
   - ./reactor-physics-aware-motion-retargeting.md
   - ./spider-physics-informed-dexterous-retargeting.md
   - ./beyondmimic.md
+  - ../entities/paper-synthetic-video-humanoid-tasks.md
   - ./sonic-motion-tracking.md
   - ../entities/paper-htd-refine-monocular-hmr.md
   - ../entities/gen2humanoid.md
@@ -190,6 +191,7 @@ $$
 - [ExoActor](./exoactor.md) — 视频生成驱动的人形控制流水线，给出"何时跳过 GMR"的反例。
 - [NMR（神经运动重定向与人形全身控制）](./neural-motion-retargeting-nmr.md) — 用 GMR + 仿真 RL 构造监督的学习式重定向。
 - [ReActor（物理感知 RL 运动重定向）](./reactor-physics-aware-motion-retargeting.md) — 双层联合优化参考与跟踪策略。
+- [NCKU 合成视频人形任务](../entities/paper-synthetic-video-humanoid-tasks.md) — Veo→SMPL-X→**GMR**→RL 跟踪管线（仿真）。
 - [SPIDER（物理感知采样式灵巧重定向）](./spider-physics-informed-dexterous-retargeting.md) — 并行仿真采样优化 + 虚拟接触引导的数据生成外壳。
 - [GMR vs NMR vs Reactor（重定向方法谱系对比）](../comparisons/gmr-vs-nmr-vs-reactor.md) — 三种路线的并排选型对照。
 - [DART（DartControl）](./dart-control.md) — SMPL-X 运动学输出经 GMR 等人形执行接口的常见上游之一。

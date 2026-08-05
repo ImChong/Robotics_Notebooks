@@ -2,12 +2,13 @@
 type: overview
 tags: [loco-manipulation, contact-rich, category-hub, survey, generative-models, sim2real]
 status: complete
-updated: 2026-07-22
+updated: 2026-08-05
 summary: "Loco-Manip 接触专题 · 03 生成式补数（7 篇）— 生成视频、3D 资产、高斯场景与仿真能否提供可训练接触轨迹？"
 related:
   - ./loco-manip-contact-technology-map.md
   - ./loco-manip-contact-category-01-contact-data.md
   - ./loco-manip-8-papers-technology-map.md
+  - ../entities/paper-synthetic-video-humanoid-tasks.md
   - ../methods/generative-world-models.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md
@@ -45,12 +46,14 @@ sources:
 ## 策展判断
 
 - **GenHOI / Imagine2Real：** 视频生成先验驱动 HOI；须验证脚底打滑、物体支撑、重心边界。
+- **NCKU 合成视频人形任务：** [paper-synthetic-video-humanoid-tasks](../entities/paper-synthetic-video-humanoid-tasks.md) 用 Veo 多样视频训 RL 跟踪（非零样本接触）；仿真证据、未开源。
 - **GRAIL / Humanoid-DART：** 数字资产或扩散 **扩大可训练目标空间**。
 - **LEGS / OASIS / SIMPLE：** **基础设施侧**——场景外观、仿真闭环与接触动力学采集。
 
 ## 关联页面
 
 - [Loco-Manip 8 篇 · 生成与仿真](./loco-manip-category-02-synthetic-data.md)
+- [NCKU 合成视频人形任务](../entities/paper-synthetic-video-humanoid-tasks.md)
 - [GRAIL 数据集](../entities/grail-locomanipulation-dataset.md)
 - [LEGS VLA 实体](../entities/paper-legs-embodied-gaussian-splatting-vla.md)
 

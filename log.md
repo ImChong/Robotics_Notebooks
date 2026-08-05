@@ -1,3 +1,13 @@
+## [2026-08-05] ingest | sources/papers/synthetic_video_humanoid_tasks_arxiv_2607_21648.md — NCKU 合成视频人形任务（arXiv:2607.21648）入库；升格 wiki/entities/paper-synthetic-video-humanoid-tasks.md；交叉 GenHOI/OASIS/Imagine2Real/loco-manip-02/DeepMimic/GMR/unitree-g1
+
+- **触发：** 用户指定论文 *Learning Diverse Humanoid Tasks via Synthetic Video Scenarios without Real World Data*（NCKU；Yun-Hao Tsai / Cong-Thanh Vu / Yen-Chen Liu）
+- **来源：** [`sources/papers/synthetic_video_humanoid_tasks_arxiv_2607_21648.md`](sources/papers/synthetic_video_humanoid_tasks_arxiv_2607_21648.md)（arXiv:2607.21648，2026-07-22）
+- **新建实体：** [`wiki/entities/paper-synthetic-video-humanoid-tasks.md`](wiki/entities/paper-synthetic-video-humanoid-tasks.md)
+- **机构注册：** `schema/institutions.json` 新增 `ncku` → 国立成功大学（National Cheng Kung University）
+- **开源核查（步骤 2.5）：** **确认未开源** — 无项目页；arXiv Code 区无官方仓；作者 GitHub 未见对应实现；`## 源码运行时序图` 写不适用
+- **方法要点：** Veo 3/3.1 提示生成视频 → SMPL-X → GMR → motion stitching → Isaac Lab DeepMimic 式 PPO；G1 仿真；关节 MAE 0.04–0.07 m；0.5 kg 负载
+- **交叉更新：** [`wiki/entities/paper-loco-manip-03-genhoi.md`](wiki/entities/paper-loco-manip-03-genhoi.md)、[`wiki/entities/paper-loco-manip-04-oasis.md`](wiki/entities/paper-loco-manip-04-oasis.md)、[`wiki/entities/paper-imagine2real-zero-shot-hoi.md`](wiki/entities/paper-imagine2real-zero-shot-hoi.md)、[`wiki/overview/loco-manip-category-02-synthetic-data.md`](wiki/overview/loco-manip-category-02-synthetic-data.md)、[`wiki/overview/loco-manip-contact-category-03-generative-data.md`](wiki/overview/loco-manip-contact-category-03-generative-data.md)、[`wiki/methods/deepmimic.md`](wiki/methods/deepmimic.md)、[`wiki/methods/motion-retargeting-gmr.md`](wiki/methods/motion-retargeting-gmr.md)、[`wiki/entities/unitree-g1.md`](wiki/entities/unitree-g1.md)
+
 ## [2026-08-05] ingest | sources/papers/teleopit_arxiv_2608_01834.md + sites/teleopit-project + repos/teleopit/somehand — Teleopit（arXiv:2608.01834）全身体人形遥操作入库；升格 wiki/entities/paper-teleopit.md；交叉 wiki/tasks/teleoperation.md、wiki/entities/paper-twist2.md、paper-heft.md、paper-loco-manip-04-oasis.md、mimiclite.md
 
 - **触发：** 用户指定论文 <https://arxiv.org/abs/2608.01834>、项目页 <https://botrunner64.github.io/teleopit-page/>
@@ -6,7 +16,6 @@
 - **开源核查（步骤 2.5）：** **已开源** — 项目页列出 Teleopit / somehand / pico-bridge / OpenNeck / lerobot-teleopit；主仓含 `ckpt/track_g1*.onnx`
 - **方法要点：** mjlab+PPO 全身跟踪；归一化指方向跨手重定向；OpenNeck 2-DoF；异步录制→ACT/GR00T（96 demos → 90%/95% SR）
 - **交叉更新：** [`wiki/tasks/teleoperation.md`](wiki/tasks/teleoperation.md)、[`wiki/entities/paper-twist2.md`](wiki/entities/paper-twist2.md)、[`wiki/entities/paper-heft.md`](wiki/entities/paper-heft.md)、[`wiki/entities/paper-loco-manip-04-oasis.md`](wiki/entities/paper-loco-manip-04-oasis.md)、[`wiki/entities/mimiclite.md`](wiki/entities/mimiclite.md)、[`wiki/methods/sonic-motion-tracking.md`](wiki/methods/sonic-motion-tracking.md)、[`wiki/entities/unitree-g1.md`](wiki/entities/unitree-g1.md)、[`wiki/concepts/motion-retargeting.md`](wiki/concepts/motion-retargeting.md)
-
 
 ## [2026-08-04] ingest | sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md — 知乎专栏：FB/BFM-Zero/INTACT/Mimic/VLA 任务空间表征对照；升格 wiki/comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md
 

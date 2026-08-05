@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-survey, loco-manip-contact-survey, generative-data, generated-video, contact-aware-planning, zero-shot, unitree-g1, hkust-gz, ustc, nus, hku]
 status: complete
-updated: 2026-07-22
+updated: 2026-08-05
 arxiv: "2606.12995"
 venue: "arXiv 2026"
 related:
@@ -10,6 +10,7 @@ related:
   - ../overview/loco-manip-category-02-synthetic-data.md
   - ../overview/loco-manip-contact-category-03-generative-data.md
   - ../tasks/loco-manipulation.md
+  - ./paper-synthetic-video-humanoid-tasks.md
 sources:
   - ../../sources/papers/loco_manip_survey_03_genhoi.md
   - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md
@@ -122,7 +123,7 @@ GenHOI 先根据 onboard RGB-D 估计对象 6D pose（FoundationPose 或 AprilTa
 | 对生成 / 2D 尺度误差 | 只取接触先验，几何 + tracking 兜底 | 直接下发，易被 2D 尺度污染 | — |
 | OOD 相对位置泛化 | 明显更鲁棒（见评测） | 明显退化 | — |
 
-核心差异在于 GenHOI 把生成视频当作 **可被几何校正的接触先验** 而非可执行轨迹：相对 [ExoActor](../methods/exoactor.md) 的直接重定向，接触检测与 inward bias 是成败关键；相对 HDMI 的单任务训练，GenHOI 以零样本换取跨物体的快速部署。
+核心差异在于 GenHOI 把生成视频当作 **可被几何校正的接触先验** 而非可执行轨迹：相对 [ExoActor](../methods/exoactor.md) 的直接重定向，接触检测与 inward bias 是成败关键；相对 HDMI 的单任务训练，GenHOI 以零样本换取跨物体的快速部署。与 [NCKU 合成视频人形任务](./paper-synthetic-video-humanoid-tasks.md)（Veo→GMR→**RL 跟踪训练**）正交：后者吃多样示范训策略且证据在仿真，GenHOI 不训 task policy、强调真机接触几何校正。
 
 ## 局限与风险
 
@@ -138,6 +139,7 @@ GenHOI 先根据 onboard RGB-D 估计对象 6D pose（FoundationPose 或 AprilTa
 - [SimGenHOI](./paper-notebook-simgenhoi-physically-realistic-whole-body-humano.md)
 - [GRAIL](./paper-grail.md)
 - [OASIS](./paper-loco-manip-04-oasis.md)
+- [NCKU 合成视频人形任务](./paper-synthetic-video-humanoid-tasks.md) — 生成视频→RL 跟踪训练（对照零样本接触路线）
 - [GMR](../methods/motion-retargeting-gmr.md)
 
 ## 参考来源
@@ -155,3 +157,4 @@ GenHOI 先根据 onboard RGB-D 估计对象 6D pose（FoundationPose 或 AprilTa
 - [GenHOI 项目页](https://genhoi-humanoid.github.io/)
 - [Seedance 2.0](https://arxiv.org/abs/2604.14148)
 - [Depth Anything V2](https://depth-anything-v2.github.io/)
+- [NCKU 合成视频人形任务](./paper-synthetic-video-humanoid-tasks.md) — arXiv:2607.21648
