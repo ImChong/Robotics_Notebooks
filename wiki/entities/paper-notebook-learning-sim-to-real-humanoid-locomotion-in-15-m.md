@@ -2,15 +2,17 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-07-16
+updated: 2026-08-05
 arxiv: "2512.01996"
 related:
   - ../methods/flashsac.md
   - ../overview/paper-notebook-category-03-high-impact-selection.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ./paper-fddc.md
 sources:
   - ../../sources/papers/humanoid_pnb_learning-sim-to-real-humanoid-locomotion-in-15-m.md
   - ../../sources/papers/flashsac_arxiv_2604_04539.md
+  - ../../sources/papers/fddc_arxiv_2608_00500.md
 summary: "在 单张 RTX 4090 + 数千并行仿真环境 下，用 为大规模并行调参的 FastSAC / FastTD3（离策略 RL） 配合 极简奖励 + 强域随机化（动力学、粗糙地形、推扰、延迟等），把 全关节人形速度跟踪 的训练墙钟时间压到约 15 分钟，并在 G1 / T1 上完成 sim-to-real；同一套配方也可加速 全身人形动作跟踪（相对 PPO 更快）。"
 ---
 
@@ -63,11 +65,13 @@ summary: "在 单张 RTX 4090 + 数千并行仿真环境 下，用 为大规模�
 - [FlashSAC（方法页）](../methods/flashsac.md)
 - 分类父节点：[paper-notebook-category-03-high-impact-selection](../overview/paper-notebook-category-03-high-impact-selection.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- [FDDC](./paper-fddc.md) — 用 asymmetric FastSAC（本文配方脉络）训可部署单腿平衡策略（arXiv:2608.00500）
 
 ## 参考来源
 
 - [humanoid_pnb_learning-sim-to-real-humanoid-locomotion-in-15-m.md](../../sources/papers/humanoid_pnb_learning-sim-to-real-humanoid-locomotion-in-15-m.md)
 - [flashsac_arxiv_2604_04539.md](../../sources/papers/flashsac_arxiv_2604_04539.md) — 后继 scaling 式 off-policy（FlashSAC）
+- [FDDC（arXiv:2608.00500）](../../sources/papers/fddc_arxiv_2608_00500.md) — asymmetric FastSAC 单腿应用
 - 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes/Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes.html>
 - 论文：<https://arxiv.org/abs/2512.01996>
 

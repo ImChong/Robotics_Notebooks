@@ -2,7 +2,7 @@
 type: concept
 tags: [rl, reward, locomotion, humanoid, policy-optimization]
 status: complete
-updated: 2026-08-04
+updated: 2026-08-05
 related:
   - ../formalizations/mdp.md
   - ../methods/reinforcement-learning.md
@@ -12,10 +12,12 @@ related:
   - ../queries/reward-design-guide.md
   - ../methods/disney-olaf-character-robot.md
   - ../entities/paper-tsil-temporal-self-imitation-learning.md
+  - ../entities/paper-fddc.md
 summary: "Reward Design 研究如何把任务目标转成可学习的奖励信号，是机器人 RL 成败的关键工程环节。"
 sources:
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/privileged_training.md
+  - ../../sources/papers/fddc_arxiv_2608_00500.md
 ---
 
 # Reward Design
@@ -142,6 +144,9 @@ $$R'(s, a, s') = R(s, a, s') + \gamma \Phi(s') - \Phi(s)$$
 ### 4. 从成功轨迹挖掘时间效率（TSIL）
 长时域操作 RL 中，加大稀疏成功奖励或逐步时间惩罚往往**不能**稳定区分「快成功」与「慢成功 / 绕路刷 shaping」。[TSIL](../entities/paper-tsil-temporal-self-imitation-learning.md) 把训练期涌现的**最快成功完成时间**按任务配置写成自适应目标 $D(\phi)$，并回放效率加权轨迹——把**时间结构**当作自监督，而非只靠手工 shaping 调参。
 
+### 5. 人体姿势控制逐项翻译（FDDC）
+单腿平衡上，[FDDC](../entities/paper-fddc.md) 把 Margin of Stability、time-to-boundary、踝→膝远端优先 action-rate 与 jerk 从人体姿势控制文献**逐项**译成软奖励，原则是 **prevention over repair**（先把 xCoM 留在脚内）。消融上 TTB 是观测之外的第二杠杆（−24 pt Perfect）；且须与可部署动态 CoM **观测**联用，单靠奖励不够。
+
 ## 与其他页面的关系
 
 ### 和 MDP 的关系
@@ -177,6 +182,7 @@ DR 改变的是环境的物理参数分布；Reward Design 改变的是优化目
 - **ingest 档案：** [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — PPO/SAC locomotion reward 实践
 - **ingest 档案：** [sources/papers/privileged_training.md](../../sources/papers/privileged_training.md) — Walk These Ways 步态条件化 reward
 - **ingest 档案：** [sources/papers/disney_olaf_character_robot.md](../../sources/papers/disney_olaf_character_robot.md) — 热 CBF 风格项 + 冲击降噪奖励的工程案例
+- **ingest 档案：** [FDDC（arXiv:2608.00500）](../../sources/papers/fddc_arxiv_2608_00500.md) — MoS/TTB/远端优先 rate/jerk 人体科学奖励库
 
 ## 推荐继续阅读
 

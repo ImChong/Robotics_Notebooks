@@ -2,14 +2,16 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
 status: planned
-updated: 2026-06-26
+updated: 2026-08-05
 arxiv: "2505.07294"
 venue: "2025.05"
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ./paper-fddc.md
 sources:
   - ../../sources/papers/humanoid_pnb_hub.md
+  - ../../sources/papers/fddc_arxiv_2608_00500.md
 summary: "HuB：列入 Paper Notebooks progress 待深读清单；深读笔记完成后升格为完整索引实体。"
 ---
 
@@ -60,13 +62,15 @@ HuB 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- [FDDC](./paper-fddc.md) — 可部署动态 CoM 单腿平衡；文中以 HuB 为「特权平衡→蒸馏上真机」对照（arXiv:2608.00500）
 
 ## 参考来源
 
 - [humanoid_pnb_hub.md](../../sources/papers/humanoid_pnb_hub.md)
 - [Humanoid Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json)
-
+- [FDDC（arXiv:2608.00500）](../../sources/papers/fddc_arxiv_2608_00500.md) — 极限/单腿平衡对照与基准
 
 ## 推荐继续阅读
 
 - [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [FDDC 论文实体](./paper-fddc.md)

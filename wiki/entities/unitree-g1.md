@@ -17,6 +17,7 @@ related:
   - ./paper-humoslope-physics-guided-slope-locomotion.md
   - ./paper-uni-lavira.md
   - ./paper-pac-man-perceptive-cbf-rl.md
+  - ./paper-fddc.md
   - ../roadmaps/humanoid-control-roadmap.md
 sources:
   - ../../sources/papers/humanoid_hardware.md
@@ -25,6 +26,7 @@ sources:
   - ../../sources/papers/uni_lavira_arxiv_2605_27582.md
   - ../../sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
+  - ../../sources/papers/fddc_arxiv_2608_00500.md
 summary: "Unitree G1 是一款由宇树科技推出的入门级教育科研用人形机器人，以其极高的性价比、高集成度以及对仿真学习框架的良好支持而备受关注。"
 ---
 
@@ -77,6 +79,7 @@ G1 的出现极大地加速了大规模数据的采集。由于其成本低廉�
 - [G1 软件服务栈](./unitree-g1-software-stack.md) — SDK2/DDS 与仿真桥接口（课程 1.4）
 - [人形系统课程策展](./humanoid-system-curriculum.md) — 深蓝学院 G1 系统课八章地图
 - [Teleopit](./paper-teleopit.md) — PICO VR 全身+连续灵巧手+主动视觉遥操作（G1 29 DoF；arXiv:2608.01834）
+- [FDDC](./paper-fddc.md) — 可部署动态 CoM 单腿平衡；G1 ONNX 50 Hz 无蒸馏真机（arXiv:2608.00500）
 - [POT-VLA](./paper-pot-vla.md) — 在 G1 上用持久 3D 对象 token 实现可验证的闭环移动操作
 - [smp](../methods/smp.md) (基于得分匹配的运动先验，已在 G1 完成验证)
 - [NCKU 合成视频人形任务](./paper-synthetic-video-humanoid-tasks.md) — 生成视频→GMR→仿真 RL 跟踪（无真机结果；arXiv:2607.21648）
