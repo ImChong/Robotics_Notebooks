@@ -2334,6 +2334,13 @@
         "cheng-kung",
         "成功大学"
       ]
+    },
+    "kinetix-ai": {
+      "label": "凯涅克斯人工智能（Kinetix AI）",
+      "aliases": [
+        "kinetix-ai",
+        "kinetix"
+      ]
     }
   }
 }

@@ -4,7 +4,7 @@ type: entity
 title: ALOHA (双臂遥操作硬件)
 tags: [hardware, teleoperation, dual-arm, dataset-collection, deepmind, stanford, google]
 summary: "ALOHA 是由 Google DeepMind 开发的低成本、开源双臂遥操作硬件系统，是获取精细操作演示数据的事实标准。"
-updated: 2026-07-30
+updated: 2026-08-05
 ---
 
 # ALOHA (双臂遥操作硬件)
@@ -50,8 +50,10 @@ updated: 2026-07-30
 - [双臂操作](../tasks/bimanual-manipulation.md) — ALOHA / ACT 任务语境
 - [遥操作](../tasks/teleoperation.md) — 数据采集与硬件谱系
 - [Transformer Transformer](paper-transformer-transformer.md) — ALOHA2 抛布机体共设计真机验证
+- [χ₀ / kai0](paper-kai0.md) — 两套协作双臂（ALOHA 系布局；Piper / ARX X5）上的长时程服装操作
 
 ## 参考来源
 - [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md)
 - [ALOHA Project Page](https://tonyzhaozh.github.io/aloha/)
 - [Transformer Transformer 论文摘录](../../sources/papers/transformer_transformer_arxiv_2607_25798.md) — ALOHA2 cloth flinging 共设计结果
+- [χ₀ / kai0 论文摘录](../../sources/papers/chi0_kai0_arxiv_2602_09021.md) — 双臂协同服装操作硬件布局

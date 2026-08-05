@@ -20,7 +20,7 @@ tags:
   - nvidia
   - ilia-larchenko
 status: complete
-updated: 2026-07-24
+updated: 2026-08-05
 arxiv: "2606.27163"
 code: https://github.com/IliaLarchenko/lehome_solution
 related:
@@ -35,12 +35,14 @@ related:
   - ./paper-dreamsteer-vla-deployment-steering.md
   - ./nvidia-so101-sim2real-lab-workflow.md
   - ./sunday-robotics-act2.md
+  - ./paper-kai0.md
 sources:
   - ../../sources/papers/lehome_learning_to_fold_arxiv_2606_27163.md
   - ../../sources/sites/ilialarchenko-lehome2026.md
   - ../../sources/repos/lehome_solution.md
   - ../../sources/sites/huggingface-lehome-sim.md
   - ../../sources/sites/huggingface-lehome-real.md
+  - ../../sources/papers/chi0_kai0_arxiv_2602_09021.md
 summary: "Learning to Fold（arXiv:2606.27163，Ilia Larchenko）：ICRA 2026 LeHome 双臂叠衣方案；π₀.₅ + AWR/RECAP 异步 RL 夺仿真 1/62（79.63%），真机三桶 BC+DAgger 夺线下 2nd（865/1080）；全链路代码与 lehome_sim / lehome_real 权重已开源。"
 ---
 
@@ -237,6 +239,7 @@ sequenceDiagram
 - [DreamSteer](./paper-dreamsteer-vla-deployment-steering.md) — 推理时 chunk 选择另一路线
 - [NVIDIA SO-101 Sim2Real workflow](./nvidia-so101-sim2real-lab-workflow.md) — 同硬件族官方动手课
 - [ACT-2（Sunday）](./sunday-robotics-act2.md) — 闭源叠衣高成功率对照
+- [χ₀ / kai0](./paper-kai0.md) — 双臂协同长时程叠衣/挂衣；MA+SA+TDA，相对 π₀.₅ 约 +250% SR
 
 ## 推荐继续阅读
 

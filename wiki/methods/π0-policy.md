@@ -2,16 +2,18 @@
 type: method
 tags: [vla, foundation-policy, deepmind, flow-matching, manipulation]
 status: complete
-updated: 2026-08-03
+updated: 2026-08-05
 related:
   - ./vla.md
   - ./pi07-policy.md
   - ./diffusion-policy.md
   - ../formalizations/vla-tokenization.md
   - ../formalizations/cross-modal-attention.md
+  - ../entities/paper-kai0.md
 sources:
   - ../../sources/repos/openpi.md
   - ../../sources/papers/diffusion_and_gen.md
+  - ../../sources/papers/chi0_kai0_arxiv_2602_09021.md
 summary: "π₀ (Pi-zero) 是由 Physical Intelligence 提出的一种通用的 Vision-Language-Action 模型，通过结合流匹配（Flow Matching）与大规模预训练，实现了对复杂机器人操作任务的高效建模。"
 ---
 
@@ -65,8 +67,10 @@ summary: "π₀ (Pi-zero) 是由 Physical Intelligence 提出的一种通用的 
 - [LWD（Learning while Deploying）](./lwd.md) — 其 QAM 组件正是为 flow-based 动作头（如 π₀）设计的策略抽取方法
 - [STEAM（自监督时序集成 advantage 建模）](../entities/paper-steam-advantage-modeling.md) — 以 π₀ 为策略骨干，用 CFGRL 做离线后训练提纯
 - [FM-VLA（力觉记忆 VLA）](../entities/paper-fm-vla.md) — 以 π₀.₅ 为骨干，在 flow-matching 动作专家后缀注入力觉长程记忆 token
+- [χ₀ / kai0](../entities/paper-kai0.md) — 在 openpi π₀.₅ 上做 MA/SA/TDA 分布对齐的协同叠衣配方（代码已开源）
 
 ## 参考来源
 - Black, K., et al. (2024). *π₀: A Vision-Language-Action Flow Model for General Robot Control*.
 - [Physical Intelligence Blog](https://www.physicalintelligence.company/blog/pi0).
 - [sources/papers/pi07.md](../../sources/papers/pi07.md) — π₀.₇ 后继工作与多模态提示条件（若只关心 π₀ 本体的历史语境可略读摘录节）
+- [sources/papers/chi0_kai0_arxiv_2602_09021.md](../../sources/papers/chi0_kai0_arxiv_2602_09021.md) — χ₀ / kai0 后训练与部署对齐

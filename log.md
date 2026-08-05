@@ -1,3 +1,13 @@
+## [2026-08-05] ingest | sources/papers/chi0_kai0_arxiv_2602_09021.md + sites/mmlab-kai0 + repos/kai0 — χ₀/kai0（arXiv:2602.09021）入库；升格 wiki/entities/paper-kai0.md；交叉 wiki/methods/dagger.md、awr.md、π0-policy.md、wiki/entities/paper-pi05-open-world-vla.md、paper-lehome-learning-to-fold.md、paper-steam-advantage-modeling.md、aloha.md、wiki/tasks/manipulation.md
+
+- **触发：** 用户指定 <https://arxiv.org/abs/2602.09021>
+- **来源：** [`sources/papers/chi0_kai0_arxiv_2602_09021.md`](sources/papers/chi0_kai0_arxiv_2602_09021.md)、[`sources/sites/mmlab-kai0.md`](sources/sites/mmlab-kai0.md)、[`sources/repos/kai0.md`](sources/repos/kai0.md)（Kinetix AI / HKU MMLab / OpenDriveLab；v3 2026-03-17）
+- **新建实体：** [`wiki/entities/paper-kai0.md`](wiki/entities/paper-kai0.md)
+- **机构注册：** `schema/institutions.json` 新增 `kinetix-ai` → 凯涅克斯人工智能（Kinetix AI）
+- **开源核查（步骤 2.5）：** **已开源** — PDF/博客列出 [`OpenDriveLab/kai0`](https://github.com/OpenDriveLab/kai0)；MA/SA/TDA 均 Released；HF/ModelScope 数据 + 每任务 best ckpt；`## 源码运行时序图` 已写
+- **方法要点：** Model Arithmetic（OOD DAgger 选 α）+ Stage Advantage（阶段条件成对 advantage）+ TDA（Heuristic DAgger + chunk 平滑）；相对 π₀.₅ SR 约 +250%；双臂协同展平/折叠/挂衣；24 h 连续运行
+- **交叉更新：** [`wiki/methods/dagger.md`](wiki/methods/dagger.md)、[`wiki/methods/awr.md`](wiki/methods/awr.md)、[`wiki/methods/π0-policy.md`](wiki/methods/π0-policy.md)、[`wiki/entities/paper-pi05-open-world-vla.md`](wiki/entities/paper-pi05-open-world-vla.md)、[`wiki/entities/paper-lehome-learning-to-fold.md`](wiki/entities/paper-lehome-learning-to-fold.md)、[`wiki/entities/paper-steam-advantage-modeling.md`](wiki/entities/paper-steam-advantage-modeling.md)、[`wiki/entities/aloha.md`](wiki/entities/aloha.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`sources/repos/openpi.md`](sources/repos/openpi.md)
+
 ## [2026-08-05] ingest | sources/papers/robotdancing_arxiv_2509_20717.md — RobotDancing（arXiv:2509.20717，IEEE RA-L）升格 wiki/entities/paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md；交叉更新 wiki/methods/residual-policy-learning.md、wiki/overview/paper-notebook-category-13-physics-based-animation.md、sources/papers/humanoid_pnb_robotdancing.md
 
 - **触发：** 用户指定 <https://arxiv.org/abs/2509.20717>（v1 2025-09-25 → v2 2026-08-03；IEEE RA-L 接收）
