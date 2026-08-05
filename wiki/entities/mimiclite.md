@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, motion-tracking, imitation-learning, sim2real, teleoperation, open-source, roboparty]
 status: complete
-updated: 2026-08-04
+updated: 2026-08-05
 related:
   - ./party-os.md
   - ../overview/roboparty-lab-party-os-technology-map.md
@@ -11,6 +11,7 @@ related:
   - ../tasks/teleoperation.md
   - ./paper-bfm-zero.md
   - ./paper-twist2.md
+  - ./paper-teleopit.md
   - ../concepts/sim2real.md
   - ../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md
 sources:
@@ -72,7 +73,7 @@ summary: "MimicLite 是 RoboParty 面向人形通用运动跟踪的开源训练�
 2. 用 **YAML** 定义各项 observation 的顺序与参数；
 3. **无需修改** 推理、仿真或机器人接口。
 
-已接入（文内列表）：SONIC、HEFT、TeleopIT、Humanoid-GPT、BFM-Zero、TWIST2。
+已接入（文内列表）：SONIC、HEFT、[TeleopIT / Teleopit](./paper-teleopit.md)、Humanoid-GPT、BFM-Zero、TWIST2。
 
 ## 工程实践
 
@@ -100,6 +101,7 @@ summary: "MimicLite 是 RoboParty 面向人形通用运动跟踪的开源训练�
 - [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md)
 - [BFM-Zero（论文实体）](./paper-bfm-zero.md)
 - [TWIST2（论文实体）](./paper-twist2.md)
+- [Teleopit（论文实体）](./paper-teleopit.md) — 文内跨 codebase 列表中的 TeleopIT
 - [Teleoperation](../tasks/teleoperation.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [FB / BFM-Zero / INTACT / Mimic / VLA 任务空间表征对比](../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md) — Mimic 欧氏曲线投影、termination 与 FSQ 的读法
