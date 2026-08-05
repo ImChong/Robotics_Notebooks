@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, martial-arts, reinforcement-learning, unitree-g1, sim2real, teleai, sjtu, hit, shanghaitech, neurips-2025]
 status: complete
-updated: 2026-07-24
+updated: 2026-08-05
 arxiv: "2506.12851"
 code: https://github.com/TeleHuman/PBHC
 venue: "NeurIPS 2025"
@@ -20,6 +20,7 @@ related:
   - ./unitree-g1.md
   - ./paper-notebook-kungfubot-2.md
   - ./paper-kungfuathlete-humanoid-martial-arts-tracking.md
+  - ./paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md
 sources:
   - ../../sources/papers/kungfubot_pbhc_neurips2025.md
   - ../../sources/repos/pbhc.md
@@ -162,6 +163,7 @@ sequenceDiagram
 
 - **续作：** [KungfuBot 2 / VMS](./paper-notebook-kungfubot-2.md) — 单策略多技能、OMoE、段级奖励、长序列
 - **姊妹：** [KungFuAthleteBot](./paper-kungfuathlete-humanoid-martial-arts-tracking.md) — 武术数据集 + 跌倒恢复
+- **长时程对照：** [RobotDancing](./paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md) — 选择性残差动作 + 长尾采样；Table V 将 KungfuBot-style 作同协议重实现基线
 - **概念：** [motion-retargeting](../concepts/motion-retargeting.md)、[curriculum-learning](../concepts/curriculum-learning.md)、[sim2real](../concepts/sim2real.md)
 - **平台：** [Unitree G1](./unitree-g1.md)
 - **代码：** [pbhc.md](../../sources/repos/pbhc.md)

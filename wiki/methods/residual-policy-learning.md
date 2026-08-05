@@ -2,7 +2,7 @@
 type: method
 tags: [residual-learning, reinforcement-learning, control, locomotion, manipulation, motion-tracking, sim2real, shared-autonomy]
 status: complete
-updated: 2026-08-02
+updated: 2026-08-05
 related:
   - ./reinforcement-learning.md
   - ./imitation-learning.md
@@ -11,10 +11,12 @@ related:
   - ../concepts/whole-body-tracking-pipeline.md
   - ../tasks/locomotion.md
   - ../entities/paper-loco-manip-161-157-refine-dp.md
+  - ../entities/paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md
 sources:
   - ../../sources/personal/residual-policy-reading-list.md
   - ../../sources/papers/refine_dp_arxiv_2603_13707.md
-summary: "Residual Policy Learning（残差策略学习）：最终动作 = 基础动作 + 学习残差，a=a_base+Δa。基础部分可以是传统控制器、MPC、参考轨迹、技能解码器、运动生成器甚至人的输入；RL 只学补偿量，从而收窄探索空间、保住 base 先验、提升样本效率。本页给出统一形式、九篇代表论文谱系与选型建议。"
+  - ../../sources/papers/robotdancing_arxiv_2509_20717.md
+summary: "Residual Policy Learning（残差策略学习）：最终动作 = 基础动作 + 学习残差，a=a_base+Δa。基础部分可以是传统控制器、MPC、参考轨迹、技能解码器、运动生成器甚至人的输入；RL 只学补偿量，从而收窄探索空间、保住 base 先验、提升样本效率。本页给出统一形式、十篇代表论文谱系与选型建议。"
 ---
 
 # Residual Policy Learning（残差策略学习）
@@ -69,7 +71,7 @@ $$a_t = a_t^{\text{base}} + \Delta a_t,\qquad \Delta a_t \sim \pi_\theta(\cdot \
 | 技能解码后的原子动作 | ReSkill | 分层：高层选技能、低层残差细修 |
 | 人的输入通道 | RSA | base 是人，残差是辅助 |
 
-## 主要技术路线：九篇代表论文谱系
+## 主要技术路线：十篇代表论文谱系
 
 | 论文 | 年份/出处 | Base 部分 | 残差输出 | 真机 | 开源 |
 |------|-----------|-----------|----------|------|------|
@@ -82,12 +84,13 @@ $$a_t = a_t^{\text{base}} + \Delta a_t,\qquad \Delta a_t \sim \pi_\theta(\cdot \
 | [Residual Shared Autonomy](../entities/paper-residual-policy-shared-autonomy.md)（Schaff & Walter） | ICRA 2020 | **人的操作命令** | 最小干预修正（约束 PPO） | 仿真+人测 | 已开源 |
 | [RuN](../entities/paper-notebook-run-residual-policy-for-natural-humanoid-locomot.md)（Li et al.） | 2025 | Conditional Motion Generator | 关节目标修正（PPO） | G1 走跑 2.5 m/s | 未开源 |
 | [ResMimic](../entities/paper-resmimic.md)（Zhao et al.） | 2025 | GMT 通用跟踪策略 | 全身动作修正（PPO） | G1 搬运 4.5–5.5 kg | 已开源 |
+| [RobotDancing](../entities/paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md)（Sun et al.） | 2025/2026（RA-L） | Retarget 参考轨迹（选择性 DoF） | 髋/膝 pitch 残差目标（PPO） | G1 长时程舞蹈 21/24 | 未开源 |
 
-**推荐阅读顺序**：1 → 2 建立基础思想；3 理解动作模仿中的动力学失配补偿；4 理解真实腿足机器人控制器打底；8 → 9 对应现代 G1 人形形态。
+**推荐阅读顺序**：1 → 2 建立基础思想；3 理解动作模仿中的动力学失配补偿；4 理解真实腿足机器人控制器打底；8 → 9 对应现代 G1 人形形态；10 看「长参考 + 选择性残差」在舞蹈追踪上的工程配方。
 
 ### 与其他残差类工作的边界
 
-本谱系聚焦「base 行为 + 加性修正」主线。仓库内还有若干残差机制变体，侧重不同，宜交叉阅读而非混为一谈：[ASAP](../entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md)（delta 动作模型学 sim–real 动力学差）、[RobotDancing](../entities/paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md)（残差动作 RL 增强舞蹈鲁棒性）、[OmniTacTune](../entities/paper-omnitactune-tactile-residual-adaptation.md)（触觉残差自适应）、[FARM](../entities/paper-notebook-farm-frame-accelerated-augmentation-and-residual.md)（帧加速增广与残差 MoE）、[Residual Off-Policy RL for BC Finetuning](../entities/paper-notebook-residual-off-policy-rl-for-finetuning-behavior-c.md)（BC 微调残差）。
+本谱系聚焦「base 行为 + 加性修正」主线。[RobotDancing](../entities/paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md) 已纳入上表：base 是 **retarget 参考**（非学到的控制器/生成器），残差默认只开承重关键 DoF，并强调长尾采样——与 RuN/ResMimic「学到的先验 + 残差」同形、不同 base 来源。其余变体宜交叉阅读而非混为一谈：[ASAP](../entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md)（delta 动作模型学 sim–real 动力学差）、[OmniTacTune](../entities/paper-omnitactune-tactile-residual-adaptation.md)（触觉残差自适应）、[FARM](../entities/paper-notebook-farm-frame-accelerated-augmentation-and-residual.md)（帧加速增广与残差 MoE）、[Residual Off-Policy RL for BC Finetuning](../entities/paper-notebook-residual-off-policy-rl-for-finetuning-behavior-c.md)（BC 微调残差）。
 
 ## 工程实践
 

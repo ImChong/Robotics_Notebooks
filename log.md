@@ -1,3 +1,12 @@
+## [2026-08-05] ingest | sources/papers/robotdancing_arxiv_2509_20717.md — RobotDancing（arXiv:2509.20717，IEEE RA-L）升格 wiki/entities/paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md；交叉更新 wiki/methods/residual-policy-learning.md、wiki/overview/paper-notebook-category-13-physics-based-animation.md、sources/papers/humanoid_pnb_robotdancing.md
+
+- **触发：** 用户指定 <https://arxiv.org/abs/2509.20717>（v1 2025-09-25 → v2 2026-08-03；IEEE RA-L 接收）
+- **来源：** [`sources/papers/robotdancing_arxiv_2509_20717.md`](sources/papers/robotdancing_arxiv_2509_20717.md)（TUM / BAAI / XYZ Embodied AI / 清华 / 南大）
+- **升格实体：** [`wiki/entities/paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md`](wiki/entities/paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md)（原 Paper Notebooks stub → complete）
+- **开源核查（步骤 2.5）：** **确认未开源** — 无项目页 / 无官方仓；附录称 released config 但无 URL；`## 源码运行时序图` 写不适用
+- **方法要点：** $q^{\mathrm{tar}}=q^{\mathrm{ref}}+a$（选择性髋/膝 pitch）+ 分布均衡/失败优先采样；G1 八舞蹈 21/24 真机成功；跨平台 H1/H1-2
+- **交叉更新：** [`wiki/methods/residual-policy-learning.md`](wiki/methods/residual-policy-learning.md)、[`wiki/overview/paper-notebook-category-13-physics-based-animation.md`](wiki/overview/paper-notebook-category-13-physics-based-animation.md)、[`sources/papers/humanoid_pnb_robotdancing.md`](sources/papers/humanoid_pnb_robotdancing.md)、[`wiki/entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md`](wiki/entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md)、[`wiki/entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md`](wiki/entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md)
+
 ## [2026-08-05] ingest | sources/papers/transgraspnet_arxiv_2607_29567.md — TransGraspNet（arXiv:2607.29567）透明含液实验器皿几何–物理一致抓取入库；升格 wiki/entities/paper-transgraspnet.md；交叉 grasp-pose-estimation / grasp-policy-selection / hub-grasp / manipulation / anygrasp / anygrasp-vs-graspnet
 
 - **触发：** 用户指定 <https://arxiv.org/abs/2607.29567>

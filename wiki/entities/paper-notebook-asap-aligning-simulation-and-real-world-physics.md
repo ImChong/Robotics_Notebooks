@@ -2,11 +2,12 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-06-26
+updated: 2026-08-05
 arxiv: "2502.01143"
 related:
   - ../overview/paper-notebook-category-03-high-impact-selection.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ./paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md
 sources:
   - ../../sources/papers/humanoid_pnb_asap-aligning-simulation-and-real-world-physics.md
 summary: "先用人类视频重定向后的参考动作在仿真里预训练运动跟踪策略，再在真机 rollout 收集状态轨迹，用残差（delta）动作模型显式补偿仿真与真机的动力学差；把该模型冻结后嵌入仿真器做「物理对齐」式的策略微调，最后在真机去掉 delta 模型直接部署——在侧跳、前跳、踢球、球星庆祝动作等全身敏捷技能上显著降低跟踪误差，并优于纯 SysID、纯域随机化、以及仅学习 delta 动力学但不回灌仿真的基线。"
@@ -59,6 +60,7 @@ summary: "先用人类视频重定向后的参考动作在仿真里预训练运�
 
 - 分类父节点：[paper-notebook-category-03-high-impact-selection](../overview/paper-notebook-category-03-high-impact-selection.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- 长时程追踪对照：[RobotDancing](./paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md)（参考条件残差动作；Table V 将 ASAP-style 作同协议重实现基线）
 
 ## 参考来源
 
