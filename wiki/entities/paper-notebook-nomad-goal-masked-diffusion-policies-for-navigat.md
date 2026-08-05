@@ -11,13 +11,14 @@ tags:
   - berkeley
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-07-28
+updated: 2026-08-05
 arxiv: "2310.07896"
 code: https://github.com/robodhruv/visualnav-transformer
 related:
   - ../overview/paper-notebook-category-08-navigation.md
   - ../concepts/hierarchical-quadruped-navigation-stack.md
   - ./paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md
+  - ./paper-roamflow.md
   - ./paper-notebook-egonav.md
   - ./paper-notebook-navila-legged-robot-vision-language-action-model.md
 sources:
@@ -177,6 +178,7 @@ sequenceDiagram
 - [导航纵深路线 Stage 3](../../roadmap/depth-navigation.md) — 扩散导航可复现起点
 - [分层四足导航栈](../concepts/hierarchical-quadruped-navigation-stack.md) — topology / local policy / base control 的三层接口
 - [NavDP](./paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md) — 仿真 RGB-D、critic 与跨轮式/足式真机的后续对照
+- [RoamFlow](./paper-roamflow.md) — MeanFlow 一步 image-goal 生成导航（以 NoMaD 为 Table I 基线；未开源）
 - [EgoNav](./paper-notebook-egonav.md) — 把机器人数据替换为人类数据，并预测更长 6-DoF 轨迹分布
 - [NaVILA](./paper-notebook-navila-legged-robot-vision-language-action-model.md) — 自然语言目标与足式低层执行分支
 
@@ -191,3 +193,4 @@ sequenceDiagram
 
 - [NoMaD 官方项目页](https://general-navigation-models.github.io/nomad/)
 - [visualnav-transformer](https://github.com/robodhruv/visualnav-transformer) — checkpoint、训练与 ROS 部署
+- [RoamFlow](./paper-roamflow.md) — MeanFlow 一步 + IL→RL 对照（arXiv:2606.29934）
