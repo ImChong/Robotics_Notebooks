@@ -1,13 +1,92 @@
 {
   "generated_at": "2026-08-05",
-  "node_count": 2096,
-  "edge_count": 19079,
+  "node_count": 2097,
+  "edge_count": 19095,
   "coverage": {
-    "covered": 2072,
-    "total": 2072,
+    "covered": 2073,
+    "total": 2073,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-roamflow.md",
+      "detail_id": "entity-paper-roamflow",
+      "label": "RoamFlow",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-nomad-goal-masked-diffusion-policies-for-navigat.md",
+      "detail_id": "entity-paper-notebook-nomad-goal-masked-diffusion-policies-for-navigat",
+      "label": "NoMaD：目标掩码扩散导航与探索",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md",
+      "detail_id": "entity-paper-notebook-navdp-learning-sim-to-real-navigation-diffusion",
+      "label": "NavDP：特权信息引导的 Sim2Real 导航扩散策略",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md",
+      "detail_id": "entity-paper-navwam-goal-conditioned-visual-navigation-wam",
+      "label": "NavWAM（目标条件视觉导航 · Navigation World Action Model）",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/entities/habitat-sim.md",
+      "detail_id": "entity-habitat-sim",
+      "label": "Habitat-Sim",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/jetson-orin-nx.md",
+      "detail_id": "entity-jetson-orin-nx",
+      "label": "NVIDIA Jetson Orin NX",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/tasks/vision-language-navigation.md",
+      "detail_id": "wiki-tasks-vision-language-navigation",
+      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
+      "type": "task",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    },
+    {
+      "path": "wiki/overview/vln-open-source-repro-paradigms.md",
+      "detail_id": "wiki-overview-vln-open-source-repro-paradigms",
+      "label": "VLN 开源复现：四范式学习路径",
+      "type": "overview",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    },
     {
       "path": "wiki/entities/paper-synthetic-video-humanoid-tasks.md",
       "detail_id": "entity-paper-synthetic-video-humanoid-tasks",
@@ -126,98 +205,12 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-heft.md",
-      "detail_id": "entity-paper-heft",
-      "label": "HEFT",
-      "type": "entity",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/mimiclite.md",
-      "detail_id": "entity-mimiclite",
-      "label": "MimicLite（监督运动跟踪基础设施）",
-      "type": "entity",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/methods/sonic-motion-tracking.md",
-      "detail_id": "wiki-methods-sonic-motion-tracking",
-      "label": "SONIC（规模化运动跟踪人形控制）",
-      "type": "method",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/concepts/motion-retargeting.md",
-      "detail_id": "wiki-concepts-motion-retargeting",
-      "label": "Motion Retargeting（动作重定向）",
-      "type": "concept",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md",
-      "detail_id": "wiki-comparisons-fb-bfm-zero-intact-mimic-vla-task-space",
-      "label": "FB / BFM-Zero / INTACT / Mimic / VLA：任务空间表征对比",
-      "type": "comparison",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-bfm-zero.md",
-      "detail_id": "entity-paper-bfm-zero",
-      "label": "BFM-Zero",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-intact.md",
-      "detail_id": "entity-paper-intact",
-      "label": "INTACT（Search-Free Intent-to-Action World Model）",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/roboparty-ufo.md",
-      "detail_id": "entity-roboparty-ufo",
-      "label": "UFO（Roboparty 无监督 RL 控制框架）",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-synthetic-video-humanoid-tasks.md",
-    "detail_id": "entity-paper-synthetic-video-humanoid-tasks",
-    "label": "Learning Diverse Humanoid Tasks via Synthetic Video Scenarios",
+    "path": "wiki/entities/paper-roamflow.md",
+    "detail_id": "entity-paper-roamflow",
+    "label": "RoamFlow",
     "type": "entity",
     "recency": "2026-08-05",
     "source": "log.md",
@@ -226,19 +219,19 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 195
+      "size": 196
     },
     {
       "label": "动作重定向",
-      "size": 193
+      "size": 164
     },
     {
       "label": "操作",
-      "size": 160
+      "size": 156
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 143
+      "size": 145
     },
     {
       "label": "移动操作",
@@ -246,7 +239,7 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 117
+      "size": 136
     }
   ],
   "top_hubs": [

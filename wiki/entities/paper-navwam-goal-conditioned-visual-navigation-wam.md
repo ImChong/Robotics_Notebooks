@@ -11,7 +11,7 @@ tags:
   - mobile-robot
   - goal-conditioned
 status: complete
-updated: 2026-07-28
+updated: 2026-08-05
 arxiv: "2606.13494"
 related:
   - ../concepts/world-action-models.md
@@ -25,6 +25,7 @@ related:
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
   - ./paper-worldvln-aerial-vln-wam.md
   - ./paper-icrowdnav.md
+  - ./paper-roamflow.md
 sources:
   - ../../sources/papers/navwam_arxiv_2606_13494.md
 summary: "NavWAM（arXiv:2606.13494）：目标条件视觉导航的 Navigation World Action Model——在 Cosmos Predict 2（2B）九帧共享 latent 序列上联合去噪未来 egocentric 观测、goal-progress value 与 action chunk；policy 模式单次扩散前向直接闭环控制，无需 CEM；go stanford 与 Diablo 真机 24 episode 上优于 NWM+CEM 与 OmniVLA。"
@@ -151,6 +152,7 @@ flowchart TB
 - [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) — 同 Cosmos 系、不同形态与任务的 WAM 对照
 - [WorldVLN](./paper-worldvln-aerial-vln-wam.md) — 另一 WAM 导航闭环部署实例
 - [iCrowdNav](./paper-icrowdnav.md) — 人群社交视觉导航（BEV+姿态意图 PPO；非 image-goal WAM）
+- [RoamFlow](./paper-roamflow.md) — MeanFlow 一步 image-goal 生成导航（非 WAM；Go2 真机）
 
 ## 参考来源
 
@@ -162,3 +164,4 @@ flowchart TB
 - [NavWAM 项目页](https://dachii-azm.github.io/navwam/)
 - [Cosmos Policy 论文实体](./paper-shenlan-wm-11-cosmos-policy.md) — latent-frame WAM 先例（arXiv:2601.16163）
 - [World Action Models 概念页](../concepts/world-action-models.md)
+- [RoamFlow](./paper-roamflow.md) — MeanFlow 一步 image-goal 对照（arXiv:2606.29934）

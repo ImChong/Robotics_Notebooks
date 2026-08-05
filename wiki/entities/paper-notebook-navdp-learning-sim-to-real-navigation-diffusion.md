@@ -13,11 +13,12 @@ tags:
   - hku
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-07-28
+updated: 2026-08-05
 arxiv: "2505.08712"
 code: https://github.com/InternRobotics/NavDP
 related:
   - ../overview/paper-notebook-category-08-navigation.md
+  - ./paper-roamflow.md
   - ../concepts/sim2real.md
   - ../concepts/hierarchical-quadruped-navigation-stack.md
   - ./paper-notebook-nomad-goal-masked-diffusion-policies-for-navigat.md
@@ -186,6 +187,7 @@ sequenceDiagram
 - [Sim2Real](../concepts/sim2real.md) — 仿真规模化 + real-to-sim target adaptation
 - [分层四足导航栈](../concepts/hierarchical-quadruped-navigation-stack.md) — NavDP 是局部 planner，下面仍需 MPC / locomotion follower
 - [NoMaD](./paper-notebook-nomad-goal-masked-diffusion-policies-for-navigat.md) — RGB 真机数据、goal masking 与 topological memory 对照
+- [RoamFlow](./paper-roamflow.md) — MeanFlow 一步 image-goal；Table I 以 NavDP 为最强生成对照之一（未开源）
 - [NaVILA](./paper-notebook-navila-legged-robot-vision-language-action-model.md) — 可作为语言高层，NavDP 补快速系统一局部规划
 
 ## 参考来源
@@ -199,3 +201,4 @@ sequenceDiagram
 
 - [NavDP 深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/NavDP__Learning_Sim-to-Real_Navigation_Diffusion_Policy/NavDP__Learning_Sim-to-Real_Navigation_Diffusion_Policy.html)
 - [InternRobotics/NavDP](https://github.com/InternRobotics/NavDP) — 以 README 当前版本为准运行 server 与 benchmark
+- [RoamFlow](./paper-roamflow.md) — MeanFlow 一步 + IL→RL 对照（arXiv:2606.29934）

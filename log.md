@@ -1,3 +1,12 @@
+## [2026-08-05] ingest | sources/papers/roamflow_arxiv_2606_29934.md — RoamFlow（arXiv:2606.29934）MeanFlow 一步 image-goal 导航入库；升格 wiki/entities/paper-roamflow.md；交叉 NoMaD/NavDP/NavWAM/Habitat/VLN/Orin NX
+
+- **触发：** 用户指定 <https://arxiv.org/abs/2606.29934>
+- **来源：** [`sources/papers/roamflow_arxiv_2606_29934.md`](sources/papers/roamflow_arxiv_2606_29934.md)（NTU；2026-06-29）
+- **新建实体：** [`wiki/entities/paper-roamflow.md`](wiki/entities/paper-roamflow.md)
+- **开源核查（步骤 2.5）：** **确认未开源** — 无项目页 / 无官方仓；`## 源码运行时序图` 不适用
+- **方法要点：** MeanFlow 一步轨迹；IL→Habitat PPO；轨迹评估器；Gibson SR 68.7%/19.6 ms；Go2+Orin NX 真机 SR 1.00 / 37.2 ms
+- **交叉更新：** [`wiki/entities/paper-notebook-nomad-goal-masked-diffusion-policies-for-navigat.md`](wiki/entities/paper-notebook-nomad-goal-masked-diffusion-policies-for-navigat.md)、[`wiki/entities/paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md`](wiki/entities/paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md)、[`wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md`](wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md)、[`wiki/entities/habitat-sim.md`](wiki/entities/habitat-sim.md)、[`wiki/entities/jetson-orin-nx.md`](wiki/entities/jetson-orin-nx.md)、[`wiki/tasks/vision-language-navigation.md`](wiki/tasks/vision-language-navigation.md)、[`wiki/overview/vln-open-source-repro-paradigms.md`](wiki/overview/vln-open-source-repro-paradigms.md)
+
 ## [2026-08-05] ingest | sources/papers/synthetic_video_humanoid_tasks_arxiv_2607_21648.md — NCKU 合成视频人形任务（arXiv:2607.21648）入库；升格 wiki/entities/paper-synthetic-video-humanoid-tasks.md；交叉 GenHOI/OASIS/Imagine2Real/loco-manip-02/DeepMimic/GMR/unitree-g1
 
 - **触发：** 用户指定论文 *Learning Diverse Humanoid Tasks via Synthetic Video Scenarios without Real World Data*（NCKU；Yun-Hao Tsai / Cong-Thanh Vu / Yen-Chen Liu）
