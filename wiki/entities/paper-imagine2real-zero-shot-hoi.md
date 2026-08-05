@@ -2,12 +2,13 @@
 type: entity
 tags: [paper, loco-manip-contact-survey, humanoid, loco-manipulation, hoi, generative-models, video-generation, zero-shot, behavior-foundation-model, sparse-keypoints, motion-tracking, mocap, zju, shanghai-ai-lab, cuhk]
 status: complete
-updated: 2026-07-22
+updated: 2026-08-05
 arxiv: "2605.22272"
 venue: "2026 · arXiv"
 related:
   - ../overview/loco-manip-contact-technology-map.md
   - ../overview/loco-manip-contact-category-03-generative-data.md
+  - ./paper-synthetic-video-humanoid-tasks.md
   - ../tasks/loco-manipulation.md
   - ../concepts/behavior-foundation-model.md
   - ../concepts/contact-rich-manipulation.md
@@ -204,5 +205,6 @@ BFM backbone 主要来自非交互运动，缺少抓/推物体的细节。Stage 
 ## 推荐继续阅读
 
 - [GenHOI](./paper-loco-manip-03-genhoi.md)
+- [NCKU 合成视频人形任务](./paper-synthetic-video-humanoid-tasks.md) — 生成视频→RL 跟踪训练对照
 - [BFM 概念页](../concepts/behavior-foundation-model.md)
 - [SpaTrackerV2](https://arxiv.org/abs/2507.12462)

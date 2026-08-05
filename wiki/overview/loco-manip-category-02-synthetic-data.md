@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, synthetic-data, simulation, category-hub, survey]
 status: complete
-updated: 2026-07-22
+updated: 2026-08-05
 summary: "Loco-Manip 8 篇周报 · 02 生成与仿真数据（2 篇）— 生成视频与仿真 teleop 能否承担更重的可执行 loco-manip 数据生产（GenHOI、OASIS）？"
 related:
   - ./loco-manip-8-papers-technology-map.md
@@ -10,6 +10,7 @@ related:
   - ./loco-manip-category-03-command-controller.md
   - ../entities/paper-loco-manip-03-genhoi.md
   - ../entities/paper-loco-manip-04-oasis.md
+  - ../entities/paper-synthetic-video-humanoid-tasks.md
   - ../entities/paper-legs-embodied-gaussian-splatting-vla.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md
@@ -43,10 +44,12 @@ sources:
 
 - **GenHOI ≠ SimGenHOI**：前者 arXiv:2606.12995（生成视频→接触线索）；后者为 Paper Notebooks 另一条 **SimGenHOI** 待深读条目，**勿合并节点**。
 - **「仿真一定不如真机」**：OASIS 叙事强调 **覆盖度** 可补真实性不足（任务与资产质量依赖）。
+- **「生成视频路线只有零样本一种」**：周报本组以 GenHOI（接触先验、不训 task policy）与 OASIS（仿真 teleop）为主；另有 [NCKU 合成视频人形任务](../entities/paper-synthetic-video-humanoid-tasks.md)（arXiv:2607.21648）走 **Veo→GMR→RL 跟踪训练**，证据在仿真、**未开源**，勿与 GenHOI 合并。
 
 ## 关联页面
 
 - [LEGS（3DGS VLA 数据工厂）](../entities/paper-legs-embodied-gaussian-splatting-vla.md)
+- [NCKU 合成视频人形任务](../entities/paper-synthetic-video-humanoid-tasks.md) — 生成视频多样性 → DeepMimic 式跟踪（组外对照）
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [命令空间与控制器](./loco-manip-category-03-command-controller.md)
 
