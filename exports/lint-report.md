@@ -1,6 +1,6 @@
 # Wiki 健康报告
 
-## [2026-08-04] lint | health-check | 自动化 wiki 健康检查
+## [2026-08-05] lint | health-check | 自动化 wiki 健康检查
 
 共发现 **0** 个问题（另含 **3** 条信息型预警）：
 
@@ -128,4 +128,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
 - wiki/entities/paper-actfovea.md
 
-📊 Sources 覆盖率：2070/2070 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：2071/2071 (100%) wiki/entity 页有 ingest 来源
