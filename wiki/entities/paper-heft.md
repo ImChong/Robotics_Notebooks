@@ -14,7 +14,7 @@ tags:
   - tsinghua
   - shanghai-pil
 status: complete
-updated: 2026-07-04
+updated: 2026-08-05
 arxiv: "2607.02332"
 venue: "arXiv"
 code: https://github.com/Axellwppr/motion_tracking
@@ -28,6 +28,7 @@ related:
   - ./paper-twist2.md
   - ./paper-twist.md
   - ./paper-telegate.md
+  - ./paper-teleopit.md
   - ../methods/sonic-motion-tracking.md
   - ./axellwppr-motion-tracking.md
 sources:
@@ -162,6 +163,7 @@ flowchart TB
 ## 与其他页面的关系
 
 - VR 便携采集对照：[paper-twist2.md](./paper-twist2.md)、[paper-twist.md](./paper-twist.md)
+- 全身体+连续灵巧手对照：[paper-teleopit.md](./paper-teleopit.md)
 - 规模化无负载跟踪：[sonic-motion-tracking.md](../methods/sonic-motion-tracking.md)
 - 惯性动捕门控专家遥操作：[paper-telegate.md](./paper-telegate.md)
 - 任务语境：[teleoperation.md](../tasks/teleoperation.md)、[loco-manipulation.md](../tasks/loco-manipulation.md)
@@ -191,3 +193,4 @@ G1 对比 **SONIC**、**TWIST2** 官方 checkpoint；L7 对比重训 **TWIST2**�
 - [TWIST2（便携 VR 采集对照）](./paper-twist2.md)
 - [SONIC（规模化 tracking 对照）](../methods/sonic-motion-tracking.md)
 - [TeleGate（门控专家遥操作对照）](./paper-telegate.md)
+- [Teleopit（全身体+连续灵巧手对照）](./paper-teleopit.md)

@@ -20,6 +20,7 @@ related:
   - ../methods/imitation-learning.md
   - ../methods/motion-retargeting-gmr.md
   - ./paper-synthetic-video-humanoid-tasks.md
+  - ./paper-teleopit.md
   - ./paper-legs-embodied-gaussian-splatting-vla.md
   - ./paper-viral-humanoid-visual-sim2real.md
   - ./unitree-g1.md
@@ -226,6 +227,7 @@ sequenceDiagram
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 任务定义与路线谱系
 - [Teleoperation](../tasks/teleoperation.md) — 真机 teleop 成本对照
 - [NCKU 合成视频人形任务](./paper-synthetic-video-humanoid-tasks.md) — 无 teleop、纯生成视频→RL 跟踪（对照）
+- [Teleopit](./paper-teleopit.md) — 本文仿真 VR teleop 所用低层 WBC（arXiv:2608.01834）
 - [LEGS](./paper-legs-embodied-gaussian-splatting-vla.md) — 3DGS 无 teleop 合成 IL 路线
 - [VIRAL](./paper-viral-humanoid-visual-sim2real.md) — RL 特权教师 + 视觉蒸馏
 - [Sim2Real](../concepts/sim2real.md)

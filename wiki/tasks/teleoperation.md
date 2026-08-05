@@ -3,7 +3,7 @@ type: task
 tags: [teleoperation, manipulation, loco-manipulation, data-collection, humanoid]
 status: complete
 summary: "Teleoperation 让人类通过远程接口直接操作机器人，是数据采集和复杂任务执行的重要桥梁。"
-updated: 2026-08-04
+updated: 2026-08-05
 sources:
   - ../../sources/papers/teledexter_arxiv_2607_11481.md
   - ../../sources/sites/teledexter-project.md
@@ -30,6 +30,9 @@ sources:
   - ../../sources/sites/heft-project.md
   - ../../sources/papers/heft_arxiv_2607_02332.md
   - ../../sources/repos/axellwppr_motion_tracking.md
+  - ../../sources/sites/teleopit-project.md
+  - ../../sources/papers/teleopit_arxiv_2608_01834.md
+  - ../../sources/repos/teleopit.md
   - ../../sources/papers/humanoid_surgeon_nature_2026.md
   - ../../sources/papers/subcentimeter_pipeline_inspection_scirobotics_2022.md
   - ../../sources/repos/ssik.md
@@ -119,6 +122,7 @@ sources:
 | HIW-500（BitRobot / Unitree / HF 2026） | Unitree G1 | 全身遥操作 | **500+ h / 23K+ 集** | 东南亚 **12** 个真实家庭、**10+** 家务任务；开源最大规模人形遥操作集之一；见 [数据集实体](../entities/hiw-500-dataset.md) |
 | TeleGate（USTC / AnyWit 2026） | Unitree G1 | **惯性动捕** 全身关节跟踪 | **2.5 h** 自采六类 | **门控选冻结专家** + VAE 历史→未来先验；避免蒸馏统一策略；跑跳/跌倒恢复；见 [论文实体](../entities/paper-telegate.md) |
 | HEFT（清华 / RobotEra 2026） | Unitree G1 + **L7**（175 cm 全尺寸） | **VR 全身参考**（部署吃 raw 流） | PMG 配对 VR + SEED 等 | **PMG** 噪声 VR 跟踪 + **WPC** 窗化双手负载；L7 **24 kg** 重载遥操作 + 高动态跟踪；见 [论文实体](../entities/paper-heft.md) |
+| **Teleopit**（西湖 / 上海创智 2026） | Unitree G1 | **PICO VR** 身体+手+头 | 公开 mocap 子集 + 自采 PICO；**96** 条瓶放置演示 | **全身跟踪 + 连续跨手重定向 + 主动视觉**；History/rewind；五仓开源；ACT/GR00T **90%/95%**；见 [论文实体](../entities/paper-teleopit.md) |
 | **TeleDexter**（清华 / BIGAI / 北大 2026） | Franka + SharpaWave / LeapHand | **NOKOV MoCap**（腕 + 指尖 + 物体 6D） | 七任务真机遥操作 + 50 demos/任务 | **hand–object co-tracking** 低层「小脑」；平均 **75.2% SR**；基线运动学/生成先验近失败；**未开源**；见 [论文实体](../entities/paper-teledexter.md) |
 | AnyTeleop（UCB 2023） | 多平台 | RGB 相机 | 通用 | 无传感器手套，仅视觉输入 |
 | GELLO（Berkeley 2023） | 多 UR/Franka | Leader Arms | 低成本 | 低成本版 ALOHA |
@@ -197,6 +201,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - **ingest 档案：** [sources/papers/hapmorph_arxiv_2509_05433.md](../../sources/papers/hapmorph_arxiv_2509_05433.md) — HapMorph：AFPA 可穿戴气动框架解耦渲染尺寸与刚度（arXiv:2509.05433）
 - **ingest 档案：** [sources/sites/telegate-project.md](../../sources/sites/telegate-project.md)、[sources/papers/telegate_arxiv_2602_09628.md](../../sources/papers/telegate_arxiv_2602_09628.md) — TeleGate：门控专家 + VAE 运动先验全身遥操作（RSS 2026，arXiv:2602.09628）
 - **ingest 档案：** [sources/sites/heft-project.md](../../sources/sites/heft-project.md)、[sources/papers/heft_arxiv_2607_02332.md](../../sources/papers/heft_arxiv_2607_02332.md)、[sources/repos/axellwppr_motion_tracking.md](../../sources/repos/axellwppr_motion_tracking.md) — HEFT：PMG + WPC 重载全尺寸人形 VR 遥操作（arXiv:2607.02332）
+- **ingest 档案：** [sources/sites/teleopit-project.md](../../sources/sites/teleopit-project.md)、[sources/papers/teleopit_arxiv_2608_01834.md](../../sources/papers/teleopit_arxiv_2608_01834.md)、[sources/repos/teleopit.md](../../sources/repos/teleopit.md) — Teleopit：VR 全身体+连续灵巧手+主动视觉（arXiv:2608.01834）
 - **ingest 档案：** [sources/papers/humanoidarena_arxiv_2606_17833.md](../../sources/papers/humanoidarena_arxiv_2606_17833.md) — HumanoidArena：PICO egocentric 采集 + GMR → 双 GMT 分层 benchmark（arXiv:2606.17833）
 - **ingest 档案：** [sources/papers/humanoid_surgeon_nature_2026.md](../../sources/papers/humanoid_surgeon_nature_2026.md) — Humanoid Surgeon：人形腹腔镜 in vivo 可行性（Nature 2026；[项目页](https://humanoid-surgeon.github.io/)）
 - Zhao et al., *Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware* (RSS 2023) — ALOHA
@@ -237,6 +242,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - [HapMorph（论文实体）](../entities/paper-hapmorph-pneumatic-haptic-render.md) — 操作员侧可穿戴尺寸+刚度力触觉渲染（arXiv:2509.05433）
 - [TeleGate（论文实体）](../entities/paper-telegate.md) — 惯性动捕 + 门控冻结专家 + VAE 预判；2.5 h 高动态全身遥操作（RSS 2026，arXiv:2602.09628）
 - [HEFT（论文实体）](../entities/paper-heft.md) — 嘈杂 raw VR + WPC 双手负载；全尺寸 L7 **24 kg** 重载遥操作（arXiv:2607.02332）
+- [Teleopit（论文实体）](../entities/paper-teleopit.md) — PICO VR 全身+连续跨手+主动视觉；History/rewind；96 演示 ACT/GR00T（arXiv:2608.01834）
 - [HumanoidArena（论文实体）](../entities/paper-humanoidarena.md) — PICO egocentric 采集管线与 TWIST2/SONIC 双 GMT 分层 benchmark（arXiv:2606.17833）
 - [Humanoid Surgeon（论文实体）](../entities/paper-humanoid-surgeon-in-vivo-laparoscopy.md) — 通用人形腹腔镜遥操作 in vivo 猪模型验证（Nature 2026）
 - [ssik（解析逆运动学）](../entities/ssik.md) — 6R/7R 臂部笛卡尔跟踪：`q_seed` 最近分支与 `seed_tolerance` 跳变检测
