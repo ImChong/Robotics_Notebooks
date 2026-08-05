@@ -2,8 +2,9 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-08-02
+updated: 2026-08-05
 related:
+  - ../comparisons/robot-learning-five-paradigms-taxonomy.md
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-rl-intelligent-control.md
   - ../methods/value-based-reinforcement-learning.md
@@ -35,6 +36,7 @@ related:
   - ../concepts/progress-reward-modeling.md
   - ../entities/paper-progress-reward-modeling-survey.md
 sources:
+  - ../../sources/blogs/wechat_shenlan_robot_learning_five_paradigms.md
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/sites/incompleteideas-net-rich-sutton.md
   - ../../sources/papers/intentional_streaming_rl.md
@@ -230,6 +232,7 @@ flowchart LR
 - [机器人论文阅读笔记：ASE](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control.html)
 
 ## 关联页面
+- [机器人学习五大范式](../comparisons/robot-learning-five-paradigms-taxonomy.md) — RL 作为奖励信号主线，与 IL / LfV / VLA / 持续学习对照
 - [深度学习基础](../concepts/deep-learning-foundations.md)
 - [Richard Sutton](../entities/richard-sutton.md) — RL 奠基人与一手资料总入口
 - [Sutton & Barto RL 教材](../entities/sutton-barto-rl-book.md) — 理论标准教材

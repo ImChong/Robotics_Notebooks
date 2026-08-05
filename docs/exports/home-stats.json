@@ -1,13 +1,92 @@
 {
   "generated_at": "2026-08-05",
-  "node_count": 2097,
-  "edge_count": 19096,
+  "node_count": 2098,
+  "edge_count": 19123,
   "coverage": {
-    "covered": 2073,
-    "total": 2073,
+    "covered": 2074,
+    "total": 2074,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/comparisons/robot-learning-five-paradigms-taxonomy.md",
+      "detail_id": "wiki-comparisons-robot-learning-five-paradigms-taxonomy",
+      "label": "机器人学习五大范式：模仿、强化、视频、多模态与持续学习",
+      "type": "comparison",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/methods/imitation-learning.md",
+      "detail_id": "wiki-methods-imitation-learning",
+      "label": "Imitation Learning (IL, 模仿学习)",
+      "type": "method",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/comparisons/rl-vs-il.md",
+      "detail_id": "wiki-comparisons-rl-vs-il",
+      "label": "RL vs 模仿学习（Imitation Learning）",
+      "type": "comparison",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/overview/robot-learning-overview.md",
+      "detail_id": "wiki-overview-robot-learning-overview",
+      "label": "Robot Learning Overview",
+      "type": "overview",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/methods/reinforcement-learning.md",
+      "detail_id": "wiki-methods-reinforcement-learning",
+      "label": "Reinforcement Learning (RL, 强化学习)",
+      "type": "method",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md",
+      "detail_id": "wiki-comparisons-vlm-vln-vla-vlx-world-model-taxonomy",
+      "label": "五大具身模型分类：VLM、VLN、VLA、VLX 与世界模型",
+      "type": "comparison",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained"
+    },
     {
       "path": "wiki/entities/paper-roamflow.md",
       "detail_id": "entity-paper-roamflow",
@@ -44,8 +123,7 @@
       "type": "entity",
       "recency": "2026-08-05",
       "source": "log.md",
-      "action": "maintained",
-      "community_label": "生成式世界模型（Generative World Models） 社区"
+      "action": "maintained"
     },
     {
       "path": "wiki/entities/habitat-sim.md",
@@ -125,93 +203,13 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/overview/loco-manip-category-02-synthetic-data.md",
-      "detail_id": "wiki-overview-loco-manip-category-02-synthetic-data",
-      "label": "Loco-Manip 分类 02：生成与仿真数据",
-      "type": "overview",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/overview/loco-manip-contact-category-03-generative-data.md",
-      "detail_id": "wiki-overview-loco-manip-contact-category-03-generative-data",
-      "label": "Loco-Manip 接触分类 03：生成式路线补数据",
-      "type": "overview",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/methods/deepmimic.md",
-      "detail_id": "wiki-methods-deepmimic",
-      "label": "DeepMimic: 示例引导的技能学习",
-      "type": "method",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/motion-retargeting-gmr.md",
-      "detail_id": "wiki-methods-motion-retargeting-gmr",
-      "label": "GMR: 通用动作重定向",
-      "type": "method",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/entities/unitree-g1.md",
-      "detail_id": "entity-unitree-g1",
-      "label": "Unitree G1 (人形机器人)",
-      "type": "entity",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-teleopit.md",
-      "detail_id": "entity-paper-teleopit",
-      "label": "Teleopit",
-      "type": "entity",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/tasks/teleoperation.md",
-      "detail_id": "wiki-tasks-teleoperation",
-      "label": "Teleoperation（遥操作）",
-      "type": "task",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-twist2.md",
-      "detail_id": "entity-paper-twist2",
-      "label": "TWIST2",
-      "type": "entity",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-roamflow.md",
-    "detail_id": "entity-paper-roamflow",
-    "label": "RoamFlow",
-    "type": "entity",
+    "path": "wiki/comparisons/robot-learning-five-paradigms-taxonomy.md",
+    "detail_id": "wiki-comparisons-robot-learning-five-paradigms-taxonomy",
+    "label": "机器人学习五大范式：模仿、强化、视频、多模态与持续学习",
+    "type": "comparison",
     "recency": "2026-08-05",
     "source": "log.md",
     "action": "maintained"
@@ -219,19 +217,15 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 196
-    },
-    {
-      "label": "动作重定向",
-      "size": 164
+      "size": 209
     },
     {
       "label": "操作",
-      "size": 156
+      "size": 168
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 145
+      "size": 140
     },
     {
       "label": "移动操作",
@@ -239,7 +233,11 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 136
+      "size": 137
+    },
+    {
+      "label": "动作重定向",
+      "size": 135
     }
   ],
   "top_hubs": [
@@ -247,7 +245,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 416,
+      "degree": 418,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -255,7 +253,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 390,
+      "degree": 392,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -292,9 +290,16 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 285,
+      "degree": 287,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "detail_id": "wiki-methods-imitation-learning",
+      "label": "Imitation Learning (IL, 模仿学习)",
+      "type": "method",
+      "degree": 225,
+      "has_repo": true
     },
     {
       "detail_id": "wiki-queries-hmi-opensource-projects-coverage",
@@ -303,13 +308,6 @@
       "degree": 225,
       "has_repo": true,
       "community_label": "开源项目本库导读（HMI Open-Source Projects Guide） 社区"
-    },
-    {
-      "detail_id": "wiki-methods-imitation-learning",
-      "label": "Imitation Learning (IL, 模仿学习)",
-      "type": "method",
-      "degree": 223,
-      "has_repo": true
     },
     {
       "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",

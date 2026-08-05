@@ -1,6 +1,6 @@
 ---
 type: overview
-updated: 2026-08-01
+updated: 2026-08-05
 summary: "Robot Learning Overview 是机器人学习知识库入口页，按控制层、学习层与系统层组织主干主题，并给出阅读顺序与问题驱动导航。"
 sources:
   - ../../sources/papers/survey_papers.md
@@ -120,6 +120,7 @@ related:
 - [Imitation Learning](../methods/imitation-learning.md)
 - [Behavior Cloning](../methods/behavior-cloning.md)
 - [VLA](../methods/vla.md)
+- [机器人学习五大范式（IL / RL / LfV / VLA / 持续学习）](../comparisons/robot-learning-five-paradigms-taxonomy.md) — 按学习信号选型的对照框架
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 世界预测与动作生成耦合的具身基础模型范式（综述与 Awesome-WAM 资源入口）
 
 ### 4. Safe / Structured Control
@@ -216,6 +217,7 @@ related:
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [动手学强化学习（蘑菇书）](../entities/hands-on-rl-book.md)
 - [Imitation Learning](../methods/imitation-learning.md)
+- [机器人学习五大范式](../comparisons/robot-learning-five-paradigms-taxonomy.md) — IL / RL / 视频 / VLA / 持续学习选型
 - [Locomotion](../tasks/locomotion.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [LLM Wiki 方法论（Karpathy）](../references/llm-wiki-karpathy.md) — 本知识库的构建方法论来源
