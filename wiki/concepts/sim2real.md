@@ -52,7 +52,7 @@ related:
   - ../entities/paper-legged-robots-advances-challenges.md
   - ../queries/sim2real-closed-loop-engineering.md
 summary: "Sim2Real 关注如何把仿真中学到的策略稳定迁移到真实机器人，是机器人学习落地的核心鸿沟。"
-updated: 2026-08-04
+updated: 2026-08-05
 sources:
   - ../../sources/papers/physx_omni_arxiv_2605_21572.md
   - ../../sources/courses/isaac_lab_implicit_explicit_actuators.md
@@ -233,6 +233,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 
 ## 关联页面
 
+- [机器人学习五大范式](../comparisons/robot-learning-five-paradigms-taxonomy.md) — RL 线中的仿真训练与域随机化迁移读法
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [TacRefineNet](../entities/paper-tacrefinenet-tactile-grasp-refinement.md) — 多指触觉策略仿真 BC 零样本上真机

@@ -7,6 +7,16 @@
 - **方法要点：** E-CBAM+Edge Branch 分割 → EGAG 深度补全 → GraspNet 候选 + 质心/主轴/wrench 重打分；AUBO i5 真机 Simple 96% / Clutter 86%；0.5 m/s 运液零洒出
 - **交叉更新：** [`wiki/methods/grasp-pose-estimation.md`](wiki/methods/grasp-pose-estimation.md)、[`wiki/queries/grasp-policy-selection.md`](wiki/queries/grasp-policy-selection.md)、[`wiki/overview/hub-grasp.md`](wiki/overview/hub-grasp.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`wiki/entities/anygrasp.md`](wiki/entities/anygrasp.md)、[`wiki/comparisons/anygrasp-vs-graspnet.md`](wiki/comparisons/anygrasp-vs-graspnet.md)
 
+## [2026-08-05] ingest | sources/blogs/wechat_shenlan_robot_learning_five_paradigms.md — 深蓝具身智能《机器人学习算法五大体系》入库；升格 wiki/comparisons/robot-learning-five-paradigms-taxonomy.md；交叉 wiki/methods/imitation-learning.md、reinforcement-learning.md、vla.md、wiki/comparisons/rl-vs-il.md、vlm-vln-vla-vlx-world-model-taxonomy.md、wiki/concepts/sim2real.md、wiki/overview/robot-learning-overview.md
+
+- **触发：** 用户指定 <https://mp.weixin.qq.com/s/r2zUtQfwH_r0WHrnY4CHuA>；要求确认 Agent Reach 可用
+- **抓取：** Agent Reach v1.5.0 + `wechat-article-for-ai`（Camoufox；`--no-images`）；原始落盘 [`sources/raw/wechat_shenlan_robot_learning_five_paradigms_2026-08-05.md`](sources/raw/wechat_shenlan_robot_learning_five_paradigms_2026-08-05.md)
+- **来源：** [`sources/blogs/wechat_shenlan_robot_learning_five_paradigms.md`](sources/blogs/wechat_shenlan_robot_learning_five_paradigms.md)（深蓝具身智能；2026-08-05）
+- **新建对比页：** [`wiki/comparisons/robot-learning-five-paradigms-taxonomy.md`](wiki/comparisons/robot-learning-five-paradigms-taxonomy.md)
+- **核心判断：** 按学习信号划分 IL / RL / LfV / VLA / 持续学习；工程上应组合选型，而非寻找万能算法；与五大具身模型 taxonomy（模型族 I/O）正交
+- **开源核查（步骤 2.5）：** 科普综述文，无独立项目页；文内代表作沿用既有归档（ALOHA/ACT、DAgger、Isaac Gym、VideoDex、RT-2、Open X-Embodiment）
+- **交叉更新：** [`wiki/methods/imitation-learning.md`](wiki/methods/imitation-learning.md)、[`wiki/methods/reinforcement-learning.md`](wiki/methods/reinforcement-learning.md)、[`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/comparisons/rl-vs-il.md`](wiki/comparisons/rl-vs-il.md)、[`wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md`](wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md)、[`wiki/concepts/sim2real.md`](wiki/concepts/sim2real.md)、[`wiki/overview/robot-learning-overview.md`](wiki/overview/robot-learning-overview.md)、[`sources/repos/panniantong_agent_reach.md`](sources/repos/panniantong_agent_reach.md)
+
 ## [2026-08-05] ingest | sources/papers/roamflow_arxiv_2606_29934.md — RoamFlow（arXiv:2606.29934）MeanFlow 一步 image-goal 导航入库；升格 wiki/entities/paper-roamflow.md；交叉 NoMaD/NavDP/NavWAM/Habitat/VLN/Orin NX
 
 - **触发：** 用户指定 <https://arxiv.org/abs/2606.29934>

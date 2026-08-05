@@ -2,8 +2,9 @@
 type: comparison
 tags: [vlm, vln, vla, vlx, world-model, embodied-ai, multimodal, taxonomy]
 status: complete
-updated: 2026-07-05
+updated: 2026-08-05
 related:
+  - ./robot-learning-five-paradigms-taxonomy.md
   - ../methods/vla.md
   - ../tasks/vision-language-navigation.md
   - ../concepts/world-action-models.md
@@ -14,6 +15,7 @@ related:
   - ../methods/unified-multimodal-tokens.md
 sources:
   - ../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md
+  - ../../sources/blogs/wechat_shenlan_robot_learning_five_paradigms.md
 summary: "VLM、VLN、VLA、VLX 与世界模型共享 Transformer 与多模态编码底座，按感知→导航→执行→融合→推演递进分工；VL 系列直接对接硬件，WM 专注时序虚拟预演并与 VLA 形成决策–预演闭环。"
 ---
 
@@ -100,6 +102,7 @@ flowchart TB
 
 ## 与其他页面的关系
 
+- [机器人学习五大范式](./robot-learning-five-paradigms-taxonomy.md)：按 **学习信号**（示范/奖励/视频/多模态/持续学习）划分的正交 taxonomy；本页按 **模型族 I/O** 划分。
 - [Query：具身大模型分类学选型闭环知识链](../queries/embodied-fm-taxonomy-loop.md)：把本页五大家族沉淀为「感知 → 导航 → 执行 → 扩展 → 推演」的端到端选型决策链，逐层给出 I/O 边界、数据需求与实时性/泛化取舍。
 - [VLA 方法页](../methods/vla.md)：执行层代表方法与训练数据。
 - [VLN 任务页](../tasks/vision-language-navigation.md)：导航基准与开源复现范式。
