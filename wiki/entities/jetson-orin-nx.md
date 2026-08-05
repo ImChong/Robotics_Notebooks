@@ -2,12 +2,13 @@
 type: entity
 tags: [entity, hardware, edge-ai, nvidia, jetson, orin, onboard-compute, robotics]
 status: complete
-updated: 2026-08-04
+updated: 2026-08-05
 related:
   - ../concepts/edge-cloud-robotics.md
   - ../concepts/lidar-sensing.md
   - ./quadruped-robot.md
   - ./findanything.md
+  - ./paper-roamflow.md
   - ./isaac-ros-visual-slam.md
   - ../comparisons/onnxruntime-vs-mnn-vs-tensorrt.md
   - ../overview/quadruped-vln-embodied-workshop.md
@@ -85,6 +86,7 @@ flowchart TB
 - [LiDAR 传感](../concepts/lidar-sensing.md)
 - [四足机器人](./quadruped-robot.md)
 - [四足×VLN 实战营总览](../overview/quadruped-vln-embodied-workshop.md)
+- [RoamFlow](./paper-roamflow.md) — Go2 + Orin NX 16GB 机载 image-goal 导航（~37 ms 推理）
 - [ONNX Runtime vs MNN vs TensorRT](../comparisons/onnxruntime-vs-mnn-vs-tensorrt.md)
 
 ## 参考来源

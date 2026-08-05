@@ -2325,6 +2325,15 @@
         "politecnico-milano",
         "poli-mi"
       ]
+    },
+    "ncku": {
+      "label": "国立成功大学（National Cheng Kung University）",
+      "aliases": [
+        "ncku",
+        "national-cheng-kung-university",
+        "cheng-kung",
+        "成功大学"
+      ]
     }
   }
 }

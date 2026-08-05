@@ -1,251 +1,237 @@
 {
-  "generated_at": "2026-08-04",
-  "node_count": 2094,
-  "edge_count": 19042,
+  "generated_at": "2026-08-05",
+  "node_count": 2097,
+  "edge_count": 19095,
   "coverage": {
-    "covered": 2070,
-    "total": 2070,
+    "covered": 2073,
+    "total": 2073,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-actfovea.md",
-      "detail_id": "entity-paper-actfovea",
-      "label": "ActFovea：给 VLA 策略加一层运行时防护",
+      "path": "wiki/entities/paper-roamflow.md",
+      "detail_id": "entity-paper-roamflow",
+      "label": "RoamFlow",
       "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/queries/robot-perception-stack-selection-loop.md",
-      "detail_id": "wiki-queries-robot-perception-stack-selection-loop",
-      "label": "Query：机器人视觉感知栈选型闭环知识链",
-      "type": "query",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/star-vla.md",
-      "detail_id": "wiki-methods-star-vla",
-      "label": "StarVLA",
-      "type": "method",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/foundation-policy.md",
-      "detail_id": "wiki-concepts-foundation-policy",
-      "label": "Foundation Policy（基础策略模型）",
-      "type": "concept",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md",
-      "detail_id": "wiki-comparisons-fb-bfm-zero-intact-mimic-vla-task-space",
-      "label": "FB / BFM-Zero / INTACT / Mimic / VLA：任务空间表征对比",
-      "type": "comparison",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-bfm-zero.md",
-      "detail_id": "entity-paper-bfm-zero",
-      "label": "BFM-Zero",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-intact.md",
-      "detail_id": "entity-paper-intact",
-      "label": "INTACT（Search-Free Intent-to-Action World Model）",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/mimiclite.md",
-      "detail_id": "entity-mimiclite",
-      "label": "MimicLite（监督运动跟踪基础设施）",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/roboparty-ufo.md",
-      "detail_id": "entity-roboparty-ufo",
-      "label": "UFO（Roboparty 无监督 RL 控制框架）",
-      "type": "entity",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/overview/roboparty-lab-party-os-technology-map.md",
-      "detail_id": "wiki-overview-roboparty-lab-party-os-technology-map",
-      "label": "RoboParty Lab / Party OS 技术地图",
-      "type": "overview",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/concepts/behavior-foundation-model.md",
-      "detail_id": "wiki-concepts-behavior-foundation-model",
-      "label": "Behavior Foundation Model（行为基础模型，BFM）",
-      "type": "concept",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/overview/bfm-category-01-forward-backward-representation.md",
-      "detail_id": "wiki-overview-bfm-category-01-forward-backward-representation",
-      "label": "BFM 分类 01：Forward-backward 表征",
-      "type": "overview",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/comparisons/mpc-vs-rl.md",
-      "detail_id": "wiki-comparisons-mpc-vs-rl",
-      "label": "MPC vs RL：控制策略选型对比",
-      "type": "comparison",
-      "recency": "2026-08-04",
+      "recency": "2026-08-05",
       "source": "log.md",
       "action": "maintained"
     },
     {
-      "path": "wiki/methods/sonic-motion-tracking.md",
-      "detail_id": "wiki-methods-sonic-motion-tracking",
-      "label": "SONIC（规模化运动跟踪人形控制）",
-      "type": "method",
-      "recency": "2026-08-04",
+      "path": "wiki/entities/paper-notebook-nomad-goal-masked-diffusion-policies-for-navigat.md",
+      "detail_id": "entity-paper-notebook-nomad-goal-masked-diffusion-policies-for-navigat",
+      "label": "NoMaD：目标掩码扩散导航与探索",
+      "type": "entity",
+      "recency": "2026-08-05",
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
     },
     {
-      "path": "wiki/entities/paper-clift-closed-loop-iterative-finetuning.md",
-      "detail_id": "entity-paper-clift-closed-loop-iterative-finetuning",
-      "label": "CLIFT：不打开模型盒子的闭环迭代微调",
+      "path": "wiki/entities/paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md",
+      "detail_id": "entity-paper-notebook-navdp-learning-sim-to-real-navigation-diffusion",
+      "label": "NavDP：特权信息引导的 Sim2Real 导航扩散策略",
       "type": "entity",
-      "recency": "2026-08-04",
+      "recency": "2026-08-05",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "has_repo": true
     },
     {
-      "path": "wiki/entities/gemini-robotics.md",
-      "detail_id": "entity-gemini-robotics",
-      "label": "Gemini Robotics",
+      "path": "wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md",
+      "detail_id": "entity-paper-navwam-goal-conditioned-visual-navigation-wam",
+      "label": "NavWAM（目标条件视觉导航 · Navigation World Action Model）",
       "type": "entity",
-      "recency": "2026-08-04",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/entities/habitat-sim.md",
+      "detail_id": "entity-habitat-sim",
+      "label": "Habitat-Sim",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/jetson-orin-nx.md",
+      "detail_id": "entity-jetson-orin-nx",
+      "label": "NVIDIA Jetson Orin NX",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/tasks/vision-language-navigation.md",
+      "detail_id": "wiki-tasks-vision-language-navigation",
+      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
+      "type": "task",
+      "recency": "2026-08-05",
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    },
+    {
+      "path": "wiki/overview/vln-open-source-repro-paradigms.md",
+      "detail_id": "wiki-overview-vln-open-source-repro-paradigms",
+      "label": "VLN 开源复现：四范式学习路径",
+      "type": "overview",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-synthetic-video-humanoid-tasks.md",
+      "detail_id": "entity-paper-synthetic-video-humanoid-tasks",
+      "label": "Learning Diverse Humanoid Tasks via Synthetic Video Scenarios",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-loco-manip-03-genhoi.md",
+      "detail_id": "entity-paper-loco-manip-03-genhoi",
+      "label": "GenHOI",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-loco-manip-04-oasis.md",
+      "detail_id": "entity-paper-loco-manip-04-oasis",
+      "label": "OASIS（From Simulation Data Collection to Real-World Humanoid Loco-Manipulation）",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-imagine2real-zero-shot-hoi.md",
+      "detail_id": "entity-paper-imagine2real-zero-shot-hoi",
+      "label": "Imagine2Real",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/overview/loco-manip-category-02-synthetic-data.md",
+      "detail_id": "wiki-overview-loco-manip-category-02-synthetic-data",
+      "label": "Loco-Manip 分类 02：生成与仿真数据",
+      "type": "overview",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/overview/loco-manip-contact-category-03-generative-data.md",
+      "detail_id": "wiki-overview-loco-manip-contact-category-03-generative-data",
+      "label": "Loco-Manip 接触分类 03：生成式路线补数据",
+      "type": "overview",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/methods/deepmimic.md",
+      "detail_id": "wiki-methods-deepmimic",
+      "label": "DeepMimic: 示例引导的技能学习",
+      "type": "method",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/methods/motion-retargeting-gmr.md",
+      "detail_id": "wiki-methods-motion-retargeting-gmr",
+      "label": "GMR: 通用动作重定向",
+      "type": "method",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
     },
     {
       "path": "wiki/entities/unitree-g1.md",
       "detail_id": "entity-unitree-g1",
       "label": "Unitree G1 (人形机器人)",
       "type": "entity",
-      "recency": "2026-08-04",
+      "recency": "2026-08-05",
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
     },
     {
-      "path": "wiki/concepts/safe-real-world-rl-fine-tuning.md",
-      "detail_id": "wiki-concepts-safe-real-world-rl-fine-tuning",
-      "label": "Safe Real-World RL Fine-Tuning（真机安全 RL 微调）",
-      "type": "concept",
-      "recency": "2026-08-04",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/overview/hub-safe-fine-tuning.md",
-      "detail_id": "wiki-overview-hub-safe-fine-tuning",
-      "label": "真机安全微调（知识链汇总）",
-      "type": "overview",
-      "recency": "2026-08-04",
+      "path": "wiki/entities/paper-teleopit.md",
+      "detail_id": "entity-paper-teleopit",
+      "label": "Teleopit",
+      "type": "entity",
+      "recency": "2026-08-05",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "has_repo": true
+    },
+    {
+      "path": "wiki/tasks/teleoperation.md",
+      "detail_id": "wiki-tasks-teleoperation",
+      "label": "Teleoperation（遥操作）",
+      "type": "task",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-twist2.md",
+      "detail_id": "entity-paper-twist2",
+      "label": "TWIST2",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-actfovea.md",
-    "detail_id": "entity-paper-actfovea",
-    "label": "ActFovea：给 VLA 策略加一层运行时防护",
+    "path": "wiki/entities/paper-roamflow.md",
+    "detail_id": "entity-paper-roamflow",
+    "label": "RoamFlow",
     "type": "entity",
-    "recency": "2026-08-04",
+    "recency": "2026-08-05",
     "source": "log.md",
-    "action": "maintained",
-    "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "action": "maintained"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 195
+      "size": 196
     },
     {
       "label": "动作重定向",
-      "size": 195
+      "size": 164
     },
     {
       "label": "操作",
-      "size": 160
+      "size": 156
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 143
+      "size": 145
     },
     {
       "label": "移动操作",
@@ -253,7 +239,7 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 117
+      "size": 136
     }
   ],
   "top_hubs": [
@@ -292,7 +278,7 @@
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
-      "degree": 305,
+      "degree": 307,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
@@ -338,7 +324,7 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 126,
+      "degree": 128,
       "has_repo": true
     },
     {
@@ -352,8 +338,7 @@
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
-      "degree": 54,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
+      "degree": 56
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",
@@ -380,7 +365,7 @@
       "detail_id": "entity-paper-twist2",
       "label": "TWIST2",
       "type": "entity",
-      "degree": 43,
+      "degree": 45,
       "has_repo": true
     },
     {

@@ -2,7 +2,7 @@
 type: entity
 tags: [entity, simulator, embodied-ai, navigation, meta, habitat, gpu-rendering, habitat-lab, bullet]
 status: complete
-updated: 2026-08-04
+updated: 2026-08-05
 related:
   - ./matterport3d-simulator.md
   - ./igibson.md
@@ -12,6 +12,7 @@ related:
   - ./isaac-lab.md
   - ./paper-vln-02-vln-ce.md
   - ./paper-zonda.md
+  - ./paper-roamflow.md
   - ../tasks/vision-language-navigation.md
   - ../concepts/sim2real.md
   - ../tasks/zero-shot-object-navigation.md
@@ -177,6 +178,7 @@ sequenceDiagram
 - [视觉–语言导航](../tasks/vision-language-navigation.md) — VLN-CE / ObjectNav 任务语境
 - [Sim2Real](../concepts/sim2real.md) — Habitat→真机迁移用例（如 ZONDA）
 - [ZONDA](./paper-zonda.md) — Habitat 多楼层 / 动态 ObjectNav
+- [RoamFlow](./paper-roamflow.md) — Habitat Gibson/MP3D image-goal 生成导航（MeanFlow）
 - [TravExplorer](./paper-travexplorer.md) — Habitat HM3D 零样本 ObjectNav 对照
 - [零样本 ObjectNav 任务](../tasks/zero-shot-object-navigation.md) — ObjectNav 任务中心
 - [四足×VLN 实战营总览](../overview/quadruped-vln-embodied-workshop.md) — 课程侧 Habitat 宿主节点
