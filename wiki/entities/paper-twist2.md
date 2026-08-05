@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model, teleoperation, loco-manipulation, diffusion-policy, data-collection, unitree-g1, icra-2026]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-05
 arxiv: "2511.02832"
 venue: "ICRA 2026 · arXiv"
 code: https://github.com/amazon-far/TWIST2
@@ -24,6 +24,7 @@ related:
   - ./paper-bifrost-umi.md
   - ./paper-amp-survey-16-clot.md
   - ./paper-heft.md
+  - ./paper-teleopit.md
   - ./yanjie-ze.md
   - ./paper-xrobotoolkit.md
 sources:
@@ -150,6 +151,7 @@ sequenceDiagram
 - **主要在局部帧跟踪**：全身跟踪在 **机器人局部坐标系** 运行，长时程 **全局位姿漂移** 仍是痛点——[CLOT](./paper-amp-survey-16-clot.md) 等闭环全局方案与之互补对照。
 - **不是无机器人采集**：[BifrostUMI](./paper-bifrost-umi.md) 用 Pico+夹爪 **无需 G1 即可示范**；TWIST2 强调 **真机便携遥操作 + 数据规模**，二者解决不同瓶颈。
 - **重载 VR 对照**：[HEFT](./paper-heft.md) 在 G1/L7 上以 TWIST2 为跟踪基线，并额外用 **PMG + WPC** 处理 **嘈杂 raw VR** 与 **双手 24 kg 级负载**——与 TWIST2「便携采集 + visuomotor」主叙事互补。
+- **连续灵巧手对照**：[Teleopit](./paper-teleopit.md) 同样走 PICO VR + 主动视觉，但把手从离散夹爪推进到 **跨形态连续优化重定向**，并以 History/rewind 强化 live VR 跟踪。
 - **硬件仍要装配**：虽比整机机房轻，但颈 3D 打印、PICO 与 G1 联调仍有工程成本（项目页提供五步复现教程）。
 
 ## 与其他页面的关系
@@ -162,6 +164,7 @@ sequenceDiagram
 - RL 身体系统栈：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - BFM 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - XR 中间层：[paper-xrobotoolkit.md](./paper-xrobotoolkit.md) — PICO/Quest OpenXR 流与 QP-IK 套件
+- 全身体+连续灵巧手对照：[paper-teleopit.md](./paper-teleopit.md)
 - 任务：[teleoperation.md](../tasks/teleoperation.md)、[loco-manipulation.md](../tasks/loco-manipulation.md)
 
 ## 实验与评测
@@ -198,3 +201,4 @@ sequenceDiagram
 - [TWIST-Data 社区数据集](https://twist-data.github.io/)
 - [CLOT（全局闭环遥操作对照）](./paper-amp-survey-16-clot.md) — arXiv:2602.15060
 - [BifrostUMI（无机器人全身采集对照）](./paper-bifrost-umi.md) — arXiv:2605.03452
+- [Teleopit（全身体+连续灵巧手对照）](./paper-teleopit.md) — arXiv:2608.01834

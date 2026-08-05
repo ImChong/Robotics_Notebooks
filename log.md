@@ -1,3 +1,13 @@
+## [2026-08-05] ingest | sources/papers/teleopit_arxiv_2608_01834.md + sites/teleopit-project + repos/teleopit/somehand — Teleopit（arXiv:2608.01834）全身体人形遥操作入库；升格 wiki/entities/paper-teleopit.md；交叉 wiki/tasks/teleoperation.md、wiki/entities/paper-twist2.md、paper-heft.md、paper-loco-manip-04-oasis.md、mimiclite.md
+
+- **触发：** 用户指定论文 <https://arxiv.org/abs/2608.01834>、项目页 <https://botrunner64.github.io/teleopit-page/>
+- **来源：** [`sources/papers/teleopit_arxiv_2608_01834.md`](sources/papers/teleopit_arxiv_2608_01834.md)、[`sources/sites/teleopit-project.md`](sources/sites/teleopit-project.md)、[`sources/repos/teleopit.md`](sources/repos/teleopit.md)、[`sources/repos/somehand.md`](sources/repos/somehand.md)
+- **新建实体：** [`wiki/entities/paper-teleopit.md`](wiki/entities/paper-teleopit.md)（西湖大学 / 上海创智学院；PICO VR 全身+连续灵巧手+主动视觉；History Encoder + failure-aware rewind；五仓开源）
+- **开源核查（步骤 2.5）：** **已开源** — 项目页列出 Teleopit / somehand / pico-bridge / OpenNeck / lerobot-teleopit；主仓含 `ckpt/track_g1*.onnx`
+- **方法要点：** mjlab+PPO 全身跟踪；归一化指方向跨手重定向；OpenNeck 2-DoF；异步录制→ACT/GR00T（96 demos → 90%/95% SR）
+- **交叉更新：** [`wiki/tasks/teleoperation.md`](wiki/tasks/teleoperation.md)、[`wiki/entities/paper-twist2.md`](wiki/entities/paper-twist2.md)、[`wiki/entities/paper-heft.md`](wiki/entities/paper-heft.md)、[`wiki/entities/paper-loco-manip-04-oasis.md`](wiki/entities/paper-loco-manip-04-oasis.md)、[`wiki/entities/mimiclite.md`](wiki/entities/mimiclite.md)、[`wiki/methods/sonic-motion-tracking.md`](wiki/methods/sonic-motion-tracking.md)、[`wiki/entities/unitree-g1.md`](wiki/entities/unitree-g1.md)、[`wiki/concepts/motion-retargeting.md`](wiki/concepts/motion-retargeting.md)
+
+
 ## [2026-08-04] ingest | sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md — 知乎专栏：FB/BFM-Zero/INTACT/Mimic/VLA 任务空间表征对照；升格 wiki/comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md
 
 - **触发：** 用户指定 <https://zhuanlan.zhihu.com/p/2066468645300180732>

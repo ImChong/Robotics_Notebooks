@@ -2,7 +2,7 @@
 type: entity
 tags: [hardware, humanoid, platform, unitree]
 status: complete
-updated: 2026-08-04
+updated: 2026-08-05
 related:
   - ./humanoid-robot.md
   - ./rek.md
@@ -75,6 +75,7 @@ G1 的出现极大地加速了大规模数据的采集。由于其成本低廉�
 
 - [G1 软件服务栈](./unitree-g1-software-stack.md) — SDK2/DDS 与仿真桥接口（课程 1.4）
 - [人形系统课程策展](./humanoid-system-curriculum.md) — 深蓝学院 G1 系统课八章地图
+- [Teleopit](./paper-teleopit.md) — PICO VR 全身+连续灵巧手+主动视觉遥操作（G1 29 DoF；arXiv:2608.01834）
 - [POT-VLA](./paper-pot-vla.md) — 在 G1 上用持久 3D 对象 token 实现可验证的闭环移动操作
 - [smp](../methods/smp.md) (基于得分匹配的运动先验，已在 G1 完成验证)
 - [人形机器人 (Humanoid Robot)](./humanoid-robot.md)
