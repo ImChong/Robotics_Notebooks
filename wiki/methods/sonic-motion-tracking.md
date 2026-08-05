@@ -37,6 +37,7 @@ related:
   - ../entities/nvidia-gear-lab.md
   - ../entities/holomotion.md
   - ../entities/paper-legs-embodied-gaussian-splatting-vla.md
+  - ../entities/paper-fddc.md
   - ../entities/ardy.md
   - ./gentlehumanoid-motion-tracking.md
   - ../entities/paper-extreme-rgmt.md
@@ -55,6 +56,7 @@ sources:
   - ../../sources/papers/loco_manip_161_survey_103_sonic.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
   - ../../sources/papers/humanoid_loco_manip_161_catalog.md
+  - ../../sources/papers/fddc_arxiv_2608_00500.md
 summary: "SONIC 通过规模化运动跟踪监督训练通用人形策略，把海量 MoCap 帧上的轨迹跟踪当作预训练任务；以 FSQ 统一 token 接口接入 VR、视频、文本、音乐与 VLA（如 GR00T N1.5 演示），并可桥接实时运动学规划器做交互式导航与风格化步态。官方训练/部署代码在 NVlabs/GR00T-WholeBodyControl；方法页含模块边界、文件树、算法↔代码映射与源码时序图。"
 ---
 
@@ -396,6 +398,7 @@ sequenceDiagram
 - [Athena-WBC](../entities/paper-athena-wbc-humanoid-longtail.md)：以 **SONIC 配方** 为强基线，研究 **训练集长尾残余** 的 **能力对齐专家蒸馏**（arXiv:2607.04837）；绝对数字不与 G1 发布权重直接可比。
 - [ScaleBFM](../entities/paper-scaling-bfm-humanoid.md)：同 motion-tracking BFM 预训练叙事，但系统拆解 **on-policy 数量 × 参考多样性 × Humanoid Transformer** 三轴 scaling；whole-body 基准上 **BFM-Global** 相对 SONIC **G-MPKPE 降幅约 54%（BONES）/ 82%（Ours）**（arXiv:2607.15163）。
 - [Teleopit](../entities/paper-teleopit.md)：在 mocap/PICO 持出跟踪表中以 SONIC 为基线之一；主线是 **VR 全身体+连续灵巧手** 遥操作闭环，而非规模化通用 tracking（arXiv:2608.01834）。
+- [FDDC](../entities/paper-fddc.md)：单腿平衡 sim2sim 基准上 SONIC 为**最强通用侧**（Fail 18.9%、Marginal 81.1%），但仍 **Perfect 0/90**——规模带来稳健，不等于根因单腿平衡（arXiv:2608.00500）。
 
 ## 推荐继续阅读
 

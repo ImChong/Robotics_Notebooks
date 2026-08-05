@@ -2,7 +2,7 @@
 type: method
 tags: [rl, sampling, data-generation, humanoid, physics-feasibility, paper, motion-control, body-system-stack, bfm, behavior-foundation-model, nvidia, hku, tsinghua]
 status: complete
-updated: 2026-07-16
+updated: 2026-08-05
 code: https://github.com/OpenDriveLab/AMS
 venue: "2025 · arXiv"
 arxiv: "2511.17373"
@@ -16,6 +16,7 @@ related:
   - ./imitation-learning.md
   - ./beyondmimic.md
   - ../concepts/reward-design.md
+  - ../entities/paper-fddc.md
 sources:
   - ../../sources/papers/motion_control_projects.md
   - ../../sources/papers/motion_cerebellum_64_catalog.md
@@ -26,6 +27,7 @@ sources:
   - ../../sources/papers/bfm_awesome_41_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
+  - ../../sources/papers/fddc_arxiv_2608_00500.md
 summary: "AMS (Adaptive Motion Synthesis) 提出了一种物理可行性过滤与混合奖励机制，通过在极端动作处引入先验来提升复杂平衡任务的训练成功率。"
 ---
 
@@ -101,9 +103,11 @@ AMS 实际上定义了一个自动化的合成数据生成流程：
 - [AMS 项目主页 (OpenDriveLab)](https://opendrivelab.com/AMS/)
 - 原始抓取：[wechat_humanoid_rl_42_survey_2026-05-26.md](../../sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md)
 - 论文：<https://arxiv.org/abs/2511.17373>
+- [FDDC（arXiv:2608.00500）](../../sources/papers/fddc_arxiv_2608_00500.md) — 从 AMS 合成平衡集蒸馏 900 条分层单腿 clips，并做 method-agnostic 单腿基准
 
 ## 关联页面
 
 - [Reward Design](../concepts/reward-design.md) — AMS 是“条件奖励（Conditional Reward）”设计的典型案例。
 - [Imitation Learning](./imitation-learning.md)
 - [BeyondMimic](./beyondmimic.md) — BeyondMimic 强调自适应采样，AMS 强调物理过滤。
+- [FDDC](../entities/paper-fddc.md) — 下游单腿基准与可部署动态 CoM；数据子集取自 AMS 合成平衡集

@@ -1,13 +1,97 @@
 {
   "generated_at": "2026-08-05",
-  "node_count": 2100,
-  "edge_count": 19166,
+  "node_count": 2101,
+  "edge_count": 19185,
   "coverage": {
-    "covered": 2076,
-    "total": 2076,
+    "covered": 2077,
+    "total": 2077,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-fddc.md",
+      "detail_id": "entity-paper-fddc",
+      "label": "FDDC：首个可部署的动态 CoM 单腿平衡策略与基准",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/capture-point-dcm.md",
+      "detail_id": "wiki-concepts-capture-point-dcm",
+      "label": "Capture Point / DCM",
+      "type": "concept",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/tasks/balance-recovery.md",
+      "detail_id": "wiki-tasks-balance-recovery",
+      "label": "Balance Recovery（平衡恢复）",
+      "type": "task",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/methods/ams.md",
+      "detail_id": "wiki-methods-ams",
+      "label": "AMS: 物理可行性过滤与混合奖励",
+      "type": "method",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/unitree-g1.md",
+      "detail_id": "entity-unitree-g1",
+      "label": "Unitree G1 (人形机器人)",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/concepts/reward-design.md",
+      "detail_id": "wiki-concepts-reward-design",
+      "label": "Reward Design",
+      "type": "concept",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/methods/sonic-motion-tracking.md",
+      "detail_id": "wiki-methods-sonic-motion-tracking",
+      "label": "SONIC（规模化运动跟踪人形控制）",
+      "type": "method",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-notebook-hub.md",
+      "detail_id": "entity-paper-notebook-hub",
+      "label": "HuB",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m.md",
+      "detail_id": "entity-paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m",
+      "label": "Learning Sim-to-Real Humanoid Locomotion in 15 Minutes",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained"
+    },
     {
       "path": "wiki/entities/paper-kai0.md",
       "detail_id": "entity-paper-kai0",
@@ -119,112 +203,16 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-13-physics-based-animation.md",
-      "detail_id": "wiki-overview-paper-notebook-category-13-physics-based-animation",
-      "label": "Paper Notebooks · Physics-Based Animation",
-      "type": "overview",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md",
-      "detail_id": "entity-paper-notebook-asap-aligning-simulation-and-real-world-physics",
-      "label": "ASAP Aligning Simulation and Real-World Physics for Agile Humanoid Skills",
-      "type": "entity",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md",
-      "detail_id": "entity-paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont",
-      "label": "KungfuBot（Physics-Based Highly-Dynamic WBT）",
-      "type": "entity",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-transgraspnet.md",
-      "detail_id": "entity-paper-transgraspnet",
-      "label": "TransGraspNet：透明实验器皿的几何–物理一致抓取",
-      "type": "entity",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/methods/grasp-pose-estimation.md",
-      "detail_id": "wiki-methods-grasp-pose-estimation",
-      "label": "Grasp Pose Estimation（抓取位姿估计）",
-      "type": "method",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/queries/grasp-policy-selection.md",
-      "detail_id": "wiki-queries-grasp-policy-selection",
-      "label": "Query：抓取策略选型（开放场景 vs 已知物体 / 稀疏 vs 稠密 / 几何 vs 学习）",
-      "type": "query",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/overview/hub-grasp.md",
-      "detail_id": "wiki-overview-hub-grasp",
-      "label": "抓取与操作（知识链汇总）",
-      "type": "overview",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/anygrasp.md",
-      "detail_id": "entity-anygrasp",
-      "label": "AnyGrasp（抓取感知 SDK）",
-      "type": "entity",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/comparisons/anygrasp-vs-graspnet.md",
-      "detail_id": "wiki-comparisons-anygrasp-vs-graspnet",
-      "label": "AnyGrasp vs GraspNet：抓取检测家族选型对比",
-      "type": "comparison",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-kai0.md",
-    "detail_id": "entity-paper-kai0",
-    "label": "χ₀ / kai0：资源感知的分布对齐稳健操作",
+    "path": "wiki/entities/paper-fddc.md",
+    "detail_id": "entity-paper-fddc",
+    "label": "FDDC：首个可部署的动态 CoM 单腿平衡策略与基准",
     "type": "entity",
     "recency": "2026-08-05",
     "source": "log.md",
-    "action": "maintained",
-    "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "action": "maintained"
   },
   "top_communities": [
     {
@@ -241,7 +229,7 @@
     },
     {
       "label": "移动操作",
-      "size": 140
+      "size": 139
     },
     {
       "label": "人形论文深读笔记",
@@ -334,7 +322,7 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 128,
+      "degree": 130,
       "has_repo": true
     },
     {

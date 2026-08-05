@@ -1,3 +1,12 @@
+## [2026-08-05] ingest | sources/papers/fddc_arxiv_2608_00500.md — FDDC（arXiv:2608.00500）可部署动态 CoM 单腿平衡入库；升格 wiki/entities/paper-fddc.md；交叉 wiki/concepts/capture-point-dcm.md、reward-design.md、wiki/tasks/balance-recovery.md、wiki/methods/ams.md、sonic-motion-tracking.md、wiki/entities/unitree-g1.md、paper-notebook-hub.md、paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m.md
+
+- **触发：** 用户指定 <https://arxiv.org/abs/2608.00500>
+- **来源：** [`sources/papers/fddc_arxiv_2608_00500.md`](sources/papers/fddc_arxiv_2608_00500.md)（北京大学；2026-08-01）
+- **新建实体：** [`wiki/entities/paper-fddc.md`](wiki/entities/paper-fddc.md)
+- **开源核查（步骤 2.5）：** **宣称全栈开源 / 未列 URL** — abs/TeX 写 release data/code/policy/benchmark，公开材料无 GitHub/项目页；`## 源码运行时序图` 写不适用
+- **方法要点：** 支撑相对动态 CoM \(o_{\mathrm{bal}}\) 进可部署 actor + 人体科学奖励（MoS/TTB/踝→膝 rate/jerk）+ asymmetric FastSAC；单腿基准 Perfect **95.6%**（86/90），八个通用 SOTA **0/90**；动态 CoM 消融 −40 pt；G1 ONNX 无蒸馏
+- **交叉更新：** [`wiki/concepts/capture-point-dcm.md`](wiki/concepts/capture-point-dcm.md)、[`wiki/concepts/reward-design.md`](wiki/concepts/reward-design.md)、[`wiki/tasks/balance-recovery.md`](wiki/tasks/balance-recovery.md)、[`wiki/methods/ams.md`](wiki/methods/ams.md)、[`wiki/methods/sonic-motion-tracking.md`](wiki/methods/sonic-motion-tracking.md)、[`wiki/entities/unitree-g1.md`](wiki/entities/unitree-g1.md)、[`wiki/entities/paper-notebook-hub.md`](wiki/entities/paper-notebook-hub.md)、[`wiki/entities/paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m.md`](wiki/entities/paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m.md)
+
 ## [2026-08-05] ingest | sources/papers/chi0_kai0_arxiv_2602_09021.md + sites/mmlab-kai0 + repos/kai0 — χ₀/kai0（arXiv:2602.09021）入库；升格 wiki/entities/paper-kai0.md；交叉 wiki/methods/dagger.md、awr.md、π0-policy.md、wiki/entities/paper-pi05-open-world-vla.md、paper-lehome-learning-to-fold.md、paper-steam-advantage-modeling.md、aloha.md、wiki/tasks/manipulation.md
 
 - **触发：** 用户指定 <https://arxiv.org/abs/2602.09021>

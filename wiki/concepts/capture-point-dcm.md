@@ -1,15 +1,17 @@
 ---
 type: concept
 summary: "Capture Point / DCM 用线性倒立摆的发散分量描述步行平衡，是步位规划和扰动恢复的核心直觉工具。"
-updated: 2026-06-05
+updated: 2026-08-05
 related:
   - ../entities/paper-faststair-humanoid-stair-ascent.md
+  - ../entities/paper-fddc.md
   - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ./footstep-planning.md
 sources:
   - ../../sources/papers/whole_body_control.md
   - ../../sources/papers/footstep_and_balance.md
   - ../../sources/papers/faststair_arxiv_2601_10365.md
+  - ../../sources/papers/fddc_arxiv_2608_00500.md
 ---
 
 # Capture Point / DCM
@@ -239,6 +241,9 @@ Capture Point 可以直接影响：
 ### 4. 低估速度项的重要性
 很多初学者只盯着 CoM 位置，但动态平衡真正关键的是“位置 + 速度”的组合。
 
+### 5. 以为 xCoM 只能进奖励 / 特权 critic
+世界系 capture point 确实需要基座线速度 \(v_b\)，机载常测不到。但相对**支撑足**改写后 \(v_b\) 相消，可只靠编码器+IMU 重构并直接进部署 actor——见 [FDDC](../entities/paper-fddc.md)（单腿基准上消融掉动态 CoM 观测独掉 40 pt Perfect）。
+
 ## 推荐使用建议
 
 ### 如果你学 locomotion
@@ -257,6 +262,7 @@ Capture Point / DCM 是很重要的中间概念。
 - Koolen et al., *Capturability-based Analysis and Control of Legged Locomotion* (2012) — 可捕获性理论
 - **ingest 档案：** [sources/papers/whole_body_control.md](../../sources/papers/whole_body_control.md)
 - **ingest 档案：** [sources/papers/footstep_and_balance.md](../../sources/papers/footstep_and_balance.md) — Kajita ZMP / Pratt CP / Koolen DCM 核心论文
+- **ingest 档案：** [FDDC（arXiv:2608.00500）](../../sources/papers/fddc_arxiv_2608_00500.md) — 支撑相对动态 CoM 进可部署 actor + 单腿 sim2sim 基准
 
 ## 推荐继续阅读
 
@@ -266,6 +272,7 @@ Capture Point / DCM 是很重要的中间概念。
 - [Contact Dynamics](./contact-dynamics.md)
 - [Footstep Planning](./footstep-planning.md) — DCM 是步位规划稳定性的核心依据
 - [Balance Recovery](../tasks/balance-recovery.md)（Capture Point 的实际应用场景：扰动恢复策略）
+- [FDDC](../entities/paper-fddc.md) — 可部署动态 CoM 观测与单腿平衡基准（arXiv:2608.00500）
 
 ## 一句话记忆
 
