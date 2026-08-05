@@ -1,13 +1,88 @@
 {
   "generated_at": "2026-08-05",
-  "node_count": 2098,
-  "edge_count": 19123,
+  "node_count": 2099,
+  "edge_count": 19137,
   "coverage": {
-    "covered": 2074,
-    "total": 2074,
+    "covered": 2075,
+    "total": 2075,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-transgraspnet.md",
+      "detail_id": "entity-paper-transgraspnet",
+      "label": "TransGraspNet：透明实验器皿的几何–物理一致抓取",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/methods/grasp-pose-estimation.md",
+      "detail_id": "wiki-methods-grasp-pose-estimation",
+      "label": "Grasp Pose Estimation（抓取位姿估计）",
+      "type": "method",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/queries/grasp-policy-selection.md",
+      "detail_id": "wiki-queries-grasp-policy-selection",
+      "label": "Query：抓取策略选型（开放场景 vs 已知物体 / 稀疏 vs 稠密 / 几何 vs 学习）",
+      "type": "query",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/overview/hub-grasp.md",
+      "detail_id": "wiki-overview-hub-grasp",
+      "label": "抓取与操作（知识链汇总）",
+      "type": "overview",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/anygrasp.md",
+      "detail_id": "entity-anygrasp",
+      "label": "AnyGrasp（抓取感知 SDK）",
+      "type": "entity",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/comparisons/anygrasp-vs-graspnet.md",
+      "detail_id": "wiki-comparisons-anygrasp-vs-graspnet",
+      "label": "AnyGrasp vs GraspNet：抓取检测家族选型对比",
+      "type": "comparison",
+      "recency": "2026-08-05",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
     {
       "path": "wiki/comparisons/robot-learning-five-paradigms-taxonomy.md",
       "detail_id": "wiki-comparisons-robot-learning-five-paradigms-taxonomy",
@@ -134,85 +209,17 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/jetson-orin-nx.md",
-      "detail_id": "entity-jetson-orin-nx",
-      "label": "NVIDIA Jetson Orin NX",
-      "type": "entity",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/tasks/vision-language-navigation.md",
-      "detail_id": "wiki-tasks-vision-language-navigation",
-      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
-      "type": "task",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
-    },
-    {
-      "path": "wiki/overview/vln-open-source-repro-paradigms.md",
-      "detail_id": "wiki-overview-vln-open-source-repro-paradigms",
-      "label": "VLN 开源复现：四范式学习路径",
-      "type": "overview",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-synthetic-video-humanoid-tasks.md",
-      "detail_id": "entity-paper-synthetic-video-humanoid-tasks",
-      "label": "Learning Diverse Humanoid Tasks via Synthetic Video Scenarios",
-      "type": "entity",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-loco-manip-03-genhoi.md",
-      "detail_id": "entity-paper-loco-manip-03-genhoi",
-      "label": "GenHOI",
-      "type": "entity",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-loco-manip-04-oasis.md",
-      "detail_id": "entity-paper-loco-manip-04-oasis",
-      "label": "OASIS（From Simulation Data Collection to Real-World Humanoid Loco-Manipulation）",
-      "type": "entity",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-imagine2real-zero-shot-hoi.md",
-      "detail_id": "entity-paper-imagine2real-zero-shot-hoi",
-      "label": "Imagine2Real",
-      "type": "entity",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/comparisons/robot-learning-five-paradigms-taxonomy.md",
-    "detail_id": "wiki-comparisons-robot-learning-five-paradigms-taxonomy",
-    "label": "机器人学习五大范式：模仿、强化、视频、多模态与持续学习",
-    "type": "comparison",
+    "path": "wiki/entities/paper-transgraspnet.md",
+    "detail_id": "entity-paper-transgraspnet",
+    "label": "TransGraspNet：透明实验器皿的几何–物理一致抓取",
+    "type": "entity",
     "recency": "2026-08-05",
     "source": "log.md",
-    "action": "maintained"
+    "action": "maintained",
+    "community_label": "操作（Manipulation） 社区"
   },
   "top_communities": [
     {
@@ -221,7 +228,7 @@
     },
     {
       "label": "操作",
-      "size": 168
+      "size": 169
     },
     {
       "label": "人形强化学习运动控制",
@@ -268,7 +275,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 344,
+      "degree": 346,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
