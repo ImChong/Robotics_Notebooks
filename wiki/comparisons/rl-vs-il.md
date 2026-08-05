@@ -6,7 +6,7 @@ sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/policy_optimization.md
 summary: "RL vs 模仿学习（Imitation Learning）"
-updated: 2026-05-16
+updated: 2026-08-05
 ---
 
 # RL vs 模仿学习（Imitation Learning）
@@ -171,6 +171,7 @@ flowchart TB
 
 ## 关联页面
 
+- [机器人学习五大范式](./robot-learning-five-paradigms-taxonomy.md) — 在 RL/IL 之外补齐 LfV、VLA、持续学习
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 方法详细展开
 - [Imitation Learning](../methods/imitation-learning.md) — IL 方法详细展开
 - [Policy Optimization](../methods/policy-optimization.md) — RL 中的策略梯度方法（PPO/SAC/TD3）

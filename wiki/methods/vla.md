@@ -2,9 +2,10 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-08-04
+updated: 2026-08-05
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作。"
 related:
+  - ../comparisons/robot-learning-five-paradigms-taxonomy.md
   - ../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md
   - ../queries/embodied-fm-taxonomy-loop.md
   - ../overview/vla-open-source-repro-landscape-2025.md
@@ -297,6 +298,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 
 ## 参考来源
 
+- [wechat_shenlan_robot_learning_five_paradigms.md](../../sources/blogs/wechat_shenlan_robot_learning_five_paradigms.md) — 深蓝具身智能：机器人学习五大范式中的多模态 / VLA 定位
 - [wechat_shenlan_five_embodied_model_taxonomy.md](../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md) — 深蓝具身智能五大模型（VLM/VLN/VLA/VLX/WM）分类与协同链路
 - [深蓝具身智能：2025 VLA 开源复现景观（微信公众号）](../../sources/blogs/wechat_shenlan_vla_github_repro_survey_2025.md) — OpenPI、VLA-Adapter、RLinf 等 11 项 GitHub 栈策展索引
 - [sources/papers/rl_foundation_models.md](../../sources/papers/rl_foundation_models.md) — RT-1 / RT-2 / π₀ / Octo / TD-MPC2 综述
@@ -341,6 +343,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [sources/papers/da_nav_arxiv_2607_11638.md](../../sources/papers/da_nav_arxiv_2607_11638.md) — DA-Nav：方向感知城市尺度 VLN（arXiv:2607.11638）
 
 ## 关联页面
+- [机器人学习五大范式](../comparisons/robot-learning-five-paradigms-taxonomy.md) — VLA 作为多模态学习信号主线，与 IL / RL / LfV / 持续学习对照
 - [FB / BFM-Zero / INTACT / Mimic / VLA 任务空间表征对比](../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md) — VLA 作为任务球上的稀疏语义投影；OOD 勿只归因数据量
 - [五大具身模型分类（VLM/VLN/VLA/VLX/WM）](../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md) — 感知→导航→执行→推演递进框架
 - [Query：具身大模型分类学选型闭环知识链](../queries/embodied-fm-taxonomy-loop.md) — VLA 是五层选型闭环的 **③ 动作执行层**：全模态+本体状态 → 关节/末端控制量，也是「泛化 ↔ 实时带宽」矛盾最尖锐的一层
