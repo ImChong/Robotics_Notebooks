@@ -110,6 +110,11 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # `uv sync` / `uv pip install`，复现路径工具链引用），是打包/环境基础设施，
     # 非机器人概念/方法/形式化，不应建独立页；与 arxiv/license/md 同类基础设施停用词。
     "uv",
+    # sequencediagram：各页正文里的 `sequenceDiagram` 均为 Mermaid 图类型关键字
+    # （论文实体页「源码运行时序图」章节的写作约定，如「代码发布后应补
+    # `sequenceDiagram`」），是文档语法 token，非机器人概念/方法/形式化，
+    # 不应建独立页；与 md/http 同类文档基础设施停用词。
+    "sequencediagram",
 }
 
 # 高频术语但「已在 entities/ 或非同名 stem 的 methods 页有恰当归属」，
@@ -128,6 +133,10 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
 #   twist2     → entities/paper-twist2.md（具体系统/论文，归 entities）
 #   ethercat   → concepts/ethercat-protocol.md（实时总线概念，slug 与页面 stem 不同名）
 #   mit        → schema/institutions.json 机构（麻省理工），归属机构注册表，不建概念页
+#   qwen3-vl   → methods/vla.md（VLA 底座列表）+ methods/star-vla.md +
+#                concepts/foundation-policy.md：外部通用 VLM 产品型号，与
+#                DINOv2 / SigLIP / Wan2.2 / Qwen2.5-VL 同类，本库一律在
+#                方法/概念页按「底座」维度记述，不单建概念页
 MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "amp",
     "armature",
@@ -138,6 +147,7 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "mit",  # 机构（schema/institutions.json），非概念，不应建 concepts/methods 页
     "mjlab",
     "mujoco",
+    "qwen3-vl",  # 外部 VLM 底座型号，已在 methods/vla.md 等按「底座」维度记述
     "sonic",
     "wbc",  # 已由 concepts/whole-body-control.md 覆盖（slug 与页面 stem 不同名）
     "wam",  # 已由 concepts/world-action-models.md 覆盖（缩写 slug 与页面 stem 不同名）
