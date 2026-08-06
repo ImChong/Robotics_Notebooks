@@ -19,6 +19,7 @@ updated: 2026-08-06
 arxiv: "2606.30404"
 venue: "IROS 2026"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/vision-language-navigation.md
   - ./paper-uni-lavira.md
   - ./qwen-robot-nav.md
