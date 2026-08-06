@@ -2,7 +2,7 @@
 type: entity
 tags: [hardware, humanoid, platform, unitree]
 status: complete
-updated: 2026-08-05
+updated: 2026-08-06
 related:
   - ./humanoid-robot.md
   - ./rek.md
@@ -106,6 +106,7 @@ G1 的出现极大地加速了大规模数据的采集。由于其成本低廉�
 - [REK](./rek.md) — G1 VR 格斗联赛与机器人租赁品牌。
 - [QuietWalk（论文实体）](./paper-quietwalk-humanoid-locomotion.md) — G1 PINN-GRF 低噪行走（arXiv:2604.23702）。
 - [ADP（论文实体）](./paper-adp.md) — G1 上动力学对抗先验抗扰 locomotion（arXiv:2607.03454；代码待发布）。
+- [CMP（论文实体）](./paper-cmp.md) — 模拟 G1 上上下文感知 AMP 适配（arXiv:2608.03234；代码未开源）。
 - [HumoSlope（论文实体）](./paper-humoslope-physics-guided-slope-locomotion.md) — G1 盲穿户外草地坡至 32.1°（局部平面 ZMP + BSGA；arXiv:2607.07830；代码未开源）。
 - [Uni-LaViRA（论文实体）](./paper-uni-lavira.md) — G1 真机零样本 VLN/ObjectNav/EQA 部署之一（arXiv:2605.27582）。
 - [DimOS（Dimensional）](./dimensionalos-dimos.md) — G1 MuJoCo 仿真与 beta 级 agent/导航集成栈。

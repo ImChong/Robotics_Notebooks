@@ -1,3 +1,12 @@
+## [2026-08-06] ingest | sources/papers/cmp_arxiv_2608_03234.md — CMP（arXiv:2608.03234）上下文感知运动先验入库；升格 wiki/entities/paper-cmp.md；交叉 wiki/methods/amp-reward.md、wiki/methods/smp.md、wiki/comparisons/amp-add-smp-motion-prior-variants.md、wiki/overview/humanoid-amp-motion-prior-survey.md、wiki/entities/mimickit.md、wiki/entities/paper-amp-survey-01-amp.md、wiki/queries/humanoid-motion-tracking-method-selection.md、wiki/entities/unitree-g1.md
+
+- **触发：** 用户指定 *Learning Context-Aware Motion Priors for Humanoid Control*（arXiv；HKUST-GZ；Yunyang Mo / Yi Gu / Yangchen Zhou / Hanyang Cao / Renjing Xu）；要求自动合并
+- **来源：** [`sources/papers/cmp_arxiv_2608_03234.md`](sources/papers/cmp_arxiv_2608_03234.md)
+- **新建实体：** [`wiki/entities/paper-cmp.md`](wiki/entities/paper-cmp.md)
+- **开源核查（步骤 2.5）：** **确认未开源** — abs/HTML 无项目页 / GitHub；`## 源码运行时序图` 写不适用
+- **方法要点：** 高优势 rollout + \(\mathcal{L}_{\mathrm{demo}}\) 对比相关度 → 软重权参考监督 → AMP/SMP 轻量残差适配器；五任务回报与样本效率提升；行走 ×100 失衡 AMP −11.5% / CMP-AMP −2.8%；附录 E 模拟 G1 同趋势
+- **交叉更新：** [`wiki/methods/amp-reward.md`](wiki/methods/amp-reward.md)、[`wiki/methods/smp.md`](wiki/methods/smp.md)、[`wiki/comparisons/amp-add-smp-motion-prior-variants.md`](wiki/comparisons/amp-add-smp-motion-prior-variants.md)、[`wiki/overview/humanoid-amp-motion-prior-survey.md`](wiki/overview/humanoid-amp-motion-prior-survey.md)、[`wiki/entities/mimickit.md`](wiki/entities/mimickit.md)、[`wiki/entities/paper-amp-survey-01-amp.md`](wiki/entities/paper-amp-survey-01-amp.md)、[`wiki/queries/humanoid-motion-tracking-method-selection.md`](wiki/queries/humanoid-motion-tracking-method-selection.md)、[`wiki/entities/unitree-g1.md`](wiki/entities/unitree-g1.md)
+
 ## [2026-08-06] ingest | sources/papers/dpl_arxiv_2510_07152.md — DPL（arXiv:2510.07152，IEEE RA-L）升格 wiki/entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md；交叉 wiki/tasks/stair-obstacle-perceptive-locomotion.md、wiki/concepts/terrain-adaptation.md、wiki/tasks/locomotion.md、wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md、wiki/entities/x-humanoid.md、wiki/overview/paper-notebook-category-05-locomotion.md、sources/papers/humanoid_pnb_dpl-depth-only-perceptive-humanoid-locomotion-vi.md
 
 - **触发：** 用户指定 <https://arxiv.org/abs/2510.07152>（v1 2025-10-08 → v3 2026-08-03；IEEE RA-L 接收 2026-06-09）；要求自动合并

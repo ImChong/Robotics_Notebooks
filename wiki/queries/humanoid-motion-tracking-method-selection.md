@@ -3,7 +3,7 @@ title: 人形运动跟踪方法选型指南
 type: query
 status: complete
 created: 2026-05-21
-updated: 2026-07-21
+updated: 2026-08-06
 summary: 在人形 RL 运动控制栈中，如何按任务阶段在 DeepMimic / BeyondMimic / AMP 家族 / 通用 tracker / 接触丰富场景 tracking / 生成式动作先验之间选型。
 sources:
   - ../../sources/papers/gmt_arxiv_2506_14770.md
@@ -73,7 +73,7 @@ flowchart TD
 
 当任务奖励已满足，仍出现步态不自然时，引入 [AMP](../methods/amp-reward.md) 判别器先验。[ADD](../methods/add.md) 用对抗差分减轻多目标手调；[SMP](../methods/smp.md) 走 **冻结扩散 + SDS** 路线（非判别器），先验预训练后可**丢弃原始 MoCap**、在多任务多策略间复用，代价是两阶段训练、同采样量 wall-clock 约为 AMP 的 ~1.8×（论文报告 600M samples：SMP ~11.5h vs AMP ~6.2h）。
 
-**选型轴**：每任务都要重训先验 / 必须保留数据集 → AMP/ADD；先验一次训好跨任务复用、不愿在 RL 阶段保留 MoCap → SMP；需要 **动画师可直接编 kinematic 参考**、且希望 **latent 与跟踪解耦**（相对 CALM/ASE 端到端）→ [VMP](../entities/paper-notebook-vmp.md)。三者对比见 [AMP / ADD / SMP 运动先验变体对比](../comparisons/amp-add-smp-motion-prior-variants.md)。
+**选型轴**：每任务都要重训先验 / 必须保留数据集 → AMP/ADD；先验一次训好跨任务复用、不愿在 RL 阶段保留 MoCap → SMP；需要 **动画师可直接编 kinematic 参考**、且希望 **latent 与跟踪解耦**（相对 CALM/ASE 端到端）→ [VMP](../entities/paper-notebook-vmp.md)；已有 AMP/SMP 但异构参考与**当前任务上下文**冲突 → [CMP](../entities/paper-cmp.md)（相关度软重权，不另开 skill 空间）。变体对比见 [AMP / ADD / SMP 运动先验变体对比](../comparisons/amp-add-smp-motion-prior-variants.md)。
 
 ### 3. 通用 tracker 与实时原语
 
@@ -170,7 +170,7 @@ flowchart TD
 ## 关联页面
 
 - [DeepMimic](../methods/deepmimic.md)、[BeyondMimic](../methods/beyondmimic.md)
-- [AMP & HumanX](../methods/amp-reward.md)、[ADD](../methods/add.md)、[SMP](../methods/smp.md)
+- [AMP & HumanX](../methods/amp-reward.md)、[ADD](../methods/add.md)、[SMP](../methods/smp.md)、[CMP](../entities/paper-cmp.md)
 - [MotionBricks](../methods/motionbricks.md)、[Any2Track](../methods/any2track.md)、[AMS](../methods/ams.md)、[EGM](../methods/egm-efficient-general-mimic.md)
 - [YAHMP](../entities/paper-yahmp.md) — 开源 G1 GMT 消融试验台（命令/历史/残差/PD/手部力）
 - [Extreme-RGMT](../entities/paper-extreme-rgmt.md) — 高动态持续学习 generalist（未开源）
