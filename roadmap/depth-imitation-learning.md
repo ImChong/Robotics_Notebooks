@@ -142,6 +142,7 @@ flowchart LR
 - "Diffusion Policy: Visuomotor Policy Learning via Action Diffusion" (Chi et al., 2023)
 - [Diffusion Policy](../wiki/methods/diffusion-policy.md)（本仓库）
 - [Action Chunking](../wiki/methods/action-chunking.md) 与 [BC with Transformer](../wiki/methods/bc-with-transformer.md)（本仓库）— ACT 一系的核心机制
+- [Why Action Chunking Improves BC](../wiki/entities/paper-why-action-chunking-improves-bc.md)（本仓库，CoRL 2026）— 消融拆穿"时序一致性/更短 horizon"两个常见假说，chunk 收益主因是延迟观测条件化 + 隐式集成；同一策略用 Randomized Delay Ensemble 部署即可匹配标准 chunk 执行，真机三任务验证
 
 ### 学完输出什么
 - 一个用 Diffusion Policy 训练的动作策略
@@ -221,7 +222,7 @@ flowchart LR
 
 **方向 C：Long-horizon 任务 / VLA**
 - 把多个技能串成一个长序列；用语言指令驱动技能组合
-- 关键词：task planning、skill chaining、[VLA](../wiki/methods/vla.md)、[π0](../wiki/methods/π0-policy.md)
+- 关键词：task planning、skill chaining、[VLA](../wiki/methods/vla.md)、[π0](../wiki/methods/π0-policy.md)、[χ₀/kai0](../wiki/entities/paper-kai0.md)（Model Arithmetic + Stage Advantage + Train-Deploy Alignment，π₀.₅ 微调双臂协同叠衣/挂衣相对 π₀.₅ 成功率约 +250%，24 h 连续自主运行，已开源）
 
 **方向 D：Humanoid 全身动作跟踪**
 - 走路、跑步、跳跃、平衡等全身技能跟踪

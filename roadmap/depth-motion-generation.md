@@ -144,6 +144,7 @@ flowchart LR
 - [PhyGile](../wiki/entities/paper-phygile.md)（本仓库）— robot-native 生成 + GMT 闭环
 - [Gen2Humanoid](../wiki/entities/gen2humanoid.md)（本仓库）— 生成 → 重定向端到端管线
 - [SONIC](../wiki/methods/sonic-motion-tracking.md) 与 [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md)（本仓库）— 跟踪侧消费者
+- [合成视频人形任务生成（NCKU）](../wiki/entities/paper-synthetic-video-humanoid-tasks.md)（本仓库）— 文本提示 → Veo 生成视频 → SMPL-X/GMR 重定向 → motion stitching → DeepMimic 式 RL 跟踪，全程无真机、无 MoCap 示范即可在仿真里学多样人形任务；确认未开源
 
 ### 学完输出什么
 - 一条"文本 → 生成 → 重定向 → 跟踪验证"的端到端管线

@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-05",
+  "generated_at": "2026-08-06",
   "node_count": 2101,
-  "edge_count": 19185,
+  "edge_count": 19197,
   "coverage": {
     "covered": 2077,
     "total": 2077,
@@ -9,208 +9,203 @@
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-fddc.md",
-      "detail_id": "entity-paper-fddc",
-      "label": "FDDC：首个可部署的动态 CoM 单腿平衡策略与基准",
-      "type": "entity",
-      "recency": "2026-08-05",
+      "path": "roadmap/depth-bfm.md",
+      "detail_id": "roadmap-depth-bfm",
+      "label": "路线（纵深）：如果目标是 BFM（人形行为基础模型）",
+      "type": "roadmap_page",
+      "recency": "2026-08-06",
       "source": "log.md",
       "action": "maintained"
     },
     {
-      "path": "wiki/concepts/capture-point-dcm.md",
-      "detail_id": "wiki-concepts-capture-point-dcm",
-      "label": "Capture Point / DCM",
-      "type": "concept",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/tasks/balance-recovery.md",
-      "detail_id": "wiki-tasks-balance-recovery",
-      "label": "Balance Recovery（平衡恢复）",
-      "type": "task",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/ams.md",
-      "detail_id": "wiki-methods-ams",
-      "label": "AMS: 物理可行性过滤与混合奖励",
-      "type": "method",
-      "recency": "2026-08-05",
+      "path": "roadmap/depth-classical-control.md",
+      "detail_id": "roadmap-depth-classical-control",
+      "label": "路线（纵深）：如果目标是传统模型控制（LIP/ZMP → MPC → WBC）",
+      "type": "roadmap_page",
+      "recency": "2026-08-06",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
-      "path": "wiki/entities/unitree-g1.md",
-      "detail_id": "entity-unitree-g1",
-      "label": "Unitree G1 (人形机器人)",
-      "type": "entity",
-      "recency": "2026-08-05",
+      "path": "roadmap/depth-contact-manipulation.md",
+      "detail_id": "roadmap-depth-contact-manipulation",
+      "label": "路线（纵深）：如果目标是接触丰富的操作任务",
+      "type": "roadmap_page",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "roadmap/depth-humanoid-boxing.md",
+      "detail_id": "roadmap-depth-humanoid-boxing",
+      "label": "路线（纵深）：如果目标是人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）",
+      "type": "roadmap_page",
+      "recency": "2026-08-06",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true
+      "community_label": "动作重定向（Motion Retargeting） 社区"
     },
     {
-      "path": "wiki/concepts/reward-design.md",
-      "detail_id": "wiki-concepts-reward-design",
-      "label": "Reward Design",
-      "type": "concept",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/sonic-motion-tracking.md",
-      "detail_id": "wiki-methods-sonic-motion-tracking",
-      "label": "SONIC（规模化运动跟踪人形控制）",
-      "type": "method",
-      "recency": "2026-08-05",
+      "path": "roadmap/depth-humanoid-hardware-design.md",
+      "detail_id": "roadmap-depth-humanoid-hardware-design",
+      "label": "路线（纵深）：如果目标是人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）",
+      "type": "roadmap_page",
+      "recency": "2026-08-06",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
     },
     {
-      "path": "wiki/entities/paper-notebook-hub.md",
-      "detail_id": "entity-paper-notebook-hub",
-      "label": "HuB",
-      "type": "entity",
-      "recency": "2026-08-05",
+      "path": "roadmap/depth-humanoid-soccer.md",
+      "detail_id": "roadmap-depth-humanoid-soccer",
+      "label": "路线（纵深）：如果目标是人形足球（全向行走 → 感知踢球 → 多机战术）",
+      "type": "roadmap_page",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "人形足球纵深路线（Humanoid Soccer Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "roadmap/depth-humanoid-swarm-performance.md",
+      "detail_id": "roadmap-depth-humanoid-swarm-performance",
+      "label": "路线（纵深）：如果目标是人形群控展演（群舞同步 → 编队走位 → 群体特技）",
+      "type": "roadmap_page",
+      "recency": "2026-08-06",
       "source": "log.md",
       "action": "maintained"
     },
     {
-      "path": "wiki/entities/paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m.md",
-      "detail_id": "entity-paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m",
-      "label": "Learning Sim-to-Real Humanoid Locomotion in 15 Minutes",
-      "type": "entity",
-      "recency": "2026-08-05",
+      "path": "roadmap/depth-imitation-learning.md",
+      "detail_id": "roadmap-depth-imitation-learning",
+      "label": "路线（纵深）：如果目标是模仿学习与技能迁移",
+      "type": "roadmap_page",
+      "recency": "2026-08-06",
       "source": "log.md",
       "action": "maintained"
     },
     {
-      "path": "wiki/entities/paper-kai0.md",
-      "detail_id": "entity-paper-kai0",
-      "label": "χ₀ / kai0：资源感知的分布对齐稳健操作",
-      "type": "entity",
-      "recency": "2026-08-05",
+      "path": "roadmap/depth-loco-manipulation.md",
+      "detail_id": "roadmap-depth-loco-manipulation",
+      "label": "路线（纵深）：如果目标是 Loco-Manipulation（移动操作）",
+      "type": "roadmap_page",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "roadmap/depth-motion-generation.md",
+      "detail_id": "roadmap-depth-motion-generation",
+      "label": "路线（纵深）：如果目标是动作生成（文本/多模态 → 人形动作）",
+      "type": "roadmap_page",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "roadmap/depth-motion-retargeting.md",
+      "detail_id": "roadmap-depth-motion-retargeting",
+      "label": "路线（纵深）：如果目标是动作重定向（人体动作 → 机器人参考轨迹）",
+      "type": "roadmap_page",
+      "recency": "2026-08-06",
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "roadmap/depth-navigation.md",
+      "detail_id": "roadmap-depth-navigation",
+      "label": "路线（纵深）：如果目标是导航（SLAM → Nav2 → VLN → 导航 VLA）",
+      "type": "roadmap_page",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "roadmap/depth-perceptive-locomotion.md",
+      "detail_id": "roadmap-depth-perceptive-locomotion",
+      "label": "路线（纵深）：如果目标是感知越障（Perceptive Locomotion）",
+      "type": "roadmap_page",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "roadmap/depth-real2sim.md",
+      "detail_id": "roadmap-depth-real2sim",
+      "label": "路线（纵深）：如果目标是 Real2Sim（真实世界 → 可仿真资产/场景/孪生）",
+      "type": "roadmap_page",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "roadmap/depth-rl-locomotion.md",
+      "detail_id": "roadmap-depth-rl-locomotion",
+      "label": "路线（纵深）：如果目标是人形 RL 运动控制",
+      "type": "roadmap_page",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "roadmap/depth-safe-control.md",
+      "detail_id": "roadmap-depth-safe-control",
+      "label": "路线（纵深）：如果目标是安全控制（CLF / CBF / Safe RL）",
+      "type": "roadmap_page",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "roadmap/depth-sim2real.md",
+      "detail_id": "roadmap-depth-sim2real",
+      "label": "路线（纵深）：如果目标是 Sim2Real（仿真到真机迁移）",
+      "type": "roadmap_page",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "roadmap/depth-teleoperation.md",
+      "detail_id": "roadmap-depth-teleoperation",
+      "label": "路线（纵深）：如果目标是遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）",
+      "type": "roadmap_page",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "roadmap/depth-torque-motor-design.md",
+      "detail_id": "roadmap-depth-torque-motor-design",
+      "label": "路线（纵深）：如果目标是力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环 → 关节模组）",
+      "type": "roadmap_page",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "roadmap/depth-vla.md",
+      "detail_id": "roadmap-depth-vla",
+      "label": "路线（纵深）：如果目标是 VLA（视觉-语言-动作模型）",
+      "type": "roadmap_page",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/dagger.md",
-      "detail_id": "wiki-methods-dagger",
-      "label": "DAgger（Dataset Aggregation）",
-      "type": "method",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-pi05-open-world-vla.md",
-      "detail_id": "entity-paper-pi05-open-world-vla",
-      "label": "π0.5（HMI P059）",
-      "type": "entity",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/methods/awr.md",
-      "detail_id": "wiki-methods-awr",
-      "label": "AWR: 优势加权回归",
-      "type": "method",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/π0-policy.md",
-      "detail_id": "wiki-methods-π0-policy",
-      "label": "π₀ (Pi-zero) 策略模型",
-      "type": "method",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-lehome-learning-to-fold.md",
-      "detail_id": "entity-paper-lehome-learning-to-fold",
-      "label": "Learning to Fold（LeHome Challenge 2026 · arXiv:2606.27163）",
-      "type": "entity",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-steam-advantage-modeling.md",
-      "detail_id": "entity-paper-steam-advantage-modeling",
-      "label": "STEAM：自监督时序 Ensemble Advantage 建模",
-      "type": "entity",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/aloha.md",
-      "detail_id": "entity-aloha",
-      "label": "ALOHA (双臂遥操作硬件)",
-      "type": "entity",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md",
-      "detail_id": "entity-paper-notebook-robotdancing-residual-action-rl-enables-robust-l",
-      "label": "RobotDancing（残差动作长时程人形运动追踪，2025/2026）",
-      "type": "entity",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/residual-policy-learning.md",
-      "detail_id": "wiki-methods-residual-policy-learning",
-      "label": "Residual Policy Learning（残差策略学习）",
-      "type": "method",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-fddc.md",
-    "detail_id": "entity-paper-fddc",
-    "label": "FDDC：首个可部署的动态 CoM 单腿平衡策略与基准",
-    "type": "entity",
-    "recency": "2026-08-05",
+    "path": "roadmap/depth-bfm.md",
+    "detail_id": "roadmap-depth-bfm",
+    "label": "路线（纵深）：如果目标是 BFM（人形行为基础模型）",
+    "type": "roadmap_page",
+    "recency": "2026-08-06",
     "source": "log.md",
     "action": "maintained"
   },
