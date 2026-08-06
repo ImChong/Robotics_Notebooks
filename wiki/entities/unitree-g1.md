@@ -83,6 +83,7 @@ G1 的出现极大地加速了大规模数据的采集。由于其成本低廉�
 - [POT-VLA](./paper-pot-vla.md) — 在 G1 上用持久 3D 对象 token 实现可验证的闭环移动操作
 - [smp](../methods/smp.md) (基于得分匹配的运动先验，已在 G1 完成验证)
 - [NCKU 合成视频人形任务](./paper-synthetic-video-humanoid-tasks.md) — 生成视频→GMR→仿真 RL 跟踪（无真机结果；arXiv:2607.21648）
+- [X-Morph](./paper-xmorph.md) — 人体运动先落到 G1 表示，再跨形态到 Go2/六足/B2-Z1（arXiv:2606.30290）
 - [人形机器人 (Humanoid Robot)](./humanoid-robot.md)
 - [Unitree 品牌主页](./unitree.md)
 - [UniStore（宇树应用平台）](./unitree-unistore.md)

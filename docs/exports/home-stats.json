@@ -1,13 +1,92 @@
 {
   "generated_at": "2026-08-06",
-  "node_count": 2104,
-  "edge_count": 19262,
+  "node_count": 2105,
+  "edge_count": 19278,
   "coverage": {
-    "covered": 2080,
-    "total": 2080,
+    "covered": 2081,
+    "total": 2081,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-xmorph.md",
+      "detail_id": "entity-paper-xmorph",
+      "label": "X-Morph：跨形态人体运动先验",
+      "type": "entity",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/overview/hub-motion-retargeting.md",
+      "detail_id": "wiki-overview-hub-motion-retargeting",
+      "label": "动作重定向（知识链汇总）",
+      "type": "overview",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/overview/hub-cross-embodiment.md",
+      "detail_id": "wiki-overview-hub-cross-embodiment",
+      "label": "跨具身迁移（知识链汇总）",
+      "type": "overview",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/methods/motion-retargeting-gmr.md",
+      "detail_id": "wiki-methods-motion-retargeting-gmr",
+      "label": "GMR: 通用动作重定向",
+      "type": "method",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/methods/reactor-physics-aware-motion-retargeting.md",
+      "detail_id": "wiki-methods-reactor-physics-aware-motion-retargeting",
+      "label": "ReActor（物理感知 RL 运动重定向）",
+      "type": "method",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/methods/zest.md",
+      "detail_id": "wiki-methods-zest",
+      "label": "ZEST (Zero-shot Embodied Skill Transfer)",
+      "type": "method",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/unitree-g1.md",
+      "detail_id": "entity-unitree-g1",
+      "label": "Unitree G1 (人形机器人)",
+      "type": "entity",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/unitree.md",
+      "detail_id": "entity-unitree",
+      "label": "Unitree",
+      "type": "entity",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/paper-uma.md",
       "detail_id": "entity-paper-uma",
@@ -125,98 +204,22 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "人形足球纵深路线（Humanoid Soccer Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "roadmap/depth-humanoid-swarm-performance.md",
-      "detail_id": "roadmap-depth-humanoid-swarm-performance",
-      "label": "路线（纵深）：如果目标是人形群控展演（群舞同步 → 编队走位 → 群体特技）",
-      "type": "roadmap_page",
-      "recency": "2026-08-06",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-imitation-learning.md",
-      "detail_id": "roadmap-depth-imitation-learning",
-      "label": "路线（纵深）：如果目标是模仿学习与技能迁移",
-      "type": "roadmap_page",
-      "recency": "2026-08-06",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-loco-manipulation.md",
-      "detail_id": "roadmap-depth-loco-manipulation",
-      "label": "路线（纵深）：如果目标是 Loco-Manipulation（移动操作）",
-      "type": "roadmap_page",
-      "recency": "2026-08-06",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-motion-generation.md",
-      "detail_id": "roadmap-depth-motion-generation",
-      "label": "路线（纵深）：如果目标是动作生成（文本/多模态 → 人形动作）",
-      "type": "roadmap_page",
-      "recency": "2026-08-06",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-motion-retargeting.md",
-      "detail_id": "roadmap-depth-motion-retargeting",
-      "label": "路线（纵深）：如果目标是动作重定向（人体动作 → 机器人参考轨迹）",
-      "type": "roadmap_page",
-      "recency": "2026-08-06",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "roadmap/depth-navigation.md",
-      "detail_id": "roadmap-depth-navigation",
-      "label": "路线（纵深）：如果目标是导航（SLAM → Nav2 → VLN → 导航 VLA）",
-      "type": "roadmap_page",
-      "recency": "2026-08-06",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-perceptive-locomotion.md",
-      "detail_id": "roadmap-depth-perceptive-locomotion",
-      "label": "路线（纵深）：如果目标是感知越障（Perceptive Locomotion）",
-      "type": "roadmap_page",
-      "recency": "2026-08-06",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "roadmap/depth-real2sim.md",
-      "detail_id": "roadmap-depth-real2sim",
-      "label": "路线（纵深）：如果目标是 Real2Sim（真实世界 → 可仿真资产/场景/孪生）",
-      "type": "roadmap_page",
-      "recency": "2026-08-06",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-uma.md",
-    "detail_id": "entity-paper-uma",
-    "label": "UMA（多级表面对齐超精细人体 Avatar）",
+    "path": "wiki/entities/paper-xmorph.md",
+    "detail_id": "entity-paper-xmorph",
+    "label": "X-Morph：跨形态人体运动先验",
     "type": "entity",
     "recency": "2026-08-06",
     "source": "log.md",
     "action": "maintained",
-    "has_repo": true
+    "community_label": "动作重定向（Motion Retargeting） 社区"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 209
+      "size": 208
     },
     {
       "label": "视觉-语言-动作",
@@ -236,7 +239,7 @@
     },
     {
       "label": "动作重定向",
-      "size": 137
+      "size": 138
     }
   ],
   "top_hubs": [
