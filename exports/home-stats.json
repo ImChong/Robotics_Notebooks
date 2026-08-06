@@ -1,13 +1,73 @@
 {
   "generated_at": "2026-08-06",
-  "node_count": 2103,
-  "edge_count": 19250,
+  "node_count": 2104,
+  "edge_count": 19262,
   "coverage": {
-    "covered": 2079,
-    "total": 2079,
+    "covered": 2080,
+    "total": 2080,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-uma.md",
+      "detail_id": "entity-paper-uma",
+      "label": "UMA（多级表面对齐超精细人体 Avatar）",
+      "type": "entity",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/tasks/teleoperation.md",
+      "detail_id": "wiki-tasks-teleoperation",
+      "label": "Teleoperation（遥操作）",
+      "type": "task",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/queries/humanoid-training-data-pipeline.md",
+      "detail_id": "wiki-queries-humanoid-training-data-pipeline",
+      "label": "人形训练数据管线选型指南",
+      "type": "query",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/concepts/smpl-x.md",
+      "detail_id": "wiki-concepts-smpl-x",
+      "label": "SMPL-X（参数化全身人体模型）",
+      "type": "concept",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-face-anything-4d-face-reconstruction.md",
+      "detail_id": "entity-paper-face-anything-4d-face-reconstruction",
+      "label": "Face Anything",
+      "type": "entity",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-shells-layered-surface-sampling.md",
+      "detail_id": "entity-paper-shells-layered-surface-sampling",
+      "label": "SHELLS（分层采样多视角人头重建）",
+      "type": "entity",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
     {
       "path": "roadmap/depth-bfm.md",
       "detail_id": "roadmap-depth-bfm",
@@ -141,73 +201,17 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "roadmap/depth-rl-locomotion.md",
-      "detail_id": "roadmap-depth-rl-locomotion",
-      "label": "路线（纵深）：如果目标是人形 RL 运动控制",
-      "type": "roadmap_page",
-      "recency": "2026-08-06",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-safe-control.md",
-      "detail_id": "roadmap-depth-safe-control",
-      "label": "路线（纵深）：如果目标是安全控制（CLF / CBF / Safe RL）",
-      "type": "roadmap_page",
-      "recency": "2026-08-06",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-sim2real.md",
-      "detail_id": "roadmap-depth-sim2real",
-      "label": "路线（纵深）：如果目标是 Sim2Real（仿真到真机迁移）",
-      "type": "roadmap_page",
-      "recency": "2026-08-06",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "roadmap/depth-teleoperation.md",
-      "detail_id": "roadmap-depth-teleoperation",
-      "label": "路线（纵深）：如果目标是遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）",
-      "type": "roadmap_page",
-      "recency": "2026-08-06",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-torque-motor-design.md",
-      "detail_id": "roadmap-depth-torque-motor-design",
-      "label": "路线（纵深）：如果目标是力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环 → 关节模组）",
-      "type": "roadmap_page",
-      "recency": "2026-08-06",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "roadmap/depth-vla.md",
-      "detail_id": "roadmap-depth-vla",
-      "label": "路线（纵深）：如果目标是 VLA（视觉-语言-动作模型）",
-      "type": "roadmap_page",
-      "recency": "2026-08-06",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "roadmap/depth-bfm.md",
-    "detail_id": "roadmap-depth-bfm",
-    "label": "路线（纵深）：如果目标是 BFM（人形行为基础模型）",
-    "type": "roadmap_page",
+    "path": "wiki/entities/paper-uma.md",
+    "detail_id": "entity-paper-uma",
+    "label": "UMA（多级表面对齐超精细人体 Avatar）",
+    "type": "entity",
     "recency": "2026-08-06",
     "source": "log.md",
-    "action": "maintained"
+    "action": "maintained",
+    "has_repo": true
   },
   "top_communities": [
     {
@@ -365,7 +369,7 @@
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
       "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
       "type": "entity",
-      "degree": 40
+      "degree": 41
     },
     {
       "detail_id": "entity-paper-masked-visual-actions",
