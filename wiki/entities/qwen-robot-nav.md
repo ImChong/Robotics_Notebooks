@@ -2,13 +2,14 @@
 type: entity
 tags: [navigation, vln, qwen, agentic, mobile-robot, autonomous-driving]
 status: complete
-updated: 2026-07-23
+updated: 2026-08-06
 related:
   - ./qwen-robot-suite.md
   - ../tasks/vision-language-navigation.md
   - ./qwen-vla.md
   - ../methods/vla.md
   - ./paper-s-squared-vla.md
+  - ./paper-humembr.md
 sources:
   - ../../sources/blogs/qwen_robot_nav.md
   - ../../sources/blogs/qwen_robot_suite.md
@@ -91,6 +92,7 @@ summary: "Qwen-RobotNav 是基于 Qwen3-VL 的可扩展导航模型：以任务�
 - [Qwen-VLA](./qwen-vla.md) — 通才 VLA 亦报告 R2R/RxR 的对照
 - [VLA](../methods/vla.md) — 导航–操作统一策略方法纵览
 - [S²-VLA](./paper-s-squared-vla.md) — 驾驶专用双流 VLA（NAVSIM SFT；与 RobotNav 的驾驶 mode 对照）
+- [HUMEMBR](./paper-humembr.md) — 身份感知多日记忆 + PersonEQA / Spot 例行找人（长时程 EQA 真机对照）
 
 ## 推荐继续阅读
 

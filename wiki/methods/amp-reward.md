@@ -2,7 +2,7 @@
 type: method
 tags: [rl, imitation-learning, gan, motion-prior, humanoid]
 status: complete
-updated: 2026-08-01
+updated: 2026-08-06
 related:
   - ../overview/jason-peng-flexible-motion-skill-learning.md
   - ../entities/mimickit.md
@@ -111,11 +111,12 @@ $$
 - [Unified Walking, Running, and Recovery…（arXiv:2605.18611）](../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md) — SD-AMP：双判别器 + 重力门控，G1 真机统一走跑起身。
 - [SPRINT（arXiv:2605.28549）](../../sources/papers/sprint_arxiv_2605_28549.md) — 高动态冲刺场景下以频谱先验替代对抗先验的对照路线。
 - [ADP（arXiv:2607.03454）](../../sources/papers/adp_arxiv_2607_03454.md) — 动力学特征对抗先验，抗扰 locomotion 相对 AMP 的对照。
+- [CMP（arXiv:2608.03234）](../../sources/papers/cmp_arxiv_2608_03234.md) — 上下文相关度软重权 AMP/SMP 参考监督。
 
 ## 关联页面
 
 - [Query：人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
-- [SD-AMP 统一走跑起身](../entities/paper-unified-walk-run-recovery-sdamp.md)、[ADP 对抗动力学先验](../entities/paper-adp.md)、[MoRE 复杂地形多步态 AMP](../entities/paper-amp-survey-08-more.md)、[SPRINT 竞技冲刺频谱先验](../entities/paper-sprint-humanoid-athletic-sprints.md)、[Heracles 扩散中间件](../entities/paper-heracles-humanoid-diffusion.md)
+- [CMP 上下文感知运动先验](../entities/paper-cmp.md)、[SD-AMP 统一走跑起身](../entities/paper-unified-walk-run-recovery-sdamp.md)、[ADP 对抗动力学先验](../entities/paper-adp.md)、[MoRE 复杂地形多步态 AMP](../entities/paper-amp-survey-08-more.md)、[SPRINT 竞技冲刺频谱先验](../entities/paper-sprint-humanoid-athletic-sprints.md)、[Heracles 扩散中间件](../entities/paper-heracles-humanoid-diffusion.md)
 - [AMP / ADD / SMP 运动先验变体对比](../comparisons/amp-add-smp-motion-prior-variants.md)
 - [protomotions](../entities/protomotions.md) — 提供大规模并行训练支持。
 - [Imitation Learning](./imitation-learning.md)

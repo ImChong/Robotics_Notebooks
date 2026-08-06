@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation, berkeley, sjtu, siggraph]
 status: complete
-updated: 2026-07-16
+updated: 2026-08-06
 venue: SIGGRAPH 2021
 summary: "AMP（SIGGRAPH 2021）用对抗判别器约束状态转移接近 MoCap 分布，而非逐帧跟踪参考 clip，奠定人形/角色 physics-based 风格先验范式。"
 related:
@@ -119,6 +119,7 @@ flowchart TB
 
 - 方法归纳（主阅读）：[amp-reward.md](../methods/amp-reward.md)
 - 作者线演进：[ADD #02](../methods/add.md)、[SMP #03](../methods/smp.md)
+- 上下文适配扩展：[CMP](./paper-cmp.md) — 软重权参考监督，不改基座 AMP 训练目标
 - AMP 纵深总览：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)（#01/19）
 - 身体系统栈：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 

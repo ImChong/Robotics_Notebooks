@@ -18,7 +18,7 @@ tags:
   - peng-cheng-lab
   - reconova
 status: complete
-updated: 2026-07-28
+updated: 2026-08-06
 arxiv: "2606.26047"
 doi: "10.1109/LRA.2026.3677748"
 related:
@@ -31,6 +31,7 @@ related:
   - ./paper-sru-spatially-enhanced-recurrent-memory.md
   - ./paper-navwam-goal-conditioned-visual-navigation-wam.md
   - ./paper-notebook-learning-social-navigation-from-positive-and-neg.md
+  - ./paper-humembr.md
   - ../../roadmap/depth-navigation.md
 sources:
   - ../../sources/papers/icrowdnav_arxiv_2606_26047.md
@@ -181,6 +182,7 @@ flowchart TB
 | **SRU** | 单前向深度 | 长程空间记忆，非姿态意图 | 已开源 / [SRU-Odin](./sru-odin.md) |
 | **NavWAM** | image-goal + 视频 WM | 未来观测–动作联合，非人群社交 | 代码 Coming soon |
 | **iCrowdNav（本文）** | RGB-D + 3D 姿态 | **BEV + I²Former** | **仓占位，代码待发布** |
+| **HUMEMBR** | 字幕记忆 + 脸/ReID 身份库 | **多日例行预测找人**（非拥挤绕行） | 代码已开源；见 [HUMEMBR](./paper-humembr.md) |
 
 ## 关联页面
 
@@ -193,6 +195,7 @@ flowchart TB
 - [NavWAM](./paper-navwam-goal-conditioned-visual-navigation-wam.md) — image-goal 视觉导航对照
 - [社会导航（正负示范）](./paper-notebook-learning-social-navigation-from-positive-and-neg.md) — 另一社交导航范式
 - [视觉–语言导航](../tasks/vision-language-navigation.md) — 语言条件导航任务族（边界）
+- [HUMEMBR](./paper-humembr.md) — 人中心例行记忆找人（任务不同：找人 vs 拥挤绕行）
 - [导航纵深路线](../../roadmap/depth-navigation.md) — Stage 3 学习型导航入口
 
 ## 参考来源

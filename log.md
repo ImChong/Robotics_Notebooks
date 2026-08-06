@@ -11,6 +11,25 @@
 - **[`roadmap/depth-vla.md`](roadmap/depth-vla.md)：** Stage 4 部署与整合补 [ActFovea](wiki/entities/paper-actfovea.md)（不重训 VLA 运行时防护层，LIBERO 视觉攻击成功率 49.3%→90.3%）与 [RoboHarness](wiki/entities/paper-robo-harness.md)（异构策略 agentic skills 编排，LIBERO-LoHo 95.2% vs π₀.₅ 6.4%）；Stage 5 方向 A 关键词补 [WCM](wiki/entities/paper-wcm-world-critic-model.md)（世界模型 critic 修正 VLA RL 单帧价值错配，4 基准 149 任务提升 π₀/π₀.₅/OpenVLA-OFT）
 - **口径：** 每条路线仅在既有 Stage 结构内追加 bullet / 关键词，未新建 Stage、未改动其余既有内容
 
+## [2026-08-06] ingest | sources/papers/humembr_arxiv_2606_30404.md — HUMEMBR（arXiv:2606.30404）人中心长时程记忆 + PersonEQA；升格 wiki/entities/paper-humembr.md；互链 wiki/tasks/vision-language-navigation.md、wiki/entities/paper-uni-lavira.md、wiki/entities/qwen-robot-nav.md、wiki/overview/navigation-slam-autonomy-stack.md、wiki/entities/paper-icrowdnav.md、roadmap/depth-navigation.md；sources/repos/humembr.md、sources/sites/samirahuber-humembr-github-io.md；注册 kiel 机构
+
+- **触发：** 用户指定 <https://arxiv.org/abs/2606.30404>（HUMEMBR；IROS 2026）；要求自动合并
+- **来源：** [`sources/papers/humembr_arxiv_2606_30404.md`](sources/papers/humembr_arxiv_2606_30404.md)、[`sources/sites/samirahuber-humembr-github-io.md`](sources/sites/samirahuber-humembr-github-io.md)、[`sources/repos/humembr.md`](sources/repos/humembr.md)（Kiel University × George Mason University）
+- **新建实体：** [`wiki/entities/paper-humembr.md`](wiki/entities/paper-humembr.md)
+- **机构注册：** `schema/institutions.json` 新增 `kiel` → 基尔大学（Kiel University）
+- **开源核查（步骤 2.5）：** **代码已开源** — 项目页 Code → [`samirahuber/humembr`](https://github.com/samirahuber/humembr)（robot/server/agent/processing + pgvector）；**COBD 数据集 README 标明 private**；`## 源码运行时序图` 已写
+- **方法要点：** 并行记忆构建（Qwen caption + 脸 DBSCAN + KPR ReID）与 LLM 五类检索工具；PersonEQA 上 Gemini **75.41%** vs 全上下文 **67.33%**（~17% token）；Spot + GraphNav 真机六任务
+- **交叉更新：** [`wiki/tasks/vision-language-navigation.md`](wiki/tasks/vision-language-navigation.md)、[`wiki/entities/paper-uni-lavira.md`](wiki/entities/paper-uni-lavira.md)、[`wiki/entities/qwen-robot-nav.md`](wiki/entities/qwen-robot-nav.md)、[`wiki/overview/navigation-slam-autonomy-stack.md`](wiki/overview/navigation-slam-autonomy-stack.md)、[`wiki/entities/paper-icrowdnav.md`](wiki/entities/paper-icrowdnav.md)、[`roadmap/depth-navigation.md`](roadmap/depth-navigation.md)
+
+## [2026-08-06] ingest | sources/papers/cmp_arxiv_2608_03234.md — CMP（arXiv:2608.03234）上下文感知运动先验入库；升格 wiki/entities/paper-cmp.md；交叉 wiki/methods/amp-reward.md、wiki/methods/smp.md、wiki/comparisons/amp-add-smp-motion-prior-variants.md、wiki/overview/humanoid-amp-motion-prior-survey.md、wiki/entities/mimickit.md、wiki/entities/paper-amp-survey-01-amp.md、wiki/queries/humanoid-motion-tracking-method-selection.md、wiki/entities/unitree-g1.md
+
+- **触发：** 用户指定 *Learning Context-Aware Motion Priors for Humanoid Control*（arXiv；HKUST-GZ；Yunyang Mo / Yi Gu / Yangchen Zhou / Hanyang Cao / Renjing Xu）；要求自动合并
+- **来源：** [`sources/papers/cmp_arxiv_2608_03234.md`](sources/papers/cmp_arxiv_2608_03234.md)
+- **新建实体：** [`wiki/entities/paper-cmp.md`](wiki/entities/paper-cmp.md)
+- **开源核查（步骤 2.5）：** **确认未开源** — abs/HTML 无项目页 / GitHub；`## 源码运行时序图` 写不适用
+- **方法要点：** 高优势 rollout + \(\mathcal{L}_{\mathrm{demo}}\) 对比相关度 → 软重权参考监督 → AMP/SMP 轻量残差适配器；五任务回报与样本效率提升；行走 ×100 失衡 AMP −11.5% / CMP-AMP −2.8%；附录 E 模拟 G1 同趋势
+- **交叉更新：** [`wiki/methods/amp-reward.md`](wiki/methods/amp-reward.md)、[`wiki/methods/smp.md`](wiki/methods/smp.md)、[`wiki/comparisons/amp-add-smp-motion-prior-variants.md`](wiki/comparisons/amp-add-smp-motion-prior-variants.md)、[`wiki/overview/humanoid-amp-motion-prior-survey.md`](wiki/overview/humanoid-amp-motion-prior-survey.md)、[`wiki/entities/mimickit.md`](wiki/entities/mimickit.md)、[`wiki/entities/paper-amp-survey-01-amp.md`](wiki/entities/paper-amp-survey-01-amp.md)、[`wiki/queries/humanoid-motion-tracking-method-selection.md`](wiki/queries/humanoid-motion-tracking-method-selection.md)、[`wiki/entities/unitree-g1.md`](wiki/entities/unitree-g1.md)
+
 ## [2026-08-06] ingest | sources/papers/dpl_arxiv_2510_07152.md — DPL（arXiv:2510.07152，IEEE RA-L）升格 wiki/entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md；交叉 wiki/tasks/stair-obstacle-perceptive-locomotion.md、wiki/concepts/terrain-adaptation.md、wiki/tasks/locomotion.md、wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md、wiki/entities/x-humanoid.md、wiki/overview/paper-notebook-category-05-locomotion.md、sources/papers/humanoid_pnb_dpl-depth-only-perceptive-humanoid-locomotion-vi.md
 
 - **触发：** 用户指定 <https://arxiv.org/abs/2510.07152>（v1 2025-10-08 → v3 2026-08-03；IEEE RA-L 接收 2026-06-09）；要求自动合并

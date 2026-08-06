@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, amp, motion-prior, adversarial-imitation, locomotion, survey, rl]
 status: complete
-updated: 2026-07-16
+updated: 2026-08-06
 related:
   - ./humanoid-rl-motion-control-body-system-stack.md
   - ../methods/amp-reward.md
@@ -13,6 +13,7 @@ related:
   - ../entities/amp-mjlab.md
   - ../entities/mimickit.md
   - ../entities/protomotions.md
+  - ../entities/paper-cmp.md
   - ../methods/imitation-learning.md
   - ../entities/project-instinct.md
   - ../tasks/humanoid-locomotion.md
@@ -179,6 +180,7 @@ flowchart TB
 
 - [人形 RL 运动控制身体系统栈](./humanoid-rl-motion-control-body-system-stack.md) — 42 篇姊妹篇总框架
 - [AMP & HumanX](../methods/amp-reward.md)、[ADD](../methods/add.md)、[SMP](../methods/smp.md)、[MotionBricks](../methods/motionbricks.md)
+- [CMP 上下文感知运动先验](../entities/paper-cmp.md) — 分布约束线之外：按任务上下文软重权 AMP/SMP
 - [AMP_mjlab](../entities/amp-mjlab.md)、[Kimodo](../entities/kimodo.md)、[MimicKit](../entities/mimickit.md)、[ProtoMotions](../entities/protomotions.md)
 - [humanoid-locomotion](../tasks/humanoid-locomotion.md)、[loco-manipulation](../tasks/loco-manipulation.md)
 - [Project Instinct](../entities/project-instinct.md) — Deep Parkour / Embrace Collisions 生态
@@ -189,6 +191,7 @@ flowchart TB
 - [具身智能研究室 · AMP 纵深（仓库内归档）](../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md)
 - [AMP 原始论文索引（SIGGRAPH 2021）](../../sources/papers/amp.md)
 - [42 篇 RL 运动控制姊妹篇（仓库内归档）](../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)
+- [CMP（arXiv:2608.03234）](../../sources/papers/cmp_arxiv_2608_03234.md) — 上下文条件运动先验扩展
 
 ## 推荐继续阅读
 
