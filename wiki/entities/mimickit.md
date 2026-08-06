@@ -3,7 +3,7 @@
 type: entity
 tags: [framework, rl, motion-imitation, isaac-gym, isaac-lab, newton, xbpeng, nvidia, berkeley, stanford, sfu]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-06
 related:
   - ../methods/deepmimic.md
   - ../methods/amp-reward.md
@@ -145,6 +145,7 @@ MimicKit 采用高度解耦设计：更换仿真后端、替换环境模板或�
 ## 关联页面
 
 - [SMP on G1（mjlab）](./smp-g1-mjlab.md) — 原版未含 G1 时，可参考清华 SUZ 的 mjlab 端到端 SMP 复现。
+- [CMP 上下文感知运动先验](./paper-cmp.md) — 在 MimicKit locomotion 参考集上把 AMP/SMP 改成上下文条件适配（代码待发布）。
 - [protomotions](protomotions.md) — NVIDIA 侧大规模运动学习框架，可与本仓库对照「数据与并行训练哲学」。
 - [robot-lab](robot-lab.md) — Isaac Lab 生态中的机器人实验框架入口。
 - [imitation-learning](../methods/imitation-learning.md) — MimicKit 所属研究领域总览。

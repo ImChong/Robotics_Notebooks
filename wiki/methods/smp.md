@@ -2,7 +2,7 @@
 type: method
 tags: [score-matching, diffusion, generative-prior, humanoid, unitree-g1, paper, amp, motion-prior, sfu, nvidia, sony, stanford]
 status: complete
-updated: 2026-07-16
+updated: 2026-08-06
 venue: arXiv
 arxiv: "2512.03028"
 related:
@@ -18,6 +18,7 @@ related:
   - ../entities/unitree-g1.md
   - ../entities/mjlab.md
   - ../entities/amp-mjlab.md
+  - ../entities/paper-cmp.md
 sources:
   - ../../sources/papers/smp.md
   - ../../sources/repos/smp_suz_tsinghua.md
@@ -101,6 +102,7 @@ flowchart TD
 ## 关联页面
 - [SMP on G1（mjlab 复现）](../entities/smp-g1-mjlab.md) — G1 端到端复现、预置 prior 与乘性奖励设计。
 - [MimicKit](../entities/mimickit.md) — 原版 SMP / AMP / ADD 统一代码底座。
+- [CMP 上下文感知运动先验](../entities/paper-cmp.md) — 用相关度软重权把 SMP（及 AMP）改成上下文条件适配。
 - [protomotions](../entities/protomotions.md) — 提供大规模并行训练支持。
 - [概率流形式化](../formalizations/probability-flow.md)
 - [AMP](./amp-reward.md) — 传统的判别器路线；[AMP_mjlab](../entities/amp-mjlab.md) 为 G1 工程对照。
@@ -112,5 +114,6 @@ flowchart TD
 - [sources/papers/smp.md](../../sources/papers/smp.md)
 - [sources/repos/smp_suz_tsinghua.md](../../sources/repos/smp_suz_tsinghua.md)
 - Mu et al., *SMP: Reusable Score-Matching Motion Priors for Physics-Based Character Control*, 2026.
+- [CMP（arXiv:2608.03234）](../../sources/papers/cmp_arxiv_2608_03234.md) — 上下文条件适配扩展到 SMP。
 - 原始抓取：[wechat_humanoid_amp_19_survey_2026-05-26.md](../../sources/raw/wechat_humanoid_amp_19_survey_2026-05-26.md)
 

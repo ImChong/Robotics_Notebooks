@@ -2,7 +2,7 @@
 type: comparison
 tags: [amp, motion-prior, rl, humanoid, imitation-learning, comparison]
 status: complete
-updated: 2026-07-22
+updated: 2026-08-06
 summary: "AMP / ADD / SMP 三种对抗式运动先验变体：判别器形式、多目标解耦与模块化 reward model 的选型对比；旁注 ADP 动力学特征先验。"
 sources:
   - ../../sources/papers/amp.md
@@ -15,6 +15,7 @@ related:
   - ../methods/deepmimic.md
   - ../overview/humanoid-amp-motion-prior-survey.md
   - ../entities/paper-adp.md
+  - ../entities/paper-cmp.md
 ---
 
 # AMP vs ADD vs SMP：运动先验变体对比
@@ -47,6 +48,8 @@ related:
 **选 SMP**：实验矩阵要求**频繁替换或组合** motion prior，希望 prior 与 policy 训练解耦。G1 + mjlab 工程入口见 [SMP on G1（mjlab 复现）](../entities/smp-g1-mjlab.md)（与 [AMP_mjlab](../entities/amp-mjlab.md) 对照）。
 
 **旁注 · ADP**：若目标是 **抗扰恢复** 而非风格自然度，看 [ADP](../entities/paper-adp.md)（动力学特征时间窗先验，非本表三列运动学变体）。
+
+**旁注 · CMP**：若已有 AMP/SMP 基线、痛点是**异构参考与当前任务上下文不匹配**（而非换判别器形式），看 [CMP](../entities/paper-cmp.md)（相关度软重权 + 残差适配器，不另开 skill 空间）。
 
 ---
 
@@ -84,6 +87,7 @@ related:
 - [AMP 论文摘要](../../sources/papers/amp.md)
 - [具身智能研究室：人形 AMP 先验综述](../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md)
 - [ADP（arXiv:2607.03454）](../../sources/papers/adp_arxiv_2607_03454.md) — 动力学特征对抗先验（旁注对照）
+- [CMP（arXiv:2608.03234）](../../sources/papers/cmp_arxiv_2608_03234.md) — 上下文条件适配（旁注对照）
 
 ## 关联页面
 
@@ -92,6 +96,7 @@ related:
 - [SMP](../methods/smp.md)
 - [SMP on G1（mjlab）](../entities/smp-g1-mjlab.md)
 - [ADP 对抗动力学先验](../entities/paper-adp.md)
+- [CMP 上下文感知运动先验](../entities/paper-cmp.md)
 - [DeepMimic](../methods/deepmimic.md)
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
 - [人形 AMP 先验综述](../overview/humanoid-amp-motion-prior-survey.md)
