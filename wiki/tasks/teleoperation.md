@@ -3,7 +3,7 @@ type: task
 tags: [teleoperation, manipulation, loco-manipulation, data-collection, humanoid]
 status: complete
 summary: "Teleoperation 让人类通过远程接口直接操作机器人，是数据采集和复杂任务执行的重要桥梁。"
-updated: 2026-08-05
+updated: 2026-08-06
 sources:
   - ../../sources/papers/teledexter_arxiv_2607_11481.md
   - ../../sources/sites/teledexter-project.md
@@ -229,6 +229,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - [CLOT（论文实体）](../entities/paper-amp-survey-16-clot.md) — 闭环全局位姿的长时程全身遥操作
 - [LEGS（论文实体）](../entities/paper-legs-embodied-gaussian-splatting-vla.md) — 无遥操作合成 loco-manip 演示 vs teleop 数据成本（arXiv:2606.01458）
 - [SHELLS（论文实体）](../entities/paper-shells-layered-surface-sampling.md) — 标定多视角前馈稠密语义人头；telepresence / 表情 performance 注册上游（arXiv:2605.31283）
+- [UMA（论文实体）](../entities/paper-uma.md) — 多级表面对齐超精细可驱动着装人体；VR telepresence / 变焦数字人资产（arXiv:2506.01802，部分开源）
 - [Manipulation](./manipulation.md) — 操作任务整体视角
 - [Query：操作演示数据采集指南](../queries/demo-data-collection-guide.md) — 遥操作采集数据的实操指南
 - [RIO（Robot I/O）](../entities/robot-io-rio.md) — 跨形态 Node 化遥操作与异步策略推理栈

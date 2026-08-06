@@ -1199,6 +1199,7 @@
 - [TWIST](wiki/entities/paper-twist.md) — TWIST**（*Teleoperated Whole-Body Imitation System*，arXiv:2505.02833，CoRL 2025）是全身人形遥操作与模仿学习系统。 `📅unknown` `[entity_page]`
 - [TWIST2](wiki/entities/paper-twist2.md) — TWIST2**（*Scalable, Portable, and Holistic Humanoid Data Collection System*，arXiv:2511.02832，**ICR `📅unknown` `[entity_page]`
 - [Ultra-Fusion（韧性多传感器融合 SLAM）](wiki/entities/paper-ultra-fusion-multi-sensor-slam.md) — Ultra-Fusion**（Tian et al., arXiv:2606.21223，项目页， `📅unknown` `[entity_page]`
+- [UMA（多级表面对齐超精细人体 Avatar）](wiki/entities/paper-uma.md) — UMA**（*Ultra-detailed Human Avatars via Multi-level Surface Alignment*，[arXiv:2506.01802](https:// `📅unknown` `[entity_page]`
 - [UME-EXO（Universal Manipulation Exoskeleton）](wiki/entities/paper-ume-exo.md) — UME**（Universal Manipulation Exoskeleton）是 Ant Group 与 Stanford 团队提出的 **上肢外骨骼遥操作与数据采集** 系统（arXiv:2 `📅unknown` `[entity_page]`
 - [Uni-LaViRA：统一具身导航的语言–视觉–机器人动作翻译](wiki/entities/paper-uni-lavira.md) — Uni-LaViRA**（*Language-Vision-Robot Actions Translation for Unified Embodied Navigation*，arXiv:[26 `📅unknown` `[entity_page]`
 - [UniAD（Planning-oriented Autonomous Driving · arXiv:2212.10156）](wiki/entities/paper-uniad.md) — UniAD**（*Planning-oriented Autonomous Driving*，2212.10156，CVPR `📅unknown` `[entity_page]`
