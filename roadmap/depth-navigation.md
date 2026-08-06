@@ -146,6 +146,7 @@ flowchart LR
 - [RAVEN](../wiki/entities/paper-raven-rl-adaptive-visibility-graph-mpc.md)（本仓库）— RL 只改可见图障碍膨胀，cf-MPC 保约束的人形混合导航（Booster T1；未开源）
 - [SRU](../wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md)（本仓库）— 给 RNN 补空间配准能力的循环单元，端到端 RL 无地图导航，Unitree B2W 真机零样本 50–120 m 长程目标导航
 - [iCrowdNav](../wiki/entities/paper-icrowdnav.md)（本仓库）— RGB-D **BEV + I²Former 姿态意图** 的人群导航 PPO；相对 DWA/DRL-VO 提升私人空间合规，真机零样本（代码待发布）
+- [HUMEMBR](../wiki/entities/paper-humembr.md)（本仓库）— **身份感知多日记忆** + LLM 工具检索的 PersonEQA / Spot 例行找人（代码已开源；COBD 数据暂私有）
 - [Paper Notebooks · Navigation 分类](../wiki/overview/paper-notebook-category-08-navigation.md)（本仓库）— 深读论文全景入口 |
 
 ### 学完输出什么

@@ -1,3 +1,13 @@
+## [2026-08-06] ingest | sources/papers/humembr_arxiv_2606_30404.md — HUMEMBR（arXiv:2606.30404）人中心长时程记忆 + PersonEQA；升格 wiki/entities/paper-humembr.md；互链 wiki/tasks/vision-language-navigation.md、wiki/entities/paper-uni-lavira.md、wiki/entities/qwen-robot-nav.md、wiki/overview/navigation-slam-autonomy-stack.md、wiki/entities/paper-icrowdnav.md、roadmap/depth-navigation.md；sources/repos/humembr.md、sources/sites/samirahuber-humembr-github-io.md；注册 kiel 机构
+
+- **触发：** 用户指定 <https://arxiv.org/abs/2606.30404>（HUMEMBR；IROS 2026）；要求自动合并
+- **来源：** [`sources/papers/humembr_arxiv_2606_30404.md`](sources/papers/humembr_arxiv_2606_30404.md)、[`sources/sites/samirahuber-humembr-github-io.md`](sources/sites/samirahuber-humembr-github-io.md)、[`sources/repos/humembr.md`](sources/repos/humembr.md)（Kiel University × George Mason University）
+- **新建实体：** [`wiki/entities/paper-humembr.md`](wiki/entities/paper-humembr.md)
+- **机构注册：** `schema/institutions.json` 新增 `kiel` → 基尔大学（Kiel University）
+- **开源核查（步骤 2.5）：** **代码已开源** — 项目页 Code → [`samirahuber/humembr`](https://github.com/samirahuber/humembr)（robot/server/agent/processing + pgvector）；**COBD 数据集 README 标明 private**；`## 源码运行时序图` 已写
+- **方法要点：** 并行记忆构建（Qwen caption + 脸 DBSCAN + KPR ReID）与 LLM 五类检索工具；PersonEQA 上 Gemini **75.41%** vs 全上下文 **67.33%**（~17% token）；Spot + GraphNav 真机六任务
+- **交叉更新：** [`wiki/tasks/vision-language-navigation.md`](wiki/tasks/vision-language-navigation.md)、[`wiki/entities/paper-uni-lavira.md`](wiki/entities/paper-uni-lavira.md)、[`wiki/entities/qwen-robot-nav.md`](wiki/entities/qwen-robot-nav.md)、[`wiki/overview/navigation-slam-autonomy-stack.md`](wiki/overview/navigation-slam-autonomy-stack.md)、[`wiki/entities/paper-icrowdnav.md`](wiki/entities/paper-icrowdnav.md)、[`roadmap/depth-navigation.md`](roadmap/depth-navigation.md)
+
 ## [2026-08-06] ingest | sources/papers/cmp_arxiv_2608_03234.md — CMP（arXiv:2608.03234）上下文感知运动先验入库；升格 wiki/entities/paper-cmp.md；交叉 wiki/methods/amp-reward.md、wiki/methods/smp.md、wiki/comparisons/amp-add-smp-motion-prior-variants.md、wiki/overview/humanoid-amp-motion-prior-survey.md、wiki/entities/mimickit.md、wiki/entities/paper-amp-survey-01-amp.md、wiki/queries/humanoid-motion-tracking-method-selection.md、wiki/entities/unitree-g1.md
 
 - **触发：** 用户指定 *Learning Context-Aware Motion Priors for Humanoid Control*（arXiv；HKUST-GZ；Yunyang Mo / Yi Gu / Yangchen Zhou / Hanyang Cao / Renjing Xu）；要求自动合并

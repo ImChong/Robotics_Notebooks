@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vln, objectnav, eqa, aerial-vln, zero-shot, agentic, mllm, navigation, multi-embodiment, unitree-g1, nju, casia, buaa, bmw-nanjing, rochester]
 status: complete
-updated: 2026-07-24
+updated: 2026-08-06
 arxiv: "2605.27582"
 venue: "arXiv 2026"
 related:
@@ -14,6 +14,7 @@ related:
   - ../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md
   - ../overview/vln-10-papers-technology-map.md
   - ./paper-zonda.md
+  - ./paper-humembr.md
 sources:
   - ../../sources/papers/uni_lavira_arxiv_2605_27582.md
   - ../../sources/sites/xetroubadour-uni-lavira-github-io.md
@@ -220,6 +221,7 @@ sequenceDiagram
 | **WorldVLN** | 空中 VLN 的 **训练式 WAM**（潜世界转移）；本页同覆盖 Aerial-VLN 但无世界模型学习。 |
 | **Value-map 零样本**（VLFM 等） | LLM 多离线解析指令；本页 LA **每步在线推理**，VA 直接像素接地。 |
 | **ZONDA**（多楼层动态 ObjectNav） | 同为零样本 ObjectNav，但主线是 **地图–前沿–跨层几何 + 多视角核验 + 行人预测**；本页更偏 **统一多任务 MLLM agent**（含 VLN/EQA/Aerial）。见 [ZONDA](./paper-zonda.md)。 |
+| **HUMEMBR**（人中心例行记忆） | 同含 EQA，但主轴是 **多日身份感知人物例行 + Spot GraphNav 找人**，非统一 VLN-CE/Aerial 零样本榜。见 [HUMEMBR](./paper-humembr.md)。 |
 
 ## 关联页面
 
@@ -228,6 +230,7 @@ sequenceDiagram
 - [VLA](../methods/vla.md) — 大规模轨迹 foundation policy 对照轴  
 - [WorldVLN](./paper-worldvln-aerial-vln-wam.md) — 空中 VLN 的训练式 WAM 路线  
 - [ZONDA](./paper-zonda.md) — 多楼层动态零样本 ObjectNav（地图式；暂未开源）  
+- [HUMEMBR](./paper-humembr.md) — 真人多日例行记忆 + PersonEQA / Spot 找人（EQA 真机对照）  
 - [Unitree G1](./unitree-g1.md) — 本文真机人形平台之一  
 - [VLM/VLN/VLA/VLX/WM 分类](../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md) — 导航在具身模型谱系中的位置  
 
