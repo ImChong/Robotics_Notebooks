@@ -2,7 +2,7 @@
 type: concept
 tags: [human-body-model, motion-retargeting, parametric-model, humanoid, mocap, world-models]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-06
 related:
   - ./motion-retargeting.md
   - ./motion-retargeting-pipeline.md
@@ -10,10 +10,12 @@ related:
   - ../entities/paper-mamma-markerless-motion-capture.md
   - ../entities/paper-dimos-human-scene-motion-synthesis.md
   - ../entities/gen2humanoid.md
+  - ../entities/paper-uma.md
 sources:
   - ../../sources/papers/mamma_arxiv_2506_13040.md
   - ../../sources/papers/dimos_arxiv_2305_12411.md
   - ../../sources/papers/coins_arxiv_2207_12824.md
+  - ../../sources/papers/uma_arxiv_2506_01802.md
 summary: "SMPL-X（SMPL eXpressive）是马普所提出的参数化全身人体模型，用一组低维形状/姿态参数驱动约 10475 顶点的可微 mesh，统一身体 + 手 + 脸。它是人体动作捕捉、人-场景交互与「人类动作→人形机器人」重定向链路里事实上的中间人体表征。"
 ---
 
@@ -63,6 +65,7 @@ summary: "SMPL-X（SMPL eXpressive）是马普所提出的参数化全身人体�
 | **markerless 动捕** | 多视角视频逐帧回归 SMPL-X 姿态/体型 | [MAMMA](../entities/paper-mamma-markerless-motion-capture.md) |
 | **人-场景交互合成** | 用 SMPL-X + 体表 marker/顶点表示人体，联合物体接触 | [DIMOS](../entities/paper-dimos-human-scene-motion-synthesis.md)、[COINS](../entities/paper-coins-compositional-human-scene-interaction.md) |
 | **生成→重定向接缝** | 生成式动作统一到 SMPL-X 再进 GMR | [gen2humanoid](../entities/gen2humanoid.md)、[GMR](../methods/motion-retargeting-gmr.md) |
+| **多视角数字人元数据** | 与 DDC 角色并列提供 SMPL-X 拟合 mesh/姿态 | [UMA](../entities/paper-uma.md)（40×6K 着装 avatar 数据集） |
 
 ## 与重定向的关系
 
@@ -76,10 +79,12 @@ SMPL-X 只是 **人体侧** 的表征；要驱动一台真实人形机器人，�
 - [MAMMA（markerless 动捕）](../entities/paper-mamma-markerless-motion-capture.md) — 从多视角视频回归 SMPL-X
 - [DIMOS（人-场景动作合成）](../entities/paper-dimos-human-scene-motion-synthesis.md) — 以 SMPL-X + 体表 marker 表示人体
 - [gen2humanoid](../entities/gen2humanoid.md) — `convert_smpl.py` 统一到 SMPL-X 再进 GMR 的接缝
+- [UMA（超精细可驱动 avatar）](../entities/paper-uma.md) — 数据集元数据同时发布 SMPL-X 与 DDC 角色
 
 ## 参考来源
 
 - [MAMMA 论文归档（arXiv:2506.13040）](../../sources/papers/mamma_arxiv_2506_13040.md) — 逐帧回归 SMPL-X 姿态/体型
 - [DIMOS 论文归档（arXiv:2305.12411）](../../sources/papers/dimos_arxiv_2305_12411.md) — SMPL-X + 67 体表 marker 表示
 - [COINS 论文归档（arXiv:2207.12824）](../../sources/papers/coins_arxiv_2207_12824.md) — BodyVAE 回归 SMPL-X 与接触
+- [UMA 论文归档（arXiv:2506.01802）](../../sources/papers/uma_arxiv_2506_01802.md) — 多视角数字人元数据中的 SMPL-X 角色
 - SMPL-X 官方项目页 <https://smpl-x.is.tue.mpg.de/>（Pavlakos et al., CVPR 2019，Max Planck Institute for Intelligent Systems）

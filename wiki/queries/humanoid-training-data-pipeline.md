@@ -3,7 +3,7 @@ title: 人形训练数据管线选型指南
 type: query
 status: complete
 created: 2026-06-19
-updated: 2026-08-04
+updated: 2026-08-06
 summary: 从原始动作捕捉 / 人体视频 → 重定向 → RL/IL 训练输入的端到端选型决策树，覆盖参考运动来源、重定向方案、训练范式三层取舍与典型失败模式。
 tags: [dataset, motion-retargeting, data-pipeline, humanoid, training-data]
 sources:
@@ -70,6 +70,7 @@ flowchart TD
 | 人体视频 | [GVHMR](../entities/gvhmr.md) / [VideoMimic](../entities/videomimic.md) | 规模可极大 | 3D/接触信息弱，需重建 |
 | 面部视频（telepresence/表情） | [Face Anything](../entities/paper-face-anything-4d-face-reconstruction.md) | 前馈 **4D 面部几何+跟踪** | 与全身 SMPL 链路分离；野外泛化待验证 |
 | 标定多视角面部注册 | [SHELLS](../entities/paper-shells-layered-surface-sampling.md) | 固定拓扑 ~18k 顶点、亚秒级前馈；纯合成训练可泛化棚拍 | **未开源**；需标定多视角；非细皱纹/发须外包络 |
+| 多视角着装数字人（telepresence） | [UMA](../entities/paper-uma.md) | 40×6K 长序列 + 可驱动超精细几何/外观；推理与 demo 已开源 | 人物特异单层模板；训练工具待发；非机器人策略数据 |
 
 **决策要点**：目标是 G1/H1-2 全身跟踪且不想从零重定向 → 直接选 PHUMA；要最大人体分布 → AMASS；要物体交互 → OMOMO；要真机操作模仿 → Humanoid Everyday；要 **家庭 in-the-wild 长程家务遥操作** 且需最大开源规模 → HIW-500；要 **绕开真机 teleop 复位/空间成本** 且接受仿真资产管线 → OASIS。
 

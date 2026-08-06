@@ -1,3 +1,12 @@
+## [2026-08-06] ingest | sources/papers/uma_arxiv_2506_01802.md — UMA（arXiv:2506.01802，ACM TOG 2026）多级表面对齐超精细可驱动着装人体 avatar；升格 wiki/entities/paper-uma.md；互链 wiki/tasks/teleoperation.md、wiki/queries/humanoid-training-data-pipeline.md、wiki/concepts/smpl-x.md、wiki/entities/paper-face-anything-4d-face-reconstruction.md、wiki/entities/paper-shells-layered-surface-sampling.md；sources/repos/uma.md、sources/sites/vcai-mpi-inf-uma.md
+
+- **触发：** 用户指定 <https://vcai.mpi-inf.mpg.de/projects/UMA/> 与 <https://arxiv.org/abs/2506.01802>；要求自动合并
+- **来源：** [`sources/papers/uma_arxiv_2506_01802.md`](sources/papers/uma_arxiv_2506_01802.md)、[`sources/sites/vcai-mpi-inf-uma.md`](sources/sites/vcai-mpi-inf-uma.md)、[`sources/repos/uma.md`](sources/repos/uma.md)（MPI-INF × VIA）
+- **新建实体：** [`wiki/entities/paper-uma.md`](wiki/entities/paper-uma.md)
+- **开源核查（步骤 2.5）：** **部分开源** — 项目页 Paper/GitHub/Dataset/Demo 齐全；数据集 + 推理 + Viewer demo + checkpoint 已发；README TODO 仍勾选 training utilities；`## 源码运行时序图` 已写
+- **方法要点：** per-frame latent 解衣物随机动力学 + CoTracker 引导顶点/纹素多级对齐 + Gaussian 纹理超分；40×6K×5 被试；Training PSNR **37.15** / LPIPS **35.02**
+- **交叉更新：** [`wiki/tasks/teleoperation.md`](wiki/tasks/teleoperation.md)、[`wiki/queries/humanoid-training-data-pipeline.md`](wiki/queries/humanoid-training-data-pipeline.md)、[`wiki/concepts/smpl-x.md`](wiki/concepts/smpl-x.md)、[`wiki/entities/paper-face-anything-4d-face-reconstruction.md`](wiki/entities/paper-face-anything-4d-face-reconstruction.md)、[`wiki/entities/paper-shells-layered-surface-sampling.md`](wiki/entities/paper-shells-layered-surface-sampling.md)
+
 ## [2026-08-06] structural | roadmap/depth-teleoperation.md + depth-navigation.md + depth-imitation-learning.md + depth-rl-locomotion.md + depth-perceptive-locomotion.md + depth-wam.md + depth-motion-generation.md + depth-vla.md — 补齐 2026-08-02 以来（roadmap 上次触达日）入库的 12 篇最新论文节点到对应纵深路线「推荐读什么」/ 进阶方向关键词，覆盖遥操作、导航、模仿学习、RL locomotion、感知越障、WAM、动作生成、VLA 八条路线
 
 - **触发：** 批量结构性回填——`roadmap/*.md` 自 2026-08-02/03 起未再更新，其间 8 篇用户已列出候选（Teleopit / RoamFlow / kai0 / FDDC / Light-Loco-Parkour / WorldScape Policy 2.0 / Why Action Chunking Improves BC）与向下扫描 log.md 发现的 5 篇额外候选（HiFi-UMI / WCM / 合成视频人形任务生成 / ActFovea / RoboHarness）经逐页复核后确认为对应路线的里程碑级或教学级读物；TransGraspNet（透明器皿抓取，应用较窄）、机器人学习五大范式对比页（通用综述，不专属单一纵深）、CLIFT（与同 Stage 已有 STEAM 主题重叠，判定为增量较小）、SenseNova-U1.5（非机器人动作模型）判定不够纵深特定或增量不足，未收录；浙大人形下肢衍生式设计论文已在 `depth-humanoid-hardware-design.md` Stage 2 存在，无需补
