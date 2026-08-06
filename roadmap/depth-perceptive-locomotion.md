@@ -131,6 +131,7 @@ flowchart LR
 - [ANYmal Parkour 深读笔记](../wiki/entities/paper-notebook-anymal-parkour-robust-perceptive-locomotion.md)
 - [Humanoid Parkour Learning 深读笔记](../wiki/entities/paper-notebook-humanoid-parkour-learning.md)
 - [Footstep Planning](../wiki/concepts/footstep-planning.md) — 与 model-based 落脚点方法对照
+- [Light-Loco-Parkour](../wiki/entities/paper-light-loco-parkour.md)（本仓库）— 稀疏人体动作种子 Real2Sim2Real 扩成地形族 + 多专家 DAgger/转移 RL/深度 GRU 蒸馏成单一无技能标签深度策略；Lightbot 0 攀爬至 0.83H、踏石 99.9%，Orin Nano 边缘算力 50 Hz；代码未开源
 
 ### 推荐做什么
 - 复现一个开源 parkour 工作（Extreme Parkour / humanoid parkour）在仿真里的训练

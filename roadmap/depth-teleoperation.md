@@ -87,6 +87,7 @@ flowchart LR
 - [ACE 跨平台视觉外骨骼系统（论文笔记）](../wiki/entities/paper-notebook-ace-a-cross-platform-visual-exoskeletons-system.md) 与 [NuExo 上肢外骨骼（论文笔记）](../wiki/entities/paper-notebook-nuexo-a-wearable-exoskeleton-covering-all-upper.md)（本仓库）— 外骨骼 cockpit
 - [UME-EXO](../wiki/entities/paper-ume-exo.md)（本仓库）— 外骨骼实时力矩反馈 + 全身臂形采集
 - [HandUMI](../wiki/entities/handumi.md) 与 [mimic wearable U1](../wiki/entities/mimic-wearable-u1.md)（本仓库）— 无机器人手持/外骨骼采集
+- [HiFi-UMI](../wiki/entities/paper-hifi-umi.md)（本仓库）— 高保真无机器人双臂 UMI（~3 mm 精度、<40 µs 同步、六视角），zero-robot 后训练匹配同域遥操作；开源 HiFi-UMI-2K（2000 h，CC BY 4.0），采数系统代码截至入库日未发布
 - [RIO（Robot I/O）](../wiki/entities/robot-io-rio.md)（本仓库）— 多设备遥操作的 Node 化抽象
 - [xpad](../wiki/entities/xpad.md) 与 [Oculus Quest Teleop](../wiki/entities/oculust-quest-teleop.md)、[Isaac Teleop](../wiki/entities/isaac-teleop.md)（本仓库）— 手柄内核驱动 / VR / 仿真内录制
 - [ALOHA](../wiki/entities/aloha.md)（本仓库）— 低成本 leader–follower 双臂
@@ -158,6 +159,7 @@ flowchart LR
 - [CLOT](../wiki/entities/paper-amp-survey-16-clot.md)（本仓库）— 闭环全局位姿的长时程无漂移全身遥操作
 - [TeleGate](../wiki/entities/paper-telegate.md)（本仓库）— 门控选冻结专家 + VAE 运动先验，高动态跑跳/跌倒恢复
 - [CWI](../wiki/entities/paper-cwi-composite-humanoid-whole-body-imitation.md)（本仓库）— Quest 双手 9D keypoint + 速度/身高蒸馏接口，无需全身 MoCap
+- [Teleopit](../wiki/entities/paper-teleopit.md)（本仓库）— PICO VR 单一传感源统一驱动全身跟踪 + 跨形态灵巧手优化重定向 + 主动视觉，History Encoder + failure-aware rewind；持出集 Mocap SR 91.7% / PICO SR 100.0%，均超 TWIST2/SONIC/HoloMotion；96 条演示训 ACT 90% / GR00T 95%，五仓开源
 - [CHILD 全身人形遥操作系统（论文笔记）](../wiki/entities/paper-notebook-child-a-whole-body-humanoid-teleoperation-system.md) 与 [HOMIE 等动学外骨骼 cockpit（论文笔记）](../wiki/entities/paper-loco-manip-161-040-homie.md)（本仓库）
 
 ### 学完输出什么

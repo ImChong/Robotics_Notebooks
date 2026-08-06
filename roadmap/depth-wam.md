@@ -148,6 +148,7 @@ flowchart LR
 - [Lumo-2（Latent World-Action Model）](../wiki/entities/lumo-2.md)（本仓库）— Qwen3.5-4B 潜空间世界–动作模型，三阶段渐进模态预对齐 + BAR 块解码，真机 22 项挑战全面超 π₀.₅/Fast-WAM
 - [Pelican-Unified 1.0](../wiki/methods/pelican-unified-1.md)、[Kairos](../wiki/entities/paper-kairos-native-world-model-stack.md)（本仓库）
 - [Cosmos 3](../wiki/entities/cosmos-3.md)（本仓库）— 平台级 Joint / 多任务 I/O 对照
+- [WorldScape Policy 2.0](../wiki/entities/paper-worldscape-policy-2.md)（本仓库）— 事件级 VLM 记忆（三视图检索 + 门控）与视觉短期记忆双通路分工，semantic forcing 对齐；RoboTwin 2.0 94.3%，clean-only 训练下 C2R 47.9% 大幅超 Fast-WAM 39.1%，真机跨本体迁移 10–20%→60–70%；代码/权重截至入库日未发布
 
 ### 学完输出什么
 - 能比较至少两种 Joint 实现（扩散双塔 vs 潜自回归闭环）的延迟与闭环形态
