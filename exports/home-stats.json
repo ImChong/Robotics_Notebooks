@@ -1,13 +1,83 @@
 {
-  "generated_at": "2026-08-05",
+  "generated_at": "2026-08-06",
   "node_count": 2101,
-  "edge_count": 19185,
+  "edge_count": 19207,
   "coverage": {
     "covered": 2077,
     "total": 2077,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md",
+      "detail_id": "entity-paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi",
+      "label": "DPL（单深度感知人形行走，2025/2026）",
+      "type": "entity",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/tasks/stair-obstacle-perceptive-locomotion.md",
+      "detail_id": "wiki-tasks-stair-obstacle-perceptive-locomotion",
+      "label": "楼梯与障碍 Locomotion（感知 / 盲走中心节点）",
+      "type": "task",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/concepts/terrain-adaptation.md",
+      "detail_id": "wiki-concepts-terrain-adaptation",
+      "label": "Terrain Adaptation（地形适应）",
+      "type": "concept",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/tasks/locomotion.md",
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md",
+      "detail_id": "entity-paper-rpl-robust-humanoid-perceptive-locomotion",
+      "label": "RPL：复杂地形上的鲁棒人形多向感知行走",
+      "type": "entity",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/x-humanoid.md",
+      "detail_id": "entity-x-humanoid",
+      "label": "X-Humanoid（北京人形机器人创新中心）",
+      "type": "entity",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/overview/paper-notebook-category-05-locomotion.md",
+      "detail_id": "wiki-overview-paper-notebook-category-05-locomotion",
+      "label": "Paper Notebooks · Locomotion",
+      "type": "overview",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
+    },
     {
       "path": "wiki/entities/paper-fddc.md",
       "detail_id": "entity-paper-fddc",
@@ -133,91 +203,22 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/methods/awr.md",
-      "detail_id": "wiki-methods-awr",
-      "label": "AWR: 优势加权回归",
-      "type": "method",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/π0-policy.md",
-      "detail_id": "wiki-methods-π0-policy",
-      "label": "π₀ (Pi-zero) 策略模型",
-      "type": "method",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-lehome-learning-to-fold.md",
-      "detail_id": "entity-paper-lehome-learning-to-fold",
-      "label": "Learning to Fold（LeHome Challenge 2026 · arXiv:2606.27163）",
-      "type": "entity",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-steam-advantage-modeling.md",
-      "detail_id": "entity-paper-steam-advantage-modeling",
-      "label": "STEAM：自监督时序 Ensemble Advantage 建模",
-      "type": "entity",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/aloha.md",
-      "detail_id": "entity-aloha",
-      "label": "ALOHA (双臂遥操作硬件)",
-      "type": "entity",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md",
-      "detail_id": "entity-paper-notebook-robotdancing-residual-action-rl-enables-robust-l",
-      "label": "RobotDancing（残差动作长时程人形运动追踪，2025/2026）",
-      "type": "entity",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/residual-policy-learning.md",
-      "detail_id": "wiki-methods-residual-policy-learning",
-      "label": "Residual Policy Learning（残差策略学习）",
-      "type": "method",
-      "recency": "2026-08-05",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-fddc.md",
-    "detail_id": "entity-paper-fddc",
-    "label": "FDDC：首个可部署的动态 CoM 单腿平衡策略与基准",
+    "path": "wiki/entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md",
+    "detail_id": "entity-paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi",
+    "label": "DPL（单深度感知人形行走，2025/2026）",
     "type": "entity",
-    "recency": "2026-08-05",
+    "recency": "2026-08-06",
     "source": "log.md",
-    "action": "maintained"
+    "action": "maintained",
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 209
+      "size": 210
     },
     {
       "label": "操作",
@@ -233,7 +234,7 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 136
+      "size": 135
     },
     {
       "label": "动作重定向",
@@ -245,7 +246,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 419,
+      "degree": 421,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -284,7 +285,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 302
+      "degree": 304
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",

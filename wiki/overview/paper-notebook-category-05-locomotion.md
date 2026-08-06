@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-08-03
+updated: 2026-08-06
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 05：行走运动（82 篇深读笔记索引）。"
@@ -40,7 +40,7 @@ summary: "Paper Notebooks 分类 05：行走运动（82 篇深读笔记索引）
 - [CMR](../entities/paper-notebook-cmr-contractive-mapping-embeddings-for-robust-hu.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/CMR__Contractive_Mapping_Embeddings_for_Robust_Humanoid_Locomotion/CMR__Contractive_Mapping_Embeddings_for_Robust_Humanoid_Locomotion.html)
 - [Chasing Stability](../entities/paper-notebook-chasing-stability-humanoid-running-via-control-l.md) — 待深读
 - [Coordinated Humanoid Robot Locomotion with Symmetry Equivariant Reinforcement Learning Policy](../entities/paper-notebook-coordinated-humanoid-robot-locomotion-with-symme.md) — 待深读
-- [DPL](../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md) — 待深读
+- [DPL](../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md) — 见 wiki 实体页（单深度重建 + 盲骨干多教师；IEEE RA-L）
 - [Deep Reinforcement Learning for Bipedal Locomotion](../entities/paper-notebook-deep-reinforcement-learning-for-bipedal-locomoti.md) — 待深读
 - [Do You Have Freestyle? Expressive Humanoid Locomotion via Audio Control](../entities/paper-notebook-do-you-have-freestyle-expressive-humanoid-locomo.md) — 待深读
 - [DoublyAware](../entities/paper-notebook-doublyaware-dual-planning-and-policy-awareness-f.md) — 待深读
