@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-08-06",
   "node_count": 2101,
-  "edge_count": 19197,
+  "edge_count": 19219,
   "coverage": {
     "covered": 2077,
     "total": 2077,
@@ -212,7 +212,7 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 209
+      "size": 210
     },
     {
       "label": "操作",
@@ -228,7 +228,7 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 136
+      "size": 135
     },
     {
       "label": "动作重定向",
@@ -240,7 +240,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 419,
+      "degree": 421,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -279,7 +279,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 302
+      "degree": 304
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",

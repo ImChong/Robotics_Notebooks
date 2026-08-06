@@ -2,18 +2,20 @@
 type: entity
 tags: [humanoid, hardware, open-source, tienkung, x-humanoid]
 status: complete
-updated: 2026-07-21
+updated: 2026-08-06
 related:
   - ./x-humanoid.md
   - ./humanoid-robot.md
   - ./open-source-humanoid-hardware.md
   - ./openloong.md
+  - ./paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md
   - ../overview/robot-open-source-wechat-issue01-curator.md
 sources:
   - ../../sources/sites/x-humanoid.md
   - ../../sources/sites/x-humanoid-opensource-cloud.md
   - ../../sources/repos/open-x-humanoid.md
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md
+  - ../../sources/papers/dpl_arxiv_2510_07152.md
 summary: "北京人形机器人创新中心「天工」Lite/Pro：URDF、STEP、ROS、SDK 与二次开发说明分散在门户站与 TienKung_Docs 仓库，需分清主入口。"
 ---
 
@@ -76,6 +78,7 @@ summary: "北京人形机器人创新中心「天工」Lite/Pro：URDF、STEP、
 ## 关联页面
 
 - [X-Humanoid（北京人形机器人创新中心）](./x-humanoid.md)
+- [DPL（单深度感知行走，TienKung Ultra）](./paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md)
 - [人形机器人](./humanoid-robot.md)
 - [开源人形硬件方案对比](./open-source-humanoid-hardware.md)
 - [OpenLoong（青龙·公版机）](./openloong.md)

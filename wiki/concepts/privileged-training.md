@@ -2,7 +2,7 @@
 type: concept
 tags: [rl, sim2real, training, humanoid, policy-optimization]
 status: complete
-updated: 2026-08-02
+updated: 2026-08-06
 summary: "Privileged Training 让 teacher 使用仿真特权信息训练，再蒸馏给真实可观测 student，是 sim2real 常见套路；蒸馏本质是把 RL 探索问题转为 Teacher 标注的监督学习。"
 related:
   - ./terrain-latent-representation.md
@@ -17,6 +17,7 @@ related:
   - ../entities/paper-legged-load-adapt-unknown-dynamic-load.md
   - ../entities/extreme-parkour.md
   - ../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md
+  - ../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md
   - ../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md
   - ../entities/dreamwaq-plus.md
   - ../entities/paper-perceptive-bfm.md
@@ -175,6 +176,12 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 - **Stage 2 Student**：**DAgger** 蒸馏为 **多视角深度 Transformer** 统一下身策略；部署仅前后 ZED 深度。
 - 见 [RPL 实体页](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) 与 [sources/papers/rpl_arxiv_2602_03002.md](../../sources/papers/rpl_arxiv_2602_03002.md)。
 
+### DPL（单深度高程重建，Sun et al. 2025/2026）
+
+- **Teacher**：分地形 **特权全状态** 专家；重建模块用仿真 **真值局部高程** 监督。
+- **Student**：在 **交叉注意力重建高程**（噪声/延迟）上做 L2 蒸馏 + PPO 端到端微调；部署仅单深度相机。
+- 见 [DPL 实体页](../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md) 与 [sources/papers/dpl_arxiv_2510_07152.md](../../sources/papers/dpl_arxiv_2510_07152.md)。
+
 ### LadderMan（人形梯子攀爬，Zhao et al. 2026）
 
 - **Stage 1 Teacher**：**状态专家** $\pi^{\text{expert}}_{\phi,z}$ 用 **hybrid motion tracking**（非对称上/下身跟踪 + 梯子接触奖励）从 **单条参考** 学到多倾角/踏棍间距攀爬；观测含梯子相对位姿等 **特权几何**。
@@ -256,6 +263,7 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 - [Extreme Parkour](../entities/extreme-parkour.md) — 四足跑酷 scandots/航向双重蒸馏范例（ROA 继承 RMA）
 - [PAC-MAN](../entities/paper-pac-man-perceptive-cbf-rl.md) — 训练用特权球/连杆几何算 CBF，部署仅机载掩膜深度（非对称 AC，无 teacher 蒸馏）
 - [RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) — 人形分地形高程专家 → 多视角深度学生
+- [DPL](../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md) — 特权专家 → 单深度重建高程学生（盲骨干多教师）
 - [LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) — 单参考 hybrid tracking 专家 → 深度 visuomotor 学生
 - [Perceptive BFM](../entities/paper-perceptive-bfm.md) — TCRS 合成 **地形一致 adapted 参考** 作盲 teacher 监督；部署仍用 **raw 参考 + 视觉学生**
 - [FADA](../entities/paper-fada-humanoid.md) — 仿真特权 oracle → DAgger 蒸馏 Planner–IDM；部署仅 LoRA 微调 IDM（arXiv:2606.28476）
