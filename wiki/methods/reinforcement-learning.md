@@ -2,7 +2,7 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-08-05
+updated: 2026-08-06
 related:
   - ../comparisons/robot-learning-five-paradigms-taxonomy.md
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
@@ -234,6 +234,7 @@ flowchart LR
 ## 关联页面
 - [机器人学习五大范式](../comparisons/robot-learning-five-paradigms-taxonomy.md) — RL 作为奖励信号主线，与 IL / LfV / VLA / 持续学习对照
 - [深度学习基础](../concepts/deep-learning-foundations.md)
+- [Effective Degree（论文实体）](../entities/paper-effective-degree.md) — 函数空间简洁正则；Procgen 上对 PPO actor 提升未见 level 泛化（ICML 2026）
 - [Richard Sutton](../entities/richard-sutton.md) — RL 奠基人与一手资料总入口
 - [Sutton & Barto RL 教材](../entities/sutton-barto-rl-book.md) — 理论标准教材
 - [The Bitter Lesson](../concepts/bitter-lesson.md) — scaling 方法论（search + learning）
