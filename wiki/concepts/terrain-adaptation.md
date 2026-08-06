@@ -2,7 +2,7 @@
 type: concept
 tags: [locomotion, terrain, perception, footstep-planning, sim2real]
 status: complete
-updated: 2026-08-02
+updated: 2026-08-06
 summary: "Terrain Adaptation 指机器人根据地形感知结果调整步位、身体姿态和接触策略，以在不平整环境中保持稳定移动。"
 related:
   - ../queries/robot-perception-stack-selection-loop.md
@@ -23,6 +23,7 @@ related:
   - ../entities/paper-amp-survey-08-more.md
   - ../entities/dreamwaq-plus.md
   - ../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md
+  - ../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md
   - ../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md
   - ../entities/paper-egohtr.md
   - ../entities/paper-legged-load-adapt-unknown-dynamic-load.md
@@ -33,6 +34,7 @@ sources:
   - ../../sources/papers/contact_planning.md
   - ../../sources/papers/e_sds_arxiv_2512_16446.md
   - ../../sources/papers/rpl_arxiv_2602_03002.md
+  - ../../sources/papers/dpl_arxiv_2510_07152.md
   - ../../sources/papers/discrete_terrain_minimal_proximity_sensing_arxiv_2606_31912.md
   - ../../sources/papers/ame_arxiv_2506_09588.md
   - ../../sources/papers/humanoid_pnb_ame-2-agile-and-generalized-legged-locomotion-vi.md
@@ -136,6 +138,7 @@ sources:
 - [DreamWaQ++](../entities/dreamwaq-plus.md) 把 **3D 点云** 与 **本体历史** 在单阶段 RL 中融合，是四足 **点云地形适应** 的代表实现。
 - [离散地形最小感知](../entities/paper-discrete-terrain-minimal-proximity-sensing.md) 展示四足 **足底 ToF** 在垫脚石/沟上的 **任务对齐最小传感** 路线。
 - [RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) 用 **多视角深度** 做 **双向/多向** 地形适应，并以 **DFSV/RSM** 处理非对称视野与未见窄地形宽度。
+- [DPL](../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md) 用 **单深度 → 交叉注意力高程重建**（自遮挡射线合成进 RL 环）在无外定位下做前向楼梯/缝隙适应；与 elevation map 多传感器路线对照。
 - [LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) 把 **稀疏踏棍梯子** 当作极端薄结构地形：端到端 **深度 + VFM** 适应，配合 **RFM** 聚焦踏棍几何。
 - [Sim2Real](./sim2real.md) 强调地形感知和真实传感器偏差是迁移痛点。
 
@@ -160,6 +163,7 @@ sources:
 - [sources/papers/egohtr_arxiv_2607_13472.md](../../sources/papers/egohtr_arxiv_2607_13472.md) — EgoHTR：rough-terrain 人–场景 4D 演示与 G1 感知 mimic
 - [sources/papers/humoslope_arxiv_2607_07830.md](../../sources/papers/humoslope_arxiv_2607_07830.md) — HumoSlope：盲策略下连续陡坡姿态/步态适应（局部平面 ZMP + BSGA）
 - [sources/papers/legged_load_adapt_arxiv_2507_07825.md](../../sources/papers/legged_load_adapt_arxiv_2507_07825.md) — Legged Load Adapt：崎岖地形 + 未知动态载荷
+- [sources/papers/dpl_arxiv_2510_07152.md](../../sources/papers/dpl_arxiv_2510_07152.md) — DPL：单深度交叉注意力高程重建 + 盲骨干多教师
 
 ## 关联页面
 

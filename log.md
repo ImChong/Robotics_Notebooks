@@ -1,3 +1,12 @@
+## [2026-08-06] ingest | sources/papers/dpl_arxiv_2510_07152.md — DPL（arXiv:2510.07152，IEEE RA-L）升格 wiki/entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md；交叉 wiki/tasks/stair-obstacle-perceptive-locomotion.md、wiki/concepts/terrain-adaptation.md、wiki/tasks/locomotion.md、wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md、wiki/entities/x-humanoid.md、wiki/overview/paper-notebook-category-05-locomotion.md、sources/papers/humanoid_pnb_dpl-depth-only-perceptive-humanoid-locomotion-vi.md
+
+- **触发：** 用户指定 <https://arxiv.org/abs/2510.07152>（v1 2025-10-08 → v3 2026-08-03；IEEE RA-L 接收 2026-06-09）；要求自动合并
+- **来源：** [`sources/papers/dpl_arxiv_2510_07152.md`](sources/papers/dpl_arxiv_2510_07152.md)（X-Humanoid / HKU / USTC / HKUST）
+- **升格实体：** [`wiki/entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md`](wiki/entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md)（原 Paper Notebooks stub → complete）
+- **开源核查（步骤 2.5）：** **确认未开源** — 无项目页 / 无官方仓；`## 源码运行时序图` 写不适用
+- **方法要点：** 自遮挡射线深度合成 + 跨模态交叉注意力高程重建 + 盲骨干多教师蒸馏与端到端微调；TienKung Ultra + Orbbec；真机重建 MAE **3.25 cm**；感知 ~**20 ms @ 30 Hz**；楼梯绊脚 4/10 vs 无 e2e 8/10
+- **交叉更新：** [`wiki/tasks/stair-obstacle-perceptive-locomotion.md`](wiki/tasks/stair-obstacle-perceptive-locomotion.md)、[`wiki/concepts/terrain-adaptation.md`](wiki/concepts/terrain-adaptation.md)、[`wiki/tasks/locomotion.md`](wiki/tasks/locomotion.md)、[`wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md`](wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md)、[`wiki/entities/x-humanoid.md`](wiki/entities/x-humanoid.md)、[`wiki/overview/paper-notebook-category-05-locomotion.md`](wiki/overview/paper-notebook-category-05-locomotion.md)、[`sources/papers/humanoid_pnb_dpl-depth-only-perceptive-humanoid-locomotion-vi.md`](sources/papers/humanoid_pnb_dpl-depth-only-perceptive-humanoid-locomotion-vi.md)
+
 ## [2026-08-05] ingest | sources/papers/fddc_arxiv_2608_00500.md — FDDC（arXiv:2608.00500）可部署动态 CoM 单腿平衡入库；升格 wiki/entities/paper-fddc.md；交叉 wiki/concepts/capture-point-dcm.md、reward-design.md、wiki/tasks/balance-recovery.md、wiki/methods/ams.md、sonic-motion-tracking.md、wiki/entities/unitree-g1.md、paper-notebook-hub.md、paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m.md
 
 - **触发：** 用户指定 <https://arxiv.org/abs/2608.00500>

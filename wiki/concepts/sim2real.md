@@ -36,6 +36,7 @@ related:
   - ../entities/paper-bam-extended-friction-servo-actuators.md
   - ../entities/paper-tacrefinenet-tactile-grasp-refinement.md
   - ../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md
+  - ../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md
   - ../entities/paper-rma-rapid-motor-adaptation.md
   - ../entities/bam-better-actuator-models.md
   - ../overview/multirotor-simulation-planning-control-stack.md
@@ -52,7 +53,7 @@ related:
   - ../entities/paper-legged-robots-advances-challenges.md
   - ../queries/sim2real-closed-loop-engineering.md
 summary: "Sim2Real 关注如何把仿真中学到的策略稳定迁移到真实机器人，是机器人学习落地的核心鸿沟。"
-updated: 2026-08-05
+updated: 2026-08-06
 sources:
   - ../../sources/papers/physx_omni_arxiv_2605_21572.md
   - ../../sources/courses/isaac_lab_implicit_explicit_actuators.md
@@ -258,6 +259,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [Learning to Fold（LeHome 2026）](../entities/paper-lehome-learning-to-fold.md) — 廉价双臂叠衣：仿真 AWR/RECAP → 真机三桶 BC+DAgger（arXiv:2606.27163，全链路开源）
 - [GR00T-VisualSim2Real](../entities/gr00t-visual-sim2real.md) — NVIDIA 视觉 Sim2Real 框架，PPO Teacher + DAgger RGB Student，Unitree G1 零样本迁移（CVPR 2026）
 - [LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) — **深度** sim-to-real：真机用 **VFM（Fast-FoundationStereo）** 替代重度 depth randomization，配合 **RFM** 聚焦梯子踏棍（arXiv:2606.05873）
+- [DPL](../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md) — **深度** sim-to-real：自遮挡射线合成 + Kinect 风格噪声进 RL 环，再对重建延迟做端到端微调（arXiv:2510.07152）
 - [SAGE（执行器 Sim2Real 间隙估计）](../entities/sage-sim2real-actuator-gap-estimator.md) — Isaac 重放与真机关节日志对齐，RMSE/相关/余弦相似度等量化执行器层 gap
 - [LIFT](../entities/lift-humanoid.md) — JAX SAC 大规模预训练 + Brax 物理知情世界模型微调；微调阶段真机确定性采集与模型内随机探索解耦（arXiv:2601.21363）
 - [人形机器人并联关节解算](./humanoid-parallel-joint-kinematics.md) — 并联踝闭链与仿真训练接口分层（冲击下传载再分配等）

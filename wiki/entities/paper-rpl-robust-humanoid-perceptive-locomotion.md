@@ -15,7 +15,7 @@ tags:
   - isaac-gym
   - amazon-far
 status: complete
-updated: 2026-07-27
+updated: 2026-08-06
 arxiv: "2602.03002"
 related:
   - ../tasks/stair-obstacle-perceptive-locomotion.md
@@ -30,6 +30,7 @@ related:
   - ./paper-pilot-perceptive-loco-manipulation.md
   - ./paper-faststair-humanoid-stair-ascent.md
   - ./paper-ladderman-humanoid-perceptive-ladder-climbing.md
+  - ./paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md
   - ./extreme-parkour.md
   - ./paper-egohtr.md
 sources:
@@ -164,14 +165,14 @@ flowchart TB
 
 ## 与其他工作对比
 
-| 维度 | RPL | PHP | PILOT | FastStair | Extreme Parkour |
-|------|-----|-----|-------|-----------|-----------------|
-| 机构 | Amazon FAR | Amazon FAR | 上海交大 | LimX / 多机构 | Berkeley 等 |
-| 感知 | **多视角深度** | 单深度 | LiDAR 高程 | 机载高程 | 单目前向深度 |
-| 多向 | **双向/全向（深度）** | 2D 速度选技能 | 前进为主 | 前进上楼 | 前进跑酷 |
-| 训练 | **分地形专家 + DAgger** | MM 长程参考 + DAgger+PPO | 单阶段 MoE PPO | DCM + 分速专家 | scandots + DAgger |
-| 载荷 | **2 kg loco-manipulation** | 未强调 | 全身操作跟踪 | — | — |
-| 平台 | **G1** | G1 | G1 | LimX Oli | Unitree Go1 |
+| 维度 | RPL | DPL | PHP | PILOT | FastStair |
+|------|-----|-----|-----|-------|-----------|
+| 机构 | Amazon FAR | X-Humanoid 等 | Amazon FAR | 上海交大 | LimX / 多机构 |
+| 感知 | **多视角深度** | **单深度→学习高程** | 单深度 | LiDAR 高程 | 机载高程 |
+| 多向 | **双向/全向（深度）** | 前向为主 | 2D 速度选技能 | 前进为主 | 前进上楼 |
+| 训练 | **分地形专家 + DAgger** | 重建 + 盲骨干多教师 + e2e | MM 长程参考 + DAgger+PPO | 单阶段 MoE PPO | DCM + 分速专家 |
+| 载荷 | **2 kg loco-manipulation** | 未强调 | 未强调 | 全身操作跟踪 | — |
+| 平台 | **G1** | **TienKung Ultra** | G1 | G1 | LimX Oli |
 
 ## 关联页面
 
@@ -182,6 +183,7 @@ flowchart TB
 - [Privileged Training](../concepts/privileged-training.md) — 高程图专家 → 深度学生
 - [DAgger](../methods/dagger.md) — Stage 2 蒸馏算法
 - [PHP（Perceptive Humanoid Parkour）](./paper-hrl-stack-22-perceptive_humanoid_parkour.md) — 同系 Amazon FAR 深度跑酷对照
+- [DPL](./paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md) — 单深度学习高程重建对照（无外定位；TienKung Ultra）
 - [LadderMan](./paper-ladderman-humanoid-perceptive-ladder-climbing.md) — 同系 Amazon FAR 稀疏踏棍攀爬与梯上操作
 - [EgoHTR](./paper-egohtr.md) — rough-terrain 人演示 → 高度图条件 mimic（数据缺口对照；待开放）
 - [Unitree G1](./unitree-g1.md) — 实验平台
