@@ -3,7 +3,7 @@
 type: overview
 tags: [navigation, slam, ros2, autoware, lidar, vio, mobile-robot, autonomous-driving, openloong]
 status: complete
-updated: 2026-08-02
+updated: 2026-08-06
 related:
   - ../concepts/embodied-perception-six-spatial-representations.md
   - ./autonomous-driving-core-algorithms-series.md
@@ -39,6 +39,7 @@ related:
   - ../entities/aeris-10-plfm-radar.md
   - ../entities/rhino-auto.md
   - ../entities/paper-icrowdnav.md
+  - ../entities/paper-humembr.md
   - ../comparisons/lidar-slam-lio-vio-selection.md
   - ../concepts/ros2-basics.md
   - ../methods/vla.md
@@ -193,7 +194,7 @@ flowchart TB
 |--------|--------|----------------|
 | 状态估计 | 位姿 + 地图 | 浮基 + 接触 + 关节 |
 | 规划输出 | `cmd_vel` / 轨迹 | 足端/质心/关节参考 |
-| 学习 | VLA/IL 操作；学习型局部社交导航见 [iCrowdNav](../entities/paper-icrowdnav.md)（BEV+姿态意图，非 Nav2 替代） | RL locomotion / tracking |
+| 学习 | VLA/IL 操作；学习型局部社交导航见 [iCrowdNav](../entities/paper-icrowdnav.md)（BEV+姿态意图，非 Nav2 替代）；人中心例行找人见 [HUMEMBR](../entities/paper-humembr.md)（Spot GraphNav + LLM 记忆检索） | RL locomotion / tracking |
 | 代表仓 | Nav2、FAST-LIO | [OpenLoong-Dyn-Control](../entities/openloong-dyn-control.md)、[legged_gym](https://github.com/leggedrobotics/legged_gym) |
 
 ## 常见误区
@@ -227,6 +228,7 @@ flowchart TB
 - [Glob3R](../entities/paper-glob3r.md) — 全局 SfM + 3D 基础模型（离线精炼）
 - [PanoLOG / G²PS](../entities/paper-panolog-ggps.md) — 全景户外 3DGS 重建（novel-view 资产）
 - [iCrowdNav](../entities/paper-icrowdnav.md) — 视觉人群导航 DRL（局部社交层对照；代码待发布）
+- [HUMEMBR](../entities/paper-humembr.md) — 人中心长时程记忆 + PersonEQA；Spot GraphNav 高层路点（非替代经典栈）
 
 ## 推荐继续阅读
 
