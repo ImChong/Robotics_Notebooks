@@ -2,7 +2,7 @@
 type: concept
 summary: "深度学习基础是现代机器人感知、控制与生成式策略的函数逼近底座，涵盖神经网络表示、优化训练和泛化机制。"
 description: 深度学习的基础理论体系，涵盖了从监督学习、神经网络架构到优化算法与泛化理论的核心概念。
-updated: 2026-07-12
+updated: 2026-08-06
 related:
   - ./backpropagation.md
   - ./vision-backbones.md
@@ -13,6 +13,7 @@ related:
   - ../methods/adamw.md
   - ../comparisons/deep-learning-optimizers.md
   - ../entities/paper-resnet-deep-residual-learning.md
+  - ../entities/paper-effective-degree.md
   - ../entities/llms-from-scratch-raschka.md
   - ../entities/andrej-karpathy.md
 sources:
@@ -21,6 +22,7 @@ sources:
   - ../../sources/repos/pytorch-official.md
   - ../../sources/repos/tensorflow-official.md
   - ../../sources/papers/resnet_arxiv_1512_03385.md
+  - ../../sources/papers/effective_degree_arxiv_2605_29823.md
   - ../../sources/repos/rasbt_llms_from_scratch.md
   - ../../sources/courses/karpathy_intro_llms_youtube.md
 ---
@@ -57,6 +59,7 @@ sources:
 深度学习的成功在很大程度上取决于其在未见数据上的表现。
 - **偏差-方差权衡 (Bias-Variance Tradeoff)**: 模型复杂度与泛化能力的关系。
 - **正则化 (Regularization)**: 通过 Dropout、权重衰减等技术防止过拟合。
+- **函数空间简洁性 (Effective Degree)**: 用数据插值路径上的多项式有效度数量化/优化「简单解」偏好，见 [Effective Degree](../entities/paper-effective-degree.md)（ICML 2026）。
 
 ## 与机器人技术的联系
 
@@ -74,6 +77,7 @@ sources:
 - [Transformer](./transformer.md)
 - [目标检测（方法）](../methods/object-detection.md)
 - [ResNet（论文实体）](../entities/paper-resnet-deep-residual-learning.md)
+- [Effective Degree（论文实体）](../entities/paper-effective-degree.md) — 多项式代理量化简洁性与可微正则
 - [强化学习基础](../methods/reinforcement-learning.md)
 - [生成式模型基础](../formalizations/generative-foundations.md)
 - [Sim2Real](../concepts/sim2real.md)

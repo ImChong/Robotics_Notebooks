@@ -1,3 +1,13 @@
+## [2026-08-06] ingest | sources/papers/effective_degree_arxiv_2605_29823.md — Effective Degree（arXiv:2605.29823，ICML 2026，清华）多项式代理量化简洁性；升格 wiki/entities/paper-effective-degree.md；互链 wiki/concepts/deep-learning-foundations.md、wiki/methods/reinforcement-learning.md、wiki/methods/ppo.md、wiki/methods/adamw.md；sources/repos/effective-degree.md
+
+- **触发：** 用户指定 *Quantifying and Optimizing Simplicity via Polynomial Representations*（arXiv:2605.29823；章天任 / 李向欣 / 肖明昊 / 陈冠宇 / 陈峰；清华；代码 https://github.com/xinzaixinzai/Effective-Degree）；要求自动合入
+- **来源：** [`sources/papers/effective_degree_arxiv_2605_29823.md`](sources/papers/effective_degree_arxiv_2605_29823.md)、[`sources/repos/effective-degree.md`](sources/repos/effective-degree.md)
+- **新建实体：** [`wiki/entities/paper-effective-degree.md`](wiki/entities/paper-effective-degree.md)
+- **开源核查（步骤 2.5）：** **已开源** — 官方仓含 `train_wd_regular_torch.py` / `poly/` / `rl/ppo_procgen.sh` 等；`## 源码运行时序图` 已写；许可证未声明
+- **方法要点：** 数据插值路径 + Chebyshev 代理 → Effective Degree；可微正则；CIFAR ViT-Tiny 87.80→90.82；CLIP/GLUE/Procgen 增益；相关强于 sharpness
+- **交叉更新：** [`wiki/concepts/deep-learning-foundations.md`](wiki/concepts/deep-learning-foundations.md)、[`wiki/methods/reinforcement-learning.md`](wiki/methods/reinforcement-learning.md)、[`wiki/methods/ppo.md`](wiki/methods/ppo.md)、[`wiki/methods/adamw.md`](wiki/methods/adamw.md)
+
+
 ## [2026-08-06] ingest | sources/papers/xmorph_arxiv_2606_30290.md — X-Morph（arXiv:2606.30290，NUS）人体→非人形腿式跨形态运动先验；升格 wiki/entities/paper-xmorph.md；互链 wiki/overview/hub-motion-retargeting.md、wiki/overview/hub-cross-embodiment.md、wiki/methods/motion-retargeting-gmr.md、wiki/methods/reactor-physics-aware-motion-retargeting.md、wiki/methods/zest.md、wiki/entities/unitree-g1.md、wiki/entities/unitree.md；sources/sites/maker-rat-morph-github-io.md
 
 - **触发：** 用户指定 *X-Morph: Human Motion Priors for Scalable Robot Learning Across Morphologies*（arXiv；新加坡国立大学；Ritwik Sharma / Shivam Sood / Arhaan Jain / Shyam Charan Kesavamoorthi / Chengyang He / Guillaume Sartoretti）；要求自动合入

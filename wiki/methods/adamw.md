@@ -2,7 +2,7 @@
 type: method
 tags: [deep-learning, optimization, adamw, weight-decay, training, transformer]
 status: complete
-updated: 2026-06-27
+updated: 2026-08-06
 summary: "AdamW 将权重衰减从 Adam 的梯度自适应更新中解耦，按参数幅度独立收缩权重，是 Transformer 预训练与 VLA 大模型微调的事实标准优化器。"
 related:
   - ./adam.md
@@ -86,6 +86,7 @@ $$
 - [VLA](./vla.md)
 - [Deep Learning Optimizers 对比](../comparisons/deep-learning-optimizers.md)
 - [PyTorch](../entities/pytorch.md)
+- [Effective Degree](../entities/paper-effective-degree.md) — 与 AdamW 训练栈并存的函数空间简洁正则（ICML 2026）
 
 ## 参考来源
 

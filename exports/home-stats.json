@@ -1,13 +1,66 @@
 {
   "generated_at": "2026-08-06",
-  "node_count": 2105,
-  "edge_count": 19278,
+  "node_count": 2106,
+  "edge_count": 19288,
   "coverage": {
-    "covered": 2081,
-    "total": 2081,
+    "covered": 2082,
+    "total": 2082,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-effective-degree.md",
+      "detail_id": "entity-paper-effective-degree",
+      "label": "Effective Degree：多项式代理量化简洁性",
+      "type": "entity",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/deep-learning-foundations.md",
+      "detail_id": "wiki-concepts-deep-learning-foundations",
+      "label": "深度学习基础 (Deep Learning Foundations)",
+      "type": "concept",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/reinforcement-learning.md",
+      "detail_id": "wiki-methods-reinforcement-learning",
+      "label": "Reinforcement Learning (RL, 强化学习)",
+      "type": "method",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/methods/ppo.md",
+      "detail_id": "wiki-methods-ppo",
+      "label": "PPO（Proximal Policy Optimization）",
+      "type": "method",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/methods/adamw.md",
+      "detail_id": "wiki-methods-adamw",
+      "label": "AdamW（Adam with Decoupled Weight Decay）",
+      "type": "method",
+      "recency": "2026-08-06",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-xmorph.md",
       "detail_id": "entity-paper-xmorph",
@@ -155,66 +208,18 @@
       "recency": "2026-08-06",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-classical-control.md",
-      "detail_id": "roadmap-depth-classical-control",
-      "label": "路线（纵深）：如果目标是传统模型控制（LIP/ZMP → MPC → WBC）",
-      "type": "roadmap_page",
-      "recency": "2026-08-06",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "roadmap/depth-contact-manipulation.md",
-      "detail_id": "roadmap-depth-contact-manipulation",
-      "label": "路线（纵深）：如果目标是接触丰富的操作任务",
-      "type": "roadmap_page",
-      "recency": "2026-08-06",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-humanoid-boxing.md",
-      "detail_id": "roadmap-depth-humanoid-boxing",
-      "label": "路线（纵深）：如果目标是人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）",
-      "type": "roadmap_page",
-      "recency": "2026-08-06",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "roadmap/depth-humanoid-hardware-design.md",
-      "detail_id": "roadmap-depth-humanoid-hardware-design",
-      "label": "路线（纵深）：如果目标是人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）",
-      "type": "roadmap_page",
-      "recency": "2026-08-06",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "roadmap/depth-humanoid-soccer.md",
-      "detail_id": "roadmap-depth-humanoid-soccer",
-      "label": "路线（纵深）：如果目标是人形足球（全向行走 → 感知踢球 → 多机战术）",
-      "type": "roadmap_page",
-      "recency": "2026-08-06",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形足球纵深路线（Humanoid Soccer Deep-Dive Roadmap） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-xmorph.md",
-    "detail_id": "entity-paper-xmorph",
-    "label": "X-Morph：跨形态人体运动先验",
+    "path": "wiki/entities/paper-effective-degree.md",
+    "detail_id": "entity-paper-effective-degree",
+    "label": "Effective Degree：多项式代理量化简洁性",
     "type": "entity",
     "recency": "2026-08-06",
     "source": "log.md",
     "action": "maintained",
-    "community_label": "动作重定向（Motion Retargeting） 社区"
+    "has_repo": true,
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
@@ -223,7 +228,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 164
+      "size": 165
     },
     {
       "label": "操作",
@@ -292,7 +297,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 288,
+      "degree": 290,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
