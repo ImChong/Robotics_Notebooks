@@ -1,3 +1,13 @@
+## [2026-08-06] ingest | sources/papers/xmorph_arxiv_2606_30290.md — X-Morph（arXiv:2606.30290，NUS）人体→非人形腿式跨形态运动先验；升格 wiki/entities/paper-xmorph.md；互链 wiki/overview/hub-motion-retargeting.md、wiki/overview/hub-cross-embodiment.md、wiki/methods/motion-retargeting-gmr.md、wiki/methods/reactor-physics-aware-motion-retargeting.md、wiki/methods/zest.md、wiki/entities/unitree-g1.md、wiki/entities/unitree.md；sources/sites/maker-rat-morph-github-io.md
+
+- **触发：** 用户指定 *X-Morph: Human Motion Priors for Scalable Robot Learning Across Morphologies*（arXiv；新加坡国立大学；Ritwik Sharma / Shivam Sood / Arhaan Jain / Shyam Charan Kesavamoorthi / Chengyang He / Guillaume Sartoretti）；要求自动合入
+- **来源：** [`sources/papers/xmorph_arxiv_2606_30290.md`](sources/papers/xmorph_arxiv_2606_30290.md)、[`sources/sites/maker-rat-morph-github-io.md`](sources/sites/maker-rat-morph-github-io.md)
+- **新建实体：** [`wiki/entities/paper-xmorph.md`](wiki/entities/paper-xmorph.md)
+- **开源核查（步骤 2.5）：** **宣称将开源 / 未列链接** — 项目页 Code/Video 按钮 disabled，无 GitHub URL；`## 源码运行时序图` 写不适用
+- **方法要点：** G1 源表示 → PAN 式跨形态重定向 → 物理感知校正 → 特权 teacher + 因果 student；Go2/Yuna/B2-Z1；视频遥操作 ≤28.9 Hz；corrector 使 Go2 slip −27.2%、penetration −46.9%，Yuna Joint MAE −17.4%
+- **交叉更新：** [`wiki/overview/hub-motion-retargeting.md`](wiki/overview/hub-motion-retargeting.md)、[`wiki/overview/hub-cross-embodiment.md`](wiki/overview/hub-cross-embodiment.md)、[`wiki/methods/motion-retargeting-gmr.md`](wiki/methods/motion-retargeting-gmr.md)、[`wiki/methods/reactor-physics-aware-motion-retargeting.md`](wiki/methods/reactor-physics-aware-motion-retargeting.md)、[`wiki/methods/zest.md`](wiki/methods/zest.md)
+
+
 ## [2026-08-06] ingest | sources/papers/uma_arxiv_2506_01802.md — UMA（arXiv:2506.01802，ACM TOG 2026）多级表面对齐超精细可驱动着装人体 avatar；升格 wiki/entities/paper-uma.md；互链 wiki/tasks/teleoperation.md、wiki/queries/humanoid-training-data-pipeline.md、wiki/concepts/smpl-x.md、wiki/entities/paper-face-anything-4d-face-reconstruction.md、wiki/entities/paper-shells-layered-surface-sampling.md；sources/repos/uma.md、sources/sites/vcai-mpi-inf-uma.md
 
 - **触发：** 用户指定 <https://vcai.mpi-inf.mpg.de/projects/UMA/> 与 <https://arxiv.org/abs/2506.01802>；要求自动合并

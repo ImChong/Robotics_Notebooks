@@ -3,7 +3,7 @@ type: method
 tags: [robotics, motion-retargeting, reinforcement-learning, bilevel-optimization, humanoid, quadruped, imitation-learning, paper, humanoid-paper-notebooks]
 status: complete
 date: 2026-05-13
-updated: 2026-08-01
+updated: 2026-08-06
 arxiv: "2605.06593"
 related:
   - ../overview/paper-notebook-category-02-motion-retargeting.md
@@ -109,6 +109,7 @@ flowchart LR
 - [Imitation Learning](./imitation-learning.md) — 下游如何利用高质量参考与奖励 shaping。
 - [Locomotion](../tasks/locomotion.md) — 四足与人形步态参考在任务层的落点。
 - [Disney Research LA](../entities/disney-research-la.md) — 官方 publication 门户与角色机器人论文簇枢纽。
+- [X-Morph](../entities/paper-xmorph.md) — 独立 offline corrector + 跟踪蒸馏的人体→非人形腿式对照。
 
 ## 推荐继续阅读
 

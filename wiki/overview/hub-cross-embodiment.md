@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-cross-embodiment, transfer, any2any, retargeting]
 status: complete
-updated: 2026-08-02
+updated: 2026-08-06
 related:
   - ../queries/cross-embodiment-transfer-strategy.md
   - ../entities/paper-any2any-cross-embodiment-wbt.md
@@ -10,7 +10,8 @@ related:
   - ../entities/paper-last-hd-latent-physical-reasoning.md
   - ../entities/generalist-gen1-thousand-hands.md
   - ../entities/gemini-robotics.md
-summary: "跨具身迁移知识链汇总：不同机器人形态、仿真与真机之间的策略/动作迁移，重定向、域随机与 Any2Any 类方法的选型与失败模式；含同形态跨配置遗留数据三相迁移（Emergent Transfer）、末端/工具接口多样性（如 GEN-1 千手）与闭源 On-Device 快速适配（Gemini Robotics 2）轴。"
+  - ../entities/paper-xmorph.md
+summary: "跨具身迁移知识链汇总：不同机器人形态、仿真与真机之间的策略/动作迁移，重定向、域随机与 Any2Any 类方法的选型与失败模式；含同形态跨配置遗留数据三相迁移（Emergent Transfer）、末端/工具接口多样性（如 GEN-1 千手）、人体→非人形腿式行为先验（X-Morph）与闭源 On-Device 快速适配（Gemini Robotics 2）轴。"
 ---
 
 # 跨具身迁移（知识链汇总）
@@ -48,6 +49,7 @@ summary: "跨具身迁移知识链汇总：不同机器人形态、仿真与真�
 | 实体 | LaST-HD 人手→机器人 VLA | [LaST-HD](../entities/paper-last-hd-latent-physical-reasoning.md) |
 | 实体 | GEN-1 千手（跨末端/工具） | [GEN-1 千手](../entities/generalist-gen1-thousand-hands.md) — 闭源产业样本；同一基座跨 ~9k 末端变体 |
 | 实体 | Gemini Robotics 2 On-Device | [Gemini Robotics](../entities/gemini-robotics.md) — 闭源；博客称新双臂本体数小时 / &lt;200 例适配 |
+| 实体 | X-Morph 人体→非人形腿式 | [X-Morph](../entities/paper-xmorph.md) — 重定向+物理校正+跟踪蒸馏；Go2/六足/B2-Z1 |
 | 概念 | 角色动画 vs 机器人 | [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md) |
 | 数据 | 跨具身数据集 | [Open X-Embodiment](../concepts/open-x-embodiment.md) |
 
@@ -65,6 +67,7 @@ summary: "跨具身迁移知识链汇总：不同机器人形态、仿真与真�
 - [Emergent Transfer：跨配置遗留数据何时开始有用](../entities/paper-emergent-transfer-cross-config.md) — 同形态换相机/夹爪后的三相共训
 - [GEN-1 千手：跨末端执行器泛化](../entities/generalist-gen1-thousand-hands.md) — 末端接口多样性（产业闭源对照）
 - [Gemini Robotics](../entities/gemini-robotics.md) — On-Device 2 快速跨本体叙事（权重未开源）
+- [X-Morph](../entities/paper-xmorph.md) — 人体运动作非人形腿式可复用行为先验
 
 ## 参考来源
 

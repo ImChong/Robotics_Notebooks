@@ -2,7 +2,7 @@
 type: entity
 tags: [unitree, hardware, sdk, sim2real, humanoid, quadruped]
 status: complete
-updated: 2026-07-26
+updated: 2026-08-06
 sources:
   - ../../sources/repos/unitree.md
   - ../../sources/sites/unitree-unistore.md
@@ -379,6 +379,7 @@ Unitree 是非常重要的目标平台语境：先选定官方 RL 仓之一，�
 ## 关联页面
 
 - [Unitree G1](./unitree-g1.md)
+- [X-Morph](./paper-xmorph.md) — 人体运动先验迁移到 Go2 / B2-Z1 等非人形平台（arXiv:2606.30290）
 - [UniStore（宇树应用平台）](./unitree-unistore.md)
 - [unitree_sdk2](./unitree-sdk2.md)
 - [unitree_ros（ROS1 / Gazebo）](./unitree-ros.md)
