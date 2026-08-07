@@ -2,12 +2,13 @@
 type: entity
 tags: [dataset, egocentric, egocentric-video, manipulation, data-engine, vla, imitation-learning, handedness, stellarnex-robotics]
 status: complete
-updated: 2026-07-24
+updated: 2026-08-07
 date: 2026-07-24
 related:
   - ./paper-egoworld.md
   - ./paper-egosteer.md
   - ./paper-ego-03-egomimic.md
+  - ./rekadaily-10k-dataset.md
   - ../methods/egoscale.md
   - ../tasks/manipulation.md
   - ../overview/ego-category-01-data-collection.md
@@ -15,6 +16,7 @@ related:
 sources:
   - ../../sources/blogs/stellarnex_egoworld_100w.md
   - ../../sources/sites/stellarnex-robotics.md
+  - ../../sources/sites/rekadaily-10k.md
 summary: "EgoWorld-100W（星际硅途 / StellarNex）：宣称百万级头戴第一人称操作视频（100万+ 条 / 1万+ 小时 / 3000+ 参与者），按场景×物体×动作×手性四维结构化；申请制合作开放，非公开一键下载。与 ICLR 2026 EgoWorld 视图翻译论文同名异物。"
 ---
 
@@ -113,6 +115,7 @@ flowchart TB
 | **EPIC-KITCHENS / Ego4D** | 更偏厨房细粒度或通用第一视角理解；本数据强调 **多真实场景操作 + 四维结构** |
 | **EgoMimic / EgoDex** | 更贴 IL/灵巧高精度；本数据强调 **规模 × 条件组合覆盖** |
 | **[EgoScale](../methods/egoscale.md)** | 学术人视频缩放 + 显式腕手标签预训练；本页为 **商业数据引擎产品**，标签体系以 Task/四维为主 |
+| **[RekaDaily-10k](./rekadaily-10k-dataset.md)** | 同为万小时级家务/日常 ego；Reka **Apache 2.0 ungated HF**，本页为 **申请制** 百万条叙事 |
 | **[EgoSteer / EgoSmith](./paper-egosteer.md)** | 开源策展栈洗野外视频；本页是 **自采网络 + 申请制发放** |
 | **[EgoWorld 论文](./paper-egoworld.md)** | **同名异物**（视图翻译方法） |
 
@@ -127,6 +130,7 @@ flowchart TB
 
 - [EgoWorld（exo→ego 论文）](./paper-egoworld.md) — **同名消歧**。
 - [EgoScale](../methods/egoscale.md) — 人视频规模预训练方法对照。
+- [RekaDaily-10k](./rekadaily-10k-dataset.md) — 公开 ungated 家务 ego 视频对照。
 - [EgoSteer](./paper-egosteer.md) — 开源 egocentric 策展与策略全栈对照。
 - [EgoMimic](./paper-ego-03-egomimic.md) — 第一视角人数据进 IL。
 - [Manipulation](../tasks/manipulation.md) — 操作任务总览。

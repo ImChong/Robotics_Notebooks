@@ -3,7 +3,7 @@ title: 人形训练数据管线选型指南
 type: query
 status: complete
 created: 2026-06-19
-updated: 2026-08-06
+updated: 2026-08-07
 summary: 从原始动作捕捉 / 人体视频 → 重定向 → RL/IL 训练输入的端到端选型决策树，覆盖参考运动来源、重定向方案、训练范式三层取舍与典型失败模式。
 tags: [dataset, motion-retargeting, data-pipeline, humanoid, training-data]
 sources:
@@ -12,6 +12,7 @@ sources:
   - ../../sources/repos/phuma.md
   - ../../sources/repos/omomo_release.md
   - ../../sources/sites/humanoideveryday.md
+  - ../../sources/sites/rekadaily-10k.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「我要训练一个人形全身策略，从**原始动作捕捉 / 人体视频**到能喂进 **RL/IL** 的训练输入，参考运动来源、重定向方案、训练范式三层各该怎么选？」
@@ -68,11 +69,12 @@ flowchart TD
 | 真机 in-the-wild 遥操作 | [HIW-500](../entities/hiw-500-dataset.md) | **500+ h** 家庭场景、语言子任务标注、开源规模大 | 夹爪末端、地域/户型偏差、LeRobot 格式待全量 |
 | 纯仿真 teleop + 视觉扩增 | [OASIS](../entities/paper-loco-manip-04-oasis.md) | Real-to-Sim 资产、VR 仿真 teleop、离线域随机化渲染；**纯仿真数据可 ≥ 等量真机 teleop** | 资产/接触精度依赖生成模型；motion 多样性受操作员上限 |
 | 人体视频 | [GVHMR](../entities/gvhmr.md) / [VideoMimic](../entities/videomimic.md) | 规模可极大 | 3D/接触信息弱，需重建 |
+| 家务 egocentric 人视频（开放） | [RekaDaily-10k](../entities/rekadaily-10k-dataset.md) | **10k+ h** 目标、Apache 2.0 ungated、家庭无剧本；可作视觉/语言先验 | **无** 原生手姿/关节；进策略需重建或仅作预训练层 |
 | 面部视频（telepresence/表情） | [Face Anything](../entities/paper-face-anything-4d-face-reconstruction.md) | 前馈 **4D 面部几何+跟踪** | 与全身 SMPL 链路分离；野外泛化待验证 |
 | 标定多视角面部注册 | [SHELLS](../entities/paper-shells-layered-surface-sampling.md) | 固定拓扑 ~18k 顶点、亚秒级前馈；纯合成训练可泛化棚拍 | **未开源**；需标定多视角；非细皱纹/发须外包络 |
 | 多视角着装数字人（telepresence） | [UMA](../entities/paper-uma.md) | 40×6K 长序列 + 可驱动超精细几何/外观；推理与 demo 已开源 | 人物特异单层模板；训练工具待发；非机器人策略数据 |
 
-**决策要点**：目标是 G1/H1-2 全身跟踪且不想从零重定向 → 直接选 PHUMA；要最大人体分布 → AMASS；要物体交互 → OMOMO；要真机操作模仿 → Humanoid Everyday；要 **家庭 in-the-wild 长程家务遥操作** 且需最大开源规模 → HIW-500；要 **绕开真机 teleop 复位/空间成本** 且接受仿真资产管线 → OASIS。
+**决策要点**：目标是 G1/H1-2 全身跟踪且不想从零重定向 → 直接选 PHUMA；要最大人体分布 → AMASS；要物体交互 → OMOMO；要真机操作模仿 → Humanoid Everyday；要 **家庭 in-the-wild 长程家务遥操作** 且需最大开源规模 → HIW-500；要 **绕开真机 teleop 复位/空间成本** 且接受仿真资产管线 → OASIS；要 **公开可商用的家庭 ego 视觉/语言先验**（非机器人轨迹）→ RekaDaily-10k。
 
 ---
 
