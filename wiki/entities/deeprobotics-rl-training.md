@@ -7,6 +7,7 @@ related:
   - ./robot-lab.md
   - ./unitree-rl-lab.md
   - ./ddt-lab.md
+  - ./cyclo-lab.md
   - ./isaac-lab.md
   - ../concepts/wheel-legged-quadruped.md
   - ./paper-aware-wheeled-legged-reflexive-evasion.md
@@ -82,6 +83,7 @@ flowchart LR
 - [robot_lab](./robot-lab.md) — 社区多厂商 Isaac Lab 扩展（亦含 Deeprobotics 机型）
 - [unitree_rl_lab](./unitree-rl-lab.md) — 宇树官方 Isaac Lab RL 对照
 - [DDT_Lab](./ddt-lab.md) — 直驱科技轮足官方 Lab 对照
+- [cyclo_lab](./cyclo-lab.md) — ROBOTIS 官方 Isaac Lab（操作 / AI Worker）对照
 - [Isaac Lab](./isaac-lab.md)
 - [轮足四足机器人](../concepts/wheel-legged-quadruped.md)
 - [AWARE（M20 高动态反射避障）](./paper-aware-wheeled-legged-reflexive-evasion.md)

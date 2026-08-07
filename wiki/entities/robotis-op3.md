@@ -2,14 +2,18 @@
 type: entity
 tags: [humanoid, hardware, open-source, robotis, ros, education]
 status: complete
-updated: 2026-05-18
+updated: 2026-08-07
 related:
+  - ./robotis.md
+  - ./robotis-ai-sapiens.md
+  - ./robotis-mujoco-menagerie.md
   - ./humanoid-robot.md
   - ../overview/robot-open-source-wechat-issue01-curator.md
   - ./robotis-thormang3.md
   - ../concepts/ros2-basics.md
 sources:
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md
+  - ../../sources/repos/robotis-git.md
 summary: "ROBOTIS OP3：小型人形开源平台，文档与三维模型在 eManual；手册源码树位于 ROBOTIS-GIT/emanual 的 OP3 目录。"
 ---
 
@@ -40,6 +44,8 @@ summary: "ROBOTIS OP3：小型人形开源平台，文档与三维模型在 eMan
 
 ## 关联页面
 
+- [ROBOTIS 组织 hub](./robotis.md)
+- [AI Sapiens](./robotis-ai-sapiens.md)（新一代人形对照）· [MuJoCo Menagerie](./robotis-mujoco-menagerie.md)
 - [人形机器人](./humanoid-robot.md)
 - [ROBOTIS THORMANG3](./robotis-thormang3.md)
 - [ROS 2 基础](../concepts/ros2-basics.md)
@@ -52,3 +58,4 @@ summary: "ROBOTIS OP3：小型人形开源平台，文档与三维模型在 eMan
 ## 参考来源
 
 - [wechat_jixie_robot_open_source_treasury_issue01_10_robots.md](../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md)
+- [sources/repos/robotis-git.md](../../sources/repos/robotis-git.md)

@@ -7,6 +7,7 @@ related:
   - ./robot-lab.md
   - ./unitree-rl-lab.md
   - ./deeprobotics-rl-training.md
+  - ./cyclo-lab.md
   - ./isaac-lab.md
   - ../concepts/wheel-legged-quadruped.md
   - ../tasks/hybrid-locomotion.md
@@ -82,6 +83,7 @@ flowchart LR
 - [robot_lab](./robot-lab.md) — 社区扩展中亦列出 DDTRobot Tita
 - [unitree_rl_lab](./unitree-rl-lab.md)
 - [Deep Robotics rl_training](./deeprobotics-rl-training.md)
+- [cyclo_lab](./cyclo-lab.md) — ROBOTIS 厂商 Lab 对照
 - [Isaac Lab](./isaac-lab.md)
 - [Locomotion](../tasks/locomotion.md)
 

@@ -2,13 +2,17 @@
 type: entity
 tags: [mobile-robot, education, ros, robotis, turtlebot]
 status: complete
-updated: 2026-05-18
+updated: 2026-08-07
 related:
+  - ./robotis.md
+  - ./dynamixel-sdk.md
+  - ./robotis-mujoco-menagerie.md
   - ../tasks/manipulation.md
   - ../overview/robot-open-source-wechat-issue01-curator.md
   - ../concepts/ros2-basics.md
 sources:
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md
+  - ../../sources/repos/robotis-git.md
 summary: "TurtleBot3：ROBOTIS 与社区推动的 ROS 教育轮式移动平台，含 Burger/Waffle 等型号；eManual 与 turtlebot3 仓库为主入口。"
 ---
 
@@ -40,6 +44,8 @@ summary: "TurtleBot3：ROBOTIS 与社区推动的 ROS 教育轮式移动平台�
 
 ## 关联页面
 
+- [ROBOTIS 组织 hub](./robotis.md)
+- [Dynamixel SDK](./dynamixel-sdk.md) · [MuJoCo Menagerie](./robotis-mujoco-menagerie.md)
 - [Manipulation](../tasks/manipulation.md)（移动操作与导航常与此类平台绑定）
 - [ROS 2 基础](../concepts/ros2-basics.md)
 - [机器人开源宝库（微信策展第01期）索引](../overview/robot-open-source-wechat-issue01-curator.md)
@@ -51,3 +57,4 @@ summary: "TurtleBot3：ROBOTIS 与社区推动的 ROS 教育轮式移动平台�
 ## 参考来源
 
 - [wechat_jixie_robot_open_source_treasury_issue01_10_robots.md](../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md)
+- [sources/repos/robotis-git.md](../../sources/repos/robotis-git.md)
