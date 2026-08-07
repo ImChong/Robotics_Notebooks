@@ -3,7 +3,7 @@
 type: entity
 tags: [entity, simulator, isaac, isaac-sim, gpu-simulation, reinforcement-learning, sim2real, nvidia]
 status: stable
-updated: 2026-08-02
+updated: 2026-08-07
 related:
   - ./isaac-gym-isaac-lab.md
   - ./isaac-sim.md
@@ -19,6 +19,7 @@ related:
   - ../tasks/locomotion.md
   - ../entities/paper-chord-contact-wrench-dexterous-manipulation.md
   - ../concepts/sim2real.md
+  - ./paper-agile-humanoid-loco-manipulation.md
   - ./autodl.md
   - ./gpufree.md
   - ./stackforce.md
@@ -36,6 +37,8 @@ sources:
   - ../../sources/papers/policy_optimization.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
   - ../../sources/courses/isaac_lab_implicit_explicit_actuators.md
+  - ../../sources/papers/agile_arxiv_2603_20147.md
+  - ../../sources/repos/wbc_agile.md
 summary: "NVIDIA 当前官方主推的 robot learning 框架，建立在 Isaac Sim 之上，承接 IsaacGymEnvs/Orbit 用户；locomotion、manipulation 与 sim2real 新实验的首选仿真栈。"
 ---
 
@@ -308,6 +311,7 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 - [MuJoCo Playground](./mujoco-playground.md) — 轻量 time-to-robot 入口，复杂任务可再迁移至 Lab
 - [mjlab](./mjlab.md) — 借用 Lab manager-based API 的 MuJoCo Warp 折中栈
 - [REFINE-DP（论文实体）](./paper-loco-manip-161-157-refine-dp.md) — Isaac Lab 上 DP 规划器与 RL loco-manip 联合微调（arXiv:2603.13707）
+- [AGILE（论文实体）](./paper-agile-humanoid-loco-manipulation.md) — Lab 之上的人形 RL 全生命周期工作流（Prepare→Deploy；arXiv:2603.20147，WBC-AGILE）
 - [legged_gym](./legged-gym.md) — 旧一代足式 RL 训练栈，工程经验可迁移
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Locomotion](../tasks/locomotion.md)
