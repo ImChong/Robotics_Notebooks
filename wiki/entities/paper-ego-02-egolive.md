@@ -3,13 +3,14 @@
 type: entity
 tags: [paper, egocentric, ego-survey, embodied-ai, jd]
 status: complete
-updated: 2026-06-25
+updated: 2026-08-07
 arxiv: "2604.23570"
 code: https://robotdata-market.jdcloud.com/console/market
 summary: "大规模真实家政/零售等任务导向 Ego 数据，把「人类视频」推向机器人任务数据。"
 related:
   - ../overview/ego-9-papers-technology-map.md
   - ../overview/ego-category-01-data-collection.md
+  - ./paper-joyai-ra-05.md
 sources:
   - ../../sources/papers/ego_survey_02_egolive.md
   - ../../sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md
@@ -81,6 +82,7 @@ EgoLive 更像是在回答另一个问题：第一视角数据不能只停留在
 
 - 技术地图：[ego-9-papers-technology-map.md](../overview/ego-9-papers-technology-map.md)
 - 分类 hub：[ego-category-01-data-collection.md](../overview/ego-category-01-data-collection.md)
+- 策略侧消费示例：[JoyAI-RA 0.5](./paper-joyai-ra-05.md) — 把 EgoLive **20K+ h** 人视频当主缩放轴的 VLWA 系统（arXiv:2608.05674）
 - 原始 source：[ego_survey_02_egolive.md](../../sources/papers/ego_survey_02_egolive.md)
 
 ## 参考来源

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, shanghai-ai-lab, flow-matching, mot, compositional-generalization, manipulation, qwen, world-models, latent-foresight]
 status: complete
-updated: 2026-07-23
+updated: 2026-08-07
 arxiv: "2607.04988"
 related:
   - ../methods/vla.md
@@ -160,6 +160,7 @@ flowchart TB
 | **Being-H0.7** | 同为 **潜空间未来监督**；A1.5 用 **冻结大规模视频生成器** 作教师而非自建轻量未来头 |
 | **LingBot-VLA 2.0** | 同 RoboTwin/LIBERO 赛道；LingBot 走 **MoE + 6 万小时数据工程**；A1.5 强调 **语义保持 + latent WAN 查询** |
 | **Xiaomi-Robotics-0** | 同 **Qwen3 + DiT flow** 族；A1.5 额外统一 **理解/前瞻/动作** 三目标与 **组合泛化** 真机协议 |
+| **JoyAI-RA 0.5** | 同为「训练用世界模型、部署不滚像素」；JoyAI-RA 自训 **LAC-WM + latent-action**，A1.5 用 **冻结 WAN foresight token** |
 
 ## 关联页面
 
@@ -171,6 +172,7 @@ flowchart TB
 - [Manipulation](../tasks/manipulation.md) — LIBERO / RoboTwin / 真机操作背景。
 - [RoboTwin](./robotwin.md) — 双臂仿真基准与 DOMINO 动态扩展。
 - [LingBot-VLA 2.0](./lingbot-vla-v2.md) — 同赛道大规模预训练 VLA 对照。
+- [JoyAI-RA 0.5](./paper-joyai-ra-05.md) — 双动作对齐 VLWA；自训 LAC-WM 对照路径（arXiv:2608.05674）。
 - [RoboInter1.5](./paper-robointer-1-5.md) — 同组织生态的稠密中间表示 + plan-then-execute VLA 套件（Executor 参考 InternVLA-M1）
 
 

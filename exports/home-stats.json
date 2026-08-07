@@ -1,13 +1,97 @@
 {
   "generated_at": "2026-08-07",
-  "node_count": 2123,
-  "edge_count": 19525,
+  "node_count": 2124,
+  "edge_count": 19545,
   "coverage": {
-    "covered": 2099,
-    "total": 2099,
+    "covered": 2100,
+    "total": 2100,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-joyai-ra-05.md",
+      "detail_id": "entity-paper-joyai-ra-05",
+      "label": "JoyAI-RA 0.5：双动作对齐的 VLWA 通才操作",
+      "type": "entity",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/world-action-models.md",
+      "detail_id": "wiki-concepts-world-action-models",
+      "label": "World Action Models（WAM，世界–动作模型）",
+      "type": "concept",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-ego-02-egolive.md",
+      "detail_id": "entity-paper-ego-02-egolive",
+      "label": "EgoLive",
+      "type": "entity",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/ego-category-02-human-to-robot.md",
+      "detail_id": "wiki-overview-ego-category-02-human-to-robot",
+      "label": "Ego 分类 02：人→机器人",
+      "type": "overview",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-data-pyramid-embodied-manipulation.md",
+      "detail_id": "entity-paper-data-pyramid-embodied-manipulation",
+      "label": "Data Pyramid for Embodied Manipulation（具身数据金字塔综述）",
+      "type": "entity",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-internvla-a15-unified-vla.md",
+      "detail_id": "entity-paper-internvla-a15-unified-vla",
+      "label": "InternVLA-A1.5：理解、潜式前瞻与动作的统一 VLA",
+      "type": "entity",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/methods/macrodata-egocentric-hand-action.md",
       "detail_id": "wiki-methods-macrodata-egocentric-hand-action",
@@ -80,16 +164,6 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
-      "path": "wiki/overview/ego-category-02-human-to-robot.md",
-      "detail_id": "wiki-overview-ego-category-02-human-to-robot",
-      "label": "Ego 分类 02：人→机器人",
-      "type": "overview",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
       "path": "wiki/queries/dexterous-manipulation-data-pipeline.md",
       "detail_id": "wiki-queries-dexterous-manipulation-data-pipeline",
       "label": "灵巧操作数据管线与 RL 训练基建指南",
@@ -140,97 +214,22 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/methods/dynaretarget-sbto-motion-retargeting.md",
-      "detail_id": "wiki-methods-dynaretarget-sbto-motion-retargeting",
-      "label": "DynaRetarget / SBTO（增量采样式动力学重定向）",
-      "type": "method",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-hrl-stack-03-omniretarget.md",
-      "detail_id": "entity-paper-hrl-stack-03-omniretarget",
-      "label": "OmniRetarget",
-      "type": "entity",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rtcf.md",
-      "detail_id": "entity-paper-rtcf",
-      "label": "RTCF（Retrieve in Time, Correct in Frequency · arXiv:2608.04527）",
-      "type": "entity",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dynawm-vla-online-correction.md",
-      "detail_id": "entity-paper-dynawm-vla-online-correction",
-      "label": "DynaWM（Dynamic World Model for VLA Action Correction · arXiv:2607.02604）",
-      "type": "entity",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dreamsteer-vla-deployment-steering.md",
-      "detail_id": "entity-paper-dreamsteer-vla-deployment-steering",
-      "label": "DreamSteer（Latent World Model Steering for VLA · arXiv:2607.02865）",
-      "type": "entity",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-bridgevla-plusplus.md",
-      "detail_id": "entity-paper-bridgevla-plusplus",
-      "label": "BridgeVLA++（Memory-Augmented 3D VLA · arXiv:2608.05042）",
-      "type": "entity",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/methods/macrodata-egocentric-hand-action.md",
-    "detail_id": "wiki-methods-macrodata-egocentric-hand-action",
-    "label": "Macrodata Egocentric Hand-Action Pipeline",
-    "type": "method",
+    "path": "wiki/entities/paper-joyai-ra-05.md",
+    "detail_id": "entity-paper-joyai-ra-05",
+    "label": "JoyAI-RA 0.5：双动作对齐的 VLWA 通才操作",
+    "type": "entity",
     "recency": "2026-08-07",
     "source": "log.md",
-    "action": "added",
-    "has_repo": true,
+    "action": "maintained",
     "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "视觉-语言-动作",
-      "size": 203
+      "size": 204
     },
     {
       "label": "动作重定向",
@@ -246,11 +245,11 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 137
+      "size": 138
     },
     {
       "label": "人形论文深读笔记",
-      "size": 136
+      "size": 135
     }
   ],
   "top_hubs": [
@@ -266,7 +265,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 402,
+      "degree": 404,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -281,7 +280,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 358,
+      "degree": 360,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

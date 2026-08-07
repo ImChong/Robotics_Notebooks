@@ -219,6 +219,7 @@ flowchart TB
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 世界–动作模型族谱（数据消费视角互补）
 - [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md) — 数据规模与性能的量化轴
 - [EgoScale](../methods/egoscale.md) — Ego 层数据规模化的受控证据
+- [JoyAI-RA 0.5](./paper-joyai-ra-05.md) — 人视频作主缩放轴的 VLWA 系统实证（53K+ h；未见饱和）
 - [RekaDaily-10k](./rekadaily-10k-dataset.md) — 公开 Apache 2.0 家务 ego 视频（第 ③ 层补充）
 - [Xiaomi-Robotics-1](xiaomi-robotics-1.md) — 10 万小时 UMI 预训练的配方样本
 - [HiFi-UMI / HiFi-UMI-2K](./paper-hifi-umi.md) — UMI 层 2000 h 公开集；zero-robot 后训练挑战「真机锚」默认配方

@@ -12,7 +12,7 @@ tags:
   - georgia-tech
 status: complete
 venue: curated
-updated: 2026-07-24
+updated: 2026-08-07
 related:
   - ../concepts/world-action-models.md
   - ../methods/imitation-learning.md
@@ -137,6 +137,7 @@ flowchart TB
 - [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) — 同 WAM 范式、不同形态（人形实时 loco-manip）
 - [DiT4DiT](./paper-dit4dit-video-action-model.md) — 双 DiT flow-matching WAM；EgoWAM 强调 **人–机共训与世界表征轴**
 - [WAM-TTT](./paper-wam-ttt-human-video-test-time-steering.md) — **部署期** 人视频 TTT 记忆 steering；与 EgoWAM **训练期共训** 互补
+- [JoyAI-RA 0.5](./paper-joyai-ra-05.md) — 全栈 VLWA + 双动作对齐的人视频缩放系统（对照受控世界目标消融）
 
 ## 关联页面
 
@@ -147,6 +148,7 @@ flowchart TB
 - [EgoSteer](./paper-egosteer.md)
 - [HumanNet 人视频语料对比](../comparisons/humannet-table1-human-video-corpora.md)
 - [EgoVerse](./paper-egoverse.md)
+- [JoyAI-RA 0.5](./paper-joyai-ra-05.md)
 
 ## 参考来源
 

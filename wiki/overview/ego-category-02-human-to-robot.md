@@ -15,6 +15,7 @@ related:
   - ../entities/paper-ego-04-emma.md
   - ../entities/paper-ego-05-gaze2act.md
   - ../entities/paper-egoverse.md
+  - ../entities/paper-joyai-ra-05.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md
   - ../../sources/papers/ego_9_papers_catalog.md
@@ -52,6 +53,7 @@ sources:
 - [世界模型](./ego-category-03-world-models.md)
 - [EgoVerse](../entities/paper-egoverse.md) — 联盟级人→机共训研究：共训有效，但缩放依赖域对齐锚定
 - [Macrodata Egocentric Hand-Action](../methods/macrodata-egocentric-hand-action.md) — 人视频 → **度量手轨迹** 的开源几何层（尚未含本体 retarget / 策略共训）
+- [JoyAI-RA 0.5](../entities/paper-joyai-ra-05.md) — 隐式 latent-action + 显式 130-D 双对齐，把人视频做成通才操作主缩放轴（未开源）
 
 ## 参考来源
 
