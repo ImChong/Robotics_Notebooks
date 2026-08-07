@@ -123,7 +123,7 @@ sequenceDiagram
 
 | 对照 | RekaCS2-10k 的定位 |
 |------|-------------------|
-| **真实家庭 ego（如 RekaDaily / Ego4D）** | 物理杂乱与家务语义；本集是 **游戏内可控、动作稠密对齐** 的中间地带 |
+| **[RekaDaily-10k](./rekadaily-10k-dataset.md) / Ego4D** | 真实家庭物理杂乱与家务语义；本集是 **游戏内可控、动作稠密对齐** 的中间地带 |
 | **EgoCS-400k** | 同属 CS ego 社区；本集强调 **10k+ 小时职业 demo + 开源渲染器** |
 | **机器人真机 teleop** | 可执行关节/末端；本集动作在 **键鼠游戏接口** |
 | **[Video as Simulation](../concepts/video-as-simulation.md)** | 本集提供大规模 **可交互合成观测** 的训练底物 |
