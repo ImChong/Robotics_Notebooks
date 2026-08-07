@@ -2,20 +2,24 @@
 type: concept
 tags: [wheel-legged, quadruped, locomotion, hybrid, unitree]
 status: complete
-updated: 2026-07-24
+updated: 2026-08-07
 related:
   - ../tasks/hybrid-locomotion.md
   - ../tasks/locomotion.md
   - ../entities/unitree.md
   - ../entities/robot-lab.md
+  - ../entities/deeprobotics-rl-training.md
+  - ../entities/ddt-lab.md
   - ../entities/legged-gym.md
   - ../entities/paper-mujica-wheel-legged-multi-skill.md
   - ../entities/paper-aware-wheeled-legged-reflexive-evasion.md
 sources:
   - ../../sources/repos/robot_lab.md
+  - ../../sources/repos/rl_training.md
+  - ../../sources/repos/ddt_lab.md
   - ../../sources/papers/mujica_arxiv_2605_13058.md
   - ../../sources/papers/aware_arxiv_2604_23761.md
-summary: "轮足四足机器人在四条腿末端集成驱动轮，平地偏滚动效率，崎岖地形仍依赖足式步态；典型如 Unitree Go2W / B2W，仿真框架 robot_lab 将其与纯四足、人形并列注册。"
+summary: "轮足四足机器人在四条腿末端集成驱动轮，平地偏滚动效率，崎岖地形仍依赖足式步态；典型如 Unitree Go2W / B2W，仿真可走 robot_lab 或厂商官方 Lab（Deep Robotics rl_training、DDT_Lab）。"
 ---
 
 # 轮足四足机器人（四轮足 / Wheel-Legged Quadruped）
@@ -55,12 +59,13 @@ summary: "轮足四足机器人在四条腿末端集成驱动轮，平地偏滚�
 |-------------------|-----------|
 | 轮足（Wheeled） | Unitree **Go2W** / **B2W**、Deeprobotics **M20**、DDTRobot **Tita**、Zsibot **ZSL1W**、Magiclab **MagicDog-W** |
 
-仿真与任务扩展入口：[robot_lab](../entities/robot-lab.md)。
+仿真与任务扩展入口：[robot_lab](../entities/robot-lab.md)。厂商官方 Isaac Lab 训练仓：[Deep Robotics rl_training](../entities/deeprobotics-rl-training.md)（M20 rough）、[DDT_Lab](../entities/ddt-lab.md)（D1 / Tita + NP3O）。
 
 ## 控制与学习案例
 
 - **多技能盲走 + 极限高台：** [MUJICA](../entities/paper-mujica-wheel-legged-multi-skill.md)（arXiv:2605.13058，ICRA 2026）在 **Go2-W** 上用 **单一本体策略** 联合全向移动、高台攀爬与摔倒恢复，并以 **DC 电机硬约束（P3O）** 与 **高层技能选择器** 实现零样本 sim2real；真机报告 **1 m 室内高台** 与连续多技能任务链。
 - **高动态反射式避障：** [AWARE](../entities/paper-aware-wheeled-legged-reflexive-evasion.md)（arXiv:2604.23761）在 **Deep Robotics M20** 上用 **高层 RAR 威胁决策 + 低层双专家硬切换**（导航全向 / 高动态敏捷）做快速障碍反射规避，涌现前冲与侧闪；Isaac Lab + 真机抛箱/棍戳/脚踢验证。
+- **厂商官方训练入口：** M20 速度跟踪可走 [rl_training](../entities/deeprobotics-rl-training.md) 的 `Rough-Deeprobotics-M20-v0`；D1 / Tita 走 [DDT_Lab](../entities/ddt-lab.md) 的 NP3O 任务族。
 
 ## 与相邻概念的关系
 
@@ -74,6 +79,8 @@ summary: "轮足四足机器人在四条腿末端集成驱动轮，平地偏滚�
 - [Locomotion](../tasks/locomotion.md)
 - [Unitree](../entities/unitree.md)
 - [robot_lab](../entities/robot-lab.md)
+- [Deep Robotics rl_training](../entities/deeprobotics-rl-training.md)
+- [DDT_Lab](../entities/ddt-lab.md)
 - [legged_gym](../entities/legged-gym.md)
 - [MUJICA（轮足多技能统一控制）](../entities/paper-mujica-wheel-legged-multi-skill.md)
 - [AWARE（轮足高动态反射式避障）](../entities/paper-aware-wheeled-legged-reflexive-evasion.md)
@@ -81,5 +88,7 @@ summary: "轮足四足机器人在四条腿末端集成驱动轮，平地偏滚�
 ## 参考来源
 
 - [robot_lab](../../sources/repos/robot_lab.md)
+- [Deep Robotics rl_training](../../sources/repos/rl_training.md)
+- [DDT_Lab](../../sources/repos/ddt_lab.md)
 - [MUJICA（arXiv:2605.13058）](../../sources/papers/mujica_arxiv_2605_13058.md)
 - [AWARE（arXiv:2604.23761）](../../sources/papers/aware_arxiv_2604_23761.md)

@@ -1,3 +1,27 @@
+## [2026-08-07] ingest | sources/repos/rl_training.md — 云深处官方 Isaac Lab RL 训练仓入库；wiki/entities/deeprobotics-rl-training.md wiki/entities/robot-lab.md wiki/concepts/wheel-legged-quadruped.md wiki/entities/ddt-lab.md wiki/entities/unitree-rl-lab.md
+
+- **触发：** 用户指定 <https://github.com/DeepRoboticsLab/rl_training>、<https://github.com/unitreerobotics/unitree_rl_lab>、<https://github.com/DDTRobot/DDT_Lab>；要求自动合入
+- **来源：** [`sources/repos/rl_training.md`](sources/repos/rl_training.md)
+- **新建实体：** [`wiki/entities/deeprobotics-rl-training.md`](wiki/entities/deeprobotics-rl-training.md)
+- **开源核查（步骤 2.5）：** **已开源** — BSD-3-Clause；Lite3 / M20 / DR02（AMP）；部署指向同组织 `sdk_deploy`
+- **交叉更新：** [`wiki/entities/robot-lab.md`](wiki/entities/robot-lab.md)、[`wiki/concepts/wheel-legged-quadruped.md`](wiki/concepts/wheel-legged-quadruped.md)、[`wiki/entities/unitree-rl-lab.md`](wiki/entities/unitree-rl-lab.md)、[`wiki/entities/ddt-lab.md`](wiki/entities/ddt-lab.md)
+
+## [2026-08-07] ingest | sources/repos/ddt_lab.md — 直驱科技 DDT_Lab（NP3O 轮足）入库；wiki/entities/ddt-lab.md wiki/concepts/wheel-legged-quadruped.md wiki/entities/robot-lab.md wiki/entities/deeprobotics-rl-training.md
+
+- **触发：** 用户指定 <https://github.com/DDTRobot/DDT_Lab>（与云深处 / 宇树厂商 Lab 一并入库）
+- **来源：** [`sources/repos/ddt_lab.md`](sources/repos/ddt_lab.md)
+- **新建实体：** [`wiki/entities/ddt-lab.md`](wiki/entities/ddt-lab.md)
+- **开源核查（步骤 2.5）：** **已开源** — D1 / Tita + NP3O；URDF 依赖同组织 `ddt_ros2_control`
+- **交叉更新：** [`wiki/concepts/wheel-legged-quadruped.md`](wiki/concepts/wheel-legged-quadruped.md)、[`wiki/entities/robot-lab.md`](wiki/entities/robot-lab.md)、[`wiki/entities/deeprobotics-rl-training.md`](wiki/entities/deeprobotics-rl-training.md)
+
+## [2026-08-07] ingest | sources/repos/unitree_rl_lab.md — 复核官方 Isaac Lab RL 仓并互链厂商 Lab；wiki/entities/unitree-rl-lab.md wiki/entities/deeprobotics-rl-training.md wiki/entities/ddt-lab.md
+
+- **触发：** 用户指定复核 <https://github.com/unitreerobotics/unitree_rl_lab>（已有条目，刷新元数据并互链新厂商 Lab）
+- **来源：** [`sources/repos/unitree_rl_lab.md`](sources/repos/unitree_rl_lab.md)
+- **更新实体：** [`wiki/entities/unitree-rl-lab.md`](wiki/entities/unitree-rl-lab.md)
+- **开源核查（步骤 2.5）：** **已开源** — Apache-2.0；Go2 / H1 / G1-29dof；含 C++ deploy
+- **交叉更新：** [`wiki/entities/deeprobotics-rl-training.md`](wiki/entities/deeprobotics-rl-training.md)、[`wiki/entities/ddt-lab.md`](wiki/entities/ddt-lab.md)、[`wiki/entities/robot-lab.md`](wiki/entities/robot-lab.md)
+
 ## [2026-08-07] ingest | sources/sites/rekacs2-10k.md + sources/datasets/rekacs2-10k.md + sources/repos/cs2-dem-renderer.md — RekaCS2-10k（CS2 ego 视频+逐帧控制）合并入库；升格 wiki/entities/rekacs2-10k-dataset.md；互链 wiki/concepts/world-action-models.md、wiki/concepts/video-as-simulation.md、wiki/overview/ego-category-01-data-collection.md
 
 - **触发：** 用户指定 <https://huggingface.co/datasets/RekaAI/CS2-10k> 与 <https://reka.ai/news/cs2-10k-a-large-scale-egocentric-counter-strike-2-dataset>；要求自动合并

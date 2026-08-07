@@ -1,13 +1,67 @@
 {
   "generated_at": "2026-08-07",
-  "node_count": 2108,
-  "edge_count": 19313,
+  "node_count": 2110,
+  "edge_count": 19337,
   "coverage": {
-    "covered": 2084,
-    "total": 2084,
+    "covered": 2086,
+    "total": 2086,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/deeprobotics-rl-training.md",
+      "detail_id": "entity-deeprobotics-rl-training",
+      "label": "Deep Robotics rl_training",
+      "type": "entity",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/robot-lab.md",
+      "detail_id": "entity-robot-lab",
+      "label": "robot_lab (IsaacLab 扩展框架)",
+      "type": "entity",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/concepts/wheel-legged-quadruped.md",
+      "detail_id": "wiki-concepts-wheel-legged-quadruped",
+      "label": "轮足四足机器人（四轮足 / Wheel-Legged Quadruped）",
+      "type": "concept",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/ddt-lab.md",
+      "detail_id": "entity-ddt-lab",
+      "label": "DDT_Lab",
+      "type": "entity",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/unitree-rl-lab.md",
+      "detail_id": "entity-unitree-rl-lab",
+      "label": "unitree_rl_lab",
+      "type": "entity",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/rekacs2-10k-dataset.md",
       "detail_id": "entity-rekacs2-10k-dataset",
@@ -162,73 +216,23 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-xmorph.md",
-      "detail_id": "entity-paper-xmorph",
-      "label": "X-Morph：跨形态人体运动先验",
-      "type": "entity",
-      "recency": "2026-08-06",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/overview/hub-motion-retargeting.md",
-      "detail_id": "wiki-overview-hub-motion-retargeting",
-      "label": "动作重定向（知识链汇总）",
-      "type": "overview",
-      "recency": "2026-08-06",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/overview/hub-cross-embodiment.md",
-      "detail_id": "wiki-overview-hub-cross-embodiment",
-      "label": "跨具身迁移（知识链汇总）",
-      "type": "overview",
-      "recency": "2026-08-06",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/motion-retargeting-gmr.md",
-      "detail_id": "wiki-methods-motion-retargeting-gmr",
-      "label": "GMR: 通用动作重定向",
-      "type": "method",
-      "recency": "2026-08-06",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/methods/reactor-physics-aware-motion-retargeting.md",
-      "detail_id": "wiki-methods-reactor-physics-aware-motion-retargeting",
-      "label": "ReActor（物理感知 RL 运动重定向）",
-      "type": "method",
-      "recency": "2026-08-06",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "动作重定向（Motion Retargeting） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/rekacs2-10k-dataset.md",
-    "detail_id": "entity-rekacs2-10k-dataset",
-    "label": "RekaCS2-10k（CS2 第一人称游戏数据集）",
+    "path": "wiki/entities/deeprobotics-rl-training.md",
+    "detail_id": "entity-deeprobotics-rl-training",
+    "label": "Deep Robotics rl_training",
     "type": "entity",
     "recency": "2026-08-07",
     "source": "log.md",
     "action": "added",
     "has_repo": true,
-    "community_label": "生成式世界模型（Generative World Models） 社区"
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 208
+      "size": 211
     },
     {
       "label": "视觉-语言-动作",
@@ -240,7 +244,7 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 145
+      "size": 139
     },
     {
       "label": "移动操作",
@@ -256,7 +260,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 421,
+      "degree": 422,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -295,7 +299,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 304
+      "degree": 306
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",

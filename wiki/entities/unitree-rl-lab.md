@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, reinforcement-learning, isaac-lab, locomotion, sim2real]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-07
 related:
   - ./unitree.md
   - ./unitree-rl-gym.md
@@ -10,6 +10,9 @@ related:
   - ./unitree-mujoco.md
   - ./unitree-ros.md
   - ./unitree-model.md
+  - ./robot-lab.md
+  - ./deeprobotics-rl-training.md
+  - ./ddt-lab.md
   - ./paper-humoslope-physics-guided-slope-locomotion.md
   - ../tasks/locomotion.md
   - ../concepts/sim2real.md
@@ -17,7 +20,7 @@ sources:
   - ../../sources/repos/unitree_rl_lab.md
   - ../../sources/repos/unitree.md
   - ../../sources/papers/humoslope_arxiv_2607_07830.md
-summary: "unitree_rl_lab 是基于 Isaac Lab 的官方 Unitree RL 环境扩展，支持 Go2/H1/G1-29dof；资产可从 Hugging Face USD 或 unitree_ros URDF 引入，与 Isaac Gym 版 unitree_rl_gym 并行。"
+summary: "unitree_rl_lab 是基于 Isaac Lab 的官方 Unitree RL 环境扩展，支持 Go2/H1/G1-29dof；资产可从 Hugging Face USD 或 unitree_ros URDF 引入，含 C++ deploy，与 Isaac Gym 版 unitree_rl_gym 并行。"
 ---
 
 # unitree_rl_lab
@@ -56,16 +59,19 @@ summary: "unitree_rl_lab 是基于 Isaac Lab 的官方 Unitree RL 环境扩展�
 
 ## 工程实践
 
-1. 按 Isaac Lab 官方指南装好仿真与 Lab。
-2. `git clone https://github.com/unitreerobotics/unitree_rl_lab.git` 后执行安装脚本。
-3. 配置 `source/unitree_rl_lab/.../assets/robots/unitree.py` 中的模型目录常量。
+1. 按 Isaac Lab 官方指南装好仿真与 Lab（徽章：**Isaac Sim 5.1 / Isaac Lab 2.3**）。
+2. `git clone https://github.com/unitreerobotics/unitree_rl_lab.git` 后执行 `./unitree_rl_lab.sh -i`。
+3. 配置 `source/unitree_rl_lab/.../assets/robots/unitree.py` 中的 `UNITREE_MODEL_DIR`（USD）或 `UNITREE_ROS_DIR`（URDF）。
 4. 注意：GitHub [`unitree_model`](./unitree-model.md) 已 deprecated，USD 请用 Hugging Face 数据集。
+5. 部署：编译 `deploy/robots/<robot>/` 的 `robot_controller`（依赖 `unitree_sdk2`）；Sim2Sim 先跑 [`unitree_mujoco`](./unitree-mujoco.md)。
+6. 厂商 Lab 对照：云深处 [rl_training](./deeprobotics-rl-training.md)、直驱 [DDT_Lab](./ddt-lab.md)；多厂商社区扩展见 [robot_lab](./robot-lab.md)。
 
 ## 局限与风险
 
 - **硬件与驱动门槛高**（GPU / 驱动 / Isaac 版本矩阵）；RTX 50 系需核对 Isaac Sim 版本说明。
 - 与 `unitree_rl_gym` 的任务名、观测空间**不互通**。
 - 首次加载资源受网络与磁盘影响，勿在未就绪时判断「安装失败」。
+- **开源状态：已开源**（Apache-2.0）。
 
 ## 关联页面
 
@@ -74,6 +80,9 @@ summary: "unitree_rl_lab 是基于 Isaac Lab 的官方 Unitree RL 环境扩展�
 - [unitree_model](./unitree-model.md)
 - [unitree_ros](./unitree-ros.md)
 - [Unitree](./unitree.md)
+- [robot_lab](./robot-lab.md)
+- [Deep Robotics rl_training](./deeprobotics-rl-training.md)
+- [DDT_Lab](./ddt-lab.md)
 - [HumoSlope](./paper-humoslope-physics-guided-slope-locomotion.md) — 以本仓库为本体感知基线，对比陡坡专用 ZMP/BSGA 管线
 
 ## 参考来源

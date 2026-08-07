@@ -90,7 +90,9 @@
 - [PoseScript（BFM 行为数据）](wiki/entities/dataset-bfm-posescript.md) — PoseScript** 列入 awesome-bfm-papers 数据集表（202 `📅unknown` `[entity_page]`
 - [DBHL窄地形全身运动](wiki/entities/dbhl-whole-body-loco.md) — DBHL窄地形全身运动](https://whole-body-loco.github.io/) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/ `📅unknown` `[entity_page]`
 - [DDR](wiki/entities/ddr-direct-dynamics-retargeting.md) — DDR](https://arxiv.org/abs/2605.23762) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-m `📅unknown` `[entity_page]`
+- [DDT_Lab](wiki/entities/ddt-lab.md) — DDT_Lab**（仓内包名 `ddt_lab`）是 直驱科技（Direct Drive Tech） 在 [Isaac Lab](ht `📅unknown` `[entity_page]`
 - [DeepInsight（XPENG Robotics 全栈评测基础设施）](wiki/entities/deepinsight.md) — DeepInsight**（2026-06，arXiv:2606.17574，XPENG Robotics）是面向 **em `📅unknown` `[entity_page]`
+- [Deep Robotics rl_training](wiki/entities/deeprobotics-rl-training.md) — rl_training** 是 云深处科技（Deep Robotics） 官方在 [Isaac Lab](https://githu `📅unknown` `[entity_page]`
 - [Dexmal DM0.5](wiki/entities/dexmal-dm05.md) — DM0.5**（Dexmal 官方博客）是 [Dexmal](https://www.dexmal. `📅unknown` `[entity_page]`
 - [Dexmal DW05（OpenDW）](wiki/entities/dexmal-dw05.md) — DW05**（2026-07，GitHub `dexmal/opendw`，[DW05-Base](https://hugg `📅unknown` `[entity_page]`
 - [DimOS（Dimensional 物理空间 Agent OS）](wiki/entities/dimensionalos-dimos.md) — DimOS** 是 Dimensional 推出的 **agent-native 物理空间操作系统**：用 **Python Module + Blueprint** 把相机/LiDAR 感知、S `📅unknown` `[entity_page]`
