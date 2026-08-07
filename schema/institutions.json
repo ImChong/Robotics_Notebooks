@@ -2372,6 +2372,14 @@
         "reka-ai",
         "rekaai"
       ]
+    },
+    "macrodata": {
+      "label": "宏数据实验室（Macrodata Labs）",
+      "aliases": [
+        "macrodata",
+        "macrodata-labs",
+        "macrodata-co"
+      ]
     }
   }
 }

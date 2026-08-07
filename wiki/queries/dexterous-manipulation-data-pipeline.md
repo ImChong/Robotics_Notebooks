@@ -3,10 +3,11 @@ title: 灵巧操作数据管线与 RL 训练基建指南
 type: query
 status: complete
 created: 2026-05-21
-updated: 2026-07-14
+updated: 2026-08-07
 related:
   - ../methods/auto-labeling-pipelines.md
   - ../methods/wilor.md
+  - ../methods/macrodata-egocentric-hand-action.md
   - ../methods/gae.md
   - ../methods/actuator-network.md
   - ../entities/paper-chord-contact-wrench-dexterous-manipulation.md
@@ -15,10 +16,11 @@ summary: 灵巧操作从自动标注、手部重建到 RL 优势估计与执行�
 sources:
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/motion_control_projects.md
+  - ../../sources/blogs/macrodata_egocentric_video_3d_hand_actions.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「灵巧操作项目里，数据标注、手部感知、RL 优势估计和执行器建模分别该用哪条技术线？」
-> 综合来源：[Auto-labeling Pipelines](../methods/auto-labeling-pipelines.md)、[WiLoR](../methods/wilor.md)、[GAE](../methods/gae.md)、[Actuator Network](../methods/actuator-network.md)
+> 综合来源：[Auto-labeling Pipelines](../methods/auto-labeling-pipelines.md)、[WiLoR](../methods/wilor.md)、[Macrodata Egocentric Hand-Action](../methods/macrodata-egocentric-hand-action.md)、[GAE](../methods/gae.md)、[Actuator Network](../methods/actuator-network.md)
 
 # 灵巧操作数据管线与 RL 训练基建指南
 
@@ -28,6 +30,7 @@ sources:
 |------|----------|----------|
 | 轨迹/接触自动标注 | [Auto-labeling Pipelines](../methods/auto-labeling-pipelines.md) | 演示量大、人工标注不可扩展 |
 | 单目/多视手部 mesh | [WiLoR](../methods/wilor.md) | 从人类视频抽手部姿态喂重定向或 IL |
+| egocentric → 度量手轨迹 | [Macrodata Hand-Action](../methods/macrodata-egocentric-hand-action.md) | 要从 RGB-only 人视频抽 **世界系 21 关节** 动作监督，并卡 Action MPJPE / 覆盖 / FPS |
 | PPO 优势估计 | [GAE](../methods/gae.md) | 几乎所有人形/足式 on-policy RL |
 | 仿真扭矩 gap | [Actuator Network](../methods/actuator-network.md) | sim2real 执行器动力学不匹配 |
 
@@ -53,6 +56,8 @@ sources:
 - 与 [GMR vs NMR 对比](../comparisons/gmr-vs-nmr-vs-reactor.md) 的上游输入配合
 
 **局限**：遮挡与快速运动下 mesh 抖动会放大到控制层，建议加时序滤波或置信度门控。
+
+若目标是 **长程 egocentric 视频 → 度量世界系双手轨迹**（而不只是单帧 mesh），优先对照 [Macrodata Egocentric Hand-Action](../methods/macrodata-egocentric-hand-action.md)：保留 WiLoR 作 **高置信检测**，手重建改用时序 **HaWoR**，世界几何用窗口化 **VGGT-Omega**；用 HOT3D **Action MPJPE** 同时卡质量、覆盖与 H100 吞吐。逐帧 WiLoR 重建在该标尺上明显弱于 HaWoR。
 
 ---
 
@@ -89,8 +94,8 @@ NVIDIA [Video to Data (V2D)](https://nvidia-isaac.github.io/video_to_data/) 把 
 
 ```text
 人类演示/视频
-  → WiLoR（手部位姿）
-  → Auto-labeling（轨迹/接触标签）
+  → WiLoR 检测（+ 可选 HaWoR/VGGT 度量轨迹，见 Macrodata Hand-Action）
+  → Auto-labeling（轨迹/接触/子任务标签）
   → IL 或 RL 训练（PPO + GAE）
   → 部署前 Actuator Network / DR 收窄扭矩 gap
 ```
@@ -125,11 +130,13 @@ NVIDIA [Video to Data (V2D)](https://nvidia-isaac.github.io/video_to_data/) 把 
 
 - [Policy Optimization 论文索引](../../sources/papers/policy_optimization.md)
 - [运动控制项目笔记](../../sources/papers/motion_control_projects.md)
+- [macrodata_egocentric_video_3d_hand_actions.md](../../sources/blogs/macrodata_egocentric_video_3d_hand_actions.md)
 
 ## 关联页面
 
 - [Auto-labeling Pipelines](../methods/auto-labeling-pipelines.md)
 - [WiLoR](../methods/wilor.md)
+- [Macrodata Egocentric Hand-Action](../methods/macrodata-egocentric-hand-action.md)
 - [GAE](../methods/gae.md)
 - [Actuator Network](../methods/actuator-network.md)
 - [Tactile Impedance Control](../methods/tactile-impedance-control.md)
@@ -139,4 +146,4 @@ NVIDIA [Video to Data (V2D)](https://nvidia-isaac.github.io/video_to_data/) 把 
 
 ## 一句话记忆
 
-> **WiLoR 解手，Auto-labeling 解标，GAE 解优势，ActuatorNet 解扭矩 gap——四块拼成灵巧操作 RL 数据基建。**
+> **WiLoR/HaWoR 解手，Auto-labeling 解标，GAE 解优势，ActuatorNet 解扭矩 gap——拼成灵巧操作 RL 数据基建；长程 ego 度量轨迹另见 Macrodata Hand-Action。**

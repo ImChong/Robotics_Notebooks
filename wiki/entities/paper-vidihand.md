@@ -3,12 +3,13 @@ type: entity
 tags: [paper, hand-pose, egocentric, video-diffusion, perception, manipulation, embodied-ai, ntu, sjtu]
 status: stable
 summary: "ViDiHand：用 hand-overlay rendering 微调 Wan2.1-VACE，从视频 diffusion 中间特征双分支解码 egocentric 双手 4D MANO——无 detector/infiller/TTO，在 ARCTIC/HOT3D/HOI4D 全面 SOTA。"
-updated: 2026-07-13
+updated: 2026-08-07
 arxiv: "2606.30308"
 venue: "arXiv 2026"
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../methods/wilor.md
+  - ../methods/macrodata-egocentric-hand-action.md
   - ../methods/mimic-video.md
   - ../tasks/manipulation.md
   - ../tasks/teleoperation.md
@@ -16,6 +17,7 @@ related:
   - ./paper-egowam-egocentric-human-wam-co-training.md
 sources:
   - ../../sources/papers/vidihand_arxiv_2606_30308.md
+  - ../../sources/blogs/macrodata_egocentric_video_3d_hand_actions.md
 ---
 
 # ViDiHand — Video Diffusion for 4D Hand Motion Reconstruction
@@ -145,6 +147,7 @@ flowchart TB
 | 图像检测 + 重建 | [WiLoR](../methods/wilor.md)、HaMeR | 依赖 detector；逐帧抖 | 弱 | **无 detector；低 jitter** |
 | 跨帧注意力 | OmniHands | 有限 hand 标注先验 | 弱 | **video generative 先验** |
 | 运动先验 / infiller | Dyn-HaMR、HaWoR | 3D 轨迹生成；与场景解耦 | 无 | **全帧、单 pass** |
+| 开源工程配方（检测+时序手+前馈几何） | [Macrodata Hand-Action](../methods/macrodata-egocentric-hand-action.md) | 保守 WiLoR + HaWoR + VGGT；卡 Action MPJPE/FPS | 有（VGGT） | **无 detector；扩散先验** |
 | Video diffusion 下游 | [mimic-video](../methods/mimic-video.md) 等 | 操作/动作生成 | 强 | **感知：4D hand 重建** |
 
 ## 常见误区与局限
@@ -161,6 +164,7 @@ flowchart TB
 ## 关联页面
 
 - [WiLoR](../methods/wilor.md) — per-frame 强基线与失败模式对照
+- [Macrodata Egocentric Hand-Action](../methods/macrodata-egocentric-hand-action.md) — 开源检测+HaWoR+VGGT 配方与 Action MPJPE 工程标尺
 - [mimic-video（VAM）](../methods/mimic-video.md) — 另一 video diffusion 表征下游任务轴
 - [Manipulation](../tasks/manipulation.md) — 手部运动作为操作模仿监督
 - [Ego 采集链路](../overview/ego-category-01-data-collection.md) — egocentric 数据进入训练栈

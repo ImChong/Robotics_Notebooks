@@ -8,7 +8,7 @@
 - **原始链接：** https://www.perceptron.inc/blog/introducing-perceptron-egocentric-api
 - **产品页（Notion）：** https://app.notion.com/p/perceptron/398528411b178076a9fed23b9977f065
 - **入库日期：** 2026-07-10
-- **最后更新：** 2026-07-10
+- **最后更新：** 2026-08-07
 - **一句话说明：** Perceptron Egocentric 是基于 Mk1 具身感知模型的机器人/第一人称视频自动标注 API，在 WGO-Bench 上超越 Gemini Robotics ER-1.6 与 Gemini 3.5 Flash 驱动的 Macrodata 管线，输出原子操作分段、子任务语义标签与双手稠密 grounding。
 
 ## 核心摘录
@@ -79,4 +79,5 @@
 
 - [x] 博客核心摘要与 WGO 数字摘录
 - [x] wiki 实体页映射确认
+- [x] Macrodata 手轨迹工程博客已入库 → [macrodata_egocentric_video_3d_hand_actions.md](./macrodata_egocentric_video_3d_hand_actions.md)（几何轴；WGO 语义基准仍可另开页）
 - [ ] 若 Macrodata/WGO 公开技术报告入库，可补独立 benchmark 页或对比页

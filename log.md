@@ -1,3 +1,14 @@
+## [2026-08-07] ingest | sources/blogs/macrodata_egocentric_video_3d_hand_actions.md — Macrodata egocentric→度量手轨迹博客入库；升格 wiki/methods/macrodata-egocentric-hand-action.md；互链 wiki/methods/wilor.md、wiki/methods/egoscale.md、wiki/methods/auto-labeling-pipelines.md、wiki/entities/perceptron-egocentric.md、wiki/entities/paper-vidihand.md、wiki/overview/ego-category-01-data-collection.md、wiki/overview/ego-category-02-human-to-robot.md、wiki/queries/dexterous-manipulation-data-pipeline.md；sources/sites/macrodata-co.md、sources/repos/hawor.md
+
+- **触发：** 用户指定 <https://macrodata.co/blog/turning-egocentric-video-into-3d-hand-actions>；要求确保 agent-reach 已装并自动合并
+- **来源：** [`sources/blogs/macrodata_egocentric_video_3d_hand_actions.md`](sources/blogs/macrodata_egocentric_video_3d_hand_actions.md)、[`sources/sites/macrodata-co.md`](sources/sites/macrodata-co.md)、[`sources/repos/hawor.md`](sources/repos/hawor.md)
+- **新建方法页：** [`wiki/methods/macrodata-egocentric-hand-action.md`](wiki/methods/macrodata-egocentric-hand-action.md)
+- **开源核查（步骤 2.5）：** **部分可复现 / 产品未开源** — 博客配方为 WiLoR+HaWoR+VGGT-Omega 开源组件；Macrodata 专有检测/编排 **确认未开源**（Contact / 免费样例）
+- **要点：** HOT3D Action MPJPE **52.04 mm**、覆盖 **81.23%**、**15.53 FPS@H100**；相对 HaWoR 误差 −12%、吞吐 3.34→15.53 FPS；误差主导在相机系腕深
+- **机构注册：** [`schema/institutions.json`](schema/institutions.json) 新增 `macrodata` → 宏数据实验室（Macrodata Labs）
+- **交叉更新：** [`wiki/methods/wilor.md`](wiki/methods/wilor.md)、[`wiki/methods/egoscale.md`](wiki/methods/egoscale.md)、[`wiki/methods/auto-labeling-pipelines.md`](wiki/methods/auto-labeling-pipelines.md)、[`wiki/entities/perceptron-egocentric.md`](wiki/entities/perceptron-egocentric.md)、[`wiki/entities/paper-vidihand.md`](wiki/entities/paper-vidihand.md)、[`wiki/overview/ego-category-01-data-collection.md`](wiki/overview/ego-category-01-data-collection.md)、[`wiki/overview/ego-category-02-human-to-robot.md`](wiki/overview/ego-category-02-human-to-robot.md)、[`wiki/queries/dexterous-manipulation-data-pipeline.md`](wiki/queries/dexterous-manipulation-data-pipeline.md)
+
+
 ## [2026-08-07] ingest | sources/papers/shooting_for_contact_arxiv_2608_03116.md — Shooting for Contact / DSMS（Caltech/DePaul，arXiv:2608.03116）：接触隐式多重打靶动力学重定向；升格 wiki/entities/paper-shooting-for-contact.md 与 wiki/methods/dsms-contact-implicit-multiple-shooting.md；交叉 wiki/concepts/motion-retargeting.md、wiki/overview/hub-motion-retargeting.md、wiki/methods/dynaretarget-sbto-motion-retargeting.md、wiki/entities/paper-hrl-stack-03-omniretarget.md；注册 depaul；代码 sources/repos/shooting-for-contact.md + sources/sites/shooting-for-contact-github-io.md
 
 - **触发：** 用户指定标题 *Shooting for Contact*、项目页 <https://shooting-for-contact.github.io/>；机构 Caltech / DePaul；要求自动合并

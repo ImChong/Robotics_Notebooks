@@ -21,6 +21,7 @@ related:
   - ../entities/paper-egoworld.md
   - ../tasks/manipulation.md
   - ../entities/nvidia-gear-lab.md
+  - ./macrodata-egocentric-hand-action.md
 sources:
   - ../../sources/papers/egoscale_arxiv_2602_16710.md
   - ../../sources/sites/nvidia-research-egoscale.md
@@ -28,6 +29,7 @@ sources:
   - ../../sources/blogs/stellarnex_egoworld_100w.md
   - ../../sources/papers/egoverse_arxiv_2604_07607.md
   - ../../sources/sites/rekadaily-10k.md
+  - ../../sources/blogs/macrodata_egocentric_video_3d_hand_actions.md
 ---
 
 # EgoScale
@@ -105,6 +107,7 @@ flowchart LR
 - 与 [具身规模法则](../concepts/embodied-scaling-laws.md)：可把本文的 **log-linear 验证损失–数据规模** 与 **下游完成度** 的联动，当作 **人侧监督缩放** 的一个具体案例研究。
 - 与 [Motion Retargeting](../concepts/motion-retargeting.md)：重定向是 **人手关键点 → 机器人手关节** 的硬接口；误差形态会进入 **预训练标签噪声** 讨论。
 - 与 [T-Rex](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md)：同人灵巧线后续工作；共享 **人 egocentric 预训练 + 机端 mid-training** 骨架，T-Rex 把 mid-training 换成 **触觉同步 play** 并引入 **高频触觉专家**；论文以 EgoScale 为 **最强无触觉基线（35% vs 65%）**。
+- 与 [Macrodata Egocentric Hand-Action](./macrodata-egocentric-hand-action.md)：同属「egocentric → 可训手动作」；Macrodata 停在 **度量 21 关节轨迹 + Action MPJPE 工程标尺**（博客亦点名 EgoScale 的机器人手重定向表示），EgoScale 继续走到 **流式 VLA 预训练缩放与真机完成度**。
 
 ## 推荐继续阅读
 
@@ -127,6 +130,7 @@ flowchart LR
 - [EgoWorld-100W](../entities/egoworld-100w.md) — 商业百万级自中心操作语料（申请制；与本方法学术缩放叙事对照）
 - [RekaDaily-10k](../entities/rekadaily-10k-dataset.md) — 公开 Apache 2.0 家务 ego 视频（无原生腕手标签；规模对照）
 - [EgoWorld（exo→ego）](../entities/paper-egoworld.md) — 同名视图翻译方法（消歧）
+- [Macrodata Egocentric Hand-Action](./macrodata-egocentric-hand-action.md) — RGB-only 开源手轨迹配方与 HOT3D Action MPJPE
 - [HumanNet](../entities/humannet.md)
 - [EgoVerse](../entities/paper-egoverse.md)
 - [Motion Retargeting](../concepts/motion-retargeting.md)
