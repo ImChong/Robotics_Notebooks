@@ -9,7 +9,7 @@ tags:
   - manipulation
   - meta
 status: complete
-updated: 2026-07-24
+updated: 2026-08-07
 arxiv: "2607.02865"
 related:
   - ../overview/wm-action-consequence-category-01-wam-action-prediction.md
@@ -20,6 +20,7 @@ related:
   - ../entities/paper-taco-tactile-wm-vla-posttrain.md
   - ../entities/paper-gigaworld-1-policy-evaluation.md
   - ../entities/paper-harness-vla.md
+  - ../entities/paper-rtcf.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
 summary: "DreamSteer（arXiv:2607.02865）：部署时冻结 VLA 采样多候选 + 运动原语，潜变量 WM 预演未来、语言价值模型排序；四组真机 OOD 成功率 23.75%→66.25%、指令遵循 38.75%→56.25%。"
@@ -123,6 +124,7 @@ flowchart TB
 | **Cosmos / DreamGen（pixel WM）** | 视觉丰富但 **在线 steering 太贵** |
 | **DINO-WM / VT-WM** | 同类 **latent WM**；DreamSteer 强调 **多候选 VLA steering** |
 | **DSWAM / DynaWM** | **训练期集成 WAM**；DreamSteer **不改 VLA、外挂 WM** |
+| **[RTCF](./paper-rtcf.md)** | **免训练** 记忆低频纠偏、单候选；DreamSteer **多候选 WM 想象 + 价值排序** |
 
 ## 常见误区或局限
 
@@ -138,6 +140,7 @@ flowchart TB
 - [World Action Models](../concepts/world-action-models.md) — WM 预演动作后果概念
 - [VLA](../methods/vla.md) — $\pi_0$ / GR00T 等被 steering 的策略
 - [Harness VLA](./paper-harness-vla.md) — 原语级 agentic harness + 记忆；同属冻结 VLA 部署路线
+- [RTCF](./paper-rtcf.md) — 免训练检索纠偏对照
 
 ## 推荐继续阅读
 
@@ -145,6 +148,7 @@ flowchart TB
 - [DreamSteer 项目页与视频](https://dream-steer.github.io/)
 - [TACO 论文实体](./paper-taco-tactile-wm-vla-posttrain.md) — 后训练纠错对照
 - [GigaWorld-1 论文实体](./paper-gigaworld-1-policy-evaluation.md) — WM 策略评估
+- [RTCF 论文实体](./paper-rtcf.md) — 免训练测试时纠偏
 
 ## 参考来源
 

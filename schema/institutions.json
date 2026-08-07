@@ -391,6 +391,14 @@
         "horizon"
       ]
     },
+    "d-robotics": {
+      "label": "地瓜机器人（D-Robotics）",
+      "aliases": [
+        "d-robotics",
+        "drobotics",
+        "digua"
+      ]
+    },
     "baai": {
       "label": "北京智源人工智能研究院（BAAI）",
       "aliases": [

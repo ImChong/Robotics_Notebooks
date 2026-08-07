@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-08-05
+updated: 2026-08-07
 related:
   - ../entities/paper-clothtransformer-unified-latent-cloth-simulation.md
   - ../entities/paper-flying-knots.md
@@ -214,6 +214,9 @@ flowchart TD
 - [FM-VLA](../entities/paper-fm-vla.md) — Force-VAE 力觉长程记忆注入 π₀.₅；智元 G1 接触计数任务平均 83.3%（arXiv:2607.18231）
 - [EventVLA](../entities/paper-eventvla-visual-evidence-memory.md) — 稀疏视觉证据记忆 + RoboTwin-MeM（arXiv:2606.20092）
 - [Chronos](../entities/paper-chronos.md) — 全历史 SSM + IMLE + 二阶加速度桥；RMBench 73.6%、真机 78%（arXiv:2606.30318）
+- [BridgeVLA++](../entities/paper-bridgevla-plusplus.md) — 3D heatmap VLA + 时空记忆；RMBench 96.0%、RLBench 93.7%（arXiv:2608.05042）
+- [DreamWAM](../entities/paper-dreamwam.md) — beyond-RGB Joint WAM；LIBERO-Plus 75.47%、真机扰动 74.4%（arXiv:2608.04996）
+- [RTCF](../entities/paper-rtcf.md) — 免训练记忆检索 + 低频纠偏；LIBERO Long 61.6→68.6（arXiv:2608.04527）
 - [RoboTTT](../entities/paper-robottt-test-time-training-vla-context.md) — GR00T N1.7 内嵌 TTT fast weights，8K 步 visuomotor 上下文 + 部署后在线学习（NVIDIA GEAR 项目页）
 - [πR²](../entities/paper-pi-r2.md) — GR00T-N1.7 反应式实时 flow 闭环（约 25 Hz；训练+部署已开源，arXiv:2607.26055）
 - [HiFi-UMI / HiFi-UMI-2K](../entities/paper-hifi-umi.md) — 2000 h 高保真无机器人双臂数据；zero-robot 后训练（arXiv:2607.25895）

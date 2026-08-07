@@ -1,13 +1,138 @@
 {
   "generated_at": "2026-08-07",
-  "node_count": 2117,
-  "edge_count": 19433,
+  "node_count": 2120,
+  "edge_count": 19477,
   "coverage": {
-    "covered": 2093,
-    "total": 2093,
+    "covered": 2096,
+    "total": 2096,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-rtcf.md",
+      "detail_id": "entity-paper-rtcf",
+      "label": "RTCF（Retrieve in Time, Correct in Frequency · arXiv:2608.04527）",
+      "type": "entity",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-dynawm-vla-online-correction.md",
+      "detail_id": "entity-paper-dynawm-vla-online-correction",
+      "label": "DynaWM（Dynamic World Model for VLA Action Correction · arXiv:2607.02604）",
+      "type": "entity",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-dreamsteer-vla-deployment-steering.md",
+      "detail_id": "entity-paper-dreamsteer-vla-deployment-steering",
+      "label": "DreamSteer（Latent World Model Steering for VLA · arXiv:2607.02865）",
+      "type": "entity",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-bridgevla-plusplus.md",
+      "detail_id": "entity-paper-bridgevla-plusplus",
+      "label": "BridgeVLA++（Memory-Augmented 3D VLA · arXiv:2608.05042）",
+      "type": "entity",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/overview/wm-action-consequence-category-01-wam-action-prediction.md",
+      "detail_id": "wiki-overview-wm-action-consequence-category-01-wam-action-prediction",
+      "label": "世界模型动作后果分类 01：WAM 动作后果预测",
+      "type": "overview",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-kemo-event-driven-keyframe-memory-vla.md",
+      "detail_id": "entity-paper-kemo-event-driven-keyframe-memory-vla",
+      "label": "KEMO（Event-Driven Keyframe Memory for Long-Horizon Robot Manipulation with VLA Policies）",
+      "type": "entity",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-eventvla-visual-evidence-memory.md",
+      "detail_id": "entity-paper-eventvla-visual-evidence-memory",
+      "label": "EventVLA（Event-Driven Visual Evidence Memory for Long-Horizon VLA）",
+      "type": "entity",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-chronos.md",
+      "detail_id": "entity-paper-chronos",
+      "label": "Chronos（Physics-Informed Full-History Framework for Non-Markovian Long-Horizon Manipulation）",
+      "type": "entity",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-dreamwam.md",
+      "detail_id": "entity-paper-dreamwam",
+      "label": "DreamWAM（Beyond RGB Future Prediction · arXiv:2608.04996）",
+      "type": "entity",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/concepts/world-action-models.md",
+      "detail_id": "wiki-concepts-world-action-models",
+      "label": "World Action Models（WAM，世界–动作模型）",
+      "type": "concept",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
     {
       "path": "wiki/entities/robotis.md",
       "detail_id": "entity-robotis",
@@ -93,170 +218,41 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/turtlebot3.md",
-      "detail_id": "entity-turtlebot3",
-      "label": "TurtleBot3",
-      "type": "entity",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/robotis-open-manipulator-line.md",
-      "detail_id": "entity-robotis-open-manipulator-line",
-      "label": "ROBOTIS 机械臂 / 手（OpenMANIPULATOR 等）",
-      "type": "entity",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/robot-lab.md",
-      "detail_id": "entity-robot-lab",
-      "label": "robot_lab (IsaacLab 扩展框架)",
-      "type": "entity",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/unitree-rl-lab.md",
-      "detail_id": "entity-unitree-rl-lab",
-      "label": "unitree_rl_lab",
-      "type": "entity",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/deeprobotics-rl-training.md",
-      "detail_id": "entity-deeprobotics-rl-training",
-      "label": "Deep Robotics rl_training",
-      "type": "entity",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/ddt-lab.md",
-      "detail_id": "entity-ddt-lab",
-      "label": "DDT_Lab",
-      "type": "entity",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/concepts/wheel-legged-quadruped.md",
-      "detail_id": "wiki-concepts-wheel-legged-quadruped",
-      "label": "轮足四足机器人（四轮足 / Wheel-Legged Quadruped）",
-      "type": "concept",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/rekacs2-10k-dataset.md",
-      "detail_id": "entity-rekacs2-10k-dataset",
-      "label": "RekaCS2-10k（CS2 第一人称游戏数据集）",
-      "type": "entity",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/concepts/world-action-models.md",
-      "detail_id": "wiki-concepts-world-action-models",
-      "label": "World Action Models（WAM，世界–动作模型）",
-      "type": "concept",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/concepts/video-as-simulation.md",
-      "detail_id": "wiki-concepts-video-as-simulation",
-      "label": "Video-as-Simulation (视频即仿真)",
-      "type": "concept",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/overview/ego-category-01-data-collection.md",
-      "detail_id": "wiki-overview-ego-category-01-data-collection",
-      "label": "Ego 分类 01：数据采集",
-      "type": "overview",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/rekadaily-10k-dataset.md",
-      "detail_id": "entity-rekadaily-10k-dataset",
-      "label": "RekaDaily-10k（家务第一人称视频数据集）",
-      "type": "entity",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/robotis.md",
-    "detail_id": "entity-robotis",
-    "label": "ROBOTIS（乐百机器人）",
+    "path": "wiki/entities/paper-rtcf.md",
+    "detail_id": "entity-paper-rtcf",
+    "label": "RTCF（Retrieve in Time, Correct in Frequency · arXiv:2608.04527）",
     "type": "entity",
     "recency": "2026-08-07",
     "source": "log.md",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "action": "maintained"
   },
   "top_communities": [
     {
-      "label": "操作",
-      "size": 186
-    },
-    {
-      "label": "人形强化学习运动控制",
-      "size": 144
-    },
-    {
       "label": "仿真到现实",
-      "size": 144
+      "size": 210
+    },
+    {
+      "label": "动作重定向",
+      "size": 167
+    },
+    {
+      "label": "操作",
+      "size": 151
+    },
+    {
+      "label": "视觉-语言-动作",
+      "size": 148
     },
     {
       "label": "移动操作",
       "size": 139
     },
     {
-      "label": "动作重定向",
-      "size": 138
-    },
-    {
-      "label": "人形论文深读笔记",
-      "size": 136
+      "label": "人形强化学习运动控制",
+      "size": 137
     }
   ],
   "top_hubs": [
@@ -272,7 +268,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 393,
+      "degree": 401,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -287,7 +283,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 352,
+      "degree": 357,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },

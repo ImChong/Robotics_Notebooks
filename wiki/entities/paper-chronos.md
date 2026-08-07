@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, imitation-learning, manipulation, long-horizon, memory, dual-arm, ssm, mamba, imle, physics-informed, hust]
 status: complete
-updated: 2026-07-27
+updated: 2026-08-07
 arxiv: "2606.30318"
 venue: "arXiv 2026 / submitted T-RO"
 code: https://github.com/yulinzhouZYL/Chronos
@@ -17,6 +17,7 @@ related:
   - ./paper-eventvla-visual-evidence-memory.md
   - ./paper-kemo-event-driven-keyframe-memory-vla.md
   - ./paper-fm-vla.md
+  - ./paper-bridgevla-plusplus.md
 sources:
   - ../../sources/papers/chronos_arxiv_2606_30318.md
   - ../../sources/sites/chronos-manipulation-github-io.md
@@ -212,6 +213,7 @@ sequenceDiagram
 | [π₀.₅ / VLA](../methods/vla.md) | 强语义、常当前帧/短窗；观测别名时相位欠定 |
 | [Mem-0 / MemoryVLA](./paper-eventvla-visual-evidence-memory.md) | 显式锚点/滑动或稠密记忆挂到大 VLA；Chronos 把记忆内化进 SSM 状态 |
 | [EventVLA](./paper-eventvla-visual-evidence-memory.md) / [KEMO](./paper-kemo-event-driven-keyframe-memory-vla.md) | **稀疏关键帧视觉证据** 注入现成 VLA；Chronos 是 **紧凑专用策略** + 全历史递推 |
+| [BridgeVLA++](./paper-bridgevla-plusplus.md) | **3D heatmap VLA + 𝒯/𝒮 记忆**；同评 RMBench 报 **96.0%**（更大骨干、不同协议需对照原文） |
 | [FM-VLA](./paper-fm-vla.md) | 进度写在 **接触力** 上时用 Force-VAE；Chronos 主打视觉/几何历史相位 |
 | [Diffusion Policy](../methods/diffusion-policy.md) / flow | 一阶 score/velocity 生成；Chronos 用加速度场 + 端点速度为零的日程 |
 | MTIL | 同族全历史 SSM 思路；Chronos 强调非 detached 训练 + IMLE/SB 动作头 |
@@ -229,7 +231,7 @@ sequenceDiagram
 - 任务：[Manipulation](../tasks/manipulation.md)、[Bimanual Manipulation](../tasks/bimanual-manipulation.md)
 - 方法谱系：[VLA](../methods/vla.md)、[Imitation Learning](../methods/imitation-learning.md)、[Action Chunking](../methods/action-chunking.md)、[Diffusion Policy](../methods/diffusion-policy.md)
 - 平台 / 基准：[RoboTwin](./robotwin.md) — RoboTwin 2.0 与 RMBench 语境
-- 相邻记忆路线：[EventVLA](./paper-eventvla-visual-evidence-memory.md)、[KEMO](./paper-kemo-event-driven-keyframe-memory-vla.md)、[FM-VLA](./paper-fm-vla.md)
+- 相邻记忆路线：[EventVLA](./paper-eventvla-visual-evidence-memory.md)、[KEMO](./paper-kemo-event-driven-keyframe-memory-vla.md)、[FM-VLA](./paper-fm-vla.md)、[BridgeVLA++](./paper-bridgevla-plusplus.md)
 
 ## 参考来源
 

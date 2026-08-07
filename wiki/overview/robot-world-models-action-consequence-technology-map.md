@@ -2,7 +2,7 @@
 type: overview
 tags: [world-models, world-action-models, survey, vla, contact-rich, geometry, policy-evaluation]
 status: complete
-updated: 2026-07-11
+updated: 2026-08-07
 related:
   - ./wm-action-consequence-category-01-wam-action-prediction.md
   - ./wm-action-consequence-category-02-contact-modeling.md

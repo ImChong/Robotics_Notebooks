@@ -1,3 +1,31 @@
+## [2026-08-07] ingest | sources/papers/rtcf_arxiv_2608_04527.md — RTCF（arXiv:2608.04527）免训练 VLA 动作纠偏入库；升格 wiki/entities/paper-rtcf.md；互链 wiki/methods/vla.md、wiki/entities/paper-dynawm-vla-online-correction.md、wiki/entities/paper-dreamsteer-vla-deployment-steering.md、wiki/entities/paper-bridgevla-plusplus.md、wiki/tasks/manipulation.md
+
+- **触发：** 用户指定 <https://arxiv.org/abs/2608.04527>；要求与 DreamWAM / BridgeVLA++ 一并入库并自动合并
+- **来源：** [`sources/papers/rtcf_arxiv_2608_04527.md`](sources/papers/rtcf_arxiv_2608_04527.md)
+- **新建实体：** [`wiki/entities/paper-rtcf.md`](wiki/entities/paper-rtcf.md)
+- **开源核查（步骤 2.5）：** **确认未开源** — 无项目页 / GitHub / 权重；`## 源码运行时序图` 写不适用
+- **方法要点：** PMA 历史对齐成功轨迹 + 低频运动残差纠偏冻结 PI-FAST；LIBERO All **86.4→88.4**、Long **61.6→68.6**；+11 ms CPU
+- **交叉更新：** [`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/entities/paper-dynawm-vla-online-correction.md`](wiki/entities/paper-dynawm-vla-online-correction.md)、[`wiki/entities/paper-dreamsteer-vla-deployment-steering.md`](wiki/entities/paper-dreamsteer-vla-deployment-steering.md)、[`wiki/entities/paper-bridgevla-plusplus.md`](wiki/entities/paper-bridgevla-plusplus.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`wiki/overview/wm-action-consequence-category-01-wam-action-prediction.md`](wiki/overview/wm-action-consequence-category-01-wam-action-prediction.md)
+
+## [2026-08-07] ingest | sources/papers/bridgevla_plusplus_arxiv_2608_05042.md — BridgeVLA++（arXiv:2608.05042）时空记忆 3D VLA 入库；升格 wiki/entities/paper-bridgevla-plusplus.md；互链 wiki/methods/vla.md、wiki/entities/paper-kemo-event-driven-keyframe-memory-vla.md、wiki/entities/paper-eventvla-visual-evidence-memory.md、wiki/entities/paper-chronos.md、wiki/tasks/manipulation.md；sources/repos/bridgevla.md、sources/sites/bridgevla-plus-github-io.md
+
+- **触发：** 用户指定 <https://github.com/BridgeVLA/BridgeVLA>、<https://arxiv.org/abs/2608.05042>、<https://bridgevla-plus.github.io/>、<https://huggingface.co/datasets/LPY/BridgeVLA>
+- **来源：** [`sources/papers/bridgevla_plusplus_arxiv_2608_05042.md`](sources/papers/bridgevla_plusplus_arxiv_2608_05042.md)、[`sources/repos/bridgevla.md`](sources/repos/bridgevla.md)、[`sources/sites/bridgevla-plus-github-io.md`](sources/sites/bridgevla-plus-github-io.md)
+- **新建实体：** [`wiki/entities/paper-bridgevla-plusplus.md`](wiki/entities/paper-bridgevla-plusplus.md)
+- **开源核查（步骤 2.5）：** **已开源** — Apache-2.0；五仿真基准 + HF/ModelScope 权重；真机数据未发；`## 源码运行时序图` 已写
+- **方法要点：** 多视图 heatmap 对齐 + 𝒯/𝒮 时空记忆；RMBench **96.0%**、RLBench **93.7%**；+9.2% 参数
+- **交叉更新：** [`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/entities/paper-kemo-event-driven-keyframe-memory-vla.md`](wiki/entities/paper-kemo-event-driven-keyframe-memory-vla.md)、[`wiki/entities/paper-eventvla-visual-evidence-memory.md`](wiki/entities/paper-eventvla-visual-evidence-memory.md)、[`wiki/entities/paper-chronos.md`](wiki/entities/paper-chronos.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`wiki/entities/paper-rtcf.md`](wiki/entities/paper-rtcf.md)
+
+## [2026-08-07] ingest | sources/papers/dreamwam_arxiv_2608_04996.md — DreamWAM（arXiv:2608.04996）beyond-RGB Joint WAM 入库；升格 wiki/entities/paper-dreamwam.md；互链 wiki/concepts/world-action-models.md、wiki/methods/vla.md、wiki/entities/paper-dynawm-vla-online-correction.md、wiki/overview/wm-action-consequence-category-01-wam-action-prediction.md、wiki/tasks/manipulation.md；sources/repos/dreamwam.md、sources/sites/hustvl-dreamwam-github-io.md
+
+- **触发：** 用户指定 <https://github.com/hustvl/DreamWAM>、<https://arxiv.org/abs/2608.04996>、<https://hustvl.github.io/DreamWAM/>、<https://huggingface.co/hustvl/DreamWAM>
+- **来源：** [`sources/papers/dreamwam_arxiv_2608_04996.md`](sources/papers/dreamwam_arxiv_2608_04996.md)、[`sources/repos/dreamwam.md`](sources/repos/dreamwam.md)、[`sources/sites/hustvl-dreamwam-github-io.md`](sources/sites/hustvl-dreamwam-github-io.md)
+- **新建实体：** [`wiki/entities/paper-dreamwam.md`](wiki/entities/paper-dreamwam.md)
+- **开源核查（步骤 2.5）：** **已开源** — GitHub 训练/评测入口 + HF MIT 权重；`## 源码运行时序图` 已写
+- **方法要点：** RGB+Flow 联合去噪 + Depth/DINO 门控残差；部署 RGB-only；LIBERO **98.90%**、LIBERO-Plus **75.47%**、真机扰动 **74.4%**
+- **机构注册：** [`schema/institutions.json`](schema/institutions.json) 新增 `d-robotics` → 地瓜机器人（D-Robotics）
+- **交叉更新：** [`wiki/concepts/world-action-models.md`](wiki/concepts/world-action-models.md)、[`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/entities/paper-dynawm-vla-online-correction.md`](wiki/entities/paper-dynawm-vla-online-correction.md)、[`wiki/overview/wm-action-consequence-category-01-wam-action-prediction.md`](wiki/overview/wm-action-consequence-category-01-wam-action-prediction.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)
+
 ## [2026-08-07] ingest | sources/repos/robotis-git.md — ROBOTIS-GIT 组织总览入库；升格 wiki/entities/robotis.md 与 Physical AI 主线实体；互链厂商 Lab 与既有 TurtleBot3/OpenMANIPULATOR/Cyclo 页
 
 - **触发：** 用户指定 <https://github.com/ROBOTIS-GIT>；要求自动合入
