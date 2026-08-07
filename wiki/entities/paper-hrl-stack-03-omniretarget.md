@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-retargeting, motion-control, interaction-mesh, loco-manipulation, data-generation, amazon-far, body-system-stack, icra-2026]
 status: complete
-updated: 2026-07-27
+updated: 2026-08-07
 arxiv: "2509.26633"
 venue: ICRA 2026
 summary: "OmniRetarget 用 interaction mesh + Sequential SOCP 硬约束生成交互保留的人形运动学参考，支持单演示增广与 holosoma 开源管线；下游 5 reward + 4 DR 无 curriculum 即可 G1 零样本实机 30 s parkour/loco-manipulation；PHP 等论文的原子技能重定向上游。"
@@ -182,6 +182,7 @@ sequenceDiagram
 - 公开轨迹：[OmniRetarget 数据集](./omniretarget-dataset.md)
 - 下游跑酷：[PHP（2602.15827）](./paper-hrl-stack-22-perceptive_humanoid_parkour.md)
 - Dynamic refinement：[DynaRetarget / SBTO](../methods/dynaretarget-sbto-motion-retargeting.md) 以本库 kinematic 参考为 SBTO 输入（285 motions · refinement **76.8%**）
+- Dynamic refinement（多重打靶）：[Shooting for Contact / DSMS](./paper-shooting-for-contact.md) — 论文 Table II 以 OmniRetarget 为运动学基线对照（super-hero backflip 落地 9.3% vs DSMS 98.7%）
 - 下游数据消费：[EgoHTR](./paper-egohtr.md) 项目页声明 Human2Robot 场景感知 retarget 基于 OmniRetarget / GMR / CoACD
 - 问题域：[Motion Retargeting](../concepts/motion-retargeting.md)、[GMR](../methods/motion-retargeting-gmr.md)、[Loco-Manipulation](../tasks/loco-manipulation.md)
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)

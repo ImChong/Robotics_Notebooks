@@ -1,3 +1,13 @@
+## [2026-08-07] ingest | sources/papers/shooting_for_contact_arxiv_2608_03116.md — Shooting for Contact / DSMS（Caltech/DePaul，arXiv:2608.03116）：接触隐式多重打靶动力学重定向；升格 wiki/entities/paper-shooting-for-contact.md 与 wiki/methods/dsms-contact-implicit-multiple-shooting.md；交叉 wiki/concepts/motion-retargeting.md、wiki/overview/hub-motion-retargeting.md、wiki/methods/dynaretarget-sbto-motion-retargeting.md、wiki/entities/paper-hrl-stack-03-omniretarget.md；注册 depaul；代码 sources/repos/shooting-for-contact.md + sources/sites/shooting-for-contact-github-io.md
+
+- **触发：** 用户指定标题 *Shooting for Contact*、项目页 <https://shooting-for-contact.github.io/>；机构 Caltech / DePaul；要求自动合并
+- **来源：** [`sources/papers/shooting_for_contact_arxiv_2608_03116.md`](sources/papers/shooting_for_contact_arxiv_2608_03116.md)、[`sources/sites/shooting-for-contact-github-io.md`](sources/sites/shooting-for-contact-github-io.md)、[`sources/repos/shooting-for-contact.md`](sources/repos/shooting-for-contact.md)
+- **新建实体 / 方法：** [`wiki/entities/paper-shooting-for-contact.md`](wiki/entities/paper-shooting-for-contact.md)、[`wiki/methods/dsms-contact-implicit-multiple-shooting.md`](wiki/methods/dsms-contact-implicit-multiple-shooting.md)
+- **开源核查（步骤 2.5）：** **已开源** — 项目页 Code → <https://github.com/sesteban951/shooting-for-contact>（MuJoCo+IPOPT DSMS / MPC 与 G1·Go2 示例）；RL/真机栈未随仓；`## 源码运行时序图` 已写
+- **方法要点：** 接触隐式多重打靶；Table I SRB→DSMS 落地 **100%**；Table II super-hero backflip 与 DynaRetarget 同档 **98.7%**、远超 OmniRetarget **9.3%**；G1 零样本爬行与 180° 跳转
+- **机构注册：** [`schema/institutions.json`](schema/institutions.json) 新增 `depaul` → 德保罗大学（DePaul University）
+- **交叉更新：** [`wiki/concepts/motion-retargeting.md`](wiki/concepts/motion-retargeting.md)、[`wiki/overview/hub-motion-retargeting.md`](wiki/overview/hub-motion-retargeting.md)、[`wiki/methods/dynaretarget-sbto-motion-retargeting.md`](wiki/methods/dynaretarget-sbto-motion-retargeting.md)、[`wiki/entities/paper-hrl-stack-03-omniretarget.md`](wiki/entities/paper-hrl-stack-03-omniretarget.md)
+
 ## [2026-08-07] ingest | sources/papers/rtcf_arxiv_2608_04527.md — RTCF（arXiv:2608.04527）免训练 VLA 动作纠偏入库；升格 wiki/entities/paper-rtcf.md；互链 wiki/methods/vla.md、wiki/entities/paper-dynawm-vla-online-correction.md、wiki/entities/paper-dreamsteer-vla-deployment-steering.md、wiki/entities/paper-bridgevla-plusplus.md、wiki/tasks/manipulation.md
 
 - **触发：** 用户指定 <https://arxiv.org/abs/2608.04527>；要求与 DreamWAM / BridgeVLA++ 一并入库并自动合并

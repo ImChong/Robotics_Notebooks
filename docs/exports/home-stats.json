@@ -1,13 +1,78 @@
 {
   "generated_at": "2026-08-07",
-  "node_count": 2120,
-  "edge_count": 19477,
+  "node_count": 2122,
+  "edge_count": 19504,
   "coverage": {
-    "covered": 2096,
-    "total": 2096,
+    "covered": 2098,
+    "total": 2098,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-shooting-for-contact.md",
+      "detail_id": "entity-paper-shooting-for-contact",
+      "label": "Shooting for Contact（DSMS 动态运动重定向）",
+      "type": "entity",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/methods/dsms-contact-implicit-multiple-shooting.md",
+      "detail_id": "wiki-methods-dsms-contact-implicit-multiple-shooting",
+      "label": "DSMS（接触隐式直接仿真多重打靶）",
+      "type": "method",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/concepts/motion-retargeting.md",
+      "detail_id": "wiki-concepts-motion-retargeting",
+      "label": "Motion Retargeting（动作重定向）",
+      "type": "concept",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/overview/hub-motion-retargeting.md",
+      "detail_id": "wiki-overview-hub-motion-retargeting",
+      "label": "动作重定向（知识链汇总）",
+      "type": "overview",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/methods/dynaretarget-sbto-motion-retargeting.md",
+      "detail_id": "wiki-methods-dynaretarget-sbto-motion-retargeting",
+      "label": "DynaRetarget / SBTO（增量采样式动力学重定向）",
+      "type": "method",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-hrl-stack-03-omniretarget.md",
+      "detail_id": "entity-paper-hrl-stack-03-omniretarget",
+      "label": "OmniRetarget",
+      "type": "entity",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
     {
       "path": "wiki/entities/paper-rtcf.md",
       "detail_id": "entity-paper-rtcf",
@@ -154,80 +219,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/robotis-ai-sapiens.md",
-      "detail_id": "entity-robotis-ai-sapiens",
-      "label": "ROBOTIS AI Sapiens（ai_sapiens）",
-      "type": "entity",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/cyclo-lab.md",
-      "detail_id": "entity-cyclo-lab",
-      "label": "cyclo_lab",
-      "type": "entity",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/robotis-physical-ai-tools.md",
-      "detail_id": "entity-robotis-physical-ai-tools",
-      "label": "ROBOTIS Physical AI Tools",
-      "type": "entity",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/dynamixel-sdk.md",
-      "detail_id": "entity-dynamixel-sdk",
-      "label": "Dynamixel SDK",
-      "type": "entity",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/robotis-mujoco-menagerie.md",
-      "detail_id": "entity-robotis-mujoco-menagerie",
-      "label": "ROBOTIS MuJoCo Menagerie",
-      "type": "entity",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/cyclo-intelligence.md",
-      "detail_id": "entity-cyclo-intelligence",
-      "label": "Cyclo Intelligence",
-      "type": "entity",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-rtcf.md",
-    "detail_id": "entity-paper-rtcf",
-    "label": "RTCF（Retrieve in Time, Correct in Frequency · arXiv:2608.04527）",
+    "path": "wiki/entities/paper-shooting-for-contact.md",
+    "detail_id": "entity-paper-shooting-for-contact",
+    "label": "Shooting for Contact（DSMS 动态运动重定向）",
     "type": "entity",
     "recency": "2026-08-07",
     "source": "log.md",
-    "action": "maintained"
+    "action": "maintained",
+    "has_repo": true,
+    "community_label": "动作重定向（Motion Retargeting） 社区"
   },
   "top_communities": [
     {
@@ -236,7 +239,7 @@
     },
     {
       "label": "动作重定向",
-      "size": 167
+      "size": 169
     },
     {
       "label": "操作",
@@ -260,7 +263,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 423,
+      "degree": 424,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -288,18 +291,18 @@
       "community_label": "操作（Manipulation） 社区"
     },
     {
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "degree": 309
+    },
+    {
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
       "degree": 307,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
-      "degree": 307
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
@@ -357,7 +360,7 @@
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",
       "label": "OmniRetarget",
       "type": "entity",
-      "degree": 51,
+      "degree": 54,
       "has_repo": true,
       "community_label": "动作重定向（Motion Retargeting） 社区"
     },
