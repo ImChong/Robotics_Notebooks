@@ -5208,9 +5208,11 @@
     const roadmapEl = document.getElementById('moduleRoadmapList');
     const relatedModuleEl = document.getElementById('moduleRelatedModules');
     const emptyState = document.getElementById('moduleEmptyState');
+    const emptySection = document.getElementById('module-empty-section');
     const breadcrumb = document.getElementById('moduleBreadcrumb');
 
     if (!modulePage) {
+      if (emptySection) emptySection.hidden = false;
       if (emptyState) emptyState.hidden = false;
       if (titleEl) titleEl.textContent = '未找到对应 module page';
       if (summaryEl) {
@@ -5229,6 +5231,7 @@
       return;
     }
 
+    if (emptySection) emptySection.hidden = true;
     if (emptyState) emptyState.hidden = true;
     document.title = (modulePage.title || moduleId) + ' | Robotics Notebooks';
 
@@ -5321,9 +5324,11 @@
     const summaryEl = document.getElementById('roadmapSummary');
     const metaEl = document.getElementById('roadmapMeta');
     const emptyState = document.getElementById('roadmapEmptyState');
+    const emptySection = document.getElementById('roadmap-empty-section');
     const breadcrumb = document.getElementById('roadmapBreadcrumb');
 
     if (!roadmapPage) {
+      if (emptySection) emptySection.hidden = false;
       if (emptyState) emptyState.hidden = false;
       if (titleEl) titleEl.textContent = '未找到对应 roadmap page';
       if (summaryEl) {
@@ -5351,6 +5356,7 @@
       return;
     }
 
+    if (emptySection) emptySection.hidden = true;
     if (emptyState) emptyState.hidden = true;
     document.title = (roadmapPage.title || roadmapId) + ' | Robotics Notebooks';
 
