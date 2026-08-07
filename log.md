@@ -1,3 +1,12 @@
+## [2026-08-07] ingest | sources/repos/robotis-git.md — ROBOTIS-GIT 组织总览入库；升格 wiki/entities/robotis.md 与 Physical AI 主线实体；互链厂商 Lab 与既有 TurtleBot3/OpenMANIPULATOR/Cyclo 页
+
+- **触发：** 用户指定 <https://github.com/ROBOTIS-GIT>；要求自动合入
+- **来源：** [`sources/repos/robotis-git.md`](sources/repos/robotis-git.md)、[`sources/repos/cyclo.md`](sources/repos/cyclo.md)、[`sources/repos/ai_worker.md`](sources/repos/ai_worker.md)、[`sources/repos/ai_sapiens.md`](sources/repos/ai_sapiens.md)、[`sources/repos/cyclo_lab.md`](sources/repos/cyclo_lab.md)、[`sources/repos/physical_ai_tools.md`](sources/repos/physical_ai_tools.md)、[`sources/repos/dynamixel_sdk.md`](sources/repos/dynamixel_sdk.md)、[`sources/repos/robotis_mujoco_menagerie.md`](sources/repos/robotis_mujoco_menagerie.md)
+- **新建实体：** [`wiki/entities/robotis.md`](wiki/entities/robotis.md)、[`wiki/entities/robotis-ai-worker.md`](wiki/entities/robotis-ai-worker.md)、[`wiki/entities/robotis-ai-sapiens.md`](wiki/entities/robotis-ai-sapiens.md)、[`wiki/entities/cyclo-lab.md`](wiki/entities/cyclo-lab.md)、[`wiki/entities/robotis-physical-ai-tools.md`](wiki/entities/robotis-physical-ai-tools.md)、[`wiki/entities/dynamixel-sdk.md`](wiki/entities/dynamixel-sdk.md)、[`wiki/entities/robotis-mujoco-menagerie.md`](wiki/entities/robotis-mujoco-menagerie.md)
+- **开源核查（步骤 2.5）：** **已开源（主线）** — 组织公开；主线仓多为 Apache-2.0；Cyclo README 标明 Supervisor/Hub 等 **私有栈**不在公开组织
+- **要点：** Dynamixel → 教育平台 → Cyclo Physical AI（Lab / Tools / Intelligence / AI Worker / AI Sapiens）；`cyclo_lab` 补齐与宇树/云深处/直驱厂商 Lab 对照
+- **交叉更新：** [`wiki/entities/cyclo-intelligence.md`](wiki/entities/cyclo-intelligence.md)、[`wiki/entities/turtlebot3.md`](wiki/entities/turtlebot3.md)、[`wiki/entities/robotis-open-manipulator-line.md`](wiki/entities/robotis-open-manipulator-line.md)、[`wiki/entities/robot-lab.md`](wiki/entities/robot-lab.md)、[`wiki/entities/unitree-rl-lab.md`](wiki/entities/unitree-rl-lab.md)、[`wiki/entities/deeprobotics-rl-training.md`](wiki/entities/deeprobotics-rl-training.md)、[`wiki/entities/ddt-lab.md`](wiki/entities/ddt-lab.md)
+
 ## [2026-08-07] ingest | sources/repos/rl_training.md — 云深处官方 Isaac Lab RL 训练仓入库；wiki/entities/deeprobotics-rl-training.md wiki/entities/robot-lab.md wiki/concepts/wheel-legged-quadruped.md wiki/entities/ddt-lab.md wiki/entities/unitree-rl-lab.md
 
 - **触发：** 用户指定 <https://github.com/DeepRoboticsLab/rl_training>、<https://github.com/unitreerobotics/unitree_rl_lab>、<https://github.com/DDTRobot/DDT_Lab>；要求自动合入

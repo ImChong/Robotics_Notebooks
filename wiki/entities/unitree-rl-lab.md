@@ -13,6 +13,7 @@ related:
   - ./robot-lab.md
   - ./deeprobotics-rl-training.md
   - ./ddt-lab.md
+  - ./cyclo-lab.md
   - ./paper-humoslope-physics-guided-slope-locomotion.md
   - ../tasks/locomotion.md
   - ../concepts/sim2real.md
@@ -64,7 +65,7 @@ summary: "unitree_rl_lab 是基于 Isaac Lab 的官方 Unitree RL 环境扩展�
 3. 配置 `source/unitree_rl_lab/.../assets/robots/unitree.py` 中的 `UNITREE_MODEL_DIR`（USD）或 `UNITREE_ROS_DIR`（URDF）。
 4. 注意：GitHub [`unitree_model`](./unitree-model.md) 已 deprecated，USD 请用 Hugging Face 数据集。
 5. 部署：编译 `deploy/robots/<robot>/` 的 `robot_controller`（依赖 `unitree_sdk2`）；Sim2Sim 先跑 [`unitree_mujoco`](./unitree-mujoco.md)。
-6. 厂商 Lab 对照：云深处 [rl_training](./deeprobotics-rl-training.md)、直驱 [DDT_Lab](./ddt-lab.md)；多厂商社区扩展见 [robot_lab](./robot-lab.md)。
+6. 厂商 Lab 对照：云深处 [rl_training](./deeprobotics-rl-training.md)、直驱 [DDT_Lab](./ddt-lab.md)、ROBOTIS [cyclo_lab](./cyclo-lab.md)（偏臂/AI Worker 操作）；多厂商社区扩展见 [robot_lab](./robot-lab.md)。
 
 ## 局限与风险
 

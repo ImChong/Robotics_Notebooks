@@ -2,9 +2,13 @@
 type: entity
 tags: [framework, physical-ai, vla, behavior-tree, ros2, open-source, robotis, lerobot, groot, docker]
 status: complete
-updated: 2026-07-06
+updated: 2026-08-07
 summary: "Cyclo Intelligence 是 ROBOTIS 开源 Physical AI 全栈：数据录制、训练、容器化 VLA/GR00T 推理与真机执行；orchestrator 用行为树编排策略生命周期与宏动作，对接 AI Worker 等硬件。"
 related:
+  - ./robotis.md
+  - ./robotis-ai-worker.md
+  - ./robotis-physical-ai-tools.md
+  - ./cyclo-lab.md
   - ../concepts/behavior-tree-vla-orchestration.md
   - ../methods/vla.md
   - ./lerobot.md
@@ -128,6 +132,8 @@ docker/container.sh start-groot    # 按需启动 GR00T 策略容器
 
 ## 关联页面
 
+- [ROBOTIS 组织 hub](./robotis.md)
+- [AI Worker](./robotis-ai-worker.md) · [Physical AI Tools](./robotis-physical-ai-tools.md) · [cyclo_lab](./cyclo-lab.md)
 - [行为树 × VLA 编排（概念）](../concepts/behavior-tree-vla-orchestration.md)
 - [VLA（方法）](../methods/vla.md)
 - [LeRobot（实体）](./lerobot.md)

@@ -2,14 +2,20 @@
 type: entity
 tags: [manipulator, arm, gripper, ros, robotis, open-source]
 status: complete
-updated: 2026-05-18
+updated: 2026-08-07
 related:
+  - ./robotis.md
+  - ./dynamixel-sdk.md
+  - ./robotis-ai-worker.md
+  - ./cyclo-lab.md
+  - ./robotis-mujoco-menagerie.md
   - ../tasks/manipulation.md
   - ../overview/robot-open-source-wechat-issue01-curator.md
   - ../concepts/ros2-basics.md
 sources:
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md
-summary: "ROBOTIS 开源机械臂/手产品线（OpenMANIPULATOR-X/P、Manipulator-H、RH-P12-RN 等）：文档在 eManual 分系列维护，代码集中在 ROBOTIS-GIT 组织。"
+  - ../../sources/repos/robotis-git.md
+summary: "ROBOTIS 开源机械臂/手产品线（OpenMANIPULATOR-X/P、Manipulator-H、RH-P12-RN 等）：文档在 eManual 分系列维护，代码集中在 ROBOTIS-GIT 组织；Physical AI 侧见 OMY 与 cyclo_lab。"
 ---
 
 # ROBOTIS 机械臂 / 手（OpenMANIPULATOR 等）
@@ -42,6 +48,9 @@ summary: "ROBOTIS 开源机械臂/手产品线（OpenMANIPULATOR-X/P、Manipulat
 
 ## 关联页面
 
+- [ROBOTIS 组织 hub](./robotis.md)
+- [Dynamixel SDK](./dynamixel-sdk.md) · [cyclo_lab](./cyclo-lab.md) · [MuJoCo Menagerie](./robotis-mujoco-menagerie.md)
+- [AI Worker](./robotis-ai-worker.md)（半人形 Physical AI 对照）
 - [Manipulation](../tasks/manipulation.md)
 - [ROS 2 基础](../concepts/ros2-basics.md)
 - [机器人开源宝库（微信策展第01期）索引](../overview/robot-open-source-wechat-issue01-curator.md)
@@ -49,7 +58,9 @@ summary: "ROBOTIS 开源机械臂/手产品线（OpenMANIPULATOR-X/P、Manipulat
 ## 推荐继续阅读
 
 - [ROBOTIS 下载中心](https://en.robotis.com/service/downloadpage.php?ca_id=70c0)（图纸与固件，以官网为准）
+- [open_manipulator 仓](https://github.com/ROBOTIS-GIT/open_manipulator)（含 AI Manipulator / OMY 叙事）
 
 ## 参考来源
 
 - [wechat_jixie_robot_open_source_treasury_issue01_10_robots.md](../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md)
+- [sources/repos/robotis-git.md](../../sources/repos/robotis-git.md)

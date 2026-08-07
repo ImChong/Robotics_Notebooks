@@ -11,6 +11,8 @@ related:
   - ./unitree-rl-lab.md
   - ./deeprobotics-rl-training.md
   - ./ddt-lab.md
+  - ./cyclo-lab.md
+  - ./robotis.md
   - ./openloong.md
   - ./atom01-train.md
   - ../methods/beyondmimic.md
@@ -67,7 +69,7 @@ flowchart LR
 
 ## 关键特性
 
-1. **多厂商硬件覆盖**：除 Unitree、Anymal、FFTAI、Booster、RobotEra 等常见机型外，2026 版 README 新增 **Zsibot**、**Magiclab**（四足/轮足/人形）、**Agibot D1**、**Openloong Loong**、**RoboParty ATOM01** 等注册环境；轮足专题见 [轮足四足机器人](../concepts/wheel-legged-quadruped.md)（含 [AWARE](./paper-aware-wheeled-legged-reflexive-evasion.md) 在 **Deeprobotics M20** 上的高动态反射避障案例），OpenLoong 整机栈见 [OpenLoong](./openloong.md)，ATOM01 训练仓见 [atom01_train](./atom01-train.md)。若只做单一厂商官方栈，对照 [unitree_rl_lab](./unitree-rl-lab.md)、[Deep Robotics rl_training](./deeprobotics-rl-training.md)、[DDT_Lab](./ddt-lab.md)（本仓是跨厂商社区扩展，不是厂商官方唯一入口）。
+1. **多厂商硬件覆盖**：除 Unitree、Anymal、FFTAI、Booster、RobotEra 等常见机型外，2026 版 README 新增 **Zsibot**、**Magiclab**（四足/轮足/人形）、**Agibot D1**、**Openloong Loong**、**RoboParty ATOM01** 等注册环境；轮足专题见 [轮足四足机器人](../concepts/wheel-legged-quadruped.md)（含 [AWARE](./paper-aware-wheeled-legged-reflexive-evasion.md) 在 **Deeprobotics M20** 上的高动态反射避障案例），OpenLoong 整机栈见 [OpenLoong](./openloong.md)，ATOM01 训练仓见 [atom01_train](./atom01-train.md)。若只做单一厂商官方栈，对照 [unitree_rl_lab](./unitree-rl-lab.md)、[Deep Robotics rl_training](./deeprobotics-rl-training.md)、[DDT_Lab](./ddt-lab.md)、[ROBOTIS cyclo_lab](./cyclo-lab.md)（本仓是跨厂商社区扩展，不是厂商官方唯一入口）。
 2. **模块化扩展**：新机器人遵循 `assets/` → `tasks/.../config/<robot>/` → `gym.register` 三层模板，与 Isaac Lab 官方扩展规范一致。
 3. **多训练后端**：**RSL-RL** 为主（含多 GPU / 多节点 `--distributed`）；**CusRL** 为实验替代；**SKRL** 用于 G1 **AMP Dance** 等 Direct 任务。
 4. **模仿与风格任务**：
@@ -96,6 +98,7 @@ flowchart LR
 - [unitree_rl_lab](./unitree-rl-lab.md)
 - [Deep Robotics rl_training](./deeprobotics-rl-training.md)
 - [DDT_Lab](./ddt-lab.md)
+- [ROBOTIS cyclo_lab](./cyclo-lab.md)
 - [强化学习 (Reinforcement Learning)](../methods/reinforcement-learning.md)
 
 ## 参考来源
