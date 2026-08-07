@@ -2,19 +2,22 @@
 type: query
 tags: [dexterity, data-collection, teleoperation, simulation, robot-hand]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-07
 related:
   - ../entities/allegro-hand.md
   - ../entities/ruka-v2-hand.md
   - ../entities/midas-hand.md
   - ../entities/mimic-wearable-u1.md
   - ../entities/paper-teledexter.md
+  - ../entities/humantouch.md
+  - ../entities/paper-notebook-osmo-open-source-tactile-glove-for-human-to-robo.md
   - ../comparisons/data-gloves-vs-vision-teleop.md
   - ../methods/behavior-cloning.md
   - ./demo-data-collection-guide.md
 sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/teledexter_arxiv_2607_11481.md
+  - ../../sources/sites/humantouch-xsparkai.md
 summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、Allegro Hand 或低成本遥操作装置采集高质量、多模态的灵巧抓取与操作演示数据。"
 ---
 
@@ -57,6 +60,7 @@ summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、A
 - **原理**：通过弯曲传感器或 IMU 阵列直接测量人类指节的弯曲度。
 - **优点**：数据极其稳定，不受视觉遮挡影响。SenseGlove 等高级型号还能提供力反馈（Haptic Feedback），让操作者“摸”到虚拟物体。
 - **缺点**：价格极其昂贵（数万美金）；设备校准繁琐。
+- **触觉增强手套（人侧采数）**：[HumanTouch](../entities/humantouch.md) 在 MANUS **EMF** 手姿之上叠加全掌压阻触觉（约 **360** 点/手）与头/腕多视角 RGB，用姿态/历史感知标定与手套日检把「规模化」写成可追溯质控协议；初版约 100 h 宣称 HF 发布，**代码截至 2026-08-07 未列**。人机共用磁触觉迁移则见 [OSMO](../entities/paper-notebook-osmo-open-source-tactile-glove-for-human-to-robo.md)。
 
 ## 3. 仿真示教与自动生成 (Synthesized Data)
 
@@ -81,6 +85,8 @@ summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、A
 - [mimic wearable U1](../entities/mimic-wearable-u1.md) — 固定 M1 运动学的被动外骨骼中层采集
 - [Behavior Cloning](../methods/behavior-cloning.md)
 - [TeleDexter（论文实体）](../entities/paper-teledexter.md) — co-tracking 灵巧遥操作数据引擎
+- [HumanTouch](../entities/humantouch.md) — 人手全掌压阻触觉 + EMF 手姿多模态采数（数据待发）
+- [OSMO 触觉手套](../entities/paper-notebook-osmo-open-source-tactile-glove-for-human-to-robo.md) — 人机共用开源磁触觉对照
 - [多模态融合技巧](./multimodal-fusion-tricks.md)
 - [操作演示数据采集总指南](./demo-data-collection-guide.md)
 
@@ -88,3 +94,4 @@ summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、A
 - Qin, B., et al. (2023). *AnyTeleop: A Unified and General Framework for Bimanual Dexterous Teleoperation*.
 - [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md)
 - [sources/papers/teledexter_arxiv_2607_11481.md](../../sources/papers/teledexter_arxiv_2607_11481.md)
+- [sources/sites/humantouch-xsparkai.md](../../sources/sites/humantouch-xsparkai.md)

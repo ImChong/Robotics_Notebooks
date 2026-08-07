@@ -195,6 +195,7 @@
 - [Humanoid Motion Intelligence（人形机器人运动智能知识库）](wiki/entities/humanoid-motion-intelligence.md) — Humanoid Motion Intelligence**（GitHub：[`RealXiaoze/humanoid-motion-intelligence`](https://github.c `📅unknown` `[entity_page]`
 - [人形机器人（Humanoid Robot）](wiki/entities/humanoid-robot.md) — 人形机器人是具有双足步行能力和类人形态（躯干 + 双臂 + 双腿）的机器人平台，兼顾移动能力与操作能力，是当前具身智能研究的核心载体。 `📅unknown` `[entity_page]`
 - [人形机器人系统学习策展（G1 → 导航 → 足球 → 大模型）](wiki/entities/humanoid-system-curriculum.md) — 一句话：** 把深蓝学院「人形机器人系统 - 理论与实践」八章大纲落成可交叉引用的知识图：以 Unitree G1 为平台，从 **行走 RL** 走到  `📅unknown` `[entity_page]`
+- [HumanTouch（可规模化人手触觉采集系统）](wiki/entities/humantouch.md) — HumanTouch**（*A Multimodal System for Scalable Human-Hand Tactile Acquisition*，[项目页](https://xspar `📅unknown` `[entity_page]`
 - [Hydra](wiki/entities/hydra-config.md) — Hydra](https://github.com/facebookresearch/hydra) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze `📅unknown` `[entity_page]`
 - [iGibson](wiki/entities/igibson.md) — iGibson** 是斯坦福大学等机构 2020 年发布的 **交互式室内仿真环境**，强调 **真实感视觉场景** 与 **高保真物理交互** 的融合。 `📅unknown` `[entity_page]`
 - [img2threejs](wiki/entities/img2threejs.md) — img2threejs**（hoainho/img2threejs，MIT）是一套 **Agent Skill `📅unknown` `[entity_page]`

@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, manipulation, contact-rich, multimodal, tactile-sensing, fusion]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-07
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./tactile-sensing.md
@@ -33,6 +33,7 @@ related:
   - ../entities/paper-vt-wam-visuotactile-contact-rich.md
   - ../entities/paper-taco-tactile-sensor-benchmark.md
   - ../entities/paper-softvtbench.md
+  - ../entities/humantouch.md
 sources:
   - ../../sources/papers/perception.md
   - ../../sources/papers/contact_dynamics.md
@@ -41,6 +42,7 @@ sources:
   - ../../sources/papers/n0_foundation.md
   - ../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md
   - ../../sources/papers/softvtbench_arxiv_2607_04234.md
+  - ../../sources/sites/humantouch-xsparkai.md
 summary: "视触觉融合（Visuo-Tactile Fusion）研究如何在接触瞬间动态切换视觉的全局先验与触觉的局部反馈：视觉提供宏观语义和粗对位，触觉补足遮挡区的微对位与力学闭环。"
 ---
 
@@ -230,6 +232,7 @@ flowchart LR
 - [VTAP Gripper](../entities/paper-vtap-gripper.md) — 主动掌 LED 开关视/触 + FlexiTac 指尖；硬件级阶段切换实例（arXiv:2607.15448）
 - [TacO（触觉传感器操作基准）](../entities/paper-taco-tactile-sensor-benchmark.md) — 六传感器 × 三任务：同数据 vision-only vs visuotactile（arXiv:2605.21976）
 - [SoftVTBench（可变形视触觉安全基准）](../entities/paper-softvtbench.md) — Goal vs Safety；π₀.₅ VO/VT 在 FEM 软体上的安全增益（arXiv:2607.04234）
+- [HumanTouch（人手全掌触觉采集）](../entities/humantouch.md) — 触觉+手姿+头/腕 RGB 同步；强调可解释接触与质控（数据待 HF 发布）
 - [NeoteAI / 𝒩₀ 栈](../entities/neoteai.md) — NeoForce 力场 + 𝒩₀-VTLA 预测触觉 + 𝒩₀-TWAM 双通路
 - [ViTacWorld](../entities/paper-vitacworld.md) — 动作条件视触觉 WM：dream 增强下游触觉策略（arXiv:2607.22530）
 - [VT-WAM](../entities/paper-vt-wam-visuotactile-contact-rich.md) — 联合预测视触觉形变与动作的 WAM
@@ -250,6 +253,7 @@ flowchart LR
 - [sources/papers/vtap_gripper_arxiv_2607_15448.md](../../sources/papers/vtap_gripper_arxiv_2607_15448.md) — VTAP 主动掌视触切换硬件实例
 - [sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md](../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md) — TacO 跨模态触觉 × ACT 视触觉消融
 - [sources/papers/softvtbench_arxiv_2607_04234.md](../../sources/papers/softvtbench_arxiv_2607_04234.md) — SoftVTBench Goal/Safety × π₀.₅ VO/VT
+- [sources/sites/humantouch-xsparkai.md](../../sources/sites/humantouch-xsparkai.md) — HumanTouch 人手视–触–运动同步采集
 - Calandra, R., et al. (2018). *More than a feeling: Learning to grasp and regrasp using vision and touch*.
 - Lee, M. A., et al. (2019). *Making sense of vision and touch: Self-supervised learning of multimodal representations for contact-rich tasks*.
 - Lambeta, M., et al. (2020). *DIGIT: A Novel Design for a Low-Cost Compact High-Resolution Tactile Sensor*.

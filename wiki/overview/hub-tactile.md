@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-tactile, haptic, force, contact, visuo-tactile]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-07
 summary: "触觉与力觉闭环知识链汇总：覆盖触觉传感、视触觉融合、阻抗/力控与接触估计，强调「摸得着」对抓取与 loco-manip 稳定性的作用。"
 ---
 
@@ -44,6 +44,7 @@ summary: "触觉与力觉闭环知识链汇总：覆盖触觉传感、视触觉�
 | 传感器选型基准 | 跨模态真机 IL 对比 | [TacO](../entities/paper-taco-tactile-sensor-benchmark.md)（六传感器 × 三任务 ACT；无通用最佳模态 · arXiv:2605.21976） |
 | 可变形接触安全评测 | Goal vs Safety Success | [SoftVTBench](../entities/paper-softvtbench.md)（Isaac Sim FEM + GelSight；π₀.₅ VO/VT · arXiv:2607.04234） |
 | 数据+策略栈 | 力场表征 / VTLA / 触觉 WAM | [NeoteAI 𝒩₀](../entities/neoteai.md)（OpenNeoData 5k h；Foundation / VTLA / TWAM） |
+| 人侧规模化采数 | 全掌压阻手套 + 手姿 + 多视角 RGB | [HumanTouch](../entities/humantouch.md)（Xspark SparkLAB；约 100 h 初版待 HF；代码未列） |
 
 ## 与其他知识链的关系
 
@@ -57,6 +58,7 @@ summary: "触觉与力觉闭环知识链汇总：覆盖触觉传感、视触觉�
 - [TacRefineNet（论文实体）](../entities/paper-tacrefinenet-tactile-grasp-refinement.md) — 边缘突出物体的纯触觉抓取精修
 - [TacO（触觉传感器操作基准）](../entities/paper-taco-tactile-sensor-benchmark.md) — 跨模态触觉硬件 × 真机 ACT 选型证据
 - [SoftVTBench（可变形视触觉安全基准）](../entities/paper-softvtbench.md) — Goal/Safety Success；触觉抬高软体安全率
+- [HumanTouch（人手全掌触觉采集）](../entities/humantouch.md) — 可校准/质控的人侧视–触–运动数据（数据待发）
 - [NeoteAI / 𝒩₀ 三件套](../entities/neoteai.md) — OpenNeoData + NeoForce + VTLA/TWAM
 - [Teleoperation](../tasks/teleoperation.md) — 操作员力反馈与示范采集
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
@@ -70,5 +72,6 @@ summary: "触觉与力觉闭环知识链汇总：覆盖触觉传感、视触觉�
 - **ingest 档案：** [sources/papers/tacrefinenet_arxiv_2509_25746.md](../../sources/papers/tacrefinenet_arxiv_2509_25746.md) — TacRefineNet 多指触觉抓取精修（arXiv:2509.25746）
 - **ingest 档案：** [sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md](../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md) — TacO 触觉传感器真机 IL 基准（arXiv:2605.21976）
 - **ingest 档案：** [sources/papers/softvtbench_arxiv_2607_04234.md](../../sources/papers/softvtbench_arxiv_2607_04234.md) — SoftVTBench 可变形视触觉安全基准（arXiv:2607.04234）
+- **ingest 档案：** [sources/sites/humantouch-xsparkai.md](../../sources/sites/humantouch-xsparkai.md) — HumanTouch 人手全掌触觉采集（Xspark SparkLAB）
 - **ingest 档案：** [sources/papers/n0_foundation.md](../../sources/papers/n0_foundation.md) — 𝒩₀-Foundation / OpenNeoData
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`tactile` 命中规则）

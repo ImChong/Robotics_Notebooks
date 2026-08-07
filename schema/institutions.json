@@ -2380,6 +2380,16 @@
         "macrodata-labs",
         "macrodata-co"
       ]
+    },
+    "xspark-ai": {
+      "label": "星火人工智能（Xspark AI）",
+      "aliases": [
+        "xspark-ai",
+        "xspark",
+        "xsparkai",
+        "sparklab",
+        "spark-lab"
+      ]
     }
   }
 }

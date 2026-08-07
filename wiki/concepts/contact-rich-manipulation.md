@@ -2,7 +2,7 @@
 type: concept
 tags: [manipulation, contact, force-control, impedance-control, tsid]
 status: complete
-updated: 2026-08-02
+updated: 2026-08-07
 summary: "Contact-Rich Manipulation 指需要持续建模接触、摩擦和力约束的操作任务，难点不在于碰到物体，而在于控制接触过程本身。"
 related:
   - ../queries/contact-wrench-closed-loop.md
@@ -22,6 +22,7 @@ related:
   - ../entities/neoteai.md
   - ../entities/paper-n0-foundation.md
   - ../entities/paper-n0-twam.md
+  - ../entities/humantouch.md
   - ../tasks/manipulation.md
   - ./contact-dynamics.md
   - ./tsid.md
@@ -39,6 +40,7 @@ sources:
   - ../../sources/papers/vtap_gripper_arxiv_2607_15448.md
   - ../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md
   - ../../sources/papers/softvtbench_arxiv_2607_04234.md
+  - ../../sources/sites/humantouch-xsparkai.md
   - ../../sources/papers/n0_foundation.md
   - ../../sources/papers/n0_twam.md
   - ../../sources/papers/teledexter_arxiv_2607_11481.md
@@ -171,6 +173,7 @@ sources:
 - [Visuo-Tactile Fusion](./visuo-tactile-fusion.md)
 - [TacO（触觉传感器操作基准）](../entities/paper-taco-tactile-sensor-benchmark.md) — 接触丰富任务上的跨模态触觉选型证据
 - [SoftVTBench（可变形视触觉安全基准）](../entities/paper-softvtbench.md) — 过程级物理安全 vs 终端 Goal
+- [HumanTouch（人手全掌触觉采集）](../entities/humantouch.md) — 可规模化人侧接触–运动–视觉数据（压阻手套；数据待发）
 - [NeoteAI 𝒩₀-Foundation / TWAM](../entities/neoteai.md) — NeoReal/NeoSim 接触套件 + 触觉原生 WAM
 - [FM-VLA](../entities/paper-fm-vla.md) — 力觉长程记忆 VLA：接触事件计数与非马尔可夫接触操作（arXiv:2607.18231）
 - [FA-RDP](../entities/paper-fa-rdp.md) — 频率自适应视觉–力扩散：接触前保多模态、接触后 30 Hz 一步反应（arXiv:2607.28596）
