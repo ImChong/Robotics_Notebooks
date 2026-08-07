@@ -61,6 +61,9 @@ html {
      （body 的 overflow-x: hidden 不阻止 documentElement.scrollWidth 增长） */
   overflow-x: hidden;
   overflow-x: clip;
+  /* 长详情有经典滚动条、短页（如未找到）没有时，居中主栏会横移约半个滚动条宽；
+     预留 gutter 让 found / not-found / 首页之间切换不再左右抖 */
+  scrollbar-gutter: stable;
 }
 body {
   font-family: var(--font-sans);
@@ -1367,6 +1370,10 @@ button.home-wiki-heatmap-cell.is-active {
   color: var(--accent);
   text-decoration: none;
 }
+/* 空态 section 默认 hidden；即便短暂可见也不要吃 .section 的 44px×2 顶底留白，
+   否则详情加载完成隐藏空态时主栏会垂直跳一下 */
+#detail-empty-section,
+#module-empty-section,
 #roadmap-empty-section {
   padding: 0;
 }
