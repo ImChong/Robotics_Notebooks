@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, manipulation, contact-rich, hardware, sensing]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-07
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../queries/contact-wrench-closed-loop.md
@@ -16,6 +16,7 @@ related:
   - ../entities/paper-vtap-gripper.md
   - ../entities/paper-taco-tactile-sensor-benchmark.md
   - ../entities/paper-softvtbench.md
+  - ../entities/humantouch.md
 sources:
   - ../../sources/papers/contact_dynamics.md
   - ../../sources/papers/humanoid_touch_dream.md
@@ -23,6 +24,7 @@ sources:
   - ../../sources/papers/vtap_gripper_arxiv_2607_15448.md
   - ../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md
   - ../../sources/papers/softvtbench_arxiv_2607_04234.md
+  - ../../sources/sites/humantouch-xsparkai.md
 summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上的法向力和切向力、滑动分布及材质纹理，是实现接触丰富操作和高精度抓取的核心感官。"
 ---
 
@@ -58,7 +60,7 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - **缺点**：体积较大（难以塞入指尖），帧率受限于摄像头（通常在 30-60Hz），存在盲区；**TacO** 显示高分辨率未必翻译为粗操作 IL 的更高成功率。
 
 ### 2. 电阻/电容式阵列 (Piezoresistive / Capacitive Arrays)
-- **代表**：BioTac, 各种柔性薄膜阵列；夹爪集成例见 [VTAP Gripper](../entities/paper-vtap-gripper.md) 指尖 **FlexiTac**（\(32\times 12\) taxels，与 Fin-Ray 顺应指兼容）；同硬件亦出现在 [TacO](../entities/paper-taco-tactile-sensor-benchmark.md) 与廉价单点 **FSR**、液态金属 **eGain** 同台对比。
+- **代表**：BioTac, 各种柔性薄膜阵列；夹爪集成例见 [VTAP Gripper](../entities/paper-vtap-gripper.md) 指尖 **FlexiTac**（\(32\times 12\) taxels，与 Fin-Ray 顺应指兼容）；同硬件亦出现在 [TacO](../entities/paper-taco-tactile-sensor-benchmark.md) 与廉价单点 **FSR**、液态金属 **eGain** 同台对比；人手全掌可穿戴例见 [HumanTouch](../entities/humantouch.md)（约 **360** 点/手压阻手套 + 姿态/历史感知标定与生命周期质控，数据待 HF 发布）。
 - **原理**：利用导电聚合物或电容器阵列，当受到压力时，电阻或电容值发生变化。
 - **优点**：易于做成柔性贴片包裹在机械手上，成本较低。
 - **缺点**：存在迟滞现象（Hysteresis），容易受到温度干扰，长期使用会老化漂移。
@@ -88,6 +90,7 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - [VTAP Gripper（论文实体）](../entities/paper-vtap-gripper.md) — 指尖 FlexiTac 阵列 + 掌上光学视触主动掌
 - [TacO（触觉传感器操作基准）](../entities/paper-taco-tactile-sensor-benchmark.md) — 六传感器 × 三任务真机 ACT 对比；无通用最佳模态
 - [SoftVTBench（可变形视触觉安全基准）](../entities/paper-softvtbench.md) — GelSight 仿真栈上 Goal/Safety；触觉抬高软体安全率
+- [HumanTouch（人手全掌触觉采集）](../entities/humantouch.md) — 压阻手套 + EMF 手姿 + 多视角 RGB；强调校准/质控与 DcSNR（数据待发）
 - [Manipulation 任务](../tasks/manipulation.md)
 - [Visual Servoing (视觉伺服)](../methods/visual-servoing.md)
 - [Friction Cone (摩擦锥) 形式化](../formalizations/friction-cone.md)
@@ -101,3 +104,4 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - [sources/papers/vtap_gripper_arxiv_2607_15448.md](../../sources/papers/vtap_gripper_arxiv_2607_15448.md) — VTAP FlexiTac 指尖 + 视触觉主动掌
 - [sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md](../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md) — TacO 跨模态触觉传感器真机 IL 基准
 - [sources/papers/softvtbench_arxiv_2607_04234.md](../../sources/papers/softvtbench_arxiv_2607_04234.md) — SoftVTBench 可变形视触觉安全基准
+- [sources/sites/humantouch-xsparkai.md](../../sources/sites/humantouch-xsparkai.md) — HumanTouch 人手全掌压阻触觉采集系统

@@ -12,7 +12,7 @@ tags:
   - umich
   - upenn
 status: complete
-updated: 2026-07-28
+updated: 2026-08-07
 arxiv: "2512.08920"
 code: https://github.com/jessicayin/osmo_tactile_glove
 related:
@@ -21,10 +21,12 @@ related:
   - ../concepts/dexterous-kinematics.md
   - ../methods/diffusion-policy.md
   - ../tasks/teleoperation.md
+  - ./humantouch.md
 sources:
   - ../../sources/papers/humanoid_pnb_osmo-open-source-tactile-glove-for-human-to-robo.md
   - ../../sources/sites/osmo-tactile-glove.md
   - ../../sources/repos/osmo-tactile-glove.md
+  - ../../sources/sites/humantouch-xsparkai.md
 summary: "OSMO（arXiv:2512.08920）：人手与机器人共用的 12-taxel 三轴磁触觉手套；140 条纯人类示范训练擦拭策略达 71.69%，硬件/固件/ROS 2/策略代码公开但仓库许可未声明。"
 ---
 
@@ -162,6 +164,7 @@ sequenceDiagram
 ## 与其他页面的关系
 
 - 采集接口对比：[数据手套 vs 视觉遥操作](../comparisons/data-gloves-vs-vision-teleop.md)
+- 人侧全掌压阻对照：[HumanTouch](./humantouch.md) — 稠密压阻 + 多站点质控，非人机同构硬件
 - 重定向基础：[Dexterous Kinematics](../concepts/dexterous-kinematics.md)
 - 学习后端：[Diffusion Policy](../methods/diffusion-policy.md)
 - 任务与路线：[Teleoperation](../tasks/teleoperation.md)、[遥操作纵深 Stage 4](../../roadmap/depth-teleoperation.md)
@@ -171,6 +174,7 @@ sequenceDiagram
 - [humanoid_pnb_osmo-open-source-tactile-glove-for-human-to-robo.md](../../sources/papers/humanoid_pnb_osmo-open-source-tactile-glove-for-human-to-robo.md)
 - [osmo-tactile-glove 项目页](../../sources/sites/osmo-tactile-glove.md)
 - [osmo-tactile-glove 仓库](../../sources/repos/osmo-tactile-glove.md)
+- [humantouch-xsparkai.md](../../sources/sites/humantouch-xsparkai.md) — 人侧全掌压阻采集对照
 - 论文：<https://arxiv.org/abs/2512.08920>
 
 ## 推荐继续阅读

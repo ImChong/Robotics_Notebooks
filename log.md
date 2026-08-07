@@ -1,3 +1,11 @@
+## [2026-08-07] ingest | sources/sites/humantouch-xsparkai.md — HumanTouch（Xspark SparkLAB）人手全掌触觉采集入库；升格 wiki/entities/humantouch.md；交叉 tactile-sensing / visuo-tactile-fusion / contact-rich-manipulation / hub-tactile / dexterous-data-collection-guide / data-gloves-vs-vision-teleop / manipulation / OSMO；数据待 HF、代码未列
+
+- **触发：** 用户指定项目页 <https://xsparkai.com/sparklab/humantouch/>；团队 Xspark AI · SparkLAB；负责人 Chuqiao Lyu；核心 Chenze Yu / Eric J Chen / Wenxuan Zhu；通讯 Wenbo Ding / Tianxing Chen / Qi Xiong；要求自动合并
+- **项目页：** [`sources/sites/humantouch-xsparkai.md`](sources/sites/humantouch-xsparkai.md)
+- **主升格：** [`wiki/entities/humantouch.md`](wiki/entities/humantouch.md) — 压阻手套 ~360 pts/hand + MANUS EMF + 头/腕 RGB；初版 ~100 h / 13469 ep；DcSNR；开源=数据待发、代码未列；源码运行时序图不适用
+- **交叉：** [`wiki/concepts/tactile-sensing.md`](wiki/concepts/tactile-sensing.md)、[`wiki/concepts/visuo-tactile-fusion.md`](wiki/concepts/visuo-tactile-fusion.md)、[`wiki/concepts/contact-rich-manipulation.md`](wiki/concepts/contact-rich-manipulation.md)、[`wiki/overview/hub-tactile.md`](wiki/overview/hub-tactile.md)、[`wiki/queries/dexterous-data-collection-guide.md`](wiki/queries/dexterous-data-collection-guide.md)、[`wiki/comparisons/data-gloves-vs-vision-teleop.md`](wiki/comparisons/data-gloves-vs-vision-teleop.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`wiki/entities/paper-notebook-osmo-open-source-tactile-glove-for-human-to-robo.md`](wiki/entities/paper-notebook-osmo-open-source-tactile-glove-for-human-to-robo.md)
+- **机构：** [`schema/institutions.json`](schema/institutions.json) 注册 `xspark-ai` → 星火人工智能（Xspark AI）
+
 ## [2026-08-07] ingest | sources/papers/joyai_ra_05_arxiv_2608_05674.md — JoyAI-RA 0.5（arXiv:2608.05674）双动作对齐 VLWA 入库；升格 wiki/entities/paper-joyai-ra-05.md；互链 wiki/methods/vla.md、wiki/concepts/world-action-models.md、wiki/tasks/manipulation.md、wiki/entities/paper-ego-02-egolive.md、wiki/overview/ego-category-02-human-to-robot.md、wiki/entities/paper-data-pyramid-embodied-manipulation.md、wiki/entities/paper-internvla-a15-unified-vla.md；sources/sites/joyai-ra-05-github-io.md
 
 - **触发：** 用户指定 <https://arxiv.org/abs/2608.05674>、<https://joyai-ra-05.github.io/>；要求自动合并

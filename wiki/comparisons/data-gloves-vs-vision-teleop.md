@@ -2,15 +2,18 @@
 type: comparison
 tags: [dexterity, data-collection, teleoperation, hardware, sensors]
 status: complete
-updated: 2026-07-27
+updated: 2026-08-07
 related:
   - ../queries/dexterous-data-collection-guide.md
   - ../entities/allegro-hand.md
   - ../entities/xyz-deux.md
+  - ../entities/humantouch.md
+  - ../entities/paper-notebook-osmo-open-source-tactile-glove-for-human-to-robo.md
   - ../methods/behavior-cloning.md
 sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/sites/xyzcorp-deux.md
+  - ../../sources/sites/humantouch-xsparkai.md
 summary: "灵巧操作数据采集选型：对比了穿戴式数据手套与基于视觉的遥操作方案，涵盖了精度、成本、遮挡鲁棒性及力反馈等关键维度。"
 ---
 
@@ -55,15 +58,18 @@ summary: "灵巧操作数据采集选型：对比了穿戴式数据手套与基�
 
 ## 融合趋势：视触觉混合采集
 
-目前顶尖的实验室（如斯坦福 ALOHA 团队）开始探索将两者结合：使用 Quest 进行宏观位姿追踪，而在指尖安装 GelSight 传感器采集微观接触特征，从而兼顾成本、灵巧度与数据精度。
+目前顶尖的实验室（如斯坦福 ALOHA 团队）开始探索将两者结合：使用 Quest 进行宏观位姿追踪，而在指尖安装 GelSight 传感器采集微观接触特征，从而兼顾成本、灵巧度与数据精度。规模化人侧全掌压阻路线见 [HumanTouch](../entities/humantouch.md)（MANUS EMF 手姿 + 头/腕 RGB + 手套质控；数据待发）；人机共用开源磁触觉见 [OSMO](../entities/paper-notebook-osmo-open-source-tactile-glove-for-human-to-robo.md)。
 
 ## 关联页面
 - [灵巧操作数据采集指南](../queries/dexterous-data-collection-guide.md)
 - [Allegro Hand 实体](../entities/allegro-hand.md)
 - [DEUX / Glove X（XYZ）](../entities/xyz-deux.md) — 商业三指手 + 1:1 手套零样本重定向样本
+- [HumanTouch](../entities/humantouch.md) — 全掌压阻 + EMF 手姿多模态人侧采数
+- [OSMO 触觉手套](../entities/paper-notebook-osmo-open-source-tactile-glove-for-human-to-robo.md) — 人机共用开源磁触觉
 - [Behavior Cloning (行为克隆)](../methods/behavior-cloning.md)
 
 ## 参考来源
 - [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md)
 - [xyzcorp-deux.md](../../sources/sites/xyzcorp-deux.md) — Glove X 产品规格与开源核查
+- [humantouch-xsparkai.md](../../sources/sites/humantouch-xsparkai.md) — HumanTouch 项目页
 - Qin, B., et al. (2023). *AnyTeleop Framework*.

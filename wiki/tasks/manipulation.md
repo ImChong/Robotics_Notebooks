@@ -8,6 +8,7 @@ related:
   - ../entities/paper-flying-knots.md
   - ../entities/paper-robustness-robotic-manipulation-survey.md
   - ../entities/paper-vtap-gripper.md
+  - ../entities/humantouch.md
   - ../entities/yale-openhand.md
   - ../entities/neoteai.md
   - ../entities/paper-n0-foundation.md
@@ -228,6 +229,7 @@ flowchart TD
 - [EN02-OP](../entities/en02-op.md) — Westwood 开源三指 7-DoF 夹爪（Dynamixel + 3D 打印，DIY 约 $200 量级）
 - [Yale OpenHand](../entities/yale-openhand.md) — Grab Lab 开源欠驱动腱驱手族（T/T42/O/F3；CAD CC BY-NC；F3 免 FT 视觉估力）
 - [HRDexDB](../entities/hrdexdb-dataset.md) — 同物体配对的人–灵巧机器人抓取序列集（100+ 物体 · 23 相机 · 3D + 触觉）
+- [HumanTouch](../entities/humantouch.md) — Xspark SparkLAB 人手全掌压阻触觉 + EMF 手姿 + 头/腕 RGB（约 100 h 初版待 HF；代码未列）
 - [OmniTacTune](../entities/paper-omnitactune-tactile-residual-adaptation.md) — 冻结视觉基策略 + 触觉残差真机 RL（arXiv:2607.03723）
 - [VTAP Gripper](../entities/paper-vtap-gripper.md) — 视触觉主动掌三指夹爪 + FlexiTac；遥操作重定向参考架构（arXiv:2607.15448）
 - [SoftVTBench](../entities/paper-softvtbench.md) — 可变形视触觉安全基准：Goal vs Safety Success（arXiv:2607.04234）
