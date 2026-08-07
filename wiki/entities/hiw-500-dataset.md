@@ -3,17 +3,19 @@ type: entity
 title: HIW-500（野外人形遥操作数据集）
 tags: [dataset, humanoid, teleoperation, loco-manipulation, household, unitree-g1, huggingface, bitrobot, unitree]
 summary: "BitRobot 等在东南亚 12 个真实家庭采集的开源 G1 全身遥操作集：500+ 小时、23K+ 集、~10 TB，10+ 家务任务与 148K+ 子任务语言标注；原始 ROS/MCAP 已发布，LeRobot 格式计划中。"
-updated: 2026-06-25
+updated: 2026-08-07
 status: complete
 related:
   - ../tasks/teleoperation.md
   - ../tasks/loco-manipulation.md
   - ./humanoid-everyday-dataset.md
+  - ./rekadaily-10k-dataset.md
   - ./unitree-g1.md
   - ./lerobot.md
   - ../queries/humanoid-training-data-pipeline.md
 sources:
   - ../../sources/sites/hiw-500-dataset.md
+  - ../../sources/sites/rekadaily-10k.md
 ---
 
 # HIW-500（野外人形遥操作数据集）
@@ -78,6 +80,7 @@ flowchart LR
 ## 与其他页面的关系
 
 - **同类真机操作集：** [Humanoid Everyday](./humanoid-everyday-dataset.md)（USC/TRI，260 任务 / 10.3k 轨迹，多传感含 LiDAR/触觉）
+- **人类家务 ego 对照（非机器人轨迹）：** [RekaDaily-10k](./rekadaily-10k-dataset.md) — 万小时级无剧本第一人称家务视频（Apache 2.0）；任务域重叠但监督形态不同
 - **遥操作任务域：** [Teleoperation](../tasks/teleoperation.md)、[Loco-Manipulation](../tasks/loco-manipulation.md)
 - **训练数据管线：** [Humanoid Training Data Pipeline](../queries/humanoid-training-data-pipeline.md) 第 1 层「真机操作数据」
 - **平台：** [Unitree G1](./unitree-g1.md)、[LeRobot](./lerobot.md)
@@ -92,6 +95,7 @@ flowchart LR
 
 - [Teleoperation](../tasks/teleoperation.md)
 - [Humanoid Everyday](./humanoid-everyday-dataset.md)
+- [RekaDaily-10k](./rekadaily-10k-dataset.md)
 - [Unitree G1](./unitree-g1.md)
 - [LeRobot](./lerobot.md)
 

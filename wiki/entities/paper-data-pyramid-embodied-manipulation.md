@@ -24,7 +24,7 @@ tags:
   - nju
   - sjtu
 status: complete
-updated: 2026-08-04
+updated: 2026-08-07
 arxiv: "2607.24744"
 code: https://github.com/worldbench/awesome-embodied-data-pyramid
 related:
@@ -42,10 +42,12 @@ related:
   - ./xiaomi-robotics-1.md
   - ./paper-hifi-umi.md
   - ./paper-trex-tactile-reactive-dexterous-manipulation.md
+  - ./rekadaily-10k-dataset.md
 sources:
   - ../../sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md
   - ../../sources/sites/embodied-data-pyramid.md
   - ../../sources/repos/awesome-embodied-data-pyramid.md
+  - ../../sources/sites/rekadaily-10k.md
 summary: "Data Pyramid for Embodied Manipulation（arXiv:2607.24744，PKU 牵头 11 机构综述）：以可扩展性 × 机器人对齐两轴把具身数据生态组织为五层金字塔（真机/UMI/Ego-Exo/仿真/通用），从数据配方视角分析具身脑、VLA、WAM 三类基础模型，并提出触觉、失败恢复等六大开放挑战；配套 Awesome 清单已开源。"
 ---
 
@@ -132,7 +134,7 @@ flowchart TB
 |----|----------|----------|------------------------|
 | ① 真机 | 动作直接可执行，物理保真最高 | 硬件+操作员+复位；小时级成本 | RT-1、DROID、[OXE](../concepts/open-x-embodiment.md)、AgiBot World、RoboMIND 2.0 |
 | ② UMI | 末端 6-DoF + 夹爪状态（相对轨迹表示） | 视觉跟踪脆弱、无关节本体感知、需 IK 重定向 | UMI、FastUMI(-100K)、LEGATO、DexUMI、FreeTacMan、[HiFi-UMI-2K](./paper-hifi-umi.md)（2000 h；主张 UMI-only 后训练可部署） |
-| ③ Ego/Exo | 语义/几何/多模态/机器人导向四类监督（需后处理） | 人–机形态鸿沟；手部遮挡；无本体感知 | EPIC-KITCHENS、Ego4D、Ego-Exo4D、HOT3D、EgoDex |
+| ③ Ego/Exo | 语义/几何/多模态/机器人导向四类监督（需后处理） | 人–机形态鸿沟；手部遮挡；无本体感知 | EPIC-KITCHENS、Ego4D、Ego-Exo4D、HOT3D、EgoDex、[RekaDaily-10k](./rekadaily-10k-dataset.md) |
 | ④ 仿真 | 可执行动作 + 特权标签（位姿/接触/成功信号） | 物理近似；观测+交互双重 sim2real 差距 | RLBench、ManiSkill3、MimicGen、RoboTwin 2.0、InternData-A1 |
 | ⑤ 通用 | 语义/空间/时序/规划/物理推理（无动作） | 弱动作接地；自动标注幻觉需过滤 | LLaVA 系、SA-1B、ScanNet、RoboVQA、GraspNet-1B |
 
@@ -217,6 +219,7 @@ flowchart TB
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 世界–动作模型族谱（数据消费视角互补）
 - [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md) — 数据规模与性能的量化轴
 - [EgoScale](../methods/egoscale.md) — Ego 层数据规模化的受控证据
+- [RekaDaily-10k](./rekadaily-10k-dataset.md) — 公开 Apache 2.0 家务 ego 视频（第 ③ 层补充）
 - [Xiaomi-Robotics-1](xiaomi-robotics-1.md) — 10 万小时 UMI 预训练的配方样本
 - [HiFi-UMI / HiFi-UMI-2K](./paper-hifi-umi.md) — UMI 层 2000 h 公开集；zero-robot 后训练挑战「真机锚」默认配方
 - [Sim2Real](../concepts/sim2real.md) — 仿真层的核心局限轴

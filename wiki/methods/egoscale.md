@@ -3,7 +3,7 @@
 type: method
 tags: [vla, egocentric-video, dexterous-manipulation, flow-matching, human-robot-transfer, imitation-learning, nvidia-gear, scaling-laws, nvidia]
 status: complete
-updated: 2026-07-29
+updated: 2026-08-07
 date: 2026-05-17
 summary: "EgoScale 用超两万小时、带腕与重定向高 DoF 手部标签的第一人称人视频预训练流式 VLA，实证人数据规模与验证损失近 log-linear 缩放且与真机灵巧表现强相关，再以小规模视点对齐的人–机 mid-training 把表示锚到机器人，从而在极少机端演示下获得高灵巧长程操作与 one-shot 迹象。"
 related:
@@ -17,6 +17,7 @@ related:
   - ../entities/paper-trex-tactile-reactive-dexterous-manipulation.md
   - ../entities/paper-egosteer.md
   - ../entities/egoworld-100w.md
+  - ../entities/rekadaily-10k-dataset.md
   - ../entities/paper-egoworld.md
   - ../tasks/manipulation.md
   - ../entities/nvidia-gear-lab.md
@@ -26,6 +27,7 @@ sources:
   - ../../sources/papers/egosteer_arxiv_2607_09701.md
   - ../../sources/blogs/stellarnex_egoworld_100w.md
   - ../../sources/papers/egoverse_arxiv_2604_07607.md
+  - ../../sources/sites/rekadaily-10k.md
 ---
 
 # EgoScale
@@ -123,6 +125,7 @@ flowchart LR
 - [Manipulation（操作任务）](../tasks/manipulation.md)
 - [EgoSteer](../entities/paper-egosteer.md)
 - [EgoWorld-100W](../entities/egoworld-100w.md) — 商业百万级自中心操作语料（申请制；与本方法学术缩放叙事对照）
+- [RekaDaily-10k](../entities/rekadaily-10k-dataset.md) — 公开 Apache 2.0 家务 ego 视频（无原生腕手标签；规模对照）
 - [EgoWorld（exo→ego）](../entities/paper-egoworld.md) — 同名视图翻译方法（消歧）
 - [HumanNet](../entities/humannet.md)
 - [EgoVerse](../entities/paper-egoverse.md)

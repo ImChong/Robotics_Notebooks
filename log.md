@@ -1,3 +1,13 @@
+## [2026-08-07] ingest | sources/sites/rekadaily-10k.md + sources/datasets/rekadaily-10k-raw.md — RekaDaily-10k 家务 egocentric 视频（研究页+HF raw）合并入库；升格 wiki/entities/rekadaily-10k-dataset.md；互链 wiki/overview/ego-category-01-data-collection.md、wiki/methods/egoscale.md、wiki/entities/egoworld-100w.md、wiki/entities/hiw-500-dataset.md、wiki/queries/humanoid-training-data-pipeline.md、wiki/entities/paper-data-pyramid-embodied-manipulation.md
+
+- **触发：** 用户指定 <https://huggingface.co/datasets/RekaAI/RekaDaily-10k-raw> 与 <https://reka.ai/labs/research/rekadaily-10k-egocentric-household-manipulation-data>；要求自动合并
+- **来源：** [`sources/sites/rekadaily-10k.md`](sources/sites/rekadaily-10k.md)、[`sources/datasets/rekadaily-10k-raw.md`](sources/datasets/rekadaily-10k-raw.md)
+- **新建实体：** [`wiki/entities/rekadaily-10k-dataset.md`](wiki/entities/rekadaily-10k-dataset.md)
+- **开源核查（步骤 2.5）：** **已开源（数据，增量）** — HF raw ungated / Apache 2.0；入库日 README 约 **886 h / 39,643 视频**；全量目标 **10,312 h**；processed+captioned 另档宣称；无训练代码仓
+- **要点：** Claru 付费无剧本家务 ego；raw vs processed 双档；约 1,670 h 原生 4K；PII 三道门；WebDataset shards
+- **机构注册：** [`schema/institutions.json`](schema/institutions.json) 新增 `reka` → 瑞卡人工智能（Reka AI）
+- **交叉更新：** [`wiki/overview/ego-category-01-data-collection.md`](wiki/overview/ego-category-01-data-collection.md)、[`wiki/methods/egoscale.md`](wiki/methods/egoscale.md)、[`wiki/entities/egoworld-100w.md`](wiki/entities/egoworld-100w.md)、[`wiki/entities/hiw-500-dataset.md`](wiki/entities/hiw-500-dataset.md)、[`wiki/queries/humanoid-training-data-pipeline.md`](wiki/queries/humanoid-training-data-pipeline.md)、[`wiki/entities/paper-data-pyramid-embodied-manipulation.md`](wiki/entities/paper-data-pyramid-embodied-manipulation.md)
+
 ## [2026-08-06] ingest | sources/papers/effective_degree_arxiv_2605_29823.md — Effective Degree（arXiv:2605.29823，ICML 2026，清华）多项式代理量化简洁性；升格 wiki/entities/paper-effective-degree.md；互链 wiki/concepts/deep-learning-foundations.md、wiki/methods/reinforcement-learning.md、wiki/methods/ppo.md、wiki/methods/adamw.md；sources/repos/effective-degree.md
 
 - **触发：** 用户指定 *Quantifying and Optimizing Simplicity via Polynomial Representations*（arXiv:2605.29823；章天任 / 李向欣 / 肖明昊 / 陈冠宇 / 陈峰；清华；代码 https://github.com/xinzaixinzai/Effective-Degree）；要求自动合入
