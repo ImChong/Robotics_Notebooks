@@ -10,7 +10,7 @@ tags:
   - moving-object
   - tsinghua
 status: complete
-updated: 2026-07-11
+updated: 2026-08-07
 arxiv: "2607.02604"
 related:
   - ../overview/wm-action-consequence-category-01-wam-action-prediction.md
@@ -20,6 +20,8 @@ related:
   - ../overview/robot-world-models-action-consequence-technology-map.md
   - ../entities/paper-dswam-dual-system-wam.md
   - ../entities/paper-dreamsteer-vla-deployment-steering.md
+  - ../entities/paper-rtcf.md
+  - ../entities/paper-dreamwam.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
 summary: "DynaWM（arXiv:2607.02604）：冻结基础 VLA，以 base action chunk + 多视角历史 + 本体为条件，Mamba-3 动作编码 + V-JEPA 2.1 + 流匹配 DiT 重生成动作；DynaGrasp-32 上八组 checkpoint 平均 +25.79pp。"
@@ -128,6 +130,7 @@ flowchart LR
 | **[DreamSteer](./paper-dreamsteer-vla-deployment-steering.md)** | **多样本想象 + 价值排序**；DynaWM **单路径确定性重生成** |
 | **DynamicVLA / PUMA / AHEAD** | 同类动态操纵；DynaWM 强调 **跨 VLA 架构的 base-chunk 条件** |
 | **Streaming Flow / RTC** | 侧重 **chunk 时序衔接**；DynaWM 侧重 **运动趋势估计** |
+| **[RTCF](./paper-rtcf.md)** | **免训练** 记忆检索 + 低频残差；DynaWM **要训** 流匹配重写、面向移动目标 |
 | **π₀.7 + world subgoals** | VLA 内部集成世界信号；DynaWM **模块外置、零 VLA 改动** |
 
 ## 常见误区或局限
@@ -149,6 +152,7 @@ flowchart LR
 - [DynaWM 论文（arXiv:2607.02604）](https://arxiv.org/abs/2607.02604)
 - [DSWAM 论文实体](./paper-dswam-dual-system-wam.md) — 直接执行 WAM 对照
 - [DreamSteer 论文实体](./paper-dreamsteer-vla-deployment-steering.md) — 部署筛选对照
+- [RTCF 论文实体](./paper-rtcf.md) — 免训练测试时纠偏对照
 - [Generative World Models](../methods/generative-world-models.md) — V-JEPA / 流匹配 WAM 脉络
 
 ## 参考来源

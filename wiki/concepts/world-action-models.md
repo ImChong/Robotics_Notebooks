@@ -3,7 +3,7 @@ type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
 updated: 2026-08-07
-summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型。"
+summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM 等 beyond-RGB 未来表征实例。"
 related:
   - ../../roadmap/depth-wam.md
   - ../queries/embodied-fm-taxonomy-loop.md
@@ -14,6 +14,7 @@ related:
   - ../entities/paper-dswam-dual-system-wam.md
   - ../entities/paper-dynawm-vla-online-correction.md
   - ../entities/paper-dreamsteer-vla-deployment-steering.md
+  - ../entities/paper-dreamwam.md
   - ../entities/paper-vt-wam-visuotactile-contact-rich.md
   - ../entities/paper-n0-twam.md
   - ../entities/neoteai.md
@@ -64,6 +65,7 @@ sources:
   - ../../sources/papers/x_mind_arxiv_2606_28758.md
   - ../../sources/papers/world_action_planner_arxiv_2607_27599.md
   - ../../sources/papers/worldscape_policy_2_arxiv_2607_18840.md
+  - ../../sources/papers/dreamwam_arxiv_2608_04996.md
   - ../../sources/repos/awesome-wam-openmoss.md
   - ../../sources/sites/awesome-wam-openmoss.md
   - ../../sources/repos/dexmal_opendw.md
@@ -153,6 +155,8 @@ sources:
 **文献实例（Joint 族 + 部署期人视频 TTT steering · LDA 底座）**：[WAM-TTT](../entities/paper-wam-ttt-human-video-test-time-steering.md) 在 **冻结 LDA-1B WAM** 的 **video expert** 外挂 **Spatial-TTT fast-weight 分支**：**meta-training** 用 **2286 对** 相位同步人–机示教 + **KV 记忆重建** 对齐人 Key/Value 与机器人 Query；**部署** 仅用 **无标注 egocentric 人视频** 做 **自监督视频预测 TTT** 写入记忆即可 **steer** 新任务，无需机器人动作或全模型微调。在 **G1 + Galbot 双臂** **9 项真机** **New 家庭 OOD** 上平均 **46.2%** progress，显著优于同人视频的 **WAM-ICL（7.1%）** 与同骨干 **LDA（32.5%）**（PKU / Galbot 等，arXiv:2607.06988）。
 
 **文献实例（Joint 族 + regret-aware 原生 CEDC · 4B 部署导向）**：[Kairos](../entities/paper-kairos-native-world-model-stack.md) 以 **Video DiT + Action DiT（MoT）** 联合 flow matching，**Stage I–II 仅训 VideoDiT、Stage III 联合 ActionDiT**；推理支持 **action-only**（不滚未来视频）与 **Kairos-joint**（联合去噪，LIBERO-Plus **89.0→90.8**）。v3 用 **control-sufficient state / \(\operatorname{Reg}_H\)** 框定目标；原生 **CEDC** 与 **仅训 ActionDiT** 消融（**−23.2** LIBERO-Plus）强调世界生成监督是控制相关表征的必要来源；代码/权重见 [kairos-agi/kairos](https://github.com/kairos-agi/kairos) 与 HF **Kairos3.1**（arXiv:2606.16533，Kairos Team / Ace Robotics）。
+
+**文献实例（Joint 族 + beyond-RGB 结构化未来 · FastWAM 系）**：[DreamWAM](../entities/paper-dreamwam.md) 在 **VideoDiT–ActionDiT** 上把未来从「仅 RGB」扩成 **appearance / motion / geometry / semantics**：RGB+RAFT flow **联合 latent 去噪**，DA3 depth 与 DINOv2 经 **gated residual** 注入；**推理关闭 beyond-RGB 分支**，部署仍 RGB-only。相对 matched Fast-WAM-Joint：LIBERO **98.00→98.90**、LIBERO-Plus **69.16→75.47**、真机视觉扰动 **55.6→74.4**；代码与 HF 权重已开源（arXiv:2608.04996，HUST / 地瓜 / 武大 / 地平线）。
 
 **文献实例（Joint 族 + latent foresight 查询冻结生成器 · 部署纯 VLA）**：[InternVLA-A1.5](../entities/paper-internvla-a15-unified-vla.md) 在 **Qwen3.5-2B MoT** 上持续 **VQA/子任务** 共训，用 **50 个 foresight token** 读出紧凑潜码条件化 **冻结 WAN2.2-5B**，以 video flow loss **蒸馏动力学先验** 至 unified expert，再以 **flow matching** 输出连续 action chunk；**推理丢弃视频分支**（~0.1s/步），在 LIBERO-Plus / DOMINO 零样本与真机 **组合指令 OOD** 上报告最强组合泛化（arXiv:2607.04988，上海 AI Lab Physical Intelligence Team）。
 

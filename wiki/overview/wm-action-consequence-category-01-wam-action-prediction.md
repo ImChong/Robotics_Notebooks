@@ -2,12 +2,14 @@
 type: overview
 tags: [world-models, world-action-models, category-hub, survey]
 status: complete
-updated: 2026-08-03
-summary: "世界模型动作后果专题 · 01（4 篇）— WAM 直接执行、修正基础 VLA 还是部署前筛选？"
+updated: 2026-08-07
+summary: "世界模型动作后果专题 · 01 — WAM 直接执行、修正基础 VLA 还是部署前筛选？并链 DreamWAM / RTCF 邻近坐标。"
 related:
   - ./robot-world-models-action-consequence-technology-map.md
   - ./wm-action-consequence-category-02-contact-modeling.md
   - ../concepts/world-action-models.md
+  - ../entities/paper-dreamwam.md
+  - ../entities/paper-rtcf.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
 ---
@@ -34,11 +36,15 @@ sources:
 | DreamSteer | [../entities/paper-dreamsteer-vla-deployment-steering](../entities/paper-dreamsteer-vla-deployment-steering.md) | 潜变量 WM 预演候选动作 + 语言价值模型排序 |
 | Worldscape-MoE | [../entities/paper-worldscape-moe-heterogeneous-action](../entities/paper-worldscape-moe-heterogeneous-action.md) | 共享/专属 MoE 统一相机、关节、手部异构动作接口 |
 | WorldScape Policy 2.0 | [../entities/paper-worldscape-policy-2](../entities/paper-worldscape-policy-2.md) | 同团队下游 WAM 策略：事件记忆走 VLM、视觉记忆走 DiT，多模态提示可控执行 |
+| DreamWAM（邻近） | [../entities/paper-dreamwam](../entities/paper-dreamwam.md) | Joint WAM：beyond-RGB 未来表征训练、RGB-only 部署（非本专题原文四篇） |
+| RTCF（邻近） | [../entities/paper-rtcf](../entities/paper-rtcf.md) | **免训练** 冻结 VLA 记忆纠偏；与 DynaWM「可训修正」对照 |
 
 ## 关联页面
 
 - [World Action Models](../concepts/world-action-models.md)
 - [动作后果技术地图](./robot-world-models-action-consequence-technology-map.md)
+- [DreamWAM](../entities/paper-dreamwam.md)
+- [RTCF](../entities/paper-rtcf.md)
 
 ## 参考来源
 
