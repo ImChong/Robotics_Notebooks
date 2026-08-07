@@ -2,7 +2,7 @@
 
 ## [2026-08-07] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **0** 条信息型预警）：
+共发现 **0** 个问题（另含 **1** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -91,8 +91,8 @@
 ### ❌ 工具实体缺少可派生的所属机构（0 个）
 - 无
 
-### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（1 个）
+- wiki/methods/dsms-contact-implicit-multiple-shooting.md（被 4 个页面引用，无 queries/comparisons 落地）
 
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
@@ -127,4 +127,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：2096/2096 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：2098/2098 (100%) wiki/entity 页有 ingest 来源

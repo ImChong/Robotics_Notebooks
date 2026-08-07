@@ -2,8 +2,8 @@
 type: overview
 tags: [hub, hub-motion-retargeting, motion-retargeting, mocap, humanoid]
 status: complete
-updated: 2026-08-06
-summary: "动作重定向知识链汇总：把人体/动物参考动作映射到人形与异构机器人骨架，衔接 MoCap、IK/优化重定向、AMP 先验与 WBT 训练数据的全链路导读；含人体→非人形腿式（X-Morph）扩展。"
+updated: 2026-08-07
+summary: "动作重定向知识链汇总：把人体/动物参考动作映射到人形与异构机器人骨架，衔接 MoCap、IK/优化重定向、动力学精炼（SBTO/DSMS）、AMP 先验与 WBT 训练数据的全链路导读；含人体→非人形腿式（X-Morph）扩展。"
 ---
 
 # 动作重定向（知识链汇总）
@@ -37,6 +37,7 @@ summary: "动作重定向知识链汇总：把人体/动物参考动作映射到
 | 概念 | 重定向解决什么、有哪些方法族 | [Motion Retargeting](../concepts/motion-retargeting.md) |
 | 流水线 | 采集 → 清洗 → 重定向 → 训练输入 | [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) |
 | 选型 | GMR / NMR / Reactor 等路线差异 | [GMR vs NMR vs Reactor](../comparisons/gmr-vs-nmr-vs-reactor.md) |
+| 动力学精炼 | 运动学参考 → 全身动力学可行 | [DynaRetarget / SBTO](../methods/dynaretarget-sbto-motion-retargeting.md)、[DSMS / Shooting for Contact](../entities/paper-shooting-for-contact.md) |
 | 数据 | 参考运动数据集与重定向就绪度 | [人形参考运动数据集选型](../comparisons/humanoid-reference-motion-datasets.md) |
 | 下游 | 重定向后如何进入 WBT / AMP | [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) |
 
@@ -53,6 +54,7 @@ summary: "动作重定向知识链汇总：把人体/动物参考动作映射到
 - [Humanoid AMP 运动先验综述](./humanoid-amp-motion-prior-survey.md)
 - [人形 RL 运动控制身体系统栈](./humanoid-rl-motion-control-body-system-stack.md)
 - [X-Morph](../entities/paper-xmorph.md) — 人体运动→非人形腿式（Go2/六足/带臂四足）重定向+校正+跟踪蒸馏
+- [Shooting for Contact / DSMS](../entities/paper-shooting-for-contact.md) — 接触隐式多重打靶动力学重定向（Caltech/DePaul；G1 爬行与跳转）
 
 ## 参考来源
 

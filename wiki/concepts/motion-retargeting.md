@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-08-05
+updated: 2026-08-07
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 
@@ -69,6 +69,7 @@ subject to: FK(θ) = p_target (末端位置约束)
 - **双层 RL 式（ReActor）**：上层优化**参数化运动学参考**（稀疏语义刚体对应 + 有界偏移），下层用 **RL 跟踪**并在仿真里回传误差；把「造参考」与「跟参考」联立，减少脚滑与自碰等运动学伪影，详见 [ReActor](../methods/reactor-physics-aware-motion-retargeting.md)。
 - **采样式物理重定向（SPIDER）**：在**并行物理仿真**中对控制序列做**采样优化**（退火噪声核），把人体+物体的**运动学参考** refinement 成**动力学可行**轨迹；用**课程式虚拟接触力**稳定接触丰富任务中的序列歧义，详见 [SPIDER](../methods/spider-physics-informed-dexterous-retargeting.md)。
 - **增量 SBTO（DynaRetarget）**：用 **CEM + MuJoCo rollout** 对 PD 目标 knot 做 **incremental full-horizon** 采样轨迹优化，把 IK/kinematic 参考 refinement 为长时域 loco-manipulation 可行轨迹，相对 SBMPC 基线成功率约翻倍，详见 [DynaRetarget / SBTO](../methods/dynaretarget-sbto-motion-retargeting.md).
+- **接触隐式多重打靶（DSMS / Shooting for Contact）**：把可微仿真器离散转移嵌进 **IPOPT 多重打靶 NLP**，接触/摩擦/冲击在仿真内解析、无需接触时刻表；支持任意路径约束与命令条件化步态库，加速下游 motion-imitation RL，并在 G1 上零样本爬行 / 180° 跳转，详见 [DSMS](../methods/dsms-contact-implicit-multiple-shooting.md) 与 [Shooting for Contact](../entities/paper-shooting-for-contact.md)。
 - **交互保留灵巧重定向（TopoRetarget）**：在 **hand–object interaction mesh** 上匹配 **距离加权 Laplacian 坐标** + 骨方向先验与穿透约束，把人手演示转为灵巧手可学的接触保真参考（~5 ms/帧）；下游轻量 PPO 残差跟踪可在 Pen-Spin 等任务上显著优于 OmniRetarget 等基线，并零样本部署 [Wuji Hand](../entities/wuji-robotics.md)，详见 [TopoRetarget](../methods/toporetarget-interaction-preserving-dexterous-retargeting.md)。
 
 ### 3.5 稀疏关键点重定向（SKR，BifrostUMI）
