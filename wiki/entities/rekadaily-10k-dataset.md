@@ -104,6 +104,7 @@ flowchart TB
 | **Ego4D / EPIC-KITCHENS** | 更偏活动理解基准；本集强调 **付费家务规模 + 双档发布 + Apache 2.0** |
 | **Egocentric-10K** | 工业生产环境第一人称；本集补 **家庭住宅** |
 | **[EgoWorld-100W](./egoworld-100w.md)** | 百万级、**申请制**商业语料；本集规模叙事相近量级小时数但 **公开 ungated 下载** |
+| **[RekaCS2-10k](./rekacs2-10k-dataset.md)** | 同机构、同量级小时数；CS2 **游戏控制稠密对齐**（CC BY-NC），本集为 **真实家务**（Apache 2.0） |
 | **[EgoScale](../methods/egoscale.md)** | 方法侧强调腕手标签缩放；本集是 **无原生手姿** 的开放视频语料 |
 | **[HIW-500](./hiw-500-dataset.md)** | **机器人** G1 家庭遥操作；本集是 **人类** ego 视频，任务重叠（家务）但监督形态不同 |
 
@@ -120,6 +121,7 @@ flowchart TB
 - [Ego 分类 01：数据采集](../overview/ego-category-01-data-collection.md) — 人类作分布式采集者
 - [EgoScale](../methods/egoscale.md) — 人视频规模预训练方法
 - [EgoWorld-100W](./egoworld-100w.md) — 申请制百万级 ego 操作语料对照
+- [RekaCS2-10k](./rekacs2-10k-dataset.md) — 同机构 CS2 游戏 ego（稠密动作；许可不同）
 - [HIW-500](./hiw-500-dataset.md) — 家庭真机遥操作对照（机器人侧）
 - [具身数据金字塔](./paper-data-pyramid-embodied-manipulation.md) — 第 ③ 层 Ego/Exo
 - [人形训练数据管线选型指南](../queries/humanoid-training-data-pipeline.md) — 人体视频层入口

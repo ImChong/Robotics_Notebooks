@@ -11,6 +11,7 @@ related:
   - ../methods/generative-world-models.md
   - ../methods/mimic-video.md
   - ./paper-egowm-egocentric-world-model.md
+  - ./rekadaily-10k-dataset.md
   - ../overview/ego-category-01-data-collection.md
 sources:
   - ../../sources/sites/rekacs2-10k.md
@@ -144,6 +145,7 @@ sequenceDiagram
 - [Generative World Models](../methods/generative-world-models.md) — 生成式世界模型方法族
 - [mimic-video（VAM）](../methods/mimic-video.md) — 视频–动作模型对照
 - [EgoWM](./paper-egowm-egocentric-world-model.md) — egocentric 世界模型
+- [RekaDaily-10k](./rekadaily-10k-dataset.md) — 同机构家务 ego（Apache 2.0；非游戏控制）
 - [Ego 分类 01：数据采集](../overview/ego-category-01-data-collection.md) — 第一人称数据生态旁路
 
 ## 参考来源
