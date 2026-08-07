@@ -15,7 +15,7 @@ tags:
   - nus
   - zhongguancun-academy
 status: complete
-updated: 2026-07-24
+updated: 2026-08-07
 arxiv: "2604.23761"
 related:
   - ../concepts/wheel-legged-quadruped.md
@@ -28,6 +28,7 @@ related:
   - ../methods/model-predictive-control.md
   - ./paper-mujica-wheel-legged-multi-skill.md
   - ./robot-lab.md
+  - ./deeprobotics-rl-training.md
   - ./isaac-lab.md
 sources:
   - ../../sources/papers/aware_arxiv_2604_23761.md
@@ -178,6 +179,7 @@ flowchart TB
 - [MPC](../methods/model-predictive-control.md) — RB-MPC 基线所属范式
 - [MUJICA](./paper-mujica-wheel-legged-multi-skill.md) — 轮足多技能对照
 - [robot_lab](./robot-lab.md) / [Isaac Lab](./isaac-lab.md) — M20 仿真与训练栈入口
+- [Deep Robotics rl_training](./deeprobotics-rl-training.md) — 云深处官方 Isaac Lab 训练仓（含 `Rough-Deeprobotics-M20-v0`）
 
 ## 参考来源
 
