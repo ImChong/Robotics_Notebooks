@@ -3,15 +3,17 @@ type: method
 tags: [robotics, motion-retargeting, humanoid, loco-manipulation, trajectory-optimization, sampling-based-optimization, imitation-learning, contact-rich-manipulation]
 status: complete
 date: 2026-06-17
-updated: 2026-06-26
+updated: 2026-08-07
 related:
   - ../concepts/motion-retargeting.md
   - ../concepts/motion-retargeting-pipeline.md
   - ./spider-physics-informed-dexterous-retargeting.md
   - ./motion-retargeting-gmr.md
+  - ./dsms-contact-implicit-multiple-shooting.md
   - ../entities/sbto.md
   - ../entities/paper-hrl-stack-03-omniretarget.md
   - ../entities/paper-notebook-dynaretarget-dynamically-feasible-retargeting-us.md
+  - ../entities/paper-shooting-for-contact.md
   - ../tasks/loco-manipulation.md
   - ./imitation-learning.md
 sources:
@@ -114,6 +116,7 @@ flowchart LR
 - [OmniRetarget](../entities/paper-hrl-stack-03-omniretarget.md) — 默认 kinematic 参考数据源与对比 baseline。
 - [Loco-Manipulation（移动操作）](../tasks/loco-manipulation.md) — 任务域。
 - [DynaRetarget vs TopoRetarget（接触保真重定向对比）](../comparisons/dynaretarget-vs-toporetarget-retargeting.md) — 动力学层 vs 运动学层接触保真选型对比。
+- [DSMS / Shooting for Contact](./dsms-contact-implicit-multiple-shooting.md) — 接触隐式 **IPOPT 多重打靶** 动力学精炼对照（任意硬约束更强；论文 Table II 与 SBTO 同档落地率）。
 
 ## 推荐继续阅读
 
@@ -121,6 +124,7 @@ flowchart LR
 - 项目页：<https://atarilab.github.io/dynaretarget.io/>
 - SBTO 代码：<https://github.com/Atarilab/sbto>
 - OmniRetarget 数据：<https://huggingface.co/datasets/omniretarget/OmniRetarget_Dataset>
+- Shooting for Contact（DSMS）：<https://shooting-for-contact.github.io/>
 
 ## 参考来源
 

@@ -1167,6 +1167,7 @@
 - [DreamerV3（Mastering Diverse Domains through World Models）](wiki/entities/paper-shenlan-wm-13-dreamerv3.md) — DreamerV3**（arXiv:2301.04104，Nature；Danijar Hafner 等 · **谷歌 De `📅unknown` `[entity_page]`
 - [RLVR-World](wiki/entities/paper-shenlan-wm-14-rlvr-world.md) — RLVR-World** 收录于 深蓝具身智能 · 世界模型 15 开源项目专题 **第  `📅unknown` `[entity_page]`
 - [WorldGym](wiki/entities/paper-shenlan-wm-15-worldgym.md) — WorldGym** 收录于 深蓝具身智能 · 世界模型 15 开源项目专题 **第 15 `📅unknown` `[entity_page]`
+- [Shooting for Contact（DSMS 动态运动重定向）](wiki/entities/paper-shooting-for-contact.md) — Shooting for Contact**（*Contact-Implicit Multiple Shooting for Dynamic Motion Retargeting*，arXiv: `📅unknown` `[entity_page]`
 - [SimFoundry（Modular Real2Sim Scene Generation for Policy Learning and Evaluation）](wiki/entities/paper-simfoundry-real2sim-scene-generation.md) — SimFoundry** 是 NVIDIA GEAR Lab 等团队的 **Real2Sim→Sim2Real 闭环系统**（arXiv:2606. `📅unknown` `[entity_page]`
 - [SLowRL：安全低秩 RL 真机运动微调](wiki/entities/paper-slowrl-safe-lora-locomotion-sim2real.md) — SLowRL**（*Safe Low-Rank Adaptation Reinforcement Learning for Locomotion*，arXiv:2603.17092）针对 **动态 `📅unknown` `[entity_page]`
 - [SoftVTBench（安全感知视触觉可变形操作基准 · arXiv:2607.04234）](wiki/entities/paper-softvtbench.md) — SoftVTBench**（*SoftVTBench: A Safety-Aware Visuo-Tactile Benchmark for Physically Constrained Robo `📅unknown` `[entity_page]`
@@ -1660,6 +1661,7 @@
 - [Disney Olaf 角色机器人（实机动画角色）](wiki/methods/disney-olaf-character-robot.md) — 一句话定义：** 面向「高角色保真 + 紧凑机电包络」的娱乐型双足平台：用**动画参考 + RL** 解决非物理比例与风格化步态，用**机构设计**解决「看不见腿」与**热/声学**等实演约束。 `📅unknown` `[method_page]`
 - [Dynamic Movement Primitives (DMP)](wiki/methods/dmp.md) — DMP** 是一种用于轨迹建模和控制的方法。它将复杂的运动路径表示为一个非线性动力学系统，其核心是一个受迫振荡器，可以通过调整参数来改变运动的速度和目标位置，而不需要重新规划。 `📅unknown` `[method_page]`
 - [DreamWaQ：盲走一阶段鲁棒行走](wiki/methods/dreamwaq.md) — DreamWaQ**（*Learning Robust Quadrupedal Locomotion With Implicit Terrain Imagination*，ICRA 2023，[a `📅unknown` `[method_page]`
+- [DSMS（接触隐式直接仿真多重打靶）](wiki/methods/dsms-contact-implicit-multiple-shooting.md) — DSMS**（Direct Simulation-based Multiple Shooting）是 [Shooting for Contact](../entities/paper-shooti `📅unknown` `[method_page]`
 - [DWA（Dynamic Window Approach）局部路径规划](wiki/methods/dwa.md) — 动态窗口法（DWA）** 在机器人当前速度可达的 **动态窗口** \(V_d\) 内采样线速度/角速度，前向仿真轨迹并用朝向、速度、间隙等目标打分，选出本周期最优 \((v,\omega)\)— `📅unknown` `[method_page]`
 - [DWM（Dexterous World Models，灵巧世界模型）](wiki/methods/dwm.md) — DWM**（Kim 等，CVPR 2026）研究的是：当环境的**静态几何**已经可用（典型来自重建得到的数字孪生），如何用**视频扩散**去预测**灵巧手操作**会在第一人称视频里诱发哪些**物 `📅unknown` `[method_page]`
 - [DynaRetarget / SBTO（增量采样式动力学重定向）](wiki/methods/dynaretarget-sbto-motion-retargeting.md) — DynaRetarget**（Dhédin 等，arXiv:2602.06827，[项目页](https://atarila `📅2026-06-17` `[method_page]`
