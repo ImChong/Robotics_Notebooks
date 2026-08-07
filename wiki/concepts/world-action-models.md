@@ -2,12 +2,13 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-08-04
+updated: 2026-08-07
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型。"
 related:
   - ../../roadmap/depth-wam.md
   - ../queries/embodied-fm-taxonomy-loop.md
   - ../overview/robot-world-models-action-consequence-technology-map.md
+  - ../entities/rekacs2-10k-dataset.md
   - ../entities/lumo-2.md
   - ../entities/philia.md
   - ../entities/paper-dswam-dual-system-wam.md
@@ -66,6 +67,7 @@ sources:
   - ../../sources/repos/awesome-wam-openmoss.md
   - ../../sources/sites/awesome-wam-openmoss.md
   - ../../sources/repos/dexmal_opendw.md
+  - ../../sources/sites/rekacs2-10k.md
 ---
 
 # World Action Models（WAM，世界–动作模型）
@@ -206,10 +208,12 @@ flowchart TB
 - [sources/papers/pelican_unified_uei_arxiv_2605_15153.md](../../sources/papers/pelican_unified_uei_arxiv_2605_15153.md)
 - [sources/repos/awesome-wam-openmoss.md](../../sources/repos/awesome-wam-openmoss.md)
 - [sources/sites/awesome-wam-openmoss.md](../../sources/sites/awesome-wam-openmoss.md)
+- [sources/sites/rekacs2-10k.md](../../sources/sites/rekacs2-10k.md)
 
 ## 关联页面
 
 - [WAM 纵深路线](../../roadmap/depth-wam.md)
+- [RekaCS2-10k](../entities/rekacs2-10k-dataset.md) — 职业 CS2 ego 视频 + 逐帧键鼠/轨迹，动作条件世界模型预训练语料
 - [VLA](../methods/vla.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [Being-H0.7](../methods/being-h07.md)

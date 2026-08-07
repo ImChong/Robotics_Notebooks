@@ -2349,6 +2349,14 @@
         "kinetix-ai",
         "kinetix"
       ]
+    },
+    "reka": {
+      "label": "瑞卡人工智能（Reka AI）",
+      "aliases": [
+        "reka",
+        "reka-ai",
+        "rekaai"
+      ]
     }
   }
 }

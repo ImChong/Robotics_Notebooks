@@ -1,13 +1,55 @@
 {
-  "generated_at": "2026-08-06",
-  "node_count": 2106,
-  "edge_count": 19289,
+  "generated_at": "2026-08-07",
+  "node_count": 2107,
+  "edge_count": 19298,
   "coverage": {
-    "covered": 2082,
-    "total": 2082,
+    "covered": 2083,
+    "total": 2083,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/rekacs2-10k-dataset.md",
+      "detail_id": "entity-rekacs2-10k-dataset",
+      "label": "RekaCS2-10k（CS2 第一人称游戏数据集）",
+      "type": "entity",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/concepts/world-action-models.md",
+      "detail_id": "wiki-concepts-world-action-models",
+      "label": "World Action Models（WAM，世界–动作模型）",
+      "type": "concept",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/concepts/video-as-simulation.md",
+      "detail_id": "wiki-concepts-video-as-simulation",
+      "label": "Video-as-Simulation (视频即仿真)",
+      "type": "concept",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/overview/ego-category-01-data-collection.md",
+      "detail_id": "wiki-overview-ego-category-01-data-collection",
+      "label": "Ego 分类 01：数据采集",
+      "type": "overview",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
     {
       "path": "wiki/entities/paper-effective-degree.md",
       "detail_id": "entity-paper-effective-degree",
@@ -170,56 +212,18 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/concepts/smpl-x.md",
-      "detail_id": "wiki-concepts-smpl-x",
-      "label": "SMPL-X（参数化全身人体模型）",
-      "type": "concept",
-      "recency": "2026-08-06",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-face-anything-4d-face-reconstruction.md",
-      "detail_id": "entity-paper-face-anything-4d-face-reconstruction",
-      "label": "Face Anything",
-      "type": "entity",
-      "recency": "2026-08-06",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-shells-layered-surface-sampling.md",
-      "detail_id": "entity-paper-shells-layered-surface-sampling",
-      "label": "SHELLS（分层采样多视角人头重建）",
-      "type": "entity",
-      "recency": "2026-08-06",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-bfm.md",
-      "detail_id": "roadmap-depth-bfm",
-      "label": "路线（纵深）：如果目标是 BFM（人形行为基础模型）",
-      "type": "roadmap_page",
-      "recency": "2026-08-06",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-effective-degree.md",
-    "detail_id": "entity-paper-effective-degree",
-    "label": "Effective Degree：多项式代理量化简洁性",
+    "path": "wiki/entities/rekacs2-10k-dataset.md",
+    "detail_id": "entity-rekacs2-10k-dataset",
+    "label": "RekaCS2-10k（CS2 第一人称游戏数据集）",
     "type": "entity",
-    "recency": "2026-08-06",
+    "recency": "2026-08-07",
     "source": "log.md",
-    "action": "maintained",
+    "action": "added",
     "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "community_label": "生成式世界模型（Generative World Models） 社区"
   },
   "top_communities": [
     {
@@ -236,7 +240,7 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 145
+      "size": 139
     },
     {
       "label": "移动操作",
