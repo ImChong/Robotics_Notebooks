@@ -1,3 +1,12 @@
+## [2026-08-07] ingest | sources/papers/agile_arxiv_2603_20147.md — AGILE（NVIDIA，arXiv:2603.20147）人形 loco-manipulation RL 工作流入库；升格 wiki/entities/paper-agile-humanoid-loco-manipulation.md；交叉 wiki/entities/isaac-lab.md、wiki/tasks/loco-manipulation.md、wiki/concepts/sim2real.md、wiki/entities/unitree-g1.md、wiki/methods/beyondmimic.md；归档 sources/repos/wbc_agile.md、sources/sites/wbc-agile-docs.md
+
+- **触发：** 用户指定标题 *AGILE: A Comprehensive Workflow for Humanoid Loco-Manipulation Learning*（arXiv）、单位 NVIDIA、作者 Huihua Zhao / Rafael Cathomen 等；要求自动合并
+- **来源：** [`sources/papers/agile_arxiv_2603_20147.md`](sources/papers/agile_arxiv_2603_20147.md)、[`sources/repos/wbc_agile.md`](sources/repos/wbc_agile.md)、[`sources/sites/wbc-agile-docs.md`](sources/sites/wbc-agile-docs.md)
+- **新建实体：** [`wiki/entities/paper-agile-humanoid-loco-manipulation.md`](wiki/entities/paper-agile-humanoid-loco-manipulation.md)
+- **开源核查（步骤 2.5）：** **已开源** — 文档站与论文指向 <https://github.com/nvidia-isaac/WBC-AGILE>（`scripts/train.py` / `eval.py`；Isaac Lab v2.3.2）；完整真机驱动管线论文称将另行发布；`## 源码运行时序图` 已写
+- **方法要点：** Prepare→Train→Evaluate→Deploy；YAML I/O 描述符；L2C2 / harness / 奖励归一化等可开关增强；G1+T1 五技能；解耦下肢 + GR00T VLA 仿真 90%
+- **交叉更新：** [`wiki/entities/isaac-lab.md`](wiki/entities/isaac-lab.md)、[`wiki/tasks/loco-manipulation.md`](wiki/tasks/loco-manipulation.md)、[`wiki/concepts/sim2real.md`](wiki/concepts/sim2real.md)、[`wiki/entities/unitree-g1.md`](wiki/entities/unitree-g1.md)、[`wiki/methods/beyondmimic.md`](wiki/methods/beyondmimic.md)
+
 ## [2026-08-07] ingest | sources/sites/humantouch-xsparkai.md — HumanTouch（Xspark SparkLAB）人手全掌触觉采集入库；升格 wiki/entities/humantouch.md；交叉 tactile-sensing / visuo-tactile-fusion / contact-rich-manipulation / hub-tactile / dexterous-data-collection-guide / data-gloves-vs-vision-teleop / manipulation / OSMO；数据待 HF、代码未列
 
 - **触发：** 用户指定项目页 <https://xsparkai.com/sparklab/humantouch/>；团队 Xspark AI · SparkLAB；负责人 Chuqiao Lyu；核心 Chenze Yu / Eric J Chen / Wenxuan Zhu；通讯 Wenbo Ding / Tianxing Chen / Qi Xiong；要求自动合并

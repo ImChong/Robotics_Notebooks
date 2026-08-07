@@ -2,7 +2,7 @@
 type: entity
 tags: [hardware, humanoid, platform, unitree]
 status: complete
-updated: 2026-08-06
+updated: 2026-08-07
 related:
   - ./humanoid-robot.md
   - ./rek.md
@@ -18,6 +18,7 @@ related:
   - ./paper-uni-lavira.md
   - ./paper-pac-man-perceptive-cbf-rl.md
   - ./paper-fddc.md
+  - ./paper-agile-humanoid-loco-manipulation.md
   - ../roadmaps/humanoid-control-roadmap.md
 sources:
   - ../../sources/papers/humanoid_hardware.md
@@ -78,6 +79,7 @@ G1 的出现极大地加速了大规模数据的采集。由于其成本低廉�
 
 - [G1 软件服务栈](./unitree-g1-software-stack.md) — SDK2/DDS 与仿真桥接口（课程 1.4）
 - [人形系统课程策展](./humanoid-system-curriculum.md) — 深蓝学院 G1 系统课八章地图
+- [AGILE（论文实体）](./paper-agile-humanoid-loco-manipulation.md) — NVIDIA Isaac Lab 人形 RL 工作流；G1 速度/高度/stand-up/舞蹈/pick&place（arXiv:2603.20147）
 - [Teleopit](./paper-teleopit.md) — PICO VR 全身+连续灵巧手+主动视觉遥操作（G1 29 DoF；arXiv:2608.01834）
 - [FDDC](./paper-fddc.md) — 可部署动态 CoM 单腿平衡；G1 ONNX 50 Hz 无蒸馏真机（arXiv:2608.00500）
 - [POT-VLA](./paper-pot-vla.md) — 在 G1 上用持久 3D 对象 token 实现可验证的闭环移动操作
