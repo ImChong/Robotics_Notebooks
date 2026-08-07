@@ -3,10 +3,11 @@ title: 人形运动跟踪方法选型指南
 type: query
 status: complete
 created: 2026-05-21
-updated: 2026-08-06
+updated: 2026-08-07
 summary: 在人形 RL 运动控制栈中，如何按任务阶段在 DeepMimic / BeyondMimic / AMP 家族 / 通用 tracker / 接触丰富场景 tracking / 生成式动作先验之间选型。
 sources:
   - ../../sources/papers/gmt_arxiv_2506_14770.md
+  - ../../sources/papers/shooting_for_contact_arxiv_2608_03116.md
   - ../../sources/papers/scenebot_arxiv_2606_27581.md
   - ../../sources/papers/humanoid_pnb_vmp.md
   - ../../sources/papers/deepmimic.md
@@ -91,6 +92,8 @@ flowchart TD
 
 当任务语义由 **「是否真正接触物体」** 定义（擦板 vs 挥手贴近、坐椅承重 vs 悬空蹲姿、搬箱 vs 手路过箱子），且需要 **同一 keypoint 下运行时开关接触** 时，优先评估 **[ContactMimic](../entities/paper-contactmimic.md)**（arXiv:2607.08742）：在 keypoint 外增加 **per-body 二值 contact 指令**，并用 **label 翻转 / 去物体 / 膨胀几何** 增广打破 keypoint–contact 相关；论文在 HUMOTO 10 条仿真与 G1 真机 5 条上验证 contact ✔/✘ controllability，MPJPE 与 BeyondMimic 相当但接触与物体位移显著更高，且搬箱 **无需任务专用奖励**。当前为 **per-motion 策略**，与 SceneBot 的通才单策略形成粒度对照。
 
+当失败不在跟踪策略而在 **参考本身动力学不可行**（爬行/搬箱等接触丰富片段里参考违反作动极限、接触时刻表对不上，跟踪奖励再调也压不住）时，先在 **参考层** 做可行化：**[DSMS](../methods/dsms-contact-implicit-multiple-shooting.md)**（Shooting for Contact，arXiv:2608.03116）把可微仿真器的离散转移嵌进多重打靶 NLP，**接触隐式**（无 contact force 决策变量、无互补松弛、无预设时刻表），产出满足全身动力学与作动限的参考再喂给下游 mjlab PPO imitation。选型轴：周期步态用 one-shot，高动态拼接用 receding-horizon MPC；与 [GMR](../methods/motion-retargeting-gmr.md) 等 **运动学前端串联** 而非替代，采样式对照见 [DynaRetarget / SBTO](../methods/dynaretarget-sbto-motion-retargeting.md)。
+
 参考不足时，[ASE](../methods/ase.md)、[GenMo](../methods/genmo.md)、[扩散动作生成](../methods/diffusion-motion-generation.md) 用于扩充或平滑参考分布。场景资产生成还可对照 [OmniRetarget](../entities/paper-hrl-stack-03-omniretarget.md) 的 **interaction-preserving retarget** vs SceneBot 的 **reconstruction-first**（论文：后者 OMOMO 上抓取失败更少）。
 
 当入口是 **自然语言** 且目标是 **机器人可执行的高动态全身**（而非人体 SMPL 再 retarget）时，优先评估 **[PhyGile](../entities/paper-phygile.md)**：**262D robot-native 扩散 + physics-prefix + GMT 验证/微调闭环**；与 [Harmon](../entities/paper-loco-manip-161-097-harmon.md) 同族但强调 **物理前缀与跟踪器共训**，避免人体 T2M 先验的推理期重定向鸿沟。
@@ -166,6 +169,7 @@ flowchart TD
 - [具身智能研究室：人形 AMP 先验综述](../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md)
 - [Heracles（arXiv:2603.27756）](../../sources/papers/heracles_humanoid_diffusion_arxiv_2603_27756.md)、[PhyGile（arXiv:2603.19305）](../../sources/papers/phygile_arxiv_2603_19305.md)、[SD-AMP（arXiv:2605.18611）](../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md)、[SPRINT（arXiv:2605.28549）](../../sources/papers/sprint_arxiv_2605_28549.md)
 - [Any2Any（arXiv:2605.23733）](../../sources/papers/any2any_arxiv_2605_23733.md)
+- [Shooting for Contact / DSMS（arXiv:2608.03116）](../../sources/papers/shooting_for_contact_arxiv_2608_03116.md)
 
 ## 关联页面
 
@@ -175,6 +179,7 @@ flowchart TD
 - [YAHMP](../entities/paper-yahmp.md) — 开源 G1 GMT 消融试验台（命令/历史/残差/PD/手部力）
 - [Extreme-RGMT](../entities/paper-extreme-rgmt.md) — 高动态持续学习 generalist（未开源）
 - [GentleHumanoid](../methods/gentlehumanoid-motion-tracking.md)
+- [DSMS（接触隐式多重打靶）](../methods/dsms-contact-implicit-multiple-shooting.md) — 参考层动力学可行化，串联在跟踪 RL 之前
 - [ASE](../methods/ase.md)、[GenMo](../methods/genmo.md)、[扩散动作生成](../methods/diffusion-motion-generation.md)
 - [AMP / ADD / SMP 对比](../comparisons/amp-add-smp-motion-prior-variants.md)
 - [SONIC vs BeyondMimic vs SD-AMP vs Heracles 对比](../comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md)
