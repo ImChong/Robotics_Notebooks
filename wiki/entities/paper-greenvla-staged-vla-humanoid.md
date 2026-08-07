@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, vla, humanoid, multi-embodiment, flow-matching, behavior-cloning, reinforcement-learning, manipulation, bimanual, data-curation, sber-robotics, google]
 status: complete
-updated: 2026-07-08
+updated: 2026-08-07
 arxiv: "2602.00919"
 related:
   - ../methods/vla.md
@@ -150,6 +150,7 @@ flowchart TB
 - [Qwen-VLA](./qwen-vla.md) — Qwen3-VL 系通才 VLA
 - [ROVE](./paper-rove-humanoid-vla-intervention.md) — 人形 VLA **部署经验** 后训练另一路径
 - [LEGS](./paper-legs-embodied-gaussian-splatting-vla.md) — 人形操作 **合成数据 + VLA 微调** 对照
+- [JoyAI-RA 0.5](./paper-joyai-ra-05.md) — 另一套统一动作（130-D）+ 内–外环 RL 的 VLWA 配方（未开源）
 
 ## 参考来源
 

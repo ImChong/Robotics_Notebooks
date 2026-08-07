@@ -1,3 +1,12 @@
+## [2026-08-07] ingest | sources/papers/joyai_ra_05_arxiv_2608_05674.md — JoyAI-RA 0.5（arXiv:2608.05674）双动作对齐 VLWA 入库；升格 wiki/entities/paper-joyai-ra-05.md；互链 wiki/methods/vla.md、wiki/concepts/world-action-models.md、wiki/tasks/manipulation.md、wiki/entities/paper-ego-02-egolive.md、wiki/overview/ego-category-02-human-to-robot.md、wiki/entities/paper-data-pyramid-embodied-manipulation.md、wiki/entities/paper-internvla-a15-unified-vla.md；sources/sites/joyai-ra-05-github-io.md
+
+- **触发：** 用户指定 <https://arxiv.org/abs/2608.05674>、<https://joyai-ra-05.github.io/>；要求自动合并
+- **来源：** [`sources/papers/joyai_ra_05_arxiv_2608_05674.md`](sources/papers/joyai_ra_05_arxiv_2608_05674.md)、[`sources/sites/joyai-ra-05-github-io.md`](sources/sites/joyai-ra-05-github-io.md)
+- **新建实体：** [`wiki/entities/paper-joyai-ra-05.md`](wiki/entities/paper-joyai-ra-05.md)
+- **开源核查（步骤 2.5）：** **确认未开源** — 项目页仅 arXiv，未列 GitHub/HF/权重；`## 源码运行时序图` 写不适用
+- **方法要点：** VLWA = VLM + LAC-WM + Flow Expert；隐式 latent-action + 显式 130-D；内–外环 RL；AgiBot G1 seen **92.0** / unseen **75.5**；人视频缩放未见饱和
+- **交叉更新：** [`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/concepts/world-action-models.md`](wiki/concepts/world-action-models.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`wiki/entities/paper-ego-02-egolive.md`](wiki/entities/paper-ego-02-egolive.md)、[`wiki/overview/ego-category-02-human-to-robot.md`](wiki/overview/ego-category-02-human-to-robot.md)、[`wiki/entities/paper-data-pyramid-embodied-manipulation.md`](wiki/entities/paper-data-pyramid-embodied-manipulation.md)、[`wiki/entities/paper-internvla-a15-unified-vla.md`](wiki/entities/paper-internvla-a15-unified-vla.md)
+
 ## [2026-08-07] ingest | sources/blogs/macrodata_egocentric_video_3d_hand_actions.md — Macrodata egocentric→度量手轨迹博客入库；升格 wiki/methods/macrodata-egocentric-hand-action.md；互链 wiki/methods/wilor.md、wiki/methods/egoscale.md、wiki/methods/auto-labeling-pipelines.md、wiki/entities/perceptron-egocentric.md、wiki/entities/paper-vidihand.md、wiki/overview/ego-category-01-data-collection.md、wiki/overview/ego-category-02-human-to-robot.md、wiki/queries/dexterous-manipulation-data-pipeline.md；sources/sites/macrodata-co.md、sources/repos/hawor.md
 
 - **触发：** 用户指定 <https://macrodata.co/blog/turning-egocentric-video-into-3d-hand-actions>；要求确保 agent-reach 已装并自动合并
