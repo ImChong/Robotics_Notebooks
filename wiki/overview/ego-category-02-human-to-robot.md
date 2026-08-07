@@ -2,7 +2,7 @@
 type: overview
 tags: [egocentric, ego-survey, category-hub, imitation-learning, vla, mobile-manipulation]
 status: complete
-updated: 2026-07-24
+updated: 2026-08-07
 summary: "Ego 9 篇专题 · 02 人→机器人（3 篇）— 第一视角视频须经对齐与共训才进策略；EgoMimic/EMMA 证 IL 缩放，Gaze2Act 补 VLA 空间意图。"
 related:
   - ./ego-9-papers-technology-map.md
@@ -10,6 +10,7 @@ related:
   - ./ego-category-03-world-models.md
   - ../methods/imitation-learning.md
   - ../methods/vla.md
+  - ../methods/macrodata-egocentric-hand-action.md
   - ../entities/paper-ego-03-egomimic.md
   - ../entities/paper-ego-04-emma.md
   - ../entities/paper-ego-05-gaze2act.md
@@ -18,6 +19,7 @@ sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md
   - ../../sources/papers/ego_9_papers_catalog.md
   - ../../sources/papers/egoverse_arxiv_2604_07607.md
+  - ../../sources/blogs/macrodata_egocentric_video_3d_hand_actions.md
 ---
 
 # Ego 分类 02：人→机器人
@@ -49,12 +51,14 @@ sources:
 - [模仿学习](../methods/imitation-learning.md)、[VLA](../methods/vla.md)
 - [世界模型](./ego-category-03-world-models.md)
 - [EgoVerse](../entities/paper-egoverse.md) — 联盟级人→机共训研究：共训有效，但缩放依赖域对齐锚定
+- [Macrodata Egocentric Hand-Action](../methods/macrodata-egocentric-hand-action.md) — 人视频 → **度量手轨迹** 的开源几何层（尚未含本体 retarget / 策略共训）
 
 ## 参考来源
 
 - [wechat_embodied_ai_lab_ego_9_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md)
 - [ego_9_papers_catalog.md](../../sources/papers/ego_9_papers_catalog.md)
 - [EgoVerse 论文摘录](../../sources/papers/egoverse_arxiv_2604_07607.md)
+- [macrodata_egocentric_video_3d_hand_actions.md](../../sources/blogs/macrodata_egocentric_video_3d_hand_actions.md)
 
 ## 推荐继续阅读
 

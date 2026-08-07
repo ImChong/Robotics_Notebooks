@@ -3,15 +3,18 @@ type: entity
 tags: [perceptron, data-annotation, vlm, egocentric, manipulation, product]
 title: Perceptron Egocentric
 summary: "Perceptron Egocentric 是基于 Mk1 具身感知模型的机器人/第一人称视频自动标注 API：输出原子操作时间分段、自洽子任务标签与双手稠密 grounding，在 WGO-Bench 上超越 Gemini Robotics ER-1.6 与 Gemini 3.5 Flash 驱动的 Macrodata 管线。"
-updated: 2026-07-10
+updated: 2026-08-07
 status: complete
 related:
   - ../methods/auto-labeling-pipelines.md
   - ../methods/imitation-learning.md
   - ../methods/vla.md
   - ./gemini-robotics.md
+  - ../methods/macrodata-egocentric-hand-action.md
 sources:
   - ../../sources/blogs/perceptron_egocentric_api.md
+  - ../../sources/blogs/macrodata_egocentric_video_3d_hand_actions.md
+  - ../../sources/sites/macrodata-co.md
 ---
 
 # Perceptron Egocentric
@@ -103,11 +106,13 @@ flowchart LR
 - **Benchmark 域：** WGO 覆盖 HomER / DROID / Galaxea 子集，**不等于** 所有机器人本体、夹爪或长程家务任务。
 - **Judge 依赖：** 端到端 F1 含 **LLM judge**；换 judge 模型可能改变绝对值（Perceptron 与 WGO 使用同一 judge 协议）。
 - **非 motion retargeting：** 输出是 **语义–时间–手部 grounding 监督**，不替代 [Motion Retargeting](../concepts/motion-retargeting.md) 或关节轨迹清洗。
+- **与 Macrodata 手轨迹产品轴区分：** 同公司生态下，[Macrodata Egocentric Hand-Action](../methods/macrodata-egocentric-hand-action.md) 解决的是 **度量世界系 21 关节轨迹**（Action MPJPE），不是 WGO 的 **子任务时间戳 + 语义标签**；选型时按「要语言分段还是要几何动作」分开。
 
 ## 关联页面
 
 - [Auto-labeling Pipelines](../methods/auto-labeling-pipelines.md) — 自动化标注管线谱系与 Teacher–Student 架构
 - [Gemini Robotics](./gemini-robotics.md) — WGO 对照基座（ER-1.6 + Gemini 3.5 Flash）
+- [Macrodata Egocentric Hand-Action](../methods/macrodata-egocentric-hand-action.md) — Macrodata 度量 3D 手轨迹工程博客（几何轴）
 - [模仿学习 (Imitation Learning)](../methods/imitation-learning.md) — 分段演示监督的常见消费端
 - [VLA](../methods/vla.md) — 语言–视觉–动作数据引擎语境
 - [灵巧操作数据管线与 RL 基建指南](../queries/dexterous-manipulation-data-pipeline.md) — 轨迹/接触自动标注选型
@@ -116,9 +121,12 @@ flowchart LR
 
 - [perceptron_egocentric_api.md](../../sources/blogs/perceptron_egocentric_api.md)
 - Perceptron Blog — *Introducing Perceptron Egocentric API*（2026-07-09）：https://www.perceptron.inc/blog/introducing-perceptron-egocentric-api
+- [macrodata_egocentric_video_3d_hand_actions.md](../../sources/blogs/macrodata_egocentric_video_3d_hand_actions.md) — Macrodata 手轨迹轴（互补）
+- [macrodata-co.md](../../sources/sites/macrodata-co.md) — Macrodata 公司页
 
 ## 推荐继续阅读
 
 - Macrodata **WGO-Bench** 公开博客与 end-to-end 评测表（Gemini 3.5 Flash / seeded-relabeling 数字来源）
+- Macrodata 手轨迹工程博客：<https://macrodata.co/blog/turning-egocentric-video-into-3d-hand-actions>
 - [CLAW](../methods/claw.md) — 仿真侧重定向 **语言–全身轨迹** 自动生成（互补「视频→语义分段」路线）
 - [MolmoMotion](./molmo-motion.md) — 语言条件 **3D 点轨迹** 自动标注与规划先验（几何运动 vs 子任务语义）

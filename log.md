@@ -1,3 +1,14 @@
+## [2026-08-07] ingest | sources/blogs/macrodata_egocentric_video_3d_hand_actions.md — Macrodata egocentric→度量手轨迹博客入库；升格 wiki/methods/macrodata-egocentric-hand-action.md；互链 wiki/methods/wilor.md、wiki/methods/egoscale.md、wiki/methods/auto-labeling-pipelines.md、wiki/entities/perceptron-egocentric.md、wiki/entities/paper-vidihand.md、wiki/overview/ego-category-01-data-collection.md、wiki/overview/ego-category-02-human-to-robot.md、wiki/queries/dexterous-manipulation-data-pipeline.md；sources/sites/macrodata-co.md、sources/repos/hawor.md
+
+- **触发：** 用户指定 <https://macrodata.co/blog/turning-egocentric-video-into-3d-hand-actions>；要求确保 agent-reach 已装并自动合并
+- **来源：** [`sources/blogs/macrodata_egocentric_video_3d_hand_actions.md`](sources/blogs/macrodata_egocentric_video_3d_hand_actions.md)、[`sources/sites/macrodata-co.md`](sources/sites/macrodata-co.md)、[`sources/repos/hawor.md`](sources/repos/hawor.md)
+- **新建方法页：** [`wiki/methods/macrodata-egocentric-hand-action.md`](wiki/methods/macrodata-egocentric-hand-action.md)
+- **开源核查（步骤 2.5）：** **部分可复现 / 产品未开源** — 博客配方为 WiLoR+HaWoR+VGGT-Omega 开源组件；Macrodata 专有检测/编排 **确认未开源**（Contact / 免费样例）
+- **要点：** HOT3D Action MPJPE **52.04 mm**、覆盖 **81.23%**、**15.53 FPS@H100**；相对 HaWoR 误差 −12%、吞吐 3.34→15.53 FPS；误差主导在相机系腕深
+- **机构注册：** [`schema/institutions.json`](schema/institutions.json) 新增 `macrodata` → 宏数据实验室（Macrodata Labs）
+- **交叉更新：** [`wiki/methods/wilor.md`](wiki/methods/wilor.md)、[`wiki/methods/egoscale.md`](wiki/methods/egoscale.md)、[`wiki/methods/auto-labeling-pipelines.md`](wiki/methods/auto-labeling-pipelines.md)、[`wiki/entities/perceptron-egocentric.md`](wiki/entities/perceptron-egocentric.md)、[`wiki/entities/paper-vidihand.md`](wiki/entities/paper-vidihand.md)、[`wiki/overview/ego-category-01-data-collection.md`](wiki/overview/ego-category-01-data-collection.md)、[`wiki/overview/ego-category-02-human-to-robot.md`](wiki/overview/ego-category-02-human-to-robot.md)、[`wiki/queries/dexterous-manipulation-data-pipeline.md`](wiki/queries/dexterous-manipulation-data-pipeline.md)
+
+
 ## [2026-08-07] ingest | sources/papers/rtcf_arxiv_2608_04527.md — RTCF（arXiv:2608.04527）免训练 VLA 动作纠偏入库；升格 wiki/entities/paper-rtcf.md；互链 wiki/methods/vla.md、wiki/entities/paper-dynawm-vla-online-correction.md、wiki/entities/paper-dreamsteer-vla-deployment-steering.md、wiki/entities/paper-bridgevla-plusplus.md、wiki/tasks/manipulation.md
 
 - **触发：** 用户指定 <https://arxiv.org/abs/2608.04527>；要求与 DreamWAM / BridgeVLA++ 一并入库并自动合并

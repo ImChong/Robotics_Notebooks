@@ -2,7 +2,7 @@
 type: method
 tags: [hand-pose, 3d-vision, manipulation, perception, video-to-control]
 status: complete
-updated: 2026-07-13
+updated: 2026-08-07
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./exoactor.md
@@ -11,9 +11,11 @@ related:
   - ../entities/paper-vidihand.md
   - ../tasks/manipulation.md
   - ./sonic-motion-tracking.md
+  - ./macrodata-egocentric-hand-action.md
 sources:
   - ../../sources/repos/wilor.md
   - ../../sources/papers/vidihand_arxiv_2606_30308.md
+  - ../../sources/blogs/macrodata_egocentric_video_3d_hand_actions.md
 summary: "WiLoR 是端到端的野外手部检测定位 + Transformer 3D 手部网格重建网络，支持单图像与逐帧视频管线，为下游灵巧操作或人形双手轨迹提供单 RGB 估计。"
 ---
 
@@ -53,6 +55,7 @@ summary: "WiLoR 是端到端的野外手部检测定位 + Transformer 3D 手部�
 
 - [ExoActor](./exoactor.md)：将 WiLoR 用作生成视频的双手分支估计。
 - [ViDiHand](../entities/paper-vidihand.md)：同为 egocentric 双手 MANO 路线；WiLoR 是 **per-frame 检测+重建** 强基线，ViDiHand 论文显示其在 **重度遮挡** 下易 **掉检与闪烁**，而 **video diffusion 先验** 路线可 **无 detector** 取得更低 jitter。
+- [Macrodata Egocentric Hand-Action](./macrodata-egocentric-hand-action.md)：在 HOT3D **Action MPJPE** 管线中，WiLoR 作 **检测前端**（置信阈值 0.75 + 保守短间隙）；**逐帧 WiLoR 重建** 长视频轨迹弱于时序 [HaWoR](../../sources/repos/hawor.md)（约 77 vs 54 mm）。
 - [Manipulation](../tasks/manipulation.md)：手部估计是灵巧操作感知链路的一环。
 - [SONIC](./sonic-motion-tracking.md)：全身跟踪控制器接收融合后的双手目标。
 
@@ -65,9 +68,11 @@ summary: "WiLoR 是端到端的野外手部检测定位 + Transformer 3D 手部�
 ## 参考来源
 
 - [WiLoR（野外单图 / 视频端到端手部 3D 定位与重建）](../../sources/repos/wilor.md)
+- [macrodata_egocentric_video_3d_hand_actions.md](../../sources/blogs/macrodata_egocentric_video_3d_hand_actions.md) — HOT3D Action MPJPE 管线中的检测阈值与逐帧重建对照
 
 ## 关联页面
 
 - [GENMO（统一人体运动估计与生成）](./genmo.md)
 - [ExoActor (视频生成驱动的交互式人形控制)](./exoactor.md)
+- [Macrodata Egocentric Hand-Action](./macrodata-egocentric-hand-action.md)
 - [Manipulation（操作任务）](../tasks/manipulation.md)
