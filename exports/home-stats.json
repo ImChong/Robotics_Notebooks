@@ -1,22 +1,44 @@
 {
   "generated_at": "2026-08-07",
-  "node_count": 2107,
-  "edge_count": 19302,
+  "node_count": 2108,
+  "edge_count": 19313,
   "coverage": {
-    "covered": 2083,
-    "total": 2083,
+    "covered": 2084,
+    "total": 2084,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/rekadaily-10k-dataset.md",
-      "detail_id": "entity-rekadaily-10k-dataset",
-      "label": "RekaDaily-10k（家务第一人称视频数据集）",
+      "path": "wiki/entities/rekacs2-10k-dataset.md",
+      "detail_id": "entity-rekacs2-10k-dataset",
+      "label": "RekaCS2-10k（CS2 第一人称游戏数据集）",
       "type": "entity",
       "recency": "2026-08-07",
       "source": "log.md",
       "action": "added",
-      "community_label": "操作（Manipulation） 社区"
+      "has_repo": true,
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/concepts/world-action-models.md",
+      "detail_id": "wiki-concepts-world-action-models",
+      "label": "World Action Models（WAM，世界–动作模型）",
+      "type": "concept",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/concepts/video-as-simulation.md",
+      "detail_id": "wiki-concepts-video-as-simulation",
+      "label": "Video-as-Simulation (视频即仿真)",
+      "type": "concept",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "生成式世界模型（Generative World Models） 社区"
     },
     {
       "path": "wiki/overview/ego-category-01-data-collection.md",
@@ -26,6 +48,16 @@
       "recency": "2026-08-07",
       "source": "log.md",
       "action": "maintained",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/rekadaily-10k-dataset.md",
+      "detail_id": "entity-rekadaily-10k-dataset",
+      "label": "RekaDaily-10k（家务第一人称视频数据集）",
+      "type": "entity",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "added",
       "community_label": "操作（Manipulation） 社区"
     },
     {
@@ -180,46 +212,18 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/methods/zest.md",
-      "detail_id": "wiki-methods-zest",
-      "label": "ZEST (Zero-shot Embodied Skill Transfer)",
-      "type": "method",
-      "recency": "2026-08-06",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/unitree-g1.md",
-      "detail_id": "entity-unitree-g1",
-      "label": "Unitree G1 (人形机器人)",
-      "type": "entity",
-      "recency": "2026-08-06",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/unitree.md",
-      "detail_id": "entity-unitree",
-      "label": "Unitree",
-      "type": "entity",
-      "recency": "2026-08-06",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/rekadaily-10k-dataset.md",
-    "detail_id": "entity-rekadaily-10k-dataset",
-    "label": "RekaDaily-10k（家务第一人称视频数据集）",
+    "path": "wiki/entities/rekacs2-10k-dataset.md",
+    "detail_id": "entity-rekacs2-10k-dataset",
+    "label": "RekaCS2-10k（CS2 第一人称游戏数据集）",
     "type": "entity",
     "recency": "2026-08-07",
     "source": "log.md",
     "action": "added",
-    "community_label": "操作（Manipulation） 社区"
+    "has_repo": true,
+    "community_label": "生成式世界模型（Generative World Models） 社区"
   },
   "top_communities": [
     {

@@ -1,3 +1,13 @@
+## [2026-08-07] ingest | sources/sites/rekacs2-10k.md + sources/datasets/rekacs2-10k.md + sources/repos/cs2-dem-renderer.md — RekaCS2-10k（CS2 ego 视频+逐帧控制）合并入库；升格 wiki/entities/rekacs2-10k-dataset.md；互链 wiki/concepts/world-action-models.md、wiki/concepts/video-as-simulation.md、wiki/overview/ego-category-01-data-collection.md
+
+- **触发：** 用户指定 <https://huggingface.co/datasets/RekaAI/CS2-10k> 与 <https://reka.ai/news/cs2-10k-a-large-scale-egocentric-counter-strike-2-dataset>；要求自动合并
+- **来源：** [`sources/sites/rekacs2-10k.md`](sources/sites/rekacs2-10k.md)、[`sources/datasets/rekacs2-10k.md`](sources/datasets/rekacs2-10k.md)、[`sources/repos/cs2-dem-renderer.md`](sources/repos/cs2-dem-renderer.md)
+- **新建实体：** [`wiki/entities/rekacs2-10k-dataset.md`](wiki/entities/rekacs2-10k-dataset.md)
+- **开源核查（步骤 2.5）：** **已开源** — HF 数据 ungated / **CC BY-NC 4.0**；渲染器 [reka-ai/cs2-dem-renderer](https://github.com/reka-ai/cs2-dem-renderer) **MIT**；Viewer Space 可用；`## 源码运行时序图` 已写
+- **要点：** 600k+ 回合 / 10k+ 小时 / 720p@48fps；逐帧键鼠+3D 轨迹；职业 demo 确定性重渲染；非商用许可
+- **机构注册：** [`schema/institutions.json`](schema/institutions.json) 新增 `reka` → 瑞卡人工智能（Reka AI）
+- **交叉更新：** [`wiki/concepts/world-action-models.md`](wiki/concepts/world-action-models.md)、[`wiki/concepts/video-as-simulation.md`](wiki/concepts/video-as-simulation.md)、[`wiki/overview/ego-category-01-data-collection.md`](wiki/overview/ego-category-01-data-collection.md)
+
 ## [2026-08-07] ingest | sources/sites/rekadaily-10k.md + sources/datasets/rekadaily-10k-raw.md — RekaDaily-10k 家务 egocentric 视频（研究页+HF raw）合并入库；升格 wiki/entities/rekadaily-10k-dataset.md；互链 wiki/overview/ego-category-01-data-collection.md、wiki/methods/egoscale.md、wiki/entities/egoworld-100w.md、wiki/entities/hiw-500-dataset.md、wiki/queries/humanoid-training-data-pipeline.md、wiki/entities/paper-data-pyramid-embodied-manipulation.md
 
 - **触发：** 用户指定 <https://huggingface.co/datasets/RekaAI/RekaDaily-10k-raw> 与 <https://reka.ai/labs/research/rekadaily-10k-egocentric-household-manipulation-data>；要求自动合并

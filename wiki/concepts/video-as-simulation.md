@@ -2,12 +2,13 @@
 type: concept
 tags: [simulation, video-generation, deepmind, computer-vision, robotics]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-07
 related:
   - ../methods/generative-world-models.md
   - ../entities/ewmbench.md
   - ../entities/paper-worldscore.md
   - ../entities/paper-wem-world-ego-modeling.md
+  - ../entities/rekacs2-10k-dataset.md
   - ../methods/dwm.md
   - ../methods/mimic-video.md
   - ../concepts/sim2real.md
@@ -42,6 +43,7 @@ sources:
   - ../../sources/papers/wan_move_arxiv_2512_08765.md
   - ../../sources/papers/wan_video_arxiv_2503_20314.md
   - ../../sources/blogs/allenai_molmo_motion.md
+  - ../../sources/sites/rekacs2-10k.md
 summary: "视频即仿真（Video-as-Simulation）代表了仿真技术的新范式：通过交互式视频预测器代替传统的刚体动力学引擎，实现了在像素级别进行无限逼真的反事实物理演练。"
 ---
 
@@ -122,6 +124,7 @@ UniSim 把视频生成模型当作可交互的物理引擎来训练视觉策略�
 
 ## 关联页面
 - [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — 本页所述物理/仿真要素在保真度链路（建模 ① → 数值 ② → 接触 ③ → 随机化 ④）中的定位
+- [RekaCS2-10k](../entities/rekacs2-10k-dataset.md) — 职业 CS2 ego 视频 + 逐帧控制，动作条件交互世界模型语料
 - [Generative World Models](../methods/generative-world-models.md)
 - [EWMBench](../entities/ewmbench.md) — 操纵场景下视频世界模型生成的多维评测坐标
 - [WorldScore](../entities/paper-worldscore.md) — 开放域多场景 + 相机可控世界生成统一评测（ICCV 2025）
