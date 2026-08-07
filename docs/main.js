@@ -997,6 +997,31 @@
       return { added: added, maintained: maintained };
     }
 
+    function filterMetasAddedOnly(metas) {
+      var out = [];
+      for (var fi = 0; fi < metas.length; fi++) {
+        if (metas[fi] && metas[fi].action === 'added') out.push(metas[fi]);
+      }
+      return out;
+    }
+
+    function filterTimelineGroupsAddedOnly(groups) {
+      var filtered = [];
+      for (var gi = 0; gi < groups.length; gi++) {
+        var g = groups[gi];
+        var addedItems = filterMetasAddedOnly(g.items || []);
+        if (!addedItems.length) continue;
+        filtered.push({
+          date: g.date,
+          items: addedItems,
+          totalCount: addedItems.length,
+          addedCount: addedItems.length,
+          maintainedCount: 0
+        });
+      }
+      return filtered;
+    }
+
     function formatDayMeta(metas, totalCount, dayStats) {
       var total = typeof totalCount === 'number' && totalCount > metas.length ? totalCount : metas.length;
       var stats = dayStats || countActionStats(metas);
@@ -1190,9 +1215,11 @@
       return filtered;
     }
 
-    function buildTimelineIntro(visibleGroups, allGroups, windowDays, showAll) {
+    function buildTimelineIntro(visibleGroups, totalDayCount, windowDays, showAll, addedOnly) {
       if (!visibleGroups.length) {
-        return '<p class="data-meta">暂无「最近更新」数据。</p>';
+        return '<p class="data-meta">' +
+          (addedOnly ? '当前窗口内暂无新增节点。' : '暂无「最近更新」数据。') +
+          '</p>';
       }
       var newest = visibleGroups[0].date || '';
       var oldestVisible = visibleGroups[visibleGroups.length - 1].date || newest;
@@ -1202,15 +1229,17 @@
       } else if (newest) {
         introParts.push(newest);
       }
-      introParts.push('维护日志时间线');
+      introParts.push(addedOnly ? '仅新增节点时间线' : '维护日志时间线');
       var visibleNodes = countTimelineGroupNodes(visibleGroups);
-      if (showAll || visibleGroups.length >= allGroups.length) {
-        introParts.push(String(visibleNodes) + ' 个节点 / ' + String(allGroups.length) + ' 天');
+      var nodeWord = addedOnly ? '个新增节点' : '个节点';
+      var totalDays = typeof totalDayCount === 'number' ? totalDayCount : 0;
+      if (showAll || visibleGroups.length >= totalDays) {
+        introParts.push(String(visibleNodes) + ' ' + nodeWord + ' / ' + String(totalDays) + ' 天');
       } else {
         introParts.push(
           '显示最近 ' + String(windowDays) + ' 天 · ' +
-          String(visibleNodes) + ' 个节点 / ' + String(visibleGroups.length) + ' 天' +
-          '（共 ' + String(allGroups.length) + ' 天）'
+          String(visibleNodes) + ' ' + nodeWord + ' / ' + String(visibleGroups.length) + ' 天' +
+          '（共 ' + String(totalDays) + ' 天）'
         );
       }
       return '<p class="data-meta home-latest-wiki-intro">' + escapeHtml(introParts.join(' · ')) + '</p>';
@@ -1236,12 +1265,19 @@
       );
     }
 
-    function renderTimelineBody(allGroups, windowDays, showAll) {
+    function renderTimelineBody(allGroups, windowDays, showAll, addedOnly) {
       if (!allGroups.length) {
         return '<p class="data-meta">暂无「最近更新」数据。</p>';
       }
-      var visibleGroups = filterTimelineGroupsByWindow(allGroups, windowDays, showAll);
-      var introHtml = buildTimelineIntro(visibleGroups, allGroups, windowDays, showAll);
+      // 窗口锚定全部活动日，再按「仅新增」过滤，避免切换筛选时日期范围跳动
+      var windowGroups = filterTimelineGroupsByWindow(allGroups, windowDays, showAll);
+      var visibleGroups = addedOnly ? filterTimelineGroupsAddedOnly(windowGroups) : windowGroups;
+      var totalDayCount = addedOnly
+        ? filterTimelineGroupsAddedOnly(allGroups).length
+        : allGroups.length;
+      var introHtml = buildTimelineIntro(
+        visibleGroups, totalDayCount, windowDays, showAll, addedOnly
+      );
       var daysHtml = '';
       for (var tgi = 0; tgi < visibleGroups.length; tgi++) {
         var tg = visibleGroups[tgi];
@@ -1252,7 +1288,7 @@
           { added: tg.addedCount || 0, maintained: tg.maintainedCount || 0 }
         );
       }
-      var actionsHtml = renderTimelineActions(visibleGroups, allGroups, windowDays, showAll);
+      var actionsHtml = renderTimelineActions(windowGroups, allGroups, windowDays, showAll);
       return introHtml + '<div class="updates-timeline-days">' + daysHtml + '</div>' + actionsHtml;
     }
 
@@ -1279,18 +1315,50 @@
 
     var currentWindowDays = TIMELINE_WINDOW_DAYS;
     var timelineShowAll = false;
-    var defaultBodyHtml = renderTimelineBody(allTimelineGroups, currentWindowDays, timelineShowAll);
+    var addedOnlyFilter = false;
+    var defaultBodyHtml = renderTimelineBody(
+      allTimelineGroups, currentWindowDays, timelineShowAll, addedOnlyFilter
+    );
     var heatmapHtml = activityDays.length ? buildHomeWikiHeatmapHtml(activityDays) : '';
-    mount.innerHTML = heatmapHtml + '<div class="home-latest-wiki-body">' + defaultBodyHtml + '</div>';
+    var filterBarHtml =
+      '<div class="updates-filter-bar" role="group" aria-label="更新记录筛选">' +
+      '<button type="button" class="btn-secondary btn-inline updates-filter-added-only" aria-pressed="false">' +
+      '只看新增节点</button>' +
+      '<span class="updates-filter-hint">默认显示每日新增与维护；开启后仅保留「新增」条目</span>' +
+      '</div>';
+    mount.innerHTML =
+      heatmapHtml + filterBarHtml +
+      '<div class="home-latest-wiki-body">' + defaultBodyHtml + '</div>';
 
     var bodyMount = mount.querySelector('.home-latest-wiki-body');
+    var addedOnlyBtn = mount.querySelector('button.updates-filter-added-only');
     var activeDate = '';
     var clearHeatmapFilter = null;
 
+    function syncAddedOnlyButton() {
+      if (!addedOnlyBtn) return;
+      addedOnlyBtn.classList.toggle('is-active', addedOnlyFilter);
+      addedOnlyBtn.setAttribute('aria-pressed', addedOnlyFilter ? 'true' : 'false');
+      addedOnlyBtn.textContent = addedOnlyFilter ? '显示全部节点' : '只看新增节点';
+    }
+
     function refreshTimelineBody() {
-      if (activeDate) return;
-      defaultBodyHtml = renderTimelineBody(allTimelineGroups, currentWindowDays, timelineShowAll);
+      if (activeDate) {
+        if (typeof applyHeatmapFilter === 'function') applyHeatmapFilter(activeDate);
+        return;
+      }
+      defaultBodyHtml = renderTimelineBody(
+        allTimelineGroups, currentWindowDays, timelineShowAll, addedOnlyFilter
+      );
       bodyMount.innerHTML = defaultBodyHtml;
+    }
+
+    if (addedOnlyBtn) {
+      addedOnlyBtn.addEventListener('click', function () {
+        addedOnlyFilter = !addedOnlyFilter;
+        syncAddedOnlyButton();
+        refreshTimelineBody();
+      });
     }
 
     bodyMount.addEventListener('click', function (ev) {
@@ -1383,23 +1451,38 @@
     function clearHeatmapFilterImpl() {
       activeDate = '';
       setActiveCell('');
+      defaultBodyHtml = renderTimelineBody(
+        allTimelineGroups, currentWindowDays, timelineShowAll, addedOnlyFilter
+      );
       bodyMount.innerHTML = defaultBodyHtml;
     }
     clearHeatmapFilter = clearHeatmapFilterImpl;
 
     function applyHeatmapFilter(dateKey) {
       var dayNodes = nodesByDate[dateKey] || [];
-      if (!dayNodes.length) return;
+      if (!dayNodes.length && !addedOnlyFilter) return;
+      var visibleNodes = addedOnlyFilter ? filterMetasAddedOnly(dayNodes) : dayNodes;
       activeDate = dateKey;
       setActiveCell(dateKey);
-      var total = totalByDate[dateKey] || dayNodes.length;
-      var filterIntro = [dateKey, '维护日志'];
-      var filterStats = countActionStats(dayNodes);
+      var filterIntro = [dateKey, addedOnlyFilter ? '仅新增节点' : '维护日志'];
+      if (!visibleNodes.length) {
+        bodyMount.innerHTML =
+          '<p class="data-meta home-latest-wiki-intro">' + escapeHtml(filterIntro.join(' · ')) +
+          ' · 当日无新增节点' +
+          ' <button type="button" class="btn-secondary btn-inline home-wiki-heatmap-clear">清除筛选</button></p>' +
+          '<div class="updates-timeline-actions" role="group" aria-label="更新记录导航">' +
+          '<div class="updates-timeline-actions-start"></div>' +
+          '<button type="button" class="btn-secondary updates-timeline-back-top">回到顶部</button>' +
+          '</div>';
+        return;
+      }
+      var total = visibleNodes.length;
+      var filterStats = countActionStats(visibleNodes);
       bodyMount.innerHTML =
         '<p class="data-meta home-latest-wiki-intro">' + escapeHtml(filterIntro.join(' · ')) +
         ' <button type="button" class="btn-secondary btn-inline home-wiki-heatmap-clear">清除筛选</button></p>' +
         '<div class="updates-timeline-days">' +
-        renderTimelineDay(dateKey, dayNodes, total, filterStats) +
+        renderTimelineDay(dateKey, visibleNodes, total, filterStats) +
         '</div>' +
         '<div class="updates-timeline-actions" role="group" aria-label="更新记录导航">' +
         '<div class="updates-timeline-actions-start"></div>' +

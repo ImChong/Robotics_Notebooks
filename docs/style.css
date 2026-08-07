@@ -1181,6 +1181,38 @@ button.home-wiki-heatmap-cell.is-active {
 .home-wiki-heatmap-legend .home-wiki-heatmap-cell { width: 12px; height: 12px; flex-shrink: 0; }
 .home-wiki-heatmap-legend-hint { margin-right: auto; }
 .home-wiki-heatmap-clear { margin-left: 8px; vertical-align: middle; }
+/* 更新记录：只看新增节点 */
+.updates-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  margin: 16px 0 4px;
+}
+.updates-filter-bar .updates-filter-added-only {
+  flex-shrink: 0;
+}
+.updates-filter-bar .updates-filter-added-only.is-active {
+  background: color-mix(in srgb, var(--accent) 18%, var(--bg-alt));
+  color: var(--accent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+.updates-filter-hint {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+@media (max-width: 640px) {
+  .updates-filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .updates-filter-bar .updates-filter-added-only {
+    width: 100%;
+    justify-content: center;
+  }
+}
 /* PC：热力图在内容区内完整放下，隐藏横向滚动；列宽用 calc 均分避免 fr 子像素溢出 */
 @media (min-width: 680px) {
   .home-wiki-heatmap-scroll { overflow-x: hidden; }
