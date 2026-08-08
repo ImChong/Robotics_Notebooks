@@ -1,30 +1,10 @@
-## [2026-08-08] ingest | sources/papers/dash_opsd_arxiv_2608_06243.md — DASH（CASIA / EverMind / 盛大等，arXiv:2608.06243）OPSD 分歧自适应监督视界入库；升格 wiki/entities/paper-dash-opsd.md；归档 sources/repos/dash-opsd.md；交叉 wiki/entities/paper-shenlan-wm-14-rlvr-world.md、wiki/concepts/ai-auto-research.md、wiki/entities/paper-harnessbank.md、wiki/entities/paper-skillcorpus.md；已开源 DBtxy/DASH-OPSD
+## [2026-08-08] ingest | sources/repos/dexmal_opendm.md + sources/blogs/dexmal_dm05.md — 接入 OpenDM/DM0.5 开源栈；更新 wiki/entities/dexmal-dm05.md；互链 wiki/methods/vla.md、wiki/entities/dexmal-dw05.md、wiki/tasks/manipulation.md
 
-- **触发：** 用户指定 <https://arxiv.org/pdf/2608.06243v1>；与 HarnessBank / SkillCorpus 一并入库并要求自动合并
-- **来源：** [`sources/papers/dash_opsd_arxiv_2608_06243.md`](sources/papers/dash_opsd_arxiv_2608_06243.md)、[`sources/repos/dash-opsd.md`](sources/repos/dash-opsd.md)
-- **新建实体：** [`wiki/entities/paper-dash-opsd.md`](wiki/entities/paper-dash-opsd.md)
-- **开源核查（步骤 2.5）：** **已开源** — <https://github.com/DBtxy/DASH-OPSD>（`opsd_train.py` / `scripts/run_dash_*.sh`）+ HF LoRA；`## 源码运行时序图` 已写
-- **方法要点：** 局部 KL 相对序列均值 → 自适应传播门 → 反向多步聚合；相对匹配 OPSD macro +3.20 / +1.40 / +1.60（1.7B/4B/8B）
-- **机构注册：** [`schema/institutions.json`](schema/institutions.json) 新增 `evermind` / `shanda` / `wuhan-ai-research`
-- **交叉更新：** [`wiki/entities/paper-shenlan-wm-14-rlvr-world.md`](wiki/entities/paper-shenlan-wm-14-rlvr-world.md)、[`wiki/concepts/ai-auto-research.md`](wiki/concepts/ai-auto-research.md)、[`wiki/entities/paper-harnessbank.md`](wiki/entities/paper-harnessbank.md)、[`wiki/entities/paper-skillcorpus.md`](wiki/entities/paper-skillcorpus.md)
-
-## [2026-08-08] ingest | sources/papers/skillcorpus_arxiv_2607_15557.md — SkillCorpus（EverMind / 盛大 / 北大，arXiv:2607.15557）社区 SKILL.md 策展语料入库；升格 wiki/entities/paper-skillcorpus.md；交叉 wiki/entities/openclaw.md、wiki/entities/darwin-skill.md、wiki/entities/mattpocock-skills.md、wiki/entities/hermes-agent.md、wiki/entities/paper-harnessbank.md；语料与代码 acceptance 后开源
-
-- **触发：** 用户指定 <https://arxiv.org/abs/2607.15557>；要求自动合并
-- **来源：** [`sources/papers/skillcorpus_arxiv_2607_15557.md`](sources/papers/skillcorpus_arxiv_2607_15557.md)
-- **新建实体：** [`wiki/entities/paper-skillcorpus.md`](wiki/entities/paper-skillcorpus.md)
-- **开源核查（步骤 2.5）：** **宣称将开源 / 尚未发布** — acceptance 后释放 96,401 语料 + 检索栈 + 代码；`## 源码运行时序图` 写不适用
-- **方法要点：** ~821k→96,401；三面质量 + OSI 许可；SkillsBench 池化 **+7.5 pp**；覆盖边界与 harness 边界
-- **交叉更新：** [`wiki/entities/openclaw.md`](wiki/entities/openclaw.md)、[`wiki/entities/darwin-skill.md`](wiki/entities/darwin-skill.md)、[`wiki/entities/mattpocock-skills.md`](wiki/entities/mattpocock-skills.md)、[`wiki/entities/hermes-agent.md`](wiki/entities/hermes-agent.md)、[`wiki/entities/paper-harnessbank.md`](wiki/entities/paper-harnessbank.md)
-
-## [2026-08-08] ingest | sources/papers/harnessbank_arxiv_2607_13683.md — HarnessBank（EverMind / 盛大，arXiv:2607.13683）可信 agent-harness 自进化入库；升格 wiki/entities/paper-harnessbank.md；交叉 wiki/entities/openclaw.md、wiki/entities/darwin-skill.md、wiki/concepts/ai-auto-research.md、wiki/entities/paper-skillcorpus.md；代码 acceptance 后开源
-
-- **触发：** 用户指定 <https://arxiv.org/abs/2607.13683>；要求自动合并
-- **来源：** [`sources/papers/harnessbank_arxiv_2607_13683.md`](sources/papers/harnessbank_arxiv_2607_13683.md)
-- **新建实体：** [`wiki/entities/paper-harnessbank.md`](wiki/entities/paper-harnessbank.md)
-- **开源核查（步骤 2.5）：** **宣称将开源 / 尚未发布** — acceptance 后公开；`## 源码运行时序图` 写不适用
-- **方法要点：** Harness Gene Bank + Gated Harness Screening；七基准 Test Pass@1 **+5.1%–15.4%**；跨模型匹配律
-- **交叉更新：** [`wiki/entities/openclaw.md`](wiki/entities/openclaw.md)、[`wiki/entities/darwin-skill.md`](wiki/entities/darwin-skill.md)、[`wiki/concepts/ai-auto-research.md`](wiki/concepts/ai-auto-research.md)、[`wiki/entities/paper-skillcorpus.md`](wiki/entities/paper-skillcorpus.md)
+- **触发：** 用户指定开源仓 <https://github.com/dexmal/opendm> 与技术博客 <https://www.dexmal.com/blog/dm0.5>；要求自动合并
+- **来源：** [`sources/repos/dexmal_opendm.md`](sources/repos/dexmal_opendm.md)、修订 [`sources/blogs/dexmal_dm05.md`](sources/blogs/dexmal_dm05.md)
+- **主升格 / 更新：** [`wiki/entities/dexmal-dm05.md`](wiki/entities/dexmal-dm05.md) — 补开源状态、DM05 权重表、工程实践、`## 源码运行时序图`
+- **开源核查（步骤 2.5）：** **已开源** — Apache-2.0；HF/ModelScope **DM05** 及 LIBERO / RobotWin2 / SO101 / VLA-Arena / Table30v2；`script/dm05_launcher.sh` 统一 train/inference
+- **交叉更新：** [`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/entities/dexmal-dw05.md`](wiki/entities/dexmal-dw05.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`sources/repos/dexmal_opendw.md`](sources/repos/dexmal_opendw.md)
 
 ## [2026-08-08] ingest | sources/papers/pfm_hr_arxiv_2608_03227.md — PFM-HR（HKUST-GZ / 诺亦腾 / 清华 SIGS / Google，arXiv:2608.03227）姿态 Flow Matching 先验入库；升格 wiki/entities/paper-pfm-hr.md；交叉 wiki/methods/beyondmimic.md、wiki/methods/add.md、wiki/methods/smp.md、wiki/entities/paper-notebook-pdf-hr.md、wiki/entities/mimickit.md、wiki/queries/humanoid-motion-tracking-method-selection.md、wiki/comparisons/amp-add-smp-motion-prior-variants.md；归档 sources/sites/pfm-hr-web.md、sources/repos/pfm-hr.md
 
