@@ -1,3 +1,12 @@
+## [2026-08-08] ingest | sources/sites/embodied-interview-qa-github-io.md — 具身智能高频面试题库（WinstonJQ）入库；升格 wiki/entities/embodied-interview-qa.md；仓 sources/repos/embodied-interview-qa.md；交叉 VLA/RL/IL/Sim2Real/WBC/深度学习基础与 Lumina/qqfly 指南
+
+- **触发：** 用户指定 <https://winstonjq.github.io/embodied-interview-qa/index.html>；要求自动合并
+- **来源：** [`sources/sites/embodied-interview-qa-github-io.md`](sources/sites/embodied-interview-qa-github-io.md)、[`sources/repos/embodied-interview-qa.md`](sources/repos/embodied-interview-qa.md)
+- **新建实体：** [`wiki/entities/embodied-interview-qa.md`](wiki/entities/embodied-interview-qa.md) — 八卷 ↔ 本库方法/概念/路线映射；面试速查与 wiki 深读分工
+- **开源核查（步骤 2.5）：** **已开源（MIT）** — Pages + `docs/interviews/*.md`；非算法仓，`## 源码运行时序图` 不适用
+- **要点：** 公开面经频次合并；L1–L3；答案 ≤350 字；约 425 题（README）/ 入库日 Markdown `<summary>` ≈438
+- **交叉更新：** [`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/methods/reinforcement-learning.md`](wiki/methods/reinforcement-learning.md)、[`wiki/methods/imitation-learning.md`](wiki/methods/imitation-learning.md)、[`wiki/concepts/sim2real.md`](wiki/concepts/sim2real.md)、[`wiki/concepts/whole-body-control.md`](wiki/concepts/whole-body-control.md)、[`wiki/concepts/deep-learning-foundations.md`](wiki/concepts/deep-learning-foundations.md)、[`wiki/entities/lumina-embodied.md`](wiki/entities/lumina-embodied.md)、[`wiki/entities/learn-robotics-qqfly-guide.md`](wiki/entities/learn-robotics-qqfly-guide.md)
+
 ## [2026-08-08] ingest | sources/papers/kilvo_arxiv_2608_05647.md — KILVO 人形多传感器 ESIKF 里程计（代码待开放）；升格 wiki/entities/paper-kilvo.md；仓 sources/repos/kilvo.md；交叉 wiki/methods/lidar-odometry-fusion.md、wiki/comparisons/lidar-slam-lio-vio-selection.md
 
 - **触发：** 用户指定 GitHub <https://github.com/JixinGao/KILVO> + 论文 <https://arxiv.org/abs/2608.05647>；人形多传感器里程计，代码待开放；要求自动合并

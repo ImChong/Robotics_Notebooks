@@ -2,8 +2,9 @@
 type: method
 tags: [il, behavior-cloning, diffusion-policy, sim2real]
 status: complete
-updated: 2026-08-07
+updated: 2026-08-08
 related:
+  - ../entities/embodied-interview-qa.md
   - ../comparisons/robot-learning-five-paradigms-taxonomy.md
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-rl-intelligent-control.md
@@ -193,6 +194,7 @@ flowchart TD
 - [机器人论文阅读笔记：Diffusion Policy](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Diffusion_Policy/Diffusion_Policy.html)
 
 ## 关联页面
+- [具身智能高频面试题库](../entities/embodied-interview-qa.md) — 卷三 IL/VLA 面试速查（BC / DAgger / ACT / Diffusion Policy）
 - [机器人学习五大范式](../comparisons/robot-learning-five-paradigms-taxonomy.md) — IL 作为示范信号主线，与 RL / LfV / VLA / 持续学习对照
 - [深度学习基础](../concepts/deep-learning-foundations.md)
 - [Reinforcement Learning](./reinforcement-learning.md)

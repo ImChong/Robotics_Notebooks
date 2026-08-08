@@ -2,8 +2,9 @@
 type: concept
 tags: [control, wbc, humanoid, optimization]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-08
 related:
+  - ../entities/embodied-interview-qa.md
   - ../tasks/locomotion.md
   - ../methods/imitation-learning.md
   - ../comparisons/wbc-vs-rl.md
@@ -166,6 +167,7 @@ print("joint acceleration command:", qdd_star)
 
 ## 关联页面
 
+- [具身智能高频面试题库](../entities/embodied-interview-qa.md) — 卷六腿足 / WBC / 遥操作面试速查
 - [Locomotion](../tasks/locomotion.md)
 - [Imitation Learning](../methods/imitation-learning.md)
 - [WBC vs RL](../comparisons/wbc-vs-rl.md)
