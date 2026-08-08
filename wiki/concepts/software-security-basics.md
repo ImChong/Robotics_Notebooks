@@ -2,14 +2,17 @@
 type: concept
 tags: [systems-engineering, security, authn, authz, secrets, supply-chain]
 status: complete
-updated: 2026-07-21
+updated: 2026-08-08
 related:
   - ./model-versioning-ota.md
   - ./container-orchestration-cicd.md
   - ./edge-cloud-robotics.md
   - ../overview/hub-systems-engineering.md
+  - ../entities/codex-security.md
 sources:
   - ../../sources/sites/systems_engineering_deploy_obs_security_primary_refs.md
+  - ../../sources/repos/codex-security.md
+  - ../../sources/sites/openai-codex-security-docs.md
 summary: "软件安全基础（身份认证、授权、密钥管理、供应链安全）：机器人云边通道与制品发布的最小安全基线。"
 ---
 
@@ -49,6 +52,7 @@ summary: "软件安全基础（身份认证、授权、密钥管理、供应链�
 - 分环境凭证（dev/stage/prod）；禁止把 cloud key 打进机器人镜像。
 - PR 流水线跑漏洞扫描与许可证检查；发布需人工或策略门禁。
 - 与 [OTA](./model-versioning-ota.md) 联动：验签失败 → 拒绝更新并告警。
+- **Agent 驱动 AppSec（可选增强）：** 对遥操作网关 / OTA 服务 / 训练 farm API 等代码面，可用 [Codex Security](../entities/codex-security.md) 做 PR `--diff` 扫描与 SARIF 导出；与依赖锁定、SBOM、镜像签名叠用，勿替代 AuthN/AuthZ/KMS 基线。
 
 ## 局限与风险
 
@@ -60,11 +64,15 @@ summary: "软件安全基础（身份认证、授权、密钥管理、供应链�
 - [模型版本管理与 OTA](./model-versioning-ota.md)
 - [容器编排与 CI/CD](./container-orchestration-cicd.md)
 - [边缘–云端协同](./edge-cloud-robotics.md)
+- [Codex Security](../entities/codex-security.md)
 
 ## 参考来源
 
 - [部署可观测安全一手资料](../../sources/sites/systems_engineering_deploy_obs_security_primary_refs.md)
+- [Codex Security 仓库归档](../../sources/repos/codex-security.md)
+- [Codex Security 官方文档归档](../../sources/sites/openai-codex-security-docs.md)
 
 ## 推荐继续阅读
 
 - OWASP ASVS；SLSA：<https://slsa.dev/>
+- Codex Security 文档：<https://developers.openai.com/codex/security>

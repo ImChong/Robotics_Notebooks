@@ -1,3 +1,11 @@
+## [2026-08-08] ingest | sources/repos/codex-security.md — OpenAI Codex Security CLI/SDK 入库；升格 wiki/entities/codex-security.md；文档 sources/sites/openai-codex-security-docs.md；交叉 wiki/concepts/software-security-basics.md、wiki/concepts/container-orchestration-cicd.md、wiki/overview/hub-systems-engineering.md
+
+- **触发：** 用户指定 <https://github.com/openai/codex-security>；要求自动合并
+- **来源：** [`sources/repos/codex-security.md`](sources/repos/codex-security.md)、[`sources/sites/openai-codex-security-docs.md`](sources/sites/openai-codex-security-docs.md)
+- **新建实体：** [`wiki/entities/codex-security.md`](wiki/entities/codex-security.md) — CLI/SDK、deep scan、SARIF、容器 bulk-scan、CI 严重度门禁；含 `## 源码运行时序图`
+- **开源核查（步骤 2.5）：** **已开源（Apache-2.0）** — GitHub + npm `@openai/codex-security`（入库日 0.1.8）；需推理 API / ChatGPT；部分 finding 需 Trusted Access for Cyber
+- **交叉更新：** [`wiki/concepts/software-security-basics.md`](wiki/concepts/software-security-basics.md)、[`wiki/concepts/container-orchestration-cicd.md`](wiki/concepts/container-orchestration-cicd.md)、[`wiki/overview/hub-systems-engineering.md`](wiki/overview/hub-systems-engineering.md)、[`sources/sites/systems_engineering_deploy_obs_security_primary_refs.md`](sources/sites/systems_engineering_deploy_obs_security_primary_refs.md)
+
 ## [2026-08-08] ingest | sources/sites/embodied-interview-qa-github-io.md — 具身智能高频面试题库（WinstonJQ）入库；升格 wiki/entities/embodied-interview-qa.md；仓 sources/repos/embodied-interview-qa.md；交叉 VLA/RL/IL/Sim2Real/WBC/深度学习基础与 Lumina/qqfly 指南
 
 - **触发：** 用户指定 <https://winstonjq.github.io/embodied-interview-qa/index.html>；要求自动合并

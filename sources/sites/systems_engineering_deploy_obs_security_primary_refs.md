@@ -49,6 +49,7 @@
   - 密钥进 **KMS/HSM/密封密钥**，禁止硬编码进镜像；OTA 与模型制品须签名验签。
   - 供应链：锁定依赖、SBOM、镜像签名、最小权限 CI。
 - **对 wiki 的映射：** [software-security-basics](../../wiki/concepts/software-security-basics.md)、[model-versioning-ota](../../wiki/concepts/model-versioning-ota.md)
+- **相关工具实体（2026-08-08 ingest）：** [Codex Security](../../wiki/entities/codex-security.md) — OpenAI AppSec CLI/SDK；归档 [sources/repos/codex-security.md](../repos/codex-security.md)
 
 ## 当前提炼状态
 
