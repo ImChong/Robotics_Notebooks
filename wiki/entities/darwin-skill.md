@@ -9,13 +9,15 @@ tags:
   - autonomous-experimentation
   - agent-infrastructure
 status: complete
-updated: 2026-07-07
+updated: 2026-08-08
 related:
   - ./karpathy-autoresearch.md
   - ./nuwa-skill.md
   - ./cangjie-skill.md
   - ./superpowers-obra.md
   - ./mattpocock-skills.md
+  - ./paper-harnessbank.md
+  - ./paper-skillcorpus.md
   - ../concepts/ai-auto-research.md
   - ../references/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
@@ -104,6 +106,8 @@ flowchart LR
 - [Cangjie Skill](cangjie-skill.md) — 蒸馏方法论 skill + 压力测试
 - [AI Auto-Research](../concepts/ai-auto-research.md) — 自主实验生命周期框架
 - [Superpowers（obra）](superpowers-obra.md) — 流程型 skill 库（可被达尔文优化）
+- [HarnessBank](paper-harnessbank.md) — 全 harness 表面自进化 + 门控验证（对照单 `SKILL.md` 棘轮）
+- [SkillCorpus](paper-skillcorpus.md) — 生态级社区技能策展与检索（对照单 skill 制造/进化）
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 知识编译 vs skill 编译
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库 lint / preflight 规范
 

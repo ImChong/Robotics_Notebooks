@@ -2,7 +2,7 @@
 type: concept
 tags: [ai-auto-research, research-agents, llm-agents, scientific-workflow, survey, governance, literature-review]
 status: complete
-updated: 2026-07-07
+updated: 2026-08-08
 summary: "AI Auto-Research 指 LLM/agent 贯穿学术研究全生命周期（创意→文献→实验→写作→审稿→传播）的辅助与自动化；可靠部署依赖人机共治、分层验证与跨阶段溯源，而非端到端完全自主。"
 related:
   - ../references/llm-wiki-karpathy.md
@@ -10,6 +10,8 @@ related:
   - ../entities/hermes-agent.md
   - ../entities/agent-reach.md
   - ../entities/superpowers-obra.md
+  - ../entities/paper-harnessbank.md
+  - ../entities/paper-dash-opsd.md
   - ../../schema/ingest-workflow.md
 sources:
   - ../../sources/papers/ai_auto_research_survey_2605_18661.md
@@ -124,6 +126,8 @@ flowchart LR
 - [Agent Reach](../entities/agent-reach.md) — 微信/ arXiv 等 **读搜上游** 聚合，偏 S2 资料获取。
 - [Superpowers（obra）](../entities/superpowers-obra.md) — TDD、worktree、评审子代理等 **交付纪律**。
 - [karpathy/autoresearch](../entities/karpathy-autoresearch.md) — S3 单 GPU LLM 训练 **自主实验环** 最小实现。
+- [HarnessBank](../entities/paper-harnessbank.md) — agent harness **门控自进化**（验证增益才入库，对照无门控自改）。
+- [DASH](../entities/paper-dash-opsd.md) — OPSD 上 **可验证数学推理** 后训练的自适应蒸馏聚合。
 - [World Action Models（WAM）](./world-action-models.md) — 另一篇生命周期级综述（具身 AI）；可对照「领域综述 + Awesome 列表」维护模式。
 
 ## 参考来源
@@ -140,6 +144,8 @@ flowchart LR
 - [Agent Reach](../entities/agent-reach.md)
 - [Superpowers（obra）](../entities/superpowers-obra.md)
 - [karpathy/autoresearch](../entities/karpathy-autoresearch.md)
+- [HarnessBank](../entities/paper-harnessbank.md)
+- [DASH](../entities/paper-dash-opsd.md)
 - [World Action Models（WAM）](./world-action-models.md)
 - [schema/ingest-workflow.md](../../schema/ingest-workflow.md)
 

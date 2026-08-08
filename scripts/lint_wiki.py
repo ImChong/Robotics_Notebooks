@@ -133,6 +133,14 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
 #   twist2     → entities/paper-twist2.md（具体系统/论文，归 entities）
 #   ethercat   → concepts/ethercat-protocol.md（实时总线概念，slug 与页面 stem 不同名）
 #   mit        → schema/institutions.json 机构（麻省理工），归属机构注册表，不建概念页
+#   vlm        → comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md（VLM/VLN/VLA/
+#                VLX/WM 五类的 canonical 定义与 I/O 边界，唯一 VLM 家族来源
+#                sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md 即
+#                入库于此）+ concepts/vision-language-feature-fusion.md（跨模态
+#                融合机制）+ methods/vla.md（按「底座」维度记述）+
+#                overview/hub-embodied-foundation-model.md（选型闭环枢纽）：
+#                模型家族标签而非独立可成页机制，另建 concepts/vlm.md 只会与
+#                分类学对比页重复同一来源
 #   qwen3-vl   → methods/vla.md（VLA 底座列表）+ methods/star-vla.md +
 #                concepts/foundation-policy.md：外部通用 VLM 产品型号，与
 #                DINOv2 / SigLIP / Wan2.2 / Qwen2.5-VL 同类，本库一律在
@@ -155,6 +163,7 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "loco-manipulation",
     "step",
     "twist2",
+    "vlm",  # 模型家族标签，已由 comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md 定义
 }
 
 # 仅用于信息提示、不计入 lint 失败总数的检查 key
