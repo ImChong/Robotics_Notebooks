@@ -3,7 +3,7 @@ type: entity
 title: RekaDaily-10k（家务第一人称视频数据集）
 tags: [dataset, egocentric, egocentric-video, household, manipulation, vla, world-model, huggingface, claru, reka, reka-ai]
 summary: "Reka / Claru 发布的 Apache 2.0 无剧本第一人称家务视频：目标 10,312 小时；raw 档增量上线 HF（入库日约 886h），另有 processed+captioned 档。服务世界模型与 VLA 的家庭视觉先验，非机器人遥操作轨迹。"
-updated: 2026-08-07
+updated: 2026-08-08
 status: complete
 related:
   - ../overview/ego-category-01-data-collection.md
@@ -101,7 +101,7 @@ flowchart TB
 
 | 对照 | RekaDaily-10k 的定位 |
 |------|---------------------|
-| **Ego4D / EPIC-KITCHENS** | 更偏活动理解基准；本集强调 **付费家务规模 + 双档发布 + Apache 2.0** |
+| **[Ego4D](./paper-ego4d.md) / EPIC-KITCHENS** | 更偏活动理解基准；本集强调 **付费家务规模 + 双档发布 + Apache 2.0** |
 | **Egocentric-10K** | 工业生产环境第一人称；本集补 **家庭住宅** |
 | **[EgoWorld-100W](./egoworld-100w.md)** | 百万级、**申请制**商业语料；本集规模叙事相近量级小时数但 **公开 ungated 下载** |
 | **[RekaCS2-10k](./rekacs2-10k-dataset.md)** | 同机构、同量级小时数；CS2 **游戏控制稠密对齐**（CC BY-NC），本集为 **真实家务**（Apache 2.0） |

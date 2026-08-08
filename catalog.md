@@ -469,6 +469,7 @@
 - [Gaze2Act](wiki/entities/paper-ego-05-gaze2act.md) — Gaze2Act** 收录于 具身智能研究室 · Ego 9 篇专题 **第 05/9 `📅unknown` `[entity_page]`
 - [EgoExoMem](wiki/entities/paper-ego-08-egoexomem.md) — EgoExoMem** 收录于 具身智能研究室 · Ego 9 篇专题 **第 08/9 `📅unknown` `[entity_page]`
 - [E³C](wiki/entities/paper-ego-09-e3c.md) — E³C** 收录于 具身智能研究室 · Ego 9 篇专题 **第 09/9** 篇，归类 `📅unknown` `[entity_page]`
+- [Ego4D（全球第一人称日常视频 · 数据集与基准套件）](wiki/entities/paper-ego4d.md) — Ego4D**（*Around the World in 3,000 Hours of Egocentric Video*，项目页，[arXi `📅unknown` `[entity_page]`
 - [EgoHTR：第一视角粗糙地形人–场景 4D 演示](wiki/entities/paper-egohtr.md) — EgoHTR**（*EgoHTR: Egocentric 4D Demonstrations of Human Terrain Traversal*，arXiv:[2607.13472](http `📅unknown` `[entity_page]`
 - [EgoSteer：从 Egocentric 视频到可操控双灵巧手全栈](wiki/entities/paper-egosteer.md) — EgoSteer**（*A Full-Stack System Towards Steerable Dexterous Manipulation from Egocentric Videos*， `📅unknown` `[entity_page]`
 - [EgoVerse（Egocentric 人类数据集 · 联盟级人→机迁移）](wiki/entities/paper-egoverse.md) — EgoVerse**（*An Egocentric Human Dataset for Robot Learning from Around the World*，[项目页](https://eg `📅unknown` `[entity_page]`

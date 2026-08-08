@@ -17,7 +17,7 @@ tags:
   - mit
 status: complete
 venue: arxiv
-updated: 2026-07-24
+updated: 2026-08-08
 code: https://github.com/GaTech-RL2/EgoVerse
 related:
   - ./paper-egowam-egocentric-human-wam-co-training.md
@@ -187,7 +187,7 @@ sequenceDiagram
 | [EgoScale](../methods/egoscale.md) | 同为 Direct 档 egocentric；EgoScale 主线是 **万小时 VLA 预训练 + mid-training**，EgoVerse 主线是 **联盟数据集 + 共训缩放科学** |
 | [HumanNet](./humannet.md) | 互联网级人中心语料；Table 1 将 EgoVerse 列为 **Direct** 示教行 |
 | [EgoWAM](./paper-egowam-egocentric-human-wam-co-training.md) | 同实验室后续：固定骨干下换世界目标；**野外人数据来自 EgoVerse** |
-| Ego4D / Ego-Exo4D | 通用活动理解；EgoVerse 强调 **机器人可执行操纵** 与迁移评测 |
+| [Ego4D](./paper-ego4d.md) / Ego-Exo4D | 通用活动理解（Indirect）；EgoVerse 强调 **机器人可执行操纵** 与迁移评测 |
 | Open X-Embodiment / DROID | 机器人侧规模化；EgoVerse 主张用人数据补机器人采集瓶颈 |
 
 ## 局限与风险
