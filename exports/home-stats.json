@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-08-08",
   "node_count": 2130,
-  "edge_count": 19626,
+  "edge_count": 19630,
   "coverage": {
     "covered": 2106,
     "total": 2106,
@@ -183,35 +183,37 @@
       "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
-      "path": "wiki/entities/paper-agile-humanoid-loco-manipulation.md",
-      "detail_id": "entity-paper-agile-humanoid-loco-manipulation",
-      "label": "AGILE：人形 Loco-Manipulation 学习工作流",
-      "type": "entity",
+      "path": "wiki/methods/dsms-contact-implicit-multiple-shooting.md",
+      "detail_id": "wiki-methods-dsms-contact-implicit-multiple-shooting",
+      "label": "DSMS（接触隐式直接仿真多重打靶）",
+      "type": "method",
       "recency": "2026-08-07",
       "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
+      "action": "added",
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
     },
     {
-      "path": "wiki/entities/isaac-lab.md",
-      "detail_id": "entity-isaac-lab",
-      "label": "Isaac Lab",
-      "type": "entity",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/tasks/loco-manipulation.md",
-      "detail_id": "wiki-tasks-loco-manipulation",
-      "label": "Loco-Manipulation (移动操作)",
-      "type": "task",
+      "path": "wiki/methods/motion-retargeting-gmr.md",
+      "detail_id": "wiki-methods-motion-retargeting-gmr",
+      "label": "GMR: 通用动作重定向",
+      "type": "method",
       "recency": "2026-08-07",
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/methods/dynaretarget-sbto-motion-retargeting.md",
+      "detail_id": "wiki-methods-dynaretarget-sbto-motion-retargeting",
+      "label": "DynaRetarget / SBTO（增量采样式动力学重定向）",
+      "type": "method",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
     }
   ],
   "latest_wiki_node": {
