@@ -2,10 +2,11 @@
 type: entity
 tags: [software, cad, mcp, llm-agents, freecad, parametric-modeling, open-source, hardware, fem]
 status: complete
-updated: 2026-08-03
+updated: 2026-08-08
 related:
   - ./freecad.md
   - ./cad-skills.md
+  - ./cli-anything.md
   - ./step2urdf.md
   - ./urdf-studio.md
   - ./3dgenstudio.md
@@ -97,13 +98,14 @@ flowchart LR
 | 方案 | 几何宿主 | 代理接口 | 强项 |
 |------|----------|----------|------|
 | **FreeCAD MCP** | 桌面 **FreeCAD** | MCP + RPC | 零脚本栈迁移、GUI 真值、FEM/Robot 插件生态 |
+| [CLI-Anything](./cli-anything.md) `cli-anything-freecad` | 桌面 **FreeCAD**（生成式 harness） | Click CLI + SKILL + Hub | 结构化命令/JSON、可 Hub 安装、可 refine；非 MCP 会话桥 |
 | [CAD Skills](./cad-skills.md) | **build123d**（OCP） | Agent Skills + CLI | 无头 CI、`gen_urdf()`、制造/打印 skill 链 |
 | [Draw.io Scientific Illustrator](./drawio-scientific-illustrator.md) | 桌面 **draw.io** | Codex Skill + MCP | 可见逐步科研插图、可编辑 `.drawio` |
 | [Unreal MCP](./unreal-mcp.md) | **Unreal Editor**（官方内嵌） | HTTP+SSE loopback | UE 场景/资产 Tools、Tool Search；非机械 CAD |
 | [文字生成 CAD](../concepts/text-to-cad.md) 商业路线 | Zoo / Fusion 等 | 厂商 API | 制造向 B-rep、企业工作流 |
 | 纯 OpenSCAD/CadQuery + LLM | 脚本执行 | 终端/代码 | Git 友好、参数化极强 |
 
-**推荐心智：** 本机已深度使用 FreeCAD 做硬件 → **FreeCAD MCP**；从零脚本化、要 URDF skill 与切片链 → **CAD Skills**；二者可 **串联**（MCP 出 STEP → step2urdf）。
+**推荐心智：** 本机已深度使用 FreeCAD 做硬件且宿主走 MCP → **FreeCAD MCP**；要可安装 CLI + Hub/SKILL 生态 → [CLI-Anything](./cli-anything.md)；从零脚本化、要 URDF skill 与切片链 → **CAD Skills**；可 **串联**（MCP/CLI 出 STEP → step2urdf）。
 
 ## 部署要点
 
@@ -124,6 +126,7 @@ flowchart LR
 
 - [FreeCAD（开源参数化机械 CAD）](./freecad.md)
 - [CAD Skills（LLM 驱动 CAD 技能）](./cad-skills.md)
+- [CLI-Anything（HKUDS）](./cli-anything.md) — 含 `cli-anything-freecad` 生成式 CLI harness；与本页 MCP 桥对照
 - [step2urdf（STEP→URDF 浏览器转换）](./step2urdf.md)
 - [URDF-Studio（URDF/MJCF 设计工作站）](./urdf-studio.md)
 - [3D Gen Studio（ComfyUI 网格生产 + MCP）](./3dgenstudio.md) — 同属 MCP 自动化，但目标是 **mesh 管线** 而非 FreeCAD B-rep

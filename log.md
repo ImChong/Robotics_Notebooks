@@ -1,3 +1,11 @@
+## [2026-08-08] ingest | sources/repos/hkuds_cli_anything.md — 接入 CLI-Anything / CLI-Hub；wiki/entities/cli-anything.md；交叉更新 hermes-agent / openclaw / agent-reach / freecad-mcp；sources/sites/cli-anything-hub.md；sources/papers/cli_anything_arxiv_2606_03854.md
+
+- **触发：** 用户指定 <https://github.com/HKUDS/CLI-Anything>；要求自动合并
+- **来源：** [`sources/repos/hkuds_cli_anything.md`](sources/repos/hkuds_cli_anything.md)、[`sources/sites/cli-anything-hub.md`](sources/sites/cli-anything-hub.md)、[`sources/papers/cli_anything_arxiv_2606_03854.md`](sources/papers/cli_anything_arxiv_2606_03854.md)
+- **新建实体：** [`wiki/entities/cli-anything.md`](wiki/entities/cli-anything.md) — 7 阶段 harness 生成 + CLI-Hub + SKILL；与 GUI agent / MCP 对照
+- **开源核查（步骤 2.5）：** **已开源（Apache-2.0）** — 生成器、多应用 harness、Hub 与 registry 公开；技术报告 [arXiv:2606.03854](https://arxiv.org/abs/2606.03854)；上游桌面/引擎软件仍须本机安装
+- **交叉更新：** [`wiki/entities/hermes-agent.md`](wiki/entities/hermes-agent.md)、[`wiki/entities/openclaw.md`](wiki/entities/openclaw.md)、[`wiki/entities/agent-reach.md`](wiki/entities/agent-reach.md)、[`wiki/entities/freecad-mcp.md`](wiki/entities/freecad-mcp.md)
+
 ## [2026-08-08] ingest | sources/papers/slamformer_infinity_arxiv_2608_03429.md — SLAMFormer-∞（arXiv:2608.03429）入库；升格 wiki/entities/paper-slamformer-infinity.md；归档 sources/sites/tsinghua-mars-lab-slamformer-infinity.md、sources/repos/slamformer_infinity.md；交叉 wiki/overview/navigation-slam-autonomy-stack.md、wiki/overview/hub-state-estimation.md、wiki/concepts/state-estimation.md、wiki/entities/paper-glob3r.md、wiki/methods/lingbot-map.md
 
 - **触发：** 用户指定 <https://arxiv.org/pdf/2608.03429>、项目页 <https://tsinghua-mars-lab.github.io/SLAMFormer-Infinity>；要求自动合并

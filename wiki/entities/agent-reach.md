@@ -13,6 +13,7 @@ related:
   - ./caveman.md
   - ./superpowers-obra.md
   - ./hermes-agent.md
+  - ./cli-anything.md
   - ./articraft.md
   - ./graphify.md
   - ../references/llm-wiki-karpathy.md
@@ -20,7 +21,7 @@ related:
 sources:
   - ../../sources/repos/panniantong_agent_reach.md
 summary: "Agent Reach（Panniantong/Agent-Reach）是面向编码代理的「安装 + 环境诊断 + SKILL 注册」脚手架：把网页/社媒/视频/GitHub/RSS/语义搜索等能力拆成可插拔渠道，聚合上游开源 CLI 与 MCP（如 twitter-cli、rdt-cli、yt-dlp、Jina Reader、gh、mcporter+Exa），凭据默认落本地；代理实际读写仍直接调用上游工具而非强制经本仓转发。"
-updated: 2026-07-16
+updated: 2026-08-08
 ---
 
 # Agent Reach（Panniantong）
@@ -44,7 +45,7 @@ README 将自身定位为 **scaffolding（脚手架）而非应用框架**：各
 ## 为什么重要（对本知识库读者）
 
 - **文献与代码调研侧**：机器人论文、开源仓库、教程视频、社区讨论（Reddit / X / 中文社区）常分散在多站；本工具链把 **字幕抽取、公开网页清洗阅读、GitHub 检索、RSS 订阅、微信公众号全文（Camoufox / Exa）** 等接到同一套 CLI/MCP 习惯里，便于代理辅助 **ingest 与交叉验证**（仍须遵守各平台 ToS 与学术引用规范）。本站经 `wechat-article-for-ai`（Camoufox）抓取多篇 `mp.weixin.qq.com` 长文（如 [Humanoid Hardware 101](../../sources/blogs/wechat_human_five_humanoid_hardware_101.md)、[Jason Peng 灵活运动技能学习](../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md)、[世界模型训练闭环](../../sources/blogs/wechat_embodied_ai_lab_robot_world_model_training_loop.md)、[训练栈分层解读](../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md)、[李群/李代数/四元数基础](../../sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md)）时，Jina Reader 常返回 CAPTCHA，与公开 README 一致。
-- **与「代理工程规约」相邻**：和 [Superpowers（obra）](superpowers-obra.md) 这类 **软件交付流程技能库** 不同，Agent Reach 解决的是 **外网只读/检索型工具链**；和 [Articraft](articraft.md) 这类 **3D 资产生成 SDK** 也不同，但同属 **把代理能力边界写进可版本化外围** 的实践谱系。
+- **与「代理工程规约」相邻**：和 [Superpowers（obra）](superpowers-obra.md) 这类 **软件交付流程技能库** 不同，Agent Reach 解决的是 **外网只读/检索型工具链**；和 [CLI-Anything](cli-anything.md)（为 Blender/FreeCAD 等 **专业软件生成 CLI harness**）以及 [Articraft](articraft.md)（**3D 资产生成 SDK**）也不同，但同属 **把代理能力边界写进可版本化外围** 的实践谱系。
 - **安全与运维意识对齐公开文档**：README 明确 **Cookie 等凭据本地 `~/.agent-reach`、文件权限 600**、`--safe` / `--dry-run`、以及 **Cookie 平台封号风险** 与 **小号建议**；适合作为代理侧 **凭据与合规** 讨论的参照锚点。
 
 ## 核心结构
@@ -81,6 +82,7 @@ flowchart LR
 
 - [Superpowers（obra）](superpowers-obra.md) — 编码代理 **交付流程** 技能库（与本页「外网工具链」互补）
 - [Hermes Agent](hermes-agent.md) — **完整代理运行时**（内置 web/MCP/终端与网关；与本页「读搜脚手架」互补）
+- [CLI-Anything（HKUDS）](cli-anything.md) — **专业软件 → agent-native CLI**（与本页「读搜渠道」互补）
 - [Articraft](articraft.md) — 另一类 **harness + SDK** 型代理外围（3D 资产域）
 - [graphify（Graphify Labs）](graphify.md) — **本地/仓库内** 多模态知识图（与本页「外网读搜」互补）
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 持久化知识结构与 **人类策展** 范式

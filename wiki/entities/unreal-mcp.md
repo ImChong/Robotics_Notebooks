@@ -2,7 +2,7 @@
 type: entity
 tags: [software, unreal-engine, epic-games, mcp, llm-agents, simulation, editor-automation, experimental]
 status: complete
-updated: 2026-08-03
+updated: 2026-08-08
 related:
   - ./unreal-engine-5.md
   - ../concepts/model-context-protocol.md
