@@ -2,8 +2,9 @@
 type: entity
 tags: [community, embodied-ai, lumina, talks, curation, jobs, isaac-sim, vla]
 status: complete
-updated: 2026-07-27
+updated: 2026-08-08
 related:
+  - ./embodied-interview-qa.md
   - ./waytoagi.md
   - ./robotwin.md
   - ./isaac-sim.md
@@ -110,6 +111,7 @@ flowchart TB
 ## 关联页面
 
 - [WaytoAGI](./waytoagi.md) — 另一中文社区：飞书知识库 +「AI硬件」雷达（偏大众 AI）
+- [具身智能高频面试题库](./embodied-interview-qa.md) — 面试速查层（八卷短问答）；与本页百科/Talks 互补
 - [OpenLET](./openlet.md) — 真机数据集社区枢纽（与文档/Talks 策展互补）
 - [RoboTwin](./robotwin.md) / [SAPIEN](./sapien.md) / [ALOHA](./aloha.md) — Guide 推荐的数据与仿真实践链
 - [Isaac Sim](./isaac-sim.md) — 一百讲对应的仿真底座

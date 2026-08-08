@@ -4,6 +4,7 @@ tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
 updated: 2026-08-08
 related:
+  - ../entities/embodied-interview-qa.md
   - ../comparisons/robot-learning-five-paradigms-taxonomy.md
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-rl-intelligent-control.md
@@ -234,6 +235,7 @@ flowchart LR
 - [机器人论文阅读笔记：ASE](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control.html)
 
 ## 关联页面
+- [具身智能高频面试题库](../entities/embodied-interview-qa.md) — 卷二 RL 算法面试速查；腿足落地对照卷六与本库 locomotion 页
 - [机器人学习五大范式](../comparisons/robot-learning-five-paradigms-taxonomy.md) — RL 作为奖励信号主线，与 IL / LfV / VLA / 持续学习对照
 - [深度学习基础](../concepts/deep-learning-foundations.md)
 - [Effective Degree（论文实体）](../entities/paper-effective-degree.md) — 函数空间简洁正则；Procgen 上对 PPO actor 提升未见 level 泛化（ICML 2026）
