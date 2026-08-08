@@ -109,3 +109,4 @@ flowchart LR
 - [具身 RL 最小闭环源文](../../sources/blogs/wechat_shenlan_rl_embodied_minimal_closed_loop.md)
 - [Humanoid RL Cookbook](../queries/humanoid-rl-cookbook.md)
 
+<!-- sync 2026-08-08T04:42:45Z -->
