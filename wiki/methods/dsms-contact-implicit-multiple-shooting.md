@@ -12,6 +12,7 @@ related:
   - ./motion-retargeting-gmr.md
   - ../entities/paper-hrl-stack-03-omniretarget.md
   - ../overview/hub-motion-retargeting.md
+  - ../queries/humanoid-motion-tracking-method-selection.md
   - ../tasks/locomotion.md
 sources:
   - ../../sources/papers/shooting_for_contact_arxiv_2608_03116.md
@@ -110,6 +111,7 @@ flowchart LR
 - 采样对照：[DynaRetarget / SBTO](./dynaretarget-sbto-motion-retargeting.md)、[SPIDER](./spider-physics-informed-dexterous-retargeting.md)
 - 运动学前端：[GMR](./motion-retargeting-gmr.md)、[OmniRetarget](../entities/paper-hrl-stack-03-omniretarget.md)
 - 概念枢纽：[Motion Retargeting](../concepts/motion-retargeting.md)、[Hub](../overview/hub-motion-retargeting.md)
+- 选型落地：[人形运动跟踪方法选型指南](../queries/humanoid-motion-tracking-method-selection.md)（§4 参考层动力学可行化）
 
 ## 参考来源
 
