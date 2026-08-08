@@ -94,7 +94,7 @@
 - [DDT_Lab](wiki/entities/ddt-lab.md) — DDT_Lab**（仓内包名 `ddt_lab`）是 直驱科技（Direct Drive Tech） 在 [Isaac Lab](ht `📅unknown` `[entity_page]`
 - [DeepInsight（XPENG Robotics 全栈评测基础设施）](wiki/entities/deepinsight.md) — DeepInsight**（2026-06，arXiv:2606.17574，XPENG Robotics）是面向 **em `📅unknown` `[entity_page]`
 - [Deep Robotics rl_training](wiki/entities/deeprobotics-rl-training.md) — rl_training** 是 云深处科技（Deep Robotics） 官方在 [Isaac Lab](https://githu `📅unknown` `[entity_page]`
-- [Dexmal DM0.5](wiki/entities/dexmal-dm05.md) — DM0.5**（Dexmal 官方博客）是 [Dexmal](https://www.dexmal. `📅unknown` `[entity_page]`
+- [Dexmal DM0.5（OpenDM）](wiki/entities/dexmal-dm05.md) — DM0.5**（技术博客，[GitHub `dexmal/opendm`](https://github.com/dexm `📅unknown` `[entity_page]`
 - [Dexmal DW05（OpenDW）](wiki/entities/dexmal-dw05.md) — DW05**（2026-07，GitHub `dexmal/opendw`，[DW05-Base](https://hugg `📅unknown` `[entity_page]`
 - [DimOS（Dimensional 物理空间 Agent OS）](wiki/entities/dimensionalos-dimos.md) — DimOS** 是 Dimensional 推出的 **agent-native 物理空间操作系统**：用 **Python Module + Blueprint** 把相机/LiDAR 感知、S `📅unknown` `[entity_page]`
 - [Disney Holotile（全向活动地板）](wiki/entities/disney-holotile.md) — 一句话定义：** Holotile 是 Disney Research / Imagineering 的 **模块化全向地板**：用大量六边形地砖单元形成可 **被动全向行走** 与 **主动可编 `📅unknown` `[entity_page]`

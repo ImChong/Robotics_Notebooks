@@ -5,10 +5,13 @@
 - **标题：** DM0.5 | 走出实验室，走向开放世界
 - **类型：** blog
 - **组织：** Dexmal（大晓智能）
-- **原始链接：** <https://www.dexmal.com/blog/dm0.5/index.html>
+- **原始链接：** <https://www.dexmal.com/blog/dm0.5>（亦见 `/blog/dm0.5/index.html`、英文 `/blog/dm0.5/index_en.html`）
 - **入库日期：** 2026-07-09
+- **修订日期：** 2026-08-08（补链官方开源仓 OpenDM 与 HF/ModelScope 权重集合）
 - **前代模型：** DM0（2026-02 发布，Dexmal 第一代原生具身基础模型）
-- **一句话说明：** Dexmal **DM0.5** 是在 **Gemma3-4B VLM + 680M Action Expert** 上的 **开放世界 VLA 基础模型**：以 **最长约 60s 历史上下文**、**11 类具身 CoT 自回归任务** 与 **动态轨迹对齐（DP 动作匹配）** 强化长程记忆与指令遵循；多源混合预训练覆盖操作、导航与人视频，在 **zero-shot、Table30 v2、LIBERO、RoboTwin2.0、R2R/RxR** 等基准报告 SOTA 或显著领先 **DM0 / π0.5-Droid**。
+- **开源代码：** <https://github.com/dexmal/opendm>（见 [dexmal_opendm.md](../repos/dexmal_opendm.md)）
+- **权重集合：** <https://huggingface.co/collections/Dexmal/dm05>
+- **一句话说明：** Dexmal **DM0.5** 是在 **Gemma3-4B VLM + 680M Action Expert** 上的 **开放世界 VLA 基础模型**：以 **最长约 60s 历史上下文**、**11 类具身 CoT 自回归任务** 与 **动态轨迹对齐（DP 动作匹配）** 强化长程记忆与指令遵循；多源混合预训练覆盖操作、导航与人视频，在 **zero-shot、Table30 v2、LIBERO、RoboTwin2.0、R2R/RxR** 等基准报告 SOTA 或显著领先 **DM0 / π0.5-Droid**；官方栈以 **OpenDM** 开源训练/推理与多下游 checkpoint。
 
 ## 核心摘录
 
@@ -55,9 +58,14 @@
 - **短程：**「拿起杯子擦桌再复位」——依赖历史恢复杯子初始位姿。
 - **长程：** 人类早期示范电池摆放规则，机器人后续执行需 **>1min** 历史；文称 **Video Prompt** 可作新指令形式的 **in-context learning**。
 
+### 开源跟进（2026-07 起，见 OpenDM）
+
+博文发布后，官方以 **[dexmal/opendm](https://github.com/dexmal/opendm)** 放出训练/推理代码与 **DM05** 系列权重（Base + LIBERO / RobotWin2 / SO101 / VLA-Arena / Table30v2 等）。方法主张仍以本博客为准；复现入口与 checkpoint 分工见 [dexmal_opendm.md](../repos/dexmal_opendm.md)。
+
 ## 对 wiki 的映射
 
 - [DM0.5](../../wiki/entities/dexmal-dm05.md)
+- [OpenDM 仓库归档](../repos/dexmal_opendm.md)
 - [VLA 方法页](../../wiki/methods/vla.md)
 - [Action Chunking](../../wiki/methods/action-chunking.md)
 - [Manipulation](../../wiki/tasks/manipulation.md)

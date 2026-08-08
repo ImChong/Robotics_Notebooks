@@ -76,7 +76,7 @@ model.load_checkpoint("/path/to/DW05-Base/model.pt")
 | 主题 | 关系 |
 |------|------|
 | [Dexmal DW05](../../wiki/entities/dexmal-dw05.md) | 实体归纳页：MoT 联合 WAM、权重分工、数据与推理 |
-| [Dexmal DM0.5](../../wiki/entities/dexmal-dm05.md) | 同机构 **VLA 基础模型** 线；DW05 偏 **世界模型 + 动作条件视频** |
+| [Dexmal DM0.5 / OpenDM](../../wiki/entities/dexmal-dm05.md) | 同机构 **VLA 基础模型** 线（[opendm](https://github.com/dexmal/opendm)）；DW05 偏 **世界模型 + 动作条件视频** |
 | [World Action Models](../../wiki/concepts/world-action-models.md) | **Joint WAM** 族：共享 Wan 骨干同时服务视频/动作/价值头 |
 | [τ₀-World Model](../../wiki/entities/tau0-world-model.md) | 同属 **Wan 系联合视频–动作**；τ₀-WM 强调异构掩码与测试时 propose–evaluate–revise |
 | [RoboTwin 2.0](../../wiki/entities/robotwin.md) | DW05 数据注解、SFT checkpoint 与在线 demo 对齐 RobotWin 管线 |
