@@ -3,7 +3,7 @@ type: concept
 tags: [robotics, motion-retargeting, humanoid, pipeline, mocap, imitation-learning]
 status: complete
 created: 2026-05-16
-updated: 2026-07-26
+updated: 2026-08-08
 summary: "Motion Retargeting Pipeline：把 MoCap / 视频估计 / 生成式动作等异构人体序列，经过骨架对齐 → IK/约束求解 → 物理可行性筛选 → 配对监督，落到可作为模仿学习与跟踪策略输入的机器人参考轨迹的端到端流水线。"
 related:
   - ./motion-retargeting.md
@@ -15,6 +15,8 @@ related:
   - ../methods/reactor-physics-aware-motion-retargeting.md
   - ../methods/spider-physics-informed-dexterous-retargeting.md
   - ../methods/dynaretarget-sbto-motion-retargeting.md
+  - ../entities/paper-kdmr.md
+  - ../entities/paper-spark-skeleton-aligned-retargeting.md
   - ../methods/sonic-motion-tracking.md
   - ../entities/sam-3d-body.md
   - ../entities/sam3dbody-cpp.md
@@ -33,6 +35,8 @@ sources:
   - ../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md
   - ../../sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md
   - ../../sources/papers/dynaretarget_arxiv_2602_06827.md
+  - ../../sources/papers/kdmr_arxiv_2603_09956.md
+  - ../../sources/papers/spark_skeleton_aligned_retargeting_arxiv_2603_11480.md
   - ../../sources/papers/exoactor.md
   - ../../sources/papers/htd_refine_arxiv_2605_26879.md
 ---
@@ -147,6 +151,8 @@ flowchart TD
 - **仿真内 RL tracking rollout**：用跟踪策略在仿真里复现参考动作，记录的真实仿真状态作为「物理一致版本」，即 [NMR](../methods/neural-motion-retargeting-nmr.md) 中 CEPR、[ReActor](../methods/reactor-physics-aware-motion-retargeting.md) 中下层策略所做的事。
 - **并行仿真采样优化（SPIDER）**：在可并行的接触动力学仿真里，对**整条控制序列**做带退火噪声的采样更新，并可用**虚拟接触力**做课程式引导；输出可直接作为机器人 rollout 数据或经域随机化后用于 RL（见 [SPIDER](../methods/spider-physics-informed-dexterous-retargeting.md)）。
 - **增量时域 SBTO（DynaRetarget）**：在 MuJoCo 中对 **PD 目标 knot** 做 **CEM 采样优化**，**外环增量扩展优化时域**以克服 SBMPC 短视距；把 [OmniRetarget](../entities/paper-hrl-stack-03-omniretarget.md) 等 **kinematic 参考** refinement 为长时域动力学可行轨迹，再供 PPO tracking（见 [DynaRetarget / SBTO](../methods/dynaretarget-sbto-motion-retargeting.md)）。
+- **GRF 多接触 NLP（KDMR）**：同步 GRF→heel–toe 日程 + CasADi 全身动力学 TO，再接 BeyondMimic（见 [KDMR](../entities/paper-kdmr.md)）。
+- **URDF 校准 + 渐进 KDTO（SPARK）**：骨架参数对齐降 IK 误差，再 KTO→ID→KDTO（可选力矩监督）服务高动态跟踪（见 [SPARK](../entities/paper-spark-skeleton-aligned-retargeting.md)）。
 - **交互 mesh + 残差 RL（REGRIND）**：单次 MoCap 人手–物体演示 → **Laplacian interaction mesh 重定向**（OmniRetarget 同族）→ **物体关键点跟踪 + RSI + 训练时 SE(3) 增广** 的残差 RL，面向剪刀/螺丝刀等 contact-rich 工具操作真机部署（见 [REGRIND](../methods/regrind-retargeting-guided-rl.md)）。
 
 ### 8. 产物落地（Outputs）
@@ -163,6 +169,8 @@ flowchart TD
 | **双层联合优化** | SMPL / 跨形态 | 是（参考可学习） | 下层 RL 在同一环 | [ReActor](../methods/reactor-physics-aware-motion-retargeting.md) |
 | **并行仿真 + 采样轨迹优化** | 人体+物体运动学 + mesh | 是（IK 初参考） | 采样型 MPC/CEM 式更新 + 课程式虚拟接触 | [SPIDER](../methods/spider-physics-informed-dexterous-retargeting.md) |
 | **增量 SBTO 全轨迹精炼** | OmniRetarget 等 kinematic 参考 | 是（IK 前端） | CEM + 增量 horizon MuJoCo rollout | [DynaRetarget / SBTO](../methods/dynaretarget-sbto-motion-retargeting.md) |
+| **GRF 锚定多接触 TO** | 测力同步生物力学 MoCap | 是（IK 初值） | CasADi+Pinocchio 动力学 NLP | [KDMR](../entities/paper-kdmr.md) |
+| **URDF 校准 + 渐进 KDTO** | 任务空间人体 / AMASS | 是（校准后 IK） | KTO→ID→KDTO（可选 \(\tau\) 奖励） | [SPARK](../entities/paper-spark-skeleton-aligned-retargeting.md) |
 | **跳过中间重定向** | 视频生成噪声源 | 否（直送 tracking） | 下游通用跟踪器 | [SONIC](../methods/sonic-motion-tracking.md) / [ExoActor](../methods/exoactor.md) 反例 |
 
 > 选型直觉：**源数据越干净，重定向收益越高**；**源数据已是上游估计/生成结果**时，中间几何重定向可能放大全局漂移与脚滑，需要做"跳过重定向"的消融。
@@ -199,6 +207,8 @@ flowchart TD
 - [sources/papers/reactor_rl_physics_aware_motion_retargeting.md](../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md) — ReActor：双层联合优化参考与跟踪策略
 - [sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md](../../sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md) — SPIDER：并行仿真采样优化 + 虚拟接触引导
 - [sources/papers/dynaretarget_arxiv_2602_06827.md](../../sources/papers/dynaretarget_arxiv_2602_06827.md) — DynaRetarget：增量 SBTO + 下游 RL tracking
+- [sources/papers/kdmr_arxiv_2603_09956.md](../../sources/papers/kdmr_arxiv_2603_09956.md) — KDMR：GRF 多接触动力学重定向
+- [sources/papers/spark_skeleton_aligned_retargeting_arxiv_2603_11480.md](../../sources/papers/spark_skeleton_aligned_retargeting_arxiv_2603_11480.md) — SPARK：URDF 校准 + 渐进 KDTO
 - [sources/papers/exoactor.md](../../sources/papers/exoactor.md) — ExoActor：视频生成源下"跳过中间重定向"的反例消融
 - Ze Y. et al., *GMR: General Motion Retargeting* — [arXiv:2505.02833](https://arxiv.org/abs/2505.02833)
 - Peng et al., *AMP: Adversarial Motion Priors* (SIGGRAPH 2021) — 重定向产物在 RL 风格先验中的下游用途
@@ -213,6 +223,8 @@ flowchart TD
 - [ReActor（物理感知 RL 运动重定向）](../methods/reactor-physics-aware-motion-retargeting.md) — 把参考形变与跟踪策略联合训练的流水线变体
 - [SPIDER（物理感知采样式灵巧重定向）](../methods/spider-physics-informed-dexterous-retargeting.md) — 运动学参考后在并行仿真里做采样轨迹优化与接触课程
 - [DynaRetarget / SBTO（增量采样式动力学重定向）](../methods/dynaretarget-sbto-motion-retargeting.md) — kinematic 参考经增量时域 SBTO refinement 后接 PPO tracking
+- [KDMR](../entities/paper-kdmr.md) — GRF 锚定多接触全身 TO → BeyondMimic
+- [SPARK（骨架对齐重定向）](../entities/paper-spark-skeleton-aligned-retargeting.md) — URDF 校准 + KTO/ID/KDTO
 - [GMR vs NMR vs ReActor（重定向方法谱系对比）](../comparisons/gmr-vs-nmr-vs-reactor.md) — 三条主流路线如何在同一条流水线上占据不同位置的选型视角
 - [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md) — "跳过中间重定向"流水线的下游通用 tracker
 - [Whole-Body Control](./whole-body-control.md) — 下游消费参考的控制器接口

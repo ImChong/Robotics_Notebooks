@@ -2,12 +2,14 @@
 type: method
 tags: [robotics, kinematics, retargeting, humanoid]
 status: complete
-updated: 2026-08-06
+updated: 2026-08-08
 related:
   - ../concepts/motion-retargeting.md
   - ./neural-motion-retargeting-nmr.md
   - ./reactor-physics-aware-motion-retargeting.md
   - ./spider-physics-informed-dexterous-retargeting.md
+  - ../entities/paper-kdmr.md
+  - ../entities/paper-spark-skeleton-aligned-retargeting.md
   - ./beyondmimic.md
   - ../entities/paper-synthetic-video-humanoid-tasks.md
   - ./sonic-motion-tracking.md
@@ -173,6 +175,8 @@ $$
 
 [SPIDER](./spider-physics-informed-dexterous-retargeting.md) 把「几何/运动学参考」之后的修补写成**并行仿真中的采样轨迹优化**，并用**课程式虚拟接触力**处理接触歧义；不强调训练跨数据集通用 RL 跟踪器，而强调**轨迹级搜索**在跨灵巧手与人形数据生成上的外壳作用。
 
+[KDMR](../entities/paper-kdmr.md) 与 [SPARK](../entities/paper-spark-skeleton-aligned-retargeting.md) 均以 GMR 为运动学基线：前者用 **GRF 锚定多接触 TO** 修补脚浮空与速度尖峰；后者用 **human URDF 校准** 降跨机型 IK Empbpe，再经渐进 KDTO 服务高动态（side flip）。二者都接 BeyondMimic 类跟踪，说明「GMR 之后仍需动力学层」在 2026 线的量化证据。
+
 ## 参考来源
 
 - [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档《开源运动控制项目》总结。
@@ -193,6 +197,8 @@ $$
 - [ReActor（物理感知 RL 运动重定向）](./reactor-physics-aware-motion-retargeting.md) — 双层联合优化参考与跟踪策略。
 - [NCKU 合成视频人形任务](../entities/paper-synthetic-video-humanoid-tasks.md) — Veo→SMPL-X→**GMR**→RL 跟踪管线（仿真）。
 - [SPIDER（物理感知采样式灵巧重定向）](./spider-physics-informed-dexterous-retargeting.md) — 并行仿真采样优化 + 虚拟接触引导的数据生成外壳。
+- [KDMR](../entities/paper-kdmr.md) — GRF 多接触动力学重定向；相对 GMR 降跟踪误差。
+- [SPARK（骨架对齐重定向）](../entities/paper-spark-skeleton-aligned-retargeting.md) — URDF 校准相对 GMR 大幅降 Empbpe。
 - [GMR vs NMR vs Reactor（重定向方法谱系对比）](../comparisons/gmr-vs-nmr-vs-reactor.md) — 三种路线的并排选型对照。
 - [DART（DartControl）](./dart-control.md) — SMPL-X 运动学输出经 GMR 等人形执行接口的常见上游之一。
 - [SONIC（规模化运动跟踪）](./sonic-motion-tracking.md) — 与「跳过重定向、直接 tracking」路线对照阅读。

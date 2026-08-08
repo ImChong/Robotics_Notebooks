@@ -577,6 +577,7 @@
 - [JoyAI-RA 0.5：双动作对齐的 VLWA 通才操作](wiki/entities/paper-joyai-ra-05.md) — JoyAI-RA 0.5**（*Scaling Robot Manipulation Learning via Dual Action Alignment*，[arXiv:2608.05674 `📅unknown` `[entity_page]`
 - [χ₀ / kai0：资源感知的分布对齐稳健操作](wiki/entities/paper-kai0.md) — χ₀**（公开工程名 **kai0**；*Resource-Aware Robust Manipulation via Taming Distributional Inconsistencies `📅unknown` `[entity_page]`
 - [Kairos（原生世界–动作模型栈 · kairos-agi）](wiki/entities/paper-kairos-native-world-model-stack.md) — Kairos**（*Kairos: A Regret-Aware Native World-Action Model Stack for Physical AI*，[arXiv:2606.1653 `📅unknown` `[entity_page]`
+- [KDMR（Kinodynamic Motion Retargeting）](wiki/entities/paper-kdmr.md) — KDMR**（*Kinodynamic Motion Retargeting for Humanoid Locomotion via Multi-Contact Whole-Body Trajec `📅unknown` `[entity_page]`
 - [KEMO（Event-Driven Keyframe Memory for Long-Horizon Robot Manipulation with VLA Policies）](wiki/entities/paper-kemo-event-driven-keyframe-memory-vla.md) — KEMO**（arXiv:2606.23589，项目页， `📅unknown` `[entity_page]`
 - [KILVO：人形多传感器运动学–惯性–激光–视觉里程计](wiki/entities/paper-kilvo.md) — KILVO**（*Kinematic-Inertial-LiDAR-Visual Odometry with Robust Multimodal Adaptation for Humanoid R `📅unknown` `[entity_page]`
 - [KineBench（IDM-free 运动学接地的具身世界模型基准）](wiki/entities/paper-kinebench.md) — KineBench**（*Benchmarking Embodied World Models via IDM-Free Kinematic Grounding*，[arXiv:2607.1987 `📅unknown` `[entity_page]`
@@ -1037,7 +1038,7 @@
 - [SMAP](wiki/entities/paper-notebook-smap.md) — SMAP: Self-supervised Motion Adaptation for Physically Plausible Humanoid Whole-body Control** 已列入 `📅unknown` `[entity_page]`
 - [SoccerDiffusion：从比赛录像学端到端人形足球](wiki/entities/paper-notebook-soccerdiffusion-toward-learning-end-to-end-human.md) — SoccerDiffusion**（*Toward Learning End-to-End Humanoid Robot Soccer from Gameplay Recordings*，[arX `📅unknown` `[entity_page]`
 - [SoftMimic](wiki/entities/paper-notebook-softmimic-learning-compliant-whole-body-control.md) — SoftMimic: Learning Compliant Whole-body Control from Examples** 已列入 [Humanoid Robot Learning Pape `📅unknown` `[entity_page]`
-- [SPARK](wiki/entities/paper-notebook-spark.md) — SPARK: A Toolbox for Safe Humanoid Autonomy and Teleoperation** 已列入 [Humanoid Robot Learning Paper `📅unknown` `[entity_page]`
+- [SPARK（安全自主工具箱 · Paper Notebooks 占位）](wiki/entities/paper-notebook-spark.md) — SPARK: A Toolbox for Safe Humanoid Autonomy and Teleoperation** 已列入 [Humanoid Robot Learning Paper `📅unknown` `[entity_page]`
 - [Spatial Relationship Preserving Character Motion Adaptation](wiki/entities/paper-notebook-spatial-relationship-preserving-character-motion.md) — Spatial Relationship Preserving Character Motion Adaptation** 收录于 [Humanoid Robot Learning Paper N `📅unknown` `[entity_page]`
 - [Spectral Normalization for Lipschitz-Constrained Policies on Learning Humanoid Locomotion](wiki/entities/paper-notebook-spectral-normalization-for-lipschitz-constrained.md) — Spectral Normalization for Lipschitz-Constrained Policies on Learning Humanoid Locomotion** 已列入 [H `📅unknown` `[entity_page]`
 - [Stability-Aware Retargeting for Humanoid Multi-Contact Teleoperation](wiki/entities/paper-notebook-stability-aware-retargeting-for-humanoid-multi-c.md) — Stability-Aware Retargeting for Humanoid Multi-Contact Teleoperation** 收录于 [Humanoid Robot Learnin `📅unknown` `[entity_page]`
@@ -1184,6 +1185,7 @@
 - [SkillCorpus：开放 Skill 生态的策展与评测](wiki/entities/paper-skillcorpus.md) — SkillCorpus**（arXiv:2607.15557）由 **恒心智能（EverMind）/ 盛大集团 / 北京大学 `📅unknown` `[entity_page]`
 - [SLowRL：安全低秩 RL 真机运动微调](wiki/entities/paper-slowrl-safe-lora-locomotion-sim2real.md) — SLowRL**（*Safe Low-Rank Adaptation Reinforcement Learning for Locomotion*，arXiv:2603.17092）针对 **动态 `📅unknown` `[entity_page]`
 - [SoftVTBench（安全感知视触觉可变形操作基准 · arXiv:2607.04234）](wiki/entities/paper-softvtbench.md) — SoftVTBench**（*SoftVTBench: A Safety-Aware Visuo-Tactile Benchmark for Physically Constrained Robo `📅unknown` `[entity_page]`
+- [SPARK（Skeleton-Parameter Aligned Retargeting）](wiki/entities/paper-spark-skeleton-aligned-retargeting.md) — SPARK**（*Skeleton-Parameter Aligned Retargeting on Humanoid Robots with Kinodynamic Trajectory Opt `📅unknown` `[entity_page]`
 - [SparseDrive（SparseDrive: End-to-End Autonomous Driving via Sparse Scene Representation · arXiv:2405.19620）](wiki/entities/paper-sparsedrive.md) — SparseDrive**（*SparseDrive: End-to-End Autonomous Driving via Sparse Scene Representation*，[2405.1 `📅unknown` `[entity_page]`
 - [SplitAdapter（Load-Aware Humanoid Loco-Manipulation via Factorized Adaptation）](wiki/entities/paper-splitadapter-load-aware-loco-manipulation.md) — SplitAdapter** 是 Samsung Future Robot AI Group 的人形 **负载感知 loco-manipulation 适配** 论文（arXiv:2606.032 `📅unknown` `[entity_page]`
 - [Spot 高性能 RL（分布距离 Sim2Real 标定）](wiki/entities/paper-spot-rl-distributional-sim2real.md) — 本工作（arXiv:2504.17857）公开 **Boston Dynamics Spot** 在 **Spot RL Researcher Development Kit** 低层电机接口上的  `📅unknown` `[entity_page]`
