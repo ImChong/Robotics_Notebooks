@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-systems-engineering, os, networking, distributed, deployment, realtime, security]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-08
 summary: "机器人系统工程知识链：操作系统/网络/数据面/分布式/容器可观测安全，以及 RTOS、DDS、边云、频率解耦、OTA 与安全状态机；标注已有独立节点与本次新建节点。"
 ---
 
@@ -42,7 +42,7 @@ summary: "机器人系统工程知识链：操作系统/网络/数据面/分布�
 | 分布式（CAP/选主/一致性/超时/重试） | **新建** | [distributed-systems-basics](../concepts/distributed-systems-basics.md) |
 | 容器与部署（Docker/K8s/CI·CD） | **新建** | [container-orchestration-cicd](../concepts/container-orchestration-cicd.md) |
 | 可观测性（Logs/Metrics/Tracing） | **新建** | [observability-logs-metrics-tracing](../concepts/observability-logs-metrics-tracing.md) |
-| 安全（认证/授权/密钥/供应链） | **新建** | [software-security-basics](../concepts/software-security-basics.md) |
+| 安全（认证/授权/密钥/供应链） | **新建** | [software-security-basics](../concepts/software-security-basics.md)；工具实体 [Codex Security](../entities/codex-security.md) |
 | 实时 OS 与实时调度 | **新建**（查询页已有实践） | [rtos-realtime-scheduling](../concepts/rtos-realtime-scheduling.md)、[real-time-control-middleware-guide](../queries/real-time-control-middleware-guide.md) |
 | ROS 2 | **已有** | [ros2-basics](../concepts/ros2-basics.md) |
 | DDS 通信机制 | **新建**（原仅嵌在 ROS 2 页） | [dds-communication](../concepts/dds-communication.md) |
@@ -76,6 +76,7 @@ flowchart TB
 - [人形整机硬件设计纵深路线](../../roadmap/depth-humanoid-hardware-design.md)
 - [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md)
 - [Deployment 技术地图](../../tech-map/modules/system/deployment.md)
+- [Codex Security](../entities/codex-security.md)（AppSec CLI/SDK，挂 CI 的可选扫描层）
 
 ## 参考来源
 
@@ -83,6 +84,7 @@ flowchart TB
 - [数据与分布式一手资料](../../sources/sites/systems_engineering_data_distributed_primary_refs.md)
 - [部署可观测安全一手资料](../../sources/sites/systems_engineering_deploy_obs_security_primary_refs.md)
 - [DDS/RTOS/边云/OTA/安全 FSM 一手资料](../../sources/sites/dds_omg_rtos_edge_ota_safety_primary_refs.md)
+- [Codex Security 仓库归档](../../sources/repos/codex-security.md)
 
 ## 推荐继续阅读
 

@@ -1,13 +1,57 @@
 {
   "generated_at": "2026-08-08",
-  "node_count": 2135,
-  "edge_count": 19722,
+  "node_count": 2136,
+  "edge_count": 19731,
   "coverage": {
-    "covered": 2111,
-    "total": 2111,
+    "covered": 2112,
+    "total": 2112,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/codex-security.md",
+      "detail_id": "entity-codex-security",
+      "label": "Codex Security（OpenAI）",
+      "type": "entity",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/concepts/software-security-basics.md",
+      "detail_id": "wiki-concepts-software-security-basics",
+      "label": "软件安全基础（认证 / 授权 / 密钥 / 供应链）",
+      "type": "concept",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/concepts/container-orchestration-cicd.md",
+      "detail_id": "wiki-concepts-container-orchestration-cicd",
+      "label": "容器编排与 CI/CD（Docker / Kubernetes / 持续交付）",
+      "type": "concept",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/overview/hub-systems-engineering.md",
+      "detail_id": "wiki-overview-hub-systems-engineering",
+      "label": "机器人系统工程（知识链汇总）",
+      "type": "overview",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    },
     {
       "path": "wiki/entities/embodied-interview-qa.md",
       "detail_id": "entity-embodied-interview-qa",
@@ -176,67 +220,31 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md",
-      "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
-      "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
-      "type": "entity",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/overview/humanoid-rl-policy-training-five-modules.md",
-      "detail_id": "wiki-overview-humanoid-rl-policy-training-five-modules",
-      "label": "人形 RL 策略训练五模块：从 MDP 到蒸馏部署",
-      "type": "overview",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/concepts/embodied-rl-minimal-closed-loop.md",
-      "detail_id": "wiki-concepts-embodied-rl-minimal-closed-loop",
-      "label": "具身 RL 最小闭环（Embodied RL Minimal Closed Loop）",
-      "type": "concept",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "path": "wiki/methods/ppo.md",
-      "detail_id": "wiki-methods-ppo",
-      "label": "PPO（Proximal Policy Optimization）",
-      "type": "method",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/embodied-interview-qa.md",
-    "detail_id": "entity-embodied-interview-qa",
-    "label": "具身智能高频面试题库（Embodied Interview QA）",
+    "path": "wiki/entities/codex-security.md",
+    "detail_id": "entity-codex-security",
+    "label": "Codex Security（OpenAI）",
     "type": "entity",
     "recency": "2026-08-08",
     "source": "log.md",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 205
-    },
-    {
-      "label": "动作重定向",
-      "size": 178
+      "size": 172
     },
     {
       "label": "视觉-语言-动作",
       "size": 171
+    },
+    {
+      "label": "动作重定向",
+      "size": 149
     },
     {
       "label": "操作",

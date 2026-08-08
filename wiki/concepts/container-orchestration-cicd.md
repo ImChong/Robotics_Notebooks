@@ -2,15 +2,17 @@
 type: concept
 tags: [systems-engineering, docker, kubernetes, cicd, deployment, containers]
 status: complete
-updated: 2026-07-21
+updated: 2026-08-08
 related:
   - ./observability-logs-metrics-tracing.md
   - ./software-security-basics.md
   - ./model-versioning-ota.md
   - ./edge-cloud-robotics.md
   - ../overview/hub-systems-engineering.md
+  - ../entities/codex-security.md
 sources:
   - ../../sources/sites/systems_engineering_deploy_obs_security_primary_refs.md
+  - ../../sources/repos/codex-security.md
 summary: "容器与部署（Docker、Kubernetes、CI/CD）：训练/仿真 farm 与服务发布基座；明确不承担硬实时力矩环。"
 ---
 
@@ -35,6 +37,7 @@ summary: "容器与部署（Docker、Kubernetes、CI/CD）：训练/仿真 farm 
 - 机器人学习栈依赖可复现环境（CUDA、驱动、Python）；镜像 digest 锁定是「能复现」的第一道门。
 - 批训练、大规模 Sim、评测 farm 天然适合 K8s Job/Deployment。
 - CI 可把门禁扩到 `make ci-preflight`、Sim2Sim 冒烟与模型签名。
+- 云边服务代码面可叠加 [Codex Security](../entities/codex-security.md)（`--diff` / SARIF / `--fail-on-severity`）作为 AppSec 门禁，与容器镜像签名分工。
 
 ## 核心原理
 
@@ -48,6 +51,7 @@ summary: "容器与部署（Docker、Kubernetes、CI/CD）：训练/仿真 farm 
 - GPU 节点用 device plugin；资源请求写清，避免静默共享导致训练抖动。
 - 流水线对 **策略权重** 走 registry 晋升，对 **机载固件** 走独立 OTA 通道——见 [模型版本与 OTA](./model-versioning-ota.md)。
 - **不要** 假设普通 Linux 容器能提供 `SCHED_FIFO` 硬实时。
+- **AppSec 扫描容器化：** Codex Security 官方 Compose 支持钉死 Git revision 的 bulk-scan；结果与 state 目录需 `chmod 700` 且在被扫仓库外——见 [Codex Security](../entities/codex-security.md)。
 
 ## 局限与风险
 
@@ -59,11 +63,14 @@ summary: "容器与部署（Docker、Kubernetes、CI/CD）：训练/仿真 farm 
 - [可观测性](./observability-logs-metrics-tracing.md)
 - [软件安全基础](./software-security-basics.md)
 - [边缘–云端协同](./edge-cloud-robotics.md)
+- [Codex Security](../entities/codex-security.md)
 
 ## 参考来源
 
 - [部署可观测安全一手资料](../../sources/sites/systems_engineering_deploy_obs_security_primary_refs.md)
+- [Codex Security 仓库归档](../../sources/repos/codex-security.md)
 
 ## 推荐继续阅读
 
 - Kubernetes Docs — Concepts
+- Codex Security CLI：<https://developers.openai.com/codex/security/cli>
