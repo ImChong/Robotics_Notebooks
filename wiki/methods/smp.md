@@ -2,7 +2,7 @@
 type: method
 tags: [score-matching, diffusion, generative-prior, humanoid, unitree-g1, paper, amp, motion-prior, sfu, nvidia, sony, stanford]
 status: complete
-updated: 2026-08-06
+updated: 2026-08-08
 venue: arXiv
 arxiv: "2512.03028"
 related:
@@ -19,6 +19,7 @@ related:
   - ../entities/mjlab.md
   - ../entities/amp-mjlab.md
   - ../entities/paper-cmp.md
+  - ../entities/paper-pfm-hr.md
 sources:
   - ../../sources/papers/smp.md
   - ../../sources/repos/smp_suz_tsinghua.md
@@ -27,6 +28,7 @@ sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
+  - ../../sources/papers/pfm_hr_arxiv_2608_03227.md
 summary: "SMP (Score-Matching Motion Priors) 通过预训练扩散模型作为“冻结奖励器”，实现了高效、可组合且无需原始数据的运动模仿学习。"
 ---
 
@@ -108,6 +110,7 @@ flowchart TD
 - [AMP](./amp-reward.md) — 传统的判别器路线；[AMP_mjlab](../entities/amp-mjlab.md) 为 G1 工程对照。
 - [Unitree G1](../entities/unitree-g1.md) — 论文附录与 G1 复现的目标平台。
 - [Diffusion Policy](./diffusion-policy.md) — 同样基于扩散模型，但 SMP 侧重于作为先验奖励。
+- [PFM-HR](../entities/paper-pfm-hr.md) — 无序姿态 Flow Matching + PGS；相对 SMP 不依赖有序 clip，但也不建模时序方向（arXiv:2608.03227）。
 - [Sim2Real](../concepts/sim2real.md) — SMP 提供的结构化先验增强了迁移鲁棒性。
 
 ## 参考来源

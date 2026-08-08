@@ -3,7 +3,7 @@
 type: entity
 tags: [framework, rl, motion-imitation, isaac-gym, isaac-lab, newton, xbpeng, nvidia, berkeley, stanford, sfu]
 status: complete
-updated: 2026-08-06
+updated: 2026-08-08
 related:
   - ../methods/deepmimic.md
   - ../methods/amp-reward.md
@@ -16,6 +16,7 @@ related:
   - ../methods/imitation-learning.md
   - ./protomotions.md
   - ./robot-lab.md
+  - ./paper-pfm-hr.md
 sources:
   - ../../sources/repos/mimickit.md
 summary: "MimicKit 是由 Xue Bin Peng 团队开源的模块化强化学习框架，在统一代码底座上集成 DeepMimic、AMP、AWR、ASE、LCP、ADD、SMP 等运动模仿与物理控制算法，并支持多仿真后端与动作重定向管线。"
@@ -146,6 +147,7 @@ MimicKit 采用高度解耦设计：更换仿真后端、替换环境模板或�
 
 - [SMP on G1（mjlab）](./smp-g1-mjlab.md) — 原版未含 G1 时，可参考清华 SUZ 的 mjlab 端到端 SMP 复现。
 - [CMP 上下文感知运动先验](./paper-cmp.md) — 在 MimicKit locomotion 参考集上把 AMP/SMP 改成上下文条件适配（代码待发布）。
+- [PFM-HR](./paper-pfm-hr.md) — 在 MimicKit 九技能上挂载冻结 Flow Matching 姿态先验（PGS；代码 Coming Soon）。
 - [protomotions](protomotions.md) — NVIDIA 侧大规模运动学习框架，可与本仓库对照「数据与并行训练哲学」。
 - [robot-lab](robot-lab.md) — Isaac Lab 生态中的机器人实验框架入口。
 - [imitation-learning](../methods/imitation-learning.md) — MimicKit 所属研究领域总览。
