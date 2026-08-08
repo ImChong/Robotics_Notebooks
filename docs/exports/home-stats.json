@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-08-08",
   "node_count": 2127,
-  "edge_count": 19597,
+  "edge_count": 19601,
   "coverage": {
     "covered": 2103,
     "total": 2103,
@@ -87,6 +87,78 @@
       "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
+      "path": "wiki/methods/dsms-contact-implicit-multiple-shooting.md",
+      "detail_id": "wiki-methods-dsms-contact-implicit-multiple-shooting",
+      "label": "DSMS（接触隐式直接仿真多重打靶）",
+      "type": "method",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/methods/motion-retargeting-gmr.md",
+      "detail_id": "wiki-methods-motion-retargeting-gmr",
+      "label": "GMR: 通用动作重定向",
+      "type": "method",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/methods/dynaretarget-sbto-motion-retargeting.md",
+      "detail_id": "wiki-methods-dynaretarget-sbto-motion-retargeting",
+      "label": "DynaRetarget / SBTO（增量采样式动力学重定向）",
+      "type": "method",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md",
+      "detail_id": "wiki-comparisons-vlm-vln-vla-vlx-world-model-taxonomy",
+      "label": "五大具身模型分类：VLM、VLN、VLA、VLX 与世界模型",
+      "type": "comparison",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/vision-language-feature-fusion.md",
+      "detail_id": "wiki-concepts-vision-language-feature-fusion",
+      "label": "视觉–语言特征融合与语义空间对齐",
+      "type": "concept",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/hub-embodied-foundation-model.md",
+      "detail_id": "wiki-overview-hub-embodied-foundation-model",
+      "label": "具身大模型分类学选型闭环（知识链汇总）",
+      "type": "overview",
+      "recency": "2026-08-07",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
       "path": "wiki/entities/paper-agile-humanoid-loco-manipulation.md",
       "detail_id": "entity-paper-agile-humanoid-loco-manipulation",
       "label": "AGILE：人形 Loco-Manipulation 学习工作流",
@@ -137,76 +209,6 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/humantouch.md",
-      "detail_id": "entity-humantouch",
-      "label": "HumanTouch（可规模化人手触觉采集系统）",
-      "type": "entity",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/concepts/tactile-sensing.md",
-      "detail_id": "wiki-concepts-tactile-sensing",
-      "label": "Tactile Sensing（触觉感知）",
-      "type": "concept",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/concepts/visuo-tactile-fusion.md",
-      "detail_id": "wiki-concepts-visuo-tactile-fusion",
-      "label": "视触觉融合（Visuo-Tactile Fusion）",
-      "type": "concept",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/concepts/contact-rich-manipulation.md",
-      "detail_id": "wiki-concepts-contact-rich-manipulation",
-      "label": "Contact-Rich Manipulation（接触丰富型操作）",
-      "type": "concept",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/overview/hub-tactile.md",
-      "detail_id": "wiki-overview-hub-tactile",
-      "label": "触觉与力觉（知识链汇总）",
-      "type": "overview",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/queries/dexterous-data-collection-guide.md",
-      "detail_id": "wiki-queries-dexterous-data-collection-guide",
-      "label": "灵巧操作数据采集指南",
-      "type": "query",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/comparisons/data-gloves-vs-vision-teleop.md",
-      "detail_id": "wiki-comparisons-data-gloves-vs-vision-teleop",
-      "label": "数据手套 vs 视觉遥操作 (灵巧数据采集选型)",
-      "type": "comparison",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
