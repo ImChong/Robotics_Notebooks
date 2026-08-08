@@ -2,7 +2,7 @@
 type: method
 tags: [gan, discriminator, artifacts, xbpeng, paper, humanoid, amp, motion-prior, adversarial-imitation, sfu, nvidia, sony, siggraph]
 status: complete
-updated: 2026-07-16
+updated: 2026-08-08
 venue: SIGGRAPH 2024
 related:
   - ../overview/humanoid-amp-motion-prior-survey.md
@@ -11,11 +11,13 @@ related:
   - ./amp-reward.md
   - ./smp.md
   - ../entities/mimickit.md
+  - ../entities/paper-pfm-hr.md
 sources:
   - ../../sources/papers/add.md
   - ../../sources/papers/humanoid_amp_survey_02_physics_based_motion_imitation_with_adversarial.md
   - ../../sources/papers/humanoid_amp_survey_19_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
+  - ../../sources/papers/pfm_hr_arxiv_2608_03227.md
 summary: "ADD (Adversarial Differential Discriminator) 通过微分判别器结构消除对抗模仿学习中的运动伪影，提升动作的物理真实感。"
 ---
 
@@ -63,6 +65,7 @@ ADD 的核心思想是将判别器的输入从绝对状态 $ 转变为状态的*
 - [amp-reward](amp-reward.md) — ADD 的基础框架。
 - [smp](smp.md) — 另一种通过得分匹配解决稳定性的方案。
 - [mimickit](../entities/mimickit.md) — ADD 的官方实现框架（集成于 [mimickit](../entities/mimickit.md) 与 [protomotions](../entities/protomotions.md)）。
+- [PFM-HR](../entities/paper-pfm-hr.md) — 以 ADD 为跟踪骨干挂载的冻结姿态 Flow Matching 先验（PGS 调制跟踪奖励；arXiv:2608.03227）。
 
 ## 参考来源
 - [机器人论文阅读笔记：ADD](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/ADD_Adversarial_Differential_Discriminators/ADD_Adversarial_Differential_Discriminators.html)

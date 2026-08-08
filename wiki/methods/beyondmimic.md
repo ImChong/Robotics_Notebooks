@@ -2,7 +2,7 @@
 type: method
 tags: [rl, imitation-learning, locomotion, humanoid, sampling, diffusion, paper, motion-control, body-system-stack, bfm, behavior-foundation-model, stanford, berkeley]
 status: complete
-updated: 2026-08-07
+updated: 2026-08-08
 code: https://github.com/HybridRobotics/whole_body_tracking
 venue: "2025 · arXiv"
 arxiv: "2508.08241"
@@ -23,6 +23,7 @@ related:
   - ../concepts/reward-design.md
   - ../entities/paper-extreme-rgmt.md
   - ../entities/paper-agile-humanoid-loco-manipulation.md
+  - ../entities/paper-pfm-hr.md
 sources:
   - ../../sources/repos/beyondmimic-reproduction.md
   - ../../sources/papers/motion_control_projects.md
@@ -37,6 +38,7 @@ sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
   - ../../sources/papers/humanoid_loco_manip_161_catalog.md
   - ../../sources/papers/agile_arxiv_2603_20147.md
+  - ../../sources/papers/pfm_hr_arxiv_2608_03227.md
 summary: "BeyondMimic 是一个旨在实现通用、稳健的人形动作模仿的学习框架：第一阶段以精确物理建模与失败率驱动的自适应采样在单一设置下跟踪高动态动作；第二阶段将多条跟踪策略蒸馏进统一潜空间扩散模型，用 classifier guidance 零样本解决下游任务。"
 ---
 
@@ -345,3 +347,4 @@ BeyondMimic 已经成为许多人形机器人项目的底层基座：
 - [Curriculum Learning (课程学习)](../concepts/curriculum-learning.md) — 失败驱动采样是课程学习的一种高级形式。
 - [Extreme-RGMT](../entities/paper-extreme-rgmt.md) — 同样面对高动态 vs generalist 权衡；对照表含 BeyondMimic。
 - [AGILE（论文实体）](../entities/paper-agile-humanoid-loco-manipulation.md) — Isaac Lab 工作流层用 BeyondMimic 式模仿任务做案例；额外 DR+L2C2 才真机（arXiv:2603.20147）。
+- [PFM-HR](../entities/paper-pfm-hr.md) — 冻结 Flow Matching 姿态几何先验；仅在仿真训练调制跟踪奖励，BeyondMimic 部署栈不变（arXiv:2608.03227；代码 Coming Soon）。

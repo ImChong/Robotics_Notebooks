@@ -1,3 +1,12 @@
+## [2026-08-08] ingest | sources/papers/pfm_hr_arxiv_2608_03227.md — PFM-HR（HKUST-GZ / 诺亦腾 / 清华 SIGS / Google，arXiv:2608.03227）姿态 Flow Matching 先验入库；升格 wiki/entities/paper-pfm-hr.md；交叉 wiki/methods/beyondmimic.md、wiki/methods/add.md、wiki/methods/smp.md、wiki/entities/paper-notebook-pdf-hr.md、wiki/entities/mimickit.md、wiki/queries/humanoid-motion-tracking-method-selection.md、wiki/comparisons/amp-add-smp-motion-prior-variants.md；归档 sources/sites/pfm-hr-web.md、sources/repos/pfm-hr.md
+
+- **触发：** 用户指定标题 *PFM-HR: Pose Flow Matching for Humanoid Robots*、项目页 <https://gaoyukang33.github.io/PFM-HR.web/>、机构香港科技大学（广州）/ 诺亦腾机器人 / 清华大学深圳国际研究生院 / Google；要求自动合并
+- **来源：** [`sources/papers/pfm_hr_arxiv_2608_03227.md`](sources/papers/pfm_hr_arxiv_2608_03227.md)、[`sources/sites/pfm-hr-web.md`](sources/sites/pfm-hr-web.md)、[`sources/repos/pfm-hr.md`](sources/repos/pfm-hr.md)
+- **新建实体：** [`wiki/entities/paper-pfm-hr.md`](wiki/entities/paper-pfm-hr.md)
+- **开源核查（步骤 2.5）：** **宣称开源 / 实现待发布** — 项目页 Code → <https://github.com/gaoyukang33/PFM-HR>，tip 仅 MIT + README「Coming Soon」；`## 源码运行时序图` 写不适用
+- **方法要点：** 无序姿态 Flow Matching 先验；Pose Geometry Score（PGS / JVP）调制跟踪奖励；冻结挂 ADD / BeyondMimic；高动态样本效率↑
+- **交叉更新：** [`wiki/methods/beyondmimic.md`](wiki/methods/beyondmimic.md)、[`wiki/methods/add.md`](wiki/methods/add.md)、[`wiki/methods/smp.md`](wiki/methods/smp.md)、[`wiki/entities/paper-notebook-pdf-hr.md`](wiki/entities/paper-notebook-pdf-hr.md)、[`wiki/entities/mimickit.md`](wiki/entities/mimickit.md)、[`wiki/queries/humanoid-motion-tracking-method-selection.md`](wiki/queries/humanoid-motion-tracking-method-selection.md)、[`wiki/comparisons/amp-add-smp-motion-prior-variants.md`](wiki/comparisons/amp-add-smp-motion-prior-variants.md)
+
 ## [2026-08-07] ingest | sources/papers/agile_arxiv_2603_20147.md — AGILE（NVIDIA，arXiv:2603.20147）人形 loco-manipulation RL 工作流入库；升格 wiki/entities/paper-agile-humanoid-loco-manipulation.md；交叉 wiki/entities/isaac-lab.md、wiki/tasks/loco-manipulation.md、wiki/concepts/sim2real.md、wiki/entities/unitree-g1.md、wiki/methods/beyondmimic.md；归档 sources/repos/wbc_agile.md、sources/sites/wbc-agile-docs.md
 
 - **触发：** 用户指定标题 *AGILE: A Comprehensive Workflow for Humanoid Loco-Manipulation Learning*（arXiv）、单位 NVIDIA、作者 Huihua Zhao / Rafael Cathomen 等；要求自动合并

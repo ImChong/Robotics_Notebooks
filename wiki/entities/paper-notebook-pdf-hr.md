@@ -2,13 +2,15 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-06-26
+updated: 2026-08-08
 arxiv: "2602.04851"
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ./paper-pfm-hr.md
 sources:
   - ../../sources/papers/humanoid_pnb_pdf-hr.md
+  - ../../sources/papers/pfm_hr_arxiv_2608_03227.md
 summary: "PDF-HR 训练一个神经距离场：输入一个机器人姿态，输出它到\"已知合理姿态语料库\"的最短距离；这个连续可微的\"姿态可信度\"可以直接当作 RL 的奖励整形项、模仿学习的正则项，或作为运动重定向时的姿态打分器，几乎零成本接入到现有 humanoid 任务流水线。"
 ---
 
@@ -58,6 +60,7 @@ PDF-HR 训练一个神经距离场：输入一个机器人姿态，输出它到"
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- 后续冻结姿态先验：[PFM-HR](./paper-pfm-hr.md) — 同团队线用 Flow Matching + Pose Geometry Score 评关节差分（相对本页「单姿态距离」）；论文同骨干对照 ADD w/ PDF-HR。
 
 ## 参考来源
 

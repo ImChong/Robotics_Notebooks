@@ -2,12 +2,13 @@
 type: comparison
 tags: [amp, motion-prior, rl, humanoid, imitation-learning, comparison]
 status: complete
-updated: 2026-08-06
-summary: "AMP / ADD / SMP 三种对抗式运动先验变体：判别器形式、多目标解耦与模块化 reward model 的选型对比；旁注 ADP 动力学特征先验。"
+updated: 2026-08-08
+summary: "AMP / ADD / SMP 三种对抗式运动先验变体：判别器形式、多目标解耦与模块化 reward model 的选型对比；旁注 ADP / CMP / PFM-HR。"
 sources:
   - ../../sources/papers/amp.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
   - ../../sources/papers/adp_arxiv_2607_03454.md
+  - ../../sources/papers/pfm_hr_arxiv_2608_03227.md
 related:
   - ../methods/amp-reward.md
   - ../methods/add.md
@@ -16,6 +17,7 @@ related:
   - ../overview/humanoid-amp-motion-prior-survey.md
   - ../entities/paper-adp.md
   - ../entities/paper-cmp.md
+  - ../entities/paper-pfm-hr.md
 ---
 
 # AMP vs ADD vs SMP：运动先验变体对比
@@ -50,6 +52,8 @@ related:
 **旁注 · ADP**：若目标是 **抗扰恢复** 而非风格自然度，看 [ADP](../entities/paper-adp.md)（动力学特征时间窗先验，非本表三列运动学变体）。
 
 **旁注 · CMP**：若已有 AMP/SMP 基线、痛点是**异构参考与当前任务上下文不匹配**（而非换判别器形式），看 [CMP](../entities/paper-cmp.md)（相关度软重权 + 残差适配器，不另开 skill 空间）。
+
+**旁注 · PFM-HR / PDF-HR**：若痛点是**高动态跟踪样本效率**、且已有 ADD/BeyondMimic 骨干，可旁挂冻结**姿态几何先验**而非改判别器形式——[PFM-HR](../entities/paper-pfm-hr.md)（Flow Matching + PGS 评关节差分；代码 Coming Soon）相对 [PDF-HR](../entities/paper-notebook-pdf-hr.md)（单姿态距离场）更强调姿态转移几何；与 SMP 同属「冻结可复用先验」轴，但训练数据只需无序姿态。
 
 ---
 
@@ -88,6 +92,7 @@ related:
 - [具身智能研究室：人形 AMP 先验综述](../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md)
 - [ADP（arXiv:2607.03454）](../../sources/papers/adp_arxiv_2607_03454.md) — 动力学特征对抗先验（旁注对照）
 - [CMP（arXiv:2608.03234）](../../sources/papers/cmp_arxiv_2608_03234.md) — 上下文条件适配（旁注对照）
+- [PFM-HR（arXiv:2608.03227）](../../sources/papers/pfm_hr_arxiv_2608_03227.md) — 冻结姿态 Flow Matching 先验（旁注对照）
 
 ## 关联页面
 
@@ -97,6 +102,7 @@ related:
 - [SMP on G1（mjlab）](../entities/smp-g1-mjlab.md)
 - [ADP 对抗动力学先验](../entities/paper-adp.md)
 - [CMP 上下文感知运动先验](../entities/paper-cmp.md)
+- [PFM-HR](../entities/paper-pfm-hr.md)
 - [DeepMimic](../methods/deepmimic.md)
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
 - [人形 AMP 先验综述](../overview/humanoid-amp-motion-prior-survey.md)
