@@ -9,7 +9,7 @@ tags:
   - software-engineering
   - agent-infrastructure
 status: complete
-updated: 2026-07-31
+updated: 2026-08-08
 related:
   - ./ponytail.md
   - ./nuwa-skill.md
@@ -102,6 +102,7 @@ flowchart TD
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 持久 wiki 知识编译范式
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库 ingest / query / lint 规范
 - [Nuwa Skill](nuwa-skill.md) / [Cangjie Skill](cangjie-skill.md) / [Darwin Skill](darwin-skill.md) — 通用 skill 蒸馏/进化（与本库 **编码工程** 技能互补）
+- [SkillCorpus](paper-skillcorpus.md) — 社区 `SKILL.md` 生态级策展语料与检索评测（对照精品垂直技能库）
 
 ## 参考来源
 

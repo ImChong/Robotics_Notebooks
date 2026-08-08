@@ -2,11 +2,13 @@
 type: entity
 tags: [entity, llm-agents, agent-infrastructure, skills, messaging-gateway, voice, openclaw, embodied-ai]
 status: complete
-updated: 2026-08-04
+updated: 2026-08-08
 related:
   - ./philia.md
   - ./hermes-agent.md
   - ./sensenova-skills.md
+  - ./paper-skillcorpus.md
+  - ./paper-harnessbank.md
   - ../queries/humanoid-voice-interaction-pipeline.md
   - ../tasks/vision-language-navigation.md
   - ../concepts/hierarchical-quadruped-navigation-stack.md
@@ -83,6 +85,8 @@ flowchart LR
 
 - [Philia](./philia.md) — OpenClaw + Robot Gateway 多机器人助手
 - [Hermes Agent](./hermes-agent.md) — 对照开源 agent OS
+- [SkillCorpus](./paper-skillcorpus.md) — 社区 `SKILL.md` 策展语料；OpenClaw 为其端到端评测 harness 之一
+- [HarnessBank](./paper-harnessbank.md) — 冻结模型下进化宿主 harness（与技能层互补）
 - [人形语音交互流水线](../queries/humanoid-voice-interaction-pipeline.md)
 - [四足×VLN 实战营总览](../overview/quadruped-vln-embodied-workshop.md)
 - [视觉–语言导航](../tasks/vision-language-navigation.md)

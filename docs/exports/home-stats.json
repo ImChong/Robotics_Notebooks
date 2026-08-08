@@ -1,13 +1,109 @@
 {
   "generated_at": "2026-08-08",
-  "node_count": 2127,
-  "edge_count": 19597,
+  "node_count": 2130,
+  "edge_count": 19626,
   "coverage": {
-    "covered": 2103,
-    "total": 2103,
+    "covered": 2106,
+    "total": 2106,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-dash-opsd.md",
+      "detail_id": "entity-paper-dash-opsd",
+      "label": "DASH：分歧自适应的 OPSD 监督视界",
+      "type": "entity",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-shenlan-wm-14-rlvr-world.md",
+      "detail_id": "entity-paper-shenlan-wm-14-rlvr-world",
+      "label": "RLVR-World",
+      "type": "entity",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/concepts/ai-auto-research.md",
+      "detail_id": "wiki-concepts-ai-auto-research",
+      "label": "AI Auto-Research（学术研究自动化）",
+      "type": "concept",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-harnessbank.md",
+      "detail_id": "entity-paper-harnessbank",
+      "label": "HarnessBank：可信 Agent-Harness 自进化",
+      "type": "entity",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-skillcorpus.md",
+      "detail_id": "entity-paper-skillcorpus",
+      "label": "SkillCorpus：开放 Skill 生态的策展与评测",
+      "type": "entity",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
+    {
+      "path": "wiki/entities/openclaw.md",
+      "detail_id": "entity-openclaw",
+      "label": "OpenClaw",
+      "type": "entity",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
+    {
+      "path": "wiki/entities/darwin-skill.md",
+      "detail_id": "entity-darwin-skill",
+      "label": "Darwin Skill（达尔文.skill）",
+      "type": "entity",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
+    {
+      "path": "wiki/entities/mattpocock-skills.md",
+      "detail_id": "entity-mattpocock-skills",
+      "label": "Skills For Real Engineers（mattpocock）",
+      "type": "entity",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
+    {
+      "path": "wiki/entities/hermes-agent.md",
+      "detail_id": "entity-hermes-agent",
+      "label": "Hermes Agent（Nous Research）",
+      "type": "entity",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
     {
       "path": "wiki/entities/paper-pfm-hr.md",
       "detail_id": "entity-paper-pfm-hr",
@@ -116,108 +212,18 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/unitree-g1.md",
-      "detail_id": "entity-unitree-g1",
-      "label": "Unitree G1 (人形机器人)",
-      "type": "entity",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/humantouch.md",
-      "detail_id": "entity-humantouch",
-      "label": "HumanTouch（可规模化人手触觉采集系统）",
-      "type": "entity",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/concepts/tactile-sensing.md",
-      "detail_id": "wiki-concepts-tactile-sensing",
-      "label": "Tactile Sensing（触觉感知）",
-      "type": "concept",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/concepts/visuo-tactile-fusion.md",
-      "detail_id": "wiki-concepts-visuo-tactile-fusion",
-      "label": "视触觉融合（Visuo-Tactile Fusion）",
-      "type": "concept",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/concepts/contact-rich-manipulation.md",
-      "detail_id": "wiki-concepts-contact-rich-manipulation",
-      "label": "Contact-Rich Manipulation（接触丰富型操作）",
-      "type": "concept",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/overview/hub-tactile.md",
-      "detail_id": "wiki-overview-hub-tactile",
-      "label": "触觉与力觉（知识链汇总）",
-      "type": "overview",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/queries/dexterous-data-collection-guide.md",
-      "detail_id": "wiki-queries-dexterous-data-collection-guide",
-      "label": "灵巧操作数据采集指南",
-      "type": "query",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/comparisons/data-gloves-vs-vision-teleop.md",
-      "detail_id": "wiki-comparisons-data-gloves-vs-vision-teleop",
-      "label": "数据手套 vs 视觉遥操作 (灵巧数据采集选型)",
-      "type": "comparison",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-pfm-hr.md",
-    "detail_id": "entity-paper-pfm-hr",
-    "label": "PFM-HR：面向人形的姿态流匹配先验",
+    "path": "wiki/entities/paper-dash-opsd.md",
+    "detail_id": "entity-paper-dash-opsd",
+    "label": "DASH：分歧自适应的 OPSD 监督视界",
     "type": "entity",
     "recency": "2026-08-08",
     "source": "log.md",
     "action": "maintained",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "大语言模型维基（LLM Wiki） 社区"
   },
   "top_communities": [
     {
@@ -295,7 +301,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 291,
+      "degree": 292,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
