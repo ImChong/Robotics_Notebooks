@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-08-07
+updated: 2026-08-08
 sources:
   - ../../sources/papers/agile_arxiv_2603_20147.md
   - ../../sources/papers/pot_vla_arxiv_2607_18016.md
@@ -13,6 +13,7 @@ sources:
   - ../../sources/papers/loco_manip_8_papers_catalog.md
   - ../../sources/papers/dit4dit_arxiv_2603_10448.md
   - ../../sources/papers/motionwam_arxiv_2606_09215.md
+  - ../../sources/papers/omega0_arxiv_2608_06375.md
   - ../../sources/papers/motiondisco_arxiv_2606_06139.md
   - ../../sources/papers/halomi_arxiv_2606_18772.md
   - ../../sources/papers/coordex_arxiv_2606_23680.md
@@ -174,6 +175,7 @@ flowchart TD
 ### 16. 实时 World Action Model + 统一全身 motion token（双 DiT · SONIC 解码）
 - **核心**：**Video DiT** 在 **单次前向**（固定 flow 步隐状态）提供 egocentric **动力学先验**，**Motion DiT** 在同一 **SONIC motion token** 空间预测 **locomotion / 躯干 / 身高 / 足端 / 双手**；替代「上身关节 + 下身基座命令」分层，使腿能执行 **踩踏板、踢球** 等任务驱动足部行为；三阶段 **大规模 egocentric 视频 → 跨具身 G1 动作 → 全身 VR 遥操作微调**。
 - **代表作**：[DiT4DiT](../entities/paper-dit4dit-video-action-model.md) (Mondo Robotics / HKUST, 2026, arXiv:2603.10448) — 双 DiT **联合** flow matching，G1 三项全身 + 八项桌面；前序 VAM 基座；[MotionWAM](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) (arXiv:2606.09215) 将其推到 **实时九项全身 loco-manip**（**76.1%** vs GR00T-N1.7 **43.9%**，**4.9 Hz**）。
+- **潜空间 foresight 对照**：[ω-0](../entities/paper-omega-0.md) (NTU/PKU/BAAI/HKUST-GZ, 2026, arXiv:2608.06375) — 用 **未来观测 embedding**（非像素视频重建）耦合扩散全身动作 latent + SONIC；ω-HOME 40h+；G1 家务 11 任务 Omni **SR 81.8%**（代码/数据 WIP）。
 
 ### 17. 混合数据入口周报（ego / 生成 / 仿真 / 触觉 / 跨本体 teleop）
 - **核心**：2026-06 周报将 loco-manip 数据生产拆为 **四组入口**——第一视角语义与全身动作（Ego-Pi、EgoPriMo）、生成视频与仿真 teleop（GenHOI、OASIS）、解耦命令与统一 WBC（VAIC、M3imic）、触觉与跨本体遥操作（WT-UMI、X-OP）；强调 **对齐、接触、命令接口与跨平台复用** 比单点真机采集更关键。
@@ -272,6 +274,7 @@ flowchart TD
 - [Motion Retargeting](../concepts/motion-retargeting.md) — 人形搬运/攀台等技能的上游映射层
 - [DiT4DiT（论文实体）](../entities/paper-dit4dit-video-action-model.md) — 双 DiT 联合 VAM，G1 全身 loco-manip 前序（arXiv:2603.10448）
 - [MotionWAM（论文实体）](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) — 实时 WAM + 统一全身 token 的人形 loco-manip（arXiv:2606.09215）
+- [ω-0（论文实体）](../entities/paper-omega-0.md) — 潜空间 foresight + 扩散全身 latent 的并发家务 loco-manip（arXiv:2608.06375）
 - [Being-M0.7（论文实体）](../entities/paper-being-m07-humanoid-latent-wam.md) — 潜空间 video-motion 先验 + action expert 人形 loco-manip（BeingBeyond, 2026-07）
 - [ABot-M0.5（论文实体）](../entities/paper-abot-m05-mobile-manipulation-wam.md) — 移动操作 WAM：latent action + D-MoT + Dream Forcing（arXiv:2607.00678）
 - [Loco-Manip 8 篇数据入口技术地图](../overview/loco-manip-8-papers-technology-map.md) — 2026-06 周报：四组数据入口（Ego-Pi/OASIS/VAIC/WT-UMI 等 8 篇）
@@ -317,6 +320,7 @@ flowchart TD
 - **ingest 档案：** [sources/papers/visualmimic_arxiv_2509_20322.md](../../sources/papers/visualmimic_arxiv_2509_20322.md) — VisualMimic：视觉分层 sim2real + 关键点 tracker loco-manipulation（arXiv:2509.20322）
 - **ingest 档案：** [sources/papers/dit4dit_arxiv_2603_10448.md](../../sources/papers/dit4dit_arxiv_2603_10448.md) — DiT4DiT：双 DiT 联合 VAM 与 G1 全身 loco-manip（arXiv:2603.10448）
 - **ingest 档案：** [sources/papers/motionwam_arxiv_2606_09215.md](../../sources/papers/motionwam_arxiv_2606_09215.md) — MotionWAM：实时 WAM 人形全身 loco-manipulation（arXiv:2606.09215）
+- **ingest 档案：** [sources/papers/omega0_arxiv_2608_06375.md](../../sources/papers/omega0_arxiv_2608_06375.md) — ω-0：潜空间 foresight 人形并发 loco-manipulation（arXiv:2608.06375）
 - **ingest 档案：** [sources/papers/being_m07.md](../../sources/papers/being_m07.md) — Being-M0.7：潜空间 video-motion 先验 + G1 action expert 人形 loco-manipulation（BeingBeyond, 2026-07）
 - **ingest 档案：** [sources/papers/abot_m05_arxiv_2607_00678.md](../../sources/papers/abot_m05_arxiv_2607_00678.md) — ABot-M0.5：移动操作 WAM（latent action + Dream Forcing，arXiv:2607.00678）
 - **ingest 档案：** [sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md) — Loco-Manip 8 篇数据入口周报（`Ez87ljBYmCyIpLKjMjEyaQ`）

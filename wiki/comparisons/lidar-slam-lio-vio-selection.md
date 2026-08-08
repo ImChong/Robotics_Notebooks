@@ -2,10 +2,11 @@
 type: comparison
 tags: [slam, lidar, vio, lio, selection, ros]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-08
 related:
   - ../overview/navigation-slam-autonomy-stack.md
   - ../entities/paper-ultra-fusion-multi-sensor-slam.md
+  - ../entities/paper-kilvo.md
   - ../entities/navigation2.md
   - ../entities/fast-lio.md
   - ../entities/lio-sam.md
@@ -26,7 +27,9 @@ sources:
   - ../../sources/repos/lego_loam.md
   - ../../sources/repos/rtabmap.md
   - ../../sources/papers/ultra_fusion_arxiv_2606_21223.md
-summary: "LiDAR 里程计/SLAM 与视觉惯性系统选型：FAST-LIO vs LIO-SAM vs LeGO-LOAM vs ORB-SLAM3 vs VINS vs OpenVINS vs RTAB-Map vs Ultra-Fusion，按传感器、后端、ROS 集成与场景对照。"
+  - ../../sources/papers/kilvo_arxiv_2608_05647.md
+  - ../../sources/repos/kilvo.md
+summary: "LiDAR 里程计/SLAM 与视觉惯性系统选型：FAST-LIO vs LIO-SAM vs LeGO-LOAM vs ORB-SLAM3 vs VINS vs OpenVINS vs RTAB-Map vs Ultra-Fusion vs KILVO（人形），按传感器、后端、ROS 集成与场景对照。"
 ---
 
 # LiDAR / LIO / VIO 开源选型对比
@@ -56,8 +59,9 @@ summary: "LiDAR 里程计/SLAM 与视觉惯性系统选型：FAST-LIO vs LIO-SAM
 | **voxgraph** | 深度/TSDF | 位姿图 + Voxblox | ROS | 多会话子图 | 生态小于 LIO 系 |
 | **Isaac cuVSLAM** | 多相机 | GPU | Isaac ROS | Jetson 部署 | 绑定 NVIDIA 栈 |
 | **Ultra-Fusion** | CIL + 轮速/GNSS 可选 | 统一滑窗 BA + FRS | 待发布 | **可配置 WIO/VIO/LIO/LVIO**、退化调度、在线时空标定 | 复杂度高；ITS 多平台评测导向 |
+| **KILVO** | 关节编码 + IMU + LiDAR + 相机 | 异步–顺序混合 ESIKF | 待开放 | **人形**接触估计、模态失效自适应、**1 kHz** 输出 | 仓仍占位；非通用轮式栈 |
 
-> **退化与标定扰动维度：** [Ultra-Fusion](../entities/paper-ultra-fusion-multi-sensor-slam.md) 在 M3DGR 等基准上对 60+ 系统做 **传感器退化**（弱光、长廊、GNSS 拒止、打滑）与 **时空标定注入** Stress test，适合在固定传感器栈选型之外评估 **鲁棒融合架构**。
+> **退化与标定扰动维度：** [Ultra-Fusion](../entities/paper-ultra-fusion-multi-sensor-slam.md) 在 M3DGR 等基准上对 60+ 系统做 **传感器退化**（弱光、长廊、GNSS 拒止、打滑）与 **时空标定注入** Stress test，适合在固定传感器栈选型之外评估 **鲁棒融合架构**。人形冲击 / 掉传感器场景另见 [KILVO](../entities/paper-kilvo.md)（TMECH；代码待开放）。
 
 ## 决策流（简图）
 
@@ -114,6 +118,7 @@ flowchart TD
 
 - [navigation_slam_autonomy_stack_catalog.md](../../sources/repos/navigation_slam_autonomy_stack_catalog.md)
 - [ultra_fusion_arxiv_2606_21223.md](../../sources/papers/ultra_fusion_arxiv_2606_21223.md) — 大规模退化/标定扰动基准与 Ultra-Fusion 对照
+- [kilvo_arxiv_2608_05647.md](../../sources/papers/kilvo_arxiv_2608_05647.md) — 人形 KILVO 多传感器 ESIKF
 - 各对比对象 `sources/repos/*.md`
 
 ## 关联页面
@@ -122,6 +127,7 @@ flowchart TD
 - [Navigation2](../entities/navigation2.md)
 - [LingBot-Map](../methods/lingbot-map.md) — 学习型流式建图对照
 - [里程计–激光融合定位](../methods/lidar-odometry-fusion.md) — 课程级 odom↔LiDAR 融合概念，本页是其开源实现（FAST-LIO/LIO-SAM 等）选型落地
+- [KILVO](../entities/paper-kilvo.md) — 人形运动学–惯性–激光–视觉里程计（代码待开放）
 
 ## 推荐继续阅读
 

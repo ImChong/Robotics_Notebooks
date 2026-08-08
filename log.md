@@ -1,3 +1,31 @@
+## [2026-08-08] ingest | sources/papers/kilvo_arxiv_2608_05647.md — KILVO 人形多传感器 ESIKF 里程计（代码待开放）；升格 wiki/entities/paper-kilvo.md；仓 sources/repos/kilvo.md；交叉 wiki/methods/lidar-odometry-fusion.md、wiki/comparisons/lidar-slam-lio-vio-selection.md
+
+- **触发：** 用户指定 GitHub <https://github.com/JixinGao/KILVO> + 论文 <https://arxiv.org/abs/2608.05647>；人形多传感器里程计，代码待开放；要求自动合并
+- **来源：** [`sources/papers/kilvo_arxiv_2608_05647.md`](sources/papers/kilvo_arxiv_2608_05647.md)、[`sources/repos/kilvo.md`](sources/repos/kilvo.md)
+- **新建实体：** [`wiki/entities/paper-kilvo.md`](wiki/entities/paper-kilvo.md)
+- **开源核查（步骤 2.5）：** **代码待开放 / 占位仓** — README「available soon」；根目录无可运行实现；`## 源码运行时序图` 写不适用
+- **方法要点：** 异步–顺序混合 ESIKF；接触估计无额外传感器；模态失效自适应；真机端到端均值 **0.0145 m**、输出 **1 kHz**
+- **交叉更新：** [`wiki/methods/lidar-odometry-fusion.md`](wiki/methods/lidar-odometry-fusion.md)、[`wiki/comparisons/lidar-slam-lio-vio-selection.md`](wiki/comparisons/lidar-slam-lio-vio-selection.md)
+
+## [2026-08-08] ingest | sources/papers/dypes_vla_arxiv_2608_06374.md — DyPES-VLA 跨本体动力学先验 + MoE 动作头；升格 wiki/entities/paper-dypes-vla.md；项目页 sources/sites/dypes-vla-github-io.md；注册 coco-matrix；交叉 wiki/methods/vla.md
+
+- **触发：** 用户指定 <https://arxiv.org/abs/2608.06374>；跨本体动力学 VLA；要求自动合并
+- **来源：** [`sources/papers/dypes_vla_arxiv_2608_06374.md`](sources/papers/dypes_vla_arxiv_2608_06374.md)、[`sources/sites/dypes-vla-github-io.md`](sources/sites/dypes-vla-github-io.md)
+- **新建实体：** [`wiki/entities/paper-dypes-vla.md`](wiki/entities/paper-dypes-vla.md)
+- **开源核查（步骤 2.5）：** **宣称将开源 / coming soon** — 项目页 Code 按钮禁用；`## 源码运行时序图` 写不适用
+- **方法要点：** 未来预测学共享 query 动力学先验 + 本体特化 MoE 原生动作；LIBERO **98.0%** / RoboCasa-GR1 **59.25%** / RoboTwin **89.02%**；真机三本体 **75.6%**
+- **机构注册：** [`schema/institutions.json`](schema/institutions.json) 新增 `coco-matrix`（可可矩阵）
+- **交叉更新：** [`wiki/methods/vla.md`](wiki/methods/vla.md)
+
+## [2026-08-08] ingest | sources/papers/omega0_arxiv_2608_06375.md — ω-0 潜空间 foresight 人形并发 loco-manipulation WAM；升格 wiki/entities/paper-omega-0.md；项目页 sources/sites/omega0-github-io.md；交叉 wiki/tasks/loco-manipulation.md、wiki/concepts/world-action-models.md、wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md
+
+- **触发：** 用户指定 <https://arxiv.org/abs/2608.06375>；人形全身移动操作世界模型；要求自动合并
+- **来源：** [`sources/papers/omega0_arxiv_2608_06375.md`](sources/papers/omega0_arxiv_2608_06375.md)、[`sources/sites/omega0-github-io.md`](sources/sites/omega0-github-io.md)
+- **新建实体：** [`wiki/entities/paper-omega-0.md`](wiki/entities/paper-omega-0.md)
+- **开源核查（步骤 2.5）：** **宣称将开源 / WIP** — 项目页 Code & Dataset 按钮 WIP；`## 源码运行时序图` 写不适用
+- **方法要点：** 潜空间未来观测 embedding + 扩散全身动作 latent + SONIC；ω-HOME 40h+；G1 11 任务 Omni **SR 81.8%**
+- **交叉更新：** [`wiki/tasks/loco-manipulation.md`](wiki/tasks/loco-manipulation.md)、[`wiki/concepts/world-action-models.md`](wiki/concepts/world-action-models.md)、[`wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md`](wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md)
+
 ## [2026-08-08] ingest | sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md — 深蓝具身智能《人形机器人运动控制：强化学习与策略训练体系详解》入库；升格 wiki/overview/humanoid-rl-policy-training-five-modules.md；交叉 wiki/concepts/embodied-rl-minimal-closed-loop.md、wiki/methods/reinforcement-learning.md、wiki/methods/ppo.md、wiki/concepts/privileged-training.md、wiki/queries/humanoid-rl-cookbook.md、wiki/comparisons/wbc-vs-rl.md、wiki/overview/humanoid-rl-motion-control-body-system-stack.md、wiki/overview/shenlan-embodied-ai-fundamentals-series.md
 
 - **触发：** 用户指定 <https://mp.weixin.qq.com/s/mxesB0pGI_NLSkSf-cZYug>；要求确认 Agent Reach 可用并自动合并

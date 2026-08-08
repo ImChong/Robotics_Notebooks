@@ -181,6 +181,7 @@ flowchart TD
 - **Xiaomi-Robotics-0**：**Qwen3-VL-4B + DiT flow matching**；两阶段预训练（**Choice Policies** 扩展 VLM → 冻结 VLM 训 DiT）+ 面向 **异步 action chunk** 的后训练（**Λ 形注意力、前缀随机遮蔽、flow 损失重加权** 等），强调仿真与双臂真机 **吞吐/延迟** 叙事（见 [Xiaomi-Robotics-0](../entities/xiaomi-robotics-0.md)）
 - **Xiaomi-Robotics-1**：**>100k h UMI 预训练**（VLM **自动状态转移标注**）+ **~10k h 跨本体后训练**；**Qwen3-VL + DiT MoT**（**2B/5B/10B**）；预训练 **数据/模型 scaling** 可预测迁移至 **未见环境开箱** 与 **<10h/任务** 少样本微调（**75%** vs **π₀.₅ 40%**）；**RoboCasa365 / [RoboDojo](../entities/robodojo.md)** 等四基准 SOTA（见 [Xiaomi-Robotics-1](../entities/xiaomi-robotics-1.md)）；通用操纵 **官方 sim-and-real 公益榜** 与 **XPolicyLab** 适配见 [RoboDojo](../entities/robodojo.md) / [XPolicyLab](../entities/xpolicylab.md)
 - **Qwen-VLA**：**Qwen3.5-4B + 1.15B DiT flow-matching** 的 **通才** 实例；**操作 + VLN + 轨迹** 同一 checkpoint，**embodiment prompt** 切换平台（见 [Qwen-VLA](../entities/qwen-vla.md)）
+- **DyPES-VLA（HKUST-GZ / COCO Matrix，arXiv:2608.06374）**：用 **未来帧预测** 学 **共享动力学先验（query）**，再用 **本体特化 MoE** 在 **原生动作空间** 出控，避免手工统一动作格式；LIBERO **98.0%** / RoboCasa-GR1 **59.25%** / RoboTwin **89.02%**，真机三本体均值 **75.6%**（代码 coming soon；见 [DyPES-VLA](../entities/paper-dypes-vla.md)）
 - **Qwen-RobotManip**：通义 [Qwen-Robot Suite](../entities/qwen-robot-suite.md) 内 **操作专精** VLA；**80-d 跨本体对齐 + Human-to-Robot 合成 + OOD 榜 north star**，与 Qwen-VLA **同 DiT flow 族** 但分域 scaling 叙事（见 [Qwen-RobotManip](../entities/qwen-robot-manip.md)）
 - **SONIC × GR00T N1.5（NVIDIA 公开演示）**：高层 VLA 与低层 **规模化 motion tracking** 策略经 **统一控制接口** 串联，由同一套 tracking policy 承担快速全身反应；可作为「慢 VLA + 快执行器」分层形态的案例（细节以 [SONIC](./sonic-motion-tracking.md) 与项目页为准）
 - **MotionWAM vs VLA（Mondo / HKUST，arXiv:2606.09215）**：在 **同 Stage 3 演示 + 同 SONIC 低层** 设定下，**视频世界模型隐状态条件** 的 WAM（76.1%）大幅超过 **GR00T-N1.7**（43.9%）等 VLA 微调基线——说明人形 loco-manip 闭环更依赖 **动力学先验** 而非单独加强 **VLM 语义先验**（见 [MotionWAM](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md)）
@@ -381,6 +382,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [Cross-modal Attention (跨模态注意力)](../formalizations/cross-modal-attention.md) — VLA 实现视-语-控对齐的底层机制
 - [Manipulation](../tasks/manipulation.md)
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
+- [DyPES-VLA](../entities/paper-dypes-vla.md) — 共享动力学先验 + 本体特化 MoE 跨本体 VLA（arXiv:2608.06374）
 - [Action Chunking](./action-chunking.md)
 - [Diffusion Policy](./diffusion-policy.md)
 - [Behavior Cloning](./behavior-cloning.md)
