@@ -1,3 +1,11 @@
+## [2026-08-08] ingest | sources/papers/ego4d_arxiv_2110_07058.md — Ego4D（arXiv:2110.07058 / ego4d-data.org）入库；升格 wiki/entities/paper-ego4d.md；归档 sources/sites/ego4d-data-org.md、sources/repos/ego4d.md；交叉 wiki/overview/ego-category-01-data-collection.md、wiki/comparisons/humannet-table1-human-video-corpora.md、wiki/entities/paper-egoverse.md、wiki/entities/rekadaily-10k-dataset.md
+
+- **触发：** 用户指定 <https://arxiv.org/abs/2110.07058>、<https://ego4d-data.org/>；要求自动合并
+- **来源：** [`sources/papers/ego4d_arxiv_2110_07058.md`](sources/papers/ego4d_arxiv_2110_07058.md)、[`sources/sites/ego4d-data-org.md`](sources/sites/ego4d-data-org.md)、[`sources/repos/ego4d.md`](sources/repos/ego4d.md)
+- **新建实体：** [`wiki/entities/paper-ego4d.md`](wiki/entities/paper-ego4d.md) — ~3,670 h 全球 egocentric 日常视频 + 五大 benchmark；含流程总览与 `## 源码运行时序图`（CLI 拉数）
+- **开源核查（步骤 2.5）：** **数据受控开放**（Ego4D license → AWS）；**代码已开源（MIT）** — [facebookresearch/Ego4D](https://github.com/facebookresearch/Ego4D)；挑战基线见 [EGO4D org](https://github.com/EGO4D/)
+- **交叉更新：** [`wiki/overview/ego-category-01-data-collection.md`](wiki/overview/ego-category-01-data-collection.md)、[`wiki/comparisons/humannet-table1-human-video-corpora.md`](wiki/comparisons/humannet-table1-human-video-corpora.md)、[`wiki/entities/paper-egoverse.md`](wiki/entities/paper-egoverse.md)、[`wiki/entities/rekadaily-10k-dataset.md`](wiki/entities/rekadaily-10k-dataset.md)、[`sources/papers/humannet_table1_benchmark_corpora.md`](sources/papers/humannet_table1_benchmark_corpora.md)
+
 ## [2026-08-08] ingest | sources/repos/codex-security.md — OpenAI Codex Security CLI/SDK 入库；升格 wiki/entities/codex-security.md；文档 sources/sites/openai-codex-security-docs.md；交叉 wiki/concepts/software-security-basics.md、wiki/concepts/container-orchestration-cicd.md、wiki/overview/hub-systems-engineering.md
 
 - **触发：** 用户指定 <https://github.com/openai/codex-security>；要求自动合并

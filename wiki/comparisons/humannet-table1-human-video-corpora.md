@@ -2,11 +2,12 @@
 type: comparison
 tags: [dataset, egocentric-video, exocentric-video, vla, embodied-pretraining, humannet]
 status: complete
-updated: 2026-07-24
+updated: 2026-08-08
 summary: "围绕 HumanNet 论文 Table 1，把代表性人类视频/行为语料按视点、活动语义与「具身向可用性」分组，并指向各数据集的官方入口；用于 VLA/模仿学习侧的人类数据选型，而非替代各数据集的官方数据卡。"
 related:
   - ../entities/humannet.md
   - ../entities/paper-egoverse.md
+  - ../entities/paper-ego4d.md
   - ../methods/vla.md
   - ../methods/imitation-learning.md
   - ../methods/egoscale.md
@@ -15,6 +16,7 @@ sources:
   - ../../sources/papers/humannet_table1_benchmark_corpora.md
   - ../../sources/papers/humannet.md
   - ../../sources/papers/egoverse_arxiv_2604_07607.md
+  - ../../sources/papers/ego4d_arxiv_2110_07058.md
 ---
 
 # HumanNet Table 1：代表性人类视频语料与具身向关系
@@ -42,7 +44,7 @@ sources:
 | 档位 | 直觉含义（结合 Table 1 语境） | 典型例子（论文表中） |
 |------|------------------------------|----------------------|
 | **Limited** | 行为相关，但与「可执行机器人接口」距离较远或需大量桥接 | EPIC-KITCHENS-100（厨房语义丰富，但论文仍标为 Limited） |
-| **Indirect** | 适合表征 / 检测 / 视频理解预训练；要接到策略需额外对齐或生成式中间层 | ActivityNet、Kinetics、Ego4D、HowTo100M、Ego-Exo4D 等 |
+| **Indirect** | 适合表征 / 检测 / 视频理解预训练；要接到策略需额外对齐或生成式中间层 | ActivityNet、Kinetics、[Ego4D](../entities/paper-ego4d.md)、HowTo100M、Ego-Exo4D 等 |
 | **Direct** | 更贴近 **轨迹级、手体级或成对机示教**，常被工作流直接当作模仿或预训练的人类侧信号 | HOI4D、EgoDex、OpenEgo、EgoScale、EgoVerse、Human2Robot、HumanNet |
 
 **常见误区**：把 **Indirect** 当成「没用」——大规模第三人称语料仍是 VLM 与高层语义的重要底座；机器人侧难点通常在 **如何把间接监督压成可执行动作分布**。
@@ -61,7 +63,7 @@ sources:
 
 ## 与其他页面的关系
 
-- **实体**：[HumanNet](../entities/humannet.md) 给出语料定义、管线抽象与局限；[EgoVerse](../entities/paper-egoverse.md) 给出联盟式 egocentric 示教 + 跨实验室共训对照。
+- **实体**：[HumanNet](../entities/humannet.md) 给出语料定义、管线抽象与局限；[Ego4D](../entities/paper-ego4d.md) 给出大规模日常 egocentric 基准（表中 **Indirect**）；[EgoVerse](../entities/paper-egoverse.md) 给出联盟式 egocentric 示教 + 跨实验室共训对照。
 - **方法**：[VLA](../methods/vla.md)、[Imitation Learning](../methods/imitation-learning.md) 讨论人类侧数据与真机数据的互补与不等价替换。
 - **方法**：[EgoScale](../methods/egoscale.md) 提供「万小时级 ego 人视频 ↔ VLA」的实证参照轴。
 - **概念**：[具身规模法则](../concepts/embodied-scaling-laws.md) 用于讨论 **人视频小时** 与 **机器人日志小时** 在指标上不可混用。
@@ -71,11 +73,13 @@ sources:
 - [HumanNet Table 1 语料链接与规模转录](../../sources/papers/humannet_table1_benchmark_corpora.md)
 - [HumanNet 论文 ingest 归档](../../sources/papers/humannet.md)
 - [EgoVerse 论文 ingest 归档](../../sources/papers/egoverse_arxiv_2604_07607.md)
+- [Ego4D 论文 ingest 归档](../../sources/papers/ego4d_arxiv_2110_07058.md)
 - Deng et al., *HumanNet: Scaling Human-centric Video Learning to One Million Hours*（[arXiv:2605.06747](https://arxiv.org/abs/2605.06747)）
 
 ## 关联页面
 
 - [HumanNet](../entities/humannet.md)
+- [Ego4D](../entities/paper-ego4d.md)
 - [EgoVerse](../entities/paper-egoverse.md)
 - [VLA](../methods/vla.md)
 - [Imitation Learning](../methods/imitation-learning.md)

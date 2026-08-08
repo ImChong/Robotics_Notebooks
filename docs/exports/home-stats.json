@@ -1,13 +1,64 @@
 {
   "generated_at": "2026-08-08",
-  "node_count": 2136,
-  "edge_count": 19731,
+  "node_count": 2137,
+  "edge_count": 19746,
   "coverage": {
-    "covered": 2112,
-    "total": 2112,
+    "covered": 2113,
+    "total": 2113,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-ego4d.md",
+      "detail_id": "entity-paper-ego4d",
+      "label": "Ego4D（全球第一人称日常视频 · 数据集与基准套件）",
+      "type": "entity",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/ego-category-01-data-collection.md",
+      "detail_id": "wiki-overview-ego-category-01-data-collection",
+      "label": "Ego 分类 01：数据采集",
+      "type": "overview",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/comparisons/humannet-table1-human-video-corpora.md",
+      "detail_id": "wiki-comparisons-humannet-table1-human-video-corpora",
+      "label": "HumanNet Table 1：代表性人类视频语料与具身向关系",
+      "type": "comparison",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-egoverse.md",
+      "detail_id": "entity-paper-egoverse",
+      "label": "EgoVerse（Egocentric 人类数据集 · 联盟级人→机迁移）",
+      "type": "entity",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/rekadaily-10k-dataset.md",
+      "detail_id": "entity-rekadaily-10k-dataset",
+      "label": "RekaDaily-10k（家务第一人称视频数据集）",
+      "type": "entity",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/codex-security.md",
       "detail_id": "entity-codex-security",
@@ -169,69 +220,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/comparisons/lidar-slam-lio-vio-selection.md",
-      "detail_id": "wiki-comparisons-lidar-slam-lio-vio-selection",
-      "label": "LiDAR / LIO / VIO 开源选型对比",
-      "type": "comparison",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dypes-vla.md",
-      "detail_id": "entity-paper-dypes-vla",
-      "label": "DyPES-VLA：共享动力学先验 + 本体特化控制",
-      "type": "entity",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-omega-0.md",
-      "detail_id": "entity-paper-omega-0",
-      "label": "ω-0：潜空间预测式人形并发 Loco-Manipulation WAM",
-      "type": "entity",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/tasks/loco-manipulation.md",
-      "detail_id": "wiki-tasks-loco-manipulation",
-      "label": "Loco-Manipulation (移动操作)",
-      "type": "task",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/concepts/world-action-models.md",
-      "detail_id": "wiki-concepts-world-action-models",
-      "label": "World Action Models（WAM，世界–动作模型）",
-      "type": "concept",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "生成式世界模型（Generative World Models） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/codex-security.md",
-    "detail_id": "entity-codex-security",
-    "label": "Codex Security（OpenAI）",
+    "path": "wiki/entities/paper-ego4d.md",
+    "detail_id": "entity-paper-ego4d",
+    "label": "Ego4D（全球第一人称日常视频 · 数据集与基准套件）",
     "type": "entity",
     "recency": "2026-08-08",
     "source": "log.md",
-    "action": "added",
+    "action": "maintained",
     "has_repo": true,
-    "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
@@ -240,23 +240,23 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 171
+      "size": 160
     },
     {
       "label": "动作重定向",
-      "size": 149
-    },
-    {
-      "label": "操作",
       "size": 147
     },
     {
-      "label": "人形论文深读笔记",
-      "size": 136
+      "label": "操作",
+      "size": 146
     },
     {
-      "label": "移动操作",
-      "size": 134
+      "label": "人形强化学习运动控制",
+      "size": 137
+    },
+    {
+      "label": "人形论文深读笔记",
+      "size": 135
     }
   ],
   "top_hubs": [
@@ -287,7 +287,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 364,
+      "degree": 365,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },

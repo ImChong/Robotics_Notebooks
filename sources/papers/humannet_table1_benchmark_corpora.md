@@ -37,7 +37,8 @@
 
 - **Ego4D**  
   - 官网：<https://ego4d-data.org/>  
-  - 论文入口（项目引用）：<https://arxiv.org/abs/2110.07058>
+  - 论文入口（项目引用）：<https://arxiv.org/abs/2110.07058>  
+  - 本库：[`sources/papers/ego4d_arxiv_2110_07058.md`](./ego4d_arxiv_2110_07058.md)、[`wiki/entities/paper-ego4d.md`](../../wiki/entities/paper-ego4d.md)
 
 - **HOI4D**  
   - 项目页：<https://hoi4d.github.io/>  

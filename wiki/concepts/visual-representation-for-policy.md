@@ -9,7 +9,7 @@ tags:
   - vla
   - deep-learning
 status: complete
-updated: 2026-07-30
+updated: 2026-08-08
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./vision-backbones.md
