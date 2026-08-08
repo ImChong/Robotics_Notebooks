@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-08-07
+updated: 2026-08-08
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 
@@ -70,6 +70,8 @@ subject to: FK(θ) = p_target (末端位置约束)
 - **采样式物理重定向（SPIDER）**：在**并行物理仿真**中对控制序列做**采样优化**（退火噪声核），把人体+物体的**运动学参考** refinement 成**动力学可行**轨迹；用**课程式虚拟接触力**稳定接触丰富任务中的序列歧义，详见 [SPIDER](../methods/spider-physics-informed-dexterous-retargeting.md)。
 - **增量 SBTO（DynaRetarget）**：用 **CEM + MuJoCo rollout** 对 PD 目标 knot 做 **incremental full-horizon** 采样轨迹优化，把 IK/kinematic 参考 refinement 为长时域 loco-manipulation 可行轨迹，相对 SBMPC 基线成功率约翻倍，详见 [DynaRetarget / SBTO](../methods/dynaretarget-sbto-motion-retargeting.md).
 - **接触隐式多重打靶（DSMS / Shooting for Contact）**：把可微仿真器离散转移嵌进 **IPOPT 多重打靶 NLP**，接触/摩擦/冲击在仿真内解析、无需接触时刻表；支持任意路径约束与命令条件化步态库，加速下游 motion-imitation RL，并在 G1 上零样本爬行 / 180° 跳转，详见 [DSMS](../methods/dsms-contact-implicit-multiple-shooting.md) 与 [Shooting for Contact](../entities/paper-shooting-for-contact.md)。
+- **GRF 锚定多接触 TO（KDMR）**：用同步 **地面反力** 推断 heel–toe 接触日程，再以 CasADi+Pinocchio 全身 NLP 强制动力学与无滑约束，减轻 GMR 类脚浮空伪影并加速 BeyondMimic 跟踪；详见 [KDMR](../entities/paper-kdmr.md)。
+- **骨架 URDF 校准 + 渐进 KDTO（SPARK）**：先校准 human URDF 到目标人形再 IK，再经 KTO→ID→KDTO 产出动力学可行轨迹与力矩参考，服务 side flip 等高动态；详见 [SPARK（骨架对齐重定向）](../entities/paper-spark-skeleton-aligned-retargeting.md)。
 - **交互保留灵巧重定向（TopoRetarget）**：在 **hand–object interaction mesh** 上匹配 **距离加权 Laplacian 坐标** + 骨方向先验与穿透约束，把人手演示转为灵巧手可学的接触保真参考（~5 ms/帧）；下游轻量 PPO 残差跟踪可在 Pen-Spin 等任务上显著优于 OmniRetarget 等基线，并零样本部署 [Wuji Hand](../entities/wuji-robotics.md)，详见 [TopoRetarget](../methods/toporetarget-interaction-preserving-dexterous-retargeting.md)。
 
 ### 3.5 稀疏关键点重定向（SKR，BifrostUMI）
@@ -236,11 +238,15 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - **ingest 档案：** [sources/sites/humanoideveryday.md](../../sources/sites/humanoideveryday.md) — Humanoid Everyday：真机开放世界操作集
 - **ingest 档案：** [sources/sites/mixamo.md](../../sources/sites/mixamo.md) — Mixamo：Adobe 在线角色与动画服务（商业许可与管线说明）
 - **ingest 档案：** [sources/papers/egohtr_arxiv_2607_13472.md](../../sources/papers/egohtr_arxiv_2607_13472.md) — EgoHTR：rough-terrain 场景对齐人演示；Human2Robot 侧用 OmniRetarget/GMR/CoACD
+- **ingest 档案：** [sources/papers/kdmr_arxiv_2603_09956.md](../../sources/papers/kdmr_arxiv_2603_09956.md) — KDMR：GRF 锚定多接触动力学重定向（arXiv:2603.09956）
+- **ingest 档案：** [sources/papers/spark_skeleton_aligned_retargeting_arxiv_2603_11480.md](../../sources/papers/spark_skeleton_aligned_retargeting_arxiv_2603_11480.md) — SPARK：URDF 校准 + 渐进 KDTO（arXiv:2603.11480）
 
 ---
 
 ## 关联页面
 - [Motion Retargeting Pipeline](./motion-retargeting-pipeline.md) — 端到端工程链路视角：源归一 → 骨架对齐 → IK → 物理筛选 → 配对监督
+- [KDMR](../entities/paper-kdmr.md) — GRF 多接触全身 TO
+- [SPARK（骨架对齐重定向）](../entities/paper-spark-skeleton-aligned-retargeting.md) — URDF 校准 + KDTO
 - [Motion Retargeting Objective（重定向目标函数形式化）](../formalizations/motion-retargeting-objective.md) — 姿态相似 / 末端接触 / 平衡 / 限位 / 平滑项的统一加权和及其三种工程退化
 - [Motion Data Quality（动作数据质量维度）](./motion-data-quality.md) — 形态差距/接触/物理/规模四轴决定重定向是否可省略及需补几层
 - [Teleopit](../entities/paper-teleopit.md) — 归一化指方向 + 距离/拇指帧的跨形态灵巧手在线优化重定向（somehand；arXiv:2608.01834）

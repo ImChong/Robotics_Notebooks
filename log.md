@@ -1,3 +1,11 @@
+## [2026-08-08] ingest | sources/papers/kdmr_arxiv_2603_09956.md + sources/papers/spark_skeleton_aligned_retargeting_arxiv_2603_11480.md — KDMR / SPARK kinodynamic 重定向入库；升格 wiki/entities/paper-kdmr.md、wiki/entities/paper-spark-skeleton-aligned-retargeting.md；站点 sources/sites/spark-leggedai.md；交叉 wiki/concepts/motion-retargeting.md、wiki/concepts/motion-retargeting-pipeline.md、wiki/overview/hub-motion-retargeting.md、wiki/methods/motion-retargeting-gmr.md、wiki/methods/beyondmimic.md、wiki/entities/paper-notebook-spark.md
+
+- **触发：** 用户指定 KDMR <https://arxiv.org/abs/2603.09956> 与 SPARK <https://arxiv.org/abs/2603.11480> / <https://www.leggedai.com/publication/2026_spark/>；要求自动合并
+- **来源：** [`sources/papers/kdmr_arxiv_2603_09956.md`](sources/papers/kdmr_arxiv_2603_09956.md)、[`sources/papers/spark_skeleton_aligned_retargeting_arxiv_2603_11480.md`](sources/papers/spark_skeleton_aligned_retargeting_arxiv_2603_11480.md)、[`sources/sites/spark-leggedai.md`](sources/sites/spark-leggedai.md)
+- **新建实体：** [`wiki/entities/paper-kdmr.md`](wiki/entities/paper-kdmr.md)、[`wiki/entities/paper-spark-skeleton-aligned-retargeting.md`](wiki/entities/paper-spark-skeleton-aligned-retargeting.md)
+- **开源核查（步骤 2.5）：** KDMR — **宣称正式发表时开源**，无独立项目页 / 官方 GitHub；SPARK — 项目页有 PDF/Video，**未列代码**（未开源）。二者 `## 源码运行时序图` 均标不适用
+- **交叉更新：** [`wiki/concepts/motion-retargeting.md`](wiki/concepts/motion-retargeting.md)、[`wiki/concepts/motion-retargeting-pipeline.md`](wiki/concepts/motion-retargeting-pipeline.md)、[`wiki/overview/hub-motion-retargeting.md`](wiki/overview/hub-motion-retargeting.md)、[`wiki/methods/motion-retargeting-gmr.md`](wiki/methods/motion-retargeting-gmr.md)、[`wiki/methods/beyondmimic.md`](wiki/methods/beyondmimic.md)、[`wiki/entities/paper-notebook-spark.md`](wiki/entities/paper-notebook-spark.md)（同名消歧）
+
 ## [2026-08-08] ingest | sources/papers/ego4d_arxiv_2110_07058.md — Ego4D（arXiv:2110.07058 / ego4d-data.org）入库；升格 wiki/entities/paper-ego4d.md；归档 sources/sites/ego4d-data-org.md、sources/repos/ego4d.md；交叉 wiki/overview/ego-category-01-data-collection.md、wiki/comparisons/humannet-table1-human-video-corpora.md、wiki/entities/paper-egoverse.md、wiki/entities/rekadaily-10k-dataset.md
 
 - **触发：** 用户指定 <https://arxiv.org/abs/2110.07058>、<https://ego4d-data.org/>；要求自动合并

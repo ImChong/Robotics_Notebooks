@@ -348,3 +348,5 @@ BeyondMimic 已经成为许多人形机器人项目的底层基座：
 - [Extreme-RGMT](../entities/paper-extreme-rgmt.md) — 同样面对高动态 vs generalist 权衡；对照表含 BeyondMimic。
 - [AGILE（论文实体）](../entities/paper-agile-humanoid-loco-manipulation.md) — Isaac Lab 工作流层用 BeyondMimic 式模仿任务做案例；额外 DR+L2C2 才真机（arXiv:2603.20147）。
 - [PFM-HR](../entities/paper-pfm-hr.md) — 冻结 Flow Matching 姿态几何先验；仅在仿真训练调制跟踪奖励，BeyondMimic 部署栈不变（arXiv:2608.03227；代码 Coming Soon）。
+- [KDMR](../entities/paper-kdmr.md) — 用动力学可行参考替换 GMR 参考后训 BeyondMimic/mjlab 跟踪（arXiv:2603.09956）。
+- [SPARK（骨架对齐重定向）](../entities/paper-spark-skeleton-aligned-retargeting.md) — KDTO(+T) 参考驱动 BeyondMimic/IsaacLab 高动态跟踪（arXiv:2603.11480）。

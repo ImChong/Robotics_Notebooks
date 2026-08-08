@@ -1,13 +1,94 @@
 {
   "generated_at": "2026-08-08",
-  "node_count": 2137,
-  "edge_count": 19746,
+  "node_count": 2139,
+  "edge_count": 19778,
   "coverage": {
-    "covered": 2113,
-    "total": 2113,
+    "covered": 2115,
+    "total": 2115,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-kdmr.md",
+      "detail_id": "entity-paper-kdmr",
+      "label": "KDMR（Kinodynamic Motion Retargeting）",
+      "type": "entity",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-spark-skeleton-aligned-retargeting.md",
+      "detail_id": "entity-paper-spark-skeleton-aligned-retargeting",
+      "label": "SPARK（Skeleton-Parameter Aligned Retargeting）",
+      "type": "entity",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/concepts/motion-retargeting.md",
+      "detail_id": "wiki-concepts-motion-retargeting",
+      "label": "Motion Retargeting（动作重定向）",
+      "type": "concept",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/concepts/motion-retargeting-pipeline.md",
+      "detail_id": "wiki-concepts-motion-retargeting-pipeline",
+      "label": "Motion Retargeting Pipeline（动作重定向流水线）",
+      "type": "concept",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/overview/hub-motion-retargeting.md",
+      "detail_id": "wiki-overview-hub-motion-retargeting",
+      "label": "动作重定向（知识链汇总）",
+      "type": "overview",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/methods/motion-retargeting-gmr.md",
+      "detail_id": "wiki-methods-motion-retargeting-gmr",
+      "label": "GMR: 通用动作重定向",
+      "type": "method",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
+    },
+    {
+      "path": "wiki/methods/beyondmimic.md",
+      "detail_id": "wiki-methods-beyondmimic",
+      "label": "BeyondMimic",
+      "type": "method",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-notebook-spark.md",
+      "detail_id": "entity-paper-notebook-spark",
+      "label": "SPARK（安全自主工具箱 · Paper Notebooks 占位）",
+      "type": "entity",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained"
+    },
     {
       "path": "wiki/entities/paper-ego4d.md",
       "detail_id": "entity-paper-ego4d",
@@ -134,104 +215,17 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "path": "wiki/methods/imitation-learning.md",
-      "detail_id": "wiki-methods-imitation-learning",
-      "label": "Imitation Learning (IL, 模仿学习)",
-      "type": "method",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/concepts/whole-body-control.md",
-      "detail_id": "wiki-concepts-whole-body-control",
-      "label": "Whole-Body Control (WBC，全身控制)",
-      "type": "concept",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/concepts/deep-learning-foundations.md",
-      "detail_id": "wiki-concepts-deep-learning-foundations",
-      "label": "深度学习基础 (Deep Learning Foundations)",
-      "type": "concept",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/lumina-embodied.md",
-      "detail_id": "entity-lumina-embodied",
-      "label": "Lumina 具身智能社区",
-      "type": "entity",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/learn-robotics-qqfly-guide.md",
-      "detail_id": "entity-learn-robotics-qqfly-guide",
-      "label": "开源机器人学学习指南（qqfly）",
-      "type": "entity",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-kilvo.md",
-      "detail_id": "entity-paper-kilvo",
-      "label": "KILVO：人形多传感器运动学–惯性–激光–视觉里程计",
-      "type": "entity",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/methods/lidar-odometry-fusion.md",
-      "detail_id": "wiki-methods-lidar-odometry-fusion",
-      "label": "里程计与激光雷达融合定位",
-      "type": "method",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-ego4d.md",
-    "detail_id": "entity-paper-ego4d",
-    "label": "Ego4D（全球第一人称日常视频 · 数据集与基准套件）",
+    "path": "wiki/entities/paper-kdmr.md",
+    "detail_id": "entity-paper-kdmr",
+    "label": "KDMR（Kinodynamic Motion Retargeting）",
     "type": "entity",
     "recency": "2026-08-08",
     "source": "log.md",
     "action": "maintained",
-    "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "community_label": "动作重定向（Motion Retargeting） 社区"
   },
   "top_communities": [
     {
@@ -244,7 +238,7 @@
     },
     {
       "label": "动作重定向",
-      "size": 147
+      "size": 149
     },
     {
       "label": "操作",
@@ -348,7 +342,7 @@
       "detail_id": "wiki-methods-beyondmimic",
       "label": "BeyondMimic",
       "type": "method",
-      "degree": 73,
+      "degree": 77,
       "has_repo": true
     },
     {
