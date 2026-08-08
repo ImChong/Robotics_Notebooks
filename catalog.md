@@ -1100,6 +1100,7 @@
 - [Patch Policy：密集视觉表征的轻量高频控制](wiki/entities/paper-patch-policy.md) — Patch Policy** 是一种不依赖大型 VLM、直接把预训练 ViT 密集 patch 特征接入机器人策略 transformer 的轻量架构。 `📅unknown` `[entity_page]`
 - [PEAR：像素对齐的表意人体网格恢复](wiki/entities/paper-pear-pixel-aligned-expressive-hmr.md) — PEAR**（*Pixel-aligned Expressive humAn mesh Recovery*，arXiv:2601.22693，SIGGRAPH 2026，[IDEA](https: `📅unknown` `[entity_page]`
 - [Perceptive BFM：Adapting Human Motion Priors to Robot-Centric Terrain](wiki/entities/paper-perceptive-bfm.md) — Perceptive BFM**（*Perceptive Behavior Foundation Model: Adapting Human Motion Priors to Robot-Cent `📅unknown` `[entity_page]`
+- [PFM-HR：面向人形的姿态流匹配先验](wiki/entities/paper-pfm-hr.md) — PFM-HR**（*Pose Flow Matching for Humanoid Robots*；[arXiv:2608.03227](https://arxiv.org/abs/2608.03 `📅unknown` `[entity_page]`
 - [PhyGile（Physics-Prefix Guided Motion Generation for Agile General Humanoid Motion Tracking）](wiki/entities/paper-phygile.md) — PhyGile** 是西北工业大学、上海 AI Lab、中科大、清华、复旦、字节与东北大学等团队的 **文本驱动人形敏捷全身控制** 工作（arXiv:2603.19305）：在 **262 维机 `📅unknown` `[entity_page]`
 - [PhysCoRe（物理修正残差世界模型 · 材料感知可变形动力学）](wiki/entities/paper-physcore.md) — PhysCoRe**（*Physics-Corrected Residual World Models for Material-Aware Deformable Dynamics*，[arXiv `📅unknown` `[entity_page]`
 - [PhysForge（Physics-Grounded 3D Assets for Interactive Virtual Worlds）](wiki/entities/paper-physforge-physics-grounded-3d-assets.md) — PhysForge** 是 HKU MMLab 与腾讯混元等合作者的论文工作（arXiv:2605.05163，项目页 [PhysForge](https://hku-mmlab.github.i `📅unknown` `[entity_page]`
