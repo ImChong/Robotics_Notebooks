@@ -6,6 +6,7 @@ updated: 2026-08-08
 related:
   - ./philia.md
   - ./hermes-agent.md
+  - ./cli-anything.md
   - ./sensenova-skills.md
   - ./paper-skillcorpus.md
   - ./paper-harnessbank.md
@@ -44,7 +45,7 @@ summary: "OpenClaw（openclaw.ai / openclaw/openclaw）：开源个人 AI 助手
 
 - **课程项目锚点：** 四足×VLN 实战营 Day1 项目即为 **部署 OpenClaw 做四足语音指令控制**——需要独立实体页，而不是只在 Philia/SenseNova 脚注里出现。
 - **控制平面 ≠ 运动策略：** OpenClaw 负责会话、记忆、技能路由；`cmd_vel` / 步态 / 力矩仍由 [分层导航栈](../concepts/hierarchical-quadruped-navigation-stack.md) 与底层 SDK 负责。
-- **生态可组合：** 技能目录（如 `~/.openclaw/skills/`）可装 [SenseNova-Skills](./sensenova-skills.md)；物理多机扩展见 [Philia](./philia.md)；对照 agent OS 见 [Hermes Agent](./hermes-agent.md)。
+- **生态可组合：** 技能目录（如 `~/.openclaw/skills/`）可装 [SenseNova-Skills](./sensenova-skills.md)；亦可经 [CLI-Anything](./cli-anything.md) Hub meta-skill 发现/安装专业软件 CLI；物理多机扩展见 [Philia](./philia.md)；对照 agent OS 见 [Hermes Agent](./hermes-agent.md)。
 
 ## 核心结构/机制
 
@@ -85,6 +86,7 @@ flowchart LR
 
 - [Philia](./philia.md) — OpenClaw + Robot Gateway 多机器人助手
 - [Hermes Agent](./hermes-agent.md) — 对照开源 agent OS
+- [CLI-Anything（HKUDS）](./cli-anything.md) — 生成/分发 agent-native 软件 CLI；OpenClaw 为 SKILL 宿主之一
 - [SkillCorpus](./paper-skillcorpus.md) — 社区 `SKILL.md` 策展语料；OpenClaw 为其端到端评测 harness 之一
 - [HarnessBank](./paper-harnessbank.md) — 冻结模型下进化宿主 harness（与技能层互补）
 - [人形语音交互流水线](../queries/humanoid-voice-interaction-pipeline.md)

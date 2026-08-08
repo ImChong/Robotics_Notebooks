@@ -17,6 +17,7 @@ related:
   - ./superpowers-obra.md
   - ./sensenova-skills.md
   - ./agent-reach.md
+  - ./cli-anything.md
   - ./philia.md
   - ../concepts/model-context-protocol.md
   - ../references/llm-wiki-karpathy.md
@@ -50,7 +51,7 @@ tags: [llm-agents, coding-agents, agent-infrastructure, skills, mcp, persistent-
 ## 为什么重要（对本知识库读者）
 
 - **与 Karpathy LLM Wiki 同构轴、不同落点：** [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) 把 **知识** 编译进 `wiki/`；Hermes 把 **行为与程序性记忆** 编译进 **技能、MEMORY.md、USER.md、SOUL.md** 与 SQLite 会话。维护本仓库的 agent 可对照两者：**结构化 markdown 知识库** vs **可执行代理运行时**。
-- **与 Superpowers / Agent Reach 的互补：** [Superpowers（obra）](superpowers-obra.md) 提供 **TDD / worktree / 子代理评审** 等 **交付流程技能**；[Agent Reach](agent-reach.md) 聚合 **外网读搜上游 CLI**；Hermes 自带 web/browser/MCP/终端，并覆盖 **网关、cron、沙箱、轨迹导出**，更接近 **agent OS**。真机 **Robot Gateway + 物理安全闸门** 路线见 Astribot [Philia](philia.md)。
+- **与 Superpowers / Agent Reach / CLI-Anything 的互补：** [Superpowers（obra）](superpowers-obra.md) 提供 **TDD / worktree / 子代理评审** 等 **交付流程技能**；[Agent Reach](agent-reach.md) 聚合 **外网读搜上游 CLI**；[CLI-Anything](cli-anything.md) 为任意专业软件生成 **agent-native CLI + SKILL**（仓内含 Hermes skill 路径）；Hermes 自带 web/browser/MCP/终端，并覆盖 **网关、cron、沙箱、轨迹导出**，更接近 **agent OS**。真机 **Robot Gateway + 物理安全闸门** 路线见 Astribot [Philia](philia.md)。
 - **研究侧接口：** 文档与代码路径支持 **批处理、ShareGPT 轨迹、Atropos RL**，对需要 **从代理交互生成训练数据** 的机器人学习管线有参照价值（与仿真 RL 栈正交，但共享「轨迹 → 策略」思维）。
 
 ## 核心结构
@@ -123,6 +124,7 @@ flowchart TB
 - [Superpowers（obra）](superpowers-obra.md) — 编码代理 **软件工程流程** 技能库
 - [SkillCorpus](paper-skillcorpus.md) — 社区技能策展语料；可与 Hermes 技能目录对照「精品库 vs 生态语料」
 - [Agent Reach](agent-reach.md) — 编码代理 **外网读搜** 脚手架
+- [CLI-Anything（HKUDS）](cli-anything.md) — 专业软件 → agent-native CLI / Hub / SKILL（可装入 Hermes）
 - [Model Context Protocol（MCP）](../concepts/model-context-protocol.md) — Hermes 工具扩展所依的开放协议
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — **持久 wiki 知识编译** 范式
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库维护操作规范

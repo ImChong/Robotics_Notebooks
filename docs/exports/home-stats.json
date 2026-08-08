@@ -1,13 +1,67 @@
 {
   "generated_at": "2026-08-08",
-  "node_count": 2140,
-  "edge_count": 19791,
+  "node_count": 2141,
+  "edge_count": 19806,
   "coverage": {
-    "covered": 2116,
-    "total": 2116,
+    "covered": 2117,
+    "total": 2117,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/cli-anything.md",
+      "detail_id": "entity-cli-anything",
+      "label": "CLI-Anything（HKUDS）",
+      "type": "entity",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
+    {
+      "path": "wiki/entities/hermes-agent.md",
+      "detail_id": "entity-hermes-agent",
+      "label": "Hermes Agent（Nous Research）",
+      "type": "entity",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
+    {
+      "path": "wiki/entities/openclaw.md",
+      "detail_id": "entity-openclaw",
+      "label": "OpenClaw",
+      "type": "entity",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
+    {
+      "path": "wiki/entities/agent-reach.md",
+      "detail_id": "entity-agent-reach",
+      "label": "Agent Reach（Panniantong）",
+      "type": "entity",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "大语言模型维基（LLM Wiki） 社区"
+    },
+    {
+      "path": "wiki/entities/freecad-mcp.md",
+      "detail_id": "entity-freecad-mcp",
+      "label": "FreeCAD MCP",
+      "type": "entity",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/paper-slamformer-infinity.md",
       "detail_id": "entity-paper-slamformer-infinity",
@@ -160,69 +214,18 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/ego-category-01-data-collection.md",
-      "detail_id": "wiki-overview-ego-category-01-data-collection",
-      "label": "Ego 分类 01：数据采集",
-      "type": "overview",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/comparisons/humannet-table1-human-video-corpora.md",
-      "detail_id": "wiki-comparisons-humannet-table1-human-video-corpora",
-      "label": "HumanNet Table 1：代表性人类视频语料与具身向关系",
-      "type": "comparison",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-egoverse.md",
-      "detail_id": "entity-paper-egoverse",
-      "label": "EgoVerse（Egocentric 人类数据集 · 联盟级人→机迁移）",
-      "type": "entity",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/rekadaily-10k-dataset.md",
-      "detail_id": "entity-rekadaily-10k-dataset",
-      "label": "RekaDaily-10k（家务第一人称视频数据集）",
-      "type": "entity",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/codex-security.md",
-      "detail_id": "entity-codex-security",
-      "label": "Codex Security（OpenAI）",
-      "type": "entity",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-slamformer-infinity.md",
-    "detail_id": "entity-paper-slamformer-infinity",
-    "label": "SLAMFormer-∞（Infinite SLAM Transformer）",
+    "path": "wiki/entities/cli-anything.md",
+    "detail_id": "entity-cli-anything",
+    "label": "CLI-Anything（HKUDS）",
     "type": "entity",
     "recency": "2026-08-08",
     "source": "log.md",
-    "action": "maintained",
+    "action": "added",
     "has_repo": true,
-    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    "community_label": "大语言模型维基（LLM Wiki） 社区"
   },
   "top_communities": [
     {
