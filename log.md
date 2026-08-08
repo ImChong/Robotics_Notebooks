@@ -1,3 +1,11 @@
+## [2026-08-08] lint | wiki/entities/paper-bridgevla-plusplus.md — 全量健康检查：阻塞型 0、信息型 1 → 0
+
+- **触发：** 全量知识库 lint 巡检，要求把信息型预警一并收敛
+- **基线：** `python3 scripts/lint_wiki.py` 阻塞型 **0**、信息型 **1**（陈旧声明巡检：[`wiki/entities/paper-bridgevla-plusplus.md`](wiki/entities/paper-bridgevla-plusplus.md) 正文含绝对化措辞「SOTA」，`updated=2026-08-07` 早于同 tag 更新页 [`wiki/concepts/visual-representation-for-policy.md`](wiki/concepts/visual-representation-for-policy.md) `updated=2026-08-08`）
+- **复核与改写（陈旧声明 V1）：** 命中句为「实验与评测」表 RLBench 行备注「相对前 SOTA +6.9 pt（项目页）」——该 +6.9 pt 只见于项目页横向对比，`sources/papers/bridgevla_plusplus_arxiv_2608_05042.md` 归档仅记录 RLBench **93.7%** 绝对值，故不是本库可自证的「当前最强」断言；改写为「相对项目页所列先前最好方法 +6.9 pt（项目页口径，2026-08 复核）」——保留数字与出处、把无时限的绝对化措辞降级为**有主体、有口径、有复核时点**的相对表述，同步 `updated` 2026-08-07 → 2026-08-08 记录本次复核
+- **其余检查：** 阻塞型 22 项与其余信息型 14 项本轮基线即为 0；Sources 覆盖率 **2117/2117 (100%)**；`eval_search_quality` 通过率 **37/37 (100%)**；`check_export_quality` **12/12**
+- **门禁：** `make ci-preflight` 通过（lint 阻塞型 0 + 信息型 0）；派生 `exports/lint-report.md`、`catalog.md`、统计与 `docs/exports/` 随本次提交同步
+
 ## [2026-08-08] ingest | sources/repos/hkuds_cli_anything.md — 接入 CLI-Anything / CLI-Hub；wiki/entities/cli-anything.md；交叉更新 hermes-agent / openclaw / agent-reach / freecad-mcp；sources/sites/cli-anything-hub.md；sources/papers/cli_anything_arxiv_2606_03854.md
 
 - **触发：** 用户指定 <https://github.com/HKUDS/CLI-Anything>；要求自动合并

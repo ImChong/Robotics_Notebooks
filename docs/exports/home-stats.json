@@ -9,6 +9,27 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-bridgevla-plusplus.md",
+      "detail_id": "entity-paper-bridgevla-plusplus",
+      "label": "BridgeVLA++（Memory-Augmented 3D VLA · arXiv:2608.05042）",
+      "type": "entity",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/visual-representation-for-policy.md",
+      "detail_id": "wiki-concepts-visual-representation-for-policy",
+      "label": "视觉表征作为策略输入（Visual Representation for Policy）",
+      "type": "concept",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "path": "wiki/entities/cli-anything.md",
       "detail_id": "entity-cli-anything",
       "label": "CLI-Anything（HKUDS）",
@@ -194,38 +215,18 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-notebook-spark.md",
-      "detail_id": "entity-paper-notebook-spark",
-      "label": "SPARK（安全自主工具箱 · Paper Notebooks 占位）",
-      "type": "entity",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-ego4d.md",
-      "detail_id": "entity-paper-ego4d",
-      "label": "Ego4D（全球第一人称日常视频 · 数据集与基准套件）",
-      "type": "entity",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/cli-anything.md",
-    "detail_id": "entity-cli-anything",
-    "label": "CLI-Anything（HKUDS）",
+    "path": "wiki/entities/paper-bridgevla-plusplus.md",
+    "detail_id": "entity-paper-bridgevla-plusplus",
+    "label": "BridgeVLA++（Memory-Augmented 3D VLA · arXiv:2608.05042）",
     "type": "entity",
     "recency": "2026-08-08",
     "source": "log.md",
-    "action": "added",
+    "action": "maintained",
     "has_repo": true,
-    "community_label": "大语言模型维基（LLM Wiki） 社区"
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {

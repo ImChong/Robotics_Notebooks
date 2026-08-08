@@ -11,7 +11,7 @@ tags:
   - ucas
   - bytedance
 status: complete
-updated: 2026-08-07
+updated: 2026-08-08
 arxiv: "2608.05042"
 code: "https://github.com/BridgeVLA/BridgeVLA"
 related:
@@ -140,7 +140,7 @@ sequenceDiagram
 
 | 基准 | BridgeVLA++ | 备注 |
 |------|-------------|------|
-| RLBench（18） | **93.7%** | 相对前 SOTA +6.9 pt（项目页） |
+| RLBench（18） | **93.7%** | 相对项目页所列先前最好方法 +6.9 pt（项目页口径，2026-08 复核） |
 | COLOSSEUM | **65.2%** | 14 设定 / 12 未见扰动轴 |
 | GemBench | **51.1%** | 四级泛化 |
 | RMBench（双臂记忆） | **96.0%** | base 无记忆 **18.9%** |
