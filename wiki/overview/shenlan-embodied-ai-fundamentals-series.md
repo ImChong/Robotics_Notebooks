@@ -2,7 +2,7 @@
 type: overview
 tags: [embodied-ai, fundamentals, geometry, kinematics, shenlan, survey]
 status: complete
-updated: 2026-06-18
+updated: 2026-08-08
 related:
   - ../formalizations/homogeneous-coordinates-transform.md
   - ../formalizations/lie-group-rigid-body-motions.md
@@ -11,6 +11,7 @@ related:
   - ../formalizations/se3-representation.md
   - ../overview/vla-open-source-repro-landscape-2025.md
   - ../overview/world-models-15-open-source-technology-map.md
+  - ../overview/humanoid-rl-policy-training-five-modules.md
   - ../entities/modern-robotics-book.md
 sources:
   - ../../sources/blogs/wechat_shenlan_homogeneous_coordinates_transform.md
@@ -18,6 +19,7 @@ sources:
   - ../../sources/blogs/wechat_shenlan_3d_coordinate_transforms.md
   - ../../sources/blogs/wechat_shenlan_riemannian_manifold_tangent_space.md
   - ../../sources/blogs/wechat_shenlan_rl_embodied_minimal_closed_loop.md
+  - ../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md
 summary: "深蓝具身智能《具身智能基础》专栏（专辑 5 篇已入库）：L0 齐次坐标/SE(3) 矩阵连乘 → 李群/李代数（姿态）→ 三维坐标变换（感知–操作）→ 黎曼流形（流形优化）；第 4 篇 RL 最小闭环已并入运动控制路线 L5。"
 ---
 
@@ -85,6 +87,7 @@ flowchart TB
 | RL 在大角度旋转上发散、想理解流形优化 | [03 黎曼流形](../formalizations/riemannian-manifold-tangent-space.md) → 回看 01 |
 | 补 2025 VLA 开源复现地图（同公众号） | [VLA 复现景观](./vla-open-source-repro-landscape-2025.md) |
 | 想补 RL 入门最小闭环（策略/MDP/PPO·SAC/PyBullet） | [具身 RL 最小闭环](../concepts/embodied-rl-minimal-closed-loop.md) → [运动控制路线 L5.0](../../roadmap/motion-control.md#l50-桥梁从路牌到可跑代码的最小闭环) |
+| 想看人形运控 RL 五模块闭环（AC/PPO/奖励/蒸馏） | [人形 RL 策略训练五模块](./humanoid-rl-policy-training-five-modules.md) → [Humanoid RL Cookbook](../queries/humanoid-rl-cookbook.md) |
 | 补世界模型 15 项目地图（同公众号） | [世界模型三线地图](./world-models-15-open-source-technology-map.md) |
 
 ## 常见误区

@@ -15,6 +15,7 @@ related:
   - ./implicit-explicit-actuator-modeling.md
   - ../methods/actuator-network.md
   - ./privileged-training.md
+  - ../overview/humanoid-rl-policy-training-five-modules.md
   - ../entities/genesis-sim.md
   - ../entities/paper-pac-man-perceptive-cbf-rl.md
   - ./data-flywheel.md
@@ -53,7 +54,7 @@ related:
   - ../entities/paper-legged-robots-advances-challenges.md
   - ../queries/sim2real-closed-loop-engineering.md
 summary: "Sim2Real 关注如何把仿真中学到的策略稳定迁移到真实机器人，是机器人学习落地的核心鸿沟。"
-updated: 2026-08-07
+updated: 2026-08-08
 sources:
   - ../../sources/papers/agile_arxiv_2603_20147.md
   - ../../sources/papers/physx_omni_arxiv_2605_21572.md
@@ -215,6 +216,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — DR / RMA / InEKF ingest 摘要
 - [sources/papers/rma_arxiv_2107_04034.md](../../sources/papers/rma_arxiv_2107_04034.md) — RMA 一手论文摘录（RSS 2021）
 - [sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md](../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md) — 「非训后一步」闭环叙事与误差分流（深蓝具身智能，2026-07-28）
+- [深蓝具身智能：人形 RL 策略训练体系](../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md) — Teacher-Student 作为仿真→真机后置模块
 - [Sim2Real 方法横向对比](../comparisons/sim2real-approaches.md) — 迁移路线与代表工作
 - [Deployment-Ready RL: Pitfalls, Lessons, and Best Practices](https://thehumanoid.ai/deployment-ready-rl-pitfalls-lessons-and-best-practices/) — 工程实践
 - [机器人论文阅读笔记：Domain Randomization](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Domain_Randomization_Understanding_Sim-to-Real_Transfer/Domain_Randomization_Understanding_Sim-to-Real_Transfer.html)
@@ -238,6 +240,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [AGILE（论文实体）](../entities/paper-agile-humanoid-loco-manipulation.md) — 描述符驱动导出 + MuJoCo Sim2Sim / 真机合同；运动质量诊断作部署门禁（arXiv:2603.20147）
 - [机器人学习五大范式](../comparisons/robot-learning-five-paradigms-taxonomy.md) — RL 线中的仿真训练与域随机化迁移读法
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
+- [人形 RL 策略训练五模块](../overview/humanoid-rl-policy-training-five-modules.md) — 蒸馏部署作为训练闭环末环
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [TacRefineNet](../entities/paper-tacrefinenet-tactile-grasp-refinement.md) — 多指触觉策略仿真 BC 零样本上真机
 - [PAC-MAN](../entities/paper-pac-man-perceptive-cbf-rl.md) — 掩膜深度观测契约对齐后 G1 零样本躲避球（CBF-RL）

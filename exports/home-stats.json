@@ -1,13 +1,100 @@
 {
   "generated_at": "2026-08-08",
-  "node_count": 2127,
-  "edge_count": 19597,
+  "node_count": 2128,
+  "edge_count": 19619,
   "coverage": {
-    "covered": 2103,
-    "total": 2103,
+    "covered": 2104,
+    "total": 2104,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/humanoid-rl-policy-training-five-modules.md",
+      "detail_id": "wiki-overview-humanoid-rl-policy-training-five-modules",
+      "label": "人形 RL 策略训练五模块：从 MDP 到蒸馏部署",
+      "type": "overview",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/concepts/embodied-rl-minimal-closed-loop.md",
+      "detail_id": "wiki-concepts-embodied-rl-minimal-closed-loop",
+      "label": "具身 RL 最小闭环（Embodied RL Minimal Closed Loop）",
+      "type": "concept",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/methods/reinforcement-learning.md",
+      "detail_id": "wiki-methods-reinforcement-learning",
+      "label": "Reinforcement Learning (RL, 强化学习)",
+      "type": "method",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/methods/ppo.md",
+      "detail_id": "wiki-methods-ppo",
+      "label": "PPO（Proximal Policy Optimization）",
+      "type": "method",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/privileged-training.md",
+      "detail_id": "wiki-concepts-privileged-training",
+      "label": "Privileged Training（特权信息训练）",
+      "type": "concept",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/queries/humanoid-rl-cookbook.md",
+      "detail_id": "wiki-queries-humanoid-rl-cookbook",
+      "label": "人形机器人 RL 策略训练完整 Checklist",
+      "type": "query",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/comparisons/wbc-vs-rl.md",
+      "detail_id": "wiki-comparisons-wbc-vs-rl",
+      "label": "WBC vs RL: Whole-Body Control vs Reinforcement Learning",
+      "type": "comparison",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
+      "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
+      "label": "人形机器人 RL 运动控制：身体系统栈视角",
+      "type": "overview",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/overview/shenlan-embodied-ai-fundamentals-series.md",
+      "detail_id": "wiki-overview-shenlan-embodied-ai-fundamentals-series",
+      "label": "《具身智能基础》专栏技术地图",
+      "type": "overview",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained"
+    },
     {
       "path": "wiki/entities/paper-pfm-hr.md",
       "detail_id": "entity-paper-pfm-hr",
@@ -116,113 +203,21 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/unitree-g1.md",
-      "detail_id": "entity-unitree-g1",
-      "label": "Unitree G1 (人形机器人)",
-      "type": "entity",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/humantouch.md",
-      "detail_id": "entity-humantouch",
-      "label": "HumanTouch（可规模化人手触觉采集系统）",
-      "type": "entity",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/concepts/tactile-sensing.md",
-      "detail_id": "wiki-concepts-tactile-sensing",
-      "label": "Tactile Sensing（触觉感知）",
-      "type": "concept",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/concepts/visuo-tactile-fusion.md",
-      "detail_id": "wiki-concepts-visuo-tactile-fusion",
-      "label": "视触觉融合（Visuo-Tactile Fusion）",
-      "type": "concept",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/concepts/contact-rich-manipulation.md",
-      "detail_id": "wiki-concepts-contact-rich-manipulation",
-      "label": "Contact-Rich Manipulation（接触丰富型操作）",
-      "type": "concept",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/overview/hub-tactile.md",
-      "detail_id": "wiki-overview-hub-tactile",
-      "label": "触觉与力觉（知识链汇总）",
-      "type": "overview",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/queries/dexterous-data-collection-guide.md",
-      "detail_id": "wiki-queries-dexterous-data-collection-guide",
-      "label": "灵巧操作数据采集指南",
-      "type": "query",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/comparisons/data-gloves-vs-vision-teleop.md",
-      "detail_id": "wiki-comparisons-data-gloves-vs-vision-teleop",
-      "label": "数据手套 vs 视觉遥操作 (灵巧数据采集选型)",
-      "type": "comparison",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-pfm-hr.md",
-    "detail_id": "entity-paper-pfm-hr",
-    "label": "PFM-HR：面向人形的姿态流匹配先验",
-    "type": "entity",
+    "path": "wiki/overview/humanoid-rl-policy-training-five-modules.md",
+    "detail_id": "wiki-overview-humanoid-rl-policy-training-five-modules",
+    "label": "人形 RL 策略训练五模块：从 MDP 到蒸馏部署",
+    "type": "overview",
     "recency": "2026-08-08",
     "source": "log.md",
-    "action": "maintained",
-    "has_repo": true
+    "action": "added"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 216
+      "size": 208
     },
     {
       "label": "视觉-语言-动作",
@@ -230,7 +225,7 @@
     },
     {
       "label": "动作重定向",
-      "size": 157
+      "size": 159
     },
     {
       "label": "操作",
@@ -238,7 +233,7 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 143
+      "size": 141
     },
     {
       "label": "移动操作",
@@ -250,7 +245,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 426,
+      "degree": 428,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -295,7 +290,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 291,
+      "degree": 293,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
@@ -341,7 +336,8 @@
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
-      "degree": 56
+      "degree": 56,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",

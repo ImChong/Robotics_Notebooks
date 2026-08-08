@@ -2,11 +2,12 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-08-06
+updated: 2026-08-08
 related:
   - ../comparisons/robot-learning-five-paradigms-taxonomy.md
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-rl-intelligent-control.md
+  - ../overview/humanoid-rl-policy-training-five-modules.md
   - ../methods/value-based-reinforcement-learning.md
   - ../methods/hierarchical-reinforcement-learning.md
   - ../entities/richard-sutton.md
@@ -38,6 +39,7 @@ related:
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_learning_five_paradigms.md
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
+  - ../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md
   - ../../sources/sites/incompleteideas-net-rich-sutton.md
   - ../../sources/papers/intentional_streaming_rl.md
   - ../../sources/papers/policy_optimization.md
@@ -271,6 +273,7 @@ flowchart LR
 - [MDP](../formalizations/mdp.md) — RL 的形式化框架，Bellman 方程定义在 MDP 上
 - [POMDP](../formalizations/pomdp.md) — 真机部分可观测场景的标准扩展
 - [具身 RL 最小闭环](../concepts/embodied-rl-minimal-closed-loop.md) — 仿真里把 $S,A,R,P$ 跑通再上学習算法
+- [人形 RL 策略训练五模块](../overview/humanoid-rl-policy-training-five-modules.md) — MDP → Actor-Critic → PPO → 奖励 → 蒸馏的运控训练闭环
 - [PyBullet](../entities/pybullet.md) — 轻量入门仿真器
 - [Gymnasium](../entities/gymnasium.md) — 单智能体 RL 环境 API 标准（`reset` / `step` / `spaces`）
 

@@ -2,11 +2,12 @@
 type: overview
 tags: [humanoid, rl, motion-control, survey, body-system-stack, vla, world-model]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-08
 related:
   - ../entities/humanoid-motion-intelligence.md
   - ./robot-training-stack-layers-technology-map.md
   - ./robot-world-models-training-loop-taxonomy.md
+  - ./humanoid-rl-policy-training-five-modules.md
   - ./humanoid-motion-control-know-how.md
   - ../tasks/humanoid-locomotion.md
   - ../tasks/loco-manipulation.md
@@ -34,6 +35,7 @@ sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
   - ../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md
+  - ../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/sites/wechat-embodied-ai-lab-humanoid-rl-motion-survey-2026-05-18.md
   - ../../sources/repos/humanoid-motion-intelligence.md
@@ -98,6 +100,7 @@ summary: "把 42 篇 humanoid RL 运动控制 / 移动操作论文整理成一�
 ## 与现有 wiki 的位置
 
 - 本页是**总框架**，回答「这批论文整体在搭什么」；具体工程经验沉淀在 [humanoid-motion-control-know-how](./humanoid-motion-control-know-how.md)（传感器 / 电机 / 热管理 / 接触估计）。
+- **训练模块视角**（MDP → Actor-Critic → PPO → 奖励 → 蒸馏）见 [人形 RL 策略训练五模块](./humanoid-rl-policy-training-five-modules.md)，与本页「能力层栈」正交。
 - 单篇方法的方法学细节在 `wiki/methods/`（[DeepMimic](../methods/deepmimic.md)、[SONIC](../methods/sonic-motion-tracking.md)、[BeyondMimic](../methods/beyondmimic.md)、[Any2Track](../methods/any2track.md)、[AMS](../methods/ams.md)、[GMR](../methods/motion-retargeting-gmr.md)、[NMR](../methods/neural-motion-retargeting-nmr.md) 等）；跟踪局限与超越路径见 [Jason Peng 灵活运动技能学习](./jason-peng-flexible-motion-skill-learning.md)。
 - 任务侧的统一控制讨论见 [ULTRA Survey](../tasks/ultra-survey.md)（统一多模态全身 loco-manipulation 控制器）。
 - 单篇论文页：[DoorMan](../entities/paper-doorman-opening-sim2real-door.md)、[VIRAL](../entities/paper-viral-humanoid-visual-sim2real.md)、[BFM](../entities/paper-behavior-foundation-model-humanoid.md) 等。
@@ -105,6 +108,7 @@ summary: "把 42 篇 humanoid RL 运动控制 / 移动操作论文整理成一�
 ## 关联页面
 
 - [Humanoid Motion Intelligence 知识库](../entities/humanoid-motion-intelligence.md) — 同策展方 GitHub 总仓（六条路线 + 论文/开源双索引；勿镜像）
+- [人形 RL 策略训练五模块](./humanoid-rl-policy-training-five-modules.md) — 训练流水线组件读法（与本文能力层正交）
 - [训练栈分层技术地图](./robot-training-stack-layers-technology-map.md) — 工具链六层（与本文「身体能力八层」互补）
 - [人形 AMP 运动先验综述](./humanoid-amp-motion-prior-survey.md) — 19 篇 AMP / 运动先验论文的姊妹篇导航（与本文 42 篇栈互补）
 - [运动小脑 64 篇技术地图](./humanoid-motion-cerebellum-technology-map.md) — 同一公众号 2026-06 姊妹篇：论文高度重叠，按「动作小脑」A–I 九组重框（**复用** 本文 `paper-hrl-stack-*` 等节点，不重复建页）
