@@ -2092,6 +2092,14 @@
         "cloud-native-computing-foundation"
       ]
     },
+    "coco-matrix": {
+      "label": "可可矩阵（COCO Matrix）",
+      "aliases": [
+        "coco-matrix",
+        "cocomatrix",
+        "coco-matrix-shanghai"
+      ]
+    },
     "xerox-parc": {
       "label": "施乐帕洛阿尔托研究中心（Xerox PARC）",
       "aliases": [

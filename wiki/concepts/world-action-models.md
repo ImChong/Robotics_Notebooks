@@ -2,8 +2,8 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-08-07
-summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM 等 beyond-RGB 未来表征实例。"
+updated: 2026-08-08
+summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM 等 beyond-RGB 未来表征实例，以及 ω-0 潜空间 foresight 人形并发 loco-manip。"
 related:
   - ../../roadmap/depth-wam.md
   - ../queries/embodied-fm-taxonomy-loop.md
@@ -21,6 +21,7 @@ related:
   - ../entities/paper-meco-wam-4d-geometry-cotraining.md
   - ../entities/paper-dit4dit-video-action-model.md
   - ../entities/paper-motionwam-humanoid-loco-manipulation-wam.md
+  - ../entities/paper-omega-0.md
   - ../entities/paper-abot-m05-mobile-manipulation-wam.md
   - ../entities/paper-worldvln-aerial-vln-wam.md
   - ../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md
@@ -140,6 +141,8 @@ sources:
 
 **文献实例（Joint 族 + 双 DiT 实时闭环 · 人形 loco-manip）**：[MotionWAM](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) 以 **Cosmos-Predict2.5 系 Video DiT** 在 **固定 flow 步单次前向** 的隐状态条件 **Motion DiT**，在 **SONIC 统一全身 motion token** 上联合预测行走、躯干、身高、足端交互与双手操作；三阶段 **egocentric 视频 → 跨具身动作 → 全身遥操作** 微调，在 **宇树 G1** 九项真机任务上相对同演示微调的 VLA 基线 **整体成功率 +32% 绝对值**，并报告 **任务驱动足部行为**（arXiv:2606.09215，Mondo Robotics / HKUST）。
 
+**文献实例（Joint 族 + 潜空间 foresight · 人形并发家务 loco-manip）**：[ω-0](../entities/paper-omega-0.md) 用 **紧凑未来观测 embedding**（非像素视频重建）耦合 **扩散全身动作 latent**，经 **SONIC** 在 G1 上执行擦桌/拖地/洗衣等 **manipulate-while-moving**；配套 **ω-HOME**（40h+）；11 任务 Omni **SR 81.8% / Progress 90.3%**，显著高于 ψ-0 / DiT4DiT / Fast-WAM 等同协议基线（arXiv:2608.06375，NTU / PKU / BAAI / HKUST-GZ；代码与数据 WIP）。
+
 **文献实例（Cascaded 族 + latent video-motion 先验 · 人形 loco-manip）**：[Being-M0.7](../entities/paper-being-m07-humanoid-latent-wam.md) 在 **>1 万小时** 人中心混合模态（配对 video–motion / 仅视频 / 仅动作）上预训练 **DINO 视觉 latent + head-root 紧凑 motion** 的 **video-motion MoT** 先验，再以 **future-conditioned action expert** 在 **G1 VR 全身遥操作** 轨迹上接地；推理 **低频刷新 prior 计划、高频复用 KV cache** 输出 action chunk，真机四任务定量 **7/15** vs GR00T-N1.6 **2/15**、Ψ0 **3/15**（BeingBeyond Technical Report，2026-07-14）。与 [Being-H0.7](../methods/being-h07.md) 同族「潜空间 WAM」，M0.7 显式面向 **全身 loco-manipulation** 与 **SONIC** 栈。
 
 **文献实例（Joint 族 + 移动操作三层对齐 · latent action + Dream Forcing）**：[ABot-M0.5](../entities/paper-abot-m05-mobile-manipulation-wam.md) 以 **Wan2.2** 视频骨干建立 **Video → 帧级 latent action → 可执行动作** 级联，用 **双层 D-MoT** 解耦 **移动/操作** 子空间，并以 **Dream Forcing** 在 **自生成视频 latent** 上训练逆动力学以对齐自回归 rollout；在 **RoboCasa365**（+Condensed Memory **46.6%**）、**RoboTwin 2.0**（**94.1%**）、**LIBERO-Plus 零样本 WAM 对照**（**83.4%**）与真机长程任务上报告领先表现（arXiv:2607.00678，AMAP CV Lab / 阿里巴巴）。
@@ -227,6 +230,7 @@ flowchart TB
 - [Pelican-Unified 1.0（UEI）](../methods/pelican-unified-1.md)
 - [DiT4DiT（双 DiT 联合 VAM）](../entities/paper-dit4dit-video-action-model.md)
 - [MotionWAM（人形 loco-manip · 实时 WAM）](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md)
+- [ω-0（潜空间 foresight · 并发家务 loco-manip）](../entities/paper-omega-0.md)
 - [ABot-M0.5（移动操作 · latent action + Dream Forcing）](../entities/paper-abot-m05-mobile-manipulation-wam.md)
 - [动作后果技术地图（2026-07 策展）](../overview/robot-world-models-action-consequence-technology-map.md)
 - [DSWAM（双系统 WAM 执行）](../entities/paper-dswam-dual-system-wam.md)

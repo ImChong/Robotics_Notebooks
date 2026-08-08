@@ -1,13 +1,106 @@
 {
   "generated_at": "2026-08-08",
-  "node_count": 2131,
-  "edge_count": 19654,
+  "node_count": 2134,
+  "edge_count": 19682,
   "coverage": {
-    "covered": 2107,
-    "total": 2107,
+    "covered": 2110,
+    "total": 2110,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-kilvo.md",
+      "detail_id": "entity-paper-kilvo",
+      "label": "KILVO：人形多传感器运动学–惯性–激光–视觉里程计",
+      "type": "entity",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/methods/lidar-odometry-fusion.md",
+      "detail_id": "wiki-methods-lidar-odometry-fusion",
+      "label": "里程计与激光雷达融合定位",
+      "type": "method",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/comparisons/lidar-slam-lio-vio-selection.md",
+      "detail_id": "wiki-comparisons-lidar-slam-lio-vio-selection",
+      "label": "LiDAR / LIO / VIO 开源选型对比",
+      "type": "comparison",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-dypes-vla.md",
+      "detail_id": "entity-paper-dypes-vla",
+      "label": "DyPES-VLA：共享动力学先验 + 本体特化控制",
+      "type": "entity",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-omega-0.md",
+      "detail_id": "entity-paper-omega-0",
+      "label": "ω-0：潜空间预测式人形并发 Loco-Manipulation WAM",
+      "type": "entity",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/tasks/loco-manipulation.md",
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    },
+    {
+      "path": "wiki/concepts/world-action-models.md",
+      "detail_id": "wiki-concepts-world-action-models",
+      "label": "World Action Models（WAM，世界–动作模型）",
+      "type": "concept",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md",
+      "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
+      "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
+      "type": "entity",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained"
+    },
     {
       "path": "wiki/overview/humanoid-rl-policy-training-five-modules.md",
       "detail_id": "wiki-overview-humanoid-rl-policy-training-five-modules",
@@ -107,17 +200,6 @@
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
       "path": "wiki/entities/dexmal-dw05.md",
       "detail_id": "entity-dexmal-dw05",
       "label": "Dexmal DW05（OpenDW）",
@@ -127,101 +209,18 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-dash-opsd.md",
-      "detail_id": "entity-paper-dash-opsd",
-      "label": "DASH：分歧自适应的 OPSD 监督视界",
-      "type": "entity",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-shenlan-wm-14-rlvr-world.md",
-      "detail_id": "entity-paper-shenlan-wm-14-rlvr-world",
-      "label": "RLVR-World",
-      "type": "entity",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/concepts/ai-auto-research.md",
-      "detail_id": "wiki-concepts-ai-auto-research",
-      "label": "AI Auto-Research（学术研究自动化）",
-      "type": "concept",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-harnessbank.md",
-      "detail_id": "entity-paper-harnessbank",
-      "label": "HarnessBank：可信 Agent-Harness 自进化",
-      "type": "entity",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-skillcorpus.md",
-      "detail_id": "entity-paper-skillcorpus",
-      "label": "SkillCorpus：开放 Skill 生态的策展与评测",
-      "type": "entity",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
-    },
-    {
-      "path": "wiki/entities/openclaw.md",
-      "detail_id": "entity-openclaw",
-      "label": "OpenClaw",
-      "type": "entity",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
-    },
-    {
-      "path": "wiki/entities/darwin-skill.md",
-      "detail_id": "entity-darwin-skill",
-      "label": "Darwin Skill（达尔文.skill）",
-      "type": "entity",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/humanoid-rl-policy-training-five-modules.md",
-    "detail_id": "wiki-overview-humanoid-rl-policy-training-five-modules",
-    "label": "人形 RL 策略训练五模块：从 MDP 到蒸馏部署",
-    "type": "overview",
+    "path": "wiki/entities/paper-kilvo.md",
+    "detail_id": "entity-paper-kilvo",
+    "label": "KILVO：人形多传感器运动学–惯性–激光–视觉里程计",
+    "type": "entity",
     "recency": "2026-08-08",
     "source": "log.md",
-    "action": "added"
+    "action": "maintained",
+    "has_repo": true,
+    "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
   },
   "top_communities": [
     {
@@ -262,7 +261,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 405,
+      "degree": 408,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -277,7 +276,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 363,
+      "degree": 364,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -285,7 +284,7 @@
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
-      "degree": 309,
+      "degree": 311,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
@@ -331,7 +330,7 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 130,
+      "degree": 131,
       "has_repo": true
     },
     {
@@ -360,7 +359,7 @@
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
       "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
       "type": "entity",
-      "degree": 51
+      "degree": 54
     },
     {
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",

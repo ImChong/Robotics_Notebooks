@@ -2,12 +2,13 @@
 type: method
 tags: [localization, lidar, odometry, sensor-fusion, slam, navigation, ekf]
 status: complete
-updated: 2026-08-04
+updated: 2026-08-08
 related:
   - ../concepts/sensor-fusion.md
   - ../formalizations/ekf.md
   - ../comparisons/lidar-slam-lio-vio-selection.md
   - ../entities/fast-lio.md
+  - ../entities/paper-kilvo.md
   - ../entities/slam-toolbox.md
   - ../entities/navigation2.md
   - ../concepts/dynamic-obstacle-filtering.md
@@ -17,7 +18,9 @@ sources:
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
   - ../../sources/repos/python_robotics.md
   - ../../sources/repos/fast_lio.md
-summary: "里程计与激光雷达融合定位：高频 odom 预测 + 激光 scan-to-map/LIO 校正漂移；课程 3.4 节，覆盖 2D EKF/AMCL 与 3D LIO 两条工程主线。"
+  - ../../sources/papers/kilvo_arxiv_2608_05647.md
+  - ../../sources/repos/kilvo.md
+summary: "里程计与激光雷达融合定位：高频 odom 预测 + 激光 scan-to-map/LIO 校正漂移；课程 3.4 节，覆盖 2D EKF/AMCL 与 3D LIO，以及人形 KILVO 多传感器 ESIKF 对照。"
 ---
 
 # 里程计与激光雷达融合定位
@@ -52,6 +55,7 @@ summary: "里程计与激光雷达融合定位：高频 odom 预测 + 激光 sca
 | AMCL 粒子滤波 | odom 运动模型 + 激光似然 | [Nav2](../entities/navigation2.md) |
 | Scan-to-map | 当前扫描 ↔ 静态栅格 | [slam_toolbox](../entities/slam-toolbox.md) 定位模式 |
 | LIO | LiDAR + IMU（紧/松） | [FAST-LIO](../entities/fast-lio.md)、LIO-SAM |
+| 人形 KILV | 关节运动学 + IMU + LiDAR + 相机 | [KILVO](../entities/paper-kilvo.md)（ESIKF + 接触估计 + 模态自适应；代码待开放） |
 | 因子图 | 多传感器因子 | 后端平滑、回环 |
 
 ## 核心原理
@@ -121,6 +125,7 @@ flowchart LR
 - [EKF](../formalizations/ekf.md)
 - [传感器融合](../concepts/sensor-fusion.md)
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)
+- [KILVO](../entities/paper-kilvo.md) — 人形运动学–惯性–激光–视觉 ESIKF（代码待开放）
 - [导航·SLAM 栈总览](../overview/navigation-slam-autonomy-stack.md)
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md)
 
@@ -129,6 +134,7 @@ flowchart LR
 - [深蓝学院人形系统课程大纲](../../sources/courses/shenlan_humanoid_system_theory_practice.md)
 - [PythonRobotics 归档](../../sources/repos/python_robotics.md)
 - [FAST-LIO 归档](../../sources/repos/fast_lio.md)
+- [KILVO 论文摘录](../../sources/papers/kilvo_arxiv_2608_05647.md)
 
 ## 推荐继续阅读
 
