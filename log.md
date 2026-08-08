@@ -6,6 +6,7 @@
 - **主升格：** [`wiki/overview/humanoid-rl-policy-training-five-modules.md`](wiki/overview/humanoid-rl-policy-training-five-modules.md) — MDP → Actor-Critic → PPO → 多维奖励 → Teacher-Student；与 WBC/MPC 混合落地
 - **交叉更新：** [`wiki/concepts/embodied-rl-minimal-closed-loop.md`](wiki/concepts/embodied-rl-minimal-closed-loop.md)、[`wiki/methods/reinforcement-learning.md`](wiki/methods/reinforcement-learning.md)、[`wiki/methods/ppo.md`](wiki/methods/ppo.md)、[`wiki/concepts/privileged-training.md`](wiki/concepts/privileged-training.md)、[`wiki/queries/humanoid-rl-cookbook.md`](wiki/queries/humanoid-rl-cookbook.md)、[`wiki/comparisons/wbc-vs-rl.md`](wiki/comparisons/wbc-vs-rl.md)、[`wiki/overview/humanoid-rl-motion-control-body-system-stack.md`](wiki/overview/humanoid-rl-motion-control-body-system-stack.md)、[`wiki/overview/shenlan-embodied-ai-fundamentals-series.md`](wiki/overview/shenlan-embodied-ai-fundamentals-series.md)
 - **项目页核查：** 无独立项目页 / 代码仓（公众号科普）；跳过步骤 2.5 源码开放项
+
 ## [2026-08-08] ingest | sources/papers/dash_opsd_arxiv_2608_06243.md — DASH（CASIA / EverMind / 盛大等，arXiv:2608.06243）OPSD 分歧自适应监督视界入库；升格 wiki/entities/paper-dash-opsd.md；归档 sources/repos/dash-opsd.md；交叉 wiki/entities/paper-shenlan-wm-14-rlvr-world.md、wiki/concepts/ai-auto-research.md、wiki/entities/paper-harnessbank.md、wiki/entities/paper-skillcorpus.md；已开源 DBtxy/DASH-OPSD
 
 - **触发：** 用户指定 <https://arxiv.org/pdf/2608.06243v1>；与 HarnessBank / SkillCorpus 一并入库并要求自动合并
