@@ -1,13 +1,74 @@
 {
   "generated_at": "2026-08-08",
-  "node_count": 2139,
-  "edge_count": 19778,
+  "node_count": 2140,
+  "edge_count": 19791,
   "coverage": {
-    "covered": 2115,
-    "total": 2115,
+    "covered": 2116,
+    "total": 2116,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-slamformer-infinity.md",
+      "detail_id": "entity-paper-slamformer-infinity",
+      "label": "SLAMFormer-∞（Infinite SLAM Transformer）",
+      "type": "entity",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/overview/navigation-slam-autonomy-stack.md",
+      "detail_id": "wiki-overview-navigation-slam-autonomy-stack",
+      "label": "导航·SLAM·自动驾驶开源栈总览",
+      "type": "overview",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/overview/hub-state-estimation.md",
+      "detail_id": "wiki-overview-hub-state-estimation",
+      "label": "状态估计（知识链汇总）",
+      "type": "overview",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/state-estimation.md",
+      "detail_id": "wiki-concepts-state-estimation",
+      "label": "State Estimation",
+      "type": "concept",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-glob3r.md",
+      "detail_id": "entity-paper-glob3r",
+      "label": "Glob3R：3D 基础模型引导的全局 SfM",
+      "type": "entity",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/methods/lingbot-map.md",
+      "detail_id": "wiki-methods-lingbot-map",
+      "label": "LingBot-Map (Streaming 3D Reconstruction Foundation Model)",
+      "type": "method",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/paper-kdmr.md",
       "detail_id": "entity-paper-kdmr",
@@ -150,82 +211,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/concepts/software-security-basics.md",
-      "detail_id": "wiki-concepts-software-security-basics",
-      "label": "软件安全基础（认证 / 授权 / 密钥 / 供应链）",
-      "type": "concept",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/concepts/container-orchestration-cicd.md",
-      "detail_id": "wiki-concepts-container-orchestration-cicd",
-      "label": "容器编排与 CI/CD（Docker / Kubernetes / 持续交付）",
-      "type": "concept",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/overview/hub-systems-engineering.md",
-      "detail_id": "wiki-overview-hub-systems-engineering",
-      "label": "机器人系统工程（知识链汇总）",
-      "type": "overview",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "力矩电机设计纵深路线（Torque-Control Motor Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/embodied-interview-qa.md",
-      "detail_id": "entity-embodied-interview-qa",
-      "label": "具身智能高频面试题库（Embodied Interview QA）",
-      "type": "entity",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/reinforcement-learning.md",
-      "detail_id": "wiki-methods-reinforcement-learning",
-      "label": "Reinforcement Learning (RL, 强化学习)",
-      "type": "method",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-kdmr.md",
-    "detail_id": "entity-paper-kdmr",
-    "label": "KDMR（Kinodynamic Motion Retargeting）",
+    "path": "wiki/entities/paper-slamformer-infinity.md",
+    "detail_id": "entity-paper-slamformer-infinity",
+    "label": "SLAMFormer-∞（Infinite SLAM Transformer）",
     "type": "entity",
     "recency": "2026-08-08",
     "source": "log.md",
     "action": "maintained",
-    "community_label": "动作重定向（Motion Retargeting） 社区"
+    "has_repo": true,
+    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
   },
   "top_communities": [
     {
@@ -242,7 +239,7 @@
     },
     {
       "label": "操作",
-      "size": 146
+      "size": 145
     },
     {
       "label": "人形强化学习运动控制",

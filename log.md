@@ -1,3 +1,11 @@
+## [2026-08-08] ingest | sources/papers/slamformer_infinity_arxiv_2608_03429.md — SLAMFormer-∞（arXiv:2608.03429）入库；升格 wiki/entities/paper-slamformer-infinity.md；归档 sources/sites/tsinghua-mars-lab-slamformer-infinity.md、sources/repos/slamformer_infinity.md；交叉 wiki/overview/navigation-slam-autonomy-stack.md、wiki/overview/hub-state-estimation.md、wiki/concepts/state-estimation.md、wiki/entities/paper-glob3r.md、wiki/methods/lingbot-map.md
+
+- **触发：** 用户指定 <https://arxiv.org/pdf/2608.03429>、项目页 <https://tsinghua-mars-lab.github.io/SLAMFormer-Infinity>；要求自动合并
+- **来源：** [`sources/papers/slamformer_infinity_arxiv_2608_03429.md`](sources/papers/slamformer_infinity_arxiv_2608_03429.md)、[`sources/sites/tsinghua-mars-lab-slamformer-infinity.md`](sources/sites/tsinghua-mars-lab-slamformer-infinity.md)、[`sources/repos/slamformer_infinity.md`](sources/repos/slamformer_infinity.md)
+- **新建实体：** [`wiki/entities/paper-slamformer-infinity.md`](wiki/entities/paper-slamformer-infinity.md) — memory condition + PGGO；KITTI/Waymo 长程；`## 源码运行时序图` 不适用（占位仓）
+- **开源核查（步骤 2.5）：** **部分开源（项目页 + 占位仓）** — GitHub `main` 仅 README，`gh-pages` 为站点/demo；无可运行训练/推理。前作 [SLAM-Former](https://github.com/Tsinghua-MARS-Lab/SLAM-Former) 已开源，勿混
+- **交叉更新：** [`wiki/overview/navigation-slam-autonomy-stack.md`](wiki/overview/navigation-slam-autonomy-stack.md)、[`wiki/overview/hub-state-estimation.md`](wiki/overview/hub-state-estimation.md)、[`wiki/concepts/state-estimation.md`](wiki/concepts/state-estimation.md)、[`wiki/entities/paper-glob3r.md`](wiki/entities/paper-glob3r.md)、[`wiki/methods/lingbot-map.md`](wiki/methods/lingbot-map.md)
+
 ## [2026-08-08] ingest | sources/papers/kdmr_arxiv_2603_09956.md + sources/papers/spark_skeleton_aligned_retargeting_arxiv_2603_11480.md — KDMR / SPARK kinodynamic 重定向入库；升格 wiki/entities/paper-kdmr.md、wiki/entities/paper-spark-skeleton-aligned-retargeting.md；站点 sources/sites/spark-leggedai.md；交叉 wiki/concepts/motion-retargeting.md、wiki/concepts/motion-retargeting-pipeline.md、wiki/overview/hub-motion-retargeting.md、wiki/methods/motion-retargeting-gmr.md、wiki/methods/beyondmimic.md、wiki/entities/paper-notebook-spark.md
 
 - **触发：** 用户指定 KDMR <https://arxiv.org/abs/2603.09956> 与 SPARK <https://arxiv.org/abs/2603.11480> / <https://www.leggedai.com/publication/2026_spark/>；要求自动合并

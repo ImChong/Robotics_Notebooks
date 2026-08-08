@@ -2,11 +2,12 @@
 type: entity
 tags: [paper, hkust, alibaba, nju, fudan, sfm, 3d-reconstruction, foundation-model, slam, pose-estimation, neural-rendering, bundle-adjustment]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-08
 arxiv: "2607.09225"
 venue: "arXiv 2026"
 related:
   - ../methods/lingbot-map.md
+  - ./paper-slamformer-infinity.md
   - ../concepts/state-estimation.md
   - ../overview/hub-state-estimation.md
   - ../overview/navigation-slam-autonomy-stack.md
@@ -115,6 +116,7 @@ pose graph 边携带相对位姿与 track 权重：先稳健旋转平均，再�
 | [LingBot-Map](../methods/lingbot-map.md) | LingBot 偏 **在线流式前馈**（GCA + Paged KV）；Glob3R 偏 **离线全局 SfM 精炼**，KITTI/T&T 精度更强但非实时设计 |
 | COLMAP / GLOMAP | 经典增量/全局 SfM；Glob3R 用基础模型先验与 dense warp 改善弱纹理/前向运动下的 pose graph 质量 |
 | VGGT-Long / VGGT-SLAM | 窗级缝合易累积尺度/位姿误差；Glob3R 跨窗传播 tracks 并做帧级 BA |
+| [SLAMFormer-∞](./paper-slamformer-infinity.md) | 学习型 **在线** dense mono SLAM（memory condition + PGGO）；Glob3R 偏 **离线** tracks→BA。二者均可对照 VGGT-Long 长程失效模式 |
 | 纯前馈 Pi3X / DA3 | 提供粗全局几何；Glob3R 显式优化对应约束以服务高精度渲染与建图 |
 
 ## 源码运行时序图
@@ -151,6 +153,7 @@ pose graph 边携带相对位姿与 track 权重：先稳健旋转平均，再�
 ## 关联页面
 
 - [LingBot-Map](../methods/lingbot-map.md) — 流式前馈 3D 重建对照（论文基线之一）
+- [SLAMFormer-∞](./paper-slamformer-infinity.md) — 无界 dense mono SLAM Transformer（在线联合后端对照）
 - [State Estimation](../concepts/state-estimation.md) — 视觉几何估计在控制链上游的位置
 - [状态估计知识链](../overview/hub-state-estimation.md) — SLAM / VIO 入口
 - [导航·SLAM 开源栈总览](../overview/navigation-slam-autonomy-stack.md) — 经典 SLAM 工程栈对照
