@@ -3,12 +3,13 @@ type: query
 tags: [locomotion, rl, sim2real, humanoid, cookbook, training]
 status: stable
 summary: "人形机器人 RL 策略训练完整 Checklist"
-updated: 2026-07-28
+updated: 2026-08-08
 sources:
   - ../../sources/papers/privileged_training.md
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/sim2real.md
   - ../../sources/notes/legged_humanoid_rl_pd_gains.md
+  - ../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md
 ---
 
 # 人形机器人 RL 策略训练完整 Checklist
@@ -177,11 +178,13 @@ Adaptation Module（学生）：
 - [sources/papers/privileged_training.md](../../sources/papers/privileged_training.md) — ingest 档案（Kumar RMA 2021 / Lee Science Robotics 2020）
 - [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — ingest 档案（PPO / Rudin 2022）
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — ingest 档案（sim2real 核心论文）
+- [深蓝具身智能：人形 RL 策略训练体系](../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md) — 五模块闭环科普（与本 checklist 同叙事轴）
 
 ---
 
 ## 关联页面
 
+- [人形 RL 策略训练五模块](../overview/humanoid-rl-policy-training-five-modules.md) — MDP / Actor-Critic / PPO / 奖励 / 蒸馏的概念地图
 - [Sim2Real Checklist](./sim2real-checklist.md) — 详细的域随机化配置清单
 - [RL Algorithm Selection](./rl-algorithm-selection.md) — PPO vs SAC vs TD3 选型指南
 - [Locomotion Reward Design Guide](./locomotion-reward-design-guide.md) — 奖励函数详细设计

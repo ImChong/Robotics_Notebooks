@@ -2,7 +2,7 @@
 type: concept
 tags: [rl, sim2real, training, humanoid, policy-optimization]
 status: complete
-updated: 2026-08-06
+updated: 2026-08-08
 summary: "Privileged Training 让 teacher 使用仿真特权信息训练，再蒸馏给真实可观测 student，是 sim2real 常见套路；蒸馏本质是把 RL 探索问题转为 Teacher 标注的监督学习。"
 related:
   - ./terrain-latent-representation.md
@@ -26,10 +26,12 @@ related:
   - ../formalizations/gae.md
   - ../formalizations/mdp.md
   - ../queries/sim2real-closed-loop-engineering.md
+  - ../overview/humanoid-rl-policy-training-five-modules.md
 sources:
   - ../../sources/papers/privileged_training.md
   - ../../sources/personal/perceptive_locomotion_representation_essence.md
   - ../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md
+  - ../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md
   - ../../sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md
   - ../../sources/papers/legged_load_adapt_arxiv_2507_07825.md
 ---
@@ -270,6 +272,7 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 - [HumoSlope](../entities/paper-humoslope-physics-guided-slope-locomotion.md) — 训练期 PCA 地形描述子门控 BSGA；部署纯本体感知 actor（非经典 teacher–student 蒸馏）
 - [GAE（广义优势估计）](../formalizations/gae.md) — Teacher 策略训练阶段通常使用 GAE 优势估计
 - [MDP](../formalizations/mdp.md) — 特权训练本质上是 MDP 中部分可观测性的一种工程解决方案
+- [人形 RL 策略训练五模块](../overview/humanoid-rl-policy-training-five-modules.md) — Teacher-Student 作为训练闭环的后置部署模块
 
 ## 一句话记忆
 

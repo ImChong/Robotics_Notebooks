@@ -12,10 +12,12 @@ related:
   - ./rl-vs-il.md
   - ../queries/control-architecture-comparison.md
   - ../queries/when-to-use-wbc-vs-rl.md
+  - ../overview/humanoid-rl-policy-training-five-modules.md
 summary: "WBC vs RL: Whole-Body Control vs Reinforcement Learning"
-updated: 2026-06-09
+updated: 2026-08-08
 sources:
   - ../../sources/papers/whole_body_control.md
+  - ../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md
 ---
 
 # WBC vs RL: Whole-Body Control vs Reinforcement Learning
@@ -208,6 +210,7 @@ WBC（TSID/HQP）
 - Sentis & Khatib, *Synthesis of Whole-Body Behaviors through Contact and Collision Avoidance* — WBC 理论基础
 - Kumar et al., *RMA: Rapid Motor Adaptation for Legged Robots* (2021) — RL + Adaptation 的 sim2real
 - [sources/papers/whole_body_control.md](../../sources/papers/whole_body_control.md) — TSID/HQP/Crocoddyl ingest 摘要
+- [深蓝具身智能：人形 RL 策略训练体系](../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md) — 收束到「底层传统 + 上层 RL」混合落地
 - [WBC vs RL 论文导航](../../references/papers/whole-body-control.md)
 
 ---
@@ -216,6 +219,7 @@ WBC（TSID/HQP）
 
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
+- [人形 RL 策略训练五模块](../overview/humanoid-rl-policy-training-five-modules.md) — RL 侧训练闭环与混合架构读法
 - [Imitation Learning](../methods/imitation-learning.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [MPC 与 WBC 集成](../concepts/mpc-wbc-integration.md)（融合架构的核心实现）

@@ -1,3 +1,12 @@
+## [2026-08-08] ingest | sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md — 深蓝具身智能《人形机器人运动控制：强化学习与策略训练体系详解》入库；升格 wiki/overview/humanoid-rl-policy-training-five-modules.md；交叉 wiki/concepts/embodied-rl-minimal-closed-loop.md、wiki/methods/reinforcement-learning.md、wiki/methods/ppo.md、wiki/concepts/privileged-training.md、wiki/queries/humanoid-rl-cookbook.md、wiki/comparisons/wbc-vs-rl.md、wiki/overview/humanoid-rl-motion-control-body-system-stack.md、wiki/overview/shenlan-embodied-ai-fundamentals-series.md
+
+- **触发：** 用户指定 <https://mp.weixin.qq.com/s/mxesB0pGI_NLSkSf-cZYug>；要求确认 Agent Reach 可用并自动合并
+- **抓取：** Agent Reach v1.5.0 + `wechat-article-for-ai`（Camoufox；`--no-images`）；原始落盘 [`sources/raw/wechat_shenlan_humanoid_rl_policy_training_2026-08-08.md`](sources/raw/wechat_shenlan_humanoid_rl_policy_training_2026-08-08.md)
+- **来源：** [`sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md`](sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md)（深蓝具身智能；2026-08-08）
+- **主升格：** [`wiki/overview/humanoid-rl-policy-training-five-modules.md`](wiki/overview/humanoid-rl-policy-training-five-modules.md) — MDP → Actor-Critic → PPO → 多维奖励 → Teacher-Student；与 WBC/MPC 混合落地
+- **交叉更新：** [`wiki/concepts/embodied-rl-minimal-closed-loop.md`](wiki/concepts/embodied-rl-minimal-closed-loop.md)、[`wiki/methods/reinforcement-learning.md`](wiki/methods/reinforcement-learning.md)、[`wiki/methods/ppo.md`](wiki/methods/ppo.md)、[`wiki/concepts/privileged-training.md`](wiki/concepts/privileged-training.md)、[`wiki/queries/humanoid-rl-cookbook.md`](wiki/queries/humanoid-rl-cookbook.md)、[`wiki/comparisons/wbc-vs-rl.md`](wiki/comparisons/wbc-vs-rl.md)、[`wiki/overview/humanoid-rl-motion-control-body-system-stack.md`](wiki/overview/humanoid-rl-motion-control-body-system-stack.md)、[`wiki/overview/shenlan-embodied-ai-fundamentals-series.md`](wiki/overview/shenlan-embodied-ai-fundamentals-series.md)
+- **项目页核查：** 无独立项目页 / 代码仓（公众号科普）；跳过步骤 2.5 源码开放项
+
 ## [2026-08-08] ingest | sources/repos/dexmal_opendm.md + sources/blogs/dexmal_dm05.md — 接入 OpenDM/DM0.5 开源栈；更新 wiki/entities/dexmal-dm05.md；互链 wiki/methods/vla.md、wiki/entities/dexmal-dw05.md、wiki/tasks/manipulation.md
 
 - **触发：** 用户指定开源仓 <https://github.com/dexmal/opendm> 与技术博客 <https://www.dexmal.com/blog/dm0.5>；要求自动合并

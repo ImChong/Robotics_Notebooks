@@ -1,13 +1,100 @@
 {
   "generated_at": "2026-08-08",
-  "node_count": 2130,
-  "edge_count": 19632,
+  "node_count": 2131,
+  "edge_count": 19654,
   "coverage": {
-    "covered": 2106,
-    "total": 2106,
+    "covered": 2107,
+    "total": 2107,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/humanoid-rl-policy-training-five-modules.md",
+      "detail_id": "wiki-overview-humanoid-rl-policy-training-five-modules",
+      "label": "人形 RL 策略训练五模块：从 MDP 到蒸馏部署",
+      "type": "overview",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/concepts/embodied-rl-minimal-closed-loop.md",
+      "detail_id": "wiki-concepts-embodied-rl-minimal-closed-loop",
+      "label": "具身 RL 最小闭环（Embodied RL Minimal Closed Loop）",
+      "type": "concept",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/methods/reinforcement-learning.md",
+      "detail_id": "wiki-methods-reinforcement-learning",
+      "label": "Reinforcement Learning (RL, 强化学习)",
+      "type": "method",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/methods/ppo.md",
+      "detail_id": "wiki-methods-ppo",
+      "label": "PPO（Proximal Policy Optimization）",
+      "type": "method",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/concepts/privileged-training.md",
+      "detail_id": "wiki-concepts-privileged-training",
+      "label": "Privileged Training（特权信息训练）",
+      "type": "concept",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/queries/humanoid-rl-cookbook.md",
+      "detail_id": "wiki-queries-humanoid-rl-cookbook",
+      "label": "人形机器人 RL 策略训练完整 Checklist",
+      "type": "query",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/comparisons/wbc-vs-rl.md",
+      "detail_id": "wiki-comparisons-wbc-vs-rl",
+      "label": "WBC vs RL: Whole-Body Control vs Reinforcement Learning",
+      "type": "comparison",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
+      "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
+      "label": "人形机器人 RL 运动控制：身体系统栈视角",
+      "type": "overview",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/overview/shenlan-embodied-ai-fundamentals-series.md",
+      "detail_id": "wiki-overview-shenlan-embodied-ai-fundamentals-series",
+      "label": "《具身智能基础》专栏技术地图",
+      "type": "overview",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained"
+    },
     {
       "path": "wiki/entities/dexmal-dm05.md",
       "detail_id": "entity-dexmal-dm05",
@@ -125,113 +212,21 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "大语言模型维基（LLM Wiki） 社区"
-    },
-    {
-      "path": "wiki/entities/mattpocock-skills.md",
-      "detail_id": "entity-mattpocock-skills",
-      "label": "Skills For Real Engineers（mattpocock）",
-      "type": "entity",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
-    },
-    {
-      "path": "wiki/entities/hermes-agent.md",
-      "detail_id": "entity-hermes-agent",
-      "label": "Hermes Agent（Nous Research）",
-      "type": "entity",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "大语言模型维基（LLM Wiki） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-pfm-hr.md",
-      "detail_id": "entity-paper-pfm-hr",
-      "label": "PFM-HR：面向人形的姿态流匹配先验",
-      "type": "entity",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/methods/beyondmimic.md",
-      "detail_id": "wiki-methods-beyondmimic",
-      "label": "BeyondMimic",
-      "type": "method",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/methods/add.md",
-      "detail_id": "wiki-methods-add",
-      "label": "ADD: 对抗性微分判别器",
-      "type": "method",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/smp.md",
-      "detail_id": "wiki-methods-smp",
-      "label": "SMP: 基于得分匹配的可复用运动先验",
-      "type": "method",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-notebook-pdf-hr.md",
-      "detail_id": "entity-paper-notebook-pdf-hr",
-      "label": "PDF-HR",
-      "type": "entity",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/mimickit.md",
-      "detail_id": "entity-mimickit",
-      "label": "MimicKit: 运动模仿与控制研究套件",
-      "type": "entity",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/queries/humanoid-motion-tracking-method-selection.md",
-      "detail_id": "wiki-queries-humanoid-motion-tracking-method-selection",
-      "label": "人形运动跟踪方法选型指南",
-      "type": "query",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/dexmal-dm05.md",
-    "detail_id": "entity-dexmal-dm05",
-    "label": "Dexmal DM0.5（OpenDM）",
-    "type": "entity",
+    "path": "wiki/overview/humanoid-rl-policy-training-five-modules.md",
+    "detail_id": "wiki-overview-humanoid-rl-policy-training-five-modules",
+    "label": "人形 RL 策略训练五模块：从 MDP 到蒸馏部署",
+    "type": "overview",
     "recency": "2026-08-08",
     "source": "log.md",
-    "action": "maintained",
-    "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 216
+      "size": 208
     },
     {
       "label": "视觉-语言-动作",
@@ -239,7 +234,7 @@
     },
     {
       "label": "动作重定向",
-      "size": 157
+      "size": 159
     },
     {
       "label": "操作",
@@ -247,7 +242,7 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 143
+      "size": 141
     },
     {
       "label": "移动操作",
@@ -259,7 +254,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 426,
+      "degree": 428,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -304,7 +299,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 292,
+      "degree": 294,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
@@ -350,7 +345,8 @@
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
-      "degree": 56
+      "degree": 56,
+      "community_label": "动作重定向（Motion Retargeting） 社区"
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",

@@ -2,7 +2,7 @@
 type: concept
 tags: [reinforcement-learning, embodied-ai, simulation, pedagogy, mdp]
 status: complete
-updated: 2026-06-16
+updated: 2026-08-08
 related:
   - ../formalizations/mdp.md
   - ../formalizations/pomdp.md
@@ -13,8 +13,10 @@ related:
   - ../entities/isaac-gym-isaac-lab.md
   - ../methods/her.md
   - ../overview/bfm-category-03-intrinsic-reward-pretraining.md
+  - ../overview/humanoid-rl-policy-training-five-modules.md
 sources:
   - ../../sources/blogs/wechat_shenlan_rl_embodied_minimal_closed_loop.md
+  - ../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md
 summary: "具身 RL 最小闭环：在仿真里把状态 S、动作 A、奖励 R、转移 P 与折扣 γ 落成可逐步运行的循环；先用手写或启发式策略验证接口，再接入 PPO/SAC 学神经网络策略。"
 ---
 
@@ -112,9 +114,11 @@ flowchart LR
 
 - [MDP](../formalizations/mdp.md) · [POMDP](../formalizations/pomdp.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
+- [人形 RL 策略训练五模块](../overview/humanoid-rl-policy-training-five-modules.md) — 从 MDP 扩到 Actor-Critic / PPO / 奖励 / 蒸馏的完整训练闭环
 - [主路线：运动控制 L5](../../roadmap/motion-control.md#l5-强化学习与模仿学习)
 - [深蓝《具身智能基础》专栏地图](../overview/shenlan-embodied-ai-fundamentals-series.md)
 
 ## 参考来源
 
 - [深蓝具身智能：跑通具身控制最小闭环](../../sources/blogs/wechat_shenlan_rl_embodied_minimal_closed_loop.md) — <https://mp.weixin.qq.com/s/hHkQqLfIOTn0CoAZNuLWJA>
+- [深蓝具身智能：人形 RL 策略训练体系](../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md) — <https://mp.weixin.qq.com/s/mxesB0pGI_NLSkSf-cZYug>
