@@ -2,12 +2,13 @@
 type: concept
 tags: [state-estimation, ekf, kalman, imu, contact]
 status: complete
-updated: 2026-08-04
+updated: 2026-08-08
 summary: "State Estimation 负责从传感器中恢复机器人姿态、速度和接触状态，是控制闭环的前提。"
 related:
   - ../queries/contact-wrench-closed-loop.md
   - ../methods/lingbot-map.md
   - ../entities/paper-glob3r.md
+  - ../entities/paper-slamformer-infinity.md
   - ../entities/dreamwaq-plus.md
   - ../entities/paper-x-ionet-cross-platform-inertial-odometry.md
   - ./humanoid-policy-observation-inputs.md
@@ -16,6 +17,7 @@ sources:
   - ../../sources/papers/state_estimation.md
   - ../../sources/papers/lingbot_map_arxiv_2604_14141.md
   - ../../sources/papers/glob3r_arxiv_2607_09225.md
+  - ../../sources/papers/slamformer_infinity_arxiv_2608_03429.md
   - ../../sources/papers/dreamwaq_plus_arxiv_2409_19709.md
 ---
 
@@ -212,6 +214,10 @@ $$
 
 [Glob3R](../entities/paper-glob3r.md)（arXiv:2607.09225）把 **冻结 Pi3X** 的前馈位姿/点图与 **dense warp tracks** 送入 **旋转/平移平均 + BA**，走**离线全局精炼**而非纯流式前馈。相对 chunk 缝合，它以帧级优化抑制长程尺度不一致，在 KITTI / T&T / ETH3D 上报告更强的位姿与渲染指标——适合 **建图、神经渲染、离线地图** 等精度优先场景；在线控制环仍更宜接 LingBot-Map 或经典 VIO，再视需求用 Glob3R 类管线做事后精炼。
 
+### 8. 无界 dense mono SLAM Transformer（SLAMFormer-∞）
+
+[SLAMFormer-∞](../entities/paper-slamformer-infinity.md)（arXiv:2608.03429）用 **memory condition** 为流式前端与周期后端锚定局部坐标系，再用 **PGGO** 在回环/序列末联合迭代精炼长程位姿与 dense pointmap。相对「有界联合推理」或「只对齐位姿、拼接局部几何」，它把城市尺度单目稠密建图写成 **同一 transformer 先验下的前后端节奏**；KITTI/Waymo 上相对 VGGT-Long 降 ATE，并演示 **>17 km** 场景。注意：官方仓截至入库日仍为占位，工程复现前应区分已开源前作 SLAM-Former。
+
 ## 最小代码骨架
 
 这段代码把状态估计最小闭环写清楚：
@@ -361,6 +367,7 @@ WBC 想稳住身体、控制摆腿、分配接触力，都依赖状态估计提�
 - [sources/papers/state_estimation.md](../../sources/papers/state_estimation.md) — ingest 档案（Bloesch 2013 / Hartley InEKF 2020 / Teng 2021）
 - [sources/papers/lingbot_map_arxiv_2604_14141.md](../../sources/papers/lingbot_map_arxiv_2604_14141.md) — LingBot-Map 流式 GCA
 - [sources/papers/glob3r_arxiv_2607_09225.md](../../sources/papers/glob3r_arxiv_2607_09225.md) — Glob3R 全局 SfM + 3D 基础模型
+- [sources/papers/slamformer_infinity_arxiv_2608_03429.md](../../sources/papers/slamformer_infinity_arxiv_2608_03429.md) — SLAMFormer-∞ 无界 dense mono SLAM
 - Bloesch et al., *State Estimation for Legged Robots - Consistent Fusion of Leg Kinematics and IMU* — 足式机器人状态估计经典
 - Hartley et al., *Contact-Aided Invariant Extended Kalman Filtering for Legged Robot State Estimation* — 接触辅助 EKF 代表
 - Barrau, Bonnabel, *The Invariant Extended Kalman Filter as a Stable Observer* — InEKF 理论基础
@@ -370,6 +377,7 @@ WBC 想稳住身体、控制摆腿、分配接触力，都依赖状态估计提�
 - [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 状态估计为接触感知/力旋量闭环提供机体与接触状态输入
 - [X-IONet（跨平台单 IMU 惯性里程计）](../entities/paper-x-ionet-cross-platform-inertial-odometry.md) — 行人/四足专家路由 + 双阶段 attention + EKF（IEEE RA-L 2026）
 - [Glob3R（全局 SfM + 3D 基础模型）](../entities/paper-glob3r.md) — 离线高精度视觉几何精炼
+- [SLAMFormer-∞（无界 dense mono SLAM Transformer）](../entities/paper-slamformer-infinity.md) — memory condition + PGGO；长程单目稠密
 - [机器人论文阅读笔记：Legged Robot State-Estimation Through Combined Forward Kinematic and Preintegrated Contact Factors](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/Legged_Robot_State-Estimation_via_Forward_Kinematic_and_Preintegrated_Contact_Factors/Legged_Robot_State-Estimation_via_Forward_Kinematic_and_Preintegrated_Contact_Factors.html)
 - [传感器融合（Sensor Fusion）](./sensor-fusion.md) — VIO / InEKF / 多模态融合的实现细节
 - Bloesch et al., *State Estimation for Legged Robots - Consistent Fusion of Leg Kinematics and IMU*

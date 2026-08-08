@@ -2,7 +2,7 @@
 type: method
 tags: [3d-reconstruction, foundation-model, transformer, slam, streaming-perception]
 status: drafting
-updated: 2026-07-31
+updated: 2026-08-08
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../concepts/state-estimation.md
@@ -11,6 +11,7 @@ related:
   - ./vla.md
   - ../entities/sceneverse-pp.md
   - ../entities/paper-glob3r.md
+  - ../entities/paper-slamformer-infinity.md
 sources:
   - ../../sources/repos/lingbot-map.md
   - ../../sources/papers/lingbot_map_arxiv_2604_14141.md
@@ -116,6 +117,11 @@ flowchart LR
 - **[Glob3R](../entities/paper-glob3r.md)**（arXiv:2607.09225）走 **冻结 Pi3X + dense warp tracks → 运动平均 + BA** 的**离线全局精炼**；在 T&T / KITTI 等论文表中常显著优于 LingBot-Map 的流式前馈设定。
 - **选型：** 要 **在线 / 近实时几何状态** → LingBot-Map；要 **离线高精度位姿与神经渲染** → 跟进 Glob3R（注意其官方推理代码截至 2026-07-21 仍为占位仓）。
 
+### 与 SLAMFormer-∞（无界 dense mono SLAM）的对比
+
+- **[SLAMFormer-∞](../entities/paper-slamformer-infinity.md)**（arXiv:2608.03429）保留显式 **frontend / local backend / PGGO** 节奏，用 memory condition 攻公里级单目稠密；LingBot-Map 更偏 **端到端流式前馈 + GCA/Paged KV**。
+- **选型：** 要已开源、可跑的流式几何模块 → LingBot-Map；要跟进「联合精炼长程位姿与 pointmap」的学习型 SLAM 路线 → SLAMFormer-∞（官方仓截至 2026-08-08 仍占位）。
+
 ### 与 VLA / 空间推理任务的关系
 
 - 可为 [VLA (Vision-Language-Action)](./vla.md) 或 [3D 空间 VQA](../concepts/3d-spatial-vqa.md) 讨论提供**在线度量几何**先验：语义–语言层仍需与几何模块分工或融合。
@@ -124,6 +130,7 @@ flowchart LR
 ## 关联页面
 
 - [Glob3R（全局 SfM + 3D 基础模型）](../entities/paper-glob3r.md) — 离线高精度对照
+- [SLAMFormer-∞（无界 dense mono SLAM Transformer）](../entities/paper-slamformer-infinity.md) — 学习型前后端联合精炼对照
 - [VLA (Vision-Language-Action)](./vla.md)
 - [State Estimation (状态估计)](../concepts/state-estimation.md)
 - [3D 空间 VQA](../concepts/3d-spatial-vqa.md)
