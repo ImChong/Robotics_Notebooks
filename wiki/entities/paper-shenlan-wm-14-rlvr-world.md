@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, world-models, shenlan-survey, open-source, tsinghua]
 status: complete
-updated: 2026-06-25
+updated: 2026-08-08
 arxiv: "2505.13934"
 venue: NeurIPS 2025
 summary: "RLVR 优化 WM 对齐任务成功指标，让想象更有目的性。"
@@ -13,6 +13,7 @@ related:
   - ../overview/robot-world-models-training-loop-taxonomy.md
   - ../methods/generative-world-models.md
   - ../concepts/world-action-models.md
+  - ./paper-dash-opsd.md
 sources:
   - ../../sources/papers/shenlan_wm_survey_14_rlvr-world.md
   - ../../sources/papers/shenlan_world_models_15_reference_catalog.md
@@ -80,6 +81,7 @@ RLVR 优化 WM 对齐任务成功指标，让想象更有目的性。
 - 路线 hub：[world-models-route-03-virtual-sandbox.md](../overview/world-models-route-03-virtual-sandbox.md)
 - 总地图：[world-models-15-open-source-technology-map.md](../overview/world-models-15-open-source-technology-map.md)
 - 原始 source：[shenlan_wm_survey_14_rlvr-world.md](../../sources/papers/shenlan_wm_survey_14_rlvr-world.md)
+- RLVR / 推理后训练对照：[DASH](./paper-dash-opsd.md) — 在 OPSD 上做分歧自适应蒸馏聚合（数学推理 LM，非世界模型）
 
 ## 参考来源
 

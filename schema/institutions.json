@@ -2390,6 +2390,32 @@
         "sparklab",
         "spark-lab"
       ]
+    },
+    "evermind": {
+      "label": "恒心智能（EverMind）",
+      "aliases": [
+        "evermind",
+        "evermind-ai",
+        "evermind-ai-lab",
+        "ever-mind"
+      ]
+    },
+    "shanda": {
+      "label": "盛大集团（Shanda Group）",
+      "aliases": [
+        "shanda",
+        "shanda-group",
+        "shengda",
+        "shengda-group"
+      ]
+    },
+    "wuhan-ai-research": {
+      "label": "武汉人工智能研究院（Wuhan AI Research）",
+      "aliases": [
+        "wuhan-ai-research",
+        "whair",
+        "wuhan-ai"
+      ]
     }
   }
 }

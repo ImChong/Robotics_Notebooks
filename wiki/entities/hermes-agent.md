@@ -10,7 +10,7 @@ tags:
   - persistent-memory
   - messaging-gateway
 status: complete
-updated: 2026-08-03
+updated: 2026-08-08
 related:
   - ./ponytail.md
   - ./caveman.md
@@ -121,6 +121,7 @@ flowchart TB
 - [SenseNova-Skills](sensenova-skills.md) — **办公生产力** Agent Skills（PPT/Excel/深度研究）；推荐安装至 `~/.hermes/skills/`
 - [Ponytail](ponytail.md) — **少写代码** 必要性阶梯（Hermes 可 `plugins install`）
 - [Superpowers（obra）](superpowers-obra.md) — 编码代理 **软件工程流程** 技能库
+- [SkillCorpus](paper-skillcorpus.md) — 社区技能策展语料；可与 Hermes 技能目录对照「精品库 vs 生态语料」
 - [Agent Reach](agent-reach.md) — 编码代理 **外网读搜** 脚手架
 - [Model Context Protocol（MCP）](../concepts/model-context-protocol.md) — Hermes 工具扩展所依的开放协议
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — **持久 wiki 知识编译** 范式
