@@ -1,3 +1,11 @@
+## [2026-08-08] ingest | sources/repos/dexmal_opendm.md + sources/blogs/dexmal_dm05.md — 接入 OpenDM/DM0.5 开源栈；更新 wiki/entities/dexmal-dm05.md；互链 wiki/methods/vla.md、wiki/entities/dexmal-dw05.md、wiki/tasks/manipulation.md
+
+- **触发：** 用户指定开源仓 <https://github.com/dexmal/opendm> 与技术博客 <https://www.dexmal.com/blog/dm0.5>；要求自动合并
+- **来源：** [`sources/repos/dexmal_opendm.md`](sources/repos/dexmal_opendm.md)、修订 [`sources/blogs/dexmal_dm05.md`](sources/blogs/dexmal_dm05.md)
+- **主升格 / 更新：** [`wiki/entities/dexmal-dm05.md`](wiki/entities/dexmal-dm05.md) — 补开源状态、DM05 权重表、工程实践、`## 源码运行时序图`
+- **开源核查（步骤 2.5）：** **已开源** — Apache-2.0；HF/ModelScope **DM05** 及 LIBERO / RobotWin2 / SO101 / VLA-Arena / Table30v2；`script/dm05_launcher.sh` 统一 train/inference
+- **交叉更新：** [`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/entities/dexmal-dw05.md`](wiki/entities/dexmal-dw05.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`sources/repos/dexmal_opendw.md`](sources/repos/dexmal_opendw.md)
+
 ## [2026-08-08] ingest | sources/papers/dash_opsd_arxiv_2608_06243.md — DASH（CASIA / EverMind / 盛大等，arXiv:2608.06243）OPSD 分歧自适应监督视界入库；升格 wiki/entities/paper-dash-opsd.md；归档 sources/repos/dash-opsd.md；交叉 wiki/entities/paper-shenlan-wm-14-rlvr-world.md、wiki/concepts/ai-auto-research.md、wiki/entities/paper-harnessbank.md、wiki/entities/paper-skillcorpus.md；已开源 DBtxy/DASH-OPSD
 
 - **触发：** 用户指定 <https://arxiv.org/pdf/2608.06243v1>；与 HarnessBank / SkillCorpus 一并入库并要求自动合并

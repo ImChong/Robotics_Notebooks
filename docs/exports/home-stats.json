@@ -1,13 +1,57 @@
 {
   "generated_at": "2026-08-08",
   "node_count": 2130,
-  "edge_count": 19630,
+  "edge_count": 19632,
   "coverage": {
     "covered": 2106,
     "total": 2106,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/dexmal-dm05.md",
+      "detail_id": "entity-dexmal-dm05",
+      "label": "Dexmal DM0.5（OpenDM）",
+      "type": "entity",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/dexmal-dw05.md",
+      "detail_id": "entity-dexmal-dw05",
+      "label": "Dexmal DW05（OpenDW）",
+      "type": "entity",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "生成式世界模型（Generative World Models） 社区"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-08-08",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
     {
       "path": "wiki/entities/paper-dash-opsd.md",
       "detail_id": "entity-paper-dash-opsd",
@@ -171,61 +215,18 @@
       "recency": "2026-08-08",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/comparisons/amp-add-smp-motion-prior-variants.md",
-      "detail_id": "wiki-comparisons-amp-add-smp-motion-prior-variants",
-      "label": "AMP vs ADD vs SMP：运动先验变体对比",
-      "type": "comparison",
-      "recency": "2026-08-08",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/methods/dsms-contact-implicit-multiple-shooting.md",
-      "detail_id": "wiki-methods-dsms-contact-implicit-multiple-shooting",
-      "label": "DSMS（接触隐式直接仿真多重打靶）",
-      "type": "method",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/methods/motion-retargeting-gmr.md",
-      "detail_id": "wiki-methods-motion-retargeting-gmr",
-      "label": "GMR: 通用动作重定向",
-      "type": "method",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "wiki/methods/dynaretarget-sbto-motion-retargeting.md",
-      "detail_id": "wiki-methods-dynaretarget-sbto-motion-retargeting",
-      "label": "DynaRetarget / SBTO（增量采样式动力学重定向）",
-      "type": "method",
-      "recency": "2026-08-07",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-dash-opsd.md",
-    "detail_id": "entity-paper-dash-opsd",
-    "label": "DASH：分歧自适应的 OPSD 监督视界",
+    "path": "wiki/entities/dexmal-dm05.md",
+    "detail_id": "entity-dexmal-dm05",
+    "label": "Dexmal DM0.5（OpenDM）",
     "type": "entity",
     "recency": "2026-08-08",
     "source": "log.md",
     "action": "maintained",
     "has_repo": true,
-    "community_label": "大语言模型维基（LLM Wiki） 社区"
+    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [
     {
@@ -281,7 +282,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 362,
+      "degree": 363,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },

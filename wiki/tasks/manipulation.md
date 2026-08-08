@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-08-07
+updated: 2026-08-08
 related:
   - ../entities/paper-clothtransformer-unified-latent-cloth-simulation.md
   - ../entities/paper-flying-knots.md
@@ -171,6 +171,7 @@ flowchart TD
 - [mimic hand M1](../entities/mimic-hand-m1.md) — mimic 产业 AI-first 腱驱动手（15+6 DoF，>25 kg 抓握）
 - [τ₀-World Model（τ0-WM）](../entities/tau0-world-model.md) — 5B 统一视频–动作世界模型与测试时后果评估
 - [Dexmal DW05（OpenDW）](../entities/dexmal-dw05.md) — Wan+MoT 联合视频/动作/价值；开源 Base 与 RoboTwin SFT 权重
+- [Dexmal DM0.5（OpenDM）](../entities/dexmal-dm05.md) — 开放世界 VLA；开源 DM05 权重与 LIBERO/RobotWin/Table30 评测栈
 - [DeFI（解耦前向/逆动力学 VLA）](../methods/defi-decoupled-dynamics-vla.md) — 混合视频前向 + 自监督逆向预训练的操作策略
 - [EgoScale](../methods/egoscale.md) — 人视频规模预训练 VLA + 对齐 mid-training 的灵巧操作迁移
 - [EgoWorld-100W](../entities/egoworld-100w.md) — 百万级自中心操作数据（申请制；四维覆盖）

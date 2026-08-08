@@ -2,7 +2,7 @@
 type: entity
 tags: [world-models, wam, video-action-model, dexmal, manipulation, diffusion, mixture-of-transformers, robotwin, open-source]
 status: complete
-updated: 2026-07-16
+updated: 2026-08-08
 related:
   - ../concepts/world-action-models.md
   - ../methods/generative-world-models.md
@@ -108,7 +108,7 @@ flowchart TB
 | 对比轴 | DW05 | [τ₀-WM](./tau0-world-model.md) | [DM0.5](./dexmal-dm05.md) |
 |--------|------|-------------------------------|---------------------------|
 | **范式** | Joint **WAM**（Wan + MoT 三头） | Joint **VAM**（5B，测试时仿真选动作） | **VLA**（Gemma VLM + Flow 动作专家） |
-| **开源粒度** | 训练 + 推理 + 数据 recipe | 策略 server 已发；完整测试时环待续 | 博文能力叙事为主 |
+| **开源粒度** | 训练 + 推理 + 数据 recipe（[OpenDW](https://github.com/dexmal/opendw)） | 策略 server 已发；完整测试时环待续 | 训练 + 推理 + 多下游权重（[OpenDM](https://github.com/dexmal/opendm)） |
 | **数据接口** | **RobotWin JSONL** 一等公民 | 多视角遥操作 + UMI + 人视频掩码 | 多本体操作 + 导航 + 人视频混合 |
 | **价值头** | 架构预留，公开版侧重 video/action | 动作条件 **task-progress** 评估 | 不显式世界 rollout |
 
