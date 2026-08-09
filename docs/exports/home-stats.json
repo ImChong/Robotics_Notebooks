@@ -9,6 +9,36 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-dypes-vla.md",
+      "detail_id": "entity-paper-dypes-vla",
+      "label": "DyPES-VLA：共享动力学先验 + 本体特化控制",
+      "type": "entity",
+      "recency": "2026-08-09",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-slamformer-infinity.md",
+      "detail_id": "entity-paper-slamformer-infinity",
+      "label": "SLAMFormer-∞（Infinite SLAM Transformer）",
+      "type": "entity",
+      "recency": "2026-08-09",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/concepts/urdf-robot-description.md",
+      "detail_id": "wiki-concepts-urdf-robot-description",
+      "label": "URDF（统一机器人描述格式）",
+      "type": "concept",
+      "recency": "2026-08-09",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/dynibo.md",
       "detail_id": "entity-dynibo",
       "label": "Dynibo（Rust 运动学与动力学库）",
@@ -40,16 +70,6 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/concepts/urdf-robot-description.md",
-      "detail_id": "wiki-concepts-urdf-robot-description",
-      "label": "URDF（统一机器人描述格式）",
-      "type": "concept",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
     },
     {
       "path": "wiki/entities/ssik.md",
@@ -191,37 +211,16 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/numerical-optimization-curriculum.md",
-      "detail_id": "entity-numerical-optimization-curriculum",
-      "label": "数值优化学习策展（机器人 L0+）",
-      "type": "entity",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "roadmap/motion-control.md",
-      "detail_id": "roadmap-motion-control",
-      "label": "主路线：运动控制算法工程师成长路线",
-      "type": "roadmap_page",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/dynibo.md",
-    "detail_id": "entity-dynibo",
-    "label": "Dynibo（Rust 运动学与动力学库）",
+    "path": "wiki/entities/paper-dypes-vla.md",
+    "detail_id": "entity-paper-dypes-vla",
+    "label": "DyPES-VLA：共享动力学先验 + 本体特化控制",
     "type": "entity",
     "recency": "2026-08-09",
     "source": "log.md",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    "action": "maintained"
   },
   "top_communities": [
     {
