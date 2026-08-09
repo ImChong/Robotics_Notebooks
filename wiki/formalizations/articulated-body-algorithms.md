@@ -2,22 +2,24 @@
 type: formalization
 tags: [dynamics, robotics, aba, rnea, inverse-dynamics, forward-dynamics]
 status: complete
-updated: 2026-06-23
+updated: 2026-08-09
 related:
   - ./lie-group-rigid-body-motions.md
   - ../concepts/floating-base-dynamics.md
   - ../concepts/urdf-robot-description.md
   - ../entities/pinocchio.md
+  - ../entities/dynibo.md
   - ../queries/pinocchio-quick-start.md
   - ../entities/quadruped-control-curriculum.md
 sources:
   - ../../sources/courses/quadruped_control_simulation_rl_curriculum.md
+  - ../../sources/repos/dynibo.md
 summary: "ABA 与 RNEA 是求解树状刚体系统正向/逆向动力学的经典 $O(n)$ 算法；四足浮动基扩展下用于计算 M(q)、g(q) 与仿真积分。"
 ---
 
 # Articulated Body Algorithms（ABA / RNEA）
 
-**树状刚体系统** 的动力学可用 **递归牛顿–欧拉算法（RNEA）** 求逆动力学、用 **铰接体算法（ABA）** 求正向动力学。二者是 Pinocchio、RBDL、Drake 等库的默认内核，四足课程 Project 1 要求手算/验证 **质量矩阵 $M(q)$ 与重力项 $g(q)$**。
+**树状刚体系统** 的动力学可用 **递归牛顿–欧拉算法（RNEA）** 求逆动力学、用 **铰接体算法（ABA）** 求正向动力学。二者是 Pinocchio、RBDL、Drake 等库的默认内核；轻量 Rust 实现 [Dynibo](../entities/dynibo.md) 亦公开 RNEA（及重力项）接口。四足课程 Project 1 要求手算/验证 **质量矩阵 $M(q)$ 与重力项 $g(q)$**。
 
 ## 一句话定义
 
@@ -75,6 +77,7 @@ $$
 - [URDF Robot Description](../concepts/urdf-robot-description.md)
 - [Floating Base Dynamics](../concepts/floating-base-dynamics.md)
 - [Pinocchio](../entities/pinocchio.md)
+- [Dynibo](../entities/dynibo.md) — Rust 树状 URDF + RNEA / 重力，Pinocchio oracle
 - [TSID Formulation](./tsid-formulation.md)
 - [仿真物理保真度链路](../queries/simulation-physics-fidelity.md) — ABA/RNEA 属第 ② 刚体动力学层
 - [Physics Fidelity ↔ Sim2Real Gap](../concepts/physics-fidelity-sim2real-gap.md) — 积分步长/求解器精度与长视界发散
@@ -88,3 +91,4 @@ $$
 ## 参考来源
 
 - [sources/courses/quadruped_control_simulation_rl_curriculum.md](../../sources/courses/quadruped_control_simulation_rl_curriculum.md) — 课程 Ch2 ABA/RNEA 与 Project 1
+- [sources/repos/dynibo.md](../../sources/repos/dynibo.md) — Dynibo 对 RNEA / 重力接口的工程实现对照

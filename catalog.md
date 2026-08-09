@@ -109,6 +109,7 @@
 - [DROID Policy Learning](wiki/entities/droid-policy-learning.md) — DROID Policy Learning](https://github.com/droid-dataset/droid_policy_learning) 收录于具身智能研究室 [开源项目主表 `📅unknown` `[entity_page]`
 - [DualMap](wiki/entities/dualmap.md) — DualMap**（Eku127/DualMap，RAL 2025）是面向动态环境的 **在线开放词汇语义建图** 与自然 `📅unknown` `[entity_page]`
 - [Dynamixel SDK](wiki/entities/dynamixel-sdk.md) — Dynamixel SDK**（`ROBOTIS-GIT/DynamixelSDK`，~595★，Ap `📅unknown` `[entity_page]`
+- [Dynibo（Rust 运动学与动力学库）](wiki/entities/dynibo.md) — Dynibo**（xiaojie-xue/dynibo）是一个 **快速、轻量、可复现验证** 的机器人运动学与动 `📅unknown` `[entity_page]`
 - [easy_quadruped（Pupper 控制栈 + MuJoCo 闭环）](wiki/entities/easy-quadruped.md) — easy_quadruped** 是在 [StanfordQuadruped](https://github.com/stanfordroboticsclub/StanfordQuadruped `📅unknown` `[entity_page]`
 - [EGO-Planner Swarm](wiki/entities/ego-planner-swarm.md) — EGO-Planner Swarm**（[ZJU-FAST-Lab/ego-planner-swarm](https://github.com/ZJU-FAST-Lab/ego-planner-s `📅unknown` `[entity_page]`
 - [EgoWorld-100W（百万级自中心操作数据集）](wiki/entities/egoworld-100w.md) — EgoWorld-100W** 是 星际硅途（StellarNex Robotics） 发布的 **头戴第一人称操作视频**  `📅2026-07-24` `[entity_page]`

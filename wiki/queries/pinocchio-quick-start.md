@@ -3,9 +3,10 @@ type: query
 tags: [pinocchio, dynamics, kinematics, wbc, python, quick-start]
 status: stable
 summary: "Pinocchio 快速上手：最小可运行动力学示例"
-updated: 2026-04-25
+updated: 2026-08-09
 sources:
   - ../../sources/papers/robot_kinematics_tools.md
+  - ../../sources/repos/dynibo.md
 ---
 
 # Pinocchio 快速上手：最小可运行动力学示例
@@ -179,6 +180,7 @@ Jc = pin.computeFrameJacobian(model, data, q, contact_frame,
 ## 关联页面
 
 - [Pinocchio](../entities/pinocchio.md) — Pinocchio 框架详细介绍
+- [Dynibo](../entities/dynibo.md) — Rust 轻量 FK/RNEA/DLS-IK；以 Pinocchio 为 oracle 的对照库
 - [WBC Implementation Guide](./wbc-implementation-guide.md) — 基于 Pinocchio 的完整 WBC 实现
 - [TSID](../concepts/tsid.md) — TSID 框架使用 Pinocchio 作为底层引擎
 - [Crocoddyl](../entities/crocoddyl.md) — 在 Pinocchio 之上的最优控制框架

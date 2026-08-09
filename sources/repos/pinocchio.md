@@ -9,3 +9,4 @@
 - **入库日期：** 2026-04-11
 - **一句话说明：** 机器人运动学、动力学和导数计算的底层引擎，是 TSID、WBC、trajectory optimization 工具链的关键基础设施。
 - **沉淀到 wiki：** 是 → [`wiki/entities/pinocchio.md`](../wiki/entities/pinocchio.md)
+- **轻量对照：** [dynibo](./dynibo.md) — Rust 树状 URDF + Workspace 零分配；以 Pinocchio 作 oracle/bench

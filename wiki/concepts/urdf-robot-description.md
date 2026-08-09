@@ -2,10 +2,11 @@
 type: concept
 tags: [robotics, urdf, kinematics, dynamics, modeling, ros]
 status: complete
-updated: 2026-07-08
+updated: 2026-08-09
 related:
   - ../entities/freecad.md
   - ../entities/pinocchio.md
+  - ../entities/dynibo.md
   - ../entities/mujoco.md
   - ../formalizations/articulated-body-algorithms.md
   - ./floating-base-dynamics.md
@@ -14,6 +15,7 @@ related:
   - ../entities/quadruped-control-curriculum.md
 sources:
   - ../../sources/courses/quadruped_control_simulation_rl_curriculum.md
+  - ../../sources/repos/dynibo.md
 summary: "URDF 是 ROS 生态统一的机器人连杆-关节-惯量描述格式；四足课程从 17-link 树解析入手，理解 n_q 与 n_v 差异是动力学编程的前提。"
 ---
 
@@ -57,7 +59,7 @@ summary: "URDF 是 ROS 生态统一的机器人连杆-关节-惯量描述格式�
 ## 工程工作流
 
 1. 厂商提供 URDF（如 Unitree / Zsibot）
-2. 导入 [Pinocchio](../entities/pinocchio.md) / MuJoCo / MATRiX
+2. 导入 [Pinocchio](../entities/pinocchio.md) / [Dynibo](../entities/dynibo.md) / MuJoCo / MATRiX（Dynibo 仅树状 revolute/continuous/prismatic/fixed）
 3. 核对惯量、关节轴向与实机一致
 4. SysID 修正关键参数（摩擦、转子惯量）
 
@@ -71,6 +73,8 @@ summary: "URDF 是 ROS 生态统一的机器人连杆-关节-惯量描述格式�
 ## 关联页面
 
 - [Articulated Body Algorithms](../formalizations/articulated-body-algorithms.md)
+- [Pinocchio](../entities/pinocchio.md) — C++ 刚体动力学全家桶
+- [Dynibo](../entities/dynibo.md) — Rust 运行时 URDF → FK/RNEA 轻量内核
 - [Floating Base Dynamics](./floating-base-dynamics.md)
 - [System Identification](./system-identification.md)
 - [Quadruped Control Curriculum](../entities/quadruped-control-curriculum.md)
@@ -85,3 +89,4 @@ summary: "URDF 是 ROS 生态统一的机器人连杆-关节-惯量描述格式�
 ## 参考来源
 
 - [sources/courses/quadruped_control_simulation_rl_curriculum.md](../../sources/courses/quadruped_control_simulation_rl_curriculum.md) — 课程 Ch2–Ch3 URDF 与参数评估
+- [sources/repos/dynibo.md](../../sources/repos/dynibo.md) — 运行时树状 URDF → 运动学/动力学库入口对照

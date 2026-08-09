@@ -1,3 +1,11 @@
+## [2026-08-09] ingest | sources/repos/dynibo.md — 接入 Dynibo（Rust 运动学/动力学库）；升格 wiki/entities/dynibo.md；交叉 wiki/entities/pinocchio.md、wiki/formalizations/articulated-body-algorithms.md、wiki/concepts/urdf-robot-description.md、wiki/entities/ssik.md、wiki/queries/pinocchio-quick-start.md
+
+- **触发：** 用户指定 <https://github.com/xiaojie-xue/dynibo>；要求自动合并
+- **来源：** [`sources/repos/dynibo.md`](sources/repos/dynibo.md)；顺带交叉 [`sources/repos/pinocchio.md`](sources/repos/pinocchio.md)
+- **新建实体：** [`wiki/entities/dynibo.md`](wiki/entities/dynibo.md) — 树状 URDF + Workspace 零分配；FK/Jacobian/DLS-IK/重力/RNEA；含 `## 源码运行时序图`
+- **开源核查（步骤 2.5）：** **已开源（MIT）** — GitHub + PyPI `dynibo` 0.1.0 + CMake C/C++；Release `v0.1.0`（2026-08-05）；无独立项目页
+- **交叉更新：** [`wiki/entities/pinocchio.md`](wiki/entities/pinocchio.md)、[`wiki/formalizations/articulated-body-algorithms.md`](wiki/formalizations/articulated-body-algorithms.md)、[`wiki/concepts/urdf-robot-description.md`](wiki/concepts/urdf-robot-description.md)、[`wiki/entities/ssik.md`](wiki/entities/ssik.md)、[`wiki/queries/pinocchio-quick-start.md`](wiki/queries/pinocchio-quick-start.md)
+
 ## [2026-08-09] ingest | sources/papers/immersive_social_vr_llm_humanoids_arxiv_2607_07430.md — Immersive Social VR+LLM Humanoids（arXiv:2607.07430，NYUAD）；升格 wiki/entities/paper-immersive-social-vr-llm-humanoids.md；注册 nyuad；交叉 wiki/tasks/teleoperation.md、wiki/tasks/loco-manipulation.md、wiki/entities/paper-loco-manip-161-131-open-television.md、wiki/entities/paper-loco-manip-161-012-humanplus.md、wiki/entities/paper-hrl-stack-07-learning_human_to_humanoid_real_time.md、wiki/entities/paper-teleopit.md
 
 - **触发：** 用户指定标题 *Immersive Social Interaction with VR and LLM-Assisted Humanoids*（arXiv）、单位纽约大学阿布扎比分校、作者 Niraj Pudasaini / Geeta Chandra Raju Bethala / Pranav Doma / Anthony Tzes / Yi Fang；要求自动合并

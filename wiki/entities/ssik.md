@@ -2,16 +2,18 @@
 type: entity
 tags: [uw, inverse-kinematics, manipulation, analytical-ik, python, open-source, ros]
 status: complete
-updated: 2026-07-21
+updated: 2026-08-09
 related:
   - ../tasks/manipulation.md
   - ../tasks/teleoperation.md
   - ./moveit2.md
   - ./curobo.md
+  - ./dynibo.md
   - ../queries/pinocchio-quick-start.md
   - ../methods/trajectory-optimization.md
 sources:
   - ../../sources/repos/ssik.md
+  - ../../sources/repos/dynibo.md
 summary: "ssik 是 UW Personal Robotics Lab 开源的 6R/7R 解析逆运动学库：per-arm 单文件 artifact 返回全部 IK 分支，默认 FK 残差低于典型重复精度，覆盖 EAIK 拒绝的非 Pieper 6R 与非 SRS 7R 几何。"
 ---
 
@@ -75,6 +77,7 @@ flowchart LR
 | **IKFast** | 解析 codegen | 全部（成功生成时） | 经典 Pieper / 球腕 7R lock | 现代 sympy 下非 Pieper 易失败 |
 | **MINK / TracIK** | 数值 | 单解/种子 | 任意 URDF 几何 | 无分支枚举；FK 精度依赖迭代容差 |
 | **cuRobo** | GPU 数值 IK + 规划 | 并行多解探索 | 无碰撞 IK + 轨迹优化 | 非「全部分支」语义；偏规划栈 |
+| **[Dynibo](./dynibo.md)** | 数值 DLS（Rust 核心） | 单解/种子 | 树状 URDF 运行时 + 零分配 FK/RNEA 同库 | 无分支枚举；早期 v0.1 |
 
 ## 源码运行时序图
 
@@ -281,12 +284,14 @@ classDiagram
 - [MoveIt 2](./moveit2.md) — ROS 2 规划宿主；ssik 可作 IK 插件或外部求解器对照
 - [cuRobo](./curobo.md) — GPU 并行 **无碰撞 IK + 轨迹优化**；解析分支枚举与数值规划可分层组合
 - [Pinocchio 快速上手](../queries/pinocchio-quick-start.md) — 动力学/WBC 栈中的 **数值 IK** 示例；与 ssik **解析臂 IK** 互补
+- [Dynibo](./dynibo.md) — Rust 树状 URDF 上的 **DLS 数值 IK** + FK/RNEA；与 ssik 解析全分支互补
 - [Trajectory Optimization](../methods/trajectory-optimization.md) — 多 IK 种子服务非凸轨迹优化
 
 ## 参考来源
 
 - [ssik 仓库归档](../../sources/repos/ssik.md)
 - Srinivasa, S., *ssik: analytical inverse kinematics for 6R and 7R revolute arms*（[GitHub](https://github.com/personalrobotics/ssik)、[Zenodo DOI 10.5281/zenodo.20278005](https://doi.org/10.5281/zenodo.20278005)）
+- [sources/repos/dynibo.md](../../sources/repos/dynibo.md) — 数值 DLS-IK 与动力学同库的对照实现
 
 ## 推荐继续阅读
 

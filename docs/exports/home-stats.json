@@ -1,13 +1,78 @@
 {
   "generated_at": "2026-08-09",
-  "node_count": 2146,
-  "edge_count": 19898,
+  "node_count": 2147,
+  "edge_count": 19908,
   "coverage": {
-    "covered": 2122,
-    "total": 2122,
+    "covered": 2123,
+    "total": 2123,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/dynibo.md",
+      "detail_id": "entity-dynibo",
+      "label": "Dynibo（Rust 运动学与动力学库）",
+      "type": "entity",
+      "recency": "2026-08-09",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/entities/pinocchio.md",
+      "detail_id": "entity-pinocchio",
+      "label": "Pinocchio (刚体动力学库)",
+      "type": "entity",
+      "recency": "2026-08-09",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/formalizations/articulated-body-algorithms.md",
+      "detail_id": "wiki-formalizations-articulated-body-algorithms",
+      "label": "Articulated Body Algorithms（ABA / RNEA）",
+      "type": "formalization",
+      "recency": "2026-08-09",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/concepts/urdf-robot-description.md",
+      "detail_id": "wiki-concepts-urdf-robot-description",
+      "label": "URDF（统一机器人描述格式）",
+      "type": "concept",
+      "recency": "2026-08-09",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/ssik.md",
+      "detail_id": "entity-ssik",
+      "label": "ssik（解析逆运动学）",
+      "type": "entity",
+      "recency": "2026-08-09",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/queries/pinocchio-quick-start.md",
+      "detail_id": "wiki-queries-pinocchio-quick-start",
+      "label": "Pinocchio 快速上手：最小可运行动力学示例",
+      "type": "query",
+      "recency": "2026-08-09",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
     {
       "path": "wiki/entities/paper-immersive-social-vr-llm-humanoids.md",
       "detail_id": "entity-paper-immersive-social-vr-llm-humanoids",
@@ -145,95 +210,39 @@
       "recency": "2026-08-09",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/overview/sergey-levine-diffusion-expressive-policies.md",
-      "detail_id": "wiki-overview-sergey-levine-diffusion-expressive-policies",
-      "label": "Sergey Levine：表达力更强的连续动作策略",
-      "type": "overview",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/diffusion-policy.md",
-      "detail_id": "wiki-methods-diffusion-policy",
-      "label": "Diffusion Policy",
-      "type": "method",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/action-chunking.md",
-      "detail_id": "wiki-methods-action-chunking",
-      "label": "Action Chunking（动作块输出）",
-      "type": "method",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/imitation-learning.md",
-      "detail_id": "wiki-methods-imitation-learning",
-      "label": "Imitation Learning (IL, 模仿学习)",
-      "type": "method",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/concepts/diffusion-model.md",
-      "detail_id": "wiki-concepts-diffusion-model",
-      "label": "Diffusion Model（扩散模型）",
-      "type": "concept",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/comparisons/online-vs-offline-rl.md",
-      "detail_id": "wiki-comparisons-online-vs-offline-rl",
-      "label": "Online RL vs Offline RL",
-      "type": "comparison",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-immersive-social-vr-llm-humanoids.md",
-    "detail_id": "entity-paper-immersive-social-vr-llm-humanoids",
-    "label": "Immersive Social VR + LLM Humanoid Teleop",
+    "path": "wiki/entities/dynibo.md",
+    "detail_id": "entity-dynibo",
+    "label": "Dynibo（Rust 运动学与动力学库）",
     "type": "entity",
     "recency": "2026-08-09",
     "source": "log.md",
-    "action": "maintained"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
   },
   "top_communities": [
     {
-      "label": "动作重定向",
-      "size": 188
-    },
-    {
-      "label": "人形论文深读笔记",
-      "size": 163
-    },
-    {
       "label": "视觉-语言-动作",
-      "size": 154
+      "size": 168
+    },
+    {
+      "label": "动作重定向",
+      "size": 156
+    },
+    {
+      "label": "仿真到现实",
+      "size": 153
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 147
+      "size": 149
     },
     {
       "label": "操作",
-      "size": 144
+      "size": 143
     },
     {
       "label": "移动操作",
@@ -336,8 +345,7 @@
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
-      "degree": 56,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
+      "degree": 56
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",

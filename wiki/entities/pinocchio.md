@@ -3,16 +3,17 @@
 type: entity
 tags: [software, dynamics, c++, whole-body-control, algorithms, inria]
 status: complete
-updated: 2026-05-29
+updated: 2026-08-09
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/centroidal-dynamics.md
   - ../concepts/floating-base-dynamics.md
+  - ./paper-urdd-universal-robot-description-directory.md
+  - ./dynibo.md
 sources:
   - ../../sources/papers/simulation.md
   - ../../sources/papers/urdd_beyond_urdf_arxiv_2512_23135.md
-related:
-  - ./paper-urdd-universal-robot-description-directory.md
+  - ../../sources/repos/dynibo.md
 summary: "Pinocchio 是一个基于 C++ 的极致高性能刚体动力学库，是目前各类腿足机器人 WBC 和基于优化的控制器背后的核心计算引擎。"
 ---
 
@@ -50,8 +51,13 @@ summary: "Pinocchio 是一个基于 C++ 的极致高性能刚体动力学库，�
 
 [URDD](./paper-urdd-universal-robot-description-directory.md)（arXiv:2512.23135）把各框架从 URDF **重复派生** 的 DOF 映射、链结构等 **模块化落盘**；Pinocchio 负责 **给定模型后的动力学计算**——二者正交，URDD 是 **进 Pinocchio 之前的共享预处理层**。
 
+## 与 Dynibo 的对照
+
+[Dynibo](./dynibo.md)（Rust，MIT，v0.1.0）聚焦 **树状 URDF + Workspace 零分配** 的常用子集（FK / Jacobian / DLS-IK / 重力 / RNEA），并以 Pinocchio 作 **oracle 与 Criterion 对照**。需要解析导数、浮动基质心动量、ABA/CRBA 或 Crocoddyl 生态时仍选 Pinocchio；只需轻量多语言内核时可评估 Dynibo。
+
 ## 关联页面
 - [Query：Pinocchio 快速上手指南](../queries/pinocchio-quick-start.md)
+- [Dynibo](./dynibo.md) — Rust 轻量 FK/RNEA/数值 IK，Pinocchio oracle 对照
 - [Whole-Body Control (WBC)](../concepts/whole-body-control.md)
 - [Centroidal Dynamics](../concepts/centroidal-dynamics.md)
 - [Floating Base Dynamics](../concepts/floating-base-dynamics.md)
@@ -59,3 +65,4 @@ summary: "Pinocchio 是一个基于 C++ 的极致高性能刚体动力学库，�
 ## 参考来源
 - Carpentier, J., et al. (2019). *The Pinocchio C++ library: A fast and flexible implementation of rigid body dynamics algorithms and their analytical derivatives*.
 - [sources/papers/urdd_beyond_urdf_arxiv_2512_23135.md](../../sources/papers/urdd_beyond_urdf_arxiv_2512_23135.md) — URDD 与 Pinocchio 等「从模型描述推导动力学」栈的交叉引用
+- [sources/repos/dynibo.md](../../sources/repos/dynibo.md) — Dynibo 与 Pinocchio 性能/oracle 对照归档
