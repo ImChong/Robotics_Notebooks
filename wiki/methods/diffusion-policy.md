@@ -3,7 +3,7 @@ type: method
 tags: [il, diffusion, manipulation, generative-model]
 status: complete
 summary: "Diffusion Policy 用多步去噪生成动作序列，擅长处理多模态和长时序的机器人操作行为。"
-updated: 2026-08-04
+updated: 2026-08-09
 ---
 
 # Diffusion Policy
@@ -132,6 +132,7 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 - **ingest 档案：** [sources/papers/muninn_arxiv_2605_09999.md](../../sources/papers/muninn_arxiv_2605_09999.md) — Muninn：免训练轨迹扩散缓存包装器，visuomotor DP 推理加速与可证偏差预算（RSS 2026）
 - **ingest 档案：** [sources/papers/refine_dp_arxiv_2603_13707.md](../../sources/papers/refine_dp_arxiv_2603_13707.md) — REFINE-DP：人形 loco-manip DP+RL 联合微调（arXiv:2603.13707）
 - **ingest 档案：** [sources/papers/fa_rdp_arxiv_2607_28596.md](../../sources/papers/fa_rdp_arxiv_2607_28596.md) — FA-RDP：频率自适应视觉–力反应扩散（arXiv:2607.28596）
+- **讲者坐标：** [sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md](../../sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md) — Levine @ Simons 2026：扩散/flow → 长 action chunk → IL 与 offline RL（官方 abstract）
 
 ## 关联页面
 
@@ -152,6 +153,7 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 - [FA-RDP（论文实体）](../entities/paper-fa-rdp.md) — 接触丰富操作上频率自适应视觉–力扩散（arXiv:2607.28596）
 - [Why Action Chunking Improves BC](../entities/paper-why-action-chunking-improves-bc.md) — 以 DP 为载体消融 chunk 部署（Delay / RDE）；结论针对机制而非扩散本身
 - [Action Chunking](./action-chunking.md) — DP 默认输出动作块时的训练 / 部署读法
+- [Sergey Levine：表达力更强的连续动作策略](../overview/sergey-levine-diffusion-expressive-policies.md) — Simons 2026 报告：为何生成式动作头抬升 IL / offline RL
 
 ## 推荐继续阅读
 

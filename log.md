@@ -1,3 +1,12 @@
+## [2026-08-09] ingest | sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md — Levine Simons 扩散连续动作策略；wiki/overview/sergey-levine-diffusion-expressive-policies.md；交叉 diffusion-policy / action-chunking / imitation-learning / diffusion-model / online-vs-offline-rl / lwd
+
+- **触发：** 用户指定 <https://m.youtube.com/watch?v=agi3xLTGyaU>；要求确保 agent-reach 已装并 ingest
+- **工具：** Agent Reach v1.5.0（`~/.local/bin/agent-reach`）；配置 `yt-dlp --js-runtimes node` 后 `doctor` 标 YouTube 可用；本机 yt-dlp 仍触发 bot 校验，正文以 Simons talk 页 abstract + oEmbed/Jina 元数据为准
+- **来源：** [`sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md`](sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md)、[`sources/sites/simons_sergey_levine_diffusion_rl_robotics_2026.md`](sources/sites/simons_sergey_levine_diffusion_rl_robotics_2026.md)
+- **新建 overview：** [`wiki/overview/sergey-levine-diffusion-expressive-policies.md`](wiki/overview/sergey-levine-diffusion-expressive-policies.md) — 扩散/flow → 长 action chunk → IL 与 offline / O2O RL
+- **开源核查（步骤 2.5）：** **不适用** — 学术报告录像 + talk 页，无独立项目代码仓
+- **交叉更新：** [`wiki/methods/diffusion-policy.md`](wiki/methods/diffusion-policy.md)、[`wiki/methods/action-chunking.md`](wiki/methods/action-chunking.md)、[`wiki/methods/imitation-learning.md`](wiki/methods/imitation-learning.md)、[`wiki/concepts/diffusion-model.md`](wiki/concepts/diffusion-model.md)、[`wiki/comparisons/online-vs-offline-rl.md`](wiki/comparisons/online-vs-offline-rl.md)、[`wiki/methods/lwd.md`](wiki/methods/lwd.md)
+
 ## [2026-08-09] ingest | sources/papers/commnav_arxiv_2607_01044.md — CommNav（arXiv:2607.01044）入库；升格 wiki/entities/paper-commnav.md；归档 sources/repos/commnav.md；注册 sapienza；交叉 wiki/entities/habitat-sim.md、wiki/entities/paper-icrowdnav.md、wiki/entities/paper-notebook-learning-social-navigation-from-positive-and-neg.md、wiki/entities/paper-humembr.md、wiki/overview/navigation-slam-autonomy-stack.md、roadmap/depth-navigation.md
 
 - **触发：** 用户指定 <https://arxiv.org/abs/2607.01044>；要求自动合并

@@ -2,7 +2,7 @@
 type: method
 tags: [vla, foundation-policy, deepmind, flow-matching, manipulation]
 status: complete
-updated: 2026-08-05
+updated: 2026-08-09
 related:
   - ./vla.md
   - ./pi07-policy.md
@@ -68,9 +68,11 @@ summary: "π₀ (Pi-zero) 是由 Physical Intelligence 提出的一种通用的 
 - [STEAM（自监督时序集成 advantage 建模）](../entities/paper-steam-advantage-modeling.md) — 以 π₀ 为策略骨干，用 CFGRL 做离线后训练提纯
 - [FM-VLA（力觉记忆 VLA）](../entities/paper-fm-vla.md) — 以 π₀.₅ 为骨干，在 flow-matching 动作专家后缀注入力觉长程记忆 token
 - [χ₀ / kai0](../entities/paper-kai0.md) — 在 openpi π₀.₅ 上做 MA/SA/TDA 分布对齐的协同叠衣配方（代码已开源）
+- [Sergey Levine：表达力更强的连续动作策略](../overview/sergey-levine-diffusion-expressive-policies.md) — flow/扩散动作头抬升 IL 与 offline RL 的讲者坐标（Simons 2026）
 
 ## 参考来源
 - Black, K., et al. (2024). *π₀: A Vision-Language-Action Flow Model for General Robot Control*.
 - [Physical Intelligence Blog](https://www.physicalintelligence.company/blog/pi0).
 - [sources/papers/pi07.md](../../sources/papers/pi07.md) — π₀.₇ 后继工作与多模态提示条件（若只关心 π₀ 本体的历史语境可略读摘录节）
 - [sources/papers/chi0_kai0_arxiv_2602_09021.md](../../sources/papers/chi0_kai0_arxiv_2602_09021.md) — χ₀ / kai0 后训练与部署对齐
+- [sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md](../../sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md) — Levine：flow/扩散作为大规模控制模型动作头的上游读法

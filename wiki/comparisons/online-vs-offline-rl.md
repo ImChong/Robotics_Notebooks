@@ -2,7 +2,7 @@
 type: comparison
 tags: [rl, offline-rl, online-rl, data-efficiency, distribution-shift, locomotion]
 status: complete
-updated: 2026-08-04
+updated: 2026-08-09
 related:
   - ../methods/intentional-updates-streaming-rl.md
   - ../methods/reinforcement-learning.md
@@ -10,11 +10,13 @@ related:
   - ../concepts/sim2real.md
   - ../comparisons/rl-vs-il.md
   - ../entities/paper-rove-humanoid-vla-intervention.md
+  - ../overview/sergey-levine-diffusion-expressive-policies.md
 sources:
   - ../../sources/papers/intentional_streaming_rl.md
   - ../../sources/papers/locomotion_rl.md
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/rove_arxiv_2606_17011.md
+  - ../../sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md
 summary: "Online RL vs Offline RL"
 ---
 
@@ -158,6 +160,7 @@ Online RL 和 Offline RL 是两种根本不同的学习范式。两者都在优�
 - [sources/papers/lwd.md](../../sources/papers/lwd.md) — LWD 论文 ingest 档案
 - [sources/papers/intentional_streaming_rl.md](../../sources/papers/intentional_streaming_rl.md) — 无 replay 流式 RL 的意图更新步长（arXiv:2604.19033）
 - [sources/papers/rove_arxiv_2606_17011.md](../../sources/papers/rove_arxiv_2606_17011.md) — ROVE 人形 VLA 干预后训练（arXiv:2606.17011）
+- [sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md](../../sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md) — Levine：生成式动作头近期同样抬升 offline / offline-to-online RL
 
 ## 关联页面
 
@@ -171,3 +174,4 @@ Online RL 和 Offline RL 是两种根本不同的学习范式。两者都在优�
 - [Data Flywheel](../concepts/data-flywheel.md) — 数据飞轮的"模仿式"与"RL 式"两种范式
 - [MobileGym](../entities/mobilegym.md) — 移动 GUI Agent 场景下 GRPO + 数百并行浏览器实例的在线 RL 环境范例（arXiv:2605.26114）
 - [WCM](../entities/paper-wcm-world-critic-model.md) — 同一 critic 同时接 on-policy（Flow-SDE / PPO）与 off-policy（RECAP / AWR），说明瓶颈在 critic 表征而非算法族
+- [Sergey Levine：表达力更强的连续动作策略](../overview/sergey-levine-diffusion-expressive-policies.md) — 扩散/flow 动作头如何同时服务 IL 与 offline / O2O RL

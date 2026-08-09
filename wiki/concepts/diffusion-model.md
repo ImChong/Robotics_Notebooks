@@ -2,7 +2,7 @@
 type: concept
 tags: [generative-model, diffusion, machine-learning]
 status: complete
-updated: 2026-08-02
+updated: 2026-08-09
 related:
   - ../formalizations/generative-foundations.md
   - ../methods/diffusion-policy.md
@@ -138,10 +138,12 @@ flowchart LR
 - [LLaDA2.2-flash](../entities/llada2-2-flash.md) — 离散文本 block-diffusion MoE（dLLM）与 agentic 编辑推理
 - [Transformer Transformer](../entities/paper-transformer-transformer.md) — DiT 扩散完整机体 + Dynamics Self-Guidance
 - [Importance Sampling + PCA（商业 AV；DiFS）](../entities/paper-importance-sampling-pca-av-failures.md)
+- [Sergey Levine：表达力更强的连续动作策略](../overview/sergey-levine-diffusion-expressive-policies.md) — 扩散/flow 作为连续控制动作头的讲者坐标（Simons 2026）
 
 ## 参考来源
 
 - [wechat_human_five_diffusion_model_intro.md](../../sources/blogs/wechat_human_five_diffusion_model_intro.md) — human five 微信公众号《Diffusion Model入门》（<https://mp.weixin.qq.com/s/P4SxYSBnxDjX5De1jxMxfA>）
+- [sergey_levine_diffusion_rl_robotics_simons_youtube.md](../../sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md) — Levine @ Simons：扩散/flow 改造连续动作策略（官方 abstract）
 
 ## 推荐继续阅读
 
