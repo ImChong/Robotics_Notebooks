@@ -121,6 +121,7 @@
 - [x] 再次同步刷新 README `media/site-demo.gif`（`scripts/record_readme_demo.cjs`，2031 节点 / 17987 边；70 frames / 3.21 MB）。
 - [x] 再次同步刷新 README `media/site-demo.gif`（`scripts/record_readme_demo.cjs`，2058 节点 / 18475 边；70 frames / 3.12 MB）。
 - [x] 再次同步刷新 README `media/site-demo.gif`：录制脚本真实点击「项目查询 / 知识图谱」入口卡并纳入顺时针描框特效（`scripts/record_readme_demo.cjs`，2060 节点 / 18500 边；88 frames / 3.48 MB）。
+- [x] 全站 footer 作者名「Chong Liu」可点击跳转个人主页 `https://imchong.github.io/index.html`（新标签打开）；`.footer a` 继承次要文字色、悬停强调色。
 
 ---
 
