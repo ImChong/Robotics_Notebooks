@@ -13,7 +13,7 @@ sources:
   - ../../sources/papers/optimal_control.md
   - ../../sources/courses/mit_underactuated_kalman_lqr.md
 summary: "LQR / iLQR"
-updated: 2026-06-01
+updated: 2026-08-09
 ---
 
 # LQR / iLQR

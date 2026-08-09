@@ -1,3 +1,14 @@
+## [2026-08-09] ingest | sources/courses/cmu_optimal_control_16_745_2025_youtube.md — CMU 16-745 Optimal Control 2025 全播放列表；wiki/entities/cmu-optimal-control-curriculum.md；交叉 optimal-control / lqr-ilqr / MPC / TrajOpt / numerical-optimization-curriculum / motion-control
+
+- **触发：** 用户要求找到 YouTube *Optimal Control 2025* playlist 并 ingest 整个 playlist
+- **定位：** Playlist ID `PLZnJoM76RM6IAJfMXd1PgGNXn3dxhkVgI`；官方课站 [optimalcontrol.ri.cmu.edu/lectures](https://optimalcontrol.ri.cmu.edu/lectures/) 各讲 video 链至此列表；主讲 Zachary Manchester（频道标注 MIT Robotic Exploration Lab）
+- **工具：** `yt-dlp --flat-playlist` 枚举 24 讲（约 29.3 h）；单视频字幕因 bot 校验未抽，目录以 flat-playlist + 课程站为准
+- **来源：** [`sources/courses/cmu_optimal_control_16_745_2025_youtube.md`](sources/courses/cmu_optimal_control_16_745_2025_youtube.md)、[`sources/sites/cmu_optimal_control_16_745.md`](sources/sites/cmu_optimal_control_16_745.md)、[`sources/repos/optimal_control_16_745.md`](sources/repos/optimal_control_16_745.md)
+- **新建实体：** [`wiki/entities/cmu-optimal-control-curriculum.md`](wiki/entities/cmu-optimal-control-curriculum.md) — 讲次→wiki 映射与 L3–L4 学习路径
+- **开源核查（步骤 2.5）：** **已开源（教材侧）** — 公开录像 + [`Optimal-Control-16-745/lecture-notebooks`](https://github.com/Optimal-Control-16-745/lecture-notebooks)；作业仓多为课内
+- **纠正：** 旧归档误将本 playlist 归为 Tedrake；已改 [`sources/courses/mit_underactuated_kalman_lqr.md`](sources/courses/mit_underactuated_kalman_lqr.md)、[`sources/papers/lqr_ilqr_primary_refs.md`](sources/papers/lqr_ilqr_primary_refs.md)
+- **交叉更新：** [`wiki/concepts/optimal-control.md`](wiki/concepts/optimal-control.md)、[`wiki/methods/lqr-ilqr.md`](wiki/methods/lqr-ilqr.md)、[`wiki/methods/model-predictive-control.md`](wiki/methods/model-predictive-control.md)、[`wiki/methods/trajectory-optimization.md`](wiki/methods/trajectory-optimization.md)、[`wiki/entities/numerical-optimization-curriculum.md`](wiki/entities/numerical-optimization-curriculum.md)、[`roadmap/motion-control.md`](roadmap/motion-control.md)
+
 ## [2026-08-09] ingest | sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md — Levine Simons 扩散连续动作策略；wiki/overview/sergey-levine-diffusion-expressive-policies.md；交叉 diffusion-policy / action-chunking / imitation-learning / diffusion-model / online-vs-offline-rl / lwd
 
 - **触发：** 用户指定 <https://m.youtube.com/watch?v=agi3xLTGyaU>；要求确保 agent-reach 已装并 ingest

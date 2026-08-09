@@ -2,7 +2,7 @@
 type: method
 tags: [control, optimization, motion-planning, trajectory-optimization, mpc, humanoid]
 status: complete
-updated: 2026-07-24
+updated: 2026-08-09
 related:
   - ./model-predictive-control.md
   - ../concepts/optimal-control.md
@@ -101,6 +101,7 @@ $$ x(0) = x_0, \quad x(T) \in \mathcal{X}_f $$
 - [Adjoint Sensitivity Analysis](../formalizations/adjoint-sensitivity-analysis.md) — 轨迹代价梯度
 - [Collision Distance Optimization](../concepts/collision-distance-optimization.md) — 避障约束与 SDF
 - [Numerical Optimization Curriculum](../entities/numerical-optimization-curriculum.md) — 数值优化课程地图
+- [CMU Optimal Control 2025 策展](../entities/cmu-optimal-control-curriculum.md) — Lec 11–13 非线性 / DDP / 直接法
 - [cuNRTO GPU 鲁棒轨迹优化](../entities/paper-cunrto-gpu-robust-trajectory-optimization.md)
 
 

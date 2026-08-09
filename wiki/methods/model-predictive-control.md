@@ -2,7 +2,7 @@
 type: method
 tags: [control, mpc, optimization, locomotion, humanoid]
 status: complete
-updated: 2026-07-25
+updated: 2026-08-09
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-receding-horizon-ilc.md
@@ -239,6 +239,7 @@ print("apply control:", u.ravel())
 - [wechat_shenlan_robot_control_eight_paradigms.md](../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md) — 深蓝八大控制体系：MPC 代表算法
 - [wechat_shenlan_ai_ad_planning_control.md](../../sources/blogs/wechat_shenlan_ai_ad_planning_control.md) — 车载轨迹跟踪 MPC 与 PID/LQR 分工
 - Bellicoso et al., *Convex Model Predictive Control for Bipedal Locomotion* — 双足行走 MPC 代表论文
+- [CMU Optimal Control 2025 策展](../entities/cmu-optimal-control-curriculum.md) — Lec 10 Convex MPC（播放列表归档）
 - [Optimal Control 2025 (YouTube Course)](https://www.youtube.com/playlist?list=PLZnJoM76RM6IAJfMXd1PgGNXn3dxhkVgI), Lecture 10: Convex MPC — 理论讲解
 - Acados (http://acados.org/) — 开源 NMPC 求解器，实现参考
 - **ingest 档案：** [sources/papers/mpc.md](../../sources/papers/mpc.md)、[lqr_ilqr_primary_refs.md](../../sources/papers/lqr_ilqr_primary_refs.md)（LQR 与 MPC 关系）
@@ -263,6 +264,7 @@ print("apply control:", u.ravel())
 
 ## 推荐继续阅读
 
+- [CMU Optimal Control 2025（课程归档）](../../sources/courses/cmu_optimal_control_16_745_2025_youtube.md) — Lecture 10: Convex Model-Predictive Control
 - [Optimal Control 2025 (YouTube Course)](https://www.youtube.com/playlist?list=PLZnJoM76RM6IAJfMXd1PgGNXn3dxhkVgI) - Lecture 10: Convex Model-Predictive Control
 - [Convex MPC for Bipedal Locomotion](https://arxiv.org/abs/1709.10219) - Cory (Bellicoso et al.)
 - Acados: http://acados.org/ - NMPC solver

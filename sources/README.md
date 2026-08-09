@@ -193,6 +193,7 @@
 | [x] [ruka-v2.md](repos/ruka-v2.md) | RUKA-v2：NYU 全开源腱驱动灵巧手官方代码（CAD/控制器/校准/遥操作，MIT） |
 | [x] [rpl_cs_ucl_sds.md](repos/rpl_cs_ucl_sds.md) | RPL-CS-UCL/SDS：See it, Do it, Sorted 四足单视频技能官方实现（与 E-SDS 同系） |
 | [x] [roboto_origin.md](repos/roboto_origin.md) | Roboparty 人形机器人开源聚合入口（硬件/训练/部署/描述/固件） |
+| [x] [optimal_control_16_745.md](repos/optimal_control_16_745.md) | Optimal-Control-16-745：CMU 16-745 讲义 notebook GitHub 组织（配套 Optimal Control 2025 录像） |
 | [x] [omg-tsinghua-mars-lab.md](repos/omg-tsinghua-mars-lab.md) | tsinghua-mars-lab/OMG：omni-modal G1 运动生成（OMG-DiT + HoloMotion tracker、训练/推理/部署；配套项目页） |
 | [x] [omomo_release.md](repos/omomo_release.md) | OMOMO：人–物交互 MoCap ~10 h / 15 物体（SIGGRAPH Asia 2023；OmniRetarget/ResMimic 上游） |
 | [x] [openloong.md](repos/openloong.md) | OpenLoong 青龙全栈开源（Framework / Dyn-Control / 数据集 / loongOpen 组织矩阵） |
@@ -520,6 +521,7 @@
 | [x] [unity-manual-6-5.md](sites/unity-manual-6-5.md) | Unity 6.5 User Manual 与 docs.unity.com 文档门户（含中文） |
 | [x] [wuji_robotics.md](sites/wuji_robotics.md) | 舞肌科技：官网 wuji.tech + F 系列 / Pan Motor 电机资料 + Wuji Hand 灵巧手（docs.wuji.tech / 招聘与媒体锚点） |
 | [x] [simons_sergey_levine_diffusion_rl_robotics_2026.md](sites/simons_sergey_levine_diffusion_rl_robotics_2026.md) | Simons talk 页：Levine《Diffusion in RL and robotics…》（2026-08-07；abstract + YouTube `agi3xLTGyaU`） |
+| [x] [cmu_optimal_control_16_745.md](sites/cmu_optimal_control_16_745.md) | CMU 16-745 Optimal Control 课程站（optimalcontrol.ri.cmu.edu；配套 YouTube 2025 playlist） |
 
 ### courses/ — 课程与协议入门归档
 | 文件 | 内容 |
@@ -535,7 +537,8 @@
 | [x] [rs485_tia_eia_primary_refs.md](sites/rs485_tia_eia_primary_refs.md) | RS-485 / TIA-485-A 一手资料（TSB-89A、TI SLLA383/SLLA070、Modbus RTU） |
 | [x] [motor_drive_firmware_bus_protocols.md](courses/motor_drive_firmware_bus_protocols.md) | 电机驱动器底软通信：CANopen/CiA402、CoE、私有 CAN、MIT 帧、DroneCAN 等选型索引 |
 | [x] [welch_bishop_kalman_filter.md](courses/welch_bishop_kalman_filter.md) | Welch & Bishop KF 入门教程（UNC TR / kalmanfilter.net） |
-| [x] [mit_underactuated_kalman_lqr.md](courses/mit_underactuated_kalman_lqr.md) | MIT Underactuated + Optimal Control 2025（估计 / LQR / DDP 模块） |
+| [x] [mit_underactuated_kalman_lqr.md](courses/mit_underactuated_kalman_lqr.md) | MIT Underactuated（估计 / LQR / DDP 相关；已与 CMU OC 2025 playlist 解耦） |
+| [x] [cmu_optimal_control_16_745_2025_youtube.md](courses/cmu_optimal_control_16_745_2025_youtube.md) | CMU 16-745 Optimal Control 2025 YouTube 播放列表（24 讲；映射 `cmu-optimal-control-curriculum`） |
 | [x] [boyuai_hands_on_rl_elites_course.md](courses/boyuai_hands_on_rl_elites_course.md) | 伯禹平台《动手学强化学习》张伟楠视频课（免费，与蘑菇书/ hrl.boyuai.com 配套） |
 | [x] [nvidia_sim_to_real_so101_isaac.md](courses/nvidia_sim_to_real_so101_isaac.md) | NVIDIA：SO-101 操作臂 Sim2Real 动手课（GR00T/LeRobot/Isaac Lab、四类 gap 策略） |
 | [x] [stanford_cs123_robotics_ai.md](courses/stanford_cs123_robotics_ai.md) | Stanford CS 123 Robotics & AI（Pupper v3 配套实验课，cs123-stanford.readthedocs.io） |
