@@ -12,6 +12,7 @@ related:
   - ../tasks/locomotion.md
   - ../entities/humanoid-robot.md
   - ../queries/humanoid-hardware-selection.md
+  - ../overview/hub-actuator-drive-chain.md
 sources:
   - ../../sources/blogs/wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md
   - ../../sources/blogs/wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md
@@ -113,6 +114,7 @@ flowchart TB
 - [人形整机机械布局设计](./humanoid-mechanical-layout-design.md) — 近端布置与摆动惯量
 - [Locomotion](../tasks/locomotion.md) — 行走冲击与关节接口语境
 - [Query：人形硬件怎么选](../queries/humanoid-hardware-selection.md) — 多路线决策入口
+- [执行器驱动链选型闭环](../overview/hub-actuator-drive-chain.md) — 传动机构选型落在驱动链①层之上的整链入口
 
 ## 参考来源
 
