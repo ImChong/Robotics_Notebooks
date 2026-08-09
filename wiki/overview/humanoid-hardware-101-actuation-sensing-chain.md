@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, hardware, motor, gearbox, encoder, qdd, harmonic, category-hub]
 status: complete
-updated: 2026-06-01
+updated: 2026-08-09
 summary: "Humanoid Hardware 101 · 02 传动与感知链 — 外转子伺服+有传感器换相、谐波/RV/行星减速器路线之争、双编码器与磁编绝对式；QDD 利 RL 扭矩透明。"
 related:
   - ./humanoid-hardware-101-technology-map.md
@@ -10,9 +10,11 @@ related:
   - ./humanoid-hardware-101-integrated-actuators.md
   - ../overview/motor-drive-firmware-bus-protocols.md
   - ../methods/amp-reward.md
+  - ../concepts/humanoid-knee-harmonic-drive-limits.md
 sources:
   - ../../sources/blogs/wechat_human_five_humanoid_hardware_101.md
   - ../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md
+  - ../../sources/blogs/wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md
 ---
 
 # Humanoid Hardware 101 · 02：传动与感知链
@@ -37,8 +39,8 @@ sources:
 
 | 类型 | 特点 | 人形典型部位 |
 |------|------|--------------|
-| **谐波** | 紧凑、低回程间隙、效率较低、难反向驱动 | 肩肘腕等精密关节 |
-| **摆线/RV** | 抗冲击、大接触面；纳博特斯克等主导 | 腰髋膝等大关节 |
+| **谐波** | 紧凑、低回程间隙、效率较低、难反向驱动 | 肩肘腕等精密关节；**膝/踝主冲击路径通常不优先**（见 [膝侧避开谐波判据](../concepts/humanoid-knee-harmonic-drive-limits.md)） |
+| **摆线/RV** | 抗冲击、大接触面；纳博特斯克等主导 | 腰髋膝等大关节（旋转抗冲击备选） |
 | **行星** | 可反向驱动、扭矩透明性较好 | QDD 路线 |
 
 **行业争论：** 传统「微米精度 + 十年寿命」vs 整机厂把减速器当 **12–18 个月可换消耗件**；后者利好 **80% 性能、更快迭代** 的中国供应商（文内以利得传动等为例）。
@@ -65,8 +67,10 @@ sources:
 - [直线传动与轴承](./humanoid-hardware-101-linear-transmission-bearings.md)
 - [产业与成本地缘](./humanoid-hardware-101-supply-chain-economics.md)
 - [电机驱动与总线协议](./motor-drive-firmware-bus-protocols.md)
+- [膝/腿主承力链为何通常避开谐波](../concepts/humanoid-knee-harmonic-drive-limits.md)
 
 ## 参考来源
 
 - [wechat_human_five_humanoid_hardware_101.md](../../sources/blogs/wechat_human_five_humanoid_hardware_101.md)
 - [wechat_humanoid_hardware_101_2026-06-01.md](../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md)
+- [wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md](../../sources/blogs/wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md)

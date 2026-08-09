@@ -9,6 +9,7 @@
 - **入库日期：** 2026-05-18
 - **一句话说明：** 以 Tesla Optimus 公开演示与工程叙事为线索，解释腿部采用行星滚柱丝杠（PRS）将旋转转为直线、再经连杆驱动关节的动机，并与全旋转关节（如 Atlas）及国内折中方案做路线对比。
 - **沉淀到 wiki：** [`wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md`](../../wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md)
+- **姊妹文：** [`wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md`](wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md)（膝/腿主承力链为何通常避开谐波）
 
 ## 核心摘录（归纳，非全文）
 

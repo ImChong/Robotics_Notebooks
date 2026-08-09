@@ -2,12 +2,13 @@
 type: concept
 tags: [humanoid, hardware, mechanical-design, layout, dof, inertia, tolerance, fea]
 status: complete
-updated: 2026-08-03
+updated: 2026-08-09
 related:
   - ./humanoid-parallel-joint-kinematics.md
   - ./robot-link-and-rotor-inertia.md
   - ./urdf-robot-description.md
   - ./planetary-roller-screw-humanoid-leg-actuation.md
+  - ./humanoid-knee-harmonic-drive-limits.md
   - ./robot-power-distribution-architecture.md
   - ./robot-onboard-communication-architecture.md
   - ../overview/humanoid-hardware-101-chassis-materials.md
@@ -19,6 +20,7 @@ sources:
   - ../../sources/blogs/wechat_human_five_humanoid_hardware_101.md
   - ../../sources/blogs/wechat_human_five_humanoid_actuator_102.md
   - ../../sources/papers/humanoid_leg_generative_design_hust_j_260645.md
+  - ../../sources/blogs/wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md
 summary: "人形整机机械布局设计把任务指标翻译成自由度分配、传动布置、质量/惯量分布与结构刚度公差四层决策；核心判据不是「零件够不够强」，而是质量分布与结构模态是否给控制留出可用带宽与可行域。"
 ---
 
@@ -67,7 +69,7 @@ flowchart TB
 
 主流全尺寸人形落在 **约 25–45 DoF**（不含手指）：单腿 6（髋 3 + 膝 1 + 踝 2）是行走与踝部力矩调节的下限；腰 1–3 决定上体能否解耦朝向；单臂 6–7 决定末端能否绕过奇异位形；颈 2 服务感知视场；手部 6–22 是成本与可靠性的最大变量。**减自由度是最有效的降本杠杆**，但每减一个都要说清放弃了什么动作。
 
-串联关节直观、标定简单；[并联/连杆关节](./humanoid-parallel-joint-kinematics.md) 与 [行星滚柱丝杠直线驱动](./planetary-roller-screw-humanoid-leg-actuation.md) 把执行器移到近端换取低摆动惯量，代价是运动学耦合、雅可比随位形变化、力控路径变长。
+串联关节直观、标定简单；[并联/连杆关节](./humanoid-parallel-joint-kinematics.md) 与 [行星滚柱丝杠直线驱动](./planetary-roller-screw-humanoid-leg-actuation.md) 把执行器移到近端换取低摆动惯量，代价是运动学耦合、雅可比随位形变化、力控路径变长。膝/踝主冲击路径上通常还需避开把谐波放在正面承力链——见 [膝侧避开谐波判据](./humanoid-knee-harmonic-drive-limits.md)。
 
 ### L2–L3 布置与质量分布：把重量往「根」上搬
 
@@ -114,6 +116,7 @@ flowchart TB
 - [整机配电架构](./robot-power-distribution-architecture.md) · [整机通信架构](./robot-onboard-communication-architecture.md)
 - [接触力环带宽](./contact-force-loop-bandwidth.md)
 - [动力学仿真驱动的人形下肢衍生式设计](../entities/paper-humanoid-leg-generative-design-dynamics.md) — 电液混合 5-DoF 腿 + 仿真工况驱动衍生式减重案例
+- [膝/腿主承力链为何通常避开谐波](./humanoid-knee-harmonic-drive-limits.md) — 近端布置与主冲击力流判据
 
 ## 参考来源
 
@@ -121,6 +124,7 @@ flowchart TB
 - [Humanoid 执行器 102 微信长文编译](../../sources/blogs/wechat_human_five_humanoid_actuator_102.md) — 质量惩罚螺旋、旋转-直线分离架构
 - [开源人形硬件对比](../entities/open-source-humanoid-hardware.md) — 可查阅真实图纸/BOM 的整机布局样本
 - [人形下肢衍生式设计论文归档](../../sources/papers/humanoid_leg_generative_design_hust_j_260645.md) — 跳跃仿真提载荷 → 衍生式连杆轻量化
+- [膝侧避开谐波工程解读归档](../../sources/blogs/wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md)
 - ISO 1101（几何公差）、ISO 286 / ISO 2768（配合与未注公差）— [ISO 标准检索入口](https://www.iso.org/search.html?q=1101)
 
 ## 推荐继续阅读

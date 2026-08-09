@@ -2,16 +2,19 @@
 type: overview
 tags: [humanoid, actuator, harmonic-drive, roller-screw, category-hub]
 status: complete
-updated: 2026-06-02
+updated: 2026-08-09
 summary: "Actuator 102 · 02 — 重载通用人形趋同：肩髋旋转用谐波，膝踝冲击用行星滚柱丝杠直线；滚珠丝杠点接触易布氏压痕。"
 related:
   - ./humanoid-actuator-102-technology-map.md
   - ./humanoid-actuator-102-gear-reflected-inertia.md
   - ./humanoid-hardware-101-linear-transmission-bearings.md
   - ./humanoid-hardware-101-actuation-sensing-chain.md
+  - ../concepts/humanoid-knee-harmonic-drive-limits.md
+  - ../concepts/planetary-roller-screw-humanoid-leg-actuation.md
 sources:
   - ../../sources/blogs/wechat_human_five_humanoid_actuator_102.md
   - ../../sources/raw/wechat_humanoid_actuator_102_2026-06-02.md
+  - ../../sources/blogs/wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md
 ---
 
 # Actuator 102 · 02：旋转-直线分离架构
@@ -51,8 +54,11 @@ Tesla、Figure、Apptronik 等 **重载通用人形** 独立趋同：**旋转谐
 
 - [减速与反射惯量](./humanoid-actuator-102-gear-reflected-inertia.md)
 - [Hardware 101 · 直线与轴承](./humanoid-hardware-101-linear-transmission-bearings.md)
+- [膝/腿主承力链为何通常避开谐波](../concepts/humanoid-knee-harmonic-drive-limits.md) — 冲击谱载、柔轮疲劳与力流判据
+- [人形腿部 PRS 直线驱动](../concepts/planetary-roller-screw-humanoid-leg-actuation.md) — 膝踝直线侧机制展开
 
 ## 参考来源
 
 - [wechat_human_five_humanoid_actuator_102.md](../../sources/blogs/wechat_human_five_humanoid_actuator_102.md)
 - [wechat_humanoid_actuator_102_2026-06-02.md](../../sources/raw/wechat_humanoid_actuator_102_2026-06-02.md)
+- [wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md](../../sources/blogs/wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md) — 膝侧避开谐波的工程判据补充

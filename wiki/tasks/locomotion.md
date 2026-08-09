@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-08-06
+updated: 2026-08-09
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -28,6 +28,7 @@ related:
   - ../queries/humanoid-hardware-selection.md
   - ../queries/humanoid-rl-cookbook.md
   - ../concepts/planetary-roller-screw-humanoid-leg-actuation.md
+  - ../concepts/humanoid-knee-harmonic-drive-limits.md
   - ../concepts/wheel-legged-quadruped.md
   - ../entities/paper-mujica-wheel-legged-multi-skill.md
   - ../entities/paper-aware-wheeled-legged-reflexive-evasion.md
@@ -270,6 +271,7 @@ flowchart TD
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [人形腿部行星滚柱丝杠直线驱动（PRS）](../concepts/planetary-roller-screw-humanoid-leg-actuation.md)（直线执行器 + 闭链连杆与行走动态、能耗叙事）
+- [膝/腿主承力链为何通常避开谐波](../concepts/humanoid-knee-harmonic-drive-limits.md)（冲击谱载与主力流布置；与臂部精密谐波选型对照）
 - [State Estimation](../concepts/state-estimation.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Imitation Learning](../methods/imitation-learning.md)
