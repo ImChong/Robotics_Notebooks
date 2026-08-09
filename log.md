@@ -1,3 +1,12 @@
+## [2026-08-09] ingest | sources/papers/immersive_social_vr_llm_humanoids_arxiv_2607_07430.md — Immersive Social VR+LLM Humanoids（arXiv:2607.07430，NYUAD）；升格 wiki/entities/paper-immersive-social-vr-llm-humanoids.md；注册 nyuad；交叉 wiki/tasks/teleoperation.md、wiki/tasks/loco-manipulation.md、wiki/entities/paper-loco-manip-161-131-open-television.md、wiki/entities/paper-loco-manip-161-012-humanplus.md、wiki/entities/paper-hrl-stack-07-learning_human_to_humanoid_real_time.md、wiki/entities/paper-teleopit.md
+
+- **触发：** 用户指定标题 *Immersive Social Interaction with VR and LLM-Assisted Humanoids*（arXiv）、单位纽约大学阿布扎比分校、作者 Niraj Pudasaini / Geeta Chandra Raju Bethala / Pranav Doma / Anthony Tzes / Yi Fang；要求自动合并
+- **来源：** [`sources/papers/immersive_social_vr_llm_humanoids_arxiv_2607_07430.md`](sources/papers/immersive_social_vr_llm_humanoids_arxiv_2607_07430.md)
+- **新建实体：** [`wiki/entities/paper-immersive-social-vr-llm-humanoids.md`](wiki/entities/paper-immersive-social-vr-llm-humanoids.md) — AVP + LLM 语音高层 locomotion + VR 腕/指 + 双向音频；H1 新手 80%/70%；`## 源码运行时序图` 不适用
+- **开源核查（步骤 2.5）：** **确认未开源** — 无项目页 / 无官方仓；仅第三方 VisionProTeleop / LiveKit / Silero 组件
+- **交叉更新：** [`wiki/tasks/teleoperation.md`](wiki/tasks/teleoperation.md)、[`wiki/tasks/loco-manipulation.md`](wiki/tasks/loco-manipulation.md)、[`wiki/entities/paper-loco-manip-161-131-open-television.md`](wiki/entities/paper-loco-manip-161-131-open-television.md)、[`wiki/entities/paper-loco-manip-161-012-humanplus.md`](wiki/entities/paper-loco-manip-161-012-humanplus.md)、[`wiki/entities/paper-hrl-stack-07-learning_human_to_humanoid_real_time.md`](wiki/entities/paper-hrl-stack-07-learning_human_to_humanoid_real_time.md)、[`wiki/entities/paper-teleopit.md`](wiki/entities/paper-teleopit.md)
+- **机构：** 注册 [`schema/institutions.json`](schema/institutions.json) → `nyuad`（纽约大学阿布扎比分校）
+
 ## [2026-08-09] ingest | sources/courses/cmu_optimal_control_16_745_2025_youtube.md — CMU 16-745 Optimal Control 2025 全播放列表；wiki/entities/cmu-optimal-control-curriculum.md；交叉 optimal-control / lqr-ilqr / MPC / TrajOpt / numerical-optimization-curriculum / motion-control
 
 - **触发：** 用户要求找到 YouTube *Optimal Control 2025* playlist 并 ingest 整个 playlist

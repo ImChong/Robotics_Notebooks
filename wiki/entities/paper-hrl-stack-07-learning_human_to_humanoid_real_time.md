@@ -3,12 +3,13 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, cmu]
 status: complete
-updated: 2026-07-16
+updated: 2026-08-09
 venue: curated
 summary: "H2O 的完整名字是 Human-to-Humanoid。它要解决的问题很直接：能不能让一个人通过自己的身体动作，实时驱动一个人形机器人做全身动作，而不是只控制手臂或轮式底盘。"
 related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/humanoid-amp-motion-prior-survey.md
+  - ./paper-immersive-social-vr-llm-humanoids.md
 sources:
   - ../../sources/papers/humanoid_rl_stack_07_learning_human_to_humanoid_real_time_whole_body.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
@@ -87,6 +88,7 @@ H2O 的完整名字是 Human-to-Humanoid。它要解决的问题很直接：能�
 
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
+- 语音高层 locomotion（非全身动捕）对照：[Immersive Social VR+LLM](./paper-immersive-social-vr-llm-humanoids.md)
 - 原始 source：[humanoid_rl_stack_07_learning_human_to_humanoid_real_time_whole_body.md](../../sources/papers/humanoid_rl_stack_07_learning_human_to_humanoid_real_time_whole_body.md)
 
 ## 参考来源

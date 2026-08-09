@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-08-08
+updated: 2026-08-09
 sources:
   - ../../sources/papers/agile_arxiv_2603_20147.md
   - ../../sources/papers/pot_vla_arxiv_2607_18016.md
@@ -251,6 +251,7 @@ flowchart TD
 - [Gemini Robotics](../entities/gemini-robotics.md) — DeepMind GR2：闭源全身 VLA + ER 编排的产业对照（权重未开源）
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 联合未来–动作建模与 VLA/世界模型分界（综述资源入口）
 - [Teleoperation](./teleoperation.md)
+- [Immersive Social VR+LLM（论文实体）](../entities/paper-immersive-social-vr-llm-humanoids.md) — AVP + LLM 语音高层 locomotion + 双向音频社交（H1；未开源）
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
 - [Humanoid Transformer with Touch Dreaming](../methods/humanoid-transformer-touch-dreaming.md)
 - [ExoActor](../methods/exoactor.md) — 视频生成驱动的零样本人形交互行为生成

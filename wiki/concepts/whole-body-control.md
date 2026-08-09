@@ -2,7 +2,7 @@
 type: concept
 tags: [control, wbc, humanoid, optimization]
 status: complete
-updated: 2026-08-08
+updated: 2026-08-09
 related:
   - ../entities/embodied-interview-qa.md
   - ../tasks/locomotion.md
@@ -188,6 +188,7 @@ print("joint acceleration command:", qdd_star)
 - [KungfuBot](../entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) — 高动态武术/舞蹈 physics-based WBT 真机案例
 - [ergoCub Shared Embodied Intelligence](../entities/paper-ergocub-shared-embodied-intelligence.md) — 人因指标驱动的硬件–分层 WBC 联合优化（*Nat Mach Intell* 2026；adam + shared-controllers）
 - [Gemini Robotics](../entities/gemini-robotics.md) — 学习式「全身 VLA」产业对照；**不替代** QP/分层 WBC 与接触约束栈
+- [Immersive Social VR+LLM（论文实体）](../entities/paper-immersive-social-vr-llm-humanoids.md) — 语音高层 locomotion + VR 臂手分层遥操作（H1；非统一全身跟踪）
 
 ## 继续深挖入口
 
