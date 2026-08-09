@@ -3,8 +3,9 @@ type: task
 tags: [teleoperation, manipulation, loco-manipulation, data-collection, humanoid]
 status: complete
 summary: "Teleoperation 让人类通过远程接口直接操作机器人，是数据采集和复杂任务执行的重要桥梁。"
-updated: 2026-08-06
+updated: 2026-08-09
 sources:
+  - ../../sources/papers/immersive_social_vr_llm_humanoids_arxiv_2607_07430.md
   - ../../sources/papers/teledexter_arxiv_2607_11481.md
   - ../../sources/sites/teledexter-project.md
   - ../../sources/blogs/mimicrobotics_m1_u1_full_stack.md
@@ -123,6 +124,7 @@ sources:
 | TeleGate（USTC / AnyWit 2026） | Unitree G1 | **惯性动捕** 全身关节跟踪 | **2.5 h** 自采六类 | **门控选冻结专家** + VAE 历史→未来先验；避免蒸馏统一策略；跑跳/跌倒恢复；见 [论文实体](../entities/paper-telegate.md) |
 | HEFT（清华 / RobotEra 2026） | Unitree G1 + **L7**（175 cm 全尺寸） | **VR 全身参考**（部署吃 raw 流） | PMG 配对 VR + SEED 等 | **PMG** 噪声 VR 跟踪 + **WPC** 窗化双手负载；L7 **24 kg** 重载遥操作 + 高动态跟踪；见 [论文实体](../entities/paper-heft.md) |
 | **Teleopit**（西湖 / 上海创智 2026） | Unitree G1 | **PICO VR** 身体+手+头 | 公开 mocap 子集 + 自采 PICO；**96** 条瓶放置演示 | **全身跟踪 + 连续跨手重定向 + 主动视觉**；History/rewind；五仓开源；ACT/GR00T **90%/95%**；见 [论文实体](../entities/paper-teleopit.md) |
+| **Immersive Social VR+LLM**（NYUAD 2026） | Unitree H1 + Inspire 手 | **Apple Vision Pro** + 语音 | 多模态遥操作录制（RGB/语音/关节/眼动） | **LLM 语音高层 locomotion** + VR 腕/指操作 + ROS 双向音频社交；新手抓放 **80%** / 社交传方块 **70%**；**系统未开源**；见 [论文实体](../entities/paper-immersive-social-vr-llm-humanoids.md) |
 | **TeleDexter**（清华 / BIGAI / 北大 2026） | Franka + SharpaWave / LeapHand | **NOKOV MoCap**（腕 + 指尖 + 物体 6D） | 七任务真机遥操作 + 50 demos/任务 | **hand–object co-tracking** 低层「小脑」；平均 **75.2% SR**；基线运动学/生成先验近失败；**未开源**；见 [论文实体](../entities/paper-teledexter.md) |
 | AnyTeleop（UCB 2023） | 多平台 | RGB 相机 | 通用 | 无传感器手套，仅视觉输入 |
 | GELLO（Berkeley 2023） | 多 UR/Franka | Leader Arms | 低成本 | 低成本版 ALOHA |
@@ -202,6 +204,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - **ingest 档案：** [sources/sites/telegate-project.md](../../sources/sites/telegate-project.md)、[sources/papers/telegate_arxiv_2602_09628.md](../../sources/papers/telegate_arxiv_2602_09628.md) — TeleGate：门控专家 + VAE 运动先验全身遥操作（RSS 2026，arXiv:2602.09628）
 - **ingest 档案：** [sources/sites/heft-project.md](../../sources/sites/heft-project.md)、[sources/papers/heft_arxiv_2607_02332.md](../../sources/papers/heft_arxiv_2607_02332.md)、[sources/repos/axellwppr_motion_tracking.md](../../sources/repos/axellwppr_motion_tracking.md) — HEFT：PMG + WPC 重载全尺寸人形 VR 遥操作（arXiv:2607.02332）
 - **ingest 档案：** [sources/sites/teleopit-project.md](../../sources/sites/teleopit-project.md)、[sources/papers/teleopit_arxiv_2608_01834.md](../../sources/papers/teleopit_arxiv_2608_01834.md)、[sources/repos/teleopit.md](../../sources/repos/teleopit.md) — Teleopit：VR 全身体+连续灵巧手+主动视觉（arXiv:2608.01834）
+- **ingest 档案：** [sources/papers/immersive_social_vr_llm_humanoids_arxiv_2607_07430.md](../../sources/papers/immersive_social_vr_llm_humanoids_arxiv_2607_07430.md) — Immersive Social VR+LLM：AVP + 语音高层 locomotion + 双向音频社交（arXiv:2607.07430；未开源）
 - **ingest 档案：** [sources/papers/humanoidarena_arxiv_2606_17833.md](../../sources/papers/humanoidarena_arxiv_2606_17833.md) — HumanoidArena：PICO egocentric 采集 + GMR → 双 GMT 分层 benchmark（arXiv:2606.17833）
 - **ingest 档案：** [sources/papers/humanoid_surgeon_nature_2026.md](../../sources/papers/humanoid_surgeon_nature_2026.md) — Humanoid Surgeon：人形腹腔镜 in vivo 可行性（Nature 2026；[项目页](https://humanoid-surgeon.github.io/)）
 - Zhao et al., *Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware* (RSS 2023) — ALOHA

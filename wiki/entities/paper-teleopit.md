@@ -15,7 +15,7 @@ tags:
   - westlake
   - shanghai-innovation-institute
 status: complete
-updated: 2026-08-05
+updated: 2026-08-09
 arxiv: "2608.01834"
 venue: "arXiv"
 code: https://github.com/BotRunner64/Teleopit
@@ -30,6 +30,7 @@ related:
   - ./paper-twist2.md
   - ./paper-heft.md
   - ./paper-telegate.md
+  - ./paper-immersive-social-vr-llm-humanoids.md
   - ./paper-loco-manip-04-oasis.md
   - ./mimiclite.md
 sources:
@@ -234,6 +235,7 @@ sequenceDiagram
 - [TWIST2](./paper-twist2.md) — 便携 VR 全身 + 主动视觉对照（手多为夹爪）
 - [HEFT](./paper-heft.md) — 噪声 VR + 重载全尺寸对照
 - [TeleGate](./paper-telegate.md) — 惯性动捕门控专家对照
+- [Immersive Social VR+LLM](./paper-immersive-social-vr-llm-humanoids.md) — AVP + LLM 语音腿控（非全身 VR 跟踪）对照
 - [OASIS](./paper-loco-manip-04-oasis.md) — 以 Teleopit 为仿真 teleop 低层 WBC
 - [MimicLite](./mimiclite.md) — 跨 codebase 部署列表含 TeleopIT
 - [SONIC](../methods/sonic-motion-tracking.md) — Table 6 规模化 tracking 基线

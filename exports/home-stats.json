@@ -1,13 +1,82 @@
 {
   "generated_at": "2026-08-09",
-  "node_count": 2145,
-  "edge_count": 19878,
+  "node_count": 2146,
+  "edge_count": 19898,
   "coverage": {
-    "covered": 2121,
-    "total": 2121,
+    "covered": 2122,
+    "total": 2122,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-immersive-social-vr-llm-humanoids.md",
+      "detail_id": "entity-paper-immersive-social-vr-llm-humanoids",
+      "label": "Immersive Social VR + LLM Humanoid Teleop",
+      "type": "entity",
+      "recency": "2026-08-09",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/tasks/teleoperation.md",
+      "detail_id": "wiki-tasks-teleoperation",
+      "label": "Teleoperation（遥操作）",
+      "type": "task",
+      "recency": "2026-08-09",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/tasks/loco-manipulation.md",
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "recency": "2026-08-09",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-loco-manip-161-131-open-television.md",
+      "detail_id": "entity-paper-loco-manip-161-131-open-television",
+      "label": "Open-TeleVision",
+      "type": "entity",
+      "recency": "2026-08-09",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-loco-manip-161-012-humanplus.md",
+      "detail_id": "entity-paper-loco-manip-161-012-humanplus",
+      "label": "HumanPlus",
+      "type": "entity",
+      "recency": "2026-08-09",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-hrl-stack-07-learning_human_to_humanoid_real_time.md",
+      "detail_id": "entity-paper-hrl-stack-07-learning_human_to_humanoid_real_time",
+      "label": "Learning Human-to-Humanoid Real-Time Whole-Body Teleoperation",
+      "type": "entity",
+      "recency": "2026-08-09",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-teleopit.md",
+      "detail_id": "entity-paper-teleopit",
+      "label": "Teleopit",
+      "type": "entity",
+      "recency": "2026-08-09",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
     {
       "path": "wiki/entities/cmu-optimal-control-curriculum.md",
       "detail_id": "entity-cmu-optimal-control-curriculum",
@@ -134,88 +203,16 @@
       "recency": "2026-08-09",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/lwd.md",
-      "detail_id": "wiki-methods-lwd",
-      "label": "LWD（Learning while Deploying）",
-      "type": "method",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-commnav.md",
-      "detail_id": "entity-paper-commnav",
-      "label": "CommNav（通信使能社交导航）",
-      "type": "entity",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/habitat-sim.md",
-      "detail_id": "entity-habitat-sim",
-      "label": "Habitat-Sim",
-      "type": "entity",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-icrowdnav.md",
-      "detail_id": "entity-paper-icrowdnav",
-      "label": "iCrowdNav（意图感知场景表征的视觉人群导航）",
-      "type": "entity",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-notebook-learning-social-navigation-from-positive-and-neg.md",
-      "detail_id": "entity-paper-notebook-learning-social-navigation-from-positive-and-neg",
-      "label": "PioneeR：从正负示范与规则学习社交导航",
-      "type": "entity",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-humembr.md",
-      "detail_id": "entity-paper-humembr",
-      "label": "HUMEMBR（人中心记忆驱动的预测式具身导航）",
-      "type": "entity",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/overview/navigation-slam-autonomy-stack.md",
-      "detail_id": "wiki-overview-navigation-slam-autonomy-stack",
-      "label": "导航·SLAM·自动驾驶开源栈总览",
-      "type": "overview",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/cmu-optimal-control-curriculum.md",
-    "detail_id": "entity-cmu-optimal-control-curriculum",
-    "label": "CMU Optimal Control 2025 学习策展（16-745）",
+    "path": "wiki/entities/paper-immersive-social-vr-llm-humanoids.md",
+    "detail_id": "entity-paper-immersive-social-vr-llm-humanoids",
+    "label": "Immersive Social VR + LLM Humanoid Teleop",
     "type": "entity",
     "recency": "2026-08-09",
     "source": "log.md",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    "action": "maintained"
   },
   "top_communities": [
     {
@@ -232,7 +229,7 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 148
+      "size": 147
     },
     {
       "label": "操作",
@@ -276,18 +273,18 @@
       "community_label": "操作（Manipulation） 社区"
     },
     {
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "degree": 313,
+      "has_repo": true,
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    },
+    {
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
       "degree": 312
-    },
-    {
-      "detail_id": "wiki-tasks-loco-manipulation",
-      "label": "Loco-Manipulation (移动操作)",
-      "type": "task",
-      "degree": 311,
-      "has_repo": true,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
@@ -301,7 +298,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 232,
+      "degree": 233,
       "has_repo": true
     },
     {

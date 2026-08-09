@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-07-16
+updated: 2026-08-09
 venue: curated
 summary: "H2-COMPACT 先从相机图像/多视角观测、本体状态与关节序列、仿真交互数据恢复场景、目标或运动表征，再用扩散策略/流匹配、分层技能/专家策略生成关节位置/力矩命令、全身轨迹/动作序列、地形/场景表征。关键点是把动作生成看成条件生成问题，用扩散或流匹配在多模态动作分布里采样可执行轨迹。"
 related:
@@ -76,6 +76,7 @@ H2-COMPACT 先从相机图像/多视角观测、本体状态与关节序列、�
 
 - 技术地图：[humanoid-loco-manip-161-papers-technology-map.md](../overview/humanoid-loco-manip-161-papers-technology-map.md)
 - 分类 hub：[loco-manip-161-category-03-visuomotor.md](../overview/loco-manip-161-category-03-visuomotor.md)
+- 同组 NYUAD 遥操作接口：[Immersive Social VR+LLM](./paper-immersive-social-vr-llm-humanoids.md)
 - 原始 source：[loco_manip_161_survey_062_h2-compact.md](../../sources/papers/loco_manip_161_survey_062_h2-compact.md)
 
 ## 参考来源

@@ -2,7 +2,7 @@
 type: entity
 tags: [unitree, hardware, sdk, sim2real, humanoid, quadruped]
 status: complete
-updated: 2026-08-07
+updated: 2026-08-09
 sources:
   - ../../sources/repos/unitree.md
   - ../../sources/sites/unitree-unistore.md
@@ -397,6 +397,7 @@ Unitree 是非常重要的目标平台语境：先选定官方 RL 仓之一，�
 - [legged_gym](./legged-gym.md)
 - [LeRobot](./lerobot.md)
 - [Teleoperation](../tasks/teleoperation.md)
+- [Immersive Social VR+LLM（论文实体）](./paper-immersive-social-vr-llm-humanoids.md) — H1 + AVP + LLM 语音高层 locomotion（未开源）
 - [Sim2Real](../concepts/sim2real.md)
 - [轮足四足机器人（四轮足）](../concepts/wheel-legged-quadruped.md)
 - [Locomotion](../tasks/locomotion.md)
