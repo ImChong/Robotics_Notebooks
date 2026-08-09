@@ -519,6 +519,7 @@
 | [x] [unity-com.md](sites/unity-com.md) | Unity 官网与 Unity Engine 产品页（Unity 6/6.5、AI、多平台与 Industry） |
 | [x] [unity-manual-6-5.md](sites/unity-manual-6-5.md) | Unity 6.5 User Manual 与 docs.unity.com 文档门户（含中文） |
 | [x] [wuji_robotics.md](sites/wuji_robotics.md) | 舞肌科技：官网 wuji.tech + F 系列 / Pan Motor 电机资料 + Wuji Hand 灵巧手（docs.wuji.tech / 招聘与媒体锚点） |
+| [x] [simons_sergey_levine_diffusion_rl_robotics_2026.md](sites/simons_sergey_levine_diffusion_rl_robotics_2026.md) | Simons talk 页：Levine《Diffusion in RL and robotics…》（2026-08-07；abstract + YouTube `agi3xLTGyaU`） |
 
 ### courses/ — 课程与协议入门归档
 | 文件 | 内容 |
@@ -542,6 +543,7 @@
 | [x] [shenlan_humanoid_system_theory_practice.md](courses/shenlan_humanoid_system_theory_practice.md) | 深蓝学院《人形机器人系统—理论与实践》八章大纲（G1→RL→SLAM→A\*/DWA→TARE/FAR→足球感知→VLN；映射 `humanoid-system-curriculum`） |
 | [x] [quadruped_control_simulation_rl_curriculum.md](courses/quadruped_control_simulation_rl_curriculum.md) | 具身智能研究室《四足：动力学→强化学习》八章大纲（映射 `quadruped-control-curriculum`） |
 | [x] [jason_peng_synthetic_motion_humanoid_youtube.md](courses/jason_peng_synthetic_motion_humanoid_youtube.md) | Jason Peng（SFU & NVIDIA）NUS 研讨会：合成运动数据与通用人形控制（`2looxieN53o`；PARC / MimicKit / G1；`wiki/overview/jason-peng-flexible-motion-skill-learning.md`） |
+| [x] [sergey_levine_diffusion_rl_robotics_simons_youtube.md](courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md) | Sergey Levine（UC Berkeley）Simons 工作坊：扩散/flow 连续动作策略与 action chunk（`agi3xLTGyaU`；`wiki/overview/sergey-levine-diffusion-expressive-policies.md`） |
 
 ### notes/ — 原始笔记归档
 | 文件 | 内容 |

@@ -2,7 +2,7 @@
 type: method
 tags: [vla, fleet-scale-rl, offline-to-online-rl, post-training, data-flywheel, agibot, flow-matching]
 status: complete
-updated: 2026-05-06
+updated: 2026-08-09
 related:
   - ./vla.md
   - ./π0-policy.md
@@ -11,8 +11,10 @@ related:
   - ../concepts/foundation-policy.md
   - ../concepts/data-flywheel.md
   - ../comparisons/online-vs-offline-rl.md
+  - ../overview/sergey-levine-diffusion-expressive-policies.md
 sources:
   - ../../sources/papers/lwd.md
+  - ../../sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md
 summary: "LWD 是 AGIBOT 提出的车队级 offline-to-online RL 后训练框架，通过 DIVL + QAM 把部署中的异构经验（成功/失败/人为干预）转化为单一 VLA generalist 策略的持续改进。"
 ---
 
@@ -127,6 +129,7 @@ DIVL 与 QAM 一起实现了**策略评估（value learning）与策略抽取（
 - [Online RL vs Offline RL](../comparisons/online-vs-offline-rl.md) — LWD 的 offline-to-online 定位
 - [Reinforcement Learning](./reinforcement-learning.md) — RL 基础范式
 - [Diffusion Policy](./diffusion-policy.md) — 与 flow-matching 同属生成式动作头家族
+- [Sergey Levine：表达力更强的连续动作策略](../overview/sergey-levine-diffusion-expressive-policies.md) — offline-to-online 被讲成生成式动作头的近期受益面之一
 
 ## 推荐继续阅读
 
