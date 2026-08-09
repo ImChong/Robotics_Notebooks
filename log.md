@@ -1,3 +1,12 @@
+## [2026-08-09] ingest | sources/blogs/wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md — 人形膝/腿主承力链为何通常避开谐波；升格 wiki/concepts/humanoid-knee-harmonic-drive-limits.md；交叉 PRS / Actuator 102 / Hardware 101 / 机械布局 / locomotion
+
+- **触发：** 用户指定 <https://mp.weixin.qq.com/s/GowJUzbDjWQMcujtUezLGA>；要求确保 agent-reach 已装并 ingest
+- **工具：** Agent Reach v1.5.0 + wechat-article-for-ai（Camoufox；`--no-images`）
+- **来源：** [`sources/blogs/wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md`](sources/blogs/wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md)
+- **新建概念：** [`wiki/concepts/humanoid-knee-harmonic-drive-limits.md`](wiki/concepts/humanoid-knee-harmonic-drive-limits.md) — 主承力链避开谐波的边界、冲击谱载/柔轮疲劳/远端惯量判据；PRS / 摆线·RV / QDD 三条替代
+- **开源核查（步骤 2.5）：** **不适用** — 公众号工程解读，无项目页 / 代码仓
+- **交叉更新：** [`wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md`](wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md)、[`wiki/overview/humanoid-actuator-102-split-architecture.md`](wiki/overview/humanoid-actuator-102-split-architecture.md)、[`wiki/overview/humanoid-hardware-101-actuation-sensing-chain.md`](wiki/overview/humanoid-hardware-101-actuation-sensing-chain.md)、[`wiki/concepts/humanoid-mechanical-layout-design.md`](wiki/concepts/humanoid-mechanical-layout-design.md)、[`wiki/tasks/locomotion.md`](wiki/tasks/locomotion.md)、[`sources/blogs/wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md`](sources/blogs/wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md)
+
 ## [2026-08-08] lint | wiki/entities/paper-bridgevla-plusplus.md — 全量健康检查：阻塞型 0、信息型 1 → 0
 
 - **触发：** 全量知识库 lint 巡检，要求把信息型预警一并收敛
