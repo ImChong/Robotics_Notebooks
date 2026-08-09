@@ -3,7 +3,7 @@
 type: entity
 tags: [course, numerical-optimization, convex-optimization, mpc, trajectory-optimization, foundational, stanford]
 status: complete
-updated: 2026-06-23
+updated: 2026-08-09
 related:
   - ../formalizations/convex-functions.md
   - ../formalizations/kkt-conditions.md
@@ -120,13 +120,15 @@ flowchart LR
 
 - 上游数学：[Linear Algebra Curriculum](./linear-algebra-curriculum.md)
 - 控制应用：[MPC](../methods/model-predictive-control.md)、[Trajectory Optimization](../methods/trajectory-optimization.md)、[HQP](../concepts/hqp.md)
+- OCP 视频课互补：[CMU Optimal Control 2025 策展](./cmu-optimal-control-curriculum.md) — 优化嵌进控制器（LQR/MPC/DDP）
 - 选型：[MPC vs RL](../comparisons/mpc-vs-rl.md)、[TrajOpt vs RL](../comparisons/trajectory-opt-vs-rl.md)
 
 ## 推荐继续阅读
 
 - Boyd & Vandenberghe, *Convex Optimization*
 - Nocedal & Wright, *Numerical Optimization*
-- [Underactuated Robotics](https://underactuated.mit.edu/) — 机器人 OCP 视角
+- [CMU 16-745 Optimal Control 2025](./cmu-optimal-control-curriculum.md) — OCP / MPC / TrajOpt 视频课
+- [Underactuated Robotics](https://underactuated.mit.edu/) — Tedrake 欠驱动 / OCP 视角
 - [Motion Control Roadmap](../../roadmap/motion-control.md) L3–L4
 
 ## 参考来源

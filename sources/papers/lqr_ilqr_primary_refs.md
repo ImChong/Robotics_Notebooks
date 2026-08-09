@@ -73,13 +73,13 @@
   - 2014：**控制限幅** 下的 DDP/iLQR 修正（Box 约束 backward pass），影响后续 Box-iLQR / MPC 实现。
 - **对 wiki 的映射：** [lqr-ilqr](../../wiki/methods/lqr-ilqr.md)、[mujoco](../../wiki/entities/mujoco.md)、[model-predictive-control](../../wiki/methods/model-predictive-control.md)
 
-### 8) MIT 6.832 / Optimal Control 2025 — LQR 三视角与 DDP 讲义
+### 8) CMU 16-745 Optimal Control 2025 — LQR 三视角与 DDP 讲义
 
-- **来源：** R. Tedrake, MIT [Optimal Control 2025 播放列表](https://www.youtube.com/playlist?list=PLZnJoM76RM6IAJfMXd1PgGNXn3dxhkVgI)（Lecture 8: LQR three ways；Lecture 12: DDP；Lecture 21: Kalman & duality）
+- **来源：** Z. Manchester, CMU 16-745 [Optimal Control 2025 播放列表](https://www.youtube.com/playlist?list=PLZnJoM76RM6IAJfMXd1PgGNXn3dxhkVgI)（Lecture 8: LQR three ways；Lecture 12: DDP；Lecture 21: Kalman & duality）
 - **要点：**
   - **LQR 三种推导**：动态规划 / 庞特里亚金 / 代数 Riccati。
   - **DDP ↔ iLQR** 与 **估计–控制对偶** 在同一课程闭环呈现。
-- **对 wiki 的映射：** [lqr](../../wiki/formalizations/lqr.md)、[optimal-control](../../wiki/concepts/optimal-control.md)；课程归档见 [mit_underactuated_kalman_lqr](../courses/mit_underactuated_kalman_lqr.md)
+- **对 wiki 的映射：** [lqr](../../wiki/formalizations/lqr.md)、[optimal-control](../../wiki/concepts/optimal-control.md)；课程归档见 [cmu_optimal_control_16_745_2025_youtube](../courses/cmu_optimal_control_16_745_2025_youtube.md)、策展 [cmu-optimal-control-curriculum](../../wiki/entities/cmu-optimal-control-curriculum.md)（Underactuated 对照见 [mit_underactuated_kalman_lqr](../courses/mit_underactuated_kalman_lqr.md)）
 
 ## 推荐继续阅读（外部）
 

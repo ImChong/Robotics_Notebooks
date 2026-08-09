@@ -1,13 +1,82 @@
 {
   "generated_at": "2026-08-09",
-  "node_count": 2144,
-  "edge_count": 19853,
+  "node_count": 2145,
+  "edge_count": 19878,
   "coverage": {
-    "covered": 2120,
-    "total": 2120,
+    "covered": 2121,
+    "total": 2121,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/cmu-optimal-control-curriculum.md",
+      "detail_id": "entity-cmu-optimal-control-curriculum",
+      "label": "CMU Optimal Control 2025 学习策展（16-745）",
+      "type": "entity",
+      "recency": "2026-08-09",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/concepts/optimal-control.md",
+      "detail_id": "wiki-concepts-optimal-control",
+      "label": "Optimal Control (OCP)",
+      "type": "concept",
+      "recency": "2026-08-09",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/methods/lqr-ilqr.md",
+      "detail_id": "wiki-methods-lqr-ilqr",
+      "label": "LQR / iLQR 算法详解",
+      "type": "method",
+      "recency": "2026-08-09",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/methods/model-predictive-control.md",
+      "detail_id": "wiki-methods-model-predictive-control",
+      "label": "Model Predictive Control (MPC，模型预测控制)",
+      "type": "method",
+      "recency": "2026-08-09",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/methods/trajectory-optimization.md",
+      "detail_id": "wiki-methods-trajectory-optimization",
+      "label": "Trajectory Optimization（轨迹优化）",
+      "type": "method",
+      "recency": "2026-08-09",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/entities/numerical-optimization-curriculum.md",
+      "detail_id": "entity-numerical-optimization-curriculum",
+      "label": "数值优化学习策展（机器人 L0+）",
+      "type": "entity",
+      "recency": "2026-08-09",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "roadmap/motion-control.md",
+      "detail_id": "roadmap-motion-control",
+      "label": "主路线：运动控制算法工程师成长路线",
+      "type": "roadmap_page",
+      "recency": "2026-08-09",
+      "source": "log.md",
+      "action": "maintained"
+    },
     {
       "path": "wiki/overview/sergey-levine-diffusion-expressive-policies.md",
       "detail_id": "wiki-overview-sergey-levine-diffusion-expressive-policies",
@@ -135,102 +204,31 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "roadmap/depth-navigation.md",
-      "detail_id": "roadmap-depth-navigation",
-      "label": "路线（纵深）：如果目标是导航（SLAM → Nav2 → VLN → 导航 VLA）",
-      "type": "roadmap_page",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/concepts/humanoid-knee-harmonic-drive-limits.md",
-      "detail_id": "wiki-concepts-humanoid-knee-harmonic-drive-limits",
-      "label": "人形膝/腿主承力链为何通常避开谐波减速器",
-      "type": "concept",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md",
-      "detail_id": "wiki-concepts-planetary-roller-screw-humanoid-leg-actuation",
-      "label": "人形腿部行星滚柱丝杠直线驱动（PRS 路线）",
-      "type": "concept",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/overview/humanoid-actuator-102-split-architecture.md",
-      "detail_id": "wiki-overview-humanoid-actuator-102-split-architecture",
-      "label": "Actuator 102 · 02：旋转-直线分离架构",
-      "type": "overview",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/overview/humanoid-hardware-101-actuation-sensing-chain.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-actuation-sensing-chain",
-      "label": "Humanoid Hardware 101 · 02：传动与感知链",
-      "type": "overview",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/concepts/humanoid-mechanical-layout-design.md",
-      "detail_id": "wiki-concepts-humanoid-mechanical-layout-design",
-      "label": "人形整机机械布局设计（构型 → 传动布置 → 质量分布 → 刚度与公差）",
-      "type": "concept",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/tasks/locomotion.md",
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/sergey-levine-diffusion-expressive-policies.md",
-    "detail_id": "wiki-overview-sergey-levine-diffusion-expressive-policies",
-    "label": "Sergey Levine：表达力更强的连续动作策略",
-    "type": "overview",
+    "path": "wiki/entities/cmu-optimal-control-curriculum.md",
+    "detail_id": "entity-cmu-optimal-control-curriculum",
+    "label": "CMU Optimal Control 2025 学习策展（16-745）",
+    "type": "entity",
     "recency": "2026-08-09",
     "source": "log.md",
     "action": "added",
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "has_repo": true,
+    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
   },
   "top_communities": [
     {
-      "label": "视觉-语言-动作",
-      "size": 168
+      "label": "动作重定向",
+      "size": 188
     },
     {
       "label": "人形论文深读笔记",
       "size": 163
     },
     {
-      "label": "动作重定向",
-      "size": 158
-    },
-    {
-      "label": "仿真到现实",
-      "size": 151
+      "label": "视觉-语言-动作",
+      "size": 154
     },
     {
       "label": "人形强化学习运动控制",
@@ -238,7 +236,11 @@
     },
     {
       "label": "操作",
-      "size": 143
+      "size": 144
+    },
+    {
+      "label": "移动操作",
+      "size": 137
     }
   ],
   "top_hubs": [
@@ -274,18 +276,18 @@
       "community_label": "操作（Manipulation） 社区"
     },
     {
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "degree": 312
+    },
+    {
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
       "degree": 311,
       "has_repo": true,
       "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
-      "degree": 311
     },
     {
       "detail_id": "wiki-methods-reinforcement-learning",
@@ -299,7 +301,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 231,
+      "degree": 232,
       "has_repo": true
     },
     {

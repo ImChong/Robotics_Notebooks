@@ -9,7 +9,7 @@ related:
 sources:
   - ../../sources/papers/policy_optimization.md
 summary: "Bellman 方程"
-updated: 2026-04-25
+updated: 2026-08-09
 ---
 
 # Bellman 方程

@@ -2,7 +2,7 @@
 type: concept
 tags: [optimization, constrained-optimization, mpc, wbc, numerical-methods]
 status: complete
-updated: 2026-06-23
+updated: 2026-08-09
 related:
   - ../formalizations/kkt-conditions.md
   - ../formalizations/quadratic-programming.md

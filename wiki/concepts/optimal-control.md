@@ -1,8 +1,7 @@
 ---
 type: concept
 summary: "Optimal Control 研究如何在动力学约束下最优地生成控制序列，是 MPC、trajectory optimization 和 RL 的共同上游。"
-updated: 2026-07-25
-
+updated: 2026-08-09
 ---
 
 # Optimal Control (OCP)
@@ -241,11 +240,13 @@ OCP 在线求解的计算量是大问题，尤其非线性 MPC。
 - [MDP](../formalizations/mdp.md) — OCP 是确定性版本的 MDP；OCP 不含随机转移，RL 含随机转移
 - [Bellman 方程](../formalizations/bellman-equation.md) — Bellman 最优方程是 OCP（尤其是 LQR）的解析求解基础
 - [Numerical Optimization Curriculum](../entities/numerical-optimization-curriculum.md) — 数值优化基础课程地图（KKT / QP / NMPC / 凸松弛）
+- [CMU Optimal Control 2025 策展](../entities/cmu-optimal-control-curriculum.md) — 16-745 全课程录像与讲次映射
 - [Constrained Optimization](./constrained-optimization.md) — OCP 的约束形式分类
 - [Nonlinear MPC](../methods/nonlinear-model-predictive-control.md) — 在线非线性 OCP
 
 ## 推荐继续阅读
 
+- [CMU Optimal Control 2025（YouTube playlist 归档）](../../sources/courses/cmu_optimal_control_16_745_2025_youtube.md) — Zac Manchester / 16-745，24 讲
 - [Optimal Control 2025 (YouTube)](https://www.youtube.com/playlist?list=PLZnJoM76RM6IAJfMXd1PgGNXn3dxhkVgI)
 - 《Optimal Control Theory: An Introduction》- Kirk
 - 《Robotics: Modelling, Planning and Control》- Siciliano

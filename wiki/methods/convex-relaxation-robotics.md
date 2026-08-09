@@ -2,7 +2,7 @@
 type: method
 tags: [optimization, convex-relaxation, non-convex, robotics, gnc]
 status: complete
-updated: 2026-06-23
+updated: 2026-08-09
 related:
   - ../formalizations/convex-functions.md
   - ../concepts/optimal-control.md

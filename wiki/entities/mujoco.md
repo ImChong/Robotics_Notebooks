@@ -2,7 +2,7 @@
 type: entity
 tags: [software, simulation, physics-engine, reinforcement-learning, deepmind]
 status: complete
-updated: 2026-07-30
+updated: 2026-08-09
 related:
   - ../overview/sim-platforms-decade-technology-map.md
   - ./mujoco-wasm.md

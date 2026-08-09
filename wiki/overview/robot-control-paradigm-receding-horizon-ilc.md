@@ -8,7 +8,7 @@ tags:
   - constraints
   - repetitive
 status: complete
-updated: 2026-07-18
+updated: 2026-08-09
 summary: "MPC 处理约束与多目标滚动优化；ILC 利用重复运动历史误差改进跟踪精度。"
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
