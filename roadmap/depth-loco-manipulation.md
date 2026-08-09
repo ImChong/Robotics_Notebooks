@@ -82,6 +82,7 @@ flowchart LR
 ### 推荐读什么
 - [HOMIE](../wiki/entities/paper-loco-manip-161-040-homie.md) 与 [FALCON](../wiki/entities/paper-loco-manip-161-109-falcon.md)（本仓库）— 上下身解耦锚点
 - [PILOT](../wiki/entities/paper-pilot-perceptive-loco-manipulation.md)（本仓库）— 感知统一低层 LLC
+- [AGILE](../wiki/entities/paper-agile-humanoid-loco-manipulation.md)（本仓库）— NVIDIA Isaac Lab + RSL-RL 全生命周期工作流（Prepare→Train→Evaluate→Deploy），描述符驱动 Sim2Sim/真机 I/O；G1 与 Booster T1 双机验证 locomotion/recovery/motion imitation/loco-manipulation 五类技能，上身专家微调 GR00T N1.5 仿真闭环 pick&place 90%；已开源
 - [运动基座与全身跟踪（loco-manip 161 分类）](../wiki/overview/loco-manip-161-category-01-motion-base-wbt.md) 与 [上身接口](../wiki/overview/loco-manip-161-category-02-upper-body-interface.md)（本仓库）
 - [MPC-WBC 集成](../wiki/concepts/mpc-wbc-integration.md)（本仓库）
 
@@ -171,6 +172,7 @@ flowchart LR
 ### 推荐读什么
 - [VLA 与世界模型（loco-manip 161 分类）](../wiki/overview/loco-manip-161-category-09-vla-world-models.md)（本仓库）
 - [MotionWAM](../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md) 与 [ABot-M0.5](../wiki/entities/paper-abot-m05-mobile-manipulation-wam.md)（本仓库）
+- [ω-0](../wiki/entities/paper-omega-0.md)（本仓库）— 潜空间未来观测 embedding 驱动的人形并发 loco-manipulation Joint WAM，G1 上 11 任务 Omni 成功率 81.8%，大幅超同族基线（ψ-0 44.5%、DiT4DiT 43.6%、Fast-WAM 37.1%）；代码/数据 WIP
 - [World Action Models（WAM）](../wiki/concepts/world-action-models.md) 与 [VLA](../wiki/methods/vla.md)（本仓库）
 - [人形 Loco-Manip 161 篇技术地图](../wiki/overview/humanoid-loco-manip-161-papers-technology-map.md)（本仓库）— 十类能力形成顺序全景
 

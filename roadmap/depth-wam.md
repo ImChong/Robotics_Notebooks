@@ -149,6 +149,8 @@ flowchart LR
 - [Pelican-Unified 1.0](../wiki/methods/pelican-unified-1.md)、[Kairos](../wiki/entities/paper-kairos-native-world-model-stack.md)（本仓库）
 - [Cosmos 3](../wiki/entities/cosmos-3.md)（本仓库）— 平台级 Joint / 多任务 I/O 对照
 - [WorldScape Policy 2.0](../wiki/entities/paper-worldscape-policy-2.md)（本仓库）— 事件级 VLM 记忆（三视图检索 + 门控）与视觉短期记忆双通路分工，semantic forcing 对齐；RoboTwin 2.0 94.3%，clean-only 训练下 C2R 47.9% 大幅超 Fast-WAM 39.1%，真机跨本体迁移 10–20%→60–70%；代码/权重截至入库日未发布
+- [ω-0](../wiki/entities/paper-omega-0.md)（本仓库）— 潜空间未来观测 embedding + SONIC 全身动作 latent 扩散的人形并发 loco-manip Joint WAM；ω-HOME 40h+/4827 episodes，G1 上 11 任务 Omni 成功率 81.8% 大幅超 ψ-0（44.5%）/DiT4DiT（43.6%）/Fast-WAM（37.1%）；代码/数据 WIP
+- [DreamWAM](../wiki/entities/paper-dreamwam.md)（本仓库）— 训练期用 RGB+Flow 联合去噪与 Depth/DINO 门控残差监督 beyond-RGB 未来（外观+运动+几何+语义），推理仍 RGB-only；LIBERO-Plus 69.16%→75.47%、真机视觉扰动 55.6%→74.4%；代码/权重已开源
 
 ### 学完输出什么
 - 能比较至少两种 Joint 实现（扩散双塔 vs 潜自回归闭环）的延迟与闭环形态
