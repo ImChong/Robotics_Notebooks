@@ -2363,6 +2363,14 @@ button.home-wiki-heatmap-cell.is-active {
   /* 铺纯色底盖住 body 的点阵，页脚不带点 */
   background: var(--bg);
 }
+.footer a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.footer a:hover {
+  color: var(--accent-hover);
+}
 .footer .container {
   display: flex;
   justify-content: center;
