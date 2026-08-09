@@ -79,6 +79,17 @@ body {
   /* 用 clip 而非 hidden：避免 body 成为 sticky 的滚动容器导致 .site-header 不吸顶 */
   overflow-x: clip;
 }
+/* 有站内 footer 的页面：短内容时把 .footer 推到视口底部；
+   无 footer 的页面（如 graph.html / references.html）不启用，避免干扰全屏布局。 */
+body:has(> .footer) {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+body:has(> .footer) > main {
+  flex: 1 0 auto;
+}
 a { color: var(--accent); text-decoration: none; transition: all var(--transition); }
 a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 .container { max-width: var(--content-max-width); margin: 0 auto; padding: 0 24px; }
@@ -2362,6 +2373,10 @@ button.home-wiki-heatmap-cell.is-active {
   font-size: 0.85rem;
   /* 铺纯色底盖住 body 的点阵，页脚不带点 */
   background: var(--bg);
+  /* sticky footer：短页贴底；长页仍跟在内容之后 */
+  flex-shrink: 0;
+  margin-top: auto;
+  width: 100%;
 }
 .footer a {
   color: inherit;
