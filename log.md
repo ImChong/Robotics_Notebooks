@@ -1,3 +1,12 @@
+## [2026-08-09] ingest | sources/papers/commnav_arxiv_2607_01044.md — CommNav（arXiv:2607.01044）入库；升格 wiki/entities/paper-commnav.md；归档 sources/repos/commnav.md；注册 sapienza；交叉 wiki/entities/habitat-sim.md、wiki/entities/paper-icrowdnav.md、wiki/entities/paper-notebook-learning-social-navigation-from-positive-and-neg.md、wiki/entities/paper-humembr.md、wiki/overview/navigation-slam-autonomy-stack.md、roadmap/depth-navigation.md
+
+- **触发：** 用户指定 <https://arxiv.org/abs/2607.01044>；要求自动合并
+- **来源：** [`sources/papers/commnav_arxiv_2607_01044.md`](sources/papers/commnav_arxiv_2607_01044.md)、[`sources/repos/commnav.md`](sources/repos/commnav.md)
+- **新建实体：** [`wiki/entities/paper-commnav.md`](wiki/entities/paper-commnav.md) — Habitat 3.0c + COMM；ES +10 pp；口语与结构化接近；`## 源码运行时序图` 不适用
+- **开源核查（步骤 2.5）：** **宣称将开源 / 占位仓** — [S4b3/CommNav](https://github.com/S4b3/CommNav) 仅 README（under preparation）；无训练/评测入口
+- **交叉更新：** [`wiki/entities/habitat-sim.md`](wiki/entities/habitat-sim.md)、[`wiki/entities/paper-icrowdnav.md`](wiki/entities/paper-icrowdnav.md)、[`wiki/entities/paper-notebook-learning-social-navigation-from-positive-and-neg.md`](wiki/entities/paper-notebook-learning-social-navigation-from-positive-and-neg.md)、[`wiki/entities/paper-humembr.md`](wiki/entities/paper-humembr.md)、[`wiki/overview/navigation-slam-autonomy-stack.md`](wiki/overview/navigation-slam-autonomy-stack.md)、[`roadmap/depth-navigation.md`](roadmap/depth-navigation.md)
+- **机构：** 注册 [`schema/institutions.json`](schema/institutions.json) → `sapienza`（罗马第一大学）
+
 ## [2026-08-09] ingest | sources/blogs/wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md — 人形膝/腿主承力链为何通常避开谐波；升格 wiki/concepts/humanoid-knee-harmonic-drive-limits.md；交叉 PRS / Actuator 102 / Hardware 101 / 机械布局 / locomotion
 
 - **触发：** 用户指定 <https://mp.weixin.qq.com/s/GowJUzbDjWQMcujtUezLGA>；要求确保 agent-reach 已装并 ingest
