@@ -2,7 +2,7 @@
 type: entity
 tags: [entity, simulator, embodied-ai, navigation, meta, habitat, gpu-rendering, habitat-lab, bullet]
 status: complete
-updated: 2026-08-05
+updated: 2026-08-09
 related:
   - ./matterport3d-simulator.md
   - ./igibson.md
@@ -13,6 +13,7 @@ related:
   - ./paper-vln-02-vln-ce.md
   - ./paper-zonda.md
   - ./paper-roamflow.md
+  - ./paper-commnav.md
   - ../tasks/vision-language-navigation.md
   - ../concepts/sim2real.md
   - ../tasks/zero-shot-object-navigation.md
@@ -27,6 +28,7 @@ sources:
   - ../../sources/sites/aihabitat-habitat-sim-docs.md
   - ../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md
   - ../../sources/papers/zonda_arxiv_2607_21025.md
+  - ../../sources/papers/commnav_arxiv_2607_01044.md
 summary: "Meta AI 具身仿真核心（MIT）：真实扫描/CAD 场景上数千–上万 FPS 渲染 + Bullet/URDF；与 Habitat-Lab 组成导航/重排/社交等实验栈。v0.3.4 后 Meta 不再官方主动维护。"
 ---
 
@@ -177,6 +179,7 @@ sequenceDiagram
 - [十年仿真平台技术地图](../overview/sim-platforms-decade-technology-map.md) — Habitat 作为「吞吐」代际节点
 - [视觉–语言导航](../tasks/vision-language-navigation.md) — VLN-CE / ObjectNav 任务语境
 - [Sim2Real](../concepts/sim2real.md) — Habitat→真机迁移用例（如 ZONDA）
+- [CommNav](./paper-commnav.md) — Habitat 3.0c：多人体通信使能社交导航（仓占位）
 - [ZONDA](./paper-zonda.md) — Habitat 多楼层 / 动态 ObjectNav
 - [RoamFlow](./paper-roamflow.md) — Habitat Gibson/MP3D image-goal 生成导航（MeanFlow）
 - [TravExplorer](./paper-travexplorer.md) — Habitat HM3D 零样本 ObjectNav 对照

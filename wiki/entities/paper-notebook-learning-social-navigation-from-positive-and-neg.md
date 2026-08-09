@@ -15,7 +15,7 @@ tags:
   - queens-university
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-07-28
+updated: 2026-08-09
 arxiv: "2510.12215"
 related:
   - ../overview/paper-notebook-category-08-navigation.md
@@ -23,6 +23,7 @@ related:
   - ../methods/behavior-cloning.md
   - ../concepts/control-barrier-function.md
   - ./paper-icrowdnav.md
+  - ./paper-commnav.md
   - ./paper-notebook-egonav.md
 sources:
   - ../../sources/papers/humanoid_pnb_learning-social-navigation-from-positive-and-neg.md
@@ -109,6 +110,7 @@ DAgger 从 50 expert episodes 起步，再执行 10 rounds × 50 episodes。两�
 | CrowdNav++ | RL + 交互图 | 奖励塑形 | 在线策略 | 无本文式 MDN 分解 |
 | CVaR-BF | 手工风险模型 | CVaR + barrier function | 在线优化 | 显式风险 |
 | [iCrowdNav](./paper-icrowdnav.md) | RGB-D BEV + 姿态意图 RL | 奖励 / 碰撞约束 | PPO 真机零样本 | 无 |
+| [CommNav](./paper-commnav.md) | 路人主动通信线索 | 碰撞率指标 | Habitat 3.0c DDPPO | 无本文式 MDN |
 | **PioneeR** | **正负示范密度** | **避障 + goal 规则项** | **lookahead teacher→MDN** | **aleatoric + epistemic** |
 
 ## 工程实践与开源状态
@@ -156,6 +158,7 @@ DAgger 从 50 expert episodes 起步，再执行 10 rounds × 50 episodes。两�
 
 - [导航纵深路线 Stage 5](../../roadmap/depth-navigation.md) — 社会导航进阶节点
 - [iCrowdNav](./paper-icrowdnav.md) — 感知人体姿态与意图的 RL 对照
+- [CommNav](./paper-commnav.md) — 主动向路人打听目标位置（信息寻求型找人；非舒适性示范）
 - [模仿学习](../methods/imitation-learning.md) 与 [行为克隆](../methods/behavior-cloning.md) — 正负示范及 teacher–student 蒸馏基础
 - [控制屏障函数](../concepts/control-barrier-function.md) — 可与 MDN fallback 组合的形式化安全层
 - [EgoNav](./paper-notebook-egonav.md) — 人类行走数据中涌现社交避让，但没有本文的显式负示范 / 规则分解

@@ -15,7 +15,7 @@ tags:
   - kiel
   - george-mason
 status: complete
-updated: 2026-08-06
+updated: 2026-08-09
 arxiv: "2606.30404"
 venue: "IROS 2026"
 related:
@@ -24,6 +24,7 @@ related:
   - ./paper-uni-lavira.md
   - ./qwen-robot-nav.md
   - ./qwen-robot-suite.md
+  - ./paper-commnav.md
   - ../overview/navigation-slam-autonomy-stack.md
   - ./paper-icrowdnav.md
   - ./paper-sru-spatially-enhanced-recurrent-memory.md
@@ -194,7 +195,7 @@ sequenceDiagram
 4. **字幕要写「人–环境交互」** — Interaction-centered caption 优于只盯手或只盯运动。
 5. **部署分层清晰** — LLM 选路点；Spot GraphNav 负责几何执行；caption/ReID/DB 是独立服务。
 6. **数据与隐私是产品门禁** — COBD 暂私有；例行记忆必须同意与假名化，输出仅作概率估计。
-7. **选型边界** — 相对 [Uni-LaViRA](./paper-uni-lavira.md) / [Qwen-RobotNav](./qwen-robot-nav.md) 的仿真 EQA/VLN，本文专攻 **真人多日例行 + 办公室 Spot**；相对 [iCrowdNav](./paper-icrowdnav.md) 的拥挤避让，本文是 **找人/问人** 而非社交绕行。
+7. **选型边界** — 相对 [Uni-LaViRA](./paper-uni-lavira.md) / [Qwen-RobotNav](./qwen-robot-nav.md) 的仿真 EQA/VLN，本文专攻 **真人多日例行 + 办公室 Spot**；相对 [iCrowdNav](./paper-icrowdnav.md) 的拥挤避让，本文是 **找人/问人** 而非社交绕行；相对 [CommNav](./paper-commnav.md) 的即时单轮问路，本文侧重 **多日身份记忆与例行预测**。
 
 ## 局限与风险
 
@@ -214,6 +215,7 @@ sequenceDiagram
 | [Uni-LaViRA](./paper-uni-lavira.md) | TDM 子目标清单 | 单次任务 | VLN/ObjectNav/EQA/Aerial | 已开源 |
 | [Qwen-RobotNav](./qwen-robot-nav.md) | agent notebook（套件侧） | 长时程 EQA demo | 多 mode 导航原语 | 已开源 |
 | [iCrowdNav](./paper-icrowdnav.md) | 无长期人物库 | 即时社交 | 坐标目标避障 | 代码待发布 |
+| [CommNav](./paper-commnav.md) | 无长期人物库 | 即时单轮问路 | 找人 + 跟随 | 仓占位待发布 |
 | [SRU](./paper-sru-spatially-enhanced-recurrent-memory.md) | RNN 隐式空间 | 单次长程 | 坐标目标 | 已开源 |
 | **HUMEMBR（本文）** | **身份感知人例行** | **多日** | **找人 / 人中心问答** | **代码已开源；COBD 私有** |
 
@@ -225,6 +227,7 @@ sequenceDiagram
 - [Qwen-Robot Suite](./qwen-robot-suite.md) — 套件级 EQA / 寻物叙事
 - [导航·SLAM·自动驾驶开源栈总览](../overview/navigation-slam-autonomy-stack.md) — GraphNav/Spot 与经典栈分层对照
 - [iCrowdNav](./paper-icrowdnav.md) — 人群避让导航（任务不同：绕行 vs 找人）
+- [CommNav](./paper-commnav.md) — 即时向路人打听目标位置（无多日记忆）
 - [SRU](./paper-sru-spatially-enhanced-recurrent-memory.md) — 无地图长程坐标导航对照
 - [导航纵深路线](../../roadmap/depth-navigation.md) — Stage 3/4 学习型与语义导航入口
 

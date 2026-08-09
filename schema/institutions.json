@@ -2424,6 +2424,15 @@
         "whair",
         "wuhan-ai"
       ]
+    },
+    "sapienza": {
+      "label": "罗马第一大学（Sapienza University of Rome）",
+      "aliases": [
+        "sapienza",
+        "sapienza-university",
+        "sapienza-rome",
+        "uniroma1"
+      ]
     }
   }
 }
