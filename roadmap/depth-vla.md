@@ -118,6 +118,7 @@ flowchart LR
 - [SayCan](../wiki/methods/saycan.md) 与 [DIAL 指令增强](../wiki/methods/dial-instruction-augmentation.md)（本仓库）
 - [InternVLA-A1.5](../wiki/entities/paper-internvla-a15-unified-vla.md)（本仓库）— 2026 主线前沿对照：统一理解 + 潜式前瞻 + flow matching 动作的单一 MoT 框架，组合泛化与长程执行显著超 π₀.₅
 - [LingBot-VLA](../wiki/entities/lingbot-vla.md)（本仓库）— Qwen2.5-VL-3B + flow 动作头，2 万小时双臂真机预训练；开源 4B 权重与 LeRobot v3.0 后训练栈，RoboTwin 仿真领先 π₀.₅
+- [BridgeVLA++](../wiki/entities/paper-bridgevla-plusplus.md)（本仓库）— 多视图 heatmap 对齐 3D VLA 加统一时空记忆（粗阶段关键帧检索 + 细阶段初始几何），RMBench 记忆依赖任务 18.9%→96.0%，RLBench 93.7%；代码与权重已开源
 
 ### 学完输出什么
 - 能画出典型 VLA 的三段式结构（视觉编码 → 语义 backbone → 动作专家）并说清各家差异
@@ -149,6 +150,7 @@ flowchart LR
 - [World Action Models（WAM）](../wiki/concepts/world-action-models.md) 与 [Pelican-Unified 1.0](../wiki/methods/pelican-unified-1.md)（本仓库）
 - [DeFI](../wiki/methods/defi-decoupled-dynamics-vla.md) 与 [具身 Scaling Laws](../wiki/concepts/embodied-scaling-laws.md)（本仓库）
 - [Xiaomi-Robotics-1](../wiki/entities/xiaomi-robotics-1.md)（本仓库）— 10 万小时 embodiment-free UMI 预训练 + 跨本体后训练，验证数据/模型规模双向可预测 scaling，预训练收益直接迁移到未见环境开箱成功率
+- [JoyAI-RA 0.5](../wiki/entities/paper-joyai-ra-05.md)（本仓库）— VLWA：latent-action 隐式对齐吃无标签人视频 + 130-D 规范动作显式对齐吃可靠轨迹，双通道监督把人视频当主缩放轴；AgiBot G1 真机 seen 92.0/unseen 75.5 大幅超 π₀.₅（74.0），人视频缩放在最大测试规模仍未见饱和；确认未开源
 
 ### 学完输出什么
 - 能说清 VLA 数据金字塔（真机演示 / 仿真 / 人类视频 / 互联网视频）各层的作用与代价
@@ -182,6 +184,7 @@ flowchart LR
 - [RoboTTT](../wiki/entities/paper-robottt-test-time-training-vla-context.md)（本仓库）— 在 VLA 层内嵌测试时训练，将 visuomotor 上下文压缩进固定大小 fast weights，扩到约 8K 步且支持部署后在线自纠偏
 - [ActFovea](../wiki/entities/paper-actfovea.md)（本仓库）— 不重训、不改权重的 VLA 运行时防护层，用动作条件中央凹 + 时空视觉–动作一致性检测扰动；LIBERO 40 任务上把视觉叠加攻击下的成功率从 49.3% 拉回 90.3%，2000 次重放试验 100% 及时安全失败
 - [RoboHarness](../wiki/entities/paper-robo-harness.md)（本仓库）— 把 VLA / RL / TAMP 等异构策略封装为 agentic skills，用理解/记忆/自进化辅助技能做能力边界路由，Memory Bridge 稳定交接；LIBERO-LoHo 上 95.2% 成功，远超 π₀.₅ 的 6.4%；官方仓暂为项目页镜像
+- [RTCF](../wiki/entities/paper-rtcf.md)（本仓库）— 免训练测试时纠偏：Progressive Memory Alignment 按执行历史对齐成功轨迹，只把低频运动残差转移给冻结的 PI-FAST；LIBERO 86.4%→88.4%，LIBERO-Long 61.6%→68.6%，CPU 侧约 11 ms/chunk 额外开销；截至入库日无公开代码
 - [Query：操作 VLA 架构选型](../wiki/queries/manipulation-vla-architecture-selection.md)（本仓库）
 
 ### 学完输出什么

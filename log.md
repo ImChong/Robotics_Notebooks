@@ -1,3 +1,16 @@
+## [2026-08-09] structural | roadmap/depth-motion-retargeting.md + depth-navigation.md + depth-bfm.md + depth-imitation-learning.md + depth-loco-manipulation.md + depth-wam.md + depth-vla.md + depth-humanoid-hardware-design.md — 补齐 2026-08-06（roadmap 上次触达日）以来入库的 15 篇里程碑级知识节点到八条纵深路线「推荐读什么」/关键词区块，覆盖运动重定向、导航、BFM、模仿学习、Loco-Manipulation、WAM、VLA、人形硬件设计
+
+- **触发：** 计划任务巡检——审计 `roadmap/*.md` 自 2026-08-06 02:12 UTC（commit f863707）以来的全部新增知识节点（CommNav 与 HUMEMBR 已由后续 ingest 提交补入 `depth-navigation.md`、CMU Optimal Control 已补入 `motion-control.md`，跳过），确认 15 篇为对应纵深路线的里程碑级或教学级读物；跳过 Immersive Social VR+LLM Humanoids（未开源、小样本，与 Teleopit 叙事重叠）、HumanTouch（数据代码均未发布）、Macrodata 博客（工程配方非里程碑论文，与 ViDiHand 数据源重叠）、UMA（avatar 重建非机器人控制范畴）、DyPES-VLA（未开源，与同期 JoyAI-RA 0.5 主题重叠）、Dynibo/CLI-Anything/Codex Security/embodied-interview-qa（工具类非机器人纵深）、Ego4D/RekaCS2-10k/RekaDaily-10k（通用数据集非机器人专属）、HarnessBank/SkillCorpus/DASH-OPSD（编码/推理 agent 研究非机器人方向）、ROBOTIS 系列与 DDT_Lab/云深处 RL 训练仓（厂商工具生态非论文级贡献）、Effective Degree（通用深度学习论文与人形路线无关）；仅在既有 Stage 内追加条目，未新建 Stage
+- **[`roadmap/depth-motion-retargeting.md`](roadmap/depth-motion-retargeting.md)：** Stage 3 方法谱系补 [KDMR](wiki/entities/paper-kdmr.md)（GRF 锚定多接触全身轨迹优化）、[SPARK](wiki/entities/paper-spark-skeleton-aligned-retargeting.md)（骨架校准 + KTO→ID→KDTO 渐进优化）、[Shooting for Contact / DSMS](wiki/entities/paper-shooting-for-contact.md)（接触隐式多重打靶，已开源，G1 零样本爬行/180° 跳转）；Stage 6 方向 A 关键词补 [X-Morph](wiki/entities/paper-xmorph.md)（人体运动跨形态重定向到四足/六足）
+- **[`roadmap/depth-navigation.md`](roadmap/depth-navigation.md)：** Stage 1 补 [SLAMFormer-∞](wiki/entities/paper-slamformer-infinity.md)（无界长程单目稠密 SLAM）与 [KILVO](wiki/entities/paper-kilvo.md)（人形多传感器 ESIKF 里程计，真机端到端均值 0.0145 m）
+- **[`roadmap/depth-bfm.md`](roadmap/depth-bfm.md)：** Stage 2 跟踪主线补 [PFM-HR](wiki/entities/paper-pfm-hr.md)（无序姿态 Flow Matching 先验，冻结挂载 ADD/BeyondMimic，高动态技能样本效率 +14–29%）
+- **[`roadmap/depth-imitation-learning.md`](roadmap/depth-imitation-learning.md)：** Stage 4 对抗式学习补 [CMP](wiki/entities/paper-cmp.md)（上下文条件重权 AMP/SMP，参考失衡场景显著更稳）
+- **[`roadmap/depth-loco-manipulation.md`](roadmap/depth-loco-manipulation.md)：** Stage 1 全身控制基座补 [AGILE](wiki/entities/paper-agile-humanoid-loco-manipulation.md)（NVIDIA 全生命周期 RL 工作流，G1+T1 双机验证，已开源）；Stage 4 统一模型补 [ω-0](wiki/entities/paper-omega-0.md)（人形并发 loco-manip Joint WAM，G1 11 任务 Omni SR 81.8%）
+- **[`roadmap/depth-wam.md`](roadmap/depth-wam.md)：** Stage 3 Joint WAM 补 [ω-0](wiki/entities/paper-omega-0.md) 与 [DreamWAM](wiki/entities/paper-dreamwam.md)（beyond-RGB 联合去噪，LIBERO-Plus 69.16%→75.47%，已开源）
+- **[`roadmap/depth-vla.md`](roadmap/depth-vla.md)：** Stage 2 VLA 主线补 [BridgeVLA++](wiki/entities/paper-bridgevla-plusplus.md)（时空记忆 3D VLA，已开源）；Stage 3 数据与 Scaling 补 [JoyAI-RA 0.5](wiki/entities/paper-joyai-ra-05.md)（人视频缩放主轴，AgiBot G1 seen 92.0/unseen 75.5）；Stage 4 部署与整合补 [RTCF](wiki/entities/paper-rtcf.md)（免训练测试时动作纠偏）
+- **[`roadmap/depth-humanoid-hardware-design.md`](roadmap/depth-humanoid-hardware-design.md)：** Stage 1 构型与机械布局补 [人形膝/腿主承力链为何通常避开谐波减速器](wiki/concepts/humanoid-knee-harmonic-drive-limits.md)（PRS/摆线 RV/QDD 三条替代路线对照）
+- **口径：** 每条路线仅在既有 Stage 结构内追加 bullet / 关键词，未新建 Stage、未改动其余既有内容
+
 ## [2026-08-09] lint | wiki/entities/paper-dypes-vla.md + wiki/entities/paper-slamformer-infinity.md + scripts/lint_wiki.py — 全量健康检查：阻塞型 0、信息型 3 → 0
 
 - **触发：** 全量知识库 lint 巡检，要求把信息型预警一并收敛

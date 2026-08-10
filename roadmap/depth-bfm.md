@@ -112,6 +112,7 @@ flowchart LR
 - 谱系锚点：[DeepMimic](../wiki/methods/deepmimic.md)、[ASE](../wiki/methods/ase.md)、[PHC](../wiki/entities/phc.md)、[MaskedMimic](../wiki/entities/paper-bfm-17-maskedmimic.md)、[HOVER](../wiki/entities/paper-bfm-14-hover.md)（本仓库）
 - [SONIC](../wiki/methods/sonic-motion-tracking.md) 与 [BeyondMimic](../wiki/methods/beyondmimic.md)（本仓库）— 工程可用的跟踪基座
 - [Teacher-Student 多动作 BFM 学习](../wiki/methods/teacher-student-multi-skill-bfm.md)（本仓库）— BFM 三线之一：特权教师在仿真中学多参考动作跟踪，再蒸馏为单一可部署学生
+- [PFM-HR](../wiki/entities/paper-pfm-hr.md)（本仓库）— 无序姿态 Flow Matching 先验 + Pose Geometry Score 调制跟踪奖励，冻结挂载 ADD/BeyondMimic 不改部署栈；高动态技能（Backflip、Double Kong 等）样本效率相对 PDF-HR 提升 14–29%，LaFAN1 通用跟踪位置误差相对 ADD/PDF-HR 均降约 8–10%；代码仓占位待开放
 - [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md)（本仓库）
 - [Query：人形动作跟踪方法选型](../wiki/queries/humanoid-motion-tracking-method-selection.md)（本仓库）
 

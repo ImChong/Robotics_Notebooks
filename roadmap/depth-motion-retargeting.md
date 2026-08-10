@@ -158,6 +158,9 @@ flowchart LR
 - [GMR](../wiki/methods/motion-retargeting-gmr.md)、[NMR](../wiki/methods/neural-motion-retargeting-nmr.md)、[ReActor](../wiki/methods/reactor-physics-aware-motion-retargeting.md)（本仓库）— 三条代表路线
 - [GMR vs NMR vs ReActor 选型对比](../wiki/comparisons/gmr-vs-nmr-vs-reactor.md)（本仓库）— 谱系主入口
 - [DynaRetarget / SBTO](../wiki/methods/dynaretarget-sbto-motion-retargeting.md) 与 [SPIDER](../wiki/methods/spider-physics-informed-dexterous-retargeting.md)（本仓库）— 物理感知扩展
+- [KDMR](../wiki/entities/paper-kdmr.md)（本仓库）— GRF 锚定多接触全身轨迹优化（CasADi + Pinocchio），把 heel–toe 接触日程与动力学/无滑约束一并写进 NLP；相对 GMR 下游跟踪误差降约 27–47%（Walk/Twister），G1 零样本部署；宣称发表时开源，截至入库日无官方代码
+- [SPARK](../wiki/entities/paper-spark-skeleton-aligned-retargeting.md)（本仓库）— 先校准 human URDF 骨架再 IK，再经 KTO→ID→KDTO 渐进轨迹优化补力矩监督；多机型 IK 误差相对 GMR 降 65–83%，G1 side flip 上 KDTO+T 显著加速 BeyondMimic 收敛；未开源
+- [Shooting for Contact / DSMS](../wiki/entities/paper-shooting-for-contact.md)（本仓库）— 接触隐式直接仿真多重打靶，无需预设接触时刻表即可把运动学参考精炼为动力学可行轨迹；backflip 落地成功率与 DynaRetarget 同档（98.7%），较 OmniRetarget（9.3%）高一个数量级，G1 零样本爬行/180° 跳转；trajopt/MPC 已开源
 - [OmniRetarget](../wiki/entities/paper-hrl-stack-03-omniretarget.md) 与 [Retargeting Matters](../wiki/entities/paper-hrl-stack-01-retargeting_matters.md)（本仓库）— 交互保留与重定向质量对下游的影响
 - [STMR 四足时空重定向](../wiki/entities/stmr-quadruped-retargeting.md)（本仓库）— 四足支线主入口，见下节
 
@@ -286,7 +289,7 @@ flowchart LR
 
 **方向 A：跨具身重定向**
 - 把同一套参考动作映射到异构形态（四足、异构人形、机械臂）；Stage 3 支线解决的是"动物动作 → 某一台四足"，本方向进一步解决"一份参考 → 多机型复用"，包括人形↔四足互映射
-- 关键词：[STMR 四足重定向](../wiki/entities/stmr-quadruped-retargeting.md)、[PAN Motion Retargeting](../wiki/entities/pan-motion-retargeting.md)、[Any2Any 跨具身 WBT](../wiki/entities/paper-any2any-cross-embodiment-wbt.md)、[跨具身纵深](../wiki/overview/hub-cross-embodiment.md)、[Query：跨具身迁移策略](../wiki/queries/cross-embodiment-transfer-strategy.md)
+- 关键词：[STMR 四足重定向](../wiki/entities/stmr-quadruped-retargeting.md)、[PAN Motion Retargeting](../wiki/entities/pan-motion-retargeting.md)、[X-Morph](../wiki/entities/paper-xmorph.md)（人体运动经 G1 中间表示 → 四足/六足/带臂四足跨形态重定向 + 物理感知校正 + 特权跟踪蒸馏，Go2 上脚滑降 27.2%、穿地降 46.9%；未开源）、[Any2Any 跨具身 WBT](../wiki/entities/paper-any2any-cross-embodiment-wbt.md)、[跨具身纵深](../wiki/overview/hub-cross-embodiment.md)、[Query：跨具身迁移策略](../wiki/queries/cross-embodiment-transfer-strategy.md)
 
 **方向 B：灵巧手与交互保留重定向**
 - 手-物接触的拓扑保持：从全身骨架级映射细化到接触级映射
