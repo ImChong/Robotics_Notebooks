@@ -3,7 +3,7 @@ title: HMI 开源项目主表 · 本库导读
 type: query
 status: complete
 created: 2026-07-30
-updated: 2026-07-31
+updated: 2026-08-10
 summary: 把具身智能研究室开源项目主表（166 项）逐条接到本库对应详情页：左侧是上游策展入口，右侧是可继续深读的 wiki 节点；同主题多入口会共用同一页。
 sources:
   - ../../sources/repos/humanoid-motion-intelligence.md
@@ -218,7 +218,7 @@ sources:
 | [OSQP](https://github.com/osqp/osqp) | [OSQP](../entities/osqp.md) |
 | [Pink](https://github.com/stephane-caron/pink) | [Pink](../entities/pink-ik.md) |
 | [Pinocchio](https://github.com/stack-of-tasks/pinocchio) | [Pinocchio (刚体动力学库)](../entities/pinocchio.md) |
-| [PlotJuggler](https://github.com/facontidavide/PlotJuggler) | [PlotJuggler](../entities/plotjuggler.md) |
+| [PlotJuggler](https://github.com/PlotJuggler/PlotJuggler) | [PlotJuggler](../entities/plotjuggler.md) |
 | [PRIME](https://github.com/well-robotics/PRIME) | [PRIME](../entities/prime-system-id.md) |
 | [Project Instinct InstinctLab](https://github.com/project-instinct/instinctlab) | [Project Instinct](../entities/project-instinct.md) · 同主题共用 |
 | [Project Instinct Robot Motion Editor](https://github.com/project-instinct/robot-motion-editor) | [机器人关键帧与运动编辑工具（选型入口）](../entities/robot-motion-keyframe-editors.md) |

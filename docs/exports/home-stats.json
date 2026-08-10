@@ -1,13 +1,75 @@
 {
   "generated_at": "2026-08-10",
   "node_count": 2149,
-  "edge_count": 19966,
+  "edge_count": 19975,
   "coverage": {
     "covered": 2125,
     "total": 2125,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/plotjuggler.md",
+      "detail_id": "entity-plotjuggler",
+      "label": "PlotJuggler",
+      "type": "entity",
+      "recency": "2026-08-10",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/foxglove-studio.md",
+      "detail_id": "entity-foxglove-studio",
+      "label": "Foxglove",
+      "type": "entity",
+      "recency": "2026-08-10",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "开源项目本库导读（HMI Open-Source Projects Guide） 社区"
+    },
+    {
+      "path": "wiki/entities/rerun-io.md",
+      "detail_id": "entity-rerun-io",
+      "label": "rerun",
+      "type": "entity",
+      "recency": "2026-08-10",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/mcap-log-format.md",
+      "detail_id": "entity-mcap-log-format",
+      "label": "MCAP",
+      "type": "entity",
+      "recency": "2026-08-10",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "开源项目本库导读（HMI Open-Source Projects Guide） 社区"
+    },
+    {
+      "path": "wiki/queries/robot-policy-debug-playbook.md",
+      "detail_id": "wiki-queries-robot-policy-debug-playbook",
+      "label": "RL 策略真机调试 Playbook",
+      "type": "query",
+      "recency": "2026-08-10",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/queries/hmi-opensource-projects-coverage.md",
+      "detail_id": "wiki-queries-hmi-opensource-projects-coverage",
+      "label": "HMI 开源项目主表 · 本库导读",
+      "type": "query",
+      "recency": "2026-08-10",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "开源项目本库导读（HMI Open-Source Projects Guide） 社区"
+    },
     {
       "path": "wiki/entities/paper-ace-data-0.md",
       "detail_id": "entity-paper-ace-data-0",
@@ -147,101 +209,42 @@
       "recency": "2026-08-10",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-being-m07-humanoid-latent-wam.md",
-      "detail_id": "entity-paper-being-m07-humanoid-latent-wam",
-      "label": "Being-M0.7（人形潜空间 World–Action Model）",
-      "type": "entity",
-      "recency": "2026-08-10",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/sonic-motion-tracking.md",
-      "detail_id": "wiki-methods-sonic-motion-tracking",
-      "label": "SONIC（规模化运动跟踪人形控制）",
-      "type": "method",
-      "recency": "2026-08-10",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/tasks/teleoperation.md",
-      "detail_id": "wiki-tasks-teleoperation",
-      "label": "Teleoperation（遥操作）",
-      "type": "task",
-      "recency": "2026-08-10",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/concepts/world-action-models.md",
-      "detail_id": "wiki-concepts-world-action-models",
-      "label": "World Action Models（WAM，世界–动作模型）",
-      "type": "concept",
-      "recency": "2026-08-10",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "生成式世界模型（Generative World Models） 社区"
-    },
-    {
-      "path": "wiki/tasks/loco-manipulation.md",
-      "detail_id": "wiki-tasks-loco-manipulation",
-      "label": "Loco-Manipulation (移动操作)",
-      "type": "task",
-      "recency": "2026-08-10",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md",
-      "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
-      "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
-      "type": "entity",
-      "recency": "2026-08-10",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-ace-data-0.md",
-    "detail_id": "entity-paper-ace-data-0",
-    "label": "ACE-Data-0：以人为中心的 Ambient Capture 具身数据引擎",
+    "path": "wiki/entities/plotjuggler.md",
+    "detail_id": "entity-plotjuggler",
+    "label": "PlotJuggler",
     "type": "entity",
     "recency": "2026-08-10",
     "source": "log.md",
-    "action": "added"
+    "action": "maintained",
+    "has_repo": true
   },
   "top_communities": [
     {
       "label": "动作重定向",
-      "size": 205
-    },
-    {
-      "label": "移动操作",
-      "size": 158
+      "size": 207
     },
     {
       "label": "操作",
       "size": 155
     },
     {
+      "label": "移动操作",
+      "size": 137
+    },
+    {
+      "label": "人形强化学习运动控制",
+      "size": 134
+    },
+    {
       "label": "人形论文深读笔记",
-      "size": 135
+      "size": 134
     },
     {
       "label": "仿真到现实",
       "size": 126
-    },
-    {
-      "label": "视觉-语言-动作",
-      "size": 125
     }
   ],
   "top_hubs": [

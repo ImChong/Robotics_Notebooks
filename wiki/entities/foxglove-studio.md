@@ -2,12 +2,14 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
-updated: 2026-07-30
+updated: 2026-08-10
 summary: "Foxglove：汇集实时话题、MCAP日志、三维场景和自定义面板，用于远程观察机器人状态与复盘异常；统一数据视图有助于把策略输出、传感器时序和安全事件放到同一时间轴上。"
 related:
   - ../concepts/sim2real.md
   - ../entities/isaac-lab.md
   - ../entities/humanoid-motion-intelligence.md
+  - ../entities/plotjuggler.md
+  - ../entities/mcap-log-format.md
   - ../queries/hmi-opensource-projects-coverage.md
 sources:
   - ../../sources/repos/foxglove-studio.md
@@ -87,6 +89,8 @@ flowchart LR
 - [sim2real](../concepts/sim2real.md)
 - [isaac-lab](../entities/isaac-lab.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
+- [PlotJuggler](./plotjuggler.md) — 时序曲线与 WebSocket bridge 互通；多模态复盘可与 PJ 分工
+- [MCAP](./mcap-log-format.md) — 常用日志容器
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
 
 ## 参考来源

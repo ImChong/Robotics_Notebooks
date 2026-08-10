@@ -12,6 +12,7 @@ related:
   - ../concepts/domain-randomization.md
   - ../concepts/privileged-training.md
   - ../entities/plotjuggler.md
+  - ../entities/rerun-io.md
   - ../entities/tensorboard.md
   - ../entities/weights-and-biases.md
   - ../comparisons/wandb-vs-tensorboard.md
@@ -118,8 +119,8 @@ ros2 topic echo /robot/obs --no-arr > obs_log.txt
 **推荐工具链：**
 - **[TensorBoard](../entities/tensorboard.md)**：训练期标量、`Episode_Reward/*` 与 PPO/AMP `Loss/*`；本地 `tensorboard --logdir logs/`（见 [AMP_mjlab](../entities/amp-mjlab.md) 曲线判据）
 - **[Weights & Biases](../entities/weights-and-biases.md)**：多机 run 对比、Artifacts 与 rollout 视频；与 TB 可并行（选型见 [W&B vs TensorBoard](../comparisons/wandb-vs-tensorboard.md)）
-- **[PlotJuggler](../entities/plotjuggler.md)**：拖拽式多曲线、rosbag2/ROS topic 与布局保存；适合快速对齐仿真与真机同名 topic 字段
-- **rerun.io**：实时可视化关节角、力矩、IMU，与仿真曲线叠加对比
+- **[PlotJuggler](../entities/plotjuggler.md)**：拖拽式多曲线、rosbag2/ROS topic/MCAP 与布局保存；适合快速对齐仿真与真机同名 topic 字段（生产优先 3.17.x；多模态/3D 可评估 PJ4 beta）
+- **[rerun](../entities/rerun-io.md)**：实时可视化关节角、力矩、IMU / 图像点云，与仿真曲线叠加对比
 - **ROS2 bag**：完整记录一个 episode 的所有话题，离线回放分析
 - **Matplotlib / Pandas**：绘制 obs/action 时序曲线，对比仿真 rollout
 
