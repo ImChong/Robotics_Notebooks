@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, egocentric-video, dexterous-manipulation, world-model, flow-matching, dagger, teleoperation, human-robot-transfer, qwen, pku, psibot, upenn]
 status: complete
-updated: 2026-07-24
+updated: 2026-08-10
 arxiv: "2607.09701"
 code: https://github.com/egosteer/egosteer
 related:

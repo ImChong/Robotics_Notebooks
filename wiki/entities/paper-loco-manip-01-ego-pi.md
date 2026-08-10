@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-survey, humanoid, stanford, meta]
 status: complete
-updated: 2026-06-25
+updated: 2026-08-10
 arxiv: "2606.08107"
 summary: "人类 ego 与机器人数据共微调 Pi0.5：语义与动作分工，避免硬拷贝人类轨迹。"
 related:

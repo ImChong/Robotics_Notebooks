@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, world-models, shenlan-survey, open-source, alibaba, zju]
 status: complete
-updated: 2026-06-25
+updated: 2026-08-10
 arxiv: "2506.21539"
 venue: —
 summary: "VLA 与世界模型单框架双向增强；RynnVLA-002 工程化连续动作与注意力掩码。"

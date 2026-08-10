@@ -11,7 +11,7 @@ tags:
   - stanford
   - tsinghua
 status: complete
-updated: 2026-08-02
+updated: 2026-08-10
 arxiv: "2510.10125"
 related:
   - ../methods/generative-world-models.md

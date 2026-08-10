@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, shanghai-ai-lab, flow-matching, mot, compositional-generalization, manipulation, qwen, world-models, latent-foresight]
 status: complete
-updated: 2026-08-07
+updated: 2026-08-10
 arxiv: "2607.04988"
 related:
   - ../methods/vla.md

@@ -1,0 +1,97 @@
+---
+type: entity
+tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
+status: complete
+updated: 2026-08-10
+arxiv: "2603.13615"
+venue: "arXiv 2026"
+summary: "The first egocentric HOI world model, embedding physical priors into generative diffusion models, distilling geometric and kinematic priors from 3D estimates into physics-informed embeddings"
+related:
+  - ../entities/awesome-egocentric-vision.md
+  - ../overview/sun-awesome-ego-technology-map.md
+  - ../methods/vla.md
+  - ../methods/imitation-learning.md
+  - ../tasks/manipulation.md
+  - ../tasks/teleoperation.md
+sources:
+  - ../../sources/papers/sun_awesome_ego_2603_13615_egohoi-egocentric-world-model-for-photor.md
+  - ../../sources/papers/sun_awesome_ego_catalog.md
+  - ../../sources/repos/awesome-egocentric-vision.md
+---
+
+# EgoHOI
+
+**EgoHOI: Egocentric World Model for Photorealistic Hand-Object Interaction Synthesis** 收录于 [Awesome Egocentric Vision](https://github.com/sun254667/awesome-egocentric-vision) **第 015/249** 篇，分组 **22 Hand-Object Interaction & Fine-grained Activity**。本页为知识库 **策展索引级** 详情节点；方法细节与量化指标以原文 PDF / 项目页为准。
+
+## 一句话定义
+
+The first egocentric HOI world model, embedding physical priors into generative diffusion models, distilling geometric and kinematic priors from 3D estimates into physics-informed embeddings
+
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Ego | Egocentric Vision | 第一人称可穿戴视角感知 |
+| HOI | Hand–Object Interaction | 手–物交互理解 |
+| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
+| VLM | Vision-Language Model | 视觉–语言模型 |
+
+## 为什么重要
+
+- The first egocentric HOI world model, embedding physical priors into generative diffusion models, distilling geometric and kinematic priors from 3D estimates into physics-informed embeddings
+- 在 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 中提供可点击的独立详情节点，避免清单条目无法落入知识图谱。
+- 与列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 及站内方法/任务页交叉，便于从策展索引跳转到学习主线。
+
+## 核心信息（索引级）
+
+| 字段 | 内容 |
+|------|------|
+| 编号 | 015/249 |
+| 分组 | 22 Hand-Object Interaction & Fine-grained Activity |
+| 出处 | arXiv 2026 |
+| 论文 | <https://arxiv.org/abs/2603.13615> |
+
+## 核心机制（归纳）
+
+### 策展导读要点
+
+The first egocentric HOI world model, embedding physical priors into generative diffusion models, distilling geometric and kinematic priors from 3D estimates into physics-informed embeddings
+
+本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内相关方法页（见关联页面）。
+
+## 评测与指标（索引级）
+
+- 本条目为 Awesome 策展 **索引级** 摘录，**未搬运** 原文量化 benchmark 与实机指标。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2603.13615) 为准。
+- 横向对照请回到 [技术地图](../overview/sun-awesome-ego-technology-map.md) 同分组条目。
+
+## 结论
+
+**本条目的站内价值是把「EgoHOI」从外部 Awesome 列表提升为可链接的知识节点，并保留清单 Highlights 作为阅读锚点。**
+
+- 起作用的是策展坐标：列表分组 **22 Hand-Object Interaction & Fine-grained Activity** + Highlights 指出的问题设定，而不是本页自行推导的新算法结论。
+- 适用边界：索引级页面不能替代 PDF；开源状态以项目页实际链接为准（清单可能滞后）。
+- 若该工作成为学习主线，应再升格为深度论文实体（补机构、实验表、源码运行时序图或「不适用」说明）。
+
+## 常见误区
+
+1. 不要把 Awesome 条目的 Highlights 当成完整方法证明——它只是策展导读。
+2. 同一 arXiv 在全库只允许一个 canonical 详情节点；若已有深度页，应以深度页为准。
+
+## 关联页面
+
+- 列表实体：[Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md)
+- 技术地图：[Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md)
+- 方法/任务：[vla.md](../methods/vla.md)、[manipulation.md](../tasks/manipulation.md)
+
+## 参考来源
+
+- [`sources/papers/sun_awesome_ego_2603_13615_egohoi-egocentric-world-model-for-photor.md`](../../sources/papers/sun_awesome_ego_2603_13615_egohoi-egocentric-world-model-for-photor.md) — 本条目策展摘录
+- [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
+- [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
+- 论文：<https://arxiv.org/abs/2603.13615>
+
+## 推荐继续阅读
+
+- [Awesome Egocentric Vision 仓库](https://github.com/sun254667/awesome-egocentric-vision)
+- [原文](https://arxiv.org/abs/2603.13615)

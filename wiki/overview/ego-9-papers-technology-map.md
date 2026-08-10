@@ -2,7 +2,7 @@
 type: overview
 tags: [egocentric, ego, data-collection, imitation-learning, world-models, survey, embodied-ai]
 status: complete
-updated: 2026-06-14
+updated: 2026-08-10
 related:
   - ./ego-category-01-data-collection.md
   - ./ego-category-02-human-to-robot.md
@@ -13,12 +13,14 @@ related:
   - ../methods/imitation-learning.md
   - ../methods/vla.md
   - ../methods/generative-world-models.md
+  - ../entities/awesome-egocentric-vision.md
   - ../tasks/manipulation.md
   - ../tasks/loco-manipulation.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md
   - ../../sources/raw/wechat_ego_9_papers_2026-06-01.md
   - ../../sources/papers/ego_9_papers_catalog.md
+  - ../../sources/repos/awesome-egocentric-vision.md
 summary: "依据具身智能研究室 Ego 9 篇专题，把第一视角技术路线整理为「采集 → 人→机 → 世界模型 → Ego+Exo」四组；核心判断：Ego 是具身数据规模化入口，但不会自动变成机器人策略数据。"
 ---
 
@@ -111,6 +113,7 @@ flowchart TB
 
 - [模仿学习](../methods/imitation-learning.md)、[VLA](../methods/vla.md)、[生成式世界模型](../methods/generative-world-models.md)
 - [Loco-Manip 8 篇数据入口技术地图](./loco-manip-8-papers-technology-map.md)
+- [Awesome Egocentric Vision（精选集）](../entities/awesome-egocentric-vision.md) — 第一人称全谱文献/数据集索引（与本页四类问题坐标互补）
 - [Agent Reach](../entities/agent-reach.md) — 本文微信抓取工具链
 
 ## 参考来源
@@ -118,8 +121,10 @@ flowchart TB
 - [wechat_embodied_ai_lab_ego_9_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md)
 - [wechat_ego_9_papers_2026-06-01.md](../../sources/raw/wechat_ego_9_papers_2026-06-01.md)
 - [ego_9_papers_catalog.md](../../sources/papers/ego_9_papers_catalog.md)
+- [sources/repos/awesome-egocentric-vision.md](../../sources/repos/awesome-egocentric-vision.md) — Awesome Egocentric Vision 策展清单
 
 ## 推荐继续阅读
 
 - 原文：<https://mp.weixin.qq.com/s/4JQ1xa-cJ7J1ep_e4txNnA>
 - [42 篇 humanoid RL 身体系统栈](./humanoid-rl-motion-control-body-system-stack.md)
+- [Awesome Egocentric Vision 仓库](https://github.com/sun254667/awesome-egocentric-vision)

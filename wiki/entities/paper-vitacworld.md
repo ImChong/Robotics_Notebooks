@@ -13,7 +13,7 @@ tags:
   - shanghaitech
   - instadapt
 status: complete
-updated: 2026-07-27
+updated: 2026-08-10
 arxiv: "2607.22530"
 related:
   - ../concepts/visuo-tactile-fusion.md

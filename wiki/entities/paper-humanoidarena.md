@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, benchmark, humanoid, hierarchical-control, egocentric, loco-manipulation, imitation-learning, vla, hkust-gz, bjut, hit, smsu-bit, jd, unitree-g1]
 status: complete
-updated: 2026-07-24
+updated: 2026-08-10
 arxiv: "2606.17833"
 venue: "2026 · arXiv"
 code: https://github.com/William-wAng618/HumanoidArena

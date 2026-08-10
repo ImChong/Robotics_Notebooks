@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, world-models, shenlan-survey, open-source, stanford]
 status: complete
-updated: 2026-06-25
+updated: 2026-08-10
 arxiv: "2503.00200"
 venue: RSS 2025
 summary: "视频生成与实时策略推理同一模型；联合潜表示与解耦解码。"

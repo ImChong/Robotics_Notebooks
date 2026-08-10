@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, shenlan-survey, open-source, google-deepmind, nyu, stanford]
 status: complete
-updated: 2026-07-22
+updated: 2026-08-10
 arxiv: "2506.00613"
 venue: —
 summary: "WM 作策略评估虚拟靶场；VLM 奖励 + MC 模拟，与真机排名高度相关。"

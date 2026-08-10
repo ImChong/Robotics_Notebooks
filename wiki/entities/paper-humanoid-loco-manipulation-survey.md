@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "survey", "loco-manipulation", "humanoid", "hmi-papers"]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-10
 arxiv: "2501.02116"
 venue: "HMI curated · 2025"
 summary: "Humanoid Loco-Manipulation Survey（HMI P069）：按控制层、任务类型与真实证据整理人形移动操作研究，统一术语并指出触觉、复杂接触与系统评测缺口。"

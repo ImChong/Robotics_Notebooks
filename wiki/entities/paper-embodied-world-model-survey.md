@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "survey", "world-model", "embodied-ai", "hmi-papers"]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-10
 arxiv: "2510.16732"
 venue: "HMI curated · 2025"
 summary: "Embodied World Model Survey（HMI P072）：综合整理具身世界模型的表示、训练目标、规划/策略用法与评测，帮助区分「会预测画面」与「能支撑决策」。"

@@ -9,7 +9,7 @@ tags:
   - residual-learning
   - georgia-tech
 status: complete
-updated: 2026-07-27
+updated: 2026-08-10
 arxiv: "2607.20653"
 related:
   - ../overview/world-model-physics-fidelity-outputs.md
