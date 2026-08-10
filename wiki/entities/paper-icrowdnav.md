@@ -18,7 +18,7 @@ tags:
   - peng-cheng-lab
   - reconova
 status: complete
-updated: 2026-08-09
+updated: 2026-08-10
 arxiv: "2606.26047"
 doi: "10.1109/LRA.2026.3677748"
 related:
@@ -31,6 +31,7 @@ related:
   - ./paper-sru-spatially-enhanced-recurrent-memory.md
   - ./paper-navwam-goal-conditioned-visual-navigation-wam.md
   - ./paper-notebook-learning-social-navigation-from-positive-and-neg.md
+  - ./paper-splc.md
   - ./paper-humembr.md
   - ./paper-commnav.md
   - ../../roadmap/depth-navigation.md
@@ -183,6 +184,7 @@ flowchart TB
 | **SRU** | 单前向深度 | 长程空间记忆，非姿态意图 | 已开源 / [SRU-Odin](./sru-odin.md) |
 | **NavWAM** | image-goal + 视频 WM | 未来观测–动作联合，非人群社交 | 代码 Coming soon |
 | **iCrowdNav（本文）** | RGB-D + 3D 姿态 | **BEV + I²Former** | **仓占位，代码待发布** |
+| **SPLC** | 关节状态（机器人中心） | **自动社交偏好准则 → Offline RL 奖励** | 仓占位 coming soon；见 [SPLC](./paper-splc.md) |
 | **HUMEMBR** | 字幕记忆 + 脸/ReID 身份库 | **多日例行预测找人**（非拥挤绕行） | 代码已开源；见 [HUMEMBR](./paper-humembr.md) |
 | **CommNav** | 深度 + 人体检测 + 路人线索 | **主动问路 → COMM 目标估计** | 仓占位待发布；见 [CommNav](./paper-commnav.md) |
 
@@ -196,6 +198,7 @@ flowchart TB
 - [SRU](./paper-sru-spatially-enhanced-recurrent-memory.md) — 视觉 RL 无地图长程导航对照
 - [NavWAM](./paper-navwam-goal-conditioned-visual-navigation-wam.md) — image-goal 视觉导航对照
 - [社会导航（正负示范）](./paper-notebook-learning-social-navigation-from-positive-and-neg.md) — 另一社交导航范式
+- [SPLC](./paper-splc.md) — Offline RL + 自动社交偏好奖励（非视觉意图）
 - [视觉–语言导航](../tasks/vision-language-navigation.md) — 语言条件导航任务族（边界）
 - [HUMEMBR](./paper-humembr.md) — 人中心例行记忆找人（任务不同：找人 vs 拥挤绕行）
 - [CommNav](./paper-commnav.md) — 主动向路人打听目标位置（信息寻求型找人；Habitat 3.0c）

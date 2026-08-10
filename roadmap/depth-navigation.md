@@ -148,6 +148,7 @@ flowchart LR
 - [RAVEN](../wiki/entities/paper-raven-rl-adaptive-visibility-graph-mpc.md)（本仓库）— RL 只改可见图障碍膨胀，cf-MPC 保约束的人形混合导航（Booster T1；未开源）
 - [SRU](../wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md)（本仓库）— 给 RNN 补空间配准能力的循环单元，端到端 RL 无地图导航，Unitree B2W 真机零样本 50–120 m 长程目标导航
 - [iCrowdNav](../wiki/entities/paper-icrowdnav.md)（本仓库）— RGB-D **BEV + I²Former 姿态意图** 的人群导航 PPO；相对 DWA/DRL-VO 提升私人空间合规，真机零样本（代码待发布）
+- [SPLC](../wiki/entities/paper-splc.md)（本仓库）— **自动社交偏好准则** 学 Offline RL 奖励并挂 IQL/CQL/TD3BC；仿真相对手调/人工偏好基线提升成功率，TurtleBot4 真机验证（代码 coming soon）
 - [CommNav](../wiki/entities/paper-commnav.md)（本仓库）— **主动向路人打听** 目标时空线索的社交导航（Habitat 3.0c + COMM；ES +10 pp；代码待发布）
 - [RoamFlow](../wiki/entities/paper-roamflow.md)（本仓库）— MeanFlow 一步（少步）轨迹生成 + IL→RL 任务对齐 + 轨迹评估器筛选；Habitat Gibson SR 68.7%/19.6 ms 全面超 NoMaD/NavDP，Go2 + Orin NX 真机 20 runs SR 1.00；确认未开源
 - [HUMEMBR](../wiki/entities/paper-humembr.md)（本仓库）— **身份感知多日记忆** + LLM 工具检索的 PersonEQA / Spot 例行找人（代码已开源；COBD 数据暂私有）
@@ -208,7 +209,7 @@ flowchart LR
 
 **方向 D：导航世界模型与新载体**
 - 用 WAM 联合预测未来观测与动作；空中 VLN 等新设定
-- 关键词：[NavWAM](../wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md)、[WorldVLN](../wiki/entities/paper-worldvln-aerial-vln-wam.md)、[PanoWorld（真实世界全景可控生成）](../wiki/entities/paper-panoworld-real-world-panoramic-generation.md)、[社会导航](../wiki/entities/paper-notebook-learning-social-navigation-from-positive-and-neg.md)、[iCrowdNav](../wiki/entities/paper-icrowdnav.md)、[CommNav](../wiki/entities/paper-commnav.md)
+- 关键词：[NavWAM](../wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md)、[WorldVLN](../wiki/entities/paper-worldvln-aerial-vln-wam.md)、[PanoWorld（真实世界全景可控生成）](../wiki/entities/paper-panoworld-real-world-panoramic-generation.md)、[社会导航](../wiki/entities/paper-notebook-learning-social-navigation-from-positive-and-neg.md)、[iCrowdNav](../wiki/entities/paper-icrowdnav.md)、[SPLC](../wiki/entities/paper-splc.md)、[CommNav](../wiki/entities/paper-commnav.md)
 
 ---
 

@@ -1,3 +1,12 @@
+## [2026-08-10] ingest | sources/papers/splc_arxiv_2607_01925.md — 接入 SPLC（arXiv:2607.01925）社交偏好学习人群导航；升格 wiki/entities/paper-splc.md；交叉 wiki/entities/paper-icrowdnav.md、wiki/entities/paper-notebook-learning-social-navigation-from-positive-and-neg.md、wiki/comparisons/online-vs-offline-rl.md、wiki/overview/navigation-slam-autonomy-stack.md、roadmap/depth-navigation.md；仓库 sources/repos/splc.md（代码 coming soon）
+
+- **触发：** 用户指定论文 *SPLC: Social Preference Learning for Crowd Robot Navigation*（Zixuan Chen、Hao Fu、Haiwen Hu、Shiquan Zheng）；要求自动合并
+- **来源：** [`sources/papers/splc_arxiv_2607_01925.md`](sources/papers/splc_arxiv_2607_01925.md)、[`sources/repos/splc.md`](sources/repos/splc.md)
+- **新建实体：** [`wiki/entities/paper-splc.md`](wiki/entities/paper-splc.md) — 社交偏好准则自动标注 + Preference Transformer 奖励 + IQL/CQL/TD3BC；源码运行时序图「不适用」（README coming soon，2026-08-10）
+- **开源核查（步骤 2.5）：** **宣称将开源 / 截至入库日无可运行实现** — GitHub 仅 README + Graphical Abstract；演示 [YouTube](https://youtu.be/vkWjg4Qcybg)
+- **机构：** 注册 `wust` → 武汉科技大学（Wuhan University of Science and Technology）
+- **交叉：** [`wiki/entities/paper-icrowdnav.md`](wiki/entities/paper-icrowdnav.md)、[`wiki/entities/paper-notebook-learning-social-navigation-from-positive-and-neg.md`](wiki/entities/paper-notebook-learning-social-navigation-from-positive-and-neg.md)、[`wiki/comparisons/online-vs-offline-rl.md`](wiki/comparisons/online-vs-offline-rl.md)、[`wiki/overview/navigation-slam-autonomy-stack.md`](wiki/overview/navigation-slam-autonomy-stack.md)、[`roadmap/depth-navigation.md`](roadmap/depth-navigation.md)
+
 ## [2026-08-10] ingest | sources/papers/omega0_arxiv_2608_06375.md — 深化 ω-0（arXiv:2608.06375）：复核 Code/Dataset 仍 WIP；补 FAST/Qwen3-VL/V-JEPA/Wan/RTC 与消融；交叉 wiki/entities/paper-omega-0.md、wiki/entities/paper-being-m07-humanoid-latent-wam.md、wiki/methods/sonic-motion-tracking.md、wiki/tasks/teleoperation.md、wiki/concepts/world-action-models.md、wiki/tasks/loco-manipulation.md、wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md
 
 - **触发：** 用户指定 <https://arxiv.org/abs/2608.06375> 与项目页 <https://gentlefress.github.io/OMEGA-0_page/>；要求自动合并。该篇已于 2026-08-08 首轮入库，本轮做开源复核与方法深化。

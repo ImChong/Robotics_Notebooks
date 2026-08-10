@@ -15,7 +15,7 @@ tags:
   - queens-university
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-08-09
+updated: 2026-08-10
 arxiv: "2510.12215"
 related:
   - ../overview/paper-notebook-category-08-navigation.md
@@ -23,6 +23,7 @@ related:
   - ../methods/behavior-cloning.md
   - ../concepts/control-barrier-function.md
   - ./paper-icrowdnav.md
+  - ./paper-splc.md
   - ./paper-commnav.md
   - ./paper-notebook-egonav.md
 sources:
@@ -158,6 +159,7 @@ DAgger 从 50 expert episodes 起步，再执行 10 rounds × 50 episodes。两�
 
 - [导航纵深路线 Stage 5](../../roadmap/depth-navigation.md) — 社会导航进阶节点
 - [iCrowdNav](./paper-icrowdnav.md) — 感知人体姿态与意图的 RL 对照
+- [SPLC](./paper-splc.md) — 自动社交偏好准则 + Offline RL 奖励（无人标注偏好）
 - [CommNav](./paper-commnav.md) — 主动向路人打听目标位置（信息寻求型找人；非舒适性示范）
 - [模仿学习](../methods/imitation-learning.md) 与 [行为克隆](../methods/behavior-cloning.md) — 正负示范及 teacher–student 蒸馏基础
 - [控制屏障函数](../concepts/control-barrier-function.md) — 可与 MDN fallback 组合的形式化安全层
