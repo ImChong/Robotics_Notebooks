@@ -151,6 +151,7 @@ flowchart LR
 - [DeFI](../wiki/methods/defi-decoupled-dynamics-vla.md) 与 [具身 Scaling Laws](../wiki/concepts/embodied-scaling-laws.md)（本仓库）
 - [Xiaomi-Robotics-1](../wiki/entities/xiaomi-robotics-1.md)（本仓库）— 10 万小时 embodiment-free UMI 预训练 + 跨本体后训练，验证数据/模型规模双向可预测 scaling，预训练收益直接迁移到未见环境开箱成功率
 - [JoyAI-RA 0.5](../wiki/entities/paper-joyai-ra-05.md)（本仓库）— VLWA：latent-action 隐式对齐吃无标签人视频 + 130-D 规范动作显式对齐吃可靠轨迹，双通道监督把人视频当主缩放轴；AgiBot G1 真机 seen 92.0/unseen 75.5 大幅超 π₀.₅（74.0），人视频缩放在最大测试规模仍未见饱和；确认未开源
+- [ACE-Data-0](../wiki/entities/paper-ace-data-0.md)（本仓库）— 真实家居双尺度同步度量 HOI/HSI（ego/exo/运动/物体/音频/触觉）；150 h 中规模高保真人类演示层，与 EgoScale/RekaDaily「拼小时」互补；HF gated 研究许可，训练代码未见
 
 ### 学完输出什么
 - 能说清 VLA 数据金字塔（真机演示 / 仿真 / 人类视频 / 互联网视频）各层的作用与代价

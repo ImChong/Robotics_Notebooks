@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, ace-robotics, embodied-foundation-model, vla, qwen, spatial-grounding, navigation, manipulation, progress-estimation, ssr, foundation-policy, flow-matching]
 status: complete
-updated: 2026-07-27
+updated: 2026-08-10
 arxiv: "2607.04426"
 code: https://github.com/ACE-BRAIN-Team/ACE-Brain-0.5
 related:
@@ -14,6 +14,7 @@ related:
   - ../tasks/vision-language-navigation.md
   - ../tasks/manipulation.md
   - ./paper-kairos-native-world-model-stack.md
+  - ./paper-ace-data-0.md
   - ./paper-abot-m05-mobile-manipulation-wam.md
   - ./paper-progress-reward-modeling-survey.md
 sources:
@@ -204,6 +205,7 @@ sequenceDiagram
 - [Vision-Language Navigation](../tasks/vision-language-navigation.md) — VLN-CE / R2R·RxR 背景
 - [Manipulation](../tasks/manipulation.md) — LIBERO / SimplerEnv 操作语境
 - [Kairos](./paper-kairos-native-world-model-stack.md) — 同 Ace Robotics 品牌的世界–动作模型产品线（勿与本页混淆）
+- [ACE-Data-0](./paper-ace-data-0.md) — 同品牌人类家居 Ambient Capture 数据集（数据引擎线；勿与本页具身脑混淆）
 
 ## 推荐继续阅读
 

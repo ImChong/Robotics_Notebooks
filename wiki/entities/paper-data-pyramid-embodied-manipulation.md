@@ -24,7 +24,7 @@ tags:
   - nju
   - sjtu
 status: complete
-updated: 2026-08-07
+updated: 2026-08-10
 arxiv: "2607.24744"
 code: https://github.com/worldbench/awesome-embodied-data-pyramid
 related:
@@ -43,6 +43,7 @@ related:
   - ./paper-hifi-umi.md
   - ./paper-trex-tactile-reactive-dexterous-manipulation.md
   - ./rekadaily-10k-dataset.md
+  - ./paper-ace-data-0.md
 sources:
   - ../../sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md
   - ../../sources/sites/embodied-data-pyramid.md
@@ -221,6 +222,7 @@ flowchart TB
 - [EgoScale](../methods/egoscale.md) — Ego 层数据规模化的受控证据
 - [JoyAI-RA 0.5](./paper-joyai-ra-05.md) — 人视频作主缩放轴的 VLWA 系统实证（53K+ h；未见饱和）
 - [RekaDaily-10k](./rekadaily-10k-dataset.md) — 公开 Apache 2.0 家务 ego 视频（第 ③ 层补充）
+- [ACE-Data-0](./paper-ace-data-0.md) — 真实家居双尺度同步度量 HOI/HSI（第 ③ 层高保真、中规模锚点；含触觉）
 - [Xiaomi-Robotics-1](xiaomi-robotics-1.md) — 10 万小时 UMI 预训练的配方样本
 - [HiFi-UMI / HiFi-UMI-2K](./paper-hifi-umi.md) — UMI 层 2000 h 公开集；zero-robot 后训练挑战「真机锚」默认配方
 - [Sim2Real](../concepts/sim2real.md) — 仿真层的核心局限轴

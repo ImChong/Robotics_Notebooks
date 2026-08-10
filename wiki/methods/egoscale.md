@@ -3,7 +3,7 @@
 type: method
 tags: [vla, egocentric-video, dexterous-manipulation, flow-matching, human-robot-transfer, imitation-learning, nvidia-gear, scaling-laws, nvidia]
 status: complete
-updated: 2026-08-07
+updated: 2026-08-10
 date: 2026-05-17
 summary: "EgoScale 用超两万小时、带腕与重定向高 DoF 手部标签的第一人称人视频预训练流式 VLA，实证人数据规模与验证损失近 log-linear 缩放且与真机灵巧表现强相关，再以小规模视点对齐的人–机 mid-training 把表示锚到机器人，从而在极少机端演示下获得高灵巧长程操作与 one-shot 迹象。"
 related:
@@ -18,6 +18,7 @@ related:
   - ../entities/paper-egosteer.md
   - ../entities/egoworld-100w.md
   - ../entities/rekadaily-10k-dataset.md
+  - ../entities/paper-ace-data-0.md
   - ../entities/paper-egoworld.md
   - ../tasks/manipulation.md
   - ../entities/nvidia-gear-lab.md
@@ -129,6 +130,7 @@ flowchart LR
 - [EgoSteer](../entities/paper-egosteer.md)
 - [EgoWorld-100W](../entities/egoworld-100w.md) — 商业百万级自中心操作语料（申请制；与本方法学术缩放叙事对照）
 - [RekaDaily-10k](../entities/rekadaily-10k-dataset.md) — 公开 Apache 2.0 家务 ego 视频（无原生腕手标签；规模对照）
+- [ACE-Data-0](../entities/paper-ace-data-0.md) — 度量同步家居 HOI + 触觉（高保真、中规模；与本方法「万小时缩放」互补）
 - [EgoWorld（exo→ego）](../entities/paper-egoworld.md) — 同名视图翻译方法（消歧）
 - [Macrodata Egocentric Hand-Action](./macrodata-egocentric-hand-action.md) — RGB-only 开源手轨迹配方与 HOT3D Action MPJPE
 - [HumanNet](../entities/humannet.md)

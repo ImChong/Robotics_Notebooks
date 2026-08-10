@@ -1,13 +1,85 @@
 {
   "generated_at": "2026-08-10",
-  "node_count": 2148,
-  "edge_count": 19945,
+  "node_count": 2149,
+  "edge_count": 19966,
   "coverage": {
-    "covered": 2124,
-    "total": 2124,
+    "covered": 2125,
+    "total": 2125,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-ace-data-0.md",
+      "detail_id": "entity-paper-ace-data-0",
+      "label": "ACE-Data-0：以人为中心的 Ambient Capture 具身数据引擎",
+      "type": "entity",
+      "recency": "2026-08-10",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-data-pyramid-embodied-manipulation.md",
+      "detail_id": "entity-paper-data-pyramid-embodied-manipulation",
+      "label": "Data Pyramid for Embodied Manipulation（具身数据金字塔综述）",
+      "type": "entity",
+      "recency": "2026-08-10",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-ego4d.md",
+      "detail_id": "entity-paper-ego4d",
+      "label": "Ego4D（全球第一人称日常视频 · 数据集与基准套件）",
+      "type": "entity",
+      "recency": "2026-08-10",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/rekadaily-10k-dataset.md",
+      "detail_id": "entity-rekadaily-10k-dataset",
+      "label": "RekaDaily-10k（家务第一人称视频数据集）",
+      "type": "entity",
+      "recency": "2026-08-10",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/egoscale.md",
+      "detail_id": "wiki-methods-egoscale",
+      "label": "EgoScale",
+      "type": "method",
+      "recency": "2026-08-10",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-ace-brain-0-5.md",
+      "detail_id": "entity-paper-ace-brain-0-5",
+      "label": "ACE-Brain-0.5：统一具身基础模型（Physical Agentic AI）",
+      "type": "entity",
+      "recency": "2026-08-10",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "roadmap/depth-vla.md",
+      "detail_id": "roadmap-depth-vla",
+      "label": "路线（纵深）：如果目标是 VLA（视觉-语言-动作模型）",
+      "type": "roadmap_page",
+      "recency": "2026-08-10",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-splc.md",
       "detail_id": "entity-paper-splc",
@@ -135,109 +207,41 @@
       "recency": "2026-08-10",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-bfm.md",
-      "detail_id": "roadmap-depth-bfm",
-      "label": "路线（纵深）：如果目标是 BFM（人形行为基础模型）",
-      "type": "roadmap_page",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-classical-control.md",
-      "detail_id": "roadmap-depth-classical-control",
-      "label": "路线（纵深）：如果目标是传统模型控制（LIP/ZMP → MPC → WBC）",
-      "type": "roadmap_page",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "roadmap/depth-contact-manipulation.md",
-      "detail_id": "roadmap-depth-contact-manipulation",
-      "label": "路线（纵深）：如果目标是接触丰富的操作任务",
-      "type": "roadmap_page",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-humanoid-boxing.md",
-      "detail_id": "roadmap-depth-humanoid-boxing",
-      "label": "路线（纵深）：如果目标是人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）",
-      "type": "roadmap_page",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "roadmap/depth-humanoid-hardware-design.md",
-      "detail_id": "roadmap-depth-humanoid-hardware-design",
-      "label": "路线（纵深）：如果目标是人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）",
-      "type": "roadmap_page",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "roadmap/depth-humanoid-soccer.md",
-      "detail_id": "roadmap-depth-humanoid-soccer",
-      "label": "路线（纵深）：如果目标是人形足球（全向行走 → 感知踢球 → 多机战术）",
-      "type": "roadmap_page",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "roadmap/depth-humanoid-swarm-performance.md",
-      "detail_id": "roadmap-depth-humanoid-swarm-performance",
-      "label": "路线（纵深）：如果目标是人形群控展演（群舞同步 → 编队走位 → 群体特技）",
-      "type": "roadmap_page",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-splc.md",
-    "detail_id": "entity-paper-splc",
-    "label": "SPLC（社交偏好学习的人群机器人导航）",
+    "path": "wiki/entities/paper-ace-data-0.md",
+    "detail_id": "entity-paper-ace-data-0",
+    "label": "ACE-Data-0：以人为中心的 Ambient Capture 具身数据引擎",
     "type": "entity",
     "recency": "2026-08-10",
     "source": "log.md",
-    "action": "maintained",
-    "has_repo": true
+    "action": "maintained"
   },
   "top_communities": [
     {
       "label": "动作重定向",
-      "size": 206
-    },
-    {
-      "label": "操作",
-      "size": 156
-    },
-    {
-      "label": "人形强化学习运动控制",
-      "size": 142
+      "size": 205
     },
     {
       "label": "移动操作",
-      "size": 137
+      "size": 158
     },
     {
-      "label": "视觉-语言-动作",
-      "size": 136
+      "label": "操作",
+      "size": 155
     },
     {
       "label": "人形论文深读笔记",
       "size": 135
+    },
+    {
+      "label": "仿真到现实",
+      "size": 126
+    },
+    {
+      "label": "视觉-语言-动作",
+      "size": 125
     }
   ],
   "top_hubs": [
@@ -253,7 +257,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 411,
+      "degree": 412,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -268,7 +272,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 365,
+      "degree": 366,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -298,7 +302,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 233,
+      "degree": 234,
       "has_repo": true
     },
     {
@@ -336,8 +340,7 @@
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
-      "degree": 56,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
+      "degree": 56
     },
     {
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",

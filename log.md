@@ -1,3 +1,12 @@
+## [2026-08-10] ingest | sources/papers/ace_data_0_arxiv_2607_28625.md — 接入 ACE-Data-0（arXiv:2607.28625）Ambient Capture 家居多模态数据集；升格 wiki/entities/paper-ace-data-0.md；交叉 wiki/entities/paper-data-pyramid-embodied-manipulation.md、wiki/entities/paper-ego4d.md、wiki/entities/rekadaily-10k-dataset.md、wiki/methods/egoscale.md、wiki/entities/paper-ace-brain-0-5.md、roadmap/depth-vla.md；归档 sources/sites/ace-data-0-github-io.md、sources/datasets/ace-data-0.md（HF gated，训练代码未见）
+
+- **触发：** 用户指定论文 *ACE-Data-0: Human-Centric Ambient Capture as Embodied Data Engine*；要求自动合并
+- **来源：** [`sources/papers/ace_data_0_arxiv_2607_28625.md`](sources/papers/ace_data_0_arxiv_2607_28625.md)、[`sources/sites/ace-data-0-github-io.md`](sources/sites/ace-data-0-github-io.md)、[`sources/datasets/ace-data-0.md`](sources/datasets/ace-data-0.md)
+- **新建实体：** [`wiki/entities/paper-ace-data-0.md`](wiki/entities/paper-ace-data-0.md) — 双尺度 ACE 采集 + 150h/17M/75k episodes + 三层 benchmark；源码运行时序图「不适用」（训练/评测代码未见，2026-08-10）
+- **开源核查（步骤 2.5）：** **部分开源** — HF `ACERobotics/ACE-Data-0` gated 研究许可已上线；项目页未列 GitHub
+- **机构：** `ntu` / `ace-robotics`（已注册）
+- **交叉：** [`wiki/entities/paper-data-pyramid-embodied-manipulation.md`](wiki/entities/paper-data-pyramid-embodied-manipulation.md)、[`wiki/entities/paper-ego4d.md`](wiki/entities/paper-ego4d.md)、[`wiki/entities/rekadaily-10k-dataset.md`](wiki/entities/rekadaily-10k-dataset.md)、[`wiki/methods/egoscale.md`](wiki/methods/egoscale.md)、[`wiki/entities/paper-ace-brain-0-5.md`](wiki/entities/paper-ace-brain-0-5.md)、[`roadmap/depth-vla.md`](roadmap/depth-vla.md)
+
 ## [2026-08-10] ingest | sources/papers/splc_arxiv_2607_01925.md — 接入 SPLC（arXiv:2607.01925）社交偏好学习人群导航；升格 wiki/entities/paper-splc.md；交叉 wiki/entities/paper-icrowdnav.md、wiki/entities/paper-notebook-learning-social-navigation-from-positive-and-neg.md、wiki/comparisons/online-vs-offline-rl.md、wiki/overview/navigation-slam-autonomy-stack.md、roadmap/depth-navigation.md；仓库 sources/repos/splc.md（代码 coming soon）
 
 - **触发：** 用户指定论文 *SPLC: Social Preference Learning for Crowd Robot Navigation*（Zixuan Chen、Hao Fu、Haiwen Hu、Shiquan Zheng）；要求自动合并
