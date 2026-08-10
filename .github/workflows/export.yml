@@ -10,9 +10,10 @@ on:
       - 'scripts/**'
   workflow_dispatch:
 
+# 串行执行，避免与并发 main 推送互相 cancel / 抢写导致 git push 被拒
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  group: auto-export-main
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -49,6 +50,7 @@ jobs:
 
       - name: Commit updated exports
         run: |
+          set -euo pipefail
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           # 大体积站点 JSON 与 sitemap 已改为 pages.yml 部署时生成（见 .gitignore），
@@ -56,7 +58,19 @@ jobs:
           git add exports/ docs/exports/ catalog.md README.md docs/index.html
           if git diff --cached --quiet; then
             echo "No changes to commit"
-          else
-            git commit -m "chore: auto-export + badge [skip ci]"
-            git push
+            exit 0
           fi
+          git commit -m "chore: auto-export + badge [skip ci]"
+          # 与其他 PR 合并推送竞态时 rebase 重试，避免 ! [rejected] (fetch first)
+          for attempt in 1 2 3 4 5; do
+            if git push; then
+              echo "Pushed on attempt ${attempt}"
+              exit 0
+            fi
+            echo "Push rejected (attempt ${attempt}); rebase onto origin/main and retry"
+            git fetch origin main
+            git rebase origin/main
+            sleep $((attempt * 2))
+          done
+          echo "Failed to push after retries" >&2
+          exit 1
