@@ -19,7 +19,7 @@ tags:
   - hkust
   - zgca
 status: complete
-updated: 2026-08-03
+updated: 2026-08-10
 arxiv: "2607.08448"
 code: https://github.com/RLinf/RPent
 related:
@@ -37,12 +37,12 @@ sources:
   - ../../sources/papers/harness_vla_arxiv_2607_08448.md
   - ../../sources/sites/harnessvla-github-io.md
   - ../../sources/repos/rpent.md
-summary: "Harness VLA（arXiv:2607.08448，清华等）：冻结 VLA 作可重试接触原语 vla_act，与固定解析原语由记忆增强 agentic planner 编排；参考种子蒸馏 Task/Global Memory 后对扰动场景重绑定。LIBERO-Pro 82.4%（+38.6 pp）、RoboCasa365 55.4%（+25.4 pp）、RoboTwin C2R 58.4%；代码 RLinf/RPent。"
+summary: "Harness VLA（arXiv:2607.08448v3，清华等）：冻结 VLA 作可重试接触原语 vla_act，与固定解析原语由记忆增强 agentic planner 编排；参考种子蒸馏 Task/Global Memory 后对扰动场景重绑定。LIBERO-Pro 82.4%（+38.6 pp）、RoboCasa365 55.4%（+25.4 pp）、RoboTwin C2R 58.4%；代码 RLinf/RPent。"
 ---
 
-# Harness VLA（Memory-Guided Agentic Manipulation · arXiv:2607.08448）
+# Harness VLA（Memory-Guided Agentic Manipulation · arXiv:2607.08448v3）
 
-**Harness VLA**（*Steering Frozen VLAs into Reliable Manipulation Primitives via Memory-Guided Agents*，[arXiv:2607.08448](https://arxiv.org/abs/2607.08448)，[项目页](https://harnessvla.github.io/)，[代码 RPent](https://github.com/RLinf/RPent)；清华 / 跨步智能 / Purdue / CASIA / 无问芯穹 / HKUST / 中关村人工智能研究院）提出 **不微调 VLA、不膨胀技能库** 的 agentic harness：把冻结 Vision-Language-Action 暴露为可重试接触原语 `vla_act`，与固定解析原语（定位、过渡、搬运、导航、释放）由 LLM planner 组合；在参考种子上探索并写入 **Task Specific Memory** 与 **Global Memory**，部署时对扰动场景 **语义/空间重绑定**，而非重放参考坐标。
+**Harness VLA**（*Steering Frozen VLAs into Reliable Manipulation Primitives via Memory-Guided Agents*，[arXiv:2607.08448v3](https://arxiv.org/abs/2607.08448)，[PDF v3](https://arxiv.org/pdf/2607.08448v3)，[项目页](https://harnessvla.github.io/)，[代码 RPent](https://github.com/RLinf/RPent)；清华 / 跨步智能 / Purdue / CASIA / 无问芯穹 / HKUST / 中关村人工智能研究院）提出 **不微调 VLA、不膨胀技能库** 的 agentic harness：把冻结 Vision-Language-Action 暴露为可重试接触原语 `vla_act`，与固定解析原语（定位、过渡、搬运、导航、释放）由 LLM planner 组合；在参考种子上探索并写入 **Task Specific Memory** 与 **Global Memory**，部署时对扰动场景 **语义/空间重绑定**，而非重放参考坐标。
 
 ## 一句话定义
 
@@ -64,8 +64,8 @@ summary: "Harness VLA（arXiv:2607.08448，清华等）：冻结 VLA 作可重�
 | 字段 | 内容 |
 |------|------|
 | **机构** | 清华大学（Tsinghua）；跨步智能（Striding AI）；普渡大学（Purdue）；中国科学院自动化研究所（CASIA）；无问芯穹（Infinigence AI）；香港科技大学（HKUST）；中关村人工智能研究院（ZGCA） |
-| **arXiv** | [2607.08448](https://arxiv.org/abs/2607.08448) |
-| **开源** | **已开源** — [`RLinf/RPent`](https://github.com/RLinf/RPent)（`rpent` CLI；文档 [rpent.readthedocs.io](https://rpent.readthedocs.io/en/latest/)） |
+| **arXiv** | [2607.08448v3](https://arxiv.org/abs/2607.08448)（[PDF](https://arxiv.org/pdf/2607.08448v3)） |
+| **开源** | **已开源**（2026-08-10 项目页复核）— [`RLinf/RPent`](https://github.com/RLinf/RPent)（`rpent` CLI；[英文文档](https://rpent.readthedocs.io/en/latest/) / [中文文档](https://rpent.readthedocs.io/zh-cn/latest/)；[HF RLinf](https://huggingface.co/RLinf)） |
 | **冻结后端** | LIBERO：π_RLinf（π₀.₅-SFT）；RoboCasa365：RLDX-1；RoboTwin C2R：LingBot-VLA |
 | **规划器** | Codex / Claude Code（及 RPent `api` 自定义） |
 
@@ -163,21 +163,23 @@ sequenceDiagram
 | **权重** | HF `RLinf/rlinf-pi05-libero-130-fullshot-sft` 等 |
 | **规划器** | Anthropic / OpenAI 兼容端点；`--dashboard` 可开实时监视 |
 | **记忆资产** | 仓内 `resources/libero/memory/` 含任务级 md / 结果 json |
-| **开源边界** | Pi0.5+LIBERO-PRO 为默认完整路径；RoboCasa/真机条目以 README Feature Matrix 为准 |
+| **开源边界** | Pi0.5+LIBERO-PRO 为默认完整路径；RLDX-1 / RoboCasa / 真机 / WAM 条目以 README Feature Matrix 为准（2026-08-10 仍未全部打勾） |
 
 ## 实验要点（索引级）
 
-> 数字以 [arXiv:2607.08448](https://arxiv.org/abs/2607.08448) / [项目页](https://harnessvla.github.io/) 为准。
+> 数字以 [arXiv:2607.08448v3](https://arxiv.org/pdf/2607.08448v3) / [项目页](https://harnessvla.github.io/) 为准。
 
 | 设定 | Harness VLA | 对照要点 |
 |------|-------------|----------|
 | **标准 LIBERO overall** | CC **96.0%** | 冻结 π_RLinf **95.3%**（保持分布内） |
 | **LIBERO-Pro overall** | CC **82.4%** / Codex **72.1%** | 相对 RATS 报道总体 **+38.6 pp**；π_RLinf **50.0%** |
-| **RoboCasa365 加权总体** | Codex **55.4%** | RLDX-1 **30.0%**（**+25.4 pp**） |
+| **RoboCasa365 加权总体** | Codex **55.4%** / CC **48.6%** | RLDX-1 **30.0%**（Codex **+25.4 pp**） |
 | **RoboTwin C2R** | CC **58.4%** | 同冻结 LingBot-VLA **50.4%**；π₀.₅ **47.9%** |
 | **零样本 Goal（无 TSM/GM）** | Goal-T **79.0%** / Goal-S **31.0%** | 位置交换更依赖 bootstrapped 轨迹骨架 |
 
 **机制结论（§3.3）：** (1) 规划器层语义重绑定恢复任务条件行为；(2) 稀疏可重试 `vla_act` 快速超过冻结基线；(3) 解析原语隔离非接触执行，LIBERO 族常在解析步完成成功谓词，厨房/双臂更多在接触相位收官。
+
+**原语用量（附录 Table 18/19）：** LIBERO 上 `VLA_ACT` 仅占调用 **15.8%**（解析 **84.2%**）；RoboCasa365 **35.3%**；RoboTwin C2R **47.4%**——比例随 embodiment 变化，但定性分工稳定：解析管可复现几何与 staging，VLA 管难脚本化的局部分接触。
 
 ## 结论
 
@@ -187,7 +189,8 @@ sequenceDiagram
 2. **固定原语库 + 可重试 `vla_act`** — 规划器只发 JSON，禁止部署期发明新原语；接触密集相位交给短 burst VLA，非接触结构用解析原语隔离。
 3. **记忆要重绑定，不要重放坐标** — Task Specific Memory 存符号化轨迹骨架，Global Memory 存跨任务规则/失败模型；扰动场景从当前 RGB-D 重绑物体与位姿。
 4. **零样本 Goal 不够** — Goal-T 79.0% / Goal-S 31.0%，位置交换更依赖 bootstrapped TSM 骨架；部署前先在参考种子上蒸馏记忆。
-5. **与 ASPIRE / DreamSteer 分清粒度** — ASPIRE 扩张技能库，DreamSteer 做动作 chunk 预演，本文固定词汇、原语级 agentic 闭环；规划器与低层仍开环反馈，缺联合 RL。
+5. **与 ASPIRE / DreamSteer 分清粒度** — ASPIRE 扩张技能库，DreamSteer 做动作 chunk 预演，本文固定词汇、原语级 agentic 闭环；规划器与低层仍开环反馈，缺联合 RL；论文 §5 亦指出未来可与 ASPIRE 式技能发现互补。
+6. **调用占比佐证非端到端** — LIBERO `VLA_ACT` 仅 15.8%、双臂 C2R 升至 47.4%；选型时按任务族估计「解析 vs 接触」预算，而不是默认全程 VLA。
 
 ## 与其他工作对比
 
@@ -204,8 +207,8 @@ sequenceDiagram
 - **误区：** 把 Harness VLA 当成「又训了一个更强 VLA」——增益来自 **harness + 记忆**，权重冻结。
 - **误区：** 与 [ASPIRE](../methods/aspire.md) 混同——ASPIRE **扩张**可验证技能库；本文 **固定**原语词汇。
 - **误区：** 与 [RoboHarness](./paper-robo-harness.md)（arXiv:2607.18060）混名——后者编排 **异构策略族**（VLA+RL+TAMP）并用 Memory Bridge 交接；本文是 **冻结单族 VLA** 的原语 harness。
-- **局限：** 规划器与低层 VLA 仍是 **开环反馈**（论文 §5）；缺联合 RL / 偏好微调；稠密场景下缺细粒度 caption 约束结构推理。
-- **工程风险：** 依赖商业 LLM API 与仿真/权重栈；Pre-Alpha 仓接口可能快速演进。
+- **局限：** 规划器与低层 VLA 仍是 **开环反馈**（论文 §5）；缺环境奖励 / 人类偏好的联合微调（指向 GRPO 等样本高效 RL）；稠密长程场景缺细粒度 caption 约束结构推理。
+- **工程风险：** 依赖商业 LLM API 与仿真/权重栈；Feature Matrix 未勾选项（RoboCasa / 真机等）勿当已发布复现路径；仓接口可能快速演进。
 
 ## 关联页面
 
@@ -222,10 +225,10 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
-- [论文 PDF（arXiv:2607.08448）](https://arxiv.org/pdf/2607.08448)
+- [论文 PDF v3（arXiv:2607.08448v3）](https://arxiv.org/pdf/2607.08448v3)
 - [项目页](https://harnessvla.github.io/)
 - [RPent 仓库与 Quick Start](https://github.com/RLinf/RPent)
-- [RPent 文档](https://rpent.readthedocs.io/en/latest/)
+- [RPent 英文文档](https://rpent.readthedocs.io/en/latest/) / [中文文档](https://rpent.readthedocs.io/zh-cn/latest/)
 
 ## 参考来源
 

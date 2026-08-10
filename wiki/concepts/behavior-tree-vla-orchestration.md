@@ -2,7 +2,7 @@
 type: concept
 tags: [behavior-tree, vla, orchestration, deployment, ros2, physical-ai, robotis]
 status: complete
-updated: 2026-08-03
+updated: 2026-08-10
 summary: "行为树与 VLA 结合：用 BT 编排策略加载/暂停/复位与宏动作，VLA 负责语言条件下的连续操作 chunk；BT 提供可组合、可恢复的任务结构，VLA 提供语义技能执行。"
 related:
   - ../methods/vla.md

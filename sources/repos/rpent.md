@@ -11,13 +11,15 @@
 - **项目页：** <https://harnessvla.github.io/>
 - **HF：** <https://huggingface.co/RLinf>（含 `rlinf-pi05-libero-130-fullshot-sft` 等）
 - **入库日期：** 2026-07-22
+- **复核日期：** 2026-08-10
 - **一句话说明：** Harness VLA 的官方 **agentic 运行时**：LLM planner（Claude Code / Codex / API）经 JSON 原语接口调用冻结 VLA（π₀.₅ 等）与解析控制器；默认栈对接 RLinf runtime + openpi + LIBERO-Pro。
 
-## 开源状态（项目页 / README 核查 2026-07-22）
+## 开源状态（项目页 / README 核查 2026-08-10）
 
-- **已开源：** Python 包 `rpent`（`rpent.cli.main:main`）、planner 模块（`claude_code` / `codex` / `api_loop`）、`rpent/tools` 原语工具包、`resources/libero/memory/` 任务记忆与结果样例、LIBERO-Pro / RoboCasa 安装与运行脚本。
-- **依赖栈：** `.[full]` = rlinf + openpi + libero-pro；需自备 Anthropic/OpenAI API key 与 π₀.₅ checkpoint。
-- **成熟度：** README 标 Pre-Alpha；Feature Matrix 中 Pi0.5 + LIBERO-PRO 已勾选，RoboCasa / 真机条目部分待完善。
+- **已开源：** Python 包 `rpent`（`rpent.cli.main:main`）、planner 模块（`claude_code` / `codex` / `api_loop`）、`rpent/tools` 原语工具包、`resources/libero/memory/` 任务记忆与结果样例、LIBERO-Pro / RoboCasa 安装与运行脚本；英文/中文文档与 HF 组织入口见上。
+- **依赖栈：** `.[full]` = rlinf + openpi + libero-pro（含 SAM 3.0 on RLinf runtime）；需自备 Anthropic/OpenAI API key 与 π₀.₅ checkpoint（`liberopro-download-assets` 拉仿真资产）。
+- **成熟度：** README 仍以 Harness VLA 为首发论文；Feature Matrix 中 Pi0.5 + LIBERO-PRO / Claude Code·Codex·Custom Planner 已勾选，RLDX-1 / RoboCasa / 真机 Franka·SO-101 / WAM·DreamZero 条目未勾选。
+- **上游活跃：** GitHub `pushed_at` 2026-08-10（复核当日仍有推送）。
 
 ## 快速入口（对齐 README）
 

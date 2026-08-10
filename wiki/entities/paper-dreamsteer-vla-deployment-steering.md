@@ -9,7 +9,7 @@ tags:
   - manipulation
   - meta
 status: complete
-updated: 2026-08-07
+updated: 2026-08-10
 arxiv: "2607.02865"
 related:
   - ../overview/wm-action-consequence-category-01-wam-action-prediction.md

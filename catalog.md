@@ -526,7 +526,7 @@
 - [Design of permanent multipole magnets with oriented REC（Halbach 1980）](wiki/entities/paper-halbach-permanent-multipole-magnets.md) — K. Halbach（Lawrence Berkeley Laboratory，[Nucl. Instrum. Methods 1980](https://doi.org/10.1016/0029 `📅unknown` `[entity_page]`
 - [HALOMI（Learning Humanoid Loco-Manipulation with Active Perception from Human Demonstrations）](wiki/entities/paper-halomi-humanoid-loco-manipulation.md) — HALOMI**（*Humanoid Active-Perception Loco-Manipulation Interface*，arXiv:2606.18772，[项目页](https://h `📅unknown` `[entity_page]`
 - [HapMorph：多维气动触觉属性渲染框架](wiki/entities/paper-hapmorph-pneumatic-haptic-render.md) — HapMorph**（Chen et al., Scuola Superiore Sant'Anna；[arXiv:2509.05433](https://arxiv.org/abs/2509.0 `📅unknown` `[entity_page]`
-- [Harness VLA（Memory-Guided Agentic Manipulation · arXiv:2607.08448）](wiki/entities/paper-harness-vla.md) — Harness VLA**（*Steering Frozen VLAs into Reliable Manipulation Primitives via Memory-Guided Agents `📅unknown` `[entity_page]`
+- [Harness VLA（Memory-Guided Agentic Manipulation · arXiv:2607.08448v3）](wiki/entities/paper-harness-vla.md) — Harness VLA**（*Steering Frozen VLAs into Reliable Manipulation Primitives via Memory-Guided Agents `📅unknown` `[entity_page]`
 - [HarnessBank：可信 Agent-Harness 自进化](wiki/entities/paper-harnessbank.md) — HarnessBank**（arXiv:2607.13683）由 **恒心智能（EverMind）/ 盛大集团（Shanda `📅unknown` `[entity_page]`
 - [HEFT](wiki/entities/paper-heft.md) — HEFT**（*Heavy-Payload Full-size Humanoid Teleoperation with Privileged Motion Guidance and Windowe `📅unknown` `[entity_page]`
 - [Heracles：跟踪精度与生成式恢复的扩散中间件](wiki/entities/paper-heracles-humanoid-diffusion.md) — Heracles**（*Bridging Precise Tracking and Generative Synthesis for General Humanoid Control*，arXiv `📅unknown` `[entity_page]`
