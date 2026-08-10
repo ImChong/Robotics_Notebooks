@@ -1,13 +1,72 @@
 {
   "generated_at": "2026-08-10",
-  "node_count": 2147,
-  "edge_count": 19929,
+  "node_count": 2148,
+  "edge_count": 19945,
   "coverage": {
-    "covered": 2123,
-    "total": 2123,
+    "covered": 2124,
+    "total": 2124,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-splc.md",
+      "detail_id": "entity-paper-splc",
+      "label": "SPLC（社交偏好学习的人群机器人导航）",
+      "type": "entity",
+      "recency": "2026-08-10",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-icrowdnav.md",
+      "detail_id": "entity-paper-icrowdnav",
+      "label": "iCrowdNav（意图感知场景表征的视觉人群导航）",
+      "type": "entity",
+      "recency": "2026-08-10",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-learning-social-navigation-from-positive-and-neg.md",
+      "detail_id": "entity-paper-notebook-learning-social-navigation-from-positive-and-neg",
+      "label": "PioneeR：从正负示范与规则学习社交导航",
+      "type": "entity",
+      "recency": "2026-08-10",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/comparisons/online-vs-offline-rl.md",
+      "detail_id": "wiki-comparisons-online-vs-offline-rl",
+      "label": "Online RL vs Offline RL",
+      "type": "comparison",
+      "recency": "2026-08-10",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/overview/navigation-slam-autonomy-stack.md",
+      "detail_id": "wiki-overview-navigation-slam-autonomy-stack",
+      "label": "导航·SLAM·自动驾驶开源栈总览",
+      "type": "overview",
+      "recency": "2026-08-10",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "roadmap/depth-navigation.md",
+      "detail_id": "roadmap-depth-navigation",
+      "label": "路线（纵深）：如果目标是导航（SLAM → Nav2 → VLN → 导航 VLA）",
+      "type": "roadmap_page",
+      "recency": "2026-08-10",
+      "source": "log.md",
+      "action": "maintained"
+    },
     {
       "path": "wiki/entities/paper-omega-0.md",
       "detail_id": "entity-paper-omega-0",
@@ -143,73 +202,17 @@
       "recency": "2026-08-09",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-imitation-learning.md",
-      "detail_id": "roadmap-depth-imitation-learning",
-      "label": "路线（纵深）：如果目标是模仿学习与技能迁移",
-      "type": "roadmap_page",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-loco-manipulation.md",
-      "detail_id": "roadmap-depth-loco-manipulation",
-      "label": "路线（纵深）：如果目标是 Loco-Manipulation（移动操作）",
-      "type": "roadmap_page",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-motion-generation.md",
-      "detail_id": "roadmap-depth-motion-generation",
-      "label": "路线（纵深）：如果目标是动作生成（文本/多模态 → 人形动作）",
-      "type": "roadmap_page",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-motion-retargeting.md",
-      "detail_id": "roadmap-depth-motion-retargeting",
-      "label": "路线（纵深）：如果目标是动作重定向（人体动作 → 机器人参考轨迹）",
-      "type": "roadmap_page",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "动作重定向（Motion Retargeting） 社区"
-    },
-    {
-      "path": "roadmap/depth-navigation.md",
-      "detail_id": "roadmap-depth-navigation",
-      "label": "路线（纵深）：如果目标是导航（SLAM → Nav2 → VLN → 导航 VLA）",
-      "type": "roadmap_page",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "roadmap/depth-perceptive-locomotion.md",
-      "detail_id": "roadmap-depth-perceptive-locomotion",
-      "label": "路线（纵深）：如果目标是感知越障（Perceptive Locomotion）",
-      "type": "roadmap_page",
-      "recency": "2026-08-09",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-omega-0.md",
-    "detail_id": "entity-paper-omega-0",
-    "label": "ω-0：潜空间预测式人形并发 Loco-Manipulation WAM",
+    "path": "wiki/entities/paper-splc.md",
+    "detail_id": "entity-paper-splc",
+    "label": "SPLC（社交偏好学习的人群机器人导航）",
     "type": "entity",
     "recency": "2026-08-10",
     "source": "log.md",
-    "action": "maintained"
+    "action": "maintained",
+    "has_repo": true
   },
   "top_communities": [
     {
@@ -242,7 +245,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 431,
+      "degree": 432,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
@@ -287,7 +290,7 @@
       "detail_id": "wiki-methods-reinforcement-learning",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
-      "degree": 297,
+      "degree": 298,
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     },
