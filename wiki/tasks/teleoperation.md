@@ -3,8 +3,9 @@ type: task
 tags: [teleoperation, manipulation, loco-manipulation, data-collection, humanoid]
 status: complete
 summary: "Teleoperation 让人类通过远程接口直接操作机器人，是数据采集和复杂任务执行的重要桥梁。"
-updated: 2026-08-09
+updated: 2026-08-10
 sources:
+  - ../../sources/papers/omega0_arxiv_2608_06375.md
   - ../../sources/papers/immersive_social_vr_llm_humanoids_arxiv_2607_07430.md
   - ../../sources/papers/teledexter_arxiv_2607_11481.md
   - ../../sources/sites/teledexter-project.md
@@ -119,6 +120,7 @@ sources:
 | PILOT（上海交大 2026） | Unitree G1 | VR 头显 + 手柄 | 长程 loco-manip | 感知 **MoE 全身 LLC** 作底层；楼梯/高台等非结构化场景遥操作；见 [论文实体](../entities/paper-pilot-perceptive-loco-manipulation.md) |
 | MotionWAM（Mondo / HKUST 2026） | Unitree G1 | **PICO VR 三点追踪** + SMPL→G1 重定向 | 九项全身 loco-manip | Stage 3 **200 episodes/任务** 全身遥操作演示，供 **WAM** 微调；见 [论文实体](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) |
 | Being-M0.7（BeingBeyond 2026） | Unitree G1 | **PICO VR** 头显 + 手柄 + 踝 tracker；XRoboToolkit→SMPL→**SONIC** | 四项全身 loco-manip 后训练 | **>1 万 h** 人数据预训练 **latent video-motion 先验** 后接地；见 [论文实体](../entities/paper-being-m07-humanoid-latent-wam.md) |
+| ω-0（NTU / PKU / BAAI / HKUST-GZ 2026） | Unitree G1 + Inspire | **Pico VR** 头显 + 足 tracker + 手持扳机；ZED Mini ego + 房间 ZED depth；**SONIC** 遥操作策略 | ω-HOME **40.3 h / 24 任务** | 潜空间 foresight Joint WAM；评测 11 任务 Omni **SR 81.8%**；代码/数据 WIP；见 [论文实体](../entities/paper-omega-0.md) |
 | CWI（LimX / HKU 等 2026） | LimX Oli | **Meta Quest VR** + 手柄 | 全身 loco-manip | **双手 9D keypoint + 速度/身高** 蒸馏接口，无需全身 MoCap；见 [论文实体](../entities/paper-cwi-composite-humanoid-whole-body-imitation.md) |
 | HIW-500（BitRobot / Unitree / HF 2026） | Unitree G1 | 全身遥操作 | **500+ h / 23K+ 集** | 东南亚 **12** 个真实家庭、**10+** 家务任务；开源最大规模人形遥操作集之一；见 [数据集实体](../entities/hiw-500-dataset.md) |
 | TeleGate（USTC / AnyWit 2026） | Unitree G1 | **惯性动捕** 全身关节跟踪 | **2.5 h** 自采六类 | **门控选冻结专家** + VAE 历史→未来先验；避免蒸馏统一策略；跑跳/跌倒恢复；见 [论文实体](../entities/paper-telegate.md) |
@@ -247,6 +249,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - [TeleGate（论文实体）](../entities/paper-telegate.md) — 惯性动捕 + 门控冻结专家 + VAE 预判；2.5 h 高动态全身遥操作（RSS 2026，arXiv:2602.09628）
 - [HEFT（论文实体）](../entities/paper-heft.md) — 嘈杂 raw VR + WPC 双手负载；全尺寸 L7 **24 kg** 重载遥操作（arXiv:2607.02332）
 - [Teleopit（论文实体）](../entities/paper-teleopit.md) — PICO VR 全身+连续跨手+主动视觉；History/rewind；96 演示 ACT/GR00T（arXiv:2608.01834）
+- [ω-0（论文实体）](../entities/paper-omega-0.md) — Pico VR + SONIC 采集 ω-HOME；潜空间 foresight 家务并发 loco-manip（arXiv:2608.06375）
 - [HumanoidArena（论文实体）](../entities/paper-humanoidarena.md) — PICO egocentric 采集管线与 TWIST2/SONIC 双 GMT 分层 benchmark（arXiv:2606.17833）
 - [Humanoid Surgeon（论文实体）](../entities/paper-humanoid-surgeon-in-vivo-laparoscopy.md) — 通用人形腹腔镜遥操作 in vivo 猪模型验证（Nature 2026）
 - [ssik（解析逆运动学）](../entities/ssik.md) — 6R/7R 臂部笛卡尔跟踪：`q_seed` 最近分支与 `seed_tolerance` 跳变检测

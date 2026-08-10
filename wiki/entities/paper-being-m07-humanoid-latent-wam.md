@@ -11,7 +11,7 @@ tags:
   - unitree-g1
   - beingbeyond
 status: complete
-updated: 2026-07-26
+updated: 2026-08-10
 venue: "BeingBeyond Technical Report 2026"
 related:
   - ../overview/wam-motion-control-five-paths.md
@@ -25,6 +25,7 @@ related:
   - ../methods/vla.md
   - ../concepts/motion-retargeting-pipeline.md
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
+  - ./paper-omega-0.md
   - ./unitree-g1.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_wam_motion_control_five_paths.md
@@ -117,7 +118,7 @@ flowchart TB
 2. **万小时人中心数据破瓶颈** — 原始 >10,226 h 混合模态（配对 / 仅视频 / 仅动作）扩展监督；DINO latent 避免像素重建。
 3. **head-root motion 统一人–机接口** — 头 / 双手 / 双脚既可来自人动作，也可经 FK 来自机器人轨迹；推理另有 motion 级反馈路径。
 4. **真机相对反应式基线领先** — Mirror+Fish 共 7/15，对照 GR00T-N1.6 2/15、Ψ0 3/15。
-5. **与 MotionWAM 对照选型** — 本文是「人先验 + 后接地」Cascaded；MotionWAM 是 Joint 视频–动作端到端；后训练依赖 VR 全身遥操作，任务规模仍有限。
+5. **与 MotionWAM / ω-0 对照选型** — 本文是「人先验 + 后接地」Cascaded；MotionWAM 是 Joint 视频–动作端到端；[ω-0](./paper-omega-0.md) 是 Joint **潜空间 foresight** + SONIC latent（家务 11 任务），同属「不滚像素」阵营但结构不同。
 
 ## 常见误区或局限
 
@@ -131,6 +132,7 @@ flowchart TB
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 评测语境与全身协调挑战
 - [Being-H0.7](../methods/being-h07.md) — 同机构潜空间 WAM 操作线
 - [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) — Joint 实时人形 WAM 对照
+- [ω-0](./paper-omega-0.md) — Joint 潜空间 foresight + SONIC 家务并发 loco-manip 对照
 - [Teleoperation](../tasks/teleoperation.md) — VR 全身数据采集栈
 
 ## 推荐继续阅读
@@ -150,6 +152,7 @@ flowchart TB
 - [Loco-Manipulation（移动操作）](../tasks/loco-manipulation.md)
 - [Being-H0.7（潜空间世界–动作模型）](../methods/being-h07.md)
 - [MotionWAM（实时人形 WAM）](./paper-motionwam-humanoid-loco-manipulation-wam.md)
+- [ω-0（潜空间 foresight · 并发家务 loco-manip）](./paper-omega-0.md)
 - [SONIC Motion Tracking](../methods/sonic-motion-tracking.md)
 - [Teleoperation（遥操作）](../tasks/teleoperation.md)
 - [Unitree G1](./unitree-g1.md)
