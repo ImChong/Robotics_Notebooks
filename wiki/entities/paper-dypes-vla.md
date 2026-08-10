@@ -14,7 +14,7 @@ tags:
   - unitree-g1
   - franka
 status: complete
-updated: 2026-08-08
+updated: 2026-08-09
 arxiv: "2608.06374"
 related:
   - ../methods/vla.md
@@ -54,7 +54,7 @@ summary: "DyPES-VLA（arXiv:2608.06374，HKUST-GZ / COCO Matrix）：未来预�
 - **跨本体两难被显式拆开：** 共享什么（动力学规律）vs 保留什么（运动学/控制语义）。
 - **不用手工动作对齐：** 相对「映到统一 EE/latent 再训」路线，扩展新本体时主要加专家而非重做全库变换。
 - **与 WAM 分工清晰：** 未来预测只塑造共享 query，**不**在测试时生成视频再反演动作；动作交给 MoE head。
-- **榜 + 真机都有：** 仿真三榜 SOTA 级数字；真机 Franka FR3 / AgileX 双臂 / G1 单 checkpoint **75.6%**。
+- **榜 + 真机都有：** 仿真三榜达到论文（2026-08）所列最强对照的同级数字；真机 Franka FR3 / AgileX 双臂 / G1 单 checkpoint **75.6%**。
 
 ## 核心信息
 
