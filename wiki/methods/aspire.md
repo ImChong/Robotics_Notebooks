@@ -2,7 +2,7 @@
 type: method
 tags: [coding-agents, skill-library, continual-learning, code-as-policy, nvidia-gear, manipulation, sim2real, evolutionary-search, nvidia]
 status: complete
-updated: 2026-07-22
+updated: 2026-08-10
 date: 2026-06-30
 summary: "ASPIRE 是 NVIDIA GEAR 等的持续学习 code-as-policy 系统：闭环执行引擎暴露逐原语多模态 trace 供 coding agent 诊断修补，进化搜索探索多样控制程序，并把验证修复蒸馏进可扩展技能库——让后续任务以 in-context 技能加速适应，并在 LIBERO-Pro / Robosuite / BEHAVIOR-1K 上大幅超越 CaP-Agent0 与 VLA 基线，初步证明仿真技能可降低真机跨具身编程 token 成本。"
 related:

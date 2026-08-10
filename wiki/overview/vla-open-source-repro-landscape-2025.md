@@ -2,7 +2,7 @@
 type: overview
 tags: [vla, open-source, reproduction, survey, github, embodied-ai]
 status: complete
-updated: 2026-08-03
+updated: 2026-08-10
 related:
   - ../methods/vla.md
   - ../methods/star-vla.md
@@ -99,7 +99,7 @@ flowchart TB
 | **OpenPI** | Physical Intelligence 的 π0 / π0-FAST / π0.5；VLM 语义 + flow matching 动作；多真机平台微调 | [openpi](https://github.com/Physical-Intelligence/openpi) | [π0 Policy](../methods/π0-policy.md)、[π0.7](../methods/pi07-policy.md)、[VLA](../methods/vla.md) |
 | **VLA-Adapter** | ~0.5B 轻量 VLA；Bridge Attention 注入 VL；强调低机器人预训练数据 | [VLA-Adapter](https://github.com/OpenHelix-Team/VLA-Adapter) | [VLA](../methods/vla.md)、[选型 Query](../queries/manipulation-vla-architecture-selection.md) |
 | **RLinf** | 大规模 RL **系统**（流水线、通信、调度）；内置 **STEAM/RECAP** 离线 advantage + CFG 管线；对接 OpenPI | [RLinf](https://github.com/RLinf/RLinf) | [STEAM](../entities/paper-steam-advantage-modeling.md)、[VLA](../methods/vla.md)、[强化学习](../methods/reinforcement-learning.md) |
-| **RPent** | RLinf 生态 **agentic 运行时**：LLM planner + 固定原语 + 冻结 VLA（`vla_act`）；Harness VLA 官方实现 | [RPent](https://github.com/RLinf/RPent) | [Harness VLA](../entities/paper-harness-vla.md)、[VLA](../methods/vla.md) |
+| **RPent** | RLinf 生态 **agentic 运行时**：LLM planner + 固定原语 + 冻结 VLA（`vla_act`）；Harness VLA（arXiv:2607.08448v3）官方实现 | [RPent](https://github.com/RLinf/RPent) | [Harness VLA](../entities/paper-harness-vla.md)、[VLA](../methods/vla.md) |
 | **RoboHarness** | 异构策略（VLA+RL+TAMP）能力边界路由 + Memory Bridge；**仓暂为项目页镜像**，无可运行 harness | [RoboHarness](https://github.com/markli1hoshipu/RoboHarness) | [RoboHarness 论文](../entities/paper-robo-harness.md)、[VLA](../methods/vla.md) |
 | **SimpleVLA-RL** | veRL 扩展；面向 VLA 的轨迹采样与并行；OpenVLA-OFT RL 实验 | [SimpleVLA-RL](https://github.com/PRIME-RL/SimpleVLA-RL) | [VLA](../methods/vla.md) |
 | **UniVLA** | 从视频学 **潜动作**；跨平台轻量解码；减弱显式动作标签依赖 | [UniVLA](https://github.com/OpenDriveLab/UniVLA) | [DeFI](../methods/defi-decoupled-dynamics-vla.md)（潜动作路线对照）；**≠** 导航向 [Uni-NaVid](../overview/vln-open-source-repro-paradigms.md) |

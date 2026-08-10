@@ -1,3 +1,11 @@
+## [2026-08-10] ingest | sources/papers/harness_vla_arxiv_2607_08448.md — 复核 Harness VLA（arXiv:2607.08448v3）+ 项目页 harnessvla.github.io；刷新 wiki/entities/paper-harness-vla.md；交叉 sources/sites/harnessvla-github-io.md、sources/repos/rpent.md、wiki/methods/vla.md、wiki/overview/vla-open-source-repro-landscape-2025.md；代码仍开源 RLinf/RPent
+
+- **触发：** 用户指定论文 <https://arxiv.org/pdf/2607.08448v3> 与项目页 <https://harnessvla.github.io/>；要求自动合并。本库 2026-07-22 已首轮入库，本轮按 v3 PDF / 项目页 / RPent README 复核深化。
+- **来源刷新：** [`sources/papers/harness_vla_arxiv_2607_08448.md`](sources/papers/harness_vla_arxiv_2607_08448.md)、[`sources/sites/harnessvla-github-io.md`](sources/sites/harnessvla-github-io.md)、[`sources/repos/rpent.md`](sources/repos/rpent.md)
+- **实体刷新：** [`wiki/entities/paper-harness-vla.md`](wiki/entities/paper-harness-vla.md) — 钉死 PDF v3；补附录原语用量（LIBERO `VLA_ACT` 15.8% / RoboCasa 35.3% / C2R 47.4%）；开源边界与 §5 局限对齐 2026-08-10 Feature Matrix
+- **交叉：** [`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/overview/vla-open-source-repro-landscape-2025.md`](wiki/overview/vla-open-source-repro-landscape-2025.md)
+- **开源核查（步骤 2.5）：** **已开源** — 项目页 Code → `RLinf/RPent`；Pi0.5+LIBERO-PRO 完整路径可用；RoboCasa/真机等矩阵项仍未打勾
+
 ## [2026-08-10] ingest | sources/repos/awesome-world-models.md + awesome-egocentric-vision.md + awesome-touch.md + awesome-real2sim2real.md — 接入 sun254667 四份 Awesome 策展清单，并将清单内论文节点化为独立详情页
 
 - **触发：** 用户指定四仓并要求列表内论文均有独立详情节点；要求自动合并

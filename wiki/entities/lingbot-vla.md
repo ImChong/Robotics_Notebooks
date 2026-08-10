@@ -2,7 +2,7 @@
 type: entity
 tags: [vla, open-source, flow-matching, manipulation, qwen, depth-distillation, robbyant]
 status: complete
-updated: 2026-07-22
+updated: 2026-08-10
 arxiv: "2601.18692"
 code: https://github.com/robbyant/lingbot-vla
 related:
