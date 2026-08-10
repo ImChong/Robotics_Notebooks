@@ -25,6 +25,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          # ci_preflight → generate_link_graph 需要完整历史以计算 git 首次加入日
+          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v5

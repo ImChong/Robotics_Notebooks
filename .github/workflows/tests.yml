@@ -20,6 +20,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # generate_link_graph 的新增/维护标签需要完整 git 历史
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
