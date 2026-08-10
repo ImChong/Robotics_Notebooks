@@ -74,6 +74,22 @@ class WikiFirstLogDatesTest(unittest.TestCase):
             out = glg.wiki_first_log_dates(self.nodes)
         self.assertEqual(out.get(rel), "2026-05-28")
 
+    def test_structural_globs_do_not_set_first_log_dates(self) -> None:
+        """历史 structural 的 paper-* 通配不得按当前树展开成「首次出现日」。"""
+        rel = self.existing_paths[0]
+        structural = (
+            "## [2026-05-01] structural | Top-100 论文枢纽补齐「结论」\n"
+            "- 扫描 `wiki/entities/paper-*.md` 与 `wiki/queries/*`\n"
+        )
+        ingest = f"## [2026-05-28] ingest\n- 新建 {rel}\n"
+        self._fake_log_path.write_text(ingest + "\n" + structural, encoding="utf-8")
+        with mock.patch.object(glg, "LOG_MD_PATH", self._fake_log_path):
+            out = glg.wiki_first_log_dates(self.nodes)
+        self.assertEqual(out.get(rel), "2026-05-28")
+        # glob 本身不应给未显式点名的第二页写入首次日
+        other = self.existing_paths[1]
+        self.assertNotIn(other, out)
+
     def test_wiki_node_action(self) -> None:
         first_dates = {"wiki/tasks/locomotion.md": "2026-05-01"}
         self.assertEqual(
@@ -98,8 +114,10 @@ class WikiFirstLogDatesTest(unittest.TestCase):
             "maintained",
         )
 
-    def test_log_first_date_takes_priority_over_git(self) -> None:
+    def test_git_added_date_is_birth_day(self) -> None:
+        """有 git 加入日时以其为新建日：同日新增、跨日维护（即使日志首日不同）。"""
         rel = self.existing_paths[0]
+        # git 早于日志首日：活动落在日志首日仍是维护
         self.assertEqual(
             glg._wiki_node_action(
                 rel,
@@ -107,12 +125,31 @@ class WikiFirstLogDatesTest(unittest.TestCase):
                 {rel: "2026-05-28"},
                 {rel: "2026-04-01"},
             ),
+            "maintained",
+        )
+        self.assertEqual(
+            glg._wiki_node_action(
+                rel,
+                "2026-04-01",
+                {rel: "2026-05-28"},
+                {rel: "2026-04-01"},
+            ),
+            "added",
+        )
+        # 日志假早、git 为真新建日
+        self.assertEqual(
+            glg._wiki_node_action(
+                rel,
+                "2026-05-28",
+                {rel: "2026-05-01"},
+                {rel: "2026-05-28"},
+            ),
             "added",
         )
         self.assertEqual(
             glg._wiki_node_action(
                 rel,
-                "2026-05-28",
+                "2026-05-29",
                 {rel: "2026-05-01"},
                 {rel: "2026-05-28"},
             ),

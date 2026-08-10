@@ -301,6 +301,7 @@ def _append_latest_node(
     first_log_dates: dict[str, str] | None = None,
     git_added_dates: dict[str, str] | None = None,
     community_labels: dict[str, str] | None = None,
+    from_glob: bool = False,
 ) -> None:
     if not _is_latest_node_path(rel) or rel in seen:
         return
@@ -310,6 +311,12 @@ def _append_latest_node(
     base = node_by_id.get(rel)
     if not base:
         return
+    # 仅通配展开需要防幽灵：历史 structural 按「当前树」展开会把日后新建页
+    # 灌进旧活动日。显式路径仍收录（测试假日志 / 特殊归因不受 git 钳制）。
+    if from_glob and git_added_dates is not None:
+        added_on = git_added_dates.get(rel)
+        if added_on is not None and added_on > log_date:
+            return
     seen.add(rel)
     entry: dict[str, Any] = {
         "path": rel,
@@ -396,11 +403,14 @@ def _collect_wiki_paths_from_chunk(
 
 def wiki_first_log_dates(nodes: list[dict[str, Any]]) -> dict[str, str]:
     """Map ``wiki/...md`` / ``roadmap/...md`` → 该路径在 ``log.md`` 中**首次被
-    ingest/structural 引入**的日历日。
+    ingest/structural 显式引入**的日历日。
 
-      仅扫描 ``ingest`` / ``structural`` 日志块（忽略 lint/query/checklist 等对
-      ``wiki/entities/paper-*.md`` 的模式描述，避免 glob 误展开把数百页标成同日维护）。
-    自最旧块向最新扫描；块内 glob 仅在 structural 批量建页时展开。
+      仅扫描 ``ingest`` / ``structural`` 日志块；**从不展开** ``paper-*.md`` /
+      ``depth-*.md`` 等 glob——历史 structural 常按当时语义写通配，若按「当前
+      文件树」展开会把日后新建页误标成更早的首次出现日，进而在更新页把「新增」
+      打成「维护」。批量建页应在日志里写明具体路径；未显式出现的节点回退到
+      ``wiki_git_added_dates``。
+    自最旧块向最新扫描。
     """
     if not LOG_MD_PATH.is_file():
         return {}
@@ -421,33 +431,22 @@ def wiki_first_log_dates(nodes: list[dict[str, Any]]) -> dict[str, str]:
             continue
         header = _log_section_header_line(chunk)
         body = chunk[len(header) :]
-        expand_header_globs = op == "structural"
         for rel in _collect_wiki_paths_from_chunk(
             chunk,
             node_by_id=node_by_id,
-            expand_globs=expand_header_globs,
+            expand_globs=False,
             text=header,
         ):
             if rel not in first_dates:
                 first_dates[rel] = log_date
-        if op == "structural":
-            for rel in _collect_wiki_paths_from_chunk(
-                chunk,
-                node_by_id=node_by_id,
-                expand_globs=True,
-                text=body,
-            ):
-                if rel not in first_dates:
-                    first_dates[rel] = log_date
-        else:
-            for rel in _collect_wiki_paths_from_chunk(
-                chunk,
-                node_by_id=node_by_id,
-                expand_globs=False,
-                text=body,
-            ):
-                if rel not in first_dates:
-                    first_dates[rel] = log_date
+        for rel in _collect_wiki_paths_from_chunk(
+            chunk,
+            node_by_id=node_by_id,
+            expand_globs=False,
+            text=body,
+        ):
+            if rel not in first_dates:
+                first_dates[rel] = log_date
     return first_dates
 
 
@@ -592,12 +591,13 @@ def _wiki_node_action(
 ) -> str | None:
     """Classify a log-day wiki touch as ``added`` or ``maintained``.
 
-    Prefer ``wiki_first_log_dates`` (ingest/structural); fall back to git first-add
-    when the path only appears in query/lint/etc. blocks.
+    新建日与活动日（``log_date``）为同一日历日 → ``added``；跨日 → ``maintained``。
+    **新建日**优先取 git 首次加入日（文件真正落库日）；无 git 信息时回退
+    ``wiki_first_log_dates``（显式 ingest/structural）。这样「当天新建又改」
+    仍标新增，不会被更早的假日志归因打成维护。
     """
-    first_day = first_log_dates.get(rel)
-    if first_day is None and git_added_dates:
-        first_day = git_added_dates.get(rel)
+    git_day = git_added_dates.get(rel) if git_added_dates else None
+    first_day = git_day if git_day is not None else first_log_dates.get(rel)
     if not first_day:
         return None
     return "added" if first_day == log_date else "maintained"
@@ -663,6 +663,7 @@ def latest_wiki_nodes_from_log(
                     first_log_dates=first_log_dates,
                     git_added_dates=git_added_dates,
                     community_labels=community_labels,
+                    from_glob=True,
                 )
         for m in WIKI_PATH_IN_LOG.finditer(chunk):
             rel = _normalize_wiki_rel_from_log_match(m.group(0))
@@ -677,6 +678,7 @@ def latest_wiki_nodes_from_log(
                         first_log_dates=first_log_dates,
                         git_added_dates=git_added_dates,
                         community_labels=community_labels,
+                        from_glob=True,
                     )
                 continue
             _append_latest_node(
@@ -736,6 +738,7 @@ def wiki_activity_from_log(
                     first_log_dates=first_log_dates,
                     git_added_dates=git_added_dates,
                     community_labels=community_labels,
+                    from_glob=True,
                 )
         for m in WIKI_PATH_IN_LOG.finditer(chunk):
             rel = _normalize_wiki_rel_from_log_match(m.group(0))
@@ -750,6 +753,7 @@ def wiki_activity_from_log(
                         first_log_dates=first_log_dates,
                         git_added_dates=git_added_dates,
                         community_labels=community_labels,
+                        from_glob=True,
                     )
                 continue
             _append_latest_node(
