@@ -163,6 +163,13 @@ COMMUNITY_HUB_ALIASES: dict[str, str] = {
     "wiki/overview/paper-notebook-category-12-hardware-design.md": (
         "wiki/overview/humanoid-hardware-101-technology-map.md"
     ),
+    # sun254667 Awesome 技术地图：并入既有主题枢纽，避免策展索引页独占社区席位
+    "wiki/overview/sun-awesome-wm-technology-map.md": "wiki/methods/generative-world-models.md",
+    "wiki/overview/sun-awesome-ego-technology-map.md": (
+        "wiki/overview/ego-9-papers-technology-map.md"
+    ),
+    "wiki/overview/sun-awesome-touch-technology-map.md": "wiki/concepts/tactile-sensing.md",
+    "wiki/overview/sun-awesome-r2s2r-technology-map.md": "wiki/concepts/sim2real.md",
 }
 
 
