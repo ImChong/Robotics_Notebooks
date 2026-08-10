@@ -12,7 +12,7 @@ tags:
   - tsinghua
   - state-estimation
 status: complete
-updated: 2026-08-08
+updated: 2026-08-09
 arxiv: "2608.03429"
 venue: "arXiv 2026"
 related:
@@ -121,7 +121,7 @@ flowchart TB
 | **Waymo 城市片段** | VGGT-Long | Avg ATE **1.996 → 1.813 m** |
 | **Waymo pointmap vs LiDAR** | VGGT-Long | Acc/Comp/Chamfer **1.182/2.860/2.021 → 0.949/2.777/1.863** |
 | **7-Scenes** | VGGT-SLAM | ATE **0.068 → 0.046 m**；几何 Acc/Comp/Chamf 同步改善 |
-| **TUM / Replica** | 多基线 | 与 SOTA 竞争；短室内 **SLAM-Former** 常仍最佳 |
+| **TUM / Replica** | 多基线 | 与论文（2026-08）所列最强基线竞争；短室内 **SLAM-Former** 常仍最佳 |
 | **Fine stage 消融** | w/o fine | Replica ATE **0.061 → 0.052**；定性表面更干净 |
 | **自采长程** | VGGT-Long | **>17 km** 城市驾驶：对照崩溃，本文保持一致大地图（定性） |
 

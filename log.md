@@ -11,6 +11,18 @@
 - **[`roadmap/depth-humanoid-hardware-design.md`](roadmap/depth-humanoid-hardware-design.md)：** Stage 1 构型与机械布局补 [人形膝/腿主承力链为何通常避开谐波减速器](wiki/concepts/humanoid-knee-harmonic-drive-limits.md)（PRS/摆线 RV/QDD 三条替代路线对照）
 - **口径：** 每条路线仅在既有 Stage 结构内追加 bullet / 关键词，未新建 Stage、未改动其余既有内容
 
+## [2026-08-09] lint | wiki/entities/paper-dypes-vla.md + wiki/entities/paper-slamformer-infinity.md + scripts/lint_wiki.py — 全量健康检查：阻塞型 0、信息型 3 → 0
+
+- **触发：** 全量知识库 lint 巡检，要求把信息型预警一并收敛
+- **基线：** `python3 scripts/lint_wiki.py` 阻塞型 **0**、信息型 **3**（陈旧声明巡检 2 条 + 缺页概念巡检 1 条）
+- **复核与改写（陈旧声明 V1）：** 两条命中均为无主体、无时限的裸「SOTA」——
+  - [`wiki/entities/paper-dypes-vla.md`](wiki/entities/paper-dypes-vla.md)「为什么重要」原作「仿真三榜 SOTA 级数字」，改写为「仿真三榜达到论文（2026-08）所列最强对照的同级数字」；
+  - [`wiki/entities/paper-slamformer-infinity.md`](wiki/entities/paper-slamformer-infinity.md)「实验与评测（论文报告摘要）」表 TUM / Replica 行原作「与 SOTA 竞争」，改写为「与论文（2026-08）所列最强基线竞争」。
+  两处均保留原数字与结论，只把绝对化措辞降级为**有主体（论文口径）、有时点（2026-08）**的相对表述；同步 `updated` 2026-08-08 → 2026-08-09 记录本次复核。
+- **复核与登记（缺页概念巡检 V1）：** 候选 `URDF`（被 6 个页面加粗/反引号引用）经核查**已由 [`wiki/concepts/urdf-robot-description.md`](wiki/concepts/urdf-robot-description.md) 完整覆盖**（含一句话定义、英文缩写速查、`n_q` vs `n_v` 等），仅因 slug 与页面 stem 不同名而误报；按既有 `ethercat` / `wbc` / `wam` 先例登记进 [`scripts/lint_wiki.py`](scripts/lint_wiki.py) 的 `MISSING_CONCEPT_COVERED_ELSEWHERE`（附映射注释），**不新建重复概念页**
+- **其余检查：** 阻塞型 22 项与其余信息型 14 项本轮基线即为 0；Sources 覆盖率 **2123/2123 (100%)**；`eval_search_quality` 通过率 **37/37 (100%)**；`check_export_quality` **12/12**；`pytest` 372 passed + 486 subtests
+- **门禁：** `make ci-preflight` 通过（lint 阻塞型 0 + 信息型 0）；派生 `exports/lint-report.md`、`catalog.md`、统计与 `docs/exports/` 随本次提交同步
+
 ## [2026-08-09] ingest | sources/repos/dynibo.md — 接入 Dynibo（Rust 运动学/动力学库）；升格 wiki/entities/dynibo.md；交叉 wiki/entities/pinocchio.md、wiki/formalizations/articulated-body-algorithms.md、wiki/concepts/urdf-robot-description.md、wiki/entities/ssik.md、wiki/queries/pinocchio-quick-start.md
 
 - **触发：** 用户指定 <https://github.com/xiaojie-xue/dynibo>；要求自动合并

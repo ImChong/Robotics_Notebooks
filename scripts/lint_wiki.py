@@ -132,6 +132,8 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
 #   step       → entities/step2urdf.md（CAD 交换格式，已在 concepts/text-to-cad.md 引介）
 #   twist2     → entities/paper-twist2.md（具体系统/论文，归 entities）
 #   ethercat   → concepts/ethercat-protocol.md（实时总线概念，slug 与页面 stem 不同名）
+#   urdf       → concepts/urdf-robot-description.md（统一机器人描述格式，slug 与
+#                页面 stem 不同名；该页已含定义/缩写速查/n_q vs n_v 等完整内容）
 #   mit        → schema/institutions.json 机构（麻省理工），归属机构注册表，不建概念页
 #   vlm        → comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md（VLM/VLN/VLA/
 #                VLX/WM 五类的 canonical 定义与 I/O 边界，唯一 VLM 家族来源
@@ -163,6 +165,7 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "loco-manipulation",
     "step",
     "twist2",
+    "urdf",  # 已由 concepts/urdf-robot-description.md 覆盖（slug 与页面 stem 不同名）
     "vlm",  # 模型家族标签，已由 comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md 定义
 }
 
