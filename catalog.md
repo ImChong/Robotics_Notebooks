@@ -341,6 +341,7 @@
 - [ABot-M0.5（Unified Mobility-and-Manipulation · World Action Model）](wiki/entities/paper-abot-m05-mobile-manipulation-wam.md) — ABot-M0.5**（*ABot-M0.5: Unified Mobility-and-Manipulation World Action Model*，arXiv:2607.00678，AMA `📅unknown` `[entity_page]`
 - [ABot-World-0（单卡桌面无限交互世界 Rollout）](wiki/entities/paper-abot-world-0.md) — ABot-World-0**（*ABot-World-0: Infinite Interactive World Rollout on a Single Desktop GPU*，[arXiv:2 `📅unknown` `[entity_page]`
 - [ACE-Brain-0.5：统一具身基础模型（Physical Agentic AI）](wiki/entities/paper-ace-brain-0-5.md) — ACE-Brain-0.5**（*A Unified Embodied Foundational Model for Physical Agentic AI*，[arXiv:2607.04426 `📅unknown` `[entity_page]`
+- [ACE-Data-0：以人为中心的 Ambient Capture 具身数据引擎](wiki/entities/paper-ace-data-0.md) — ACE-Data-0**（*Human-Centric Ambient Capture as Embodied Data Engine*，[arXiv:2607.28625](https://ar `📅unknown` `[entity_page]`
 - [ActFovea：给 VLA 策略加一层运行时防护](wiki/entities/paper-actfovea.md) — ActFovea**（论文 *ActFovea: Runtime Safeguarding for VLA Policies via Spatiotemporal Visual-Action Co `📅unknown` `[entity_page]`
 - [执行器约束 RL 高速四足奔跑（MOR）](wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md) — Actuator-Constrained Reinforcement Learning for High-Speed Quadrupedal Locomotion**（Shin / Song /  `📅unknown` `[entity_page]`
 - [AHC：多行为蒸馏与强化微调的自适应人形控制](wiki/entities/paper-adaptive-humanoid-control.md) — AHC**（*Towards Adaptive Humanoid Control via Multi-Behavior Distillation and Reinforced Fine-Tunin `📅unknown` `[entity_page]`

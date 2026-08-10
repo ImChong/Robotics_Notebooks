@@ -22,13 +22,14 @@ tags:
 status: complete
 venue: CVPR 2022
 arxiv: "2110.07058"
-updated: 2026-08-08
+updated: 2026-08-10
 code: https://github.com/facebookresearch/Ego4D
 related:
   - ../overview/ego-category-01-data-collection.md
   - ../comparisons/humannet-table1-human-video-corpora.md
   - ./paper-egoverse.md
   - ./rekadaily-10k-dataset.md
+  - ./paper-ace-data-0.md
   - ./egoworld-100w.md
   - ./humannet.md
   - ../methods/egoscale.md
@@ -203,6 +204,7 @@ sequenceDiagram
 | [EgoVerse](./paper-egoverse.md) | 操纵向手/头位姿 + 人–机共训评测；相对 Ego4D 更「Direct」 |
 | [EgoScale](../methods/egoscale.md) | 万小时灵巧操作 ego + VLA 缩放；任务边界不同于通用活动理解 |
 | [RekaDaily-10k](./rekadaily-10k-dataset.md) | 家务 ego、Apache 2.0 ungated；强调开放许可与家用分布 |
+| [ACE-Data-0](./paper-ace-data-0.md) | 真实家居同步度量 HOI/HSI + 触觉；小时数远小于 Ego4D，完备监督更强 |
 | [HumanNet](./humannet.md) | 百万小时人中心互联网语料；Table 1 将 Ego4D 列为 Ego / Indirect |
 | Ego-Exo4D | 同生态后续：同步 ego+exo 多视点技能活动（见官方仓公告） |
 | R3M 等 | 用 Ego4D 人类视频做操作表征预训练的经典下游（见 [视觉表征与策略](../concepts/visual-representation-for-policy.md)） |
@@ -221,6 +223,7 @@ sequenceDiagram
 - [HumanNet Table 1：人类视频语料对照](../comparisons/humannet-table1-human-video-corpora.md)
 - [EgoVerse](./paper-egoverse.md)
 - [RekaDaily-10k](./rekadaily-10k-dataset.md)
+- [ACE-Data-0](./paper-ace-data-0.md) — 度量同步家居 HOI（完备 vs 规模对照）
 - [EgoWorld-100W](./egoworld-100w.md)
 - [HumanNet](./humannet.md)
 - [EgoScale](../methods/egoscale.md)
