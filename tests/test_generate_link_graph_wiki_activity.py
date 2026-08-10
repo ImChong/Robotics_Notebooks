@@ -176,9 +176,7 @@ class WikiActivityFromLogTest(unittest.TestCase):
         rel = self.existing_paths[0]
         future = self.existing_paths[1]
         structural = (
-            "## [2026-05-27] structural | 扫描通配\n"
-            "- 覆盖 `wiki/concepts/*`\n"
-            f"- 显式保留 {rel}\n"
+            f"## [2026-05-27] structural | 扫描通配\n- 覆盖 `wiki/concepts/*`\n- 显式保留 {rel}\n"
         )
         self._fake_log_path.write_text(structural, encoding="utf-8")
         fake_git = {rel: "2026-05-27", future: "2026-06-01"}
