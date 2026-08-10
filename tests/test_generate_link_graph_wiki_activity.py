@@ -158,13 +158,45 @@ class WikiActivityFromLogTest(unittest.TestCase):
                 ("2026-05-27", [rel, other]),
             ]
         )
-        with self._patched_log():
+        # 与假日志对齐的 git 加入日，避免真实仓库 git 日期钳制干扰用例
+        fake_git = {rel: "2026-05-27", other: "2026-05-27"}
+        with (
+            self._patched_log(),
+            mock.patch.object(glg, "wiki_git_added_dates", return_value=fake_git),
+        ):
             out = glg.wiki_activity_from_log(self.nodes)
         by_date = {d["date"]: d for d in out}
         self.assertEqual(by_date["2026-05-27"]["added_count"], 2)
         self.assertEqual(by_date["2026-05-27"]["nodes"][0]["action"], "added")
         self.assertEqual(by_date["2026-05-28"]["maintained_count"], 1)
         self.assertEqual(by_date["2026-05-28"]["nodes"][0]["action"], "maintained")
+
+    def test_glob_expansion_skips_files_not_yet_added(self) -> None:
+        """历史通配不得把 git 加入日晚于日志日的页面写入该日活动；显式路径仍保留。"""
+        rel = self.existing_paths[0]
+        future = self.existing_paths[1]
+        structural = (
+            "## [2026-05-27] structural | 扫描通配\n"
+            "- 覆盖 `wiki/concepts/*`\n"
+            f"- 显式保留 {rel}\n"
+        )
+        self._fake_log_path.write_text(structural, encoding="utf-8")
+        fake_git = {rel: "2026-05-27", future: "2026-06-01"}
+
+        def _expand(pattern: str) -> list[str]:
+            # 模拟通配命中「当时尚不存在」的 future + 已存在的 rel
+            return [rel, future]
+
+        with (
+            self._patched_log(),
+            mock.patch.object(glg, "wiki_git_added_dates", return_value=fake_git),
+            mock.patch.object(glg, "_expand_wiki_glob", side_effect=_expand),
+        ):
+            out = glg.wiki_activity_from_log(self.nodes)
+        self.assertEqual(len(out), 1)
+        paths = [n["path"] for n in out[0]["nodes"]]
+        self.assertIn(rel, paths)
+        self.assertNotIn(future, paths)
 
     def test_nodes_export_all_entries_and_count_matches(self) -> None:
         many = sorted(

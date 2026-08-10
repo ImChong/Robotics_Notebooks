@@ -114,9 +114,10 @@ class WikiFirstLogDatesTest(unittest.TestCase):
             "maintained",
         )
 
-    def test_log_first_date_takes_priority_over_earlier_git(self) -> None:
-        """显式 ingest 日晚于 git 加入日时，以日志引入日为「新增」锚点。"""
+    def test_git_added_date_is_birth_day(self) -> None:
+        """有 git 加入日时以其为新建日：同日新增、跨日维护（即使日志首日不同）。"""
         rel = self.existing_paths[0]
+        # git 早于日志首日：活动落在日志首日仍是维护
         self.assertEqual(
             glg._wiki_node_action(
                 rel,
@@ -124,21 +125,18 @@ class WikiFirstLogDatesTest(unittest.TestCase):
                 {rel: "2026-05-28"},
                 {rel: "2026-04-01"},
             ),
-            "added",
+            "maintained",
         )
         self.assertEqual(
             glg._wiki_node_action(
                 rel,
-                "2026-05-29",
+                "2026-04-01",
                 {rel: "2026-05-28"},
                 {rel: "2026-04-01"},
             ),
-            "maintained",
+            "added",
         )
-
-    def test_git_clamps_false_early_log_first_date(self) -> None:
-        """日志首次日早于 git 加入日（glob 误展开）时，以 git 日为新建日。"""
-        rel = self.existing_paths[0]
+        # 日志假早、git 为真新建日
         self.assertEqual(
             glg._wiki_node_action(
                 rel,
