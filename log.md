@@ -1,3 +1,9 @@
+## [2026-08-10] structural | scripts/generate_link_graph.py + pages/tests/export workflows — 新增/维护完全以 git 首次加入日为准；Pages 等 CI 改为 fetch-depth: 0（浅克隆会把全库标成 tip 日 Added，导致「只有今天有新增」）
+
+- **现象：** 线上更新记录几乎只有 2026-08-10 有「新增」，历史日 added_count 全 0
+- **根因：** `actions/checkout` 默认浅克隆下 `git log --name-status` 把几乎所有 wiki/roadmap 标成 tip 日 `A`
+- **修复：** workflows `fetch-depth: 0`；`wiki_git_added_dates` 检测浅克隆则跳过并回退日志首日；新建日仍优先 git
+
 ## [2026-08-10] structural | scripts/generate_link_graph.py — 修复更新页「新增 / 维护」误判与历史通配幽灵活动日（例：当日新建 wiki/entities/paper-ace-data-0.md 应标「新增」，且不得出现在 7/24·7/28 活动列表）
 
 - **触发：** 线上更新页将当日新建的 [`wiki/entities/paper-ace-data-0.md`](wiki/entities/paper-ace-data-0.md) 标成「维护」

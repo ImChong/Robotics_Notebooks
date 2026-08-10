@@ -20,6 +20,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # 新增/维护徽章依赖 git 首次加入日；默认浅克隆会把几乎所有 wiki 标成 tip 日 Added
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5

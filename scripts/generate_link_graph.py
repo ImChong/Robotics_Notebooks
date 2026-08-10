@@ -494,16 +494,40 @@ def _iter_wiki_md_paths() -> list[str]:
     return sorted(paths)
 
 
-def wiki_git_added_dates(*, force_refresh: bool = False) -> dict[str, str]:
-    """Map ``wiki/...md`` / ``roadmap/...md`` → ISO committer date of first git add
-    (fallback for action tags).
+def _git_is_shallow() -> bool:
+    """True when the repo is a shallow clone (e.g. Actions ``fetch-depth: 1``)."""
+    try:
+        result = subprocess.run(
+            ["git", "-C", str(REPO_ROOT), "rev-parse", "--is-shallow-repository"],
+            capture_output=True,
+            text=True,
+            check=False,
+            timeout=30,
+        )
+    except (subprocess.SubprocessError, OSError):
+        return False
+    return result.returncode == 0 and result.stdout.strip().lower() == "true"
 
-    Single ``git log --name-status`` pass over ``wiki/`` + ``roadmap/``; rename-aware.
-    Used only when ``wiki_first_log_dates`` has no ingest/structural entry for a path
-    (e.g. nodes mentioned in ``query`` / ``lint`` blocks).
+
+def wiki_git_added_dates(*, force_refresh: bool = False) -> dict[str, str]:
+    """Map ``wiki/...md`` / ``roadmap/...md`` → ISO committer date of first git add.
+
+    新增/维护徽章的**新建日**以本表为准（完整 git 历史）。浅克隆下 tip 会把
+    几乎所有文件标成 ``A``（同一天），不可信 → 返回空 dict，调用方回退
+    ``wiki_first_log_dates``。部署侧须 ``fetch-depth: 0``。
     """
     global _WIKI_GIT_ADDED_DATES_CACHE
     if not force_refresh and _WIKI_GIT_ADDED_DATES_CACHE is not None:
+        return _WIKI_GIT_ADDED_DATES_CACHE
+
+    if _git_is_shallow():
+        print(
+            "⚠️  shallow git clone detected; skip wiki_git_added_dates "
+            "(would mark nearly all files as added on tip day). "
+            "Use actions/checkout fetch-depth: 0.",
+            flush=True,
+        )
+        _WIKI_GIT_ADDED_DATES_CACHE = {}
         return _WIKI_GIT_ADDED_DATES_CACHE
 
     current_paths = _iter_wiki_md_paths()
@@ -591,10 +615,9 @@ def _wiki_node_action(
 ) -> str | None:
     """Classify a log-day wiki touch as ``added`` or ``maintained``.
 
-    新建日与活动日（``log_date``）为同一日历日 → ``added``；跨日 → ``maintained``。
-    **新建日**优先取 git 首次加入日（文件真正落库日）；无 git 信息时回退
-    ``wiki_first_log_dates``（显式 ingest/structural）。这样「当天新建又改」
-    仍标新增，不会被更早的假日志归因打成维护。
+    新建日与活动日同一天 → ``added``，否则 ``maintained``。
+    **新建日完全以 git 首次加入日为准**（``wiki_git_added_dates``）；仅当 git
+    不可用（浅克隆被跳过 / 无记录）时回退显式 ingest/structural 首日。
     """
     git_day = git_added_dates.get(rel) if git_added_dates else None
     first_day = git_day if git_day is not None else first_log_dates.get(rel)
