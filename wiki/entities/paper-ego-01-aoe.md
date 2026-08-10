@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, egocentric, ego-survey, embodied-ai, alibaba, baai, pku, ucas, zju]
 status: complete
-updated: 2026-06-25
+updated: 2026-08-10
 arxiv: "2602.23893"
 summary: "颈挂手机 + 端云协同：把「人人可采」的第一视角交互数据做成系统，而非实验室专用设备。"
 related:

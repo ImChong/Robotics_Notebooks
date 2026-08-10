@@ -55,8 +55,8 @@ related:
   - ../entities/paper-aware-wheeled-legged-reflexive-evasion.md
   - ../entities/paper-legged-robots-advances-challenges.md
   - ../queries/sim2real-closed-loop-engineering.md
+  - ../entities/awesome-real2sim2real.md
 summary: "Sim2Real 关注如何把仿真中学到的策略稳定迁移到真实机器人，是机器人学习落地的核心鸿沟。"
-updated: 2026-08-08
 sources:
   - ../../sources/papers/agile_arxiv_2603_20147.md
   - ../../sources/papers/physx_omni_arxiv_2605_21572.md
@@ -67,6 +67,7 @@ sources:
   - ../../sources/papers/aware_arxiv_2604_23761.md
   - ../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md
   - ../../sources/papers/legged_robots_advances_challenges_scirobotics_2026.md
+  - ../../sources/repos/awesome-real2sim2real.md
 ---
 
 # Sim2Real
@@ -228,6 +229,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - **ingest 档案：** [sources/courses/nvidia_sim_to_real_so101_isaac.md](../../sources/courses/nvidia_sim_to_real_so101_isaac.md) — NVIDIA SO-101 动手课：DR / Co-training / Cosmos / SAGE+GapONet 四类策略对照与 VLA workflow
 - **ingest 档案：** [sources/repos/sage-sim2real-actuator-gap.md](../../sources/repos/sage-sim2real-actuator-gap.md) — SAGE：Isaac Sim 重放与真机日志对齐的执行器层 sim2real gap 度量工具链
 - [sources/papers/crisp_real2sim_iclr2026.md](../../sources/papers/crisp_real2sim_iclr2026.md) — CRISP：单目视频平面原语 Real2Sim + 接触引导（ICLR 2026）ingest 摘录
+- **ingest 档案：** [sources/repos/awesome-real2sim2real.md](../../sources/repos/awesome-real2sim2real.md) — Awesome-Real2Sim2Real 迁移闭环策展清单
 - **ingest 档案：** [sources/papers/barkour_arxiv_2305_14654.md](../../sources/papers/barkour_arxiv_2305_14654.md) — Barkour：>1m/s 敏捷动作的额外 DR + 零样本 sim2real 完成 5m×5m 障碍课
 - **ingest 档案：** [sources/papers/slowrl_arxiv_2603_17092.md](../../sources/papers/slowrl_arxiv_2603_17092.md) — SLowRL：LoRA + Recovery 安全真机微调（Go2）
 - **ingest 档案：** [sources/papers/da_nav_arxiv_2607_11638.md](../../sources/papers/da_nav_arxiv_2607_11638.md) — DA-Nav：CARLA→足式/人形零样本户外方向感知 VLN
@@ -256,6 +258,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [腿式机器人进展/挑战/机遇综述](../entities/paper-legged-robots-advances-challenges.md) — SciRobotics 2026：把 Sim2Real 放进硬件/运动/数据五柱坐标系
 - [System Identification](./system-identification.md)（减少物理参数和执行器模型的 sim2real gap）
 - [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md) — 从辨识到适应的持续校准叙事与误差分流
+- [Awesome-Real2Sim2Real（精选集）](../entities/awesome-real2sim2real.md) — Sim2Real / Real2Sim / Real2Sim2Real 闭环文献索引
 - [Actuator Network 执行器网络](../methods/actuator-network.md) — 用神经网络拟合电机非线性特性
 - [Privileged Training](./privileged-training.md)（Teacher-Student 训练是 sim2real 的核心技术之一）
 - [RMA（论文实体）](../entities/paper-rma-rapid-motor-adaptation.md) — 特权 extrinsics + 历史适应模块；A1 异步 10/100 Hz 部署

@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-tactile, haptic, force, contact, visuo-tactile]
 status: complete
-updated: 2026-08-07
+updated: 2026-08-10
 summary: "触觉与力觉闭环知识链汇总：覆盖触觉传感、视触觉融合、阻抗/力控与接触估计，强调「摸得着」对抓取与 loco-manip 稳定性的作用。"
 ---
 
@@ -45,6 +45,7 @@ summary: "触觉与力觉闭环知识链汇总：覆盖触觉传感、视触觉�
 | 可变形接触安全评测 | Goal vs Safety Success | [SoftVTBench](../entities/paper-softvtbench.md)（Isaac Sim FEM + GelSight；π₀.₅ VO/VT · arXiv:2607.04234） |
 | 数据+策略栈 | 力场表征 / VTLA / 触觉 WAM | [NeoteAI 𝒩₀](../entities/neoteai.md)（OpenNeoData 5k h；Foundation / VTLA / TWAM） |
 | 人侧规模化采数 | 全掌压阻手套 + 手姿 + 多视角 RGB | [HumanTouch](../entities/humantouch.md)（Xspark SparkLAB；约 100 h 初版待 HF；代码未列） |
+| 文献索引 | 2025–2026 触觉×VLA/WM/WAM 策展 | [Awesome Touch](../entities/awesome-touch.md)（sun254667；VTLA / 视触觉 WM / Sim2Real） |
 
 ## 与其他知识链的关系
 
@@ -60,6 +61,7 @@ summary: "触觉与力觉闭环知识链汇总：覆盖触觉传感、视触觉�
 - [SoftVTBench（可变形视触觉安全基准）](../entities/paper-softvtbench.md) — Goal/Safety Success；触觉抬高软体安全率
 - [HumanTouch（人手全掌触觉采集）](../entities/humantouch.md) — 可校准/质控的人侧视–触–运动数据（数据待发）
 - [NeoteAI / 𝒩₀ 三件套](../entities/neoteai.md) — OpenNeoData + NeoForce + VTLA/TWAM
+- [Awesome Touch（精选集）](../entities/awesome-touch.md) — 触觉 VLA / 视触觉 WM / Tactile WAM 近期文献索引
 - [Teleoperation](../tasks/teleoperation.md) — 操作员力反馈与示范采集
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
 - [Contact Dynamics](../concepts/contact-dynamics.md)
@@ -74,4 +76,5 @@ summary: "触觉与力觉闭环知识链汇总：覆盖触觉传感、视触觉�
 - **ingest 档案：** [sources/papers/softvtbench_arxiv_2607_04234.md](../../sources/papers/softvtbench_arxiv_2607_04234.md) — SoftVTBench 可变形视触觉安全基准（arXiv:2607.04234）
 - **ingest 档案：** [sources/sites/humantouch-xsparkai.md](../../sources/sites/humantouch-xsparkai.md) — HumanTouch 人手全掌触觉采集（Xspark SparkLAB）
 - **ingest 档案：** [sources/papers/n0_foundation.md](../../sources/papers/n0_foundation.md) — 𝒩₀-Foundation / OpenNeoData
+- **ingest 档案：** [sources/repos/awesome-touch.md](../../sources/repos/awesome-touch.md) — Awesome Touch 触觉操作策展清单
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`tactile` 命中规则）

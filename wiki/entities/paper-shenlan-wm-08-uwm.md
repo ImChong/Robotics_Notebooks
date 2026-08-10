@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, world-models, shenlan-survey, open-source, toyota-research, uw]
 status: complete
-updated: 2026-06-25
+updated: 2026-08-10
 arxiv: "2504.02792"
 venue: RSS 2025
 summary: "视频与动作扩散统一 Transformer，模态特定扩散时间步表策略/动力学/生成器。"

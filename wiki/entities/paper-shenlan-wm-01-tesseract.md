@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, world-models, shenlan-survey, open-source, hkust]
 status: complete
-updated: 2026-06-25
+updated: 2026-08-10
 arxiv: "2504.20995"
 venue: ICCV 2025
 summary: "首个开源通用 4D 机器人 WM：RGB+深度+法线视频与动作预测，跨域泛化优于 2D 视频 WM。"

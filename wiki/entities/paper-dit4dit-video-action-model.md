@@ -12,7 +12,7 @@ tags:
   - cosmos-predict
   - joint-training
 status: complete
-updated: 2026-07-24
+updated: 2026-08-10
 arxiv: "2603.10448"
 code: https://github.com/Mondo-Robotics/DiT4DiT
 related:

@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, world-models, shenlan-survey, open-source, berkeley, shanghai-ai-lab, shanghai-pil, tsinghua]
 status: complete
-updated: 2026-06-25
+updated: 2026-08-10
 arxiv: "2412.14803"
 venue: ICML 2025
 summary: "视频扩散生成当前+未来视觉表征，隐式逆动力学；Calvin 与真机灵巧操作显著提升。"

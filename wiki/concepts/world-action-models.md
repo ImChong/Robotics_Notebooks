@@ -69,6 +69,7 @@ sources:
   - ../../sources/papers/dreamwam_arxiv_2608_04996.md
   - ../../sources/repos/awesome-wam-openmoss.md
   - ../../sources/sites/awesome-wam-openmoss.md
+  - ../../sources/repos/awesome-world-models.md
   - ../../sources/repos/dexmal_opendw.md
   - ../../sources/sites/rekacs2-10k.md
 ---
@@ -217,10 +218,12 @@ flowchart TB
 - [sources/papers/pelican_unified_uei_arxiv_2605_15153.md](../../sources/papers/pelican_unified_uei_arxiv_2605_15153.md)
 - [sources/repos/awesome-wam-openmoss.md](../../sources/repos/awesome-wam-openmoss.md)
 - [sources/sites/awesome-wam-openmoss.md](../../sources/sites/awesome-wam-openmoss.md)
+- [sources/repos/awesome-world-models.md](../../sources/repos/awesome-world-models.md) — Awesome World Models 全谱策展（含 WAM/VLA 分册）
 - [sources/sites/rekacs2-10k.md](../../sources/sites/rekacs2-10k.md)
 
 ## 关联页面
 
+- [Awesome World Models（精选集）](../entities/awesome-world-models.md) — WM/WAM/MBRL/应用域全谱索引
 - [WAM 纵深路线](../../roadmap/depth-wam.md)
 - [RekaCS2-10k](../entities/rekacs2-10k-dataset.md) — 职业 CS2 ego 视频 + 逐帧键鼠/轨迹，动作条件世界模型预训练语料
 - [VLA](../methods/vla.md)
@@ -260,3 +263,4 @@ flowchart TB
 
 - Wang et al., *World Action Models: The Next Frontier in Embodied AI* — [arXiv:2605.12090](https://arxiv.org/abs/2605.12090)
 - OpenMOSS **Awesome-WAM** 论文库与导航 — [GitHub 仓库](https://github.com/OpenMOSS/Awesome-WAM) · [静态站点](https://openmoss.github.io/Awesome-WAM)
+- [Awesome World Models（sun254667）](https://github.com/sun254667/awesome-world-models) — 更广的 WM 全谱策展对照

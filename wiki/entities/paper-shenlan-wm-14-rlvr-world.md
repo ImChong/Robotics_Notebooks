@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, world-models, shenlan-survey, open-source, tsinghua]
 status: complete
-updated: 2026-08-08
+updated: 2026-08-10
 arxiv: "2505.13934"
 venue: NeurIPS 2025
 summary: "RLVR 优化 WM 对齐任务成功指标，让想象更有目的性。"

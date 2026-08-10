@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, sim2real, dynamics-modeling, domain-adaptation, partial-observability, unitree-go2]
 status: complete
-updated: 2026-07-22
+updated: 2026-08-10
 arxiv: "2607.18154"
 related: [../concepts/sim2real.md, ../concepts/domain-randomization.md, ../concepts/system-identification.md]
 sources: [../../sources/papers/world_translation_arxiv_2607_18154.md]

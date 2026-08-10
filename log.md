@@ -1,3 +1,13 @@
+## [2026-08-10] ingest | sources/repos/awesome-world-models.md + awesome-egocentric-vision.md + awesome-touch.md + awesome-real2sim2real.md — 接入 sun254667 四份 Awesome 策展清单，并将清单内论文节点化为独立详情页
+
+- **触发：** 用户指定四仓并要求列表内论文均有独立详情节点；要求自动合并
+- **来源：** [`sources/repos/awesome-world-models.md`](sources/repos/awesome-world-models.md)、[`sources/repos/awesome-egocentric-vision.md`](sources/repos/awesome-egocentric-vision.md)、[`sources/repos/awesome-touch.md`](sources/repos/awesome-touch.md)、[`sources/repos/awesome-real2sim2real.md`](sources/repos/awesome-real2sim2real.md)
+- **列表实体：** [`wiki/entities/awesome-world-models.md`](wiki/entities/awesome-world-models.md)、[`wiki/entities/awesome-egocentric-vision.md`](wiki/entities/awesome-egocentric-vision.md)、[`wiki/entities/awesome-touch.md`](wiki/entities/awesome-touch.md)、[`wiki/entities/awesome-real2sim2real.md`](wiki/entities/awesome-real2sim2real.md)
+- **技术地图：** [`wiki/overview/sun-awesome-wm-technology-map.md`](wiki/overview/sun-awesome-wm-technology-map.md)、[`wiki/overview/sun-awesome-ego-technology-map.md`](wiki/overview/sun-awesome-ego-technology-map.md)、[`wiki/overview/sun-awesome-touch-technology-map.md`](wiki/overview/sun-awesome-touch-technology-map.md)、[`wiki/overview/sun-awesome-r2s2r-technology-map.md`](wiki/overview/sun-awesome-r2s2r-technology-map.md)
+- **论文节点化：** 生成器 [`scripts/generate_sun254667_awesome_paper_entities.py`](scripts/generate_sun254667_awesome_paper_entities.py)；目录 [`sources/papers/sun_awesome_*_catalog.md`](sources/papers/sun_awesome_wm_catalog.md)；新建索引级 [`wiki/entities/paper-sa-*.md`](wiki/entities/)（约 838 页），同 arXiv 已有 `paper-*` canonical 则复用；948 条清单条目均可点入详情节点
+- **开源核查（步骤 2.5）：** 四仓均为 **已开源策展清单**（Markdown；非训练栈）；条目级代码以各论文项目页为准
+- **交叉：** [`wiki/concepts/world-action-models.md`](wiki/concepts/world-action-models.md)、[`wiki/overview/ego-9-papers-technology-map.md`](wiki/overview/ego-9-papers-technology-map.md)、[`wiki/overview/hub-tactile.md`](wiki/overview/hub-tactile.md)、[`wiki/overview/hub-sim2real.md`](wiki/overview/hub-sim2real.md)、[`wiki/concepts/tactile-sensing.md`](wiki/concepts/tactile-sensing.md)、[`wiki/concepts/sim2real.md`](wiki/concepts/sim2real.md)
+
 ## [2026-08-10] ingest | sources/repos/plotjuggler.md — 复核 PlotJuggler：接入官方站 plotjuggler.io 与 PJ4 beta，刷新实体页并交叉 Foxglove/rerun/MCAP
 
 - **触发：** 用户指定仓库 <https://github.com/PlotJuggler/PlotJuggler>；要求自动合并。本库 2026-06 已有条目，本轮按上游 README / Releases / 官方站复核深化。

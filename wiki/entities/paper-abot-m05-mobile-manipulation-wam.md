@@ -11,7 +11,7 @@ tags:
   - dream-forcing
   - alibaba
 status: complete
-updated: 2026-07-26
+updated: 2026-08-10
 arxiv: "2607.00678"
 related:
   - ../concepts/world-action-models.md
