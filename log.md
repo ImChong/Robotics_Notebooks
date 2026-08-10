@@ -1,3 +1,8 @@
+## [2026-08-10] structural | .github/workflows/export.yml + weekly-lint.yml + pages.yml — 修复 Auto Export/Weekly Lint 与 main 并发推送的 git push 竞态（rebase 重试 + 串行 concurrency）；Pages deploy 超时放宽至 30 分钟
+
+- **触发：** 用户要求修复全部 GitHub Actions 问题。tip `main`（Harness VLA #1524）六项 workflow 已全绿；历史失败主要为 (1) 社区命名（已由 #1523 修复）(2) Auto Export `git push` 被并发 main 推送拒绝 (3) Pages `deployment_queued` 超时。
+- **改动：** [`export.yml`](.github/workflows/export.yml) / [`weekly-lint.yml`](.github/workflows/weekly-lint.yml) 改为串行 concurrency + push 失败时 `fetch`/`rebase` 最多 5 次；[`pages.yml`](.github/workflows/pages.yml) deploy `timeout-minutes: 30`。
+
 ## [2026-08-10] ingest | sources/papers/harness_vla_arxiv_2607_08448.md — 复核 Harness VLA（arXiv:2607.08448v3）+ 项目页 harnessvla.github.io；刷新 wiki/entities/paper-harness-vla.md；交叉 sources/sites/harnessvla-github-io.md、sources/repos/rpent.md、wiki/methods/vla.md、wiki/overview/vla-open-source-repro-landscape-2025.md；代码仍开源 RLinf/RPent
 
 - **触发：** 用户指定论文 <https://arxiv.org/pdf/2607.08448v3> 与项目页 <https://harnessvla.github.io/>；要求自动合并。本库 2026-07-22 已首轮入库，本轮按 v3 PDF / 项目页 / RPent README 复核深化。
