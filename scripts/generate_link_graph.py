@@ -396,11 +396,14 @@ def _collect_wiki_paths_from_chunk(
 
 def wiki_first_log_dates(nodes: list[dict[str, Any]]) -> dict[str, str]:
     """Map ``wiki/...md`` / ``roadmap/...md`` → 该路径在 ``log.md`` 中**首次被
-    ingest/structural 引入**的日历日。
+    ingest/structural 显式引入**的日历日。
 
-      仅扫描 ``ingest`` / ``structural`` 日志块（忽略 lint/query/checklist 等对
-      ``wiki/entities/paper-*.md`` 的模式描述，避免 glob 误展开把数百页标成同日维护）。
-    自最旧块向最新扫描；块内 glob 仅在 structural 批量建页时展开。
+      仅扫描 ``ingest`` / ``structural`` 日志块；**从不展开** ``paper-*.md`` /
+      ``depth-*.md`` 等 glob——历史 structural 常按当时语义写通配，若按「当前
+      文件树」展开会把日后新建页误标成更早的首次出现日，进而在更新页把「新增」
+      打成「维护」。批量建页应在日志里写明具体路径；未显式出现的节点回退到
+      ``wiki_git_added_dates``。
+    自最旧块向最新扫描。
     """
     if not LOG_MD_PATH.is_file():
         return {}
@@ -421,33 +424,22 @@ def wiki_first_log_dates(nodes: list[dict[str, Any]]) -> dict[str, str]:
             continue
         header = _log_section_header_line(chunk)
         body = chunk[len(header) :]
-        expand_header_globs = op == "structural"
         for rel in _collect_wiki_paths_from_chunk(
             chunk,
             node_by_id=node_by_id,
-            expand_globs=expand_header_globs,
+            expand_globs=False,
             text=header,
         ):
             if rel not in first_dates:
                 first_dates[rel] = log_date
-        if op == "structural":
-            for rel in _collect_wiki_paths_from_chunk(
-                chunk,
-                node_by_id=node_by_id,
-                expand_globs=True,
-                text=body,
-            ):
-                if rel not in first_dates:
-                    first_dates[rel] = log_date
-        else:
-            for rel in _collect_wiki_paths_from_chunk(
-                chunk,
-                node_by_id=node_by_id,
-                expand_globs=False,
-                text=body,
-            ):
-                if rel not in first_dates:
-                    first_dates[rel] = log_date
+        for rel in _collect_wiki_paths_from_chunk(
+            chunk,
+            node_by_id=node_by_id,
+            expand_globs=False,
+            text=body,
+        ):
+            if rel not in first_dates:
+                first_dates[rel] = log_date
     return first_dates
 
 
@@ -592,12 +584,17 @@ def _wiki_node_action(
 ) -> str | None:
     """Classify a log-day wiki touch as ``added`` or ``maintained``.
 
-    Prefer ``wiki_first_log_dates`` (ingest/structural); fall back to git first-add
-    when the path only appears in query/lint/etc. blocks.
+    新建日与活动日（``log_date``）为同一日历日 → ``added``；否则 → ``maintained``。
+    新建日优先取 ``wiki_first_log_dates``（显式 ingest/structural）；若缺失则回退
+    git 首次加入日。若日志归因日早于 git 首次加入日（历史 glob 误展开残留），
+    以 git 日为准——文件尚不存在时不能算「已引入」。
     """
     first_day = first_log_dates.get(rel)
-    if first_day is None and git_added_dates:
-        first_day = git_added_dates.get(rel)
+    git_day = git_added_dates.get(rel) if git_added_dates else None
+    if first_day is None:
+        first_day = git_day
+    elif git_day is not None and git_day > first_day:
+        first_day = git_day
     if not first_day:
         return None
     return "added" if first_day == log_date else "maintained"

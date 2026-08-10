@@ -1,3 +1,10 @@
+## [2026-08-10] structural | scripts/generate_link_graph.py — 修复更新页「新增 / 维护」误判：历史 structural 的 paper 通配路径不再按当前文件树展开为首日；git 加入日钳制假早日志归因（例：当日新建 wiki/entities/paper-ace-data-0.md 应标「新增」）
+
+- **触发：** 线上更新页将当日新建的 [`wiki/entities/paper-ace-data-0.md`](wiki/entities/paper-ace-data-0.md) 标成「维护」
+- **根因：** `wiki_first_log_dates` 对 structural 块按「当前仓库树」展开 paper 实体通配，把 2026-08-10 新建页误标为 2026-07-24 首次出现
+- **修复：** 首次出现日只认显式路径；若日志归因早于 git 首次加入日则以 git 日为新建日；同日活动 →「新增」，跨日 →「维护」
+- **测试：** `tests/test_wiki_first_log_dates.py` 增补通配不展开与 git 钳制用例
+
 ## [2026-08-10] ingest | sources/papers/ace_data_0_arxiv_2607_28625.md — 接入 ACE-Data-0（arXiv:2607.28625）Ambient Capture 家居多模态数据集；升格 wiki/entities/paper-ace-data-0.md；交叉 wiki/entities/paper-data-pyramid-embodied-manipulation.md、wiki/entities/paper-ego4d.md、wiki/entities/rekadaily-10k-dataset.md、wiki/methods/egoscale.md、wiki/entities/paper-ace-brain-0-5.md、roadmap/depth-vla.md；归档 sources/sites/ace-data-0-github-io.md、sources/datasets/ace-data-0.md（HF gated，训练代码未见）
 
 - **触发：** 用户指定论文 *ACE-Data-0: Human-Centric Ambient Capture as Embodied Data Engine*；要求自动合并

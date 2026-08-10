@@ -15,7 +15,7 @@
       "type": "entity",
       "recency": "2026-08-10",
       "source": "log.md",
-      "action": "maintained"
+      "action": "added"
     },
     {
       "path": "wiki/entities/paper-data-pyramid-embodied-manipulation.md",
@@ -87,7 +87,7 @@
       "type": "entity",
       "recency": "2026-08-10",
       "source": "log.md",
-      "action": "maintained",
+      "action": "added",
       "has_repo": true
     },
     {
@@ -216,7 +216,7 @@
     "type": "entity",
     "recency": "2026-08-10",
     "source": "log.md",
-    "action": "maintained"
+    "action": "added"
   },
   "top_communities": [
     {
