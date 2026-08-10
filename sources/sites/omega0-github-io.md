@@ -6,13 +6,13 @@
 - **类型：** project site
 - **官方入口：** <https://gentlefress.github.io/OMEGA-0_page/>
 - **论文：** <https://arxiv.org/abs/2608.06375>
-- **代码：** 项目页标注 **Code (WIP)** — 截至 2026-08-08 无可用 GitHub 实现仓
+- **代码：** 项目页标注 **Code (WIP)** — 截至 2026-08-10 无可用 GitHub 实现仓
 - **数据集：** 项目页标注 **Dataset (WIP)**（ω-HOME）
 - **机构：** NTU MARS Lab；北京大学；北京智源人工智能研究院（BAAI）；香港科技大学广州校区
-- **入库日期：** 2026-08-08
+- **入库日期：** 2026-08-08（复核：2026-08-10）
 - **一句话说明：** 官方项目页：方法/结果/数据集区块、真机 teaser 视频与统计条（成功率 81.8%、任务进度 90.3%、11 评测任务）。
 
-## 开源状态（项目页核查，2026-08-08）
+## 开源状态（项目页核查，2026-08-10）
 
 | 项 | 状态 |
 |----|------|
@@ -27,9 +27,9 @@
 |------|----------|
 | Hero | teaser 视频；机构 logo；Paper / arXiv / Code WIP / Dataset WIP |
 | Abstract | 潜空间 foresight + 扩散全身动作；ω-HOME 40h+ |
-| Method | 三阶段训练框架图 |
-| Results / Dataset | 真机演示与数据说明 |
-| Citation | BibTeX |
+| Method | 三阶段：Action Semantics VLM → Joint World–Action → Real-world RTC + SONIC |
+| Results / Dataset | 真机演示库；ω-HOME 40.3 h / 24 任务 / 4827 episodes / 六模态 |
+| Citation | BibTeX（`li2026omega0`） |
 
 ## 对 wiki 的映射
 

@@ -3,7 +3,7 @@ type: method
 tags: [paper, humanoid, imitation-learning, motion-tracking, foundation-model, nvidia, vla, teleoperation, rl, motion-control, bfm, behavior-foundation-model, loco-manipulation, body-system-stack, loco-manip-161-survey]
 status: complete
 date: 2026-05-14
-updated: 2026-08-08
+updated: 2026-08-10
 arxiv: "2511.07820"
 venue: "2025 · arXiv"
 code: https://github.com/NVlabs/GR00T-WholeBodyControl
@@ -21,6 +21,7 @@ related:
   - ../entities/paper-athena-wbc-humanoid-longtail.md
   - ../entities/paper-scenebot.md
   - ../entities/paper-motionwam-humanoid-loco-manipulation-wam.md
+  - ../entities/paper-omega-0.md
   - ../entities/paper-humanoid-gpt.md
   - ../entities/paper-any2any-cross-embodiment-wbt.md
   - ../entities/paper-scaling-bfm-humanoid.md
@@ -141,7 +142,7 @@ SONIC（*Supersizing Motion Tracking for Natural Humanoid Whole-Body Control*）
 - **与 VLA 的分工示例**：公开演示把 **GR00T N1.5** 与 SONIC 经同一接口串联，体现「慢推理 / 快反射」式 **分层控制** 的一种工程形态（参见 [VLA](./vla.md)）。
 - **跨具身后训练：** [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md)（arXiv:2605.23733）以 **Gear-SONIC 为源骨干**，经运动学对齐 + 解码器侧 LoRA，用约 **1%** 全量训练成本将 WBT 迁到 LimX Oli/Luna 等新机——与本文「单平台 scaling」形成 **预训练 vs 迁移** 对照阅读。
 - **结构 + 数据再 scaling：** [Humanoid-GPT](../entities/paper-humanoid-gpt.md)（arXiv:2606.03985）在 **~2B 帧 + 因果 Transformer + expert DAgger** 上继续推进零样本敏捷跟踪，项目页提供与 SONIC 的 **四类真机并排对比**；可与本文 **~100M + MLP** 路线并列阅读「通才 tracker 前沿」。
-- **WAM 上游接口：** [MotionWAM](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md)（arXiv:2606.09215）将 SONIC **FSQ motion token** 作为 **World Action Model 的统一全身动作空间**，由 Video DiT 单次前向隐状态条件 Motion DiT 预测，再经 SONIC 解码闭环执行 G1 loco-manipulation——与 GR00T+VLA 分层接 SONIC 形成 **动力学先验 vs 语义先验** 对照。
+- **WAM 上游接口：** [MotionWAM](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md)（arXiv:2606.09215）将 SONIC **FSQ motion token** 作为 **World Action Model 的统一全身动作空间**，由 Video DiT 单次前向隐状态条件 Motion DiT 预测，再经 SONIC 解码闭环执行 G1 loco-manipulation——与 GR00T+VLA 分层接 SONIC 形成 **动力学先验 vs 语义先验** 对照。[ω-0](../entities/paper-omega-0.md)（arXiv:2608.06375）同样以 **SONIC 兼容全身 action latent** 为接口，但世界信号改为 **潜空间未来观测 embedding**（非视频 DiT），并在家务 11 任务上报告 Omni **SR 81.8%**；采集侧亦用 SONIC 作 Pico VR 遥操作策略与公共运动仿真回放接地。
 - **感知地形扩展：** [Perceptive BFM](../entities/paper-perceptive-bfm.md)（CoRL 2026 submission）在 **保留 raw 参考接口** 的 BFM 叙事上叠加 **机器人中心高程感知**；项目页报告无视觉消融 reward **54.6 → 3.6**，可与 SONIC 的 **无感知大规模 tracking** 形成「接口开放 vs 地形落地」对照。
 - **接触丰富场景扩展：** [SceneBot](../entities/paper-scenebot.md)（arXiv:2606.27581）在 **同一 PPO tracking 范式** 上叠加 **per-link contact label** 与 **hindsight scene reconstruction** 数据引擎；sim-to-sim 上 **自由空间与 SONIC 同级**，但 object/terrain/sit 成功率 **95–100% vs 0–15%**——说明 scaling 型 tracker 需额外 **接触意图接口** 才能落地搬箱、楼梯与坐椅等场景交互。
 - **高覆盖率训练集长尾：** [Athena-WBC](../entities/paper-athena-wbc-humanoid-longtail.md)（arXiv:2607.04837，小鹏机器人）在 **同平台重实现 SONIC-Base** 上发现 **残余训练集失败**（高动态/平衡关键）不全是曝光问题，而是 **保守 effort/temporal 奖励** 与 **名义重力冷启动** 造成的 **capability bottleneck**；用 **能力对齐 dynamic/balance expert → 路由 DAgger → RL 微调** 改善长尾与 held-out，并提出 **STC/TIS/MPJPE-W** 评测——与本文「scaling 仍留长尾」形成互补阅读。
@@ -449,6 +450,7 @@ sequenceDiagram
 - [VLA（Vision-Language-Action）](./vla.md)
 - [LEGS（论文实体）](../entities/paper-legs-embodied-gaussian-splatting-vla.md) — G1 loco-manip VLA 数据合成以 SONIC 为低层 WBC（arXiv:2606.01458）
 - [MotionWAM（论文实体）](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) — WAM 预测 SONIC 统一 motion token 的实时人形 loco-manip（arXiv:2606.09215）
+- [ω-0（论文实体）](../entities/paper-omega-0.md) — 潜空间 foresight + SONIC 全身 latent 的并发家务 loco-manip（arXiv:2608.06375）
 - [SceneBot（论文实体）](../entities/paper-scenebot.md) — contact label + hindsight 场景重建；自由空间媲美 SONIC、场景交互显著领先（arXiv:2606.27581）
 - [HumanoidArena（论文实体）](../entities/paper-humanoidarena.md) — SONIC 作为 GMT 后端的分层 egocentric benchmark（arXiv:2606.17833）
 - [Teleoperation（遥操作）](../tasks/teleoperation.md)
