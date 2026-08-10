@@ -238,8 +238,7 @@ def parse_readme(path: Path, list_key: str) -> list[dict]:
                 "section": cur_sec,
                 "arxiv": aids[0] if aids else None,
                 "publication": pub or "",
-                "highlights": highlights
-                or "策展清单收录条目；细节以原文 PDF / 项目页为准。",
+                "highlights": highlights or "策展清单收录条目；细节以原文 PDF / 项目页为准。",
                 "code": code,
                 "website": web,
                 "paper_url": paper_url,
@@ -349,9 +348,7 @@ def render_entity(
         fm_extra.append(f"code: {e['code']}")
     fm_extra_s = ("\n".join(fm_extra) + "\n") if fm_extra else ""
 
-    abbrev_rows = "\n".join(
-        f"| {a} | {b} | {c} |" for a, b, c in list_meta["abbrev"][:4]
-    )
+    abbrev_rows = "\n".join(f"| {a} | {b} | {c} |" for a, b, c in list_meta["abbrev"][:4])
     paper_link = e["paper_url"] or (
         f"https://arxiv.org/abs/{e['arxiv']}" if e["arxiv"] else list_meta["url"]
     )
@@ -483,9 +480,7 @@ def render_tech_map(list_key: str, list_meta: dict, rows: list[dict]) -> str:
     for r in rows:
         by_sec[r["section"]].append(r)
 
-    abbrev_rows = "\n".join(
-        f"| {a} | {b} | {c} |" for a, b, c in list_meta["abbrev"][:4]
-    )
+    abbrev_rows = "\n".join(f"| {a} | {b} | {c} |" for a, b, c in list_meta["abbrev"][:4])
     sections_md = []
     for sec, items in by_sec.items():
         sections_md.append(f"### {sec}\n")
@@ -616,9 +611,7 @@ def main() -> None:
                     )
                     created_sources += 1
                 if not ent_path.exists():
-                    body = render_entity(
-                        e, src_rel, list_meta, i, len(entries), tech_map_rel
-                    )
+                    body = render_entity(e, src_rel, list_meta, i, len(entries), tech_map_rel)
                     ent_path.write_text(body, encoding="utf-8")
                     created_entities += 1
                     created = True
