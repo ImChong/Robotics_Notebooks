@@ -117,6 +117,26 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
         "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop）"
     ),
     "wiki/references/llm-wiki-karpathy.md": "大语言模型维基（LLM Wiki）",
+    "wiki/concepts/world-action-models.md": "世界动作模型（World Action Models, WAM）",
+    "wiki/concepts/tactile-sensing.md": "触觉感知（Tactile Sensing）",
+    "wiki/overview/ego-9-papers-technology-map.md": (
+        "自我中心视觉技术地图（Egocentric Vision Technology Map）"
+    ),
+    "wiki/overview/sun-awesome-wm-technology-map.md": (
+        "世界模型策展地图（Awesome World Models Technology Map）"
+    ),
+    "wiki/overview/sun-awesome-ego-technology-map.md": (
+        "自我中心视觉策展地图（Awesome Egocentric Vision Technology Map）"
+    ),
+    "wiki/overview/sun-awesome-touch-technology-map.md": (
+        "触觉策展地图（Awesome Touch Technology Map）"
+    ),
+    "wiki/overview/sun-awesome-r2s2r-technology-map.md": (
+        "仿真迁移闭环策展地图（Awesome Real2Sim2Real Technology Map）"
+    ),
+    "roadmap/depth-vla.md": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA）",
+    "roadmap/depth-teleoperation.md": "遥操作纵深路线（Teleoperation Deep-Dive Roadmap）",
+    "wiki/queries/simulator-selection-guide.md": "仿真器选型指南（Simulator Selection Guide）",
 }
 
 COMMUNITY_LABEL_SUFFIX = " 社区"
