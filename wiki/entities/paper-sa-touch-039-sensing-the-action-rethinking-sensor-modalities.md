@@ -65,6 +65,12 @@ Systematic taxonomy of major sensor modalities including RGB, depth, tactile sen
 - 评测口径与具体数值以 [原文 / 项目页](https://doi.org/10.3390/s26113541) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-touch-technology-map.md) 同分组条目。
 
+## 与其他工作对比（索引级）
+
+- 本页 **不做** 与具体基线的逐项数值对比：索引级节点只保留清单坐标，同分组横向对照请回到 [技术地图](../overview/sun-awesome-touch-technology-map.md) 的 **Surveys & Overviews** 分组逐条展开。
+- 与站内 **深度论文实体** 的分界：深度页承载机构、实验表与源码运行时序；本页只承载清单 Highlights 阅读锚点。同一 arXiv 若已存在深度页，应以深度页为准。
+- 与清单内相邻条目孰优孰劣，本页不下结论：Awesome Highlights 可能滞后于论文最新版本，差异应以各自原文的问题设定与评测口径为准。
+
 ## 结论
 
 **本条目的站内价值是把「Sensing the Action」从外部 Awesome 列表提升为可链接的知识节点，并保留清单 Highlights 作为阅读锚点。**
