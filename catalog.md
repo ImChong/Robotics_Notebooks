@@ -1309,7 +1309,7 @@
 - [PhysX-Omni（统一仿真就绪物理 3D 生成）](wiki/entities/physx-omni.md) — PhysX-Omni**（S-Lab NTU / ACE Robotics，arXiv:2605.21572）是面向 **具身 AI、游戏与物理仿真** 的 **统一 sim-ready 3D 生 `📅unknown` `[entity_page]`
 - [Pink](wiki/entities/pink-ik.md) — Pink](https://github.com/stephane-caron/pink) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hum `📅unknown` `[entity_page]`
 - [Pinocchio (刚体动力学库)](wiki/entities/pinocchio.md) — Pinocchio** 是一个由法国国家信息与自动化研究所（INRIA）开源的，专注于**高计算效率**和**分析导数 (Analytical Derivatives)** 的刚体动力学（Rigi `📅unknown` `[entity_page]`
-- [PlotJuggler](wiki/entities/plotjuggler.md) — PlotJuggler**（PlotJuggler/PlotJuggler）是面向工程师的 **时序数据 `📅unknown` `[entity_page]`
+- [PlotJuggler](wiki/entities/plotjuggler.md) — PlotJuggler**（PlotJuggler/PlotJuggler，站 [plotjuggler `📅unknown` `[entity_page]`
 - [point_lio_unilidar](wiki/entities/point-lio-unilidar.md) — point_lio_unilidar** 把学术界 **Point-LIO**（稳健高带宽 LiDAR-Inertial Odometry）接到宇树 **L1 / L2** 雷达产品。 `📅unknown` `[entity_page]`
 - [Pollen Reachy2](wiki/entities/pollen-reachy2.md) — Reachy2** 是 **Pollen Robotics** 推出的 **开源模块化移动人形**：强调 **仿人双臂、全向移动、VR 遥操作** 与 **软硬件全开放**；主线文档在 **[do `📅unknown` `[entity_page]`
 - [Ponytail](wiki/entities/ponytail.md) — Ponytail** 是 DietrichGebert/ponytail 仓库分发的 **编码代理「必要 `📅unknown` `[entity_page]`

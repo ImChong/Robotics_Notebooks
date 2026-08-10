@@ -1,3 +1,11 @@
+## [2026-08-10] ingest | sources/repos/plotjuggler.md — 复核 PlotJuggler：接入官方站 plotjuggler.io 与 PJ4 beta，刷新实体页并交叉 Foxglove/rerun/MCAP
+
+- **触发：** 用户指定仓库 <https://github.com/PlotJuggler/PlotJuggler>；要求自动合并。本库 2026-06 已有条目，本轮按上游 README / Releases / 官方站复核深化。
+- **来源：** [`sources/repos/plotjuggler.md`](sources/repos/plotjuggler.md)、新建 [`sources/sites/plotjuggler-io.md`](sources/sites/plotjuggler-io.md)
+- **实体刷新：** [`wiki/entities/plotjuggler.md`](wiki/entities/plotjuggler.md) — 3.17.x 稳定 vs PJ4 beta（`3.999.x`）、MCAP/Python 变换/Foxglove WebSocket bridge、正牌域名 `plotjuggler.io` vs 仿冒 `plotjuggler.com`
+- **开源核查（步骤 2.5）：** **已开源** — 主仓 MPL-2.0 + 独立 ROS/MQTT/LSL 插件仓；站内 Download → GitHub Releases
+- **交叉：** [`wiki/entities/foxglove-studio.md`](wiki/entities/foxglove-studio.md)、[`wiki/entities/rerun-io.md`](wiki/entities/rerun-io.md)、[`wiki/entities/mcap-log-format.md`](wiki/entities/mcap-log-format.md)、[`wiki/queries/robot-policy-debug-playbook.md`](wiki/queries/robot-policy-debug-playbook.md)、[`wiki/queries/hmi-opensource-projects-coverage.md`](wiki/queries/hmi-opensource-projects-coverage.md)（修正组织 URL）
+
 ## [2026-08-10] structural | scripts/generate_link_graph.py + pages/tests/export workflows — 新增/维护完全以 git 首次加入日为准；Pages 等 CI 改为 fetch-depth: 0（浅克隆会把全库标成 tip 日 Added，导致「只有今天有新增」）
 
 - **现象：** 线上更新记录几乎只有 2026-08-10 有「新增」，历史日 added_count 全 0
