@@ -2,25 +2,28 @@
 type: concept
 tags: [scaling-laws, data-engine, foundation-policy, machine-learning]
 status: complete
-updated: 2026-08-08
+updated: 2026-08-11
 related:
   - ./bitter-lesson.md
   - ./open-x-embodiment.md
   - ../entities/paper-from-agi-to-asi.md
   - ../entities/paper-rynnbrain-1-1.md
   - ../entities/generalist-gen1-thousand-hands.md
+  - ../entities/dyna-2.md
   - ../methods/vla.md
   - ../methods/egoscale.md
+  - ../concepts/world-action-models.md
   - ../methods/auto-labeling-pipelines.md
   - ../formalizations/foundation-policy-alignment.md
 sources:
   - ../../sources/blogs/sutton_bitter_lesson.md
   - ../../sources/blogs/generalist_thousand_hands.md
+  - ../../sources/blogs/dyna_2_million_hour_wam.md
   - ../../sources/papers/rl_foundation_models.md
   - ../../sources/papers/egoscale_arxiv_2602_16710.md
   - ../../sources/papers/rynnbrain_1_1_arxiv_2607_17977.md
   - ../../sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md
-summary: "具身规模法则（Embodied Scaling Laws）探讨了具身智能模型中数据规模、模型参数量与下游任务泛化能力之间的幂律关系，是指导大规模具身预训练的核心理论。"
+summary: "具身规模法则（Embodied Scaling Laws）探讨了具身智能模型中数据规模、模型参数量与下游任务泛化能力之间的幂律关系；含 EgoScale（~20k h）与 Dyna-2（1M h 人→机跨具身）等案例。"
 ---
 
 # Embodied Scaling Laws (具身规模法则)
@@ -44,8 +47,9 @@ summary: "具身规模法则（Embodied Scaling Laws）探讨了具身智能模�
 2. **数据多样性 vs 质量**：对于基础策略模型（Foundation Policies），数据的**多样性**（多样化的环境、光照、物体）往往比单一任务的高精度演示更重要。
 3. **涌现能力**：当数据规模跨越某个临界点时，模型开始展现出零样本（Zero-shot）逻辑推理能力（如“拿起与水果颜色相同的方块”）。
 4. **人侧视频监督的可预测缩放（案例）**：EgoScale 在 **1k–20k 小时** egocentric 人操纵轨迹上报告 **验证损失与数据规模近 log-linear**，并与 **真机灵巧后训练表现** 强相关（见 [EgoScale](../methods/egoscale.md)）；可与机器人日志 scaling 对照阅读，但 **指标域与任务族** 并不自动等价。
-5. **非均匀具身 scaling（案例）**：[RynnBrain 1.1](../entities/paper-rynnbrain-1-1.md) 在统一配方下对比 matched **Qwen3.5（2B→122B）**：一般认知双方随规模上升；**推理密集型认知** 上 RynnBrain 上升而 Qwen3.5 **负缩放**；**定位** 上最大 Qwen 仍低于最小 RynnBrain——说明 **显式空间/具身监督** 与 **参数缩放** 互补而非可替代。
-6. **末端接口多样性（产业案例）**：[GEN-1 千手](../entities/generalist-gen1-thousand-hands.md) 主张在 **>50 万小时** 交互与 **~9k 末端变体** 上预训练同一基座，用 task-vector 权重更新度量「新手」新颖度；属 **闭源自报**，作多样性轴对照而非可复现定律拟合。
+5. **人→机跨具身缩放（产业案例）**：[Dyna-2](../entities/dyna-2.md) 将人视频梯子推到 **1k–1M 小时**，在 **预训练零机器人数据、零对齐适配** 设定下报告 **零样本机器人离线指标** 与后训练真机归一化均值随小时数单调上升，并主张 **视频共训** 是跨具身幂律出现的必要条件；**闭源自报**，协议定义与 EgoScale（含对齐 mid-training）不同，宜对照读而非直接合并曲线。
+6. **非均匀具身 scaling（案例）**：[RynnBrain 1.1](../entities/paper-rynnbrain-1-1.md) 在统一配方下对比 matched **Qwen3.5（2B→122B）**：一般认知双方随规模上升；**推理密集型认知** 上 RynnBrain 上升而 Qwen3.5 **负缩放**；**定位** 上最大 Qwen 仍低于最小 RynnBrain——说明 **显式空间/具身监督** 与 **参数缩放** 互补而非可替代。
+7. **末端接口多样性（产业案例）**：[GEN-1 千手](../entities/generalist-gen1-thousand-hands.md) 主张在 **>50 万小时** 交互与 **~9k 末端变体** 上预训练同一基座，用 task-vector 权重更新度量「新手」新颖度；属 **闭源自报**，作多样性轴对照而非可复现定律拟合。
 
 ## 宏观算力背景（与具身 scaling 的层级差）
 
@@ -72,12 +76,15 @@ DeepMind 技术报告 [*From AGI to ASI*](../entities/paper-from-agi-to-asi.md)�
 - [VLA (Vision-Language-Action Models)](../methods/vla.md)
 - [RynnBrain 1.1](../entities/paper-rynnbrain-1-1.md) — 统一配方下相对 Qwen3.5 的非均匀具身 scaling
 - [EgoScale（人视频规模预训练 VLA）](../methods/egoscale.md)
+- [Dyna-2（百万小时 WAM 跨具身缩放）](../entities/dyna-2.md) — 闭源 1M h 人→机缩放主张
+- [World Action Models](./world-action-models.md) — Dyna-2 所属 Joint WAM 族谱
 - [GEN-1 千手（跨末端多样性）](../entities/generalist-gen1-thousand-hands.md) — 闭源产业多样性轴对照
 - [自动化标注流水线](../methods/auto-labeling-pipelines.md)
 - [基础策略对齐](../formalizations/foundation-policy-alignment.md)
 
 ## 参考来源
 - [The Bitter Lesson 原始资料](../../sources/blogs/sutton_bitter_lesson.md) — Sutton 2019 scaling 方法论（宏观层对照）
+- [Dyna-2 研究长文摘录](../../sources/blogs/dyna_2_million_hour_wam.md)
 - Padalkar, A., et al. (2023). *Open X-Embodiment: Robotic Learning at Scale*.
 - Brohan, A., et al. (2023). *RT-2: Vision-Language-Action Models Transfer Knowledge from Web to Robots*.
 - [EgoScale 论文摘录（arXiv:2602.16710）](../../sources/papers/egoscale_arxiv_2602_16710.md) — 人视频小时数与验证损失 / 真机表现联动的案例材料

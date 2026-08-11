@@ -1,3 +1,12 @@
+## [2026-08-11] ingest | sources/blogs/dyna_2_million_hour_wam.md — 接入 Dyna-2（dyna.co/dyna-2）百万小时 WAM 跨具身缩放律；升格 wiki/entities/dyna-2.md；交叉 wiki/concepts/world-action-models.md、wiki/concepts/embodied-scaling-laws.md、wiki/methods/egoscale.md、roadmap/depth-wam.md；归档 sources/sites/dyna-co-dyna-2.md、sources/sites/dyna-co.md；注册机构 dyna-robotics；确认未开源
+
+- **触发：** 用户指定 <https://www.dyna.co/dyna-2>；要求自动合并
+- **来源：** [`sources/blogs/dyna_2_million_hour_wam.md`](sources/blogs/dyna_2_million_hour_wam.md)、[`sources/sites/dyna-co-dyna-2.md`](sources/sites/dyna-co-dyna-2.md)、[`sources/sites/dyna-co.md`](sources/sites/dyna-co.md)
+- **新建实体：** [`wiki/entities/dyna-2.md`](wiki/entities/dyna-2.md) — MoT–DiT flow-matching WAM；1k–1M h 嵌套梯子；人 held-out + 人→机零样本幂律；video co-train 消融；后训练 14 任务 20%→53%；源码运行时序图「不适用」（闭源）
+- **开源核查（步骤 2.5）：** **确认未开源** — 研究页与公司站无 GitHub / HF / 数据集入口
+- **机构：** 注册 `dyna-robotics` → 戴纳机器人（Dyna Robotics）
+- **交叉：** [`wiki/concepts/world-action-models.md`](wiki/concepts/world-action-models.md)、[`wiki/concepts/embodied-scaling-laws.md`](wiki/concepts/embodied-scaling-laws.md)、[`wiki/methods/egoscale.md`](wiki/methods/egoscale.md)、[`roadmap/depth-wam.md`](roadmap/depth-wam.md)
+
 ## [2026-08-10] structural | .github/workflows/export.yml + weekly-lint.yml + pages.yml — 修复 Auto Export/Weekly Lint 与 main 并发推送的 git push 竞态（rebase 重试 + 串行 concurrency）；Pages deploy 超时放宽至 30 分钟
 
 - **触发：** 用户要求修复全部 GitHub Actions 问题。tip `main`（Harness VLA #1524）六项 workflow 已全绿；历史失败主要为 (1) 社区命名（已由 #1523 修复）(2) Auto Export `git push` 被并发 main 推送拒绝 (3) Pages `deployment_queued` 超时。

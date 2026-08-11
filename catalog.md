@@ -112,6 +112,7 @@
 - [DreamWaQ++（障碍感知四足多模态强化学习）](wiki/entities/dreamwaq-plus.md) — DreamWaQ++**（Nahrendra et al., arXiv:2409.19709，**IEEE T-RO 20 `📅unknown` `[entity_page]`
 - [DROID Policy Learning](wiki/entities/droid-policy-learning.md) — DROID Policy Learning](https://github.com/droid-dataset/droid_policy_learning) 收录于具身智能研究室 [开源项目主表 `📅unknown` `[entity_page]`
 - [DualMap](wiki/entities/dualmap.md) — DualMap**（Eku127/DualMap，RAL 2025）是面向动态环境的 **在线开放词汇语义建图** 与自然 `📅unknown` `[entity_page]`
+- [Dyna-2（Dyna Robotics · 百万小时 WAM 缩放律）](wiki/entities/dyna-2.md) — Dyna-2** 是 **Dyna Robotics**（2026-08 研究长文）发布的旗舰 **World-Action Model（WAM）**：在 **≥1,000,000 小时** eg `📅unknown` `[entity_page]`
 - [Dynamixel SDK](wiki/entities/dynamixel-sdk.md) — Dynamixel SDK**（`ROBOTIS-GIT/DynamixelSDK`，~595★，Ap `📅unknown` `[entity_page]`
 - [Dynibo（Rust 运动学与动力学库）](wiki/entities/dynibo.md) — Dynibo**（xiaojie-xue/dynibo）是一个 **快速、轻量、可复现验证** 的机器人运动学与动 `📅unknown` `[entity_page]`
 - [easy_quadruped（Pupper 控制栈 + MuJoCo 闭环）](wiki/entities/easy-quadruped.md) — easy_quadruped** 是在 [StanfordQuadruped](https://github.com/stanfordroboticsclub/StanfordQuadruped `📅unknown` `[entity_page]`
