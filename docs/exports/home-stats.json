@@ -1,13 +1,74 @@
 {
   "generated_at": "2026-08-11",
-  "node_count": 2998,
-  "edge_count": 26017,
+  "node_count": 2999,
+  "edge_count": 26032,
   "coverage": {
-    "covered": 2974,
-    "total": 2974,
+    "covered": 2975,
+    "total": 2975,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-r2s-ego.md",
+      "detail_id": "entity-paper-r2s-ego",
+      "label": "R2S-EGO：稀疏捕获 Real-to-Sim 的双代理 Ego 细化",
+      "type": "entity",
+      "recency": "2026-08-11",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-08-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-agentic-real2sim.md",
+      "detail_id": "entity-paper-agentic-real2sim",
+      "label": "Agentic Real2Sim（VLM Agent 编排的物理 Real2Sim）",
+      "type": "entity",
+      "recency": "2026-08-11",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/methods/crisp-real2sim.md",
+      "detail_id": "wiki-methods-crisp-real2sim",
+      "label": "CRISP（Contact-guided Real2Sim）",
+      "type": "method",
+      "recency": "2026-08-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/awesome-real2sim2real.md",
+      "detail_id": "entity-awesome-real2sim2real",
+      "label": "Awesome-Real2Sim2Real（sun254667 精选集）",
+      "type": "entity",
+      "recency": "2026-08-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-gaussgym-an-open-source-real-to-sim-framework-fo.md",
+      "detail_id": "entity-paper-notebook-gaussgym-an-open-source-real-to-sim-framework-fo",
+      "label": "GaussGym",
+      "type": "entity",
+      "recency": "2026-08-11",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
+    },
     {
       "path": "wiki/entities/paper-kilvo.md",
       "detail_id": "entity-paper-kilvo",
@@ -154,80 +215,16 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "开源项目本库导读（HMI Open-Source Projects Guide） 社区"
-    },
-    {
-      "path": "wiki/methods/defi-decoupled-dynamics-vla.md",
-      "detail_id": "wiki-methods-defi-decoupled-dynamics-vla",
-      "label": "DeFI（解耦前向/逆动力学 VLA）",
-      "type": "method",
-      "recency": "2026-08-11",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-fault-tolerant-locomotion.md",
-      "detail_id": "entity-paper-fault-tolerant-locomotion",
-      "label": "Fault-Tolerant Locomotion（执行器失效自适应步态）",
-      "type": "entity",
-      "recency": "2026-08-11",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/tasks/locomotion.md",
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
-      "recency": "2026-08-11",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "roadmap/depth-rl-locomotion.md",
-      "detail_id": "roadmap-depth-rl-locomotion",
-      "label": "路线（纵深）：如果目标是人形 RL 运动控制",
-      "type": "roadmap_page",
-      "recency": "2026-08-11",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md",
-      "detail_id": "entity-paper-actuator-constrained-rl-high-speed-quadruped-locomotion",
-      "label": "执行器约束 RL 高速四足奔跑（MOR）",
-      "type": "entity",
-      "recency": "2026-08-11",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "recency": "2026-08-11",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-kilvo.md",
-    "detail_id": "entity-paper-kilvo",
-    "label": "KILVO：人形多传感器运动学–惯性–激光–视觉里程计",
+    "path": "wiki/entities/paper-r2s-ego.md",
+    "detail_id": "entity-paper-r2s-ego",
+    "label": "R2S-EGO：稀疏捕获 Real-to-Sim 的双代理 Ego 细化",
     "type": "entity",
     "recency": "2026-08-11",
     "source": "log.md",
-    "action": "maintained",
-    "has_repo": true,
-    "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
@@ -236,7 +233,7 @@
     },
     {
       "label": "仿真到现实",
-      "size": 549
+      "size": 540
     },
     {
       "label": "视觉-语言-动作",
@@ -331,7 +328,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 436,
+      "degree": 439,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
@@ -341,7 +338,7 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 132,
+      "degree": 133,
       "has_repo": true
     },
     {

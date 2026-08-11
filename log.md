@@ -1,3 +1,12 @@
+## [2026-08-11] ingest | sources/papers/r2s_ego_arxiv_2608_06827.md — 接入 R2S-EGO（XPENG×PolyU 稀疏捕获双代理 Real-to-Sim）；wiki/entities/paper-r2s-ego.md；交叉更新 wiki/concepts/sim2real.md、wiki/entities/paper-agentic-real2sim.md、wiki/methods/crisp-real2sim.md、wiki/entities/awesome-real2sim2real.md、wiki/entities/paper-notebook-gaussgym-an-open-source-real-to-sim-framework-fo.md
+
+- **触发：** 用户指定 R2S-EGO（Shuai Fang 等；XPENG Robotics × 香港理工大学；arXiv:2608.06827）；要求自动合并
+- **来源：** [`sources/papers/r2s_ego_arxiv_2608_06827.md`](sources/papers/r2s_ego_arxiv_2608_06827.md)
+- **新建实体：** [`wiki/entities/paper-r2s-ego.md`](wiki/entities/paper-r2s-ego.md) — robot/geometry 双代理稀疏捕获场景细化；六视角 19.062 dB PSNR；真机 G1 坐姿 82.5% vs GaussGym 10%；源码运行时序图「不适用」（确认未开源）
+- **开源核查（步骤 2.5）：** **确认未开源** — arXiv/PDF 无项目页与 GitHub；公开检索无仓
+- **机构：** `xpeng` / `polyu`（已注册）
+- **交叉：** [`wiki/concepts/sim2real.md`](wiki/concepts/sim2real.md)、[`wiki/entities/paper-agentic-real2sim.md`](wiki/entities/paper-agentic-real2sim.md)、[`wiki/methods/crisp-real2sim.md`](wiki/methods/crisp-real2sim.md)、[`wiki/entities/awesome-real2sim2real.md`](wiki/entities/awesome-real2sim2real.md)、[`wiki/entities/paper-notebook-gaussgym-an-open-source-real-to-sim-framework-fo.md`](wiki/entities/paper-notebook-gaussgym-an-open-source-real-to-sim-framework-fo.md)
+
 ## [2026-08-11] ingest | sources/papers/kilvo_arxiv_2608_05647.md — 复核 KILVO（TMECH / HIT 机器人技术与系统全国重点实验室）；刷新 wiki/entities/paper-kilvo.md 作者与机构名；交叉 wiki/methods/lidar-odometry-fusion.md、wiki/comparisons/lidar-slam-lio-vio-selection.md、roadmap/depth-navigation.md；仓 sources/repos/kilvo.md 仍占位待开放
 
 - **触发：** 用户指定标题 KILVO（IEEE/ASME TMECH；HIT 机器人技术与系统全国重点实验室；作者 Jixin Gao / Fucheng Liu / Teng Zhang / Fusheng Zha）；要求自动合并
