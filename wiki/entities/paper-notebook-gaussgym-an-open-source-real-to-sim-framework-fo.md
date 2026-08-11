@@ -2,11 +2,13 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
 status: planned
-updated: 2026-06-26
+updated: 2026-08-11
 arxiv: "2510.15352"
 related:
   - ../overview/paper-notebook-category-05-locomotion.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ./paper-r2s-ego.md
+  - ../concepts/sim2real.md
 sources:
   - ../../sources/papers/humanoid_pnb_gaussgym-an-open-source-real-to-sim-framework-fo.md
 summary: "GaussGym：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
@@ -59,6 +61,8 @@ GaussGym 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- 外观/真机对照（站内完整实体）：[R2S-EGO](./paper-r2s-ego.md) 以 GaussGym 为稀疏 Real-to-Sim 主基线（arXiv:2608.06827）
+- [Sim2Real](../concepts/sim2real.md) — Real2Sim 资产与迁移总图
 
 ## 参考来源
 

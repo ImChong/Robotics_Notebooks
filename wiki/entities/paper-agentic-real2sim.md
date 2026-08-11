@@ -19,12 +19,13 @@ tags:
   - fau
   - style3d
 status: complete
-updated: 2026-08-10
+updated: 2026-08-11
 arxiv: "2607.19190"
 related:
   - ../concepts/sim2real.md
   - ../methods/crisp-real2sim.md
   - ./paper-simfoundry-real2sim-scene-generation.md
+  - ./paper-r2s-ego.md
   - ./articraft.md
   - ./paper-bfm-zero.md
   - ../tasks/manipulation.md
@@ -151,13 +152,13 @@ flowchart LR
 
 ## 与其他工作对比
 
-| 维度 | Agentic Real2Sim | [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) | [CRISP](../methods/crisp-real2sim.md) | [Video-as-Simulation](../concepts/video-as-simulation.md) |
+| 维度 | Agentic Real2Sim | [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) | [CRISP](../methods/crisp-real2sim.md) | [R2S-EGO](./paper-r2s-ego.md) |
 |------|------------------|-----------|-------|---------------------|
-| 产物单位 | **episode twin**（含执行器/轨迹/接触/任务） | sim-ready 场景 + cousins | 单目人–场景平面原语 | 像素 rollout |
-| 底座 | MuJoCo 物理引擎 | 仿真场景生成 | RL + 平面原语 | 生成式视频模型 |
-| 决策方式 | **VLM agent 编排 + 确定性工具** | 场景生成管线 | 单目重建 + RL | 端到端视频预测 |
-| 评测口径 | **回放成功**（三裁判 ≥8/10） | Pearson / MMRV 策略相关 | 人–场景重建质量 | 视频保真/一致性 |
-| 后端可替换性 | **开源 31B ≈ 闭源**，成本差一个数量级 | — | — | — |
+| 产物单位 | **episode twin**（含执行器/轨迹/接触/任务） | sim-ready 场景 + cousins | 单目人–场景平面原语 | 既有场景的 **ego 视觉资产 + 碰撞面** |
+| 底座 | MuJoCo 物理引擎 | 仿真场景生成 | RL + 平面原语 | 3DGS + 固定动力学/控制 |
+| 决策方式 | **VLM agent 编排 + 确定性工具** | 场景生成管线 | 单目重建 + RL | **robot/geometry 双代理** 预算化生成 |
+| 评测口径 | **回放成功**（三裁判 ≥8/10） | Pearson / MMRV 策略相关 | 人–场景重建质量 | 冻结 ego PSNR + 真机策略成功率 |
+| 后端可替换性 | **开源 31B ≈ 闭源**，成本差一个数量级 | — | — | 组件冻结公开 checkpoint；**管线本身未开源** |
 
 > 定位：需要 **episode 级物理回放 + 可换 VLM 编排** 时选本工作；只需操作场景 + 策略相关评测优先 SimFoundry；产物是物理引擎 episode，勿与像素视频世界模型混谈。
 
@@ -173,6 +174,7 @@ flowchart LR
 - [Sim2Real](../concepts/sim2real.md) — Real2Sim 资产与迁移总图
 - [CRISP](../methods/crisp-real2sim.md) — 单目人–场景 Real2Sim（平面原语 + RL）
 - [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) — 真机视频 → sim-ready 孪生 + cousins + 策略评测
+- [R2S-EGO](./paper-r2s-ego.md) — 稀疏捕获双代理 ego 场景细化（外观 + 真机坐姿）
 - [Articraft](./articraft.md) — agentic VLM 铰接资产生成
 - [BFM-Zero](./paper-bfm-zero.md) — 人形适配器运动上下文
 - [Manipulation](../tasks/manipulation.md) — 操作任务入口
