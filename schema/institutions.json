@@ -2448,6 +2448,14 @@
         "sapienza-rome",
         "uniroma1"
       ]
+    },
+    "dyna-robotics": {
+      "label": "戴纳机器人（Dyna Robotics）",
+      "aliases": [
+        "dyna-robotics",
+        "dyna",
+        "dyna-co"
+      ]
     }
   }
 }

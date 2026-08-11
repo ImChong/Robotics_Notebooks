@@ -3,7 +3,7 @@
 type: method
 tags: [vla, egocentric-video, dexterous-manipulation, flow-matching, human-robot-transfer, imitation-learning, nvidia-gear, scaling-laws, nvidia]
 status: complete
-updated: 2026-08-10
+updated: 2026-08-11
 date: 2026-05-17
 summary: "EgoScale 用超两万小时、带腕与重定向高 DoF 手部标签的第一人称人视频预训练流式 VLA，实证人数据规模与验证损失近 log-linear 缩放且与真机灵巧表现强相关，再以小规模视点对齐的人–机 mid-training 把表示锚到机器人，从而在极少机端演示下获得高灵巧长程操作与 one-shot 迹象。"
 related:
@@ -12,6 +12,7 @@ related:
   - ./mimic-video.md
   - ../concepts/motion-retargeting.md
   - ../concepts/embodied-scaling-laws.md
+  - ../entities/dyna-2.md
   - ../entities/humannet.md
   - ../entities/paper-egoverse.md
   - ../entities/paper-trex-tactile-reactive-dexterous-manipulation.md
@@ -106,6 +107,7 @@ flowchart LR
 - 与 [HumanNet](../entities/humannet.md)：HumanNet 侧重建 **互联网级人中心语料与标注管线**；EgoScale 给出 **两万小时量级 egocentric + 动作标签** 上 **VLA 预训练缩放** 的实证数据点。
 - 与 [EgoVerse](../entities/paper-egoverse.md)：同属 Direct 档 egocentric 人数据；EgoVerse 强调 **联盟协议采集 + 人–机共训缩放判据**（域对齐锚定、场景多样性），EgoScale 强调 **VLA 预训练小时 ↔ 验证损失 / 真机完成度**。
 - 与 [具身规模法则](../concepts/embodied-scaling-laws.md)：可把本文的 **log-linear 验证损失–数据规模** 与 **下游完成度** 的联动，当作 **人侧监督缩放** 的一个具体案例研究。
+- 与 [Dyna-2](../entities/dyna-2.md)：同属「人视频小时 → 机端增益」叙事；EgoScale 走 **VLA + 显式人–机对齐 mid-training（~20k h）**，Dyna-2 走 **WAM + 零对齐纯人预训练梯子（至 1M h）** 并主张跨具身零样本缩放——协议不同，宜对照读。
 - 与 [Motion Retargeting](../concepts/motion-retargeting.md)：重定向是 **人手关键点 → 机器人手关节** 的硬接口；误差形态会进入 **预训练标签噪声** 讨论。
 - 与 [T-Rex](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md)：同人灵巧线后续工作；共享 **人 egocentric 预训练 + 机端 mid-training** 骨架，T-Rex 把 mid-training 换成 **触觉同步 play** 并引入 **高频触觉专家**；论文以 EgoScale 为 **最强无触觉基线（35% vs 65%）**。
 - 与 [Macrodata Egocentric Hand-Action](./macrodata-egocentric-hand-action.md)：同属「egocentric → 可训手动作」；Macrodata 停在 **度量 21 关节轨迹 + Action MPJPE 工程标尺**（博客亦点名 EgoScale 的机器人手重定向表示），EgoScale 继续走到 **流式 VLA 预训练缩放与真机完成度**。
@@ -137,3 +139,4 @@ flowchart LR
 - [EgoVerse](../entities/paper-egoverse.md)
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)
+- [Dyna-2（百万小时 WAM 跨具身缩放）](../entities/dyna-2.md)

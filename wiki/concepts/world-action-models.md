@@ -2,9 +2,10 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-08-10
-summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM 等 beyond-RGB 未来表征实例，以及 ω-0 潜空间 foresight 人形并发 loco-manip。"
+updated: 2026-08-11
+summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、Dyna-2（百万小时人视频跨具身缩放）与 ω-0 等实例。"
 related:
+  - ../entities/dyna-2.md
   - ../../roadmap/depth-wam.md
   - ../queries/embodied-fm-taxonomy-loop.md
   - ../overview/robot-world-models-action-consequence-technology-map.md
@@ -67,6 +68,7 @@ sources:
   - ../../sources/papers/world_action_planner_arxiv_2607_27599.md
   - ../../sources/papers/worldscape_policy_2_arxiv_2607_18840.md
   - ../../sources/papers/dreamwam_arxiv_2608_04996.md
+  - ../../sources/blogs/dyna_2_million_hour_wam.md
   - ../../sources/repos/awesome-wam-openmoss.md
   - ../../sources/sites/awesome-wam-openmoss.md
   - ../../sources/repos/awesome-world-models.md
@@ -162,6 +164,8 @@ sources:
 
 **文献实例（Joint 族 + beyond-RGB 结构化未来 · FastWAM 系）**：[DreamWAM](../entities/paper-dreamwam.md) 在 **VideoDiT–ActionDiT** 上把未来从「仅 RGB」扩成 **appearance / motion / geometry / semantics**：RGB+RAFT flow **联合 latent 去噪**，DA3 depth 与 DINOv2 经 **gated residual** 注入；**推理关闭 beyond-RGB 分支**，部署仍 RGB-only。相对 matched Fast-WAM-Joint：LIBERO **98.00→98.90**、LIBERO-Plus **69.16→75.47**、真机视觉扰动 **55.6→74.4**；代码与 HF 权重已开源（arXiv:2608.04996，HUST / 地瓜 / 武大 / 地平线）。
 
+**产业实例（Joint 族 + 百万小时人视频跨具身缩放 · 闭源）**：[Dyna-2](../entities/dyna-2.md)（Dyna Robotics，2026-08）在 **≥1M h** egocentric 人视频上预训练 MoT–DiT WAM（预训练 **零** 机器人数据），报告人 held-out 与 **人→机零样本** 离线幂律，并消融主张 **video co-training** 是跨具身缩放必要条件；推理可保持 reactive（动作塔不吃预测未来视频）。后训练少量机端数据上双臂 / 灵巧手 / 半人形；**未开源**——作缩放律与目标设计参照，不作可复现基线。
+
 **文献实例（Joint 族 + latent foresight 查询冻结生成器 · 部署纯 VLA）**：[InternVLA-A1.5](../entities/paper-internvla-a15-unified-vla.md) 在 **Qwen3.5-2B MoT** 上持续 **VQA/子任务** 共训，用 **50 个 foresight token** 读出紧凑潜码条件化 **冻结 WAN2.2-5B**，以 video flow loss **蒸馏动力学先验** 至 unified expert，再以 **flow matching** 输出连续 action chunk；**推理丢弃视频分支**（~0.1s/步），在 LIBERO-Plus / DOMINO 零样本与真机 **组合指令 OOD** 上报告最强组合泛化（arXiv:2607.04988，上海 AI Lab Physical Intelligence Team）。
 
 **文献实例（VLWA · 双动作对齐 · 人视频主缩放轴）**：[JoyAI-RA 0.5](../entities/paper-joyai-ra-05.md) 以 **VLM ∥ LAC-WM late-fuse → Flow Action Expert** 构成 VLWA：多视角 **LAM** 推断 latent action 条件化世界模型（隐式对齐），可靠人/机轨迹映射进 **130-D** 规范槽与相机系 chunk-relative EE（显式对齐）；部署时 LAC-WM **只抽第一帧特征、不滚像素**。在 AgiBot G1 真机上 seen **92.0** / unseen **75.5**，且人视频缩放未见饱和（京东 Joy Future Academy，arXiv:2608.05674；**未开源**）。
@@ -216,6 +220,7 @@ flowchart TB
 - [sources/papers/being_m07.md](../../sources/papers/being_m07.md)
 - [sources/papers/worldvln_arxiv_2605_15964.md](../../sources/papers/worldvln_arxiv_2605_15964.md)
 - [sources/papers/pelican_unified_uei_arxiv_2605_15153.md](../../sources/papers/pelican_unified_uei_arxiv_2605_15153.md)
+- [sources/blogs/dyna_2_million_hour_wam.md](../../sources/blogs/dyna_2_million_hour_wam.md) — Dyna-2 百万小时跨具身缩放（闭源产业）
 - [sources/repos/awesome-wam-openmoss.md](../../sources/repos/awesome-wam-openmoss.md)
 - [sources/sites/awesome-wam-openmoss.md](../../sources/sites/awesome-wam-openmoss.md)
 - [sources/repos/awesome-world-models.md](../../sources/repos/awesome-world-models.md) — Awesome World Models 全谱策展（含 WAM/VLA 分册）
@@ -224,6 +229,7 @@ flowchart TB
 ## 关联页面
 
 - [Awesome World Models（精选集）](../entities/awesome-world-models.md) — WM/WAM/MBRL/应用域全谱索引
+- [Dyna-2](../entities/dyna-2.md) — 百万小时人视频 Joint WAM 跨具身缩放（闭源）
 - [WAM 纵深路线](../../roadmap/depth-wam.md)
 - [RekaCS2-10k](../entities/rekacs2-10k-dataset.md) — 职业 CS2 ego 视频 + 逐帧键鼠/轨迹，动作条件世界模型预训练语料
 - [VLA](../methods/vla.md)
