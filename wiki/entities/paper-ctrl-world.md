@@ -11,7 +11,7 @@ tags:
   - stanford
   - tsinghua
 status: complete
-updated: 2026-08-10
+updated: 2026-08-11
 arxiv: "2510.10125"
 related:
   - ../methods/generative-world-models.md
@@ -21,6 +21,7 @@ related:
   - ./paper-masked-visual-actions.md
   - ./paper-driftworld.md
   - ./paper-oscar.md
+  - ./paper-sc3-eval.md
   - ./paper-rofacto.md
   - ./paper-vitacworld.md
   - ./paper-wan-video.md
@@ -199,12 +200,12 @@ sequenceDiagram
 
 ## 与相邻工作的分界（对比）
 
-| 对比轴 | Ctrl-World | [Masked Visual Actions](./paper-masked-visual-actions.md) | [DriftWorld](./paper-driftworld.md) |
-|--------|------------|-----------------------------------------------------------|-------------------------------------|
-| **条件** | 低维动作 / 位姿 | 像素掩码轨迹 | 低维动作 + FiLM |
-| **视角** | 第三人称 + 腕部联合 | 单流视频条件 | 任务相关单视角为主 |
-| **骨干** | SVD 1.5B | Wan-Fun-Control 14B LoRA | 自研 U-Net drifting |
-| **主卖点** | VLA 闭环评估 + 合成 SFT | 前向/逆向统一 + 跨具身 | 1-step 速度 + 搜索 |
+| 对比轴 | Ctrl-World | [Masked Visual Actions](./paper-masked-visual-actions.md) | [DriftWorld](./paper-driftworld.md) | [SC3-Eval](./paper-sc3-eval.md) |
+|--------|------------|-----------------------------------------------------------|-------------------------------------|--------------------------------|
+| **条件** | 低维动作 / 位姿 | 像素掩码轨迹 | 低维动作 + FiLM | 低维动作 + 统一 FD/ID |
+| **视角** | 第三人称 + 腕部联合 | 单流视频条件 | 任务相关单视角为主 | 显式跨视角 inpainting |
+| **骨干** | SVD 1.5B | Wan-Fun-Control 14B LoRA | 自研 U-Net drifting | Cosmos3-Nano |
+| **主卖点** | VLA 闭环评估 + 合成 SFT | 前向/逆向统一 + 跨具身 | 1-step 速度 + 搜索 | 自一致防漂移 + 早停评估 |
 
 ## 关联页面
 
@@ -212,6 +213,7 @@ sequenceDiagram
 - [Video-as-Simulation](../concepts/video-as-simulation.md) — 视频即仿真概念
 - [world-models-route-03-virtual-sandbox](../overview/world-models-route-03-virtual-sandbox.md) — 虚拟沙盒路线
 - [Masked Visual Actions](./paper-masked-visual-actions.md) — 掩码条件对照（文中视觉基线语境）
+- [SC3-Eval](./paper-sc3-eval.md) — 自一致视频策略评估器（文中强基线对照族）
 - [Rofacto](./paper-rofacto.md) — URDF 渲染动作接口对照（名义轨迹 vs 数值位姿）
 - [ViTacWorld](./paper-vitacworld.md) — 视触觉 WM 做 dream 增强 / 评估（对照纯视觉闭环）
 - [Wan](./paper-wan-video.md) / [Wan-Move](./paper-wan-move.md) — 另一视频先验族与轨迹控制

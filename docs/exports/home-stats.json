@@ -1,13 +1,116 @@
 {
   "generated_at": "2026-08-11",
   "node_count": 2999,
-  "edge_count": 26032,
+  "edge_count": 26048,
   "coverage": {
     "covered": 2975,
     "total": 2975,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-sc3-eval.md",
+      "detail_id": "entity-paper-sc3-eval",
+      "label": "SC3-Eval（自一致视频生成策略评估 · arXiv:2606.18610）",
+      "type": "entity",
+      "recency": "2026-08-11",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/methods/generative-world-models.md",
+      "detail_id": "wiki-methods-generative-world-models",
+      "label": "Generative World Models (生成式世界模型)",
+      "type": "method",
+      "recency": "2026-08-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/overview/world-models-route-03-virtual-sandbox.md",
+      "detail_id": "wiki-overview-world-models-route-03-virtual-sandbox",
+      "label": "世界模型路线 03：虚拟沙盒",
+      "type": "overview",
+      "recency": "2026-08-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "机器人世界模型训练闭环（Robot World Models Training-Loop Taxonomy） 社区"
+    },
+    {
+      "path": "wiki/overview/wm-action-consequence-category-04-eval-posttrain.md",
+      "detail_id": "wiki-overview-wm-action-consequence-category-04-eval-posttrain",
+      "label": "世界模型动作后果分类 04：训练与评估闭环",
+      "type": "overview",
+      "recency": "2026-08-11",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/queries/embodied-eval-benchmark-selection-loop.md",
+      "detail_id": "wiki-queries-embodied-eval-benchmark-selection-loop",
+      "label": "Query：具身大模型评测基准选型闭环知识链",
+      "type": "query",
+      "recency": "2026-08-11",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/paper-ctrl-world.md",
+      "detail_id": "entity-paper-ctrl-world",
+      "label": "Ctrl-World（可控机器人操作生成式世界模型）",
+      "type": "entity",
+      "recency": "2026-08-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "机器人世界模型训练闭环（Robot World Models Training-Loop Taxonomy） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-irasim.md",
+      "detail_id": "entity-paper-irasim",
+      "label": "IRASim（细粒度操作世界模型 · arXiv:2406.14540）",
+      "type": "entity",
+      "recency": "2026-08-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "机器人世界模型训练闭环（Robot World Models Training-Loop Taxonomy） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-gigaworld-1-policy-evaluation.md",
+      "detail_id": "entity-paper-gigaworld-1-policy-evaluation",
+      "label": "GigaWorld-1（World Models for Robot Policy Evaluation · arXiv:2607.02642）",
+      "type": "entity",
+      "recency": "2026-08-11",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-08-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/overview/sun-awesome-wm-technology-map.md",
+      "detail_id": "wiki-overview-sun-awesome-wm-technology-map",
+      "label": "Awesome World Models 技术地图",
+      "type": "overview",
+      "recency": "2026-08-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
     {
       "path": "wiki/entities/paper-r2s-ego.md",
       "detail_id": "entity-paper-r2s-ego",
@@ -110,117 +213,12 @@
       "recency": "2026-08-11",
       "source": "log.md",
       "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/fast-lio.md",
-      "detail_id": "entity-fast-lio",
-      "label": "FAST-LIO",
-      "type": "entity",
-      "recency": "2026-08-11",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-autointervene.md",
-      "detail_id": "entity-paper-autointervene",
-      "label": "AutoIntervene（Action Chunk 自动接管）",
-      "type": "entity",
-      "recency": "2026-08-11",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/action-chunking.md",
-      "detail_id": "wiki-methods-action-chunking",
-      "label": "Action Chunking（动作块输出）",
-      "type": "method",
-      "recency": "2026-08-11",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/dagger.md",
-      "detail_id": "wiki-methods-dagger",
-      "label": "DAgger（Dataset Aggregation）",
-      "type": "method",
-      "recency": "2026-08-11",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/tasks/bimanual-manipulation.md",
-      "detail_id": "wiki-tasks-bimanual-manipulation",
-      "label": "Bimanual Manipulation（双臂协调操作）",
-      "type": "task",
-      "recency": "2026-08-11",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "触觉感知（Tactile Sensing） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-why-action-chunking-improves-bc.md",
-      "detail_id": "entity-paper-why-action-chunking-improves-bc",
-      "label": "Why Action Chunking Improves BC（延迟策略与隐式集成）",
-      "type": "entity",
-      "recency": "2026-08-11",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "roadmap/depth-vla.md",
-      "detail_id": "roadmap-depth-vla",
-      "label": "路线（纵深）：如果目标是 VLA（视觉-语言-动作模型）",
-      "type": "roadmap_page",
-      "recency": "2026-08-11",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-08-11",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-tempo.md",
-      "detail_id": "entity-paper-tempo",
-      "label": "TEMPO（VLA 双频 RL 后训练）",
-      "type": "entity",
-      "recency": "2026-08-11",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/calvin-benchmark.md",
-      "detail_id": "entity-calvin-benchmark",
-      "label": "CALVIN",
-      "type": "entity",
-      "recency": "2026-08-11",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "开源项目本库导读（HMI Open-Source Projects Guide） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-r2s-ego.md",
-    "detail_id": "entity-paper-r2s-ego",
-    "label": "R2S-EGO：稀疏捕获 Real-to-Sim 的双代理 Ego 细化",
+    "path": "wiki/entities/paper-sc3-eval.md",
+    "detail_id": "entity-paper-sc3-eval",
+    "label": "SC3-Eval（自一致视频生成策略评估 · arXiv:2606.18610）",
     "type": "entity",
     "recency": "2026-08-11",
     "source": "log.md",
@@ -229,7 +227,7 @@
   "top_communities": [
     {
       "label": "操作",
-      "size": 586
+      "size": 585
     },
     {
       "label": "仿真到现实",
@@ -257,7 +255,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1207,
+      "degree": 1208,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -273,14 +271,14 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 870,
+      "degree": 869,
       "community_label": "操作（Manipulation） 社区"
     },
     {
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 713,
+      "degree": 714,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -288,7 +286,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 703,
+      "degree": 704,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -296,7 +294,7 @@
       "detail_id": "wiki-methods-model-based-rl",
       "label": "Model-Based RL（基于模型的强化学习）",
       "type": "method",
-      "degree": 567,
+      "degree": 566,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -395,7 +393,7 @@
       "detail_id": "entity-paper-masked-visual-actions",
       "label": "Masked Visual Actions（统一世界建模的掩码视觉动作）",
       "type": "entity",
-      "degree": 39,
+      "degree": 40,
       "has_repo": true,
       "community_label": "机器人世界模型训练闭环（Robot World Models Training-Loop Taxonomy） 社区"
     },

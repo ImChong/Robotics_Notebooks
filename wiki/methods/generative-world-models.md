@@ -2,9 +2,10 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-08-07
+updated: 2026-08-11
 related:
   - ../queries/embodied-fm-taxonomy-loop.md
+  - ../entities/paper-sc3-eval.md
   - ../entities/paper-motionwam-humanoid-loco-manipulation-wam.md
   - ../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
@@ -164,6 +165,10 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 
 [Ctrl-World](../entities/paper-ctrl-world.md)（arXiv:2510.10125，ICLR 2026，Stanford×Tsinghua）从 **SVD** 初始化，用 **帧级动作条件 + 位姿记忆检索 + 第三人称/腕部联合预测**，把被动视频生成器改成可与 π₀ / π₀.₅ 等现代 VLA **policy-in-the-loop** 交互的想象环境；DROID 训练后可零样本到新机位，想象指令跟随排名对齐真机，并用合成成功轨迹 SFT 把新指令成功率 **38.7%→83.4%**（约 **+44.7 pt**）。与 MVA 同属「动作条件视频 WM + 虚拟评估」，但条件是 **低维动作/位姿**、强调 **多视角 VLA 接口**，而非像素掩码前向/逆向统一。
 
+### 自一致视频策略评估器（示例：SC3-Eval）
+
+[SC3-Eval](../entities/paper-sc3-eval.md)（arXiv:2606.18610，UToronto×Vector×NVIDIA×π）把 **Cosmos3-Nano + 统一动力学** 改造成真机 VLA 评估沙盒：联合训 **前向/逆向动力学** 与 **跨视角 inpainting**，推理时用逆动力学误差 \(U_{\mathrm{chunk}}\) **早停** off-manifold rollout。七个 π₀.₅ checkpoint 上闭环 Pearson **0.929**、MMRV **0.119**，并复现 language/lifting/placing 失败类别；相对 Ctrl-World / IRASim 等纯前向基线，主卖点是 **自一致防漂移** 而非合成 SFT。截至入库日 **确认未开源**。
+
 ### 开源视频先验与轨迹可控 I2V（示例：Wan / Wan-Move / Wan-Dancer）
 
 [Wan](../entities/paper-wan-video.md)（arXiv:2503.20314）提供开源 **DiT + Wan-VAE** 视频基础模型族（Wan2.1/2.2）；[Wan-Move](../entities/paper-wan-move.md)（arXiv:2512.08765，NeurIPS 2025）在 **不改 I2V 架构** 的前提下，把点轨迹映射到 latent 并复制首帧特征作运动引导，微调 **Wan-I2V-14B** 达到商用 Motion Brush 级可控性，并发布 **MoveBench**；[Wan-Dancer](../entities/paper-wan-dancer.md)（arXiv:2607.09581）同在 Wan-I2V 上做分层 **music-to-dance**，把连贯生成推到 **分钟级 720p**。三者本身不是操纵 WM，但是 MVA（Wan-Fun-Control）与大量机器人视频 WM / 参考视频先验的 **上游对照**。
@@ -267,6 +272,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [DriftWorld](../entities/paper-driftworld.md) — **1-step drifting** 动作条件 WM：推理时搜索 + 离线评估（arXiv:2607.15065）。
 - [Masked Visual Actions](../entities/paper-masked-visual-actions.md) — **像素掩码轨迹** 统一前向/逆向；RoboCasa 策略评估 **r=0.982**（arXiv:2607.19343）。
 - [Ctrl-World](../entities/paper-ctrl-world.md) — **多视角** 可控 WM：VLA 闭环评估 + 合成 SFT（ICLR 2026）。
+- [SC3-Eval](../entities/paper-sc3-eval.md) — **自一致** 视频策略评估器：前向–逆向 + 跨视角 + 早停；闭环 \(r=0.929\)（arXiv:2606.18610；确认未开源）。
 - [World Action Planner](../entities/paper-world-action-planner.md) — **pose-image** 条件多视角 WM + VLM 想象规划（arXiv:2607.27599；代码/权重已开源）。
 - [Rofacto](../entities/paper-rofacto.md) — **名义轨迹 + URDF 渲染** 动作接口；相对向量条件提升场景响应（arXiv:2607.22535）。
 - [ViTacWorld](../entities/paper-vitacworld.md) — **视触觉** 动作条件 WM：dream 数据增强 + 策略评估（arXiv:2607.22530）。
