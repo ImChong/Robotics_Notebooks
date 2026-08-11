@@ -2456,6 +2456,46 @@
         "dyna",
         "dyna-co"
       ]
+    },
+    "kth": {
+      "label": "瑞典皇家理工学院（KTH Royal Institute of Technology）",
+      "aliases": [
+        "kth",
+        "kth-royal-institute",
+        "royal-institute-of-technology"
+      ]
+    },
+    "zjgsu": {
+      "label": "浙江工商大学（Zhejiang Gongshang University）",
+      "aliases": [
+        "zjgsu",
+        "zhejiang-gongshang",
+        "zhejiang-gongshang-university"
+      ]
+    },
+    "usyd": {
+      "label": "悉尼大学（The University of Sydney）",
+      "aliases": [
+        "usyd",
+        "university-of-sydney",
+        "sydney",
+        "sydney-university"
+      ]
+    },
+    "vanderbilt": {
+      "label": "范德堡大学（Vanderbilt University）",
+      "aliases": [
+        "vanderbilt",
+        "vanderbilt-university"
+      ]
+    },
+    "pair-lab": {
+      "label": "悉尼大学 PAIR Lab（PAIR Lab, University of Sydney）",
+      "aliases": [
+        "pair-lab",
+        "pairlab",
+        "aus-bot"
+      ]
     }
   }
 }

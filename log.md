@@ -1,3 +1,30 @@
+## [2026-08-11] ingest | sources/papers/autointervene_arxiv_2608_07065.md — 接入 AutoIntervene（arXiv:2608.07065）Action Chunk 校准自动接管；升格 wiki/entities/paper-autointervene.md；交叉 wiki/methods/action-chunking.md、wiki/methods/dagger.md、wiki/tasks/bimanual-manipulation.md、wiki/entities/paper-why-action-chunking-improves-bc.md、roadmap/depth-vla.md；归档 sources/sites/aus-bot-autointervene.md；确认未开源
+
+- **触发：** 用户指定论文 <https://arxiv.org/abs/2608.07065> 与项目页 <https://aus.bot/AutoIntervene/>；要求自动合并
+- **来源：** [`sources/papers/autointervene_arxiv_2608_07065.md`](sources/papers/autointervene_arxiv_2608_07065.md)、[`sources/sites/aus-bot-autointervene.md`](sources/sites/aus-bot-autointervene.md)
+- **新建实体：** [`wiki/entities/paper-autointervene.md`](wiki/entities/paper-autointervene.md) — phase-local/global visual-action 支持 + 分位数校准双向接管；九任务双臂真机 R2 avg 80%；源码运行时序图「不适用」（确认未开源）
+- **开源核查（步骤 2.5）：** **确认未开源** — 项目页无训练仓；`123qwedsa123/AutoIntervene` 仅为静态页镜像
+- **机构：** 注册 `usyd` / `pair-lab` / `vanderbilt`
+- **交叉：** [`wiki/methods/action-chunking.md`](wiki/methods/action-chunking.md)、[`wiki/methods/dagger.md`](wiki/methods/dagger.md)、[`wiki/tasks/bimanual-manipulation.md`](wiki/tasks/bimanual-manipulation.md)、[`wiki/entities/paper-why-action-chunking-improves-bc.md`](wiki/entities/paper-why-action-chunking-improves-bc.md)、[`roadmap/depth-vla.md`](roadmap/depth-vla.md)、[`wiki/methods/vla.md`](wiki/methods/vla.md)
+
+## [2026-08-11] ingest | sources/papers/tempo_arxiv_2608_07314.md — 接入 TEMPO（arXiv:2608.07314）VLA 语义–动作双频 RL 后训练；升格 wiki/entities/paper-tempo.md；交叉 wiki/methods/vla.md、wiki/entities/calvin-benchmark.md、roadmap/depth-vla.md、wiki/methods/defi-decoupled-dynamics-vla.md；归档 sources/sites/tempo-anonymous-4open.md；确认未开源
+
+- **触发：** 用户指定论文 <https://arxiv.org/abs/2608.07314> 与项目页 <https://anonymous.4open.science/w/tempo-page/>；要求自动合并
+- **来源：** [`sources/papers/tempo_arxiv_2608_07314.md`](sources/papers/tempo_arxiv_2608_07314.md)、[`sources/sites/tempo-anonymous-4open.md`](sources/sites/tempo-anonymous-4open.md)
+- **新建实体：** [`wiki/entities/paper-tempo.md`](wiki/entities/paper-tempo.md) — 冻结 VLM + 双 TD3 环（projection 低频 / expert 高频）；CALVIN ABC→D SR5 81.7% / Avg.Len. 4.59；源码运行时序图「不适用」（确认未开源）
+- **开源核查（步骤 2.5）：** **确认未开源** — 匿名页 Cloudflare 拦截且论文无 GitHub
+- **机构：** 注册 `zjgsu` / `kth`
+- **交叉：** [`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/entities/calvin-benchmark.md`](wiki/entities/calvin-benchmark.md)、[`roadmap/depth-vla.md`](roadmap/depth-vla.md)、[`wiki/methods/defi-decoupled-dynamics-vla.md`](wiki/methods/defi-decoupled-dynamics-vla.md)、[`wiki/methods/action-chunking.md`](wiki/methods/action-chunking.md)
+
+## [2026-08-11] ingest | sources/papers/fault_tolerant_locomotion_arxiv_2608_07328.md — 接入 Fault-Tolerant Locomotion（arXiv:2608.07328）执行器功率损失自适应步态；升格 wiki/entities/paper-fault-tolerant-locomotion.md；交叉 wiki/tasks/locomotion.md、roadmap/depth-rl-locomotion.md、wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md；归档 sources/sites/fault-tolerant-locomotion-github-io.md；确认未开源
+
+- **触发：** 用户指定论文 <https://arxiv.org/abs/2608.07328> 与项目页 <https://gianni0907.github.io/fault_tolerant_locomotion/>；要求自动合并
+- **来源：** [`sources/papers/fault_tolerant_locomotion_arxiv_2608_07328.md`](sources/papers/fault_tolerant_locomotion_arxiv_2608_07328.md)、[`sources/sites/fault-tolerant-locomotion-github-io.md`](sources/sites/fault-tolerant-locomotion-github-io.md)
+- **新建实体：** [`wiki/entities/paper-fault-tolerant-locomotion.md`](wiki/entities/paper-fault-tolerant-locomotion.md) — 非对称 actor–critic + latent-alignment + 可学习步态频率；KYON 68 kg 崎岖仿真与平地真机；源码运行时序图「不适用」（确认未开源）
+- **开源核查（步骤 2.5）：** **确认未开源** — 项目页仅视频/架构，无 GitHub
+- **机构：** `iit`（已注册）
+- **交叉：** [`wiki/tasks/locomotion.md`](wiki/tasks/locomotion.md)、[`roadmap/depth-rl-locomotion.md`](roadmap/depth-rl-locomotion.md)、[`wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md`](wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md)、[`wiki/concepts/sim2real.md`](wiki/concepts/sim2real.md)、[`wiki/methods/reinforcement-learning.md`](wiki/methods/reinforcement-learning.md)
+
 ## [2026-08-11] ingest | sources/blogs/dyna_2_million_hour_wam.md — 接入 Dyna-2（dyna.co/dyna-2）百万小时 WAM 跨具身缩放律；升格 wiki/entities/dyna-2.md；交叉 wiki/concepts/world-action-models.md、wiki/concepts/embodied-scaling-laws.md、wiki/methods/egoscale.md、roadmap/depth-wam.md；归档 sources/sites/dyna-co-dyna-2.md、sources/sites/dyna-co.md；注册机构 dyna-robotics；确认未开源
 
 - **触发：** 用户指定 <https://www.dyna.co/dyna-2>；要求自动合并

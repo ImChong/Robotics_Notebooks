@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-08-09
+updated: 2026-08-11
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -348,6 +348,7 @@ flowchart TD
 - [ADP](../entities/paper-adp.md) — 对抗动力学先验（SRBD-TO + 动力学窗），抗扰相对 AMP 提升；代码待发布
 - [SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md) — 重力门控双 AMP，走跑起身统一策略
 - [PRISM](../entities/paper-prism.md) — 多项式本体交互；Humanoid-Gym 生存率大幅高于同容量更大 MLP（arXiv:2607.23473）
+- [Fault-Tolerant Locomotion](../entities/paper-fault-tolerant-locomotion.md) — KYON 68 kg 执行器功率损失容错 + 可学习步态频率（arXiv:2608.07328；未开源）
 
 ## 推荐继续阅读
 

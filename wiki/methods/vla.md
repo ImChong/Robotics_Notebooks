@@ -10,6 +10,8 @@ related:
   - ../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md
   - ../queries/embodied-fm-taxonomy-loop.md
   - ../overview/vla-open-source-repro-landscape-2025.md
+  - ../entities/paper-tempo.md
+  - ../entities/paper-autointervene.md
   - ../overview/vln-open-source-repro-paradigms.md
   - ../concepts/humanoid-policy-network-architecture.md
   - ../concepts/foundation-policy.md
@@ -289,6 +291,8 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - **人形全身：** [ROVE](../entities/paper-rove-humanoid-vla-intervention.md)（arXiv:2606.17011）指出 MoCap **全身 + 灵巧手接管** 含 **adaptation 噪声**，需 **三阶段标注 + OVE 状态价值 + 跨 embodiment 人类视频**，避免 HG-DAgger 式直接模仿干预。
 - **flow-VLA 保守 RL：** [Green-VLA](../entities/paper-greenvla-staged-vla-humanoid.md)（arXiv:2602.00919）在 **R2** 用 **Q 梯度轨迹修正回灌** 与 **初始噪声 actor**，在 WidowX 上较 R1 **+24%** 绝对成功率，适合与 on-policy PG 微调 flow 模型对照阅读。
 - **产线真机 PPO on CFM-VLA：** [KinetIQ Ascend](../entities/kinetiq-ascend.md)（Humanoid, 2026）在 **BC 预训练 CFM 操作 VLA** 上用 **解耦 Thor 采样 / 云端 PPO**、**prefix-CFM 正则** 与 **稀疏奖励 + 在线 A/B 基线**，在双臂 **Alpha** 三项生产任务上用 **数天 robot-time** 报告 **42%–2× 吞吐** 与 **10–20× 失败率下降**；强调 **仅 RL 瓶颈阶段** 与 **车队部署后持续学习**。
+- **语义–动作双频 RL：** [TEMPO](../entities/paper-tempo.md)（arXiv:2608.07314）冻结 VLM，对 semantic projection / action expert 分设 TD3 环并令动作侧更高更新频率；CALVIN ABC→D **SR5 81.7%**；截至入库日确认未开源。
+- **Chunk 策略自动接管：** [AutoIntervene](../entities/paper-autointervene.md)（arXiv:2608.07065）用 visual-action 支持分位数校准双向人机切换，把干预段变成选择性 DAgger；九项双臂真机上 R2 平均 **80%** 成功且操作员时间低于人工盯梢。
 
 选型时区分：**数据采集质量**（见 [Teleoperation](../tasks/teleoperation.md)）与 **后训练如何从次优经验中提取策略**（见 [Online vs Offline RL](../comparisons/online-vs-offline-rl.md)）。
 
@@ -420,6 +424,8 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [Learning to Fold（LeHome 2026）](../entities/paper-lehome-learning-to-fold.md) — π₀.₅ + AWR/RECAP 异步 RL 与真机 DAgger；仿真 1st / 真机 2nd；全链路开源（arXiv:2606.27163）
 - [DEED](../entities/paper-deed.md) — G1-Edu + GR00T N1.6 零售补货：Data-Efficient + RECAP（未开源，arXiv:2607.20345）
 - [KinetIQ Ascend（真机 CFM-VLA PPO 后训练）](../entities/kinetiq-ascend.md) — 产线双臂人形操作 RL 工程栈与三项任务结果（Humanoid, 2026）
+- [TEMPO（VLA 双频 RL 后训练）](../entities/paper-tempo.md) — 冻结 VLM + 语义/动作双 TD3 环；CALVIN SR5 81.7%（arXiv:2608.07314；未开源）
+- [AutoIntervene（Action Chunk 自动接管）](../entities/paper-autointervene.md) — 视觉–动作支持校准双向干预；双臂真机 R2 平均 80%（arXiv:2608.07065；未开源）
 - [Being-H0.7](./being-h07.md) — 潜空间世界–动作模型与大规模 egocentric 视频训练
 - [EgoScale](./egoscale.md) — 人视频规模预训练 + mid-training 对齐
 - [EgoSteer](../entities/paper-egosteer.md) — EgoSmith + HITL DAgger + WM 增强 flow-VLA 全栈（arXiv:2607.09701）

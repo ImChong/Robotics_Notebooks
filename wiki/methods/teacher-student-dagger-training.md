@@ -2,7 +2,7 @@
 type: method
 tags: [imitation-learning, privileged-training, dagger, teacher-student, sim2real]
 status: complete
-updated: 2026-07-14
+updated: 2026-08-11
 summary: "飞书 Know-How 模块：Teacher-Student 用仿真特权信息训练教师，再蒸馏或 DAgger 聚合数据训练可部署学生，缓解 BC 分布偏移与 sim2real 观测差距。"
 related:
   - ./dagger.md
@@ -76,6 +76,7 @@ RoboParty 飞书 Know-How 将 **Teacher-Student 模型** 与 **DAgger（Dataset 
 - [DAgger](./dagger.md)、[Privileged Training](../concepts/privileged-training.md)
 - [Teacher-Student 多技能 BFM](./teacher-student-multi-skill-bfm.md)
 - [Know-How 技术地图](../overview/humanoid-motion-control-know-how-technology-map.md)
+- [Fault-Tolerant Locomotion](../entities/paper-fault-tolerant-locomotion.md) — 单阶段非对称 actor–critic + latent-alignment（对照两阶段蒸馏）
 
 ## 参考来源
 

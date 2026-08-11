@@ -172,6 +172,7 @@ flowchart LR
 - [Domain Randomization](../wiki/concepts/domain-randomization.md)（本仓库）
 - [System Identification](../wiki/concepts/system-identification.md)（本仓库）
 - [Actuator Network](../wiki/methods/actuator-network.md) 与 [Implicit vs Explicit 执行器建模](../wiki/concepts/implicit-explicit-actuator-modeling.md)（本仓库）— 执行器 gap 是 sim2real 的第一大坑
+- [Fault-Tolerant Locomotion](../wiki/entities/paper-fault-tolerant-locomotion.md)（本仓库）— 执行器功率损失下的非对称 actor–critic + 可学习步态频率；KYON 68 kg 真机平地（未开源）
 - [FlashSAC](../wiki/methods/flashsac.md)（本仓库）— scaling 式 off-policy SAC 改进：少更新 + 大模型 + 范数约束，G1 盲行走 sim2real 训练由小时级压到约 20 分钟
 - [PACE（足式系统化 Sim2Real）](../wiki/entities/paper-pace-sim2real-legged-robots.md)（本仓库）— chirp 悬空数据辨识紧凑关节动力学参数 + 四项物理能量 reward，无需动力学域随机化即可零样本部署
 - [Query：Sim2Real 部署检查清单](../wiki/queries/sim2real-checklist.md)
