@@ -1890,7 +1890,6 @@
 - [Looped World Models](wiki/entities/paper-sa-2606-18208-looped-world-models.md) — Looped World Models** 收录于 [Awesome World Models](https://github.com/sun254667/awesome-world-models `📅unknown` `[entity_page]`
 - [PAIWorld](wiki/entities/paper-sa-2606-18375-paiworld-a-3d-consistent-world-foundation-model.md) — PAIWorld: A 3D-Consistent World Foundation Model for Robotic Manipulation** 收录于 [Awesome World Mod `📅unknown` `[entity_page]`
 - [VEGA](wiki/entities/paper-sa-2606-18426-vega-learning-navigation-vlas-from-in-the-wild-e.md) — VEGA: Learning Navigation VLAs from In-the-Wild Egocentric Video with Geometric Trajectory Supervi `📅unknown` `[entity_page]`
-- [SC3-Eval](wiki/entities/paper-sa-2606-18610-sc3-eval-evaluating-robot-foundation-models-via.md) — SC3-Eval: Evaluating Robot Foundation Models via Self-Consistent Video Generation** 收录于 [Awesome W `📅unknown` `[entity_page]`
 - [Mem-World](wiki/entities/paper-sa-2606-18960-mem-world-memory-augmented-action-conditioned-wo.md) — Mem-World: Memory-Augmented Action-Conditioned World Models for Persistent Robot Manipulation** 收录 `📅unknown` `[entity_page]`
 - [Hand-4DGS](wiki/entities/paper-sa-2606-19156-hand-4dgs-feed-forward-3d-gaussian-splatting-for.md) — Hand-4DGS: Feed-Forward 3D Gaussian Splatting for 4D Hand Reconstruction from Egocentric Videos**  `📅unknown` `[entity_page]`
 - [RoboAtlas](wiki/entities/paper-sa-2606-19378-roboatlas-contextual-active-slam.md) — RoboAtlas: Contextual Active SLAM** 收录于 [Awesome Egocentric Vision](https://github.com/sun254667/a `📅unknown` `[entity_page]`
@@ -2009,6 +2008,7 @@
 - [SafeDreamer](wiki/entities/paper-sa-wm-482-safedreamer-safe-reinforcement-learning-with-wor.md) — SafeDreamer: Safe Reinforcement Learning with World Models** 收录于 [Awesome World Models](https://gi `📅unknown` `[entity_page]`
 - [SAM 2：图像与视频中的 Segment Anything](wiki/entities/paper-sam2.md) — SAM 2**（*Segment Anything Model 2*；论文 *SAM 2: Segment Anything in Images and Videos*，[arXiv:2408.0 `📅unknown` `[entity_page]`
 - [SAM 3：Segment Anything with Concepts](wiki/entities/paper-sam3.md) — SAM 3**（*Segment Anything Model 3*；论文 *SAM 3: Segment Anything with Concepts*，[arXiv:2511.16719](h `📅unknown` `[entity_page]`
+- [SC3-Eval（自一致视频生成策略评估 · arXiv:2606.18610）](wiki/entities/paper-sc3-eval.md) — SC3-Eval**（*SC3-Eval: Evaluating Robot Foundation Models via Self-Consistent Video Generation*，[ar `📅unknown` `[entity_page]`
 - [ScaleBFM（Scaling Behavior Foundation Model for Humanoid Robots）](wiki/entities/paper-scaling-bfm-humanoid.md) — ScaleBFM** 是上海人工智能实验室牵头、多校与 Galbot 合作的人形 **BFM scaling 技术报告**（arXiv:2607.15163，[项目页](https://scale `📅unknown` `[entity_page]`
 - [SceneBot（Contact-Prompted Whole-Body Tracking with Scene-Interaction）](wiki/entities/paper-scenebot.md) — SceneBot**（arXiv:2606.27581，Amazon FAR / Stanford / CMU）提出 **接触条件化（contact-prompted）** 的通用人形全身运动跟踪 `📅unknown` `[entity_page]`
 - [Segment Anything（SAM）](wiki/entities/paper-segment-anything.md) — SAM**（*Segment Anything Model*；论文 *Segment Anything*，[arXiv:2304.02643](https://arxiv.org/abs/2304 `📅unknown` `[entity_page]`

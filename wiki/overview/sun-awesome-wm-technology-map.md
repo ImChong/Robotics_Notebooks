@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, curated-index, awesome-world-models, sun254667, technology-map]
 status: complete
-updated: 2026-08-10
+updated: 2026-08-11
 summary: "Awesome World Models 技术地图：为清单内论文提供独立详情节点索引（新建 498，复用已有 73）。"
 related:
   - ../entities/awesome-world-models.md
@@ -590,7 +590,7 @@ sources:
 |---|------|----------|
 | 389 | Cosmos-Surg-dVRK: World Foundation Model-based Automated Online Evaluation of Surgical Rob | [paper-sa-2510-16240-cosmos-surg-dvrk-world-foundation-model-based-au](../entities/paper-sa-2510-16240-cosmos-surg-dvrk-world-foundation-model-based-au.md) |
 | 390 | GigaWorld-1: A Roadmap to Build World Models for Robot Policy Evaluation | [paper-gigaworld-1-policy-evaluation](../entities/paper-gigaworld-1-policy-evaluation.md) |
-| 391 | SC3-Eval: Evaluating Robot Foundation Models via Self-Consistent Video Generation | [paper-sa-2606-18610-sc3-eval-evaluating-robot-foundation-models-via](../entities/paper-sa-2606-18610-sc3-eval-evaluating-robot-foundation-models-via.md) |
+| 391 | SC3-Eval: Evaluating Robot Foundation Models via Self-Consistent Video Generation | [paper-sc3-eval](../entities/paper-sc3-eval.md) |
 | 392 | StressDream: Steering Video World Models for Robust Policy Evaluation and Improvement | [paper-sa-2606-00267-stressdream-steering-video-world-models-for-robu](../entities/paper-sa-2606-00267-stressdream-steering-video-world-models-for-robu.md) |
 | 393 | WorldEval: World Model as Real-World Robot Policies Evaluator | [paper-sa-2505-19017-worldeval-world-model-as-real-world-robot-polici](../entities/paper-sa-2505-19017-worldeval-world-model-as-real-world-robot-polici.md) |
 | 394 | WorldGym: Evaluating Robot Policies in a World Model | [paper-shenlan-wm-15-worldgym](../entities/paper-shenlan-wm-15-worldgym.md) |

@@ -11,7 +11,7 @@ tags:
   - bytedance
   - hkust
 status: complete
-updated: 2026-08-10
+updated: 2026-08-11
 arxiv: "2406.14540"
 code: https://github.com/bytedance/IRASim
 related:
@@ -193,17 +193,18 @@ sequenceDiagram
 
 ## 与其他工作对比
 
-| 对比轴 | IRASim | [Masked Visual Actions](./paper-masked-visual-actions.md) | [V-JEPA 2](./paper-vjepa2.md) | [RynnWorld-4D](./paper-rynnworld-4d-rgb-depth-flow.md) |
-|--------|--------|-----------------------------------------------------------|-------------------------------|--------------------------------------------------------|
-| **条件** | 低维动作轨迹 | 像素掩码轨迹 | latent 动作（AC 阶段） | 语言 + RGB-D；出 RGB-DF |
-| **规划介质** | 像素/latent 视频 | 像素视频 | **表征空间** | 4D latent + Policy 头 |
-| **开源** | **完整** 数据+权重 | 部分（LoRA；渲染 soon） | **完整** 权重+AC | 以论文/项目页为准 |
-| **代表叙事** | 细粒度交互 + Push-T 规划 | 前向/逆向统一 + r=0.982 | 互联网预训练 + 少机器人数据 | 几何–运动三联 |
+| 对比轴 | IRASim | [Masked Visual Actions](./paper-masked-visual-actions.md) | [V-JEPA 2](./paper-vjepa2.md) | [SC3-Eval](./paper-sc3-eval.md) |
+|--------|--------|-----------------------------------------------------------|-------------------------------|--------------------------------|
+| **条件** | 低维动作轨迹 | 像素掩码轨迹 | latent 动作（AC 阶段） | 低维动作 + 统一 FD/ID |
+| **规划介质** | 像素/latent 视频 | 像素视频 | **表征空间** | 多视角视频 + 早停 |
+| **开源** | **完整** 数据+权重 | 部分（LoRA；渲染 soon） | **完整** 权重+AC | **确认未开源** |
+| **代表叙事** | 细粒度交互 + Push-T 规划 | 前向/逆向统一 + r=0.982 | 互联网预训练 + 少机器人数据 | 自一致评估 \(r=0.929\) |
 
 ## 关联页面
 
 - [世界模型物理保真：输出阅读轴](../overview/world-model-physics-fidelity-outputs.md) — 「未来图像/视频」族代表
 - [Masked Visual Actions](./paper-masked-visual-actions.md) — 掩码动作条件对照
+- [SC3-Eval](./paper-sc3-eval.md) — 以 IRASim 为强基线的自一致策略评估器
 - [RynnWorld-4D](./paper-rynnworld-4d-rgb-depth-flow.md) — 几何/运动信号对照
 - [V-JEPA 2](./paper-vjepa2.md) — latent 规划中间路线
 - [WorldWeaver](./paper-worldweaver.md) — 持续状态寄存器对照

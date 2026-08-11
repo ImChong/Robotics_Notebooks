@@ -2496,6 +2496,14 @@
         "pairlab",
         "aus-bot"
       ]
+    },
+    "vector-institute": {
+      "label": "矢量研究所（Vector Institute）",
+      "aliases": [
+        "vector-institute",
+        "vector",
+        "vectorinstitute"
+      ]
     }
   }
 }

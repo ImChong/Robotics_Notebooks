@@ -1,3 +1,13 @@
+## [2026-08-11] ingest | sources/papers/sc3_eval_arxiv_2606_18610.md — 升格 SC3-Eval（arXiv:2606.18610）自一致视频策略评估器；canonical wiki/entities/paper-sc3-eval.md（合并原 paper-sa-2606-18610-*）；交叉 generative-world-models / virtual-sandbox / eval-loop / Ctrl-World / IRASim / GigaWorld-1；归档 sources/sites/weichengtseng-sc3-eval.md；确认未开源；注册 vector-institute
+
+- **触发：** 用户指定项目页 <https://weichengtseng.github.io/sc3-eval/> 与论文 <https://arxiv.org/abs/2606.18610>；要求自动合并
+- **来源：** [`sources/papers/sc3_eval_arxiv_2606_18610.md`](sources/papers/sc3_eval_arxiv_2606_18610.md)、[`sources/sites/weichengtseng-sc3-eval.md`](sources/sites/weichengtseng-sc3-eval.md)；策展摘录刷新 [`sources/papers/sun_awesome_wm_2606_18610_sc3-eval-evaluating-robot-foundation-mod.md`](sources/papers/sun_awesome_wm_2606_18610_sc3-eval-evaluating-robot-foundation-mod.md)
+- **新建/升格实体：** [`wiki/entities/paper-sc3-eval.md`](wiki/entities/paper-sc3-eval.md) — 前向–逆向 + 跨视角 + 测试时早停；七 π₀.₅ 闭环 Pearson **0.929** / MMRV **0.119**；源码运行时序图「不适用」（确认未开源）
+- **节点合并：** 删除索引级 `wiki/entities/paper-sa-2606-18610-sc3-eval-evaluating-robot-foundation-models-via.md`；[`schema/page-aliases.json`](schema/page-aliases.json) 重定向至 `entity-paper-sc3-eval`；技术地图 / catalog 指向 canonical
+- **开源核查（步骤 2.5）：** **确认未开源** — 项目页仅 Paper；`WeiChengTseng/sc3-eval` 为静态 Pages 仓
+- **机构：** `utoronto` / `vector-institute`（新注册）/ `nvidia` / `physical-intelligence` / `stanford` / `berkeley`
+- **交叉：** [`wiki/methods/generative-world-models.md`](wiki/methods/generative-world-models.md)、[`wiki/overview/world-models-route-03-virtual-sandbox.md`](wiki/overview/world-models-route-03-virtual-sandbox.md)、[`wiki/overview/wm-action-consequence-category-04-eval-posttrain.md`](wiki/overview/wm-action-consequence-category-04-eval-posttrain.md)、[`wiki/queries/embodied-eval-benchmark-selection-loop.md`](wiki/queries/embodied-eval-benchmark-selection-loop.md)、[`wiki/entities/paper-ctrl-world.md`](wiki/entities/paper-ctrl-world.md)、[`wiki/entities/paper-irasim.md`](wiki/entities/paper-irasim.md)、[`wiki/entities/paper-gigaworld-1-policy-evaluation.md`](wiki/entities/paper-gigaworld-1-policy-evaluation.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`wiki/overview/sun-awesome-wm-technology-map.md`](wiki/overview/sun-awesome-wm-technology-map.md)
+
 ## [2026-08-11] ingest | sources/papers/r2s_ego_arxiv_2608_06827.md — 接入 R2S-EGO（XPENG×PolyU 稀疏捕获双代理 Real-to-Sim）；wiki/entities/paper-r2s-ego.md；交叉更新 wiki/concepts/sim2real.md、wiki/entities/paper-agentic-real2sim.md、wiki/methods/crisp-real2sim.md、wiki/entities/awesome-real2sim2real.md、wiki/entities/paper-notebook-gaussgym-an-open-source-real-to-sim-framework-fo.md
 
 - **触发：** 用户指定 R2S-EGO（Shuai Fang 等；XPENG Robotics × 香港理工大学；arXiv:2608.06827）；要求自动合并

@@ -2,14 +2,17 @@
 type: overview
 tags: [world-models, world-action-models, category-hub, survey]
 status: complete
-updated: 2026-07-11
+updated: 2026-08-11
 summary: "世界模型动作后果专题 · 04 — 策略评估与世界模型进入研发链路"
 related:
   - ./robot-world-models-action-consequence-technology-map.md
   - ./wm-action-consequence-category-01-wam-action-prediction.md
   - ../concepts/world-action-models.md
+  - ../entities/paper-sc3-eval.md
+  - ../entities/paper-gigaworld-1-policy-evaluation.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
+  - ../../sources/papers/sc3_eval_arxiv_2606_18610.md
 ---
 
 # 世界模型动作后果分类 04：训练与评估闭环
@@ -30,6 +33,7 @@ sources:
 | 工作 | Wiki 实体 | 文内角色 |
 |------|-----------|----------|
 | GigaWorld-1 | [../entities/paper-gigaworld-1-policy-evaluation](../entities/paper-gigaworld-1-policy-evaluation.md) | 7 类视频 WM + 32 万轨迹研究策略评估对齐 |
+| SC3-Eval | [../entities/paper-sc3-eval](../entities/paper-sc3-eval.md) | 自一致视频生成作真机 VLA 评估器（闭环 \(r=0.929\)） |
 
 
 ### 交叉引用（文内第四节）
