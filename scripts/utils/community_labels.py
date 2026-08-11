@@ -118,6 +118,9 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     ),
     "wiki/references/llm-wiki-karpathy.md": "大语言模型维基（LLM Wiki）",
     "wiki/concepts/world-action-models.md": "世界动作模型（World Action Models, WAM）",
+    "wiki/overview/robot-world-models-training-loop-taxonomy.md": (
+        "机器人世界模型训练闭环（Robot World Models Training-Loop Taxonomy）"
+    ),
     "wiki/concepts/tactile-sensing.md": "触觉感知（Tactile Sensing）",
     "wiki/overview/ego-9-papers-technology-map.md": (
         "自我中心视觉技术地图（Egocentric Vision Technology Map）"
