@@ -6,24 +6,26 @@
 - **缩写 / 框架：** **KILVO**（Kinematic-Inertial-LiDAR-Visual Odometry）
 - **类型：** paper / humanoid / odometry / slam / sensor-fusion / esikf
 - **arXiv：** <https://arxiv.org/abs/2608.05647>（Submitted 2026-08-06；PDF：<https://arxiv.org/pdf/2608.05647>）
-- **DOI：** <https://doi.org/10.1109/TMECH.2026.3721778>（IEEE/ASME Transactions on Mechatronics 接收）
+- **DOI：** <https://doi.org/10.1109/TMECH.2026.3721778>（IEEE/ASME Transactions on Mechatronics）
 - **代码仓：** <https://github.com/JixinGao/KILVO> — 归档见 [`sources/repos/kilvo.md`](../repos/kilvo.md)
 - **作者：** Jixin Gao、Fucheng Liu、Teng Zhang、Fusheng Zha（通讯）
-- **机构：** 哈尔滨工业大学机器人技术与系统国家重点实验室（HIT）
+- **机构：** 哈尔滨工业大学机器人技术与系统全国重点实验室（HIT；英文：State Key Laboratory of Robotics and Systems）
 - **入库日期：** 2026-08-08
-- **一句话说明：** 面向人形的运动学–惯性–激光–视觉里程计：异步–顺序混合 ESIKF 紧耦合关节编码/IMU/LiDAR/相机，含接触估计与模态自适应，输出可达 1 kHz；代码与数据宣称 GitHub 发布但截至入库日仍为占位。
+- **复核日期：** 2026-08-11
+- **一句话说明：** 面向人形的运动学–惯性–激光–视觉里程计：异步–顺序混合 ESIKF 紧耦合关节编码/IMU/LiDAR/相机，含接触估计与模态自适应，输出可达 1 kHz；代码与数据宣称 GitHub 发布但截至复核日仍为占位。
 
 ## 开源状态（步骤 2.5）
 
-- **仓库核查（2026-08-08）：** [JixinGao/KILVO](https://github.com/JixinGao/KILVO) 公开；README：「The paper is under review, our code and datasets would be available soon.」根目录仅 README，无可运行源码/数据。
+- **仓库核查（2026-08-11 复核）：** [JixinGao/KILVO](https://github.com/JixinGao/KILVO) 公开；README：「The paper is under review, our code and datasets would be available soon.」根目录仅 README（约 209 B），仓库 `size: 0`，无可运行源码/数据。
 - **论文声明：** 「Our code and datasets are released on GitHub」— 与仓现状不一致，按 **项目页/仓实际链接** 记为 **宣称将开源 / 占位**。
-- **结论：** **代码待开放**（用户描述与核查一致）。
+- **结论：** **代码待开放**（与 2026-08-08 入库核查一致）。
 
 ## 摘录 1：问题与主张（§I）
 
 - **痛点：** 纯本体感里程计长时漂；人形冲击/跌倒/光照退化导致传感器失效；接触信息常依赖额外力传感器或学习模块。
 - **主张：** 在 **异步–顺序混合 ESIKF** 中：IMU 预测；腿运动学高率异步更新；外感先 LiDAR 几何再视觉光度顺序更新；多模态适配容忍失效；接触估计复用运动学/惯性/地图线索、无额外传感器。
 - **贡献：** 框架 + 接触模块 + 人形 SLAM 数据集（15 序列多步态）+ 公开/真机评测。
+- **发表：** IEEE/ASME Transactions on Mechatronics（DOI 10.1109/TMECH.2026.3721778）；单位为 HIT 机器人技术与系统全国重点实验室。
 
 **对 wiki 的映射：** 升格 [`wiki/entities/paper-kilvo.md`](../../wiki/entities/paper-kilvo.md)；与 [里程计–激光融合](../../wiki/methods/lidar-odometry-fusion.md)、[FAST-LIO](../../wiki/entities/fast-lio.md)、[LIO/VIO 选型](../../wiki/comparisons/lidar-slam-lio-vio-selection.md) 互链。
 
@@ -49,5 +51,5 @@
 
 ## 建议 wiki 动作
 
-- 新建 **`wiki/entities/paper-kilvo.md`**、**`sources/repos/kilvo.md`**。
+- 维护 **`wiki/entities/paper-kilvo.md`**、**`sources/repos/kilvo.md`**（机构名对齐「全国重点实验室」；复核开源占位）。
 - 交叉更新 lidar-odometry-fusion / lidar-slam 选型页。

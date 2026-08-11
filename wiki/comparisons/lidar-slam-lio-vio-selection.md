@@ -2,7 +2,7 @@
 type: comparison
 tags: [slam, lidar, vio, lio, selection, ros]
 status: complete
-updated: 2026-08-08
+updated: 2026-08-11
 related:
   - ../overview/navigation-slam-autonomy-stack.md
   - ../entities/paper-ultra-fusion-multi-sensor-slam.md
