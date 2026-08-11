@@ -21,6 +21,7 @@ related:
   - ../methods/reinforcement-learning.md
   - ../methods/teacher-student-dagger-training.md
   - ../concepts/implicit-explicit-actuator-modeling.md
+  - ../queries/actuator-drive-chain-selection-loop.md
   - ./paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md
   - ./quadruped-robot.md
   - ../../roadmap/depth-rl-locomotion.md
@@ -174,6 +175,7 @@ flowchart TB
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — PPO / 特权训练总览
 - [Teacher–Student / DAgger 训练](../methods/teacher-student-dagger-training.md) — 对照两阶段蒸馏
 - [Implicit vs Explicit 执行器建模](../concepts/implicit-explicit-actuator-modeling.md) — 执行器 gap 相邻主题
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 本文把③层执行器功率损失当作故障扰动，写进策略训练与步态 timing
 - [执行器约束 RL 高速四足](./paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md) — 重型四足执行器边界对照
 - [四足机器人实体](./quadruped-robot.md) — 平台索引
 - [RL 运动控制纵深](../../roadmap/depth-rl-locomotion.md) — 学习型运动路线
