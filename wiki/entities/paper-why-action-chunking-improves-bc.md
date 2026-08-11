@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, imitation-learning, action-chunking, behavior-cloning, diffusion-policy, libero, robomimic, polimi, berkeley, analysis]
 status: complete
-updated: 2026-08-04
+updated: 2026-08-11
 venue: "CoRL 2026（项目页 PDF；暂无 arXiv）"
 related:
   - ../methods/action-chunking.md
@@ -12,9 +12,11 @@ related:
   - ./libero-benchmark.md
   - ../formalizations/behavior-cloning-loss.md
   - ../queries/vla-deployment-guide.md
+  - ./paper-autointervene.md
 sources:
   - ../../sources/papers/why_action_chunking_improves_bc_corl2026.md
   - ../../sources/sites/action-chunking-github-io.md
+  - ../../sources/papers/autointervene_arxiv_2608_07065.md
 summary: "Why Action Chunking Improves BC（CoRL 2026，Polimi / Berkeley）：消融表明 chunk 收益主因是延迟观测条件化与隐式集成，而非时序一致性/有效地平线；RDE 部署在 LIBERO/Robomimic/Franka 上匹配标准 chunk 执行；显式延迟集成可进一步抬升（如 Transport 12.6%→41.5%）。"
 ---
 
@@ -177,15 +179,18 @@ Franka + Robotiq，15 Hz，delta joint；carrot / toaster / sushi 三任务，�
 - [LIBERO](./libero-benchmark.md) — 主仿真基准之一
 - [Behavior Cloning Loss](../formalizations/behavior-cloning-loss.md) — 监督目标形式
 - [Query：VLA 真机部署指南](../queries/vla-deployment-guide.md) — chunk 缓冲 / 异步执行工程语境
+- [AutoIntervene](./paper-autointervene.md) — 部署期对提议 chunk 的支持监控与自动接管（互补「训练机制」叙事）
 
 ## 参考来源
 
 - [Why Action Chunking Improves BC（论文归档）](../../sources/papers/why_action_chunking_improves_bc_corl2026.md)
 - [action-chunking.github.io（项目页归档）](../../sources/sites/action-chunking-github-io.md)
 - [项目页 PDF](https://action-chunking.github.io/static/action_chunking.pdf)
+- [AutoIntervene 论文摘录](../../sources/papers/autointervene_arxiv_2608_07065.md)
 
 ## 推荐继续阅读
 
 - [官方项目页](https://action-chunking.github.io/)
 - Zhao et al., [*Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware*](https://arxiv.org/abs/2304.13705) — ACT：chunk 的代表性工程起点
 - Chi et al., [*Diffusion Policy*](https://diffusion-policy.cs.columbia.edu/) — 本文仿真/真机主策略族
+- [AutoIntervene](./paper-autointervene.md)

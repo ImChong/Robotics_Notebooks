@@ -2,16 +2,18 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
-updated: 2026-07-30
+updated: 2026-08-11
 summary: "CALVIN：把语言指令、视觉观测和连续控制组织成长时序任务链，评测策略在无需每步重置时连续完成多个目标的能力；其数据与协议重点暴露错误累积和子任务切换，而非单步抓取成功率。"
 related:
   - ../concepts/sim2real.md
   - ../entities/isaac-lab.md
   - ../entities/humanoid-motion-intelligence.md
   - ../queries/hmi-opensource-projects-coverage.md
+  - ./paper-tempo.md
 sources:
   - ../../sources/repos/calvin-benchmark.md
   - ../../sources/repos/humanoid-motion-intelligence.md
+  - ../../sources/papers/tempo_arxiv_2608_07314.md
 ---
 
 # CALVIN
@@ -88,14 +90,17 @@ flowchart LR
 - [isaac-lab](../entities/isaac-lab.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
+- [TEMPO](./paper-tempo.md) — 在 CALVIN ABC→D 上做语义–动作双频 RL 后训练（SR5 81.7%）
 
 ## 参考来源
 
 - [CALVIN 来源归档](../../sources/repos/calvin-benchmark.md)
 - [Humanoid Motion Intelligence 仓库归档](../../sources/repos/humanoid-motion-intelligence.md)
 - [开源项目主表（上游）](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)
+- [TEMPO 论文摘录](../../sources/papers/tempo_arxiv_2608_07314.md)
 
 ## 推荐继续阅读
 
 - [官方入口](https://github.com/mees/calvin)
 - [Humanoid Motion Intelligence 知识库实体页](./humanoid-motion-intelligence.md)
+- [TEMPO](./paper-tempo.md)

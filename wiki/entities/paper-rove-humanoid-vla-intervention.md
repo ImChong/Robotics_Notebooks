@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, vla, reinforcement-learning, post-training, human-in-the-loop, teleoperation, dexterous-manipulation, advantage-conditioning, offline-rl, experience-learning, xpeng-robotics, contact-rich-manipulation, xpeng]
 status: complete
-updated: 2026-07-24
+updated: 2026-08-11
 arxiv: "2606.17011"
 venue: "arXiv 2026"
 related:
@@ -151,6 +151,7 @@ flowchart TB
 - [RL vs IL](../comparisons/rl-vs-il.md)
 - [LWD](../methods/lwd.md) — 车队级部署经验 RL 的另一代表
 - [BifrostUMI](./paper-bifrost-umi.md) — 人形操作数据采集对照
+- [AutoIntervene](./paper-autointervene.md) — 双臂桌面 chunk 策略的检索式支持监控与双向接管（对照人形全身干预）
 
 ## 推荐继续阅读
 

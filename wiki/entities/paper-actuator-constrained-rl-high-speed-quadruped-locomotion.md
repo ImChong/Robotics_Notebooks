@@ -11,7 +11,7 @@ tags:
   - kaist
   - agency-for-defense-development
 status: complete
-updated: 2026-07-20
+updated: 2026-08-11
 arxiv: "2312.17507"
 venue: "arXiv 2023"
 related:
@@ -24,6 +24,7 @@ related:
   - ./paper-quadruped-torque-control-rl.md
   - ../methods/actuator-network.md
   - ../queries/actuator-drive-chain-selection-loop.md
+  - ./paper-fault-tolerant-locomotion.md
 sources:
   - ../../sources/papers/actuator_constrained_rl_high_speed_quadruped_arxiv_2312_17507.md
 summary: "arXiv:2312.17507：在 RL 训练中将电机扭矩–转速工作区（MOR）硬约束写入仿真，配合对称步态奖励与轻量化足端，使 KAIST Hound 达 6.5 m/s 高速奔跑并缩小高速段 sim2real 差距。"

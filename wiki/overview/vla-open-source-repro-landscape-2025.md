@@ -2,7 +2,7 @@
 type: overview
 tags: [vla, open-source, reproduction, survey, github, embodied-ai]
 status: complete
-updated: 2026-08-10
+updated: 2026-08-11
 related:
   - ../methods/vla.md
   - ../methods/star-vla.md
@@ -117,7 +117,7 @@ flowchart TB
 |-------------|----------|--------|
 | 复现 π 系多任务操作 | OpenPI 仓库 + 官方权重/数据说明 | 多机器人 URDF、相机标定与 action space 不一致 |
 | 单卡 / 小团队试 VLA | VLA-Adapter 或 StarVLA；Meta-World 轻量对照可用 [FabriVLA](../entities/paper-fabrivla.md) / [Evo-1](../entities/paper-evo1-lightweight-vla.md) | 勿与 OpenPI 数据规模假设混用；FabriVLA 需 DeepSpeed FP32 master |
-| 给已有 VLA 做 RL 后训练 | SimpleVLA-RL + 确认仿真/渲染依赖；或 **RLinf STEAM/RECAP**（离线 advantage + CFG，无需在线采样）；要 **在线异步 rollout 飞轮** 可对照 [lehome_solution](../entities/paper-lehome-learning-to-fold.md) | 需对齐 veRL 与 OpenVLA-OFT 版本；STEAM 见 [论文实体](../entities/paper-steam-advantage-modeling.md)；LeHome 需 Isaac Sim + HF Hub |
+| 给已有 VLA 做 RL 后训练 | SimpleVLA-RL + 确认仿真/渲染依赖；或 **RLinf STEAM/RECAP**（离线 advantage + CFG，无需在线采样）；要 **在线异步 rollout 飞轮** 可对照 [lehome_solution](../entities/paper-lehome-learning-to-fold.md)；方法坐标可对照 [TEMPO](../entities/paper-tempo.md)（双频 TD3，**未开源**） | 需对齐 veRL 与 OpenVLA-OFT 版本；STEAM 见 [论文实体](../entities/paper-steam-advantage-modeling.md)；LeHome 需 Isaac Sim + HF Hub；TEMPO 不可当复现栈 |
 | 搭集群 RL 基建 | RLinf | 系统项目，不等同于单一策略 checkpoint |
 | 冻结 VLA + LLM harness 评测 | RPent（Harness VLA）+ LIBERO-Pro | 需 LLM API key 与 π₀.₅ / 仿真依赖；≠ 训练新 VLA |
 | 异构策略编排（VLA+TAMP…） | 先读 [RoboHarness](../entities/paper-robo-harness.md)；仓未发布可运行入口前勿当复现栈 | 与 RPent/Harness VLA 不同名不同设定；跟踪官方仓是否补齐 harness |

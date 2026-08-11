@@ -2,7 +2,7 @@
 type: concept
 tags: [sim2real, rl, domain-randomization, deployment]
 status: complete
-updated: 2026-08-10
+updated: 2026-08-11
 related:
   - ../entities/embodied-interview-qa.md
   - ../methods/reinforcement-learning.md
@@ -251,6 +251,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [PAC-MAN](../entities/paper-pac-man-perceptive-cbf-rl.md) — 掩膜深度观测契约对齐后 G1 零样本躲避球（CBF-RL）
 - [ergoCub Shared Embodied Intelligence](../entities/paper-ergocub-shared-embodied-intelligence.md) — 优化模型几何/密度假设与制造延长件之间的硬件 sim-to-real 缺口讨论
 - [真机安全 RL 微调](./safe-real-world-rl-fine-tuning.md) — 部署后真机在线适配的安全边界：低秩残差 / 生成兜底 / CBF 安全壳三条路径
+- [Fault-Tolerant Locomotion](../entities/paper-fault-tolerant-locomotion.md) — KYON 68 kg 功率损失容错步态的平地零样本（崎岖仍偏仿真；未开源）
 - [Motion Retargeting](./motion-retargeting.md) — 「映射 → 训练 → 迁移」三段流水线首段：Sim2Real 消费其物理可执行参考产物
 - [Whole-Body Tracking Pipeline](./whole-body-tracking-pipeline.md) — 三段流水线中段；Sim2Real 横切其「训练 → 真机」落地
 - [跨具身策略迁移选型指南](../queries/cross-embodiment-transfer-strategy.md) — 三段流水线末段；换机体后是否需重跨 domain gap

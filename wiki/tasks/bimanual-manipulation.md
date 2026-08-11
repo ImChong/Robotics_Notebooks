@@ -2,12 +2,14 @@
 type: task
 tags: [manipulation, bimanual, humanoid, dual-arm, whole-body, imitation-learning, teleoperation]
 status: complete
-updated: 2026-08-04
+updated: 2026-08-11
 summary: "双臂协调操作（Bimanual Manipulation）要求两只手臂在力学和时序上协同完成单臂无法完成的任务，是人形机器人操作能力的核心挑战之一。"
 sources:
   - ../../sources/papers/imitation_learning.md
+  - ../../sources/papers/autointervene_arxiv_2608_07065.md
 related:
   - ./manipulation.md
+  - ../entities/paper-autointervene.md
   - ./loco-manipulation.md
   - ../concepts/whole-body-control.md
   - ../concepts/whole-body-coordination.md
@@ -175,6 +177,7 @@ $${}^A T_{obj} \cdot {}^{obj} T_B = {}^A T_B$$
 - [RoboTwin 2.0](../entities/robotwin.md) — 双臂自动化数据生成与仿真平台
 - [Transformer Transformer](../entities/paper-transformer-transformer.md) — 运动条件双臂机体共设计（洗碗 / ALOHA 抛布）
 - [CLIFT](../entities/paper-clift-closed-loop-iterative-finetuning.md) — G1 人形双臂交接等接触丰富任务的部署期闭环改进（53%→96%）
+- [AutoIntervene](../entities/paper-autointervene.md) — action-chunking 双臂策略的校准自动接管与针对性干预数据（arXiv:2608.07065）
 
 ## 参考来源
 
