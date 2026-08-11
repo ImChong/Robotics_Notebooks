@@ -1,3 +1,11 @@
+## [2026-08-11] structural | media/site-demo.gif — 按最新图谱重录 README 演示 GIF（3000 节点）
+
+- **触发：** 用户要求更新 README GIF 并自动合并
+- **脚本：** [`scripts/record_readme_demo.cjs`](scripts/record_readme_demo.cjs)（78 frames / 2.86 MB；图谱 **3000** 节点 / **26062** 边）
+- **流程：** `make export graph` → `docs/` 本地 `http.server 8765` → 重录并写回 `media/site-demo.gif`
+- **引用：** [`README.md`](README.md)「在线演示」仍指向 `media/site-demo.gif`
+- **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md)
+
 ## [2026-08-11] ingest | sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md — 接入 Online MBRL via Online Optimization（arXiv:2510.18518，ETH×MPI-IS×EPFL）；升格 wiki/entities/paper-online-mbrl-robot-control.md；交叉 wiki/methods/model-based-rl.md、wiki/concepts/sim2real.md、wiki/entities/paper-td-mpc2.md、wiki/entities/paper-shenlan-wm-13-dreamerv3.md、wiki/entities/robotic-world-model-eth-rsl.md；确认未开源
 
 - **触发：** 用户指定论文 <https://arxiv.org/abs/2510.18518>；要求自动合并
