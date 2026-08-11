@@ -1,3 +1,12 @@
+## [2026-08-11] ingest | sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md — 接入 Online MBRL via Online Optimization（arXiv:2510.18518，ETH×MPI-IS×EPFL）；升格 wiki/entities/paper-online-mbrl-robot-control.md；交叉 wiki/methods/model-based-rl.md、wiki/concepts/sim2real.md、wiki/entities/paper-td-mpc2.md、wiki/entities/paper-shenlan-wm-13-dreamerv3.md、wiki/entities/robotic-world-model-eth-rsl.md；确认未开源
+
+- **触发：** 用户指定论文 <https://arxiv.org/abs/2510.18518>；要求自动合并
+- **来源：** [`sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md`](sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md)
+- **新建实体：** [`wiki/entities/paper-online-mbrl-robot-control.md`](wiki/entities/paper-online-mbrl-robot-control.md) — 真机缓冲学动力学 + 真实轨迹闭环一阶策略更新；HEAP **2.5 h / 2.7 cm**，软臂约 **30 episode / 2.95 cm**；源码运行时序图「不适用」（确认未开源）
+- **开源核查（步骤 2.5）：** **确认未开源** — arXiv 无项目页/代码链接；公开检索无官方仓
+- **机构：** `eth` / `max-planck` / `epfl`（已注册）
+- **交叉：** [`wiki/methods/model-based-rl.md`](wiki/methods/model-based-rl.md)、[`wiki/concepts/sim2real.md`](wiki/concepts/sim2real.md)、[`wiki/concepts/latent-imagination.md`](wiki/concepts/latent-imagination.md)、[`wiki/entities/paper-td-mpc2.md`](wiki/entities/paper-td-mpc2.md)、[`wiki/entities/paper-shenlan-wm-13-dreamerv3.md`](wiki/entities/paper-shenlan-wm-13-dreamerv3.md)、[`wiki/entities/robotic-world-model-eth-rsl.md`](wiki/entities/robotic-world-model-eth-rsl.md)
+
 ## [2026-08-11] ingest | sources/papers/sc3_eval_arxiv_2606_18610.md — 升格 SC3-Eval（arXiv:2606.18610）自一致视频策略评估器；canonical wiki/entities/paper-sc3-eval.md（合并原 paper-sa-2606-18610-*）；交叉 generative-world-models / virtual-sandbox / eval-loop / Ctrl-World / IRASim / GigaWorld-1；归档 sources/sites/weichengtseng-sc3-eval.md；确认未开源；注册 vector-institute
 
 - **触发：** 用户指定项目页 <https://weichengtseng.github.io/sc3-eval/> 与论文 <https://arxiv.org/abs/2606.18610>；要求自动合并

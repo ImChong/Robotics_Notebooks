@@ -10,7 +10,7 @@ tags:
   - ucsd
   - open-source
 status: complete
-updated: 2026-08-10
+updated: 2026-08-11
 arxiv: "2310.16828"
 related:
   - ../overview/world-model-physics-fidelity-outputs.md
@@ -21,11 +21,13 @@ related:
   - ./paper-planet-latent-dynamics.md
   - ./paper-shenlan-wm-13-dreamerv3.md
   - ./paper-unisim.md
+  - ./paper-online-mbrl-robot-control.md
 sources:
   - ../../sources/papers/tdmpc2_arxiv_2310_16828.md
   - ../../sources/repos/tdmpc2.md
   - ../../sources/sites/tdmpc2-com.md
   - ../../sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md
+  - ../../sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md
 summary: "TD-MPC2（Hansen et al.，UCSD，arXiv:2310.16828，ICLR 2024 Spotlight）：隐式世界模型+潜空间局部轨迹优化；单一超参覆盖104任务，并可扩到317M多任务智能体；MIT开源+大量权重。"
 code: https://github.com/nicklashansen/tdmpc2
 ---
@@ -210,6 +212,7 @@ sequenceDiagram
 - [Latent Imagination](../concepts/latent-imagination.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [World Models](./paper-ha-schmidhuber-world-models.md) · [PlaNet](./paper-planet-latent-dynamics.md) · [DreamerV3](./paper-shenlan-wm-13-dreamerv3.md) · [UniSim](./paper-unisim.md)
+- [Online MBRL via Online Optimization](./paper-online-mbrl-robot-control.md) — HEAP 仿真中与本文对照的真机一阶 MBRL
 
 ## 参考来源
 
@@ -217,6 +220,7 @@ sequenceDiagram
 - [nicklashansen/tdmpc2 代码索引](../../sources/repos/tdmpc2.md)
 - [tdmpc2.com 项目页归档](../../sources/sites/tdmpc2-com.md)
 - [微信：世界模型物理保真度策展](../../sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md)
+- [Online MBRL 论文归档（对照实验提及）](../../sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md)
 
 ## 推荐继续阅读
 
@@ -224,3 +228,4 @@ sequenceDiagram
 - [arXiv:2310.16828](https://arxiv.org/abs/2310.16828)
 - [GitHub — nicklashansen/tdmpc2](https://github.com/nicklashansen/tdmpc2)
 - [DreamerV3](./paper-shenlan-wm-13-dreamerv3.md) — 通配想象 RL 对照
+- [Online MBRL via Online Optimization](./paper-online-mbrl-robot-control.md) — 真实轨迹一阶更新对照

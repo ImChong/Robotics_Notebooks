@@ -1,13 +1,88 @@
 {
   "generated_at": "2026-08-11",
-  "node_count": 2999,
-  "edge_count": 26048,
+  "node_count": 3000,
+  "edge_count": 26062,
   "coverage": {
-    "covered": 2975,
-    "total": 2975,
+    "covered": 2976,
+    "total": 2976,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-online-mbrl-robot-control.md",
+      "detail_id": "entity-paper-online-mbrl-robot-control",
+      "label": "Online MBRL via Online Optimization（真机在线模型基强化学习）",
+      "type": "entity",
+      "recency": "2026-08-11",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/methods/model-based-rl.md",
+      "detail_id": "wiki-methods-model-based-rl",
+      "label": "Model-Based RL（基于模型的强化学习）",
+      "type": "method",
+      "recency": "2026-08-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-08-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-td-mpc2.md",
+      "detail_id": "entity-paper-td-mpc2",
+      "label": "TD-MPC2（Scalable, Robust World Models for Continuous Control）",
+      "type": "entity",
+      "recency": "2026-08-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-shenlan-wm-13-dreamerv3.md",
+      "detail_id": "entity-paper-shenlan-wm-13-dreamerv3",
+      "label": "DreamerV3（Mastering Diverse Domains through World Models）",
+      "type": "entity",
+      "recency": "2026-08-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/robotic-world-model-eth-rsl.md",
+      "detail_id": "entity-robotic-world-model-eth-rsl",
+      "label": "Robotic World Model（ETH RSL：RWM / RWM-U）",
+      "type": "entity",
+      "recency": "2026-08-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/concepts/latent-imagination.md",
+      "detail_id": "wiki-concepts-latent-imagination",
+      "label": "Latent Imagination (潜空间想象)",
+      "type": "concept",
+      "recency": "2026-08-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
     {
       "path": "wiki/entities/paper-sc3-eval.md",
       "detail_id": "entity-paper-sc3-eval",
@@ -121,17 +196,6 @@
       "action": "added"
     },
     {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "recency": "2026-08-11",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
       "path": "wiki/entities/paper-agentic-real2sim.md",
       "detail_id": "entity-paper-agentic-real2sim",
       "label": "Agentic Real2Sim（VLM Agent 编排的物理 Real2Sim）",
@@ -150,84 +214,22 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/awesome-real2sim2real.md",
-      "detail_id": "entity-awesome-real2sim2real",
-      "label": "Awesome-Real2Sim2Real（sun254667 精选集）",
-      "type": "entity",
-      "recency": "2026-08-11",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-gaussgym-an-open-source-real-to-sim-framework-fo.md",
-      "detail_id": "entity-paper-notebook-gaussgym-an-open-source-real-to-sim-framework-fo",
-      "label": "GaussGym",
-      "type": "entity",
-      "recency": "2026-08-11",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形论文深读笔记（Humanoid Paper Notebooks） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-kilvo.md",
-      "detail_id": "entity-paper-kilvo",
-      "label": "KILVO：人形多传感器运动学–惯性–激光–视觉里程计",
-      "type": "entity",
-      "recency": "2026-08-11",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/methods/lidar-odometry-fusion.md",
-      "detail_id": "wiki-methods-lidar-odometry-fusion",
-      "label": "里程计与激光雷达融合定位",
-      "type": "method",
-      "recency": "2026-08-11",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "wiki/comparisons/lidar-slam-lio-vio-selection.md",
-      "detail_id": "wiki-comparisons-lidar-slam-lio-vio-selection",
-      "label": "LiDAR / LIO / VIO 开源选型对比",
-      "type": "comparison",
-      "recency": "2026-08-11",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
-    },
-    {
-      "path": "roadmap/depth-navigation.md",
-      "detail_id": "roadmap-depth-navigation",
-      "label": "路线（纵深）：如果目标是导航（SLAM → Nav2 → VLN → 导航 VLA）",
-      "type": "roadmap_page",
-      "recency": "2026-08-11",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-sc3-eval.md",
-    "detail_id": "entity-paper-sc3-eval",
-    "label": "SC3-Eval（自一致视频生成策略评估 · arXiv:2606.18610）",
+    "path": "wiki/entities/paper-online-mbrl-robot-control.md",
+    "detail_id": "entity-paper-online-mbrl-robot-control",
+    "label": "Online MBRL via Online Optimization（真机在线模型基强化学习）",
     "type": "entity",
     "recency": "2026-08-11",
     "source": "log.md",
-    "action": "added"
+    "action": "added",
+    "community_label": "操作（Manipulation） 社区"
   },
   "top_communities": [
     {
       "label": "操作",
-      "size": 585
+      "size": 586
     },
     {
       "label": "仿真到现实",
@@ -294,7 +296,7 @@
       "detail_id": "wiki-methods-model-based-rl",
       "label": "Model-Based RL（基于模型的强化学习）",
       "type": "method",
-      "degree": 566,
+      "degree": 569,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -326,7 +328,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 439,
+      "degree": 441,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
