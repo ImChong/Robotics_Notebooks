@@ -9,6 +9,59 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-kilvo.md",
+      "detail_id": "entity-paper-kilvo",
+      "label": "KILVO：人形多传感器运动学–惯性–激光–视觉里程计",
+      "type": "entity",
+      "recency": "2026-08-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/methods/lidar-odometry-fusion.md",
+      "detail_id": "wiki-methods-lidar-odometry-fusion",
+      "label": "里程计与激光雷达融合定位",
+      "type": "method",
+      "recency": "2026-08-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "wiki/comparisons/lidar-slam-lio-vio-selection.md",
+      "detail_id": "wiki-comparisons-lidar-slam-lio-vio-selection",
+      "label": "LiDAR / LIO / VIO 开源选型对比",
+      "type": "comparison",
+      "recency": "2026-08-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
+      "path": "roadmap/depth-navigation.md",
+      "detail_id": "roadmap-depth-navigation",
+      "label": "路线（纵深）：如果目标是导航（SLAM → Nav2 → VLN → 导航 VLA）",
+      "type": "roadmap_page",
+      "recency": "2026-08-11",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/entities/fast-lio.md",
+      "detail_id": "entity-fast-lio",
+      "label": "FAST-LIO",
+      "type": "entity",
+      "recency": "2026-08-11",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
+    },
+    {
       "path": "wiki/entities/paper-autointervene.md",
       "detail_id": "entity-paper-autointervene",
       "label": "AutoIntervene（Action Chunk 自动接管）",
@@ -163,66 +216,18 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/methods/reinforcement-learning.md",
-      "detail_id": "wiki-methods-reinforcement-learning",
-      "label": "Reinforcement Learning (RL, 强化学习)",
-      "type": "method",
-      "recency": "2026-08-11",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/dyna-2.md",
-      "detail_id": "entity-dyna-2",
-      "label": "Dyna-2（Dyna Robotics · 百万小时 WAM 缩放律）",
-      "type": "entity",
-      "recency": "2026-08-11",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/concepts/world-action-models.md",
-      "detail_id": "wiki-concepts-world-action-models",
-      "label": "World Action Models（WAM，世界–动作模型）",
-      "type": "concept",
-      "recency": "2026-08-11",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/concepts/embodied-scaling-laws.md",
-      "detail_id": "wiki-concepts-embodied-scaling-laws",
-      "label": "Embodied Scaling Laws (具身规模法则)",
-      "type": "concept",
-      "recency": "2026-08-11",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/egoscale.md",
-      "detail_id": "wiki-methods-egoscale",
-      "label": "EgoScale",
-      "type": "method",
-      "recency": "2026-08-11",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-autointervene.md",
-    "detail_id": "entity-paper-autointervene",
-    "label": "AutoIntervene（Action Chunk 自动接管）",
+    "path": "wiki/entities/paper-kilvo.md",
+    "detail_id": "entity-paper-kilvo",
+    "label": "KILVO：人形多传感器运动学–惯性–激光–视觉里程计",
     "type": "entity",
     "recency": "2026-08-11",
     "source": "log.md",
-    "action": "added",
-    "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    "action": "maintained",
+    "has_repo": true,
+    "community_label": "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM） 社区"
   },
   "top_communities": [
     {

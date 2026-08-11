@@ -1,3 +1,11 @@
+## [2026-08-11] ingest | sources/papers/kilvo_arxiv_2608_05647.md — 复核 KILVO（TMECH / HIT 机器人技术与系统全国重点实验室）；刷新 wiki/entities/paper-kilvo.md 作者与机构名；交叉 wiki/methods/lidar-odometry-fusion.md、wiki/comparisons/lidar-slam-lio-vio-selection.md、roadmap/depth-navigation.md；仓 sources/repos/kilvo.md 仍占位待开放
+
+- **触发：** 用户指定标题 KILVO（IEEE/ASME TMECH；HIT 机器人技术与系统全国重点实验室；作者 Jixin Gao / Fucheng Liu / Teng Zhang / Fusheng Zha）；要求自动合并
+- **来源：** [`sources/papers/kilvo_arxiv_2608_05647.md`](sources/papers/kilvo_arxiv_2608_05647.md)、[`sources/repos/kilvo.md`](sources/repos/kilvo.md)
+- **实体刷新：** [`wiki/entities/paper-kilvo.md`](wiki/entities/paper-kilvo.md) — 机构名对齐「全国重点实验室」；补作者行；开源复核日 2026-08-11（仍占位）；源码运行时序图「不适用」
+- **开源核查（步骤 2.5）：** **代码待开放** — [JixinGao/KILVO](https://github.com/JixinGao/KILVO) 仅 README「available soon」
+- **交叉：** [`wiki/methods/lidar-odometry-fusion.md`](wiki/methods/lidar-odometry-fusion.md)、[`wiki/comparisons/lidar-slam-lio-vio-selection.md`](wiki/comparisons/lidar-slam-lio-vio-selection.md)、[`roadmap/depth-navigation.md`](roadmap/depth-navigation.md)、[`wiki/entities/fast-lio.md`](wiki/entities/fast-lio.md)
+
 ## [2026-08-11] ingest | sources/papers/autointervene_arxiv_2608_07065.md — 接入 AutoIntervene（arXiv:2608.07065）Action Chunk 校准自动接管；升格 wiki/entities/paper-autointervene.md；交叉 wiki/methods/action-chunking.md、wiki/methods/dagger.md、wiki/tasks/bimanual-manipulation.md、wiki/entities/paper-why-action-chunking-improves-bc.md、roadmap/depth-vla.md；归档 sources/sites/aus-bot-autointervene.md；确认未开源
 
 - **触发：** 用户指定论文 <https://arxiv.org/abs/2608.07065> 与项目页 <https://aus.bot/AutoIntervene/>；要求自动合并

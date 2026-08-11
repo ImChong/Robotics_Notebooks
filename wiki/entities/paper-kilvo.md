@@ -12,7 +12,7 @@ tags:
   - unitree-g1
   - hit
 status: complete
-updated: 2026-08-08
+updated: 2026-08-11
 arxiv: "2608.05647"
 code: https://github.com/JixinGao/KILVO
 related:
@@ -31,7 +31,7 @@ summary: "KILVO（arXiv:2608.05647，HIT，TMECH）：人形运动学–惯性�
 
 # KILVO：人形多传感器运动学–惯性–激光–视觉里程计
 
-**KILVO**（*Kinematic-Inertial-LiDAR-Visual Odometry with Robust Multimodal Adaptation for Humanoid Robots*，[arXiv:2608.05647](https://arxiv.org/abs/2608.05647)，[GitHub](https://github.com/JixinGao/KILVO)）由 **哈尔滨工业大学机器人技术与系统国家重点实验室** 提出，并被 **IEEE/ASME Transactions on Mechatronics** 接收：在异步–顺序混合 **ESIKF** 中紧耦合关节编码器、IMU、LiDAR 与相机，配套无额外传感器的接触估计与模态失效自适应，面向人形冲击、退化与掉传感器场景。
+**KILVO**（*Kinematic-Inertial-LiDAR-Visual Odometry with Robust Multimodal Adaptation for Humanoid Robots*，[arXiv:2608.05647](https://arxiv.org/abs/2608.05647)，[GitHub](https://github.com/JixinGao/KILVO)）由 **哈尔滨工业大学机器人技术与系统全国重点实验室** 的 Jixin Gao、Fucheng Liu、Teng Zhang、Fusheng Zha（通讯）提出，发表于 **IEEE/ASME Transactions on Mechatronics**：在异步–顺序混合 **ESIKF** 中紧耦合关节编码器、IMU、LiDAR 与相机，配套无额外传感器的接触估计与模态失效自适应，面向人形冲击、退化与掉传感器场景。
 
 ## 一句话定义
 
@@ -59,11 +59,12 @@ summary: "KILVO（arXiv:2608.05647，HIT，TMECH）：人形运动学–惯性�
 
 | 项 | 内容 |
 |----|------|
-| **机构** | 哈尔滨工业大学（HIT）机器人技术与系统国家重点实验室 |
-| **发表** | IEEE/ASME TMECH（DOI: 10.1109/TMECH.2026.3721778） |
+| **作者** | Jixin Gao、Fucheng Liu、Teng Zhang、Fusheng Zha（通讯） |
+| **机构** | 哈尔滨工业大学（HIT）机器人技术与系统全国重点实验室 |
+| **发表** | IEEE/ASME Transactions on Mechatronics（DOI: 10.1109/TMECH.2026.3721778） |
 | **传感器** | 关节编码器、IMU、LiDAR、相机（标准人形配置） |
 | **数据** | 公共 LIKO / HR²-KILO；自采 15 序列（含 Unitree G1 等） |
-| **开源** | **代码待开放** — 仓 [JixinGao/KILVO](https://github.com/JixinGao/KILVO) 仅占位 README（核查日 2026-08-08） |
+| **开源** | **代码待开放** — 仓 [JixinGao/KILVO](https://github.com/JixinGao/KILVO) 仅占位 README（复核日 2026-08-11） |
 
 ## 核心原理
 
@@ -95,7 +96,7 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用（官方可运行代码尚未发布）。** 截至 2026-08-08：仓库 README 写「code and datasets would be available soon」，根目录无实现。发布后应补：rosbag/数据集回放 → ESIKF 异步–顺序更新 → 轨迹/地图输出的 `sequenceDiagram`。
+**不适用（官方可运行代码尚未发布）。** 截至 2026-08-11 复核：仓库 README 仍写「code and datasets would be available soon」，根目录无实现。发布后应补：rosbag/数据集回放 → ESIKF 异步–顺序更新 → 轨迹/地图输出的 `sequenceDiagram`。
 
 ## 工程实践
 

@@ -4,19 +4,20 @@
 
 - **标题：** KILVO（官方仓 · 占位）
 - **类型：** repo
-- **组织 / 作者：** JixinGao（HIT）
+- **组织 / 作者：** Jixin Gao 等（哈尔滨工业大学机器人技术与系统全国重点实验室）
 - **代码：** <https://github.com/JixinGao/KILVO>
 - **论文：** <https://arxiv.org/abs/2608.05647>
 - **DOI：** <https://doi.org/10.1109/TMECH.2026.3721778>
 - **入库日期：** 2026-08-08
-- **一句话说明：** KILVO 官方 GitHub；截至入库日仅 README 声明「code and datasets would be available soon」，**无可运行源码与数据集**。
+- **复核日期：** 2026-08-11
+- **一句话说明：** KILVO 官方 GitHub；截至复核日仅 README 声明「code and datasets would be available soon」，**无可运行源码与数据集**。
 
-## 开源核查（2026-08-08）
+## 开源核查（2026-08-11 复核）
 
 | 项 | 状态 |
 |----|------|
 | 仓库可见 | 是（公开占位） |
-| 可运行代码 | **否** — README：under review / available soon |
+| 可运行代码 | **否** — README：under review / available soon；根目录仅 README |
 | Datasets | **未发布** |
 | License | 未声明 |
 | 结论 | **宣称将开源 / 占位仓**（论文写「released on GitHub」，以仓实际内容为准） |
