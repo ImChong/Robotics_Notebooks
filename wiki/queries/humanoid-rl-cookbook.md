@@ -190,6 +190,7 @@ Adaptation Module（学生）：
 - [Locomotion Reward Design Guide](./locomotion-reward-design-guide.md) — 奖励函数详细设计
 - [人形机器人运控常见奖励函数分类](../concepts/humanoid-policy-reward-functions.md) — Stage 3 奖励项的六类划分与权重量级全景
 - [Privileged Training](../concepts/privileged-training.md) — Teacher-Student 蒸馏理论
+- [Teacher-Student 与 DAgger 训练](../methods/teacher-student-dagger-training.md) — Stage 5 两种蒸馏方案的方法页：TS 一次性蒸馏 vs DAgger 迭代补标
 - [DreamWaQ](../methods/dreamwaq.md) — 盲走一阶段：本体历史隐式估计地形/体速的 obs 设计范例
 - [PIE 感知一阶段鲁棒行走](../methods/pie-perceptive-locomotion.md) — 深度+本体多头估计器的显式/隐式 obs 设计范例
 - [Curriculum Learning](../concepts/curriculum-learning.md) — 课程式训练加速收敛

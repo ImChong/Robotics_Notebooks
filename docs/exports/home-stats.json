@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-08-11",
   "node_count": 3000,
-  "edge_count": 26062,
+  "edge_count": 26064,
   "coverage": {
     "covered": 2976,
     "total": 2976,
@@ -121,7 +121,7 @@
       "type": "overview",
       "recency": "2026-08-11",
       "source": "log.md",
-      "action": "maintained",
+      "action": "added",
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
