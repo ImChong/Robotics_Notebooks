@@ -3,7 +3,7 @@
 type: entity
 tags: [world-models, model-based-rl, isaac-lab, anymal, eth-rsl, open-source, dynamics-model, offline-rl, eth]
 status: complete
-updated: 2026-07-26
+updated: 2026-08-11
 related:
   - ../overview/wam-motion-control-five-paths.md
   - ../methods/model-based-rl.md
@@ -11,10 +11,12 @@ related:
   - ./isaac-gym-isaac-lab.md
   - ./anymal.md
   - ../concepts/latent-imagination.md
+  - ./paper-online-mbrl-robot-control.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_wam_motion_control_five_paths.md
   - ../../sources/repos/leggedrobotics_robotic_world_model.md
   - ../../sources/repos/leggedrobotics_robotic_world_model_lite.md
+  - ../../sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md
 summary: "ETH RSL 的 Robotic World Model（RWM）与 Uncertainty-Aware RWM（RWM-U）：在 Isaac Lab 中联训神经动力学与 PPO，并支持在线或纯离线想象 rollout 训练模型基策略；Lite 仓剥离仿真仅保留离线管线与 Colab 入口。"
 ---
 
@@ -100,6 +102,7 @@ flowchart TB
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md) — 完整扩展的安装与任务注册语境
 - [ANYmal 四足机器人](./anymal.md) — 参考平台与 RSL 研究脉络
 - [Latent Imagination（潜空间想象）](../concepts/latent-imagination.md) — 其他「在模型中 rollout」范式对照
+- [Online MBRL via Online Optimization](./paper-online-mbrl-robot-control.md) — 同属 ETH 脉络的「真机轨迹一阶更新」对照（液压/软臂；不靠想象 PPO）
 
 ## 参考来源
 
@@ -107,6 +110,7 @@ flowchart TB
 - [robotic_world_model_lite 归档](../../sources/repos/leggedrobotics_robotic_world_model_lite.md)
 - Li et al., *Robotic World Model: A Neural Network Simulator for Robust Policy Optimization in Robotics*, [arXiv:2501.10100](https://arxiv.org/abs/2501.10100)
 - Li et al., *Uncertainty-Aware Robotic World Model Makes Offline Model-Based Reinforcement Learning Work on Real Robots*, [arXiv:2504.16680](https://arxiv.org/abs/2504.16680)
+- [Online MBRL 论文归档（RSL 真机在线对照）](../../sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md)
 
 ## 推荐继续阅读
 

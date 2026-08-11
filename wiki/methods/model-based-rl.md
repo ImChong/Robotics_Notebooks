@@ -2,7 +2,7 @@
 type: method
 tags: [rl, model-based, planning, locomotion, sample-efficiency, horizon-robotics]
 status: complete
-updated: 2026-08-04
+updated: 2026-08-11
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-rl-intelligent-control.md
@@ -14,11 +14,14 @@ related:
   - ../entities/paper-shenlan-wm-13-dreamerv3.md
   - ../entities/open-dreamer.md
   - ../overview/world-models-route-03-virtual-sandbox.md
+  - ../entities/paper-online-mbrl-robot-control.md
+  - ../entities/paper-td-mpc2.md
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/blogs/sutton_one_step_trap.md
   - ../../sources/sites/incompleteideas-net-rich-sutton.md
   - ../../sources/repos/open-dreamer.md
+  - ../../sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md
 summary: "Model-Based RL 借助环境模型提升样本效率，在机器人控制中常与规划和世界模型结合。"
 ---
 
@@ -189,6 +192,14 @@ Dreamer 4（Hafner et al., 2025，[arXiv:2509.24527](https://arxiv.org/abs/2509.
 - 与上文 MBPO / PETS 同属 **「神经动力学 + rollout」** 工具箱，但面向 **腿足速度跟踪** 任务族做了端到端脚本与扩展封装
 - 双仓对比、流程图与论文链接见 [Robotic World Model（ETH RSL）](../entities/robotic-world-model-eth-rsl.md)
 
+### Online MBRL via Online Optimization（真机一阶更新）
+
+**核心思想**：对液压/软体等难仿真平台，用真机缓冲在线学 \(f_\theta\)，再用模型 Jacobian 在**真实轨迹**上估计闭环策略梯度并做预条件更新——**不**靠大量想象 rollout 或采样式 MPC。
+
+- HEAP 真机约 **2.5 h** 达 **2.7 cm** 跟踪；同超参迁到缆驱软臂约 **30 episode**
+- 仿真对照中相对 [TD-MPC2](../entities/paper-td-mpc2.md) / [DreamerV3](../entities/paper-shenlan-wm-13-dreamerv3.md) 强调「真实代价 + 一阶更新」的稳定与精度
+- 实体页与开源状态（确认未开源）：[Online MBRL via Online Optimization](../entities/paper-online-mbrl-robot-control.md)
+
 ---
 
 ## MBRL vs Model-Free RL 对比
@@ -200,7 +211,7 @@ Dreamer 4（Hafner et al., 2025，[arXiv:2509.24527](https://arxiv.org/abs/2509.
 | 实现复杂度 | ❌ 高（需学模型 + 策略） | ✅ 低 |
 | 计算效率 | ❌ 推理时规划开销大 | ✅ 策略直接查询 |
 | 在机器人上的应用 | 操作任务、真实机器人 | Locomotion（高频控制） |
-| 代表算法 | Dreamer, MBPO, PETS, RWM/RWM-U | PPO, SAC, TD3 |
+| 代表算法 | Dreamer, MBPO, PETS, RWM/RWM-U, Online MBRL（真机一阶） | PPO, SAC, TD3 |
 
 ---
 
@@ -237,6 +248,7 @@ Dreamer 4（Hafner et al., 2025，[arXiv:2509.24527](https://arxiv.org/abs/2509.
 - [robotic_world_model（Isaac Lab 扩展）](../../sources/repos/leggedrobotics_robotic_world_model.md)
 - [robotic_world_model_lite](../../sources/repos/leggedrobotics_robotic_world_model_lite.md)
 - [sources/papers/wm_robot_survey_arxiv_2605_00080.md](../../sources/papers/wm_robot_survey_arxiv_2605_00080.md) — World Model for Robot Learning 综述（生成式世界模型 + WAM + Model-Based RL 八层栈站位）
+- [sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md](../../sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md) — 真机在线 MBRL（Jacobian-on-real-trajectory；HEAP / 软臂）
 
 ---
 
@@ -246,7 +258,9 @@ Dreamer 4（Hafner et al., 2025，[arXiv:2509.24527](https://arxiv.org/abs/2509.
 - [Generalized Value Functions (GVFs)](../concepts/generalized-value-functions.md) — Horde 与 span-independent 长期预测
 - [Bayesian Belief Analysis](../concepts/bayesian-belief-analysis.md) — belief 展开与一步陷阱对照
 - [Robotic World Model（ETH RSL，RWM / RWM-U）](../entities/robotic-world-model-eth-rsl.md) — Isaac Lab 扩展与 Lite 离线管线
+- [Online MBRL via Online Optimization](../entities/paper-online-mbrl-robot-control.md) — 真机缓冲学模型 + 真实轨迹一阶策略更新
 - [DreamerV3](../entities/paper-shenlan-wm-13-dreamerv3.md) — 潜空间想象 MBRL 里程碑
+- [TD-MPC2](../entities/paper-td-mpc2.md) — 隐式 latent MPC 对照
 - [Open Dreamer](../entities/open-dreamer.md) — Dreamer 4 开源训练/推理/demo
 - [Latent Imagination](../concepts/latent-imagination.md) — Dreamer 系核心机制
 - [Reinforcement Learning](./reinforcement-learning.md) — MBRL 是 RL 大类下的子方向，与 Model-Free 并列

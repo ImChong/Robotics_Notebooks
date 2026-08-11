@@ -9,7 +9,7 @@ tags:
   - model-based-rl
   - latent-imagination
 status: complete
-updated: 2026-08-10
+updated: 2026-08-11
 arxiv: "2301.04104"
 venue: Nature
 related:
@@ -26,6 +26,7 @@ related:
   - ./paper-planet-latent-dynamics.md
   - ./paper-td-mpc2.md
   - ./paper-unisim.md
+  - ./paper-online-mbrl-robot-control.md
 sources:
   - ../../sources/papers/shenlan_wm_survey_13_dreamerv3.md
   - ../../sources/papers/shenlan_world_models_15_reference_catalog.md
@@ -33,6 +34,7 @@ sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md
   - ../../sources/repos/danijar-dreamerv3.md
   - ../../sources/repos/open-dreamer.md
+  - ../../sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md
 summary: "DreamerV3（Hafner et al.，arXiv:2301.04104，Nature）：RSSM 世界模型 + 潜空间想象中的 actor-critic；单一超参掌握 150+ 任务；公开 JAX 复现 danijar/dreamerv3，后继见 Open Dreamer（Dreamer 4）。"
 code: https://github.com/danijar/dreamerv3
 ---
@@ -207,6 +209,7 @@ sequenceDiagram
 - [Generative World Models](../methods/generative-world-models.md)
 - [Open Dreamer](./open-dreamer.md)
 - [World Models](./paper-ha-schmidhuber-world-models.md) · [PlaNet](./paper-planet-latent-dynamics.md) · [TD-MPC2](./paper-td-mpc2.md) · [UniSim](./paper-unisim.md)
+- [Online MBRL via Online Optimization](./paper-online-mbrl-robot-control.md) — HEAP 仿真中相对想象 RL 的真机一阶对照
 
 ## 参考来源
 
@@ -216,6 +219,7 @@ sequenceDiagram
 - [Open Dreamer 代码索引](../../sources/repos/open-dreamer.md)
 - [深蓝 15 开源微信编译](../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md)
 - [微信：世界模型物理保真度策展](../../sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md)
+- [Online MBRL 论文归档（对照实验提及）](../../sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md)
 
 ## 推荐继续阅读
 
@@ -223,4 +227,5 @@ sequenceDiagram
 - [danijar.com/dreamerv3](https://danijar.com/dreamerv3)
 - [GitHub — danijar/dreamerv3](https://github.com/danijar/dreamerv3)
 - [Open Dreamer](./open-dreamer.md) — Dreamer 4 开源后继
+- [Online MBRL via Online Optimization](./paper-online-mbrl-robot-control.md) — 真实轨迹一阶更新对照
 - [深蓝具身智能原文](https://mp.weixin.qq.com/s/KZT8sI4n7GvHWyM20wN3gg)
