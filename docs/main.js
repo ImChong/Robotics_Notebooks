@@ -509,11 +509,44 @@
 
   function renderUpdatesItemCommunityCat(meta) {
     if (!meta || !meta.community_label) return '';
-    var label = typeof shortenCommunityLabel === 'function'
-      ? shortenCommunityLabel(meta.community_label)
-      : String(meta.community_label).replace(/\s*社区\s*$/, '').trim();
-    if (!label) return '';
+    var label = shortenCommunityLabel(meta.community_label);
+    if (!label || label === '未分类') return '';
     return '<span class="updates-item-cat">' + escapeHtml(label) + '</span>';
+  }
+
+  // 首页「最新知识节点」紧凑列表：优先 latest_wiki_nodes 中的新增，
+  // 不足时从 wiki-activity.days（升序）自新到旧回填，并补齐 recency。
+  function collectHomeCompactAddedNodes(items, wikiActivity, maxItems) {
+    var limit = typeof maxItems === 'number' && maxItems > 0 ? maxItems : 5;
+    var compactItems = [];
+    var seenCompact = {};
+    if (Array.isArray(items)) {
+      for (var cfi = 0; cfi < items.length && compactItems.length < limit; cfi++) {
+        var item = items[cfi];
+        if (!item || !item.detail_id || item.action !== 'added') continue;
+        if (seenCompact[item.detail_id]) continue;
+        seenCompact[item.detail_id] = true;
+        compactItems.push(item);
+      }
+    }
+    var days = wikiActivity && Array.isArray(wikiActivity.days) ? wikiActivity.days : [];
+    for (var adi = days.length - 1; adi >= 0 && compactItems.length < limit; adi--) {
+      var actDay = days[adi];
+      var dayNodes = actDay && Array.isArray(actDay.nodes) ? actDay.nodes : [];
+      var dayDate = actDay && actDay.date ? String(actDay.date) : '';
+      for (var dni = 0; dni < dayNodes.length && compactItems.length < limit; dni++) {
+        var dayNode = dayNodes[dni];
+        if (!dayNode || !dayNode.detail_id || dayNode.action !== 'added') continue;
+        if (seenCompact[dayNode.detail_id]) continue;
+        seenCompact[dayNode.detail_id] = true;
+        if (dayNode.recency || !dayDate) {
+          compactItems.push(dayNode);
+        } else {
+          compactItems.push(Object.assign({}, dayNode, { recency: dayDate }));
+        }
+      }
+    }
+    return compactItems;
   }
 
   function renderUpdatesItemSuffix(meta) {
@@ -967,30 +1000,7 @@
     // 首页紧凑模式（mount 带 data-compact）：默认只列最近新增节点（最多 5 条）；
     // 完整时间线与活跃度热力图迁至 change-log.html（可点「显示维护节点」）
     if (mount.hasAttribute('data-compact')) {
-      var compactItems = [];
-      for (var cfi = 0; cfi < items.length; cfi++) {
-        if (items[cfi] && items[cfi].detail_id && items[cfi].action === 'added') {
-          compactItems.push(items[cfi]);
-        }
-      }
-      // latest_wiki_nodes 窗口内新增不足时，从活跃度按日回填「新增」
-      if (compactItems.length < 5 && wikiActivity && Array.isArray(wikiActivity.days)) {
-        var seenCompact = {};
-        for (var sci = 0; sci < compactItems.length; sci++) {
-          seenCompact[compactItems[sci].detail_id] = true;
-        }
-        for (var adi = 0; adi < wikiActivity.days.length && compactItems.length < 5; adi++) {
-          var actDay = wikiActivity.days[adi];
-          var dayNodes = actDay && Array.isArray(actDay.nodes) ? actDay.nodes : [];
-          for (var dni = 0; dni < dayNodes.length && compactItems.length < 5; dni++) {
-            var dayNode = dayNodes[dni];
-            if (!dayNode || !dayNode.detail_id || dayNode.action !== 'added') continue;
-            if (seenCompact[dayNode.detail_id]) continue;
-            seenCompact[dayNode.detail_id] = true;
-            compactItems.push(dayNode);
-          }
-        }
-      }
+      var compactItems = collectHomeCompactAddedNodes(items, wikiActivity, 5);
       if (!compactItems.length) {
         mount.innerHTML = '<p class="data-meta">暂无「最近新增」数据。</p>';
         return;
@@ -3920,9 +3930,14 @@
     return _detailCommunityIndexPromise;
   }
 
+  // 与 scripts/utils/community_labels.community_short_label 对齐：
+  // 「中文（English） 社区」→「中文」
   function shortenCommunityLabel(label) {
     if (!label) return '未分类';
-    return String(label).replace(/\s*社区\s*$/, '').trim() || '未分类';
+    var base = String(label).replace(/\s*社区\s*$/, '').trim();
+    if (!base) return '未分类';
+    var head = base.split('（', 1)[0].trim();
+    return head || base;
   }
 
   function resolveCompactRowDisplayType(page, detailId, communityIndex) {

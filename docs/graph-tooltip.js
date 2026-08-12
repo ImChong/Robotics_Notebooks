@@ -141,9 +141,14 @@
       ';color:' + escapeHtml(String(fg)) + '">' + escapeHtml(String(label)) + '</span>';
   }
 
+  // 与 scripts/utils/community_labels.community_short_label 对齐：
+  // 「中文（English） 社区」→「中文」
   function shortenCommunityLabel(label) {
     if (!label) return '未分类';
-    return String(label).replace(/\s*社区\s*$/, '').trim() || '未分类';
+    var base = String(label).replace(/\s*社区\s*$/, '').trim();
+    if (!base) return '未分类';
+    var head = base.split('（', 1)[0].trim();
+    return head || base;
   }
 
   /** 与 graph.html COMMUNITY_COLORS 一致：Tableau10 + 扩展色 */
