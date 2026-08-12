@@ -1,3 +1,10 @@
+## [2026-08-12] structural | references/papers/system-identification.md — 删除与 wiki 概念页同名的论文索引，搜索仅保留 System Identification 概念节点
+
+- **触发：** 用户反馈搜索「System Identification」出现两个节点
+- **根因：** `references/papers/system-identification.md` 与 [`wiki/concepts/system-identification.md`](wiki/concepts/system-identification.md) 标题完全相同，均进入搜索/图谱索引
+- **处理：** 删除冗余 reference 页；论文列表已由 [`sources/papers/system_identification.md`](sources/papers/system_identification.md) 与概念页「参考来源」覆盖；无其它正文入链
+- **保留：** [`wiki/concepts/system-identification.md`](wiki/concepts/system-identification.md)
+
 ## [2026-08-12] structural | docs/main.js + docs/graph-tooltip.js — 修复首页「最新知识节点」回填方向与空白日期
 
 - **触发：** 用户反馈首页最新知识节点显示异常

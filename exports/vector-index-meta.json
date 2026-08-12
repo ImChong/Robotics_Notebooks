@@ -1,8 +1,8 @@
 {
   "version": "v1",
   "generated_at": "2026-05-11",
-  "doc_count": 310,
-  "count": 310,
+  "doc_count": 306,
+  "count": 306,
   "embedding": {
     "backend": "hashed-token-projection",
     "model": "builtin-v1",
@@ -72,13 +72,6 @@
       "title": "Survey Papers",
       "page_type": "reference",
       "summary": "用于汇总机器人学习、运动控制、人形机器人、模仿学习等方向的领域综述（Review/Survey）。"
-    },
-    {
-      "id": "reference-papers-system-identification",
-      "path": "references/papers/system-identification.md",
-      "title": "System Identification",
-      "page_type": "reference",
-      "summary": "聚焦机器人动力学辨识、执行器建模与在线参数估计论文。"
     },
     {
       "id": "reference-papers-whole-body-control",
