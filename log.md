@@ -1,3 +1,30 @@
+## [2026-08-12] ingest | sources/papers/hil_harc_arxiv_2608_09762.md — 接入 HIL-HARC（arXiv:2608.09762，IIT×UniGe×TU Delft）；升格 wiki/entities/paper-hil-harc.md；交叉 wiki/methods/reinforcement-learning.md、wiki/comparisons/online-vs-offline-rl.md、wiki/concepts/safe-real-world-rl-fine-tuning.md；确认未开源
+
+- **触发：** 用户指定论文 <https://arxiv.org/abs/2608.09762> 与项目页 <https://hil-harc.github.io/>；要求自动合并
+- **来源：** [`sources/papers/hil_harc_arxiv_2608_09762.md`](sources/papers/hil_harc_arxiv_2608_09762.md)、[`sources/sites/hil-harc-github-io.md`](sources/sites/hil-harc-github-io.md)
+- **新建实体：** [`wiki/entities/paper-hil-harc.md`](wiki/entities/paper-hil-harc.md) — CTDE 连续臂+离散夹爪 + HRA task/grasp 多头 critic；真机均值 **40%→75%**，干预率 **0%**；源码运行时序图「不适用」（确认未开源）
+- **开源核查（步骤 2.5）：** **确认未开源** — 项目页 Resources 无 Code；`HIL-HARC/HIL-HARC.github.io` 为静态页
+- **机构：** `iit`（已注册）；新注册 `unige` / `tudelft`
+- **交叉：** [`wiki/methods/reinforcement-learning.md`](wiki/methods/reinforcement-learning.md)、[`wiki/comparisons/online-vs-offline-rl.md`](wiki/comparisons/online-vs-offline-rl.md)、[`wiki/concepts/safe-real-world-rl-fine-tuning.md`](wiki/concepts/safe-real-world-rl-fine-tuning.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`wiki/concepts/sim2real.md`](wiki/concepts/sim2real.md)
+
+## [2026-08-12] ingest | sources/papers/slim_05b_arxiv_2608_09771.md — 接入 SLIM-0.5B（arXiv:2608.09771，Fudan×BAAI×THU×RUC）；升格 wiki/entities/paper-slim-05b.md；交叉 wiki/concepts/world-action-models.md、wiki/methods/defi-decoupled-dynamics-vla.md、wiki/entities/libero-benchmark.md、wiki/entities/calvin-benchmark.md；已开源+HF 权重
+
+- **触发：** 用户指定论文 <https://arxiv.org/abs/2608.09771>、项目页 <https://kzz1031.github.io/slim-project-page/>、GitHub / HF；要求自动合并
+- **来源：** [`sources/papers/slim_05b_arxiv_2608_09771.md`](sources/papers/slim_05b_arxiv_2608_09771.md)、[`sources/sites/kzz1031-slim-project-page.md`](sources/sites/kzz1031-slim-project-page.md)、[`sources/repos/slim.md`](sources/repos/slim.md)
+- **新建实体：** [`wiki/entities/paper-slim-05b.md`](wiki/entities/paper-slim-05b.md) — Stage-1 IDM+FDM 掩码轨迹 + Stage-2 MoT flow；LIBERO **97.5%** / LIBERO-Plus **77.45%** / CALVIN **4.556**；真机 **77.3 ms · 2.01 GiB**
+- **开源核查（步骤 2.5）：** **已开源** — [kzz1031/SLIM](https://github.com/kzz1031/SLIM) + [kzzwang/SLIM-LIBERO](https://huggingface.co/kzzwang/SLIM-LIBERO) / SLIM-CALVIN
+- **机构：** `fudan` / `baai` / `tsinghua`；新注册 `ruc`
+- **交叉：** [`wiki/concepts/world-action-models.md`](wiki/concepts/world-action-models.md)、[`wiki/methods/defi-decoupled-dynamics-vla.md`](wiki/methods/defi-decoupled-dynamics-vla.md)、[`wiki/entities/libero-benchmark.md`](wiki/entities/libero-benchmark.md)、[`wiki/entities/calvin-benchmark.md`](wiki/entities/calvin-benchmark.md)、[`wiki/methods/vla.md`](wiki/methods/vla.md)
+
+## [2026-08-12] ingest | sources/papers/xpolicylab_arxiv_2608_09892.md — 接入 XPolicyLab 技术报告（arXiv:2608.09892，HKU MMLab×THU）；升格 wiki/entities/paper-xpolicylab.md；刷新 wiki/entities/xpolicylab.md；交叉 wiki/entities/robodojo.md、wiki/concepts/simulation-evaluation-infrastructure.md；已开源（GitHub + 项目页）
+
+- **触发：** 用户指定论文 <https://arxiv.org/abs/2608.09892>、GitHub、项目页 <https://xpolicylab.github.io/>；要求自动合并
+- **来源：** [`sources/papers/xpolicylab_arxiv_2608_09892.md`](sources/papers/xpolicylab_arxiv_2608_09892.md)、[`sources/sites/xpolicylab-github-io.md`](sources/sites/xpolicylab-github-io.md)、[`sources/repos/xpolicylab.md`](sources/repos/xpolicylab.md)
+- **新建/刷新实体：** [`wiki/entities/paper-xpolicylab.md`](wiki/entities/paper-xpolicylab.md)、[`wiki/entities/xpolicylab.md`](wiki/entities/xpolicylab.md) — \(O(NM)\to O(N{+}M)\)；**42** 策略；集成 **>5 h→2 h**（agent skills≈30 min）
+- **开源核查（步骤 2.5）：** **已开源** — [XPolicyLab/XPolicyLab](https://github.com/XPolicyLab/XPolicyLab)（Apache-2.0）
+- **机构：** `hku` / `tsinghua`（已注册）
+- **交叉：** [`wiki/entities/robodojo.md`](wiki/entities/robodojo.md)、[`wiki/concepts/simulation-evaluation-infrastructure.md`](wiki/concepts/simulation-evaluation-infrastructure.md)、[`wiki/queries/embodied-eval-benchmark-selection-loop.md`](wiki/queries/embodied-eval-benchmark-selection-loop.md)
+
 ## [2026-08-12] ingest | sources/papers/refertrack_arxiv_2607_20061.md — ReferTrack（arXiv:2607.20061）升格 wiki/entities/paper-refertrack.md；归档 sources/sites/medlartea-refertrack.md、sources/repos/refertrack.md（占位仓）；交叉 wiki/tasks/vision-language-navigation.md、wiki/entities/qwen-robot-nav.md；注册 schema/institutions.json futian-laboratory
 
 - **触发：** 用户指定论文 <https://arxiv.org/abs/2607.20061>、项目页 <https://medlartea.github.io/referTrack/>、代码 <https://github.com/MedlarTea/referTrack>；要求自动合并

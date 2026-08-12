@@ -2,7 +2,7 @@
 type: comparison
 tags: [rl, offline-rl, online-rl, data-efficiency, distribution-shift, locomotion]
 status: complete
-updated: 2026-08-10
+updated: 2026-08-12
 related:
   - ../methods/intentional-updates-streaming-rl.md
   - ../methods/reinforcement-learning.md
@@ -175,6 +175,7 @@ Online RL 和 Offline RL 是两种根本不同的学习范式。两者都在优�
 - [RL vs IL](./rl-vs-il.md) — 三角关系：Online RL / Offline RL / IL 的数据与监督信号对比
 - [LWD](../methods/lwd.md) — 车队级 offline-to-online RL 后训练框架的代表
 - [ROVE（人形 VLA 干预后训练）](../entities/paper-rove-humanoid-vla-intervention.md) — 次优全身 MoCap 接管轨迹的 OVE + advantage conditioning
+- [HIL-HARC（真机在线 RL）](../entities/paper-hil-harc.md) — RLPD + CTDE/HRA；大随机下相对 HIL-SERL 抬升成功率
 - [SPLC（人群导航社交偏好 Offline RL）](../entities/paper-splc.md) — 自动准则偏好学奖励后挂 IQL/CQL/TD3BC
 - [Data Flywheel](../concepts/data-flywheel.md) — 数据飞轮的"模仿式"与"RL 式"两种范式
 - [MobileGym](../entities/mobilegym.md) — 移动 GUI Agent 场景下 GRPO + 数百并行浏览器实例的在线 RL 环境范例（arXiv:2605.26114）

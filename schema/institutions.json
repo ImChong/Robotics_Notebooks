@@ -2512,6 +2512,31 @@
         "futian-lab",
         "futian"
       ]
+    },
+    "ruc": {
+      "label": "中国人民大学（Renmin University of China）",
+      "aliases": [
+        "ruc",
+        "renmin",
+        "renmin-university"
+      ]
+    },
+    "tudelft": {
+      "label": "代尔夫特理工大学（TU Delft）",
+      "aliases": [
+        "tudelft",
+        "tu-delft",
+        "delft"
+      ]
+    },
+    "unige": {
+      "label": "热那亚大学（University of Genova）",
+      "aliases": [
+        "unige",
+        "university-of-genova",
+        "genova",
+        "dibris"
+      ]
     }
   }
 }

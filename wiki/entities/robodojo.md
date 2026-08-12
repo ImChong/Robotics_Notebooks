@@ -2,7 +2,7 @@
 type: entity
 tags: [benchmark, manipulation, vla, sim2real, evaluation, leaderboard, open-source, ai-mmlab-club, isaac-lab]
 status: complete
-updated: 2026-07-27
+updated: 2026-08-12
 related:
   - ./xpolicylab.md
   - ../methods/vla.md
@@ -173,6 +173,7 @@ sequenceDiagram
 ## 关联页面
 
 - [XPolicyLab](./xpolicylab.md) — 策略适配、训推与上榜开源口
+- [XPolicyLab 论文（arXiv:2608.09892）](./paper-xpolicylab.md) — O(N+M) 契约与 42 策略生态技术报告
 - [VLA](../methods/vla.md) — 通用操纵策略方法总览
 - [Manipulation](../tasks/manipulation.md) — 操纵任务域
 - [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页落在策略成功率层与 sim↔real 层

@@ -2,7 +2,7 @@
 type: concept
 tags: [sim2real, rl, domain-randomization, deployment]
 status: complete
-updated: 2026-08-11
+updated: 2026-08-12
 related:
   - ../entities/embodied-interview-qa.md
   - ../methods/reinforcement-learning.md
