@@ -2,7 +2,7 @@
 type: entity
 tags: [navigation, vln, qwen, agentic, mobile-robot, autonomous-driving]
 status: complete
-updated: 2026-08-06
+updated: 2026-08-12
 related:
   - ./qwen-robot-suite.md
   - ../tasks/vision-language-navigation.md
@@ -10,6 +10,7 @@ related:
   - ../methods/vla.md
   - ./paper-s-squared-vla.md
   - ./paper-humembr.md
+  - ./paper-refertrack.md
 sources:
   - ../../sources/blogs/qwen_robot_nav.md
   - ../../sources/blogs/qwen_robot_suite.md
@@ -69,7 +70,7 @@ summary: "Qwen-RobotNav 是基于 Qwen3-VL 的可扩展导航模型：以任务�
 | 设置 | 结果 |
 |------|------|
 | HM3Dv2 ObjNav RGB-only（4B） | **75.6% SR**，距目标 **1.72m** |
-| EVT-Bench tracking | **90.0%** |
+| EVT-Bench tracking | **90.0%**（博客汇总口径；与 [ReferTrack](./paper-refertrack.md) 的 STT/DT/AT 分切协议不同，勿直接横比） |
 | NAVSIM PDMS（4B） | **91.4** |
 | Agentic + EQA 三基准 | **新 SOTA** |
 
@@ -93,6 +94,7 @@ summary: "Qwen-RobotNav 是基于 Qwen3-VL 的可扩展导航模型：以任务�
 - [VLA](../methods/vla.md) — 导航–操作统一策略方法纵览
 - [S²-VLA](./paper-s-squared-vla.md) — 驾驶专用双流 VLA（NAVSIM SFT；与 RobotNav 的驾驶 mode 对照）
 - [HUMEMBR](./paper-humembr.md) — 身份感知多日记忆 + PersonEQA / Spot 例行找人（长时程 EQA 真机对照）
+- [ReferTrack](./paper-refertrack.md) — EVT 专用 referring-then-tracking（单前视；代码占位）
 
 ## 推荐继续阅读
 
