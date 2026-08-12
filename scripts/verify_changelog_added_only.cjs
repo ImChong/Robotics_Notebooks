@@ -1,4 +1,4 @@
-// Verify change-log「只看新增节点」toggle + capture screenshots.
+// Verify change-log：默认仅新增；点击「显示维护节点」后展示维护条目。
 // Usage: node scripts/verify_changelog_added_only.cjs [port] [outDir]
 const puppeteer = require('puppeteer-core');
 const fs = require('fs');
@@ -53,17 +53,21 @@ function sleep(ms) {
     const before = await page.evaluate(() => {
       const days = Array.from(document.querySelectorAll('.updates-day'));
       const badges = Array.from(document.querySelectorAll('.updates-badge'));
+      const labels = badges.map((b) => b.textContent.trim());
       return {
         dayCount: days.length,
-        hasMaintained: badges.some((b) => b.textContent.trim() === '维护'),
-        hasAdded: badges.some((b) => b.textContent.trim() === '新增'),
+        hasMaintained: labels.some((t) => t === '维护'),
+        hasAdded: labels.some((t) => t === '新增'),
+        allBadgesAreAdded: labels.length > 0 && labels.every((t) => t === '新增'),
         btnText: document.querySelector('button.updates-filter-added-only')?.textContent?.trim() || '',
+        btnActive: document.querySelector('button.updates-filter-added-only')?.classList.contains('is-active'),
+        ariaPressed: document.querySelector('button.updates-filter-added-only')?.getAttribute('aria-pressed') || '',
         intro: document.querySelector('.home-latest-wiki-intro')?.textContent?.trim() || '',
       };
     });
 
-    const outAll = path.join(outDir, 'change-log-filter-all.png');
-    await page.screenshot({ path: outAll, fullPage: false });
+    const outAdded = path.join(outDir, 'change-log-filter-added-only.png');
+    await page.screenshot({ path: outAdded, fullPage: false });
 
     await page.click('button.updates-filter-added-only');
     await sleep(300);
@@ -75,39 +79,43 @@ function sleep(ms) {
     const after = await page.evaluate(() => {
       const days = Array.from(document.querySelectorAll('.updates-day'));
       const badges = Array.from(document.querySelectorAll('.updates-badge'));
-      const labels = badges.map((b) => b.textContent.trim());
       return {
         dayCount: days.length,
-        hasMaintained: labels.some((t) => t === '维护'),
-        hasAdded: labels.some((t) => t === '新增'),
-        allBadgesAreAdded: labels.length > 0 && labels.every((t) => t === '新增'),
+        hasMaintained: badges.some((b) => b.textContent.trim() === '维护'),
+        hasAdded: badges.some((b) => b.textContent.trim() === '新增'),
         btnText: document.querySelector('button.updates-filter-added-only')?.textContent?.trim() || '',
         btnActive: document.querySelector('button.updates-filter-added-only')?.classList.contains('is-active'),
+        ariaPressed: document.querySelector('button.updates-filter-added-only')?.getAttribute('aria-pressed') || '',
         intro: document.querySelector('.home-latest-wiki-intro')?.textContent?.trim() || '',
       };
     });
 
-    const outAdded = path.join(outDir, 'change-log-filter-added-only.png');
-    await page.screenshot({ path: outAdded, fullPage: false });
+    const outAll = path.join(outDir, 'change-log-filter-all.png');
+    await page.screenshot({ path: outAll, fullPage: false });
 
     // scroll filter bar into view for a tighter crop-ish shot of the control
     await page.evaluate(() => {
       document.querySelector('.updates-filter-bar')?.scrollIntoView({ block: 'start' });
     });
     await sleep(200);
-    const outBar = path.join(outDir, 'change-log-filter-added-only-bar.png');
+    const outBar = path.join(outDir, 'change-log-filter-show-maintained-bar.png');
     await page.screenshot({ path: outBar, fullPage: false });
 
     const ok =
-      before.hasMaintained &&
+      before.allBadgesAreAdded &&
+      !before.hasMaintained &&
       before.hasAdded &&
-      after.allBadgesAreAdded &&
-      !after.hasMaintained &&
+      !before.btnActive &&
+      before.ariaPressed === 'false' &&
+      before.btnText === '显示维护节点' &&
+      before.intro.includes('仅新增') &&
+      after.hasMaintained &&
+      after.hasAdded &&
       after.btnActive &&
-      after.btnText === '显示全部节点' &&
-      after.intro.includes('仅新增');
+      after.ariaPressed === 'true' &&
+      after.btnText === '只看新增节点';
 
-    console.log(JSON.stringify({ before, after, shots: [outAll, outAdded, outBar], ok }, null, 2));
+    console.log(JSON.stringify({ before, after, shots: [outAdded, outAll, outBar], ok }, null, 2));
     if (!ok) process.exit(2);
   } finally {
     await browser.close();

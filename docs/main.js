@@ -948,17 +948,41 @@
       items = [homeStats.latest_wiki_node];
     }
 
-    // 首页紧凑模式（mount 带 data-compact）：只列最近 5 条单行记录；
-    // 完整时间线与活跃度热力图迁至 change-log.html
+    // 首页紧凑模式（mount 带 data-compact）：默认只列最近新增节点（最多 5 条）；
+    // 完整时间线与活跃度热力图迁至 change-log.html（可点「显示维护节点」）
     if (mount.hasAttribute('data-compact')) {
-      if (!items.length || !items[0].detail_id) {
-        mount.innerHTML = '<p class="data-meta">暂无「最近更新」数据。</p>';
+      var compactItems = [];
+      for (var cfi = 0; cfi < items.length; cfi++) {
+        if (items[cfi] && items[cfi].detail_id && items[cfi].action === 'added') {
+          compactItems.push(items[cfi]);
+        }
+      }
+      // latest_wiki_nodes 窗口内新增不足时，从活跃度按日回填「新增」
+      if (compactItems.length < 5 && wikiActivity && Array.isArray(wikiActivity.days)) {
+        var seenCompact = {};
+        for (var sci = 0; sci < compactItems.length; sci++) {
+          seenCompact[compactItems[sci].detail_id] = true;
+        }
+        for (var adi = 0; adi < wikiActivity.days.length && compactItems.length < 5; adi++) {
+          var actDay = wikiActivity.days[adi];
+          var dayNodes = actDay && Array.isArray(actDay.nodes) ? actDay.nodes : [];
+          for (var dni = 0; dni < dayNodes.length && compactItems.length < 5; dni++) {
+            var dayNode = dayNodes[dni];
+            if (!dayNode || !dayNode.detail_id || dayNode.action !== 'added') continue;
+            if (seenCompact[dayNode.detail_id]) continue;
+            seenCompact[dayNode.detail_id] = true;
+            compactItems.push(dayNode);
+          }
+        }
+      }
+      if (!compactItems.length) {
+        mount.innerHTML = '<p class="data-meta">暂无「最近新增」数据。</p>';
         return;
       }
       var compactRows = '';
-      var maxRows = Math.min(items.length, 5);
+      var maxRows = Math.min(compactItems.length, 5);
       for (var cri = 0; cri < maxRows; cri++) {
-        var rowMeta = items[cri];
+        var rowMeta = compactItems[cri];
         var rowType = wikiTypeLabel(rowMeta.type, 'updates');
         compactRows +=
           '<li class="home-latest-row"><span class="home-latest-row-date">' +
@@ -1315,7 +1339,8 @@
 
     var currentWindowDays = TIMELINE_WINDOW_DAYS;
     var timelineShowAll = false;
-    var addedOnlyFilter = false;
+    // 默认只显示新增；点击「显示维护节点」后一并展示维护条目
+    var addedOnlyFilter = true;
     var defaultBodyHtml = renderTimelineBody(
       allTimelineGroups, currentWindowDays, timelineShowAll, addedOnlyFilter
     );
@@ -1323,8 +1348,8 @@
     var filterBarHtml =
       '<div class="updates-filter-bar" role="group" aria-label="更新记录筛选">' +
       '<button type="button" class="btn-secondary btn-inline updates-filter-added-only" aria-pressed="false">' +
-      '只看新增节点</button>' +
-      '<span class="updates-filter-hint">默认显示每日新增与维护；开启后仅保留「新增」条目</span>' +
+      '显示维护节点</button>' +
+      '<span class="updates-filter-hint">默认仅显示每日新增；点击后一并显示维护条目</span>' +
       '</div>';
     mount.innerHTML =
       heatmapHtml + filterBarHtml +
@@ -1337,9 +1362,11 @@
 
     function syncAddedOnlyButton() {
       if (!addedOnlyBtn) return;
-      addedOnlyBtn.classList.toggle('is-active', addedOnlyFilter);
-      addedOnlyBtn.setAttribute('aria-pressed', addedOnlyFilter ? 'true' : 'false');
-      addedOnlyBtn.textContent = addedOnlyFilter ? '显示全部节点' : '只看新增节点';
+      // is-active：当前已展开维护节点（非默认态）
+      var showingMaintained = !addedOnlyFilter;
+      addedOnlyBtn.classList.toggle('is-active', showingMaintained);
+      addedOnlyBtn.setAttribute('aria-pressed', showingMaintained ? 'true' : 'false');
+      addedOnlyBtn.textContent = showingMaintained ? '只看新增节点' : '显示维护节点';
     }
 
     function refreshTimelineBody() {
