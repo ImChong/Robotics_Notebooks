@@ -1212,6 +1212,14 @@ button.home-wiki-heatmap-cell.is-active {
   font-size: 0.82rem;
   color: var(--text-muted);
   line-height: 1.4;
+  /* 与 section-subtitle 同口径：整词换行，避免说明句中途突然断行 */
+  word-break: keep-all;
+  line-break: strict;
+  flex: 1 1 12rem;
+  min-width: 0;
+}
+#change-log-section .section-subtitle {
+  max-width: none;
 }
 @media (max-width: 640px) {
   .updates-filter-bar {
