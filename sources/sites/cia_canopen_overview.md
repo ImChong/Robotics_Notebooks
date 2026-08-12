@@ -19,22 +19,23 @@
 ### 1) CANopen CC 与 CANopen FD
 
 - **要点：** CANopen CC 基于经典 CAN；**CANopen FD** 基于 CAN FD。包含高层协议与 Profile 规范，配置高度灵活。
-- **对 wiki 的映射：** [can-bus-protocol](../../wiki/concepts/can-bus-protocol.md)、[can-fd](../../wiki/concepts/can-fd.md)
+- **对 wiki 的映射：** [can-bus-protocol](../../wiki/concepts/can-bus-protocol.md)、[can-fd](../../wiki/concepts/can-fd.md)、[canfestival](../../wiki/entities/canfestival.md)
 
 ### 2) 通信对象与 Plug-and-play
 
 - **要点：** 提供时间关键过程、配置与网络管理的标准化 **COB（communication objects）**；设备/接口/应用 Profile 支持互操作与互换，同时允许厂商扩展功能。
-- **对 wiki 的映射：** [ethercat-protocol](../../wiki/concepts/ethercat-protocol.md)（CoE 章节）
+- **对 wiki 的映射：** [ethercat-protocol](../../wiki/concepts/ethercat-protocol.md)（CoE 章节）、[canfestival](../../wiki/entities/canfestival.md)
 
 ### 3) 典型应用领域
 
 - **要点：** 最初面向运动控制机械手；现亦用于医疗设备、非道路车辆、海事、铁路、楼宇自动化等。
-- **对 wiki 的映射：** [can-vs-ethercat-joint-bus](../../wiki/comparisons/can-vs-ethercat-joint-bus.md)
+- **对 wiki 的映射：** [can-vs-ethercat-joint-bus](../../wiki/comparisons/can-vs-ethercat-joint-bus.md)、[motor-drive-firmware-bus-protocols](../../wiki/overview/motor-drive-firmware-bus-protocols.md)
 
 ## 推荐继续阅读（外部）
 
 - CiA 402 驱动 Profile（运动控制设备）
 - ETG：CANopen over EtherCAT (CoE)
+- 开源栈：[CanFestival](https://canfestival.org/)（归档见 [canfestival-org.md](canfestival-org.md)）
 
 ## 当前提炼状态
 

@@ -2,7 +2,7 @@
 type: concept
 tags: [middleware, hardware, protocol, can-fd, fieldbus, embedded, robotics]
 status: complete
-updated: 2026-05-19
+updated: 2026-08-12
 related:
   - ./can-bus-protocol.md
   - ./ethercat-protocol.md

@@ -3,7 +3,7 @@
 type: overview
 tags: [hardware, firmware, motor-drive, fieldbus, can-bus, canopen, ethercat, embedded, robotics, mit]
 status: complete
-updated: 2026-08-02
+updated: 2026-08-12
 related:
   - ../concepts/can-bus-protocol.md
   - ../concepts/can-fd.md
@@ -13,6 +13,7 @@ related:
   - ../concepts/ttl-serial-logic-level.md
   - ../concepts/field-oriented-control.md
   - ../entities/simplefoc.md
+  - ../entities/canfestival.md
   - ../entities/wokwi.md
   - ../entities/tinkercad.md
   - ../comparisons/can-vs-ethercat-joint-bus.md
@@ -23,6 +24,8 @@ related:
 sources:
   - ../../sources/courses/motor_drive_firmware_bus_protocols.md
   - ../../sources/repos/simplefoc_arduino_foc.md
+  - ../../sources/repos/canfestival.md
+  - ../../sources/sites/canfestival-org.md
   - ../../sources/sites/cia_canopen_overview.md
   - ../../sources/sites/cia_can_knowledge_can_classic_and_hs.md
   - ../../sources/sites/cia_can_fd_basic_idea.md
@@ -133,7 +136,7 @@ flowchart TB
 
 2. **工业级关节模组**  
    L1 CAN 或 CAN FD → L2 **CANopen + CiA 402** → L3 CST/CSV/CSP  
-   主控侧：CANopen 主站（或 PLC）。
+   主控侧：CANopen 主站（或 PLC）；开源栈可参考 [CanFestival](../entities/canfestival.md)（ANSI-C Master/Slave + 对象字典生成）。
 
 3. **高端人形 / 全身 WBC**  
    L1 EtherCAT → L2 **CoE（CANopen 对象）** → L3 同 402 或厂商扩展对象  
@@ -178,6 +181,7 @@ flowchart TD
 
 - [磁场定向控制（FOC）](../concepts/field-oriented-control.md)
 - [SimpleFOC](../entities/simplefoc.md)
+- [CanFestival](../entities/canfestival.md) — 开源 ANSI-C CANopen 栈（Master/Slave）
 - [Wokwi](../entities/wokwi.md) — 浏览器端 MCU/外设仿真，固件 bring-up 与教学
 - [Tinkercad](../entities/tinkercad.md) — Arduino/micro:bit 课堂级电路入门仿真
 - [CAN 总线（经典）](../concepts/can-bus-protocol.md)
@@ -198,9 +202,12 @@ flowchart TD
 - [CiA：CAN FD](../../sources/sites/cia_can_fd_basic_idea.md)
 - [CiA / DroneCAN](../../sources/sites/cia_dronecan_uavcan.md)
 - [SimpleFOC / Arduino-FOC](../../sources/repos/simplefoc_arduino_foc.md)
+- [CanFestival 官网](../../sources/sites/canfestival-org.md)
+- [CanFestival 仓库归档](../../sources/repos/canfestival.md)
 
 ## 推荐继续阅读
 
 - CiA：[CiA 402 – drive and motion control](https://www.can-cia.org/can-knowledge/canopen/cia-402/)
 - [CAN vs EtherCAT 对比](../comparisons/can-vs-ethercat-joint-bus.md)
+- CanFestival：<https://canfestival.org/>
 - 具体电机：以**厂商官方 SDK 与协议 PDF** 为准（本页刻意不固化私有字节表）

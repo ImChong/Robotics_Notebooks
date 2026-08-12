@@ -2,11 +2,12 @@
 type: concept
 tags: [middleware, hardware, protocol, can-bus, fieldbus, embedded, robotics]
 status: complete
-updated: 2026-05-19
+updated: 2026-08-12
 related:
   - ./can-fd.md
   - ./ethercat-protocol.md
   - ../overview/motor-drive-firmware-bus-protocols.md
+  - ../entities/canfestival.md
   - ../comparisons/can-vs-ethercat-joint-bus.md
   - ../formalizations/control-loop-latency-modeling.md
   - ../concepts/processor-in-the-loop-sim2real.md
@@ -15,6 +16,8 @@ sources:
   - ../../sources/sites/cia_can_knowledge_can_classic_and_hs.md
   - ../../sources/sites/cia_canopen_overview.md
   - ../../sources/sites/cia_dronecan_uavcan.md
+  - ../../sources/sites/canfestival-org.md
+  - ../../sources/repos/canfestival.md
 summary: "经典 CAN（Controller Area Network）总线：多主、按位仲裁的差分串行现场总线，1 Mbit/s 与 8 字节载荷上限，广泛用于腿式/人形关节驱动与车载 ECU，应用层常见 CANopen 或 DroneCAN。"
 ---
 
@@ -60,7 +63,7 @@ summary: "经典 CAN（Controller Area Network）总线：多主、按位仲裁�
 
 | 协议 | 典型场景 |
 |------|----------|
-| **CANopen**（CiA 301/402） | 工业伺服、关节驱动器对象字典、PDO/SDO |
+| **CANopen**（CiA 301/402） | 工业伺服、关节驱动器对象字典、PDO/SDO；开源栈见 [CanFestival](../entities/canfestival.md) |
 | **DroneCAN** | ArduPilot / PX4 与 CAN 外设（ESC、传感器） |
 | **厂商私有协议** | 部分人形/四足电机 SDK 的紧凑二进制帧 |
 | **CoE** | 在 EtherCAT 上传 CANopen 对象（见 [EtherCAT](./ethercat-protocol.md)） |
@@ -74,6 +77,7 @@ summary: "经典 CAN（Controller Area Network）总线：多主、按位仲裁�
 ## 关联页面
 
 - [电机驱动器底软通信协议总览](../overview/motor-drive-firmware-bus-protocols.md) — CANopen / 私有帧 / CiA 402 等应用层选型
+- [CanFestival](../entities/canfestival.md) — 开源 ANSI-C CANopen Master/Slave 栈
 - [CAN FD（Flexible Data Rate）](./can-fd.md)
 - [EtherCAT 协议基础](./ethercat-protocol.md)
 - [CAN vs EtherCAT：关节总线选型](../comparisons/can-vs-ethercat-joint-bus.md)
@@ -85,8 +89,11 @@ summary: "经典 CAN（Controller Area Network）总线：多主、按位仲裁�
 - [CiA：经典 CAN、HS 物理层与历史](../../sources/sites/cia_can_knowledge_can_classic_and_hs.md)
 - [CiA：CANopen 概览](../../sources/sites/cia_canopen_overview.md)
 - [CiA / DroneCAN：无人机 CAN 应用层](../../sources/sites/cia_dronecan_uavcan.md)
+- [CanFestival 官网](../../sources/sites/canfestival-org.md)
+- [CanFestival 仓库归档](../../sources/repos/canfestival.md)
 
 ## 推荐继续阅读
 
 - CiA [CAN knowledge](https://www.can-cia.org/can-knowledge/) 目录
 - ISO 11898 系列（经典 CAN 数据链路与物理层）
+- CanFestival：<https://canfestival.org/>

@@ -2,18 +2,20 @@
 type: comparison
 tags: [hardware, fieldbus, can-bus, can-fd, ethercat, uart, rs485, realtime, robotics]
 status: complete
-updated: 2026-05-19
+updated: 2026-08-12
 related:
   - ../overview/motor-drive-firmware-bus-protocols.md
   - ../concepts/can-bus-protocol.md
   - ../concepts/can-fd.md
   - ../concepts/ethercat-protocol.md
   - ../concepts/uart-serial-communication.md
+  - ../entities/canfestival.md
   - ../comparisons/ethercat-vs-ethernet-ip.md
   - ../formalizations/control-loop-latency-modeling.md
 sources:
   - ../../sources/sites/cia_can_knowledge_can_classic_and_hs.md
   - ../../sources/sites/cia_can_fd_basic_idea.md
+  - ../../sources/sites/canfestival-org.md
   - ../../sources/courses/uart_rs485_serial_embedded.md
 summary: "腿式与人形关节反馈选型：经典 CAN/CAN FD、EtherCAT 与 UART/RS485 在带宽、拓扑、成本、生态与硬实时上的对照，帮助判断何时从 CAN 升级到 EtherCAT 或保留串口作调试与外设。"
 ---
@@ -51,6 +53,8 @@ summary: "腿式与人形关节反馈选型：经典 CAN/CAN FD、EtherCAT 与 U
 | 机器人常见度 | 四足/人形电机 | 新驱动器 | 人形高端、工业臂 | 调试、IMU、遥控 |
 | 应用层 | CANopen、DroneCAN、私有 | CANopen FD | CoE 等 | Modbus RTU、自定义 |
 
+开源 CANopen 主/从站实现可参考 [CanFestival](../entities/canfestival.md)（与 EtherCAT 侧 SOEM/IgH 对照）。
+
 ## 何时从 CAN 升级到 EtherCAT
 
 - 控制频率 × 轴数 × 每轴反馈字节数 **逼近总线利用率 50–70%** 且延迟长尾可见。
@@ -78,6 +82,7 @@ summary: "腿式与人形关节反馈选型：经典 CAN/CAN FD、EtherCAT 与 U
 ## 关联页面
 
 - [电机驱动器底软通信协议总览](../overview/motor-drive-firmware-bus-protocols.md)
+- [CanFestival](../entities/canfestival.md) — 开源 CANopen 栈（CAN 侧主/从对照）
 - [CAN 总线](./../concepts/can-bus-protocol.md)
 - [CAN FD](./../concepts/can-fd.md)
 - [EtherCAT 协议基础](./../concepts/ethercat-protocol.md)
@@ -89,9 +94,11 @@ summary: "腿式与人形关节反馈选型：经典 CAN/CAN FD、EtherCAT 与 U
 
 - [CiA：经典 CAN 与物理层](../../sources/sites/cia_can_knowledge_can_classic_and_hs.md)
 - [CiA：CAN FD](../../sources/sites/cia_can_fd_basic_idea.md)
+- [CanFestival 官网](../../sources/sites/canfestival-org.md)
 - [UART / RS-485 入门](../../sources/courses/uart_rs485_serial_embedded.md)
 
 ## 推荐继续阅读
 
 - [EtherCAT vs EtherNet/IP](./ethercat-vs-ethernet-ip.md)
 - CiA [Designing a CAN network](https://www.can-cia.org/can-knowledge/designing-a-can-network/)
+- CanFestival：<https://canfestival.org/>

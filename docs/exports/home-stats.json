@@ -1,13 +1,75 @@
 {
   "generated_at": "2026-08-12",
-  "node_count": 3005,
-  "edge_count": 26120,
+  "node_count": 3006,
+  "edge_count": 26131,
   "coverage": {
-    "covered": 2981,
-    "total": 2981,
+    "covered": 2982,
+    "total": 2982,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/canfestival.md",
+      "detail_id": "entity-canfestival",
+      "label": "CanFestival",
+      "type": "entity",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/overview/motor-drive-firmware-bus-protocols.md",
+      "detail_id": "wiki-overview-motor-drive-firmware-bus-protocols",
+      "label": "电机驱动器底软通信协议总览",
+      "type": "overview",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/concepts/can-bus-protocol.md",
+      "detail_id": "wiki-concepts-can-bus-protocol",
+      "label": "CAN 总线（经典 CAN / CAN 2.0）",
+      "type": "concept",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/comparisons/can-vs-ethercat-joint-bus.md",
+      "detail_id": "wiki-comparisons-can-vs-ethercat-joint-bus",
+      "label": "CAN / CAN FD vs EtherCAT vs UART·RS485（关节与现场总线选型）",
+      "type": "comparison",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/concepts/can-fd.md",
+      "detail_id": "wiki-concepts-can-fd",
+      "label": "CAN FD（Flexible Data Rate）",
+      "type": "concept",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/concepts/ethercat-protocol.md",
+      "detail_id": "wiki-concepts-ethercat-protocol",
+      "label": "EtherCAT 协议基础",
+      "type": "concept",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
     {
       "path": "wiki/entities/paper-effective-degree.md",
       "detail_id": "entity-paper-effective-degree",
@@ -153,82 +215,18 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/safe-real-world-rl-fine-tuning.md",
-      "detail_id": "wiki-concepts-safe-real-world-rl-fine-tuning",
-      "label": "Safe Real-World RL Fine-Tuning（真机安全 RL 微调）",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-slim-05b.md",
-      "detail_id": "entity-paper-slim-05b",
-      "label": "SLIM-0.5B（动作接地预测隐变量策略 · arXiv:2608.09771）",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/concepts/world-action-models.md",
-      "detail_id": "wiki-concepts-world-action-models",
-      "label": "World Action Models（WAM，世界–动作模型）",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/methods/defi-decoupled-dynamics-vla.md",
-      "detail_id": "wiki-methods-defi-decoupled-dynamics-vla",
-      "label": "DeFI（解耦前向/逆动力学 VLA）",
-      "type": "method",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-effective-degree.md",
-    "detail_id": "entity-paper-effective-degree",
-    "label": "Effective Degree：多项式代理量化简洁性",
+    "path": "wiki/entities/canfestival.md",
+    "detail_id": "entity-canfestival",
+    "label": "CanFestival",
     "type": "entity",
     "recency": "2026-08-12",
     "source": "log.md",
-    "action": "maintained",
+    "action": "added",
     "has_repo": true,
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
   },
   "top_communities": [
     {

@@ -1740,6 +1740,13 @@
         "simplefoc"
       ]
     },
+    "canfestival": {
+      "label": "开源CANopen框架（CanFestival）",
+      "aliases": [
+        "canfestival",
+        "beremiz"
+      ]
+    },
     "vesc": {
       "label": "维斯电调（VESC Project）",
       "aliases": [

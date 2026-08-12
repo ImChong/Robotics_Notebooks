@@ -261,6 +261,7 @@
 | [x] [grpc.md](repos/grpc.md) | grpc/grpc：多语言 gRPC 运行时与 C++ 核心（Apache-2.0，CNCF） |
 | [x] [slam_toolbox.md](repos/slam_toolbox.md) | SLAM Toolbox：2D lifelong SLAM |
 | [x] [cartographer.md](repos/cartographer.md) | Google Cartographer 2D/3D SLAM |
+| [x] [canfestival.md](repos/canfestival.md) | CanFestival：开源 ANSI-C CANopen 栈（beremiz/canfestival CMake；官网 canfestival.org） |
 | [x] [fast_lio.md](repos/fast_lio.md) | FAST-LIO：LiDAR-惯性里程计 |
 | [x] [lio_sam.md](repos/lio_sam.md) | LIO-SAM：因子图 LiDAR-惯性 SLAM |
 | [x] [autoware.md](repos/autoware.md) | Autoware 开源自动驾驶全栈 |
@@ -428,6 +429,7 @@
 | [x] [cia_can_knowledge_can_classic_and_hs.md](sites/cia_can_knowledge_can_classic_and_hs.md) | CiA CAN knowledge：经典 CAN、HS 物理层、历史与物理层选项索引 |
 | [x] [cia_can_fd_basic_idea.md](sites/cia_can_fd_basic_idea.md) | CiA：CAN FD（Flexible Data Rate）基本思想 |
 | [x] [cia_canopen_overview.md](sites/cia_canopen_overview.md) | CiA：CANopen CC / CANopen FD 嵌入式网络概览 |
+| [x] [canfestival-org.md](sites/canfestival-org.md) | CanFestival 官网 canfestival.org：开源 CANopen 框架（Code/Doc/Apps；LGPLv2 运行时） |
 | [x] [cia_dronecan_uavcan.md](sites/cia_dronecan_uavcan.md) | CiA + DroneCAN：UAVCAN/Cyphal 与 DroneCAN 无人机 CAN 应用层 |
 | [x] [botlab_motioncanvas.md](sites/botlab_motioncanvas.md) | 地瓜机器人 BotLab（MotionCanvas）：浏览器内 obs→ONNX→MuJoCo 节点图与 MSCP |
 | [x] [crisp-real2sim-project-github-io.md](sites/crisp-real2sim-project-github-io.md) | CRISP 项目页 crisp-real2sim.github.io（交互演示、与 VideoMimic 对比、Method、BibTeX） |
