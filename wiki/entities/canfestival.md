@@ -12,6 +12,7 @@ related:
   - ../queries/ethercat-master-optimization.md
   - ../queries/real-time-control-middleware-guide.md
   - ./simplefoc.md
+  - ./soem.md
 sources:
   - ../../sources/sites/canfestival-org.md
   - ../../sources/repos/canfestival.md
@@ -40,7 +41,7 @@ summary: "CanFestival 是自 2001 年开源的 ANSI-C、平台无关 CANopen 协
 
 - 仓库已有 [CANopen 概念](../../sources/sites/cia_canopen_overview.md) 与 [底软协议选型总览](../overview/motor-drive-firmware-bus-protocols.md)，但缺少 **可编译链接的开源栈实体**；CanFestival 填补「工业套餐」里主站/从站实现侧。
 - **许可清晰**：运行时 LGPL，便于嵌入商业固件；工具 GPL；**objdictgen 生成的节点 C 不受 GPL/LGPL 覆盖**（官网 Doc）——对关节模组/PLC 厂商友好。
-- 与 [SimpleFOC](./simplefoc.md) 正交：SimpleFOC 管 **电流环算法**；CanFestival 管 **L2 CANopen 帧与对象字典**。与 EtherCAT 主站 [SOEM/IgH 指南](../queries/ethercat-master-optimization.md) 对照：前者是 CAN 上的 CANopen，后者是以太网上的 CoE。
+- 与 [SimpleFOC](./simplefoc.md) 正交：SimpleFOC 管 **电流环算法**；CanFestival 管 **L2 CANopen 帧与对象字典**。与 EtherCAT 主站 [SOEM](./soem.md) / [IgH 指南](../queries/ethercat-master-optimization.md) 对照：前者是 CAN 上的 CANopen，后者是以太网上的 CoE。
 
 ## 核心原理
 
@@ -129,6 +130,7 @@ sequenceDiagram
 - [EtherCAT 协议基础](../concepts/ethercat-protocol.md) — CoE 与 CANopen 对象模型对照
 - [CAN vs EtherCAT 关节总线选型](../comparisons/can-vs-ethercat-joint-bus.md)
 - [EtherCAT 主站优化指南](../queries/ethercat-master-optimization.md) — 以太网侧主站对照
+- [SOEM](./soem.md) — EtherCAT 用户态开源主站实体
 - [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)
 - [SimpleFOC](./simplefoc.md) — MCU 电流环层对照
 

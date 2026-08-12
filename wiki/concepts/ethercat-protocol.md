@@ -14,9 +14,12 @@ related:
   - ../queries/real-time-control-middleware-guide.md
   - ../formalizations/control-loop-latency-modeling.md
   - ./clock-synchronization-algorithms.md
+  - ../entities/soem.md
 sources:
   - ../../sources/papers/sim2real.md
   - ../../sources/sites/cia_canopen_overview.md
+  - ../../sources/repos/soem.md
+  - ../../sources/sites/openethercatsociety-github-io.md
 summary: "EtherCAT 协议基础：介绍了这款基于以太网的高性能工业现场总线协议，重点讲解了其“运行中处理”机制与分布式时钟（DC）如何支撑起人形机器人的硬实时控制。"
 ---
 
@@ -47,9 +50,11 @@ summary: "EtherCAT 协议基础：介绍了这款基于以太网的高性能工�
 - **拓扑灵活**：支持线型、树型、星型拓扑，对人形机器人布线极其友好。
 - **协议栈**：
   - **CoE (CANopen over EtherCAT)**：最主流的应用层协议。
+  - **开源主站**：用户态以 [SOEM](../entities/soem.md) 最常见；量产内核路径见 [主站优化指南](../queries/ethercat-master-optimization.md) 中的 IgH。
 
 ## 关联页面
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 本页处于驱动链 **④层 实时总线闭环集成**（总线周期 ≠ 闭环带宽、抖动确定性）
+- [SOEM](../entities/soem.md) — Simple Open EtherCAT Master（用户态开源主站）
 - [电机驱动器底软通信协议总览](../overview/motor-drive-firmware-bus-protocols.md)
 - [CAN vs EtherCAT：关节总线选型](../comparisons/can-vs-ethercat-joint-bus.md)
 - [CAN 总线（经典）](./can-bus-protocol.md)
@@ -61,3 +66,5 @@ summary: "EtherCAT 协议基础：介绍了这款基于以太网的高性能工�
 
 ## 参考来源
 - EtherCAT Technology Group (ETG) 官方白皮书。
+- [sources/repos/soem.md](../../sources/repos/soem.md)
+- [sources/sites/openethercatsociety-github-io.md](../../sources/sites/openethercatsociety-github-io.md)

@@ -2,14 +2,18 @@
 type: query
 tags: [real-time, middleware, deployment, ethercat, hardware, linux]
 status: complete
-updated: 2026-04-21
+updated: 2026-08-12
 related:
   - ../comparisons/ros2-vs-lcm.md
   - ../comparisons/ethercat-vs-ethernet-ip.md
   - ./real-time-control-middleware-guide.md
   - ../overview/humanoid-motion-control-know-how.md
+  - ../entities/soem.md
+  - ../concepts/ethercat-protocol.md
 sources:
   - ../../sources/papers/sim2real.md
+  - ../../sources/repos/soem.md
+  - ../../sources/sites/openethercatsociety-github-io.md
 summary: "EtherCAT 主站优化指南：详解如何基于 SOEM/IGH 在 Linux 环境下通过内核优化和周期同步（DC），实现 2kHz 以上、高确定性的工业级伺服控制闭环。"
 ---
 
@@ -39,8 +43,9 @@ summary: "EtherCAT 主站优化指南：详解如何基于 SOEM/IGH 在 Linux �
 | **实时性** | 依赖应用层线程调度，抖动略大 | 内核驱动级控制，稳定性极佳 |
 | **驱动支持** | 通用 Raw Socket，兼容性强 | 需要替换专用网卡驱动（如 e1000e） |
 | **复杂度** | 极简，轻量，适合快速原型 | 复杂，涉及内核编译，适合量产产品 |
+| **许可** | GPLv3 + 商业双许可（见实体页） | GPL（以 EtherLab 发行说明为准） |
 
-**建议**：科研初期使用 SOEM；追求工业级极致稳定性首选 IgH。
+**建议**：科研初期使用 [SOEM](../entities/soem.md)；追求工业级极致稳定性首选 IgH。SOEM 实体页含 `samples/ec_sample` 运行时序与构建入口。
 
 ## 2. 核心优化：彻底消除抖动 (Jitter)
 
@@ -70,6 +75,7 @@ summary: "EtherCAT 主站优化指南：详解如何基于 SOEM/IGH 在 Linux �
 
 ## 关联页面
 - [执行器驱动链选型闭环知识链](./actuator-drive-chain-selection-loop.md) — 本页是其④「实时总线闭环集成」层的深度调优
+- [SOEM](../entities/soem.md) — 用户态开源主站实体（构建 / samples / 许可）
 - [EtherCAT 协议基础](../concepts/ethercat-protocol.md)
 - [EtherCAT vs EtherNet/IP（工业总线选型对比）](../comparisons/ethercat-vs-ethernet-ip.md)
 - [ROS 2 vs LCM 选型对比](../comparisons/ros2-vs-lcm.md)
@@ -80,3 +86,5 @@ summary: "EtherCAT 主站优化指南：详解如何基于 SOEM/IGH 在 Linux �
 - EtherCAT Technology Group (ETG) 官方规范。
 - IgH EtherCAT Master Documentation.
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md)
+- [sources/repos/soem.md](../../sources/repos/soem.md)
+- [sources/sites/openethercatsociety-github-io.md](../../sources/sites/openethercatsociety-github-io.md)
