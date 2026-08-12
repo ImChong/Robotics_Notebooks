@@ -535,6 +535,7 @@
 - [Heracles：跟踪精度与生成式恢复的扩散中间件](wiki/entities/paper-heracles-humanoid-diffusion.md) — Heracles**（*Bridging Precise Tracking and Generative Synthesis for General Humanoid Control*，arXiv `📅unknown` `[entity_page]`
 - [HiFi-UMI / HiFi-UMI-2K](wiki/entities/paper-hifi-umi.md) — HiFi-UMI**（*Learning Deployable Manipulation Policies from High-Fidelity UMI Data Alone*，[arXiv:26 `📅unknown` `[entity_page]`
 - [Hiking in the Wild：可扩展感知跑酷框架](wiki/entities/paper-hiking-in-the-wild.md) — Hiking in the Wild**（arXiv:2601.07718）由清华大学交叉信息研究院等提出，在 [42 篇 RL 身体系统栈](https://mp.weixin.qq.com/s `📅unknown` `[entity_page]`
+- [HIL-HARC（真机在线 RL · CTDE + 分解 Critic · arXiv:2608.09762）](wiki/entities/paper-hil-harc.md) — HIL-HARC**（*Efficient Real-World Online Reinforcement Learning for Robot Manipulation via Centrali `📅unknown` `[entity_page]`
 - [Stack of Tasks（HMI P003）](wiki/entities/paper-hmi-stack-of-tasks.md) — Stack of Tasks**（*A Versatile Generalized Inverted Kinematics Implementation for Collaborative Wor `📅unknown` `[entity_page]`
 - [HomeWorld（Kairos · Whole-Home Scene Generation）](wiki/entities/paper-homeworld-whole-home-scene-generation.md) — HomeWorld**（*Kairos · HomeWorld*，arXiv:2606.06390，项目页，[GitH `📅unknown` `[entity_page]`
 - [HoST：跨多样姿态的人形起身控制](wiki/entities/paper-host-humanoid-standingup.md) — HoST（Humanoid Standing-up Control）** 是上海 AI Lab 等团队提出的强化学习框架（arXiv:2502.08378，**RSS 2025 Best Syst `📅unknown` `[entity_page]`
@@ -2036,6 +2037,7 @@
 - [SimFoundry（Modular Real2Sim Scene Generation for Policy Learning and Evaluation）](wiki/entities/paper-simfoundry-real2sim-scene-generation.md) — SimFoundry** 是 NVIDIA GEAR Lab 等团队的 **Real2Sim→Sim2Real 闭环系统**（arXiv:2606. `📅unknown` `[entity_page]`
 - [SkillCorpus：开放 Skill 生态的策展与评测](wiki/entities/paper-skillcorpus.md) — SkillCorpus**（arXiv:2607.15557）由 **恒心智能（EverMind）/ 盛大集团 / 北京大学 `📅unknown` `[entity_page]`
 - [SLAMFormer-∞（Infinite SLAM Transformer）](wiki/entities/paper-slamformer-infinity.md) — SLAMFormer-∞**（*Infinite SLAM Transformer for Unbounded Frontend and Backend Processing*，[arXiv:26 `📅unknown` `[entity_page]`
+- [SLIM-0.5B（动作接地预测隐变量策略 · arXiv:2608.09771）](wiki/entities/paper-slim-05b.md) — SLIM-0.5B**（*Learning Action-Grounded Predictive Latents for Robot Manipulation*，[arXiv:2608.09771 `📅unknown` `[entity_page]`
 - [SLowRL：安全低秩 RL 真机运动微调](wiki/entities/paper-slowrl-safe-lora-locomotion-sim2real.md) — SLowRL**（*Safe Low-Rank Adaptation Reinforcement Learning for Locomotion*，arXiv:2603.17092）针对 **动态 `📅unknown` `[entity_page]`
 - [SoftVTBench（安全感知视触觉可变形操作基准 · arXiv:2607.04234）](wiki/entities/paper-softvtbench.md) — SoftVTBench**（*SoftVTBench: A Safety-Aware Visuo-Tactile Benchmark for Physically Constrained Robo `📅unknown` `[entity_page]`
 - [SPARK（Skeleton-Parameter Aligned Retargeting）](wiki/entities/paper-spark-skeleton-aligned-retargeting.md) — SPARK**（*Skeleton-Parameter Aligned Retargeting on Humanoid Robots with Kinodynamic Trajectory Opt `📅unknown` `[entity_page]`
@@ -2140,6 +2142,7 @@
 - [X-World（Controllable Ego-Centric Multi-Camera World Models）](wiki/entities/paper-x-world.md) — X-World**（arXiv:2603.19979）由小鹏（XPeng） GWM 团队提出：面向端到端智驾评测与数据扩增的 **动作条件 `📅unknown` `[entity_page]`
 - [XHugWBC（HMI P037）](wiki/entities/paper-xhugwbc-cross-humanoid.md) — XHugWBC**（*Scalable and General Whole-Body Control for Cross-Humanoid Locomotion*，2026，[arXiv:2602 `📅unknown` `[entity_page]`
 - [X-Morph：跨形态人体运动先验](wiki/entities/paper-xmorph.md) — X-Morph**（*Human Motion Priors for Scalable Robot Learning Across Morphologies*，[arXiv:2606.30290 `📅unknown` `[entity_page]`
+- [XPolicyLab（统一策略评测部署标准 · arXiv:2608.09892）](wiki/entities/paper-xpolicylab.md) — XPolicyLab**（*A Unified Standard and Open Ecosystem for Robot Policy Evaluation and Deployment*，[a `📅unknown` `[entity_page]`
 - [XRoboToolkit](wiki/entities/paper-xrobotoolkit.md) — XRoboToolkit**（*A Cross-Platform Framework for Robot Teleoperation*，字节跳动 PICO / 佐治亚理工 / 乔治梅森，arXiv `📅unknown` `[entity_page]`
 - [YAHMP：人形通用运动跟踪里什么真的重要？](wiki/entities/paper-yahmp.md) — YAHMP**（*Yet Another Humanoid Motion tracking Policy*；论文 *What Matters in Humanoid General Motion  `📅unknown` `[entity_page]`
 - [YOLO v1（You Only Look Once）](wiki/entities/paper-yolo-unified-realtime-detection.md) — YOLO**（You Only Look Once）是 Joseph Redmon 等提出的 **统一实时目标检测** 方法（arXiv:1506.02640，CVPR 2016）。它将检测从「区 `📅unknown` `[entity_page]`

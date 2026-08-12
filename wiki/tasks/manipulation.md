@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-08-11
+updated: 2026-08-12
 related:
   - ../entities/paper-clothtransformer-unified-latent-cloth-simulation.md
   - ../entities/paper-flying-knots.md
@@ -267,6 +267,8 @@ flowchart TD
 - [AprilTag（视觉 fiducial 库）](../entities/april-tag.md) — 工作台基准、手眼与对齐任务中的低成本位姿观测
 - [AnyGrasp](../entities/anygrasp.md) — 深度点云稠密抓取检测与跟踪的工程/SDK 入口
 - [Imitation Learning](../methods/imitation-learning.md) — 操作任务的主流学习方法
+- [SLIM-0.5B](../entities/paper-slim-05b.md) — 0.47B 动作接地 latent 策略（LIBERO/CALVIN/真机）
+- [HIL-HARC](../entities/paper-hil-harc.md) — 真机在线 RL：CTDE 混合动作 + 分解 critic
 - [Loco-Manipulation](./loco-manipulation.md) — 边走边操作的全身协调扩展
 - [Teleoperation](./teleoperation.md) — 操作数据采集的主要手段
 - [Query：操作演示数据采集指南](../queries/demo-data-collection-guide.md) — 如何高效采集人类演示数据

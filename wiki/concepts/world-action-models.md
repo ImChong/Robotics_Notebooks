@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-08-11
+updated: 2026-08-12
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、Dyna-2（百万小时人视频跨具身缩放）与 ω-0 等实例。"
 related:
   - ../entities/dyna-2.md
@@ -230,6 +230,7 @@ flowchart TB
 
 - [Awesome World Models（精选集）](../entities/awesome-world-models.md) — WM/WAM/MBRL/应用域全谱索引
 - [Dyna-2](../entities/dyna-2.md) — 百万小时人视频 Joint WAM 跨具身缩放（闭源）
+- [SLIM-0.5B](../entities/paper-slim-05b.md) — 动作接地预测 latent + 紧凑 MoT flow 策略（非像素 rollout）
 - [WAM 纵深路线](../../roadmap/depth-wam.md)
 - [RekaCS2-10k](../entities/rekacs2-10k-dataset.md) — 职业 CS2 ego 视频 + 逐帧键鼠/轨迹，动作条件世界模型预训练语料
 - [VLA](../methods/vla.md)
