@@ -1269,15 +1269,15 @@
       } else if (newest) {
         introParts.push(newest);
       }
-      introParts.push(addedOnly ? '仅新增节点时间线' : '维护日志时间线');
+      introParts.push(addedOnly ? '仅新增' : '含维护');
       var visibleNodes = countTimelineGroupNodes(visibleGroups);
-      var nodeWord = addedOnly ? '个新增节点' : '个节点';
+      var nodeWord = addedOnly ? '新增' : '节点';
       var totalDays = typeof totalDayCount === 'number' ? totalDayCount : 0;
       if (showAll || visibleGroups.length >= totalDays) {
         introParts.push(String(visibleNodes) + ' ' + nodeWord + ' / ' + String(totalDays) + ' 天');
       } else {
         introParts.push(
-          '显示最近 ' + String(windowDays) + ' 天 · ' +
+          '近 ' + String(windowDays) + ' 天 · ' +
           String(visibleNodes) + ' ' + nodeWord + ' / ' + String(visibleGroups.length) + ' 天' +
           '（共 ' + String(totalDays) + ' 天）'
         );
@@ -1367,7 +1367,7 @@
       '<div class="updates-filter-bar" role="group" aria-label="更新记录筛选">' +
       '<button type="button" class="btn-secondary btn-inline updates-filter-added-only" aria-pressed="false">' +
       '显示维护节点</button>' +
-      '<span class="updates-filter-hint">默认热力图与列表仅计新增；点击后按新增+维护总量着色并展示维护条目</span>' +
+      '<span class="updates-filter-hint">默认仅计新增 · 切换后含维护总量</span>' +
       '</div>';
     mount.innerHTML =
       heatmapHtml + filterBarHtml +
@@ -1541,11 +1541,11 @@
       var visibleNodes = addedOnlyFilter ? filterMetasAddedOnly(dayNodes) : dayNodes;
       activeDate = dateKey;
       setActiveCell(dateKey);
-      var filterIntro = [dateKey, addedOnlyFilter ? '仅新增节点' : '维护日志'];
+      var filterIntro = [dateKey, addedOnlyFilter ? '仅新增' : '含维护'];
       if (!visibleNodes.length) {
         bodyMount.innerHTML =
           '<p class="data-meta home-latest-wiki-intro">' + escapeHtml(filterIntro.join(' · ')) +
-          ' · 当日无新增节点' +
+          ' · 当日无新增' +
           ' <button type="button" class="btn-secondary btn-inline home-wiki-heatmap-clear">清除筛选</button></p>' +
           '<div class="updates-timeline-actions" role="group" aria-label="更新记录导航">' +
           '<div class="updates-timeline-actions-start"></div>' +
