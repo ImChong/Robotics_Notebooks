@@ -1,3 +1,12 @@
+## [2026-08-12] ingest | sources/repos/soem.md — 接入 SOEM（OpenEtherCATsociety）；升格 wiki/entities/soem.md；配套 sources/sites/openethercatsociety-github-io.md；交叉更新 wiki/queries/ethercat-master-optimization.md、wiki/concepts/ethercat-protocol.md、wiki/comparisons/can-vs-ethercat-joint-bus.md、wiki/comparisons/ethercat-vs-ethernet-ip.md、wiki/overview/motor-drive-firmware-bus-protocols.md、wiki/entities/canfestival.md
+
+- **触发：** 用户指定仓库 <https://github.com/OpenEtherCATsociety/SOEM>；要求自动合并
+- **来源：** [`sources/repos/soem.md`](sources/repos/soem.md)、[`sources/sites/openethercatsociety-github-io.md`](sources/sites/openethercatsociety-github-io.md)
+- **新建实体：** [`wiki/entities/soem.md`](wiki/entities/soem.md) — 用户态 EtherCAT 主站 C 库；GPLv3 + 商业双许可；含 `ec_sample` 源码运行时序图
+- **开源核查（步骤 2.5）：** **已开源** — [OpenEtherCATsociety/SOEM](https://github.com/OpenEtherCATsociety/SOEM)（v2.0.0）；项目页 <https://openethercatsociety.github.io/>；文档站需登录
+- **机构：** 新注册 `rt-labs`（实时实验室（RT-Labs））
+- **交叉：** [`wiki/queries/ethercat-master-optimization.md`](wiki/queries/ethercat-master-optimization.md)、[`wiki/concepts/ethercat-protocol.md`](wiki/concepts/ethercat-protocol.md)、[`wiki/comparisons/can-vs-ethercat-joint-bus.md`](wiki/comparisons/can-vs-ethercat-joint-bus.md)、[`wiki/comparisons/ethercat-vs-ethernet-ip.md`](wiki/comparisons/ethercat-vs-ethernet-ip.md)、[`wiki/overview/motor-drive-firmware-bus-protocols.md`](wiki/overview/motor-drive-firmware-bus-protocols.md)、[`wiki/entities/canfestival.md`](wiki/entities/canfestival.md)
+
 ## [2026-08-12] structural | references/papers/system-identification.md — 删除与 wiki 概念页同名的论文索引，搜索仅保留 System Identification 概念节点
 
 - **触发：** 用户反馈搜索「System Identification」出现两个节点

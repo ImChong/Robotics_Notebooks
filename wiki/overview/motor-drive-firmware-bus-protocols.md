@@ -14,6 +14,7 @@ related:
   - ../concepts/field-oriented-control.md
   - ../entities/simplefoc.md
   - ../entities/canfestival.md
+  - ../entities/soem.md
   - ../entities/wokwi.md
   - ../entities/tinkercad.md
   - ../comparisons/can-vs-ethercat-joint-bus.md
@@ -26,6 +27,8 @@ sources:
   - ../../sources/repos/simplefoc_arduino_foc.md
   - ../../sources/repos/canfestival.md
   - ../../sources/sites/canfestival-org.md
+  - ../../sources/repos/soem.md
+  - ../../sources/sites/openethercatsociety-github-io.md
   - ../../sources/sites/cia_canopen_overview.md
   - ../../sources/sites/cia_can_knowledge_can_classic_and_hs.md
   - ../../sources/sites/cia_can_fd_basic_idea.md
@@ -140,7 +143,7 @@ flowchart TB
 
 3. **高端人形 / 全身 WBC**  
    L1 EtherCAT → L2 **CoE（CANopen 对象）** → L3 同 402 或厂商扩展对象  
-   主控侧：IgH / SOEM + PREEMPT_RT。
+   主控侧：[SOEM](../entities/soem.md) / IgH + PREEMPT_RT（科研原型优先 SOEM；量产抖动极限见 [主站优化](../queries/ethercat-master-optimization.md)）。
 
 4. **无人机系外设接到地面机器人**  
    L1 CAN FD → L2 **DroneCAN** → 与关节 CANopen **分总线** 或网关隔离。
@@ -182,6 +185,7 @@ flowchart TD
 - [磁场定向控制（FOC）](../concepts/field-oriented-control.md)
 - [SimpleFOC](../entities/simplefoc.md)
 - [CanFestival](../entities/canfestival.md) — 开源 ANSI-C CANopen 栈（Master/Slave）
+- [SOEM](../entities/soem.md) — 开源用户态 EtherCAT 主站（CoE / DC）
 - [Wokwi](../entities/wokwi.md) — 浏览器端 MCU/外设仿真，固件 bring-up 与教学
 - [Tinkercad](../entities/tinkercad.md) — Arduino/micro:bit 课堂级电路入门仿真
 - [CAN 总线（经典）](../concepts/can-bus-protocol.md)
@@ -204,10 +208,13 @@ flowchart TD
 - [SimpleFOC / Arduino-FOC](../../sources/repos/simplefoc_arduino_foc.md)
 - [CanFestival 官网](../../sources/sites/canfestival-org.md)
 - [CanFestival 仓库归档](../../sources/repos/canfestival.md)
+- [SOEM 项目页](../../sources/sites/openethercatsociety-github-io.md)
+- [SOEM 仓库归档](../../sources/repos/soem.md)
 
 ## 推荐继续阅读
 
 - CiA：[CiA 402 – drive and motion control](https://www.can-cia.org/can-knowledge/canopen/cia-402/)
 - [CAN vs EtherCAT 对比](../comparisons/can-vs-ethercat-joint-bus.md)
 - CanFestival：<https://canfestival.org/>
+- SOEM：<https://github.com/OpenEtherCATsociety/SOEM>
 - 具体电机：以**厂商官方 SDK 与协议 PDF** 为准（本页刻意不固化私有字节表）

@@ -2,7 +2,7 @@
 type: comparison
 tags: [hardware, middleware, fieldbus, ethercat, ethernet-ip, realtime, deployment]
 status: complete
-updated: 2026-05-03
+updated: 2026-08-12
 related:
   - ../concepts/ethercat-protocol.md
   - ../queries/ethercat-master-optimization.md
@@ -10,8 +10,10 @@ related:
   - ../formalizations/control-loop-latency-modeling.md
   - ../concepts/clock-synchronization-algorithms.md
   - ./ros2-vs-lcm.md
+  - ../entities/soem.md
 sources:
   - ../../sources/papers/sim2real.md
+  - ../../sources/repos/soem.md
 summary: "工业以太网双雄选型：EtherCAT 用 on-the-fly 主站帧实现 100 轴 250 µs 级硬实时刷新；EtherNet/IP 走标准 TCP/IP + CIP，生态广但确定性需要 CIP Sync/TSN 才能逼近 EtherCAT。在双足/人形机器人 1 kHz+ 闭环里 EtherCAT 是默认解，EtherNet/IP 更适合产线集成与低频运动协调。"
 ---
 
@@ -43,7 +45,7 @@ summary: "工业以太网双雄选型：EtherCAT 用 on-the-fly 主站帧实现 
 | **拓扑能力** | 线型 / 树型 / 星型 / 环型（DC 冗余），自动地址分配 | 标准星型 / DLR（Device Level Ring）冗余环 |
 | **物理布线** | 一根 100BASE-TX，菊花链直接串到底，对人形布线极友好 | 必须经过工业以太网交换机（managed），布线偏总线-星型 |
 | **从站芯片** | 必须使用 ESC（EtherCAT Slave Controller）专用 ASIC | 标准网卡 + 应用层 CIP 栈 |
-| **主站实现** | SOEM（用户态）/ IgH（内核态），主站需要独占网口 | 任意带 TCP/IP 的设备均可，PLC 厂商提供商业栈 |
+| **主站实现** | [SOEM](../entities/soem.md)（用户态）/ IgH（内核态），主站需要独占网口 | 任意带 TCP/IP 的设备均可，PLC 厂商提供商业栈 |
 | **生态阵营** | Beckhoff（ETG 联盟），半导体、机器人、CNC | Rockwell / Allen-Bradley（ODVA），美式 PLC、过程控制 |
 | **应用层协议** | CoE (CANopen over EtherCAT)、SoE、EoE、FoE | CIP（Common Industrial Protocol），含 CIP Motion / CIP Safety |
 
@@ -71,7 +73,7 @@ summary: "工业以太网双雄选型：EtherCAT 用 on-the-fly 主站帧实现 
 
 ### 4. 工程成本与团队倾向
 
-- **EtherCAT**：硬件廉价（伺服自带 ESC），但需要团队懂 PREEMPT_RT、SOEM/IgH、CoE 字典；对初学者门槛集中在主站调优（详见 [EtherCAT 主站优化指南](../queries/ethercat-master-optimization.md)）。
+- **EtherCAT**：硬件廉价（伺服自带 ESC），但需要团队懂 PREEMPT_RT、[SOEM](../entities/soem.md)/IgH、CoE 字典；对初学者门槛集中在主站调优（详见 [EtherCAT 主站优化指南](../queries/ethercat-master-optimization.md)）。
 - **EtherNet/IP**：硬件偏贵（managed 工业交换机、CIP Motion 网卡、TSN 设备），但软件栈与 PLC 工程师习惯一致，**大型集成商更偏好它**，因为可以与现有 Logix / Studio 5000 工具链无缝衔接。
 
 ---
@@ -115,7 +117,7 @@ EtherCAT 选型几乎决定了上层中间件的形态：
 ## 常见误区
 
 1. **"EtherNet/IP 就是普通以太网，所以一定不实时"**：不准确。叠加 CIP Sync + TSN 交换机后，EtherNet/IP 可以做到 ms 级运动控制，但代价是基础设施投入显著上升。
-2. **"EtherCAT 因为是专有协议所以封闭"**：EtherCAT 由 ETG 维护，规范公开；ESC 芯片需要授权，但 SOEM/IgH 主站均为开源。
+2. **"EtherCAT 因为是专有协议所以封闭"**：EtherCAT 由 ETG 维护，规范公开；ESC 芯片需要授权，但 [SOEM](../entities/soem.md)/IgH 主站均为开源。
 3. **"用了 EtherCAT 就不需要 PREEMPT_RT"**：EtherCAT 解决的是总线抖动；主站调度抖动仍需 PREEMPT_RT + CPU 隔离来压制（详见 [EtherCAT 主站优化指南](../queries/ethercat-master-optimization.md)）。
 4. **"EtherNet/IP = 标准以太网 + IP 协议"**：只对了一半。EtherNet/IP 中的 "IP" 指 *Industrial Protocol*（即 CIP），不是 Internet Protocol；它确实跑在 TCP/UDP 之上，但应用层是 CIP。
 
@@ -124,6 +126,7 @@ EtherCAT 选型几乎决定了上层中间件的形态：
 ## 关联页面
 
 - [EtherCAT 协议基础](../concepts/ethercat-protocol.md)
+- [SOEM](../entities/soem.md) — 用户态开源 EtherCAT 主站
 - [EtherCAT 主站优化指南](../queries/ethercat-master-optimization.md)
 - [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)
 - [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md)
@@ -135,3 +138,4 @@ EtherCAT 选型几乎决定了上层中间件的形态：
 - EtherCAT Technology Group (ETG) 官方规范与白皮书。
 - ODVA, *EtherNet/IP Specification* and *CIP Motion / CIP Sync* 技术报告。
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — Sim2Real 部署中关于硬件实时栈的论述。
+- [sources/repos/soem.md](../../sources/repos/soem.md) — SOEM 用户态主站归档。

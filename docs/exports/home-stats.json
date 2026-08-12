@@ -1,27 +1,17 @@
 {
   "generated_at": "2026-08-12",
-  "node_count": 3006,
-  "edge_count": 26131,
+  "node_count": 3007,
+  "edge_count": 26147,
   "coverage": {
-    "covered": 2982,
-    "total": 2982,
+    "covered": 2983,
+    "total": 2983,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/concepts/system-identification.md",
-      "detail_id": "wiki-concepts-system-identification",
-      "label": "System Identification",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/canfestival.md",
-      "detail_id": "entity-canfestival",
-      "label": "CanFestival",
+      "path": "wiki/entities/soem.md",
+      "detail_id": "entity-soem",
+      "label": "SOEM",
       "type": "entity",
       "recency": "2026-08-12",
       "source": "log.md",
@@ -30,19 +20,20 @@
       "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
     },
     {
-      "path": "wiki/overview/motor-drive-firmware-bus-protocols.md",
-      "detail_id": "wiki-overview-motor-drive-firmware-bus-protocols",
-      "label": "电机驱动器底软通信协议总览",
-      "type": "overview",
+      "path": "wiki/queries/ethercat-master-optimization.md",
+      "detail_id": "wiki-queries-ethercat-master-optimization",
+      "label": "EtherCAT 主站优化指南",
+      "type": "query",
       "recency": "2026-08-12",
       "source": "log.md",
       "action": "maintained",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
     },
     {
-      "path": "wiki/concepts/can-bus-protocol.md",
-      "detail_id": "wiki-concepts-can-bus-protocol",
-      "label": "CAN 总线（经典 CAN / CAN 2.0）",
+      "path": "wiki/concepts/ethercat-protocol.md",
+      "detail_id": "wiki-concepts-ethercat-protocol",
+      "label": "EtherCAT 协议基础",
       "type": "concept",
       "recency": "2026-08-12",
       "source": "log.md",
@@ -58,22 +49,67 @@
       "recency": "2026-08-12",
       "source": "log.md",
       "action": "maintained",
+      "has_repo": true,
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/comparisons/ethercat-vs-ethernet-ip.md",
+      "detail_id": "wiki-comparisons-ethercat-vs-ethernet-ip",
+      "label": "EtherCAT vs EtherNet/IP（工业总线选型对比）",
+      "type": "comparison",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/overview/motor-drive-firmware-bus-protocols.md",
+      "detail_id": "wiki-overview-motor-drive-firmware-bus-protocols",
+      "label": "电机驱动器底软通信协议总览",
+      "type": "overview",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/entities/canfestival.md",
+      "detail_id": "entity-canfestival",
+      "label": "CanFestival",
+      "type": "entity",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/concepts/system-identification.md",
+      "detail_id": "wiki-concepts-system-identification",
+      "label": "System Identification",
+      "type": "concept",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/concepts/can-bus-protocol.md",
+      "detail_id": "wiki-concepts-can-bus-protocol",
+      "label": "CAN 总线（经典 CAN / CAN 2.0）",
+      "type": "concept",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
       "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/concepts/can-fd.md",
       "detail_id": "wiki-concepts-can-fd",
       "label": "CAN FD（Flexible Data Rate）",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/concepts/ethercat-protocol.md",
-      "detail_id": "wiki-concepts-ethercat-protocol",
-      "label": "EtherCAT 协议基础",
       "type": "concept",
       "recency": "2026-08-12",
       "source": "log.md",
@@ -186,46 +222,18 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-hifi-umi.md",
-      "detail_id": "entity-paper-hifi-umi",
-      "label": "HiFi-UMI / HiFi-UMI-2K",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/tasks/teleoperation.md",
-      "detail_id": "wiki-tasks-teleoperation",
-      "label": "Teleoperation（遥操作）",
-      "type": "task",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-hil-harc.md",
-      "detail_id": "entity-paper-hil-harc",
-      "label": "HIL-HARC（真机在线 RL · CTDE + 分解 Critic · arXiv:2608.09762）",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/system-identification.md",
-    "detail_id": "wiki-concepts-system-identification",
-    "label": "System Identification",
-    "type": "concept",
+    "path": "wiki/entities/soem.md",
+    "detail_id": "entity-soem",
+    "label": "SOEM",
+    "type": "entity",
     "recency": "2026-08-12",
     "source": "log.md",
-    "action": "maintained",
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
   },
   "top_communities": [
     {
