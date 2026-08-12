@@ -2537,6 +2537,14 @@
         "genova",
         "dibris"
       ]
+    },
+    "fpv-labs": {
+      "label": "第一人称视觉实验室（FPV Labs）",
+      "aliases": [
+        "fpv-labs",
+        "fpvlabs",
+        "fpv"
+      ]
     }
   }
 }

@@ -22,12 +22,13 @@ tags:
 status: complete
 venue: CVPR 2022
 arxiv: "2110.07058"
-updated: 2026-08-10
+updated: 2026-08-12
 code: https://github.com/facebookresearch/Ego4D
 related:
   - ../overview/ego-category-01-data-collection.md
   - ../comparisons/humannet-table1-human-video-corpora.md
   - ./paper-egoverse.md
+  - ./paper-ego-oscar.md
   - ./rekadaily-10k-dataset.md
   - ./paper-ace-data-0.md
   - ./egoworld-100w.md
@@ -41,6 +42,7 @@ sources:
   - ../../sources/papers/ego4d_arxiv_2110_07058.md
   - ../../sources/sites/ego4d-data-org.md
   - ../../sources/repos/ego4d.md
+  - ../../sources/papers/ego_oscar_arxiv_2608_08285.md
 summary: "Ego4D（FAIR 等联盟，CVPR 2022 / arXiv:2110.07058）：约 3,670 小时、74 地点/9 国的大规模第一人称日常视频与五大 benchmark（记忆查询、手物状态变化、音视说话人、社交、预测）；数据需 license，CLI/工具 MIT 已开源。HumanNet Table 1 标为 Indirect 档 egocentric 语料。"
 ---
 
@@ -202,6 +204,7 @@ sequenceDiagram
 |------|------|
 | EPIC-KITCHENS | 厨房细粒度动作金标准；Ego4D 场景更广、小时数更大 |
 | [EgoVerse](./paper-egoverse.md) | 操纵向手/头位姿 + 人–机共训评测；相对 Ego4D 更「Direct」 |
+| [Ego-OSCAR / Stereo-550](./paper-ego-oscar.md) | ~USD 200 可续采硬同步立体+IMU；小时数远小于 Ego4D，强调开源硬件基底而非全球日常广度 |
 | [EgoScale](../methods/egoscale.md) | 万小时灵巧操作 ego + VLA 缩放；任务边界不同于通用活动理解 |
 | [RekaDaily-10k](./rekadaily-10k-dataset.md) | 家务 ego、Apache 2.0 ungated；强调开放许可与家用分布 |
 | [ACE-Data-0](./paper-ace-data-0.md) | 真实家居同步度量 HOI/HSI + 触觉；小时数远小于 Ego4D，完备监督更强 |
@@ -222,6 +225,7 @@ sequenceDiagram
 - [Ego 分类 01：数据采集](../overview/ego-category-01-data-collection.md)
 - [HumanNet Table 1：人类视频语料对照](../comparisons/humannet-table1-human-video-corpora.md)
 - [EgoVerse](./paper-egoverse.md)
+- [Ego-OSCAR / Stereo-550](./paper-ego-oscar.md) — 可众包续采的标定立体 ego 硬件+语料（观测-only）
 - [RekaDaily-10k](./rekadaily-10k-dataset.md)
 - [ACE-Data-0](./paper-ace-data-0.md) — 度量同步家居 HOI（完备 vs 规模对照）
 - [EgoWorld-100W](./egoworld-100w.md)
