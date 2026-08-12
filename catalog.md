@@ -3003,7 +3003,6 @@
 - [MPC (Model Predictive Control)](references/papers/mpc.md) — 聚焦模型预测控制在机器人（特别是腿式/人形）中的理论、工程实现与应用论文。 `📅unknown` `[reference_page]`
 - [Optimal Control](references/papers/optimal-control.md) — 最优控制理论基础、动态规划与轨迹优化奠基工作。 `📅unknown` `[reference_page]`
 - [Survey Papers](references/papers/survey-papers.md) — 用于汇总机器人学习、运动控制、人形机器人、模仿学习等方向的领域综述（Review/Survey）。 `📅unknown` `[reference_page]`
-- [System Identification](references/papers/system-identification.md) — 聚焦机器人动力学辨识、执行器建模与在线参数估计论文。 `📅unknown` `[reference_page]`
 - [Whole-Body Control](references/papers/whole-body-control.md) — 聚焦任务空间控制、TSID、QP-WBC、人形全身运动控制相关论文。 `📅unknown` `[reference_page]`
 - [开源生态 / Repos](references/repos/README.md) — 这里不是代码仓库镜像，而是开源项目与工具链的导航层。 `📅unknown` `[reference_page]`
 - [Humanoid Projects](references/repos/humanoid-projects.md) — 聚焦人形机器人运动控制、模仿学习、感知与部署相关开源项目。 `📅unknown` `[reference_page]`
