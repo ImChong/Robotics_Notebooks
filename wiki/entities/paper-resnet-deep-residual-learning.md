@@ -9,11 +9,12 @@ tags:
   - classification
   - perception
 status: complete
-updated: 2026-06-06
+updated: 2026-08-12
 arxiv: "1512.03385"
 venue: "CVPR 2016"
 code: https://github.com/KaimingHe/deep-residual-networks
 related:
+  - ./transformer-cv-curriculum.md
   - ../queries/robot-perception-stack-selection-loop.md
   - ../concepts/vision-backbones.md
   - ../concepts/deep-learning-foundations.md

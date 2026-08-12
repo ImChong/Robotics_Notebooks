@@ -2,10 +2,11 @@
 type: entity
 tags: [paper, foundation-model, segmentation, sam, computer-vision, meta, promptable-segmentation]
 status: complete
-updated: 2026-08-04
+updated: 2026-08-12
 arxiv: "2304.02643"
 code: https://github.com/facebookresearch/segment-anything
 related:
+  - ./transformer-cv-curriculum.md
   - ../queries/robot-perception-stack-selection-loop.md
   - ./paper-sam2.md
   - ./paper-sam3.md

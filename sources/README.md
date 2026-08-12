@@ -546,6 +546,7 @@
 | [x] [stanford_cs123_robotics_ai.md](courses/stanford_cs123_robotics_ai.md) | Stanford CS 123 Robotics & AI（Pupper v3 配套实验课，cs123-stanford.readthedocs.io） |
 | [x] [numerical_optimization_foundations_robotics.md](courses/numerical_optimization_foundations_robotics.md) | 具身智能研究室《数值优化基础》六章大纲（无约束/约束/对称锥/凸松弛；映射 `numerical-optimization-curriculum`） |
 | [x] [shenlan_humanoid_system_theory_practice.md](courses/shenlan_humanoid_system_theory_practice.md) | 深蓝学院《人形机器人系统—理论与实践》八章大纲（G1→RL→SLAM→A\*/DWA→TARE/FAR→足球感知→VLN；映射 `humanoid-system-curriculum`） |
+| [x] [transformer_cv_applications_syllabus.md](courses/transformer_cv_applications_syllabus.md) | 《Transformer 架构及其在计算机视觉中的应用》八章大纲（CNN/ViT→检测分割→VLM→Mamba→SAM/SEEM；映射 `transformer-cv-curriculum`） |
 | [x] [quadruped_control_simulation_rl_curriculum.md](courses/quadruped_control_simulation_rl_curriculum.md) | 具身智能研究室《四足：动力学→强化学习》八章大纲（映射 `quadruped-control-curriculum`） |
 | [x] [jason_peng_synthetic_motion_humanoid_youtube.md](courses/jason_peng_synthetic_motion_humanoid_youtube.md) | Jason Peng（SFU & NVIDIA）NUS 研讨会：合成运动数据与通用人形控制（`2looxieN53o`；PARC / MimicKit / G1；`wiki/overview/jason-peng-flexible-motion-skill-learning.md`） |
 | [x] [sergey_levine_diffusion_rl_robotics_simons_youtube.md](courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md) | Sergey Levine（UC Berkeley）Simons 工作坊：扩散/flow 连续动作策略与 action chunk（`agi3xLTGyaU`；`wiki/overview/sergey-levine-diffusion-expressive-policies.md`） |

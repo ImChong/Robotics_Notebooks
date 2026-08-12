@@ -7,8 +7,9 @@ tags:
   - real-time
   - robotics
 status: complete
-updated: 2026-07-26
+updated: 2026-08-12
 related:
+  - ../entities/transformer-cv-curriculum.md
   - ../queries/robot-perception-stack-selection-loop.md
   - ../concepts/vision-backbones.md
   - ../comparisons/cnn-vs-vit-backbones.md

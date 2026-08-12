@@ -9,8 +9,9 @@ tags:
   - deep-learning
   - robotics
 status: complete
-updated: 2026-07-05
+updated: 2026-08-12
 related:
+  - ../entities/transformer-cv-curriculum.md
   - ../queries/robot-perception-stack-selection-loop.md
   - ../concepts/vision-transformer.md
   - ../concepts/vision-backbones.md
