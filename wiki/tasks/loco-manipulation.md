@@ -3,8 +3,9 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-08-10
+updated: 2026-08-12
 sources:
+  - ../../sources/papers/lucid_arxiv_2608_07746.md
   - ../../sources/papers/agile_arxiv_2603_20147.md
   - ../../sources/papers/pot_vla_arxiv_2607_18016.md
   - ../../sources/papers/faro_arxiv_2607_18362.md
@@ -231,6 +232,10 @@ flowchart TD
 - **核心**：长时程人形 VLA 中，**动作条件用的对象状态** 与 **验收用的对象状态** 易分叉；用 RGB-D 维护 **角色索引持久 3D 对象记录**，同一记忆条件化全身动作头并做几何谓词验收 / 局部恢复。
 - **代表作**：[POT-VLA](../entities/paper-pot-vla.md) (BUAA / BZA / TJU / DeepCybo / ZGCI, 2026, arXiv:2607.18016) — **GR00T-N1.7** 匹配对照 **39/80→71/80**（Unitree G1 八类）；消融显示 **token 条件化主增益、谓词防假完成**；截至入库日 **未开源**。
 
+### 29. 结构化 latent LLC + 技能级世界模型想象 HLC（LUCID · 长时程重排）
+- **核心**：反对脚本 FSM / 顺序单物体策略的长链交接；**Stage 1** 用对抗模仿训 **结构化 skill-anchor latent** 条件 LLC 并冻结；**Stage 2** 联合训 **macro-dynamics 世界模型**（预测技能诱导的任务状态变化，非关节级逐步动力学）与 Dreamer 式 HLC，在 **想象宏轨迹** 上优化有序多物体重排。
+- **代表作**：[LUCID](../entities/paper-lucid.md) (曼彻斯特大学 / IIT, 2026, arXiv:2608.07746) — HITR 衍生 ID/OOD 重排；ID **SR2 73.4%** vs 最强基线 HumanVLA **39.8%**；五物体链仍约 **SR5 21%**；结构化接口消融：无结构 latent **SR2=0**；**截至入库日未开源**。
+
 ## 重点应用领域
 
 | 领域 | 典型任务 | 代表研究 |
@@ -298,6 +303,7 @@ flowchart TD
 - [FastGrasp（论文实体）](../entities/paper-fastgrasp-mobile-dexterous-grasping.md) — 轮式移动全身 RL + CVAE 抓取引导 + 二值触觉高速灵巧抓取（arXiv:2604.12879）
 - [3D-IC（论文实体）](../entities/paper-3d-ic-joint-navigation-manipulation-planning.md) — 共享 3D 地图的 OVMM 交互路点链联合规划（ICML 2026，Stretch 3）
 - [POT-VLA（论文实体）](../entities/paper-pot-vla.md) — 持久 3D 对象 token + 几何谓词可验证闭环；G1 上 GR00T-N1.7 **39/80→71/80**（arXiv:2607.18016）
+- [LUCID（论文实体）](../entities/paper-lucid.md) — 结构化 latent LLC + macro-dynamics 想象 HLC 的长时程多物体重排（arXiv:2608.07746）
 
 ## 参考来源
 - [gemini_robotics_2_whole_body.md](../../sources/blogs/gemini_robotics_2_whole_body.md) — Gemini Robotics 2 全身 loco-manip 产品叙事归档
@@ -336,6 +342,7 @@ flowchart TD
 - **ingest 档案：** [sources/papers/contactmimic_arxiv_2607_08742.md](../../sources/papers/contactmimic_arxiv_2607_08742.md) — ContactMimic：keypoint + per-body contact 指令与 G1 真机 contact controllability（arXiv:2607.08742）
 - **ingest 档案：** [sources/blogs/flexion_reflect_v1_0.md](../../sources/blogs/flexion_reflect_v1_0.md) — Flexion Reflect v1.0：长程 NL mission 跨楼层 loco-manip 产业演示（2026-06）
 - **ingest 档案：** [sources/blogs/limx_cosa_05_release_2026-07-15.md](../../sources/blogs/limx_cosa_05_release_2026-07-15.md) — LimX COSA 0.5：S2/S1/S0 调度 V³-0 VLA + WBT，Oli 一镜到底家务 Demo（2026-07）
+- **ingest 档案：** [sources/papers/lucid_arxiv_2608_07746.md](../../sources/papers/lucid_arxiv_2608_07746.md) — LUCID：技能级世界模型想象控制长时程人形 loco-manipulation（arXiv:2608.07746）
 
 ## 一句话记忆
 

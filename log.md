@@ -1,3 +1,9 @@
+## [2026-08-12] ingest | sources/papers/lucid_arxiv_2608_07746.md — LUCID（arXiv:2608.07746）分层技能级世界模型想象控制入库
+
+- **来源：** [`sources/papers/lucid_arxiv_2608_07746.md`](sources/papers/lucid_arxiv_2608_07746.md)（arXiv:2608.07746；曼彻斯特大学 / IIT；确认未开源）
+- **新建：** [`wiki/entities/paper-lucid.md`](wiki/entities/paper-lucid.md)
+- **交叉更新：** [`wiki/tasks/loco-manipulation.md`](wiki/tasks/loco-manipulation.md)、[`wiki/methods/ase.md`](wiki/methods/ase.md)、[`wiki/methods/model-based-rl.md`](wiki/methods/model-based-rl.md)、[`wiki/concepts/latent-imagination.md`](wiki/concepts/latent-imagination.md)、[`wiki/entities/paper-shenlan-wm-13-dreamerv3.md`](wiki/entities/paper-shenlan-wm-13-dreamerv3.md)、[`wiki/entities/paper-bfm-38-tokenhsi.md`](wiki/entities/paper-bfm-38-tokenhsi.md)、[`wiki/entities/paper-bfm-15-intermimic.md`](wiki/entities/paper-bfm-15-intermimic.md)
+
 ## [2026-08-12] structural | log.md + schema/ingest-workflow.md — 补全 Transformer CV ingest 日志完整路径，修复「更新记录」新增仅 12 条（实为 63）
 
 - **触发：** 用户反馈今日新增 50+ 节点但更新记录只显示 12 个

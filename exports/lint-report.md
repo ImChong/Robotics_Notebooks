@@ -157,4 +157,4 @@
 - wiki/methods/segnet.md
 - wiki/methods/unet.md
 
-📊 Sources 覆盖率：3039/3039 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：3040/3040 (100%) wiki/entity 页有 ingest 来源

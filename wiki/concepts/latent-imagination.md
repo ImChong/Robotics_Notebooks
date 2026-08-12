@@ -2,7 +2,7 @@
 type: concept
 tags: [world-models, reinforcement-learning, machine-learning, model-based-rl]
 status: complete
-updated: 2026-08-11
+updated: 2026-08-12
 related:
   - ../methods/model-based-rl.md
   - ../methods/generative-world-models.md
@@ -12,11 +12,13 @@ related:
   - ../entities/open-dreamer.md
   - ../overview/world-models-route-03-virtual-sandbox.md
   - ../entities/paper-online-mbrl-robot-control.md
+  - ../entities/paper-lucid.md
 sources:
   - ../../sources/papers/rl_foundation_models.md
   - ../../sources/papers/being_h07.md
   - ../../sources/repos/open-dreamer.md
   - ../../sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md
+  - ../../sources/papers/lucid_arxiv_2608_07746.md
 summary: "潜空间想象（Latent Imagination）是 Model-Based RL 的核心技术，通过在紧凑的隐变量空间中预测未来状态，使智能体能够在无需真实环境交互的情况下进行无限次自我博弈与策略优化。"
 ---
 
@@ -64,6 +66,7 @@ Actor-Critic 策略直接在这条“想象轨迹”上运行：
 - **Dreamer 4 / Open Dreamer**：把可扩展交互式视频世界模型推到 Minecraft 级；开源 JAX 复现见 [Open Dreamer](../entities/open-dreamer.md)（完整「模型内训 agent」环仍在 roadmap）。
 - **DayDreamer**：证明了该技术可以直接在真实机械臂上几小时内从零学出抓取，无需任何仿真。
 - **Being-H0.7**：面向语言–视觉–操作策略的 **latent world–action** 路线——用 egocentric 人视频与机演示，在训练期用未来观测分支对齐潜空间，部署时不依赖像素 rollout；见 [Being-H0.7](../methods/being-h07.md)。
+- **LUCID**：在 **技能级宏状态**（非像素 RSSM）上想象；冻结结构化 latent LLC，用 macro-dynamics WM 训 HLC 做长时程重排；见 [LUCID](../entities/paper-lucid.md)。
 
 ## 关联页面
 - [Model-Based RL](../methods/model-based-rl.md)
@@ -71,6 +74,7 @@ Actor-Critic 策略直接在这条“想象轨迹”上运行：
 - [Being-H0.7](../methods/being-h07.md)
 - [DreamerV3](../entities/paper-shenlan-wm-13-dreamerv3.md)
 - [Open Dreamer](../entities/open-dreamer.md)
+- [LUCID](../entities/paper-lucid.md) — 人形技能级宏动力学想象
 - [虚拟沙盒路线](../overview/world-models-route-03-virtual-sandbox.md)
 - [变分目标函数 (ELBO)](../formalizations/variational-objective.md)
 - [具身大模型分类学选型闭环（知识链枢纽）](../overview/hub-embodied-foundation-model.md) — 潜空间想象属五层闭环的世界模型推演层
@@ -82,3 +86,4 @@ Actor-Critic 策略直接在这条“想象轨迹”上运行：
 - Hafner, D., Yan, W., & Lillicrap, T. (2025). *Training Agents Inside of Scalable World Models (Dreamer 4)* — <https://arxiv.org/abs/2509.24527>；开源复现归档 [sources/repos/open-dreamer.md](../../sources/repos/open-dreamer.md)。
 - Luo, H., et al. (2026). *Being-H0.7: A Latent World-Action Model from Egocentric Videos* — 项目页 <https://research.beingbeyond.com/being-h07>；归档见 [sources/papers/being_h07.md](../../sources/papers/being_h07.md)。
 - [Online MBRL 论文归档（真机一阶对照）](../../sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md)
+- [lucid_arxiv_2608_07746.md](../../sources/papers/lucid_arxiv_2608_07746.md) — LUCID 技能级想象控制

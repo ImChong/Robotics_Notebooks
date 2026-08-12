@@ -1,13 +1,96 @@
 {
   "generated_at": "2026-08-12",
-  "node_count": 3063,
-  "edge_count": 26466,
+  "node_count": 3064,
+  "edge_count": 26482,
   "coverage": {
-    "covered": 3039,
-    "total": 3039,
+    "covered": 3040,
+    "total": 3040,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-lucid.md",
+      "detail_id": "entity-paper-lucid",
+      "label": "LUCID：用想象的技能级动力学做长时程人形 Loco-Manipulation",
+      "type": "entity",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/tasks/loco-manipulation.md",
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    },
+    {
+      "path": "wiki/methods/ase.md",
+      "detail_id": "wiki-methods-ase",
+      "label": "ASE: 对抗性技能嵌入",
+      "type": "method",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/methods/model-based-rl.md",
+      "detail_id": "wiki-methods-model-based-rl",
+      "label": "Model-Based RL（基于模型的强化学习）",
+      "type": "method",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/concepts/latent-imagination.md",
+      "detail_id": "wiki-concepts-latent-imagination",
+      "label": "Latent Imagination (潜空间想象)",
+      "type": "concept",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-shenlan-wm-13-dreamerv3.md",
+      "detail_id": "entity-paper-shenlan-wm-13-dreamerv3",
+      "label": "DreamerV3（Mastering Diverse Domains through World Models）",
+      "type": "entity",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-bfm-38-tokenhsi.md",
+      "detail_id": "entity-paper-bfm-38-tokenhsi",
+      "label": "Tokenhsi",
+      "type": "entity",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-bfm-15-intermimic.md",
+      "detail_id": "entity-paper-bfm-15-intermimic",
+      "label": "InterMimic",
+      "type": "entity",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
+    },
     {
       "path": "wiki/entities/transformer-cv-curriculum.md",
       "detail_id": "entity-transformer-cv-curriculum",
@@ -126,106 +209,25 @@
       "source": "log.md",
       "action": "added",
       "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/methods/unet.md",
-      "detail_id": "wiki-methods-unet",
-      "label": "U-Net",
-      "type": "method",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/methods/segnet.md",
-      "detail_id": "wiki-methods-segnet",
-      "label": "SegNet",
-      "type": "method",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/methods/pspnet.md",
-      "detail_id": "wiki-methods-pspnet",
-      "label": "PSPNet",
-      "type": "method",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/methods/mask-rcnn.md",
-      "detail_id": "wiki-methods-mask-rcnn",
-      "label": "Mask R-CNN",
-      "type": "method",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/entities/dataset-mnist.md",
-      "detail_id": "entity-dataset-mnist",
-      "label": "MNIST",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/entities/dataset-cifar.md",
-      "detail_id": "entity-dataset-cifar",
-      "label": "CIFAR-10 / CIFAR-100",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/entities/dataset-imagenet.md",
-      "detail_id": "entity-dataset-imagenet",
-      "label": "ImageNet / ImageNet-21K",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/entities/dataset-jft-300m.md",
-      "detail_id": "entity-dataset-jft-300m",
-      "label": "JFT-300M",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/transformer-cv-curriculum.md",
-    "detail_id": "entity-transformer-cv-curriculum",
-    "label": "Transformer 视觉应用课程策展",
+    "path": "wiki/entities/paper-lucid.md",
+    "detail_id": "entity-paper-lucid",
+    "label": "LUCID：用想象的技能级动力学做长时程人形 Loco-Manipulation",
     "type": "entity",
     "recency": "2026-08-12",
     "source": "log.md",
-    "action": "added",
-    "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
+    "action": "added"
   },
   "top_communities": [
     {
       "label": "操作",
-      "size": 586
+      "size": 583
     },
     {
       "label": "仿真到现实",
-      "size": 508
+      "size": 490
     },
     {
       "label": "视觉-语言-动作",
@@ -233,15 +235,15 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 172
+      "size": 183
     },
     {
-      "label": "移动操作",
-      "size": 135
+      "label": "视觉语言动作纵深路线",
+      "size": 139
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 134
+      "size": 137
     }
   ],
   "top_hubs": [
@@ -272,7 +274,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 714,
+      "degree": 715,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -288,7 +290,7 @@
       "detail_id": "wiki-methods-model-based-rl",
       "label": "Model-Based RL（基于模型的强化学习）",
       "type": "method",
-      "degree": 569,
+      "degree": 571,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -366,8 +368,7 @@
       "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
       "type": "entity",
       "degree": 48,
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-paper-twist2",
