@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, ml-theory, generalization, regularization, simplicity-bias, polynomial, effective-degree, rl, ppo, clip, icml, tsinghua]
 status: complete
-updated: 2026-08-06
+updated: 2026-08-12
 arxiv: "2605.29823"
 venue: "ICML 2026"
 code: "https://github.com/xinzaixinzai/Effective-Degree"
@@ -32,6 +32,7 @@ summary: "Effective Degree（arXiv:2605.29823，ICML 2026，清华）：沿数�
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
 | ED | Effective Degree | 多项式系数加权度数；本文简洁性度量与正则核心 |
+| LA | Label-Anchored ED | 分类时用真标签锚定路径两端，缓解与 CE 冲突 |
 | SAM | Sharpness-Aware Minimization | 参数空间锐度代理与优化；本文主对照之一 |
 | ASAM | Adaptive Sharpness-Aware Minimization | 尺度自适应锐度；对比基线 |
 | PCA | Principal Component Analysis | 路径内可选输出压缩后再拟合多项式 |
@@ -52,7 +53,7 @@ summary: "Effective Degree（arXiv:2605.29823，ICML 2026，清华）：沿数�
 | **会议** | ICML 2026 |
 | **度量** | \(\mathrm{ED}(P)=\sum_k \|c_k\|\,k\)（及归一化版）；多路径期望 |
 | **训练目标** | \(\mathcal{L}_{\mathrm{task}}+\lambda\,\widehat{\mathrm{ED}}\)；分类常用 label-anchored |
-| **开源** | **已开源** — [xinzaixinzai/Effective-Degree](https://github.com/xinzaixinzai/Effective-Degree) |
+| **开源** | **已开源**（截至 2026-08-12）— [xinzaixinzai/Effective-Degree](https://github.com/xinzaixinzai/Effective-Degree)；无独立项目页；未声明 SPDX |
 
 ## 核心原理
 

@@ -2,7 +2,7 @@
 type: comparison
 tags: [deep-learning, optimization, sgd, adam, adamw, muon, training, comparison]
 status: complete
-updated: 2026-07-14
+updated: 2026-08-12
 summary: "深度学习一阶优化器（SGD→AdamW→Lion→Muon）的机制对比与机器人/LLM 训练选型指南；Muon 面向隐藏层矩阵正交化更新，LLM 预训练证据强于机器人 RL。"
 related:
   - ../methods/sgd.md
@@ -19,6 +19,7 @@ related:
   - ../concepts/backpropagation.md
   - ../methods/ppo.md
   - ../entities/pytorch.md
+  - ../entities/paper-effective-degree.md
 sources:
   - ../../sources/papers/deep_learning_optimizers.md
   - ../../sources/papers/muon_optimizer_primary_refs.md
@@ -138,6 +139,7 @@ flowchart TD
 | 「换优化器能救活不收敛的模型」 | 先查 LR、初始化、梯度爆炸、奖励/损失设计 |
 | 「Lion 已取代 AdamW」 | 证据集中在部分 CV/NLP benchmark；机器人栈尚未大规模迁移 |
 | 「Muon 可全局替换 AdamW」 | Muon 仅针对 **2D 隐藏层**；Embedding/Norm/IO 层仍须 AdamW；机器人 RL 证据远少于 LLM |
+| 「Weight decay = 函数简洁」 | WD 约束**参数范数**；[Effective Degree](../entities/paper-effective-degree.md) 在**函数空间**沿数据路径惩罚高阶非线性，可与 AdamW/WD 并存 |
 
 ---
 
@@ -149,6 +151,7 @@ flowchart TD
 - [深度学习基础](../concepts/deep-learning-foundations.md)
 - [反向传播](../concepts/backpropagation.md)
 - [PPO](../methods/ppo.md)
+- [Effective Degree](../entities/paper-effective-degree.md) — 函数空间简洁正则（可与 WD / AdamW 并存）
 
 ## 参考来源
 
