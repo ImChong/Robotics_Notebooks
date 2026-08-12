@@ -86,6 +86,16 @@
       "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
     },
     {
+      "path": "wiki/concepts/system-identification.md",
+      "detail_id": "wiki-concepts-system-identification",
+      "label": "System Identification",
+      "type": "concept",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/concepts/can-bus-protocol.md",
       "detail_id": "wiki-concepts-can-bus-protocol",
       "label": "CAN 总线（经典 CAN / CAN 2.0）",
@@ -212,15 +222,6 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-hifi-umi.md",
-      "detail_id": "entity-paper-hifi-umi",
-      "label": "HiFi-UMI / HiFi-UMI-2K",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
