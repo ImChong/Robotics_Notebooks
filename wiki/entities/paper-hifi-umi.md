@@ -2,13 +2,14 @@
 type: entity
 tags: [paper, dataset, umi, teleoperation, bimanual, manipulation, vla, wam, robot-free, simple-ai, imitation-learning]
 status: complete
-updated: 2026-08-04
+updated: 2026-08-12
 arxiv: "2607.25895"
 related:
   - ./handumi.md
   - ./paper-bifrost-umi.md
   - ./paper-halomi-humanoid-loco-manipulation.md
   - ./paper-data-pyramid-embodied-manipulation.md
+  - ./paper-ego-oscar.md
   - ../tasks/teleoperation.md
   - ../tasks/bimanual-manipulation.md
   - ../tasks/manipulation.md
@@ -20,6 +21,7 @@ sources:
   - ../../sources/papers/hifi_umi_arxiv_2607_25895.md
   - ../../sources/sites/hifi-umi-project.md
   - ../../sources/datasets/hifi-umi-2k.md
+  - ../../sources/papers/ego_oscar_arxiv_2608_08285.md
 summary: "HiFi-UMI（arXiv:2607.25895，Simple AI）：高保真无机器人双臂 UMI（~3 mm、<40 µs、六视角）；zero-robot 后训练匹配同域遥操作；开源 HiFi-UMI-2K（2000 h，CC BY 4.0）；采数系统代码截至 2026-08-04 仍未列。"
 ---
 
@@ -142,6 +144,7 @@ flowchart LR
 | [HandUMI](./handumi.md) | 开源硬件+多臂重定向；HiFi-UMI 强调大规模高保真数据与 zero-robot 后训练证据 |
 | Stanford UMI (2024) | 经典可迁移示教；HiFi-UMI 强化同步/FoV/回放工厂 |
 | [BifrostUMI](./paper-bifrost-umi.md) / [HALOMI](./paper-halomi-humanoid-loco-manipulation.md) | 人形全身/loco-manip；HiFi-UMI 锚定固定基座双臂操作 |
+| [Ego-OSCAR / Stereo-550](./paper-ego-oscar.md) | 同为头戴立体惯性，但是 **观测-only** 众包基底（无 EE/夹爪通道）；HiFi-UMI 走操作示范 |
 | 真机 teleop 工厂 | 精度高但难扩；本文用 UMI 逼近其部署质量 |
 
 ## 局限与风险
@@ -155,6 +158,7 @@ flowchart LR
 ## 关联页面
 
 - [HandUMI](./handumi.md) — 开源无机器人双臂示教对照
+- [Ego-OSCAR / Stereo-550](./paper-ego-oscar.md) — 观测向开源硬件立体头戴（非 UMI 动作通道）
 - [遥操作](../tasks/teleoperation.md) — 采数范式谱系
 - [双臂操作](../tasks/bimanual-manipulation.md) — 任务层
 - [Manipulation](../tasks/manipulation.md) — 操作总览

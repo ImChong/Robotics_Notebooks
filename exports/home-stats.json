@@ -1,13 +1,64 @@
 {
   "generated_at": "2026-08-12",
-  "node_count": 3004,
-  "edge_count": 26104,
+  "node_count": 3005,
+  "edge_count": 26118,
   "coverage": {
-    "covered": 2980,
-    "total": 2980,
+    "covered": 2981,
+    "total": 2981,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-ego-oscar.md",
+      "detail_id": "entity-paper-ego-oscar",
+      "label": "Ego-OSCAR / Stereo-550（开源硬件第一人称立体惯性采集）",
+      "type": "entity",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
+    {
+      "path": "wiki/overview/ego-category-01-data-collection.md",
+      "detail_id": "wiki-overview-ego-category-01-data-collection",
+      "label": "Ego 分类 01：数据采集",
+      "type": "overview",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-ego4d.md",
+      "detail_id": "entity-paper-ego4d",
+      "label": "Ego4D（全球第一人称日常视频 · 数据集与基准套件）",
+      "type": "entity",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-hifi-umi.md",
+      "detail_id": "entity-paper-hifi-umi",
+      "label": "HiFi-UMI / HiFi-UMI-2K",
+      "type": "entity",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained"
+    },
+    {
+      "path": "wiki/tasks/teleoperation.md",
+      "detail_id": "wiki-tasks-teleoperation",
+      "label": "Teleoperation（遥操作）",
+      "type": "task",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
     {
       "path": "wiki/entities/paper-hil-harc.md",
       "detail_id": "entity-paper-hil-harc",
@@ -166,90 +217,42 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/simulation-evaluation-infrastructure.md",
-      "detail_id": "wiki-concepts-simulation-evaluation-infrastructure",
-      "label": "仿真评测基础设施（Simulation as Evaluation Infrastructure）",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/queries/embodied-eval-benchmark-selection-loop.md",
-      "detail_id": "wiki-queries-embodied-eval-benchmark-selection-loop",
-      "label": "Query：具身大模型评测基准选型闭环知识链",
-      "type": "query",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/entities/paper-refertrack.md",
-      "detail_id": "entity-paper-refertrack",
-      "label": "ReferTrack（Referring Then Tracking · arXiv:2607.20061）",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
-    },
-    {
-      "path": "wiki/tasks/vision-language-navigation.md",
-      "detail_id": "wiki-tasks-vision-language-navigation",
-      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
-      "type": "task",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
-    },
-    {
-      "path": "wiki/entities/qwen-robot-nav.md",
-      "detail_id": "entity-qwen-robot-nav",
-      "label": "Qwen-RobotNav",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-hil-harc.md",
-    "detail_id": "entity-paper-hil-harc",
-    "label": "HIL-HARC（真机在线 RL · CTDE + 分解 Critic · arXiv:2608.09762）",
+    "path": "wiki/entities/paper-ego-oscar.md",
+    "detail_id": "entity-paper-ego-oscar",
+    "label": "Ego-OSCAR / Stereo-550（开源硬件第一人称立体惯性采集）",
     "type": "entity",
     "recency": "2026-08-12",
     "source": "log.md",
-    "action": "added"
+    "action": "added",
+    "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
   },
   "top_communities": [
     {
       "label": "操作",
-      "size": 586
+      "size": 583
     },
     {
       "label": "仿真到现实",
-      "size": 514
+      "size": 548
     },
     {
       "label": "视觉-语言-动作",
-      "size": 254
+      "size": 234
     },
     {
       "label": "人形论文深读笔记",
-      "size": 194
-    },
-    {
-      "label": "人形强化学习运动控制",
-      "size": 133
+      "size": 172
     },
     {
       "label": "移动操作",
-      "size": 131
+      "size": 135
+    },
+    {
+      "label": "人形强化学习运动控制",
+      "size": 134
     }
   ],
   "top_hubs": [
@@ -288,7 +291,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 707,
+      "degree": 708,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -305,8 +308,7 @@
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
       "degree": 517,
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-awesome-world-models",
@@ -375,7 +377,8 @@
       "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
       "type": "entity",
       "degree": 48,
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "detail_id": "entity-paper-twist2",

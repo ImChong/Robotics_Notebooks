@@ -1,3 +1,12 @@
+## [2026-08-12] ingest | sources/papers/ego_oscar_arxiv_2608_08285.md — 接入 Ego-OSCAR / Stereo-550；升格 wiki/entities/paper-ego-oscar.md；交叉更新 wiki/overview/ego-category-01-data-collection.md、wiki/entities/paper-ego4d.md、wiki/entities/paper-hifi-umi.md、wiki/tasks/teleoperation.md；配套 sources/sites/fpvlabs-ego-oscar.md、sources/datasets/stereo-550.md
+
+- **触发：** 用户指定论文 <https://arxiv.org/abs/2608.08285>；要求自动合并
+- **来源：** [`sources/papers/ego_oscar_arxiv_2608_08285.md`](sources/papers/ego_oscar_arxiv_2608_08285.md)、[`sources/sites/fpvlabs-ego-oscar.md`](sources/sites/fpvlabs-ego-oscar.md)、[`sources/datasets/stereo-550.md`](sources/datasets/stereo-550.md)
+- **新建实体：** [`wiki/entities/paper-ego-oscar.md`](wiki/entities/paper-ego-oscar.md) — ~USD 200 硬同步立体+IMU 头戴；Stereo-550 ~550 h/相机；部署可用会话 **96%**；源码运行时序图「不适用」（采集仓未列）
+- **开源核查（步骤 2.5）：** **部分开源** — HF [fpvlabs/stereo-550](https://huggingface.co/datasets/fpvlabs/stereo-550)（gated + 定制许可）+ Hardware Spec PDF + [3D 页](https://www.fpvlabs.ai/ego-oscar/cap)；`fpv-labs` org 无独立 Ego-OSCAR 采集/CAD 仓
+- **机构：** 新注册 `fpv-labs`（第一人称视觉实验室（FPV Labs））
+- **交叉：** [`wiki/overview/ego-category-01-data-collection.md`](wiki/overview/ego-category-01-data-collection.md)、[`wiki/entities/paper-ego4d.md`](wiki/entities/paper-ego4d.md)、[`wiki/entities/paper-hifi-umi.md`](wiki/entities/paper-hifi-umi.md)、[`wiki/tasks/teleoperation.md`](wiki/tasks/teleoperation.md)
+
 ## [2026-08-12] ingest | sources/papers/hil_harc_arxiv_2608_09762.md — 接入 HIL-HARC（arXiv:2608.09762，IIT×UniGe×TU Delft）；升格 wiki/entities/paper-hil-harc.md；交叉 wiki/methods/reinforcement-learning.md、wiki/comparisons/online-vs-offline-rl.md、wiki/concepts/safe-real-world-rl-fine-tuning.md；确认未开源
 
 - **触发：** 用户指定论文 <https://arxiv.org/abs/2608.09762> 与项目页 <https://hil-harc.github.io/>；要求自动合并
