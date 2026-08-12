@@ -848,7 +848,17 @@
     return 4;
   }
 
-  function buildHomeWikiHeatmapHtml(days) {
+  // 热力图单日计数：addedOnly 用 added_count；否则用 count（新增+维护总量）
+  function homeHeatmapDayCount(day, addedOnly) {
+    if (!day) return 0;
+    if (addedOnly) {
+      return typeof day.added_count === 'number' ? day.added_count : 0;
+    }
+    return typeof day.count === 'number' ? day.count : 0;
+  }
+
+  function buildHomeWikiHeatmapHtml(days, options) {
+    var addedOnly = !!(options && options.addedOnly);
     var countByDate = {};
     var hasActivity = false;
     var todayMs = homeHeatmapTodayUtcMs();
@@ -859,16 +869,21 @@
     for (var i = 0; i < days.length; i++) {
       var day = days[i];
       var ms = homeHeatmapParseDate(day && day.date);
-      var count = day && typeof day.count === 'number' ? day.count : 0;
-      if (ms === null || count <= 0) continue;
+      var totalCount = day && typeof day.count === 'number' ? day.count : 0;
+      var count = homeHeatmapDayCount(day, addedOnly);
+      // 骨架是否出现看全日活动；色块强度跟随当前筛选口径
+      if (ms === null || totalCount <= 0) continue;
       hasActivity = true;
-      if (ms >= startMs && ms <= endMs) {
+      if (ms >= startMs && ms <= endMs && count > 0) {
         countByDate[day.date] = count;
         windowCounts.push(count);
       }
     }
     if (!hasActivity) return '';
     var thresholds = homeHeatmapThresholds(windowCounts.length ? windowCounts : [1]);
+    var tipUnit = addedOnly ? '个新增节点' : '个节点';
+    var legendHint = addedOnly ? '点击方格筛选当日新增' : '点击方格筛选当日节点';
+    var gridLabel = addedOnly ? '按日期筛选新增知识节点' : '按日期筛选知识节点';
 
     var cellsHtml = '';
     var monthsHtml = '';
@@ -899,14 +914,15 @@
         if (!dayCount) {
           cellsHtml +=
             '<span class="home-wiki-heatmap-cell" data-level="0" title="' +
-            iso + '：0 个节点"></span>';
+            iso + '：0 ' + tipUnit + '"></span>';
           continue;
         }
-        var tip = iso + '：' + dayCount + ' 个节点';
+        var tip = iso + '：' + dayCount + ' ' + tipUnit;
         cellsHtml +=
           '<button type="button" class="home-wiki-heatmap-cell" data-level="' +
           homeHeatmapLevel(dayCount, thresholds) +
-          '" data-date="' + iso + '" title="' + tip +
+          '" data-date="' + iso + '" data-count="' + dayCount +
+          '" title="' + tip +
           '" aria-pressed="false" aria-label="' + tip + '，点击筛选"></button>';
       }
     }
@@ -920,18 +936,18 @@
       legendCells += '<span class="home-wiki-heatmap-cell" data-level="' + lv + '"></span>';
     }
     return (
-      '<div class="home-wiki-heatmap">' +
+      '<div class="home-wiki-heatmap" data-count-mode="' + (addedOnly ? 'added' : 'total') + '">' +
       '<div class="home-wiki-heatmap-scroll">' +
       '<div class="home-wiki-heatmap-inner">' +
       '<div class="home-wiki-heatmap-months" aria-hidden="true">' + monthsHtml + '</div>' +
       '<div class="home-wiki-heatmap-body">' +
       '<div class="home-wiki-heatmap-weekdays" aria-hidden="true">' + weekdaysHtml + '</div>' +
       '<div class="home-wiki-heatmap-grid" data-week-count="' + HOME_HEATMAP_WEEKS +
-      '" role="group" aria-label="按日期筛选知识节点">' +
+      '" role="group" aria-label="' + gridLabel + '">' +
       cellsHtml +
       '</div></div></div></div>' +
       '<div class="home-wiki-heatmap-legend">' +
-      '<span class="home-wiki-heatmap-legend-hint">点击方格筛选当日节点</span>' +
+      '<span class="home-wiki-heatmap-legend-hint">' + legendHint + '</span>' +
       '<span>少</span>' + legendCells + '<span>多</span>' +
       '</div></div>'
     );
@@ -1339,17 +1355,19 @@
 
     var currentWindowDays = TIMELINE_WINDOW_DAYS;
     var timelineShowAll = false;
-    // 默认只显示新增；点击「显示维护节点」后一并展示维护条目
+    // 默认只显示新增；点击「显示维护节点」后一并展示维护条目（时间线 + 热力图同步）
     var addedOnlyFilter = true;
     var defaultBodyHtml = renderTimelineBody(
       allTimelineGroups, currentWindowDays, timelineShowAll, addedOnlyFilter
     );
-    var heatmapHtml = activityDays.length ? buildHomeWikiHeatmapHtml(activityDays) : '';
+    var heatmapHtml = activityDays.length
+      ? buildHomeWikiHeatmapHtml(activityDays, { addedOnly: addedOnlyFilter })
+      : '';
     var filterBarHtml =
       '<div class="updates-filter-bar" role="group" aria-label="更新记录筛选">' +
       '<button type="button" class="btn-secondary btn-inline updates-filter-added-only" aria-pressed="false">' +
       '显示维护节点</button>' +
-      '<span class="updates-filter-hint">默认仅显示每日新增；点击后一并显示维护条目</span>' +
+      '<span class="updates-filter-hint">默认热力图与列表仅计新增；点击后按新增+维护总量着色并展示维护条目</span>' +
       '</div>';
     mount.innerHTML =
       heatmapHtml + filterBarHtml +
@@ -1357,8 +1375,18 @@
 
     var bodyMount = mount.querySelector('.home-latest-wiki-body');
     var addedOnlyBtn = mount.querySelector('button.updates-filter-added-only');
+    var grid = mount.querySelector('.home-wiki-heatmap-grid');
+    var scrollWrap = mount.querySelector('.home-wiki-heatmap-scroll');
+    if (scrollWrap) scrollWrap.scrollLeft = scrollWrap.scrollWidth; // 默认停在最新日期
     var activeDate = '';
     var clearHeatmapFilter = null;
+
+    var nodesByDate = {};
+    for (var ai = 0; ai < activityDays.length; ai++) {
+      var dayEntry = activityDays[ai];
+      if (!dayEntry || !dayEntry.date) continue;
+      nodesByDate[dayEntry.date] = Array.isArray(dayEntry.nodes) ? dayEntry.nodes : [];
+    }
 
     function syncAddedOnlyButton() {
       if (!addedOnlyBtn) return;
@@ -1367,6 +1395,51 @@
       addedOnlyBtn.classList.toggle('is-active', showingMaintained);
       addedOnlyBtn.setAttribute('aria-pressed', showingMaintained ? 'true' : 'false');
       addedOnlyBtn.textContent = showingMaintained ? '只看新增节点' : '显示维护节点';
+    }
+
+    function setActiveCell(dateKey) {
+      if (!grid) return;
+      var cells = grid.querySelectorAll('button.home-wiki-heatmap-cell');
+      for (var ci2 = 0; ci2 < cells.length; ci2++) {
+        var isActive = !!dateKey && cells[ci2].getAttribute('data-date') === dateKey;
+        cells[ci2].classList.toggle('is-active', isActive);
+        cells[ci2].setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      }
+    }
+
+    function refreshHeatmap() {
+      if (!activityDays.length) return;
+      var oldRoot = mount.querySelector('.home-wiki-heatmap');
+      var newHtml = buildHomeWikiHeatmapHtml(activityDays, { addedOnly: addedOnlyFilter });
+      if (!newHtml) {
+        if (oldRoot) oldRoot.remove();
+        grid = null;
+        scrollWrap = null;
+        activeDate = '';
+        return;
+      }
+      var tmp = document.createElement('div');
+      tmp.innerHTML = newHtml;
+      var newRoot = tmp.firstElementChild;
+      var prevScroll = scrollWrap ? scrollWrap.scrollLeft : null;
+      if (oldRoot) {
+        oldRoot.replaceWith(newRoot);
+      } else {
+        var filterBar = mount.querySelector('.updates-filter-bar');
+        if (filterBar) mount.insertBefore(newRoot, filterBar);
+        else mount.insertBefore(newRoot, mount.firstChild);
+      }
+      grid = mount.querySelector('.home-wiki-heatmap-grid');
+      scrollWrap = mount.querySelector('.home-wiki-heatmap-scroll');
+      if (scrollWrap) {
+        scrollWrap.scrollLeft = prevScroll !== null ? prevScroll : scrollWrap.scrollWidth;
+      }
+      if (activeDate) {
+        var stillClickable = grid &&
+          grid.querySelector('button.home-wiki-heatmap-cell[data-date="' + activeDate + '"]');
+        if (stillClickable) setActiveCell(activeDate);
+        else activeDate = '';
+      }
     }
 
     function refreshTimelineBody() {
@@ -1384,6 +1457,7 @@
       addedOnlyBtn.addEventListener('click', function () {
         addedOnlyFilter = !addedOnlyFilter;
         syncAddedOnlyButton();
+        refreshHeatmap();
         refreshTimelineBody();
       });
     }
@@ -1451,30 +1525,6 @@
       }
     });
 
-    if (!heatmapHtml) return;
-
-    var grid = mount.querySelector('.home-wiki-heatmap-grid');
-    var scrollWrap = mount.querySelector('.home-wiki-heatmap-scroll');
-    if (scrollWrap) scrollWrap.scrollLeft = scrollWrap.scrollWidth; // 默认停在最新日期
-
-    var nodesByDate = {};
-    var totalByDate = {};
-    for (var ai = 0; ai < activityDays.length; ai++) {
-      var dayEntry = activityDays[ai];
-      if (!dayEntry || !dayEntry.date) continue;
-      nodesByDate[dayEntry.date] = Array.isArray(dayEntry.nodes) ? dayEntry.nodes : [];
-      totalByDate[dayEntry.date] = typeof dayEntry.count === 'number' ? dayEntry.count : 0;
-    }
-
-    function setActiveCell(dateKey) {
-      var cells = grid.querySelectorAll('button.home-wiki-heatmap-cell');
-      for (var ci2 = 0; ci2 < cells.length; ci2++) {
-        var isActive = !!dateKey && cells[ci2].getAttribute('data-date') === dateKey;
-        cells[ci2].classList.toggle('is-active', isActive);
-        cells[ci2].setAttribute('aria-pressed', isActive ? 'true' : 'false');
-      }
-    }
-
     function clearHeatmapFilterImpl() {
       activeDate = '';
       setActiveCell('');
@@ -1517,9 +1567,10 @@
         '</div>';
     }
 
-    grid.addEventListener('click', function (ev) {
+    // 事件委托：热力图重建后无需重绑
+    mount.addEventListener('click', function (ev) {
       var cell = ev.target.closest('button.home-wiki-heatmap-cell');
-      if (!cell) return;
+      if (!cell || !mount.contains(cell)) return;
       var dateKey = cell.getAttribute('data-date') || '';
       if (!dateKey) return;
       if (dateKey === activeDate) {

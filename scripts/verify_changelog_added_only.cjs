@@ -54,6 +54,8 @@ function sleep(ms) {
       const days = Array.from(document.querySelectorAll('.updates-day'));
       const badges = Array.from(document.querySelectorAll('.updates-badge'));
       const labels = badges.map((b) => b.textContent.trim());
+      const heat = document.querySelector('.home-wiki-heatmap');
+      const cells = Array.from(document.querySelectorAll('button.home-wiki-heatmap-cell'));
       return {
         dayCount: days.length,
         hasMaintained: labels.some((t) => t === '维护'),
@@ -63,6 +65,10 @@ function sleep(ms) {
         btnActive: document.querySelector('button.updates-filter-added-only')?.classList.contains('is-active'),
         ariaPressed: document.querySelector('button.updates-filter-added-only')?.getAttribute('aria-pressed') || '',
         intro: document.querySelector('.home-latest-wiki-intro')?.textContent?.trim() || '',
+        heatMode: heat?.getAttribute('data-count-mode') || '',
+        heatTipsAreAdded: cells.length > 0 && cells.every((c) => (c.getAttribute('title') || '').includes('新增')),
+        heatCellCount: cells.length,
+        heatSum: cells.reduce((s, c) => s + (Number(c.getAttribute('data-count')) || 0), 0),
       };
     });
 
@@ -73,12 +79,16 @@ function sleep(ms) {
     await sleep(300);
     await page.waitForFunction(() => {
       const btn = document.querySelector('button.updates-filter-added-only');
-      return btn && btn.getAttribute('aria-pressed') === 'true';
+      const heat = document.querySelector('.home-wiki-heatmap');
+      return btn && btn.getAttribute('aria-pressed') === 'true' &&
+        heat && heat.getAttribute('data-count-mode') === 'total';
     }, { timeout: 10000 });
 
     const after = await page.evaluate(() => {
       const days = Array.from(document.querySelectorAll('.updates-day'));
       const badges = Array.from(document.querySelectorAll('.updates-badge'));
+      const heat = document.querySelector('.home-wiki-heatmap');
+      const cells = Array.from(document.querySelectorAll('button.home-wiki-heatmap-cell'));
       return {
         dayCount: days.length,
         hasMaintained: badges.some((b) => b.textContent.trim() === '维护'),
@@ -87,6 +97,10 @@ function sleep(ms) {
         btnActive: document.querySelector('button.updates-filter-added-only')?.classList.contains('is-active'),
         ariaPressed: document.querySelector('button.updates-filter-added-only')?.getAttribute('aria-pressed') || '',
         intro: document.querySelector('.home-latest-wiki-intro')?.textContent?.trim() || '',
+        heatMode: heat?.getAttribute('data-count-mode') || '',
+        heatTipsAreTotal: cells.length > 0 && cells.every((c) => !(c.getAttribute('title') || '').includes('新增')),
+        heatCellCount: cells.length,
+        heatSum: cells.reduce((s, c) => s + (Number(c.getAttribute('data-count')) || 0), 0),
       };
     });
 
@@ -109,11 +123,17 @@ function sleep(ms) {
       before.ariaPressed === 'false' &&
       before.btnText === '显示维护节点' &&
       before.intro.includes('仅新增') &&
+      before.heatMode === 'added' &&
+      before.heatTipsAreAdded &&
       after.hasMaintained &&
       after.hasAdded &&
       after.btnActive &&
       after.ariaPressed === 'true' &&
-      after.btnText === '只看新增节点';
+      after.btnText === '只看新增节点' &&
+      after.heatMode === 'total' &&
+      after.heatTipsAreTotal &&
+      after.heatSum > before.heatSum &&
+      after.heatCellCount >= before.heatCellCount;
 
     console.log(JSON.stringify({ before, after, shots: [outAdded, outAll, outBar], ok }, null, 2));
     if (!ok) process.exit(2);
