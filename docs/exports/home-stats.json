@@ -1,13 +1,75 @@
 {
   "generated_at": "2026-08-12",
-  "node_count": 3005,
-  "edge_count": 26118,
+  "node_count": 3006,
+  "edge_count": 26129,
   "coverage": {
-    "covered": 2981,
-    "total": 2981,
+    "covered": 2982,
+    "total": 2982,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/canfestival.md",
+      "detail_id": "entity-canfestival",
+      "label": "CanFestival",
+      "type": "entity",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/overview/motor-drive-firmware-bus-protocols.md",
+      "detail_id": "wiki-overview-motor-drive-firmware-bus-protocols",
+      "label": "电机驱动器底软通信协议总览",
+      "type": "overview",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/concepts/can-bus-protocol.md",
+      "detail_id": "wiki-concepts-can-bus-protocol",
+      "label": "CAN 总线（经典 CAN / CAN 2.0）",
+      "type": "concept",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/comparisons/can-vs-ethercat-joint-bus.md",
+      "detail_id": "wiki-comparisons-can-vs-ethercat-joint-bus",
+      "label": "CAN / CAN FD vs EtherCAT vs UART·RS485（关节与现场总线选型）",
+      "type": "comparison",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/concepts/can-fd.md",
+      "detail_id": "wiki-concepts-can-fd",
+      "label": "CAN FD（Flexible Data Rate）",
+      "type": "concept",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/concepts/ethercat-protocol.md",
+      "detail_id": "wiki-concepts-ethercat-protocol",
+      "label": "EtherCAT 协议基础",
+      "type": "concept",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
     {
       "path": "wiki/entities/paper-ego-oscar.md",
       "detail_id": "entity-paper-ego-oscar",
@@ -152,82 +214,18 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/libero-benchmark.md",
-      "detail_id": "entity-libero-benchmark",
-      "label": "LIBERO",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/calvin-benchmark.md",
-      "detail_id": "entity-calvin-benchmark",
-      "label": "CALVIN",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "开源项目本库导读（HMI Open-Source Projects Guide） 社区"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-xpolicylab.md",
-      "detail_id": "entity-paper-xpolicylab",
-      "label": "XPolicyLab（统一策略评测部署标准 · arXiv:2608.09892）",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/xpolicylab.md",
-      "detail_id": "entity-xpolicylab",
-      "label": "XPolicyLab（统一策略训推与评测适配层）",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/robodojo.md",
-      "detail_id": "entity-robodojo",
-      "label": "RoboDojo（统一仿真–真机通用操纵评测）",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-ego-oscar.md",
-    "detail_id": "entity-paper-ego-oscar",
-    "label": "Ego-OSCAR / Stereo-550（开源硬件第一人称立体惯性采集）",
+    "path": "wiki/entities/canfestival.md",
+    "detail_id": "entity-canfestival",
+    "label": "CanFestival",
     "type": "entity",
     "recency": "2026-08-12",
     "source": "log.md",
     "action": "added",
-    "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    "has_repo": true,
+    "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
   },
   "top_communities": [
     {

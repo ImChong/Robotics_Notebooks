@@ -1,3 +1,11 @@
+## [2026-08-12] ingest | sources/sites/canfestival-org.md — 接入 CanFestival 官网；升格 wiki/entities/canfestival.md；配套 sources/repos/canfestival.md；交叉更新 wiki/overview/motor-drive-firmware-bus-protocols.md、wiki/concepts/can-bus-protocol.md、wiki/comparisons/can-vs-ethercat-joint-bus.md
+
+- **触发：** 用户指定站点 <https://canfestival.org/>
+- **来源：** [`sources/sites/canfestival-org.md`](sources/sites/canfestival-org.md)、[`sources/repos/canfestival.md`](sources/repos/canfestival.md)
+- **新建实体：** [`wiki/entities/canfestival.md`](wiki/entities/canfestival.md) — ANSI-C CANopen Master/Slave；运行时 LGPLv2 / 工具 GPLv2；含源码运行时序图
+- **开源核查（步骤 2.5）：** **已开源** — 官网 Code 列 `hg.beremiz.org/canfestival` 等多源；现代 CMake 入口 [beremiz/canfestival](https://github.com/beremiz/canfestival)
+- **交叉：** [`wiki/overview/motor-drive-firmware-bus-protocols.md`](wiki/overview/motor-drive-firmware-bus-protocols.md)、[`wiki/concepts/can-bus-protocol.md`](wiki/concepts/can-bus-protocol.md)、[`wiki/comparisons/can-vs-ethercat-joint-bus.md`](wiki/comparisons/can-vs-ethercat-joint-bus.md)、[`wiki/concepts/can-fd.md`](wiki/concepts/can-fd.md)、[`wiki/concepts/ethercat-protocol.md`](wiki/concepts/ethercat-protocol.md)
+
 ## [2026-08-12] ingest | sources/papers/ego_oscar_arxiv_2608_08285.md — 接入 Ego-OSCAR / Stereo-550；升格 wiki/entities/paper-ego-oscar.md；交叉更新 wiki/overview/ego-category-01-data-collection.md、wiki/entities/paper-ego4d.md、wiki/entities/paper-hifi-umi.md、wiki/tasks/teleoperation.md；配套 sources/sites/fpvlabs-ego-oscar.md、sources/datasets/stereo-550.md
 
 - **触发：** 用户指定论文 <https://arxiv.org/abs/2608.08285>；要求自动合并

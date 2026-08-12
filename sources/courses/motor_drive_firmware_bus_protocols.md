@@ -26,8 +26,8 @@
 
 ### 2) CANopen + CiA 402
 
-- **要点：** CANopen 提供对象字典、PDO/SDO、NMT；**CiA 402** 标准化伺服驱动状态机与模式（位置/速度/力矩等）。工业机器人与部分关节模组默认 profile；EtherCAT 上 **CoE** 复用同一对象模型。
-- **对 wiki 的映射：** 同上 + [can-bus-protocol](../../wiki/concepts/can-bus-protocol.md)、[ethercat-protocol](../../wiki/concepts/ethercat-protocol.md)
+- **要点：** CANopen 提供对象字典、PDO/SDO、NMT；**CiA 402** 标准化伺服驱动状态机与模式（位置/速度/力矩等）。工业机器人与部分关节模组默认 profile；EtherCAT 上 **CoE** 复用同一对象模型。开源协议栈可参考 [CanFestival](https://canfestival.org/)（见 [canfestival-org.md](../sites/canfestival-org.md)、[canfestival.md](../repos/canfestival.md)）。
+- **对 wiki 的映射：** 同上 + [can-bus-protocol](../../wiki/concepts/can-bus-protocol.md)、[ethercat-protocol](../../wiki/concepts/ethercat-protocol.md)、[canfestival](../../wiki/entities/canfestival.md)
 
 ### 3) 厂商私有 CAN 与 MIT 紧凑帧
 

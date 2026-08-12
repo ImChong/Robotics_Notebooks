@@ -2,7 +2,7 @@
 type: concept
 tags: [middleware, hardware, protocol, ethercat, realtime]
 status: complete
-updated: 2026-04-21
+updated: 2026-08-12
 related:
   - ../queries/actuator-drive-chain-selection-loop.md
   - ../queries/ethercat-master-optimization.md

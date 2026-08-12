@@ -65,6 +65,7 @@
 - [CAD Skills](wiki/entities/cad-skills.md) — CAD Skills** 是 earthtojake/text-to-cad 仓库（品牌名 **CAD  `📅2026-06-15` `[entity_page]`
 - [Caden Kraft Ironless Axial Flux Motor（无铁芯轴向磁通电机）](wiki/entities/cadenkraft-ironless-axial-flux-motor.md) — Ironless Axial Flux Motor**（[cadenkraft.com Part 1](https://cadenkraft.com/designing-a-coreless-ax `📅unknown` `[entity_page]`
 - [CALVIN](wiki/entities/calvin-benchmark.md) — CALVIN](https://github.com/mees/calvin) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid- `📅unknown` `[entity_page]`
+- [CanFestival](wiki/entities/canfestival.md) — CanFestival** 是面向 PC、实时工控机与微控制器的 **开源 CANopen® 协议栈**：用 ANSI-C 实现可配置为 **NMT Master 或 Slave** 的节点，并配 `📅unknown` `[entity_page]`
 - [Cangjie Skill](wiki/entities/cangjie-skill.md) — Cangjie Skill** 是 kangarooking/cangjie-skill 仓库分发 `📅unknown` `[entity_page]`
 - [CARLA](wiki/entities/carla.md) — CARLA**（Car Learning to Act）是面向 **自动驾驶** 研究的开源 **城市驾驶仿真器**，以 Unreal Engine 提供高保真视觉与物理交互环境。 `📅unknown` `[entity_page]`
 - [Cartographer](wiki/entities/cartographer.md) — Cartographer** 是 Google 开源的 **子图 SLAM** 系统，支持 2D/3D 激光与多传感器配置。 `📅unknown` `[entity_page]`
