@@ -2504,6 +2504,14 @@
         "vector",
         "vectorinstitute"
       ]
+    },
+    "futian-laboratory": {
+      "label": "福田实验室（Futian Laboratory）",
+      "aliases": [
+        "futian-laboratory",
+        "futian-lab",
+        "futian"
+      ]
     }
   }
 }

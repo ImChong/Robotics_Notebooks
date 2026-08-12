@@ -1,13 +1,44 @@
 {
-  "generated_at": "2026-08-11",
-  "node_count": 3000,
-  "edge_count": 26064,
+  "generated_at": "2026-08-12",
+  "node_count": 3001,
+  "edge_count": 26072,
   "coverage": {
-    "covered": 2976,
-    "total": 2976,
+    "covered": 2977,
+    "total": 2977,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-refertrack.md",
+      "detail_id": "entity-paper-refertrack",
+      "label": "ReferTrack（Referring Then Tracking · arXiv:2607.20061）",
+      "type": "entity",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    },
+    {
+      "path": "wiki/tasks/vision-language-navigation.md",
+      "detail_id": "wiki-tasks-vision-language-navigation",
+      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
+      "type": "task",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    },
+    {
+      "path": "wiki/entities/qwen-robot-nav.md",
+      "detail_id": "entity-qwen-robot-nav",
+      "label": "Qwen-RobotNav",
+      "type": "entity",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained"
+    },
     {
       "path": "wiki/entities/paper-online-mbrl-robot-control.md",
       "detail_id": "entity-paper-online-mbrl-robot-control",
@@ -185,46 +216,18 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-r2s-ego.md",
-      "detail_id": "entity-paper-r2s-ego",
-      "label": "R2S-EGO：稀疏捕获 Real-to-Sim 的双代理 Ego 细化",
-      "type": "entity",
-      "recency": "2026-08-11",
-      "source": "log.md",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-agentic-real2sim.md",
-      "detail_id": "entity-paper-agentic-real2sim",
-      "label": "Agentic Real2Sim（VLM Agent 编排的物理 Real2Sim）",
-      "type": "entity",
-      "recency": "2026-08-11",
-      "source": "log.md",
-      "action": "maintained"
-    },
-    {
-      "path": "wiki/methods/crisp-real2sim.md",
-      "detail_id": "wiki-methods-crisp-real2sim",
-      "label": "CRISP（Contact-guided Real2Sim）",
-      "type": "method",
-      "recency": "2026-08-11",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-online-mbrl-robot-control.md",
-    "detail_id": "entity-paper-online-mbrl-robot-control",
-    "label": "Online MBRL via Online Optimization（真机在线模型基强化学习）",
+    "path": "wiki/entities/paper-refertrack.md",
+    "detail_id": "entity-paper-refertrack",
+    "label": "ReferTrack（Referring Then Tracking · arXiv:2607.20061）",
     "type": "entity",
-    "recency": "2026-08-11",
+    "recency": "2026-08-12",
     "source": "log.md",
     "action": "added",
-    "community_label": "操作（Manipulation） 社区"
+    "has_repo": true,
+    "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
   },
   "top_communities": [
     {
@@ -288,7 +291,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 704,
+      "degree": 705,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
