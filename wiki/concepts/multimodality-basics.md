@@ -14,6 +14,7 @@ related:
   - ../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md
   - ../overview/multimodal-llm-development.md
   - ../entities/transformer-cv-curriculum.md
+  - ../queries/embodied-fm-taxonomy-loop.md
 sources:
   - ../../sources/courses/transformer_cv_applications_syllabus.md
 ---
@@ -67,6 +68,7 @@ flowchart LR
 - [VLM 分类法](../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md)
 - [多模态 LLM 发展路线](../overview/multimodal-llm-development.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
+- [具身大模型分类学选型闭环知识链](../queries/embodied-fm-taxonomy-loop.md) — 多模态对齐是①VLM 感知理解层的底座，决定上层 VLN/VLA 能消费到什么语义
 
 ## 参考来源
 

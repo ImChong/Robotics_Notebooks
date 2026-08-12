@@ -68,6 +68,17 @@ def test_stopwords_and_paths_ignored(tmp_path, monkeypatch) -> None:
     assert results["missing_concept_pages"] == []
 
 
+def test_toolchain_stopword_printf_ignored(tmp_path, monkeypatch) -> None:
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    pages = [
+        _page(wiki, f"p{i}.md", "控制环里禁止 `printf` 阻塞 I/O。")
+        for i in range(lw.MISSING_CONCEPT_PAGE_MIN_PAGES)
+    ]
+    results = _run(pages)
+    # printf 是 C 标准库打印调用（实时环反例），非可成页的机器人概念
+    assert results["missing_concept_pages"] == []
+
+
 def test_case_insensitive_merge(tmp_path, monkeypatch) -> None:
     wiki = _setup_wiki(tmp_path, monkeypatch)
     half = lw.MISSING_CONCEPT_PAGE_MIN_PAGES // 2 + 1

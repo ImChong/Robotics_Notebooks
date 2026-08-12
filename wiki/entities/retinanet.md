@@ -14,6 +14,7 @@ related:
   - ../methods/rcnn-family.md
   - ../entities/paper-yolo-unified-realtime-detection.md
   - ../entities/transformer-cv-curriculum.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/courses/transformer_cv_applications_syllabus.md
 ---
@@ -67,6 +68,7 @@ flowchart LR
 - [YOLO](./paper-yolo-unified-realtime-detection.md)
 - [检测指标](../concepts/object-detection-metrics.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
+- [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — Focal Loss 单阶段密集检测是②层机载实时侧的经典候选
 
 ## 参考来源
 

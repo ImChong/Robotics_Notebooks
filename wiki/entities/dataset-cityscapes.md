@@ -11,6 +11,7 @@ related:
   - ../entities/transformer-cv-curriculum.md
   - ../concepts/vision-backbones.md
   - ../methods/object-detection.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/courses/transformer_cv_applications_syllabus.md
 ---
@@ -78,6 +79,7 @@ flowchart LR
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
 - [Vision Backbones](../concepts/vision-backbones.md)
 - [Object Detection](../methods/object-detection.md)
+- [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — 车载分割基准的地域/天气覆盖，对应④层「评测集与部署分布重叠」陷阱
 
 ## 参考来源
 

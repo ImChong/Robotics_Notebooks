@@ -11,6 +11,7 @@ related:
   - ../entities/transformer-cv-curriculum.md
   - ../concepts/vision-backbones.md
   - ../methods/object-detection.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/courses/transformer_cv_applications_syllabus.md
 ---
@@ -78,6 +79,7 @@ flowchart LR
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
 - [Vision Backbones](../concepts/vision-backbones.md)
 - [Object Detection](../methods/object-detection.md)
+- [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — 外部不可复现的内部数据源：可复现性 vs 真实代表性取舍的反面样本
 
 ## 参考来源
 

@@ -16,6 +16,7 @@ related:
   - ../entities/seem.md
   - ../overview/multimodal-llm-development.md
   - ../entities/transformer-cv-curriculum.md
+  - ../queries/embodied-fm-taxonomy-loop.md
 sources:
   - ../../sources/courses/transformer_cv_applications_syllabus.md
 ---
@@ -74,6 +75,7 @@ flowchart LR
 - [SEEM](../entities/seem.md)
 - [多模态 LLM 路线](../overview/multimodal-llm-development.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
+- [具身大模型分类学选型闭环知识链](../queries/embodied-fm-taxonomy-loop.md) — 闭集→开集、纯感知→感知+推理两条趋势，正是①VLM 层向②/③层递进的前提
 
 ## 参考来源
 

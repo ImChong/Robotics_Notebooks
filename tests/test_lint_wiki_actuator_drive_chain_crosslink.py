@@ -157,6 +157,21 @@ def test_substring_lookalike_tags_are_not_flagged(tmp_path: Path, monkeypatch) -
     assert results["actuator_drive_chain_crosslink"] == []
 
 
+def test_focal_loss_tag_is_not_flagged(tmp_path: Path, monkeypatch) -> None:
+    """'focal-loss'（检测损失函数）的 'focal' token 会被 'foc' 前缀命中，
+    但与 FOC（磁场定向控制）无关，不应进入驱动链巡检清单。
+    """
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    page = wiki / "entities" / "retinanet.md"
+    page.write_text(
+        "---\ntype: entity\ntags: [object-detection, focal-loss, one-stage]\n---\n"
+        "RetinaNet 正文，与执行器驱动链无关。\n",
+        encoding="utf-8",
+    )
+    results = _run([page])
+    assert results["actuator_drive_chain_crosslink"] == []
+
+
 def test_derived_and_plural_actuator_tags_still_flagged(tmp_path: Path, monkeypatch) -> None:
     """'actuators'（复数）与 'foc-driver'（派生）仍应被 token 前缀匹配捕获。"""
     wiki = _setup_wiki(tmp_path, monkeypatch)

@@ -14,6 +14,7 @@ related:
   - ../methods/mask-rcnn.md
   - ../entities/paper-segment-anything.md
   - ../entities/transformer-cv-curriculum.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/courses/transformer_cv_applications_syllabus.md
 ---
@@ -72,6 +73,7 @@ flowchart TB
 - [Mask R-CNN](../methods/mask-rcnn.md)
 - [SEEM](../entities/seem.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
+- [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — 语义/实例/全景之分决定②层选什么头、③层能提升到什么粒度
 
 ## 参考来源
 

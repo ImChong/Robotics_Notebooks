@@ -14,6 +14,8 @@ related:
   - ../methods/object-detection.md
   - ./dataset-coco.md
   - ../entities/transformer-cv-curriculum.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/courses/transformer_cv_applications_syllabus.md
 ---
@@ -70,6 +72,8 @@ mAP 不直接等于任务成功（抓取/避障）；类别长尾与定位误差
 - [COCO](../entities/dataset-coco.md)
 - [DETR](../entities/detr.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
+- [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — mAP 属四层评测链的上游代理指标：检测分高 ≠ ③策略任务成功率高
+- [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — mAP 是②层检测选型的共同尺，但 mAP 高 ≠ 机载帧率够
 
 ## 参考来源
 

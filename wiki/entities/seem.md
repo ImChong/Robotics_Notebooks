@@ -15,6 +15,7 @@ related:
   - ./paper-sam2.md
   - ../concepts/image-segmentation-taxonomy.md
   - ../entities/transformer-cv-curriculum.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/courses/transformer_cv_applications_syllabus.md
 ---
@@ -70,6 +71,7 @@ flowchart LR
 - [SAM 2](./paper-sam2.md)
 - [分割任务分类](../concepts/image-segmentation-taxonomy.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
+- [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — 多提示统一分割对应②层「闭集准 vs 开放词汇泛」的开放侧
 
 ## 参考来源
 

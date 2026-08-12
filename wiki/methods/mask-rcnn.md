@@ -12,6 +12,7 @@ related:
   - ../concepts/image-segmentation-taxonomy.md
   - ../entities/transformer-cv-curriculum.md
   - ../entities/dataset-ade20k.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/courses/transformer_cv_applications_syllabus.md
 ---
@@ -72,6 +73,7 @@ CNN 分割受感受野与多尺度模块设计约束；开放集与提示分割�
 - [SETR](../entities/setr.md)
 - [SegFormer](../entities/segformer.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
+- [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — 两阶段实例分割标准框架，②层「是否需要实例粒度」的判据
 
 ## 参考来源
 
