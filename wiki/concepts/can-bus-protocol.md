@@ -18,6 +18,7 @@ sources:
   - ../../sources/sites/cia_dronecan_uavcan.md
   - ../../sources/sites/canfestival-org.md
   - ../../sources/repos/canfestival.md
+  - ../../sources/blogs/wechat_ai_explore_yao_can_canfd_humanoid_bus.md
 summary: "经典 CAN（Controller Area Network）总线：多主、按位仲裁的差分串行现场总线，1 Mbit/s 与 8 字节载荷上限，广泛用于腿式/人形关节驱动与车载 ECU，应用层常见 CANopen 或 DroneCAN。"
 ---
 
@@ -68,11 +69,22 @@ summary: "经典 CAN（Controller Area Network）总线：多主、按位仲裁�
 | **厂商私有协议** | 部分人形/四足电机 SDK 的紧凑二进制帧 |
 | **CoE** | 在 EtherCAT 上传 CANopen 对象（见 [EtherCAT](./ethercat-protocol.md)） |
 
+## 工程实践：与人形分层总线的关系
+
+经典 CAN 的 **8 B + 单速率** 硬伤，在多指传感、多轻载关节周期上报时会迫使频繁分包、抬高总线负载。量产人形叙事里更常见的是：
+
+- **保留经典 CAN / CANopen** 于中等轴数科研机或已有电机生态；
+- **末端升级 [CAN FD](./can-fd.md)**（灵巧手、轻载关节、分布式传感、BMS/STO）；
+- **主干仍走 [EtherCAT](./ethercat-protocol.md)** 做大功率关节与视觉同步。
+
+历史脉络（Bosch → ISO 11898 → CAN FD）与帧场对照见 [公众号归档](../../sources/blogs/wechat_ai_explore_yao_can_canfd_humanoid_bus.md)；正式参数以 CiA / ISO 为准。
+
 ## 常见误区
 
 - **「CAN 就是 1 Mbps 随便接」**：拓扑、终端、接地与采样点不一致都会让「理论上 1 M」在真机上变成间歇 NACK。
 - **「用 USB 转 CAN 就等同板载实时」**：USB 调度与批量传输会引入 **毫秒级抖动**，不适合单独承担 500 Hz–1 kHz 全关节闭环（宜板载 CAN + RT 线程）。
 - **混淆 CAN 与 UART/RS485**：UART 无硬件仲裁；RS485 半双工需方向控制，协议栈完全不同——见 [UART 串行通信](./uart-serial-communication.md)。
+- **「经典 CAN 已够用末端传感」**：手指/多 IMU 周期上报时 8 B 分包常先撞负载墙，再谈换 EtherCAT——优先评估 [CAN FD](./can-fd.md)。
 
 ## 关联页面
 
@@ -91,6 +103,7 @@ summary: "经典 CAN（Controller Area Network）总线：多主、按位仲裁�
 - [CiA / DroneCAN：无人机 CAN 应用层](../../sources/sites/cia_dronecan_uavcan.md)
 - [CanFestival 官网](../../sources/sites/canfestival-org.md)
 - [CanFestival 仓库归档](../../sources/repos/canfestival.md)
+- [微信：CAN/CAN FD 到人形底层总线](../../sources/blogs/wechat_ai_explore_yao_can_canfd_humanoid_bus.md)
 
 ## 推荐继续阅读
 

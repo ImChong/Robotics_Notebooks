@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-08-12",
   "node_count": 3063,
-  "edge_count": 26465,
+  "edge_count": 26466,
   "coverage": {
     "covered": 3039,
     "total": 3039,
@@ -16,7 +16,7 @@
       "recency": "2026-08-12",
       "source": "log.md",
       "action": "added",
-      "community_label": "Transformer 视觉应用课程（Transformer Computer Vision Curriculum） 社区"
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     },
     {
       "path": "wiki/concepts/convolutional-neural-network.md",
@@ -26,7 +26,7 @@
       "recency": "2026-08-12",
       "source": "log.md",
       "action": "added",
-      "community_label": "Transformer 视觉应用课程（Transformer Computer Vision Curriculum） 社区"
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     },
     {
       "path": "wiki/methods/channel-spatial-attention.md",
@@ -36,7 +36,7 @@
       "recency": "2026-08-12",
       "source": "log.md",
       "action": "added",
-      "community_label": "Transformer 视觉应用课程（Transformer Computer Vision Curriculum） 社区"
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     },
     {
       "path": "wiki/overview/multimodal-llm-development.md",
@@ -46,7 +46,7 @@
       "recency": "2026-08-12",
       "source": "log.md",
       "action": "added",
-      "community_label": "Transformer 视觉应用课程（Transformer Computer Vision Curriculum） 社区"
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     },
     {
       "path": "wiki/comparisons/rnn-cnn-transformer-mamba.md",
@@ -56,7 +56,61 @@
       "recency": "2026-08-12",
       "source": "log.md",
       "action": "added",
-      "community_label": "Transformer 视觉应用课程（Transformer Computer Vision Curriculum） 社区"
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
+    },
+    {
+      "path": "wiki/concepts/can-fd.md",
+      "detail_id": "wiki-concepts-can-fd",
+      "label": "CAN FD（Flexible Data Rate）",
+      "type": "concept",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/comparisons/can-vs-ethercat-joint-bus.md",
+      "detail_id": "wiki-comparisons-can-vs-ethercat-joint-bus",
+      "label": "CAN / CAN FD vs EtherCAT vs UART·RS485（关节与现场总线选型）",
+      "type": "comparison",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/overview/motor-drive-firmware-bus-protocols.md",
+      "detail_id": "wiki-overview-motor-drive-firmware-bus-protocols",
+      "label": "电机驱动器底软通信协议总览",
+      "type": "overview",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/concepts/can-bus-protocol.md",
+      "detail_id": "wiki-concepts-can-bus-protocol",
+      "label": "CAN 总线（经典 CAN / CAN 2.0）",
+      "type": "concept",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/concepts/ethercat-protocol.md",
+      "detail_id": "wiki-concepts-ethercat-protocol",
+      "label": "EtherCAT 协议基础",
+      "type": "concept",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/entities/paper-xpolicylab.md",
@@ -92,43 +146,10 @@
       "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
     },
     {
-      "path": "wiki/concepts/ethercat-protocol.md",
-      "detail_id": "wiki-concepts-ethercat-protocol",
-      "label": "EtherCAT 协议基础",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/comparisons/can-vs-ethercat-joint-bus.md",
-      "detail_id": "wiki-comparisons-can-vs-ethercat-joint-bus",
-      "label": "CAN / CAN FD vs EtherCAT vs UART·RS485（关节与现场总线选型）",
-      "type": "comparison",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
       "path": "wiki/comparisons/ethercat-vs-ethernet-ip.md",
       "detail_id": "wiki-comparisons-ethercat-vs-ethernet-ip",
       "label": "EtherCAT vs EtherNet/IP（工业总线选型对比）",
       "type": "comparison",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/overview/motor-drive-firmware-bus-protocols.md",
-      "detail_id": "wiki-overview-motor-drive-firmware-bus-protocols",
-      "label": "电机驱动器底软通信协议总览",
-      "type": "overview",
       "recency": "2026-08-12",
       "source": "log.md",
       "action": "maintained",
@@ -155,27 +176,6 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/concepts/can-bus-protocol.md",
-      "detail_id": "wiki-concepts-can-bus-protocol",
-      "label": "CAN 总线（经典 CAN / CAN 2.0）",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/concepts/can-fd.md",
-      "detail_id": "wiki-concepts-can-fd",
-      "label": "CAN FD（Flexible Data Rate）",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/entities/paper-effective-degree.md",
@@ -230,7 +230,7 @@
     "recency": "2026-08-12",
     "source": "log.md",
     "action": "added",
-    "community_label": "Transformer 视觉应用课程（Transformer Computer Vision Curriculum） 社区"
+    "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
   },
   "top_communities": [
     {
