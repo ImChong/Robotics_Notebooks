@@ -13,7 +13,7 @@ tags:
   - nvidia
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-07-28
+updated: 2026-08-12
 arxiv: "2412.04453"
 code: https://github.com/AnjieCheng/NaVILA
 related:

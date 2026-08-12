@@ -25,6 +25,15 @@
 - **机构：** `hku` / `tsinghua`（已注册）
 - **交叉：** [`wiki/entities/robodojo.md`](wiki/entities/robodojo.md)、[`wiki/concepts/simulation-evaluation-infrastructure.md`](wiki/concepts/simulation-evaluation-infrastructure.md)、[`wiki/queries/embodied-eval-benchmark-selection-loop.md`](wiki/queries/embodied-eval-benchmark-selection-loop.md)
 
+## [2026-08-12] ingest | sources/papers/refertrack_arxiv_2607_20061.md — ReferTrack（arXiv:2607.20061）升格 wiki/entities/paper-refertrack.md；归档 sources/sites/medlartea-refertrack.md、sources/repos/refertrack.md（占位仓）；交叉 wiki/tasks/vision-language-navigation.md、wiki/entities/qwen-robot-nav.md；注册 schema/institutions.json futian-laboratory
+
+- **触发：** 用户指定论文 <https://arxiv.org/abs/2607.20061>、项目页 <https://medlartea.github.io/referTrack/>、代码 <https://github.com/MedlarTea/referTrack>；要求自动合并
+- **来源：** [`sources/papers/refertrack_arxiv_2607_20061.md`](sources/papers/refertrack_arxiv_2607_20061.md)、[`sources/sites/medlartea-refertrack.md`](sources/sites/medlartea-refertrack.md)、[`sources/repos/refertrack.md`](sources/repos/refertrack.md)
+- **新建实体：** [`wiki/entities/paper-refertrack.md`](wiki/entities/paper-refertrack.md) — referring-then-tracking EVT VLA（Refer-CoT + TVBI + Refer-QA）；EVT-Bench 单视角 STT/DT/AT SR **89.4 / 73.3 / 74.1**；Go2/G1 真机定性；源码运行时序图「不适用」（占位仓）
+- **开源核查（步骤 2.5）：** **宣称将开源 / 占位仓** — README TODO 未勾选 checkpoint、数据集、训练与 data engine；目录仅 README / assets / method.pdf
+- **机构：** `sustech` / `tencent` / `pku` / `futian-laboratory`（新注册）
+- **交叉：** [`wiki/tasks/vision-language-navigation.md`](wiki/tasks/vision-language-navigation.md)、[`wiki/entities/qwen-robot-nav.md`](wiki/entities/qwen-robot-nav.md)
+
 ## [2026-08-11] structural | media/site-demo.gif — 按最新图谱重录 README 演示 GIF（3000 节点）
 
 - **触发：** 用户要求更新 README GIF 并自动合并
