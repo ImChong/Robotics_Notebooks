@@ -175,6 +175,7 @@ make ci-test       # 镜像 .github/workflows/tests.yml（含 pytest）
 | **pytest** `FileNotFoundError`（`link-graph.json` 等） | 全新环境未生成 gitignore 的站点 JSON | 先 `make export graph`，再 `make test` |
 | lint「sources 比 wiki 新」反复失败 | 交叉改多个 wiki 后未 bump `updated` | 先 `make bump-wiki-from-sources`（或指定 source），再 **一轮** `make ci-preflight` |
 | 首页「最新知识节点」缺本次页 | `log.md` 当日块未写 `wiki/...` 或 `roadmap/...` 路径 | `make log` 正文显式列出相关路径后重跑 `make ci-preflight` |
+| 「更新记录」新增远少于实际建页 | 日志用了缩写（如 `multi-head-attention.md`、`fcn/unet/segnet`、无反引号的 `dataset-*`），解析器只认完整 `wiki/.../*.md` | 在当日 ingest 正文用完整路径列出全部新建页后重跑 `make ci-preflight` |
 
 > **维护者习惯**：wiki / sources / schema 改动后，默认顺序为 `make ci-preflight` →（若动过 `institutions.json`、脚本或 `tests/`）`make test` → commit 全部相关派生文件 → push。
 
@@ -190,6 +191,13 @@ make log OP=ingest DESC="sources/papers/xxx.md — 简述覆盖的 wiki 页面"
 格式参考 `schema/log-format.md`。
 
 **首页「最新知识节点」**：静态站 `docs/index.html` 通过 `exports/home-stats.json` 中的 `latest_wiki_nodes`（数组）渲染；`latest_wiki_node` 为列表首项，供兼容旧逻辑。数据由 `make graph`（`scripts/generate_link_graph.py`）写入 `exports/graph-stats.json`，再由 `scripts/generate_home_stats.py` 拷贝。解析规则：在 `log.md` 中**自上而下**取首条 `## [日期] ...` 的**日历日期**为「最新日」，**连续合并**该日期的所有日志块，在这些块正文中按出现顺序收集全部指向现存文件、且在图谱中的 `wiki/...` 与 `roadmap/...` 路径（**去重**；**ingest / structural / query 等任意 op 均可**；纵深路线更新因此也会出现在清单中）。若当日块中没有任何可解析路径，则回退到全库「最近更新」启发式（列表仅一项）。因此：凡是希望读者在首页看到对应更新的 wiki / 路线工作，都应在当日 `log.md` 条目中**显式写出**相关 `wiki/...` 或 `roadmap/...` 路径；仅写 `sources/` 或脚本路径时，该条不会贡献首页节点。维护完成后运行 `make ci-preflight` 以同步 `exports/` 与 `docs/exports/`。
+
+**批量建页路径写法（更新记录 / 热力图共用同一解析器）：**
+
+- **必须**写完整相对路径，例如 `wiki/concepts/multi-head-attention.md`、`wiki/methods/unet.md`。
+- **禁止**只写文件名（`multi-head-attention.md`）、斜杠串联缩写（`fcn/unet/segnet`）、或标题里无反引号的伪通配（`wiki/entities/dataset-*`）——这些都不会进入「更新记录」的新增计数。
+- 通配仅在**反引号**内生效，如 `` `wiki/entities/dataset-*.md` ``；批量新建仍建议逐条列出完整路径，避免漏计。
+- 「更新记录」页默认只展示 `action=added`；若日志未写出新建页路径，即使 git 当日新增了数十个节点，页面也只会显示其它 ingest 里写全路径的那几条。
 
 ---
 

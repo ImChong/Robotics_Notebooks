@@ -19,9 +19,78 @@
       "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     },
     {
+      "path": "wiki/overview/hub-vision-backbone.md",
+      "detail_id": "wiki-overview-hub-vision-backbone",
+      "label": "视觉感知骨干（知识链汇总）",
+      "type": "overview",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
+    },
+    {
       "path": "wiki/concepts/convolutional-neural-network.md",
       "detail_id": "wiki-concepts-convolutional-neural-network",
       "label": "卷积神经网络（CNN）",
+      "type": "concept",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
+    },
+    {
+      "path": "wiki/concepts/multi-head-attention.md",
+      "detail_id": "wiki-concepts-multi-head-attention",
+      "label": "多头注意力（Multi-Head Attention）",
+      "type": "concept",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
+    },
+    {
+      "path": "wiki/concepts/image-segmentation-taxonomy.md",
+      "detail_id": "wiki-concepts-image-segmentation-taxonomy",
+      "label": "图像分割任务分类（语义 / 实例 / 全景）",
+      "type": "concept",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
+    },
+    {
+      "path": "wiki/concepts/state-space-model-ssm.md",
+      "detail_id": "wiki-concepts-state-space-model-ssm",
+      "label": "状态空间模型（SSM）",
+      "type": "concept",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
+    },
+    {
+      "path": "wiki/concepts/visual-foundation-model-trends.md",
+      "detail_id": "wiki-concepts-visual-foundation-model-trends",
+      "label": "视觉基础模型发展趋势",
+      "type": "concept",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "added"
+    },
+    {
+      "path": "wiki/concepts/multimodality-basics.md",
+      "detail_id": "wiki-concepts-multimodality-basics",
+      "label": "多模态基础概念",
+      "type": "concept",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
+    },
+    {
+      "path": "wiki/concepts/object-detection-metrics.md",
+      "detail_id": "wiki-concepts-object-detection-metrics",
+      "label": "目标检测评价指标",
       "type": "concept",
       "recency": "2026-08-12",
       "source": "log.md",
@@ -39,187 +108,104 @@
       "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     },
     {
-      "path": "wiki/overview/multimodal-llm-development.md",
-      "detail_id": "wiki-overview-multimodal-llm-development",
-      "label": "多模态 LLM 发展路线",
-      "type": "overview",
+      "path": "wiki/methods/rcnn-family.md",
+      "detail_id": "wiki-methods-rcnn-family",
+      "label": "R-CNN 族（R-CNN / Fast R-CNN / Faster R-CNN）",
+      "type": "method",
       "recency": "2026-08-12",
       "source": "log.md",
       "action": "added",
       "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     },
     {
-      "path": "wiki/comparisons/rnn-cnn-transformer-mamba.md",
-      "detail_id": "wiki-comparisons-rnn-cnn-transformer-mamba",
-      "label": "RNN vs CNN vs Transformer vs Mamba",
-      "type": "comparison",
+      "path": "wiki/methods/fcn-semantic-segmentation.md",
+      "detail_id": "wiki-methods-fcn-semantic-segmentation",
+      "label": "FCN 全卷积网络",
+      "type": "method",
       "recency": "2026-08-12",
       "source": "log.md",
       "action": "added",
       "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     },
     {
-      "path": "wiki/concepts/can-fd.md",
-      "detail_id": "wiki-concepts-can-fd",
-      "label": "CAN FD（Flexible Data Rate）",
-      "type": "concept",
+      "path": "wiki/methods/unet.md",
+      "detail_id": "wiki-methods-unet",
+      "label": "U-Net",
+      "type": "method",
       "recency": "2026-08-12",
       "source": "log.md",
-      "action": "maintained",
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+      "action": "added",
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     },
     {
-      "path": "wiki/comparisons/can-vs-ethercat-joint-bus.md",
-      "detail_id": "wiki-comparisons-can-vs-ethercat-joint-bus",
-      "label": "CAN / CAN FD vs EtherCAT vs UART·RS485（关节与现场总线选型）",
-      "type": "comparison",
+      "path": "wiki/methods/segnet.md",
+      "detail_id": "wiki-methods-segnet",
+      "label": "SegNet",
+      "type": "method",
       "recency": "2026-08-12",
       "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+      "action": "added",
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     },
     {
-      "path": "wiki/overview/motor-drive-firmware-bus-protocols.md",
-      "detail_id": "wiki-overview-motor-drive-firmware-bus-protocols",
-      "label": "电机驱动器底软通信协议总览",
-      "type": "overview",
+      "path": "wiki/methods/pspnet.md",
+      "detail_id": "wiki-methods-pspnet",
+      "label": "PSPNet",
+      "type": "method",
       "recency": "2026-08-12",
       "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+      "action": "added",
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     },
     {
-      "path": "wiki/concepts/can-bus-protocol.md",
-      "detail_id": "wiki-concepts-can-bus-protocol",
-      "label": "CAN 总线（经典 CAN / CAN 2.0）",
-      "type": "concept",
+      "path": "wiki/methods/mask-rcnn.md",
+      "detail_id": "wiki-methods-mask-rcnn",
+      "label": "Mask R-CNN",
+      "type": "method",
       "recency": "2026-08-12",
       "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+      "action": "added",
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     },
     {
-      "path": "wiki/concepts/ethercat-protocol.md",
-      "detail_id": "wiki-concepts-ethercat-protocol",
-      "label": "EtherCAT 协议基础",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-xpolicylab.md",
-      "detail_id": "entity-paper-xpolicylab",
-      "label": "XPolicyLab（统一策略评测部署标准 · arXiv:2608.09892）",
+      "path": "wiki/entities/dataset-mnist.md",
+      "detail_id": "entity-dataset-mnist",
+      "label": "MNIST",
       "type": "entity",
       "recency": "2026-08-12",
       "source": "log.md",
       "action": "added",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     },
     {
-      "path": "wiki/entities/soem.md",
-      "detail_id": "entity-soem",
-      "label": "SOEM",
+      "path": "wiki/entities/dataset-cifar.md",
+      "detail_id": "entity-dataset-cifar",
+      "label": "CIFAR-10 / CIFAR-100",
       "type": "entity",
       "recency": "2026-08-12",
       "source": "log.md",
       "action": "added",
-      "has_repo": true,
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     },
     {
-      "path": "wiki/queries/ethercat-master-optimization.md",
-      "detail_id": "wiki-queries-ethercat-master-optimization",
-      "label": "EtherCAT 主站优化指南",
-      "type": "query",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/comparisons/ethercat-vs-ethernet-ip.md",
-      "detail_id": "wiki-comparisons-ethercat-vs-ethernet-ip",
-      "label": "EtherCAT vs EtherNet/IP（工业总线选型对比）",
-      "type": "comparison",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/entities/canfestival.md",
-      "detail_id": "entity-canfestival",
-      "label": "CanFestival",
+      "path": "wiki/entities/dataset-imagenet.md",
+      "detail_id": "entity-dataset-imagenet",
+      "label": "ImageNet / ImageNet-21K",
       "type": "entity",
       "recency": "2026-08-12",
       "source": "log.md",
       "action": "added",
-      "has_repo": true,
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     },
     {
-      "path": "wiki/concepts/system-identification.md",
-      "detail_id": "wiki-concepts-system-identification",
-      "label": "System Identification",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-effective-degree.md",
-      "detail_id": "entity-paper-effective-degree",
-      "label": "Effective Degree：多项式代理量化简洁性",
+      "path": "wiki/entities/dataset-jft-300m.md",
+      "detail_id": "entity-dataset-jft-300m",
+      "label": "JFT-300M",
       "type": "entity",
       "recency": "2026-08-12",
       "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/comparisons/deep-learning-optimizers.md",
-      "detail_id": "wiki-comparisons-deep-learning-optimizers",
-      "label": "Deep Learning Optimizers：选型对比",
-      "type": "comparison",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/transformer.md",
-      "detail_id": "wiki-concepts-transformer",
-      "label": "Transformer",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/deep-learning-foundations.md",
-      "detail_id": "wiki-concepts-deep-learning-foundations",
-      "label": "深度学习基础 (Deep Learning Foundations)",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+      "action": "added",
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     }
   ],
   "latest_wiki_node": {

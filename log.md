@@ -1,4 +1,73 @@
-## [2026-08-12] ingest | sources/courses/transformer_cv_applications_syllabus.md — Transformer 视觉应用八章大纲入库；策展 wiki/entities/transformer-cv-curriculum.md；补齐 CNN/MHA/检测分割/VLM/Mamba/SAM-SEEM 等缺失独立节点（含 wiki/concepts/convolutional-neural-network.md、multi-head-attention.md、image-segmentation-taxonomy.md、state-space-model-ssm.md、visual-foundation-model-trends.md、multimodality-basics.md、object-detection-metrics.md；wiki/methods/channel-spatial-attention.md、rcnn-family.md、fcn/unet/segnet/pspnet/mask-rcnn；wiki/entities/dataset-*、lenet5/alexnet/vggnet/tnt/cvt、detr/deformable-detr/retinanet、setr/segformer、clip/blip/llava/minigpt4/instructblip/lisa/sa2va/sida、vision-mamba-vim/vmamba/mambair/rs-mamba/changemamba/videomamba/u-mamba、seem；wiki/overview/multimodal-llm-development.md；wiki/comparisons/rnn-cnn-transformer-mamba.md）；交叉 hub-vision-backbone 与既有 ViT/检测/SAM/BLIP-2 页
+## [2026-08-12] structural | log.md + schema/ingest-workflow.md — 补全 Transformer CV ingest 日志完整路径，修复「更新记录」新增仅 12 条（实为 63）
+
+- **触发：** 用户反馈今日新增 50+ 节点但更新记录只显示 12 个
+- **根因：** 批量建页日志用了文件名缩写 / 斜杠串联 / 无反引号通配，`WIKI_PATH_IN_LOG` 无法解析；更新记录默认仅展示 `action=added`
+- **修复：** 将当日 Transformer CV ingest 条目改为显式列出全部 56 个 `wiki/...md` 路径；补充 ingest-workflow 路径写法约束
+- **验证：** `wiki_activity_from_log` 2026-08-12 `added_count` **12 → 63**（与 git 当日 A 一致）
+- **页面：** [`schema/ingest-workflow.md`](schema/ingest-workflow.md)
+
+## [2026-08-12] ingest | sources/courses/transformer_cv_applications_syllabus.md — Transformer 视觉应用八章大纲入库；策展 wiki/entities/transformer-cv-curriculum.md；补齐 CNN/MHA/检测分割/VLM/Mamba/SAM-SEEM 等缺失独立节点（共 56 页，完整路径见下方）；交叉 wiki/overview/hub-vision-backbone.md 与既有 ViT/检测/SAM/BLIP-2 页
+
+- **触发：** Transformer 视觉应用课程大纲 ingest；批量补齐独立详情节点
+- **来源：** [`sources/courses/transformer_cv_applications_syllabus.md`](sources/courses/transformer_cv_applications_syllabus.md)
+- **新建节点（须写全路径，供更新记录 / latest_wiki_nodes 解析）：**
+  - [`wiki/entities/transformer-cv-curriculum.md`](wiki/entities/transformer-cv-curriculum.md)
+  - [`wiki/concepts/convolutional-neural-network.md`](wiki/concepts/convolutional-neural-network.md)
+  - [`wiki/concepts/multi-head-attention.md`](wiki/concepts/multi-head-attention.md)
+  - [`wiki/concepts/image-segmentation-taxonomy.md`](wiki/concepts/image-segmentation-taxonomy.md)
+  - [`wiki/concepts/state-space-model-ssm.md`](wiki/concepts/state-space-model-ssm.md)
+  - [`wiki/concepts/visual-foundation-model-trends.md`](wiki/concepts/visual-foundation-model-trends.md)
+  - [`wiki/concepts/multimodality-basics.md`](wiki/concepts/multimodality-basics.md)
+  - [`wiki/concepts/object-detection-metrics.md`](wiki/concepts/object-detection-metrics.md)
+  - [`wiki/methods/channel-spatial-attention.md`](wiki/methods/channel-spatial-attention.md)
+  - [`wiki/methods/rcnn-family.md`](wiki/methods/rcnn-family.md)
+  - [`wiki/methods/fcn-semantic-segmentation.md`](wiki/methods/fcn-semantic-segmentation.md)
+  - [`wiki/methods/unet.md`](wiki/methods/unet.md)
+  - [`wiki/methods/segnet.md`](wiki/methods/segnet.md)
+  - [`wiki/methods/pspnet.md`](wiki/methods/pspnet.md)
+  - [`wiki/methods/mask-rcnn.md`](wiki/methods/mask-rcnn.md)
+  - [`wiki/entities/dataset-mnist.md`](wiki/entities/dataset-mnist.md)
+  - [`wiki/entities/dataset-cifar.md`](wiki/entities/dataset-cifar.md)
+  - [`wiki/entities/dataset-imagenet.md`](wiki/entities/dataset-imagenet.md)
+  - [`wiki/entities/dataset-jft-300m.md`](wiki/entities/dataset-jft-300m.md)
+  - [`wiki/entities/dataset-coco.md`](wiki/entities/dataset-coco.md)
+  - [`wiki/entities/dataset-objects365.md`](wiki/entities/dataset-objects365.md)
+  - [`wiki/entities/dataset-pascal-voc.md`](wiki/entities/dataset-pascal-voc.md)
+  - [`wiki/entities/dataset-cityscapes.md`](wiki/entities/dataset-cityscapes.md)
+  - [`wiki/entities/dataset-ade20k.md`](wiki/entities/dataset-ade20k.md)
+  - [`wiki/entities/dataset-mapillary.md`](wiki/entities/dataset-mapillary.md)
+  - [`wiki/entities/dataset-flickr30k-entities.md`](wiki/entities/dataset-flickr30k-entities.md)
+  - [`wiki/entities/dataset-wit.md`](wiki/entities/dataset-wit.md)
+  - [`wiki/entities/dataset-vatex.md`](wiki/entities/dataset-vatex.md)
+  - [`wiki/entities/lenet5.md`](wiki/entities/lenet5.md)
+  - [`wiki/entities/alexnet.md`](wiki/entities/alexnet.md)
+  - [`wiki/entities/vggnet.md`](wiki/entities/vggnet.md)
+  - [`wiki/entities/tnt.md`](wiki/entities/tnt.md)
+  - [`wiki/entities/cvt.md`](wiki/entities/cvt.md)
+  - [`wiki/entities/detr.md`](wiki/entities/detr.md)
+  - [`wiki/entities/deformable-detr.md`](wiki/entities/deformable-detr.md)
+  - [`wiki/entities/retinanet.md`](wiki/entities/retinanet.md)
+  - [`wiki/entities/setr.md`](wiki/entities/setr.md)
+  - [`wiki/entities/segformer.md`](wiki/entities/segformer.md)
+  - [`wiki/entities/clip.md`](wiki/entities/clip.md)
+  - [`wiki/entities/blip.md`](wiki/entities/blip.md)
+  - [`wiki/entities/llava.md`](wiki/entities/llava.md)
+  - [`wiki/entities/minigpt4.md`](wiki/entities/minigpt4.md)
+  - [`wiki/entities/instructblip.md`](wiki/entities/instructblip.md)
+  - [`wiki/entities/lisa.md`](wiki/entities/lisa.md)
+  - [`wiki/entities/sa2va.md`](wiki/entities/sa2va.md)
+  - [`wiki/entities/sida.md`](wiki/entities/sida.md)
+  - [`wiki/entities/vision-mamba-vim.md`](wiki/entities/vision-mamba-vim.md)
+  - [`wiki/entities/vmamba.md`](wiki/entities/vmamba.md)
+  - [`wiki/entities/mambair.md`](wiki/entities/mambair.md)
+  - [`wiki/entities/rs-mamba.md`](wiki/entities/rs-mamba.md)
+  - [`wiki/entities/changemamba.md`](wiki/entities/changemamba.md)
+  - [`wiki/entities/videomamba.md`](wiki/entities/videomamba.md)
+  - [`wiki/entities/u-mamba.md`](wiki/entities/u-mamba.md)
+  - [`wiki/entities/seem.md`](wiki/entities/seem.md)
+  - [`wiki/overview/multimodal-llm-development.md`](wiki/overview/multimodal-llm-development.md)
+  - [`wiki/comparisons/rnn-cnn-transformer-mamba.md`](wiki/comparisons/rnn-cnn-transformer-mamba.md)
+- **交叉：** [`wiki/overview/hub-vision-backbone.md`](wiki/overview/hub-vision-backbone.md)
 
 ## [2026-08-12] ingest | sources/blogs/wechat_ai_explore_yao_can_canfd_humanoid_bus.md — 接入 CAN/CAN FD 人形分层总线科普；补充 wiki/concepts/can-fd.md、can-bus-protocol.md、ethercat-protocol.md、wiki/comparisons/can-vs-ethercat-joint-bus.md、wiki/overview/motor-drive-firmware-bus-protocols.md
 
