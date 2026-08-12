@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-xpolicylab.md",
+      "detail_id": "entity-paper-xpolicylab",
+      "label": "XPolicyLab（统一策略评测部署标准 · arXiv:2608.09892）",
+      "type": "entity",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
+    {
       "path": "wiki/entities/soem.md",
       "detail_id": "entity-soem",
       "label": "SOEM",
@@ -211,29 +222,18 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-ego4d.md",
-      "detail_id": "entity-paper-ego4d",
-      "label": "Ego4D（全球第一人称日常视频 · 数据集与基准套件）",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/soem.md",
-    "detail_id": "entity-soem",
-    "label": "SOEM",
+    "path": "wiki/entities/paper-xpolicylab.md",
+    "detail_id": "entity-paper-xpolicylab",
+    "label": "XPolicyLab（统一策略评测部署标准 · arXiv:2608.09892）",
     "type": "entity",
     "recency": "2026-08-12",
     "source": "log.md",
     "action": "added",
     "has_repo": true,
-    "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
   },
   "top_communities": [
     {

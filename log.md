@@ -1,3 +1,10 @@
+## [2026-08-12] structural | wiki/entities/paper-xpolicylab.md — 修复源码运行时序图 Mermaid：消息内 ASCII 分号导致 sequenceDiagram 解析失败
+
+- **触发：** 用户反馈 <https://imchong.github.io/Robotics_Notebooks/detail.html?id=entity-paper-xpolicylab> Mermaid 格式问题；要求自动合并
+- **根因：** `U->>XP: pip install -e . ; create_policy.sh NAME` 中 ASCII `;` 被 Mermaid 当作语句分隔符，后续箭头解析失败
+- **修复：** 改为 `then` 连接；流程图链式边拆成 `S --- Proto` / `Proto --- C`
+- **页面：** [`wiki/entities/paper-xpolicylab.md`](wiki/entities/paper-xpolicylab.md)
+
 ## [2026-08-12] ingest | sources/repos/soem.md — 接入 SOEM（OpenEtherCATsociety）；升格 wiki/entities/soem.md；配套 sources/sites/openethercatsociety-github-io.md；交叉更新 wiki/queries/ethercat-master-optimization.md、wiki/concepts/ethercat-protocol.md、wiki/comparisons/can-vs-ethercat-joint-bus.md、wiki/comparisons/ethercat-vs-ethernet-ip.md、wiki/overview/motor-drive-firmware-bus-protocols.md、wiki/entities/canfestival.md
 
 - **触发：** 用户指定仓库 <https://github.com/OpenEtherCATsociety/SOEM>；要求自动合并

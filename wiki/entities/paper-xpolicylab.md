@@ -94,7 +94,8 @@ flowchart LR
     E[Sim / RealEval / Robot]
     C --> E
   end
-  S --- Proto --- C
+  S --- Proto
+  Proto --- C
   Sch --- A
   Sch --- C
 ```
@@ -121,7 +122,7 @@ sequenceDiagram
   participant EC as Env client
   participant Bench as RoboDojo / RoboTwin / debug
 
-  U->>XP: pip install -e . ; create_policy.sh NAME
+  U->>XP: pip install -e . then create_policy.sh NAME
   U->>Pol: 实现 model.py / deploy.yml / eval.sh
   U->>Pol: EVAL_ENV_TYPE=debug bash eval.sh ...
   Pol->>PS: setup_eval_policy_server
