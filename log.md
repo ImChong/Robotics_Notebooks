@@ -1,3 +1,11 @@
+## [2026-08-12] structural | docs/main.js + docs/graph-tooltip.js — 修复首页「最新知识节点」回填方向与空白日期
+
+- **触发：** 用户反馈首页最新知识节点显示异常
+- **根因：** PR#1537 紧凑模式在 `latest_wiki_nodes` 新增不足时，按 `wiki-activity.days` **升序**回填，灌入最早历史节点且缺 `recency`
+- **修复：** `collectHomeCompactAddedNodes` 自新到旧回填并补齐日期；`shortenCommunityLabel` 对齐 `community_short_label`（去掉英文括注）
+- **测试：** `tests/test_home_compact_added_backfill.py`
+- **清单：** [`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md)
+
 ## [2026-08-12] ingest | sources/sites/canfestival-org.md — 接入 CanFestival 官网；升格 wiki/entities/canfestival.md；配套 sources/repos/canfestival.md；交叉更新 wiki/overview/motor-drive-firmware-bus-protocols.md、wiki/concepts/can-bus-protocol.md、wiki/comparisons/can-vs-ethercat-joint-bus.md
 
 - **触发：** 用户指定站点 <https://canfestival.org/>
