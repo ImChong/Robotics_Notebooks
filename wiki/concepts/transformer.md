@@ -2,7 +2,7 @@
 type: concept
 summary: "Transformer 用自注意力替代循环与卷积，凭可并行与长程依赖成为现代序列建模与机器人基础策略（VLA、ACT、扩散策略骨干）的通用架构底座。"
 description: Transformer 架构的核心机制（缩放点积注意力、多头注意力、位置编码）及其在机器人具身学习中的角色。
-updated: 2026-07-12
+updated: 2026-08-12
 related:
   - ./deep-learning-foundations.md
   - ./humanoid-policy-network-architecture.md
@@ -11,6 +11,7 @@ related:
   - ../methods/action-chunking.md
   - ../entities/llms-from-scratch-raschka.md
   - ../entities/andrej-karpathy.md
+  - ../entities/paper-effective-degree.md
 sources:
   - ../../sources/papers/attention_is_all_you_need.md
   - ../../sources/books/udl_book.md
@@ -72,6 +73,7 @@ $$
 - [动作分块（Action Chunking）](../methods/action-chunking.md)
 - [LLMs-from-scratch（Raschka）](../entities/llms-from-scratch-raschka.md)
 - [Andrej Karpathy](../entities/andrej-karpathy.md)
+- [Effective Degree](../entities/paper-effective-degree.md) — ViT / BERT 上用路径多项式正则提升泛化（ICML 2026）
 
 ## 参考来源
 - [Attention Is All You Need 来源归档（arXiv:1706.03762）](../../sources/papers/attention_is_all_you_need.md)

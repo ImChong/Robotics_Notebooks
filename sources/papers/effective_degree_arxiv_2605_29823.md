@@ -8,10 +8,11 @@
 - **PDF：** <https://arxiv.org/pdf/2605.29823>
 - **HTML：** <https://arxiv.org/html/2605.29823>
 - **代码：** <https://github.com/xinzaixinzai/Effective-Degree> — 归档见 [`sources/repos/effective-degree.md`](../repos/effective-degree.md)
+- **项目页：** 无独立 `*.github.io` / lab 项目页；以 arXiv + GitHub 为入口
 - **机构：** 清华大学（Tsinghua University）
 - **作者：** Tianren Zhang*、Xiangxin Li*、Minghao Xiao*、Guanyu Chen、Feng Chen（* equal contrib.；中文：章天任、李向欣、肖明昊、陈冠宇、陈峰）
 - **发表 / 上传：** 2026-05-28（v1）；2026-06-08（v2）；**ICML 2026**
-- **入库日期：** 2026-08-06
+- **入库日期：** 2026-08-06（初入库）；**复核：** 2026-08-12
 - **一句话说明：** 用数据相关插值路径上的正交多项式代理刻画网络函数「有效度数」（ED），作为可量化、可微的简洁性度量与正则，在分类 / CLIP 微调 / Procgen PPO 上提升泛化。
 
 ## 相关资料（策展）
@@ -22,11 +23,12 @@
 | 代码 | [xinzaixinzai/Effective-Degree](https://github.com/xinzaixinzai/Effective-Degree) | 官方实现：相关实验、grokking、ED 正则、RL |
 | 对照基线 | SAM / ASAM / Jacobian reg. / Mixup | 文中主对比正则族 |
 
-## 开源状态（步骤 2.5，截至 2026-08-06）
+## 开源状态（步骤 2.5，截至 2026-08-12 复核）
 
-- **已开源：** 官方仓 README 标明 ICML 2026 官方实现；含 `train_wd_regular_torch.py`、`poly/`、`grokking/`、`wise-ft/`、`bert/`、`rl/ppo_procgen.sh` 等可辨识训练/评测入口。
-- **许可证：** 仓库 API 未返回 SPDX license（截至核查日）。
-- **处理：** wiki 写「已开源」并补 `## 源码运行时序图`；互链 `sources/repos/effective-degree.md`。
+- **已开源：** 官方仓 README 标明 ICML 2026 官方实现；含 `train_wd_regular_torch.py`、`poly/`、`grokking/`、`wise-ft/`、`bert/`、`rl/ppo_procgen.sh` 等可辨识训练/评测入口（2026-08-12 再核：默认分支 tip 仍为 2026-05-11，入口未变）。
+- **许可证：** 仓库 API 未返回 SPDX license（截至 2026-08-12）。
+- **项目页：** 无独立项目页；代码可用性以 GitHub 为准。
+- **处理：** wiki 写「已开源」并保留 `## 源码运行时序图`；互链 `sources/repos/effective-degree.md`。
 
 ## 摘要级要点
 

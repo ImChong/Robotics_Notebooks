@@ -6,6 +6,15 @@
 - **开源核查（步骤 2.5）：** **已开源** — 官网 Code 列 `hg.beremiz.org/canfestival` 等多源；现代 CMake 入口 [beremiz/canfestival](https://github.com/beremiz/canfestival)
 - **交叉：** [`wiki/overview/motor-drive-firmware-bus-protocols.md`](wiki/overview/motor-drive-firmware-bus-protocols.md)、[`wiki/concepts/can-bus-protocol.md`](wiki/concepts/can-bus-protocol.md)、[`wiki/comparisons/can-vs-ethercat-joint-bus.md`](wiki/comparisons/can-vs-ethercat-joint-bus.md)、[`wiki/concepts/can-fd.md`](wiki/concepts/can-fd.md)、[`wiki/concepts/ethercat-protocol.md`](wiki/concepts/ethercat-protocol.md)
 
+## [2026-08-12] ingest | sources/papers/effective_degree_arxiv_2605_29823.md — 复核 Effective Degree（arXiv:2605.29823，ICML 2026，清华）：确认已开源可运行；刷新 wiki/entities/paper-effective-degree.md；交叉 wiki/comparisons/deep-learning-optimizers.md、wiki/concepts/transformer.md、wiki/concepts/deep-learning-foundations.md、wiki/methods/reinforcement-learning.md、wiki/methods/ppo.md、wiki/methods/adamw.md；sources/repos/effective-degree.md
+
+- **触发：** 用户指定论文 <https://arxiv.org/abs/2605.29823>；要求自动合并
+- **来源：** [`sources/papers/effective_degree_arxiv_2605_29823.md`](sources/papers/effective_degree_arxiv_2605_29823.md)、[`sources/repos/effective-degree.md`](sources/repos/effective-degree.md)
+- **实体页：** [`wiki/entities/paper-effective-degree.md`](wiki/entities/paper-effective-degree.md) — 初入库 2026-08-06；本次复核开源状态、补 LA 缩写与交叉引用
+- **开源核查（步骤 2.5）：** **已开源** — [xinzaixinzai/Effective-Degree](https://github.com/xinzaixinzai/Effective-Degree)；无独立项目页；未声明 SPDX；默认分支 tip 仍为 2026-05-11
+- **机构：** `tsinghua`（已注册）
+- **交叉：** [`wiki/comparisons/deep-learning-optimizers.md`](wiki/comparisons/deep-learning-optimizers.md)、[`wiki/concepts/transformer.md`](wiki/concepts/transformer.md)、[`wiki/concepts/deep-learning-foundations.md`](wiki/concepts/deep-learning-foundations.md)、[`wiki/methods/reinforcement-learning.md`](wiki/methods/reinforcement-learning.md)、[`wiki/methods/ppo.md`](wiki/methods/ppo.md)、[`wiki/methods/adamw.md`](wiki/methods/adamw.md)
+
 ## [2026-08-12] ingest | sources/papers/ego_oscar_arxiv_2608_08285.md — 接入 Ego-OSCAR / Stereo-550；升格 wiki/entities/paper-ego-oscar.md；交叉更新 wiki/overview/ego-category-01-data-collection.md、wiki/entities/paper-ego4d.md、wiki/entities/paper-hifi-umi.md、wiki/tasks/teleoperation.md；配套 sources/sites/fpvlabs-ego-oscar.md、sources/datasets/stereo-550.md
 
 - **触发：** 用户指定论文 <https://arxiv.org/abs/2608.08285>；要求自动合并

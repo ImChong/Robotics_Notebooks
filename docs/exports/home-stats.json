@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-08-12",
   "node_count": 3006,
-  "edge_count": 26129,
+  "edge_count": 26131,
   "coverage": {
     "covered": 2982,
     "total": 2982,
@@ -71,6 +71,82 @@
       "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
     },
     {
+      "path": "wiki/entities/paper-effective-degree.md",
+      "detail_id": "entity-paper-effective-degree",
+      "label": "Effective Degree：多项式代理量化简洁性",
+      "type": "entity",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/comparisons/deep-learning-optimizers.md",
+      "detail_id": "wiki-comparisons-deep-learning-optimizers",
+      "label": "Deep Learning Optimizers：选型对比",
+      "type": "comparison",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/concepts/transformer.md",
+      "detail_id": "wiki-concepts-transformer",
+      "label": "Transformer",
+      "type": "concept",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/concepts/deep-learning-foundations.md",
+      "detail_id": "wiki-concepts-deep-learning-foundations",
+      "label": "深度学习基础 (Deep Learning Foundations)",
+      "type": "concept",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/methods/reinforcement-learning.md",
+      "detail_id": "wiki-methods-reinforcement-learning",
+      "label": "Reinforcement Learning (RL, 强化学习)",
+      "type": "method",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
+    },
+    {
+      "path": "wiki/methods/ppo.md",
+      "detail_id": "wiki-methods-ppo",
+      "label": "PPO（Proximal Policy Optimization）",
+      "type": "method",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/methods/adamw.md",
+      "detail_id": "wiki-methods-adamw",
+      "label": "AdamW（Adam with Decoupled Weight Decay）",
+      "type": "method",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/paper-ego-oscar.md",
       "detail_id": "entity-paper-ego-oscar",
       "label": "Ego-OSCAR / Stereo-550（开源硬件第一人称立体惯性采集）",
@@ -131,17 +207,6 @@
       "action": "added"
     },
     {
-      "path": "wiki/methods/reinforcement-learning.md",
-      "detail_id": "wiki-methods-reinforcement-learning",
-      "label": "Reinforcement Learning (RL, 强化学习)",
-      "type": "method",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
       "path": "wiki/comparisons/online-vs-offline-rl.md",
       "detail_id": "wiki-comparisons-online-vs-offline-rl",
       "label": "Online RL vs Offline RL",
@@ -149,70 +214,6 @@
       "recency": "2026-08-12",
       "source": "log.md",
       "action": "maintained",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/safe-real-world-rl-fine-tuning.md",
-      "detail_id": "wiki-concepts-safe-real-world-rl-fine-tuning",
-      "label": "Safe Real-World RL Fine-Tuning（真机安全 RL 微调）",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-slim-05b.md",
-      "detail_id": "entity-paper-slim-05b",
-      "label": "SLIM-0.5B（动作接地预测隐变量策略 · arXiv:2608.09771）",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/concepts/world-action-models.md",
-      "detail_id": "wiki-concepts-world-action-models",
-      "label": "World Action Models（WAM，世界–动作模型）",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/methods/defi-decoupled-dynamics-vla.md",
-      "detail_id": "wiki-methods-defi-decoupled-dynamics-vla",
-      "label": "DeFI（解耦前向/逆动力学 VLA）",
-      "type": "method",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     }
   ],
