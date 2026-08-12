@@ -1215,8 +1215,14 @@ button.home-wiki-heatmap-cell.is-active {
   /* 与 section-subtitle 同口径：整词换行，避免说明句中途突然断行 */
   word-break: keep-all;
   line-break: strict;
-  flex: 1 1 12rem;
   min-width: 0;
+}
+/* 仅横排时用 flex-basis 占满按钮旁剩余宽；竖排（移动端）勿设 12rem，
+   否则 column flex 会把 basis 当成高度，挤出大段空白 */
+@media (min-width: 641px) {
+  .updates-filter-hint {
+    flex: 1 1 12rem;
+  }
 }
 #change-log-section .section-subtitle {
   max-width: none;
@@ -1230,6 +1236,9 @@ button.home-wiki-heatmap-cell.is-active {
   .updates-filter-bar .updates-filter-added-only {
     width: 100%;
     justify-content: center;
+  }
+  .updates-filter-hint {
+    flex: 0 1 auto;
   }
 }
 /* PC：热力图在内容区内完整放下，隐藏横向滚动；列宽用 calc 均分避免 fr 子像素溢出 */
