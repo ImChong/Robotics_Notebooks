@@ -1,3 +1,5 @@
+## [2026-08-12] ingest | sources/courses/transformer_cv_applications_syllabus.md — Transformer 视觉应用八章大纲入库；策展 wiki/entities/transformer-cv-curriculum.md；补齐 CNN/MHA/检测分割/VLM/Mamba/SAM-SEEM 等缺失独立节点（含 wiki/concepts/convolutional-neural-network.md、multi-head-attention.md、image-segmentation-taxonomy.md、state-space-model-ssm.md、visual-foundation-model-trends.md、multimodality-basics.md、object-detection-metrics.md；wiki/methods/channel-spatial-attention.md、rcnn-family.md、fcn/unet/segnet/pspnet/mask-rcnn；wiki/entities/dataset-*、lenet5/alexnet/vggnet/tnt/cvt、detr/deformable-detr/retinanet、setr/segformer、clip/blip/llava/minigpt4/instructblip/lisa/sa2va/sida、vision-mamba-vim/vmamba/mambair/rs-mamba/changemamba/videomamba/u-mamba、seem；wiki/overview/multimodal-llm-development.md；wiki/comparisons/rnn-cnn-transformer-mamba.md）；交叉 hub-vision-backbone 与既有 ViT/检测/SAM/BLIP-2 页
+
 ## [2026-08-12] structural | wiki/entities/paper-xpolicylab.md — 修复源码运行时序图 Mermaid：消息内 ASCII 分号导致 sequenceDiagram 解析失败
 
 - **触发：** 用户反馈 <https://imchong.github.io/Robotics_Notebooks/detail.html?id=entity-paper-xpolicylab> Mermaid 格式问题；要求自动合并

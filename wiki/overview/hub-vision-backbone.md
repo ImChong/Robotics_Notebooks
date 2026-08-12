@@ -2,8 +2,14 @@
 type: overview
 tags: [hub, hub-vision-backbone, cnn, vit, perception, detection]
 status: complete
-updated: 2026-08-03
-summary: "视觉感知骨干知识链汇总：CNN/ViT 骨干、检测/分割头与策略输入的衔接，覆盖 ResNet/YOLO 选型与生成式视觉预训练对机器人表征的影响。"
+updated: 2026-08-12
+summary: "视觉感知骨干知识链汇总：CNN/ViT 骨干、检测/分割头与策略输入的衔接，覆盖 ResNet/YOLO 选型与生成式视觉预训练对机器人表征的影响；课程级全量节点见 Transformer 视觉应用策展。"
+related:
+  - ../entities/transformer-cv-curriculum.md
+  - ../concepts/vision-backbones.md
+  - ../concepts/vision-transformer.md
+  - ../comparisons/cnn-vs-vit-backbones.md
+  - ../methods/object-detection.md
 ---
 
 # 视觉感知骨干（知识链汇总）
@@ -40,6 +46,10 @@ summary: "视觉感知骨干知识链汇总：CNN/ViT 骨干、检测/分割头�
 | 概念 | 策略侧表征 | [Visual Representation for Policy](../concepts/visual-representation-for-policy.md) |
 | 方法 | 目标检测 | [Object Detection](../methods/object-detection.md) |
 | 概念 | 生成式视觉预训练 | [Generative Vision Pretraining](../concepts/generative-vision-pretraining.md) |
+| 策展 | Transformer 视觉应用八章全量节点 | [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md) |
+| 概念 | 多头注意力 / CNN 基础 | [Multi-Head Attention](../concepts/multi-head-attention.md)、[CNN](../concepts/convolutional-neural-network.md) |
+| 方法 | DETR 族 / 分割 Transformer | [DETR](../entities/detr.md)、[SegFormer](../entities/segformer.md) |
+| 多模态 | CLIP → LLaVA 路线 | [多模态 LLM 发展路线](./multimodal-llm-development.md) |
 
 ## 与其他知识链的关系
 
@@ -49,6 +59,7 @@ summary: "视觉感知骨干知识链汇总：CNN/ViT 骨干、检测/分割头�
 
 ## 关联页面
 
+- [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
 - [Object Detection Model Selection](../queries/object-detection-model-selection.md)
 - [Perception Backbone Selection](../queries/perception-backbone-selection.md)
 - [3D Spatial VQA](../concepts/3d-spatial-vqa.md)
@@ -58,3 +69,4 @@ summary: "视觉感知骨干知识链汇总：CNN/ViT 骨干、检测/分割头�
 - 本库归纳自 [Vision Backbones](../concepts/vision-backbones.md)、[Visual Representation for Policy](../concepts/visual-representation-for-policy.md)
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`vision-backbone` 命中规则）
 - 上游原始资料（本链概念页共同的 ingest 来源）：[ResNet：深度残差学习（arXiv:1512.03385）](../../sources/papers/resnet_arxiv_1512_03385.md)、[YOLO v1：统一实时目标检测（arXiv:1506.02640）](../../sources/papers/yolo_arxiv_1506_02640.md)、[经典视觉骨干与实时检测文献簇](../../sources/papers/vision_backbone_detection_classics.md)
+- 课程大纲策展：[Transformer 视觉应用课程大纲](../../sources/courses/transformer_cv_applications_syllabus.md)

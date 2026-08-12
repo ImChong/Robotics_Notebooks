@@ -5,6 +5,9 @@ from __future__ import annotations
 # 社区展示名格式：「中文（English）」。规范见 schema/naming.md § 图谱社区命名。
 # 社区基名默认取枢纽页 H1，但 H1 风格不一；此处按 hub 路径给出统一 override。
 COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
+    "wiki/entities/transformer-cv-curriculum.md": (
+        "计算机视觉中的 Transformer（Transformer in Computer Vision）"
+    ),
     "wiki/overview/humanoid-rl-motion-control-body-system-stack.md": (
         "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL）"
     ),

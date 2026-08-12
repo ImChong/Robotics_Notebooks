@@ -4,6 +4,7 @@ summary: "Transformer 用自注意力替代循环与卷积，凭可并行与长�
 description: Transformer 架构的核心机制（缩放点积注意力、多头注意力、位置编码）及其在机器人具身学习中的角色。
 updated: 2026-08-12
 related:
+  - ../entities/transformer-cv-curriculum.md
   - ./deep-learning-foundations.md
   - ./humanoid-policy-network-architecture.md
   - ../methods/bc-with-transformer.md

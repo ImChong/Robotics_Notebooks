@@ -9,11 +9,12 @@ tags:
   - perception
   - robotics
 status: complete
-updated: 2026-07-26
+updated: 2026-08-12
 arxiv: "1506.02640"
 venue: "CVPR 2016"
 code: https://github.com/pjreddie/darknet
 related:
+  - ./transformer-cv-curriculum.md
   - ../queries/robot-perception-stack-selection-loop.md
   - ../methods/object-detection.md
   - ../concepts/vision-backbones.md

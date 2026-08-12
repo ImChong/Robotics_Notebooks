@@ -1,13 +1,63 @@
 {
   "generated_at": "2026-08-12",
-  "node_count": 3007,
-  "edge_count": 26147,
+  "node_count": 3063,
+  "edge_count": 26465,
   "coverage": {
-    "covered": 2983,
-    "total": 2983,
+    "covered": 3039,
+    "total": 3039,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/transformer-cv-curriculum.md",
+      "detail_id": "entity-transformer-cv-curriculum",
+      "label": "Transformer 视觉应用课程策展",
+      "type": "entity",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "Transformer 视觉应用课程（Transformer Computer Vision Curriculum） 社区"
+    },
+    {
+      "path": "wiki/concepts/convolutional-neural-network.md",
+      "detail_id": "wiki-concepts-convolutional-neural-network",
+      "label": "卷积神经网络（CNN）",
+      "type": "concept",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "Transformer 视觉应用课程（Transformer Computer Vision Curriculum） 社区"
+    },
+    {
+      "path": "wiki/methods/channel-spatial-attention.md",
+      "detail_id": "wiki-methods-channel-spatial-attention",
+      "label": "通道与空间注意力（SENet / SE-ResNet / DANet）",
+      "type": "method",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "Transformer 视觉应用课程（Transformer Computer Vision Curriculum） 社区"
+    },
+    {
+      "path": "wiki/overview/multimodal-llm-development.md",
+      "detail_id": "wiki-overview-multimodal-llm-development",
+      "label": "多模态 LLM 发展路线",
+      "type": "overview",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "Transformer 视觉应用课程（Transformer Computer Vision Curriculum） 社区"
+    },
+    {
+      "path": "wiki/comparisons/rnn-cnn-transformer-mamba.md",
+      "detail_id": "wiki-comparisons-rnn-cnn-transformer-mamba",
+      "label": "RNN vs CNN vs Transformer vs Mamba",
+      "type": "comparison",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "Transformer 视觉应用课程（Transformer Computer Vision Curriculum） 社区"
+    },
     {
       "path": "wiki/entities/paper-xpolicylab.md",
       "detail_id": "entity-paper-xpolicylab",
@@ -136,7 +186,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     },
     {
       "path": "wiki/comparisons/deep-learning-optimizers.md",
@@ -147,7 +197,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     },
     {
       "path": "wiki/concepts/transformer.md",
@@ -158,7 +208,7 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     },
     {
       "path": "wiki/concepts/deep-learning-foundations.md",
@@ -169,80 +219,27 @@
       "source": "log.md",
       "action": "maintained",
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/methods/reinforcement-learning.md",
-      "detail_id": "wiki-methods-reinforcement-learning",
-      "label": "Reinforcement Learning (RL, 强化学习)",
-      "type": "method",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "path": "wiki/methods/ppo.md",
-      "detail_id": "wiki-methods-ppo",
-      "label": "PPO（Proximal Policy Optimization）",
-      "type": "method",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/methods/adamw.md",
-      "detail_id": "wiki-methods-adamw",
-      "label": "AdamW（Adam with Decoupled Weight Decay）",
-      "type": "method",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-ego-oscar.md",
-      "detail_id": "entity-paper-ego-oscar",
-      "label": "Ego-OSCAR / Stereo-550（开源硬件第一人称立体惯性采集）",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/overview/ego-category-01-data-collection.md",
-      "detail_id": "wiki-overview-ego-category-01-data-collection",
-      "label": "Ego 分类 01：数据采集",
-      "type": "overview",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-xpolicylab.md",
-    "detail_id": "entity-paper-xpolicylab",
-    "label": "XPolicyLab（统一策略评测部署标准 · arXiv:2608.09892）",
+    "path": "wiki/entities/transformer-cv-curriculum.md",
+    "detail_id": "entity-transformer-cv-curriculum",
+    "label": "Transformer 视觉应用课程策展",
     "type": "entity",
     "recency": "2026-08-12",
     "source": "log.md",
     "action": "added",
-    "has_repo": true,
-    "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    "community_label": "Transformer 视觉应用课程（Transformer Computer Vision Curriculum） 社区"
   },
   "top_communities": [
     {
       "label": "操作",
-      "size": 583
+      "size": 586
     },
     {
       "label": "仿真到现实",
-      "size": 548
+      "size": 508
     },
     {
       "label": "视觉-语言-动作",
@@ -297,7 +294,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 708,
+      "degree": 709,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

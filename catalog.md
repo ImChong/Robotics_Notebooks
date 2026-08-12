@@ -19,6 +19,7 @@
 - [智星云（AI Galaxy）](wiki/entities/ai-galaxy.md) — 智星云**（ai-galaxy.cn）是上海亘聪信息科技有限公司（安诺其集团子公司）运营的 **GPU 算力服务平台**，产品线从按小时云主机延伸 `📅unknown` `[entity_page]`
 - [AI2-THOR](wiki/entities/ai2-thor.md) — AI2-THOR**（An Interactive 3D Environment for Visual AI）是艾伦人工智能研究所（AI2）于 2017 年推出的早期代表性 **交互式 3D 室内 `📅unknown` `[entity_page]`
 - [AirSim](wiki/entities/airsim.md) — AirSim**（microsoft/AirSim）是微软开源的 **高保真视觉仿真平台**，基于 **[Unreal `📅unknown` `[entity_page]`
+- [AlexNet](wiki/entities/alexnet.md) — AlexNet** 是 2012 ImageNet 竞赛冠军 CNN：更大深度/宽度、ReLU、Dropout 与 GPU 训练，证明端到端深度卷积特征可碾压传统手工特征。 `📅unknown` `[entity_page]`
 - [Allegro Hand (灵巧手)](wiki/entities/allegro-hand.md) — Allegro Hand** 是由 Wonik Robotics 开发的一款高性能四指灵巧手（Dexterous Hand）。它在机器人科研界（特别是强化学习和模仿学习领域）享有极高的普及率，被视 `📅unknown` `[entity_page]`
 - [ALOHA (双臂遥操作硬件)](wiki/entities/aloha.md) — ALOHA** (A Low-cost Open-source Hardware System for Bimanual Teleoperation) 是由 Google DeepMind (To `📅unknown` `[entity_page]`
 - [Altium Designer](wiki/entities/altium-designer.md) — Altium Designer** 是 Altium 旗下的 **商业 PCB EDA 套件**，在单一 **Unified Design Environment** 内完成原理图 → PCB → `📅2026-07-18` `[entity_page]`
@@ -57,6 +58,7 @@
 - [Berkeley Humanoid Lite（BHL）](wiki/entities/berkeley-humanoid-lite.md) — Berkeley Humanoid Lite** 是 **UC Berkeley Hybrid Robotics** 的 **轻量人形** 开源方案：门户 **[lite.berkeley-hum `📅unknown` `[entity_page]`
 - [Betaflight](wiki/entities/betaflight.md) — Betaflight**（betaflight/betaflight）是面向 **FPV 手飞、竞速与自由式 `📅unknown` `[entity_page]`
 - [Blender（开源 3D 创作套件）](wiki/entities/blender.md) — Blender** 是由 **Blender Foundation** 维护的 **免费开源 3D 创作套件**，覆盖建模、雕刻、UV、绑定、动画、物理模拟、路径追踪渲染、合成、运动跟踪与视频编辑 `📅unknown` `[entity_page]`
+- [BLIP](wiki/entities/blip.md) — BLIP 统一理解与生成的图文预训练：通过自举过滤噪声网图，并联合对比、匹配与语言模型目标，为后续 BLIP-2 奠基。 `📅unknown` `[entity_page]`
 - [Booster Robotics RoboCup Demo](wiki/entities/booster-robocup-demo.md) — Booster Robotics RoboCup Demo** 是由 Booster Robotics 官方维护的开源项 `📅unknown` `[entity_page]`
 - [Boston Dynamics（波士顿动力）](wiki/entities/boston-dynamics.md) — Boston Dynamics** 是一家全球顶尖的机器人工程公司，以其在足式机器人运动控制、平衡和动力学领域的卓越成就而闻名。从 1992 年从 MIT 的 Leg Laboratory 独立至 `📅unknown` `[entity_page]`
 - [BotLab / MotionCanvas（浏览器内策略–仿真编排）](wiki/entities/botlab-motioncanvas.md) — BotLab** 是 地瓜机器人（D-Robotics） 提供的 **Web 端机器人学习与控制实验台**；应用壳层标题为 **Moti `📅unknown` `[entity_page]`
@@ -70,9 +72,11 @@
 - [CARLA](wiki/entities/carla.md) — CARLA**（Car Learning to Act）是面向 **自动驾驶** 研究的开源 **城市驾驶仿真器**，以 Unreal Engine 提供高保真视觉与物理交互环境。 `📅unknown` `[entity_page]`
 - [Cartographer](wiki/entities/cartographer.md) — Cartographer** 是 Google 开源的 **子图 SLAM** 系统，支持 2D/3D 激光与多传感器配置。 `📅unknown` `[entity_page]`
 - [Caveman](wiki/entities/caveman.md) — Caveman** 是 JuliusBrussee/caveman 仓库分发的 **编码代理输出压缩技能/插 `📅unknown` `[entity_page]`
+- [ChangeMamba](wiki/entities/changemamba.md) — ChangeMamba 将 Mamba 用于遥感/视频变化检测，建模双时相长程依赖以突出变化区域。 `📅unknown` `[entity_page]`
 - [青瞳视觉（CHINGMU Vision）](wiki/entities/chingmu.md) — 青瞳视觉**（en.chingmu.com，上海青瞳视觉科技有限公司）是国内 **光学动作捕捉（MoCap）全栈自研** 供应商：自 **20 `📅unknown` `[entity_page]`
 - [CleanRL](wiki/entities/cleanrl.md) — CleanRL](https://github.com/vwxyzjn/cleanrl) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/huma `📅unknown` `[entity_page]`
 - [CLI-Anything（HKUDS）](wiki/entities/cli-anything.md) — CLI-Anything**（HKUDS/CLI-Anything，Apache-2.0）是香港大学 HKUDS  `📅unknown` `[entity_page]`
+- [CLIP](wiki/entities/clip.md) — CLIP 用图文对比学习在超大规模配对数据上对齐双编码器，实现强零样本分类与开放词汇检索，是现代 VLM/VLA 视觉塔的重要源头。 `📅unknown` `[entity_page]`
 - [CMU MSCV Semantic 3D Mapping](wiki/entities/cmu-mscv-semantic-3d-mapping.md) — CMU MSCV Semantic 3D Mapping**（[F23 Team 17 项目页](https://mscvprojects.ri.cmu.edu/f23team17/sample- `📅unknown` `[entity_page]`
 - [CMU Optimal Control 2025 学习策展（16-745）](wiki/entities/cmu-optimal-control-curriculum.md) — 一句话：** Zachary Manchester 主讲的 CMU **16-745 `📅unknown` `[entity_page]`
 - [Codex Security（OpenAI）](wiki/entities/codex-security.md) — Codex Security**（`@openai/codex-security`  `📅unknown` `[entity_page]`
@@ -83,11 +87,13 @@
 - [Crocoddyl](wiki/entities/crocoddyl.md) — Crocoddyl** 是一个面向机器人最优控制与轨迹优化的开源工具箱，长期由 **LAAS-CNRS / INRIA / Gepetto / Stack-of-Tasks** 这条学术与开源路线 `📅unknown` `[entity_page]`
 - [cuRobo](wiki/entities/curobo.md) — cuRobo**（仓库名 `curobo`）把机器人 **运动生成** 里算得最重的部分——**运动学、有符号距离与连续碰撞、数值优化、几何种子、轨迹优化**——搬到 **GPU** 上 **批量 `📅unknown` `[entity_page]`
 - [Curr-0（Current Robotics · Loco-Dexterous Manipulation）](wiki/entities/current-robotics-curr0.md) — Curr-0** 是 **Current Robotics**（2026-06 博客发布）对外阐述的 **第一代人形 loco-dexterous manipulation 基础系统**：把  `📅unknown` `[entity_page]`
+- [CvT（Convolutional Vision Transformer）](wiki/entities/cvt.md) — CvT** 在视觉 Transformer 中用 **卷积 token 嵌入** 与 **卷积投影 Q/K/V**，把 CNN 的局部/下采样归纳偏置注入注意力骨干。 `📅unknown` `[entity_page]`
 - [Cyclo Intelligence](wiki/entities/cyclo-intelligence.md) — Cyclo Intelligence** 是 ROBOTIS 发布的 **开源 Physical AI 全栈平台**（[ROBOTIS-GI `📅unknown` `[entity_page]`
 - [cyclo_lab](wiki/entities/cyclo-lab.md) — cyclo_lab** 是 ROBOTIS 在 Isaac Lab 上的官方强化学习 / 模仿学习扩展（[`ROBOTIS-GI `📅unknown` `[entity_page]`
 - [Cycloidal Quasi-Direct Drive Actuator（Jeong 双摆线 QDD）](wiki/entities/cycloidal-quasi-direct-drive-actuator.md) — Cycloidal Quasi-Direct Drive Actuator**（[JeongSeoJin/quasi-direct-drive-actuator](https://github.c `📅unknown` `[entity_page]`
 - [Cyclone DDS（Eclipse）](wiki/entities/cyclone-dds.md) — Cyclone DDS** 是 Eclipse IoT 下的开源 **OMG DDS** 实现（C 核心 + 独立 C++/Python 绑定）：强调低延迟与可互操作 RTPS，是 ROS 2  `📅unknown` `[entity_page]`
 - [Darwin Skill（达尔文.skill）](wiki/entities/darwin-skill.md) — Darwin Skill** 是 alchaincyf/darwin-skill 仓库分发的 **元 s `📅unknown` `[entity_page]`
+- [ADE20K](wiki/entities/dataset-ade20k.md) — ADE20K**：场景解析与语义分割常用集：百余至千余场景类别（版本相关），SETR/SegFormer 等分割 Transformer 的标准评测之一。 `📅unknown` `[entity_page]`
 - [BABEL（BFM 行为数据）](wiki/entities/dataset-bfm-babel.md) — BABEL** 列入 awesome-bfm-papers 数据集表（2021 · C `📅unknown` `[entity_page]`
 - [HumanML3D（BFM 行为数据）](wiki/entities/dataset-bfm-humanml3d.md) — HumanML3D** 列入 awesome-bfm-papers 数据集表（2022 `📅unknown` `[entity_page]`
 - [Humanoid-X（BFM 行为数据）](wiki/entities/dataset-bfm-humanoid-x.md) — Humanoid-X** 列入 awesome-bfm-papers 数据集表（202 `📅unknown` `[entity_page]`
@@ -97,11 +103,25 @@
 - [Motion-X++（BFM 行为数据）](wiki/entities/dataset-bfm-motion-xpp.md) — Motion-X++** 列入 awesome-bfm-papers 数据集表（202 `📅unknown` `[entity_page]`
 - [PHUMA（Physically Reliable Humanoid Locomotion Dataset）](wiki/entities/dataset-bfm-phuma.md) — PHUMA**（Lee et al., arXiv:2510.26236，2025）是 DAVIAN Robotics /  `📅unknown` `[entity_page]`
 - [PoseScript（BFM 行为数据）](wiki/entities/dataset-bfm-posescript.md) — PoseScript** 列入 awesome-bfm-papers 数据集表（202 `📅unknown` `[entity_page]`
+- [CIFAR-10 / CIFAR-100](wiki/entities/dataset-cifar.md) — CIFAR-10 / CIFAR-100**：32×32 彩色小图分类基准（10/100 类）；验证 CNN/ViT 小模型与正则技巧的常用中小规模集。 `📅unknown` `[entity_page]`
+- [Cityscapes](wiki/entities/dataset-cityscapes.md) — Cityscapes**：城市场景语义/实例分割基准（车载视角）；自动驾驶与户外移动机器人视觉评测常用。 `📅unknown` `[entity_page]`
+- [MS COCO](wiki/entities/dataset-coco.md) — MS COCO**：目标检测/实例分割/关键点主流基准：约 20 万图、80 物类；mAP 与机器人检测迁移评测的事实标准之一。 `📅unknown` `[entity_page]`
+- [Flickr30K Entities](wiki/entities/dataset-flickr30k-entities.md) — Flickr30K Entities**：Flickr30K 的短语级图文对齐扩展：把描述中的实体短语与图像区域框关联，服务定位/接地评测。 `📅unknown` `[entity_page]`
+- [ImageNet / ImageNet-21K](wiki/entities/dataset-imagenet.md) — ImageNet / ImageNet-21K**：大规模图像分类与预训练基石：ILSVRC-1K（约 1.28M/1k 类）与 ImageNet-21K 更广词表；ViT/ResNet 等视觉骨 `📅unknown` `[entity_page]`
+- [JFT-300M](wiki/entities/dataset-jft-300m.md) — JFT-300M**：Google 内部约 3 亿图的大规模弱标签分类数据；支撑 ViT 等大模型数据规模论证，外部通常不可直接下载。 `📅unknown` `[entity_page]`
+- [Mapillary Vistas](wiki/entities/dataset-mapillary.md) — Mapillary Vistas**：街景大规模语义分割数据集，类别与地域覆盖广，常与 Cityscapes 对照做域泛化评测。 `📅unknown` `[entity_page]`
+- [MNIST](wiki/entities/dataset-mnist.md) — MNIST**：手写数字分类小规模基准：6 万训练/1 万测试灰度 28×28；教学与算法冒烟测试常用，非现代机器人感知主基准。 `📅unknown` `[entity_page]`
+- [Objects365](wiki/entities/dataset-objects365.md) — Objects365**：超大规模目标检测数据集（365 类、逾百万图像），常用作比 COCO 更强的检测预训练源，再向下游迁移。 `📅unknown` `[entity_page]`
+- [PASCAL VOC](wiki/entities/dataset-pascal-voc.md) — PASCAL VOC**：早期语义/目标检测标准集（20 类）；教学与历史对照常用，现代 SOTA 主战场已转向 COCO/ADE20K。 `📅unknown` `[entity_page]`
+- [VaTeX](wiki/entities/dataset-vatex.md) — VaTeX**：大规模多语言视频–文本数据集，用于视频描述与跨语言检索，服务多模态时序对齐研究。 `📅unknown` `[entity_page]`
+- [WIT](wiki/entities/dataset-wit.md) — WIT**：Wikipedia-based Image Text：维基图文对的超大规模多语言图文数据集，服务 CLIP 类对比学习与检索。 `📅unknown` `[entity_page]`
 - [DBHL窄地形全身运动](wiki/entities/dbhl-whole-body-loco.md) — DBHL窄地形全身运动](https://whole-body-loco.github.io/) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/ `📅unknown` `[entity_page]`
 - [DDR](wiki/entities/ddr-direct-dynamics-retargeting.md) — DDR](https://arxiv.org/abs/2605.23762) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-m `📅unknown` `[entity_page]`
 - [DDT_Lab](wiki/entities/ddt-lab.md) — DDT_Lab**（仓内包名 `ddt_lab`）是 直驱科技（Direct Drive Tech） 在 [Isaac Lab](ht `📅unknown` `[entity_page]`
 - [DeepInsight（XPENG Robotics 全栈评测基础设施）](wiki/entities/deepinsight.md) — DeepInsight**（2026-06，arXiv:2606.17574，XPENG Robotics）是面向 **em `📅unknown` `[entity_page]`
 - [Deep Robotics rl_training](wiki/entities/deeprobotics-rl-training.md) — rl_training** 是 云深处科技（Deep Robotics） 官方在 [Isaac Lab](https://githu `📅unknown` `[entity_page]`
+- [Deformable DETR](wiki/entities/deformable-detr.md) — Deformable DETR** 将 DETR 中的密集注意力替换为 **多尺度可变形注意力**：每个 query 只采样少量关键采样点，显著加快收敛并改善小目标检测。 `📅unknown` `[entity_page]`
+- [DETR（DEtection TRansformer）](wiki/entities/detr.md) — DETR** 用 Transformer 编解码器把目标检测变成固定数量的 **集合预测**：object queries 经交叉注意力读图像特征，匈牙利算法对齐预测与真值，**推理端去掉 NMS `📅unknown` `[entity_page]`
 - [Dexmal DM0.5（OpenDM）](wiki/entities/dexmal-dm05.md) — DM0.5**（技术博客，[GitHub `dexmal/opendm`](https://github.com/dexm `📅unknown` `[entity_page]`
 - [Dexmal DW05（OpenDW）](wiki/entities/dexmal-dw05.md) — DW05**（2026-07，GitHub `dexmal/opendw`，[DW05-Base](https://hugg `📅unknown` `[entity_page]`
 - [DimOS（Dimensional 物理空间 Agent OS）](wiki/entities/dimensionalos-dimos.md) — DimOS** 是 Dimensional 推出的 **agent-native 物理空间操作系统**：用 **Python Module + Blueprint** 把相机/LiDAR 感知、S `📅unknown` `[entity_page]`
@@ -211,6 +231,7 @@
 - [iGibson](wiki/entities/igibson.md) — iGibson** 是斯坦福大学等机构 2020 年发布的 **交互式室内仿真环境**，强调 **真实感视觉场景** 与 **高保真物理交互** 的融合。 `📅unknown` `[entity_page]`
 - [img2threejs](wiki/entities/img2threejs.md) — img2threejs**（hoainho/img2threejs，MIT）是一套 **Agent Skill `📅unknown` `[entity_page]`
 - [InMoov（开源 3D 打印人形）](wiki/entities/inmoov-humanoid.md) — InMoov** 是 **Gael Langevin** 自 2012 年起维护的 **全球首个开源 3D 打印真人比例人形** 项目：以 **Arduino** 控制、**MyRobotLab `📅unknown` `[entity_page]`
+- [InstructBLIP](wiki/entities/instructblip.md) — InstructBLIP 在 BLIP-2 上做视觉指令调优：用指令感知 Q-Former 抽取与任务相关的视觉特征，提升零样本与指令跟随。 `📅unknown` `[entity_page]`
 - [Intel RealSense 深度相机](wiki/entities/intel-realsense.md) — Intel RealSense** 是一族消费级 **RGB-D 深度相机**（主动红外立体等方案），输出对齐的彩色与深度，是人形系统课感知章与大量 G1 真 `📅unknown` `[entity_page]`
 - [Internal Cycloidal Actuator（内嵌摆线一体执行器）](wiki/entities/internal-cycloidal-actuator.md) — Internal Cycloidal Actuator** 是 Aaed Musa 的开源一体关节：[GitHub CAD/BOM](https://github.com/aaedmusa/Int `📅unknown` `[entity_page]`
 - [InternRobotics运动控制开源生态](wiki/entities/internrobotics.md) — InternRobotics运动控制开源生态](https://github.com/InternRobotics) 收录于具身智能研究室 [开源项目主表](https://github.com/R `📅unknown` `[entity_page]`
@@ -247,6 +268,7 @@
 - [LeggedGym-Ex](wiki/entities/leggedgym-ex.md) — LeggedGym-Ex**（<https://github.com/lupinjia/LeggedGym-Ex>）在 legged_gym 范式上扩展  `📅unknown` `[entity_page]`
 - [LeGO-LOAM](wiki/entities/lego-loam.md) — LeGO-LOAM** 在 LOAM 基础上增加 **地面分割与地面优化**，降低起伏地形的漂移。 `📅unknown` `[entity_page]`
 - [乐聚机器人（Leju Robotics）](wiki/entities/leju-robotics.md) — 乐聚机器人**（lejurobot.com）是国内 **全尺寸人形机器人产业化** 代表厂商之一：以 **KUAVO（夸父）** 系 `📅unknown` `[entity_page]`
+- [LeNet-5](wiki/entities/lenet5.md) — LeNet-5** 用交替的卷积与下采样层提取局部特征，再经全连接完成分类，是深度学习时代之前即验证「可学习卷积特征」可行的经典小网络。 `📅unknown` `[entity_page]`
 - [LeRobot (Hugging Face)](wiki/entities/lerobot.md) — LeRobot** 是由 Hugging Face 开发并维护的一个**具身智能全栈框架**。它旨在将自然语言处理（NLP）领域的成熟生态（如 `transformers` 库和模型 Hub）迁移 `📅unknown` `[entity_page]`
 - [LIBERO](wiki/entities/libero-benchmark.md) — LIBERO](https://github.com/Lifelong-Robot-Learning/LIBERO) 收录于具身智能研究室 [开源项目主表](https://github.com/R `📅unknown` `[entity_page]`
 - [LIFT（人形大规模预训练 + 高效微调）](wiki/entities/lift-humanoid.md) — LIFT**（论文缩写：**L**arge-scale pretra**I**ning and efficient **F**ine**T**uning）是面向 **人形机器人 locomotio `📅unknown` `[entity_page]`
@@ -255,11 +277,14 @@
 - [LingBot-VLA 2.0](wiki/entities/lingbot-vla-v2.md) — LingBot-VLA 2.0**（*From Foundation to Application: Improving VLA Models in Practice*，[arXiv:2607.0 `📅unknown` `[entity_page]`
 - [LingBot-VLA](wiki/entities/lingbot-vla.md) — LingBot-VLA**（*A Pragmatic VLA Foundation Model*，[arXiv:2601.18692](https://arxiv.org/abs/2601.186 `📅unknown` `[entity_page]`
 - [LIO-SAM](wiki/entities/lio-sam.md) — LIO-SAM** 将 **IMU 预积分、scan-to-map 与回环** 纳入统一因子图优化。 `📅unknown` `[entity_page]`
+- [LISA](wiki/entities/lisa.md) — LISA 让多模态 LLM 通过特殊分割 token 调用分割解码器，实现推理式分割（reasoning segmentation）：由复杂语言描述直接得到掩码。 `📅unknown` `[entity_page]`
 - [LLaDA2.2-flash](wiki/entities/llada2-2-flash.md) — LLaDA2.2-flash** 是 Inclusion AI（蚂蚁集团）LLaDA2 系列的 **agent-oriented `📅unknown` `[entity_page]`
+- [LLaVA](wiki/entities/llava.md) — LLaVA 用简单线性/MLP 投影连接冻结视觉编码器与 LLM，并在视觉指令数据上微调，成为开源视觉对话与具身 VLM 的高影响力基线。 `📅unknown` `[entity_page]`
 - [Build a Large Language Model (From Scratch)（Raschka / LLMs-from-scratch）](wiki/entities/llms-from-scratch-raschka.md) — 《Build a Large Language Model (From Scratch)》** 是 Sebastian Raschka 的 Manning 2024 教材，官方代码在 [rasbt `📅unknown` `[entity_page]`
 - [LocoMuJoCo](wiki/entities/loco-mujoco.md) — LocoMuJoCo](https://github.com/robfiras/loco-mujoco) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXia `📅unknown` `[entity_page]`
 - [Lumina 具身智能社区](wiki/entities/lumina-embodied.md) — Lumina**（官网 <https://lumina-embodied.ai/>，GitHub Org <https://github.com/Lumina-EAI>）是由十余位具身智能方向研究 `📅unknown` `[entity_page]`
 - [Lumo-2（Latent World-Action Model）](wiki/entities/lumo-2.md) — Lumo-2**（*Towards Predictive, Aligned, and Scalable Robot Learning*，[arXiv:2607.11270](https://arx `📅unknown` `[entity_page]`
+- [MambaIR](wiki/entities/mambair.md) — MambaIR 把 Mamba/SSM 用于图像恢复（去噪、超分等），利用长程建模改善伪影与全局一致性。 `📅unknown` `[entity_page]`
 - [Manim（程序化数学动画引擎）](wiki/entities/manim.md) — Manim** 是一套用 **Python 代码精确描述动画时间线** 的开源引擎，最初由 **Grant Sanderson（3Blue1Brown）** 为教育数学视频而编写。当前存在两个  `📅unknown` `[entity_page]`
 - [ManiSkill2](wiki/entities/maniskill2.md) — ManiSkill2** 是 2023 年发布的 **通用可泛化操作技能（Generalizable Manipulation Skills）统一基准**，构建于 [SAPIEN](./sapie `📅unknown` `[entity_page]`
 - [矩池云（Matpool）](wiki/entities/matpool.md) — 矩池云**（matpool.com）是专注人工智能领域的 **GPU 云服务商**，以算力市场租用主机为核心，并提供专有云、私有云与高校 A `📅unknown` `[entity_page]`
@@ -278,6 +303,7 @@
 - [MimicGen](wiki/entities/mimicgen.md) — MimicGen](https://github.com/NVlabs/mimicgen) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hum `📅unknown` `[entity_page]`
 - [MimicKit: 运动模仿与控制研究套件](wiki/entities/mimickit.md) — MimicKit** 是 Xue Bin Peng（彭学斌） 团队（Stanford / UC Berkeley / NVIDIA 等合作脉络）维护的  `📅unknown` `[entity_page]`
 - [MimicLite（监督运动跟踪基础设施）](wiki/entities/mimiclite.md) — MimicLite** 是 Party OS 首批开源的 **监督学习运动跟踪基础设施**，贯通数据组织、策略训练、统一评测与真机部署，使研究者能以更低算力快速迭 `📅unknown` `[entity_page]`
+- [MiniGPT-4](wiki/entities/minigpt4.md) — MiniGPT-4 将冻结视觉编码器与冻结 Vicuna 等 LLM 经单一投影层对齐，展示用较少可训参数即可获得类 GPT-4V 的图像对话能力。 `📅unknown` `[entity_page]`
 - [Mink](wiki/entities/mink-ik.md) — Mink](https://github.com/kevinzakka/mink) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoi `📅unknown` `[entity_page]`
 - [MIT Mini Cheetah（学习栈与开源边界）](wiki/entities/mit-mini-cheetah.md) — MIT Mini Cheetah**（Sangbae Kim 实验室；执行器由 Benjamin Katz 主导）是约 **0.3 m / 9 kg `📅unknown` `[entity_page]`
 - [Mixamo](wiki/entities/mixamo.md) — Mixamo** 是 **Adobe** 旗下的 **Web 端角色动画服务**：浏览并下载带骨骼的 3D 角色与 **大量全身动作**（站点描述为专业演员动捕后迁移到角色），也支持上传自定义人形 `📅unknown` `[entity_page]`
@@ -2194,6 +2220,7 @@
 - [RekaCS2-10k（CS2 第一人称游戏数据集）](wiki/entities/rekacs2-10k-dataset.md) — RekaCS2-10k**（HF 名 **CS2-10k**，<https://huggingface.co/datasets/RekaAI/CS2-10k>）是 [Reka AI](https: `📅unknown` `[entity_page]`
 - [RekaDaily-10k（家务第一人称视频数据集）](wiki/entities/rekadaily-10k-dataset.md) — RekaDaily-10k** 是 Reka AI 经 Claru 付费采集网络发布的 **无剧本第一人称家务 /  `📅unknown` `[entity_page]`
 - [rerun](wiki/entities/rerun-io.md) — rerun](https://github.com/rerun-io/rerun) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoi `📅unknown` `[entity_page]`
+- [RetinaNet](wiki/entities/retinanet.md) — RetinaNet** 是带 FPN 的单阶段密集检测器，核心用 **Focal Loss** 降低易分负样本权重，缓解 one-stage 精度长期落后两阶段的问题。 `📅unknown` `[entity_page]`
 - [RF-DETR（Roboflow Detection Transformer）](wiki/entities/rf-detr.md) — RF-DETR** 是 Roboflow 与 CMU 联合提出的 **实时 closed-vocabulary 检测 Transformer**（ICLR 2026，[arXiv:2511.095 `📅unknown` `[entity_page]`
 - [辉羲智能（Rhino Auto）](wiki/entities/rhino-auto.md) — 辉羲智能**（rhino.auto）是专注 **车载智能计算平台** 的芯片与方案公司：2024 年世界智能网联汽车大会发布首款高阶智驾芯片 **光至 `📅unknown` `[entity_page]`
 - [Richard Sutton](wiki/entities/richard-sutton.md) — Richard S. Sutton** 是现代 **强化学习（RL）** 的奠基研究者之一：与 Andrew Barto 合著 RL 标准教材、提出 TD learning / eligibili `📅unknown` `[entity_page]`
@@ -2230,9 +2257,11 @@
 - [Roboto Origin（开源人形机器人基线）](wiki/entities/roboto-origin.md) — Roboto Origin（萝博头原型机，RPO）** 是 RoboParty 发布的「全链路开源」人形机器人项目入口，目标不是只给一个仓库，而是提供从硬件到训 `📅unknown` `[entity_page]`
 - [RoboTwin 2.0](wiki/entities/robotwin.md) — RoboTwin 2.0** 是一个专为双臂机器人操作设计的**自动数据生成与仿真平台**。它建立在 SAPIEN (仿真引擎) 仿真引擎之上，旨在解决具身智能（Em `📅unknown` `[entity_page]`
 - [ros2_control](wiki/entities/ros2-control.md) — ros2_control](https://github.com/ros-controls/ros2_control) 收录于具身智能研究室 [开源项目主表](https://github.com/ `📅unknown` `[entity_page]`
+- [RS-Mamba](wiki/entities/rs-mamba.md) — RS-Mamba 面向遥感图像的 Mamba 骨干/任务模型，处理大幅面遥感场景下的长程空间依赖与高效推理。 `📅unknown` `[entity_page]`
 - [RTAB-Map](wiki/entities/rtabmap.md) — RTAB-Map** 以 **记忆管理（WM）** 处理长期建图与闭环，一套工具链覆盖采集到导航。 `📅unknown` `[entity_page]`
 - [RUKA-v2 Hand](wiki/entities/ruka-v2-hand.md) — RUKA-v2** 是纽约大学团队发布的 **全硬件、全软件、全文档开源** 腱驱动仿人灵巧手：在 [RUKA v1](./paper-notebook-ruka-rethinking-the-d `📅unknown` `[entity_page]`
 - [RunPod](wiki/entities/runpod.md) — RunPod**（runpod.io）提供 **GPU Pods**（Docker 容器）、**Serverless GPU** 与 **Net `📅unknown` `[entity_page]`
+- [Sa2VA](wiki/entities/sa2va.md) — Sa2VA**（*Marrying SAM2 with LLaVA*，arXiv:2501.04001）把 **SAM 2 `📅unknown` `[entity_page]`
 - [SAGE（Sim2Real Actuator Gap Estimator）](wiki/entities/sage-sim2real-actuator-gap-estimator.md) — SAGE** 是面向 **关节运动执行器层** 的 sim2real 度量工具链：同一组参考轨迹分别在 **Isaac Sim 仿真** 与 **真实机器人** 上执行，对齐日志格式后做 **统计 `📅unknown` `[entity_page]`
 - [SAM 3D Body（3DB）](wiki/entities/sam-3d-body.md) — SAM 3D Body（3DB）**（arXiv:2602.15989，Meta Superintelligence Labs）是 **SAM 3D** 产品线中的 **人体支路**：从 **单张 `📅unknown` `[entity_page]`
 - [SAM3DBody-cpp](wiki/entities/sam3dbody-cpp.md) — SAM3DBody-cpp**（AmmarkoV/SAM3DBody-cpp）是 [SAM 3D Body `📅unknown` `[entity_page]`
@@ -2240,9 +2269,13 @@
 - [sbto（DynaRetarget SBTO 官方实现）](wiki/entities/sbto.md) — sbto**（<https://github.com/Atarilab/sbto>，MIT）是 [DynaRetarget](./paper-notebook-dynaretarget-dynam `📅unknown` `[entity_page]`
 - [SceneVerse++](wiki/entities/sceneverse-pp.md) — SceneVerse++** 是一套面向 **3D 场景理解** 的互联网级训练数据：从海量无标注网络视频中重建相机位姿与稠密几何，再自动生成实例级分割与高层语义标注（含空间问答与导航指令），用于 `📅unknown` `[entity_page]`
 - [ScheduleStream](wiki/entities/schedulestream.md) — ScheduleStream**（项目页 · [NVlabs/schedulestream](https://github `📅unknown` `[entity_page]`
+- [SEEM（Segment Everything Everywhere All at Once）](wiki/entities/seem.md) — SEEM** 用统一的解码接口消费 **多种提示**（点、框、涂鸦、文本、参照实体等），在一张图上做开放词汇、交互式与全景式分割。 `📅unknown` `[entity_page]`
+- [SegFormer](wiki/entities/segformer.md) — SegFormer** 结合 **分层高效 Transformer 编码器** 与 **极简 MLP 解码器**，在无pe、无重型解码头的情况下达到强语义分割精度与良好推理效率。 `📅unknown` `[entity_page]`
 - [SenseNova-Skills（OpenSenseNova）](wiki/entities/sensenova-skills.md) — SenseNova-Skills** 是 [OpenSenseNova/SenseNova-Skills](https://github.com/OpenSenseNova/SenseNova-S `📅unknown` `[entity_page]`
 - [SenseNova-U1.5（Preview · NEO-unify）](wiki/entities/sensenova-u1-5.md) — SenseNova-U1.5-8B-MoT (Preview)**（商汤科技，`2026-07-31`，[GitHub](h `📅unknown` `[entity_page]`
+- [SETR（SEgmentation TRansformer）](wiki/entities/setr.md) — SETR** 以 **ViT 编码器** 提取全局 patch 表示，再用渐进上采样或多级聚合解码器输出语义分割图，是 Transformer 进入密集预测的早期代表。 `📅unknown` `[entity_page]`
 - [Shadow Hand (灵巧手)](wiki/entities/shadow-hand.md) — Shadow Hand** 由英国 Shadow Robot Company 开发，是目前世界上最接近人类手部功能的灵巧手平台之一。它拥有 5 根手指和 20 个主动驱动关节（总计 24 个自由度 `📅unknown` `[entity_page]`
+- [SIDA（Social Media Image Detection Assistant）](wiki/entities/sida.md) — SIDA** 是面向社交媒体图像的 **伪造检测 + 篡改定位 + 文字解释** 多模态助手：在 VLM 词表中引入特殊 token，同时输出真伪类别、篡改掩码与判定理由。 `📅unknown` `[entity_page]`
 - [SimpleFOC（Arduino-FOC 生态）](wiki/entities/simplefoc.md) — SimpleFOC** 指围绕 Arduino-FOC 库形成的开源项目：跨 MCU 的 **磁场定向控制 `📅unknown` `[entity_page]`
 - [SimToolReal](wiki/entities/simtoolreal.md) — SimToolReal](https://github.com/tylerlum/simtoolreal) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXi `📅unknown` `[entity_page]`
 - [skrl](wiki/entities/skrl.md) — skrl](https://github.com/Toni-SM/skrl) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-m `📅unknown` `[entity_page]`
@@ -2275,8 +2308,11 @@
 - [Tinkercad](wiki/entities/tinkercad.md) — Tinkercad**（tinkercad.com）是 **Autodesk** 提供的 **免费 Web 应用**：在同一账号与课堂体 `📅unknown` `[entity_page]`
 - [Tinymovr（紧凑开源关节驱动）](wiki/entities/tinymovr.md) — Tinymovr**（现属 Motion Layer，仓 [motionlayer/Tinymovr](https://github. `📅unknown` `[entity_page]`
 - [Tnkr](wiki/entities/tnkr.md) — Tnkr**（tnkr.ai）公开定位为 **「robotics 的 GitHub」**：把机器人项目里长期分散的 **机械设计、电气接线、控制软件、现场部 `📅unknown` `[entity_page]`
+- [TNT（Transformer-in-Transformer）](wiki/entities/tnt.md) — TNT** 把每个图像块进一步拆成 **pixel-level token**，用内层 Transformer 建模块内结构，外层 Transformer 建模块间关系，形成「Transforme `📅unknown` `[entity_page]`
 - [TrackerLab](wiki/entities/trackerlab.md) — TrackerLab](https://github.com/Renforce-Dynamics/trackerLab) 收录于具身智能研究室 [开源项目主表](https://github.com `📅unknown` `[entity_page]`
+- [Transformer 视觉应用课程策展](wiki/entities/transformer-cv-curriculum.md) — 把「Transformer 在计算机视觉中的应用」八章大纲落成可交叉引用的知识图：从 **CNN/注意力基础** 走到 **分类·检测·分割·多模态·Mamba·视觉基础模型**，保证截图中每个知识点 `📅unknown` `[entity_page]`
 - [TurtleBot3](wiki/entities/turtlebot3.md) — TurtleBot3** 是 **ROBOTIS** 生态中的 **开源移动机器人** 教育平台：硬件参数、软件栈与仿真入口集中在 **[TurtleBot3 eManual](https://e `📅unknown` `[entity_page]`
+- [U-Mamba](wiki/entities/u-mamba.md) — U-Mamba 在 U-Net 式编解码中嵌入 Mamba 块，增强医学图像分割的长程上下文，对应课程作业相关的医学分割线。 `📅unknown` `[entity_page]`
 - [UKMARSBOT](wiki/entities/ukmarsbot.md) — UKMARSBOT** 是 UK Micromouse and Robotics Society（UKMARS） 发布的 **低成本入门多用途开源机器 `📅unknown` `[entity_page]`
 - [Ultralytics YOLO](wiki/entities/ultralytics.md) — Ultralytics**（ultralytics/ultralytics，文档 [docs.ultra `📅unknown` `[entity_page]`
 - [UnifoLM-VLA-0（unifolm-vla）](wiki/entities/unifolm-vla.md) — UnifoLM-VLA-0** 是 UnifoLM 系列中的 **Vision–Language–Action** 大模型，强调在机器人操作数据上的持续预训练，使模型从视觉–语言理解走向带物理常识 `📅unknown` `[entity_page]`
@@ -2307,11 +2343,15 @@
 - [URKL（Ultimate Robot Knock-out Legend · EngineAI 人形格斗联赛）](wiki/entities/urkl.md) — URKL** 是深圳 **众擎机器人（ENGINEAI）** 发起并主办的 **全尺寸人形机器人格斗联赛**：全球队伍在 **同一 T800 硬件平台** 上比拼 **运控、平衡、感知与战术算法 `📅unknown` `[entity_page]`
 - [Vast.ai](wiki/entities/vast-ai.md) — Vast.ai**（vast.ai）运营 **GPU 算力市场**：分散主机报价，用户按价格、显存、可靠性分数租卡，是国外 **极致低价** 实验路径。 `📅unknown` `[entity_page]`
 - [VESC（开源大电流电机驱动）](wiki/entities/vesc.md) — VESC**（vesc-project.com）是 Benjamin Vedder 发起的开源电机控制器生态：固件仓 [vedderb/b `📅unknown` `[entity_page]`
+- [VGGNet](wiki/entities/vggnet.md) — VGGNet** 证明仅用小尺寸 3×3 卷积反复堆叠即可加深网络并提升 ImageNet 精度，以结构简单换取可迁移的通用特征。 `📅unknown` `[entity_page]`
 - [video-shotcraft（Vincentwei1021/video-shotcraft）](wiki/entities/video-shotcraft.md) — video-shotcraft** 是 [Vincentwei1021/video-shotcraft](https://github.com/Vincentwei1021/video-shotc `📅unknown` `[entity_page]`
+- [VideoMamba](wiki/entities/videomamba.md) — VideoMamba 用状态空间模型做高效视频理解，在长视频上相对 Transformer 降低注意力平方复杂度。 `📅unknown` `[entity_page]`
 - [VideoMimic](wiki/entities/videomimic.md) — VideoMimic**（<https://github.com/hongsukchoi/VideoMimic>，<https://videomimic.github.io/>）实现 **视频驱动 `📅unknown` `[entity_page]`
 - [VINS-Fusion](wiki/entities/vins-fusion.md) — VINS-Fusion** 提供 **滑动窗口优化** 的视觉-惯性里程计与可选 GPS 融合。 `📅unknown` `[entity_page]`
 - [Vision Banana](wiki/entities/vision-banana.md) — Vision Banana**（*Image Generators are Generalist Vision Learners*，arXiv:2604.20329，[项目页](https://v `📅unknown` `[entity_page]`
+- [Vision Mamba（Vim）](wiki/entities/vision-mamba-vim.md) — Vim 将双向 Mamba 扫描引入视觉骨干，以近线性复杂度做图像分类与密集预测，探索无注意力的通用视觉主干。 `📅unknown` `[entity_page]`
 - [VLA SOTA Leaderboard（EvoMind / MINT-SJTU）](wiki/entities/vla-sota-leaderboard.md) — VLA SOTA Leaderboard**（线上站 sota.evomind-tech.com，源码 [MINT-SJTU/E `📅unknown` `[entity_page]`
+- [VMamba](wiki/entities/vmamba.md) — VMamba 提出 2D 选择性扫描（SS2D）等视觉化状态空间模块，构建分层 Visual State Space 骨干，在分类/检测/分割上挑战 ViT。 `📅unknown` `[entity_page]`
 - [Voxgraph](wiki/entities/voxgraph.md) — Voxgraph** 在 **TSDF 子图** 上进行 **位姿图优化**，适合多会话对齐与稠密地图融合。 `📅unknown` `[entity_page]`
 - [WalkTheDog](wiki/entities/walk-the-dog.md) — WalkTheDog**（*Cross-Morphology Motion Alignment via Phase Manifolds*，SIGGRAPH 2024）由 Peizhuo Li 等提 `📅unknown` `[entity_page]`
 - [WaytoAGI（通往 AGI 之路）](wiki/entities/waytoagi.md) — WaytoAGI**（飞书知识库首页 <https://waytoagi.feishu.cn/wiki/QPe5w5g7UisbEkkow8XcDmOpn8e>，官网 <https://www.w `📅unknown` `[entity_page]`
@@ -2369,6 +2409,7 @@
 - [Control Allocation（控制分配）](wiki/concepts/control-allocation.md) — 控制分配**：给定低维 **广义力/ wrench 指令** $w \in \mathbb{R}^m$（如期望合外力/力矩），在冗余执行器映射 $w = B\tau$ 下求执行器输入 $\tau$ `📅unknown` `[wiki_page]`
 - [Control Barrier Function（控制屏障函数）](wiki/concepts/control-barrier-function.md) — 控制屏障函数（Control Barrier Function，CBF）**：一种将系统安全约束转化为可在控制层实时强制执行的数学工具。通过定义一个标量函数 $h(x)$，使得 $h(x) \ge `📅unknown` `[wiki_page]`
 - [控制频率与推理频率解耦](wiki/concepts/control-inference-frequency-decoupling.md) — 控制/推理频率解耦** 让 **慢模型**（策略、VLA、规划）以低频产出动作意图，由 **快控制器**（PD、WBC、阻抗）以高频执行，避免把推理延迟写进力矩周期。 `📅unknown` `[wiki_page]`
+- [卷积神经网络（CNN）](wiki/concepts/convolutional-neural-network.md) — CNN** 用可学习的 **局部卷积核** 在空间上滑窗提取特征，借助 **权值共享** 与 **层次化感受野** 建模图像的平移局部结构，是经典视觉与机器人感知骨干的默认族。 `📅unknown` `[wiki_page]`
 - [Curriculum Learning（课程学习）](wiki/concepts/curriculum-learning.md) — Curriculum Learning 是一种训练策略：在学习早期提供更简单的任务或环境，随着策略能力提升逐渐增加难度，模拟人类"从简单到复杂"的学习过程。 `📅unknown` `[wiki_page]`
 - [Data Flywheel (具身数据飞轮)](wiki/concepts/data-flywheel.md) — 具身数据飞轮 (Data Flywheel)** 指的是机器人学习中通过**自动化闭环**实现数据规模化与性能持续提升的机制。它的核心逻辑是：更强的模型吸引更多场景使用 → 产生更多样化的数据 → `📅unknown` `[wiki_page]`
 - [数据库基础（索引 / 事务 / 锁 / 隔离级别 / 复制 / 分片）](wiki/concepts/database-fundamentals.md) — 数据库基础** 说明如何在机器人研发数据面里 **正确存、正确并发写、正确扩展读**，并明确它不属于力矩闭环路径。 `📅unknown` `[wiki_page]`
@@ -2411,6 +2452,7 @@
 - [人形机器人和橡皮人（教学类比）](wiki/concepts/humanoid-rubber-man-analogy.md) — 飞书 Know-How 子主题 **「人形机器人和橡皮人」** 用直观类比说明：仅在外形上模仿人类的机器人，可能在**质量分布、关节驱动、接触模型**上与真实人体相差甚远，行为更像「可扭曲的橡皮人」— `📅unknown` `[wiki_page]`
 - [人形机器人与其他机器人的区别](wiki/concepts/humanoid-vs-other-robots.md) — 飞书 Know-How「人形机器人与其他机器人的区别」强调：人形不是「自由度更多的机械臂」或「双足版四足」，而是**浮动基 + 间歇接触 + 上身–下肢强耦合** 带来的独特控制问题集合。 `📅unknown` `[wiki_page]`
 - [Hybrid Force-Position Control（力位混合控制）](wiki/concepts/hybrid-force-position-control.md) — 力位混合控制**：把任务空间拆成“该控位置的方向”和“该控力的方向”，让机器人在一个子空间内严格跟踪几何目标，在另一个子空间内稳定施加期望接触力。 `📅unknown` `[wiki_page]`
+- [图像分割任务分类（语义 / 实例 / 全景）](wiki/concepts/image-segmentation-taxonomy.md) — 语义分割**给每个像素一个类别；**实例分割**还要区分同类别不同物体；**全景分割**统一可数 things 与不可数 stuff，输出整图一致的像素–段表示。 `📅unknown` `[wiki_page]`
 - [Impedance Control（阻抗控制）](wiki/concepts/impedance-control.md) — 阻抗控制**：不直接要求机器人“精确走到某个位姿”，而是规定当机器人与环境之间出现位置误差或接触力时，系统应该表现出怎样的 **质量-弹簧-阻尼（Mass-Spring-Damper）** 响应。 `📅unknown` `[wiki_page]`
 - [Implicit / Explicit 执行器建模](wiki/concepts/implicit-explicit-actuator-modeling.md) — 在机器人强化学习里，**implicit** 与 **explicit** 通常指 **仿真执行器（actuator）模型** 如何把策略的高层指令变成关节力矩，而不是指「策略隐式学电机」或「显式地形 `📅unknown` `[wiki_page]`
 - [Joint Friction Models（关节摩擦模型）](wiki/concepts/joint-friction-models.md) — 关节摩擦模型** 描述传动与轴承中 **与速度、负载相关的非线性阻力**，是 URDF 默认参数往往缺失、却强烈影响 **力矩跟踪与 Sim2Real** 的关键项。 `📅unknown` `[wiki_page]`
@@ -2432,8 +2474,11 @@
 - [电机转矩-电流曲线（TI 曲线）](wiki/concepts/motor-torque-current-curve.md) — TI 曲线**（Torque-Current Curve，转矩-电流曲线）描述电机输出转矩与驱动电流之间的关系。对永磁同步电机（PMSM）和无刷电机（BLDC），它在理想区近似直线，斜率即 **力 `📅unknown` `[wiki_page]`
 - [电机转矩-转速曲线（TN 曲线）](wiki/concepts/motor-torque-speed-curve.md) — TN 曲线**（Torque-Speed Curve，转矩-转速曲线）以转速为横轴、输出转矩为纵轴，刻画电机/关节模组在全速域内的力矩能力边界；评估人形或腿足执行器时，它通常是 datasheet `📅unknown` `[wiki_page]`
 - [MPC 与 WBC 集成：人形机器人 locomotion 的典型控制架构](wiki/concepts/mpc-wbc-integration.md) — MPC 负责"大尺度规划"（质心往哪走、落脚点放哪），WBC 负责"全身执行"（怎么协调关节力矩来跟踪 MPC 发出的指令）**——两者分层配合，组成当前人形机器人 locomotion 最主流的 `📅unknown` `[wiki_page]`
+- [多头注意力（Multi-Head Attention）](wiki/concepts/multi-head-attention.md) — Multi-Head Attention（MHA）** 把 Query/Key/Value 投影到 $h$ 个子空间，各自做缩放点积注意力后拼接再投影，使模型在不同表示子空间 **并行关注不同关系 `📅unknown` `[wiki_page]`
+- [多模态基础概念](wiki/concepts/multimodality-basics.md) — 多模态（Multimodality）** 指在同一模型中联合表示并交互 **两种以上感官/符号模态**（常见为视觉+语言），目标是学习跨模态对齐的语义，以支持检索、描述、问答与具身指令跟随。 `📅unknown` `[wiki_page]`
 - [网络协议栈基础（TCP / UDP / HTTP / DNS / TLS / 负载均衡）](wiki/concepts/network-protocol-stack.md) — 网络协议栈基础** 给出机器人研发与部署中最常用的传输/应用层协议角色划分：**哪些适合可靠服务，哪些适合低延迟传感/控制数据**。 `📅unknown` `[wiki_page]`
 - [神经反馈控制器（Neural Feedback Controller）](wiki/concepts/neural-feedback-controller.md) — 神经反馈控制器**：强化学习训练完成后导出的 **策略网络** $\pi_\theta$，在控制论意义上是一个 **非线性状态反馈律** $u_t = \pi(o_t)$——把当前观测映射为关节目 `📅unknown` `[wiki_page]`
+- [目标检测评价指标](wiki/concepts/object-detection-metrics.md) — 以 **IoU** 判定预测框与真值是否匹配，再在各类别上计算精度–召回曲线并汇总为 **mAP**（及 COCO 的 AP@[.5:.95] 等），形成检测器精度的标准报告口径。 `📅unknown` `[wiki_page]`
 - [可观测性（Logs / Metrics / Tracing）](wiki/concepts/observability-logs-metrics-tracing.md) — 可观测性** 让系统在故障时仍能回答「发生了什么、哪里慢、因果链如何」——对云边服务用三支柱，对硬实时环路用轻量指标。 `📅unknown` `[wiki_page]`
 - [Open X-Embodiment（OXE）](wiki/concepts/open-x-embodiment.md) — Open X-Embodiment**：面向机器人模仿学习的大规模跨机构、跨硬件形态数据集与基准管线，把多种机器人的演示统一到可比格式上，用于训练与评测「通用操作策略」。 `📅unknown` `[wiki_page]`
 - [操作系统基础（进程 / 线程 / 内存 / 文件系统 / 调度）](wiki/concepts/operating-system-basics.md) — 操作系统基础** 解释主控板上「谁在跑、何时被抢占、内存如何映射、磁盘 I/O 如何饿死控制线程」——是诊断真机抖动时最先翻的一层。 `📅unknown` `[wiki_page]`
@@ -2468,6 +2513,7 @@
 - [软件安全基础（认证 / 授权 / 密钥 / 供应链）](wiki/concepts/software-security-basics.md) — 软件安全基础** 区分「你是谁 / 你能做什么 / 密钥如何保管 / 构建链是否可信」——覆盖遥操作、OTA、模型仓库与 CI 制品。 `📅unknown` `[wiki_page]`
 - [SRBD + 凸 MPC + WBC](wiki/concepts/srbd-convex-mpc-wbc.md) — 飞书 Know-How 条目 **「单刚体动力学模型 + 凸模型预测控制 + WBC」** 指：用 **SRBD（Single Rigid Body Dynamics）** 近似整机质心运动，在  `📅unknown` `[wiki_page]`
 - [State Estimation](wiki/concepts/state-estimation.md) — State Estimation（状态估计）**：根据传感器观测、机器人模型和历史信息，估计机器人当前最可能真实状态的过程。 `📅unknown` `[wiki_page]`
+- [状态空间模型（SSM）](wiki/concepts/state-space-model-ssm.md) — SSM（State Space Model）** 用隐状态 $h_t$ 与输入 $x_t$ 的线性（或输入依赖的选择性）递推生成输出，可在频域/卷积视图与递推视图间转换；**Mamba** 为其选 `📅unknown` `[wiki_page]`
 - [System Identification](wiki/concepts/system-identification.md) — System Identification（系统辨识 / SysID）**：通过实验数据估计机器人动力学、执行器、摩擦、延迟等模型参数，使模型更接近真实系统的过程。 `📅unknown` `[wiki_page]`
 - [Tactile Sensing（触觉感知）](wiki/concepts/tactile-sensing.md) — 触觉感知 (Tactile Sensing)** 是机器人感知系统中的重要组成部分。如果说视觉（Vision）赋予了机器人远距离和全局的场景理解能力，那么触觉则是机器人与物理世界发生**直接物理交 `📅unknown` `[wiki_page]`
 - [Terrain Adaptation（地形适应）](wiki/concepts/terrain-adaptation.md) — Terrain Adaptation**：让腿式或人形机器人根据地形感知结果，动态调整落脚点、身体姿态、接触时序和控制参数，从而在楼梯、碎石、草地、台阶和坡面上稳定行走。 `📅unknown` `[wiki_page]`
@@ -2484,6 +2530,7 @@
 - [视觉骨干（Vision Backbones）](wiki/concepts/vision-backbones.md) — 视觉骨干**是感知管线中负责从 RGB/深度图提取 **层次化特征** 的神经网络主体；在机器人栈里，它常为 **检测头、策略网络、VLA 视觉塔** 提供可迁移的表征，典型训练路径是 **Ima `📅unknown` `[wiki_page]`
 - [视觉–语言特征融合与语义空间对齐](wiki/concepts/vision-language-feature-fusion.md) — 视觉–语言特征融合** 指将视觉编码器输出与文本编码器（或 LLM 词嵌入）结合，使跨模态信号可在同一任务头下计算相似度、检索或条件生成。**语义空间对齐** 强调训练或投影后，语义相近的图–文对 `📅unknown` `[wiki_page]`
 - [Vision Transformer（ViT，视觉 Transformer）](wiki/concepts/vision-transformer.md) — Vision Transformer（ViT）**：把图像划分为固定尺寸 **图像块（patch）**，将每块视作 **token**，经线性/卷积嵌入与 **可学习位置编码** 后送入 **Tr `📅unknown` `[wiki_page]`
+- [视觉基础模型发展趋势](wiki/concepts/visual-foundation-model-trends.md) — 当代视觉基础模型正沿 **多模态化、规模化、通用接口化、开放词汇化与推理化** 五条趋势演进，从单一任务小模型走向可提示、可组合的通用感知层。 `📅unknown` `[wiki_page]`
 - [视觉表征作为策略输入（Visual Representation for Policy）](wiki/concepts/visual-representation-for-policy.md) — 视觉表征作为策略输入**指：把 视觉骨干 输出的图像特征接入控制/操作策略网络的方式选择——是 **随策略一起从头学**、**冻结一个通用预训练骨 `📅unknown` `[wiki_page]`
 - [视触觉融合（Visuo-Tactile Fusion）](wiki/concepts/visuo-tactile-fusion.md) — 视触觉融合 (Visuo-Tactile Fusion)** 研究如何在一次操作的不同阶段，让机器人在「视觉全局信息」与「触觉局部信息」之间动态切换权重，特别关注**接触瞬间**这一最难的窗口期。 `📅unknown` `[wiki_page]`
 - [轮足四足机器人（四轮足 / Wheel-Legged Quadruped）](wiki/concepts/wheel-legged-quadruped.md) — 轮足四足机器人在四条腿末端集成驱动轮，平地偏滚动效率与能效，崎岖地形仍依赖足式步态；典型量产如 Unitree Go2W / B2W，仿真资产可按 [robot_lab](../entities/ro `📅unknown` `[wiki_page]`
@@ -2519,6 +2566,7 @@
 - [BeyondMimic](wiki/methods/beyondmimic.md) — BeyondMimic** 是由 Hybrid Robotics 等团队开发的高性能机器人动作模仿框架。相比早期的 DeepMimic 或 AMP，BeyondMimic 更侧重于从仿真到真实物理 `📅unknown` `[method_page]`
 - [BFGS（Broyden–Fletcher–Goldfarb–Shanno）](wiki/methods/bfgs.md) — BFGS**：**拟牛顿法** 中最常用的秩-2 更新，维护近似 Hessian 逆 $H_k \approx (\nabla^2 f)^{-1}$，每步方向 $p_k = -H_k \nabla `📅unknown` `[method_page]`
 - [Centroidal NMPC + WBC 栈](wiki/methods/centroidal-nmpc-wbc-stack.md) — 飞书 Know-How 将 **质心动力学模型 + 非线性模型预测控制 + WBC（CD+NMPC+WBC）** 列为传统控制主链的**高保真层**：NMPC 在质心动量/接触力变量上滚动优化，WBC `📅unknown` `[method_page]`
+- [通道与空间注意力（SENet / SE-ResNet / DANet）](wiki/methods/channel-spatial-attention.md) — 在 **CNN 特征图** 上用轻量模块做 **通道重标定**（SENet/SE-ResNet）或 **位置–通道双注意力**（DANet），以较小代价增强判别特征——是 Transformer 自注 `📅unknown` `[method_page]`
 - [Chasing Autonomy Pipeline](wiki/methods/chasing-autonomy-pipeline.md) — Chasing Autonomy Pipeline** 是由加州理工学院和 Unitree 团队（Olkin et al., 2026）提出的一套使人形机器人能够高性能奔跑的系统框架。它有效衔接了 `📅unknown` `[method_page]`
 - [CLAW (宇树 G1 全身动作数据生成管线)](wiki/methods/claw.md) — CLAW** (Composable Language-Annotated Whole-Body Motion Data Generation) 是一种面向人形机器人的模块化数据生成方案。它通过将 `📅unknown` `[method_page]`
 - [CMA-ES（协方差矩阵自适应进化策略）](wiki/methods/cma-es.md) — CMA-ES**（*Covariance Matrix Adaptation Evolution Strategy*）是一种 **无梯度（derivative-free）、黑箱的连续优化算法**。 `📅unknown` `[method_page]`
@@ -2548,6 +2596,7 @@
 - [EgoScale](wiki/methods/egoscale.md) — EgoScale**（NVIDIA GEAR Lab 等，arXiv:2602.16710）研究的是：能否把 **互联网尺度的第 `📅2026-05-17` `[method_page]`
 - [ENPIRE](wiki/methods/enpire.md) — ENPIRE**（NVIDIA GEAR Lab 等，2026）研究的是：能否把 **真机机器人策略开发** 从「人类盯实验 + `📅2026-06-18` `[method_page]`
 - [ExoActor (视频生成驱动的交互式人形控制)](wiki/methods/exoactor.md) — ExoActor** 把"第三人称（exocentric）视频生成"作为人形机器人 **交互动力学的统一接口**：给定任务指令与场景观测，先让大型视频生成模型"想象"出一段任务执行视频，再把视频翻 `📅unknown` `[method_page]`
+- [FCN 全卷积网络](wiki/methods/fcn-semantic-segmentation.md) — FCN 将分类网全连接改为卷积，实现任意尺寸输入的端到端像素级语义分割，是深度语义分割的起点。 `📅unknown` `[method_page]`
 - [Feedback Linearization Control（反馈线性化控制）](wiki/methods/feedback-linearization-control.md) — 反馈线性化：通过状态反馈与坐标变换消去系统非线性，化为可控线性形式后复用 LQR/PID。 `📅unknown` `[method_page]`
 - [FlashSAC](wiki/methods/flashsac.md) — FlashSAC**（arXiv:2604.04539，[项目页](https://holiday-robot.github `📅unknown` `[method_page]`
 - [Fuzzy Logic Control（模糊逻辑控制）](wiki/methods/fuzzy-logic-control.md) — 模糊逻辑控制：将操作经验编码为 If-Then 模糊规则，经模糊推理与去模糊得到控制量，无需精确动力学方程。 `📅unknown` `[method_page]`
@@ -2587,6 +2636,7 @@
 - [LWD（Learning while Deploying）](wiki/methods/lwd.md) — LWD（Learning while Deploying）** 是 AGIBOT Research 在 2026 年提出的**车队级（fleet-scale）offline-to-online 强 `📅unknown` `[method_page]`
 - [Macrodata Egocentric Hand-Action Pipeline](wiki/methods/macrodata-egocentric-hand-action.md) — Macrodata Labs**（[博客 2026-08-06](https://macrodata.co/blog/turning-egocentric-video-into-3d-hand-a `📅unknown` `[method_page]`
 - [Multi-Agent Reinforcement Learning (MARL)](wiki/methods/marl.md) — MARL** 扩展了单智能体 RL，处理多个机器人在同一空间协作或竞争的问题（如机器人足球、多臂流水线）。 `📅unknown` `[method_page]`
+- [Mask R-CNN](wiki/methods/mask-rcnn.md) — Mask R-CNN 在 Faster R-CNN 上增加并行掩码分支与 RoI Align，成为实例分割的长期标准两阶段框架。 `📅unknown` `[method_page]`
 - [mimic-video（Video-Action Model, VAM）](wiki/methods/mimic-video.md) — mimic-video 是一类把互联网规模视频生成模型当作操作语义与物理动力学先验的通用操作策略：先在视频潜空间里形成与语言指令一致的视觉动力学计划，再以流匹配动作头输出机器人动作块。 `📅2026-05-17` `[method_page]`
 - [Model-Based RL（基于模型的强化学习）](wiki/methods/model-based-rl.md) — Model-Based RL（MBRL）**：在强化学习中，智能体显式学习或利用环境的动力学模型，通过在模型中规划或生成虚拟经验来提升样本效率。 `📅unknown` `[method_page]`
 - [Model Predictive Control (MPC，模型预测控制)](wiki/methods/model-predictive-control.md) — 模型预测控制：一种基于滚动时域优化的控制方法，在每个时刻求解一个有限时域的最优控制问题，只执行第一步，然后重复。 `📅unknown` `[method_page]`
@@ -2615,8 +2665,10 @@
 - [Pole Placement Control（极点配置控制）](wiki/methods/pole-placement-control.md) — 人为指定闭环极点位置，直接塑造伺服收敛速度与振荡幅度。 `📅unknown` `[method_page]`
 - [Policy Optimization](wiki/methods/policy-optimization.md) — 策略优化**：通过直接对策略参数做梯度上升或近似优化，使期望累积奖励最大化的一类强化学习方法。 `📅unknown` `[method_page]`
 - [PPO（Proximal Policy Optimization）](wiki/methods/ppo.md) — PPO（近端策略优化）**：用 **clip 代理目标** 限制每次策略更新中新旧策略概率比的偏离幅度，在保持 TRPO 级别更新稳定性的同时，把实现复杂度降到一阶优化器即可训练，是机器人 RL  `📅unknown` `[method_page]`
+- [PSPNet](wiki/methods/pspnet.md) — PSPNet 通过金字塔池化模块聚合多尺度全局上下文，显著提升场景解析类语义分割精度。 `📅unknown` `[method_page]`
 - [QT-Opt](wiki/methods/qt-opt.md) — QT-Opt**：面向视觉输入机械臂抓取的异策深度强化学习框架，用交叉熵方法等近似在连续动作空间上做 Q 学习，并结合长时间运行的真实机器人数据采集闭环。 `📅unknown` `[method_page]`
 - [Quasi-Newton BFGS / L-BFGS（拟牛顿法总览）](wiki/methods/quasi-newton-bfgs.md) — 拟牛顿法**：不显式形成 Hessian，用梯度差分维护近似矩阵。本页为 **总览入口**；各算法细节见独立节点 **BFGS** 与 **[L-BFGS](./l-bf `📅unknown` `[method_page]`
+- [R-CNN 族（R-CNN / Fast R-CNN / Faster R-CNN）](wiki/methods/rcnn-family.md) — 两阶段检测**先产生候选区域，再对区域做分类与框回归；从 R-CNN 的独立 CNN 分类，经 Fast 的共享卷积与 RoI Pooling，到 Faster 的 **RPN** 内生提议，形成 `📅unknown` `[method_page]`
 - [ReActor（物理感知 RL 运动重定向）](wiki/methods/reactor-physics-aware-motion-retargeting.md) — ReActor**（*Reinforcement Learning for Physics-Aware Motion Retargeting*，Müller 等，SIGGRAPH 2026 预印本 `📅2026-05-13` `[method_page]`
 - [Recursive Least Squares Control（RLS 递归最小二乘辨识）](wiki/methods/recursive-least-squares-control.md) — RLS：递推最小化预测误差，在线更新动力学参数估计，为自适应/前馈控制提供参数流。 `📅unknown` `[method_page]`
 - [REGRIND（重定向引导灵巧操作 RL）](wiki/methods/regrind-retargeting-guided-rl.md) — REGRIND**（*A Minimalist Retargeting-Guided Reinforcement Learning Recipe for Dexterous Manipulatio `📅2026-07-16` `[method_page]`
@@ -2628,6 +2680,7 @@
 - [SAC（Soft Actor-Critic）](wiki/methods/sac.md) — SAC（软演员-评论家）**：在标准 RL 目标上叠加 **最大熵正则项**，让策略在完成任务的同时保持尽量高的随机性，配合 **Replay Buffer 的 off-policy 复用** 与 `📅unknown` `[method_page]`
 - [Safe RL（安全强化学习）](wiki/methods/safe-rl.md) — 安全强化学习（Safe Reinforcement Learning, Safe RL）** 是近年来强化学习领域发展最快、在机器人实体部署中最为核心的一个分支。其根本宗旨在于：在智能体（Agen `📅unknown` `[method_page]`
 - [SayCan（Do As I Can）](wiki/methods/saycan.md) — SayCan**：把大型语言模型当作高层任务分解器，把学得的价值函数或成功率估计当作**物理 affordance 过滤器**，两者结合输出当前环境下可执行的指令序列。 `📅unknown` `[method_page]`
+- [SegNet](wiki/methods/segnet.md) — SegNet 用编码器池化索引指导解码器非对称上采样，节省存储的同时恢复边界，是早期高效语义分割架构。 `📅unknown` `[method_page]`
 - [SGD Momentum（动量随机梯度下降）](wiki/methods/sgd-momentum.md) — SGD Momentum**：在 SGD 基础上维护速度向量 $v_t$，将当前梯度与历史速度加权叠加，使参数更新在 **一致梯度方向** 上加速、在 **振荡方向** 上 `📅unknown` `[method_page]`
 - [SGD（Stochastic Gradient Descent）](wiki/methods/sgd.md) — SGD（随机梯度下降）**：用训练集 mini-batch 上估计的梯度 $\hat{g}_t$ 替代全数据精确梯度，按 $\theta_{t+1} = \theta_t - \eta \hat{ `📅unknown` `[method_page]`
 - [骨架动作识别（Skeleton-Based Action Recognition）](wiki/methods/skeleton-action-recognition.md) — 骨架动作识别**：以关节坐标序列（3D/2D 骨架）为输入，识别或描述人体 / 机器人正在执行的动作类别，是模仿学习数据质量和跨形态泛化的重要支撑技术。 `📅unknown` `[method_page]`
@@ -2650,6 +2703,7 @@
 - [Trajectory Optimization（轨迹优化）](wiki/methods/trajectory-optimization.md) — 轨迹优化 (Trajectory Optimization, TO)** 是一种基于动力学模型和约束条件，通过数值非线性规划（NLP）技术来自动搜索最优运动序列的计算方法。在足式机器人领域，不论是 `📅unknown` `[method_page]`
 - [Truncated Newton（截断牛顿 / Newton-CG）](wiki/methods/truncated-newton.md) — 截断牛顿（Truncated Newton）**：每步不求解精确 Newton 方程 $Hp = -g$，而用 [共轭梯度（CG）](./conjugate-gradient-method.md `📅unknown` `[method_page]`
 - [UHAS（Unified Hand Action Space，统一手部动作空间）](wiki/methods/uhas-unified-hand-action-space.md) — UHAS**（Casas 等，arXiv:2607.03570，UT Dallas IRVL / ASU IRIS，RSS 2026 灵巧操作研讨会）提出一种 **球面几何统一动作空间**：策略不 `📅2026-07-11` `[method_page]`
+- [U-Net](wiki/methods/unet.md) — U-Net 以对称编码器–解码器与跳跃连接融合多尺度特征，在医学分割上极成功，并广泛迁移到机器人与工业缺陷分割。 `📅unknown` `[method_page]`
 - [Unified Multimodal Tokens (统一多模态 Token)](wiki/methods/unified-multimodal-tokens.md) — 统一多模态 Token** 是一种先进的具身智能架构设计。它摒弃了为每种感官模态设计专用神经网络分支的传统做法，转而将所有输入（图像、语言、状态、动作）全部转换为格式一致的 Token 序列，并在 `📅unknown` `[method_page]`
 - [Unsupervised Clustering Fault Compensation（无监督聚类故障补偿）](wiki/methods/unsupervised-clustering-fault-compensation.md) — 聚类故障补偿：对运行数据无监督聚类识别工况/磨损模式，切换预存补偿参数，实现被动自适应。 `📅unknown` `[method_page]`
 - [Value-based Reinforcement Learning（基于值函数的强化学习）](wiki/methods/value-based-reinforcement-learning.md) — 值函数 RL：估计状态-动作价值 $Q(s,a)$ 或 $V(s)$，通过贪心或 $\epsilon$-贪心选动作，适合离散控制。 `📅unknown` `[method_page]`
@@ -2755,6 +2809,7 @@
 - [开源机器人力矩电机：电磁设计完整度对比](wiki/comparisons/open-source-torque-motor-em-design.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[comparison_page]`
 - [PPO vs SAC (vs BRRL/BPO)：机器人 RL 算法选型](wiki/comparisons/ppo-vs-sac.md) — 背景**：PPO（Proximal Policy Optimization）和 SAC（Soft Actor-Critic）是机器人 RL 领域最主流的两种连续控制算法。两者都已在真实机器人上取得 `📅unknown` `[comparison_page]`
 - [RL vs 模仿学习（Imitation Learning）](wiki/comparisons/rl-vs-il.md) — RL 和 IL 是机器人策略学习的两条主干路线。两者都在学"策略 $\pi(a|s)$"，但监督信号、数据需求、能达到的行为质量完全不同。 `📅unknown` `[comparison_page]`
+- [RNN vs CNN vs Transformer vs Mamba](wiki/comparisons/rnn-cnn-transformer-mamba.md) — 从 **递推状态（RNN）**、**局部卷积（CNN）**、**全局注意力（Transformer）** 到 **选择性状态空间（Mamba）**，在长程建模能力、训练并行度与推理复杂度三维上做骨干选 `📅unknown` `[comparison_page]`
 - [八大机器人控制体系分类](wiki/comparisons/robot-control-eight-paradigms-taxonomy.md) — 从机器人 **任务规划 → 控制算法 → 伺服执行** 的分层闭环出发，控制算法层可划分为 **八大体系**；前四类侧重 **显式建模**，后四类分别面向 **接触作业、约束优化、数据补偿与自主习得 `📅unknown` `[comparison_page]`
 - [机器人学习五大范式：模仿、强化、视频、多模态与持续学习](wiki/comparisons/robot-learning-five-paradigms-taxonomy.md) — 机器人学习五大范式** 是按 **学习信号来源** 划分的选型框架：示范（IL）、奖励交互（RL）、互联网视频先验（LfV）、视觉–语言–动作统一（VLA）、以及时间维上的能力保持（持续学习）；核 `📅unknown` `[comparison_page]`
 - [机器人顶会顶刊发表渠道对比](wiki/comparisons/robotics-research-venues.md) — 在机器人学习与系统方向投稿或引用时，**会议**（ICRA、IROS、CoRL、RSS）与 **期刊**（T-RO、IJRR、Science Robotics）的 **主办方、审稿节奏、论文集托管 `📅unknown` `[comparison_page]`
@@ -2878,6 +2933,7 @@
 - [运动小脑分类 I：柔顺与接触](wiki/overview/motion-cerebellum-category-09-compliance-contact.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [电机设计流程（规格 → 仿真 → 样机 → 控制）](wiki/overview/motor-design-workflow.md) — 电机设计不是「先画线圈再试转」，而是 **指标驱动、电磁–热–机械耦合迭代**，最终以 **TN/TI 台架曲线 + FOC 电流环** 证明连续与峰值能力都达标。 `📅unknown` `[overview_page]`
 - [电机驱动器底软通信协议总览](wiki/overview/motor-drive-firmware-bus-protocols.md) — 底软通信 = 物理总线 + 应用层帧格式 + 控制模式语义** 三件套；机器人里最常见的是 **CAN 系（私有或 CANopen）** 与 **EtherCAT+CoE**，调试与外设用 **U `📅unknown` `[overview_page]`
+- [多模态 LLM 发展路线](wiki/overview/multimodal-llm-development.md) — 一条从 **图文对比对齐** 到 **冻结大语言模型+视觉接口**、再到 **视觉指令微调与下游接地/分割** 的多模态大模型演进路线图，对应课程 5.1.3–6.2。 `📅unknown` `[overview_page]`
 - [多旋翼仿真—规划—飞控开源栈总览](wiki/overview/multirotor-simulation-planning-control-stack.md) — 飞控与通信** 分两支：**自主导航 / 研究** 以 PX4 + MAVSDK  `📅unknown` `[overview_page]`
 - [导航·SLAM·自动驾驶开源栈总览](wiki/overview/navigation-slam-autonomy-stack.md) — ROS 2 导航闭环** 以 Navigation2 为中枢，上游接 **2D SLAM**（[slam_toolbox](https: `📅unknown` `[overview_page]`
 - [市面知名机器人平台纵览](wiki/overview/notable-commercial-robot-platforms.md) — 本页回答：**除了少数明星项目外，产业与新闻里还经常出现哪些人形、四足与腿足平台**，它们大致属于哪条技术–商业路线，以及在本知识库里应去哪里深挖。 `📅unknown` `[overview_page]`
