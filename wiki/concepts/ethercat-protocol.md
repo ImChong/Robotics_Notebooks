@@ -51,6 +51,7 @@ summary: "EtherCAT 协议基础：介绍了这款基于以太网的高性能工�
 - **协议栈**：
   - **CoE (CANopen over EtherCAT)**：最主流的应用层协议。
   - **开源主站**：用户态以 [SOEM](../entities/soem.md) 最常见；量产内核路径见 [主站优化指南](../queries/ethercat-master-optimization.md) 中的 IgH。
+- **与 CAN FD 分层**：量产人形常把 EtherCAT 作**主干**（大功率关节 + 视觉），末端灵巧手/轻载关节/传感走 [CAN FD](./can-fd.md) 分支——见 [选型对比·分层读法](../comparisons/can-vs-ethercat-joint-bus.md)。
 
 ## 关联页面
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 本页处于驱动链 **④层 实时总线闭环集成**（总线周期 ≠ 闭环带宽、抖动确定性）
@@ -58,6 +59,7 @@ summary: "EtherCAT 协议基础：介绍了这款基于以太网的高性能工�
 - [电机驱动器底软通信协议总览](../overview/motor-drive-firmware-bus-protocols.md)
 - [CAN vs EtherCAT：关节总线选型](../comparisons/can-vs-ethercat-joint-bus.md)
 - [CAN 总线（经典）](./can-bus-protocol.md)
+- [CAN FD](./can-fd.md)
 - [EtherCAT 主站优化指南](../queries/ethercat-master-optimization.md)
 - [EtherCAT vs EtherNet/IP（工业总线选型对比）](../comparisons/ethercat-vs-ethernet-ip.md)
 - [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)
@@ -68,3 +70,4 @@ summary: "EtherCAT 协议基础：介绍了这款基于以太网的高性能工�
 - EtherCAT Technology Group (ETG) 官方白皮书。
 - [sources/repos/soem.md](../../sources/repos/soem.md)
 - [sources/sites/openethercatsociety-github-io.md](../../sources/sites/openethercatsociety-github-io.md)
+- [微信：CAN/CAN FD 到人形底层总线](../../sources/blogs/wechat_ai_explore_yao_can_canfd_humanoid_bus.md)
