@@ -1192,7 +1192,7 @@ button.home-wiki-heatmap-cell.is-active {
 .home-wiki-heatmap-legend .home-wiki-heatmap-cell { width: 12px; height: 12px; flex-shrink: 0; }
 .home-wiki-heatmap-legend-hint { margin-right: auto; }
 .home-wiki-heatmap-clear { margin-left: 8px; vertical-align: middle; }
-/* 更新记录：只看新增节点 */
+/* 更新记录：默认仅新增；按钮切换显示维护节点 */
 .updates-filter-bar {
   display: flex;
   flex-wrap: wrap;
