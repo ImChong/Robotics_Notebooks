@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, sjtu]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-12
 arxiv: "2502.20390"
 venue: "2025 · CVPR"
 code: https://github.com/Sirui-Xu/InterMimic
@@ -12,10 +12,12 @@ related:
   - ../concepts/behavior-foundation-model.md
   - ../overview/bfm-41-papers-technology-map.md
   - ../overview/bfm-category-02-goal-conditioned-learning.md
+  - ./paper-lucid.md
 sources:
   - ../../sources/papers/bfm_awesome_intermimic_arxiv_2502_20390.md
   - ../../sources/papers/bfm_awesome_41_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
+  - ../../sources/papers/lucid_arxiv_2608_07746.md
 ---
 
 # InterMimic

@@ -9,7 +9,7 @@ tags:
   - model-based-rl
   - latent-imagination
 status: complete
-updated: 2026-08-11
+updated: 2026-08-12
 arxiv: "2301.04104"
 venue: Nature
 related:
@@ -27,6 +27,7 @@ related:
   - ./paper-td-mpc2.md
   - ./paper-unisim.md
   - ./paper-online-mbrl-robot-control.md
+  - ./paper-lucid.md
 sources:
   - ../../sources/papers/shenlan_wm_survey_13_dreamerv3.md
   - ../../sources/papers/shenlan_world_models_15_reference_catalog.md
@@ -35,6 +36,7 @@ sources:
   - ../../sources/repos/danijar-dreamerv3.md
   - ../../sources/repos/open-dreamer.md
   - ../../sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md
+  - ../../sources/papers/lucid_arxiv_2608_07746.md
 summary: "DreamerV3（Hafner et al.，arXiv:2301.04104，Nature）：RSSM 世界模型 + 潜空间想象中的 actor-critic；单一超参掌握 150+ 任务；公开 JAX 复现 danijar/dreamerv3，后继见 Open Dreamer（Dreamer 4）。"
 code: https://github.com/danijar/dreamerv3
 ---

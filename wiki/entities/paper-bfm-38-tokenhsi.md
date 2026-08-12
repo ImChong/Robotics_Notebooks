@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, nus]
 status: complete
-updated: 2026-06-25
+updated: 2026-08-12
 arxiv: "2503.19901"
 venue: "2025 · CVPR"
 code: https://github.com/liangpan99/TokenHSI
@@ -13,10 +13,12 @@ related:
   - ../overview/bfm-41-papers-technology-map.md
   - ../overview/bfm-category-05-hierarchical-control.md
   - ./paper-coins-compositional-human-scene-interaction.md
+  - ./paper-lucid.md
 sources:
   - ../../sources/papers/bfm_awesome_tokenhsi_arxiv_2503_19901.md
   - ../../sources/papers/bfm_awesome_41_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
+  - ../../sources/papers/lucid_arxiv_2608_07746.md
 ---
 
 # Tokenhsi

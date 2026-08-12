@@ -3,7 +3,7 @@
 type: method
 tags: [hierarchical-control, embedding, gan, xbpeng, paper, bfm, behavior-foundation-model, awesome-bfm-papers, nvidia]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-12
 code: https://github.com/nv-tlabs/ASE
 venue: "2022 · TOG"
 arxiv: "2205.01906"
@@ -16,11 +16,13 @@ related:
   - ../entities/mimickit.md
   - ./smp.md
   - ../entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md
+  - ../entities/paper-lucid.md
 sources:
   - ../../sources/papers/ase.md
   - ../../sources/papers/bfm_awesome_ase_arxiv_2205_01906.md
   - ../../sources/papers/bfm_awesome_41_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
+  - ../../sources/papers/lucid_arxiv_2608_07746.md
 summary: "ASE (Adversarial Skill Embeddings) 通过对抗学习在潜空间中压缩动作风格，实现层次化控制与复杂任务组合。"
 ---
 
@@ -69,6 +71,10 @@ summary: "ASE (Adversarial Skill Embeddings) 通过对抗学习在潜空间中�
 
 [GPC](../entities/paper-gpc-generative-pretrained-controllers.md)（SIGGRAPH 2026，Peng 组）代表 **离散 FSQ token + GPT 式自回归** 路线：用 **端到端 RL** 学运动词汇表，再在 **>600 h** 数据上预训练生成式控制器，以 **CoLA** 微调下游任务。相对 ASE 的 **连续对抗潜空间**，GPC 强调规避连续流形 **mode collapse**，并在下游保留 **随机行为多样性**（论文对比 CVAE 任务控制器）。二者同属 **可复用运动先验**，但 GPC 面向 **物理角色动画仿真**，ASE 更常作 **层次 RL 低层技能库**。
 
+## 与 LUCID 的对照
+
+[LUCID](../entities/paper-lucid.md)（arXiv:2608.07746）继承 ASE 式对抗 LLC，但把无结构超球面先验换成 **语义 skill-anchor + within-skill 变分**，并在冻结 LLC 之上用 **macro-dynamics 世界模型想象** 训练 HLC，面向长时程多物体重排。读法：ASE 解决「可复用技能嵌入」；LUCID 追问「技能接口如何对齐任务相位，以及高层如何预测技能后果」。
+
 ## 源码运行时序图
 
 官方实现 [nv-tlabs/ASE](https://github.com/nv-tlabs/ASE)（Isaac Gym）：`ase/run.py` 统一入口，先训低层技能嵌入（如 `HumanoidAMPGetup`），再接高层任务（如 `HumanoidHeading`）并加载 LLC checkpoint；`--test` 做可视化回放。运动数据在 `ase/data/motions`，重定向可用 `ase/poselib/retarget_motion.py`。一次完整运行如下（命令以仓库 README 为准）：
@@ -109,6 +115,7 @@ sequenceDiagram
 - [GPC（Generative Pretrained Controllers）](../entities/paper-gpc-generative-pretrained-controllers.md) — 离散 token 生成式预训练对照
 - [Table Tennis Strategy & Skill Learning](./table-tennis-strategy-skill-learning.md) — 五路 ASE 专家 + mixer 体育案例
 - [SkillMimic](../entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md) — 基于 ASE/PhysHOI 的统一 HOI 篮球技能模仿 + HLC（CVPR 2025 Highlight）
+- [LUCID](../entities/paper-lucid.md) — 结构化 latent LLC + 技能级世界模型想象 HLC（长时程重排）
 - [protomotions](../entities/protomotions.md) — 提供大规模并行训练支持。
 - [amp-reward](amp-reward.md) — ASE 沿用了 AMP 的判别器结构。
 - [mimickit](../entities/mimickit.md) — 核心集成框架。
@@ -116,5 +123,6 @@ sequenceDiagram
 
 ## 参考来源
 - [sources/papers/ase.md](../../sources/papers/ase.md)
+- [lucid_arxiv_2608_07746.md](../../sources/papers/lucid_arxiv_2608_07746.md) — LUCID 对 ASE 式 LLC 的结构化 latent / 想象 HLC 延伸
 - 论文：<https://arxiv.org/abs/2205.01906>
 
