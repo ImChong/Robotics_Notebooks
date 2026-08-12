@@ -1,13 +1,67 @@
 {
   "generated_at": "2026-08-12",
   "node_count": 3007,
-  "edge_count": 26147,
+  "edge_count": 26148,
   "coverage": {
     "covered": 2983,
     "total": 2983,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/can-fd.md",
+      "detail_id": "wiki-concepts-can-fd",
+      "label": "CAN FD（Flexible Data Rate）",
+      "type": "concept",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/comparisons/can-vs-ethercat-joint-bus.md",
+      "detail_id": "wiki-comparisons-can-vs-ethercat-joint-bus",
+      "label": "CAN / CAN FD vs EtherCAT vs UART·RS485（关节与现场总线选型）",
+      "type": "comparison",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/overview/motor-drive-firmware-bus-protocols.md",
+      "detail_id": "wiki-overview-motor-drive-firmware-bus-protocols",
+      "label": "电机驱动器底软通信协议总览",
+      "type": "overview",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/concepts/can-bus-protocol.md",
+      "detail_id": "wiki-concepts-can-bus-protocol",
+      "label": "CAN 总线（经典 CAN / CAN 2.0）",
+      "type": "concept",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
+    {
+      "path": "wiki/concepts/ethercat-protocol.md",
+      "detail_id": "wiki-concepts-ethercat-protocol",
+      "label": "EtherCAT 协议基础",
+      "type": "concept",
+      "recency": "2026-08-12",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
+    },
     {
       "path": "wiki/entities/paper-xpolicylab.md",
       "detail_id": "entity-paper-xpolicylab",
@@ -42,43 +96,10 @@
       "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
     },
     {
-      "path": "wiki/concepts/ethercat-protocol.md",
-      "detail_id": "wiki-concepts-ethercat-protocol",
-      "label": "EtherCAT 协议基础",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/comparisons/can-vs-ethercat-joint-bus.md",
-      "detail_id": "wiki-comparisons-can-vs-ethercat-joint-bus",
-      "label": "CAN / CAN FD vs EtherCAT vs UART·RS485（关节与现场总线选型）",
-      "type": "comparison",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
       "path": "wiki/comparisons/ethercat-vs-ethernet-ip.md",
       "detail_id": "wiki-comparisons-ethercat-vs-ethernet-ip",
       "label": "EtherCAT vs EtherNet/IP（工业总线选型对比）",
       "type": "comparison",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/overview/motor-drive-firmware-bus-protocols.md",
-      "detail_id": "wiki-overview-motor-drive-firmware-bus-protocols",
-      "label": "电机驱动器底软通信协议总览",
-      "type": "overview",
       "recency": "2026-08-12",
       "source": "log.md",
       "action": "maintained",
@@ -105,27 +126,6 @@
       "source": "log.md",
       "action": "maintained",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/concepts/can-bus-protocol.md",
-      "detail_id": "wiki-concepts-can-bus-protocol",
-      "label": "CAN 总线（经典 CAN / CAN 2.0）",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
-    },
-    {
-      "path": "wiki/concepts/can-fd.md",
-      "detail_id": "wiki-concepts-can-fd",
-      "label": "CAN FD（Flexible Data Rate）",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
     },
     {
       "path": "wiki/entities/paper-effective-degree.md",
@@ -225,15 +225,14 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-xpolicylab.md",
-    "detail_id": "entity-paper-xpolicylab",
-    "label": "XPolicyLab（统一策略评测部署标准 · arXiv:2608.09892）",
-    "type": "entity",
+    "path": "wiki/concepts/can-fd.md",
+    "detail_id": "wiki-concepts-can-fd",
+    "label": "CAN FD（Flexible Data Rate）",
+    "type": "concept",
     "recency": "2026-08-12",
     "source": "log.md",
-    "action": "added",
-    "has_repo": true,
-    "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    "action": "maintained",
+    "community_label": "整机硬件设计纵深路线（Humanoid Whole-Machine Hardware Design Deep-Dive Roadmap） 社区"
   },
   "top_communities": [
     {

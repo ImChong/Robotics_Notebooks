@@ -1,3 +1,11 @@
+## [2026-08-12] ingest | sources/blogs/wechat_ai_explore_yao_can_canfd_humanoid_bus.md — 接入 CAN/CAN FD 人形分层总线科普；补充 wiki/concepts/can-fd.md、can-bus-protocol.md、ethercat-protocol.md、wiki/comparisons/can-vs-ethercat-joint-bus.md、wiki/overview/motor-drive-firmware-bus-protocols.md
+
+- **触发：** 用户指定 <https://mp.weixin.qq.com/s/UvjlH1bCsZwNHC2_z12cBg>；要求确保 agent-reach 已装并自动合并
+- **工具：** Agent Reach v1.5.0 + wechat-article-for-ai（Camoufox）；短链直连成功
+- **来源：** [`sources/blogs/wechat_ai_explore_yao_can_canfd_humanoid_bus.md`](sources/blogs/wechat_ai_explore_yao_can_canfd_humanoid_bus.md)；原始落盘 [`sources/raw/wechat_ai_explore_yao_can_canfd_humanoid_bus_2026-07-20.md`](sources/raw/wechat_ai_explore_yao_can_canfd_humanoid_bus_2026-07-20.md)
+- **开源核查（步骤 2.5）：** 无独立项目页 / 配套仓（科普综述）
+- **交叉：** [`wiki/concepts/can-fd.md`](wiki/concepts/can-fd.md)（主补充：人形末端分支场景 + 分层图）、[`wiki/concepts/can-bus-protocol.md`](wiki/concepts/can-bus-protocol.md)、[`wiki/concepts/ethercat-protocol.md`](wiki/concepts/ethercat-protocol.md)、[`wiki/comparisons/can-vs-ethercat-joint-bus.md`](wiki/comparisons/can-vs-ethercat-joint-bus.md)、[`wiki/overview/motor-drive-firmware-bus-protocols.md`](wiki/overview/motor-drive-firmware-bus-protocols.md)
+
 ## [2026-08-12] structural | wiki/entities/paper-xpolicylab.md — 修复源码运行时序图 Mermaid：消息内 ASCII 分号导致 sequenceDiagram 解析失败
 
 - **触发：** 用户反馈 <https://imchong.github.io/Robotics_Notebooks/detail.html?id=entity-paper-xpolicylab> Mermaid 格式问题；要求自动合并

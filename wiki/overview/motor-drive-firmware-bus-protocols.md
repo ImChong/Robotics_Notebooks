@@ -33,7 +33,8 @@ sources:
   - ../../sources/sites/cia_can_knowledge_can_classic_and_hs.md
   - ../../sources/sites/cia_can_fd_basic_idea.md
   - ../../sources/sites/cia_dronecan_uavcan.md
-summary: "主控与关节驱动器底软之间的通信协议总览：按物理总线 × 应用协议 × 控制语义三层拆解，对比 CANopen/CiA402、CoE、厂商私有 CAN、MIT 紧凑帧、DroneCAN、Modbus 等的优缺点与机器人常见组合。"
+  - ../../sources/blogs/wechat_ai_explore_yao_can_canfd_humanoid_bus.md
+summary: "主控与关节驱动器底软之间的通信协议总览：按物理总线 × 应用协议 × 控制语义三层拆解，对比 CANopen/CiA402、CoE、厂商私有 CAN、MIT 紧凑帧、DroneCAN、Modbus 等；含人形 EtherCAT 主干 + CAN FD 末端分支组合。"
 ---
 
 # 电机驱动器底软通信协议总览
@@ -145,10 +146,14 @@ flowchart TB
    L1 EtherCAT → L2 **CoE（CANopen 对象）** → L3 同 402 或厂商扩展对象  
    主控侧：[SOEM](../entities/soem.md) / IgH + PREEMPT_RT（科研原型优先 SOEM；量产抖动极限见 [主站优化](../queries/ethercat-master-optimization.md)）。
 
-4. **无人机系外设接到地面机器人**  
+4. **量产人形分层（主干 + 末端分支）**  
+   **主干** L1 EtherCAT → 大功率髋膝与视觉；**末端** L1 [CAN FD](../concepts/can-fd.md) → 灵巧手、轻载关节、分布式传感、BMS/STO（经网关或独立控制器）。  
+   读法见 [CAN vs EtherCAT 分层节](../comparisons/can-vs-ethercat-joint-bus.md) 与 [公众号归档](../../sources/blogs/wechat_ai_explore_yao_can_canfd_humanoid_bus.md)。
+
+5. **无人机系外设接到地面机器人**  
    L1 CAN FD → L2 **DroneCAN** → 与关节 CANopen **分总线** 或网关隔离。
 
-5. **Bring-up 阶段**  
+6. **Bring-up 阶段**  
    L1 UART → 标定、读版本、产测；**不替代** 关节闭环总线。无硬件时可先用 [Wokwi](../entities/wokwi.md) 等 **MCU 外设仿真** 做 I2C/UART/PWM 冒烟，再焊板联调；纯 Arduino/micro:bit 课堂入门亦可用 [Tinkercad](../entities/tinkercad.md) Circuits。
 
 ## 选型决策（简图）
@@ -210,6 +215,7 @@ flowchart TD
 - [CanFestival 仓库归档](../../sources/repos/canfestival.md)
 - [SOEM 项目页](../../sources/sites/openethercatsociety-github-io.md)
 - [SOEM 仓库归档](../../sources/repos/soem.md)
+- [微信：CAN/CAN FD 到人形底层总线](../../sources/blogs/wechat_ai_explore_yao_can_canfd_humanoid_bus.md)
 
 ## 推荐继续阅读
 

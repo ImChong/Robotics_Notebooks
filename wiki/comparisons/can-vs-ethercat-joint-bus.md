@@ -19,7 +19,8 @@ sources:
   - ../../sources/sites/canfestival-org.md
   - ../../sources/repos/soem.md
   - ../../sources/courses/uart_rs485_serial_embedded.md
-summary: "腿式与人形关节反馈选型：经典 CAN/CAN FD、EtherCAT 与 UART/RS485 在带宽、拓扑、成本、生态与硬实时上的对照，帮助判断何时从 CAN 升级到 EtherCAT 或保留串口作调试与外设。"
+  - ../../sources/blogs/wechat_ai_explore_yao_can_canfd_humanoid_bus.md
+summary: "腿式与人形关节反馈选型：经典 CAN/CAN FD、EtherCAT 与 UART/RS485 在带宽、拓扑、成本、生态与硬实时上的对照；人形常见「EtherCAT 主干 + CAN FD 末端分支」分层读法。"
 ---
 
 # CAN / CAN FD vs EtherCAT vs UART·RS485（关节与现场总线选型）
@@ -67,6 +68,18 @@ summary: "腿式与人形关节反馈选型：经典 CAN/CAN FD、EtherCAT 与 U
 
 - 现有 **CAN 布线/驱动器** 可固件升级 FD，希望 **减少换栈成本**。
 - 轴数中等（例如 ≤12–20），FD 组帧后总线裕量足够。
+- **人形末端域**：灵巧手、腕/颈/踝轻载关节、足底力/IMU 等无图像大数据、腔体放不下 ESC——用 CAN FD 分支，主干仍 EtherCAT（见下节）。
+
+## 人形分层读法：EtherCAT 主干 + CAN FD 分支
+
+不必把整机做成「纯 CAN」或「纯 EtherCAT」二选一。第三方综述归纳的量产人形常见分层：
+
+| 域 | 总线 | 典型负载 |
+|----|------|----------|
+| 主干 | EtherCAT | 髋/膝大功率关节、视觉/图像 |
+| 末端分支 | CAN FD | 五指手、轻载关节、分布式传感、BMS/STO、诊断 OTA |
+
+相对 TTL 串口：共线 + 硬件仲裁 + 差分抗干扰；相对经典 CAN：64 B 少分包；相对全机 EtherCAT：末端省 ESC 与布线复杂度。细节与可信度边界见 [CAN FD 工程实践](../concepts/can-fd.md) 与 [公众号归档](../../sources/blogs/wechat_ai_explore_yao_can_canfd_humanoid_bus.md)。
 
 ## UART/RS485 的正确定位
 
@@ -79,6 +92,7 @@ summary: "腿式与人形关节反馈选型：经典 CAN/CAN FD、EtherCAT 与 U
 |------|----------|
 | USB2CAN 等于板载 CAN 实时性 | USB 主机调度引入抖动，宜仅用于标定与非实时命令 |
 | CAN FD 自动解决所有轴数问题 | 仲裁段仍 1 Mbit/s 级，极高轴数仍可能撞 EtherCAT |
+| 人形只能二选一总线 | 常见是 EtherCAT 主干 + CAN FD 末端分支，按域切分 |
 | RS485 拉长即可替代 CAN | 无硬件仲裁与标准化错误处理，协议设计负担重 |
 
 ## 关联页面
@@ -100,6 +114,7 @@ summary: "腿式与人形关节反馈选型：经典 CAN/CAN FD、EtherCAT 与 U
 - [CanFestival 官网](../../sources/sites/canfestival-org.md)
 - [SOEM 仓库归档](../../sources/repos/soem.md)
 - [UART / RS-485 入门](../../sources/courses/uart_rs485_serial_embedded.md)
+- [微信：CAN/CAN FD 到人形底层总线](../../sources/blogs/wechat_ai_explore_yao_can_canfd_humanoid_bus.md)
 
 ## 推荐继续阅读
 
