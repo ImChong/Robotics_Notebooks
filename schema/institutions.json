@@ -541,6 +541,14 @@
         "hit"
       ]
     },
+    "hitsz": {
+      "label": "哈尔滨工业大学深圳（Harbin Institute of Technology, Shenzhen）",
+      "aliases": [
+        "hitsz",
+        "hit-shenzhen",
+        "harbin-institute-of-technology-shenzhen"
+      ]
+    },
     "heu": {
       "label": "哈尔滨工程大学（HEU）",
       "aliases": [

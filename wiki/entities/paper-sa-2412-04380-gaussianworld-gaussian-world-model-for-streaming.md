@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-08-13
 arxiv: "2412.04380"
 venue: "arXiv 2024"
 code: https://github.com/zuosc19/GaussianWorld
@@ -14,6 +14,7 @@ related:
   - ../methods/model-based-rl.md
   - ../tasks/manipulation.md
   - ../tasks/locomotion.md
+  - ./paper-occanyscene.md
 sources:
   - ../../sources/papers/sun_awesome_wm_2412_04380_gaussianworld-gaussian-world-model-for-s.md
   - ../../sources/papers/sun_awesome_wm_catalog.md
@@ -91,6 +92,7 @@ Gaussian world model for streaming 3D occupancy prediction.
 - 列表实体：[Awesome World Models](../entities/awesome-world-models.md)
 - 技术地图：[Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)
 - 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+- 跨室内外前馈占据对照：[OccAnyScene](./paper-occanyscene.md)
 
 ## 参考来源
 
