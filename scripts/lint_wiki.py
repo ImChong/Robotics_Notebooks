@@ -65,6 +65,35 @@ STALE_CLAIM_PATTERNS = [
     r"最新",
 ]
 
+# 陈旧声明巡检的误报豁免：命中绝对化措辞不等于本页在下时效性断言。以下三类是
+# 结构性误报，按命中处的上下文豁免，避免为迁就正则去改写本就正确的正文：
+#   1) 否定语境：「这是部署证据，不是策略 SoTA」「不要把它读成又一个 SoTA」等
+#      辟谣式写法，本身就在否认该断言；
+#   2) 库内页面名：「VLA SOTA Leaderboard」是 entities/vla-sota-leaderboard.md 的
+#      页面标题，正文引用它属导航，不是本页断言；
+#   3) 运行时对象：「服务端只保留最新 pending 帧」「取最新状态」描述系统行为，
+#      不会随领域进展过时。
+STALE_CLAIM_NEGATION_CUES: tuple[str, ...] = (
+    "不是",
+    "并非",
+    "不算",
+    "称不上",
+    "不要",
+    "而非",
+    "不应",
+    "未必",
+    "勿",
+)
+# 命中词前回看的字符数（并限制在同一句内：遇句末标点/换行即截断）
+STALE_CLAIM_NEGATION_WINDOW = 30
+STALE_CLAIM_SENTENCE_BREAKS = "。！？；\n"
+# 「最新」后紧跟的运行时对象名词；中间允许夹一段英文/数字标识（如「最新 pending 帧」）
+STALE_CLAIM_RUNTIME_OBJECT_RE = re.compile(
+    r"[\sA-Za-z0-9_./-]{0,16}(?:帧|状态|观测|位姿|数据|快照|消息|指令|读数)"
+)
+# 命中词所在的「英文/数字/空格/连字符」连续片段，用于还原被引用的页面标题
+STALE_CLAIM_SPAN_CHAR_RE = re.compile(r"[A-Za-z0-9 -]")
+
 # 缺页概念巡检 V1：正文以 **加粗** 或 `反引号` 形式被多页引用、但库内无独立
 # concepts/methods/formalizations 页的术语，给出"建议新建页"候选（INFO 级）。
 # 单 token 词形（可含连字符 / 加号），用于排除路径、文件名、整句等噪声。
@@ -126,6 +155,13 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
 # 不应再按裸 token 误报为「缺独立 concepts/methods 页」。映射到既有页：
 #   amp        → methods/amp-reward.md + overview/humanoid-amp-motion-prior-survey.md
 #   armature   → concepts/armature-modeling.md（电枢惯量建模，概念页）
+#   damping    → concepts/impedance-control.md（质量-弹簧-阻尼里阻尼矩阵 B_d 的物理
+#                含义与临界阻尼取法）+ queries/legged-humanoid-rl-pd-gain-setting.md
+#                （legged_gym / Isaac Lab 的 `stiffness`/`damping` 怎么设）+
+#                methods/joint-actuator-parameter-identification.md（辨识值写回
+#                MuJoCo `armature`/`damping`/`frictionloss` 三件套）：与 armature 同为
+#                MuJoCo/Isaac Lab 关节属性 token，本库一律在阻抗/PD 增益/辨识页按
+#                参数维度记述，不单建概念页
 #   g1         → entities/unitree-g1.md（硬件，归 entities）
 #   gmr        → methods/motion-retargeting-gmr.md（General Motion Retargeting，方法页）
 #   heracles   → entities/paper-heracles-humanoid-diffusion.md（具体系统）
@@ -155,6 +191,7 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
 MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "amp",
     "armature",
+    "damping",  # MuJoCo/Isaac Lab 关节属性，已由阻抗控制 + PD 增益 / 参数辨识页覆盖
     "ethercat",  # 已由 concepts/ethercat-protocol.md 覆盖（slug 与页面 stem 不同名）
     "g1",
     "gmr",
@@ -634,6 +671,37 @@ def _frontmatter_tags(fm_block: str) -> set[str]:
     return tags
 
 
+def _stale_claim_negated(body: str, start: int) -> bool:
+    """命中词前、同一句内出现否定线索 → 辟谣式写法，不是本页在下断言。"""
+    window = body[max(0, start - STALE_CLAIM_NEGATION_WINDOW) : start]
+    for brk in STALE_CLAIM_SENTENCE_BREAKS:
+        window = window.rsplit(brk, 1)[-1]
+    return any(cue in window for cue in STALE_CLAIM_NEGATION_CUES)
+
+
+def _stale_claim_span_slug(body: str, start: int, end: int) -> str:
+    """把命中词所在的英文片段还原成页面 slug（``VLA SOTA Leaderboard`` → ``vla-sota-leaderboard``）。"""
+    while start > 0 and STALE_CLAIM_SPAN_CHAR_RE.fullmatch(body[start - 1]):
+        start -= 1
+    while end < len(body) and STALE_CLAIM_SPAN_CHAR_RE.fullmatch(body[end]):
+        end += 1
+    return re.sub(r"[ -]+", "-", body[start:end].strip(" -").lower())
+
+
+def _stale_claim_hit(body: str, page_stems: set[str]) -> str | None:
+    """返回正文里第一个「真·绝对化断言」，命中全属结构性误报时返回 ``None``。"""
+    for pat in STALE_CLAIM_PATTERNS:
+        for m in re.finditer(pat, body, re.IGNORECASE):
+            if _stale_claim_negated(body, m.start()):
+                continue
+            if _stale_claim_span_slug(body, m.start(), m.end()) in page_stems:
+                continue
+            if m.group(0) == "最新" and STALE_CLAIM_RUNTIME_OBJECT_RE.match(body, m.end()):
+                continue
+            return m.group(0)
+    return None
+
+
 def _check_stale_claims(pages: list[Path], results: dict[str, Any]) -> None:
     """陈旧声明（stale claim）巡检 V1（信息型，不阻塞 CI）。
 
@@ -641,7 +709,11 @@ def _check_stale_claims(pages: list[Path], results: dict[str, Any]) -> None:
     （SOTA / state-of-the-art / 当前最强 / 最新 等），且该页 frontmatter
     ``updated`` 早于库内共享至少一个 tag 的更晚页面时，提示该断言可能已过时、
     建议复核。属信息型预警，不计入 lint 失败总数。
+
+    命中判定见 :func:`_stale_claim_hit`：否定语境 / 库内页面名引用 / 运行时对象
+    三类结构性误报不算断言。
     """
+    page_stems = {p.stem.lower() for p in pages}
     meta: list[tuple[Path, date | None, set[str], str]] = []
     for page in pages:
         content = page.read_text(encoding="utf-8")
@@ -659,12 +731,7 @@ def _check_stale_claims(pages: list[Path], results: dict[str, Any]) -> None:
     for page, upd, tags, body in meta:
         if upd is None or not tags:
             continue
-        hit = None
-        for pat in STALE_CLAIM_PATTERNS:
-            m = re.search(pat, body, re.IGNORECASE)
-            if m:
-                hit = m.group(0)
-                break
+        hit = _stale_claim_hit(body, page_stems)
         if hit is None:
             continue
         newer = next(
