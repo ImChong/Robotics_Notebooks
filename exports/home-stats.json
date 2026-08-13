@@ -9,6 +9,26 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-motubrain.md",
+      "detail_id": "entity-paper-motubrain",
+      "label": "Motubrain（世界动作模型 · arXiv:2604.27792）",
+      "type": "entity",
+      "recency": "2026-08-13",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/paper-wam-realtime-async.md",
+      "detail_id": "entity-paper-wam-realtime-async",
+      "label": "WAM 实时异步部署（Beyond Stalls · arXiv:2608.01880）",
+      "type": "entity",
+      "recency": "2026-08-13",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/paper-occanyscene.md",
       "detail_id": "entity-paper-occanyscene",
       "label": "OccAnyScene（统一室内外 3D 占据预测）",
@@ -192,32 +212,12 @@
       "source": "git",
       "action": "added",
       "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/entities/dataset-imagenet.md",
-      "detail_id": "entity-dataset-imagenet",
-      "label": "ImageNet / ImageNet-21K",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "git",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/entities/dataset-jft-300m.md",
-      "detail_id": "entity-dataset-jft-300m",
-      "label": "JFT-300M",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "git",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-occanyscene.md",
-    "detail_id": "entity-paper-occanyscene",
-    "label": "OccAnyScene（统一室内外 3D 占据预测）",
+    "path": "wiki/entities/paper-motubrain.md",
+    "detail_id": "entity-paper-motubrain",
+    "label": "Motubrain（世界动作模型 · arXiv:2604.27792）",
     "type": "entity",
     "recency": "2026-08-13",
     "source": "git",
