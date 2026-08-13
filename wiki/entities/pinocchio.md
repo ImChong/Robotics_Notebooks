@@ -10,6 +10,8 @@ related:
   - ../concepts/floating-base-dynamics.md
   - ./paper-urdd-universal-robot-description-directory.md
   - ./dynibo.md
+  - ../methods/joint-actuator-parameter-identification.md
+  - ./flobaroid.md
   - ../formalizations/forward-kinematics.md
   - ../formalizations/robot-jacobian.md
 sources:
@@ -57,6 +59,10 @@ summary: "Pinocchio 是一个基于 C++ 的极致高性能刚体动力学库，�
 
 [Dynibo](./dynibo.md)（Rust，MIT，v0.1.0）聚焦 **树状 URDF + Workspace 零分配** 的常用子集（FK / Jacobian / DLS-IK / 重力 / RNEA），并以 Pinocchio 作 **oracle 与 Criterion 对照**。需要解析导数、浮动基质心动量、ABA/CRBA 或 Crocoddyl 生态时仍选 Pinocchio；只需轻量多语言内核时可评估 Dynibo。
 
+## 动力学回归矩阵
+
+`pin.computeJointTorqueRegressor(model, data, q, v, a)` 给出连杆 10 参数的 $Y_{\mathrm{rb}}$，使 $\tau = Y_{\mathrm{rb}}\pi_{\mathrm{rb}}$。它 **不含** armature / 粘滞 / 库仑列；关节执行器参数要在 $Y$ 上自拼 $\ddot q_i$、$\dot q_i$、$\mathrm{sign}(\dot q_i)$。完整估法见 [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md)；有力矩传感的流水线对照 [FloBaRoID](./flobaroid.md)（动力学核是 iDynTree）。
+
 ## 关联页面
 - [Query：Pinocchio 快速上手指南](../queries/pinocchio-quick-start.md)
 - [Dynibo](./dynibo.md) — Rust 轻量 FK/RNEA/数值 IK，Pinocchio oracle 对照
@@ -65,6 +71,8 @@ summary: "Pinocchio 是一个基于 C++ 的极致高性能刚体动力学库，�
 - [Whole-Body Control (WBC)](../concepts/whole-body-control.md)
 - [Centroidal Dynamics](../concepts/centroidal-dynamics.md)
 - [Floating Base Dynamics](../concepts/floating-base-dynamics.md)
+- [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) — `computeJointTorqueRegressor` 只给 $Y_{\mathrm{rb}}$
+- [FloBaRoID](./flobaroid.md) — 线性辨识流水线（iDynTree，非本库）
 
 ## 参考来源
 - Carpentier, J., et al. (2019). *The Pinocchio C++ library: A fast and flexible implementation of rigid body dynamics algorithms and their analytical derivatives*.
