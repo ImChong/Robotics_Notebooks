@@ -14,6 +14,7 @@ related:
   - ../concepts/image-segmentation-taxonomy.md
   - ../concepts/vision-transformer.md
   - ../entities/transformer-cv-curriculum.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/courses/transformer_cv_applications_syllabus.md
 ---
@@ -66,6 +67,7 @@ flowchart LR
 - [分割任务分类](../concepts/image-segmentation-taxonomy.md)
 - [Cityscapes](./dataset-cityscapes.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
+- [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — 精度–效率均衡的分割器，②层机载算力受限时的候选
 
 ## 参考来源
 

@@ -14,6 +14,7 @@ related:
   - ../methods/object-detection.md
   - ./rf-detr.md
   - ../entities/transformer-cv-curriculum.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/courses/transformer_cv_applications_syllabus.md
 ---
@@ -67,6 +68,7 @@ flowchart LR
 - [RF-DETR](./rf-detr.md)
 - [检测指标](../concepts/object-detection-metrics.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
+- [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — 多尺度可变形注意力是②层 DETR 路线的实用化选项（小目标/收敛）
 
 ## 参考来源
 

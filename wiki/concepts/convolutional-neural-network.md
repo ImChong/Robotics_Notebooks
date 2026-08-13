@@ -16,6 +16,7 @@ related:
   - ../comparisons/cnn-vs-vit-backbones.md
   - ./deep-learning-foundations.md
   - ../entities/transformer-cv-curriculum.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/courses/transformer_cv_applications_syllabus.md
 ---
@@ -81,6 +82,7 @@ flowchart LR
 - [CNN vs ViT Backbones](../comparisons/cnn-vs-vit-backbones.md)
 - [ResNet](../entities/paper-resnet-deep-residual-learning.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
+- [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — CNN 骨干是②层 2D 检测/分割选型的算力–精度基线
 
 ## 参考来源
 

@@ -14,6 +14,7 @@ related:
   - ./deformable-detr.md
   - ./rf-detr.md
   - ../entities/transformer-cv-curriculum.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/courses/transformer_cv_applications_syllabus.md
 ---
@@ -69,6 +70,7 @@ flowchart LR
 - [RF-DETR](./rf-detr.md)
 - [Object Detection](../methods/object-detection.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
+- [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — 免 NMS 集合预测是②层「单阶段 vs 两阶段 vs DETR」的第三条路线
 
 ## 参考来源
 

@@ -16,6 +16,7 @@ related:
   - ../entities/paper-yolo-unified-realtime-detection.md
   - ../entities/dataset-coco.md
   - ../entities/transformer-cv-curriculum.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/courses/transformer_cv_applications_syllabus.md
 ---
@@ -87,6 +88,7 @@ flowchart LR
 - [YOLO](../entities/paper-yolo-unified-realtime-detection.md)
 - [RetinaNet](../entities/retinanet.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
+- [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — 两阶段检测演进是②层「单阶段 vs 两阶段」取舍的精度侧
 
 ## 参考来源
 

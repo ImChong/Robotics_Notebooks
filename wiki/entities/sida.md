@@ -16,6 +16,7 @@ related:
   - ./lisa.md
   - ./sa2va.md
   - ./transformer-cv-curriculum.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/courses/transformer_cv_applications_syllabus.md
 ---
@@ -77,6 +78,7 @@ flowchart LR
 - [LISA](./lisa.md)
 - [Sa2VA](./sa2va.md)
 - [Transformer CV 课程策展](./transformer-cv-curriculum.md)
+- [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — 以 SEG 词元同时输出掩码与文字解释，属②层分割接口的多模态变体
 
 ## 参考来源
 

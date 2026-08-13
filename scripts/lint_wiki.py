@@ -115,6 +115,11 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # `sequenceDiagram`」），是文档语法 token，非机器人概念/方法/形式化，
     # 不应建独立页；与 md/http 同类文档基础设施停用词。
     "sequencediagram",
+    # printf：各页正文里的 `printf` / `fprintf` 均为 C 标准库打印调用，作为
+    # 「实时控制环里禁做阻塞 I/O」的反例出现（UART bring-up 调试、EtherCAT
+    # 循环延迟累计等），是语言/工具链 token，非机器人概念/方法/形式化，
+    # 不应建独立页；与 uv/md 同类基础设施停用词。
+    "printf",
 }
 
 # 高频术语但「已在 entities/ 或非同名 stem 的 methods 页有恰当归属」，
@@ -1232,6 +1237,11 @@ def _check_dataset_entity_metadata(pages: list[Path], results: dict[str, Any]) -
             results["dataset_missing_metadata"].append(f"{rel}（缺 {' / '.join(missing)}）")
 
 
+# 前缀匹配的已知假阳 token：``focal``（focal-loss，检测损失函数）会被 ``foc``
+# （Field-Oriented Control，磁场定向控制）前缀命中，但二者毫无关系。
+TAG_KEYWORD_FALSE_POSITIVE_TOKENS: frozenset[str] = frozenset({"focal"})
+
+
 def _tag_keyword_match(tags: set[str], keywords: tuple[str, ...]) -> bool:
     """按连字符 token 前缀匹配 tag 与关键词，覆盖 ``eda-tool`` / ``foc-driver`` /
     ``actuator-network`` / ``actuators`` 等派生标签，同时避免裸子串匹配把
@@ -1239,6 +1249,8 @@ def _tag_keyword_match(tags: set[str], keywords: tuple[str, ...]) -> bool:
     """
     for tag in tags:
         for token in tag.split("-"):
+            if token in TAG_KEYWORD_FALSE_POSITIVE_TOKENS:
+                continue
             if any(token.startswith(kw) for kw in keywords):
                 return True
     return False

@@ -2,7 +2,7 @@
 
 ## [2026-08-12] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **35** 条信息型预警）：
+共发现 **0** 个问题（另含 **0** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -52,8 +52,8 @@
 ### 💡 频繁提及但缺少 wiki 页面的概念（0 个）
 - 无
 
-### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（1 个）
-- printf（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
+### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### ⚠️ Frontmatter 缺少 type 字段（0 个）
 - 无
@@ -115,46 +115,16 @@
 ### 💡 接触/力控/操作概念页缺回链「接触力旋量闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」知识链枢纽（信息型，不阻塞 CI）（2 个）
-- wiki/concepts/multimodality-basics.md
-- wiki/concepts/visual-foundation-model-trends.md
+### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
+- 无
 
-### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（14 个）
-- wiki/concepts/object-detection-metrics.md
-- wiki/entities/dataset-ade20k.md
-- wiki/entities/dataset-cifar.md
-- wiki/entities/dataset-cityscapes.md
-- wiki/entities/dataset-coco.md
-- wiki/entities/dataset-flickr30k-entities.md
-- wiki/entities/dataset-imagenet.md
-- wiki/entities/dataset-jft-300m.md
-- wiki/entities/dataset-mapillary.md
-- wiki/entities/dataset-mnist.md
-- wiki/entities/dataset-objects365.md
-- wiki/entities/dataset-pascal-voc.md
-- wiki/entities/dataset-vatex.md
-- wiki/entities/dataset-wit.md
+### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
+- 无
 
-### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
-- wiki/entities/retinanet.md
+### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
+- 无
 
-### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（17 个）
-- wiki/concepts/convolutional-neural-network.md
-- wiki/concepts/image-segmentation-taxonomy.md
-- wiki/concepts/object-detection-metrics.md
-- wiki/entities/deformable-detr.md
-- wiki/entities/detr.md
-- wiki/entities/retinanet.md
-- wiki/entities/seem.md
-- wiki/entities/segformer.md
-- wiki/entities/setr.md
-- wiki/entities/sida.md
-- wiki/entities/transformer-cv-curriculum.md
-- wiki/methods/fcn-semantic-segmentation.md
-- wiki/methods/mask-rcnn.md
-- wiki/methods/pspnet.md
-- wiki/methods/rcnn-family.md
-- wiki/methods/segnet.md
-- wiki/methods/unet.md
+### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
+- 无
 
 📊 Sources 覆盖率：3040/3040 (100%) wiki/entity 页有 ingest 来源

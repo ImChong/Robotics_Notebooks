@@ -23,6 +23,7 @@ related:
   - ../overview/multimodal-llm-development.md
   - ./humanoid-system-curriculum.md
   - ./paper-segment-anything.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/courses/transformer_cv_applications_syllabus.md
 ---
@@ -174,6 +175,7 @@ flowchart LR
 - [CNN vs ViT](../comparisons/cnn-vs-vit-backbones.md)
 - [多模态 LLM 发展路线](../overview/multimodal-llm-development.md)
 - [人形系统课策展](./humanoid-system-curriculum.md)
+- [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — 课程第 3–4 章的检测/分割选型，在感知栈里落到②层
 
 ## 参考来源
 
