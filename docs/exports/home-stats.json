@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/comfyui.md",
+      "detail_id": "entity-comfyui",
+      "label": "ComfyUI",
+      "type": "entity",
+      "recency": "2026-08-13",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/paper-flex-pi.md",
       "detail_id": "entity-paper-flex-pi",
       "label": "Flex-π（Multi-Stream WAM · Compute Flexibility · arXiv:2608.10860）",
@@ -199,28 +210,18 @@
       "source": "git",
       "action": "added",
       "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/entities/dataset-pascal-voc.md",
-      "detail_id": "entity-dataset-pascal-voc",
-      "label": "PASCAL VOC",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "git",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-flex-pi.md",
-    "detail_id": "entity-paper-flex-pi",
-    "label": "Flex-π（Multi-Stream WAM · Compute Flexibility · arXiv:2608.10860）",
+    "path": "wiki/entities/comfyui.md",
+    "detail_id": "entity-comfyui",
+    "label": "ComfyUI",
     "type": "entity",
     "recency": "2026-08-13",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
