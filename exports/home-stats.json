@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-12",
+  "generated_at": "2026-08-13",
   "node_count": 3064,
   "edge_count": 26515,
   "coverage": {
@@ -78,7 +78,7 @@
       "type": "entity",
       "recency": "2026-08-12",
       "source": "log.md",
-      "action": "added",
+      "action": "maintained",
       "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
@@ -88,7 +88,7 @@
       "type": "entity",
       "recency": "2026-08-12",
       "source": "log.md",
-      "action": "added",
+      "action": "maintained",
       "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
     },
     {
