@@ -1,3 +1,11 @@
+## [2026-08-13] ingest | sources/papers/joint_actuator_parameter_identification.md — 接入关节转子惯量与摩擦参数辨识算法（Swevers/Ayusawa；FloBaRoID 已开源；BAM/PACE 既有实体）
+
+- **触发：** 用户要求找到并 ingest 机器人关节转子惯量与摩擦力等参数辨识算法的一手资料与源码
+- **步骤 2.5：** Swevers 1997 / Ayusawa 2014 **确认未开源**；[kjyv/FloBaRoID](https://github.com/kjyv/FloBaRoID) **已开源**（LGPL-3.0，iDynTree+IPOPT）；BAM / PACE **既有开源实体**，补文档站 [bam.readthedocs.io](https://bam.readthedocs.io/)
+- **来源：** [`sources/papers/joint_actuator_parameter_identification.md`](sources/papers/joint_actuator_parameter_identification.md)、[`sources/repos/flobaroid.md`](sources/repos/flobaroid.md)、[`sources/sites/bam-readthedocs.md`](sources/sites/bam-readthedocs.md)
+- **升格：** [`wiki/methods/joint-actuator-parameter-identification.md`](wiki/methods/joint-actuator-parameter-identification.md)（Fourier+OLS vs CMA-ES 选型）；[`wiki/entities/flobaroid.md`](wiki/entities/flobaroid.md)（两步摩擦流水线）
+- **交叉：** SysID / 关节摩擦 / armature / Pinocchio `computeJointTorqueRegressor` / CMA-ES / BAM / PACE / SPI-Active / 执行器驱动链 ③ 层
+
 ## [2026-08-13] ingest | sources/blogs/wechat_shenlan_{rl_motion_control_pipeline,rl_inverse_kinematics,forward_kinematics,inverse_kinematics,robot_jacobian}.md — 更新深蓝《具身智能基础》专辑 5→10 篇
 
 - **触发：** 用户指定专辑 <https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkwMDcyNDUzMQ==&action=getalbum&album_id=4525948187102363653>；要求确保 agent-reach 已装并更新 ingest；随后要求自动合并

@@ -3,10 +3,12 @@
 type: entity
 tags: [repo, sim2real, actuator, friction, mujoco, dynamixel, system-identification, servo, google]
 status: complete
-updated: 2026-05-28
+updated: 2026-08-13
 code: https://github.com/Rhoban/bam
 related:
   - ../queries/actuator-drive-chain-selection-loop.md
+  - ../methods/joint-actuator-parameter-identification.md
+  - ./flobaroid.md
   - ./paper-bam-extended-friction-servo-actuators.md
   - ../concepts/sim2real.md
   - ../concepts/system-identification.md
@@ -16,6 +18,7 @@ related:
 sources:
   - ../../sources/repos/rhoban_bam.md
   - ../../sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md
+  - ../../sources/sites/bam-readthedocs.md
 summary: "Rhoban 开源的 Better Actuator Models：摆锤数据采集、CMA-ES 拟合 M1–M6 摩擦参数、MuJoCo 2R 臂 MAE 验证与 Dynamixel/eRob 示例脚本。"
 ---
 
@@ -88,9 +91,11 @@ flowchart LR
 
 - [Rhoban/bam 仓库归档](../../sources/repos/rhoban_bam.md)
 - [论文归档](../../sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md)
+- [BAM 文档站](../../sources/sites/bam-readthedocs.md)
 
 ## 关联页面
 
+- [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) — 摆锤 CMA-ES 在算法族里的位置；对照 [FloBaRoID](./flobaroid.md)
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 本页处于驱动链 **③层 执行器建模与摩擦辨识**（显式解析摩擦辨识路线，与 NeuralActuator 神经执行器网络对照）
 - [扩展摩擦论文实体](./paper-bam-extended-friction-servo-actuators.md)
 - [Sim2Real](../concepts/sim2real.md)、[System Identification](../concepts/system-identification.md)

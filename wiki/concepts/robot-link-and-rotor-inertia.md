@@ -2,10 +2,11 @@
 type: concept
 tags: [dynamics, simulation, urdf, mujoco, sysid, actuator, inertia]
 status: complete
-updated: 2026-05-20
+updated: 2026-08-13
 related:
   - ./armature-modeling.md
   - ./system-identification.md
+  - ../methods/joint-actuator-parameter-identification.md
   - ./floating-base-dynamics.md
   - ../entities/modern-robotics-book.md
   - ../entities/mujoco.md
@@ -79,7 +80,7 @@ $$
 
 ### 辨识与最小参数集
 
-并非 URDF 中 10 个惯性分量都可独立辨识。**Gautier & Khalil (1990)** 给出串联机器人 **最小惯性参数集** 的闭式计算，减少冗余参数、提升 SysID 鲁棒性（详见 [System Identification](./system-identification.md)）。
+并非 URDF 中 10 个惯性分量都可独立辨识。**Gautier & Khalil (1990)** 给出串联机器人 **最小惯性参数集** 的闭式计算，减少冗余参数、提升 SysID 鲁棒性（详见 [System Identification](./system-identification.md)）。关节侧 $I_a$ 与摩擦不要塞进这 10 参数；估法见 [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md)。
 
 ## 转子惯量：反射惯量与 `armature`
 
@@ -145,6 +146,7 @@ flowchart LR
 - [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — 本页所述物理/仿真要素在保真度链路（建模 ① → 数值 ② → 接触 ③ → 随机化 ④）中的定位
 - [Armature Modeling（电枢惯量建模）](./armature-modeling.md) — 反射惯量公式、双驱动、BeyondMimic PD 标定
 - [System Identification](./system-identification.md) — 连杆参数与执行器层辨识
+- [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) — $I_a$ / 摩擦的实验估法
 - [Floating Base Dynamics](./floating-base-dynamics.md) — $M(q)$ 与 CRBA
 - [MuJoCo](../entities/mujoco.md) — 仿真器中的 joint 参数
 - [Sim2Real](./sim2real.md) — 质量/惯量随机化与真机偏差

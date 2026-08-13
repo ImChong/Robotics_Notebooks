@@ -2,11 +2,12 @@
 type: method
 tags: [optimization, black-box-optimization, evolution-strategy, sim2real, system-identification, actuator]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-13
 related:
   - ../concepts/sim2real.md
   - ../concepts/system-identification.md
   - ./actuator-network.md
+  - ./joint-actuator-parameter-identification.md
   - ../entities/bam-better-actuator-models.md
   - ../entities/paper-pace-sim2real-legged-robots.md
   - ../entities/paper-notebook-sampling-based-system-identification-with-active.md
@@ -75,7 +76,8 @@ summary: "CMA-ES（Covariance Matrix Adaptation Evolution Strategy）是一种�
 | 场景 | CMA-ES 优化对象 | 适应度 | 代表页面 |
 |------|------------------|--------|----------|
 | **扩展摩擦标定** | 舵机 M1–M6 摩擦/电机参数 | 摆锤台架轨迹 MAE | [BAM](../entities/bam-better-actuator-models.md) |
-| **足式关节动力学对齐** | ~49 维紧凑关节参数 | 悬空 chirp 轨迹误差 | [PACE](../entities/paper-pace-sim2real-legged-robots.md) |
+| **足式关节动力学对齐** | ~49 维紧凑关节参数（$I_a,b,\tau_c$ 等） | 悬空 chirp 轨迹误差 | [PACE](../entities/paper-pace-sim2real-legged-robots.md) |
+| **线性回归对照** | 有力矩时不必上 CMA-ES | Fourier + OLS | [关节执行器参数辨识](./joint-actuator-parameter-identification.md) / [FloBaRoID](../entities/flobaroid.md) |
 | **腿足 base 惯量 + 主动探索** | mass / CoM / 惯量 / 电机模型；指令序列 | 轨迹误差 + FIM（D-最优） | [SPI-Active](../entities/paper-notebook-sampling-based-system-identification-with-active.md) |
 | **难测仿真参数标定** | 摩擦、电机等难测项 | Wasserstein / MMD 分布差异 | [Spot RL 分布式 sim2real](../entities/paper-spot-rl-distributional-sim2real.md) |
 | **物理参数手感对齐** | 球 restitution / friction | 落球与滚动试验对齐 | 人形足球技能类工作 |
@@ -90,6 +92,7 @@ summary: "CMA-ES（Covariance Matrix Adaptation Evolution Strategy）是一种�
 
 - [Sim2Real](../concepts/sim2real.md) — CMA-ES 标定是缩小 sim2real 差距的一条主线
 - [系统辨识](../concepts/system-identification.md) — CMA-ES 是其黑箱参数辨识的常用优化器
+- [关节执行器参数辨识](./joint-actuator-parameter-identification.md) — 何时用 CMA-ES、何时用线性回归
 - [Actuator Network](./actuator-network.md) — 数据驱动执行器建模，与解析参数标定互补
 - [BAM（扩展摩擦模型）](../entities/bam-better-actuator-models.md) — 摆锤台架 + CMA-ES 辨识 M1–M6
 - [PACE（足式 sim2real）](../entities/paper-pace-sim2real-legged-robots.md) — CMA-ES 拟合紧凑关节动力学

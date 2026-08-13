@@ -165,6 +165,7 @@
 - [Flexion × Niantic Spatial × NVIDIA：RGB 导航 Sim2Real 管线](wiki/entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [Flexion Reflect v1.0（长程人形自主平台）](wiki/entities/flexion-reflect-v1.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [Flightmare](wiki/entities/flightmare.md) — Flightmare**（uzh-rpg/flightmare）是苏黎世大学 **Robotics and Per `📅unknown` `[entity_page]`
+- [FloBaRoID（浮动基动力学辨识工具箱）](wiki/entities/flobaroid.md) — FloBaRoID**（*FLOating BAse RObot dynamical IDentification*，[kjyv/FloBaRoID](https://github.com/kjy `📅unknown` `[entity_page]`
 - [Humanoid FluxVLA Engine](wiki/entities/fluxvla-engine.md) — Humanoid FluxVLA Engine** 是 **逐际动力（LimX Dynamics）** 随 **COSA 0.5**（2026-07）同步开源的 **人形 VLA 全栈工程框架 `📅unknown` `[entity_page]`
 - [flying_knots_public（开源仓库）](wiki/entities/flying-knots-public.md) — flying_knots_public** 是 CMU Flying Knots 论文的 **MIT 许可研究代码快照**，实现 **示教采集 → 清洗标注 → IK 初始命令 → Task-Le `📅unknown` `[entity_page]`
 - [傅利叶 GRX N1（开源人形）](wiki/entities/fourier-grx-n1.md) — Fourier GRX N1** 是傅利叶智能在 GitHub 组织 **FFTAI** 下维护的开源人形软硬件栈之一；公开资料以  `📅unknown` `[entity_page]`
@@ -2634,6 +2635,7 @@
 - [Intentional Updates for Streaming RL（意图更新与流式强化学习）](wiki/methods/intentional-updates-streaming-rl.md) — 意图更新（intentional updates）指：不显式固定「参数空间步长」，而是先规定**当前这一步在关心的输出量**（价值预测、动作 log-probability 等）上希望达到的变化，再用 `📅2026-05-10` `[method_page]`
 - [Inverse Dynamics Control（逆动力学控制，IDC）](wiki/methods/inverse-dynamics-control.md) — IDC：由期望轨迹 $(q_d,\dot{q}_d,\ddot{q}_d)$ 经动力学逆解直接得前馈力矩，辅以少量反馈修正。 `📅unknown` `[method_page]`
 - [Iterative Learning Control（迭代学习控制，ILC）](wiki/methods/iterative-learning-control.md) — ILC：重复执行同一轨迹时，将上批次全程误差映射为下一批次前馈修正，迭代提升跟踪精度。 `📅unknown` `[method_page]`
+- [Joint Actuator Parameter Identification（关节执行器参数辨识）](wiki/methods/joint-actuator-parameter-identification.md) — 关节执行器参数辨识**：用激励轨迹和测量，估计写在**关节坐标**上的动力学参数——首先是 **转子反射惯量 $I_a$（armature）** 与 **摩擦（库仑 / 粘滞 / 可选 Strib `📅unknown` `[method_page]`
 - [L-BFGS（Limited-memory BFGS）](wiki/methods/l-bfgs.md) — L-BFGS**：BFGS 的 **有限内存** 变体，只保留最近 $m$ 对 $(s_k, y_k)$，用 **two-loop recursion** 隐式计算 $H `📅unknown` `[method_page]`
 - [LCP: Lipschitz 约束策略](wiki/methods/lcp.md) — Lipschitz-Constrained Policies (LCP)** 旨在提高深度强化学习策略在物理控制任务中的数值稳定性和鲁棒性。 `📅unknown` `[method_page]`
 - [Learning from Play（Play-LMP）](wiki/methods/learning-from-play-lmp.md) — Learning from Play**：利用大量未标注任务边界的机器人交互片段（play），学习潜在「计划」表征与条件策略，从而在少量任务标注下完成复杂操控序列。 `📅unknown` `[method_page]`

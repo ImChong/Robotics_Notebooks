@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, sim2real, actuator, friction, mujoco, system-identification, servo, dynamixel, icra-2025, google]
 status: complete
-updated: 2026-07-24
+updated: 2026-08-13
 arxiv: "2410.08650"
 venue: ICRA 2025
 code: https://github.com/Rhoban/bam
@@ -11,6 +11,7 @@ related:
   - ../concepts/sim2real.md
   - ../concepts/system-identification.md
   - ../methods/actuator-network.md
+  - ../methods/joint-actuator-parameter-identification.md
   - ../queries/sim2real-gap-reduction.md
   - ./bam-better-actuator-models.md
   - ./sage-sim2real-actuator-gap-estimator.md
@@ -141,6 +142,7 @@ flowchart TB
 
 - [Sim2Real](../concepts/sim2real.md)、[System Identification](../concepts/system-identification.md)
 - [BAM 开源仓库](./bam-better-actuator-models.md)、[Actuator Network](../methods/actuator-network.md)
+- [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) — 摆锤 CMA-ES 估 $J_m$ + 摩擦
 - [Sim2Real Gap 缩减实战](../queries/sim2real-gap-reduction.md)、[SAGE](./sage-sim2real-actuator-gap-estimator.md)
 - [NeuralActuator（数据驱动 + 可微仿真）](./paper-neuralactuator-neural-actuation-modeling.md) — 低成本臂多任务执行器/力感知
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — BAM-extended 是③层伺服执行器摩擦辨识的方法来源

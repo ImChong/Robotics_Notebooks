@@ -2,11 +2,12 @@
 type: concept
 tags: [friction, control, sim2real, feedforward, quadruped]
 status: complete
-updated: 2026-06-23
+updated: 2026-08-13
 related:
   - ./joint-friction-models.md
   - ./sim2real.md
   - ./system-identification.md
+  - ../methods/joint-actuator-parameter-identification.md
   - ../methods/ppo.md
   - ../entities/quadruped-control-curriculum.md
   - ../queries/wbc-implementation-guide.md
@@ -79,6 +80,7 @@ $$
 
 - [Joint Friction Models](./joint-friction-models.md)
 - [System Identification](./system-identification.md)
+- [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) — 补偿项 $\hat{\tau}_f$ 的参数从哪来
 - [Privileged Training](./privileged-training.md)
 - [Quadruped Control Curriculum](../entities/quadruped-control-curriculum.md)
 
