@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-08-11
+updated: 2026-08-13
 related:
   - ../queries/embodied-fm-taxonomy-loop.md
   - ../entities/paper-sc3-eval.md
@@ -30,6 +30,7 @@ related:
   - ../entities/paper-physmani-dynamic-manipulation-world-model.md
   - ../entities/paper-panoworld-real-world-panoramic-generation.md
   - ../entities/paper-physisforcing.md
+  - ../entities/paper-flex-pi.md
   - ../entities/paper-oscar.md
   - ../entities/paper-driftworld.md
   - ../entities/paper-masked-visual-actions.md
@@ -59,6 +60,7 @@ sources:
   - ../../sources/papers/exoactor.md
   - ../../sources/papers/being_h07.md
   - ../../sources/papers/world_action_models_survey_2605.md
+  - ../../sources/papers/flex_pi_arxiv_2608_10860.md
   - ../../sources/papers/ewmbench.md
   - ../../sources/papers/worldscore_arxiv_2504_00983.md
   - ../../sources/papers/dwm_arxiv_2512_17907.md
@@ -173,6 +175,8 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 
 [Wan](../entities/paper-wan-video.md)（arXiv:2503.20314）提供开源 **DiT + Wan-VAE** 视频基础模型族（Wan2.1/2.2）；[Wan-Move](../entities/paper-wan-move.md)（arXiv:2512.08765，NeurIPS 2025）在 **不改 I2V 架构** 的前提下，把点轨迹映射到 latent 并复制首帧特征作运动引导，微调 **Wan-I2V-14B** 达到商用 Motion Brush 级可控性，并发布 **MoveBench**；[Wan-Dancer](../entities/paper-wan-dancer.md)（arXiv:2607.09581）同在 Wan-I2V 上做分层 **music-to-dance**，把连贯生成推到 **分钟级 720p**。三者本身不是操纵 WM，但是 MVA（Wan-Fun-Control）与大量机器人视频 WM / 参考视频先验的 **上游对照**。
 
+[Flex-π](../entities/paper-flex-pi.md)（arXiv:2608.10860，UW / AI2）把同一冻结 **Wan-2.2 VAE** 直接用于 **3D pointmap**：论文报 RGB 训练的 VAE 对点图近无损重建（PSNR **31.1 dB**），再与 DINOv3 语义流在 MoT 里联合去噪动作。相对「另训几何编码器」，这是 **借用视频先验吃 3D**；相对 DreamWAM 的训练多视图、部署关分支，Flex-π 把流组合留到 **推理掩码**（action-only ~60 ms ↔ full joint）。**代码待发布**。
+
 ### 中间表示条件可控推演（示例：RoboInter-World）
 
 [RoboInter1.5](../entities/paper-robointer-1-5.md)（arXiv:2607.18709）把 **子任务 / 轨迹 / 分割点** 等稠密中间表示渲染为控制视频，条件化未来观测生成（**RoboInter-World**），并与 plan-then-execute VLA 共用同一 IR 脚手架。相对 Masked Visual Actions 的「掩码实体轨迹」，它强调 **多类型 IR 作为双向接口**（既正则化动作，也约束 WM latent）；公开仓目前以 Data/VLM 为主，World 代码待齐。
@@ -268,6 +272,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [PhysMani](../entities/paper-physmani-dynamic-manipulation-world-model.md) — **在线 3D Gaussian 无散度速度场 WM + 3DFA 动态操作**；PhysMani-Bench 16 任务（arXiv:2607.01938，ECCV 2026）。
 - [PanoWorld](../entities/paper-panoworld-real-world-panoramic-generation.md) — **ERP 轨迹可控全景 WM**：DPRC 射线动作 + GMA 几何记忆 + World360 数据集（arXiv:2607.09661）。
 - [PhysisForcing](../entities/paper-physisforcing.md) — **训练期区域聚焦分层物理对齐**（像素轨迹 + 语义关系）；Wan/Cosmos 跨骨干，R-Bench SOTA 与 WorldArena / Fast-WAM 下游增益（arXiv:2606.28128）。
+- [Flex-π](../entities/paper-flex-pi.md) — **冻结 Wan VAE 共享编码 RGB+pointmap** 的多流 Joint WAM；部署算力柔性（arXiv:2608.10860；代码待发布）。
 - [OSCAR](../entities/paper-oscar.md) — **2D 骨架跨具身动作条件** + 大规模数据管线；**2B Cosmos-Predict2.5** 微调，RoboArena 虚拟策略评测与真机强相关（arXiv:2606.04463）。
 - [DriftWorld](../entities/paper-driftworld.md) — **1-step drifting** 动作条件 WM：推理时搜索 + 离线评估（arXiv:2607.15065）。
 - [Masked Visual Actions](../entities/paper-masked-visual-actions.md) — **像素掩码轨迹** 统一前向/逆向；RoboCasa 策略评估 **r=0.982**（arXiv:2607.19343）。

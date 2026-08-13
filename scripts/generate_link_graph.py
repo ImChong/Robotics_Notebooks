@@ -1883,12 +1883,8 @@ def main() -> None:
         f"{len(hub_rankings['paper'])} paper → {HUB_RANKINGS_PATH.relative_to(REPO_ROOT)}"
     )
 
-    activity_days = wiki_activity(
-        nodes, community_labels=_community_label_map(community_meta)
-    )
-    activity_source = (
-        "git" if collect_wiki_git_history().touches_by_date else "log.md"
-    )
+    activity_days = wiki_activity(nodes, community_labels=_community_label_map(community_meta))
+    activity_source = "git" if collect_wiki_git_history().touches_by_date else "log.md"
     activity = {
         "generated_at": stats["generated_at"],
         "source": activity_source,

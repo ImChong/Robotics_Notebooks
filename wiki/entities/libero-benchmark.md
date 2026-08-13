@@ -12,6 +12,7 @@ related:
   - ../entities/paper-why-action-chunking-improves-bc.md
   - ../entities/paper-actfovea.md
   - ../entities/paper-neural-introspection-gating.md
+  - ../entities/paper-flex-pi.md
   - ../queries/hmi-opensource-projects-coverage.md
 sources:
   - ../../sources/repos/libero-benchmark.md
@@ -98,6 +99,7 @@ flowchart LR
 - [World Action Planner](./paper-world-action-planner.md) — LIBERO-Long / Object 上用 pose-image WM + VLM 规划测组合与新布局泛化
 - [ActFovea](./paper-actfovea.md) — 在本基准四套件（40 任务 / 2000 episodes）上做 VLA 运行时扰动与防护评测
 - [Neural Introspection Gating](./paper-neural-introspection-gating.md) — OpenVLA / OFT 上 logit-margin 门控 KV 缓存；Long/Goal 收回盲缓存掉点（arXiv:2608.10824）
+- [Flex-π](./paper-flex-pi.md) — 多流 WAM；LIBERO 柔性 ckpt 98.5%、固定模式 99.2%；LIBERO-Plus Total 80.9%（arXiv:2608.10860；代码待发布）
 - [Why Action Chunking Improves BC](./paper-why-action-chunking-improves-bc.md) — Libero-90 上 Delay / RDE 相对 action chunking 的机制消融
 - [SLIM-0.5B](./paper-slim-05b.md) — 0.47B latent 策略；LIBERO 97.5% / LIBERO-Plus 77.45%（开源权重）
 

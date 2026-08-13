@@ -168,9 +168,7 @@ class LatestWikiNodesFromGitTest(unittest.TestCase):
             last_dates={roadmap_rel: "2026-07-23", wiki_rel: "2026-07-23"},
             touches_by_date={"2026-07-23": [roadmap_rel, wiki_rel]},
         )
-        out = glg.latest_wiki_nodes_from_git(
-            nodes, max_items=5, window_days=30, history=history
-        )
+        out = glg.latest_wiki_nodes_from_git(nodes, max_items=5, window_days=30, history=history)
         paths = [item["path"] for item in out]
         self.assertIn(roadmap_rel, paths)
         roadmap_item = next(item for item in out if item["path"] == roadmap_rel)
