@@ -103,7 +103,7 @@ flowchart TB
     BASE["bundle dsh-base"]
     PATCH["cordis.patch.yml"]
   end
-  subgraph loop [agent 环]
+  subgraph agentRing [agent 环]
     IN["inbox / claim"]
     PRE["agent/pre-step"]
     PR["systemPrompt + tool schemas"]
@@ -121,8 +121,13 @@ flowchart TB
   HD --> PROF
   PY --> PROF
   ACP --> PROF
-  PROF --> BASE --> PATCH --> loop
-  IN --> PRE --> PR --> LLM --> TOOL
+  PROF --> BASE
+  BASE --> PATCH
+  PATCH --> agentRing
+  IN --> PRE
+  PRE --> PR
+  PR --> LLM
+  LLM --> TOOL
   TOOL --> LOG
   LOG --> PR
   TOOL --> seams
@@ -136,38 +141,38 @@ flowchart TB
 sequenceDiagram
   autonumber
   participant User
-  participant CLI as dsh / SDK / Web
-  participant Loop as core/agent-loop
-  participant Prompt as core/system-prompt
-  participant LLM as llm/llm
-  participant Tools as core/tools
-  participant Sess as core/session
+  participant CLI as dsh Web or SDK
+  participant Driver as core agent-loop
+  participant Prompt as core system-prompt
+  participant LLM as llm adapter
+  participant Tools as core tools
+  participant Sess as core session
   User->>CLI: 任务文本或 followup
-  CLI->>Loop: inbox 唤醒
-  Loop->>Sess: turn/start
-  Loop->>Loop: claim next-step + 一条排队消息
-  Loop->>Loop: agent/pre-step 瀑布
+  CLI->>Driver: inbox 唤醒
+  Driver->>Sess: turn start
+  Driver->>Driver: claim next-step 与一条排队消息
+  Driver->>Driver: agent pre-step 瀑布
   alt 拒绝或首轮 enter 为空
-    Loop->>Sess: turn/end（无 step，仍记一次尝试）
+    Driver->>Sess: turn end 无 step 仍记一次尝试
   else 进入 step
-    Loop->>Sess: step/start + user/message
-    Loop->>Prompt: 组装 prompt 段与 tool schema
-    Loop->>LLM: agent/request → llm/stream
-    LLM-->>Sess: assistant/chunk* → assistant/message
+    Driver->>Sess: step start 与 user message
+    Driver->>Prompt: 组装 prompt 段与 tool schema
+    Driver->>LLM: agent request 再 llm stream
+    LLM-->>Sess: assistant chunk 再 assistant message
     loop 工具屏障与有界并发池
-      Loop->>Tools: tools/pre-execute → execute → post-execute
-      Tools-->>Sess: tool/call + tool/result
+      Driver->>Tools: tools pre-execute 再 execute 再 post-execute
+      Tools-->>Sess: tool call 与 tool result
     end
-    Loop->>Sess: step/end
+    Driver->>Sess: step end
     opt 仍欠下一次模型请求
-      Loop->>Loop: 再 claim → 下一 step
+      Driver->>Driver: 再 claim 下一 step
     end
-    Loop->>Loop: agent/turn-stopping
-    Loop->>Sess: turn/end
+    Driver->>Driver: agent turn-stopping
+    Driver->>Sess: turn end
   end
 ```
 
-复现路径：先 `npx @deepseek-ai/dsh web` 配 API key 与 workspace；无头/评测走 Python `examples/jsonrpc-agent/minimal.py` 或 `pnpm dsh --profile headless`。
+`Driver` 对应仓内 `core/agent-loop`（避免 Mermaid 把参与者名 `Loop` 解析成保留字 `loop`）。复现路径：先 `npx @deepseek-ai/dsh web` 配 API key 与 workspace；无头/评测走 Python `examples/jsonrpc-agent/minimal.py` 或 `pnpm dsh --profile headless`。
 
 ## 工程实践
 
