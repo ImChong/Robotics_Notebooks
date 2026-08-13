@@ -2568,6 +2568,13 @@
         "utokyo",
         "university-of-tokyo"
       ]
+    },
+    "comfy-org": {
+      "label": "节点式视觉引擎组织（Comfy-Org）",
+      "aliases": [
+        "comfy-org",
+        "comfyanonymous"
+      ]
     }
   }
 }

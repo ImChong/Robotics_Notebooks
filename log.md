@@ -1,3 +1,12 @@
+## [2026-08-13] ingest | sources/repos/comfyui.md — 接入 ComfyUI（Comfy-Org/ComfyUI + comfy.org）节点式生成引擎
+
+- **触发：** 用户指定 <https://github.com/Comfy-Org/ComfyUI> 与 <https://comfy.org/>；要求自动合并
+- **步骤 2.5：** 官网 Desktop/Cloud/API/Enterprise 均指向本仓与 [docs.comfy.org](https://docs.comfy.org/)；GitHub API **GPL-3.0**、完整 `main.py` / `server.py` / `execution.py` / `nodes.py` → **已开源**。权重不随仓分发；Partner/API nodes 为可选付费闭源入口（`--disable-api-nodes` 可强制离线）
+- **来源：** [`sources/repos/comfyui.md`](sources/repos/comfyui.md)、[`sources/sites/comfy-org.md`](sources/sites/comfy-org.md)
+- **升格：** [`wiki/entities/comfyui.md`](wiki/entities/comfyui.md) — v0.32.0；节点图执行、Desktop/Cloud/API 分工、MCP beta、与 3D Gen Studio / Wan / 生成式数据增强的选型边界
+- **机构：** [`schema/institutions.json`](schema/institutions.json) 新增 `comfy-org`（标签仅 `comfy-org` / `comfyanonymous`，避免误贴带 `comfyui` tag 的编排层页面）
+- **交叉：** [`wiki/entities/3dgenstudio.md`](wiki/entities/3dgenstudio.md)、[`wiki/entities/blender.md`](wiki/entities/blender.md)、[`wiki/concepts/diffusion-model.md`](wiki/concepts/diffusion-model.md)、[`wiki/methods/generative-data-augmentation.md`](wiki/methods/generative-data-augmentation.md)、[`wiki/concepts/text-to-cad.md`](wiki/concepts/text-to-cad.md)、[`wiki/entities/paper-wan-video.md`](wiki/entities/paper-wan-video.md)、[`wiki/entities/img2threejs.md`](wiki/entities/img2threejs.md)、[`wiki/entities/gpufree.md`](wiki/entities/gpufree.md)、[`wiki/entities/articraft.md`](wiki/entities/articraft.md)
+
 ## [2026-08-13] structural | docs/graph.html — 路线视图 chip 保持紧凑布局
 
 - **改动：** 筛选浮窗「路线视图」按钮不再随手风琴吃满剩余高度，按内容紧凑换行；「按社区 / 研究机构」仍吃满

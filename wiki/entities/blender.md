@@ -3,7 +3,7 @@
 type: entity
 tags: [software, dcc, 3d-creation, animation, open-source, asset-pipeline, visualization, blender-foundation]
 status: complete
-updated: 2026-07-27
+updated: 2026-08-13
 related:
   - ./freecad.md
   - ./nvidia-omniverse.md
@@ -16,6 +16,7 @@ related:
   - ./rigmo.md
   - ./motioncode.md
   - ./3dgenstudio.md
+  - ./comfyui.md
   - ../concepts/motion-retargeting.md
   - ../concepts/motion-retargeting-pipeline.md
   - ../concepts/character-animation-vs-robotics.md
@@ -109,6 +110,7 @@ flowchart LR
 - [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md)
 - [FreeCAD（开源参数化机械 CAD）](./freecad.md)
 - [3D Gen Studio（ComfyUI 网格生产编排）](./3dgenstudio.md)
+- [ComfyUI（节点式生成引擎）](./comfyui.md) — 像素/视频/mesh 生成运行时；常与本页 DCC 精修串联
 - [Manim（程序化数学动画，讲解层互补）](./manim.md)
 - [HomeWorld 全屋场景生成论文实体](./paper-homeworld-whole-home-scene-generation.md)
 

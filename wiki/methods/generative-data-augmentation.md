@@ -2,13 +2,16 @@
 type: method
 tags: [data, generative-ai, simulation, long-tail, manipulation]
 status: complete
-updated: 2026-04-21
+updated: 2026-08-13
 related:
   - ../concepts/embodied-data-cleaning.md
   - ../methods/generative-world-models.md
   - ../queries/demo-data-collection-guide.md
+  - ../entities/comfyui.md
+  - ../concepts/diffusion-model.md
 sources:
   - ../../sources/papers/diffusion_and_gen.md
+  - ../../sources/repos/comfyui.md
 summary: "生成式数据增强（Generative Data Augmentation）利用扩散模型或视频编辑技术，针对性地合成长尾失败场景或罕见物理交互数据，以低成本扩充具身智能的专家演示库。"
 ---
 
@@ -46,13 +49,15 @@ summary: "生成式数据增强（Generative Data Augmentation）利用扩散模
 - **模式崩坏 (Mode Collapse)**：过度依赖生成的增强样本可能导致模型对真实世界细节的钝化。
 
 ## 主要路线
-- **控制扩散 (ControlNet)**：通过机器人位姿骨架（Skeleton）约束扩散模型的生成过程，确保视频动作与物理指令对齐。
+- **控制扩散 (ControlNet)**：通过机器人位姿骨架（Skeleton）约束扩散模型的生成过程，确保视频动作与物理指令对齐。工程上常用 [ComfyUI](../entities/comfyui.md) 把 ControlNet / inpaint / 背景替换编成 **可版本化节点图**（工作流 JSON），而不是一次性 Web UI；它只保证像素管线可复现，**不保证**接触动力学。
 - **潜空间插值**：在世界模型的潜空间内进行特征混合，生成介于两个已知样本之间的中间状态。
 
 ## 关联页面
 - [具身数据清洗 (Data Cleaning)](../concepts/embodied-data-cleaning.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [演示数据采集指南](../queries/demo-data-collection-guide.md)
+- [ComfyUI](../entities/comfyui.md) — 节点图式图像/视频合成运行时，适合把增强管线固化成 workflow JSON
+- [扩散模型](../concepts/diffusion-model.md) — 生成底座
 
 ## 参考来源
 - Yu, T., et al. (2023). *Scaling Robot Learning with Semantically Imagined Experience*.
