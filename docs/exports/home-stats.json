@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-p3.md",
+      "detail_id": "entity-paper-p3",
+      "label": "P³：稳定 VAE 策略学习的概率传播",
+      "type": "entity",
+      "recency": "2026-08-13",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/comfyui.md",
       "detail_id": "entity-comfyui",
       "label": "ComfyUI",
@@ -200,22 +211,12 @@
       "source": "git",
       "action": "added",
       "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/entities/dataset-objects365.md",
-      "detail_id": "entity-dataset-objects365",
-      "label": "Objects365",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "git",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/comfyui.md",
-    "detail_id": "entity-comfyui",
-    "label": "ComfyUI",
+    "path": "wiki/entities/paper-p3.md",
+    "detail_id": "entity-paper-p3",
+    "label": "P³：稳定 VAE 策略学习的概率传播",
     "type": "entity",
     "recency": "2026-08-13",
     "source": "git",
