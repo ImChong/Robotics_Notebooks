@@ -2,7 +2,7 @@
 type: overview
 tags: [egocentric, ego-survey, category-hub, data-collection, dataset]
 status: complete
-updated: 2026-08-12
+updated: 2026-08-13
 summary: "Ego 9 篇专题 · 01 数据采集（2 篇）— 机器人数据贵，Ego 让人类成为分布式采集者；核心是把「日常第一视角」做成可过滤、可规模化的训练素材。旁路对照：Ego4D、Ego-OSCAR/Stereo-550、EgoVerse、EgoWorld-100W、RekaDaily-10k、RekaCS2-10k 与 Macrodata 度量手轨迹配方。"
 related:
   - ./ego-9-papers-technology-map.md

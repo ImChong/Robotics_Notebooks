@@ -2,7 +2,7 @@
 type: method
 tags: [hand-pose, 3d-vision, manipulation, perception, video-to-control]
 status: complete
-updated: 2026-08-07
+updated: 2026-08-13
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./exoactor.md
@@ -54,7 +54,7 @@ summary: "WiLoR 是端到端的野外手部检测定位 + Transformer 3D 手部�
 ## 与其他页面的关系
 
 - [ExoActor](./exoactor.md)：将 WiLoR 用作生成视频的双手分支估计。
-- [ViDiHand](../entities/paper-vidihand.md)：同为 egocentric 双手 MANO 路线；WiLoR 是 **per-frame 检测+重建** 强基线，ViDiHand 论文显示其在 **重度遮挡** 下易 **掉检与闪烁**，而 **video diffusion 先验** 路线可 **无 detector** 取得更低 jitter。
+- [ViDiHand](../entities/paper-vidihand.md)：同为 egocentric 双手 MANO 路线；WiLoR 是 **per-frame 检测+重建** 强基线，ViDiHand 在 ARCTIC/HOT3D/HOI4D 上以 **无 detector** 取得更低 jitter；截至 2026-08-13 ViDiHand **代码仍待发布**（项目页有 GitHub 占位）。
 - [Macrodata Egocentric Hand-Action](./macrodata-egocentric-hand-action.md)：在 HOT3D **Action MPJPE** 管线中，WiLoR 作 **检测前端**（置信阈值 0.75 + 保守短间隙）；**逐帧 WiLoR 重建** 长视频轨迹弱于时序 [HaWoR](../../sources/repos/hawor.md)（约 77 vs 54 mm）。
 - [Manipulation](../tasks/manipulation.md)：手部估计是灵巧操作感知链路的一环。
 - [SONIC](./sonic-motion-tracking.md)：全身跟踪控制器接收融合后的双手目标。
