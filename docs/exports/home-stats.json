@@ -9,16 +9,6 @@
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/formalizations/inverse-kinematics.md",
-      "detail_id": "wiki-formalizations-inverse-kinematics",
-      "label": "逆运动学（Inverse Kinematics）",
-      "type": "formalization",
-      "recency": "2026-08-13",
-      "source": "git",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
       "path": "wiki/comparisons/rl-inverse-kinematics-five-approaches.md",
       "detail_id": "wiki-comparisons-rl-inverse-kinematics-five-approaches",
       "label": "RL 求解逆运动学：五类方案怎么选",
@@ -32,6 +22,16 @@
       "path": "wiki/formalizations/forward-kinematics.md",
       "detail_id": "wiki-formalizations-forward-kinematics",
       "label": "正向运动学（Forward Kinematics）",
+      "type": "formalization",
+      "recency": "2026-08-13",
+      "source": "git",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/formalizations/inverse-kinematics.md",
+      "detail_id": "wiki-formalizations-inverse-kinematics",
+      "label": "逆运动学（Inverse Kinematics）",
       "type": "formalization",
       "recency": "2026-08-13",
       "source": "git",
@@ -215,10 +215,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/formalizations/inverse-kinematics.md",
-    "detail_id": "wiki-formalizations-inverse-kinematics",
-    "label": "逆运动学（Inverse Kinematics）",
-    "type": "formalization",
+    "path": "wiki/comparisons/rl-inverse-kinematics-five-approaches.md",
+    "detail_id": "wiki-comparisons-rl-inverse-kinematics-five-approaches",
+    "label": "RL 求解逆运动学：五类方案怎么选",
+    "type": "comparison",
     "recency": "2026-08-13",
     "source": "git",
     "action": "added",
