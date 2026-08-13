@@ -2,7 +2,7 @@
 type: formalization
 tags: [dynamics, robotics, aba, rnea, inverse-dynamics, forward-dynamics]
 status: complete
-updated: 2026-08-09
+updated: 2026-08-13
 related:
   - ./lie-group-rigid-body-motions.md
   - ../concepts/floating-base-dynamics.md
@@ -11,6 +11,7 @@ related:
   - ../entities/dynibo.md
   - ../queries/pinocchio-quick-start.md
   - ../entities/quadruped-control-curriculum.md
+  - ../concepts/gravity-compensation.md
 sources:
   - ../../sources/courses/quadruped_control_simulation_rl_curriculum.md
   - ../../sources/repos/dynibo.md
@@ -59,7 +60,7 @@ $$
 
 | 算法 | 输入 | 输出 | 复杂度 | 典型用途 |
 |------|------|------|--------|---------|
-| RNEA | $q,\dot q,\ddot q$ | $\tau$ | $O(n)$ | WBC、轨迹跟踪、重力补偿 |
+| RNEA | $q,\dot q,\ddot q$ | $\tau$ | $O(n)$ | WBC、轨迹跟踪、[重力补偿](../concepts/gravity-compensation.md) |
 | ABA | $q,\dot q,\tau$ | $\ddot q$ | $O(n)$ | 仿真积分、预测模型 |
 | CRBA | $q$ | $M(q)$ | $O(n^2)$ 或稀疏优化 | 分析惯量、课程作业 |
 
@@ -77,6 +78,7 @@ $$
 - [URDF Robot Description](../concepts/urdf-robot-description.md)
 - [Floating Base Dynamics](../concepts/floating-base-dynamics.md)
 - [Pinocchio](../entities/pinocchio.md)
+- [Gravity Compensation](../concepts/gravity-compensation.md) — $g(q)=\mathrm{RNEA}(q,0,0)$ 的控制用法
 - [Dynibo](../entities/dynibo.md) — Rust 树状 URDF + RNEA / 重力，Pinocchio oracle
 - [TSID Formulation](./tsid-formulation.md)
 - [仿真物理保真度链路](../queries/simulation-physics-fidelity.md) — ABA/RNEA 属第 ② 刚体动力学层

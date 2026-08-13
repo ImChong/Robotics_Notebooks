@@ -2,7 +2,7 @@
 type: concept
 tags: [friction, control, sim2real, feedforward, quadruped]
 status: complete
-updated: 2026-06-23
+updated: 2026-08-13
 related:
   - ./joint-friction-models.md
   - ./sim2real.md
@@ -10,6 +10,7 @@ related:
   - ../methods/ppo.md
   - ../entities/quadruped-control-curriculum.md
   - ../queries/wbc-implementation-guide.md
+  - ./gravity-compensation.md
 sources:
   - ../../sources/courses/quadruped_control_simulation_rl_curriculum.md
 summary: "Friction Compensation 在控制力矩上叠加摩擦前馈项，缩小仿真—真机力矩跟踪 gap；四足 Project 3 对比无补偿、补偿与补偿+DR。"
@@ -49,7 +50,7 @@ summary: "Friction Compensation 在控制力矩上叠加摩擦前馈项，缩小
 |------|------|
 | $\tau_{\text{RL}}$ | 策略网络输出（位置/力矩目标） |
 | $\tau_{\text{PD}}$ | 跟踪误差反馈 |
-| $\tau_{\text{gravity}}$ | 重力补偿（RNEA） |
+| $\tau_{\text{gravity}}$ | [重力补偿](./gravity-compensation.md)（RNEA） |
 | $\tau_{\text{friction}}$ | 基于 [Joint Friction Models](./joint-friction-models.md) |
 
 摩擦项例：
@@ -77,6 +78,7 @@ $$
 
 ## 关联页面
 
+- [Gravity Compensation](./gravity-compensation.md) — 真机示教几乎总是 $g(q)+\hat\tau_f$
 - [Joint Friction Models](./joint-friction-models.md)
 - [System Identification](./system-identification.md)
 - [Privileged Training](./privileged-training.md)

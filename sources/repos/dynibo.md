@@ -51,3 +51,4 @@
 - 模型入口：[URDF](../../wiki/concepts/urdf-robot-description.md)
 - IK 分工：[ssik](../../wiki/entities/ssik.md)（解析全分支）vs Dynibo DLS 数值 IK
 - 上手对照：[Pinocchio 快速上手](../../wiki/queries/pinocchio-quick-start.md)
+- 重力补偿：[Gravity Compensation](../../wiki/concepts/gravity-compensation.md) — `gravity()` 即 $g(q)$

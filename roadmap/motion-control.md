@@ -405,6 +405,7 @@ flowchart TD
 - Featherstone 《Robot Dynamics》相关章节
 - Pinocchio 文档的 Centroidal 部分
 - [Floating Base Dynamics](../wiki/concepts/floating-base-dynamics.md)（本仓库）
+- [Gravity Compensation](../wiki/concepts/gravity-compensation.md)（本仓库）— $g(q)=\mathrm{RNEA}(q,0,0)$ 的控制用法
 - [Centroidal Dynamics](../wiki/concepts/centroidal-dynamics.md)（本仓库）
 - [Contact Dynamics](../wiki/concepts/contact-dynamics.md)（本仓库）
 

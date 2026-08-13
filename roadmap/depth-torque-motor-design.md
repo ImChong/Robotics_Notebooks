@@ -183,6 +183,7 @@ flowchart LR
 ### 推荐读什么
 - [磁场定向控制（FOC）](../wiki/concepts/field-oriented-control.md) 与 [FOC 逐步推导](../wiki/formalizations/field-oriented-control-derivation.md) 的 MTPA/弱磁部分
 - [Friction Compensation（摩擦补偿）](../wiki/concepts/friction-compensation.md) 与 [Joint Friction Models（关节摩擦模型）](../wiki/concepts/joint-friction-models.md)
+- [Gravity Compensation（重力补偿）](../wiki/concepts/gravity-compensation.md) — 与摩擦前馈并列的静力学偏置；示教模式常是 $g(q)+\hat\tau_f$
 - [Actuator 102 · 05：柔顺与感知反馈](../wiki/overview/humanoid-actuator-102-compliance-sensing.md) — 力/力矩感知与柔顺路线
 - [Impedance Control（阻抗控制）](../wiki/concepts/impedance-control.md) — 力矩模式之上最常用的关节级接口
 

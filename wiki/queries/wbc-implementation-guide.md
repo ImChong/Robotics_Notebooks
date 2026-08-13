@@ -3,7 +3,7 @@ title: WBC 工程实现指南
 type: query
 status: complete
 created: 2026-04-14
-updated: 2026-07-03
+updated: 2026-08-13
 summary: 从零实现 Whole-Body Control 的工程步骤：URDF 建模 → 动力学计算 → QP 求解 → 任务配置 → 实机调试，附工具链选型和常见问题。
 sources:
   - ../../sources/papers/whole_body_control.md
@@ -167,7 +167,7 @@ WBC 输出: τ_wbc [关节力矩, Nm]
 
 ### Phase 1：静止测试（上电，机器人架起来）
 - [ ] 零力矩测试：输出全零，检查机器人自重姿态
-- [ ] 重力补偿：输出 $\tau = g(q)$，机器人应悬空保持静止
+- [ ] [重力补偿](../concepts/gravity-compensation.md)：输出 $\tau = g(q)$，机器人应悬空保持静止
 - [ ] 各关节单独测试：阶跃指令，观察响应
 
 ### Phase 2：站立（支撑状态）
@@ -186,7 +186,7 @@ WBC 输出: τ_wbc [关节力矩, Nm]
 
 | 症状 | 可能原因 | 排查方向 |
 |------|---------|---------|
-| 机器人上电抖动 | 重力补偿计算错误 | 检查 $g(q)$ 输出大小量级 |
+| 机器人上电抖动 | 重力补偿计算错误 | 检查 $g(q)$ 输出大小量级；见 [重力补偿](../concepts/gravity-compensation.md) |
 | QP 无解（infeasible） | 任务冲突或摩擦锥过紧 | 放宽摩擦系数，降低任务权重 |
 | 步态时机器人向前倾 | CoM X 轴跟踪滞后 | 增加前馈，减小 CoM 追踪延迟 |
 | 关节力矩剧烈震荡 | QP 求解数值不稳定 | 检查 H 矩阵条件数，增加正则项 |
@@ -228,3 +228,4 @@ WBC 输出: τ_wbc [关节力矩, Nm]
 - [Centroidal Dynamics](../concepts/centroidal-dynamics.md) — WBC 任务中的 CoM 动力学
 - [Contact Estimation](../concepts/contact-estimation.md) — WBC 需要接触状态作为输入
 - [MPC 与 WBC 集成](../concepts/mpc-wbc-integration.md) — WBC 作为 MPC 下层执行器的架构
+- [重力补偿](../concepts/gravity-compensation.md) — 悬空 $\tau=g(q)$ 验收

@@ -3,7 +3,7 @@ type: query
 tags: [pinocchio, dynamics, kinematics, wbc, python, quick-start]
 status: stable
 summary: "Pinocchio 快速上手：最小可运行动力学示例"
-updated: 2026-08-09
+updated: 2026-08-13
 sources:
   - ../../sources/papers/robot_kinematics_tools.md
   - ../../sources/repos/dynibo.md
@@ -145,7 +145,8 @@ Jc = pin.computeFrameJacobian(model, data, q, contact_frame,
 | `pin.crba(model, data, q)` | 惯性矩阵 |
 | `pin.aba(model, data, q, v, tau)` | 正动力学（关节加速度） |
 | `pin.computeCoriolisMatrix(model, data, q, v)` | 科里奥利矩阵 C |
-| `pin.computeGeneralizedGravity(model, data, q)` | 重力项 g(q) |
+| `pin.computeGeneralizedGravity(model, data, q)` | 重力项 g(q)；见 [重力补偿](../concepts/gravity-compensation.md) |
+| `pin.computeStaticTorque(model, data, q, fext)` | 静力学力矩 $g(q)-J^\top f_{\mathrm{ext}}$（工具/外载） |
 | `pin.integrate(model, q, dq)` | 流形上的配置积分 |
 
 ---
@@ -183,6 +184,7 @@ Jc = pin.computeFrameJacobian(model, data, q, contact_frame,
 - [Dynibo](../entities/dynibo.md) — Rust 轻量 FK/RNEA/DLS-IK；以 Pinocchio 为 oracle 的对照库
 - [WBC Implementation Guide](./wbc-implementation-guide.md) — 基于 Pinocchio 的完整 WBC 实现
 - [TSID](../concepts/tsid.md) — TSID 框架使用 Pinocchio 作为底层引擎
+- [重力补偿](../concepts/gravity-compensation.md) — `computeGeneralizedGravity` / `computeStaticTorque`
 - [Crocoddyl](../entities/crocoddyl.md) — 在 Pinocchio 之上的最优控制框架
 
 ---
