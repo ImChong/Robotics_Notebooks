@@ -2,14 +2,16 @@
 type: overview
 tags: [humanoid, reinforcement-learning, imitation-learning, bfm, perception]
 status: complete
-updated: 2026-07-14
+updated: 2026-08-13
 related:
   - ./humanoid-motion-control-know-how-technology-map.md
   - ../../roadmap/depth-rl-locomotion.md
   - ../methods/reinforcement-learning.md
   - ../concepts/behavior-foundation-model.md
+  - ../entities/paper-p3.md
 sources:
   - ../../sources/papers/humanoid_motion_control_know_how.md
+  - ../../sources/papers/p3_arxiv_2607_25541.md
 summary: "飞书「深度强化学习运动控制方法（Learning Base）」父节点：RL 理论、TS+DAgger、感知盲走/单阶段、重定向、DeepMimic/AMP 与 BFM 三线的方法族索引。"
 ---
 
@@ -40,6 +42,7 @@ summary: "飞书「深度强化学习运动控制方法（Learning Base）」父
 | Teacher-Student + DAgger | [Teacher-Student + DAgger](../methods/teacher-student-dagger-training.md) |
 | DreamWaq 盲走 | [DreamWaQ](../methods/dreamwaq.md) |
 | PIE 感知一阶段 | [PIE](../methods/pie-perceptive-locomotion.md) |
+| VAE-PPO 边缘似然 | [P³](../entities/paper-p3.md) |
 | Attention 落足 | [Attention 落足点](../methods/attention-foot-placement.md) |
 | Retarget | [Motion Retargeting](../concepts/motion-retargeting.md)、[GMR](../methods/motion-retargeting-gmr.md) |
 | DeepMimic 跳舞 | [DeepMimic](../methods/deepmimic.md) |
@@ -63,11 +66,13 @@ summary: "飞书「深度强化学习运动控制方法（Learning Base）」父
 
 - [Know-How 技术地图](./humanoid-motion-control-know-how-technology-map.md)
 - [八层身体系统栈](./humanoid-rl-motion-control-body-system-stack.md)
+- [P³](../entities/paper-p3.md) — 感知盲走/一阶段 VAE 接到 PPO 时的 clip 估计补丁
 - [depth-bfm](../../roadmap/depth-bfm.md)
 
 ## 参考来源
 
 - [humanoid_motion_control_know_how.md](../../sources/papers/humanoid_motion_control_know_how.md)
+- [P³ 论文摘录（arXiv:2607.25541）](../../sources/papers/p3_arxiv_2607_25541.md)
 
 ## 推荐继续阅读
 

@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-08-11
+updated: 2026-08-13
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -41,6 +41,7 @@ related:
   - ../entities/paper-explicit-stair-geometry-humanoid-locomotion.md
   - ../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md
   - ./stair-obstacle-perceptive-locomotion.md
+  - ../entities/paper-p3.md
   - ../entities/paper-cassie-biped-versatile-locomotion-rl.md
   - ../entities/paper-variable-stiffness-locomotion-rl.md
   - ../entities/paper-cassie-iterative-locomotion-sim2real.md
@@ -67,6 +68,7 @@ sources:
   - ../../sources/papers/egohtr_arxiv_2607_13472.md
   - ../../sources/papers/adp_arxiv_2607_03454.md
   - ../../sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md
+  - ../../sources/papers/p3_arxiv_2607_25541.md
 summary: "Locomotion 研究机器人如何稳定、高效地在不同地形上移动，是腿式与人形控制的核心任务页。"
 ---
 
@@ -265,6 +267,7 @@ flowchart TD
 - **ingest 档案：** [sources/papers/rma_arxiv_2107_04034.md](../../sources/papers/rma_arxiv_2107_04034.md) — RMA：四足快速运动自适应（RSS 2021）
 - **ingest 档案：** [sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md](../../sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md) — Sony aibo 低噪行走（ICRA 2025）
 - **ingest 档案：** [sources/papers/legged_load_adapt_arxiv_2507_07825.md](../../sources/papers/legged_load_adapt_arxiv_2507_07825.md) — Legged Load Adapt：未知动态载荷四足崎岖地形适应（arXiv:2507.07825）
+- **ingest 档案：** [sources/papers/p3_arxiv_2607_25541.md](../../sources/papers/p3_arxiv_2607_25541.md) — P³：VAE 潜变量下 PPO 边缘似然
 
 ## 关联系统/方法
 
@@ -349,6 +352,7 @@ flowchart TD
 - [SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md) — 重力门控双 AMP，走跑起身统一策略
 - [PRISM](../entities/paper-prism.md) — 多项式本体交互；Humanoid-Gym 生存率大幅高于同容量更大 MLP（arXiv:2607.23473）
 - [Fault-Tolerant Locomotion](../entities/paper-fault-tolerant-locomotion.md) — KYON 68 kg 执行器功率损失容错 + 可学习步态频率（arXiv:2608.07328；未开源）
+- [P³](../entities/paper-p3.md) — VAE-PPO 边缘似然；G1 感知踏石/楼梯/缺口（arXiv:2607.25541）
 
 ## 推荐继续阅读
 

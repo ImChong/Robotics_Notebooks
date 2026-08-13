@@ -2,7 +2,7 @@
 type: method
 tags: [rl, policy-optimization, ppo, on-policy, locomotion]
 status: complete
-updated: 2026-08-12
+updated: 2026-08-13
 summary: "PPO 用 clip 代理目标约束策略更新幅度，兼顾稳定性与实现简单，是人形/足式机器人大规模并行 RL 训练的事实标准算法。"
 related:
   - ./flashsac.md
@@ -14,12 +14,14 @@ related:
   - ../comparisons/ppo-vs-sac.md
   - ../queries/ppo-vs-sac-for-robots.md
   - ../entities/paper-effective-degree.md
+  - ../entities/paper-p3.md
   - ../tasks/locomotion.md
   - ../formalizations/mdp.md
   - ../overview/humanoid-rl-policy-training-five-modules.md
 sources:
   - ../../sources/papers/policy_optimization.md
   - ../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md
+  - ../../sources/papers/p3_arxiv_2607_25541.md
 ---
 
 # PPO（Proximal Policy Optimization）
@@ -74,6 +76,7 @@ $$
 
 - **Rudin et al. (2022)**：Isaac Gym + PPO，8192 并行环境约 20 分钟训出四足/双足步态，开启大规模并行 RL 范式（见 [locomotion](../tasks/locomotion.md)）。
 - **BRRL/BPO（2026）**：将 clip 重新解释为"朝有界 ratio 最优解"的近似优化，给出单调改进的理论保证并在 IsaacLab 人形 locomotion 上报告优于 PPO 的稳定性。
+- **VAE 潜变量 + PPO（[$P^{3}$](../entities/paper-p3.md)，2026）**：clip 比较的应是边缘策略 $\pi(a|o)=\int p(a|z)q(z|o)\,dz$。用单个 $z$ 样本估 $r_\theta$ 会在同等策略下把 **35%** 样本误送进 clip 分支；矩匹配传播可把数据效率从 64.6% 拉到 100%。已有 VAE-PPO 栈训不稳时，先查似然估计对象，而不是先加奖励。
 
 ## 关键超参数（机器人实践）
 
@@ -104,11 +107,13 @@ $$
 - [MDP（形式化）](../formalizations/mdp.md)
 - [iCrowdNav](../entities/paper-icrowdnav.md) — 视觉人群导航中用 PPO 训 BEV+意图策略的实例
 - [Effective Degree](../entities/paper-effective-degree.md) — 对 PPO actor 施加多项式有效度数正则以提升 Procgen 泛化
+- [P³](../entities/paper-p3.md) — VAE 随机潜空间里用边缘策略（而非单样本 $z$）计算 PPO 概率比
 - [人形 RL 策略训练五模块](../overview/humanoid-rl-policy-training-five-modules.md) — PPO 在五模块闭环中的稳定更新角色
 
 ## 参考来源
 - [Policy Optimization 来源归档（PPO/SAC/TD3/TRPO/Rudin/BRRL）](../../sources/papers/policy_optimization.md)
 - [深蓝具身智能：人形 RL 策略训练体系](../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md) — clip 更新在运控闭环中的读法
+- [P³ 论文摘录（arXiv:2607.25541）](../../sources/papers/p3_arxiv_2607_25541.md) — VAE 潜变量下单样本 $r_\theta$ 失配与矩匹配传播
 - Schulman, J., et al. (2017). *Proximal Policy Optimization Algorithms*. <https://arxiv.org/abs/1707.06347>
 - Schulman, J., et al. (2015). *Trust Region Policy Optimization*. <https://arxiv.org/abs/1502.05477>
 - Rudin, N., et al. (2022). *Learning to Walk in Minutes Using Massively Parallel Deep RL*. <https://arxiv.org/abs/2109.11978>

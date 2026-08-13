@@ -2,7 +2,7 @@
 type: method
 tags: [locomotion, blind-locomotion, reinforcement-learning, quadruped, terrain-imagination]
 status: complete
-updated: 2026-07-30
+updated: 2026-08-13
 summary: "DreamWaQ（ICRA 2023）四足盲走单阶段 RL：CENet 从本体历史想象隐式地形并估计体速，非对称 Actor–Critic 实现无外感知的鲁棒行走，是 DreamWaQ++ 与飞书「盲走一阶段」模块的基线。"
 related:
   - ../entities/dreamwaq-plus.md
@@ -11,11 +11,13 @@ related:
   - ../concepts/terrain-latent-representation.md
   - ../concepts/state-estimation.md
   - ../overview/humanoid-rl-motion-control-methods.md
+  - ../entities/paper-p3.md
 sources:
   - ../../sources/repos/legged-lab-dwaq.md
   - ../../sources/papers/dreamwaq_arxiv_2301_10602.md
   - ../../sources/raw/feishu_humanoid_motion_control_know_how_full_2026-07-14.md
   - ../../sources/papers/humanoid_motion_control_know_how.md
+  - ../../sources/papers/p3_arxiv_2607_25541.md
 ---
 
 # DreamWaQ：盲走一阶段鲁棒行走
@@ -89,6 +91,7 @@ sources:
 
 - [DreamWaQ++](../entities/dreamwaq-plus.md) — 多模态点云扩展（T-RO 2026）
 - [PIE 感知行走](./pie-perceptive-locomotion.md)
+- [P³](../entities/paper-p3.md) — VAE 潜变量喂 PPO 时，单样本概率比会误 clip；矩匹配 + LSFT 是优化补丁而非新 CENet
 - [Privileged Training](../concepts/privileged-training.md)
 - [Know-How 技术地图](../overview/humanoid-motion-control-know-how-technology-map.md)
 
@@ -97,6 +100,7 @@ sources:
 - [dreamwaq_arxiv_2301_10602.md](../../sources/papers/dreamwaq_arxiv_2301_10602.md)
 - [privileged_training.md](../../sources/papers/privileged_training.md)
 - [humanoid_motion_control_know_how.md](../../sources/papers/humanoid_motion_control_know_how.md)
+- [P³ 论文摘录（arXiv:2607.25541）](../../sources/papers/p3_arxiv_2607_25541.md)
 
 ## 推荐继续阅读
 

@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, locomotion, representation-learning, teacher-student, height-map, depth, humanoid, quadruped]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-13
 summary: "感知行走里 Encoder 输出的 terrain latent 通常不是可读的高度图，而是深度/高程经 CNN 压缩后的地形摘要向量；Policy 只需足够支撑正确落脚的动作，不必重建显式 64×64 栅格。"
 related:
   - ../queries/robot-perception-stack-selection-loop.md
@@ -16,8 +16,10 @@ related:
   - ../entities/extreme-parkour.md
   - ../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md
   - ../entities/dreamwaq-plus.md
+  - ../entities/paper-p3.md
 sources:
   - ../../sources/personal/perceptive_locomotion_representation_essence.md
+  - ../../sources/papers/p3_arxiv_2607_25541.md
 ---
 
 # 地形 Latent 表征（Terrain Latent Representation）
@@ -101,10 +103,12 @@ Height Map → Encoder → 128 维 latent → Teacher Policy
 - [楼梯与障碍 Locomotion 中心节点](../tasks/stair-obstacle-perceptive-locomotion.md)
 - [Perceptive BFM](../entities/paper-perceptive-bfm.md) — raw 参考 + 机器人中心高程感知
 - [Extreme Parkour](../entities/extreme-parkour.md) — scandots/航向 teacher → 深度 student
+- [P³](../entities/paper-p3.md) — terrain/本体 VAE 输出是分布时，PPO 必须对边缘 $\pi(a|o)$ clip
 
 ## 参考来源
 
 - [感知 Locomotion 表征与蒸馏本质 FAQ（维护者整理）](../../sources/personal/perceptive_locomotion_representation_essence.md)
+- [P³ 论文摘录（arXiv:2607.25541）](../../sources/papers/p3_arxiv_2607_25541.md)
 
 ## 推荐继续阅读
 

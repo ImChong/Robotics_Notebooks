@@ -3,7 +3,7 @@
 type: entity
 tags: [entity, simulator, isaac, isaac-sim, gpu-simulation, reinforcement-learning, sim2real, nvidia]
 status: stable
-updated: 2026-08-07
+updated: 2026-08-13
 related:
   - ./isaac-gym-isaac-lab.md
   - ./isaac-sim.md
@@ -20,6 +20,7 @@ related:
   - ../entities/paper-chord-contact-wrench-dexterous-manipulation.md
   - ../concepts/sim2real.md
   - ./paper-agile-humanoid-loco-manipulation.md
+  - ./paper-p3.md
   - ./autodl.md
   - ./gpufree.md
   - ./stackforce.md
@@ -38,6 +39,7 @@ sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
   - ../../sources/courses/isaac_lab_implicit_explicit_actuators.md
   - ../../sources/papers/agile_arxiv_2603_20147.md
+  - ../../sources/papers/p3_arxiv_2607_25541.md
   - ../../sources/repos/wbc_agile.md
 summary: "NVIDIA 当前官方主推的 robot learning 框架，建立在 Isaac Sim 之上，承接 IsaacGymEnvs/Orbit 用户；locomotion、manipulation 与 sim2real 新实验的首选仿真栈。"
 ---
@@ -295,6 +297,7 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 - Task Design Workflows：<https://isaac-sim.github.io/IsaacLab/main/source/overview/core-concepts/task_workflows.html>
 - Ao et al., *Bounded Ratio Reinforcement Learning* (2026) — 在 Isaac Lab 中验证新算法
 - **ingest 档案：** [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — PPO/BRRL 与 Isaac Lab 的结合应用
+- **ingest 档案：** [P³ 论文摘录（arXiv:2607.25541）](../../sources/papers/p3_arxiv_2607_25541.md) — Lab + 定制 rsl_rl 的 VAE-PPO 矩匹配训练
 - **ingest 档案：** [sources/courses/nvidia_sim_to_real_so101_isaac.md](../../sources/courses/nvidia_sim_to_real_so101_isaac.md) — SO-101 课：仿真 DR 遥操作采数、策略评测与 sim2real 对照实验
 - **ingest 档案：** [sources/courses/isaac_lab_implicit_explicit_actuators.md](../../sources/courses/isaac_lab_implicit_explicit_actuators.md) — Implicit / Explicit 执行器官方文档索引
 - **ingest 档案：** [具身智能研究室训练栈分层解读](../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md) — OpenUSD / PhysX / Lab Views 统一场景–物理–学习接口的策展归纳
@@ -312,6 +315,7 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 - [mjlab](./mjlab.md) — 借用 Lab manager-based API 的 MuJoCo Warp 折中栈
 - [REFINE-DP（论文实体）](./paper-loco-manip-161-157-refine-dp.md) — Isaac Lab 上 DP 规划器与 RL loco-manip 联合微调（arXiv:2603.13707）
 - [AGILE（论文实体）](./paper-agile-humanoid-loco-manipulation.md) — Lab 之上的人形 RL 全生命周期工作流（Prepare→Deploy；arXiv:2603.20147，WBC-AGILE）
+- [P³](./paper-p3.md) — Lab + 定制 rsl_rl：VAE-PPO 矩匹配主训与 LSFT（G1 感知地形）
 - [legged_gym](./legged-gym.md) — 旧一代足式 RL 训练栈，工程经验可迁移
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Locomotion](../tasks/locomotion.md)

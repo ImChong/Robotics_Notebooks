@@ -2,7 +2,7 @@
 type: concept
 tags: [state-estimation, ekf, kalman, imu, contact]
 status: complete
-updated: 2026-08-09
+updated: 2026-08-13
 summary: "State Estimation 负责从传感器中恢复机器人姿态、速度和接触状态，是控制闭环的前提。"
 related:
   - ../queries/contact-wrench-closed-loop.md
@@ -11,6 +11,7 @@ related:
   - ../entities/paper-slamformer-infinity.md
   - ../entities/dreamwaq-plus.md
   - ../entities/paper-x-ionet-cross-platform-inertial-odometry.md
+  - ../entities/paper-p3.md
   - ./humanoid-policy-observation-inputs.md
 sources:
   - ../../sources/papers/kalman_filter_ekf_primary_refs.md
@@ -18,6 +19,7 @@ sources:
   - ../../sources/papers/lingbot_map_arxiv_2604_14141.md
   - ../../sources/papers/glob3r_arxiv_2607_09225.md
   - ../../sources/papers/slamformer_infinity_arxiv_2608_03429.md
+  - ../../sources/papers/p3_arxiv_2607_25541.md
   - ../../sources/papers/dreamwaq_plus_arxiv_2409_19709.md
 ---
 
@@ -305,6 +307,7 @@ MPC / Centroidal Planner / TSID / WBC / Policy
 ## 和已有页面的关系
 
 - [人形机器人运控策略的观测输入](./humanoid-policy-observation-inputs.md)（本页回答 A 类本体感知中「不可直测量」（基座线速度、接触）如何获得；该页给出五类观测输入的全景分类）
+- [P³](../entities/paper-p3.md)（学习式 VAE 状态估计接到 PPO 时，潜变量是分布；单样本当点估计会破坏 clip）
 - [System Identification](./system-identification.md)（状态估计依赖机器人动力学模型，SysID 是模型可信度的前提）
 - [Floating Base Dynamics](./floating-base-dynamics.md)（floating base 状态估计是 state estimation 最难的部分之一）
 - [Kalman Filter (KF)](../formalizations/kalman-filter.md) — 线性递推估计模板
@@ -368,6 +371,7 @@ WBC 想稳住身体、控制摆腿、分配接触力，都依赖状态估计提�
 - [sources/papers/lingbot_map_arxiv_2604_14141.md](../../sources/papers/lingbot_map_arxiv_2604_14141.md) — LingBot-Map 流式 GCA
 - [sources/papers/glob3r_arxiv_2607_09225.md](../../sources/papers/glob3r_arxiv_2607_09225.md) — Glob3R 全局 SfM + 3D 基础模型
 - [sources/papers/slamformer_infinity_arxiv_2608_03429.md](../../sources/papers/slamformer_infinity_arxiv_2608_03429.md) — SLAMFormer-∞ 无界 dense mono SLAM
+- [P³ 论文摘录（arXiv:2607.25541）](../../sources/papers/p3_arxiv_2607_25541.md) — 学习式 VAE 状态估计接到 PPO 时的边缘似然
 - Bloesch et al., *State Estimation for Legged Robots - Consistent Fusion of Leg Kinematics and IMU* — 足式机器人状态估计经典
 - Hartley et al., *Contact-Aided Invariant Extended Kalman Filtering for Legged Robot State Estimation* — 接触辅助 EKF 代表
 - Barrau, Bonnabel, *The Invariant Extended Kalman Filter as a Stable Observer* — InEKF 理论基础
