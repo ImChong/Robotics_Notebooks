@@ -1,13 +1,24 @@
 {
   "generated_at": "2026-08-13",
-  "node_count": 3070,
-  "edge_count": 26611,
+  "node_count": 3071,
+  "edge_count": 26629,
   "coverage": {
-    "covered": 3046,
-    "total": 3046,
+    "covered": 3047,
+    "total": 3047,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/deepseek-harness.md",
+      "detail_id": "entity-deepseek-harness",
+      "label": "DeepSeek Harness",
+      "type": "entity",
+      "recency": "2026-08-13",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/paper-p3.md",
       "detail_id": "entity-paper-p3",
@@ -201,22 +212,12 @@
       "source": "git",
       "action": "added",
       "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/entities/dataset-mnist.md",
-      "detail_id": "entity-dataset-mnist",
-      "label": "MNIST",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "git",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-p3.md",
-    "detail_id": "entity-paper-p3",
-    "label": "P³：稳定 VAE 策略学习的概率传播",
+    "path": "wiki/entities/deepseek-harness.md",
+    "detail_id": "entity-deepseek-harness",
+    "label": "DeepSeek Harness",
     "type": "entity",
     "recency": "2026-08-13",
     "source": "git",
@@ -231,11 +232,11 @@
     },
     {
       "label": "仿真到现实",
-      "size": 471
+      "size": 469
     },
     {
       "label": "视觉-语言-动作",
-      "size": 249
+      "size": 252
     },
     {
       "label": "人形论文深读笔记",
@@ -243,7 +244,7 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 151
+      "size": 152
     },
     {
       "label": "移动操作",

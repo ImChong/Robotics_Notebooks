@@ -10,7 +10,7 @@ tags:
   - hku
   - open-source
 status: complete
-updated: 2026-08-08
+updated: 2026-08-13
 related:
   - ./hermes-agent.md
   - ./openclaw.md
@@ -19,6 +19,7 @@ related:
   - ./unreal-mcp.md
   - ./cad-skills.md
   - ./paper-harnessbank.md
+  - ./deepseek-harness.md
   - ./paper-skillcorpus.md
   - ../concepts/model-context-protocol.md
   - ../references/llm-wiki-karpathy.md
@@ -125,6 +126,7 @@ flowchart TB
 ## 关联页面
 
 - [Hermes Agent](hermes-agent.md) — 常驻 agent OS；可消费 CLI-Anything 生成的 skill/CLI
+- [DeepSeek Harness](deepseek-harness.md) — DeepSeek 官方插件化宿主（自带 `packages/skill`；与生成式 CLI 互补）
 - [OpenClaw](openclaw.md) — SKILL 兼容个人助手宿主；Hub meta-skill 安装目标之一
 - [Agent Reach](agent-reach.md) — 外网读搜 CLI 脚手架（与「专业软件 CLI 生成」互补）
 - [FreeCAD MCP](freecad-mcp.md) — 同软件域的 MCP 桥对照

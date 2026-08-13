@@ -2575,6 +2575,13 @@
         "comfy-org",
         "comfyanonymous"
       ]
+    },
+    "deepseek": {
+      "label": "深度求索（DeepSeek）",
+      "aliases": [
+        "deepseek",
+        "deepseek-ai"
+      ]
     }
   }
 }

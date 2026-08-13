@@ -2,10 +2,11 @@
 type: entity
 tags: [entity, llm-agents, agent-infrastructure, skills, messaging-gateway, voice, openclaw, embodied-ai]
 status: complete
-updated: 2026-08-08
+updated: 2026-08-13
 related:
   - ./philia.md
   - ./hermes-agent.md
+  - ./deepseek-harness.md
   - ./cli-anything.md
   - ./sensenova-skills.md
   - ./paper-skillcorpus.md
@@ -86,6 +87,7 @@ flowchart LR
 
 - [Philia](./philia.md) — OpenClaw + Robot Gateway 多机器人助手
 - [Hermes Agent](./hermes-agent.md) — 对照开源 agent OS
+- [DeepSeek Harness](./deepseek-harness.md) — DeepSeek 官方插件化 coding harness（Cordis；非具身控制平面）
 - [CLI-Anything（HKUDS）](./cli-anything.md) — 生成/分发 agent-native 软件 CLI；OpenClaw 为 SKILL 宿主之一
 - [SkillCorpus](./paper-skillcorpus.md) — 社区 `SKILL.md` 策展语料；OpenClaw 为其端到端评测 harness 之一
 - [HarnessBank](./paper-harnessbank.md) — 冻结模型下进化宿主 harness（与技能层互补）

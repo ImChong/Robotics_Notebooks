@@ -16,12 +16,13 @@ tags:
   - mcgill
   - 2012-labs
 status: complete
-updated: 2026-08-03
+updated: 2026-08-13
 arxiv: "2607.18060"
 code: https://github.com/markli1hoshipu/RoboHarness
 related:
   - ../methods/vla.md
   - ./paper-harness-vla.md
+  - ./deepseek-harness.md
   - ../concepts/behavior-tree-vla-orchestration.md
   - ./paper-gap-graph-as-policy.md
   - ./paper-pi05-open-world-vla.md
@@ -178,6 +179,7 @@ flowchart TB
 
 - [VLA](../methods/vla.md) — 异构编排语境下的 VLA 定位
 - [Harness VLA](./paper-harness-vla.md) — 名称相近的冻结 VLA harness（勿混）
+- [DeepSeek Harness](./deepseek-harness.md) — **同名不同物**：DeepSeek 的 LLM agent 运行时，不是具身策略编排
 - [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md) — 确定性编排对照
 - [GaP（Graph-as-Policy）](./paper-gap-graph-as-policy.md) — agentic harness / staging 对照
 - [π₀.₅](./paper-pi05-open-world-vla.md) — 仿真与真机底层 VLA
