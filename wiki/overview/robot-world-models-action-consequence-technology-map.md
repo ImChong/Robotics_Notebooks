@@ -2,7 +2,7 @@
 type: overview
 tags: [world-models, world-action-models, survey, vla, contact-rich, geometry, policy-evaluation]
 status: complete
-updated: 2026-08-07
+updated: 2026-08-13
 related:
   - ./wm-action-consequence-category-01-wam-action-prediction.md
   - ./wm-action-consequence-category-02-contact-modeling.md
@@ -73,7 +73,7 @@ flowchart TB
 | 判断 | 含义 |
 |------|------|
 | 训练≠部署逐帧视频 | 许多 WAM **训练时** 视频协同监督，**推理时** 直接出动作块 |
-| WAM 三类职责 | **直接执行**（DSWAM）、**在线修正**（DynaWM）、**部署筛选**（DreamSteer） |
+| WAM 三类职责 | **直接执行**（DSWAM）、**在线修正**（DynaWM）、**部署筛选**（DreamSteer）；邻近：[FACT](../entities/paper-fact.md) 失败后果 + 可选 value 筛选、[Flex-π](../entities/paper-flex-pi.md) 多流算力柔性执行 |
 | 接触是多模态状态 | 视觉全局 + 触觉局部 + 电机电流 + 关节本体 |
 | 三层信息 | **像素层** → **几何层** → **环境层**（碰撞、物理、任务语义） |
 | 先进入研发链路 | 筛选、纠错、评估、环境扩展——不必立刻接管全部控制 |
@@ -89,6 +89,9 @@ flowchart TB
 - [Generative World Models](../methods/generative-world-models.md)
 - [VLA](../methods/vla.md)
 - [训练闭环 taxonomy](./robot-world-models-training-loop-taxonomy.md)
+- [FACT](../entities/paper-fact.md) — 失败感知因果 WAM
+- [Flex-π](../entities/paper-flex-pi.md) — 多流算力柔性 WAM
+- [分类 01 枢纽](./wm-action-consequence-category-01-wam-action-prediction.md)
 
 ## 参考来源
 

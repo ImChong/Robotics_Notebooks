@@ -13,7 +13,7 @@ tags:
   - whu
   - horizon
 status: complete
-updated: 2026-08-07
+updated: 2026-08-13
 arxiv: "2608.04996"
 code: "https://github.com/hustvl/DreamWAM"
 related:
@@ -24,6 +24,8 @@ related:
   - ../overview/wm-action-consequence-category-01-wam-action-prediction.md
   - ./paper-dynawm-vla-online-correction.md
   - ./paper-dreamsteer-vla-deployment-steering.md
+  - ./paper-fact.md
+  - ./paper-flex-pi.md
   - ./paper-dswam-dual-system-wam.md
   - ./paper-kairos-native-world-model-stack.md
   - ../tasks/manipulation.md
@@ -31,6 +33,8 @@ sources:
   - ../../sources/papers/dreamwam_arxiv_2608_04996.md
   - ../../sources/repos/dreamwam.md
   - ../../sources/sites/hustvl-dreamwam-github-io.md
+  - ../../sources/papers/fact_arxiv_2608_10232.md
+  - ../../sources/papers/flex_pi_arxiv_2608_10860.md
 summary: "DreamWAM（arXiv:2608.04996，HUST/地瓜/武大/地平线）：Joint WAM 用 RGB+Flow 联合去噪与 Depth/DINO 门控残差做 beyond-RGB 未来预测，推理仍 RGB-only；LIBERO 98.90%、LIBERO-Plus 75.47%、真机扰动 74.4%；代码与权重已开源。"
 ---
 
@@ -175,6 +179,8 @@ sequenceDiagram
 | Fast-WAM | 直接基线；DreamWAM 改「未来定义」而非换骨干 |
 | [Kairos](./paper-kairos-native-world-model-stack.md) | 同属 Video+Action DiT Joint 族；Kairos 强调 CEDC / regret |
 | [DSWAM](./paper-dswam-dual-system-wam.md) / [DynaWM](./paper-dynawm-vla-online-correction.md) / [DreamSteer](./paper-dreamsteer-vla-deployment-steering.md) | 执行 / 修正 / 筛选三角；DreamWAM 落在 **联合训练直接出动作** |
+| [FACT](./paper-fact.md) | 失败感知因果后果；DreamWAM 改未来表征形态 |
+| [Flex-π](./paper-flex-pi.md) | 多流 + 部署算力柔性；DreamWAM 推理固定关 beyond-RGB |
 
 ## 关联页面
 
@@ -184,6 +190,8 @@ sequenceDiagram
 - [动作后果技术地图](../overview/robot-world-models-action-consequence-technology-map.md)
 - [DynaWM](./paper-dynawm-vla-online-correction.md)
 - [DreamSteer](./paper-dreamsteer-vla-deployment-steering.md)
+- [FACT](./paper-fact.md)
+- [Flex-π](./paper-flex-pi.md)
 
 ## 参考来源
 

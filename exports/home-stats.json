@@ -1,13 +1,98 @@
 {
   "generated_at": "2026-08-13",
-  "node_count": 3064,
-  "edge_count": 26515,
+  "node_count": 3068,
+  "edge_count": 26558,
   "coverage": {
-    "covered": 3040,
-    "total": 3040,
+    "covered": 3044,
+    "total": 3044,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-fact.md",
+      "detail_id": "entity-paper-fact",
+      "label": "FACT（Failure-Aware Causal Training · arXiv:2608.10232）",
+      "type": "entity",
+      "recency": "2026-08-13",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-g1-confined-space-wbp.md",
+      "detail_id": "entity-paper-g1-confined-space-wbp",
+      "label": "G1 Confined-Space WBP（狭窄空间全身规划 · arXiv:2608.10220）",
+      "type": "entity",
+      "recency": "2026-08-13",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-flex-pi.md",
+      "detail_id": "entity-paper-flex-pi",
+      "label": "Flex-π（Multi-Stream WAM · Compute Flexibility · arXiv:2608.10860）",
+      "type": "entity",
+      "recency": "2026-08-13",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-neural-introspection-gating.md",
+      "detail_id": "entity-paper-neural-introspection-gating",
+      "label": "Neural Introspection Gating（Gated VLA-Cache · arXiv:2608.10824）",
+      "type": "entity",
+      "recency": "2026-08-13",
+      "source": "log.md",
+      "action": "added",
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/world-action-models.md",
+      "detail_id": "wiki-concepts-world-action-models",
+      "label": "World Action Models（WAM，世界–动作模型）",
+      "type": "concept",
+      "recency": "2026-08-13",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-08-13",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/whole-body-control.md",
+      "detail_id": "wiki-concepts-whole-body-control",
+      "label": "Whole-Body Control (WBC，全身控制)",
+      "type": "concept",
+      "recency": "2026-08-13",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/overview/wm-action-consequence-category-01-wam-action-prediction.md",
+      "detail_id": "wiki-overview-wm-action-consequence-category-01-wam-action-prediction",
+      "label": "世界模型动作后果分类 01：WAM 动作后果预测",
+      "type": "overview",
+      "recency": "2026-08-13",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
     {
       "path": "wiki/entities/paper-lucid.md",
       "detail_id": "entity-paper-lucid",
@@ -130,96 +215,18 @@
       "source": "log.md",
       "action": "added",
       "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/concepts/image-segmentation-taxonomy.md",
-      "detail_id": "wiki-concepts-image-segmentation-taxonomy",
-      "label": "图像分割任务分类（语义 / 实例 / 全景）",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/concepts/state-space-model-ssm.md",
-      "detail_id": "wiki-concepts-state-space-model-ssm",
-      "label": "状态空间模型（SSM）",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/concepts/visual-foundation-model-trends.md",
-      "detail_id": "wiki-concepts-visual-foundation-model-trends",
-      "label": "视觉基础模型发展趋势",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/concepts/multimodality-basics.md",
-      "detail_id": "wiki-concepts-multimodality-basics",
-      "label": "多模态基础概念",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/concepts/object-detection-metrics.md",
-      "detail_id": "wiki-concepts-object-detection-metrics",
-      "label": "目标检测评价指标",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/methods/channel-spatial-attention.md",
-      "detail_id": "wiki-methods-channel-spatial-attention",
-      "label": "通道与空间注意力（SENet / SE-ResNet / DANet）",
-      "type": "method",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/methods/rcnn-family.md",
-      "detail_id": "wiki-methods-rcnn-family",
-      "label": "R-CNN 族（R-CNN / Fast R-CNN / Faster R-CNN）",
-      "type": "method",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/methods/fcn-semantic-segmentation.md",
-      "detail_id": "wiki-methods-fcn-semantic-segmentation",
-      "label": "FCN 全卷积网络",
-      "type": "method",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-lucid.md",
-    "detail_id": "entity-paper-lucid",
-    "label": "LUCID：用想象的技能级动力学做长时程人形 Loco-Manipulation",
+    "path": "wiki/entities/paper-fact.md",
+    "detail_id": "entity-paper-fact",
+    "label": "FACT（Failure-Aware Causal Training · arXiv:2608.10232）",
     "type": "entity",
-    "recency": "2026-08-12",
+    "recency": "2026-08-13",
     "source": "log.md",
-    "action": "added"
+    "action": "added",
+    "has_repo": true,
+    "community_label": "世界动作模型（World Action Models, WAM） 社区"
   },
   "top_communities": [
     {
@@ -228,7 +235,7 @@
     },
     {
       "label": "仿真到现实",
-      "size": 504
+      "size": 505
     },
     {
       "label": "视觉-语言-动作",
@@ -252,7 +259,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1212,
+      "degree": 1214,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -275,7 +282,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 715,
+      "degree": 716,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -283,7 +290,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 709,
+      "degree": 715,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -323,7 +330,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 442,
+      "degree": 443,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }

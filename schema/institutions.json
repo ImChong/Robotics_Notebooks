@@ -2560,6 +2560,14 @@
         "rtlabs",
         "openethercatsociety"
       ]
+    },
+    "u-tokyo": {
+      "label": "东京大学（The University of Tokyo）",
+      "aliases": [
+        "u-tokyo",
+        "utokyo",
+        "university-of-tokyo"
+      ]
     }
   }
 }
