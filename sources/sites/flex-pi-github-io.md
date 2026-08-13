@@ -11,11 +11,13 @@
 
 UW / AI2 官方站点：多流 WAM（RGB · DINO · pointmap）与算力柔性推理；展示双臂 YAM 真机 2–7× 增益、自修复夹爪与速度–精度前沿。
 
-## 公开信息要点（截至入库日）
+## 公开信息要点（截至 2026-08-13 复核）
 
-- **页首链 Code → GitHub**，但仓内仅占位 README → **部分 / 待发布**。
+- **页首链 Code → GitHub**，但仓内仅占位 README → **宣称将开源 / 待发布**。
 - **真机表：** full joint ID avg **83.0%**；OOD **76.1%**；action-only 仍显著强于 \(\pi_{0.5}\)/ManiFlow。
-- **交互：** 56 种输入/输出流组合演示；强调共享 Wan VAE 对 pointmap 的近无损重建。
+- **交互：** 56 种输入/输出流组合演示；共享 Wan VAE 对 pointmap 近无损重建（PSNR 31.1 dB）。
+- **延迟：** action-only **60 ms**（任务完成 76.4%）；full joint 另换精度。
+- **CMF：** 项目页写「去掉后 RoboTwin 相对 −47%」。
 
 ## 为何值得保留
 

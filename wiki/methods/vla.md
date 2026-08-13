@@ -427,7 +427,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [RTCF（免训练检索纠偏）](../entities/paper-rtcf.md) — PMA + 低频残差；LIBERO Long 61.6→68.6（arXiv:2608.04527；无公开代码）
 - [DreamWAM（beyond-RGB Joint WAM）](../entities/paper-dreamwam.md) — 训练多视图未来、部署 RGB-only；LIBERO-Plus 75.47%（arXiv:2608.04996）
 - [FACT（失败感知因果 WAM）](../entities/paper-fact.md) — 失败轨迹教后果；RoboTwin 87.5%、真机 +scoring 92%（arXiv:2608.10232；已开源）
-- [Flex-π（多流算力柔性 WAM）](../entities/paper-flex-pi.md) — RGB/DINO/pointmap 联合；action-only↔full joint（arXiv:2608.10860；代码待发布）
+- [Flex-π（多流算力柔性 WAM）](../entities/paper-flex-pi.md) — RGB/DINO/pointmap 联合；单 ckpt 56 组合 action-only↔full joint；真机 YAM ID 83.0%（arXiv:2608.10860；代码待发布）
 - [Neural Introspection Gating](../entities/paper-neural-introspection-gating.md) — logit-margin 门控 VLA KV 缓存；LIBERO-Long 收回盲缓存掉点（arXiv:2608.10824；IROS 2026）
 - [RoboInter1.5（中间表示套件）](../entities/paper-robointer-1-5.md) — Data/VQA/VLM/VLA + IR 条件 World；部分开源（arXiv:2607.18709）
 - [Learning to Fold（LeHome 2026）](../entities/paper-lehome-learning-to-fold.md) — π₀.₅ + AWR/RECAP 异步 RL 与真机 DAgger；仿真 1st / 真机 2nd；全链路开源（arXiv:2606.27163）
