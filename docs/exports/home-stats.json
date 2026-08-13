@@ -1,13 +1,63 @@
 {
   "generated_at": "2026-08-13",
-  "node_count": 3074,
-  "edge_count": 26670,
+  "node_count": 3079,
+  "edge_count": 26747,
   "coverage": {
-    "covered": 3050,
-    "total": 3050,
+    "covered": 3055,
+    "total": 3055,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/formalizations/inverse-kinematics.md",
+      "detail_id": "wiki-formalizations-inverse-kinematics",
+      "label": "逆运动学（Inverse Kinematics）",
+      "type": "formalization",
+      "recency": "2026-08-13",
+      "source": "git",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/comparisons/rl-inverse-kinematics-five-approaches.md",
+      "detail_id": "wiki-comparisons-rl-inverse-kinematics-five-approaches",
+      "label": "RL 求解逆运动学：五类方案怎么选",
+      "type": "comparison",
+      "recency": "2026-08-13",
+      "source": "git",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/formalizations/forward-kinematics.md",
+      "detail_id": "wiki-formalizations-forward-kinematics",
+      "label": "正向运动学（Forward Kinematics）",
+      "type": "formalization",
+      "recency": "2026-08-13",
+      "source": "git",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/formalizations/robot-jacobian.md",
+      "detail_id": "wiki-formalizations-robot-jacobian",
+      "label": "机器人雅可比矩阵（Jacobian）",
+      "type": "formalization",
+      "recency": "2026-08-13",
+      "source": "git",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/overview/robot-rl-motion-control-pipeline.md",
+      "detail_id": "wiki-overview-robot-rl-motion-control-pipeline",
+      "label": "机器人 RL 运动控制完整管线",
+      "type": "overview",
+      "recency": "2026-08-13",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/paper-motubrain.md",
       "detail_id": "entity-paper-motubrain",
@@ -162,67 +212,17 @@
       "source": "git",
       "action": "added",
       "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/entities/dataset-ade20k.md",
-      "detail_id": "entity-dataset-ade20k",
-      "label": "ADE20K",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "git",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/entities/dataset-cifar.md",
-      "detail_id": "entity-dataset-cifar",
-      "label": "CIFAR-10 / CIFAR-100",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "git",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/entities/dataset-cityscapes.md",
-      "detail_id": "entity-dataset-cityscapes",
-      "label": "Cityscapes",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "git",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/entities/dataset-coco.md",
-      "detail_id": "entity-dataset-coco",
-      "label": "MS COCO",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "git",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/entities/dataset-flickr30k-entities.md",
-      "detail_id": "entity-dataset-flickr30k-entities",
-      "label": "Flickr30K Entities",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "git",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-motubrain.md",
-    "detail_id": "entity-paper-motubrain",
-    "label": "Motubrain（世界动作模型 · arXiv:2604.27792）",
-    "type": "entity",
+    "path": "wiki/formalizations/inverse-kinematics.md",
+    "detail_id": "wiki-formalizations-inverse-kinematics",
+    "label": "逆运动学（Inverse Kinematics）",
+    "type": "formalization",
     "recency": "2026-08-13",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
   },
   "top_communities": [
     {
@@ -231,7 +231,7 @@
     },
     {
       "label": "仿真到现实",
-      "size": 469
+      "size": 493
     },
     {
       "label": "视觉-语言-动作",
@@ -271,7 +271,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 871,
+      "degree": 872,
       "community_label": "操作（Manipulation） 社区"
     },
     {
@@ -326,7 +326,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 445,
+      "degree": 446,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
