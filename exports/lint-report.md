@@ -58,7 +58,7 @@
 ### ⚠️ Frontmatter 缺少 type 字段（0 个）
 - 无
 
-### ⚠️ log.md 活跃度警告（0 个）
+### ⚠️ 知识库活跃度警告（git / log.md）（0 个）
 - 无
 
 ### ⚠️ 缺少摘要字段（summary/description）（0 个）
