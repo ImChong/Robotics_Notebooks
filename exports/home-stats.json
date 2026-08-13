@@ -9,9 +9,9 @@
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-fact.md",
-      "detail_id": "entity-paper-fact",
-      "label": "FACT（Failure-Aware Causal Training · arXiv:2608.10232）",
+      "path": "wiki/entities/paper-flex-pi.md",
+      "detail_id": "entity-paper-flex-pi",
+      "label": "Flex-π（Multi-Stream WAM · Compute Flexibility · arXiv:2608.10860）",
       "type": "entity",
       "recency": "2026-08-13",
       "source": "git",
@@ -20,9 +20,9 @@
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
-      "path": "wiki/entities/paper-flex-pi.md",
-      "detail_id": "entity-paper-flex-pi",
-      "label": "Flex-π（Multi-Stream WAM · Compute Flexibility · arXiv:2608.10860）",
+      "path": "wiki/entities/paper-fact.md",
+      "detail_id": "entity-paper-fact",
+      "label": "FACT（Failure-Aware Causal Training · arXiv:2608.10232）",
       "type": "entity",
       "recency": "2026-08-13",
       "source": "git",
@@ -212,9 +212,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-fact.md",
-    "detail_id": "entity-paper-fact",
-    "label": "FACT（Failure-Aware Causal Training · arXiv:2608.10232）",
+    "path": "wiki/entities/paper-flex-pi.md",
+    "detail_id": "entity-paper-flex-pi",
+    "label": "Flex-π（Multi-Stream WAM · Compute Flexibility · arXiv:2608.10860）",
     "type": "entity",
     "recency": "2026-08-13",
     "source": "git",
