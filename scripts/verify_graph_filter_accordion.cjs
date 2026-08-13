@@ -18,7 +18,16 @@ if (!exe) {
   console.error('No Chrome/Chromium found. Set CHROME_PATH.');
   process.exit(1);
 }
-const d3Body = fs.readFileSync(path.resolve(__dirname, '..', 'node_modules', 'd3', 'dist', 'd3.min.js'));
+const d3Candidates = [
+  path.resolve(__dirname, '..', 'node_modules', 'd3', 'dist', 'd3.min.js'),
+  path.resolve(__dirname, '..', 'docs', 'vendor', 'd3.min.js'),
+];
+const d3Path = d3Candidates.find((p) => fs.existsSync(p));
+if (!d3Path) {
+  console.error('No d3.min.js found.');
+  process.exit(1);
+}
+const d3Body = fs.readFileSync(d3Path);
 
 function copyToArtifacts(src, name) {
   try {
