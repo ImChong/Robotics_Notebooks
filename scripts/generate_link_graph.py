@@ -5,13 +5,12 @@ generate_link_graph.py — Wiki 内链图谱生成工具
 扫描 wiki/ 与 roadmap/ 页面的内链，生成 exports/link-graph.json，
 供 docs/graph.html 的 D3.js 渲染使用。
 
-同时写入 exports/graph-stats.json（含 latest_wiki_nodes：按 log.md 最新日历日
-合并当日所有 `## [日期]` 块中出现的有效 wiki/... 与 roadmap/... 路径（去重保序；
-ingest / structural / query 等均可）；latest_wiki_node 为当日列表首项（兼容旧字段）。
-若无日志命中则回退到 frontmatter / mtime 的 recency，列表仅一项。
+同时写入 exports/graph-stats.json（含 latest_wiki_nodes：按 git 历史中 wiki/roadmap
+的首次加入日收集最近窗口内的 **新增** 节点；latest_wiki_node 为列表首项）。
+git 不可用（浅克隆）时回退 log.md；再无命中则回退 frontmatter / mtime recency。
 
-另写入 exports/wiki-activity.json（首页热力图数据源）：不限时间窗口，按同一套
-路径解析规则汇总 log.md 全量日志的每日 wiki/roadmap 节点（同日去重、跨日可重复）。
+另写入 exports/wiki-activity.json（首页热力图 / 更新记录数据源）：按 git 提交
+汇总每日 wiki/roadmap 触达（A=新增，M/R=维护）。浅克隆时回退 log.md。
 
 输出格式：
   {
@@ -42,6 +41,7 @@ import os
 import re
 import subprocess
 from collections import Counter, defaultdict
+from dataclasses import dataclass, field
 from datetime import date, timedelta
 from pathlib import Path
 from typing import Any
@@ -233,7 +233,7 @@ LATEST_NODES_CAP = 30
 LATEST_NODES_WINDOW_DAYS = 30
 LATEST_NODES_ENV_VAR = "GRAPH_LATEST_NODES_MAX"
 # wiki-activity.json：按日导出全部节点（count 与 nodes 长度一致）。
-# 更新记录页与热力图筛选依赖全量日志时间线；单日条目过多时由前端折叠展示。
+# 更新记录页与热力图筛选依赖 git 活动时间线；单日条目过多时由前端折叠展示。
 
 
 def wiki_recency_date(content: str, page: Path) -> date:
@@ -309,6 +309,7 @@ def _append_latest_node(
     git_added_dates: dict[str, str] | None = None,
     community_labels: dict[str, str] | None = None,
     from_glob: bool = False,
+    source: str = "log.md",
 ) -> None:
     if not _is_latest_node_path(rel) or rel in seen:
         return
@@ -331,7 +332,7 @@ def _append_latest_node(
         "label": str(base.get("label") or Path(rel).stem),
         "type": str(base.get("type") or ""),
         "recency": log_date,
-        "source": "log.md",
+        "source": source,
     }
     if first_log_dates is not None:
         action = _wiki_node_action(rel, log_date, first_log_dates, git_added_dates)
@@ -486,7 +487,23 @@ def wiki_last_log_dates(nodes: list[dict[str, Any]]) -> dict[str, str]:
 
 
 _GIT_LOG_BOUNDARY = "\x01"
+
+
+@dataclass
+class WikiGitHistory:
+    """One pass over ``git log --name-status -- wiki roadmap``.
+
+    ``git log`` is newest-first, so ``last_dates`` keeps the first sighting and
+    ``added_dates`` is overwritten until the oldest ``A`` remains.
+    """
+
+    added_dates: dict[str, str] = field(default_factory=dict)
+    last_dates: dict[str, str] = field(default_factory=dict)
+    touches_by_date: dict[str, list[str]] = field(default_factory=dict)
+
+
 _WIKI_GIT_ADDED_DATES_CACHE: dict[str, str] | None = None
+_WIKI_GIT_HISTORY_CACHE: WikiGitHistory | None = None
 
 
 def _iter_wiki_md_paths() -> list[str]:
@@ -516,31 +533,99 @@ def _git_is_shallow() -> bool:
     return result.returncode == 0 and result.stdout.strip().lower() == "true"
 
 
-def wiki_git_added_dates(*, force_refresh: bool = False) -> dict[str, str]:
-    """Map ``wiki/...md`` / ``roadmap/...md`` → ISO committer date of first git add.
+def _empty_wiki_git_history() -> WikiGitHistory:
+    return WikiGitHistory()
 
-    新增/维护徽章的**新建日**以本表为准（完整 git 历史）。浅克隆下 tip 会把
-    几乎所有文件标成 ``A``（同一天），不可信 → 返回空 dict，调用方回退
-    ``wiki_first_log_dates``。部署侧须 ``fetch-depth: 0``。
+
+def _parse_wiki_git_name_status(log_text: str, current_paths: list[str]) -> WikiGitHistory:
+    """Parse ``git log --name-status`` output into added / last-touch / daily paths."""
+    alias = {p: p for p in current_paths}
+    added_date: dict[str, str] = {}
+    last_dates: dict[str, str] = {}
+    touches_by_date: dict[str, list[str]] = {}
+    day_seen: dict[str, set[str]] = defaultdict(set)
+    date_str: str | None = None
+
+    def record_touch(cur: str, day: str) -> None:
+        if cur not in last_dates:
+            last_dates[cur] = day
+        if cur not in day_seen[day]:
+            day_seen[day].add(cur)
+            touches_by_date.setdefault(day, []).append(cur)
+
+    for line in log_text.splitlines():
+        if line.startswith(_GIT_LOG_BOUNDARY):
+            date_str = line[1:].strip() or None
+            continue
+        if not date_str or "\t" not in line:
+            continue
+        parts = line.split("\t")
+        status = parts[0]
+        if not status:
+            continue
+        kind = status[0]
+
+        if kind in ("R", "C") and len(parts) >= 3:
+            old, new = parts[1], parts[2]
+            cur = alias.get(new)
+            if cur is None:
+                continue
+            record_touch(cur, date_str)
+            if kind == "R":
+                if new != old:
+                    del alias[new]
+                alias[old] = cur
+            else:
+                added_date[cur] = date_str
+                del alias[new]
+        elif len(parts) >= 2:
+            path = parts[1]
+            cur = alias.get(path)
+            if cur is None:
+                continue
+            if kind == "D":
+                del alias[path]
+                continue
+            if kind in ("A", "M", "T"):
+                record_touch(cur, date_str)
+            if kind == "A":
+                added_date[cur] = date_str
+
+    return WikiGitHistory(
+        added_dates=added_date,
+        last_dates=last_dates,
+        touches_by_date=touches_by_date,
+    )
+
+
+def collect_wiki_git_history(*, force_refresh: bool = False) -> WikiGitHistory:
+    """Scan git history once for wiki/roadmap add dates, last touch, and daily touches.
+
+    浅克隆下 tip 会把几乎所有文件标成 ``A``（同一天），不可信 → 返回空历史，
+    调用方回退 ``log.md``。部署侧须 ``fetch-depth: 0``。
     """
-    global _WIKI_GIT_ADDED_DATES_CACHE
-    if not force_refresh and _WIKI_GIT_ADDED_DATES_CACHE is not None:
-        return _WIKI_GIT_ADDED_DATES_CACHE
+    global _WIKI_GIT_HISTORY_CACHE, _WIKI_GIT_ADDED_DATES_CACHE
+    if not force_refresh and _WIKI_GIT_HISTORY_CACHE is not None:
+        return _WIKI_GIT_HISTORY_CACHE
 
     if _git_is_shallow():
         print(
-            "⚠️  shallow git clone detected; skip wiki_git_added_dates "
+            "⚠️  shallow git clone detected; skip wiki git activity "
             "(would mark nearly all files as added on tip day). "
             "Use actions/checkout fetch-depth: 0.",
             flush=True,
         )
+        empty = _empty_wiki_git_history()
+        _WIKI_GIT_HISTORY_CACHE = empty
         _WIKI_GIT_ADDED_DATES_CACHE = {}
-        return _WIKI_GIT_ADDED_DATES_CACHE
+        return empty
 
     current_paths = _iter_wiki_md_paths()
     if not current_paths:
+        empty = _empty_wiki_git_history()
+        _WIKI_GIT_HISTORY_CACHE = empty
         _WIKI_GIT_ADDED_DATES_CACHE = {}
-        return _WIKI_GIT_ADDED_DATES_CACHE
+        return empty
 
     try:
         result = subprocess.run(
@@ -565,53 +650,29 @@ def wiki_git_added_dates(*, force_refresh: bool = False) -> dict[str, str]:
             timeout=120,
         )
         if result.returncode != 0:
+            empty = _empty_wiki_git_history()
+            _WIKI_GIT_HISTORY_CACHE = empty
             _WIKI_GIT_ADDED_DATES_CACHE = {}
-            return _WIKI_GIT_ADDED_DATES_CACHE
+            return empty
     except (subprocess.SubprocessError, OSError):
+        empty = _empty_wiki_git_history()
+        _WIKI_GIT_HISTORY_CACHE = empty
         _WIKI_GIT_ADDED_DATES_CACHE = {}
-        return _WIKI_GIT_ADDED_DATES_CACHE
+        return empty
 
-    alias = {p: p for p in current_paths}
-    added_date: dict[str, str] = {}
-    date_str: str | None = None
+    history = _parse_wiki_git_name_status(result.stdout, current_paths)
+    _WIKI_GIT_HISTORY_CACHE = history
+    _WIKI_GIT_ADDED_DATES_CACHE = history.added_dates
+    return history
 
-    for line in result.stdout.splitlines():
-        if line.startswith(_GIT_LOG_BOUNDARY):
-            date_str = line[1:].strip() or None
-            continue
-        if not date_str or "\t" not in line:
-            continue
-        parts = line.split("\t")
-        status = parts[0]
-        if not status:
-            continue
-        kind = status[0]
 
-        if kind in ("R", "C") and len(parts) >= 3:
-            old, new = parts[1], parts[2]
-            cur = alias.get(new)
-            if cur is None:
-                continue
-            if kind == "R":
-                if new != old:
-                    del alias[new]
-                alias[old] = cur
-            else:
-                added_date[cur] = date_str
-                del alias[new]
-        elif len(parts) >= 2:
-            path = parts[1]
-            cur = alias.get(path)
-            if cur is None:
-                continue
-            if kind == "D":
-                del alias[path]
-                continue
-            if kind == "A":
-                added_date[cur] = date_str
+def wiki_git_added_dates(*, force_refresh: bool = False) -> dict[str, str]:
+    """Map ``wiki/...md`` / ``roadmap/...md`` → ISO committer date of first git add.
 
-    _WIKI_GIT_ADDED_DATES_CACHE = added_date
-    return added_date
+    新增/维护徽章的**新建日**以本表为准（完整 git 历史）。浅克隆返回空 dict，
+    调用方回退 ``wiki_first_log_dates``。
+    """
+    return collect_wiki_git_history(force_refresh=force_refresh).added_dates
 
 
 def _wiki_node_action(
@@ -620,11 +681,11 @@ def _wiki_node_action(
     first_log_dates: dict[str, str],
     git_added_dates: dict[str, str] | None = None,
 ) -> str | None:
-    """Classify a log-day wiki touch as ``added`` or ``maintained``.
+    """Classify a calendar-day wiki touch as ``added`` or ``maintained``.
 
     新建日与活动日同一天 → ``added``，否则 ``maintained``。
-    **新建日完全以 git 首次加入日为准**（``wiki_git_added_dates``）；仅当 git
-    不可用（浅克隆被跳过 / 无记录）时回退显式 ingest/structural 首日。
+    **新建日完全以 git 首次加入日为准**；仅当 git 不可用时回退 log.md
+    ingest/structural 首日。
     """
     git_day = git_added_dates.get(rel) if git_added_dates else None
     first_day = git_day if git_day is not None else first_log_dates.get(rel)
@@ -640,13 +701,7 @@ def latest_wiki_nodes_from_log(
     window_days: int = LATEST_NODES_WINDOW_DAYS,
     community_labels: dict[str, str] | None = None,
 ) -> list[dict[str, Any]]:
-    """从 log.md 解析最近若干日维护日志中出现的 wiki / roadmap 节点（去重保序）。
-
-    规则：自上而下读取首条 `## [日期] ...` 的日期作为「最新日」；在 ``window_days``
-    天内的所有同/早日期日志块中，按出现顺序收集 `wiki/...` 与 `roadmap/...`
-    （同一路径只保留首次出现），且须对应仓库现存文件并在图谱节点中。最终保留前
-    ``max_items`` 项。不区分 op 类型。
-    """
+    """log.md 回退：解析最近窗口内日志出现的 wiki / roadmap 节点（浅克隆时使用）。"""
     if max_items <= 0:
         return []
     if not LOG_MD_PATH.is_file():
@@ -729,14 +784,7 @@ def wiki_activity_from_log(
     *,
     community_labels: dict[str, str] | None = None,
 ) -> list[dict[str, Any]]:
-    """从 log.md 全量日志汇总每日出现的 wiki / roadmap 节点（首页热力图按日期筛选用）。
-
-    与 latest_wiki_nodes_from_log 使用同一套路径解析与校验规则，但不限时间
-    窗口：同一日期的多个日志块合并、同日去重（跨日可重复出现），仅保留仓库
-    现存且在图谱节点中的路径。返回按日期升序的
-    ``[{date, count, nodes: [{detail_id, label, type}]}]``，无节点的日期不输出；
-    count 为当日节点数，nodes 为当日全部节点（出现顺序）。
-    """
+    """log.md 回退：全量日志按日汇总 wiki/roadmap 节点（浅克隆时使用）。"""
     if not LOG_MD_PATH.is_file():
         return []
     sections = _log_sections(LOG_MD_PATH.read_text(encoding="utf-8"))
@@ -797,6 +845,11 @@ def wiki_activity_from_log(
                 community_labels=community_labels,
             )
 
+    return _pack_activity_days(metas_by_date)
+
+
+def _pack_activity_days(metas_by_date: dict[str, list[dict[str, Any]]]) -> list[dict[str, Any]]:
+    """将按日聚合的节点元数据打包成 wiki-activity.json 的 days 数组。"""
     days: list[dict[str, Any]] = []
     for log_date in sorted(metas_by_date):
         metas = metas_by_date[log_date]
@@ -837,6 +890,146 @@ def wiki_activity_from_log(
             day_entry["maintained_count"] = maintained_count
         days.append(day_entry)
     return days
+
+
+def wiki_activity_from_git(
+    nodes: list[dict[str, Any]],
+    *,
+    community_labels: dict[str, str] | None = None,
+    history: WikiGitHistory | None = None,
+) -> list[dict[str, Any]]:
+    """从 git 历史汇总每日 wiki/roadmap 触达（首页热力图 / 更新记录）。"""
+    hist = history if history is not None else collect_wiki_git_history()
+    if not hist.touches_by_date:
+        return []
+    node_by_id: dict[str, dict[str, Any]] = {str(n["id"]): n for n in nodes}
+    first_log_dates: dict[str, str] = {}
+    git_added_dates = hist.added_dates
+    seen_by_date: dict[str, set[str]] = {}
+    metas_by_date: dict[str, list[dict[str, Any]]] = {}
+    for log_date, paths in hist.touches_by_date.items():
+        seen = seen_by_date.setdefault(log_date, set())
+        day_out = metas_by_date.setdefault(log_date, [])
+        for rel in paths:
+            _append_latest_node(
+                rel,
+                node_by_id=node_by_id,
+                seen=seen,
+                out=day_out,
+                log_date=log_date,
+                first_log_dates=first_log_dates,
+                git_added_dates=git_added_dates,
+                community_labels=community_labels,
+                source="git",
+            )
+    return _pack_activity_days(metas_by_date)
+
+
+def wiki_activity(
+    nodes: list[dict[str, Any]],
+    *,
+    community_labels: dict[str, str] | None = None,
+) -> list[dict[str, Any]]:
+    """站点活动时间线：优先 git，浅克隆或 git 失败时回退 log.md。"""
+    git_days = wiki_activity_from_git(nodes, community_labels=community_labels)
+    if git_days:
+        return git_days
+    return wiki_activity_from_log(nodes, community_labels=community_labels)
+
+
+def latest_wiki_nodes_from_git(
+    nodes: list[dict[str, Any]],
+    *,
+    max_items: int = LATEST_NODES_DEFAULT,
+    window_days: int = LATEST_NODES_WINDOW_DAYS,
+    community_labels: dict[str, str] | None = None,
+    history: WikiGitHistory | None = None,
+) -> list[dict[str, Any]]:
+    """首页「最新知识节点」：最近窗口内 git **新增**（首次加入日）的 wiki/roadmap 页。
+
+    以最近一次出现 ``A`` 的日历日为窗口右缘，只收录 ``action=added``，
+    同日顺序为 git log 新→旧（先看到的路径优先）。
+    """
+    if max_items <= 0:
+        return []
+    hist = history if history is not None else collect_wiki_git_history()
+    if not hist.touches_by_date:
+        return []
+    added_by_date: list[tuple[str, list[str]]] = []
+    for day, paths in hist.touches_by_date.items():
+        added_paths = [p for p in paths if hist.added_dates.get(p) == day]
+        if added_paths:
+            added_by_date.append((day, added_paths))
+    if not added_by_date:
+        return []
+    added_by_date.sort(key=lambda item: item[0], reverse=True)
+    try:
+        target_date = date.fromisoformat(added_by_date[0][0])
+    except ValueError:
+        return []
+    cutoff_date = target_date - timedelta(days=max(window_days - 1, 0))
+    node_by_id: dict[str, dict[str, Any]] = {str(n["id"]): n for n in nodes}
+    seen: set[str] = set()
+    out: list[dict[str, Any]] = []
+    first_log_dates: dict[str, str] = {}
+    for log_date, paths in added_by_date:
+        if len(out) >= max_items:
+            break
+        try:
+            chunk_date = date.fromisoformat(log_date)
+        except ValueError:
+            continue
+        if chunk_date < cutoff_date:
+            break
+        for rel in paths:
+            _append_latest_node(
+                rel,
+                node_by_id=node_by_id,
+                seen=seen,
+                out=out,
+                log_date=log_date,
+                first_log_dates=first_log_dates,
+                git_added_dates=hist.added_dates,
+                community_labels=community_labels,
+                source="git",
+            )
+            if len(out) >= max_items:
+                break
+    return out[:max_items]
+
+
+def resolve_latest_wiki_nodes(
+    nodes: list[dict[str, Any]],
+    *,
+    max_items: int = LATEST_NODES_DEFAULT,
+    window_days: int = LATEST_NODES_WINDOW_DAYS,
+    community_labels: dict[str, str] | None = None,
+) -> list[dict[str, Any]]:
+    """首页最新节点：优先 git 新增；git 不可用时回退 log.md。"""
+    history = collect_wiki_git_history()
+    if history.touches_by_date:
+        return latest_wiki_nodes_from_git(
+            nodes,
+            max_items=max_items,
+            window_days=window_days,
+            community_labels=community_labels,
+            history=history,
+        )
+    return latest_wiki_nodes_from_log(
+        nodes,
+        max_items=max_items,
+        window_days=window_days,
+        community_labels=community_labels,
+    )
+
+
+def wiki_last_activity_dates(nodes: list[dict[str, Any]]) -> dict[str, str]:
+    """图谱「更新明度」时间口径：优先 git 最近触达日，否则 log.md。"""
+    history = collect_wiki_git_history()
+    if history.last_dates:
+        node_ids = {str(n["id"]) for n in nodes}
+        return {path: day for path, day in history.last_dates.items() if path in node_ids}
+    return wiki_last_log_dates(nodes)
 
 
 def resolve_latest_nodes_max(cli_value: int | None) -> int:
@@ -1564,7 +1757,7 @@ def _compute_graph_stats(
     largest_size = max(community_sizes, default=0)
     largest_ratio = round(largest_size / max(len(nodes), 1), 3)
 
-    latest_wiki_nodes: list[dict[str, Any]] = latest_wiki_nodes_from_log(
+    latest_wiki_nodes: list[dict[str, Any]] = resolve_latest_wiki_nodes(
         nodes,
         max_items=latest_nodes_max,
         community_labels=_community_label_map(community_meta),
@@ -1633,9 +1826,9 @@ def main() -> None:
     )
     hub_rankings = stats.pop("_hub_rankings")
 
-    # activity：节点在 log.md 中的最近活跃日（口径对齐「更新记录」页），
-    # 供图谱「更新明度渐变」等按维护时间着色的前端能力使用；无日志记录的节点不写出。
-    last_log_dates = wiki_last_log_dates(nodes)
+    # activity：节点最近一次 git 触达日（口径对齐「更新记录」页），
+    # 供图谱「更新明度渐变」着色；从未出现在 git/日志中的节点不写出。
+    last_log_dates = wiki_last_activity_dates(nodes)
     for node in nodes:
         node.pop("_is_paper", None)
         node.pop("_has_repo_source", None)
@@ -1690,10 +1883,17 @@ def main() -> None:
         f"{len(hub_rankings['paper'])} paper → {HUB_RANKINGS_PATH.relative_to(REPO_ROOT)}"
     )
 
-    activity_days = wiki_activity_from_log(
+    activity_days = wiki_activity(
         nodes, community_labels=_community_label_map(community_meta)
     )
-    activity = {"generated_at": stats["generated_at"], "days": activity_days}
+    activity_source = (
+        "git" if collect_wiki_git_history().touches_by_date else "log.md"
+    )
+    activity = {
+        "generated_at": stats["generated_at"],
+        "source": activity_source,
+        "days": activity_days,
+    }
     ACTIVITY_PATH.write_text(
         json.dumps(activity, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
     )

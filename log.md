@@ -1,3 +1,10 @@
+## [2026-08-13] structural | 站点活动改由 git 驱动，log.md 降为叙事层
+
+- **站点：** 首页「最新知识节点」、更新记录热力图、图谱更新明度改为解析 `wiki/` / `roadmap/` 的 git 历史（`A`=新增，`M`/`R`=维护）
+- **log.md：** 不再作为站点数据源；仍用于 ingest / query 的意图、开源结论与问答
+- **浅克隆：** git 历史不可用时回退读取 log.md
+- **规范：** [`schema/ingest-workflow.md`](schema/ingest-workflow.md)、[`schema/log-format.md`](schema/log-format.md)
+
 ## [2026-08-13] ingest | sources/papers/vidihand_arxiv_2606_30308.md — 复核 ViDiHand（vidihand.github.io / arXiv:2606.30308）开源状态并补齐站点/仓库归档
 
 - **触发：** 用户指定 <https://vidihand.github.io/> 与 <https://arxiv.org/abs/2606.30308>

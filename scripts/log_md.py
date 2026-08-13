@@ -1,4 +1,4 @@
-"""log.md 写入约定：新记录在文件顶部（首条 ``## [`` 之前），与首页 latest_wiki_nodes 解析一致。"""
+"""log.md 写入约定：新记录在文件顶部（首条 ``## [`` 之前）。叙事层，站点活动以 git 为准。"""
 
 from __future__ import annotations
 
@@ -7,7 +7,8 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_LOG_PATH = REPO_ROOT / "log.md"
 LOG_PREAMBLE = (
-    "> 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。\n\n"
+    "> 核心规范：ingest / query 的意图与结论建议记录到此文件（叙事层）。"
+    "站点活动（首页最新节点 / 更新记录）以 git 为准。\n\n"
 )
 
 

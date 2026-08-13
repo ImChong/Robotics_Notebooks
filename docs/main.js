@@ -1216,7 +1216,7 @@
             type: nodeMeta.type || '',
             action: nodeMeta.action || '',
             recency: dayEntry.date,
-            source: 'log.md',
+            source: nodeMeta.source || 'git',
             path: nodeMeta.path || '',
             has_repo: !!nodeMeta.has_repo,
             community_label: nodeMeta.community_label || ''

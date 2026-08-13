@@ -146,7 +146,7 @@
 - 不要为了收集而收集 — 优先服务学习与研究主线
 - 不要在 ingest 时一次性做太多事 — 一次一条资料，深度到位再推进
 - **有项目页的 ingest 必须先打开项目页核查源码/数据是否开放**（已开源 / 部分 / 待发布 / 未开源），并写入 `sources/sites/`、`sources/repos/` 与 wiki 局限或工程实践；详见 [schema/ingest-workflow.md § 步骤 2.5](schema/ingest-workflow.md)
-- 每次 ingest 都要追加到 `log.md`
+- 每次 ingest **建议**追加到 `log.md`（叙事：意图 / 开源结论 / 关键页；**不必**列出全部 wiki 路径）
 - 每次 query 有好结果都要写回 wiki
 - **每个 wiki 页面必须包含 `## 参考来源` 区块**，标注该页知识编译自哪些原始资料
   （这是 Karpathy"compilation beats retrieval"的核心体现：页面本身即溯源）
@@ -159,7 +159,7 @@
   - 不要只手动运行 `make catalog`、`make graph` 或 `make export` 其中一部分；最近的 GitHub Actions 问题主要来自这些派生文件不同步。
   - **严禁使用 `[[...]]` 语法**进行内链（代码块内除外），必须使用标准 `[text](path)` 格式，以确保 `lint_wiki.py` 的入链统计与断链检查准确。
   - **同步统计数据**：若新增/删除了 wiki 页面，必须通过 `make ci-preflight` 同步 `catalog.md`、统计与导出文件，并把本次任务相关的派生文件一起 stage，否则 GitHub Actions 会因数据不一致而报错。
-  - **首页「最新知识节点」**：由 `log.md` 最上方**日历日**对应的连续日志块中，所有可解析的有效 `wiki/...` 与 `roadmap/...` 路径驱动（任意 op 类型；去重保序）；ingest 与 structural 均应在日志中写明相关路径，并在任务末尾 `make ci-preflight` 以更新 `exports/home-stats.json` / `docs/exports/home-stats.json`。
+  - **首页「最新知识节点」**：由 git 中 `wiki/` / `roadmap/` 的**首次加入日**驱动（最近窗口内的新增节点）；`log.md` 不再作为站点活动数据源。任务末尾 `make ci-preflight` 以更新 `exports/home-stats.json` / `docs/exports/home-stats.json`。
 
 ### Git 提交规范 (Git Commit Convention)
 
