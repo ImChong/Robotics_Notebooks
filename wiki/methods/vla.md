@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-08-12
+updated: 2026-08-13
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作。"
 related:
   - ../entities/embodied-interview-qa.md
@@ -74,6 +74,9 @@ related:
   - ../entities/paper-bridgevla-plusplus.md
   - ../entities/paper-rtcf.md
   - ../entities/paper-dreamwam.md
+  - ../entities/paper-fact.md
+  - ../entities/paper-flex-pi.md
+  - ../entities/paper-neural-introspection-gating.md
   - ../entities/paper-robointer-1-5.md
   - ../entities/dexmal-dm05.md
   - ../entities/paper-last-hd-latent-physical-reasoning.md
@@ -129,6 +132,9 @@ sources:
   - ../../sources/papers/chronos_arxiv_2606_30318.md
   - ../../sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md
   - ../../sources/blogs/gemini_robotics_2_whole_body.md
+  - ../../sources/papers/fact_arxiv_2608_10232.md
+  - ../../sources/papers/flex_pi_arxiv_2608_10860.md
+  - ../../sources/papers/neural_introspection_gating_arxiv_2608_10824.md
 ---
 
 # VLA（Vision-Language-Action）
@@ -420,6 +426,9 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [BridgeVLA++（3D heatmap + 时空记忆）](../entities/paper-bridgevla-plusplus.md) — 𝒯/𝒮 记忆；RMBench 96.0%、RLBench 93.7%（arXiv:2608.05042）
 - [RTCF（免训练检索纠偏）](../entities/paper-rtcf.md) — PMA + 低频残差；LIBERO Long 61.6→68.6（arXiv:2608.04527；无公开代码）
 - [DreamWAM（beyond-RGB Joint WAM）](../entities/paper-dreamwam.md) — 训练多视图未来、部署 RGB-only；LIBERO-Plus 75.47%（arXiv:2608.04996）
+- [FACT（失败感知因果 WAM）](../entities/paper-fact.md) — 失败轨迹教后果；RoboTwin 87.5%、真机 +scoring 92%（arXiv:2608.10232；已开源）
+- [Flex-π（多流算力柔性 WAM）](../entities/paper-flex-pi.md) — RGB/DINO/pointmap 联合；action-only↔full joint（arXiv:2608.10860；代码待发布）
+- [Neural Introspection Gating](../entities/paper-neural-introspection-gating.md) — logit-margin 门控 VLA KV 缓存；LIBERO-Long 收回盲缓存掉点（arXiv:2608.10824；IROS 2026）
 - [RoboInter1.5（中间表示套件）](../entities/paper-robointer-1-5.md) — Data/VQA/VLM/VLA + IR 条件 World；部分开源（arXiv:2607.18709）
 - [Learning to Fold（LeHome 2026）](../entities/paper-lehome-learning-to-fold.md) — π₀.₅ + AWR/RECAP 异步 RL 与真机 DAgger；仿真 1st / 真机 2nd；全链路开源（arXiv:2606.27163）
 - [DEED](../entities/paper-deed.md) — G1-Edu + GR00T N1.6 零售补货：Data-Efficient + RECAP（未开源，arXiv:2607.20345）

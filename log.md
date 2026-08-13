@@ -1,3 +1,19 @@
+## [2026-08-13] ingest | sources/papers/fact_arxiv_2608_10232.md — FACT / G1 Confined-Space WBP / Flex-π / Neural Introspection Gating 四篇入库
+
+- **来源：**
+  - [`sources/papers/fact_arxiv_2608_10232.md`](sources/papers/fact_arxiv_2608_10232.md)（arXiv:2608.10232；UCSD；**已开源** + HF 权重）
+  - [`sources/papers/g1_confined_space_wbp_arxiv_2608_10220.md`](sources/papers/g1_confined_space_wbp_arxiv_2608_10220.md)（arXiv:2608.10220；UT Austin；**未开源**）
+  - [`sources/papers/flex_pi_arxiv_2608_10860.md`](sources/papers/flex_pi_arxiv_2608_10860.md)（arXiv:2608.10860；UW / AI2；**代码待发布**）
+  - [`sources/papers/neural_introspection_gating_arxiv_2608_10824.md`](sources/papers/neural_introspection_gating_arxiv_2608_10824.md)（arXiv:2608.10824；东京大学；IROS 2026；**未开源**）
+- **站点 / 仓库：** [`sources/sites/fact-wam-github-io.md`](sources/sites/fact-wam-github-io.md)、[`sources/repos/fact.md`](sources/repos/fact.md)、[`sources/sites/confined-space-wbp-humanoid-github-io.md`](sources/sites/confined-space-wbp-humanoid-github-io.md)、[`sources/sites/flex-pi-github-io.md`](sources/sites/flex-pi-github-io.md)、[`sources/repos/flex-pi.md`](sources/repos/flex-pi.md)、[`sources/sites/neural-introspection-gating-github-io.md`](sources/sites/neural-introspection-gating-github-io.md)
+- **新建：**
+  - [`wiki/entities/paper-fact.md`](wiki/entities/paper-fact.md)
+  - [`wiki/entities/paper-g1-confined-space-wbp.md`](wiki/entities/paper-g1-confined-space-wbp.md)
+  - [`wiki/entities/paper-flex-pi.md`](wiki/entities/paper-flex-pi.md)
+  - [`wiki/entities/paper-neural-introspection-gating.md`](wiki/entities/paper-neural-introspection-gating.md)
+- **交叉更新：** [`wiki/concepts/world-action-models.md`](wiki/concepts/world-action-models.md)、[`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/concepts/whole-body-control.md`](wiki/concepts/whole-body-control.md)、[`wiki/overview/wm-action-consequence-category-01-wam-action-prediction.md`](wiki/overview/wm-action-consequence-category-01-wam-action-prediction.md)
+- **机构注册：** [`schema/institutions.json`](schema/institutions.json) 新增 `u-tokyo`
+
 ## [2026-08-12] ingest | sources/papers/lucid_arxiv_2608_07746.md — LUCID（arXiv:2608.07746）分层技能级世界模型想象控制入库
 
 - **来源：** [`sources/papers/lucid_arxiv_2608_07746.md`](sources/papers/lucid_arxiv_2608_07746.md)（arXiv:2608.07746；曼彻斯特大学 / IIT；确认未开源）

@@ -2,8 +2,8 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-08-12
-summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、Dyna-2（百万小时人视频跨具身缩放）与 ω-0 等实例。"
+updated: 2026-08-13
+summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT（失败感知因果训练）、Flex-π（多流算力柔性）与 Dyna-2 等实例。"
 related:
   - ../entities/dyna-2.md
   - ../../roadmap/depth-wam.md
@@ -16,6 +16,8 @@ related:
   - ../entities/paper-dynawm-vla-online-correction.md
   - ../entities/paper-dreamsteer-vla-deployment-steering.md
   - ../entities/paper-dreamwam.md
+  - ../entities/paper-fact.md
+  - ../entities/paper-flex-pi.md
   - ../entities/paper-vt-wam-visuotactile-contact-rich.md
   - ../entities/paper-n0-twam.md
   - ../entities/neoteai.md
@@ -68,6 +70,8 @@ sources:
   - ../../sources/papers/world_action_planner_arxiv_2607_27599.md
   - ../../sources/papers/worldscape_policy_2_arxiv_2607_18840.md
   - ../../sources/papers/dreamwam_arxiv_2608_04996.md
+  - ../../sources/papers/fact_arxiv_2608_10232.md
+  - ../../sources/papers/flex_pi_arxiv_2608_10860.md
   - ../../sources/blogs/dyna_2_million_hour_wam.md
   - ../../sources/repos/awesome-wam-openmoss.md
   - ../../sources/sites/awesome-wam-openmoss.md
@@ -163,6 +167,10 @@ sources:
 **文献实例（Joint 族 + regret-aware 原生 CEDC · 4B 部署导向）**：[Kairos](../entities/paper-kairos-native-world-model-stack.md) 以 **Video DiT + Action DiT（MoT）** 联合 flow matching，**Stage I–II 仅训 VideoDiT、Stage III 联合 ActionDiT**；推理支持 **action-only**（不滚未来视频）与 **Kairos-joint**（联合去噪，LIBERO-Plus **89.0→90.8**）。v3 用 **control-sufficient state / \(\operatorname{Reg}_H\)** 框定目标；原生 **CEDC** 与 **仅训 ActionDiT** 消融（**−23.2** LIBERO-Plus）强调世界生成监督是控制相关表征的必要来源；代码/权重见 [kairos-agi/kairos](https://github.com/kairos-agi/kairos) 与 HF **Kairos3.1**（arXiv:2606.16533，Kairos Team / Ace Robotics）。
 
 **文献实例（Joint 族 + beyond-RGB 结构化未来 · FastWAM 系）**：[DreamWAM](../entities/paper-dreamwam.md) 在 **VideoDiT–ActionDiT** 上把未来从「仅 RGB」扩成 **appearance / motion / geometry / semantics**：RGB+RAFT flow **联合 latent 去噪**，DA3 depth 与 DINOv2 经 **gated residual** 注入；**推理关闭 beyond-RGB 分支**，部署仍 RGB-only。相对 matched Fast-WAM-Joint：LIBERO **98.00→98.90**、LIBERO-Plus **69.16→75.47**、真机视觉扰动 **55.6→74.4**；代码与 HF 权重已开源（arXiv:2608.04996，HUST / 地瓜 / 武大 / 地平线）。
+
+**文献实例（Joint 族 + 失败感知因果训练 · act-then-imagine）**：[FACT](../entities/paper-fact.md) 用共享因果扩散 Transformer **先去噪动作、再以干净动作条件化** 未来视频与任务进度；失败 rollout **掩码动作模仿、保留后果与下调进度**，降低 success-biased future hallucination，并可选 value best-of-N。RoboTwin 含失败共训 **87.5%**；真机 seen **89%**（+scoring **92%**）；代码与 HF 权重已开源（arXiv:2608.10232，UCSD）。
+
+**文献实例（Joint 族 + 多流算力柔性 · RGB/DINO/pointmap）**：[Flex-π](../entities/paper-flex-pi.md) 以冻结 Wan VAE **共享编码 RGB 与 3D pointmap**，并联合 DINOv3 语义流；MoT + 流 dropout / cross-modality forcing 使 **单 checkpoint** 覆盖 action-only（~60 ms）到 full joint。真机双臂相对最强基线最高约 **2–7×**；**代码待发布**（arXiv:2608.10860，UW / AI2）。
 
 **产业实例（Joint 族 + 百万小时人视频跨具身缩放 · 闭源）**：[Dyna-2](../entities/dyna-2.md)（Dyna Robotics，2026-08）在 **≥1M h** egocentric 人视频上预训练 MoT–DiT WAM（预训练 **零** 机器人数据），报告人 held-out 与 **人→机零样本** 离线幂律，并消融主张 **video co-training** 是跨具身缩放必要条件；推理可保持 reactive（动作塔不吃预测未来视频）。后训练少量机端数据上双臂 / 灵巧手 / 半人形；**未开源**——作缩放律与目标设计参照，不作可复现基线。
 

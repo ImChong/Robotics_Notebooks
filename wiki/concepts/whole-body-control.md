@@ -2,7 +2,7 @@
 type: concept
 tags: [control, wbc, humanoid, optimization]
 status: complete
-updated: 2026-08-09
+updated: 2026-08-13
 related:
   - ../entities/embodied-interview-qa.md
   - ../tasks/locomotion.md
@@ -17,6 +17,7 @@ related:
   - ../formalizations/lie-group-rigid-body-motions.md
   - ../formalizations/se3-representation.md
   - ../queries/when-to-use-wbc-vs-rl.md
+  - ../entities/paper-g1-confined-space-wbp.md
 summary: "WBC（全身控制）通常写成 QP / hierarchical QP：在全身动力学与任务优先级约束下统一求解关节力矩。"
 ---
 
@@ -160,6 +161,7 @@ print("joint acceleration command:", qdd_star)
 - [sources/papers/learn_weightlessness.md](../../sources/papers/learn_weightlessness.md) — Learn Weightlessness (WM) ingest 摘要
 - [sources/papers/bfm_survey_arxiv_2506_20487.md](../../sources/papers/bfm_survey_arxiv_2506_20487.md) — BFM 综述（arXiv:2506.20487，TPAMI 2025）
 - [sources/repos/awesome_bfm_papers.md](../../sources/repos/awesome_bfm_papers.md) — awesome-bfm-papers 精选列表
+- [sources/papers/g1_confined_space_wbp_arxiv_2608_10220.md](../../sources/papers/g1_confined_space_wbp_arxiv_2608_10220.md) — G1 狭窄空间全身规划（arXiv:2608.10220）
 - [sources/blogs/gemini_robotics_2_whole_body.md](../../sources/blogs/gemini_robotics_2_whole_body.md) — Gemini Robotics 2 全身控制产品叙事（闭源对照）
 - [sources/papers/bfm_humanoid_arxiv_2509_13780.md](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md) — BFM 论文摘要（CVAE + 位级掩码 + 在线蒸馏的人形 WBC 基础模型，arXiv:2509.13780）
 - [sources/papers/pilot_arxiv_2601_17440.md](../../sources/papers/pilot_arxiv_2601_17440.md) — PILOT：感知统一 loco-manipulation 低层控制器（arXiv:2601.17440）
@@ -177,6 +179,7 @@ print("joint acceleration command:", qdd_star)
 - [SE(3) 位姿表示形式化](../formalizations/se3-representation.md) — WBC 任务空间目标表示的基础
 - [LEGS（论文实体）](../entities/paper-legs-embodied-gaussian-splatting-vla.md) — [SONIC](../methods/sonic-motion-tracking.md) 作低层 WBC 合成 loco-manip VLA 数据（arXiv:2606.01458）
 - [MotionWAM（论文实体）](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) — WAM 在 **SONIC 统一 motion token** 空间预测全身行为，替代上下身分层命令接口（arXiv:2606.09215）
+- [G1 Confined-Space WBP](../entities/paper-g1-confined-space-wbp.md) — 狭窄空间三阶段全身规划 + 残差跟踪（arXiv:2608.10220；UT Austin）
 - [Query：什么时候该用 WBC，什么时候该用 RL？](../queries/when-to-use-wbc-vs-rl.md)
 - [wbc_fsm](../entities/wbc-fsm.md) — WBC+FSM 在 Unitree G1 上的 C++ 部署实现
 - [Behavior Foundation Model（BFM 概念）](./behavior-foundation-model.md) — 人形 WBC 行为基础模型 taxonomy

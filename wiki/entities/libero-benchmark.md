@@ -2,7 +2,7 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
-updated: 2026-08-12
+updated: 2026-08-13
 summary: "LIBERO：用一百三十个机械臂任务控制对象、布局、目标和语言变化，专门评估终身学习与迁移中的分布偏移；固定任务套件和数据接口便于比较策略是记住训练场景还是获得可迁移能力。"
 related:
   - ../concepts/sim2real.md
@@ -11,12 +11,14 @@ related:
   - ../entities/paper-world-action-planner.md
   - ../entities/paper-why-action-chunking-improves-bc.md
   - ../entities/paper-actfovea.md
+  - ../entities/paper-neural-introspection-gating.md
   - ../queries/hmi-opensource-projects-coverage.md
 sources:
   - ../../sources/repos/libero-benchmark.md
   - ../../sources/repos/humanoid-motion-intelligence.md
   - ../../sources/papers/world_action_planner_arxiv_2607_27599.md
   - ../../sources/papers/why_action_chunking_improves_bc_corl2026.md
+  - ../../sources/papers/neural_introspection_gating_arxiv_2608_10824.md
 ---
 
 # LIBERO
@@ -95,6 +97,7 @@ flowchart LR
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
 - [World Action Planner](./paper-world-action-planner.md) — LIBERO-Long / Object 上用 pose-image WM + VLM 规划测组合与新布局泛化
 - [ActFovea](./paper-actfovea.md) — 在本基准四套件（40 任务 / 2000 episodes）上做 VLA 运行时扰动与防护评测
+- [Neural Introspection Gating](./paper-neural-introspection-gating.md) — OpenVLA / OFT 上 logit-margin 门控 KV 缓存；Long/Goal 收回盲缓存掉点（arXiv:2608.10824）
 - [Why Action Chunking Improves BC](./paper-why-action-chunking-improves-bc.md) — Libero-90 上 Delay / RDE 相对 action chunking 的机制消融
 - [SLIM-0.5B](./paper-slim-05b.md) — 0.47B latent 策略；LIBERO 97.5% / LIBERO-Plus 77.45%（开源权重）
 

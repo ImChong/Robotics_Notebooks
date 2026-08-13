@@ -2,16 +2,20 @@
 type: overview
 tags: [world-models, world-action-models, category-hub, survey]
 status: complete
-updated: 2026-08-07
-summary: "世界模型动作后果专题 · 01 — WAM 直接执行、修正基础 VLA 还是部署前筛选？并链 DreamWAM / RTCF 邻近坐标。"
+updated: 2026-08-13
+summary: "世界模型动作后果专题 · 01 — WAM 直接执行、修正基础 VLA 还是部署前筛选？并链 DreamWAM / FACT / Flex-π / RTCF 邻近坐标。"
 related:
   - ./robot-world-models-action-consequence-technology-map.md
   - ./wm-action-consequence-category-02-contact-modeling.md
   - ../concepts/world-action-models.md
   - ../entities/paper-dreamwam.md
+  - ../entities/paper-fact.md
+  - ../entities/paper-flex-pi.md
   - ../entities/paper-rtcf.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
+  - ../../sources/papers/fact_arxiv_2608_10232.md
+  - ../../sources/papers/flex_pi_arxiv_2608_10860.md
 ---
 
 # 世界模型动作后果分类 01：WAM 动作后果预测
@@ -37,6 +41,8 @@ sources:
 | Worldscape-MoE | [../entities/paper-worldscape-moe-heterogeneous-action](../entities/paper-worldscape-moe-heterogeneous-action.md) | 共享/专属 MoE 统一相机、关节、手部异构动作接口 |
 | WorldScape Policy 2.0 | [../entities/paper-worldscape-policy-2](../entities/paper-worldscape-policy-2.md) | 同团队下游 WAM 策略：事件记忆走 VLM、视觉记忆走 DiT，多模态提示可控执行 |
 | DreamWAM（邻近） | [../entities/paper-dreamwam](../entities/paper-dreamwam.md) | Joint WAM：beyond-RGB 未来表征训练、RGB-only 部署（非本专题原文四篇） |
+| FACT（邻近） | [../entities/paper-fact](../entities/paper-fact.md) | 失败感知因果 WAM：失败轨迹教后果；可选 value 筛选候选 |
+| Flex-π（邻近） | [../entities/paper-flex-pi](../entities/paper-flex-pi.md) | 多流 Joint WAM + 算力柔性（action-only↔full joint） |
 | RTCF（邻近） | [../entities/paper-rtcf](../entities/paper-rtcf.md) | **免训练** 冻结 VLA 记忆纠偏；与 DynaWM「可训修正」对照 |
 
 ## 关联页面
@@ -44,6 +50,8 @@ sources:
 - [World Action Models](../concepts/world-action-models.md)
 - [动作后果技术地图](./robot-world-models-action-consequence-technology-map.md)
 - [DreamWAM](../entities/paper-dreamwam.md)
+- [FACT](../entities/paper-fact.md)
+- [Flex-π](../entities/paper-flex-pi.md)
 - [RTCF](../entities/paper-rtcf.md)
 
 ## 参考来源
