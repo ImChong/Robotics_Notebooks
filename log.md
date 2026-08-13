@@ -1,3 +1,12 @@
+## [2026-08-13] ingest | sources/papers/vidihand_arxiv_2606_30308.md — 复核 ViDiHand（vidihand.github.io / arXiv:2606.30308）开源状态并补齐站点/仓库归档
+
+- **触发：** 用户指定 <https://vidihand.github.io/> 与 <https://arxiv.org/abs/2606.30308>
+- **步骤 2.5：** 项目页 Code → [NTUYWANG103/ViDiHand](https://github.com/NTUYWANG103/ViDiHand)；仓内仅 README「Code will be released soon」→ **代码待发布**
+- **新建：** [`sources/sites/vidihand-github-io.md`](sources/sites/vidihand-github-io.md)、[`sources/repos/vidihand.md`](sources/repos/vidihand.md)
+- **更新：** [`sources/papers/vidihand_arxiv_2606_30308.md`](sources/papers/vidihand_arxiv_2606_30308.md)、[`wiki/entities/paper-vidihand.md`](wiki/entities/paper-vidihand.md)
+- **交叉：** [`wiki/methods/wilor.md`](wiki/methods/wilor.md)
+
+
 ## [2026-08-13] ingest | sources/papers/fact_arxiv_2608_10232.md — FACT / G1 Confined-Space WBP / Flex-π / Neural Introspection Gating 四篇入库
 
 - **来源：**

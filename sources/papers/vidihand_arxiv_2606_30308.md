@@ -5,10 +5,18 @@
 - **标题：** The Surprising Effectiveness of Video Diffusion Models for Hand Motion Reconstruction
 - **类型：** paper / computer-vision / hand-pose / egocentric / video-diffusion / perception / embodied-ai
 - **arXiv：** <https://arxiv.org/abs/2606.30308> · PDF：<https://arxiv.org/pdf/2606.30308.pdf>
-- **项目页：** <https://ACE-ViDiHand.github.io>（亦见 <https://vidihand.github.io>）
+- **项目页：** <https://vidihand.github.io/> — 归档见 [`sources/sites/vidihand-github-io.md`](../sites/vidihand-github-io.md)
+- **代码：** <https://github.com/NTUYWANG103/ViDiHand> — 归档见 [`sources/repos/vidihand.md`](../repos/vidihand.md)（**待发布**）
 - **机构：** 南洋理工大学（NTU，Yuxi Wang, Wenqi Ouyang, Tianyi Wei, Zhiwei Zeng, Zhiqi Shen†, Xingang Pan†）；上海交通大学（SJTU，Chengkai Jin, Yufei Liu, Siyuan Huang）
 - **入库日期：** 2026-07-13
+- **复核日期：** 2026-08-13（步骤 2.5：项目页 Code 链与仓库内容核对）
 - **一句话说明：** **ViDiHand** 首次将 **预训练视频 diffusion（Wan2.1-VACE）** 的内部表征用于 **第一视角双手 4D MANO 重建**：仅微调 **VACE 分支** 的 **hand-overlay rendering**（2D 骨架 → MANO mesh 两阶段课程）保留世界先验；**双分支 decoder**（hand-token + joint-heatmap + 互注意力 + 闭式 in-plane 平移求解）从单层中间特征读出 **metric-scale 双手轨迹**——**无需 detector、motion infiller 或 test-time optimization**；在 **ARCTIC / HOT3D / HOI4D** 上大幅领先 **WiLoR、OmniHands、HaMeR** 等基线（例：ARCTIC FAcc **0.997**、Jitter **3.18** mm/frame²）。
+
+## 开源状态（步骤 2.5，截至 2026-08-13）
+
+- **项目页：** <https://vidihand.github.io/> 页首 **Code** 指向 GitHub（论文摘要亦写此项目页为权威入口；旧镜像 `ACE-ViDiHand.github.io` 勿再作主链）。
+- **仓库核查：** [NTUYWANG103/ViDiHand](https://github.com/NTUYWANG103/ViDiHand) 仅含 README，明文 **「Code will be released soon」**；无训练/推理脚本、无权重、无 SPDX。
+- **结论：** **代码待发布** — wiki 写「宣称将开源」；`## 源码运行时序图` 标 **不适用**。
 
 ## 核心摘录（面向 wiki 编译）
 

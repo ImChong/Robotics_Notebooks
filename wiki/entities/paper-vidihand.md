@@ -1,10 +1,11 @@
 ---
 type: entity
 tags: [paper, hand-pose, egocentric, video-diffusion, perception, manipulation, embodied-ai, ntu, sjtu]
-status: stable
-summary: "ViDiHand：用 hand-overlay rendering 微调 Wan2.1-VACE，从视频 diffusion 中间特征双分支解码 egocentric 双手 4D MANO——无 detector/infiller/TTO，在 ARCTIC/HOT3D/HOI4D 全面 SOTA。"
-updated: 2026-08-07
+status: complete
+summary: "ViDiHand（arXiv:2606.30308，NTU/SJTU）：hand-overlay 微调 Wan2.1-VACE，双分支解码 egocentric 双手 4D MANO——无 detector/infiller/TTO；ARCTIC/HOT3D/HOI4D SOTA；项目页有 Code 链但仓库仍待发布。"
+updated: 2026-08-13
 arxiv: "2606.30308"
+code: "https://github.com/NTUYWANG103/ViDiHand"
 venue: "arXiv 2026"
 related:
   - ../queries/robot-perception-stack-selection-loop.md
@@ -17,6 +18,8 @@ related:
   - ./paper-egowam-egocentric-human-wam-co-training.md
 sources:
   - ../../sources/papers/vidihand_arxiv_2606_30308.md
+  - ../../sources/sites/vidihand-github-io.md
+  - ../../sources/repos/vidihand.md
   - ../../sources/blogs/macrodata_egocentric_video_3d_hand_actions.md
 ---
 
@@ -52,7 +55,9 @@ sources:
 | 输出 | 双手 **MANO**（朝向、关节角、形状）+ **相机系平移** |
 | 输入 | 全分辨率 **egocentric 视频 clip**（81 帧；特征 21 latent frames） |
 | arXiv | <https://arxiv.org/abs/2606.30308> |
-| 项目页 | <https://ACE-ViDiHand.github.io> |
+| 项目页 | <https://vidihand.github.io/> |
+| 代码 | <https://github.com/NTUYWANG103/ViDiHand>（**待发布**） |
+| 开源 | **代码待发布**（截至 2026-08-13：项目页有 Code 链，仓内仅 README「Code will be released soon」） |
 
 ## 流程总览
 
@@ -106,6 +111,20 @@ flowchart TB
 - Decoder 损失：**L_MANO + L_cam + L_img + L_vis + L_temp**（含 **幻觉手抑制** 与 **平移加速度平滑**）。
 - 推理：**单次 VACE 前向** 取特征 → decoder；**无 detector、infiller、TTO**。
 
+## 源码运行时序图
+
+**不适用**（截至 2026-08-13：官方仓 [NTUYWANG103/ViDiHand](https://github.com/NTUYWANG103/ViDiHand) 无可运行训练/推理入口，README 写明代码即将发布）。论文宣称推理路径为：egocentric clip → 单次 VACE 前向取 \(L{=}15,\tau{\approx}0.7\) 特征 → 双分支 decoder → 双手 MANO；待代码落地后按 [`sources/repos/vidihand.md`](../../sources/repos/vidihand.md) 补 `sequenceDiagram`。
+
+## 工程实践
+
+| 项 | 建议读法 |
+|----|----------|
+| 选型场景 | 需要 **遮挡鲁棒 + 低 jitter** 的 egocentric 双手轨迹标注 / 模仿前置 |
+| 对照基线 | 同输入下先看 [WiLoR](../methods/wilor.md) 是否掉检闪烁；再看 OmniHands 是否仍遮挡崩 |
+| 复现状态 | Watch 官方仓；落地前勿承诺可训练 |
+| 数据协议 | 读 ARCTIC/HOT3D/HOI4D 时用论文 **penalty protocol**（FN 计入占位误差） |
+| 与开源栈分工 | 要立刻跑通 → [Macrodata Hand-Action](../methods/macrodata-egocentric-hand-action.md)；要 SOTA 遮挡叙事 → ViDiHand（待代码） |
+
 ## 实验与评测
 
 ### 数据集
@@ -120,16 +139,19 @@ flowchart TB
 
 - 标准 per-hand 指标只评 **TP**，会奖励「跳过硬帧」；本文对 **FN** 注入 **identity MANO @ 原点** 占位误差，使 **检测与重建** 在同一协议下可比。
 
-### 相对基线（项目页摘要，ARCTIC）
+### 相对基线（项目页表，节选）
 
-| 方法 | FAcc ↑ | MPJPE-p ↓ | Jitter ↓ |
-|------|--------|-----------|----------|
-| WiLoR | 0.919 | 22.0 | 24.1 |
-| OmniHands | 0.866 | 29.7 | 45.3 |
-| HaMeR | 0.875 | 29.2 | 18.3 |
-| **ViDiHand** | **0.997** | **21.7** | **3.18** |
+| 基准 | 方法 | FAcc ↑ | MPJPE-p ↓ | Jitter ↓ |
+|------|------|--------|-----------|----------|
+| ARCTIC | WiLoR | 0.919 | 22.0 | 24.1 |
+| ARCTIC | OmniHands | 0.866 | 29.7 | 45.3 |
+| ARCTIC | **ViDiHand** | **0.997** | **21.7** | **3.18** |
+| HOT3D | WiLoR | 0.827 | 31.0 | 18.0 |
+| HOT3D | **ViDiHand** | **0.948** | **21.5** | **3.74** |
+| HOI4D（held-out） | WiLoR | 0.962 | 33.7 | 17.4 |
+| HOI4D | **ViDiHand** | **0.984** | **30.1** | **4.01** |
 
-- **定性**：同一段 egocentric 输入下，WiLoR **检测掉帧 + 姿态闪烁**；OmniHands **减闪烁** 但遮挡与大运动仍差；ViDiHand **双手 identity 稳定、遮挡下连贯**。
+- **定性**：同一段 egocentric 输入下，WiLoR **检测掉帧 + 姿态闪烁**；OmniHands **减闪烁** 但遮挡与大运动仍差；ViDiHand **双手 identity 稳定、遮挡下连贯**（项目页 Hot3D / Hoi4D / in-the-wild 多视角对照）。
 
 ## 结论
 
@@ -150,15 +172,18 @@ flowchart TB
 | 开源工程配方（检测+时序手+前馈几何） | [Macrodata Hand-Action](../methods/macrodata-egocentric-hand-action.md) | 保守 WiLoR + HaWoR + VGGT；卡 Action MPJPE/FPS | 有（VGGT） | **无 detector；扩散先验** |
 | Video diffusion 下游 | [mimic-video](../methods/mimic-video.md) 等 | 操作/动作生成 | 强 | **感知：4D hand 重建** |
 
-## 常见误区与局限
+## 局限与风险
 
 - **不是「把 diffusion 当 TTO 拟合器」**：适配用 **渲染编辑目标**，推理 **前向一次**，与 HaMR 类 **test-time fitting** 不同。
 - **算力与骨干绑定**：依赖 **Wan2.1-VACE** 规模；decoder 训练 **不反传** 扩散骨干，换骨干需重新适配。
 - **双手 MANO 专精**：与 **全身 SMPL、机器人 retarget** 的系统集成仍是工程课题；与 [Manipulation](../tasks/manipulation.md) 策略栈的接口需额外标定/语义层。
+- **复现缺口**：截至 2026-08-13 **代码与权重未发布**；数字以论文/项目页为准，暂不可本地闭环复现。
 
 ## 参考来源
 
 - [vidihand_arxiv_2606_30308.md](../../sources/papers/vidihand_arxiv_2606_30308.md)
+- [vidihand.github.io 项目页归档](../../sources/sites/vidihand-github-io.md)
+- [NTUYWANG103/ViDiHand 仓库归档](../../sources/repos/vidihand.md)
 - Wang et al., *The Surprising Effectiveness of Video Diffusion Models for Hand Motion Reconstruction*, [arXiv:2606.30308](https://arxiv.org/abs/2606.30308)
 
 ## 关联页面
@@ -171,6 +196,7 @@ flowchart TB
 
 ## 推荐继续阅读
 
-- [ViDiHand 项目页](https://ACE-ViDiHand.github.io)
+- [ViDiHand 项目页](https://vidihand.github.io/)
+- [官方代码仓（待发布）](https://github.com/NTUYWANG103/ViDiHand)
 - [VACE（Wan2.1 可控视频）](https://arxiv.org/abs/2503.07590) — 本文骨干来源
 - [EgoWAM](./paper-egowam-egocentric-human-wam-co-training.md) — 野外 egocentric 人数据如何进入机器人策略
