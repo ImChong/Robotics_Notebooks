@@ -2,7 +2,7 @@
 type: method
 tags: [imitation-learning, vla, action-chunking, latency, transformers, deployment]
 status: complete
-updated: 2026-08-12
+updated: 2026-08-13
 summary: "Action Chunking 让策略一次输出未来多步动作序列，以降低长时序误差并缓解高延迟模型与高频控制器之间的时域错配；机制上可拆为延迟观测条件化与隐式集成，部署不必等于播放整段 chunk。"
 sources:
   - ../../sources/repos/act-aloha.md
@@ -12,6 +12,7 @@ sources:
   - ../../sources/repos/xiaomi-robotics-0.md
   - ../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md
   - ../../sources/papers/why_action_chunking_improves_bc_corl2026.md
+  - ../../sources/papers/wam_realtime_async_arxiv_2608_01880.md
   - ../../sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md
 related:
   - ./behavior-cloning.md
@@ -26,6 +27,7 @@ related:
   - ../entities/paper-pi-r2.md
   - ../entities/paper-why-action-chunking-improves-bc.md
   - ../entities/paper-autointervene.md
+  - ../entities/paper-wam-realtime-async.md
   - ../overview/sergey-levine-diffusion-expressive-policies.md
 ---
 
@@ -189,4 +191,5 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
 - [πR²](../entities/paper-pi-r2.md) — 对 chunking flow 做本体感快通道 + 时延自适应日程，GR00T 约 25 Hz 闭环（arXiv:2607.26055）
 - [Why Action Chunking Improves BC](../entities/paper-why-action-chunking-improves-bc.md) — CoRL 2026：Delay / RDE 机制消融与「训练≠必须 chunk 执行」
 - [AutoIntervene](../entities/paper-autointervene.md) — 对提议 chunk 做视觉–动作支持监控与双向自动接管（arXiv:2608.07065）
+- [WAM 实时异步部署](../entities/paper-wam-realtime-async.md) — 双臂 WAM 上对照 sync/async/blend/simple/infer/train（arXiv:2608.01880）
 - [Sergey Levine：表达力更强的连续动作策略](../overview/sergey-levine-diffusion-expressive-policies.md) — 生成式动作头如何使长 chunk 在实践上可行

@@ -12,10 +12,14 @@ related:
   - ../entities/paper-fact.md
   - ../entities/paper-flex-pi.md
   - ../entities/paper-rtcf.md
+  - ../entities/paper-motubrain.md
+  - ../entities/paper-wam-realtime-async.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
   - ../../sources/papers/fact_arxiv_2608_10232.md
   - ../../sources/papers/flex_pi_arxiv_2608_10860.md
+  - ../../sources/papers/motubrain_arxiv_2604_27792.md
+  - ../../sources/papers/wam_realtime_async_arxiv_2608_01880.md
 ---
 
 # 世界模型动作后果分类 01：WAM 动作后果预测
@@ -44,6 +48,8 @@ sources:
 | FACT（邻近） | [../entities/paper-fact](../entities/paper-fact.md) | 失败感知因果 WAM：失败轨迹教后果；可选 value 筛选候选 |
 | Flex-π（邻近） | [../entities/paper-flex-pi](../entities/paper-flex-pi.md) | 多流 Joint WAM + 算力柔性（56 组合；action-only ~60 ms↔full joint ~193 ms） |
 | RTCF（邻近） | [../entities/paper-rtcf](../entities/paper-rtcf.md) | **免训练** 冻结 VLA 记忆纠偏；与 DynaWM「可训修正」对照 |
+| Motubrain（邻近） | [../entities/paper-motubrain](../entities/paper-motubrain.md) | 生数 Joint WAM；RoboTwin 95.8/96.1（仓占位） |
+| WAM 异步部署（邻近） | [../entities/paper-wam-realtime-async](../entities/paper-wam-realtime-async.md) | 同平台六策略：对齐 → blend → train |
 
 ## 关联页面
 
@@ -53,6 +59,8 @@ sources:
 - [FACT](../entities/paper-fact.md)
 - [Flex-π](../entities/paper-flex-pi.md)
 - [RTCF](../entities/paper-rtcf.md)
+- [Motubrain](../entities/paper-motubrain.md)
+- [WAM 实时异步部署](../entities/paper-wam-realtime-async.md)
 
 ## 参考来源
 

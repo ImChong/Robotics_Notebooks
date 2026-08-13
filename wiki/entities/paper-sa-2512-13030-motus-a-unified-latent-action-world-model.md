@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-08-10
+updated: 2026-08-13
 arxiv: "2512.13030"
 venue: "arXiv 2025"
 summary: "Unified latent action world model."
@@ -13,6 +13,7 @@ related:
   - ../methods/model-based-rl.md
   - ../tasks/manipulation.md
   - ../tasks/locomotion.md
+  - ./paper-motubrain.md
 sources:
   - ../../sources/papers/sun_awesome_wm_2512_13030_motus-a-unified-latent-action-world-mode.md
   - ../../sources/papers/sun_awesome_wm_catalog.md
@@ -90,6 +91,7 @@ Unified latent action world model.
 - 列表实体：[Awesome World Models](../entities/awesome-world-models.md)
 - 技术地图：[Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)
 - 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+- 后继产品级 WAM：[Motubrain](./paper-motubrain.md)
 
 ## 参考来源
 

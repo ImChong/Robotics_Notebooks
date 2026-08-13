@@ -2,18 +2,20 @@
 type: query
 tags: [vla, deployment, latency, manipulation, foundation-policy, real-robot, tensorrt]
 status: complete
-updated: 2026-08-11
+updated: 2026-08-13
 summary: "面向真机部署的 VLA 指南：深入探讨了如何利用 TensorRT 加速、异步推理架构、Action Chunking 以及安全回退机制解决大模型部署中的延迟与抖动问题。"
 related:
   - ../methods/vla.md
   - ../concepts/foundation-policy.md
   - ../tasks/manipulation.md
   - ../methods/action-chunking.md
+  - ../entities/paper-wam-realtime-async.md
   - ./vla-with-low-level-controller.md
 sources:
   - ../../sources/papers/rl_foundation_models.md
   - ../../sources/papers/diffusion_and_gen.md
   - ../../sources/papers/sim2real.md
+  - ../../sources/papers/wam_realtime_async_arxiv_2608_01880.md
 ---
 
 # VLA 真机部署指南：延迟、异步与加速
@@ -92,6 +94,7 @@ VLA 应当预测未来的一段轨迹（如未来 2 秒内的 16 步动作），
 - [Cyclo Intelligence（实体）](../entities/cyclo-intelligence.md)
 - [ActFovea（实体）](../entities/paper-actfovea.md) — 部署期扰动（遮挡 / 延迟 / 动作漂移 / 观测冻结）的免训练运行时防护与安全失败
 - [AutoIntervene（实体）](../entities/paper-autointervene.md) — action-chunking 策略的视觉–动作支持监控与双向自动接管
+- [WAM 实时异步部署](../entities/paper-wam-realtime-async.md) — WAM 秒级延迟下六种 chunk 融合对照（先对齐再 blend）
 
 ## 参考来源
 - [sources/papers/rl_foundation_models.md](../../sources/papers/rl_foundation_models.md)
