@@ -109,6 +109,7 @@ async function readState(page) {
       degValue: degSlider ? Number(degSlider.value) : null,
       degMax: degSlider ? Number(degSlider.max) : null,
       sectionExists: !!document.getElementById('filter-recency-section'),
+      mode: document.getElementById('filter-recency-section')?.getAttribute('data-recency-mode') || '',
     };
   });
 }
@@ -155,6 +156,7 @@ function parseVisibleCount(countText) {
     const initial = await readState(page);
     console.log('initial', initial);
     assert(initial.sectionExists, 'filter-recency-section missing');
+    assert(initial.mode === 'node', `default recency mode should be node, got ${initial.mode}`);
     assert(initial.value === initial.max, `default should be max/all, got value=${initial.value} max=${initial.max}`);
     assert(initial.label === '全部', `default label should be 全部, got ${initial.label}`);
     assert(!initial.badgeVisible, 'filter badge should be hidden at default');

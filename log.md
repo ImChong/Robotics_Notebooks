@@ -1,4 +1,9 @@
-## [2026-08-13] ingest | sources/papers/flex_pi_arxiv_2608_10860.md — 独立深挖 Flex-π（arXiv:2608.10860）多流算力柔性 WAM
+## [2026-08-13] structural | docs/graph.html — 更新时间 Top N 可切换按日期整日保留
+
+- **改动：** 筛选浮窗「更新时间 Top N」增加「按节点 / 按日期」按钮；按日期时滑块按最近活跃日计数，同一天节点一并留下
+- **验证：** `scripts/verify_graph_recency_date_mode.cjs`
+
+
 
 - **触发：** 用户指定论文 Flex-π（UW / AI2；Yan / Liu / Fan / Cai 等；2026-08 arXiv 预印本）；要求自动合并
 - **步骤 2.5 复核：** 项目页 <https://flex-pi.github.io/> Code → [geyan21/flex-pi](https://github.com/geyan21/flex-pi)；GitHub API `size=1`、contents 仅 README「The code is ready soon」→ **代码待发布**
