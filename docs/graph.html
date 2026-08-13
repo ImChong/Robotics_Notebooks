@@ -3050,7 +3050,7 @@
     }));
     const edges = graphData.edges.map(e => ({ ...e }));
 
-    /* ── 更新明度渐变：节点时间口径对齐「更新记录」页（log.md 最近活跃日 activity），
+    /* ── 更新明度渐变：节点时间口径对齐「更新记录」页（git 最近触达日 activity），
        把归一化时间 t∈[0,1]（0=最旧，1=最新）经指数曲线
          f(t)=(e^{k t}-1)/(e^k-1)
        映射到 [RECENCY_DIM_MIN, 1]，使越新的节点越明亮、近期对比更陡；
@@ -3143,7 +3143,7 @@
     }
 
     /* ── 更新时间 Top N 筛选（滑动条）：左=最新子集，右=全部；
-       排序口径与「更新明度渐变」一致（log.md 最近活跃日 activity / _recencyTs）；
+       排序口径与「更新明度渐变」一致（git 最近触达日 activity / _recencyTs）；
        无 activity 的节点视为最旧。与连接数 Top N 同时生效时取交集 ── */
     const recencyTopMin = Math.min(10, totalNodeCount);
     let topRecencyLimit = totalNodeCount;

@@ -11,7 +11,9 @@ import generate_link_graph as glg
 class WikiGitAddedDatesTest(unittest.TestCase):
     def setUp(self) -> None:
         glg._WIKI_GIT_ADDED_DATES_CACHE = None
+        glg._WIKI_GIT_HISTORY_CACHE = None
         self.addCleanup(lambda: setattr(glg, "_WIKI_GIT_ADDED_DATES_CACHE", None))
+        self.addCleanup(lambda: setattr(glg, "_WIKI_GIT_HISTORY_CACHE", None))
 
     def test_collects_first_add_date(self) -> None:
         log_text = (

@@ -13,7 +13,7 @@ lint_wiki.py — 自动化 wiki 健康检查脚本
   8. 陈旧页面（sources 文件比对应 wiki 页新，需 review）
   9. 矛盾检测（同一概念在不同页面有相反描述）
  10. Frontmatter 缺少 type 字段（V8 新增）
- 11. log.md 活跃度检查（V8 新增：最近 30 天无操作则警告）
+ 11. 知识库活跃度检查（V8/V32：优先 wiki/roadmap 近 30 天 git 提交；git 不可用时回退 log.md）
  12. concepts/methods/tasks 缺少 summary/description 字段（V10 新增）
  13. formalizations/ 公式变量在正文是否有物理含义解释（V21 新增）
  14. 高频引用的 methods/ 缺少 queries/ 操作指南或 comparisons/ 对比页（V22 新增，信息型）
@@ -793,10 +793,40 @@ def _check_frontmatter(pages: list[Path], results: dict[str, Any]) -> None:
 
 
 def _check_log_activity(results: dict[str, Any]) -> None:
-    """log.md 活跃度检查（最近 30 天内是否有操作记录）。"""
+    """知识库活跃度：优先 wiki/roadmap 近 30 天 git 提交，否则回退 log.md。"""
+    try:
+        git_result = subprocess.run(
+            [
+                "git",
+                "-C",
+                str(REPO_ROOT),
+                "log",
+                "-1",
+                "--since=30 days ago",
+                "--format=%cs",
+                "--",
+                "wiki",
+                "roadmap",
+            ],
+            capture_output=True,
+            text=True,
+            check=False,
+            timeout=30,
+        )
+        if git_result.returncode == 0:
+            latest_git = git_result.stdout.strip()
+            if latest_git:
+                return
+            results["log_inactive"].append(
+                "wiki/ 与 roadmap/ 最近 30 天无提交（知识库可能停止维护）"
+            )
+            return
+    except (subprocess.SubprocessError, OSError, ValueError):
+        pass
+
     log_path = REPO_ROOT / "log.md"
     if not log_path.exists():
-        results["log_inactive"].append("log.md 文件不存在，无法检查知识库活跃度")
+        results["log_inactive"].append("log.md 文件不存在，且无法用 git 检查知识库活跃度")
         return
 
     log_content = log_path.read_text(encoding="utf-8")
@@ -1723,7 +1753,7 @@ def format_report(results: dict[str, Any]) -> str:
             "💡",
         ),
         ("missing_type", "Frontmatter 缺少 type 字段", "⚠️"),
-        ("log_inactive", "log.md 活跃度警告", "⚠️"),
+        ("log_inactive", "知识库活跃度警告（git / log.md）", "⚠️"),
         ("missing_summary", "缺少摘要字段（summary/description）", "⚠️"),
         ("query_format", "Query 页面格式不完整（缺 Query 产物/参考来源/关联页面）", "⚠️"),
         ("formalization_no_formula", "Formalization 页面缺少公式块", "⚠️"),
@@ -1831,7 +1861,7 @@ def main():
     parser.add_argument(
         "--write-log",
         action="store_true",
-        help="将结果插入 log.md 顶部（与 append_log / 首页 latest_wiki_nodes 一致）",
+        help="将结果插入 log.md 顶部（叙事层；与 append_log 一致）",
     )
     parser.add_argument(
         "--report", action="store_true", help="将 markdown 健康报告保存到 exports/lint-report.md"

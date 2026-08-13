@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-append_log.py — 向 log.md 顶部插入一条操作记录（新记录在上，与首页 latest_wiki_nodes 解析一致）
+append_log.py — 向 log.md 顶部插入一条操作记录（叙事层；站点活动以 git 为准）
 
 用法:
     python3 scripts/append_log.py <op> "<描述>"
