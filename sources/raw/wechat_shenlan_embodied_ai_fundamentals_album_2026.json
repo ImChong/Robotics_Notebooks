@@ -1,0 +1,123 @@
+{
+  "album_title": "《具身智能基础》",
+  "album_id": "4525948187102363653",
+  "biz": "MzkwMDcyNDUzMQ==",
+  "account": "深蓝具身智能",
+  "album_url": "https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkwMDcyNDUzMQ==&action=getalbum&album_id=4525948187102363653",
+  "article_count": 10,
+  "description": "每周更新。再新的方法，也脱胎于那些“老派的”基础。不如一起，用今天的眼光理解、重温一遍。",
+  "fetched": "2026-08-13",
+  "note": "album pos_num 为微信专辑展示序（非专栏连载序）。series_ord 按文内自报篇号 / 发表日：01 李群 → 10 雅可比。",
+  "articles": [
+    {
+      "series_ord": 1,
+      "album_pos": 3,
+      "title": "彻底搞懂具身智能必备知识：李群、李代数、四元数",
+      "mid": "2247503774",
+      "sn": "4d1e30dcce8a8e833f90ee1b951263e7",
+      "short_url": "https://mp.weixin.qq.com/s/JviRH2LW-fkCHA5gY7Qflw",
+      "status": "scraped",
+      "date": "2026-05-22",
+      "blog": "sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md"
+    },
+    {
+      "series_ord": 2,
+      "album_pos": 2,
+      "title": "彻底搞懂具身智能的\"方向感\"：三维世界坐标变换",
+      "mid": "2247504141",
+      "sn": "f2ac23aef6b19e83cba2fd35f7c83967",
+      "short_url": "https://mp.weixin.qq.com/s/P5Jm7bMhaTHsytHStFbbLg",
+      "status": "scraped",
+      "date": "2026-05-28",
+      "blog": "sources/blogs/wechat_shenlan_3d_coordinate_transforms.md"
+    },
+    {
+      "series_ord": 3,
+      "album_pos": 4,
+      "title": "具身智能基础｜彻底搞懂：黎曼流形、切空间下的运动",
+      "mid": "2247504498",
+      "sn": "3e6768073be9fb431b825cddcdc21393",
+      "short_url": "https://mp.weixin.qq.com/s/uFTKN5FDvlHQxOSspvxVZw",
+      "status": "scraped",
+      "date": "2026-06-04",
+      "blog": "sources/blogs/wechat_shenlan_riemannian_manifold_tangent_space.md"
+    },
+    {
+      "series_ord": 4,
+      "album_pos": 5,
+      "title": "强化学习必备知识①：跑通一个具身控制的最小闭环",
+      "mid": "2247504778",
+      "sn": "245a63786cdc13c1a0b7f464700ab8ad",
+      "short_url": "https://mp.weixin.qq.com/s/hHkQqLfIOTn0CoAZNuLWJA",
+      "status": "scraped",
+      "date": "2026-06-11",
+      "blog": "sources/blogs/wechat_shenlan_rl_embodied_minimal_closed_loop.md"
+    },
+    {
+      "series_ord": 5,
+      "album_pos": 1,
+      "title": "补全具身智能L0级必备知识：齐次坐标与齐次变换",
+      "mid": "2247505168",
+      "sn": "cb7a648181e8cb27dc0af12570297329",
+      "short_url": "https://mp.weixin.qq.com/s/3vwaizPOgJKCwQ9e5LuKGA",
+      "status": "scraped",
+      "date": "2026-06-18",
+      "blog": "sources/blogs/wechat_shenlan_homogeneous_coordinates_transform.md"
+    },
+    {
+      "series_ord": 6,
+      "album_pos": 6,
+      "title": "强化学习必备知识②：机器人运动控制完整pipeline",
+      "mid": "2247505497",
+      "sn": "0f63d89762a07ba7ac642d876bfba5eb",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkwMDcyNDUzMQ==&mid=2247505497&idx=1&sn=0f63d89762a07ba7ac642d876bfba5eb",
+      "status": "scraped",
+      "date": "2026-06-25",
+      "blog": "sources/blogs/wechat_shenlan_rl_motion_control_pipeline.md"
+    },
+    {
+      "series_ord": 7,
+      "album_pos": 7,
+      "title": "强化学习求解逆运动学，这五类方案值得重点关注！",
+      "mid": "2247506122",
+      "sn": "8119b7177642fe8f467e1068977d24d8",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkwMDcyNDUzMQ==&mid=2247506122&idx=1&sn=8119b7177642fe8f467e1068977d24d8",
+      "status": "scraped",
+      "date": "2026-07-09",
+      "blog": "sources/blogs/wechat_shenlan_rl_inverse_kinematics.md"
+    },
+    {
+      "series_ord": 8,
+      "album_pos": 8,
+      "title": "通俗讲透机器人正向运动学：从原理到工程实例，一次性讲明白！",
+      "mid": "2247506508",
+      "sn": "8c7041c9e509d8a83cf92ca3cb63023c",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkwMDcyNDUzMQ==&mid=2247506508&idx=1&sn=8c7041c9e509d8a83cf92ca3cb63023c",
+      "status": "scraped",
+      "date": "2026-07-17",
+      "blog": "sources/blogs/wechat_shenlan_forward_kinematics.md"
+    },
+    {
+      "series_ord": 9,
+      "album_pos": 9,
+      "title": "机器人逆运动学（IK）到底在算什么？五个关键点从数学本质到工程落地",
+      "mid": "2247506764",
+      "sn": "45d102a22d570c268435bca714a5e088",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkwMDcyNDUzMQ==&mid=2247506764&idx=1&sn=45d102a22d570c268435bca714a5e088",
+      "status": "scraped",
+      "date": "2026-07-23",
+      "blog": "sources/blogs/wechat_shenlan_inverse_kinematics.md"
+    },
+    {
+      "series_ord": 10,
+      "album_pos": 10,
+      "title": "聊聊雅可比矩阵，如何统一机器人控制的两条主线？",
+      "mid": "2247507685",
+      "sn": "f240a287b15dfb1fc7ebb4804f61a359",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkwMDcyNDUzMQ==&mid=2247507685&idx=1&sn=f240a287b15dfb1fc7ebb4804f61a359",
+      "status": "scraped",
+      "date": "2026-08-07",
+      "blog": "sources/blogs/wechat_shenlan_robot_jacobian.md"
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 type: concept
 tags: [rl, sim2real, training, humanoid, policy-optimization]
 status: complete
-updated: 2026-08-08
+updated: 2026-08-13
 summary: "Privileged Training 让 teacher 使用仿真特权信息训练，再蒸馏给真实可观测 student，是 sim2real 常见套路；蒸馏本质是把 RL 探索问题转为 Teacher 标注的监督学习。"
 related:
   - ./terrain-latent-representation.md
@@ -258,6 +258,7 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — Teacher 阶段用标准 RL 训练
 - [Imitation Learning](../methods/imitation-learning.md) — Student 阶段本质上是模仿 Teacher 的行为克隆
 - [Domain Randomization](./domain-randomization.md) — 常与特权训练结合，增强策略鲁棒性
+- [RL 运动控制完整管线](../overview/robot-rl-motion-control-pipeline.md) — Teacher-Student 在四足工程链中的位置
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 复杂操作任务需要特权训练处理感知遮挡
 - [DreamWaQ++](../entities/dreamwaq-plus.md) — 四足多模态非对称 AC 与 CENet 谱系
 - [RMA](../entities/paper-rma-rapid-motor-adaptation.md) — 特权 extrinsics + 历史适应模块的经典两阶段框架

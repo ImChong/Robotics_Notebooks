@@ -3,12 +3,15 @@
 type: entity
 tags: [textbook, kinematics, dynamics, control, lie-group, screw-theory, foundational, northwestern]
 status: complete
-updated: 2026-04-30
+updated: 2026-08-13
 related:
   - ./python-robotics.md
   - ./learn-robotics-qqfly-guide.md
   - ../formalizations/lie-group-rigid-body-motions.md
   - ../formalizations/se3-representation.md
+  - ../formalizations/forward-kinematics.md
+  - ../formalizations/inverse-kinematics.md
+  - ../formalizations/robot-jacobian.md
   - ../concepts/floating-base-dynamics.md
   - ../concepts/whole-body-control.md
   - ../methods/trajectory-optimization.md
@@ -94,6 +97,9 @@ Lynch-Park 将下面这些贯穿全书：
 
 ## 关联页面
 
+- [正向运动学](../formalizations/forward-kinematics.md) — Ch 4 DH/连乘对照；部署侧再接 PoE
+- [逆运动学](../formalizations/inverse-kinematics.md) — Ch 6 解析 / 数值 / 冗余
+- [雅可比矩阵](../formalizations/robot-jacobian.md) — Ch 5 空间/物体雅可比与力对偶
 - [李群、李代数与刚体旋转](../formalizations/lie-group-rigid-body-motions.md) — Ch 3 李群 / 指数映射的工程分工（含公众号策展导读）
 - [SE(3) Representation](../formalizations/se3-representation.md) — 教材 Ch 3 对应的 DL 表示对比
 - [Floating Base Dynamics](../concepts/floating-base-dynamics.md) — 教材 Ch 8 在浮基系统上的延伸

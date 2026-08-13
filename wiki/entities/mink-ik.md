@@ -2,13 +2,14 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
-updated: 2026-07-30
+updated: 2026-08-13
 summary: "Mink：直接利用MuJoCo模型构建微分逆运动学，将末端位姿、质心和姿态任务转为带速度与配置限制的二次规划；它减少模型转换成本，适合在仿真控制或动作重定向中快速迭代任务权重。"
 related:
   - ../concepts/sim2real.md
   - ../entities/isaac-lab.md
   - ../entities/humanoid-motion-intelligence.md
   - ../queries/hmi-opensource-projects-coverage.md
+  - ../formalizations/inverse-kinematics.md
 sources:
   - ../../sources/repos/mink-ik.md
   - ../../sources/repos/humanoid-motion-intelligence.md
@@ -87,6 +88,7 @@ flowchart LR
 - [sim2real](../concepts/sim2real.md)
 - [isaac-lab](../entities/isaac-lab.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
+- [逆运动学](../formalizations/inverse-kinematics.md) — 数值 IK / DLS / 零空间基本功
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
 
 ## 参考来源

@@ -310,6 +310,7 @@ flowchart TD
 
 ### 推荐读什么
 - [Modern Robotics](../wiki/entities/modern-robotics-book.md) Ch 4-6：Forward Kinematics、Velocity Kinematics、Inverse Kinematics
+- [正向运动学](../wiki/formalizations/forward-kinematics.md) / [逆运动学](../wiki/formalizations/inverse-kinematics.md) / [雅可比矩阵](../wiki/formalizations/robot-jacobian.md)（本仓库；深蓝《具身智能基础》08–10）
 - [斯坦福《机器人学导论》(B站)](https://www.bilibili.com/video/BV17T421k78T/)
 - 跑通 Pinocchio 官方 Tutorial
 - [Humanoid Robot](../wiki/entities/humanoid-robot.md)（本仓库）

@@ -9,7 +9,7 @@
 - **发表日期：** 2026-06-11（frontmatter）
 - **入库日期：** 2026-06-16
 - **抓取方式：** [Agent Reach](https://github.com/Panniantong/Agent-Reach) v1.5.0 + [wechat-article-for-ai](https://github.com/bzd6661/wechat-article-for-ai)（Camoufox）；正文约 6000 字 / 22 图；Jina Reader 对该链接触发微信 CAPTCHA，未采用
-- **专栏姊妹篇：** [李群、李代数、四元数](wechat_shenlan_lie_group_lie_algebra_quaternion.md)（`JviRH2LW-fkCHA5gY7Qflw`）；[三维世界坐标变换](wechat_shenlan_3d_coordinate_transforms.md)（`P5Jm7bMhaTHsytHStFbbLg`）；[黎曼流形与切空间](wechat_shenlan_riemannian_manifold_tangent_space.md)（`uFTKN5FDvlHQxOSspvxVZw`）
+- **专栏姊妹篇：** [李群、李代数、四元数](wechat_shenlan_lie_group_lie_algebra_quaternion.md)（`JviRH2LW-fkCHA5gY7Qflw`）；[三维世界坐标变换](wechat_shenlan_3d_coordinate_transforms.md)（`P5Jm7bMhaTHsytHStFbbLg`）；[黎曼流形与切空间](wechat_shenlan_riemannian_manifold_tangent_space.md)（`uFTKN5FDvlHQxOSspvxVZw`）；[RL 运动控制 pipeline](wechat_shenlan_rl_motion_control_pipeline.md)
 - **一句话说明：** 从「岔路口路牌」直觉出发，串起策略、MDP 五元组、POMDP、PPO/SAC 分工与 PyBullet KUKA 定点到达最小闭环；强调具身场景以连续动作为主、仿真先行、策略更新幅度需受约束。
 
 ## 核心摘录（归纳，非全文）

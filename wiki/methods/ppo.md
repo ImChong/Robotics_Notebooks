@@ -18,6 +18,7 @@ related:
   - ../tasks/locomotion.md
   - ../formalizations/mdp.md
   - ../overview/humanoid-rl-policy-training-five-modules.md
+  - ../overview/robot-rl-motion-control-pipeline.md
 sources:
   - ../../sources/papers/policy_optimization.md
   - ../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md
@@ -109,6 +110,7 @@ $$
 - [Effective Degree](../entities/paper-effective-degree.md) — 对 PPO actor 施加多项式有效度数正则以提升 Procgen 泛化
 - [P³](../entities/paper-p3.md) — VAE 随机潜空间里用边缘策略（而非单样本 $z$）计算 PPO 概率比
 - [人形 RL 策略训练五模块](../overview/humanoid-rl-policy-training-five-modules.md) — PPO 在五模块闭环中的稳定更新角色
+- [RL 运动控制完整管线](../overview/robot-rl-motion-control-pipeline.md) — 腿式管线里 clip 与 PD 分层如何衔接
 
 ## 参考来源
 - [Policy Optimization 来源归档（PPO/SAC/TD3/TRPO/Rudin/BRRL）](../../sources/papers/policy_optimization.md)
