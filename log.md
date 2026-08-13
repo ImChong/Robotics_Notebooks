@@ -1,3 +1,12 @@
+## [2026-08-13] ingest | sources/papers/p3_arxiv_2607_25541.md — P³（arXiv:2607.25541）VAE-PPO 边缘策略传播入库；已开源 ylyem9x/P3_Open
+
+- **触发：** 用户指定论文 *P³: Probabilistic Policy Propagation for Stable VAE-Based Robot Learning*（Yan / Ma / Zhang / Fu / Cao / Zhu / Chen / Gao；SJTU / 同济 / ZJU / 上海创智学院；arXiv:2607.25541）；要求自动合并
+- **步骤 2.5：** 无独立项目页；[ylyem9x/P3_Open](https://github.com/ylyem9x/P3_Open) 含 `run_train.sh` / `run_finetune.sh` / `run_play.sh` 与 `rl_p3` 概率 Actor → **已开源**。无 LICENSE 元数据；权重不随仓分发；真机 FAST-LIO 桥未在 README 单列
+- **来源：** [`sources/papers/p3_arxiv_2607_25541.md`](sources/papers/p3_arxiv_2607_25541.md)、[`sources/repos/p3-open.md`](sources/repos/p3-open.md)
+- **升格：** [`wiki/entities/paper-p3.md`](wiki/entities/paper-p3.md) — 单样本 $r_\theta$ 失配、$D_{\mathrm{eff}}$ 64.6%→100%、MM+LSFT、G1 真机 8/9/10
+- **交叉：** [`wiki/methods/ppo.md`](wiki/methods/ppo.md)、[`wiki/methods/dreamwaq.md`](wiki/methods/dreamwaq.md)、[`wiki/methods/pie-perceptive-locomotion.md`](wiki/methods/pie-perceptive-locomotion.md)、[`wiki/tasks/stair-obstacle-perceptive-locomotion.md`](wiki/tasks/stair-obstacle-perceptive-locomotion.md)、[`wiki/entities/isaac-lab.md`](wiki/entities/isaac-lab.md)、[`wiki/entities/unitree-g1.md`](wiki/entities/unitree-g1.md)
+
+
 ## [2026-08-13] ingest | sources/repos/comfyui.md — 接入 ComfyUI（Comfy-Org/ComfyUI + comfy.org）节点式生成引擎
 
 - **触发：** 用户指定 <https://github.com/Comfy-Org/ComfyUI> 与 <https://comfy.org/>；要求自动合并

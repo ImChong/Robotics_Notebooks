@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, stairs, obstacle, perception, blind-locomotion, parkour, humanoid, quadruped, hub]
 status: complete
-updated: 2026-08-06
+updated: 2026-08-13
 related:
   - ../entities/paper-ame-attention-based-map-encoding.md
   - ../entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md
@@ -33,6 +33,7 @@ related:
   - ../entities/paper-perceptive-bfm.md
   - ../entities/paper-walk-these-ways-quadruped-mob.md
   - ../entities/paper-apt-rl-agile-perceptive-quadruped-locomotion.md
+  - ../entities/paper-p3.md
 sources:
   - ../../sources/papers/faststair_arxiv_2601_10365.md
   - ../../sources/papers/explicit_stair_geometry_arxiv_2605_09944.md
@@ -51,6 +52,7 @@ sources:
   - ../../sources/papers/swap_parkour_arxiv_2606_19928.md
   - ../../sources/papers/light_loco_parkour_light_origins_2026.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
+  - ../../sources/papers/p3_arxiv_2607_25541.md
 summary: "楼梯、台阶与离散障碍上的腿式/人形运动中心节点：按「是否显式地形感知」「上/下楼梯」「越障/跑酷」组织文献与概念，后续 ingest 默认挂接本页。"
 ---
 
@@ -124,6 +126,7 @@ flowchart TB
 | **有**（单深度 → 交叉注意力高程重建） | **上下楼梯 · 缝隙 · 可动平台** | [DPL](../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md) | 现实深度合成进 RL 环 + 盲骨干多教师；无外定位；TienKung Ultra；重建 MAE 3.25 cm；IEEE RA-L |
 | **有**（机载深度 + VFM） | **梯子攀爬 · 梯上操作** | [LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) | 单参考 hybrid tracking 多几何专家 + DAgger+RL；RFM/VFM 零样本 sim-to-real；G1 双向 ~3.4 s/踏棍；梯顶 VR 双智能体操作 |
 | **有**（机器人中心高程扫描 + identity-gated 残差） | **楼梯/块/坡/草地 · raw 参考 BFM** | [Perceptive BFM](../entities/paper-perceptive-bfm.md) | TCRS 离线监督 + PMT 四阶段；部署仍用 **原始人体参考**；G1 单策略覆盖 mocap 遥操作、舞蹈、杂技与户外 |
+| **有**（本体历史 + 高程 CNN → VAE latent） | **踏石 / 楼梯 / 缺口 · VAE-PPO 优化** | [P³](../entities/paper-p3.md) | 不改感知架构，把 PPO clip 改成边缘策略似然；G1 真机 8/9/10（10 trial）；代码已开源 |
 
 ### 四足 · 楼梯与崎岖
 
@@ -176,6 +179,7 @@ flowchart TB
 | 人形 **单深度** + 学习高程重建（无外定位）+ 楼梯/缝隙 | [DPL](../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md) |
 | 人形 **梯子攀爬** + **梯上遥操作**（稀疏踏棍） | [LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) |
 | 人形 **BFM 式开放 raw 参考** + **地形感知落脚/间隙**（楼梯/块/户外） | [Perceptive BFM](../entities/paper-perceptive-bfm.md) |
+| 已有 **VAE-PPO** 感知行走、课程上不去 / clip 异常 | [P³](../entities/paper-p3.md) |
 | 四足 **极限跑酷** 端到端 | [Extreme Parkour](../entities/extreme-parkour.md) |
 | 四足 **世界模型跑酷** + 对称等变 | [SWAP](../entities/paper-swap-parkour.md) |
 | 理解 DCM / 落脚点如何进 RL | [Capture Point / DCM](../concepts/capture-point-dcm.md) |
@@ -193,6 +197,7 @@ flowchart TB
 - [Locomotion](./locomotion.md) — 运动任务层总览
 - [Humanoid Locomotion](./humanoid-locomotion.md) — 人形高程图与障碍反应
 - [Terrain Adaptation](../concepts/terrain-adaptation.md) — 感知到动作的通用闭环
+- [P³](../entities/paper-p3.md) — VAE 高程 latent + PPO 边缘似然；G1 踏石/楼梯/缺口
 
 ## 推荐继续阅读
 
@@ -209,3 +214,4 @@ flowchart TB
 - [Extreme Parkour 论文摘录（arXiv:2309.14341）](../../sources/papers/extreme_parkour_arxiv_2309_14341.md)
 - [离散地形最小感知论文摘录（arXiv:2606.31912）](../../sources/papers/discrete_terrain_minimal_proximity_sensing_arxiv_2606_31912.md)
 - [42 篇人形 RL 运动控制目录摘录](../../sources/papers/humanoid_rl_stack_42_catalog.md)
+- [P³ 论文摘录（arXiv:2607.25541）](../../sources/papers/p3_arxiv_2607_25541.md)
