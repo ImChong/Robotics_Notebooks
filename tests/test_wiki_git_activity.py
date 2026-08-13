@@ -191,6 +191,33 @@ class WikiLastActivityDatesTest(unittest.TestCase):
             out = glg.wiki_last_activity_dates(nodes)
         self.assertEqual(out[rel], "2026-05-28")
 
+    def test_wiki_added_dates_prefers_git_first_join(self) -> None:
+        rel = "wiki/concepts/sim2real.md"
+        if not (glg.REPO_ROOT / rel).is_file():
+            self.skipTest("缺少 sim2real 页")
+        nodes = [_node(rel)]
+        history = glg.WikiGitHistory(
+            added_dates={rel: "2026-05-01"},
+            last_dates={rel: "2026-05-28"},
+            touches_by_date={"2026-05-28": [rel]},
+        )
+        with mock.patch.object(glg, "collect_wiki_git_history", return_value=history):
+            out = glg.wiki_added_dates(nodes)
+        self.assertEqual(out[rel], "2026-05-01")
+
+    def test_wiki_added_dates_falls_back_to_first_log(self) -> None:
+        rel = "wiki/concepts/sim2real.md"
+        if not (glg.REPO_ROOT / rel).is_file():
+            self.skipTest("缺少 sim2real 页")
+        nodes = [_node(rel)]
+        empty = glg.WikiGitHistory()
+        with (
+            mock.patch.object(glg, "collect_wiki_git_history", return_value=empty),
+            mock.patch.object(glg, "wiki_first_log_dates", return_value={rel: "2026-04-01"}),
+        ):
+            out = glg.wiki_added_dates(nodes)
+        self.assertEqual(out[rel], "2026-04-01")
+
 
 if __name__ == "__main__":  # pragma: no cover
     unittest.main()

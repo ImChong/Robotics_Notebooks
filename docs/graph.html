@@ -65,7 +65,7 @@
     #graph-search:focus { border-color: rgba(91,156,246,0.5); width: 240px; }
     /* 路线视图区块（在筛选面板里，可折叠 <details>）
        手风琴：三区（维度 / 路线 / 机构）同时仅展开一个；
-       展开区吃满中间剩余高度，收起项自然靠在上方或下方 */
+       维度 / 机构展开区吃满中间剩余高度；路线视图 chip 保持紧凑换行 */
     .filter-depth-section {
       flex: 0 0 auto;
       border-bottom: 1px solid rgba(255,255,255,0.06);
@@ -85,7 +85,6 @@
       z-index: 1;
     }
     .filter-depth-section[open] > .filter-dimension-list,
-    .filter-depth-section[open] > .filter-depth-chips,
     .filter-depth-section[open] > .filter-institution-list {
       position: absolute;
       left: 0;
@@ -100,8 +99,25 @@
       scrollbar-width: none; /* 隐藏原生 overlay；改用 .filter-scroll-chrome 常驻滑块 */
       padding-right: 12px;
     }
+    /* 路线视图：chip 紧凑换行，不随浮窗手风琴吃满剩余高度 */
+    #filter-depth-section[open] {
+      flex: 0 1 auto;
+      max-height: 100%;
+      overflow: auto;
+    }
+    #filter-depth-section[open] > .filter-depth-chips {
+      position: static;
+      top: auto;
+      bottom: auto;
+      max-height: none;
+      overflow-x: hidden;
+      overflow-y: auto;
+      padding-right: 14px;
+    }
+    #filter-institution-section:not([open]) {
+      margin-top: auto;
+    }
     .filter-depth-section[open] > .filter-dimension-list::-webkit-scrollbar,
-    .filter-depth-section[open] > .filter-depth-chips::-webkit-scrollbar,
     .filter-depth-section[open] > .filter-institution-list::-webkit-scrollbar {
       width: 0;
       height: 0;
@@ -203,10 +219,7 @@
       color: #e8e8e4;
     }
     .filter-depth-chip span:first-child { font-size: .9rem; line-height: 1; }
-    /* PC：展开区由手风琴吃满剩余高度，chip 列表在区内滚动 */
-    .filter-depth-section[open] .filter-depth-chips {
-      max-height: none;
-    }
+    /* 路线视图 chip 保持内容高度；维度 / 机构仍由手风琴吃满剩余高度 */
     /* 路线导读条（画布右下角、操作提示条上方，选中非「全量」纵深时显示；
        左上角会被筛选浮窗遮挡、左下有图例 FAB、右上有参数面板，故固定右下；
        bottom 抬高 72px 避开操作提示条（约 61px），也天然高于图例 FAB（约 60px） */
@@ -1062,6 +1075,20 @@
     [data-theme="light"] .filter-degree-hint {
       color: rgba(0,0,0,0.38);
     }
+    [data-theme="light"] .filter-recency-mode-btn {
+      border-color: rgba(0,0,0,0.1);
+      background: rgba(0,0,0,0.04);
+      color: rgba(0,0,0,0.62);
+    }
+    [data-theme="light"] .filter-recency-mode-btn:hover {
+      border-color: rgba(0,0,0,0.28);
+      color: rgba(0,0,0,0.85);
+    }
+    [data-theme="light"] .filter-recency-mode-btn.is-active {
+      background: #eaf1fb;
+      border-color: rgba(45,116,218,0.45);
+      color: #2d74da;
+    }
     [data-theme="light"] .chip.active { color: #191919; font-weight: 700; border-color: transparent; }
     [data-theme="light"] .chip[data-type="concept"].active    { background: #60a5fa; }
     [data-theme="light"] .chip[data-type="method"].active     { background: #34d399; }
@@ -1420,6 +1447,43 @@
       line-height: 1.35;
       margin: 0 14px 6px;
     }
+    .filter-recency-mode {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 0 14px 8px;
+    }
+    .filter-recency-mode-btn {
+      flex: 1;
+      height: 26px;
+      padding: 0 10px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.65);
+      font-size: .72rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: border-color .15s, color .15s, background .15s;
+    }
+    .filter-recency-maintained-btn {
+      flex: 1 1 100%;
+    }
+    .filter-recency-mode-btn:hover {
+      border-color: rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.92);
+    }
+    .filter-recency-mode-btn.is-active {
+      background: rgba(91,156,246,0.16);
+      border-color: rgba(91,156,246,0.55);
+      color: #e8e8e4;
+    }
+    .filter-recency-mode-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
     /* 按类型 / 按社区 / 按健康度：手风琴容器（对齐路线视图 / 机构） */
     .filter-sections-scroll {
       flex: 1 1 auto;
@@ -1590,6 +1654,10 @@
         max-height: none;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
+      }
+      #filter-depth-section[open] {
+        flex: 0 1 auto;
+        max-height: 100%;
       }
       .filter-sections-scroll {
         flex: 1 1 auto;
@@ -1908,15 +1976,20 @@
                  aria-label="按连接数显示前 N 个节点" />
         </div>
       </details>
-      <details id="filter-recency-section" class="filter-degree-section">
+      <details id="filter-recency-section" class="filter-degree-section" data-recency-mode="node" data-recency-kind="added">
         <summary class="filter-depth-summary">
           <span class="filter-depth-summary-label">更新时间 Top N</span>
           <span class="filter-depth-summary-current" id="filter-recency-current">全部</span>
         </summary>
-        <p class="filter-degree-hint">按最近活跃日保留最新 N 个；滑到最左偏最新，滑到最右为全部节点。可与连接数 Top N 同时生效（取交集）。</p>
+        <p class="filter-degree-hint" id="filter-recency-hint">默认仅计新增（首次加入日）；滑到最左偏最新，滑到最右为全部节点。可与连接数 Top N 同时生效（取交集）。</p>
+        <div class="filter-recency-mode" role="group" aria-label="更新时间 Top N 口径">
+          <button type="button" id="recency-mode-node" class="filter-recency-mode-btn is-active" aria-pressed="true">按节点</button>
+          <button type="button" id="recency-mode-date" class="filter-recency-mode-btn" aria-pressed="false" title="同一天的节点整日保留，滑块按日期计数">按日期</button>
+          <button type="button" id="recency-include-maintained" class="filter-recency-mode-btn filter-recency-maintained-btn" aria-pressed="false" title="默认仅计首次加入；打开后按最近触达日（含维护）">显示维护更新</button>
+        </div>
         <div class="slider-row">
           <div class="slider-label">
-            <span>最新节点数</span>
+            <span id="label-recency-top">最新节点数</span>
             <span class="slider-val" id="val-recency-top">全部</span>
           </div>
           <input type="range" id="sl-recency-top" min="10" max="10" value="10" step="1"
@@ -2160,7 +2233,7 @@
       if (summary) {
         section.style.setProperty('--filter-summary-h', `${Math.round(summary.offsetHeight)}px`);
       }
-      if (!section.open || !pane || !thumb) {
+      if (!section.open || !pane || !thumb || section.id === 'filter-depth-section') {
         chrome.hidden = true;
         return;
       }
@@ -3059,8 +3132,16 @@
       let minTs = Infinity;
       let maxTs = -Infinity;
       nodes.forEach(n => {
-        const t = n.activity ? Date.parse(n.activity) : NaN;
-        n._recencyTs = Number.isFinite(t) && t > 0 ? t : null;
+        const activityTs = n.activity ? Date.parse(n.activity) : NaN;
+        n._activityTs = Number.isFinite(activityTs) && activityTs > 0 ? activityTs : null;
+        n._activityDate = (n.activity && /^\d{4}-\d{2}-\d{2}/.test(n.activity))
+          ? n.activity.slice(0, 10) : null;
+        const addedTs = n.added ? Date.parse(n.added) : NaN;
+        n._addedTs = Number.isFinite(addedTs) && addedTs > 0 ? addedTs : null;
+        n._addedDate = (n.added && /^\d{4}-\d{2}-\d{2}/.test(n.added))
+          ? n.added.slice(0, 10) : null;
+        n._recencyTs = n._activityTs;
+        n._recencyDate = n._activityDate;
         if (n._recencyTs !== null) {
           if (n._recencyTs < minTs) minTs = n._recencyTs;
           if (n._recencyTs > maxTs) maxTs = n._recencyTs;
@@ -3143,19 +3224,80 @@
     }
 
     /* ── 更新时间 Top N 筛选（滑动条）：左=最新子集，右=全部；
-       排序口径与「更新明度渐变」一致（git 最近触达日 activity / _recencyTs）；
-       无 activity 的节点视为最旧。与连接数 Top N 同时生效时取交集 ── */
-    const recencyTopMin = Math.min(10, totalNodeCount);
-    let topRecencyLimit = totalNodeCount;
+       按节点 / 按日期 二选一；默认仅计新增（added / 首次加入日），
+       「显示维护更新」打开后改用最近触达日（activity，含维护）。
+       与连接数 Top N 同时生效时取交集 ── */
+    const recencyTopMinNode = Math.min(10, totalNodeCount);
+    const RECENCY_HINT_NODE_ADDED = '默认仅计新增（首次加入日）；滑到最左偏最新，滑到最右为全部节点。可与连接数 Top N 同时生效（取交集）。';
+    const RECENCY_HINT_NODE_ALL = '含维护（最近触达日）；滑到最左偏最新，滑到最右为全部节点。可与连接数 Top N 同时生效（取交集）。';
+    const RECENCY_HINT_DATE_ADDED = '按新增日整日保留：滑块 N 表示最新 N 个首次加入日，同一天新增的节点一并留下。可与连接数 Top N 同时生效（取交集）。';
+    const RECENCY_HINT_DATE_ALL = '按最近触达日整日保留（含维护）：滑块 N 表示最新 N 个日期，同一天触达的节点一并留下。可与连接数 Top N 同时生效（取交集）。';
+    let recencyIncludeMaintained = false;
+    let recencyTopMode = 'node';
+    let recencyDateKeys = [];
+    let recencyDateCount = 0;
+    let recencyTopMinDate = 0;
+    let topRecencyNodeLimit = totalNodeCount;
+    let topRecencyDateLimit = 0;
+    let recencyDateTouched = false;
     let topRecencyIds = null;
 
-    function computeTopRecencyIds(limit) {
+    function recencyDateOf(n) {
+      return recencyIncludeMaintained ? n._activityDate : n._addedDate;
+    }
+
+    function recencyTsOf(n) {
+      const t = recencyIncludeMaintained ? n._activityTs : n._addedTs;
+      return t != null ? t : -Infinity;
+    }
+
+    function rebuildRecencyDateIndex() {
+      recencyDateKeys = Array.from(new Set(
+        nodes.map(recencyDateOf).filter(Boolean)
+      )).sort((a, b) => (a < b ? 1 : a > b ? -1 : 0));
+      recencyDateCount = recencyDateKeys.length;
+      recencyTopMinDate = recencyDateCount > 0 ? 1 : 0;
+    }
+
+    rebuildRecencyDateIndex();
+    topRecencyDateLimit = recencyDateCount;
+
+    function recencySliderBounds() {
+      if (recencyTopMode === 'date') {
+        return { min: recencyTopMinDate, max: Math.max(recencyTopMinDate, recencyDateCount) };
+      }
+      return { min: recencyTopMinNode, max: totalNodeCount };
+    }
+
+    function currentRecencyLimit() {
+      return recencyTopMode === 'date' ? topRecencyDateLimit : topRecencyNodeLimit;
+    }
+
+    function recencyLimitIsAll() {
+      const b = recencySliderBounds();
+      return currentRecencyLimit() >= b.max;
+    }
+
+    function recencyHintText() {
+      if (recencyTopMode === 'date') {
+        return recencyIncludeMaintained ? RECENCY_HINT_DATE_ALL : RECENCY_HINT_DATE_ADDED;
+      }
+      return recencyIncludeMaintained ? RECENCY_HINT_NODE_ALL : RECENCY_HINT_NODE_ADDED;
+    }
+
+    function computeTopRecencyIds() {
+      const limit = currentRecencyLimit();
+      if (recencyTopMode === 'date') {
+        if (recencyDateCount <= 0 || limit >= recencyDateCount) return null;
+        const keepDates = new Set(recencyDateKeys.slice(0, limit));
+        return new Set(nodes.filter(n => keepDates.has(recencyDateOf(n))).map(n => n.id));
+      }
       if (limit >= totalNodeCount) return null;
       return new Set(
         nodes.slice()
           .sort((a, b) => {
-            const ta = a._recencyTs != null ? a._recencyTs : -Infinity;
-            const tb = b._recencyTs != null ? b._recencyTs : -Infinity;
+            const ta = recencyTsOf(a);
+            const tb = recencyTsOf(b);
             if (tb !== ta) return tb - ta;
             return a.id < b.id ? -1 : (a.id > b.id ? 1 : 0);
           })
@@ -3164,38 +3306,139 @@
       );
     }
 
+    function uniqueDateCountInRecencySet(idSet) {
+      if (!idSet) return recencyDateCount;
+      const dates = new Set();
+      for (let i = 0; i < nodes.length; i++) {
+        const n = nodes[i];
+        const day = recencyDateOf(n);
+        if (idSet.has(n.id) && day) dates.add(day);
+      }
+      return dates.size;
+    }
+
     function nodeMatchesRecencyTop(d) {
       return !topRecencyIds || topRecencyIds.has(d.id);
     }
 
     function updateRecencyTopLabel() {
-      const text = topRecencyLimit >= totalNodeCount ? '全部' : String(topRecencyLimit);
+      const text = recencyLimitIsAll()
+        ? '全部'
+        : (recencyTopMode === 'date' ? String(currentRecencyLimit()) + ' 日' : String(currentRecencyLimit()));
       const valEl = document.getElementById('val-recency-top');
       if (valEl) valEl.textContent = text;
       const summaryEl = document.getElementById('filter-recency-current');
       if (summaryEl) summaryEl.textContent = text;
     }
 
+    function syncRecencyModeUi() {
+      const section = document.getElementById('filter-recency-section');
+      if (section) {
+        section.setAttribute('data-recency-mode', recencyTopMode);
+        section.setAttribute('data-recency-kind', recencyIncludeMaintained ? 'all' : 'added');
+      }
+      const nodeBtn = document.getElementById('recency-mode-node');
+      const dateBtn = document.getElementById('recency-mode-date');
+      const maintainedBtn = document.getElementById('recency-include-maintained');
+      if (nodeBtn) {
+        nodeBtn.classList.toggle('is-active', recencyTopMode === 'node');
+        nodeBtn.setAttribute('aria-pressed', recencyTopMode === 'node' ? 'true' : 'false');
+      }
+      if (dateBtn) {
+        dateBtn.classList.toggle('is-active', recencyTopMode === 'date');
+        dateBtn.setAttribute('aria-pressed', recencyTopMode === 'date' ? 'true' : 'false');
+        dateBtn.disabled = recencyDateCount <= 0;
+      }
+      if (maintainedBtn) {
+        maintainedBtn.classList.toggle('is-active', recencyIncludeMaintained);
+        maintainedBtn.setAttribute('aria-pressed', recencyIncludeMaintained ? 'true' : 'false');
+      }
+      const hintEl = document.getElementById('filter-recency-hint');
+      if (hintEl) hintEl.textContent = recencyHintText();
+      const labelEl = document.getElementById('label-recency-top');
+      if (labelEl) labelEl.textContent = recencyTopMode === 'date' ? '最新天数' : '最新节点数';
+      const slider = document.getElementById('sl-recency-top');
+      if (slider) {
+        slider.setAttribute('aria-label', recencyTopMode === 'date'
+          ? (recencyIncludeMaintained ? '按最近触达日显示最新 N 天的节点' : '按新增日显示最新 N 天的节点')
+          : (recencyIncludeMaintained ? '按最近触达显示最新 N 个节点' : '按新增时间显示最新 N 个节点'));
+      }
+    }
+
     function initRecencyTopSlider() {
       const slider = document.getElementById('sl-recency-top');
       if (!slider) return;
-      slider.min = String(recencyTopMin);
-      slider.max = String(totalNodeCount);
-      slider.value = String(topRecencyLimit);
+      const b = recencySliderBounds();
+      slider.min = String(b.min);
+      slider.max = String(b.max);
+      slider.value = String(currentRecencyLimit());
       updateRecencyTopLabel();
     }
 
-    function setTopRecencyLimit(limit) {
-      topRecencyLimit = Math.max(recencyTopMin, Math.min(totalNodeCount, Number(limit)));
-      topRecencyIds = computeTopRecencyIds(topRecencyLimit);
-      const slider = document.getElementById('sl-recency-top');
-      if (slider) slider.value = String(topRecencyLimit);
-      updateRecencyTopLabel();
+    function applyRecencyTopFilter() {
+      topRecencyIds = computeTopRecencyIds();
+      initRecencyTopSlider();
+      syncRecencyModeUi();
       applyFilters();
       updateFilterCount();
     }
 
+    function setTopRecencyLimit(limit) {
+      const b = recencySliderBounds();
+      const next = Math.max(b.min, Math.min(b.max, Number(limit)));
+      if (recencyTopMode === 'date') {
+        topRecencyDateLimit = next;
+        recencyDateTouched = next < recencyDateCount;
+      } else {
+        topRecencyNodeLimit = next;
+      }
+      applyRecencyTopFilter();
+    }
+
+    function setRecencyTopMode(mode) {
+      if (mode !== 'node' && mode !== 'date') return;
+      if (mode === recencyTopMode) return;
+      if (mode === 'date' && !recencyDateTouched && topRecencyIds) {
+        const nDates = uniqueDateCountInRecencySet(topRecencyIds);
+        const maxDates = Math.max(recencyTopMinDate, recencyDateCount);
+        topRecencyDateLimit = Math.max(recencyTopMinDate, Math.min(maxDates, nDates || maxDates));
+        recencyDateTouched = topRecencyDateLimit < recencyDateCount;
+      }
+      recencyTopMode = mode;
+      applyRecencyTopFilter();
+      if (topRecencyIds) fitToScreen();
+    }
+
+    function setRecencyIncludeMaintained(on) {
+      const next = !!on;
+      if (next === recencyIncludeMaintained) return;
+      const wasAll = recencyLimitIsAll();
+      recencyIncludeMaintained = next;
+      rebuildRecencyDateIndex();
+      if (wasAll) {
+        topRecencyDateLimit = recencyDateCount;
+      } else if (recencyTopMode === 'date') {
+        const b = recencySliderBounds();
+        topRecencyDateLimit = Math.max(b.min, Math.min(b.max, topRecencyDateLimit));
+      }
+      applyRecencyTopFilter();
+      if (topRecencyIds) fitToScreen();
+    }
+
+    function resetRecencyTopFilter() {
+      recencyIncludeMaintained = false;
+      recencyTopMode = 'node';
+      rebuildRecencyDateIndex();
+      topRecencyNodeLimit = totalNodeCount;
+      topRecencyDateLimit = recencyDateCount;
+      recencyDateTouched = false;
+      topRecencyIds = null;
+      initRecencyTopSlider();
+      syncRecencyModeUi();
+    }
+
     initRecencyTopSlider();
+    syncRecencyModeUi();
     const slRecencyTop = document.getElementById('sl-recency-top');
     if (slRecencyTop) {
       slRecencyTop.addEventListener('input', ev => {
@@ -3204,6 +3447,27 @@
       });
       slRecencyTop.addEventListener('change', () => {
         if (topRecencyIds) fitToScreen();
+      });
+    }
+    const recencyModeNodeBtn = document.getElementById('recency-mode-node');
+    const recencyModeDateBtn = document.getElementById('recency-mode-date');
+    const recencyMaintainedBtn = document.getElementById('recency-include-maintained');
+    if (recencyModeNodeBtn) {
+      recencyModeNodeBtn.addEventListener('click', () => {
+        if (areFiltersLocked()) return;
+        setRecencyTopMode('node');
+      });
+    }
+    if (recencyModeDateBtn) {
+      recencyModeDateBtn.addEventListener('click', () => {
+        if (areFiltersLocked()) return;
+        setRecencyTopMode('date');
+      });
+    }
+    if (recencyMaintainedBtn) {
+      recencyMaintainedBtn.addEventListener('click', () => {
+        if (areFiltersLocked()) return;
+        setRecencyIncludeMaintained(!recencyIncludeMaintained);
       });
     }
 
@@ -4388,9 +4652,7 @@
       topDegreeLimit = totalNodeCount;
       topDegreeIds = null;
       initDegreeTopSlider();
-      topRecencyLimit = totalNodeCount;
-      topRecencyIds = null;
-      initRecencyTopSlider();
+      resetRecencyTopFilter();
       renderFilterPanel();
       renderInstitutionFilterSection();
       setActiveTopic('all');

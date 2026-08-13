@@ -18,7 +18,16 @@ if (!exe) {
   console.error('No Chrome/Chromium found. Set CHROME_PATH.');
   process.exit(1);
 }
-const d3Body = fs.readFileSync(path.resolve(__dirname, '..', 'node_modules', 'd3', 'dist', 'd3.min.js'));
+const d3Candidates = [
+  path.resolve(__dirname, '..', 'node_modules', 'd3', 'dist', 'd3.min.js'),
+  path.resolve(__dirname, '..', 'docs', 'vendor', 'd3.min.js'),
+];
+const d3Path = d3Candidates.find((p) => fs.existsSync(p));
+if (!d3Path) {
+  console.error('No d3.min.js found.');
+  process.exit(1);
+}
+const d3Body = fs.readFileSync(d3Path);
 
 function copyToArtifacts(src, name) {
   try {
@@ -84,8 +93,14 @@ function assertExclusive(layout, expectedOpenId) {
     throw new Error(`Expected open=${expectedOpenId}, got ${open && open.id}`);
   }
   // Expanded pane should meaningfully fill remaining space (taller than a summary row)
-  if (open.height < 120) {
+  // 路线视图除外：chip 紧凑换行，不吃满手风琴剩余高度
+  if (expectedOpenId !== 'filter-depth-section' && open.height < 120) {
     throw new Error(`Open section too short to fill accordion: ${open.height}`);
+  }
+  if (expectedOpenId === 'filter-depth-section' && open.bodyClientH > open.bodyScrollH + 8) {
+    throw new Error(
+      `路线视图 chips should stay compact (client=${open.bodyClientH}, scroll=${open.bodyScrollH})`
+    );
   }
   // Long lists (community / institution) must be height-clamped so the scrollbar appears
   if (
@@ -97,11 +112,18 @@ function assertExclusive(layout, expectedOpenId) {
       `Open ${expectedOpenId} should scroll (client=${open.bodyClientH}, scroll=${open.bodyScrollH})`
     );
   }
-  if (open.bodyOverflowY !== 'auto' && open.bodyOverflowY !== 'scroll') {
+  if (
+    expectedOpenId !== 'filter-depth-section' &&
+    open.bodyOverflowY !== 'auto' &&
+    open.bodyOverflowY !== 'scroll'
+  ) {
     throw new Error(`Open pane overflow-y should allow scroll, got ${open.bodyOverflowY}`);
   }
   // Body must be height-clamped inside the open section (not content-sized then clipped)
-  if (open.bodyClientH > open.height - open.summaryH + 2) {
+  if (
+    expectedOpenId !== 'filter-depth-section' &&
+    open.bodyClientH > open.height - open.summaryH + 2
+  ) {
     throw new Error(
       `Open pane not clamped: bodyClient=${open.bodyClientH} section=${open.height} summary=${open.summaryH}`
     );
@@ -205,6 +227,17 @@ function assertExclusive(layout, expectedOpenId) {
     }
     if (Math.abs(inst.bottom - layout.containerBottom) > 3) {
       throw new Error('研究机构 should pin to bottom when 路线视图 open');
+    }
+    const depthOpen = layout.items[1];
+    if (depthOpen.bodyClientH > depthOpen.bodyScrollH + 8) {
+      throw new Error(
+        `路线视图 chips stretched: client=${depthOpen.bodyClientH} scroll=${depthOpen.bodyScrollH}`
+      );
+    }
+    if (depthOpen.height > layout.containerHeight - dim.summaryH - inst.summaryH - 24) {
+      throw new Error(
+        `路线视图 should not consume remaining accordion height: ${depthOpen.height} / ${layout.containerHeight}`
+      );
     }
 
     const depthOut = path.join(OUT_DIR, 'graph-filter-accordion-depth.png');
