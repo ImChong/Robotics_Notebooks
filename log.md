@@ -1,3 +1,10 @@
+## [2026-08-13] structural | wiki/entities/deepseek-harness.md — 修复源码运行时序图 Mermaid：参与者名 Loop 被解析为保留字
+
+- **触发：** 用户反馈 DeepSeek Harness 详情页 Mermaid 时序图格式问题；要求自动合并
+- **根因：** `participant Loop` / `CLI->>Loop` 中的 `Loop` 被 Mermaid sequenceDiagram 当成保留字 `loop`，报 `Expecting ACTOR, got 'loop'`
+- **修复：** 参与者改为 `Driver`（对齐官方 agent-lifecycle 的 driver）；去掉消息里的 `/`、`*`、`→`；流程图 `subgraph loop` 改名为 `agentRing`，链式边拆开
+- **页面：** [`wiki/entities/deepseek-harness.md`](wiki/entities/deepseek-harness.md)
+
 ## [2026-08-13] ingest | sources/repos/deepseek-harness.md — 接入 DeepSeek Harness（dsh）官方插件化 agent 运行时
 
 - **触发：** 用户指定 <https://github.com/deepseek-ai/deepseek-harness>；要求自动合并
