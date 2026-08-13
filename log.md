@@ -1,3 +1,8 @@
+## [2026-08-13] structural | docs/graph.html — 路线视图 chip 保持紧凑布局
+
+- **改动：** 筛选浮窗「路线视图」按钮不再随手风琴吃满剩余高度，按内容紧凑换行；「按社区 / 研究机构」仍吃满
+- **验证：** `scripts/verify_graph_filter_accordion.cjs`
+
 ## [2026-08-13] structural | docs/graph.html — 更新时间 Top N 默认仅计新增，可显示维护更新
 
 - **改动：** 图谱「更新时间 Top N」默认按 git 首次加入日筛新增；「显示维护更新」打开后改用最近触达日（含维护）
@@ -9,7 +14,7 @@
 - **改动：** 筛选浮窗「更新时间 Top N」增加「按节点 / 按日期」按钮；按日期时滑块按最近活跃日计数，同一天节点一并留下
 - **验证：** `scripts/verify_graph_recency_date_mode.cjs`
 
-
+## [2026-08-13] ingest | sources/papers/flex_pi_arxiv_2608_10860.md — 独立深挖 Flex-π（arXiv:2608.10860）多流算力柔性 WAM
 
 - **触发：** 用户指定论文 Flex-π（UW / AI2；Yan / Liu / Fan / Cai 等；2026-08 arXiv 预印本）；要求自动合并
 - **步骤 2.5 复核：** 项目页 <https://flex-pi.github.io/> Code → [geyan21/flex-pi](https://github.com/geyan21/flex-pi)；GitHub API `size=1`、contents 仅 README「The code is ready soon」→ **代码待发布**

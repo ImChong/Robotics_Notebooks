@@ -65,7 +65,7 @@
     #graph-search:focus { border-color: rgba(91,156,246,0.5); width: 240px; }
     /* 路线视图区块（在筛选面板里，可折叠 <details>）
        手风琴：三区（维度 / 路线 / 机构）同时仅展开一个；
-       展开区吃满中间剩余高度，收起项自然靠在上方或下方 */
+       维度 / 机构展开区吃满中间剩余高度；路线视图 chip 保持紧凑换行 */
     .filter-depth-section {
       flex: 0 0 auto;
       border-bottom: 1px solid rgba(255,255,255,0.06);
@@ -85,7 +85,6 @@
       z-index: 1;
     }
     .filter-depth-section[open] > .filter-dimension-list,
-    .filter-depth-section[open] > .filter-depth-chips,
     .filter-depth-section[open] > .filter-institution-list {
       position: absolute;
       left: 0;
@@ -100,8 +99,25 @@
       scrollbar-width: none; /* 隐藏原生 overlay；改用 .filter-scroll-chrome 常驻滑块 */
       padding-right: 12px;
     }
+    /* 路线视图：chip 紧凑换行，不随浮窗手风琴吃满剩余高度 */
+    #filter-depth-section[open] {
+      flex: 0 1 auto;
+      max-height: 100%;
+      overflow: auto;
+    }
+    #filter-depth-section[open] > .filter-depth-chips {
+      position: static;
+      top: auto;
+      bottom: auto;
+      max-height: none;
+      overflow-x: hidden;
+      overflow-y: auto;
+      padding-right: 14px;
+    }
+    #filter-institution-section:not([open]) {
+      margin-top: auto;
+    }
     .filter-depth-section[open] > .filter-dimension-list::-webkit-scrollbar,
-    .filter-depth-section[open] > .filter-depth-chips::-webkit-scrollbar,
     .filter-depth-section[open] > .filter-institution-list::-webkit-scrollbar {
       width: 0;
       height: 0;
@@ -203,10 +219,7 @@
       color: #e8e8e4;
     }
     .filter-depth-chip span:first-child { font-size: .9rem; line-height: 1; }
-    /* PC：展开区由手风琴吃满剩余高度，chip 列表在区内滚动 */
-    .filter-depth-section[open] .filter-depth-chips {
-      max-height: none;
-    }
+    /* 路线视图 chip 保持内容高度；维度 / 机构仍由手风琴吃满剩余高度 */
     /* 路线导读条（画布右下角、操作提示条上方，选中非「全量」纵深时显示；
        左上角会被筛选浮窗遮挡、左下有图例 FAB、右上有参数面板，故固定右下；
        bottom 抬高 72px 避开操作提示条（约 61px），也天然高于图例 FAB（约 60px） */
@@ -1642,6 +1655,10 @@
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
       }
+      #filter-depth-section[open] {
+        flex: 0 1 auto;
+        max-height: 100%;
+      }
       .filter-sections-scroll {
         flex: 1 1 auto;
         min-height: 0;
@@ -2216,7 +2233,7 @@
       if (summary) {
         section.style.setProperty('--filter-summary-h', `${Math.round(summary.offsetHeight)}px`);
       }
-      if (!section.open || !pane || !thumb) {
+      if (!section.open || !pane || !thumb || section.id === 'filter-depth-section') {
         chrome.hidden = true;
         return;
       }
