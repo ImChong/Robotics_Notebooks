@@ -42,7 +42,7 @@ sources:
 | WorldScape Policy 2.0 | [../entities/paper-worldscape-policy-2](../entities/paper-worldscape-policy-2.md) | 同团队下游 WAM 策略：事件记忆走 VLM、视觉记忆走 DiT，多模态提示可控执行 |
 | DreamWAM（邻近） | [../entities/paper-dreamwam](../entities/paper-dreamwam.md) | Joint WAM：beyond-RGB 未来表征训练、RGB-only 部署（非本专题原文四篇） |
 | FACT（邻近） | [../entities/paper-fact](../entities/paper-fact.md) | 失败感知因果 WAM：失败轨迹教后果；可选 value 筛选候选 |
-| Flex-π（邻近） | [../entities/paper-flex-pi](../entities/paper-flex-pi.md) | 多流 Joint WAM + 算力柔性（action-only↔full joint） |
+| Flex-π（邻近） | [../entities/paper-flex-pi](../entities/paper-flex-pi.md) | 多流 Joint WAM + 算力柔性（56 组合；action-only ~60 ms↔full joint ~193 ms） |
 | RTCF（邻近） | [../entities/paper-rtcf](../entities/paper-rtcf.md) | **免训练** 冻结 VLA 记忆纠偏；与 DynaWM「可训修正」对照 |
 
 ## 关联页面

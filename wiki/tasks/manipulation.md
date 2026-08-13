@@ -44,6 +44,8 @@ related:
   - ../entities/generalist-gen1-thousand-hands.md
   - ../concepts/robotics-solve-standard.md
   - ../entities/paper-softvtbench.md
+  - ../entities/paper-flex-pi.md
+  - ../entities/paper-dreamwam.md
 sources:
   - ../../sources/papers/fastgrasp_arxiv_2604_12879.md
   - ../../sources/papers/imitation_learning.md
@@ -53,6 +55,7 @@ sources:
   - ../../sources/blogs/wechat_shenlan_tro_manip_5_papers_survey.md
   - ../../sources/papers/vtap_gripper_arxiv_2607_15448.md
   - ../../sources/papers/softvtbench_arxiv_2607_04234.md
+  - ../../sources/papers/flex_pi_arxiv_2608_10860.md
   - ../../sources/blogs/generalist_thousand_hands.md
 summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核心难点是感知、接触和全身协同。"
 ---
@@ -220,6 +223,7 @@ flowchart TD
 - [Chronos](../entities/paper-chronos.md) — 全历史 SSM + IMLE + 二阶加速度桥；RMBench 73.6%、真机 78%（arXiv:2606.30318）
 - [BridgeVLA++](../entities/paper-bridgevla-plusplus.md) — 3D heatmap VLA + 时空记忆；RMBench 96.0%、RLBench 93.7%（arXiv:2608.05042）
 - [DreamWAM](../entities/paper-dreamwam.md) — beyond-RGB Joint WAM；LIBERO-Plus 75.47%、真机扰动 74.4%（arXiv:2608.04996）
+- [Flex-π](../entities/paper-flex-pi.md) — 多流算力柔性 Joint WAM；真机双臂 YAM ID 83.0% / OOD 76.1%，action-only↔full joint（arXiv:2608.10860；代码待发布）
 - [RTCF](../entities/paper-rtcf.md) — 免训练记忆检索 + 低频纠偏；LIBERO Long 61.6→68.6（arXiv:2608.04527）
 - [RoboTTT](../entities/paper-robottt-test-time-training-vla-context.md) — GR00T N1.7 内嵌 TTT fast weights，8K 步 visuomotor 上下文 + 部署后在线学习（NVIDIA GEAR 项目页）
 - [πR²](../entities/paper-pi-r2.md) — GR00T-N1.7 反应式实时 flow 闭环（约 25 Hz；训练+部署已开源，arXiv:2607.26055）

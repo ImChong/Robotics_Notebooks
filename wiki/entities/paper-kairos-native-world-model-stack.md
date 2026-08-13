@@ -14,7 +14,7 @@ tags:
   - huggingface
   - ace-robotics
 status: complete
-updated: 2026-08-10
+updated: 2026-08-13
 arxiv: "2606.16533"
 code: https://github.com/kairos-agi/kairos
 related:
@@ -27,6 +27,7 @@ related:
   - ./tau0-world-model.md
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
   - ./paper-dit4dit-video-action-model.md
+  - ./paper-flex-pi.md
   - ./paper-homeworld-whole-home-scene-generation.md
   - ../tasks/manipulation.md
 sources:
@@ -251,6 +252,7 @@ sequenceDiagram
 - [τ₀-World Model](./tau0-world-model.md) — Agibot 系测试时想象闭环
 - [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) — Cosmos 系双 DiT 实时人形 WAM
 - [Manipulation](../tasks/manipulation.md) — LIBERO / RoboTwin 操纵评测语境
+- [Flex-π](./paper-flex-pi.md) — 同属 MoT Joint WAM；部署流掩码 vs Kairos CEDC / 已开源 4B
 
 ## 参考来源
 

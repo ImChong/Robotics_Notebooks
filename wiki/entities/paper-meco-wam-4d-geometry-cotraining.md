@@ -9,7 +9,7 @@ tags:
   - inference-efficient
   - midea
 status: complete
-updated: 2026-07-27
+updated: 2026-08-13
 arxiv: "2607.05468"
 related:
   - ../overview/wm-action-consequence-category-03-geometry-4d.md
@@ -20,9 +20,11 @@ related:
   - ../overview/robot-world-models-action-consequence-technology-map.md
   - ../entities/paper-rynnworld-4d-rgb-depth-flow.md
   - ../entities/paper-dswam-dual-system-wam.md
+  - ../entities/paper-flex-pi.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
   - ../../sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md
+  - ../../sources/papers/flex_pi_arxiv_2608_10860.md
 summary: "MECo-WAM（arXiv:2607.05468）：训练期 video/action/4D 三专家 + 冻结 VGGT 监督、衰减 4D read-mask 与动作感知时序几何蒸馏；推理移除全部 4D 组件；LIBERO 98.2%、RoboTwin 2.0 92.6%。"
 ---
 
@@ -131,6 +133,7 @@ flowchart TB
 | **[RynnWorld-4D](./paper-rynnworld-4d-rgb-depth-flow.md)** | **推理期 4D latent + Policy**；MECo **训练期几何、推理轻量** |
 | **[DSWAM](./paper-dswam-dual-system-wam.md)** | 同团队 **双系统执行 WAM**；MECo 专注 **几何共训** |
 | **Fast-WAM / GigaWorld-Policy** | 同 **efficient WAM** 部署观；MECo 加 **VGGT 几何 teacher** |
+| **[Flex-π](./paper-flex-pi.md)** | 同为几何共训；Flex-π 把 3D 做成**可部署生成流**，MECo **推理撕掉** 4D 专家 |
 | **Geometry-aware VLA（Qu et al. 等）** | 多 **3D token 进 VLA**；MECo **不改推理图** |
 | **X-WAM 4D RGB-D** | **显式多视角 4D 未来**；MECo **隐式关系蒸馏** |
 
@@ -148,6 +151,7 @@ flowchart TB
 - [World Action Models](../concepts/world-action-models.md) — efficient WAM 坐标
 - [DSWAM](./paper-dswam-dual-system-wam.md) — 同生态 WAM
 - [RynnWorld-4D](./paper-rynnworld-4d-rgb-depth-flow.md) — 显式 4D 生成对照
+- [Flex-π](./paper-flex-pi.md) — 可部署 3D 流 vs MECo 训练期几何老师
 
 ## 推荐继续阅读
 

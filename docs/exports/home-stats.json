@@ -1,13 +1,109 @@
 {
   "generated_at": "2026-08-13",
   "node_count": 3068,
-  "edge_count": 26558,
+  "edge_count": 26566,
   "coverage": {
     "covered": 3044,
     "total": 3044,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-flex-pi.md",
+      "detail_id": "entity-paper-flex-pi",
+      "label": "Flex-π（Multi-Stream WAM · Compute Flexibility · arXiv:2608.10860）",
+      "type": "entity",
+      "recency": "2026-08-13",
+      "source": "log.md",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/concepts/world-action-models.md",
+      "detail_id": "wiki-concepts-world-action-models",
+      "label": "World Action Models（WAM，世界–动作模型）",
+      "type": "concept",
+      "recency": "2026-08-13",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-08-13",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/methods/generative-world-models.md",
+      "detail_id": "wiki-methods-generative-world-models",
+      "label": "Generative World Models (生成式世界模型)",
+      "type": "method",
+      "recency": "2026-08-13",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-08-13",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-meco-wam-4d-geometry-cotraining.md",
+      "detail_id": "entity-paper-meco-wam-4d-geometry-cotraining",
+      "label": "MECo-WAM（Multi-Expert Co-Training World Action Model · arXiv:2607.05468）",
+      "type": "entity",
+      "recency": "2026-08-13",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-kairos-native-world-model-stack.md",
+      "detail_id": "entity-paper-kairos-native-world-model-stack",
+      "label": "Kairos（原生世界–动作模型栈 · kairos-agi）",
+      "type": "entity",
+      "recency": "2026-08-13",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true,
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
+    {
+      "path": "wiki/entities/libero-benchmark.md",
+      "detail_id": "entity-libero-benchmark",
+      "label": "LIBERO",
+      "type": "entity",
+      "recency": "2026-08-13",
+      "source": "log.md",
+      "action": "maintained",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/overview/wm-action-consequence-category-01-wam-action-prediction.md",
+      "detail_id": "wiki-overview-wm-action-consequence-category-01-wam-action-prediction",
+      "label": "世界模型动作后果分类 01：WAM 动作后果预测",
+      "type": "overview",
+      "recency": "2026-08-13",
+      "source": "log.md",
+      "action": "maintained",
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
+    },
     {
       "path": "wiki/entities/paper-vidihand.md",
       "detail_id": "entity-paper-vidihand",
@@ -51,17 +147,6 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-flex-pi.md",
-      "detail_id": "entity-paper-flex-pi",
-      "label": "Flex-π（Multi-Stream WAM · Compute Flexibility · arXiv:2608.10860）",
-      "type": "entity",
-      "recency": "2026-08-13",
-      "source": "log.md",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
       "path": "wiki/entities/paper-neural-introspection-gating.md",
       "detail_id": "entity-paper-neural-introspection-gating",
       "label": "Neural Introspection Gating（Gated VLA-Cache · arXiv:2608.10824）",
@@ -70,28 +155,6 @@
       "source": "log.md",
       "action": "added",
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/world-action-models.md",
-      "detail_id": "wiki-concepts-world-action-models",
-      "label": "World Action Models（WAM，世界–动作模型）",
-      "type": "concept",
-      "recency": "2026-08-13",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-08-13",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
       "path": "wiki/concepts/whole-body-control.md",
@@ -103,16 +166,6 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/overview/wm-action-consequence-category-01-wam-action-prediction.md",
-      "detail_id": "wiki-overview-wm-action-consequence-category-01-wam-action-prediction",
-      "label": "世界模型动作后果分类 01：WAM 动作后果预测",
-      "type": "overview",
-      "recency": "2026-08-13",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     },
     {
       "path": "wiki/entities/paper-lucid.md",
@@ -165,69 +218,18 @@
       "action": "maintained",
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-shenlan-wm-13-dreamerv3.md",
-      "detail_id": "entity-paper-shenlan-wm-13-dreamerv3",
-      "label": "DreamerV3（Mastering Diverse Domains through World Models）",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "has_repo": true,
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-bfm-38-tokenhsi.md",
-      "detail_id": "entity-paper-bfm-38-tokenhsi",
-      "label": "Tokenhsi",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-bfm-15-intermimic.md",
-      "detail_id": "entity-paper-bfm-15-intermimic",
-      "label": "InterMimic",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "人形强化学习运动控制（Humanoid Reinforcement Learning Motion Control, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/transformer-cv-curriculum.md",
-      "detail_id": "entity-transformer-cv-curriculum",
-      "label": "Transformer 视觉应用课程策展",
-      "type": "entity",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/overview/hub-vision-backbone.md",
-      "detail_id": "wiki-overview-hub-vision-backbone",
-      "label": "视觉感知骨干（知识链汇总）",
-      "type": "overview",
-      "recency": "2026-08-12",
-      "source": "log.md",
-      "action": "maintained",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-vidihand.md",
-    "detail_id": "entity-paper-vidihand",
-    "label": "ViDiHand — Video Diffusion for 4D Hand Motion Reconstruction",
+    "path": "wiki/entities/paper-flex-pi.md",
+    "detail_id": "entity-paper-flex-pi",
+    "label": "Flex-π（Multi-Stream WAM · Compute Flexibility · arXiv:2608.10860）",
     "type": "entity",
     "recency": "2026-08-13",
     "source": "log.md",
-    "action": "maintained",
+    "action": "added",
     "has_repo": true,
-    "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    "community_label": "世界动作模型（World Action Models, WAM） 社区"
   },
   "top_communities": [
     {
@@ -260,7 +262,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1214,
+      "degree": 1215,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -283,7 +285,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 716,
+      "degree": 718,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },

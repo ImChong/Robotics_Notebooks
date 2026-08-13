@@ -1,3 +1,11 @@
+## [2026-08-13] ingest | sources/papers/flex_pi_arxiv_2608_10860.md — 独立深挖 Flex-π（arXiv:2608.10860）多流算力柔性 WAM
+
+- **触发：** 用户指定论文 Flex-π（UW / AI2；Yan / Liu / Fan / Cai 等；2026-08 arXiv 预印本）；要求自动合并
+- **步骤 2.5 复核：** 项目页 <https://flex-pi.github.io/> Code → [geyan21/flex-pi](https://github.com/geyan21/flex-pi)；GitHub API `size=1`、contents 仅 README「The code is ready soon」→ **代码待发布**
+- **来源：** [`sources/papers/flex_pi_arxiv_2608_10860.md`](sources/papers/flex_pi_arxiv_2608_10860.md)（arXiv:2608.10860）；[`sources/sites/flex-pi-github-io.md`](sources/sites/flex-pi-github-io.md)；[`sources/repos/flex-pi.md`](sources/repos/flex-pi.md)
+- **实体页深化：** [`wiki/entities/paper-flex-pi.md`](wiki/entities/paper-flex-pi.md) — 共享 VAE 吃 pointmap（PSNR 31.1 dB）、56 流组合、CMF、真机/RoboTwin/LIBERO-Plus 表、源码时序图不适用
+- **交叉更新：** [`wiki/concepts/world-action-models.md`](wiki/concepts/world-action-models.md)、[`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/methods/generative-world-models.md`](wiki/methods/generative-world-models.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`wiki/entities/paper-meco-wam-4d-geometry-cotraining.md`](wiki/entities/paper-meco-wam-4d-geometry-cotraining.md)、[`wiki/entities/paper-kairos-native-world-model-stack.md`](wiki/entities/paper-kairos-native-world-model-stack.md)、[`wiki/entities/libero-benchmark.md`](wiki/entities/libero-benchmark.md)、[`wiki/overview/wm-action-consequence-category-01-wam-action-prediction.md`](wiki/overview/wm-action-consequence-category-01-wam-action-prediction.md)
+
 ## [2026-08-13] ingest | sources/papers/vidihand_arxiv_2606_30308.md — 复核 ViDiHand（vidihand.github.io / arXiv:2606.30308）开源状态并补齐站点/仓库归档
 
 - **触发：** 用户指定 <https://vidihand.github.io/> 与 <https://arxiv.org/abs/2606.30308>
