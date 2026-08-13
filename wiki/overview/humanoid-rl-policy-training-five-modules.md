@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, rl, motion-control, ppo, actor-critic, teacher-student, reward, shenlan, pedagogy]
 status: complete
-updated: 2026-08-08
+updated: 2026-08-13
 related:
   - ../concepts/embodied-rl-minimal-closed-loop.md
   - ../methods/reinforcement-learning.md
@@ -15,6 +15,7 @@ related:
   - ../comparisons/robot-learning-five-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-rl-intelligent-control.md
   - ../formalizations/mdp.md
+  - ./robot-rl-motion-control-pipeline.md
   - ../queries/locomotion-reward-design-guide.md
 sources:
   - ../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md
@@ -93,6 +94,7 @@ flowchart LR
 ## 关联页面
 
 - [具身 RL 最小闭环](../concepts/embodied-rl-minimal-closed-loop.md) — MDP 仿真循环入门
+- [RL 运动控制完整管线](./robot-rl-motion-control-pipeline.md) — 四足工程链（DRL+PD / DR / GPU 并行）
 - [Humanoid RL Cookbook](../queries/humanoid-rl-cookbook.md) — 从零训真机行走 checklist
 - [Reinforcement Learning](../methods/reinforcement-learning.md) / [PPO](../methods/ppo.md)
 - [Privileged Training](../concepts/privileged-training.md) — 师生/特权蒸馏

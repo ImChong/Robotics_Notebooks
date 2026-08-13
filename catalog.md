@@ -2759,12 +2759,14 @@
 - [Cross-modal Attention (跨模态注意力)](wiki/formalizations/cross-modal-attention.md) — 在具身大模型（VLA）中，**跨模态注意力 (Cross-modal Attention)** 是实现“理解指令并根据视觉反馈执行动作”的核心数学机制。它允许模型在处理 Token 序列时，显式地计算 `📅unknown` `[formalization_page]`
 - [Extended Kalman Filter (EKF)](wiki/formalizations/ekf.md) — 扩展卡尔曼滤波（EKF）**：将标准卡尔曼滤波推广到非线性系统的经典状态估计方法，通过每步线性化（一阶 Taylor 展开）在非线性系统上近似应用 Kalman 递推公式。 `📅unknown` `[formalization_page]`
 - [磁场定向控制（FOC）逐步推导](wiki/formalizations/field-oriented-control-derivation.md) — 本页把 FOC 概念页 中的直觉 **写成可复现的推导链**：为何需要坐标变换 → 如何在 dq 帧得到 \(\tau `📅unknown` `[formalization_page]`
+- [正向运动学（Forward Kinematics）](wiki/formalizations/forward-kinematics.md) — 一句话：** 给定全部关节角（或位移），通过连杆齐次变换连乘，算出末端在基座系下的唯一位姿 $T\in\mathrm{SE}(3)$——没有搜索、没有多解、没有迭代。 `📅unknown` `[formalization_page]`
 - [Foundation Policy Alignment (基础策略对齐)](wiki/formalizations/foundation-policy-alignment.md) — 在具身基础模型（Foundation Policy）中，**对齐 (Alignment)** 是指将来自不同机器人形态（如四足、双足、机械臂）、不同传感器配置和不同任务目标的异构数据，映射到一个统一的 `📅unknown` `[formalization_page]`
 - [摩擦锥 (Friction Cone)](wiki/formalizations/friction-cone.md) — 摩擦锥** 是机器人学中描述接触力物理约束的核心数学模型。它规定了接触力 $\mathbf{f}$ 必须满足的范围，以确保机器人脚部或手部与支撑环境之间不发生滑动。 `📅unknown` `[formalization_page]`
 - [GAE（广义优势估计）](wiki/formalizations/gae.md) — GAE（Generalized Advantage Estimation）** 是估计策略梯度中优势函数 $A(s,a)$ 的标准方法，通过参数 $\lambda \in [0,1]$ 在**偏差 `📅unknown` `[formalization_page]`
 - [生成式模型基础 (Generative Foundations)](wiki/formalizations/generative-foundations.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[formalization_page]`
 - [HJB 方程（Hamilton-Jacobi-Bellman）](wiki/formalizations/hjb.md) — HJB 方程**是连续时间最优控制的基本方程，给出了最优值函数 $V^*(x,t)$ 满足的偏微分方程（PDE）。它是 Bellman 最优方程在连续时间域的推广。 `📅unknown` `[formalization_page]`
 - [齐次坐标与齐次变换（SE(3) 工程底座）](wiki/formalizations/homogeneous-coordinates-transform.md) — 一句话：** 三维刚体运动在笛卡尔坐标下是 **「先乘 $R$ 再加 $t$」** 的混合运算；齐次坐标通过 **最后一维 $w$** 把点与方向区分开，并把运动写成 **$4\times4$ 矩 `📅unknown` `[formalization_page]`
+- [逆运动学（Inverse Kinematics）](wiki/formalizations/inverse-kinematics.md) — 一句话：** 已知末端目标位姿 $T^\star$，反求关节角 $q$，使 FK 输出等于 $T^\star$——这是多值、不连续、在奇异点会 `📅unknown` `[formalization_page]`
 - [Kalman Filter (KF)](wiki/formalizations/kalman-filter.md) — 线性卡尔曼滤波（Kalman Filter, KF）**：在 **线性动力学 + 线性观测 + 高斯噪声** 假设下，给出状态后验均值与协方差的 **递推最小方差（贝叶斯意义下最优）** 估计。 `📅unknown` `[formalization_page]`
 - [KKT Conditions（KKT 条件）](wiki/formalizations/kkt-conditions.md) — KKT（Karush–Kuhn–Tucker）条件**：带不等式与等式约束的优化问题在最优点的必要条件（凸问题且 Slater 成立时为充分条件），将「找最优解」转化为「解代数方程组 + 互补松弛 `📅unknown` `[formalization_page]`
 - [李群、李代数与刚体旋转（SO(3) / SE(3)）](wiki/formalizations/lie-group-rigid-body-motions.md) — 一句话：** 三维刚体运动生活在 **李群** SO(3)（旋转）与 SE(3)（旋转+平移）上；**李代数** so(3)/se(3) 是群在单位元处的切空间，把非线性姿态变化变成可求导的向量； `📅unknown` `[formalization_page]`
@@ -2776,6 +2778,7 @@
 - [Probability Flow (概率流形式化)](wiki/formalizations/probability-flow.md) — 在具身智能的生成式动作建模（如 **π₀** 或 **Diffusion Policy**）中，**概率流 (Probability Flow)** 是连接噪声分布与真实动作分布的数学“传送带”。它将 `📅unknown` `[formalization_page]`
 - [Quadratic Programming（二次规划）](wiki/formalizations/quadratic-programming.md) — 二次规划（QP）**：目标为凸二次函数、约束为线性的优化问题；是 WBC、凸 MPC、控制分配与许多 TrajOpt 子步骤的统一数学形式。 `📅unknown` `[formalization_page]`
 - [黎曼流形与切空间（具身运动的几何语言）](wiki/formalizations/riemannian-manifold-tangent-space.md) — 一句话：** 具身体的状态空间 **整体弯曲、局部平直**；在流形上存合法姿态，在 **切空间** 做梯度与增量，用 **指数/对数映射** 往返——[李群页](./lie-group-rigid `📅unknown` `[formalization_page]`
+- [机器人雅可比矩阵（Jacobian）](wiki/formalizations/robot-jacobian.md) — 一句话：** FK 告诉你末端「在哪」；雅可比告诉你当前构型下「怎么变」——同一张 $J$ 既做速度映射 $v=J\dot q$，又做力映射  `📅unknown` `[formalization_page]`
 - [Safe LoRA Update Projection（安全 LoRA 投影更新形式化）](wiki/formalizations/safe-lora-update-projection.md) — Safe LoRA Update Projection** 是 真机安全 RL 微调 「低秩残差  `📅unknown` `[formalization_page]`
 - [SE(3) Representation (位姿表示形式化)](wiki/formalizations/se3-representation.md) — 在机器人学与具身智能中，如何表示物体的**位姿（Pose）**——即位置与姿态的组合，是感知与控制的基础。**SE(3)** (Special Euclidean Group) 描述了三维空间中的刚体 `📅unknown` `[formalization_page]`
 - [Symmetric Cone Programming（对称锥规划）](wiki/formalizations/symmetric-cone-programming.md) — 对称锥规划**：目标与约束可表示在对称锥（非负正交锥、二阶锥、半正定锥等）上的凸优化问题；比 LP/QP 更一般，能精确刻画摩擦锥、力矩椭球与部分时间最优问题。 `📅unknown` `[formalization_page]`
@@ -2819,6 +2822,7 @@
 - [开源 QDD / 力矩关节执行器项目对比与学习路线](wiki/comparisons/open-source-qdd-actuator-projects.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[comparison_page]`
 - [开源机器人力矩电机：电磁设计完整度对比](wiki/comparisons/open-source-torque-motor-em-design.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[comparison_page]`
 - [PPO vs SAC (vs BRRL/BPO)：机器人 RL 算法选型](wiki/comparisons/ppo-vs-sac.md) — 背景**：PPO（Proximal Policy Optimization）和 SAC（Soft Actor-Critic）是机器人 RL 领域最主流的两种连续控制算法。两者都已在真实机器人上取得 `📅unknown` `[comparison_page]`
+- [RL 求解逆运动学：五类方案怎么选](wiki/comparisons/rl-inverse-kinematics-five-approaches.md) — 一句话选型：** 固定构型、要微秒级精度 → 解析/数值 IK；冗余避障、非标软体、浮基全身 → 在传统 $J `📅unknown` `[comparison_page]`
 - [RL vs 模仿学习（Imitation Learning）](wiki/comparisons/rl-vs-il.md) — RL 和 IL 是机器人策略学习的两条主干路线。两者都在学"策略 $\pi(a|s)$"，但监督信号、数据需求、能达到的行为质量完全不同。 `📅unknown` `[comparison_page]`
 - [RNN vs CNN vs Transformer vs Mamba](wiki/comparisons/rnn-cnn-transformer-mamba.md) — 从 **递推状态（RNN）**、**局部卷积（CNN）**、**全局注意力（Transformer）** 到 **选择性状态空间（Mamba）**，在长程建模能力、训练并行度与推理复杂度三维上做骨干选 `📅unknown` `[comparison_page]`
 - [八大机器人控制体系分类](wiki/comparisons/robot-control-eight-paradigms-taxonomy.md) — 从机器人 **任务规划 → 控制算法 → 伺服执行** 的分层闭环出发，控制算法层可划分为 **八大体系**；前四类侧重 **显式建模**，后四类分别面向 **接触作业、约束优化、数据补偿与自主习得 `📅unknown` `[comparison_page]`
@@ -2976,11 +2980,12 @@
 - [Robot Learning Overview](wiki/overview/robot-learning-overview.md) — 机器人学习**：让机器人通过数据学会完成复杂任务的方法集合，核心是把”如何做”从人工编程转向从经验中学习。 `📅unknown` `[overview_page]`
 - [机器人开源宝库（微信策展第01期）— 索引](wiki/overview/robot-open-source-wechat-issue01-curator.md) — 本页把第三方微信清单中的 **10 个开源机器人/平台**拆成独立实体节点，并在此集中列出**官方文档与组织级 GitHub**入口，避免把网盘短链当作唯一分发源。 `📅unknown` `[overview_page]`
 - [机器人开源宝库（微信策展第02期）— 索引](wiki/overview/robot-open-source-wechat-issue02-curator.md) — 本页对应转载清单 **第 11–20 号**共 **10** 条开源机器人/平台入口，拆成独立实体节点，并集中指向 **官方文档、GitHub 组织与论文/数据集页**；个人网盘与 360 共享链不作 `📅unknown` `[overview_page]`
+- [机器人 RL 运动控制完整管线](wiki/overview/robot-rl-motion-control-pipeline.md) — 一句话：** 最小闭环 只证明 S–A–R–P 能转；真机管线还要分层执行、稳定更新、特权蒸馏、 `📅unknown` `[overview_page]`
 - [机器人训练栈分层技术地图](wiki/overview/robot-training-stack-layers-technology-map.md) — 仿真框架**没有突然洗牌**，但机器人学习工具链正在**变厚**：竞争焦点从「谁每秒仿真步数更高」转向「整条训练–评估–真机闭环的返工成本谁更低」——大平台、物理验证、任务入口、异构运行时、底层连接器 `📅unknown` `[overview_page]`
 - [机器人世界模型：动作后果预测技术地图](wiki/overview/robot-world-models-action-consequence-technology-map.md) — 世界模型近期工作的共同转向是：**动作发出去之前，模型能否提前知道世界会怎么变**——从看懂当前帧，走向预测倾倒、形变、接触与推偏等 **物理后果**，并进入执行、修正、筛选或后训练闭环。 `📅unknown` `[overview_page]`
 - [机器人世界模型：训练闭环与三线 taxonomy](wiki/overview/robot-world-models-training-loop-taxonomy.md) — 机器人世界模型的下一步，不是继续证明「会生成未来视频」，而是证明 **预测出的未来能进入策略学习、任务评估与闭环决策**——开环像不像真，不足以说明机器人有没有变强。 `📅unknown` `[overview_page]`
 - [Sergey Levine：表达力更强的连续动作策略](wiki/overview/sergey-levine-diffusion-expressive-policies.md) — 学习式控制对动作分布族「名义上中立」，但实践里 **扩散 / flow 动作头** 通过吃下高维多模态分布，使 **长 action chunk** 成为默认接口——先显著抬升模仿学习，再把同一表达力 `📅unknown` `[overview_page]`
-- [《具身智能基础》专栏技术地图](wiki/overview/shenlan-embodied-ai-fundamentals-series.md) — 具身智能的大模型叙事容易掩盖一条暗线：**所有「能交互」的智能，最终都要在多个坐标系与弯曲状态空间之间做对变换**——先用齐次坐标把刚体运动写进可连乘的 $4\times4$ 矩阵（L0 工程底座）， `📅unknown` `[overview_page]`
+- [《具身智能基础》专栏技术地图](wiki/overview/shenlan-embodied-ai-fundamentals-series.md) — 具身智能的大模型叙事容易掩盖两条必须打通的暗线：**几何**（多坐标系与弯曲状态空间上的合法变换）和 **运动学接口**（任务空间目标必须在关节空间执行）。专栏前半用齐次矩阵把刚体写进可连乘的 $4\ `📅unknown` `[overview_page]`
 - [十年仿真平台技术地图（TOP 8）](wiki/overview/sim-platforms-decade-technology-map.md) — 仿真平台的发展轨迹清晰反映具身智能研究重心的演进：**没有单一「赢家通吃」**，而是从 MuJoCo 的物理奠基，经 [AI2-THOR](../en `📅unknown` `[overview_page]`
 - [Awesome Egocentric Vision 技术地图](wiki/overview/sun-awesome-ego-technology-map.md) — Awesome Egocentric Vision 技术地图** = 外部 Awesome 策展列表的站内节点化索引（按清单分组浏览，一点即达论文实体页）。 `📅unknown` `[overview_page]`
 - [Awesome-Real2Sim2Real 技术地图](wiki/overview/sun-awesome-r2s2r-technology-map.md) — Awesome-Real2Sim2Real 技术地图** = 外部 Awesome 策展列表的站内节点化索引（按清单分组浏览，一点即达论文实体页）。 `📅unknown` `[overview_page]`

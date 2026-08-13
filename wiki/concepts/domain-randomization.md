@@ -1,7 +1,7 @@
 ---
 type: concept
 summary: "Domain Randomization 通过在仿真中随机化参数扩大训练分布，是 sim2real 的主流鲁棒化手段。"
-updated: 2026-08-02
+updated: 2026-08-13
 ---
 
 # Domain Randomization
@@ -149,6 +149,7 @@ Sim2Real 的核心问题是 **domain gap**——仿真和现实的差异。
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Whole-Body Control](./whole-body-control.md)
 - [Locomotion](../tasks/locomotion.md)
+- [RL 运动控制完整管线](../overview/robot-rl-motion-control-pipeline.md) — DR 作为腿式 Sim2Real 积木之一
 - [AWARE（轮足高动态反射避障）](../entities/paper-aware-wheeled-legged-reflexive-evasion.md)
 
 ## 推荐继续阅读

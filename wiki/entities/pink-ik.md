@@ -2,13 +2,14 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, inria]
 status: draft
-updated: 2026-07-30
+updated: 2026-08-13
 summary: "Pink：在Pinocchio运动学之上提供轻量级任务空间逆运动学，用加权任务和关节限制求广义速度；适合交互式姿态生成、重定向原型和控制前处理，代码结构便于增加自定义任务。"
 related:
   - ../concepts/sim2real.md
   - ../entities/isaac-lab.md
   - ../entities/humanoid-motion-intelligence.md
   - ../queries/hmi-opensource-projects-coverage.md
+  - ../formalizations/inverse-kinematics.md
 sources:
   - ../../sources/repos/pink-ik.md
   - ../../sources/repos/humanoid-motion-intelligence.md
@@ -87,6 +88,7 @@ flowchart LR
 - [sim2real](../concepts/sim2real.md)
 - [isaac-lab](../entities/isaac-lab.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
+- [逆运动学](../formalizations/inverse-kinematics.md) — 任务空间 IK 与 Pinocchio 几何雅可比
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
 
 ## 参考来源

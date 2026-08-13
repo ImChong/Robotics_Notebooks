@@ -2,10 +2,11 @@
 type: method
 tags: [control, mpc, optimization, locomotion, humanoid]
 status: complete
-updated: 2026-08-09
+updated: 2026-08-13
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-receding-horizon-ilc.md
+  - ../formalizations/robot-jacobian.md
   - ./iterative-learning-control.md
   - ./lqr-ilqr.md
   - ../overview/autonomous-driving-core-algorithms-series.md
@@ -250,6 +251,7 @@ print("apply control:", u.ravel())
 - [八大机器人控制体系分类](../comparisons/robot-control-eight-paradigms-taxonomy.md)
 - [滚动优化与 ILC（体系⑥）](../overview/robot-control-paradigm-receding-horizon-ilc.md)
 - [Iterative Learning Control](./iterative-learning-control.md)
+- [雅可比矩阵](../formalizations/robot-jacobian.md) — 工作点局部线性化的运动学接口
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Locomotion](../tasks/locomotion.md)
 - [Reinforcement Learning](./reinforcement-learning.md)

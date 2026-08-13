@@ -1,3 +1,13 @@
+## [2026-08-13] ingest | sources/blogs/wechat_shenlan_{rl_motion_control_pipeline,rl_inverse_kinematics,forward_kinematics,inverse_kinematics,robot_jacobian}.md — 更新深蓝《具身智能基础》专辑 5→10 篇
+
+- **触发：** 用户指定专辑 <https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkwMDcyNDUzMQ==&action=getalbum&album_id=4525948187102363653>；要求确保 agent-reach 已装并更新 ingest；随后要求自动合并
+- **工具：** Agent Reach v1.5.0（`~/.local/bin/agent-reach`）+ wechat-article-for-ai（Camoufox；`playwright==1.49.1`）。专辑 JSON API 直取 10 篇列表；文章直连 CAPTCHA，**专辑页同会话跳转**抓取第 6–10 篇正文
+- **开源结论：** 科普专栏，无项目页/代码仓；步骤 2.5 不适用。工程入口交叉到已有 [Pinocchio](wiki/entities/pinocchio.md) / [Pink](wiki/entities/pink-ik.md) / [Mink](wiki/entities/mink-ik.md)
+- **新增 blogs / raw：** 专栏 06–10；专辑清单 [`sources/raw/wechat_shenlan_embodied_ai_fundamentals_album_2026.json`](sources/raw/wechat_shenlan_embodied_ai_fundamentals_album_2026.json)
+- **升格：** [`wiki/overview/robot-rl-motion-control-pipeline.md`](wiki/overview/robot-rl-motion-control-pipeline.md)、[`wiki/comparisons/rl-inverse-kinematics-five-approaches.md`](wiki/comparisons/rl-inverse-kinematics-five-approaches.md)、[`wiki/formalizations/forward-kinematics.md`](wiki/formalizations/forward-kinematics.md)、[`wiki/formalizations/inverse-kinematics.md`](wiki/formalizations/inverse-kinematics.md)、[`wiki/formalizations/robot-jacobian.md`](wiki/formalizations/robot-jacobian.md)
+- **父节点：** [`wiki/overview/shenlan-embodied-ai-fundamentals-series.md`](wiki/overview/shenlan-embodied-ai-fundamentals-series.md) 5→10 篇
+- **交叉：** 齐次坐标 / 最小闭环 / PPO / privileged-training / domain-randomization / WBC / MPC / TSID / Modern Robotics / Pinocchio / Mink / Pink / 运动控制路线 L1.2–L1.3
+
 ## [2026-08-13] ingest | sources/papers/wam_realtime_async_arxiv_2608_01880.md — Motubrain 异步部署实证 + WAM 模型入库；官方仓占位
 
 - **触发：** 用户指定论文 <https://arxiv.org/pdf/2608.01880>、博客 <https://www.motubrain.com/zh/research>、GitHub <https://github.com/shengshu-ai/Motubrain>；要求自动合并

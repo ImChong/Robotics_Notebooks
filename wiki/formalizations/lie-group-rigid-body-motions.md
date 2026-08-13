@@ -2,10 +2,11 @@
 type: formalization
 tags: [kinematics, math, lie-group, so3, se3, quaternion, embodied-ai, optimization]
 status: complete
-updated: 2026-06-04
+updated: 2026-08-13
 related:
   - ../overview/shenlan-embodied-ai-fundamentals-series.md
   - ./homogeneous-coordinates-transform.md
+  - ./forward-kinematics.md
   - ./3d-coordinate-transforms-vision-robotics.md
   - ./riemannian-manifold-tangent-space.md
   - ./se3-representation.md

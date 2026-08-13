@@ -2,13 +2,14 @@
 type: formalization
 tags: [kinematics, se3, homogeneous-coordinates, embodied-ai, shenlan]
 status: complete
-updated: 2026-06-18
+updated: 2026-08-13
 related:
   - ../overview/shenlan-embodied-ai-fundamentals-series.md
   - ./lie-group-rigid-body-motions.md
   - ./3d-coordinate-transforms-vision-robotics.md
   - ./se3-representation.md
   - ./riemannian-manifold-tangent-space.md
+  - ./forward-kinematics.md
   - ../entities/modern-robotics-book.md
   - ../methods/grasp-pose-estimation.md
 sources:
@@ -122,6 +123,7 @@ flowchart TB
 - [李群、李代数与刚体旋转](./lie-group-rigid-body-motions.md)
 - [三维坐标变换（视觉–机器人）](./3d-coordinate-transforms-vision-robotics.md)
 - [SE(3) Representation](./se3-representation.md)
+- [正向运动学](./forward-kinematics.md) — DH 连乘把本页 $4\times4$ 接到机械臂
 - [Modern Robotics](../entities/modern-robotics-book.md)
 
 ## 参考来源

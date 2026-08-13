@@ -1,14 +1,19 @@
 ---
 type: overview
-tags: [embodied-ai, fundamentals, geometry, kinematics, shenlan, survey]
+tags: [embodied-ai, fundamentals, geometry, kinematics, shenlan, survey, jacobian]
 status: complete
-updated: 2026-08-08
+updated: 2026-08-13
 related:
   - ../formalizations/homogeneous-coordinates-transform.md
   - ../formalizations/lie-group-rigid-body-motions.md
   - ../formalizations/3d-coordinate-transforms-vision-robotics.md
   - ../formalizations/riemannian-manifold-tangent-space.md
   - ../formalizations/se3-representation.md
+  - ../formalizations/forward-kinematics.md
+  - ../formalizations/inverse-kinematics.md
+  - ../formalizations/robot-jacobian.md
+  - ../overview/robot-rl-motion-control-pipeline.md
+  - ../comparisons/rl-inverse-kinematics-five-approaches.md
   - ../overview/vla-open-source-repro-landscape-2025.md
   - ../overview/world-models-15-open-source-technology-map.md
   - ../overview/humanoid-rl-policy-training-five-modules.md
@@ -19,91 +24,116 @@ sources:
   - ../../sources/blogs/wechat_shenlan_3d_coordinate_transforms.md
   - ../../sources/blogs/wechat_shenlan_riemannian_manifold_tangent_space.md
   - ../../sources/blogs/wechat_shenlan_rl_embodied_minimal_closed_loop.md
+  - ../../sources/blogs/wechat_shenlan_rl_motion_control_pipeline.md
+  - ../../sources/blogs/wechat_shenlan_rl_inverse_kinematics.md
+  - ../../sources/blogs/wechat_shenlan_forward_kinematics.md
+  - ../../sources/blogs/wechat_shenlan_inverse_kinematics.md
+  - ../../sources/blogs/wechat_shenlan_robot_jacobian.md
+  - ../../sources/raw/wechat_shenlan_embodied_ai_fundamentals_album_2026.json
   - ../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md
-summary: "深蓝具身智能《具身智能基础》专栏（专辑 5 篇已入库）：L0 齐次坐标/SE(3) 矩阵连乘 → 李群/李代数（姿态）→ 三维坐标变换（感知–操作）→ 黎曼流形（流形优化）；第 4 篇 RL 最小闭环已并入运动控制路线 L5。"
+summary: "深蓝具身智能《具身智能基础》专栏（专辑 10 篇已入库）：几何 L0（齐次/李群/坐标/流形）→ RL 最小闭环与运动控制管线 → FK/IK/雅可比。不复述公式，只保留专栏顺序与子节点挂接。"
 ---
 
 # 《具身智能基础》专栏技术地图
 
-> **本页定位**：为深蓝具身智能微信公众号 [**《具身智能基础》**](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkwMDcyNDUzMQ==&action=getalbum&album_id=4525948187102363653) 专辑 **已入库 5 篇** 提供 **父节点阅读坐标**；不复述公式推导，只保留 **专栏顺序、子节点分工、与 VLA/抓取栈的挂接**。
+> **本页定位**：为深蓝具身智能微信公众号 [**《具身智能基础》**](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkwMDcyNDUzMQ==&action=getalbum&album_id=4525948187102363653) 专辑 **已入库 10/10 篇** 提供 **父节点阅读坐标**；不复述公式推导，只保留 **专栏顺序、子节点分工、与 VLA/抓取/运控栈的挂接**。专辑清单见 [`sources/raw/wechat_shenlan_embodied_ai_fundamentals_album_2026.json`](../../sources/raw/wechat_shenlan_embodied_ai_fundamentals_album_2026.json)（2026-08-13 复核）。
 
 ## 一句话观点
 
-具身智能的大模型叙事容易掩盖一条暗线：**所有「能交互」的智能，最终都要在多个坐标系与弯曲状态空间之间做对变换**——先用齐次坐标把刚体运动写进可连乘的 $4\times4$ 矩阵（L0 工程底座），再学合法旋转（李群）、统一相机与机械臂语言（坐标变换），最后用流形–切空间统一「补丁式约束」与「原生几何优化」。
+具身智能的大模型叙事容易掩盖两条必须打通的暗线：**几何**（多坐标系与弯曲状态空间上的合法变换）和 **运动学接口**（任务空间目标必须在关节空间执行）。专栏前半用齐次矩阵把刚体写进可连乘的 $4\times4$，后半用 FK → IK → 雅可比把「在哪 / 怎么变 / 怎么发力」收成同一套局部线性结构；RL 只叠在这层结构之上。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
-| SE(3) | Special Euclidean Group in 3D | 三维刚体位姿群；专栏齐次 $4\times4$ 矩阵为其标准工程表示 |
+| FK | Forward Kinematics | 关节角 → 末端位姿的确定映射 |
+| IK | Inverse Kinematics | 目标位姿 → 关节角；可能多解或无解 |
+| SE(3) | Special Euclidean Group in 3D | 三维刚体位姿群；齐次 $4\times4$ 为其工程表示 |
+| RL | Reinforcement Learning | 交互最大化回报；专栏用于最小闭环、运控管线与 IK |
+| WBC | Whole-Body Control | 多任务约束经雅可比投影到关节 |
 
-## 流程总览：L0 → 几何主线
+## 流程总览：几何 → RL → 运动学接口
 
 ```mermaid
 flowchart TB
-  P["《具身智能基础》专栏（专辑 5 篇）"]
-  P --> C0["05 齐次坐标与齐次变换<br/>L0：4×4 矩阵连乘"]
-  P --> C1["01 李群 / 李代数 / 四元数<br/>SO(3) SE(3) 合法姿态"]
-  P --> C2["02 三维坐标变换<br/>看见 → 理解 → 能抓"]
-  P --> C3["03 黎曼流形与切空间<br/>流形状态 + 切空间优化"]
-  C0 --> C1
-  C0 --> C2
-  C1 --> C2
-  C2 --> C3
-  C1 -.->|"SO(3)/SE(3) 特例"| C3
+  P["《具身智能基础》专栏（10 篇）"]
+  P --> G["几何主线 01–05"]
+  P --> R["RL 主线 04–07"]
+  P --> K["运动学接口 08–10"]
+  G --> C5["05 齐次坐标 L0"]
+  G --> C1["01 李群 / 四元数"]
+  G --> C2["02 三维坐标变换"]
+  G --> C3["03 黎曼流形"]
+  C5 --> C1 --> C2 --> C3
+  R --> C4["04 RL 最小闭环"]
+  R --> C6["06 运控 pipeline"]
+  R --> C7["07 RL 解 IK 五类"]
+  C4 --> C6
+  K --> C8["08 正向运动学"]
+  K --> C9["09 逆运动学"]
+  K --> C10["10 雅可比"]
+  C5 --> C8 --> C9 --> C10
+  C7 --> C9
+  C10 --> C9
 ```
 
 ## 子节点索引
 
 | 序 | 专栏篇目 | 分类节点 | 核心问题 |
 |----|----------|----------|----------|
-| 01 | [李群、李代数、四元数](../formalizations/lie-group-rigid-body-motions.md) | 姿态与刚体运动 | 旋转/位姿如何在 **流形** 上合法表示与优化？四元数、矩阵、李代数如何分工？ |
-| 02 | [三维世界坐标变换](../formalizations/3d-coordinate-transforms-vision-robotics.md) | 感知–操作对齐 | 世界 / 相机 / 像素如何经 $K,[R|t]$ 串联？深度与手眼标定如何闭合抓取链？ |
-| 03 | [黎曼流形与切空间](../formalizations/riemannian-manifold-tangent-space.md) | 统一几何语言 | 为何欧式插值会「多转 340°」？Exp/Log 与工程近似如何支撑 RL / 控制？ |
-| 04 | （RL 最小闭环，**已并入运动控制路线 L5**） | [具身 RL 最小闭环](../concepts/embodied-rl-minimal-closed-loop.md) | 策略/MDP/POMDP/PPO·SAC/PyBullet 入门；[source](../../sources/blogs/wechat_shenlan_rl_embodied_minimal_closed_loop.md)（`hHkQqLfIOTn0CoAZNuLWJA`） |
-| 05 | [齐次坐标与齐次变换](../formalizations/homogeneous-coordinates-transform.md) | L0 工程底座 | 为何 $p'=Rp+t$ 不够？如何用 $w=1/0$ 与 $4\times4$ 矩阵统一 FK/SLAM/里程计/可微优化？ |
+| 01 | [李群、李代数、四元数](../formalizations/lie-group-rigid-body-motions.md) | 姿态与刚体运动 | 旋转/位姿如何在流形上合法表示与优化？ |
+| 02 | [三维世界坐标变换](../formalizations/3d-coordinate-transforms-vision-robotics.md) | 感知–操作对齐 | 世界 / 相机 / 像素如何经 $K,[R\|t]$ 串联？ |
+| 03 | [黎曼流形与切空间](../formalizations/riemannian-manifold-tangent-space.md) | 统一几何语言 | 为何欧式插值会「多转 340°」？ |
+| 04 | （RL 最小闭环，**已并入运动控制路线 L5**） | [具身 RL 最小闭环](../concepts/embodied-rl-minimal-closed-loop.md) | 策略/MDP/PPO·SAC/PyBullet 入门 |
+| 05 | [齐次坐标与齐次变换](../formalizations/homogeneous-coordinates-transform.md) | L0 工程底座 | 为何 $p'=Rp+t$ 不够？如何用 $4\times4$ 统一 FK？ |
+| 06 | [RL 运动控制完整管线](./robot-rl-motion-control-pipeline.md) | 腿式工程链 | DRL+PD、PPO、蒸馏、DR、GPU 并行如何串起来？ |
+| 07 | [RL 求解 IK 五类方案](../comparisons/rl-inverse-kinematics-five-approaches.md) | 选型 | 何时 DDPG/PPO/模型基/混合/分层，何时仍用雅可比？ |
+| 08 | [正向运动学](../formalizations/forward-kinematics.md) | 确定映射 | DH 四参数如何连乘出唯一末端位姿？ |
+| 09 | [逆运动学](../formalizations/inverse-kinematics.md) | 反函数 | 解析 / DLS / 零空间 / 学习型候选如何分工？ |
+| 10 | [雅可比矩阵](../formalizations/robot-jacobian.md) | 速度–力接口 | $v=J\dot q$ 与 $\tau=J^\top F$ 如何统一 IK/WBC/MPC？ |
 
 ## 原始资料
 
-| 篇目 | Source | 微信链接 |
-|------|--------|----------|
+| 篇目 | Source | 微信 |
+|------|--------|------|
 | 01 | [wechat_shenlan_lie_group_lie_algebra_quaternion.md](../../sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md) | `JviRH2LW-fkCHA5gY7Qflw` |
 | 02 | [wechat_shenlan_3d_coordinate_transforms.md](../../sources/blogs/wechat_shenlan_3d_coordinate_transforms.md) | `P5Jm7bMhaTHsytHStFbbLg` |
 | 03 | [wechat_shenlan_riemannian_manifold_tangent_space.md](../../sources/blogs/wechat_shenlan_riemannian_manifold_tangent_space.md) | `uFTKN5FDvlHQxOSspvxVZw` |
-| 04 | [wechat_shenlan_rl_embodied_minimal_closed_loop.md](../../sources/blogs/wechat_shenlan_rl_embodied_minimal_closed_loop.md) | `hHkQqLfIOTn0CoAZNuLWJA`（知识已并入 [运动控制路线 L5](../../roadmap/motion-control.md)，不设独立 wiki 节点） |
+| 04 | [wechat_shenlan_rl_embodied_minimal_closed_loop.md](../../sources/blogs/wechat_shenlan_rl_embodied_minimal_closed_loop.md) | `hHkQqLfIOTn0CoAZNuLWJA` |
 | 05 | [wechat_shenlan_homogeneous_coordinates_transform.md](../../sources/blogs/wechat_shenlan_homogeneous_coordinates_transform.md) | `3vwaizPOgJKCwQ9e5LuKGA` |
+| 06 | [wechat_shenlan_rl_motion_control_pipeline.md](../../sources/blogs/wechat_shenlan_rl_motion_control_pipeline.md) | `mid=2247505497` |
+| 07 | [wechat_shenlan_rl_inverse_kinematics.md](../../sources/blogs/wechat_shenlan_rl_inverse_kinematics.md) | `mid=2247506122` |
+| 08 | [wechat_shenlan_forward_kinematics.md](../../sources/blogs/wechat_shenlan_forward_kinematics.md) | `mid=2247506508` |
+| 09 | [wechat_shenlan_inverse_kinematics.md](../../sources/blogs/wechat_shenlan_inverse_kinematics.md) | `mid=2247506764` |
+| 10 | [wechat_shenlan_robot_jacobian.md](../../sources/blogs/wechat_shenlan_robot_jacobian.md) | `mid=2247507685` |
 
 ## 按目标选入口
 
 | 你的目标 | 从哪开始 |
 |----------|----------|
-| FK/SLAM 里位姿变量为何全是 $4\times4$、连乘顺序搞不清 | [05 齐次坐标](../formalizations/homogeneous-coordinates-transform.md) → [01 李群](../formalizations/lie-group-rigid-body-motions.md) |
-| 策略 / WBC 里姿态增量不合法、万向锁 | [01 李群](../formalizations/lie-group-rigid-body-motions.md) → [Modern Robotics](../entities/modern-robotics-book.md) |
-| VLA / 抓取真机「看起来对、抓空」 | [02 坐标变换](../formalizations/3d-coordinate-transforms-vision-robotics.md) → [grasp-pose-estimation](../methods/grasp-pose-estimation.md) |
-| RL 在大角度旋转上发散、想理解流形优化 | [03 黎曼流形](../formalizations/riemannian-manifold-tangent-space.md) → 回看 01 |
-| 补 2025 VLA 开源复现地图（同公众号） | [VLA 复现景观](./vla-open-source-repro-landscape-2025.md) |
-| 想补 RL 入门最小闭环（策略/MDP/PPO·SAC/PyBullet） | [具身 RL 最小闭环](../concepts/embodied-rl-minimal-closed-loop.md) → [运动控制路线 L5.0](../../roadmap/motion-control.md#l50-桥梁从路牌到可跑代码的最小闭环) |
-| 想看人形运控 RL 五模块闭环（AC/PPO/奖励/蒸馏） | [人形 RL 策略训练五模块](./humanoid-rl-policy-training-five-modules.md) → [Humanoid RL Cookbook](../queries/humanoid-rl-cookbook.md) |
-| 补世界模型 15 项目地图（同公众号） | [世界模型三线地图](./world-models-15-open-source-technology-map.md) |
+| FK/SLAM 里位姿变量为何全是 $4\times4$ | [05 齐次坐标](../formalizations/homogeneous-coordinates-transform.md) → [08 FK](../formalizations/forward-kinematics.md) |
+| 策略 / WBC 里姿态增量不合法 | [01 李群](../formalizations/lie-group-rigid-body-motions.md) |
+| VLA / 抓取「看起来对、抓空」 | [02 坐标变换](../formalizations/3d-coordinate-transforms-vision-robotics.md) |
+| 末端要到某位姿、关节该转多少 | [09 IK](../formalizations/inverse-kinematics.md) → [10 雅可比](../formalizations/robot-jacobian.md) |
+| 冗余臂要边跟末端边避障 | [09 零空间](../formalizations/inverse-kinematics.md) 或 [07 混合 RL-IK](../comparisons/rl-inverse-kinematics-five-approaches.md) |
+| 四足 RL 从最小闭环扩到真机管线 | [04 最小闭环](../concepts/embodied-rl-minimal-closed-loop.md) → [06 pipeline](./robot-rl-motion-control-pipeline.md) |
+| 人形运控 RL 五模块 | [人形 RL 策略训练五模块](./humanoid-rl-policy-training-five-modules.md) |
 
 ## 常见误区
 
-1. **「有三维视觉就不需要坐标变换」** — 点云再密，末端执行仍要在 **基座系** 下规划；未手眼标定则系统性偏移。
-2. **「李群篇与黎曼篇重复」** — 01 是 SO(3)/SE(3) **操作手册**；03 是 **一般流形 + 近似清单**，01 为其重要特例。
-3. **「流形只给 SLAM 后端用」** — 专栏论点：具身任务复杂度使 **大角度策略更新** 必须在切空间/Exp 上算，而非事后归一化四元数。
-4. **「会四元数就不用齐次矩阵」** — 05 强调：**四元数是 SO(3) 存储，齐次矩阵是 SE(3) 连乘与代码默认形状**；FK/手眼/里程计仍依赖 $T_n\cdots T_1$。
-5. **把专栏当性能榜单** — 均为 **第一性原理科普**，不替代教材证明与标定 SOP。
+1. **「有三维视觉就不需要坐标变换」** — 点云再密，末端仍要在基座系规划。
+2. **「李群篇与黎曼篇重复」** — 01 是 SO(3)/SE(3) 操作手册；03 是一般流形。
+3. **「会四元数就不用齐次矩阵」** — 四元数是 SO(3) 存储，齐次矩阵是 SE(3) 连乘默认形状。
+4. **「FK 简单所以不值得建页」** — IK、雅可比、URDF、RL 位姿误差都建立在同一套 FK 上。
+5. **「RL 已经替代 IK」** — 专栏 07 明确反对：雅可比管精度，RL 管冗余/非标/多目标。
+6. **把专栏当性能榜单** — 均为第一性原理科普，不替代教材与标定 SOP。
 
 ## 关联页面
 
-- [SE(3) Representation](../formalizations/se3-representation.md) — 欧拉/四元数/6D 与 DL 损失
-- [Visual Servoing](../methods/visual-servoing.md) — 标定敏感 vs 图像雅可比
-- [Grasp Pose Estimation](../methods/grasp-pose-estimation.md) — 多视点与手眼
-- [VLA 方法页](../methods/vla.md) — 上层策略对底层几何的依赖
+- [SE(3) Representation](../formalizations/se3-representation.md)
+- [Grasp Pose Estimation](../methods/grasp-pose-estimation.md)
+- [VLA 方法页](../methods/vla.md)
+- [Whole-Body Control](../concepts/whole-body-control.md)
 - [Agent Reach](../entities/agent-reach.md) — 微信正文抓取工具链
 
 ## 参考来源
@@ -112,8 +142,14 @@ flowchart TB
 - [深蓝具身智能：李群、李代数、四元数](../../sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md)
 - [深蓝具身智能：三维世界坐标变换](../../sources/blogs/wechat_shenlan_3d_coordinate_transforms.md)
 - [深蓝具身智能：黎曼流形与切空间](../../sources/blogs/wechat_shenlan_riemannian_manifold_tangent_space.md)
+- [深蓝具身智能：RL 运动控制 pipeline](../../sources/blogs/wechat_shenlan_rl_motion_control_pipeline.md)
+- [深蓝具身智能：RL 求解 IK](../../sources/blogs/wechat_shenlan_rl_inverse_kinematics.md)
+- [深蓝具身智能：正向运动学](../../sources/blogs/wechat_shenlan_forward_kinematics.md)
+- [深蓝具身智能：逆运动学](../../sources/blogs/wechat_shenlan_inverse_kinematics.md)
+- [深蓝具身智能：雅可比矩阵](../../sources/blogs/wechat_shenlan_robot_jacobian.md)
+- [专辑清单 JSON](../../sources/raw/wechat_shenlan_embodied_ai_fundamentals_album_2026.json)
 
 ## 推荐继续阅读
 
-- Lynch & Park, *Modern Robotics* Ch 2–4 — [sources/papers/modern_robotics_textbook.md](../../sources/papers/modern_robotics_textbook.md)
+- Lynch & Park, *Modern Robotics* Ch 2–6 — [sources/papers/modern_robotics_textbook.md](../../sources/papers/modern_robotics_textbook.md)
 - [深蓝具身智能《具身智能基础》专栏专辑](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkwMDcyNDUzMQ==&action=getalbum&album_id=4525948187102363653)（微信，可能需订阅）

@@ -3,7 +3,7 @@ type: concept
 tags: [control, wbc, inverse-dynamics, optimization, humanoid]
 status: complete
 summary: "TSID 用任务空间逆动力学统一处理多任务和接触约束，是全身控制的重要方法页。"
-updated: 2026-04-25
+updated: 2026-08-13
 sources:
   - ../../sources/papers/whole_body_control.md
 ---
@@ -335,6 +335,10 @@ MPC 负责规划未来参考，TSID 负责在每个控制周期把这些参考�
 ## 继续深挖入口
 
 如果你想沿着 TSID 继续往下挖，建议从这里进入：
+
+### 运动学接口
+- [逆运动学](../formalizations/inverse-kinematics.md) — 位置层 IK；TSID 是力/加速度升级
+- [雅可比矩阵](../formalizations/robot-jacobian.md) — 任务约束投影到关节的 $J$
 
 ### 论文入口
 - [Whole-Body Control 论文导航](../../references/papers/whole-body-control.md)

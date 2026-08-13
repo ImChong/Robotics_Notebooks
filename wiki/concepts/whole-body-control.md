@@ -15,6 +15,7 @@ related:
   - ../entities/paper-behavior-foundation-model-humanoid.md
   - ./behavior-foundation-model.md
   - ../formalizations/lie-group-rigid-body-motions.md
+  - ../formalizations/robot-jacobian.md
   - ../formalizations/se3-representation.md
   - ../queries/when-to-use-wbc-vs-rl.md
   - ../entities/paper-g1-confined-space-wbp.md
@@ -175,6 +176,7 @@ print("joint acceleration command:", qdd_star)
 - [WBC vs RL](../comparisons/wbc-vs-rl.md)
 - [Sim2Real](./sim2real.md)
 - [Contact Estimation](./contact-estimation.md) — WBC 的接触集合来自接触估计，直接影响约束矩阵
+- [雅可比矩阵](../formalizations/robot-jacobian.md) — 任务速度/力经 $J$ / $J^\top$ 投影到关节
 - [李群、李代数与刚体旋转](../formalizations/lie-group-rigid-body-motions.md) — 任务空间 twist 与 se(3) 增量
 - [SE(3) 位姿表示形式化](../formalizations/se3-representation.md) — WBC 任务空间目标表示的基础
 - [LEGS（论文实体）](../entities/paper-legs-embodied-gaussian-splatting-vla.md) — [SONIC](../methods/sonic-motion-tracking.md) 作低层 WBC 合成 loco-manip VLA 数据（arXiv:2606.01458）

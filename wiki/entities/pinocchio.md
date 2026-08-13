@@ -3,13 +3,15 @@
 type: entity
 tags: [software, dynamics, c++, whole-body-control, algorithms, inria]
 status: complete
-updated: 2026-08-09
+updated: 2026-08-13
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/centroidal-dynamics.md
   - ../concepts/floating-base-dynamics.md
   - ./paper-urdd-universal-robot-description-directory.md
   - ./dynibo.md
+  - ../formalizations/forward-kinematics.md
+  - ../formalizations/robot-jacobian.md
 sources:
   - ../../sources/papers/simulation.md
   - ../../sources/papers/urdd_beyond_urdf_arxiv_2512_23135.md
@@ -58,6 +60,8 @@ summary: "Pinocchio 是一个基于 C++ 的极致高性能刚体动力学库，�
 ## 关联页面
 - [Query：Pinocchio 快速上手指南](../queries/pinocchio-quick-start.md)
 - [Dynibo](./dynibo.md) — Rust 轻量 FK/RNEA/数值 IK，Pinocchio oracle 对照
+- [正向运动学](../formalizations/forward-kinematics.md) — URDF 树 FK 的教学对照
+- [雅可比矩阵](../formalizations/robot-jacobian.md) — `computeFrameJacobian` 几何雅可比
 - [Whole-Body Control (WBC)](../concepts/whole-body-control.md)
 - [Centroidal Dynamics](../concepts/centroidal-dynamics.md)
 - [Floating Base Dynamics](../concepts/floating-base-dynamics.md)

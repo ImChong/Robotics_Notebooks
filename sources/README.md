@@ -355,6 +355,11 @@
 | [x] [wechat_shenlan_riemannian_manifold_tangent_space.md](blogs/wechat_shenlan_riemannian_manifold_tangent_space.md) | 深蓝具身智能：《具身智能基础》专栏 03 — 黎曼流形与切空间（Exp/Log、工程近似；`uFTKN5FDvlHQxOSspvxVZw`） |
 | [x] [wechat_shenlan_rl_embodied_minimal_closed_loop.md](blogs/wechat_shenlan_rl_embodied_minimal_closed_loop.md) | 深蓝具身智能：《具身智能基础》专栏 04 — RL 最小闭环（策略/MDP/PPO·SAC/PyBullet；`hHkQqLfIOTn0CoAZNuLWJA`；已并入 `roadmap/motion-control` L5） |
 | [x] [wechat_shenlan_homogeneous_coordinates_transform.md](blogs/wechat_shenlan_homogeneous_coordinates_transform.md) | 深蓝具身智能：《具身智能基础》专栏 05 — 齐次坐标与齐次变换（SE(3) L0 工程底座；`3vwaizPOgJKCwQ9e5LuKGA`） |
+| [x] [wechat_shenlan_rl_motion_control_pipeline.md](blogs/wechat_shenlan_rl_motion_control_pipeline.md) | 深蓝具身智能：《具身智能基础》专栏 06 — RL 运动控制完整 pipeline（DRL+PD / PPO / 蒸馏 / DR；`mid=2247505497`） |
+| [x] [wechat_shenlan_rl_inverse_kinematics.md](blogs/wechat_shenlan_rl_inverse_kinematics.md) | 深蓝具身智能：《具身智能基础》专栏 07 — RL 求解 IK 五类方案（DDPG / PPO·MAPPO / 模型基 / 混合 / 分层；`mid=2247506122`） |
+| [x] [wechat_shenlan_forward_kinematics.md](blogs/wechat_shenlan_forward_kinematics.md) | 深蓝具身智能：《具身智能基础》专栏 08 — 正向运动学（标准 DH 连乘；`mid=2247506508`） |
+| [x] [wechat_shenlan_inverse_kinematics.md](blogs/wechat_shenlan_inverse_kinematics.md) | 深蓝具身智能：《具身智能基础》专栏 09 — 逆运动学五个关键点（解析 / DLS / 零空间 / IKFlow；`mid=2247506764`） |
+| [x] [wechat_shenlan_robot_jacobian.md](blogs/wechat_shenlan_robot_jacobian.md) | 深蓝具身智能：《具身智能基础》专栏 10 — 雅可比统一速度与力映射（`mid=2247507685`） |
 | [x] [wechat_shenlan_vla_github_repro_survey_2025.md](blogs/wechat_shenlan_vla_github_repro_survey_2025.md) | 深蓝具身智能：2025 GitHub 高 star VLA 开源栈复现推荐（OpenPI、VLA-Adapter、RLinf 等 11 项；`k_i-1NEBP-lEzth19HOHkQ`） |
 | [x] [wechat_shenlan_vln_repro_four_paradigms_2026.md](blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md) | 深蓝具身智能：VLN 四范式新手复现（VLFM、NavGPT、NoMaD、Uni-NaVid；`AzCDukzwrfIyms_65kh1mg`） |
 | [x] [wechat_shenlan_vln_10_papers_survey.md](blogs/wechat_shenlan_vln_10_papers_survey.md) | 深蓝具身智能：VLN 10 项代表性研究盘点（两组 `wiki/overview/vln-category-*` 图谱 hub；Agent Reach + Camoufox；`2_dYaN6IeWn_vvS_jmGqRQ`） |
