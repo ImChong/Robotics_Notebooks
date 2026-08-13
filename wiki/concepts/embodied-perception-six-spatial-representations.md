@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, spatial-representation, slam, semantic-mapping, point-cloud, occupancy, depth, embodied-ai]
 status: complete
-updated: 2026-08-02
+updated: 2026-08-13
 related:
   - ./2d-to-3d-semantic-lifting-gap.md
   - ./perception-coordinate-postprocessing.md
@@ -14,11 +14,13 @@ related:
   - ../entities/findanything.md
   - ../entities/ov-sam3d.md
   - ../entities/cmu-mscv-semantic-3d-mapping.md
+  - ../entities/paper-occanyscene.md
   - ../methods/grasp-pose-estimation.md
   - ../formalizations/3d-coordinate-transforms-vision-robotics.md
   - ../tasks/vision-language-navigation.md
 sources:
   - ../../sources/blogs/wechat_shenlan_six_spatial_representations_embodied_perception.md
+  - ../../sources/papers/occanyscene_arxiv_2608_08696.md
 summary: "具身感知六种空间表征分层：2D 视觉 / 深度 / 点云 / 占据栅格与距离场 / 语义地图 / 隐式地图——各自回答不同问题，不是 2D→3D 单向升级；语义地图（存什么）与隐式地图（怎么表示）正交；选型口诀是「在正确层级选正确表征」。"
 ---
 
@@ -98,7 +100,7 @@ flowchart TB
 | **TSDF** | 到观测表面的截断符号距离 | 表面零交叉在哪 | 多帧深度融合、网格提取 |
 | **ESDF** | 到最近障碍的欧氏符号距离（含梯度） | 离障碍还有多远 | 轨迹优化、安全余量 |
 
-工程落地示例：[Isaac ROS nvblox](../entities/isaac-ros-nvblox.md) 在 GPU 上维护 TSDF/ESDF，供 [Nav2](../overview/navigation-slam-autonomy-stack.md) 类栈做 3D 代价。
+工程落地示例：[Isaac ROS nvblox](../entities/isaac-ros-nvblox.md) 在 GPU 上维护 TSDF/ESDF，供 [Nav2](../overview/navigation-slam-autonomy-stack.md) 类栈做 3D 代价。学习型稠密语义占据（室内外协议不统一时）见 [OccAnyScene](../entities/paper-occanyscene.md)：连续高斯再 splat 到各域栅格，不是在线距离场。
 
 ### 各层关键机制（压缩）
 
@@ -159,6 +161,7 @@ flowchart TB
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 传感→策略消费的工程选型链
 - [导航·SLAM·自动驾驶开源栈](../overview/navigation-slam-autonomy-stack.md) — 占据 / ESDF / Nav2 落点
 - [Isaac ROS nvblox](../entities/isaac-ros-nvblox.md) — GPU TSDF/ESDF
+- [OccAnyScene](../entities/paper-occanyscene.md) — 跨室内外语义占据（像素视锥高斯；代码待发布）
 - [FindAnything](../entities/findanything.md) · [OV-SAM3D](../entities/ov-sam3d.md) · [CMU MSCV Semantic 3D Mapping](../entities/cmu-mscv-semantic-3d-mapping.md) — 语义建图代表
 - [GO2 三维语义建图 SAM 流水线](../queries/go2-3d-semantic-mapping-sam-pipeline.md) — 语义地图端到端案例
 - [Grasp Pose Estimation](../methods/grasp-pose-estimation.md) — 点云直连操作
@@ -169,6 +172,7 @@ flowchart TB
 ## 参考来源
 
 - [深蓝具身智能：六种空间表征分层](../../sources/blogs/wechat_shenlan_six_spatial_representations_embodied_perception.md) — 本页主编译来源（微信；原始落盘见同页）
+- [OccAnyScene 论文摘录](../../sources/papers/occanyscene_arxiv_2608_08696.md) — 学习型语义占据（第 4 层）跨协议对照
 
 ## 推荐继续阅读
 

@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, computer-vision, segmentation, semantic-mapping, 2d-to-3d, robotics, sim2real]
 status: complete
-updated: 2026-08-04
+updated: 2026-08-13
 related:
   - ./embodied-perception-six-spatial-representations.md
   - ./perception-coordinate-postprocessing.md
@@ -16,10 +16,12 @@ related:
   - ../entities/findanything.md
   - ../entities/ov-sam3d.md
   - ../entities/cmu-mscv-semantic-3d-mapping.md
+  - ../entities/paper-occanyscene.md
 sources:
   - ../../sources/papers/segment_anything_arxiv_2304_02643.md
   - ../../sources/papers/sam2_arxiv_2408_00714.md
   - ../../sources/repos/ov-sam3d.md
+  - ../../sources/papers/occanyscene_arxiv_2608_08696.md
 summary: "「2D 检测/分割结果」↔「可供策略消费的 3D 语义几何」取舍概念：把 2D 框/掩码提升到 3D 语义地图时会引入尺度不确定、遮挡、时序不一致、类别语义 vs 几何占据分离四类信息损失与歧义——它是「感知输出能否被下游导航/操作忠实消费」的物理根因，可用深度融合 / 多视角一致性 / 语义-几何联合建图三条工程路线收窄。"
 ---
 
@@ -134,6 +136,7 @@ Gap 被定位后，收窄它有三条互补路线，成本与保真度递增：
 - [GO2 三维语义建图 SAM 流水线](../queries/go2-3d-semantic-mapping-sam-pipeline.md) — 2D→3D 语义建图端到端案例
 - [Segment Anything](../entities/paper-segment-anything.md) · [SAM2](../entities/paper-sam2.md) — 提供无类别语义掩码，语义-几何分离的一端
 - [FindAnything](../entities/findanything.md) · [OV-SAM3D](../entities/ov-sam3d.md) · [CMU MSCV Semantic 3D Mapping](../entities/cmu-mscv-semantic-3d-mapping.md) — 路线③语义-几何联合建图代表
+- [OccAnyScene](../entities/paper-occanyscene.md) — 跨室内外度量 lifting：像素视锥约束高斯，而不是绝对米制偏移
 - [视觉骨干（概念）](./vision-backbones.md) — 2D 特征提取背景
 - [目标检测（方法）](../methods/object-detection.md) — 2D 检测方法总览
 
@@ -142,3 +145,4 @@ Gap 被定位后，收窄它有三条互补路线，成本与保真度递增：
 - [Segment Anything（可提示分割）](../../sources/papers/segment_anything_arxiv_2304_02643.md) — 语义-几何分离一端（掩码无类别）的一手资料
 - [SAM2（图像+视频可提示分割）](../../sources/papers/sam2_arxiv_2408_00714.md) — 路线②多视角/视频一致性的一手资料
 - [OV-SAM3D（开放词汇 3D 分割）](../../sources/repos/ov-sam3d.md) — 路线③语义-几何联合建图一手资料
+- [OccAnyScene 论文摘录](../../sources/papers/occanyscene_arxiv_2608_08696.md) — 跨相机/跨尺度 image-to-3D lifting 的视锥高斯路线

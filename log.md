@@ -1,3 +1,12 @@
+## [2026-08-13] ingest | sources/papers/occanyscene_arxiv_2608_08696.md — OccAnyScene 跨室内外 3D 语义占据入库；官方仓占位
+
+- **触发：** 用户指定论文 *OccAnyScene: Towards Unified Indoor-Outdoor 3D Occupancy Prediction*（arXiv:2608.08696）与项目页 <https://roboperception.github.io/OccAnyScene/>；要求自动合并
+- **步骤 2.5：** 项目页 Code 指向 [RoboPerception/OccAnyScene](https://github.com/RoboPerception/OccAnyScene)；`main` 仅 README + `assets/`，徽章 **release upon acceptance** → **部分开源（占位仓）/ 训练与推理待录用后发布**
+- **来源：** [`sources/papers/occanyscene_arxiv_2608_08696.md`](sources/papers/occanyscene_arxiv_2608_08696.md)、[`sources/sites/roboperception-occanyscene-github-io.md`](sources/sites/roboperception-occanyscene-github-io.md)、[`sources/repos/occanyscene.md`](sources/repos/occanyscene.md)
+- **升格：** [`wiki/entities/paper-occanyscene.md`](wiki/entities/paper-occanyscene.md) — Cross-Scene 任务、PFFA+FPGC、DAv3 联合训练 -0.41/-0.19 mIoU；时序图不适用
+- **机构：** [`schema/institutions.json`](schema/institutions.json) 新增 `hitsz`（哈尔滨工业大学深圳）
+- **交叉：** 六种空间表征、2D→3D 提升 Gap、导航·SLAM 栈、感知选型闭环、Humanoid Occupancy、Nvblox、GaussianWorld
+
 ## [2026-08-13] structural | wiki/entities/deepseek-harness.md — 修复源码运行时序图 Mermaid：参与者名 Loop 被解析为保留字
 
 - **触发：** 用户反馈 DeepSeek Harness 详情页 Mermaid 时序图格式问题；要求自动合并

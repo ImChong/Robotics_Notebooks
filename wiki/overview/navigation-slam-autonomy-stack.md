@@ -3,7 +3,7 @@
 type: overview
 tags: [navigation, slam, ros2, autoware, lidar, vio, mobile-robot, autonomous-driving, openloong]
 status: complete
-updated: 2026-08-10
+updated: 2026-08-13
 related:
   - ../concepts/embodied-perception-six-spatial-representations.md
   - ./autonomous-driving-core-algorithms-series.md
@@ -23,6 +23,7 @@ related:
   - ../entities/paper-panolog-ggps.md
   - ../entities/paper-glob3r.md
   - ../entities/paper-slamformer-infinity.md
+  - ../entities/paper-occanyscene.md
   - ../entities/paper-vs-graphs-visual-slam-scene-graph.md
   - ../methods/lingbot-map.md
   - ../entities/vins-fusion.md
@@ -229,6 +230,7 @@ flowchart TB
 - [LingBot-Map](../methods/lingbot-map.md) — 流式前馈视觉几何
 - [Glob3R](../entities/paper-glob3r.md) — 全局 SfM + 3D 基础模型（离线精炼）
 - [SLAMFormer-∞](../entities/paper-slamformer-infinity.md) — 无界 dense mono SLAM Transformer（占位仓）
+- [OccAnyScene](../entities/paper-occanyscene.md) — 跨室内外视觉语义占据（像素视锥高斯；代码待发布）
 - [PanoLOG / G²PS](../entities/paper-panolog-ggps.md) — 全景户外 3DGS 重建（novel-view 资产）
 - [iCrowdNav](../entities/paper-icrowdnav.md) — 视觉人群导航 DRL（局部社交层对照；代码待发布）
 - [SPLC](../entities/paper-splc.md) — 自动社交偏好奖励 + Offline RL 人群导航（代码 coming soon）

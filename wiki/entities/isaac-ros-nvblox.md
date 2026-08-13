@@ -2,11 +2,12 @@
 type: entity
 tags: [repo, nvidia, ros2, tsdf, esdf, mapping, nav2]
 status: complete
-updated: 2026-08-02
+updated: 2026-08-13
 related:
   - ../entities/isaac-ros-visual-slam.md
   - ../entities/navigation2.md
   - ../overview/navigation-slam-autonomy-stack.md
+  - ./paper-occanyscene.md
 sources:
   - ../../sources/repos/isaac_ros_nvblox.md
 summary: "Isaac ROS Nvblox 用 GPU 维护 TSDF/ESDF 体素地图，为 Nav2 提供 3D 障碍与局部代价，支持动态场景重建。"
@@ -51,6 +52,7 @@ summary: "Isaac ROS Nvblox 用 GPU 维护 TSDF/ESDF 体素地图，为 Nav2 提�
 
 - [Isaac ROS Visual SLAM](./isaac-ros-visual-slam.md)
 - [Navigation2](./navigation2.md)
+- [OccAnyScene](./paper-occanyscene.md) — 学习型语义占据（离线/批式）；nvblox 是在线 TSDF/ESDF
 
 ## 推荐继续阅读
 

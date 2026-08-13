@@ -2,7 +2,7 @@
 type: query
 tags: [perception, computer-vision, object-detection, segmentation, semantic-mapping, 2d-to-3d, robotics, selection-loop]
 status: complete
-updated: 2026-08-02
+updated: 2026-08-13
 summary: "机器人视觉感知栈选型闭环知识链：把 传感与标定 → 2D 检测/分割选型 → 2D→3D 提升与语义建图 → 下游策略消费 四层感知栈，从分散的检测/分割/语义建图实体页沉淀为一条端到端选型决策链，逐层说明每层选什么、精度 vs 时延/算力如何取舍、闭集准 vs 开放词汇泛、2D 框够用 vs 必须 3D 语义几何、感知频率 ≠ 控制闭环带宽。"
 sources:
   - ../../sources/papers/yolo_arxiv_1506_02640.md
@@ -12,6 +12,7 @@ sources:
   - ../../sources/repos/ultralytics.md
   - ../../sources/repos/ov-sam3d.md
   - ../../sources/blogs/wechat_shenlan_six_spatial_representations_embodied_perception.md
+  - ../../sources/papers/occanyscene_arxiv_2608_08696.md
 related:
   - ../concepts/embodied-perception-six-spatial-representations.md
   - ../concepts/2d-to-3d-semantic-lifting-gap.md
@@ -26,6 +27,7 @@ related:
   - ../entities/findanything.md
   - ../entities/cmu-mscv-semantic-3d-mapping.md
   - ../entities/ov-sam3d.md
+  - ../entities/paper-occanyscene.md
   - ../queries/object-detection-model-selection.md
   - ../queries/perception-backbone-selection.md
   - ../queries/go2-3d-semantic-mapping-sam-pipeline.md
@@ -168,6 +170,7 @@ flowchart TD
 - [sam2_arxiv_2408_00714.md](../../sources/papers/sam2_arxiv_2408_00714.md) — ②层图像+视频可提示分割
 - [ultralytics.md](../../sources/repos/ultralytics.md) — ②层单阶段实时检测工程化生态一手仓
 - [ov-sam3d.md](../../sources/repos/ov-sam3d.md) — ③层开放词汇 3D 分割一手资料
+- [occanyscene_arxiv_2608_08696.md](../../sources/papers/occanyscene_arxiv_2608_08696.md) — ③层跨室内外语义占据 lifting
 
 ## 关联页面
 
@@ -185,3 +188,4 @@ flowchart TD
 - [Ultralytics YOLO](../entities/ultralytics.md) · [RF-DETR](../entities/rf-detr.md) · [YOLO 奠基论文](../entities/paper-yolo-unified-realtime-detection.md) — ②层 2D 检测层实体
 - [Segment Anything](../entities/paper-segment-anything.md) · [SAM2](../entities/paper-sam2.md) — ②层可提示分割层实体
 - [FindAnything](../entities/findanything.md) · [OV-SAM3D](../entities/ov-sam3d.md) · [CMU MSCV Semantic 3D Mapping](../entities/cmu-mscv-semantic-3d-mapping.md) — ③层 2D→3D 语义建图层实体
+- [OccAnyScene](../entities/paper-occanyscene.md) — ③层跨室内外语义占据（视锥高斯 lifting；代码待发布）
