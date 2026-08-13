@@ -14,10 +14,12 @@ related:
   - ../entities/pink-ik.md
   - ../entities/ssik.md
   - ../entities/modern-robotics-book.md
+  - ../concepts/null-space-control.md
 sources:
   - ../../sources/blogs/wechat_shenlan_inverse_kinematics.md
   - ../../sources/raw/wechat_shenlan_inverse_kinematics_2026-07-23.md
   - ../../sources/papers/modern_robotics_textbook.md
+  - ../../sources/papers/null_space_control.md
 summary: "逆运动学求使末端达到目标 SE(3) 位姿的关节角：解可能不存在、不唯一或无穷多。工程主路径是解析（Pieper）→ 雅可比迭代+DLS → 冗余零空间；高维再用生成式候选池。"
 ---
 
@@ -82,7 +84,7 @@ $$
 \dot q = J^+ \dot x + (I-J^+J)z
 $$
 
-第一项完成主任务，第二项不改末端，可最大化操纵度、关节居中、或沿障碍距离梯度避障。
+第一项完成主任务，第二项不改末端，可最大化操纵度、关节居中、或沿障碍距离梯度避障。7 轴力矩阻抗、投影器选型与开源入口见 [零空间控制](../concepts/null-space-control.md)。
 
 ### 5. 学习型候选池
 
@@ -123,6 +125,7 @@ flowchart TB
 
 - [正向运动学](./forward-kinematics.md) — 每步误差从这里来
 - [雅可比矩阵](./robot-jacobian.md) — $J$、$J^+$、零空间
+- [零空间控制](../concepts/null-space-control.md) — 7 轴投影、静力学/动力学一致与开源实现
 - [RL 求解 IK 的五类方案](../comparisons/rl-inverse-kinematics-five-approaches.md)
 - [TSID](../concepts/tsid.md) — 任务空间逆动力学，IK 的力/加速度升级
 - [《具身智能基础》专栏](../overview/shenlan-embodied-ai-fundamentals-series.md) — 本篇为专栏 09
@@ -132,6 +135,7 @@ flowchart TB
 - [深蓝具身智能：逆运动学五个关键点](../../sources/blogs/wechat_shenlan_inverse_kinematics.md)
 - [抓取落盘](../../sources/raw/wechat_shenlan_inverse_kinematics_2026-07-23.md)
 - [Modern Robotics 教材摘录](../../sources/papers/modern_robotics_textbook.md)（Ch 6）
+- [零空间控制论文簇](../../sources/papers/null_space_control.md)
 
 ## 推荐继续阅读
 

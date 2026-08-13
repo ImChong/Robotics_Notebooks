@@ -12,6 +12,7 @@ related:
   - ./dynibo.md
   - ../formalizations/forward-kinematics.md
   - ../formalizations/robot-jacobian.md
+  - ../concepts/null-space-control.md
 sources:
   - ../../sources/papers/simulation.md
   - ../../sources/papers/urdd_beyond_urdf_arxiv_2512_23135.md
@@ -62,6 +63,7 @@ summary: "Pinocchio 是一个基于 C++ 的极致高性能刚体动力学库，�
 - [Dynibo](./dynibo.md) — Rust 轻量 FK/RNEA/数值 IK，Pinocchio oracle 对照
 - [正向运动学](../formalizations/forward-kinematics.md) — URDF 树 FK 的教学对照
 - [雅可比矩阵](../formalizations/robot-jacobian.md) — `computeFrameJacobian` 几何雅可比
+- [零空间控制](../concepts/null-space-control.md) — 用 Pinocchio 的 $J$ 做 7 轴投影或交给 TSID/HQP
 - [Whole-Body Control (WBC)](../concepts/whole-body-control.md)
 - [Centroidal Dynamics](../concepts/centroidal-dynamics.md)
 - [Floating Base Dynamics](../concepts/floating-base-dynamics.md)

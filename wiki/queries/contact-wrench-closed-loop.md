@@ -2,7 +2,7 @@
 type: query
 tags: [contact, force-control, impedance, manipulation, tactile, wrench, contact-rich]
 status: complete
-updated: 2026-08-02
+updated: 2026-08-13
 summary: "接触力旋量闭环知识链：把分散的接触感知/估计 → 力旋量表示 → 阻抗/导纳/混合力位控制 → 接触丰富操作策略串成一条端到端决策链，逐层说明各自如何贡献操作稳定性，以及带宽/刚度/时延的取舍与典型失败模式。"
 sources:
   - ../../sources/papers/contact_dynamics.md
@@ -16,6 +16,7 @@ related:
   - ../concepts/force-control-basics.md
   - ../concepts/hybrid-force-position-control.md
   - ../concepts/impedance-control.md
+  - ../concepts/null-space-control.md
   - ../concepts/visuo-tactile-fusion.md
   - ../concepts/contact-rich-manipulation.md
 ---
@@ -138,6 +139,7 @@ flowchart TD
 - [Force Control Basics（力控制基础）](../concepts/force-control-basics.md) — ② 力旋量表示层
 - [Hybrid Force-Position Control（力位混合控制）](../concepts/hybrid-force-position-control.md) — ③ 控制层（力位正交划分）
 - [Impedance Control（阻抗控制）](../concepts/impedance-control.md) — ③ 控制层（阻抗/导纳对偶）
+- [零空间控制](../concepts/null-space-control.md) — 7 轴阻抗的次级关节弹簧；不替代本链的力控方向选择
 - [Visuo-Tactile Fusion（视触觉融合）](../concepts/visuo-tactile-fusion.md) — ① 感知层视触觉证据
 - [Contact-Rich Manipulation（接触丰富操作）](../concepts/contact-rich-manipulation.md) — ④ 策略层
 - [Query：接触丰富操作实践指南](./contact-rich-manipulation-guide.md) — 任务视角的执行层选型姊妹篇

@@ -14,6 +14,7 @@ related:
   - ../concepts/dexterous-kinematics.md
   - ../entities/modern-robotics-book.md
   - ../entities/pinocchio.md
+  - ../concepts/null-space-control.md
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_jacobian.md
   - ../../sources/raw/wechat_shenlan_robot_jacobian_2026-08-07.md
@@ -93,7 +94,7 @@ flowchart LR
 - **实现：** 优先几何雅可比（Pinocchio `computeFrameJacobian`），不要用数值差分过奇异。
 - **坐标系：** space Jacobian vs body Jacobian 必须和任务定义一致（世界系跟踪用前者，工具系力控常用后者）。见运动控制路线 [L1.3](../../roadmap/motion-control.md)。
 - **奇异监控：** 盯最小奇异值；球腕 4/6 轴近同轴是工业高频事故。
-- **冗余：** 主任务用 $J^+$，避障/关节居中只许进零空间，避免把末端顶歪。
+- **冗余：** 主任务用 $J^+$，避障/关节居中只许进零空间，避免把末端顶歪。力矩层投影与 7 轴阻抗见 [零空间控制](../concepts/null-space-control.md)。
 
 ## 局限与风险
 
@@ -106,6 +107,7 @@ flowchart LR
 
 - [正向运动学](./forward-kinematics.md) — $J=\partial\mathrm{FK}/\partial q$
 - [逆运动学](./inverse-kinematics.md) — 伪逆 / DLS / 零空间
+- [零空间控制](../concepts/null-space-control.md) — $\ker J$ 上的次级任务与一致性选型
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [TSID](../concepts/tsid.md)
 - [《具身智能基础》专栏](../overview/shenlan-embodied-ai-fundamentals-series.md) — 本篇为专栏 10

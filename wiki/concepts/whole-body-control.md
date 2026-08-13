@@ -18,6 +18,7 @@ related:
   - ../formalizations/robot-jacobian.md
   - ../formalizations/se3-representation.md
   - ../queries/when-to-use-wbc-vs-rl.md
+  - ./null-space-control.md
   - ../entities/paper-g1-confined-space-wbp.md
 summary: "WBC（全身控制）通常写成 QP / hierarchical QP：在全身动力学与任务优先级约束下统一求解关节力矩。"
 ---
@@ -154,6 +155,7 @@ print("joint acceleration command:", qdd_star)
 - Sentis & Khatib, *Synthesis of Whole-Body Behaviors Through Hierarchical Control of Behavioral Primitives* — WBC 早期基础论文
 - Del Prete et al., *Task Space Inverse Dynamics* — WBC 动力学一致控制核心工作
 - [sources/papers/whole_body_control.md](../../sources/papers/whole_body_control.md) — TSID / HQP / Crocoddyl ingest 摘要
+- [零空间控制论文簇](../../sources/papers/null_space_control.md) — 任务优先级的连续时间投影；HQP 是不等式升级
 - [TSID (Task Space Inverse Dynamics)](https://github.com/stack-of-tasks/tsid) — 开源 WBC 实现
 - [Whole-Body Control 论文导航](../../references/papers/whole-body-control.md) — 论文集合
 - [机器人论文阅读笔记：Expressive Whole-Body Control](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Expressive_Whole-Body_Control_for_Humanoid_Robots/Expressive_Whole-Body_Control_for_Humanoid_Robots.html)
@@ -177,6 +179,7 @@ print("joint acceleration command:", qdd_star)
 - [Sim2Real](./sim2real.md)
 - [Contact Estimation](./contact-estimation.md) — WBC 的接触集合来自接触估计，直接影响约束矩阵
 - [雅可比矩阵](../formalizations/robot-jacobian.md) — 任务速度/力经 $J$ / $J^\top$ 投影到关节
+- [零空间控制](./null-space-control.md) — 冗余任务的显式投影；HQP 是其不等式升级
 - [李群、李代数与刚体旋转](../formalizations/lie-group-rigid-body-motions.md) — 任务空间 twist 与 se(3) 增量
 - [SE(3) 位姿表示形式化](../formalizations/se3-representation.md) — WBC 任务空间目标表示的基础
 - [LEGS（论文实体）](../entities/paper-legs-embodied-gaussian-splatting-vla.md) — [SONIC](../methods/sonic-motion-tracking.md) 作低层 WBC 合成 loco-manip VLA 数据（arXiv:2606.01458）

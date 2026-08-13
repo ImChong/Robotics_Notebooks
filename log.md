@@ -1,3 +1,12 @@
+## [2026-08-13] ingest | sources/papers/null_space_control.md — 接入零空间控制一手论文簇与 7 轴开源实现（Dietrich 2015 综述未开源；Mayr JOSS / libfranka / TSID 已开源）
+
+- **触发：** 用户要求找到并 ingest 机器人零空间控制一手资料与源码（含 7 轴）
+- **步骤 2.5：** Dietrich/Ott/Albu-Schäffer IJRR 2015 无官方仓（**确认未开源**，真机 DLR LWR-III 7 轴）。Mayr JOSS 项目页指向 [Cartesian-Impedance-Controller](https://github.com/matthias-mayr/Cartesian-Impedance-Controller)（BSD-3-Clause，FR3/Panda/iiwa7）→ **已开源**。[libfranka](https://github.com/frankarobotics/libfranka) `cartesian_impedance_control` + elbow 运动 → **已开源**。[stack-of-tasks/tsid](https://github.com/stack-of-tasks/tsid) → **已开源**（HQP 替代显式 $N$）
+- **来源：** 论文簇 + Dietrich 综述 + Mayr JOSS；仓库 cartesian-impedance-controller / libfranka / tsid；项目页 cartesian-impedance-controller-github-io
+- **升格：** [`wiki/concepts/null-space-control.md`](wiki/concepts/null-space-control.md)、[`wiki/entities/paper-null-space-projections-survey.md`](wiki/entities/paper-null-space-projections-survey.md)、[`wiki/entities/paper-cartesian-impedance-controller.md`](wiki/entities/paper-cartesian-impedance-controller.md)
+- **机构：** `schema/institutions.json` 新增 `dlr`、`lund`、`kuka`
+- **交叉：** IK / Jacobian / HQP / TSID / WBC / 阻抗 / 控制分配 / Franka FR3 / Pink / Pinocchio / 传统控制纵深 Stage 4 / 运动控制 L3
+
 ## [2026-08-13] ingest | sources/blogs/wechat_shenlan_{rl_motion_control_pipeline,rl_inverse_kinematics,forward_kinematics,inverse_kinematics,robot_jacobian}.md — 更新深蓝《具身智能基础》专辑 5→10 篇
 
 - **触发：** 用户指定专辑 <https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkwMDcyNDUzMQ==&action=getalbum&album_id=4525948187102363653>；要求确保 agent-reach 已装并更新 ingest；随后要求自动合并
