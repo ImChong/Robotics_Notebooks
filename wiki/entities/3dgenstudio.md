@@ -13,10 +13,11 @@ tags:
   - dcc
   - 3d-gen-studio
 status: complete
-updated: 2026-07-27
+updated: 2026-08-13
 related:
   - ../concepts/text-to-cad.md
   - ./blender.md
+  - ./comfyui.md
   - ./articraft.md
   - ./img2threejs.md
   - ./freecad-mcp.md
@@ -27,6 +28,7 @@ related:
 sources:
   - ../../sources/sites/3dgenstudio-com.md
   - ../../sources/repos/3dgenstudio.md
+  - ../../sources/repos/comfyui.md
 summary: "3D Gen Studio（visualbruno/3DGenStudio，v2.1.0）是本地优先的开源 AI 网格生产工作台：Kanban/Graph 编排 ComfyUI 与外部 API，覆盖文生图→mesh→UV/纹理→导出，并内置 Mesh Editor 与 MCP Server；产出 GLB/OBJ 等静态网格，非 STEP/URDF 工业或仿真关节真值。"
 ---
 
@@ -153,6 +155,7 @@ sequenceDiagram
 ## 关联页面
 
 - [文字生成 CAD（Text-to-CAD）](../concepts/text-to-cad.md) — 制造向 B-rep/STEP 主线；本页属「网格资产」对照分支。
+- [ComfyUI](./comfyui.md) — 本工作室的 **节点生成运行时**（GPL 核心仓 Comfy-Org/ComfyUI）；工作室是编排层。
 - [Blender](./blender.md) — 全流程 DCC；常作本工作室导出后的精修宿主。
 - [Articraft](./articraft.md) — 程序化 agent → **仿真就绪可关节** 资产；目标不同于静态 mesh 生产。
 - [img2threejs](./img2threejs.md) — 单图 → **程序化 Three.js 代码工厂**；同属视觉 3D 资产，但产物是 TS 而非 GLB 黑盒网格。
@@ -172,4 +175,5 @@ sequenceDiagram
 - [3D Gen Studio 官网](https://www.3dgenstudio.com/)
 - [GitHub — visualbruno/3DGenStudio](https://github.com/visualbruno/3DGenStudio)
 - [仓库内 MCP 文档（docs/mcp.md）](https://github.com/visualbruno/3DGenStudio/blob/main/docs/mcp.md)
-- [ComfyUI 项目](https://github.com/comfyanonymous/ComfyUI)
+- [ComfyUI（本库实体页）](./comfyui.md)
+- [ComfyUI 官方仓库](https://github.com/Comfy-Org/ComfyUI)

@@ -70,7 +70,7 @@ Texturing / Modeling / Sculpting / Painting / Displace / Projection（ComfyUI）
 ## 对 wiki 的映射
 
 - 升格页面：[wiki/entities/3dgenstudio.md](../../wiki/entities/3dgenstudio.md)
-- 交叉引用：[wiki/concepts/text-to-cad.md](../../wiki/concepts/text-to-cad.md)、[wiki/entities/blender.md](../../wiki/entities/blender.md)、[wiki/entities/articraft.md](../../wiki/entities/articraft.md)、[wiki/entities/img2threejs.md](../../wiki/entities/img2threejs.md)、[wiki/entities/freecad-mcp.md](../../wiki/entities/freecad-mcp.md)
+- 交叉引用：[wiki/concepts/text-to-cad.md](../../wiki/concepts/text-to-cad.md)、[wiki/entities/blender.md](../../wiki/entities/blender.md)、[wiki/entities/articraft.md](../../wiki/entities/articraft.md)、[wiki/entities/img2threejs.md](../../wiki/entities/img2threejs.md)、[wiki/entities/freecad-mcp.md](../../wiki/entities/freecad-mcp.md)、[wiki/entities/comfyui.md](../../wiki/entities/comfyui.md)
 - 项目页归档：[sources/sites/3dgenstudio-com.md](../sites/3dgenstudio-com.md)
 
 ## 参考链接

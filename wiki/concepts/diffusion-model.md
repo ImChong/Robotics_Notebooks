@@ -2,7 +2,7 @@
 type: concept
 tags: [generative-model, diffusion, machine-learning]
 status: complete
-updated: 2026-08-09
+updated: 2026-08-13
 related:
   - ../formalizations/generative-foundations.md
   - ../methods/diffusion-policy.md
@@ -12,6 +12,7 @@ related:
   - ../entities/paper-transformer-transformer.md
   - ../entities/paper-diffsheg.md
   - ../entities/paper-importance-sampling-pca-av-failures.md
+  - ../entities/comfyui.md
 sources:
   - ../../sources/blogs/wechat_human_five_diffusion_model_intro.md
   - ../../sources/papers/importance_sampling_pca_av_failures_arxiv_2607_18106.md
@@ -124,6 +125,7 @@ flowchart LR
 | 世界模型 | 动作、历史观测 | 下一帧潜状态 | [生成式世界模型](../methods/generative-world-models.md) |
 | 机体共设计 | 末端轨迹 + 奖励引导 | 完整机器人 embodiment | [Transformer Transformer](../entities/paper-transformer-transformer.md) |
 | 安全验证（稀有失败） | 鲁棒性阈值 / 噪声先验 | 致失败的感知噪声轨迹 | [DiFS on 商业 AV](../entities/paper-importance-sampling-pca-av-failures.md) |
+| 视觉合成工作流 | 文本、ControlNet、掩码、参考图 | RGB / 视频 / 静态 mesh | [ComfyUI](../entities/comfyui.md)（节点图运行时，非策略） |
 
 数学概率视角与 ELBO 对照见 [生成式模型基础](../formalizations/generative-foundations.md)。
 
@@ -138,6 +140,7 @@ flowchart LR
 - [LLaDA2.2-flash](../entities/llada2-2-flash.md) — 离散文本 block-diffusion MoE（dLLM）与 agentic 编辑推理
 - [Transformer Transformer](../entities/paper-transformer-transformer.md) — DiT 扩散完整机体 + Dynamics Self-Guidance
 - [Importance Sampling + PCA（商业 AV；DiFS）](../entities/paper-importance-sampling-pca-av-failures.md)
+- [ComfyUI](../entities/comfyui.md) — 节点图式扩散/视频/3D 推理引擎；实验室常用可版本化工作流宿主
 - [Sergey Levine：表达力更强的连续动作策略](../overview/sergey-levine-diffusion-expressive-policies.md) — 扩散/flow 作为连续控制动作头的讲者坐标（Simons 2026）
 
 ## 参考来源

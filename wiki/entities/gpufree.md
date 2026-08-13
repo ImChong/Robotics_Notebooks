@@ -2,7 +2,7 @@
 type: entity
 tags: [infrastructure, gpu-cloud, training, china, docker, jupyter, embodied-ai]
 status: complete
-updated: 2026-07-08
+updated: 2026-08-13
 related:
   - ./autodl.md
   - ./matpool.md
@@ -13,6 +13,7 @@ related:
   - ./isaac-lab.md
   - ./stackforce.md
   - ./isaac-gym-isaac-lab.md
+  - ./comfyui.md
   - ../methods/reinforcement-learning.md
   - ../queries/simulator-selection-guide.md
 sources:
@@ -45,7 +46,7 @@ summary: "算力自由（gpufree.cn）是 2024 年成立的国内 GPU 调度云�
 
 - **仿真友好提示少见但关键**：文档写明 **A100/H100 等无 RT 核心** 不适合具身仿真显示——与 [Isaac Sim / Isaac Lab](./isaac-lab.md) 工程现实一致，避免「租到算力最强却开不了 GUI」的踩坑。
 - **48GB 级企业卡**：主推 **L40 / L40S-48G**，适合大 batch 并行环境、VLA 微调等 **显存瓶颈**实验。
-- **镜像市场双入口**：既可从卡型出发，也可从 **机器人仿真 / ComfyUI** 等成品镜像一键创建，降低环境拼装时间。
+- **镜像市场双入口**：既可从卡型出发，也可从 **机器人仿真 / [ComfyUI](./comfyui.md)** 等成品镜像一键创建，降低环境拼装时间。
 
 ## 核心结构 / 机制
 
@@ -99,6 +100,7 @@ flowchart TB
 - [StackForce](./stackforce.md) — 工作台第三步列出的云训练入口之一（SimReady→Isaac 工程）
 - [Isaac Gym / Isaac Lab 总览](./isaac-gym-isaac-lab.md) — GPU 并行仿真背景
 - [仿真选型指南](../queries/simulator-selection-guide.md) — 框架与算力协同决策
+- [ComfyUI](./comfyui.md) — 镜像市场常见的节点式生成引擎；与仿真 GUI 镜像是不同产品面
 
 ## 推荐继续阅读
 

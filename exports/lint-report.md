@@ -109,7 +109,7 @@
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（3 个）
 - wiki/entities/paper-ego-oscar.md（含绝对化措辞「SoTA」，updated=2026-08-12；同主题更新页 wiki/entities/paper-dreamwam.md updated=2026-08-13）
 - wiki/entities/paper-refertrack.md（含绝对化措辞「最新」，updated=2026-08-12；同主题更新页 wiki/entities/paper-dreamwam.md updated=2026-08-13）
-- wiki/entities/paper-xpolicylab.md（含绝对化措辞「SOTA」，updated=2026-08-12；同主题更新页 wiki/entities/paper-dreamwam.md updated=2026-08-13）
+- wiki/entities/paper-xpolicylab.md（含绝对化措辞「SOTA」，updated=2026-08-12；同主题更新页 wiki/entities/3dgenstudio.md updated=2026-08-13）
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
@@ -129,4 +129,4 @@
 ### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：3044/3044 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：3045/3045 (100%) wiki/entity 页有 ingest 来源
