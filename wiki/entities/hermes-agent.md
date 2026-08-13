@@ -10,8 +10,9 @@ tags:
   - persistent-memory
   - messaging-gateway
 status: complete
-updated: 2026-08-08
+updated: 2026-08-13
 related:
+  - ./deepseek-harness.md
   - ./ponytail.md
   - ./caveman.md
   - ./superpowers-obra.md
@@ -119,6 +120,7 @@ flowchart TB
 
 ## 关联页面
 
+- [DeepSeek Harness](deepseek-harness.md) — DeepSeek 官方插件化运行时（Cordis + Web/SDK）；对照「单体 AIAgent vs 一切皆插件」
 - [SenseNova-Skills](sensenova-skills.md) — **办公生产力** Agent Skills（PPT/Excel/深度研究）；推荐安装至 `~/.hermes/skills/`
 - [Ponytail](ponytail.md) — **少写代码** 必要性阶梯（Hermes 可 `plugins install`）
 - [Superpowers（obra）](superpowers-obra.md) — 编码代理 **软件工程流程** 技能库

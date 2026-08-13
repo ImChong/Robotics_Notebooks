@@ -19,7 +19,8 @@ related:
   - ../entities/kimi-k3.md
   - ../entities/llada2-2-flash.md
   - ../entities/karpathy-autoresearch.md
-updated: 2026-07-28
+  - ../entities/deepseek-harness.md
+updated: 2026-08-13
 ---
 
 # 真机策略 autoresearch 闭环搭建指南
@@ -79,7 +80,7 @@ verification 是最容易被低估的部分：换传感器布局或安全约束�
 | **MRU**（Mean Robot Utilization）| 机器人时间利用率 | agent 读日志/写代码/等 LLM 时机器人空转 → MRU 下降 |
 | **MTU**（Mean Token Utilization）| LLM token 吞吐利用率 | 机队变大 → 协调开销与 token 成本上升 |
 
-ENPIRE 用 **AutoEnvBench** 比较不同 coding agent（Codex / Claude Code / Kimi Code 等）在同任务上的**墙钟研究进展曲线**——评估的是「agent 推进研究的速度」，而非单次策略分数。更大并行能更快抬高成功率，但 **token-to-success** 与协调开销同步上升，需在两条 scaling 轴上权衡。这与[具身规模法则](../concepts/embodied-scaling-laws.md)的数据/模型缩放律互补。Kimi 产品线旗舰 **[Kimi K3](../entities/kimi-k3.md)** 已于 **2026-07-27** 开放权重；若以 K3 为 coding backend，须保证 harness **完整回传 thinking history**。另可选高吞吐离散扩散后端 **[LLaDA2.2-flash](../entities/llada2-2-flash.md)**（Apache-2.0、~1.6× 相对同档 AR 吞吐叙事），但需接受块并行在严格 JSON / 多参 function call 上的局部一致性风险，并自证服务栈（SGLang 对 2.2 仍标 coming soon）。
+ENPIRE 用 **AutoEnvBench** 比较不同 coding agent（Codex / Claude Code / Kimi Code 等）在同任务上的**墙钟研究进展曲线**——评估的是「agent 推进研究的速度」，而非单次策略分数。更大并行能更快抬高成功率，但 **token-to-success** 与协调开销同步上升，需在两条 scaling 轴上权衡。这与[具身规模法则](../concepts/embodied-scaling-laws.md)的数据/模型缩放律互补。Kimi 产品线旗舰 **[Kimi K3](../entities/kimi-k3.md)** 已于 **2026-07-27** 开放权重；若以 K3 为 coding backend，须保证 harness **完整回传 thinking history**。另可选高吞吐离散扩散后端 **[LLaDA2.2-flash](../entities/llada2-2-flash.md)**（Apache-2.0、~1.6× 相对同档 AR 吞吐叙事），但需接受块并行在严格 JSON / 多参 function call 上的局部一致性风险，并自证服务栈（SGLang 对 2.2 仍标 coming soon）。深度求索官方宿主 **[DeepSeek Harness](../entities/deepseek-harness.md)**（`dsh`，MIT，开发者预览）提供 Web / headless / Python SDK；接 DeepSeek API 或自定义 OpenAI-compatible 端点时，最小示例是 `danger-full-access`，只应在隔离 workspace 里跑。
 
 ## 姊妹路线：ASPIRE 的程序技能复利
 
@@ -130,3 +131,4 @@ ENPIRE 用 **AutoEnvBench** 比较不同 coding agent（Codex / Claude Code / Ki
 - [Manipulation](../tasks/manipulation.md) — Push-T / 插针 / 扎带等灵巧操作任务语境
 - [Kimi K3](../entities/kimi-k3.md) — 开放权重 AR 旗舰 coding backend
 - [LLaDA2.2-flash](../entities/llada2-2-flash.md) — 开放权重 dLLM / 高吞吐 agent 后端选项
+- [DeepSeek Harness](../entities/deepseek-harness.md) — DeepSeek 官方插件化 coding agent 宿主（Web / headless / Python SDK）

@@ -2,13 +2,14 @@
 type: entity
 tags: [paper, llm-agents, agent-harness, self-evolution, quality-diversity, prompt-optimization, evermind, shanda]
 status: complete
-updated: 2026-08-08
+updated: 2026-08-13
 arxiv: "2607.13683"
 related:
   - ./paper-skillcorpus.md
   - ./openclaw.md
   - ./darwin-skill.md
   - ./hermes-agent.md
+  - ./deepseek-harness.md
   - ./superpowers-obra.md
   - ../concepts/ai-auto-research.md
   - ./karpathy-autoresearch.md
@@ -134,6 +135,7 @@ flowchart TB
 - [OpenClaw](./openclaw.md) — SKILL.md 宿主 harness（SkillCorpus 评测单元之一）
 - [Darwin Skill](./darwin-skill.md) — skill 域可测进化对照
 - [Hermes Agent](./hermes-agent.md) / [Superpowers](./superpowers-obra.md) — 工程 harness / 技能规约
+- [DeepSeek Harness](./deepseek-harness.md) — DeepSeek 官方可组合宿主（Cordis 插件树；实现层对照，非 evolver）
 - [AI Auto-Research](../concepts/ai-auto-research.md) — 研究自动化中的验证与共治
 
 ## 参考来源

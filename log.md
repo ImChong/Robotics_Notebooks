@@ -1,3 +1,12 @@
+## [2026-08-13] ingest | sources/repos/deepseek-harness.md — 接入 DeepSeek Harness（dsh）官方插件化 agent 运行时
+
+- **触发：** 用户指定 <https://github.com/deepseek-ai/deepseek-harness>；要求自动合并
+- **步骤 2.5：** 无独立项目页（`homepage` 空）；GitHub API **MIT**、TypeScript monorepo + Python SDK + 可运行 `npx @deepseek-ai/dsh web` / headless → **已开源**。Issues/PRs 关闭，反馈走 Discussions；根包 **0.1.0-rc.5** 开发者预览
+- **来源：** [`sources/repos/deepseek-harness.md`](sources/repos/deepseek-harness.md)
+- **升格：** [`wiki/entities/deepseek-harness.md`](wiki/entities/deepseek-harness.md) — Cordis 一切皆插件、turn/step 日志不变量、Web/headless/Python SDK；与 Harness VLA / RoboHarness **同名不同物**
+- **机构：** [`schema/institutions.json`](schema/institutions.json) 新增 `deepseek`（`deepseek` / `deepseek-ai`）
+- **交叉：** [`wiki/entities/hermes-agent.md`](wiki/entities/hermes-agent.md)、[`wiki/entities/openclaw.md`](wiki/entities/openclaw.md)、[`wiki/entities/kimi-k3.md`](wiki/entities/kimi-k3.md)、[`wiki/queries/real-robot-policy-autoresearch-harness.md`](wiki/queries/real-robot-policy-autoresearch-harness.md)、[`wiki/entities/paper-harness-vla.md`](wiki/entities/paper-harness-vla.md)
+
 ## [2026-08-13] ingest | sources/papers/p3_arxiv_2607_25541.md — P³（arXiv:2607.25541）VAE-PPO 边缘策略传播入库；已开源 ylyem9x/P3_Open
 
 - **触发：** 用户指定论文 *P³: Probabilistic Policy Propagation for Stable VAE-Based Robot Learning*（Yan / Ma / Zhang / Fu / Cao / Zhu / Chen / Gao；SJTU / 同济 / ZJU / 上海创智学院；arXiv:2607.25541）；要求自动合并

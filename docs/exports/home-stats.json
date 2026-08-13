@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-13",
-  "node_count": 3070,
-  "edge_count": 26611,
+  "node_count": 3071,
+  "edge_count": 26629,
   "coverage": {
-    "covered": 3046,
-    "total": 3046,
+    "covered": 3047,
+    "total": 3047,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -231,11 +231,11 @@
     },
     {
       "label": "仿真到现实",
-      "size": 471
+      "size": 469
     },
     {
       "label": "视觉-语言-动作",
-      "size": 249
+      "size": 252
     },
     {
       "label": "人形论文深读笔记",
@@ -243,7 +243,7 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 151
+      "size": 152
     },
     {
       "label": "移动操作",

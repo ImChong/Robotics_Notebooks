@@ -19,7 +19,7 @@ tags:
   - hkust
   - zgca
 status: complete
-updated: 2026-08-10
+updated: 2026-08-13
 arxiv: "2607.08448"
 code: https://github.com/RLinf/RPent
 related:
@@ -33,6 +33,7 @@ related:
   - ./rldx-1.md
   - ./paper-eventvla-visual-evidence-memory.md
   - ./paper-robo-harness.md
+  - ./deepseek-harness.md
 sources:
   - ../../sources/papers/harness_vla_arxiv_2607_08448.md
   - ../../sources/sites/harnessvla-github-io.md
@@ -217,6 +218,7 @@ sequenceDiagram
 - [ASPIRE](../methods/aspire.md) — code-as-policy + 技能库扩张对照
 - [DreamSteer](./paper-dreamsteer-vla-deployment-steering.md) — 另一类零微调 VLA steering
 - [RoboHarness](./paper-robo-harness.md) — 异构策略族编排 + Memory Bridge（勿与本页混名）
+- [DeepSeek Harness](./deepseek-harness.md) — **同名不同物**：DeepSeek 的 LLM agent 运行时，不是冻结 VLA 编排
 - [VLA 开源复现景观](../overview/vla-open-source-repro-landscape-2025.md) — RPent / RLinf 栈入口
 - [Manipulation](../tasks/manipulation.md) — LIBERO / RoboCasa / RoboTwin 任务背景
 - [LingBot-VLA](./lingbot-vla.md) — RoboTwin C2R 冻结后端
