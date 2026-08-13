@@ -225,6 +225,8 @@ flowchart TD
 - [DreamWAM](../entities/paper-dreamwam.md) — beyond-RGB Joint WAM；LIBERO-Plus 75.47%、真机扰动 74.4%（arXiv:2608.04996）
 - [Flex-π](../entities/paper-flex-pi.md) — 多流算力柔性 Joint WAM；真机双臂 YAM ID 83.0% / OOD 76.1%，action-only↔full joint（arXiv:2608.10860；代码待发布）
 - [RTCF](../entities/paper-rtcf.md) — 免训练记忆检索 + 低频纠偏；LIBERO Long 61.6→68.6（arXiv:2608.04527）
+- [Motubrain](../entities/paper-motubrain.md) — 生数 Joint WAM；RoboTwin 2.0 95.8/96.1（arXiv:2604.27792；仓占位）
+- [WAM 实时异步部署](../entities/paper-wam-realtime-async.md) — 双臂 WAM 六策略对照（arXiv:2608.01880）
 - [RoboTTT](../entities/paper-robottt-test-time-training-vla-context.md) — GR00T N1.7 内嵌 TTT fast weights，8K 步 visuomotor 上下文 + 部署后在线学习（NVIDIA GEAR 项目页）
 - [πR²](../entities/paper-pi-r2.md) — GR00T-N1.7 反应式实时 flow 闭环（约 25 Hz；训练+部署已开源，arXiv:2607.26055）
 - [HiFi-UMI / HiFi-UMI-2K](../entities/paper-hifi-umi.md) — 2000 h 高保真无机器人双臂数据；zero-robot 后训练（arXiv:2607.25895）

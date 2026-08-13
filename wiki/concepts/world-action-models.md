@@ -18,6 +18,8 @@ related:
   - ../entities/paper-dreamwam.md
   - ../entities/paper-fact.md
   - ../entities/paper-flex-pi.md
+  - ../entities/paper-motubrain.md
+  - ../entities/paper-wam-realtime-async.md
   - ../entities/paper-vt-wam-visuotactile-contact-rich.md
   - ../entities/paper-n0-twam.md
   - ../entities/neoteai.md
@@ -72,6 +74,8 @@ sources:
   - ../../sources/papers/dreamwam_arxiv_2608_04996.md
   - ../../sources/papers/fact_arxiv_2608_10232.md
   - ../../sources/papers/flex_pi_arxiv_2608_10860.md
+  - ../../sources/papers/motubrain_arxiv_2604_27792.md
+  - ../../sources/papers/wam_realtime_async_arxiv_2608_01880.md
   - ../../sources/blogs/dyna_2_million_hour_wam.md
   - ../../sources/repos/awesome-wam-openmoss.md
   - ../../sources/sites/awesome-wam-openmoss.md
@@ -172,6 +176,8 @@ sources:
 
 **文献实例（Joint 族 + 多流算力柔性 · RGB/DINO/pointmap）**：[Flex-π](../entities/paper-flex-pi.md) 以冻结 Wan VAE **共享编码 RGB 与 3D pointmap**（重建 PSNR 31.1 dB），并联合 DINOv3 语义流；MoT + 流 dropout / cross-modality forcing 使 **单 checkpoint** 覆盖 **56** 种流组合（action-only ~60 ms → full joint ~193 ms）。真机双臂 YAM 相对最强基线最高约 **2–7×**；LIBERO-Plus 80.9% 仍落后强 VLM 骨干；**代码待发布**（arXiv:2608.10860，UW / AI2）。
 
+**文献实例（Joint 族 · 生数产品线）**：[Motubrain](../entities/paper-motubrain.md) 在 Motus 的 UniDiffuser video–action 上做三流 MoT 与真机工程，RoboTwin 2.0 报 **95.8 / 96.1**；异步 chunk 怎么切见同团队 [WAM 实时异步部署](../entities/paper-wam-realtime-async.md)（仓均为占位）。
+
 **产业实例（Joint 族 + 百万小时人视频跨具身缩放 · 闭源）**：[Dyna-2](../entities/dyna-2.md)（Dyna Robotics，2026-08）在 **≥1M h** egocentric 人视频上预训练 MoT–DiT WAM（预训练 **零** 机器人数据），报告人 held-out 与 **人→机零样本** 离线幂律，并消融主张 **video co-training** 是跨具身缩放必要条件；推理可保持 reactive（动作塔不吃预测未来视频）。后训练少量机端数据上双臂 / 灵巧手 / 半人形；**未开源**——作缩放律与目标设计参照，不作可复现基线。
 
 **文献实例（Joint 族 + latent foresight 查询冻结生成器 · 部署纯 VLA）**：[InternVLA-A1.5](../entities/paper-internvla-a15-unified-vla.md) 在 **Qwen3.5-2B MoT** 上持续 **VQA/子任务** 共训，用 **50 个 foresight token** 读出紧凑潜码条件化 **冻结 WAN2.2-5B**，以 video flow loss **蒸馏动力学先验** 至 unified expert，再以 **flow matching** 输出连续 action chunk；**推理丢弃视频分支**（~0.1s/步），在 LIBERO-Plus / DOMINO 零样本与真机 **组合指令 OOD** 上报告最强组合泛化（arXiv:2607.04988，上海 AI Lab Physical Intelligence Team）。
@@ -252,6 +258,8 @@ flowchart TB
 - [ABot-M0.5（移动操作 · latent action + Dream Forcing）](../entities/paper-abot-m05-mobile-manipulation-wam.md)
 - [动作后果技术地图（2026-07 策展）](../overview/robot-world-models-action-consequence-technology-map.md)
 - [DSWAM（双系统 WAM 执行）](../entities/paper-dswam-dual-system-wam.md)
+- [Motubrain](../entities/paper-motubrain.md) — 生数 Joint WAM（RoboTwin 95.8/96.1；仓占位）
+- [WAM 实时异步部署](../entities/paper-wam-realtime-async.md) — Motubrain 平台六策略实证
 - [DynaWM（VLA 在线修正）](../entities/paper-dynawm-vla-online-correction.md)
 - [DreamSteer（部署时 VLA steering）](../entities/paper-dreamsteer-vla-deployment-steering.md)
 - [VT-WAM（视觉-触觉接触丰富 WAM）](../entities/paper-vt-wam-visuotactile-contact-rich.md)

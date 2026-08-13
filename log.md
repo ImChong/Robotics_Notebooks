@@ -1,3 +1,12 @@
+## [2026-08-13] ingest | sources/papers/wam_realtime_async_arxiv_2608_01880.md — Motubrain 异步部署实证 + WAM 模型入库；官方仓占位
+
+- **触发：** 用户指定论文 <https://arxiv.org/pdf/2608.01880>、博客 <https://www.motubrain.com/zh/research>、GitHub <https://github.com/shengshu-ai/Motubrain>；要求自动合并
+- **步骤 2.5：** 官网/博客齐全；[`shengshu-ai/Motubrain`](https://github.com/shengshu-ai/Motubrain) 仅 LICENSE + PDF + README + figures（Modified MIT）→ **部分开源（占位仓）**。2608.01880 **无单独实验脚本**
+- **来源：** 异步论文/博客 + Motubrain 报告 + 官网 + 占位仓
+- **升格：** [`wiki/entities/paper-wam-realtime-async.md`](wiki/entities/paper-wam-realtime-async.md)（六策略；train 综合最好）；[`wiki/entities/paper-motubrain.md`](wiki/entities/paper-motubrain.md)（RoboTwin 95.8/96.1）
+- **机构：** [`schema/institutions.json`](schema/institutions.json) 新增 `shengshu`（生数科技）
+- **交叉：** WAM 概念、Action Chunking、VLA 部署指南、动作后果 01、Motus 索引、RoboTwin、Manipulation
+
 ## [2026-08-13] ingest | sources/papers/occanyscene_arxiv_2608_08696.md — OccAnyScene 跨室内外 3D 语义占据入库；官方仓占位
 
 - **触发：** 用户指定论文 *OccAnyScene: Towards Unified Indoor-Outdoor 3D Occupancy Prediction*（arXiv:2608.08696）与项目页 <https://roboperception.github.io/OccAnyScene/>；要求自动合并

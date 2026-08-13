@@ -760,6 +760,7 @@
 - [TRAM](wiki/entities/paper-motion-cerebellum-tram.md) — TRAM** 收录于 具身智能研究室 · 运动小脑 64 篇长文 **第 17/64**  `📅unknown` `[entity_page]`
 - [MotionDisco（极端人形 Loco-Manipulation 运动发现）](wiki/entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md) — MotionDisco**（*Motion Discovery for Extreme Humanoid Loco-Manipulation*，arXiv:2606.06139，TUM · NYU `📅unknown` `[entity_page]`
 - [MotionWAM（实时人形 Loco-Manipulation · World Action Model）](wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md) — MotionWAM**（*Towards Foundation World Action Models for Real-Time Humanoid Loco-Manipulation*，arXi `📅unknown` `[entity_page]`
+- [Motubrain（世界动作模型 · arXiv:2604.27792）](wiki/entities/paper-motubrain.md) — Motubrain**（*An Advanced World Action Model for Robot Control*，[arXiv:2604.27792](https://arxiv.or `📅unknown` `[entity_page]`
 - [MPC-RL（人形 Locomotion 与 Loco-Manipulation 的训练期 MPC 指导）](wiki/entities/paper-mpc-rl-humanoid-locomotion-manipulation.md) — MPC-RL**（*Accelerating and Scaling MPC-Guided Reinforcement Learning for Humanoid Locomotion and M `📅unknown` `[entity_page]`
 - [MUJICA：轮足多技能统一本体控制架构](wiki/entities/paper-mujica-wheel-legged-multi-skill.md) — MUJICA**（*Multi-skill Unified Joint Integration of Control Architecture*，arXiv:2605.13058，**ICRA 2 `📅unknown` `[entity_page]`
 - [Multi-Modal Legged Locomotion Framework with Automated Residual RL（ARRL，RA-L/IROS 2022）](wiki/entities/paper-multimodal-legged-arrl.md) — Multi-Modal Legged Locomotion Framework with Automated Residual Reinforcement Learning**（Chen Yu、A `📅unknown` `[entity_page]`
@@ -2156,6 +2157,7 @@
 - [VT-WAM（Visual-Tactile World Action Model · arXiv:2607.02503）](wiki/entities/paper-vt-wam-visuotactile-contact-rich.md) — VT-WAM**（*VT-WAM: Visual-Tactile World Action Model for Contact-Rich Manipulation*，[arXiv:2607.025 `📅unknown` `[entity_page]`
 - [VTAP Gripper（视触觉主动掌夹爪）](wiki/entities/paper-vtap-gripper.md) — VTAP Gripper**（*Synergizing Fingertip Sensing and a Visuo-Tactile Active Palm for Dexterous In-Han `📅unknown` `[entity_page]`
 - [Walk These Ways: Tuning Robot Control for Generalization with Multiplicity of Behavior](wiki/entities/paper-walk-these-ways-quadruped-mob.md) — 一句话定义**：学习 **单一条件策略** \(\pi(a|c,b)\)：在 **同一平坦训练分布** 上，用少量 **行为参数 \(b\)** 切换步态族（频率、摆腿高度、躯干姿态等），从而在  `📅unknown` `[entity_page]`
+- [WAM 实时异步部署（Beyond Stalls · arXiv:2608.01880）](wiki/entities/paper-wam-realtime-async.md) — World Action Models in Real Time**（*An Empirical Study of Smooth Execution via Asynchronous Deploy `📅unknown` `[entity_page]`
 - [WAM-TTT（人视频 · 测试时训练 · WAM Steering）](wiki/entities/paper-wam-ttt-human-video-test-time-steering.md) — WAM-TTT**（*Steering World-Action Models by Watching Human Play at Test Time*，[arXiv:2607.06988](ht `📅unknown` `[entity_page]`
 - [Wan-Dancer（分钟级连贯 Music-to-Dance 视频生成）](wiki/entities/paper-wan-dancer.md) — Wan-Dancer**（*Wan-Dancer: A Hierarchical Framework for Minute-scale Coherent Music-to-Dance Genera `📅unknown` `[entity_page]`
 - [Wan-Move（潜空间轨迹引导的运动可控视频生成）](wiki/entities/paper-wan-move.md) — Wan-Move**（*Wan-Move: Motion-Controllable Video Generation via Latent Trajectory Guidance*，[arXiv: `📅unknown` `[entity_page]`
