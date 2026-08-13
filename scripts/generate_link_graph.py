@@ -1032,6 +1032,15 @@ def wiki_last_activity_dates(nodes: list[dict[str, Any]]) -> dict[str, str]:
     return wiki_last_log_dates(nodes)
 
 
+def wiki_added_dates(nodes: list[dict[str, Any]]) -> dict[str, str]:
+    """图谱「新增」日：优先 git 首次加入日（A），否则 log.md 首次显式出现。"""
+    history = collect_wiki_git_history()
+    node_ids = {str(n["id"]) for n in nodes}
+    if history.added_dates:
+        return {path: day for path, day in history.added_dates.items() if path in node_ids}
+    return {path: day for path, day in wiki_first_log_dates(nodes).items() if path in node_ids}
+
+
 def resolve_latest_nodes_max(cli_value: int | None) -> int:
     """统一解析 latest_wiki_nodes 上限：CLI > 环境变量 > 默认值，并 clamp 到 [1, CAP]。"""
     candidate: int | None = cli_value
@@ -1828,13 +1837,18 @@ def main() -> None:
 
     # activity：节点最近一次 git 触达日（口径对齐「更新记录」页），
     # 供图谱「更新明度渐变」着色；从未出现在 git/日志中的节点不写出。
+    # added：节点 git 首次加入日（A），供图谱「更新时间 Top N」默认仅计新增。
     last_log_dates = wiki_last_activity_dates(nodes)
+    added_dates = wiki_added_dates(nodes)
     for node in nodes:
         node.pop("_is_paper", None)
         node.pop("_has_repo_source", None)
         recency = node.pop("_recency", None)
         if recency:
             node["recency"] = recency
+        added = added_dates.get(str(node["id"]))
+        if added:
+            node["added"] = added
         last_activity = last_log_dates.get(str(node["id"]))
         if last_activity:
             node["activity"] = last_activity

@@ -110,6 +110,7 @@ async function readState(page) {
       degMax: degSlider ? Number(degSlider.max) : null,
       sectionExists: !!document.getElementById('filter-recency-section'),
       mode: document.getElementById('filter-recency-section')?.getAttribute('data-recency-mode') || '',
+      kind: document.getElementById('filter-recency-section')?.getAttribute('data-recency-kind') || '',
     };
   });
 }
@@ -157,6 +158,7 @@ function parseVisibleCount(countText) {
     console.log('initial', initial);
     assert(initial.sectionExists, 'filter-recency-section missing');
     assert(initial.mode === 'node', `default recency mode should be node, got ${initial.mode}`);
+    assert(initial.kind === 'added', `default recency kind should be added, got ${initial.kind}`);
     assert(initial.value === initial.max, `default should be max/all, got value=${initial.value} max=${initial.max}`);
     assert(initial.label === '全部', `default label should be 全部, got ${initial.label}`);
     assert(!initial.badgeVisible, 'filter badge should be hidden at default');
@@ -202,8 +204,8 @@ function parseVisibleCount(countText) {
       if (!nodes.length) return null;
       const byDegree = nodes.slice().sort((a, b) => (b._degree || 0) - (a._degree || 0)).slice(0, degLimit).map((n) => n.id);
       const byRecency = nodes.slice().sort((a, b) => {
-        const ta = a._recencyTs != null ? a._recencyTs : -Infinity;
-        const tb = b._recencyTs != null ? b._recencyTs : -Infinity;
+        const ta = a._addedTs != null ? a._addedTs : -Infinity;
+        const tb = b._addedTs != null ? b._addedTs : -Infinity;
         if (tb !== ta) return tb - ta;
         return a.id < b.id ? -1 : (a.id > b.id ? 1 : 0);
       }).slice(0, recN).map((n) => n.id);

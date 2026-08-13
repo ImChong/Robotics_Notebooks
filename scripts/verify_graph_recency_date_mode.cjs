@@ -97,6 +97,7 @@ async function readState(page) {
     const badge = document.getElementById('filter-count');
     const nodeBtn = document.getElementById('recency-mode-node');
     const dateBtn = document.getElementById('recency-mode-date');
+    const maintainedBtn = document.getElementById('recency-include-maintained');
     const hint = document.getElementById('filter-recency-hint');
     const axis = document.getElementById('label-recency-top');
     return {
@@ -108,9 +109,11 @@ async function readState(page) {
       countText: countEl ? countEl.textContent.trim() : '',
       badgeVisible: !!(badge && badge.style.display !== 'none'),
       mode: document.getElementById('filter-recency-section')?.getAttribute('data-recency-mode') || '',
+      kind: document.getElementById('filter-recency-section')?.getAttribute('data-recency-kind') || '',
       nodeActive: !!(nodeBtn && nodeBtn.classList.contains('is-active')),
       dateActive: !!(dateBtn && dateBtn.classList.contains('is-active')),
       dateDisabled: !!(dateBtn && dateBtn.disabled),
+      maintainedActive: !!(maintainedBtn && maintainedBtn.classList.contains('is-active')),
       hint: hint ? hint.textContent.trim() : '',
       axis: axis ? axis.textContent.trim() : '',
     };
@@ -149,8 +152,10 @@ async function readGraphNodes(page) {
       if (d && d.id) {
         nodes.push({
           id: d.id,
-          recencyDate: d._recencyDate || null,
-          recencyTs: d._recencyTs == null ? null : d._recencyTs,
+          recencyDate: d._addedDate || null,
+          recencyTs: d._addedTs == null ? null : d._addedTs,
+          activityDate: d._activityDate || null,
+          activityTs: d._activityTs == null ? null : d._activityTs,
         });
       }
     });
@@ -177,6 +182,11 @@ function countForDates(nodes, dates) {
   return nodes.filter((n) => keep.has(n.recencyDate)).length;
 }
 
+function countForActivityDates(nodes, dates) {
+  const keep = new Set(dates);
+  return nodes.filter((n) => keep.has(n.activityDate)).length;
+}
+
 (async () => {
   fs.mkdirSync(OUT_DIR, { recursive: true });
   const browser = await puppeteer.launch({
@@ -194,6 +204,8 @@ function countForDates(nodes, dates) {
     console.log('initial', initial);
     assert(initial.mode === 'node' && initial.nodeActive && !initial.dateActive,
       `default should be 按节点, got mode=${initial.mode}`);
+    assert(initial.kind === 'added' && !initial.maintainedActive,
+      `default should be 仅新增, got kind=${initial.kind}`);
     assert(initial.label === '全部', `default label should be 全部, got ${initial.label}`);
     assert(initial.axis === '最新节点数', `default axis should be 最新节点数, got ${initial.axis}`);
     assert(initial.value === initial.max, 'default slider should be max/all');
@@ -245,7 +257,7 @@ function countForDates(nodes, dates) {
       `date-expand visible ${dateFromNodeCounts.visible} should equal ${expectedDateExpand}`);
     assert(dateFromNodeCounts.visible >= nodeSubset.min,
       '按日期区分保留 should not drop nodes vs the node subset');
-    assert(dateFromNode.hint.includes('整日保留'), `date hint should mention 整日保留, got ${dateFromNode.hint}`);
+    assert(dateFromNode.hint.includes('新增日'), `date hint should mention 新增日, got ${dateFromNode.hint}`);
 
     const shotDateExpand = path.join(OUT_DIR, 'graph-recency-date-mode-expand.png');
     await page.screenshot({ path: shotDateExpand, fullPage: false });
@@ -284,12 +296,43 @@ function countForDates(nodes, dates) {
     copyToArtifacts(shotOneDay, 'graph-recency-date-mode-one-day.png');
     console.log('Saved:', shotOneDay);
 
+    const activityDates = uniqueDatesDesc(nodes.map((n) => ({ recencyDate: n.activityDate })));
+    const expectedMaintainedOneDay = activityDates.length <= 1
+      ? nodes.length
+      : countForActivityDates(nodes, activityDates.slice(0, 1));
+    await page.click('#recency-include-maintained');
+    await new Promise((r) => setTimeout(r, 250));
+    const withMaintained = await readState(page);
+    const withMaintainedCounts = parseVisibleCount(withMaintained.countText);
+    console.log('with maintained', withMaintained, withMaintainedCounts, 'expected', expectedMaintainedOneDay);
+    assert(withMaintained.kind === 'all' && withMaintained.maintainedActive,
+      `显示维护更新 should activate, got kind=${withMaintained.kind}`);
+    assert(withMaintained.mode === 'date', 'date mode should persist');
+    assert(withMaintained.value === 1, `maintained date slider should stay at 1, got ${withMaintained.value}`);
+    assert(withMaintainedCounts.visible === expectedMaintainedOneDay,
+      `maintained 1-day visible ${withMaintainedCounts.visible} should equal ${expectedMaintainedOneDay}`);
+    assert(withMaintained.hint.includes('含维护'), `hint should mention 含维护, got ${withMaintained.hint}`);
+
+    const shotMaintained = path.join(OUT_DIR, 'graph-recency-date-mode-maintained.png');
+    await page.screenshot({ path: shotMaintained, fullPage: false });
+    copyToArtifacts(shotMaintained, 'graph-recency-date-mode-maintained.png');
+    console.log('Saved:', shotMaintained);
+
+    await page.click('#recency-include-maintained');
+    await new Promise((r) => setTimeout(r, 250));
+    const backAdded = await readState(page);
+    const backAddedCounts = parseVisibleCount(backAdded.countText);
+    assert(backAdded.kind === 'added' && !backAdded.maintainedActive, 'toggle off should restore 仅新增');
+    assert(backAddedCounts.visible === expectedOneDay,
+      `toggle off visible ${backAddedCounts.visible} should restore added-only ${expectedOneDay}`);
+
     await page.click('#filter-clear');
     await new Promise((r) => setTimeout(r, 300));
     await expandRecency(page);
     const cleared = await readState(page);
     console.log('cleared', cleared);
     assert(cleared.mode === 'node', 'clear should reset to 按节点');
+    assert(cleared.kind === 'added' && !cleared.maintainedActive, 'clear should reset to 仅新增');
     assert(cleared.value === cleared.max, 'clear should reset recency to max');
     assert(cleared.label === '全部', 'clear label should be 全部');
     assert(cleared.axis === '最新节点数', 'clear restores node axis');

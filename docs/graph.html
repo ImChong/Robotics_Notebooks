@@ -1436,6 +1436,7 @@
     }
     .filter-recency-mode {
       display: flex;
+      flex-wrap: wrap;
       gap: 6px;
       margin: 0 14px 8px;
     }
@@ -1452,6 +1453,9 @@
       font-family: inherit;
       cursor: pointer;
       transition: border-color .15s, color .15s, background .15s;
+    }
+    .filter-recency-maintained-btn {
+      flex: 1 1 100%;
     }
     .filter-recency-mode-btn:hover {
       border-color: rgba(255,255,255,0.3);
@@ -1955,15 +1959,16 @@
                  aria-label="按连接数显示前 N 个节点" />
         </div>
       </details>
-      <details id="filter-recency-section" class="filter-degree-section" data-recency-mode="node">
+      <details id="filter-recency-section" class="filter-degree-section" data-recency-mode="node" data-recency-kind="added">
         <summary class="filter-depth-summary">
           <span class="filter-depth-summary-label">更新时间 Top N</span>
           <span class="filter-depth-summary-current" id="filter-recency-current">全部</span>
         </summary>
-        <p class="filter-degree-hint" id="filter-recency-hint">按最近活跃日保留最新 N 个节点；滑到最左偏最新，滑到最右为全部节点。可与连接数 Top N 同时生效（取交集）。</p>
+        <p class="filter-degree-hint" id="filter-recency-hint">默认仅计新增（首次加入日）；滑到最左偏最新，滑到最右为全部节点。可与连接数 Top N 同时生效（取交集）。</p>
         <div class="filter-recency-mode" role="group" aria-label="更新时间 Top N 口径">
           <button type="button" id="recency-mode-node" class="filter-recency-mode-btn is-active" aria-pressed="true">按节点</button>
-          <button type="button" id="recency-mode-date" class="filter-recency-mode-btn" aria-pressed="false" title="同一天的节点整日保留，滑块按最近活跃日计数">按日期</button>
+          <button type="button" id="recency-mode-date" class="filter-recency-mode-btn" aria-pressed="false" title="同一天的节点整日保留，滑块按日期计数">按日期</button>
+          <button type="button" id="recency-include-maintained" class="filter-recency-mode-btn filter-recency-maintained-btn" aria-pressed="false" title="默认仅计首次加入；打开后按最近触达日（含维护）">显示维护更新</button>
         </div>
         <div class="slider-row">
           <div class="slider-label">
@@ -3110,10 +3115,16 @@
       let minTs = Infinity;
       let maxTs = -Infinity;
       nodes.forEach(n => {
-        const t = n.activity ? Date.parse(n.activity) : NaN;
-        n._recencyTs = Number.isFinite(t) && t > 0 ? t : null;
-        n._recencyDate = (n.activity && /^\d{4}-\d{2}-\d{2}/.test(n.activity))
+        const activityTs = n.activity ? Date.parse(n.activity) : NaN;
+        n._activityTs = Number.isFinite(activityTs) && activityTs > 0 ? activityTs : null;
+        n._activityDate = (n.activity && /^\d{4}-\d{2}-\d{2}/.test(n.activity))
           ? n.activity.slice(0, 10) : null;
+        const addedTs = n.added ? Date.parse(n.added) : NaN;
+        n._addedTs = Number.isFinite(addedTs) && addedTs > 0 ? addedTs : null;
+        n._addedDate = (n.added && /^\d{4}-\d{2}-\d{2}/.test(n.added))
+          ? n.added.slice(0, 10) : null;
+        n._recencyTs = n._activityTs;
+        n._recencyDate = n._activityDate;
         if (n._recencyTs !== null) {
           if (n._recencyTs < minTs) minTs = n._recencyTs;
           if (n._recencyTs > maxTs) maxTs = n._recencyTs;
@@ -3196,23 +3207,43 @@
     }
 
     /* ── 更新时间 Top N 筛选（滑动条）：左=最新子集，右=全部；
-       两种口径可用按钮切换——
-         按节点：排序口径与「更新明度渐变」一致（activity / _recencyTs），无 activity 视为最旧；
-         按日期：按最近活跃日整日保留（同一天的节点一并留下）。
+       按节点 / 按日期 二选一；默认仅计新增（added / 首次加入日），
+       「显示维护更新」打开后改用最近触达日（activity，含维护）。
        与连接数 Top N 同时生效时取交集 ── */
     const recencyTopMinNode = Math.min(10, totalNodeCount);
-    const recencyDateKeys = Array.from(new Set(
-      nodes.map(n => n._recencyDate).filter(Boolean)
-    )).sort((a, b) => (a < b ? 1 : a > b ? -1 : 0));
-    const recencyDateCount = recencyDateKeys.length;
-    const recencyTopMinDate = recencyDateCount > 0 ? 1 : 0;
-    const RECENCY_HINT_NODE = '按最近活跃日保留最新 N 个节点；滑到最左偏最新，滑到最右为全部节点。可与连接数 Top N 同时生效（取交集）。';
-    const RECENCY_HINT_DATE = '按最近活跃日整日保留：滑块 N 表示最新 N 个日期，同一天的节点一并留下。可与连接数 Top N 同时生效（取交集）。';
+    const RECENCY_HINT_NODE_ADDED = '默认仅计新增（首次加入日）；滑到最左偏最新，滑到最右为全部节点。可与连接数 Top N 同时生效（取交集）。';
+    const RECENCY_HINT_NODE_ALL = '含维护（最近触达日）；滑到最左偏最新，滑到最右为全部节点。可与连接数 Top N 同时生效（取交集）。';
+    const RECENCY_HINT_DATE_ADDED = '按新增日整日保留：滑块 N 表示最新 N 个首次加入日，同一天新增的节点一并留下。可与连接数 Top N 同时生效（取交集）。';
+    const RECENCY_HINT_DATE_ALL = '按最近触达日整日保留（含维护）：滑块 N 表示最新 N 个日期，同一天触达的节点一并留下。可与连接数 Top N 同时生效（取交集）。';
+    let recencyIncludeMaintained = false;
     let recencyTopMode = 'node';
+    let recencyDateKeys = [];
+    let recencyDateCount = 0;
+    let recencyTopMinDate = 0;
     let topRecencyNodeLimit = totalNodeCount;
-    let topRecencyDateLimit = recencyDateCount;
+    let topRecencyDateLimit = 0;
     let recencyDateTouched = false;
     let topRecencyIds = null;
+
+    function recencyDateOf(n) {
+      return recencyIncludeMaintained ? n._activityDate : n._addedDate;
+    }
+
+    function recencyTsOf(n) {
+      const t = recencyIncludeMaintained ? n._activityTs : n._addedTs;
+      return t != null ? t : -Infinity;
+    }
+
+    function rebuildRecencyDateIndex() {
+      recencyDateKeys = Array.from(new Set(
+        nodes.map(recencyDateOf).filter(Boolean)
+      )).sort((a, b) => (a < b ? 1 : a > b ? -1 : 0));
+      recencyDateCount = recencyDateKeys.length;
+      recencyTopMinDate = recencyDateCount > 0 ? 1 : 0;
+    }
+
+    rebuildRecencyDateIndex();
+    topRecencyDateLimit = recencyDateCount;
 
     function recencySliderBounds() {
       if (recencyTopMode === 'date') {
@@ -3230,19 +3261,26 @@
       return currentRecencyLimit() >= b.max;
     }
 
+    function recencyHintText() {
+      if (recencyTopMode === 'date') {
+        return recencyIncludeMaintained ? RECENCY_HINT_DATE_ALL : RECENCY_HINT_DATE_ADDED;
+      }
+      return recencyIncludeMaintained ? RECENCY_HINT_NODE_ALL : RECENCY_HINT_NODE_ADDED;
+    }
+
     function computeTopRecencyIds() {
       const limit = currentRecencyLimit();
       if (recencyTopMode === 'date') {
         if (recencyDateCount <= 0 || limit >= recencyDateCount) return null;
         const keepDates = new Set(recencyDateKeys.slice(0, limit));
-        return new Set(nodes.filter(n => keepDates.has(n._recencyDate)).map(n => n.id));
+        return new Set(nodes.filter(n => keepDates.has(recencyDateOf(n))).map(n => n.id));
       }
       if (limit >= totalNodeCount) return null;
       return new Set(
         nodes.slice()
           .sort((a, b) => {
-            const ta = a._recencyTs != null ? a._recencyTs : -Infinity;
-            const tb = b._recencyTs != null ? b._recencyTs : -Infinity;
+            const ta = recencyTsOf(a);
+            const tb = recencyTsOf(b);
             if (tb !== ta) return tb - ta;
             return a.id < b.id ? -1 : (a.id > b.id ? 1 : 0);
           })
@@ -3256,7 +3294,8 @@
       const dates = new Set();
       for (let i = 0; i < nodes.length; i++) {
         const n = nodes[i];
-        if (idSet.has(n.id) && n._recencyDate) dates.add(n._recencyDate);
+        const day = recencyDateOf(n);
+        if (idSet.has(n.id) && day) dates.add(day);
       }
       return dates.size;
     }
@@ -3277,9 +3316,13 @@
 
     function syncRecencyModeUi() {
       const section = document.getElementById('filter-recency-section');
-      if (section) section.setAttribute('data-recency-mode', recencyTopMode);
+      if (section) {
+        section.setAttribute('data-recency-mode', recencyTopMode);
+        section.setAttribute('data-recency-kind', recencyIncludeMaintained ? 'all' : 'added');
+      }
       const nodeBtn = document.getElementById('recency-mode-node');
       const dateBtn = document.getElementById('recency-mode-date');
+      const maintainedBtn = document.getElementById('recency-include-maintained');
       if (nodeBtn) {
         nodeBtn.classList.toggle('is-active', recencyTopMode === 'node');
         nodeBtn.setAttribute('aria-pressed', recencyTopMode === 'node' ? 'true' : 'false');
@@ -3289,15 +3332,19 @@
         dateBtn.setAttribute('aria-pressed', recencyTopMode === 'date' ? 'true' : 'false');
         dateBtn.disabled = recencyDateCount <= 0;
       }
+      if (maintainedBtn) {
+        maintainedBtn.classList.toggle('is-active', recencyIncludeMaintained);
+        maintainedBtn.setAttribute('aria-pressed', recencyIncludeMaintained ? 'true' : 'false');
+      }
       const hintEl = document.getElementById('filter-recency-hint');
-      if (hintEl) hintEl.textContent = recencyTopMode === 'date' ? RECENCY_HINT_DATE : RECENCY_HINT_NODE;
+      if (hintEl) hintEl.textContent = recencyHintText();
       const labelEl = document.getElementById('label-recency-top');
       if (labelEl) labelEl.textContent = recencyTopMode === 'date' ? '最新天数' : '最新节点数';
       const slider = document.getElementById('sl-recency-top');
       if (slider) {
         slider.setAttribute('aria-label', recencyTopMode === 'date'
-          ? '按更新日期显示最新 N 天的节点'
-          : '按更新时间显示最新 N 个节点');
+          ? (recencyIncludeMaintained ? '按最近触达日显示最新 N 天的节点' : '按新增日显示最新 N 天的节点')
+          : (recencyIncludeMaintained ? '按最近触达显示最新 N 个节点' : '按新增时间显示最新 N 个节点'));
       }
     }
 
@@ -3345,8 +3392,26 @@
       if (topRecencyIds) fitToScreen();
     }
 
+    function setRecencyIncludeMaintained(on) {
+      const next = !!on;
+      if (next === recencyIncludeMaintained) return;
+      const wasAll = recencyLimitIsAll();
+      recencyIncludeMaintained = next;
+      rebuildRecencyDateIndex();
+      if (wasAll) {
+        topRecencyDateLimit = recencyDateCount;
+      } else if (recencyTopMode === 'date') {
+        const b = recencySliderBounds();
+        topRecencyDateLimit = Math.max(b.min, Math.min(b.max, topRecencyDateLimit));
+      }
+      applyRecencyTopFilter();
+      if (topRecencyIds) fitToScreen();
+    }
+
     function resetRecencyTopFilter() {
+      recencyIncludeMaintained = false;
       recencyTopMode = 'node';
+      rebuildRecencyDateIndex();
       topRecencyNodeLimit = totalNodeCount;
       topRecencyDateLimit = recencyDateCount;
       recencyDateTouched = false;
@@ -3369,6 +3434,7 @@
     }
     const recencyModeNodeBtn = document.getElementById('recency-mode-node');
     const recencyModeDateBtn = document.getElementById('recency-mode-date');
+    const recencyMaintainedBtn = document.getElementById('recency-include-maintained');
     if (recencyModeNodeBtn) {
       recencyModeNodeBtn.addEventListener('click', () => {
         if (areFiltersLocked()) return;
@@ -3379,6 +3445,12 @@
       recencyModeDateBtn.addEventListener('click', () => {
         if (areFiltersLocked()) return;
         setRecencyTopMode('date');
+      });
+    }
+    if (recencyMaintainedBtn) {
+      recencyMaintainedBtn.addEventListener('click', () => {
+        if (areFiltersLocked()) return;
+        setRecencyIncludeMaintained(!recencyIncludeMaintained);
       });
     }
 
