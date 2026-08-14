@@ -5,8 +5,8 @@ tags:
   - computer-vision
   - benchmark
 status: complete
-updated: 2026-08-12
-summary: "早期语义/目标检测标准集（20 类）；教学与历史对照常用，现代 SOTA 主战场已转向 COCO/ADE20K。"
+updated: 2026-08-14
+summary: "早期语义/目标检测标准集（20 类）；教学与历史对照常用，检测/分割评测的主战场此后转向 COCO/ADE20K。"
 related:
   - ../entities/transformer-cv-curriculum.md
   - ../concepts/vision-backbones.md
@@ -20,7 +20,7 @@ sources:
 
 ## 一句话定义
 
-**PASCAL VOC**：早期语义/目标检测标准集（20 类）；教学与历史对照常用，现代 SOTA 主战场已转向 COCO/ADE20K。
+**PASCAL VOC**：早期语义/目标检测标准集（20 类）；教学与历史对照常用，检测/分割评测的主战场此后转向 COCO/ADE20K。
 
 ## 英文缩写速查
 

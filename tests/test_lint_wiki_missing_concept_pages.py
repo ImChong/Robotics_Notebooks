@@ -79,6 +79,28 @@ def test_toolchain_stopword_printf_ignored(tmp_path, monkeypatch) -> None:
     assert results["missing_concept_pages"] == []
 
 
+def test_runtime_command_stopword_stop_ignored(tmp_path, monkeypatch) -> None:
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    pages = [
+        _page(wiki, f"p{i}.md", "行为树里 `STOP` 后插入复位动作。")
+        for i in range(lw.MISSING_CONCEPT_PAGE_MIN_PAGES)
+    ]
+    results = _run(pages)
+    # STOP 是运行时命令名 / 动作枚举值，非单一可成页概念
+    assert results["missing_concept_pages"] == []
+
+
+def test_covered_elsewhere_joint_ignored(tmp_path, monkeypatch) -> None:
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    pages = [
+        _page(wiki, f"p{i}.md", "MuJoCo 在 **joint** 上提供 `armature` 属性。")
+        for i in range(lw.MISSING_CONCEPT_PAGE_MIN_PAGES)
+    ]
+    results = _run(pages)
+    # joint 的关节属性 / WAM Joint 族两义已由 URDF、world-action-models 等页覆盖
+    assert results["missing_concept_pages"] == []
+
+
 def test_case_insensitive_merge(tmp_path, monkeypatch) -> None:
     wiki = _setup_wiki(tmp_path, monkeypatch)
     half = lw.MISSING_CONCEPT_PAGE_MIN_PAGES // 2 + 1

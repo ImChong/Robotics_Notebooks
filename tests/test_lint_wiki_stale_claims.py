@@ -123,6 +123,42 @@ def test_runtime_object_latest_is_not_flagged(tmp_path, monkeypatch) -> None:
     assert _run([claim, newer])["stale_claims"] == []
 
 
+def test_abbrev_glossary_entry_is_not_flagged(tmp_path, monkeypatch) -> None:
+    # 「英文缩写速查」区块是词条释义表（写作规范固定区块），不是本页断言。
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    claim = _page(
+        wiki,
+        "a.md",
+        "2025-01-01",
+        ["vision"],
+        "## 一句话定义\n\n常规语义分割基准。\n\n"
+        "## 英文缩写速查\n\n"
+        "| 缩写 | 英文全称 | 简要说明 |\n"
+        "|------|----------|----------|\n"
+        "| SOTA | State of the Art | 排行榜对照参考 |\n\n"
+        "## 为什么重要\n\n教学与历史对照常用。",
+    )
+    newer = _page(wiki, "b.md", "2026-01-01", ["vision"], "更晚的同主题页。")
+    assert _run([claim, newer])["stale_claims"] == []
+
+
+def test_claim_outside_abbrev_glossary_is_still_flagged(tmp_path, monkeypatch) -> None:
+    # 豁免只剥离速查区块本身：区块外的正文断言仍须命中。
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    claim = _page(
+        wiki,
+        "a.md",
+        "2025-01-01",
+        ["vision"],
+        "## 英文缩写速查\n\n| SOTA | State of the Art | 排行榜对照参考 |\n\n"
+        "## 为什么重要\n\n本方法仍是该任务的 SOTA。",
+    )
+    newer = _page(wiki, "b.md", "2026-01-01", ["vision"], "更晚的同主题页。")
+    results = _run([claim, newer])
+    assert len(results["stale_claims"]) == 1
+    assert "SOTA" in results["stale_claims"][0]
+
+
 def test_plain_latest_claim_is_still_flagged(tmp_path, monkeypatch) -> None:
     # 豁免只针对结构性误报：无否定/无页面名/非运行时对象的断言仍须命中。
     wiki = _setup_wiki(tmp_path, monkeypatch)
