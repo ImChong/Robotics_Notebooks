@@ -2291,7 +2291,8 @@ button.home-wiki-heatmap-cell.is-active {
   border-radius: 0 8px 8px 0;
   color: var(--text-muted);
 }
-.detail-markdown-body .math-inline {
+.detail-markdown-body .math-inline,
+.detail-summary .math-inline {
   display: inline-block;
   vertical-align: middle;
   padding: .05em .35em;
@@ -2299,11 +2300,14 @@ button.home-wiki-heatmap-cell.is-active {
   background: rgba(45,116,218,.08);
   border: 1px solid rgba(45,116,218,.18);
 }
-.detail-markdown-body .math-inline .katex {
+.detail-markdown-body .math-inline .katex,
+.detail-summary .math-inline .katex {
   display: inline-block;
 }
 .detail-markdown-body .math-inline .katex,
-.detail-markdown-body .math-inline .katex * {
+.detail-markdown-body .math-inline .katex *,
+.detail-summary .math-inline .katex,
+.detail-summary .math-inline .katex * {
   color: var(--accent);
 }
 .detail-markdown-body .math-block {
@@ -2329,7 +2333,8 @@ button.home-wiki-heatmap-cell.is-active {
 .detail-markdown-body .math-block .katex * {
   color: var(--text);
 }
-:root:not([data-theme="light"]) .detail-markdown-body .math-inline {
+:root:not([data-theme="light"]) .detail-markdown-body .math-inline,
+:root:not([data-theme="light"]) .detail-summary .math-inline {
   background: rgba(105,163,255,.12);
   border-color: rgba(105,163,255,.28);
 }

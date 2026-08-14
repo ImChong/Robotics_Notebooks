@@ -5224,10 +5224,11 @@
       const summaryText = detailPage.summary || '';
       if (summaryText && !isMetadataOnlySummary(summaryText)) {
         summaryEl.hidden = false;
-        summaryEl.innerHTML = renderInlineMarkdown(summaryText, {
+        summaryEl.innerHTML = renderMathBlocks(renderInlineMarkdown(summaryText, {
           currentPath: detailPage.path || '',
           routeIndex: markdownRouteIndex
-        });
+        }));
+        renderDetailMath(summaryEl);
       } else {
         summaryEl.hidden = true;
         summaryEl.textContent = '';

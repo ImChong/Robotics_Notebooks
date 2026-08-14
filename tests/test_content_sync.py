@@ -385,9 +385,39 @@ console.log('ok');
             "left: '\\\\[', right: '\\\\]', display: true",
             "left: '\\\\(', right: '\\\\)', display: false",
             "renderDetailMath(contentEl);",
+            "renderDetailMath(summaryEl);",
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
+
+    def test_detail_summary_inline_math_gets_math_inline_wrapper(self):
+        """Hero summary $O(n)$ must wrap math-inline so KaTeX can typeset it."""
+        node = r"""
+const fs = require('fs');
+const content = fs.readFileSync(process.argv[2], 'utf8');
+const start = content.indexOf('const matchHtmlRegExp');
+const end = content.indexOf('function applyMathBlocksInHtmlFragment', start);
+eval(content.slice(start, end));
+const sample = '经典 $O(n)$ 算法；计算 $M(q)$、$g(q)$ 与仿真积分。';
+const out = renderMathBlocks(renderInlineMarkdown(sample, {}));
+if ((out.match(/class="math-inline"/g) || []).length !== 3) throw new Error('expected 3 math-inline: ' + out);
+if (out.includes('$')) throw new Error('raw dollar delimiters remain: ' + out);
+if (!out.includes('O(n)') || !out.includes('M(q)') || !out.includes('g(q)')) throw new Error('math content lost: ' + out);
+console.log('ok');
+"""
+        import tempfile
+
+        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tmp:
+            tmp.write(node)
+            tmp_path = tmp.name
+        result = subprocess.run(
+            ["node", tmp_path, str(MAIN_JS)],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
+        self.assertIn("ok", result.stdout)
 
     def test_bracket_display_math_gets_block_wrapper(self):
         """\\[...\\] display math (common in formalization pages) should wrap math-block for KaTeX."""
