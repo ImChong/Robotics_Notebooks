@@ -2,7 +2,7 @@
 type: entity
 tags: [entity, simulator, isaac, isaac-sim, omniverse, gpu-simulation, usd, sensors, nvidia, sim2real]
 status: complete
-updated: 2026-07-27
+updated: 2026-08-14
 related:
   - ./isaac-lab.md
   - ./isaac-gym.md
@@ -16,11 +16,13 @@ related:
   - ../concepts/sim2real.md
   - ../methods/reinforcement-learning.md
   - ../queries/simulator-selection-guide.md
+  - ./paper-humanoidvln.md
 sources:
   - ../../sources/repos/isaac_sim.md
   - ../../sources/repos/isaac_gym_isaac_lab.md
   - ../../sources/papers/simulation_tools.md
   - ../../sources/sites/lumina-embodied-ai.md
+  - ../../sources/papers/humanoidvln_arxiv_2608_12860.md
 summary: "NVIDIA Isaac Sim 是基于 Omniverse / OpenUSD 的机器人仿真应用：资产导入、PhysX/Newton 物理、RTX 传感器、合成数据与 ROS 2 SIL；是 Isaac Lab 的仿真底座，与已弃用的 Isaac Gym 不是同一代产品。"
 ---
 
@@ -227,6 +229,7 @@ flowchart TB
 - [Lumina 具身智能社区](./lumina-embodied.md) — 中文 Isaac Sim 一百讲与社区 Talks
 - [Sim2Real](../concepts/sim2real.md)
 - [仿真器选型指南](../queries/simulator-selection-guide.md)
+- [HumanoidVLN](./paper-humanoidvln.md) — 在 Sim 上做人形物理 VLN 评测（四本体 + FR；待开源）
 
 ## 一句话记忆
 

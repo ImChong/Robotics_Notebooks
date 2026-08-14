@@ -21,6 +21,7 @@ related:
   - ./paper-agile-humanoid-loco-manipulation.md
   - ./paper-p3.md
   - ./paper-smpc2rl-loco-manipulation.md
+  - ./paper-humanoidvln.md
   - ../roadmaps/humanoid-control-roadmap.md
 sources:
   - ../../sources/papers/humanoid_hardware.md
@@ -30,6 +31,7 @@ sources:
   - ../../sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
   - ../../sources/papers/fddc_arxiv_2608_00500.md
+  - ../../sources/papers/humanoidvln_arxiv_2608_12860.md
   - ../../sources/papers/p3_arxiv_2607_25541.md
 summary: "Unitree G1 是一款由宇树科技推出的入门级教育科研用人形机器人，以其极高的性价比、高集成度以及对仿真学习框架的良好支持而备受关注。"
 ---
@@ -85,6 +87,7 @@ G1 的出现极大地加速了大规模数据的采集。由于其成本低廉�
 - [AGILE（论文实体）](./paper-agile-humanoid-loco-manipulation.md) — NVIDIA Isaac Lab 人形 RL 工作流；G1 速度/高度/stand-up/舞蹈/pick&place（arXiv:2603.20147）
 - [P³](./paper-p3.md) — VAE-PPO 边缘似然；G1 踏石/楼梯/缺口真机（arXiv:2607.25541，已开源）
 - [SMPC-to-RL](./paper-smpc2rl-loco-manipulation.md) — 稀疏奖励全身推箱；SMPC 专家 + FastTD3（arXiv:2608.12063；未开源）
+- [HumanoidVLN](./paper-humanoidvln.md) — Isaac 人形 VLN 基准与 G1 DualVLN 20 条 sim–real 试点（arXiv:2608.12860；待开源）
 - [Teleopit](./paper-teleopit.md) — PICO VR 全身+连续灵巧手+主动视觉遥操作（G1 29 DoF；arXiv:2608.01834）
 - [FDDC](./paper-fddc.md) — 可部署动态 CoM 单腿平衡；G1 ONNX 50 Hz 无蒸馏真机（arXiv:2608.00500）
 - [POT-VLA](./paper-pot-vla.md) — 在 G1 上用持久 3D 对象 token 实现可验证的闭环移动操作

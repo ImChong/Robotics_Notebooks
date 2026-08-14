@@ -2,7 +2,7 @@
 type: query
 tags: [benchmark, evaluation, embodied-ai, mllm, world-model, vla, sim2real, taxonomy]
 status: complete
-updated: 2026-08-12
+updated: 2026-08-14
 summary: "具身大模型评测基准选型闭环知识链：把具身大脑/MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准 四层评测，从分散的评测基准实体页沉淀为一条端到端选型决策链，逐层说明测什么、用什么代表性基准、指标的可复现性/真实代表性/过程 vs 结果/成本如何取舍及典型误判。"
 sources:
   - ../../sources/papers/robo_bench_arxiv_2510_17801.md
@@ -28,6 +28,7 @@ related:
   - ../entities/paper-masked-visual-actions.md
   - ../entities/paper-ctrl-world.md
   - ../entities/vla-sota-leaderboard.md
+  - ../entities/paper-humanoidvln.md
   - ../entities/robodojo.md
   - ../entities/xpolicylab.md
   - ../entities/paper-fabrivla.md
@@ -183,5 +184,6 @@ flowchart TD
 - [XPolicyLab 论文（arXiv:2608.09892）](../entities/paper-xpolicylab.md) — O(N+M) 契约与依赖隔离 serving 技术报告
 - [FabriVLA](../entities/paper-fabrivla.md) — ③层轻量 VLA Meta-World 对照条目
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md) — ④层可信仿真作闭环评测引擎的前提
+- [HumanoidVLN](../entities/paper-humanoidvln.md) — ③/④ 层：人形物理 VLN 成功率 + FR + 小规模 sim–real 相关（待开源）
 - [Sim2Real](../concepts/sim2real.md) — ④层评测结论外推真机的迁移背景
 - 姊妹 Query：[具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — 「选哪一类模型」，本页承接「选完怎么评测」

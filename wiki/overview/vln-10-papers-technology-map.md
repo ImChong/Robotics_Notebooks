@@ -2,7 +2,7 @@
 type: overview
 tags: [vln, navigation, survey, embodied-ai, datasets, vlm]
 status: complete
-updated: 2026-06-20
+updated: 2026-08-14
 related:
   - ./vln-category-01-datasets-platforms.md
   - ./vln-category-02-algorithm-frameworks.md
@@ -11,10 +11,12 @@ related:
   - ../entities/paper-vln-01-r2r.md
   - ../entities/paper-vln-10-navid.md
   - ../entities/sceneverse-pp.md
+  - ../entities/paper-humanoidvln.md
 sources:
   - ../../sources/blogs/wechat_shenlan_vln_10_papers_survey.md
   - ../../sources/raw/wechat_vln_10_papers_2026-06-20.md
   - ../../sources/papers/vln_10_papers_catalog.md
+  - ../../sources/papers/humanoidvln_arxiv_2608_12860.md
 summary: "依据深蓝具身智能 2026-06 VLN 盘点，把 10 篇论文整理为「数据集/平台 → 算法框架」两组入口地图；核心判断：VLN 正沿减负线逐步剥离导航图、深度与里程计，走向 RGB 视频流端到端决策。"
 ---
 
@@ -116,6 +118,7 @@ flowchart TB
 | 连续环境拓扑规划基线 | [09 ETPNav](../entities/paper-vln-09-etpnav.md) |
 | VLM 视频流端到端导航 | [10 NaVid](../entities/paper-vln-10-navid.md) |
 | 能跑通的开源复现栈 | [四范式复现路径](./vln-open-source-repro-paradigms.md) |
+| 人形物理执行（后续平台） | [HumanoidVLN](../entities/paper-humanoidvln.md) |
 
 ## 关联页面
 
