@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-sim2real, deployment, domain-randomization, transfer]
 status: complete
-updated: 2026-08-10
+updated: 2026-08-14
 summary: "Sim2Real 知识链汇总：图谱知识链锚点；详细知识见 concepts/sim2real，本页仅作知识链导航。"
 ---
 
@@ -42,6 +42,7 @@ summary: "Sim2Real 知识链汇总：图谱知识链锚点；详细知识见 con
 | 对比 | 残差 vs Real2Sim vs 真机 RL | [Sim2Real vs Real2Sim Fine-Tuning](../comparisons/sim2real-vs-real2sim-fine-tuning.md) |
 | 工程 | 部署清单 | [Sim2Real Checklist](../queries/sim2real-checklist.md)（含快速部署检查） |
 | 工程 | 闭环误差分层 | [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md) |
+| 工程 | 单关节 SysID 实验 | [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md) |
 | 工程 | 处理器在环 | [Processor-in-the-Loop Sim2Real](../concepts/processor-in-the-loop-sim2real.md) |
 | 文献索引 | Sim2Real / Real2Sim / R2S2R 闭环策展 | [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md)（sun254667；2024–2026） |
 
@@ -54,6 +55,7 @@ summary: "Sim2Real 知识链汇总：图谱知识链锚点；详细知识见 con
 ## 关联页面
 
 - [System Identification](../concepts/system-identification.md)
+- [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md)
 - [Privileged Training](../concepts/privileged-training.md)
 - [Data Flywheel](../concepts/data-flywheel.md)
 - [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md)
@@ -62,6 +64,7 @@ summary: "Sim2Real 知识链汇总：图谱知识链锚点；详细知识见 con
 ## 参考来源
 
 - 本库归纳自 [Sim2Real](../concepts/sim2real.md) 及 comparisons/queries 迁移系列页
+- [自由度FreeDof：Sim2Real 动力学辨识](../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md) — 单关节 SysID 实验入口
 - [深蓝具身智能公众号文归档](../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md) — 闭环叙事入口
 - **ingest 档案：** [sources/repos/awesome-real2sim2real.md](../../sources/repos/awesome-real2sim2real.md) — Awesome-Real2Sim2Real 迁移闭环策展清单
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`sim2real` 命中规则）

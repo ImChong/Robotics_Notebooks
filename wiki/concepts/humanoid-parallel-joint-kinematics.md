@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, kinematics, closed-chain, parallel-mechanism, ankle, simulation]
 status: complete
-updated: 2026-07-20
+updated: 2026-08-14
 related:
   - ../entities/asimov-v1.md
   - ../entities/humanoid-robot.md
@@ -10,11 +10,13 @@ related:
   - ../entities/tienkung-humanoid-open-source.md
   - ./dexterous-kinematics.md
   - ./armature-modeling.md
+  - ../methods/sim2real-joint-sysid-experiment-design.md
   - ../entities/modern-robotics-book.md
   - ./sim2real.md
   - ../methods/trajectory-optimization.md
 sources:
   - ../../sources/notes/humanoid-parallel-joint-kinematics.md
+  - ../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md
   - ../../sources/papers/humanoid_parallel_ankle_kinematics_ingest.md
   - ../../sources/repos/parallel_ankle_joint.md
 summary: "人形上常见并联/闭链关节（如并联踝）在机构学上需闭链运动学与力分配；控制与仿真常暴露为等效串联关节，二者不可混为一谈。"
@@ -104,7 +106,7 @@ flowchart TB
 ## 与人形其他闭链问题的关系
 
 - **灵巧手抓取**、**双臂共持刚体**同样形成闭链，约束方程写法相通，但接触与摩擦占主导；见 [Dexterous Kinematics](./dexterous-kinematics.md) 与 [双臂操作](../tasks/bimanual-manipulation.md)。
-- **双电机经减速器驱动同一关节轴**时，反射惯量可按并联求和近似，见 [Armature Modeling](./armature-modeling.md)；这是**动力学参数**层面，与**闭链几何雅可比**互补而非替代。
+- **双电机经减速器驱动同一关节轴**时，反射惯量可按并联求和近似，见 [Armature Modeling](./armature-modeling.md)；这是**动力学参数**层面，与**闭链几何雅可比**互补而非替代。若两电机通过并联机构产生两个自由度，有效惯量是矩阵 $M_{\mathrm{eff}}=J^\top I_m J$，对角 `armature` 装不下非对角耦合——辨识实验见 [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md)。
 
 ## 常见误区或局限
 
@@ -125,6 +127,7 @@ flowchart TB
 - [Asimov v1](../entities/asimov-v1.md)
 - [Dexterous Kinematics](./dexterous-kinematics.md)
 - [Armature Modeling](./armature-modeling.md)
+- [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md)
 - [人形机器人](../entities/humanoid-robot.md)
 - [Unitree G1](../entities/unitree-g1.md)
 - [天工 Lite / Pro](../entities/tienkung-humanoid-open-source.md)
@@ -144,6 +147,7 @@ flowchart TB
 ## 参考来源
 
 - [sources/repos/parallel_ankle_joint.md](../../sources/repos/parallel_ankle_joint.md) — G1 / 天工并联踝 IK·FK·雅可比参考实现（本批入库）
+- [自由度FreeDof：Sim2Real 动力学辨识](../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md) — 并联有效惯量矩阵与 `armature` 对角容量
 - [sources/notes/humanoid-parallel-joint-kinematics.md](../../sources/notes/humanoid-parallel-joint-kinematics.md) — 本主题资料索引与 ingest 归档
 - [sources/papers/humanoid_parallel_ankle_kinematics_ingest.md](../../sources/papers/humanoid_parallel_ankle_kinematics_ingest.md) — 并联踝机构学与 arXiv 文献包（本批入库）
 - [sources/papers/modern_robotics_textbook.md](../../sources/papers/modern_robotics_textbook.md) — *Modern Robotics* 教材元数据与第 7 章指针

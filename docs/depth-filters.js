@@ -187,6 +187,7 @@
         'wiki/entities/altium-designer.md',
         'wiki/concepts/field-oriented-control.md',
         'wiki/concepts/armature-modeling.md',
+        'wiki/methods/sim2real-joint-sysid-experiment-design.md',
         'wiki/concepts/friction-compensation.md',
         'wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md'
       ])
@@ -378,6 +379,7 @@
         'wiki/concepts/privileged-training.md',
         'wiki/concepts/curriculum-learning.md',
         'wiki/concepts/system-identification.md',
+        'wiki/methods/sim2real-joint-sysid-experiment-design.md',
         'wiki/concepts/sim-vs-real-eval-gap.md',
         'wiki/queries/sim2real-checklist.md'
       ])

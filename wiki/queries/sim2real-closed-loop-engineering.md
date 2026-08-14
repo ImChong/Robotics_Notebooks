@@ -9,11 +9,12 @@ tags:
   - deployment
   - safety
 status: complete
-updated: 2026-07-31
+updated: 2026-08-14
 summary: "Sim2Real 不是训完再迁移：按误差类型分流到 SysID/前馈、DR、在线适应与分层安全，形成从辨识到部署的持续校准闭环。"
 related:
   - ../concepts/sim2real.md
   - ../concepts/system-identification.md
+  - ../methods/sim2real-joint-sysid-experiment-design.md
   - ../concepts/domain-randomization.md
   - ../concepts/curriculum-learning.md
   - ../concepts/privileged-training.md
@@ -28,6 +29,7 @@ related:
   - ../entities/paper-quadruped-agile-sim2real-rss2018.md
   - ../tasks/locomotion.md
 sources:
+  - ../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md
   - ../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md
 ---
 
@@ -98,7 +100,7 @@ flowchart TD
 
 实践约束：
 
-- **参数不是越多越好**：激励不足时拟合高频相关项易过拟合。
+- **参数不是越多越好**：激励不足时拟合高频相关项易过拟合。单关节上延迟/摩擦/惯量在阶跃上纠缠时，先按 [实验设计](../methods/sim2real-joint-sysid-experiment-design.md) 分级拆开，再写回仿真。
 - **目标不是永恒精确模型**，而是给 RL 一个合理中心；随后 DR 覆盖公差与测量误差——**不要在错误默认 URDF 上盲目放大随机范围**。
 - 早期参照：Minitaur 路线先建电机与延迟模型再随机化（见 [四足敏捷 Sim2Real RSS 2018](../entities/paper-quadruped-agile-sim2real-rss2018.md) 与 [SysID](../concepts/system-identification.md)）。
 
@@ -142,6 +144,7 @@ flowchart TD
 
 - [Sim2Real](../concepts/sim2real.md) — 概念总览与工程流程
 - [System Identification](../concepts/system-identification.md) — 物理基准
+- [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md) — 单关节分级实验，把 SysID 从「优化器」落到可分离工况
 - [Domain Randomization](../concepts/domain-randomization.md) / [DR 参数指南](./domain-randomization-guide.md)
 - [Curriculum Learning](../concepts/curriculum-learning.md)
 - [Privileged Training](../concepts/privileged-training.md)
@@ -154,6 +157,7 @@ flowchart TD
 ## 参考来源
 
 - [深蓝具身智能：Sim-to-Real 不是训完之后的事情（微信公众号，2026-07-28）](../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md) — 主叙事与误差分流骨架；课程出处声明见该归档
+- [自由度FreeDof：Sim2Real 动力学辨识](../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md) — 单关节可辨识性与实验分级
 - [sources/raw 抓取原文](../../sources/raw/wechat_shenlan_sim2real_sysid_to_adaptation_2026-07-28.md)
 - 站内交叉编译：[Sim2Real](../concepts/sim2real.md)、[SysID](../concepts/system-identification.md)、[RMA 论文实体](../entities/paper-rma-rapid-motor-adaptation.md)、[Gap 缩减](./sim2real-gap-reduction.md)
 

@@ -2,11 +2,12 @@
 type: concept
 tags: [dynamics, simulation, urdf, mujoco, sysid, actuator, inertia]
 status: complete
-updated: 2026-08-13
+updated: 2026-08-14
 related:
   - ./armature-modeling.md
   - ./system-identification.md
   - ../methods/joint-actuator-parameter-identification.md
+  - ../methods/sim2real-joint-sysid-experiment-design.md
   - ./floating-base-dynamics.md
   - ../entities/modern-robotics-book.md
   - ../entities/mujoco.md
@@ -81,7 +82,7 @@ $$
 
 ### 辨识与最小参数集
 
-并非 URDF 中 10 个惯性分量都可独立辨识。**Gautier & Khalil (1990)** 给出串联机器人 **最小惯性参数集** 的闭式计算，减少冗余参数、提升 SysID 鲁棒性（详见 [System Identification](./system-identification.md)）。关节侧 $I_a$ 与摩擦不要塞进这 10 参数；估法见 [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md)。
+并非 URDF 中 10 个惯性分量都可独立辨识。**Gautier & Khalil (1990)** 给出串联机器人 **最小惯性参数集** 的闭式计算，减少冗余参数、提升 SysID 鲁棒性（详见 [System Identification](./system-identification.md)）。关节侧 $I_a$ 与摩擦不要塞进这 10 参数；估法见 [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md)。闭环位置曲线给出的往往是 $J/k_t$ 而不是 $J$，开环扭矩×加速度路径误差源不同，交叉校验见 [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md)。
 
 ## 转子惯量：反射惯量与 `armature`
 
@@ -149,6 +150,7 @@ flowchart LR
 - [System Identification](./system-identification.md) — 连杆参数与执行器层辨识
 - [Gravity Compensation](./gravity-compensation.md) — 惯性参数决定 $g(q)$ 准不准
 - [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) — $I_a$ / 摩擦的实验估法
+- [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md) — 闭环 vs 开环测 $J_{\mathrm{eff}}$；`armature` 不是旋钮
 - [Floating Base Dynamics](./floating-base-dynamics.md) — $M(q)$ 与 CRBA
 - [MuJoCo](../entities/mujoco.md) — 仿真器中的 joint 参数
 - [Sim2Real](./sim2real.md) — 质量/惯量随机化与真机偏差
@@ -157,6 +159,7 @@ flowchart LR
 ## 参考来源
 
 - [机器人连杆惯量与转子惯量（一手资料索引）](../../sources/papers/robot_link_rotor_inertia_primary_refs.md) — URDF 规范、Modern Robotics Ch.8、Gautier & Khalil 1990、MuJoCo `armature` 官方定义
+- [自由度FreeDof：Sim2Real 动力学辨识](../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md) — 闭环 vs 开环测 $J_{\mathrm{eff}}$
 
 ## 推荐继续阅读
 

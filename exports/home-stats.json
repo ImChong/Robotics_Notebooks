@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-14",
-  "node_count": 3089,
-  "edge_count": 26933,
+  "node_count": 3090,
+  "edge_count": 26958,
   "coverage": {
-    "covered": 3065,
-    "total": 3065,
+    "covered": 3066,
+    "total": 3066,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -17,7 +17,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/paper-learning-gravity-compensation.md",
@@ -27,36 +27,18 @@
       "recency": "2026-08-14",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/entities/paper-galaxea-g05.md",
-      "detail_id": "entity-paper-galaxea-g05",
-      "label": "G0.5：推理与动作同一自回归流",
-      "type": "entity",
+      "path": "wiki/methods/sim2real-joint-sysid-experiment-design.md",
+      "detail_id": "wiki-methods-sim2real-joint-sysid-experiment-design",
+      "label": "Sim2Real Joint SysID Experiment Design（关节动力学辨识实验设计）",
+      "type": "method",
       "recency": "2026-08-14",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rift-wam.md",
-      "detail_id": "entity-paper-rift-wam",
-      "label": "Rift：免视频 Rollout 的未来条件 WAM",
-      "type": "entity",
-      "recency": "2026-08-14",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-smpc2rl-loco-manipulation.md",
-      "detail_id": "entity-paper-smpc2rl-loco-manipulation",
-      "label": "SMPC-to-RL：稀疏奖励全身 Loco-Manipulation",
-      "type": "entity",
-      "recency": "2026-08-14",
-      "source": "git",
-      "action": "added"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/concepts/null-space-control.md",
@@ -67,7 +49,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/paper-cartesian-impedance-controller.md",
@@ -78,7 +60,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/paper-null-space-projections-survey.md",
@@ -89,7 +71,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/flobaroid.md",
@@ -121,7 +103,7 @@
       "recency": "2026-08-13",
       "source": "git",
       "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/formalizations/forward-kinematics.md",
@@ -131,7 +113,7 @@
       "recency": "2026-08-13",
       "source": "git",
       "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/formalizations/inverse-kinematics.md",
@@ -141,7 +123,7 @@
       "recency": "2026-08-13",
       "source": "git",
       "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/formalizations/robot-jacobian.md",
@@ -151,7 +133,7 @@
       "recency": "2026-08-13",
       "source": "git",
       "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/overview/robot-rl-motion-control-pipeline.md",
@@ -212,8 +194,29 @@
       "recency": "2026-08-13",
       "source": "git",
       "action": "added",
+      "has_repo": true
+    },
+    {
+      "path": "wiki/entities/comfyui.md",
+      "detail_id": "entity-comfyui",
+      "label": "ComfyUI",
+      "type": "entity",
+      "recency": "2026-08-13",
+      "source": "git",
+      "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-flex-pi.md",
+      "detail_id": "entity-paper-flex-pi",
+      "label": "Flex-π（Multi-Stream WAM · Compute Flexibility · arXiv:2608.10860）",
+      "type": "entity",
+      "recency": "2026-08-13",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -225,32 +228,32 @@
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
       "label": "操作",
-      "size": 572
+      "size": 578
     },
     {
       "label": "仿真到现实",
-      "size": 468
+      "size": 486
     },
     {
       "label": "视觉-语言-动作",
-      "size": 249
+      "size": 248
     },
     {
       "label": "人形论文深读笔记",
-      "size": 194
+      "size": 193
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 151
+      "size": 144
     },
     {
-      "label": "移动操作",
-      "size": 131
+      "label": "视觉语言动作纵深路线",
+      "size": 89
     }
   ],
   "top_hubs": [
@@ -329,7 +332,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 447,
+      "degree": 449,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
@@ -403,8 +406,7 @@
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
       "label": "Perceptive Humanoid Parkour（PHP）",
       "type": "entity",
-      "degree": 39,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "degree": 39
     }
   ]
 }

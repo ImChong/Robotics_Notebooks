@@ -1,10 +1,11 @@
 ---
 type: concept
 summary: "System Identification 通过估计动力学和执行器参数缩小模型误差，是高性能控制和 sim2real 的关键支撑。"
-updated: 2026-08-13
+updated: 2026-08-14
 related:
   - ./robot-link-and-rotor-inertia.md
   - ../methods/joint-actuator-parameter-identification.md
+  - ../methods/sim2real-joint-sysid-experiment-design.md
   - ../entities/flobaroid.md
   - ../entities/paper-bam-extended-friction-servo-actuators.md
   - ../entities/bam-better-actuator-models.md
@@ -16,6 +17,7 @@ related:
 sources:
   - ../../sources/papers/robot_link_rotor_inertia_primary_refs.md
   - ../../sources/papers/system_identification.md
+  - ../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md
   - ../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md
   - ../../sources/papers/spi_active_arxiv_2505_14266.md
 ---
@@ -93,7 +95,7 @@ System Identification 不是只辨识一个质量参数，它可能覆盖多个�
 - 控制延迟
 - 电流环 / 速度环等效动态
 
-这类参数对 sim2real 很关键。关节侧 **转子反射惯量 $I_a$ + 库仑/粘滞摩擦** 怎么从数据里估，见 [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md)。
+这类参数对 sim2real 很关键。关节侧 **转子反射惯量 $I_a$ + 库仑/粘滞摩擦** 怎么从数据里估，见 [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md)；实验怎样让延迟/摩擦/惯量可分开，见 [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md)。
 
 ### 3. Friction / Damping / Compliance
 非理想因素，包括：
@@ -129,7 +131,7 @@ System Identification 不是只辨识一个质量参数，它可能覆盖多个�
 - 站立扰动实验
 - 跌落 / 接触测试（谨慎）
 
-如果激励不够，参数就不可辨识。
+如果激励不够，参数就不可辨识。更细的「哪些参数在阶跃上结构性分不开、该换什么工况」见 [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md)。
 
 ### 2. 采集输入输出数据
 采集：
@@ -312,6 +314,7 @@ MPC 的预测质量高度依赖模型质量。模型错得离谱，预测再漂�
 - [Joint Friction Models](./joint-friction-models.md)、[Friction Compensation](./friction-compensation.md)
 - [Gravity Compensation](./gravity-compensation.md) — $g(q)$ 的精度由惯性参数决定
 - [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) — $I_a$ / 摩擦：Fourier+OLS（要力矩）vs CMA-ES 仿真对齐（只要编码器）
+- [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md) — 单关节 PD：延迟→摩擦→惯量→柔性的分级实验与纠缠表
 - [FloBaRoID](../entities/flobaroid.md) — Fourier 激励 + 两步摩擦的开源流水线
 - [Quadruped Control Curriculum](../entities/quadruped-control-curriculum.md)
 - [PACE（足式系统化 Sim2Real）](../entities/paper-pace-sim2real-legged-robots.md) — chirp 悬空数据 + [CMA-ES](../methods/cma-es.md) 紧凑关节参数辨识（arXiv:2509.06342）
@@ -321,6 +324,7 @@ MPC 的预测质量高度依赖模型质量。模型错得离谱，预测再漂�
 ## 参考来源
 
 - [sources/papers/system_identification.md](../../sources/papers/system_identification.md) — ingest 档案（Nguyen 2011 / Gautier 激励轨迹 / Hwangbo ActuatorNet 2019）
+- [sources/blogs/wechat_freedof_sim2real_dynamics_identification.md](../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md) — 单关节可辨识性与分级实验设计
 - [sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md](../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md) — SysID 作为 Sim2Real 起点、勿在默认 URDF 上盲目扩 DR
 - [sources/papers/spi_active_arxiv_2505_14266.md](../../sources/papers/spi_active_arxiv_2505_14266.md) — SPI-Active：采样式辨识 + 主动探索最大化 FIM（CoRL 2025）
 - Gautier & Khalil, *Direct calculation of minimum set of inertial parameters of serial robots* — 最小参数集辨识经典

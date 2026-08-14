@@ -2,7 +2,7 @@
 type: concept
 tags: [robotics, dynamics, simulation, sim2real, actuator]
 status: complete
-updated: 2026-08-13
+updated: 2026-08-14
 related:
   - ./robot-link-and-rotor-inertia.md
   - ./humanoid-parallel-joint-kinematics.md
@@ -10,9 +10,11 @@ related:
   - ../methods/beyondmimic.md
   - ../methods/actuator-network.md
   - ../methods/joint-actuator-parameter-identification.md
+  - ../methods/sim2real-joint-sysid-experiment-design.md
   - ./system-identification.md
   - ../queries/actuator-drive-chain-selection-loop.md
 sources:
+  - ../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md
   - ../../sources/papers/robot_link_rotor_inertia_primary_refs.md
   - ../../sources/papers/motion_control_projects.md
   - ../../sources/courses/isaac_lab_implicit_explicit_actuators.md
@@ -75,6 +77,7 @@ $$
 ```xml
 <joint name="knee_joint" armature="0.012" ... />
 ```
+它加在质量矩阵对角线上，顺带让接触求解更稳，因而常被当成数值旋钮。但随便改 `armature` 等于改 $J_{\mathrm{eff}}$，关节响应时间尺度会全错。并联机构的有效惯量是矩阵，两个对角 `armature` **装不下非对角耦合**——耦合显著时要上显式并联模型，见 [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md) 与 [人形并联关节解算](./humanoid-parallel-joint-kinematics.md)。
 
 ### Isaac Gym / Isaac Lab
 在 `ArticulatedView` 或机器人描述配置中，可以手动计算并补偿到关节的动态参数中，或者在 `SimConfig` 中通过 `armature` 属性全局或局部设置。Isaac Lab 文档指出：使用 **explicit** 执行器（用户侧算力矩）时若数值不稳定，可 **增大 `armature`** 阻尼关节响应；这与 [Implicit / Explicit 执行器建模](./implicit-explicit-actuator-modeling.md) 中的稳定性建议一致。
@@ -97,11 +100,13 @@ $$
 - [Actuator Network (执行器网络)](../methods/actuator-network.md) — 更复杂的执行器建模方式（如神经网络模拟）。
 - [System Identification (系统辨识)](./system-identification.md) — Armature 是系统辨识中的关键物理参数。
 - [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) — 手册 $J_r G^2$ 只是初值；数据怎么估 $I_a$
+- [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md) — 不要把 `armature` 当旋钮；并联时对角项装不下耦合
 - [人形机器人并联关节解算](./humanoid-parallel-joint-kinematics.md) — 双驱动并联路径上的几何/力映射与惯量建模分工
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — armature（转子等效惯量）是③层执行器建模写回仿真的关键参数
 
 ## 参考来源
 
+- [自由度FreeDof：Sim2Real 动力学辨识](../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md) — `armature` 是物理量；$G^2$ 折算与并联矩阵容量
 - [机器人连杆惯量与转子惯量（一手资料索引）](../../sources/papers/robot_link_rotor_inertia_primary_refs.md) — MuJoCo `armature` / 反射惯量 $G^2$ 官方定义
 - [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档《开源运动控制项目》总结。
 - BeyondMimic 技术报告关于物理建模的部分。

@@ -15,6 +15,7 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "wiki/methods/imitation-learning.md": "模仿学习（Imitation Learning, IL）",
     "wiki/tasks/locomotion.md": "运动控制（Locomotion）",
     "wiki/concepts/sim2real.md": "仿真到现实（Simulation to Reality, Sim2Real）",
+    "wiki/concepts/privileged-training.md": "特权信息训练（Privileged Training）",
     "wiki/methods/generative-world-models.md": "生成式世界模型（Generative World Models）",
     "wiki/overview/navigation-slam-autonomy-stack.md": (
         "导航与 SLAM（Navigation and Simultaneous Localization and Mapping, SLAM）"

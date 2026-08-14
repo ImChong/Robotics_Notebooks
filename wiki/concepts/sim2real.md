@@ -2,7 +2,7 @@
 type: concept
 tags: [sim2real, rl, domain-randomization, deployment]
 status: complete
-updated: 2026-08-13
+updated: 2026-08-14
 related:
   - ../entities/embodied-interview-qa.md
   - ../methods/reinforcement-learning.md
@@ -14,6 +14,7 @@ related:
   - ../comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md
   - ../tasks/locomotion.md
   - ./system-identification.md
+  - ../methods/sim2real-joint-sysid-experiment-design.md
   - ./implicit-explicit-actuator-modeling.md
   - ../methods/actuator-network.md
   - ./privileged-training.md
@@ -134,7 +135,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 | 路线 | 站内入口 |
 |------|----------|
 | 域随机化 | [Domain Randomization](./domain-randomization.md) |
-| 系统辨识 | [System Identification](./system-identification.md) |
+| 系统辨识 | [System Identification](./system-identification.md) · [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md) |
 | 领域自适应（视觉等） | 见 [Sim2Real 方法对比](../comparisons/sim2real-approaches.md) § Domain Adaptation |
 | 特权 / Teacher–Student | [Privileged Training](./privileged-training.md) |
 | 在线适应（RMA） | [RMA 论文实体](../entities/paper-rma-rapid-motor-adaptation.md) |
@@ -266,6 +267,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [Locomotion](../tasks/locomotion.md)
 - [腿式机器人进展/挑战/机遇综述](../entities/paper-legged-robots-advances-challenges.md) — SciRobotics 2026：把 Sim2Real 放进硬件/运动/数据五柱坐标系
 - [System Identification](./system-identification.md)（减少物理参数和执行器模型的 sim2real gap）
+- [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md) — 单关节把延迟/摩擦/惯量拆开，再写回仿真
 - [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md) — 从辨识到适应的持续校准叙事与误差分流
 - [Awesome-Real2Sim2Real（精选集）](../entities/awesome-real2sim2real.md) — Sim2Real / Real2Sim / Real2Sim2Real 闭环文献索引
 - [Actuator Network 执行器网络](../methods/actuator-network.md) — 用神经网络拟合电机非线性特性

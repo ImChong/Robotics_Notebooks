@@ -2,7 +2,7 @@
 type: method
 tags: [system-identification, actuator, friction, armature, sim2real, identification]
 status: complete
-updated: 2026-08-13
+updated: 2026-08-14
 related:
   - ../concepts/system-identification.md
   - ../concepts/joint-friction-models.md
@@ -13,12 +13,14 @@ related:
   - ./cma-es.md
   - ../entities/flobaroid.md
   - ../entities/bam-better-actuator-models.md
+  - ./sim2real-joint-sysid-experiment-design.md
   - ../entities/paper-pace-sim2real-legged-robots.md
   - ../entities/paper-notebook-sampling-based-system-identification-with-active.md
   - ../entities/pinocchio.md
   - ../queries/actuator-drive-chain-selection-loop.md
   - ../overview/hub-actuator-drive-chain.md
 sources:
+  - ../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md
   - ../../sources/papers/joint_actuator_parameter_identification.md
   - ../../sources/repos/flobaroid.md
   - ../../sources/sites/bam-readthedocs.md
@@ -33,7 +35,7 @@ summary: "关节执行器参数辨识：从实验数据估计转子反射惯量 
 
 ## 一句话定义
 
-**先决定测力矩还是只测编码器，再选线性回归或 CMA-ES；输出是每关节的 $I_a,b,\tau_c$ 一类小数，写进 MuJoCo `armature`/`damping`/`frictionloss` 或 URDF。**
+**先决定测力矩还是只测编码器，再选线性回归或 CMA-ES；输出是每关节的 $I_a,b,\tau_c$ 一类小数，写进 MuJoCo `armature`/`damping`/`frictionloss` 或 URDF。** 若参数在同一条阶跃上纠缠（延迟↔惯量、库仑↔黏性），先做 [实验设计](./sim2real-joint-sysid-experiment-design.md)，不要一上来把全部参数丢给优化器。
 
 ## 英文缩写速查
 
@@ -121,6 +123,7 @@ flowchart TB
 
 ## 关联页面
 
+- [关节动力学辨识实验设计](./sim2real-joint-sysid-experiment-design.md) — 可辨识性与分级实验（延迟→摩擦→惯量→柔性）
 - [System Identification](../concepts/system-identification.md) — 更宽的 SysID 层级（刚体 / 执行器 / 接触）
 - [Joint Friction Models](../concepts/joint-friction-models.md) / [Friction Compensation](../concepts/friction-compensation.md)
 - [连杆与转子惯量](../concepts/robot-link-and-rotor-inertia.md) / [Armature Modeling](../concepts/armature-modeling.md)
@@ -136,6 +139,7 @@ flowchart TB
 
 ## 参考来源
 
+- [自由度FreeDof：Sim2Real 动力学辨识实验设计](../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md) — 纠缠参数与分级实验
 - [关节执行器参数辨识论文簇](../../sources/papers/joint_actuator_parameter_identification.md)
 - [FloBaRoID 仓库](../../sources/repos/flobaroid.md)
 - [BAM 文档站](../../sources/sites/bam-readthedocs.md)
