@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, actuator-drive-chain, actuator, eda, foc, motor-control, ethercat, sim2real, hardware]
 status: complete
-updated: 2026-08-13
+updated: 2026-08-14
 related:
   - ../queries/actuator-drive-chain-selection-loop.md
   - ../concepts/torque-source-abstraction-gap.md
@@ -19,6 +19,7 @@ related:
   - ../entities/paper-neuralactuator-neural-actuation-modeling.md
   - ../entities/bam-better-actuator-models.md
   - ../methods/joint-actuator-parameter-identification.md
+  - ../methods/sim2real-joint-sysid-experiment-design.md
   - ../entities/sage-sim2real-actuator-gap-estimator.md
   - ../methods/actuator-network.md
   - ../queries/ethercat-master-optimization.md
@@ -63,7 +64,7 @@ summary: "执行器驱动链选型闭环知识链枢纽：把 EDA 电路设计 �
 |------|--------|----------------|----------|
 | ① EDA 电路设计 | 开源 vs 商用、驱动板自研 vs 商用一体化关节 | KiCad、Altium Designer | [KiCad](../entities/kicad.md)、[Altium Designer](../entities/altium-designer.md) |
 | ② 驱动固件 FOC | 电流环带宽/编码器分辨率/标定 | SimpleFOC、FOC 电流环 | [SimpleFOC](../entities/simplefoc.md)、[磁场定向控制](../concepts/field-oriented-control.md) |
-| ③ 执行器建模与摩擦辨识 | 显式摩擦模型 vs 神经执行器网络 | BAM、FloBaRoID、NeuralActuator、执行器网络 | [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md)、[BAM 摩擦辨识](../entities/bam-better-actuator-models.md)、[NeuralActuator](../entities/paper-neuralactuator-neural-actuation-modeling.md)、[隐式/显式执行器建模](../concepts/implicit-explicit-actuator-modeling.md) |
+| ③ 执行器建模与摩擦辨识 | 显式摩擦模型 vs 神经执行器网络 | BAM、FloBaRoID、NeuralActuator、执行器网络 | [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md)、[关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md)、[BAM 摩擦辨识](../entities/bam-better-actuator-models.md)、[NeuralActuator](../entities/paper-neuralactuator-neural-actuation-modeling.md)、[隐式/显式执行器建模](../concepts/implicit-explicit-actuator-modeling.md) |
 | ④ 实时总线闭环集成 | 总线周期/抖动与控制带宽的关系 | EtherCAT、主站优化 | [EtherCAT 协议基础](../concepts/ethercat-protocol.md)、[EtherCAT 主站优化](../queries/ethercat-master-optimization.md) |
 | 端到端 | 四层如何逐层选型取舍 | 选型决策树 | [驱动链选型闭环 Query](../queries/actuator-drive-chain-selection-loop.md) |
 
@@ -88,7 +89,7 @@ summary: "执行器驱动链选型闭环知识链枢纽：把 EDA 电路设计 �
 - [隐式/显式执行器建模](../concepts/implicit-explicit-actuator-modeling.md)
 - [KiCad](../entities/kicad.md) · [Altium Designer](../entities/altium-designer.md)
 - [SimpleFOC](../entities/simplefoc.md) · [磁场定向控制](../concepts/field-oriented-control.md)
-- [BAM 摩擦辨识](../entities/bam-better-actuator-models.md) · [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) · [NeuralActuator](../entities/paper-neuralactuator-neural-actuation-modeling.md) · [执行器网络](../methods/actuator-network.md)
+- [BAM 摩擦辨识](../entities/bam-better-actuator-models.md) · [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) · [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md) · [NeuralActuator](../entities/paper-neuralactuator-neural-actuation-modeling.md) · [执行器网络](../methods/actuator-network.md)
 - [SAGE sim2real 执行器 gap 估计](../entities/sage-sim2real-actuator-gap-estimator.md)
 - [EtherCAT 协议基础](../concepts/ethercat-protocol.md) · [EtherCAT 主站优化](../queries/ethercat-master-optimization.md)
 - [电机力矩-电流曲线](../concepts/motor-torque-current-curve.md) · [电机力矩-转速曲线](../concepts/motor-torque-speed-curve.md) · [行星滚柱丝杠腿部执行](../concepts/planetary-roller-screw-humanoid-leg-actuation.md)

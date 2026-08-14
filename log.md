@@ -1,3 +1,12 @@
+## [2026-08-14] ingest | sources/blogs/wechat_freedof_sim2real_dynamics_identification.md — 接入 Sim2Real 关节动力学辨识实验设计（无项目页/代码仓）
+
+- **触发：** 用户要求确保 agent-reach 已装并 ingest <https://mp.weixin.qq.com/s/B_sH9VNRxB6GCTJwnx6esQ>；随后要求自动合并
+- **工具：** Agent Reach v1.5.0（`~/.local/bin/agent-reach`）+ wechat-article-for-ai（Camoufox；`playwright==1.49.1`；`--no-images`）。直连一次成功
+- **开源结论：** 工程方法文，无项目页/代码仓；步骤 2.5 不适用
+- **来源：** [`sources/blogs/wechat_freedof_sim2real_dynamics_identification.md`](sources/blogs/wechat_freedof_sim2real_dynamics_identification.md)；原文 [`sources/raw/wechat_freedof_sim2real_dynamics_identification_2026-08-12.md`](sources/raw/wechat_freedof_sim2real_dynamics_identification_2026-08-12.md)
+- **升格：** [`wiki/methods/sim2real-joint-sysid-experiment-design.md`](wiki/methods/sim2real-joint-sysid-experiment-design.md) — 可辨识性三原则、延迟→摩擦→惯量→柔性分级实验；与算法页 [关节执行器参数辨识](wiki/methods/joint-actuator-parameter-identification.md) 分工
+- **交叉：** SysID / armature / 关节摩擦 / 连杆-转子惯量 / 并联关节 / Sim2Real 闭环 / 驱动链枢纽
+
 ## [2026-08-13] ingest | sources/papers/null_space_control.md — 接入零空间控制一手论文簇与 7 轴开源实现（Dietrich 2015 综述未开源；Mayr JOSS / libfranka / TSID 已开源）
 
 - **触发：** 用户要求找到并 ingest 机器人零空间控制一手资料与源码（含 7 轴）

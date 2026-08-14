@@ -2,18 +2,20 @@
 type: concept
 tags: [friction, actuator, system-identification, sim2real, modeling]
 status: complete
-updated: 2026-08-13
+updated: 2026-08-14
 related:
   - ./system-identification.md
   - ./friction-compensation.md
   - ./robot-link-and-rotor-inertia.md
   - ../methods/joint-actuator-parameter-identification.md
+  - ../methods/sim2real-joint-sysid-experiment-design.md
   - ../entities/flobaroid.md
   - ../entities/bam-better-actuator-models.md
   - ../entities/paper-bam-extended-friction-servo-actuators.md
   - ../methods/actuator-network.md
   - ../queries/actuator-drive-chain-selection-loop.md
 sources:
+  - ../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md
   - ../../sources/courses/quadruped_control_simulation_rl_curriculum.md
 summary: "关节摩擦常用 Coulomb + Viscous + Stribeck 组合建模；四足 SysID 中摩擦参数对 Sim2Real 跟踪误差与跌倒率影响显著。"
 ---
@@ -78,7 +80,7 @@ $$
 | 可微仿真 + 梯度 | 仿真轨迹 MSE 对摩擦参数求导（课程 `jax.grad`） |
 | 执行器网络 | 数据驱动补偿残差（[Actuator Network](../methods/actuator-network.md)） |
 
-算法选型总表见 [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md)。
+算法选型总表见 [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md)。库仑与黏性在单次阶跃上近似不可分：要多档恒定低速（扭矩–速度图的截距差 vs 斜率）或恒扭矩阈值；不要用稳态误差反推。实验顺序见 [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md)。
 
 ## 常见误区
 
@@ -90,6 +92,7 @@ $$
 - [Friction Compensation](./friction-compensation.md)
 - [System Identification](./system-identification.md)
 - [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) — $I_a$ 与摩擦怎么从数据里来
+- [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md) — 低速往返 / 恒扭矩把库仑与黏性拆开
 - [Sim2Real](./sim2real.md)
 - [Quadruped Control Curriculum](../entities/quadruped-control-curriculum.md)
 - [仿真物理保真度链路](../queries/simulation-physics-fidelity.md) — 摩擦模型属第 ③ 接触/摩擦层
@@ -103,4 +106,5 @@ $$
 
 ## 参考来源
 
+- [自由度FreeDof：Sim2Real 动力学辨识](../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md) — 多档恒速与恒扭矩分离摩擦
 - [sources/courses/quadruped_control_simulation_rl_curriculum.md](../../sources/courses/quadruped_control_simulation_rl_curriculum.md) — 课程 Ch3 摩擦模型

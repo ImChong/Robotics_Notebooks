@@ -2699,6 +2699,7 @@
 - [SegNet](wiki/methods/segnet.md) — SegNet 用编码器池化索引指导解码器非对称上采样，节省存储的同时恢复边界，是早期高效语义分割架构。 `📅unknown` `[method_page]`
 - [SGD Momentum（动量随机梯度下降）](wiki/methods/sgd-momentum.md) — SGD Momentum**：在 SGD 基础上维护速度向量 $v_t$，将当前梯度与历史速度加权叠加，使参数更新在 **一致梯度方向** 上加速、在 **振荡方向** 上 `📅unknown` `[method_page]`
 - [SGD（Stochastic Gradient Descent）](wiki/methods/sgd.md) — SGD（随机梯度下降）**：用训练集 mini-batch 上估计的梯度 $\hat{g}_t$ 替代全数据精确梯度，按 $\theta_{t+1} = \theta_t - \eta \hat{ `📅unknown` `[method_page]`
+- [Sim2Real Joint SysID Experiment Design（关节动力学辨识实验设计）](wiki/methods/sim2real-joint-sysid-experiment-design.md) — Sim2Real 关节动力学辨识实验设计**：在把 $J_{\mathrm{eff}}$、摩擦、延迟、饱和写进仿真之前，先设计让每个参数暴露在**独有现象**里的工况。它回答「这组实验能不能把参数 `📅unknown` `[method_page]`
 - [骨架动作识别（Skeleton-Based Action Recognition）](wiki/methods/skeleton-action-recognition.md) — 骨架动作识别**：以关节坐标序列（3D/2D 骨架）为输入，识别或描述人体 / 机器人正在执行的动作类别，是模仿学习数据质量和跨形态泛化的重要支撑技术。 `📅unknown` `[method_page]`
 - [Sliding Mode Control（滑模控制，SMC）](wiki/methods/sliding-mode-control.md) — SMC：设计滑模面 $s(x)=0$，用不连续/饱和切换律强制状态沿面滑向原点，对匹配扰动不敏感。 `📅unknown` `[method_page]`
 - [SLIP + VMC（弹簧负载倒立摆与虚拟模型控制）](wiki/methods/slip-vmc.md) — SLIP（Spring-Loaded Inverted Pendulum）** 把支撑腿近似为质心与足端之间的弹簧；**VMC（Virtual Model Control）** 在任务空间定义虚拟 `📅unknown` `[method_page]`
