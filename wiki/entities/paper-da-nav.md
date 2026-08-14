@@ -19,7 +19,7 @@ tags:
   - ucas
   - leju
 status: complete
-updated: 2026-07-22
+updated: 2026-08-14
 arxiv: "2607.11638"
 summary: "DA-Nav（arXiv:2607.11638）：用商业导航方向指令做城市尺度户外 VLN；图像平面离散 spatial grounding + CoT 偏离恢复；ReDA 数据集；CARLA SoTA（CSR≈98%），零样本 Go2 / 乐聚 Kuavo-V 公里级导航；截至入库日未开源。"
 related:
@@ -30,6 +30,7 @@ related:
   - ./paper-notebook-navila-legged-robot-vision-language-action-model.md
   - ./paper-worldvln-aerial-vln-wam.md
   - ./paper-realm-last-3-meter-vln-grounding.md
+  - ./paper-green-for-go-vla-nav-grounding.md
   - ./paper-uni-lavira.md
   - ../methods/behavior-cloning.md
 sources:
@@ -170,6 +171,7 @@ flowchart LR
 - [NaVILA](./paper-notebook-navila-legged-robot-vision-language-action-model.md) — 足式导航 VLA 基线
 - [WorldVLN](./paper-worldvln-aerial-vln-wam.md) — 另一城市/户外相关导航范式（空中 WAM）
 - [REALM](./paper-realm-last-3-meter-vln-grounding.md) — 室内 REVERIE 末段接地（评测关注点不同）
+- [Green for Go](./paper-green-for-go-vla-nav-grounding.md) — 冻结导航 VLA 的可通行 overlay（另一类 grounding；未开源）
 - [行为克隆](../methods/behavior-cloning.md) — 纯专家示范在闭环 OOD 下的局限对照
 
 ## 参考来源

@@ -2,7 +2,7 @@
 type: overview
 tags: [vln, navigation, open-source, reproduction, habitat, vla, embodied-ai]
 status: complete
-updated: 2026-08-05
+updated: 2026-08-14
 related:
   - ./vln-10-papers-technology-map.md
   - ../entities/paper-vln-10-navid.md
@@ -16,6 +16,7 @@ related:
   - ../entities/paper-da-nav.md
   - ../entities/paper-zonda.md
   - ../entities/paper-roamflow.md
+  - ../entities/paper-green-for-go-vla-nav-grounding.md
 sources:
   - ../../sources/blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md
   - ../../sources/papers/uni_lavira_arxiv_2605_27582.md
@@ -86,6 +87,7 @@ flowchart LR
 - **户外方向感知（暂不可复现）：** [DA-Nav](../entities/paper-da-nav.md)（arXiv:2607.11638）用 **商业导航离散方向** + **图像平面网格** + **CoT recovery**，并零样本足式/人形；**截至 2026-07-22 未开源**，不进入本页四范式清单，仅作「动作表示 / 恢复监督」阅读对照。
 - **多楼层动态 ObjectNav（暂不可复现）：** [ZONDA](../entities/paper-zonda.md)（arXiv:2607.21025）在 VLFM 式地图–语义前沿之上补 **跨楼层几何可通行、多视角 VLM 核验、行人预测避障**；**截至 2026-07-24 未开源**。工程上可先跑通 VLFM，再对照已开源 [ASCENT](https://github.com/Zeying-Gong/ascent) 理解跨楼层差异。
 - **Image-goal MeanFlow 生成导航（暂不可复现）：** [RoamFlow](../entities/paper-roamflow.md)（arXiv:2606.29934）用 MeanFlow 一步轨迹 + IL→RL，Habitat/Go2 报告低延迟高 SR；**截至 2026-08-05 未开源**，不进入本页四范式清单。需要可跑通生成导航时仍从 **NoMaD** 起步。
+- **冻结 VLA 可通行 overlay（暂不可复现）：** [Green for Go](../entities/paper-green-for-go-vla-nav-grounding.md)（arXiv:2607.05122）只改 OmniVLA 输入（绿/红 SegFormer），**不进入本页四范式清单**；当作「已有导航 VLA 上的推理时试验」阅读即可。**勿与** [Green-VLA](../entities/paper-greenvla-staged-vla-humanoid.md) **混淆**。
 
 ## 按目标选入口
 
@@ -118,6 +120,7 @@ flowchart LR
 - [DA-Nav](../entities/paper-da-nav.md) — 城市户外方向感知 VLN（方法对照；暂未开源）
 - [ZONDA](../entities/paper-zonda.md) — 多楼层动态零样本 ObjectNav（方法对照；暂未开源）
 - [RoamFlow](../entities/paper-roamflow.md) — MeanFlow 一步 image-goal（方法对照；暂未开源）
+- [Green for Go](../entities/paper-green-for-go-vla-nav-grounding.md) — 冻结 OmniVLA 绿/红 overlay（方法对照；暂未开源）
 
 ## 参考来源
 
@@ -125,6 +128,7 @@ flowchart LR
 - [Uni-LaViRA 论文摘录（arXiv:2605.27582）](../../sources/papers/uni_lavira_arxiv_2605_27582.md)
 - [DA-Nav 论文摘录（arXiv:2607.11638）](../../sources/papers/da_nav_arxiv_2607_11638.md)
 - [ZONDA 论文摘录（arXiv:2607.21025）](../../sources/papers/zonda_arxiv_2607_21025.md)
+- [Green for Go 论文摘录（arXiv:2607.05122）](../../sources/papers/green_for_go_vla_nav_grounding_arxiv_2607_05122.md)
 
 ## 推荐继续阅读
 

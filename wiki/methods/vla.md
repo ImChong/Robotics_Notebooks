@@ -50,6 +50,7 @@ related:
   - ../entities/paper-legs-embodied-gaussian-splatting-vla.md
   - ../entities/paper-rove-humanoid-vla-intervention.md
   - ../entities/paper-greenvla-staged-vla-humanoid.md
+  - ../entities/paper-green-for-go-vla-nav-grounding.md
   - ../entities/paper-joyai-ra-05.md
   - ../entities/paper-vesta-generalist-embodied-reasoning.md
   - ../entities/paper-mint-vla.md
@@ -218,6 +219,7 @@ flowchart TD
 - **Lumo-2**：**Qwen3.5-4B latent WAM**——**潜空间世界动力学 φ** + **三阶段动作–视觉–语言预对齐**、历史动作记忆与 **BAR 2.71×** 推理加速；**Astribot S1** 上 **22 项** 挑战真机任务全面超 **π₀.₅/Fast-WAM**；人–机共训无需专用迁移机制（见 [Lumo-2](../entities/lumo-2.md)，arXiv:2607.11270）；[Philia](../entities/philia.md) 将其作为 gateway capability 部署
 - **Dexmal DM0.5（OpenDM）**：**Gemma3-4B VLM + 680M Flow-Matching Action Expert**；**~60s 历史上下文抽象**、**11 类具身 CoT** 与 **DP 动态轨迹对齐**；**已开源** [opendm](https://github.com/dexmal/opendm) 训练/推理与 **DM05** 系列权重（LIBERO **99.0%**、RoboTwin2 Clean/Rand **93.6%/93.3%**、Table30v2 **43% SR**）（见 [Dexmal DM0.5](../entities/dexmal-dm05.md)）
 - **DA-Nav（导航 VLM，非操作 VLA）**：把城市户外导航写成 **商业方向指令 + 图像平面离散网格 grounding + CoT 偏离恢复**（Qwen2.5-VL-7B LoRA）；相对连续 waypoint / 分层 NaVILA，强调 **动作表示对齐 2D 视觉推理** 与 **recovery 数据**；CARLA SoTA 并零样本 Go2/人形（见 [DA-Nav](../entities/paper-da-nav.md)，arXiv:2607.11638；**暂未开源**）
+- **Green for Go（导航 VLA 推理时 overlay，非新模型）**：SegFormer **绿=可通行 / 红=不可通行** 喂冻结 **OmniVLA**；Grand Tour 最远航点误差 **−27–44%**，但归一化后主要是轨迹缩短约 **30%**；图像目标与 **stop** 几乎无增益（见 [Green for Go](../entities/paper-green-for-go-vla-nav-grounding.md)，arXiv:2607.05122；**确认未开源**）。**勿与** [Green-VLA](../entities/paper-greenvla-staged-vla-humanoid.md) **混淆**。
 - **S²-VLA（驾驶 VLA，武汉理工，arXiv:2607.13926）**：针对单流驾驶 VLA 的 **spatial representation collapse**，把 **InternVL3-2B 多尺度语义流** 与 **绕过自回归头的 ViT 空间流**（BEV map / agent 辅助）解耦，经 **Dual-Stream Planning Adapter** 级联融合；NAVSIM 纯 SFT **PDMS 87.1 / NC 98.4**；**未开源**（见 [S²-VLA](../entities/paper-s-squared-vla.md)）
 
 ## VLA 与传统策略的区别
@@ -363,6 +365,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [sources/repos/lehome_solution.md](../../sources/repos/lehome_solution.md) — LeHome 方案开源仓与 HF 权重入口
 - [sources/papers/deed_arxiv_2607_20345.md](../../sources/papers/deed_arxiv_2607_20345.md) — DEED：G1-Edu + GR00T N1.6 零售补货后训练（arXiv:2607.20345）
 - [sources/papers/da_nav_arxiv_2607_11638.md](../../sources/papers/da_nav_arxiv_2607_11638.md) — DA-Nav：方向感知城市尺度 VLN（arXiv:2607.11638）
+- [sources/papers/green_for_go_vla_nav_grounding_arxiv_2607_05122.md](../../sources/papers/green_for_go_vla_nav_grounding_arxiv_2607_05122.md) — Green for Go：冻结导航 VLA 绿/红视觉接地（arXiv:2607.05122）
 
 ## 关联页面
 - [具身智能高频面试题库](../entities/embodied-interview-qa.md) — 卷三 VLA/IL 面试速查（短答案 + 频次）；深读仍以本页与实体为准
@@ -374,6 +377,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [VLN 四范式复现路径](../overview/vln-open-source-repro-paradigms.md) — 导航域 Uni-NaVid 等（与 UniVLA 操作栈区分）
 - [Uni-LaViRA](../entities/paper-uni-lavira.md) — training-free 导航 agent：主张导航可落在 MLLM 输出流形内，对照「堆轨迹训导航 VLA」
 - [DA-Nav](../entities/paper-da-nav.md) — 城市尺度方向感知 VLN：图像平面网格 + CoT 恢复（对照连续 waypoint / NaVILA）
+- [Green for Go](../entities/paper-green-for-go-vla-nav-grounding.md) — 冻结 OmniVLA 的绿/红可通行 overlay（对照 Green-VLA；未开源）
 - [深度学习基础](../concepts/deep-learning-foundations.md)
 - [Foundation Policy（基础策略模型）](../concepts/foundation-policy.md)
 - [仿生多模态机器人综述（Science Robotics 2026）](../entities/paper-bioinspired-multimodal-robotics.md) — 展望中将 VLA/世界模型等纳入多模态切换与环境适配的计算智能侧

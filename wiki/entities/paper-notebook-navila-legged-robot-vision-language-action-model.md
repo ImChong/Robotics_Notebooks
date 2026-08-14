@@ -13,7 +13,7 @@ tags:
   - nvidia
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-08-12
+updated: 2026-08-14
 arxiv: "2412.04453"
 code: https://github.com/AnjieCheng/NaVILA
 related:
@@ -22,6 +22,7 @@ related:
   - ../methods/vla.md
   - ../tasks/locomotion.md
   - ./paper-da-nav.md
+  - ./paper-green-for-go-vla-nav-grounding.md
   - ./paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md
 sources:
   - ../../sources/papers/humanoid_pnb_navila-legged-robot-vision-language-action-model.md
@@ -175,6 +176,7 @@ sequenceDiagram
 - 论文失败案例指向有限 spatial understanding；扩大真实仿真数据仍是必要工作。
 - YouTube 视频只有 IDs / annotations，源视频删除或地区版权会破坏数据可重复性。
 - 与 [DA-Nav](./paper-da-nav.md) 的后续评测表明 NaVILA 缺少专门偏离恢复监督；城市长程 CSR 不宜从室内 SR 外推。
+- [Green for Go](./paper-green-for-go-vla-nav-grounding.md) 走另一条路：不重训 VLA，只用绿/红可通行 overlay 喂冻结 OmniVLA；那是开环航点正则，不能替代本页的腿式闭环 SR。
 
 ## 与其他页面的关系
 
@@ -182,6 +184,7 @@ sequenceDiagram
 - [导航纵深路线 Stage 4](../../roadmap/depth-navigation.md) — “语言→中层命令→locomotion”的分层锚点
 - [VLA](../methods/vla.md) — 语言动作接口对“统一低层 action token”的替代设计
 - [DA-Nav](./paper-da-nav.md) — 城市尺度方向指令与显式 recovery 对照
+- [Green for Go](./paper-green-for-go-vla-nav-grounding.md) — 冻结导航 VLA 的推理时可通行 overlay（对照；未开源）
 - [NavDP](./paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md) — 可充当更快局部 trajectory system-1
 
 ## 参考来源
