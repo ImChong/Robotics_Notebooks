@@ -21,6 +21,7 @@ related:
   - ./paper-agile-humanoid-loco-manipulation.md
   - ./paper-p3.md
   - ./paper-smpc2rl-loco-manipulation.md
+  - ./paper-roboreact.md
   - ./paper-humanoidvln.md
   - ../roadmaps/humanoid-control-roadmap.md
 sources:
@@ -31,6 +32,7 @@ sources:
   - ../../sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
   - ../../sources/papers/fddc_arxiv_2608_00500.md
+  - ../../sources/papers/roboreact_arxiv_2608_03387.md
   - ../../sources/papers/humanoidvln_arxiv_2608_12860.md
   - ../../sources/papers/p3_arxiv_2607_25541.md
 summary: "Unitree G1 是一款由宇树科技推出的入门级教育科研用人形机器人，以其极高的性价比、高集成度以及对仿真学习框架的良好支持而备受关注。"
@@ -60,7 +62,7 @@ summary: "Unitree G1 是一款由宇树科技推出的入门级教育科研用�
 5. **高效数据生成**：支持 [CLAW](../methods/claw.md) 等合成数据管线，通过网页交互快速生成带语言标签的全身动作数据。
 6. **足球技能研究**：作为 [PAiD](../methods/paid-framework.md) 框架的主要实验平台，证明了其在执行类人化踢球动作方面的卓越物理特性。
 7. **敏捷技能切换**：[Switch](../methods/switch-framework.md) 框架在 G1 上实现了 100% 的跨技能切换成功率与极强的抗扰动能力。
-8. **视频生成驱动的零样本控制**：作为 [ExoActor](../methods/exoactor.md)（BAAI, 2026）的端到端验证平台，把第三人称视频生成 + 通用动作跟踪整合为零真实数据的交互行为生成系统。
+8. **视频生成驱动的零样本控制**：作为 [ExoActor](../methods/exoactor.md)（BAAI, 2026）的端到端验证平台，把第三人称视频生成 + 通用动作跟踪整合为零真实数据的交互行为生成系统；[RoboReact](./paper-roboreact.md)（arXiv:2608.03387）则用 **egocentric 生成视频** 蒸馏物体中心关键帧技能，G1 长程双臂均值 SR **81.3%**（未开源）。
 9. **浏览器侧策略–仿真编排（生态周边）**：地瓜机器人 [BotLab / MotionCanvas](./botlab-motioncanvas.md) 在网页中提供面向 G1 / Go2 的 ONNX + MuJoCo 节点图实验台，便于对照训练侧 obs 堆叠语义与推理同步策略。
 10. **无机器人全身示范部署**：[BifrostUMI](./paper-bifrost-umi.md)（BAAI Aether, 2026）在 G1 上验证 Pico + 双腕夹爪采集数据经扩散策略与 SKR 的杂乱桌面与桌下全身操作。
 11. **统一走跑起身（SD-AMP）**：[SD-AMP](./paper-unified-walk-run-recovery-sdamp.md)（HKU, arXiv:2605.18611）在 G1 真机用三条 LAFAN1 参考 + 双 AMP 判别器实现 recovery→walk→run 无部署模式切换。
@@ -87,6 +89,7 @@ G1 的出现极大地加速了大规模数据的采集。由于其成本低廉�
 - [AGILE（论文实体）](./paper-agile-humanoid-loco-manipulation.md) — NVIDIA Isaac Lab 人形 RL 工作流；G1 速度/高度/stand-up/舞蹈/pick&place（arXiv:2603.20147）
 - [P³](./paper-p3.md) — VAE-PPO 边缘似然；G1 踏石/楼梯/缺口真机（arXiv:2607.25541，已开源）
 - [SMPC-to-RL](./paper-smpc2rl-loco-manipulation.md) — 稀疏奖励全身推箱；SMPC 专家 + FastTD3（arXiv:2608.12063；未开源）
+- [RoboReact](./paper-roboreact.md) — 生成 egocentric 视频蒸馏全身操作；G1 + HOMIE，四任务均值 SR 81.3%（arXiv:2608.03387；未开源）
 - [HumanoidVLN](./paper-humanoidvln.md) — Isaac 人形 VLN 基准与 G1 DualVLN 20 条 sim–real 试点（arXiv:2608.12860；待开源）
 - [Teleopit](./paper-teleopit.md) — PICO VR 全身+连续灵巧手+主动视觉遥操作（G1 29 DoF；arXiv:2608.01834）
 - [FDDC](./paper-fddc.md) — 可部署动态 CoM 单腿平衡；G1 ONNX 50 Hz 无蒸馏真机（arXiv:2608.00500）
@@ -128,6 +131,7 @@ G1 的出现极大地加速了大规模数据的采集。由于其成本低廉�
 - [RL Sim2Sim 在线演示：G1 AMP Walk/Run/Getup](https://imchong.github.io/RL_Sim2Sim_Demo_Website/index.html)
 - Unitree G1 官方规格书。
 - [sources/papers/exoactor.md](../../sources/papers/exoactor.md) — ExoActor 在 G1 上的端到端实现。
+- [sources/papers/roboreact_arxiv_2608_03387.md](../../sources/papers/roboreact_arxiv_2608_03387.md) — RoboReact：G1 生成视频蒸馏全身操作（arXiv:2608.03387）。
 - [sources/papers/bfm_humanoid_arxiv_2509_13780.md](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md) — BFM：在 G1 上做 motion tracking / VR 遥操作 / locomotion 的统一条件生成策略。
 - [sources/papers/bifrost_umi_arxiv_2605_03452.md](../../sources/papers/bifrost_umi_arxiv_2605_03452.md) — BifrostUMI：G1 真机全身 loco-manipulation（arXiv:2605.03452）。
 - [sources/papers/php_parkour_arxiv_2602_15827.md](../../sources/papers/php_parkour_arxiv_2602_15827.md) — PHP：G1 感知跑酷（arXiv:2602.15827）。

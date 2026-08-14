@@ -2,11 +2,12 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-07-10
+updated: 2026-08-14
 arxiv: "2410.11792"
 related:
   - ../overview/paper-notebook-category-06-manipulation.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ./paper-roboreact.md
 sources:
   - ../../sources/papers/humanoid_pnb_okami.md
 summary: "研究从单段视频演示模仿来教人形机器人操作技能。OKAMI 从单段 RGB-D 视频生成操作计划并导出可执行策略。其核心是物体感知重定向（object-aware retargeting）：让人形复现视频中的人类动作，同时在部署时适应不同物体位置。OKAMI 用开放世界视觉模型识别任务相关物体，并分别重定向身体动作与手部姿态。实验表明 OKAMI 在多变视觉与空间条件下强泛化，在开放世界从观察模仿（imitation from observation）上超越 SOTA 基线。进一步地，用 OKAMI 的 rollout 轨迹训练闭环视觉运动策略，在无需费力遥操作的情况下达平均 79.2% 成功率。"
@@ -82,6 +83,7 @@ OKAMI 要：从**单段 RGB-D 视频**生成计划 + 策略，并能**适应不�
 
 - 分类父节点：[paper-notebook-category-06-manipulation](../overview/paper-notebook-category-06-manipulation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- 生成视频对照：[RoboReact](./paper-roboreact.md) — 先验换成生成 egocentric 视频，并加标定 VLM 精炼
 
 ## 参考来源
 

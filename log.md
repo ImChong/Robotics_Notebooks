@@ -1,3 +1,12 @@
+## [2026-08-14] ingest | sources/papers/roboreact_arxiv_2608_03387.md — 接入 RoboReact 生成 egocentric 视频蒸馏全身操作（确认未开源）
+
+- **触发：** 用户指定 arXiv 预印本 *RoboReact: Agentic Skill Distillation from Generated Egocentric Videos for Generalizable Whole-Body Manipulation*（港中深 / 京东科技 / 清华）
+- **步骤 2.5：** 项目页 <https://roboreact.github.io/> 无 Code/HF；GitHub 用户 `RoboReact` 仅落地页仓 `RoboReact.github.io`；论文未承诺放代码 → **确认未开源**。未建 `sources/repos/`
+- **来源：** [`sources/papers/roboreact_arxiv_2608_03387.md`](sources/papers/roboreact_arxiv_2608_03387.md)、[`sources/sites/roboreact-github-io.md`](sources/sites/roboreact-github-io.md)
+- **升格：** [`wiki/entities/paper-roboreact.md`](wiki/entities/paper-roboreact.md) — 单帧 RGB-D 生成视频 → 物体中心关键帧 → 冻结 VLM 标定编辑 → 测试时再接地 + HOMIE；G1 四任务均值 SR 81.3%；时序图不适用
+- **机构：** `schema/institutions.json` 新增 `cuhk-sz`（香港中文大学深圳）
+- **交叉：** Loco-Manipulation 视频生成路线 / ExoActor / Video-as-Simulation / G1 / HOMIE / 合成视频人形任务 / OKAMI
+
 ## [2026-08-14] ingest | sources/papers/humanoidvln_arxiv_2608_12860.md — 接入 HumanoidVLN 人形物理 VLN 仿真与基准（宣称录用后开源）
 
 - **触发：** 用户指定 arXiv 论文 *HumanoidVLN: A Physics-Grounded Simulator and Benchmark for Vision-Language Navigation Across Diverse Humanoid Embodiments*

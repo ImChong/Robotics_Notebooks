@@ -12,7 +12,7 @@ tags:
   - isaac-lab
   - ncku
 status: complete
-updated: 2026-08-05
+updated: 2026-08-14
 arxiv: "2607.21648"
 venue: "arXiv"
 summary: "NCKU（arXiv:2607.21648）：文本提示→Veo 生成视频→SMPL-X/GMR 重定向→motion stitching→DeepMimic 式 RL 跟踪；无真机/无 MoCap 示范，仿真学多样人形任务；确认未开源。"
@@ -27,6 +27,7 @@ related:
   - ./paper-loco-manip-03-genhoi.md
   - ./paper-loco-manip-04-oasis.md
   - ./paper-imagine2real-zero-shot-hoi.md
+  - ./paper-roboreact.md
   - ./isaac-gym-isaac-lab.md
 sources:
   - ../../sources/papers/synthetic_video_humanoid_tasks_arxiv_2607_21648.md
@@ -155,13 +156,13 @@ flowchart TB
 
 ## 与其他工作对比
 
-| 维度 | 本文（NCKU） | GenHOI | OASIS | Imagine2Real |
-|------|--------------|--------|-------|--------------|
-| 视频用途 | 多样示范 → **训跟踪策略** | 接触先验 → **零样本轨迹** | 非主路径（VR teleop） | 4D 点 + BFM 跟踪 |
-| 真人数据 | **无** | 无物理示范 | 操作员仿真 teleop | 无 |
-| 复合行为 | **motion stitching** | 单段 5 s 视频 | 长程靠采数 | 链路不同 |
-| 真机 | 未报 | 有 | 有 | 见其页 |
-| 开源 | **无** | 见项目页 | 已开源 | 见其页 |
+| 维度 | 本文（NCKU） | GenHOI | OASIS | Imagine2Real | [RoboReact](./paper-roboreact.md) |
+|------|--------------|--------|-------|--------------|------------|
+| 视频用途 | 多样示范 → **训跟踪策略** | 接触先验 → **零样本轨迹** | 非主路径（VR teleop） | 4D 点 + BFM 跟踪 | 任务结构先验 → **关键帧技能** |
+| 真人数据 | **无** | 无物理示范 | 操作员仿真 teleop | 无 | 无示教；标定可有现象描述 |
+| 复合行为 | **motion stitching** | 单段 5 s 视频 | 长程靠采数 | 链路不同 | 长程双臂关键帧 |
+| 真机 | 未报 | 有 | 有 | 见其页 | G1 四任务，均值 SR 81.3% |
+| 开源 | **无** | 见项目页 | 已开源 | 见其页 | **无** |
 
 ## 关联页面
 
@@ -170,6 +171,7 @@ flowchart TB
 - [GenHOI](./paper-loco-manip-03-genhoi.md) — 生成视频零样本 HOI 对照
 - [OASIS](./paper-loco-manip-04-oasis.md) — 仿真 teleop 合成数据对照
 - [Imagine2Real](./paper-imagine2real-zero-shot-hoi.md) — 另一条生成式 HOI
+- [RoboReact](./paper-roboreact.md) — 生成视频编译成物体中心技能并上 G1 真机，不做仿真 RL 跟踪
 - [DeepMimic](../methods/deepmimic.md) — 模仿跟踪奖励范式
 - [GMR](../methods/motion-retargeting-gmr.md) — 本文重定向组件
 - [Unitree G1](./unitree-g1.md)、[Isaac Lab](./isaac-gym-isaac-lab.md)、[Loco-Manipulation](../tasks/loco-manipulation.md)

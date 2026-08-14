@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-07-16
+updated: 2026-08-14
 venue: curated
 summary: "HOMIE 主要解决数据闭环：用本体状态与关节序列、遥操作/外骨骼数据、仿真交互数据采集人类操作和机器人状态，再通过PPO/RL 策略训练、全身控制器/WBC/MPC转成可训练、可复用的全身轨迹/动作序列、低层控制器目标、地形/场景表征。关键点是把PPO/RL 策略训练、全身控制器/WBC/MPC放在同一条训练/部署链路里，减少高层目标到低层动作之间的断点。"
 related:
@@ -10,6 +10,7 @@ related:
   - ../overview/loco-manip-161-category-02-upper-body-interface.md
   - ../overview/loco-manip-161-category-07-data-teleop.md
   - ../tasks/loco-manipulation.md
+  - ./paper-roboreact.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_040_homie.md
   - ../../sources/papers/loco_manip_161_survey_129_homie.md
@@ -79,6 +80,7 @@ HOMIE 主要解决数据闭环：用本体状态与关节序列、遥操作/外�
 - 技术地图：[humanoid-loco-manip-161-papers-technology-map.md](../overview/humanoid-loco-manip-161-papers-technology-map.md)
 - 分类 hub：[loco-manip-161-category-02-upper-body-interface.md](../overview/loco-manip-161-category-02-upper-body-interface.md)、[loco-manip-161-category-07-data-teleop.md](../overview/loco-manip-161-category-07-data-teleop.md)
 - 原始 source：[loco_manip_161_survey_040_homie.md](../../sources/papers/loco_manip_161_survey_040_homie.md)
+- 下游复用：[RoboReact](./paper-roboreact.md) 把 HOMIE 当低层全身跟踪器，高层技能从生成 egocentric 视频蒸馏（arXiv:2608.03387）。
 
 ## 参考来源
 

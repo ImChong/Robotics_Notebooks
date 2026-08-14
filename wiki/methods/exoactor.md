@@ -2,13 +2,14 @@
 type: method
 tags: [video-generation, world-models, humanoid, motion-tracking, loco-manipulation, baai]
 status: complete
-updated: 2026-05-29
+updated: 2026-08-14
 related:
   - ./generative-world-models.md
   - ../concepts/video-as-simulation.md
   - ./motion-retargeting-gmr.md
   - ../concepts/motion-retargeting.md
   - ../tasks/loco-manipulation.md
+  - ../entities/paper-roboreact.md
   - ../entities/unitree-g1.md
   - ./genmo.md
   - ./wilor.md
@@ -166,5 +167,6 @@ ExoActor 是一篇典型的"桥接型"论文，把好几条看似独立的技术
 - [Motion Retargeting](../concepts/motion-retargeting.md) — 流水线中"是否需要中间重定向"的决策点。
 - [BeyondMimic](./beyondmimic.md) — 与 SONIC 同属高质量模仿 / 跟踪路线；ExoActor 以 [SONIC](./sonic-motion-tracking.md) 为通用执行器。
 - [GENMO](./genmo.md)、[WiLoR](./wilor.md)、[SONIC](./sonic-motion-tracking.md) — ExoActor 流水线的三条可替换模块，本库已分别入库。
+- [RoboReact（论文实体）](../entities/paper-roboreact.md) — egocentric 生成视频 + 物体中心关键帧 + 标定 VLM；对照本文第三人称 GMT 跟踪（arXiv:2608.03387）。
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — ExoActor 在 G1 上验证的 A/S 级任务大部分属于 loco-manipulation。
 - [Unitree G1](../entities/unitree-g1.md) — 端到端验证平台。
