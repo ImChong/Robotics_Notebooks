@@ -2,7 +2,7 @@
 type: method
 tags: [control, pid, classical-control, joint-control, quadruped]
 status: complete
-updated: 2026-07-27
+updated: 2026-08-13
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-classical-linear-feedback.md
@@ -11,6 +11,7 @@ related:
   - ../comparisons/mpc-vs-rl.md
   - ../entities/quadruped-control-curriculum.md
   - ../concepts/sim2real.md
+  - ../concepts/gravity-compensation.md
   - ../concepts/micromouse.md
   - ../entities/ukmarsbot.md
 sources:
@@ -79,7 +80,7 @@ $$
 \tau = K_p e + K_d \dot{e} + \tau_{\text{gravity}}(q) + \hat{\tau}_f(\dot{q})
 $$
 
-- 重力项常由 [RNEA](../formalizations/articulated-body-algorithms.md) 计算
+- 重力项常由 [RNEA](../formalizations/articulated-body-algorithms.md) 计算，算法选型见 [Gravity Compensation](../concepts/gravity-compensation.md)
 - 摩擦项见 [Joint Friction Models](../concepts/joint-friction-models.md)、[Friction Compensation](../concepts/friction-compensation.md)
 
 ### 3. RL + PD 执行层（四足主流）
@@ -103,6 +104,7 @@ RL 输出目标位置/力矩，**PD 仍作底层伺服**；复杂地形 loco 由
 - [Reinforcement Learning](./reinforcement-learning.md)
 - [MPC vs RL](../comparisons/mpc-vs-rl.md)
 - [Friction Compensation](../concepts/friction-compensation.md)
+- [Gravity Compensation](../concepts/gravity-compensation.md) — PD + $g(q)$ / 迭代学习前馈
 - [Quadruped Control Curriculum](../entities/quadruped-control-curriculum.md)
 - [Micromouse](../concepts/micromouse.md) — 轮速环 / 侧墙跟随的嵌入式竞赛场景
 - [UKMARSBOT](../entities/ukmarsbot.md) — 差速入门平台上的速度环练习

@@ -7,13 +7,14 @@ tags:
   - computed-torque
   - dynamics
 status: complete
-updated: 2026-07-18
+updated: 2026-08-13
 summary: "机械臂经典非线性控制：模型前馈线性化 + PD 反馈消除残差。"
 related:
   - ../overview/robot-control-paradigm-model-based-nonlinear-dynamics.md
   - ./inverse-dynamics-control.md
   - ./feedback-linearization-control.md
   - ../entities/pinocchio.md
+  - ../concepts/gravity-compensation.md
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
 ---
@@ -45,7 +46,7 @@ $\tau = M(q)(\ddot{q}_d + K_p e + K_d \dot{e}) + C(q,\dot{q})\dot{q} + g(q)$；�
 
 ## 工程实践
 
-Pinocchio/RNEA 实时算 $\tau$；Sim 标定惯性参数；与 [Friction Compensation](../concepts/friction-compensation.md) 并联。
+Pinocchio/RNEA 实时算 $\tau$；Sim 标定惯性参数；重力项见 [Gravity Compensation](../concepts/gravity-compensation.md)，并与 [Friction Compensation](../concepts/friction-compensation.md) 并联。
 
 ## 主要技术路线
 
@@ -66,6 +67,7 @@ Pinocchio/RNEA 实时算 $\tau$；Sim 标定惯性参数；与 [Friction Compens
 - [Model-based Nonlinear Dynamics](../overview/robot-control-paradigm-model-based-nonlinear-dynamics.md)
 - [Inverse Dynamics Control](./inverse-dynamics-control.md)
 - [Pinocchio](../entities/pinocchio.md)
+- [Gravity Compensation](../concepts/gravity-compensation.md) — CTC 前馈中的 $g(q)$
 
 ## 参考来源
 

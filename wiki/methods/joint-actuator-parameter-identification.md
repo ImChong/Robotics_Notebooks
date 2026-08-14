@@ -9,6 +9,7 @@ related:
   - ../concepts/robot-link-and-rotor-inertia.md
   - ../concepts/armature-modeling.md
   - ../concepts/friction-compensation.md
+  - ../concepts/gravity-compensation.md
   - ./cma-es.md
   - ../entities/flobaroid.md
   - ../entities/bam-better-actuator-models.md
@@ -134,6 +135,7 @@ flowchart TB
 - [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md) — 本页是 ③ 层「数从哪来」
 - [执行器驱动链枢纽](../overview/hub-actuator-drive-chain.md)
 - [Actuator Network](./actuator-network.md) — 解析参数不够时的残差网络
+- [Gravity Compensation](../concepts/gravity-compensation.md) — 辨识时不要把 $I_a$ 和 $g(q)$ 绑死
 
 ## 参考来源
 

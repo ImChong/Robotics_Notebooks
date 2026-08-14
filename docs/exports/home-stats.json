@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-14",
-  "node_count": 3085,
-  "edge_count": 26862,
+  "node_count": 3087,
+  "edge_count": 26901,
   "coverage": {
-    "covered": 3061,
-    "total": 3061,
+    "covered": 3063,
+    "total": 3063,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -37,7 +37,8 @@
       "recency": "2026-08-14",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/paper-null-space-projections-survey.md",
@@ -47,7 +48,8 @@
       "recency": "2026-08-14",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/entities/flobaroid.md",
@@ -229,11 +231,11 @@
   "top_communities": [
     {
       "label": "操作",
-      "size": 580
+      "size": 578
     },
     {
       "label": "仿真到现实",
-      "size": 470
+      "size": 485
     },
     {
       "label": "视觉-语言-动作",
@@ -245,11 +247,11 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 153
+      "size": 144
     },
     {
       "label": "计算机视觉中的 Transformer",
-      "size": 94
+      "size": 86
     }
   ],
   "top_hubs": [

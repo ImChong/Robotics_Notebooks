@@ -13,6 +13,7 @@ related:
   - ../entities/mujoco.md
   - ../entities/pinocchio.md
   - ../queries/actuator-drive-chain-selection-loop.md
+  - ./gravity-compensation.md
 sources:
   - ../../sources/papers/robot_link_rotor_inertia_primary_refs.md
 summary: "连杆惯量是 URDF/刚体动力学中的 link 空间惯量；转子惯量经减速比以 G² 反射到关节侧，在 MuJoCo 等仿真器中常记为 armature——二者不可混在同一参数位上。"
@@ -147,6 +148,7 @@ flowchart LR
 - [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — 本页所述物理/仿真要素在保真度链路（建模 ① → 数值 ② → 接触 ③ → 随机化 ④）中的定位
 - [Armature Modeling（电枢惯量建模）](./armature-modeling.md) — 反射惯量公式、双驱动、BeyondMimic PD 标定
 - [System Identification](./system-identification.md) — 连杆参数与执行器层辨识
+- [Gravity Compensation](./gravity-compensation.md) — 惯性参数决定 $g(q)$ 准不准
 - [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) — $I_a$ / 摩擦的实验估法
 - [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md) — 闭环 vs 开环测 $J_{\mathrm{eff}}$；`armature` 不是旋钮
 - [Floating Base Dynamics](./floating-base-dynamics.md) — $M(q)$ 与 CRBA

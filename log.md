@@ -7,6 +7,15 @@
 - **升格：** [`wiki/methods/sim2real-joint-sysid-experiment-design.md`](wiki/methods/sim2real-joint-sysid-experiment-design.md) — 可辨识性三原则、延迟→摩擦→惯量→柔性分级实验；与算法页 [关节执行器参数辨识](wiki/methods/joint-actuator-parameter-identification.md) 分工
 - **交叉：** SysID / armature / 关节摩擦 / 连杆-转子惯量 / 并联关节 / Sim2Real 闭环 / 驱动链枢纽
 
+## [2026-08-13] ingest | sources/papers/gravity_compensation.md — 接入重力补偿算法簇（模型基 RNEA / PD+$g$ / De Luca 迭代学习 / Tomei 自适应）；PAL 教程部分开源、生产控制器未开源
+
+- **触发：** 用户要求找到并 ingest 重力补偿相关算法
+- **步骤 2.5：** Takegaki 1981 / De Luca 1993 / Tomei 1991 **确认未开源**。计算核 [Pinocchio](wiki/entities/pinocchio.md) `computeGeneralizedGravity` / [Dynibo](wiki/entities/dynibo.md) `gravity()` → **已开源**。[PAL 教程仓](https://github.com/pal-robotics/gravity_compensation_controller_tutorial) 可运行但许可未声明；PAL OS `pal_controllers/GravityCompensationController` **未开源** → **部分开源**
+- **来源：** 论文簇 + De Luca 1993；仓库 gravity-compensation-controller-tutorial；文档站 pal-robotics-gravity-compensation
+- **升格：** [`wiki/concepts/gravity-compensation.md`](wiki/concepts/gravity-compensation.md)、[`wiki/entities/paper-learning-gravity-compensation.md`](wiki/entities/paper-learning-gravity-compensation.md)
+- **机构：** `schema/institutions.json` 新增 `pal-robotics`、`osaka`
+- **交叉：** 摩擦补偿 / ABA·RNEA / CTC / IDC / PID / SysID / 连杆惯量 / 阻抗 / Pinocchio / Dynibo / WBC 实现指南 / 运动控制 L2.1 / 传统控制 Stage 4 / 力矩电机 Stage 5
+
 ## [2026-08-13] ingest | sources/papers/null_space_control.md — 接入零空间控制一手论文簇与 7 轴开源实现（Dietrich 2015 综述未开源；Mayr JOSS / libfranka / TSID 已开源）
 
 - **触发：** 用户要求找到并 ingest 机器人零空间控制一手资料与源码（含 7 轴）

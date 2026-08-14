@@ -2,13 +2,14 @@
 type: entity
 tags: [software, dynamics, kinematics, rust, urdf, open-source, inverse-dynamics, linux-foundation]
 status: complete
-updated: 2026-08-09
+updated: 2026-08-13
 related:
   - ./pinocchio.md
   - ../formalizations/articulated-body-algorithms.md
   - ../concepts/urdf-robot-description.md
   - ./ssik.md
   - ../queries/pinocchio-quick-start.md
+  - ../concepts/gravity-compensation.md
 sources:
   - ../../sources/repos/dynibo.md
 summary: "Dynibo 是 Xue Xiaojie 开源的 Rust 树状机器人运动学/动力学库：运行时加载 URDF，Workspace 计算期零分配，提供 FK/Jacobian/DLS-IK/重力/RNEA，并以 Pinocchio 作 oracle 与 1.17–2.70× 性能对照。"
@@ -155,6 +156,7 @@ sequenceDiagram
 - [URDF（统一机器人描述格式）](../concepts/urdf-robot-description.md) — Dynibo 运行时模型入口
 - [ssik（解析逆运动学）](./ssik.md) — 全分支解析 IK，与 Dynibo DLS-IK 互补
 - [Pinocchio 快速上手](../queries/pinocchio-quick-start.md) — 同类三步心智模型的对照读本
+- [重力补偿](../concepts/gravity-compensation.md) — `gravity()` 即 $g(q)$ 控制用法
 
 ## 参考来源
 

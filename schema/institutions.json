@@ -2621,6 +2621,21 @@
         "deepseek",
         "deepseek-ai"
       ]
+    },
+    "pal-robotics": {
+      "label": "帕尔机器人（PAL Robotics）",
+      "aliases": [
+        "pal-robotics",
+        "tiago"
+      ]
+    },
+    "osaka": {
+      "label": "大阪大学（Osaka University）",
+      "aliases": [
+        "osaka",
+        "osaka-university",
+        "u-osaka"
+      ]
     }
   }
 }

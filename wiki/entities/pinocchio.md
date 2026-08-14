@@ -14,6 +14,7 @@ related:
   - ./flobaroid.md
   - ../formalizations/forward-kinematics.md
   - ../formalizations/robot-jacobian.md
+  - ../concepts/gravity-compensation.md
   - ../concepts/null-space-control.md
 sources:
   - ../../sources/papers/simulation.md
@@ -69,6 +70,7 @@ summary: "Pinocchio 是一个基于 C++ 的极致高性能刚体动力学库，�
 - [Dynibo](./dynibo.md) — Rust 轻量 FK/RNEA/数值 IK，Pinocchio oracle 对照
 - [正向运动学](../formalizations/forward-kinematics.md) — URDF 树 FK 的教学对照
 - [雅可比矩阵](../formalizations/robot-jacobian.md) — `computeFrameJacobian` 几何雅可比
+- [重力补偿](../concepts/gravity-compensation.md) — `computeGeneralizedGravity` / `computeStaticTorque`
 - [零空间控制](../concepts/null-space-control.md) — 用 Pinocchio 的 $J$ 做 7 轴投影或交给 TSID/HQP
 - [Whole-Body Control (WBC)](../concepts/whole-body-control.md)
 - [Centroidal Dynamics](../concepts/centroidal-dynamics.md)
