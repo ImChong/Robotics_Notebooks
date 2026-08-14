@@ -29,6 +29,7 @@ related:
   - ./unitree-g1.md
   - ../concepts/sim2real.md
   - ../overview/vln-10-papers-technology-map.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../tasks/locomotion.md
 sources:
   - ../../sources/papers/humanoidvln_arxiv_2608_12860.md
@@ -193,6 +194,7 @@ flowchart LR
 - [Sim2Real](../concepts/sim2real.md) — 重建场景与真机 NE 相关
 - [Locomotion](../tasks/locomotion.md) — 低层步态；本文把它接到 VLN 评测环
 - [VLN 10 篇技术地图](../overview/vln-10-papers-technology-map.md) — 2018–2024 基础设施地图；本文是后续物理层
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本文落在策略任务成功率 + sim↔real 校准层；FR 把物理可执行性写进协议
 
 ## 参考来源
 
