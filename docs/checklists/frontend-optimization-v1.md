@@ -111,6 +111,7 @@
 - [x] 首页 Hero 规模数字（知识节点 / 互链关系 / 主路线 / 纵深路线）每次进入/刷新 count-up 翻滚；内联脚本首屏前归零避免终值闪跳；立刻用 `data-fallback` 开播（不等 fetch、不重播）；翻滚中保持终值文字色（不变强调色）；去掉位移动画；重 DOM 延后以减轻卡顿；`prefers-reduced-motion` 时直接显示终值。验证脚本 `scripts/verify_hero_stats_countup.cjs`。
 - [x] 首页 Hero 徽章「持续更新…」前蓝点改为慢呼吸灯（`hero-badge-dot-breathe`，3.6s 正弦感曲线，透明度 0.68↔1 + 峰谷短暂停留 + 外环微强弱，避免闪烁）；`prefers-reduced-motion` 下保持静态圆点。
 - [x] 详情/模块/路线「未找到」与长正文切换抖动：根因是经典滚动条有无导致居中主栏横移（宽仍同为 912px），以及空态 `.section` 在 JS 隐藏前吃掉 88px 顶底留白；修复为 `html { scrollbar-gutter: stable }`、空态 section 默认 `hidden` + `padding: 0`，并把空态卡片放进与正文相同的 `detail-content-layout` / `detail-content-main`。验证脚本 `scripts/verify_detail_empty_column_stable.cjs`。
+- [x] 详情页英雄区简介：`#detailSummary` 走与正文相同的 `renderMathBlocks` + `renderDetailMath`，避免 `$O(n)$` 泄漏为 `\(...\)`；`.detail-summary .math-inline` 沿用正文公式高亮。
 ---
 
 ### Phase 4: 信息架构优化 (Information Architecture) - [x] *已完成*

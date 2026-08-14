@@ -2,7 +2,7 @@
 type: formalization
 tags: [dynamics, robotics, aba, rnea, inverse-dynamics, forward-dynamics]
 status: complete
-updated: 2026-08-13
+updated: 2026-08-14
 related:
   - ./lie-group-rigid-body-motions.md
   - ../concepts/floating-base-dynamics.md
@@ -15,7 +15,7 @@ related:
 sources:
   - ../../sources/courses/quadruped_control_simulation_rl_curriculum.md
   - ../../sources/repos/dynibo.md
-summary: "ABA 与 RNEA 是求解树状刚体系统正向/逆向动力学的经典 $O(n)$ 算法；四足浮动基扩展下用于计算 M(q)、g(q) 与仿真积分。"
+summary: "ABA 与 RNEA 是求解树状刚体系统正向/逆向动力学的经典 $O(n)$ 算法；四足浮动基扩展下用于计算 $M(q)$、$g(q)$ 与仿真积分。"
 ---
 
 # Articulated Body Algorithms（ABA / RNEA）
