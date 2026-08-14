@@ -12,6 +12,7 @@ related:
   - ../entities/paper-notebook-sampling-based-system-identification-with-active.md
   - ../queries/sim2real-closed-loop-engineering.md
   - ./sim2real.md
+  - ./gravity-compensation.md
 sources:
   - ../../sources/papers/robot_link_rotor_inertia_primary_refs.md
   - ../../sources/papers/system_identification.md
@@ -309,6 +310,7 @@ MPC 的预测质量高度依赖模型质量。模型错得离谱，预测再漂�
 - [Simulation](../../references/repos/simulation.md)
 - [Differentiable Simulation](./differentiable-simulation.md) — 可微仿真 + 梯度 SysID（四足课程 Ch3）
 - [Joint Friction Models](./joint-friction-models.md)、[Friction Compensation](./friction-compensation.md)
+- [Gravity Compensation](./gravity-compensation.md) — $g(q)$ 的精度由惯性参数决定
 - [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) — $I_a$ / 摩擦：Fourier+OLS（要力矩）vs CMA-ES 仿真对齐（只要编码器）
 - [FloBaRoID](../entities/flobaroid.md) — Fourier 激励 + 两步摩擦的开源流水线
 - [Quadruped Control Curriculum](../entities/quadruped-control-curriculum.md)

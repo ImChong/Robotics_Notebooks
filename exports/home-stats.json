@@ -1,67 +1,34 @@
 {
   "generated_at": "2026-08-14",
-  "node_count": 3084,
-  "edge_count": 26837,
+  "node_count": 3086,
+  "edge_count": 26876,
   "coverage": {
-    "covered": 3060,
-    "total": 3060,
+    "covered": 3062,
+    "total": 3062,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/concepts/null-space-control.md",
-      "detail_id": "wiki-concepts-null-space-control",
-      "label": "Null-Space Control（零空间控制）",
+      "path": "wiki/concepts/gravity-compensation.md",
+      "detail_id": "wiki-concepts-gravity-compensation",
+      "label": "Gravity Compensation（重力补偿）",
       "type": "concept",
-      "recency": "2026-08-14",
+      "recency": "2026-08-13",
       "source": "git",
       "action": "added",
       "has_repo": true,
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
-      "path": "wiki/entities/paper-cartesian-impedance-controller.md",
-      "detail_id": "entity-paper-cartesian-impedance-controller",
-      "label": "Cartesian Impedance Controller（Mayr et al., JOSS 2024）",
-      "type": "entity",
-      "recency": "2026-08-14",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-null-space-projections-survey.md",
-      "detail_id": "entity-paper-null-space-projections-survey",
-      "label": "零空间投影综述（Dietrich et al., IJRR 2015）",
-      "type": "entity",
-      "recency": "2026-08-14",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/flobaroid.md",
-      "detail_id": "entity-flobaroid",
-      "label": "FloBaRoID（浮动基动力学辨识工具箱）",
+      "path": "wiki/entities/paper-learning-gravity-compensation.md",
+      "detail_id": "entity-paper-learning-gravity-compensation",
+      "label": "迭代学习重力补偿（De Luca & Panzieri, 1993）",
       "type": "entity",
       "recency": "2026-08-13",
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/methods/joint-actuator-parameter-identification.md",
-      "detail_id": "wiki-methods-joint-actuator-parameter-identification",
-      "label": "Joint Actuator Parameter Identification（关节执行器参数辨识）",
-      "type": "method",
-      "recency": "2026-08-13",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
       "path": "wiki/comparisons/rl-inverse-kinematics-five-approaches.md",
@@ -217,14 +184,44 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
+    {
+      "path": "wiki/concepts/convolutional-neural-network.md",
+      "detail_id": "wiki-concepts-convolutional-neural-network",
+      "label": "卷积神经网络（CNN）",
+      "type": "concept",
+      "recency": "2026-08-12",
+      "source": "git",
+      "action": "added",
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
+    },
+    {
+      "path": "wiki/concepts/image-segmentation-taxonomy.md",
+      "detail_id": "wiki-concepts-image-segmentation-taxonomy",
+      "label": "图像分割任务分类（语义 / 实例 / 全景）",
+      "type": "concept",
+      "recency": "2026-08-12",
+      "source": "git",
+      "action": "added",
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
+    },
+    {
+      "path": "wiki/concepts/multimodality-basics.md",
+      "detail_id": "wiki-concepts-multimodality-basics",
+      "label": "多模态基础概念",
+      "type": "concept",
+      "recency": "2026-08-12",
+      "source": "git",
+      "action": "added",
+      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/null-space-control.md",
-    "detail_id": "wiki-concepts-null-space-control",
-    "label": "Null-Space Control（零空间控制）",
+    "path": "wiki/concepts/gravity-compensation.md",
+    "detail_id": "wiki-concepts-gravity-compensation",
+    "label": "Gravity Compensation（重力补偿）",
     "type": "concept",
-    "recency": "2026-08-14",
+    "recency": "2026-08-13",
     "source": "git",
     "action": "added",
     "has_repo": true,
@@ -237,19 +234,19 @@
     },
     {
       "label": "仿真到现实",
-      "size": 527
+      "size": 503
     },
     {
       "label": "视觉-语言-动作",
-      "size": 248
+      "size": 249
     },
     {
       "label": "人形论文深读笔记",
-      "size": 184
+      "size": 195
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 155
+      "size": 154
     },
     {
       "label": "移动操作",

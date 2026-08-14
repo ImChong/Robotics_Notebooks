@@ -153,6 +153,7 @@ flowchart LR
 - [MPC-WBC 集成](../wiki/concepts/mpc-wbc-integration.md)
 - [State Estimation](../wiki/concepts/state-estimation.md) 与 [Contact Estimation](../wiki/concepts/contact-estimation.md)
 - [Query：WBC 实现指南](../wiki/queries/wbc-implementation-guide.md) 与 [Query：WBC 调参指南](../wiki/queries/wbc-tuning-guide.md)
+- [重力补偿](../wiki/concepts/gravity-compensation.md) — 真机落地前的悬空 $\tau=g(q)$ 验收
 
 ### 推荐做什么
 - 用 TSID（或 [Drake](../wiki/entities/drake.md) / 自研 QP）实现一个站立平衡 WBC，接上 Stage 3 的 MPC 输出
