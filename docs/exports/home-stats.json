@@ -9,6 +9,39 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/concepts/null-space-control.md",
+      "detail_id": "wiki-concepts-null-space-control",
+      "label": "Null-Space Control（零空间控制）",
+      "type": "concept",
+      "recency": "2026-08-14",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-cartesian-impedance-controller.md",
+      "detail_id": "entity-paper-cartesian-impedance-controller",
+      "label": "Cartesian Impedance Controller（Mayr et al., JOSS 2024）",
+      "type": "entity",
+      "recency": "2026-08-14",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-null-space-projections-survey.md",
+      "detail_id": "entity-paper-null-space-projections-survey",
+      "label": "零空间投影综述（Dietrich et al., IJRR 2015）",
+      "type": "entity",
+      "recency": "2026-08-14",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
       "path": "wiki/entities/flobaroid.md",
       "detail_id": "entity-flobaroid",
       "label": "FloBaRoID（浮动基动力学辨识工具箱）",
@@ -31,36 +64,23 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/concepts/null-space-control.md",
-      "detail_id": "wiki-concepts-null-space-control",
-      "label": "Null-Space Control（零空间控制）",
-      "type": "concept",
+      "path": "wiki/comparisons/rl-inverse-kinematics-five-approaches.md",
+      "detail_id": "wiki-comparisons-rl-inverse-kinematics-five-approaches",
+      "label": "RL 求解逆运动学：五类方案怎么选",
+      "type": "comparison",
       "recency": "2026-08-13",
       "source": "git",
       "action": "added",
-      "has_repo": true,
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
-      "path": "wiki/entities/paper-cartesian-impedance-controller.md",
-      "detail_id": "entity-paper-cartesian-impedance-controller",
-      "label": "Cartesian Impedance Controller（Mayr et al., JOSS 2024）",
-      "type": "entity",
+      "path": "wiki/formalizations/forward-kinematics.md",
+      "detail_id": "wiki-formalizations-forward-kinematics",
+      "label": "正向运动学（Forward Kinematics）",
+      "type": "formalization",
       "recency": "2026-08-13",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-null-space-projections-survey.md",
-      "detail_id": "entity-paper-null-space-projections-survey",
-      "label": "零空间投影综述（Dietrich et al., IJRR 2015）",
-      "type": "entity",
-      "recency": "2026-08-13",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
@@ -77,26 +97,6 @@
       "path": "wiki/formalizations/robot-jacobian.md",
       "detail_id": "wiki-formalizations-robot-jacobian",
       "label": "机器人雅可比矩阵（Jacobian）",
-      "type": "formalization",
-      "recency": "2026-08-13",
-      "source": "git",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/comparisons/rl-inverse-kinematics-five-approaches.md",
-      "detail_id": "wiki-comparisons-rl-inverse-kinematics-five-approaches",
-      "label": "RL 求解逆运动学：五类方案怎么选",
-      "type": "comparison",
-      "recency": "2026-08-13",
-      "source": "git",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/formalizations/forward-kinematics.md",
-      "detail_id": "wiki-formalizations-forward-kinematics",
-      "label": "正向运动学（Forward Kinematics）",
       "type": "formalization",
       "recency": "2026-08-13",
       "source": "git",
@@ -220,15 +220,15 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/flobaroid.md",
-    "detail_id": "entity-flobaroid",
-    "label": "FloBaRoID（浮动基动力学辨识工具箱）",
-    "type": "entity",
-    "recency": "2026-08-13",
+    "path": "wiki/concepts/null-space-control.md",
+    "detail_id": "wiki-concepts-null-space-control",
+    "label": "Null-Space Control（零空间控制）",
+    "type": "concept",
+    "recency": "2026-08-14",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
   },
   "top_communities": [
     {
