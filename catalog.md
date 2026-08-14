@@ -165,6 +165,7 @@
 - [Flexion × Niantic Spatial × NVIDIA：RGB 导航 Sim2Real 管线](wiki/entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [Flexion Reflect v1.0（长程人形自主平台）](wiki/entities/flexion-reflect-v1.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [Flightmare](wiki/entities/flightmare.md) — Flightmare**（uzh-rpg/flightmare）是苏黎世大学 **Robotics and Per `📅unknown` `[entity_page]`
+- [FloBaRoID（浮动基动力学辨识工具箱）](wiki/entities/flobaroid.md) — FloBaRoID**（*FLOating BAse RObot dynamical IDentification*，[kjyv/FloBaRoID](https://github.com/kjy `📅unknown` `[entity_page]`
 - [Humanoid FluxVLA Engine](wiki/entities/fluxvla-engine.md) — Humanoid FluxVLA Engine** 是 **逐际动力（LimX Dynamics）** 随 **COSA 0.5**（2026-07）同步开源的 **人形 VLA 全栈工程框架 `📅unknown` `[entity_page]`
 - [flying_knots_public（开源仓库）](wiki/entities/flying-knots-public.md) — flying_knots_public** 是 CMU Flying Knots 论文的 **MIT 许可研究代码快照**，实现 **示教采集 → 清洗标注 → IK 初始命令 → Task-Le `📅unknown` `[entity_page]`
 - [傅利叶 GRX N1（开源人形）](wiki/entities/fourier-grx-n1.md) — Fourier GRX N1** 是傅利叶智能在 GitHub 组织 **FFTAI** 下维护的开源人形软硬件栈之一；公开资料以  `📅unknown` `[entity_page]`
@@ -451,6 +452,7 @@
 - [BLIP-2](wiki/entities/paper-blip2.md) — BLIP-2**（*Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language  `📅unknown` `[entity_page]`
 - [BridgeVLA++（Memory-Augmented 3D VLA · arXiv:2608.05042）](wiki/entities/paper-bridgevla-plusplus.md) — BridgeVLA++**（*BridgeVLA++: A Data-Efficient, Generalizable, and Memory-Augmented Vision-Language- `📅unknown` `[entity_page]`
 - [CapVector（VLA 参数空间可迁移能力向量）](wiki/entities/paper-capvector-capability-vectors-vla.md) — CapVector** 是 HKUST（广州）、浙江大学、西湖大学、清华大学与北京智源等合作者的论文工作（arXiv:2605.10903，项目页 [capvector.github.io](ht `📅unknown` `[entity_page]`
+- [Cartesian Impedance Controller（Mayr et al., JOSS 2024）](wiki/entities/paper-cartesian-impedance-controller.md) — Mayr & Salt-Ducaju** 的 *A C++ Implementation of a Cartesian Impedance Controller for Robotic Manip `📅unknown` `[entity_page]`
 - [Reinforcement Learning for Versatile, Dynamic, and Robust Bipedal Locomotion Control（Cassie）](wiki/entities/paper-cassie-biped-versatile-locomotion-rl.md) — 一句话定义**：在 Cassie 上，用 **长/短双历史** 的观测–动作序列输入统一表达周期与非周期运动，再配合 **任务层随机化**，在仿真中学会多技能并 **直接 sim2real** 到 `📅unknown` `[entity_page]`
 - [Feedback Control For Cassie With Deep Reinforcement Learning](wiki/entities/paper-cassie-feedback-control-drl.md) — 一句话定义**：在 **贴近硬件的 Cassie 仿真** 中，把 **反馈跟踪参考步态** 表述为 MDP，用深度 RL 学得 **关节级目标 + 底层跟踪（PD 语义）** 的策略，并系统测试 `📅unknown` `[entity_page]`
 - [Learning Locomotion Skills for Cassie: Iterative Design and Sim-to-Real](wiki/entities/paper-cassie-iterative-locomotion-sim2real.md) — 一句话定义**：把 Cassie 行走 RL 从「一次性写 reward」还原成 **多轮迭代**：反复调整 **奖励、观测与动作语义**，并用 **DASS 等机制** 在奖励重写时复用旧策略数 `📅unknown` `[entity_page]`
@@ -1140,6 +1142,7 @@
 - [Zeroth Bot](wiki/entities/paper-notebook-zeroth-bot-https-github-com-zeroth-robotics-zero.md) — Zeroth Bot](https://github.com/zeroth-robotics/zeroth-bot)** 已列入 [Humanoid Robot Learning Paper N `📅unknown` `[entity_page]`
 - [ZeroWBC](wiki/entities/paper-notebook-zerowbc.md) — ZeroWBC: Learning Natural Visuomotor Humanoid Control Directly from Human Egocentric Video** 收录于  `📅unknown` `[entity_page]`
 - [Now You See That：端到端视觉人形 Locomotion](wiki/entities/paper-now-you-see-that-humanoid-vision-locomotion.md) — Now You See That**（*Learning End-to-End Humanoid Locomotion from Raw Pixels*，哈尔滨工业大学 / HONOR Robot `📅unknown` `[entity_page]`
+- [零空间投影综述（Dietrich et al., IJRR 2015）](wiki/entities/paper-null-space-projections-survey.md) — Dietrich, Ott, Albu-Schäffer** 的 *An overview of null space projections for redundant, torque-cont `📅unknown` `[entity_page]`
 - [OAT：有序动作 Tokenization（Ordered Action Tokenization）](wiki/entities/paper-oat-ordered-action-tokenization.md) — OAT**（*Ordered Action Tokenization*，arXiv:2602.04215，Harvard / `📅unknown` `[entity_page]`
 - [OccAnyScene（统一室内外 3D 占据预测）](wiki/entities/paper-occanyscene.md) — OccAnyScene**（*Towards Unified Indoor-Outdoor 3D Occupancy Prediction*，[arXiv:2608.08696](https:// `📅unknown` `[entity_page]`
 - [E-SOAM：仿章鱼可传感软臂的环境交互](wiki/entities/paper-octopus-inspired-esoam-soft-arm.md) — Octopus-inspired sensorized soft arm for environmental interaction**（Fan Yang† / Hao Ding†、Tianmia `📅unknown` `[entity_page]`
@@ -2491,6 +2494,7 @@
 - [多模态基础概念](wiki/concepts/multimodality-basics.md) — 多模态（Multimodality）** 指在同一模型中联合表示并交互 **两种以上感官/符号模态**（常见为视觉+语言），目标是学习跨模态对齐的语义，以支持检索、描述、问答与具身指令跟随。 `📅unknown` `[wiki_page]`
 - [网络协议栈基础（TCP / UDP / HTTP / DNS / TLS / 负载均衡）](wiki/concepts/network-protocol-stack.md) — 网络协议栈基础** 给出机器人研发与部署中最常用的传输/应用层协议角色划分：**哪些适合可靠服务，哪些适合低延迟传感/控制数据**。 `📅unknown` `[wiki_page]`
 - [神经反馈控制器（Neural Feedback Controller）](wiki/concepts/neural-feedback-controller.md) — 神经反馈控制器**：强化学习训练完成后导出的 **策略网络** $\pi_\theta$，在控制论意义上是一个 **非线性状态反馈律** $u_t = \pi(o_t)$——把当前观测映射为关节目 `📅unknown` `[wiki_page]`
+- [Null-Space Control（零空间控制）](wiki/concepts/null-space-control.md) — 零空间控制**：当关节数 $n$ 大于任务维数 $m$ 时，主任务的雅可比 $J\in\mathbb{R}^{m\times n}$ 有非平凡核；把次级目标投影进 $\ker J$，即可在**不改 `📅unknown` `[wiki_page]`
 - [目标检测评价指标](wiki/concepts/object-detection-metrics.md) — 以 **IoU** 判定预测框与真值是否匹配，再在各类别上计算精度–召回曲线并汇总为 **mAP**（及 COCO 的 AP@[.5:.95] 等），形成检测器精度的标准报告口径。 `📅unknown` `[wiki_page]`
 - [可观测性（Logs / Metrics / Tracing）](wiki/concepts/observability-logs-metrics-tracing.md) — 可观测性** 让系统在故障时仍能回答「发生了什么、哪里慢、因果链如何」——对云边服务用三支柱，对硬实时环路用轻量指标。 `📅unknown` `[wiki_page]`
 - [Open X-Embodiment（OXE）](wiki/concepts/open-x-embodiment.md) — Open X-Embodiment**：面向机器人模仿学习的大规模跨机构、跨硬件形态数据集与基准管线，把多种机器人的演示统一到可比格式上，用于训练与评测「通用操作策略」。 `📅unknown` `[wiki_page]`
@@ -2636,6 +2640,7 @@
 - [Intentional Updates for Streaming RL（意图更新与流式强化学习）](wiki/methods/intentional-updates-streaming-rl.md) — 意图更新（intentional updates）指：不显式固定「参数空间步长」，而是先规定**当前这一步在关心的输出量**（价值预测、动作 log-probability 等）上希望达到的变化，再用 `📅2026-05-10` `[method_page]`
 - [Inverse Dynamics Control（逆动力学控制，IDC）](wiki/methods/inverse-dynamics-control.md) — IDC：由期望轨迹 $(q_d,\dot{q}_d,\ddot{q}_d)$ 经动力学逆解直接得前馈力矩，辅以少量反馈修正。 `📅unknown` `[method_page]`
 - [Iterative Learning Control（迭代学习控制，ILC）](wiki/methods/iterative-learning-control.md) — ILC：重复执行同一轨迹时，将上批次全程误差映射为下一批次前馈修正，迭代提升跟踪精度。 `📅unknown` `[method_page]`
+- [Joint Actuator Parameter Identification（关节执行器参数辨识）](wiki/methods/joint-actuator-parameter-identification.md) — 关节执行器参数辨识**：用激励轨迹和测量，估计写在**关节坐标**上的动力学参数——首先是 **转子反射惯量 $I_a$（armature）** 与 **摩擦（库仑 / 粘滞 / 可选 Strib `📅unknown` `[method_page]`
 - [L-BFGS（Limited-memory BFGS）](wiki/methods/l-bfgs.md) — L-BFGS**：BFGS 的 **有限内存** 变体，只保留最近 $m$ 对 $(s_k, y_k)$，用 **two-loop recursion** 隐式计算 $H `📅unknown` `[method_page]`
 - [LCP: Lipschitz 约束策略](wiki/methods/lcp.md) — Lipschitz-Constrained Policies (LCP)** 旨在提高深度强化学习策略在物理控制任务中的数值稳定性和鲁棒性。 `📅unknown` `[method_page]`
 - [Learning from Play（Play-LMP）](wiki/methods/learning-from-play-lmp.md) — Learning from Play**：利用大量未标注任务边界的机器人交互片段（play），学习潜在「计划」表征与条件策略，从而在少量任务标注下完成复杂操控序列。 `📅unknown` `[method_page]`

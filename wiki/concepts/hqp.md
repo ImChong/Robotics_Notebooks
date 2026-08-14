@@ -2,7 +2,11 @@
 type: concept
 tags: [wbc, tsid, optimization, qp, humanoid, control]
 status: complete
+updated: 2026-08-13
 summary: "HQP 用层次化二次规划表达任务优先级，是现代 WBC / TSID 控制器的常见求解框架。"
+sources:
+  - ../../sources/papers/whole_body_control.md
+  - ../../sources/papers/null_space_control.md
 ---
 
 # HQP（Hierarchical QP）
@@ -130,6 +134,7 @@ TSID（Task Space Inverse Dynamics）是典型的 HQP 实现框架：
 ## 关联页面
 
 - [TSID](./tsid.md) — HQP 是 TSID 的核心求解机制
+- [零空间控制](./null-space-control.md) — 显式 $N=I-J^+J$ 是 HQP「下层在上层核里优化」的连续时间形态
 - [Whole-Body Control](./whole-body-control.md) — HQP 是 WBC 任务冲突处理的主流方案
 - [MPC 与 WBC 集成](./mpc-wbc-integration.md) — 典型控制架构中 WBC 层用 HQP 求解
 - [LQR / iLQR](../formalizations/lqr.md) — LQR 是单任务最优控制解析解；HQP 是多任务优先级控制的数值求解
@@ -141,6 +146,7 @@ TSID（Task Space Inverse Dynamics）是典型的 HQP 实现框架：
 - Del Prete et al., *Prioritized motion-force control of constrained fully-actuated robots: "Task Space Inverse Dynamics"* — TSID + HQP 的核心实现论文
 - Escande et al., *Hierarchical Quadratic Programming: Fast Online Humanoid-Robot Motion Generation* (2014) — 人形机器人 HQP 实时求解
 - [sources/papers/whole_body_control.md](../../sources/papers/whole_body_control.md) — HQP 相关来源整理
+- [零空间控制论文簇](../../sources/papers/null_space_control.md) — Nakamura 任务优先级 → 显式投影；HQP 是其不等式推广
 
 ## 推荐继续阅读
 

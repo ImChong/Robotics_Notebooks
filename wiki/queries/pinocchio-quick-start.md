@@ -78,6 +78,10 @@ a = np.zeros(model.nv)  # 广义加速度
 tau = pin.rnea(model, data, q, v, a)
 # tau.shape: (nv,)
 
+# 连杆惯性参数回归矩阵 Y_rb（τ ≈ Y_rb π）；不含 armature/摩擦列
+Y_rb = pin.computeJointTorqueRegressor(model, data, q, v, a)
+# Y_rb.shape: (nv, 10 * njoints)
+
 # 附加：计算惯性矩阵 M（正动力学基础）
 M = pin.crba(model, data, q)  # Composite Rigid Body Algorithm
 # M.shape: (nv, nv)
@@ -142,6 +146,7 @@ Jc = pin.computeFrameJacobian(model, data, q, contact_frame,
 | `pin.updateFramePlacements(model, data)` | 更新 frame 位姿 |
 | `pin.computeFrameJacobian(...)` | 计算 frame 雅可比 |
 | `pin.rnea(model, data, q, v, a)` | 逆动力学（关节力矩） |
+| `pin.computeJointTorqueRegressor(model, data, q, v, a)` | 连杆 10 参数力矩回归矩阵 $Y_{\mathrm{rb}}$ |
 | `pin.crba(model, data, q)` | 惯性矩阵 |
 | `pin.aba(model, data, q, v, tau)` | 正动力学（关节加速度） |
 | `pin.computeCoriolisMatrix(model, data, q, v)` | 科里奥利矩阵 C |
@@ -181,6 +186,7 @@ Jc = pin.computeFrameJacobian(model, data, q, contact_frame,
 ## 关联页面
 
 - [Pinocchio](../entities/pinocchio.md) — Pinocchio 框架详细介绍
+- [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) — $Y_{\mathrm{rb}}$ 之外怎么拼 $I_a$/摩擦列
 - [Dynibo](../entities/dynibo.md) — Rust 轻量 FK/RNEA/DLS-IK；以 Pinocchio 为 oracle 的对照库
 - [WBC Implementation Guide](./wbc-implementation-guide.md) — 基于 Pinocchio 的完整 WBC 实现
 - [TSID](../concepts/tsid.md) — TSID 框架使用 Pinocchio 作为底层引擎

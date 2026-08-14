@@ -86,6 +86,53 @@ def test_sota_substring_in_word_is_not_flagged(tmp_path, monkeypatch) -> None:
     assert results["stale_claims"] == []
 
 
+def test_negated_claim_is_not_flagged(tmp_path, monkeypatch) -> None:
+    # 「不是 SoTA」是辟谣式写法，本身在否认断言，不应报陈旧声明。
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    claim = _page(
+        wiki,
+        "a.md",
+        "2025-01-01",
+        ["vla"],
+        "报告 96% 可用会话率，这是部署证据，不是策略 SoTA。",
+    )
+    newer = _page(wiki, "b.md", "2026-01-01", ["vla"], "更晚的同主题页。")
+    assert _run([claim, newer])["stale_claims"] == []
+
+
+def test_library_page_title_reference_is_not_flagged(tmp_path, monkeypatch) -> None:
+    # 「VLA SOTA Leaderboard」是库内页面标题，引用它属导航而非本页断言。
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    claim = _page(
+        wiki,
+        "a.md",
+        "2025-01-01",
+        ["vla"],
+        "对照 [VLA SOTA Leaderboard](./vla-sota-leaderboard.md) 即可，本工作不重跑。",
+    )
+    leaderboard = _page(wiki, "vla-sota-leaderboard.md", "2025-01-01", ["vla"], "摘录榜。")
+    newer = _page(wiki, "b.md", "2026-01-01", ["vla"], "更晚的同主题页。")
+    assert _run([claim, leaderboard, newer])["stale_claims"] == []
+
+
+def test_runtime_object_latest_is_not_flagged(tmp_path, monkeypatch) -> None:
+    # 「最新 pending 帧」描述系统行为，不会随领域进展过时。
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    claim = _page(wiki, "a.md", "2025-01-01", ["vla"], "服务端只保留最新 pending 帧。")
+    newer = _page(wiki, "b.md", "2026-01-01", ["vla"], "更晚的同主题页。")
+    assert _run([claim, newer])["stale_claims"] == []
+
+
+def test_plain_latest_claim_is_still_flagged(tmp_path, monkeypatch) -> None:
+    # 豁免只针对结构性误报：无否定/无页面名/非运行时对象的断言仍须命中。
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    claim = _page(wiki, "a.md", "2025-01-01", ["vla"], "这是最新的开源实现。")
+    newer = _page(wiki, "b.md", "2026-01-01", ["vla"], "更晚的同主题页。")
+    results = _run([claim, newer])
+    assert len(results["stale_claims"]) == 1
+    assert "最新" in results["stale_claims"][0]
+
+
 def test_stale_claims_is_info_only(tmp_path, monkeypatch) -> None:
     results = lw._empty_results()
     results["stale_claims"].append("wiki/concepts/old.md（含绝对化措辞「SOTA」...）")

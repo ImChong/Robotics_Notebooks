@@ -6,6 +6,8 @@ summary: "TSID 用任务空间逆动力学统一处理多任务和接触约束�
 updated: 2026-08-13
 sources:
   - ../../sources/papers/whole_body_control.md
+  - ../../sources/repos/tsid.md
+  - ../../sources/papers/null_space_control.md
 ---
 
 # TSID
@@ -302,6 +304,7 @@ print("joint acceleration command:", qdd_star)
 - Saab et al., *Dynamic whole-body motion generation under rigid contacts and other unilateral constraints* — 约束下全身动作生成
 - [sources/papers/whole_body_control.md](../../sources/papers/whole_body_control.md) — TSID/HQP 相关论文 ingest 摘要
 - [TSID library](https://github.com/stack-of-tasks/tsid) — 开源实现
+- [TSID 仓库归档](../../sources/repos/tsid.md) — 步骤 2.5：已开源（BSD-2-Clause）
 
 ## 和已有页面的关系
 
@@ -339,6 +342,7 @@ MPC 负责规划未来参考，TSID 负责在每个控制周期把这些参考�
 ### 运动学接口
 - [逆运动学](../formalizations/inverse-kinematics.md) — 位置层 IK；TSID 是力/加速度升级
 - [雅可比矩阵](../formalizations/robot-jacobian.md) — 任务约束投影到关节的 $J$
+- [零空间控制](./null-space-control.md) — 单臂 7 轴显式投影；TSID 用 HQP 替代手写 $N$
 
 ### 论文入口
 - [Whole-Body Control 论文导航](../../references/papers/whole-body-control.md)

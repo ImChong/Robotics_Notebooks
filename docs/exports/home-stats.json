@@ -1,13 +1,35 @@
 {
-  "generated_at": "2026-08-13",
-  "node_count": 3081,
-  "edge_count": 26784,
+  "generated_at": "2026-08-14",
+  "node_count": 3086,
+  "edge_count": 26876,
   "coverage": {
-    "covered": 3057,
-    "total": 3057,
+    "covered": 3062,
+    "total": 3062,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/gravity-compensation.md",
+      "detail_id": "wiki-concepts-gravity-compensation",
+      "label": "Gravity Compensation（重力补偿）",
+      "type": "concept",
+      "recency": "2026-08-13",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-learning-gravity-compensation.md",
+      "detail_id": "entity-paper-learning-gravity-compensation",
+      "label": "迭代学习重力补偿（De Luca & Panzieri, 1993）",
+      "type": "entity",
+      "recency": "2026-08-13",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
     {
       "path": "wiki/comparisons/rl-inverse-kinematics-five-approaches.md",
       "detail_id": "wiki-comparisons-rl-inverse-kinematics-five-approaches",
@@ -192,46 +214,27 @@
       "source": "git",
       "action": "added",
       "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/concepts/object-detection-metrics.md",
-      "detail_id": "wiki-concepts-object-detection-metrics",
-      "label": "目标检测评价指标",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "git",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/concepts/visual-foundation-model-trends.md",
-      "detail_id": "wiki-concepts-visual-foundation-model-trends",
-      "label": "视觉基础模型发展趋势",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "git",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/comparisons/rl-inverse-kinematics-five-approaches.md",
-    "detail_id": "wiki-comparisons-rl-inverse-kinematics-five-approaches",
-    "label": "RL 求解逆运动学：五类方案怎么选",
-    "type": "comparison",
+    "path": "wiki/concepts/gravity-compensation.md",
+    "detail_id": "wiki-concepts-gravity-compensation",
+    "label": "Gravity Compensation（重力补偿）",
+    "type": "concept",
     "recency": "2026-08-13",
     "source": "git",
     "action": "added",
+    "has_repo": true,
     "community_label": "全身控制（Whole-Body Control, WBC） 社区"
   },
   "top_communities": [
     {
       "label": "操作",
-      "size": 580
+      "size": 572
     },
     {
       "label": "仿真到现实",
-      "size": 470
+      "size": 503
     },
     {
       "label": "视觉-语言-动作",
@@ -243,7 +246,7 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 151
+      "size": 154
     },
     {
       "label": "移动操作",

@@ -149,6 +149,7 @@ flowchart LR
 - [TSID](../wiki/concepts/tsid.md) 与 [TSID 形式化](../wiki/formalizations/tsid-formulation.md)
 - [Whole-Body Control](../wiki/concepts/whole-body-control.md)
 - [HQP](../wiki/concepts/hqp.md)
+- [零空间控制](../wiki/concepts/null-space-control.md) — 7 轴显式投影；HQP 是其不等式升级
 - [MPC-WBC 集成](../wiki/concepts/mpc-wbc-integration.md)
 - [State Estimation](../wiki/concepts/state-estimation.md) 与 [Contact Estimation](../wiki/concepts/contact-estimation.md)
 - [Query：WBC 实现指南](../wiki/queries/wbc-implementation-guide.md) 与 [Query：WBC 调参指南](../wiki/queries/wbc-tuning-guide.md)
@@ -203,8 +204,9 @@ flowchart LR
   - [LIP / ZMP](../wiki/concepts/lip-zmp.md)
   - [Centroidal Dynamics](../wiki/concepts/centroidal-dynamics.md)
   - [Model Predictive Control](../wiki/methods/model-predictive-control.md)
-  - [Whole-Body Control](../wiki/concepts/whole-body-control.md)
-  - [WBC vs RL 对比](../wiki/comparisons/wbc-vs-rl.md)
+- [Whole-Body Control](../wiki/concepts/whole-body-control.md)
+- [零空间控制](../wiki/concepts/null-space-control.md)
+- [WBC vs RL 对比](../wiki/comparisons/wbc-vs-rl.md)
 
 ## 参考来源
 

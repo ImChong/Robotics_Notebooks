@@ -1262,6 +1262,27 @@
         "franka-emika"
       ]
     },
+    "dlr": {
+      "label": "德国航空航天中心（DLR）",
+      "aliases": [
+        "dlr",
+        "german-aerospace-center"
+      ]
+    },
+    "lund": {
+      "label": "隆德大学（Lund University）",
+      "aliases": [
+        "lund",
+        "lth",
+        "lund-university"
+      ]
+    },
+    "kuka": {
+      "label": "库卡（KUKA）",
+      "aliases": [
+        "kuka"
+      ]
+    },
     "kit": {
       "label": "卡尔斯鲁厄理工学院（KIT）",
       "aliases": [

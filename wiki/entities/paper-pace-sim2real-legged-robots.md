@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, repo, sim2real, system-identification, actuator, locomotion, isaac-lab, anymal, quadruped, energy-efficiency, eth, ppo]
 status: complete
-updated: 2026-08-10
+updated: 2026-08-13
 arxiv: "2509.06342"
 venue: IJRR (submitted)
 code: https://github.com/leggedrobotics/pace-sim2real
@@ -17,6 +17,8 @@ related:
   - ./anymal.md
   - ./sage-sim2real-actuator-gap-estimator.md
   - ./paper-bam-extended-friction-servo-actuators.md
+  - ../methods/joint-actuator-parameter-identification.md
+  - ./flobaroid.md
   - ./paper-notebook-sampling-based-system-identification-with-active.md
   - ./robotic-world-model-eth-rsl.md
   - ../queries/actuator-drive-chain-selection-loop.md
@@ -189,3 +191,4 @@ flowchart TB
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
 - [Sim2Real Gap 缩减实战指南](../queries/sim2real-gap-reduction.md)
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — PACE 面向③层腿式执行器 sim2real gap 的对齐
+- [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) — 悬空 chirp + CMA-ES 在算法族中的位置；对照 [FloBaRoID](./flobaroid.md)

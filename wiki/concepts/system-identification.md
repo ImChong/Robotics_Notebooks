@@ -4,6 +4,8 @@ summary: "System Identification 通过估计动力学和执行器参数缩小模
 updated: 2026-08-13
 related:
   - ./robot-link-and-rotor-inertia.md
+  - ../methods/joint-actuator-parameter-identification.md
+  - ../entities/flobaroid.md
   - ../entities/paper-bam-extended-friction-servo-actuators.md
   - ../entities/bam-better-actuator-models.md
   - ../entities/paper-pace-sim2real-legged-robots.md
@@ -91,7 +93,7 @@ System Identification 不是只辨识一个质量参数，它可能覆盖多个�
 - 控制延迟
 - 电流环 / 速度环等效动态
 
-这类参数对 sim2real 很关键。
+这类参数对 sim2real 很关键。关节侧 **转子反射惯量 $I_a$ + 库仑/粘滞摩擦** 怎么从数据里估，见 [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md)。
 
 ### 3. Friction / Damping / Compliance
 非理想因素，包括：
@@ -309,6 +311,8 @@ MPC 的预测质量高度依赖模型质量。模型错得离谱，预测再漂�
 - [Differentiable Simulation](./differentiable-simulation.md) — 可微仿真 + 梯度 SysID（四足课程 Ch3）
 - [Joint Friction Models](./joint-friction-models.md)、[Friction Compensation](./friction-compensation.md)
 - [Gravity Compensation](./gravity-compensation.md) — $g(q)$ 的精度由惯性参数决定
+- [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) — $I_a$ / 摩擦：Fourier+OLS（要力矩）vs CMA-ES 仿真对齐（只要编码器）
+- [FloBaRoID](../entities/flobaroid.md) — Fourier 激励 + 两步摩擦的开源流水线
 - [Quadruped Control Curriculum](../entities/quadruped-control-curriculum.md)
 - [PACE（足式系统化 Sim2Real）](../entities/paper-pace-sim2real-legged-robots.md) — chirp 悬空数据 + [CMA-ES](../methods/cma-es.md) 紧凑关节参数辨识（arXiv:2509.06342）
 - [SPI-Active（采样式 SysID + 主动探索）](../entities/paper-notebook-sampling-based-system-identification-with-active.md) — GPU 并行采样辨识 Go2 质量/惯量 + 最大化 FIM 的主动激励（CoRL 2025 Oral）

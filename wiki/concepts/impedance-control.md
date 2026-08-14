@@ -16,6 +16,7 @@ related:
   - ./contact-force-loop-bandwidth.md
   - ./contact-rich-manipulation.md
   - ./whole-body-control.md
+  - ./null-space-control.md
   - ./tsid.md
   - ./gravity-compensation.md
   - ../methods/tactile-impedance-control.md
@@ -101,6 +102,7 @@ $$ f = K_d (x_d - x) + B_d (\dot{x}_d - \dot{x}) $$
 
 - [wechat_shenlan_robot_control_eight_paradigms.md](../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md) — 深蓝八大控制体系：阻抗控制代表算法
 - Hogan, N. (1985). *Impedance Control: An Approach to Manipulation*. Journal of Dynamic Systems, Measurement, and Control.
+- [Mayr 笛卡尔阻抗 + 零空间开源实现](../../sources/papers/mayr_cartesian_impedance_joss_2024.md)
 - [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md) — 接触力与柔顺执行基础
 - [sources/papers/contact_planning.md](../../sources/papers/contact_planning.md) — 接触任务中的执行层组织
 - [GentleHumanoid（方法页）](../methods/gentlehumanoid-motion-tracking.md) — RL motion tracking 中嵌入虚拟弹簧–阻尼参考动力学与力阈值
@@ -114,6 +116,7 @@ $$ f = K_d (x_d - x) + B_d (\dot{x}_d - \dot{x}) $$
 - [Contact-Force-Loop Bandwidth（力控闭环带宽）](./contact-force-loop-bandwidth.md) — 「环境越硬刚度越低」反直觉法则的稳定性来源
 - [Contact-Rich Manipulation](./contact-rich-manipulation.md)
 - [Whole-Body Control](./whole-body-control.md)
+- [零空间控制](./null-space-control.md) — 7 轴笛卡尔阻抗的次级关节弹簧走 $\ker J$
 - [Force Control Basics (力控制基础)](./force-control-basics.md) — 阻抗控制的理论背景
 - [Tactile Impedance Control](../methods/tactile-impedance-control.md) — 由触觉信号在线驱动 $K_d, B_d$ 的变参数推广
 - [TSID](./tsid.md)

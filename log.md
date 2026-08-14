@@ -7,6 +7,23 @@
 - **机构：** `schema/institutions.json` 新增 `pal-robotics`、`osaka`
 - **交叉：** 摩擦补偿 / ABA·RNEA / CTC / IDC / PID / SysID / 连杆惯量 / 阻抗 / Pinocchio / Dynibo / WBC 实现指南 / 运动控制 L2.1 / 传统控制 Stage 4 / 力矩电机 Stage 5
 
+## [2026-08-13] ingest | sources/papers/null_space_control.md — 接入零空间控制一手论文簇与 7 轴开源实现（Dietrich 2015 综述未开源；Mayr JOSS / libfranka / TSID 已开源）
+
+- **触发：** 用户要求找到并 ingest 机器人零空间控制一手资料与源码（含 7 轴）
+- **步骤 2.5：** Dietrich/Ott/Albu-Schäffer IJRR 2015 无官方仓（**确认未开源**，真机 DLR LWR-III 7 轴）。Mayr JOSS 项目页指向 [Cartesian-Impedance-Controller](https://github.com/matthias-mayr/Cartesian-Impedance-Controller)（BSD-3-Clause，FR3/Panda/iiwa7）→ **已开源**。[libfranka](https://github.com/frankarobotics/libfranka) `cartesian_impedance_control` + elbow 运动 → **已开源**。[stack-of-tasks/tsid](https://github.com/stack-of-tasks/tsid) → **已开源**（HQP 替代显式 $N$）
+- **来源：** 论文簇 + Dietrich 综述 + Mayr JOSS；仓库 cartesian-impedance-controller / libfranka / tsid；项目页 cartesian-impedance-controller-github-io
+- **升格：** [`wiki/concepts/null-space-control.md`](wiki/concepts/null-space-control.md)、[`wiki/entities/paper-null-space-projections-survey.md`](wiki/entities/paper-null-space-projections-survey.md)、[`wiki/entities/paper-cartesian-impedance-controller.md`](wiki/entities/paper-cartesian-impedance-controller.md)
+- **机构：** `schema/institutions.json` 新增 `dlr`、`lund`、`kuka`
+- **交叉：** IK / Jacobian / HQP / TSID / WBC / 阻抗 / 控制分配 / Franka FR3 / Pink / Pinocchio / 传统控制纵深 Stage 4 / 运动控制 L3
+
+## [2026-08-13] ingest | sources/papers/joint_actuator_parameter_identification.md — 接入关节转子惯量与摩擦参数辨识算法（Swevers/Ayusawa；FloBaRoID 已开源；BAM/PACE 既有实体）
+
+- **触发：** 用户要求找到并 ingest 机器人关节转子惯量与摩擦力等参数辨识算法的一手资料与源码
+- **步骤 2.5：** Swevers 1997 / Ayusawa 2014 **确认未开源**；[kjyv/FloBaRoID](https://github.com/kjyv/FloBaRoID) **已开源**（LGPL-3.0，iDynTree+IPOPT）；BAM / PACE **既有开源实体**，补文档站 [bam.readthedocs.io](https://bam.readthedocs.io/)
+- **来源：** [`sources/papers/joint_actuator_parameter_identification.md`](sources/papers/joint_actuator_parameter_identification.md)、[`sources/repos/flobaroid.md`](sources/repos/flobaroid.md)、[`sources/sites/bam-readthedocs.md`](sources/sites/bam-readthedocs.md)
+- **升格：** [`wiki/methods/joint-actuator-parameter-identification.md`](wiki/methods/joint-actuator-parameter-identification.md)（Fourier+OLS vs CMA-ES 选型）；[`wiki/entities/flobaroid.md`](wiki/entities/flobaroid.md)（两步摩擦流水线）
+- **交叉：** SysID / 关节摩擦 / armature / Pinocchio `computeJointTorqueRegressor` / CMA-ES / BAM / PACE / SPI-Active / 执行器驱动链 ③ 层
+
 ## [2026-08-13] ingest | sources/blogs/wechat_shenlan_{rl_motion_control_pipeline,rl_inverse_kinematics,forward_kinematics,inverse_kinematics,robot_jacobian}.md — 更新深蓝《具身智能基础》专辑 5→10 篇
 
 - **触发：** 用户指定专辑 <https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkwMDcyNDUzMQ==&action=getalbum&album_id=4525948187102363653>；要求确保 agent-reach 已装并更新 ingest；随后要求自动合并

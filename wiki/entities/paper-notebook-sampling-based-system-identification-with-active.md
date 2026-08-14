@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, sim2real, system-identification, active-exploration, cma-es, locomotion, unitree-go2, unitree-g1, isaac-gym, corl-2025, cmu]
 status: complete
-updated: 2026-07-31
+updated: 2026-08-13
 arxiv: "2505.14266"
 venue: "CoRL 2025 Oral"
 code: https://github.com/LeCAR-Lab/SPI-Active
@@ -11,6 +11,7 @@ related:
   - ../concepts/system-identification.md
   - ../concepts/domain-randomization.md
   - ../methods/cma-es.md
+  - ../methods/joint-actuator-parameter-identification.md
   - ../queries/sim2real-gap-reduction.md
   - ../queries/sim2real-closed-loop-engineering.md
   - ./paper-pace-sim2real-legged-robots.md
@@ -221,6 +222,7 @@ sequenceDiagram
 - [System Identification](../concepts/system-identification.md) — 腿足采样式 + 主动探索实例
 - [Sim2Real](../concepts/sim2real.md) / [Domain Randomization](../concepts/domain-randomization.md) — 辨识 vs 盲目随机化的选型语境
 - [CMA-ES](../methods/cma-es.md) — SPI / Active 共用的黑箱优化器
+- [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) — 本页偏质量/电机；关节 $I_a$/摩擦见方法页
 - [Sim2Real Gap 缩减](../queries/sim2real-gap-reduction.md) — 刚体/执行器 gap 工具包入口
 - [PACE](./paper-pace-sim2real-legged-robots.md)、[SAGE](./sage-sim2real-actuator-gap-estimator.md)、[FADA](./paper-fada-humanoid.md) — 对照与可组合路线
 - 分类父节点：[paper-notebook-category-10-sim-to-real](../overview/paper-notebook-category-10-sim-to-real.md)

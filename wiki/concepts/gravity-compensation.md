@@ -10,6 +10,7 @@ related:
   - ../methods/inverse-dynamics-control.md
   - ../methods/pid-control.md
   - ./system-identification.md
+  - ../methods/joint-actuator-parameter-identification.md
   - ../entities/pinocchio.md
   - ../entities/dynibo.md
   - ../entities/paper-learning-gravity-compensation.md
@@ -159,6 +160,7 @@ sequenceDiagram
 - [Computed Torque Control](../methods/computed-torque-control.md) / [Inverse Dynamics Control](../methods/inverse-dynamics-control.md) — 重力只是前馈的一项
 - [PID Control](../methods/pid-control.md) — PD + 重力前馈
 - [System Identification](./system-identification.md) / [连杆与转子惯量](./robot-link-and-rotor-inertia.md) — 参数从哪来
+- [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) — 估 $I_a$/摩擦时不要把转子惯量写进 link 质量（会带偏 $g(q)$）
 - [Pinocchio](../entities/pinocchio.md) / [Dynibo](../entities/dynibo.md) / [Pinocchio 快速上手](../queries/pinocchio-quick-start.md)
 - [WBC 实现指南](../queries/wbc-implementation-guide.md) — 悬空 $\tau=g(q)$ 验收
 - [迭代学习重力补偿（De Luca 1993）](../entities/paper-learning-gravity-compensation.md)

@@ -73,7 +73,7 @@ push_robots: True                   # 随机推力 [0, 150] N
 | 方法 | 描述 |
 |------|------|
 | ActuatorNet（Hwangbo 2019） | 用 MLP 学习执行器的输入-输出映射（从真机数据） |
-| BAM M1–M6（ICRA 2025） | 摆锤 CMA-ES 辨识扩展摩擦 + MuJoCo 在线更新；见 [论文实体](../entities/paper-bam-extended-friction-servo-actuators.md) / [Rhoban/bam](https://github.com/Rhoban/bam) |
+| BAM M1–M6（ICRA 2025） | 摆锤 [CMA-ES](../methods/cma-es.md) 辨识扩展摩擦 + MuJoCo 在线更新；见 [论文实体](../entities/paper-bam-extended-friction-servo-actuators.md) / [Rhoban/bam](https://github.com/Rhoban/bam) |
 | SPI-Active（CoRL 2025） | 采样式辨识 base 质量/惯量 + 电机模型，并主动优化指令最大化 FIM；见 [实体页](../entities/paper-notebook-sampling-based-system-identification-with-active.md) / [LeCAR-Lab/SPI-Active](https://github.com/LeCAR-Lab/SPI-Active) |
 | 延迟建模 | 在仿真中加入随机延迟 1-5 个控制步 |
 | PD 控制模式 | 用 PD 目标角度代替直接力矩（更鲁棒） |
