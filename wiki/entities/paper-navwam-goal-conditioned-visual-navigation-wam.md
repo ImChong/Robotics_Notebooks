@@ -11,7 +11,7 @@ tags:
   - mobile-robot
   - goal-conditioned
 status: complete
-updated: 2026-08-05
+updated: 2026-08-14
 arxiv: "2606.13494"
 related:
   - ../concepts/world-action-models.md
@@ -26,6 +26,7 @@ related:
   - ./paper-worldvln-aerial-vln-wam.md
   - ./paper-icrowdnav.md
   - ./paper-roamflow.md
+  - ./paper-green-for-go-vla-nav-grounding.md
 sources:
   - ../../sources/papers/navwam_arxiv_2606_13494.md
 summary: "NavWAM（arXiv:2606.13494）：目标条件视觉导航的 Navigation World Action Model——在 Cosmos Predict 2（2B）九帧共享 latent 序列上联合去噪未来 egocentric 观测、goal-progress value 与 action chunk；policy 模式单次扩散前向直接闭环控制，无需 CEM；go stanford 与 Diablo 真机 24 episode 上优于 NWM+CEM 与 OmniVLA。"
@@ -153,6 +154,7 @@ flowchart TB
 - [WorldVLN](./paper-worldvln-aerial-vln-wam.md) — 另一 WAM 导航闭环部署实例
 - [iCrowdNav](./paper-icrowdnav.md) — 人群社交视觉导航（BEV+姿态意图 PPO；非 image-goal WAM）
 - [RoamFlow](./paper-roamflow.md) — MeanFlow 一步 image-goal 生成导航（非 WAM；Go2 真机）
+- [Green for Go](./paper-green-for-go-vla-nav-grounding.md) — 同一 OmniVLA 上语言目标吃绿/红 overlay、图像目标几乎不吃
 
 ## 参考来源
 

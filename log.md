@@ -1,3 +1,12 @@
+## [2026-08-14] ingest | sources/papers/green_for_go_vla_nav_grounding_arxiv_2607_05122.md — 接入 UCL Green for Go 导航 VLA 绿/红视觉接地（确认未开源）
+
+- **触发：** 用户指定 arXiv 论文 *Green for Go, Red for No: Visual Grounding via Semantic Segmentation for VLA Navigation Policies*
+- **步骤 2.5：** 无项目页、无 GitHub/HF；论文未承诺开源 → **确认未开源**。评测依赖 OmniVLA 与 Grand Tour，SegFormer 不是本文管线仓
+- **来源：** [`sources/papers/green_for_go_vla_nav_grounding_arxiv_2607_05122.md`](sources/papers/green_for_go_vla_nav_grounding_arxiv_2607_05122.md)
+- **升格：** [`wiki/entities/paper-green-for-go-vla-nav-grounding.md`](wiki/entities/paper-green-for-go-vla-nav-grounding.md) — 冻结 OmniVLA + 绿/红 overlay；WP7 −27–44% 但是长度正则；stop 失败；时序图不适用
+- **机构：** `schema/institutions.json` 新增 `ucl`（伦敦大学学院）
+- **交叉：** VLN / VLA / NaVILA / NavWAM / DA-Nav / REALM / ActFovea / Green-VLA 消歧 / 四范式复现（不入可跑通清单）
+
 ## [2026-08-14] ingest | sources/blogs/wechat_freedof_sim2real_dynamics_identification.md — 接入 Sim2Real 关节动力学辨识实验设计（无项目页/代码仓）
 
 - **触发：** 用户要求确保 agent-reach 已装并 ingest <https://mp.weixin.qq.com/s/B_sH9VNRxB6GCTJwnx6esQ>；随后要求自动合并

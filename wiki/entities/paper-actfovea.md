@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, runtime-safety, safeguarding, anomaly-detection, plug-and-play, libero, manipulation, pi0]
 status: complete
-updated: 2026-08-04
+updated: 2026-08-14
 arxiv: "2607.29169"
 code: https://github.com/SunnyYWD/ActFovea
 related:
@@ -14,6 +14,7 @@ related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../methods/vla.md
   - ./paper-wcm-world-critic-model.md
+  - ./paper-green-for-go-vla-nav-grounding.md
 sources:
   - ../../sources/papers/actfovea_arxiv_2607_29169.md
   - ../../sources/repos/actfovea.md
@@ -242,6 +243,7 @@ sequenceDiagram
 - [Query：机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页属**第④层下游策略消费**的运行时侧：感知栈选完之后，「感知输出 = 策略可信输入」这个抽象在真机被遮挡 / 延迟 / 冻结破坏时怎么检出与兜底
 - [WCM 世界模型 Critic](./paper-wcm-world-critic-model.md) — 时序信息用于训练期价值估计的对照
 - [CLIFT 闭环迭代微调](./paper-clift-closed-loop-iterative-finetuning.md) — 同样在「模型不可见」约束下工作
+- [Green for Go](./paper-green-for-go-vla-nav-grounding.md) — 同属冻结 VLA 推理时壳层，但标的是导航可通行着色而非安全恢复
 
 ## 参考来源
 

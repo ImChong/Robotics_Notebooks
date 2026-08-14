@@ -2645,6 +2645,14 @@
         "osaka-university",
         "u-osaka"
       ]
+    },
+    "ucl": {
+      "label": "伦敦大学学院（UCL）",
+      "aliases": [
+        "ucl",
+        "university-college-london",
+        "ucl-cs"
+      ]
     }
   }
 }
