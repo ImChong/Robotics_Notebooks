@@ -2,11 +2,13 @@
 type: concept
 tags: [friction, actuator, system-identification, sim2real, modeling]
 status: complete
-updated: 2026-07-09
+updated: 2026-08-13
 related:
   - ./system-identification.md
   - ./friction-compensation.md
   - ./robot-link-and-rotor-inertia.md
+  - ../methods/joint-actuator-parameter-identification.md
+  - ../entities/flobaroid.md
   - ../entities/bam-better-actuator-models.md
   - ../entities/paper-bam-extended-friction-servo-actuators.md
   - ../methods/actuator-network.md
@@ -71,9 +73,12 @@ $$
 
 | 方法 | 思路 |
 |------|------|
-| 经典回归 / 最小二乘 | 正弦扫频实验，拟合 $\tau_c, b$ |
+| 经典回归 / 最小二乘 | 正弦/Fourier 激励，拟合 $\tau_c, b$；有力矩时见 [FloBaRoID](../entities/flobaroid.md) |
+| CMA-ES 仿真对齐 | 无力矩传感时拟合 $I_a,b,\tau_c$（[BAM](../entities/bam-better-actuator-models.md) / [PACE](../entities/paper-pace-sim2real-legged-robots.md)） |
 | 可微仿真 + 梯度 | 仿真轨迹 MSE 对摩擦参数求导（课程 `jax.grad`） |
 | 执行器网络 | 数据驱动补偿残差（[Actuator Network](../methods/actuator-network.md)） |
+
+算法选型总表见 [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md)。
 
 ## 常见误区
 
@@ -84,6 +89,7 @@ $$
 
 - [Friction Compensation](./friction-compensation.md)
 - [System Identification](./system-identification.md)
+- [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) — $I_a$ 与摩擦怎么从数据里来
 - [Sim2Real](./sim2real.md)
 - [Quadruped Control Curriculum](../entities/quadruped-control-curriculum.md)
 - [仿真物理保真度链路](../queries/simulation-physics-fidelity.md) — 摩擦模型属第 ③ 接触/摩擦层

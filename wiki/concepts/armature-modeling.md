@@ -2,13 +2,14 @@
 type: concept
 tags: [robotics, dynamics, simulation, sim2real, actuator]
 status: complete
-updated: 2026-07-09
+updated: 2026-08-13
 related:
   - ./robot-link-and-rotor-inertia.md
   - ./humanoid-parallel-joint-kinematics.md
   - ./implicit-explicit-actuator-modeling.md
   - ../methods/beyondmimic.md
   - ../methods/actuator-network.md
+  - ../methods/joint-actuator-parameter-identification.md
   - ./system-identification.md
   - ../queries/actuator-drive-chain-selection-loop.md
 sources:
@@ -95,6 +96,7 @@ $$
 - [Implicit / Explicit 执行器建模](./implicit-explicit-actuator-modeling.md) — explicit 执行器不稳定时的 `armature` 调参语境。
 - [Actuator Network (执行器网络)](../methods/actuator-network.md) — 更复杂的执行器建模方式（如神经网络模拟）。
 - [System Identification (系统辨识)](./system-identification.md) — Armature 是系统辨识中的关键物理参数。
+- [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) — 手册 $J_r G^2$ 只是初值；数据怎么估 $I_a$
 - [人形机器人并联关节解算](./humanoid-parallel-joint-kinematics.md) — 双驱动并联路径上的几何/力映射与惯量建模分工
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — armature（转子等效惯量）是③层执行器建模写回仿真的关键参数
 

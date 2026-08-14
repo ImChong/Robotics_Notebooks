@@ -1,31 +1,44 @@
 {
-  "generated_at": "2026-08-13",
-  "node_count": 3082,
-  "edge_count": 26788,
+  "generated_at": "2026-08-14",
+  "node_count": 3084,
+  "edge_count": 26835,
   "coverage": {
-    "covered": 3058,
-    "total": 3058,
+    "covered": 3060,
+    "total": 3060,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/comparisons/rl-inverse-kinematics-five-approaches.md",
-      "detail_id": "wiki-comparisons-rl-inverse-kinematics-five-approaches",
-      "label": "RL 求解逆运动学：五类方案怎么选",
-      "type": "comparison",
+      "path": "wiki/concepts/null-space-control.md",
+      "detail_id": "wiki-concepts-null-space-control",
+      "label": "Null-Space Control（零空间控制）",
+      "type": "concept",
       "recency": "2026-08-13",
       "source": "git",
       "action": "added",
+      "has_repo": true,
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
-      "path": "wiki/formalizations/forward-kinematics.md",
-      "detail_id": "wiki-formalizations-forward-kinematics",
-      "label": "正向运动学（Forward Kinematics）",
-      "type": "formalization",
+      "path": "wiki/entities/paper-cartesian-impedance-controller.md",
+      "detail_id": "entity-paper-cartesian-impedance-controller",
+      "label": "Cartesian Impedance Controller（Mayr et al., JOSS 2024）",
+      "type": "entity",
       "recency": "2026-08-13",
       "source": "git",
       "action": "added",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-null-space-projections-survey.md",
+      "detail_id": "entity-paper-null-space-projections-survey",
+      "label": "零空间投影综述（Dietrich et al., IJRR 2015）",
+      "type": "entity",
+      "recency": "2026-08-13",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
@@ -42,6 +55,26 @@
       "path": "wiki/formalizations/robot-jacobian.md",
       "detail_id": "wiki-formalizations-robot-jacobian",
       "label": "机器人雅可比矩阵（Jacobian）",
+      "type": "formalization",
+      "recency": "2026-08-13",
+      "source": "git",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/comparisons/rl-inverse-kinematics-five-approaches.md",
+      "detail_id": "wiki-comparisons-rl-inverse-kinematics-five-approaches",
+      "label": "RL 求解逆运动学：五类方案怎么选",
+      "type": "comparison",
+      "recency": "2026-08-13",
+      "source": "git",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/formalizations/forward-kinematics.md",
+      "detail_id": "wiki-formalizations-forward-kinematics",
+      "label": "正向运动学（Forward Kinematics）",
       "type": "formalization",
       "recency": "2026-08-13",
       "source": "git",
@@ -182,46 +215,17 @@
       "source": "git",
       "action": "added",
       "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/concepts/multimodality-basics.md",
-      "detail_id": "wiki-concepts-multimodality-basics",
-      "label": "多模态基础概念",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "git",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/concepts/object-detection-metrics.md",
-      "detail_id": "wiki-concepts-object-detection-metrics",
-      "label": "目标检测评价指标",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "git",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/concepts/visual-foundation-model-trends.md",
-      "detail_id": "wiki-concepts-visual-foundation-model-trends",
-      "label": "视觉基础模型发展趋势",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "git",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/comparisons/rl-inverse-kinematics-five-approaches.md",
-    "detail_id": "wiki-comparisons-rl-inverse-kinematics-five-approaches",
-    "label": "RL 求解逆运动学：五类方案怎么选",
-    "type": "comparison",
+    "path": "wiki/concepts/null-space-control.md",
+    "detail_id": "wiki-concepts-null-space-control",
+    "label": "Null-Space Control（零空间控制）",
+    "type": "concept",
     "recency": "2026-08-13",
     "source": "git",
     "action": "added",
+    "has_repo": true,
     "community_label": "全身控制（Whole-Body Control, WBC） 社区"
   },
   "top_communities": [
@@ -231,7 +235,7 @@
     },
     {
       "label": "仿真到现实",
-      "size": 523
+      "size": 527
     },
     {
       "label": "视觉-语言-动作",
@@ -243,7 +247,7 @@
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 154
+      "size": 155
     },
     {
       "label": "移动操作",
