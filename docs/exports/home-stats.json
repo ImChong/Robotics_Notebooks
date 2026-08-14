@@ -1,13 +1,42 @@
 {
   "generated_at": "2026-08-14",
-  "node_count": 3087,
-  "edge_count": 26894,
+  "node_count": 3089,
+  "edge_count": 26933,
   "coverage": {
-    "covered": 3063,
-    "total": 3063,
+    "covered": 3065,
+    "total": 3065,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-galaxea-g05.md",
+      "detail_id": "entity-paper-galaxea-g05",
+      "label": "G0.5：推理与动作同一自回归流",
+      "type": "entity",
+      "recency": "2026-08-14",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-rift-wam.md",
+      "detail_id": "entity-paper-rift-wam",
+      "label": "Rift：免视频 Rollout 的未来条件 WAM",
+      "type": "entity",
+      "recency": "2026-08-14",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-smpc2rl-loco-manipulation.md",
+      "detail_id": "entity-paper-smpc2rl-loco-manipulation",
+      "label": "SMPC-to-RL：稀疏奖励全身 Loco-Manipulation",
+      "type": "entity",
+      "recency": "2026-08-14",
+      "source": "git",
+      "action": "added"
+    },
     {
       "path": "wiki/concepts/null-space-control.md",
       "detail_id": "wiki-concepts-null-space-control",
@@ -186,49 +215,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-fact.md",
-      "detail_id": "entity-paper-fact",
-      "label": "FACT（Failure-Aware Causal Training · arXiv:2608.10232）",
-      "type": "entity",
-      "recency": "2026-08-13",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-g1-confined-space-wbp.md",
-      "detail_id": "entity-paper-g1-confined-space-wbp",
-      "label": "G1 Confined-Space WBP（狭窄空间全身规划 · arXiv:2608.10220）",
-      "type": "entity",
-      "recency": "2026-08-13",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-neural-introspection-gating.md",
-      "detail_id": "entity-paper-neural-introspection-gating",
-      "label": "Neural Introspection Gating（Gated VLA-Cache · arXiv:2608.10824）",
-      "type": "entity",
-      "recency": "2026-08-13",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/null-space-control.md",
-    "detail_id": "wiki-concepts-null-space-control",
-    "label": "Null-Space Control（零空间控制）",
-    "type": "concept",
+    "path": "wiki/entities/paper-galaxea-g05.md",
+    "detail_id": "entity-paper-galaxea-g05",
+    "label": "G0.5：推理与动作同一自回归流",
+    "type": "entity",
     "recency": "2026-08-14",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
   },
   "top_communities": [
     {
@@ -237,7 +235,7 @@
     },
     {
       "label": "仿真到现实",
-      "size": 471
+      "size": 468
     },
     {
       "label": "视觉-语言-动作",

@@ -6,11 +6,12 @@ tags:
   - inverse-dynamics
   - manipulation
 status: complete
-updated: 2026-07-18
+updated: 2026-08-13
 summary: "以前馈逆动力学为主、弱反馈为辅的轨迹跟踪控制。"
 related:
   - ../overview/robot-control-paradigm-model-based-nonlinear-dynamics.md
   - ./computed-torque-control.md
+  - ../concepts/gravity-compensation.md
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
 ---
@@ -42,7 +43,7 @@ $\tau_{ff} = M(q)\ddot{q}_d + C(q,\dot{q})\dot{q} + g(q)$；$\tau = \tau_{ff} + 
 
 ## 工程实践
 
-离线轨迹规划 + 在线 IDC 前馈；反馈增益宜小，依赖模型精度；摩擦补偿见 [Friction Compensation](../concepts/friction-compensation.md)。
+离线轨迹规划 + 在线 IDC 前馈；反馈增益宜小，依赖模型精度；重力项见 [Gravity Compensation](../concepts/gravity-compensation.md)，摩擦补偿见 [Friction Compensation](../concepts/friction-compensation.md)。
 
 ## 主要技术路线
 
@@ -63,6 +64,7 @@ $\tau_{ff} = M(q)\ddot{q}_d + C(q,\dot{q})\dot{q} + g(q)$；$\tau = \tau_{ff} + 
 - [pinocchio](../entities/pinocchio.md)
 - [Computed Torque Control](./computed-torque-control.md)
 - [Feedback Linearization](./feedback-linearization-control.md)
+- [Gravity Compensation](../concepts/gravity-compensation.md)
 
 ## 参考来源
 

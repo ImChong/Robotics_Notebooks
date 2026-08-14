@@ -18,6 +18,7 @@ related:
   - ./whole-body-control.md
   - ./null-space-control.md
   - ./tsid.md
+  - ./gravity-compensation.md
   - ../methods/tactile-impedance-control.md
   - ../tasks/manipulation.md
   - ../queries/contact-rich-manipulation-guide.md
@@ -119,6 +120,7 @@ $$ f = K_d (x_d - x) + B_d (\dot{x}_d - \dot{x}) $$
 - [Force Control Basics (力控制基础)](./force-control-basics.md) — 阻抗控制的理论背景
 - [Tactile Impedance Control](../methods/tactile-impedance-control.md) — 由触觉信号在线驱动 $K_d, B_d$ 的变参数推广
 - [TSID](./tsid.md)
+- [Gravity Compensation](./gravity-compensation.md) — 柔顺环先扣掉 $g(q)$，否则弹簧在扛自重
 - [Manipulation](../tasks/manipulation.md)
 - [Query：接触丰富操作实践指南](../queries/contact-rich-manipulation-guide.md)
 - [GentleHumanoid（上半身柔顺运动跟踪）](../methods/gentlehumanoid-motion-tracking.md)
