@@ -9,6 +9,35 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-galaxea-g05.md",
+      "detail_id": "entity-paper-galaxea-g05",
+      "label": "G0.5：推理与动作同一自回归流",
+      "type": "entity",
+      "recency": "2026-08-14",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-rift-wam.md",
+      "detail_id": "entity-paper-rift-wam",
+      "label": "Rift：免视频 Rollout 的未来条件 WAM",
+      "type": "entity",
+      "recency": "2026-08-14",
+      "source": "git",
+      "action": "added"
+    },
+    {
+      "path": "wiki/entities/paper-smpc2rl-loco-manipulation.md",
+      "detail_id": "entity-paper-smpc2rl-loco-manipulation",
+      "label": "SMPC-to-RL：稀疏奖励全身 Loco-Manipulation",
+      "type": "entity",
+      "recency": "2026-08-14",
+      "source": "git",
+      "action": "added"
+    },
+    {
       "path": "wiki/concepts/gravity-compensation.md",
       "detail_id": "wiki-concepts-gravity-compensation",
       "label": "Gravity Compensation（重力补偿）",
@@ -185,50 +214,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-p3.md",
-      "detail_id": "entity-paper-p3",
-      "label": "P³：稳定 VAE 策略学习的概率传播",
-      "type": "entity",
-      "recency": "2026-08-13",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/comfyui.md",
-      "detail_id": "entity-comfyui",
-      "label": "ComfyUI",
-      "type": "entity",
-      "recency": "2026-08-13",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-flex-pi.md",
-      "detail_id": "entity-paper-flex-pi",
-      "label": "Flex-π（Multi-Stream WAM · Compute Flexibility · arXiv:2608.10860）",
-      "type": "entity",
-      "recency": "2026-08-13",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/gravity-compensation.md",
-    "detail_id": "wiki-concepts-gravity-compensation",
-    "label": "Gravity Compensation（重力补偿）",
-    "type": "concept",
+    "path": "wiki/entities/paper-galaxea-g05.md",
+    "detail_id": "entity-paper-galaxea-g05",
+    "label": "G0.5：推理与动作同一自回归流",
+    "type": "entity",
     "recency": "2026-08-14",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
   },
   "top_communities": [
     {
