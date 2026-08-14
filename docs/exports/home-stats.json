@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-roboreact.md",
+      "detail_id": "entity-paper-roboreact",
+      "label": "RoboReact：从生成第一人称视频蒸馏可泛化全身操作技能",
+      "type": "entity",
+      "recency": "2026-08-14",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/paper-humanoidvln.md",
       "detail_id": "entity-paper-humanoidvln",
       "label": "HumanoidVLN：跨人形本体的物理接地 VLN 仿真与基准",
@@ -202,27 +212,17 @@
       "source": "git",
       "action": "added",
       "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-wam-realtime-async.md",
-      "detail_id": "entity-paper-wam-realtime-async",
-      "label": "WAM 实时异步部署（Beyond Stalls · arXiv:2608.01880）",
-      "type": "entity",
-      "recency": "2026-08-13",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-humanoidvln.md",
-    "detail_id": "entity-paper-humanoidvln",
-    "label": "HumanoidVLN：跨人形本体的物理接地 VLN 仿真与基准",
+    "path": "wiki/entities/paper-roboreact.md",
+    "detail_id": "entity-paper-roboreact",
+    "label": "RoboReact：从生成第一人称视频蒸馏可泛化全身操作技能",
     "type": "entity",
     "recency": "2026-08-14",
     "source": "git",
     "action": "added",
-    "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
