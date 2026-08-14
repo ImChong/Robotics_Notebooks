@@ -2,7 +2,7 @@
 type: concept
 tags: [simulation, video-generation, deepmind, computer-vision, robotics]
 status: complete
-updated: 2026-08-07
+updated: 2026-08-14
 related:
   - ../methods/generative-world-models.md
   - ../entities/ewmbench.md
@@ -26,9 +26,11 @@ related:
   - ../entities/paper-robointer-1-5.md
   - ../entities/paper-m4world.md
   - ../entities/paper-abot-world-0.md
+  - ../entities/paper-roboreact.md
 sources:
   - ../../sources/papers/diffusion_and_gen.md
   - ../../sources/papers/exoactor.md
+  - ../../sources/papers/roboreact_arxiv_2608_03387.md
   - ../../sources/papers/ewmbench.md
   - ../../sources/papers/worldscore_arxiv_2504_00983.md
   - ../../sources/papers/dwm_arxiv_2512_17907.md
@@ -94,7 +96,7 @@ UniSim 证明了通过将“大量无人干预的人类视频”与“少量机�
 
 ## 在人形控制上的延伸：[ExoActor](../methods/exoactor.md)
 
-UniSim 把视频生成模型当作可交互的物理引擎来训练视觉策略，而 [ExoActor (BAAI, 2026)](../methods/exoactor.md) 把同一思想推到了**真实物理人形机器人控制**层：用第三人称视频生成模型生成"想象的示教"，再通过 [GENMO](../methods/genmo.md)/[WiLoR](../methods/wilor.md) 估计 SMPL 全身 + 双手动作，并直接喂给 [SONIC](../methods/sonic-motion-tracking.md) 这种通用 motion tracking 控制器在 Unitree G1 上执行。这给"视频即仿真"提供了一个无需真实数据采集的端到端落地实例。
+UniSim 把视频生成模型当作可交互的物理引擎来训练视觉策略，而 [ExoActor (BAAI, 2026)](../methods/exoactor.md) 把同一思想推到了**真实物理人形机器人控制**层：用第三人称视频生成模型生成"想象的示教"，再通过 [GENMO](../methods/genmo.md)/[WiLoR](../methods/wilor.md) 估计 SMPL 全身 + 双手动作，并直接喂给 [SONIC](../methods/sonic-motion-tracking.md) 这种通用 motion tracking 控制器在 Unitree G1 上执行。这给"视频即仿真"提供了一个无需真实数据采集的端到端落地实例。[RoboReact](../entities/paper-roboreact.md)（arXiv:2608.03387）走另一条落地：生成视频只当任务顺序与手–物结构先验，编译成物体中心关键帧后在真机标定，测试时不再跑视频模型。
 
 在**已知静态 3D 场景**、以**第一人称手–物交互**为主线的设定下，[DWM（Dexterous World Models）](../methods/dwm.md) 把视频扩散当作「手条件驱动的场景动力学」模拟器：显式渲染静态场景作基线，再预测操纵残差；论文还演示用 rollout 视频对候选动作做**视觉层面的粗评估**，与闭环力控仿真仍是不同层级。
 
@@ -131,6 +133,7 @@ UniSim 把视频生成模型当作可交互的物理引擎来训练视觉策略�
 - [Sim2Real (仿真到现实迁移)](../concepts/sim2real.md)
 - [Model-Based RL](../methods/model-based-rl.md)
 - [ExoActor](../methods/exoactor.md) — 把视频即仿真思想用到人形机器人交互行为生成上。
+- [RoboReact](../entities/paper-roboreact.md) — 生成 egocentric 视频当任务先验，编译成物体中心技能再上真机（不是像素物理引擎）。
 - [DWM（Dexterous World Models）](../methods/dwm.md) — 静态场景已知时的手条件交互视频 rollout 与评估型用法。
 - [mimic-video（Video-Action Model）](../methods/mimic-video.md) — 潜空间视频计划条件化流匹配动作解码器的操作策略路线。
 - [WEM（World-Ego Modeling）](../entities/paper-wem-world-ego-modeling.md) — world/ego 解耦的长程混合导航–操作视频世界模型与 HTEWorld 评测基准。
@@ -152,6 +155,7 @@ UniSim 把视频生成模型当作可交互的物理引擎来训练视觉策略�
 - Yang, S., et al. (2023). *UniSim: Learning Interactive Real-World Simulators*.
 - [Google DeepMind Blog on UniSim](https://deepmind.google/discover/blog/unisim/).
 - Zhou Y., et al. (2026). *ExoActor: Exocentric Video Generation as Generalizable Interactive Humanoid Control* — 见 [sources/papers/exoactor.md](../../sources/papers/exoactor.md)。
+- He S., et al. (2026). *RoboReact* (arXiv:2608.03387) — 见 [sources/papers/roboreact_arxiv_2608_03387.md](../../sources/papers/roboreact_arxiv_2608_03387.md)。
 - Hu, Y., et al. (2025). *EWMBench: Evaluating Scene, Motion, and Semantic Quality in Embodied World Models* — 见 [sources/papers/ewmbench.md](../../sources/papers/ewmbench.md)。
 - Duan, H., et al. (2025). *WorldScore: A Unified Evaluation Benchmark for World Generation* — 见 [sources/papers/worldscore_arxiv_2504_00983.md](../../sources/papers/worldscore_arxiv_2504_00983.md)。
 - Kim, B., et al. (2026). *Dexterous World Models* — 见 [sources/papers/dwm_arxiv_2512_17907.md](../../sources/papers/dwm_arxiv_2512_17907.md)。

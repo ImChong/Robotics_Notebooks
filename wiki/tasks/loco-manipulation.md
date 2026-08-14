@@ -5,6 +5,7 @@ status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
 updated: 2026-08-14
 sources:
+  - ../../sources/papers/roboreact_arxiv_2608_03387.md
   - ../../sources/papers/smpc2rl_arxiv_2608_12063.md
   - ../../sources/papers/lucid_arxiv_2608_07746.md
   - ../../sources/papers/agile_arxiv_2603_20147.md
@@ -142,6 +143,7 @@ flowchart TD
 ### 8. 视频生成驱动路线 (Video-Generation-Driven)
 - **核心**：把第三人称视频生成模型当成"想象出来的示教源"，再用动作估计 + 通用动作跟踪把视频翻译为机器人可执行轨迹，端到端避免任务级真实数据采集。
 - **代表作**：[ExoActor](../methods/exoactor.md) (BAAI, 2026) — 在 Unitree G1 上做零样本任务的 B/A/S 三级评测，覆盖从基础导航到精细多步操作（如把瓶子直立放进篮子）。
+- **egocentric 关键帧蒸馏对照：** [RoboReact](../entities/paper-roboreact.md)（港中深 / 京东 / 清华，arXiv:2608.03387）用 **单帧第一人称 RGB-D** 生成人类交互视频，编译成物体中心关键帧技能；冻结 VLM 在标定 rollout 上做有界编辑，测试时去掉 VLM、靠物体位姿再接地 + HOMIE。G1 四任务长程双臂均值 SR **81.3%**，与真人视频先验持平；**截至 2026-08-14 未开源**。与 ExoActor 的差别是 **第三人称 GMT 跟踪 vs 第一人称物体中心关键帧**。
 
 ### 9. 无机器人示范 + 分层 visuomotor（Robot-Free → SKR → WBC）
 - **核心**：采集阶段用便携 VR/夹爪设备记录 **稀疏关键点 + 腕部视觉**（无需目标人形）；高层 **Diffusion Policy** 预测任务空间轨迹，经 **SKR** 保留度量几何后接 **全身 IK + WBC** 在 G1 上执行 loco-manipulation。
@@ -249,6 +251,7 @@ flowchart TD
 
 ## 关联页面
 
+- [RoboReact（论文实体）](../entities/paper-roboreact.md) — 生成 egocentric 视频蒸馏物体中心全身操作技能；G1 四任务均值 SR 81.3%（arXiv:2608.03387；未开源）
 - [SMPC-to-RL（论文实体）](../entities/paper-smpc2rl-loco-manipulation.md) — SMPC 仿真专家 + 稀疏 offline-to-online RL；Spot/G1 真机（arXiv:2608.12063；未开源）
 - [AGILE（论文实体）](../entities/paper-agile-humanoid-loco-manipulation.md) — NVIDIA Isaac Lab 人形 RL 工作流：核验→训练→评测→描述符部署（G1/T1；arXiv:2603.20147）
 - [Humanoid Locomotion](./humanoid-locomotion.md)
@@ -316,6 +319,7 @@ flowchart TD
 - **ingest 档案：** [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — 包含 ACT / Diffusion Policy 等基础
 - **ingest 档案：** [sources/papers/teleoperation.md](../../sources/papers/teleoperation.md) — HOMIE / ALOHA / OmniH2O 
 - **ingest 档案：** [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md) — HTD / Touch Dreaming 触觉增强人形移动操作
+- **ingest 档案：** [sources/papers/roboreact_arxiv_2608_03387.md](../../sources/papers/roboreact_arxiv_2608_03387.md) — RoboReact：生成 egocentric 视频蒸馏全身操作（arXiv:2608.03387）
 - **ingest 档案：** [sources/papers/exoactor.md](../../sources/papers/exoactor.md) — ExoActor 视频生成驱动的人形控制
 - **ingest 档案：** [sources/papers/doorman_opening_sim2real_arxiv_2512_01061.md](../../sources/papers/doorman_opening_sim2real_arxiv_2512_01061.md) — DoorMan：人形 RGB 开门视觉 Sim2Real（arXiv:2512.01061）
 - **ingest 档案：** [sources/papers/refine_dp_arxiv_2603_13707.md](../../sources/papers/refine_dp_arxiv_2603_13707.md) — REFINE-DP：DP+RL 联合微调人形 loco-manip（arXiv:2603.13707）

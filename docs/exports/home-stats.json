@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-14",
-  "node_count": 3092,
-  "edge_count": 27008,
+  "node_count": 3093,
+  "edge_count": 27023,
   "coverage": {
-    "covered": 3068,
-    "total": 3068,
+    "covered": 3069,
+    "total": 3069,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -227,11 +227,11 @@
   "top_communities": [
     {
       "label": "操作",
-      "size": 572
+      "size": 571
     },
     {
       "label": "仿真到现实",
-      "size": 493
+      "size": 494
     },
     {
       "label": "视觉-语言-动作",
@@ -247,7 +247,7 @@
     },
     {
       "label": "移动操作",
-      "size": 131
+      "size": 130
     }
   ],
   "top_hubs": [
