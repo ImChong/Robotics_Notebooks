@@ -1,13 +1,35 @@
 {
   "generated_at": "2026-08-14",
   "node_count": 3084,
-  "edge_count": 26835,
+  "edge_count": 26837,
   "coverage": {
     "covered": 3060,
     "total": 3060,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/flobaroid.md",
+      "detail_id": "entity-flobaroid",
+      "label": "FloBaRoID（浮动基动力学辨识工具箱）",
+      "type": "entity",
+      "recency": "2026-08-13",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/methods/joint-actuator-parameter-identification.md",
+      "detail_id": "wiki-methods-joint-actuator-parameter-identification",
+      "label": "Joint Actuator Parameter Identification（关节执行器参数辨识）",
+      "type": "method",
+      "recency": "2026-08-13",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/concepts/null-space-control.md",
       "detail_id": "wiki-concepts-null-space-control",
@@ -195,38 +217,18 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/convolutional-neural-network.md",
-      "detail_id": "wiki-concepts-convolutional-neural-network",
-      "label": "卷积神经网络（CNN）",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "git",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/concepts/image-segmentation-taxonomy.md",
-      "detail_id": "wiki-concepts-image-segmentation-taxonomy",
-      "label": "图像分割任务分类（语义 / 实例 / 全景）",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "git",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/null-space-control.md",
-    "detail_id": "wiki-concepts-null-space-control",
-    "label": "Null-Space Control（零空间控制）",
-    "type": "concept",
+    "path": "wiki/entities/flobaroid.md",
+    "detail_id": "entity-flobaroid",
+    "label": "FloBaRoID（浮动基动力学辨识工具箱）",
+    "type": "entity",
     "recency": "2026-08-13",
     "source": "git",
     "action": "added",
     "has_repo": true,
-    "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
