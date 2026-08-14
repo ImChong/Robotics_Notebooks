@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-08-13
+updated: 2026-08-14
 related:
   - ../entities/paper-clothtransformer-unified-latent-cloth-simulation.md
   - ../entities/paper-flying-knots.md
@@ -46,6 +46,8 @@ related:
   - ../entities/paper-softvtbench.md
   - ../entities/paper-flex-pi.md
   - ../entities/paper-dreamwam.md
+  - ../entities/paper-galaxea-g05.md
+  - ../entities/paper-rift-wam.md
 sources:
   - ../../sources/papers/fastgrasp_arxiv_2604_12879.md
   - ../../sources/papers/imitation_learning.md
@@ -56,6 +58,8 @@ sources:
   - ../../sources/papers/vtap_gripper_arxiv_2607_15448.md
   - ../../sources/papers/softvtbench_arxiv_2607_04234.md
   - ../../sources/papers/flex_pi_arxiv_2608_10860.md
+  - ../../sources/papers/galaxea_g05_arxiv_2608_11739.md
+  - ../../sources/papers/rift_wam_arxiv_2608_11521.md
   - ../../sources/blogs/generalist_thousand_hands.md
 summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核心难点是感知、接触和全身协同。"
 ---
@@ -227,6 +231,8 @@ flowchart TD
 - [RTCF](../entities/paper-rtcf.md) — 免训练记忆检索 + 低频纠偏；LIBERO Long 61.6→68.6（arXiv:2608.04527）
 - [Motubrain](../entities/paper-motubrain.md) — 生数 Joint WAM；RoboTwin 2.0 95.8/96.1（arXiv:2604.27792；仓占位）
 - [WAM 实时异步部署](../entities/paper-wam-realtime-async.md) — 双臂 WAM 六策略对照（arXiv:2608.01880）
+- [G0.5](../entities/paper-galaxea-g05.md) — 星海图 AR VLA；真机 76.7%、RoboTwin 93.3%（arXiv:2608.11739；已开源）
+- [Rift](../entities/paper-rift-wam.md) — 免视频 rollout WAM；LIBERO 98.8% / 247.9 ms（arXiv:2608.11521；未开源）
 - [RoboTTT](../entities/paper-robottt-test-time-training-vla-context.md) — GR00T N1.7 内嵌 TTT fast weights，8K 步 visuomotor 上下文 + 部署后在线学习（NVIDIA GEAR 项目页）
 - [πR²](../entities/paper-pi-r2.md) — GR00T-N1.7 反应式实时 flow 闭环（约 25 Hz；训练+部署已开源，arXiv:2607.26055）
 - [HiFi-UMI / HiFi-UMI-2K](../entities/paper-hifi-umi.md) — 2000 h 高保真无机器人双臂数据；zero-robot 后训练（arXiv:2607.25895）

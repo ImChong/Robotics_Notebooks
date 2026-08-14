@@ -13,7 +13,7 @@ tags:
   - whu
   - horizon
 status: complete
-updated: 2026-08-13
+updated: 2026-08-14
 arxiv: "2608.04996"
 code: "https://github.com/hustvl/DreamWAM"
 related:
@@ -25,6 +25,7 @@ related:
   - ./paper-dynawm-vla-online-correction.md
   - ./paper-dreamsteer-vla-deployment-steering.md
   - ./paper-fact.md
+  - ./paper-rift-wam.md
   - ./paper-flex-pi.md
   - ./paper-dswam-dual-system-wam.md
   - ./paper-kairos-native-world-model-stack.md
@@ -181,6 +182,7 @@ sequenceDiagram
 | [DSWAM](./paper-dswam-dual-system-wam.md) / [DynaWM](./paper-dynawm-vla-online-correction.md) / [DreamSteer](./paper-dreamsteer-vla-deployment-steering.md) | 执行 / 修正 / 筛选三角；DreamWAM 落在 **联合训练直接出动作** |
 | [FACT](./paper-fact.md) | 失败感知因果后果；DreamWAM 改未来表征形态 |
 | [Flex-π](./paper-flex-pi.md) | 多流 + 部署算力柔性；DreamWAM 推理固定关 beyond-RGB |
+| [Rift](./paper-rift-wam.md) | 同 Fast-WAM 族：改「未来 cache 怎么写」而不是未来内容；部署免视频 rollout |
 
 ## 关联页面
 
@@ -192,6 +194,7 @@ sequenceDiagram
 - [DreamSteer](./paper-dreamsteer-vla-deployment-steering.md)
 - [FACT](./paper-fact.md)
 - [Flex-π](./paper-flex-pi.md)
+- [Rift](./paper-rift-wam.md)
 
 ## 参考来源
 

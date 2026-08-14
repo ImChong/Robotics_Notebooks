@@ -3,15 +3,17 @@ type: comparison
 tags: [mpc, rl, control, locomotion, comparison, engineering-selection]
 status: stable
 summary: "MPC vs RL：控制策略选型对比"
-updated: 2026-08-04
+updated: 2026-08-14
 sources:
   - ../../sources/papers/mpc.md
   - ../../sources/papers/policy_optimization.md
+  - ../../sources/papers/smpc2rl_arxiv_2608_12063.md
   - ../../sources/papers/mpc_rl_arxiv_2606_05687.md
   - ../../sources/papers/raven_rl_adaptive_visibility_graph_arxiv_2607_15701.md
   - ../../sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md
 related:
   - ./fb-bfm-zero-intact-mimic-vla-task-space.md
+  - ../entities/paper-smpc2rl-loco-manipulation.md
 ---
 
 # MPC vs RL：控制策略选型对比
@@ -118,6 +120,7 @@ related:
 
 - **残差 RL on MPC**：测试时 MPC 仍在环，RL 学残差修正
 - **MPC-over-RL**（如 Sumo）：高层采样 MPC 在 RL WBC 命令空间规划
+- **MPC 只做离线专家**（[SMPC-to-RL](../entities/paper-smpc2rl-loco-manipulation.md)）：仿真 SMPC 生成单模态演示，稀疏 FastTD3 训高层、冻结 ReLIC 低层上真机——调代价在 MPC，跑策略在 RL
 
 ---
 
@@ -179,6 +182,8 @@ related:
 - [Model-Based vs Model-Free](./model-based-vs-model-free.md) — RL 内部的方法对比
 - [MPC Solver Selection](../queries/mpc-solver-selection.md) — MPC 求解器选型指南
 - [MPC-RL](../entities/paper-mpc-rl-humanoid-locomotion-manipulation.md) — 训练期 MPC 地标奖励 + 部署期纯 RL
+- [SMPC-to-RL](../entities/paper-smpc2rl-loco-manipulation.md) — SMPC 离线专家 + 稀疏 offline-to-online RL（Spot/G1；未开源）
+- [Sumo](../methods/sumo.md) — 部署期 MPC-over-RL 对照
 - [π MPC](../methods/pi-mpc.md) — parallel-in-horizon ADMM 求解器（MPC-RL 批训练后端）
 - [RAVEN](../entities/paper-raven-rl-adaptive-visibility-graph-mpc.md) — RL 只改可见图障碍膨胀，cf-MPC 保约束的人形导航混合栈
 - [FB / BFM-Zero / INTACT / Mimic / VLA 任务空间表征对比](./fb-bfm-zero-intact-mimic-vla-task-space.md) — 人形接触突变上「RL 采样平滑梯度」的旁支读法

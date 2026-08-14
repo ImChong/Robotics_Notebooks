@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-14",
-  "node_count": 3084,
-  "edge_count": 26837,
+  "node_count": 3087,
+  "edge_count": 26894,
   "coverage": {
-    "covered": 3060,
-    "total": 3060,
+    "covered": 3063,
+    "total": 3063,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -237,19 +237,19 @@
     },
     {
       "label": "仿真到现实",
-      "size": 527
+      "size": 471
     },
     {
       "label": "视觉-语言-动作",
-      "size": 248
+      "size": 249
     },
     {
       "label": "人形论文深读笔记",
-      "size": 184
+      "size": 194
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 155
+      "size": 151
     },
     {
       "label": "移动操作",
@@ -261,7 +261,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1219,
+      "degree": 1223,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -284,7 +284,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 718,
+      "degree": 719,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -292,7 +292,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 716,
+      "degree": 718,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -332,7 +332,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 446,
+      "degree": 447,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }

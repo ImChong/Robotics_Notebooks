@@ -11,7 +11,7 @@ tags:
   - uw
   - ai2
 status: complete
-updated: 2026-08-13
+updated: 2026-08-14
 arxiv: "2608.10860"
 code: "https://github.com/geyan21/flex-pi"
 related:
@@ -25,6 +25,7 @@ related:
   - ../overview/robot-world-models-action-consequence-technology-map.md
   - ../overview/wm-action-consequence-category-01-wam-action-prediction.md
   - ../tasks/manipulation.md
+  - ./paper-rift-wam.md
   - ./libero-benchmark.md
 sources:
   - ../../sources/papers/flex_pi_arxiv_2608_10860.md
@@ -174,6 +175,7 @@ RoboTwin 五任务消融（50 demo）：RGB-only 加 DINO **+6.8 pt**，再加�
 - [操纵任务](../tasks/manipulation.md)
 - [LIBERO](./libero-benchmark.md)
 - [动作后果分类 01](../overview/wm-action-consequence-category-01-wam-action-prediction.md)
+- [Rift](./paper-rift-wam.md)
 
 ## 参考来源
 

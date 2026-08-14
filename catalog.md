@@ -549,6 +549,7 @@
 - [G1 Confined-Space WBP（狭窄空间全身规划 · arXiv:2608.10220）](wiki/entities/paper-g1-confined-space-wbp.md) — G1 Confined-Space WBP**（*Whole-Body Planning for Humanoids Navigating Confined Spaces via Self-Col `📅unknown` `[entity_page]`
 - [GAIA-1（GAIA-1: A Generative World Model for Autonomous Driving · arXiv:2309.17080）](wiki/entities/paper-gaia1.md) — GAIA-1**（*GAIA-1: A Generative World Model for Autonomous Driving*，[2309.17080](https://arxiv.org/ `📅unknown` `[entity_page]`
 - [GaitSpan：从行走到跑步的人形技能生长](wiki/entities/paper-gaitspan-humanoid-locomotion-walking-running.md) — GaitSpan**（*Growing Humanoid Locomotion from Walking to Running*，密歇根大学 / 加州大学伯克利分校 / Skyline High  `📅unknown` `[entity_page]`
+- [G0.5：推理与动作同一自回归流](wiki/entities/paper-galaxea-g05.md) — G0.5**（*Galaxea G0.5: One Autoregressive Stream for Robot Reasoning and Action*，[arXiv:2608.11739 `📅unknown` `[entity_page]`
 - [Gamma-World（γ-World / Generative Multi-Agent World Model）](wiki/entities/paper-gamma-world-multi-agent.md) — Gamma-World**（*γ-World*，arXiv:2605.28816，[项目页](https://research.nvidia.com/labs/sil/projects/gamma `📅unknown` `[entity_page]`
 - [GaP（Graph-as-Policy）](wiki/entities/paper-gap-graph-as-policy.md) — GaP**（*A Graph-as-Policy Multi-Agent Self-Learning Harness For Variational Automation Tasks*，NVIDI `📅unknown` `[entity_page]`
 - [GentleHumanoid](wiki/entities/paper-gentlehumanoid.md) — GentleHumanoid**（*Learning Upper-body Compliance for Contact-rich Human and Object Interaction*）是接 `📅unknown` `[entity_page]`
@@ -1196,6 +1197,7 @@
 - [ResNet（Deep Residual Learning for Image Recognition）](wiki/entities/paper-resnet-deep-residual-learning.md) — ResNet**（Residual Network）是 Kaiming He 等提出的 **深度残差学习** 框架（arXiv:1512.03385，CVPR 2016 Best Paper）。其 `📅unknown` `[entity_page]`
 - [Residual Force Control（RFC，NeurIPS 2020）](wiki/entities/paper-rfc-residual-force-control.md) — Residual Force Control for Agile Human Behavior Imitation and Extended Motion Synthesis**（Ye Yuan、 `📅unknown` `[entity_page]`
 - [Rhythm（Learning Interactive Whole-Body Control for Dual Humanoids）](wiki/entities/paper-rhythm-dual-humanoid-interaction.md) — Rhythm** 是面向 **双 humanoid 物理耦合全身交互** 的系统论文（arXiv:2603.02856）：在 **两台 Unitree G1** 真机上首次报告 **拥抱、共舞、问 `📅unknown` `[entity_page]`
+- [Rift：免视频 Rollout 的未来条件 WAM](wiki/entities/paper-rift-wam.md) — Rift**（*Keep the Future, Drop the Rollout: Rift for World Action Models*，[arXiv:2608.11521](https: `📅unknown` `[entity_page]`
 - [RMA: Rapid Motor Adaptation for Legged Robots](wiki/entities/paper-rma-rapid-motor-adaptation.md) — RMA**（Kumar et al., arXiv:2107.04034，**RSS 2021**）提出 **快速运动自适应 `📅unknown` `[entity_page]`
 - [RoamFlow](wiki/entities/paper-roamflow.md) — RoamFlow**（*Reinforcement-Aligned One-Step Action MeanFlow Policy for Image-Goal Navigation*，南洋理工大 `📅unknown` `[entity_page]`
 - [RoboHarness（异构策略编排 · arXiv:2607.18060）](wiki/entities/paper-robo-harness.md) — RoboHarness**（*Memory-Driven Orchestration of Heterogeneous Robot Policies for Long-Horizon Planni `📅unknown` `[entity_page]`
@@ -2081,6 +2083,7 @@
 - [SLAMFormer-∞（Infinite SLAM Transformer）](wiki/entities/paper-slamformer-infinity.md) — SLAMFormer-∞**（*Infinite SLAM Transformer for Unbounded Frontend and Backend Processing*，[arXiv:26 `📅unknown` `[entity_page]`
 - [SLIM-0.5B（动作接地预测隐变量策略 · arXiv:2608.09771）](wiki/entities/paper-slim-05b.md) — SLIM-0.5B**（*Learning Action-Grounded Predictive Latents for Robot Manipulation*，[arXiv:2608.09771 `📅unknown` `[entity_page]`
 - [SLowRL：安全低秩 RL 真机运动微调](wiki/entities/paper-slowrl-safe-lora-locomotion-sim2real.md) — SLowRL**（*Safe Low-Rank Adaptation Reinforcement Learning for Locomotion*，arXiv:2603.17092）针对 **动态 `📅unknown` `[entity_page]`
+- [SMPC-to-RL：稀疏奖励全身 Loco-Manipulation](wiki/entities/paper-smpc2rl-loco-manipulation.md) — SMPC-to-RL**（*Learning Loco-Manipulation From SMPC Demonstrations With Sparse Offline-to-Online RL `📅unknown` `[entity_page]`
 - [SoftVTBench（安全感知视触觉可变形操作基准 · arXiv:2607.04234）](wiki/entities/paper-softvtbench.md) — SoftVTBench**（*SoftVTBench: A Safety-Aware Visuo-Tactile Benchmark for Physically Constrained Robo `📅unknown` `[entity_page]`
 - [SPARK（Skeleton-Parameter Aligned Retargeting）](wiki/entities/paper-spark-skeleton-aligned-retargeting.md) — SPARK**（*Skeleton-Parameter Aligned Retargeting on Humanoid Robots with Kinodynamic Trajectory Opt `📅unknown` `[entity_page]`
 - [SparseDrive（SparseDrive: End-to-End Autonomous Driving via Sparse Scene Representation · arXiv:2405.19620）](wiki/entities/paper-sparsedrive.md) — SparseDrive**（*SparseDrive: End-to-End Autonomous Driving via Sparse Scene Representation*，[2405.1 `📅unknown` `[entity_page]`

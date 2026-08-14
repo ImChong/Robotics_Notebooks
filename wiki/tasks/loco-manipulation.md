@@ -3,8 +3,9 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-08-12
+updated: 2026-08-14
 sources:
+  - ../../sources/papers/smpc2rl_arxiv_2608_12063.md
   - ../../sources/papers/lucid_arxiv_2608_07746.md
   - ../../sources/papers/agile_arxiv_2603_20147.md
   - ../../sources/papers/pot_vla_arxiv_2607_18016.md
@@ -136,6 +137,7 @@ flowchart TD
 ### 7. 反向层级架构 (MPC-over-RL)
 - **核心**：底层使用通用的 RL WBC 策略（如 Relic）提供稳定的运动基座；高层使用基于采样的 MPC（如 CEM）在底层策略的命令空间内进行在线规划。
 - **代表作**：[Sumo](../methods/sumo.md) (2026) 实现了 Spot 和 G1 操纵比自身更重、更大的物体（如扶起轮胎、拖拽大型护栏）。
+- **离线对照（同实验室）：** [SMPC-to-RL](../entities/paper-smpc2rl-loco-manipulation.md)（RAI/TUM/ETH，arXiv:2608.12063）把 SMPC **只放在仿真当专家数据机**，再用稀疏奖励 FastTD3 训高层；低层仍是冻结 ReLIC。Spot 推箱/扶胎/滚胎与 G1 推箱真机可部署，策略比教师更快；**截至 2026-08-14 未开源**。与 Sumo 的差别是 **在线规划 vs 离线教书**。
 
 ### 8. 视频生成驱动路线 (Video-Generation-Driven)
 - **核心**：把第三人称视频生成模型当成"想象出来的示教源"，再用动作估计 + 通用动作跟踪把视频翻译为机器人可执行轨迹，端到端避免任务级真实数据采集。
@@ -247,6 +249,7 @@ flowchart TD
 
 ## 关联页面
 
+- [SMPC-to-RL（论文实体）](../entities/paper-smpc2rl-loco-manipulation.md) — SMPC 仿真专家 + 稀疏 offline-to-online RL；Spot/G1 真机（arXiv:2608.12063；未开源）
 - [AGILE（论文实体）](../entities/paper-agile-humanoid-loco-manipulation.md) — NVIDIA Isaac Lab 人形 RL 工作流：核验→训练→评测→描述符部署（G1/T1；arXiv:2603.20147）
 - [Humanoid Locomotion](./humanoid-locomotion.md)
 - [Manipulation](./manipulation.md)

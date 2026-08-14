@@ -3,7 +3,7 @@ type: method
 title: Sumo (MPC-over-RL 层级控制)
 tags: [robot-learning, mpc, loco-manipulation, whole-body-control, spot, g1]
 summary: "Sumo 采用反向层级架构（MPC 驱动底层 RL），通过将通用策略纳入规划循环，实现腿式机器人对超限重物的零样本动态操纵。"
-updated: 2026-07-16
+updated: 2026-08-14
 ---
 
 # Sumo (Dynamic and Generalizable Whole-Body Loco-Manipulation)
@@ -72,6 +72,7 @@ Sumo 的创新在于其分工明确的双层结构：
 - [MuJoCo (物理引擎)](../entities/mujoco.md) — Sumo 运行并行 Rollouts 的引擎
 - [Unitree G1](../entities/unitree-g1.md) — Sumo 验证的人形平台
 - [VLA](./vla.md) — 未来可能的更高层指令提供者
+- [SMPC-to-RL](../entities/paper-smpc2rl-loco-manipulation.md) — 同实验室对照：SMPC **离线教书** + 稀疏 FastTD3，而不是部署期 CEM
 
 ## 参考来源
 - [Sumo: Dynamic and Generalizable Whole-Body Loco-Manipulation](../../sources/papers/sumo.md)

@@ -9,7 +9,7 @@ tags:
   - dual-system
   - midea
 status: complete
-updated: 2026-08-07
+updated: 2026-08-14
 arxiv: "2607.04927"
 related:
   - ../overview/wm-action-consequence-category-01-wam-action-prediction.md
@@ -20,6 +20,7 @@ related:
   - ../entities/paper-dynawm-vla-online-correction.md
   - ../entities/paper-dreamsteer-vla-deployment-steering.md
   - ../entities/paper-meco-wam-4d-geometry-cotraining.md
+  - ../entities/paper-rift-wam.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
 summary: "DSWAM（arXiv:2607.04927）：双系统 WAM——System 1 执行器视频协同训练、推理直出动作块；可选 System 2 VLM 拆分子任务；DeMaVLA 匹配协议下真机折叠 96.3%、RoboTwin 2.0 92.38%。"
@@ -134,6 +135,7 @@ flowchart TB
 - [World Action Models](../concepts/world-action-models.md) — Joint WAM 概念坐标
 - [VLA](../methods/vla.md) — DeMaVLA / π 系反应式对照
 - [Generative World Models](../methods/generative-world-models.md) — 视频 co-training 与部署解耦语境
+- [Rift](./paper-rift-wam.md) — 推理仍读未来 cache，但不滚视频；对照「训练学世界、部署不想象」
 
 ## 推荐继续阅读
 

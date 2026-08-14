@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-08-13
+updated: 2026-08-14
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT（失败感知因果训练）、Flex-π（多流算力柔性）与 Dyna-2 等实例。"
 related:
   - ../entities/dyna-2.md
@@ -19,6 +19,7 @@ related:
   - ../entities/paper-fact.md
   - ../entities/paper-flex-pi.md
   - ../entities/paper-motubrain.md
+  - ../entities/paper-rift-wam.md
   - ../entities/paper-wam-realtime-async.md
   - ../entities/paper-vt-wam-visuotactile-contact-rich.md
   - ../entities/paper-n0-twam.md
@@ -75,6 +76,7 @@ sources:
   - ../../sources/papers/fact_arxiv_2608_10232.md
   - ../../sources/papers/flex_pi_arxiv_2608_10860.md
   - ../../sources/papers/motubrain_arxiv_2604_27792.md
+  - ../../sources/papers/rift_wam_arxiv_2608_11521.md
   - ../../sources/papers/wam_realtime_async_arxiv_2608_01880.md
   - ../../sources/blogs/dyna_2_million_hour_wam.md
   - ../../sources/repos/awesome-wam-openmoss.md
@@ -172,6 +174,8 @@ sources:
 
 **文献实例（Joint 族 + beyond-RGB 结构化未来 · FastWAM 系）**：[DreamWAM](../entities/paper-dreamwam.md) 在 **VideoDiT–ActionDiT** 上把未来从「仅 RGB」扩成 **appearance / motion / geometry / semantics**：RGB+RAFT flow **联合 latent 去噪**，DA3 depth 与 DINOv2 经 **gated residual** 注入；**推理关闭 beyond-RGB 分支**，部署仍 RGB-only。相对 matched Fast-WAM-Joint：LIBERO **98.00→98.90**、LIBERO-Plus **69.16→75.47**、真机视觉扰动 **55.6→74.4**；代码与 HF 权重已开源（arXiv:2608.04996，HUST / 地瓜 / 武大 / 地平线）。
 
+**文献实例（Joint 族 + 免视频 rollout 的未来 cache · FastWAM 系）**：[Rift](../entities/paper-rift-wam.md) 用闭环干预证明动作专家读的是 **位置绑定的未来 K/V**，一份 final-clean cache 几乎等于迭代去噪轨迹（Joint ADE **1.9 cm**）。再用 **anticipation token 一次 prefill** 写出该 cache，测试期不滚视频、不跑 VAE。LIBERO **98.8% / 247.9 ms**（约 **1.1×** current-only）；RoboTwin **92.9/92.6**。截至 2026-08-14 **未开源**（arXiv:2608.11521，ANU）。
+
 **文献实例（Joint 族 + 失败感知因果训练 · act-then-imagine）**：[FACT](../entities/paper-fact.md) 用共享因果扩散 Transformer **先去噪动作、再以干净动作条件化** 未来视频与任务进度；失败 rollout **掩码动作模仿、保留后果与下调进度**，降低 success-biased future hallucination，并可选 value best-of-N。RoboTwin 含失败共训 **87.5%**；真机 seen **89%**（+scoring **92%**）；代码与 HF 权重已开源（arXiv:2608.10232，UCSD）。
 
 **文献实例（Joint 族 + 多流算力柔性 · RGB/DINO/pointmap）**：[Flex-π](../entities/paper-flex-pi.md) 以冻结 Wan VAE **共享编码 RGB 与 3D pointmap**（重建 PSNR 31.1 dB），并联合 DINOv3 语义流；MoT + 流 dropout / cross-modality forcing 使 **单 checkpoint** 覆盖 **56** 种流组合（action-only ~60 ms → full joint ~193 ms）。真机双臂 YAM 相对最强基线最高约 **2–7×**；LIBERO-Plus 80.9% 仍落后强 VLM 骨干；**代码待发布**（arXiv:2608.10860，UW / AI2）。
@@ -260,6 +264,7 @@ flowchart TB
 - [DSWAM（双系统 WAM 执行）](../entities/paper-dswam-dual-system-wam.md)
 - [Motubrain](../entities/paper-motubrain.md) — 生数 Joint WAM（RoboTwin 95.8/96.1；仓占位）
 - [WAM 实时异步部署](../entities/paper-wam-realtime-async.md) — Motubrain 平台六策略实证
+- [Rift（免视频 rollout 的未来 cache）](../entities/paper-rift-wam.md) — anticipation token 一次写 K/V；LIBERO 98.8% / 1.1× 延迟（未开源）
 - [DynaWM（VLA 在线修正）](../entities/paper-dynawm-vla-online-correction.md)
 - [DreamSteer（部署时 VLA steering）](../entities/paper-dreamsteer-vla-deployment-steering.md)
 - [VT-WAM（视觉-触觉接触丰富 WAM）](../entities/paper-vt-wam-visuotactile-contact-rich.md)
