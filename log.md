@@ -6,6 +6,30 @@
 - **来源：** [`sources/blogs/wechat_freedof_sim2real_dynamics_identification.md`](sources/blogs/wechat_freedof_sim2real_dynamics_identification.md)；原文 [`sources/raw/wechat_freedof_sim2real_dynamics_identification_2026-08-12.md`](sources/raw/wechat_freedof_sim2real_dynamics_identification_2026-08-12.md)
 - **升格：** [`wiki/methods/sim2real-joint-sysid-experiment-design.md`](wiki/methods/sim2real-joint-sysid-experiment-design.md) — 可辨识性三原则、延迟→摩擦→惯量→柔性分级实验；与算法页 [关节执行器参数辨识](wiki/methods/joint-actuator-parameter-identification.md) 分工
 - **交叉：** SysID / armature / 关节摩擦 / 连杆-转子惯量 / 并联关节 / Sim2Real 闭环 / 驱动链枢纽
+## [2026-08-14] ingest | sources/papers/smpc2rl_arxiv_2608_12063.md — 接入 SMPC-to-RL 稀疏奖励全身 loco-manipulation（项目页确认未开源）
+
+- **触发：** 用户指定论文 <https://arxiv.org/abs/2608.12063>、项目页 <https://pages.rai-inst.com/smpc2rl/>；G1 稀疏奖励全身操作
+- **步骤 2.5：** 项目页无 Code/GitHub；文中 judo 是通用采样 MPC 工具箱，不是本文管线 → **确认未开源**
+- **来源：** [`sources/papers/smpc2rl_arxiv_2608_12063.md`](sources/papers/smpc2rl_arxiv_2608_12063.md)、[`sources/sites/rai-inst-smpc2rl.md`](sources/sites/rai-inst-smpc2rl.md)
+- **升格：** [`wiki/entities/paper-smpc2rl-loco-manipulation.md`](wiki/entities/paper-smpc2rl-loco-manipulation.md) — SMPC 离线专家 + 稀疏 FastTD3 + 冻结 ReLIC；Spot/G1；时序图不适用
+- **交叉：** Loco-Manipulation / Sumo / MPC vs RL / Unitree G1 / 15 分钟行走 FastTD3 / MPC-RL
+
+## [2026-08-14] ingest | sources/papers/galaxea_g05_arxiv_2608_11739.md — 接入 G0.5 统一推理与动作 VLA（GalaxeaVLA + HF 已开源，Community License）
+
+- **触发：** 用户指定 GitHub <https://github.com/OpenGalaxea/GalaxeaVLA>、论文 <https://arxiv.org/abs/2608.11739>、项目页 <https://opengalaxea.github.io/G05/>、权重 <https://huggingface.co/OpenGalaxea/G05>
+- **步骤 2.5：** `OpenGalaxea/GalaxeaVLA` 含 `finetune.sh` / `serve_policy.py` / `experiments/`；HF `OpenGalaxea/G05` 权重约 55 GB → **已开源、可运行**。许可证 **G0.5 Community License**（学术/评估，非 Apache/MIT）
+- **来源：** 论文摘录 + [`sources/sites/opengalaxea-g05.md`](sources/sites/opengalaxea-g05.md) + [`sources/repos/galaxea-vla.md`](sources/repos/galaxea-vla.md)
+- **升格：** [`wiki/entities/paper-galaxea-g05.md`](wiki/entities/paper-galaxea-g05.md) — VLM-as-Actor、ActionCodec 27 维、原生 CoT；含 mermaid 时序图
+- **机构：** `schema/institutions.json` 新增 `galaxea`（星海图 / OpenGalaxea）
+- **交叉：** VLA / 开源复现景观 / π0.5 / InternVLA-A1.5 / 操作选型 / LIBERO / RoboTwin
+
+## [2026-08-14] ingest | sources/papers/rift_wam_arxiv_2608_11521.md — 接入 Rift 免视频 rollout 低延迟 WAM（确认未开源）
+
+- **触发：** 用户指定论文 <https://arxiv.org/abs/2608.11521>；免视频 Rollout 的低延迟 WAM
+- **步骤 2.5：** 无项目页、无官方仓；FastWAM 仓是骨干对照，不能当成 Rift 实现 → **确认未开源**
+- **来源：** [`sources/papers/rift_wam_arxiv_2608_11521.md`](sources/papers/rift_wam_arxiv_2608_11521.md)
+- **升格：** [`wiki/entities/paper-rift-wam.md`](wiki/entities/paper-rift-wam.md) — 干预 Finding + anticipation prefill；LIBERO 98.8%/247.9 ms；时序图不适用
+- **交叉：** World Action Models / 动作后果 01 / DreamWAM / Flex-π / DSWAM / WAM 异步部署 / VLA 部署指南
 
 ## [2026-08-13] ingest | sources/papers/gravity_compensation.md — 接入重力补偿算法簇（模型基 RNEA / PD+$g$ / De Luca 迭代学习 / Tomei 自适应）；PAL 教程部分开源、生产控制器未开源
 

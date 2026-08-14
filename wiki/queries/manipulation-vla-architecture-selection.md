@@ -3,13 +3,14 @@ title: 操作 VLA 与视频-动作架构选型指南
 type: query
 status: complete
 created: 2026-05-21
-updated: 2026-07-01
-summary: 在灵巧操作任务中，如何在 VLA、Video-Action Model、解耦动力学 VLA、世界模型与开源策略家族之间选型与组合。
-sources:
+updated: 2026-08-14
+related:
+  - ../entities/paper-galaxea-g05.md
   - ../../sources/blogs/wechat_shenlan_vla_github_repro_survey_2025.md
   - ../../sources/papers/rl_foundation_models.md
   - ../../sources/papers/defi_arxiv_2604_16391.md
   - ../../sources/papers/mimic_video_arxiv_2512_15692.md
+  - ../../sources/papers/galaxea_g05_arxiv_2608_11739.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「做灵巧操作，VLA / 视频模型 / 世界模型 / 开源策略该怎么选？」
@@ -21,7 +22,7 @@ sources:
 
 | 你的约束 | 推荐路线 | 方法页 |
 |----------|----------|--------|
-| 有大规模带动作标签机器人数据 | 端到端 VLA / 开源策略族 | [VLA](../methods/vla.md)、[π₀](../methods/π0-policy.md)、[π0.7](../methods/pi07-policy.md)、[STAR-VLA](../methods/star-vla.md)、[Pelican](../methods/pelican-unified-1.md) |
+| 有大规模带动作标签机器人数据 | 端到端 VLA / 开源策略族 | [VLA](../methods/vla.md)、[π₀](../methods/π0-policy.md)、[π0.7](../methods/pi07-policy.md)、[G0.5](../entities/paper-galaxea-g05.md)、[STAR-VLA](../methods/star-vla.md)、[Pelican](../methods/pelican-unified-1.md) |
 | 有人视频、缺动作标签 | 解耦前向/逆动力学 | [DeFI](../methods/defi-decoupled-dynamics-vla.md) |
 | 强调语义-动力学一体潜计划 | Video-Action Model | [mimic-video](../methods/mimic-video.md) |
 | 需要显式交互物理想象 | 灵巧世界模型 | [DWM](../methods/dwm.md) |

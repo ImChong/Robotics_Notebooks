@@ -2,7 +2,7 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
-updated: 2026-08-13
+updated: 2026-08-14
 summary: "LIBERO：用一百三十个机械臂任务控制对象、布局、目标和语言变化，专门评估终身学习与迁移中的分布偏移；固定任务套件和数据接口便于比较策略是记住训练场景还是获得可迁移能力。"
 related:
   - ../concepts/sim2real.md
@@ -13,6 +13,8 @@ related:
   - ../entities/paper-actfovea.md
   - ../entities/paper-neural-introspection-gating.md
   - ../entities/paper-flex-pi.md
+  - ../entities/paper-galaxea-g05.md
+  - ../entities/paper-rift-wam.md
   - ../queries/hmi-opensource-projects-coverage.md
 sources:
   - ../../sources/repos/libero-benchmark.md
@@ -100,6 +102,8 @@ flowchart LR
 - [ActFovea](./paper-actfovea.md) — 在本基准四套件（40 任务 / 2000 episodes）上做 VLA 运行时扰动与防护评测
 - [Neural Introspection Gating](./paper-neural-introspection-gating.md) — OpenVLA / OFT 上 logit-margin 门控 KV 缓存；Long/Goal 收回盲缓存掉点（arXiv:2608.10824）
 - [Flex-π](./paper-flex-pi.md) — 多流 WAM；LIBERO 柔性 ckpt 98.5%、固定模式 99.2%；LIBERO-Plus Total 80.9%（arXiv:2608.10860；代码待发布）
+- [G0.5](./paper-galaxea-g05.md) — AR VLA；LIBERO 均 **98.9%** / Long **98.6%**（已开源）
+- [Rift](./paper-rift-wam.md) — 免 rollout WAM；LIBERO **98.8%**、LIBERO-Plus **81.1%**（未开源）
 - [Why Action Chunking Improves BC](./paper-why-action-chunking-improves-bc.md) — Libero-90 上 Delay / RDE 相对 action chunking 的机制消融
 - [SLIM-0.5B](./paper-slim-05b.md) — 0.47B latent 策略；LIBERO 97.5% / LIBERO-Plus 77.45%（开源权重）
 

@@ -1,13 +1,35 @@
 {
   "generated_at": "2026-08-14",
-  "node_count": 3087,
-  "edge_count": 26901,
+  "node_count": 3090,
+  "edge_count": 26958,
   "coverage": {
-    "covered": 3063,
-    "total": 3063,
+    "covered": 3066,
+    "total": 3066,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/gravity-compensation.md",
+      "detail_id": "wiki-concepts-gravity-compensation",
+      "label": "Gravity Compensation（重力补偿）",
+      "type": "concept",
+      "recency": "2026-08-14",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-learning-gravity-compensation.md",
+      "detail_id": "entity-paper-learning-gravity-compensation",
+      "label": "迭代学习重力补偿（De Luca & Panzieri, 1993）",
+      "type": "entity",
+      "recency": "2026-08-14",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/methods/sim2real-joint-sysid-experiment-design.md",
       "detail_id": "wiki-methods-sim2real-joint-sysid-experiment-design",
@@ -195,37 +217,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-fact.md",
-      "detail_id": "entity-paper-fact",
-      "label": "FACT（Failure-Aware Causal Training · arXiv:2608.10232）",
-      "type": "entity",
-      "recency": "2026-08-13",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界动作模型（World Action Models, WAM） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-g1-confined-space-wbp.md",
-      "detail_id": "entity-paper-g1-confined-space-wbp",
-      "label": "G1 Confined-Space WBP（狭窄空间全身规划 · arXiv:2608.10220）",
-      "type": "entity",
-      "recency": "2026-08-13",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/methods/sim2real-joint-sysid-experiment-design.md",
-    "detail_id": "wiki-methods-sim2real-joint-sysid-experiment-design",
-    "label": "Sim2Real Joint SysID Experiment Design（关节动力学辨识实验设计）",
-    "type": "method",
+    "path": "wiki/concepts/gravity-compensation.md",
+    "detail_id": "wiki-concepts-gravity-compensation",
+    "label": "Gravity Compensation（重力补偿）",
+    "type": "concept",
     "recency": "2026-08-14",
     "source": "git",
     "action": "added",
+    "has_repo": true,
     "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
@@ -235,7 +237,7 @@
     },
     {
       "label": "仿真到现实",
-      "size": 485
+      "size": 486
     },
     {
       "label": "视觉-语言-动作",
@@ -250,8 +252,8 @@
       "size": 144
     },
     {
-      "label": "计算机视觉中的 Transformer",
-      "size": 86
+      "label": "视觉语言动作纵深路线",
+      "size": 89
     }
   ],
   "top_hubs": [
@@ -259,7 +261,7 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "degree": 1219,
+      "degree": 1223,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -282,7 +284,7 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "degree": 718,
+      "degree": 719,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -290,7 +292,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 716,
+      "degree": 718,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
@@ -330,7 +332,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 448,
+      "degree": 449,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }

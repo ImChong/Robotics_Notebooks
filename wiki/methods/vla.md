@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-08-13
+updated: 2026-08-14
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作。"
 related:
   - ../entities/embodied-interview-qa.md
@@ -66,6 +66,7 @@ related:
   - ../entities/fluxvla-engine.md
   - ../entities/paper-steam-advantage-modeling.md
   - ../entities/paper-deed.md
+  - ../entities/paper-galaxea-g05.md
   - ../entities/paper-internvla-a15-unified-vla.md
   - ../entities/paper-harness-vla.md
   - ../entities/paper-robo-harness.md
@@ -207,6 +208,7 @@ flowchart TD
 - **LaST-HD**：在 **reasoning-before-acting MoT VLA** 上，用 **动作条件世界模型** 把 **非配对人手与机器人轨迹** 对齐到 **共享前向动力学潜空间**，以潜式 **物理推理** 监督动作专家；配套 **OOL Glove** 采集与 **mixed-to-human**（混合共训 + 人手在线纠偏）配方，在 **6 项真机 / 3 本体** 上报告 **仅用人类数据泛化** 与 **约 20 分钟纠偏适应**（见 [LaST-HD](../entities/paper-last-hd-latent-physical-reasoning.md)，arXiv:2606.23685）
 - **GaP staging（非纯 VLA，但直接消费 VLA）**：[GaP](../entities/paper-gap-graph-as-policy.md) 在 [变体自动化](../concepts/variational-automation.md) benchmark 上用 **计算图** 做感知/相机位姿等 **结构化 staging**，再 handoff **π₀.₅ / MolmoAct2**；大位姿变化列裸 VLA **~0.20**，**π₀.₅ w/ GaP** 可达 **0.66+**（Pack varied）——说明 **可靠性 gap** 有时靠 **图式工程壳** 而非单点放大 VLA 数据
 - **InternVLA-A1.5**：**Qwen3.5-2B MoT VLM + 460M unified expert**；Stage1 **持续 VQA/子任务/FAST** 共训保语义，Stage2 用 **50 foresight token** 查询 **冻结 WAN2.2** 潜式未来 + **flow matching** 连续动作；**1.2M** 机器人 + **3M** InternVLA-M1 预训练；**六套仿真全榜领先**，真机 **组合指令 OOD 绑定** 与 **13 步 MOF** 显著超 **π₀.₅/Motus**；**训练用世界模型、部署不滚像素**（~0.1s/步）（见 [InternVLA-A1.5](../entities/paper-internvla-a15-unified-vla.md)，arXiv:2607.04988）
+- **G0.5（星海图）**：**Qwen3.5-2B 单一解码器** 在同一自回归流里发 **CoT + 动作码**（VLM-as-Actor）；跨本体 **RVQ ActionCodec**（27 维）+ 视觉记忆；R1 真机 **76.7%**、LIBERO **98.9%**、RoboTwin **93.3%**；**GitHub + HF 已开源**（Community License）（见 [G0.5](../entities/paper-galaxea-g05.md)，arXiv:2608.11739）
 - **JoyAI-RA 0.5（京东 Joy Future Academy）**：**VLWA** = VLM + **LAC-WM** + Flow Action Expert；**隐式 latent-action** 吃无标签人视频、**显式 130-D** 规范动作吃可靠轨迹；**内–外环 RL**；AgiBot G1 seen **92.0** / unseen **75.5**，人视频缩放未见饱和；**未开源**（见 [JoyAI-RA 0.5](../entities/paper-joyai-ra-05.md)，arXiv:2608.05674）
 - **RoboInter1.5**：**230k+** episode 稠密中间表示套件（Data / VQA / VLM / VLA）+ **IR 条件世界模型**；三种 plan-then-execute（IC/EC/Modular + F-CoT）；**数据与 VLM 已开源**，VLA 权重与 World 代码待齐（见 [RoboInter1.5](../entities/paper-robointer-1-5.md)，arXiv:2607.18709）
 - **RynnBrain 1.1 / RynnBrain-VLA（阿里达摩院）**：**Qwen3.5** 系 **2B/9B/122B-A10B** 具身基础模型 + **接触点 / native 3D**；VLA 用 **81 维统一动作空间 + embodiment mask + flow matching + RTC**，在 **G1 / Astribot / Tianji-Wuji** 上同配方优于 **Qwen-Based-VLA** 与 **π₀.₅ / GR00T N1.7**；**基础模型权重与推理已开源**，VLA 训练栈未见公开（见 [RynnBrain 1.1](../entities/paper-rynnbrain-1-1.md)，arXiv:2607.17977）
