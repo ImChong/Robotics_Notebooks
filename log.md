@@ -1,3 +1,12 @@
+## [2026-08-14] ingest | sources/papers/humanoidvln_arxiv_2608_12860.md — 接入 HumanoidVLN 人形物理 VLN 仿真与基准（宣称录用后开源）
+
+- **触发：** 用户指定 arXiv 论文 *HumanoidVLN: A Physics-Grounded Simulator and Benchmark for Vision-Language Navigation Across Diverse Humanoid Embodiments*
+- **步骤 2.5：** 项目页 <https://humanoid-vln.github.io/> 无 GitHub/HF；论文写 *will be released upon acceptance* → **宣称将开源 / 待发布**。未建 `sources/repos/`
+- **来源：** [`sources/papers/humanoidvln_arxiv_2608_12860.md`](sources/papers/humanoidvln_arxiv_2608_12860.md)、[`sources/sites/humanoid-vln-github-io.md`](sources/sites/humanoid-vln-github-io.md)
+- **升格：** [`wiki/entities/paper-humanoidvln.md`](wiki/entities/paper-humanoidvln.md) — 四本体 RL+PD/MPC、87 场景、933 episode MAA；JanusVLN 平均 SR 43.55%；G1 DualVLN 20 条 r=0.935；时序图不适用
+- **机构：** `schema/institutions.json` 新增 `vinmotion`（越南人形机器人）
+- **交叉：** VLN 任务页 / 分类 01 / 四范式（不入可跑通清单）/ NaVILA / VLN-CE / Isaac Sim / G1 / Sim2Real / Locomotion
+
 ## [2026-08-14] ingest | sources/papers/green_for_go_vla_nav_grounding_arxiv_2607_05122.md — 接入 UCL Green for Go 导航 VLA 绿/红视觉接地（确认未开源）
 
 - **触发：** 用户指定 arXiv 论文 *Green for Go, Red for No: Visual Grounding via Semantic Segmentation for VLA Navigation Policies*

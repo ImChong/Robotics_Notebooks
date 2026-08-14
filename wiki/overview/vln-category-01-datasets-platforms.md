@@ -2,7 +2,7 @@
 type: overview
 tags: [vln, navigation, datasets, simulation, category-hub, survey]
 status: complete
-updated: 2026-06-20
+updated: 2026-08-14
 summary: "VLN 10 篇盘点 · 01 数据集与仿真平台（3 篇）— 任务如何定义、评测，并从离散导航图走向连续环境与高层目标定位？"
 related:
   - ./vln-10-papers-technology-map.md
@@ -11,9 +11,11 @@ related:
   - ../entities/paper-vln-02-vln-ce.md
   - ../entities/paper-vln-03-reverie.md
   - ../tasks/vision-language-navigation.md
+  - ../entities/paper-humanoidvln.md
 sources:
   - ../../sources/blogs/wechat_shenlan_vln_10_papers_survey.md
   - ../../sources/papers/vln_10_papers_catalog.md
+  - ../../sources/papers/humanoidvln_arxiv_2608_12860.md
 ---
 
 # VLN 分类 01：数据集与仿真平台
@@ -40,6 +42,10 @@ sources:
 | 02 | VLN-CE | [paper-vln-02-vln-ce.md](../entities/paper-vln-02-vln-ce.md) | [source](../../sources/papers/vln_survey_02_vln_ce.md) |
 | 03 | REVERIE | [paper-vln-03-reverie.md](../entities/paper-vln-03-reverie.md) | [source](../../sources/papers/vln_survey_03_reverie.md) |
 
+## 后续物理平台（不在 10 篇盘点内）
+
+策展三篇定义的是 Matterport / Habitat 时代的「测什么」。其后 Isaac 系工作把 **刚体动力学** 拉进 VLN；[HumanoidVLN](../entities/paper-humanoidvln.md)（arXiv:2608.12860）进一步把评测收窄到 **双足专属**：分本体 RL 步态、≥100 m² 可通行筛选、摔倒率（FR）。相对 VLN-PE / VLNVerse 的「多种机器人共用控制代理」，它不把人形当轮式互换 mesh。截至 2026-08-14 **待开源**，不替换本组 R2R / VLN-CE / REVERIE 入门顺序。
+
 ## 与算法框架组的分工
 
 | 维度 | 本组（01 数据/平台） | [02 算法框架](./vln-category-02-algorithm-frameworks.md) |
@@ -53,11 +59,13 @@ sources:
 - [算法框架](./vln-category-02-algorithm-frameworks.md)
 - [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md)
 - [SceneVerse++](../entities/sceneverse-pp.md) — 互联网视频→R2R 风格数据（后续数据扩展路线对照）
+- [HumanoidVLN](../entities/paper-humanoidvln.md) — Isaac 人形物理 VLN（后续平台；待开源）
 
 ## 参考来源
 
 - [wechat_shenlan_vln_10_papers_survey.md](../../sources/blogs/wechat_shenlan_vln_10_papers_survey.md)
 - [vln_10_papers_catalog.md](../../sources/papers/vln_10_papers_catalog.md)
+- [HumanoidVLN 论文摘录](../../sources/papers/humanoidvln_arxiv_2608_12860.md)
 
 ## 推荐继续阅读
 

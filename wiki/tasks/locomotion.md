@@ -2,11 +2,12 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-08-13
+updated: 2026-08-14
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
   - ../entities/paper-legged-robots-advances-challenges.md
+  - ../entities/paper-humanoidvln.md
   - ../entities/paper-rma-rapid-motor-adaptation.md
   - ../entities/paper-legged-load-adapt-unknown-dynamic-load.md
   - ../entities/paper-amp-survey-08-more.md
@@ -69,6 +70,7 @@ sources:
   - ../../sources/papers/adp_arxiv_2607_03454.md
   - ../../sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md
   - ../../sources/papers/p3_arxiv_2607_25541.md
+  - ../../sources/papers/humanoidvln_arxiv_2608_12860.md
 summary: "Locomotion 研究机器人如何稳定、高效地在不同地形上移动，是腿式与人形控制的核心任务页。"
 ---
 
@@ -339,6 +341,7 @@ flowchart TD
 ## 关联页面
 
 - [Humanoid Locomotion](./humanoid-locomotion.md) — 人形机器人全身移动任务
+- [HumanoidVLN](../entities/paper-humanoidvln.md) — 把分本体 RL 步态接到室内 VLN 评测；H1 摔倒率暴露控制–导航耦合
 - [Hybrid Locomotion](./hybrid-locomotion.md)
 - [人形腿部行星滚柱丝杠直线驱动（PRS）](../concepts/planetary-roller-screw-humanoid-leg-actuation.md) — 腿部执行器路线与行走动态、能耗叙事
 - [Whole-Body Control](../concepts/whole-body-control.md)

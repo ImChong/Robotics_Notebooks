@@ -3,17 +3,19 @@
 type: entity
 tags: [paper, vln, vln-survey, navigation, embodied-ai, meta, georgia-tech, oregon-state]
 status: complete
-updated: 2026-06-25
+updated: 2026-08-14
 arxiv: "2004.02857"
 summary: "基于 Habitat 将 VLN 从离散导航图迁移到连续 3D 环境，智能体以底层前进/转向在物理空间移动。"
 related:
   - ../overview/vln-10-papers-technology-map.md
   - ../overview/vln-category-01-datasets-platforms.md
   - ../tasks/vision-language-navigation.md
+  - ../entities/paper-humanoidvln.md
 sources:
   - ../../sources/papers/vln_survey_02_vln_ce.md
   - ../../sources/blogs/wechat_shenlan_vln_10_papers_survey.md
   - ../../sources/papers/vln_10_papers_catalog.md
+  - ../../sources/papers/humanoidvln_arxiv_2608_12860.md
 ---
 
 # VLN-CE
@@ -82,6 +84,7 @@ sources:
 - 技术地图：[vln-10-papers-technology-map.md](../overview/vln-10-papers-technology-map.md)
 - 分类 hub：[vln-category-01-datasets-platforms.md](../overview/vln-category-01-datasets-platforms.md)
 - 任务页：[vision-language-navigation.md](../tasks/vision-language-navigation.md)
+- 后续物理层：[HumanoidVLN](./paper-humanoidvln.md) — 连续动作之后再把双足接触与摔倒算进协议
 - 原始 source：[vln_survey_02_vln_ce.md](../../sources/papers/vln_survey_02_vln_ce.md)
 
 ## 参考来源

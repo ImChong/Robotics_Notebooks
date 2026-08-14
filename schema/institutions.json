@@ -2653,6 +2653,13 @@
         "university-college-london",
         "ucl-cs"
       ]
+    },
+    "vinmotion": {
+      "label": "越南人形机器人（VinMotion）",
+      "aliases": [
+        "vinmotion",
+        "vin-motion"
+      ]
     }
   }
 }

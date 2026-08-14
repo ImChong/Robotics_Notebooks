@@ -18,6 +18,7 @@ related:
   - ../entities/paper-humembr.md
   - ../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md
   - ../entities/paper-green-for-go-vla-nav-grounding.md
+  - ../entities/paper-humanoidvln.md
   - ../entities/paper-sru-spatially-enhanced-recurrent-memory.md
   - ../concepts/3d-spatial-vqa.md
   - ../concepts/world-action-models.md
@@ -46,6 +47,7 @@ sources:
   - ../../sources/papers/zonda_arxiv_2607_21025.md
   - ../../sources/papers/refertrack_arxiv_2607_20061.md
   - ../../sources/papers/green_for_go_vla_nav_grounding_arxiv_2607_05122.md
+  - ../../sources/papers/humanoidvln_arxiv_2608_12860.md
 ---
 
 # 视觉–语言导航（Vision-and-Language Navigation, VLN）
@@ -109,6 +111,12 @@ sources:
 - **方法要点：** observation-only vs joint（语言后缀或目标图同样 overlay）；长指令远航点收益更大；长度归一化后优势消失。
 - **开源边界：** 截至 2026-08-14 **确认未开源**；可跑通导航栈仍走 [四范式开源复现](../overview/vln-open-source-repro-paradigms.md)。
 
+### 人形物理执行：跨本体 Isaac VLN
+
+- **设定差异：** [HumanoidVLN](../entities/paper-humanoidvln.md)（arXiv:2608.12860）不把人形当 Habitat 传送代理，而在 [Isaac Sim](../entities/isaac-sim.md) 上用 **分本体 RL 步态 + PD/MPC 跟踪** 走完语言指令；场景按 **≥100 m² 可通行** 筛选，指令由 MAA + 人工核验，相对 R2R/VLN-CE 把 **摔倒（FR）** 写进协议。
+- **方法要点：** 四本体（G1 / H1 / Internal-A / B）零样本评测 NaVILA、DualVLN、StreamVLN、JanusVLN；JanusVLN 平均 SR 43.55%，H1 上部分模型 FR >60%；G1 + DualVLN 20 条 sim–real NE **r=0.935**。
+- **开源边界：** 截至 2026-08-14 **宣称录用后开源**，项目页无 GitHub；可跑通栈仍走 [四范式](../overview/vln-open-source-repro-paradigms.md) 与已开源 [NaVILA](../entities/paper-notebook-navila-legged-robot-vision-language-action-model.md)。
+
 ### 室内 ObjectNav：跨楼层 + 动态行人
 
 - **设定差异：** [ZONDA](../entities/paper-zonda.md) 目标是 **物体类别到达**（非细粒度语言路径）；评测主线为 Habitat **多楼层** HM3D/MP3D，并扩展 **HM3D-DYNA** 加入移动行人。
@@ -117,7 +125,7 @@ sources:
 
 ## 常见误区
 
-- **误区**：「VLN 做得好就等于机器人能走。」仿真离散动作与真实连续控制、动力学约束仍有鸿沟，通常需要低层控制与碰撞规避模块。
+- **误区**：「VLN 做得好就等于机器人能走。」仿真离散动作与真实连续控制、动力学约束仍有鸿沟，通常需要低层控制与碰撞规避模块。[HumanoidVLN](../entities/paper-humanoidvln.md) 进一步表明：同一模型在 G1 与 H1 上 SR/FR 可差一个数量级，传送式分数不能外推到双足。
 - **误区**：「只用仿真轨迹训练就能覆盖真实室内。」真实视频的引入（含自动指令生成）是为了丰富 **语言风格与行走模式**，但仍需评估在标准基准上的可迁移性。
 
 ## 与其他页面的关系
@@ -136,6 +144,7 @@ sources:
 - **城市尺度方向感知**：[DA-Nav](../entities/paper-da-nav.md) — 商业导航指令 + 图像平面离散 grounding + CoT 恢复；CARLA / Go2 / Kuavo-V（arXiv:2607.11638）。
 - **多楼层动态 ObjectNav**：[ZONDA](../entities/paper-zonda.md) — 启发式跨楼层 + 多视角核验 + 行人避障；HM3D-DYNA / TITA（arXiv:2607.21025）。
 - **冻结 VLA 可通行 overlay**：[Green for Go](../entities/paper-green-for-go-vla-nav-grounding.md) — SegFormer 绿/红接地 OmniVLA；开环航点误差 vs 长度正则（arXiv:2607.05122）。
+- **人形物理 VLN 平台**：[HumanoidVLN](../entities/paper-humanoidvln.md) — Isaac Sim 四本体 + FR；933 episode 零样本（arXiv:2608.12860；待开源）。
 
 ## 参考来源
 
@@ -146,6 +155,7 @@ sources:
 - [DA-Nav 论文摘录（arXiv:2607.11638）](../../sources/papers/da_nav_arxiv_2607_11638.md) — 城市尺度方向感知 VLN
 - [ZONDA 论文摘录（arXiv:2607.21025）](../../sources/papers/zonda_arxiv_2607_21025.md) — 多楼层动态零样本 ObjectNav
 - [Green for Go 论文摘录（arXiv:2607.05122）](../../sources/papers/green_for_go_vla_nav_grounding_arxiv_2607_05122.md) — 冻结导航 VLA 的绿/红可通行视觉接地
+- [HumanoidVLN 论文摘录（arXiv:2608.12860）](../../sources/papers/humanoidvln_arxiv_2608_12860.md) — 人形物理 VLN 仿真与基准
 - [SceneVerse++ 原始资料归档](../../sources/repos/sceneverse-pp.md)
 - Chen et al., *Lifting Unlabeled Internet-level Data for 3D Scene Understanding* (arXiv:2604.01907) — VLN 数据生成与 R2R 实验
 - Anderson et al., *Vision-and-Language Navigation* — R2R 任务经典定义（如需溯源基准起源可查阅原文）
@@ -167,6 +177,7 @@ sources:
 - [DA-Nav（方向感知城市尺度 VLN）](../entities/paper-da-nav.md) — 商业导航指令 + 图像平面网格 + CoT 恢复
 - [ZONDA（多楼层动态零样本 ObjectNav）](../entities/paper-zonda.md) — 跨楼层启发式规划 + 多视角核验 + 行人预测
 - [Green for Go（VLA 导航可通行性视觉接地）](../entities/paper-green-for-go-vla-nav-grounding.md) — 冻结 OmniVLA 的绿/红 overlay；未开源
+- [HumanoidVLN](../entities/paper-humanoidvln.md) — 跨人形本体的 Isaac 物理 VLN 基准；待开源
 - [RoamFlow](../entities/paper-roamflow.md) — MeanFlow 一步 image-goal 导航（对照；未开源）
 - [S²-VLA（驾驶双流 VLA）](../entities/paper-s-squared-vla.md) — NAVSIM 端到端规划；与 VLN / RobotNav 驾驶 mode 对照
 - [Qwen-RobotNav](../entities/qwen-robot-nav.md) — 统一 VLN / ObjNav / 跟踪 / NAVSIM 的导航基座

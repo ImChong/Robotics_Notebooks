@@ -17,11 +17,14 @@ related:
   - ../entities/paper-zonda.md
   - ../entities/paper-roamflow.md
   - ../entities/paper-green-for-go-vla-nav-grounding.md
+  - ../entities/paper-humanoidvln.md
 sources:
   - ../../sources/blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md
   - ../../sources/papers/uni_lavira_arxiv_2605_27582.md
   - ../../sources/papers/da_nav_arxiv_2607_11638.md
   - ../../sources/papers/zonda_arxiv_2607_21025.md
+  - ../../sources/papers/green_for_go_vla_nav_grounding_arxiv_2607_05122.md
+  - ../../sources/papers/humanoidvln_arxiv_2608_12860.md
 summary: "VLN 新手复现策展：四条范式各一栈——VLFM（2D 语义地图）、NavGPT（LLM 推理）、NoMaD（扩散统一探索/到达）、Uni-NaVid（导航 VLA）；按模块化→语言中枢→端到端策略→统一 VLA 由浅入深，而非性能排名。"
 ---
 
@@ -88,6 +91,7 @@ flowchart LR
 - **多楼层动态 ObjectNav（暂不可复现）：** [ZONDA](../entities/paper-zonda.md)（arXiv:2607.21025）在 VLFM 式地图–语义前沿之上补 **跨楼层几何可通行、多视角 VLM 核验、行人预测避障**；**截至 2026-07-24 未开源**。工程上可先跑通 VLFM，再对照已开源 [ASCENT](https://github.com/Zeying-Gong/ascent) 理解跨楼层差异。
 - **Image-goal MeanFlow 生成导航（暂不可复现）：** [RoamFlow](../entities/paper-roamflow.md)（arXiv:2606.29934）用 MeanFlow 一步轨迹 + IL→RL，Habitat/Go2 报告低延迟高 SR；**截至 2026-08-05 未开源**，不进入本页四范式清单。需要可跑通生成导航时仍从 **NoMaD** 起步。
 - **冻结 VLA 可通行 overlay（暂不可复现）：** [Green for Go](../entities/paper-green-for-go-vla-nav-grounding.md)（arXiv:2607.05122）只改 OmniVLA 输入（绿/红 SegFormer），**不进入本页四范式清单**；当作「已有导航 VLA 上的推理时试验」阅读即可。**勿与** [Green-VLA](../entities/paper-greenvla-staged-vla-humanoid.md) **混淆**。
+- **人形物理 VLN 平台（暂不可复现）：** [HumanoidVLN](../entities/paper-humanoidvln.md)（arXiv:2608.12860）在 Isaac Sim 上评测双足执行与摔倒，把 [NaVILA](../entities/paper-notebook-navila-legged-robot-vision-language-action-model.md) 等当零样本被测对象；**截至 2026-08-14 项目页无代码**，不进入本页清单。需要可跑通腿式链时仍从 **Uni-NaVid / NaVILA** 起步。
 
 ## 按目标选入口
 
@@ -121,6 +125,7 @@ flowchart LR
 - [ZONDA](../entities/paper-zonda.md) — 多楼层动态零样本 ObjectNav（方法对照；暂未开源）
 - [RoamFlow](../entities/paper-roamflow.md) — MeanFlow 一步 image-goal（方法对照；暂未开源）
 - [Green for Go](../entities/paper-green-for-go-vla-nav-grounding.md) — 冻结 OmniVLA 绿/红 overlay（方法对照；暂未开源）
+- [HumanoidVLN](../entities/paper-humanoidvln.md) — 人形物理 VLN 基准（方法对照；待开源）
 
 ## 参考来源
 
@@ -129,6 +134,7 @@ flowchart LR
 - [DA-Nav 论文摘录（arXiv:2607.11638）](../../sources/papers/da_nav_arxiv_2607_11638.md)
 - [ZONDA 论文摘录（arXiv:2607.21025）](../../sources/papers/zonda_arxiv_2607_21025.md)
 - [Green for Go 论文摘录（arXiv:2607.05122）](../../sources/papers/green_for_go_vla_nav_grounding_arxiv_2607_05122.md)
+- [HumanoidVLN 论文摘录（arXiv:2608.12860）](../../sources/papers/humanoidvln_arxiv_2608_12860.md)
 
 ## 推荐继续阅读
 
