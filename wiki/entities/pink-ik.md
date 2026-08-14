@@ -10,6 +10,7 @@ related:
   - ../entities/humanoid-motion-intelligence.md
   - ../queries/hmi-opensource-projects-coverage.md
   - ../formalizations/inverse-kinematics.md
+  - ../concepts/null-space-control.md
 sources:
   - ../../sources/repos/pink-ik.md
   - ../../sources/repos/humanoid-motion-intelligence.md
@@ -89,6 +90,7 @@ flowchart LR
 - [isaac-lab](../entities/isaac-lab.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [逆运动学](../formalizations/inverse-kinematics.md) — 任务空间 IK 与 Pinocchio 几何雅可比
+- [零空间控制](../concepts/null-space-control.md) — 冗余次级任务；Pink 用加权任务而非手写 $N$
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
 
 ## 参考来源

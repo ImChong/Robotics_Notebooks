@@ -2,11 +2,12 @@
 type: concept
 tags: [control, optimization, overactuated, allocation, humanoid]
 status: complete
-updated: 2026-06-23
+updated: 2026-08-13
 related:
   - ../formalizations/quadratic-programming.md
   - ../concepts/whole-body-control.md
   - ../concepts/constrained-optimization.md
+  - ./null-space-control.md
 sources:
   - ../../sources/courses/numerical_optimization_foundations_robotics.md
 summary: "控制分配：冗余驱动系统（多旋翼、推力矢量、多接触）在等式动力学约束下求可行且最优的执行器指令。"
@@ -59,6 +60,7 @@ $$\min_\tau \ \|W(\tau - \tau_{\text{pref}})\|^2 \quad \text{s.t.} \quad B\tau =
 - [Quadratic Programming](../formalizations/quadratic-programming.md)
 - [Whole-Body Control](./whole-body-control.md)
 - [Constrained Optimization](./constrained-optimization.md)
+- [零空间控制](./null-space-control.md) — 冗余运动学对偶：主任务占用后剩余 $\tau$ 进 $\ker J$
 - [Numerical Optimization Curriculum](../entities/numerical-optimization-curriculum.md)
 
 ## 推荐继续阅读

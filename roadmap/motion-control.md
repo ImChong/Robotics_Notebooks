@@ -456,7 +456,7 @@ flowchart TD
 
 > **上一层的局限：** L2 动力学告诉你"输入力矩 → 输出加速度"的物理关系，但不告诉你"现在该输入多少力矩"——这是控制器的工作。L3 是 L4 所有方法（LIP / MPC / WBC）的底层语法。
 
-**本阶段入口：** [Optimal Control](../wiki/concepts/optimal-control.md)、[LQR](../wiki/formalizations/lqr.md)、[Model Predictive Control](../wiki/methods/model-predictive-control.md)、[HQP](../wiki/concepts/hqp.md)、[Trajectory Optimization](../wiki/methods/trajectory-optimization.md)、[Numerical Optimization Curriculum](../wiki/entities/numerical-optimization-curriculum.md)（数值优化 L0+ 课程地图）、[CMU Optimal Control 2025](../wiki/entities/cmu-optimal-control-curriculum.md)（16-745 公开录像策展）。
+**本阶段入口：** [Optimal Control](../wiki/concepts/optimal-control.md)、[LQR](../wiki/formalizations/lqr.md)、[Model Predictive Control](../wiki/methods/model-predictive-control.md)、[HQP](../wiki/concepts/hqp.md)、[零空间控制](../wiki/concepts/null-space-control.md)、[Trajectory Optimization](../wiki/methods/trajectory-optimization.md)、[Numerical Optimization Curriculum](../wiki/entities/numerical-optimization-curriculum.md)（数值优化 L0+ 课程地图）、[CMU Optimal Control 2025](../wiki/entities/cmu-optimal-control-curriculum.md)（16-745 公开录像策展）。
 
 ### 英文缩写速查（L3）
 

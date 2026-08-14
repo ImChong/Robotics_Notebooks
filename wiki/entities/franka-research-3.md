@@ -2,14 +2,17 @@
 type: entity
 tags: [manipulator, cobot, force-control, open-source, franka, research]
 status: complete
-updated: 2026-05-18
+updated: 2026-08-13
 related:
   - ../tasks/manipulation.md
   - ../overview/robot-open-source-wechat-issue02-curator.md
   - ../concepts/ros2-basics.md
   - ./kinova-gen3.md
+  - ../concepts/null-space-control.md
+  - ./paper-cartesian-impedance-controller.md
 sources:
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md
+  - ../../sources/repos/libfranka.md
 summary: "Franka Research 3：Franka Robotics 七轴科研协作臂；官方 docs 站点与 frankarobotics GitHub 组织提供 libfranka、ROS 与示例。"
 ---
 
@@ -31,7 +34,7 @@ summary: "Franka Research 3：Franka Robotics 七轴科研协作臂；官方 doc
 
 ## 为什么重要
 
-- **力控与接触丰富操作基线**：大量 **操作学习 / 遥操作 / Sim2Real** 论文以 Franka 为硬件参照（本仓库多处仿真与 GS 演示亦常出现 Franka 模型）。
+- **力控与接触丰富操作基线**：大量 **操作学习 / 遥操作 / Sim2Real** 论文以 Franka 为硬件参照（本仓库多处仿真与 GS 演示亦常出现 Franka 模型）。七轴笛卡尔任务剩 1 维零空间：官方 [libfranka](../../sources/repos/libfranka.md) 用 `cartesian_impedance_control` 做力矩投影，笛卡尔运动生成器用 **elbow** 参数暴露肘角；跨机型实现见 [Cartesian Impedance Controller](./paper-cartesian-impedance-controller.md)。
 - **与 Kinova 对照**：两者都强调 **协作安全**，但 **力矩传感器布局与控制 API** 不同，迁移算法时需分别建模。
 
 ## 开源入口（策展摘录）
@@ -44,6 +47,8 @@ summary: "Franka Research 3：Franka Robotics 七轴科研协作臂；官方 doc
 ## 关联页面
 
 - [Manipulation](../tasks/manipulation.md)
+- [零空间控制](../concepts/null-space-control.md) — 7 轴肘部自运动与阻抗投影
+- [Cartesian Impedance Controller](./paper-cartesian-impedance-controller.md) — 开源多机型零空间阻抗
 - [Kinova Gen3](./kinova-gen3.md)
 - [ROS 2 基础](../concepts/ros2-basics.md)
 - [机器人开源宝库（微信策展第02期）索引](../overview/robot-open-source-wechat-issue02-curator.md)
@@ -51,7 +56,9 @@ summary: "Franka Research 3：Franka Robotics 七轴科研协作臂；官方 doc
 ## 推荐继续阅读
 
 - `libfranka` 与 **FCI** 文档（以官方 docs 当前章节为准）
+- [libfranka 仓库归档](../../sources/repos/libfranka.md)
 
 ## 参考来源
 
 - [wechat_jixie_robot_open_source_treasury_issue02_10_robots.md](../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md)
+- [libfranka 仓库归档](../../sources/repos/libfranka.md)

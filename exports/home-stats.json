@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-14",
-  "node_count": 3081,
-  "edge_count": 26796,
+  "node_count": 3084,
+  "edge_count": 26837,
   "coverage": {
-    "covered": 3057,
-    "total": 3057,
+    "covered": 3060,
+    "total": 3060,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -16,7 +16,8 @@
       "recency": "2026-08-13",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
       "path": "wiki/methods/joint-actuator-parameter-identification.md",
@@ -26,26 +27,40 @@
       "recency": "2026-08-13",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
-      "path": "wiki/comparisons/rl-inverse-kinematics-five-approaches.md",
-      "detail_id": "wiki-comparisons-rl-inverse-kinematics-five-approaches",
-      "label": "RL 求解逆运动学：五类方案怎么选",
-      "type": "comparison",
+      "path": "wiki/concepts/null-space-control.md",
+      "detail_id": "wiki-concepts-null-space-control",
+      "label": "Null-Space Control（零空间控制）",
+      "type": "concept",
       "recency": "2026-08-13",
       "source": "git",
       "action": "added",
+      "has_repo": true,
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
-      "path": "wiki/formalizations/forward-kinematics.md",
-      "detail_id": "wiki-formalizations-forward-kinematics",
-      "label": "正向运动学（Forward Kinematics）",
-      "type": "formalization",
+      "path": "wiki/entities/paper-cartesian-impedance-controller.md",
+      "detail_id": "entity-paper-cartesian-impedance-controller",
+      "label": "Cartesian Impedance Controller（Mayr et al., JOSS 2024）",
+      "type": "entity",
       "recency": "2026-08-13",
       "source": "git",
       "action": "added",
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-null-space-projections-survey.md",
+      "detail_id": "entity-paper-null-space-projections-survey",
+      "label": "零空间投影综述（Dietrich et al., IJRR 2015）",
+      "type": "entity",
+      "recency": "2026-08-13",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
@@ -62,6 +77,26 @@
       "path": "wiki/formalizations/robot-jacobian.md",
       "detail_id": "wiki-formalizations-robot-jacobian",
       "label": "机器人雅可比矩阵（Jacobian）",
+      "type": "formalization",
+      "recency": "2026-08-13",
+      "source": "git",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/comparisons/rl-inverse-kinematics-five-approaches.md",
+      "detail_id": "wiki-comparisons-rl-inverse-kinematics-five-approaches",
+      "label": "RL 求解逆运动学：五类方案怎么选",
+      "type": "comparison",
+      "recency": "2026-08-13",
+      "source": "git",
+      "action": "added",
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+    },
+    {
+      "path": "wiki/formalizations/forward-kinematics.md",
+      "detail_id": "wiki-formalizations-forward-kinematics",
+      "label": "正向运动学（Forward Kinematics）",
       "type": "formalization",
       "recency": "2026-08-13",
       "source": "git",
@@ -182,36 +217,6 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/concepts/convolutional-neural-network.md",
-      "detail_id": "wiki-concepts-convolutional-neural-network",
-      "label": "卷积神经网络（CNN）",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "git",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/concepts/image-segmentation-taxonomy.md",
-      "detail_id": "wiki-concepts-image-segmentation-taxonomy",
-      "label": "图像分割任务分类（语义 / 实例 / 全景）",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "git",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
-    },
-    {
-      "path": "wiki/concepts/multimodality-basics.md",
-      "detail_id": "wiki-concepts-multimodality-basics",
-      "label": "多模态基础概念",
-      "type": "concept",
-      "recency": "2026-08-12",
-      "source": "git",
-      "action": "added",
-      "community_label": "计算机视觉中的 Transformer（Transformer in Computer Vision） 社区"
     }
   ],
   "latest_wiki_node": {
@@ -222,28 +227,29 @@
     "recency": "2026-08-13",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
       "label": "操作",
-      "size": 580
+      "size": 572
     },
     {
       "label": "仿真到现实",
-      "size": 488
+      "size": 527
     },
     {
       "label": "视觉-语言-动作",
-      "size": 249
+      "size": 248
     },
     {
       "label": "人形论文深读笔记",
-      "size": 195
+      "size": 184
     },
     {
       "label": "人形强化学习运动控制",
-      "size": 151
+      "size": 155
     },
     {
       "label": "移动操作",

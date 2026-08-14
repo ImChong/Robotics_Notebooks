@@ -3,10 +3,11 @@ title: WBC 工程实现指南
 type: query
 status: complete
 created: 2026-04-14
-updated: 2026-07-03
+updated: 2026-08-13
 summary: 从零实现 Whole-Body Control 的工程步骤：URDF 建模 → 动力学计算 → QP 求解 → 任务配置 → 实机调试，附工具链选型和常见问题。
 sources:
   - ../../sources/papers/whole_body_control.md
+  - ../../sources/papers/null_space_control.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「如何从零搭建一个 WBC 控制器？」
@@ -217,6 +218,7 @@ WBC 输出: τ_wbc [关节力矩, Nm]
 - Escande et al., *Hierarchical QP* (2014) — HQP 框架
 - Pinocchio 文档: <https://github.com/stack-of-tasks/pinocchio>
 - OSQP 文档: <https://osqp.org/>
+- [零空间控制论文簇](../../sources/papers/null_space_control.md)
 
 ---
 
@@ -225,6 +227,7 @@ WBC 输出: τ_wbc [关节力矩, Nm]
 - [Whole-Body Control](../concepts/whole-body-control.md) — WBC 理论基础
 - [TSID](../concepts/tsid.md) — WBC 的典型实现框架
 - [HQP](../concepts/hqp.md) — 层级 QP 任务优先级框架
+- [零空间控制](../concepts/null-space-control.md) — 单臂 7 轴显式投影；全身再升级 HQP
 - [Centroidal Dynamics](../concepts/centroidal-dynamics.md) — WBC 任务中的 CoM 动力学
 - [Contact Estimation](../concepts/contact-estimation.md) — WBC 需要接触状态作为输入
 - [MPC 与 WBC 集成](../concepts/mpc-wbc-integration.md) — WBC 作为 MPC 下层执行器的架构
