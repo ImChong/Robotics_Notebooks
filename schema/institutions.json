@@ -2622,6 +2622,15 @@
         "deepseek-ai"
       ]
     },
+    "galaxea": {
+      "label": "星海图（Galaxea）",
+      "aliases": [
+        "galaxea",
+        "opengalaxea",
+        "xinghaitu",
+        "星海图"
+      ]
+    },
     "pal-robotics": {
       "label": "帕尔机器人（PAL Robotics）",
       "aliases": [

@@ -12,7 +12,7 @@ tags:
   - centroidal-dynamics
   - training-time-guidance
 status: complete
-updated: 2026-08-02
+updated: 2026-08-14
 arxiv: "2606.05687"
 code: https://github.com/junhengl/mpc-rl
 related:
@@ -26,6 +26,7 @@ related:
   - ../comparisons/mpc-vs-rl.md
   - ../tasks/loco-manipulation.md
   - ../tasks/humanoid-locomotion.md
+  - ./paper-smpc2rl-loco-manipulation.md
   - ../../sources/repos/junhengl_mpc_rl.md
 sources:
   - ../../sources/papers/mpc_rl_arxiv_2606_05687.md
@@ -180,6 +181,7 @@ sequenceDiagram
 - [Centroidal Dynamics](../concepts/centroidal-dynamics.md) — CD-MPC 预测模型
 - [MPC vs RL](../comparisons/mpc-vs-rl.md) — 训练期指导的混合范式坐标
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 推车等交互任务语境
+- [SMPC-to-RL](./paper-smpc2rl-loco-manipulation.md) — MPC 当离线专家而非训练期奖励的另一条混合轴
 - [Model Predictive Control](../methods/model-predictive-control.md) — MPC 基础
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — PPO 训练栈
 

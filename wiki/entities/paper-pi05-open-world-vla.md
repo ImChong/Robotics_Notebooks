@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "vla", "physical-intelligence", "flow-matching", "hmi-papers"]
 status: complete
-updated: 2026-08-05
+updated: 2026-08-14
 arxiv: "2504.16054"
 code: https://github.com/Physical-Intelligence/openpi
 venue: "HMI curated · 2025"
@@ -14,6 +14,7 @@ related:
   - ../concepts/foundation-policy.md
   - ../entities/humanoid-motion-intelligence.md
   - ./paper-emergent-transfer-cross-config.md
+  - ./paper-galaxea-g05.md
   - ./paper-kai0.md
 sources:
   - ../../sources/papers/hmi_p059_pi05-open-world-vla.md
@@ -127,6 +128,7 @@ FAST token保留一段动作的时序结构，使动作数据可以和“下一�
 - [ActFovea](./paper-actfovea.md) — 对冻结 π₀ 加运行时防护（π 系列部署侧对照）
 - [WCM](./paper-wcm-world-critic-model.md) — 把 π₀.₅ 作为 flow matching 主干做 RL 后训练
 - [CLIFT](./paper-clift-closed-loop-iterative-finetuning.md) — 以 π₀.₅ 作开放权重对照，同管线下明显落后于托管 API 的 GROD
+- [G0.5](./paper-galaxea-g05.md) — VLM-as-Actor 开源对照；真机微调表直接打 π₀.₅
 - [χ₀ / kai0](./paper-kai0.md) — 以 π₀.₅ 为唯一可跑通骨干做协同叠衣后训练；相对基线 SR 约 +250%
 
 ## 参考来源

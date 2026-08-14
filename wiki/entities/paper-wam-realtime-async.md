@@ -12,7 +12,7 @@ tags:
   - shengshu
   - tsinghua
 status: complete
-updated: 2026-08-13
+updated: 2026-08-14
 arxiv: "2608.01880"
 related:
   - ./paper-motubrain.md
@@ -20,6 +20,7 @@ related:
   - ../concepts/world-action-models.md
   - ../queries/vla-deployment-guide.md
   - ../queries/vla-with-low-level-controller.md
+  - ./paper-rift-wam.md
   - ./paper-rtcf.md
   - ./paper-kai0.md
   - ../overview/wm-action-consequence-category-01-wam-action-prediction.md
@@ -170,6 +171,7 @@ flowchart TB
 - [RTCF](./paper-rtcf.md) — 勿与 RTC 混淆
 - [kai0](./paper-kai0.md) — chunk 平滑 × RTC
 - [WAM 动作后果分类 01](../overview/wm-action-consequence-category-01-wam-action-prediction.md) — 部署层邻近坐标
+- [Rift](./paper-rift-wam.md) — 视频 rollout 税 vs 本页的 chunk 切换税
 - [Manipulation](../tasks/manipulation.md) — 双臂操作任务语境
 
 ## 参考来源

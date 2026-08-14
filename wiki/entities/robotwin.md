@@ -4,7 +4,7 @@ type: entity
 title: RoboTwin 2.0
 tags: [simulation, data-generation, dual-arm, dataset, hku, shanghai-ai-lab, sjtu]
 summary: "RoboTwin 2.0 是专为双臂机器人设计的自动数据生成与仿真平台，基于 SAPIEN 引擎，支持大规模高质量专家数据合成。"
-updated: 2026-08-13
+updated: 2026-08-14
 ---
 
 # RoboTwin 2.0
@@ -52,6 +52,8 @@ updated: 2026-08-13
 - [SAPIEN](./sapien.md) / [ALOHA](./aloha.md)
 - [Behavior Cloning](../methods/behavior-cloning.md) / [Action Chunking](../methods/action-chunking.md)
 - [Motubrain](./paper-motubrain.md) — 官方报 RoboTwin 2.0 Clean/Random 95.8/96.1（仓占位）
+- [G0.5](./paper-galaxea-g05.md) — 开源 AR VLA；RoboTwin 93.7/92.8（arXiv:2608.11739）
+- [Rift](./paper-rift-wam.md) — 免 rollout WAM；RoboTwin 92.9/92.6（arXiv:2608.11521；未开源）
 
 ## 参考来源
 - [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md)
