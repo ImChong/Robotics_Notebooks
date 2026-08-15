@@ -15,11 +15,13 @@ related:
   - ../comparisons/data-gloves-vs-vision-teleop.md
   - ../methods/behavior-cloning.md
   - ./demo-data-collection-guide.md
+  - ../entities/paper-hand-visibility-detector.md
 sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/teledexter_arxiv_2607_11481.md
   - ../../sources/sites/humantouch-xsparkai.md
   - ../../sources/sites/allhandsup-org.md
+  - ../../sources/papers/hand_visibility_detector_arxiv_2608_11574.md
 summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、Allegro Hand 或低成本遥操作装置采集高质量、多模态的灵巧抓取与操作演示数据。"
 ---
 
@@ -50,7 +52,7 @@ summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、A
 - **设备**：Leap Motion, Intel RealSense, 或 Meta Quest 摄像头。
 - **原理**：利用手部追踪算法（如 [MediaPipe](../entities/mediapipe.md) 或专有引擎）实时估计人类操作者的指关节角度，并通过**重定向 (Retargeting)** 映射到灵巧手的 URDF 模型上。
 - **优点**：无需佩戴繁琐设备，操作者手部无约束。
-- **缺点**：视觉遮挡严重（例如手指重叠时）；缺乏力反馈，操作者很难感知抓握力度。
+- **缺点**：视觉遮挡严重（例如手指重叠时）；缺乏力反馈，操作者很难感知抓握力度。需要按关节降权时，可在 21 点之上叠加 [Hand Visibility Detector](../entities/paper-hand-visibility-detector.md) 的可见概率（HInt 上系统评过，不是检测器整手分）。
 - **代表项目**：AnyTeleop, DexCap；开源硬件侧 [RUKA-v2 Hand](../entities/ruka-v2-hand.md) 已集成 **AnyTeleop 向量重定向 + OpenTeach/Oculus VR** 遥操作管线；[MIDAS Hand](../entities/midas-hand.md) 提供 **MediaPipe 摄像头 + MANUS 手套** 双模态重定向与 **283 taxel 触觉同步流**（`midas-hand-org` 四仓库）。
 - **固定运动学外骨骼（产业参考）**：[mimic wearable U1](../entities/mimic-wearable-u1.md) 用 **刚性连杆强制 M1 可达空间**，复制腕相机与指尖触觉布局，以 **零软件重定向** 采集中层数据——与视觉方案互补，见 [mimic 数据金字塔](../entities/mimic-hand-m1.md#数据金字塔中的位置)。
 - **配对数据集参考**：[HRDexDB](../entities/hrdexdb-dataset.md) 采用 **XSens + MANUS 手套** 遥操 xArm6 + 多灵巧手，在 23 路同步相机下采集 **同物体人–机配对** 3D 轨迹与触觉（与纯视觉 teleop 的遮挡权衡不同）。
@@ -84,6 +86,7 @@ summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、A
 - [RUKA-v2 Hand 实体](../entities/ruka-v2-hand.md) — 全栈开源腱驱动 + VR 遥操作范例
 - [MIDAS Hand 实体](../entities/midas-hand.md) — 直驱触觉开源手 + MediaPipe/MANUS 遥操作
 - [MediaPipe 实体](../entities/mediapipe.md) — 低成本 21 点手部关键点感知框架
+- [Hand Visibility Detector](../entities/paper-hand-visibility-detector.md) — 逐关节可见性，给视觉 teleop / 多视标注做按点门控
 - [mimic wearable U1](../entities/mimic-wearable-u1.md) — 固定 M1 运动学的被动外骨骼中层采集
 - [Behavior Cloning](../methods/behavior-cloning.md)
 - [TeleDexter（论文实体）](../entities/paper-teledexter.md) — co-tracking 灵巧遥操作数据引擎
@@ -99,3 +102,4 @@ summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、A
 - [sources/papers/teledexter_arxiv_2607_11481.md](../../sources/papers/teledexter_arxiv_2607_11481.md)
 - [sources/sites/humantouch-xsparkai.md](../../sources/sites/humantouch-xsparkai.md)
 - [All Hands Up 站点归档](../../sources/sites/allhandsup-org.md)
+- [hand_visibility_detector_arxiv_2608_11574.md](../../sources/papers/hand_visibility_detector_arxiv_2608_11574.md) — 视觉 teleop 遮挡时的逐关节可见性

@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-08-15",
-  "node_count": 3098,
-  "edge_count": 27121,
+  "node_count": 3099,
+  "edge_count": 27137,
   "coverage": {
-    "covered": 3074,
-    "total": 3074,
+    "covered": 3075,
+    "total": 3075,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/all-hands-up.md",
+      "detail_id": "entity-all-hands-up",
+      "label": "All Hands Up（RLWRLD 灵巧手档案）",
+      "type": "entity",
+      "recency": "2026-08-15",
+      "source": "git",
+      "action": "added",
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
     {
       "path": "wiki/entities/paper-humantracker.md",
       "detail_id": "entity-paper-humantracker",
@@ -126,7 +136,8 @@
       "recency": "2026-08-14",
       "source": "git",
       "action": "added",
-      "has_repo": true
+      "has_repo": true,
+      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     },
     {
       "path": "wiki/methods/sim2real-joint-sysid-experiment-design.md",
@@ -202,45 +213,34 @@
       "source": "git",
       "action": "added",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/formalizations/forward-kinematics.md",
-      "detail_id": "wiki-formalizations-forward-kinematics",
-      "label": "正向运动学（Forward Kinematics）",
-      "type": "formalization",
-      "recency": "2026-08-13",
-      "source": "git",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-humantracker.md",
-    "detail_id": "entity-paper-humantracker",
-    "label": "HumanTracker（Comprehensive and Human-Aligned Motion Tracking Benchmark）",
+    "path": "wiki/entities/all-hands-up.md",
+    "detail_id": "entity-all-hands-up",
+    "label": "All Hands Up（RLWRLD 灵巧手档案）",
     "type": "entity",
     "recency": "2026-08-15",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
   },
   "top_communities": [
     {
       "label": "操作",
-      "size": 571
+      "size": 535
     },
     {
       "label": "仿真到现实",
-      "size": 500
+      "size": 463
     },
     {
       "label": "视觉-语言-动作",
-      "size": 249
+      "size": 246
     },
     {
       "label": "人形论文深读笔记",
-      "size": 194
+      "size": 223
     },
     {
       "label": "人形强化学习运动控制",
@@ -304,8 +304,7 @@
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
       "degree": 519,
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "has_repo": true
     },
     {
       "detail_id": "entity-awesome-world-models",

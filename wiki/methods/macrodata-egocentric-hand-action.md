@@ -3,7 +3,7 @@ type: method
 tags: [egocentric, hand-pose, 3d-vision, data-engine, manipulation, imitation-learning, vla, macrodata, wilor, hawor]
 title: Macrodata Egocentric Hand-Action Pipeline
 summary: "Macrodata Labs 工程博客给出的 RGB-only 开源配方：保守 WiLoR 检测 + 时序 HaWoR 手重建 + 窗口化 VGGT-Omega 度量相机轨迹与窄后处理，把 egocentric 视频变成世界系 21 关节度量手轨迹；HOT3D Action MPJPE 52.04 mm、81.23% 覆盖、15.53 FPS@H100。"
-updated: 2026-08-07
+updated: 2026-08-15
 status: complete
 related:
   - ./wilor.md
@@ -14,6 +14,7 @@ related:
   - ../concepts/state-estimation.md
   - ../concepts/motion-retargeting.md
   - ../entities/paper-vidihand.md
+  - ../entities/paper-hand-visibility-detector.md
   - ../entities/perceptron-egocentric.md
   - ../overview/ego-category-01-data-collection.md
   - ../overview/ego-category-02-human-to-robot.md
@@ -24,6 +25,7 @@ sources:
   - ../../sources/sites/macrodata-co.md
   - ../../sources/repos/hawor.md
   - ../../sources/repos/wilor.md
+  - ../../sources/papers/hand_visibility_detector_arxiv_2608_11574.md
 ---
 
 # Macrodata Egocentric Hand-Action Pipeline
@@ -139,6 +141,7 @@ flowchart TB
 - [HaWoR 源码归档](../../sources/repos/hawor.md) — 时序 MANO / 原世界重建基线
 - [EgoScale](./egoscale.md) — egocentric 腕–手监督规模化进 VLA 的另一条主线
 - [ViDiHand](../entities/paper-vidihand.md) — video diffusion 先验、无 detector 的 egocentric 双手 4D 对照
+- [Hand Visibility Detector](../entities/paper-hand-visibility-detector.md) — 单帧逐关节可见性，可作检测后的按点门控
 - [Auto-labeling Pipelines](./auto-labeling-pipelines.md) — 语义/成功标签数据引擎；本页侧重 **几何动作轨迹**
 - [Perceptron Egocentric](../entities/perceptron-egocentric.md) — Macrodata **WGO** 子任务标注对照生态
 - [Ego 数据采集](../overview/ego-category-01-data-collection.md) / [人→机器人](../overview/ego-category-02-human-to-robot.md)
