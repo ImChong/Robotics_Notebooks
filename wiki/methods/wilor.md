@@ -13,6 +13,8 @@ related:
   - ../tasks/manipulation.md
   - ./sonic-motion-tracking.md
   - ./macrodata-egocentric-hand-action.md
+  - ../entities/paper-ego2robot.md
+  - ../entities/paper-digitcode.md
 sources:
   - ../../sources/repos/wilor.md
   - ../../sources/papers/vidihand_arxiv_2606_30308.md
@@ -80,4 +82,6 @@ summary: "WiLoR 是端到端的野外手部检测定位 + Transformer 3D 手部�
 - [ExoActor (视频生成驱动的交互式人形控制)](./exoactor.md)
 - [Macrodata Egocentric Hand-Action](./macrodata-egocentric-hand-action.md)
 - [Hand Visibility Detector](../entities/paper-hand-visibility-detector.md)
+- [Ego2Robot](../entities/paper-ego2robot.md) — Path B 用 WiLoR 逐帧重建未标注 ego 视频
+- [DigitCode](../entities/paper-digitcode.md) — 消费 3D 关节的符号化手表示
 - [Manipulation（操作任务）](../tasks/manipulation.md)

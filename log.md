@@ -1,3 +1,13 @@
+## [2026-08-15] ingest | sources/blogs/wechat_embodied_station_ego2robot_mango_grasp_2026-08-11.md — 具身智能小站 9 篇盘点：复用 PFM-HR / Why-AC，新建 7 个论文节点；GSR 与 go2_rescue_eval 已开源，其余项目页或 Coming Soon
+
+- **触发：** 用户指定 <https://mp.weixin.qq.com/s/nKF7rxH-OuJz68galP3Xpg>；要求每篇论文独立详情节点、不重复造页
+- **抓取：** Agent Reach v1.5.0 + wechat-article-for-ai（Camoufox，`--no-images`）
+- **步骤 2.5：** GSR-ParaVLA、go2_rescue_eval **已开源可运行**；PFM-HR / EmbodiedVAE Coming Soon；OnOff / Ego2Robot 仅项目页；DigitCode HandTok 待审稿后挂；MANGO 宣称出版后开源；Why-AC 代码 Coming soon（已有节点）
+- **复用：** [`wiki/entities/paper-pfm-hr.md`](wiki/entities/paper-pfm-hr.md)、[`wiki/entities/paper-why-action-chunking-improves-bc.md`](wiki/entities/paper-why-action-chunking-improves-bc.md)
+- **新建：** OnOff / DigitCode / EmbodiedVAE / Ego2Robot / SA-Frontier / GSR / MANGO-Grasp
+- **机构：** 新增 `gist` / `kentech` / `utec`；复用 sjtu、buaa、zgca、ruc、alibaba、astar、ntu、nus 等
+- **交叉：** VLA / LIBERO / RoboTwin / EgoScale / WiLoR / UHAS / 抓取 / WAM / Go2 自主栈
+
 ## [2026-08-15] ingest | sources/repos/core_retarget.md — 接入 CoRe v0.1.0 接触感知重定向（已开源精炼；论文 T2M/RL 未随仓）与 RMR/CoRe 项目页
 
 - **触发：** 用户指定 CoRe 仓 / v0.1.0 / HF Space / architecture·robots·licenses、Humanoids 2025 项目页与 RMR 项目页

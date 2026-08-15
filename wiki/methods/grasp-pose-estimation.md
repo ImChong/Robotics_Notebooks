@@ -2,7 +2,7 @@
 type: method
 tags: [perception, grasping, manipulation, point-cloud, rgbd, 6dof, deep-learning]
 status: complete
-updated: 2026-08-05
+updated: 2026-08-15
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/manipulation.md
@@ -12,6 +12,7 @@ related:
   - ./visual-servoing.md
   - ../concepts/contact-rich-manipulation.md
   - ../queries/grasp-policy-selection.md
+  - ../entities/paper-mango-grasp.md
   - ../comparisons/anygrasp-vs-graspnet.md
 sources:
   - ../../sources/repos/anygrasp-sdk.md
@@ -139,6 +140,7 @@ flowchart LR
 - [cuRobo](../entities/curobo.md) — 抓取候选 → 规划 / 避障的下游求解器
 - [Query：抓取策略选型](../queries/grasp-policy-selection.md) — 开放场景 vs 已知物体 / 稀疏 vs 稠密 / 几何 vs 学习的方案组合指南
 - [AnyGrasp vs GraspNet：抓取检测家族选型对比](../comparisons/anygrasp-vs-graspnet.md) — 白盒基线 vs SDK 工程闭环、单帧 vs 跨帧、开源 vs License 三对取舍
+- [MANGO-Grasp](../entities/paper-mango-grasp.md) — 多指跨手型马氏场，不是平行爪 6-DoF
 
 ## 参考来源
 

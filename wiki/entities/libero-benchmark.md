@@ -10,6 +10,7 @@ related:
   - ../entities/humanoid-motion-intelligence.md
   - ../entities/paper-world-action-planner.md
   - ../entities/paper-why-action-chunking-improves-bc.md
+  - ../entities/paper-gsr-paravla.md
   - ../entities/paper-actfovea.md
   - ../entities/paper-neural-introspection-gating.md
   - ../entities/paper-flex-pi.md
@@ -105,6 +106,7 @@ flowchart LR
 - [G0.5](./paper-galaxea-g05.md) — AR VLA；LIBERO 均 **98.9%** / Long **98.6%**（已开源）
 - [Rift](./paper-rift-wam.md) — 免 rollout WAM；LIBERO **98.8%**、LIBERO-Plus **81.1%**（未开源）
 - [Why Action Chunking Improves BC](./paper-why-action-chunking-improves-bc.md) — Libero-90 上 Delay / RDE 相对 action chunking 的机制消融
+- [GSR / ParaVLA](./paper-gsr-paravla.md) — LIBERO-Para 改写协议；SmolVLA 4.47%→49.12%（arXiv:2608.02497）
 - [SLIM-0.5B](./paper-slim-05b.md) — 0.47B latent 策略；LIBERO 97.5% / LIBERO-Plus 77.45%（开源权重）
 - [Temporal GRPO](./paper-temporal-grpo.md) — LIBERO-Long 阶段信用探针 99.1%；看 \(\Delta p_k\) 落在哪一段（arXiv:2608.13026）
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [unitree, hardware, sdk, sim2real, humanoid, quadruped]
 status: complete
-updated: 2026-08-09
+updated: 2026-08-15
 sources:
   - ../../sources/repos/unitree.md
   - ../../sources/sites/unitree-unistore.md
@@ -385,6 +385,7 @@ Unitree 是非常重要的目标平台语境：先选定官方 RL 仓之一，�
 - [unitree_ros（ROS1 / Gazebo）](./unitree-ros.md)
 - [unitree_ros2](./unitree-ros2.md)
 - [unitree_rl_gym](./unitree-rl-gym.md)
+- [Situation-aware Frontier](./paper-situation-aware-frontier-quadruped-sar.md) — Go2 Gazebo 室内搜救 frontier 评测
 - [unitree_rl_lab](./unitree-rl-lab.md)
 - [unitree_rl_mjlab](./unitree-rl-mjlab.md)
 - [unitree_mujoco](./unitree-mujoco.md)

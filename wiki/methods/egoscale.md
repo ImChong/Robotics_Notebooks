@@ -3,7 +3,7 @@
 type: method
 tags: [vla, egocentric-video, dexterous-manipulation, flow-matching, human-robot-transfer, imitation-learning, nvidia-gear, scaling-laws, nvidia]
 status: complete
-updated: 2026-08-11
+updated: 2026-08-15
 date: 2026-05-17
 summary: "EgoScale 用超两万小时、带腕与重定向高 DoF 手部标签的第一人称人视频预训练流式 VLA，实证人数据规模与验证损失近 log-linear 缩放且与真机灵巧表现强相关，再以小规模视点对齐的人–机 mid-training 把表示锚到机器人，从而在极少机端演示下获得高灵巧长程操作与 one-shot 迹象。"
 related:
@@ -24,6 +24,7 @@ related:
   - ../tasks/manipulation.md
   - ../entities/nvidia-gear-lab.md
   - ./macrodata-egocentric-hand-action.md
+  - ../entities/paper-ego2robot.md
 sources:
   - ../../sources/papers/egoscale_arxiv_2602_16710.md
   - ../../sources/sites/nvidia-research-egoscale.md
@@ -140,3 +141,4 @@ flowchart LR
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)
 - [Dyna-2（百万小时 WAM 跨具身缩放）](../entities/dyna-2.md)
+- [Ego2Robot](../entities/paper-ego2robot.md) — 先把人视频渲染成机器人像素+动作再共训，对照本页 mid-training 对齐

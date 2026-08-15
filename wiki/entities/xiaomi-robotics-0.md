@@ -2,7 +2,7 @@
 type: entity
 tags: [vla, open-source, diffusion, flow-matching, real-time, bimanual, cross-embodiment, xiaomi]
 status: complete
-updated: 2026-07-21
+updated: 2026-08-15
 related:
   - ../methods/vla.md
   - ../methods/action-chunking.md
@@ -13,6 +13,7 @@ related:
   - ./robot-io-rio.md
   - ./xiaomi-robotics-u0.md
   - ./xiaomi-robotics-1.md
+  - ./paper-gsr-paravla.md
 sources:
   - ../../sources/repos/xiaomi-robotics-0.md
 summary: "Xiaomi-Robotics-0 是小米开源的约 4.7B 参数 VLA：Qwen3-VL-4B 作视觉–语言骨干，DiT 以 flow matching 生成动作 chunk；大规模跨本体数据与 VL 共训后，通过后训练与异步执行策略在仿真与双臂真机上追求高吞吐、低卡顿的实时 rollout。"
@@ -114,6 +115,7 @@ flowchart LR
 - [RIO（Robot I/O）](./robot-io-rio.md) — 跨形态实时 I/O 与异步策略节点的另一种抽象
 - [Xiaomi-Robotics-U0](./xiaomi-robotics-u0.md) — 同实验室 **38B 统一具身合成 WM**，作策略训练数据引擎
 - [Xiaomi-Robotics-1](./xiaomi-robotics-1.md) — 同实验室 **100k h UMI 预训练** 具身基座 VLA 与 scaling 实证
+- [GSR / ParaVLA](./paper-gsr-paravla.md) — LIBERO-Para 上报告本模型 Full Para 76.0 / PRIDE 69.2；GSR+π₀.₅ 的 PRIDE 70.4
 
 ## 参考来源
 

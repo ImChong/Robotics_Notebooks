@@ -55,6 +55,7 @@ updated: 2026-08-15
 - [G0.5](./paper-galaxea-g05.md) — 开源 AR VLA；RoboTwin 93.7/92.8（arXiv:2608.11739）
 - [Rift](./paper-rift-wam.md) — 免 rollout WAM；RoboTwin 92.9/92.6（arXiv:2608.11521；未开源）
 - [Temporal GRPO](./paper-temporal-grpo.md) — OpenVLA-OFT + 阶段 GRPO；宏平均 75.8%（arXiv:2608.13026；未开源）
+- [Ego2Robot](./paper-ego2robot.md) — 扩展 RoboTwin 2.0 为视觉/布局/本体/语义四轴解耦评测（arXiv:2608.02580）
 
 ## 参考来源
 - [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md)
