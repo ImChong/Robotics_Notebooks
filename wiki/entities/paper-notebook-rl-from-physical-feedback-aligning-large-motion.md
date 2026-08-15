@@ -2,11 +2,12 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
 status: planned
-updated: 2026-06-26
+updated: 2026-08-15
 arxiv: "2506.12769"
 related:
   - ../overview/paper-notebook-category-13-physics-based-animation.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ./paper-gentrack.md
 sources:
   - ../../sources/papers/humanoid_pnb_rl-from-physical-feedback-aligning-large-motion.md
 summary: "RL from Physical Feedback：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
@@ -58,6 +59,7 @@ RL from Physical Feedback 的人形机器人学习论文条目，当前处于 Pa
 
 - 分类父节点：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- 双向在线对照：[GenTrack](./paper-gentrack.md) 把 RLPF 式物理反馈做成生成器–跟踪器共训，并拿冻结 tracker FlowGRPO 当单向对照
 
 ## 参考来源
 

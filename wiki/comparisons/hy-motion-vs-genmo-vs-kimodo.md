@@ -3,7 +3,7 @@
 type: comparison
 tags: [human-motion, text-to-motion, motion-generation, flow-matching, diffusion, smpl, hy-motion, genmo, kimodo, comparison, engineering-selection, nvidia]
 status: complete
-updated: 2026-06-05
+updated: 2026-08-15
 sources:
   - ../../sources/papers/hy_motion_arxiv_2512_23464.md
   - ../../sources/repos/tencent_hunyuan_hy_motion_1_0.md
@@ -21,6 +21,7 @@ related:
   - ../formalizations/probability-flow.md
   - ../methods/motion-retargeting-gmr.md
   - ../methods/sonic-motion-tracking.md
+  - ../entities/paper-gentrack.md
 summary: "HY-Motion 1.0 / GENMO(GEM) / Kimodo 三条『文本·多模态 → 人体运动』生成式骨干对比：腾讯混元的十亿级流匹配 DiT（纯文本+时长、DPO/Flow-GRPO 对齐）vs NVIDIA 的 dual-mode 估计+生成统一扩散（视频/2D/音乐/关键帧多模态）vs NVIDIA 的两阶段 root/body 运动学扩散（文本+强约束、多骨架）；从生成范式、条件模态、运动表示、数据规模、对齐方式与机器人落地接口六个维度给出选型坐标。"
 ---
 
@@ -208,6 +209,7 @@ flowchart TD
 - [Probability Flow](../formalizations/probability-flow.md) — 流匹配与扩散共同的数学基础
 - [GMR: 通用动作重定向](../methods/motion-retargeting-gmr.md) — SMPL 系运动 → 机器人骨架的工程落点
 - [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md) — 生成运动 → 真机物理跟踪的下游消费方
+- [GenTrack](../entities/paper-gentrack.md) — 把 HYMotion 风格 \(G_0\) 接到 G1 执行环做后训练；三者仍止步运动学层时的物理对齐一步
 - [SONIC vs BeyondMimic vs SD-AMP vs Heracles](./sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md) — 下游 WBT 策略学习路线对比
 - [GMR vs NMR vs ReActor](./gmr-vs-nmr-vs-reactor.md) — 重定向算法谱系对比
 

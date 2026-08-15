@@ -2,7 +2,7 @@
 type: entity
 tags: [framework, simulation, humanoid, sim2real, nvidia, newton, mujoco, isaac-gym]
 status: complete
-updated: 2026-07-01
+updated: 2026-08-15
 related:
   - ./amass.md
   - ./kimodo.md
@@ -13,6 +13,7 @@ related:
   - ../methods/add.md
   - ../methods/deepmimic.md
   - ./xue-bin-peng.md
+  - ./paper-gentrack.md
 sources:
   - ../../sources/repos/protomotions.md
 summary: "ProtoMotions3 是 NVIDIA 开源的 GPU 加速人形仿真与学习框架，强调多后端、大规模动捕数据管线、模块化任务拼装与 ONNX 化 Sim2Real 部署。"
@@ -48,6 +49,7 @@ summary: "ProtoMotions3 是 NVIDIA 开源的 GPU 加速人形仿真与学习框�
 - **多物理引擎**：在 Newton、Isaac 系、MuJoCo 等后端之间切换做对照，有助于发现 **引擎特有接触/积分差异** 带来的伪成功或伪失败。
 - **与 MimicKit 互补**：算法族谱与论文级最小实现见 [MimicKit](./mimickit.md)；需要 **工业级数据管线、后端抽象与部署故事** 时再回到本框架。
 - **GPC 训练底座**：[GPC](./paper-gpc-generative-pretrained-controllers.md)（SIGGRAPH 2026，arXiv:2606.29148）在 Isaac Gym 上基于本框架完成 **>600 h** FSQ 跟踪与 GPT 式生成式控制器训练（BONES 主实验 24×A100），是 **大规模离散运动 token 预训练** 的近期文献实例。
+- **公开 checkpoint 后训练**：[GenTrack](./paper-gentrack.md)（AAAI 2027）把本框架的 AMP/PPO tracker 与 SONIC 并列，做 robot-native 生成器–跟踪器在线互训；ProtoMotions 支主要抬 Wild-G1 覆盖与 MPJPE，不是全面碾压。
 
 ## 核心能力栈（从 README 与官方文档归纳）
 
@@ -115,6 +117,7 @@ flowchart TD
 ## 关联页面
 
 - [GPC（Generative Pretrained Controllers）](./paper-gpc-generative-pretrained-controllers.md) — 基于本框架的 FSQ + Transformer 生成式预训练（SIGGRAPH 2026）
+- [GenTrack（论文实体）](./paper-gentrack.md) — 以本框架公开 tracker 为骨干之一的生成器–跟踪器后训练（未开源）
 - [MimicKit](./mimickit.md)、[Kimodo](./kimodo.md)、[Xue Bin Peng](./xue-bin-peng.md)
 - [模仿学习](../methods/imitation-learning.md)、[DeepMimic](../methods/deepmimic.md)、[ADD](../methods/add.md)、[AMP 奖励](../methods/amp-reward.md)、[SMP](../methods/smp.md)
 
