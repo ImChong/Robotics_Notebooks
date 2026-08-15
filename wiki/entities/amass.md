@@ -4,7 +4,7 @@ type: entity
 title: AMASS（统一 SMPL 表示的大规模人体动捕档案）
 tags: [dataset, mocap, smpl, human-motion, deep-learning, animation, mpi-tuebingen, max-planck]
 summary: "AMASS 将多份光学标记动捕数据通过 MoSh++ 拟合到 SMPL 参数序列，形成可合并训练的人体运动档案；站点提供注册下载与教程代码，是机器人学习里常见的人体参考运动来源之一。"
-updated: 2026-07-27
+updated: 2026-08-15
 status: complete
 related:
   - ../concepts/motion-retargeting.md
@@ -18,6 +18,7 @@ related:
   - ../comparisons/humanoid-reference-motion-datasets.md
   - ./paper-egohtr.md
   - ./exercises-dataset.md
+  - ./paper-humantracker.md
 sources:
   - ../../sources/sites/amass-dataset.md
   - ../../sources/papers/egohtr_arxiv_2607_13472.md
@@ -73,6 +74,7 @@ flowchart LR
 - **[ProtoMotions](./protomotions.md)**：官方文档把 AMASS 作为大规模并行训练的典型数据来源之一。
 - **[MimicKit](./mimickit.md)**：研究管线中常出现从 AMASS（SMPL）到目标骨架的重定向工具链叙述。
 - **[AMP 奖励与运动先验](../methods/amp-reward.md)**：MoCap 风格先验训练常以 AMASS 类统一表示为输入。
+- **[HumanTracker](./paper-humantracker.md)**：指出常用 tracking 测试仍是 AMASS 约 140 条，覆盖与诊断都不够；其 153 h 四族集是评测层补充，不是 AMASS 训练替代。
 
 ## 参考来源
 
@@ -95,6 +97,7 @@ flowchart LR
 - [五集选型对比](../comparisons/humanoid-reference-motion-datasets.md)
 - [EgoHTR](./paper-egohtr.md) — 有场景 mesh 的 rough-terrain 4D 对照（规模远小于 AMASS；待开放）
 - [Exercises Dataset](./exercises-dataset.md) — 健身动作目录/GIF；**不是** MoCap 参考库
+- [HumanTracker](./paper-humantracker.md) — 四族光学评测集；批评 AMASS-140 测试协议
 
 ## 推荐继续阅读
 

@@ -3,7 +3,7 @@ type: comparison
 title: 人形参考运动与操作数据集选型（AMASS / LAFAN1 / OMOMO / PHUMA / Humanoid Everyday / KungFuAthlete）
 tags: [dataset, comparison, motion-retargeting, humanoid, mocap, unitree-g1, martial-arts]
 summary: "常用人形数据源的表示、任务域、是否预重定向与典型下游对照；含 KungFuAthlete 高动态与 EgoHTR rough-terrain 人–场景扩展。"
-updated: 2026-07-27
+updated: 2026-08-15
 status: complete
 related:
   - ../concepts/motion-retargeting.md
@@ -16,6 +16,7 @@ related:
   - ../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md
   - ../entities/paper-egohtr.md
   - ../entities/exercises-dataset.md
+  - ../entities/paper-humantracker.md
 sources:
   - ../../sources/sites/amass-dataset.md
   - ../../sources/repos/ubisoft-laforge-animation-dataset.md
@@ -25,6 +26,7 @@ sources:
   - ../../sources/papers/kung_fu_athlete_bot.md
   - ../../sources/papers/egohtr_arxiv_2607_13472.md
   - ../../sources/repos/exercises-dataset.md
+  - ../../sources/papers/humantracker_arxiv_2608_13555.md
 ---
 
 # 人形参考运动与操作数据集选型
@@ -53,6 +55,7 @@ sources:
 | [Humanoid Everyday](../entities/humanoid-everyday-dataset.md) | **真机人形操作** 多模态集；非 MoCap 参考库 |
 | [KungFuAthlete](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) | **武术高动态** 视频→GVHMR→GMR；Jump 子集动力学上界；Ground ready |
 | [EgoHTR](../entities/paper-egohtr.md) | **rough-terrain 人–场景 4D**（Aria+IMU 服+扫描）；感知 locomotion 参考；数据/代码待发布 |
+| [HumanTracker](../entities/paper-humantracker.md) | **153 h / 25K 四族光学评测集 + HumanScore**；GMR→29-DoF；**数据待发布**，评测代码已开 |
 
 ## 扩展：高动态极限（KungFuAthlete）
 
@@ -97,6 +100,8 @@ flowchart TD
   q5 -->|是| kfa[KungFuAthlete Jump/Ground]
   start --> q6{要 rough-terrain<br/>人–场景对齐演示?}
   q6 -->|是| egohtr[EgoHTR 待开放]
+  start --> q7{要按失败机制分族<br/>评已有 tracker?}
+  q7 -->|是| ht[HumanTracker 数据待发布]
 ```
 
 ## 组合使用（常见管线）
@@ -140,6 +145,7 @@ flowchart TD
 - [KungFuAthleteBot 论文 ingest](../../sources/papers/kung_fu_athlete_bot.md)
 - [EgoHTR 论文 ingest](../../sources/papers/egohtr_arxiv_2607_13472.md)
 - [Exercises Dataset 仓库归档](../../sources/repos/exercises-dataset.md) — 健身动作目录（非 MoCap）对照
+- [HumanTracker 论文摘录](../../sources/papers/humantracker_arxiv_2608_13555.md) — 153 h 四族评测集（数据待发布）
 
 ## 关联页面
 
@@ -154,6 +160,7 @@ flowchart TD
 - [KungfuBot / PBHC](../entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) — LAFAN/AMASS/视频 → SMPL 训练输入（[repo](../../sources/repos/pbhc.md)）
 - [Unitree G1](../entities/unitree-g1.md)
 - [Exercises Dataset](../entities/exercises-dataset.md) — 健身目录/GIF；勿与本表 MoCap 源混用
+- [HumanTracker](../entities/paper-humantracker.md) — 四族光学评测集 + HumanScore；数据待发布
 
 ## 推荐继续阅读
 
