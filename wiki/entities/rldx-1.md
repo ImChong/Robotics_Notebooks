@@ -3,7 +3,7 @@
 type: entity
 tags: [vla, manipulation, lerobot, diffusion, qwen3-vl, tactile, action-chunking, repo, huggingface]
 status: complete
-updated: 2026-08-10
+updated: 2026-08-15
 related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
@@ -12,8 +12,10 @@ related:
   - ../methods/star-vla.md
   - ../methods/diffusion-policy.md
   - ./paper-harness-vla.md
+  - ./all-hands-up.md
 sources:
   - ../../sources/repos/rldx-1.md
+  - ../../sources/sites/allhandsup-org.md
 summary: "RLDX-1 是 RLWRLD 开源的灵巧操作 VLA：Qwen3-VL 骨干 + MSAT 扩散动作头，可选运动模块、时序记忆与触觉/力矩物理流，三阶段训练与图捕获/RTC 推理栈。"
 ---
 
@@ -104,6 +106,7 @@ README 在 RTX 5090 上报告约 **43.7 ms/step**、**>22 Hz**（随 GPU 架构�
 ## 参考来源
 
 - [RLDX-1 仓库归档](../../sources/repos/rldx-1.md)
+- [All Hands Up 站点归档](../../sources/sites/allhandsup-org.md)
 - Kim et al., *RLDX-1 Technical Report*, arXiv:2605.03269 — 技术报告与系统描述
 - [RLDX-1 GitHub 仓库](https://github.com/RLWRLD/RLDX-1) — README、`docs/architecture.md` / `training.md` / `inference_server.md`
 
@@ -116,6 +119,7 @@ README 在 RTX 5090 上报告约 **43.7 ms/step**、**>22 Hz**（随 GPU 架构�
 - [Action Chunking](../methods/action-chunking.md) — 与 RTC / 分块推理相关的控制接口
 - [Diffusion Policy](../methods/diffusion-policy.md) — 扩散式动作建模背景
 - [Harness VLA](./paper-harness-vla.md) — RoboCasa365 上将 RLDX-1 作冻结 `vla_act` 后端（arXiv:2607.08448）
+- [All Hands Up](./all-hands-up.md) — 同机构腕装灵巧手档案与 Type 1/Type 2 选型
 
 ## 推荐继续阅读
 

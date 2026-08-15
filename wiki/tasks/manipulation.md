@@ -311,6 +311,7 @@ flowchart TD
 - [自动化仿生对话面部机构合成](../entities/paper-automated-facial-mechanisms-animatronic.md)
 - [Deimel 柔顺欠驱动灵巧手（RSS ToT）](../entities/paper-deimel-compliant-underactuated-robotic-hand.md)
 - [Yale OpenHand](../entities/yale-openhand.md) — 打印件 + Dynamixel 腱驱欠驱动开源手族（对照气动软体路线）
+- [All Hands Up](../entities/all-hands-up.md) — RLWRLD 腕装灵巧手 URDF 画廊与仿真 Kapandji 对照
 - [PRISM](../entities/paper-prism.md) — 多项式本体条件；LIBERO 无 force 输入达 91% 成功率（arXiv:2607.23473）
 - [FA-RDP](../entities/paper-fa-rdp.md) — 频率自适应视觉–力反应扩散；Flexiv 接触丰富三任务 81.7%（arXiv:2607.28596）
 - [World Action Planner](../entities/paper-world-action-planner.md) — pose-image WM + VLM 规划；LIBERO 组合/新布局泛化（arXiv:2607.27599）

@@ -1,3 +1,12 @@
+## [2026-08-15] ingest | sources/sites/allhandsup-org.md — 接入 RLWRLD All Hands Up 灵巧手画廊（16 手 URDF + 仿真 Kapandji；无独立 GitHub，部分开源）
+
+- **触发：** 用户指定 <https://allhandsup.org/zh/#gallery>
+- **步骤 2.5：** 站点与 `hands_urdf/` 可 HTTP 下载；`RLWRLD/allhandsup` 404 → **部分开源**。未建 `sources/repos/`。DexBench 在独立站，本次不另建页
+- **来源：** [`sources/sites/allhandsup-org.md`](sources/sites/allhandsup-org.md)
+- **升格：** [`wiki/entities/all-hands-up.md`](wiki/entities/all-hands-up.md) — Type 1/Type 2 双硬件策略 + 画廊 16 手 Kapandji 表
+- **机构：** 复用 `rlwrld`
+- **交叉：** Allegro / Orca / Wuji / RLDX-1 / MIDAS / 灵巧手运动学 / 灵巧采数指南 / Manipulation / 商业平台纵览
+
 ## [2026-08-15] ingest | sources/papers/hand_visibility_detector_arxiv_2608_11574.md — 接入 Hand Visibility Detector 逐关节手部可见性（已开源、研究/非商用）
 
 - **触发：** 用户指定 *Hand Visibility Detector: Per-Keypoint Visibility Estimation for Hands*（arXiv:2608.11574）与代码 <https://github.com/ryhara/hand_visibility_detector>

@@ -2,12 +2,13 @@
 type: concept
 tags: [dexterity, kinematics, robot-hand, math, manipulation]
 status: complete
-updated: 2026-05-12
+updated: 2026-08-15
 related:
   - ../queries/contact-wrench-closed-loop.md
   - ./humanoid-parallel-joint-kinematics.md
   - ./tactile-sensing.md
   - ../entities/allegro-hand.md
+  - ../entities/all-hands-up.md
   - ../methods/in-hand-reorientation.md
   - ../formalizations/friction-cone.md
 sources:
@@ -66,6 +67,7 @@ $$ J \dot{q} = G^T \mathcal{V}_o $$
 - [手内重定向 (In-hand Reorientation)](../methods/in-hand-reorientation.md)
 - [Friction Cone (摩擦锥) 形式化](../formalizations/friction-cone.md)
 - [人形机器人并联关节解算](./humanoid-parallel-joint-kinematics.md) — 下肢闭链踝与力分配（与抓取闭链对照阅读）
+- [All Hands Up](../entities/all-hands-up.md) — 用仿真 Kapandji 把拇指对掌工作空间收成可对照分数
 
 ## 参考来源
 - Murray, R. M., Li, Z., & Sastry, S. S. (1994). *A Mathematical Introduction to Robotic Manipulation*. (多指抓取的经典圣经)

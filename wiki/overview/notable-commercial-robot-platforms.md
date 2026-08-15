@@ -1,6 +1,6 @@
 ---
 type: overview
-updated: 2026-08-01
+updated: 2026-08-15
 summary: "按人形、四足与腿足梳理当前知名度高、常被产业与媒体报道的商业机器人平台，并指向本库已有实体页与深度对比页。"
 sources:
   - ../../sources/repos/notable-commercial-robot-platforms.md
@@ -18,6 +18,7 @@ related:
   - ../entities/unitree.md
   - ../entities/boston-dynamics.md
   - ../entities/anymal.md
+  - ../entities/all-hands-up.md
   - ../queries/hardware-comparison.md
 ---
 
@@ -83,6 +84,7 @@ related:
 |--------------|-----------|----------------|
 | 舞肌科技（上海舞肌） | **F 系列 / Pan Motor** 关节电机叙事 + 官方 **Wuji Hand** 五指灵巧手 | [舞肌科技](../entities/wuji-robotics.md) |
 | Kyber Labs（Brooklyn） | **背驱动仿人灵巧手** + 双臂操作平台；**skills-based AI**；明确不做整机人形 | [Kyber Labs](../entities/kyber-labs.md) |
+| RLWRLD（瑞沃世界） | 不卖整机；公开 **All Hands Up** 腕装灵巧手画廊 / Kapandji 对照，服务 [RLDX-1](../entities/rldx-1.md) 跨手选型 | [All Hands Up](../entities/all-hands-up.md) |
 
 ## 四足与腿足：常见平台
 
@@ -114,6 +116,7 @@ related:
 - [ANYmal](../entities/anymal.md)
 - [MotionCode](../entities/motioncode.md) — 人体运动数据与 Mind 线人形训练叙事
 - [青瞳视觉 CHINGMU](../entities/chingmu.md) — 光学动捕硬件/软件 + MotionDecode 具身数据集
+- [All Hands Up](../entities/all-hands-up.md) — RLWRLD 腕装灵巧手档案与 Type 1/Type 2 选型
 
 ## 参考来源
 

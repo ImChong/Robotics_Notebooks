@@ -391,6 +391,7 @@
 ### sites/ — 网站与在线工具归档
 | 文件 | 内容 |
 |------|------|
+| [x] [allhandsup-org.md](sites/allhandsup-org.md) | All Hands Up：RLWRLD 腕装灵巧手画廊（16 手 URDF + 仿真 Kapandji；无独立 GitHub，URDF 可 HTTP 下载） |
 | [x] [daily-omni-github-io.md](sites/daily-omni-github-io.md) | Daily-Omni 项目页 lliar-liar.github.io/Daily-Omni（Leaderboard；代码+数据已开） |
 | [x] [pi-r2-flow-github-io.md](sites/pi-r2-flow-github-io.md) | πR² 项目页 pi-r2-flow.github.io（反应式实时 flow；代码已开） |
 | [x] [hifi-umi-project.md](sites/hifi-umi-project.md) | HiFi-UMI 项目页 cloud.simpleai.tech（2000 h 数据已开；系统代码未列） |
