@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-hand-visibility-detector.md",
+      "detail_id": "entity-paper-hand-visibility-detector",
+      "label": "Hand Visibility Detector：逐关节手部可见性",
+      "type": "entity",
+      "recency": "2026-08-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/all-hands-up.md",
       "detail_id": "entity-all-hands-up",
       "label": "All Hands Up（RLWRLD 灵巧手档案）",
@@ -203,27 +214,18 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/comparisons/rl-inverse-kinematics-five-approaches.md",
-      "detail_id": "wiki-comparisons-rl-inverse-kinematics-five-approaches",
-      "label": "RL 求解逆运动学：五类方案怎么选",
-      "type": "comparison",
-      "recency": "2026-08-13",
-      "source": "git",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/all-hands-up.md",
-    "detail_id": "entity-all-hands-up",
-    "label": "All Hands Up（RLWRLD 灵巧手档案）",
+    "path": "wiki/entities/paper-hand-visibility-detector.md",
+    "detail_id": "entity-paper-hand-visibility-detector",
+    "label": "Hand Visibility Detector：逐关节手部可见性",
     "type": "entity",
     "recency": "2026-08-15",
     "source": "git",
     "action": "added",
-    "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    "has_repo": true,
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
