@@ -1,12 +1,15 @@
 ---
 type: method
 title: ZEST (Zero-shot Embodied Skill Transfer)
-tags: [robot-learning, humanoid, locomotion, atlas, sim2real, multi-contact]
-summary: "ZEST 是波士顿动力开发的统一框架，通过自适应采样与自动课程学习，将异构动捕/视频数据直接转化为机器人的零样本高动态运动技能。"
-updated: 2026-08-06
+tags: [robot-learning, humanoid, locomotion, atlas, sim2real, multi-contact, rai-institute, boston-dynamics]
+status: complete
+summary: "ZEST（Science Robotics 2026）用自适应采样与辅助扳手课程，把 MoCap / 视频 / 动画变成 Atlas、G1、Spot 上的零样本高动态技能。论文实体见 paper-zest；确认未开源。"
+updated: 2026-08-15
 related:
+  - ../entities/paper-zest.md
   - ./mtrg-reference-goal-driven-rl.md
   - ./hil-hybrid-imitation-learning.md
+  - ../comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md
   - ../concepts/curriculum-learning.md
 sources:
   - ../../sources/papers/zest.md
@@ -14,60 +17,65 @@ sources:
 
 # ZEST (Zero-shot Embodied Skill Transfer)
 
-**ZEST** 是由 Boston Dynamics 团队开发的一套统一的具身技能学习与迁移框架。它通过强化学习（RL）将多样化的、异构的人类运动数据（如动捕、视频、动画）转化为机器人的高动态、多接触运动技能，并实现了在全尺寸人形机器人（Atlas）及多种机器人形态上的**零样本（Zero-shot）**真机部署。
+**ZEST** 是 RAI Institute 与 Boston Dynamics 的统一具身技能迁移配方：用强化学习把 MoCap、单目视频（ViCap）和关键帧动画变成高动态、多接触全身技能，并在全电 Atlas、Unitree G1、Spot 上**零样本**部署。期刊标题为 *Embodied skill transfer for locomotion control*（[*Science Robotics* 11(117)](https://doi.org/10.1126/scirobotics.aec7695)）；机制、表格与开源结论见 [论文实体](../entities/paper-zest.md)。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
-| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| ZEST | Zero-shot Embodied Skill Transfer | 本方法：异构参考 → 单阶段 RL → 硬件零样本 |
+| ViCap | Video-Captured motion | 手持视频重建的参考，相对 MoCap 更脏 |
+| RSI | Reference State Initialization | 按参考相位 reset；本文按失败率自适应 |
+| PLA | Parallel-Linkage Actuator | 闭链驱动；名义电枢决定 PD 增益 |
+| MDP | Markov Decision Process | 部署接口被压到本体 + 下一步参考 |
+| G1 | Unitree G1 Humanoid | RAI 侧完成的小型人形验证平台 |
 
-## 核心理念
+## 为什么重要
 
-ZEST 的核心在于将运动数据视为物理正则化项，在不需要显式判别器（Discriminator）或复杂接触计划的前提下，学习如何平衡“模仿精度”与“物理鲁棒性”。它证明了即使是带噪声的单目视频数据，也可以转化为机器人极其稳健的运动技能。
+工业侧第一次把「膝/肘/躯干贴地」的多接触技能稳定做到全尺寸 Atlas，同时证明同一套极简接口可以跨到 G1 和 Spot。它把运动数据当物理正则，而不是再叠一层判别器或接触计划。
 
 ## 主要技术路线
 
 ```text
-异构运动数据 (MoCap/ViCap/Animation)
+异构运动数据 (MoCap / ViCap / Animation)
           ↓
-  物理正则化强化学习 (Adaptive Sampling)
+  运动学重定向（无接触标签）
           ↓
-  自动课程学习 (Assistive Wrench)
+  物理正则化 RL + 自适应 RSI
           ↓
-  极简部署策略 (No History/No Preview)
+  辅助扳手自动课程（β → 0）
           ↓
-     零样本跨形态部署 (Atlas/G1/Spot)
+  极简部署（无历史窗 / 无估计器）
+          ↓
+     零样本（Atlas / G1 / Spot）
 ```
 
 ## 关键技术
 
-### 1. 自适应采样 (Adaptive Sampling)
-在处理大规模异构运动片段时，传统随机采样容易导致“灾难性遗忘”（模型在学习难动作时忘记了简单动作）。
-- **EMA 失败率跟踪**：为数据集中的每个片段维护一个失败率的指数移动平均（EMA）。
-- **难度感知采样**：采样器偏向于失败率高的“难点”片段，确保训练资源集中在尚未掌握的动作上。
+### 1. 自适应采样
 
-### 2. 虚拟辅助扳手 (Virtual Assistive Wrench)
-为了让机器人学会空翻等极高动态动作，ZEST 引入了一种自动课程学习机制：
-- 在训练初期，在机器人基座上施加一个虚拟的外部辅助力，帮助其维持平衡。
-- 该力随训练进度的提升（或通过固定计划）自动衰减至零。
+长轨迹切 bin，用失败率 EMA 衡量难度，categorical 采样偏向难点，并留地板概率防止灾难性遗忘。乒乓球等长时程技能点名依赖它。
 
-### 3. 极简部署架构 (Minimalist MDP)
-与大多数依赖观测历史或未来窗口的 RL 策略不同，ZEST 的策略输入被极度精简：
-- **输入**：当前本体感知信号 + 下一步参考状态 + 上一步动作。
-- **动作空间**：输出关节目标的残差（Residuals）并叠加在参考动作上。
-这种设计最大限度地减少了仿真与现实之间的时域和观测差异。
+### 2. 虚拟辅助扳手
+
+高动态（空翻、侧手翻）早期容易立刻终止。训练时在基座上施加模型基辅助力，幅度由同一套失败水平调制，跟踪上来后衰减到零。简单步态可以弱化或关掉。
+
+### 3. 极简部署 MDP
+
+- **输入：** 当前本体（IMU 角速度、投影重力、关节、上一动作）+ **下一步**参考。
+- **动作：** 残差关节目标叠到参考，再进与仿真相同的 PD。
+- **不要：** 接触标签、状态估计器、观测/参考长窗、任务专用奖励。
+
+### 4. 闭链执行器与增益
+
+膝/踝/腰 PLA 用名义构型电枢近似，再按临界阻尼选 \(K_p,K_d\)。这是 Sim2Real 的主工程，不是网络结构。
 
 ## 性能表现
 
-- **多接触能力**：成功实现了战术爬行、地板舞、翻滚等涉及膝盖、肘部、躯干多点接触的动作，这在传统 MPC 框架下极难建模。
-- **跨形态部署**：在 Atlas、Unitree G1 和 Spot 上均实现了成功部署，且不需要针对特定硬件进行算法结构的修改。
-- **高动态性**：实现了连续后空翻、侧手翻等接近人类极限的体育（Athletic）动作。
+- **Atlas MoCap：** 战术爬行、地板舞、前滚、侧手翻；走/跑出现跟脚滚转与近满伸膝。
+- **ViCap：** Atlas 舞段/踢球；G1 芭蕾与爬箱（不给箱子位姿，5/5 重复）。
+- **Spot 动画：** 连续后空翻、滚桶（IMU 饱和仍完成）。
+- **vs BD MPC：** 干净步行接近；慢跑/侧手翻与多接触技能 RL 明显更能做完。
 
 ## 与 HIL / MTRG 的关系（同作者脉络）
 
@@ -77,26 +85,31 @@ ZEST 的核心在于将运动数据视为物理正则化项，在不需要显式
 | **ZEST** | 多源异构模仿 → 硬件零样本 | **下一步参考**作为策略输入 |
 | [MTRG](./mtrg-reference-goal-driven-rl.md) | G1 箱式跑酷 OOD 泛化 | **仅 goal**；参考只参与训练奖励 |
 
-MTRG 复用 ZEST 的 **assistive-wrench \(\lambda\) 课程**，并在 beyond-nominal 初始条件下相对「ZEST mocap + 参考输入跟踪」显著提升成功率（见 MTRG 论文 Table I）。
+MTRG 复用 ZEST 的 assistive-wrench \(\lambda\) 课程；beyond-nominal 下相对「ZEST mocap + 参考输入跟踪」成功率更高（MTRG Table I：walk-jump 0.62 vs 0.17）。
 
 ## 关联页面
 
-- [MTRG](./mtrg-reference-goal-driven-rl.md) — 参考塑形 + goal 部署的人形跑酷泛化
-- [HIL](./hil-hybrid-imitation-learning.md) — tracking + AMP 混合模仿（角色动画）
-- [Curriculum Learning（课程学习）](../concepts/curriculum-learning.md) — 虚拟辅助力的核心理论
-- [EFGCL](./efgcl.md) — 学术侧「外部辅助力 + 课程衰减」与稀疏奖励高动态 RL（RA-L 2026 项目页 ingest）
-- [Sim2Real](../concepts/sim2real.md) — 零样本迁移的实现基础
-- [Behavior Cloning](./behavior-cloning.md)
+- [ZEST 论文实体](../entities/paper-zest.md) — Science Robotics 评测、消融与开源结论
+- [MTRG](./mtrg-reference-goal-driven-rl.md) — 参考塑形 + goal 部署
+- [HIL](./hil-hybrid-imitation-learning.md) — tracking + AMP（角色动画）
+- [HIL vs MTRG vs ZEST](../comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md)
+- [Curriculum Learning](../concepts/curriculum-learning.md)
+- [EFGCL](./efgcl.md) — 学术侧辅助力课程
+- [Sim2Real](../concepts/sim2real.md)
 - [DeepMimic](./deepmimic.md)
-- [Whole-Body Control (WBC)](../concepts/whole-body-control.md)
-- [Mujoco (物理引擎)](../entities/mujoco.md)
-- [Atlas (机器人)](../entities/boston-dynamics.md)
-- [G1 (机器人)](../entities/unitree-g1.md)
-- [Spot (机器人)](../entities/boston-dynamics.md)
-- [X-Morph](../entities/paper-xmorph.md) — 人体运动作非人形腿式行为先验的另一跨形态管线
+- [VideoMimic](../entities/videomimic.md)
+- [Boston Dynamics](../entities/boston-dynamics.md) / [G1](../entities/unitree-g1.md)
+- [X-Morph](../entities/paper-xmorph.md) — 另一条人体运动作非人形先验的管线
 
 ## 参考来源
+
+- [ZEST / Embodied skill transfer 归档](../../sources/papers/zest.md)
+- [论文实体](../entities/paper-zest.md)
+- [arXiv:2602.00401](https://arxiv.org/abs/2602.00401)
+- [Science Robotics DOI](https://doi.org/10.1126/scirobotics.aec7695)
 - [机器人论文阅读笔记：ZEST](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/ZEST__Zero-shot_Embodied_Skill_Transfer_for_Athletic_Robot_Control/ZEST__Zero-shot_Embodied_Skill_Transfer_for_Athletic_Robot_Control.html)
-- [ZEST: Zero-shot Embodied Skill Transfer for Athletic Robot Control](../../sources/papers/zest.md)
-- [arXiv:2602.00401v1](https://arxiv.org/abs/2602.00401v1)
-- [Boston Dynamics Technical Blog](https://bostondynamics.com/)
+
+## 推荐继续阅读
+
+- [arXiv PDF](https://arxiv.org/pdf/2602.00401)
+- [MTRG 论文](https://arxiv.org/abs/2602.20375)

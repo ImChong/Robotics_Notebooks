@@ -20,6 +20,7 @@ sources:
   - ../../sources/papers/any2any_arxiv_2605_23733.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
   - ../../sources/papers/pfm_hr_arxiv_2608_03227.md
+  - ../../sources/papers/zest.md
   - ../../sources/papers/humantracker_arxiv_2608_13555.md
 ---
 
@@ -57,6 +58,7 @@ flowchart TD
 | 证明「能跟参考跑起来」 | 显式 tracking reward | [DeepMimic](../methods/deepmimic.md)、[BeyondMimic](../methods/beyondmimic.md) |
 | 任务完成后仍像「人」 | 对抗式 motion prior | [AMP](../methods/amp-reward.md)、[ADD](../methods/add.md)、[SMP](../methods/smp.md) |
 | 多动作通用 tracker | 规模化 tracking policy | [GMT](../entities/paper-gmt.md)、[Any2Track](../methods/any2track.md)、[AMS](../methods/ams.md)、[MotionBricks](../methods/motionbricks.md)、[EGM](../methods/egm-efficient-general-mimic.md)、[SONIC](../methods/sonic-motion-tracking.md)、[Humanoid-GPT](../entities/paper-humanoid-gpt.md) |
+| 工业极简、跨形态真机 tracking | 下一步参考 + 无估计器 | [ZEST](../entities/paper-zest.md)（Atlas/G1/Spot；部署仍要播参考） |
 | 比较多个已有 tracker | 四族光学基准 + HumanScore，勿只报 AMASS-140 / MPJPE | [HumanTracker](../entities/paper-humantracker.md)（评测代码已开，153 h 数据待发布） |
 | 高覆盖率下训练集长尾 | 能力对齐 expert + 路由蒸馏 | [Athena-WBC](../entities/paper-athena-wbc-humanoid-longtail.md)（改奖励/重力课程，非仅重采样；STC/TIS/MPJPE-W） |
 | 动画参考 + latent 上下文跟踪 | 两阶段 VAE prior + 显式 PPO | [VMP](../entities/paper-notebook-vmp.md)（SCA 2024；LIME 真机） |
@@ -196,6 +198,7 @@ flowchart TD
 - [SceneBot](../entities/paper-scenebot.md)
 - [ContactMimic](../entities/paper-contactmimic.md)
 - [VMP](../entities/paper-notebook-vmp.md)
+- [ZEST](../entities/paper-zest.md) — 工业极简 tracking；Science Robotics 2026，确认未开源
 - [HumanTracker](../entities/paper-humantracker.md) — 比较已有 tracker 时用四族 + HumanScore，勿只报 AMASS-140 / MPJPE
 
 ## 一句话记忆

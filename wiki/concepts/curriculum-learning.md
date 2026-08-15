@@ -3,7 +3,7 @@ title: Curriculum Learning（课程学习）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-07-28
+updated: 2026-08-15
 summary: 从简单到复杂的渐进式训练策略，在机器人 RL 中用于解决稀疏奖励、地形多样性和任务复杂度梯度问题。
 ---
 
@@ -59,7 +59,7 @@ Stage 4: 复杂地形（台阶 0.2m, 石堆）
 根据策略当前表现动态调整难度：
 - **成功率阈值**：当前 stage 成功率 > 80% → 提升难度
 - **ALP-GMM**（Absolute Learning Progress）：追踪每个难度区域的学习进度，主动采样最有提升空间的区域
-- **失败驱动采样**：像 Beyondmimic 这类模仿学习框架会按片段失败率重新分配 reset 起点，让训练更多落在高失败片段而不是总从第 0 帧开始
+- **失败驱动采样**：像 Beyondmimic 这类模仿学习框架会按片段失败率重新分配 reset 起点，让训练更多落在高失败片段而不是总从第 0 帧开始。[ZEST](../entities/paper-zest.md) 把同一套失败率 EMA 同时用于 **bin 采样** 和 **基座辅助扳手衰减**
 
 ### 3. 地形课程（Terrain Curriculum for Locomotion）
 legged_gym / Isaac Lab 的标准做法：
@@ -149,5 +149,6 @@ terrain_level = clip(terrain_level + delta, 0, max_level)
 - [Privileged Training](./privileged-training.md) — teacher-student 框架常与课程学习结合
 - [HiPAN](../methods/hipan.md) — Path-Guided Curriculum Learning：用路径子目标做导航视界课程
 - [EFGCL](../methods/efgcl.md) — 外部辅助力幅度作为连续课程变量，服务高动态全身 RL
+- [ZEST](../entities/paper-zest.md) — 工业侧失败率采样 + 模型基辅助扳手（Science Robotics 2026）
 - [KungfuBot](../entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) — 跟踪精度容差的双层优化自适应课程
 - [AWARE](../entities/paper-aware-wheeled-legged-reflexive-evasion.md) — 轮足动态障碍速度课程

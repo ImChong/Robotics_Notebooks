@@ -2,9 +2,10 @@
 type: method
 tags: [humanoid, reinforcement-learning, motion-imitation, parkour, goal-conditioned, unitree-g1, sim2real]
 status: complete
-updated: 2026-06-19
+updated: 2026-08-15
 related:
   - ./zest.md
+  - ../entities/paper-zest.md
   - ./hil-hybrid-imitation-learning.md
   - ./deepmimic.md
   - ../tasks/humanoid-locomotion.md
@@ -138,6 +139,7 @@ flowchart LR
 ## 关联页面
 
 - [ZEST](./zest.md) — assistive wrench 课程与 tracking 基线
+- [ZEST 论文实体](../entities/paper-zest.md) — Science Robotics 2026 评测与未开源结论
 - [HIL](./hil-hybrid-imitation-learning.md) — 对抗式混合模仿对照
 - [HIL vs MTRG vs ZEST 跑酷路线对比](../comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md) — 三条路线选型
 - [DeepMimic](./deepmimic.md) — 显式 tracking 传统

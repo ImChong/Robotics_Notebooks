@@ -3,13 +3,14 @@
 type: entity
 tags: [repo, motion-retargeting, humanoid, video-imitation, reinforcement-learning, nvidia]
 status: complete
-updated: 2026-06-26
+updated: 2026-08-15
 summary: "VideoMimic 将单目人体视频转为可仿真跟踪的人形参考运动并训练 RL 策略；与 CRISP、OmniRetarget 常在论文/项目页作基线对比。"
 related:
   - ../concepts/motion-retargeting.md
   - ../methods/crisp-real2sim.md
   - ./paper-hrl-stack-03-omniretarget.md
   - ../tasks/humanoid-locomotion.md
+  - ./paper-zest.md
 sources:
   - ../../sources/repos/videomimic.md
   - ../../sources/papers/omniretarget_arxiv_2509_26633.md
@@ -31,7 +32,7 @@ sources:
 ## 为什么重要
 
 - **端到端视频→机器人**：把重定向、地形/接触建模与模仿学习放在同一研究叙事里，代表「不先手工 MoCap」的一条路线。
-- **对比基准**：[OmniRetarget](./paper-hrl-stack-03-omniretarget.md) 论文将 VideoMimic 列为基线（软惩罚、偏地形交互，缺 interaction-preserving 硬约束与数据增广）。
+- **对比基准**：[OmniRetarget](./paper-hrl-stack-03-omniretarget.md) 论文将 VideoMimic 列为基线（软惩罚、偏地形交互，缺 interaction-preserving 硬约束与数据增广）。[ZEST](./paper-zest.md) 把 VideoMimic 读成偏 locomotion 的 real-to-sim-to-real，而自己强调间歇全身接触的舞/爬箱技能。
 
 ## 流程概念
 
@@ -49,6 +50,7 @@ flowchart LR
 - [CRISP](../methods/crisp-real2sim.md)
 - [OmniRetarget](./paper-hrl-stack-03-omniretarget.md)
 - [holosoma](./holosoma.md)
+- [ZEST](./paper-zest.md) — 视频→多接触技能的工业对照（未开源）
 
 ## 参考来源
 

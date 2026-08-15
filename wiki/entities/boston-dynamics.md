@@ -3,7 +3,7 @@
 type: entity
 tags: [robot, hardware, humanoid, quadruped, industry, mit]
 status: complete
-updated: 2026-07-25
+updated: 2026-08-15
 related:
   - ./benjamin-katz.md
   - ./mit-mini-cheetah.md
@@ -12,6 +12,7 @@ related:
   - ./paper-autonomous-spot-nebula-exploration.md
   - ./paper-spot-rl-distributional-sim2real.md
   - ./patent-boston-dynamics-legged-control-stack.md
+  - ./paper-zest.md
   - ../tasks/locomotion.md
   - ../concepts/whole-body-control.md
   - ../methods/model-predictive-control.md
@@ -61,13 +62,14 @@ Stretch 是一款针对物流搬运设计的非类人机器人。它拥有一个
 
 如果说 Unitree 等公司通过供应链优势推动了足式机器人的“平民化”和“普及化”，那么 Boston Dynamics 则始终在探索“**机器人动态性能的物理极限**”。
 
-在深度学习和强化学习（RL）爆发的今天，波士顿动力经典的“模型驱动（Model-based）”路线面临着数据驱动（Data-driven）路线的挑战。虽然其在人工智能（特别是大模型和模仿学习端到端控制）方面的 PR 相对低调，但其底层极其扎实的运控算法和硬件平台，仍是当前所有 RL 从业者试图超越的物理标杆。
+在深度学习和强化学习（RL）爆发的今天，波士顿动力经典的“模型驱动（Model-based）”路线面临着数据驱动（Data-driven）路线的挑战。虽然其在人工智能（特别是大模型和模仿学习端到端控制）方面的 PR 相对低调，但其底层极其扎实的运控算法和硬件平台，仍是当前所有 RL 从业者试图超越的物理标杆。[ZEST](./paper-zest.md)（与 RAI Institute 合作，*Science Robotics* 2026）是其公开的 RL 对照：同一套极简模仿配方在全电 Atlas 上做出战术爬行/地板舞，并在仿真里对比自家全身 MPC——干净步行两者接近，多接触与脏接触标注技能则 RL 更能做完。
 
 ## 关联页面
 - [四足机器人](./quadruped-robot.md)
 - [人形机器人 (Humanoid Robot)](./humanoid-robot.md)
 - [Autonomous Spot / NeBula 探索](./paper-autonomous-spot-nebula-exploration.md)
 - [Spot RL 分布距离 Sim2Real](./paper-spot-rl-distributional-sim2real.md)
+- [ZEST（论文实体）](./paper-zest.md) — RAI × BD：异构参考零样本上 Atlas / Spot（Science Robotics 2026；未开源）
 - [BD 足式控制专利栈](./patent-boston-dynamics-legged-control-stack.md)
 - [Locomotion 任务](../tasks/locomotion.md)
 - [Whole-Body Control (WBC)](../concepts/whole-body-control.md)
@@ -80,3 +82,4 @@ Stretch 是一款针对物流搬运设计的非类人机器人。它拥有一个
 - [Boston Dynamics 足式机器人专利摘录](../../sources/patents/boston_dynamics_legged_robot_patents.md)
 - [Autonomous Spot 论文摘录（arXiv:2010.09259）](../../sources/papers/autonomous_spot_arxiv_2010_09259.md)
 - [Spot RL 论文摘录（arXiv:2504.17857）](../../sources/papers/spot_rl_distributional_sim2real_arxiv_2504_17857.md)
+- [ZEST / Embodied skill transfer](../../sources/papers/zest.md)
