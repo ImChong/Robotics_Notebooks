@@ -27,7 +27,8 @@ GENERIC_SOURCE = "的深读笔记索引；正文以笔记站与 arXiv 为准"
 
 def load_mapping() -> dict[str, list[str]]:
     data = yaml.safe_load(FULL_MAP_PATH.read_text(encoding="utf-8")) or {}
-    overrides = data.get("overrides", data)
+    raw = data.get("overrides", data)
+    overrides = raw if isinstance(raw, dict) else {}
     result: dict[str, list[str]] = {}
     for key, value in overrides.items():
         result[key] = [value] if isinstance(value, str) else list(value)
