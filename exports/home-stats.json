@@ -82,6 +82,39 @@
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {
+      "path": "wiki/entities/core-retarget.md",
+      "detail_id": "entity-core-retarget",
+      "label": "CoRe（接触感知全身重定向软件）",
+      "type": "entity",
+      "recency": "2026-08-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-core.md",
+      "detail_id": "entity-paper-core",
+      "label": "CoRe（接触感知优化与学习的人形运动）",
+      "type": "entity",
+      "recency": "2026-08-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-rmr.md",
+      "detail_id": "entity-paper-rmr",
+      "label": "RMR（优化式 Rig 统一的人形重定向）",
+      "type": "entity",
+      "recency": "2026-08-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/paper-gentrack.md",
       "detail_id": "entity-paper-gentrack",
       "label": "GenTrack：机器人原生运动生成与零样本跟踪的物理对齐",
@@ -182,35 +215,6 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-galaxea-g05.md",
-      "detail_id": "entity-paper-galaxea-g05",
-      "label": "G0.5：推理与动作同一自回归流",
-      "type": "entity",
-      "recency": "2026-08-14",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-rift-wam.md",
-      "detail_id": "entity-paper-rift-wam",
-      "label": "Rift：免视频 Rollout 的未来条件 WAM",
-      "type": "entity",
-      "recency": "2026-08-14",
-      "source": "git",
-      "action": "added"
-    },
-    {
-      "path": "wiki/entities/paper-smpc2rl-loco-manipulation.md",
-      "detail_id": "entity-paper-smpc2rl-loco-manipulation",
-      "label": "SMPC-to-RL：稀疏奖励全身 Loco-Manipulation",
-      "type": "entity",
-      "recency": "2026-08-14",
-      "source": "git",
-      "action": "added"
     }
   ],
   "latest_wiki_node": {
