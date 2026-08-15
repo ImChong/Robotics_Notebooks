@@ -65,14 +65,17 @@ STALE_CLAIM_PATTERNS = [
     r"最新",
 ]
 
-# 陈旧声明巡检的误报豁免：命中绝对化措辞不等于本页在下时效性断言。以下三类是
+# 陈旧声明巡检的误报豁免：命中绝对化措辞不等于本页在下时效性断言。以下四类是
 # 结构性误报，按命中处的上下文豁免，避免为迁就正则去改写本就正确的正文：
 #   1) 否定语境：「这是部署证据，不是策略 SoTA」「不要把它读成又一个 SoTA」等
 #      辟谣式写法，本身就在否认该断言；
 #   2) 库内页面名：「VLA SOTA Leaderboard」是 entities/vla-sota-leaderboard.md 的
 #      页面标题，正文引用它属导航，不是本页断言；
 #   3) 运行时对象：「服务端只保留最新 pending 帧」「取最新状态」描述系统行为，
-#      不会随领域进展过时。
+#      不会随领域进展过时；
+#   4) 英文缩写速查区块：`| SOTA | State of the Art | 排行榜对照参考 |` 是词条
+#      释义表（写作规范要求的固定区块），在给缩写下定义而非给结论下断言，
+#      与「常见误区」区块同属结构性区块，扫描前整段剥离。
 STALE_CLAIM_NEGATION_CUES: tuple[str, ...] = (
     "不是",
     "并非",
@@ -149,6 +152,13 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # 循环延迟累计等），是语言/工具链 token，非机器人概念/方法/形式化，
     # 不应建独立页；与 uv/md 同类基础设施停用词。
     "printf",
+    # stop：各页正文里的 `STOP` / `stop` 是运行时命令名或枚举值，三义被小写
+    # slug 合并——BehaviorTree/Groot 控制命令（`STOP`→复位→`RESUME`，其语义已在
+    # concepts/behavior-tree-vla-orchestration.md 的命令表逐条释义）、agent 自
+    # 校正循环的动作枚举（img2threejs 的 `continue`/`refine-code`/`stop`）、
+    # 导航评测的片段类别（Green for Go 的 stop 片段）。非单一可成页概念，
+    # 与 clip（模型名 vs 限幅动词）同类语义噪声。
+    "stop",
 }
 
 # 高频术语但「已在 entities/ 或非同名 stem 的 methods 页有恰当归属」，
@@ -165,6 +175,13 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
 #   g1         → entities/unitree-g1.md（硬件，归 entities）
 #   gmr        → methods/motion-retargeting-gmr.md（General Motion Retargeting，方法页）
 #   heracles   → entities/paper-heracles-humanoid-diffusion.md（具体系统）
+#   joint      → 三义各有归属，均非同名 stem：URDF/MuJoCo 的关节元素归
+#                concepts/urdf-robot-description.md + concepts/armature-modeling.md
+#                （`joint` 上的 armature/反射惯量）；WAM 分类学的 **Joint** 族
+#                （联合预测未来与动作，对 **Cascaded**）归
+#                concepts/world-action-models.md；论文消融条件名「joint」
+#                （Green for Go）属单页实验设定。与 damping 同为 MuJoCo 关节属性
+#                token，本库按参数/分类维度记述，不单建概念页
 #   mjlab      → entities/mjlab.md（库/工具）
 #   mujoco     → entities/mujoco.md（仿真器/工具）
 #   sonic      → methods/sonic-motion-tracking.md（具体方法）
@@ -196,6 +213,7 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "g1",
     "gmr",
     "heracles",
+    "joint",  # 关节属性 / WAM Joint 族 / 消融条件名三义，已由 URDF + WAM 等页覆盖
     "mit",  # 机构（schema/institutions.json），非概念，不应建 concepts/methods 页
     "mjlab",
     "mujoco",
@@ -711,13 +729,16 @@ def _check_stale_claims(pages: list[Path], results: dict[str, Any]) -> None:
     建议复核。属信息型预警，不计入 lint 失败总数。
 
     命中判定见 :func:`_stale_claim_hit`：否定语境 / 库内页面名引用 / 运行时对象
-    三类结构性误报不算断言。
+    三类结构性误报不算断言；「英文缩写速查」区块是词条释义表，扫描前整段剥离。
     """
+    from wiki_abbrev_section import extract_abbrev_section
+
     page_stems = {p.stem.lower() for p in pages}
     meta: list[tuple[Path, date | None, set[str], str]] = []
     for page in pages:
         content = page.read_text(encoding="utf-8")
         body = re.sub(r"^---\n.*?\n---", "", content, flags=re.DOTALL)
+        body = extract_abbrev_section(body)[1]
         body = strip_misconception_sections(strip_code_blocks(body))
         meta.append(
             (

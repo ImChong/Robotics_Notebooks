@@ -113,7 +113,7 @@
 - [Mapillary Vistas](wiki/entities/dataset-mapillary.md) — Mapillary Vistas**：街景大规模语义分割数据集，类别与地域覆盖广，常与 Cityscapes 对照做域泛化评测。 `📅unknown` `[entity_page]`
 - [MNIST](wiki/entities/dataset-mnist.md) — MNIST**：手写数字分类小规模基准：6 万训练/1 万测试灰度 28×28；教学与算法冒烟测试常用，非现代机器人感知主基准。 `📅unknown` `[entity_page]`
 - [Objects365](wiki/entities/dataset-objects365.md) — Objects365**：超大规模目标检测数据集（365 类、逾百万图像），常用作比 COCO 更强的检测预训练源，再向下游迁移。 `📅unknown` `[entity_page]`
-- [PASCAL VOC](wiki/entities/dataset-pascal-voc.md) — PASCAL VOC**：早期语义/目标检测标准集（20 类）；教学与历史对照常用，现代 SOTA 主战场已转向 COCO/ADE20K。 `📅unknown` `[entity_page]`
+- [PASCAL VOC](wiki/entities/dataset-pascal-voc.md) — PASCAL VOC**：早期语义/目标检测标准集（20 类）；教学与历史对照常用，检测/分割评测的主战场此后转向 COCO/ADE20K。 `📅unknown` `[entity_page]`
 - [VaTeX](wiki/entities/dataset-vatex.md) — VaTeX**：大规模多语言视频–文本数据集，用于视频描述与跨语言检索，服务多模态时序对齐研究。 `📅unknown` `[entity_page]`
 - [WIT](wiki/entities/dataset-wit.md) — WIT**：Wikipedia-based Image Text：维基图文对的超大规模多语言图文数据集，服务 CLIP 类对比学习与检索。 `📅unknown` `[entity_page]`
 - [DBHL窄地形全身运动](wiki/entities/dbhl-whole-body-loco.md) — DBHL窄地形全身运动](https://whole-body-loco.github.io/) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/ `📅unknown` `[entity_page]`

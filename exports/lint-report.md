@@ -2,7 +2,7 @@
 
 ## [2026-08-14] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **16** 条信息型预警）：
+共发现 **0** 个问题（另含 **0** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -52,9 +52,8 @@
 ### 💡 频繁提及但缺少 wiki 页面的概念（0 个）
 - 无
 
-### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（2 个）
-- joint（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
-- STOP（被 6 个页面以加粗/反引号引用，但无独立 concepts/methods/formalizations 页，建议评估新建）
+### 💡 多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### ⚠️ Frontmatter 缺少 type 字段（0 个）
 - 无
@@ -107,21 +106,8 @@
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（14 个）
-- wiki/entities/dataset-ade20k.md（含绝对化措辞「SOTA」，updated=2026-08-12；同主题更新页 wiki/entities/paper-humanoidvln.md updated=2026-08-14）
-- wiki/entities/dataset-cifar.md（含绝对化措辞「SOTA」，updated=2026-08-12；同主题更新页 wiki/entities/paper-humanoidvln.md updated=2026-08-14）
-- wiki/entities/dataset-cityscapes.md（含绝对化措辞「SOTA」，updated=2026-08-12；同主题更新页 wiki/entities/paper-humanoidvln.md updated=2026-08-14）
-- wiki/entities/dataset-coco.md（含绝对化措辞「SOTA」，updated=2026-08-12；同主题更新页 wiki/entities/paper-humanoidvln.md updated=2026-08-14）
-- wiki/entities/dataset-flickr30k-entities.md（含绝对化措辞「SOTA」，updated=2026-08-12；同主题更新页 wiki/entities/paper-humanoidvln.md updated=2026-08-14）
-- wiki/entities/dataset-imagenet.md（含绝对化措辞「SOTA」，updated=2026-08-12；同主题更新页 wiki/entities/paper-humanoidvln.md updated=2026-08-14）
-- wiki/entities/dataset-jft-300m.md（含绝对化措辞「SOTA」，updated=2026-08-12；同主题更新页 wiki/entities/paper-humanoidvln.md updated=2026-08-14）
-- wiki/entities/dataset-mapillary.md（含绝对化措辞「SOTA」，updated=2026-08-12；同主题更新页 wiki/entities/paper-humanoidvln.md updated=2026-08-14）
-- wiki/entities/dataset-mnist.md（含绝对化措辞「SOTA」，updated=2026-08-12；同主题更新页 wiki/entities/paper-humanoidvln.md updated=2026-08-14）
-- wiki/entities/dataset-objects365.md（含绝对化措辞「SOTA」，updated=2026-08-12；同主题更新页 wiki/entities/paper-humanoidvln.md updated=2026-08-14）
-- wiki/entities/dataset-pascal-voc.md（含绝对化措辞「SOTA」，updated=2026-08-12；同主题更新页 wiki/entities/paper-humanoidvln.md updated=2026-08-14）
-- wiki/entities/dataset-vatex.md（含绝对化措辞「SOTA」，updated=2026-08-12；同主题更新页 wiki/entities/paper-humanoidvln.md updated=2026-08-14）
-- wiki/entities/dataset-wit.md（含绝对化措辞「SOTA」，updated=2026-08-12；同主题更新页 wiki/entities/paper-humanoidvln.md updated=2026-08-14）
-- wiki/entities/paper-occanyscene.md（含绝对化措辞「SOTA」，updated=2026-08-13；同主题更新页 wiki/entities/paper-da-nav.md updated=2026-08-14）
+### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无

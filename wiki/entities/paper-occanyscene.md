@@ -15,7 +15,7 @@ tags:
   - hitsz
   - peng-cheng-lab
 status: complete
-updated: 2026-08-13
+updated: 2026-08-14
 arxiv: "2608.08696"
 related:
   - ../concepts/embodied-perception-six-spatial-representations.md
@@ -108,7 +108,7 @@ flowchart TB
 | 项 | 建议 / 论文设定 |
 |----|----------------|
 | **何时用** | 需要 **同一套视觉占据** 覆盖房间级细网格与街道级粗网格，且相机内外参已知 |
-| **何时不用** | 只要单域 SOTA、或必须在线可跑：今日无官方实现；单域也可直接上 EmbodiedOcc / SplatSSC / 驾驶侧 GaussianFormer 系 |
+| **何时不用** | 只需单域最优指标、或必须在线可跑：截至 2026-08-13 无官方实现；单域也可直接上 EmbodiedOcc / SplatSSC / 驾驶侧 GaussianFormer 系 |
 | **几何参照** | 不要回归跨场景绝对高斯尺度；用 **视锥截面 \(d/f\)** 当尺度单位 |
 | **遮挡** | \(K=1\) 已接近 \(K=3\)；补全靠 **邻像素交替 \(\Delta d\)**，不是同一射线多层分离 |
 | **效率参考** | DAv2：98.2 M / 86.4 ms / **670 MiB**（Occ-ScanNet，RTX 4090）；DAv3 时延约 88.4 ms |
