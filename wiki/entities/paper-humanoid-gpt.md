@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, imitation-learning, reinforcement-learning, transformer, dagger, scaling-law, zero-shot, unitree-g1, cvpr2026, galbot, tsinghua]
 status: complete
-updated: 2026-07-24
+updated: 2026-08-15
 arxiv: "2606.03985"
 venue: "CVPR 2026"
 code: https://github.com/GalaxyGeneralRobotics/Humanoid-GPT
@@ -18,6 +18,7 @@ related:
   - ../concepts/whole-body-control.md
   - ../concepts/whole-body-tracking-pipeline.md
   - ../queries/humanoid-motion-tracking-method-selection.md
+  - ./paper-humantracker.md
 sources:
   - ../../sources/papers/humanoid_gpt_arxiv_2606_03985.md
   - ../../sources/sites/humanoid-gpt-qizekun-github-io.md
@@ -145,6 +146,7 @@ flowchart TB
 - **仿真亮点（Table 2）**：Humanoid-GPT-L @ 2B — SR **92.58%**，MPJPE **0.0735**，MPKPE **40.99 mm**；同 2B 下 TCN-L SR **89.05%** 且 MPKPE **56.15 mm**。
 - **真机（Table 3，训练外舞蹈）**：四支未见舞曲上 MPJPE/MPJVE 整体优于 GMT / TWIST / Any2Track；Humanoid-GPT-B 在多数 clip 上 MPJVE 最低。
 - **定性**：项目页 **训练外** 真机片段（digging / disinfection / soccer / security 等）与相对 **SONIC** 的四类并排视频；完整协议与随机种子以 **PDF** 为准。
+- **独立零样本基准：** [HumanTracker](./paper-humantracker.md)（arXiv:2608.13555）在 **153 h / 四族** 光学测试集上用同一 MuJoCo 协议评 GMT / TWIST2 / SONIC / 本文：Daily / Highly Dynamic 三项全领先（Succ **94.4% / 86.9%**，MPJPE **0.046 / 0.047** rad，HumanScore **54.7 / 49.2**）；Ground Succ **32.9%** 仍最高，但该族 HumanScore 低于 SONIC（24.9 vs 26.5）。本文 **未在该集上训练**。
 
 ## 源码运行时序图
 
@@ -198,6 +200,7 @@ sequenceDiagram
 - [DAgger](../methods/dagger.md) — 蒸馏阶段核心算法；与 AssistMimic 等 **expert→generalist** 管线同族。
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md) — 将 Humanoid-GPT 纳入「规模化通才 tracker」分支。
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) — retarget → tracker → 真机闭环上下文。
+- [HumanTracker](./paper-humantracker.md) — 四族光学基准 + HumanScore；本文为零样本表上的整体最强 tracker。
 
 ## 推荐继续阅读
 
@@ -220,3 +223,4 @@ sequenceDiagram
 - [Imitation Learning](../methods/imitation-learning.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
+- [HumanTracker](./paper-humantracker.md)

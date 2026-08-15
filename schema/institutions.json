@@ -2686,6 +2686,13 @@
         "institute-of-software-cas",
         "cas-software"
       ]
+    },
+    "nankai": {
+      "label": "南开大学（Nankai University）",
+      "aliases": [
+        "nankai",
+        "nankai-university"
+      ]
     }
   }
 }

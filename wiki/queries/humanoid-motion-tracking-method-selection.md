@@ -21,6 +21,7 @@ sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
   - ../../sources/papers/pfm_hr_arxiv_2608_03227.md
   - ../../sources/papers/zest.md
+  - ../../sources/papers/humantracker_arxiv_2608_13555.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「人形运动跟踪与风格先验方法这么多，工程上怎么选、怎么组合？」
@@ -58,6 +59,7 @@ flowchart TD
 | 任务完成后仍像「人」 | 对抗式 motion prior | [AMP](../methods/amp-reward.md)、[ADD](../methods/add.md)、[SMP](../methods/smp.md) |
 | 多动作通用 tracker | 规模化 tracking policy | [GMT](../entities/paper-gmt.md)、[Any2Track](../methods/any2track.md)、[AMS](../methods/ams.md)、[MotionBricks](../methods/motionbricks.md)、[EGM](../methods/egm-efficient-general-mimic.md)、[SONIC](../methods/sonic-motion-tracking.md)、[Humanoid-GPT](../entities/paper-humanoid-gpt.md) |
 | 工业极简、跨形态真机 tracking | 下一步参考 + 无估计器 | [ZEST](../entities/paper-zest.md)（Atlas/G1/Spot；部署仍要播参考） |
+| 比较多个已有 tracker | 四族光学基准 + HumanScore，勿只报 AMASS-140 / MPJPE | [HumanTracker](../entities/paper-humantracker.md)（评测代码已开，153 h 数据待发布） |
 | 高覆盖率下训练集长尾 | 能力对齐 expert + 路由蒸馏 | [Athena-WBC](../entities/paper-athena-wbc-humanoid-longtail.md)（改奖励/重力课程，非仅重采样；STC/TIS/MPJPE-W） |
 | 动画参考 + latent 上下文跟踪 | 两阶段 VAE prior + 显式 PPO | [VMP](../entities/paper-notebook-vmp.md)（SCA 2024；LIME 真机） |
 | 接触丰富场景 tracking | 参考运动 + per-link contact label | [SceneBot](../entities/paper-scenebot.md)（hindsight 场景重建 + 单策略 terrain/object） |
@@ -159,6 +161,7 @@ flowchart TD
 1. **AMP ≠ 更好 tracking**：AMP 约束的是**状态转移分布**，不能替代任务奖励与稳定跟踪基线。
 2. **生成式先验不能跳过仿真验证**：扩散/ASE 产物仍需进物理仿真做 feasibility 检查。
 3. **tracker 与 prior 混在同一 reward**：建议分阶段训练或明确权重 schedule，避免梯度互相掩盖。
+4. **AMASS-140 + MPJPE 当最终排名**：[HumanTracker](../entities/paper-humantracker.md) 显示 Ground 上 GMT/TWIST2 Succ 可为 0，且 HumanScore 与 MPJPE 会分家；比较通才 tracker 应看族级 Succ + 感知分。
 
 ---
 
@@ -174,6 +177,7 @@ flowchart TD
 - [Any2Any（arXiv:2605.23733）](../../sources/papers/any2any_arxiv_2605_23733.md)
 - [Shooting for Contact / DSMS（arXiv:2608.03116）](../../sources/papers/shooting_for_contact_arxiv_2608_03116.md)
 - [PFM-HR（arXiv:2608.03227）](../../sources/papers/pfm_hr_arxiv_2608_03227.md)
+- [HumanTracker（arXiv:2608.13555）](../../sources/papers/humantracker_arxiv_2608_13555.md)
 
 ## 关联页面
 
@@ -195,6 +199,7 @@ flowchart TD
 - [ContactMimic](../entities/paper-contactmimic.md)
 - [VMP](../entities/paper-notebook-vmp.md)
 - [ZEST](../entities/paper-zest.md) — 工业极简 tracking；Science Robotics 2026，确认未开源
+- [HumanTracker](../entities/paper-humantracker.md) — 比较已有 tracker 时用四族 + HumanScore，勿只报 AMASS-140 / MPJPE
 
 ## 一句话记忆
 

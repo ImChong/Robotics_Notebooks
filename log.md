@@ -8,6 +8,15 @@
 - **交叉：** MTRG / HIL / 跑酷对比 / Curriculum / Sim2Real / VideoMimic / Boston Dynamics / G1 / 运动跟踪选型
 - **机构：** 复用 `rai-institute`、`boston-dynamics`
 
+## [2026-08-15] ingest | sources/papers/humantracker_arxiv_2608_13555.md — 接入 HumanTracker 四族光学基准与 HumanScore（评测代码已开，153h 数据待发布）
+
+- **触发：** 用户指定论文 *HumanTracker: Towards Comprehensive and Human-Aligned Motion Tracking Benchmark* 与项目页 <https://dairuliu.github.io/humantracker/>
+- **步骤 2.5：** 项目页 Paper/Code/Dataset 仍写 Coming Soon；arXiv:2608.13555 已上线；GitHub [GalaxyGeneralRobotics/HumanTracker](https://github.com/GalaxyGeneralRobotics/HumanTracker) 含评测 harness、HumanScore 训练与 `best.pt` → **部分开源**。153 h / 25K 数据集未发布
+- **来源：** [`sources/papers/humantracker_arxiv_2608_13555.md`](sources/papers/humantracker_arxiv_2608_13555.md)、[`sources/sites/humantracker-dairuliu-github-io.md`](sources/sites/humantracker-dairuliu-github-io.md)、[`sources/repos/humantracker.md`](sources/repos/humantracker.md)
+- **升格：** [`wiki/entities/paper-humantracker.md`](wiki/entities/paper-humantracker.md) — HumanScore 90.83%；零样本表 Humanoid-GPT 整体领先、SONIC Ground HS 更高；含 mermaid 时序图
+- **机构：** `schema/institutions.json` 新增 `nankai`（南开大学）；复用 `tsinghua` / `galbot` / `sjtu` / `pku` / `shanghai-pil`
+- **交叉：** Humanoid-GPT / SONIC / GMT / TWIST2 / 跟踪选型 / 参考运动数据集 / AMASS / PHUMA / GMR
+
 ## [2026-08-15] ingest | sources/papers/temporal_grpo_arxiv_2608_13026.md — 接入 Temporal GRPO 阶段条件 VLA-RL 信用（确认未开源）
 
 - **触发：** 用户指定 arXiv 论文 *Temporal GRPO: Beyond Trajectory-Level Credit in Vision-Language-Action Reinforcement Learning*

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, whole-body, reinforcement-learning, moe, adaptive-sampling, ppo, dagger, sim2real, unitree-g1, ucsd, sfu, gmt]
 status: complete
-updated: 2026-07-24
+updated: 2026-08-15
 arxiv: "2506.14770"
 code: https://github.com/zixuan417/humanoid-general-motion-tracking
 related:
@@ -20,6 +20,7 @@ related:
   - ./unitree-g1.md
   - ./paper-loco-manip-161-009-gmt.md
   - ./paper-notebook-general-motion-tracking-for-humanoid-whole-body.md
+  - ./paper-humantracker.md
 sources:
   - ../../sources/papers/gmt_arxiv_2506_14770.md
   - ../../sources/sites/gmt-humanoid-github-io.md
@@ -190,6 +191,7 @@ sequenceDiagram
 | **GMT** | **单策略 + MoE** | **8925 filtered + Adaptive Sampling** | 接触/地形弱；训练栈部分未开源 |
 | [EGM](../methods/egm-efficient-general-mimic.md) | CDMoE + Bin 课程 | 强调小高质量集 | 同族「高效通用 mimic」对照 |
 | [SONIC](../methods/sonic-motion-tracking.md) | 规模化 token/接口 | 更大语料叙事 | 工程栈更重 |
+| [HumanTracker](./paper-humantracker.md) | 评测层（非新策略） | 153 h 四族 + HumanScore | GMT 在 Ground Succ **0.0**、Daily HS **2.4**；独立零样本协议 |
 | [ResMimic](./paper-resmimic.md) | GMT 先验 + 残差 | 物体条件 | 下游 loco-manip，非替代 GMT |
 
 ## 关联页面
@@ -198,6 +200,7 @@ sequenceDiagram
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
 - [EGM（Efficient General Mimic）](../methods/egm-efficient-general-mimic.md)
 - [SONIC](../methods/sonic-motion-tracking.md)
+- [HumanTracker](./paper-humantracker.md) — 四族零样本评测；GMT Ground Succ 0
 - [ResMimic](./paper-resmimic.md)
 - [PhyGile](./paper-phygile.md)
 - [ExBody2（161 索引）](./paper-loco-manip-161-007-exbody2.md)
