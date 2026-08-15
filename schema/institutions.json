@@ -2693,6 +2693,30 @@
         "nankai",
         "nankai-university"
       ]
+    },
+    "keio": {
+      "label": "庆应义塾大学（Keio University）",
+      "aliases": [
+        "keio",
+        "keio-university",
+        "keio-univ"
+      ]
+    },
+    "aist": {
+      "label": "产业技术综合研究所（AIST）",
+      "aliases": [
+        "aist",
+        "aist-jp",
+        "national-institute-of-advanced-industrial-science-and-technology"
+      ]
+    },
+    "omron-sinic-x": {
+      "label": "欧姆龙 SINIC X（OMRON SINIC X）",
+      "aliases": [
+        "omron-sinic-x",
+        "omron",
+        "sinic-x"
+      ]
     }
   }
 }

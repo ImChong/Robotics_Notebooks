@@ -2,17 +2,19 @@
 type: method
 tags: [data-engine, vlm, labeling, data-collection, machine-learning]
 status: complete
-updated: 2026-08-07
+updated: 2026-08-15
 related:
   - ../concepts/embodied-scaling-laws.md
   - ../methods/vla.md
   - ../queries/demo-data-collection-guide.md
   - ../entities/perceptron-egocentric.md
+  - ../entities/paper-hand-visibility-detector.md
   - ./macrodata-egocentric-hand-action.md
 sources:
   - ../../sources/papers/perception.md
   - ../../sources/blogs/perceptron_egocentric_api.md
   - ../../sources/blogs/macrodata_egocentric_video_3d_hand_actions.md
+  - ../../sources/papers/hand_visibility_detector_arxiv_2608_11574.md
 summary: "自动化标注流水线（Auto-labeling Pipelines）利用大视觉语言模型（VLM）自动为海量机器人原始轨迹生成文本描述和成功率标签，极大地降低了具身基础模型的数据准备成本。"
 ---
 
@@ -55,6 +57,7 @@ summary: "自动化标注流水线（Auto-labeling Pipelines）利用大视觉�
 - **SceneVerse++ (BIGAI 等)**：从互联网无标注视频做 SfM 与稠密重建，再自动生成实例分割、[3D 空间 VQA](../concepts/3d-spatial-vqa.md) 与 [VLN](../tasks/vision-language-navigation.md) 监督；侧重 **3D 场景理解** 数据引擎而非单条轨迹描述。见 [SceneVerse++](../entities/sceneverse-pp.md)。
 - **Perceptron Egocentric (Perceptron)**：基于 **Mk1** 具身感知模型的托管 API，将机器人/egocentric 视频转为 **原子操作分段 + 子任务标签 + 双手 21 关键点 grounding**；在 **WGO-Bench** 上报告超越 **Gemini Robotics ER-1.6 + Gemini 3.5 Flash** 的 Macrodata 管线，且 with-instruction 成本约为人工标注的 **1/10–1/15**。见 [Perceptron Egocentric](../entities/perceptron-egocentric.md)。
 - **Macrodata Egocentric Hand-Action（Macrodata Labs）**：与 WGO **语义分段** 正交的 **几何动作** 轴——RGB-only 开源配方（WiLoR + HaWoR + VGGT-Omega）把 egocentric 视频重建为世界系 **21 关节度量轨迹**；HOT3D **Action MPJPE 52.04 mm**、15.53 FPS@H100。公司专有检测/编排 **未开源**。见 [Macrodata Egocentric Hand-Action](./macrodata-egocentric-hand-action.md)。
+- **Hand Visibility Detector（庆应 / AIST 等）**：几何标注的另一刀——冻结 HPE 骨干估计 **逐关节可见性**，给多视 2D 点做加权三角化，HO3D 重投影均值最多降 **10.1%**。这是观测质量门控，不是 VLM 语义标。见 [Hand Visibility Detector](../entities/paper-hand-visibility-detector.md)。
 
 ## 带来的优势
 
@@ -67,6 +70,7 @@ summary: "自动化标注流水线（Auto-labeling Pipelines）利用大视觉�
 - [SceneVerse++（互联网 3D 场景数据）](../entities/sceneverse-pp.md)
 - [Perceptron Egocentric（子任务分段 + 双手 grounding API）](../entities/perceptron-egocentric.md)
 - [Macrodata Egocentric Hand-Action（度量 3D 手轨迹）](./macrodata-egocentric-hand-action.md)
+- [Hand Visibility Detector（逐关节可见性）](../entities/paper-hand-visibility-detector.md)
 - [演示数据采集指南](../queries/demo-data-collection-guide.md)
 
 ## 参考来源
@@ -75,3 +79,4 @@ summary: "自动化标注流水线（Auto-labeling Pipelines）利用大视觉�
 - [SceneVerse++ 原始资料](../../sources/repos/sceneverse-pp.md) — 网页视频重建与 3D 自动标注流水线案例（CVPR 2026）
 - [perceptron_egocentric_api.md](../../sources/blogs/perceptron_egocentric_api.md) — WGO-Bench 子任务自动标注 SOTA 与成本对照（2026-07）
 - [macrodata_egocentric_video_3d_hand_actions.md](../../sources/blogs/macrodata_egocentric_video_3d_hand_actions.md) — egocentric → 度量手轨迹开源配方与 Action MPJPE（2026-08）
+- [hand_visibility_detector_arxiv_2608_11574.md](../../sources/papers/hand_visibility_detector_arxiv_2608_11574.md) — 可见性加权多视三角化（几何标注门控）
