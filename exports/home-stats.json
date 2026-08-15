@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-hand-visibility-detector.md",
+      "detail_id": "entity-paper-hand-visibility-detector",
+      "label": "Hand Visibility Detector：逐关节手部可见性",
+      "type": "entity",
+      "recency": "2026-08-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/paper-humantracker.md",
       "detail_id": "entity-paper-humantracker",
       "label": "HumanTracker（Comprehensive and Human-Aligned Motion Tracking Benchmark）",
@@ -203,22 +214,12 @@
       "source": "git",
       "action": "added",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/formalizations/forward-kinematics.md",
-      "detail_id": "wiki-formalizations-forward-kinematics",
-      "label": "正向运动学（Forward Kinematics）",
-      "type": "formalization",
-      "recency": "2026-08-13",
-      "source": "git",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-humantracker.md",
-    "detail_id": "entity-paper-humantracker",
-    "label": "HumanTracker（Comprehensive and Human-Aligned Motion Tracking Benchmark）",
+    "path": "wiki/entities/paper-hand-visibility-detector.md",
+    "detail_id": "entity-paper-hand-visibility-detector",
+    "label": "Hand Visibility Detector：逐关节手部可见性",
     "type": "entity",
     "recency": "2026-08-15",
     "source": "git",
