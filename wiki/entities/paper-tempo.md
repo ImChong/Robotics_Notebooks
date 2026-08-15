@@ -13,7 +13,7 @@ tags:
   - zjgsu
   - kth
 status: complete
-updated: 2026-08-11
+updated: 2026-08-15
 arxiv: "2608.07314"
 related:
   - ../methods/vla.md
@@ -24,6 +24,7 @@ related:
   - ../overview/vla-open-source-repro-landscape-2025.md
   - ../../roadmap/depth-vla.md
   - ../comparisons/online-vs-offline-rl.md
+  - ./paper-temporal-grpo.md
 sources:
   - ../../sources/papers/tempo_arxiv_2608_07314.md
   - ../../sources/sites/tempo-anonymous-4open.md
@@ -172,6 +173,7 @@ flowchart LR
 - [DeFI](../methods/defi-decoupled-dynamics-vla.md) — 表中强基线
 - [VLA 开源复现景观](../overview/vla-open-source-repro-landscape-2025.md) — 可跑 RL 系统对照
 - [VLA 纵深](../../roadmap/depth-vla.md) — Stage 5 RL 微调入口
+- [Temporal GRPO](./paper-temporal-grpo.md) — 对照：改阶段信用写回，不改更新频率（arXiv:2608.13026；未开源）
 
 ## 参考来源
 

@@ -3,12 +3,13 @@
 type: entity
 tags: [repo, vla, manipulation, open-source, vision-language-action, stanford]
 status: complete
-updated: 2026-08-04
+updated: 2026-08-15
 related:
   - ../methods/vla.md
   - ../entities/lerobot.md
   - ../overview/navigation-slam-autonomy-stack.md
   - ../overview/vla-open-source-repro-landscape-2025.md
+  - ./paper-temporal-grpo.md
 sources:
   - ../../sources/repos/openvla.md
 summary: "OpenVLA 是开源视觉-语言-动作模型：Prismatic VLM 骨干 + 离散动作 token，支持多数据集预训练与 LoRA/OFT 微调，常与 LeRobot 数据栈配合。"
@@ -60,6 +61,7 @@ summary: "OpenVLA 是开源视觉-语言-动作模型：Prismatic VLM 骨干 + �
 - [LeRobot](./lerobot.md)
 - [VLA 开源复现景观 2025](../overview/vla-open-source-repro-landscape-2025.md)
 - [WCM 世界模型 Critic](./paper-wcm-world-critic-model.md) — 用世界模型 critic 做 RL 后训练，OpenVLA-OFT 上 ManiSkill IND 28.1%→99.0%（arXiv:2607.29613）
+- [Temporal GRPO](./paper-temporal-grpo.md) — 同一 OFT SFT 热启动的阶段条件 GRPO；RoboTwin 75.8%（arXiv:2608.13026；未开源）
 
 ## 推荐继续阅读
 

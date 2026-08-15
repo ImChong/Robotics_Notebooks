@@ -3,7 +3,7 @@ type: method
 tags: [il, diffusion, manipulation, generative-model]
 status: complete
 summary: "Diffusion Policy 用多步去噪生成动作序列，擅长处理多模态和长时序的机器人操作行为。"
-updated: 2026-08-09
+updated: 2026-08-15
 ---
 
 # Diffusion Policy
@@ -154,6 +154,7 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 - [Why Action Chunking Improves BC](../entities/paper-why-action-chunking-improves-bc.md) — 以 DP 为载体消融 chunk 部署（Delay / RDE）；结论针对机制而非扩散本身
 - [Action Chunking](./action-chunking.md) — DP 默认输出动作块时的训练 / 部署读法
 - [Sergey Levine：表达力更强的连续动作策略](../overview/sergey-levine-diffusion-expressive-policies.md) — Simons 2026 报告：为何生成式动作头抬升 IL / offline RL
+- [Seeker](../entities/paper-seeker.md) — 动作监督 ROI 作 DP 输入瓶颈；MimicGen 62.6%、xArm 域内 76.7%（arXiv:2608.13422；已开源）
 
 ## 推荐继续阅读
 

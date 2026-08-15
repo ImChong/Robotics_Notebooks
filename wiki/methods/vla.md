@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-08-14
+updated: 2026-08-15
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作。"
 related:
   - ../entities/embodied-interview-qa.md
@@ -302,6 +302,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - **flow-VLA 保守 RL：** [Green-VLA](../entities/paper-greenvla-staged-vla-humanoid.md)（arXiv:2602.00919）在 **R2** 用 **Q 梯度轨迹修正回灌** 与 **初始噪声 actor**，在 WidowX 上较 R1 **+24%** 绝对成功率，适合与 on-policy PG 微调 flow 模型对照阅读。
 - **产线真机 PPO on CFM-VLA：** [KinetIQ Ascend](../entities/kinetiq-ascend.md)（Humanoid, 2026）在 **BC 预训练 CFM 操作 VLA** 上用 **解耦 Thor 采样 / 云端 PPO**、**prefix-CFM 正则** 与 **稀疏奖励 + 在线 A/B 基线**，在双臂 **Alpha** 三项生产任务上用 **数天 robot-time** 报告 **42%–2× 吞吐** 与 **10–20× 失败率下降**；强调 **仅 RL 瓶颈阶段** 与 **车队部署后持续学习**。
 - **语义–动作双频 RL：** [TEMPO](../entities/paper-tempo.md)（arXiv:2608.07314）冻结 VLM，对 semantic projection / action expert 分设 TD3 环并令动作侧更高更新频率；CALVIN ABC→D **SR5 81.7%**；截至入库日确认未开源。
+- **阶段条件 GRPO：** [Temporal GRPO](../entities/paper-temporal-grpo.md)（arXiv:2608.13026）修结果驱动 VLA-RL 的**轨迹级信用混叠**——只在进入同一阶段的 rollout 之间比相对优势并写回对应区间；RoboTwin 宏平均 **75.8%**（+7.0 vs SimpleVLA-RL）；**确认未开源**，勿与 TGRPO 混名。
 - **Chunk 策略自动接管：** [AutoIntervene](../entities/paper-autointervene.md)（arXiv:2608.07065）用 visual-action 支持分位数校准双向人机切换，把干预段变成选择性 DAgger；九项双臂真机上 R2 平均 **80%** 成功且操作员时间低于人工盯梢。
 
 选型时区分：**数据采集质量**（见 [Teleoperation](../tasks/teleoperation.md)）与 **后训练如何从次优经验中提取策略**（见 [Online vs Offline RL](../comparisons/online-vs-offline-rl.md)）。
@@ -440,6 +441,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [DEED](../entities/paper-deed.md) — G1-Edu + GR00T N1.6 零售补货：Data-Efficient + RECAP（未开源，arXiv:2607.20345）
 - [KinetIQ Ascend（真机 CFM-VLA PPO 后训练）](../entities/kinetiq-ascend.md) — 产线双臂人形操作 RL 工程栈与三项任务结果（Humanoid, 2026）
 - [TEMPO（VLA 双频 RL 后训练）](../entities/paper-tempo.md) — 冻结 VLM + 语义/动作双 TD3 环；CALVIN SR5 81.7%（arXiv:2608.07314；未开源）
+- [Temporal GRPO（阶段条件信用）](../entities/paper-temporal-grpo.md) — 结果 GRPO 按阶段写回优势；RoboTwin 75.8%（arXiv:2608.13026；未开源）
 - [AutoIntervene（Action Chunk 自动接管）](../entities/paper-autointervene.md) — 视觉–动作支持校准双向干预；双臂真机 R2 平均 80%（arXiv:2608.07065；未开源）
 - [Being-H0.7](./being-h07.md) — 潜空间世界–动作模型与大规模 egocentric 视频训练
 - [EgoScale](./egoscale.md) — 人视频规模预训练 + mid-training 对齐
@@ -461,6 +463,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [FluxVLA Engine](../entities/fluxvla-engine.md) — 逐际开源人形 VLA 训练/推理工程底座（π0.5/GR00T/OpenVLA 等）
 - [OAT 有序动作 Tokenization](../entities/paper-oat-ordered-action-tokenization.md)
 - [ActFovea](../entities/paper-actfovea.md) — 免训练的 VLA **运行时防护**：时空视觉–动作一致性检测 + 有界安全失败（arXiv:2607.29169）
+- [Seeker](../entities/paper-seeker.md) — 无语言 IL 的动作监督视觉瓶颈；对照 VLA grounding 裁剪（arXiv:2608.13422；已开源）
 - [WCM 世界模型 Critic](../entities/paper-wcm-world-critic-model.md) — VLA **RL 后训练**的 critic 换成 LeJEPA 世界模型，修单帧价值估计的错配（arXiv:2607.29613）
 - [CLIFT 闭环迭代微调](../entities/paper-clift-closed-loop-iterative-finetuning.md) — 闭权重 VLA 只给托管 SFT API 时，把奖励反馈编码成 chunk 级优势 token（arXiv:2607.29172）
 

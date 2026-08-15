@@ -2,7 +2,7 @@
 type: method
 tags: [il, behavior-cloning, diffusion-policy, sim2real]
 status: complete
-updated: 2026-08-09
+updated: 2026-08-15
 related:
   - ../entities/embodied-interview-qa.md
   - ../comparisons/robot-learning-five-paradigms-taxonomy.md
@@ -31,6 +31,7 @@ related:
   - ../entities/xyz-deux.md
   - ../entities/paper-chronos.md
   - ../overview/sergey-levine-diffusion-expressive-policies.md
+  - ../entities/paper-seeker.md
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_learning_five_paradigms.md
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
@@ -217,6 +218,7 @@ flowchart TD
 - [EgoScale](./egoscale.md) — 海量 egocentric 人视频预训练 VLA + 对齐 mid-training 的灵巧操作迁移案例
 - [EgoVerse](../entities/paper-egoverse.md) — 联盟式 egocentric 人示教与跨实验室共训缩放判据
 - [EgoWAM](../entities/paper-egowam-egocentric-human-wam-co-training.md) — WAM 动力学监督 vs BC：野外人数据缩放与 misalignment 鲁棒性
+- [Seeker](../entities/paper-seeker.md) — 无空间标签的动作监督视觉瓶颈；少数据 MimicGen / xArm（arXiv:2608.13422；已开源）
 - [HumanNet](../entities/humannet.md) — 大规模人中心视频语料与跨本体迁移的数据侧参照
 - [RL vs Imitation Learning](../comparisons/rl-vs-il.md)（两大策略学习路线的系统性对比）
 - [Motion Retargeting](../concepts/motion-retargeting.md) — MoCap 数据需经过 Motion Retargeting 才能作为 IL 的参考轨迹

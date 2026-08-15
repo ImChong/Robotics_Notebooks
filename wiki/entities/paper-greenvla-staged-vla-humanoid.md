@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, vla, humanoid, multi-embodiment, flow-matching, behavior-cloning, reinforcement-learning, manipulation, bimanual, data-curation, sber-robotics, google]
 status: complete
-updated: 2026-08-14
+updated: 2026-08-15
 arxiv: "2602.00919"
 related:
   - ../methods/vla.md
@@ -153,6 +153,7 @@ flowchart TB
 - [LEGS](./paper-legs-embodied-gaussian-splatting-vla.md) — 人形操作 **合成数据 + VLA 微调** 对照
 - [JoyAI-RA 0.5](./paper-joyai-ra-05.md) — 另一套统一动作（130-D）+ 内–外环 RL 的 VLWA 配方（未开源）
 - [Green for Go](./paper-green-for-go-vla-nav-grounding.md) — **同名易混**：UCL 导航 VLA 的绿/红可通行 overlay，不是本页分阶段通才模型
+- [Temporal GRPO](./paper-temporal-grpo.md) — 对照：rollout 内阶段信用，不是 L0–R2 训练课（arXiv:2608.13026）
 
 ## 参考来源
 

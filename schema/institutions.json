@@ -2668,6 +2668,24 @@
         "cuhksz",
         "cuhk-shenzhen"
       ]
+    },
+    "uni-freiburg": {
+      "label": "弗莱堡大学（University of Freiburg）",
+      "aliases": [
+        "uni-freiburg",
+        "freiburg",
+        "university-of-freiburg",
+        "albert-ludwigs"
+      ]
+    },
+    "iscas": {
+      "label": "中国科学院软件研究所（ISCAS）",
+      "aliases": [
+        "iscas",
+        "ios-cas",
+        "institute-of-software-cas",
+        "cas-software"
+      ]
     }
   }
 }

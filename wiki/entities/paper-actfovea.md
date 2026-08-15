@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, runtime-safety, safeguarding, anomaly-detection, plug-and-play, libero, manipulation, pi0]
 status: complete
-updated: 2026-08-14
+updated: 2026-08-15
 arxiv: "2607.29169"
 code: https://github.com/SunnyYWD/ActFovea
 related:
@@ -15,6 +15,7 @@ related:
   - ../methods/vla.md
   - ./paper-wcm-world-critic-model.md
   - ./paper-green-for-go-vla-nav-grounding.md
+  - ./paper-seeker.md
 sources:
   - ../../sources/papers/actfovea_arxiv_2607_29169.md
   - ../../sources/repos/actfovea.md
@@ -244,6 +245,7 @@ sequenceDiagram
 - [WCM 世界模型 Critic](./paper-wcm-world-critic-model.md) — 时序信息用于训练期价值估计的对照
 - [CLIFT 闭环迭代微调](./paper-clift-closed-loop-iterative-finetuning.md) — 同样在「模型不可见」约束下工作
 - [Green for Go](./paper-green-for-go-vla-nav-grounding.md) — 同属冻结 VLA 推理时壳层，但标的是导航可通行着色而非安全恢复
+- [Seeker](./paper-seeker.md) — 对照：训练期 IL 从动作长 ROI，不是运行时防护（arXiv:2608.13422）
 
 ## 参考来源
 

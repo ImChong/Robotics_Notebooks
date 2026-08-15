@@ -2,13 +2,14 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, nvidia]
 status: draft
-updated: 2026-07-30
+updated: 2026-08-15
 summary: "MimicGen：物体相对运动片段从少量人工示范中切出，再在随机初始布局中重组为四万八千余条轨迹和十二类任务数据。它提供了一条可测量的数据扩增基线，能直接比较新增轨迹是否真正提高模仿策略成功率。"
 related:
   - ./paper-notebook-dexmimicgen-automated-data-generation-for-bimanu.md
   - ../methods/imitation-learning.md
   - ./humanoid-motion-intelligence.md
   - ../queries/hmi-opensource-projects-coverage.md
+  - ./paper-seeker.md
 sources:
   - ../../sources/repos/mimicgen.md
   - ../../sources/repos/humanoid-motion-intelligence.md
@@ -87,6 +88,7 @@ flowchart LR
 - [DexMimicGen](./paper-notebook-dexmimicgen-automated-data-generation-for-bimanu.md)
 - [Imitation Learning](../methods/imitation-learning.md)
 - [HMI 覆盖索引](../queries/hmi-opensource-projects-coverage.md)
+- [Seeker](./paper-seeker.md) — 在本套六任务 100 demo 上用动作监督 ROI；官方仓重渲入口（arXiv:2608.13422）
 
 ## 参考来源
 
