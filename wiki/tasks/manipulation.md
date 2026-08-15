@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-08-14
+updated: 2026-08-15
 related:
   - ../entities/paper-clothtransformer-unified-latent-cloth-simulation.md
   - ../entities/paper-flying-knots.md
@@ -232,6 +232,8 @@ flowchart TD
 - [Motubrain](../entities/paper-motubrain.md) — 生数 Joint WAM；RoboTwin 2.0 95.8/96.1（arXiv:2604.27792；仓占位）
 - [WAM 实时异步部署](../entities/paper-wam-realtime-async.md) — 双臂 WAM 六策略对照（arXiv:2608.01880）
 - [G0.5](../entities/paper-galaxea-g05.md) — 星海图 AR VLA；真机 76.7%、RoboTwin 93.3%（arXiv:2608.11739；已开源）
+- [Seeker](../entities/paper-seeker.md) — 动作监督 ROI；MimicGen 62.6%、xArm 域内 76.7%（arXiv:2608.13422；已开源）
+- [Temporal GRPO](../entities/paper-temporal-grpo.md) — 分阶段 VLA-RL 信用；RoboTwin 75.8%（arXiv:2608.13026；未开源）
 - [Rift](../entities/paper-rift-wam.md) — 免视频 rollout WAM；LIBERO 98.8% / 247.9 ms（arXiv:2608.11521；未开源）
 - [RoboTTT](../entities/paper-robottt-test-time-training-vla-context.md) — GR00T N1.7 内嵌 TTT fast weights，8K 步 visuomotor 上下文 + 部署后在线学习（NVIDIA GEAR 项目页）
 - [πR²](../entities/paper-pi-r2.md) — GR00T-N1.7 反应式实时 flow 闭环（约 25 Hz；训练+部署已开源，arXiv:2607.26055）

@@ -2,7 +2,7 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
-updated: 2026-08-14
+updated: 2026-08-15
 summary: "LIBERO：用一百三十个机械臂任务控制对象、布局、目标和语言变化，专门评估终身学习与迁移中的分布偏移；固定任务套件和数据接口便于比较策略是记住训练场景还是获得可迁移能力。"
 related:
   - ../concepts/sim2real.md
@@ -106,6 +106,7 @@ flowchart LR
 - [Rift](./paper-rift-wam.md) — 免 rollout WAM；LIBERO **98.8%**、LIBERO-Plus **81.1%**（未开源）
 - [Why Action Chunking Improves BC](./paper-why-action-chunking-improves-bc.md) — Libero-90 上 Delay / RDE 相对 action chunking 的机制消融
 - [SLIM-0.5B](./paper-slim-05b.md) — 0.47B latent 策略；LIBERO 97.5% / LIBERO-Plus 77.45%（开源权重）
+- [Temporal GRPO](./paper-temporal-grpo.md) — LIBERO-Long 阶段信用探针 99.1%；看 \(\Delta p_k\) 落在哪一段（arXiv:2608.13026）
 
 ## 参考来源
 

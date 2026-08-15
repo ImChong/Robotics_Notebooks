@@ -2,7 +2,7 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-08-12
+updated: 2026-08-15
 related:
   - ../entities/embodied-interview-qa.md
   - ../comparisons/robot-learning-five-paradigms-taxonomy.md
@@ -249,6 +249,7 @@ flowchart LR
 - [E-SDS（论文实体）](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) — 地形统计条件化 VLM 奖励 + 人形感知行走 PPO（arXiv:2512.16446）
 - [Fault-Tolerant Locomotion（论文实体）](../entities/paper-fault-tolerant-locomotion.md) — 非对称 actor–critic + latent-alignment 应对执行器功率损失（arXiv:2608.07328）
 - [TEMPO（论文实体）](../entities/paper-tempo.md) — VLA 语义/动作双 TD3 环与双频后训练（arXiv:2608.07314）
+- [Temporal GRPO（论文实体）](../entities/paper-temporal-grpo.md) — VLA 结果 GRPO 的阶段信用写回（arXiv:2608.13026；未开源）
 - [HIL-HARC（论文实体）](../entities/paper-hil-harc.md) — 真机在线 RL：CTDE 混合动作 + HRA 分解 critic（arXiv:2608.09762）
 - [ResMimic（论文实体）](../entities/paper-resmimic.md) — GMT 先验 + 物体条件残差 PPO 的两阶段 loco-manipulation（arXiv:2510.05070）
 - [REFINE-DP（论文实体）](../entities/paper-loco-manip-161-157-refine-dp.md) — 扩散规划器 DPPO 微调 + 低层 PPO 联合优化（arXiv:2603.13707）

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, rl, post-training, critic, world-model, jepa, manipulation, tongji, shanghai-innovation-institute, fudan]
 status: complete
-updated: 2026-08-04
+updated: 2026-08-15
 arxiv: "2607.29613"
 code: https://github.com/sylvestf/WCM
 related:
@@ -13,6 +13,7 @@ related:
   - ../comparisons/online-vs-offline-rl.md
   - ../methods/generative-world-models.md
   - ./paper-actfovea.md
+  - ./paper-temporal-grpo.md
 sources:
   - ../../sources/papers/wcm_world_critic_arxiv_2607_29613.md
   - ../../sources/repos/wcm-world-critic-model.md
@@ -209,6 +210,7 @@ sequenceDiagram
 - [π₀.₅ 开放世界 VLA](./paper-pi05-open-world-vla.md) — flow matching 主干
 - [在线 vs 离线 RL](../comparisons/online-vs-offline-rl.md) — WCM 两侧都接
 - [ActFovea](./paper-actfovea.md) — 时序信息用于推理期防护的对照
+- [Temporal GRPO](./paper-temporal-grpo.md) — 对照：无 critic，只改阶段组相对写回（arXiv:2608.13026；未开源）
 
 ## 参考来源
 

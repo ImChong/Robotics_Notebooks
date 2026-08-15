@@ -1,3 +1,27 @@
+## [2026-08-15] ingest | sources/papers/temporal_grpo_arxiv_2608_13026.md — 接入 Temporal GRPO 阶段条件 VLA-RL 信用（确认未开源）
+
+- **触发：** 用户指定 arXiv 论文 *Temporal GRPO: Beyond Trajectory-Level Credit in Vision-Language-Action Reinforcement Learning*
+- **步骤 2.5：** 无项目页、无 GitHub/HF；论文未承诺开源 → **确认未开源**。未建 `sources/repos/`。勿与 TGRPO（arXiv:2506.08440）混名
+- **来源：** [`sources/papers/temporal_grpo_arxiv_2608_13026.md`](sources/papers/temporal_grpo_arxiv_2608_13026.md)
+- **升格：** [`wiki/entities/paper-temporal-grpo.md`](wiki/entities/paper-temporal-grpo.md) — 入场门控 + 同阶段编组 + 区间写回；RoboTwin 宏平均 75.8%；LIBERO-Long 99.1%；时序图不适用
+- **机构：** `schema/institutions.json` 新增 `iscas`（中国科学院软件研究所）
+- **交叉：** VLA 后训练 / TEMPO / Green-VLA / RoboTwin / LIBERO / OpenVLA / WCM / RynnBrain / 四范式复现（不入可跑通清单）
+
+## [2026-08-15] ingest | sources/papers/seeker_arxiv_2608_13422.md — 接入 Seeker 动作监督视觉注意力（MIT 已开源）
+
+- **触发：** 用户指定 GitHub <https://github.com/zheyu-zhuang/seeker> 与论文 <https://arxiv.org/abs/2608.13422>
+- **步骤 2.5：** 无独立项目页；仓默认分支 `open_source`（`main` 无 README）；`seeker` CLI + `seeker.mimicgen.pth` → **已开源、可运行**（MIT）
+- **来源：** [`sources/papers/seeker_arxiv_2608_13422.md`](sources/papers/seeker_arxiv_2608_13422.md)、[`sources/repos/seeker.md`](sources/repos/seeker.md)
+- **升格：** [`wiki/entities/paper-seeker.md`](wiki/entities/paper-seeker.md) — 冻结 DINOv3 + 动作监督 ROI；MimicGen 62.6%；xArm 域内 76.7% / OOD 60.0%；含 mermaid 时序图
+- **机构：** `schema/institutions.json` 新增 `uni-freiburg`（弗莱堡大学）；复用 `kth` / `uni-hamburg`
+- **交叉：** Diffusion Policy / IL / Manipulation / MimicGen / ActFovea / VLA
+
+## [2026-08-15] ingest | HumanoidVLN 复核 — 已于 2026-08-14 入库，项目页仍无代码
+
+- **触发：** 用户再次指定 <https://arxiv.org/abs/2608.12860> 与项目页 <https://humanoid-vln.github.io/>
+- **步骤 2.5 复核：** 项目页仍无 GitHub/HF；论文仍写 *will be released upon acceptance* → **宣称将开源 / 待发布**（与 08-14 结论相同）
+- **处理：** 不新建页；沿用 [`wiki/entities/paper-humanoidvln.md`](wiki/entities/paper-humanoidvln.md)
+
 ## [2026-08-14] ingest | sources/papers/roboreact_arxiv_2608_03387.md — 接入 RoboReact 生成 egocentric 视频蒸馏全身操作（确认未开源）
 
 - **触发：** 用户指定 arXiv 预印本 *RoboReact: Agentic Skill Distillation from Generated Egocentric Videos for Generalizable Whole-Body Manipulation*（港中深 / 京东科技 / 清华）

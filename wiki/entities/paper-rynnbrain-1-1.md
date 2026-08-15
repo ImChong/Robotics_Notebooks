@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, alibaba, embodied-foundation-model, vla, qwen, spatial-grounding, 3d-grounding, contact-point, flow-matching, unitree, astribot, wuji-robotics, scaling, foundation-policy]
 status: complete
-updated: 2026-07-27
+updated: 2026-08-15
 arxiv: "2607.17977"
 related:
   - ../methods/vla.md
@@ -15,6 +15,7 @@ related:
   - ./paper-internvla-a15-unified-vla.md
   - ../tasks/manipulation.md
   - ../tasks/bimanual-manipulation.md
+  - ./paper-temporal-grpo.md
 sources:
   - ../../sources/papers/rynnbrain_1_1_arxiv_2607_17977.md
   - ../../sources/sites/rynnbrain-alibaba-damo.md
@@ -191,6 +192,7 @@ sequenceDiagram
 - [InternVLA-A1.5](./paper-internvla-a15-unified-vla.md) — Qwen3.5 + flow VLA 对照。
 - [ACE-Brain-0.5](./paper-ace-brain-0-5.md) — 同 Qwen3-VL 族统一具身脑；强调进度自监控与 SSR+。
 - [Manipulation](../tasks/manipulation.md) / [Bimanual Manipulation](../tasks/bimanual-manipulation.md) — 真机操作任务背景。
+- [Temporal GRPO](./paper-temporal-grpo.md) — 冻结 RynnBrain-4B 作阶段提案（arXiv:2608.13026）
 
 ## 推荐继续阅读
 
