@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, motion-retargeting, humanoid, nvidia, unitree-g1, gpu]
 status: complete
-updated: 2026-07-02
+updated: 2026-08-15
 summary: "NVIDIA soma-retargeter：SOMA BVH → G1 关节 CSV 的 GPU IK 重定向库，隶属 SOMA-X / SEED 人形运动数据生态。"
 related:
   - ../concepts/motion-retargeting.md
@@ -12,6 +12,7 @@ related:
   - ./unitree-g1.md
   - ./newton-physics.md
   - ./robot-retargeter.md
+  - ./core-retarget.md
 sources:
   - ../../sources/repos/soma_retargeter.md
   - ../../sources/repos/nvlabs-soma-x.md
@@ -63,6 +64,7 @@ flowchart LR
 - [GMR](../methods/motion-retargeting-gmr.md)
 - [ProtoMotions](./protomotions.md)
 - [Unitree G1](./unitree-g1.md)
+- [CoRe v0.1.0](./core-retarget.md) — 同一 SOMA 生态的多机接触精炼出口（Kimodo/GEM-X → 11 机）
 
 ## 参考来源
 

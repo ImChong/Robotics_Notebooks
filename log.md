@@ -8,6 +8,16 @@
 - **机构：** 新增 `gist` / `kentech` / `utec`；复用 sjtu、buaa、zgca、ruc、alibaba、astar、ntu、nus 等
 - **交叉：** VLA / LIBERO / RoboTwin / EgoScale / WiLoR / UHAS / 抓取 / WAM / Go2 自主栈
 
+## [2026-08-15] ingest | sources/repos/core_retarget.md — 接入 CoRe v0.1.0 接触感知重定向（已开源精炼；论文 T2M/RL 未随仓）与 RMR/CoRe 项目页
+
+- **触发：** 用户指定 CoRe 仓 / v0.1.0 / HF Space / architecture·robots·licenses、Humanoids 2025 项目页与 RMR 项目页
+- **步骤 2.5：** 代码 **已开源、可运行**（Apache-2.0，`core-retarget` + HF Space）；论文 T2M 与 contact-aware RL **未随 v0.1.0 发布**。RMR **无独立仓**，算法并入 DMR
+- **来源：** [`sources/repos/core_retarget.md`](sources/repos/core_retarget.md)、[`sources/sites/core-page.md`](sources/sites/core-page.md)、[`sources/sites/rmr-page.md`](sources/sites/rmr-page.md)、[`sources/sites/huggingface-robotaemoon-core.md`](sources/sites/huggingface-robotaemoon-core.md)、[`sources/papers/core_humanoids_2025.md`](sources/papers/core_humanoids_2025.md)、[`sources/papers/rmr_iros_2025.md`](sources/papers/rmr_iros_2025.md)
+- **升格：** [`wiki/entities/core-retarget.md`](wiki/entities/core-retarget.md)、[`wiki/entities/paper-core.md`](wiki/entities/paper-core.md)、[`wiki/entities/paper-rmr.md`](wiki/entities/paper-rmr.md)
+- **机构：** `schema/institutions.json` 新增 `kist` / `naver-labs` / `rainbow-robotics`；复用 `korea-university` / `uiuc`
+- **交叉：** Motion Retargeting / Pipeline / GMR / SOMA Retargeter / robot_retargeter / Kimodo / SOMA-X / hub / PhysCoRe 同名消歧
+- **勿混名：** 本 CoRe ≠ [PhysCoRe](wiki/entities/paper-physcore.md)
+
 ## [2026-08-15] ingest | sources/papers/gentrack_arxiv_2608_01410.md — 接入 GenTrack 生成器–跟踪器在线物理对齐（确认未开源）
 
 - **触发：** 用户指定 *GenTrack: Physical Alignment for Robot-Native Motion Generation and Zero-Shot Humanoid Tracking*（AAAI 2027；浙大 / 北大 / 腾讯 / 之江实验室）

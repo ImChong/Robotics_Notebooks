@@ -1,13 +1,86 @@
 {
   "generated_at": "2026-08-15",
-  "node_count": 3107,
-  "edge_count": 27218,
+  "node_count": 3110,
+  "edge_count": 27271,
   "coverage": {
-    "covered": 3083,
-    "total": 3083,
+    "covered": 3086,
+    "total": 3086,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-digitcode.md",
+      "detail_id": "entity-paper-digitcode",
+      "label": "DigitCode：按解剖单元做手部动作符号化",
+      "type": "entity",
+      "recency": "2026-08-15",
+      "source": "git",
+      "action": "added",
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-ego2robot.md",
+      "detail_id": "entity-paper-ego2robot",
+      "label": "Ego2Robot：第一人称人视频规模化合成机器人数据",
+      "type": "entity",
+      "recency": "2026-08-15",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-embodiedvae.md",
+      "detail_id": "entity-paper-embodiedvae",
+      "label": "EmbodiedVAE：为操作世界模型解耦的视频 VAE",
+      "type": "entity",
+      "recency": "2026-08-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-gsr-paravla.md",
+      "detail_id": "entity-paper-gsr-paravla",
+      "label": "GSR / ParaVLA：把任务语义从脆弱的联合路由里拆出来",
+      "type": "entity",
+      "recency": "2026-08-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉语言动作纵深路线（Vision-Language-Action Deep-Dive Roadmap, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-mango-grasp.md",
+      "detail_id": "entity-paper-mango-grasp",
+      "label": "MANGO-Grasp：几何 3DGS 上的马氏场跨手型抓取",
+      "type": "entity",
+      "recency": "2026-08-15",
+      "source": "git",
+      "action": "added",
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-onoff-handwriting.md",
+      "detail_id": "entity-paper-onoff-handwriting",
+      "label": "OnOff：可微物理笔刷打通在线轨迹与离线手写",
+      "type": "entity",
+      "recency": "2026-08-15",
+      "source": "git",
+      "action": "added",
+      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-situation-aware-frontier-quadruped-sar.md",
+      "detail_id": "entity-paper-situation-aware-frontier-quadruped-sar",
+      "label": "Situation-aware Frontier：四足搜救的局势感知前沿排序",
+      "type": "entity",
+      "recency": "2026-08-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/paper-gentrack.md",
       "detail_id": "entity-paper-gentrack",
@@ -138,96 +211,22 @@
       "recency": "2026-08-14",
       "source": "git",
       "action": "added"
-    },
-    {
-      "path": "wiki/concepts/gravity-compensation.md",
-      "detail_id": "wiki-concepts-gravity-compensation",
-      "label": "Gravity Compensation（重力补偿）",
-      "type": "concept",
-      "recency": "2026-08-14",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/entities/paper-learning-gravity-compensation.md",
-      "detail_id": "entity-paper-learning-gravity-compensation",
-      "label": "迭代学习重力补偿（De Luca & Panzieri, 1993）",
-      "type": "entity",
-      "recency": "2026-08-14",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
-    },
-    {
-      "path": "wiki/methods/sim2real-joint-sysid-experiment-design.md",
-      "detail_id": "wiki-methods-sim2real-joint-sysid-experiment-design",
-      "label": "Sim2Real Joint SysID Experiment Design（关节动力学辨识实验设计）",
-      "type": "method",
-      "recency": "2026-08-14",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/concepts/null-space-control.md",
-      "detail_id": "wiki-concepts-null-space-control",
-      "label": "Null-Space Control（零空间控制）",
-      "type": "concept",
-      "recency": "2026-08-14",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-cartesian-impedance-controller.md",
-      "detail_id": "entity-paper-cartesian-impedance-controller",
-      "label": "Cartesian Impedance Controller（Mayr et al., JOSS 2024）",
-      "type": "entity",
-      "recency": "2026-08-14",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-null-space-projections-survey.md",
-      "detail_id": "entity-paper-null-space-projections-survey",
-      "label": "零空间投影综述（Dietrich et al., IJRR 2015）",
-      "type": "entity",
-      "recency": "2026-08-14",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/flobaroid.md",
-      "detail_id": "entity-flobaroid",
-      "label": "FloBaRoID（浮动基动力学辨识工具箱）",
-      "type": "entity",
-      "recency": "2026-08-13",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-gentrack.md",
-    "detail_id": "entity-paper-gentrack",
-    "label": "GenTrack：机器人原生运动生成与零样本跟踪的物理对齐",
+    "path": "wiki/entities/paper-digitcode.md",
+    "detail_id": "entity-paper-digitcode",
+    "label": "DigitCode：按解剖单元做手部动作符号化",
     "type": "entity",
     "recency": "2026-08-15",
     "source": "git",
     "action": "added",
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
   },
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 579
+      "size": 580
     },
     {
       "label": "操作",
@@ -239,15 +238,15 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 176
-    },
-    {
-      "label": "人形强化学习运动控制",
-      "size": 133
+      "size": 177
     },
     {
       "label": "移动操作",
-      "size": 132
+      "size": 142
+    },
+    {
+      "label": "视觉-语言导航",
+      "size": 111
     }
   ],
   "top_hubs": [
@@ -343,7 +342,7 @@
       "detail_id": "wiki-methods-beyondmimic",
       "label": "BeyondMimic",
       "type": "method",
-      "degree": 77,
+      "degree": 78,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
