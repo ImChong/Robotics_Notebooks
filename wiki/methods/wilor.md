@@ -2,13 +2,14 @@
 type: method
 tags: [hand-pose, 3d-vision, manipulation, perception, video-to-control]
 status: complete
-updated: 2026-08-13
+updated: 2026-08-15
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./exoactor.md
   - ./genmo.md
   - ../entities/sam-3d-body.md
   - ../entities/paper-vidihand.md
+  - ../entities/paper-hand-visibility-detector.md
   - ../tasks/manipulation.md
   - ./sonic-motion-tracking.md
   - ./macrodata-egocentric-hand-action.md
@@ -16,6 +17,7 @@ sources:
   - ../../sources/repos/wilor.md
   - ../../sources/papers/vidihand_arxiv_2606_30308.md
   - ../../sources/blogs/macrodata_egocentric_video_3d_hand_actions.md
+  - ../../sources/papers/hand_visibility_detector_arxiv_2608_11574.md
 summary: "WiLoR 是端到端的野外手部检测定位 + Transformer 3D 手部网格重建网络，支持单图像与逐帧视频管线，为下游灵巧操作或人形双手轨迹提供单 RGB 估计。"
 ---
 
@@ -55,6 +57,7 @@ summary: "WiLoR 是端到端的野外手部检测定位 + Transformer 3D 手部�
 
 - [ExoActor](./exoactor.md)：将 WiLoR 用作生成视频的双手分支估计。
 - [ViDiHand](../entities/paper-vidihand.md)：同为 egocentric 双手 MANO 路线；WiLoR 是 **per-frame 检测+重建** 强基线，ViDiHand 在 ARCTIC/HOT3D/HOI4D 上以 **无 detector** 取得更低 jitter；截至 2026-08-13 ViDiHand **代码仍待发布**（项目页有 GitHub 占位）。
+- [Hand Visibility Detector](../entities/paper-hand-visibility-detector.md)：冻结 WiLoR / HaMeR 骨干，只训轻量头估计 **MANO 21 点可见概率**；HInt mAP 0.931，多视三角化重投影最多降 10.1%。WiLoR 出坐标，HVD 出「这个点能不能当观测」。
 - [Macrodata Egocentric Hand-Action](./macrodata-egocentric-hand-action.md)：在 HOT3D **Action MPJPE** 管线中，WiLoR 作 **检测前端**（置信阈值 0.75 + 保守短间隙）；**逐帧 WiLoR 重建** 长视频轨迹弱于时序 [HaWoR](../../sources/repos/hawor.md)（约 77 vs 54 mm）。
 - [Manipulation](../tasks/manipulation.md)：手部估计是灵巧操作感知链路的一环。
 - [SONIC](./sonic-motion-tracking.md)：全身跟踪控制器接收融合后的双手目标。
@@ -69,10 +72,12 @@ summary: "WiLoR 是端到端的野外手部检测定位 + Transformer 3D 手部�
 
 - [WiLoR（野外单图 / 视频端到端手部 3D 定位与重建）](../../sources/repos/wilor.md)
 - [macrodata_egocentric_video_3d_hand_actions.md](../../sources/blogs/macrodata_egocentric_video_3d_hand_actions.md) — HOT3D Action MPJPE 管线中的检测阈值与逐帧重建对照
+- [hand_visibility_detector_arxiv_2608_11574.md](../../sources/papers/hand_visibility_detector_arxiv_2608_11574.md) — 冻结 WiLoR 骨干做逐关节可见性
 
 ## 关联页面
 
 - [GENMO（统一人体运动估计与生成）](./genmo.md)
 - [ExoActor (视频生成驱动的交互式人形控制)](./exoactor.md)
 - [Macrodata Egocentric Hand-Action](./macrodata-egocentric-hand-action.md)
+- [Hand Visibility Detector](../entities/paper-hand-visibility-detector.md)
 - [Manipulation（操作任务）](../tasks/manipulation.md)

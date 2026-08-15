@@ -1,3 +1,12 @@
+## [2026-08-15] ingest | sources/papers/hand_visibility_detector_arxiv_2608_11574.md — 接入 Hand Visibility Detector 逐关节手部可见性（已开源、研究/非商用）
+
+- **触发：** 用户指定 *Hand Visibility Detector: Per-Keypoint Visibility Estimation for Hands*（arXiv:2608.11574）与代码 <https://github.com/ryhara/hand_visibility_detector>
+- **步骤 2.5：** 无独立项目页；GitHub + HF 模型/Space；`HandVisibilityPipeline` + `demo.py` + `training.train` + `best.pt` → **已开源、可运行**。许可为研究/非商用，叠加 WiLoR / HaMeR / MANO
+- **来源：** [`sources/papers/hand_visibility_detector_arxiv_2608_11574.md`](sources/papers/hand_visibility_detector_arxiv_2608_11574.md)、[`sources/repos/hand_visibility_detector.md`](sources/repos/hand_visibility_detector.md)
+- **升格：** [`wiki/entities/paper-hand-visibility-detector.md`](wiki/entities/paper-hand-visibility-detector.md) — HInt mAP 0.931；微调骨干掉到 0.622；HO3D 重投影最多 −10.1%；含 mermaid 时序图
+- **机构：** `schema/institutions.json` 新增 `keio` / `aist` / `omron-sinic-x`；复用 `u-tokyo`
+- **交叉：** WiLoR / 灵巧数据管线 / 灵巧采集指南 / MediaPipe / 自动标注 / ViDiHand / Macrodata Hand-Action / 感知栈选型
+
 ## [2026-08-15] ingest | sources/papers/zest.md — 接入 Science Robotics ZEST 具身技能迁移（确认未开源）
 
 - **触发：** 用户指定 *Embodied skill transfer for locomotion control*（Sleiman / He Li / Adu-Bredu 等，RAI × 波士顿动力，*Science Robotics* 11(117)，DOI 10.1126/scirobotics.aec7695）

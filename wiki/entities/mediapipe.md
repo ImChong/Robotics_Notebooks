@@ -2,10 +2,11 @@
 type: entity
 tags: [perception, computer-vision, hand-tracking, pose-estimation, open-source, google, on-device-ml]
 status: complete
-updated: 2026-07-20
+updated: 2026-08-15
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../queries/dexterous-data-collection-guide.md
+  - ./paper-hand-visibility-detector.md
   - ./midas-hand.md
   - ../methods/toporetarget-interaction-preserving-dexterous-retargeting.md
   - ../concepts/motion-retargeting-pipeline.md
@@ -13,6 +14,7 @@ related:
 sources:
   - ../../sources/repos/mediapipe.md
   - ../../sources/sites/mediapipe-developers-google.md
+  - ../../sources/papers/hand_visibility_detector_arxiv_2608_11574.md
 summary: "MediaPipe 是 Google 开源的跨平台端侧 ML 框架与 Solutions 套件，在机器人栈中常作为低成本摄像头手部/姿态感知上游，为灵巧手遥操作与运动重定向提供 21 点手关键点等信号。"
 ---
 
@@ -72,7 +74,7 @@ flowchart LR
 
 ## 局限与风险
 
-- **精度与遮挡：** 快速运动、自遮挡、弱光下关键点抖动明显；不宜单独作为 **高精度工业装配** 的唯一感知源。
+- **精度与遮挡：** 快速运动、自遮挡、弱光下关键点抖动明显；不宜单独作为 **高精度工业装配** 的唯一感知源。若只要「这个点还能不能当观测」，可叠加 [Hand Visibility Detector](./paper-hand-visibility-detector.md) 的 21 维可见分数（默认骨干是 WiLoR，不是 MediaPipe）。
 - **尺度与深度：** 单目深度为估计值，绝对米制与双手协调需标定或融合外部位姿（对比 [SAM 3D Body](./sam-3d-body.md) 等 HMR 基础模型）。
 - **Legacy 分叉：** 2023 年前教程可能引用已停止维护的 Solution 名；集成前查官方 Legacy 列表，避免依赖无人维护的预编译图。
 - **许可与隐私：** Apache 2.0 源码；使用 Google 托管 Tasks 时注意其 [Privacy Notice](https://github.com/google/mediapipe) 对输入数据的说明。
@@ -83,6 +85,7 @@ flowchart LR
 - [MIDAS Hand](./midas-hand.md) — 官方 MediaPipe 遥操作仓
 - [TopoRetarget](../methods/toporetarget-interaction-preserving-dexterous-retargeting.md) — 以 MediaPipe 21 点为输入的交互保留重定向
 - [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) — 感知上游在管线中的位置
+- [Hand Visibility Detector](./paper-hand-visibility-detector.md) — 逐关节可见性插件，补 MediaPipe 缺的遮挡分数
 
 ## 参考来源
 
