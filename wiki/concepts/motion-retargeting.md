@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-08-08
+updated: 2026-08-15
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 
@@ -70,6 +70,7 @@ subject to: FK(θ) = p_target (末端位置约束)
 - **采样式物理重定向（SPIDER）**：在**并行物理仿真**中对控制序列做**采样优化**（退火噪声核），把人体+物体的**运动学参考** refinement 成**动力学可行**轨迹；用**课程式虚拟接触力**稳定接触丰富任务中的序列歧义，详见 [SPIDER](../methods/spider-physics-informed-dexterous-retargeting.md)。
 - **增量 SBTO（DynaRetarget）**：用 **CEM + MuJoCo rollout** 对 PD 目标 knot 做 **incremental full-horizon** 采样轨迹优化，把 IK/kinematic 参考 refinement 为长时域 loco-manipulation 可行轨迹，相对 SBMPC 基线成功率约翻倍，详见 [DynaRetarget / SBTO](../methods/dynaretarget-sbto-motion-retargeting.md).
 - **接触隐式多重打靶（DSMS / Shooting for Contact）**：把可微仿真器离散转移嵌进 **IPOPT 多重打靶 NLP**，接触/摩擦/冲击在仿真内解析、无需接触时刻表；支持任意路径约束与命令条件化步态库，加速下游 motion-imitation RL，并在 G1 上零样本爬行 / 180° 跳转，详见 [DSMS](../methods/dsms-contact-implicit-multiple-shooting.md) 与 [Shooting for Contact](../entities/paper-shooting-for-contact.md)。
+- **接触感知运动学精炼（CoRe）**：在 RL 之前用趾轨迹检测接触段，再做接触约束轨迹优化、足偏航与自碰平滑；主张「先修参考、再跟踪」。Humanoids 2025 论文含接触奖励 RL；开源 [CoRe v0.1.0](../entities/core-retarget.md) 兑现重定向+精炼（Kimodo/GEM-X → 11 机），T2M/RL 未随仓发布。前端跨骨架统一见姊妹 [RMR](../entities/paper-rmr.md)。勿与 [PhysCoRe](../entities/paper-physcore.md) 混淆。
 - **GRF 锚定多接触 TO（KDMR）**：用同步 **地面反力** 推断 heel–toe 接触日程，再以 CasADi+Pinocchio 全身 NLP 强制动力学与无滑约束，减轻 GMR 类脚浮空伪影并加速 BeyondMimic 跟踪；详见 [KDMR](../entities/paper-kdmr.md)。
 - **骨架 URDF 校准 + 渐进 KDTO（SPARK）**：先校准 human URDF 到目标人形再 IK，再经 KTO→ID→KDTO 产出动力学可行轨迹与力矩参考，服务 side flip 等高动态；详见 [SPARK（骨架对齐重定向）](../entities/paper-spark-skeleton-aligned-retargeting.md)。
 - **交互保留灵巧重定向（TopoRetarget）**：在 **hand–object interaction mesh** 上匹配 **距离加权 Laplacian 坐标** + 骨方向先验与穿透约束，把人手演示转为灵巧手可学的接触保真参考（~5 ms/帧）；下游轻量 PPO 残差跟踪可在 Pen-Spin 等任务上显著优于 OmniRetarget 等基线，并零样本部署 [Wuji Hand](../entities/wuji-robotics.md)，详见 [TopoRetarget](../methods/toporetarget-interaction-preserving-dexterous-retargeting.md)。
@@ -184,6 +185,7 @@ subject to: FK(θ) = p_target (末端位置约束)
 | [PHC](../entities/phc.md) | SMPL→人形 fitting 重定向 + 物理模仿控制（AMASS 管线） |
 | [SOMA Retargeter](../entities/soma-retargeter.md) | NVIDIA SOMA BVH→G1 CSV，GPU IK（SEED 数据生态） |
 | [robot_retargeter](../entities/robot-retargeter.md) | SMPL-X / 源机器人 CSV→多机型 CSV；mink+MuJoCo IK、接触足端锁定与多机并排可视化 |
+| [CoRe v0.1.0](../entities/core-retarget.md) | Kimodo `.npz` / GEM-X `.pt` → 11 台人形；DMR + 接触精炼，HF Space 可试（Apache-2.0） |
 | [mocap_retarget](../entities/mocap-retarget.md) | 工程向动捕→机器人脚本参考 |
 | [GVHMR](../entities/gvhmr.md) | 单目视频→SMPL 全局人体运动（重定向上游） |
 | [VideoMimic](../entities/videomimic.md) | 视频→人形参考 + RL 模仿 |
@@ -240,6 +242,7 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - **ingest 档案：** [sources/papers/egohtr_arxiv_2607_13472.md](../../sources/papers/egohtr_arxiv_2607_13472.md) — EgoHTR：rough-terrain 场景对齐人演示；Human2Robot 侧用 OmniRetarget/GMR/CoACD
 - **ingest 档案：** [sources/papers/kdmr_arxiv_2603_09956.md](../../sources/papers/kdmr_arxiv_2603_09956.md) — KDMR：GRF 锚定多接触动力学重定向（arXiv:2603.09956）
 - **ingest 档案：** [sources/papers/spark_skeleton_aligned_retargeting_arxiv_2603_11480.md](../../sources/papers/spark_skeleton_aligned_retargeting_arxiv_2603_11480.md) — SPARK：URDF 校准 + 渐进 KDTO（arXiv:2603.11480）
+- **ingest 档案：** [sources/repos/core_retarget.md](../../sources/repos/core_retarget.md) — CoRe v0.1.0：SOMA 接触感知重定向（11 机，Apache-2.0）；论文见 [core_humanoids_2025.md](../../sources/papers/core_humanoids_2025.md)、[rmr_iros_2025.md](../../sources/papers/rmr_iros_2025.md)
 
 ---
 
@@ -288,6 +291,7 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - [PHC](../entities/phc.md) — SMPL fitting 重定向与大规模物理模仿
 - [SOMA Retargeter](../entities/soma-retargeter.md) — SOMA/SEED→G1 批处理重定向
 - [robot_retargeter](../entities/robot-retargeter.md) — SMPL-X / LAFAN1 CSV→多机型 mink IK 重定向
+- [CoRe v0.1.0](../entities/core-retarget.md) — SOMA Kimodo/GEM-X → 11 机接触精炼；论文 [CoRe](../entities/paper-core.md) / [RMR](../entities/paper-rmr.md)
 - [GVHMR](../entities/gvhmr.md) / [VideoMimic](../entities/videomimic.md) — 视频→人体/人形两条管线入口
 - [human2humanoid](../entities/human2humanoid.md) — 遥操与 AMASS 重定向同仓
 - [mocap_retarget](../entities/mocap-retarget.md) — 轻量工程向 MoCap 映射参考

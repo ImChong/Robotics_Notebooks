@@ -83,6 +83,7 @@
 - [Codex Security（OpenAI）](wiki/entities/codex-security.md) — Codex Security**（`@openai/codex-security`  `📅unknown` `[entity_page]`
 - [ComfyUI](wiki/entities/comfyui.md) — ComfyUI**（Comfy-Org/ComfyUI，官网 [comfy.org](https://comfy.o `📅unknown` `[entity_page]`
 - [CoppeliaSim](wiki/entities/coppeliasim.md) — CoppeliaSim](https://github.com/CoppeliaRobotics/coppeliaSimLib) 收录于具身智能研究室 [开源项目主表](https://github `📅unknown` `[entity_page]`
+- [CoRe（接触感知全身重定向软件）](wiki/entities/core-retarget.md) — CoRe**（*Contact-Aware Motion Retargeting*，<https://github.com/tmjeong1103/CoRe>，[v0.1.0](https://g `📅unknown` `[entity_page]`
 - [Cosmos 3（NVIDIA 全模态世界模型）](wiki/entities/cosmos-3.md) — Cosmos 3**（2026-06，arXiv:2606.02800，[项目页](https://research.nvi `📅unknown` `[entity_page]`
 - [Crazyflie Firmware](wiki/entities/crazyflie-firmware.md) — crazyflie-firmware**（[bitcraze/crazyflie-firmware](https://github.com/bitcraze/crazyflie-firmware `📅unknown` `[entity_page]`
 - [Crazyswarm2](wiki/entities/crazyswarm2.md) — Crazyswarm2**（IMRCLab/crazyswarm2）在 **[Crazyflie 固件](./c `📅unknown` `[entity_page]`
@@ -468,6 +469,7 @@
 - [Concurrent Training of Control Policy and State Estimator](wiki/entities/paper-concurrent-policy-estimator-locomotion.md) — Ji, Mun, Kim & Hwangbo（KAIST，arXiv:2202.05481）** 提出 locomotion `📅unknown` `[entity_page]`
 - [ContactMimic（Humanoid Object Interaction via Contact Control）](wiki/entities/paper-contactmimic.md) — ContactMimic**（arXiv:2607.08742，2026-07-09，UIUC / Saurabh Gupta 组）提出 **接触条件化 keypoint tracker**：在参 `📅unknown` `[entity_page]`
 - [CoorDex（Coordinating Body and Hand Priors for Continuous Dexterous Humanoid Loco-Manipulation）](wiki/entities/paper-coordex-dexterous-humanoid-loco-manipulation.md) — CoorDex**（arXiv:2606.23680，[项目页](https://skevinci.github.io/co `📅unknown` `[entity_page]`
+- [CoRe（接触感知优化与学习的人形运动）](wiki/entities/paper-core.md) — CoRe**（*Contact-aware motion Refinement*；论文 *CoRe: A Hybrid Approach of Contact-Aware Optimization `📅unknown` `[entity_page]`
 - [Ctrl-World（可控机器人操作生成式世界模型）](wiki/entities/paper-ctrl-world.md) — Ctrl-World**（*Ctrl-World: A Controllable Generative World Model for Robot Manipulation*，[arXiv:251 `📅unknown` `[entity_page]`
 - [cuNRTO：GPU 加速非线性鲁棒轨迹优化（CUDA Nonlinear Robust Trajectory Optimization）](wiki/entities/paper-cunrto-gpu-robust-trajectory-optimization.md) — cuNRTO**（*cuNRTO: GPU-Accelerated Nonlinear Robust Trajectory Optimization*，[arXiv:2603.02642](htt `📅unknown` `[entity_page]`
 - [Current as Touch（Proprioceptive Contact Feedback · arXiv:2607.03529）](wiki/entities/paper-current-as-touch-proprioceptive-contact.md) — Current as Touch**（*Current as Touch: Proprioceptive Contact Feedback for Compliant Dexterous Mani `📅unknown` `[entity_page]`
@@ -1206,6 +1208,7 @@
 - [Rhythm（Learning Interactive Whole-Body Control for Dual Humanoids）](wiki/entities/paper-rhythm-dual-humanoid-interaction.md) — Rhythm** 是面向 **双 humanoid 物理耦合全身交互** 的系统论文（arXiv:2603.02856）：在 **两台 Unitree G1** 真机上首次报告 **拥抱、共舞、问 `📅unknown` `[entity_page]`
 - [Rift：免视频 Rollout 的未来条件 WAM](wiki/entities/paper-rift-wam.md) — Rift**（*Keep the Future, Drop the Rollout: Rift for World Action Models*，[arXiv:2608.11521](https: `📅unknown` `[entity_page]`
 - [RMA: Rapid Motor Adaptation for Legged Robots](wiki/entities/paper-rma-rapid-motor-adaptation.md) — RMA**（Kumar et al., arXiv:2107.04034，**RSS 2021**）提出 **快速运动自适应 `📅unknown` `[entity_page]`
+- [RMR（优化式 Rig 统一的人形重定向）](wiki/entities/paper-rmr.md) — RMR**（项目页标题 *Robust Robot Motion Retargeting*；论文 *Robust and Expressive Humanoid Motion Retargetin `📅unknown` `[entity_page]`
 - [RoamFlow](wiki/entities/paper-roamflow.md) — RoamFlow**（*Reinforcement-Aligned One-Step Action MeanFlow Policy for Image-Goal Navigation*，南洋理工大 `📅unknown` `[entity_page]`
 - [RoboHarness（异构策略编排 · arXiv:2607.18060）](wiki/entities/paper-robo-harness.md) — RoboHarness**（*Memory-Driven Orchestration of Heterogeneous Robot Policies for Long-Horizon Planni `📅unknown` `[entity_page]`
 - [RoboInter1.5（中间表示操作与世界建模套件）](wiki/entities/paper-robointer-1-5.md) — RoboInter1.5**（*A Holistic Intermediate Representation Suite for Embodied World Modeling and Robot `📅unknown` `[entity_page]`

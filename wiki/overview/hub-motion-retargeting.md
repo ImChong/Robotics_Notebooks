@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-motion-retargeting, motion-retargeting, mocap, humanoid]
 status: complete
-updated: 2026-08-08
+updated: 2026-08-15
 summary: "动作重定向知识链汇总：把人体/动物参考动作映射到人形与异构机器人骨架，衔接 MoCap、IK/优化重定向、动力学精炼（SBTO/DSMS/KDMR/SPARK）、AMP 先验与 WBT 训练数据的全链路导读；含人体→非人形腿式（X-Morph）扩展。"
 ---
 
@@ -38,6 +38,7 @@ summary: "动作重定向知识链汇总：把人体/动物参考动作映射到
 | 流水线 | 采集 → 清洗 → 重定向 → 训练输入 | [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) |
 | 选型 | GMR / NMR / Reactor 等路线差异 | [GMR vs NMR vs Reactor](../comparisons/gmr-vs-nmr-vs-reactor.md) |
 | 动力学精炼 | 运动学参考 → 全身动力学可行 | [DynaRetarget / SBTO](../methods/dynaretarget-sbto-motion-retargeting.md)、[DSMS / Shooting for Contact](../entities/paper-shooting-for-contact.md)、[KDMR](../entities/paper-kdmr.md)、[SPARK](../entities/paper-spark-skeleton-aligned-retargeting.md) |
+| 接触精炼（开源工具） | SOMA 人体 → 多人形 + 接触/自碰 | [CoRe v0.1.0](../entities/core-retarget.md)（论文 [CoRe](../entities/paper-core.md) / [RMR](../entities/paper-rmr.md)） |
 | 数据 | 参考运动数据集与重定向就绪度 | [人形参考运动数据集选型](../comparisons/humanoid-reference-motion-datasets.md) |
 | 下游 | 重定向后如何进入 WBT / AMP | [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) |
 
@@ -57,6 +58,7 @@ summary: "动作重定向知识链汇总：把人体/动物参考动作映射到
 - [Shooting for Contact / DSMS](../entities/paper-shooting-for-contact.md) — 接触隐式多重打靶动力学重定向（Caltech/DePaul；G1 爬行与跳转）
 - [KDMR](../entities/paper-kdmr.md) — GRF 锚定多接触全身 TO（Georgia Tech；BeyondMimic 下游）
 - [SPARK（骨架对齐重定向）](../entities/paper-spark-skeleton-aligned-retargeting.md) — URDF 校准 + 渐进 KDTO（UW–Madison / Berkeley / SII）
+- [CoRe v0.1.0](../entities/core-retarget.md) — Kimodo/GEM-X → 11 机接触精炼（高丽大学；Humanoids/IROS 2025）
 
 ## 参考来源
 

@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-15",
-  "node_count": 3100,
-  "edge_count": 27163,
+  "node_count": 3103,
+  "edge_count": 27216,
   "coverage": {
-    "covered": 3076,
-    "total": 3076,
+    "covered": 3079,
+    "total": 3079,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -158,8 +158,7 @@
       "recency": "2026-08-14",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
+      "has_repo": true
     },
     {
       "path": "wiki/methods/sim2real-joint-sysid-experiment-design.md",
@@ -228,12 +227,12 @@
   },
   "top_communities": [
     {
-      "label": "操作",
-      "size": 571
+      "label": "仿真到现实",
+      "size": 574
     },
     {
-      "label": "仿真到现实",
-      "size": 565
+      "label": "操作",
+      "size": 571
     },
     {
       "label": "视觉-语言-动作",
@@ -241,15 +240,15 @@
     },
     {
       "label": "人形论文深读笔记",
-      "size": 171
-    },
-    {
-      "label": "人形强化学习运动控制",
-      "size": 133
+      "size": 172
     },
     {
       "label": "移动操作",
-      "size": 132
+      "size": 142
+    },
+    {
+      "label": "视觉-语言导航",
+      "size": 114
     }
   ],
   "top_hubs": [
@@ -345,7 +344,7 @@
       "detail_id": "wiki-methods-beyondmimic",
       "label": "BeyondMimic",
       "type": "method",
-      "degree": 77,
+      "degree": 78,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
