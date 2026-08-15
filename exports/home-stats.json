@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-humantracker.md",
+      "detail_id": "entity-paper-humantracker",
+      "label": "HumanTracker（Comprehensive and Human-Aligned Motion Tracking Benchmark）",
+      "type": "entity",
+      "recency": "2026-08-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/paper-zest.md",
       "detail_id": "entity-paper-zest",
       "label": "ZEST：异构运动参考的零样本具身技能迁移",
@@ -201,26 +212,17 @@
       "source": "git",
       "action": "added",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/formalizations/inverse-kinematics.md",
-      "detail_id": "wiki-formalizations-inverse-kinematics",
-      "label": "逆运动学（Inverse Kinematics）",
-      "type": "formalization",
-      "recency": "2026-08-13",
-      "source": "git",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-zest.md",
-    "detail_id": "entity-paper-zest",
-    "label": "ZEST：异构运动参考的零样本具身技能迁移",
+    "path": "wiki/entities/paper-humantracker.md",
+    "detail_id": "entity-paper-humantracker",
+    "label": "HumanTracker（Comprehensive and Human-Aligned Motion Tracking Benchmark）",
     "type": "entity",
     "recency": "2026-08-15",
     "source": "git",
     "action": "added",
+    "has_repo": true,
     "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
