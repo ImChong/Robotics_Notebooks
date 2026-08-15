@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-humantracker.md",
+      "detail_id": "entity-paper-humantracker",
+      "label": "HumanTracker（Comprehensive and Human-Aligned Motion Tracking Benchmark）",
+      "type": "entity",
+      "recency": "2026-08-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/paper-seeker.md",
       "detail_id": "entity-paper-seeker",
       "label": "Seeker：从动作里长出视觉注意力",
@@ -201,27 +212,18 @@
       "source": "git",
       "action": "added",
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/formalizations/robot-jacobian.md",
-      "detail_id": "wiki-formalizations-robot-jacobian",
-      "label": "机器人雅可比矩阵（Jacobian）",
-      "type": "formalization",
-      "recency": "2026-08-13",
-      "source": "git",
-      "action": "added",
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-seeker.md",
-    "detail_id": "entity-paper-seeker",
-    "label": "Seeker：从动作里长出视觉注意力",
+    "path": "wiki/entities/paper-humantracker.md",
+    "detail_id": "entity-paper-humantracker",
+    "label": "HumanTracker（Comprehensive and Human-Aligned Motion Tracking Benchmark）",
     "type": "entity",
     "recency": "2026-08-15",
     "source": "git",
     "action": "added",
-    "has_repo": true
+    "has_repo": true,
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
