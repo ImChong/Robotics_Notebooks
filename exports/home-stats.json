@@ -9,6 +9,39 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/core-retarget.md",
+      "detail_id": "entity-core-retarget",
+      "label": "CoRe（接触感知全身重定向软件）",
+      "type": "entity",
+      "recency": "2026-08-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-core.md",
+      "detail_id": "entity-paper-core",
+      "label": "CoRe（接触感知优化与学习的人形运动）",
+      "type": "entity",
+      "recency": "2026-08-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-rmr.md",
+      "detail_id": "entity-paper-rmr",
+      "label": "RMR（优化式 Rig 统一的人形重定向）",
+      "type": "entity",
+      "recency": "2026-08-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/paper-gentrack.md",
       "detail_id": "entity-paper-gentrack",
       "label": "GenTrack：机器人原生运动生成与零样本跟踪的物理对齐",
@@ -180,49 +213,17 @@
       "action": "added",
       "has_repo": true,
       "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-cartesian-impedance-controller.md",
-      "detail_id": "entity-paper-cartesian-impedance-controller",
-      "label": "Cartesian Impedance Controller（Mayr et al., JOSS 2024）",
-      "type": "entity",
-      "recency": "2026-08-14",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-null-space-projections-survey.md",
-      "detail_id": "entity-paper-null-space-projections-survey",
-      "label": "零空间投影综述（Dietrich et al., IJRR 2015）",
-      "type": "entity",
-      "recency": "2026-08-14",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "全身控制（Whole-Body Control, WBC） 社区"
-    },
-    {
-      "path": "wiki/entities/flobaroid.md",
-      "detail_id": "entity-flobaroid",
-      "label": "FloBaRoID（浮动基动力学辨识工具箱）",
-      "type": "entity",
-      "recency": "2026-08-13",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-gentrack.md",
-    "detail_id": "entity-paper-gentrack",
-    "label": "GenTrack：机器人原生运动生成与零样本跟踪的物理对齐",
+    "path": "wiki/entities/core-retarget.md",
+    "detail_id": "entity-core-retarget",
+    "label": "CoRe（接触感知全身重定向软件）",
     "type": "entity",
     "recency": "2026-08-15",
     "source": "git",
     "action": "added",
+    "has_repo": true,
     "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
