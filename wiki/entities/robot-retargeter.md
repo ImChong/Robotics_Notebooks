@@ -2,13 +2,14 @@
 type: entity
 tags: [motion-retargeting, humanoid, smpl-x, mocap, mink, mujoco, engineering]
 status: complete
-updated: 2026-07-02
+updated: 2026-08-15
 summary: "ccrpRepo robot_retargeter：SMPL-X 或源机器人 CSV 经 mink+MuJoCo IK 重定向到 G1/H2/T800 等多人形，内置连杆缩放、接触检测与足端滑动抑制，并支持 BONES-SEED 格式转换与多机并排可视化。"
 related:
   - ../concepts/motion-retargeting.md
   - ../concepts/motion-retargeting-pipeline.md
   - ../methods/motion-retargeting-gmr.md
   - ./soma-retargeter.md
+  - ./core-retarget.md
   - ./amass.md
   - ./unitree-g1.md
   - ./mujoco.md
@@ -97,12 +98,12 @@ flowchart LR
 
 ## 与相近工具对比（选型直觉）
 
-| 维度 | robot_retargeter | [GMR](../methods/motion-retargeting-gmr.md) | [SOMA Retargeter](./soma-retargeter.md) |
-|------|------------------|---------------------------------------------|----------------------------------------|
-| 典型输入 | SMPL-X `.npz`、LAFAN1 CSV | BVH / SMPL / FBX 等多格式 | SOMA 统一 BVH |
-| IK 栈 | mink + MuJoCo | 自研 / Pinocchio 系 | Newton + Warp GPU |
-| 多机型并排 | 内置 `VIS_ROBOTS` | 多机型支持 | 当前主推 G1 |
-| SEED 路径 | CSV 转换脚本 | 间接 | 官方 BVH 批处理 |
+| 维度 | robot_retargeter | [GMR](../methods/motion-retargeting-gmr.md) | [SOMA Retargeter](./soma-retargeter.md) | [CoRe](./core-retarget.md) |
+|------|------------------|---------------------------------------------|----------------------------------------|---------------------------|
+| 典型输入 | SMPL-X `.npz`、LAFAN1 CSV | BVH / SMPL / FBX 等多格式 | SOMA 统一 BVH | Kimodo `.npz` / GEM-X `.pt` |
+| IK 栈 | mink + MuJoCo | 自研 / Pinocchio 系 | Newton + Warp GPU | 方向向量 DMR + MuJoCo |
+| 多机型并排 | 内置 `VIS_ROBOTS` | 多机型支持 | 当前主推 G1 | 11 台捆绑 + HF Space |
+| SEED 路径 | CSV 转换脚本 | 间接 | 官方 BVH 批处理 | 经 Kimodo/GEM-X，不直接吃 SEED CSV |
 
 ## 关联页面
 
@@ -113,6 +114,7 @@ flowchart LR
 - [AMASS](./amass.md)
 - [Unitree G1](./unitree-g1.md)
 - [BifrostUMI（mink IK 另一用例）](./paper-bifrost-umi.md)
+- [CoRe v0.1.0](./core-retarget.md) — SOMA 接触精炼对照（非 SMPL-X 入口）
 
 ## 参考来源
 

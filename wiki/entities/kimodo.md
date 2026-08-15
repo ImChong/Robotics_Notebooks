@@ -18,6 +18,7 @@ related:
   - ../concepts/motion-retargeting.md
   - ./ardy.md
   - ./paper-gentrack.md
+  - ./core-retarget.md
 sources:
   - ../../sources/repos/kimodo.md
   - ../../sources/sites/kimodo-project.md
@@ -132,6 +133,7 @@ flowchart LR
 - [HY-Motion vs GENMO vs Kimodo](../comparisons/hy-motion-vs-genmo-vs-kimodo.md) — 三条「文本/多模态 → 人体运动」生成式骨干选型对比
 - [ARDY](./ardy.md) — 交互式自回归扩散姊妹（实时流式文本 + 长时域约束）
 - [GenTrack](./paper-gentrack.md) — 附录把 KIMODO-G1 当 robot-native 源对照；执行成功高、TMR 偏低
+- [CoRe v0.1.0](./core-retarget.md) — 官方消费 Kimodo SOMA77 `.npz`，接触精炼到 11 台人形
 
 ## 参考来源
 

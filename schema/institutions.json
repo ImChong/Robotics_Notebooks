@@ -2726,6 +2726,28 @@
         "zhijiang-lab",
         "zhejianglab"
       ]
+    },
+    "kist": {
+      "label": "韩国科学技术研究院（KIST）",
+      "aliases": [
+        "kist",
+        "korea-institute-of-science-and-technology"
+      ]
+    },
+    "naver-labs": {
+      "label": "纳沃实验室（NAVER LABS）",
+      "aliases": [
+        "naver-labs",
+        "naver",
+        "naver-labs-corp"
+      ]
+    },
+    "rainbow-robotics": {
+      "label": "彩虹机器人（Rainbow Robotics）",
+      "aliases": [
+        "rainbow-robotics",
+        "rainbow"
+      ]
     }
   }
 }
