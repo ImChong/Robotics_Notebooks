@@ -2,7 +2,7 @@
 type: method
 tags: [robotics, kinematics, retargeting, humanoid]
 status: complete
-updated: 2026-08-08
+updated: 2026-08-15
 related:
   - ../concepts/motion-retargeting.md
   - ./neural-motion-retargeting-nmr.md
@@ -18,6 +18,7 @@ related:
   - ../entities/yanjie-ze.md
   - ../entities/paper-egohtr.md
   - ../entities/generative-motion-rig.md
+  - ../entities/paper-humantracker.md
 sources:
   - ../../sources/papers/motion_control_projects.md
   - ../../sources/papers/exoactor.md
@@ -204,4 +205,5 @@ $$
 - [SONIC（规模化运动跟踪）](./sonic-motion-tracking.md) — 与「跳过重定向、直接 tracking」路线对照阅读。
 - [Gen2Humanoid](../entities/gen2humanoid.md) — HY-Motion 生成轨迹经 GMR 到多机型的端到端胶水管线。
 - [EgoHTR](../entities/paper-egohtr.md) — rough-terrain 场景对齐人演示的 Human2Robot 上游之一。
+- [HumanTracker](../entities/paper-humantracker.md) — 153 h 光学基准用 GMR 得到 29-DoF `qpos` 参考，再人工剔除漂浮/穿地。
 - [X-Morph](../entities/paper-xmorph.md) — 视频链路用 GMR 把 SMPL→G1，再跨形态到非人形腿式机器人。

@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-15",
-  "node_count": 3095,
-  "edge_count": 27059,
+  "node_count": 3096,
+  "edge_count": 27079,
   "coverage": {
-    "covered": 3071,
-    "total": 3071,
+    "covered": 3072,
+    "total": 3072,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -230,7 +230,7 @@
     },
     {
       "label": "仿真到现实",
-      "size": 494
+      "size": 498
     },
     {
       "label": "视觉-语言-动作",
@@ -335,7 +335,7 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
-      "degree": 133,
+      "degree": 135,
       "has_repo": true
     },
     {
@@ -378,7 +378,7 @@
       "detail_id": "entity-paper-twist2",
       "label": "TWIST2",
       "type": "entity",
-      "degree": 45,
+      "degree": 47,
       "has_repo": true
     },
     {

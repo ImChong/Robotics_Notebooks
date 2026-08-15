@@ -2,7 +2,7 @@
 type: entity
 tags: [dataset, bfm, behavior-foundation-model, human-motion, humanoid-locomotion, unitree-g1, physisink, awesome-bfm-papers]
 status: complete
-updated: 2026-06-16
+updated: 2026-08-15
 summary: "DAVIAN/KAIST 物理可信人形 locomotion 集：PhySINK 重定向后的 G1/H1-2 轨迹约 73 h；Hugging Face 一键下载，ProtoMotions 原生支持，真机 G1 tracking 优于 AMASS 同管线。"
 related:
   - ../concepts/behavior-foundation-model.md
@@ -12,6 +12,7 @@ related:
   - ./amass.md
   - ../methods/motion-retargeting-gmr.md
   - ../comparisons/humanoid-reference-motion-datasets.md
+  - ./paper-humantracker.md
 sources:
   - ../../sources/repos/phuma.md
   - ../../sources/papers/bfm_awesome_dataset_phuma_arxiv_2510_26236.md
@@ -77,6 +78,7 @@ flowchart LR
 - **重定向对照**：[GMR](../methods/motion-retargeting-gmr.md)（论文定性对比 PhySINK vs GMR 高矮被试伪影）
 - **BFM 索引**：[bfm-41-papers-technology-map](../overview/bfm-41-papers-technology-map.md)
 - **五集选型**：[humanoid-reference-motion-datasets](../comparisons/humanoid-reference-motion-datasets.md)
+- **评测集对照**：[HumanTracker](./paper-humantracker.md) 在规模表里把 PHUMA（73 h，无类别/无文本）与自家 153 h 四族+文本对齐——PHUMA 仍是训练源，HumanTracker 是诊断评测（数据待发布）
 
 ## 参考来源
 
@@ -92,6 +94,7 @@ flowchart LR
 - [AMASS](./amass.md)
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [LIMMT（GQS 策展）](../methods/limmt-gqs-motion-curation.md)
+- [HumanTracker](./paper-humantracker.md)
 
 ## 推荐继续阅读
 
