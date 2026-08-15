@@ -13,6 +13,7 @@ related:
   - ./paper-twist2.md
   - ../methods/motion-retargeting-gmr.md
   - ../queries/humanoid-motion-tracking-method-selection.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../comparisons/humanoid-reference-motion-datasets.md
   - ./amass.md
   - ./dataset-bfm-phuma.md
@@ -206,6 +207,7 @@ sequenceDiagram
 - [GMT](./paper-gmt.md) / [TWIST2](./paper-twist2.md) — 同一协议下暴露 Ground 崩溃
 - [GMR](../methods/motion-retargeting-gmr.md) — 人体→机器人参考前端
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md) — 把「怎么评」补进「怎么选」
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是其 ③ 策略任务成功率评测层的人形 tracking 代表基准（四族分层 + 偏好对齐指标），双向回链
 - [人形参考运动数据集选型](../comparisons/humanoid-reference-motion-datasets.md) — 与 AMASS / PHUMA 对照
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) — 重定向 → tracker → 评测的上下文
 
