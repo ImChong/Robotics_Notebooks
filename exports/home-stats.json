@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-gentrack.md",
+      "detail_id": "entity-paper-gentrack",
+      "label": "GenTrack：机器人原生运动生成与零样本跟踪的物理对齐",
+      "type": "entity",
+      "recency": "2026-08-15",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/entities/paper-hand-visibility-detector.md",
       "detail_id": "entity-paper-hand-visibility-detector",
       "label": "Hand Visibility Detector：逐关节手部可见性",
@@ -204,28 +214,16 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/methods/joint-actuator-parameter-identification.md",
-      "detail_id": "wiki-methods-joint-actuator-parameter-identification",
-      "label": "Joint Actuator Parameter Identification（关节执行器参数辨识）",
-      "type": "method",
-      "recency": "2026-08-13",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-hand-visibility-detector.md",
-    "detail_id": "entity-paper-hand-visibility-detector",
-    "label": "Hand Visibility Detector：逐关节手部可见性",
+    "path": "wiki/entities/paper-gentrack.md",
+    "detail_id": "entity-paper-gentrack",
+    "label": "GenTrack：机器人原生运动生成与零样本跟踪的物理对齐",
     "type": "entity",
     "recency": "2026-08-15",
     "source": "git",
     "action": "added",
-    "has_repo": true,
     "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
