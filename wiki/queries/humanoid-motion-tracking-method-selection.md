@@ -3,7 +3,7 @@ title: 人形运动跟踪方法选型指南
 type: query
 status: complete
 created: 2026-05-21
-updated: 2026-08-08
+updated: 2026-08-15
 summary: 在人形 RL 运动控制栈中，如何按任务阶段在 DeepMimic / BeyondMimic / AMP 家族 / 通用 tracker / 接触丰富场景 tracking / 生成式动作先验之间选型。
 sources:
   - ../../sources/papers/gmt_arxiv_2506_14770.md
@@ -20,6 +20,7 @@ sources:
   - ../../sources/papers/any2any_arxiv_2605_23733.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
   - ../../sources/papers/pfm_hr_arxiv_2608_03227.md
+  - ../../sources/papers/zest.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「人形运动跟踪与风格先验方法这么多，工程上怎么选、怎么组合？」
@@ -56,6 +57,7 @@ flowchart TD
 | 证明「能跟参考跑起来」 | 显式 tracking reward | [DeepMimic](../methods/deepmimic.md)、[BeyondMimic](../methods/beyondmimic.md) |
 | 任务完成后仍像「人」 | 对抗式 motion prior | [AMP](../methods/amp-reward.md)、[ADD](../methods/add.md)、[SMP](../methods/smp.md) |
 | 多动作通用 tracker | 规模化 tracking policy | [GMT](../entities/paper-gmt.md)、[Any2Track](../methods/any2track.md)、[AMS](../methods/ams.md)、[MotionBricks](../methods/motionbricks.md)、[EGM](../methods/egm-efficient-general-mimic.md)、[SONIC](../methods/sonic-motion-tracking.md)、[Humanoid-GPT](../entities/paper-humanoid-gpt.md) |
+| 工业极简、跨形态真机 tracking | 下一步参考 + 无估计器 | [ZEST](../entities/paper-zest.md)（Atlas/G1/Spot；部署仍要播参考） |
 | 高覆盖率下训练集长尾 | 能力对齐 expert + 路由蒸馏 | [Athena-WBC](../entities/paper-athena-wbc-humanoid-longtail.md)（改奖励/重力课程，非仅重采样；STC/TIS/MPJPE-W） |
 | 动画参考 + latent 上下文跟踪 | 两阶段 VAE prior + 显式 PPO | [VMP](../entities/paper-notebook-vmp.md)（SCA 2024；LIME 真机） |
 | 接触丰富场景 tracking | 参考运动 + per-link contact label | [SceneBot](../entities/paper-scenebot.md)（hindsight 场景重建 + 单策略 terrain/object） |
@@ -192,6 +194,7 @@ flowchart TD
 - [SceneBot](../entities/paper-scenebot.md)
 - [ContactMimic](../entities/paper-contactmimic.md)
 - [VMP](../entities/paper-notebook-vmp.md)
+- [ZEST](../entities/paper-zest.md) — 工业极简 tracking；Science Robotics 2026，确认未开源
 
 ## 一句话记忆
 

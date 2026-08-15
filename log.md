@@ -1,3 +1,13 @@
+## [2026-08-15] ingest | sources/papers/zest.md — 接入 Science Robotics ZEST 具身技能迁移（确认未开源）
+
+- **触发：** 用户指定 *Embodied skill transfer for locomotion control*（Sleiman / He Li / Adu-Bredu 等，RAI × 波士顿动力，*Science Robotics* 11(117)，DOI 10.1126/scirobotics.aec7695）
+- **可读全文：** 期刊页超时/付费；直接可读 PDF 为 [arXiv:2602.00401](https://arxiv.org/pdf/2602.00401)（预印本标题 ZEST）。未使用微信备份
+- **步骤 2.5：** 无项目页、无 GitHub/HF；期刊数据可用性只指向正文/附录 → **确认未开源**。未建 `sources/repos/` / `sources/sites/`
+- **来源：** [`sources/papers/zest.md`](sources/papers/zest.md)（由 arXiv 预印本归档升为期刊版）
+- **升格：** [`wiki/entities/paper-zest.md`](wiki/entities/paper-zest.md)；方法页 [`wiki/methods/zest.md`](wiki/methods/zest.md) 对齐卷期与评测
+- **交叉：** MTRG / HIL / 跑酷对比 / Curriculum / Sim2Real / VideoMimic / Boston Dynamics / G1 / 运动跟踪选型
+- **机构：** 复用 `rai-institute`、`boston-dynamics`
+
 ## [2026-08-15] ingest | sources/papers/temporal_grpo_arxiv_2608_13026.md — 接入 Temporal GRPO 阶段条件 VLA-RL 信用（确认未开源）
 
 - **触发：** 用户指定 arXiv 论文 *Temporal GRPO: Beyond Trajectory-Level Credit in Vision-Language-Action Reinforcement Learning*

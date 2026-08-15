@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-15",
-  "node_count": 3095,
-  "edge_count": 27059,
+  "node_count": 3096,
+  "edge_count": 27080,
   "coverage": {
-    "covered": 3071,
-    "total": 3071,
+    "covered": 3072,
+    "total": 3072,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -230,7 +230,7 @@
     },
     {
       "label": "仿真到现实",
-      "size": 494
+      "size": 495
     },
     {
       "label": "视觉-语言-动作",
@@ -325,7 +325,7 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "degree": 451,
+      "degree": 453,
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
@@ -350,7 +350,7 @@
       "detail_id": "wiki-methods-deepmimic",
       "label": "DeepMimic: 示例引导的技能学习",
       "type": "method",
-      "degree": 56,
+      "degree": 57,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     },
     {

@@ -2198,6 +2198,7 @@
 - [XRoboToolkit](wiki/entities/paper-xrobotoolkit.md) — XRoboToolkit**（*A Cross-Platform Framework for Robot Teleoperation*，字节跳动 PICO / 佐治亚理工 / 乔治梅森，arXiv `📅unknown` `[entity_page]`
 - [YAHMP：人形通用运动跟踪里什么真的重要？](wiki/entities/paper-yahmp.md) — YAHMP**（*Yet Another Humanoid Motion tracking Policy*；论文 *What Matters in Humanoid General Motion  `📅unknown` `[entity_page]`
 - [YOLO v1（You Only Look Once）](wiki/entities/paper-yolo-unified-realtime-detection.md) — YOLO**（You Only Look Once）是 Joseph Redmon 等提出的 **统一实时目标检测** 方法（arXiv:1506.02640，CVPR 2016）。它将检测从「区 `📅unknown` `[entity_page]`
+- [ZEST：异构运动参考的零样本具身技能迁移](wiki/entities/paper-zest.md) — ZEST**（*Zero-shot Embodied Skill Transfer*；期刊标题 *Embodied skill transfer for locomotion control*， `📅unknown` `[entity_page]`
 - [Halbach permanent magnet machines and applications（Zhu & Howe 2001）](wiki/entities/paper-zhu-howe-halbach-pm-machines-review.md) — Z. Q. Zhu & D. Howe（University of Sheffield，[IEE Proc. EPA 2001](https://doi.org/10.1049/ip-epa:20 `📅unknown` `[entity_page]`
 - [ZONDA：多楼层动态避障的零样本 ObjectNav](wiki/entities/paper-zonda.md) — ZONDA**（*Zero-shot Object Navigation with Dynamic Avoidance*，[arXiv:2607.21025](https://arxiv.org/ `📅unknown` `[entity_page]`
 - [PAROL6（Source Robotics）](wiki/entities/parol6-source-robotics.md) — PAROL6** 是 **Source Robotics** 推出的 **开源桌面六轴机械臂**：强调 **低成本、可 DIY、ROS 控制**；产品介绍在 **[source-robotics. `📅unknown` `[entity_page]`
@@ -2739,7 +2740,7 @@
 - [Visual Servoing（视觉伺服控制）](wiki/methods/visual-servoing.md) — 视觉伺服 (Visual Servoing)** 是一门将计算机视觉（Computer Vision）与经典控制理论（Control Theory）深度融合的技术。它不依赖于将图像构建为复杂的 3 `📅unknown` `[method_page]`
 - [VLA（Vision-Language-Action）](wiki/methods/vla.md) — VLA**：把视觉、语言和机器人动作统一到同一个模型里，让策略不只“看见状态后输出动作”，还能够显式理解任务指令和语义约束。 `📅unknown` `[method_page]`
 - [WiLoR（野外 3D 手部定位与重建）](wiki/methods/wilor.md) — WiLoR**（CVPR 2025）面向 **单目 RGB** 场景下的 **双手** 检测与 **MANO 类 3D 重建**：先用轻量全卷积结构在高分辨率特征上定位手部，再用 Transfor `📅unknown` `[method_page]`
-- [ZEST (Zero-shot Embodied Skill Transfer)](wiki/methods/zest.md) — ZEST** 是由 Boston Dynamics 团队开发的一套统一的具身技能学习与迁移框架。它通过强化学习（RL）将多样化的、异构的人类运动数据（如动捕、视频、动画）转化为机器人的高动态、多接 `📅unknown` `[method_page]`
+- [ZEST (Zero-shot Embodied Skill Transfer)](wiki/methods/zest.md) — ZEST** 是 RAI Institute 与 Boston Dynamics 的统一具身技能迁移配方：用强化学习把 MoCap、单目视频（ViCap）和关键帧动画变成高动态、多接触全身技能，并 `📅unknown` `[method_page]`
 - [π₀ (Pi-zero) 策略模型](wiki/methods/π0-policy.md) — π₀ (Pi-zero)** 是具身智能大模型（VLA）领域的奠基性工作，由 Physical Intelligence 团队于 2024 年提出（其后继版本见 [π₀.7](./pi07-pol `📅unknown` `[method_page]`
 
 ### Wiki Tasks（任务页）
