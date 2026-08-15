@@ -3,7 +3,7 @@ type: method
 tags: [dexterity, manipulation, robot-hand, reinforcement-learning, cross-embodiment, action-representation, sim2real]
 status: complete
 date: 2026-07-11
-updated: 2026-07-11
+updated: 2026-08-15
 related:
   - ./in-hand-reorientation.md
   - ../concepts/motion-retargeting.md
@@ -11,6 +11,8 @@ related:
   - ../entities/shadow-hand.md
   - ../queries/cross-embodiment-transfer-strategy.md
   - ../tasks/manipulation.md
+  - ../entities/paper-mango-grasp.md
+  - ../entities/paper-digitcode.md
 sources:
   - ../../sources/papers/uhas_arxiv_2607_03570.md
   - ../../sources/sites/uhas-project-irvlutd.md
@@ -153,3 +155,5 @@ flowchart LR
 - [跨具身策略迁移选型指南](../queries/cross-embodiment-transfer-strategy.md)
 - [Allegro Hand](../entities/allegro-hand.md)
 - [Shadow Hand](../entities/shadow-hand.md)
+- [MANGO-Grasp](../entities/paper-mango-grasp.md) — 统一的是接触场而非策略动作空间
+- [DigitCode](../entities/paper-digitcode.md) — 符号化手姿态，可编译到机器人查表

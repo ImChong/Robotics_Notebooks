@@ -2726,6 +2726,29 @@
         "zhijiang-lab",
         "zhejianglab"
       ]
+    },
+    "gist": {
+      "label": "光州科学技术院（GIST）",
+      "aliases": [
+        "gist",
+        "gist-kr",
+        "gwangju-institute-of-science-and-technology"
+      ]
+    },
+    "kentech": {
+      "label": "韩国能源技术大学（KENTECH）",
+      "aliases": [
+        "kentech",
+        "korea-institute-of-energy-technology"
+      ]
+    },
+    "utec": {
+      "label": "乌拉圭技术大学（UTEC）",
+      "aliases": [
+        "utec",
+        "utec-uy",
+        "technological-university-of-uruguay"
+      ]
     }
   }
 }

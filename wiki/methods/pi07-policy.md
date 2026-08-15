@@ -2,7 +2,7 @@
 type: method
 tags: [vla, foundation-policy, physical-intelligence, flow-matching, manipulation, prompting, cross-embodiment]
 status: complete
-updated: 2026-08-07
+updated: 2026-08-15
 related:
   - ./π0-policy.md
   - ./vla.md
@@ -113,6 +113,7 @@ flowchart LR
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 当子目标由世界模型在线给出时，与「未来观测–动作联合建模」讨论相邻
 - [Action Chunking](./action-chunking.md) — 与 RTC、异步推理配套的低层执行接口
 - [LWD（Learning while Deploying）](./lwd.md) — 另一条把车队经验喂回通才 VLA 的 RL -centric 路线
+- [GSR / ParaVLA](../entities/paper-gsr-paravla.md) — 给 π₀.₅ 补冻结 T5 重绑；LIBERO-Para PRIDE 70.4
 
 ## 推荐继续阅读
 

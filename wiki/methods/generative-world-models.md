@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-08-13
+updated: 2026-08-15
 related:
   - ../queries/embodied-fm-taxonomy-loop.md
   - ../entities/paper-sc3-eval.md
@@ -28,6 +28,7 @@ related:
   - ../entities/cosmos-3.md
   - ../entities/paper-kairos-native-world-model-stack.md
   - ../entities/paper-physmani-dynamic-manipulation-world-model.md
+  - ../entities/paper-embodiedvae.md
   - ../entities/paper-panoworld-real-world-panoramic-generation.md
   - ../entities/paper-physisforcing.md
   - ../entities/paper-flex-pi.md
@@ -262,6 +263,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [Model-Based RL](../methods/model-based-rl.md)
 - [Being-H0.7](./being-h07.md) — 潜空间世界–动作模型，测试时不滚未来像素。
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 世界预测与动作生成的联合范式与文献taxonomy
+- [EmbodiedVAE](../entities/paper-embodiedvae.md) — 为操作视频世界模型解耦臂/背景的 video VAE
 - [NVIDIA Omniverse](../entities/nvidia-omniverse.md)
 - [ExoActor](./exoactor.md) — 视频生成驱动的交互式人形控制。
 - [EWMBench](../entities/ewmbench.md) — 具身视频世界模型生成质量的多维基准与开源工具链。

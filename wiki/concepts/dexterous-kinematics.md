@@ -9,6 +9,8 @@ related:
   - ./tactile-sensing.md
   - ../entities/allegro-hand.md
   - ../entities/all-hands-up.md
+  - ../entities/paper-digitcode.md
+  - ../entities/paper-mango-grasp.md
   - ../methods/in-hand-reorientation.md
   - ../formalizations/friction-cone.md
 sources:
@@ -67,6 +69,8 @@ $$ J \dot{q} = G^T \mathcal{V}_o $$
 - [手内重定向 (In-hand Reorientation)](../methods/in-hand-reorientation.md)
 - [Friction Cone (摩擦锥) 形式化](../formalizations/friction-cone.md)
 - [人形机器人并联关节解算](./humanoid-parallel-joint-kinematics.md) — 下肢闭链踝与力分配（与抓取闭链对照阅读）
+- [DigitCode](../entities/paper-digitcode.md) — 按解剖单元符号化手姿态
+- [MANGO-Grasp](../entities/paper-mango-grasp.md) — 形态–运动学描述子 + 马氏接触场
 - [All Hands Up](../entities/all-hands-up.md) — 用仿真 Kapandji 把拇指对掌工作空间收成可对照分数
 
 ## 参考来源

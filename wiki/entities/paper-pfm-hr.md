@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, flow-matching, pose-prior, rl, add, beyondmimic, unitree-g1, hkust-gz, noitom, tsinghua, google]
 status: complete
-updated: 2026-08-08
+updated: 2026-08-15
 arxiv: "2608.03227"
 code: https://github.com/gaoyukang33/PFM-HR
 related:
@@ -18,6 +18,7 @@ sources:
   - ../../sources/papers/pfm_hr_arxiv_2608_03227.md
   - ../../sources/sites/pfm-hr-web.md
   - ../../sources/repos/pfm-hr.md
+  - ../../sources/blogs/wechat_embodied_station_ego2robot_mango_grasp_2026-08-11.md
 summary: "PFM-HR（arXiv:2608.03227，HKUST-GZ/诺亦腾/清华 SIGS/Google）：无序姿态 Flow Matching 先验 + Pose Geometry Score 调制跟踪奖励；冻结挂 ADD/BeyondMimic，高动态样本效率↑；代码仓 Coming Soon。"
 ---
 
@@ -146,12 +147,14 @@ flowchart TB
 - [MimicKit](./mimickit.md) — 单轨迹实验框架
 - [运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
 - [AMP / ADD / SMP 对比](../comparisons/amp-add-smp-motion-prior-variants.md)
+- [具身智能小站 9 篇盘点（2026-08-11）](../../sources/blogs/wechat_embodied_station_ego2robot_mango_grasp_2026-08-11.md) — 把 PFM-HR 放进「接口意识」综述，不另造节点
 
 ## 参考来源
 
 - [pfm_hr_arxiv_2608_03227.md](../../sources/papers/pfm_hr_arxiv_2608_03227.md) — 论文摘录与开源核查
 - [pfm-hr-web.md](../../sources/sites/pfm-hr-web.md) — 项目页归档
 - [pfm-hr.md](../../sources/repos/pfm-hr.md) — GitHub 占位仓归档
+- [具身智能小站 9 篇盘点](../../sources/blogs/wechat_embodied_station_ego2robot_mango_grasp_2026-08-11.md)
 - [arXiv:2608.03227](https://arxiv.org/abs/2608.03227) — 原文（Submitted 2026-08-04）
 - [项目页](https://gaoyukang33.github.io/PFM-HR.web/)
 

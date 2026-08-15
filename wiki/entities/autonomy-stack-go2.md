@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, go2, unitree, lidar, slam, navigation, cmu, quadruped]
 status: complete
-updated: 2026-07-26
+updated: 2026-08-15
 related:
   - ./point-lio-unilidar.md
   - ./unitree.md
@@ -10,6 +10,7 @@ related:
   - ../overview/navigation-slam-autonomy-stack.md
   - ../queries/go2-3d-semantic-mapping-sam-pipeline.md
   - ./fast-lio.md
+  - ./paper-situation-aware-frontier-quadruped-sar.md
 sources:
   - ../../sources/repos/autonomy_stack_go2.md
   - ../../sources/repos/point_lio_unilidar.md
@@ -79,6 +80,7 @@ summary: "autonomy_stack_go2 是 CMU Ji Zhang 团队面向 Unitree Go2 EDU 的�
 - [GO2 三维语义建图与 SAM 流水线](../queries/go2-3d-semantic-mapping-sam-pipeline.md)
 - [CMU MSCV Semantic 3D Mapping](./cmu-mscv-semantic-3d-mapping.md) — 语义投影线，勿混同
 - [FAST-LIO](./fast-lio.md)
+- [Situation-aware Frontier](./paper-situation-aware-frontier-quadruped-sar.md) — Go2 搜救探索目标选择，不是到点导航全栈
 
 ## 参考来源
 

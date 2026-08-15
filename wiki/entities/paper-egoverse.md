@@ -17,7 +17,7 @@ tags:
   - mit
 status: complete
 venue: arxiv
-updated: 2026-08-08
+updated: 2026-08-15
 code: https://github.com/GaTech-RL2/EgoVerse
 related:
   - ./paper-egowam-egocentric-human-wam-co-training.md
@@ -31,6 +31,7 @@ related:
   - ../comparisons/humannet-table1-human-video-corpora.md
   - ../overview/ego-category-01-data-collection.md
   - ../overview/ego-category-02-human-to-robot.md
+  - ./paper-ego2robot.md
 sources:
   - ../../sources/papers/egoverse_arxiv_2604_07607.md
   - ../../sources/sites/egoverse-ai.md
@@ -210,6 +211,7 @@ sequenceDiagram
 - [World Action Models](../concepts/world-action-models.md)
 - [Ego 分类 01：数据采集](../overview/ego-category-01-data-collection.md)
 - [Ego 分类 02：人→机器人](../overview/ego-category-02-human-to-robot.md)
+- [Ego2Robot](./paper-ego2robot.md) — 把 EgoVerse 等源渲染成 15 形态机器人预训练数据
 
 ## 参考来源
 

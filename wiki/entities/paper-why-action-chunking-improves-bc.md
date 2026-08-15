@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, imitation-learning, action-chunking, behavior-cloning, diffusion-policy, libero, robomimic, polimi, berkeley, analysis]
 status: complete
-updated: 2026-08-11
+updated: 2026-08-15
 venue: "CoRL 2026（项目页 PDF；暂无 arXiv）"
 related:
   - ../methods/action-chunking.md
@@ -13,10 +13,12 @@ related:
   - ../formalizations/behavior-cloning-loss.md
   - ../queries/vla-deployment-guide.md
   - ./paper-autointervene.md
+  - ./paper-gsr-paravla.md
 sources:
   - ../../sources/papers/why_action_chunking_improves_bc_corl2026.md
   - ../../sources/sites/action-chunking-github-io.md
   - ../../sources/papers/autointervene_arxiv_2608_07065.md
+  - ../../sources/blogs/wechat_embodied_station_ego2robot_mango_grasp_2026-08-11.md
 summary: "Why Action Chunking Improves BC（CoRL 2026，Polimi / Berkeley）：消融表明 chunk 收益主因是延迟观测条件化与隐式集成，而非时序一致性/有效地平线；RDE 部署在 LIBERO/Robomimic/Franka 上匹配标准 chunk 执行；显式延迟集成可进一步抬升（如 Transport 12.6%→41.5%）。"
 ---
 
@@ -180,6 +182,7 @@ Franka + Robotiq，15 Hz，delta joint；carrot / toaster / sushi 三任务，�
 - [Behavior Cloning Loss](../formalizations/behavior-cloning-loss.md) — 监督目标形式
 - [Query：VLA 真机部署指南](../queries/vla-deployment-guide.md) — chunk 缓冲 / 异步执行工程语境
 - [AutoIntervene](./paper-autointervene.md) — 部署期对提议 chunk 的支持监控与自动接管（互补「训练机制」叙事）
+- [GSR / ParaVLA](./paper-gsr-paravla.md) — 拆的是语言路由，不是动作时间结构
 
 ## 参考来源
 
@@ -187,6 +190,7 @@ Franka + Robotiq，15 Hz，delta joint；carrot / toaster / sushi 三任务，�
 - [action-chunking.github.io（项目页归档）](../../sources/sites/action-chunking-github-io.md)
 - [项目页 PDF](https://action-chunking.github.io/static/action_chunking.pdf)
 - [AutoIntervene 论文摘录](../../sources/papers/autointervene_arxiv_2608_07065.md)
+- [具身智能小站 9 篇盘点](../../sources/blogs/wechat_embodied_station_ego2robot_mango_grasp_2026-08-11.md)
 
 ## 推荐继续阅读
 
