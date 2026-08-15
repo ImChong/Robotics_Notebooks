@@ -2,11 +2,12 @@
 type: query
 tags: [dexterity, data-collection, teleoperation, simulation, robot-hand]
 status: complete
-updated: 2026-08-07
+updated: 2026-08-15
 related:
   - ../entities/allegro-hand.md
   - ../entities/ruka-v2-hand.md
   - ../entities/midas-hand.md
+  - ../entities/all-hands-up.md
   - ../entities/mimic-wearable-u1.md
   - ../entities/paper-teledexter.md
   - ../entities/humantouch.md
@@ -18,6 +19,7 @@ sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/teledexter_arxiv_2607_11481.md
   - ../../sources/sites/humantouch-xsparkai.md
+  - ../../sources/sites/allhandsup-org.md
 summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、Allegro Hand 或低成本遥操作装置采集高质量、多模态的灵巧抓取与操作演示数据。"
 ---
 
@@ -89,9 +91,11 @@ summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、A
 - [OSMO 触觉手套](../entities/paper-notebook-osmo-open-source-tactile-glove-for-human-to-robo.md) — 人机共用开源磁触觉对照
 - [多模态融合技巧](./multimodal-fusion-tricks.md)
 - [操作演示数据采集总指南](./demo-data-collection-guide.md)
+- [All Hands Up](../entities/all-hands-up.md) — RLWRLD 把高背驱、力矩可当学习信号的手标成 Type 2 采数手
 
 ## 参考来源
 - Qin, B., et al. (2023). *AnyTeleop: A Unified and General Framework for Bimanual Dexterous Teleoperation*.
 - [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md)
 - [sources/papers/teledexter_arxiv_2607_11481.md](../../sources/papers/teledexter_arxiv_2607_11481.md)
 - [sources/sites/humantouch-xsparkai.md](../../sources/sites/humantouch-xsparkai.md)
+- [All Hands Up 站点归档](../../sources/sites/allhandsup-org.md)

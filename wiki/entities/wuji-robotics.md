@@ -3,11 +3,12 @@
 type: entity
 tags: [hardware, humanoid, industry, actuator, manipulation, dexterous-hand, wuji-robotics]
 status: complete
-updated: 2026-06-25
+updated: 2026-08-15
 related:
   - ./humanoid-robot.md
   - ./allegro-hand.md
   - ./shadow-hand.md
+  - ./all-hands-up.md
   - ../tasks/manipulation.md
   - ../tasks/loco-manipulation.md
   - ../concepts/dexterous-kinematics.md
@@ -19,6 +20,7 @@ related:
   - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/sites/wuji_robotics.md
+  - ../../sources/sites/allhandsup-org.md
 summary: "舞肌科技（上海舞肌）面向具身机器人提供关节级电机（F 系列 / Pan Motor 叙事）与官方文档确认的五指灵巧手 Wuji Hand，配套 SDK、ROS2、MuJoCo 描述与遥操作 Retargeting；研发在上海、量产在常州。"
 ---
 
@@ -110,10 +112,12 @@ summary: "舞肌科技（上海舞肌）面向具身机器人提供关节级电�
 - [TopoRetarget（交互保留灵巧重定向）](../methods/toporetarget-interaction-preserving-dexterous-retargeting.md) — 论文在 Wuji Hand 上零样本 sim2real 转笔与魔方重定向（arXiv:2606.16272）
 - [Kyber Labs](./kyber-labs.md) — 同为产业侧 **五指灵巧手 × 具身 AI** 路线；Kyber 强调背驱动与数百美元级成本叙事
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 无级机器人的执行器/灵巧手硬件是本驱动链的产业实体之一
+- [All Hands Up](./all-hands-up.md) — RLWRLD 将 Wuji Hand V1.1 列为轻量拟人、**不背驱**、小工具表现好的案例（仿真 Kapandji 10/11）
 
 ## 参考来源
 
 - [舞肌科技原始资料汇编](../../sources/sites/wuji_robotics.md)
+- [All Hands Up 站点归档](../../sources/sites/allhandsup-org.md)
 
 ## 推荐继续阅读
 

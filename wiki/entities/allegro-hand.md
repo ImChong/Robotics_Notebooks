@@ -3,7 +3,7 @@
 type: entity
 tags: [hardware, dexterity, manipulation, robot-hand, research, wonik-robotics]
 status: complete
-updated: 2026-07-26
+updated: 2026-08-15
 related:
   - ../tasks/manipulation.md
   - ../concepts/tactile-sensing.md
@@ -12,8 +12,10 @@ related:
   - ./gel-slim.md
   - ./wuji-robotics.md
   - ./kyber-labs.md
+  - ./all-hands-up.md
 sources:
   - ../../sources/papers/humanoid_hardware.md
+  - ../../sources/sites/allhandsup-org.md
 summary: "Allegro Hand 是一款轻量化的四指灵巧手平台，拥有 16 个自由度，因其结构简单、API 友好且性价比高而成为机器人学习与灵巧操作研究的主流科研平台。"
 ---
 
@@ -64,7 +66,9 @@ summary: "Allegro Hand 是一款轻量化的四指灵巧手平台，拥有 16 �
 - [GelSlim 实体（薄片化视觉触觉传感器）](./gel-slim.md) — 可装到指尖的视觉触觉传感器
 - [Query: 灵巧手数据采集指南](../queries/dexterous-data-collection-guide.md)
 - [Kyber Labs](./kyber-labs.md) — 产业侧背驱动五指手与 skills-based AI 路线对照
+- [All Hands Up](./all-hands-up.md) — RLWRLD 画廊含 Allegro V5 Plus（16 DoF、背驱、仿真 Kapandji 9/11）
 
 ## 参考来源
 - Wonik Robotics Official Documentation.
 - [sources/papers/humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)
+- [All Hands Up 站点归档](../../sources/sites/allhandsup-org.md)

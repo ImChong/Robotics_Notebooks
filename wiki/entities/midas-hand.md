@@ -2,7 +2,7 @@
 type: entity
 tags: [manipulation, dexterous-hand, hardware, open-source, direct-drive, tactile-sensing, teleoperation, ucla]
 status: complete
-updated: 2026-07-20
+updated: 2026-08-15
 related:
   - ../tasks/manipulation.md
   - ../tasks/teleoperation.md
@@ -12,6 +12,7 @@ related:
   - ./orca-hand.md
   - ./allegro-hand.md
   - ./mediapipe.md
+  - ./all-hands-up.md
 sources:
   - ../../sources/papers/midas_hand_arxiv_2607_14487.md
   - ../../sources/repos/midas-hand-org.md
@@ -107,6 +108,7 @@ flowchart LR
 - [Orca Hand](./orca-hand.md) — 另一类开源仿手
 - [Allegro Hand](./allegro-hand.md) — 商业科研直驱平台对照
 - [MediaPipe](./mediapipe.md) — `midas_hand_teleop` 默认摄像头手部感知上游
+- [All Hands Up](./all-hands-up.md) — 商用/开源腕装手横向档案（MIDAS 未入画廊）
 
 ## 推荐继续阅读
 

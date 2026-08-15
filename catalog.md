@@ -20,6 +20,7 @@
 - [AI2-THOR](wiki/entities/ai2-thor.md) — AI2-THOR**（An Interactive 3D Environment for Visual AI）是艾伦人工智能研究所（AI2）于 2017 年推出的早期代表性 **交互式 3D 室内 `📅unknown` `[entity_page]`
 - [AirSim](wiki/entities/airsim.md) — AirSim**（microsoft/AirSim）是微软开源的 **高保真视觉仿真平台**，基于 **[Unreal `📅unknown` `[entity_page]`
 - [AlexNet](wiki/entities/alexnet.md) — AlexNet** 是 2012 ImageNet 竞赛冠军 CNN：更大深度/宽度、ReLU、Dropout 与 GPU 训练，证明端到端深度卷积特征可碾压传统手工特征。 `📅unknown` `[entity_page]`
+- [All Hands Up（RLWRLD 灵巧手档案）](wiki/entities/all-hands-up.md) — All Hands Up !** 是瑞沃世界（RLWRLD）维护的 **腕装模块化灵巧手公开档案**：在浏览器里加载各手 URDF、对照规格，并用仿真扫掠给出 **Kapandji 对掌分**；配 `📅unknown` `[entity_page]`
 - [Allegro Hand (灵巧手)](wiki/entities/allegro-hand.md) — Allegro Hand** 是由 Wonik Robotics 开发的一款高性能四指灵巧手（Dexterous Hand）。它在机器人科研界（特别是强化学习和模仿学习领域）享有极高的普及率，被视 `📅unknown` `[entity_page]`
 - [ALOHA (双臂遥操作硬件)](wiki/entities/aloha.md) — ALOHA** (A Low-cost Open-source Hardware System for Bimanual Teleoperation) 是由 Google DeepMind (To `📅unknown` `[entity_page]`
 - [Altium Designer](wiki/entities/altium-designer.md) — Altium Designer** 是 Altium 旗下的 **商业 PCB EDA 套件**，在单一 **Unified Design Environment** 内完成原理图 → PCB → `📅2026-07-18` `[entity_page]`

@@ -2,7 +2,7 @@
 type: query
 tags: [benchmark, evaluation, embodied-ai, mllm, world-model, vla, sim2real, taxonomy]
 status: complete
-updated: 2026-08-14
+updated: 2026-08-15
 summary: "具身大模型评测基准选型闭环知识链：把具身大脑/MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准 四层评测，从分散的评测基准实体页沉淀为一条端到端选型决策链，逐层说明测什么、用什么代表性基准、指标的可复现性/真实代表性/过程 vs 结果/成本如何取舍及典型误判。"
 sources:
   - ../../sources/papers/robo_bench_arxiv_2510_17801.md
@@ -15,6 +15,7 @@ sources:
   - ../../sources/papers/ctrl_world_arxiv_2510_10125.md
   - ../../sources/papers/sc3_eval_arxiv_2606_18610.md
   - ../../sources/papers/softvtbench_arxiv_2607_04234.md
+  - ../../sources/sites/allhandsup-org.md
 related:
   - ../overview/hub-embodied-eval-benchmark.md
   - ../concepts/sim-vs-real-eval-gap.md
@@ -28,6 +29,7 @@ related:
   - ../entities/paper-masked-visual-actions.md
   - ../entities/paper-ctrl-world.md
   - ../entities/vla-sota-leaderboard.md
+  - ../entities/all-hands-up.md
   - ../entities/paper-humanoidvln.md
   - ../entities/robodojo.md
   - ../entities/xpolicylab.md
@@ -178,6 +180,7 @@ flowchart TD
 - [Ctrl-World](../entities/paper-ctrl-world.md) — ②层外延：多视角可控 WM，VLA 想象评估 + 合成轨迹改进（ICLR 2026）
 - [SC3-Eval](../entities/paper-sc3-eval.md) — ②层外延：自一致视频策略评估器，真机闭环 \(r=0.929\) / MMRV \(0.119\)（确认未开源）
 - [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md) — ③层社区聚合：多基准 VLA / 灵巧手摘录榜（不重跑）
+- [All Hands Up](../entities/all-hands-up.md) — 硬件层：腕装灵巧手 URDF 画廊与仿真 Kapandji（DexBench 任务分在独立站）
 - [RoboDojo](../entities/robodojo.md) — ③/④ 层：通用操纵官方 sim-and-real 公益榜（重跑 + 开源上榜）
 - [SoftVTBench](../entities/paper-softvtbench.md) — ③ 层：可变形视触觉 Goal/Safety Success
 - [XPolicyLab](../entities/xpolicylab.md) — RoboDojo/RoboTwin 策略适配与 verified 开源口

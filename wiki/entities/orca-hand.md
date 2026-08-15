@@ -2,15 +2,17 @@
 type: entity
 tags: [manipulation, dexterous-hand, hardware, open-source, biomimetic]
 status: complete
-updated: 2026-06-13
+updated: 2026-08-15
 related:
   - ../tasks/manipulation.md
   - ../overview/robot-open-source-wechat-issue01-curator.md
   - ./humanoid-robot.md
   - ./ruka-v2-hand.md
   - ./en02-op.md
+  - ./all-hands-up.md
 sources:
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md
+  - ../../sources/sites/allhandsup-org.md
 summary: "Orca Hand（虎鲸巧手）：官网开源仿生灵巧手 CAD/BOM、固件与上位机；GitHub 组织 orcahand 聚合实现与示例。"
 ---
 
@@ -46,6 +48,7 @@ summary: "Orca Hand（虎鲸巧手）：官网开源仿生灵巧手 CAD/BOM、�
 - [机器人开源宝库（微信策展第01期）索引](../overview/robot-open-source-wechat-issue01-curator.md)
 - [人形机器人](./humanoid-robot.md)（整机语境下的末端执行器对照）
 - [RUKA-v2 Hand](./ruka-v2-hand.md) — 更低成本、含 2-DoF 腕的全开源腱驱动对照
+- [All Hands Up](./all-hands-up.md) — RLWRLD 画廊含 Orca V1（16 DoF、背驱、仿真 Kapandji 9/11）
 
 ## 推荐继续阅读
 
@@ -54,3 +57,4 @@ summary: "Orca Hand（虎鲸巧手）：官网开源仿生灵巧手 CAD/BOM、�
 ## 参考来源
 
 - [wechat_jixie_robot_open_source_treasury_issue01_10_robots.md](../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md)
+- [All Hands Up 站点归档](../../sources/sites/allhandsup-org.md)
