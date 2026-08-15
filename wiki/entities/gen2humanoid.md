@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, humanoid, text-to-motion, motion-retargeting, pipeline, hy-motion, gmr, viser, baai]
 status: complete
-updated: 2026-06-15
+updated: 2026-08-15
 summary: "Gen2Humanoid：把 HY-Motion-1.0 文本→人体运动与 GMR 人形重定向串成一条 CLI 管线，输出 pickle 关节轨迹并支持 viser 人机并排预览；面向「语言描述→人形参考动作」快速原型，不含物理后处理与 tracking 训练。"
 related:
   - ../methods/hy-motion-1.md
@@ -11,6 +11,7 @@ related:
   - ../concepts/motion-retargeting-pipeline.md
   - ./unitree-g1.md
   - ./awesome-text-to-motion-zilize.md
+  - ./paper-gentrack.md
 sources:
   - ../../sources/repos/gen2humanoid.md
 ---
@@ -39,7 +40,7 @@ sources:
 - **低门槛串联两条 SOTA 栈**：不必分别配置 HY-Motion 推理环境与 GMR 数据接口；`git submodule` 拉齐依赖，`commands/run_pipeline.sh` 即可跑通 **Text → Robot Motion**。
 - **显式暴露「生成→重定向」接缝**：HY 输出经 `convert_smpl.py` 统一到 **SMPL-X**，再进 GMR——与 [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) 中「生成式上游 + 运动学前端」的分工一致，便于讨论 **脚滑、全局漂移** 等伪影是否在重定向阶段被放大。
 - **多机型开箱**：README 默认列出 **Unitree G1 / H1**、**Booster T1**；完整机型表以 GMR 子模块为准，适合与 [Unitree G1](./unitree-g1.md) 等实体页对照硬件 DoF。
-- **诚实边界**：README **TODO** 标明尚缺 **后处理（脚滑/自碰）**、**条件生成**、**动作混合** 与 **motion tracking**——产物应视为 **运动学参考初稿**，不宜直接上真机 PD 或当作 WBT 终态数据。
+- **诚实边界**：README **TODO** 标明尚缺 **后处理（脚滑/自碰）**、**条件生成**、**动作混合** 与 **motion tracking**——产物应视为 **运动学参考初稿**，不宜直接上真机 PD 或当作 WBT 终态数据。要把 HY-Motion 风格生成器送进闭环跟踪，见 [GenTrack](./paper-gentrack.md)（仿真后训练，无代码）。
 
 ## 流程总览
 
@@ -76,6 +77,7 @@ flowchart TD
 - [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) — 端到端工程链路语境
 - [Unitree G1](./unitree-g1.md) — 默认支持机型之一
 - [Awesome Text-to-Motion（Zilize）](./awesome-text-to-motion-zilize.md) — T2M 文献与工具索引
+- [GenTrack](./paper-gentrack.md) — robot-native 生成器进执行环的后训练对照
 
 ## 参考来源
 

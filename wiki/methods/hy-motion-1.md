@@ -2,7 +2,7 @@
 type: method
 tags: [human-motion, text-to-motion, flow-matching, diffusion-transformer, smpl-h, preference-optimization, digital-human]
 status: complete
-updated: 2026-07-27
+updated: 2026-08-15
 related:
   - ./diffusion-motion-generation.md
   - ./dart-control.md
@@ -10,10 +10,12 @@ related:
   - ../entities/awesome-text-to-motion-zilize.md
   - ../entities/gen2humanoid.md
   - ../entities/paper-molingo.md
+  - ../entities/paper-gentrack.md
   - ../formalizations/probability-flow.md
 sources:
   - ../../sources/papers/hy_motion_arxiv_2512_23464.md
   - ../../sources/repos/tencent_hunyuan_hy_motion_1_0.md
+  - ../../sources/papers/gentrack_arxiv_2608_01410.md
   - ../../sources/repos/gen2humanoid.md
 summary: "腾讯混元 HY-Motion 1.0：将 DiT+流匹配的人体文本→3D 运动生成扩至十亿级参数，配套三千小时级预训练、四百小时级高质量微调与 DPO/Flow-GRPO 对齐，并开源代码与权重。"
 ---
@@ -47,7 +49,7 @@ summary: "腾讯混元 HY-Motion 1.0：将 DiT+流匹配的人体文本→3D 运
 - **Scaling 证据**：把 **流匹配 + Transformer 扩散骨干** 在人体运动域做到 **B 级参数**，为「T2M 是否吃 scaling law」提供了正面样本，可与机器人侧 [Diffusion-based Motion Generation](./diffusion-motion-generation.md)、VLA 动作头等路线对照。
 - **数据工程可复用**：从 **千万级视频候选** 到 **>3000h** 可用动作、再到 **~400h** 精修子集的路径（检测、重建、重定向、脚滑/异常过滤、VLM caption + 人工校验 + LLM 释义），与 **Sim2Real / 动捕资产入库** 的管线思维相通。
 - **对齐栈完整**：在监督之外显式引入 **DPO（人类成对偏好）** 与 **Flow-GRPO（显式奖励）**，对应「似然最优 ≠ 观感最优」的常见生成模型痛点。
-- **与机器人链路的接口**：输出为 **SMPL-H 时间序列**，便于经 [GMR](./motion-retargeting-gmr.md) 等管线映射到人形/游戏引擎执行器（仍需单独处理接触、平衡与执行器动力学）。
+- **与机器人链路的接口**：输出为 **SMPL-H 时间序列**，便于经 [GMR](./motion-retargeting-gmr.md) 等管线映射到人形/游戏引擎执行器（仍需单独处理接触、平衡与执行器动力学）。[GenTrack](../entities/paper-gentrack.md) 把同类流匹配骨干换成 **38D G1 头** 后，用 SONIC/ProtoMotions 闭环执行做 FlowGRPO 物理对齐（附录标 \(G_0\) 为 HYMotion）。
 
 ## 主要技术路线
 
@@ -141,6 +143,7 @@ flowchart TB
 - [GMR: 通用动作重定向](./motion-retargeting-gmr.md) — 从人体 SMPL 系运动到机器人骨架的常见工程落点
 - [Gen2Humanoid](../entities/gen2humanoid.md) — HY-Motion + GMR 的端到端文本→人形参考管线集成
 - [HY-Motion vs GENMO vs Kimodo](../comparisons/hy-motion-vs-genmo-vs-kimodo.md) — 三条「文本/多模态 → 人体运动」生成式骨干选型对比
+- [GenTrack（论文实体）](../entities/paper-gentrack.md) — HYMotion 风格 \(G_0\) 接到 G1 执行环的后训练（AAAI 2027，未开源）
 
 ## 参考来源
 

@@ -2717,6 +2717,15 @@
         "omron",
         "sinic-x"
       ]
+    },
+    "zhejiang-lab": {
+      "label": "之江实验室（Zhejiang Lab）",
+      "aliases": [
+        "zhejiang-lab",
+        "zjlab",
+        "zhijiang-lab",
+        "zhejianglab"
+      ]
     }
   }
 }

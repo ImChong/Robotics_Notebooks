@@ -22,6 +22,7 @@ sources:
   - ../../sources/papers/pfm_hr_arxiv_2608_03227.md
   - ../../sources/papers/zest.md
   - ../../sources/papers/humantracker_arxiv_2608_13555.md
+  - ../../sources/papers/gentrack_arxiv_2608_01410.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「人形运动跟踪与风格先验方法这么多，工程上怎么选、怎么组合？」
@@ -64,6 +65,7 @@ flowchart TD
 | 动画参考 + latent 上下文跟踪 | 两阶段 VAE prior + 显式 PPO | [VMP](../entities/paper-notebook-vmp.md)（SCA 2024；LIME 真机） |
 | 接触丰富场景 tracking | 参考运动 + per-link contact label | [SceneBot](../entities/paper-scenebot.md)（hindsight 场景重建 + 单策略 terrain/object） |
 | 数据稀缺、要合成参考 | 生成式动作 | [ASE](../methods/ase.md)、[GenMo](../methods/genmo.md)、[扩散动作生成](../methods/diffusion-motion-generation.md) |
+| 已有通才 tracker，缺可执行生成参考 | 生成器–跟踪器在线后训练 | [GenTrack](../entities/paper-gentrack.md)（接 SONIC/ProtoMotions；不采新数据；确认未开源） |
 
 ---
 
@@ -102,6 +104,8 @@ flowchart TD
 参考不足时，[ASE](../methods/ase.md)、[GenMo](../methods/genmo.md)、[扩散动作生成](../methods/diffusion-motion-generation.md) 用于扩充或平滑参考分布。场景资产生成还可对照 [OmniRetarget](../entities/paper-hrl-stack-03-omniretarget.md) 的 **interaction-preserving retarget** vs SceneBot 的 **reconstruction-first**（论文：后者 OMOMO 上抓取失败更少）。
 
 当入口是 **自然语言** 且目标是 **机器人可执行的高动态全身**（而非人体 SMPL 再 retarget）时，优先评估 **[PhyGile](../entities/paper-phygile.md)**：**262D robot-native 扩散 + physics-prefix + GMT 验证/微调闭环**；与 [Harmon](../entities/paper-loco-manip-161-097-harmon.md) 同族但强调 **物理前缀与跟踪器共训**，避免人体 T2M 先验的推理期重定向鸿沟。
+
+当 **tracker 已经训好**（如 [SONIC](../methods/sonic-motion-tracking.md) / ProtoMotions），痛点是 **静态生成池跟不上执行前沿**、又不想再采具身数据时，优先评估 **[GenTrack](../entities/paper-gentrack.md)**：滞后闭环执行 + FlowGRPO 对齐 robot-native 生成器，新参考再等量混进 tracker。论文在仿真 G1 上把 SONIC 的 LAFAN1 SR 从 85 拉到 90；**不是** PhyGile 那种从头生成高动态，也 **没有代码**。
 
 ### 5. 大扰动：跟踪 vs 生成中间件 vs 统一 AMP
 
@@ -153,6 +157,7 @@ flowchart TD
 | **场景交互 tracking** | SONIC/通用 tracker + contact label 或 SceneBot 单策略 | 搬箱上楼、楼梯、坐椅；需 global root 与 hand contact label |
 | **接触开关 tracking** | HUMOTO/OmniRetarget + ContactMimic 增广 + contact-conditioned PPO | 同 keypoint 下擦板/坐椅/搬箱 contact on/off；per-motion 策略 |
 | **竞技冲刺** | LAFAN1→GMR 五周期 → 频谱先验 → 残差 PPO | G1 零样本 0–6 m/s（[SPRINT](../entities/paper-sprint-humanoid-athletic-sprints.md)） |
+| **生成器–跟踪器后训练** | 已有 SONIC/ProtoMotions + robot-native T2M → GenTrack 在线互训 | 不采新数据、扩零样本覆盖（[GenTrack](../entities/paper-gentrack.md)；未开源） |
 
 ---
 
@@ -194,6 +199,7 @@ flowchart TD
 - [人形 RL 运动控制身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - [人形 RL Cookbook](./humanoid-rl-cookbook.md)
 - [Heracles](../entities/paper-heracles-humanoid-diffusion.md)、[PhyGile](../entities/paper-phygile.md)、[SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md)、[SPRINT](../entities/paper-sprint-humanoid-athletic-sprints.md)
+- [GenTrack](../entities/paper-gentrack.md) — 已有 tracker 上的生成器–跟踪器在线后训练（AAAI 2027，未开源）
 - [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md)
 - [SceneBot](../entities/paper-scenebot.md)
 - [ContactMimic](../entities/paper-contactmimic.md)

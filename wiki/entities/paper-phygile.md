@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, text-to-motion, diffusion, motion-tracking, gmt, moe, whole-body-control, shanghai-ai-lab, agile-motion]
 status: complete
-updated: 2026-07-27
+updated: 2026-08-15
 arxiv: "2603.19305"
 venue: "2026 · arXiv"
 related:
@@ -19,6 +19,7 @@ related:
   - ../entities/paper-humanoid-gpt.md
   - ../entities/paper-molingo.md
   - ../queries/humanoid-motion-tracking-method-selection.md
+  - ./paper-gentrack.md
 sources:
   - ../../sources/papers/phygile_arxiv_2603_19305.md
   - ../../sources/sites/phygile-page.md
@@ -118,6 +119,7 @@ flowchart LR
 | [Heracles](../entities/paper-heracles-humanoid-diffusion.md) | 状态条件 flow 中间件 | 通用 tracker | ✗ | Heracles **改参考缓冲**；PhyGile **从头生成 robot-native 轨迹** |
 | [MoLingo](./paper-molingo.md) | 人体/SMPL 系（263/272D） | PHC 类 tracker（retarget 后） | ✓ | 人体 T2M SOTA + 语义对齐 latent；**非** robot-native |
 | 人体 T2M + GMR | 人体/SMPL | 任意 tracker | ✓ | PhyGile 避免 **推理期人体→机 retarget** |
+| [GenTrack](./paper-gentrack.md) | 38D G1 robot-native | 后训练 SONIC / ProtoMotions | ✓ | **对已有 tracker 做互训**，无真机；PhyGile 冲高动态真机闭环 |
 
 ## 实验与评测
 
@@ -177,4 +179,5 @@ flowchart LR
 - [MoLingo](./paper-molingo.md)
 - [Harmon（计划实体）](paper-loco-manip-161-097-harmon.md)
 - [Humanoid-GPT](paper-humanoid-gpt.md)
+- [GenTrack](./paper-gentrack.md) — 已有 SONIC/ProtoMotions 上的在线互训，非从头敏捷生成
 - [Whole-Body Control](../concepts/whole-body-control.md)

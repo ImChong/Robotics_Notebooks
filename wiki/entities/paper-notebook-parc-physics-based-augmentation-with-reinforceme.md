@@ -2,12 +2,13 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
 status: planned
-updated: 2026-07-13
+updated: 2026-08-15
 venue: "2025 SIGGRAPH"
 related:
   - ../overview/paper-notebook-category-13-physics-based-animation.md
   - ../overview/humanoid-paper-notebooks-index.md
   - ../overview/jason-peng-flexible-motion-skill-learning.md
+  - ../entities/paper-gentrack.md
 sources:
   - ../../sources/papers/humanoid_pnb_parc-physics-based-augmentation-with-reinforceme.md
   - ../../sources/courses/jason_peng_synthetic_motion_humanoid_youtube.md
@@ -59,11 +60,13 @@ PARC 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 - 定位在物理动画（13_Physics-Based_Animation）：它回答的是「运动数据从哪来」，而不是直接交付一个可上真机的控制器。
 - 本页仍是 **计划索引实体**：深读笔记未撰写，量化 benchmark、消融与实机指标暂缺，引用数字请回到讲者视频与 human five 归纳的原文核对。
 - 机制总览可对照 [灵活运动技能学习技术地图](../overview/jason-peng-flexible-motion-skill-learning.md)。
+- 人形 robot-native、语言条件、测零样本 tracker 覆盖的对照：[GenTrack](./paper-gentrack.md)。
 
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- 人形后训练对照：[GenTrack](./paper-gentrack.md)
 
 ## 参考来源
 

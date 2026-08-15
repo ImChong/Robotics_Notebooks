@@ -1,3 +1,12 @@
+## [2026-08-15] ingest | sources/papers/gentrack_arxiv_2608_01410.md — 接入 GenTrack 生成器–跟踪器在线物理对齐（确认未开源）
+
+- **触发：** 用户指定 *GenTrack: Physical Alignment for Robot-Native Motion Generation and Zero-Shot Humanoid Tracking*（AAAI 2027；浙大 / 北大 / 腾讯 / 之江实验室）
+- **步骤 2.5：** 无项目页、无 GitHub/HF；论文未承诺开源 → **确认未开源**。未建 `sources/repos/` / `sources/sites/`。勿与视觉 MOT GenTrack（arXiv:2510.24399）混名
+- **来源：** [`sources/papers/gentrack_arxiv_2608_01410.md`](sources/papers/gentrack_arxiv_2608_01410.md)
+- **升格：** [`wiki/entities/paper-gentrack.md`](wiki/entities/paper-gentrack.md) — 滞后闭环执行 + FlowGRPO；SONIC 支 LAFAN1 SR 85→90；时序图不适用
+- **机构：** `schema/institutions.json` 新增 `zhejiang-lab`；复用 `zju` / `pku` / `tencent`
+- **交叉：** SONIC / ProtoMotions / HY-Motion / PhyGile / PARC / RLPF / Humanoid-GPT / Kimodo / Gen2Humanoid / 跟踪选型
+
 ## [2026-08-15] ingest | sources/sites/allhandsup-org.md — 接入 RLWRLD All Hands Up 灵巧手画廊（16 手 URDF + 仿真 Kapandji；无独立 GitHub，部分开源）
 
 - **触发：** 用户指定 <https://allhandsup.org/zh/#gallery>

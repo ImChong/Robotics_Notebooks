@@ -23,6 +23,7 @@ related:
   - ../entities/paper-motionwam-humanoid-loco-manipulation-wam.md
   - ../entities/paper-omega-0.md
   - ../entities/paper-humanoid-gpt.md
+  - ../entities/paper-gentrack.md
   - ../entities/paper-humantracker.md
   - ../entities/paper-any2any-cross-embodiment-wbt.md
   - ../entities/paper-scaling-bfm-humanoid.md
@@ -59,6 +60,7 @@ sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
   - ../../sources/papers/humanoid_loco_manip_161_catalog.md
   - ../../sources/papers/fddc_arxiv_2608_00500.md
+  - ../../sources/papers/gentrack_arxiv_2608_01410.md
 summary: "SONIC 通过规模化运动跟踪监督训练通用人形策略，把海量 MoCap 帧上的轨迹跟踪当作预训练任务；以 FSQ 统一 token 接口接入 VR、视频、文本、音乐与 VLA（如 GR00T N1.5 演示），并可桥接实时运动学规划器做交互式导航与风格化步态。官方训练/部署代码在 NVlabs/GR00T-WholeBodyControl；方法页含模块边界、文件树、算法↔代码映射与源码时序图。"
 ---
 
@@ -457,6 +459,7 @@ sequenceDiagram
 - [SceneBot（论文实体）](../entities/paper-scenebot.md) — contact label + hindsight 场景重建；自由空间媲美 SONIC、场景交互显著领先（arXiv:2606.27581）
 - [HumanoidArena（论文实体）](../entities/paper-humanoidarena.md) — SONIC 作为 GMT 后端的分层 egocentric benchmark（arXiv:2606.17833）
 - [HumanTracker（论文实体）](../entities/paper-humantracker.md) — 四族光学 tracking 基准 + HumanScore（arXiv:2608.13555）
+- [GenTrack（论文实体）](../entities/paper-gentrack.md) — 对已发布 SONIC 做生成器–跟踪器在线后训练；LAFAN1 SR 85→90（仿真 G1，未开源）
 - [Teleoperation（遥操作）](../tasks/teleoperation.md)
 - [Extreme-RGMT](../entities/paper-extreme-rgmt.md) — generalist 跟踪上叠高动态技能；仿真对照含 SONIC
 - [Zhengyi Luo（罗正宜）](../entities/zhengyi-luo.md)

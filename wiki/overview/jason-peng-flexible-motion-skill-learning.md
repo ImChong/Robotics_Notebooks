@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, motion-imitation, reinforcement-learning, adversarial-imitation, data-augmentation, xbpeng, survey]
 status: complete
-updated: 2026-07-13
+updated: 2026-08-15
 related:
   - ../entities/xue-bin-peng.md
   - ../methods/deepmimic.md
@@ -14,6 +14,7 @@ related:
   - ./humanoid-rl-motion-control-body-system-stack.md
   - ../entities/mimickit.md
   - ../entities/paper-notebook-parc-physics-based-augmentation-with-reinforceme.md
+  - ../entities/paper-gentrack.md
 sources:
   - ../../sources/courses/jason_peng_synthetic_motion_humanoid_youtube.md
   - ../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md
@@ -94,7 +95,7 @@ flowchart TB
 | **物理反馈** | 仿真记录策略运动回灌生成器 | 修正运动学不合理的漂浮/穿透 |
 | **迭代扩量** | 14 min → 900+ min（文内 PARC 数字） | 涌现攀爬、跳抓边缘等新策略 |
 
-完整论文索引见 [PARC 实体页](../entities/paper-notebook-parc-physics-based-augmentation-with-reinforceme.md)（待深读）；工程实现脉络见 [MimicKit](../entities/mimickit.md)。
+完整论文索引见 [PARC 实体页](../entities/paper-notebook-parc-physics-based-augmentation-with-reinforceme.md)（待深读）；工程实现脉络见 [MimicKit](../entities/mimickit.md)。人形 **robot-native** 对照见 [GenTrack](../entities/paper-gentrack.md)：对已有 SONIC/ProtoMotions 做在线互训，测的是未见参考覆盖而不是从 14 分钟扩到 900 分钟。
 
 **过滤与质量**：仿真记录需过滤抖动/穿透；多轮迭代可能 **降低运动质量**——Peng 在 Q&A 中明确这是开放问题。
 
@@ -123,6 +124,7 @@ flowchart TB
 - [AMP](../methods/amp-reward.md)
 - [人形 RL 运动控制身体系统栈](./humanoid-rl-motion-control-body-system-stack.md)
 - [MimicKit](../entities/mimickit.md)
+- [GenTrack](../entities/paper-gentrack.md) — 人形 robot-native 生成器–跟踪器后训练（相对 PARC 路径）
 
 ## 参考来源
 

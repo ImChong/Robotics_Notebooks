@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, paper, diffusion, motion-generation, humanoid, nvidia, unitree-g1, soma, smpl-x, text-to-motion, amp, motion-prior]
 status: complete
-updated: 2026-07-16
+updated: 2026-08-15
 arxiv: "2603.15546"
 related:
   - ../overview/humanoid-amp-motion-prior-survey.md
@@ -17,6 +17,7 @@ related:
   - ../entities/unitree-g1.md
   - ../concepts/motion-retargeting.md
   - ./ardy.md
+  - ./paper-gentrack.md
 sources:
   - ../../sources/repos/kimodo.md
   - ../../sources/sites/kimodo-project.md
@@ -130,6 +131,7 @@ flowchart LR
 - [Unitree G1](./unitree-g1.md) — Kimodo-G1 目标平台
 - [HY-Motion vs GENMO vs Kimodo](../comparisons/hy-motion-vs-genmo-vs-kimodo.md) — 三条「文本/多模态 → 人体运动」生成式骨干选型对比
 - [ARDY](./ardy.md) — 交互式自回归扩散姊妹（实时流式文本 + 长时域约束）
+- [GenTrack](./paper-gentrack.md) — 附录把 KIMODO-G1 当 robot-native 源对照；执行成功高、TMR 偏低
 
 ## 参考来源
 

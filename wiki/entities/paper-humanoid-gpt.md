@@ -18,6 +18,7 @@ related:
   - ../concepts/whole-body-control.md
   - ../concepts/whole-body-tracking-pipeline.md
   - ../queries/humanoid-motion-tracking-method-selection.md
+  - ./paper-gentrack.md
   - ./paper-humantracker.md
 sources:
   - ../../sources/papers/humanoid_gpt_arxiv_2606_03985.md
@@ -201,6 +202,7 @@ sequenceDiagram
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md) — 将 Humanoid-GPT 纳入「规模化通才 tracker」分支。
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) — retarget → tracker → 真机闭环上下文。
 - [HumanTracker](./paper-humantracker.md) — 四族光学基准 + HumanScore；本文为零样本表上的整体最强 tracker。
+- [GenTrack](./paper-gentrack.md) — 同协议下的后训练对照：几乎不加具身数据，靠生成课程抬 SONIC；本文走的是 2B 帧 scaling。
 
 ## 推荐继续阅读
 
@@ -224,3 +226,4 @@ sequenceDiagram
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
 - [HumanTracker](./paper-humantracker.md)
+- [GenTrack](./paper-gentrack.md)
