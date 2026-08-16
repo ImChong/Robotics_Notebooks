@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-arcadia.md",
+      "detail_id": "entity-paper-arcadia",
+      "label": "Arcadia（具身终身学习全生命周期）",
+      "type": "entity",
+      "recency": "2026-08-16",
+      "source": "git",
+      "action": "added",
+      "has_repo": true
+    },
+    {
       "path": "wiki/entities/paper-fsd-vln.md",
       "detail_id": "entity-paper-fsd-vln",
       "label": "FSD-VLN（空中长程 VLN · 快慢双系统）",
@@ -205,27 +215,17 @@
       "source": "git",
       "action": "added",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-humanoidvln.md",
-      "detail_id": "entity-paper-humanoidvln",
-      "label": "HumanoidVLN：跨人形本体的物理接地 VLN 仿真与基准",
-      "type": "entity",
-      "recency": "2026-08-14",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-fsd-vln.md",
-    "detail_id": "entity-paper-fsd-vln",
-    "label": "FSD-VLN（空中长程 VLN · 快慢双系统）",
+    "path": "wiki/entities/paper-arcadia.md",
+    "detail_id": "entity-paper-arcadia",
+    "label": "Arcadia（具身终身学习全生命周期）",
     "type": "entity",
     "recency": "2026-08-16",
     "source": "git",
     "action": "added",
-    "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    "has_repo": true
   },
   "top_communities": [
     {
