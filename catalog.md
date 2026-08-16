@@ -654,6 +654,7 @@
 - [Learning to Jump from Pixels](wiki/entities/paper-learning-to-jump-from-pixels.md) — Margolis et al.（MIT，arXiv:2110.15344）** 学习从**像素**出发，在**间断地形**（ `📅unknown` `[entity_page]`
 - [Legged Load Adapt（未知动态载荷四足行走）](wiki/entities/paper-legged-load-adapt-unknown-dynamic-load.md) — Legged Load Adapt**（*Beyond Robustness: Learning Unknown Dynamic Load Adaptation for Quadruped Loc `📅unknown` `[entity_page]`
 - [腿式机器人进展、挑战与机遇综述](wiki/entities/paper-legged-robots-advances-challenges.md) — Advances, challenges, and opportunities for legged robots**（Jonas Frey、Matías Mattamala、Hae-Won Pa `📅unknown` `[entity_page]`
+- [LEGO：层级语言高斯溅射](wiki/entities/paper-lego-leveled-language-gaussian-splatting.md) — LEGO**（*LEveled Gaussian splatting for Open-vocabulary understanding*；论文 *LEGO: Leveled Language G `📅unknown` `[entity_page]`
 - [LEGS（Loco-manipulation via Embodied Gaussian Splatting）](wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md) — LEGS** 是斯坦福团队提出的 **人形 loco-manipulation VLA 数据工厂**（arXiv:2606.01458，2026-05）：在 **无真人遥操作、无种子演示、无人视频 `📅unknown` `[entity_page]`
 - [Learning to Fold（LeHome Challenge 2026 · arXiv:2606.27163）](wiki/entities/paper-lehome-learning-to-fold.md) — Learning to Fold**（arXiv:2606.27163，[项目博客](https://ilialarchen `📅unknown` `[entity_page]`
 - [Light-Loco-Parkour（LightLP）](wiki/entities/paper-light-loco-parkour.md) — Light-Loco-Parkour**（*Versatile Perceptive Whole-Body Locomotion via Multi-Skill Distillation*，亦称  `📅unknown` `[entity_page]`

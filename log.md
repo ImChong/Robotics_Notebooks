@@ -1,3 +1,13 @@
+## [2026-08-16] ingest | sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md — 接入 LEGO 层级语言高斯溅射（已开源、可运行）
+
+- **触发：** 用户指定 [arXiv:2608.10057](https://arxiv.org/abs/2608.10057) 与项目页 <https://pz0826.github.io/LEGO-Webpage/>
+- **步骤 2.5：** 项目页 Code 指向 [`WHU-USI3DV/LEGO`](https://github.com/WHU-USI3DV/LEGO)；`lego run` / `eval` / `viewer` 与完整 `src/lego` 管线可辨识；`checkpoints/` 仅占位 → **已开源、可运行训练/评测**。许可 CC BY-NC-SA 4.0
+- **来源：** [`sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md`](sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md)、[`sources/sites/pz0826-lego-webpage.md`](sources/sites/pz0826-lego-webpage.md)、[`sources/repos/lego.md`](sources/repos/lego.md)
+- **升格：** [`wiki/entities/paper-lego-leveled-language-gaussian-splatting.md`](wiki/entities/paper-lego-leveled-language-gaussian-splatting.md) — 结构层级 vs SAM 粒度/绝对尺度；NVOS 94.2 mIoU；CoR 51.6；含 mermaid 时序图
+- **机构：** 复用 `whu` / `hkust`
+- **交叉：** 2D→3D Gap / 感知栈选型 / SAM / OV-SAM3D
+- **读数：** 勿与斯坦福 LEGS 或 LEGO-SLAM 混名；单词查询不走 LLM
+
 ## [2026-08-16] ingest | sources/papers/parkourformer_arxiv_2605_25782.md — 接入 ParkourFormer 未来监督人形跑酷（确认未开源）
 
 - **触发：** 用户指定 [arXiv:2605.25782](https://arxiv.org/abs/2605.25782) 与项目页 <https://mronaldo-gif.github.io/parkourformer.github.io/>

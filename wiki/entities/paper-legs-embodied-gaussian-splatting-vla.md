@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, vla, loco-manipulation, 3dgs, gaussian-splatting, sim2real, teleoperation-free, unitree-g1, stanford, sam3d, mujoco]
 status: complete
-updated: 2026-07-24
+updated: 2026-08-16
 arxiv: "2606.01458"
 related:
   - ../tasks/loco-manipulation.md
@@ -17,6 +17,7 @@ related:
   - ../concepts/domain-randomization.md
   - ../tasks/teleoperation.md
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
+  - ./paper-lego-leveled-language-gaussian-splatting.md
 sources:
   - ../../sources/papers/legs_arxiv_2606_01458.md
   - ../../sources/blogs/wechat_embodied_ai_lab_legs_vla_3dgs_loco_manip.md
@@ -134,6 +135,7 @@ flowchart TB
 - [π0.7 Policy](../methods/pi07-policy.md) — 论文骨干之一
 - [Unitree G1](./unitree-g1.md) — 评测平台
 - [GS-Playground](./gs-playground.md) — 另一条 3DGS×仿真视觉 RL 路线
+- [LEGO（层级语言高斯溅射）](./paper-lego-leveled-language-gaussian-splatting.md) — 易混名：WHU/HKUST 的开放词汇 3DGS 场景理解，不是本页 VLA 数据工厂
 - [VIRAL](./paper-viral-humanoid-visual-sim2real.md) — 视觉 sim 数据 + loco-manip（RL 蒸馏而非 VLA 合成 IL）
 - [OASIS](./paper-loco-manip-04-oasis.md) — 仿真 teleop + 离线渲染域随机化 + Flow Matching（arXiv:2606.08548）
 - [Teleoperation](../tasks/teleoperation.md) — 数据成本对照

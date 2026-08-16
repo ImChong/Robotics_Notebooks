@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, foundation-model, segmentation, sam, computer-vision, meta, promptable-segmentation]
 status: complete
-updated: 2026-08-12
+updated: 2026-08-16
 arxiv: "2304.02643"
 code: https://github.com/facebookresearch/segment-anything
 related:
@@ -15,6 +15,7 @@ related:
   - ./dualmap.md
   - ./ov-sam3d.md
   - ./cmu-mscv-semantic-3d-mapping.md
+  - ./paper-lego-leveled-language-gaussian-splatting.md
 sources:
   - ../../sources/papers/segment_anything_arxiv_2304_02643.md
   - ../../sources/repos/segment-anything.md
@@ -153,6 +154,7 @@ sequenceDiagram
 |------|----------|
 | [SAM 2](./paper-sam2.md) | 统一图像+视频；Hiera + memory；图像上更快更准 |
 | [OVO](./ovo-semantic-mapping.md) / [OV-SAM3D](./ov-sam3d.md) | 下游消费 SAM(2) mask 做开放词汇 3D |
+| [LEGO](./paper-lego-leveled-language-gaussian-splatting.md) | 消费多视角 SAM 掩码，但先重分级再蒸到 3DGS，不把 whole/part/subpart 直接当 3D 层 |
 | [CMU MSCV Semantic 3D Mapping](./cmu-mscv-semantic-3d-mapping.md) | DETR+SAM 伪标注再投影的教学流水线 |
 | CLIP 类模型 | 对齐语义/文本；SAM 出几何 mask，常组合使用 |
 
@@ -170,6 +172,7 @@ sequenceDiagram
 - [SAM 2](./paper-sam2.md) — 图像+视频统一继任
 - [GO2 三维语义建图与 SAM 流水线](../queries/go2-3d-semantic-mapping-sam-pipeline.md) — 四足 2D→3D 选型
 - [OVO](./ovo-semantic-mapping.md) / [DualMap](./dualmap.md) / [OV-SAM3D](./ov-sam3d.md) — 语义建图消费方
+- [LEGO](./paper-lego-leveled-language-gaussian-splatting.md) — 离线 3DGS：重分级 SAM 粒度后做开放词汇层级理解
 - [CMU MSCV Semantic 3D Mapping](./cmu-mscv-semantic-3d-mapping.md) — DETR+SAM 投影示例
 
 ## 参考来源
