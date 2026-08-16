@@ -2,8 +2,9 @@
 type: overview
 tags: [humanoid, rl, motion-control, ppo, actor-critic, teacher-student, reward, shenlan, pedagogy]
 status: complete
-updated: 2026-08-13
+updated: 2026-08-16
 related:
+  - ../concepts/rl-runner.md
   - ../concepts/embodied-rl-minimal-closed-loop.md
   - ../methods/reinforcement-learning.md
   - ../methods/ppo.md
@@ -18,6 +19,7 @@ related:
   - ./robot-rl-motion-control-pipeline.md
   - ../queries/locomotion-reward-design-guide.md
 sources:
+  - ../../sources/personal/rl_runner_types.md
   - ../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md
 summary: "人形运动控制的 RL 策略训练可拆成五模块闭环：MDP 交互框架、Actor-Critic、PPO 裁剪更新、多维奖励、Teacher-Student 蒸馏；与 WBC/MPC 混合落地，而非替代传统控制。"
 ---
@@ -94,6 +96,7 @@ flowchart LR
 ## 关联页面
 
 - [具身 RL 最小闭环](../concepts/embodied-rl-minimal-closed-loop.md) — MDP 仿真循环入门
+- [RL Runner（训练循环编排）](../concepts/rl-runner.md) — 五模块按什么节奏被采集、更新、蒸馏与评测
 - [RL 运动控制完整管线](./robot-rl-motion-control-pipeline.md) — 四足工程链（DRL+PD / DR / GPU 并行）
 - [Humanoid RL Cookbook](../queries/humanoid-rl-cookbook.md) — 从零训真机行走 checklist
 - [Reinforcement Learning](../methods/reinforcement-learning.md) / [PPO](../methods/ppo.md)

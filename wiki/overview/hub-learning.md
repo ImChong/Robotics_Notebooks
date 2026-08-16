@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-learning, rl, il, imitation, reinforcement]
 status: complete
-updated: 2026-08-03
+updated: 2026-08-16
 summary: "IL/RL 学习范式知识链汇总：强化学习、模仿学习、行为克隆与 model-based 路线的选型、数据需求与机器人落地注意点。"
 ---
 
@@ -39,6 +39,7 @@ summary: "IL/RL 学习范式知识链汇总：强化学习、模仿学习、行�
 | 对比 | RL vs IL / PPO vs SAC | [RL vs IL](../comparisons/rl-vs-il.md)、[PPO vs SAC](../comparisons/ppo-vs-sac.md) |
 | 概念 | 奖励设计 / 课程 | [Reward Design](../concepts/reward-design.md)、[Curriculum Learning](../concepts/curriculum-learning.md) |
 | 概念 | 特权训练 / 想象 | [Privileged Training](../concepts/privileged-training.md) |
+| 概念 | 训练循环编排 | [RL Runner](../concepts/rl-runner.md) — On-policy / Off-policy / 蒸馏 / 评测 |
 
 ## 与其他知识链的关系
 
@@ -50,10 +51,12 @@ summary: "IL/RL 学习范式知识链汇总：强化学习、模仿学习、行�
 
 - [Model-Based vs Model-Free](../comparisons/model-based-vs-model-free.md)
 - [Online vs Offline RL](../comparisons/online-vs-offline-rl.md)
+- [RL Runner（训练循环编排）](../concepts/rl-runner.md)
 - [Deep RL Game Milestones](../concepts/deep-rl-game-milestones.md)
 
 ## 参考来源
 
 - 本库归纳自 [Robot Learning Overview](./robot-learning-overview.md) 及 methods/comparisons 学习系列页
+- [RL Runner 类型谱系](../../sources/personal/rl_runner_types.md) — 训练循环编排层
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`learning` 命中规则）
 - 上游原始资料（本链概念页共同的 ingest 来源）：[Policy Optimization：PPO / SAC / TD3 及机器人应用](../../sources/papers/policy_optimization.md)、[特权信息训练（Teacher-Student / RMA）核心论文](../../sources/papers/privileged_training.md)、[Intentional Updates for Streaming RL](../../sources/papers/intentional_streaming_rl.md)

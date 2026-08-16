@@ -2,8 +2,9 @@
 type: method
 tags: [il, behavior-cloning, diffusion-policy, sim2real]
 status: complete
-updated: 2026-08-15
+updated: 2026-08-16
 related:
+  - ../concepts/rl-runner.md
   - ../entities/embodied-interview-qa.md
   - ../comparisons/robot-learning-five-paradigms-taxonomy.md
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
@@ -33,6 +34,7 @@ related:
   - ../overview/sergey-levine-diffusion-expressive-policies.md
   - ../entities/paper-seeker.md
 sources:
+  - ../../sources/personal/rl_runner_types.md
   - ../../sources/blogs/wechat_shenlan_robot_learning_five_paradigms.md
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/papers/imitation_learning.md
@@ -203,6 +205,7 @@ flowchart TD
 - [机器人学习五大范式](../comparisons/robot-learning-five-paradigms-taxonomy.md) — IL 作为示范信号主线，与 RL / LfV / VLA / 持续学习对照
 - [深度学习基础](../concepts/deep-learning-foundations.md)
 - [Reinforcement Learning](./reinforcement-learning.md)
+- [RL Runner（训练循环编排）](../concepts/rl-runner.md) — Imitation Runner：BC / DAgger / GAIL 的采集–模仿循环，与蒸馏 Runner 分源
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Locomotion](../tasks/locomotion.md)
 - [Sim2Real](../concepts/sim2real.md)

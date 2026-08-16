@@ -3,9 +3,10 @@ type: query
 tags: [rl, locomotion, policy-optimization, humanoid]
 status: complete
 summary: "> **Query 产物**：本页由以下问题触发：「在足式/人形机器人里，PPO / SAC / TD3 怎么选？」"
-updated: 2026-04-25
+updated: 2026-08-16
 sources:
   - ../../sources/papers/policy_optimization.md
+  - ../../sources/personal/rl_runner_types.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「在足式/人形机器人里，PPO / SAC / TD3 怎么选？」
@@ -196,6 +197,7 @@ PPO 更容易调试：reward 曲线平滑，超参数不敏感，失败原因更
 ## 关联页面
 
 - [Policy Optimization](../methods/policy-optimization.md) — PPO/SAC/TD3 算法详细说明
+- [RL Runner（训练循环编排）](../concepts/rl-runner.md) — 先选循环形态（on/off-policy、离线、蒸馏），再选具体损失
 - [AWR](../methods/awr.md) — 优势加权回归，离策/演示数据场景的回归式备选
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 方法全景
 - [Reward Design](../concepts/reward-design.md) — reward 设计是算法选型之后的核心问题

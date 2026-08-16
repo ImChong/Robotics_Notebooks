@@ -2,10 +2,11 @@
 type: overview
 tags: [reinforcement-learning, locomotion, ppo, sim2real, embodied-ai, shenlan, pedagogy]
 status: complete
-updated: 2026-08-13
+updated: 2026-08-16
 related:
   - ../overview/shenlan-embodied-ai-fundamentals-series.md
   - ../concepts/embodied-rl-minimal-closed-loop.md
+  - ../concepts/rl-runner.md
   - ./humanoid-rl-policy-training-five-modules.md
   - ../methods/ppo.md
   - ../concepts/privileged-training.md
@@ -14,6 +15,7 @@ related:
   - ../queries/legged-humanoid-rl-pd-gain-setting.md
   - ../entities/isaac-gym-isaac-lab.md
 sources:
+  - ../../sources/personal/rl_runner_types.md
   - ../../sources/blogs/wechat_shenlan_rl_motion_control_pipeline.md
   - ../../sources/raw/wechat_shenlan_rl_motion_control_pipeline_2026-06-25.md
   - ../../sources/blogs/wechat_shenlan_rl_embodied_minimal_closed_loop.md
@@ -80,6 +82,7 @@ flowchart TB
 ## 关联页面
 
 - [具身 RL 最小闭环](../concepts/embodied-rl-minimal-closed-loop.md) — 专栏 04，本管线的 L0
+- [RL Runner（训练循环编排）](../concepts/rl-runner.md) — 管线里 PPO 采集–更新与蒸馏、评测分别是哪类循环
 - [人形 RL 策略训练五模块](./humanoid-rl-policy-training-five-modules.md)
 - [PPO](../methods/ppo.md) / [Privileged Training](../concepts/privileged-training.md) / [Domain Randomization](../concepts/domain-randomization.md)
 - [《具身智能基础》专栏](./shenlan-embodied-ai-fundamentals-series.md) — 本篇为专栏 06

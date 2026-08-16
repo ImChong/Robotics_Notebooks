@@ -257,5 +257,12 @@
     "must_include": ["wiki/comparisons/trajectory-opt-vs-rl.md"],
     "expected_top_k": 5,
     "note": "V14 新增轨迹优化与 RL 对比页必须命中"
+  },
+  {
+    "query": "On-policy Runner GAE discard rollout",
+    "mode": "bm25",
+    "must_include": ["wiki/concepts/rl-runner.md"],
+    "expected_top_k": 5,
+    "note": "RL Runner 训练循环编排页必须命中"
   }
 ]

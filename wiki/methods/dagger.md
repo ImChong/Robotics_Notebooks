@@ -1,11 +1,12 @@
 ---
 type: method
 tags: [il, dagger, online-learning, covariate-shift, expert-intervention]
-updated: 2026-08-11
+updated: 2026-08-16
 status: complete
 summary: "DAgger 通过让当前策略访问状态、再由专家回标这些状态，系统性缓解 Behavior Cloning 的分布漂移问题。"
 related:
   - ./behavior-cloning.md
+  - ../concepts/rl-runner.md
   - ./imitation-learning.md
   - ../tasks/manipulation.md
   - ../tasks/ultra-survey.md
@@ -15,6 +16,7 @@ related:
   - ../entities/paper-kai0.md
   - ../entities/paper-autointervene.md
 sources:
+  - ../../sources/personal/rl_runner_types.md
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/egosteer_arxiv_2607_09701.md
   - ../../sources/papers/chi0_kai0_arxiv_2602_09021.md
@@ -128,6 +130,7 @@ Behavior Cloning 的根本问题不是监督学习本身，而是**训练分布�
 ## 关联页面
 
 - [Behavior Cloning](./behavior-cloning.md)
+- [RL Runner（训练循环编排）](../concepts/rl-runner.md) — Imitation Runner 的在线形态：学生 rollout + 专家回标
 - [Behavior Cloning Loss](../formalizations/behavior-cloning-loss.md) — DAgger 在线聚合后依然优化的底层目标函数
 - [Imitation Learning](./imitation-learning.md)
 - [Manipulation](../tasks/manipulation.md)

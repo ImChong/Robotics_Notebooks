@@ -2,9 +2,10 @@
 type: method
 tags: [rl, multi-agent, swarm, coordination]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-16
 related:
   - ./reinforcement-learning.md
+  - ../concepts/rl-runner.md
   - ../tasks/humanoid-soccer.md
   - ../concepts/humanoid-multi-robot-coordination.md
   - ../concepts/whole-body-coordination.md
@@ -15,6 +16,7 @@ related:
   - ../entities/paper-gamma-world-multi-agent.md
   - ../methods/generative-world-models.md
 sources:
+  - ../../sources/personal/rl_runner_types.md
   - ../../sources/papers/survey_papers.md
   - ../../sources/papers/gamma_world_arxiv_2605_28816.md
   - ../../sources/papers/humanoid_soccer_swarm_intelligence_sensors_2025.md
@@ -60,6 +62,7 @@ MARL 是人形 **多机战术** 的学习式路线之一（自博弈、CTDE 等�
 
 ## 关联页面
 - [CTDE vs 完全去中心化 MARL](../comparisons/ctde-vs-decentralized-marl.md) — 两大训练范式选型对比
+- [RL Runner（训练循环编排）](../concepts/rl-runner.md) — Multi-agent / Self-play Runner：打包多 agent 观测或从策略池抽对手
 - [Reinforcement Learning](./reinforcement-learning.md)
 - [Whole-body Coordination](../concepts/whole-body-coordination.md)
 - [AssistMimic](../entities/paper-assistmimic.md) — 双人 assistive MARL tracking（arXiv:2603.11346）

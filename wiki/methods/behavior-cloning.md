@@ -2,10 +2,11 @@
 type: method
 tags: [il, behavior-cloning, supervised-learning, manipulation, covariate-shift]
 status: complete
-updated: 2026-08-04
+updated: 2026-08-16
 summary: "Behavior Cloning 把专家演示转成监督学习问题，是机器人模仿学习最简单也最常用的基线。"
 related:
   - ./imitation-learning.md
+  - ../concepts/rl-runner.md
   - ./dagger.md
   - ./diffusion-policy.md
   - ./action-chunking.md
@@ -14,6 +15,7 @@ related:
   - ../entities/kinetiq-ascend.md
   - ../entities/paper-why-action-chunking-improves-bc.md
 sources:
+  - ../../sources/personal/rl_runner_types.md
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/diffusion_and_gen.md
   - ../../sources/papers/why_action_chunking_improves_bc_corl2026.md
@@ -127,6 +129,7 @@ $$
 ## 关联页面
 
 - [Imitation Learning](./imitation-learning.md)
+- [RL Runner（训练循环编排）](../concepts/rl-runner.md) — Imitation Runner 的离线监督形态：读演示、不探索
 - [Behavior Cloning Loss](../formalizations/behavior-cloning-loss.md) — BC 在不同动作空间下的数学形式化定义
 - [DAgger](./dagger.md)
 - [Diffusion Policy](./diffusion-policy.md)

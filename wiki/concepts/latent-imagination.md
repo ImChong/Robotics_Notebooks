@@ -5,6 +5,7 @@ status: complete
 updated: 2026-08-16
 related:
   - ../entities/paper-odeworld.md
+  - ./rl-runner.md
   - ../methods/model-based-rl.md
   - ../methods/generative-world-models.md
   - ../methods/being-h07.md
@@ -15,6 +16,7 @@ related:
   - ../entities/paper-online-mbrl-robot-control.md
   - ../entities/paper-lucid.md
 sources:
+  - ../../sources/personal/rl_runner_types.md
   - ../../sources/papers/rl_foundation_models.md
   - ../../sources/papers/being_h07.md
   - ../../sources/repos/open-dreamer.md
@@ -73,6 +75,7 @@ Actor-Critic 策略直接在这条“想象轨迹”上运行：
 
 ## 关联页面
 - [Model-Based RL](../methods/model-based-rl.md)
+- [RL Runner（训练循环编排）](./rl-runner.md) — Model-based Runner 把想象 rollout 嵌进训练循环
 - [Generative World Models](../methods/generative-world-models.md)
 - [Being-H0.7](../methods/being-h07.md)
 - [DreamerV3](../entities/paper-shenlan-wm-13-dreamerv3.md)
