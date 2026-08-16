@@ -2,15 +2,16 @@
 type: method
 tags: [rl, policy-optimization, math, optimization]
 status: complete
-updated: 2026-05-29
+updated: 2026-08-16
 related:
   - ./policy-optimization.md
   - ./reinforcement-learning.md
+  - ../concepts/rl-runner.md
+  - ./intentional-updates-streaming-rl.md
 sources:
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/intentional_streaming_rl.md
-related:
-  - ./intentional-updates-streaming-rl.md
+  - ../../sources/personal/rl_runner_types.md
 summary: "广义优势估计（GAE）通过引入衰减因子 λ 在偏差与方差之间进行权衡，是目前 PPO 等主流 Policy Gradient 算法中计算优势函数的标准方法。"
 ---
 
@@ -43,6 +44,7 @@ $$ \hat{A}_t^{GAE(\gamma, \lambda)} = \sum_{l=0}^{\infty} (\gamma \lambda)^l \de
 ## 关联页面
 - [Reinforcement Learning](./reinforcement-learning.md)
 - [Policy Optimization](./policy-optimization.md)
+- [RL Runner（训练循环编排）](../concepts/rl-runner.md) — On-policy 循环在丢掉 rollout 前用 GAE 算优势
 
 ## 参考来源
 - Schulman, J., et al. (2015). *High-Dimensional Continuous Control Using Generalized Advantage Estimation*.

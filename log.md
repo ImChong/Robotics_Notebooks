@@ -1,3 +1,12 @@
+## [2026-08-16] ingest | sources/personal/rl_runner_types.md — 接入 RL Runner 十类训练循环编排（独立概念页）
+
+- **触发：** 用户提供 Runner 分类图（On-policy / Off-policy / Offline / Distillation / Imitation / Multi-agent / Self-play / Distributed / Model-based / Evaluation）
+- **步骤 2.5：** 无项目页；教学谱系整理，非论文仓库 → 不建 `sources/repos/`
+- **来源：** [`sources/personal/rl_runner_types.md`](sources/personal/rl_runner_types.md)
+- **升格：** [`wiki/concepts/rl-runner.md`](wiki/concepts/rl-runner.md) — Runner ≠ 算法 ≠ 环境闭环；十类循环 + 选型口诀 + mermaid
+- **交叉：** RL / PPO / SAC / GAE / Online vs Offline / 模仿 / 蒸馏 / MARL / MBRL / 五模块训练栈 / hub-learning
+- **读数：** Distributed / Self-play 是拓扑或数据源，常叠在 on/off-policy 上；Imitation ≠ Distillation
+
 ## [2026-08-16] ingest | sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md — 接入 LEGO 层级语言高斯溅射（已开源、可运行）
 
 - **触发：** 用户指定 [arXiv:2608.10057](https://arxiv.org/abs/2608.10057) 与项目页 <https://pz0826.github.io/LEGO-Webpage/>

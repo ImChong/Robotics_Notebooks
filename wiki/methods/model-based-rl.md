@@ -2,9 +2,10 @@
 type: method
 tags: [rl, model-based, planning, locomotion, sample-efficiency, horizon-robotics]
 status: complete
-updated: 2026-08-12
+updated: 2026-08-16
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
+  - ../concepts/rl-runner.md
   - ../overview/robot-control-paradigm-rl-intelligent-control.md
   - ../methods/gaussian-process-control.md
   - ../entities/richard-sutton.md
@@ -18,6 +19,7 @@ related:
   - ../entities/paper-td-mpc2.md
   - ../entities/paper-lucid.md
 sources:
+  - ../../sources/personal/rl_runner_types.md
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/blogs/sutton_one_step_trap.md
   - ../../sources/sites/incompleteideas-net-rich-sutton.md
@@ -272,6 +274,7 @@ Dreamer 4（Hafner et al., 2025，[arXiv:2509.24527](https://arxiv.org/abs/2509.
 - [Latent Imagination](../concepts/latent-imagination.md) — Dreamer 系核心机制
 - [LUCID](../entities/paper-lucid.md) — 人形技能级 macro-dynamics 想象控制
 - [Reinforcement Learning](./reinforcement-learning.md) — MBRL 是 RL 大类下的子方向，与 Model-Free 并列
+- [RL Runner（训练循环编排）](../concepts/rl-runner.md) — Model-based Runner：真交互训模型 → 想象 rollout → 更新策略
 - [Model Predictive Control (MPC)](./model-predictive-control.md) — 基于模型规划的经典控制方法，MBRL 的"控制论版"
 - [Trajectory Optimization](./trajectory-optimization.md) — MBRL 规划阶段常用轨迹优化作为求解器
 - [Optimal Control (OCP)](../concepts/optimal-control.md) — MBRL 的数学基础，动力学模型 + 代价函数

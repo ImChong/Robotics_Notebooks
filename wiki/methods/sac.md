@@ -2,9 +2,10 @@
 type: method
 tags: [rl, policy-optimization, sac, off-policy, maximum-entropy, manipulation]
 status: complete
-updated: 2026-08-01
+updated: 2026-08-16
 summary: "SAC 是连续控制中最主流的 off-policy 最大熵算法：用 Replay Buffer 反复利用经验、双 Q 抑制高估、自动调温度平衡探索与利用，样本效率远高于 PPO，是真机 RL 与精细操作的首选。"
 related:
+  - ../concepts/rl-runner.md
   - ./flashsac.md
   - ./policy-optimization.md
   - ./reinforcement-learning.md
@@ -20,6 +21,7 @@ related:
   - ../formalizations/bellman-equation.md
   - ../entities/paper-importance-sampling-pca-av-failures.md
 sources:
+  - ../../sources/personal/rl_runner_types.md
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/importance_sampling_pca_av_failures_arxiv_2607_18106.md
 ---
@@ -87,7 +89,7 @@ $$
 
 ### 5. Off-policy 训练循环
 
-- 每与环境交互一步，把转移 $(s, a, r, s')$ 存入 [Replay Buffer](../comparisons/online-vs-offline-rl.md)，再从中随机采样 minibatch 更新 Q 与策略——**每条经验被反复利用**，这是高样本效率的来源。
+- 每与环境交互一步，把转移 $(s, a, r, s')$ 存入 [Replay Buffer](../comparisons/online-vs-offline-rl.md)，再从中随机采样 minibatch 更新 Q 与策略——**每条经验被反复利用**，这是高样本效率的来源。编排层对应 [Off-policy Runner](../concepts/rl-runner.md)：少量采集 → 抽历史 → 多次更新，与 PPO「采完即丢」相对。
 
 ## 关键超参数（机器人实践）
 
@@ -113,6 +115,7 @@ $$
 ## 关联页面
 - [Policy Optimization（算法族总览）](./policy-optimization.md)
 - [Reinforcement Learning（强化学习基础）](./reinforcement-learning.md)
+- [RL Runner（训练循环编排）](../concepts/rl-runner.md) — SAC 默认的 Off-policy 循环：Replay Buffer 反复抽历史
 - [FlashSAC（快速稳定 SAC）](./flashsac.md)
 - [PPO（近端策略优化）](./ppo.md)
 - [PPO vs SAC（对比）](../comparisons/ppo-vs-sac.md)

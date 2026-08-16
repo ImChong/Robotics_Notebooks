@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-08-16",
-  "node_count": 3115,
-  "edge_count": 27377,
+  "node_count": 3116,
+  "edge_count": 27422,
   "coverage": {
-    "covered": 3091,
-    "total": 3091,
+    "covered": 3092,
+    "total": 3092,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -233,7 +233,7 @@
   "top_communities": [
     {
       "label": "仿真到现实",
-      "size": 589
+      "size": 590
     },
     {
       "label": "操作",
@@ -300,7 +300,7 @@
       "detail_id": "wiki-methods-model-based-rl",
       "label": "Model-Based RL（基于模型的强化学习）",
       "type": "method",
-      "degree": 571,
+      "degree": 573,
       "has_repo": true,
       "community_label": "操作（Manipulation） 社区"
     },
@@ -308,7 +308,7 @@
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
       "type": "method",
-      "degree": 519,
+      "degree": 521,
       "has_repo": true
     },
     {
