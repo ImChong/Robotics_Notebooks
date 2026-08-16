@@ -94,21 +94,21 @@ flowchart TB
   sam["SAM 多粒度掩码"]
   sfm["MASt3R-SfM / COLMAP"]
   lift["提升 + 共视尺度峰检测"]
-  ind["层级稠密指示器 I_k"]
+  ind["层级稠密指示器 I(k)"]
   rgbgs["RGB 3DGS 30k"]
   feat["冻几何 · 层级特征 10k"]
   tree["HDBSCAN 嵌套树"]
-  clip["OVS → CLIP"]
-  graph["层级 + 邻接场景图"]
+  clipFeat["OVS 到 CLIP"]
+  sceneGraph["层级 + 邻接场景图"]
   q1["单词/短语 · 前三层 CLIP"]
   q2["复合查询 · LLM CoR"]
   rgb --> sam --> lift
   rgb --> sfm --> lift
   sfm --> rgbgs --> feat
   lift --> ind --> feat
-  feat --> tree --> clip --> graph
-  graph --> q1
-  graph --> q2
+  feat --> tree --> clipFeat --> sceneGraph
+  sceneGraph --> q1
+  sceneGraph --> q2
 ```
 
 结构层级对视距和绝对尺寸不变：大车和小车可以同时落在同一「整车 / 部件」级，不必手调全局尺度。
@@ -137,12 +137,12 @@ sequenceDiagram
     SAM->>LVL: 共视 + 3D 尺度定级
     SFM->>LVL: 像素–点映射
     SFM->>RGB: 初始化高斯场
-    LVL->>FEAT: 层级指示器 I_k
+    LVL->>FEAT: 层级指示器 I(k)
     RGB->>FEAT: 冻几何后蒸馏 identity
     FEAT->>TREE: HDBSCAN 树 + 邻接图
     TREE->>CLIP: OVS 裁剪提 CLIP
-    CLIP->>EVAL: clustering/ 产物
-    U->>EVAL: eval 协议或 Viser / --scene-graph
+    CLIP->>EVAL: clustering 产物
+    U->>EVAL: eval 协议或 Viser scene-graph
 ```
 
 断点续跑用 `--from-stage train-rgb --to-stage build-tree`。上游阶段重跑会作废下游 manifest。CoR 查看器要 `LLM_API_KEY`，标注放在 `$LEGO_DATA_ROOT/cor`。
