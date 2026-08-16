@@ -1,13 +1,23 @@
 {
   "generated_at": "2026-08-16",
   "node_count": 3116,
-  "edge_count": 27422,
+  "edge_count": 27425,
   "coverage": {
     "covered": 3092,
     "total": 3092,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/rl-runner.md",
+      "detail_id": "wiki-concepts-rl-runner",
+      "label": "RL Runner（训练循环编排）",
+      "type": "concept",
+      "recency": "2026-08-16",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/paper-lego-leveled-language-gaussian-splatting.md",
       "detail_id": "entity-paper-lego-leveled-language-gaussian-splatting",
@@ -207,28 +217,17 @@
       "source": "git",
       "action": "added",
       "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-zest.md",
-      "detail_id": "entity-paper-zest",
-      "label": "ZEST：异构运动参考的零样本具身技能迁移",
-      "type": "entity",
-      "recency": "2026-08-15",
-      "source": "git",
-      "action": "added",
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-lego-leveled-language-gaussian-splatting.md",
-    "detail_id": "entity-paper-lego-leveled-language-gaussian-splatting",
-    "label": "LEGO：层级语言高斯溅射",
-    "type": "entity",
+    "path": "wiki/concepts/rl-runner.md",
+    "detail_id": "wiki-concepts-rl-runner",
+    "label": "RL Runner（训练循环编排）",
+    "type": "concept",
     "recency": "2026-08-16",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
