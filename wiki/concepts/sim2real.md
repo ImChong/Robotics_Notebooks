@@ -2,7 +2,7 @@
 type: concept
 tags: [sim2real, rl, domain-randomization, deployment]
 status: complete
-updated: 2026-08-15
+updated: 2026-08-16
 related:
   - ../entities/embodied-interview-qa.md
   - ../methods/reinforcement-learning.md
@@ -53,6 +53,7 @@ related:
   - ../entities/paper-icrowdnav.md
   - ../entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md
   - ../entities/paper-da-nav.md
+  - ../entities/paper-arcadia.md
   - ../entities/paper-zonda.md
   - ../entities/paper-mujica-wheel-legged-multi-skill.md
   - ../entities/paper-aware-wheeled-legged-reflexive-evasion.md
@@ -66,6 +67,7 @@ sources:
   - ../../sources/papers/physx_omni_arxiv_2605_21572.md
   - ../../sources/courses/isaac_lab_implicit_explicit_actuators.md
   - ../../sources/papers/da_nav_arxiv_2607_11638.md
+  - ../../sources/papers/arcadia_arxiv_2512_00076.md
   - ../../sources/papers/zonda_arxiv_2607_21025.md
   - ../../sources/papers/agentic_real2sim_arxiv_2607_19190.md
   - ../../sources/papers/r2s_ego_arxiv_2608_06827.md
@@ -299,6 +301,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - **ingest 档案：** [sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md](../../sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md)
 - [Flexion × Niantic × NVIDIA RGB Sim2Real 管线](../entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md) — 部署现场 3DGS 数字孪生 + 纯 RGB 导航 RL 零样本真机（2026-07 产业联合文）
 - [DA-Nav](../entities/paper-da-nav.md) — CARLA 方向感知 VLN → Go2 / Kuavo-V 零样本户外导航（arXiv:2607.11638）
+- [Arcadia](../entities/paper-arcadia.md) — 自采 + 3DGS USD + 共享 VLN/VLA + 真机反馈写回；G1 46/27（arXiv:2512.00076；部分开源）
 - [HumanoidVLN](../entities/paper-humanoidvln.md) — 3DGS 室内场景与 G1 DualVLN 20 条 sim–real 相关（arXiv:2608.12860；待开源）
 - [iCrowdNav](../entities/paper-icrowdnav.md) — SocNav-Gym 视觉人群导航 → Dingo 零样本（BEV+姿态意图；代码待发布）
 - [ZONDA](../entities/paper-zonda.md) — Habitat ObjectNav → TITA 轮腿双足（离散→MPPI；arXiv:2607.21025）

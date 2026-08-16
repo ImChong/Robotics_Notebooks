@@ -15,6 +15,7 @@ related:
   - ../entities/paper-uni-lavira.md
   - ../entities/paper-da-nav.md
   - ../entities/paper-fsd-vln.md
+  - ../entities/paper-arcadia.md
   - ../entities/paper-zonda.md
   - ../entities/paper-roamflow.md
   - ../entities/paper-green-for-go-vla-nav-grounding.md
@@ -24,6 +25,7 @@ sources:
   - ../../sources/papers/uni_lavira_arxiv_2605_27582.md
   - ../../sources/papers/da_nav_arxiv_2607_11638.md
   - ../../sources/papers/fsd_vln_arxiv_2607_08359.md
+  - ../../sources/papers/arcadia_arxiv_2512_00076.md
   - ../../sources/papers/zonda_arxiv_2607_21025.md
   - ../../sources/papers/green_for_go_vla_nav_grounding_arxiv_2607_05122.md
   - ../../sources/papers/humanoidvln_arxiv_2608_12860.md
@@ -126,6 +128,7 @@ flowchart LR
 - [Uni-LaViRA](../entities/paper-uni-lavira.md) — 零样本三层翻译统一导航（对照 Uni-NaVid）
 - [DA-Nav](../entities/paper-da-nav.md) — 城市户外方向感知 VLN（方法对照；暂未开源）
 - [FSD-VLN](../entities/paper-fsd-vln.md) — 空中长程 VLN 快慢双系统（方法对照；暂未开源）
+- [Arcadia](../entities/paper-arcadia.md) — 终身学习闭环（方法对照；EmbodiedKit **部分开源**，非本页新手栈）
 - [ZONDA](../entities/paper-zonda.md) — 多楼层动态零样本 ObjectNav（方法对照；暂未开源）
 - [RoamFlow](../entities/paper-roamflow.md) — MeanFlow 一步 image-goal（方法对照；暂未开源）
 - [Green for Go](../entities/paper-green-for-go-vla-nav-grounding.md) — 冻结 OmniVLA 绿/红 overlay（方法对照；暂未开源）
@@ -137,6 +140,7 @@ flowchart LR
 - [Uni-LaViRA 论文摘录（arXiv:2605.27582）](../../sources/papers/uni_lavira_arxiv_2605_27582.md)
 - [DA-Nav 论文摘录（arXiv:2607.11638）](../../sources/papers/da_nav_arxiv_2607_11638.md)
 - [FSD-VLN 论文摘录（arXiv:2607.08359）](../../sources/papers/fsd_vln_arxiv_2607_08359.md)
+- [Arcadia 论文摘录（arXiv:2512.00076）](../../sources/papers/arcadia_arxiv_2512_00076.md)
 - [ZONDA 论文摘录（arXiv:2607.21025）](../../sources/papers/zonda_arxiv_2607_21025.md)
 - [Green for Go 论文摘录（arXiv:2607.05122）](../../sources/papers/green_for_go_vla_nav_grounding_arxiv_2607_05122.md)
 - [HumanoidVLN 论文摘录（arXiv:2608.12860）](../../sources/papers/humanoidvln_arxiv_2608_12860.md)

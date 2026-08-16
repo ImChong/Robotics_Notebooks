@@ -13,7 +13,7 @@ tags:
   - nvidia
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-08-14
+updated: 2026-08-16
 arxiv: "2412.04453"
 code: https://github.com/AnjieCheng/NaVILA
 related:
@@ -22,6 +22,7 @@ related:
   - ../methods/vla.md
   - ../tasks/locomotion.md
   - ./paper-da-nav.md
+  - ./paper-arcadia.md
   - ./paper-green-for-go-vla-nav-grounding.md
   - ./paper-humanoidvln.md
   - ./paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md
@@ -29,6 +30,7 @@ sources:
   - ../../sources/papers/humanoid_pnb_navila-legged-robot-vision-language-action-model.md
   - ../../sources/sites/navila.md
   - ../../sources/repos/navila.md
+  - ../../sources/papers/arcadia_arxiv_2512_00076.md
 summary: "NaVILA（RSS 2025，arXiv:2412.04453）把腿式 VLN 分成高层 VLA 语言动作与实时视觉 locomotion：VLA 输出“前进 75 cm”等中层命令，RL 策略执行关节控制。R2R-CE SR 54%、VLN-CE-Isaac Go2/H1 SR 50.2/45.3%，真机 Go2/T1；训练、评测、权重与标注已开源。"
 ---
 
@@ -177,6 +179,7 @@ sequenceDiagram
 - 论文失败案例指向有限 spatial understanding；扩大真实仿真数据仍是必要工作。
 - YouTube 视频只有 IDs / annotations，源视频删除或地区版权会破坏数据可重复性。
 - 与 [DA-Nav](./paper-da-nav.md) 的后续评测表明 NaVILA 缺少专门偏离恢复监督；城市长程 CSR 不宜从室内 SR 外推。
+- [Arcadia](./paper-arcadia.md) 把本页当主要导航基线，并批评 YouTube 外源轨迹与目标人形错位；其 Table 1 的 NaVILA 分数是 **Isaac 协议复现**（VLN-CE-Isaac SR 45.1%），不要和本页 Habitat R2R-CE 54% 横比。
 - [Green for Go](./paper-green-for-go-vla-nav-grounding.md) 走另一条路：不重训 VLA，只用绿/红可通行 overlay 喂冻结 OmniVLA；那是开环航点正则，不能替代本页的腿式闭环 SR。
 - [HumanoidVLN](./paper-humanoidvln.md) 把本页策略当 **零样本被测对象**（离散动作 + PD 跟踪）：G1 SR 28.19%，H1 SR 21.97% 且 FR **70.95%**——说明 VLN-CE-Isaac 的 H1 分数不能外推到「可通行筛选 + 摔倒即终止」协议。
 
@@ -186,6 +189,7 @@ sequenceDiagram
 - [导航纵深路线 Stage 4](../../roadmap/depth-navigation.md) — “语言→中层命令→locomotion”的分层锚点
 - [VLA](../methods/vla.md) — 语言动作接口对“统一低层 action token”的替代设计
 - [DA-Nav](./paper-da-nav.md) — 城市尺度方向指令与显式 recovery 对照
+- [Arcadia](./paper-arcadia.md) — 生命周期闭环对照：自采数据 + 反馈写回；部分开源
 - [Green for Go](./paper-green-for-go-vla-nav-grounding.md) — 冻结导航 VLA 的推理时可通行 overlay（对照；未开源）
 - [HumanoidVLN](./paper-humanoidvln.md) — 人形物理 VLN 基准上的零样本被测对象（待开源）
 - [NavDP](./paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md) — 可充当更快局部 trajectory system-1

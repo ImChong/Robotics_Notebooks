@@ -729,6 +729,14 @@
         "bytedance-seed"
       ]
     },
+    "manycore": {
+      "label": "群核科技（Manycore Tech）",
+      "aliases": [
+        "manycore",
+        "manycore-tech",
+        "qunhe"
+      ]
+    },
     "jpmorgan-ai": {
       "label": "摩根大通人工智能研究院（J.P. Morgan AI Research）",
       "aliases": [

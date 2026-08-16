@@ -29,6 +29,7 @@ related:
   - ../entities/paper-3d-ic-joint-navigation-manipulation-planning.md
   - ../entities/paper-da-nav.md
   - ../entities/paper-fsd-vln.md
+  - ../entities/paper-arcadia.md
   - ../entities/paper-zonda.md
   - ../entities/paper-travexplorer.md
   - ../entities/paper-s-squared-vla.md
@@ -46,6 +47,7 @@ sources:
   - ../../sources/papers/3d_ic_icml_2026.md
   - ../../sources/papers/da_nav_arxiv_2607_11638.md
   - ../../sources/papers/fsd_vln_arxiv_2607_08359.md
+  - ../../sources/papers/arcadia_arxiv_2512_00076.md
   - ../../sources/papers/zonda_arxiv_2607_21025.md
   - ../../sources/papers/refertrack_arxiv_2607_20061.md
   - ../../sources/papers/green_for_go_vla_nav_grounding_arxiv_2607_05122.md
@@ -120,6 +122,12 @@ sources:
 - **方法要点：** 四本体（G1 / H1 / Internal-A / B）零样本评测 NaVILA、DualVLN、StreamVLN、JanusVLN；JanusVLN 平均 SR 43.55%，H1 上部分模型 FR >60%；G1 + DualVLN 20 条 sim–real NE **r=0.935**。
 - **开源边界：** 截至 2026-08-14 **宣称录用后开源**，项目页无 GitHub；可跑通栈仍走 [四范式](../overview/vln-open-source-repro-paradigms.md) 与已开源 [NaVILA](../entities/paper-notebook-navila-legged-robot-vision-language-action-model.md)。
 
+### 全生命周期：采集–生成仿真–共享 VLA–反馈
+
+- **设定差异：** [Arcadia](../entities/paper-arcadia.md)（arXiv:2512.00076）不把 VLN 当孤立导航模型，而写成与操作共享 Qwen2.5-VL 的 **Real2Sim2Real 闭环**：部署环境自采 → 3DGS USD → Isaac 训策略 → 真机反馈写回。
+- **方法要点：** 同架构下仅换自采数据，相对 NaVILA 平均 SR **+2.7 pp**；加反馈后 VLN-CE-Isaac SR **50.1%**。G1 真机导航 46/100（对照 13）。联合训练几乎不掉点。
+- **开源边界：** [EmbodiedKit](../../sources/repos/embodiedkit.md) **部分开源**（数据生成 + Qwen 训练脚本）；探索 / 3DGS / 反馈与权重未发布，**不能**当 [四范式](../overview/vln-open-source-repro-paradigms.md) 新手栈。
+
 ### 室内 ObjectNav：跨楼层 + 动态行人
 
 - **设定差异：** [ZONDA](../entities/paper-zonda.md) 目标是 **物体类别到达**（非细粒度语言路径）；评测主线为 Habitat **多楼层** HM3D/MP3D，并扩展 **HM3D-DYNA** 加入移动行人。
@@ -149,6 +157,7 @@ sources:
 - **多楼层动态 ObjectNav**：[ZONDA](../entities/paper-zonda.md) — 启发式跨楼层 + 多视角核验 + 行人避障；HM3D-DYNA / TITA（arXiv:2607.21025）。
 - **冻结 VLA 可通行 overlay**：[Green for Go](../entities/paper-green-for-go-vla-nav-grounding.md) — SegFormer 绿/红接地 OmniVLA；开环航点误差 vs 长度正则（arXiv:2607.05122）。
 - **人形物理 VLN 平台**：[HumanoidVLN](../entities/paper-humanoidvln.md) — Isaac Sim 四本体 + FR；933 episode 零样本（arXiv:2608.12860；待开源）。
+- **终身学习闭环**：[Arcadia](../entities/paper-arcadia.md) — 自采 + 生成式 USD + 共享 VLN/VLA 骨干 + Sim-from-Real；G1 46/100（arXiv:2512.00076；部分开源）。
 
 ## 参考来源
 
@@ -158,6 +167,7 @@ sources:
 - [REALM 论文摘录（arXiv:2607.03792）](../../sources/papers/realm_last_3_meter_vln_arxiv_2607_03792.md) — REVERIE 末段实例接地与评测鸿沟
 - [DA-Nav 论文摘录（arXiv:2607.11638）](../../sources/papers/da_nav_arxiv_2607_11638.md) — 城市尺度方向感知 VLN
 - [FSD-VLN 论文摘录（arXiv:2607.08359）](../../sources/papers/fsd_vln_arxiv_2607_08359.md) — 空中长程 VLN 快慢双系统
+- [Arcadia 论文摘录（arXiv:2512.00076）](../../sources/papers/arcadia_arxiv_2512_00076.md) — 具身终身学习四段闭环
 - [ZONDA 论文摘录（arXiv:2607.21025）](../../sources/papers/zonda_arxiv_2607_21025.md) — 多楼层动态零样本 ObjectNav
 - [Green for Go 论文摘录（arXiv:2607.05122）](../../sources/papers/green_for_go_vla_nav_grounding_arxiv_2607_05122.md) — 冻结导航 VLA 的绿/红可通行视觉接地
 - [HumanoidVLN 论文摘录（arXiv:2608.12860）](../../sources/papers/humanoidvln_arxiv_2608_12860.md) — 人形物理 VLN 仿真与基准
@@ -173,6 +183,7 @@ sources:
 - [VLN 开源复现：四范式学习路径](../overview/vln-open-source-repro-paradigms.md)
 - [WorldVLN（空中 VLN · WAM）](../entities/paper-worldvln-aerial-vln-wam.md)
 - [FSD-VLN（空中长程 VLN · 快慢双系统）](../entities/paper-fsd-vln.md) — VLSF + DiT；仿真未开源
+- [Arcadia（具身终身学习全生命周期）](../entities/paper-arcadia.md) — 共享 VLN/VLA 骨干 + Real2Sim2Real；部分开源
 - [World Action Models（WAM）](../concepts/world-action-models.md)
 - [SceneVerse++](../entities/sceneverse-pp.md)
 - [HomeWorld](../entities/paper-homeworld-whole-home-scene-generation.md) — 文本到 sim-ready 全屋 3D 与中国住宅平面图数据
