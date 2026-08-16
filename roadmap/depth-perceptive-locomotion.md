@@ -102,6 +102,7 @@ flowchart LR
 - [DreamWaQ++](../wiki/entities/dreamwaq-plus.md)
 - [PIE：感知一阶段鲁棒行走](../wiki/methods/pie-perceptive-locomotion.md) — 单阶段视觉跑酷框架，深度图+本体经多头估计器输出显式高度图与隐式环境表征，与两阶段 teacher-student 路线对照
 - [Teacher-Student 与 DAgger 训练](../wiki/methods/teacher-student-dagger-training.md) — 特权教师蒸馏可部署学生的通用范式，本 Stage teacher-student 感知策略路线的方法页
+- [P³](../wiki/entities/paper-p3.md)（本仓库）— 指出 DreamWaQ/PIE 等主流 VAE-PPO 感知策略训练难收敛的根因是单样本似然误把分量高斯当边缘策略；用多样本边缘化（MM）修正后训练诊断保住率 64.6%→100%，比最强 MC-only 少 20%+ 收敛步，MuJoCo 与 G1 真机均最优；官方仓开源 Isaac Lab + rl_p3 训练/评测脚本
 - Miki et al., *Learning Robust Perceptive Locomotion for Quadrupedal Robots in the Wild* (2022)
 
 ### 推荐做什么

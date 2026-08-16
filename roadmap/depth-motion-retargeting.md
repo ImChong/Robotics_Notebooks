@@ -161,6 +161,7 @@ flowchart LR
 - [KDMR](../wiki/entities/paper-kdmr.md)（本仓库）— GRF 锚定多接触全身轨迹优化（CasADi + Pinocchio），把 heel–toe 接触日程与动力学/无滑约束一并写进 NLP；相对 GMR 下游跟踪误差降约 27–47%（Walk/Twister），G1 零样本部署；宣称发表时开源，截至入库日无官方代码
 - [SPARK](../wiki/entities/paper-spark-skeleton-aligned-retargeting.md)（本仓库）— 先校准 human URDF 骨架再 IK，再经 KTO→ID→KDTO 渐进轨迹优化补力矩监督；多机型 IK 误差相对 GMR 降 65–83%，G1 side flip 上 KDTO+T 显著加速 BeyondMimic 收敛；未开源
 - [Shooting for Contact / DSMS](../wiki/entities/paper-shooting-for-contact.md)（本仓库）— 接触隐式直接仿真多重打靶，无需预设接触时刻表即可把运动学参考精炼为动力学可行轨迹；backflip 落地成功率与 DynaRetarget 同档（98.7%），较 OmniRetarget（9.3%）高一个数量级，G1 零样本爬行/180° 跳转；trajopt/MPC 已开源
+- [CoRe](../wiki/entities/paper-core.md) 与 [RMR](../wiki/entities/paper-rmr.md)（本仓库，Humanoids 2025 / IROS 2025）— CoRe 用"几何映射→接触感知精炼→RL 跟踪"三段分工把脚滑/浮空/过加速当参考层问题处理；RMR 提供"先统一源骨架、再映射"的上游两段式，支撑 RGB 视频实时闭环，其实现并入 CoRe v0.1.0 的 DMR 模块；软件 [core-retarget v0.1.0](../wiki/entities/core-retarget.md) 部分开源（Apache-2.0，重定向+精炼可跑，T2M 与 RL 训练未随仓发布）
 - [OmniRetarget](../wiki/entities/paper-hrl-stack-03-omniretarget.md) 与 [Retargeting Matters](../wiki/entities/paper-hrl-stack-01-retargeting_matters.md)（本仓库）— 交互保留与重定向质量对下游的影响
 - [STMR 四足时空重定向](../wiki/entities/stmr-quadruped-retargeting.md)（本仓库）— 四足支线主入口，见下节
 

@@ -113,6 +113,8 @@ flowchart LR
 - [SONIC](../wiki/methods/sonic-motion-tracking.md) 与 [BeyondMimic](../wiki/methods/beyondmimic.md)（本仓库）— 工程可用的跟踪基座
 - [Teacher-Student 多动作 BFM 学习](../wiki/methods/teacher-student-multi-skill-bfm.md)（本仓库）— BFM 三线之一：特权教师在仿真中学多参考动作跟踪，再蒸馏为单一可部署学生
 - [PFM-HR](../wiki/entities/paper-pfm-hr.md)（本仓库）— 无序姿态 Flow Matching 先验 + Pose Geometry Score 调制跟踪奖励，冻结挂载 ADD/BeyondMimic 不改部署栈；高动态技能（Backflip、Double Kong 等）样本效率相对 PDF-HR 提升 14–29%，LaFAN1 通用跟踪位置误差相对 ADD/PDF-HR 均降约 8–10%；代码仓占位待开放
+- [ZEST](../wiki/entities/paper-zest.md)（本仓库，Science Robotics 2026，RAI Institute × Boston Dynamics）— 用 ViCap（视频到动捕）当天出参考、极简观测/奖励配方跨 100 kg Atlas / 35 kg G1 / 12-DoF Spot 复用；全尺寸 Atlas 首次稳定做出膝/肘/躯干贴地多接触技能（爬行、前滚、地板舞）；确认未开源
+- [HumanTracker](../wiki/entities/paper-humantracker.md)（本仓库）— 四族光学跟踪基准 + HumanScore，把参考表示/rollout 记账/终止准则钉死统一评测 GMT/TWIST2/SONIC/Humanoid-GPT；族均衡对齐率 90.83%，比最强单条解析诊断高约 6.8 点；评测代码已开源，153h/25K 数据集待发布
 - [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md)（本仓库）
 - [Query：人形动作跟踪方法选型](../wiki/queries/humanoid-motion-tracking-method-selection.md)（本仓库）
 

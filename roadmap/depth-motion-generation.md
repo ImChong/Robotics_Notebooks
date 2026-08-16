@@ -145,6 +145,7 @@ flowchart LR
 - [Gen2Humanoid](../wiki/entities/gen2humanoid.md)（本仓库）— 生成 → 重定向端到端管线
 - [SONIC](../wiki/methods/sonic-motion-tracking.md) 与 [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md)（本仓库）— 跟踪侧消费者
 - [合成视频人形任务生成（NCKU）](../wiki/entities/paper-synthetic-video-humanoid-tasks.md)（本仓库）— 文本提示 → Veo 生成视频 → SMPL-X/GMR 重定向 → motion stitching → DeepMimic 式 RL 跟踪，全程无真机、无 MoCap 示范即可在仿真里学多样人形任务；确认未开源
+- [GenTrack](../wiki/entities/paper-gentrack.md)（本仓库，AAAI 2027）— 生成器–跟踪器在线互训打破"单向管线冻结一边很快过时"的耦合瓶颈，接 ProtoMotions/SONIC checkpoint 做后训练而非从头训，KL 锚 + rehearsal 防生成器塌成慢动作；SONIC 支 LAFAN1 跟踪 SR 85→90；确认未开源
 
 ### 学完输出什么
 - 一条"文本 → 生成 → 重定向 → 跟踪验证"的端到端管线

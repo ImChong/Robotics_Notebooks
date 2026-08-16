@@ -115,6 +115,7 @@ flowchart LR
 - [DeFI（解耦动力学 VLA）](../wiki/methods/defi-decoupled-dynamics-vla.md)（本仓库）
 - [World Action Models](../wiki/concepts/world-action-models.md) 中 Cascaded 小节（本仓库）
 - [Being-M0.7（人形潜空间 World–Action Model）](../wiki/entities/paper-being-m07-humanoid-latent-wam.md)（本仓库）— Cascaded WAM 人形实例：人中心 video-motion 先验预训练 + future-conditioned action expert，G1 真机 loco-manipulation 显著超 GR00T-N1.6
+- [SLIM-0.5B](../wiki/entities/paper-slim-05b.md)（本仓库）— Stage-1 IDM+FDM 掩码轨迹解耦预训练 + Stage-2 MoT flow 联合微调，与 DeFI 同源"正逆动力学同骨干"思路但把未来预测收窄为纯训练信号（不进控制环）；LIBERO 97.5% / LIBERO-Plus 77.45% / CALVIN 4.556，真机端到端 77.3 ms · 2.01 GiB；已开源（GitHub + HF 权重）
 - [动作后果技术地图](../wiki/overview/robot-world-models-action-consequence-technology-map.md)（本仓库）— 与 Joint / 部署横切对照
 
 ### 学完输出什么
@@ -152,6 +153,7 @@ flowchart LR
 - [ω-0](../wiki/entities/paper-omega-0.md)（本仓库）— 潜空间未来观测 embedding + SONIC 全身动作 latent 扩散的人形并发 loco-manip Joint WAM；ω-HOME 40h+/4827 episodes，G1 上 11 任务 Omni 成功率 81.8% 大幅超 ψ-0（44.5%）/DiT4DiT（43.6%）/Fast-WAM（37.1%）；代码/数据 WIP
 - [DreamWAM](../wiki/entities/paper-dreamwam.md)（本仓库）— 训练期用 RGB+Flow 联合去噪与 Depth/DINO 门控残差监督 beyond-RGB 未来（外观+运动+几何+语义），推理仍 RGB-only；LIBERO-Plus 69.16%→75.47%、真机视觉扰动 55.6%→74.4%；代码/权重已开源
 - [Dyna-2](../wiki/entities/dyna-2.md)（本仓库）— Dyna Robotics 闭源旗舰 WAM：≥1M h egocentric 人视频预训练（零机器人数据），报告人 held-out 与人→机零样本幂律；消融主张 video co-training 是跨具身缩放必要条件；后训练少量机端数据上双臂/灵巧手/半人形；未开源
+- [FACT](../wiki/entities/paper-fact.md)（本仓库）— 用失败演示的后果监督打破 Joint WAM 的 success bias（只在成功轨迹上训未来，测试时错误动作仍配上"成功未来"）；进度头可选做部署前打分，真机消融显示无失败共训时打分能力显著下降（79%），证明价值头确实吃后果监督；RoboTwin 管线 + HF checkpoint 已开源
 
 ### 学完输出什么
 - 能比较至少两种 Joint 实现（扩散双塔 vs 潜自回归闭环）的延迟与闭环形态
