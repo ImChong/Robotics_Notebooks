@@ -271,5 +271,12 @@
     "must_include": ["wiki/concepts/cartpole.md"],
     "expected_top_k": 5,
     "note": "1983 一手论文与 Gym 注册名应对到 Cartpole 页"
+  },
+  {
+    "query": "On-policy Runner GAE discard rollout",
+    "mode": "bm25",
+    "must_include": ["wiki/concepts/rl-runner.md"],
+    "expected_top_k": 5,
+    "note": "RL Runner 训练循环编排页必须命中"
   }
 ]

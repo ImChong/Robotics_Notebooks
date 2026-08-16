@@ -2,7 +2,7 @@
 type: method
 tags: [rl, policy-optimization, ppo, on-policy, locomotion]
 status: complete
-updated: 2026-08-13
+updated: 2026-08-16
 summary: "PPO 用 clip 代理目标约束策略更新幅度，兼顾稳定性与实现简单，是人形/足式机器人大规模并行 RL 训练的事实标准算法。"
 related:
   - ./flashsac.md
@@ -18,8 +18,10 @@ related:
   - ../tasks/locomotion.md
   - ../formalizations/mdp.md
   - ../overview/humanoid-rl-policy-training-five-modules.md
+  - ../concepts/rl-runner.md
   - ../overview/robot-rl-motion-control-pipeline.md
 sources:
+  - ../../sources/personal/rl_runner_types.md
   - ../../sources/papers/policy_optimization.md
   - ../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md
   - ../../sources/papers/p3_arxiv_2607_25541.md
@@ -94,11 +96,13 @@ $$
 - **何时选 PPO vs SAC**：on-policy 与 off-policy 在稳定性与样本利用率上的权衡，详见 [PPO vs SAC](../comparisons/ppo-vs-sac.md) 与 [面向机器人的 PPO/SAC 选型](../queries/ppo-vs-sac-for-robots.md)。
 - **课程与奖励**：PPO 训练效果高度依赖 [课程学习](../concepts/curriculum-learning.md) 与 [奖励设计](../concepts/reward-design.md)。
 - **算法族定位**：PPO 是 [Policy Optimization](./policy-optimization.md) 家族中 on-policy 的主力，与 [强化学习基础](./reinforcement-learning.md) 一脉相承。
+- **训练循环**：挂在 [On-policy Runner](../concepts/rl-runner.md) 上——rollout → GAE → 有限 epoch 更新 → **丢掉本批数据**；Isaac Lab / rsl_rl 的 `OnPolicyRunner` 即此循环。
 - **直觉层理解**：参数更新在强化哪些状态→动作连接，见 [神经反馈控制器](../concepts/neural-feedback-controller.md)。
 
 ## 关联页面
 - [Policy Optimization（算法族总览）](./policy-optimization.md)
 - [Reinforcement Learning（强化学习基础）](./reinforcement-learning.md)
+- [RL Runner（训练循环编排）](../concepts/rl-runner.md) — PPO 默认的 On-policy 循环：采完算 GAE、更新后丢掉
 - [FlashSAC（快速稳定 SAC）](./flashsac.md)
 - [SAC（软演员-评论家）](./sac.md)
 - [GAE（广义优势估计）](./gae.md)

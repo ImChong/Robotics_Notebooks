@@ -2,10 +2,11 @@
 type: concept
 tags: [rl, sim2real, training, humanoid, policy-optimization]
 status: complete
-updated: 2026-08-13
+updated: 2026-08-16
 summary: "Privileged Training 让 teacher 使用仿真特权信息训练，再蒸馏给真实可观测 student，是 sim2real 常见套路；蒸馏本质是把 RL 探索问题转为 Teacher 标注的监督学习。"
 related:
   - ./terrain-latent-representation.md
+  - ./rl-runner.md
   - ./humanoid-policy-observation-inputs.md
   - ./sim2real.md
   - ../methods/imitation-learning.md
@@ -28,6 +29,7 @@ related:
   - ../queries/sim2real-closed-loop-engineering.md
   - ../overview/humanoid-rl-policy-training-five-modules.md
 sources:
+  - ../../sources/personal/rl_runner_types.md
   - ../../sources/papers/privileged_training.md
   - ../../sources/personal/perceptive_locomotion_representation_essence.md
   - ../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md
@@ -256,6 +258,7 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 - [Sim2Real](./sim2real.md) — 特权训练是 sim2real 的核心技术之一，解决训练-部署感知差异
 - [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md) — 观测设计：学生仅用机载可得通道
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — Teacher 阶段用标准 RL 训练
+- [RL Runner（训练循环编排）](./rl-runner.md) — Distillation Runner：Teacher 推理 → Student 模仿，通常接在 On-policy 收敛之后
 - [Imitation Learning](../methods/imitation-learning.md) — Student 阶段本质上是模仿 Teacher 的行为克隆
 - [Domain Randomization](./domain-randomization.md) — 常与特权训练结合，增强策略鲁棒性
 - [RL 运动控制完整管线](../overview/robot-rl-motion-control-pipeline.md) — Teacher-Student 在四足工程链中的位置

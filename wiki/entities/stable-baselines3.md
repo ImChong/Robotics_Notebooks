@@ -2,15 +2,17 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
-updated: 2026-07-30
+updated: 2026-08-16
 summary: "Stable-Baselines3：提供经过测试的常用深度强化学习算法、Gymnasium接口和标准化训练API，便于快速建立非机器人专用对照；在人形项目中更适合验证算法假设和小规模环境，而非替代专用并行训练栈。"
 related:
   - ../concepts/sim2real.md
+  - ../concepts/rl-runner.md
   - ../entities/isaac-lab.md
   - ../concepts/cartpole.md
   - ../entities/humanoid-motion-intelligence.md
   - ../queries/hmi-opensource-projects-coverage.md
 sources:
+  - ../../sources/personal/rl_runner_types.md
   - ../../sources/repos/stable-baselines3.md
   - ../../sources/repos/humanoid-motion-intelligence.md
 ---
@@ -86,6 +88,7 @@ flowchart LR
 ## 关联页面
 
 - [sim2real](../concepts/sim2real.md)
+- [RL Runner（训练循环编排）](../concepts/rl-runner.md) — SB3 把循环藏在 `algorithm.learn()`，与 rsl_rl `OnPolicyRunner` 对照
 - [isaac-lab](../entities/isaac-lab.md)
 - [Cartpole 问题](../concepts/cartpole.md) — SB3 默认对接的 Gymnasium `CartPole-v1` 教学基准
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)

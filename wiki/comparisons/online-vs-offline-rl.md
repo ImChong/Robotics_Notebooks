@@ -2,9 +2,10 @@
 type: comparison
 tags: [rl, offline-rl, online-rl, data-efficiency, distribution-shift, locomotion]
 status: complete
-updated: 2026-08-12
+updated: 2026-08-16
 related:
   - ../methods/intentional-updates-streaming-rl.md
+  - ../concepts/rl-runner.md
   - ../methods/reinforcement-learning.md
   - ../methods/imitation-learning.md
   - ../concepts/sim2real.md
@@ -13,6 +14,7 @@ related:
   - ../entities/paper-splc.md
   - ../overview/sergey-levine-diffusion-expressive-policies.md
 sources:
+  - ../../sources/personal/rl_runner_types.md
   - ../../sources/papers/intentional_streaming_rl.md
   - ../../sources/papers/locomotion_rl.md
   - ../../sources/papers/policy_optimization.md
@@ -169,6 +171,7 @@ Online RL 和 Offline RL 是两种根本不同的学习范式。两者都在优�
 ## 关联页面
 
 - [Intentional Updates for Streaming RL](../methods/intentional-updates-streaming-rl.md) — 无 replay、batch=1 时的稳定更新视角
+- [RL Runner（训练循环编排）](../concepts/rl-runner.md) — Offline Runner 读固定数据集、不 `env.step`；与 Online 的 on/off-policy 循环对照
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — Online RL 的主流算法（PPO、SAC）
 - [Imitation Learning](../methods/imitation-learning.md) — Offline RL 与 BC 的边界：IL 不需奖励，Offline RL 需要奖励标注
 - [Sim2Real](../concepts/sim2real.md) — Online RL 依赖仿真；Offline RL 可缓解仿真依赖

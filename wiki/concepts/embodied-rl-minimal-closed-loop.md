@@ -4,6 +4,7 @@ tags: [reinforcement-learning, embodied-ai, simulation, pedagogy, mdp]
 status: complete
 updated: 2026-08-16
 related:
+  - ./rl-runner.md
   - ../formalizations/mdp.md
   - ../formalizations/pomdp.md
   - ../methods/reinforcement-learning.md
@@ -17,6 +18,7 @@ related:
   - ../overview/humanoid-rl-policy-training-five-modules.md
   - ../overview/robot-rl-motion-control-pipeline.md
 sources:
+  - ../../sources/personal/rl_runner_types.md
   - ../../sources/blogs/wechat_shenlan_rl_embodied_minimal_closed_loop.md
   - ../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md
 summary: "具身 RL 最小闭环：在仿真里把状态 S、动作 A、奖励 R、转移 P 与折扣 γ 落成可逐步运行的循环；先用手写或启发式策略验证接口，再接入 PPO/SAC 学神经网络策略。"
@@ -116,6 +118,7 @@ flowchart LR
 
 - [MDP](../formalizations/mdp.md) · [POMDP](../formalizations/pomdp.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
+- [RL Runner（训练循环编排）](./rl-runner.md) — 最小闭环外包的采集–更新–评测调度；本页只保证环境会转
 - [人形 RL 策略训练五模块](../overview/humanoid-rl-policy-training-five-modules.md) — 从 MDP 扩到 Actor-Critic / PPO / 奖励 / 蒸馏的完整训练闭环
 - [RL 运动控制完整管线](../overview/robot-rl-motion-control-pipeline.md) — 专栏 06：在最小闭环上叠 PD / PPO / 蒸馏 / DR
 - [主路线：运动控制 L5](../../roadmap/motion-control.md#l5-强化学习与模仿学习)

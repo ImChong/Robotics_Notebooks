@@ -2,14 +2,16 @@
 type: comparison
 tags: [ppo, sac, rl, policy-optimization, locomotion, manipulation, on-policy, off-policy]
 status: complete
-updated: 2026-07-16
+updated: 2026-08-16
 summary: "PPO 与 SAC 在机器人 RL 任务中的系统性对比：on-policy vs off-policy 权衡、样本效率、稳定性、超参数敏感度与适用场景；含 FlashSAC 高维 scaling 选型。"
 sources:
+  - ../../sources/personal/rl_runner_types.md
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/intentional_streaming_rl.md
   - ../../sources/papers/flashsac_arxiv_2604_04539.md
 related:
   - ../methods/flashsac.md
+  - ../concepts/rl-runner.md
   - ../methods/ppo.md
   - ../methods/policy-optimization.md
   - ../methods/reinforcement-learning.md
@@ -290,6 +292,7 @@ $$J(\pi) = \sum_t \mathbb{E}_{(s_t, a_t) \sim \rho_\pi} \left[ r(s_t, a_t) + \al
 - [FlashSAC（快速稳定 SAC）](../methods/flashsac.md) — 高维 off-policy scaling（2026）
 - [SAC（软演员-评论家）](../methods/sac.md) — SAC 方法专页（最大熵 / off-policy / 自动调温度）
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 方法全局视角
+- [RL Runner（训练循环编排）](../concepts/rl-runner.md) — on-policy「采完即丢」vs off-policy Replay 的循环差，先于 clip/熵
 - [Locomotion](../tasks/locomotion.md) — PPO 主要应用场景
 - [GAE](../formalizations/gae.md) — PPO 的优势估计方法（广义优势估计）
 - [PPO vs SAC for Robots（查询页）](../queries/ppo-vs-sac-for-robots.md) — 面向具体实践问题的快速决策指南

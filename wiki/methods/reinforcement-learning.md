@@ -4,6 +4,7 @@ tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
 updated: 2026-08-16
 related:
+  - ../concepts/rl-runner.md
   - ../entities/embodied-interview-qa.md
   - ../comparisons/robot-learning-five-paradigms-taxonomy.md
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
@@ -39,6 +40,7 @@ related:
   - ../concepts/progress-reward-modeling.md
   - ../entities/paper-progress-reward-modeling-survey.md
 sources:
+  - ../../sources/personal/rl_runner_types.md
   - ../../sources/blogs/wechat_shenlan_robot_learning_five_paradigms.md
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md
@@ -207,6 +209,7 @@ flowchart LR
 
 ## 和其他方法的关系
 
+- **vs 训练循环编排（Runner）**：RL 算法给出损失；[RL Runner](../concepts/rl-runner.md) 决定数据从哪来、用几次、是否丢掉、要不要改参数（On-policy / Off-policy / Offline / 蒸馏 / 评测等）。读 rsl_rl `OnPolicyRunner` 或 SB3 `learn()` 时先对循环，再对 clip/熵。
 - **vs 模仿学习**：RL 自己探索，IL 跟随专家。IL 样本效率高但依赖专家数据；RL 可超越专家但训练难。见 [RL vs IL 对比](../comparisons/rl-vs-il.md)。
 - **vs 最优控制**：RL model-free，最优控制 model-based。两者在 [Model-Based RL](./model-based-rl.md) 中逐渐融合。
 - **vs 深度学习**：现代机器人 RL 通常用 [深度学习基础](../concepts/deep-learning-foundations.md) 中的神经网络做策略/价值函数逼近。
@@ -214,6 +217,7 @@ flowchart LR
 - **残差式用法**：已有控制器/先验打底时，RL 只学补偿量 $a=a_{\text{base}}+\Delta a$，样本效率与安全性同时改善。见 [Residual Policy Learning](./residual-policy-learning.md) 及谱系论文（[Residual RL](../entities/paper-residual-rl-robot-control.md)、[RPL](../entities/paper-residual-policy-learning.md)、[ResMimic](../entities/paper-resmimic.md)、[RuN](../entities/paper-notebook-run-residual-policy-for-natural-humanoid-locomot.md)）。
 
 ## 参考来源
+- [sources/personal/rl_runner_types.md](../../sources/personal/rl_runner_types.md) — Runner 类型谱系（On-policy / Off-policy / 蒸馏 / 评测）
 - [sources/papers/intentional_streaming_rl.md](../../sources/papers/intentional_streaming_rl.md) — 流式 RL 意图更新（Intentional TD / PG）ingest 档案
 - [KungFuAthleteBot](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — 高动态武术 tracking+recovery（[source](../../sources/papers/kung_fu_athlete_bot.md)）
 - [KungfuBot](../entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) — 自适应跟踪容差课程 + 非对称 actor-critic（[PBHC](../../sources/repos/pbhc.md)）
@@ -236,6 +240,7 @@ flowchart LR
 - [机器人论文阅读笔记：ASE](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control.html)
 
 ## 关联页面
+- [RL Runner（训练循环编排）](../concepts/rl-runner.md) — On-policy / Off-policy / 蒸馏 / 评测等十类循环，算法接到环境上的那一层
 - [具身智能高频面试题库](../entities/embodied-interview-qa.md) — 卷二 RL 算法面试速查；腿足落地对照卷六与本库 locomotion 页
 - [机器人学习五大范式](../comparisons/robot-learning-five-paradigms-taxonomy.md) — RL 作为奖励信号主线，与 IL / LfV / VLA / 持续学习对照
 - [深度学习基础](../concepts/deep-learning-foundations.md)
