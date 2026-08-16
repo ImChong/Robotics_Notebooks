@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, perceptive-locomotion, depth, parkour, tsinghua, amp]
 status: complete
-updated: 2026-07-16
+updated: 2026-08-16
 arxiv: "2601.07718"
 venue: arXiv
 summary: "Hiking in the Wild（arXiv:2601.07718）单阶段 E2E 深度+本体 RL，用地形边缘与足端体积点软约束实现野外 2.5 m/s 感知跑酷，含 AMP-style 自然性项与开源栈。"
@@ -13,6 +13,7 @@ related:
   - ../methods/amp-reward.md
   - ./paper-amp-survey-08-more.md
   - ./paper-deep-whole-body-parkour.md
+  - ./paper-parkourformer.md
 sources:
   - ../../sources/papers/hiking_in_the_wild_arxiv_2601_07718.md
   - ../../sources/papers/humanoid_rl_stack_24_hiking_in_the_wild_a_scalable_perceptive_parkour.md
@@ -130,6 +131,7 @@ flowchart TB
 ## 与其他页面的关系
 
 - 姊妹感知跑酷：[MoRE #08](./paper-amp-survey-08-more.md)、[Deep Whole-body Parkour](./paper-deep-whole-body-parkour.md)
+- 同族 MuJoCo、改未来监督：[ParkourFormer](./paper-parkourformer.md) — Instinct 九类课 + query 历史 / 未来两步 AMP；代码未开源
 - 任务：[stair-obstacle-perceptive-locomotion.md](../tasks/stair-obstacle-perceptive-locomotion.md)
 - RL 栈：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - AMP 专题：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)（#09/19）

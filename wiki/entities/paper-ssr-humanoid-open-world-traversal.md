@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, locomotion, perception, depth, foothold-guidance, symmetry, amp, open-world, stairs, parkour, sim2real, agibot, zju]
 status: complete
-updated: 2026-07-24
+updated: 2026-08-16
 arxiv: "2605.30770"
 related:
   - ../queries/robot-perception-stack-selection-loop.md
@@ -180,7 +180,7 @@ flowchart TB
 - [楼梯与障碍 Locomotion](../tasks/stair-obstacle-perceptive-locomotion.md)、[Humanoid Locomotion](../tasks/humanoid-locomotion.md)、[Locomotion](../tasks/locomotion.md)
 - [Terrain Adaptation](../concepts/terrain-adaptation.md)、[Footstep Planning](../concepts/footstep-planning.md)、[Privileged Training](../concepts/privileged-training.md)、[Sim2Real](../concepts/sim2real.md)
 - [AMP & HumanX](../methods/amp-reward.md)、[Reinforcement Learning](../methods/reinforcement-learning.md)、[Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
-- [PHP](./paper-hrl-stack-22-perceptive_humanoid_parkour.md)、[FastStair](./paper-faststair-humanoid-stair-ascent.md)、[Explicit Stair Geometry](./paper-explicit-stair-geometry-humanoid-locomotion.md)
+- [PHP](./paper-hrl-stack-22-perceptive_humanoid_parkour.md)、[FastStair](./paper-faststair-humanoid-stair-ascent.md)、[Explicit Stair Geometry](./paper-explicit-stair-geometry-humanoid-locomotion.md)、[ParkourFormer](./paper-parkourformer.md)
 
 ## 推荐继续阅读
 

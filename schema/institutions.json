@@ -2788,6 +2788,28 @@
         "cas-siat",
         "shenzhen-institutes-of-advanced-technology"
       ]
+    },
+    "scau": {
+      "label": "华南农业大学（South China Agricultural University）",
+      "aliases": [
+        "scau",
+        "south-china-agricultural-university"
+      ]
+    },
+    "gdut": {
+      "label": "广东工业大学（Guangdong University of Technology）",
+      "aliases": [
+        "gdut",
+        "guangdong-university-of-technology"
+      ]
+    },
+    "clai-lab": {
+      "label": "创联人工智能实验室（CLAI-LAB）",
+      "aliases": [
+        "clai-lab",
+        "cl-tech",
+        "clai"
+      ]
     }
   }
 }

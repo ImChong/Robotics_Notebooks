@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-06-26
+updated: 2026-08-16
 arxiv: "2402.19469"
 related:
   - ../overview/paper-notebook-category-03-high-impact-selection.md
@@ -58,6 +58,7 @@ summary: "把真实人形 locomotion 写成「下一词预测」：用 因果 Tr
 
 - 分类父节点：[paper-notebook-category-03-high-impact-selection](../overview/paper-notebook-category-03-high-impact-selection.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- 跑酷向序列建模对照：[ParkourFormer](./paper-parkourformer.md) — RL 环内显式未来两步监督，而非只做下一 token 拟合
 
 ## 参考来源
 
