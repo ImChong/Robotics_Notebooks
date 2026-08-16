@@ -205,6 +205,21 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
 #                concepts/foundation-policy.md：外部通用 VLM 产品型号，与
 #                DINOv2 / SigLIP / Wan2.2 / Qwen2.5-VL 同类，本库一律在
 #                方法/概念页按「底座」维度记述，不单建概念页
+#   qpos       → formalizations/articulated-body-algorithms.md（$q \in R^{n_q}$
+#                广义坐标定义）+ formalizations/motion-retargeting-objective.md
+#                （重定向目标里的机器人广义坐标 $\mathbf{q}^r_t$）+
+#                concepts/urdf-robot-description.md（$n_q$ vs $n_v$ 维数差）+
+#                concepts/floating-base-dynamics.md（浮动基广义位置/速度）：
+#                MuJoCo 状态数组的字段名，本体是已建页的广义坐标 $q$，与
+#                armature/damping 同为 MuJoCo 属性 token，本库按参数/形式化维度
+#                记述，不单建概念页
+#   rl         → methods/reinforcement-learning.md（canonical 定义页，缩写 slug
+#                与页面 stem 不同名）+ methods/safe-rl.md / model-based-rl.md /
+#                value-based-reinforcement-learning.md /
+#                hierarchical-reinforcement-learning.md（子族）+
+#                comparisons/rl-vs-il.md / mpc-vs-rl.md / wbc-vs-rl.md（选型对照）：
+#                与 wbc / wam / urdf 同属「缩写 slug ≠ 页面 stem」，不应按裸缩写
+#                误报为缺页
 MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "amp",
     "armature",
@@ -217,7 +232,9 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "mit",  # 机构（schema/institutions.json），非概念，不应建 concepts/methods 页
     "mjlab",
     "mujoco",
+    "qpos",  # MuJoCo 状态数组字段名，已由广义坐标 $q$ 的形式化/概念页覆盖
     "qwen3-vl",  # 外部 VLM 底座型号，已在 methods/vla.md 等按「底座」维度记述
+    "rl",  # 已由 methods/reinforcement-learning.md 覆盖（缩写 slug 与页面 stem 不同名）
     "sonic",
     "wbc",  # 已由 concepts/whole-body-control.md 覆盖（slug 与页面 stem 不同名）
     "wam",  # 已由 concepts/world-action-models.md 覆盖（缩写 slug 与页面 stem 不同名）

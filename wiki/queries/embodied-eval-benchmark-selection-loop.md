@@ -35,6 +35,7 @@ related:
   - ../entities/xpolicylab.md
   - ../entities/paper-fabrivla.md
   - ../entities/paper-softvtbench.md
+  - ../entities/paper-humantracker.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../concepts/sim2real.md
   - ../queries/embodied-fm-taxonomy-loop.md
@@ -183,6 +184,7 @@ flowchart TD
 - [All Hands Up](../entities/all-hands-up.md) — 硬件层：腕装灵巧手 URDF 画廊与仿真 Kapandji（DexBench 任务分在独立站）
 - [RoboDojo](../entities/robodojo.md) — ③/④ 层：通用操纵官方 sim-and-real 公益榜（重跑 + 开源上榜）
 - [SoftVTBench](../entities/paper-softvtbench.md) — ③ 层：可变形视触觉 Goal/Safety Success
+- [HumanTracker](../entities/paper-humantracker.md) — ③ 层：人形 motion tracking 四族 153 h 光学基准 + 偏好对齐 HumanScore（数据集待发布）
 - [XPolicyLab](../entities/xpolicylab.md) — RoboDojo/RoboTwin 策略适配与 verified 开源口
 - [XPolicyLab 论文（arXiv:2608.09892）](../entities/paper-xpolicylab.md) — O(N+M) 契约与依赖隔离 serving 技术报告
 - [FabriVLA](../entities/paper-fabrivla.md) — ③层轻量 VLA Meta-World 对照条目
