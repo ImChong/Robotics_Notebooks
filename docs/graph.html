@@ -705,7 +705,9 @@
       height: 100%;
       border-radius: 999px;
       background: linear-gradient(90deg, #5b9cf6, #7ab3ff);
-      transition: width .3s ease;
+      /* 不要给 width 加过渡：下载阶段每个分片都会重设 width，过渡会被反复打断，
+         进度条稳态落后百分比数字约 v×时长（实测 .3s 过渡 ≈ 落后 2 个百分点）。
+         分片更新本身足够密集，直接写宽度即可保证「进度条 === 数字」。 */
     }
     .graph-loading-pct {
       font-size: .8rem;
@@ -3027,6 +3029,7 @@
     const loadingTitle = document.getElementById('graph-loading-title');
     let loadingValue = 0;
     let loadingDone  = false;
+    const LOADING_HOLD_MS = 140;   // 淡出前让 100% 的满条真正被绘制出来的停留时长
 
     function setLoadingProgress(pct) {
       if (loadingDone) return;
@@ -3039,12 +3042,17 @@
     function finishLoading() {
       if (loadingDone) return;
       loadingDone = true;
+      loadingValue = 100;
       if (loadingFill) loadingFill.style.width = '100%';
       if (loadingPct)  loadingPct.textContent = '100%';
-      if (loadingEl) {
+      if (!loadingEl) return;
+      /* 先让走满的进度条绘制出来再淡出：构图阶段主线程被占满，80/88/96 这几档都没机会绘制，
+         finishLoading 时进度条还停在下载结束的 78% 左右。若在同一帧就开始淡出，
+         用户看到的就是「100% 的数字 + 走了四分之三的进度条」一闪而过。 */
+      setTimeout(() => {
         loadingEl.classList.add('is-hidden');
         setTimeout(() => { loadingEl.hidden = true; }, 500);
-      }
+      }, LOADING_HOLD_MS);
     }
 
     function failLoading(msg) {
