@@ -51,6 +51,7 @@ related:
   - ../entities/paper-rove-humanoid-vla-intervention.md
   - ../entities/paper-greenvla-staged-vla-humanoid.md
   - ../entities/paper-green-for-go-vla-nav-grounding.md
+  - ../entities/paper-arcadia.md
   - ../entities/paper-joyai-ra-05.md
   - ../entities/paper-vesta-generalist-embodied-reasoning.md
   - ../entities/paper-mint-vla.md
@@ -106,6 +107,7 @@ sources:
   - ../../sources/repos/xiaomi-robotics-0.md
   - ../../sources/sites/xiaomi-robotics-1.md
   - ../../sources/papers/being_h07.md
+  - ../../sources/papers/arcadia_arxiv_2512_00076.md
   - ../../sources/papers/humannet.md
   - ../../sources/repos/humannet.md
   - ../../sources/papers/world_action_models_survey_2605.md
@@ -184,6 +186,7 @@ flowchart TD
 - **π₀**：在 VLA 上加入 Flow Matching，生成连续动作序列
 - **π₀.₇**：在 π 系 VLA 上系统化**多模态提示条件**（子任务语言、片段元数据、控制模态、视觉子目标）以合并异质数据并支持推理时 **steering**；官方报告开箱 dexterity 对标 RL 专精与组合/跨本体泛化迹象（见 [π₀.₇](./pi07-policy.md)）
 - **OpenVLA / Octo**：更强调开源数据、跨任务泛化和 fine-tune 流程
+- **Arcadia**：把操作 VLA 与 VLN 绑在同一 Qwen2.5-VL 骨干，并用真机反馈写回仿真；公开仓只部分兑现数据生成与训练脚本（见 [Arcadia](../entities/paper-arcadia.md)）
 - **Gemini Robotics 2（闭源对照）**：DeepMind 全身人形 VLA + 公开预览 ER 2 agent + On-Device 快速跨本体；**VLA 权重未开源**，ER 编排样例见 [`robotics-samples`](https://github.com/google-gemini/robotics-samples)（[实体页](../entities/gemini-robotics.md)）
 - **CapVector**：在 **参数空间** 用 **辅助目标 SFT** 与 **标准 SFT** 两枚同分布 checkpoint 的差 **\(\theta_{\text{ao}}-\theta_{\text{ft}}\)** 抽取 **capability vector**，合并回 **\(\theta_{\text{pt}}\)** 得 **\(\theta_{\text{meta}}\)**；下游仅用 **标准 SFT + 轻量正交正则** 以接近纯 SFT 的开销复现 **Spatial Forcing、LaRA-VLA** 等辅助微调带来的收敛与成功率收益，并在 **LIBERO / RoboTwin** 与多 VLA 骨干上讨论 **跨域与真机** 迁移（见 [CapVector 论文实体页](../entities/paper-capvector-capability-vectors-vla.md)）
 - **StarVLA**：证明强 VLM 底座（Qwen3-VL）配合简单 MLP 动作头即可在多项基准上打破 SOTA，代表极简主义路线
@@ -416,6 +419,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [LeRobot](../entities/lerobot.md) — Hugging Face 具身智能全栈框架
 - [Gemini Robotics](../entities/gemini-robotics.md) — DeepMind 闭源全身 VLA + 可调用 ER 2（GR2）
 - [OpenVLA](../entities/openvla.md) — 开源 Prismatic VLA 与 LoRA/OFT 微调
+- [Arcadia](../entities/paper-arcadia.md) — 共享 VLN/VLA 骨干 + Sim-from-Real；G1 操作 27/100（部分开源）
 - [NVIDIA SO-101 Sim2Real 实验 workflow](../entities/nvidia-so101-sim2real-lab-workflow.md) — GR00T N1.6 教程级 VLA + 四类 sim2real 策略对照
 - [RLDX-1](../entities/rldx-1.md) — 多流扩散动作头 + 可选触觉/力矩与 RTC 推理栈的工程参考
 - [RIO（Robot I/O）](../entities/robot-io-rio.md) — 跨形态实时采集与 VLA 闭环部署的模块化 I/O 栈（RSS 2026）

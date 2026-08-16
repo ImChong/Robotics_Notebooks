@@ -403,6 +403,7 @@
 - [AnyBody（HMI P039）](wiki/entities/paper-anybody-keypoint-humanoid-control.md) — AnyBody**（*AnyBody: Free-Form Whole-Body Humanoid Control from Arbitrary Keypoint Guidance*，2026， `📅unknown` `[entity_page]`
 - [Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning](wiki/entities/paper-anymal-walk-minutes-parallel-drl.md) — 一句话定义**：用 **Isaac Gym 大规模并行** 与 **游戏式课程地形**，在 **数分钟（平地）/ 约二十分钟（粗糙地形）** 内为 ANYmal 训出可迁移策略，并开源 **leg `📅unknown` `[entity_page]`
 - [APT-RL：野外敏捷感知多技能四足 Locomotion](wiki/entities/paper-apt-rl-agile-perceptive-quadruped-locomotion.md) — Agile perceptive multi-skill locomotion for quadrupedal robots in the wild**（Jun-Gill Kang / Jaehy `📅unknown` `[entity_page]`
+- [Arcadia（具身终身学习全生命周期）](wiki/entities/paper-arcadia.md) — Arcadia**（*Toward a Full-Lifecycle Framework for Embodied Lifelong Learning*，[arXiv:2512.00076](ht `📅unknown` `[entity_page]`
 - [Argus（Dynamic Symmetry / Dynamic Isotropy）](wiki/entities/paper-argus-dynamic-symmetry.md) — Argus**（*Extreme dynamic symmetry enables omnidirectional and multifunctional robots*，Jiaxun Liu / `📅unknown` `[entity_page]`
 - [AssistMimic（Learning to Assist: Physics-Grounded Human-Human Control）](wiki/entities/paper-assistmimic.md) — AssistMimic** 是 CMU 与庆应等团队的 **物理仿真双人 assistive 交互 tracking** 论文（arXiv:2603.11346，项目页标注 **CVPR 2026 `📅unknown` `[entity_page]`
 - [Athena-WBC：面向人形全身控制长尾的能力对齐策略专家](wiki/entities/paper-athena-wbc-humanoid-longtail.md) — Athena-WBC**（*Capability-Aligned Policy Experts for Long-Tail Humanoid Whole-Body Control*，arXiv:2 `📅unknown` `[entity_page]`

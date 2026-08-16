@@ -3,12 +3,14 @@ type: concept
 title: Data Flywheel (具身数据飞轮)
 tags: [data-cycle, robot-learning, scaling, automation]
 summary: "数据飞轮通过“采集-清洗-训练-部署”的自动化闭环，利用 Scaling Law 实现机器人策略性能与场景覆盖的持续自我强化。"
-updated: 2026-07-29
+updated: 2026-08-16
 related:
   - ./embodied-scaling-laws.md
   - ../entities/paper-from-agi-to-asi.md
+  - ../entities/paper-arcadia.md
 sources:
   - ../../sources/papers/agi_to_asi_arxiv_2606_12683.md
+  - ../../sources/papers/arcadia_arxiv_2512_00076.md
 ---
 
 # Data Flywheel (具身数据飞轮)
@@ -32,7 +34,7 @@ sources:
 1. **采集 (Collection)**：利用 [lerobot](../entities/lerobot.md) 等框架在仿真或实物中生成初始轨迹。
 2. **清洗与标注 (Cleaning & Labeling)**：利用 [auto-labeling-pipelines](../methods/auto-labeling-pipelines.md) 自动剔除低质数据并添加语义标签。
 3. **训练 (Training)**：在海量异构数据上进行大规模预训练。
-4. **验证与反馈 (Eval & Feedback)**：模型在实测中发现弱点，反馈给采集端进行针对性补全。
+4. **验证与反馈 (Eval & Feedback)**：模型在实测中发现弱点，反馈给采集端进行针对性补全。[Arcadia](../entities/paper-arcadia.md) 把这一步写成任务/场景/硬件三通道，并要求同时更新 **仿真资产与策略**，而不是只追加演示。
 
 ## 与其他系统的关系
 
@@ -50,3 +52,4 @@ sources:
 - [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)
 - [sources/papers/lwd.md](../../sources/papers/lwd.md) — LWD 把数据飞轮重定义为 offline-to-online RL 闭环
 - [From AGI to ASI 论文摘录（arXiv:2606.12683）](../../sources/papers/agi_to_asi_arxiv_2606_12683.md) — 数据 RSI 与仿真/交互数据对抗数据墙
+- [Arcadia 论文摘录（arXiv:2512.00076）](../../sources/papers/arcadia_arxiv_2512_00076.md) — 部署反馈同时写回资产与策略

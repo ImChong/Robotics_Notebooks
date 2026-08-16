@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-08-15
+updated: 2026-08-16
 related:
   - ../entities/paper-clothtransformer-unified-latent-cloth-simulation.md
   - ../entities/paper-flying-knots.md
@@ -17,6 +17,7 @@ related:
   - ../entities/physx-omni.md
   - ../entities/paper-physforge-physics-grounded-3d-assets.md
   - ../entities/paper-simfoundry-real2sim-scene-generation.md
+  - ../entities/paper-arcadia.md
   - ../entities/paper-agentic-real2sim.md
   - ../entities/paper-robointer-1-5.md
   - ../entities/paper-fabrivla.md
@@ -60,6 +61,7 @@ sources:
   - ../../sources/papers/flex_pi_arxiv_2608_10860.md
   - ../../sources/papers/galaxea_g05_arxiv_2608_11739.md
   - ../../sources/papers/rift_wam_arxiv_2608_11521.md
+  - ../../sources/papers/arcadia_arxiv_2512_00076.md
   - ../../sources/blogs/generalist_thousand_hands.md
 summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核心难点是感知、接触和全身协同。"
 ---
@@ -303,6 +305,7 @@ flowchart TD
 - [PhysX-Omni](../entities/physx-omni.md) — 统一刚体/可变形/关节体 sim-ready 3D 生成与 PhysXVerse 数据引擎
 - [HomeWorld](../entities/paper-homeworld-whole-home-scene-generation.md) — 全屋 sim-ready  furnished 3D 与 **>15 manipulable objects/scene** 的场景级生成（arXiv:2606.06390）
 - [SimFoundry](../entities/paper-simfoundry-real2sim-scene-generation.md) — 真机视频 → sim-ready 孪生 + object/scene/task cousins；real-to-sim 评测与 sim-to-real 训练（arXiv:2606.28276）
+- [Arcadia](../entities/paper-arcadia.md) — 操作与 VLN 共享骨干 + Sim-from-Real；LIBERO 消融 87.2%、G1+Dex-3 27/100（arXiv:2512.00076；部分开源）
 - [Agentic Real2Sim](../entities/paper-agentic-real2sim.md) — VLM agent 编排 DROID→MuJoCo episode twin（arXiv:2607.19190，代码待开放）
 - [TSIL](../entities/paper-tsil-temporal-self-imitation-learning.md) — 长时域 Meta-World 操作 PPO：自适应时间目标 + 效率加权自模仿（arXiv:2606.19752）
 - [FabriVLA](../entities/paper-fabrivla.md) — 轻量 InternVL3.5 + gated SA flow-matching；Meta-World MT50 tier-avg **90.0%**（arXiv:2607.08575）

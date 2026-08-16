@@ -30,12 +30,14 @@ related:
   - ./paper-notebook-navila-legged-robot-vision-language-action-model.md
   - ./paper-worldvln-aerial-vln-wam.md
   - ./paper-fsd-vln.md
+  - ./paper-arcadia.md
   - ./paper-realm-last-3-meter-vln-grounding.md
   - ./paper-green-for-go-vla-nav-grounding.md
   - ./paper-uni-lavira.md
   - ../methods/behavior-cloning.md
 sources:
   - ../../sources/papers/da_nav_arxiv_2607_11638.md
+  - ../../sources/papers/arcadia_arxiv_2512_00076.md
 ---
 
 # DA-Nav（方向感知城市尺度 VLN）
@@ -162,6 +164,7 @@ flowchart LR
 | **CityWalker / ViNT** | 路径/拓扑目标 | 连续 waypoint / 拓扑 | 弱显式恢复 | 基线对照 |
 | **WorldVLN** | 空中语言指令 | WAM 潜转移→航点 | 侧重世界预测 | [空中 WAM](./paper-worldvln-aerial-vln-wam.md) |
 | **FSD-VLN** | 空中地标语言 | VLSF + 短视界 DiT | 无显式恢复 | [快慢双系统](./paper-fsd-vln.md)；未开源、无真机 |
+| **Arcadia** | 室内语言 / G1 | 共享 VLN/VLA + 生成仿真 | Sim-from-Real 三通道 | [生命周期闭环](./paper-arcadia.md)；部分开源 |
 | **DA-Nav（本文）** | **商业方向离散指令** | **图像平面网格 + CoT** | **ReDA recovery** | **暂未开源** |
 
 ## 关联页面
@@ -173,6 +176,7 @@ flowchart LR
 - [NaVILA](./paper-notebook-navila-legged-robot-vision-language-action-model.md) — 足式导航 VLA 基线
 - [WorldVLN](./paper-worldvln-aerial-vln-wam.md) — 另一城市/户外相关导航范式（空中 WAM）
 - [FSD-VLN](./paper-fsd-vln.md) — 空中长程 VLN 快慢双系统（仿真、未开源）
+- [Arcadia](./paper-arcadia.md) — 室内终身学习闭环（部分开源；G1 导航 46/100）
 - [REALM](./paper-realm-last-3-meter-vln-grounding.md) — 室内 REVERIE 末段接地（评测关注点不同）
 - [Green for Go](./paper-green-for-go-vla-nav-grounding.md) — 冻结导航 VLA 的可通行 overlay（另一类 grounding；未开源）
 - [行为克隆](../methods/behavior-cloning.md) — 纯专家示范在闭环 OOD 下的局限对照
