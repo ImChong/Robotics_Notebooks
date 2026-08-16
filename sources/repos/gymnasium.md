@@ -21,9 +21,12 @@
   - `reset()` 返回 `(observation, info)` 元组；
   - `step()` 用 `terminated`（任务内终止）与 `truncated`（时间限制等 MDP 外截断）取代单一 `done`。
 - **空间约定**：`action_space` / `observation_space` 基于 `gymnasium.spaces`（`Box`、`Discrete`、`Dict`、`Tuple` 等）。
-- **默认包装**：`gymnasium.make()` 通常自动叠加 `TimeLimit`、`OrderEnforcing`、`PassiveEnvChecker` 等 Wrapper。
-- **并行训练入口**：`gymnasium.make_vec()` 创建向量化环境（与 Isaac Gym 类 GPU 物理并行不同，侧重 API 层批量 `step`）。
+- **默认 Wrapper 栈**：`gymnasium.make()` 通常自动叠加 `TimeLimit`（步数上限 → `truncated`）、`OrderEnforcing`（必须先 `reset`）、`PassiveEnvChecker`；可用 `env.unwrapped` 取裸环境。
+- **并行训练入口**：`gymnasium.make_vec()` 创建向量化环境（`SyncVectorEnv` / `AsyncVectorEnv`；与 Isaac Gym 类 GPU 物理并行不同，侧重 API 层批量 `step`）。子环境结束后默认 **next-step autoreset**（结束标志为真的下一步才 reset），详见 [Vector Autoreset Mode](https://farama.org/Vector-Autoreset-Mode)。
+- **价值 bootstrap**：`terminated` 才把后续价值置 0；`truncated`（时间限制）应继续 bootstrap `V(s')`。旧 Gym 的单一 `done` 不能直接当 `terminated`。
 - **自定义环境**：继承 `gym.Env`，实现 `reset` / `step`，可用 `gym.register` 注册后用 `make` 实例化；`gymnasium.utils.env_checker.check_env` 用于调试。
+- **拆出的操作环境**：Fetch 等已迁至单独包 Gymnasium-Robotics，需 `register_envs` 后再 `make`。
+- **旧 API 适配**：不能升级的 Gym v0.21 / v0.26 环境经 [Shimmy](https://github.com/Farama-Foundation/Shimmy) 以 `GymV21Environment-v0` / `GymV26Environment-v0` 接入。
 
 ## 内置参考环境（可选 extra 安装）
 

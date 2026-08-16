@@ -1,3 +1,10 @@
+## [2026-08-16] query | wiki/entities/gymnasium.md — 深化 Gymnasium 实体页 mermaid 图
+
+- **触发：** 用户指定深化 [entity-gymnasium](https://imchong.github.io/Robotics_Notebooks/detail.html?id=entity-gymnasium)，增加 mermaid 以促进理解
+- **来源：** [`sources/repos/gymnasium.md`](sources/repos/gymnasium.md) 对照官方 Basic Usage / Custom Env / Migration Guide / Vectorize API
+- **关键页：** [`wiki/entities/gymnasium.md`](wiki/entities/gymnasium.md) — 补选型树、MDP↔Env 映射、单回合时序、terminated/truncated bootstrap、Wrapper 洋葱栈、spaces、类型关系、Farama 生态、API 向量化 vs GPU 物理并行、自定义环境注册流程
+- **开源结论：** 官方仓 [Farama-Foundation/Gymnasium](https://github.com/Farama-Foundation/Gymnasium) 已开源（MIT）
+
 ## [2026-08-16] ingest | sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md — 接入 LEGO 层级语言高斯溅射（已开源、可运行）
 
 - **触发：** 用户指定 [arXiv:2608.10057](https://arxiv.org/abs/2608.10057) 与项目页 <https://pz0826.github.io/LEGO-Webpage/>
