@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, semantic-mapping, open-vocabulary, sam, point-cloud, offline, zju, tencent]
 status: complete
-updated: 2026-07-26
+updated: 2026-08-16
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../queries/go2-3d-semantic-mapping-sam-pipeline.md
@@ -10,6 +10,7 @@ related:
   - ./ovo-semantic-mapping.md
   - ./paper-segment-anything.md
   - ./point-lio-unilidar.md
+  - ./paper-lego-leveled-language-gaussian-splatting.md
 sources:
   - ../../sources/repos/ov-sam3d.md
   - ../../sources/papers/segment_anything_arxiv_2304_02643.md
@@ -74,6 +75,7 @@ summary: "OV-SAM3D 是训练无关的开放词汇 3D 场景理解框架：超点
 - [DualMap](./dualmap.md)
 - [OVO](./ovo-semantic-mapping.md)
 - [point_lio_unilidar](./point-lio-unilidar.md)
+- [LEGO](./paper-lego-leveled-language-gaussian-splatting.md) — 按场景优化的 3DGS 层级开放词汇；本页是训练无关点云路线
 
 ## 参考来源
 
