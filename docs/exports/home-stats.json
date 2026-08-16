@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-lego-leveled-language-gaussian-splatting.md",
+      "detail_id": "entity-paper-lego-leveled-language-gaussian-splatting",
+      "label": "LEGO：层级语言高斯溅射",
+      "type": "entity",
+      "recency": "2026-08-16",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
+    },
+    {
       "path": "wiki/entities/paper-parkourformer.md",
       "detail_id": "entity-paper-parkourformer",
       "label": "ParkourFormer（预测监督 + 序列建模人形跑酷）",
@@ -206,27 +217,18 @@
       "source": "git",
       "action": "added",
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-seeker.md",
-      "detail_id": "entity-paper-seeker",
-      "label": "Seeker：从动作里长出视觉注意力",
-      "type": "entity",
-      "recency": "2026-08-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-parkourformer.md",
-    "detail_id": "entity-paper-parkourformer",
-    "label": "ParkourFormer（预测监督 + 序列建模人形跑酷）",
+    "path": "wiki/entities/paper-lego-leveled-language-gaussian-splatting.md",
+    "detail_id": "entity-paper-lego-leveled-language-gaussian-splatting",
+    "label": "LEGO：层级语言高斯溅射",
     "type": "entity",
     "recency": "2026-08-16",
     "source": "git",
     "action": "added",
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "has_repo": true,
+    "community_label": "机器人视觉感知栈选型闭环（Robot Perception Stack Selection Loop） 社区"
   },
   "top_communities": [
     {
