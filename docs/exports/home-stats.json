@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/concepts/rl-runner.md",
+      "detail_id": "wiki-concepts-rl-runner",
+      "label": "RL Runner（训练循环编排）",
+      "type": "concept",
+      "recency": "2026-08-16",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
       "path": "wiki/concepts/cartpole.md",
       "detail_id": "wiki-concepts-cartpole",
       "label": "Cartpole 问题",
@@ -208,27 +218,16 @@
       "action": "added",
       "has_repo": true,
       "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/all-hands-up.md",
-      "detail_id": "entity-all-hands-up",
-      "label": "All Hands Up（RLWRLD 灵巧手档案）",
-      "type": "entity",
-      "recency": "2026-08-15",
-      "source": "git",
-      "action": "added",
-      "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/cartpole.md",
-    "detail_id": "wiki-concepts-cartpole",
-    "label": "Cartpole 问题",
+    "path": "wiki/concepts/rl-runner.md",
+    "detail_id": "wiki-concepts-rl-runner",
+    "label": "RL Runner（训练循环编排）",
     "type": "concept",
     "recency": "2026-08-16",
     "source": "git",
     "action": "added",
-    "has_repo": true,
     "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
