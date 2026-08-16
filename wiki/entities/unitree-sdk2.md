@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, sdk, dds, sim2real, humanoid, quadruped]
 status: complete
-updated: 2026-07-28
+updated: 2026-08-16
 related:
   - ./unitree.md
   - ./unitree-ros2.md
@@ -17,6 +17,7 @@ sources:
   - ../../sources/repos/unitree_sdk2_python.md
   - ../../sources/repos/unitree_dds_wrapper.md
   - ../../sources/repos/unitree_actuator_sdk.md
+  - ../../sources/repos/unitree_ros2.md
   - ../../sources/repos/unitree.md
 summary: "unitree_sdk2 是宇树当前主推的 C++ SDK（CycloneDDS）；配套 unitree_sdk2_python 提供同语义 Python 接口。新机型真机控制、自定义部署与 Sim2Sim 同构验证的默认底层入口；旧代 UDP SDK 见 unitree_legged_sdk。"
 ---
@@ -94,7 +95,7 @@ cmake .. -DCMAKE_INSTALL_PREFIX=/opt/unitree_robotics && sudo make install
 |------|------|
 | 新机型真机 / 自研 C++ 控制器 | 本页 C++ SDK2 |
 | 快速脚本、采数、教学演示 | `unitree_sdk2_python` |
-| ROS 2 系统集成 | [`unitree_ros2`](./unitree-ros2.md)（直接吃 DDS msg） |
+| ROS 2 系统集成 | [`unitree_ros2`](./unitree-ros2.md)（直接吃 DDS msg；**v0.3.0** 起 `unitree_hg` 手部 msg 已对齐本仓 SDK2） |
 | Go1 旧 UDP 栈 | [`unitree_legged_sdk`](./unitree-legged-sdk.md) |
 
 ## 局限与风险
@@ -106,7 +107,7 @@ cmake .. -DCMAKE_INSTALL_PREFIX=/opt/unitree_robotics && sudo make install
 ## 关联页面
 
 - [Unitree](./unitree.md) — 组织枢纽与仓清单
-- [unitree_ros2](./unitree-ros2.md) — ROS 2 + 同 DDS 语义
+- [unitree_ros2](./unitree-ros2.md) — ROS 2 + 同 DDS 语义；v0.3.0 手部 `HandCmd`/`HandState` 与本仓对齐
 - [unitree_mujoco](./unitree-mujoco.md) — Sim2Sim 同构验证
 - [G1 软件服务栈](./unitree-g1-software-stack.md) — 课程向分层接口面
 - [unitree_legged_sdk](./unitree-legged-sdk.md) — 旧代 UDP SDK

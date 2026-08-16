@@ -2,11 +2,12 @@
 type: entity
 tags: [unitree, g1, software, dds, sdk, ros2, humanoid, middleware]
 status: complete
-updated: 2026-07-23
+updated: 2026-08-16
 related:
   - ./unitree-g1.md
   - ./unitree.md
   - ./unitree-ros.md
+  - ./unitree-ros2.md
   - ./unitree-rl-mjlab.md
   - ../concepts/ros2-basics.md
   - ../methods/dwa.md
@@ -15,6 +16,7 @@ related:
 sources:
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
   - ../../sources/repos/unitree.md
+  - ../../sources/repos/unitree_ros2.md
 summary: "Unitree G1 软件服务实现：SDK2/CycloneDDS 通信、运控与传感接口、仿真同构与 ROS 2 桥，对应课程 1.4；对接 RL、导航与语音技能的统一接口面。"
 ---
 
@@ -87,7 +89,7 @@ flowchart TB
 |----|------|------|
 | SDK2 + DDS | G1/H1/Go2 等新机 | **课程优先** |
 | [unitree-ros](./unitree-ros.md) | ROS1 Gazebo 遗产 | 勿与 SDK2 话题假设混用 |
-| `unitree_ros2` | 直接吃 Unitree DDS msg | Humble 等发行版对齐 |
+| [`unitree_ros2`](./unitree-ros2.md) | 直接吃 Unitree DDS msg | **v0.3.0** 起含 G1 双臂 / Dex3 / Arm SDK / Loco / 音频示例；手部 msg 对齐 SDK2 |
 
 ### 调试清单
 
@@ -117,6 +119,7 @@ flowchart TB
 
 - [Unitree G1](./unitree-g1.md)
 - [Unitree 品牌/组织](./unitree.md)
+- [unitree_ros2](./unitree-ros2.md) — v0.3.0 G1 双臂 / Dex3 / Arm SDK
 - [ROS 2 基础](../concepts/ros2-basics.md)
 - [DWA](../methods/dwa.md)
 - [人形语音交互](../methods/humanoid-voice-interaction.md)
@@ -126,6 +129,7 @@ flowchart TB
 
 - [深蓝学院人形系统课程大纲](../../sources/courses/shenlan_humanoid_system_theory_practice.md)
 - [unitree 组织归档](../../sources/repos/unitree.md)
+- [unitree_ros2 归档](../../sources/repos/unitree_ros2.md) — v0.3.0 G1 示例与手部 msg 对齐
 
 ## 推荐继续阅读
 

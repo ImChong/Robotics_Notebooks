@@ -2,10 +2,11 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, dexterous-hand, dds, teleoperation, manipulation]
 status: complete
-updated: 2026-07-24
+updated: 2026-08-16
 related:
   - ./unitree.md
   - ./unitree-g1.md
+  - ./unitree-ros2.md
   - ./xr-teleoperate.md
   - ./unitree-lerobot.md
   - ./unitree-sim-isaaclab.md
@@ -16,6 +17,7 @@ sources:
   - ../../sources/repos/dfx_inspire_service.md
   - ../../sources/repos/brainco_hand_service.md
   - ../../sources/repos/linker_hand_service.md
+  - ../../sources/repos/unitree_ros2.md
   - ../../sources/repos/unitree.md
 summary: "Unitree 人形灵巧手/夹爪 Serial↔DDS 服务总页，合并 Dex1-1、Inspire RH56DFX、Brainco Revo2、Linker Hand 等桥接仓；统一说明主题命名、部署位置与和 lerobot/遥操作的衔接，避免四个重复 stub。"
 ---
@@ -54,6 +56,8 @@ summary: "Unitree 人形灵巧手/夹爪 Serial↔DDS 服务总页，合并 Dex1
 | [`brainco_hand_service`](https://github.com/unitreerobotics/brainco_hand_service) | Brainco Revo2 | lerobot v0.2+ 转换支持 |
 | [`linker_hand_service`](https://github.com/unitreerobotics/linker_hand_service) | Linker Hand | Serial↔DDS |
 
+**Dex3 不在本表**：Unitree Dex3 是 **原生 DDS** 灵巧手（7 电机 + 压感），走 `unitree_hg` 的 `HandCmd` / `HandState`，主题形如 `/dex3/{left|right}/cmd` 与 `/lf/dex3/{left|right}/state`。官方 ROS 2 入口是 [`unitree_ros2` v0.3.0](./unitree-ros2.md) 的 `g1_dex3_example`，**不要**再套一层 Serial 服务。v0.3.0 手部 msg 已对齐 SDK2（字段重排，旧节点会静默错位）。
+
 **Dex1-1 典型数据流**：用户节点发布 `rt/dex1/right/cmd` → service（motor_id=0）→ 电机；状态经 `rt/dex1/right/state` 回传（左手 motor_id=1）。
 
 ## 工程实践
@@ -79,6 +83,7 @@ sudo ./dex1_1_gripper_server --network eth0
 ## 关联页面
 
 - [xr_teleoperate](./xr-teleoperate.md)
+- [unitree_ros2](./unitree-ros2.md) — Dex3 原生 DDS 示例（v0.3.0）
 - [unitree_lerobot](./unitree-lerobot.md)
 - [unitree_sim_isaaclab](./unitree-sim-isaaclab.md)
 - [Unitree G1](./unitree-g1.md)
@@ -91,6 +96,7 @@ sudo ./dex1_1_gripper_server --network eth0
 - [sources/repos/dfx_inspire_service.md](../../sources/repos/dfx_inspire_service.md)
 - [sources/repos/brainco_hand_service.md](../../sources/repos/brainco_hand_service.md)
 - [sources/repos/linker_hand_service.md](../../sources/repos/linker_hand_service.md)
+- [sources/repos/unitree_ros2.md](../../sources/repos/unitree_ros2.md) — v0.3.0 Dex3 原生 DDS 与手部 msg 对齐
 
 ## 推荐继续阅读
 
