@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-fsd-vln.md",
+      "detail_id": "entity-paper-fsd-vln",
+      "label": "FSD-VLN（空中长程 VLN · 快慢双系统）",
+      "type": "entity",
+      "recency": "2026-08-16",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
+    },
+    {
       "path": "wiki/entities/paper-humantracker.md",
       "detail_id": "entity-paper-humantracker",
       "label": "HumanTracker（Comprehensive and Human-Aligned Motion Tracking Benchmark）",
@@ -205,28 +215,17 @@
       "source": "git",
       "action": "added",
       "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-green-for-go-vla-nav-grounding.md",
-      "detail_id": "entity-paper-green-for-go-vla-nav-grounding",
-      "label": "Green for Go（VLA 导航可通行性视觉接地）",
-      "type": "entity",
-      "recency": "2026-08-14",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-humantracker.md",
-    "detail_id": "entity-paper-humantracker",
-    "label": "HumanTracker（Comprehensive and Human-Aligned Motion Tracking Benchmark）",
+    "path": "wiki/entities/paper-fsd-vln.md",
+    "detail_id": "entity-paper-fsd-vln",
+    "label": "FSD-VLN（空中长程 VLN · 快慢双系统）",
     "type": "entity",
-    "recency": "2026-08-15",
+    "recency": "2026-08-16",
     "source": "git",
     "action": "added",
-    "has_repo": true,
-    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    "community_label": "视觉-语言导航（Vision-and-Language Navigation, VLN） 社区"
   },
   "top_communities": [
     {
