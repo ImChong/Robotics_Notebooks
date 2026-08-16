@@ -10,7 +10,7 @@ tags:
   - google
   - google-deepmind
 status: complete
-updated: 2026-07-27
+updated: 2026-08-16
 arxiv: "1811.04551"
 related:
   - ../overview/world-model-physics-fidelity-outputs.md
@@ -21,6 +21,7 @@ related:
   - ./paper-shenlan-wm-13-dreamerv3.md
   - ./paper-td-mpc2.md
   - ./paper-unisim.md
+  - ./paper-odeworld.md
 sources:
   - ../../sources/papers/planet_latent_dynamics_arxiv_1811_04551.md
   - ../../sources/repos/google-research-planet.md
@@ -193,6 +194,7 @@ sequenceDiagram
 - [Latent Imagination](../concepts/latent-imagination.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [World Models](./paper-ha-schmidhuber-world-models.md) · [DreamerV3](./paper-shenlan-wm-13-dreamerv3.md) · [TD-MPC2](./paper-td-mpc2.md) · [UniSim](./paper-unisim.md)
+- [ODEWorld](./paper-odeworld.md) — 连续时间 latent ODE 对照（离散 RSSM 步 vs 物理时间积分）
 
 ## 参考来源
 

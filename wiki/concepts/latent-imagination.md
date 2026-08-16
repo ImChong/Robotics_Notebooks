@@ -2,8 +2,9 @@
 type: concept
 tags: [world-models, reinforcement-learning, machine-learning, model-based-rl]
 status: complete
-updated: 2026-08-12
+updated: 2026-08-16
 related:
+  - ../entities/paper-odeworld.md
   - ../methods/model-based-rl.md
   - ../methods/generative-world-models.md
   - ../methods/being-h07.md
@@ -19,6 +20,7 @@ sources:
   - ../../sources/repos/open-dreamer.md
   - ../../sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md
   - ../../sources/papers/lucid_arxiv_2608_07746.md
+  - ../../sources/papers/odeworld_arxiv_2607_27924.md
 summary: "潜空间想象（Latent Imagination）是 Model-Based RL 的核心技术，通过在紧凑的隐变量空间中预测未来状态，使智能体能够在无需真实环境交互的情况下进行无限次自我博弈与策略优化。"
 ---
 
@@ -67,6 +69,7 @@ Actor-Critic 策略直接在这条“想象轨迹”上运行：
 - **DayDreamer**：证明了该技术可以直接在真实机械臂上几小时内从零学出抓取，无需任何仿真。
 - **Being-H0.7**：面向语言–视觉–操作策略的 **latent world–action** 路线——用 egocentric 人视频与机演示，在训练期用未来观测分支对齐潜空间，部署时不依赖像素 rollout；见 [Being-H0.7](../methods/being-h07.md)。
 - **LUCID**：在 **技能级宏状态**（非像素 RSSM）上想象；冻结结构化 latent LLC，用 macro-dynamics WM 训 HLC 做长时程重排；见 [LUCID](../entities/paper-lucid.md)。
+- **ODEWorld**：把离散 RSSM 步换成 **物理时间 ODE**——在解耦后的单 token 动力学 latent 上积分 \(v_\theta\)，任意 \(\tau\) / 反向预测，再把 \(z_\tau\) 当策略子目标；见 [ODEWorld](../entities/paper-odeworld.md)。不是 Dreamer 式「梦中 actor-critic」，而是连续时间潜空间展开。
 
 ## 关联页面
 - [Model-Based RL](../methods/model-based-rl.md)
@@ -75,6 +78,7 @@ Actor-Critic 策略直接在这条“想象轨迹”上运行：
 - [DreamerV3](../entities/paper-shenlan-wm-13-dreamerv3.md)
 - [Open Dreamer](../entities/open-dreamer.md)
 - [LUCID](../entities/paper-lucid.md) — 人形技能级宏动力学想象
+- [ODEWorld](../entities/paper-odeworld.md) — 物理时间 latent ODE 展开 + 子目标引导
 - [虚拟沙盒路线](../overview/world-models-route-03-virtual-sandbox.md)
 - [变分目标函数 (ELBO)](../formalizations/variational-objective.md)
 - [具身大模型分类学选型闭环（知识链枢纽）](../overview/hub-embodied-foundation-model.md) — 潜空间想象属五层闭环的世界模型推演层
@@ -87,3 +91,4 @@ Actor-Critic 策略直接在这条“想象轨迹”上运行：
 - Luo, H., et al. (2026). *Being-H0.7: A Latent World-Action Model from Egocentric Videos* — 项目页 <https://research.beingbeyond.com/being-h07>；归档见 [sources/papers/being_h07.md](../../sources/papers/being_h07.md)。
 - [Online MBRL 论文归档（真机一阶对照）](../../sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md)
 - [lucid_arxiv_2608_07746.md](../../sources/papers/lucid_arxiv_2608_07746.md) — LUCID 技能级想象控制
+- [odeworld_arxiv_2607_27924.md](../../sources/papers/odeworld_arxiv_2607_27924.md) — PT-Flow 连续时间潜空间预测

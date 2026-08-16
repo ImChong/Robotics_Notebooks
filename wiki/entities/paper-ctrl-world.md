@@ -11,7 +11,7 @@ tags:
   - stanford
   - tsinghua
 status: complete
-updated: 2026-08-11
+updated: 2026-08-16
 arxiv: "2510.10125"
 related:
   - ../methods/generative-world-models.md
@@ -29,6 +29,7 @@ related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../tasks/manipulation.md
   - ../methods/vla.md
+  - ./paper-odeworld.md
 sources:
   - ../../sources/papers/ctrl_world_arxiv_2510_10125.md
   - ../../sources/repos/ctrl-world.md
@@ -218,6 +219,7 @@ sequenceDiagram
 - [ViTacWorld](./paper-vitacworld.md) — 视触觉 WM 做 dream 增强 / 评估（对照纯视觉闭环）
 - [Wan](./paper-wan-video.md) / [Wan-Move](./paper-wan-move.md) — 另一视频先验族与轨迹控制
 - [评测选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 想象评估如何接入验收
+- [ODEWorld](./paper-odeworld.md) — 连续时间 latent 子目标对照（无动作条件）
 
 ## 参考来源
 

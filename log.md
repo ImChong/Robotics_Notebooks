@@ -1,3 +1,13 @@
+## [2026-08-16] ingest | sources/papers/odeworld_arxiv_2607_27924.md — 接入 ODEWorld 物理时间流连续预测（推理+权重已开源，无训练脚本/LICENSE）
+
+- **触发：** 用户指定项目页 <https://dstate.github.io/odeworld_website/> 与论文 [arXiv:2607.27924](https://arxiv.org/abs/2607.27924)
+- **步骤 2.5：** 项目页链到 [`Dstate/ODEWorld`](https://github.com/Dstate/ODEWorld) + HF [`ldxxx/odeworld`](https://huggingface.co/collections/ldxxx/odeworld)；`demo_infer.py` + 五套权重可跑 → **已开源、可运行推理**。GitHub **未挂 LICENSE**；README **无训练入口**；策略实验未随仓
+- **来源：** [`sources/papers/odeworld_arxiv_2607_27924.md`](sources/papers/odeworld_arxiv_2607_27924.md)、[`sources/sites/odeworld-website.md`](sources/sites/odeworld-website.md)、[`sources/repos/odeworld.md`](sources/repos/odeworld.md)
+- **升格：** [`wiki/entities/paper-odeworld.md`](wiki/entities/paper-odeworld.md) — PT-Flow + JVP 一阶监督；LIBERO-LONG 序列子目标 83.6%；AgileX+X-VLA 55%→80%；含 mermaid 时序图
+- **机构：** 复用 `tsinghua` / `berkeley`
+- **交叉：** Generative WM / Latent Imagination / V-JEPA 2 / 物理保真输出轴 / 级联路线 01 / Video-as-Simulation / LIBERO / Manipulation / Ctrl-World / PlaNet
+- **读数：** 当前版本无动作条件；不要当像素沙盒评估器
+
 ## [2026-08-16] ingest | sources/papers/fsd_vln_arxiv_2607_08359.md — 接入 FSD-VLN 空中长程 VLN 快慢双系统（确认未开源、无真机）
 
 - **触发：** 用户指定 arXiv 论文 *FSD-VLN: Fast-Slow Dual-System Modeling for Aerial Long-Horizon Vision-Language Navigation*

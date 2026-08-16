@@ -8,7 +8,7 @@ tags:
   - evaluation
   - taxonomy
 status: complete
-updated: 2026-07-30
+updated: 2026-08-16
 related:
   - ../concepts/video-as-simulation.md
   - ../concepts/kinematic-vs-dynamic-feasibility.md
@@ -24,6 +24,7 @@ related:
   - ../entities/paper-unisim.md
   - ../entities/paper-irasim.md
   - ../entities/paper-vjepa2.md
+  - ../entities/paper-odeworld.md
   - ../entities/paper-worldweaver.md
   - ../entities/paper-dwm-separating-world-effects.md
   - ../entities/paper-masked-visual-actions.md
@@ -73,7 +74,7 @@ summary: "按「动作执行后模型用什么记录世界变化」读机器人�
 |--------|----------|------|
 | **低维潜在状态** | [World Models](../entities/paper-ha-schmidhuber-world-models.md)、[PlaNet](../entities/paper-planet-latent-dynamics.md)、[DreamerV3](../entities/paper-shenlan-wm-13-dreamerv3.md)、[TD-MPC2](../entities/paper-td-mpc2.md) | 快；可能丢掉接触细节 |
 | **未来图像/视频** | [UniSim](../entities/paper-unisim.md)、[IRASim](../entities/paper-irasim.md)、[Masked Visual Actions](../entities/paper-masked-visual-actions.md) | 可检查；防「画对做不对」 |
-| **Latent 中间路线** | [V-JEPA 2](../entities/paper-vjepa2.md) | 规划不必完整像素渲染 |
+| **Latent 中间路线** | [V-JEPA 2](../entities/paper-vjepa2.md)、[ODEWorld](../entities/paper-odeworld.md) | 规划不必完整像素渲染；ODEWorld 再把离散步换成物理时间 ODE |
 | **持续状态** | [WorldWeaver](../entities/paper-worldweaver.md) | 寄存器跨片段读写共享世界 |
 | **动作 vs 世界效应** | [DWM Separating](../entities/paper-dwm-separating-world-effects.md) | 拆自主动态；≠ [Dexterous DWM](../methods/dwm.md) |
 | **几何/运动信号** | [RynnWorld-4D](../entities/paper-rynnworld-4d-rgb-depth-flow.md)、[MECo-WAM](../entities/paper-meco-wam-4d-geometry-cotraining.md) | RGB+深度+光流；训练期 4D vs 推理期 4D |
@@ -133,6 +134,7 @@ flowchart TB
 | [UniSim](../entities/paper-unisim.md) | 通用视频模拟器叙事；**未开源** |
 | [IRASim](../entities/paper-irasim.md) | Push-T IoU 0.637→0.961；已开源 |
 | [V-JEPA 2](../entities/paper-vjepa2.md) | <62h Droid → latent 规划；MIT |
+| [ODEWorld](../entities/paper-odeworld.md) | 物理时间 ODE + 子目标；推理已开源 |
 | [WorldWeaver](../entities/paper-worldweaver.md) | world score 81.0→105.1；coming soon |
 | [DWM Separating](../entities/paper-dwm-separating-world-effects.md) | CEM +13.1pp；未开源 |
 | [INTACT](../entities/paper-intact.md) | 意图→动作 Direct 2.9–5.5 ms；文档仓 Coming Soon |
@@ -176,6 +178,7 @@ flowchart TB
 - [UniSim](../entities/paper-unisim.md)
 - [IRASim](../entities/paper-irasim.md)
 - [V-JEPA 2](../entities/paper-vjepa2.md)
+- [ODEWorld](../entities/paper-odeworld.md) — 连续时间 latent 速度场（无动作条件）
 - [WorldWeaver](../entities/paper-worldweaver.md)
 - [DWM（Separating World Effects）](../entities/paper-dwm-separating-world-effects.md)
 - [INTACT](../entities/paper-intact.md) — 意图→动作无搜索接口（LeWM 族对照）

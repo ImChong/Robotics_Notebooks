@@ -2,7 +2,7 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
-updated: 2026-08-15
+updated: 2026-08-16
 summary: "LIBERO：用一百三十个机械臂任务控制对象、布局、目标和语言变化，专门评估终身学习与迁移中的分布偏移；固定任务套件和数据接口便于比较策略是记住训练场景还是获得可迁移能力。"
 related:
   - ../concepts/sim2real.md
@@ -16,6 +16,7 @@ related:
   - ../entities/paper-flex-pi.md
   - ../entities/paper-galaxea-g05.md
   - ../entities/paper-rift-wam.md
+  - ../entities/paper-odeworld.md
   - ../queries/hmi-opensource-projects-coverage.md
 sources:
   - ../../sources/repos/libero-benchmark.md
@@ -23,6 +24,7 @@ sources:
   - ../../sources/papers/world_action_planner_arxiv_2607_27599.md
   - ../../sources/papers/why_action_chunking_improves_bc_corl2026.md
   - ../../sources/papers/neural_introspection_gating_arxiv_2608_10824.md
+  - ../../sources/papers/odeworld_arxiv_2607_27924.md
 ---
 
 # LIBERO
@@ -109,6 +111,7 @@ flowchart LR
 - [GSR / ParaVLA](./paper-gsr-paravla.md) — LIBERO-Para 改写协议；SmolVLA 4.47%→49.12%（arXiv:2608.02497）
 - [SLIM-0.5B](./paper-slim-05b.md) — 0.47B latent 策略；LIBERO 97.5% / LIBERO-Plus 77.45%（开源权重）
 - [Temporal GRPO](./paper-temporal-grpo.md) — LIBERO-Long 阶段信用探针 99.1%；看 \(\Delta p_k\) 落在哪一段（arXiv:2608.13026）
+- [ODEWorld](./paper-odeworld.md) — 连续时间 WM；全量 LIBERO 训视频，LIBERO-LONG 序列子目标 **83.6%**（arXiv:2607.27924）
 
 ## 参考来源
 

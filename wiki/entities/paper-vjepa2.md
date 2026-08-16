@@ -10,7 +10,7 @@ tags:
   - manipulation
   - meta
 status: complete
-updated: 2026-08-10
+updated: 2026-08-16
 arxiv: "2506.09985"
 code: https://github.com/facebookresearch/vjepa2
 related:
@@ -23,6 +23,7 @@ related:
   - ../methods/generative-world-models.md
   - ../concepts/video-as-simulation.md
   - ../tasks/manipulation.md
+  - ./paper-odeworld.md
 sources:
   - ../../sources/papers/vjepa2_arxiv_2506_09985.md
   - ../../sources/repos/vjepa2.md
@@ -189,12 +190,12 @@ sequenceDiagram
 
 ## 与其他工作对比
 
-| 对比轴 | V-JEPA 2 / AC | [IRASim](./paper-irasim.md) | [DWM Separating](./paper-dwm-separating-world-effects.md) | [WorldWeaver](./paper-worldweaver.md) |
-|--------|---------------|-----------------------------|----------------------------------------------------------|---------------------------------------|
-| **预测空间** | **学习表征** | 像素/VAE latent 视频 | 学习表征 | 像素/视频 latent + **寄存器** |
-| **机器人数据** | **极少（<62 h）** | 按数据集监督生成 | 控制基准轨迹 | Minecraft 多智能体 |
-| **规划** | Latent MPC | 视频打分 / 选轨迹 | Latent CEM | 交互生成（非操作 CEM 主叙事） |
-| **开源** | **MIT 完整** | Apache 完整 | **未开源** | **占位 coming soon** |
+| 对比轴 | V-JEPA 2 / AC | [IRASim](./paper-irasim.md) | [DWM Separating](./paper-dwm-separating-world-effects.md) | [WorldWeaver](./paper-worldweaver.md) | [ODEWorld](./paper-odeworld.md) |
+|--------|---------------|-----------------------------|----------------------------------------------------------|---------------------------------------|--------------------------------|
+| **预测空间** | **学习表征** | 像素/VAE latent 视频 | 学习表征 | 像素/视频 latent + **寄存器** | 解耦动力学 token + 可选 RAE |
+| **机器人数据** | **极少（<62 h）** | 按数据集监督生成 | 控制基准轨迹 | Minecraft 多智能体 | LIBERO + AgiBot 子集 |
+| **规划** | Latent MPC | 视频打分 / 选轨迹 | Latent CEM | 交互生成（非操作 CEM 主叙事） | ODE 子目标条件策略（无动作条件） |
+| **开源** | **MIT 完整** | Apache 完整 | **未开源** | **占位 coming soon** | 推理+权重；无训练/LICENSE |
 
 ## 关联页面
 
@@ -207,6 +208,7 @@ sequenceDiagram
 - [Generative World Models](../methods/generative-world-models.md)
 - [Video-as-Simulation](../concepts/video-as-simulation.md)
 - [Manipulation](../tasks/manipulation.md)
+- [ODEWorld](./paper-odeworld.md) — 连续时间 JVP 速度监督对照（论文视频基线之一）
 
 ## 参考来源
 
