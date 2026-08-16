@@ -2,7 +2,7 @@
 type: task
 tags: [vln, navigation, embodied-ai, vision-language, matterport]
 summary: "视觉–语言导航（VLN）要求智能体在三维环境中依据自然语言指令执行一系列离散或连续动作到达目标，是连接语言理解与空间运动规划的基准任务。"
-updated: 2026-08-14
+updated: 2026-08-16
 status: complete
 related:
   - ../entities/paper-roamflow.md
@@ -28,6 +28,7 @@ related:
   - ../entities/paper-realm-last-3-meter-vln-grounding.md
   - ../entities/paper-3d-ic-joint-navigation-manipulation-planning.md
   - ../entities/paper-da-nav.md
+  - ../entities/paper-fsd-vln.md
   - ../entities/paper-zonda.md
   - ../entities/paper-travexplorer.md
   - ../entities/paper-s-squared-vla.md
@@ -44,6 +45,7 @@ sources:
   - ../../sources/papers/realm_last_3_meter_vln_arxiv_2607_03792.md
   - ../../sources/papers/3d_ic_icml_2026.md
   - ../../sources/papers/da_nav_arxiv_2607_11638.md
+  - ../../sources/papers/fsd_vln_arxiv_2607_08359.md
   - ../../sources/papers/zonda_arxiv_2607_21025.md
   - ../../sources/papers/refertrack_arxiv_2607_20061.md
   - ../../sources/papers/green_for_go_vla_nav_grounding_arxiv_2607_05122.md
@@ -96,8 +98,9 @@ sources:
 ### 空中 / UAV 子域
 
 - **设定差异：** [WorldVLN](../entities/paper-worldvln-aerial-vln-wam.md) 等 **空中 VLN** 工作在 **连续 3D 航点** 与 **大视角 egocentric 变化** 下闭环执行语言指令；相对 Matterport 离散转向，更强调 **因果记忆、短视界世界预测与真机迁移**。
-- **范式对照：** 地面开源栈见 [四范式复现路径](../overview/vln-open-source-repro-paradigms.md)；空中路线可将 **自回归 World Action Model** 与 **导航 VLA** 对照阅读（[WAM 概念页](../concepts/world-action-models.md)）。
+- **范式对照：** 地面开源栈见 [四范式复现路径](../overview/vln-open-source-repro-paradigms.md)；空中路线可将 **自回归 World Action Model**、**导航 VLA** 与 **快慢双系统** 对照阅读（[WAM 概念页](../concepts/world-action-models.md)）。
 - **零样本统一 agent：** [Uni-LaViRA](../entities/paper-uni-lavira.md)（arXiv:2605.27582）把 VLN-CE / ObjectNav / EQA / Aerial-VLN 写成同一 **Language→Vision→Robot** 翻译环，**无机器人轨迹训练**；OpenUAV SR 40.0%，并与训练式导航基础模型对照。
+- **快慢双系统（仿真、未开源）：** [FSD-VLN](../entities/paper-fsd-vln.md)（arXiv:2607.08359）冻结 VLM 写 **VLSF**，GR00T N1 系 DiT 异步出 8 类离散飞行动作；未见相对自复现 OpenFly SR 5.1%→**13.6%**，单步/任务时长约减半，但 **H=1 最好**、无真机。勿与 WorldVLN 的世界转移或室内 3 m SR 混读。
 
 ### 户外 / 城市尺度方向指令
 
@@ -134,6 +137,7 @@ sources:
 - **复现路径**：[VLN 四范式开源复现策展](../overview/vln-open-source-repro-paradigms.md) — VLFM / NavGPT / NoMaD / Uni-NaVid 由浅入深（模块化→LLM→扩散 e2e→导航 VLA）。
 - **零样本统一导航**：[Uni-LaViRA](../entities/paper-uni-lavira.md) — training-free 三层翻译 + TDM/SCB；四任务 × 四真机（arXiv:2605.27582）。
 - **空中 WAM**：[WorldVLN](../entities/paper-worldvln-aerial-vln-wam.md) — 潜自回归世界转移 + 航点解码 + Action-aware GRPO；室内外 UAV 基准与真机部署（arXiv:2605.15964）。
+- **空中快慢双系统**：[FSD-VLN](../entities/paper-fsd-vln.md) — 冻结 VLM + VLSF + DiT 异步飞控；仿真未见相对 OpenFly SR 约 2.7×，无真机、未开源（arXiv:2607.08359）。
 - **数据**：[SceneVerse++](../entities/sceneverse-pp.md) 将室内漫游视频转为 R2R 兼容的离散导航数据，并报告在相关基准上的增益。
 - **全屋仿真场景**：[HomeWorld](../entities/paper-homeworld-whole-home-scene-generation.md) 从文本生成 **sim-ready 多房间家居**（300K **Chinese Style** 矢量平面图 + 5K furnished 全屋 3D 待开源），面向 **跨房间语言导航与家务** 的 **户型本地化** 数据链——与 Matterport 系扫描 benchmark 互补而非直接替代。
 - **空间推理**：[3D 空间 VQA](../concepts/3d-spatial-vqa.md) 侧重问答；VLN 侧重 **时序决策**，二者常共享场景表示与 VLM 骨干。[ESI-Bench](../entities/esi-bench.md) 则在 OmniGibson 上评测 **为看见而行动** 的细粒度空间 QA，与 VLN 的 **轨迹到达** 目标互补。
@@ -153,6 +157,7 @@ sources:
 - [Uni-LaViRA 论文摘录（arXiv:2605.27582）](../../sources/papers/uni_lavira_arxiv_2605_27582.md) — 零样本统一具身导航
 - [REALM 论文摘录（arXiv:2607.03792）](../../sources/papers/realm_last_3_meter_vln_arxiv_2607_03792.md) — REVERIE 末段实例接地与评测鸿沟
 - [DA-Nav 论文摘录（arXiv:2607.11638）](../../sources/papers/da_nav_arxiv_2607_11638.md) — 城市尺度方向感知 VLN
+- [FSD-VLN 论文摘录（arXiv:2607.08359）](../../sources/papers/fsd_vln_arxiv_2607_08359.md) — 空中长程 VLN 快慢双系统
 - [ZONDA 论文摘录（arXiv:2607.21025）](../../sources/papers/zonda_arxiv_2607_21025.md) — 多楼层动态零样本 ObjectNav
 - [Green for Go 论文摘录（arXiv:2607.05122）](../../sources/papers/green_for_go_vla_nav_grounding_arxiv_2607_05122.md) — 冻结导航 VLA 的绿/红可通行视觉接地
 - [HumanoidVLN 论文摘录（arXiv:2608.12860）](../../sources/papers/humanoidvln_arxiv_2608_12860.md) — 人形物理 VLN 仿真与基准
@@ -167,6 +172,7 @@ sources:
 - [VLN 10 篇论文技术地图](../overview/vln-10-papers-technology-map.md)
 - [VLN 开源复现：四范式学习路径](../overview/vln-open-source-repro-paradigms.md)
 - [WorldVLN（空中 VLN · WAM）](../entities/paper-worldvln-aerial-vln-wam.md)
+- [FSD-VLN（空中长程 VLN · 快慢双系统）](../entities/paper-fsd-vln.md) — VLSF + DiT；仿真未开源
 - [World Action Models（WAM）](../concepts/world-action-models.md)
 - [SceneVerse++](../entities/sceneverse-pp.md)
 - [HomeWorld](../entities/paper-homeworld-whole-home-scene-generation.md) — 文本到 sim-ready 全屋 3D 与中国住宅平面图数据

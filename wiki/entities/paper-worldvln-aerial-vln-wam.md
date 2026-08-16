@@ -11,7 +11,7 @@ tags:
   - vision-language-action
   - reinforcement-learning
 status: complete
-updated: 2026-07-24
+updated: 2026-08-16
 arxiv: "2605.15964"
 code: https://github.com/EmbodiedCity/WorldVLN.code
 related:
@@ -22,6 +22,7 @@ related:
   - ../overview/robot-world-models-training-loop-taxonomy.md
   - ../overview/vln-open-source-repro-paradigms.md
   - ./paper-uni-lavira.md
+  - ./paper-fsd-vln.md
 sources:
   - ../../sources/papers/worldvln_arxiv_2605_15964.md
   - ../../sources/sites/worldvln-embodiedcity.md
@@ -85,6 +86,7 @@ flowchart LR
 |------|-------------------|
 | **导航 VLA**（如 Uni-NaVid 一类） | 强语义接地；通常不显式滚 **动作条件下的世界转移** |
 | **零样本 agentic**（[Uni-LaViRA](./paper-uni-lavira.md)） | Language→Vision→Robot 翻译 + API MLLM；**无** 世界转移学习，却覆盖 Aerial-VLN；与本页 **训练式 WAM** 正交 |
+| **快慢双系统**（[FSD-VLN](./paper-fsd-vln.md)） | 冻结 VLM 写语义缓冲 + DiT 出离散飞行动作；**不预测世界转移**；仅仿真、未开源 |
 | **整段视频 WM + VO** | 先合成未来帧再反推动作；非原生闭环、成本高 |
 | **imagine-and-rank** | 多候选想象再排序；间接 |
 | **地面室内 VLN 四范式** | 见 [VLN 开源复现路径](../overview/vln-open-source-repro-paradigms.md)；WorldVLN 聚焦 **UAV + WAM**，与 Habitat/R2R 离散栈互补 |
@@ -118,6 +120,7 @@ flowchart LR
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 联合预测–动作范式与 Cascaded/Joint 族谱
 - [VLA](../methods/vla.md) — 对比基线类别与导航子任务挂接
 - [Uni-LaViRA](./paper-uni-lavira.md) — 同覆盖 Aerial-VLN 的零样本三层翻译对照
+- [FSD-VLN](./paper-fsd-vln.md) — 同为空中 VLN 的快慢双系统（无世界转移；未开源）
 - [机器人世界模型：训练闭环 taxonomy](../overview/robot-world-models-training-loop-taxonomy.md) — 视频世界模型与策略内预测三线
 - [VLN 四范式开源复现](../overview/vln-open-source-repro-paradigms.md) — 地面导航复现路径（对照）
 

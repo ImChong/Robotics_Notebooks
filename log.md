@@ -1,3 +1,13 @@
+## [2026-08-16] ingest | sources/papers/fsd_vln_arxiv_2607_08359.md — 接入 FSD-VLN 空中长程 VLN 快慢双系统（确认未开源、无真机）
+
+- **触发：** 用户指定 arXiv 论文 *FSD-VLN: Fast-Slow Dual-System Modeling for Aerial Long-Horizon Vision-Language Navigation*
+- **步骤 2.5：** 无项目页；abs/HTML/PDF 无 GitHub/HF；论文未承诺开源 → **确认未开源**。未建 `sources/repos/` / `sources/sites/`
+- **来源：** [`sources/papers/fsd_vln_arxiv_2607_08359.md`](sources/papers/fsd_vln_arxiv_2607_08359.md)
+- **升格：** [`wiki/entities/paper-fsd-vln.md`](wiki/entities/paper-fsd-vln.md) — VLSF + GR00T N1 系 DiT；未见相对自复现 OpenFly SR 5.1%→13.6%；H=1 优于长 chunk；时序图不适用
+- **机构：** `schema/institutions.json` 新增 `siat`；复用 `peng-cheng-lab` / `pku`
+- **交叉：** VLN 任务页空中子域 / WorldVLN / Uni-LaViRA / DA-Nav / VLA / 实时性取舍 / GR00T N1 / 四范式复现 / 多旋翼栈
+- **读数：** 摘要 2× 主要对 OpenFly，不是对 CityNavAgent；成功半径 20 m；无真机
+
 ## [2026-08-16] ingest | sources/repos/unitree_ros2.md — v0.3.0：G1 双臂 / Dex3 / 手部 msg 对齐 SDK2（已开源 BSD-3-Clause）
 
 - **触发：** 用户指定 <https://github.com/unitreerobotics/unitree_ros2> 与 [v0.3.0 Release](https://github.com/unitreerobotics/unitree_ros2/releases/tag/v0.3.0)；G1 双臂、Dex3 与 SDK2 DDS 更新

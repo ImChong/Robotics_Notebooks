@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, loco-manipulation, loco-manip-161-survey, nvidia, vla]
 status: complete
-updated: 2026-07-30
+updated: 2026-08-16
 arxiv: "2503.14734"
 venue: "2025 · arXiv"
 code: https://github.com/NVIDIA/Isaac-GR00T
@@ -21,6 +21,7 @@ related:
   - ./paper-deed.md
   - ./paper-data-pyramid-embodied-manipulation.md
   - ./paper-pi-r2.md
+  - ./paper-fsd-vln.md
 sources:
   - ../../sources/papers/gr00t_n1_arxiv_2503_14734.md
   - ../../sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md
@@ -215,6 +216,7 @@ sequenceDiagram
 - **长程上下文 / 部署后学习：** [RoboTTT](./paper-robottt-test-time-training-vla-context.md) — 在 **GR00T N1.7** 上内嵌 TTT fast-weight 层，把 visuomotor 上下文扩到 8K 步（项目页，2026）
 - **零售真机后训练配方（未开源）：** [DEED](./paper-deed.md) — G1-Edu + GR00T N1.6 薯片补货；Data-Efficient SFT + 文本 advantage 前缀 RECAP
 - **对象中心可验证闭环（未开源）：** [POT-VLA](./paper-pot-vla.md) — 同 **GR00T-N1.7** 匹配对照下，持久 3D 对象 token + 几何谓词把 G1 八类任务 **39/80→71/80**
+- **空中 VLN 双系统迁移（未开源）：** [FSD-VLN](./paper-fsd-vln.md) — 用 **GR00T N1** 骨干做 UAV 语言导航：冻结 VLM、只训 DiT 决策头；仅仿真
 - 工程平台：[isaac-gr00t.md](../entities/isaac-gr00t.md)
 - 工程深读：[gr00t-wholebodycontrol.md](../entities/gr00t-wholebodycontrol.md)
 - RL 身体系统栈：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
