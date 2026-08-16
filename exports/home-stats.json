@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-15",
+  "generated_at": "2026-08-16",
   "node_count": 3110,
   "edge_count": 27273,
   "coverage": {
@@ -8,6 +8,17 @@
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-humantracker.md",
+      "detail_id": "entity-paper-humantracker",
+      "label": "HumanTracker（Comprehensive and Human-Aligned Motion Tracking Benchmark）",
+      "type": "entity",
+      "recency": "2026-08-15",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
     {
       "path": "wiki/entities/paper-digitcode.md",
       "detail_id": "entity-paper-digitcode",
@@ -146,17 +157,6 @@
       "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
     },
     {
-      "path": "wiki/entities/paper-humantracker.md",
-      "detail_id": "entity-paper-humantracker",
-      "label": "HumanTracker（Comprehensive and Human-Aligned Motion Tracking Benchmark）",
-      "type": "entity",
-      "recency": "2026-08-15",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
       "path": "wiki/entities/paper-zest.md",
       "detail_id": "entity-paper-zest",
       "label": "ZEST：异构运动参考的零样本具身技能迁移",
@@ -218,14 +218,15 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-digitcode.md",
-    "detail_id": "entity-paper-digitcode",
-    "label": "DigitCode：按解剖单元做手部动作符号化",
+    "path": "wiki/entities/paper-humantracker.md",
+    "detail_id": "entity-paper-humantracker",
+    "label": "HumanTracker（Comprehensive and Human-Aligned Motion Tracking Benchmark）",
     "type": "entity",
     "recency": "2026-08-15",
     "source": "git",
     "action": "added",
-    "community_label": "接触丰富型操作（Contact-Rich Manipulation） 社区"
+    "has_repo": true,
+    "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
   },
   "top_communities": [
     {
