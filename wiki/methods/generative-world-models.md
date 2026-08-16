@@ -2,8 +2,9 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-08-15
+updated: 2026-08-16
 related:
+  - ../entities/paper-odeworld.md
   - ../queries/embodied-fm-taxonomy-loop.md
   - ../entities/paper-sc3-eval.md
   - ../entities/paper-motionwam-humanoid-loco-manipulation-wam.md
@@ -77,6 +78,7 @@ sources:
   - ../../sources/papers/driftworld_arxiv_2607_15065.md
   - ../../sources/papers/masked_visual_actions_arxiv_2607_19343.md
   - ../../sources/papers/ctrl_world_arxiv_2510_10125.md
+  - ../../sources/papers/odeworld_arxiv_2607_27924.md
   - ../../sources/papers/wan_move_arxiv_2512_08765.md
   - ../../sources/papers/wan_dancer_arxiv_2607_09581.md
   - ../../sources/papers/wan_video_arxiv_2503_20314.md
@@ -167,6 +169,10 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 ### 多视角可控 VLA 闭环 WM（示例：Ctrl-World）
 
 [Ctrl-World](../entities/paper-ctrl-world.md)（arXiv:2510.10125，ICLR 2026，Stanford×Tsinghua）从 **SVD** 初始化，用 **帧级动作条件 + 位姿记忆检索 + 第三人称/腕部联合预测**，把被动视频生成器改成可与 π₀ / π₀.₅ 等现代 VLA **policy-in-the-loop** 交互的想象环境；DROID 训练后可零样本到新机位，想象指令跟随排名对齐真机，并用合成成功轨迹 SFT 把新指令成功率 **38.7%→83.4%**（约 **+44.7 pt**）。与 MVA 同属「动作条件视频 WM + 虚拟评估」，但条件是 **低维动作/位姿**、强调 **多视角 VLA 接口**，而非像素掩码前向/逆向统一。
+
+### 物理时间 latent ODE（示例：ODEWorld）
+
+[ODEWorld](../entities/paper-odeworld.md)（arXiv:2607.27924，清华 AIR × Berkeley BAIR）把离散 next-step 换成 **Physical-Time Flow**：在冻结 DINOv2 特征上解耦出单 token 动力学 latent，用 JVP 直接监督物理时间速度场，推理靠 RK4 积分。相对 Ctrl-World / DriftWorld 的动作条件像素环，它 **当前版本无动作条件**，主用途是任意时刻/反向视频与 **latent 子目标** 引导策略（LIBERO-LONG 序列子目标 **83.6%**；AgileX+X-VLA **55%→80%**）。推理与 HF 权重已开源，训练脚本未随仓。
 
 ### 自一致视频策略评估器（示例：SC3-Eval）
 
@@ -279,6 +285,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [DriftWorld](../entities/paper-driftworld.md) — **1-step drifting** 动作条件 WM：推理时搜索 + 离线评估（arXiv:2607.15065）。
 - [Masked Visual Actions](../entities/paper-masked-visual-actions.md) — **像素掩码轨迹** 统一前向/逆向；RoboCasa 策略评估 **r=0.982**（arXiv:2607.19343）。
 - [Ctrl-World](../entities/paper-ctrl-world.md) — **多视角** 可控 WM：VLA 闭环评估 + 合成 SFT（ICLR 2026）。
+- [ODEWorld](../entities/paper-odeworld.md) — **物理时间 latent ODE**：任意时刻/反向预测 + 子目标策略（arXiv:2607.27924）。
 - [SC3-Eval](../entities/paper-sc3-eval.md) — **自一致** 视频策略评估器：前向–逆向 + 跨视角 + 早停；闭环 \(r=0.929\)（arXiv:2606.18610；确认未开源）。
 - [World Action Planner](../entities/paper-world-action-planner.md) — **pose-image** 条件多视角 WM + VLM 想象规划（arXiv:2607.27599；代码/权重已开源）。
 - [Rofacto](../entities/paper-rofacto.md) — **名义轨迹 + URDF 渲染** 动作接口；相对向量条件提升场景响应（arXiv:2607.22535）。
@@ -329,6 +336,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - Zhao, B., et al. (2026). *X-Mind: Efficient Visual Chain-of-Thought via Predictive World Model for End-to-End Driving* — 见 [sources/papers/x_mind_arxiv_2606_28758.md](../../sources/papers/x_mind_arxiv_2606_28758.md)。
 - Zayer, H., et al. (2026). *Masked Visual Actions* — 见 [sources/papers/masked_visual_actions_arxiv_2607_19343.md](../../sources/papers/masked_visual_actions_arxiv_2607_19343.md)。
 - Guo, Y., et al. (2026). *Ctrl-World* — 见 [sources/papers/ctrl_world_arxiv_2510_10125.md](../../sources/papers/ctrl_world_arxiv_2510_10125.md)。
+- Liu, D., Niu, H., et al. (2026). *ODEWorld* — 见 [sources/papers/odeworld_arxiv_2607_27924.md](../../sources/papers/odeworld_arxiv_2607_27924.md)。
 - Zhang, X., & Du, Y. (2026). *World Action Planner* — 见 [sources/papers/world_action_planner_arxiv_2607_27599.md](../../sources/papers/world_action_planner_arxiv_2607_27599.md)。
 - Chu, R., et al. (2025). *Wan-Move* — 见 [sources/papers/wan_move_arxiv_2512_08765.md](../../sources/papers/wan_move_arxiv_2512_08765.md)。
 - Huang, M., et al. (2026). *Wan-Dancer* — 见 [sources/papers/wan_dancer_arxiv_2607_09581.md](../../sources/papers/wan_dancer_arxiv_2607_09581.md)。

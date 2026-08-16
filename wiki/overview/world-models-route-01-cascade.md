@@ -2,7 +2,7 @@
 type: overview
 tags: [world-models, category-hub, cascade, video-prediction, latent-action, shenlan-survey]
 status: complete
-updated: 2026-07-23
+updated: 2026-08-16
 summary: "深蓝世界模型 15 项目 · 01 级联架构（6 篇）— 先预测未来视觉/4D 状态，再由逆动力学或动作头解码控制；误差在级联间传递是主要权衡。"
 related:
   - ./world-models-15-open-source-technology-map.md
@@ -17,10 +17,12 @@ related:
   - ../entities/paper-shenlan-wm-05-villa-x.md
   - ../entities/paper-shenlan-wm-06-video-gen-robot-policies.md
   - ../entities/paper-masked-visual-actions.md
+  - ../entities/paper-odeworld.md
 sources:
   - ../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md
   - ../../sources/papers/shenlan_world_models_15_reference_catalog.md
   - ../../sources/papers/masked_visual_actions_arxiv_2607_19343.md
+  - ../../sources/papers/odeworld_arxiv_2607_27924.md
 ---
 
 # 世界模型路线 01：级联架构
@@ -42,7 +44,7 @@ sources:
 
 **代表机制（策展）：** 4D 场景重建（TesserAct）→ 视频扩散表征 + IDM（VPP、mimic-video）→ 无标签视频潜在动作（LaPA、villa-X）→ 模块化视频+动作扩散（Video Generators are Robot Policies）
 
-**路线外延（非 15 项目策展）：** [Masked Visual Actions](../entities/paper-masked-visual-actions.md)（arXiv:2607.19343）在 **逆向** 设定下先合成机器人视频、再用 **IDM** 抽低维动作——级联形态清晰，但 **同一** 视频骨干亦可切换为前向沙盒（见 [route-03](./world-models-route-03-virtual-sandbox.md)），说明「级联 vs 沙盒」在工程上可共享条件接口。
+**路线外延（非 15 项目策展）：** [Masked Visual Actions](../entities/paper-masked-visual-actions.md)（arXiv:2607.19343）在 **逆向** 设定下先合成机器人视频、再用 **IDM** 抽低维动作——级联形态清晰，但 **同一** 视频骨干亦可切换为前向沙盒（见 [route-03](./world-models-route-03-virtual-sandbox.md)），说明「级联 vs 沙盒」在工程上可共享条件接口。[ODEWorld](../entities/paper-odeworld.md)（arXiv:2607.27924）是另一条级联：先在物理时间 ODE 里积出 **latent 子目标**，再条件化独立策略（LIBERO-LONG / X-VLA）；**当前版本无动作条件**，不要当成像素沙盒。
 
 ## 本组论文（6 篇）
 
@@ -71,6 +73,7 @@ sources:
 - [Generative World Models](../methods/generative-world-models.md)
 - [操作 VLA 架构选型 Query](../queries/manipulation-vla-architecture-selection.md)
 - [Masked Visual Actions](../entities/paper-masked-visual-actions.md) — 逆设定 + IDM 抽动作（兼前向沙盒）
+- [ODEWorld](../entities/paper-odeworld.md) — 连续时间 latent 子目标再接策略（无动作条件）
 
 ## 参考来源
 
