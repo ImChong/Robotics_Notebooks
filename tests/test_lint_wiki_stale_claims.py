@@ -100,6 +100,36 @@ def test_negated_claim_is_not_flagged(tmp_path, monkeypatch) -> None:
     assert _run([claim, newer])["stale_claims"] == []
 
 
+def test_cannot_be_read_as_claim_is_not_flagged(tmp_path, monkeypatch) -> None:
+    # 「不可直接当 SOTA 通才」与「不是 SoTA」同属辟谣式写法，在否认该断言。
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    claim = _page(
+        wiki,
+        "a.md",
+        "2025-01-01",
+        ["humanoid"],
+        "BeyondMimic 行不可直接当 SOTA 通才。论文自己把它标成 specialist。",
+    )
+    newer = _page(wiki, "b.md", "2026-01-01", ["humanoid"], "更晚的同主题页。")
+    assert _run([claim, newer])["stale_claims"] == []
+
+
+def test_negation_cue_in_previous_sentence_does_not_exempt(tmp_path, monkeypatch) -> None:
+    # 否定线索只在命中词同句内生效：上一句的「不可」不应放过本句的真实断言。
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    claim = _page(
+        wiki,
+        "a.md",
+        "2025-01-01",
+        ["humanoid"],
+        "该权重不可商用。本方法仍是该任务的 SOTA。",
+    )
+    newer = _page(wiki, "b.md", "2026-01-01", ["humanoid"], "更晚的同主题页。")
+    results = _run([claim, newer])
+    assert len(results["stale_claims"]) == 1
+    assert "SOTA" in results["stale_claims"][0]
+
+
 def test_library_page_title_reference_is_not_flagged(tmp_path, monkeypatch) -> None:
     # 「VLA SOTA Leaderboard」是库内页面标题，引用它属导航而非本页断言。
     wiki = _setup_wiki(tmp_path, monkeypatch)

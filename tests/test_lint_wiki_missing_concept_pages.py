@@ -101,6 +101,28 @@ def test_covered_elsewhere_joint_ignored(tmp_path, monkeypatch) -> None:
     assert results["missing_concept_pages"] == []
 
 
+def test_covered_elsewhere_reset_ignored(tmp_path, monkeypatch) -> None:
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    pages = [
+        _page(wiki, f"p{i}.md", "Gym 风格 `reset` / `step` 接口。")
+        for i in range(lw.MISSING_CONCEPT_PAGE_MIN_PAGES)
+    ]
+    results = _run(pages)
+    # reset 是环境/策略 API 的方法名（episode 复位），已由 entities/gymnasium.md 释义
+    assert results["missing_concept_pages"] == []
+
+
+def test_covered_elsewhere_rgbd_ignored(tmp_path, monkeypatch) -> None:
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    pages = [
+        _page(wiki, f"p{i}.md", "输入为 **RGB-D** 观测。")
+        for i in range(lw.MISSING_CONCEPT_PAGE_MIN_PAGES)
+    ]
+    results = _run(pages)
+    # RGB-D 是传感模态标签，已由六种空间表征 / 三维坐标变换等页覆盖
+    assert results["missing_concept_pages"] == []
+
+
 def test_case_insensitive_merge(tmp_path, monkeypatch) -> None:
     wiki = _setup_wiki(tmp_path, monkeypatch)
     half = lw.MISSING_CONCEPT_PAGE_MIN_PAGES // 2 + 1

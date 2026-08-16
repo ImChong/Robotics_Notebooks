@@ -13,7 +13,7 @@ tags:
   - uni-freiburg
   - uni-hamburg
 status: complete
-updated: 2026-08-15
+updated: 2026-08-16
 arxiv: "2608.13422"
 code: https://github.com/zheyu-zhuang/seeker
 related:
@@ -163,7 +163,7 @@ sequenceDiagram
 | MirrorAug | 37.2 | 对称增强、仍看全图 |
 | RVT2-Crop | 42.6 | 最强输入级基线；夹爪/低速关键帧会鬼影或错过连续运动 |
 | **Seeker** | **62.6** | 相对 RVT2 +20.0 点；3-P Assembly / Threading 相对增益最大 |
-| RAVEN | 52.1 | 外部等变策略 SOTA，不在同栈 |
+| RAVEN | 52.1 | 外部等变策略的已发表最优对照（论文口径），不在同栈 |
 | Oracle ROI | 64.2 | 特权阶段 affordance 框；Seeker 差 1.6 点 |
 
 **背景：** 原背景训出的 mask 做 Guided Overlay，在打乱桌面纹理上仍最强；只加纹理多样性不够，细交互会被盖住。
