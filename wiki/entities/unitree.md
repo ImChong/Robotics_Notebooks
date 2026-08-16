@@ -2,9 +2,10 @@
 type: entity
 tags: [unitree, hardware, sdk, sim2real, humanoid, quadruped]
 status: complete
-updated: 2026-08-15
+updated: 2026-08-16
 sources:
   - ../../sources/repos/unitree.md
+  - ../../sources/repos/unitree_ros2.md
   - ../../sources/sites/unitree-unistore.md
   - ../../sources/papers/humanoid_hardware.md
 summary: "宇树科技是腿式与人形机器人领域高影响力硬件与官方开源软件组织；GitHub unitreerobotics 主线仓有详情 wiki 节点（SDK2/ROS/RL/遥操作/UnifoLM 等），周边仓合并或仅 sources 归档以避免 stub 与重复节点。"
@@ -215,7 +216,7 @@ flowchart TB
 |------|-----------|--------------|
 | 底层 SDK | [unitree_sdk2](./unitree-sdk2.md) | `unitree_sdk2` + `unitree_sdk2_python`；周边 `unitree_dds_wrapper` / `unitree_actuator_sdk` 仅 sources |
 | 旧代 SDK | [unitree_legged_sdk](./unitree-legged-sdk.md) | `unitree_legged_sdk` |
-| ROS 2 | [unitree_ros2](./unitree-ros2.md) | `unitree_ros2`；`unitree_ros2_to_real`（Go1 遗产）仅 sources 脚注 |
+| ROS 2 | [unitree_ros2](./unitree-ros2.md) | `unitree_ros2`（**v0.3.0**：G1 双臂 / Dex3 / 手部 msg 对齐 SDK2）；`unitree_ros2_to_real`（Go1 遗产）仅 sources 脚注 |
 | ROS1 | [unitree_ros](./unitree-ros.md) | `unitree_ros` + `unitree_ros_to_real`（同页，不拆第二节点） |
 | 仿真 | [unitree_mujoco](./unitree-mujoco.md)、[unitree_guide](./unitree-guide.md)、[unitree_model](./unitree-model.md) | 对应同名仓（model 为 deprecated→HF 指针） |
 | RL | [unitree_rl_gym](./unitree-rl-gym.md)、[unitree_rl_lab](./unitree-rl-lab.md)、[unitree_rl_mjlab](./unitree-rl-mjlab.md) | 三选一后端 |

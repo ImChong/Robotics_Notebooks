@@ -2,7 +2,7 @@
 type: entity
 tags: [hardware, humanoid, platform, unitree]
 status: complete
-updated: 2026-08-15
+updated: 2026-08-16
 related:
   - ./humanoid-robot.md
   - ./rek.md
@@ -10,6 +10,7 @@ related:
   - ./unitree-unistore.md
   - ./paper-synthetic-video-humanoid-tasks.md
   - ./unitree-ros.md
+  - ./unitree-ros2.md
   - ./unitree-g1-software-stack.md
   - ./humanoid-system-curriculum.md
   - ./botlab-motioncanvas.md
@@ -37,6 +38,7 @@ sources:
   - ../../sources/papers/zest.md
   - ../../sources/papers/humanoidvln_arxiv_2608_12860.md
   - ../../sources/papers/p3_arxiv_2607_25541.md
+  - ../../sources/repos/unitree_ros2.md
 summary: "Unitree G1 是一款由宇树科技推出的入门级教育科研用人形机器人，以其极高的性价比、高集成度以及对仿真学习框架的良好支持而备受关注。"
 ---
 
@@ -78,7 +80,7 @@ summary: "Unitree G1 是一款由宇树科技推出的入门级教育科研用�
 19. **低噪行走（QuietWalk）**：[QuietWalk](./paper-quietwalk-humanoid-locomotion.md)（NIMTE / Westlake, arXiv:2604.23702）在 G1 上用 **PINN 估计竖直 GRF** 作 RL 冲击惩罚，真机 **1.2 m/s** 相对基线 RL 平均降噪 **7.17 dB**，验证 **赤脚 / 滑板鞋 / 运动鞋 / 高跟鞋** 跨鞋型泛化。
 20. **官方技能商店（UniStore）**：[UniStore](./unitree-unistore.md) 在 **2026-05-07** 全面开放后，G1 用户可通过 **Unitree Explore App（≥ 1.9.0）** 与 **OTA（≥ 1.4.8）** 从云端一键安装舞蹈、武术等成品动作包，与自研 RL / 模仿学习管线形成「平台技能 vs 实验室策略」对照。
 21. **DimOS agent 集成（beta）**：[DimOS（Dimensional）](./dimensionalos-dimos.md) 提供 `dimos --simulation run unitree-g1-sim`（MuJoCo）及 README 列 **beta** 级 G1 平台支持，用 Python Blueprint + MCP 做导航/感知/agent 编排，**无需 ROS 即可起步**。
-22. **官方开源研发栈**：在 [Unitree / unitreerobotics](./unitree.md) 组织下，G1 常用入口包括 `unitree_rl_gym` / `unitree_rl_lab` / `unitree_rl_mjlab`（RL）、`xr_teleoperate`（XR 遥操作）、`unitree_lerobot`（IL）与 UnifoLM VLA/WMA；组织地图见 [sources/repos/unitree.md](../../sources/repos/unitree.md)。
+22. **官方开源研发栈**：在 [Unitree / unitreerobotics](./unitree.md) 组织下，G1 常用入口包括 `unitree_rl_gym` / `unitree_rl_lab` / `unitree_rl_mjlab`（RL）、`xr_teleoperate`（XR 遥操作）、`unitree_lerobot`（IL）与 UnifoLM VLA/WMA；ROS 2 真机桥见 [`unitree_ros2` v0.3.0](./unitree-ros2.md)（双臂 / Dex3 / Arm SDK）。组织地图见 [sources/repos/unitree.md](../../sources/repos/unitree.md)。
 
 ## 在具身智能中的作用
 
@@ -87,6 +89,7 @@ G1 的出现极大地加速了大规模数据的采集。由于其成本低廉�
 ## 关联页面
 
 - [G1 软件服务栈](./unitree-g1-software-stack.md) — SDK2/DDS 与仿真桥接口（课程 1.4）
+- [unitree_ros2](./unitree-ros2.md) — v0.3.0 G1 双臂 / Dex3 / Arm SDK 官方 ROS 2 入口
 - [人形系统课程策展](./humanoid-system-curriculum.md) — 深蓝学院 G1 系统课八章地图
 - [AGILE（论文实体）](./paper-agile-humanoid-loco-manipulation.md) — NVIDIA Isaac Lab 人形 RL 工作流；G1 速度/高度/stand-up/舞蹈/pick&place（arXiv:2603.20147）
 - [P³](./paper-p3.md) — VAE-PPO 边缘似然；G1 踏石/楼梯/缺口真机（arXiv:2607.25541，已开源）
@@ -144,3 +147,4 @@ G1 的出现极大地加速了大规模数据的采集。由于其成本低廉�
 - [sources/papers/eth-g1-diffusion.md](../../sources/papers/eth-g1-diffusion.md) — ETH RSL：G1 扩散运动生成 + RL 全身感知 locomotion（arXiv:2604.17335）。
 - [sources/papers/uni_lavira_arxiv_2605_27582.md](../../sources/papers/uni_lavira_arxiv_2605_27582.md) — Uni-LaViRA：G1 等四本体零样本统一导航（arXiv:2605.27582）。
 - [sources/sites/rek-com.md](../../sources/sites/rek-com.md) — REK 官网：G1 VR 格斗联赛与租赁。
+- [sources/repos/unitree_ros2.md](../../sources/repos/unitree_ros2.md) — v0.3.0 G1 双臂 / Dex3 / Arm SDK ROS 2 入口。

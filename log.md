@@ -1,3 +1,12 @@
+## [2026-08-16] ingest | sources/repos/unitree_ros2.md — v0.3.0：G1 双臂 / Dex3 / 手部 msg 对齐 SDK2（已开源 BSD-3-Clause）
+
+- **触发：** 用户指定 <https://github.com/unitreerobotics/unitree_ros2> 与 [v0.3.0 Release](https://github.com/unitreerobotics/unitree_ros2/releases/tag/v0.3.0)；G1 双臂、Dex3 与 SDK2 DDS 更新
+- **步骤 2.5：** **已开源、可运行**（BSD-3-Clause；`cyclonedds_ws` + `example` 可 `colcon build`）。项目页即 GitHub Release，无独立站点
+- **来源：** [`sources/repos/unitree_ros2.md`](sources/repos/unitree_ros2.md)（深度补全，不另建页）
+- **升格：** 改写 [`wiki/entities/unitree-ros2.md`](wiki/entities/unitree-ros2.md) — v0.3.0 版本锚点、G1 示例表、手部 msg 破坏性变更
+- **交叉：** SDK2 / G1 软件栈 / 灵巧手服务（Dex3 原生 DDS ≠ Serial 桥）/ G1 硬件页 / 组织枢纽
+- **破坏性：** `HandCmd`/`HandState`/`PressSensorState` 字段重排以对齐 SDK2；上游无迁移脚本
+
 ## [2026-08-15] ingest | sources/blogs/wechat_embodied_station_ego2robot_mango_grasp_2026-08-11.md — 具身智能小站 9 篇盘点：复用 PFM-HR / Why-AC，新建 7 个论文节点；GSR 与 go2_rescue_eval 已开源，其余项目页或 Coming Soon
 
 - **触发：** 用户指定 <https://mp.weixin.qq.com/s/nKF7rxH-OuJz68galP3Xpg>；要求每篇论文独立详情节点、不重复造页
