@@ -7,10 +7,11 @@ related:
   - ../methods/reinforcement-learning.md
   - ../methods/policy-optimization.md
   - ../concepts/embodied-rl-minimal-closed-loop.md
+  - ../concepts/cartpole.md
 sources:
   - ../../sources/papers/policy_optimization.md
 summary: "Markov Decision Process (MDP)"
-updated: 2026-07-01
+updated: 2026-08-16
 ---
 
 # Markov Decision Process (MDP)
@@ -143,6 +144,7 @@ MDP（数学框架）
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — MDP 是 RL 的理论根基
 - [Optimal Control](../concepts/optimal-control.md) — OCP 和 MDP 的关系：OCP 是确定性的，RL 是随机性的；两者都是"最优决策"问题
 - [Reward Design](../concepts/reward-design.md) — MDP 中奖励函数的设计直接决定学到的策略
+- [Cartpole 问题](../concepts/cartpole.md) — 四维完全可观测 MDP 的最小对照：Gym 失败信号 vs Isaac shaping
 - [POMDP](./pomdp.md) — MDP 加观测模型的扩展，真实机器人系统的更准确框架
 - [Bellman 方程](./bellman-equation.md) — MDP 最优策略通过 Bellman 最优方程表达
 

@@ -32,7 +32,7 @@
 
 文档与注册表涵盖多类任务族，机器人相关常见入口包括：
 
-- **classic-control**：CartPole、Pendulum、MountainCar 等教学基准；
+- **classic-control**：CartPole、Pendulum、MountainCar 等教学基准；CartPole 独立详情见 [Cartpole 问题](../../wiki/concepts/cartpole.md)，环境契约归档见 [Gymnasium Cart Pole](../sites/gymnasium-cartpole.md)；
 - **mujoco**：Ant、HalfCheetah、Humanoid 等连续控制（依赖 MuJoCo）；
 - **box2d**：LunarLander 等；
 - **atari**：离散动作游戏基准（算法验证常用，非机器人本体）。
@@ -49,4 +49,5 @@
 ## 对 wiki 的映射
 
 - [gymnasium](../../wiki/entities/gymnasium.md) — 实体页（API 层 / 基准环境注册表）
+- [Cartpole 问题](../../wiki/concepts/cartpole.md) — `CartPole-v1` 与 1983 / Isaac-Cartpole-v0 对照
 - 交叉：[mujoco](../../wiki/entities/mujoco.md)、[dm-control](../../wiki/entities/dm-control.md)、[reinforcement-learning](../../wiki/methods/reinforcement-learning.md)、[gym-pybullet-drones](../../wiki/entities/gym-pybullet-drones.md)

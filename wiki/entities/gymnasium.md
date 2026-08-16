@@ -15,6 +15,7 @@ related:
   - ./isaac-lab.md
   - ./stable-baselines3.md
   - ./cleanrl.md
+  - ../concepts/cartpole.md
   - ../overview/sim-platforms-decade-technology-map.md
   - ../overview/robot-training-stack-layers-technology-map.md
   - ../queries/simulator-selection-guide.md
@@ -54,7 +55,7 @@ Gymnasium 不替代 MuJoCo / Isaac Gym 等物理引擎，而是规定 **智能�
 ## 为什么重要
 
 - **训练栈的「插座标准」**：算法库（[Stable-Baselines3](./stable-baselines3.md)、[CleanRL](./cleanrl.md) 等）默认假设环境实现 `gymnasium.Env`；机器人仓库（如 [gym-pybullet-drones](./gym-pybullet-drones.md)）对齐该接口后，换算法不必重写环境循环。
-- **基准可比性**：CartPole、MuJoCo Ant/Humanoid 等任务长期作为 PPO、SAC 的横向对比靶场；与 [dm_control](./dm-control.md) 的 Control Suite 形成「Gym 注册表 vs DeepMind 约定」两条并行基准线。
+- **基准可比性**：[CartPole](../concepts/cartpole.md)、MuJoCo Ant/Humanoid 等任务长期作为 PPO、SAC 的横向对比靶场；与 [dm_control](./dm-control.md) 的 Control Suite 形成「Gym 注册表 vs DeepMind 约定」两条并行基准线。`CartPole-v1` 的动作、终止与奖励契约见独立节点，勿与 [Isaac-Cartpole-v0](../concepts/cartpole.md) 混用。
 - **语义升级影响 bootstrap**：v0.26 起 `step()` 返回 `terminated`（任务内终止）与 `truncated`（时间限制等 MDP 外截断），替代旧 Gym 的单一 `done`；误用会导致价值函数 bootstrap 与课程设计出错。
 - **与 GPU 并行仿真区分**：`gymnasium.make_vec()` 做的是 **API 层向量化**；[Isaac Gym](./isaac-gym.md) / [legged_gym](./legged-gym.md) 的万环境并行是 **物理仿真并行**，二者互补而非替代。
 
@@ -364,6 +365,7 @@ flowchart TD
 - [legged_gym](./legged-gym.md) — 足式 RL 工程框架（底层多为 Isaac Gym，非 Gymnasium 内置）
 - [Isaac Gym](./isaac-gym.md) — GPU 并行物理；与 API 标准分层理解
 - [Isaac Lab](./isaac-lab.md) — 当前推荐的 GPU 并行训练入口
+- [Cartpole 问题](../concepts/cartpole.md) — `CartPole-v1` 与 Isaac-Cartpole-v0 的 MDP 对照
 - [Stable-Baselines3](./stable-baselines3.md) — 默认消费 Gymnasium API 的算法库
 - [CleanRL](./cleanrl.md) — 单文件算法实现，便于核对本 API 的采样循环
 - [十年仿真平台技术地图](../overview/sim-platforms-decade-technology-map.md) — MuJoCo + Gym 基准的历史位置

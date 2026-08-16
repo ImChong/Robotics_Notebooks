@@ -7,6 +7,7 @@ summary: "Stable-Baselines3：提供经过测试的常用深度强化学习算�
 related:
   - ../concepts/sim2real.md
   - ../entities/isaac-lab.md
+  - ../concepts/cartpole.md
   - ../entities/humanoid-motion-intelligence.md
   - ../queries/hmi-opensource-projects-coverage.md
 sources:
@@ -86,6 +87,7 @@ flowchart LR
 
 - [sim2real](../concepts/sim2real.md)
 - [isaac-lab](../entities/isaac-lab.md)
+- [Cartpole 问题](../concepts/cartpole.md) — SB3 默认对接的 Gymnasium `CartPole-v1` 教学基准
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
 

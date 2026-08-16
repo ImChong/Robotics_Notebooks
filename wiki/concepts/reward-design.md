@@ -2,7 +2,7 @@
 type: concept
 tags: [rl, reward, locomotion, humanoid, policy-optimization]
 status: complete
-updated: 2026-08-05
+updated: 2026-08-16
 related:
   - ../formalizations/mdp.md
   - ../methods/reinforcement-learning.md
@@ -10,6 +10,7 @@ related:
   - ./domain-randomization.md
   - ./humanoid-policy-reward-functions.md
   - ../queries/reward-design-guide.md
+  - ../concepts/cartpole.md
   - ../methods/disney-olaf-character-robot.md
   - ../entities/paper-tsil-temporal-self-imitation-learning.md
   - ../entities/paper-fddc.md
@@ -164,6 +165,11 @@ IL 的核心动机之一就是"奖励函数太难设计"——让 IL 从示范�
 
 见：[Imitation Learning](../methods/imitation-learning.md)
 
+### 和 Cartpole 的关系
+同一「保持杆向上」：1983 / `sutton_barto_reward` 是稀疏失败；Gymnasium 默认逐步 +1；Isaac-Cartpole-v0 再加杆角 L2 与速度惩罚。是最小可复现的奖励对照。
+
+见：[Cartpole 问题](./cartpole.md)
+
 ### 和 Domain Randomization 的关系
 DR 改变的是环境的物理参数分布；Reward Design 改变的是优化目标。两者都影响策略，但影响的层次不同。
 
@@ -188,6 +194,7 @@ DR 改变的是环境的物理参数分布；Reward Design 改变的是优化目
 
 - [人形机器人运控常见奖励函数分类](./humanoid-policy-reward-functions.md) — 人形运控 RL 奖励项按「替谁说话」的六类划分与权重量级速查
 - [Markov Decision Process](../formalizations/mdp.md)
+- [Cartpole 问题](./cartpole.md) — 稀疏失败 vs 逐步 +1 vs Isaac shaping
 - [Policy Optimization](../methods/policy-optimization.md)
 - [Imitation Learning](../methods/imitation-learning.md)（AMP 路线：绕过手工奖励）
 - [AMP Reward (HumanX)](../methods/amp-reward.md) — 判别器风格奖励与接触图监督

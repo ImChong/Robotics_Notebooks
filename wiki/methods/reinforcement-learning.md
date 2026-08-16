@@ -35,6 +35,7 @@ related:
   - ../entities/paper-shape-your-body-value-gradient-design.md
   - ../entities/paper-tsil-temporal-self-imitation-learning.md
   - ../entities/gymnasium.md
+  - ../concepts/cartpole.md
   - ../concepts/progress-reward-modeling.md
   - ../entities/paper-progress-reward-modeling-survey.md
 sources:
@@ -282,6 +283,7 @@ flowchart LR
 - [人形 RL 策略训练五模块](../overview/humanoid-rl-policy-training-five-modules.md) — MDP → Actor-Critic → PPO → 奖励 → 蒸馏的运控训练闭环
 - [PyBullet](../entities/pybullet.md) — 轻量入门仿真器
 - [Gymnasium](../entities/gymnasium.md) — 单智能体 RL 环境 API 标准（`reset` / `step` / `spaces`）
+- [Cartpole 问题](../concepts/cartpole.md) — Actor–Critic 实验原点与 Gym / Isaac 教学环境对照
 
 ## 继续深挖入口
 

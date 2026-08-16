@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, simulation, reinforcement-learning, pybullet, gymnasium, quadcopter, multi-agent, mit]
 status: complete
-updated: 2026-06-17
+updated: 2026-08-16
 related:
   - ./pybullet.md
   - ../overview/multirotor-simulation-planning-control-stack.md
