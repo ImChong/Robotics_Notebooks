@@ -2,7 +2,7 @@
 type: method
 tags: [rl, imitation-learning, gan, motion-prior, humanoid]
 status: complete
-updated: 2026-08-06
+updated: 2026-08-16
 related:
   - ../overview/jason-peng-flexible-motion-skill-learning.md
   - ../entities/mimickit.md
@@ -124,6 +124,7 @@ $$
 - [BeyondMimic](./beyondmimic.md) — 同样是动作模仿，但 BeyondMimic 侧重于精确建模，AMP 侧重于风格判别。
 - [AMP_mjlab](../entities/amp-mjlab.md) — AMP 在 Unitree G1 + mjlab 上的工程实现，统一 locomotion+recovery。
 - [PAC-MAN](../entities/paper-pac-man-perceptive-cbf-rl.md) — AMP 正则躲避反射 + 训练期 CBF；官方仓适配 AMP_mjlab / mjlab。
+- [ParkourFormer](../entities/paper-parkourformer.md) — 把预测的未来两步 AMP 状态拼进判别序列，再条件化当前动作。
 
 ## 进阶：MimicKit 与 ADD
 

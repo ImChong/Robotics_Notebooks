@@ -2,12 +2,13 @@
 type: entity
 tags: [paper, humanoid, parkour, perceptive-locomotion, distillation, real2sim2real, dagger, light-origins, whole-body]
 status: complete
-updated: 2026-08-04
+updated: 2026-08-16
 venue: "Light Origins 项目页（暂无 arXiv）"
 related:
   - ./paper-hrl-stack-22-perceptive_humanoid_parkour.md
   - ./paper-notebook-humanoid-parkour-learning.md
   - ./paper-deep-whole-body-parkour.md
+  - ./paper-parkourformer.md
   - ./paper-robot-parkour-learning.md
   - ../tasks/humanoid-locomotion.md
   - ../tasks/locomotion.md
@@ -155,6 +156,7 @@ flowchart TB
 | [Deep Whole-Body Parkour](./paper-deep-whole-body-parkour.md) | 全身跑酷数据/策略族对照 |
 | [HIL](../methods/hil-hybrid-imitation-learning.md) | 论文消融指出纯稀疏奖励（HIL 式无专家蒸馏）学暴力接触难收敛 |
 | [Robot Parkour Learning / Extreme Parkour](./paper-robot-parkour-learning.md) | 四足端到端深度跑酷前驱；本稿迁到人形全身接触 |
+| [ParkourFormer](./paper-parkourformer.md) | G1 上 query 历史 + 未来两步 AMP 监督，无种子扩张/转移组；平台与数据配方不同 |
 
 ## 局限与风险
 
@@ -176,6 +178,7 @@ flowchart TB
 - [DAgger](../methods/dagger.md) — 多专家蒸馏骨架
 - [HIL](../methods/hil-hybrid-imitation-learning.md) — 视频跑酷模仿对照
 - [HIL vs MTRG vs ZEST](../comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md) — 跑酷模仿选型
+- [ParkourFormer](./paper-parkourformer.md) — G1 未来监督 Transformer 跑酷对照
 
 ## 参考来源
 

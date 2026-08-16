@@ -1,3 +1,13 @@
+## [2026-08-16] ingest | sources/papers/parkourformer_arxiv_2605_25782.md — 接入 ParkourFormer 未来监督人形跑酷（确认未开源）
+
+- **触发：** 用户指定 [arXiv:2605.25782](https://arxiv.org/abs/2605.25782) 与项目页 <https://mronaldo-gif.github.io/parkourformer.github.io/>
+- **步骤 2.5：** 项目页与作者 GitHub [`MRonaldo-gif/parkourformer.github.io`](https://github.com/MRonaldo-gif/parkourformer.github.io) 仅为站点仓；无 Code / 权重 / 训练入口；论文未承诺开源 → **确认未开源**。未建 `sources/repos/`
+- **来源：** [`sources/papers/parkourformer_arxiv_2605_25782.md`](sources/papers/parkourformer_arxiv_2605_25782.md)、[`sources/sites/parkourformer-github-io.md`](sources/sites/parkourformer-github-io.md)
+- **升格：** [`wiki/entities/paper-parkourformer.md`](wiki/entities/paper-parkourformer.md) — query 历史 + 未来两步 AMP 监督；G1 九类地形单策略 **93.85%**；去 MSE 下楼 **9.50%**；时序图不适用
+- **机构：** 复用 `hkust-gz`；`schema/institutions.json` 新增 `scau` / `gdut` / `clai-lab`
+- **交叉：** Hiking / PHP / LightLP / SSR / Next Token Prediction / Humanoid Parkour Learning / AMP / 人形与楼梯任务页 / 感知越障路线
+- **读数：** 摘要「+47.12%」是相对 1-MLP，不是相对 vanilla Transformer（已 90.49%）
+
 ## [2026-08-16] ingest | sources/papers/odeworld_arxiv_2607_27924.md — 接入 ODEWorld 物理时间流连续预测（推理+权重已开源，无训练脚本/LICENSE）
 
 - **触发：** 用户指定项目页 <https://dstate.github.io/odeworld_website/> 与论文 [arXiv:2607.27924](https://arxiv.org/abs/2607.27924)
